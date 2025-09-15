@@ -27,7 +27,7 @@ class TseClient(AbstractClient):
 
 
     def BindAutoScalerResourceStrategyToGroups(self, request):
-        """弹性伸缩策略批量绑定网关分组
+        r"""弹性伸缩策略批量绑定网关分组
 
         :param request: Request instance for BindAutoScalerResourceStrategyToGroups.
         :type request: :class:`tencentcloud.tse.v20201207.models.BindAutoScalerResourceStrategyToGroupsRequest`
@@ -50,7 +50,7 @@ class TseClient(AbstractClient):
 
 
     def CloseWafProtection(self, request):
-        """关闭 WAF 防护
+        r"""关闭 WAF 防护
 
         :param request: Request instance for CloseWafProtection.
         :type request: :class:`tencentcloud.tse.v20201207.models.CloseWafProtectionRequest`
@@ -73,7 +73,7 @@ class TseClient(AbstractClient):
 
 
     def CreateAutoScalerResourceStrategy(self, request):
-        """创建弹性伸缩策略
+        r"""创建弹性伸缩策略
 
         :param request: Request instance for CreateAutoScalerResourceStrategy.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateAutoScalerResourceStrategyRequest`
@@ -96,7 +96,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGateway(self, request):
-        """创建云原生API网关实例
+        r"""创建云原生API网关实例
 
         :param request: Request instance for CreateCloudNativeAPIGateway.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayRequest`
@@ -119,7 +119,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayCanaryRule(self, request):
-        """创建云原生网关的灰度规则
+        r"""创建云原生网关的灰度规则
 
         :param request: Request instance for CreateCloudNativeAPIGatewayCanaryRule.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayCanaryRuleRequest`
@@ -142,7 +142,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayCertificate(self, request):
-        """创建云原生网关证书
+        r"""创建云原生网关证书
 
         :param request: Request instance for CreateCloudNativeAPIGatewayCertificate.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayCertificateRequest`
@@ -165,7 +165,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayPublicNetwork(self, request):
-        """创建公网网络配置
+        r"""创建公网网络配置
 
         :param request: Request instance for CreateCloudNativeAPIGatewayPublicNetwork.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayPublicNetworkRequest`
@@ -188,7 +188,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayRoute(self, request):
-        """创建云原生网关路由
+        r"""创建云原生网关路由
 
         :param request: Request instance for CreateCloudNativeAPIGatewayRoute.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayRouteRequest`
@@ -211,7 +211,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayRouteRateLimit(self, request):
-        """创建云原生网关限流插件(路由)
+        r"""创建云原生网关限流插件(路由)
 
         :param request: Request instance for CreateCloudNativeAPIGatewayRouteRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayRouteRateLimitRequest`
@@ -234,7 +234,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayService(self, request):
-        """创建云原生网关服务
+        r"""创建云原生网关服务
 
         :param request: Request instance for CreateCloudNativeAPIGatewayService.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayServiceRequest`
@@ -257,7 +257,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayServiceRateLimit(self, request):
-        """创建云原生网关限流插件(服务)
+        r"""创建云原生网关限流插件(服务)
 
         :param request: Request instance for CreateCloudNativeAPIGatewayServiceRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayServiceRateLimitRequest`
@@ -280,7 +280,7 @@ class TseClient(AbstractClient):
 
 
     def CreateConfigFile(self, request):
-        """创建配置文件
+        r"""创建配置文件
 
         :param request: Request instance for CreateConfigFile.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileRequest`
@@ -303,7 +303,7 @@ class TseClient(AbstractClient):
 
 
     def CreateConfigFileGroup(self, request):
-        """创建服务治理中心配置文件组
+        r"""创建服务治理中心配置文件组
 
         :param request: Request instance for CreateConfigFileGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileGroupRequest`
@@ -326,7 +326,7 @@ class TseClient(AbstractClient):
 
 
     def CreateEngine(self, request):
-        """创建引擎实例
+        r"""创建引擎实例
 
         :param request: Request instance for CreateEngine.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateEngineRequest`
@@ -349,7 +349,7 @@ class TseClient(AbstractClient):
 
 
     def CreateGovernanceAlias(self, request):
-        """创建治理中心服务别名
+        r"""创建治理中心服务别名
 
         :param request: Request instance for CreateGovernanceAlias.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceAliasRequest`
@@ -372,7 +372,7 @@ class TseClient(AbstractClient):
 
 
     def CreateGovernanceInstances(self, request):
-        """创建服务实例
+        r"""创建服务实例
 
         :param request: Request instance for CreateGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceInstancesRequest`
@@ -395,7 +395,7 @@ class TseClient(AbstractClient):
 
 
     def CreateGovernanceNamespaces(self, request):
-        """创建治理中心命名空间
+        r"""创建治理中心命名空间
 
         :param request: Request instance for CreateGovernanceNamespaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceNamespacesRequest`
@@ -418,7 +418,7 @@ class TseClient(AbstractClient):
 
 
     def CreateGovernanceServices(self, request):
-        """创建治理中心服务
+        r"""创建治理中心服务
 
         :param request: Request instance for CreateGovernanceServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceServicesRequest`
@@ -441,7 +441,7 @@ class TseClient(AbstractClient):
 
 
     def CreateNativeGatewayServerGroup(self, request):
-        """创建云原生网关引擎分组
+        r"""创建云原生网关引擎分组
 
         :param request: Request instance for CreateNativeGatewayServerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateNativeGatewayServerGroupRequest`
@@ -464,7 +464,7 @@ class TseClient(AbstractClient):
 
 
     def CreateNativeGatewayServiceSource(self, request):
-        """创建网关服务来源
+        r"""创建网关服务来源
 
         :param request: Request instance for CreateNativeGatewayServiceSource.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateNativeGatewayServiceSourceRequest`
@@ -487,7 +487,7 @@ class TseClient(AbstractClient):
 
 
     def CreateOrUpdateConfigFileAndRelease(self, request):
-        """创建或更新配置文件并发布配置
+        r"""创建或更新配置文件并发布配置
 
         :param request: Request instance for CreateOrUpdateConfigFileAndRelease.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateOrUpdateConfigFileAndReleaseRequest`
@@ -510,7 +510,7 @@ class TseClient(AbstractClient):
 
 
     def CreateWafDomains(self, request):
-        """新建 WAF 防护域名
+        r"""新建 WAF 防护域名
 
         :param request: Request instance for CreateWafDomains.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateWafDomainsRequest`
@@ -533,7 +533,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteAutoScalerResourceStrategy(self, request):
-        """删除弹性伸缩策略
+        r"""删除弹性伸缩策略
 
         :param request: Request instance for DeleteAutoScalerResourceStrategy.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteAutoScalerResourceStrategyRequest`
@@ -556,7 +556,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGateway(self, request):
-        """删除云原生API网关实例
+        r"""删除云原生API网关实例
 
         :param request: Request instance for DeleteCloudNativeAPIGateway.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayRequest`
@@ -579,7 +579,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayCanaryRule(self, request):
-        """删除云原生网关的灰度规则
+        r"""删除云原生网关的灰度规则
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayCanaryRule.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayCanaryRuleRequest`
@@ -602,7 +602,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayCertificate(self, request):
-        """删除云原生网关证书
+        r"""删除云原生网关证书
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayCertificate.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayCertificateRequest`
@@ -625,7 +625,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayPublicNetwork(self, request):
-        """删除公网网络配置
+        r"""删除公网网络配置
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayPublicNetwork.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayPublicNetworkRequest`
@@ -648,7 +648,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayRoute(self, request):
-        """删除云原生网关路由
+        r"""删除云原生网关路由
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayRoute.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayRouteRequest`
@@ -671,7 +671,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayRouteRateLimit(self, request):
-        """删除云原生网关的限流插件(路由)
+        r"""删除云原生网关的限流插件(路由)
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayRouteRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayRouteRateLimitRequest`
@@ -694,7 +694,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayService(self, request):
-        """删除云原生网关服务
+        r"""删除云原生网关服务
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayService.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayServiceRequest`
@@ -717,7 +717,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayServiceRateLimit(self, request):
-        """删除云原生网关的限流插件(服务)
+        r"""删除云原生网关的限流插件(服务)
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayServiceRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayServiceRateLimitRequest`
@@ -740,7 +740,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteConfigFileGroup(self, request):
-        """删除配置文件分组
+        r"""删除配置文件分组
 
         :param request: Request instance for DeleteConfigFileGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileGroupRequest`
@@ -763,7 +763,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteConfigFileReleases(self, request):
-        """删除配置发布
+        r"""删除配置发布
 
         :param request: Request instance for DeleteConfigFileReleases.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileReleasesRequest`
@@ -786,7 +786,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteConfigFiles(self, request):
-        """删除配置文件
+        r"""删除配置文件
 
         :param request: Request instance for DeleteConfigFiles.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFilesRequest`
@@ -809,7 +809,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteEngine(self, request):
-        """删除引擎实例
+        r"""删除引擎实例
 
         :param request: Request instance for DeleteEngine.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteEngineRequest`
@@ -832,7 +832,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteGovernanceAliases(self, request):
-        """删除治理中心服务别名
+        r"""删除治理中心服务别名
 
         :param request: Request instance for DeleteGovernanceAliases.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceAliasesRequest`
@@ -855,7 +855,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteGovernanceInstances(self, request):
-        """删除服务实例
+        r"""删除服务实例
 
         :param request: Request instance for DeleteGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesRequest`
@@ -878,7 +878,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteGovernanceInstancesByHost(self, request):
-        """删除治理中心服务实例
+        r"""删除治理中心服务实例
 
         :param request: Request instance for DeleteGovernanceInstancesByHost.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesByHostRequest`
@@ -901,7 +901,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteGovernanceNamespaces(self, request):
-        """删除治理中心命名空间
+        r"""删除治理中心命名空间
 
         :param request: Request instance for DeleteGovernanceNamespaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceNamespacesRequest`
@@ -924,7 +924,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteGovernanceServices(self, request):
-        """删除治理中心服务
+        r"""删除治理中心服务
 
         :param request: Request instance for DeleteGovernanceServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceServicesRequest`
@@ -947,7 +947,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteNativeGatewayServerGroup(self, request):
-        """删除网关实例分组
+        r"""删除网关实例分组
 
         :param request: Request instance for DeleteNativeGatewayServerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteNativeGatewayServerGroupRequest`
@@ -970,7 +970,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteNativeGatewayServiceSource(self, request):
-        """删除网关服务来源实例
+        r"""删除网关服务来源实例
 
         :param request: Request instance for DeleteNativeGatewayServiceSource.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteNativeGatewayServiceSourceRequest`
@@ -993,7 +993,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteWafDomains(self, request):
-        """删除 WAF 防护域名
+        r"""删除 WAF 防护域名
 
         :param request: Request instance for DeleteWafDomains.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteWafDomainsRequest`
@@ -1016,7 +1016,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeAllConfigFileTemplates(self, request):
-        """获取全量配置文件模板列表
+        r"""获取全量配置文件模板列表
 
         :param request: Request instance for DescribeAllConfigFileTemplates.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAllConfigFileTemplatesRequest`
@@ -1039,7 +1039,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeAutoScalerResourceStrategies(self, request):
-        """查看弹性伸缩策略列表
+        r"""查看弹性伸缩策略列表
 
         :param request: Request instance for DescribeAutoScalerResourceStrategies.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategiesRequest`
@@ -1062,7 +1062,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeAutoScalerResourceStrategyBindingGroups(self, request):
-        """查看弹性伸缩策略绑定的网关分组
+        r"""查看弹性伸缩策略绑定的网关分组
 
         :param request: Request instance for DescribeAutoScalerResourceStrategyBindingGroups.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategyBindingGroupsRequest`
@@ -1085,7 +1085,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGateway(self, request):
-        """获取云原生API网关实例信息
+        r"""获取云原生API网关实例信息
 
         :param request: Request instance for DescribeCloudNativeAPIGateway.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayRequest`
@@ -1108,7 +1108,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayCanaryRules(self, request):
-        """查询云原生网关灰度规则列表
+        r"""查询云原生网关灰度规则列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayCanaryRules.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayCanaryRulesRequest`
@@ -1131,7 +1131,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayCertificateDetails(self, request):
-        """查询云原生网关单个证书详情
+        r"""查询云原生网关单个证书详情
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayCertificateDetails.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayCertificateDetailsRequest`
@@ -1154,7 +1154,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayCertificates(self, request):
-        """查询云原生网关证书列表
+        r"""查询云原生网关证书列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayCertificates.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayCertificatesRequest`
@@ -1177,7 +1177,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayConfig(self, request):
-        """获取云原生API网关实例网络配置信息
+        r"""获取云原生API网关实例网络配置信息
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayConfig.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConfigRequest`
@@ -1200,7 +1200,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayInfoByIp(self, request):
-        """根据公网IP查询云原生网关实例信息
+        r"""根据公网IP查询云原生网关实例信息
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayInfoByIp.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayInfoByIpRequest`
@@ -1223,7 +1223,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayNodes(self, request):
-        """获取云原生网关节点列表
+        r"""获取云原生网关节点列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayNodes.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayNodesRequest`
@@ -1246,7 +1246,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayPorts(self, request):
-        """获取云原生API网关实例端口信息
+        r"""获取云原生API网关实例端口信息
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayPorts.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayPortsRequest`
@@ -1269,7 +1269,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayRouteRateLimit(self, request):
-        """查询云原生网关的限流插件(路由)
+        r"""查询云原生网关的限流插件(路由)
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayRouteRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayRouteRateLimitRequest`
@@ -1292,7 +1292,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayRoutes(self, request):
-        """查询云原生网关路由列表
+        r"""查询云原生网关路由列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayRoutes.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayRoutesRequest`
@@ -1315,7 +1315,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayServiceRateLimit(self, request):
-        """查询云原生网关的限流插件(服务)
+        r"""查询云原生网关的限流插件(服务)
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayServiceRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayServiceRateLimitRequest`
@@ -1338,7 +1338,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayServices(self, request):
-        """查询云原生网关服务列表
+        r"""查询云原生网关服务列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayServicesRequest`
@@ -1361,7 +1361,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayServicesLight(self, request):
-        """轻量查询云原生网关服务列表
+        r"""轻量查询云原生网关服务列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayServicesLight.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayServicesLightRequest`
@@ -1384,7 +1384,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayUpstream(self, request):
-        """获取云原生网关服务详情下的Upstream列表
+        r"""获取云原生网关服务详情下的Upstream列表
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayUpstream.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayUpstreamRequest`
@@ -1407,7 +1407,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGateways(self, request):
-        """获取云原生API网关实例列表
+        r"""获取云原生API网关实例列表
 
         :param request: Request instance for DescribeCloudNativeAPIGateways.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewaysRequest`
@@ -1430,7 +1430,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFile(self, request):
-        """根据命名空间、组、名字查找配置文件
+        r"""根据命名空间、组、名字查找配置文件
 
         :param request: Request instance for DescribeConfigFile.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileRequest`
@@ -1453,7 +1453,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFileGroups(self, request):
-        """根据条件分页查询配置文件组
+        r"""根据条件分页查询配置文件组
 
         :param request: Request instance for DescribeConfigFileGroups.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileGroupsRequest`
@@ -1476,7 +1476,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFileRelease(self, request):
-        """获取配置文件发布
+        r"""获取配置文件发布
 
         :param request: Request instance for DescribeConfigFileRelease.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseRequest`
@@ -1499,7 +1499,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFileReleaseHistories(self, request):
-        """获取配置文件发布历史列表
+        r"""获取配置文件发布历史列表
 
         :param request: Request instance for DescribeConfigFileReleaseHistories.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseHistoriesRequest`
@@ -1522,7 +1522,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFileReleaseVersions(self, request):
-        """查询某个配置所有版本信息
+        r"""查询某个配置所有版本信息
 
         :param request: Request instance for DescribeConfigFileReleaseVersions.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseVersionsRequest`
@@ -1545,7 +1545,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFileReleases(self, request):
-        """查询配置版本列表
+        r"""查询配置版本列表
 
         :param request: Request instance for DescribeConfigFileReleases.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleasesRequest`
@@ -1568,7 +1568,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFiles(self, request):
-        """根据命名空间、组名、名称、标签查询配置文件列表
+        r"""根据命名空间、组名、名称、标签查询配置文件列表
 
         :param request: Request instance for DescribeConfigFiles.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesRequest`
@@ -1591,7 +1591,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeConfigFilesByGroup(self, request):
-        """根据group查询配置文件列表
+        r"""根据group查询配置文件列表
 
         :param request: Request instance for DescribeConfigFilesByGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesByGroupRequest`
@@ -1614,7 +1614,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceAliases(self, request):
-        """查询治理中心服务别名列表
+        r"""查询治理中心服务别名列表
 
         :param request: Request instance for DescribeGovernanceAliases.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceAliasesRequest`
@@ -1637,7 +1637,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceInstances(self, request):
-        """查询服务实例
+        r"""查询服务实例
 
         :param request: Request instance for DescribeGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceInstancesRequest`
@@ -1660,7 +1660,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceNamespaces(self, request):
-        """查询服务治理中心命名空间列表
+        r"""查询服务治理中心命名空间列表
 
         :param request: Request instance for DescribeGovernanceNamespaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceNamespacesRequest`
@@ -1683,7 +1683,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceServiceContractVersions(self, request):
-        """查询服务下契约版本列表
+        r"""查询服务下契约版本列表
 
         :param request: Request instance for DescribeGovernanceServiceContractVersions.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractVersionsRequest`
@@ -1706,7 +1706,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceServiceContracts(self, request):
-        """查询服务契约定义列表
+        r"""查询服务契约定义列表
 
         :param request: Request instance for DescribeGovernanceServiceContracts.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractsRequest`
@@ -1729,7 +1729,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeGovernanceServices(self, request):
-        """查询治理中心服务列表
+        r"""查询治理中心服务列表
 
         :param request: Request instance for DescribeGovernanceServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServicesRequest`
@@ -1752,7 +1752,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeInstanceTagInfos(self, request):
-        """查看实例的标签信息
+        r"""查看实例的标签信息
 
         :param request: Request instance for DescribeInstanceTagInfos.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeInstanceTagInfosRequest`
@@ -1775,7 +1775,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeNacosReplicas(self, request):
-        """查询Nacos类型引擎实例副本信息
+        r"""查询Nacos类型引擎实例副本信息
 
         :param request: Request instance for DescribeNacosReplicas.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNacosReplicasRequest`
@@ -1798,7 +1798,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeNacosServerInterfaces(self, request):
-        """查询nacos服务接口列表
+        r"""查询nacos服务接口列表
 
         :param request: Request instance for DescribeNacosServerInterfaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNacosServerInterfacesRequest`
@@ -1821,7 +1821,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeNativeGatewayServerGroups(self, request):
-        """查询云原生网关分组信息
+        r"""查询云原生网关分组信息
 
         :param request: Request instance for DescribeNativeGatewayServerGroups.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServerGroupsRequest`
@@ -1844,7 +1844,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeNativeGatewayServiceSources(self, request):
-        """查询网关服务来源实例列表
+        r"""查询网关服务来源实例列表
 
         :param request: Request instance for DescribeNativeGatewayServiceSources.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServiceSourcesRequest`
@@ -1867,7 +1867,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeOneCloudNativeAPIGatewayService(self, request):
-        """获取云原生网关服务详情
+        r"""获取云原生网关服务详情
 
         :param request: Request instance for DescribeOneCloudNativeAPIGatewayService.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeOneCloudNativeAPIGatewayServiceRequest`
@@ -1890,7 +1890,7 @@ class TseClient(AbstractClient):
 
 
     def DescribePublicAddressConfig(self, request):
-        """查询公网地址信息
+        r"""查询公网地址信息
 
         :param request: Request instance for DescribePublicAddressConfig.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribePublicAddressConfigRequest`
@@ -1913,7 +1913,7 @@ class TseClient(AbstractClient):
 
 
     def DescribePublicNetwork(self, request):
-        """查询云原生API网关实例公网详情
+        r"""查询云原生API网关实例公网详情
 
         :param request: Request instance for DescribePublicNetwork.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribePublicNetworkRequest`
@@ -1936,7 +1936,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeSREInstanceAccessAddress(self, request):
-        """查询引擎实例访问地址
+        r"""查询引擎实例访问地址
 
         :param request: Request instance for DescribeSREInstanceAccessAddress.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstanceAccessAddressRequest`
@@ -1959,7 +1959,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeSREInstances(self, request):
-        """用于查询引擎实例列表
+        r"""用于查询引擎实例列表
 
         :param request: Request instance for DescribeSREInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstancesRequest`
@@ -1982,7 +1982,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeUpstreamHealthCheckConfig(self, request):
-        """获取云原生网关服务健康检查配置
+        r"""获取云原生网关服务健康检查配置
 
         :param request: Request instance for DescribeUpstreamHealthCheckConfig.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeUpstreamHealthCheckConfigRequest`
@@ -2005,7 +2005,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeWafDomains(self, request):
-        """获取 WAF 防护域名
+        r"""获取 WAF 防护域名
 
         :param request: Request instance for DescribeWafDomains.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeWafDomainsRequest`
@@ -2028,7 +2028,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeWafProtection(self, request):
-        """获取 WAF 防护状态
+        r"""获取 WAF 防护状态
 
         :param request: Request instance for DescribeWafProtection.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeWafProtectionRequest`
@@ -2051,7 +2051,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeZookeeperReplicas(self, request):
-        """查询Zookeeper类型注册引擎实例副本信息
+        r"""查询Zookeeper类型注册引擎实例副本信息
 
         :param request: Request instance for DescribeZookeeperReplicas.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeZookeeperReplicasRequest`
@@ -2074,7 +2074,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeZookeeperServerInterfaces(self, request):
-        """查询zookeeper服务接口列表
+        r"""查询zookeeper服务接口列表
 
         :param request: Request instance for DescribeZookeeperServerInterfaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeZookeeperServerInterfacesRequest`
@@ -2097,7 +2097,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyAutoScalerResourceStrategy(self, request):
-        """更新弹性伸缩策略
+        r"""更新弹性伸缩策略
 
         :param request: Request instance for ModifyAutoScalerResourceStrategy.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyAutoScalerResourceStrategyRequest`
@@ -2120,7 +2120,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGateway(self, request):
-        """修改云原生API网关实例基础信息
+        r"""修改云原生API网关实例基础信息
 
         :param request: Request instance for ModifyCloudNativeAPIGateway.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayRequest`
@@ -2143,7 +2143,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayCanaryRule(self, request):
-        """修改云原生网关的灰度规则
+        r"""修改云原生网关的灰度规则
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayCanaryRule.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayCanaryRuleRequest`
@@ -2166,7 +2166,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayCertificate(self, request):
-        """更新云原生网关证书
+        r"""更新云原生网关证书
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayCertificate.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayCertificateRequest`
@@ -2189,7 +2189,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayRoute(self, request):
-        """修改云原生网关路由
+        r"""修改云原生网关路由
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayRoute.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayRouteRequest`
@@ -2212,7 +2212,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayRouteRateLimit(self, request):
-        """修改云原生网关限流插件(路由)
+        r"""修改云原生网关限流插件(路由)
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayRouteRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayRouteRateLimitRequest`
@@ -2235,7 +2235,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayService(self, request):
-        """修改云原生网关服务
+        r"""修改云原生网关服务
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayService.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayServiceRequest`
@@ -2258,7 +2258,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayServiceRateLimit(self, request):
-        """修改云原生网关限流插件(服务)
+        r"""修改云原生网关限流插件(服务)
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayServiceRateLimit.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayServiceRateLimitRequest`
@@ -2281,7 +2281,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyConfigFileGroup(self, request):
-        """批量修改配置文件组
+        r"""批量修改配置文件组
 
         :param request: Request instance for ModifyConfigFileGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFileGroupRequest`
@@ -2304,7 +2304,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyConfigFiles(self, request):
-        """修改配置文件
+        r"""修改配置文件
 
         :param request: Request instance for ModifyConfigFiles.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFilesRequest`
@@ -2327,7 +2327,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyConsoleNetwork(self, request):
-        """修改网关实例Konga网络配置
+        r"""修改网关实例Konga网络配置
 
         :param request: Request instance for ModifyConsoleNetwork.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConsoleNetworkRequest`
@@ -2350,7 +2350,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyGovernanceAlias(self, request):
-        """修改治理中心服务别名
+        r"""修改治理中心服务别名
 
         :param request: Request instance for ModifyGovernanceAlias.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceAliasRequest`
@@ -2373,7 +2373,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyGovernanceInstances(self, request):
-        """修改治理中心服务实例
+        r"""修改治理中心服务实例
 
         :param request: Request instance for ModifyGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceInstancesRequest`
@@ -2396,7 +2396,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyGovernanceNamespaces(self, request):
-        """修改治理中心命名空间
+        r"""修改治理中心命名空间
 
         :param request: Request instance for ModifyGovernanceNamespaces.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceNamespacesRequest`
@@ -2419,7 +2419,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyGovernanceServices(self, request):
-        """修改治理中心服务
+        r"""修改治理中心服务
 
         :param request: Request instance for ModifyGovernanceServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceServicesRequest`
@@ -2442,7 +2442,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNativeGatewayServerGroup(self, request):
-        """修改云原生API网关实例分组基础信息
+        r"""修改云原生API网关实例分组基础信息
 
         :param request: Request instance for ModifyNativeGatewayServerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNativeGatewayServerGroupRequest`
@@ -2465,7 +2465,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNativeGatewayServiceSource(self, request):
-        """修改网关服务来源
+        r"""修改网关服务来源
 
         :param request: Request instance for ModifyNativeGatewayServiceSource.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNativeGatewayServiceSourceRequest`
@@ -2488,7 +2488,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNetworkAccessStrategy(self, request):
-        """修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+        r"""修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
 
         :param request: Request instance for ModifyNetworkAccessStrategy.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkAccessStrategyRequest`
@@ -2511,7 +2511,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNetworkBasicInfo(self, request):
-        """修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
+        r"""修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
 
         :param request: Request instance for ModifyNetworkBasicInfo.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkBasicInfoRequest`
@@ -2534,7 +2534,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyUpstreamNodeStatus(self, request):
-        """修改云原生网关上游实例节点健康状态
+        r"""修改云原生网关上游实例节点健康状态
 
         :param request: Request instance for ModifyUpstreamNodeStatus.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyUpstreamNodeStatusRequest`
@@ -2557,7 +2557,7 @@ class TseClient(AbstractClient):
 
 
     def OpenWafProtection(self, request):
-        """开启 WAF 防护
+        r"""开启 WAF 防护
 
         :param request: Request instance for OpenWafProtection.
         :type request: :class:`tencentcloud.tse.v20201207.models.OpenWafProtectionRequest`
@@ -2580,7 +2580,7 @@ class TseClient(AbstractClient):
 
 
     def PublishConfigFiles(self, request):
-        """发布配置文件
+        r"""发布配置文件
 
         :param request: Request instance for PublishConfigFiles.
         :type request: :class:`tencentcloud.tse.v20201207.models.PublishConfigFilesRequest`
@@ -2603,7 +2603,7 @@ class TseClient(AbstractClient):
 
 
     def RestartSREInstance(self, request):
-        """重启微服务引擎实例
+        r"""重启微服务引擎实例
 
         :param request: Request instance for RestartSREInstance.
         :type request: :class:`tencentcloud.tse.v20201207.models.RestartSREInstanceRequest`
@@ -2626,7 +2626,7 @@ class TseClient(AbstractClient):
 
 
     def RollbackConfigFileReleases(self, request):
-        """回滚配置发布
+        r"""回滚配置发布
 
         :param request: Request instance for RollbackConfigFileReleases.
         :type request: :class:`tencentcloud.tse.v20201207.models.RollbackConfigFileReleasesRequest`
@@ -2649,7 +2649,7 @@ class TseClient(AbstractClient):
 
 
     def UnbindAutoScalerResourceStrategyFromGroups(self, request):
-        """弹性伸缩策略批量解绑网关分组
+        r"""弹性伸缩策略批量解绑网关分组
 
         :param request: Request instance for UnbindAutoScalerResourceStrategyFromGroups.
         :type request: :class:`tencentcloud.tse.v20201207.models.UnbindAutoScalerResourceStrategyFromGroupsRequest`
@@ -2672,7 +2672,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateCloudNativeAPIGatewayCertificateInfo(self, request):
-        """修改云原生网关证书信息
+        r"""修改云原生网关证书信息
 
         :param request: Request instance for UpdateCloudNativeAPIGatewayCertificateInfo.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateCloudNativeAPIGatewayCertificateInfoRequest`
@@ -2695,7 +2695,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateCloudNativeAPIGatewaySpec(self, request):
-        """修改云原生API网关实例的节点规格信息，例如节点扩缩容或者升降配
+        r"""修改云原生API网关实例的节点规格信息，例如节点扩缩容或者升降配
 
         :param request: Request instance for UpdateCloudNativeAPIGatewaySpec.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateCloudNativeAPIGatewaySpecRequest`
@@ -2718,7 +2718,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateEngineInternetAccess(self, request):
-        """修改引擎公网访问配置
+        r"""修改引擎公网访问配置
 
         :param request: Request instance for UpdateEngineInternetAccess.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateEngineInternetAccessRequest`
@@ -2741,7 +2741,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateUpstreamHealthCheckConfig(self, request):
-        """更新云原生网关健康检查配置
+        r"""更新云原生网关健康检查配置
 
         :param request: Request instance for UpdateUpstreamHealthCheckConfig.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamHealthCheckConfigRequest`
@@ -2764,7 +2764,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateUpstreamTargets(self, request):
-        """更新网关上游实例列表，仅支持IPList服务类型
+        r"""更新网关上游实例列表，仅支持IPList服务类型
 
         :param request: Request instance for UpdateUpstreamTargets.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamTargetsRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Cluster(AbstractModel):
-    """实例相关信息
+    r"""实例相关信息
 
     """
 
@@ -89,7 +89,7 @@ class Cluster(AbstractModel):
 
     @property
     def AppID(self):
-        """用户APPID
+        r"""用户APPID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -101,7 +101,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterID(self):
-        """实例id
+        r"""实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -113,7 +113,7 @@ class Cluster(AbstractModel):
 
     @property
     def AccountID(self):
-        """账号id
+        r"""账号id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -125,7 +125,7 @@ class Cluster(AbstractModel):
 
     @property
     def Name(self):
-        """自定义实例名
+        r"""自定义实例名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -137,7 +137,7 @@ class Cluster(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -149,7 +149,7 @@ class Cluster(AbstractModel):
 
     @property
     def Zones(self):
-        """可用区
+        r"""可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -163,7 +163,7 @@ class Cluster(AbstractModel):
     def Networks(self):
         warnings.warn("parameter `Networks` is deprecated", DeprecationWarning) 
 
-        """网络信息
+        r"""网络信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Network
         """
@@ -179,7 +179,7 @@ class Cluster(AbstractModel):
     def Spec(self):
         warnings.warn("parameter `Spec` is deprecated", DeprecationWarning) 
 
-        """实例规格
+        r"""实例规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Spec`
         """
@@ -193,7 +193,7 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态：0：运行中,1：创建中 ,16：变配中,17：隔离中,18：待销毁,19：恢复中,20：关机 , 21：销毁中 ,22：已销毁 
+        r"""实例状态：0：运行中,1：创建中 ,16：变配中,17：隔离中,18：待销毁,19：恢复中,20：关机 , 21：销毁中 ,22：已销毁 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -205,7 +205,7 @@ class Cluster(AbstractModel):
 
     @property
     def Period(self):
-        """实例有效期
+        r"""实例有效期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Period`
         """
@@ -217,7 +217,7 @@ class Cluster(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -229,7 +229,7 @@ class Cluster(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """最后修改时间
+        r"""最后修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -241,7 +241,7 @@ class Cluster(AbstractModel):
 
     @property
     def Tenant(self):
-        """产品内部特性
+        r"""产品内部特性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Tenant`
         """
@@ -253,7 +253,7 @@ class Cluster(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -265,7 +265,7 @@ class Cluster(AbstractModel):
 
     @property
     def Security(self):
-        """安全组信息
+        r"""安全组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -319,7 +319,7 @@ class Cluster(AbstractModel):
 
 
 class Database(AbstractModel):
-    """数据库相关信息
+    r"""数据库相关信息
 
     """
 
@@ -361,7 +361,7 @@ class Database(AbstractModel):
 
     @property
     def ClusterID(self):
-        """实例ID
+        r"""实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -373,7 +373,7 @@ class Database(AbstractModel):
 
     @property
     def Name(self):
-        """数据库名
+        r"""数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -385,7 +385,7 @@ class Database(AbstractModel):
 
     @property
     def CoolDownInDays(self):
-        """降冷时间（天）
+        r"""降冷时间（天）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -397,7 +397,7 @@ class Database(AbstractModel):
 
     @property
     def RetentionInDays(self):
-        """数据保留时间（天）
+        r"""数据保留时间（天）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -409,7 +409,7 @@ class Database(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -421,7 +421,7 @@ class Database(AbstractModel):
 
     @property
     def Status(self):
-        """状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作
+        r"""状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -433,7 +433,7 @@ class Database(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -445,7 +445,7 @@ class Database(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """最后修改时间
+        r"""最后修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -476,7 +476,7 @@ class Database(AbstractModel):
 
 
 class DescribeClustersRequest(AbstractModel):
-    """DescribeClusters请求参数结构体
+    r"""DescribeClusters请求参数结构体
 
     """
 
@@ -498,7 +498,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前页数	
+        r"""当前页数	
         :rtype: int
         """
         return self._PageNumber
@@ -509,7 +509,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """单页大小
+        r"""单页大小
         :rtype: int
         """
         return self._PageSize
@@ -520,7 +520,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询参数：支持通过实例ID（cluster_id）和实例名称（name）进行过滤查询
+        r"""查询参数：支持通过实例ID（cluster_id）和实例名称（name）进行过滤查询
         :rtype: list of Filter
         """
         return self._Filters
@@ -531,7 +531,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Orders(self):
-        """排序参数：支持通过创建时间字段（created_at）进行排序，Type可指定为DESC（降序）或ASC（升序）
+        r"""排序参数：支持通过创建时间字段（created_at）进行排序，Type可指定为DESC（降序）或ASC（升序）
         :rtype: list of Order
         """
         return self._Orders
@@ -567,7 +567,7 @@ class DescribeClustersRequest(AbstractModel):
 
 
 class DescribeClustersResponse(AbstractModel):
-    """DescribeClusters返回参数结构体
+    r"""DescribeClusters返回参数结构体
 
     """
 
@@ -588,7 +588,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """当前条件下的总记录数
+        r"""当前条件下的总记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -600,7 +600,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def Clusters(self):
-        """符合条件的实例列表
+        r"""符合条件的实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Cluster
         """
@@ -612,7 +612,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -634,7 +634,7 @@ class DescribeClustersResponse(AbstractModel):
 
 
 class DescribeDatabasesRequest(AbstractModel):
-    """DescribeDatabases请求参数结构体
+    r"""DescribeDatabases请求参数结构体
 
     """
 
@@ -653,7 +653,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Database(self):
-        """数据库参数
+        r"""数据库参数
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Database`
         """
         return self._Database
@@ -664,7 +664,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._PageSize
@@ -675,7 +675,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页页面
+        r"""分页页面
         :rtype: int
         """
         return self._PageNumber
@@ -702,7 +702,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
 
 class DescribeDatabasesResponse(AbstractModel):
-    """DescribeDatabases返回参数结构体
+    r"""DescribeDatabases返回参数结构体
 
     """
 
@@ -721,7 +721,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Databases(self):
-        """数据库列表
+        r"""数据库列表
         :rtype: list of Database
         """
         return self._Databases
@@ -732,7 +732,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -743,7 +743,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -765,7 +765,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """查询过滤器
+    r"""查询过滤器
 
     """
 
@@ -784,7 +784,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: str
         """
         return self._Name
@@ -795,7 +795,7 @@ class Filter(AbstractModel):
 
     @property
     def Op(self):
-        """过滤表达式
+        r"""过滤表达式
         :rtype: str
         """
         return self._Op
@@ -806,7 +806,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """参与过滤的值
+        r"""参与过滤的值
         :rtype: list of str
         """
         return self._Values
@@ -831,7 +831,7 @@ class Filter(AbstractModel):
 
 
 class Network(AbstractModel):
-    """实例网络信息(influxdb)
+    r"""实例网络信息(influxdb)
 
     """
 
@@ -857,7 +857,7 @@ class Network(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -869,7 +869,7 @@ class Network(AbstractModel):
 
     @property
     def SubnetId(self):
-        """vpc subnet id
+        r"""vpc subnet id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -881,7 +881,7 @@ class Network(AbstractModel):
 
     @property
     def VIP(self):
-        """vpc ip地址
+        r"""vpc ip地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -893,7 +893,7 @@ class Network(AbstractModel):
 
     @property
     def Port(self):
-        """vpc port地址
+        r"""vpc port地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -920,7 +920,7 @@ class Network(AbstractModel):
 
 
 class Order(AbstractModel):
-    """排序参数，用于排序查询结果
+    r"""排序参数，用于排序查询结果
 
     """
 
@@ -936,7 +936,7 @@ class Order(AbstractModel):
 
     @property
     def Name(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._Name
@@ -947,7 +947,7 @@ class Order(AbstractModel):
 
     @property
     def Type(self):
-        """排序方式
+        r"""排序方式
         :rtype: str
         """
         return self._Type
@@ -971,7 +971,7 @@ class Order(AbstractModel):
 
 
 class Period(AbstractModel):
-    """有效期
+    r"""有效期
 
     """
 
@@ -989,7 +989,7 @@ class Period(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1001,7 +1001,7 @@ class Period(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1026,7 +1026,7 @@ class Period(AbstractModel):
 
 
 class Spec(AbstractModel):
-    """实例规格信息(influxdb)
+    r"""实例规格信息(influxdb)
 
     """
 
@@ -1064,7 +1064,7 @@ class Spec(AbstractModel):
 
     @property
     def PayMode(self):
-        """1：包年包月、2：按小时计费
+        r"""1：包年包月、2：按小时计费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1076,7 +1076,7 @@ class Spec(AbstractModel):
 
     @property
     def RequestUnit(self):
-        """请求单元，为0则表示走资源配置
+        r"""请求单元，为0则表示走资源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1088,7 +1088,7 @@ class Spec(AbstractModel):
 
     @property
     def CpuLimit(self):
-        """CPU 核数最大限制
+        r"""CPU 核数最大限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1100,7 +1100,7 @@ class Spec(AbstractModel):
 
     @property
     def MemoryLimit(self):
-        """内存 最大限制(Gi)
+        r"""内存 最大限制(Gi)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1112,7 +1112,7 @@ class Spec(AbstractModel):
 
     @property
     def DiskLimit(self):
-        """磁盘 最大限制(Gi)
+        r"""磁盘 最大限制(Gi)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1124,7 +1124,7 @@ class Spec(AbstractModel):
 
     @property
     def Shards(self):
-        """业务分片数
+        r"""业务分片数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1136,7 +1136,7 @@ class Spec(AbstractModel):
 
     @property
     def Replicas(self):
-        """业务节点数
+        r"""业务节点数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1166,7 +1166,7 @@ class Spec(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -1184,7 +1184,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """键
+        r"""键
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1196,7 +1196,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1221,7 +1221,7 @@ class Tag(AbstractModel):
 
 
 class Tenant(AbstractModel):
-    """产品内部特性
+    r"""产品内部特性
 
     """
 
@@ -1234,7 +1234,7 @@ class Tenant(AbstractModel):
 
     @property
     def IsPasswordEncrypted(self):
-        """密码是否已加密
+        r"""密码是否已加密
         :rtype: bool
         """
         return self._IsPasswordEncrypted

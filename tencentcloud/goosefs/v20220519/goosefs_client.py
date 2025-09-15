@@ -27,7 +27,7 @@ class GoosefsClient(AbstractClient):
 
 
     def AddCrossVpcSubnetSupportForClientNode(self, request):
-        """为客户端节点添加跨vpc或子网访问能力
+        r"""为客户端节点添加跨vpc或子网访问能力
 
         :param request: Request instance for AddCrossVpcSubnetSupportForClientNode.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.AddCrossVpcSubnetSupportForClientNodeRequest`
@@ -50,7 +50,7 @@ class GoosefsClient(AbstractClient):
 
 
     def AttachFileSystemBucket(self, request):
-        """为文件系统关联Bucket
+        r"""为文件系统关联Bucket
 
         :param request: Request instance for AttachFileSystemBucket.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.AttachFileSystemBucketRequest`
@@ -73,7 +73,7 @@ class GoosefsClient(AbstractClient):
 
 
     def BatchAddClientNodes(self, request):
-        """批量添加客户端节点
+        r"""批量添加客户端节点
 
         :param request: Request instance for BatchAddClientNodes.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.BatchAddClientNodesRequest`
@@ -96,7 +96,7 @@ class GoosefsClient(AbstractClient):
 
 
     def BatchDeleteClientNodes(self, request):
-        """批量删除客户端节点
+        r"""批量删除客户端节点
 
         :param request: Request instance for BatchDeleteClientNodes.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.BatchDeleteClientNodesRequest`
@@ -119,7 +119,7 @@ class GoosefsClient(AbstractClient):
 
 
     def BuildClientNodeMountCommand(self, request):
-        """生成客户端的挂载命令
+        r"""生成客户端的挂载命令
 
         :param request: Request instance for BuildClientNodeMountCommand.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.BuildClientNodeMountCommandRequest`
@@ -142,7 +142,7 @@ class GoosefsClient(AbstractClient):
 
 
     def CreateDataRepositoryTask(self, request):
-        """创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
+        r"""创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
 
         :param request: Request instance for CreateDataRepositoryTask.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateDataRepositoryTaskRequest`
@@ -165,7 +165,7 @@ class GoosefsClient(AbstractClient):
 
 
     def CreateFileSystem(self, request):
-        """创建文件系统
+        r"""创建文件系统
 
         :param request: Request instance for CreateFileSystem.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateFileSystemRequest`
@@ -188,7 +188,7 @@ class GoosefsClient(AbstractClient):
 
 
     def CreateFileset(self, request):
-        """创建Fileset
+        r"""创建Fileset
 
         :param request: Request instance for CreateFileset.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateFilesetRequest`
@@ -211,7 +211,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DeleteCrossVpcSubnetSupportForClientNode(self, request):
-        """为客户端节点删除跨vpc子网访问能力
+        r"""为客户端节点删除跨vpc子网访问能力
 
         :param request: Request instance for DeleteCrossVpcSubnetSupportForClientNode.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DeleteCrossVpcSubnetSupportForClientNodeRequest`
@@ -234,7 +234,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DeleteFileSystem(self, request):
-        """删除文件系统
+        r"""删除文件系统
 
         :param request: Request instance for DeleteFileSystem.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DeleteFileSystemRequest`
@@ -257,7 +257,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DeleteFileset(self, request):
-        """删除Fileset
+        r"""删除Fileset
 
         :param request: Request instance for DeleteFileset.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DeleteFilesetRequest`
@@ -280,7 +280,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeClientNodes(self, request):
-        """列出集群中所有的客户端节点
+        r"""列出集群中所有的客户端节点
 
         :param request: Request instance for DescribeClientNodes.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeClientNodesRequest`
@@ -303,7 +303,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeClusterClientToken(self, request):
-        """查询GooseFS集群客户端凭证
+        r"""查询GooseFS集群客户端凭证
 
         :param request: Request instance for DescribeClusterClientToken.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeClusterClientTokenRequest`
@@ -326,7 +326,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeClusterRoleToken(self, request):
-        """查询GooseFS集群角色凭证
+        r"""查询GooseFS集群角色凭证
 
         :param request: Request instance for DescribeClusterRoleToken.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeClusterRoleTokenRequest`
@@ -349,7 +349,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeClusterRoles(self, request):
-        """接口废弃
+        r"""接口废弃
 
         查询GooseFS集群角色
 
@@ -374,7 +374,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeDataRepositoryTaskStatus(self, request):
-        """获取数据流通任务实时状态，用作客户端控制
+        r"""获取数据流通任务实时状态，用作客户端控制
 
         :param request: Request instance for DescribeDataRepositoryTaskStatus.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeDataRepositoryTaskStatusRequest`
@@ -397,7 +397,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeFileSystemBuckets(self, request):
-        """罗列文件系统关联的Bucket映射
+        r"""罗列文件系统关联的Bucket映射
 
         :param request: Request instance for DescribeFileSystemBuckets.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFileSystemBucketsRequest`
@@ -420,7 +420,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeFileSystems(self, request):
-        """列出所有的文件系统
+        r"""列出所有的文件系统
 
         :param request: Request instance for DescribeFileSystems.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFileSystemsRequest`
@@ -443,7 +443,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeFilesetGeneralConfig(self, request):
-        """查询Fileset通用配置
+        r"""查询Fileset通用配置
 
         :param request: Request instance for DescribeFilesetGeneralConfig.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetGeneralConfigRequest`
@@ -466,7 +466,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeFilesets(self, request):
-        """查询Fileset列表
+        r"""查询Fileset列表
 
         :param request: Request instance for DescribeFilesets.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetsRequest`
@@ -489,7 +489,7 @@ class GoosefsClient(AbstractClient):
 
 
     def DetachFileSystemBucket(self, request):
-        """解绑文件系统与Bucket的映射
+        r"""解绑文件系统与Bucket的映射
 
         :param request: Request instance for DetachFileSystemBucket.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DetachFileSystemBucketRequest`
@@ -512,7 +512,7 @@ class GoosefsClient(AbstractClient):
 
 
     def ExpandCapacity(self, request):
-        """扩展文件系统容量
+        r"""扩展文件系统容量
 
         :param request: Request instance for ExpandCapacity.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.ExpandCapacityRequest`
@@ -535,7 +535,7 @@ class GoosefsClient(AbstractClient):
 
 
     def ModifyDataRepositoryBandwidth(self, request):
-        """修改数据流动带宽
+        r"""修改数据流动带宽
 
         :param request: Request instance for ModifyDataRepositoryBandwidth.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.ModifyDataRepositoryBandwidthRequest`
@@ -558,7 +558,7 @@ class GoosefsClient(AbstractClient):
 
 
     def QueryCrossVpcSubnetSupportForClientNode(self, request):
-        """查询客户端节点跨vpc子网访问能力
+        r"""查询客户端节点跨vpc子网访问能力
 
         :param request: Request instance for QueryCrossVpcSubnetSupportForClientNode.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.QueryCrossVpcSubnetSupportForClientNodeRequest`
@@ -581,7 +581,7 @@ class GoosefsClient(AbstractClient):
 
 
     def QueryDataRepositoryBandwidth(self, request):
-        """查询数据流动带宽
+        r"""查询数据流动带宽
 
         :param request: Request instance for QueryDataRepositoryBandwidth.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.QueryDataRepositoryBandwidthRequest`
@@ -604,7 +604,7 @@ class GoosefsClient(AbstractClient):
 
 
     def UpdateFileset(self, request):
-        """修改FIleset
+        r"""修改FIleset
 
         :param request: Request instance for UpdateFileset.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetRequest`
@@ -627,7 +627,7 @@ class GoosefsClient(AbstractClient):
 
 
     def UpdateFilesetGeneralConfig(self, request):
-        """修改Fileset通用配置
+        r"""修改Fileset通用配置
 
         :param request: Request instance for UpdateFilesetGeneralConfig.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetGeneralConfigRequest`

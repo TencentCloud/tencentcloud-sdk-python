@@ -27,7 +27,7 @@ class SmopClient(AbstractClient):
 
 
     def SubmitTaskEvent(self, request):
-        """smop产品下线，接口也一起下线
+        r"""smop产品下线，接口也一起下线
 
         提交任务事件接口
 

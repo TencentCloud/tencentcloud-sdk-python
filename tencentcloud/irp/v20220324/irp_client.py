@@ -27,7 +27,7 @@ class IrpClient(AbstractClient):
 
 
     def RecommendContent(self, request):
-        """获取推荐结果
+        r"""获取推荐结果
 
         :param request: Request instance for RecommendContent.
         :type request: :class:`tencentcloud.irp.v20220324.models.RecommendContentRequest`
@@ -50,7 +50,7 @@ class IrpClient(AbstractClient):
 
 
     def ReportAction(self, request):
-        """上报行为
+        r"""上报行为
 
         :param request: Request instance for ReportAction.
         :type request: :class:`tencentcloud.irp.v20220324.models.ReportActionRequest`
@@ -73,7 +73,7 @@ class IrpClient(AbstractClient):
 
 
     def ReportMaterial(self, request):
-        """上报物料
+        r"""上报物料
 
         :param request: Request instance for ReportMaterial.
         :type request: :class:`tencentcloud.irp.v20220324.models.ReportMaterialRequest`
@@ -96,7 +96,7 @@ class IrpClient(AbstractClient):
 
 
     def ReportPortrait(self, request):
-        """上报用户画像
+        r"""上报用户画像
 
         :param request: Request instance for ReportPortrait.
         :type request: :class:`tencentcloud.irp.v20220324.models.ReportPortraitRequest`

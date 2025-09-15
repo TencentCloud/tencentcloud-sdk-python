@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActivateHardware(AbstractModel):
-    """激活设备
+    r"""激活设备
 
     """
 
@@ -67,7 +67,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def Vendor(self):
-        """厂商名称
+        r"""厂商名称
         :rtype: str
         """
         return self._Vendor
@@ -78,7 +78,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def SN(self):
-        """设备SN序列号
+        r"""设备SN序列号
         :rtype: str
         """
         return self._SN
@@ -89,7 +89,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -100,7 +100,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def Description(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Description
@@ -111,7 +111,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def DataKey(self):
-        """设备密钥
+        r"""设备密钥
         :rtype: str
         """
         return self._DataKey
@@ -122,7 +122,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def AccessScope(self):
-        """接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :rtype: int
         """
         return self._AccessScope
@@ -133,7 +133,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        """当付费方为租户时，可选择租户license付费方式：
+        r"""当付费方为租户时，可选择租户license付费方式：
 0，月度授权
 1，永久授权
 若不传则默认为月度授权。
@@ -149,7 +149,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组ID
+        r"""设备分组ID
         :rtype: str
         """
         return self._GroupId
@@ -160,7 +160,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备分组名称，预留参数，需要分组时传入GroupId
+        r"""设备分组名称，预留参数，需要分组时传入GroupId
         :rtype: str
         """
         return self._GroupName
@@ -171,7 +171,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        """设备无流量包处理方式，0: 按量付费，1: 截断加速
+        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速
         :rtype: int
         """
         return self._FlowTrunc
@@ -182,7 +182,7 @@ class ActivateHardware(AbstractModel):
 
     @property
     def DeviceId(self):
-        """激活后的设备ID
+        r"""激活后的设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -215,7 +215,7 @@ class ActivateHardware(AbstractModel):
 
 
 class ActivateHardwareRequest(AbstractModel):
-    """ActivateHardware请求参数结构体
+    r"""ActivateHardware请求参数结构体
 
     """
 
@@ -228,7 +228,7 @@ class ActivateHardwareRequest(AbstractModel):
 
     @property
     def Hardware(self):
-        """待激活的设备列表
+        r"""待激活的设备列表
         :rtype: list of ActivateHardware
         """
         return self._Hardware
@@ -256,7 +256,7 @@ class ActivateHardwareRequest(AbstractModel):
 
 
 class ActivateHardwareResponse(AbstractModel):
-    """ActivateHardware返回参数结构体
+    r"""ActivateHardware返回参数结构体
 
     """
 
@@ -272,7 +272,7 @@ class ActivateHardwareResponse(AbstractModel):
 
     @property
     def HardwareInfo(self):
-        """完成激活的设备信息
+        r"""完成激活的设备信息
         :rtype: list of ActivateHardware
         """
         return self._HardwareInfo
@@ -283,7 +283,7 @@ class ActivateHardwareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -304,7 +304,7 @@ class ActivateHardwareResponse(AbstractModel):
 
 
 class ActiveDeviceList(AbstractModel):
-    """激活设备数统计
+    r"""激活设备数统计
 
     """
 
@@ -320,7 +320,7 @@ class ActiveDeviceList(AbstractModel):
 
     @property
     def Count(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Count
@@ -331,7 +331,7 @@ class ActiveDeviceList(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -355,7 +355,7 @@ class ActiveDeviceList(AbstractModel):
 
 
 class AddDeviceRequest(AbstractModel):
-    """AddDevice请求参数结构体
+    r"""AddDevice请求参数结构体
 
     """
 
@@ -399,7 +399,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        """新建设备的名称
+        r"""新建设备的名称
         :rtype: str
         """
         return self._DeviceName
@@ -410,7 +410,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """新建设备的备注
+        r"""新建设备的备注
         :rtype: str
         """
         return self._Remark
@@ -421,7 +421,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def DataKey(self):
-        """新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
+        r"""新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
         :rtype: str
         """
         return self._DataKey
@@ -432,7 +432,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def Encrypted(self):
-        """是否设置预置密钥
+        r"""是否设置预置密钥
         :rtype: bool
         """
         return self._Encrypted
@@ -443,7 +443,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def AccessScope(self):
-        """接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
 具体含义：
 公有云网关：即该设备只能接入公有云网关（就近接入）
 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入）
@@ -458,7 +458,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        """license付费方式： 
+        r"""license付费方式： 
 0，月度授权 
 1，永久授权 
 若不传则默认为月度授权，永久授权设备需要调用OrderPerLicense接口支付授权费，否则设备无法使用
@@ -472,7 +472,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备分组名称，非必选，预留参数，需要分组时传入GroupId
+        r"""设备分组名称，非必选，预留参数，需要分组时传入GroupId
         :rtype: str
         """
         return self._GroupName
@@ -483,7 +483,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组ID，非必选，如果不填写则默认设备无分组
+        r"""设备分组ID，非必选，如果不填写则默认设备无分组
         :rtype: str
         """
         return self._GroupId
@@ -494,7 +494,7 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        """设备无流量包处理方式，0: 按量付费，1: 截断加速
+        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速
         :rtype: int
         """
         return self._FlowTrunc
@@ -525,7 +525,7 @@ class AddDeviceRequest(AbstractModel):
 
 
 class AddDeviceResponse(AbstractModel):
-    """AddDevice返回参数结构体
+    r"""AddDevice返回参数结构体
 
     """
 
@@ -547,7 +547,7 @@ class AddDeviceResponse(AbstractModel):
 
     @property
     def DataKey(self):
-        """经过加密算法加密后的base64格式密钥
+        r"""经过加密算法加密后的base64格式密钥
         :rtype: str
         """
         return self._DataKey
@@ -558,7 +558,7 @@ class AddDeviceResponse(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -569,7 +569,7 @@ class AddDeviceResponse(AbstractModel):
 
     @property
     def Signature(self):
-        """签名字符串
+        r"""签名字符串
         :rtype: str
         """
         return self._Signature
@@ -580,7 +580,7 @@ class AddDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -598,7 +598,7 @@ class AddDeviceResponse(AbstractModel):
 
 
 class AddGroupRequest(AbstractModel):
-    """AddGroup请求参数结构体
+    r"""AddGroup请求参数结构体
 
     """
 
@@ -614,7 +614,7 @@ class AddGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组的名称
+        r"""分组的名称
         :rtype: str
         """
         return self._GroupName
@@ -625,7 +625,7 @@ class AddGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """分组的描述
+        r"""分组的描述
         :rtype: str
         """
         return self._Description
@@ -649,7 +649,7 @@ class AddGroupRequest(AbstractModel):
 
 
 class AddGroupResponse(AbstractModel):
-    """AddGroup返回参数结构体
+    r"""AddGroup返回参数结构体
 
     """
 
@@ -665,7 +665,7 @@ class AddGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组的唯一ID，仅做分组唯一区分
+        r"""分组的唯一ID，仅做分组唯一区分
         :rtype: str
         """
         return self._GroupId
@@ -676,7 +676,7 @@ class AddGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -692,7 +692,7 @@ class AddGroupResponse(AbstractModel):
 
 
 class AddHardwareRequest(AbstractModel):
-    """AddHardware请求参数结构体
+    r"""AddHardware请求参数结构体
 
     """
 
@@ -705,7 +705,7 @@ class AddHardwareRequest(AbstractModel):
 
     @property
     def Hardware(self):
-        """硬件列表
+        r"""硬件列表
         :rtype: list of Hardware
         """
         return self._Hardware
@@ -733,7 +733,7 @@ class AddHardwareRequest(AbstractModel):
 
 
 class AddHardwareResponse(AbstractModel):
-    """AddHardware返回参数结构体
+    r"""AddHardware返回参数结构体
 
     """
 
@@ -749,7 +749,7 @@ class AddHardwareResponse(AbstractModel):
 
     @property
     def Hardware(self):
-        """硬件设备
+        r"""硬件设备
         :rtype: list of Hardware
         """
         return self._Hardware
@@ -760,7 +760,7 @@ class AddHardwareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -781,7 +781,7 @@ class AddHardwareResponse(AbstractModel):
 
 
 class AddL3ConnRequest(AbstractModel):
-    """AddL3Conn请求参数结构体
+    r"""AddL3Conn请求参数结构体
 
     """
 
@@ -806,7 +806,7 @@ class AddL3ConnRequest(AbstractModel):
 
     @property
     def Cidr1(self):
-        """设置互通网段CIDR1，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+        r"""设置互通网段CIDR1，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
         :rtype: str
         """
         return self._Cidr1
@@ -817,7 +817,7 @@ class AddL3ConnRequest(AbstractModel):
 
     @property
     def Cidr2(self):
-        """设置互通网段CIDR2，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+        r"""设置互通网段CIDR2，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
         :rtype: str
         """
         return self._Cidr2
@@ -828,7 +828,7 @@ class AddL3ConnRequest(AbstractModel):
 
     @property
     def DeviceId1(self):
-        """CIDR1对应的设备ID
+        r"""CIDR1对应的设备ID
         :rtype: str
         """
         return self._DeviceId1
@@ -839,7 +839,7 @@ class AddL3ConnRequest(AbstractModel):
 
     @property
     def DeviceId2(self):
-        """CIDR2对应的设备ID
+        r"""CIDR2对应的设备ID
         :rtype: str
         """
         return self._DeviceId2
@@ -850,7 +850,7 @@ class AddL3ConnRequest(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._Description
@@ -877,7 +877,7 @@ class AddL3ConnRequest(AbstractModel):
 
 
 class AddL3ConnResponse(AbstractModel):
-    """AddL3Conn返回参数结构体
+    r"""AddL3Conn返回参数结构体
 
     """
 
@@ -893,7 +893,7 @@ class AddL3ConnResponse(AbstractModel):
 
     @property
     def L3ConnId(self):
-        """互通规则ID
+        r"""互通规则ID
         :rtype: str
         """
         return self._L3ConnId
@@ -904,7 +904,7 @@ class AddL3ConnResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -920,13 +920,13 @@ class AddL3ConnResponse(AbstractModel):
 
 
 class CreateEncryptedKeyRequest(AbstractModel):
-    """CreateEncryptedKey请求参数结构体
+    r"""CreateEncryptedKey请求参数结构体
 
     """
 
 
 class CreateEncryptedKeyResponse(AbstractModel):
-    """CreateEncryptedKey返回参数结构体
+    r"""CreateEncryptedKey返回参数结构体
 
     """
 
@@ -942,7 +942,7 @@ class CreateEncryptedKeyResponse(AbstractModel):
 
     @property
     def EncryptedKey(self):
-        """预置密钥
+        r"""预置密钥
         :rtype: str
         """
         return self._EncryptedKey
@@ -953,7 +953,7 @@ class CreateEncryptedKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -969,7 +969,7 @@ class CreateEncryptedKeyResponse(AbstractModel):
 
 
 class DeleteDeviceRequest(AbstractModel):
-    """DeleteDevice请求参数结构体
+    r"""DeleteDevice请求参数结构体
 
     """
 
@@ -982,7 +982,7 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """删除设备的唯一ID
+        r"""删除设备的唯一ID
         :rtype: str
         """
         return self._DeviceId
@@ -1005,7 +1005,7 @@ class DeleteDeviceRequest(AbstractModel):
 
 
 class DeleteDeviceResponse(AbstractModel):
-    """DeleteDevice返回参数结构体
+    r"""DeleteDevice返回参数结构体
 
     """
 
@@ -1018,7 +1018,7 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1033,7 +1033,7 @@ class DeleteDeviceResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup请求参数结构体
+    r"""DeleteGroup请求参数结构体
 
     """
 
@@ -1046,7 +1046,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """删除指定分组
+        r"""删除指定分组
         :rtype: str
         """
         return self._GroupId
@@ -1069,7 +1069,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup返回参数结构体
+    r"""DeleteGroup返回参数结构体
 
     """
 
@@ -1082,7 +1082,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1097,7 +1097,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeleteL3ConnRequest(AbstractModel):
-    """DeleteL3Conn请求参数结构体
+    r"""DeleteL3Conn请求参数结构体
 
     """
 
@@ -1110,7 +1110,7 @@ class DeleteL3ConnRequest(AbstractModel):
 
     @property
     def L3ConnIdList(self):
-        """互通规则ID列表
+        r"""互通规则ID列表
         :rtype: list of str
         """
         return self._L3ConnIdList
@@ -1133,7 +1133,7 @@ class DeleteL3ConnRequest(AbstractModel):
 
 
 class DeleteL3ConnResponse(AbstractModel):
-    """DeleteL3Conn返回参数结构体
+    r"""DeleteL3Conn返回参数结构体
 
     """
 
@@ -1146,7 +1146,7 @@ class DeleteL3ConnResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1161,7 +1161,7 @@ class DeleteL3ConnResponse(AbstractModel):
 
 
 class DeviceBaseInfo(AbstractModel):
-    """设备的基本信息
+    r"""设备的基本信息
 
     """
 
@@ -1210,7 +1210,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一ID
+        r"""设备唯一ID
         :rtype: str
         """
         return self._DeviceId
@@ -1221,7 +1221,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -1232,7 +1232,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """设备创建的时间，单位：ms
+        r"""设备创建的时间，单位：ms
         :rtype: str
         """
         return self._CreateTime
@@ -1243,7 +1243,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def LastTime(self):
-        """设备最后在线时间，单位：ms
+        r"""设备最后在线时间，单位：ms
         :rtype: str
         """
         return self._LastTime
@@ -1254,7 +1254,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """设备的备注
+        r"""设备的备注
         :rtype: str
         """
         return self._Remark
@@ -1265,7 +1265,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def AccessScope(self):
-        """接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :rtype: int
         """
         return self._AccessScope
@@ -1276,7 +1276,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        """license授权有效期 0：月度授权 1：永久授权
+        r"""license授权有效期 0：月度授权 1：永久授权
         :rtype: int
         """
         return self._LicensePayMode
@@ -1287,7 +1287,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Payer(self):
-        """付费方 0：厂商付费 1：客户付费
+        r"""付费方 0：厂商付费 1：客户付费
         :rtype: int
         """
         return self._Payer
@@ -1298,7 +1298,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组ID
+        r"""设备分组ID
         :rtype: str
         """
         return self._GroupId
@@ -1309,7 +1309,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备分组名称
+        r"""设备分组名称
         :rtype: str
         """
         return self._GroupName
@@ -1320,7 +1320,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        """设备无流量包处理方式，0: 按量付费，1: 截断加速
+        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速
         :rtype: int
         """
         return self._FlowTrunc
@@ -1331,7 +1331,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Sn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._Sn
@@ -1342,7 +1342,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Vendor(self):
-        """厂商
+        r"""厂商
         :rtype: str
         """
         return self._Vendor
@@ -1377,7 +1377,7 @@ class DeviceBaseInfo(AbstractModel):
 
 
 class DeviceDetails(AbstractModel):
-    """设备详细信息
+    r"""设备详细信息
 
     """
 
@@ -1402,7 +1402,7 @@ class DeviceDetails(AbstractModel):
 
     @property
     def DeviceBaseInfo(self):
-        """设备基本信息
+        r"""设备基本信息
         :rtype: :class:`tencentcloud.mna.v20210119.models.DeviceBaseInfo`
         """
         return self._DeviceBaseInfo
@@ -1413,7 +1413,7 @@ class DeviceDetails(AbstractModel):
 
     @property
     def DeviceNetInfo(self):
-        """设备网络信息
+        r"""设备网络信息
         :rtype: list of DeviceNetInfo
         """
         return self._DeviceNetInfo
@@ -1424,7 +1424,7 @@ class DeviceDetails(AbstractModel):
 
     @property
     def GatewaySite(self):
-        """聚合服务器地址
+        r"""聚合服务器地址
         :rtype: str
         """
         return self._GatewaySite
@@ -1435,7 +1435,7 @@ class DeviceDetails(AbstractModel):
 
     @property
     def BusinessDownRate(self):
-        """业务下行速率
+        r"""业务下行速率
         :rtype: float
         """
         return self._BusinessDownRate
@@ -1446,7 +1446,7 @@ class DeviceDetails(AbstractModel):
 
     @property
     def BusinessUpRate(self):
-        """业务上行速率
+        r"""业务上行速率
         :rtype: float
         """
         return self._BusinessUpRate
@@ -1480,7 +1480,7 @@ class DeviceDetails(AbstractModel):
 
 
 class DeviceNetInfo(AbstractModel):
-    """设备网络状态信息
+    r"""设备网络状态信息
 
     """
 
@@ -1546,7 +1546,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def Type(self):
-        """网络类型：
+        r"""网络类型：
 0:数据
 1:Wi-Fi
 2:有线
@@ -1560,7 +1560,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def DataEnable(self):
-        """启用/禁用
+        r"""启用/禁用
         :rtype: bool
         """
         return self._DataEnable
@@ -1571,7 +1571,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def UploadLimit(self):
-        """上行限速
+        r"""上行限速
         :rtype: str
         """
         return self._UploadLimit
@@ -1582,7 +1582,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def DownloadLimit(self):
-        """下行限速
+        r"""下行限速
         :rtype: str
         """
         return self._DownloadLimit
@@ -1593,7 +1593,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def DataRx(self):
-        """接收实时速率
+        r"""接收实时速率
         :rtype: int
         """
         return self._DataRx
@@ -1604,7 +1604,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def DataTx(self):
-        """发送实时速率
+        r"""发送实时速率
         :rtype: int
         """
         return self._DataTx
@@ -1615,7 +1615,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def Vendor(self):
-        """运营商类型：
+        r"""运营商类型：
 1: 中国移动；
 2: 中国电信; 
 3: 中国联通
@@ -1629,7 +1629,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def State(self):
-        """连接状态：
+        r"""连接状态：
 0:无连接
 1:连接中
 2:已连接
@@ -1643,7 +1643,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网IP
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -1654,7 +1654,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def SignalStrength(self):
-        """信号强度/单位：dbm
+        r"""信号强度/单位：dbm
         :rtype: int
         """
         return self._SignalStrength
@@ -1665,7 +1665,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def Rat(self):
-        """数据网络类型：
+        r"""数据网络类型：
 -1 ：无效值   
 2：2G 
 3：3G 
@@ -1681,7 +1681,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def NetInfoName(self):
-        """网卡名
+        r"""网卡名
         :rtype: str
         """
         return self._NetInfoName
@@ -1692,7 +1692,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def DownRate(self):
-        """下行实时速率（浮点数类型代替上一版本DataRx的整型）
+        r"""下行实时速率（浮点数类型代替上一版本DataRx的整型）
         :rtype: float
         """
         return self._DownRate
@@ -1703,7 +1703,7 @@ class DeviceNetInfo(AbstractModel):
 
     @property
     def UpRate(self):
-        """上行实时速率（浮点数类型代替上一版本TxRate的整型）
+        r"""上行实时速率（浮点数类型代替上一版本TxRate的整型）
         :rtype: float
         """
         return self._UpRate
@@ -1739,7 +1739,7 @@ class DeviceNetInfo(AbstractModel):
 
 
 class DevicePayModeInfo(AbstractModel):
-    """设备付费模式信息
+    r"""设备付费模式信息
 
     """
 
@@ -1763,7 +1763,7 @@ class DevicePayModeInfo(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -1774,7 +1774,7 @@ class DevicePayModeInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式。
+        r"""付费模式。
 1：预付费流量包
 0：按流量后付费
         :rtype: int
@@ -1787,7 +1787,7 @@ class DevicePayModeInfo(AbstractModel):
 
     @property
     def PayModeDesc(self):
-        """付费模式描述
+        r"""付费模式描述
         :rtype: str
         """
         return self._PayModeDesc
@@ -1798,7 +1798,7 @@ class DevicePayModeInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """流量包ID，仅当付费模式为流量包类型时才有。
+        r"""流量包ID，仅当付费模式为流量包类型时才有。
         :rtype: str
         """
         return self._ResourceId
@@ -1824,7 +1824,7 @@ class DevicePayModeInfo(AbstractModel):
 
 
 class DownloadActiveDeviceCountRequest(AbstractModel):
-    """DownloadActiveDeviceCount请求参数结构体
+    r"""DownloadActiveDeviceCount请求参数结构体
 
     """
 
@@ -1849,7 +1849,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def Period(self):
-        """查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        r"""查询粒度。0:day, 1:week, 2:month, 不传默认为day
         :rtype: int
         """
         return self._Period
@@ -1860,7 +1860,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。单位秒
+        r"""开始时间。单位秒
         :rtype: int
         """
         return self._StartTime
@@ -1871,7 +1871,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。单位秒
+        r"""结束时间。单位秒
         :rtype: int
         """
         return self._EndTime
@@ -1882,7 +1882,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def DevGroup(self):
-        """设备组, 不传查询全部
+        r"""设备组, 不传查询全部
         :rtype: str
         """
         return self._DevGroup
@@ -1893,7 +1893,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
         :rtype: int
         """
         return self._LicenseType
@@ -1920,7 +1920,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
 
 class DownloadActiveDeviceCountResponse(AbstractModel):
-    """DownloadActiveDeviceCount返回参数结构体
+    r"""DownloadActiveDeviceCount返回参数结构体
 
     """
 
@@ -1936,7 +1936,7 @@ class DownloadActiveDeviceCountResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        """URL地址
+        r"""URL地址
         :rtype: str
         """
         return self._FilePath
@@ -1947,7 +1947,7 @@ class DownloadActiveDeviceCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1963,7 +1963,7 @@ class DownloadActiveDeviceCountResponse(AbstractModel):
 
 
 class FlowDetails(AbstractModel):
-    """设备流量信息
+    r"""设备流量信息
 
     """
 
@@ -1988,7 +1988,7 @@ class FlowDetails(AbstractModel):
 
     @property
     def NetDetails(self):
-        """流量数据点
+        r"""流量数据点
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -1999,7 +1999,7 @@ class FlowDetails(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -2010,7 +2010,7 @@ class FlowDetails(AbstractModel):
 
     @property
     def MaxValue(self):
-        """流量最大值（单位：bytes）
+        r"""流量最大值（单位：bytes）
         :rtype: float
         """
         return self._MaxValue
@@ -2021,7 +2021,7 @@ class FlowDetails(AbstractModel):
 
     @property
     def AvgValue(self):
-        """流量平均值（单位：bytes）
+        r"""流量平均值（单位：bytes）
         :rtype: float
         """
         return self._AvgValue
@@ -2032,7 +2032,7 @@ class FlowDetails(AbstractModel):
 
     @property
     def TotalValue(self):
-        """流量总值（单位：bytes）
+        r"""流量总值（单位：bytes）
         :rtype: float
         """
         return self._TotalValue
@@ -2064,7 +2064,7 @@ class FlowDetails(AbstractModel):
 
 
 class FlowPackageInfo(AbstractModel):
-    """流量包信息
+    r"""流量包信息
 
     """
 
@@ -2124,7 +2124,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def ResourceId(self):
-        """流量包的唯一资源ID
+        r"""流量包的唯一资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -2135,7 +2135,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def AppId(self):
-        """流量包所属的用户AppId
+        r"""流量包所属的用户AppId
         :rtype: int
         """
         return self._AppId
@@ -2146,7 +2146,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def PackageType(self):
-        """流量包规格类型。可取值如下：
+        r"""流量包规格类型。可取值如下：
 DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
 DEVICE_3_FLOW_100G、
 DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
@@ -2165,7 +2165,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def Status(self):
-        """流量包状态，0：未生效，1：有效期内，2：已过期
+        r"""流量包状态，0：未生效，1：有效期内，2：已过期
         :rtype: int
         """
         return self._Status
@@ -2176,7 +2176,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def CreateTime(self):
-        """购买时间，Unix时间戳格式，单位：秒
+        r"""购买时间，Unix时间戳格式，单位：秒
         :rtype: int
         """
         return self._CreateTime
@@ -2187,7 +2187,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def ActiveTime(self):
-        """生效时间，Unix时间戳格式，单位：秒
+        r"""生效时间，Unix时间戳格式，单位：秒
         :rtype: int
         """
         return self._ActiveTime
@@ -2198,7 +2198,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def ExpireTime(self):
-        """过期时间，Unix时间戳格式，单位：秒
+        r"""过期时间，Unix时间戳格式，单位：秒
         :rtype: int
         """
         return self._ExpireTime
@@ -2209,7 +2209,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def DeviceList(self):
-        """流量包绑定的设备ID列表
+        r"""流量包绑定的设备ID列表
         :rtype: list of str
         """
         return self._DeviceList
@@ -2220,7 +2220,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def CapacitySize(self):
-        """流量包总容量，单位：MB
+        r"""流量包总容量，单位：MB
         :rtype: int
         """
         return self._CapacitySize
@@ -2231,7 +2231,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def CapacityRemain(self):
-        """流量包余量，单位：MB
+        r"""流量包余量，单位：MB
         :rtype: int
         """
         return self._CapacityRemain
@@ -2242,7 +2242,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def RenewFlag(self):
-        """自动续费标识。true代表自动续费，false代表不自动续费
+        r"""自动续费标识。true代表自动续费，false代表不自动续费
         :rtype: bool
         """
         return self._RenewFlag
@@ -2253,7 +2253,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def ModifyStatus(self):
-        """资源包变更状态，0：未发生变配；1：变配中；2：已变配或已续费
+        r"""资源包变更状态，0：未发生变配；1：变配中；2：已变配或已续费
         :rtype: int
         """
         return self._ModifyStatus
@@ -2264,7 +2264,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def TruncFlag(self):
-        """流量截断标识。true代表开启流量截断，false代表不开启流量截断
+        r"""流量截断标识。true代表开启流量截断，false代表不开启流量截断
         :rtype: bool
         """
         return self._TruncFlag
@@ -2275,7 +2275,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def CapacityRemainPrecise(self):
-        """流量包精确余量，单位：MB
+        r"""流量包精确余量，单位：MB
         :rtype: int
         """
         return self._CapacityRemainPrecise
@@ -2311,7 +2311,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
 
 class GetActiveDeviceCountRequest(AbstractModel):
-    """GetActiveDeviceCount请求参数结构体
+    r"""GetActiveDeviceCount请求参数结构体
 
     """
 
@@ -2336,7 +2336,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def Period(self):
-        """查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        r"""查询粒度。0:day, 1:week, 2:month, 不传默认为day
         :rtype: int
         """
         return self._Period
@@ -2347,7 +2347,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。单位秒
+        r"""开始时间。单位秒
         :rtype: int
         """
         return self._StartTime
@@ -2358,7 +2358,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。单位秒
+        r"""结束时间。单位秒
         :rtype: int
         """
         return self._EndTime
@@ -2369,7 +2369,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def DevGroup(self):
-        """设备组, 不传查询全部
+        r"""设备组, 不传查询全部
         :rtype: str
         """
         return self._DevGroup
@@ -2380,7 +2380,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
         :rtype: int
         """
         return self._LicenseType
@@ -2407,7 +2407,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
 
 class GetActiveDeviceCountResponse(AbstractModel):
-    """GetActiveDeviceCount返回参数结构体
+    r"""GetActiveDeviceCount返回参数结构体
 
     """
 
@@ -2441,7 +2441,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def ActiveDeviceList(self):
-        """激活设备统计
+        r"""激活设备统计
         :rtype: list of ActiveDeviceList
         """
         return self._ActiveDeviceList
@@ -2452,7 +2452,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def Period(self):
-        """查询粒度，0:day, 1:week, 2:month, 不传默认为day
+        r"""查询粒度，0:day, 1:week, 2:month, 不传默认为day
         :rtype: int
         """
         return self._Period
@@ -2463,7 +2463,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -2474,7 +2474,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -2485,7 +2485,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def DevGroup(self):
-        """设备组
+        r"""设备组
         :rtype: str
         """
         return self._DevGroup
@@ -2496,7 +2496,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def LicenseType(self):
-        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
         :rtype: str
         """
         return self._LicenseType
@@ -2507,7 +2507,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._AppId
@@ -2518,7 +2518,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2545,7 +2545,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
 
 class GetDevicePayModeRequest(AbstractModel):
-    """GetDevicePayMode请求参数结构体
+    r"""GetDevicePayMode请求参数结构体
 
     """
 
@@ -2558,7 +2558,7 @@ class GetDevicePayModeRequest(AbstractModel):
 
     @property
     def DeviceIdList(self):
-        """设备ID列表
+        r"""设备ID列表
         :rtype: list of str
         """
         return self._DeviceIdList
@@ -2581,7 +2581,7 @@ class GetDevicePayModeRequest(AbstractModel):
 
 
 class GetDevicePayModeResponse(AbstractModel):
-    """GetDevicePayMode返回参数结构体
+    r"""GetDevicePayMode返回参数结构体
 
     """
 
@@ -2597,7 +2597,7 @@ class GetDevicePayModeResponse(AbstractModel):
 
     @property
     def Result(self):
-        """结果信息
+        r"""结果信息
         :rtype: list of DevicePayModeInfo
         """
         return self._Result
@@ -2608,7 +2608,7 @@ class GetDevicePayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2629,7 +2629,7 @@ class GetDevicePayModeResponse(AbstractModel):
 
 
 class GetDeviceRequest(AbstractModel):
-    """GetDevice请求参数结构体
+    r"""GetDevice请求参数结构体
 
     """
 
@@ -2642,7 +2642,7 @@ class GetDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """搜索指定设备的id
+        r"""搜索指定设备的id
         :rtype: str
         """
         return self._DeviceId
@@ -2665,7 +2665,7 @@ class GetDeviceRequest(AbstractModel):
 
 
 class GetDeviceResponse(AbstractModel):
-    """GetDevice返回参数结构体
+    r"""GetDevice返回参数结构体
 
     """
 
@@ -2681,7 +2681,7 @@ class GetDeviceResponse(AbstractModel):
 
     @property
     def DeviceDetails(self):
-        """设备详细信息
+        r"""设备详细信息
         :rtype: :class:`tencentcloud.mna.v20210119.models.DeviceDetails`
         """
         return self._DeviceDetails
@@ -2692,7 +2692,7 @@ class GetDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2710,7 +2710,7 @@ class GetDeviceResponse(AbstractModel):
 
 
 class GetDevicesRequest(AbstractModel):
-    """GetDevices请求参数结构体
+    r"""GetDevices请求参数结构体
 
     """
 
@@ -2735,7 +2735,7 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageSize
@@ -2746,7 +2746,7 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageNumber
@@ -2757,7 +2757,7 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索设备的关键字（ID或者设备名），为空时匹配所有设备
+        r"""搜索设备的关键字（ID或者设备名），为空时匹配所有设备
         :rtype: str
         """
         return self._Keyword
@@ -2768,7 +2768,7 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """DeviceType
+        r"""DeviceType
 不传：返回所有设备；
 1:自有设备；
 2:三方设备
@@ -2797,7 +2797,7 @@ class GetDevicesRequest(AbstractModel):
 
 
 class GetDevicesResponse(AbstractModel):
-    """GetDevices返回参数结构体
+    r"""GetDevices返回参数结构体
 
     """
 
@@ -2819,7 +2819,7 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def DeviceInfos(self):
-        """设备信息列表
+        r"""设备信息列表
         :rtype: list of DeviceBaseInfo
         """
         return self._DeviceInfos
@@ -2830,7 +2830,7 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def Length(self):
-        """设备总记录条数
+        r"""设备总记录条数
         :rtype: int
         """
         return self._Length
@@ -2841,7 +2841,7 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -2852,7 +2852,7 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2875,13 +2875,13 @@ class GetDevicesResponse(AbstractModel):
 
 
 class GetFlowAlarmInfoRequest(AbstractModel):
-    """GetFlowAlarmInfo请求参数结构体
+    r"""GetFlowAlarmInfo请求参数结构体
 
     """
 
 
 class GetFlowAlarmInfoResponse(AbstractModel):
-    """GetFlowAlarmInfo返回参数结构体
+    r"""GetFlowAlarmInfo返回参数结构体
 
     """
 
@@ -2903,7 +2903,7 @@ class GetFlowAlarmInfoResponse(AbstractModel):
 
     @property
     def AlarmValue(self):
-        """流量包的告警阈值
+        r"""流量包的告警阈值
         :rtype: int
         """
         return self._AlarmValue
@@ -2914,7 +2914,7 @@ class GetFlowAlarmInfoResponse(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        """告警通知回调url
+        r"""告警通知回调url
         :rtype: str
         """
         return self._NotifyUrl
@@ -2925,7 +2925,7 @@ class GetFlowAlarmInfoResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """告警通知回调key
+        r"""告警通知回调key
         :rtype: str
         """
         return self._CallbackKey
@@ -2936,7 +2936,7 @@ class GetFlowAlarmInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2954,7 +2954,7 @@ class GetFlowAlarmInfoResponse(AbstractModel):
 
 
 class GetFlowPackagesRequest(AbstractModel):
-    """GetFlowPackages请求参数结构体
+    r"""GetFlowPackages请求参数结构体
 
     """
 
@@ -2980,7 +2980,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码，从1开始
+        r"""页码，从1开始
         :rtype: int
         """
         return self._PageNumber
@@ -2991,7 +2991,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数
+        r"""每页个数
         :rtype: int
         """
         return self._PageSize
@@ -3002,7 +3002,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """流量包的唯一资源ID
+        r"""流量包的唯一资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -3013,7 +3013,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """流量包绑定的设备ID
+        r"""流量包绑定的设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -3024,7 +3024,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """流量包状态，0：未生效，1：有效期内，2：已过期
+        r"""流量包状态，0：未生效，1：有效期内，2：已过期
 
         :rtype: int
         """
@@ -3052,7 +3052,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
 
 class GetFlowPackagesResponse(AbstractModel):
-    """GetFlowPackages返回参数结构体
+    r"""GetFlowPackages返回参数结构体
 
     """
 
@@ -3071,7 +3071,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
     @property
     def PackageList(self):
-        """流量包列表
+        r"""流量包列表
         :rtype: list of FlowPackageInfo
         """
         return self._PackageList
@@ -3082,7 +3082,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3093,7 +3093,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3115,7 +3115,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
 
 class GetFlowStatisticByGroupRequest(AbstractModel):
-    """GetFlowStatisticByGroup请求参数结构体
+    r"""GetFlowStatisticByGroup请求参数结构体
 
     """
 
@@ -3146,7 +3146,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -3157,7 +3157,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始查找时间
+        r"""开始查找时间
         :rtype: int
         """
         return self._BeginTime
@@ -3168,7 +3168,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """截止时间
+        r"""截止时间
         :rtype: int
         """
         return self._EndTime
@@ -3179,7 +3179,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        """流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
         :rtype: int
         """
         return self._Type
@@ -3190,7 +3190,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        """时间粒度（1：按小时统计，2：按天统计）
+        r"""时间粒度（1：按小时统计，2：按天统计）
         :rtype: int
         """
         return self._TimeGranularity
@@ -3201,7 +3201,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
         :rtype: str
         """
         return self._AccessRegion
@@ -3212,7 +3212,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :rtype: int
         """
         return self._GatewayType
@@ -3241,7 +3241,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
 
 class GetFlowStatisticByGroupResponse(AbstractModel):
-    """GetFlowStatisticByGroup返回参数结构体
+    r"""GetFlowStatisticByGroup返回参数结构体
 
     """
 
@@ -3266,7 +3266,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        """流量详细信息
+        r"""流量详细信息
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -3277,7 +3277,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        """查找时间段流量使用最大值（单位：byte）
+        r"""查找时间段流量使用最大值（单位：byte）
         :rtype: float
         """
         return self._MaxValue
@@ -3288,7 +3288,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        """查找时间段流量使用平均值（单位：byte）
+        r"""查找时间段流量使用平均值（单位：byte）
         :rtype: float
         """
         return self._AvgValue
@@ -3299,7 +3299,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        """查找时间段流量使用总量（单位：byte）
+        r"""查找时间段流量使用总量（单位：byte）
         :rtype: float
         """
         return self._TotalValue
@@ -3310,7 +3310,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3334,7 +3334,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
 
 class GetFlowStatisticByRegionRequest(AbstractModel):
-    """GetFlowStatisticByRegion请求参数结构体
+    r"""GetFlowStatisticByRegion请求参数结构体
 
     """
 
@@ -3362,7 +3362,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始查找时间
+        r"""开始查找时间
         :rtype: int
         """
         return self._BeginTime
@@ -3373,7 +3373,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """截止时间
+        r"""截止时间
         :rtype: int
         """
         return self._EndTime
@@ -3384,7 +3384,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def Type(self):
-        """流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
         :rtype: int
         """
         return self._Type
@@ -3395,7 +3395,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        """时间粒度（1：按小时统计，2：按天统计）
+        r"""时间粒度（1：按小时统计，2：按天统计）
         :rtype: int
         """
         return self._TimeGranularity
@@ -3406,7 +3406,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。 
+        r"""网关类型。0：公有云网关；1：自有网关。 
         :rtype: int
         """
         return self._GatewayType
@@ -3417,7 +3417,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
         :rtype: str
         """
         return self._AccessRegion
@@ -3445,7 +3445,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
 
 class GetFlowStatisticByRegionResponse(AbstractModel):
-    """GetFlowStatisticByRegion返回参数结构体
+    r"""GetFlowStatisticByRegion返回参数结构体
 
     """
 
@@ -3470,7 +3470,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        """流量详细信息
+        r"""流量详细信息
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -3481,7 +3481,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        """查找时间段流量使用最大值（单位：byte）
+        r"""查找时间段流量使用最大值（单位：byte）
         :rtype: float
         """
         return self._MaxValue
@@ -3492,7 +3492,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        """查找时间段流量使用平均值（单位：byte）
+        r"""查找时间段流量使用平均值（单位：byte）
         :rtype: float
         """
         return self._AvgValue
@@ -3503,7 +3503,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        """查找时间段流量使用总量（单位：byte）
+        r"""查找时间段流量使用总量（单位：byte）
         :rtype: float
         """
         return self._TotalValue
@@ -3514,7 +3514,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3538,7 +3538,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
 
 class GetFlowStatisticRequest(AbstractModel):
-    """GetFlowStatistic请求参数结构体
+    r"""GetFlowStatistic请求参数结构体
 
     """
 
@@ -3572,7 +3572,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -3583,7 +3583,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始查找时间
+        r"""开始查找时间
         :rtype: int
         """
         return self._BeginTime
@@ -3594,7 +3594,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """截止时间
+        r"""截止时间
         :rtype: int
         """
         return self._EndTime
@@ -3605,7 +3605,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def Type(self):
-        """流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        r"""流量种类（1：上行流量，2：下行流量，3：上下行总和）
         :rtype: int
         """
         return self._Type
@@ -3616,7 +3616,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        """时间粒度（1：按小时统计，2：按天统计）
+        r"""时间粒度（1：按小时统计，2：按天统计）
         :rtype: int
         """
         return self._TimeGranularity
@@ -3627,7 +3627,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
         :rtype: str
         """
         return self._AccessRegion
@@ -3638,7 +3638,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :rtype: int
         """
         return self._GatewayType
@@ -3649,7 +3649,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        r"""设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
         :rtype: list of str
         """
         return self._DeviceList
@@ -3679,7 +3679,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
 
 class GetFlowStatisticResponse(AbstractModel):
-    """GetFlowStatistic返回参数结构体
+    r"""GetFlowStatistic返回参数结构体
 
     """
 
@@ -3704,7 +3704,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        """流量详细信息
+        r"""流量详细信息
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -3715,7 +3715,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        """查找时间段流量使用最大值（单位：byte）
+        r"""查找时间段流量使用最大值（单位：byte）
         :rtype: float
         """
         return self._MaxValue
@@ -3726,7 +3726,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        """查找时间段流量使用平均值（单位：byte）
+        r"""查找时间段流量使用平均值（单位：byte）
         :rtype: float
         """
         return self._AvgValue
@@ -3737,7 +3737,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        """查找时间段流量使用总量（单位：byte）
+        r"""查找时间段流量使用总量（单位：byte）
         :rtype: float
         """
         return self._TotalValue
@@ -3748,7 +3748,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3772,7 +3772,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
 
 class GetGroupDetailRequest(AbstractModel):
-    """GetGroupDetail请求参数结构体
+    r"""GetGroupDetail请求参数结构体
 
     """
 
@@ -3794,7 +3794,7 @@ class GetGroupDetailRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -3805,7 +3805,7 @@ class GetGroupDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+        r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
         :rtype: int
         """
         return self._PageSize
@@ -3816,7 +3816,7 @@ class GetGroupDetailRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+        r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
         :rtype: int
         """
         return self._PageNumber
@@ -3827,7 +3827,7 @@ class GetGroupDetailRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """搜索关键字
+        r"""搜索关键字
         :rtype: str
         """
         return self._KeyWord
@@ -3853,7 +3853,7 @@ class GetGroupDetailRequest(AbstractModel):
 
 
 class GetGroupDetailResponse(AbstractModel):
-    """GetGroupDetail返回参数结构体
+    r"""GetGroupDetail返回参数结构体
 
     """
 
@@ -3878,7 +3878,7 @@ class GetGroupDetailResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
-        """分组基本信息
+        r"""分组基本信息
         :rtype: :class:`tencentcloud.mna.v20210119.models.GroupInfo`
         """
         return self._GroupInfo
@@ -3889,7 +3889,7 @@ class GetGroupDetailResponse(AbstractModel):
 
     @property
     def DeviceInfos(self):
-        """分组中设备列表
+        r"""分组中设备列表
         :rtype: list of DeviceBaseInfo
         """
         return self._DeviceInfos
@@ -3900,7 +3900,7 @@ class GetGroupDetailResponse(AbstractModel):
 
     @property
     def Length(self):
-        """设备总记录条数
+        r"""设备总记录条数
         :rtype: int
         """
         return self._Length
@@ -3911,7 +3911,7 @@ class GetGroupDetailResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -3922,7 +3922,7 @@ class GetGroupDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3948,7 +3948,7 @@ class GetGroupDetailResponse(AbstractModel):
 
 
 class GetGroupListRequest(AbstractModel):
-    """GetGroupList请求参数结构体
+    r"""GetGroupList请求参数结构体
 
     """
 
@@ -3967,7 +3967,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageSize
@@ -3978,7 +3978,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageNumber
@@ -3989,7 +3989,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索分组的关键字，为空时匹配所有分组
+        r"""搜索分组的关键字，为空时匹配所有分组
         :rtype: str
         """
         return self._Keyword
@@ -4014,7 +4014,7 @@ class GetGroupListRequest(AbstractModel):
 
 
 class GetGroupListResponse(AbstractModel):
-    """GetGroupList返回参数结构体
+    r"""GetGroupList返回参数结构体
 
     """
 
@@ -4036,7 +4036,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def GroupInfos(self):
-        """设备信息列表
+        r"""设备信息列表
         :rtype: list of GroupInfo
         """
         return self._GroupInfos
@@ -4047,7 +4047,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def Length(self):
-        """设备总记录条数
+        r"""设备总记录条数
         :rtype: int
         """
         return self._Length
@@ -4058,7 +4058,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -4069,7 +4069,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4092,7 +4092,7 @@ class GetGroupListResponse(AbstractModel):
 
 
 class GetHardwareListRequest(AbstractModel):
-    """GetHardwareList请求参数结构体
+    r"""GetHardwareList请求参数结构体
 
     """
 
@@ -4111,7 +4111,7 @@ class GetHardwareListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -4122,7 +4122,7 @@ class GetHardwareListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页面设备数量
+        r"""页面设备数量
         :rtype: int
         """
         return self._PageSize
@@ -4133,7 +4133,7 @@ class GetHardwareListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -4158,7 +4158,7 @@ class GetHardwareListRequest(AbstractModel):
 
 
 class GetHardwareListResponse(AbstractModel):
-    """GetHardwareList返回参数结构体
+    r"""GetHardwareList返回参数结构体
 
     """
 
@@ -4180,7 +4180,7 @@ class GetHardwareListResponse(AbstractModel):
 
     @property
     def HardwareInfos(self):
-        """硬件信息列表
+        r"""硬件信息列表
         :rtype: list of HardwareInfo
         """
         return self._HardwareInfos
@@ -4191,7 +4191,7 @@ class GetHardwareListResponse(AbstractModel):
 
     @property
     def Length(self):
-        """硬件总数
+        r"""硬件总数
         :rtype: int
         """
         return self._Length
@@ -4202,7 +4202,7 @@ class GetHardwareListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -4213,7 +4213,7 @@ class GetHardwareListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4236,7 +4236,7 @@ class GetHardwareListResponse(AbstractModel):
 
 
 class GetL3ConnListRequest(AbstractModel):
-    """GetL3ConnList请求参数结构体
+    r"""GetL3ConnList请求参数结构体
 
     """
 
@@ -4255,7 +4255,7 @@ class GetL3ConnListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageSize
@@ -4266,7 +4266,7 @@ class GetL3ConnListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        r"""当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
         :rtype: int
         """
         return self._PageNumber
@@ -4277,7 +4277,7 @@ class GetL3ConnListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """搜索分组的DeviceId，为空时匹配所有分组
+        r"""搜索分组的DeviceId，为空时匹配所有分组
         :rtype: str
         """
         return self._DeviceId
@@ -4302,7 +4302,7 @@ class GetL3ConnListRequest(AbstractModel):
 
 
 class GetL3ConnListResponse(AbstractModel):
-    """GetL3ConnList返回参数结构体
+    r"""GetL3ConnList返回参数结构体
 
     """
 
@@ -4324,7 +4324,7 @@ class GetL3ConnListResponse(AbstractModel):
 
     @property
     def L3ConnList(self):
-        """互通规则列表
+        r"""互通规则列表
         :rtype: list of L3ConnInfo
         """
         return self._L3ConnList
@@ -4335,7 +4335,7 @@ class GetL3ConnListResponse(AbstractModel):
 
     @property
     def Length(self):
-        """设备总记录条数
+        r"""设备总记录条数
         :rtype: int
         """
         return self._Length
@@ -4346,7 +4346,7 @@ class GetL3ConnListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -4357,7 +4357,7 @@ class GetL3ConnListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4380,7 +4380,7 @@ class GetL3ConnListResponse(AbstractModel):
 
 
 class GetMultiFlowStatisticRequest(AbstractModel):
-    """GetMultiFlowStatistic请求参数结构体
+    r"""GetMultiFlowStatistic请求参数结构体
 
     """
 
@@ -4411,7 +4411,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
-        """设备id列表，单次最多请求10个设备
+        r"""设备id列表，单次最多请求10个设备
         :rtype: list of str
         """
         return self._DeviceIds
@@ -4422,7 +4422,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """1659514436
+        r"""1659514436
         :rtype: int
         """
         return self._BeginTime
@@ -4433,7 +4433,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """1659515000
+        r"""1659515000
         :rtype: int
         """
         return self._EndTime
@@ -4444,7 +4444,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def Type(self):
-        """统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
         :rtype: int
         """
         return self._Type
@@ -4455,7 +4455,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        """统计时间粒度（1：按小时统计，2：按天统计）
+        r"""统计时间粒度（1：按小时统计，2：按天统计）
         :rtype: int
         """
         return self._TimeGranularity
@@ -4466,7 +4466,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
         :rtype: str
         """
         return self._AccessRegion
@@ -4477,7 +4477,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :rtype: int
         """
         return self._GatewayType
@@ -4506,7 +4506,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
 
 class GetMultiFlowStatisticResponse(AbstractModel):
-    """GetMultiFlowStatistic返回参数结构体
+    r"""GetMultiFlowStatistic返回参数结构体
 
     """
 
@@ -4522,7 +4522,7 @@ class GetMultiFlowStatisticResponse(AbstractModel):
 
     @property
     def FlowDetails(self):
-        """批量设备流量信息
+        r"""批量设备流量信息
         :rtype: list of FlowDetails
         """
         return self._FlowDetails
@@ -4533,7 +4533,7 @@ class GetMultiFlowStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4554,7 +4554,7 @@ class GetMultiFlowStatisticResponse(AbstractModel):
 
 
 class GetNetMonitorRequest(AbstractModel):
-    """GetNetMonitor请求参数结构体
+    r"""GetNetMonitor请求参数结构体
 
     """
 
@@ -4579,7 +4579,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -4590,7 +4590,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._BeginTime
@@ -4601,7 +4601,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -4612,7 +4612,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        r"""统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
         :rtype: str
         """
         return self._Metrics
@@ -4623,7 +4623,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :rtype: int
         """
         return self._GatewayType
@@ -4650,7 +4650,7 @@ class GetNetMonitorRequest(AbstractModel):
 
 
 class GetNetMonitorResponse(AbstractModel):
-    """GetNetMonitor返回参数结构体
+    r"""GetNetMonitor返回参数结构体
 
     """
 
@@ -4673,7 +4673,7 @@ AM=美洲
 
     @property
     def MonitorData(self):
-        """监控数据
+        r"""监控数据
         :rtype: list of MonitorData
         """
         return self._MonitorData
@@ -4684,7 +4684,7 @@ AM=美洲
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM']
+        r"""接入区域。取值范围：['MC','AP','EU','AM']
 MC=中国大陆
 AP=亚太
 EU=欧洲
@@ -4699,7 +4699,7 @@ AM=美洲
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4721,13 +4721,13 @@ AM=美洲
 
 
 class GetPublicKeyRequest(AbstractModel):
-    """GetPublicKey请求参数结构体
+    r"""GetPublicKey请求参数结构体
 
     """
 
 
 class GetPublicKeyResponse(AbstractModel):
-    """GetPublicKey返回参数结构体
+    r"""GetPublicKey返回参数结构体
 
     """
 
@@ -4743,7 +4743,7 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
-        """非对称公钥
+        r"""非对称公钥
         :rtype: str
         """
         return self._PublicKey
@@ -4754,7 +4754,7 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4770,7 +4770,7 @@ class GetPublicKeyResponse(AbstractModel):
 
 
 class GetStatisticDataRequest(AbstractModel):
-    """GetStatisticData请求参数结构体
+    r"""GetStatisticData请求参数结构体
 
     """
 
@@ -4806,7 +4806,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID。若不指定设备，可传"-1"
+        r"""设备ID。若不指定设备，可传"-1"
         :rtype: str
         """
         return self._DeviceId
@@ -4817,7 +4817,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """统计开始时间，单位：s
+        r"""统计开始时间，单位：s
         :rtype: int
         """
         return self._BeginTime
@@ -4828,7 +4828,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """统计结束时间，单位：s
+        r"""统计结束时间，单位：s
         :rtype: int
         """
         return self._EndTime
@@ -4839,7 +4839,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        """聚合粒度：
+        r"""聚合粒度：
 1:按小时统计
 2:按天统计
         :rtype: int
@@ -4852,7 +4852,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
         :rtype: str
         """
         return self._AccessRegion
@@ -4863,7 +4863,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        """网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :rtype: int
         """
         return self._GatewayType
@@ -4874,7 +4874,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+        r"""设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
         :rtype: list of str
         """
         return self._DeviceList
@@ -4885,7 +4885,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        r"""设备分组ID，若不指定分组则不传，按分组下载数据时使用
         :rtype: str
         """
         return self._GroupId
@@ -4915,7 +4915,7 @@ class GetStatisticDataRequest(AbstractModel):
 
 
 class GetStatisticDataResponse(AbstractModel):
-    """GetStatisticData返回参数结构体
+    r"""GetStatisticData返回参数结构体
 
     """
 
@@ -4931,7 +4931,7 @@ class GetStatisticDataResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        """文件地址url
+        r"""文件地址url
         :rtype: str
         """
         return self._FilePath
@@ -4942,7 +4942,7 @@ class GetStatisticDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4958,7 +4958,7 @@ class GetStatisticDataResponse(AbstractModel):
 
 
 class GetVendorHardwareRequest(AbstractModel):
-    """GetVendorHardware请求参数结构体
+    r"""GetVendorHardware请求参数结构体
 
     """
 
@@ -4983,7 +4983,7 @@ class GetVendorHardwareRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -4994,7 +4994,7 @@ class GetVendorHardwareRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页面数量
+        r"""页面数量
         :rtype: int
         """
         return self._PageSize
@@ -5005,7 +5005,7 @@ class GetVendorHardwareRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -5016,7 +5016,7 @@ class GetVendorHardwareRequest(AbstractModel):
 
     @property
     def Status(self):
-        """激活状态，
+        r"""激活状态，
 空：全部；
 1:待激活；
 2:已激活；
@@ -5045,7 +5045,7 @@ class GetVendorHardwareRequest(AbstractModel):
 
 
 class GetVendorHardwareResponse(AbstractModel):
-    """GetVendorHardware返回参数结构体
+    r"""GetVendorHardware返回参数结构体
 
     """
 
@@ -5067,7 +5067,7 @@ class GetVendorHardwareResponse(AbstractModel):
 
     @property
     def VendorHardware(self):
-        """硬件信息列表
+        r"""硬件信息列表
         :rtype: list of VendorHardware
         """
         return self._VendorHardware
@@ -5078,7 +5078,7 @@ class GetVendorHardwareResponse(AbstractModel):
 
     @property
     def Length(self):
-        """设备总数
+        r"""设备总数
         :rtype: int
         """
         return self._Length
@@ -5089,7 +5089,7 @@ class GetVendorHardwareResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -5100,7 +5100,7 @@ class GetVendorHardwareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5123,7 +5123,7 @@ class GetVendorHardwareResponse(AbstractModel):
 
 
 class GroupAddDeviceRequest(AbstractModel):
-    """GroupAddDevice请求参数结构体
+    r"""GroupAddDevice请求参数结构体
 
     """
 
@@ -5139,7 +5139,7 @@ class GroupAddDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5150,7 +5150,7 @@ class GroupAddDeviceRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """待添加的设备列表
+        r"""待添加的设备列表
         :rtype: list of str
         """
         return self._DeviceList
@@ -5174,7 +5174,7 @@ class GroupAddDeviceRequest(AbstractModel):
 
 
 class GroupAddDeviceResponse(AbstractModel):
-    """GroupAddDevice返回参数结构体
+    r"""GroupAddDevice返回参数结构体
 
     """
 
@@ -5190,7 +5190,7 @@ class GroupAddDeviceResponse(AbstractModel):
 
     @property
     def DeviceNum(self):
-        """分组中的设备数量
+        r"""分组中的设备数量
         :rtype: int
         """
         return self._DeviceNum
@@ -5201,7 +5201,7 @@ class GroupAddDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5217,7 +5217,7 @@ class GroupAddDeviceResponse(AbstractModel):
 
 
 class GroupDeleteDeviceRequest(AbstractModel):
-    """GroupDeleteDevice请求参数结构体
+    r"""GroupDeleteDevice请求参数结构体
 
     """
 
@@ -5233,7 +5233,7 @@ class GroupDeleteDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5244,7 +5244,7 @@ class GroupDeleteDeviceRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """待删除的设备列表
+        r"""待删除的设备列表
         :rtype: list of str
         """
         return self._DeviceList
@@ -5268,7 +5268,7 @@ class GroupDeleteDeviceRequest(AbstractModel):
 
 
 class GroupDeleteDeviceResponse(AbstractModel):
-    """GroupDeleteDevice返回参数结构体
+    r"""GroupDeleteDevice返回参数结构体
 
     """
 
@@ -5284,7 +5284,7 @@ class GroupDeleteDeviceResponse(AbstractModel):
 
     @property
     def DeviceNum(self):
-        """分组中的设备数量
+        r"""分组中的设备数量
         :rtype: int
         """
         return self._DeviceNum
@@ -5295,7 +5295,7 @@ class GroupDeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5311,7 +5311,7 @@ class GroupDeleteDeviceResponse(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """分组的基本信息
+    r"""分组的基本信息
 
     """
 
@@ -5339,7 +5339,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5350,7 +5350,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名
+        r"""分组名
         :rtype: str
         """
         return self._GroupName
@@ -5361,7 +5361,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """分组创建的时间，单位：ms	
+        r"""分组创建的时间，单位：ms	
         :rtype: str
         """
         return self._CreateTime
@@ -5372,7 +5372,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """分组更新的时间，单位：ms	
+        r"""分组更新的时间，单位：ms	
         :rtype: str
         """
         return self._UpdateTime
@@ -5383,7 +5383,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -5394,7 +5394,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def DeviceNum(self):
-        """分组中的设备数量
+        r"""分组中的设备数量
         :rtype: int
         """
         return self._DeviceNum
@@ -5422,7 +5422,7 @@ class GroupInfo(AbstractModel):
 
 
 class Hardware(AbstractModel):
-    """新建Hardware入参
+    r"""新建Hardware入参
 
     """
 
@@ -5447,7 +5447,7 @@ class Hardware(AbstractModel):
 
     @property
     def SN(self):
-        """硬件序列号
+        r"""硬件序列号
         :rtype: str
         """
         return self._SN
@@ -5458,7 +5458,7 @@ class Hardware(AbstractModel):
 
     @property
     def LicenseChargingMode(self):
-        """license计费模式：
+        r"""license计费模式：
 1，租户付费
 2，厂商月付费
 3，厂商永久授权
@@ -5472,7 +5472,7 @@ class Hardware(AbstractModel):
 
     @property
     def Description(self):
-        """设备描述
+        r"""设备描述
         :rtype: str
         """
         return self._Description
@@ -5483,7 +5483,7 @@ class Hardware(AbstractModel):
 
     @property
     def HardwareId(self):
-        """硬件ID，入参无需传递
+        r"""硬件ID，入参无需传递
         :rtype: str
         """
         return self._HardwareId
@@ -5509,7 +5509,7 @@ class Hardware(AbstractModel):
 
 
 class HardwareInfo(AbstractModel):
-    """硬件信息
+    r"""硬件信息
 
     """
 
@@ -5566,7 +5566,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -5577,7 +5577,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -5588,7 +5588,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """激活时间
+        r"""激活时间
         :rtype: str
         """
         return self._ActiveTime
@@ -5599,7 +5599,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def LastOnlineTime(self):
-        """最后在线时间
+        r"""最后在线时间
         :rtype: str
         """
         return self._LastOnlineTime
@@ -5610,7 +5610,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def Description(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Description
@@ -5621,7 +5621,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def VendorDescription(self):
-        """厂商备注
+        r"""厂商备注
         :rtype: str
         """
         return self._VendorDescription
@@ -5632,7 +5632,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def LicenseChargingMode(self):
-        """license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+        r"""license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：后续将废弃此参数，新接入请使用LicensePayMode和Payer
         :rtype: int
         """
@@ -5644,7 +5644,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -5655,7 +5655,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def SN(self):
-        """硬件序列号
+        r"""硬件序列号
         :rtype: str
         """
         return self._SN
@@ -5666,7 +5666,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        """license授权有效期 
+        r"""license授权有效期 
 0：月度授权 
 1：永久授权
         :rtype: int
@@ -5679,7 +5679,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def Payer(self):
-        """付费方 
+        r"""付费方 
 0：客户付费 
 1：厂商付费
         :rtype: int
@@ -5692,7 +5692,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组ID
+        r"""设备分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5703,7 +5703,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备分组名称
+        r"""设备分组名称
         :rtype: str
         """
         return self._GroupName
@@ -5714,7 +5714,7 @@ class HardwareInfo(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        """设备无流量包处理方式，0: 按量付费，1: 截断加速	
+        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速	
         :rtype: int
         """
         return self._FlowTrunc
@@ -5750,7 +5750,7 @@ class HardwareInfo(AbstractModel):
 
 
 class L3ConnInfo(AbstractModel):
-    """三层互通规则信息
+    r"""三层互通规则信息
 
     """
 
@@ -5781,7 +5781,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def L3ConnId(self):
-        """互通规则ID
+        r"""互通规则ID
         :rtype: str
         """
         return self._L3ConnId
@@ -5792,7 +5792,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def DeviceId1(self):
-        """互通设备ID
+        r"""互通设备ID
         :rtype: str
         """
         return self._DeviceId1
@@ -5803,7 +5803,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def Cidr1(self):
-        """互通规则CIDR
+        r"""互通规则CIDR
         :rtype: str
         """
         return self._Cidr1
@@ -5814,7 +5814,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def DeviceId2(self):
-        """互通设备ID
+        r"""互通设备ID
         :rtype: str
         """
         return self._DeviceId2
@@ -5825,7 +5825,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def Cidr2(self):
-        """互通规则CIDR
+        r"""互通规则CIDR
         :rtype: str
         """
         return self._Cidr2
@@ -5836,7 +5836,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def Enable(self):
-        """互通规则启用状态
+        r"""互通规则启用状态
         :rtype: bool
         """
         return self._Enable
@@ -5847,7 +5847,7 @@ class L3ConnInfo(AbstractModel):
 
     @property
     def Description(self):
-        """互通规则描述
+        r"""互通规则描述
         :rtype: str
         """
         return self._Description
@@ -5876,7 +5876,7 @@ class L3ConnInfo(AbstractModel):
 
 
 class ModifyPackageRenewFlagRequest(AbstractModel):
-    """ModifyPackageRenewFlag请求参数结构体
+    r"""ModifyPackageRenewFlag请求参数结构体
 
     """
 
@@ -5892,7 +5892,7 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """流量包的唯一资源ID
+        r"""流量包的唯一资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -5903,7 +5903,7 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识。true代表自动续费，false代表不自动续费
+        r"""自动续费标识。true代表自动续费，false代表不自动续费
         :rtype: bool
         """
         return self._RenewFlag
@@ -5927,7 +5927,7 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
 
 class ModifyPackageRenewFlagResponse(AbstractModel):
-    """ModifyPackageRenewFlag返回参数结构体
+    r"""ModifyPackageRenewFlag返回参数结构体
 
     """
 
@@ -5940,7 +5940,7 @@ class ModifyPackageRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5955,7 +5955,7 @@ class ModifyPackageRenewFlagResponse(AbstractModel):
 
 
 class MonitorData(AbstractModel):
-    """流量监控指标
+    r"""流量监控指标
 
     """
 
@@ -5974,7 +5974,7 @@ class MonitorData(AbstractModel):
 
     @property
     def Time(self):
-        """时间点：s
+        r"""时间点：s
         :rtype: str
         """
         return self._Time
@@ -5985,7 +5985,7 @@ class MonitorData(AbstractModel):
 
     @property
     def BusinessMetrics(self):
-        """业务指标（bps/ms/%）
+        r"""业务指标（bps/ms/%）
         :rtype: float
         """
         return self._BusinessMetrics
@@ -5996,7 +5996,7 @@ class MonitorData(AbstractModel):
 
     @property
     def SlotNetInfo(self):
-        """网卡状态信息
+        r"""网卡状态信息
         :rtype: list of SlotNetInfo
         """
         return self._SlotNetInfo
@@ -6026,7 +6026,7 @@ class MonitorData(AbstractModel):
 
 
 class NetDetails(AbstractModel):
-    """网络详细信息
+    r"""网络详细信息
 
     """
 
@@ -6042,7 +6042,7 @@ class NetDetails(AbstractModel):
 
     @property
     def Current(self):
-        """流量值（byte）
+        r"""流量值（byte）
         :rtype: float
         """
         return self._Current
@@ -6053,7 +6053,7 @@ class NetDetails(AbstractModel):
 
     @property
     def Time(self):
-        """时间点，单位：s
+        r"""时间点，单位：s
         :rtype: str
         """
         return self._Time
@@ -6077,7 +6077,7 @@ class NetDetails(AbstractModel):
 
 
 class OrderFlowPackageRequest(AbstractModel):
-    """OrderFlowPackage请求参数结构体
+    r"""OrderFlowPackage请求参数结构体
 
     """
 
@@ -6122,7 +6122,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def PackageType(self):
-        """流量包规格类型。可取值如下：
+        r"""流量包规格类型。可取值如下：
 DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
 DEVICE_3_FLOW_100G、
 DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
@@ -6141,7 +6141,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def DeviceList(self):
-        """流量包绑定的设备ID列表。捆绑设备个数上限取决于包的规格档位：
+        r"""流量包绑定的设备ID列表。捆绑设备个数上限取决于包的规格档位：
 20G：最多绑定1个设备
 50G：最多绑定2个设备
 100G：最多绑定3个设备
@@ -6156,7 +6156,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费，该选项和流量截断冲突，只能开启一个
+        r"""是否自动续费，该选项和流量截断冲突，只能开启一个
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -6167,7 +6167,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def PackageRegion(self):
-        """区域标识，0：国内，1：国外
+        r"""区域标识，0：国内，1：国外
         :rtype: int
         """
         return self._PackageRegion
@@ -6178,7 +6178,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def FlowTruncFlag(self):
-        """是否开启流量截断功能，该选项和自动续费冲突
+        r"""是否开启流量截断功能，该选项和自动续费冲突
         :rtype: bool
         """
         return self._FlowTruncFlag
@@ -6189,7 +6189,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def AutoVoucher(self):
-        """是否自动选择代金券，默认false。
+        r"""是否自动选择代金券，默认false。
 有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
         :rtype: bool
         """
@@ -6201,7 +6201,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def VoucherIds(self):
-        """指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+        r"""指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
 注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
         :rtype: list of str
         """
@@ -6231,7 +6231,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
 
 class OrderFlowPackageResponse(AbstractModel):
-    """OrderFlowPackage返回参数结构体
+    r"""OrderFlowPackage返回参数结构体
 
     """
 
@@ -6247,7 +6247,7 @@ class OrderFlowPackageResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """流量包的唯一资源ID
+        r"""流量包的唯一资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -6258,7 +6258,7 @@ class OrderFlowPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6274,7 +6274,7 @@ class OrderFlowPackageResponse(AbstractModel):
 
 
 class OrderInfo(AbstractModel):
-    """返回上报的订单信息
+    r"""返回上报的订单信息
 
     """
 
@@ -6302,7 +6302,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """父账号uin
+        r"""父账号uin
         :rtype: str
         """
         return self._Uin
@@ -6313,7 +6313,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目id
+        r"""项目id
         :rtype: str
         """
         return self._ProjectId
@@ -6324,7 +6324,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def PackageType(self):
-        """用量类型
+        r"""用量类型
         :rtype: str
         """
         return self._PackageType
@@ -6335,7 +6335,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单编号唯一标识符
+        r"""订单编号唯一标识符
         :rtype: str
         """
         return self._OrderId
@@ -6346,7 +6346,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def ReportMonth(self):
-        """上报月份，默认当前月
+        r"""上报月份，默认当前月
         :rtype: str
         """
         return self._ReportMonth
@@ -6357,7 +6357,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Updated(self):
-        """数据更新时间
+        r"""数据更新时间
         :rtype: str
         """
         return self._Updated
@@ -6385,7 +6385,7 @@ class OrderInfo(AbstractModel):
 
 
 class OrderPerLicenseRequest(AbstractModel):
-    """OrderPerLicense请求参数结构体
+    r"""OrderPerLicense请求参数结构体
 
     """
 
@@ -6412,7 +6412,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """购买永久授权License的设备ID，如果是厂商未激活设备采用HardwareId
+        r"""购买永久授权License的设备ID，如果是厂商未激活设备采用HardwareId
         :rtype: str
         """
         return self._DeviceId
@@ -6423,7 +6423,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
     @property
     def Type(self):
-        """设备类型，0: SDK，1: CPE，作为用户创建或激活设备时传0，作为厂商创建待激活设备时传1
+        r"""设备类型，0: SDK，1: CPE，作为用户创建或激活设备时传0，作为厂商创建待激活设备时传1
         :rtype: int
         """
         return self._Type
@@ -6434,7 +6434,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
     @property
     def RollBack(self):
-        """购买失败后是否回滚（删除）设备，默认false，如果设备绑定了生效中的流量包则不能回滚。
+        r"""购买失败后是否回滚（删除）设备，默认false，如果设备绑定了生效中的流量包则不能回滚。
         :rtype: bool
         """
         return self._RollBack
@@ -6445,7 +6445,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动选择代金券，默认false。
+        r"""是否自动选择代金券，默认false。
 有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
         :rtype: bool
         """
@@ -6457,7 +6457,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+        r"""指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
 注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
         :rtype: list of str
         """
@@ -6485,7 +6485,7 @@ class OrderPerLicenseRequest(AbstractModel):
 
 
 class OrderPerLicenseResponse(AbstractModel):
-    """OrderPerLicense返回参数结构体
+    r"""OrderPerLicense返回参数结构体
 
     """
 
@@ -6501,7 +6501,7 @@ class OrderPerLicenseResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """一次性授权License的资源ID
+        r"""一次性授权License的资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -6512,7 +6512,7 @@ class OrderPerLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6528,7 +6528,7 @@ class OrderPerLicenseResponse(AbstractModel):
 
 
 class ReportOrderRequest(AbstractModel):
-    """ReportOrder请求参数结构体
+    r"""ReportOrder请求参数结构体
 
     """
 
@@ -6550,7 +6550,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单编号唯一标识符
+        r"""订单编号唯一标识符
         :rtype: str
         """
         return self._OrderId
@@ -6561,7 +6561,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目id
+        r"""项目id
         :rtype: str
         """
         return self._ProjectId
@@ -6572,7 +6572,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """用量类型
+        r"""用量类型
         :rtype: str
         """
         return self._PackageType
@@ -6583,7 +6583,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def ReportMonth(self):
-        """上报月份，默认当前月
+        r"""上报月份，默认当前月
         :rtype: str
         """
         return self._ReportMonth
@@ -6609,7 +6609,7 @@ class ReportOrderRequest(AbstractModel):
 
 
 class ReportOrderResponse(AbstractModel):
-    """ReportOrder返回参数结构体
+    r"""ReportOrder返回参数结构体
 
     """
 
@@ -6625,7 +6625,7 @@ class ReportOrderResponse(AbstractModel):
 
     @property
     def OrderInfo(self):
-        """订单信息
+        r"""订单信息
         :rtype: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
         """
         return self._OrderInfo
@@ -6636,7 +6636,7 @@ class ReportOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6654,7 +6654,7 @@ class ReportOrderResponse(AbstractModel):
 
 
 class SetNotifyUrlRequest(AbstractModel):
-    """SetNotifyUrl请求参数结构体
+    r"""SetNotifyUrl请求参数结构体
 
     """
 
@@ -6673,7 +6673,7 @@ class SetNotifyUrlRequest(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        """告警通知回调url
+        r"""告警通知回调url
         :rtype: str
         """
         return self._NotifyUrl
@@ -6684,7 +6684,7 @@ class SetNotifyUrlRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """告警通知回调key
+        r"""告警通知回调key
         :rtype: str
         """
         return self._CallbackKey
@@ -6695,7 +6695,7 @@ class SetNotifyUrlRequest(AbstractModel):
 
     @property
     def AlarmValue(self):
-        """流量包的告警阈值
+        r"""流量包的告警阈值
         :rtype: int
         """
         return self._AlarmValue
@@ -6720,7 +6720,7 @@ class SetNotifyUrlRequest(AbstractModel):
 
 
 class SetNotifyUrlResponse(AbstractModel):
-    """SetNotifyUrl返回参数结构体
+    r"""SetNotifyUrl返回参数结构体
 
     """
 
@@ -6733,7 +6733,7 @@ class SetNotifyUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6748,7 +6748,7 @@ class SetNotifyUrlResponse(AbstractModel):
 
 
 class SlotNetInfo(AbstractModel):
-    """网卡流量指标数据
+    r"""网卡流量指标数据
 
     """
 
@@ -6767,7 +6767,7 @@ class SlotNetInfo(AbstractModel):
 
     @property
     def NetInfoName(self):
-        """网卡名
+        r"""网卡名
         :rtype: str
         """
         return self._NetInfoName
@@ -6778,7 +6778,7 @@ class SlotNetInfo(AbstractModel):
 
     @property
     def PublicIP(self):
-        """公网IP
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIP
@@ -6789,7 +6789,7 @@ class SlotNetInfo(AbstractModel):
 
     @property
     def Current(self):
-        """指标数据（bps/ms/%）
+        r"""指标数据（bps/ms/%）
         :rtype: float
         """
         return self._Current
@@ -6814,7 +6814,7 @@ class SlotNetInfo(AbstractModel):
 
 
 class UpdateDeviceRequest(AbstractModel):
-    """UpdateDevice请求参数结构体
+    r"""UpdateDevice请求参数结构体
 
     """
 
@@ -6839,7 +6839,7 @@ class UpdateDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -6850,7 +6850,7 @@ class UpdateDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -6861,7 +6861,7 @@ class UpdateDeviceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """设备备注
+        r"""设备备注
         :rtype: str
         """
         return self._Remark
@@ -6872,7 +6872,7 @@ class UpdateDeviceRequest(AbstractModel):
 
     @property
     def UpdateNetInfo(self):
-        """更新设备网络信息
+        r"""更新设备网络信息
         :rtype: list of UpdateNetInfo
         """
         return self._UpdateNetInfo
@@ -6883,7 +6883,7 @@ class UpdateDeviceRequest(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        """设备无流量包处理方式，0: 按量付费，1: 截断加速
+        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速
         :rtype: int
         """
         return self._FlowTrunc
@@ -6915,7 +6915,7 @@ class UpdateDeviceRequest(AbstractModel):
 
 
 class UpdateDeviceResponse(AbstractModel):
-    """UpdateDevice返回参数结构体
+    r"""UpdateDevice返回参数结构体
 
     """
 
@@ -6928,7 +6928,7 @@ class UpdateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6943,7 +6943,7 @@ class UpdateDeviceResponse(AbstractModel):
 
 
 class UpdateGroupRequest(AbstractModel):
-    """UpdateGroup请求参数结构体
+    r"""UpdateGroup请求参数结构体
 
     """
 
@@ -6959,7 +6959,7 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -6970,7 +6970,7 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """分组备注
+        r"""分组备注
         :rtype: str
         """
         return self._Description
@@ -6994,7 +6994,7 @@ class UpdateGroupRequest(AbstractModel):
 
 
 class UpdateGroupResponse(AbstractModel):
-    """UpdateGroup返回参数结构体
+    r"""UpdateGroup返回参数结构体
 
     """
 
@@ -7007,7 +7007,7 @@ class UpdateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7022,7 +7022,7 @@ class UpdateGroupResponse(AbstractModel):
 
 
 class UpdateHardwareRequest(AbstractModel):
-    """UpdateHardware请求参数结构体
+    r"""UpdateHardware请求参数结构体
 
     """
 
@@ -7041,7 +7041,7 @@ class UpdateHardwareRequest(AbstractModel):
 
     @property
     def HardwareId(self):
-        """硬件ID
+        r"""硬件ID
         :rtype: str
         """
         return self._HardwareId
@@ -7052,7 +7052,7 @@ class UpdateHardwareRequest(AbstractModel):
 
     @property
     def SN(self):
-        """硬件序列号
+        r"""硬件序列号
         :rtype: str
         """
         return self._SN
@@ -7063,7 +7063,7 @@ class UpdateHardwareRequest(AbstractModel):
 
     @property
     def Description(self):
-        """设备备注
+        r"""设备备注
         :rtype: str
         """
         return self._Description
@@ -7088,7 +7088,7 @@ class UpdateHardwareRequest(AbstractModel):
 
 
 class UpdateHardwareResponse(AbstractModel):
-    """UpdateHardware返回参数结构体
+    r"""UpdateHardware返回参数结构体
 
     """
 
@@ -7101,7 +7101,7 @@ class UpdateHardwareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7116,7 +7116,7 @@ class UpdateHardwareResponse(AbstractModel):
 
 
 class UpdateL3CidrRequest(AbstractModel):
-    """UpdateL3Cidr请求参数结构体
+    r"""UpdateL3Cidr请求参数结构体
 
     """
 
@@ -7141,7 +7141,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def L3ConnId(self):
-        """互通规则ID
+        r"""互通规则ID
         :rtype: str
         """
         return self._L3ConnId
@@ -7152,7 +7152,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def Cidr1(self):
-        """互通规则CIDR
+        r"""互通规则CIDR
         :rtype: str
         """
         return self._Cidr1
@@ -7163,7 +7163,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def DeviceId1(self):
-        """互通设备ID
+        r"""互通设备ID
         :rtype: str
         """
         return self._DeviceId1
@@ -7174,7 +7174,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def DeviceId2(self):
-        """互通设备ID
+        r"""互通设备ID
         :rtype: str
         """
         return self._DeviceId2
@@ -7185,7 +7185,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def Cidr2(self):
-        """互通规则CIDR
+        r"""互通规则CIDR
         :rtype: str
         """
         return self._Cidr2
@@ -7212,7 +7212,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
 
 class UpdateL3CidrResponse(AbstractModel):
-    """UpdateL3Cidr返回参数结构体
+    r"""UpdateL3Cidr返回参数结构体
 
     """
 
@@ -7225,7 +7225,7 @@ class UpdateL3CidrResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7240,7 +7240,7 @@ class UpdateL3CidrResponse(AbstractModel):
 
 
 class UpdateL3ConnRequest(AbstractModel):
-    """UpdateL3Conn请求参数结构体
+    r"""UpdateL3Conn请求参数结构体
 
     """
 
@@ -7256,7 +7256,7 @@ class UpdateL3ConnRequest(AbstractModel):
 
     @property
     def L3ConnId(self):
-        """互通规则ID
+        r"""互通规则ID
         :rtype: str
         """
         return self._L3ConnId
@@ -7267,7 +7267,7 @@ class UpdateL3ConnRequest(AbstractModel):
 
     @property
     def Description(self):
-        """互通规则备注
+        r"""互通规则备注
         :rtype: str
         """
         return self._Description
@@ -7291,7 +7291,7 @@ class UpdateL3ConnRequest(AbstractModel):
 
 
 class UpdateL3ConnResponse(AbstractModel):
-    """UpdateL3Conn返回参数结构体
+    r"""UpdateL3Conn返回参数结构体
 
     """
 
@@ -7304,7 +7304,7 @@ class UpdateL3ConnResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7319,7 +7319,7 @@ class UpdateL3ConnResponse(AbstractModel):
 
 
 class UpdateL3SwitchRequest(AbstractModel):
-    """UpdateL3Switch请求参数结构体
+    r"""UpdateL3Switch请求参数结构体
 
     """
 
@@ -7335,7 +7335,7 @@ class UpdateL3SwitchRequest(AbstractModel):
 
     @property
     def L3ConnId(self):
-        """互通规则ID
+        r"""互通规则ID
         :rtype: str
         """
         return self._L3ConnId
@@ -7346,7 +7346,7 @@ class UpdateL3SwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """互通规则开关
+        r"""互通规则开关
         :rtype: bool
         """
         return self._Enable
@@ -7370,7 +7370,7 @@ class UpdateL3SwitchRequest(AbstractModel):
 
 
 class UpdateL3SwitchResponse(AbstractModel):
-    """UpdateL3Switch返回参数结构体
+    r"""UpdateL3Switch返回参数结构体
 
     """
 
@@ -7383,7 +7383,7 @@ class UpdateL3SwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7398,7 +7398,7 @@ class UpdateL3SwitchResponse(AbstractModel):
 
 
 class UpdateNetInfo(AbstractModel):
-    """更新设备网络状态信息
+    r"""更新设备网络状态信息
 
     """
 
@@ -7425,7 +7425,7 @@ class UpdateNetInfo(AbstractModel):
 
     @property
     def Type(self):
-        """网络类型：
+        r"""网络类型：
 0:数据
 1:Wi-Fi
         :rtype: int
@@ -7438,7 +7438,7 @@ class UpdateNetInfo(AbstractModel):
 
     @property
     def DataEnable(self):
-        """启用/禁用
+        r"""启用/禁用
         :rtype: bool
         """
         return self._DataEnable
@@ -7449,7 +7449,7 @@ class UpdateNetInfo(AbstractModel):
 
     @property
     def UploadLimit(self):
-        """上行限速：bit
+        r"""上行限速：bit
         :rtype: int
         """
         return self._UploadLimit
@@ -7460,7 +7460,7 @@ class UpdateNetInfo(AbstractModel):
 
     @property
     def DownloadLimit(self):
-        """下行限速：bit
+        r"""下行限速：bit
         :rtype: int
         """
         return self._DownloadLimit
@@ -7471,7 +7471,7 @@ class UpdateNetInfo(AbstractModel):
 
     @property
     def NetInfoName(self):
-        """网卡名
+        r"""网卡名
         :rtype: str
         """
         return self._NetInfoName
@@ -7498,7 +7498,7 @@ class UpdateNetInfo(AbstractModel):
 
 
 class VendorHardware(AbstractModel):
-    """厂商硬件详细信息
+    r"""厂商硬件详细信息
 
     """
 
@@ -7547,7 +7547,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def HardwareId(self):
-        """硬件id
+        r"""硬件id
         :rtype: str
         """
         return self._HardwareId
@@ -7558,7 +7558,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def SN(self):
-        """硬件序列号
+        r"""硬件序列号
         :rtype: str
         """
         return self._SN
@@ -7569,7 +7569,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7580,7 +7580,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def Status(self):
-        """激活状态， 空：全部； 1:待激活； 2:已激活
+        r"""激活状态， 空：全部； 1:待激活； 2:已激活
         :rtype: int
         """
         return self._Status
@@ -7591,7 +7591,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """激活时间
+        r"""激活时间
         :rtype: str
         """
         return self._ActiveTime
@@ -7602,7 +7602,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def Description(self):
-        """厂商备注
+        r"""厂商备注
         :rtype: str
         """
         return self._Description
@@ -7613,7 +7613,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -7624,7 +7624,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def LicenseChargingMode(self):
-        """license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+        r"""license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
         :rtype: int
         """
@@ -7636,7 +7636,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def LastOnlineTime(self):
-        """最后在线时间
+        r"""最后在线时间
         :rtype: str
         """
         return self._LastOnlineTime
@@ -7647,7 +7647,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        """license授权有效期
+        r"""license授权有效期
 0：月度授权
 1：永久授权
 -1：未知
@@ -7661,7 +7661,7 @@ class VendorHardware(AbstractModel):
 
     @property
     def Payer(self):
-        """付费方
+        r"""付费方
 0：客户付费
 1：厂商付费
         :rtype: int

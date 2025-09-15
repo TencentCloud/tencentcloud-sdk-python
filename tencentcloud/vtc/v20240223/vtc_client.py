@@ -27,7 +27,7 @@ class VtcClient(AbstractClient):
 
 
     def ConfirmVideoTranslateJob(self, request):
-        """确认视频翻译结果
+        r"""确认视频翻译结果
 
         :param request: Request instance for ConfirmVideoTranslateJob.
         :type request: :class:`tencentcloud.vtc.v20240223.models.ConfirmVideoTranslateJobRequest`
@@ -50,7 +50,7 @@ class VtcClient(AbstractClient):
 
 
     def DescribeVideoTranslateJob(self, request):
-        """查询视频翻译任务
+        r"""查询视频翻译任务
 
         :param request: Request instance for DescribeVideoTranslateJob.
         :type request: :class:`tencentcloud.vtc.v20240223.models.DescribeVideoTranslateJobRequest`
@@ -73,7 +73,7 @@ class VtcClient(AbstractClient):
 
 
     def SubmitVideoTranslateJob(self, request):
-        """###### 支持音色种别列表
+        r"""###### 支持音色种别列表
         | 音色名称                 | 性别 | 目标语言         | 音色ID |
         | ------------------------ | ---- | ---------------- | ------ |
         | Florian Multilingual     | 男 | 德语(德国)       | 701001 |

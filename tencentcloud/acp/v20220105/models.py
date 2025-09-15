@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AppInfoItem(AbstractModel):
-    """应用合规隐私诊断任务应用数据信息
+    r"""应用合规隐私诊断任务应用数据信息
 
     """
 
@@ -65,7 +65,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppPackage(self):
-        """App包名
+        r"""App包名
         :rtype: str
         """
         return self._AppPackage
@@ -76,7 +76,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppName(self):
-        """App名称
+        r"""App名称
         :rtype: str
         """
         return self._AppName
@@ -87,7 +87,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppVersion(self):
-        """App版本
+        r"""App版本
         :rtype: str
         """
         return self._AppVersion
@@ -98,7 +98,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -109,7 +109,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """App隐私诊断报告下载链接
+        r"""App隐私诊断报告下载链接
         :rtype: str
         """
         return self._ReportUrl
@@ -120,7 +120,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def ReportTitle(self):
-        """App隐私诊断报告名称
+        r"""App隐私诊断报告名称
         :rtype: str
         """
         return self._ReportTitle
@@ -131,7 +131,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def BehaviorUrl(self):
-        """App诊断堆栈报告下载链接
+        r"""App诊断堆栈报告下载链接
         :rtype: str
         """
         return self._BehaviorUrl
@@ -142,7 +142,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def BehaviorTitle(self):
-        """App诊断堆栈报告名称
+        r"""App诊断堆栈报告名称
         :rtype: str
         """
         return self._BehaviorTitle
@@ -153,7 +153,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def HighRiskCount(self):
-        """诊断高风险项数量
+        r"""诊断高风险项数量
         :rtype: int
         """
         return self._HighRiskCount
@@ -164,7 +164,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def PrivacyTextName(self):
-        """隐私申明文件名称
+        r"""隐私申明文件名称
         :rtype: str
         """
         return self._PrivacyTextName
@@ -175,7 +175,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def SoftwareMD5(self):
-        """软件MD5
+        r"""软件MD5
         :rtype: str
         """
         return self._SoftwareMD5
@@ -186,7 +186,7 @@ class AppInfoItem(AbstractModel):
 
     @property
     def PrivacyTextMD5(self):
-        """隐私文本MD5
+        r"""隐私文本MD5
         :rtype: str
         """
         return self._PrivacyTextMD5
@@ -220,7 +220,7 @@ class AppInfoItem(AbstractModel):
 
 
 class AppTaskData(AbstractModel):
-    """应用合规隐私诊断任务数据
+    r"""应用合规隐私诊断任务数据
 
     """
 
@@ -257,7 +257,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskID
@@ -268,7 +268,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -279,7 +279,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        r"""0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :rtype: int
         """
         return self._TaskStatus
@@ -290,7 +290,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskErrMsg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._TaskErrMsg
@@ -301,7 +301,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
+        r"""任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
         :rtype: int
         """
         return self._Source
@@ -312,7 +312,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def AppInfo(self):
-        """应用信息
+        r"""应用信息
         :rtype: :class:`tencentcloud.acp.v20220105.models.AppInfoItem`
         """
         return self._AppInfo
@@ -323,7 +323,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务启动时间
+        r"""任务启动时间
         :rtype: str
         """
         return self._StartTime
@@ -334,7 +334,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务完成时间(更新时间)
+        r"""任务完成时间(更新时间)
         :rtype: str
         """
         return self._EndTime
@@ -345,7 +345,7 @@ class AppTaskData(AbstractModel):
 
     @property
     def ContactName(self):
-        """联系人信息
+        r"""联系人信息
         :rtype: str
         """
         return self._ContactName
@@ -378,7 +378,7 @@ class AppTaskData(AbstractModel):
 
 
 class CreateAppScanTaskRepeatRequest(AbstractModel):
-    """CreateAppScanTaskRepeat请求参数结构体
+    r"""CreateAppScanTaskRepeat请求参数结构体
 
     """
 
@@ -424,7 +424,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -435,7 +435,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -446,7 +446,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -457,7 +457,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def OrgTaskID(self):
-        """原诊断任务ID
+        r"""原诊断任务ID
         :rtype: str
         """
         return self._OrgTaskID
@@ -468,7 +468,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def AppPackage(self):
-        """App包名
+        r"""App包名
         :rtype: str
         """
         return self._AppPackage
@@ -479,7 +479,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def FileID(self):
-        """上传的文件ID(任务来源为1时必填)
+        r"""上传的文件ID(任务来源为1时必填)
         :rtype: str
         """
         return self._FileID
@@ -490,7 +490,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def AppDownloadUrl(self):
-        """软件下载链接地址(任务来源为2时必填)
+        r"""软件下载链接地址(任务来源为2时必填)
         :rtype: str
         """
         return self._AppDownloadUrl
@@ -501,7 +501,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def PrivacyTextUrl(self):
-        """隐私文本下载地址(任务来源为2时必填)
+        r"""隐私文本下载地址(任务来源为2时必填)
         :rtype: str
         """
         return self._PrivacyTextUrl
@@ -512,7 +512,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -523,7 +523,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def PrivacyTextName(self):
-        """隐私申明文件名称
+        r"""隐私申明文件名称
         :rtype: str
         """
         return self._PrivacyTextName
@@ -534,7 +534,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def AppSha1(self):
-        """软件Sha1值(PrivacyTextMD5不为空时必填)
+        r"""软件Sha1值(PrivacyTextMD5不为空时必填)
         :rtype: str
         """
         return self._AppSha1
@@ -545,7 +545,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def PrivacyTextMD5(self):
-        """隐私申明文本md5(AppSha1不为空时必填)
+        r"""隐私申明文本md5(AppSha1不为空时必填)
         :rtype: str
         """
         return self._PrivacyTextMD5
@@ -579,7 +579,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
 
 class CreateAppScanTaskRepeatResponse(AbstractModel):
-    """CreateAppScanTaskRepeat返回参数结构体
+    r"""CreateAppScanTaskRepeat返回参数结构体
 
     """
 
@@ -598,7 +598,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -609,7 +609,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskID
@@ -620,7 +620,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -637,7 +637,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
 
 class CreateAppScanTaskRequest(AbstractModel):
-    """CreateAppScanTask请求参数结构体
+    r"""CreateAppScanTask请求参数结构体
 
     """
 
@@ -704,7 +704,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -715,7 +715,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -726,7 +726,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -737,7 +737,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppPackage(self):
-        """App包名
+        r"""App包名
         :rtype: str
         """
         return self._AppPackage
@@ -748,7 +748,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """App名称(任务来源为2时必填)
+        r"""App名称(任务来源为2时必填)
         :rtype: str
         """
         return self._AppName
@@ -759,7 +759,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppVersion(self):
-        """App版本
+        r"""App版本
         :rtype: str
         """
         return self._AppVersion
@@ -770,7 +770,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def FileID(self):
-        """上传的软件文件ID(任务来源为1时必填)
+        r"""上传的软件文件ID(任务来源为1时必填)
         :rtype: str
         """
         return self._FileID
@@ -781,7 +781,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppDownloadUrl(self):
-        """软件下载链接地址(任务来源为2时必填)
+        r"""软件下载链接地址(任务来源为2时必填)
         :rtype: str
         """
         return self._AppDownloadUrl
@@ -792,7 +792,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def PrivacyTextUrl(self):
-        """隐私文本下载地址(任务来源为2时必填)
+        r"""隐私文本下载地址(任务来源为2时必填)
         :rtype: str
         """
         return self._PrivacyTextUrl
@@ -803,7 +803,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def ContactName(self):
-        """联系人信息
+        r"""联系人信息
         :rtype: str
         """
         return self._ContactName
@@ -814,7 +814,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def TelNumber(self):
-        """联系电话
+        r"""联系电话
         :rtype: str
         """
         return self._TelNumber
@@ -825,7 +825,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Email(self):
-        """公司邮箱
+        r"""公司邮箱
         :rtype: str
         """
         return self._Email
@@ -836,7 +836,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def CorpName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CorpName
@@ -847,7 +847,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def SalesPerson(self):
-        """商务对接人员
+        r"""商务对接人员
         :rtype: str
         """
         return self._SalesPerson
@@ -858,7 +858,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -869,7 +869,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def IsAgreePrivacy(self):
-        """是否同意隐私条款，0:不同意(默认), 1:同意
+        r"""是否同意隐私条款，0:不同意(默认), 1:同意
         :rtype: int
         """
         return self._IsAgreePrivacy
@@ -880,7 +880,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def PrivacyTextName(self):
-        """隐私申明文件名称
+        r"""隐私申明文件名称
         :rtype: str
         """
         return self._PrivacyTextName
@@ -891,7 +891,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppSha1(self):
-        """软件Sha1值(PrivacyTextMD5不为空时必填)
+        r"""软件Sha1值(PrivacyTextMD5不为空时必填)
         :rtype: str
         """
         return self._AppSha1
@@ -902,7 +902,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def PrivacyTextMD5(self):
-        """隐私申明文本md5(AppSha1不为空时必填)
+        r"""隐私申明文本md5(AppSha1不为空时必填)
         :rtype: str
         """
         return self._PrivacyTextMD5
@@ -943,7 +943,7 @@ class CreateAppScanTaskRequest(AbstractModel):
 
 
 class CreateAppScanTaskResponse(AbstractModel):
-    """CreateAppScanTask返回参数结构体
+    r"""CreateAppScanTask返回参数结构体
 
     """
 
@@ -962,7 +962,7 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -973,7 +973,7 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskID
@@ -984,7 +984,7 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1001,7 +1001,7 @@ class CreateAppScanTaskResponse(AbstractModel):
 
 
 class DescribeChannelTaskReportUrlRequest(AbstractModel):
-    """DescribeChannelTaskReportUrl请求参数结构体
+    r"""DescribeChannelTaskReportUrl请求参数结构体
 
     """
 
@@ -1029,7 +1029,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1040,7 +1040,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1: iOS，2:小程序
+        r"""应用平台, 0:android, 1: iOS，2:小程序
         :rtype: int
         """
         return self._Platform
@@ -1051,7 +1051,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskID
@@ -1062,7 +1062,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -1073,7 +1073,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+        r"""报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
         :rtype: int
         """
         return self._ReportType
@@ -1084,7 +1084,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     @property
     def AppMD5(self):
-        """子渠道APP MD5值
+        r"""子渠道APP MD5值
         :rtype: str
         """
         return self._AppMD5
@@ -1112,7 +1112,7 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
 
 class DescribeChannelTaskReportUrlResponse(AbstractModel):
-    """DescribeChannelTaskReportUrl返回参数结构体
+    r"""DescribeChannelTaskReportUrl返回参数结构体
 
     """
 
@@ -1134,7 +1134,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -1145,7 +1145,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """诊断报告/堆栈信息/报告json结果下载链接
+        r"""诊断报告/堆栈信息/报告json结果下载链接
         :rtype: str
         """
         return self._ReportUrl
@@ -1156,7 +1156,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportTitle(self):
-        """诊断报告/堆栈/报告json结果的名称
+        r"""诊断报告/堆栈/报告json结果的名称
         :rtype: str
         """
         return self._ReportTitle
@@ -1167,7 +1167,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1185,7 +1185,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
 
 class DescribeFileTicketRequest(AbstractModel):
-    """DescribeFileTicket请求参数结构体
+    r"""DescribeFileTicket请求参数结构体
 
     """
 
@@ -1201,7 +1201,7 @@ class DescribeFileTicketRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1212,7 +1212,7 @@ class DescribeFileTicketRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -1236,7 +1236,7 @@ class DescribeFileTicketRequest(AbstractModel):
 
 
 class DescribeFileTicketResponse(AbstractModel):
-    """DescribeFileTicket返回参数结构体
+    r"""DescribeFileTicket返回参数结构体
 
     """
 
@@ -1261,7 +1261,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -1272,7 +1272,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
     @property
     def UploadUrl(self):
-        """上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
+        r"""上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
         :rtype: str
         """
         return self._UploadUrl
@@ -1283,7 +1283,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
     @property
     def UploadSign(self):
-        """上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
+        r"""上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
         :rtype: str
         """
         return self._UploadSign
@@ -1294,7 +1294,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
     @property
     def FildID(self):
-        """上传文件ID(任务来源为1时提交诊断任务需要)
+        r"""上传文件ID(任务来源为1时提交诊断任务需要)
         :rtype: str
         """
         return self._FildID
@@ -1305,7 +1305,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1324,7 +1324,7 @@ class DescribeFileTicketResponse(AbstractModel):
 
 
 class DescribeResourceUsageInfoRequest(AbstractModel):
-    """DescribeResourceUsageInfo请求参数结构体
+    r"""DescribeResourceUsageInfo请求参数结构体
 
     """
 
@@ -1346,7 +1346,7 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     @property
     def PriceName(self):
-        """资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
+        r"""资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
         :rtype: str
         """
         return self._PriceName
@@ -1357,7 +1357,7 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版
+        r"""任务类型, 0:基础版, 1:专家版
         :rtype: int
         """
         return self._TaskType
@@ -1368,7 +1368,7 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android
+        r"""应用平台, 0:android
         :rtype: int
         """
         return self._Platform
@@ -1379,7 +1379,7 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1405,7 +1405,7 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
 
 class DescribeResourceUsageInfoResponse(AbstractModel):
-    """DescribeResourceUsageInfo返回参数结构体
+    r"""DescribeResourceUsageInfo返回参数结构体
 
     """
 
@@ -1424,7 +1424,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
         :rtype: int
         """
         return self._Result
@@ -1435,7 +1435,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资源使用信息
+        r"""资源使用信息
         :rtype: :class:`tencentcloud.acp.v20220105.models.ResourceUsageInfoData`
         """
         return self._Data
@@ -1446,7 +1446,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1465,7 +1465,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
 
 class DescribeScanTaskListRequest(AbstractModel):
-    """DescribeScanTaskList请求参数结构体
+    r"""DescribeScanTaskList请求参数结构体
 
     """
 
@@ -1502,7 +1502,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1513,7 +1513,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -1524,7 +1524,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def TaskStatuses(self):
-        """任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        r"""任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :rtype: str
         """
         return self._TaskStatuses
@@ -1535,7 +1535,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def TaskTypes(self):
-        """任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
         :rtype: str
         """
         return self._TaskTypes
@@ -1546,7 +1546,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNo
@@ -1557,7 +1557,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页码大小
+        r"""页码大小
         :rtype: int
         """
         return self._PageSize
@@ -1568,7 +1568,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称或小程序名称(可选参数)
+        r"""应用名称或小程序名称(可选参数)
         :rtype: str
         """
         return self._AppName
@@ -1579,7 +1579,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
+        r"""查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
         :rtype: str
         """
         return self._StartTime
@@ -1590,7 +1590,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
+        r"""查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
         :rtype: str
         """
         return self._EndTime
@@ -1621,7 +1621,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
 
 class DescribeScanTaskListResponse(AbstractModel):
-    """DescribeScanTaskList返回参数结构体
+    r"""DescribeScanTaskList返回参数结构体
 
     """
 
@@ -1643,7 +1643,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -1654,7 +1654,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """任务总数量
+        r"""任务总数量
         :rtype: int
         """
         return self._Total
@@ -1665,7 +1665,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """诊断任务数据列表
+        r"""诊断任务数据列表
         :rtype: list of AppTaskData
         """
         return self._Data
@@ -1676,7 +1676,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1699,7 +1699,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
 
 class DescribeScanTaskReportUrlRequest(AbstractModel):
-    """DescribeScanTaskReportUrl请求参数结构体
+    r"""DescribeScanTaskReportUrl请求参数结构体
 
     """
 
@@ -1724,7 +1724,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1735,7 +1735,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -1746,7 +1746,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskID
@@ -1757,7 +1757,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -1768,7 +1768,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+        r"""报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
         :rtype: int
         """
         return self._ReportType
@@ -1795,7 +1795,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
 
 class DescribeScanTaskReportUrlResponse(AbstractModel):
-    """DescribeScanTaskReportUrl返回参数结构体
+    r"""DescribeScanTaskReportUrl返回参数结构体
 
     """
 
@@ -1820,7 +1820,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -1831,7 +1831,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """诊断报告/堆栈信息/报告json结果下载链接
+        r"""诊断报告/堆栈信息/报告json结果下载链接
         :rtype: str
         """
         return self._ReportUrl
@@ -1842,7 +1842,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportTitle(self):
-        """诊断报告/堆栈/报告json结果的名称
+        r"""诊断报告/堆栈/报告json结果的名称
         :rtype: str
         """
         return self._ReportTitle
@@ -1853,7 +1853,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportResult(self):
-        """诊断json结果内容
+        r"""诊断json结果内容
         :rtype: str
         """
         return self._ReportResult
@@ -1864,7 +1864,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1883,7 +1883,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
 
 class DescribeScanTaskStatusRequest(AbstractModel):
-    """DescribeScanTaskStatus请求参数结构体
+    r"""DescribeScanTaskStatus请求参数结构体
 
     """
 
@@ -1905,7 +1905,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def Source(self):
-        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        r"""任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :rtype: int
         """
         return self._Source
@@ -1916,7 +1916,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """应用平台, 0:android, 1:ios, 2:小程序
+        r"""应用平台, 0:android, 1:ios, 2:小程序
         :rtype: int
         """
         return self._Platform
@@ -1927,7 +1927,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskID
@@ -1938,7 +1938,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        r"""任务类型, 0:基础版, 1:专家版, 2:本地化
         :rtype: int
         """
         return self._TaskType
@@ -1964,7 +1964,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
 
 class DescribeScanTaskStatusResponse(AbstractModel):
-    """DescribeScanTaskStatus返回参数结构体
+    r"""DescribeScanTaskStatus返回参数结构体
 
     """
 
@@ -1989,7 +1989,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回值, 0:成功, 其他值请查看“返回值”定义
+        r"""返回值, 0:成功, 其他值请查看“返回值”定义
         :rtype: int
         """
         return self._Result
@@ -2000,7 +2000,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        r"""0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :rtype: int
         """
         return self._Status
@@ -2011,7 +2011,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """诊断失败的错误信息
+        r"""诊断失败的错误信息
         :rtype: str
         """
         return self._ErrMsg
@@ -2022,7 +2022,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def FlowSteps(self):
-        """任务流详情
+        r"""任务流详情
         :rtype: list of TaskFlowStepsInfo
         """
         return self._FlowSteps
@@ -2033,7 +2033,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2057,7 +2057,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
 
 class ResourceUsageInfoData(AbstractModel):
-    """资源使用情况信息
+    r"""资源使用情况信息
 
     """
 
@@ -2076,7 +2076,7 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源计费项名称
+        r"""资源计费项名称
         :rtype: str
         """
         return self._ResourceName
@@ -2087,7 +2087,7 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def Total(self):
-        """资源总数
+        r"""资源总数
         :rtype: int
         """
         return self._Total
@@ -2098,7 +2098,7 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def UnusedCount(self):
-        """未使用资源数
+        r"""未使用资源数
         :rtype: int
         """
         return self._UnusedCount
@@ -2123,7 +2123,7 @@ class ResourceUsageInfoData(AbstractModel):
 
 
 class TaskFlowStepsInfo(AbstractModel):
-    """任务流步骤详情
+    r"""任务流步骤详情
 
     """
 
@@ -2151,7 +2151,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowNo(self):
-        """流程编号
+        r"""流程编号
         :rtype: str
         """
         return self._FlowNo
@@ -2162,7 +2162,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        """流程名称
+        r"""流程名称
         :rtype: str
         """
         return self._FlowName
@@ -2173,7 +2173,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
-        """流程状态, 其他值:进行中, 2:成功, 3:失败
+        r"""流程状态, 其他值:进行中, 2:成功, 3:失败
         :rtype: int
         """
         return self._FlowStatus
@@ -2184,7 +2184,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowStateDesc(self):
-        """流程状态描述
+        r"""流程状态描述
         :rtype: str
         """
         return self._FlowStateDesc
@@ -2195,7 +2195,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """流程启动时间
+        r"""流程启动时间
         :rtype: str
         """
         return self._StartTime
@@ -2206,7 +2206,7 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """流程完成时间
+        r"""流程完成时间
         :rtype: str
         """
         return self._EndTime

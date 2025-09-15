@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateFlowServiceRequest(AbstractModel):
-    """CreateFlowService请求参数结构体
+    r"""CreateFlowService请求参数结构体
 
     """
 
@@ -56,7 +56,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def Definition(self):
-        """定义文本（JSON格式）
+        r"""定义文本（JSON格式）
         :rtype: str
         """
         return self._Definition
@@ -67,7 +67,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def FlowServiceName(self):
-        """状态机所属服务名
+        r"""状态机所属服务名
         :rtype: str
         """
         return self._FlowServiceName
@@ -78,7 +78,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def IsNewRole(self):
-        """是不是新的角色
+        r"""是不是新的角色
         :rtype: bool
         """
         return self._IsNewRole
@@ -89,7 +89,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """状态机类型（EXPRESS，STANDARD）
+        r"""状态机类型（EXPRESS，STANDARD）
         :rtype: str
         """
         return self._Type
@@ -100,7 +100,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def FlowServiceChineseName(self):
-        """状态机所属服务中文名
+        r"""状态机所属服务中文名
         :rtype: str
         """
         return self._FlowServiceChineseName
@@ -111,7 +111,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def RoleResource(self):
-        """角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
+        r"""角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
         :rtype: str
         """
         return self._RoleResource
@@ -122,7 +122,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Description
@@ -133,7 +133,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def EnableCLS(self):
-        """是否开启CLS日志投递功能
+        r"""是否开启CLS日志投递功能
         :rtype: bool
         """
         return self._EnableCLS
@@ -144,7 +144,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     @property
     def Input(self):
-        """该状态机的默认输入
+        r"""该状态机的默认输入
         :rtype: str
         """
         return self._Input
@@ -175,7 +175,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
 
 class CreateFlowServiceResponse(AbstractModel):
-    """CreateFlowService返回参数结构体
+    r"""CreateFlowService返回参数结构体
 
     """
 
@@ -194,7 +194,7 @@ class CreateFlowServiceResponse(AbstractModel):
 
     @property
     def FlowServiceResource(self):
-        """状态机所属服务资源
+        r"""状态机所属服务资源
         :rtype: str
         """
         return self._FlowServiceResource
@@ -205,7 +205,7 @@ class CreateFlowServiceResponse(AbstractModel):
 
     @property
     def CreateDate(self):
-        """生成日期
+        r"""生成日期
         :rtype: str
         """
         return self._CreateDate
@@ -216,7 +216,7 @@ class CreateFlowServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -233,7 +233,7 @@ class CreateFlowServiceResponse(AbstractModel):
 
 
 class DescribeExecutionHistoryRequest(AbstractModel):
-    """DescribeExecutionHistory请求参数结构体
+    r"""DescribeExecutionHistory请求参数结构体
 
     """
 
@@ -246,7 +246,7 @@ class DescribeExecutionHistoryRequest(AbstractModel):
 
     @property
     def ExecutionResourceName(self):
-        """执行资源名
+        r"""执行资源名
         :rtype: str
         """
         return self._ExecutionResourceName
@@ -269,7 +269,7 @@ class DescribeExecutionHistoryRequest(AbstractModel):
 
 
 class DescribeExecutionHistoryResponse(AbstractModel):
-    """DescribeExecutionHistory返回参数结构体
+    r"""DescribeExecutionHistory返回参数结构体
 
     """
 
@@ -285,7 +285,7 @@ class DescribeExecutionHistoryResponse(AbstractModel):
 
     @property
     def Events(self):
-        """执行的事件列表
+        r"""执行的事件列表
         :rtype: list of ExecutionEvent
         """
         return self._Events
@@ -296,7 +296,7 @@ class DescribeExecutionHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -317,7 +317,7 @@ class DescribeExecutionHistoryResponse(AbstractModel):
 
 
 class DescribeExecutionRequest(AbstractModel):
-    """DescribeExecution请求参数结构体
+    r"""DescribeExecution请求参数结构体
 
     """
 
@@ -330,7 +330,7 @@ class DescribeExecutionRequest(AbstractModel):
 
     @property
     def ExecutionResourceName(self):
-        """执行资源名
+        r"""执行资源名
         :rtype: str
         """
         return self._ExecutionResourceName
@@ -353,7 +353,7 @@ class DescribeExecutionRequest(AbstractModel):
 
 
 class DescribeExecutionResponse(AbstractModel):
-    """DescribeExecution返回参数结构体
+    r"""DescribeExecution返回参数结构体
 
     """
 
@@ -395,7 +395,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def ExecutionResourceName(self):
-        """执行资源名
+        r"""执行资源名
         :rtype: str
         """
         return self._ExecutionResourceName
@@ -406,7 +406,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def Name(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._Name
@@ -417,7 +417,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def StartDate(self):
-        """执行开始时间，毫秒
+        r"""执行开始时间，毫秒
         :rtype: str
         """
         return self._StartDate
@@ -428,7 +428,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def StopDate(self):
-        """执行结束时间，毫秒
+        r"""执行结束时间，毫秒
         :rtype: str
         """
         return self._StopDate
@@ -439,7 +439,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def StateMachineResourceName(self):
-        """状态机资源名
+        r"""状态机资源名
         :rtype: str
         """
         return self._StateMachineResourceName
@@ -450,7 +450,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def Status(self):
-        """执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED
+        r"""执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED
         :rtype: str
         """
         return self._Status
@@ -461,7 +461,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def Input(self):
-        """执行的输入
+        r"""执行的输入
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -473,7 +473,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def Output(self):
-        """执行的输出
+        r"""执行的输出
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -485,7 +485,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def ExecutionDefinition(self):
-        """启动执行时，状态机的定义
+        r"""启动执行时，状态机的定义
         :rtype: str
         """
         return self._ExecutionDefinition
@@ -496,7 +496,7 @@ class DescribeExecutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -520,7 +520,7 @@ class DescribeExecutionResponse(AbstractModel):
 
 
 class DescribeExecutionsRequest(AbstractModel):
-    """DescribeExecutions请求参数结构体
+    r"""DescribeExecutions请求参数结构体
 
     """
 
@@ -545,7 +545,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     @property
     def StateMachineResourceName(self):
-        """状态机资源名
+        r"""状态机资源名
         :rtype: str
         """
         return self._StateMachineResourceName
@@ -556,7 +556,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页大小，最大100
+        r"""页大小，最大100
         :rtype: int
         """
         return self._PageSize
@@ -567,7 +567,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     @property
     def PageIndex(self):
-        """页序号，从1开始
+        r"""页序号，从1开始
         :rtype: int
         """
         return self._PageIndex
@@ -578,7 +578,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     @property
     def FilterExecutionStatus(self):
-        """按状态过滤条件，INIT，RUNNING，SUCCEED，FAILED，TERMINATED
+        r"""按状态过滤条件，INIT，RUNNING，SUCCEED，FAILED，TERMINATED
         :rtype: str
         """
         return self._FilterExecutionStatus
@@ -589,7 +589,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     @property
     def FilterExecutionResourceName(self):
-        """按执行名过滤条件
+        r"""按执行名过滤条件
         :rtype: str
         """
         return self._FilterExecutionResourceName
@@ -616,7 +616,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
 
 class DescribeExecutionsResponse(AbstractModel):
-    """DescribeExecutions返回参数结构体
+    r"""DescribeExecutions返回参数结构体
 
     """
 
@@ -629,7 +629,7 @@ class DescribeExecutionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -644,7 +644,7 @@ class DescribeExecutionsResponse(AbstractModel):
 
 
 class DescribeFlowServiceDetailRequest(AbstractModel):
-    """DescribeFlowServiceDetail请求参数结构体
+    r"""DescribeFlowServiceDetail请求参数结构体
 
     """
 
@@ -657,7 +657,7 @@ class DescribeFlowServiceDetailRequest(AbstractModel):
 
     @property
     def FlowServiceResource(self):
-        """状态机所属服务资源名
+        r"""状态机所属服务资源名
         :rtype: str
         """
         return self._FlowServiceResource
@@ -680,7 +680,7 @@ class DescribeFlowServiceDetailRequest(AbstractModel):
 
 
 class DescribeFlowServiceDetailResponse(AbstractModel):
-    """DescribeFlowServiceDetail返回参数结构体
+    r"""DescribeFlowServiceDetail返回参数结构体
 
     """
 
@@ -733,7 +733,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def FlowServiceName(self):
-        """状态机所属服务名
+        r"""状态机所属服务名
         :rtype: str
         """
         return self._FlowServiceName
@@ -744,7 +744,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态机状态
+        r"""状态机状态
         :rtype: str
         """
         return self._Status
@@ -755,7 +755,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def Definition(self):
-        """定义文本（JSON格式）
+        r"""定义文本（JSON格式）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -767,7 +767,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def RoleResource(self):
-        """角色资源名
+        r"""角色资源名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -779,7 +779,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        """状态机的类型，可以为 （EXPRESS/STANDARD）
+        r"""状态机的类型，可以为 （EXPRESS/STANDARD）
         :rtype: str
         """
         return self._Type
@@ -790,7 +790,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def CreateDate(self):
-        """生成时间
+        r"""生成时间
         :rtype: str
         """
         return self._CreateDate
@@ -801,7 +801,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def Description(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -813,7 +813,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def FlowServiceChineseName(self):
-        """状态机所属服务中文名
+        r"""状态机所属服务中文名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -825,7 +825,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def EnableCLS(self):
-        """是否开启日志CLS服务
+        r"""是否开启日志CLS服务
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -837,7 +837,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def CLSUrl(self):
-        """CLS日志查看地址
+        r"""CLS日志查看地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -849,7 +849,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def FlowInput(self):
-        """工作流提示输入
+        r"""工作流提示输入
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -861,7 +861,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -887,7 +887,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
 
 class DescribeFlowServicesRequest(AbstractModel):
-    """DescribeFlowServices请求参数结构体
+    r"""DescribeFlowServices请求参数结构体
 
     """
 
@@ -906,7 +906,7 @@ class DescribeFlowServicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -917,7 +917,7 @@ class DescribeFlowServicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -928,7 +928,7 @@ class DescribeFlowServicesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
+        r"""过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
         :rtype: list of Filter
         """
         return self._Filters
@@ -958,7 +958,7 @@ class DescribeFlowServicesRequest(AbstractModel):
 
 
 class DescribeFlowServicesResponse(AbstractModel):
-    """DescribeFlowServices返回参数结构体
+    r"""DescribeFlowServices返回参数结构体
 
     """
 
@@ -977,7 +977,7 @@ class DescribeFlowServicesResponse(AbstractModel):
 
     @property
     def FlowServiceSet(self):
-        """用户的状态机列表
+        r"""用户的状态机列表
         :rtype: list of StateMachine
         """
         return self._FlowServiceSet
@@ -988,7 +988,7 @@ class DescribeFlowServicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """用户的状态机总数
+        r"""用户的状态机总数
         :rtype: int
         """
         return self._TotalCount
@@ -999,7 +999,7 @@ class DescribeFlowServicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1021,7 +1021,7 @@ class DescribeFlowServicesResponse(AbstractModel):
 
 
 class ExecutionEvent(AbstractModel):
-    """执行的事件历史
+    r"""执行的事件历史
 
     """
 
@@ -1056,7 +1056,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def ExecutionResourceName(self):
-        """执行资源名
+        r"""执行资源名
         :rtype: str
         """
         return self._ExecutionResourceName
@@ -1067,7 +1067,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def EventId(self):
-        """自增序号
+        r"""自增序号
         :rtype: int
         """
         return self._EventId
@@ -1078,7 +1078,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def EventCategory(self):
-        """事件类型
+        r"""事件类型
         :rtype: str
         """
         return self._EventCategory
@@ -1089,7 +1089,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def StepName(self):
-        """步骤节点名称
+        r"""步骤节点名称
         :rtype: str
         """
         return self._StepName
@@ -1100,7 +1100,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def ResourceName(self):
-        """该步骤引用的资源名
+        r"""该步骤引用的资源名
         :rtype: str
         """
         return self._ResourceName
@@ -1111,7 +1111,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def Timestamp(self):
-        """该事件发生时间，毫秒
+        r"""该事件发生时间，毫秒
         :rtype: str
         """
         return self._Timestamp
@@ -1122,7 +1122,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def Content(self):
-        """事件内容
+        r"""事件内容
         :rtype: str
         """
         return self._Content
@@ -1133,7 +1133,7 @@ class ExecutionEvent(AbstractModel):
 
     @property
     def Exception(self):
-        """异常信息
+        r"""异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1164,7 +1164,7 @@ class ExecutionEvent(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """模版过滤类型
+    r"""模版过滤类型
 
     """
 
@@ -1180,7 +1180,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤器名字
+        r"""过滤器名字
         :rtype: str
         """
         return self._Name
@@ -1191,7 +1191,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤器值的数组
+        r"""过滤器值的数组
         :rtype: list of str
         """
         return self._Values
@@ -1215,7 +1215,7 @@ class Filter(AbstractModel):
 
 
 class ModifyFlowServiceRequest(AbstractModel):
-    """ModifyFlowService请求参数结构体
+    r"""ModifyFlowService请求参数结构体
 
     """
 
@@ -1252,7 +1252,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def FlowServiceResource(self):
-        """状态机资源名
+        r"""状态机资源名
         :rtype: str
         """
         return self._FlowServiceResource
@@ -1263,7 +1263,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def Definition(self):
-        """定义JSON
+        r"""定义JSON
         :rtype: str
         """
         return self._Definition
@@ -1274,7 +1274,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def FlowServiceName(self):
-        """状态机所属服务名
+        r"""状态机所属服务名
         :rtype: str
         """
         return self._FlowServiceName
@@ -1285,7 +1285,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def FlowServiceChineseName(self):
-        """状态机所属服务中文名
+        r"""状态机所属服务中文名
         :rtype: str
         """
         return self._FlowServiceChineseName
@@ -1296,7 +1296,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def IsNewRole(self):
-        """是否是新角色
+        r"""是否是新角色
         :rtype: bool
         """
         return self._IsNewRole
@@ -1307,7 +1307,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """状态机类型
+        r"""状态机类型
         :rtype: str
         """
         return self._Type
@@ -1318,7 +1318,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def RoleResource(self):
-        """角色资源名
+        r"""角色资源名
         :rtype: str
         """
         return self._RoleResource
@@ -1329,7 +1329,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """状态机备注
+        r"""状态机备注
         :rtype: str
         """
         return self._Description
@@ -1340,7 +1340,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     @property
     def EnableCLS(self):
-        """是否允许日志投递
+        r"""是否允许日志投递
         :rtype: bool
         """
         return self._EnableCLS
@@ -1371,7 +1371,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
 
 class ModifyFlowServiceResponse(AbstractModel):
-    """ModifyFlowService返回参数结构体
+    r"""ModifyFlowService返回参数结构体
 
     """
 
@@ -1390,7 +1390,7 @@ class ModifyFlowServiceResponse(AbstractModel):
 
     @property
     def FlowServiceResource(self):
-        """状态机资源名
+        r"""状态机资源名
         :rtype: str
         """
         return self._FlowServiceResource
@@ -1401,7 +1401,7 @@ class ModifyFlowServiceResponse(AbstractModel):
 
     @property
     def UpdateDate(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateDate
@@ -1412,7 +1412,7 @@ class ModifyFlowServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1429,7 +1429,7 @@ class ModifyFlowServiceResponse(AbstractModel):
 
 
 class StartExecutionRequest(AbstractModel):
-    """StartExecution请求参数结构体
+    r"""StartExecution请求参数结构体
 
     """
 
@@ -1448,7 +1448,7 @@ class StartExecutionRequest(AbstractModel):
 
     @property
     def StateMachineResourceName(self):
-        """状态机资源名
+        r"""状态机资源名
         :rtype: str
         """
         return self._StateMachineResourceName
@@ -1459,7 +1459,7 @@ class StartExecutionRequest(AbstractModel):
 
     @property
     def Input(self):
-        """输入参数，内容为JsonObject，长度不大于524288字符。
+        r"""输入参数，内容为JsonObject，长度不大于524288字符。
         :rtype: str
         """
         return self._Input
@@ -1470,7 +1470,7 @@ class StartExecutionRequest(AbstractModel):
 
     @property
     def Name(self):
-        """本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一
+        r"""本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一
         :rtype: str
         """
         return self._Name
@@ -1495,7 +1495,7 @@ class StartExecutionRequest(AbstractModel):
 
 
 class StartExecutionResponse(AbstractModel):
-    """StartExecution返回参数结构体
+    r"""StartExecution返回参数结构体
 
     """
 
@@ -1514,7 +1514,7 @@ class StartExecutionResponse(AbstractModel):
 
     @property
     def ExecutionResourceName(self):
-        """执行资源名
+        r"""执行资源名
         :rtype: str
         """
         return self._ExecutionResourceName
@@ -1525,7 +1525,7 @@ class StartExecutionResponse(AbstractModel):
 
     @property
     def StartDate(self):
-        """执行开始时间
+        r"""执行开始时间
         :rtype: str
         """
         return self._StartDate
@@ -1536,7 +1536,7 @@ class StartExecutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1553,7 +1553,7 @@ class StartExecutionResponse(AbstractModel):
 
 
 class StateMachine(AbstractModel):
-    """状态机
+    r"""状态机
 
     """
 
@@ -1601,7 +1601,7 @@ class StateMachine(AbstractModel):
 
     @property
     def FlowServiceResource(self):
-        """状态机资源
+        r"""状态机资源
         :rtype: str
         """
         return self._FlowServiceResource
@@ -1612,7 +1612,7 @@ class StateMachine(AbstractModel):
 
     @property
     def Type(self):
-        """状态机类型。EXPRESS，STANDARD
+        r"""状态机类型。EXPRESS，STANDARD
         :rtype: str
         """
         return self._Type
@@ -1623,7 +1623,7 @@ class StateMachine(AbstractModel):
 
     @property
     def FlowServiceName(self):
-        """状态机名称
+        r"""状态机名称
         :rtype: str
         """
         return self._FlowServiceName
@@ -1634,7 +1634,7 @@ class StateMachine(AbstractModel):
 
     @property
     def FlowServiceChineseName(self):
-        """状态机中文名
+        r"""状态机中文名
         :rtype: str
         """
         return self._FlowServiceChineseName
@@ -1645,7 +1645,7 @@ class StateMachine(AbstractModel):
 
     @property
     def CreateDate(self):
-        """创建时间。timestamp
+        r"""创建时间。timestamp
         :rtype: str
         """
         return self._CreateDate
@@ -1656,7 +1656,7 @@ class StateMachine(AbstractModel):
 
     @property
     def ModifyDate(self):
-        """修改时间。timestamp
+        r"""修改时间。timestamp
         :rtype: str
         """
         return self._ModifyDate
@@ -1667,7 +1667,7 @@ class StateMachine(AbstractModel):
 
     @property
     def Status(self):
-        """状态机状态
+        r"""状态机状态
         :rtype: str
         """
         return self._Status
@@ -1678,7 +1678,7 @@ class StateMachine(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者的subAccountUin
+        r"""创建者的subAccountUin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1690,7 +1690,7 @@ class StateMachine(AbstractModel):
 
     @property
     def Modifier(self):
-        """修改者的subAccountUin
+        r"""修改者的subAccountUin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1702,7 +1702,7 @@ class StateMachine(AbstractModel):
 
     @property
     def FlowServiceId(self):
-        """状态机id
+        r"""状态机id
         :rtype: str
         """
         return self._FlowServiceId
@@ -1713,7 +1713,7 @@ class StateMachine(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: str
         """
         return self._TemplateId
@@ -1724,7 +1724,7 @@ class StateMachine(AbstractModel):
 
     @property
     def Description(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Description
@@ -1758,7 +1758,7 @@ class StateMachine(AbstractModel):
 
 
 class StopExecutionRequest(AbstractModel):
-    """StopExecution请求参数结构体
+    r"""StopExecution请求参数结构体
 
     """
 
@@ -1771,7 +1771,7 @@ class StopExecutionRequest(AbstractModel):
 
     @property
     def ExecutionQrn(self):
-        """执行名称
+        r"""执行名称
         :rtype: str
         """
         return self._ExecutionQrn
@@ -1794,7 +1794,7 @@ class StopExecutionRequest(AbstractModel):
 
 
 class StopExecutionResponse(AbstractModel):
-    """StopExecution返回参数结构体
+    r"""StopExecution返回参数结构体
 
     """
 
@@ -1807,7 +1807,7 @@ class StopExecutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeSecurityAlarmTableListRequest(AbstractModel):
-    """DescribeSecurityAlarmTableList请求参数结构体
+    r"""DescribeSecurityAlarmTableList请求参数结构体
 
     """
 
@@ -53,7 +53,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def SdlId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._SdlId
@@ -64,7 +64,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of WebSearchFilter
         """
         return self._Filters
@@ -75,7 +75,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """长度
+        r"""长度
         :rtype: int
         """
         return self._Limit
@@ -86,7 +86,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        r"""偏移
         :rtype: int
         """
         return self._Offset
@@ -97,7 +97,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序
+        r"""排序
         :rtype: str
         """
         return self._Order
@@ -108,7 +108,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -119,7 +119,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间,毫秒
+        r"""开始时间,毫秒
         :rtype: int
         """
         return self._StartTime
@@ -130,7 +130,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -165,7 +165,7 @@ class DescribeSecurityAlarmTableListRequest(AbstractModel):
 
 
 class DescribeSecurityAlarmTableListResponse(AbstractModel):
-    """DescribeSecurityAlarmTableList返回参数结构体
+    r"""DescribeSecurityAlarmTableList返回参数结构体
 
     """
 
@@ -190,7 +190,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
     @property
     def AlarmList(self):
-        """字段列表
+        r"""字段列表
         :rtype: list of SecurityAlarmTable
         """
         return self._AlarmList
@@ -201,7 +201,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -212,7 +212,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """限制
+        r"""限制
         :rtype: int
         """
         return self._Limit
@@ -223,7 +223,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        r"""偏移
         :rtype: int
         """
         return self._Offset
@@ -234,7 +234,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -258,7 +258,7 @@ class DescribeSecurityAlarmTableListResponse(AbstractModel):
 
 
 class SecurityAlarmTable(AbstractModel):
-    """告警列表
+    r"""告警列表
 
     """
 
@@ -418,7 +418,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Timestamp
@@ -429,7 +429,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AlarmName(self):
-        """告警名称
+        r"""告警名称
         :rtype: str
         """
         return self._AlarmName
@@ -440,7 +440,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -451,7 +451,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AlarmId(self):
-        """告警id
+        r"""告警id
         :rtype: int
         """
         return self._AlarmId
@@ -462,7 +462,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Severity(self):
-        """安全性
+        r"""安全性
         :rtype: int
         """
         return self._Severity
@@ -473,7 +473,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Score(self):
-        """评分
+        r"""评分
         :rtype: int
         """
         return self._Score
@@ -484,7 +484,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Category(self):
-        """分类
+        r"""分类
         :rtype: str
         """
         return self._Category
@@ -495,7 +495,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SubCategory(self):
-        """子分类
+        r"""子分类
         :rtype: str
         """
         return self._SubCategory
@@ -506,7 +506,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: str
         """
         return self._Tags
@@ -517,7 +517,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Payload(self):
-        """有效载荷
+        r"""有效载荷
         :rtype: str
         """
         return self._Payload
@@ -528,7 +528,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Result(self):
-        """结果
+        r"""结果
         :rtype: str
         """
         return self._Result
@@ -539,7 +539,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Confidence(self):
-        """可信度
+        r"""可信度
         :rtype: int
         """
         return self._Confidence
@@ -550,7 +550,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -561,7 +561,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RuleTopic(self):
-        """规则主题
+        r"""规则主题
         :rtype: str
         """
         return self._RuleTopic
@@ -572,7 +572,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def HandleTime(self):
-        """处理时间
+        r"""处理时间
         :rtype: str
         """
         return self._HandleTime
@@ -583,7 +583,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议
+        r"""建议
         :rtype: str
         """
         return self._Suggestion
@@ -594,7 +594,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -605,7 +605,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SourceName(self):
-        """来源名称
+        r"""来源名称
         :rtype: str
         """
         return self._SourceName
@@ -616,7 +616,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AppId(self):
-        """APPID
+        r"""APPID
         :rtype: int
         """
         return self._AppId
@@ -627,7 +627,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -638,7 +638,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def EventTime(self):
-        """事件时间
+        r"""事件时间
         :rtype: str
         """
         return self._EventTime
@@ -649,7 +649,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RuleType(self):
-        """规则类型
+        r"""规则类型
         :rtype: str
         """
         return self._RuleType
@@ -660,7 +660,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackNum(self):
-        """攻击次数
+        r"""攻击次数
         :rtype: int
         """
         return self._AttackNum
@@ -671,7 +671,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AlarmCount(self):
-        """告警数量
+        r"""告警数量
         :rtype: int
         """
         return self._AlarmCount
@@ -682,7 +682,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackSubTechnique(self):
-        """ATT&CK子技术
+        r"""ATT&CK子技术
         :rtype: str
         """
         return self._AttackSubTechnique
@@ -693,7 +693,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackTechnique(self):
-        """ATT&CK技术
+        r"""ATT&CK技术
         :rtype: str
         """
         return self._AttackTechnique
@@ -704,7 +704,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackTactic(self):
-        """ATT&CK战术
+        r"""ATT&CK战术
         :rtype: str
         """
         return self._AttackTactic
@@ -715,7 +715,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackSubTechniqueName(self):
-        """ATT&CK子技术名称
+        r"""ATT&CK子技术名称
         :rtype: str
         """
         return self._AttackSubTechniqueName
@@ -726,7 +726,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackTechniqueName(self):
-        """ATT&CK技术名称
+        r"""ATT&CK技术名称
         :rtype: str
         """
         return self._AttackTechniqueName
@@ -737,7 +737,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackTacticName(self):
-        """凭证访问
+        r"""凭证访问
         :rtype: str
         """
         return self._AttackTacticName
@@ -748,7 +748,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -759,7 +759,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -770,7 +770,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RuleExpression(self):
-        """规则表达式
+        r"""规则表达式
         :rtype: str
         """
         return self._RuleExpression
@@ -781,7 +781,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def ExpressionType(self):
-        """表达式类型
+        r"""表达式类型
         :rtype: str
         """
         return self._ExpressionType
@@ -792,7 +792,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def DrillDownExpression(self):
-        """下钻表达式
+        r"""下钻表达式
         :rtype: str
         """
         return self._DrillDownExpression
@@ -803,7 +803,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SrcIp(self):
-        """源IP
+        r"""源IP
         :rtype: str
         """
         return self._SrcIp
@@ -814,7 +814,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SrcPort(self):
-        """源端口
+        r"""源端口
         :rtype: int
         """
         return self._SrcPort
@@ -825,7 +825,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def DstIp(self):
-        """目的IP
+        r"""目的IP
         :rtype: str
         """
         return self._DstIp
@@ -836,7 +836,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def DstPort(self):
-        """目的端口
+        r"""目的端口
         :rtype: int
         """
         return self._DstPort
@@ -847,7 +847,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def HostIp(self):
-        """主机IP
+        r"""主机IP
         :rtype: str
         """
         return self._HostIp
@@ -858,7 +858,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def HostAsset(self):
-        """主机资产
+        r"""主机资产
         :rtype: str
         """
         return self._HostAsset
@@ -869,7 +869,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SdlId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._SdlId
@@ -880,7 +880,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def RichCustomInfos(self):
-        """自定义富化字段信息
+        r"""自定义富化字段信息
         :rtype: list of str
         """
         return self._RichCustomInfos
@@ -891,7 +891,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackerIp(self):
-        """攻击者ip
+        r"""攻击者ip
         :rtype: str
         """
         return self._AttackerIp
@@ -902,7 +902,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackerAsset(self):
-        """攻击者资产ID
+        r"""攻击者资产ID
         :rtype: str
         """
         return self._AttackerAsset
@@ -913,7 +913,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def VictimIp(self):
-        """受害者ip
+        r"""受害者ip
         :rtype: str
         """
         return self._VictimIp
@@ -924,7 +924,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def VictimAsset(self):
-        """受害者资产ID
+        r"""受害者资产ID
         :rtype: str
         """
         return self._VictimAsset
@@ -935,7 +935,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def AttackDirection(self):
-        """攻击方向
+        r"""攻击方向
         :rtype: str
         """
         return self._AttackDirection
@@ -946,7 +946,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def TrafficDirection(self):
-        """流量方向
+        r"""流量方向
         :rtype: str
         """
         return self._TrafficDirection
@@ -957,7 +957,7 @@ class SecurityAlarmTable(AbstractModel):
 
     @property
     def SecurityGroupAlertInfos(self):
-        """测试
+        r"""测试
         :rtype: list of SecurityGroupAlertInfo
         """
         return self._SecurityGroupAlertInfos
@@ -1034,7 +1034,7 @@ class SecurityAlarmTable(AbstractModel):
 
 
 class SecurityGroupAlertInfo(AbstractModel):
-    """被归并的原始告警信息
+    r"""被归并的原始告警信息
 
     """
 
@@ -1050,7 +1050,7 @@ class SecurityGroupAlertInfo(AbstractModel):
 
     @property
     def AlarmUuid(self):
-        """告警Uuid
+        r"""告警Uuid
         :rtype: str
         """
         return self._AlarmUuid
@@ -1061,7 +1061,7 @@ class SecurityGroupAlertInfo(AbstractModel):
 
     @property
     def Timestamp(self):
-        """告警生成时间
+        r"""告警生成时间
         :rtype: str
         """
         return self._Timestamp
@@ -1085,7 +1085,7 @@ class SecurityGroupAlertInfo(AbstractModel):
 
 
 class WebSearchFilter(AbstractModel):
-    """web搜索过滤
+    r"""web搜索过滤
 
     """
 
@@ -1104,7 +1104,7 @@ class WebSearchFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤字段
+        r"""过滤字段
         :rtype: str
         """
         return self._Name
@@ -1115,7 +1115,7 @@ class WebSearchFilter(AbstractModel):
 
     @property
     def Values(self):
-        """值
+        r"""值
         :rtype: list of str
         """
         return self._Values
@@ -1126,7 +1126,7 @@ class WebSearchFilter(AbstractModel):
 
     @property
     def ExactMatch(self):
-        """是否全匹配
+        r"""是否全匹配
         :rtype: bool
         """
         return self._ExactMatch

@@ -27,7 +27,7 @@ class ApiClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
+        r"""本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.api.v20201106.models.DescribeProductsRequest`
@@ -50,7 +50,7 @@ class ApiClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """本接口(DescribeRegions)用于查询各个产品支持地域信息。
+        r"""本接口(DescribeRegions)用于查询各个产品支持地域信息。
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.api.v20201106.models.DescribeRegionsRequest`
@@ -73,7 +73,7 @@ class ApiClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """本接口(DescribeZones)用于查询产品可用区信息。
+        r"""本接口(DescribeZones)用于查询产品可用区信息。
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.api.v20201106.models.DescribeZonesRequest`

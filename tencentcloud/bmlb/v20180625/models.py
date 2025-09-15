@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BindL4Backend(AbstractModel):
-    """待与四层监听器绑定的物理机主机、虚拟机或半托管主机信息。目前一个四层监听器下面最多允许绑定255个主机端口。
+    r"""待与四层监听器绑定的物理机主机、虚拟机或半托管主机信息。目前一个四层监听器下面最多允许绑定255个主机端口。
 
     """
 
@@ -41,7 +41,7 @@ class BindL4Backend(AbstractModel):
 
     @property
     def Port(self):
-        """待绑定的主机端口，可选值1~65535。
+        r"""待绑定的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -52,7 +52,7 @@ class BindL4Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """待绑定的黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""待绑定的黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -63,7 +63,7 @@ class BindL4Backend(AbstractModel):
 
     @property
     def Weight(self):
-        """待绑定的主机权重，可选值0~100。
+        r"""待绑定的主机权重，可选值0~100。
         :rtype: int
         """
         return self._Weight
@@ -74,7 +74,7 @@ class BindL4Backend(AbstractModel):
 
     @property
     def ProbePort(self):
-        """自定义探测的主机端口，可选值1~65535。（需要监听器开启自定义健康检查）
+        r"""自定义探测的主机端口，可选值1~65535。（需要监听器开启自定义健康检查）
         :rtype: int
         """
         return self._ProbePort
@@ -100,7 +100,7 @@ class BindL4Backend(AbstractModel):
 
 
 class BindL4BackendsRequest(AbstractModel):
-    """BindL4Backends请求参数结构体
+    r"""BindL4Backends请求参数结构体
 
     """
 
@@ -122,7 +122,7 @@ class BindL4BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -133,7 +133,7 @@ class BindL4BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """四层监听器实例ID，可通过接口DescribeL4Listeners查询。
+        r"""四层监听器实例ID，可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -144,7 +144,7 @@ class BindL4BackendsRequest(AbstractModel):
 
     @property
     def BackendSet(self):
-        """待绑定的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
+        r"""待绑定的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
         :rtype: list of BindL4Backend
         """
         return self._BackendSet
@@ -155,7 +155,7 @@ class BindL4BackendsRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -186,7 +186,7 @@ class BindL4BackendsRequest(AbstractModel):
 
 
 class BindL4BackendsResponse(AbstractModel):
-    """BindL4Backends返回参数结构体
+    r"""BindL4Backends返回参数结构体
 
     """
 
@@ -202,7 +202,7 @@ class BindL4BackendsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -213,7 +213,7 @@ class BindL4BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -229,7 +229,7 @@ class BindL4BackendsResponse(AbstractModel):
 
 
 class BindL7Backend(AbstractModel):
-    """待与七层监听器转发规则绑定的物理机主机、虚拟机或半托管主机信息。目前一个七层转发路径下面最多允许绑定255个主机端口。
+    r"""待与七层监听器转发规则绑定的物理机主机、虚拟机或半托管主机信息。目前一个七层转发路径下面最多允许绑定255个主机端口。
 
     """
 
@@ -248,7 +248,7 @@ class BindL7Backend(AbstractModel):
 
     @property
     def Port(self):
-        """待绑定的主机端口，可选值1~65535。
+        r"""待绑定的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -259,7 +259,7 @@ class BindL7Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -270,7 +270,7 @@ class BindL7Backend(AbstractModel):
 
     @property
     def Weight(self):
-        """待绑定的主机权重，可选值0~100。
+        r"""待绑定的主机权重，可选值0~100。
         :rtype: int
         """
         return self._Weight
@@ -295,7 +295,7 @@ class BindL7Backend(AbstractModel):
 
 
 class BindL7BackendsRequest(AbstractModel):
-    """BindL7Backends请求参数结构体
+    r"""BindL7Backends请求参数结构体
 
     """
 
@@ -323,7 +323,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -334,7 +334,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -345,7 +345,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -356,7 +356,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -367,7 +367,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def BackendSet(self):
-        """待绑定的主机信息。可以绑定多个主机端口。目前一个七层转发路径下面最多允许绑定255个主机端口。
+        r"""待绑定的主机信息。可以绑定多个主机端口。目前一个七层转发路径下面最多允许绑定255个主机端口。
         :rtype: list of BindL7Backend
         """
         return self._BackendSet
@@ -378,7 +378,7 @@ class BindL7BackendsRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机，1：虚拟机 2：半托管机器。
+        r"""绑定类型。0：物理机，1：虚拟机 2：半托管机器。
         :rtype: int
         """
         return self._BindType
@@ -411,7 +411,7 @@ class BindL7BackendsRequest(AbstractModel):
 
 
 class BindL7BackendsResponse(AbstractModel):
-    """BindL7Backends返回参数结构体
+    r"""BindL7Backends返回参数结构体
 
     """
 
@@ -427,7 +427,7 @@ class BindL7BackendsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -438,7 +438,7 @@ class BindL7BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -454,7 +454,7 @@ class BindL7BackendsResponse(AbstractModel):
 
 
 class BindTrafficMirrorListenersRequest(AbstractModel):
-    """BindTrafficMirrorListeners请求参数结构体
+    r"""BindTrafficMirrorListeners请求参数结构体
 
     """
 
@@ -470,7 +470,7 @@ class BindTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -481,7 +481,7 @@ class BindTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -505,7 +505,7 @@ class BindTrafficMirrorListenersRequest(AbstractModel):
 
 
 class BindTrafficMirrorListenersResponse(AbstractModel):
-    """BindTrafficMirrorListeners返回参数结构体
+    r"""BindTrafficMirrorListeners返回参数结构体
 
     """
 
@@ -521,7 +521,7 @@ class BindTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -532,7 +532,7 @@ class BindTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -548,7 +548,7 @@ class BindTrafficMirrorListenersResponse(AbstractModel):
 
 
 class BindTrafficMirrorReceiver(AbstractModel):
-    """待与流量镜像绑定的接收机信息。
+    r"""待与流量镜像绑定的接收机信息。
 
     """
 
@@ -567,7 +567,7 @@ class BindTrafficMirrorReceiver(AbstractModel):
 
     @property
     def Port(self):
-        """待绑定的主机端口，可选值1~65535。
+        r"""待绑定的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -578,7 +578,7 @@ class BindTrafficMirrorReceiver(AbstractModel):
 
     @property
     def InstanceId(self):
-        """待绑定的主机实例ID。
+        r"""待绑定的主机实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -589,7 +589,7 @@ class BindTrafficMirrorReceiver(AbstractModel):
 
     @property
     def Weight(self):
-        """待绑定的主机权重，可选值0~100。
+        r"""待绑定的主机权重，可选值0~100。
         :rtype: int
         """
         return self._Weight
@@ -614,7 +614,7 @@ class BindTrafficMirrorReceiver(AbstractModel):
 
 
 class BindTrafficMirrorReceiversRequest(AbstractModel):
-    """BindTrafficMirrorReceivers请求参数结构体
+    r"""BindTrafficMirrorReceivers请求参数结构体
 
     """
 
@@ -630,7 +630,7 @@ class BindTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -641,7 +641,7 @@ class BindTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def ReceiverSet(self):
-        """待绑定的黑石物理机信息数组。
+        r"""待绑定的黑石物理机信息数组。
         :rtype: list of BindTrafficMirrorReceiver
         """
         return self._ReceiverSet
@@ -670,7 +670,7 @@ class BindTrafficMirrorReceiversRequest(AbstractModel):
 
 
 class BindTrafficMirrorReceiversResponse(AbstractModel):
-    """BindTrafficMirrorReceivers返回参数结构体
+    r"""BindTrafficMirrorReceivers返回参数结构体
 
     """
 
@@ -686,7 +686,7 @@ class BindTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -697,7 +697,7 @@ class BindTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -713,7 +713,7 @@ class BindTrafficMirrorReceiversResponse(AbstractModel):
 
 
 class CertDetailLoadBalancer(AbstractModel):
-    """获取证书信息时返回的所用在的负载均衡信息。
+    r"""获取证书信息时返回的所用在的负载均衡信息。
 
     """
 
@@ -735,7 +735,7 @@ class CertDetailLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """黑石负载均衡实例ID。
+        r"""黑石负载均衡实例ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -746,7 +746,7 @@ class CertDetailLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """黑石负载均衡实例名称。
+        r"""黑石负载均衡实例名称。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -757,7 +757,7 @@ class CertDetailLoadBalancer(AbstractModel):
 
     @property
     def VpcId(self):
-        """该黑石负载均衡所在的VpcId。
+        r"""该黑石负载均衡所在的VpcId。
         :rtype: str
         """
         return self._VpcId
@@ -768,7 +768,7 @@ class CertDetailLoadBalancer(AbstractModel):
 
     @property
     def RegionId(self):
-        """该黑石负载均衡所在的regionId。
+        r"""该黑石负载均衡所在的regionId。
         :rtype: int
         """
         return self._RegionId
@@ -794,7 +794,7 @@ class CertDetailLoadBalancer(AbstractModel):
 
 
 class CreateL4Listener(AbstractModel):
-    """用于创建四层监听器的监听器信息。目前一个负载均衡下面最多允许创建50个监听器。
+    r"""用于创建四层监听器的监听器信息。目前一个负载均衡下面最多允许创建50个监听器。
 
     """
 
@@ -852,7 +852,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """监听器监听端口，可选值1~65535。
+        r"""监听器监听端口，可选值1~65535。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -863,7 +863,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """监听器协议类型，可选值tcp，udp。
+        r"""监听器协议类型，可选值tcp，udp。
         :rtype: str
         """
         return self._Protocol
@@ -874,7 +874,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称。
+        r"""监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -885,7 +885,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """监听器的会话保持时间，单位：秒。可选值：900~3600,不传表示不开启会话保持。
+        r"""监听器的会话保持时间，单位：秒。可选值：900~3600,不传表示不开启会话保持。
         :rtype: int
         """
         return self._SessionExpire
@@ -896,7 +896,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启健康检查：1（开启）、0（关闭）。默认值0，表示关闭。
+        r"""是否开启健康检查：1（开启）、0（关闭）。默认值0，表示关闭。
         :rtype: int
         """
         return self._HealthSwitch
@@ -907,7 +907,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def TimeOut(self):
-        """健康检查的响应超时时间，可选值：2-60，默认值：2，单位:秒。<br><font color="red">响应超时时间要小于检查间隔时间。</font>
+        r"""健康检查的响应超时时间，可选值：2-60，默认值：2，单位:秒。<br><font color="red">响应超时时间要小于检查间隔时间。</font>
         :rtype: int
         """
         return self._TimeOut
@@ -918,7 +918,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
+        r"""健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -929,7 +929,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -940,7 +940,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -951,7 +951,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """监听器最大带宽值，用于计费模式为固定带宽计费，可选值：0-1000，单位：Mbps。
+        r"""监听器最大带宽值，用于计费模式为固定带宽计费，可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -962,7 +962,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def CustomHealthSwitch(self):
-        """是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+        r"""是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
         :rtype: int
         """
         return self._CustomHealthSwitch
@@ -973,7 +973,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def InputType(self):
-        """自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+        r"""自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
         :rtype: str
         """
         return self._InputType
@@ -984,7 +984,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def LineSeparatorType(self):
-        """探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+        r"""探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
         :rtype: int
         """
         return self._LineSeparatorType
@@ -995,7 +995,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def HealthRequest(self):
-        """自定义探测请求内容。
+        r"""自定义探测请求内容。
         :rtype: str
         """
         return self._HealthRequest
@@ -1006,7 +1006,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def HealthResponse(self):
-        """自定义探测返回内容。
+        r"""自定义探测返回内容。
         :rtype: str
         """
         return self._HealthResponse
@@ -1017,7 +1017,7 @@ class CreateL4Listener(AbstractModel):
 
     @property
     def ToaFlag(self):
-        """是否开启toa。可选值：0（关闭）、1（开启），默认关闭。（该字段在负载均衡为fullnat类型下才生效）
+        r"""是否开启toa。可选值：0（关闭）、1（开启），默认关闭。（该字段在负载均衡为fullnat类型下才生效）
         :rtype: int
         """
         return self._ToaFlag
@@ -1055,7 +1055,7 @@ class CreateL4Listener(AbstractModel):
 
 
 class CreateL4ListenersRequest(AbstractModel):
-    """CreateL4Listeners请求参数结构体
+    r"""CreateL4Listeners请求参数结构体
 
     """
 
@@ -1071,7 +1071,7 @@ class CreateL4ListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1082,7 +1082,7 @@ class CreateL4ListenersRequest(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """监听器信息数组，可以创建多个监听器。目前一个负载均衡下面最多允许创建50个监听器
+        r"""监听器信息数组，可以创建多个监听器。目前一个负载均衡下面最多允许创建50个监听器
         :rtype: list of CreateL4Listener
         """
         return self._ListenerSet
@@ -1111,7 +1111,7 @@ class CreateL4ListenersRequest(AbstractModel):
 
 
 class CreateL4ListenersResponse(AbstractModel):
-    """CreateL4Listeners返回参数结构体
+    r"""CreateL4Listeners返回参数结构体
 
     """
 
@@ -1127,7 +1127,7 @@ class CreateL4ListenersResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
         :rtype: str
         """
         return self._TaskId
@@ -1138,7 +1138,7 @@ class CreateL4ListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1154,7 +1154,7 @@ class CreateL4ListenersResponse(AbstractModel):
 
 
 class CreateL7Listener(AbstractModel):
-    """用于创建四层监听器的监听器信息。目前一个负载均衡下面最多允许创建50个七层监听器。
+    r"""用于创建四层监听器的监听器信息。目前一个负载均衡下面最多允许创建50个七层监听器。
 
     """
 
@@ -1203,7 +1203,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """七层监听器端口，可选值1~65535。
+        r"""七层监听器端口，可选值1~65535。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -1214,7 +1214,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -1225,7 +1225,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """七层监听器名称。
+        r"""七层监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -1236,7 +1236,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def SslMode(self):
-        """认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。当创建的是https类型的监听器时，此值必选。
+        r"""认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。当创建的是https类型的监听器时，此值必选。
         :rtype: int
         """
         return self._SslMode
@@ -1247,7 +1247,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertId(self):
-        """服务端证书ID。当创建的是https类型的监听器时，此值必选。
+        r"""服务端证书ID。当创建的是https类型的监听器时，此值必选。
         :rtype: str
         """
         return self._CertId
@@ -1258,7 +1258,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertName(self):
-        """服务端证书名称。
+        r"""服务端证书名称。
         :rtype: str
         """
         return self._CertName
@@ -1269,7 +1269,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertContent(self):
-        """服务端证书内容。
+        r"""服务端证书内容。
         :rtype: str
         """
         return self._CertContent
@@ -1280,7 +1280,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertKey(self):
-        """服务端证书密钥。
+        r"""服务端证书密钥。
         :rtype: str
         """
         return self._CertKey
@@ -1291,7 +1291,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertCaId(self):
-        """客户端证书ID。
+        r"""客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -1302,7 +1302,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertCaName(self):
-        """客户端证书名称。
+        r"""客户端证书名称。
         :rtype: str
         """
         return self._CertCaName
@@ -1313,7 +1313,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def CertCaContent(self):
-        """客户端证书内容。
+        r"""客户端证书内容。
         :rtype: str
         """
         return self._CertCaContent
@@ -1324,7 +1324,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
+        r"""用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -1335,7 +1335,7 @@ class CreateL7Listener(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        """转发协议。当Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+        r"""转发协议。当Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
         :rtype: int
         """
         return self._ForwardProtocol
@@ -1370,7 +1370,7 @@ class CreateL7Listener(AbstractModel):
 
 
 class CreateL7ListenersRequest(AbstractModel):
-    """CreateL7Listeners请求参数结构体
+    r"""CreateL7Listeners请求参数结构体
 
     """
 
@@ -1386,7 +1386,7 @@ class CreateL7ListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID
+        r"""负载均衡实例ID
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1397,7 +1397,7 @@ class CreateL7ListenersRequest(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """七层监听器信息数组，可以创建多个七层监听器。目前一个负载均衡下面最多允许创建50个七层监听器。
+        r"""七层监听器信息数组，可以创建多个七层监听器。目前一个负载均衡下面最多允许创建50个七层监听器。
         :rtype: list of CreateL7Listener
         """
         return self._ListenerSet
@@ -1426,7 +1426,7 @@ class CreateL7ListenersRequest(AbstractModel):
 
 
 class CreateL7ListenersResponse(AbstractModel):
-    """CreateL7Listeners返回参数结构体
+    r"""CreateL7Listeners返回参数结构体
 
     """
 
@@ -1442,7 +1442,7 @@ class CreateL7ListenersResponse(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """新建的负载均衡七层监听器的唯一ID列表。
+        r"""新建的负载均衡七层监听器的唯一ID列表。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -1453,7 +1453,7 @@ class CreateL7ListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1469,7 +1469,7 @@ class CreateL7ListenersResponse(AbstractModel):
 
 
 class CreateL7Rule(AbstractModel):
-    """用于创建七层监听器的转发规则的信息。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。
+    r"""用于创建七层监听器的转发规则的信息。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。
 
     """
 
@@ -1512,7 +1512,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def Domain(self):
-        """七层转发规则的转发域名。
+        r"""七层转发规则的转发域名。
         :rtype: str
         """
         return self._Domain
@@ -1523,7 +1523,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def Url(self):
-        """七层转发规则的转发路径。
+        r"""七层转发规则的转发路径。
         :rtype: str
         """
         return self._Url
@@ -1534,7 +1534,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间，单位：秒。可选值：30~3600。默认值0，表示不开启会话保持。
+        r"""会话保持时间，单位：秒。可选值：30~3600。默认值0，表示不开启会话保持。
         :rtype: int
         """
         return self._SessionExpire
@@ -1545,7 +1545,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """健康检查开关：1（开启）、0（关闭）。默认值0，表示关闭。
+        r"""健康检查开关：1（开启）、0（关闭）。默认值0，表示关闭。
         :rtype: int
         """
         return self._HealthSwitch
@@ -1556,7 +1556,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
+        r"""健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -1567,7 +1567,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康检查健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""健康检查健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -1578,7 +1578,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """健康检查不健康阈值，默认值：5，表示当连续探测五次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""健康检查不健康阈值，默认值：5，表示当连续探测五次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -1589,7 +1589,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
+        r"""健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
         :rtype: list of int non-negative
         """
         return self._HttpCodes
@@ -1600,7 +1600,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """健康检查检查路径。
+        r"""健康检查检查路径。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -1611,7 +1611,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """健康检查检查域名。如果创建规则的域名使用通配符或正则表达式，则健康检查检查域名可自定义，否则必须跟健康检查检查域名一样。
+        r"""健康检查检查域名。如果创建规则的域名使用通配符或正则表达式，则健康检查检查域名可自定义，否则必须跟健康检查检查域名一样。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -1622,7 +1622,7 @@ class CreateL7Rule(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """均衡方式：ip_hash、wrr。默认值wrr。
+        r"""均衡方式：ip_hash、wrr。默认值wrr。
         :rtype: str
         """
         return self._BalanceMode
@@ -1655,7 +1655,7 @@ class CreateL7Rule(AbstractModel):
 
 
 class CreateL7RulesRequest(AbstractModel):
-    """CreateL7Rules请求参数结构体
+    r"""CreateL7Rules请求参数结构体
 
     """
 
@@ -1674,7 +1674,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1685,7 +1685,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -1696,7 +1696,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def RuleSet(self):
-        """七层转发规则信息数组，可以创建多个七层转发规则。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。目前只能单条创建，不能批量创建。
+        r"""七层转发规则信息数组，可以创建多个七层转发规则。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。目前只能单条创建，不能批量创建。
         :rtype: list of CreateL7Rule
         """
         return self._RuleSet
@@ -1726,7 +1726,7 @@ class CreateL7RulesRequest(AbstractModel):
 
 
 class CreateL7RulesResponse(AbstractModel):
-    """CreateL7Rules返回参数结构体
+    r"""CreateL7Rules返回参数结构体
 
     """
 
@@ -1742,7 +1742,7 @@ class CreateL7RulesResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -1753,7 +1753,7 @@ class CreateL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1769,7 +1769,7 @@ class CreateL7RulesResponse(AbstractModel):
 
 
 class CreateLoadBalancerBzConf(AbstractModel):
-    """用于创建负载均衡的个性化配置。
+    r"""用于创建负载均衡的个性化配置。
 
     """
 
@@ -1788,7 +1788,7 @@ class CreateLoadBalancerBzConf(AbstractModel):
 
     @property
     def BzPayMode(self):
-        """按月/按小时计费。
+        r"""按月/按小时计费。
         :rtype: str
         """
         return self._BzPayMode
@@ -1799,7 +1799,7 @@ class CreateLoadBalancerBzConf(AbstractModel):
 
     @property
     def BzL4Metrics(self):
-        """四层可选按带宽，连接数衡量。
+        r"""四层可选按带宽，连接数衡量。
         :rtype: str
         """
         return self._BzL4Metrics
@@ -1810,7 +1810,7 @@ class CreateLoadBalancerBzConf(AbstractModel):
 
     @property
     def BzL7Metrics(self):
-        """七层可选按qps衡量。
+        r"""七层可选按qps衡量。
         :rtype: str
         """
         return self._BzL7Metrics
@@ -1835,7 +1835,7 @@ class CreateLoadBalancerBzConf(AbstractModel):
 
 
 class CreateLoadBalancersRequest(AbstractModel):
-    """CreateLoadBalancers请求参数结构体
+    r"""CreateLoadBalancers请求参数结构体
 
     """
 
@@ -1878,7 +1878,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """黑石负载均衡实例所属的私有网络ID。
+        r"""黑石负载均衡实例所属的私有网络ID。
         :rtype: str
         """
         return self._VpcId
@@ -1889,7 +1889,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        """负载均衡的类型，取值为open或internal。open表示公网(有日租)，internal表示内网。
+        r"""负载均衡的类型，取值为open或internal。open表示公网(有日租)，internal表示内网。
         :rtype: str
         """
         return self._LoadBalancerType
@@ -1900,7 +1900,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """在私有网络内购买内网负载均衡实例的时候需要指定子网ID，内网负载均衡实例的VIP将从这个子网中产生。其他情况不用填写该字段。
+        r"""在私有网络内购买内网负载均衡实例的时候需要指定子网ID，内网负载均衡实例的VIP将从这个子网中产生。其他情况不用填写该字段。
         :rtype: str
         """
         return self._SubnetId
@@ -1911,7 +1911,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """负载均衡所属项目ID。不填则属于默认项目。
+        r"""负载均衡所属项目ID。不填则属于默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -1922,7 +1922,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """购买黑石负载均衡实例的数量。默认值为1, 最大值为20。
+        r"""购买黑石负载均衡实例的数量。默认值为1, 最大值为20。
         :rtype: int
         """
         return self._GoodsNum
@@ -1933,7 +1933,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """黑石负载均衡的计费模式，取值为flow和bandwidth，其中flow模式表示流量模式，bandwidth表示带宽模式。默认值为flow。
+        r"""黑石负载均衡的计费模式，取值为flow和bandwidth，其中flow模式表示流量模式，bandwidth表示带宽模式。默认值为flow。
         :rtype: str
         """
         return self._PayMode
@@ -1944,7 +1944,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def TgwSetType(self):
-        """负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群（普通外网负载均衡），dnat表示DNAT集群（增强型外网负载均衡）。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
+        r"""负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群（普通外网负载均衡），dnat表示DNAT集群（增强型外网负载均衡）。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
         :rtype: str
         """
         return self._TgwSetType
@@ -1955,7 +1955,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def Exclusive(self):
-        """负载均衡的独占类别，取值为0表示非独占，1表示四层独占，2表示七层独占，3表示四层和七层独占，4表示共享容灾。
+        r"""负载均衡的独占类别，取值为0表示非独占，1表示四层独占，2表示七层独占，3表示四层和七层独占，4表示共享容灾。
         :rtype: int
         """
         return self._Exclusive
@@ -1966,7 +1966,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def SpecifiedVips(self):
-        """指定的VIP，如果指定，则数量必须与goodsNum一致。如果不指定，则由后台分配随机VIP。
+        r"""指定的VIP，如果指定，则数量必须与goodsNum一致。如果不指定，则由后台分配随机VIP。
         :rtype: list of str
         """
         return self._SpecifiedVips
@@ -1977,7 +1977,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def BzConf(self):
-        """（未全地域开放）保障型负载均衡设定参数，如果类别选择保障型则需传入此参数。
+        r"""（未全地域开放）保障型负载均衡设定参数，如果类别选择保障型则需传入此参数。
         :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateLoadBalancerBzConf`
         """
         return self._BzConf
@@ -1988,7 +1988,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
     @property
     def IpProtocolType(self):
-        """IP协议类型。可取的值为“ipv4”或“ipv6”。
+        r"""IP协议类型。可取的值为“ipv4”或“ipv6”。
         :rtype: str
         """
         return self._IpProtocolType
@@ -2023,7 +2023,7 @@ class CreateLoadBalancersRequest(AbstractModel):
 
 
 class CreateLoadBalancersResponse(AbstractModel):
-    """CreateLoadBalancers返回参数结构体
+    r"""CreateLoadBalancers返回参数结构体
 
     """
 
@@ -2042,7 +2042,7 @@ class CreateLoadBalancersResponse(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """创建的黑石负载均衡实例ID。
+        r"""创建的黑石负载均衡实例ID。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -2053,7 +2053,7 @@ class CreateLoadBalancersResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """创建负载均衡的异步任务ID。
+        r"""创建负载均衡的异步任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -2064,7 +2064,7 @@ class CreateLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2081,7 +2081,7 @@ class CreateLoadBalancersResponse(AbstractModel):
 
 
 class CreateTrafficMirrorRequest(AbstractModel):
-    """CreateTrafficMirror请求参数结构体
+    r"""CreateTrafficMirror请求参数结构体
 
     """
 
@@ -2097,7 +2097,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """流量镜像实例别名。
+        r"""流量镜像实例别名。
         :rtype: str
         """
         return self._Alias
@@ -2108,7 +2108,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """流量镜像实例所属的私有网络ID，形如：vpc-xxx。
+        r"""流量镜像实例所属的私有网络ID，形如：vpc-xxx。
         :rtype: str
         """
         return self._VpcId
@@ -2132,7 +2132,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
 
 
 class CreateTrafficMirrorResponse(AbstractModel):
-    """CreateTrafficMirror返回参数结构体
+    r"""CreateTrafficMirror返回参数结构体
 
     """
 
@@ -2148,7 +2148,7 @@ class CreateTrafficMirrorResponse(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID
+        r"""流量镜像实例ID
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -2159,7 +2159,7 @@ class CreateTrafficMirrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2175,7 +2175,7 @@ class CreateTrafficMirrorResponse(AbstractModel):
 
 
 class DeleteL7DomainsRequest(AbstractModel):
-    """DeleteL7Domains请求参数结构体
+    r"""DeleteL7Domains请求参数结构体
 
     """
 
@@ -2194,7 +2194,7 @@ class DeleteL7DomainsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2205,7 +2205,7 @@ class DeleteL7DomainsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -2216,7 +2216,7 @@ class DeleteL7DomainsRequest(AbstractModel):
 
     @property
     def DomainIds(self):
-        """转发域名实例ID列表，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID列表，可通过接口DescribeL7Rules查询。
         :rtype: list of str
         """
         return self._DomainIds
@@ -2241,7 +2241,7 @@ class DeleteL7DomainsRequest(AbstractModel):
 
 
 class DeleteL7DomainsResponse(AbstractModel):
-    """DeleteL7Domains返回参数结构体
+    r"""DeleteL7Domains返回参数结构体
 
     """
 
@@ -2257,7 +2257,7 @@ class DeleteL7DomainsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -2268,7 +2268,7 @@ class DeleteL7DomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2284,7 +2284,7 @@ class DeleteL7DomainsResponse(AbstractModel):
 
 
 class DeleteL7RulesRequest(AbstractModel):
-    """DeleteL7Rules请求参数结构体
+    r"""DeleteL7Rules请求参数结构体
 
     """
 
@@ -2306,7 +2306,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2317,7 +2317,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -2328,7 +2328,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -2339,7 +2339,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def LocationIds(self):
-        """转发路径实例ID列表，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID列表，可通过接口DescribeL7Rules查询。
         :rtype: list of str
         """
         return self._LocationIds
@@ -2365,7 +2365,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
 
 class DeleteL7RulesResponse(AbstractModel):
-    """DeleteL7Rules返回参数结构体
+    r"""DeleteL7Rules返回参数结构体
 
     """
 
@@ -2381,7 +2381,7 @@ class DeleteL7RulesResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -2392,7 +2392,7 @@ class DeleteL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2408,7 +2408,7 @@ class DeleteL7RulesResponse(AbstractModel):
 
 
 class DeleteListenersRequest(AbstractModel):
-    """DeleteListeners请求参数结构体
+    r"""DeleteListeners请求参数结构体
 
     """
 
@@ -2424,7 +2424,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2435,7 +2435,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """待删除的负载均衡四层和七层监听器ID列表，可通过接口DescribeL4Listeners和DescribeL7Listeners查询。目前同时只能删除一种类型的监听器，并且删除七层监听器的数量上限为一个。
+        r"""待删除的负载均衡四层和七层监听器ID列表，可通过接口DescribeL4Listeners和DescribeL7Listeners查询。目前同时只能删除一种类型的监听器，并且删除七层监听器的数量上限为一个。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -2459,7 +2459,7 @@ class DeleteListenersRequest(AbstractModel):
 
 
 class DeleteListenersResponse(AbstractModel):
-    """DeleteListeners返回参数结构体
+    r"""DeleteListeners返回参数结构体
 
     """
 
@@ -2475,7 +2475,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -2486,7 +2486,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2502,7 +2502,7 @@ class DeleteListenersResponse(AbstractModel):
 
 
 class DeleteLoadBalancerRequest(AbstractModel):
-    """DeleteLoadBalancer请求参数结构体
+    r"""DeleteLoadBalancer请求参数结构体
 
     """
 
@@ -2515,7 +2515,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2538,7 +2538,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
 
 class DeleteLoadBalancerResponse(AbstractModel):
-    """DeleteLoadBalancer返回参数结构体
+    r"""DeleteLoadBalancer返回参数结构体
 
     """
 
@@ -2554,7 +2554,7 @@ class DeleteLoadBalancerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -2565,7 +2565,7 @@ class DeleteLoadBalancerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2581,7 +2581,7 @@ class DeleteLoadBalancerResponse(AbstractModel):
 
 
 class DeleteTrafficMirrorRequest(AbstractModel):
-    """DeleteTrafficMirror请求参数结构体
+    r"""DeleteTrafficMirror请求参数结构体
 
     """
 
@@ -2594,7 +2594,7 @@ class DeleteTrafficMirrorRequest(AbstractModel):
 
     @property
     def TrafficMirrorIds(self):
-        """流量镜像实例ID数组，可以批量删除，每次删除上限为20
+        r"""流量镜像实例ID数组，可以批量删除，每次删除上限为20
         :rtype: list of str
         """
         return self._TrafficMirrorIds
@@ -2617,7 +2617,7 @@ class DeleteTrafficMirrorRequest(AbstractModel):
 
 
 class DeleteTrafficMirrorResponse(AbstractModel):
-    """DeleteTrafficMirror返回参数结构体
+    r"""DeleteTrafficMirror返回参数结构体
 
     """
 
@@ -2633,7 +2633,7 @@ class DeleteTrafficMirrorResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -2644,7 +2644,7 @@ class DeleteTrafficMirrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2660,7 +2660,7 @@ class DeleteTrafficMirrorResponse(AbstractModel):
 
 
 class DescribeCertDetailRequest(AbstractModel):
-    """DescribeCertDetail请求参数结构体
+    r"""DescribeCertDetail请求参数结构体
 
     """
 
@@ -2673,7 +2673,7 @@ class DescribeCertDetailRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._CertId
@@ -2696,7 +2696,7 @@ class DescribeCertDetailRequest(AbstractModel):
 
 
 class DescribeCertDetailResponse(AbstractModel):
-    """DescribeCertDetail返回参数结构体
+    r"""DescribeCertDetail返回参数结构体
 
     """
 
@@ -2739,7 +2739,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._CertId
@@ -2750,7 +2750,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertName(self):
-        """证书名称。
+        r"""证书名称。
         :rtype: str
         """
         return self._CertName
@@ -2761,7 +2761,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型（SVR=服务器证书，CA=客户端证书）。
+        r"""证书类型（SVR=服务器证书，CA=客户端证书）。
         :rtype: str
         """
         return self._CertType
@@ -2772,7 +2772,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertContent(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._CertContent
@@ -2783,7 +2783,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertDomain(self):
-        """证书主域名。
+        r"""证书主域名。
         :rtype: str
         """
         return self._CertDomain
@@ -2794,7 +2794,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertSubjectDomain(self):
-        """证书子域名列表。
+        r"""证书子域名列表。
         :rtype: list of str
         """
         return self._CertSubjectDomain
@@ -2805,7 +2805,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertUploadTime(self):
-        """证书上传时间。
+        r"""证书上传时间。
         :rtype: str
         """
         return self._CertUploadTime
@@ -2816,7 +2816,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        r"""证书生效时间。
         :rtype: str
         """
         return self._CertBeginTime
@@ -2827,7 +2827,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertEndTime(self):
-        """证书失效时间。
+        r"""证书失效时间。
         :rtype: str
         """
         return self._CertEndTime
@@ -2838,7 +2838,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def CertLoadBalancerSet(self):
-        """该证书关联的黑石负载均衡对象列表。
+        r"""该证书关联的黑石负载均衡对象列表。
         :rtype: list of CertDetailLoadBalancer
         """
         return self._CertLoadBalancerSet
@@ -2849,7 +2849,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2879,7 +2879,7 @@ class DescribeCertDetailResponse(AbstractModel):
 
 
 class DescribeDevicesBindInfoRequest(AbstractModel):
-    """DescribeDevicesBindInfo请求参数结构体
+    r"""DescribeDevicesBindInfo请求参数结构体
 
     """
 
@@ -2895,7 +2895,7 @@ class DescribeDevicesBindInfoRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """黑石私有网络唯一ID。
+        r"""黑石私有网络唯一ID。
         :rtype: str
         """
         return self._VpcId
@@ -2906,7 +2906,7 @@ class DescribeDevicesBindInfoRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """主机ID或虚机IP列表，可用于获取绑定了该主机的负载均衡列表。
+        r"""主机ID或虚机IP列表，可用于获取绑定了该主机的负载均衡列表。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2930,7 +2930,7 @@ class DescribeDevicesBindInfoRequest(AbstractModel):
 
 
 class DescribeDevicesBindInfoResponse(AbstractModel):
-    """DescribeDevicesBindInfo返回参数结构体
+    r"""DescribeDevicesBindInfo返回参数结构体
 
     """
 
@@ -2946,7 +2946,7 @@ class DescribeDevicesBindInfoResponse(AbstractModel):
 
     @property
     def LoadBalancerSet(self):
-        """返回的负载均衡绑定信息。
+        r"""返回的负载均衡绑定信息。
         :rtype: list of DevicesBindInfoLoadBalancer
         """
         return self._LoadBalancerSet
@@ -2957,7 +2957,7 @@ class DescribeDevicesBindInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2978,7 +2978,7 @@ class DescribeDevicesBindInfoResponse(AbstractModel):
 
 
 class DescribeL4Backend(AbstractModel):
-    """待查询四层监听器绑定的主机信息。
+    r"""待查询四层监听器绑定的主机信息。
 
     """
 
@@ -2994,7 +2994,7 @@ class DescribeL4Backend(AbstractModel):
 
     @property
     def Port(self):
-        """待绑定的主机端口，可选值1~65535。
+        r"""待绑定的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -3005,7 +3005,7 @@ class DescribeL4Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机的主机ID。
+        r"""黑石物理机的主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3029,7 +3029,7 @@ class DescribeL4Backend(AbstractModel):
 
 
 class DescribeL4BackendsRequest(AbstractModel):
-    """DescribeL4Backends请求参数结构体
+    r"""DescribeL4Backends请求参数结构体
 
     """
 
@@ -3048,7 +3048,7 @@ class DescribeL4BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3059,7 +3059,7 @@ class DescribeL4BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
+        r"""负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -3070,7 +3070,7 @@ class DescribeL4BackendsRequest(AbstractModel):
 
     @property
     def BackendSet(self):
-        """待查询的主机信息。
+        r"""待查询的主机信息。
         :rtype: list of DescribeL4Backend
         """
         return self._BackendSet
@@ -3100,7 +3100,7 @@ class DescribeL4BackendsRequest(AbstractModel):
 
 
 class DescribeL4BackendsResponse(AbstractModel):
-    """DescribeL4Backends返回参数结构体
+    r"""DescribeL4Backends返回参数结构体
 
     """
 
@@ -3116,7 +3116,7 @@ class DescribeL4BackendsResponse(AbstractModel):
 
     @property
     def BackendSet(self):
-        """返回的绑定关系列表。
+        r"""返回的绑定关系列表。
         :rtype: list of L4Backend
         """
         return self._BackendSet
@@ -3127,7 +3127,7 @@ class DescribeL4BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3148,7 +3148,7 @@ class DescribeL4BackendsResponse(AbstractModel):
 
 
 class DescribeL4ListenerInfoRequest(AbstractModel):
-    """DescribeL4ListenerInfo请求参数结构体
+    r"""DescribeL4ListenerInfo请求参数结构体
 
     """
 
@@ -3167,7 +3167,7 @@ class DescribeL4ListenerInfoRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3178,7 +3178,7 @@ class DescribeL4ListenerInfoRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """查找的键值，可用于模糊查找该名称的监听器。
+        r"""查找的键值，可用于模糊查找该名称的监听器。
         :rtype: str
         """
         return self._SearchKey
@@ -3189,7 +3189,7 @@ class DescribeL4ListenerInfoRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
+        r"""主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3214,7 +3214,7 @@ class DescribeL4ListenerInfoRequest(AbstractModel):
 
 
 class DescribeL4ListenerInfoResponse(AbstractModel):
-    """DescribeL4ListenerInfo返回参数结构体
+    r"""DescribeL4ListenerInfo返回参数结构体
 
     """
 
@@ -3230,7 +3230,7 @@ class DescribeL4ListenerInfoResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """返回的四层监听器列表。
+        r"""返回的四层监听器列表。
         :rtype: list of L4ListenerInfo
         """
         return self._ListenerSet
@@ -3241,7 +3241,7 @@ class DescribeL4ListenerInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3262,7 +3262,7 @@ class DescribeL4ListenerInfoResponse(AbstractModel):
 
 
 class DescribeL4ListenersRequest(AbstractModel):
-    """DescribeL4Listeners请求参数结构体
+    r"""DescribeL4Listeners请求参数结构体
 
     """
 
@@ -3278,7 +3278,7 @@ class DescribeL4ListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3289,7 +3289,7 @@ class DescribeL4ListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """四层监听器实例ID数组，可通过接口DescribeL4Listeners查询。
+        r"""四层监听器实例ID数组，可通过接口DescribeL4Listeners查询。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -3313,7 +3313,7 @@ class DescribeL4ListenersRequest(AbstractModel):
 
 
 class DescribeL4ListenersResponse(AbstractModel):
-    """DescribeL4Listeners返回参数结构体
+    r"""DescribeL4Listeners返回参数结构体
 
     """
 
@@ -3329,7 +3329,7 @@ class DescribeL4ListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """监听器信息数组。
+        r"""监听器信息数组。
         :rtype: list of L4Listener
         """
         return self._ListenerSet
@@ -3340,7 +3340,7 @@ class DescribeL4ListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3361,7 +3361,7 @@ class DescribeL4ListenersResponse(AbstractModel):
 
 
 class DescribeL7BackendsRequest(AbstractModel):
-    """DescribeL7Backends请求参数结构体
+    r"""DescribeL7Backends请求参数结构体
 
     """
 
@@ -3386,7 +3386,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3397,7 +3397,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -3408,7 +3408,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -3419,7 +3419,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -3430,7 +3430,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """查询条件，传'all'则查询所有与规则绑定的主机信息。如果为all时，DomainId和LocationId参数没有意义不必传入，否则DomainId和LocationId参数必须传入。
+        r"""查询条件，传'all'则查询所有与规则绑定的主机信息。如果为all时，DomainId和LocationId参数没有意义不必传入，否则DomainId和LocationId参数必须传入。
         :rtype: str
         """
         return self._QueryType
@@ -3457,7 +3457,7 @@ class DescribeL7BackendsRequest(AbstractModel):
 
 
 class DescribeL7BackendsResponse(AbstractModel):
-    """DescribeL7Backends返回参数结构体
+    r"""DescribeL7Backends返回参数结构体
 
     """
 
@@ -3473,7 +3473,7 @@ class DescribeL7BackendsResponse(AbstractModel):
 
     @property
     def BackendSet(self):
-        """返回的绑定关系列表。
+        r"""返回的绑定关系列表。
         :rtype: list of L7Backend
         """
         return self._BackendSet
@@ -3484,7 +3484,7 @@ class DescribeL7BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3505,7 +3505,7 @@ class DescribeL7BackendsResponse(AbstractModel):
 
 
 class DescribeL7ListenerInfoRequest(AbstractModel):
-    """DescribeL7ListenerInfo请求参数结构体
+    r"""DescribeL7ListenerInfo请求参数结构体
 
     """
 
@@ -3527,7 +3527,7 @@ class DescribeL7ListenerInfoRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3538,7 +3538,7 @@ class DescribeL7ListenerInfoRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """查找的键值，可用于模糊查找有该转发域名的监听器。
+        r"""查找的键值，可用于模糊查找有该转发域名的监听器。
         :rtype: str
         """
         return self._SearchKey
@@ -3549,7 +3549,7 @@ class DescribeL7ListenerInfoRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
+        r"""主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3560,7 +3560,7 @@ class DescribeL7ListenerInfoRequest(AbstractModel):
 
     @property
     def IfGetBackendInfo(self):
-        """是否获取转发规则下的主机信息。默认为0，不获取。
+        r"""是否获取转发规则下的主机信息。默认为0，不获取。
         :rtype: int
         """
         return self._IfGetBackendInfo
@@ -3586,7 +3586,7 @@ class DescribeL7ListenerInfoRequest(AbstractModel):
 
 
 class DescribeL7ListenerInfoResponse(AbstractModel):
-    """DescribeL7ListenerInfo返回参数结构体
+    r"""DescribeL7ListenerInfo返回参数结构体
 
     """
 
@@ -3602,7 +3602,7 @@ class DescribeL7ListenerInfoResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """返回的七层监听器列表。
+        r"""返回的七层监听器列表。
         :rtype: list of L7ListenerInfo
         """
         return self._ListenerSet
@@ -3613,7 +3613,7 @@ class DescribeL7ListenerInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3634,7 +3634,7 @@ class DescribeL7ListenerInfoResponse(AbstractModel):
 
 
 class DescribeL7ListenersExRequest(AbstractModel):
-    """DescribeL7ListenersEx请求参数结构体
+    r"""DescribeL7ListenersEx请求参数结构体
 
     """
 
@@ -3666,7 +3666,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
     @property
     def TrafficMirrorId(self):
-        """返回的监听器中标识是否绑定在此流量镜像中。
+        r"""返回的监听器中标识是否绑定在此流量镜像中。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -3677,7 +3677,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
     @property
     def VpcId(self):
-        """待获取监听器所在的VPC的ID。
+        r"""待获取监听器所在的VPC的ID。
         :rtype: str
         """
         return self._VpcId
@@ -3688,7 +3688,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
     @property
     def Offset(self):
-        """此VPC中获取负载均衡的偏移。
+        r"""此VPC中获取负载均衡的偏移。
         :rtype: int
         """
         return self._Offset
@@ -3699,7 +3699,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
     @property
     def Limit(self):
-        """此VPC中获取负载均衡的数量。
+        r"""此VPC中获取负载均衡的数量。
         :rtype: int
         """
         return self._Limit
@@ -3710,7 +3710,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
     @property
     def Filters(self):
-        """过滤条件。
+        r"""过滤条件。
 LoadBalancerId - String - （过滤条件）负载均衡ID。
 LoadBalancerName - String - （过滤条件）负载均衡名称。
 Vip - String - （过滤条件）VIP。
@@ -3749,7 +3749,7 @@ LoadBalancerPort -  String - （过滤条件）监听器端口。
 
 
 class DescribeL7ListenersExResponse(AbstractModel):
-    """DescribeL7ListenersEx返回参数结构体
+    r"""DescribeL7ListenersEx返回参数结构体
 
     """
 
@@ -3768,7 +3768,7 @@ class DescribeL7ListenersExResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """此指定VPC中负载均衡的总数。
+        r"""此指定VPC中负载均衡的总数。
         :rtype: int
         """
         return self._TotalCount
@@ -3779,7 +3779,7 @@ class DescribeL7ListenersExResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """符合条件的监听器。
+        r"""符合条件的监听器。
         :rtype: list of L7ExListener
         """
         return self._ListenerSet
@@ -3790,7 +3790,7 @@ class DescribeL7ListenersExResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3812,7 +3812,7 @@ class DescribeL7ListenersExResponse(AbstractModel):
 
 
 class DescribeL7ListenersRequest(AbstractModel):
-    """DescribeL7Listeners请求参数结构体
+    r"""DescribeL7Listeners请求参数结构体
 
     """
 
@@ -3828,7 +3828,7 @@ class DescribeL7ListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3839,7 +3839,7 @@ class DescribeL7ListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """七层监听器实例ID列表，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID列表，可通过接口DescribeL7Listeners查询。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -3863,7 +3863,7 @@ class DescribeL7ListenersRequest(AbstractModel):
 
 
 class DescribeL7ListenersResponse(AbstractModel):
-    """DescribeL7Listeners返回参数结构体
+    r"""DescribeL7Listeners返回参数结构体
 
     """
 
@@ -3879,7 +3879,7 @@ class DescribeL7ListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """返回的七层监听器列表。
+        r"""返回的七层监听器列表。
         :rtype: list of L7Listener
         """
         return self._ListenerSet
@@ -3890,7 +3890,7 @@ class DescribeL7ListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3911,7 +3911,7 @@ class DescribeL7ListenersResponse(AbstractModel):
 
 
 class DescribeL7RulesRequest(AbstractModel):
-    """DescribeL7Rules请求参数结构体
+    r"""DescribeL7Rules请求参数结构体
 
     """
 
@@ -3930,7 +3930,7 @@ class DescribeL7RulesRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3941,7 +3941,7 @@ class DescribeL7RulesRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -3952,7 +3952,7 @@ class DescribeL7RulesRequest(AbstractModel):
 
     @property
     def DomainIds(self):
-        """转发域名ID列表，可通过接口DescribeL7Rules查询。
+        r"""转发域名ID列表，可通过接口DescribeL7Rules查询。
         :rtype: list of str
         """
         return self._DomainIds
@@ -3977,7 +3977,7 @@ class DescribeL7RulesRequest(AbstractModel):
 
 
 class DescribeL7RulesResponse(AbstractModel):
-    """DescribeL7Rules返回参数结构体
+    r"""DescribeL7Rules返回参数结构体
 
     """
 
@@ -3993,7 +3993,7 @@ class DescribeL7RulesResponse(AbstractModel):
 
     @property
     def RuleSet(self):
-        """返回的转发规则列表。
+        r"""返回的转发规则列表。
         :rtype: list of L7Rule
         """
         return self._RuleSet
@@ -4004,7 +4004,7 @@ class DescribeL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4025,7 +4025,7 @@ class DescribeL7RulesResponse(AbstractModel):
 
 
 class DescribeLoadBalancerPortInfoRequest(AbstractModel):
-    """DescribeLoadBalancerPortInfo请求参数结构体
+    r"""DescribeLoadBalancerPortInfo请求参数结构体
 
     """
 
@@ -4038,7 +4038,7 @@ class DescribeLoadBalancerPortInfoRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -4061,7 +4061,7 @@ class DescribeLoadBalancerPortInfoRequest(AbstractModel):
 
 
 class DescribeLoadBalancerPortInfoResponse(AbstractModel):
-    """DescribeLoadBalancerPortInfo返回参数结构体
+    r"""DescribeLoadBalancerPortInfo返回参数结构体
 
     """
 
@@ -4077,7 +4077,7 @@ class DescribeLoadBalancerPortInfoResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """返回的监听器列表（四层和七层）。
+        r"""返回的监听器列表（四层和七层）。
         :rtype: list of LoadBalancerPortInfoListener
         """
         return self._ListenerSet
@@ -4088,7 +4088,7 @@ class DescribeLoadBalancerPortInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4109,7 +4109,7 @@ class DescribeLoadBalancerPortInfoResponse(AbstractModel):
 
 
 class DescribeLoadBalancerTaskResultRequest(AbstractModel):
-    """DescribeLoadBalancerTaskResult请求参数结构体
+    r"""DescribeLoadBalancerTaskResult请求参数结构体
 
     """
 
@@ -4122,7 +4122,7 @@ class DescribeLoadBalancerTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。由具体的异步操作接口提供。
+        r"""任务ID。由具体的异步操作接口提供。
         :rtype: str
         """
         return self._TaskId
@@ -4145,7 +4145,7 @@ class DescribeLoadBalancerTaskResultRequest(AbstractModel):
 
 
 class DescribeLoadBalancerTaskResultResponse(AbstractModel):
-    """DescribeLoadBalancerTaskResult返回参数结构体
+    r"""DescribeLoadBalancerTaskResult返回参数结构体
 
     """
 
@@ -4161,7 +4161,7 @@ class DescribeLoadBalancerTaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务当前状态。0：成功，1：失败，2：进行中。
+        r"""任务当前状态。0：成功，1：失败，2：进行中。
         :rtype: int
         """
         return self._Status
@@ -4172,7 +4172,7 @@ class DescribeLoadBalancerTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4188,7 +4188,7 @@ class DescribeLoadBalancerTaskResultResponse(AbstractModel):
 
 
 class DescribeLoadBalancersRequest(AbstractModel):
-    """DescribeLoadBalancers请求参数结构体
+    r"""DescribeLoadBalancers请求参数结构体
 
     """
 
@@ -4246,7 +4246,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """负载均衡器ID数组
+        r"""负载均衡器ID数组
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -4257,7 +4257,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        """负载均衡的类型 : open表示公网LB类型，internal表示内网LB类型
+        r"""负载均衡的类型 : open表示公网LB类型，internal表示内网LB类型
         :rtype: str
         """
         return self._LoadBalancerType
@@ -4268,7 +4268,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡器名称
+        r"""负载均衡器名称
         :rtype: str
         """
         return self._LoadBalancerName
@@ -4279,7 +4279,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """负载均衡域名。规则：1-60个小写英文字母、数字、点号“.”或连接线“-”。内网类型的负载均衡不能配置该字段
+        r"""负载均衡域名。规则：1-60个小写英文字母、数字、点号“.”或连接线“-”。内网类型的负载均衡不能配置该字段
         :rtype: str
         """
         return self._Domain
@@ -4290,7 +4290,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
-        """负载均衡获得的公网IP地址,支持多个
+        r"""负载均衡获得的公网IP地址,支持多个
         :rtype: list of str
         """
         return self._LoadBalancerVips
@@ -4301,7 +4301,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为0
+        r"""数据偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -4312,7 +4312,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数据长度，默认为20
+        r"""返回数据长度，默认为20
         :rtype: int
         """
         return self._Limit
@@ -4323,7 +4323,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """模糊查找名称、域名、VIP
+        r"""模糊查找名称、域名、VIP
         :rtype: str
         """
         return self._SearchKey
@@ -4334,7 +4334,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，支持：loadBalancerName,createTime,domain,loadBalancerType
+        r"""排序字段，支持：loadBalancerName,createTime,domain,loadBalancerType
         :rtype: str
         """
         return self._OrderBy
@@ -4345,7 +4345,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """1倒序，0顺序，默认顺序
+        r"""1倒序，0顺序，默认顺序
         :rtype: int
         """
         return self._OrderType
@@ -4356,7 +4356,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -4367,7 +4367,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def Exclusive(self):
-        """是否筛选独占集群，0表示非独占集群，1表示四层独占集群，2表示七层独占集群，3表示四层和七层独占集群，4表示共享容灾
+        r"""是否筛选独占集群，0表示非独占集群，1表示四层独占集群，2表示七层独占集群，3表示四层和七层独占集群，4表示共享容灾
         :rtype: int
         """
         return self._Exclusive
@@ -4378,7 +4378,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def TgwSetType(self):
-        """该负载均衡对应的tgw集群（fullnat,tunnel,dnat）
+        r"""该负载均衡对应的tgw集群（fullnat,tunnel,dnat）
         :rtype: str
         """
         return self._TgwSetType
@@ -4389,7 +4389,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """该负载均衡对应的所在的私有网络ID
+        r"""该负载均衡对应的所在的私有网络ID
         :rtype: str
         """
         return self._VpcId
@@ -4400,7 +4400,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """'CONFLIST' 查询带confId的LB列表，'CONFID' 查询某个confId绑定的LB列表
+        r"""'CONFLIST' 查询带confId的LB列表，'CONFID' 查询某个confId绑定的LB列表
         :rtype: str
         """
         return self._QueryType
@@ -4411,7 +4411,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def ConfId(self):
-        """个性化配置ID
+        r"""个性化配置ID
         :rtype: str
         """
         return self._ConfId
@@ -4449,7 +4449,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
 
 class DescribeLoadBalancersResponse(AbstractModel):
-    """DescribeLoadBalancers返回参数结构体
+    r"""DescribeLoadBalancers返回参数结构体
 
     """
 
@@ -4468,7 +4468,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def LoadBalancerSet(self):
-        """返回负载均衡信息列表。
+        r"""返回负载均衡信息列表。
         :rtype: list of LoadBalancer
         """
         return self._LoadBalancerSet
@@ -4479,7 +4479,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的负载均衡总数。
+        r"""符合条件的负载均衡总数。
         :rtype: int
         """
         return self._TotalCount
@@ -4490,7 +4490,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4512,7 +4512,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
 
 class DescribeTrafficMirrorListenersRequest(AbstractModel):
-    """DescribeTrafficMirrorListeners请求参数结构体
+    r"""DescribeTrafficMirrorListeners请求参数结构体
 
     """
 
@@ -4552,7 +4552,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -4563,7 +4563,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页的偏移量，也即从第几条记录开始查询
+        r"""分页的偏移量，也即从第几条记录开始查询
         :rtype: int
         """
         return self._Offset
@@ -4574,7 +4574,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次查询返回的条目数，默认值：500。
+        r"""单次查询返回的条目数，默认值：500。
         :rtype: int
         """
         return self._Limit
@@ -4585,7 +4585,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchLoadBalancerIds(self):
-        """待搜索的负载均衡Id。
+        r"""待搜索的负载均衡Id。
         :rtype: list of str
         """
         return self._SearchLoadBalancerIds
@@ -4596,7 +4596,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchLoadBalancerNames(self):
-        """待搜索的负载均衡名称。
+        r"""待搜索的负载均衡名称。
         :rtype: list of str
         """
         return self._SearchLoadBalancerNames
@@ -4607,7 +4607,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchVips(self):
-        """待搜索的Vip。
+        r"""待搜索的Vip。
         :rtype: list of str
         """
         return self._SearchVips
@@ -4618,7 +4618,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchListenerIds(self):
-        """待搜索的监听器ID。
+        r"""待搜索的监听器ID。
         :rtype: list of str
         """
         return self._SearchListenerIds
@@ -4629,7 +4629,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchListenerNames(self):
-        """待搜索的监听器名称。
+        r"""待搜索的监听器名称。
         :rtype: list of str
         """
         return self._SearchListenerNames
@@ -4640,7 +4640,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchProtocols(self):
-        """待搜索的协议名称。
+        r"""待搜索的协议名称。
         :rtype: list of str
         """
         return self._SearchProtocols
@@ -4651,7 +4651,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def SearchLoadBalancerPorts(self):
-        """待搜索的端口。
+        r"""待搜索的端口。
         :rtype: list of int non-negative
         """
         return self._SearchLoadBalancerPorts
@@ -4683,7 +4683,7 @@ class DescribeTrafficMirrorListenersRequest(AbstractModel):
 
 
 class DescribeTrafficMirrorListenersResponse(AbstractModel):
-    """DescribeTrafficMirrorListeners返回参数结构体
+    r"""DescribeTrafficMirrorListeners返回参数结构体
 
     """
 
@@ -4702,7 +4702,7 @@ class DescribeTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """监听器列表。
+        r"""监听器列表。
         :rtype: list of TrafficMirrorListener
         """
         return self._ListenerSet
@@ -4713,7 +4713,7 @@ class DescribeTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """监听器总数。
+        r"""监听器总数。
         :rtype: int
         """
         return self._TotalCount
@@ -4724,7 +4724,7 @@ class DescribeTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4746,7 +4746,7 @@ class DescribeTrafficMirrorListenersResponse(AbstractModel):
 
 
 class DescribeTrafficMirrorReceiver(AbstractModel):
-    """流量镜像进行健康检查的接收机信息。
+    r"""流量镜像进行健康检查的接收机信息。
 
     """
 
@@ -4762,7 +4762,7 @@ class DescribeTrafficMirrorReceiver(AbstractModel):
 
     @property
     def InstanceId(self):
-        """物理机实例ID。
+        r"""物理机实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -4773,7 +4773,7 @@ class DescribeTrafficMirrorReceiver(AbstractModel):
 
     @property
     def Port(self):
-        """物理机绑定的端口。
+        r"""物理机绑定的端口。
         :rtype: int
         """
         return self._Port
@@ -4797,7 +4797,7 @@ class DescribeTrafficMirrorReceiver(AbstractModel):
 
 
 class DescribeTrafficMirrorReceiverHealthStatusRequest(AbstractModel):
-    """DescribeTrafficMirrorReceiverHealthStatus请求参数结构体
+    r"""DescribeTrafficMirrorReceiverHealthStatus请求参数结构体
 
     """
 
@@ -4813,7 +4813,7 @@ class DescribeTrafficMirrorReceiverHealthStatusRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """查询所在的流量镜像ID。
+        r"""查询所在的流量镜像ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -4824,7 +4824,7 @@ class DescribeTrafficMirrorReceiverHealthStatusRequest(AbstractModel):
 
     @property
     def ReceiverSet(self):
-        """流量镜像接收机实例ID和端口数组。
+        r"""流量镜像接收机实例ID和端口数组。
         :rtype: list of DescribeTrafficMirrorReceiver
         """
         return self._ReceiverSet
@@ -4853,7 +4853,7 @@ class DescribeTrafficMirrorReceiverHealthStatusRequest(AbstractModel):
 
 
 class DescribeTrafficMirrorReceiverHealthStatusResponse(AbstractModel):
-    """DescribeTrafficMirrorReceiverHealthStatus返回参数结构体
+    r"""DescribeTrafficMirrorReceiverHealthStatus返回参数结构体
 
     """
 
@@ -4869,7 +4869,7 @@ class DescribeTrafficMirrorReceiverHealthStatusResponse(AbstractModel):
 
     @property
     def ReceiversStatusSet(self):
-        """内网IP和端口对应的状态。
+        r"""内网IP和端口对应的状态。
         :rtype: list of TrafficMirrorReciversStatus
         """
         return self._ReceiversStatusSet
@@ -4880,7 +4880,7 @@ class DescribeTrafficMirrorReceiverHealthStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4901,7 +4901,7 @@ class DescribeTrafficMirrorReceiverHealthStatusResponse(AbstractModel):
 
 
 class DescribeTrafficMirrorReceiversRequest(AbstractModel):
-    """DescribeTrafficMirrorReceivers请求参数结构体
+    r"""DescribeTrafficMirrorReceivers请求参数结构体
 
     """
 
@@ -4935,7 +4935,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -4946,7 +4946,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """接收机黑石物理机实例ID数组。
+        r"""接收机黑石物理机实例ID数组。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -4957,7 +4957,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def Ports(self):
-        """接收机接收端口数组。
+        r"""接收机接收端口数组。
         :rtype: list of int
         """
         return self._Ports
@@ -4968,7 +4968,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def Weights(self):
-        """接收机实例权重数组。
+        r"""接收机实例权重数组。
         :rtype: list of int
         """
         return self._Weights
@@ -4979,7 +4979,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页的偏移量，也即从第几条记录开始查询
+        r"""分页的偏移量，也即从第几条记录开始查询
         :rtype: int
         """
         return self._Offset
@@ -4990,7 +4990,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次查询返回的条目数，默认值：500。
+        r"""单次查询返回的条目数，默认值：500。
         :rtype: int
         """
         return self._Limit
@@ -5001,7 +5001,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def VagueStr(self):
-        """搜索instance或者alias
+        r"""搜索instance或者alias
         :rtype: str
         """
         return self._VagueStr
@@ -5012,7 +5012,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def VagueIp(self):
-        """搜索IP
+        r"""搜索IP
         :rtype: str
         """
         return self._VagueIp
@@ -5042,7 +5042,7 @@ class DescribeTrafficMirrorReceiversRequest(AbstractModel):
 
 
 class DescribeTrafficMirrorReceiversResponse(AbstractModel):
-    """DescribeTrafficMirrorReceivers返回参数结构体
+    r"""DescribeTrafficMirrorReceivers返回参数结构体
 
     """
 
@@ -5061,7 +5061,7 @@ class DescribeTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def ReceiverSet(self):
-        """接收机列表，具体结构描述如data结构所示。
+        r"""接收机列表，具体结构描述如data结构所示。
         :rtype: list of TrafficMirrorReceiver
         """
         return self._ReceiverSet
@@ -5072,7 +5072,7 @@ class DescribeTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """接收机总数。
+        r"""接收机总数。
         :rtype: int
         """
         return self._TotalCount
@@ -5083,7 +5083,7 @@ class DescribeTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5105,7 +5105,7 @@ class DescribeTrafficMirrorReceiversResponse(AbstractModel):
 
 
 class DescribeTrafficMirrorsRequest(AbstractModel):
-    """DescribeTrafficMirrors请求参数结构体
+    r"""DescribeTrafficMirrors请求参数结构体
 
     """
 
@@ -5139,7 +5139,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def TrafficMirrorIds(self):
-        """流量镜像实例ID的数组，支持批量查询
+        r"""流量镜像实例ID的数组，支持批量查询
         :rtype: list of str
         """
         return self._TrafficMirrorIds
@@ -5150,7 +5150,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def Aliases(self):
-        """流量镜像实例别名数组。
+        r"""流量镜像实例别名数组。
         :rtype: list of str
         """
         return self._Aliases
@@ -5161,7 +5161,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        """流量镜像实例所属的私有网络ID数组，形如：vpc-xxx。
+        r"""流量镜像实例所属的私有网络ID数组，形如：vpc-xxx。
         :rtype: list of str
         """
         return self._VpcIds
@@ -5172,7 +5172,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页的偏移量，也即从第几条记录开始查询
+        r"""分页的偏移量，也即从第几条记录开始查询
         :rtype: int
         """
         return self._Offset
@@ -5183,7 +5183,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次查询返回的条目数，默认值：500。
+        r"""单次查询返回的条目数，默认值：500。
         :rtype: int
         """
         return self._Limit
@@ -5194,7 +5194,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """排序字段。trafficMirrorId或者createTime。
+        r"""排序字段。trafficMirrorId或者createTime。
         :rtype: str
         """
         return self._OrderField
@@ -5205,7 +5205,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式，取值：0:增序(默认)，1:降序
+        r"""排序方式，取值：0:增序(默认)，1:降序
         :rtype: int
         """
         return self._Order
@@ -5216,7 +5216,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """模糊匹配trafficMirrorId或者alias字段。
+        r"""模糊匹配trafficMirrorId或者alias字段。
         :rtype: str
         """
         return self._SearchKey
@@ -5246,7 +5246,7 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
 
 class DescribeTrafficMirrorsResponse(AbstractModel):
-    """DescribeTrafficMirrors返回参数结构体
+    r"""DescribeTrafficMirrors返回参数结构体
 
     """
 
@@ -5265,7 +5265,7 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """流量镜像总数。
+        r"""流量镜像总数。
         :rtype: int
         """
         return self._TotalCount
@@ -5276,7 +5276,7 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
 
     @property
     def TrafficMirrorSet(self):
-        """对象数组。数组元素为流量镜像信息，具体结构描述如list结构所示。
+        r"""对象数组。数组元素为流量镜像信息，具体结构描述如list结构所示。
         :rtype: list of TrafficMirror
         """
         return self._TrafficMirrorSet
@@ -5287,7 +5287,7 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5309,7 +5309,7 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
 
 
 class DevicesBindInfoBackend(AbstractModel):
-    """获取设备绑定信息时返回的所绑定的主机信息。
+    r"""获取设备绑定信息时返回的所绑定的主机信息。
 
     """
 
@@ -5325,7 +5325,7 @@ class DevicesBindInfoBackend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机的主机ID、托管主机ID或虚拟机IP。
+        r"""黑石物理机的主机ID、托管主机ID或虚拟机IP。
         :rtype: str
         """
         return self._InstanceId
@@ -5336,7 +5336,7 @@ class DevicesBindInfoBackend(AbstractModel):
 
     @property
     def Port(self):
-        """主机端口。
+        r"""主机端口。
         :rtype: int
         """
         return self._Port
@@ -5360,7 +5360,7 @@ class DevicesBindInfoBackend(AbstractModel):
 
 
 class DevicesBindInfoL4Listener(AbstractModel):
-    """获取设备绑定信息时返回的四层监听器信息。
+    r"""获取设备绑定信息时返回的四层监听器信息。
 
     """
 
@@ -5382,7 +5382,7 @@ class DevicesBindInfoL4Listener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID。
+        r"""七层监听器实例ID。
         :rtype: str
         """
         return self._ListenerId
@@ -5393,7 +5393,7 @@ class DevicesBindInfoL4Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -5404,7 +5404,7 @@ class DevicesBindInfoL4Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """七层监听器的监听端口。
+        r"""七层监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -5415,7 +5415,7 @@ class DevicesBindInfoL4Listener(AbstractModel):
 
     @property
     def BackendSet(self):
-        """该转发路径所绑定的主机列表。
+        r"""该转发路径所绑定的主机列表。
         :rtype: list of DevicesBindInfoBackend
         """
         return self._BackendSet
@@ -5446,7 +5446,7 @@ class DevicesBindInfoL4Listener(AbstractModel):
 
 
 class DevicesBindInfoL7Listener(AbstractModel):
-    """获取设备绑定信息时返回的七层监听器信息。
+    r"""获取设备绑定信息时返回的七层监听器信息。
 
     """
 
@@ -5468,7 +5468,7 @@ class DevicesBindInfoL7Listener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID。
+        r"""七层监听器实例ID。
         :rtype: str
         """
         return self._ListenerId
@@ -5479,7 +5479,7 @@ class DevicesBindInfoL7Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -5490,7 +5490,7 @@ class DevicesBindInfoL7Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """七层监听器的监听端口。
+        r"""七层监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -5501,7 +5501,7 @@ class DevicesBindInfoL7Listener(AbstractModel):
 
     @property
     def RuleSet(self):
-        """返回的转发规则列表。
+        r"""返回的转发规则列表。
         :rtype: list of DevicesBindInfoRule
         """
         return self._RuleSet
@@ -5532,7 +5532,7 @@ class DevicesBindInfoL7Listener(AbstractModel):
 
 
 class DevicesBindInfoLoadBalancer(AbstractModel):
-    """获取设备绑定信息时返回的设备被绑定所在的负载均衡信息。
+    r"""获取设备绑定信息时返回的设备被绑定所在的负载均衡信息。
 
     """
 
@@ -5569,7 +5569,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID。
+        r"""负载均衡实例ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5580,7 +5580,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def AppId(self):
-        """开发商AppId。
+        r"""开发商AppId。
         :rtype: int
         """
         return self._AppId
@@ -5591,7 +5591,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def ProjectId(self):
-        """负载均衡所属的项目ID。
+        r"""负载均衡所属的项目ID。
         :rtype: int
         """
         return self._ProjectId
@@ -5602,7 +5602,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def VpcId(self):
-        """黑石私有网络唯一ID。
+        r"""黑石私有网络唯一ID。
         :rtype: str
         """
         return self._VpcId
@@ -5613,7 +5613,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def Vip(self):
-        """负载均衡的IP地址。
+        r"""负载均衡的IP地址。
         :rtype: str
         """
         return self._Vip
@@ -5624,7 +5624,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def TgwSetType(self):
-        """负载均衡对应的TGW集群类别，取值为tunnel或fullnat。tunnel表示隧道集群，fullnat表示FULLNAT集群。
+        r"""负载均衡对应的TGW集群类别，取值为tunnel或fullnat。tunnel表示隧道集群，fullnat表示FULLNAT集群。
         :rtype: str
         """
         return self._TgwSetType
@@ -5635,7 +5635,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def Exclusive(self):
-        """是否独占TGW集群。
+        r"""是否独占TGW集群。
         :rtype: int
         """
         return self._Exclusive
@@ -5646,7 +5646,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def L4ListenerSet(self):
-        """具有该绑定关系的四层监听器列表。
+        r"""具有该绑定关系的四层监听器列表。
         :rtype: list of DevicesBindInfoL4Listener
         """
         return self._L4ListenerSet
@@ -5657,7 +5657,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
     @property
     def L7ListenerSet(self):
-        """具有该绑定关系的七层监听器列表。
+        r"""具有该绑定关系的七层监听器列表。
         :rtype: list of DevicesBindInfoL7Listener
         """
         return self._L7ListenerSet
@@ -5698,7 +5698,7 @@ class DevicesBindInfoLoadBalancer(AbstractModel):
 
 
 class DevicesBindInfoLocation(AbstractModel):
-    """获取设备绑定信息时返回的设备所绑定的转发路径信息。
+    r"""获取设备绑定信息时返回的设备所绑定的转发路径信息。
 
     """
 
@@ -5717,7 +5717,7 @@ class DevicesBindInfoLocation(AbstractModel):
 
     @property
     def Url(self):
-        """转发路径。
+        r"""转发路径。
         :rtype: str
         """
         return self._Url
@@ -5728,7 +5728,7 @@ class DevicesBindInfoLocation(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID。
+        r"""转发路径实例ID。
         :rtype: str
         """
         return self._LocationId
@@ -5739,7 +5739,7 @@ class DevicesBindInfoLocation(AbstractModel):
 
     @property
     def BackendSet(self):
-        """该转发路径所绑定的主机列表。
+        r"""该转发路径所绑定的主机列表。
         :rtype: list of DevicesBindInfoBackend
         """
         return self._BackendSet
@@ -5769,7 +5769,7 @@ class DevicesBindInfoLocation(AbstractModel):
 
 
 class DevicesBindInfoRule(AbstractModel):
-    """获取设备绑定信息时返回的设备所绑定的转发规则信息。
+    r"""获取设备绑定信息时返回的设备所绑定的转发规则信息。
 
     """
 
@@ -5788,7 +5788,7 @@ class DevicesBindInfoRule(AbstractModel):
 
     @property
     def Domain(self):
-        """转发域名。
+        r"""转发域名。
         :rtype: str
         """
         return self._Domain
@@ -5799,7 +5799,7 @@ class DevicesBindInfoRule(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名ID。
+        r"""转发域名ID。
         :rtype: str
         """
         return self._DomainId
@@ -5810,7 +5810,7 @@ class DevicesBindInfoRule(AbstractModel):
 
     @property
     def LocationSet(self):
-        """转发路径列表。
+        r"""转发路径列表。
         :rtype: list of DevicesBindInfoLocation
         """
         return self._LocationSet
@@ -5840,7 +5840,7 @@ class DevicesBindInfoRule(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤器
+    r"""过滤器
 
     """
 
@@ -5856,7 +5856,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        r"""属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
         :rtype: str
         """
         return self._Name
@@ -5867,7 +5867,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
         :rtype: list of str
         """
         return self._Values
@@ -5891,7 +5891,7 @@ class Filter(AbstractModel):
 
 
 class L4Backend(AbstractModel):
-    """查询四层监听器返回的与监听器绑定关系的主机信息。
+    r"""查询四层监听器返回的与监听器绑定关系的主机信息。
 
     """
 
@@ -5928,7 +5928,7 @@ class L4Backend(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类别（0代表黑石物理机，1代表虚拟机IP）。
+        r"""绑定类别（0代表黑石物理机，1代表虚拟机IP）。
         :rtype: int
         """
         return self._BindType
@@ -5939,7 +5939,7 @@ class L4Backend(AbstractModel):
 
     @property
     def Port(self):
-        """主机端口。
+        r"""主机端口。
         :rtype: int
         """
         return self._Port
@@ -5950,7 +5950,7 @@ class L4Backend(AbstractModel):
 
     @property
     def Weight(self):
-        """权重。
+        r"""权重。
         :rtype: int
         """
         return self._Weight
@@ -5961,7 +5961,7 @@ class L4Backend(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: str
         """
         return self._Status
@@ -5972,7 +5972,7 @@ class L4Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机的主机ID。
+        r"""黑石物理机的主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5983,7 +5983,7 @@ class L4Backend(AbstractModel):
 
     @property
     def Alias(self):
-        """黑石物理机的别名。
+        r"""黑石物理机的别名。
         :rtype: str
         """
         return self._Alias
@@ -5994,7 +5994,7 @@ class L4Backend(AbstractModel):
 
     @property
     def LanIp(self):
-        """主机IP。
+        r"""主机IP。
         :rtype: str
         """
         return self._LanIp
@@ -6005,7 +6005,7 @@ class L4Backend(AbstractModel):
 
     @property
     def Operates(self):
-        """黑石物理机当前可以执行的操作。
+        r"""黑石物理机当前可以执行的操作。
         :rtype: list of str
         """
         return self._Operates
@@ -6016,7 +6016,7 @@ class L4Backend(AbstractModel):
 
     @property
     def ProbePort(self):
-        """主机探测端口。
+        r"""主机探测端口。
         :rtype: int
         """
         return self._ProbePort
@@ -6047,7 +6047,7 @@ class L4Backend(AbstractModel):
 
 
 class L4Listener(AbstractModel):
-    """查询四层监听器时返回的四层监听器信息。
+    r"""查询四层监听器时返回的四层监听器信息。
 
     """
 
@@ -6120,7 +6120,7 @@ class L4Listener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器ID。
+        r"""监听器ID。
         :rtype: str
         """
         return self._ListenerId
@@ -6131,7 +6131,7 @@ class L4Listener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """用户自定义的监听器名称。
+        r"""用户自定义的监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -6142,7 +6142,7 @@ class L4Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """负载均衡实例监听器协议类型，可选值tcp，udp。
+        r"""负载均衡实例监听器协议类型，可选值tcp，udp。
         :rtype: str
         """
         return self._Protocol
@@ -6153,7 +6153,7 @@ class L4Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """负载均衡监听器的监听接口，可选值1~65535。
+        r"""负载均衡监听器的监听接口，可选值1~65535。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -6164,7 +6164,7 @@ class L4Listener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
+        r"""用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -6175,7 +6175,7 @@ class L4Listener(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
+        r"""监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
         :rtype: str
         """
         return self._ListenerType
@@ -6186,7 +6186,7 @@ class L4Listener(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间。单位：秒
+        r"""会话保持时间。单位：秒
         :rtype: int
         """
         return self._SessionExpire
@@ -6197,7 +6197,7 @@ class L4Listener(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启了检查：1（开启）、0（关闭）。
+        r"""是否开启了检查：1（开启）、0（关闭）。
         :rtype: int
         """
         return self._HealthSwitch
@@ -6208,7 +6208,7 @@ class L4Listener(AbstractModel):
 
     @property
     def TimeOut(self):
-        """响应超时时间，单位：秒。
+        r"""响应超时时间，单位：秒。
         :rtype: int
         """
         return self._TimeOut
@@ -6219,7 +6219,7 @@ class L4Listener(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """检查间隔，单位：秒。
+        r"""检查间隔，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -6230,7 +6230,7 @@ class L4Listener(AbstractModel):
 
     @property
     def HealthNum(self):
-        """负载均衡监听器健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""负载均衡监听器健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -6241,7 +6241,7 @@ class L4Listener(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """负载均衡监听器不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""负载均衡监听器不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -6252,7 +6252,7 @@ class L4Listener(AbstractModel):
 
     @property
     def CustomHealthSwitch(self):
-        """是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+        r"""是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
         :rtype: int
         """
         return self._CustomHealthSwitch
@@ -6263,7 +6263,7 @@ class L4Listener(AbstractModel):
 
     @property
     def InputType(self):
-        """自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+        r"""自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
         :rtype: str
         """
         return self._InputType
@@ -6274,7 +6274,7 @@ class L4Listener(AbstractModel):
 
     @property
     def LineSeparatorType(self):
-        """探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+        r"""探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
         :rtype: int
         """
         return self._LineSeparatorType
@@ -6285,7 +6285,7 @@ class L4Listener(AbstractModel):
 
     @property
     def HealthRequest(self):
-        """自定义探测请求内容。
+        r"""自定义探测请求内容。
         :rtype: str
         """
         return self._HealthRequest
@@ -6296,7 +6296,7 @@ class L4Listener(AbstractModel):
 
     @property
     def HealthResponse(self):
-        """自定义探测返回内容。
+        r"""自定义探测返回内容。
         :rtype: str
         """
         return self._HealthResponse
@@ -6307,7 +6307,7 @@ class L4Listener(AbstractModel):
 
     @property
     def ToaFlag(self):
-        """是否开启toa：1（开启）、0（关闭）。
+        r"""是否开启toa：1（开启）、0（关闭）。
         :rtype: int
         """
         return self._ToaFlag
@@ -6318,7 +6318,7 @@ class L4Listener(AbstractModel):
 
     @property
     def Status(self):
-        """监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -6329,7 +6329,7 @@ class L4Listener(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -6340,7 +6340,7 @@ class L4Listener(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """转发后端服务器调度类型。
+        r"""转发后端服务器调度类型。
         :rtype: str
         """
         return self._BalanceMode
@@ -6383,7 +6383,7 @@ class L4Listener(AbstractModel):
 
 
 class L4ListenerInfo(AbstractModel):
-    """查询绑定了某主机的四层监听器时返回的四层监听器信息。
+    r"""查询绑定了某主机的四层监听器时返回的四层监听器信息。
 
     """
 
@@ -6456,7 +6456,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器ID。
+        r"""监听器ID。
         :rtype: str
         """
         return self._ListenerId
@@ -6467,7 +6467,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def ListenerName(self):
-        """用户自定义的监听器名称。
+        r"""用户自定义的监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -6478,7 +6478,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """负载均衡实例监听器协议类型，可选值tcp，udp。
+        r"""负载均衡实例监听器协议类型，可选值tcp，udp。
         :rtype: str
         """
         return self._Protocol
@@ -6489,7 +6489,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """负载均衡监听器的监听接口，可选值1~65535。
+        r"""负载均衡监听器的监听接口，可选值1~65535。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -6500,7 +6500,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
+        r"""用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -6511,7 +6511,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
+        r"""监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
         :rtype: str
         """
         return self._ListenerType
@@ -6522,7 +6522,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间。单位：秒
+        r"""会话保持时间。单位：秒
         :rtype: int
         """
         return self._SessionExpire
@@ -6533,7 +6533,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启了检查：1（开启）、0（关闭）。
+        r"""是否开启了检查：1（开启）、0（关闭）。
         :rtype: int
         """
         return self._HealthSwitch
@@ -6544,7 +6544,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def TimeOut(self):
-        """响应超时时间，单位：秒。
+        r"""响应超时时间，单位：秒。
         :rtype: int
         """
         return self._TimeOut
@@ -6555,7 +6555,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """检查间隔，单位：秒。
+        r"""检查间隔，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -6566,7 +6566,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def HealthNum(self):
-        """负载均衡监听器健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""负载均衡监听器健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -6577,7 +6577,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """负载均衡监听器不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""负载均衡监听器不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -6588,7 +6588,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def Status(self):
-        """监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -6599,7 +6599,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -6610,7 +6610,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def CustomHealthSwitch(self):
-        """是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+        r"""是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
         :rtype: int
         """
         return self._CustomHealthSwitch
@@ -6621,7 +6621,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def InputType(self):
-        """自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+        r"""自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
         :rtype: str
         """
         return self._InputType
@@ -6632,7 +6632,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def LineSeparatorType(self):
-        """探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+        r"""探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
         :rtype: int
         """
         return self._LineSeparatorType
@@ -6643,7 +6643,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def HealthRequest(self):
-        """自定义探测请求内容。
+        r"""自定义探测请求内容。
         :rtype: str
         """
         return self._HealthRequest
@@ -6654,7 +6654,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def HealthResponse(self):
-        """自定义探测返回内容。
+        r"""自定义探测返回内容。
         :rtype: str
         """
         return self._HealthResponse
@@ -6665,7 +6665,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def ToaFlag(self):
-        """是否开启toa：1（开启）、0（关闭）。
+        r"""是否开启toa：1（开启）、0（关闭）。
         :rtype: int
         """
         return self._ToaFlag
@@ -6676,7 +6676,7 @@ class L4ListenerInfo(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """转发后端服务器调度类型。
+        r"""转发后端服务器调度类型。
         :rtype: str
         """
         return self._BalanceMode
@@ -6719,7 +6719,7 @@ class L4ListenerInfo(AbstractModel):
 
 
 class L7Backend(AbstractModel):
-    """获取七层转发路径绑定的主机列表时返回的主机信息。
+    r"""获取七层转发路径绑定的主机列表时返回的主机信息。
 
     """
 
@@ -6756,7 +6756,7 @@ class L7Backend(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类别（0代表黑石物理机，1代表虚拟机IP）。
+        r"""绑定类别（0代表黑石物理机，1代表虚拟机IP）。
         :rtype: int
         """
         return self._BindType
@@ -6767,7 +6767,7 @@ class L7Backend(AbstractModel):
 
     @property
     def Port(self):
-        """主机端口。
+        r"""主机端口。
         :rtype: int
         """
         return self._Port
@@ -6778,7 +6778,7 @@ class L7Backend(AbstractModel):
 
     @property
     def Weight(self):
-        """权重。
+        r"""权重。
         :rtype: int
         """
         return self._Weight
@@ -6789,7 +6789,7 @@ class L7Backend(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: str
         """
         return self._Status
@@ -6800,7 +6800,7 @@ class L7Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机的主机ID。
+        r"""黑石物理机的主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6811,7 +6811,7 @@ class L7Backend(AbstractModel):
 
     @property
     def Alias(self):
-        """黑石物理机的别名。
+        r"""黑石物理机的别名。
         :rtype: str
         """
         return self._Alias
@@ -6822,7 +6822,7 @@ class L7Backend(AbstractModel):
 
     @property
     def LanIp(self):
-        """主机IP。
+        r"""主机IP。
         :rtype: str
         """
         return self._LanIp
@@ -6833,7 +6833,7 @@ class L7Backend(AbstractModel):
 
     @property
     def MgtIp(self):
-        """黑石物理机的管理IP。
+        r"""黑石物理机的管理IP。
         :rtype: str
         """
         return self._MgtIp
@@ -6844,7 +6844,7 @@ class L7Backend(AbstractModel):
 
     @property
     def Operates(self):
-        """黑石物理机当前可以执行的操作。
+        r"""黑石物理机当前可以执行的操作。
         :rtype: list of str
         """
         return self._Operates
@@ -6875,7 +6875,7 @@ class L7Backend(AbstractModel):
 
 
 class L7ExListener(AbstractModel):
-    """监听器信息。
+    r"""监听器信息。
 
     """
 
@@ -6942,7 +6942,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """绑定的监听器唯一ID。
+        r"""绑定的监听器唯一ID。
         :rtype: str
         """
         return self._ListenerId
@@ -6953,7 +6953,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称。
+        r"""监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -6964,7 +6964,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -6975,7 +6975,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """监听器的监听端口。
+        r"""监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -6986,7 +6986,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """当前带宽。
+        r"""当前带宽。
         :rtype: int
         """
         return self._Bandwidth
@@ -6997,7 +6997,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        """带宽上限。
+        r"""带宽上限。
         :rtype: int
         """
         return self._MaxBandwidth
@@ -7008,7 +7008,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器类型。
+        r"""监听器类型。
         :rtype: str
         """
         return self._ListenerType
@@ -7019,7 +7019,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def SslMode(self):
-        """认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
+        r"""认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
         :rtype: int
         """
         return self._SslMode
@@ -7030,7 +7030,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def CertId(self):
-        """服务端证书ID。
+        r"""服务端证书ID。
         :rtype: str
         """
         return self._CertId
@@ -7041,7 +7041,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def CertCaId(self):
-        """客户端证书ID。
+        r"""客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -7052,7 +7052,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """添加时间。
+        r"""添加时间。
         :rtype: str
         """
         return self._AddTimestamp
@@ -7063,7 +7063,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡名ID。
+        r"""负载均衡名ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -7074,7 +7074,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名称。
+        r"""私有网络名称。
         :rtype: str
         """
         return self._VpcName
@@ -7085,7 +7085,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """私有网络Cidr。
+        r"""私有网络Cidr。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -7096,7 +7096,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
-        """负载均衡的VIP。
+        r"""负载均衡的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVips
@@ -7107,7 +7107,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡名称。
+        r"""负载均衡名称。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -7118,7 +7118,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def LoadBalancerVipv6s(self):
-        """负载均衡IPV6的VIP。
+        r"""负载均衡IPV6的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVipv6s
@@ -7129,7 +7129,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def IpProtocolType(self):
-        """支持的IP协议类型。ipv4或者是ipv6。
+        r"""支持的IP协议类型。ipv4或者是ipv6。
         :rtype: str
         """
         return self._IpProtocolType
@@ -7140,7 +7140,7 @@ class L7ExListener(AbstractModel):
 
     @property
     def BindTrafficMirror(self):
-        """是否绑定在入参指定的流量镜像中。
+        r"""是否绑定在入参指定的流量镜像中。
         :rtype: bool
         """
         return self._BindTrafficMirror
@@ -7181,7 +7181,7 @@ class L7ExListener(AbstractModel):
 
 
 class L7Listener(AbstractModel):
-    """获取黑石负载均衡七层监听器时返回的七层监听器信息。
+    r"""获取黑石负载均衡七层监听器时返回的七层监听器信息。
 
     """
 
@@ -7227,7 +7227,7 @@ class L7Listener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID。
+        r"""七层监听器实例ID。
         :rtype: str
         """
         return self._ListenerId
@@ -7238,7 +7238,7 @@ class L7Listener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """七层监听器名称。
+        r"""七层监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -7249,7 +7249,7 @@ class L7Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -7260,7 +7260,7 @@ class L7Listener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """七层监听器的监听端口。
+        r"""七层监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -7271,7 +7271,7 @@ class L7Listener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
+        r"""计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -7282,7 +7282,7 @@ class L7Listener(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
+        r"""监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
         :rtype: str
         """
         return self._ListenerType
@@ -7293,7 +7293,7 @@ class L7Listener(AbstractModel):
 
     @property
     def SslMode(self):
-        """七层监听器的认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
+        r"""七层监听器的认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
         :rtype: int
         """
         return self._SslMode
@@ -7304,7 +7304,7 @@ class L7Listener(AbstractModel):
 
     @property
     def CertId(self):
-        """七层监听器关联的服务端证书ID。
+        r"""七层监听器关联的服务端证书ID。
         :rtype: str
         """
         return self._CertId
@@ -7315,7 +7315,7 @@ class L7Listener(AbstractModel):
 
     @property
     def CertCaId(self):
-        """七层监听器关联的客户端证书ID。
+        r"""七层监听器关联的客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -7326,7 +7326,7 @@ class L7Listener(AbstractModel):
 
     @property
     def Status(self):
-        """监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -7337,7 +7337,7 @@ class L7Listener(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -7348,7 +7348,7 @@ class L7Listener(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        """https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
+        r"""https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
         :rtype: int
         """
         return self._ForwardProtocol
@@ -7382,7 +7382,7 @@ class L7Listener(AbstractModel):
 
 
 class L7ListenerInfo(AbstractModel):
-    """查询绑定了某主机的七层监听器时返回的七层监听器信息。
+    r"""查询绑定了某主机的七层监听器时返回的七层监听器信息。
 
     """
 
@@ -7431,7 +7431,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID。
+        r"""七层监听器实例ID。
         :rtype: str
         """
         return self._ListenerId
@@ -7442,7 +7442,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def ListenerName(self):
-        """七层监听器名称。
+        r"""七层监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -7453,7 +7453,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -7464,7 +7464,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """七层监听器的监听端口。
+        r"""七层监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -7475,7 +7475,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
+        r"""计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -7486,7 +7486,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
+        r"""监听器的类别：L4Listener（四层监听器），L7Listener（七层监听器）。
         :rtype: str
         """
         return self._ListenerType
@@ -7497,7 +7497,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def SslMode(self):
-        """七层监听器的认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
+        r"""七层监听器的认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
         :rtype: int
         """
         return self._SslMode
@@ -7508,7 +7508,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def CertId(self):
-        """七层监听器关联的服务端证书ID。
+        r"""七层监听器关联的服务端证书ID。
         :rtype: str
         """
         return self._CertId
@@ -7519,7 +7519,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def CertCaId(self):
-        """七层监听器关联的客户端证书ID。
+        r"""七层监听器关联的客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -7530,7 +7530,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: int
         """
         return self._Status
@@ -7541,7 +7541,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -7552,7 +7552,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def RuleSet(self):
-        """返回的转发规则列表。
+        r"""返回的转发规则列表。
         :rtype: list of L7ListenerInfoRule
         """
         return self._RuleSet
@@ -7563,7 +7563,7 @@ class L7ListenerInfo(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        """https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
+        r"""https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
         :rtype: int
         """
         return self._ForwardProtocol
@@ -7603,7 +7603,7 @@ class L7ListenerInfo(AbstractModel):
 
 
 class L7ListenerInfoBackend(AbstractModel):
-    """查询绑定了某主机七层监听器时返回的与转发路径所绑定的主机信息。
+    r"""查询绑定了某主机七层监听器时返回的与转发路径所绑定的主机信息。
 
     """
 
@@ -7634,7 +7634,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类别（0代表黑石物理机，1代表虚拟机IP）。
+        r"""绑定类别（0代表黑石物理机，1代表虚拟机IP）。
         :rtype: int
         """
         return self._BindType
@@ -7645,7 +7645,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def Port(self):
-        """主机端口。
+        r"""主机端口。
         :rtype: int
         """
         return self._Port
@@ -7656,7 +7656,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def Weight(self):
-        """权重。
+        r"""权重。
         :rtype: int
         """
         return self._Weight
@@ -7667,7 +7667,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: str
         """
         return self._Status
@@ -7678,7 +7678,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机的主机ID。
+        r"""黑石物理机的主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -7689,7 +7689,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def Alias(self):
-        """黑石物理机的别名。
+        r"""黑石物理机的别名。
         :rtype: str
         """
         return self._Alias
@@ -7700,7 +7700,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
     @property
     def LanIp(self):
-        """主机IP。
+        r"""主机IP。
         :rtype: str
         """
         return self._LanIp
@@ -7729,7 +7729,7 @@ class L7ListenerInfoBackend(AbstractModel):
 
 
 class L7ListenerInfoLocation(AbstractModel):
-    """查询绑定了某主机的七层监听器时返回的转发路径。
+    r"""查询绑定了某主机的七层监听器时返回的转发路径。
 
     """
 
@@ -7781,7 +7781,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def Url(self):
-        """转发路径。
+        r"""转发路径。
         :rtype: str
         """
         return self._Url
@@ -7792,7 +7792,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID。
+        r"""转发路径实例ID。
         :rtype: str
         """
         return self._LocationId
@@ -7803,7 +7803,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间。
+        r"""会话保持时间。
         :rtype: int
         """
         return self._SessionExpire
@@ -7814,7 +7814,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启健康检查。
+        r"""是否开启健康检查。
         :rtype: int
         """
         return self._HealthSwitch
@@ -7825,7 +7825,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """健康检查检查路径。
+        r"""健康检查检查路径。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -7836,7 +7836,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """健康检查检查域名。
+        r"""健康检查检查域名。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -7847,7 +7847,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查检查间隔时间。
+        r"""健康检查检查间隔时间。
         :rtype: int
         """
         return self._IntervalTime
@@ -7858,7 +7858,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康检查健康阈值。
+        r"""健康检查健康阈值。
         :rtype: int
         """
         return self._HealthNum
@@ -7869,7 +7869,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """健康检查不健康阈值。
+        r"""健康检查不健康阈值。
         :rtype: int
         """
         return self._UnhealthNum
@@ -7880,7 +7880,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
+        r"""健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
         :rtype: list of int non-negative
         """
         return self._HttpCodes
@@ -7891,7 +7891,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """均衡方式。
+        r"""均衡方式。
         :rtype: str
         """
         return self._BalanceMode
@@ -7902,7 +7902,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: int
         """
         return self._Status
@@ -7913,7 +7913,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -7924,7 +7924,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
     @property
     def BackendSet(self):
-        """该转发路径所绑定的主机列表。
+        r"""该转发路径所绑定的主机列表。
         :rtype: list of L7ListenerInfoBackend
         """
         return self._BackendSet
@@ -7965,7 +7965,7 @@ class L7ListenerInfoLocation(AbstractModel):
 
 
 class L7ListenerInfoRule(AbstractModel):
-    """查询绑定了某主机的七层监听器时返回的转发规则。
+    r"""查询绑定了某主机的七层监听器时返回的转发规则。
 
     """
 
@@ -7990,7 +7990,7 @@ class L7ListenerInfoRule(AbstractModel):
 
     @property
     def Domain(self):
-        """转发域名。
+        r"""转发域名。
         :rtype: str
         """
         return self._Domain
@@ -8001,7 +8001,7 @@ class L7ListenerInfoRule(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID。
+        r"""转发域名实例ID。
         :rtype: str
         """
         return self._DomainId
@@ -8012,7 +8012,7 @@ class L7ListenerInfoRule(AbstractModel):
 
     @property
     def Status(self):
-        """当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
+        r"""当前绑定关系的健康检查状态（Dead代表不健康，Alive代表健康）。
         :rtype: int
         """
         return self._Status
@@ -8023,7 +8023,7 @@ class L7ListenerInfoRule(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -8034,7 +8034,7 @@ class L7ListenerInfoRule(AbstractModel):
 
     @property
     def LocationSet(self):
-        """该转发域名下面的转发路径列表。
+        r"""该转发域名下面的转发路径列表。
         :rtype: list of L7ListenerInfoLocation
         """
         return self._LocationSet
@@ -8066,7 +8066,7 @@ class L7ListenerInfoRule(AbstractModel):
 
 
 class L7Rule(AbstractModel):
-    """获取七层监听器转发规则时返回的转发规则。
+    r"""获取七层监听器转发规则时返回的转发规则。
 
     """
 
@@ -8091,7 +8091,7 @@ class L7Rule(AbstractModel):
 
     @property
     def Domain(self):
-        """转发域名。
+        r"""转发域名。
         :rtype: str
         """
         return self._Domain
@@ -8102,7 +8102,7 @@ class L7Rule(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID。
+        r"""转发域名实例ID。
         :rtype: str
         """
         return self._DomainId
@@ -8113,7 +8113,7 @@ class L7Rule(AbstractModel):
 
     @property
     def Status(self):
-        """转发路径当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""转发路径当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -8124,7 +8124,7 @@ class L7Rule(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -8135,7 +8135,7 @@ class L7Rule(AbstractModel):
 
     @property
     def LocationSet(self):
-        """该转发域名下面的转发路径列表。
+        r"""该转发域名下面的转发路径列表。
         :rtype: list of L7RulesLocation
         """
         return self._LocationSet
@@ -8167,7 +8167,7 @@ class L7Rule(AbstractModel):
 
 
 class L7RulesLocation(AbstractModel):
-    """获取七层转发规则时返回的转发域名下面的转发路径。
+    r"""获取七层转发规则时返回的转发域名下面的转发路径。
 
     """
 
@@ -8216,7 +8216,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def Url(self):
-        """转发路径。
+        r"""转发路径。
         :rtype: str
         """
         return self._Url
@@ -8227,7 +8227,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID。
+        r"""转发路径实例ID。
         :rtype: str
         """
         return self._LocationId
@@ -8238,7 +8238,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间。
+        r"""会话保持时间。
         :rtype: int
         """
         return self._SessionExpire
@@ -8249,7 +8249,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启健康检查。
+        r"""是否开启健康检查。
         :rtype: int
         """
         return self._HealthSwitch
@@ -8260,7 +8260,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """健康检查检查路径。
+        r"""健康检查检查路径。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -8271,7 +8271,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """健康检查检查域名。
+        r"""健康检查检查域名。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -8282,7 +8282,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查检查间隔时间。
+        r"""健康检查检查间隔时间。
         :rtype: int
         """
         return self._IntervalTime
@@ -8293,7 +8293,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康检查健康阈值。
+        r"""健康检查健康阈值。
         :rtype: int
         """
         return self._HealthNum
@@ -8304,7 +8304,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """健康检查不健康阈值。
+        r"""健康检查不健康阈值。
         :rtype: int
         """
         return self._UnhealthNum
@@ -8315,7 +8315,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
+        r"""健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
         :rtype: list of int non-negative
         """
         return self._HttpCodes
@@ -8326,7 +8326,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """均衡方式。
+        r"""均衡方式。
         :rtype: str
         """
         return self._BalanceMode
@@ -8337,7 +8337,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def Status(self):
-        """转发路径当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""转发路径当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -8348,7 +8348,7 @@ class L7RulesLocation(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """创建时间戳。
+        r"""创建时间戳。
         :rtype: str
         """
         return self._AddTimestamp
@@ -8383,7 +8383,7 @@ class L7RulesLocation(AbstractModel):
 
 
 class LoadBalancer(AbstractModel):
-    """获取负载均衡实例列表时返回的负载均衡信息。
+    r"""获取负载均衡实例列表时返回的负载均衡信息。
 
     """
 
@@ -8478,7 +8478,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡器ID
+        r"""负载均衡器ID
         :rtype: str
         """
         return self._LoadBalancerId
@@ -8489,7 +8489,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，通过v2/DescribeProject 接口获得
+        r"""项目ID，通过v2/DescribeProject 接口获得
         :rtype: int
         """
         return self._ProjectId
@@ -8500,7 +8500,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡器名称
+        r"""负载均衡器名称
         :rtype: str
         """
         return self._LoadBalancerName
@@ -8511,7 +8511,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        """负载均衡的类型 : open表示公网负载均衡类型，internal表示内网负载均衡类型
+        r"""负载均衡的类型 : open表示公网负载均衡类型，internal表示内网负载均衡类型
         :rtype: str
         """
         return self._LoadBalancerType
@@ -8522,7 +8522,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Exclusive(self):
-        """是否筛选独占集群，0表示非独占集群，1表示四层独占集群，2表示七层独占集群，3表示四层和七层独占集群，4表示共享容灾
+        r"""是否筛选独占集群，0表示非独占集群，1表示四层独占集群，2表示七层独占集群，3表示四层和七层独占集群，4表示共享容灾
         :rtype: int
         """
         return self._Exclusive
@@ -8533,7 +8533,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def TgwSetType(self):
-        """该负载均衡对应的tgw集群（fullnat,tunnel,dnat）
+        r"""该负载均衡对应的tgw集群（fullnat,tunnel,dnat）
         :rtype: str
         """
         return self._TgwSetType
@@ -8544,7 +8544,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Domain(self):
-        """负载均衡域名。规则：1-60个小写英文字母、数字、点号“.”或连接线“-”。内网类型的负载均衡不能配置该字段
+        r"""负载均衡域名。规则：1-60个小写英文字母、数字、点号“.”或连接线“-”。内网类型的负载均衡不能配置该字段
         :rtype: str
         """
         return self._Domain
@@ -8555,7 +8555,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def VpcId(self):
-        """该负载均衡对应的所在的VpcId
+        r"""该负载均衡对应的所在的VpcId
         :rtype: str
         """
         return self._VpcId
@@ -8566,7 +8566,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def SubnetId(self):
-        """该负载均衡对应的所在的SubnetId
+        r"""该负载均衡对应的所在的SubnetId
         :rtype: str
         """
         return self._SubnetId
@@ -8577,7 +8577,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Status(self):
-        """无
+        r"""无
         :rtype: int
         """
         return self._Status
@@ -8588,7 +8588,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def PayMode(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._PayMode
@@ -8599,7 +8599,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LatestPayMode(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._LatestPayMode
@@ -8610,7 +8610,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def CreateTime(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._CreateTime
@@ -8621,7 +8621,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def StatusTime(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._StatusTime
@@ -8632,7 +8632,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名称。
+        r"""私有网络名称。
         :rtype: str
         """
         return self._VpcName
@@ -8643,7 +8643,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """私有网络Cidr。
+        r"""私有网络Cidr。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -8654,7 +8654,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
-        """负载均衡的IPV4的VIP。
+        r"""负载均衡的IPV4的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVips
@@ -8665,7 +8665,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def SupportListenerTypes(self):
-        """无
+        r"""无
         :rtype: list of str
         """
         return self._SupportListenerTypes
@@ -8676,7 +8676,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """无
+        r"""无
         :rtype: int
         """
         return self._Bandwidth
@@ -8687,7 +8687,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def ConfId(self):
-        """负载均衡个性化配置ID
+        r"""负载均衡个性化配置ID
         :rtype: str
         """
         return self._ConfId
@@ -8698,7 +8698,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def ConfName(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._ConfName
@@ -8709,7 +8709,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerVipv6s(self):
-        """负载均衡的IPV6的VIP。
+        r"""负载均衡的IPV6的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVipv6s
@@ -8720,7 +8720,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def IpProtocolType(self):
-        """负载均衡IP协议类型。ipv4或者ipv6。
+        r"""负载均衡IP协议类型。ipv4或者ipv6。
         :rtype: str
         """
         return self._IpProtocolType
@@ -8731,7 +8731,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def BzPayMode(self):
-        """保障型网关计费形式
+        r"""保障型网关计费形式
         :rtype: str
         """
         return self._BzPayMode
@@ -8742,7 +8742,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def BzL4Metrics(self):
-        """保障型网关四层计费指标
+        r"""保障型网关四层计费指标
         :rtype: str
         """
         return self._BzL4Metrics
@@ -8753,7 +8753,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def BzL7Metrics(self):
-        """保障型网关七层计费指标
+        r"""保障型网关七层计费指标
         :rtype: str
         """
         return self._BzL7Metrics
@@ -8764,7 +8764,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def IntVpcId(self):
-        """该负载均衡对应的所在的整形类型的VpcId
+        r"""该负载均衡对应的所在的整形类型的VpcId
         :rtype: int
         """
         return self._IntVpcId
@@ -8775,7 +8775,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def CurVips(self):
-        """负载均衡的IPV6或者IPV4的VIP。
+        r"""负载均衡的IPV6或者IPV4的VIP。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -8826,7 +8826,7 @@ class LoadBalancer(AbstractModel):
 
 
 class LoadBalancerPortInfoListener(AbstractModel):
-    """获取黑石负载均衡端口相关信息时返回的监听器信息（四层和七层）。
+    r"""获取黑石负载均衡端口相关信息时返回的监听器信息（四层和七层）。
 
     """
 
@@ -8857,7 +8857,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡监听器ID。
+        r"""负载均衡监听器ID。
         :rtype: str
         """
         return self._ListenerId
@@ -8868,7 +8868,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称。
+        r"""监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -8879,7 +8879,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def Protocol(self):
-        """监听器协议类型，可选值：http，https，tcp，udp。
+        r"""监听器协议类型，可选值：http，https，tcp，udp。
         :rtype: str
         """
         return self._Protocol
@@ -8890,7 +8890,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """监听器的监听端口。
+        r"""监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -8901,7 +8901,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
+        r"""计费模式为按固定带宽方式时监听器的限速值，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -8912,7 +8912,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def Status(self):
-        """监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
+        r"""监听器当前状态（0代表创建中，1代表正常运行，2代表创建失败，3代表删除中，4代表删除失败）。
         :rtype: int
         """
         return self._Status
@@ -8923,7 +8923,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
     @property
     def Port(self):
-        """与监听器绑定的主机端口。
+        r"""与监听器绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -8952,7 +8952,7 @@ class LoadBalancerPortInfoListener(AbstractModel):
 
 
 class ModifyL4BackendPortRequest(AbstractModel):
-    """ModifyL4BackendPort请求参数结构体
+    r"""ModifyL4BackendPort请求参数结构体
 
     """
 
@@ -8980,7 +8980,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -8991,7 +8991,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
+        r"""负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9002,7 +9002,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9013,7 +9013,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def Port(self):
-        """已绑定的主机端口。
+        r"""已绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -9024,7 +9024,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def NewPort(self):
-        """新的主机端口，可选值1~65535。
+        r"""新的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._NewPort
@@ -9035,7 +9035,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机  1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机  1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -9063,7 +9063,7 @@ class ModifyL4BackendPortRequest(AbstractModel):
 
 
 class ModifyL4BackendPortResponse(AbstractModel):
-    """ModifyL4BackendPort返回参数结构体
+    r"""ModifyL4BackendPort返回参数结构体
 
     """
 
@@ -9079,7 +9079,7 @@ class ModifyL4BackendPortResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
         :rtype: str
         """
         return self._TaskId
@@ -9090,7 +9090,7 @@ class ModifyL4BackendPortResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9106,7 +9106,7 @@ class ModifyL4BackendPortResponse(AbstractModel):
 
 
 class ModifyL4BackendProbePortRequest(AbstractModel):
-    """ModifyL4BackendProbePort请求参数结构体
+    r"""ModifyL4BackendProbePort请求参数结构体
 
     """
 
@@ -9134,7 +9134,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -9145,7 +9145,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡四层监听器ID，可通过接口DescribeL7Listeners查询。
+        r"""负载均衡四层监听器ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9156,7 +9156,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9167,7 +9167,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def Port(self):
-        """已绑定的主机端口。
+        r"""已绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -9178,7 +9178,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def ProbePort(self):
-        """新的探测端口，可选值1~65535。
+        r"""新的探测端口，可选值1~65535。
         :rtype: int
         """
         return self._ProbePort
@@ -9189,7 +9189,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机IP 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机IP 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -9217,7 +9217,7 @@ class ModifyL4BackendProbePortRequest(AbstractModel):
 
 
 class ModifyL4BackendProbePortResponse(AbstractModel):
-    """ModifyL4BackendProbePort返回参数结构体
+    r"""ModifyL4BackendProbePort返回参数结构体
 
     """
 
@@ -9233,7 +9233,7 @@ class ModifyL4BackendProbePortResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -9244,7 +9244,7 @@ class ModifyL4BackendProbePortResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9260,7 +9260,7 @@ class ModifyL4BackendProbePortResponse(AbstractModel):
 
 
 class ModifyL4BackendWeightRequest(AbstractModel):
-    """ModifyL4BackendWeight请求参数结构体
+    r"""ModifyL4BackendWeight请求参数结构体
 
     """
 
@@ -9288,7 +9288,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -9299,7 +9299,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
+        r"""负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9310,7 +9310,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9321,7 +9321,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """权重信息，可选值0~100。
+        r"""权重信息，可选值0~100。
         :rtype: int
         """
         return self._Weight
@@ -9332,7 +9332,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def Port(self):
-        """已绑定的主机端口。
+        r"""已绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -9343,7 +9343,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -9371,7 +9371,7 @@ class ModifyL4BackendWeightRequest(AbstractModel):
 
 
 class ModifyL4BackendWeightResponse(AbstractModel):
-    """ModifyL4BackendWeight返回参数结构体
+    r"""ModifyL4BackendWeight返回参数结构体
 
     """
 
@@ -9387,7 +9387,7 @@ class ModifyL4BackendWeightResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -9398,7 +9398,7 @@ class ModifyL4BackendWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9414,7 +9414,7 @@ class ModifyL4BackendWeightResponse(AbstractModel):
 
 
 class ModifyL4ListenerRequest(AbstractModel):
-    """ModifyL4Listener请求参数结构体
+    r"""ModifyL4Listener请求参数结构体
 
     """
 
@@ -9475,7 +9475,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -9486,7 +9486,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """四层监听器ID。可通过接口DescribeL4Listeners查询。
+        r"""四层监听器ID。可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9497,7 +9497,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """四层监听器名称。
+        r"""四层监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -9508,7 +9508,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间，单位：秒。可选值：900~3600。
+        r"""会话保持时间，单位：秒。可选值：900~3600。
         :rtype: int
         """
         return self._SessionExpire
@@ -9519,7 +9519,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启健康检查：1（开启）、0（关闭）。默认值0，表示关闭。
+        r"""是否开启健康检查：1（开启）、0（关闭）。默认值0，表示关闭。
         :rtype: int
         """
         return self._HealthSwitch
@@ -9530,7 +9530,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def TimeOut(self):
-        """健康检查的响应超时时间，可选值：2-60，默认值：2，单位:秒。<br><font color="red">响应超时时间要小于检查间隔时间。</font>
+        r"""健康检查的响应超时时间，可选值：2-60，默认值：2，单位:秒。<br><font color="red">响应超时时间要小于检查间隔时间。</font>
         :rtype: int
         """
         return self._TimeOut
@@ -9541,7 +9541,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查间隔，默认值：5，可选值：5-300，单位：秒。
+        r"""健康检查间隔，默认值：5，可选值：5-300，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -9552,7 +9552,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -9563,7 +9563,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -9574,7 +9574,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """监听器最大带宽值，用于计费模式为固定带宽计费。可选值：0-1000，单位：Mbps。
+        r"""监听器最大带宽值，用于计费模式为固定带宽计费。可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -9585,7 +9585,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def CustomHealthSwitch(self):
-        """是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+        r"""是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
         :rtype: int
         """
         return self._CustomHealthSwitch
@@ -9596,7 +9596,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def InputType(self):
-        """自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+        r"""自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
         :rtype: str
         """
         return self._InputType
@@ -9607,7 +9607,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def LineSeparatorType(self):
-        """探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+        r"""探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
         :rtype: int
         """
         return self._LineSeparatorType
@@ -9618,7 +9618,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def HealthRequest(self):
-        """自定义探测请求内容。
+        r"""自定义探测请求内容。
         :rtype: str
         """
         return self._HealthRequest
@@ -9629,7 +9629,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def HealthResponse(self):
-        """自定义探测返回内容。
+        r"""自定义探测返回内容。
         :rtype: str
         """
         return self._HealthResponse
@@ -9640,7 +9640,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def ToaFlag(self):
-        """是否开启toa。可选值：0（关闭）、1（开启），默认关闭。（该字段在负载均衡为fullnat类型下才生效）
+        r"""是否开启toa。可选值：0（关闭）、1（开启），默认关闭。（该字段在负载均衡为fullnat类型下才生效）
         :rtype: int
         """
         return self._ToaFlag
@@ -9651,7 +9651,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """四层调度方式。wrr，wlc。
+        r"""四层调度方式。wrr，wlc。
         :rtype: str
         """
         return self._BalanceMode
@@ -9690,7 +9690,7 @@ class ModifyL4ListenerRequest(AbstractModel):
 
 
 class ModifyL4ListenerResponse(AbstractModel):
-    """ModifyL4Listener返回参数结构体
+    r"""ModifyL4Listener返回参数结构体
 
     """
 
@@ -9706,7 +9706,7 @@ class ModifyL4ListenerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -9717,7 +9717,7 @@ class ModifyL4ListenerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9733,7 +9733,7 @@ class ModifyL4ListenerResponse(AbstractModel):
 
 
 class ModifyL7BackendPortRequest(AbstractModel):
-    """ModifyL7BackendPort请求参数结构体
+    r"""ModifyL7BackendPort请求参数结构体
 
     """
 
@@ -9767,7 +9767,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -9778,7 +9778,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9789,7 +9789,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -9800,7 +9800,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -9811,7 +9811,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9822,7 +9822,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def Port(self):
-        """已绑定的主机端口。
+        r"""已绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -9833,7 +9833,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def NewPort(self):
-        """新的主机端口，可选值1~65535。
+        r"""新的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._NewPort
@@ -9844,7 +9844,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -9874,7 +9874,7 @@ class ModifyL7BackendPortRequest(AbstractModel):
 
 
 class ModifyL7BackendPortResponse(AbstractModel):
-    """ModifyL7BackendPort返回参数结构体
+    r"""ModifyL7BackendPort返回参数结构体
 
     """
 
@@ -9890,7 +9890,7 @@ class ModifyL7BackendPortResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -9901,7 +9901,7 @@ class ModifyL7BackendPortResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9917,7 +9917,7 @@ class ModifyL7BackendPortResponse(AbstractModel):
 
 
 class ModifyL7BackendWeightRequest(AbstractModel):
-    """ModifyL7BackendWeight请求参数结构体
+    r"""ModifyL7BackendWeight请求参数结构体
 
     """
 
@@ -9951,7 +9951,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -9962,7 +9962,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -9973,7 +9973,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -9984,7 +9984,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -9995,7 +9995,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10006,7 +10006,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """权重信息，可选值0~100。
+        r"""权重信息，可选值0~100。
         :rtype: int
         """
         return self._Weight
@@ -10017,7 +10017,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def Port(self):
-        """已绑定的主机端口。
+        r"""已绑定的主机端口。
         :rtype: int
         """
         return self._Port
@@ -10028,7 +10028,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -10058,7 +10058,7 @@ class ModifyL7BackendWeightRequest(AbstractModel):
 
 
 class ModifyL7BackendWeightResponse(AbstractModel):
-    """ModifyL7BackendWeight返回参数结构体
+    r"""ModifyL7BackendWeight返回参数结构体
 
     """
 
@@ -10074,7 +10074,7 @@ class ModifyL7BackendWeightResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
         :rtype: str
         """
         return self._TaskId
@@ -10085,7 +10085,7 @@ class ModifyL7BackendWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10101,7 +10101,7 @@ class ModifyL7BackendWeightResponse(AbstractModel):
 
 
 class ModifyL7ListenerRequest(AbstractModel):
-    """ModifyL7Listener请求参数结构体
+    r"""ModifyL7Listener请求参数结构体
 
     """
 
@@ -10150,7 +10150,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -10161,7 +10161,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -10172,7 +10172,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """七层监听器名称。
+        r"""七层监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -10183,7 +10183,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def SslMode(self):
-        """认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
+        r"""认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
         :rtype: int
         """
         return self._SslMode
@@ -10194,7 +10194,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """服务端证书ID。
+        r"""服务端证书ID。
         :rtype: str
         """
         return self._CertId
@@ -10205,7 +10205,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertName(self):
-        """服务端证书名称。
+        r"""服务端证书名称。
         :rtype: str
         """
         return self._CertName
@@ -10216,7 +10216,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertContent(self):
-        """服务端证书内容。
+        r"""服务端证书内容。
         :rtype: str
         """
         return self._CertContent
@@ -10227,7 +10227,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertKey(self):
-        """服务端证书密钥。
+        r"""服务端证书密钥。
         :rtype: str
         """
         return self._CertKey
@@ -10238,7 +10238,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertCaId(self):
-        """客户端证书ID。
+        r"""客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -10249,7 +10249,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertCaName(self):
-        """客户端证书名称。
+        r"""客户端证书名称。
         :rtype: str
         """
         return self._CertCaName
@@ -10260,7 +10260,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def CertCaContent(self):
-        """客户端证书内容。
+        r"""客户端证书内容。
         :rtype: str
         """
         return self._CertCaContent
@@ -10271,7 +10271,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """计费模式为按固定带宽方式时监听器的限速值，可选值：0-1000，单位：Mbps。
+        r"""计费模式为按固定带宽方式时监听器的限速值，可选值：0-1000，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth
@@ -10282,7 +10282,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        """转发协议。当监听器Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+        r"""转发协议。当监听器Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
         :rtype: int
         """
         return self._ForwardProtocol
@@ -10317,7 +10317,7 @@ class ModifyL7ListenerRequest(AbstractModel):
 
 
 class ModifyL7ListenerResponse(AbstractModel):
-    """ModifyL7Listener返回参数结构体
+    r"""ModifyL7Listener返回参数结构体
 
     """
 
@@ -10333,7 +10333,7 @@ class ModifyL7ListenerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用[DescribeLoadBalancerTaskResult](/document/product/386/9308)接口来查询任务操作结果
+        r"""任务ID。该接口为异步任务，可根据本参数调用[DescribeLoadBalancerTaskResult](/document/product/386/9308)接口来查询任务操作结果
         :rtype: str
         """
         return self._TaskId
@@ -10344,7 +10344,7 @@ class ModifyL7ListenerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10360,7 +10360,7 @@ class ModifyL7ListenerResponse(AbstractModel):
 
 
 class ModifyL7LocationRule(AbstractModel):
-    """修改黑石负载均衡七层转发路径时待修改的七层转发规则信息。
+    r"""修改黑石负载均衡七层转发路径时待修改的七层转发规则信息。
 
     """
 
@@ -10409,7 +10409,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -10420,7 +10420,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -10431,7 +10431,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def Url(self):
-        """转发路径。
+        r"""转发路径。
         :rtype: str
         """
         return self._Url
@@ -10442,7 +10442,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def SessionExpire(self):
-        """会话保持时间，单位：秒。可选值：30~3600。默认值0，表示不开启会话保持。
+        r"""会话保持时间，单位：秒。可选值：30~3600。默认值0，表示不开启会话保持。
         :rtype: int
         """
         return self._SessionExpire
@@ -10453,7 +10453,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """健康检查开关：1（开启）、0（关闭）。默认值0，表示关闭。
+        r"""健康检查开关：1（开启）、0（关闭）。默认值0，表示关闭。
         :rtype: int
         """
         return self._HealthSwitch
@@ -10464,7 +10464,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
+        r"""健康检查检查间隔时间，默认值：5，可选值：5-300，单位：秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -10475,7 +10475,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康检查健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
+        r"""健康检查健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._HealthNum
@@ -10486,7 +10486,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """健康检查不健康阈值，默认值：5，表示当连续探测五次不健康则表示该转发不正常，可选值：2-10，单位：次。
+        r"""健康检查不健康阈值，默认值：5，表示当连续探测五次不健康则表示该转发不正常，可选值：2-10，单位：次。
         :rtype: int
         """
         return self._UnhealthNum
@@ -10497,7 +10497,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
+        r"""健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
         :rtype: list of int non-negative
         """
         return self._HttpCodes
@@ -10508,7 +10508,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """健康检查检查路径。
+        r"""健康检查检查路径。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -10519,7 +10519,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """健康检查检查域名。如果规则的域名使用通配符或正则表达式，则健康检查检查域名可自定义，否则必须跟健康检查检查域名一样。不填表示不修改。
+        r"""健康检查检查域名。如果规则的域名使用通配符或正则表达式，则健康检查检查域名可自定义，否则必须跟健康检查检查域名一样。不填表示不修改。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -10530,7 +10530,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def BalanceMode(self):
-        """均衡方式：ip_hash、wrr。默认值wrr。
+        r"""均衡方式：ip_hash、wrr。默认值wrr。
         :rtype: str
         """
         return self._BalanceMode
@@ -10541,7 +10541,7 @@ class ModifyL7LocationRule(AbstractModel):
 
     @property
     def Domain(self):
-        """转发域名。
+        r"""转发域名。
         :rtype: str
         """
         return self._Domain
@@ -10576,7 +10576,7 @@ class ModifyL7LocationRule(AbstractModel):
 
 
 class ModifyL7LocationsRequest(AbstractModel):
-    """ModifyL7Locations请求参数结构体
+    r"""ModifyL7Locations请求参数结构体
 
     """
 
@@ -10595,7 +10595,7 @@ class ModifyL7LocationsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -10606,7 +10606,7 @@ class ModifyL7LocationsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -10617,7 +10617,7 @@ class ModifyL7LocationsRequest(AbstractModel):
 
     @property
     def RuleSet(self):
-        """待更新的七层转发规则信息数组。
+        r"""待更新的七层转发规则信息数组。
         :rtype: list of ModifyL7LocationRule
         """
         return self._RuleSet
@@ -10647,7 +10647,7 @@ class ModifyL7LocationsRequest(AbstractModel):
 
 
 class ModifyL7LocationsResponse(AbstractModel):
-    """ModifyL7Locations返回参数结构体
+    r"""ModifyL7Locations返回参数结构体
 
     """
 
@@ -10663,7 +10663,7 @@ class ModifyL7LocationsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -10674,7 +10674,7 @@ class ModifyL7LocationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10690,7 +10690,7 @@ class ModifyL7LocationsResponse(AbstractModel):
 
 
 class ModifyLoadBalancerChargeModeListener(AbstractModel):
-    """修改负载均衡计费方式的监听器信息。
+    r"""修改负载均衡计费方式的监听器信息。
 
     """
 
@@ -10709,7 +10709,7 @@ class ModifyLoadBalancerChargeModeListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器ID。
+        r"""监听器ID。
         :rtype: str
         """
         return self._ListenerId
@@ -10720,7 +10720,7 @@ class ModifyLoadBalancerChargeModeListener(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议类型。
+        r"""协议类型。
         :rtype: str
         """
         return self._Protocol
@@ -10731,7 +10731,7 @@ class ModifyLoadBalancerChargeModeListener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽。
+        r"""带宽。
         :rtype: int
         """
         return self._Bandwidth
@@ -10756,7 +10756,7 @@ class ModifyLoadBalancerChargeModeListener(AbstractModel):
 
 
 class ModifyLoadBalancerChargeModeRequest(AbstractModel):
-    """ModifyLoadBalancerChargeMode请求参数结构体
+    r"""ModifyLoadBalancerChargeMode请求参数结构体
 
     """
 
@@ -10775,7 +10775,7 @@ class ModifyLoadBalancerChargeModeRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID。
+        r"""负载均衡实例ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -10786,7 +10786,7 @@ class ModifyLoadBalancerChargeModeRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费方式。flow或bandwidth。
+        r"""计费方式。flow或bandwidth。
         :rtype: str
         """
         return self._PayMode
@@ -10797,7 +10797,7 @@ class ModifyLoadBalancerChargeModeRequest(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """监听器信息，当计费方式选为 bandwidth 且此负载均衡实例下存在监听器时需填入此字段，可以自定义每个监听器带宽上限。
+        r"""监听器信息，当计费方式选为 bandwidth 且此负载均衡实例下存在监听器时需填入此字段，可以自定义每个监听器带宽上限。
         :rtype: list of ModifyLoadBalancerChargeModeListener
         """
         return self._ListenerSet
@@ -10827,7 +10827,7 @@ class ModifyLoadBalancerChargeModeRequest(AbstractModel):
 
 
 class ModifyLoadBalancerChargeModeResponse(AbstractModel):
-    """ModifyLoadBalancerChargeMode返回参数结构体
+    r"""ModifyLoadBalancerChargeMode返回参数结构体
 
     """
 
@@ -10840,7 +10840,7 @@ class ModifyLoadBalancerChargeModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10855,7 +10855,7 @@ class ModifyLoadBalancerChargeModeResponse(AbstractModel):
 
 
 class ModifyLoadBalancerRequest(AbstractModel):
-    """ModifyLoadBalancer请求参数结构体
+    r"""ModifyLoadBalancer请求参数结构体
 
     """
 
@@ -10874,7 +10874,7 @@ class ModifyLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -10885,7 +10885,7 @@ class ModifyLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡器名称，规则：1-20个英文、汉字、数字、连接线“-”或下划线“_”。
+        r"""负载均衡器名称，规则：1-20个英文、汉字、数字、连接线“-”或下划线“_”。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -10896,7 +10896,7 @@ class ModifyLoadBalancerRequest(AbstractModel):
 
     @property
     def DomainPrefix(self):
-        """域名前缀，负载均衡的域名由用户输入的域名前缀与配置文件中的域名后缀一起组合而成，保证是唯一的域名。规则：1-20个小写英文字母、数字或连接线“-”。内网类型的负载均衡不能配置该字段。
+        r"""域名前缀，负载均衡的域名由用户输入的域名前缀与配置文件中的域名后缀一起组合而成，保证是唯一的域名。规则：1-20个小写英文字母、数字或连接线“-”。内网类型的负载均衡不能配置该字段。
         :rtype: str
         """
         return self._DomainPrefix
@@ -10921,7 +10921,7 @@ class ModifyLoadBalancerRequest(AbstractModel):
 
 
 class ModifyLoadBalancerResponse(AbstractModel):
-    """ModifyLoadBalancer返回参数结构体
+    r"""ModifyLoadBalancer返回参数结构体
 
     """
 
@@ -10937,7 +10937,7 @@ class ModifyLoadBalancerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -10948,7 +10948,7 @@ class ModifyLoadBalancerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10964,7 +10964,7 @@ class ModifyLoadBalancerResponse(AbstractModel):
 
 
 class ReplaceCertRequest(AbstractModel):
-    """ReplaceCert请求参数结构体
+    r"""ReplaceCert请求参数结构体
 
     """
 
@@ -10989,7 +10989,7 @@ class ReplaceCertRequest(AbstractModel):
 
     @property
     def OldCertId(self):
-        """要被替换的证书ID
+        r"""要被替换的证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -11000,7 +11000,7 @@ class ReplaceCertRequest(AbstractModel):
 
     @property
     def NewCert(self):
-        """证书内容
+        r"""证书内容
         :rtype: str
         """
         return self._NewCert
@@ -11011,7 +11011,7 @@ class ReplaceCertRequest(AbstractModel):
 
     @property
     def NewAlias(self):
-        """证书名称
+        r"""证书名称
         :rtype: str
         """
         return self._NewAlias
@@ -11022,7 +11022,7 @@ class ReplaceCertRequest(AbstractModel):
 
     @property
     def NewKey(self):
-        """私钥内容，证书类型为SVR时不需要传递
+        r"""私钥内容，证书类型为SVR时不需要传递
         :rtype: str
         """
         return self._NewKey
@@ -11033,7 +11033,7 @@ class ReplaceCertRequest(AbstractModel):
 
     @property
     def DeleteOld(self):
-        """是否删除旧证书，0 表示不删除，1 表示删除
+        r"""是否删除旧证书，0 表示不删除，1 表示删除
         :rtype: int
         """
         return self._DeleteOld
@@ -11060,7 +11060,7 @@ class ReplaceCertRequest(AbstractModel):
 
 
 class ReplaceCertResponse(AbstractModel):
-    """ReplaceCert返回参数结构体
+    r"""ReplaceCert返回参数结构体
 
     """
 
@@ -11079,7 +11079,7 @@ class ReplaceCertResponse(AbstractModel):
 
     @property
     def NewCertId(self):
-        """新证书ID。
+        r"""新证书ID。
         :rtype: str
         """
         return self._NewCertId
@@ -11090,7 +11090,7 @@ class ReplaceCertResponse(AbstractModel):
 
     @property
     def OldCertId(self):
-        """旧证书ID。
+        r"""旧证书ID。
         :rtype: str
         """
         return self._OldCertId
@@ -11101,7 +11101,7 @@ class ReplaceCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11118,7 +11118,7 @@ class ReplaceCertResponse(AbstractModel):
 
 
 class SetTrafficMirrorAliasRequest(AbstractModel):
-    """SetTrafficMirrorAlias请求参数结构体
+    r"""SetTrafficMirrorAlias请求参数结构体
 
     """
 
@@ -11134,7 +11134,7 @@ class SetTrafficMirrorAliasRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -11145,7 +11145,7 @@ class SetTrafficMirrorAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """流量镜像实例别名。
+        r"""流量镜像实例别名。
         :rtype: str
         """
         return self._Alias
@@ -11169,7 +11169,7 @@ class SetTrafficMirrorAliasRequest(AbstractModel):
 
 
 class SetTrafficMirrorAliasResponse(AbstractModel):
-    """SetTrafficMirrorAlias返回参数结构体
+    r"""SetTrafficMirrorAlias返回参数结构体
 
     """
 
@@ -11182,7 +11182,7 @@ class SetTrafficMirrorAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11197,7 +11197,7 @@ class SetTrafficMirrorAliasResponse(AbstractModel):
 
 
 class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
-    """SetTrafficMirrorHealthSwitch请求参数结构体
+    r"""SetTrafficMirrorHealthSwitch请求参数结构体
 
     """
 
@@ -11231,7 +11231,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -11242,7 +11242,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """健康检查开关，0：关闭，1：打开
+        r"""健康检查开关，0：关闭，1：打开
         :rtype: int
         """
         return self._HealthSwitch
@@ -11253,7 +11253,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康检查判断健康的次数，最小值2，最大值10。
+        r"""健康检查判断健康的次数，最小值2，最大值10。
         :rtype: int
         """
         return self._HealthNum
@@ -11264,7 +11264,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """健康检查判断不健康的次数，最小值2，最大值10。
+        r"""健康检查判断不健康的次数，最小值2，最大值10。
         :rtype: int
         """
         return self._UnhealthNum
@@ -11275,7 +11275,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """健康检查间隔，单位：秒，最小值5，最大值300。
+        r"""健康检查间隔，单位：秒，最小值5，最大值300。
         :rtype: int
         """
         return self._IntervalTime
@@ -11286,7 +11286,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """检查的域名配置。
+        r"""检查的域名配置。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -11297,7 +11297,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """检查的路径配置。
+        r"""检查的路径配置。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -11308,7 +11308,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
+        r"""健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
         :rtype: list of int
         """
         return self._HttpCodes
@@ -11338,7 +11338,7 @@ class SetTrafficMirrorHealthSwitchRequest(AbstractModel):
 
 
 class SetTrafficMirrorHealthSwitchResponse(AbstractModel):
-    """SetTrafficMirrorHealthSwitch返回参数结构体
+    r"""SetTrafficMirrorHealthSwitch返回参数结构体
 
     """
 
@@ -11354,7 +11354,7 @@ class SetTrafficMirrorHealthSwitchResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -11365,7 +11365,7 @@ class SetTrafficMirrorHealthSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11381,7 +11381,7 @@ class SetTrafficMirrorHealthSwitchResponse(AbstractModel):
 
 
 class TrafficMirror(AbstractModel):
-    """获取流量镜像实例的列表信息时返回的流量镜像信息。
+    r"""获取流量镜像实例的列表信息时返回的流量镜像信息。
 
     """
 
@@ -11433,7 +11433,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像ID。
+        r"""流量镜像ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -11444,7 +11444,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def Alias(self):
-        """流量镜像名称。
+        r"""流量镜像名称。
         :rtype: str
         """
         return self._Alias
@@ -11455,7 +11455,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def VpcId(self):
-        """流量镜像所在的私有网络ID。
+        r"""流量镜像所在的私有网络ID。
         :rtype: str
         """
         return self._VpcId
@@ -11466,7 +11466,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        """接收机负载均衡方式。wrr，ip_hash，wlc。
+        r"""接收机负载均衡方式。wrr，ip_hash，wlc。
         :rtype: str
         """
         return self._LoadBalancerType
@@ -11477,7 +11477,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开始对接收机的健康检查。0：关闭，非0：开启。
+        r"""是否开始对接收机的健康检查。0：关闭，非0：开启。
         :rtype: int
         """
         return self._HealthSwitch
@@ -11488,7 +11488,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def HealthNum(self):
-        """健康阈值。
+        r"""健康阈值。
         :rtype: int
         """
         return self._HealthNum
@@ -11499,7 +11499,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        """不健康阈值。
+        r"""不健康阈值。
         :rtype: int
         """
         return self._UnhealthNum
@@ -11510,7 +11510,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """检查间隔。
+        r"""检查间隔。
         :rtype: int
         """
         return self._IntervalTime
@@ -11521,7 +11521,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def HttpCheckDomain(self):
-        """检查域名。
+        r"""检查域名。
         :rtype: str
         """
         return self._HttpCheckDomain
@@ -11532,7 +11532,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        """检查目录。
+        r"""检查目录。
         :rtype: str
         """
         return self._HttpCheckPath
@@ -11543,7 +11543,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def HttpCodes(self):
-        """健康检查返回码。 1：1xx，2：2xx，3：3xx，4：4xx，5：5xx。
+        r"""健康检查返回码。 1：1xx，2：2xx，3：3xx，4：4xx，5：5xx。
         :rtype: list of int
         """
         return self._HttpCodes
@@ -11554,7 +11554,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -11565,7 +11565,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """流量镜像所在私有网络的Cidr。
+        r"""流量镜像所在私有网络的Cidr。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -11576,7 +11576,7 @@ class TrafficMirror(AbstractModel):
 
     @property
     def VpcName(self):
-        """流量镜像所在私有网络的名称。
+        r"""流量镜像所在私有网络的名称。
         :rtype: str
         """
         return self._VpcName
@@ -11612,7 +11612,7 @@ class TrafficMirror(AbstractModel):
 
 
 class TrafficMirrorListener(AbstractModel):
-    """获取流量镜像的监听器列表信息时返回的与流量镜像绑定的监听器信息。
+    r"""获取流量镜像的监听器列表信息时返回的与流量镜像绑定的监听器信息。
 
     """
 
@@ -11676,7 +11676,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器ID。
+        r"""监听器ID。
         :rtype: str
         """
         return self._ListenerId
@@ -11687,7 +11687,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称。
+        r"""监听器名称。
         :rtype: str
         """
         return self._ListenerName
@@ -11698,7 +11698,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def Protocol(self):
-        """七层监听器协议类型，可选值：http,https。
+        r"""七层监听器协议类型，可选值：http,https。
         :rtype: str
         """
         return self._Protocol
@@ -11709,7 +11709,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def LoadBalancerPort(self):
-        """监听器的监听端口。
+        r"""监听器的监听端口。
         :rtype: int
         """
         return self._LoadBalancerPort
@@ -11720,7 +11720,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """当前带宽。
+        r"""当前带宽。
         :rtype: int
         """
         return self._Bandwidth
@@ -11731,7 +11731,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        """带宽上限。
+        r"""带宽上限。
         :rtype: int
         """
         return self._MaxBandwidth
@@ -11742,7 +11742,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def ListenerType(self):
-        """监听器类型。
+        r"""监听器类型。
         :rtype: str
         """
         return self._ListenerType
@@ -11753,7 +11753,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def SslMode(self):
-        """认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
+        r"""认证方式：0（不认证，用于http），1（单向认证，用于https），2（双向认证，用于https）。
         :rtype: int
         """
         return self._SslMode
@@ -11764,7 +11764,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def CertId(self):
-        """服务端证书ID。
+        r"""服务端证书ID。
         :rtype: str
         """
         return self._CertId
@@ -11775,7 +11775,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def CertCaId(self):
-        """客户端证书ID。
+        r"""客户端证书ID。
         :rtype: str
         """
         return self._CertCaId
@@ -11786,7 +11786,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def AddTimestamp(self):
-        """添加时间。
+        r"""添加时间。
         :rtype: str
         """
         return self._AddTimestamp
@@ -11797,7 +11797,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡ID。
+        r"""负载均衡ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -11808,7 +11808,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名称。
+        r"""私有网络名称。
         :rtype: str
         """
         return self._VpcName
@@ -11819,7 +11819,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """私有网络Cidr。
+        r"""私有网络Cidr。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -11830,7 +11830,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
-        """负载均衡的VIP。
+        r"""负载均衡的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVips
@@ -11841,7 +11841,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡名称。
+        r"""负载均衡名称。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -11852,7 +11852,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def LoadBalancerVipv6s(self):
-        """负载均衡的IPV6的VIP。
+        r"""负载均衡的IPV6的VIP。
         :rtype: list of str
         """
         return self._LoadBalancerVipv6s
@@ -11863,7 +11863,7 @@ class TrafficMirrorListener(AbstractModel):
 
     @property
     def IpProtocolType(self):
-        """支持的IP协议类型。ipv4或者是ipv6。
+        r"""支持的IP协议类型。ipv4或者是ipv6。
         :rtype: str
         """
         return self._IpProtocolType
@@ -11903,7 +11903,7 @@ class TrafficMirrorListener(AbstractModel):
 
 
 class TrafficMirrorPortStatus(AbstractModel):
-    """流量镜像健康检查返回的接收机的端口及状态信息。
+    r"""流量镜像健康检查返回的接收机的端口及状态信息。
 
     """
 
@@ -11919,7 +11919,7 @@ class TrafficMirrorPortStatus(AbstractModel):
 
     @property
     def Port(self):
-        """接收机端口。
+        r"""接收机端口。
         :rtype: int
         """
         return self._Port
@@ -11930,7 +11930,7 @@ class TrafficMirrorPortStatus(AbstractModel):
 
     @property
     def Status(self):
-        """状态。
+        r"""状态。
         :rtype: str
         """
         return self._Status
@@ -11954,7 +11954,7 @@ class TrafficMirrorPortStatus(AbstractModel):
 
 
 class TrafficMirrorReceiver(AbstractModel):
-    """获取与流量镜像绑定的接收机信息时返回的接收机信息。
+    r"""获取与流量镜像绑定的接收机信息时返回的接收机信息。
 
     """
 
@@ -12006,7 +12006,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def InstanceId(self):
-        """接收机实例ID。
+        r"""接收机实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -12017,7 +12017,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def Port(self):
-        """接收机接收端口。
+        r"""接收机接收端口。
         :rtype: int
         """
         return self._Port
@@ -12028,7 +12028,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def Weight(self):
-        """接收机权重。
+        r"""接收机权重。
         :rtype: int
         """
         return self._Weight
@@ -12039,7 +12039,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像ID。
+        r"""流量镜像ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -12050,7 +12050,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def Alias(self):
-        """接收机别名。
+        r"""接收机别名。
         :rtype: str
         """
         return self._Alias
@@ -12061,7 +12061,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def LanIp(self):
-        """接收机内网IP地址。
+        r"""接收机内网IP地址。
         :rtype: str
         """
         return self._LanIp
@@ -12072,7 +12072,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def SubnetId(self):
-        """接收机所在的子网的ID。
+        r"""接收机所在的子网的ID。
         :rtype: str
         """
         return self._SubnetId
@@ -12083,7 +12083,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def SubnetName(self):
-        """接收机所在的子网的名称。
+        r"""接收机所在的子网的名称。
         :rtype: str
         """
         return self._SubnetName
@@ -12094,7 +12094,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
-        """接收机所在的子网的Cidr。
+        r"""接收机所在的子网的Cidr。
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -12105,7 +12105,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def VpcId(self):
-        """接收机所在的私有网络的ID。
+        r"""接收机所在的私有网络的ID。
         :rtype: str
         """
         return self._VpcId
@@ -12116,7 +12116,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def VpcName(self):
-        """接收机所在的私有网络的名称。
+        r"""接收机所在的私有网络的名称。
         :rtype: str
         """
         return self._VpcName
@@ -12127,7 +12127,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """接收机所在的私有网络的Cidr。
+        r"""接收机所在的私有网络的Cidr。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -12138,7 +12138,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def HealthStatus(self):
-        """接收机的健康状态。
+        r"""接收机的健康状态。
         :rtype: str
         """
         return self._HealthStatus
@@ -12149,7 +12149,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
     @property
     def Operates(self):
-        """接收机的可以执行的操作集合。
+        r"""接收机的可以执行的操作集合。
         :rtype: list of str
         """
         return self._Operates
@@ -12185,7 +12185,7 @@ class TrafficMirrorReceiver(AbstractModel):
 
 
 class TrafficMirrorReciversStatus(AbstractModel):
-    """流量镜像健康检查返回的接收机状态信息。
+    r"""流量镜像健康检查返回的接收机状态信息。
 
     """
 
@@ -12201,7 +12201,7 @@ class TrafficMirrorReciversStatus(AbstractModel):
 
     @property
     def LanIp(self):
-        """内网IP。
+        r"""内网IP。
         :rtype: str
         """
         return self._LanIp
@@ -12212,7 +12212,7 @@ class TrafficMirrorReciversStatus(AbstractModel):
 
     @property
     def ReceiversPortStatusSet(self):
-        """端口及对应的状态。
+        r"""端口及对应的状态。
         :rtype: list of TrafficMirrorPortStatus
         """
         return self._ReceiversPortStatusSet
@@ -12241,7 +12241,7 @@ class TrafficMirrorReciversStatus(AbstractModel):
 
 
 class UnbindL4Backend(AbstractModel):
-    """待与四层监听器解绑的物理机主机、虚拟机或半托管主机信息。
+    r"""待与四层监听器解绑的物理机主机、虚拟机或半托管主机信息。
 
     """
 
@@ -12257,7 +12257,7 @@ class UnbindL4Backend(AbstractModel):
 
     @property
     def Port(self):
-        """待解绑的主机端口，可选值1~65535。
+        r"""待解绑的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -12268,7 +12268,7 @@ class UnbindL4Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -12292,7 +12292,7 @@ class UnbindL4Backend(AbstractModel):
 
 
 class UnbindL4BackendsRequest(AbstractModel):
-    """UnbindL4Backends请求参数结构体
+    r"""UnbindL4Backends请求参数结构体
 
     """
 
@@ -12314,7 +12314,7 @@ class UnbindL4BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -12325,7 +12325,7 @@ class UnbindL4BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
+        r"""负载均衡四层监听器ID，可通过接口DescribeL4Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -12336,7 +12336,7 @@ class UnbindL4BackendsRequest(AbstractModel):
 
     @property
     def BackendSet(self):
-        """待解绑的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
+        r"""待解绑的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
         :rtype: list of UnbindL4Backend
         """
         return self._BackendSet
@@ -12347,7 +12347,7 @@ class UnbindL4BackendsRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机 1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机 1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -12378,7 +12378,7 @@ class UnbindL4BackendsRequest(AbstractModel):
 
 
 class UnbindL4BackendsResponse(AbstractModel):
-    """UnbindL4Backends返回参数结构体
+    r"""UnbindL4Backends返回参数结构体
 
     """
 
@@ -12394,7 +12394,7 @@ class UnbindL4BackendsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -12405,7 +12405,7 @@ class UnbindL4BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12421,7 +12421,7 @@ class UnbindL4BackendsResponse(AbstractModel):
 
 
 class UnbindL7Backend(AbstractModel):
-    """待与七层监听器转发规则解绑的物理机主机、虚拟机或半托管主机信息。
+    r"""待与七层监听器转发规则解绑的物理机主机、虚拟机或半托管主机信息。
 
     """
 
@@ -12437,7 +12437,7 @@ class UnbindL7Backend(AbstractModel):
 
     @property
     def Port(self):
-        """待解绑的主机端口，可选值1~65535。
+        r"""待解绑的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -12448,7 +12448,7 @@ class UnbindL7Backend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
+        r"""黑石物理机主机ID、虚拟机IP或者是半托管主机ID。
         :rtype: str
         """
         return self._InstanceId
@@ -12472,7 +12472,7 @@ class UnbindL7Backend(AbstractModel):
 
 
 class UnbindL7BackendsRequest(AbstractModel):
-    """UnbindL7Backends请求参数结构体
+    r"""UnbindL7Backends请求参数结构体
 
     """
 
@@ -12500,7 +12500,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
+        r"""负载均衡实例ID，可通过接口DescribeLoadBalancers查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -12511,7 +12511,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """七层监听器实例ID，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID，可通过接口DescribeL7Listeners查询。
         :rtype: str
         """
         return self._ListenerId
@@ -12522,7 +12522,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """转发域名实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发域名实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._DomainId
@@ -12533,7 +12533,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发路径实例ID，可通过接口DescribeL7Rules查询。
+        r"""转发路径实例ID，可通过接口DescribeL7Rules查询。
         :rtype: str
         """
         return self._LocationId
@@ -12544,7 +12544,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def BackendSet(self):
-        """待绑定的主机信息。
+        r"""待绑定的主机信息。
         :rtype: list of UnbindL7Backend
         """
         return self._BackendSet
@@ -12555,7 +12555,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。0：物理机  1：虚拟机 2：半托管机器
+        r"""绑定类型。0：物理机  1：虚拟机 2：半托管机器
         :rtype: int
         """
         return self._BindType
@@ -12588,7 +12588,7 @@ class UnbindL7BackendsRequest(AbstractModel):
 
 
 class UnbindL7BackendsResponse(AbstractModel):
-    """UnbindL7Backends返回参数结构体
+    r"""UnbindL7Backends返回参数结构体
 
     """
 
@@ -12604,7 +12604,7 @@ class UnbindL7BackendsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -12615,7 +12615,7 @@ class UnbindL7BackendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12631,7 +12631,7 @@ class UnbindL7BackendsResponse(AbstractModel):
 
 
 class UnbindTrafficMirrorListenersRequest(AbstractModel):
-    """UnbindTrafficMirrorListeners请求参数结构体
+    r"""UnbindTrafficMirrorListeners请求参数结构体
 
     """
 
@@ -12647,7 +12647,7 @@ class UnbindTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -12658,7 +12658,7 @@ class UnbindTrafficMirrorListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
+        r"""七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
         :rtype: list of str
         """
         return self._ListenerIds
@@ -12682,7 +12682,7 @@ class UnbindTrafficMirrorListenersRequest(AbstractModel):
 
 
 class UnbindTrafficMirrorListenersResponse(AbstractModel):
-    """UnbindTrafficMirrorListeners返回参数结构体
+    r"""UnbindTrafficMirrorListeners返回参数结构体
 
     """
 
@@ -12698,7 +12698,7 @@ class UnbindTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -12709,7 +12709,7 @@ class UnbindTrafficMirrorListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12725,7 +12725,7 @@ class UnbindTrafficMirrorListenersResponse(AbstractModel):
 
 
 class UnbindTrafficMirrorReceiver(AbstractModel):
-    """待与流量镜像解绑的接收机信息。
+    r"""待与流量镜像解绑的接收机信息。
 
     """
 
@@ -12741,7 +12741,7 @@ class UnbindTrafficMirrorReceiver(AbstractModel):
 
     @property
     def Port(self):
-        """待解绑的主机端口，可选值1~65535。
+        r"""待解绑的主机端口，可选值1~65535。
         :rtype: int
         """
         return self._Port
@@ -12752,7 +12752,7 @@ class UnbindTrafficMirrorReceiver(AbstractModel):
 
     @property
     def InstanceId(self):
-        """待解绑的主机实例ID。
+        r"""待解绑的主机实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -12776,7 +12776,7 @@ class UnbindTrafficMirrorReceiver(AbstractModel):
 
 
 class UnbindTrafficMirrorReceiversRequest(AbstractModel):
-    """UnbindTrafficMirrorReceivers请求参数结构体
+    r"""UnbindTrafficMirrorReceivers请求参数结构体
 
     """
 
@@ -12792,7 +12792,7 @@ class UnbindTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        """流量镜像实例ID。
+        r"""流量镜像实例ID。
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -12803,7 +12803,7 @@ class UnbindTrafficMirrorReceiversRequest(AbstractModel):
 
     @property
     def ReceiverSet(self):
-        """待绑定的主机实例ID和端口数组。
+        r"""待绑定的主机实例ID和端口数组。
         :rtype: list of UnbindTrafficMirrorReceiver
         """
         return self._ReceiverSet
@@ -12832,7 +12832,7 @@ class UnbindTrafficMirrorReceiversRequest(AbstractModel):
 
 
 class UnbindTrafficMirrorReceiversResponse(AbstractModel):
-    """UnbindTrafficMirrorReceivers返回参数结构体
+    r"""UnbindTrafficMirrorReceivers返回参数结构体
 
     """
 
@@ -12848,7 +12848,7 @@ class UnbindTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
+        r"""任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
         :rtype: str
         """
         return self._TaskId
@@ -12859,7 +12859,7 @@ class UnbindTrafficMirrorReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12875,7 +12875,7 @@ class UnbindTrafficMirrorReceiversResponse(AbstractModel):
 
 
 class UploadCertRequest(AbstractModel):
-    """UploadCert请求参数结构体
+    r"""UploadCert请求参数结构体
 
     """
 
@@ -12897,7 +12897,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型，可选值：CA，SVR。
+        r"""证书类型，可选值：CA，SVR。
         :rtype: str
         """
         return self._CertType
@@ -12908,7 +12908,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Cert(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._Cert
@@ -12919,7 +12919,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """证书别名。
+        r"""证书别名。
         :rtype: str
         """
         return self._Alias
@@ -12930,7 +12930,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Key(self):
-        """私钥内容，证书类型为SVR时不需要传递。
+        r"""私钥内容，证书类型为SVR时不需要传递。
         :rtype: str
         """
         return self._Key
@@ -12956,7 +12956,7 @@ class UploadCertRequest(AbstractModel):
 
 
 class UploadCertResponse(AbstractModel):
-    """UploadCert返回参数结构体
+    r"""UploadCert返回参数结构体
 
     """
 
@@ -12972,7 +12972,7 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def CertId(self):
-        """新建的证书ID。
+        r"""新建的证书ID。
         :rtype: str
         """
         return self._CertId
@@ -12983,7 +12983,7 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

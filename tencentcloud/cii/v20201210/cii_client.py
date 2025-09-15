@@ -27,7 +27,7 @@ class CiiClient(AbstractClient):
 
 
     def CreateStructureTask(self, request):
-        """基于提供的客户及保单信息，启动结构化识别任务。
+        r"""基于提供的客户及保单信息，启动结构化识别任务。
 
         :param request: Request instance for CreateStructureTask.
         :type request: :class:`tencentcloud.cii.v20201210.models.CreateStructureTaskRequest`
@@ -50,7 +50,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructCompareData(self, request):
-        """结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
+        r"""结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
 
         :param request: Request instance for DescribeStructCompareData.
         :type request: :class:`tencentcloud.cii.v20201210.models.DescribeStructCompareDataRequest`
@@ -73,7 +73,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructureTaskResult(self, request):
-        """依据任务ID获取结构化结果接口。
+        r"""依据任务ID获取结构化结果接口。
 
         :param request: Request instance for DescribeStructureTaskResult.
         :type request: :class:`tencentcloud.cii.v20201210.models.DescribeStructureTaskResultRequest`

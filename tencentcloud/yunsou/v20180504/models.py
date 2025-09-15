@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DataManipulationRequest(AbstractModel):
-    """DataManipulation请求参数结构体
+    r"""DataManipulation请求参数结构体
 
     """
 
@@ -41,7 +41,7 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def OpType(self):
-        """操作类型，add或del
+        r"""操作类型，add或del
         :rtype: str
         """
         return self._OpType
@@ -52,7 +52,7 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        """数据编码类型
+        r"""数据编码类型
         :rtype: str
         """
         return self._Encoding
@@ -63,7 +63,7 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def Contents(self):
-        """数据
+        r"""数据
         :rtype: str
         """
         return self._Contents
@@ -74,7 +74,7 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._ResourceId
@@ -100,7 +100,7 @@ class DataManipulationRequest(AbstractModel):
 
 
 class DataManipulationResponse(AbstractModel):
-    """DataManipulation返回参数结构体
+    r"""DataManipulation返回参数结构体
 
     """
 
@@ -116,7 +116,7 @@ class DataManipulationResponse(AbstractModel):
 
     @property
     def RetMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._RetMsg
@@ -127,7 +127,7 @@ class DataManipulationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -143,7 +143,7 @@ class DataManipulationResponse(AbstractModel):
 
 
 class DataSearchRequest(AbstractModel):
-    """DataSearch请求参数结构体
+    r"""DataSearch请求参数结构体
 
     """
 
@@ -222,7 +222,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """云搜的业务ID，用以表明当前数据请求的业务
+        r"""云搜的业务ID，用以表明当前数据请求的业务
         :rtype: int
         """
         return self._ResourceId
@@ -233,7 +233,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SearchQuery(self):
-        """检索串
+        r"""检索串
         :rtype: str
         """
         return self._SearchQuery
@@ -244,7 +244,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def PageId(self):
-        """当前页，从第0页开始计算
+        r"""当前页，从第0页开始计算
         :rtype: int
         """
         return self._PageId
@@ -255,7 +255,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def NumPerPage(self):
-        """每页结果数
+        r"""每页结果数
         :rtype: int
         """
         return self._NumPerPage
@@ -266,7 +266,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SearchId(self):
-        """当前检索号，用于定位问题，建议指定并且全局唯一
+        r"""当前检索号，用于定位问题，建议指定并且全局唯一
         :rtype: str
         """
         return self._SearchId
@@ -277,7 +277,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def QueryEncode(self):
-        """请求编码，0表示utf8，1表示gbk，建议指定
+        r"""请求编码，0表示utf8，1表示gbk，建议指定
         :rtype: int
         """
         return self._QueryEncode
@@ -288,7 +288,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def RankType(self):
-        """排序类型
+        r"""排序类型
         :rtype: int
         """
         return self._RankType
@@ -299,7 +299,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def NumFilter(self):
-        """数值过滤，结果中按属性过滤
+        r"""数值过滤，结果中按属性过滤
         :rtype: str
         """
         return self._NumFilter
@@ -310,7 +310,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def ClFilter(self):
-        """分类过滤，导航类检索请求
+        r"""分类过滤，导航类检索请求
         :rtype: str
         """
         return self._ClFilter
@@ -321,7 +321,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Extra(self):
-        """检索用户相关字段
+        r"""检索用户相关字段
         :rtype: str
         """
         return self._Extra
@@ -332,7 +332,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SourceId(self):
-        """检索来源
+        r"""检索来源
         :rtype: int
         """
         return self._SourceId
@@ -343,7 +343,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SecondSearch(self):
-        """是否进行二次检索，0关闭，1打开
+        r"""是否进行二次检索，0关闭，1打开
         :rtype: int
         """
         return self._SecondSearch
@@ -354,7 +354,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MaxDocReturn(self):
-        """指定返回最大篇数，无特殊原因不建议指定
+        r"""指定返回最大篇数，无特殊原因不建议指定
         :rtype: int
         """
         return self._MaxDocReturn
@@ -365,7 +365,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def IsSmartbox(self):
-        """是否smartbox检索，0关闭，1打开
+        r"""是否smartbox检索，0关闭，1打开
         :rtype: int
         """
         return self._IsSmartbox
@@ -376,7 +376,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def EnableAbsHighlight(self):
-        """是否打开高红标亮，0关闭，1打开
+        r"""是否打开高红标亮，0关闭，1打开
         :rtype: int
         """
         return self._EnableAbsHighlight
@@ -387,7 +387,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def QcBid(self):
-        """指定访问QC纠错业务ID
+        r"""指定访问QC纠错业务ID
         :rtype: int
         """
         return self._QcBid
@@ -398,7 +398,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        """按指定字段进行group by，只能对数值字段进行操作
+        r"""按指定字段进行group by，只能对数值字段进行操作
         :rtype: str
         """
         return self._GroupBy
@@ -409,7 +409,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Distinct(self):
-        """按指定字段进行distinct，只能对数值字段进行操作
+        r"""按指定字段进行distinct，只能对数值字段进行操作
         :rtype: str
         """
         return self._Distinct
@@ -420,7 +420,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def L4RankExpression(self):
-        """高级排序参数，具体参见高级排序说明
+        r"""高级排序参数，具体参见高级排序说明
         :rtype: str
         """
         return self._L4RankExpression
@@ -431,7 +431,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MatchValue(self):
-        """高级排序参数，具体参见高级排序说明
+        r"""高级排序参数，具体参见高级排序说明
         :rtype: str
         """
         return self._MatchValue
@@ -442,7 +442,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Longitude(self):
-        """经度信息
+        r"""经度信息
         :rtype: float
         """
         return self._Longitude
@@ -453,7 +453,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Latitude(self):
-        """纬度信息
+        r"""纬度信息
         :rtype: float
         """
         return self._Latitude
@@ -464,7 +464,7 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MultiFilter(self):
-        """分类过滤并集
+        r"""分类过滤并集
         :rtype: list of str
         """
         return self._MultiFilter
@@ -509,7 +509,7 @@ class DataSearchRequest(AbstractModel):
 
 
 class DataSearchResponse(AbstractModel):
-    """DataSearch返回参数结构体
+    r"""DataSearch返回参数结构体
 
     """
 
@@ -525,7 +525,7 @@ class DataSearchResponse(AbstractModel):
 
     @property
     def RetMsg(self):
-        """数据返回信息
+        r"""数据返回信息
         :rtype: str
         """
         return self._RetMsg
@@ -536,7 +536,7 @@ class DataSearchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

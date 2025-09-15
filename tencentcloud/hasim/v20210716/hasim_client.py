@@ -27,7 +27,7 @@ class HasimClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """创建自动化规则
+        r"""创建自动化规则
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.hasim.v20210716.models.CreateRuleRequest`
@@ -50,7 +50,7 @@ class HasimClient(AbstractClient):
 
 
     def CreateTactic(self, request):
-        """创建云兔切换策略
+        r"""创建云兔切换策略
 
         :param request: Request instance for CreateTactic.
         :type request: :class:`tencentcloud.hasim.v20210716.models.CreateTacticRequest`
@@ -73,7 +73,7 @@ class HasimClient(AbstractClient):
 
 
     def CreateTag(self, request):
-        """创建标签
+        r"""创建标签
 
         :param request: Request instance for CreateTag.
         :type request: :class:`tencentcloud.hasim.v20210716.models.CreateTagRequest`
@@ -96,7 +96,7 @@ class HasimClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """删除自动化规则
+        r"""删除自动化规则
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteRuleRequest`
@@ -119,7 +119,7 @@ class HasimClient(AbstractClient):
 
 
     def DeleteTactic(self, request):
-        """删除策略
+        r"""删除策略
 
         :param request: Request instance for DeleteTactic.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteTacticRequest`
@@ -142,7 +142,7 @@ class HasimClient(AbstractClient):
 
 
     def DeleteTag(self, request):
-        """删除标签
+        r"""删除标签
 
         :param request: Request instance for DeleteTag.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteTagRequest`
@@ -165,7 +165,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeLink(self, request):
-        """查询云兔连接详细信息
+        r"""查询云兔连接详细信息
 
         :param request: Request instance for DescribeLink.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeLinkRequest`
@@ -188,7 +188,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeLinks(self, request):
-        """查询云兔连接列表
+        r"""查询云兔连接列表
 
         :param request: Request instance for DescribeLinks.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeLinksRequest`
@@ -211,7 +211,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """查询订单列表
+        r"""查询订单列表
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeOrdersRequest`
@@ -234,7 +234,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeRule(self, request):
-        """查询自动化规则
+        r"""查询自动化规则
 
         :param request: Request instance for DescribeRule.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeRuleRequest`
@@ -257,7 +257,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """查询自动化规则列表
+        r"""查询自动化规则列表
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeRulesRequest`
@@ -280,7 +280,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeTactic(self, request):
-        """查询云兔切换策略信息
+        r"""查询云兔切换策略信息
 
         :param request: Request instance for DescribeTactic.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticRequest`
@@ -303,7 +303,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeTactics(self, request):
-        """查询云兔切换策略列表
+        r"""查询云兔切换策略列表
 
         :param request: Request instance for DescribeTactics.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticsRequest`
@@ -326,7 +326,7 @@ class HasimClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """查询标签列表
+        r"""查询标签列表
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTagsRequest`
@@ -349,7 +349,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyLinkAdvancedLog(self, request):
-        """编辑云兔高级日志状态
+        r"""编辑云兔高级日志状态
 
         :param request: Request instance for ModifyLinkAdvancedLog.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkAdvancedLogRequest`
@@ -372,7 +372,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyLinkTactic(self, request):
-        """编辑云兔策略
+        r"""编辑云兔策略
 
         :param request: Request instance for ModifyLinkTactic.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTacticRequest`
@@ -395,7 +395,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyLinkTele(self, request):
-        """修改云兔运营商
+        r"""修改云兔运营商
 
         :param request: Request instance for ModifyLinkTele.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTeleRequest`
@@ -418,7 +418,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """编辑自动化规则
+        r"""编辑自动化规则
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleRequest`
@@ -441,7 +441,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyRuleStatus(self, request):
-        """编辑自动化规则状态
+        r"""编辑自动化规则状态
 
         :param request: Request instance for ModifyRuleStatus.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleStatusRequest`
@@ -464,7 +464,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyTactic(self, request):
-        """修改云兔切换策略
+        r"""修改云兔切换策略
 
         :param request: Request instance for ModifyTactic.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyTacticRequest`
@@ -487,7 +487,7 @@ class HasimClient(AbstractClient):
 
 
     def ModifyTag(self, request):
-        """编辑标签
+        r"""编辑标签
 
         :param request: Request instance for ModifyTag.
         :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyTagRequest`
@@ -510,7 +510,7 @@ class HasimClient(AbstractClient):
 
 
     def RenewLinkInfo(self, request):
-        """刷新云兔连接信息同步
+        r"""刷新云兔连接信息同步
 
         :param request: Request instance for RenewLinkInfo.
         :type request: :class:`tencentcloud.hasim.v20210716.models.RenewLinkInfoRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApplicationVersion(AbstractModel):
-    """应用版本。
+    r"""应用版本。
 
     """
 
@@ -62,7 +62,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def Type(self):
-        """版本类型。
+        r"""版本类型。
         :rtype: str
         """
         return self._Type
@@ -73,7 +73,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
-        """版本ID。
+        r"""版本ID。
         :rtype: str
         """
         return self._ApplicationVersionId
@@ -84,7 +84,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def Name(self):
-        """发布名称。
+        r"""发布名称。
         :rtype: str
         """
         return self._Name
@@ -95,7 +95,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def Description(self):
-        """发布描述。
+        r"""发布描述。
         :rtype: str
         """
         return self._Description
@@ -106,7 +106,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def Entrypoint(self):
-        """入口文件。
+        r"""入口文件。
         :rtype: str
         """
         return self._Entrypoint
@@ -117,7 +117,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -128,7 +128,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def CreatorName(self):
-        """创建者名称。
+        r"""创建者名称。
         :rtype: str
         """
         return self._CreatorName
@@ -139,7 +139,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def CreatorId(self):
-        """创建者ID。
+        r"""创建者ID。
         :rtype: str
         """
         return self._CreatorId
@@ -152,7 +152,7 @@ class ApplicationVersion(AbstractModel):
     def GitInfo(self):
         warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
 
-        """Git信息。
+        r"""Git信息。
         :rtype: str
         """
         return self._GitInfo
@@ -165,7 +165,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def GitSource(self):
-        """Git信息。
+        r"""Git信息。
         :rtype: :class:`tencentcloud.omics.v20221128.models.GitInfo`
         """
         return self._GitSource
@@ -176,7 +176,7 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def CosSource(self):
-        """COS信息。
+        r"""COS信息。
         :rtype: :class:`tencentcloud.omics.v20221128.models.CosFileInfo`
         """
         return self._CosSource
@@ -213,7 +213,7 @@ class ApplicationVersion(AbstractModel):
 
 
 class CVMOption(AbstractModel):
-    """云服务器配置。
+    r"""云服务器配置。
 
     """
 
@@ -229,7 +229,7 @@ class CVMOption(AbstractModel):
 
     @property
     def Zone(self):
-        """云服务器可用区。
+        r"""云服务器可用区。
         :rtype: str
         """
         return self._Zone
@@ -240,7 +240,7 @@ class CVMOption(AbstractModel):
 
     @property
     def InstanceType(self):
-        """云服务器实例规格。
+        r"""云服务器实例规格。
         :rtype: str
         """
         return self._InstanceType
@@ -264,7 +264,7 @@ class CVMOption(AbstractModel):
 
 
 class CacheInfo(AbstractModel):
-    """缓存信息。
+    r"""缓存信息。
 
     """
 
@@ -283,7 +283,7 @@ class CacheInfo(AbstractModel):
 
     @property
     def CacheClearDelay(self):
-        """缓存清理时间(小时)。
+        r"""缓存清理时间(小时)。
         :rtype: int
         """
         return self._CacheClearDelay
@@ -294,7 +294,7 @@ class CacheInfo(AbstractModel):
 
     @property
     def CacheClearTime(self):
-        """缓存清理计划时间。
+        r"""缓存清理计划时间。
         :rtype: str
         """
         return self._CacheClearTime
@@ -305,7 +305,7 @@ class CacheInfo(AbstractModel):
 
     @property
     def CacheCleared(self):
-        """缓存是否已被清理。
+        r"""缓存是否已被清理。
         :rtype: bool
         """
         return self._CacheCleared
@@ -330,7 +330,7 @@ class CacheInfo(AbstractModel):
 
 
 class ClusterOption(AbstractModel):
-    """计算集群配置。
+    r"""计算集群配置。
 
     """
 
@@ -365,7 +365,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Zone(self):
-        """计算集群可用区。
+        r"""计算集群可用区。
         :rtype: str
         """
         return self._Zone
@@ -376,7 +376,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Type(self):
-        """计算集群类型，取值范围：
+        r"""计算集群类型，取值范围：
 - KUBERNETES
         :rtype: str
         """
@@ -388,7 +388,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ServiceCidr(self):
-        """计算集群Service CIDR，不能与VPC网段重合。
+        r"""计算集群Service CIDR，不能与VPC网段重合。
         :rtype: str
         """
         return self._ServiceCidr
@@ -399,7 +399,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ResourceQuota(self):
-        """资源配额。
+        r"""资源配额。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
         """
         return self._ResourceQuota
@@ -410,7 +410,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def LimitRange(self):
-        """限制范围。
+        r"""限制范围。
         :rtype: :class:`tencentcloud.omics.v20221128.models.LimitRange`
         """
         return self._LimitRange
@@ -421,7 +421,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def SystemNodeInstanceType(self):
-        """系统节点池实例规格。
+        r"""系统节点池实例规格。
         :rtype: str
         """
         return self._SystemNodeInstanceType
@@ -432,7 +432,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def SystemNodeCount(self):
-        """系统节点池实例数量。
+        r"""系统节点池实例数量。
         :rtype: int
         """
         return self._SystemNodeCount
@@ -443,7 +443,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        """纳管环境自动升配
+        r"""纳管环境自动升配
         :rtype: bool
         """
         return self._AutoUpgradeClusterLevel
@@ -477,7 +477,7 @@ class ClusterOption(AbstractModel):
 
 
 class CosFileInfo(AbstractModel):
-    """COS 文件信息
+    r"""COS 文件信息
 
     """
 
@@ -496,7 +496,7 @@ class CosFileInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """存储桶。
+        r"""存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -507,7 +507,7 @@ class CosFileInfo(AbstractModel):
 
     @property
     def Uri(self):
-        """COS文件地址。
+        r"""COS文件地址。
         :rtype: str
         """
         return self._Uri
@@ -518,7 +518,7 @@ class CosFileInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域。
+        r"""地域。
         :rtype: str
         """
         return self._Region
@@ -543,7 +543,7 @@ class CosFileInfo(AbstractModel):
 
 
 class CreateEnvironmentRequest(AbstractModel):
-    """CreateEnvironment请求参数结构体
+    r"""CreateEnvironment请求参数结构体
 
     """
 
@@ -565,7 +565,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Name(self):
-        """环境名称。
+        r"""环境名称。
         :rtype: str
         """
         return self._Name
@@ -576,7 +576,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Config(self):
-        """环境配置信息。
+        r"""环境配置信息。
         :rtype: :class:`tencentcloud.omics.v20221128.models.EnvironmentConfig`
         """
         return self._Config
@@ -587,7 +587,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Description(self):
-        """环境描述。
+        r"""环境描述。
         :rtype: str
         """
         return self._Description
@@ -598,7 +598,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否为默认环境。
+        r"""是否为默认环境。
         :rtype: bool
         """
         return self._IsDefault
@@ -626,7 +626,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
 
 class CreateEnvironmentResponse(AbstractModel):
-    """CreateEnvironment返回参数结构体
+    r"""CreateEnvironment返回参数结构体
 
     """
 
@@ -645,7 +645,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -656,7 +656,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def WorkflowUuid(self):
-        """工作流UUID。
+        r"""工作流UUID。
         :rtype: str
         """
         return self._WorkflowUuid
@@ -667,7 +667,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -684,7 +684,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
 
 class CreateVolumeRequest(AbstractModel):
-    """CreateVolume请求参数结构体
+    r"""CreateVolume请求参数结构体
 
     """
 
@@ -724,7 +724,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -735,7 +735,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称。
+        r"""名称。
         :rtype: str
         """
         return self._Name
@@ -746,7 +746,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Type(self):
-        """缓存卷类型，取值范围：
+        r"""缓存卷类型，取值范围：
 * SHARED：多点挂载共享存储
         :rtype: str
         """
@@ -758,7 +758,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Spec(self):
-        """缓存卷规格，取值范围：
+        r"""缓存卷规格，取值范围：
 
 - SD：通用标准型
 - HP：通用性能型
@@ -774,7 +774,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Description
@@ -785,7 +785,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Capacity(self):
-        """缓存卷大小（GB），Turbo系列需要指定。
+        r"""缓存卷大小（GB），Turbo系列需要指定。
         :rtype: int
         """
         return self._Capacity
@@ -796,7 +796,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def EnableAutoScaleUp(self):
-        """是否开启默认扩容，仅turbo类型文件存储支持
+        r"""是否开启默认扩容，仅turbo类型文件存储支持
         :rtype: bool
         """
         return self._EnableAutoScaleUp
@@ -807,7 +807,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        r"""turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
         :rtype: str
         """
         return self._MetaType
@@ -837,7 +837,7 @@ class CreateVolumeRequest(AbstractModel):
 
 
 class CreateVolumeResponse(AbstractModel):
-    """CreateVolume返回参数结构体
+    r"""CreateVolume返回参数结构体
 
     """
 
@@ -853,7 +853,7 @@ class CreateVolumeResponse(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -864,7 +864,7 @@ class CreateVolumeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -880,7 +880,7 @@ class CreateVolumeResponse(AbstractModel):
 
 
 class DatabaseOption(AbstractModel):
-    """数据库配置。
+    r"""数据库配置。
 
     """
 
@@ -893,7 +893,7 @@ class DatabaseOption(AbstractModel):
 
     @property
     def Zone(self):
-        """数据库可用区。
+        r"""数据库可用区。
         :rtype: str
         """
         return self._Zone
@@ -916,7 +916,7 @@ class DatabaseOption(AbstractModel):
 
 
 class DeleteEnvironmentRequest(AbstractModel):
-    """DeleteEnvironment请求参数结构体
+    r"""DeleteEnvironment请求参数结构体
 
     """
 
@@ -929,7 +929,7 @@ class DeleteEnvironmentRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -952,7 +952,7 @@ class DeleteEnvironmentRequest(AbstractModel):
 
 
 class DeleteEnvironmentResponse(AbstractModel):
-    """DeleteEnvironment返回参数结构体
+    r"""DeleteEnvironment返回参数结构体
 
     """
 
@@ -968,7 +968,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
     @property
     def WorkflowUuid(self):
-        """工作流UUID。
+        r"""工作流UUID。
         :rtype: str
         """
         return self._WorkflowUuid
@@ -979,7 +979,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -995,7 +995,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
 
 class DeleteVolumeDataRequest(AbstractModel):
-    """DeleteVolumeData请求参数结构体
+    r"""DeleteVolumeData请求参数结构体
 
     """
 
@@ -1011,7 +1011,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -1022,7 +1022,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
     @property
     def Path(self):
-        """需要删除的路径。
+        r"""需要删除的路径。
         :rtype: str
         """
         return self._Path
@@ -1046,7 +1046,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
 
 class DeleteVolumeDataResponse(AbstractModel):
-    """DeleteVolumeData返回参数结构体
+    r"""DeleteVolumeData返回参数结构体
 
     """
 
@@ -1059,7 +1059,7 @@ class DeleteVolumeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1074,7 +1074,7 @@ class DeleteVolumeDataResponse(AbstractModel):
 
 
 class DeleteVolumeRequest(AbstractModel):
-    """DeleteVolume请求参数结构体
+    r"""DeleteVolume请求参数结构体
 
     """
 
@@ -1087,7 +1087,7 @@ class DeleteVolumeRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -1110,7 +1110,7 @@ class DeleteVolumeRequest(AbstractModel):
 
 
 class DeleteVolumeResponse(AbstractModel):
-    """DeleteVolume返回参数结构体
+    r"""DeleteVolume返回参数结构体
 
     """
 
@@ -1123,7 +1123,7 @@ class DeleteVolumeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1138,7 +1138,7 @@ class DeleteVolumeResponse(AbstractModel):
 
 
 class DescribeEnvironmentsRequest(AbstractModel):
-    """DescribeEnvironments请求参数结构体
+    r"""DescribeEnvironments请求参数结构体
 
     """
 
@@ -1160,7 +1160,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1171,7 +1171,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1182,7 +1182,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - EnvironmentId：环境ID
 - Name：名称
 - Status：环境状态
@@ -1215,7 +1215,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
 
 class DescribeEnvironmentsResponse(AbstractModel):
-    """DescribeEnvironments返回参数结构体
+    r"""DescribeEnvironments返回参数结构体
 
     """
 
@@ -1234,7 +1234,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的数量。
+        r"""符合条件的数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1245,7 +1245,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def Environments(self):
-        """环境详情列表。
+        r"""环境详情列表。
         :rtype: list of Environment
         """
         return self._Environments
@@ -1256,7 +1256,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1278,7 +1278,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
 
 class DescribeRunGroupsRequest(AbstractModel):
-    """DescribeRunGroups请求参数结构体
+    r"""DescribeRunGroups请求参数结构体
 
     """
 
@@ -1306,7 +1306,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -1318,7 +1318,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1329,7 +1329,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1340,7 +1340,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - Name：任务批次名称
 - RunGroupId：任务批次ID
 - Status：任务批次状态
@@ -1376,7 +1376,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
 
 class DescribeRunGroupsResponse(AbstractModel):
-    """DescribeRunGroups返回参数结构体
+    r"""DescribeRunGroups返回参数结构体
 
     """
 
@@ -1395,7 +1395,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的数量。
+        r"""符合条件的数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1406,7 +1406,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def RunGroups(self):
-        """任务批次列表。
+        r"""任务批次列表。
         :rtype: list of RunGroup
         """
         return self._RunGroups
@@ -1417,7 +1417,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1439,7 +1439,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
 
 class DescribeRunsRequest(AbstractModel):
-    """DescribeRuns请求参数结构体
+    r"""DescribeRuns请求参数结构体
 
     """
 
@@ -1467,7 +1467,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -1479,7 +1479,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1490,7 +1490,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1501,7 +1501,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - RunGroupId：任务批次ID
 - Status：任务状态
 - RunUuid：任务UUID
@@ -1537,7 +1537,7 @@ class DescribeRunsRequest(AbstractModel):
 
 
 class DescribeRunsResponse(AbstractModel):
-    """DescribeRuns返回参数结构体
+    r"""DescribeRuns返回参数结构体
 
     """
 
@@ -1556,7 +1556,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的数量。
+        r"""符合条件的数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1567,7 +1567,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def Runs(self):
-        """任务列表。
+        r"""任务列表。
         :rtype: list of Run
         """
         return self._Runs
@@ -1578,7 +1578,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1600,7 +1600,7 @@ class DescribeRunsResponse(AbstractModel):
 
 
 class DescribeTablesRequest(AbstractModel):
-    """DescribeTables请求参数结构体
+    r"""DescribeTables请求参数结构体
 
     """
 
@@ -1624,7 +1624,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -1635,7 +1635,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1646,7 +1646,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1657,7 +1657,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - Name：表格名称
 - TableId：表格ID
         :rtype: list of Filter
@@ -1690,7 +1690,7 @@ class DescribeTablesRequest(AbstractModel):
 
 
 class DescribeTablesResponse(AbstractModel):
-    """DescribeTables返回参数结构体
+    r"""DescribeTables返回参数结构体
 
     """
 
@@ -1709,7 +1709,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数。
+        r"""结果总数。
         :rtype: int
         """
         return self._TotalCount
@@ -1720,7 +1720,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def Tables(self):
-        """表格列表。
+        r"""表格列表。
         :rtype: list of Table
         """
         return self._Tables
@@ -1731,7 +1731,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1753,7 +1753,7 @@ class DescribeTablesResponse(AbstractModel):
 
 
 class DescribeTablesRowsRequest(AbstractModel):
-    """DescribeTablesRows请求参数结构体
+    r"""DescribeTablesRows请求参数结构体
 
     """
 
@@ -1780,7 +1780,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -1791,7 +1791,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def TableId(self):
-        """表格ID。
+        r"""表格ID。
         :rtype: str
         """
         return self._TableId
@@ -1802,7 +1802,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1813,7 +1813,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1824,7 +1824,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - Tr：表格数据，支持模糊查询
 - TableRowUuid：表格行UUID
         :rtype: list of Filter
@@ -1858,7 +1858,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
 
 class DescribeTablesRowsResponse(AbstractModel):
-    """DescribeTablesRows返回参数结构体
+    r"""DescribeTablesRows返回参数结构体
 
     """
 
@@ -1877,7 +1877,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数。
+        r"""结果总数。
         :rtype: int
         """
         return self._TotalCount
@@ -1888,7 +1888,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """表格行列表。
+        r"""表格行列表。
         :rtype: list of TableRow
         """
         return self._Rows
@@ -1899,7 +1899,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1921,7 +1921,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
 
 class DescribeVolumesRequest(AbstractModel):
-    """DescribeVolumes请求参数结构体
+    r"""DescribeVolumes请求参数结构体
 
     """
 
@@ -1945,7 +1945,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -1956,7 +1956,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1967,7 +1967,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1978,7 +1978,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，支持过滤字段：
+        r"""过滤器，支持过滤字段：
 - Name：名称
 - IsDefault：是否为默认
         :rtype: list of Filter
@@ -2011,7 +2011,7 @@ class DescribeVolumesRequest(AbstractModel):
 
 
 class DescribeVolumesResponse(AbstractModel):
-    """DescribeVolumes返回参数结构体
+    r"""DescribeVolumes返回参数结构体
 
     """
 
@@ -2030,7 +2030,7 @@ class DescribeVolumesResponse(AbstractModel):
 
     @property
     def Volumes(self):
-        """缓存卷。
+        r"""缓存卷。
         :rtype: list of Volume
         """
         return self._Volumes
@@ -2041,7 +2041,7 @@ class DescribeVolumesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的数量。
+        r"""符合条件的数量。
         :rtype: int
         """
         return self._TotalCount
@@ -2052,7 +2052,7 @@ class DescribeVolumesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2074,7 +2074,7 @@ class DescribeVolumesResponse(AbstractModel):
 
 
 class Environment(AbstractModel):
-    """组学平台环境详情。
+    r"""组学平台环境详情。
 
     """
 
@@ -2131,7 +2131,7 @@ class Environment(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -2142,7 +2142,7 @@ class Environment(AbstractModel):
 
     @property
     def Name(self):
-        """环境名称。
+        r"""环境名称。
         :rtype: str
         """
         return self._Name
@@ -2153,7 +2153,7 @@ class Environment(AbstractModel):
 
     @property
     def Description(self):
-        """环境描述信息。
+        r"""环境描述信息。
         :rtype: str
         """
         return self._Description
@@ -2164,7 +2164,7 @@ class Environment(AbstractModel):
 
     @property
     def Region(self):
-        """环境地域。
+        r"""环境地域。
         :rtype: str
         """
         return self._Region
@@ -2175,7 +2175,7 @@ class Environment(AbstractModel):
 
     @property
     def Type(self):
-        """环境类型，取值范围：
+        r"""环境类型，取值范围：
 - KUBERNETES：Kubernetes容器集群
 - HPC：HPC高性能计算集群
         :rtype: str
@@ -2188,7 +2188,7 @@ class Environment(AbstractModel):
 
     @property
     def Status(self):
-        """环境状态，取值范围：
+        r"""环境状态，取值范围：
 - INITIALIZING：创建中
 - INITIALIZATION_ERROR：创建失败
 - RUNNING：运行中
@@ -2205,7 +2205,7 @@ class Environment(AbstractModel):
 
     @property
     def Available(self):
-        """环境是否可用。环境需要可用才能投递计算任务。
+        r"""环境是否可用。环境需要可用才能投递计算任务。
         :rtype: bool
         """
         return self._Available
@@ -2216,7 +2216,7 @@ class Environment(AbstractModel):
 
     @property
     def IsDefault(self):
-        """环境是否为默认环境。
+        r"""环境是否为默认环境。
         :rtype: bool
         """
         return self._IsDefault
@@ -2227,7 +2227,7 @@ class Environment(AbstractModel):
 
     @property
     def IsManaged(self):
-        """环境是否为托管环境。
+        r"""环境是否为托管环境。
         :rtype: bool
         """
         return self._IsManaged
@@ -2238,7 +2238,7 @@ class Environment(AbstractModel):
 
     @property
     def Message(self):
-        """环境信息。
+        r"""环境信息。
         :rtype: str
         """
         return self._Message
@@ -2249,7 +2249,7 @@ class Environment(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """云资源ID。
+        r"""云资源ID。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ResourceIds`
         """
         return self._ResourceIds
@@ -2260,7 +2260,7 @@ class Environment(AbstractModel):
 
     @property
     def LastWorkflowUuid(self):
-        """上个工作流UUID。
+        r"""上个工作流UUID。
         :rtype: str
         """
         return self._LastWorkflowUuid
@@ -2271,7 +2271,7 @@ class Environment(AbstractModel):
 
     @property
     def CreationTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreationTime
@@ -2308,7 +2308,7 @@ class Environment(AbstractModel):
 
 
 class EnvironmentConfig(AbstractModel):
-    """环境配置。
+    r"""环境配置。
 
     """
 
@@ -2336,7 +2336,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def VPCOption(self):
-        """私有网络配置。
+        r"""私有网络配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.VPCOption`
         """
         return self._VPCOption
@@ -2347,7 +2347,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def ClusterOption(self):
-        """计算集群配置。
+        r"""计算集群配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ClusterOption`
         """
         return self._ClusterOption
@@ -2358,7 +2358,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def DatabaseOption(self):
-        """数据库配置。
+        r"""数据库配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.DatabaseOption`
         """
         return self._DatabaseOption
@@ -2369,7 +2369,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def StorageOption(self):
-        """存储配置。
+        r"""存储配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.StorageOption`
         """
         return self._StorageOption
@@ -2380,7 +2380,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def CVMOption(self):
-        """云服务器配置。
+        r"""云服务器配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.CVMOption`
         """
         return self._CVMOption
@@ -2391,7 +2391,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def SecurityGroupOption(self):
-        """安全组配置。
+        r"""安全组配置。
         :rtype: :class:`tencentcloud.omics.v20221128.models.SecurityGroupOption`
         """
         return self._SecurityGroupOption
@@ -2431,7 +2431,7 @@ class EnvironmentConfig(AbstractModel):
 
 
 class ExecutionTime(AbstractModel):
-    """执行时间。
+    r"""执行时间。
 
     """
 
@@ -2450,7 +2450,7 @@ class ExecutionTime(AbstractModel):
 
     @property
     def SubmitTime(self):
-        """提交时间。
+        r"""提交时间。
         :rtype: str
         """
         return self._SubmitTime
@@ -2461,7 +2461,7 @@ class ExecutionTime(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -2472,7 +2472,7 @@ class ExecutionTime(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        r"""结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -2497,7 +2497,7 @@ class ExecutionTime(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。
+    r"""描述键值对过滤器，用于条件过滤查询。
 
     - 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 
@@ -2517,7 +2517,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤字段。
+        r"""过滤字段。
         :rtype: str
         """
         return self._Name
@@ -2528,7 +2528,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤字段值。
+        r"""过滤字段值。
         :rtype: list of str
         """
         return self._Values
@@ -2552,7 +2552,7 @@ class Filter(AbstractModel):
 
 
 class GetRunCallsRequest(AbstractModel):
-    """GetRunCalls请求参数结构体
+    r"""GetRunCalls请求参数结构体
 
     """
 
@@ -2572,7 +2572,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def RunUuid(self):
-        """任务Uuid。
+        r"""任务Uuid。
         :rtype: str
         """
         return self._RunUuid
@@ -2583,7 +2583,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def Path(self):
-        """作业路径
+        r"""作业路径
         :rtype: str
         """
         return self._Path
@@ -2594,7 +2594,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -2620,7 +2620,7 @@ class GetRunCallsRequest(AbstractModel):
 
 
 class GetRunCallsResponse(AbstractModel):
-    """GetRunCalls返回参数结构体
+    r"""GetRunCalls返回参数结构体
 
     """
 
@@ -2636,7 +2636,7 @@ class GetRunCallsResponse(AbstractModel):
 
     @property
     def Calls(self):
-        """作业详情。
+        r"""作业详情。
         :rtype: list of RunMetadata
         """
         return self._Calls
@@ -2647,7 +2647,7 @@ class GetRunCallsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2668,7 +2668,7 @@ class GetRunCallsResponse(AbstractModel):
 
 
 class GetRunMetadataFileRequest(AbstractModel):
-    """GetRunMetadataFile请求参数结构体
+    r"""GetRunMetadataFile请求参数结构体
 
     """
 
@@ -2709,7 +2709,7 @@ class GetRunMetadataFileRequest(AbstractModel):
 
     @property
     def RunUuid(self):
-        """任务Uuid。
+        r"""任务Uuid。
         :rtype: str
         """
         return self._RunUuid
@@ -2720,7 +2720,7 @@ class GetRunMetadataFileRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -2732,7 +2732,7 @@ class GetRunMetadataFileRequest(AbstractModel):
 
     @property
     def Key(self):
-        """需要获取的文件名。
+        r"""需要获取的文件名。
 
 默认支持以下文件：
 - nextflow.log
@@ -2752,7 +2752,7 @@ class GetRunMetadataFileRequest(AbstractModel):
 
     @property
     def Keys(self):
-        """需要批量获取的文件名。
+        r"""需要批量获取的文件名。
 
 默认支持以下文件：
 - nextflow.log
@@ -2787,7 +2787,7 @@ class GetRunMetadataFileRequest(AbstractModel):
 
 
 class GetRunMetadataFileResponse(AbstractModel):
-    """GetRunMetadataFile返回参数结构体
+    r"""GetRunMetadataFile返回参数结构体
 
     """
 
@@ -2806,7 +2806,7 @@ class GetRunMetadataFileResponse(AbstractModel):
 
     @property
     def CosSignedUrl(self):
-        """文件预签名链接，一分钟内有效。
+        r"""文件预签名链接，一分钟内有效。
         :rtype: str
         """
         return self._CosSignedUrl
@@ -2817,7 +2817,7 @@ class GetRunMetadataFileResponse(AbstractModel):
 
     @property
     def CosSignedUrls(self):
-        """批量文件预签名链接，一分钟内有效。
+        r"""批量文件预签名链接，一分钟内有效。
         :rtype: list of str
         """
         return self._CosSignedUrls
@@ -2828,7 +2828,7 @@ class GetRunMetadataFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2845,7 +2845,7 @@ class GetRunMetadataFileResponse(AbstractModel):
 
 
 class GetRunStatusRequest(AbstractModel):
-    """GetRunStatus请求参数结构体
+    r"""GetRunStatus请求参数结构体
 
     """
 
@@ -2862,7 +2862,7 @@ class GetRunStatusRequest(AbstractModel):
 
     @property
     def RunUuid(self):
-        """任务Uuid。
+        r"""任务Uuid。
         :rtype: str
         """
         return self._RunUuid
@@ -2873,7 +2873,7 @@ class GetRunStatusRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -2898,7 +2898,7 @@ class GetRunStatusRequest(AbstractModel):
 
 
 class GetRunStatusResponse(AbstractModel):
-    """GetRunStatus返回参数结构体
+    r"""GetRunStatus返回参数结构体
 
     """
 
@@ -2914,7 +2914,7 @@ class GetRunStatusResponse(AbstractModel):
 
     @property
     def Metadata(self):
-        """作业详情。
+        r"""作业详情。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunMetadata`
         """
         return self._Metadata
@@ -2925,7 +2925,7 @@ class GetRunStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2943,7 +2943,7 @@ class GetRunStatusResponse(AbstractModel):
 
 
 class GitInfo(AbstractModel):
-    """Git信息。
+    r"""Git信息。
 
     """
 
@@ -2968,7 +2968,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitHttpPath(self):
-        """Git地址。
+        r"""Git地址。
         :rtype: str
         """
         return self._GitHttpPath
@@ -2979,7 +2979,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitUserName(self):
-        """Git用户名。
+        r"""Git用户名。
         :rtype: str
         """
         return self._GitUserName
@@ -2990,7 +2990,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitTokenOrPassword(self):
-        """Git密码或者Token。
+        r"""Git密码或者Token。
         :rtype: str
         """
         return self._GitTokenOrPassword
@@ -3001,7 +3001,7 @@ class GitInfo(AbstractModel):
 
     @property
     def Branch(self):
-        """分支。
+        r"""分支。
         :rtype: str
         """
         return self._Branch
@@ -3012,7 +3012,7 @@ class GitInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """标签。
+        r"""标签。
         :rtype: str
         """
         return self._Tag
@@ -3039,7 +3039,7 @@ class GitInfo(AbstractModel):
 
 
 class ImportTableFileRequest(AbstractModel):
-    """ImportTableFile请求参数结构体
+    r"""ImportTableFile请求参数结构体
 
     """
 
@@ -3064,7 +3064,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """表格关联的项目ID。
+        r"""表格关联的项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -3075,7 +3075,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def Name(self):
-        """表格名称。最多支持200个字符。
+        r"""表格名称。最多支持200个字符。
         :rtype: str
         """
         return self._Name
@@ -3086,7 +3086,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def CosUri(self):
-        """表格文件Cos对象路径。
+        r"""表格文件Cos对象路径。
         :rtype: str
         """
         return self._CosUri
@@ -3097,7 +3097,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def DataType(self):
-        """表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
+        r"""表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
         :rtype: list of str
         """
         return self._DataType
@@ -3108,7 +3108,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def Description(self):
-        """表格描述。最多支持500个字符。
+        r"""表格描述。最多支持500个字符。
         :rtype: str
         """
         return self._Description
@@ -3135,7 +3135,7 @@ class ImportTableFileRequest(AbstractModel):
 
 
 class ImportTableFileResponse(AbstractModel):
-    """ImportTableFile返回参数结构体
+    r"""ImportTableFile返回参数结构体
 
     """
 
@@ -3151,7 +3151,7 @@ class ImportTableFileResponse(AbstractModel):
 
     @property
     def TableId(self):
-        """表格ID。
+        r"""表格ID。
         :rtype: str
         """
         return self._TableId
@@ -3162,7 +3162,7 @@ class ImportTableFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3178,7 +3178,7 @@ class ImportTableFileResponse(AbstractModel):
 
 
 class LimitRange(AbstractModel):
-    """资源限制范围。
+    r"""资源限制范围。
 
     """
 
@@ -3194,7 +3194,7 @@ class LimitRange(AbstractModel):
 
     @property
     def MaxCPU(self):
-        """最大CPU设置
+        r"""最大CPU设置
         :rtype: str
         """
         return self._MaxCPU
@@ -3205,7 +3205,7 @@ class LimitRange(AbstractModel):
 
     @property
     def MaxMemory(self):
-        """最大内存设置（单位：Mi，Gi，Ti，M，G，T）
+        r"""最大内存设置（单位：Mi，Gi，Ti，M，G，T）
         :rtype: str
         """
         return self._MaxMemory
@@ -3229,7 +3229,7 @@ class LimitRange(AbstractModel):
 
 
 class ModifyVolumeRequest(AbstractModel):
-    """ModifyVolume请求参数结构体
+    r"""ModifyVolume请求参数结构体
 
     """
 
@@ -3248,7 +3248,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -3259,7 +3259,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称。
+        r"""名称。
         :rtype: str
         """
         return self._Name
@@ -3270,7 +3270,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Description
@@ -3295,7 +3295,7 @@ class ModifyVolumeRequest(AbstractModel):
 
 
 class ModifyVolumeResponse(AbstractModel):
-    """ModifyVolume返回参数结构体
+    r"""ModifyVolume返回参数结构体
 
     """
 
@@ -3308,7 +3308,7 @@ class ModifyVolumeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3323,7 +3323,7 @@ class ModifyVolumeResponse(AbstractModel):
 
 
 class NFOption(AbstractModel):
-    """Nextflow选项。
+    r"""Nextflow选项。
 
     """
 
@@ -3353,7 +3353,7 @@ class NFOption(AbstractModel):
 
     @property
     def Config(self):
-        """Config。
+        r"""Config。
         :rtype: str
         """
         return self._Config
@@ -3364,7 +3364,7 @@ class NFOption(AbstractModel):
 
     @property
     def Profile(self):
-        """Profile。
+        r"""Profile。
         :rtype: str
         """
         return self._Profile
@@ -3375,7 +3375,7 @@ class NFOption(AbstractModel):
 
     @property
     def Report(self):
-        """Report。
+        r"""Report。
         :rtype: bool
         """
         return self._Report
@@ -3386,7 +3386,7 @@ class NFOption(AbstractModel):
 
     @property
     def Resume(self):
-        """Resume。
+        r"""Resume。
         :rtype: bool
         """
         return self._Resume
@@ -3397,7 +3397,7 @@ class NFOption(AbstractModel):
 
     @property
     def NFVersion(self):
-        """Nextflow引擎版本，取值范围：
+        r"""Nextflow引擎版本，取值范围：
 - 22.10.7
 - 23.10.1
         :rtype: str
@@ -3410,7 +3410,7 @@ class NFOption(AbstractModel):
 
     @property
     def LaunchDir(self):
-        """启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
+        r"""启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
         :rtype: str
         """
         return self._LaunchDir
@@ -3438,7 +3438,7 @@ class NFOption(AbstractModel):
 
 
 class NotificationType(AbstractModel):
-    """通知类型
+    r"""通知类型
 
     """
 
@@ -3457,7 +3457,7 @@ class NotificationType(AbstractModel):
 
     @property
     def StationMessage(self):
-        """腾讯健康组学平台站点信息。
+        r"""腾讯健康组学平台站点信息。
         :rtype: bool
         """
         return self._StationMessage
@@ -3468,7 +3468,7 @@ class NotificationType(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱列表。
+        r"""邮箱列表。
         :rtype: list of str
         """
         return self._Email
@@ -3479,7 +3479,7 @@ class NotificationType(AbstractModel):
 
     @property
     def CurrentUserEmail(self):
-        """当前用户邮箱。
+        r"""当前用户邮箱。
         :rtype: bool
         """
         return self._CurrentUserEmail
@@ -3504,7 +3504,7 @@ class NotificationType(AbstractModel):
 
 
 class ResourceIds(AbstractModel):
-    """云资源ID。
+    r"""云资源ID。
 
     """
 
@@ -3548,7 +3548,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def VPCId(self):
-        """私有网络ID。
+        r"""私有网络ID。
         :rtype: str
         """
         return self._VPCId
@@ -3559,7 +3559,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID。
+        r"""子网ID。
         :rtype: str
         """
         return self._SubnetId
@@ -3570,7 +3570,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组ID。
+        r"""安全组ID。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -3581,7 +3581,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def TDSQLCId(self):
-        """TDSQL-C Mysql版数据库ID。
+        r"""TDSQL-C Mysql版数据库ID。
         :rtype: str
         """
         return self._TDSQLCId
@@ -3592,7 +3592,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def CFSId(self):
-        """文件存储ID。
+        r"""文件存储ID。
         :rtype: str
         """
         return self._CFSId
@@ -3603,7 +3603,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def CFSStorageType(self):
-        """文件存储类型：取值范围：
+        r"""文件存储类型：取值范围：
 - SD：通用标准型
 - HP：通用性能型
 - TB：turbo标准型
@@ -3618,7 +3618,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def CVMId(self):
-        """云服务器ID。
+        r"""云服务器ID。
         :rtype: str
         """
         return self._CVMId
@@ -3629,7 +3629,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def EKSId(self):
-        """弹性容器集群ID。
+        r"""弹性容器集群ID。
         :rtype: str
         """
         return self._EKSId
@@ -3640,7 +3640,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def TKEId(self):
-        """TKE容器集群ID。
+        r"""TKE容器集群ID。
         :rtype: str
         """
         return self._TKEId
@@ -3651,7 +3651,7 @@ class ResourceIds(AbstractModel):
 
     @property
     def TKESystemNodePoolId(self):
-        """TKE系统节点池ID。
+        r"""TKE系统节点池ID。
         :rtype: str
         """
         return self._TKESystemNodePoolId
@@ -3683,7 +3683,7 @@ class ResourceIds(AbstractModel):
 
 
 class ResourceQuota(AbstractModel):
-    """资源配额。
+    r"""资源配额。
 
     """
 
@@ -3702,7 +3702,7 @@ class ResourceQuota(AbstractModel):
 
     @property
     def CPULimit(self):
-        """CPU Limit设置。
+        r"""CPU Limit设置。
         :rtype: str
         """
         return self._CPULimit
@@ -3713,7 +3713,7 @@ class ResourceQuota(AbstractModel):
 
     @property
     def MemoryLimit(self):
-        """内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
+        r"""内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
         :rtype: str
         """
         return self._MemoryLimit
@@ -3724,7 +3724,7 @@ class ResourceQuota(AbstractModel):
 
     @property
     def Pods(self):
-        """Pods数量设置
+        r"""Pods数量设置
         :rtype: str
         """
         return self._Pods
@@ -3749,7 +3749,7 @@ class ResourceQuota(AbstractModel):
 
 
 class RetryRunsRequest(AbstractModel):
-    """RetryRuns请求参数结构体
+    r"""RetryRuns请求参数结构体
 
     """
 
@@ -3774,7 +3774,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。（不填使用指定地域下的默认项目）
+        r"""项目ID。（不填使用指定地域下的默认项目）
         :rtype: str
         """
         return self._ProjectId
@@ -3785,7 +3785,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """需要重试的任务批次ID。
+        r"""需要重试的任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -3796,7 +3796,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def RunUuids(self):
-        """需要重试的任务UUID。
+        r"""需要重试的任务UUID。
         :rtype: list of str
         """
         return self._RunUuids
@@ -3807,7 +3807,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def WDLOption(self):
-        """WDL运行选项，不填使用被重试的任务批次运行选项。
+        r"""WDL运行选项，不填使用被重试的任务批次运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._WDLOption
@@ -3818,7 +3818,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow运行选项，不填使用被重试的任务批次运行选项。
+        r"""Nextflow运行选项，不填使用被重试的任务批次运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -3849,7 +3849,7 @@ class RetryRunsRequest(AbstractModel):
 
 
 class RetryRunsResponse(AbstractModel):
-    """RetryRuns返回参数结构体
+    r"""RetryRuns返回参数结构体
 
     """
 
@@ -3865,7 +3865,7 @@ class RetryRunsResponse(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """新的任务批次ID。
+        r"""新的任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -3876,7 +3876,7 @@ class RetryRunsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3892,7 +3892,7 @@ class RetryRunsResponse(AbstractModel):
 
 
 class Run(AbstractModel):
-    """任务。
+    r"""任务。
 
     """
 
@@ -3950,7 +3950,7 @@ class Run(AbstractModel):
 
     @property
     def RunUuid(self):
-        """任务UUID。
+        r"""任务UUID。
         :rtype: str
         """
         return self._RunUuid
@@ -3961,7 +3961,7 @@ class Run(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -3972,7 +3972,7 @@ class Run(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -3983,7 +3983,7 @@ class Run(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """任务批次ID。
+        r"""任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -3994,7 +3994,7 @@ class Run(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -4005,7 +4005,7 @@ class Run(AbstractModel):
 
     @property
     def UserDefinedId(self):
-        """用户定义ID，单例运行为空。
+        r"""用户定义ID，单例运行为空。
         :rtype: str
         """
         return self._UserDefinedId
@@ -4016,7 +4016,7 @@ class Run(AbstractModel):
 
     @property
     def TableId(self):
-        """表格ID，单例运行为空。
+        r"""表格ID，单例运行为空。
         :rtype: str
         """
         return self._TableId
@@ -4027,7 +4027,7 @@ class Run(AbstractModel):
 
     @property
     def TableRowUuid(self):
-        """表格行UUID，单例运行为空。
+        r"""表格行UUID，单例运行为空。
         :rtype: str
         """
         return self._TableRowUuid
@@ -4038,7 +4038,7 @@ class Run(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。
+        r"""任务状态。
         :rtype: str
         """
         return self._Status
@@ -4049,7 +4049,7 @@ class Run(AbstractModel):
 
     @property
     def Input(self):
-        """任务输入。
+        r"""任务输入。
         :rtype: str
         """
         return self._Input
@@ -4062,7 +4062,7 @@ class Run(AbstractModel):
     def Option(self):
         warnings.warn("parameter `Option` is deprecated", DeprecationWarning) 
 
-        """运行选项。
+        r"""运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -4075,7 +4075,7 @@ class Run(AbstractModel):
 
     @property
     def ExecutionTime(self):
-        """执行时间。
+        r"""执行时间。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         """
         return self._ExecutionTime
@@ -4086,7 +4086,7 @@ class Run(AbstractModel):
 
     @property
     def Cache(self):
-        """缓存信息。
+        r"""缓存信息。
         :rtype: :class:`tencentcloud.omics.v20221128.models.CacheInfo`
         """
         return self._Cache
@@ -4097,7 +4097,7 @@ class Run(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息。
+        r"""错误信息。
         :rtype: str
         """
         return self._ErrorMessage
@@ -4108,7 +4108,7 @@ class Run(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -4119,7 +4119,7 @@ class Run(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间。
+        r"""更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -4163,7 +4163,7 @@ class Run(AbstractModel):
 
 
 class RunApplicationRequest(AbstractModel):
-    """RunApplication请求参数结构体
+    r"""RunApplication请求参数结构体
 
     """
 
@@ -4235,7 +4235,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -4246,7 +4246,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务批次名称。
+        r"""任务批次名称。
         :rtype: str
         """
         return self._Name
@@ -4257,7 +4257,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """投递环境ID。
+        r"""投递环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -4268,7 +4268,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。（不填使用指定地域下的默认项目）
+        r"""项目ID。（不填使用指定地域下的默认项目）
         :rtype: str
         """
         return self._ProjectId
@@ -4279,7 +4279,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Description(self):
-        """任务批次描述。
+        r"""任务批次描述。
         :rtype: str
         """
         return self._Description
@@ -4290,7 +4290,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def InputCosUri(self):
-        """任务输入COS地址。（InputBase64和InputCosUri必选其一）
+        r"""任务输入COS地址。（InputBase64和InputCosUri必选其一）
         :rtype: str
         """
         return self._InputCosUri
@@ -4301,7 +4301,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def InputBase64(self):
-        """任务输入JSON。需要进行base64编码。（InputBase64和InputCosUri必选其一）
+        r"""任务输入JSON。需要进行base64编码。（InputBase64和InputCosUri必选其一）
         :rtype: str
         """
         return self._InputBase64
@@ -4312,7 +4312,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TableId(self):
-        """批量投递表格ID，不填表示单例投递。
+        r"""批量投递表格ID，不填表示单例投递。
         :rtype: str
         """
         return self._TableId
@@ -4323,7 +4323,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TableRowUuids(self):
-        """批量投递表格行UUID。不填表示表格全部行。
+        r"""批量投递表格行UUID。不填表示表格全部行。
         :rtype: list of str
         """
         return self._TableRowUuids
@@ -4334,7 +4334,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def CacheClearDelay(self):
-        """任务缓存清理时间（小时）。不填或0表示不清理。
+        r"""任务缓存清理时间（小时）。不填或0表示不清理。
         :rtype: int
         """
         return self._CacheClearDelay
@@ -4345,7 +4345,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
-        """应用版本ID。不填表示使用当前最新版本。
+        r"""应用版本ID。不填表示使用当前最新版本。
         :rtype: str
         """
         return self._ApplicationVersionId
@@ -4356,7 +4356,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Option(self):
-        """WDL运行选项。
+        r"""WDL运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -4367,7 +4367,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow运行选项。
+        r"""Nextflow运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -4378,7 +4378,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def WorkDir(self):
-        """工作目录，当前仅支持Nextflow。可填写指定缓存卷内的绝对路径或者COS路径，不填使用默认缓存卷内的默认路径。如果使用COS路径，NFOption中LaunchDir需填写指定缓存卷内的绝对路径作为启动路径。
+        r"""工作目录，当前仅支持Nextflow。可填写指定缓存卷内的绝对路径或者COS路径，不填使用默认缓存卷内的默认路径。如果使用COS路径，NFOption中LaunchDir需填写指定缓存卷内的绝对路径作为启动路径。
         :rtype: str
         """
         return self._WorkDir
@@ -4389,7 +4389,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        """访问模式，不填默认私有。取值范围
+        r"""访问模式，不填默认私有。取值范围
 - PRIVATE：私有应用
 - PUBLIC：公共应用
         :rtype: str
@@ -4402,7 +4402,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def VolumeIds(self):
-        """缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+        r"""缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
         :rtype: list of str
         """
         return self._VolumeIds
@@ -4413,7 +4413,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ResultNotification(self):
-        """是否开启结果通知。
+        r"""是否开启结果通知。
         :rtype: bool
         """
         return self._ResultNotification
@@ -4424,7 +4424,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TimeoutNotification(self):
-        """是否开启超时通知。
+        r"""是否开启超时通知。
         :rtype: bool
         """
         return self._TimeoutNotification
@@ -4435,7 +4435,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TimeoutNotificationMinutes(self):
-        """任务超时通知时间（单位：分钟），支持5到2880分钟。
+        r"""任务超时通知时间（单位：分钟），支持5到2880分钟。
         :rtype: int
         """
         return self._TimeoutNotificationMinutes
@@ -4446,7 +4446,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def EmailForNotification(self):
-        """接受通知邮件地址列表。
+        r"""接受通知邮件地址列表。
         :rtype: list of str
         """
         return self._EmailForNotification
@@ -4492,7 +4492,7 @@ class RunApplicationRequest(AbstractModel):
 
 
 class RunApplicationResponse(AbstractModel):
-    """RunApplication返回参数结构体
+    r"""RunApplication返回参数结构体
 
     """
 
@@ -4508,7 +4508,7 @@ class RunApplicationResponse(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """任务批次ID。
+        r"""任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -4519,7 +4519,7 @@ class RunApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4535,7 +4535,7 @@ class RunApplicationResponse(AbstractModel):
 
 
 class RunGroup(AbstractModel):
-    """任务。
+    r"""任务。
 
     """
 
@@ -4651,7 +4651,7 @@ class RunGroup(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """任务批次ID。
+        r"""任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -4662,7 +4662,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -4673,7 +4673,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称。
+        r"""项目名称。
         :rtype: str
         """
         return self._ProjectName
@@ -4684,7 +4684,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -4695,7 +4695,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._ApplicationName
@@ -4706,7 +4706,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型。
+        r"""应用类型。
         :rtype: str
         """
         return self._ApplicationType
@@ -4717,7 +4717,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ApplicationVersion(self):
-        """应用版本。
+        r"""应用版本。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         """
         return self._ApplicationVersion
@@ -4728,7 +4728,7 @@ class RunGroup(AbstractModel):
 
     @property
     def AccessMode(self):
-        """应用访问类型：
+        r"""应用访问类型：
 - PRIVATE 私有应用
 - PUBLIC 公共应用
         :rtype: str
@@ -4741,7 +4741,7 @@ class RunGroup(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -4752,7 +4752,7 @@ class RunGroup(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """环境名称。
+        r"""环境名称。
         :rtype: str
         """
         return self._EnvironmentName
@@ -4763,7 +4763,7 @@ class RunGroup(AbstractModel):
 
     @property
     def TableId(self):
-        """表格ID，单例运行为空。
+        r"""表格ID，单例运行为空。
         :rtype: str
         """
         return self._TableId
@@ -4774,7 +4774,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称。
+        r"""任务名称。
         :rtype: str
         """
         return self._Name
@@ -4785,7 +4785,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述。
+        r"""任务描述。
         :rtype: str
         """
         return self._Description
@@ -4796,7 +4796,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。
+        r"""任务状态。
         :rtype: str
         """
         return self._Status
@@ -4807,7 +4807,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Type(self):
-        """任务批次类型 ：
+        r"""任务批次类型 ：
 - WDL
 - NEXTFLOW
         :rtype: str
@@ -4820,7 +4820,7 @@ class RunGroup(AbstractModel):
 
     @property
     def WorkDir(self):
-        """工作目录。
+        r"""工作目录。
         :rtype: str
         """
         return self._WorkDir
@@ -4831,7 +4831,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Input(self):
-        """任务输入。
+        r"""任务输入。
         :rtype: str
         """
         return self._Input
@@ -4842,7 +4842,7 @@ class RunGroup(AbstractModel):
 
     @property
     def InputType(self):
-        """任务输入类型：
+        r"""任务输入类型：
 - JSON: 导入JSON
 - MANUAL: 手动输入
 - COS: COS文件
@@ -4856,7 +4856,7 @@ class RunGroup(AbstractModel):
 
     @property
     def InputCosUri(self):
-        """输入COS地址。
+        r"""输入COS地址。
         :rtype: str
         """
         return self._InputCosUri
@@ -4867,7 +4867,7 @@ class RunGroup(AbstractModel):
 
     @property
     def InputTemplateId(self):
-        """输入模板ID。
+        r"""输入模板ID。
         :rtype: str
         """
         return self._InputTemplateId
@@ -4878,7 +4878,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Option(self):
-        """WDL运行选项。
+        r"""WDL运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -4889,7 +4889,7 @@ class RunGroup(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow运行选项。
+        r"""Nextflow运行选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -4900,7 +4900,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Volumes(self):
-        """使用的缓存卷。
+        r"""使用的缓存卷。
         :rtype: list of VolumeInfo
         """
         return self._Volumes
@@ -4911,7 +4911,7 @@ class RunGroup(AbstractModel):
 
     @property
     def TotalRun(self):
-        """任务总数量。
+        r"""任务总数量。
         :rtype: int
         """
         return self._TotalRun
@@ -4922,7 +4922,7 @@ class RunGroup(AbstractModel):
 
     @property
     def RunStatusCounts(self):
-        """各状态任务的数量。
+        r"""各状态任务的数量。
         :rtype: list of RunStatusCount
         """
         return self._RunStatusCounts
@@ -4933,7 +4933,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ExecutionTime(self):
-        """执行时间。
+        r"""执行时间。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         """
         return self._ExecutionTime
@@ -4944,7 +4944,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息。
+        r"""错误信息。
         :rtype: str
         """
         return self._ErrorMessage
@@ -4955,7 +4955,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Notification(self):
-        """任务批次通知。
+        r"""任务批次通知。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupNotification`
         """
         return self._Notification
@@ -4966,7 +4966,7 @@ class RunGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -4977,7 +4977,7 @@ class RunGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间。
+        r"""更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -4988,7 +4988,7 @@ class RunGroup(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者。
+        r"""创建者。
         :rtype: str
         """
         return self._Creator
@@ -4999,7 +4999,7 @@ class RunGroup(AbstractModel):
 
     @property
     def CreatorId(self):
-        """创建者ID。
+        r"""创建者ID。
         :rtype: str
         """
         return self._CreatorId
@@ -5010,7 +5010,7 @@ class RunGroup(AbstractModel):
 
     @property
     def ResultNotify(self):
-        """运行结果通知方式。
+        r"""运行结果通知方式。
         :rtype: str
         """
         return self._ResultNotify
@@ -5085,7 +5085,7 @@ class RunGroup(AbstractModel):
 
 
 class RunGroupNotification(AbstractModel):
-    """任务批次通知。
+    r"""任务批次通知。
 
     """
 
@@ -5101,7 +5101,7 @@ class RunGroupNotification(AbstractModel):
 
     @property
     def ResultNotification(self):
-        """结果通知。
+        r"""结果通知。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupResultNotification`
         """
         return self._ResultNotification
@@ -5112,7 +5112,7 @@ class RunGroupNotification(AbstractModel):
 
     @property
     def TimeoutNotification(self):
-        """超时通知。
+        r"""超时通知。
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupTimeoutNotification`
         """
         return self._TimeoutNotification
@@ -5140,7 +5140,7 @@ class RunGroupNotification(AbstractModel):
 
 
 class RunGroupResultNotification(AbstractModel):
-    """任务批次结果通知
+    r"""任务批次结果通知
 
     """
 
@@ -5153,7 +5153,7 @@ class RunGroupResultNotification(AbstractModel):
 
     @property
     def NotificationType(self):
-        """通知类型。
+        r"""通知类型。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NotificationType`
         """
         return self._NotificationType
@@ -5178,7 +5178,7 @@ class RunGroupResultNotification(AbstractModel):
 
 
 class RunGroupTimeoutNotification(AbstractModel):
-    """任务批次超时通知。
+    r"""任务批次超时通知。
 
     """
 
@@ -5194,7 +5194,7 @@ class RunGroupTimeoutNotification(AbstractModel):
 
     @property
     def TimeoutMinutes(self):
-        """任务批次超时时间，单位分钟。
+        r"""任务批次超时时间，单位分钟。
         :rtype: int
         """
         return self._TimeoutMinutes
@@ -5205,7 +5205,7 @@ class RunGroupTimeoutNotification(AbstractModel):
 
     @property
     def NotificationType(self):
-        """通知类型。
+        r"""通知类型。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NotificationType`
         """
         return self._NotificationType
@@ -5231,7 +5231,7 @@ class RunGroupTimeoutNotification(AbstractModel):
 
 
 class RunMetadata(AbstractModel):
-    """任务作业详情。
+    r"""任务作业详情。
 
     """
 
@@ -5307,7 +5307,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def RunType(self):
-        """任务类型。
+        r"""任务类型。
         :rtype: str
         """
         return self._RunType
@@ -5318,7 +5318,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def RunId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._RunId
@@ -5329,7 +5329,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def ParentId(self):
-        """父层ID。
+        r"""父层ID。
         :rtype: str
         """
         return self._ParentId
@@ -5340,7 +5340,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID。
+        r"""作业ID。
         :rtype: str
         """
         return self._JobId
@@ -5351,7 +5351,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def CallName(self):
-        """作业名称。
+        r"""作业名称。
         :rtype: str
         """
         return self._CallName
@@ -5362,7 +5362,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def ScatterIndex(self):
-        """Scatter索引。
+        r"""Scatter索引。
         :rtype: str
         """
         return self._ScatterIndex
@@ -5373,7 +5373,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Input(self):
-        """输入。
+        r"""输入。
         :rtype: str
         """
         return self._Input
@@ -5384,7 +5384,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Output(self):
-        """输出。
+        r"""输出。
         :rtype: str
         """
         return self._Output
@@ -5395,7 +5395,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -5406,7 +5406,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息。
+        r"""错误信息。
         :rtype: str
         """
         return self._ErrorMessage
@@ -5417,7 +5417,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -5428,7 +5428,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def SubmitTime(self):
-        """提交时间。
+        r"""提交时间。
         :rtype: str
         """
         return self._SubmitTime
@@ -5439,7 +5439,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        r"""结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -5450,7 +5450,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Command(self):
-        """命令行。
+        r"""命令行。
         :rtype: str
         """
         return self._Command
@@ -5461,7 +5461,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Runtime(self):
-        """运行时。
+        r"""运行时。
         :rtype: str
         """
         return self._Runtime
@@ -5472,7 +5472,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Preprocess(self):
-        """预处理。
+        r"""预处理。
         :rtype: bool
         """
         return self._Preprocess
@@ -5483,7 +5483,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def PostProcess(self):
-        """后处理。
+        r"""后处理。
         :rtype: bool
         """
         return self._PostProcess
@@ -5494,7 +5494,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def CallCached(self):
-        """Cache命中
+        r"""Cache命中
         :rtype: bool
         """
         return self._CallCached
@@ -5505,7 +5505,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def WorkDir(self):
-        """工作目录。
+        r"""工作目录。
         :rtype: str
         """
         return self._WorkDir
@@ -5516,7 +5516,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Stdout(self):
-        """标准输出。
+        r"""标准输出。
         :rtype: str
         """
         return self._Stdout
@@ -5527,7 +5527,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Stderr(self):
-        """错误输出。
+        r"""错误输出。
         :rtype: str
         """
         return self._Stderr
@@ -5538,7 +5538,7 @@ class RunMetadata(AbstractModel):
 
     @property
     def Meta(self):
-        """其他信息。
+        r"""其他信息。
         :rtype: str
         """
         return self._Meta
@@ -5582,7 +5582,7 @@ class RunMetadata(AbstractModel):
 
 
 class RunOption(AbstractModel):
-    """运行应用选项。
+    r"""运行应用选项。
 
     """
 
@@ -5612,7 +5612,7 @@ class RunOption(AbstractModel):
 
     @property
     def FailureMode(self):
-        """运行失败模式，取值范围：
+        r"""运行失败模式，取值范围：
 - ContinueWhilePossible
 - NoNewCalls
         :rtype: str
@@ -5625,7 +5625,7 @@ class RunOption(AbstractModel):
 
     @property
     def UseCallCache(self):
-        """是否使用Call-Caching功能。
+        r"""是否使用Call-Caching功能。
         :rtype: bool
         """
         return self._UseCallCache
@@ -5636,7 +5636,7 @@ class RunOption(AbstractModel):
 
     @property
     def UseErrorOnHold(self):
-        """是否使用错误挂起功能。
+        r"""是否使用错误挂起功能。
         :rtype: bool
         """
         return self._UseErrorOnHold
@@ -5647,7 +5647,7 @@ class RunOption(AbstractModel):
 
     @property
     def FinalWorkflowOutputsDir(self):
-        """输出归档COS路径。
+        r"""输出归档COS路径。
         :rtype: str
         """
         return self._FinalWorkflowOutputsDir
@@ -5658,7 +5658,7 @@ class RunOption(AbstractModel):
 
     @property
     def UseRelativeOutputPaths(self):
-        """是否使用相对目录归档输出。
+        r"""是否使用相对目录归档输出。
         :rtype: bool
         """
         return self._UseRelativeOutputPaths
@@ -5669,7 +5669,7 @@ class RunOption(AbstractModel):
 
     @property
     def AddRunInfoToOutputDir(self):
-        """是否添加运行信息到输出目录中
+        r"""是否添加运行信息到输出目录中
         :rtype: bool
         """
         return self._AddRunInfoToOutputDir
@@ -5697,7 +5697,7 @@ class RunOption(AbstractModel):
 
 
 class RunStatusCount(AbstractModel):
-    """任务运行状态。
+    r"""任务运行状态。
 
     """
 
@@ -5713,7 +5713,7 @@ class RunStatusCount(AbstractModel):
 
     @property
     def Status(self):
-        """状态。
+        r"""状态。
         :rtype: str
         """
         return self._Status
@@ -5724,7 +5724,7 @@ class RunStatusCount(AbstractModel):
 
     @property
     def Count(self):
-        """数量。
+        r"""数量。
         :rtype: int
         """
         return self._Count
@@ -5748,7 +5748,7 @@ class RunStatusCount(AbstractModel):
 
 
 class RunWorkflowRequest(AbstractModel):
-    """RunWorkflow请求参数结构体
+    r"""RunWorkflow请求参数结构体
 
     """
 
@@ -5803,7 +5803,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务批次名称。
+        r"""任务批次名称。
         :rtype: str
         """
         return self._Name
@@ -5814,7 +5814,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """投递环境ID。
+        r"""投递环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -5825,7 +5825,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def GitSource(self):
-        """工作流Git仓库信息。
+        r"""工作流Git仓库信息。
         :rtype: :class:`tencentcloud.omics.v20221128.models.GitInfo`
         """
         return self._GitSource
@@ -5836,7 +5836,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def Type(self):
-        """工作流类型。
+        r"""工作流类型。
 
 支持类型：
 - NEXTFLOW
@@ -5850,7 +5850,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow选项。
+        r"""Nextflow选项。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -5861,7 +5861,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -5873,7 +5873,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def Description(self):
-        """任务批次描述。
+        r"""任务批次描述。
         :rtype: str
         """
         return self._Description
@@ -5884,7 +5884,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def InputBase64(self):
-        """任务输入JSON。需要进行base64编码。
+        r"""任务输入JSON。需要进行base64编码。
 （InputBase64和InputCosUri必选其一）
         :rtype: str
         """
@@ -5896,7 +5896,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def InputCosUri(self):
-        """任务输入COS地址。
+        r"""任务输入COS地址。
 （InputBase64和InputCosUri必选其一）
         :rtype: str
         """
@@ -5908,7 +5908,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def CacheClearDelay(self):
-        """任务缓存清理时间（小时）。不填或0表示不清理。
+        r"""任务缓存清理时间（小时）。不填或0表示不清理。
         :rtype: int
         """
         return self._CacheClearDelay
@@ -5919,7 +5919,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def WorkDir(self):
-        """工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
+        r"""工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
         :rtype: str
         """
         return self._WorkDir
@@ -5930,7 +5930,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def VolumeIds(self):
-        """缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+        r"""缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
         :rtype: list of str
         """
         return self._VolumeIds
@@ -5941,7 +5941,7 @@ class RunWorkflowRequest(AbstractModel):
 
     @property
     def Entrypoint(self):
-        """工作流入口文件，不填使用默认入口文件。
+        r"""工作流入口文件，不填使用默认入口文件。
         :rtype: str
         """
         return self._Entrypoint
@@ -5980,7 +5980,7 @@ class RunWorkflowRequest(AbstractModel):
 
 
 class RunWorkflowResponse(AbstractModel):
-    """RunWorkflow返回参数结构体
+    r"""RunWorkflow返回参数结构体
 
     """
 
@@ -5996,7 +5996,7 @@ class RunWorkflowResponse(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """任务批次ID。
+        r"""任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -6007,7 +6007,7 @@ class RunWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6023,7 +6023,7 @@ class RunWorkflowResponse(AbstractModel):
 
 
 class SecurityGroupOption(AbstractModel):
-    """安全组配置。
+    r"""安全组配置。
 
     """
 
@@ -6036,7 +6036,7 @@ class SecurityGroupOption(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组ID。
+        r"""安全组ID。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -6059,7 +6059,7 @@ class SecurityGroupOption(AbstractModel):
 
 
 class StorageOption(AbstractModel):
-    """文件存储配置。
+    r"""文件存储配置。
 
     """
 
@@ -6090,7 +6090,7 @@ class StorageOption(AbstractModel):
 
     @property
     def StorageType(self):
-        """文件存储类型，取值范围：
+        r"""文件存储类型，取值范围：
 - SD：通用标准型
 - HP：通用性能型
 - TB：turbo标准型
@@ -6105,7 +6105,7 @@ class StorageOption(AbstractModel):
 
     @property
     def Zone(self):
-        """文件存储可用区。
+        r"""文件存储可用区。
         :rtype: str
         """
         return self._Zone
@@ -6116,7 +6116,7 @@ class StorageOption(AbstractModel):
 
     @property
     def Capacity(self):
-        """文件系统容量，turbo系列必填，单位为GiB。 
+        r"""文件系统容量，turbo系列必填，单位为GiB。 
 - turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
 - turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
         :rtype: int
@@ -6129,7 +6129,7 @@ class StorageOption(AbstractModel):
 
     @property
     def EnableAutoScaleUp(self):
-        """是否开启默认扩容，仅turbo类型文件存储支持
+        r"""是否开启默认扩容，仅turbo类型文件存储支持
         :rtype: bool
         """
         return self._EnableAutoScaleUp
@@ -6140,7 +6140,7 @@ class StorageOption(AbstractModel):
 
     @property
     def MetaType(self):
-        """turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        r"""turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
         :rtype: str
         """
         return self._MetaType
@@ -6167,7 +6167,7 @@ class StorageOption(AbstractModel):
 
 
 class Table(AbstractModel):
-    """表格。
+    r"""表格。
 
     """
 
@@ -6201,7 +6201,7 @@ class Table(AbstractModel):
 
     @property
     def TableId(self):
-        """表格ID
+        r"""表格ID
         :rtype: str
         """
         return self._TableId
@@ -6212,7 +6212,7 @@ class Table(AbstractModel):
 
     @property
     def ProjectId(self):
-        """关联项目ID
+        r"""关联项目ID
         :rtype: str
         """
         return self._ProjectId
@@ -6223,7 +6223,7 @@ class Table(AbstractModel):
 
     @property
     def Name(self):
-        """表格名称
+        r"""表格名称
         :rtype: str
         """
         return self._Name
@@ -6234,7 +6234,7 @@ class Table(AbstractModel):
 
     @property
     def Description(self):
-        """表格描述
+        r"""表格描述
         :rtype: str
         """
         return self._Description
@@ -6245,7 +6245,7 @@ class Table(AbstractModel):
 
     @property
     def Columns(self):
-        """表格列
+        r"""表格列
         :rtype: list of TableColumn
         """
         return self._Columns
@@ -6256,7 +6256,7 @@ class Table(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6267,7 +6267,7 @@ class Table(AbstractModel):
 
     @property
     def Creator(self):
-        """创建人
+        r"""创建人
         :rtype: str
         """
         return self._Creator
@@ -6278,7 +6278,7 @@ class Table(AbstractModel):
 
     @property
     def CreatorId(self):
-        """创建人ID
+        r"""创建人ID
         :rtype: str
         """
         return self._CreatorId
@@ -6313,7 +6313,7 @@ class Table(AbstractModel):
 
 
 class TableColumn(AbstractModel):
-    """表格列。
+    r"""表格列。
 
     """
 
@@ -6329,7 +6329,7 @@ class TableColumn(AbstractModel):
 
     @property
     def Header(self):
-        """列名称
+        r"""列名称
         :rtype: str
         """
         return self._Header
@@ -6340,7 +6340,7 @@ class TableColumn(AbstractModel):
 
     @property
     def DataType(self):
-        """列数据类型
+        r"""列数据类型
         :rtype: str
         """
         return self._DataType
@@ -6364,7 +6364,7 @@ class TableColumn(AbstractModel):
 
 
 class TableRow(AbstractModel):
-    """表格行。
+    r"""表格行。
 
     """
 
@@ -6380,7 +6380,7 @@ class TableRow(AbstractModel):
 
     @property
     def TableRowUuid(self):
-        """表格行UUID。
+        r"""表格行UUID。
         :rtype: str
         """
         return self._TableRowUuid
@@ -6391,7 +6391,7 @@ class TableRow(AbstractModel):
 
     @property
     def Content(self):
-        """表格行内容。
+        r"""表格行内容。
         :rtype: list of str
         """
         return self._Content
@@ -6415,7 +6415,7 @@ class TableRow(AbstractModel):
 
 
 class TerminateRunGroupRequest(AbstractModel):
-    """TerminateRunGroup请求参数结构体
+    r"""TerminateRunGroup请求参数结构体
 
     """
 
@@ -6432,7 +6432,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """任务批次ID。
+        r"""任务批次ID。
         :rtype: str
         """
         return self._RunGroupId
@@ -6443,7 +6443,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
 （不填使用指定地域下的默认项目）
         :rtype: str
         """
@@ -6468,7 +6468,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
 
 class TerminateRunGroupResponse(AbstractModel):
-    """TerminateRunGroup返回参数结构体
+    r"""TerminateRunGroup返回参数结构体
 
     """
 
@@ -6481,7 +6481,7 @@ class TerminateRunGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6496,7 +6496,7 @@ class TerminateRunGroupResponse(AbstractModel):
 
 
 class VPCOption(AbstractModel):
-    """私有网络配置。
+    r"""私有网络配置。
 
     """
 
@@ -6521,7 +6521,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCId(self):
-        """私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+        r"""私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
         :rtype: str
         """
         return self._VPCId
@@ -6532,7 +6532,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+        r"""子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
         :rtype: str
         """
         return self._SubnetId
@@ -6543,7 +6543,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetZone(self):
-        """子网可用区。
+        r"""子网可用区。
         :rtype: str
         """
         return self._SubnetZone
@@ -6554,7 +6554,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCCIDRBlock(self):
-        """私有网络CIDR。
+        r"""私有网络CIDR。
         :rtype: str
         """
         return self._VPCCIDRBlock
@@ -6565,7 +6565,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetCIDRBlock(self):
-        """子网CIDR。
+        r"""子网CIDR。
         :rtype: str
         """
         return self._SubnetCIDRBlock
@@ -6592,7 +6592,7 @@ class VPCOption(AbstractModel):
 
 
 class Volume(AbstractModel):
-    """缓存卷。
+    r"""缓存卷。
 
     """
 
@@ -6653,7 +6653,7 @@ class Volume(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -6664,7 +6664,7 @@ class Volume(AbstractModel):
 
     @property
     def Name(self):
-        """名称。
+        r"""名称。
         :rtype: str
         """
         return self._Name
@@ -6675,7 +6675,7 @@ class Volume(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Description
@@ -6686,7 +6686,7 @@ class Volume(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """环境ID。
+        r"""环境ID。
         :rtype: str
         """
         return self._EnvironmentId
@@ -6697,7 +6697,7 @@ class Volume(AbstractModel):
 
     @property
     def Type(self):
-        """缓存卷类型，取值范围：
+        r"""缓存卷类型，取值范围：
 * SHARED：多点挂载共享存储
         :rtype: str
         """
@@ -6709,7 +6709,7 @@ class Volume(AbstractModel):
 
     @property
     def Spec(self):
-        """缓存卷规格，取值范围：
+        r"""缓存卷规格，取值范围：
 
 - SD：通用标准型
 - HP：通用性能型
@@ -6725,7 +6725,7 @@ class Volume(AbstractModel):
 
     @property
     def Capacity(self):
-        """缓存卷大小（GB）。
+        r"""缓存卷大小（GB）。
         :rtype: int
         """
         return self._Capacity
@@ -6736,7 +6736,7 @@ class Volume(AbstractModel):
 
     @property
     def Usage(self):
-        """缓存卷使用量（Byte）。
+        r"""缓存卷使用量（Byte）。
         :rtype: int
         """
         return self._Usage
@@ -6747,7 +6747,7 @@ class Volume(AbstractModel):
 
     @property
     def BandwidthLimit(self):
-        """缓存卷吞吐上限（MiB/s）。
+        r"""缓存卷吞吐上限（MiB/s）。
         :rtype: float
         """
         return self._BandwidthLimit
@@ -6758,7 +6758,7 @@ class Volume(AbstractModel):
 
     @property
     def DefaultMountPath(self):
-        """默认挂载路径。
+        r"""默认挂载路径。
         :rtype: str
         """
         return self._DefaultMountPath
@@ -6769,7 +6769,7 @@ class Volume(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否为默认缓存卷。
+        r"""是否为默认缓存卷。
         :rtype: bool
         """
         return self._IsDefault
@@ -6780,7 +6780,7 @@ class Volume(AbstractModel):
 
     @property
     def Status(self):
-        """状态。
+        r"""状态。
         :rtype: str
         """
         return self._Status
@@ -6791,7 +6791,7 @@ class Volume(AbstractModel):
 
     @property
     def AutoScaleUpRule(self):
-        """turbo自动扩容策略
+        r"""turbo自动扩容策略
         :rtype: :class:`tencentcloud.omics.v20221128.models.VolumeAutoScaleUpRule`
         """
         return self._AutoScaleUpRule
@@ -6802,7 +6802,7 @@ class Volume(AbstractModel):
 
     @property
     def MetaType(self):
-        """turbo元数据属性
+        r"""turbo元数据属性
         :rtype: str
         """
         return self._MetaType
@@ -6813,7 +6813,7 @@ class Volume(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._Zone
@@ -6852,7 +6852,7 @@ class Volume(AbstractModel):
 
 
 class VolumeAutoScaleUpRule(AbstractModel):
-    """缓存卷自动扩容策略
+    r"""缓存卷自动扩容策略
 
     """
 
@@ -6872,7 +6872,7 @@ class VolumeAutoScaleUpRule(AbstractModel):
 
     @property
     def Status(self):
-        """自动扩容策略开启，关闭
+        r"""自动扩容策略开启，关闭
 示例值：open,close
         :rtype: str
         """
@@ -6884,7 +6884,7 @@ class VolumeAutoScaleUpRule(AbstractModel):
 
     @property
     def ScaleThreshold(self):
-        """集群用量占比，到达这个值后开始扩容,范围[10-90]
+        r"""集群用量占比，到达这个值后开始扩容,范围[10-90]
         :rtype: int
         """
         return self._ScaleThreshold
@@ -6895,7 +6895,7 @@ class VolumeAutoScaleUpRule(AbstractModel):
 
     @property
     def TargetThreshold(self):
-        """扩容后使用量跟集群总量比例,范围[10-90]
+        r"""扩容后使用量跟集群总量比例,范围[10-90]
         :rtype: int
         """
         return self._TargetThreshold
@@ -6920,7 +6920,7 @@ class VolumeAutoScaleUpRule(AbstractModel):
 
 
 class VolumeInfo(AbstractModel):
-    """缓存卷信息。
+    r"""缓存卷信息。
 
     """
 
@@ -6939,7 +6939,7 @@ class VolumeInfo(AbstractModel):
 
     @property
     def VolumeId(self):
-        """缓存卷ID。
+        r"""缓存卷ID。
         :rtype: str
         """
         return self._VolumeId
@@ -6950,7 +6950,7 @@ class VolumeInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称。
+        r"""名称。
         :rtype: str
         """
         return self._Name
@@ -6961,7 +6961,7 @@ class VolumeInfo(AbstractModel):
 
     @property
     def MountPath(self):
-        """挂载路径。
+        r"""挂载路径。
         :rtype: str
         """
         return self._MountPath

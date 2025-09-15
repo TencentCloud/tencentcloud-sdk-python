@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AppInfo(AbstractModel):
-    """物联网卡应用信息详情
+    r"""物联网卡应用信息详情
 
     """
 
@@ -54,7 +54,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._Sdkappid
@@ -65,7 +65,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Appkey(self):
-        """应用key
+        r"""应用key
         :rtype: str
         """
         return self._Appkey
@@ -76,7 +76,7 @@ class AppInfo(AbstractModel):
 
     @property
     def CloudAppid(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._CloudAppid
@@ -87,7 +87,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Name(self):
-        """应用名称
+        r"""应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -99,7 +99,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Description(self):
-        """应用描述
+        r"""应用描述
         :rtype: str
         """
         return self._Description
@@ -110,7 +110,7 @@ class AppInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -121,7 +121,7 @@ class AppInfo(AbstractModel):
 
     @property
     def BizType(self):
-        """应用类型
+        r"""应用类型
         :rtype: int
         """
         return self._BizType
@@ -132,7 +132,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """用户Uin
+        r"""用户Uin
         :rtype: str
         """
         return self._Uin
@@ -162,7 +162,7 @@ class AppInfo(AbstractModel):
 
 
 class CardInfo(AbstractModel):
-    """卡片详细信息
+    r"""卡片详细信息
 
     """
 
@@ -275,7 +275,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
         :rtype: str
         """
         return self._Iccid
@@ -286,7 +286,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Msisdn(self):
-        """卡电话号码
+        r"""卡电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -298,7 +298,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Imsi(self):
-        """卡imsi
+        r"""卡imsi
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -310,7 +310,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Imei(self):
-        """卡imei
+        r"""卡imei
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -322,7 +322,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._Sdkappid
@@ -333,7 +333,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Teleoperator(self):
-        """运营商编号
+        r"""运营商编号
         :rtype: int
         """
         return self._Teleoperator
@@ -344,7 +344,7 @@ class CardInfo(AbstractModel):
 
     @property
     def CardStatus(self):
-        """卡片状态 1:未激活 2：激活 3：停卡 5：销卡
+        r"""卡片状态 1:未激活 2：激活 3：停卡 5：销卡
         :rtype: int
         """
         return self._CardStatus
@@ -355,7 +355,7 @@ class CardInfo(AbstractModel):
 
     @property
     def NetworkStatus(self):
-        """网络状态
+        r"""网络状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -367,7 +367,7 @@ class CardInfo(AbstractModel):
 
     @property
     def ActivitedTime(self):
-        """激活时间
+        r"""激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -379,7 +379,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Type(self):
-        """资费类型，1 单卡，2 流量池
+        r"""资费类型，1 单卡，2 流量池
         :rtype: int
         """
         return self._Type
@@ -390,7 +390,7 @@ class CardInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        """套餐类型
+        r"""套餐类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -402,7 +402,7 @@ class CardInfo(AbstractModel):
 
     @property
     def PoolId(self):
-        """流量池ID
+        r"""流量池ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -414,7 +414,7 @@ class CardInfo(AbstractModel):
 
     @property
     def DataUsedInPeriod(self):
-        """周期套餐流量使用
+        r"""周期套餐流量使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -426,7 +426,7 @@ class CardInfo(AbstractModel):
 
     @property
     def DataTotalInPeriod(self):
-        """周期套餐总量
+        r"""周期套餐总量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -438,7 +438,7 @@ class CardInfo(AbstractModel):
 
     @property
     def ProductExpiredTime(self):
-        """过期时间
+        r"""过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -450,7 +450,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息
+        r"""描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -462,7 +462,7 @@ class CardInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -473,7 +473,7 @@ class CardInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifiedTime
@@ -484,7 +484,7 @@ class CardInfo(AbstractModel):
 
     @property
     def PreorderCnt(self):
-        """套餐周期
+        r"""套餐周期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -496,7 +496,7 @@ class CardInfo(AbstractModel):
 
     @property
     def IsActivated(self):
-        """激活被回调标志
+        r"""激活被回调标志
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -508,7 +508,7 @@ class CardInfo(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID
+        r"""订单ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -520,7 +520,7 @@ class CardInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """是否自动续费
+        r"""是否自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -532,7 +532,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -544,7 +544,7 @@ class CardInfo(AbstractModel):
 
     @property
     def AllowArrears(self):
-        """0 不需要开通达量不停卡 1 需要开通达量不停卡
+        r"""0 不需要开通达量不停卡 1 需要开通达量不停卡
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -556,7 +556,7 @@ class CardInfo(AbstractModel):
 
     @property
     def NeedSms(self):
-        """是否开通短信0:未开短信 1:开通短信
+        r"""是否开通短信0:未开短信 1:开通短信
         :rtype: int
         """
         return self._NeedSms
@@ -567,7 +567,7 @@ class CardInfo(AbstractModel):
 
     @property
     def Provider(self):
-        """供应商
+        r"""供应商
         :rtype: int
         """
         return self._Provider
@@ -578,7 +578,7 @@ class CardInfo(AbstractModel):
 
     @property
     def CertificationState(self):
-        """实名认证 0:无 1:未实名 2:已实名
+        r"""实名认证 0:无 1:未实名 2:已实名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -590,7 +590,7 @@ class CardInfo(AbstractModel):
 
     @property
     def OtherData(self):
-        """其他流量信息,流量分离统计其他流量
+        r"""其他流量信息,流量分离统计其他流量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -641,7 +641,7 @@ class CardInfo(AbstractModel):
 
 
 class CardList(AbstractModel):
-    """卡片列表数据
+    r"""卡片列表数据
 
     """
 
@@ -658,7 +658,7 @@ class CardList(AbstractModel):
 
     @property
     def Total(self):
-        """卡片总数
+        r"""卡片总数
         :rtype: str
         """
         return self._Total
@@ -669,7 +669,7 @@ class CardList(AbstractModel):
 
     @property
     def List(self):
-        """卡片列表信息
+        r"""卡片列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CardInfo
         """
@@ -699,7 +699,7 @@ class CardList(AbstractModel):
 
 
 class DescribeAppRequest(AbstractModel):
-    """DescribeApp请求参数结构体
+    r"""DescribeApp请求参数结构体
 
     """
 
@@ -712,7 +712,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """物联卡应用ID
+        r"""物联卡应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -735,7 +735,7 @@ class DescribeAppRequest(AbstractModel):
 
 
 class DescribeAppResponse(AbstractModel):
-    """DescribeApp返回参数结构体
+    r"""DescribeApp返回参数结构体
 
     """
 
@@ -752,7 +752,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def Data(self):
-        """应用信息详情
+        r"""应用信息详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ic.v20190307.models.AppInfo`
         """
@@ -764,7 +764,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -782,7 +782,7 @@ class DescribeAppResponse(AbstractModel):
 
 
 class DescribeCardRequest(AbstractModel):
-    """DescribeCard请求参数结构体
+    r"""DescribeCard请求参数结构体
 
     """
 
@@ -798,7 +798,7 @@ class DescribeCardRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -809,7 +809,7 @@ class DescribeCardRequest(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
         :rtype: str
         """
         return self._Iccid
@@ -833,7 +833,7 @@ class DescribeCardRequest(AbstractModel):
 
 
 class DescribeCardResponse(AbstractModel):
-    """DescribeCard返回参数结构体
+    r"""DescribeCard返回参数结构体
 
     """
 
@@ -850,7 +850,7 @@ class DescribeCardResponse(AbstractModel):
 
     @property
     def Data(self):
-        """卡片详细信息
+        r"""卡片详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ic.v20190307.models.CardInfo`
         """
@@ -862,7 +862,7 @@ class DescribeCardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -880,7 +880,7 @@ class DescribeCardResponse(AbstractModel):
 
 
 class DescribeCardsRequest(AbstractModel):
-    """DescribeCards请求参数结构体
+    r"""DescribeCards请求参数结构体
 
     """
 
@@ -899,7 +899,7 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._Sdkappid
@@ -910,7 +910,7 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移值
+        r"""偏移值
         :rtype: int
         """
         return self._Offset
@@ -921,7 +921,7 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """列表限制
+        r"""列表限制
         :rtype: int
         """
         return self._Limit
@@ -946,7 +946,7 @@ class DescribeCardsRequest(AbstractModel):
 
 
 class DescribeCardsResponse(AbstractModel):
-    """DescribeCards返回参数结构体
+    r"""DescribeCards返回参数结构体
 
     """
 
@@ -962,7 +962,7 @@ class DescribeCardsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """卡片列表信息
+        r"""卡片列表信息
         :rtype: :class:`tencentcloud.ic.v20190307.models.CardList`
         """
         return self._Data
@@ -973,7 +973,7 @@ class DescribeCardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -991,7 +991,7 @@ class DescribeCardsResponse(AbstractModel):
 
 
 class DescribeSmsRequest(AbstractModel):
-    """DescribeSms请求参数结构体
+    r"""DescribeSms请求参数结构体
 
     """
 
@@ -1025,7 +1025,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -1036,7 +1036,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
         :rtype: str
         """
         return self._Iccid
@@ -1047,7 +1047,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Msisdn(self):
-        """卡片号码
+        r"""卡片号码
         :rtype: str
         """
         return self._Msisdn
@@ -1058,7 +1058,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def SmsType(self):
-        """短信类型
+        r"""短信类型
         :rtype: int
         """
         return self._SmsType
@@ -1069,7 +1069,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始时间  YYYY-MM-DD HH:mm:ss
+        r"""开始时间  YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._BeginTime
@@ -1080,7 +1080,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间  YYYY-MM-DD HH:mm:ss
+        r"""结束时间  YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -1091,7 +1091,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -1102,7 +1102,7 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """小于200
+        r"""小于200
         :rtype: int
         """
         return self._Limit
@@ -1132,7 +1132,7 @@ class DescribeSmsRequest(AbstractModel):
 
 
 class DescribeSmsResponse(AbstractModel):
-    """DescribeSms返回参数结构体
+    r"""DescribeSms返回参数结构体
 
     """
 
@@ -1153,7 +1153,7 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1165,7 +1165,7 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def List(self):
-        """短信列表
+        r"""短信列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResSms
         """
@@ -1177,7 +1177,7 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1199,7 +1199,7 @@ class DescribeSmsResponse(AbstractModel):
 
 
 class ModifyUserCardRemarkRequest(AbstractModel):
-    """ModifyUserCardRemark请求参数结构体
+    r"""ModifyUserCardRemark请求参数结构体
 
     """
 
@@ -1218,7 +1218,7 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -1229,7 +1229,7 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Iccid(self):
-        """物联卡ICCID
+        r"""物联卡ICCID
         :rtype: str
         """
         return self._Iccid
@@ -1240,7 +1240,7 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，限50字
+        r"""备注信息，限50字
         :rtype: str
         """
         return self._Remark
@@ -1265,7 +1265,7 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
 
 class ModifyUserCardRemarkResponse(AbstractModel):
-    """ModifyUserCardRemark返回参数结构体
+    r"""ModifyUserCardRemark返回参数结构体
 
     """
 
@@ -1278,7 +1278,7 @@ class ModifyUserCardRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1293,7 +1293,7 @@ class ModifyUserCardRemarkResponse(AbstractModel):
 
 
 class PayForExtendDataRequest(AbstractModel):
-    """PayForExtendData请求参数结构体
+    r"""PayForExtendData请求参数结构体
 
     """
 
@@ -1312,7 +1312,7 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ICCID
+        r"""卡片ICCID
         :rtype: str
         """
         return self._Iccid
@@ -1323,7 +1323,7 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def ExtentData(self):
-        """套外流量,单位MB
+        r"""套外流量,单位MB
         :rtype: int
         """
         return self._ExtentData
@@ -1334,7 +1334,7 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -1359,7 +1359,7 @@ class PayForExtendDataRequest(AbstractModel):
 
 
 class PayForExtendDataResponse(AbstractModel):
-    """PayForExtendData返回参数结构体
+    r"""PayForExtendData返回参数结构体
 
     """
 
@@ -1375,7 +1375,7 @@ class PayForExtendDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """订单号
+        r"""订单号
         :rtype: :class:`tencentcloud.ic.v20190307.models.ResOrderIds`
         """
         return self._Data
@@ -1386,7 +1386,7 @@ class PayForExtendDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1404,7 +1404,7 @@ class PayForExtendDataResponse(AbstractModel):
 
 
 class RenewCardsRequest(AbstractModel):
-    """RenewCards请求参数结构体
+    r"""RenewCards请求参数结构体
 
     """
 
@@ -1423,7 +1423,7 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -1434,7 +1434,7 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def Iccids(self):
-        """续费的iccid
+        r"""续费的iccid
         :rtype: list of str
         """
         return self._Iccids
@@ -1445,7 +1445,7 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def RenewNum(self):
-        """续费的周期（单位：月）
+        r"""续费的周期（单位：月）
         :rtype: int
         """
         return self._RenewNum
@@ -1470,7 +1470,7 @@ class RenewCardsRequest(AbstractModel):
 
 
 class RenewCardsResponse(AbstractModel):
-    """RenewCards返回参数结构体
+    r"""RenewCards返回参数结构体
 
     """
 
@@ -1487,7 +1487,7 @@ class RenewCardsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """续费成功的订单id
+        r"""续费成功的订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ic.v20190307.models.ResRenew`
         """
@@ -1499,7 +1499,7 @@ class RenewCardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1517,7 +1517,7 @@ class RenewCardsResponse(AbstractModel):
 
 
 class ResOrderIds(AbstractModel):
-    """订单ID集合
+    r"""订单ID集合
 
     """
 
@@ -1531,7 +1531,7 @@ class ResOrderIds(AbstractModel):
 
     @property
     def OrderIds(self):
-        """每一张续费卡片的订单ID数组
+        r"""每一张续费卡片的订单ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1555,7 +1555,7 @@ class ResOrderIds(AbstractModel):
 
 
 class ResRenew(AbstractModel):
-    """云api 卡片续费
+    r"""云api 卡片续费
 
     """
 
@@ -1569,7 +1569,7 @@ class ResRenew(AbstractModel):
 
     @property
     def OrderIds(self):
-        """每一张续费卡片的订单ID数组
+        r"""每一张续费卡片的订单ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1593,7 +1593,7 @@ class ResRenew(AbstractModel):
 
 
 class ResSms(AbstractModel):
-    """查询短信列表
+    r"""查询短信列表
 
     """
 
@@ -1639,7 +1639,7 @@ class ResSms(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1651,7 +1651,7 @@ class ResSms(AbstractModel):
 
     @property
     def Msisdn(self):
-        """卡片号码
+        r"""卡片号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1663,7 +1663,7 @@ class ResSms(AbstractModel):
 
     @property
     def SdkAppid(self):
-        """应用ID
+        r"""应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1675,7 +1675,7 @@ class ResSms(AbstractModel):
 
     @property
     def Content(self):
-        """短信内容
+        r"""短信内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1687,7 +1687,7 @@ class ResSms(AbstractModel):
 
     @property
     def SmsType(self):
-        """短信类型
+        r"""短信类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1699,7 +1699,7 @@ class ResSms(AbstractModel):
 
     @property
     def SendTime(self):
-        """发送时间
+        r"""发送时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1711,7 +1711,7 @@ class ResSms(AbstractModel):
 
     @property
     def ReportTime(self):
-        """推送时间
+        r"""推送时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1723,7 +1723,7 @@ class ResSms(AbstractModel):
 
     @property
     def Remark(self):
-        """SUCC：成功  FAIL 失败
+        r"""SUCC：成功  FAIL 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1735,7 +1735,7 @@ class ResSms(AbstractModel):
 
     @property
     def Status(self):
-        """回执状态
+        r"""回执状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1767,7 +1767,7 @@ class ResSms(AbstractModel):
 
 
 class SendMultiSmsRequest(AbstractModel):
-    """SendMultiSms请求参数结构体
+    r"""SendMultiSms请求参数结构体
 
     """
 
@@ -1786,7 +1786,7 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._Sdkappid
@@ -1797,7 +1797,7 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Iccids(self):
-        """卡片列表
+        r"""卡片列表
         :rtype: list of str
         """
         return self._Iccids
@@ -1808,7 +1808,7 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Content(self):
-        """短信内容 长度限制 70
+        r"""短信内容 长度限制 70
         :rtype: str
         """
         return self._Content
@@ -1833,7 +1833,7 @@ class SendMultiSmsRequest(AbstractModel):
 
 
 class SendMultiSmsResponse(AbstractModel):
-    """SendMultiSms返回参数结构体
+    r"""SendMultiSms返回参数结构体
 
     """
 
@@ -1850,7 +1850,7 @@ class SendMultiSmsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """短信流水数组
+        r"""短信流水数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmsRet
         """
@@ -1862,7 +1862,7 @@ class SendMultiSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1883,7 +1883,7 @@ class SendMultiSmsResponse(AbstractModel):
 
 
 class SendSmsRequest(AbstractModel):
-    """SendSms请求参数结构体
+    r"""SendSms请求参数结构体
 
     """
 
@@ -1902,7 +1902,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._Sdkappid
@@ -1913,7 +1913,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
         :rtype: str
         """
         return self._Iccid
@@ -1924,7 +1924,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Content(self):
-        """短信内容长度70限制
+        r"""短信内容长度70限制
         :rtype: str
         """
         return self._Content
@@ -1949,7 +1949,7 @@ class SendSmsRequest(AbstractModel):
 
 
 class SendSmsResponse(AbstractModel):
-    """SendSms返回参数结构体
+    r"""SendSms返回参数结构体
 
     """
 
@@ -1966,7 +1966,7 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """短信流水信息
+        r"""短信流水信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ic.v20190307.models.SmsSid`
         """
@@ -1978,7 +1978,7 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1996,7 +1996,7 @@ class SendSmsResponse(AbstractModel):
 
 
 class SmsRet(AbstractModel):
-    """短信流水信息
+    r"""短信流水信息
 
     """
 
@@ -2018,7 +2018,7 @@ class SmsRet(AbstractModel):
 
     @property
     def Code(self):
-        """该iccid请求状态
+        r"""该iccid请求状态
         :rtype: str
         """
         return self._Code
@@ -2029,7 +2029,7 @@ class SmsRet(AbstractModel):
 
     @property
     def Msg(self):
-        """短信发送返回信息
+        r"""短信发送返回信息
         :rtype: str
         """
         return self._Msg
@@ -2040,7 +2040,7 @@ class SmsRet(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
         :rtype: str
         """
         return self._Iccid
@@ -2051,7 +2051,7 @@ class SmsRet(AbstractModel):
 
     @property
     def Sid(self):
-        """流水ID
+        r"""流水ID
         :rtype: str
         """
         return self._Sid
@@ -2077,7 +2077,7 @@ class SmsRet(AbstractModel):
 
 
 class SmsSid(AbstractModel):
-    """短信流水信息
+    r"""短信流水信息
 
     """
 
@@ -2094,7 +2094,7 @@ class SmsSid(AbstractModel):
 
     @property
     def Iccid(self):
-        """卡片ID
+        r"""卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2106,7 +2106,7 @@ class SmsSid(AbstractModel):
 
     @property
     def Sid(self):
-        """信息流水ID
+        r"""信息流水ID
         :rtype: str
         """
         return self._Sid

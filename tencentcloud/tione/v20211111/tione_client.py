@@ -27,7 +27,7 @@ class TioneClient(AbstractClient):
 
 
     def ChatCompletion(self, request):
-        """该接口支持与自行部署的大模型的聊天。
+        r"""该接口支持与自行部署的大模型的聊天。
 
         使用该接口调用时需要携带腾讯云的密钥信息用于身份信息鉴权，建议通过腾讯云的云 API SDK调用，具体可以参考
         https://cloud.tencent.com/document/product/1278/85305
@@ -53,7 +53,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateDataset(self, request):
-        """创建数据集
+        r"""创建数据集
 
         :param request: Request instance for CreateDataset.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateDatasetRequest`
@@ -76,7 +76,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateModelService(self, request):
-        """用于创建、发布一个新的模型服务
+        r"""用于创建、发布一个新的模型服务
 
         :param request: Request instance for CreateModelService.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateModelServiceRequest`
@@ -99,7 +99,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateModelServiceAuthToken(self, request):
-        """创建一个 AuthToken
+        r"""创建一个 AuthToken
 
         :param request: Request instance for CreateModelServiceAuthToken.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateModelServiceAuthTokenRequest`
@@ -122,7 +122,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateNotebook(self, request):
-        """创建Notebook
+        r"""创建Notebook
 
         :param request: Request instance for CreateNotebook.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateNotebookRequest`
@@ -145,7 +145,7 @@ class TioneClient(AbstractClient):
 
 
     def CreatePresignedNotebookUrl(self, request):
-        """生成Notebook访问链接
+        r"""生成Notebook访问链接
 
         :param request: Request instance for CreatePresignedNotebookUrl.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreatePresignedNotebookUrlRequest`
@@ -168,7 +168,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateTrainingModel(self, request):
-        """导入模型
+        r"""导入模型
 
         :param request: Request instance for CreateTrainingModel.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingModelRequest`
@@ -191,7 +191,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateTrainingTask(self, request):
-        """创建模型训练任务
+        r"""创建模型训练任务
 
         :param request: Request instance for CreateTrainingTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskRequest`
@@ -214,7 +214,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteDataset(self, request):
-        """删除数据集
+        r"""删除数据集
 
         :param request: Request instance for DeleteDataset.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteDatasetRequest`
@@ -237,7 +237,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteModelService(self, request):
-        """根据服务id删除模型服务
+        r"""根据服务id删除模型服务
 
         :param request: Request instance for DeleteModelService.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteModelServiceRequest`
@@ -260,7 +260,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteModelServiceAuthToken(self, request):
-        """删除一个 AuthToken
+        r"""删除一个 AuthToken
 
         :param request: Request instance for DeleteModelServiceAuthToken.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteModelServiceAuthTokenRequest`
@@ -283,7 +283,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteModelServiceGroup(self, request):
-        """根据服务组id删除服务组下所有模型服务
+        r"""根据服务组id删除服务组下所有模型服务
 
         :param request: Request instance for DeleteModelServiceGroup.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteModelServiceGroupRequest`
@@ -306,7 +306,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteNotebook(self, request):
-        """删除Notebook
+        r"""删除Notebook
 
         :param request: Request instance for DeleteNotebook.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteNotebookRequest`
@@ -329,7 +329,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteTrainingModel(self, request):
-        """删除模型
+        r"""删除模型
 
         :param request: Request instance for DeleteTrainingModel.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelRequest`
@@ -352,7 +352,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteTrainingModelVersion(self, request):
-        """删除模型版本
+        r"""删除模型版本
 
         :param request: Request instance for DeleteTrainingModelVersion.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelVersionRequest`
@@ -375,7 +375,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteTrainingTask(self, request):
-        """删除训练任务
+        r"""删除训练任务
 
         :param request: Request instance for DeleteTrainingTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskRequest`
@@ -398,7 +398,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBillingResourceGroup(self, request):
-        """查询资源组节点列表
+        r"""查询资源组节点列表
 
         :param request: Request instance for DescribeBillingResourceGroup.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupRequest`
@@ -421,7 +421,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBillingResourceGroups(self, request):
-        """查询资源组详情
+        r"""查询资源组详情
 
         :param request: Request instance for DescribeBillingResourceGroups.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupsRequest`
@@ -444,7 +444,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBillingResourceInstanceRunningJobs(self, request):
-        """查询资源组节点运行中的任务
+        r"""查询资源组节点运行中的任务
 
         :param request: Request instance for DescribeBillingResourceInstanceRunningJobs.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceInstanceRunningJobsRequest`
@@ -467,7 +467,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBillingSpecs(self, request):
-        """本接口(DescribeBillingSpecs) 提供查询计费项列表
+        r"""本接口(DescribeBillingSpecs) 提供查询计费项列表
 
         :param request: Request instance for DescribeBillingSpecs.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsRequest`
@@ -490,7 +490,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBillingSpecsPrice(self, request):
-        """本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
+        r"""本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
 
         :param request: Request instance for DescribeBillingSpecsPrice.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceRequest`
@@ -513,7 +513,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBuildInImages(self, request):
-        """获取内置镜像列表
+        r"""获取内置镜像列表
 
         :param request: Request instance for DescribeBuildInImages.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBuildInImagesRequest`
@@ -536,7 +536,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeDatasets(self, request):
-        """查询数据集列表
+        r"""查询数据集列表
 
         :param request: Request instance for DescribeDatasets.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetsRequest`
@@ -559,7 +559,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeEvents(self, request):
-        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
+        r"""获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
 
         :param request: Request instance for DescribeEvents.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeEventsRequest`
@@ -582,7 +582,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeInferTemplates(self, request):
-        """已废弃，收敛到统一接口
+        r"""已废弃，收敛到统一接口
 
         查询推理镜像模板
 
@@ -607,7 +607,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeLogs(self, request):
-        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
+        r"""获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
 
         :param request: Request instance for DescribeLogs.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLogsRequest`
@@ -630,7 +630,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelAccelerateTask(self, request):
-        """查询模型优化任务详情
+        r"""查询模型优化任务详情
 
         :param request: Request instance for DescribeModelAccelerateTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateTaskRequest`
@@ -653,7 +653,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelAccelerateVersions(self, request):
-        """模型加速之后的模型版本列表
+        r"""模型加速之后的模型版本列表
 
         :param request: Request instance for DescribeModelAccelerateVersions.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateVersionsRequest`
@@ -676,7 +676,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelService(self, request):
-        """查询单个服务
+        r"""查询单个服务
 
         :param request: Request instance for DescribeModelService.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceRequest`
@@ -699,7 +699,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelServiceCallInfo(self, request):
-        """展示服务的调用信息
+        r"""展示服务的调用信息
 
         :param request: Request instance for DescribeModelServiceCallInfo.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceCallInfoRequest`
@@ -722,7 +722,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelServiceGroup(self, request):
-        """查询单个服务组
+        r"""查询单个服务组
 
         :param request: Request instance for DescribeModelServiceGroup.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceGroupRequest`
@@ -745,7 +745,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelServiceGroups(self, request):
-        """列举在线推理服务组
+        r"""列举在线推理服务组
 
         :param request: Request instance for DescribeModelServiceGroups.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceGroupsRequest`
@@ -768,7 +768,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeModelServiceHotUpdated(self, request):
-        """用于查询模型服务能否开启热更新
+        r"""用于查询模型服务能否开启热更新
 
         :param request: Request instance for DescribeModelServiceHotUpdated.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceHotUpdatedRequest`
@@ -791,7 +791,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeNotebook(self, request):
-        """Notebook详情
+        r"""Notebook详情
 
         :param request: Request instance for DescribeNotebook.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeNotebookRequest`
@@ -814,7 +814,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeNotebooks(self, request):
-        """Notebook列表
+        r"""Notebook列表
 
         :param request: Request instance for DescribeNotebooks.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeNotebooksRequest`
@@ -837,7 +837,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribePlatformImages(self, request):
-        """查询平台镜像信息
+        r"""查询平台镜像信息
 
         :param request: Request instance for DescribePlatformImages.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribePlatformImagesRequest`
@@ -860,7 +860,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeTrainingModelVersion(self, request):
-        """查询模型版本
+        r"""查询模型版本
 
         :param request: Request instance for DescribeTrainingModelVersion.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionRequest`
@@ -883,7 +883,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeTrainingModelVersions(self, request):
-        """模型版本列表
+        r"""模型版本列表
 
         :param request: Request instance for DescribeTrainingModelVersions.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionsRequest`
@@ -906,7 +906,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeTrainingTask(self, request):
-        """训练任务详情
+        r"""训练任务详情
 
         :param request: Request instance for DescribeTrainingTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskRequest`
@@ -929,7 +929,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeTrainingTaskPods(self, request):
-        """训练任务pod列表
+        r"""训练任务pod列表
 
         :param request: Request instance for DescribeTrainingTaskPods.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskPodsRequest`
@@ -952,7 +952,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeTrainingTasks(self, request):
-        """训练任务列表
+        r"""训练任务列表
 
         :param request: Request instance for DescribeTrainingTasks.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTasksRequest`
@@ -975,7 +975,7 @@ class TioneClient(AbstractClient):
 
 
     def ModifyModelService(self, request):
-        """用于更新模型服务
+        r"""用于更新模型服务
 
         :param request: Request instance for ModifyModelService.
         :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceRequest`
@@ -998,7 +998,7 @@ class TioneClient(AbstractClient):
 
 
     def ModifyModelServiceAuthToken(self, request):
-        """修改一个 AuthToken
+        r"""修改一个 AuthToken
 
         :param request: Request instance for ModifyModelServiceAuthToken.
         :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthTokenRequest`
@@ -1021,7 +1021,7 @@ class TioneClient(AbstractClient):
 
 
     def ModifyModelServiceAuthorization(self, request):
-        """修改服务鉴权配置
+        r"""修改服务鉴权配置
 
         :param request: Request instance for ModifyModelServiceAuthorization.
         :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthorizationRequest`
@@ -1044,7 +1044,7 @@ class TioneClient(AbstractClient):
 
 
     def ModifyNotebookTags(self, request):
-        """修改Notebook标签
+        r"""修改Notebook标签
 
         :param request: Request instance for ModifyNotebookTags.
         :type request: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookTagsRequest`
@@ -1067,7 +1067,7 @@ class TioneClient(AbstractClient):
 
 
     def PushTrainingMetrics(self, request):
-        """上报训练自定义指标
+        r"""上报训练自定义指标
 
         :param request: Request instance for PushTrainingMetrics.
         :type request: :class:`tencentcloud.tione.v20211111.models.PushTrainingMetricsRequest`
@@ -1090,7 +1090,7 @@ class TioneClient(AbstractClient):
 
 
     def StartNotebook(self, request):
-        """启动Notebook
+        r"""启动Notebook
 
         :param request: Request instance for StartNotebook.
         :type request: :class:`tencentcloud.tione.v20211111.models.StartNotebookRequest`
@@ -1113,7 +1113,7 @@ class TioneClient(AbstractClient):
 
 
     def StartTrainingTask(self, request):
-        """启动模型训练任务
+        r"""启动模型训练任务
 
         :param request: Request instance for StartTrainingTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskRequest`
@@ -1136,7 +1136,7 @@ class TioneClient(AbstractClient):
 
 
     def StopModelAccelerateTask(self, request):
-        """停止模型加速任务
+        r"""停止模型加速任务
 
         :param request: Request instance for StopModelAccelerateTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.StopModelAccelerateTaskRequest`
@@ -1159,7 +1159,7 @@ class TioneClient(AbstractClient):
 
 
     def StopNotebook(self, request):
-        """停止Notebook
+        r"""停止Notebook
 
         :param request: Request instance for StopNotebook.
         :type request: :class:`tencentcloud.tione.v20211111.models.StopNotebookRequest`
@@ -1182,7 +1182,7 @@ class TioneClient(AbstractClient):
 
 
     def StopTrainingTask(self, request):
-        """停止模型训练任务
+        r"""停止模型训练任务
 
         :param request: Request instance for StopTrainingTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskRequest`

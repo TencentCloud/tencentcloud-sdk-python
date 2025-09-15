@@ -27,7 +27,7 @@ class EisClient(AbstractClient):
 
 
     def GetRuntimeMC(self, request):
-        """获取运行时详情
+        r"""获取运行时详情
 
         :param request: Request instance for GetRuntimeMC.
         :type request: :class:`tencentcloud.eis.v20210601.models.GetRuntimeMCRequest`
@@ -50,7 +50,7 @@ class EisClient(AbstractClient):
 
 
     def GetRuntimeResourceMonitorMetricMC(self, request):
-        """获取运行时资源监控详情，cpu，memory，bandwidth
+        r"""获取运行时资源监控详情，cpu，memory，bandwidth
 
         :param request: Request instance for GetRuntimeResourceMonitorMetricMC.
         :type request: :class:`tencentcloud.eis.v20210601.models.GetRuntimeResourceMonitorMetricMCRequest`
@@ -73,7 +73,7 @@ class EisClient(AbstractClient):
 
 
     def ListDeployableRuntimesMC(self, request):
-        """返回用户可用的运行时列表，发布应用时返回的运行时环境，仅shared和private运行时，无sandbox运行时，并且只有running/scaling状态的
+        r"""返回用户可用的运行时列表，发布应用时返回的运行时环境，仅shared和private运行时，无sandbox运行时，并且只有running/scaling状态的
 
         :param request: Request instance for ListDeployableRuntimesMC.
         :type request: :class:`tencentcloud.eis.v20210601.models.ListDeployableRuntimesMCRequest`
@@ -96,7 +96,7 @@ class EisClient(AbstractClient):
 
 
     def ListRuntimeDeployedInstancesMC(self, request):
-        """获取运行时部署的应用实例列表
+        r"""获取运行时部署的应用实例列表
 
         :param request: Request instance for ListRuntimeDeployedInstancesMC.
         :type request: :class:`tencentcloud.eis.v20210601.models.ListRuntimeDeployedInstancesMCRequest`
@@ -119,7 +119,7 @@ class EisClient(AbstractClient):
 
 
     def ListRuntimesMC(self, request):
-        """返回用户的运行时列表，运行时管理主页使用，包含沙箱、共享运行时及独立运行时环境，不包含已经删除的运行时
+        r"""返回用户的运行时列表，运行时管理主页使用，包含沙箱、共享运行时及独立运行时环境，不包含已经删除的运行时
 
         :param request: Request instance for ListRuntimesMC.
         :type request: :class:`tencentcloud.eis.v20210601.models.ListRuntimesMCRequest`

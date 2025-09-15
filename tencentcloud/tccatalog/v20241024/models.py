@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AcceptTccVpcEndPointConnectRequest(AbstractModel):
-    """AcceptTccVpcEndPointConnect请求参数结构体
+    r"""AcceptTccVpcEndPointConnect请求参数结构体
 
     """
 
@@ -38,7 +38,7 @@ class AcceptTccVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """终端节点服务Id
+        r"""终端节点服务Id
         :rtype: str
         """
         return self._EndPointServiceId
@@ -49,7 +49,7 @@ class AcceptTccVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def EndPointId(self):
-        """终端节点id
+        r"""终端节点id
         :rtype: list of str
         """
         return self._EndPointId
@@ -60,7 +60,7 @@ class AcceptTccVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def AcceptFlag(self):
-        """是否接受连接
+        r"""是否接受连接
         :rtype: bool
         """
         return self._AcceptFlag
@@ -85,7 +85,7 @@ class AcceptTccVpcEndPointConnectRequest(AbstractModel):
 
 
 class AcceptTccVpcEndPointConnectResponse(AbstractModel):
-    """AcceptTccVpcEndPointConnect返回参数结构体
+    r"""AcceptTccVpcEndPointConnect返回参数结构体
 
     """
 
@@ -98,7 +98,7 @@ class AcceptTccVpcEndPointConnectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -113,7 +113,7 @@ class AcceptTccVpcEndPointConnectResponse(AbstractModel):
 
 
 class BindTccVpcEndPointServiceWhiteListRequest(AbstractModel):
-    """BindTccVpcEndPointServiceWhiteList请求参数结构体
+    r"""BindTccVpcEndPointServiceWhiteList请求参数结构体
 
     """
 
@@ -132,7 +132,7 @@ class BindTccVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """终端节点服务Id
+        r"""终端节点服务Id
         :rtype: str
         """
         return self._EndPointServiceId
@@ -143,7 +143,7 @@ class BindTccVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def UserUin(self):
-        """需要开白的用户Uin
+        r"""需要开白的用户Uin
         :rtype: str
         """
         return self._UserUin
@@ -154,7 +154,7 @@ class BindTccVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Description(self):
-        """用户描述
+        r"""用户描述
         :rtype: str
         """
         return self._Description
@@ -179,7 +179,7 @@ class BindTccVpcEndPointServiceWhiteListRequest(AbstractModel):
 
 
 class BindTccVpcEndPointServiceWhiteListResponse(AbstractModel):
-    """BindTccVpcEndPointServiceWhiteList返回参数结构体
+    r"""BindTccVpcEndPointServiceWhiteList返回参数结构体
 
     """
 
@@ -192,7 +192,7 @@ class BindTccVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -207,7 +207,7 @@ class BindTccVpcEndPointServiceWhiteListResponse(AbstractModel):
 
 
 class DescribeTccCatalogRequest(AbstractModel):
-    """DescribeTccCatalog请求参数结构体
+    r"""DescribeTccCatalog请求参数结构体
 
     """
 
@@ -220,7 +220,7 @@ class DescribeTccCatalogRequest(AbstractModel):
 
     @property
     def CatalogId(self):
-        """数据目录Id
+        r"""数据目录Id
         :rtype: str
         """
         return self._CatalogId
@@ -243,7 +243,7 @@ class DescribeTccCatalogRequest(AbstractModel):
 
 
 class DescribeTccCatalogResponse(AbstractModel):
-    """DescribeTccCatalog返回参数结构体
+    r"""DescribeTccCatalog返回参数结构体
 
     """
 
@@ -259,7 +259,7 @@ class DescribeTccCatalogResponse(AbstractModel):
 
     @property
     def TccCatalog(self):
-        """Tcc数据目录信息
+        r"""Tcc数据目录信息
         :rtype: :class:`tencentcloud.tccatalog.v20241024.models.TccCatalogConfig`
         """
         return self._TccCatalog
@@ -270,7 +270,7 @@ class DescribeTccCatalogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -288,7 +288,7 @@ class DescribeTccCatalogResponse(AbstractModel):
 
 
 class DescribeTccCatalogsRequest(AbstractModel):
-    """DescribeTccCatalogs请求参数结构体
+    r"""DescribeTccCatalogs请求参数结构体
 
     """
 
@@ -313,7 +313,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
     @property
     def CatalogId(self):
-        """数据目录Id
+        r"""数据目录Id
         :rtype: str
         """
         return self._CatalogId
@@ -324,7 +324,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """数据目录名称
+        r"""数据目录名称
         :rtype: str
         """
         return self._Name
@@ -335,7 +335,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """数据目录类型,当前支持：TCC-HIVE
+        r"""数据目录类型,当前支持：TCC-HIVE
         :rtype: str
         """
         return self._Type
@@ -346,7 +346,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
+        r"""状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
         :rtype: int
         """
         return self._Status
@@ -357,7 +357,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人uin
+        r"""操作人uin
         :rtype: str
         """
         return self._Operator
@@ -384,7 +384,7 @@ class DescribeTccCatalogsRequest(AbstractModel):
 
 
 class DescribeTccCatalogsResponse(AbstractModel):
-    """DescribeTccCatalogs返回参数结构体
+    r"""DescribeTccCatalogs返回参数结构体
 
     """
 
@@ -403,7 +403,7 @@ class DescribeTccCatalogsResponse(AbstractModel):
 
     @property
     def TccCatalogSet(self):
-        """数据目录列表
+        r"""数据目录列表
         :rtype: list of TccCatalogSet
         """
         return self._TccCatalogSet
@@ -414,7 +414,7 @@ class DescribeTccCatalogsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -425,7 +425,7 @@ class DescribeTccCatalogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -447,7 +447,7 @@ class DescribeTccCatalogsResponse(AbstractModel):
 
 
 class NetWork(AbstractModel):
-    """网络配置信息
+    r"""网络配置信息
 
     """
 
@@ -475,7 +475,7 @@ class NetWork(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc实例id
+        r"""vpc实例id
         :rtype: str
         """
         return self._VpcId
@@ -486,7 +486,7 @@ class NetWork(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """vpc网段
+        r"""vpc网段
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -497,7 +497,7 @@ class NetWork(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网实例id
+        r"""子网实例id
         :rtype: str
         """
         return self._SubnetId
@@ -508,7 +508,7 @@ class NetWork(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
-        """子网网段
+        r"""子网网段
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -519,7 +519,7 @@ class NetWork(AbstractModel):
 
     @property
     def ClbIp(self):
-        """服务clbip
+        r"""服务clbip
         :rtype: str
         """
         return self._ClbIp
@@ -530,7 +530,7 @@ class NetWork(AbstractModel):
 
     @property
     def ClbPort(self):
-        """服务clbPort
+        r"""服务clbPort
         :rtype: str
         """
         return self._ClbPort
@@ -558,7 +558,7 @@ class NetWork(AbstractModel):
 
 
 class TccCatalogConfig(AbstractModel):
-    """Tcc数据目录信息
+    r"""Tcc数据目录信息
 
     """
 
@@ -595,7 +595,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Id(self):
-        """数据目录唯一id
+        r"""数据目录唯一id
         :rtype: str
         """
         return self._Id
@@ -606,7 +606,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Name(self):
-        """数据目录名字
+        r"""数据目录名字
         :rtype: str
         """
         return self._Name
@@ -617,7 +617,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Type(self):
-        """数据目录类型,当前支持：TCC-HIVE
+        r"""数据目录类型,当前支持：TCC-HIVE
         :rtype: str
         """
         return self._Type
@@ -628,7 +628,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Comment(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Comment
@@ -639,7 +639,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Status(self):
-        """状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
+        r"""状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
         :rtype: int
         """
         return self._Status
@@ -650,7 +650,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Connection(self):
-        """Tcc数据目录连接信息
+        r"""Tcc数据目录连接信息
         :rtype: :class:`tencentcloud.tccatalog.v20241024.models.TccConnectionConfig`
         """
         return self._Connection
@@ -661,7 +661,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人uin
+        r"""操作人uin
         :rtype: str
         """
         return self._Operator
@@ -672,7 +672,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -683,7 +683,7 @@ class TccCatalogConfig(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -716,7 +716,7 @@ class TccCatalogConfig(AbstractModel):
 
 
 class TccCatalogSet(AbstractModel):
-    """Tcc数据目录信息集合
+    r"""Tcc数据目录信息集合
 
     """
 
@@ -747,7 +747,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def Id(self):
-        """数据目录唯一id
+        r"""数据目录唯一id
         :rtype: str
         """
         return self._Id
@@ -758,7 +758,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def Name(self):
-        """数据目录名字
+        r"""数据目录名字
         :rtype: str
         """
         return self._Name
@@ -769,7 +769,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def Type(self):
-        """数据目录类型,当前支持：TCC-HIVE
+        r"""数据目录类型,当前支持：TCC-HIVE
         :rtype: str
         """
         return self._Type
@@ -780,7 +780,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def Status(self):
-        """状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
+        r"""状态信息：注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5
         :rtype: int
         """
         return self._Status
@@ -791,7 +791,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人uin
+        r"""操作人uin
         :rtype: str
         """
         return self._Operator
@@ -802,7 +802,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -813,7 +813,7 @@ class TccCatalogSet(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -842,7 +842,7 @@ class TccCatalogSet(AbstractModel):
 
 
 class TccConnection(AbstractModel):
-    """Tcc数据目录连接配置
+    r"""Tcc数据目录连接配置
 
     """
 
@@ -870,7 +870,7 @@ class TccConnection(AbstractModel):
 
     @property
     def EndpointServiceId(self):
-        """引擎终端节点服务Id
+        r"""引擎终端节点服务Id
         :rtype: str
         """
         return self._EndpointServiceId
@@ -881,7 +881,7 @@ class TccConnection(AbstractModel):
 
     @property
     def MetaStoreUrl(self):
-        """元数据连接串
+        r"""元数据连接串
         :rtype: str
         """
         return self._MetaStoreUrl
@@ -892,7 +892,7 @@ class TccConnection(AbstractModel):
 
     @property
     def NetWork(self):
-        """网络信息
+        r"""网络信息
         :rtype: :class:`tencentcloud.tccatalog.v20241024.models.NetWork`
         """
         return self._NetWork
@@ -903,7 +903,7 @@ class TccConnection(AbstractModel):
 
     @property
     def HiveVersion(self):
-        """hive版本
+        r"""hive版本
         :rtype: str
         """
         return self._HiveVersion
@@ -914,7 +914,7 @@ class TccConnection(AbstractModel):
 
     @property
     def Location(self):
-        """hive location
+        r"""hive location
         :rtype: str
         """
         return self._Location
@@ -925,7 +925,7 @@ class TccConnection(AbstractModel):
 
     @property
     def HmsEndpointServiceId(self):
-        """HMS终端节点服务
+        r"""HMS终端节点服务
         :rtype: str
         """
         return self._HmsEndpointServiceId
@@ -955,7 +955,7 @@ class TccConnection(AbstractModel):
 
 
 class TccConnectionConfig(AbstractModel):
-    """Tcc数据目录连接信息
+    r"""Tcc数据目录连接信息
 
     """
 
@@ -968,7 +968,7 @@ class TccConnectionConfig(AbstractModel):
 
     @property
     def TccHive(self):
-        """Tcc数据目录连接配置
+        r"""Tcc数据目录连接配置
         :rtype: :class:`tencentcloud.tccatalog.v20241024.models.TccConnection`
         """
         return self._TccHive

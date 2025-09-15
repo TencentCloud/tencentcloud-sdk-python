@@ -27,7 +27,7 @@ class NlpClient(AbstractClient):
 
 
     def AnalyzeSentiment(self, request):
-        """情感分析接口能够对带有情感色彩的主观性文本进行分析、处理、归纳和推理，识别出用户的情感倾向，是积极、中性还是消极，并且提供各自概率。
+        r"""情感分析接口能够对带有情感色彩的主观性文本进行分析、处理、归纳和推理，识别出用户的情感倾向，是积极、中性还是消极，并且提供各自概率。
 
         :param request: Request instance for AnalyzeSentiment.
         :type request: :class:`tencentcloud.nlp.v20190408.models.AnalyzeSentimentRequest`
@@ -50,7 +50,7 @@ class NlpClient(AbstractClient):
 
 
     def ClassifyContent(self, request):
-        """文本分类接口能够对用户输入的文章进行自动分类，将其映射到具体的类目上，用户只需要提供待分类的文本，而无需关注具体实现。该功能定义了一套较为完备的[三级分类体系](https://cloud.tencent.com/document/product/271/94286)，积累了数百万的语料，经过多轮迭代优化打造了较先进的深度学习模型，以保证效果不断提升。
+        r"""文本分类接口能够对用户输入的文章进行自动分类，将其映射到具体的类目上，用户只需要提供待分类的文本，而无需关注具体实现。该功能定义了一套较为完备的[三级分类体系](https://cloud.tencent.com/document/product/271/94286)，积累了数百万的语料，经过多轮迭代优化打造了较先进的深度学习模型，以保证效果不断提升。
 
         :param request: Request instance for ClassifyContent.
         :type request: :class:`tencentcloud.nlp.v20190408.models.ClassifyContentRequest`
@@ -73,7 +73,7 @@ class NlpClient(AbstractClient):
 
 
     def ComposeCouplet(self, request):
-        """对联生成接口根据用户输入的命题关键词，智能生成一副完整的春联，包括上联、下联和横批。该接口利用先进的自然语言处理技术，确保生成的春联既符合传统对仗、对韵、对义的要求，又具有新意和创意，为用户提供独特的春节祝福。
+        r"""对联生成接口根据用户输入的命题关键词，智能生成一副完整的春联，包括上联、下联和横批。该接口利用先进的自然语言处理技术，确保生成的春联既符合传统对仗、对韵、对义的要求，又具有新意和创意，为用户提供独特的春节祝福。
 
         :param request: Request instance for ComposeCouplet.
         :type request: :class:`tencentcloud.nlp.v20190408.models.ComposeCoupletRequest`
@@ -96,7 +96,7 @@ class NlpClient(AbstractClient):
 
 
     def EvaluateSentenceSimilarity(self, request):
-        """通过计算句子间的语义相似性，帮助您快速找到文本中重复或相似的句子，用于文本聚类、相似问题检索等应用场景。
+        r"""通过计算句子间的语义相似性，帮助您快速找到文本中重复或相似的句子，用于文本聚类、相似问题检索等应用场景。
 
         :param request: Request instance for EvaluateSentenceSimilarity.
         :type request: :class:`tencentcloud.nlp.v20190408.models.EvaluateSentenceSimilarityRequest`
@@ -119,7 +119,7 @@ class NlpClient(AbstractClient):
 
 
     def ParseWords(self, request):
-        """通过精准地对文本进行分词、词性标注、命名实体识别等功能，助您更好地理解文本内容，挖掘出潜在的价值信息。
+        r"""通过精准地对文本进行分词、词性标注、命名实体识别等功能，助您更好地理解文本内容，挖掘出潜在的价值信息。
 
         :param request: Request instance for ParseWords.
         :type request: :class:`tencentcloud.nlp.v20190408.models.ParseWordsRequest`
@@ -142,7 +142,7 @@ class NlpClient(AbstractClient):
 
 
     def SentenceCorrection(self, request):
-        """智能识别并纠正句子中的语法、拼写、用词等错误，确保文本的准确性和可读性。
+        r"""智能识别并纠正句子中的语法、拼写、用词等错误，确保文本的准确性和可读性。
 
         :param request: Request instance for SentenceCorrection.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SentenceCorrectionRequest`

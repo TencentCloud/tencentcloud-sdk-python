@@ -27,7 +27,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessGroup(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         创建权限组。
 
@@ -52,7 +52,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量创建权限规则，权限规则ID和创建时间无需填写。
 
@@ -77,7 +77,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateFileSystem(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         创建文件系统（异步）。
 
@@ -102,7 +102,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateLifeCycleRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
 
@@ -127,7 +127,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateMountPoint(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         创建文件系统挂载点，仅限于创建成功的文件系统。
 
@@ -152,7 +152,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateRestoreTasks(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量创建回热任务，回热任务ID、状态和创建时间无需填写。
 
@@ -177,7 +177,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessGroup(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         删除权限组。
 
@@ -202,7 +202,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量删除权限规则。
 
@@ -227,7 +227,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteFileSystem(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         删除文件系统，不允许删除非空文件系统。
 
@@ -252,7 +252,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteLifeCycleRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量删除生命周期规则。
 
@@ -277,7 +277,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteMountPoint(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         删除挂载点。
 
@@ -302,7 +302,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessGroups(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         查看权限组列表。
 
@@ -327,7 +327,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         通过权限组ID查看权限规则列表。
 
@@ -352,7 +352,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystem(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         查看文件系统详细信息。
 
@@ -377,7 +377,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystems(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         查看文件系统列表。
 
@@ -402,7 +402,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeLifeCycleRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         通过文件系统ID查看生命周期规则列表。
 
@@ -427,7 +427,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoint(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         查看挂载点详细信息。
 
@@ -452,7 +452,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoints(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         通过文件系统ID或者权限组ID查看挂载点列表。
 
@@ -477,7 +477,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeResourceTags(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         通过文件系统ID查看资源标签列表。
 
@@ -502,7 +502,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeRestoreTasks(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         通过文件系统ID查看回热任务列表。
 
@@ -527,7 +527,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessGroup(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         修改权限组属性。
 
@@ -552,7 +552,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
 
@@ -577,7 +577,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyFileSystem(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         修改文件系统属性，仅限于创建成功的文件系统。
 
@@ -602,7 +602,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyLifeCycleRules(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
 
@@ -627,7 +627,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyMountPoint(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         修改挂载点属性。
 
@@ -652,7 +652,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyResourceTags(self, request):
-        """云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+        r"""云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
 
         修改资源标签列表，全量覆盖。
 

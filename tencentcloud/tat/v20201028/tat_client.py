@@ -27,7 +27,7 @@ class TatClient(AbstractClient):
 
 
     def CancelInvocation(self, request):
-        """取消一台或多台实例执行的命令
+        r"""取消一台或多台实例执行的命令
 
         * 如果命令还未下发到agent，任务状态处于PENDING、DELIVERING、DELIVER_DELAYED，取消后任务状态是CANCELLED
         * 如果命令已下发到agent，任务状态处于RUNNING， 取消后任务状态是TERMINATED
@@ -53,7 +53,7 @@ class TatClient(AbstractClient):
 
 
     def CreateCommand(self, request):
-        """此接口用于创建命令。
+        r"""此接口用于创建命令。
 
         :param request: Request instance for CreateCommand.
         :type request: :class:`tencentcloud.tat.v20201028.models.CreateCommandRequest`
@@ -76,7 +76,7 @@ class TatClient(AbstractClient):
 
 
     def CreateInvoker(self, request):
-        """此接口用于创建执行器。
+        r"""此接口用于创建执行器。
 
         :param request: Request instance for CreateInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.CreateInvokerRequest`
@@ -99,7 +99,7 @@ class TatClient(AbstractClient):
 
 
     def CreateRegisterCode(self, request):
-        """接口用于创建注册码。
+        r"""接口用于创建注册码。
 
         :param request: Request instance for CreateRegisterCode.
         :type request: :class:`tencentcloud.tat.v20201028.models.CreateRegisterCodeRequest`
@@ -122,7 +122,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteCommand(self, request):
-        """此接口用于删除命令。
+        r"""此接口用于删除命令。
         如果命令与执行器关联，则无法被删除。
 
         :param request: Request instance for DeleteCommand.
@@ -146,7 +146,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteCommands(self, request):
-        """批量删除命令接口
+        r"""批量删除命令接口
 
         :param request: Request instance for DeleteCommands.
         :type request: :class:`tencentcloud.tat.v20201028.models.DeleteCommandsRequest`
@@ -169,7 +169,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteInvoker(self, request):
-        """此接口用于删除执行器。
+        r"""此接口用于删除执行器。
 
         :param request: Request instance for DeleteInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.DeleteInvokerRequest`
@@ -192,7 +192,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteRegisterCodes(self, request):
-        """此接口用于批量删除注册码。
+        r"""此接口用于批量删除注册码。
 
         :param request: Request instance for DeleteRegisterCodes.
         :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterCodesRequest`
@@ -215,7 +215,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteRegisterInstance(self, request):
-        """接口用于删除托管实例。
+        r"""接口用于删除托管实例。
 
         :param request: Request instance for DeleteRegisterInstance.
         :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterInstanceRequest`
@@ -238,7 +238,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeAutomationAgentStatus(self, request):
-        """此接口用于查询自动化助手客户端的状态。
+        r"""此接口用于查询自动化助手客户端的状态。
 
         :param request: Request instance for DescribeAutomationAgentStatus.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeAutomationAgentStatusRequest`
@@ -261,7 +261,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeCommands(self, request):
-        """此接口用于查询命令详情。
+        r"""此接口用于查询命令详情。
 
         :param request: Request instance for DescribeCommands.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeCommandsRequest`
@@ -284,7 +284,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvocationTasks(self, request):
-        """此接口用于查询执行任务详情。
+        r"""此接口用于查询执行任务详情。
 
         :param request: Request instance for DescribeInvocationTasks.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvocationTasksRequest`
@@ -307,7 +307,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvocations(self, request):
-        """此接口用于查询执行活动详情。
+        r"""此接口用于查询执行活动详情。
 
         :param request: Request instance for DescribeInvocations.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvocationsRequest`
@@ -330,7 +330,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvokerRecords(self, request):
-        """此接口用于查询执行器的执行记录。
+        r"""此接口用于查询执行器的执行记录。
 
         :param request: Request instance for DescribeInvokerRecords.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvokerRecordsRequest`
@@ -353,7 +353,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvokers(self, request):
-        """此接口用于查询执行器信息。
+        r"""此接口用于查询执行器信息。
 
         :param request: Request instance for DescribeInvokers.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvokersRequest`
@@ -376,7 +376,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeQuotas(self, request):
-        """此接口用于获取配额信息
+        r"""此接口用于获取配额信息
 
         :param request: Request instance for DescribeQuotas.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeQuotasRequest`
@@ -399,7 +399,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """此接口用于查询 TAT 产品后台地域列表。
+        r"""此接口用于查询 TAT 产品后台地域列表。
         RegionState 为 AVAILABLE，代表该地域的 TAT 后台服务已经可用；未返回，代表该地域的 TAT 后台服务尚不可用。
 
         :param request: Request instance for DescribeRegions.
@@ -423,7 +423,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeRegisterCodes(self, request):
-        """接口用于查询注册码信息。
+        r"""接口用于查询注册码信息。
 
         :param request: Request instance for DescribeRegisterCodes.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterCodesRequest`
@@ -446,7 +446,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeRegisterInstances(self, request):
-        """接口用于查询被托管的实例信息。
+        r"""接口用于查询被托管的实例信息。
 
         :param request: Request instance for DescribeRegisterInstances.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterInstancesRequest`
@@ -469,7 +469,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeScenes(self, request):
-        """此接口用于查询场景详情。
+        r"""此接口用于查询场景详情。
 
         :param request: Request instance for DescribeScenes.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeScenesRequest`
@@ -492,7 +492,7 @@ class TatClient(AbstractClient):
 
 
     def DisableInvoker(self, request):
-        """此接口用于停止执行器。
+        r"""此接口用于停止执行器。
 
         :param request: Request instance for DisableInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.DisableInvokerRequest`
@@ -515,7 +515,7 @@ class TatClient(AbstractClient):
 
 
     def DisableRegisterCodes(self, request):
-        """此接口用于批量禁用注册码。
+        r"""此接口用于批量禁用注册码。
 
         :param request: Request instance for DisableRegisterCodes.
         :type request: :class:`tencentcloud.tat.v20201028.models.DisableRegisterCodesRequest`
@@ -538,7 +538,7 @@ class TatClient(AbstractClient):
 
 
     def EnableInvoker(self, request):
-        """此接口用于启用执行器。
+        r"""此接口用于启用执行器。
 
         :param request: Request instance for EnableInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.EnableInvokerRequest`
@@ -561,7 +561,7 @@ class TatClient(AbstractClient):
 
 
     def InvokeCommand(self, request):
-        """在指定的实例上触发命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
+        r"""在指定的实例上触发命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
 
         * 如果指定实例未安装 agent，或 agent 不在线，返回失败
         * 如果命令类型与 agent 运行环境不符，返回失败
@@ -590,7 +590,7 @@ class TatClient(AbstractClient):
 
 
     def ModifyCommand(self, request):
-        """此接口用于修改命令。
+        r"""此接口用于修改命令。
 
         :param request: Request instance for ModifyCommand.
         :type request: :class:`tencentcloud.tat.v20201028.models.ModifyCommandRequest`
@@ -613,7 +613,7 @@ class TatClient(AbstractClient):
 
 
     def ModifyInvoker(self, request):
-        """此接口用于修改执行器。
+        r"""此接口用于修改执行器。
 
         :param request: Request instance for ModifyInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.ModifyInvokerRequest`
@@ -636,7 +636,7 @@ class TatClient(AbstractClient):
 
 
     def ModifyRegisterInstance(self, request):
-        """接口用于修改托管实例信息。
+        r"""接口用于修改托管实例信息。
 
         :param request: Request instance for ModifyRegisterInstance.
         :type request: :class:`tencentcloud.tat.v20201028.models.ModifyRegisterInstanceRequest`
@@ -659,7 +659,7 @@ class TatClient(AbstractClient):
 
 
     def PreviewReplacedCommandContent(self, request):
-        """此接口用于预览自定义参数替换后的命令内容。不会触发真实执行。
+        r"""此接口用于预览自定义参数替换后的命令内容。不会触发真实执行。
 
         :param request: Request instance for PreviewReplacedCommandContent.
         :type request: :class:`tencentcloud.tat.v20201028.models.PreviewReplacedCommandContentRequest`
@@ -682,7 +682,7 @@ class TatClient(AbstractClient):
 
 
     def RunCommand(self, request):
-        """执行命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
+        r"""执行命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
 
         * 如果指定实例未安装 agent，或 agent 不在线，返回失败
         * 如果命令类型与 agent 运行环境不符，返回失败

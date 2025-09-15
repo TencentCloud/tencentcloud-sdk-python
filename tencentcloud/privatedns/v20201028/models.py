@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountVpcInfo(AbstractModel):
-    """私有域解析账号Vpc信息
+    r"""私有域解析账号Vpc信息
 
     """
 
@@ -41,7 +41,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VpcId
+        r"""VpcId
         :rtype: str
         """
         return self._UniqVpcId
@@ -52,7 +52,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Vpc所属地区
+        r"""Vpc所属地区
         :rtype: str
         """
         return self._Region
@@ -63,7 +63,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """Vpc所属账号
+        r"""Vpc所属账号
         :rtype: str
         """
         return self._Uin
@@ -74,7 +74,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc资源名称
+        r"""vpc资源名称
         :rtype: str
         """
         return self._VpcName
@@ -100,7 +100,7 @@ class AccountVpcInfo(AbstractModel):
 
 
 class AccountVpcInfoOut(AbstractModel):
-    """查询关联账号VPC列表出参
+    r"""查询关联账号VPC列表出参
 
     """
 
@@ -122,7 +122,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcId
+        r"""VpcId
         :rtype: str
         """
         return self._VpcId
@@ -133,7 +133,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Region(self):
-        """Vpc所属地区: ap-guangzhou, ap-shanghai
+        r"""Vpc所属地区: ap-guangzhou, ap-shanghai
         :rtype: str
         """
         return self._Region
@@ -144,7 +144,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Uin(self):
-        """Vpc所属账号: 123456789
+        r"""Vpc所属账号: 123456789
         :rtype: str
         """
         return self._Uin
@@ -155,7 +155,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc资源名称：testname
+        r"""vpc资源名称：testname
         :rtype: str
         """
         return self._VpcName
@@ -181,7 +181,7 @@ class AccountVpcInfoOut(AbstractModel):
 
 
 class AccountVpcInfoOutput(AbstractModel):
-    """关联的VPC出参
+    r"""关联的VPC出参
 
     """
 
@@ -200,7 +200,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Uin(self):
-        """关联账户的uin
+        r"""关联账户的uin
         :rtype: str
         """
         return self._Uin
@@ -211,7 +211,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """vpcid
+        r"""vpcid
         :rtype: str
         """
         return self._UniqVpcId
@@ -222,7 +222,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -247,7 +247,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
 
 class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
-    """AddSpecifyPrivateZoneVpc请求参数结构体
+    r"""AddSpecifyPrivateZoneVpc请求参数结构体
 
     """
 
@@ -269,7 +269,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id
+        r"""私有域id
         :rtype: str
         """
         return self._ZoneId
@@ -280,7 +280,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """本次新增的vpc信息
+        r"""本次新增的vpc信息
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -291,7 +291,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """本次新增关联账户vpc信息
+        r"""本次新增关联账户vpc信息
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -302,7 +302,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def Sync(self):
-        """是否为同步操作
+        r"""是否为同步操作
         :rtype: bool
         """
         return self._Sync
@@ -338,7 +338,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
 
 class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
-    """AddSpecifyPrivateZoneVpc返回参数结构体
+    r"""AddSpecifyPrivateZoneVpc返回参数结构体
 
     """
 
@@ -363,7 +363,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """zone id
+        r"""zone id
         :rtype: str
         """
         return self._ZoneId
@@ -374,7 +374,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """本次新增的vpc
+        r"""本次新增的vpc
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -385,7 +385,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """本次新增的关联账号vpc
+        r"""本次新增的关联账号vpc
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -396,7 +396,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def UniqId(self):
-        """唯一id
+        r"""唯一id
         :rtype: str
         """
         return self._UniqId
@@ -407,7 +407,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -436,7 +436,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
 
 class AuditLog(AbstractModel):
-    """操作日志
+    r"""操作日志
 
     """
 
@@ -458,7 +458,7 @@ class AuditLog(AbstractModel):
 
     @property
     def Resource(self):
-        """日志类型
+        r"""日志类型
         :rtype: str
         """
         return self._Resource
@@ -469,7 +469,7 @@ class AuditLog(AbstractModel):
 
     @property
     def Metric(self):
-        """日志表名
+        r"""日志表名
         :rtype: str
         """
         return self._Metric
@@ -480,7 +480,7 @@ class AuditLog(AbstractModel):
 
     @property
     def TotalCount(self):
-        """日志总数
+        r"""日志总数
         :rtype: int
         """
         return self._TotalCount
@@ -491,7 +491,7 @@ class AuditLog(AbstractModel):
 
     @property
     def DataSet(self):
-        """日志列表
+        r"""日志列表
         :rtype: list of AuditLogInfo
         """
         return self._DataSet
@@ -522,7 +522,7 @@ class AuditLog(AbstractModel):
 
 
 class AuditLogInfo(AbstractModel):
-    """日志详情
+    r"""日志详情
 
     """
 
@@ -541,7 +541,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Date(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Date
@@ -552,7 +552,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def OperatorUin(self):
-        """操作人uin
+        r"""操作人uin
         :rtype: str
         """
         return self._OperatorUin
@@ -563,7 +563,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Content(self):
-        """日志内容
+        r"""日志内容
         :rtype: str
         """
         return self._Content
@@ -588,7 +588,7 @@ class AuditLogInfo(AbstractModel):
 
 
 class CreatePrivateDNSAccountRequest(AbstractModel):
-    """CreatePrivateDNSAccount请求参数结构体
+    r"""CreatePrivateDNSAccount请求参数结构体
 
     """
 
@@ -601,7 +601,7 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
     @property
     def Account(self):
-        """私有域解析账号
+        r"""私有域解析账号
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
         """
         return self._Account
@@ -626,7 +626,7 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
 
 class CreatePrivateDNSAccountResponse(AbstractModel):
-    """CreatePrivateDNSAccount返回参数结构体
+    r"""CreatePrivateDNSAccount返回参数结构体
 
     """
 
@@ -639,7 +639,7 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -654,7 +654,7 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
 
 
 class CreatePrivateZoneRecordRequest(AbstractModel):
-    """CreatePrivateZoneRecord请求参数结构体
+    r"""CreatePrivateZoneRecord请求参数结构体
 
     """
 
@@ -688,7 +688,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -699,7 +699,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -710,7 +710,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子域名，例如 "www", "m", "@"
+        r"""子域名，例如 "www", "m", "@"
         :rtype: str
         """
         return self._SubDomain
@@ -721,7 +721,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
-        """记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        r"""记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
         :rtype: str
         """
         return self._RecordValue
@@ -732,7 +732,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """记录权重，值为1-100
+        r"""记录权重，值为1-100
         :rtype: int
         """
         return self._Weight
@@ -743,7 +743,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
         :rtype: int
         """
         return self._MX
@@ -754,7 +754,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :rtype: int
         """
         return self._TTL
@@ -765,7 +765,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -795,7 +795,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
 
 class CreatePrivateZoneRecordResponse(AbstractModel):
-    """CreatePrivateZoneRecord返回参数结构体
+    r"""CreatePrivateZoneRecord返回参数结构体
 
     """
 
@@ -811,7 +811,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录Id
+        r"""记录Id
         :rtype: str
         """
         return self._RecordId
@@ -822,7 +822,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -838,7 +838,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
 
 class CreatePrivateZoneRequest(AbstractModel):
-    """CreatePrivateZone请求参数结构体
+    r"""CreatePrivateZone请求参数结构体
 
     """
 
@@ -872,7 +872,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名，格式必须是标准的TLD
+        r"""域名，格式必须是标准的TLD
         :rtype: str
         """
         return self._Domain
@@ -883,7 +883,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        """创建私有域的同时，为其打上标签
+        r"""创建私有域的同时，为其打上标签
         :rtype: list of TagInfo
         """
         return self._TagSet
@@ -894,7 +894,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """创建私有域的同时，将其关联至VPC
+        r"""创建私有域的同时，将其关联至VPC
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -905,7 +905,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -916,7 +916,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
-        """是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
+        r"""是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -929,7 +929,7 @@ class CreatePrivateZoneRequest(AbstractModel):
     def Vpcs(self):
         warnings.warn("parameter `Vpcs` is deprecated", DeprecationWarning) 
 
-        """创建私有域的同时，将其关联至VPC
+        r"""创建私有域的同时，将其关联至VPC
         :rtype: list of VpcInfo
         """
         return self._Vpcs
@@ -942,7 +942,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """创建私有域同时绑定关联账号的VPC
+        r"""创建私有域同时绑定关联账号的VPC
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -953,7 +953,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
-        """是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
+        r"""是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -1003,7 +1003,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
 
 class CreatePrivateZoneResponse(AbstractModel):
-    """CreatePrivateZone返回参数结构体
+    r"""CreatePrivateZone返回参数结构体
 
     """
 
@@ -1022,7 +1022,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID, zone-12sa5ce78
+        r"""私有域ID, zone-12sa5ce78
         :rtype: str
         """
         return self._ZoneId
@@ -1033,7 +1033,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def Domain(self):
-        """私有域名
+        r"""私有域名
         :rtype: str
         """
         return self._Domain
@@ -1044,7 +1044,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1061,7 +1061,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
 
 class DatePoint(AbstractModel):
-    """时间统计值
+    r"""时间统计值
 
     """
 
@@ -1077,7 +1077,7 @@ class DatePoint(AbstractModel):
 
     @property
     def Date(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Date
@@ -1088,7 +1088,7 @@ class DatePoint(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: int
         """
         return self._Value
@@ -1112,7 +1112,7 @@ class DatePoint(AbstractModel):
 
 
 class DeletePrivateDNSAccountRequest(AbstractModel):
-    """DeletePrivateDNSAccount请求参数结构体
+    r"""DeletePrivateDNSAccount请求参数结构体
 
     """
 
@@ -1125,7 +1125,7 @@ class DeletePrivateDNSAccountRequest(AbstractModel):
 
     @property
     def Account(self):
-        """私有域解析账号
+        r"""私有域解析账号
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
         """
         return self._Account
@@ -1150,7 +1150,7 @@ class DeletePrivateDNSAccountRequest(AbstractModel):
 
 
 class DeletePrivateDNSAccountResponse(AbstractModel):
-    """DeletePrivateDNSAccount返回参数结构体
+    r"""DeletePrivateDNSAccount返回参数结构体
 
     """
 
@@ -1163,7 +1163,7 @@ class DeletePrivateDNSAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1178,7 +1178,7 @@ class DeletePrivateDNSAccountResponse(AbstractModel):
 
 
 class DeletePrivateZoneRecordRequest(AbstractModel):
-    """DeletePrivateZoneRecord请求参数结构体
+    r"""DeletePrivateZoneRecord请求参数结构体
 
     """
 
@@ -1197,7 +1197,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -1208,7 +1208,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
+        r"""记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
         :rtype: str
         """
         return self._RecordId
@@ -1219,7 +1219,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordIdSet(self):
-        """记录ID数组，RecordId 优先
+        r"""记录ID数组，RecordId 优先
         :rtype: list of str
         """
         return self._RecordIdSet
@@ -1244,7 +1244,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
 
 class DeletePrivateZoneRecordResponse(AbstractModel):
-    """DeletePrivateZoneRecord返回参数结构体
+    r"""DeletePrivateZoneRecord返回参数结构体
 
     """
 
@@ -1257,7 +1257,7 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1272,7 +1272,7 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
 
 class DeletePrivateZoneRequest(AbstractModel):
-    """DeletePrivateZone请求参数结构体
+    r"""DeletePrivateZone请求参数结构体
 
     """
 
@@ -1288,7 +1288,7 @@ class DeletePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -1299,7 +1299,7 @@ class DeletePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneIdSet(self):
-        """私有域ID数组，ZoneId 优先
+        r"""私有域ID数组，ZoneId 优先
         :rtype: list of str
         """
         return self._ZoneIdSet
@@ -1323,7 +1323,7 @@ class DeletePrivateZoneRequest(AbstractModel):
 
 
 class DeletePrivateZoneResponse(AbstractModel):
-    """DeletePrivateZone返回参数结构体
+    r"""DeletePrivateZone返回参数结构体
 
     """
 
@@ -1336,7 +1336,7 @@ class DeletePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1351,7 +1351,7 @@ class DeletePrivateZoneResponse(AbstractModel):
 
 
 class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
-    """DeleteSpecifyPrivateZoneVpc请求参数结构体
+    r"""DeleteSpecifyPrivateZoneVpc请求参数结构体
 
     """
 
@@ -1373,7 +1373,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id
+        r"""私有域id
         :rtype: str
         """
         return self._ZoneId
@@ -1384,7 +1384,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """本次删除的VPC
+        r"""本次删除的VPC
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -1395,7 +1395,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """本次删除的关联账户VPC
+        r"""本次删除的关联账户VPC
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -1406,7 +1406,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def Sync(self):
-        """是否为同步操作
+        r"""是否为同步操作
         :rtype: bool
         """
         return self._Sync
@@ -1442,7 +1442,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
 
 class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
-    """DeleteSpecifyPrivateZoneVpc返回参数结构体
+    r"""DeleteSpecifyPrivateZoneVpc返回参数结构体
 
     """
 
@@ -1467,7 +1467,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id
+        r"""私有域id
         :rtype: str
         """
         return self._ZoneId
@@ -1478,7 +1478,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """本次删除的VPC
+        r"""本次删除的VPC
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -1489,7 +1489,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """本次删除的关联账户的VPC
+        r"""本次删除的关联账户的VPC
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -1500,7 +1500,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def UniqId(self):
-        """唯一id
+        r"""唯一id
         :rtype: str
         """
         return self._UniqId
@@ -1511,7 +1511,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1540,7 +1540,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
 
 class DescribeAccountVpcListRequest(AbstractModel):
-    """DescribeAccountVpcList请求参数结构体
+    r"""DescribeAccountVpcList请求参数结构体
 
     """
 
@@ -1562,7 +1562,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def AccountUin(self):
-        """关联账号的uin
+        r"""关联账号的uin
         :rtype: str
         """
         return self._AccountUin
@@ -1573,7 +1573,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
         :rtype: int
         """
         return self._Offset
@@ -1584,7 +1584,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制数目， 最大100，默认20
+        r"""分页限制数目， 最大100，默认20
         :rtype: int
         """
         return self._Limit
@@ -1595,7 +1595,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: list of Filter
         """
         return self._Filters
@@ -1626,7 +1626,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
 
 class DescribeAccountVpcListResponse(AbstractModel):
-    """DescribeAccountVpcList返回参数结构体
+    r"""DescribeAccountVpcList返回参数结构体
 
     """
 
@@ -1645,7 +1645,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """VPC数量
+        r"""VPC数量
         :rtype: int
         """
         return self._TotalCount
@@ -1656,7 +1656,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """VPC 列表
+        r"""VPC 列表
         :rtype: list of AccountVpcInfoOut
         """
         return self._VpcSet
@@ -1667,7 +1667,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1689,7 +1689,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
 
 class DescribeAuditLogRequest(AbstractModel):
-    """DescribeAuditLog请求参数结构体
+    r"""DescribeAuditLog请求参数结构体
 
     """
 
@@ -1714,7 +1714,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
-        """请求量统计起始时间
+        r"""请求量统计起始时间
         :rtype: str
         """
         return self._TimeRangeBegin
@@ -1725,7 +1725,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
+        r"""筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
         :rtype: list of Filter
         """
         return self._Filters
@@ -1736,7 +1736,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
-        """请求量统计结束时间
+        r"""请求量统计结束时间
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -1747,7 +1747,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
         :rtype: int
         """
         return self._Offset
@@ -1758,7 +1758,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制数目， 最大100，默认20
+        r"""分页限制数目， 最大100，默认20
         :rtype: int
         """
         return self._Limit
@@ -1790,7 +1790,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
 
 class DescribeAuditLogResponse(AbstractModel):
-    """DescribeAuditLog返回参数结构体
+    r"""DescribeAuditLog返回参数结构体
 
     """
 
@@ -1806,7 +1806,7 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        """操作日志列表
+        r"""操作日志列表
         :rtype: list of AuditLog
         """
         return self._Data
@@ -1817,7 +1817,7 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1838,13 +1838,13 @@ class DescribeAuditLogResponse(AbstractModel):
 
 
 class DescribeDashboardRequest(AbstractModel):
-    """DescribeDashboard请求参数结构体
+    r"""DescribeDashboard请求参数结构体
 
     """
 
 
 class DescribeDashboardResponse(AbstractModel):
-    """DescribeDashboard返回参数结构体
+    r"""DescribeDashboard返回参数结构体
 
     """
 
@@ -1869,7 +1869,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneTotal(self):
-        """私有域解析总数
+        r"""私有域解析总数
         :rtype: int
         """
         return self._ZoneTotal
@@ -1880,7 +1880,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneVpcCount(self):
-        """私有域关联VPC数量
+        r"""私有域关联VPC数量
         :rtype: int
         """
         return self._ZoneVpcCount
@@ -1891,7 +1891,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestTotalCount(self):
-        """历史请求量总数
+        r"""历史请求量总数
         :rtype: int
         """
         return self._RequestTotalCount
@@ -1902,7 +1902,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def FlowUsage(self):
-        """流量包用量
+        r"""流量包用量
         :rtype: list of FlowUsage
         """
         return self._FlowUsage
@@ -1913,7 +1913,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1937,7 +1937,7 @@ class DescribeDashboardResponse(AbstractModel):
 
 
 class DescribePrivateDNSAccountListRequest(AbstractModel):
-    """DescribePrivateDNSAccountList请求参数结构体
+    r"""DescribePrivateDNSAccountList请求参数结构体
 
     """
 
@@ -1956,7 +1956,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
         :rtype: int
         """
         return self._Offset
@@ -1967,7 +1967,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制数目， 最大100，默认20
+        r"""分页限制数目， 最大100，默认20
         :rtype: int
         """
         return self._Limit
@@ -1978,7 +1978,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: list of Filter
         """
         return self._Filters
@@ -2008,7 +2008,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
 
 class DescribePrivateDNSAccountListResponse(AbstractModel):
-    """DescribePrivateDNSAccountList返回参数结构体
+    r"""DescribePrivateDNSAccountList返回参数结构体
 
     """
 
@@ -2027,7 +2027,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """私有域解析账号数量
+        r"""私有域解析账号数量
         :rtype: int
         """
         return self._TotalCount
@@ -2038,7 +2038,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def AccountSet(self):
-        """私有域解析账号列表
+        r"""私有域解析账号列表
         :rtype: list of PrivateDNSAccount
         """
         return self._AccountSet
@@ -2049,7 +2049,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2071,7 +2071,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
 
 class DescribePrivateZoneListRequest(AbstractModel):
-    """DescribePrivateZoneList请求参数结构体
+    r"""DescribePrivateZoneList请求参数结构体
 
     """
 
@@ -2090,7 +2090,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
         :rtype: int
         """
         return self._Offset
@@ -2101,7 +2101,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制数目， 最大100，默认20
+        r"""分页限制数目， 最大100，默认20
         :rtype: int
         """
         return self._Limit
@@ -2112,7 +2112,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: list of Filter
         """
         return self._Filters
@@ -2142,7 +2142,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
 
 class DescribePrivateZoneListResponse(AbstractModel):
-    """DescribePrivateZoneList返回参数结构体
+    r"""DescribePrivateZoneList返回参数结构体
 
     """
 
@@ -2161,7 +2161,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """私有域数量
+        r"""私有域数量
         :rtype: int
         """
         return self._TotalCount
@@ -2172,7 +2172,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def PrivateZoneSet(self):
-        """私有域列表
+        r"""私有域列表
         :rtype: list of PrivateZone
         """
         return self._PrivateZoneSet
@@ -2183,7 +2183,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2205,7 +2205,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
 
 class DescribePrivateZoneRecordListRequest(AbstractModel):
-    """DescribePrivateZoneRecordList请求参数结构体
+    r"""DescribePrivateZoneRecordList请求参数结构体
 
     """
 
@@ -2227,7 +2227,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID: zone-12c5a6e8
+        r"""私有域ID: zone-12c5a6e8
         :rtype: str
         """
         return self._ZoneId
@@ -2238,7 +2238,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数（支持使用Value、RecordType过滤）
+        r"""过滤参数（支持使用Value、RecordType过滤）
         :rtype: list of Filter
         """
         return self._Filters
@@ -2249,7 +2249,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
         :rtype: int
         """
         return self._Offset
@@ -2260,7 +2260,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制数目， 最大200，默认20
+        r"""分页限制数目， 最大200，默认20
         :rtype: int
         """
         return self._Limit
@@ -2291,7 +2291,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
 
 class DescribePrivateZoneRecordListResponse(AbstractModel):
-    """DescribePrivateZoneRecordList返回参数结构体
+    r"""DescribePrivateZoneRecordList返回参数结构体
 
     """
 
@@ -2310,7 +2310,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """解析记录数量
+        r"""解析记录数量
         :rtype: int
         """
         return self._TotalCount
@@ -2321,7 +2321,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RecordSet(self):
-        """解析记录列表
+        r"""解析记录列表
         :rtype: list of PrivateZoneRecord
         """
         return self._RecordSet
@@ -2332,7 +2332,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2354,7 +2354,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
 
 class DescribePrivateZoneRequest(AbstractModel):
-    """DescribePrivateZone请求参数结构体
+    r"""DescribePrivateZone请求参数结构体
 
     """
 
@@ -2367,7 +2367,7 @@ class DescribePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id
+        r"""私有域id
         :rtype: str
         """
         return self._ZoneId
@@ -2390,7 +2390,7 @@ class DescribePrivateZoneRequest(AbstractModel):
 
 
 class DescribePrivateZoneResponse(AbstractModel):
-    """DescribePrivateZone返回参数结构体
+    r"""DescribePrivateZone返回参数结构体
 
     """
 
@@ -2406,7 +2406,7 @@ class DescribePrivateZoneResponse(AbstractModel):
 
     @property
     def PrivateZone(self):
-        """私有域详情
+        r"""私有域详情
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateZone`
         """
         return self._PrivateZone
@@ -2417,7 +2417,7 @@ class DescribePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2435,13 +2435,13 @@ class DescribePrivateZoneResponse(AbstractModel):
 
 
 class DescribePrivateZoneServiceRequest(AbstractModel):
-    """DescribePrivateZoneService请求参数结构体
+    r"""DescribePrivateZoneService请求参数结构体
 
     """
 
 
 class DescribePrivateZoneServiceResponse(AbstractModel):
-    """DescribePrivateZoneService返回参数结构体
+    r"""DescribePrivateZoneService返回参数结构体
 
     """
 
@@ -2457,7 +2457,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        """私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
+        r"""私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
         :rtype: str
         """
         return self._ServiceStatus
@@ -2468,7 +2468,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2484,13 +2484,13 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
 
 class DescribeQuotaUsageRequest(AbstractModel):
-    """DescribeQuotaUsage请求参数结构体
+    r"""DescribeQuotaUsage请求参数结构体
 
     """
 
 
 class DescribeQuotaUsageResponse(AbstractModel):
-    """DescribeQuotaUsage返回参数结构体
+    r"""DescribeQuotaUsage返回参数结构体
 
     """
 
@@ -2506,7 +2506,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def TldQuota(self):
-        """Tld额度使用情况
+        r"""Tld额度使用情况
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
         """
         return self._TldQuota
@@ -2517,7 +2517,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2535,7 +2535,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
 
 class DescribeRecordRequest(AbstractModel):
-    """DescribeRecord请求参数结构体
+    r"""DescribeRecord请求参数结构体
 
     """
 
@@ -2551,7 +2551,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -2562,7 +2562,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录ID
+        r"""记录ID
         :rtype: str
         """
         return self._RecordId
@@ -2586,7 +2586,7 @@ class DescribeRecordRequest(AbstractModel):
 
 
 class DescribeRecordResponse(AbstractModel):
-    """DescribeRecord返回参数结构体
+    r"""DescribeRecord返回参数结构体
 
     """
 
@@ -2602,7 +2602,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RecordInfo(self):
-        """记录信息
+        r"""记录信息
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.RecordInfo`
         """
         return self._RecordInfo
@@ -2613,7 +2613,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2631,7 +2631,7 @@ class DescribeRecordResponse(AbstractModel):
 
 
 class DescribeRequestDataRequest(AbstractModel):
-    """DescribeRequestData请求参数结构体
+    r"""DescribeRequestData请求参数结构体
 
     """
 
@@ -2653,7 +2653,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
-        """请求量统计起始时间，格式：2020-11-22 00:00:00
+        r"""请求量统计起始时间，格式：2020-11-22 00:00:00
         :rtype: str
         """
         return self._TimeRangeBegin
@@ -2664,7 +2664,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选参数：
+        r"""筛选参数：
         :rtype: list of Filter
         """
         return self._Filters
@@ -2675,7 +2675,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
-        """请求量统计结束时间，格式：2020-11-22 23:59:59
+        r"""请求量统计结束时间，格式：2020-11-22 23:59:59
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -2686,7 +2686,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def Export(self):
-        """是否导出：true导出，false不导出
+        r"""是否导出：true导出，false不导出
         :rtype: bool
         """
         return self._Export
@@ -2717,7 +2717,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
 
 class DescribeRequestDataResponse(AbstractModel):
-    """DescribeRequestData返回参数结构体
+    r"""DescribeRequestData返回参数结构体
 
     """
 
@@ -2739,7 +2739,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """请求量统计表
+        r"""请求量统计表
         :rtype: list of MetricData
         """
         return self._Data
@@ -2750,7 +2750,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Interval(self):
-        """请求量单位时间: Day：天，Hour：小时
+        r"""请求量单位时间: Day：天，Hour：小时
         :rtype: str
         """
         return self._Interval
@@ -2761,7 +2761,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Url(self):
-        """导出数据下载地址
+        r"""导出数据下载地址
         :rtype: str
         """
         return self._Url
@@ -2772,7 +2772,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2795,7 +2795,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """筛选参数
+    r"""筛选参数
 
     """
 
@@ -2811,7 +2811,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._Name
@@ -2822,7 +2822,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """参数值数组
+        r"""参数值数组
         :rtype: list of str
         """
         return self._Values
@@ -2846,7 +2846,7 @@ class Filter(AbstractModel):
 
 
 class FlowUsage(AbstractModel):
-    """流量包用量
+    r"""流量包用量
 
     """
 
@@ -2865,7 +2865,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def FlowType(self):
-        """流量包类型：ZONE 私有域；TRAFFIC 解析流量包
+        r"""流量包类型：ZONE 私有域；TRAFFIC 解析流量包
         :rtype: str
         """
         return self._FlowType
@@ -2876,7 +2876,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def TotalQuantity(self):
-        """流量包总额度
+        r"""流量包总额度
         :rtype: int
         """
         return self._TotalQuantity
@@ -2887,7 +2887,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def AvailableQuantity(self):
-        """流量包可用额度
+        r"""流量包可用额度
         :rtype: int
         """
         return self._AvailableQuantity
@@ -2912,7 +2912,7 @@ class FlowUsage(AbstractModel):
 
 
 class MetricData(AbstractModel):
-    """统计数据表
+    r"""统计数据表
 
     """
 
@@ -2934,7 +2934,7 @@ class MetricData(AbstractModel):
 
     @property
     def Resource(self):
-        """资源描述
+        r"""资源描述
         :rtype: str
         """
         return self._Resource
@@ -2945,7 +2945,7 @@ class MetricData(AbstractModel):
 
     @property
     def Metric(self):
-        """表名
+        r"""表名
         :rtype: str
         """
         return self._Metric
@@ -2956,7 +2956,7 @@ class MetricData(AbstractModel):
 
     @property
     def DataSet(self):
-        """表数据
+        r"""表数据
         :rtype: list of DatePoint
         """
         return self._DataSet
@@ -2967,7 +2967,7 @@ class MetricData(AbstractModel):
 
     @property
     def MetricCount(self):
-        """查询范围内的请求总量
+        r"""查询范围内的请求总量
         :rtype: int
         """
         return self._MetricCount
@@ -2998,7 +2998,7 @@ class MetricData(AbstractModel):
 
 
 class ModifyPrivateZoneRecordRequest(AbstractModel):
-    """ModifyPrivateZoneRecord请求参数结构体
+    r"""ModifyPrivateZoneRecord请求参数结构体
 
     """
 
@@ -3035,7 +3035,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -3046,7 +3046,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录ID
+        r"""记录ID
         :rtype: str
         """
         return self._RecordId
@@ -3057,7 +3057,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -3068,7 +3068,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子域名，例如 "www", "m", "@"
+        r"""子域名，例如 "www", "m", "@"
         :rtype: str
         """
         return self._SubDomain
@@ -3079,7 +3079,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
-        """记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        r"""记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
         :rtype: str
         """
         return self._RecordValue
@@ -3090,7 +3090,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """记录权重，值为1-100
+        r"""记录权重，值为1-100
         :rtype: int
         """
         return self._Weight
@@ -3101,7 +3101,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
         :rtype: int
         """
         return self._MX
@@ -3112,7 +3112,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :rtype: int
         """
         return self._TTL
@@ -3123,7 +3123,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3154,7 +3154,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
 
 class ModifyPrivateZoneRecordResponse(AbstractModel):
-    """ModifyPrivateZoneRecord返回参数结构体
+    r"""ModifyPrivateZoneRecord返回参数结构体
 
     """
 
@@ -3167,7 +3167,7 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3182,7 +3182,7 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
 
 class ModifyPrivateZoneRequest(AbstractModel):
-    """ModifyPrivateZone请求参数结构体
+    r"""ModifyPrivateZone请求参数结构体
 
     """
 
@@ -3204,7 +3204,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -3215,7 +3215,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3226,7 +3226,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
-        """是否开启子域名递归, ENABLED， DISABLED
+        r"""是否开启子域名递归, ENABLED， DISABLED
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -3237,7 +3237,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
-        """是否开启CNAME加速：ENABLED， DISABLED
+        r"""是否开启CNAME加速：ENABLED， DISABLED
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -3263,7 +3263,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
 
 class ModifyPrivateZoneResponse(AbstractModel):
-    """ModifyPrivateZone返回参数结构体
+    r"""ModifyPrivateZone返回参数结构体
 
     """
 
@@ -3276,7 +3276,7 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3291,7 +3291,7 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
 
 class ModifyPrivateZoneVpcRequest(AbstractModel):
-    """ModifyPrivateZoneVpc请求参数结构体
+    r"""ModifyPrivateZoneVpc请求参数结构体
 
     """
 
@@ -3310,7 +3310,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -3321,7 +3321,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """私有域关联的全部VPC列表
+        r"""私有域关联的全部VPC列表
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -3332,7 +3332,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """私有域账号关联的全部VPC列表
+        r"""私有域账号关联的全部VPC列表
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -3367,7 +3367,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
 
 class ModifyPrivateZoneVpcResponse(AbstractModel):
-    """ModifyPrivateZoneVpc返回参数结构体
+    r"""ModifyPrivateZoneVpc返回参数结构体
 
     """
 
@@ -3389,7 +3389,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID, zone-12e45ds6
+        r"""私有域ID, zone-12e45ds6
         :rtype: str
         """
         return self._ZoneId
@@ -3400,7 +3400,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """解析域关联的VPC列表
+        r"""解析域关联的VPC列表
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -3411,7 +3411,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """私有域账号关联的全部VPC列表
+        r"""私有域账号关联的全部VPC列表
         :rtype: list of AccountVpcInfoOutput
         """
         return self._AccountVpcSet
@@ -3422,7 +3422,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3450,7 +3450,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
 
 class ModifyRecordsStatusRequest(AbstractModel):
-    """ModifyRecordsStatus请求参数结构体
+    r"""ModifyRecordsStatus请求参数结构体
 
     """
 
@@ -3469,7 +3469,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -3480,7 +3480,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def RecordIds(self):
-        """解析记录ID列表
+        r"""解析记录ID列表
         :rtype: list of int
         """
         return self._RecordIds
@@ -3491,7 +3491,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """enabled：生效，disabled：失效
+        r"""enabled：生效，disabled：失效
         :rtype: str
         """
         return self._Status
@@ -3516,7 +3516,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
 
 class ModifyRecordsStatusResponse(AbstractModel):
-    """ModifyRecordsStatus返回参数结构体
+    r"""ModifyRecordsStatus返回参数结构体
 
     """
 
@@ -3538,7 +3538,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID
+        r"""私有域ID
         :rtype: str
         """
         return self._ZoneId
@@ -3549,7 +3549,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RecordIds(self):
-        """解析记录ID列表
+        r"""解析记录ID列表
         :rtype: list of int
         """
         return self._RecordIds
@@ -3560,7 +3560,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """enabled：生效，disabled：失效
+        r"""enabled：生效，disabled：失效
         :rtype: str
         """
         return self._Status
@@ -3571,7 +3571,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3589,7 +3589,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
 
 class PrivateDNSAccount(AbstractModel):
-    """私有域解析账号
+    r"""私有域解析账号
 
     """
 
@@ -3608,7 +3608,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Uin(self):
-        """主账号Uin
+        r"""主账号Uin
         :rtype: str
         """
         return self._Uin
@@ -3619,7 +3619,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Account(self):
-        """主账号名称
+        r"""主账号名称
         :rtype: str
         """
         return self._Account
@@ -3630,7 +3630,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Nickname(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nickname
@@ -3655,7 +3655,7 @@ class PrivateDNSAccount(AbstractModel):
 
 
 class PrivateZone(AbstractModel):
-    """私有域信息
+    r"""私有域信息
 
     """
 
@@ -3724,7 +3724,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id: zone-xxxxxxxx
+        r"""私有域id: zone-xxxxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -3735,7 +3735,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """域名所有者uin
+        r"""域名所有者uin
         :rtype: int
         """
         return self._OwnerUin
@@ -3746,7 +3746,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def Domain(self):
-        """私有域名
+        r"""私有域名
         :rtype: str
         """
         return self._Domain
@@ -3757,7 +3757,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -3768,7 +3768,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -3779,7 +3779,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数
+        r"""记录数
         :rtype: int
         """
         return self._RecordCount
@@ -3790,7 +3790,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3801,7 +3801,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def VpcSet(self):
-        """绑定的Vpc列表
+        r"""绑定的Vpc列表
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -3812,7 +3812,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def Status(self):
-        """私有域绑定VPC状态，未关联vpc：SUSPEND，已关联VPC：ENABLED
+        r"""私有域绑定VPC状态，未关联vpc：SUSPEND，已关联VPC：ENABLED
 ，关联VPC失败：FAILED
         :rtype: str
         """
@@ -3824,7 +3824,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
-        """域名递归解析状态：开通：ENABLED, 关闭，DISABLED
+        r"""域名递归解析状态：开通：ENABLED, 关闭，DISABLED
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -3835,7 +3835,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def Tags(self):
-        """标签键值对集合
+        r"""标签键值对集合
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -3846,7 +3846,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """绑定的关联账号的vpc列表
+        r"""绑定的关联账号的vpc列表
         :rtype: list of AccountVpcInfoOutput
         """
         return self._AccountVpcSet
@@ -3857,7 +3857,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def IsCustomTld(self):
-        """是否自定义TLD
+        r"""是否自定义TLD
         :rtype: bool
         """
         return self._IsCustomTld
@@ -3868,7 +3868,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
-        """CNAME加速状态：开通：ENABLED, 关闭，DISABLED
+        r"""CNAME加速状态：开通：ENABLED, 关闭，DISABLED
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -3879,7 +3879,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardRuleName(self):
-        """转发规则名称
+        r"""转发规则名称
         :rtype: str
         """
         return self._ForwardRuleName
@@ -3890,7 +3890,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardRuleType(self):
-        """转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
+        r"""转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
         :rtype: str
         """
         return self._ForwardRuleType
@@ -3901,7 +3901,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardAddress(self):
-        """转发的地址
+        r"""转发的地址
         :rtype: str
         """
         return self._ForwardAddress
@@ -3912,7 +3912,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def EndPointName(self):
-        """终端节点名称
+        r"""终端节点名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3924,7 +3924,7 @@ class PrivateZone(AbstractModel):
 
     @property
     def DeletedVpcSet(self):
-        """已删除的vpc
+        r"""已删除的vpc
         :rtype: list of VpcInfo
         """
         return self._DeletedVpcSet
@@ -3985,7 +3985,7 @@ class PrivateZone(AbstractModel):
 
 
 class PrivateZoneRecord(AbstractModel):
-    """私有域信息
+    r"""私有域信息
 
     """
 
@@ -4039,7 +4039,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录id
+        r"""记录id
         :rtype: str
         """
         return self._RecordId
@@ -4050,7 +4050,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id: zone-xxxxxxxx
+        r"""私有域id: zone-xxxxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -4061,7 +4061,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子域名
+        r"""子域名
         :rtype: str
         """
         return self._SubDomain
@@ -4072,7 +4072,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -4083,7 +4083,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordValue(self):
-        """记录值
+        r"""记录值
         :rtype: str
         """
         return self._RecordValue
@@ -4094,7 +4094,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def TTL(self):
-        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :rtype: int
         """
         return self._TTL
@@ -4105,7 +4105,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def MX(self):
-        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
         :rtype: int
         """
         return self._MX
@@ -4116,7 +4116,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Status(self):
-        """记录状态：ENABLED
+        r"""记录状态：ENABLED
         :rtype: str
         """
         return self._Status
@@ -4127,7 +4127,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Weight(self):
-        """记录权重，值为1-100
+        r"""记录权重，值为1-100
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4139,7 +4139,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """记录创建时间
+        r"""记录创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -4150,7 +4150,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """记录更新时间
+        r"""记录更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -4161,7 +4161,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Extra(self):
-        """附加信息
+        r"""附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4173,7 +4173,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Enabled(self):
-        """0暂停，1启用
+        r"""0暂停，1启用
         :rtype: int
         """
         return self._Enabled
@@ -4184,7 +4184,7 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4220,7 +4220,7 @@ class PrivateZoneRecord(AbstractModel):
 
 
 class QueryAsyncBindVpcStatusRequest(AbstractModel):
-    """QueryAsyncBindVpcStatus请求参数结构体
+    r"""QueryAsyncBindVpcStatus请求参数结构体
 
     """
 
@@ -4233,7 +4233,7 @@ class QueryAsyncBindVpcStatusRequest(AbstractModel):
 
     @property
     def UniqId(self):
-        """唯一ID
+        r"""唯一ID
         :rtype: str
         """
         return self._UniqId
@@ -4256,7 +4256,7 @@ class QueryAsyncBindVpcStatusRequest(AbstractModel):
 
 
 class QueryAsyncBindVpcStatusResponse(AbstractModel):
-    """QueryAsyncBindVpcStatus返回参数结构体
+    r"""QueryAsyncBindVpcStatus返回参数结构体
 
     """
 
@@ -4277,7 +4277,7 @@ failed 执行失败
 
     @property
     def Status(self):
-        """processing 处理中，success 执行成功，
+        r"""processing 处理中，success 执行成功，
 failed 执行失败
         :rtype: str
         """
@@ -4289,7 +4289,7 @@ failed 执行失败
 
     @property
     def ErrorMsg(self):
-        """错误信息
+        r"""错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4301,7 +4301,7 @@ failed 执行失败
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4318,7 +4318,7 @@ failed 执行失败
 
 
 class RecordInfo(AbstractModel):
-    """私有域信息
+    r"""私有域信息
 
     """
 
@@ -4364,7 +4364,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录id
+        r"""记录id
         :rtype: str
         """
         return self._RecordId
@@ -4375,7 +4375,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域id: zone-xxxxxxxx
+        r"""私有域id: zone-xxxxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -4386,7 +4386,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子域名
+        r"""子域名
         :rtype: str
         """
         return self._SubDomain
@@ -4397,7 +4397,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -4408,7 +4408,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordValue(self):
-        """记录值
+        r"""记录值
         :rtype: str
         """
         return self._RecordValue
@@ -4419,7 +4419,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def TTL(self):
-        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :rtype: int
         """
         return self._TTL
@@ -4430,7 +4430,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def MX(self):
-        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
         :rtype: int
         """
         return self._MX
@@ -4441,7 +4441,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Weight(self):
-        """记录权重，值为1-100
+        r"""记录权重，值为1-100
         :rtype: int
         """
         return self._Weight
@@ -4452,7 +4452,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """记录创建时间
+        r"""记录创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -4463,7 +4463,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """记录更新时间
+        r"""记录更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -4474,7 +4474,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Enabled(self):
-        """0暂停，1启用
+        r"""0暂停，1启用
         :rtype: int
         """
         return self._Enabled
@@ -4485,7 +4485,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4519,13 +4519,13 @@ class RecordInfo(AbstractModel):
 
 
 class SubscribePrivateZoneServiceRequest(AbstractModel):
-    """SubscribePrivateZoneService请求参数结构体
+    r"""SubscribePrivateZoneService请求参数结构体
 
     """
 
 
 class SubscribePrivateZoneServiceResponse(AbstractModel):
-    """SubscribePrivateZoneService返回参数结构体
+    r"""SubscribePrivateZoneService返回参数结构体
 
     """
 
@@ -4541,7 +4541,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        """私有域解析服务开通状态
+        r"""私有域解析服务开通状态
         :rtype: str
         """
         return self._ServiceStatus
@@ -4552,7 +4552,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4568,7 +4568,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -4584,7 +4584,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4595,7 +4595,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -4619,7 +4619,7 @@ class TagInfo(AbstractModel):
 
 
 class TldQuota(AbstractModel):
-    """Tld额度
+    r"""Tld额度
 
     """
 
@@ -4641,7 +4641,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Total(self):
-        """总共额度
+        r"""总共额度
         :rtype: int
         """
         return self._Total
@@ -4652,7 +4652,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Used(self):
-        """已使用额度
+        r"""已使用额度
         :rtype: int
         """
         return self._Used
@@ -4663,7 +4663,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Stock(self):
-        """库存
+        r"""库存
         :rtype: int
         """
         return self._Stock
@@ -4674,7 +4674,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Quota(self):
-        """用户限额
+        r"""用户限额
         :rtype: int
         """
         return self._Quota
@@ -4700,7 +4700,7 @@ class TldQuota(AbstractModel):
 
 
 class VpcInfo(AbstractModel):
-    """Vpc信息
+    r"""Vpc信息
 
     """
 
@@ -4716,7 +4716,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VpcId
+        r"""VpcId
         :rtype: str
         """
         return self._UniqVpcId
@@ -4727,7 +4727,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Vpc所属地区: ap-guangzhou, ap-shanghai
+        r"""Vpc所属地区: ap-guangzhou, ap-shanghai
         :rtype: str
         """
         return self._Region

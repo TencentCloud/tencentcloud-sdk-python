@@ -27,7 +27,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessBinding(self, request):
-        """创建RabbitMQ路由关系
+        r"""创建RabbitMQ路由关系
 
         :param request: Request instance for CreateRabbitMQServerlessBinding.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessBindingRequest`
@@ -50,7 +50,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessExchange(self, request):
-        """创建RabbitMQ exchange
+        r"""创建RabbitMQ exchange
 
         :param request: Request instance for CreateRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessExchangeRequest`
@@ -73,7 +73,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessQueue(self, request):
-        """创建RabbitMQ队列
+        r"""创建RabbitMQ队列
 
         :param request: Request instance for CreateRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessQueueRequest`
@@ -96,7 +96,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessUser(self, request):
-        """创建RabbitMQ的用户
+        r"""创建RabbitMQ的用户
 
         :param request: Request instance for CreateRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessUserRequest`
@@ -119,7 +119,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessVirtualHost(self, request):
-        """创建RabbitMQ的vhost
+        r"""创建RabbitMQ的vhost
 
         :param request: Request instance for CreateRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessVirtualHostRequest`
@@ -142,7 +142,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessBinding(self, request):
-        """解绑RabbitMQ路由关系
+        r"""解绑RabbitMQ路由关系
 
         :param request: Request instance for DeleteRabbitMQServerlessBinding.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessBindingRequest`
@@ -165,7 +165,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessExchange(self, request):
-        """删除RabbitMQ exchange
+        r"""删除RabbitMQ exchange
 
         :param request: Request instance for DeleteRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessExchangeRequest`
@@ -188,7 +188,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessPermission(self, request):
-        """删除RabbitMQ的权限
+        r"""删除RabbitMQ的权限
 
         :param request: Request instance for DeleteRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessPermissionRequest`
@@ -211,7 +211,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessQueue(self, request):
-        """删除RabbitMQ队列
+        r"""删除RabbitMQ队列
 
         :param request: Request instance for DeleteRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessQueueRequest`
@@ -234,7 +234,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessUser(self, request):
-        """删除RabbitMQ的用户
+        r"""删除RabbitMQ的用户
 
         :param request: Request instance for DeleteRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessUserRequest`
@@ -257,7 +257,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessVirtualHost(self, request):
-        """删除RabbitMQ的vhost
+        r"""删除RabbitMQ的vhost
 
         :param request: Request instance for DeleteRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessVirtualHostRequest`
@@ -280,7 +280,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessBindings(self, request):
-        """获取路由关系列表
+        r"""获取路由关系列表
 
         :param request: Request instance for DescribeRabbitMQServerlessBindings.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessBindingsRequest`
@@ -303,7 +303,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessConnection(self, request):
-        """查询RabbitMQ连接列表
+        r"""查询RabbitMQ连接列表
 
         :param request: Request instance for DescribeRabbitMQServerlessConnection.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessConnectionRequest`
@@ -326,7 +326,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessConsumers(self, request):
-        """查询RabbitMQ队列消费者列表
+        r"""查询RabbitMQ队列消费者列表
 
         :param request: Request instance for DescribeRabbitMQServerlessConsumers.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessConsumersRequest`
@@ -349,7 +349,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessExchangeDetail(self, request):
-        """查询RabbitMQ exchange 详情
+        r"""查询RabbitMQ exchange 详情
 
         :param request: Request instance for DescribeRabbitMQServerlessExchangeDetail.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessExchangeDetailRequest`
@@ -372,7 +372,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessExchanges(self, request):
-        """查询RabbitMQ exchange 列表
+        r"""查询RabbitMQ exchange 列表
 
         :param request: Request instance for DescribeRabbitMQServerlessExchanges.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessExchangesRequest`
@@ -395,7 +395,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessInstance(self, request):
-        """获取单个RabbitMQ专享实例信息
+        r"""获取单个RabbitMQ专享实例信息
 
         :param request: Request instance for DescribeRabbitMQServerlessInstance.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessInstanceRequest`
@@ -418,7 +418,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessPermission(self, request):
-        """查询RabbitMQ权限列表
+        r"""查询RabbitMQ权限列表
 
         :param request: Request instance for DescribeRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessPermissionRequest`
@@ -441,7 +441,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessQueueDetail(self, request):
-        """查询RabbitMQ队列详情
+        r"""查询RabbitMQ队列详情
 
         :param request: Request instance for DescribeRabbitMQServerlessQueueDetail.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessQueueDetailRequest`
@@ -464,7 +464,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessQueues(self, request):
-        """查询RabbitMQ队列列表
+        r"""查询RabbitMQ队列列表
 
         :param request: Request instance for DescribeRabbitMQServerlessQueues.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessQueuesRequest`
@@ -487,7 +487,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessUser(self, request):
-        """查询RabbitMQ用户列表
+        r"""查询RabbitMQ用户列表
 
         :param request: Request instance for DescribeRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessUserRequest`
@@ -510,7 +510,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessVirtualHost(self, request):
-        """查询RabbitMQ vhost列表
+        r"""查询RabbitMQ vhost列表
 
         :param request: Request instance for DescribeRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessVirtualHostRequest`
@@ -533,7 +533,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ListRabbitMQServerlessInstances(self, request):
-        """获取实例列表
+        r"""获取实例列表
 
         :param request: Request instance for ListRabbitMQServerlessInstances.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ListRabbitMQServerlessInstancesRequest`
@@ -556,7 +556,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessExchange(self, request):
-        """修改RabbitMQ exchange
+        r"""修改RabbitMQ exchange
 
         :param request: Request instance for ModifyRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessExchangeRequest`
@@ -579,7 +579,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessInstance(self, request):
-        """修改集群信息
+        r"""修改集群信息
 
         :param request: Request instance for ModifyRabbitMQServerlessInstance.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessInstanceRequest`
@@ -602,7 +602,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessPermission(self, request):
-        """修改RabbitMQ的权限
+        r"""修改RabbitMQ的权限
 
         :param request: Request instance for ModifyRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessPermissionRequest`
@@ -625,7 +625,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessQueue(self, request):
-        """修改RabbitMQ队列
+        r"""修改RabbitMQ队列
 
         :param request: Request instance for ModifyRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessQueueRequest`
@@ -648,7 +648,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessUser(self, request):
-        """修改RabbitMQ的用户
+        r"""修改RabbitMQ的用户
 
         :param request: Request instance for ModifyRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessUserRequest`
@@ -671,7 +671,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessVirtualHost(self, request):
-        """修改RabbitMQ的vhost
+        r"""修改RabbitMQ的vhost
 
         :param request: Request instance for ModifyRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessVirtualHostRequest`

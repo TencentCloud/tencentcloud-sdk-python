@@ -27,7 +27,7 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateAuditTrack(self, request):
-        """创建操作审计跟踪集
+        r"""创建操作审计跟踪集
 
         :param request: Request instance for CreateAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditTrackRequest`
@@ -50,7 +50,7 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateEventsAuditTrack(self, request):
-        """创建操作审计跟踪集
+        r"""创建操作审计跟踪集
 
         :param request: Request instance for CreateEventsAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateEventsAuditTrackRequest`
@@ -73,7 +73,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DeleteAuditTrack(self, request):
-        """删除操作审计跟踪集
+        r"""删除操作审计跟踪集
 
         :param request: Request instance for DeleteAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditTrackRequest`
@@ -96,7 +96,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAudit(self, request):
-        """查询跟踪集详情
+        r"""查询跟踪集详情
 
         :param request: Request instance for DescribeAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditRequest`
@@ -119,7 +119,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAuditTrack(self, request):
-        """查询操作审计跟踪集详情
+        r"""查询操作审计跟踪集详情
 
         :param request: Request instance for DescribeAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTrackRequest`
@@ -142,7 +142,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAuditTracks(self, request):
-        """查询操作审计跟踪集列表
+        r"""查询操作审计跟踪集列表
 
         :param request: Request instance for DescribeAuditTracks.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksRequest`
@@ -165,7 +165,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeEvents(self, request):
-        """查询操作审计日志
+        r"""查询操作审计日志
 
         :param request: Request instance for DescribeEvents.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeEventsRequest`
@@ -188,7 +188,7 @@ class CloudauditClient(AbstractClient):
 
 
     def GetAttributeKey(self, request):
-        """查询AttributeKey的有效取值范围
+        r"""查询AttributeKey的有效取值范围
 
         :param request: Request instance for GetAttributeKey.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyRequest`
@@ -211,7 +211,7 @@ class CloudauditClient(AbstractClient):
 
 
     def InquireAuditCredit(self, request):
-        """查询用户可创建跟踪集的数量
+        r"""查询用户可创建跟踪集的数量
 
         :param request: Request instance for InquireAuditCredit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditRequest`
@@ -234,7 +234,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListAudits(self, request):
-        """查询跟踪集概要
+        r"""查询跟踪集概要
 
         :param request: Request instance for ListAudits.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsRequest`
@@ -257,7 +257,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCmqEnableRegion(self, request):
-        """查询操作审计支持的cmq的可用区
+        r"""查询操作审计支持的cmq的可用区
 
         :param request: Request instance for ListCmqEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
@@ -280,7 +280,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCosEnableRegion(self, request):
-        """查询操作审计支持的cos可用区
+        r"""查询操作审计支持的cos可用区
 
         :param request: Request instance for ListCosEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`
@@ -303,7 +303,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListKeyAliasByRegion(self, request):
-        """根据地域获取KMS密钥别名
+        r"""根据地域获取KMS密钥别名
 
         :param request: Request instance for ListKeyAliasByRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListKeyAliasByRegionRequest`
@@ -326,7 +326,7 @@ class CloudauditClient(AbstractClient):
 
 
     def LookUpEvents(self, request):
-        """用于对操作日志进行检索，便于用户进行查询相关的操作信息。
+        r"""用于对操作日志进行检索，便于用户进行查询相关的操作信息。
 
         :param request: Request instance for LookUpEvents.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsRequest`
@@ -349,7 +349,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ModifyAuditTrack(self, request):
-        """修改操作审计跟踪集
+        r"""修改操作审计跟踪集
 
         :param request: Request instance for ModifyAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyAuditTrackRequest`
@@ -372,7 +372,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ModifyEventsAuditTrack(self, request):
-        """修改操作审计跟踪集
+        r"""修改操作审计跟踪集
 
         :param request: Request instance for ModifyEventsAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyEventsAuditTrackRequest`
@@ -395,7 +395,7 @@ class CloudauditClient(AbstractClient):
 
 
     def StartLogging(self, request):
-        """开启跟踪集
+        r"""开启跟踪集
 
         :param request: Request instance for StartLogging.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingRequest`
@@ -418,7 +418,7 @@ class CloudauditClient(AbstractClient):
 
 
     def StopLogging(self, request):
-        """关闭跟踪集
+        r"""关闭跟踪集
 
         :param request: Request instance for StopLogging.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingRequest`
@@ -441,7 +441,7 @@ class CloudauditClient(AbstractClient):
 
 
     def UpdateAudit(self, request):
-        """参数要求：
+        r"""参数要求：
         1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
         2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
         3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。

@@ -27,7 +27,7 @@ class CkafkaClient(AbstractClient):
 
 
     def AuthorizeToken(self, request):
-        """给实例授权token
+        r"""给实例授权token
 
         :param request: Request instance for AuthorizeToken.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.AuthorizeTokenRequest`
@@ -50,7 +50,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchCreateAcl(self, request):
-        """批量添加ACL策略
+        r"""批量添加ACL策略
 
         :param request: Request instance for BatchCreateAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchCreateAclRequest`
@@ -73,7 +73,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchModifyGroupOffsets(self, request):
-        """批量修改消费组offset
+        r"""批量修改消费组offset
 
         :param request: Request instance for BatchModifyGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyGroupOffsetsRequest`
@@ -96,7 +96,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchModifyTopicAttributes(self, request):
-        """批量设置主题属性
+        r"""批量设置主题属性
 
         :param request: Request instance for BatchModifyTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyTopicAttributesRequest`
@@ -119,7 +119,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CancelAuthorizationToken(self, request):
-        """取消授权token
+        r"""取消授权token
 
         :param request: Request instance for CancelAuthorizationToken.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CancelAuthorizationTokenRequest`
@@ -142,7 +142,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CheckCdcCluster(self, request):
-        """用于查询cdc-ckafka任务状态
+        r"""用于查询cdc-ckafka任务状态
 
         :param request: Request instance for CheckCdcCluster.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CheckCdcClusterRequest`
@@ -165,7 +165,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateAcl(self, request):
-        """添加 ACL 策略
+        r"""添加 ACL 策略
 
         :param request: Request instance for CreateAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRequest`
@@ -188,7 +188,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateAclRule(self, request):
-        """添加 ACL 规则
+        r"""添加 ACL 规则
 
         :param request: Request instance for CreateAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRuleRequest`
@@ -211,7 +211,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateCdcCluster(self, request):
-        """用于cdc的专用ckafka集群
+        r"""用于cdc的专用ckafka集群
 
         :param request: Request instance for CreateCdcCluster.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateCdcClusterRequest`
@@ -234,7 +234,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateConnectResource(self, request):
-        """创建Datahub连接源
+        r"""创建Datahub连接源
 
         :param request: Request instance for CreateConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConnectResourceRequest`
@@ -257,7 +257,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """创建消费者组
+        r"""创建消费者组
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerRequest`
@@ -280,7 +280,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTask(self, request):
-        """创建DIP转储任务
+        r"""创建DIP转储任务
 
         :param request: Request instance for CreateDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRequest`
@@ -303,7 +303,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTopic(self, request):
-        """创建DIP主题
+        r"""创建DIP主题
 
         :param request: Request instance for CreateDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTopicRequest`
@@ -326,7 +326,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateInstancePre(self, request):
-        """创建实例(预付费包年包月),  仅支持创建专业版实例
+        r"""创建实例(预付费包年包月),  仅支持创建专业版实例
 
         :param request: Request instance for CreateInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreRequest`
@@ -349,7 +349,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePartition(self, request):
-        """本接口用于增加主题中的分区
+        r"""本接口用于增加主题中的分区
 
         :param request: Request instance for CreatePartition.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePartitionRequest`
@@ -372,7 +372,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePostPaidInstance(self, request):
-        """当前接口用来替代 CreateInstancePost 接口。创建按量计费实例。通常用于 SDK 或云 API 控制台调用接口，创建后付费 CKafka 实例。调用接口与在 CKafka 控制台购买按量付费实例效果相同。
+        r"""当前接口用来替代 CreateInstancePost 接口。创建按量计费实例。通常用于 SDK 或云 API 控制台调用接口，创建后付费 CKafka 实例。调用接口与在 CKafka 控制台购买按量付费实例效果相同。
 
         :param request: Request instance for CreatePostPaidInstance.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceRequest`
@@ -395,7 +395,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePrometheus(self, request):
-        """添加普罗米修斯监控
+        r"""添加普罗米修斯监控
 
         :param request: Request instance for CreatePrometheus.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePrometheusRequest`
@@ -418,7 +418,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateRoute(self, request):
-        """添加实例路由
+        r"""添加实例路由
 
         :param request: Request instance for CreateRoute.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateRouteRequest`
@@ -441,7 +441,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateToken(self, request):
-        """创建最高权限的token
+        r"""创建最高权限的token
 
         :param request: Request instance for CreateToken.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTokenRequest`
@@ -464,7 +464,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """创建ckafka主题
+        r"""创建ckafka主题
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicRequest`
@@ -487,7 +487,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateTopicIpWhiteList(self, request):
-        """创建主题ip白名单
+        r"""创建主题ip白名单
 
         :param request: Request instance for CreateTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicIpWhiteListRequest`
@@ -510,7 +510,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """添加用户
+        r"""添加用户
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateUserRequest`
@@ -533,7 +533,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteAcl(self, request):
-        """删除ACL
+        r"""删除ACL
 
         :param request: Request instance for DeleteAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteAclRequest`
@@ -556,7 +556,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteAclRule(self, request):
-        """删除ACL规则
+        r"""删除ACL规则
 
         :param request: Request instance for DeleteAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteAclRuleRequest`
@@ -579,7 +579,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteConnectResource(self, request):
-        """删除Datahub连接源
+        r"""删除Datahub连接源
 
         :param request: Request instance for DeleteConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteConnectResourceRequest`
@@ -602,7 +602,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteDatahubTask(self, request):
-        """删除Dip任务
+        r"""删除Dip任务
 
         :param request: Request instance for DeleteDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteDatahubTaskRequest`
@@ -625,7 +625,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteDatahubTopic(self, request):
-        """删除DIP主题
+        r"""删除DIP主题
 
         :param request: Request instance for DeleteDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteDatahubTopicRequest`
@@ -648,7 +648,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除消费组
+        r"""删除消费组
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupRequest`
@@ -671,7 +671,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePost(self, request):
-        """删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
+        r"""删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 
         :param request: Request instance for DeleteInstancePost.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePostRequest`
@@ -694,7 +694,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePre(self, request):
-        """删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁。通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
+        r"""删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁。通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 
         :param request: Request instance for DeleteInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`
@@ -717,7 +717,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteRoute(self, request):
-        """删除路由
+        r"""删除路由
 
         :param request: Request instance for DeleteRoute.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteRouteRequest`
@@ -740,7 +740,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteRouteTriggerTime(self, request):
-        """修改删除路由延迟触发时间
+        r"""修改删除路由延迟触发时间
 
         :param request: Request instance for DeleteRouteTriggerTime.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteRouteTriggerTimeRequest`
@@ -763,7 +763,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """删除ckafka主题
+        r"""删除ckafka主题
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicRequest`
@@ -786,7 +786,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopicIpWhiteList(self, request):
-        """删除主题IP白名单
+        r"""删除主题IP白名单
 
         :param request: Request instance for DeleteTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicIpWhiteListRequest`
@@ -809,7 +809,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """删除用户
+        r"""删除用户
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteUserRequest`
@@ -832,7 +832,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeACL(self, request):
-        """枚举ACL
+        r"""枚举ACL
 
         :param request: Request instance for DescribeACL.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeACLRequest`
@@ -855,7 +855,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeAclRule(self, request):
-        """查询ACL规则列表
+        r"""查询ACL规则列表
 
         :param request: Request instance for DescribeAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAclRuleRequest`
@@ -878,7 +878,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeAppInfo(self, request):
-        """查询用户列表
+        r"""查询用户列表
 
         :param request: Request instance for DescribeAppInfo.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAppInfoRequest`
@@ -901,7 +901,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeCkafkaZone(self, request):
-        """用于查看ckafka的可用区列表
+        r"""用于查看ckafka的可用区列表
 
         :param request: Request instance for DescribeCkafkaZone.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCkafkaZoneRequest`
@@ -924,7 +924,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConnectResource(self, request):
-        """查询Datahub连接源
+        r"""查询Datahub连接源
 
         :param request: Request instance for DescribeConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceRequest`
@@ -947,7 +947,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConnectResources(self, request):
-        """查询Datahub连接源列表
+        r"""查询Datahub连接源列表
 
         :param request: Request instance for DescribeConnectResources.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesRequest`
@@ -970,7 +970,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConsumerGroup(self, request):
-        """查询消费分组信息
+        r"""查询消费分组信息
 
         :param request: Request instance for DescribeConsumerGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConsumerGroupRequest`
@@ -993,7 +993,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeCvmInfo(self, request):
-        """本接口用于获取实例对应后端CVM信息，包括cvmId和ip等。用于专业版，标准版返回数据为空
+        r"""本接口用于获取实例对应后端CVM信息，包括cvmId和ip等。用于专业版，标准版返回数据为空
 
         :param request: Request instance for DescribeCvmInfo.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCvmInfoRequest`
@@ -1016,7 +1016,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubGroupOffsets(self, request):
-        """获取Datahub消费分组offset
+        r"""获取Datahub消费分组offset
 
         :param request: Request instance for DescribeDatahubGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubGroupOffsetsRequest`
@@ -1039,7 +1039,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTask(self, request):
-        """查询Datahub任务信息
+        r"""查询Datahub任务信息
 
         :param request: Request instance for DescribeDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRequest`
@@ -1062,7 +1062,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTasks(self, request):
-        """查询Datahub任务列表
+        r"""查询Datahub任务列表
 
         :param request: Request instance for DescribeDatahubTasks.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRequest`
@@ -1085,7 +1085,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTopic(self, request):
-        """获取DIP主题属性
+        r"""获取DIP主题属性
 
         :param request: Request instance for DescribeDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicRequest`
@@ -1108,7 +1108,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTopics(self, request):
-        """查询DIP主题列表
+        r"""查询DIP主题列表
 
         :param request: Request instance for DescribeDatahubTopics.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsRequest`
@@ -1131,7 +1131,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroup(self, request):
-        """枚举消费分组(精简版)
+        r"""枚举消费分组(精简版)
 
         :param request: Request instance for DescribeGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupRequest`
@@ -1154,7 +1154,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroupInfo(self, request):
-        """获取消费分组信息
+        r"""获取消费分组信息
 
         :param request: Request instance for DescribeGroupInfo.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupInfoRequest`
@@ -1177,7 +1177,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroupOffsets(self, request):
-        """获取消费分组offset
+        r"""获取消费分组offset
 
         :param request: Request instance for DescribeGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupOffsetsRequest`
@@ -1200,7 +1200,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstanceAttributes(self, request):
-        """获取实例属性
+        r"""获取实例属性
 
         :param request: Request instance for DescribeInstanceAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstanceAttributesRequest`
@@ -1223,7 +1223,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """本接口（DescribeInstance）用于在用户账户下获取消息队列 CKafka 实例列表
+        r"""本接口（DescribeInstances）用于在用户账户下获取消息队列 CKafka 实例列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstancesRequest`
@@ -1246,7 +1246,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstancesDetail(self, request):
-        """用户账户下获取实例列表详情
+        r"""用户账户下获取实例列表详情
 
         :param request: Request instance for DescribeInstancesDetail.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstancesDetailRequest`
@@ -1269,7 +1269,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribePrometheus(self, request):
-        """获取实例Prometheus信息
+        r"""获取实例Prometheus信息
 
         :param request: Request instance for DescribePrometheus.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribePrometheusRequest`
@@ -1292,7 +1292,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRegion(self, request):
-        """枚举地域,只支持广州地域
+        r"""枚举地域,只支持广州地域
 
         :param request: Request instance for DescribeRegion.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRegionRequest`
@@ -1315,7 +1315,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRoute(self, request):
-        """查看路由信息
+        r"""查看路由信息
 
         :param request: Request instance for DescribeRoute.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRouteRequest`
@@ -1338,7 +1338,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeSecurityGroupRoutes(self, request):
-        """获取安全组路由信息列表
+        r"""获取安全组路由信息列表
 
         :param request: Request instance for DescribeSecurityGroupRoutes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeSecurityGroupRoutesRequest`
@@ -1361,7 +1361,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """查询任务状态
+        r"""查询任务状态
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusRequest`
@@ -1384,7 +1384,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopic(self, request):
-        """接口请求域名：https://ckafka.tencentcloudapi.com
+        r"""接口请求域名：https://ckafka.tencentcloudapi.com
         本接口（DescribeTopic）用于在用户获取消息队列 CKafka 实例的主题列表
 
         :param request: Request instance for DescribeTopic.
@@ -1408,7 +1408,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicAttributes(self, request):
-        """获取主题属性
+        r"""获取主题属性
 
         :param request: Request instance for DescribeTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicAttributesRequest`
@@ -1431,7 +1431,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicDetail(self, request):
-        """获取主题列表详情（仅控制台调用）
+        r"""获取主题列表详情（仅控制台调用）
 
         :param request: Request instance for DescribeTopicDetail.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicDetailRequest`
@@ -1454,7 +1454,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicFlowRanking(self, request):
-        """获取Topic流量排行，消费者流量排行
+        r"""获取Topic流量排行，消费者流量排行
 
         :param request: Request instance for DescribeTopicFlowRanking.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicFlowRankingRequest`
@@ -1477,7 +1477,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicProduceConnection(self, request):
-        """查询topic 生产端连接信息
+        r"""查询topic 生产端连接信息
 
         :param request: Request instance for DescribeTopicProduceConnection.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicProduceConnectionRequest`
@@ -1500,7 +1500,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicSubscribeGroup(self, request):
-        """查询订阅某主题消息分组信息
+        r"""查询订阅某主题消息分组信息
 
         :param request: Request instance for DescribeTopicSubscribeGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicSubscribeGroupRequest`
@@ -1523,7 +1523,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicSyncReplica(self, request):
-        """获取Topic 副本详情信息
+        r"""获取Topic 副本详情信息
 
         :param request: Request instance for DescribeTopicSyncReplica.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicSyncReplicaRequest`
@@ -1546,7 +1546,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTypeInstances(self, request):
-        """本接口（DescribeTypeInstances）用于在用户账户下获取指定类型消息队列 CKafka 实例列表
+        r"""本接口（DescribeTypeInstances）用于在用户账户下获取指定类型消息队列 CKafka 实例列表
 
         :param request: Request instance for DescribeTypeInstances.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTypeInstancesRequest`
@@ -1569,7 +1569,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """查询用户信息
+        r"""查询用户信息
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeUserRequest`
@@ -1592,7 +1592,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchDatahubMessageByOffset(self, request):
-        """根据指定offset位置的消息
+        r"""根据指定offset位置的消息
 
         :param request: Request instance for FetchDatahubMessageByOffset.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchDatahubMessageByOffsetRequest`
@@ -1615,7 +1615,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchLatestDatahubMessageList(self, request):
-        """查询最新消息列表
+        r"""查询最新消息列表
 
         :param request: Request instance for FetchLatestDatahubMessageList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchLatestDatahubMessageListRequest`
@@ -1638,7 +1638,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchMessageByOffset(self, request):
-        """根据指定offset位置的消息
+        r"""根据指定offset位置的消息
 
         :param request: Request instance for FetchMessageByOffset.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageByOffsetRequest`
@@ -1661,7 +1661,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchMessageListByOffset(self, request):
-        """根据位点查询消息列表
+        r"""根据位点查询消息列表
 
         :param request: Request instance for FetchMessageListByOffset.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByOffsetRequest`
@@ -1684,7 +1684,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchMessageListByTimestamp(self, request):
-        """根据时间戳查询消息列表
+        r"""根据时间戳查询消息列表
 
         :param request: Request instance for FetchMessageListByTimestamp.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByTimestampRequest`
@@ -1707,7 +1707,7 @@ class CkafkaClient(AbstractClient):
 
 
     def InquireCkafkaPrice(self, request):
-        """Ckafka实例购买/续费询价
+        r"""Ckafka实例购买/续费询价
 
         :param request: Request instance for InquireCkafkaPrice.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceRequest`
@@ -1730,7 +1730,7 @@ class CkafkaClient(AbstractClient):
 
 
     def InstanceScalingDown(self, request):
-        """按量实例缩容
+        r"""按量实例缩容
 
         :param request: Request instance for InstanceScalingDown.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.InstanceScalingDownRequest`
@@ -1753,7 +1753,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyAclRule(self, request):
-        """修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
+        r"""修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 
         :param request: Request instance for ModifyAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAclRuleRequest`
@@ -1776,7 +1776,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyConnectResource(self, request):
-        """编辑Datahub连接源
+        r"""编辑Datahub连接源
 
         :param request: Request instance for ModifyConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyConnectResourceRequest`
@@ -1799,7 +1799,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyDatahubTask(self, request):
-        """修改Datahub任务
+        r"""修改Datahub任务
 
         :param request: Request instance for ModifyDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTaskRequest`
@@ -1822,7 +1822,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyDatahubTopic(self, request):
-        """修改DIP主题属性
+        r"""修改DIP主题属性
 
         :param request: Request instance for ModifyDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicRequest`
@@ -1845,7 +1845,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyGroupOffsets(self, request):
-        """设置Groups 消费分组offset
+        r"""设置Groups 消费分组offset
 
         :param request: Request instance for ModifyGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyGroupOffsetsRequest`
@@ -1868,7 +1868,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyInstanceAttributes(self, request):
-        """设置实例属性
+        r"""设置实例属性
 
         :param request: Request instance for ModifyInstanceAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesRequest`
@@ -1891,7 +1891,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyInstancePre(self, request):
-        """预付费实例变配接口，调整磁盘，带宽,  分区
+        r"""预付费实例变配接口，调整磁盘，带宽,  分区
 
         :param request: Request instance for ModifyInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstancePreRequest`
@@ -1914,7 +1914,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyPassword(self, request):
-        """修改密码
+        r"""修改密码
 
         :param request: Request instance for ModifyPassword.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyPasswordRequest`
@@ -1937,7 +1937,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyRoutineMaintenanceTask(self, request):
-        """设置自动化运维属性
+        r"""设置自动化运维属性
 
         :param request: Request instance for ModifyRoutineMaintenanceTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyRoutineMaintenanceTaskRequest`
@@ -1960,7 +1960,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyTopicAttributes(self, request):
-        """本接口用于修改主题属性。
+        r"""本接口用于修改主题属性。
 
         :param request: Request instance for ModifyTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyTopicAttributesRequest`
@@ -1983,7 +1983,7 @@ class CkafkaClient(AbstractClient):
 
 
     def RenewCkafkaInstance(self, request):
-        """续费Ckafka实例, 目前只支持国内站包年包月实例续费
+        r"""续费Ckafka实例, 目前只支持国内站包年包月实例续费
 
         :param request: Request instance for RenewCkafkaInstance.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceRequest`
@@ -2006,7 +2006,7 @@ class CkafkaClient(AbstractClient):
 
 
     def SendMessage(self, request):
-        """通过HTTP接入层发送消息
+        r"""通过HTTP接入层发送消息
 
         :param request: Request instance for SendMessage.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.SendMessageRequest`

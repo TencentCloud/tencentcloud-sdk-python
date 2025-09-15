@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApplicationInfo(AbstractModel):
-    """应用信息
+    r"""应用信息
 
     """
 
@@ -59,7 +59,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        r"""应用id
 
         :rtype: str
         """
@@ -71,7 +71,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._ApplicationName
@@ -82,7 +82,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Description(self):
-        """应用描述
+        r"""应用描述
 
         :rtype: str
         """
@@ -94,7 +94,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ConfigEnvironment(self):
-        """应用的环境配置
+        r"""应用的环境配置
         :rtype: str
         """
         return self._ConfigEnvironment
@@ -105,7 +105,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def MinSystemDiskSize(self):
-        """系统盘大小下限，单位GB
+        r"""系统盘大小下限，单位GB
         :rtype: int
         """
         return self._MinSystemDiskSize
@@ -116,7 +116,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型，目前该项取值可以为PUBLIC_APPLICATION（公共应用）；PRIVATE_APPLICATION（自定义应用）；COMMUNITY_APPLICATION（社区应用）
+        r"""应用类型，目前该项取值可以为PUBLIC_APPLICATION（公共应用）；PRIVATE_APPLICATION（自定义应用）；COMMUNITY_APPLICATION（社区应用）
         :rtype: str
         """
         return self._ApplicationType
@@ -127,7 +127,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationState(self):
-        """应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
+        r"""应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 示例值：ONLINE
         :rtype: str
         """
@@ -139,7 +139,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """应用创建时间，格式：%Y-%m-%d %H:%M:%S
+        r"""应用创建时间，格式：%Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._CreateTime
@@ -150,7 +150,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationSize(self):
-        """应用大小，单位GB
+        r"""应用大小，单位GB
         :rtype: int
         """
         return self._ApplicationSize
@@ -181,7 +181,7 @@ class ApplicationInfo(AbstractModel):
 
 
 class CreateApplicationRequest(AbstractModel):
-    """CreateApplication请求参数结构体
+    r"""CreateApplication请求参数结构体
 
     """
 
@@ -200,7 +200,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """需要制作自定义应用的HAI实例ID
+        r"""需要制作自定义应用的HAI实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -211,7 +211,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """自定义应用的应用名称
+        r"""自定义应用的应用名称
         :rtype: str
         """
         return self._ApplicationName
@@ -222,7 +222,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationDescription(self):
-        """自定义应用的描述
+        r"""自定义应用的描述
         :rtype: str
         """
         return self._ApplicationDescription
@@ -247,7 +247,7 @@ class CreateApplicationRequest(AbstractModel):
 
 
 class CreateApplicationResponse(AbstractModel):
-    """CreateApplication返回参数结构体
+    r"""CreateApplication返回参数结构体
 
     """
 
@@ -263,7 +263,7 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """HAI自定义应用ID
+        r"""HAI自定义应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -274,7 +274,7 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -290,7 +290,7 @@ class CreateApplicationResponse(AbstractModel):
 
 
 class CreateMuskPromptRequest(AbstractModel):
-    """CreateMuskPrompt请求参数结构体
+    r"""CreateMuskPrompt请求参数结构体
 
     """
 
@@ -309,7 +309,7 @@ class CreateMuskPromptRequest(AbstractModel):
 
     @property
     def WorkgroupId(self):
-        """workgroup id
+        r"""workgroup id
         :rtype: str
         """
         return self._WorkgroupId
@@ -320,7 +320,7 @@ class CreateMuskPromptRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """workflow id
+        r"""workflow id
         :rtype: str
         """
         return self._WorkflowId
@@ -331,7 +331,7 @@ class CreateMuskPromptRequest(AbstractModel):
 
     @property
     def PromptParams(self):
-        """prompt 参数
+        r"""prompt 参数
         :rtype: str
         """
         return self._PromptParams
@@ -356,7 +356,7 @@ class CreateMuskPromptRequest(AbstractModel):
 
 
 class CreateMuskPromptResponse(AbstractModel):
-    """CreateMuskPrompt返回参数结构体
+    r"""CreateMuskPrompt返回参数结构体
 
     """
 
@@ -372,7 +372,7 @@ class CreateMuskPromptResponse(AbstractModel):
 
     @property
     def PromptId(self):
-        """prompt id
+        r"""prompt id
         :rtype: str
         """
         return self._PromptId
@@ -383,7 +383,7 @@ class CreateMuskPromptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -399,7 +399,7 @@ class CreateMuskPromptResponse(AbstractModel):
 
 
 class DescribeApplicationsRequest(AbstractModel):
-    """DescribeApplications请求参数结构体
+    r"""DescribeApplications请求参数结构体
 
     """
 
@@ -427,7 +427,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationIds(self):
-        """应用id列表。单次请求数量上限为100个。
+        r"""应用id列表。单次请求数量上限为100个。
         :rtype: list of str
         """
         return self._ApplicationIds
@@ -438,7 +438,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
+        r"""过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
         :rtype: list of Filter
         """
         return self._Filters
@@ -449,7 +449,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，不得小于0，默认为0
+        r"""偏移量，不得小于0，默认为0
         :rtype: int
         """
         return self._Offset
@@ -460,7 +460,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回量，不得大于100，默认为20
+        r"""返回量，不得大于100，默认为20
         :rtype: int
         """
         return self._Limit
@@ -471,7 +471,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
+        r"""应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
         :rtype: str
         """
         return self._OrderField
@@ -482,7 +482,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+        r"""输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
         :rtype: str
         """
         return self._Order
@@ -515,7 +515,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
 
 class DescribeApplicationsResponse(AbstractModel):
-    """DescribeApplications返回参数结构体
+    r"""DescribeApplications返回参数结构体
 
     """
 
@@ -534,7 +534,7 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """应用总数
+        r"""应用总数
         :rtype: int
         """
         return self._TotalCount
@@ -545,7 +545,7 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def ApplicationSet(self):
-        """分页返回的应用列表
+        r"""分页返回的应用列表
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationSet
@@ -556,7 +556,7 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -578,7 +578,7 @@ class DescribeApplicationsResponse(AbstractModel):
 
 
 class DescribeInstanceNetworkStatusRequest(AbstractModel):
-    """DescribeInstanceNetworkStatus请求参数结构体
+    r"""DescribeInstanceNetworkStatus请求参数结构体
 
     """
 
@@ -591,7 +591,7 @@ class DescribeInstanceNetworkStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
+        r"""实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -614,7 +614,7 @@ class DescribeInstanceNetworkStatusRequest(AbstractModel):
 
 
 class DescribeInstanceNetworkStatusResponse(AbstractModel):
-    """DescribeInstanceNetworkStatus返回参数结构体
+    r"""DescribeInstanceNetworkStatus返回参数结构体
 
     """
 
@@ -633,7 +633,7 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询结果集长度
+        r"""查询结果集长度
         :rtype: int
         """
         return self._TotalCount
@@ -644,7 +644,7 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def NetworkStatusSet(self):
-        """查询结果集
+        r"""查询结果集
         :rtype: list of NetworkStatus
         """
         return self._NetworkStatusSet
@@ -655,7 +655,7 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -677,7 +677,7 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
 
 class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances请求参数结构体
+    r"""DescribeInstances请求参数结构体
 
     """
 
@@ -699,7 +699,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例元组，数量上限100
+        r"""实例元组，数量上限100
         :rtype: list of str
         """
         return self._InstanceIds
@@ -710,7 +710,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
+        r"""描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -721,7 +721,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0，不得大于100
+        r"""偏移量，默认为0，不得大于100
         :rtype: int
         """
         return self._Offset
@@ -732,7 +732,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回量，默认为20，不能小于0
+        r"""返回量，默认为20，不能小于0
         :rtype: int
         """
         return self._Limit
@@ -763,7 +763,7 @@ class DescribeInstancesRequest(AbstractModel):
 
 
 class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances返回参数结构体
+    r"""DescribeInstances返回参数结构体
 
     """
 
@@ -784,7 +784,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数
+        r"""实例总数
 
         :rtype: int
         """
@@ -796,7 +796,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """分页实例详情
+        r"""分页实例详情
 
         :rtype: list of Instance
         """
@@ -808,7 +808,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -830,7 +830,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 
 class DescribeMuskPromptsRequest(AbstractModel):
-    """DescribeMuskPrompts请求参数结构体
+    r"""DescribeMuskPrompts请求参数结构体
 
     """
 
@@ -855,7 +855,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
     @property
     def WorkgroupId(self):
-        """workgroup id
+        r"""workgroup id
         :rtype: str
         """
         return self._WorkgroupId
@@ -866,7 +866,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """workflow id
+        r"""workflow id
         :rtype: str
         """
         return self._WorkflowId
@@ -877,7 +877,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """offset 
+        r"""offset 
         :rtype: int
         """
         return self._Offset
@@ -888,7 +888,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """limit
+        r"""limit
         :rtype: int
         """
         return self._Limit
@@ -899,7 +899,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数 支持过滤的键值： PromptId，Status
+        r"""过滤参数 支持过滤的键值： PromptId，Status
         :rtype: list of Filter
         """
         return self._Filters
@@ -931,7 +931,7 @@ class DescribeMuskPromptsRequest(AbstractModel):
 
 
 class DescribeMuskPromptsResponse(AbstractModel):
-    """DescribeMuskPrompts返回参数结构体
+    r"""DescribeMuskPrompts返回参数结构体
 
     """
 
@@ -950,7 +950,7 @@ class DescribeMuskPromptsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """total count
+        r"""total count
         :rtype: int
         """
         return self._TotalCount
@@ -961,7 +961,7 @@ class DescribeMuskPromptsResponse(AbstractModel):
 
     @property
     def MuskPromptInfos(self):
-        """prompt列表详情
+        r"""prompt列表详情
         :rtype: list of MuskPromptInfo
         """
         return self._MuskPromptInfos
@@ -972,7 +972,7 @@ class DescribeMuskPromptsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -994,13 +994,13 @@ class DescribeMuskPromptsResponse(AbstractModel):
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions请求参数结构体
+    r"""DescribeRegions请求参数结构体
 
     """
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions返回参数结构体
+    r"""DescribeRegions返回参数结构体
 
     """
 
@@ -1016,7 +1016,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -1027,7 +1027,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1048,7 +1048,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeScenesRequest(AbstractModel):
-    """DescribeScenes请求参数结构体
+    r"""DescribeScenes请求参数结构体
 
     """
 
@@ -1061,7 +1061,7 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
-        """场景id列表，单次能查询100个场景id
+        r"""场景id列表，单次能查询100个场景id
         :rtype: list of str
         """
         return self._SceneIds
@@ -1084,7 +1084,7 @@ class DescribeScenesRequest(AbstractModel):
 
 
 class DescribeScenesResponse(AbstractModel):
-    """DescribeScenes返回参数结构体
+    r"""DescribeScenes返回参数结构体
 
     """
 
@@ -1100,7 +1100,7 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def SceneSet(self):
-        """场景详情
+        r"""场景详情
         :rtype: list of SceneInfo
         """
         return self._SceneSet
@@ -1111,7 +1111,7 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1132,7 +1132,7 @@ class DescribeScenesResponse(AbstractModel):
 
 
 class DescribeServiceLoginSettingsRequest(AbstractModel):
-    """DescribeServiceLoginSettings请求参数结构体
+    r"""DescribeServiceLoginSettings请求参数结构体
 
     """
 
@@ -1148,7 +1148,7 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
+        r"""实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :rtype: str
         """
         return self._InstanceId
@@ -1159,7 +1159,7 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """服务名称
+        r"""服务名称
         :rtype: str
         """
         return self._ServiceName
@@ -1183,7 +1183,7 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
 
 class DescribeServiceLoginSettingsResponse(AbstractModel):
-    """DescribeServiceLoginSettings返回参数结构体
+    r"""DescribeServiceLoginSettings返回参数结构体
 
     """
 
@@ -1199,7 +1199,7 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
 
     @property
     def LoginSettings(self):
-        """服务登录配置详情
+        r"""服务登录配置详情
         :rtype: list of LoginSetting
         """
         return self._LoginSettings
@@ -1210,7 +1210,7 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1231,7 +1231,7 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
     - 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     - 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
@@ -1250,7 +1250,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。	
+        r"""需要过滤的字段。	
         :rtype: str
         """
         return self._Name
@@ -1261,7 +1261,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。
+        r"""字段的过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -1285,7 +1285,7 @@ class Filter(AbstractModel):
 
 
 class InquirePriceRunInstancesRequest(AbstractModel):
-    """InquirePriceRunInstances请求参数结构体
+    r"""InquirePriceRunInstances请求参数结构体
 
     """
 
@@ -1322,7 +1322,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
+        r"""应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :rtype: str
         """
         return self._ApplicationId
@@ -1333,7 +1333,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
-        """算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
+        r"""算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
         :rtype: str
         """
         return self._BundleType
@@ -1344,7 +1344,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
         """
         return self._SystemDisk
@@ -1355,7 +1355,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """购买实例数量，单次请求实例数量上限为10。
+        r"""购买实例数量，单次请求实例数量上限为10。
         :rtype: int
         """
         return self._InstanceCount
@@ -1366,7 +1366,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例显示名称，名称长度限制为128个字符。
+        r"""实例显示名称，名称长度限制为128个字符。
         :rtype: str
         """
         return self._InstanceName
@@ -1377,7 +1377,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """幂等请求token
+        r"""幂等请求token
         :rtype: str
         """
         return self._ClientToken
@@ -1388,7 +1388,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """DryRun为True就是只验接口连通性，默认为False
+        r"""DryRun为True就是只验接口连通性，默认为False
         :rtype: bool
         """
         return self._DryRun
@@ -1399,7 +1399,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
+        r"""付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
         :rtype: str
         """
         return self._InstanceChargeType
@@ -1410,7 +1410,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费参数
+        r"""预付费参数
         :rtype: :class:`tencentcloud.hai.v20230812.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -1445,7 +1445,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
 
 class InquirePriceRunInstancesResponse(AbstractModel):
-    """InquirePriceRunInstances返回参数结构体
+    r"""InquirePriceRunInstances返回参数结构体
 
     """
 
@@ -1461,7 +1461,7 @@ class InquirePriceRunInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        """发货参数对应的价格组合，当DryRun=True，会返回空
+        r"""发货参数对应的价格组合，当DryRun=True，会返回空
         :rtype: :class:`tencentcloud.hai.v20230812.models.Price`
         """
         return self._Price
@@ -1472,7 +1472,7 @@ class InquirePriceRunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1490,7 +1490,7 @@ class InquirePriceRunInstancesResponse(AbstractModel):
 
 
 class Instance(AbstractModel):
-    """实例信息
+    r"""实例信息
 
     """
 
@@ -1582,7 +1582,7 @@ FAILED：表示操作失败
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -1593,7 +1593,7 @@ FAILED：表示操作失败
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -1604,7 +1604,7 @@ FAILED：表示操作失败
 
     @property
     def InstanceState(self):
-        """实例状态：
+        r"""实例状态：
 PENDING：表示创建中
 LAUNCH_FAILED：表示创建失败
 RUNNING：表示运行中
@@ -1622,7 +1622,7 @@ TERMINATED：表示已销毁
 
     @property
     def ApplicationName(self):
-        """应用名称
+        r"""应用名称
 
         :rtype: str
         """
@@ -1634,7 +1634,7 @@ TERMINATED：表示已销毁
 
     @property
     def BundleName(self):
-        """算力套餐名称
+        r"""算力套餐名称
 
         :rtype: str
         """
@@ -1646,7 +1646,7 @@ TERMINATED：表示已销毁
 
     @property
     def GPUCount(self):
-        """实例所包含的GPU卡数
+        r"""实例所包含的GPU卡数
         :rtype: int
         """
         return self._GPUCount
@@ -1657,7 +1657,7 @@ TERMINATED：表示已销毁
 
     @property
     def GPUPerformance(self):
-        """算力
+        r"""算力
 
         :rtype: str
         """
@@ -1669,7 +1669,7 @@ TERMINATED：表示已销毁
 
     @property
     def GPUMemory(self):
-        """显存，单位：GB
+        r"""显存，单位：GB
         :rtype: str
         """
         return self._GPUMemory
@@ -1680,7 +1680,7 @@ TERMINATED：表示已销毁
 
     @property
     def CPU(self):
-        """CPU核数，单位：核
+        r"""CPU核数，单位：核
         :rtype: str
         """
         return self._CPU
@@ -1691,7 +1691,7 @@ TERMINATED：表示已销毁
 
     @property
     def Memory(self):
-        """内存，单位：GB
+        r"""内存，单位：GB
 
         :rtype: str
         """
@@ -1703,7 +1703,7 @@ TERMINATED：表示已销毁
 
     @property
     def SystemDisk(self):
-        """系统盘数据
+        r"""系统盘数据
         :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
         """
         return self._SystemDisk
@@ -1714,7 +1714,7 @@ TERMINATED：表示已销毁
 
     @property
     def PrivateIpAddresses(self):
-        """内网ip地址
+        r"""内网ip地址
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -1725,7 +1725,7 @@ TERMINATED：表示已销毁
 
     @property
     def PublicIpAddresses(self):
-        """公网ip地址
+        r"""公网ip地址
         :rtype: list of str
         """
         return self._PublicIpAddresses
@@ -1736,7 +1736,7 @@ TERMINATED：表示已销毁
 
     @property
     def SecurityGroupIds(self):
-        """安全组ID
+        r"""安全组ID
 
         :rtype: list of str
         """
@@ -1748,7 +1748,7 @@ TERMINATED：表示已销毁
 
     @property
     def LatestOperation(self):
-        """实例最新操作
+        r"""实例最新操作
         :rtype: str
         """
         return self._LatestOperation
@@ -1759,7 +1759,7 @@ TERMINATED：表示已销毁
 
     @property
     def LatestOperationState(self):
-        """实例最新操作状态：
+        r"""实例最新操作状态：
 SUCCESS：表示操作成功
 OPERATING：表示操作执行中
 FAILED：表示操作失败
@@ -1774,7 +1774,7 @@ FAILED：表示操作失败
 
     @property
     def CreateTime(self):
-        """实例创建时间，时间格式："YYYY-MM-DD HH:MM:SS"
+        r"""实例创建时间，时间格式："YYYY-MM-DD HH:MM:SS"
         :rtype: str
         """
         return self._CreateTime
@@ -1785,7 +1785,7 @@ FAILED：表示操作失败
 
     @property
     def MaxOutBandwidth(self):
-        """公网出带宽上限，默认10Mbps，单位：Mbps
+        r"""公网出带宽上限，默认10Mbps，单位：Mbps
         :rtype: str
         """
         return self._MaxOutBandwidth
@@ -1796,7 +1796,7 @@ FAILED：表示操作失败
 
     @property
     def MaxFreeTraffic(self):
-        """每月免费流量，默认500G，单位：GB
+        r"""每月免费流量，默认500G，单位：GB
         :rtype: str
         """
         return self._MaxFreeTraffic
@@ -1807,7 +1807,7 @@ FAILED：表示操作失败
 
     @property
     def ConfigurationEnvironment(self):
-        """应用配置环境
+        r"""应用配置环境
         :rtype: str
         """
         return self._ConfigurationEnvironment
@@ -1818,7 +1818,7 @@ FAILED：表示操作失败
 
     @property
     def LoginServices(self):
-        """实例包含的登录服务详情
+        r"""实例包含的登录服务详情
         :rtype: list of LoginService
         """
         return self._LoginServices
@@ -1829,7 +1829,7 @@ FAILED：表示操作失败
 
     @property
     def OSType(self):
-        """应用服务的操作系统类型；参数：linux、windows
+        r"""应用服务的操作系统类型；参数：linux、windows
         :rtype: str
         """
         return self._OSType
@@ -1880,7 +1880,7 @@ FAILED：表示操作失败
 
 
 class InstanceChargePrepaid(AbstractModel):
-    """实例预付费入参
+    r"""实例预付费入参
 
     """
 
@@ -1904,7 +1904,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 
     @property
     def Period(self):
-        """时长，默认值：1
+        r"""时长，默认值：1
         :rtype: int
         """
         return self._Period
@@ -1915,7 +1915,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 
     @property
     def RenewFlag(self):
-        """续费标志可选参数：
+        r"""续费标志可选参数：
 NOTIFY_AND_MANUAL_RENEW：表示默认状态(用户未设置，即初始状态：若用户有预付费不停服特权，也会对该值进行自动续费)
 NOTIFY_AND_AUTO_RENEW：表示自动续费
 DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
@@ -1931,7 +1931,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 
     @property
     def TimeUnit(self):
-        """时长单位，枚举： MONTH, DAY, HOUR；释义：月，日，小时
+        r"""时长单位，枚举： MONTH, DAY, HOUR；释义：月，日，小时
         :rtype: str
         """
         return self._TimeUnit
@@ -1956,7 +1956,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 
 
 class ItemPrice(AbstractModel):
-    """套餐价格
+    r"""套餐价格
 
     """
 
@@ -1982,7 +1982,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        """原单价，元
+        r"""原单价，元
         :rtype: float
         """
         return self._UnitPrice
@@ -1993,7 +1993,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountUnitPrice(self):
-        """折扣后单价，元
+        r"""折扣后单价，元
         :rtype: float
         """
         return self._DiscountUnitPrice
@@ -2004,7 +2004,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣
+        r"""折扣
         :rtype: float
         """
         return self._Discount
@@ -2015,7 +2015,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
-        """单位：时/月
+        r"""单位：时/月
 
         :rtype: str
         """
@@ -2027,7 +2027,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def Amount(self):
-        """商品数量
+        r"""商品数量
         :rtype: int
         """
         return self._Amount
@@ -2054,7 +2054,7 @@ class ItemPrice(AbstractModel):
 
 
 class ItemPriceDetail(AbstractModel):
-    """分实例价格
+    r"""分实例价格
 
     """
 
@@ -2076,7 +2076,7 @@ class ItemPriceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -2087,7 +2087,7 @@ class ItemPriceDetail(AbstractModel):
 
     @property
     def InstancePrice(self):
-        """实例价格详情
+        r"""实例价格详情
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2098,7 +2098,7 @@ class ItemPriceDetail(AbstractModel):
 
     @property
     def CloudDiskPrice(self):
-        """磁盘价格详情
+        r"""磁盘价格详情
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._CloudDiskPrice
@@ -2109,7 +2109,7 @@ class ItemPriceDetail(AbstractModel):
 
     @property
     def InstanceTotalPrice(self):
-        """该实例的总价钱
+        r"""该实例的总价钱
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstanceTotalPrice
@@ -2141,7 +2141,7 @@ class ItemPriceDetail(AbstractModel):
 
 
 class LoginService(AbstractModel):
-    """登录服务详情
+    r"""登录服务详情
 
     """
 
@@ -2154,7 +2154,7 @@ class LoginService(AbstractModel):
 
     @property
     def ServiceName(self):
-        """登录方式名称
+        r"""登录方式名称
         :rtype: str
         """
         return self._ServiceName
@@ -2177,7 +2177,7 @@ class LoginService(AbstractModel):
 
 
 class LoginSetting(AbstractModel):
-    """某服务的登录配置
+    r"""某服务的登录配置
 
     """
 
@@ -2193,7 +2193,7 @@ class LoginSetting(AbstractModel):
 
     @property
     def ServiceName(self):
-        """服务名称
+        r"""服务名称
         :rtype: str
         """
         return self._ServiceName
@@ -2204,7 +2204,7 @@ class LoginSetting(AbstractModel):
 
     @property
     def Url(self):
-        """服务登录url
+        r"""服务登录url
         :rtype: str
         """
         return self._Url
@@ -2228,7 +2228,7 @@ class LoginSetting(AbstractModel):
 
 
 class MuskPromptInfo(AbstractModel):
-    """musk prompt详情
+    r"""musk prompt详情
 
     """
 
@@ -2268,7 +2268,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """workflow id
+        r"""workflow id
         :rtype: str
         """
         return self._WorkflowId
@@ -2279,7 +2279,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def WorkgroupId(self):
-        """workgroup id
+        r"""workgroup id
         :rtype: str
         """
         return self._WorkgroupId
@@ -2290,7 +2290,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def PromptId(self):
-        """prompt id
+        r"""prompt id
         :rtype: str
         """
         return self._PromptId
@@ -2301,7 +2301,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def OutputResource(self):
-        """生成的内容
+        r"""生成的内容
         :rtype: list of str
         """
         return self._OutputResource
@@ -2312,7 +2312,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def Status(self):
-        """prompt status 
+        r"""prompt status 
 0: 执行中
 1: 执行成功
 2: 执行失败
@@ -2326,7 +2326,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2337,7 +2337,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -2348,7 +2348,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def Cost(self):
-        """任务执行耗时，单位毫秒
+        r"""任务执行耗时，单位毫秒
         :rtype: int
         """
         return self._Cost
@@ -2359,7 +2359,7 @@ class MuskPromptInfo(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """任务执行失败错误信息
+        r"""任务执行失败错误信息
         :rtype: str
         """
         return self._ErrorMessage
@@ -2390,7 +2390,7 @@ class MuskPromptInfo(AbstractModel):
 
 
 class NetworkStatus(AbstractModel):
-    """HAI 实例的网络配置和消耗情况
+    r"""HAI 实例的网络配置和消耗情况
 
     """
 
@@ -2417,7 +2417,7 @@ class NetworkStatus(AbstractModel):
 
     @property
     def InstanceId(self):
-        """HAI 的实例 ID
+        r"""HAI 的实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2428,7 +2428,7 @@ class NetworkStatus(AbstractModel):
 
     @property
     def AddressIp(self):
-        """公网 IP 地址
+        r"""公网 IP 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2440,7 +2440,7 @@ class NetworkStatus(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """出带宽上限，单位Mbps
+        r"""出带宽上限，单位Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2452,7 +2452,7 @@ class NetworkStatus(AbstractModel):
 
     @property
     def TotalTrafficAmount(self):
-        """流量包总量，单位GB
+        r"""流量包总量，单位GB
         :rtype: float
         """
         return self._TotalTrafficAmount
@@ -2463,7 +2463,7 @@ class NetworkStatus(AbstractModel):
 
     @property
     def RemainingTrafficAmount(self):
-        """流量包剩余量，单位GB
+        r"""流量包剩余量，单位GB
         :rtype: float
         """
         return self._RemainingTrafficAmount
@@ -2490,7 +2490,7 @@ class NetworkStatus(AbstractModel):
 
 
 class Price(AbstractModel):
-    """费用数据结构体
+    r"""费用数据结构体
 
     """
 
@@ -2509,7 +2509,7 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
-        """实例价格信息
+        r"""实例价格信息
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2520,7 +2520,7 @@ class Price(AbstractModel):
 
     @property
     def CloudDiskPrice(self):
-        """云盘价格信息
+        r"""云盘价格信息
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._CloudDiskPrice
@@ -2531,7 +2531,7 @@ class Price(AbstractModel):
 
     @property
     def PriceDetailSet(self):
-        """分实例价格
+        r"""分实例价格
         :rtype: list of ItemPriceDetail
         """
         return self._PriceDetailSet
@@ -2565,7 +2565,7 @@ class Price(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """地域列表
+    r"""地域列表
 
     """
 
@@ -2590,7 +2590,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -2601,7 +2601,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -2612,7 +2612,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def RegionState(self):
-        """地域是否可用状态
+        r"""地域是否可用状态
 AVAILABLE：可用
 
         :rtype: str
@@ -2625,7 +2625,7 @@ AVAILABLE：可用
 
     @property
     def ScholarRocketSupportState(self):
-        """学术加速是否支持：
+        r"""学术加速是否支持：
 NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。
         :rtype: str
         """
@@ -2652,7 +2652,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
 
 class ResetInstancesPasswordRequest(AbstractModel):
-    """ResetInstancesPassword请求参数结构体
+    r"""ResetInstancesPassword请求参数结构体
 
     """
 
@@ -2671,7 +2671,7 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表
+        r"""实例ID列表
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2682,7 +2682,7 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """实例密码必须8-30位，推荐使用12位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]</li><br><li>大写字母：[A-Z]</li><br><li>数字：0-9</li><br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
+        r"""实例密码必须8-30位，推荐使用12位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]</li><br><li>大写字母：[A-Z]</li><br><li>数字：0-9</li><br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
         :rtype: str
         """
         return self._Password
@@ -2693,7 +2693,7 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """默认为False，True代表只验证接口连通性
+        r"""默认为False，True代表只验证接口连通性
         :rtype: bool
         """
         return self._DryRun
@@ -2718,7 +2718,7 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
 
 class ResetInstancesPasswordResponse(AbstractModel):
-    """ResetInstancesPassword返回参数结构体
+    r"""ResetInstancesPassword返回参数结构体
 
     """
 
@@ -2734,7 +2734,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """task任务id
+        r"""task任务id
         :rtype: int
         """
         return self._TaskId
@@ -2745,7 +2745,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2761,7 +2761,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
 
 class ResizeInstanceDiskRequest(AbstractModel):
-    """ResizeInstanceDisk请求参数结构体
+    r"""ResizeInstanceDisk请求参数结构体
 
     """
 
@@ -2777,7 +2777,7 @@ class ResizeInstanceDiskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """需要扩容云盘的HAI实例ID
+        r"""需要扩容云盘的HAI实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -2788,7 +2788,7 @@ class ResizeInstanceDiskRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
+        r"""扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
         :rtype: int
         """
         return self._DiskSize
@@ -2812,7 +2812,7 @@ class ResizeInstanceDiskRequest(AbstractModel):
 
 
 class ResizeInstanceDiskResponse(AbstractModel):
-    """ResizeInstanceDisk返回参数结构体
+    r"""ResizeInstanceDisk返回参数结构体
 
     """
 
@@ -2825,7 +2825,7 @@ class ResizeInstanceDiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2840,7 +2840,7 @@ class ResizeInstanceDiskResponse(AbstractModel):
 
 
 class RunInstancesRequest(AbstractModel):
-    """RunInstances请求参数结构体
+    r"""RunInstances请求参数结构体
 
     """
 
@@ -2871,7 +2871,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
+        r"""应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :rtype: str
         """
         return self._ApplicationId
@@ -2882,7 +2882,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
-        """算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
+        r"""算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
         :rtype: str
         """
         return self._BundleType
@@ -2893,7 +2893,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
         """
         return self._SystemDisk
@@ -2904,7 +2904,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """购买实例数量，单次请求实例数量上限为10.
+        r"""购买实例数量，单次请求实例数量上限为10.
         :rtype: int
         """
         return self._InstanceCount
@@ -2915,7 +2915,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例显示名称，名称长度限制为128个字符.
+        r"""实例显示名称，名称长度限制为128个字符.
         :rtype: str
         """
         return self._InstanceName
@@ -2926,7 +2926,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """幂等请求的token
+        r"""幂等请求的token
         :rtype: str
         """
         return self._ClientToken
@@ -2937,7 +2937,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """DryRun为True就是只验接口连通性，默认为False
+        r"""DryRun为True就是只验接口连通性，默认为False
         :rtype: bool
         """
         return self._DryRun
@@ -2968,7 +2968,7 @@ class RunInstancesRequest(AbstractModel):
 
 
 class RunInstancesResponse(AbstractModel):
-    """RunInstances返回参数结构体
+    r"""RunInstances返回参数结构体
 
     """
 
@@ -2984,7 +2984,7 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """实例ID列表
+        r"""实例ID列表
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -2995,7 +2995,7 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3011,7 +3011,7 @@ class RunInstancesResponse(AbstractModel):
 
 
 class SceneInfo(AbstractModel):
-    """场景详情
+    r"""场景详情
 
     """
 
@@ -3029,7 +3029,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景id
+        r"""场景id
 
         :rtype: str
         """
@@ -3041,7 +3041,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名
+        r"""场景名
 
         :rtype: str
         """
@@ -3066,7 +3066,7 @@ class SceneInfo(AbstractModel):
 
 
 class StartInstanceRequest(AbstractModel):
-    """StartInstance请求参数结构体
+    r"""StartInstance请求参数结构体
 
     """
 
@@ -3082,7 +3082,7 @@ class StartInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
+        r"""实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3093,7 +3093,7 @@ class StartInstanceRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """默认为False，True代表只验证接口连通性
+        r"""默认为False，True代表只验证接口连通性
         :rtype: bool
         """
         return self._DryRun
@@ -3117,7 +3117,7 @@ class StartInstanceRequest(AbstractModel):
 
 
 class StartInstanceResponse(AbstractModel):
-    """StartInstance返回参数结构体
+    r"""StartInstance返回参数结构体
 
     """
 
@@ -3133,7 +3133,7 @@ class StartInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """task任务id
+        r"""task任务id
         :rtype: int
         """
         return self._TaskId
@@ -3144,7 +3144,7 @@ class StartInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3160,7 +3160,7 @@ class StartInstanceResponse(AbstractModel):
 
 
 class StopInstanceRequest(AbstractModel):
-    """StopInstance请求参数结构体
+    r"""StopInstance请求参数结构体
 
     """
 
@@ -3181,7 +3181,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def InstanceId(self):
-        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
+        r"""实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3192,7 +3192,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def StopMode(self):
-        """hai实例关机的模式，目前仅支持关机不收费：
+        r"""hai实例关机的模式，目前仅支持关机不收费：
 STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
 注意：默认值为STOP_CHARGE
         :rtype: str
@@ -3205,7 +3205,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def DryRun(self):
-        """默认为False，True代表只验证接口连通性
+        r"""默认为False，True代表只验证接口连通性
         :rtype: bool
         """
         return self._DryRun
@@ -3230,7 +3230,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
 
 class StopInstanceResponse(AbstractModel):
-    """StopInstance返回参数结构体
+    r"""StopInstance返回参数结构体
 
     """
 
@@ -3246,7 +3246,7 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """task任务id
+        r"""task任务id
         :rtype: int
         """
         return self._TaskId
@@ -3257,7 +3257,7 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3273,7 +3273,7 @@ class StopInstanceResponse(AbstractModel):
 
 
 class SystemDisk(AbstractModel):
-    """描述了操作系统所在块设备即系统盘的信息
+    r"""描述了操作系统所在块设备即系统盘的信息
 
     """
 
@@ -3292,7 +3292,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
+        r"""系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
         :rtype: str
         """
         return self._DiskType
@@ -3303,7 +3303,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """系统盘大小，单位：GB。默认值为 80，取值范围：80-1000
+        r"""系统盘大小，单位：GB。默认值为 80，取值范围：80-1000
         :rtype: int
         """
         return self._DiskSize
@@ -3314,7 +3314,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskName(self):
-        """系统盘分区盘符
+        r"""系统盘分区盘符
         :rtype: str
         """
         return self._DiskName
@@ -3339,7 +3339,7 @@ class SystemDisk(AbstractModel):
 
 
 class TerminateInstancesRequest(AbstractModel):
-    """TerminateInstances请求参数结构体
+    r"""TerminateInstances请求参数结构体
 
     """
 
@@ -3355,7 +3355,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
+        r"""实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3366,7 +3366,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """默认为False，True代表只验证接口连通性
+        r"""默认为False，True代表只验证接口连通性
         :rtype: bool
         """
         return self._DryRun
@@ -3390,7 +3390,7 @@ class TerminateInstancesRequest(AbstractModel):
 
 
 class TerminateInstancesResponse(AbstractModel):
-    """TerminateInstances返回参数结构体
+    r"""TerminateInstances返回参数结构体
 
     """
 
@@ -3403,7 +3403,7 @@ class TerminateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

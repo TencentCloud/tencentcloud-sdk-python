@@ -27,7 +27,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def CreateWorkspace(self, request):
-        """创建工作空间
+        r"""创建工作空间
 
         :param request: Request instance for CreateWorkspace.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.CreateWorkspaceRequest`
@@ -50,7 +50,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def CreateWorkspaceToken(self, request):
-        """创建工作空间临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+        r"""创建工作空间临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
 
         :param request: Request instance for CreateWorkspaceToken.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.CreateWorkspaceTokenRequest`
@@ -73,7 +73,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def DescribeConfig(self, request):
-        """获取用户配置
+        r"""获取用户配置
 
         :param request: Request instance for DescribeConfig.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.DescribeConfigRequest`
@@ -96,7 +96,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """获取基础镜像列表
+        r"""获取基础镜像列表
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.DescribeImagesRequest`
@@ -119,7 +119,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def DescribeWorkspaces(self, request):
-        """获取用户工作空间列表
+        r"""获取用户工作空间列表
 
         :param request: Request instance for DescribeWorkspaces.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.DescribeWorkspacesRequest`
@@ -142,7 +142,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def ModifyWorkspace(self, request):
-        """修改工作空间
+        r"""修改工作空间
 
         :param request: Request instance for ModifyWorkspace.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.ModifyWorkspaceRequest`
@@ -165,7 +165,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def RemoveWorkspace(self, request):
-        """删除工作空间
+        r"""删除工作空间
 
         :param request: Request instance for RemoveWorkspace.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.RemoveWorkspaceRequest`
@@ -188,7 +188,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def RunWorkspace(self, request):
-        """运行空间
+        r"""运行空间
 
         :param request: Request instance for RunWorkspace.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.RunWorkspaceRequest`
@@ -211,7 +211,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def StopWorkspace(self, request):
-        """停止运行空间
+        r"""停止运行空间
 
         :param request: Request instance for StopWorkspace.
         :type request: :class:`tencentcloud.cloudstudio.v20230508.models.StopWorkspaceRequest`

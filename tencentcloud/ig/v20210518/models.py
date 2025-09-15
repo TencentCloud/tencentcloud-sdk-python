@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeIgOrderListRequest(AbstractModel):
-    """DescribeIgOrderList请求参数结构体
+    r"""DescribeIgOrderList请求参数结构体
 
     """
 
@@ -44,7 +44,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -55,7 +55,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数目
+        r"""每页数目
         :rtype: int
         """
         return self._PageSize
@@ -66,7 +66,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
     @property
     def ProductType(self):
-        """产品类型
+        r"""产品类型
         :rtype: str
         """
         return self._ProductType
@@ -77,7 +77,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """订单状态
+        r"""订单状态
         :rtype: int
         """
         return self._OrderStatus
@@ -88,7 +88,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """搜索关键字
+        r"""搜索关键字
         :rtype: str
         """
         return self._KeyWord
@@ -115,7 +115,7 @@ class DescribeIgOrderListRequest(AbstractModel):
 
 
 class DescribeIgOrderListResponse(AbstractModel):
-    """DescribeIgOrderList返回参数结构体
+    r"""DescribeIgOrderList返回参数结构体
 
     """
 
@@ -128,7 +128,7 @@ class DescribeIgOrderListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

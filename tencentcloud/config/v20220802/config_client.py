@@ -27,7 +27,7 @@ class ConfigClient(AbstractClient):
 
 
     def DescribeAggregateDiscoveredResource(self, request):
-        """账号组资源详情
+        r"""账号组资源详情
 
         :param request: Request instance for DescribeAggregateDiscoveredResource.
         :type request: :class:`tencentcloud.config.v20220802.models.DescribeAggregateDiscoveredResourceRequest`
@@ -50,7 +50,7 @@ class ConfigClient(AbstractClient):
 
 
     def DescribeDiscoveredResource(self, request):
-        """资源详情
+        r"""资源详情
 
         :param request: Request instance for DescribeDiscoveredResource.
         :type request: :class:`tencentcloud.config.v20220802.models.DescribeDiscoveredResourceRequest`
@@ -73,7 +73,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListAggregateConfigRules(self, request):
-        """账号组获取规则列表
+        r"""账号组获取规则列表
 
         :param request: Request instance for ListAggregateConfigRules.
         :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateConfigRulesRequest`
@@ -96,7 +96,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListAggregateDiscoveredResources(self, request):
-        """账号组获取资源列表
+        r"""账号组获取资源列表
 
         :param request: Request instance for ListAggregateDiscoveredResources.
         :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesRequest`
@@ -119,7 +119,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListConfigRules(self, request):
-        """获取规则列表
+        r"""获取规则列表
 
         :param request: Request instance for ListConfigRules.
         :type request: :class:`tencentcloud.config.v20220802.models.ListConfigRulesRequest`
@@ -142,7 +142,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListDiscoveredResources(self, request):
-        """获取资源列表
+        r"""获取资源列表
 
         :param request: Request instance for ListDiscoveredResources.
         :type request: :class:`tencentcloud.config.v20220802.models.ListDiscoveredResourcesRequest`
@@ -165,7 +165,7 @@ class ConfigClient(AbstractClient):
 
 
     def PutEvaluations(self, request):
-        """上报自定义规则评估结果
+        r"""上报自定义规则评估结果
 
         :param request: Request instance for PutEvaluations.
         :type request: :class:`tencentcloud.config.v20220802.models.PutEvaluationsRequest`

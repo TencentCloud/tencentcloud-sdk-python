@@ -27,7 +27,7 @@ class VmClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """取消任务
+        r"""取消任务
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.vm.v20200709.models.CancelTaskRequest`
@@ -50,7 +50,7 @@ class VmClient(AbstractClient):
 
 
     def CreateBizConfig(self, request):
-        """创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
+        r"""创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
 
         在创建业务配置之前，你需要以下步骤：
         1. 开通COS存储捅功能，新建存储桶，例如 cms_segments，用来存储 视频转换过程中生成对音频和图片。
@@ -77,7 +77,7 @@ class VmClient(AbstractClient):
 
 
     def CreateVideoModerationTask(self, request):
-        """通过URL或存储桶创建审核任务
+        r"""通过URL或存储桶创建审核任务
 
         :param request: Request instance for CreateVideoModerationTask.
         :type request: :class:`tencentcloud.vm.v20200709.models.CreateVideoModerationTaskRequest`
@@ -100,7 +100,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """查看任务详情DescribeTaskDetail
+        r"""查看任务详情DescribeTaskDetail
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.vm.v20200709.models.DescribeTaskDetailRequest`
@@ -123,7 +123,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeVideoStat(self, request):
-        """控制台识别统计
+        r"""控制台识别统计
 
         :param request: Request instance for DescribeVideoStat.
         :type request: :class:`tencentcloud.vm.v20200709.models.DescribeVideoStatRequest`

@@ -27,7 +27,7 @@ class TswClient(AbstractClient):
 
 
     def DescribeComponentAlertObject(self, request):
-        """获取告警对象-组件告警
+        r"""获取告警对象-组件告警
 
         :param request: Request instance for DescribeComponentAlertObject.
         :type request: :class:`tencentcloud.tsw.v20210412.models.DescribeComponentAlertObjectRequest`
@@ -50,7 +50,7 @@ class TswClient(AbstractClient):
 
 
     def DescribeServiceAlertObject(self, request):
-        """获取告警对象-服务告警表
+        r"""获取告警对象-服务告警表
 
         :param request: Request instance for DescribeServiceAlertObject.
         :type request: :class:`tencentcloud.tsw.v20210412.models.DescribeServiceAlertObjectRequest`
@@ -73,7 +73,7 @@ class TswClient(AbstractClient):
 
 
     def DescribeToken(self, request):
-        """查询token
+        r"""查询token
 
         :param request: Request instance for DescribeToken.
         :type request: :class:`tencentcloud.tsw.v20210412.models.DescribeTokenRequest`

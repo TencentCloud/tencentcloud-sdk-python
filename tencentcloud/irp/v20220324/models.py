@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AuthorInfo(AbstractModel):
-    """作者信息
+    r"""作者信息
 
     """
 
@@ -49,7 +49,7 @@ class AuthorInfo(AbstractModel):
 
     @property
     def Id(self):
-        """作者id
+        r"""作者id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -61,7 +61,7 @@ class AuthorInfo(AbstractModel):
 
     @property
     def Name(self):
-        """作者名称
+        r"""作者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -73,7 +73,7 @@ class AuthorInfo(AbstractModel):
 
     @property
     def SourceId(self):
-        """作者来源
+        r"""作者来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -85,7 +85,7 @@ class AuthorInfo(AbstractModel):
 
     @property
     def FollowType(self):
-        """关注类型：1-关注，2-取关
+        r"""关注类型：1-关注，2-取关
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -97,7 +97,7 @@ class AuthorInfo(AbstractModel):
 
     @property
     def IconUrl(self):
-        """作者头像icon地址
+        r"""作者头像icon地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -125,7 +125,7 @@ class AuthorInfo(AbstractModel):
 
 
 class DislikeInfo(AbstractModel):
-    """不喜欢信息
+    r"""不喜欢信息
 
     """
 
@@ -141,7 +141,7 @@ class DislikeInfo(AbstractModel):
 
     @property
     def Type(self):
-        """不喜欢的物料类别，对应物料上传协议中的字段名，如authorId，keyword，topic等
+        r"""不喜欢的物料类别，对应物料上传协议中的字段名，如authorId，keyword，topic等
         :rtype: str
         """
         return self._Type
@@ -152,7 +152,7 @@ class DislikeInfo(AbstractModel):
 
     @property
     def Value(self):
-        """type对应字段名的值，如具体的topic名，作者id等
+        r"""type对应字段名的值，如具体的topic名，作者id等
         :rtype: str
         """
         return self._Value
@@ -176,7 +176,7 @@ class DislikeInfo(AbstractModel):
 
 
 class DocBehavior(AbstractModel):
-    """行为数据
+    r"""行为数据
 
     """
 
@@ -255,7 +255,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def ItemId(self):
-        """内容唯一ID，如 2824324234
+        r"""内容唯一ID，如 2824324234
         :rtype: str
         """
         return self._ItemId
@@ -266,7 +266,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def BehaviorType(self):
-        """行为类型
+        r"""行为类型
         :rtype: int
         """
         return self._BehaviorType
@@ -277,7 +277,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def BehaviorValue(self):
-        """行为值
+        r"""行为值
         :rtype: str
         """
         return self._BehaviorValue
@@ -288,7 +288,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def BehaviorTimestamp(self):
-        """行为时间戳： 秒级时间戳（默认为当前时间）,不能延迟太久，尽量实时上报，否则会影响推荐结果的准确性。
+        r"""行为时间戳： 秒级时间戳（默认为当前时间）,不能延迟太久，尽量实时上报，否则会影响推荐结果的准确性。
         :rtype: int
         """
         return self._BehaviorTimestamp
@@ -299,7 +299,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景id，在控制台创建场景后获取。
+        r"""场景id，在控制台创建场景后获取。
         :rtype: str
         """
         return self._SceneId
@@ -310,7 +310,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户id列表
+        r"""用户id列表
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -321,7 +321,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def RecTraceId(self):
-        """会话id，使用获取推荐结果中返回的RecTraceId填入。<br>注意：如果和在线推荐请求中的traceId不同，会影响行为特征归因，影响推荐算法效果
+        r"""会话id，使用获取推荐结果中返回的RecTraceId填入。<br>注意：如果和在线推荐请求中的traceId不同，会影响行为特征归因，影响推荐算法效果
         :rtype: str
         """
         return self._RecTraceId
@@ -332,7 +332,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Source(self):
-        """算法来源：用来区分行为来源于哪个算法。值为**business，tencent，other** 三者之一<br>● business 表示业务自己的算法对照组<br>● tencent 为腾讯算法<br>● other 为其他算法
+        r"""算法来源：用来区分行为来源于哪个算法。值为**business，tencent，other** 三者之一<br>● business 表示业务自己的算法对照组<br>● tencent 为腾讯算法<br>● other 为其他算法
         :rtype: str
         """
         return self._Source
@@ -343,7 +343,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def ItemType(self):
-        """物料类型
+        r"""物料类型
         :rtype: int
         """
         return self._ItemType
@@ -354,7 +354,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def AppId(self):
-        """微信开放平台上查看appId
+        r"""微信开放平台上查看appId
         :rtype: str
         """
         return self._AppId
@@ -365,7 +365,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def VideoPlayDuration(self):
-        """回传video_over事件的时候，回传的用户播放视频的总时长（真正播放的，拖动不算，单位为秒）
+        r"""回传video_over事件的时候，回传的用户播放视频的总时长（真正播放的，拖动不算，单位为秒）
         :rtype: int
         """
         return self._VideoPlayDuration
@@ -376,7 +376,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def ReferrerItemId(self):
-        """来源物料内容：用来标识在指定内容页面产生的行为，如需要统计用户在A内容详情页里，对推荐内容B点击等行为，则ReferrerItemId代表内容A，ItemId代表内容B
+        r"""来源物料内容：用来标识在指定内容页面产生的行为，如需要统计用户在A内容详情页里，对推荐内容B点击等行为，则ReferrerItemId代表内容A，ItemId代表内容B
         :rtype: str
         """
         return self._ReferrerItemId
@@ -387,7 +387,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Country(self):
-        """国家，统一用简写，比如中国则填写CN
+        r"""国家，统一用简写，比如中国则填写CN
         :rtype: str
         """
         return self._Country
@@ -398,7 +398,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -409,7 +409,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -420,7 +420,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def District(self):
-        """区县
+        r"""区县
         :rtype: str
         """
         return self._District
@@ -431,7 +431,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def IP(self):
-        """客户端ip
+        r"""客户端ip
         :rtype: str
         """
         return self._IP
@@ -442,7 +442,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Network(self):
-        """客户端网络类型
+        r"""客户端网络类型
         :rtype: str
         """
         return self._Network
@@ -453,7 +453,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Platform(self):
-        """客户端平台，ios/android/h5
+        r"""客户端平台，ios/android/h5
         :rtype: str
         """
         return self._Platform
@@ -464,7 +464,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def AppVersion(self):
-        """客户端app版本
+        r"""客户端app版本
         :rtype: str
         """
         return self._AppVersion
@@ -475,7 +475,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def OsVersion(self):
-        """操作系统版本
+        r"""操作系统版本
         :rtype: str
         """
         return self._OsVersion
@@ -486,7 +486,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def DeviceModel(self):
-        """机型
+        r"""机型
         :rtype: str
         """
         return self._DeviceModel
@@ -497,7 +497,7 @@ class DocBehavior(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，用于行为数据的扩展
+        r"""json字符串，用于行为数据的扩展
         :rtype: str
         """
         return self._Extension
@@ -547,7 +547,7 @@ class DocBehavior(AbstractModel):
 
 
 class DocItem(AbstractModel):
-    """推荐物料信息
+    r"""推荐物料信息
 
     """
 
@@ -656,7 +656,7 @@ class DocItem(AbstractModel):
 
     @property
     def ItemId(self):
-        """内容唯一id
+        r"""内容唯一id
         :rtype: str
         """
         return self._ItemId
@@ -667,7 +667,7 @@ class DocItem(AbstractModel):
 
     @property
     def ItemType(self):
-        """内容类型
+        r"""内容类型
         :rtype: int
         """
         return self._ItemType
@@ -678,7 +678,7 @@ class DocItem(AbstractModel):
 
     @property
     def Status(self):
-        """内容状态：1 - 上架， 2 - 下架
+        r"""内容状态：1 - 上架， 2 - 下架
         :rtype: int
         """
         return self._Status
@@ -689,7 +689,7 @@ class DocItem(AbstractModel):
 
     @property
     def PublishTimestamp(self):
-        """内容生成时间，秒级时间戳（1639624786），需大于0
+        r"""内容生成时间，秒级时间戳（1639624786），需大于0
         :rtype: int
         """
         return self._PublishTimestamp
@@ -700,7 +700,7 @@ class DocItem(AbstractModel):
 
     @property
     def SourceId(self):
-        """物料来源ID
+        r"""物料来源ID
         :rtype: int
         """
         return self._SourceId
@@ -711,7 +711,7 @@ class DocItem(AbstractModel):
 
     @property
     def Title(self):
-        """标题名称
+        r"""标题名称
         :rtype: str
         """
         return self._Title
@@ -722,7 +722,7 @@ class DocItem(AbstractModel):
 
     @property
     def Content(self):
-        """内容正文
+        r"""内容正文
         :rtype: str
         """
         return self._Content
@@ -733,7 +733,7 @@ class DocItem(AbstractModel):
 
     @property
     def Author(self):
-        """作者
+        r"""作者
         :rtype: str
         """
         return self._Author
@@ -744,7 +744,7 @@ class DocItem(AbstractModel):
 
     @property
     def AuthorId(self):
-        """作者id
+        r"""作者id
         :rtype: str
         """
         return self._AuthorId
@@ -755,7 +755,7 @@ class DocItem(AbstractModel):
 
     @property
     def Keyword(self):
-        """标签关键词，多个用英文分号分割
+        r"""标签关键词，多个用英文分号分割
         :rtype: str
         """
         return self._Keyword
@@ -766,7 +766,7 @@ class DocItem(AbstractModel):
 
     @property
     def Desc(self):
-        """内容物料描述：物料的描述信息，推荐系统会对内容的描述信息，使用否LP技术，进行分词、提取关键词，作为news的特征使用。
+        r"""内容物料描述：物料的描述信息，推荐系统会对内容的描述信息，使用否LP技术，进行分词、提取关键词，作为news的特征使用。
         :rtype: str
         """
         return self._Desc
@@ -777,7 +777,7 @@ class DocItem(AbstractModel):
 
     @property
     def PicUrlList(self):
-        """图片url
+        r"""图片url
         :rtype: list of str
         """
         return self._PicUrlList
@@ -788,7 +788,7 @@ class DocItem(AbstractModel):
 
     @property
     def VideoUrlList(self):
-        """视频url
+        r"""视频url
         :rtype: list of str
         """
         return self._VideoUrlList
@@ -799,7 +799,7 @@ class DocItem(AbstractModel):
 
     @property
     def VideoDuration(self):
-        """视频时长，时间秒
+        r"""视频时长，时间秒
         :rtype: int
         """
         return self._VideoDuration
@@ -810,7 +810,7 @@ class DocItem(AbstractModel):
 
     @property
     def CategoryLevel(self):
-        """类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配
+        r"""类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配
         :rtype: int
         """
         return self._CategoryLevel
@@ -821,7 +821,7 @@ class DocItem(AbstractModel):
 
     @property
     def CategoryPath(self):
-        """类目路径，一级二级三级等依次用英文冒号联接，如体育：“足球:巴塞罗那”
+        r"""类目路径，一级二级三级等依次用英文冒号联接，如体育：“足球:巴塞罗那”
         :rtype: str
         """
         return self._CategoryPath
@@ -832,7 +832,7 @@ class DocItem(AbstractModel):
 
     @property
     def Country(self):
-        """国家，统一用简写，比如中国则填写CN
+        r"""国家，统一用简写，比如中国则填写CN
         :rtype: str
         """
         return self._Country
@@ -843,7 +843,7 @@ class DocItem(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -854,7 +854,7 @@ class DocItem(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -865,7 +865,7 @@ class DocItem(AbstractModel):
 
     @property
     def District(self):
-        """区县
+        r"""区县
         :rtype: str
         """
         return self._District
@@ -876,7 +876,7 @@ class DocItem(AbstractModel):
 
     @property
     def ExpireTimestamp(self):
-        """内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年
+        r"""内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年
         :rtype: int
         """
         return self._ExpireTimestamp
@@ -887,7 +887,7 @@ class DocItem(AbstractModel):
 
     @property
     def Topic(self):
-        """所属话题
+        r"""所属话题
         :rtype: str
         """
         return self._Topic
@@ -898,7 +898,7 @@ class DocItem(AbstractModel):
 
     @property
     def AuthorFans(self):
-        """作者粉丝数
+        r"""作者粉丝数
         :rtype: int
         """
         return self._AuthorFans
@@ -909,7 +909,7 @@ class DocItem(AbstractModel):
 
     @property
     def AuthorLevel(self):
-        """作者评级
+        r"""作者评级
         :rtype: str
         """
         return self._AuthorLevel
@@ -920,7 +920,7 @@ class DocItem(AbstractModel):
 
     @property
     def CollectCnt(self):
-        """内容累计收藏次数
+        r"""内容累计收藏次数
         :rtype: int
         """
         return self._CollectCnt
@@ -931,7 +931,7 @@ class DocItem(AbstractModel):
 
     @property
     def PraiseCnt(self):
-        """内容累积点赞次数
+        r"""内容累积点赞次数
         :rtype: int
         """
         return self._PraiseCnt
@@ -942,7 +942,7 @@ class DocItem(AbstractModel):
 
     @property
     def CommentCnt(self):
-        """内容累计评论次数
+        r"""内容累计评论次数
         :rtype: int
         """
         return self._CommentCnt
@@ -953,7 +953,7 @@ class DocItem(AbstractModel):
 
     @property
     def ShareCnt(self):
-        """内容累计分享次数
+        r"""内容累计分享次数
         :rtype: int
         """
         return self._ShareCnt
@@ -964,7 +964,7 @@ class DocItem(AbstractModel):
 
     @property
     def RewardCnt(self):
-        """内容累积打赏数
+        r"""内容累积打赏数
         :rtype: int
         """
         return self._RewardCnt
@@ -975,7 +975,7 @@ class DocItem(AbstractModel):
 
     @property
     def Score(self):
-        """内容质量评分，类似豆瓣电影的评分，这里为100分制，比如97分，满分100分，最低0分，范围外的将会被拦截
+        r"""内容质量评分，类似豆瓣电影的评分，这里为100分制，比如97分，满分100分，最低0分，范围外的将会被拦截
         :rtype: float
         """
         return self._Score
@@ -986,7 +986,7 @@ class DocItem(AbstractModel):
 
     @property
     def PoolIdList(self):
-        """内容池id，用于分内容池召回，一个内容支持指定一个或多个内容池， 内容池id不建议使用0（0表示不区分内容池）
+        r"""内容池id，用于分内容池召回，一个内容支持指定一个或多个内容池， 内容池id不建议使用0（0表示不区分内容池）
         :rtype: list of str
         """
         return self._PoolIdList
@@ -997,7 +997,7 @@ class DocItem(AbstractModel):
 
     @property
     def TagInfoList(self):
-        """描述用户标签
+        r"""描述用户标签
         :rtype: list of TagInfo
         """
         return self._TagInfoList
@@ -1008,7 +1008,7 @@ class DocItem(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，用于物料数据的扩展
+        r"""json字符串，用于物料数据的扩展
         :rtype: str
         """
         return self._Extension
@@ -1068,7 +1068,7 @@ class DocItem(AbstractModel):
 
 
 class PortraitInfo(AbstractModel):
-    """画像信息
+    r"""画像信息
 
     """
 
@@ -1156,7 +1156,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户id列表
+        r"""用户id列表
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -1167,7 +1167,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """如果"userIdType"是10则必传，在微信开放平台上查看appId
+        r"""如果"userIdType"是10则必传，在微信开放平台上查看appId
         :rtype: str
         """
         return self._AppId
@@ -1178,7 +1178,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Age(self):
-        """用户年龄，值域在 0-200
+        r"""用户年龄，值域在 0-200
         :rtype: int
         """
         return self._Age
@@ -1189,7 +1189,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Gender(self):
-        """用户性别：0-未知，1-男， 2-女
+        r"""用户性别：0-未知，1-男， 2-女
         :rtype: int
         """
         return self._Gender
@@ -1200,7 +1200,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Degree(self):
-        """用户学历 ：小学，初中，高中，大专，本科，硕士，博士
+        r"""用户学历 ：小学，初中，高中，大专，本科，硕士，博士
         :rtype: str
         """
         return self._Degree
@@ -1211,7 +1211,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def School(self):
-        """用户毕业学校全称
+        r"""用户毕业学校全称
         :rtype: str
         """
         return self._School
@@ -1222,7 +1222,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Occupation(self):
-        """用户职业，保证业务的唯一性
+        r"""用户职业，保证业务的唯一性
         :rtype: str
         """
         return self._Occupation
@@ -1233,7 +1233,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Industry(self):
-        """用户所属行业，保证业务的唯一性
+        r"""用户所属行业，保证业务的唯一性
         :rtype: str
         """
         return self._Industry
@@ -1244,7 +1244,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def ResidentCountry(self):
-        """用户常驻国家，统一用简写，比如中国则填写CN
+        r"""用户常驻国家，统一用简写，比如中国则填写CN
         :rtype: str
         """
         return self._ResidentCountry
@@ -1255,7 +1255,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def ResidentProvince(self):
-        """用户常驻省份
+        r"""用户常驻省份
         :rtype: str
         """
         return self._ResidentProvince
@@ -1266,7 +1266,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def ResidentCity(self):
-        """用户常驻城市
+        r"""用户常驻城市
         :rtype: str
         """
         return self._ResidentCity
@@ -1277,7 +1277,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def ResidentDistrict(self):
-        """用户常驻区县
+        r"""用户常驻区县
         :rtype: str
         """
         return self._ResidentDistrict
@@ -1288,7 +1288,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def PhoneMd5(self):
-        """用户手机的MD5值
+        r"""用户手机的MD5值
         :rtype: str
         """
         return self._PhoneMd5
@@ -1299,7 +1299,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def PhoneImei(self):
-        """用户手机的IMEI号
+        r"""用户手机的IMEI号
         :rtype: str
         """
         return self._PhoneImei
@@ -1310,7 +1310,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Idfa(self):
-        """设备idfa信息
+        r"""设备idfa信息
         :rtype: str
         """
         return self._Idfa
@@ -1321,7 +1321,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def RegisterTimestamp(self):
-        """用户注册时间，秒级时间戳（1639624786）
+        r"""用户注册时间，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._RegisterTimestamp
@@ -1332,7 +1332,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def MembershipLevel(self):
-        """用户会员等级
+        r"""用户会员等级
         :rtype: str
         """
         return self._MembershipLevel
@@ -1343,7 +1343,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def LastLoginTimestamp(self):
-        """用户上一次登录时间，秒级时间戳（1639624786）
+        r"""用户上一次登录时间，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._LastLoginTimestamp
@@ -1354,7 +1354,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def LastLoginIp(self):
-        """用户上一次登录的ip
+        r"""用户上一次登录的ip
         :rtype: str
         """
         return self._LastLoginIp
@@ -1365,7 +1365,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
-        """用户信息的最后修改时间戳，秒级时间戳（1639624786）
+        r"""用户信息的最后修改时间戳，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -1376,7 +1376,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def TagInfoList(self):
-        """用户标签
+        r"""用户标签
         :rtype: list of TagInfo
         """
         return self._TagInfoList
@@ -1387,7 +1387,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def AuthorInfoList(self):
-        """用户关注作者列表
+        r"""用户关注作者列表
         :rtype: list of AuthorInfo
         """
         return self._AuthorInfoList
@@ -1398,7 +1398,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def DislikeInfoList(self):
-        """用户不喜欢列表
+        r"""用户不喜欢列表
         :rtype: list of DislikeInfo
         """
         return self._DislikeInfoList
@@ -1409,7 +1409,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，用于画像数据的扩展
+        r"""json字符串，用于画像数据的扩展
         :rtype: str
         """
         return self._Extension
@@ -1420,7 +1420,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def Oaid(self):
-        """设备oaid信息
+        r"""设备oaid信息
         :rtype: str
         """
         return self._Oaid
@@ -1431,7 +1431,7 @@ class PortraitInfo(AbstractModel):
 
     @property
     def AndroidId(self):
-        """设备AndroidId信息
+        r"""设备AndroidId信息
         :rtype: str
         """
         return self._AndroidId
@@ -1499,7 +1499,7 @@ class PortraitInfo(AbstractModel):
 
 
 class RecItemData(AbstractModel):
-    """推荐内容信息
+    r"""推荐内容信息
 
     """
 
@@ -1528,7 +1528,7 @@ class RecItemData(AbstractModel):
 
     @property
     def ItemId(self):
-        """推荐的内容id，即用户行为上报中的itemId
+        r"""推荐的内容id，即用户行为上报中的itemId
         :rtype: str
         """
         return self._ItemId
@@ -1539,7 +1539,7 @@ class RecItemData(AbstractModel):
 
     @property
     def ItemType(self):
-        """物料子类型，包括如下： 1-图文、2-长视频（横视频）、3-短视频（横视频）、4-小说、5-小视频（竖视频）、6-纯文本
+        r"""物料子类型，包括如下： 1-图文、2-长视频（横视频）、3-短视频（横视频）、4-小说、5-小视频（竖视频）、6-纯文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1551,7 +1551,7 @@ class RecItemData(AbstractModel):
 
     @property
     def Weight(self):
-        """推荐内容的权重，取值范围[0,1000000]
+        r"""推荐内容的权重，取值范围[0,1000000]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1563,7 +1563,7 @@ class RecItemData(AbstractModel):
 
     @property
     def Score(self):
-        """推荐预测分
+        r"""推荐预测分
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1575,7 +1575,7 @@ class RecItemData(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键词，多个用英文分号分割，和物料上传的keyword一致
+        r"""关键词，多个用英文分号分割，和物料上传的keyword一致
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1603,7 +1603,7 @@ class RecItemData(AbstractModel):
 
 
 class RecommendContentRequest(AbstractModel):
-    """RecommendContent请求参数结构体
+    r"""RecommendContent请求参数结构体
 
     """
 
@@ -1640,7 +1640,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def Bid(self):
-        """业务id
+        r"""业务id
         :rtype: str
         """
         return self._Bid
@@ -1651,7 +1651,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景id：比如有“猜你喜欢”，“热门内容”等推荐模块，每一个模块都有一个scene_id来表示。 在控制台创建场景后获取。需要跟行为上报时的id一致
+        r"""场景id：比如有“猜你喜欢”，“热门内容”等推荐模块，每一个模块都有一个scene_id来表示。 在控制台创建场景后获取。需要跟行为上报时的id一致
         :rtype: str
         """
         return self._SceneId
@@ -1662,7 +1662,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户唯一ID数组，每个数组元素详见userId结构体，若不填，则接口返回热门结果
+        r"""用户唯一ID数组，每个数组元素详见userId结构体，若不填，则接口返回热门结果
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -1673,7 +1673,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def RecTraceId(self):
-        """会话id：必须和行为数据上报时所填写的traceId相同，用于行为数据来自于那次在线推荐请求的归因。**注意：此处如果没传，则响应会返回一个全局唯一ID返回给客户，并需客户透传给行为日志上报接口**
+        r"""会话id：必须和行为数据上报时所填写的traceId相同，用于行为数据来自于那次在线推荐请求的归因。**注意：此处如果没传，则响应会返回一个全局唯一ID返回给客户，并需客户透传给行为日志上报接口**
         :rtype: str
         """
         return self._RecTraceId
@@ -1684,7 +1684,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def ItemCnt(self):
-        """推荐数量：物料优选的结果， 默认50个，目前最多支持200个的内容返回，如果返回个数更多，会影响性能，容易超时。
+        r"""推荐数量：物料优选的结果， 默认50个，目前最多支持200个的内容返回，如果返回个数更多，会影响性能，容易超时。
         :rtype: int
         """
         return self._ItemCnt
@@ -1695,7 +1695,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def PoolId(self):
-        """物料池id，用于召回该pool_id下的商品，如果有多个，用英文;分割。**注意：此处poolId需和物料上报时的poolIdList对应上**
+        r"""物料池id，用于召回该pool_id下的商品，如果有多个，用英文;分割。**注意：此处poolId需和物料上报时的poolIdList对应上**
         :rtype: str
         """
         return self._PoolId
@@ -1706,7 +1706,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def CurrentItemId(self):
-        """来源物料id，即用户当前浏览的物料id，用于在内容详情页获取关联推荐内容
+        r"""来源物料id，即用户当前浏览的物料id，用于在内容详情页获取关联推荐内容
         :rtype: str
         """
         return self._CurrentItemId
@@ -1717,7 +1717,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def ResponseTimeout(self):
-        """请求响应超时时间，单位ms，默认300ms，数值设置的过小，会影响推荐效果，最小支持250ms
+        r"""请求响应超时时间，单位ms，默认300ms，数值设置的过小，会影响推荐效果，最小支持250ms
         :rtype: int
         """
         return self._ResponseTimeout
@@ -1728,7 +1728,7 @@ class RecommendContentRequest(AbstractModel):
 
     @property
     def ItemTypeRatio(self):
-        """返回结果中不同物料类型的比例，比例顺序需严格按照（图文，长视频，短视频，小视频）进行。只允许传[0,100]数字，多个请用**英文冒号**分割，且加起来不能超过100，以及比例数量不能超过**场景绑定的物料类型**（图文，长视频，短视频，小视频）数。**示例：**图文和短视频比例为40%:60%时，则填40:60图文和短视频比例为0%:100%时，则填0:100图文，长视频和短视频的比例为，图文占20%，剩余80%由长视频和短视频随机返回，则填20:80或仅填20均可
+        r"""返回结果中不同物料类型的比例，比例顺序需严格按照（图文，长视频，短视频，小视频）进行。只允许传[0,100]数字，多个请用**英文冒号**分割，且加起来不能超过100，以及比例数量不能超过**场景绑定的物料类型**（图文，长视频，短视频，小视频）数。**示例：**图文和短视频比例为40%:60%时，则填40:60图文和短视频比例为0%:100%时，则填0:100图文，长视频和短视频的比例为，图文占20%，剩余80%由长视频和短视频随机返回，则填20:80或仅填20均可
         :rtype: str
         """
         return self._ItemTypeRatio
@@ -1764,7 +1764,7 @@ class RecommendContentRequest(AbstractModel):
 
 
 class RecommendContentResponse(AbstractModel):
-    """RecommendContent返回参数结构体
+    r"""RecommendContent返回参数结构体
 
     """
 
@@ -1783,7 +1783,7 @@ class RecommendContentResponse(AbstractModel):
 
     @property
     def RecTraceId(self):
-        """推荐追踪id，用于行为上报。每次接口调用返回的traceId不同
+        r"""推荐追踪id，用于行为上报。每次接口调用返回的traceId不同
         :rtype: str
         """
         return self._RecTraceId
@@ -1794,7 +1794,7 @@ class RecommendContentResponse(AbstractModel):
 
     @property
     def DataList(self):
-        """标识具体的物料信息
+        r"""标识具体的物料信息
         :rtype: list of RecItemData
         """
         return self._DataList
@@ -1805,7 +1805,7 @@ class RecommendContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1827,7 +1827,7 @@ class RecommendContentResponse(AbstractModel):
 
 
 class ReportActionRequest(AbstractModel):
-    """ReportAction请求参数结构体
+    r"""ReportAction请求参数结构体
 
     """
 
@@ -1843,7 +1843,7 @@ class ReportActionRequest(AbstractModel):
 
     @property
     def Bid(self):
-        """业务id
+        r"""业务id
         :rtype: str
         """
         return self._Bid
@@ -1854,7 +1854,7 @@ class ReportActionRequest(AbstractModel):
 
     @property
     def DocBehaviorList(self):
-        """上报的行为对象数组，数量不超过50
+        r"""上报的行为对象数组，数量不超过50
         :rtype: list of DocBehavior
         """
         return self._DocBehaviorList
@@ -1883,7 +1883,7 @@ class ReportActionRequest(AbstractModel):
 
 
 class ReportActionResponse(AbstractModel):
-    """ReportAction返回参数结构体
+    r"""ReportAction返回参数结构体
 
     """
 
@@ -1896,7 +1896,7 @@ class ReportActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1911,7 +1911,7 @@ class ReportActionResponse(AbstractModel):
 
 
 class ReportMaterialRequest(AbstractModel):
-    """ReportMaterial请求参数结构体
+    r"""ReportMaterial请求参数结构体
 
     """
 
@@ -1927,7 +1927,7 @@ class ReportMaterialRequest(AbstractModel):
 
     @property
     def Bid(self):
-        """业务id
+        r"""业务id
         :rtype: str
         """
         return self._Bid
@@ -1938,7 +1938,7 @@ class ReportMaterialRequest(AbstractModel):
 
     @property
     def DocItemList(self):
-        """上报的信息流数组，一次数量不超过50
+        r"""上报的信息流数组，一次数量不超过50
         :rtype: list of DocItem
         """
         return self._DocItemList
@@ -1967,7 +1967,7 @@ class ReportMaterialRequest(AbstractModel):
 
 
 class ReportMaterialResponse(AbstractModel):
-    """ReportMaterial返回参数结构体
+    r"""ReportMaterial返回参数结构体
 
     """
 
@@ -1980,7 +1980,7 @@ class ReportMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1995,7 +1995,7 @@ class ReportMaterialResponse(AbstractModel):
 
 
 class ReportPortraitRequest(AbstractModel):
-    """ReportPortrait请求参数结构体
+    r"""ReportPortrait请求参数结构体
 
     """
 
@@ -2011,7 +2011,7 @@ class ReportPortraitRequest(AbstractModel):
 
     @property
     def Bid(self):
-        """推荐平台上的业务id
+        r"""推荐平台上的业务id
         :rtype: str
         """
         return self._Bid
@@ -2022,7 +2022,7 @@ class ReportPortraitRequest(AbstractModel):
 
     @property
     def PortraitList(self):
-        """上报的用户画像数组，数量不超过50
+        r"""上报的用户画像数组，数量不超过50
         :rtype: list of PortraitInfo
         """
         return self._PortraitList
@@ -2051,7 +2051,7 @@ class ReportPortraitRequest(AbstractModel):
 
 
 class ReportPortraitResponse(AbstractModel):
-    """ReportPortrait返回参数结构体
+    r"""ReportPortrait返回参数结构体
 
     """
 
@@ -2064,7 +2064,7 @@ class ReportPortraitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2079,7 +2079,7 @@ class ReportPortraitResponse(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """标题信息
+    r"""标题信息
 
     """
 
@@ -2101,7 +2101,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Id(self):
-        """标签id
+        r"""标签id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2113,7 +2113,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Name(self):
-        """标签名
+        r"""标签名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2125,7 +2125,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Weight(self):
-        """推荐权重
+        r"""推荐权重
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2151,7 +2151,7 @@ class TagInfo(AbstractModel):
 
 
 class UserIdInfo(AbstractModel):
-    """用户信息
+    r"""用户信息
 
     """
 
@@ -2183,7 +2183,7 @@ class UserIdInfo(AbstractModel):
 
     @property
     def UserIdType(self):
-        """用户ID类型：
+        r"""用户ID类型：
 1 - qq
 2 - qq_md5：md5后的qq
 3 - imei：设备imei（安卓10之后不会再授权imei，安卓10之后的imei映射关系可能拿不到，故安卓10之后的设备建议用oaid）
@@ -2210,7 +2210,7 @@ class UserIdInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户id
+        r"""用户id
         :rtype: str
         """
         return self._UserId

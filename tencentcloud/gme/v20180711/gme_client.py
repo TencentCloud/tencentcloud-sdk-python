@@ -26,8 +26,31 @@ class GmeClient(AbstractClient):
     _service = 'gme'
 
 
+    def ControlAIConversation(self, request):
+        r"""提供服务端控制机器人的功能
+
+        :param request: Request instance for ControlAIConversation.
+        :type request: :class:`tencentcloud.gme.v20180711.models.ControlAIConversationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ControlAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAgeDetectTask(self, request):
-        """目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+        r"""目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
 
         用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
         </br>
@@ -62,7 +85,7 @@ class GmeClient(AbstractClient):
 
 
     def CreateApp(self, request):
-        """本接口(CreateApp)用于创建一个GME应用。
+        r"""本接口(CreateApp)用于创建一个GME应用。
 
         :param request: Request instance for CreateApp.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateAppRequest`
@@ -85,7 +108,7 @@ class GmeClient(AbstractClient):
 
 
     def CreateCustomization(self, request):
-        """用户使用该接口可以创建语音消息转文本热句模型，以供识别调用
+        r"""用户使用该接口可以创建语音消息转文本热句模型，以供识别调用
 
         :param request: Request instance for CreateCustomization.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateCustomizationRequest`
@@ -108,7 +131,7 @@ class GmeClient(AbstractClient):
 
 
     def CreateScanUser(self, request):
-        """新增自定义送检用户。**接口使用前提**：目前 CreateScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
+        r"""新增自定义送检用户。**接口使用前提**：目前 CreateScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for CreateScanUser.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateScanUserRequest`
@@ -131,7 +154,7 @@ class GmeClient(AbstractClient):
 
 
     def DeleteCustomization(self, request):
-        """用户通过该接口可以删除语音消息转文本热句模型
+        r"""用户通过该接口可以删除语音消息转文本热句模型
 
         :param request: Request instance for DeleteCustomization.
         :type request: :class:`tencentcloud.gme.v20180711.models.DeleteCustomizationRequest`
@@ -154,7 +177,7 @@ class GmeClient(AbstractClient):
 
 
     def DeleteRoomMember(self, request):
-        """本接口(DeleteRoomMember)用户删除房间或者剔除房间内用户
+        r"""本接口(DeleteRoomMember)用户删除房间或者剔除房间内用户
 
         :param request: Request instance for DeleteRoomMember.
         :type request: :class:`tencentcloud.gme.v20180711.models.DeleteRoomMemberRequest`
@@ -177,7 +200,7 @@ class GmeClient(AbstractClient):
 
 
     def DeleteScanUser(self, request):
-        """删除自定义送检用户。**接口使用前提**：目前 DeleteScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
+        r"""删除自定义送检用户。**接口使用前提**：目前 DeleteScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for DeleteScanUser.
         :type request: :class:`tencentcloud.gme.v20180711.models.DeleteScanUserRequest`
@@ -199,8 +222,54 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoicePrint(self, request):
+        r"""传入声纹ID，删除之前注册的声纹信息
+
+        :param request: Request instance for DeleteVoicePrint.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DeleteVoicePrintRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIConversation(self, request):
+        r"""查询AI对话任务状态。
+
+        :param request: Request instance for DescribeAIConversation.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAIConversationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgeDetectTask(self, request):
-        """目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+        r"""目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
 
         查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 
@@ -225,7 +294,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeAppStatistics(self, request):
-        """本接口(DescribeAppStatistics)用于获取某个GME应用的用量数据。包括实时语音，语音消息及转文本，语音分析等。最长查询周期为最近60天。
+        r"""本接口(DescribeAppStatistics)用于获取某个GME应用的用量数据。包括实时语音，语音消息及转文本，语音分析等。最长查询周期为最近60天。
 
         :param request: Request instance for DescribeAppStatistics.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsRequest`
@@ -248,7 +317,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeApplicationData(self, request):
-        """本接口(DescribeApplicationData)用于获取数据详情信息，最多可拉取最近90天的数据。
+        r"""本接口(DescribeApplicationData)用于获取数据详情信息，最多可拉取最近90天的数据。
 
         :param request: Request instance for DescribeApplicationData.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataRequest`
@@ -271,7 +340,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeApplicationList(self, request):
-        """本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+        r"""本接口(DescribeApplicationList)用于查询自己账号下的应用列表
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationListRequest`
@@ -294,7 +363,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeRealtimeScanConfig(self, request):
-        """获取用户自定义送检信息。**接口使用前提**：目前 DescribeRealtimeScanConfig 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
+        r"""获取用户自定义送检信息。**接口使用前提**：目前 DescribeRealtimeScanConfig 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for DescribeRealtimeScanConfig.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRealtimeScanConfigRequest`
@@ -317,7 +386,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeRecordInfo(self, request):
-        """查询录制任务信息。
+        r"""查询录制任务信息。
 
         :param request: Request instance for DescribeRecordInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRecordInfoRequest`
@@ -340,7 +409,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeRoomInfo(self, request):
-        """获取房间内用户信息
+        r"""获取房间内用户信息
 
         :param request: Request instance for DescribeRoomInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRoomInfoRequest`
@@ -363,7 +432,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeScanResultList(self, request):
-        """本接口(DescribeScanResultList)用于查询语音检测结果，查询任务列表最多支持100个。
+        r"""本接口(DescribeScanResultList)用于查询语音检测结果，查询任务列表最多支持100个。
         <p style="color:red">如果在提交语音检测任务时未设置 Callback 字段，则需要通过本接口获取检测结果</p>
 
         :param request: Request instance for DescribeScanResultList.
@@ -387,7 +456,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeTaskInfo(self, request):
-        """查询房间录制的详细信息
+        r"""查询房间录制的详细信息
 
         :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeTaskInfoRequest`
@@ -410,7 +479,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeUserInAndOutTime(self, request):
-        """拉取用户在房间得进出时间
+        r"""拉取用户在房间得进出时间
 
         :param request: Request instance for DescribeUserInAndOutTime.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeUserInAndOutTimeRequest`
@@ -432,8 +501,31 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoicePrint(self, request):
+        r"""查询先前注册的声纹信息
+
+        :param request: Request instance for DescribeVoicePrint.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeVoicePrintRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetCustomizationList(self, request):
-        """查询语音消息转文本热句模型列表
+        r"""查询语音消息转文本热句模型列表
 
         :param request: Request instance for GetCustomizationList.
         :type request: :class:`tencentcloud.gme.v20180711.models.GetCustomizationListRequest`
@@ -456,7 +548,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyAppStatus(self, request):
-        """本接口(ModifyAppStatus)用于修改应用总开关状态。
+        r"""本接口(ModifyAppStatus)用于修改应用总开关状态。
 
         :param request: Request instance for ModifyAppStatus.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`
@@ -479,7 +571,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyCustomization(self, request):
-        """用户通过该接口可以更新语音消息转文本热句模型。
+        r"""用户通过该接口可以更新语音消息转文本热句模型。
 
         :param request: Request instance for ModifyCustomization.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationRequest`
@@ -502,7 +594,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyCustomizationState(self, request):
-        """通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
+        r"""通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
 
         :param request: Request instance for ModifyCustomizationState.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationStateRequest`
@@ -525,7 +617,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyRecordInfo(self, request):
-        """修改录制配置信息
+        r"""修改录制配置信息
 
         :param request: Request instance for ModifyRecordInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyRecordInfoRequest`
@@ -548,7 +640,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyUserMicStatus(self, request):
-        """**接口作用**：此接口用于修改房间用户的麦克风状态，例如房间内用户麦克风为打开状态，可调用此接口将该用户麦克风进行关闭，关闭后即使该用户使用客户端接口 EnableMic 打开麦克风，依然无法与房间内成员通话，属于被禁言状态。该状态持续到此用户退房后失效，或者调用该接口重新打开此用户麦克风状态。
+        r"""**接口作用**：此接口用于修改房间用户的麦克风状态，例如房间内用户麦克风为打开状态，可调用此接口将该用户麦克风进行关闭，关闭后即使该用户使用客户端接口 EnableMic 打开麦克风，依然无法与房间内成员通话，属于被禁言状态。该状态持续到此用户退房后失效，或者调用该接口重新打开此用户麦克风状态。
         **接口应用场景**：此接口多用于游戏业务中台或者风控后台，对一些发表不当言论的玩家进行禁言处理。
         **接口使用前提**：目前 ModifyUserMicStatus 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
@@ -572,8 +664,31 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RegisterVoicePrint(self, request):
+        r"""传入音频base64串，注册声纹信息，返回声纹ID
+
+        :param request: Request instance for RegisterVoicePrint.
+        :type request: :class:`tencentcloud.gme.v20180711.models.RegisterVoicePrintRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.RegisterVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScanVoice(self, request):
-        """本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音内容安全服务。
+        r"""本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音内容安全服务。
         </br></br>
 
         <h4><b>功能试用说明：</b></h4>
@@ -730,8 +845,33 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartAIConversation(self, request):
+        r"""启动AI对话任务，AI通道机器人进入GME房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
+
+        GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
+
+        :param request: Request instance for StartAIConversation.
+        :type request: :class:`tencentcloud.gme.v20180711.models.StartAIConversationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.StartAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartRecord(self, request):
-        """开启录制
+        r"""开启录制
 
         :param request: Request instance for StartRecord.
         :type request: :class:`tencentcloud.gme.v20180711.models.StartRecordRequest`
@@ -753,8 +893,31 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopAIConversation(self, request):
+        r"""停止AI对话任务
+
+        :param request: Request instance for StopAIConversation.
+        :type request: :class:`tencentcloud.gme.v20180711.models.StopAIConversationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.StopAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopRecord(self, request):
-        """停止录制
+        r"""停止录制
 
         :param request: Request instance for StopRecord.
         :type request: :class:`tencentcloud.gme.v20180711.models.StopRecordRequest`
@@ -776,8 +939,31 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateAIConversation(self, request):
+        r"""更新AIConversation参数
+
+        :param request: Request instance for UpdateAIConversation.
+        :type request: :class:`tencentcloud.gme.v20180711.models.UpdateAIConversationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.UpdateAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateScanRooms(self, request):
-        """更新自定义送检房间号。**接口使用前提**：目前 UpdateScanRooms 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
+        r"""更新自定义送检房间号。**接口使用前提**：目前 UpdateScanRooms 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for UpdateScanRooms.
         :type request: :class:`tencentcloud.gme.v20180711.models.UpdateScanRoomsRequest`
@@ -800,7 +986,7 @@ class GmeClient(AbstractClient):
 
 
     def UpdateScanUsers(self, request):
-        """更新自定义送检用户号。
+        r"""更新自定义送检用户号。
         **接口使用前提**：目前 UpdateScanUsers 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for UpdateScanUsers.
@@ -814,6 +1000,29 @@ class GmeClient(AbstractClient):
             body = self.call("UpdateScanUsers", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateScanUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVoicePrint(self, request):
+        r"""传入声纹ID以及对应音频信息，更新对应声纹信息
+
+        :param request: Request instance for UpdateVoicePrint.
+        :type request: :class:`tencentcloud.gme.v20180711.models.UpdateVoicePrintRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.UpdateVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoicePrintResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

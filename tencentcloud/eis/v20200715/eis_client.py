@@ -27,7 +27,7 @@ class EisClient(AbstractClient):
 
 
     def DescribeEisConnectorConfig(self, request):
-        """获取连接器配置参数
+        r"""获取连接器配置参数
 
         :param request: Request instance for DescribeEisConnectorConfig.
         :type request: :class:`tencentcloud.eis.v20200715.models.DescribeEisConnectorConfigRequest`
@@ -50,7 +50,7 @@ class EisClient(AbstractClient):
 
 
     def ListEisConnectorOperations(self, request):
-        """获取连接器操作列表
+        r"""获取连接器操作列表
 
         :param request: Request instance for ListEisConnectorOperations.
         :type request: :class:`tencentcloud.eis.v20200715.models.ListEisConnectorOperationsRequest`
@@ -73,7 +73,7 @@ class EisClient(AbstractClient):
 
 
     def ListEisConnectors(self, request):
-        """连接器列表
+        r"""连接器列表
 
         :param request: Request instance for ListEisConnectors.
         :type request: :class:`tencentcloud.eis.v20200715.models.ListEisConnectorsRequest`

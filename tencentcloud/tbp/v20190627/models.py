@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Group(AbstractModel):
-    """Group是消息组的具体定义，当前包含ContentType、Url、Content三个字段。其中，具体的ContentType字段定义，参考互联网MIME类型标准。
+    r"""Group是消息组的具体定义，当前包含ContentType、Url、Content三个字段。其中，具体的ContentType字段定义，参考互联网MIME类型标准。
 
     """
 
@@ -40,7 +40,7 @@ class Group(AbstractModel):
 
     @property
     def ContentType(self):
-        """消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。
+        r"""消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。
         :rtype: str
         """
         return self._ContentType
@@ -51,7 +51,7 @@ class Group(AbstractModel):
 
     @property
     def Url(self):
-        """返回内容以链接形式提供。
+        r"""返回内容以链接形式提供。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63,7 +63,7 @@ class Group(AbstractModel):
 
     @property
     def Content(self):
-        """普通文本。
+        r"""普通文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -89,7 +89,7 @@ class Group(AbstractModel):
 
 
 class ResponseMessage(AbstractModel):
-    """从TBP-RTS服务v1.3版本起，机器人以消息组列表的形式响应，消息组列表GroupList包含多组消息，用户根据需要对部分或全部消息组进行组合使用。
+    r"""从TBP-RTS服务v1.3版本起，机器人以消息组列表的形式响应，消息组列表GroupList包含多组消息，用户根据需要对部分或全部消息组进行组合使用。
 
     """
 
@@ -103,7 +103,7 @@ class ResponseMessage(AbstractModel):
 
     @property
     def GroupList(self):
-        """消息组列表。
+        r"""消息组列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Group
         """
@@ -132,7 +132,7 @@ class ResponseMessage(AbstractModel):
 
 
 class SlotInfo(AbstractModel):
-    """槽位信息
+    r"""槽位信息
 
     """
 
@@ -150,7 +150,7 @@ class SlotInfo(AbstractModel):
 
     @property
     def SlotName(self):
-        """槽位名称
+        r"""槽位名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -162,7 +162,7 @@ class SlotInfo(AbstractModel):
 
     @property
     def SlotValue(self):
-        """槽位值
+        r"""槽位值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -187,7 +187,7 @@ class SlotInfo(AbstractModel):
 
 
 class TextProcessRequest(AbstractModel):
-    """TextProcess请求参数结构体
+    r"""TextProcess请求参数结构体
 
     """
 
@@ -218,7 +218,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def BotId(self):
-        """机器人标识，用于定义抽象机器人。
+        r"""机器人标识，用于定义抽象机器人。
         :rtype: str
         """
         return self._BotId
@@ -229,7 +229,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def BotEnv(self):
-        """机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        r"""机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
         :rtype: str
         """
         return self._BotEnv
@@ -240,7 +240,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def TerminalId(self):
-        """终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        r"""终端标识，每个终端(或线程)对应一个，区分并发多用户。
         :rtype: str
         """
         return self._TerminalId
@@ -251,7 +251,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def InputText(self):
-        """请求的文本。
+        r"""请求的文本。
         :rtype: str
         """
         return self._InputText
@@ -262,7 +262,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def SessionAttributes(self):
-        """透传字段，透传给用户自定义的WebService服务。
+        r"""透传字段，透传给用户自定义的WebService服务。
         :rtype: str
         """
         return self._SessionAttributes
@@ -273,7 +273,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def PlatformType(self):
-        """平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
+        r"""平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
         :rtype: str
         """
         return self._PlatformType
@@ -284,7 +284,7 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        """当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+        r"""当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
         :rtype: str
         """
         return self._PlatformId
@@ -313,7 +313,7 @@ class TextProcessRequest(AbstractModel):
 
 
 class TextProcessResponse(AbstractModel):
-    """TextProcess返回参数结构体
+    r"""TextProcess返回参数结构体
 
     """
 
@@ -361,7 +361,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def DialogStatus(self):
-        """当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
+        r"""当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -373,7 +373,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def BotName(self):
-        """匹配到的机器人名称。
+        r"""匹配到的机器人名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -385,7 +385,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def IntentName(self):
-        """匹配到的意图名称。
+        r"""匹配到的意图名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -397,7 +397,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def SlotInfoList(self):
-        """槽位信息。
+        r"""槽位信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlotInfo
         """
@@ -409,7 +409,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def InputText(self):
-        """原始的用户说法。
+        r"""原始的用户说法。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -421,7 +421,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResponseMessage(self):
-        """机器人应答。
+        r"""机器人应答。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbp.v20190627.models.ResponseMessage`
         """
@@ -433,7 +433,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def SessionAttributes(self):
-        """透传字段，由用户自定义的WebService服务返回。
+        r"""透传字段，由用户自定义的WebService服务返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -445,7 +445,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResultType(self):
-        """结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
+        r"""结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -457,7 +457,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResponseText(self):
-        """机器人对话的应答文本。	
+        r"""机器人对话的应答文本。	
         :rtype: str
         """
         return self._ResponseText
@@ -468,7 +468,7 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -499,7 +499,7 @@ class TextProcessResponse(AbstractModel):
 
 
 class TextResetRequest(AbstractModel):
-    """TextReset请求参数结构体
+    r"""TextReset请求参数结构体
 
     """
 
@@ -524,7 +524,7 @@ class TextResetRequest(AbstractModel):
 
     @property
     def BotId(self):
-        """机器人标识，用于定义抽象机器人。
+        r"""机器人标识，用于定义抽象机器人。
         :rtype: str
         """
         return self._BotId
@@ -535,7 +535,7 @@ class TextResetRequest(AbstractModel):
 
     @property
     def BotEnv(self):
-        """机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        r"""机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
         :rtype: str
         """
         return self._BotEnv
@@ -546,7 +546,7 @@ class TextResetRequest(AbstractModel):
 
     @property
     def TerminalId(self):
-        """终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        r"""终端标识，每个终端(或线程)对应一个，区分并发多用户。
         :rtype: str
         """
         return self._TerminalId
@@ -557,7 +557,7 @@ class TextResetRequest(AbstractModel):
 
     @property
     def PlatformType(self):
-        """平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
+        r"""平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
         :rtype: str
         """
         return self._PlatformType
@@ -568,7 +568,7 @@ class TextResetRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        """当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+        r"""当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
         :rtype: str
         """
         return self._PlatformId
@@ -595,7 +595,7 @@ class TextResetRequest(AbstractModel):
 
 
 class TextResetResponse(AbstractModel):
-    """TextReset返回参数结构体
+    r"""TextReset返回参数结构体
 
     """
 
@@ -644,7 +644,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def DialogStatus(self):
-        """当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
+        r"""当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -656,7 +656,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def BotName(self):
-        """匹配到的机器人名称。
+        r"""匹配到的机器人名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -668,7 +668,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def IntentName(self):
-        """匹配到的意图名称。
+        r"""匹配到的意图名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -680,7 +680,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def SlotInfoList(self):
-        """槽位信息。
+        r"""槽位信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlotInfo
         """
@@ -692,7 +692,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def InputText(self):
-        """原始的用户说法。
+        r"""原始的用户说法。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -704,7 +704,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def ResponseMessage(self):
-        """机器人应答。
+        r"""机器人应答。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbp.v20190627.models.ResponseMessage`
         """
@@ -716,7 +716,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def SessionAttributes(self):
-        """透传字段，由用户自定义的WebService服务返回。
+        r"""透传字段，由用户自定义的WebService服务返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -728,7 +728,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def ResultType(self):
-        """结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
+        r"""结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -740,7 +740,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def ResponseText(self):
-        """机器人对话的应答文本。
+        r"""机器人对话的应答文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -752,7 +752,7 @@ class TextResetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

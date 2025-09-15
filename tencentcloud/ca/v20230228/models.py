@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CertificateIdentityUser(AbstractModel):
-    """证书用户信息和身份鉴别信息。则该字段无需传入，默认为空。对电子签名者身份鉴别类型及措施有特殊展示要求的可使用该字段。
+    r"""证书用户信息和身份鉴别信息。则该字段无需传入，默认为空。对电子签名者身份鉴别类型及措施有特殊展示要求的可使用该字段。
 
     """
 
@@ -49,7 +49,7 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -60,7 +60,7 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentityUniqueId(self):
-        """唯一身份id
+        r"""唯一身份id
         :rtype: str
         """
         return self._IdentityUniqueId
@@ -71,7 +71,7 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._IdCardNumber
@@ -82,7 +82,7 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentificationType(self):
-        """身份鉴别类型
+        r"""身份鉴别类型
 1：授权金融机构身份鉴别
         :rtype: str
         """
@@ -94,7 +94,7 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentificationMeasures(self):
-        """身份鉴别措施
+        r"""身份鉴别措施
 1、身份证鉴别
 2、银行卡鉴别
 3、支付账户密码验证
@@ -125,7 +125,7 @@ class CertificateIdentityUser(AbstractModel):
 
 
 class CreateVerifyReportRequest(AbstractModel):
-    """CreateVerifyReport请求参数结构体
+    r"""CreateVerifyReport请求参数结构体
 
     """
 
@@ -156,7 +156,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyCustomerType(self):
-        """申请者类型 1:个人，2:企业
+        r"""申请者类型 1:个人，2:企业
         :rtype: str
         """
         return self._ApplyCustomerType
@@ -167,7 +167,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyCustomerName(self):
-        """申请企业 or 自然人名称
+        r"""申请企业 or 自然人名称
         :rtype: str
         """
         return self._ApplyCustomerName
@@ -178,7 +178,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyName(self):
-        """验签申请经办人姓名
+        r"""验签申请经办人姓名
         :rtype: str
         """
         return self._ApplyName
@@ -189,7 +189,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyMobile(self):
-        """验签申请经办人电话
+        r"""验签申请经办人电话
         :rtype: str
         """
         return self._ApplyMobile
@@ -200,7 +200,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def FileId(self):
-        """验签文件id
+        r"""验签文件id
         :rtype: str
         """
         return self._FileId
@@ -211,7 +211,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyEmail(self):
-        """验签申请经办人邮箱
+        r"""验签申请经办人邮箱
         :rtype: str
         """
         return self._ApplyEmail
@@ -222,7 +222,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def CertificateIdentityUsers(self):
-        """证书用户身份及身份鉴别信息
+        r"""证书用户身份及身份鉴别信息
         :rtype: list of CertificateIdentityUser
         """
         return self._CertificateIdentityUsers
@@ -256,7 +256,7 @@ class CreateVerifyReportRequest(AbstractModel):
 
 
 class CreateVerifyReportResponse(AbstractModel):
-    """CreateVerifyReport返回参数结构体
+    r"""CreateVerifyReport返回参数结构体
 
     """
 
@@ -278,7 +278,7 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def SignatureId(self):
-        """签名id
+        r"""签名id
         :rtype: str
         """
         return self._SignatureId
@@ -289,7 +289,7 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def Code(self):
-        """code
+        r"""code
         :rtype: str
         """
         return self._Code
@@ -300,7 +300,7 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def Message(self):
-        """message
+        r"""message
         :rtype: str
         """
         return self._Message
@@ -311,7 +311,7 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -329,7 +329,7 @@ class CreateVerifyReportResponse(AbstractModel):
 
 
 class DescribeVerifyReportRequest(AbstractModel):
-    """DescribeVerifyReport请求参数结构体
+    r"""DescribeVerifyReport请求参数结构体
 
     """
 
@@ -342,7 +342,7 @@ class DescribeVerifyReportRequest(AbstractModel):
 
     @property
     def SignatureId(self):
-        """签名id
+        r"""签名id
         :rtype: str
         """
         return self._SignatureId
@@ -365,7 +365,7 @@ class DescribeVerifyReportRequest(AbstractModel):
 
 
 class DescribeVerifyReportResponse(AbstractModel):
-    """DescribeVerifyReport返回参数结构体
+    r"""DescribeVerifyReport返回参数结构体
 
     """
 
@@ -387,7 +387,7 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """下载url
+        r"""下载url
         :rtype: str
         """
         return self._ReportUrl
@@ -398,7 +398,7 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def Code(self):
-        """code
+        r"""code
         :rtype: str
         """
         return self._Code
@@ -409,7 +409,7 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def Message(self):
-        """message
+        r"""message
         :rtype: str
         """
         return self._Message
@@ -420,7 +420,7 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -438,7 +438,7 @@ class DescribeVerifyReportResponse(AbstractModel):
 
 
 class FileInfo(AbstractModel):
-    """文件列表信息
+    r"""文件列表信息
 
     """
 
@@ -454,7 +454,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileBody(self):
-        """BASE64编码后的文件内容
+        r"""BASE64编码后的文件内容
         :rtype: str
         """
         return self._FileBody
@@ -465,7 +465,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名及类型，最大长度不超过200字符
+        r"""文件名及类型，最大长度不超过200字符
         :rtype: str
         """
         return self._FileName
@@ -489,7 +489,7 @@ class FileInfo(AbstractModel):
 
 
 class UploadFileRequest(AbstractModel):
-    """UploadFile请求参数结构体
+    r"""UploadFile请求参数结构体
 
     """
 
@@ -502,7 +502,7 @@ class UploadFileRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        """验签源文件信息列表
+        r"""验签源文件信息列表
         :rtype: list of FileInfo
         """
         return self._FileInfos
@@ -530,7 +530,7 @@ class UploadFileRequest(AbstractModel):
 
 
 class UploadFileResponse(AbstractModel):
-    """UploadFile返回参数结构体
+    r"""UploadFile返回参数结构体
 
     """
 
@@ -549,7 +549,7 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def FileIds(self):
-        """文件id列表
+        r"""文件id列表
         :rtype: list of str
         """
         return self._FileIds
@@ -560,7 +560,7 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """文件id总数
+        r"""文件id总数
         :rtype: int
         """
         return self._TotalCount
@@ -571,7 +571,7 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

@@ -27,7 +27,7 @@ class ChcClient(AbstractClient):
 
 
     def ConfirmCommonServiceWorkOrder(self, request):
-        """确认通用服务工单
+        r"""确认通用服务工单
 
         :param request: Request instance for ConfirmCommonServiceWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.ConfirmCommonServiceWorkOrderRequest`
@@ -50,7 +50,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateCommonServiceWorkOrder(self, request):
-        """创建通用工单
+        r"""创建通用工单
 
         :param request: Request instance for CreateCommonServiceWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateCommonServiceWorkOrderRequest`
@@ -73,7 +73,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateModelEvaluationWorkOrder(self, request):
-        """创建设备型号评估工单
+        r"""创建设备型号评估工单
 
         :param request: Request instance for CreateModelEvaluationWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateModelEvaluationWorkOrderRequest`
@@ -96,7 +96,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateMovingWorkOrder(self, request):
-        """创建设备搬迁工单
+        r"""创建设备搬迁工单
 
         :param request: Request instance for CreateMovingWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateMovingWorkOrderRequest`
@@ -119,7 +119,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateNetDeviceModel(self, request):
-        """创建新的网络设备型号
+        r"""创建新的网络设备型号
 
         :param request: Request instance for CreateNetDeviceModel.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateNetDeviceModelRequest`
@@ -142,7 +142,7 @@ class ChcClient(AbstractClient):
 
 
     def CreatePersonnelVisitWorkOrder(self, request):
-        """创建人员到访工单
+        r"""创建人员到访工单
 
         :param request: Request instance for CreatePersonnelVisitWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreatePersonnelVisitWorkOrderRequest`
@@ -165,7 +165,7 @@ class ChcClient(AbstractClient):
 
 
     def CreatePowerOffWorkOrder(self, request):
-        """创建设备关电工单
+        r"""创建设备关电工单
 
         :param request: Request instance for CreatePowerOffWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreatePowerOffWorkOrderRequest`
@@ -188,7 +188,7 @@ class ChcClient(AbstractClient):
 
 
     def CreatePowerOnWorkOrder(self, request):
-        """创建设备开电工单
+        r"""创建设备开电工单
 
         :param request: Request instance for CreatePowerOnWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreatePowerOnWorkOrderRequest`
@@ -211,7 +211,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateQuitWorkOrder(self, request):
-        """创建设备退出工单
+        r"""创建设备退出工单
 
         :param request: Request instance for CreateQuitWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateQuitWorkOrderRequest`
@@ -234,7 +234,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateRackOffWorkOrder(self, request):
-        """创建设备下架工单
+        r"""创建设备下架工单
 
         :param request: Request instance for CreateRackOffWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateRackOffWorkOrderRequest`
@@ -257,7 +257,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateRackOnWorkOrder(self, request):
-        """创建设备上架工单
+        r"""创建设备上架工单
 
         :param request: Request instance for CreateRackOnWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateRackOnWorkOrderRequest`
@@ -280,7 +280,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateReceivingWorkOrder(self, request):
-        """创建设备收货工单
+        r"""创建设备收货工单
 
         :param request: Request instance for CreateReceivingWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateReceivingWorkOrderRequest`
@@ -303,7 +303,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateServerModel(self, request):
-        """新增服务器设备型号
+        r"""新增服务器设备型号
 
         :param request: Request instance for CreateServerModel.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateServerModelRequest`
@@ -326,7 +326,7 @@ class ChcClient(AbstractClient):
 
 
     def CreateSpeciallyQuitWorkOrder(self, request):
-        """创建临时设备退出工单
+        r"""创建临时设备退出工单
 
         :param request: Request instance for CreateSpeciallyQuitWorkOrder.
         :type request: :class:`tencentcloud.chc.v20230418.models.CreateSpeciallyQuitWorkOrderRequest`
@@ -349,7 +349,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeAvailableModelList(self, request):
-        """获取机房内可用的型号列表
+        r"""获取机房内可用的型号列表
 
         :param request: Request instance for DescribeAvailableModelList.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeAvailableModelListRequest`
@@ -372,7 +372,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeCampusList(self, request):
-        """获取用户可操作的园区列表
+        r"""获取用户可操作的园区列表
 
         :param request: Request instance for DescribeCampusList.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeCampusListRequest`
@@ -395,7 +395,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeCommonServiceWorkOrderDetail(self, request):
-        """查询通用服务工单详情
+        r"""查询通用服务工单详情
 
         :param request: Request instance for DescribeCommonServiceWorkOrderDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeCommonServiceWorkOrderDetailRequest`
@@ -418,7 +418,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeCustomerInfo(self, request):
-        """查询客户信息
+        r"""查询客户信息
 
         :param request: Request instance for DescribeCustomerInfo.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeCustomerInfoRequest`
@@ -441,7 +441,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeDeviceList(self, request):
-        """获取设备列表
+        r"""获取设备列表
 
         :param request: Request instance for DescribeDeviceList.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeDeviceListRequest`
@@ -464,7 +464,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeDeviceWorkOrderDetail(self, request):
-        """用于查询设备类工单的工单详情，如：'receiving', 'rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit'
+        r"""用于查询设备类工单的工单详情，如：'receiving', 'rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit'
 
         :param request: Request instance for DescribeDeviceWorkOrderDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeDeviceWorkOrderDetailRequest`
@@ -487,7 +487,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeIdcUnitAssetDetail(self, request):
-        """查询机房管理单元资产详情
+        r"""查询机房管理单元资产详情
 
         :param request: Request instance for DescribeIdcUnitAssetDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeIdcUnitAssetDetailRequest`
@@ -510,7 +510,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeIdcUnitDetail(self, request):
-        """查询机房管理单元详情
+        r"""查询机房管理单元详情
 
         :param request: Request instance for DescribeIdcUnitDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeIdcUnitDetailRequest`
@@ -533,7 +533,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeIdcs(self, request):
-        """获取机房和机房管理单元信息
+        r"""获取机房和机房管理单元信息
 
         :param request: Request instance for DescribeIdcs.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeIdcsRequest`
@@ -556,7 +556,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeModel(self, request):
-        """查询设备型号详情
+        r"""查询设备型号详情
 
         :param request: Request instance for DescribeModel.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeModelRequest`
@@ -579,7 +579,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeModelEvaluationWorkOrderDetail(self, request):
-        """查询设备型号评估工单详情
+        r"""查询设备型号评估工单详情
 
         :param request: Request instance for DescribeModelEvaluationWorkOrderDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeModelEvaluationWorkOrderDetailRequest`
@@ -602,7 +602,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeModelTemplate(self, request):
-        """获取型号的填写模板
+        r"""获取型号的填写模板
 
         :param request: Request instance for DescribeModelTemplate.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeModelTemplateRequest`
@@ -625,7 +625,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeModelVersionList(self, request):
-        """获取用户的型号和对应的版本数量
+        r"""获取用户的型号和对应的版本数量
 
         :param request: Request instance for DescribeModelVersionList.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeModelVersionListRequest`
@@ -648,7 +648,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribePersonnelVisitWorkOrderDetail(self, request):
-        """查询人员到访工单详情
+        r"""查询人员到访工单详情
 
         :param request: Request instance for DescribePersonnelVisitWorkOrderDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribePersonnelVisitWorkOrderDetailRequest`
@@ -671,7 +671,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribePositionStatusSummary(self, request):
-        """获取机架总数及各状态对应的数量汇总
+        r"""获取机架总数及各状态对应的数量汇总
 
         :param request: Request instance for DescribePositionStatusSummary.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribePositionStatusSummaryRequest`
@@ -694,7 +694,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribePositions(self, request):
-        """获取机位列表
+        r"""获取机位列表
 
         :param request: Request instance for DescribePositions.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribePositionsRequest`
@@ -717,7 +717,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeRacks(self, request):
-        """获取机架列表
+        r"""获取机架列表
 
         :param request: Request instance for DescribeRacks.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeRacksRequest`
@@ -740,7 +740,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeRacksDistribution(self, request):
-        """获取机房管理单元的机位分布
+        r"""获取机房管理单元的机位分布
 
         :param request: Request instance for DescribeRacksDistribution.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeRacksDistributionRequest`
@@ -763,7 +763,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeResourceUsage(self, request):
-        """查询资源汇总
+        r"""查询资源汇总
 
         :param request: Request instance for DescribeResourceUsage.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeResourceUsageRequest`
@@ -786,7 +786,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeWorkOrderList(self, request):
-        """查询工单列表
+        r"""查询工单列表
 
         :param request: Request instance for DescribeWorkOrderList.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderListRequest`
@@ -809,7 +809,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeWorkOrderStatistics(self, request):
-        """工单统计数据查询
+        r"""工单统计数据查询
 
         :param request: Request instance for DescribeWorkOrderStatistics.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderStatisticsRequest`
@@ -832,7 +832,7 @@ class ChcClient(AbstractClient):
 
 
     def DescribeWorkOrderTypes(self, request):
-        """获取用户可用的工单类型
+        r"""获取用户可用的工单类型
 
         :param request: Request instance for DescribeWorkOrderTypes.
         :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderTypesRequest`
@@ -855,7 +855,7 @@ class ChcClient(AbstractClient):
 
 
     def ExportCustomerWorkOrderDetail(self, request):
-        """导出工单详情
+        r"""导出工单详情
 
         :param request: Request instance for ExportCustomerWorkOrderDetail.
         :type request: :class:`tencentcloud.chc.v20230418.models.ExportCustomerWorkOrderDetailRequest`
@@ -878,7 +878,7 @@ class ChcClient(AbstractClient):
 
 
     def ModifyWorkOrderTypeCollectFlag(self, request):
-        """如果当前该工单类型是收藏状态，调用接口后变成未收藏状态，如果是未收藏状态，调用该接口变为收藏状态
+        r"""如果当前该工单类型是收藏状态，调用接口后变成未收藏状态，如果是未收藏状态，调用该接口变为收藏状态
 
         :param request: Request instance for ModifyWorkOrderTypeCollectFlag.
         :type request: :class:`tencentcloud.chc.v20230418.models.ModifyWorkOrderTypeCollectFlagRequest`

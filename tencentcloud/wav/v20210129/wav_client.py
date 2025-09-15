@@ -27,7 +27,7 @@ class WavClient(AbstractClient):
 
 
     def CreateChannelCode(self, request):
-        """新增渠道活码接口
+        r"""新增渠道活码接口
 
         :param request: Request instance for CreateChannelCode.
         :type request: :class:`tencentcloud.wav.v20210129.models.CreateChannelCodeRequest`
@@ -50,7 +50,7 @@ class WavClient(AbstractClient):
 
 
     def CreateCorpTag(self, request):
-        """该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
+        r"""该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
 
         :param request: Request instance for CreateCorpTag.
         :type request: :class:`tencentcloud.wav.v20210129.models.CreateCorpTagRequest`
@@ -73,7 +73,7 @@ class WavClient(AbstractClient):
 
 
     def CreateLead(self, request):
-        """线索回收接口
+        r"""线索回收接口
 
         :param request: Request instance for CreateLead.
         :type request: :class:`tencentcloud.wav.v20210129.models.CreateLeadRequest`
@@ -96,7 +96,7 @@ class WavClient(AbstractClient):
 
 
     def QueryActivityJoinList(self, request):
-        """根据游标拉取活动参与列表信息
+        r"""根据游标拉取活动参与列表信息
 
         :param request: Request instance for QueryActivityJoinList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryActivityJoinListRequest`
@@ -119,7 +119,7 @@ class WavClient(AbstractClient):
 
 
     def QueryActivityList(self, request):
-        """根据游标拉取活动列表信息
+        r"""根据游标拉取活动列表信息
 
         :param request: Request instance for QueryActivityList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryActivityListRequest`
@@ -142,7 +142,7 @@ class WavClient(AbstractClient):
 
 
     def QueryActivityLiveCodeList(self, request):
-        """根据游标拉取活动活码列表信息
+        r"""根据游标拉取活动活码列表信息
 
         :param request: Request instance for QueryActivityLiveCodeList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryActivityLiveCodeListRequest`
@@ -165,7 +165,7 @@ class WavClient(AbstractClient):
 
 
     def QueryArrivalList(self, request):
-        """查询指定时间范围内发生过到店的潜客到店信息
+        r"""查询指定时间范围内发生过到店的潜客到店信息
 
         :param request: Request instance for QueryArrivalList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryArrivalListRequest`
@@ -188,7 +188,7 @@ class WavClient(AbstractClient):
 
 
     def QueryChannelCodeList(self, request):
-        """根据游标拉取渠道活码列表信息
+        r"""根据游标拉取渠道活码列表信息
 
         :param request: Request instance for QueryChannelCodeList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryChannelCodeListRequest`
@@ -211,7 +211,7 @@ class WavClient(AbstractClient):
 
 
     def QueryChatArchivingList(self, request):
-        """根据游标拉取会话存档列表信息
+        r"""根据游标拉取会话存档列表信息
 
         :param request: Request instance for QueryChatArchivingList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryChatArchivingListRequest`
@@ -234,7 +234,7 @@ class WavClient(AbstractClient):
 
 
     def QueryClueInfoList(self, request):
-        """企业可通过此接口获取线索列表。
+        r"""企业可通过此接口获取线索列表。
 
         :param request: Request instance for QueryClueInfoList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryClueInfoListRequest`
@@ -257,7 +257,7 @@ class WavClient(AbstractClient):
 
 
     def QueryCrmStatistics(self, request):
-        """通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
+        r"""通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
 
         :param request: Request instance for QueryCrmStatistics.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryCrmStatisticsRequest`
@@ -280,7 +280,7 @@ class WavClient(AbstractClient):
 
 
     def QueryCustomerEventDetailStatistics(self, request):
-        """通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+        r"""通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
 
         :param request: Request instance for QueryCustomerEventDetailStatistics.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryCustomerEventDetailStatisticsRequest`
@@ -303,7 +303,7 @@ class WavClient(AbstractClient):
 
 
     def QueryCustomerProfileList(self, request):
-        """通过接口拉取租户已有潜客客户档案列表信息
+        r"""通过接口拉取租户已有潜客客户档案列表信息
 
         :param request: Request instance for QueryCustomerProfileList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryCustomerProfileListRequest`
@@ -326,7 +326,7 @@ class WavClient(AbstractClient):
 
 
     def QueryDealerInfoList(self, request):
-        """企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
+        r"""企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
 
         :param request: Request instance for QueryDealerInfoList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryDealerInfoListRequest`
@@ -349,7 +349,7 @@ class WavClient(AbstractClient):
 
 
     def QueryExternalContactDetail(self, request):
-        """企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
+        r"""企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
 
         :param request: Request instance for QueryExternalContactDetail.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailRequest`
@@ -372,7 +372,7 @@ class WavClient(AbstractClient):
 
 
     def QueryExternalContactDetailByDate(self, request):
-        """企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
+        r"""企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
 
         :param request: Request instance for QueryExternalContactDetailByDate.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailByDateRequest`
@@ -395,7 +395,7 @@ class WavClient(AbstractClient):
 
 
     def QueryExternalContactList(self, request):
-        """企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+        r"""企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
 
         :param request: Request instance for QueryExternalContactList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactListRequest`
@@ -418,7 +418,7 @@ class WavClient(AbstractClient):
 
 
     def QueryExternalUserEventList(self, request):
-        """通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
+        r"""通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
 
         :param request: Request instance for QueryExternalUserEventList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserEventListRequest`
@@ -441,7 +441,7 @@ class WavClient(AbstractClient):
 
 
     def QueryExternalUserMappingInfo(self, request):
-        """企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
+        r"""企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
 
         :param request: Request instance for QueryExternalUserMappingInfo.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserMappingInfoRequest`
@@ -464,7 +464,7 @@ class WavClient(AbstractClient):
 
 
     def QueryFollowList(self, request):
-        """查询指定时间范围内发生过跟进的潜客信息
+        r"""查询指定时间范围内发生过跟进的潜客信息
 
         :param request: Request instance for QueryFollowList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryFollowListRequest`
@@ -487,7 +487,7 @@ class WavClient(AbstractClient):
 
 
     def QueryLicenseInfo(self, request):
-        """该接口获取license对应的详细信息
+        r"""该接口获取license对应的详细信息
 
         :param request: Request instance for QueryLicenseInfo.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryLicenseInfoRequest`
@@ -510,7 +510,7 @@ class WavClient(AbstractClient):
 
 
     def QueryMaterialList(self, request):
-        """通过接口按类型拉取租户当前的素材列表及关键信息
+        r"""通过接口按类型拉取租户当前的素材列表及关键信息
 
         :param request: Request instance for QueryMaterialList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryMaterialListRequest`
@@ -533,7 +533,7 @@ class WavClient(AbstractClient):
 
 
     def QueryMiniAppCodeList(self, request):
-        """查询小程序码列表接口
+        r"""查询小程序码列表接口
 
         :param request: Request instance for QueryMiniAppCodeList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryMiniAppCodeListRequest`
@@ -556,7 +556,7 @@ class WavClient(AbstractClient):
 
 
     def QueryStaffEventDetailStatistics(self, request):
-        """通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+        r"""通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
 
         :param request: Request instance for QueryStaffEventDetailStatistics.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryStaffEventDetailStatisticsRequest`
@@ -579,7 +579,7 @@ class WavClient(AbstractClient):
 
 
     def QueryUserInfoList(self, request):
-        """查询企业成员信息列表接口
+        r"""查询企业成员信息列表接口
 
         :param request: Request instance for QueryUserInfoList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryUserInfoListRequest`
@@ -602,7 +602,7 @@ class WavClient(AbstractClient):
 
 
     def QueryVehicleInfoList(self, request):
-        """企业可通过此接口获取企微SaaS平台上的车系车型信息。
+        r"""企业可通过此接口获取企微SaaS平台上的车系车型信息。
 
         :param request: Request instance for QueryVehicleInfoList.
         :type request: :class:`tencentcloud.wav.v20210129.models.QueryVehicleInfoListRequest`

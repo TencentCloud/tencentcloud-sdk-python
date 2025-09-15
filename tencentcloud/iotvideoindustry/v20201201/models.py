@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AbnormalEvents(AbstractModel):
-    """异动事件走势列表
+    r"""异动事件走势列表
 
     """
 
@@ -35,7 +35,7 @@ class AbnormalEvents(AbstractModel):
 
     @property
     def Date(self):
-        """对应查询日期
+        r"""对应查询日期
         :rtype: str
         """
         return self._Date
@@ -46,7 +46,7 @@ class AbnormalEvents(AbstractModel):
 
     @property
     def Info(self):
-        """列表信息
+        r"""列表信息
         :rtype: list of AbnormalEventsInfo
         """
         return self._Info
@@ -75,7 +75,7 @@ class AbnormalEvents(AbstractModel):
 
 
 class AbnormalEventsInfo(AbstractModel):
-    """异动事件走势元素
+    r"""异动事件走势元素
 
     """
 
@@ -91,7 +91,7 @@ class AbnormalEventsInfo(AbstractModel):
 
     @property
     def Key(self):
-        """类型值
+        r"""类型值
         :rtype: int
         """
         return self._Key
@@ -102,7 +102,7 @@ class AbnormalEventsInfo(AbstractModel):
 
     @property
     def Count(self):
-        """类型总数
+        r"""类型总数
         :rtype: int
         """
         return self._Count
@@ -126,7 +126,7 @@ class AbnormalEventsInfo(AbstractModel):
 
 
 class AllDeviceInfo(AbstractModel):
-    """查询全部设备出参
+    r"""查询全部设备出参
 
     """
 
@@ -175,7 +175,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -186,7 +186,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型；2：IPC
+        r"""设备类型；2：IPC
         :rtype: int
         """
         return self._DeviceType
@@ -197,7 +197,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
+        r"""设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
         :rtype: int
         """
         return self._Status
@@ -208,7 +208,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -219,7 +219,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def ExtraInformation(self):
-        """设备扩展属性
+        r"""设备扩展属性
         :rtype: str
         """
         return self._ExtraInformation
@@ -230,7 +230,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._NickName
@@ -241,7 +241,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupPath(self):
-        """设备绑定分组路径
+        r"""设备绑定分组路径
         :rtype: str
         """
         return self._GroupPath
@@ -252,7 +252,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceCode(self):
-        """设备编码
+        r"""设备编码
         :rtype: str
         """
         return self._DeviceCode
@@ -263,7 +263,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def IsRecord(self):
-        """是否存在录像,，0:不存在；1：存在
+        r"""是否存在录像,，0:不存在；1：存在
         :rtype: int
         """
         return self._IsRecord
@@ -274,7 +274,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Recordable(self):
-        """该设备是否可录制
+        r"""该设备是否可录制
         :rtype: int
         """
         return self._Recordable
@@ -285,7 +285,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """设备接入协议
+        r"""设备接入协议
         :rtype: str
         """
         return self._Protocol
@@ -296,7 +296,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """组Id
+        r"""组Id
         :rtype: str
         """
         return self._GroupId
@@ -307,7 +307,7 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """组名
+        r"""组名
         :rtype: str
         """
         return self._GroupName
@@ -342,7 +342,7 @@ class AllDeviceInfo(AbstractModel):
 
 
 class BindGroupDevicesRequest(AbstractModel):
-    """BindGroupDevices请求参数结构体
+    r"""BindGroupDevices请求参数结构体
 
     """
 
@@ -358,7 +358,7 @@ class BindGroupDevicesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -369,7 +369,7 @@ class BindGroupDevicesRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """设备唯一标识列表
+        r"""设备唯一标识列表
         :rtype: list of str
         """
         return self._DeviceList
@@ -393,7 +393,7 @@ class BindGroupDevicesRequest(AbstractModel):
 
 
 class BindGroupDevicesResponse(AbstractModel):
-    """BindGroupDevices返回参数结构体
+    r"""BindGroupDevices返回参数结构体
 
     """
 
@@ -406,7 +406,7 @@ class BindGroupDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -421,7 +421,7 @@ class BindGroupDevicesResponse(AbstractModel):
 
 
 class ChannelDetail(AbstractModel):
-    """国标通道详细信息
+    r"""国标通道详细信息
 
     """
 
@@ -458,7 +458,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelName(self):
-        """通道名称
+        r"""通道名称
         :rtype: str
         """
         return self._ChannelName
@@ -469,7 +469,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -480,7 +480,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelType(self):
-        """通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
+        r"""通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
         :rtype: int
         """
         return self._ChannelType
@@ -491,7 +491,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelCode(self):
-        """20位国标通道编码
+        r"""20位国标通道编码
         :rtype: str
         """
         return self._ChannelCode
@@ -502,7 +502,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ExtraInformation(self):
-        """通道扩展信息
+        r"""通道扩展信息
         :rtype: str
         """
         return self._ExtraInformation
@@ -513,7 +513,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def Status(self):
-        """通道在线状态
+        r"""通道在线状态
         :rtype: int
         """
         return self._Status
@@ -524,7 +524,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def IsRecord(self):
-        """通道是否存在录像标识 0：无录像；1：有录像
+        r"""通道是否存在录像标识 0：无录像；1：有录像
         :rtype: int
         """
         return self._IsRecord
@@ -535,7 +535,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def DeviceId(self):
-        """通道所属设备唯一标识
+        r"""通道所属设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -546,7 +546,7 @@ class ChannelDetail(AbstractModel):
 
     @property
     def BusinessGroupId(self):
-        """通道所属虚拟组织的ID
+        r"""通道所属虚拟组织的ID
         :rtype: str
         """
         return self._BusinessGroupId
@@ -577,7 +577,7 @@ class ChannelDetail(AbstractModel):
 
 
 class ChannelItem(AbstractModel):
-    """GB28181通道
+    r"""GB28181通道
 
     """
 
@@ -593,7 +593,7 @@ class ChannelItem(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -604,7 +604,7 @@ class ChannelItem(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -628,7 +628,7 @@ class ChannelItem(AbstractModel):
 
 
 class ControlChannelLocalRecordRequest(AbstractModel):
-    """ControlChannelLocalRecord请求参数结构体
+    r"""ControlChannelLocalRecord请求参数结构体
 
     """
 
@@ -655,7 +655,7 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -666,7 +666,7 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -677,7 +677,7 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def StreamId(self):
-        """流Id，流的唯一标识
+        r"""流Id，流的唯一标识
         :rtype: str
         """
         return self._StreamId
@@ -688,7 +688,7 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def Command(self):
-        """控制参数，转义的json字符串
+        r"""控制参数，转义的json字符串
 
 目前支持的command：
 "Command": "{"Action":"PAUSE"}" 暂停
@@ -719,7 +719,7 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
 
 class ControlChannelLocalRecordResponse(AbstractModel):
-    """ControlChannelLocalRecord返回参数结构体
+    r"""ControlChannelLocalRecord返回参数结构体
 
     """
 
@@ -732,7 +732,7 @@ class ControlChannelLocalRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -747,7 +747,7 @@ class ControlChannelLocalRecordResponse(AbstractModel):
 
 
 class ControlChannelPTZRequest(AbstractModel):
-    """ControlChannelPTZ请求参数结构体
+    r"""ControlChannelPTZ请求参数结构体
 
     """
 
@@ -781,7 +781,7 @@ focusOut - 焦距变远
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -792,7 +792,7 @@ focusOut - 焦距变远
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -803,7 +803,7 @@ focusOut - 焦距变远
 
     @property
     def Command(self):
-        """PTZ控制命令类型：
+        r"""PTZ控制命令类型：
 stop - 停止当前PTZ信令
 left - 向左移动
 right - 向右移动
@@ -843,7 +843,7 @@ focusOut - 焦距变远
 
 
 class ControlChannelPTZResponse(AbstractModel):
-    """ControlChannelPTZ返回参数结构体
+    r"""ControlChannelPTZ返回参数结构体
 
     """
 
@@ -856,7 +856,7 @@ class ControlChannelPTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -871,7 +871,7 @@ class ControlChannelPTZResponse(AbstractModel):
 
 
 class ControlDevicePTZRequest(AbstractModel):
-    """ControlDevicePTZ请求参数结构体
+    r"""ControlDevicePTZ请求参数结构体
 
     """
 
@@ -905,7 +905,7 @@ focusOut - 焦距变远
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -916,7 +916,7 @@ focusOut - 焦距变远
 
     @property
     def Command(self):
-        """PTZ控制命令类型：
+        r"""PTZ控制命令类型：
 stop - 停止当前PTZ信令
 left - 向左移动
 right - 向右移动
@@ -942,7 +942,7 @@ focusOut - 焦距变远
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -967,7 +967,7 @@ focusOut - 焦距变远
 
 
 class ControlDevicePTZResponse(AbstractModel):
-    """ControlDevicePTZ返回参数结构体
+    r"""ControlDevicePTZ返回参数结构体
 
     """
 
@@ -980,7 +980,7 @@ class ControlDevicePTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -995,7 +995,7 @@ class ControlDevicePTZResponse(AbstractModel):
 
 
 class ControlHomePositionRequest(AbstractModel):
-    """ControlHomePosition请求参数结构体
+    r"""ControlHomePosition请求参数结构体
 
     """
 
@@ -1020,7 +1020,7 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道ID
+        r"""通道ID
         :rtype: str
         """
         return self._ChannelId
@@ -1031,7 +1031,7 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -1042,7 +1042,7 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """看守位使能 0-停用看守位 1-启用看守位
+        r"""看守位使能 0-停用看守位 1-启用看守位
         :rtype: int
         """
         return self._Enable
@@ -1053,7 +1053,7 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def PresetId(self):
-        """预置位编码 范围1-8，启用看守位时必填
+        r"""预置位编码 范围1-8，启用看守位时必填
         :rtype: int
         """
         return self._PresetId
@@ -1064,7 +1064,7 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def ResetTime(self):
-        """看守位自动归位时间， 启用看守位时必填
+        r"""看守位自动归位时间， 启用看守位时必填
         :rtype: int
         """
         return self._ResetTime
@@ -1091,7 +1091,7 @@ class ControlHomePositionRequest(AbstractModel):
 
 
 class ControlHomePositionResponse(AbstractModel):
-    """ControlHomePosition返回参数结构体
+    r"""ControlHomePosition返回参数结构体
 
     """
 
@@ -1104,7 +1104,7 @@ class ControlHomePositionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1119,7 +1119,7 @@ class ControlHomePositionResponse(AbstractModel):
 
 
 class ControlPresetRequest(AbstractModel):
-    """ControlPreset请求参数结构体
+    r"""ControlPreset请求参数结构体
 
     """
 
@@ -1144,7 +1144,7 @@ Call-调用指定的预置位
 
     @property
     def ChannelId(self):
-        """通道ID
+        r"""通道ID
         :rtype: str
         """
         return self._ChannelId
@@ -1155,7 +1155,7 @@ Call-调用指定的预置位
 
     @property
     def Command(self):
-        """控制命令：
+        r"""控制命令：
 Set-设置当前位置为预置位
 Del-删除指定的预置位
 Call-调用指定的预置位
@@ -1169,7 +1169,7 @@ Call-调用指定的预置位
 
     @property
     def PresetId(self):
-        """预置位编码 范围1-8
+        r"""预置位编码 范围1-8
         :rtype: int
         """
         return self._PresetId
@@ -1180,7 +1180,7 @@ Call-调用指定的预置位
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -1206,7 +1206,7 @@ Call-调用指定的预置位
 
 
 class ControlPresetResponse(AbstractModel):
-    """ControlPreset返回参数结构体
+    r"""ControlPreset返回参数结构体
 
     """
 
@@ -1219,7 +1219,7 @@ class ControlPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1234,7 +1234,7 @@ class ControlPresetResponse(AbstractModel):
 
 
 class ControlRecordStreamRequest(AbstractModel):
-    """ControlRecordStream请求参数结构体
+    r"""ControlRecordStream请求参数结构体
 
     """
 
@@ -1261,7 +1261,7 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id，设备的唯一标识
+        r"""设备Id，设备的唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -1272,7 +1272,7 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def StreamId(self):
-        """流Id，流的唯一标识
+        r"""流Id，流的唯一标识
         :rtype: str
         """
         return self._StreamId
@@ -1283,7 +1283,7 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def Command(self):
-        """|控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
+        r"""|控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
 | Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
 目前支持的command：
 "Command": "{"Action":"PAUSE"}" 暂停
@@ -1299,7 +1299,7 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -1325,7 +1325,7 @@ class ControlRecordStreamRequest(AbstractModel):
 
 
 class ControlRecordStreamResponse(AbstractModel):
-    """ControlRecordStream返回参数结构体
+    r"""ControlRecordStream返回参数结构体
 
     """
 
@@ -1338,7 +1338,7 @@ class ControlRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1353,7 +1353,7 @@ class ControlRecordStreamResponse(AbstractModel):
 
 
 class CreateDeviceGroupRequest(AbstractModel):
-    """CreateDeviceGroup请求参数结构体
+    r"""CreateDeviceGroup请求参数结构体
 
     """
 
@@ -1372,7 +1372,7 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._GroupName
@@ -1383,7 +1383,7 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID
+        r"""父分组ID
         :rtype: str
         """
         return self._ParentId
@@ -1394,7 +1394,7 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupDescribe(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._GroupDescribe
@@ -1419,7 +1419,7 @@ class CreateDeviceGroupRequest(AbstractModel):
 
 
 class CreateDeviceGroupResponse(AbstractModel):
-    """CreateDeviceGroup返回参数结构体
+    r"""CreateDeviceGroup返回参数结构体
 
     """
 
@@ -1438,7 +1438,7 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def Status(self):
-        """响应结果，“OK”为成功，其他为失败
+        r"""响应结果，“OK”为成功，其他为失败
         :rtype: str
         """
         return self._Status
@@ -1449,7 +1449,7 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -1460,7 +1460,7 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1477,7 +1477,7 @@ class CreateDeviceGroupResponse(AbstractModel):
 
 
 class CreateDeviceRequest(AbstractModel):
-    """CreateDevice请求参数结构体
+    r"""CreateDevice请求参数结构体
 
     """
 
@@ -1499,7 +1499,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._NickName
@@ -1510,7 +1510,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def PassWord(self):
-        """设备密码
+        r"""设备密码
         :rtype: str
         """
         return self._PassWord
@@ -1521,7 +1521,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        r"""设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :rtype: int
         """
         return self._DeviceType
@@ -1532,7 +1532,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备需要绑定的分组ID，参数为空则默认绑定到根分组
+        r"""设备需要绑定的分组ID，参数为空则默认绑定到根分组
         :rtype: str
         """
         return self._GroupId
@@ -1558,7 +1558,7 @@ class CreateDeviceRequest(AbstractModel):
 
 
 class CreateDeviceResponse(AbstractModel):
-    """CreateDevice返回参数结构体
+    r"""CreateDevice返回参数结构体
 
     """
 
@@ -1580,7 +1580,7 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceCode(self):
-        """设备编码
+        r"""设备编码
         :rtype: str
         """
         return self._DeviceCode
@@ -1591,7 +1591,7 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -1602,7 +1602,7 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def VirtualGroupId(self):
-        """设备虚拟组信息，仅在创建NVR时返回该值
+        r"""设备虚拟组信息，仅在创建NVR时返回该值
         :rtype: str
         """
         return self._VirtualGroupId
@@ -1613,7 +1613,7 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1631,7 +1631,7 @@ class CreateDeviceResponse(AbstractModel):
 
 
 class CreateLiveChannelRequest(AbstractModel):
-    """CreateLiveChannel请求参数结构体
+    r"""CreateLiveChannel请求参数结构体
 
     """
 
@@ -1647,7 +1647,7 @@ class CreateLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
-        """直播频道名称
+        r"""直播频道名称
         :rtype: str
         """
         return self._LiveChannelName
@@ -1658,7 +1658,7 @@ class CreateLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelType(self):
-        """直播频道类型 1：固定直播；2：移动直播
+        r"""直播频道类型 1：固定直播；2：移动直播
         :rtype: int
         """
         return self._LiveChannelType
@@ -1682,7 +1682,7 @@ class CreateLiveChannelRequest(AbstractModel):
 
 
 class CreateLiveChannelResponse(AbstractModel):
-    """CreateLiveChannel返回参数结构体
+    r"""CreateLiveChannel返回参数结构体
 
     """
 
@@ -1701,7 +1701,7 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -1712,7 +1712,7 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def PushStreamAddress(self):
-        """直播频道推流地址
+        r"""直播频道推流地址
         :rtype: str
         """
         return self._PushStreamAddress
@@ -1723,7 +1723,7 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1740,7 +1740,7 @@ class CreateLiveChannelResponse(AbstractModel):
 
 
 class CreateLiveRecordPlanRequest(AbstractModel):
-    """CreateLiveRecordPlan请求参数结构体
+    r"""CreateLiveRecordPlan请求参数结构体
 
     """
 
@@ -1765,7 +1765,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        """录制计划名
+        r"""录制计划名
         :rtype: str
         """
         return self._PlanName
@@ -1776,7 +1776,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanType(self):
-        """计划类型 1：固定直播 2：移动直播
+        r"""计划类型 1：固定直播 2：移动直播
         :rtype: int
         """
         return self._PlanType
@@ -1787,7 +1787,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID,固定直播时为必填
+        r"""时间模板ID,固定直播时为必填
         :rtype: str
         """
         return self._TemplateId
@@ -1798,7 +1798,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """录制文件存储时长，单位天，默认30天
+        r"""录制文件存储时长，单位天，默认30天
         :rtype: int
         """
         return self._RecordStorageTime
@@ -1809,7 +1809,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def LiveChannelIds(self):
-        """绑定的直播频道ID列表
+        r"""绑定的直播频道ID列表
         :rtype: list of str
         """
         return self._LiveChannelIds
@@ -1836,7 +1836,7 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
 
 class CreateLiveRecordPlanResponse(AbstractModel):
-    """CreateLiveRecordPlan返回参数结构体
+    r"""CreateLiveRecordPlan返回参数结构体
 
     """
 
@@ -1852,7 +1852,7 @@ class CreateLiveRecordPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划名称
+        r"""录制计划名称
         :rtype: str
         """
         return self._PlanId
@@ -1863,7 +1863,7 @@ class CreateLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1879,7 +1879,7 @@ class CreateLiveRecordPlanResponse(AbstractModel):
 
 
 class CreateMessageForwardRequest(AbstractModel):
-    """CreateMessageForward请求参数结构体
+    r"""CreateMessageForward请求参数结构体
 
     """
 
@@ -1910,7 +1910,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def RegionId(self):
-        """区域ID
+        r"""区域ID
         :rtype: str
         """
         return self._RegionId
@@ -1921,7 +1921,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def RegionName(self):
-        """区域名称
+        r"""区域名称
         :rtype: str
         """
         return self._RegionName
@@ -1932,7 +1932,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def Instance(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._Instance
@@ -1943,7 +1943,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -1954,7 +1954,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def MessageType(self):
-        """json数组， 转发类型 1: 告警 2:GPS
+        r"""json数组， 转发类型 1: 告警 2:GPS
         :rtype: str
         """
         return self._MessageType
@@ -1965,7 +1965,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """kafka topic id
+        r"""kafka topic id
         :rtype: str
         """
         return self._TopicId
@@ -1976,7 +1976,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """kafka topic 名称
+        r"""kafka topic 名称
         :rtype: str
         """
         return self._TopicName
@@ -2005,7 +2005,7 @@ class CreateMessageForwardRequest(AbstractModel):
 
 
 class CreateMessageForwardResponse(AbstractModel):
-    """CreateMessageForward返回参数结构体
+    r"""CreateMessageForward返回参数结构体
 
     """
 
@@ -2021,7 +2021,7 @@ class CreateMessageForwardResponse(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -2032,7 +2032,7 @@ class CreateMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2048,7 +2048,7 @@ class CreateMessageForwardResponse(AbstractModel):
 
 
 class CreateRecordPlanRequest(AbstractModel):
-    """CreateRecordPlan请求参数结构体
+    r"""CreateRecordPlan请求参数结构体
 
     """
 
@@ -2073,7 +2073,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -2084,7 +2084,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -2095,7 +2095,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def EventId(self):
-        """触发录制的事件类别 1:全部
+        r"""触发录制的事件类别 1:全部
         :rtype: int
         """
         return self._EventId
@@ -2106,7 +2106,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def Devices(self):
-        """该录制计划绑定的设备列表
+        r"""该录制计划绑定的设备列表
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -2117,7 +2117,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """存储周期
+        r"""存储周期
         :rtype: int
         """
         return self._RecordStorageTime
@@ -2149,7 +2149,7 @@ class CreateRecordPlanRequest(AbstractModel):
 
 
 class CreateRecordPlanResponse(AbstractModel):
-    """CreateRecordPlan返回参数结构体
+    r"""CreateRecordPlan返回参数结构体
 
     """
 
@@ -2165,7 +2165,7 @@ class CreateRecordPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -2176,7 +2176,7 @@ class CreateRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2192,7 +2192,7 @@ class CreateRecordPlanResponse(AbstractModel):
 
 
 class CreateRecordingPlanRequest(AbstractModel):
-    """CreateRecordingPlan请求参数结构体
+    r"""CreateRecordingPlan请求参数结构体
 
     """
 
@@ -2214,7 +2214,7 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -2225,7 +2225,7 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -2236,7 +2236,7 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
-        """该录制计划绑定的通道列表
+        r"""该录制计划绑定的通道列表
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -2247,7 +2247,7 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """存储周期(天)；默认存储30天
+        r"""存储周期(天)；默认存储30天
         :rtype: int
         """
         return self._RecordStorageTime
@@ -2278,7 +2278,7 @@ class CreateRecordingPlanRequest(AbstractModel):
 
 
 class CreateRecordingPlanResponse(AbstractModel):
-    """CreateRecordingPlan返回参数结构体
+    r"""CreateRecordingPlan返回参数结构体
 
     """
 
@@ -2294,7 +2294,7 @@ class CreateRecordingPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -2305,7 +2305,7 @@ class CreateRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2321,7 +2321,7 @@ class CreateRecordingPlanResponse(AbstractModel):
 
 
 class CreateSceneRequest(AbstractModel):
-    """CreateScene请求参数结构体
+    r"""CreateScene请求参数结构体
 
     """
 
@@ -2349,7 +2349,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._SceneName
@@ -2360,7 +2360,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def SceneTrigger(self):
-        """场景触发规则
+        r"""场景触发规则
         :rtype: str
         """
         return self._SceneTrigger
@@ -2371,7 +2371,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def RecordDuration(self):
-        """录制时长 (秒)
+        r"""录制时长 (秒)
         :rtype: int
         """
         return self._RecordDuration
@@ -2382,7 +2382,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def StoreDuration(self):
-        """录像存储时长(天)
+        r"""录像存储时长(天)
         :rtype: int
         """
         return self._StoreDuration
@@ -2393,7 +2393,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def Devices(self):
-        """设备列表(不推荐使用)
+        r"""设备列表(不推荐使用)
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -2404,7 +2404,7 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def Channels(self):
-        """通道列表
+        r"""通道列表
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -2442,7 +2442,7 @@ class CreateSceneRequest(AbstractModel):
 
 
 class CreateSceneResponse(AbstractModel):
-    """CreateScene返回参数结构体
+    r"""CreateScene返回参数结构体
 
     """
 
@@ -2458,7 +2458,7 @@ class CreateSceneResponse(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -2469,7 +2469,7 @@ class CreateSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2485,7 +2485,7 @@ class CreateSceneResponse(AbstractModel):
 
 
 class CreateTimeTemplateRequest(AbstractModel):
-    """CreateTimeTemplate请求参数结构体
+    r"""CreateTimeTemplate请求参数结构体
 
     """
 
@@ -2504,7 +2504,7 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """时间模板名称
+        r"""时间模板名称
         :rtype: str
         """
         return self._Name
@@ -2515,7 +2515,7 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def IsAllWeek(self):
-        """是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
+        r"""是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
         :rtype: int
         """
         return self._IsAllWeek
@@ -2526,7 +2526,7 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
-        """当IsAllWeek为0时必选，用于描述模板的各个时间片段
+        r"""当IsAllWeek为0时必选，用于描述模板的各个时间片段
         :rtype: list of TimeTemplateSpec
         """
         return self._TimeTemplateSpecs
@@ -2556,7 +2556,7 @@ class CreateTimeTemplateRequest(AbstractModel):
 
 
 class CreateTimeTemplateResponse(AbstractModel):
-    """CreateTimeTemplate返回参数结构体
+    r"""CreateTimeTemplate返回参数结构体
 
     """
 
@@ -2572,7 +2572,7 @@ class CreateTimeTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -2583,7 +2583,7 @@ class CreateTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2599,7 +2599,7 @@ class CreateTimeTemplateResponse(AbstractModel):
 
 
 class DeleteChannelRequest(AbstractModel):
-    """DeleteChannel请求参数结构体
+    r"""DeleteChannel请求参数结构体
 
     """
 
@@ -2615,7 +2615,7 @@ class DeleteChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -2626,7 +2626,7 @@ class DeleteChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道ID
+        r"""通道ID
         :rtype: str
         """
         return self._ChannelId
@@ -2650,7 +2650,7 @@ class DeleteChannelRequest(AbstractModel):
 
 
 class DeleteChannelResponse(AbstractModel):
-    """DeleteChannel返回参数结构体
+    r"""DeleteChannel返回参数结构体
 
     """
 
@@ -2663,7 +2663,7 @@ class DeleteChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2678,7 +2678,7 @@ class DeleteChannelResponse(AbstractModel):
 
 
 class DeleteDeviceGroupRequest(AbstractModel):
-    """DeleteDeviceGroup请求参数结构体
+    r"""DeleteDeviceGroup请求参数结构体
 
     """
 
@@ -2691,7 +2691,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -2714,7 +2714,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
 
 class DeleteDeviceGroupResponse(AbstractModel):
-    """DeleteDeviceGroup返回参数结构体
+    r"""DeleteDeviceGroup返回参数结构体
 
     """
 
@@ -2730,7 +2730,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def Status(self):
-        """响应结果
+        r"""响应结果
         :rtype: str
         """
         return self._Status
@@ -2741,7 +2741,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2757,7 +2757,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
 
 class DeleteDeviceRequest(AbstractModel):
-    """DeleteDevice请求参数结构体
+    r"""DeleteDevice请求参数结构体
 
     """
 
@@ -2770,7 +2770,7 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -2793,7 +2793,7 @@ class DeleteDeviceRequest(AbstractModel):
 
 
 class DeleteDeviceResponse(AbstractModel):
-    """DeleteDevice返回参数结构体
+    r"""DeleteDevice返回参数结构体
 
     """
 
@@ -2809,7 +2809,7 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果 OK-成功； 其他-失败
+        r"""操作结果 OK-成功； 其他-失败
         :rtype: str
         """
         return self._Status
@@ -2820,7 +2820,7 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2836,7 +2836,7 @@ class DeleteDeviceResponse(AbstractModel):
 
 
 class DeleteLiveChannelRequest(AbstractModel):
-    """DeleteLiveChannel请求参数结构体
+    r"""DeleteLiveChannel请求参数结构体
 
     """
 
@@ -2849,7 +2849,7 @@ class DeleteLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -2872,7 +2872,7 @@ class DeleteLiveChannelRequest(AbstractModel):
 
 
 class DeleteLiveChannelResponse(AbstractModel):
-    """DeleteLiveChannel返回参数结构体
+    r"""DeleteLiveChannel返回参数结构体
 
     """
 
@@ -2885,7 +2885,7 @@ class DeleteLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2900,7 +2900,7 @@ class DeleteLiveChannelResponse(AbstractModel):
 
 
 class DeleteLiveRecordPlanRequest(AbstractModel):
-    """DeleteLiveRecordPlan请求参数结构体
+    r"""DeleteLiveRecordPlan请求参数结构体
 
     """
 
@@ -2913,7 +2913,7 @@ class DeleteLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -2936,7 +2936,7 @@ class DeleteLiveRecordPlanRequest(AbstractModel):
 
 
 class DeleteLiveRecordPlanResponse(AbstractModel):
-    """DeleteLiveRecordPlan返回参数结构体
+    r"""DeleteLiveRecordPlan返回参数结构体
 
     """
 
@@ -2952,7 +2952,7 @@ class DeleteLiveRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
-        """删除状态描述
+        r"""删除状态描述
         :rtype: str
         """
         return self._Status
@@ -2963,7 +2963,7 @@ class DeleteLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2979,7 +2979,7 @@ class DeleteLiveRecordPlanResponse(AbstractModel):
 
 
 class DeleteLiveVideoListRequest(AbstractModel):
-    """DeleteLiveVideoList请求参数结构体
+    r"""DeleteLiveVideoList请求参数结构体
 
     """
 
@@ -2992,7 +2992,7 @@ class DeleteLiveVideoListRequest(AbstractModel):
 
     @property
     def IntIDs(self):
-        """视频ID 列表, 大小限制(100)
+        r"""视频ID 列表, 大小限制(100)
         :rtype: list of int non-negative
         """
         return self._IntIDs
@@ -3015,7 +3015,7 @@ class DeleteLiveVideoListRequest(AbstractModel):
 
 
 class DeleteLiveVideoListResponse(AbstractModel):
-    """DeleteLiveVideoList返回参数结构体
+    r"""DeleteLiveVideoList返回参数结构体
 
     """
 
@@ -3028,7 +3028,7 @@ class DeleteLiveVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3043,7 +3043,7 @@ class DeleteLiveVideoListResponse(AbstractModel):
 
 
 class DeleteMessageForwardRequest(AbstractModel):
-    """DeleteMessageForward请求参数结构体
+    r"""DeleteMessageForward请求参数结构体
 
     """
 
@@ -3056,7 +3056,7 @@ class DeleteMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -3079,7 +3079,7 @@ class DeleteMessageForwardRequest(AbstractModel):
 
 
 class DeleteMessageForwardResponse(AbstractModel):
-    """DeleteMessageForward返回参数结构体
+    r"""DeleteMessageForward返回参数结构体
 
     """
 
@@ -3092,7 +3092,7 @@ class DeleteMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3107,7 +3107,7 @@ class DeleteMessageForwardResponse(AbstractModel):
 
 
 class DeleteRecordPlanRequest(AbstractModel):
-    """DeleteRecordPlan请求参数结构体
+    r"""DeleteRecordPlan请求参数结构体
 
     """
 
@@ -3120,7 +3120,7 @@ class DeleteRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -3143,7 +3143,7 @@ class DeleteRecordPlanRequest(AbstractModel):
 
 
 class DeleteRecordPlanResponse(AbstractModel):
-    """DeleteRecordPlan返回参数结构体
+    r"""DeleteRecordPlan返回参数结构体
 
     """
 
@@ -3159,7 +3159,7 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果，OK：成功，其他：失败
+        r"""操作结果，OK：成功，其他：失败
         :rtype: str
         """
         return self._Status
@@ -3170,7 +3170,7 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3186,7 +3186,7 @@ class DeleteRecordPlanResponse(AbstractModel):
 
 
 class DeleteRecordingPlanRequest(AbstractModel):
-    """DeleteRecordingPlan请求参数结构体
+    r"""DeleteRecordingPlan请求参数结构体
 
     """
 
@@ -3199,7 +3199,7 @@ class DeleteRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -3222,7 +3222,7 @@ class DeleteRecordingPlanRequest(AbstractModel):
 
 
 class DeleteRecordingPlanResponse(AbstractModel):
-    """DeleteRecordingPlan返回参数结构体
+    r"""DeleteRecordingPlan返回参数结构体
 
     """
 
@@ -3238,7 +3238,7 @@ class DeleteRecordingPlanResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果，OK：成功，其他：失败
+        r"""操作结果，OK：成功，其他：失败
         :rtype: str
         """
         return self._Status
@@ -3249,7 +3249,7 @@ class DeleteRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3265,7 +3265,7 @@ class DeleteRecordingPlanResponse(AbstractModel):
 
 
 class DeleteSceneRequest(AbstractModel):
-    """DeleteScene请求参数结构体
+    r"""DeleteScene请求参数结构体
 
     """
 
@@ -3278,7 +3278,7 @@ class DeleteSceneRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -3301,7 +3301,7 @@ class DeleteSceneRequest(AbstractModel):
 
 
 class DeleteSceneResponse(AbstractModel):
-    """DeleteScene返回参数结构体
+    r"""DeleteScene返回参数结构体
 
     """
 
@@ -3314,7 +3314,7 @@ class DeleteSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3329,7 +3329,7 @@ class DeleteSceneResponse(AbstractModel):
 
 
 class DeleteTimeTemplateRequest(AbstractModel):
-    """DeleteTimeTemplate请求参数结构体
+    r"""DeleteTimeTemplate请求参数结构体
 
     """
 
@@ -3342,7 +3342,7 @@ class DeleteTimeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -3365,7 +3365,7 @@ class DeleteTimeTemplateRequest(AbstractModel):
 
 
 class DeleteTimeTemplateResponse(AbstractModel):
-    """DeleteTimeTemplate返回参数结构体
+    r"""DeleteTimeTemplate返回参数结构体
 
     """
 
@@ -3381,7 +3381,7 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果，OK：成功，其他：失败
+        r"""操作结果，OK：成功，其他：失败
         :rtype: str
         """
         return self._Status
@@ -3392,7 +3392,7 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3408,7 +3408,7 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
 
 class DeleteVideoListRequest(AbstractModel):
-    """DeleteVideoList请求参数结构体
+    r"""DeleteVideoList请求参数结构体
 
     """
 
@@ -3421,7 +3421,7 @@ class DeleteVideoListRequest(AbstractModel):
 
     @property
     def InitIDs(self):
-        """视频ID列表长度限制100内
+        r"""视频ID列表长度限制100内
         :rtype: list of int
         """
         return self._InitIDs
@@ -3444,7 +3444,7 @@ class DeleteVideoListRequest(AbstractModel):
 
 
 class DeleteVideoListResponse(AbstractModel):
-    """DeleteVideoList返回参数结构体
+    r"""DeleteVideoList返回参数结构体
 
     """
 
@@ -3457,7 +3457,7 @@ class DeleteVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3472,7 +3472,7 @@ class DeleteVideoListResponse(AbstractModel):
 
 
 class DeleteWarningRequest(AbstractModel):
-    """DeleteWarning请求参数结构体
+    r"""DeleteWarning请求参数结构体
 
     """
 
@@ -3488,7 +3488,7 @@ class DeleteWarningRequest(AbstractModel):
 
     @property
     def Id(self):
-        """告警ID
+        r"""告警ID
         :rtype: int
         """
         return self._Id
@@ -3499,7 +3499,7 @@ class DeleteWarningRequest(AbstractModel):
 
     @property
     def Index(self):
-        """告警索引
+        r"""告警索引
         :rtype: str
         """
         return self._Index
@@ -3523,7 +3523,7 @@ class DeleteWarningRequest(AbstractModel):
 
 
 class DeleteWarningResponse(AbstractModel):
-    """DeleteWarning返回参数结构体
+    r"""DeleteWarning返回参数结构体
 
     """
 
@@ -3539,7 +3539,7 @@ class DeleteWarningResponse(AbstractModel):
 
     @property
     def Cnt(self):
-        """操作个数
+        r"""操作个数
         :rtype: int
         """
         return self._Cnt
@@ -3550,7 +3550,7 @@ class DeleteWarningResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3566,7 +3566,7 @@ class DeleteWarningResponse(AbstractModel):
 
 
 class DescribeAbnormalEventsRequest(AbstractModel):
-    """DescribeAbnormalEvents请求参数结构体
+    r"""DescribeAbnormalEvents请求参数结构体
 
     """
 
@@ -3582,7 +3582,7 @@ class DescribeAbnormalEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -3593,7 +3593,7 @@ class DescribeAbnormalEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -3617,7 +3617,7 @@ class DescribeAbnormalEventsRequest(AbstractModel):
 
 
 class DescribeAbnormalEventsResponse(AbstractModel):
-    """DescribeAbnormalEvents返回参数结构体
+    r"""DescribeAbnormalEvents返回参数结构体
 
     """
 
@@ -3633,7 +3633,7 @@ class DescribeAbnormalEventsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """异动事件走势列表
+        r"""异动事件走势列表
         :rtype: list of AbnormalEvents
         """
         return self._Data
@@ -3644,7 +3644,7 @@ class DescribeAbnormalEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3665,7 +3665,7 @@ class DescribeAbnormalEventsResponse(AbstractModel):
 
 
 class DescribeAllDeviceListRequest(AbstractModel):
-    """DescribeAllDeviceList请求参数结构体
+    r"""DescribeAllDeviceList请求参数结构体
 
     """
 
@@ -3690,7 +3690,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -3701,7 +3701,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制，默认200
+        r"""限制，默认200
         :rtype: int
         """
         return self._Limit
@@ -3712,7 +3712,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称，需要模糊匹配设备名称时为必填
+        r"""设备名称，需要模糊匹配设备名称时为必填
         :rtype: str
         """
         return self._NickName
@@ -3723,7 +3723,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
-        """DeviceId列表，需要精确查找设备时为必填
+        r"""DeviceId列表，需要精确查找设备时为必填
         :rtype: list of str
         """
         return self._DeviceIds
@@ -3734,7 +3734,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
-        """设备类型过滤，设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        r"""设备类型过滤，设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :rtype: list of int
         """
         return self._DeviceTypes
@@ -3761,7 +3761,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
 
 class DescribeAllDeviceListResponse(AbstractModel):
-    """DescribeAllDeviceList返回参数结构体
+    r"""DescribeAllDeviceList返回参数结构体
 
     """
 
@@ -3780,7 +3780,7 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """设备总数
+        r"""设备总数
         :rtype: int
         """
         return self._TotalCount
@@ -3791,7 +3791,7 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
-        """设备详细信息列表
+        r"""设备详细信息列表
         :rtype: list of AllDeviceInfo
         """
         return self._Devices
@@ -3802,7 +3802,7 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3824,7 +3824,7 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
 
 class DescribeBindSceneChannelsRequest(AbstractModel):
-    """DescribeBindSceneChannels请求参数结构体
+    r"""DescribeBindSceneChannels请求参数结构体
 
     """
 
@@ -3843,7 +3843,7 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """条数限制最大不能超过1000
+        r"""条数限制最大不能超过1000
         :rtype: int
         """
         return self._Limit
@@ -3854,7 +3854,7 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -3865,7 +3865,7 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移值
+        r"""偏移值
         :rtype: int
         """
         return self._Offset
@@ -3890,7 +3890,7 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
 
 class DescribeBindSceneChannelsResponse(AbstractModel):
-    """DescribeBindSceneChannels返回参数结构体
+    r"""DescribeBindSceneChannels返回参数结构体
 
     """
 
@@ -3909,7 +3909,7 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3920,7 +3920,7 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def List(self):
-        """通道列表
+        r"""通道列表
         :rtype: list of ChannelItem
         """
         return self._List
@@ -3931,7 +3931,7 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3953,7 +3953,7 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
 
 class DescribeBindSceneDevicesRequest(AbstractModel):
-    """DescribeBindSceneDevices请求参数结构体
+    r"""DescribeBindSceneDevices请求参数结构体
 
     """
 
@@ -3972,7 +3972,7 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -3983,7 +3983,7 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移值
+        r"""偏移值
         :rtype: int
         """
         return self._Offset
@@ -3994,7 +3994,7 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """条数限制最大不能超过1000
+        r"""条数限制最大不能超过1000
         :rtype: int
         """
         return self._Limit
@@ -4019,7 +4019,7 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
 
 class DescribeBindSceneDevicesResponse(AbstractModel):
-    """DescribeBindSceneDevices返回参数结构体
+    r"""DescribeBindSceneDevices返回参数结构体
 
     """
 
@@ -4038,7 +4038,7 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4049,7 +4049,7 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def List(self):
-        """设备列表
+        r"""设备列表
         :rtype: list of DeviceItem
         """
         return self._List
@@ -4060,7 +4060,7 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4082,7 +4082,7 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
 
 class DescribeChannelLiveStreamURLRequest(AbstractModel):
-    """DescribeChannelLiveStreamURL请求参数结构体
+    r"""DescribeChannelLiveStreamURL请求参数结构体
 
     """
 
@@ -4098,7 +4098,7 @@ class DescribeChannelLiveStreamURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识，必填参数
+        r"""设备唯一标识，必填参数
         :rtype: str
         """
         return self._DeviceId
@@ -4109,7 +4109,7 @@ class DescribeChannelLiveStreamURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识（接口升级字段为必填），必填参数
+        r"""通道唯一标识（接口升级字段为必填），必填参数
         :rtype: str
         """
         return self._ChannelId
@@ -4133,7 +4133,7 @@ class DescribeChannelLiveStreamURLRequest(AbstractModel):
 
 
 class DescribeChannelLiveStreamURLResponse(AbstractModel):
-    """DescribeChannelLiveStreamURL返回参数结构体
+    r"""DescribeChannelLiveStreamURL返回参数结构体
 
     """
 
@@ -4149,7 +4149,7 @@ class DescribeChannelLiveStreamURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        """设备实时流地址列表
+        r"""设备实时流地址列表
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
         """
         return self._Data
@@ -4160,7 +4160,7 @@ class DescribeChannelLiveStreamURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4178,7 +4178,7 @@ class DescribeChannelLiveStreamURLResponse(AbstractModel):
 
 
 class DescribeChannelLocalRecordURLRequest(AbstractModel):
-    """DescribeChannelLocalRecordURL请求参数结构体
+    r"""DescribeChannelLocalRecordURL请求参数结构体
 
     """
 
@@ -4206,7 +4206,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -4217,7 +4217,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -4228,7 +4228,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """录像文件Id，通过获取本地录像返回
+        r"""录像文件Id，通过获取本地录像返回
         :rtype: str
         """
         return self._RecordId
@@ -4239,7 +4239,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """UNIX 时间戳，30天内，URL失效时间，如180s无人观看此流则URL提前失效
+        r"""UNIX 时间戳，30天内，URL失效时间，如180s无人观看此流则URL提前失效
         :rtype: int
         """
         return self._ExpireTime
@@ -4250,7 +4250,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        r"""录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
         :rtype: int
         """
         return self._StartTime
@@ -4261,7 +4261,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        r"""录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
         :rtype: int
         """
         return self._EndTime
@@ -4289,7 +4289,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
 
 class DescribeChannelLocalRecordURLResponse(AbstractModel):
-    """DescribeChannelLocalRecordURL返回参数结构体
+    r"""DescribeChannelLocalRecordURL返回参数结构体
 
     """
 
@@ -4305,7 +4305,7 @@ class DescribeChannelLocalRecordURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        """结果
+        r"""结果
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
         """
         return self._Data
@@ -4316,7 +4316,7 @@ class DescribeChannelLocalRecordURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4334,7 +4334,7 @@ class DescribeChannelLocalRecordURLResponse(AbstractModel):
 
 
 class DescribeChannelStreamURLRequest(AbstractModel):
-    """DescribeChannelStreamURL请求参数结构体
+    r"""DescribeChannelStreamURL请求参数结构体
 
     """
 
@@ -4353,7 +4353,7 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识，必填参数
+        r"""设备唯一标识，必填参数
         :rtype: str
         """
         return self._DeviceId
@@ -4364,7 +4364,7 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """流地址失效时间，固定值填写0，其他参数无效，必填参数
+        r"""流地址失效时间，固定值填写0，其他参数无效，必填参数
         :rtype: int
         """
         return self._ExpireTime
@@ -4375,7 +4375,7 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识（接口升级字段为必填），必填参数
+        r"""通道唯一标识（接口升级字段为必填），必填参数
         :rtype: str
         """
         return self._ChannelId
@@ -4400,7 +4400,7 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
 
 class DescribeChannelStreamURLResponse(AbstractModel):
-    """DescribeChannelStreamURL返回参数结构体
+    r"""DescribeChannelStreamURL返回参数结构体
 
     """
 
@@ -4416,7 +4416,7 @@ class DescribeChannelStreamURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        """设备实时流地址列表
+        r"""设备实时流地址列表
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
         """
         return self._Data
@@ -4427,7 +4427,7 @@ class DescribeChannelStreamURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4445,7 +4445,7 @@ class DescribeChannelStreamURLResponse(AbstractModel):
 
 
 class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
-    """DescribeChannelsByLiveRecordPlan请求参数结构体
+    r"""DescribeChannelsByLiveRecordPlan请求参数结构体
 
     """
 
@@ -4464,7 +4464,7 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -4475,7 +4475,7 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -4486,7 +4486,7 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -4511,7 +4511,7 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
 
 class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
-    """DescribeChannelsByLiveRecordPlan返回参数结构体
+    r"""DescribeChannelsByLiveRecordPlan返回参数结构体
 
     """
 
@@ -4530,7 +4530,7 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总个数
+        r"""总个数
         :rtype: int
         """
         return self._TotalCount
@@ -4541,7 +4541,7 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def LiveChannels(self):
-        """通道详情数组
+        r"""通道详情数组
         :rtype: list of LiveChannelItem
         """
         return self._LiveChannels
@@ -4552,7 +4552,7 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4574,7 +4574,7 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
 
 class DescribeChannelsRequest(AbstractModel):
-    """DescribeChannels请求参数结构体
+    r"""DescribeChannels请求参数结构体
 
     """
 
@@ -4602,7 +4602,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -4613,7 +4613,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制，默认0
+        r"""限制，默认0
         :rtype: int
         """
         return self._Limit
@@ -4624,7 +4624,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -4635,7 +4635,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def ChannelTypes(self):
-        """通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+        r"""通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
         :rtype: list of int non-negative
         """
         return self._ChannelTypes
@@ -4646,7 +4646,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID， 当为"null"值时未绑定录制计划
+        r"""录制计划ID， 当为"null"值时未绑定录制计划
         :rtype: str
         """
         return self._PlanId
@@ -4657,7 +4657,7 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """告警联动场景ID， 当为 -1 值时未绑定场景
+        r"""告警联动场景ID， 当为 -1 值时未绑定场景
         :rtype: int
         """
         return self._SceneId
@@ -4685,7 +4685,7 @@ class DescribeChannelsRequest(AbstractModel):
 
 
 class DescribeChannelsResponse(AbstractModel):
-    """DescribeChannels返回参数结构体
+    r"""DescribeChannels返回参数结构体
 
     """
 
@@ -4704,7 +4704,7 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """通道总数
+        r"""通道总数
         :rtype: int
         """
         return self._TotalCount
@@ -4715,7 +4715,7 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def Channels(self):
-        """通道详情列表
+        r"""通道详情列表
         :rtype: list of ChannelDetail
         """
         return self._Channels
@@ -4726,7 +4726,7 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4748,13 +4748,13 @@ class DescribeChannelsResponse(AbstractModel):
 
 
 class DescribeCurrentDeviceDataRequest(AbstractModel):
-    """DescribeCurrentDeviceData请求参数结构体
+    r"""DescribeCurrentDeviceData请求参数结构体
 
     """
 
 
 class DescribeCurrentDeviceDataResponse(AbstractModel):
-    """DescribeCurrentDeviceData返回参数结构体
+    r"""DescribeCurrentDeviceData返回参数结构体
 
     """
 
@@ -4782,7 +4782,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def Channels(self):
-        """通道数
+        r"""通道数
         :rtype: int
         """
         return self._Channels
@@ -4793,7 +4793,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def Devices(self):
-        """设备数
+        r"""设备数
         :rtype: int
         """
         return self._Devices
@@ -4804,7 +4804,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def OnlineChannels(self):
-        """在线通道数
+        r"""在线通道数
         :rtype: int
         """
         return self._OnlineChannels
@@ -4815,7 +4815,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def OnlineDevices(self):
-        """在线设备数
+        r"""在线设备数
         :rtype: int
         """
         return self._OnlineDevices
@@ -4826,7 +4826,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def RecordingChannels(self):
-        """正在录制通道数
+        r"""正在录制通道数
         :rtype: int
         """
         return self._RecordingChannels
@@ -4837,7 +4837,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4857,7 +4857,7 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
 
 class DescribeDeviceEventRequest(AbstractModel):
-    """DescribeDeviceEvent请求参数结构体
+    r"""DescribeDeviceEvent请求参数结构体
 
     """
 
@@ -4885,7 +4885,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，秒级时间戳
+        r"""开始时间，秒级时间戳
         :rtype: int
         """
         return self._StartTime
@@ -4896,7 +4896,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，秒级时间戳
+        r"""结束时间，秒级时间戳
         :rtype: int
         """
         return self._EndTime
@@ -4907,7 +4907,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -4918,7 +4918,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def EventTypes(self):
-        """默认为全部 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+        r"""默认为全部 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
         :rtype: list of int
         """
         return self._EventTypes
@@ -4929,7 +4929,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移值
+        r"""偏移值
         :rtype: int
         """
         return self._Offset
@@ -4940,7 +4940,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """limit限制值
+        r"""limit限制值
         :rtype: int
         """
         return self._Limit
@@ -4968,7 +4968,7 @@ class DescribeDeviceEventRequest(AbstractModel):
 
 
 class DescribeDeviceEventResponse(AbstractModel):
-    """DescribeDeviceEvent返回参数结构体
+    r"""DescribeDeviceEvent返回参数结构体
 
     """
 
@@ -4987,7 +4987,7 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -4998,7 +4998,7 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def Events(self):
-        """事件列表
+        r"""事件列表
         :rtype: list of Events
         """
         return self._Events
@@ -5009,7 +5009,7 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5031,7 +5031,7 @@ class DescribeDeviceEventResponse(AbstractModel):
 
 
 class DescribeDeviceGroupRequest(AbstractModel):
-    """DescribeDeviceGroup请求参数结构体
+    r"""DescribeDeviceGroup请求参数结构体
 
     """
 
@@ -5044,7 +5044,7 @@ class DescribeDeviceGroupRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
-        """设备唯一标识列表
+        r"""设备唯一标识列表
         :rtype: list of str
         """
         return self._DeviceIds
@@ -5067,7 +5067,7 @@ class DescribeDeviceGroupRequest(AbstractModel):
 
 
 class DescribeDeviceGroupResponse(AbstractModel):
-    """DescribeDeviceGroup返回参数结构体
+    r"""DescribeDeviceGroup返回参数结构体
 
     """
 
@@ -5083,7 +5083,7 @@ class DescribeDeviceGroupResponse(AbstractModel):
 
     @property
     def DevGroups(self):
-        """设备所在分组信息
+        r"""设备所在分组信息
         :rtype: list of DevGroupInfo
         """
         return self._DevGroups
@@ -5094,7 +5094,7 @@ class DescribeDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5115,7 +5115,7 @@ class DescribeDeviceGroupResponse(AbstractModel):
 
 
 class DescribeDeviceListRequest(AbstractModel):
-    """DescribeDeviceList请求参数结构体
+    r"""DescribeDeviceList请求参数结构体
 
     """
 
@@ -5137,7 +5137,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -5148,7 +5148,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制，默认200
+        r"""限制，默认200
         :rtype: int
         """
         return self._Limit
@@ -5159,7 +5159,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名前缀
+        r"""设备名前缀
         :rtype: str
         """
         return self._NickName
@@ -5170,7 +5170,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
-        """设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        r"""设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :rtype: list of int
         """
         return self._DeviceTypes
@@ -5196,7 +5196,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
 
 class DescribeDeviceListResponse(AbstractModel):
-    """DescribeDeviceList返回参数结构体
+    r"""DescribeDeviceList返回参数结构体
 
     """
 
@@ -5215,7 +5215,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """设备总数
+        r"""设备总数
         :rtype: int
         """
         return self._TotalCount
@@ -5226,7 +5226,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
-        """设备详细信息列表
+        r"""设备详细信息列表
         :rtype: list of AllDeviceInfo
         """
         return self._Devices
@@ -5237,7 +5237,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5259,7 +5259,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
 
 class DescribeDeviceMonitorDataRequest(AbstractModel):
-    """DescribeDeviceMonitorData请求参数结构体
+    r"""DescribeDeviceMonitorData请求参数结构体
 
     """
 
@@ -5281,7 +5281,7 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳
+        r"""开始时间戳
         :rtype: int
         """
         return self._StartTime
@@ -5292,7 +5292,7 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳
+        r"""结束时间戳
         :rtype: int
         """
         return self._EndTime
@@ -5303,7 +5303,7 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """类型 支持 OnlineChannels/OnlineDevices/RecordingChannels
+        r"""类型 支持 OnlineChannels/OnlineDevices/RecordingChannels
         :rtype: str
         """
         return self._Type
@@ -5314,7 +5314,7 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def TimesSpec(self):
-        """时间粒度 目前只支持 1h
+        r"""时间粒度 目前只支持 1h
         :rtype: str
         """
         return self._TimesSpec
@@ -5340,7 +5340,7 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
 
 class DescribeDeviceMonitorDataResponse(AbstractModel):
-    """DescribeDeviceMonitorData返回参数结构体
+    r"""DescribeDeviceMonitorData返回参数结构体
 
     """
 
@@ -5356,7 +5356,7 @@ class DescribeDeviceMonitorDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询设备统计monitor信息列表
+        r"""查询设备统计monitor信息列表
         :rtype: list of DeviceMonitorValue
         """
         return self._Data
@@ -5367,7 +5367,7 @@ class DescribeDeviceMonitorDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5388,7 +5388,7 @@ class DescribeDeviceMonitorDataResponse(AbstractModel):
 
 
 class DescribeDevicePassWordRequest(AbstractModel):
-    """DescribeDevicePassWord请求参数结构体
+    r"""DescribeDevicePassWord请求参数结构体
 
     """
 
@@ -5401,7 +5401,7 @@ class DescribeDevicePassWordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -5424,7 +5424,7 @@ class DescribeDevicePassWordRequest(AbstractModel):
 
 
 class DescribeDevicePassWordResponse(AbstractModel):
-    """DescribeDevicePassWord返回参数结构体
+    r"""DescribeDevicePassWord返回参数结构体
 
     """
 
@@ -5440,7 +5440,7 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
     @property
     def PassWord(self):
-        """设备密码
+        r"""设备密码
         :rtype: str
         """
         return self._PassWord
@@ -5451,7 +5451,7 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5467,7 +5467,7 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
 
 class DescribeDeviceRequest(AbstractModel):
-    """DescribeDevice请求参数结构体
+    r"""DescribeDevice请求参数结构体
 
     """
 
@@ -5480,7 +5480,7 @@ class DescribeDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -5503,7 +5503,7 @@ class DescribeDeviceRequest(AbstractModel):
 
 
 class DescribeDeviceResponse(AbstractModel):
-    """DescribeDevice返回参数结构体
+    r"""DescribeDevice返回参数结构体
 
     """
 
@@ -5519,7 +5519,7 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def Device(self):
-        """设备详情信息
+        r"""设备详情信息
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.AllDeviceInfo`
         """
         return self._Device
@@ -5530,7 +5530,7 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5548,7 +5548,7 @@ class DescribeDeviceResponse(AbstractModel):
 
 
 class DescribeDeviceStreamsData(AbstractModel):
-    """DescribeDeviceStreams的出参复杂类型
+    r"""DescribeDeviceStreams的出参复杂类型
 
     """
 
@@ -5570,7 +5570,7 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def RtspAddr(self):
-        """rtsp地址
+        r"""rtsp地址
         :rtype: str
         """
         return self._RtspAddr
@@ -5581,7 +5581,7 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def RtmpAddr(self):
-        """rtmp地址
+        r"""rtmp地址
         :rtype: str
         """
         return self._RtmpAddr
@@ -5592,7 +5592,7 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def HlsAddr(self):
-        """hls地址
+        r"""hls地址
         :rtype: str
         """
         return self._HlsAddr
@@ -5603,7 +5603,7 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def FlvAddr(self):
-        """flv地址
+        r"""flv地址
         :rtype: str
         """
         return self._FlvAddr
@@ -5629,7 +5629,7 @@ class DescribeDeviceStreamsData(AbstractModel):
 
 
 class DescribeDeviceStreamsRequest(AbstractModel):
-    """DescribeDeviceStreams请求参数结构体
+    r"""DescribeDeviceStreams请求参数结构体
 
     """
 
@@ -5648,7 +5648,7 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -5659,7 +5659,7 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """流地址失效时间
+        r"""流地址失效时间
         :rtype: int
         """
         return self._ExpireTime
@@ -5670,7 +5670,7 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识（接口升级字段为必填）
+        r"""通道唯一标识（接口升级字段为必填）
         :rtype: str
         """
         return self._ChannelId
@@ -5695,7 +5695,7 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
 
 class DescribeDeviceStreamsResponse(AbstractModel):
-    """DescribeDeviceStreams返回参数结构体
+    r"""DescribeDeviceStreams返回参数结构体
 
     """
 
@@ -5711,7 +5711,7 @@ class DescribeDeviceStreamsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """设备实时流地址列表
+        r"""设备实时流地址列表
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
         """
         return self._Data
@@ -5722,7 +5722,7 @@ class DescribeDeviceStreamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5740,7 +5740,7 @@ class DescribeDeviceStreamsResponse(AbstractModel):
 
 
 class DescribeGroupByIdRequest(AbstractModel):
-    """DescribeGroupById请求参数结构体
+    r"""DescribeGroupById请求参数结构体
 
     """
 
@@ -5753,7 +5753,7 @@ class DescribeGroupByIdRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5776,7 +5776,7 @@ class DescribeGroupByIdRequest(AbstractModel):
 
 
 class DescribeGroupByIdResponse(AbstractModel):
-    """DescribeGroupById返回参数结构体
+    r"""DescribeGroupById返回参数结构体
 
     """
 
@@ -5792,7 +5792,7 @@ class DescribeGroupByIdResponse(AbstractModel):
 
     @property
     def Group(self):
-        """分组信息详情
+        r"""分组信息详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         """
         return self._Group
@@ -5803,7 +5803,7 @@ class DescribeGroupByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5821,7 +5821,7 @@ class DescribeGroupByIdResponse(AbstractModel):
 
 
 class DescribeGroupByPathRequest(AbstractModel):
-    """DescribeGroupByPath请求参数结构体
+    r"""DescribeGroupByPath请求参数结构体
 
     """
 
@@ -5834,7 +5834,7 @@ class DescribeGroupByPathRequest(AbstractModel):
 
     @property
     def GroupPath(self):
-        """分组路径，格式为/aaa(/bbb/ccc)
+        r"""分组路径，格式为/aaa(/bbb/ccc)
         :rtype: str
         """
         return self._GroupPath
@@ -5857,7 +5857,7 @@ class DescribeGroupByPathRequest(AbstractModel):
 
 
 class DescribeGroupByPathResponse(AbstractModel):
-    """DescribeGroupByPath返回参数结构体
+    r"""DescribeGroupByPath返回参数结构体
 
     """
 
@@ -5873,7 +5873,7 @@ class DescribeGroupByPathResponse(AbstractModel):
 
     @property
     def Group(self):
-        """分组信息详情
+        r"""分组信息详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         """
         return self._Group
@@ -5884,7 +5884,7 @@ class DescribeGroupByPathResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5902,7 +5902,7 @@ class DescribeGroupByPathResponse(AbstractModel):
 
 
 class DescribeGroupDevicesRequest(AbstractModel):
-    """DescribeGroupDevices请求参数结构体
+    r"""DescribeGroupDevices请求参数结构体
 
     """
 
@@ -5931,7 +5931,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5942,7 +5942,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -5953,7 +5953,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制值，默认200
+        r"""限制值，默认200
         :rtype: int
         """
         return self._Limit
@@ -5964,7 +5964,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称，根据设备名称模糊匹配时必填
+        r"""设备名称，根据设备名称模糊匹配时必填
         :rtype: str
         """
         return self._NickName
@@ -5975,7 +5975,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Recordable(self):
-        """过滤不可录制设备
+        r"""过滤不可录制设备
         :rtype: int
         """
         return self._Recordable
@@ -5986,7 +5986,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
-        """当Group是普通组的时候，支持根据DeviceTypes筛选类型，
+        r"""当Group是普通组的时候，支持根据DeviceTypes筛选类型，
  设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :rtype: list of int
         """
@@ -6015,7 +6015,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
 
 class DescribeGroupDevicesResponse(AbstractModel):
-    """DescribeGroupDevices返回参数结构体
+    r"""DescribeGroupDevices返回参数结构体
 
     """
 
@@ -6034,7 +6034,7 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """分组绑定的设备数
+        r"""分组绑定的设备数
         :rtype: int
         """
         return self._TotalCount
@@ -6045,7 +6045,7 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def DeviceList(self):
-        """设备详情列表
+        r"""设备详情列表
         :rtype: list of GroupDeviceItem
         """
         return self._DeviceList
@@ -6056,7 +6056,7 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6078,7 +6078,7 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
 
 class DescribeGroupsRequest(AbstractModel):
-    """DescribeGroups请求参数结构体
+    r"""DescribeGroups请求参数结构体
 
     """
 
@@ -6091,7 +6091,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """分组ID列表
+        r"""分组ID列表
         :rtype: list of str
         """
         return self._GroupIds
@@ -6114,7 +6114,7 @@ class DescribeGroupsRequest(AbstractModel):
 
 
 class DescribeGroupsResponse(AbstractModel):
-    """DescribeGroups返回参数结构体
+    r"""DescribeGroups返回参数结构体
 
     """
 
@@ -6130,7 +6130,7 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
-        """分组详细信息列表
+        r"""分组详细信息列表
         :rtype: list of GroupInfo
         """
         return self._Groups
@@ -6141,7 +6141,7 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6162,7 +6162,7 @@ class DescribeGroupsResponse(AbstractModel):
 
 
 class DescribeIPCChannelsRequest(AbstractModel):
-    """DescribeIPCChannels请求参数结构体
+    r"""DescribeIPCChannels请求参数结构体
 
     """
 
@@ -6184,7 +6184,7 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -6195,7 +6195,7 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制，默认0
+        r"""限制，默认0
         :rtype: int
         """
         return self._Limit
@@ -6206,7 +6206,7 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -6217,7 +6217,7 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def ChannelTypes(self):
-        """通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+        r"""通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
         :rtype: list of int non-negative
         """
         return self._ChannelTypes
@@ -6243,7 +6243,7 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
 
 class DescribeIPCChannelsResponse(AbstractModel):
-    """DescribeIPCChannels返回参数结构体
+    r"""DescribeIPCChannels返回参数结构体
 
     """
 
@@ -6262,7 +6262,7 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """通道总数
+        r"""通道总数
         :rtype: int
         """
         return self._TotalCount
@@ -6273,7 +6273,7 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def DeviceList(self):
-        """通道详情列表
+        r"""通道详情列表
         :rtype: list of GroupDeviceItem
         """
         return self._DeviceList
@@ -6284,7 +6284,7 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6306,7 +6306,7 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
 
 class DescribeLiveChannelListRequest(AbstractModel):
-    """DescribeLiveChannelList请求参数结构体
+    r"""DescribeLiveChannelList请求参数结构体
 
     """
 
@@ -6331,7 +6331,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -6342,7 +6342,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大数
+        r"""最大数
         :rtype: int
         """
         return self._Limit
@@ -6353,7 +6353,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def LiveChannelType(self):
-        """直播频道类型，1：固定直播；2：移动直播
+        r"""直播频道类型，1：固定直播；2：移动直播
         :rtype: int
         """
         return self._LiveChannelType
@@ -6364,7 +6364,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def RecordPlanId(self):
-        """直播录制计划ID, null: 直播录制计划为空
+        r"""直播录制计划ID, null: 直播录制计划为空
         :rtype: str
         """
         return self._RecordPlanId
@@ -6375,7 +6375,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
-        """频道名称 (支持模糊搜索)
+        r"""频道名称 (支持模糊搜索)
         :rtype: str
         """
         return self._LiveChannelName
@@ -6402,7 +6402,7 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
 
 class DescribeLiveChannelListResponse(AbstractModel):
-    """DescribeLiveChannelList返回参数结构体
+    r"""DescribeLiveChannelList返回参数结构体
 
     """
 
@@ -6421,7 +6421,7 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """频道总数
+        r"""频道总数
         :rtype: int
         """
         return self._Total
@@ -6432,7 +6432,7 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def LiveChannels(self):
-        """频道信息数组
+        r"""频道信息数组
         :rtype: list of LiveChannelInfo
         """
         return self._LiveChannels
@@ -6443,7 +6443,7 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6465,7 +6465,7 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
 
 class DescribeLiveChannelRequest(AbstractModel):
-    """DescribeLiveChannel请求参数结构体
+    r"""DescribeLiveChannel请求参数结构体
 
     """
 
@@ -6478,7 +6478,7 @@ class DescribeLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """频道ID
+        r"""频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -6501,7 +6501,7 @@ class DescribeLiveChannelRequest(AbstractModel):
 
 
 class DescribeLiveChannelResponse(AbstractModel):
-    """DescribeLiveChannel返回参数结构体
+    r"""DescribeLiveChannel返回参数结构体
 
     """
 
@@ -6535,7 +6535,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """频道ID
+        r"""频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -6546,7 +6546,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelName(self):
-        """频道名称
+        r"""频道名称
         :rtype: str
         """
         return self._LiveChannelName
@@ -6557,7 +6557,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelType(self):
-        """直播频道类型 1：固定直播；2：移动直播
+        r"""直播频道类型 1：固定直播；2：移动直播
         :rtype: int
         """
         return self._LiveChannelType
@@ -6568,7 +6568,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveStatus(self):
-        """通道直播状态：1: 未推流，2: 推流中
+        r"""通道直播状态：1: 未推流，2: 推流中
         :rtype: int
         """
         return self._LiveStatus
@@ -6579,7 +6579,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def PushStreamAddress(self):
-        """推流地址
+        r"""推流地址
         :rtype: str
         """
         return self._PushStreamAddress
@@ -6590,7 +6590,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: list of str
         """
         return self._CreateTime
@@ -6601,7 +6601,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: list of str
         """
         return self._UpdateTime
@@ -6612,7 +6612,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6634,7 +6634,7 @@ class DescribeLiveChannelResponse(AbstractModel):
 
 
 class DescribeLiveRecordPlanByIdRequest(AbstractModel):
-    """DescribeLiveRecordPlanById请求参数结构体
+    r"""DescribeLiveRecordPlanById请求参数结构体
 
     """
 
@@ -6647,7 +6647,7 @@ class DescribeLiveRecordPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -6670,7 +6670,7 @@ class DescribeLiveRecordPlanByIdRequest(AbstractModel):
 
 
 class DescribeLiveRecordPlanByIdResponse(AbstractModel):
-    """DescribeLiveRecordPlanById返回参数结构体
+    r"""DescribeLiveRecordPlanById返回参数结构体
 
     """
 
@@ -6698,7 +6698,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def PlanName(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._PlanName
@@ -6709,7 +6709,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID
+        r"""模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -6720,7 +6720,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -6731,7 +6731,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """存储时间
+        r"""存储时间
         :rtype: int
         """
         return self._RecordStorageTime
@@ -6742,7 +6742,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def PlanType(self):
-        """计划类型
+        r"""计划类型
         :rtype: int
         """
         return self._PlanType
@@ -6753,7 +6753,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6773,7 +6773,7 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
 
 class DescribeLiveRecordPlanIdsRequest(AbstractModel):
-    """DescribeLiveRecordPlanIds请求参数结构体
+    r"""DescribeLiveRecordPlanIds请求参数结构体
 
     """
 
@@ -6792,7 +6792,7 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -6803,7 +6803,7 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -6814,7 +6814,7 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -6839,7 +6839,7 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
 
 class DescribeLiveRecordPlanIdsResponse(AbstractModel):
-    """DescribeLiveRecordPlanIds返回参数结构体
+    r"""DescribeLiveRecordPlanIds返回参数结构体
 
     """
 
@@ -6858,7 +6858,7 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总个数
+        r"""总个数
         :rtype: int
         """
         return self._TotalCount
@@ -6869,7 +6869,7 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def Plans(self):
-        """计划数组
+        r"""计划数组
         :rtype: list of LiveRecordPlanItem
         """
         return self._Plans
@@ -6880,7 +6880,7 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6902,7 +6902,7 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
 
 class DescribeLiveStreamRequest(AbstractModel):
-    """DescribeLiveStream请求参数结构体
+    r"""DescribeLiveStream请求参数结构体
 
     """
 
@@ -6918,7 +6918,7 @@ class DescribeLiveStreamRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """频道ID
+        r"""频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -6929,7 +6929,7 @@ class DescribeLiveStreamRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间 秒级unix时间戳
+        r"""过期时间 秒级unix时间戳
         :rtype: int
         """
         return self._ExpireTime
@@ -6953,7 +6953,7 @@ class DescribeLiveStreamRequest(AbstractModel):
 
 
 class DescribeLiveStreamResponse(AbstractModel):
-    """DescribeLiveStream返回参数结构体
+    r"""DescribeLiveStream返回参数结构体
 
     """
 
@@ -6970,7 +6970,7 @@ class DescribeLiveStreamResponse(AbstractModel):
 
     @property
     def Data(self):
-        """拉流地址，只有在推流情况下才有
+        r"""拉流地址，只有在推流情况下才有
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.StreamAddress`
         """
@@ -6982,7 +6982,7 @@ class DescribeLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7000,7 +7000,7 @@ class DescribeLiveStreamResponse(AbstractModel):
 
 
 class DescribeLiveVideoListRequest(AbstractModel):
-    """DescribeLiveVideoList请求参数结构体
+    r"""DescribeLiveVideoList请求参数结构体
 
     """
 
@@ -7040,7 +7040,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -7051,7 +7051,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页的每页数量
+        r"""分页的每页数量
         :rtype: int
         """
         return self._Limit
@@ -7062,7 +7062,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -7073,7 +7073,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartRecordTime(self):
-        """开始录制开始时间
+        r"""开始录制开始时间
         :rtype: int
         """
         return self._StartRecordTime
@@ -7084,7 +7084,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndRecordTime(self):
-        """开始录制结束时间
+        r"""开始录制结束时间
         :rtype: int
         """
         return self._EndRecordTime
@@ -7095,7 +7095,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartExpireTime(self):
-        """过期开始时间
+        r"""过期开始时间
         :rtype: int
         """
         return self._StartExpireTime
@@ -7106,7 +7106,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndExpireTime(self):
-        """过期结束时间
+        r"""过期结束时间
         :rtype: int
         """
         return self._EndExpireTime
@@ -7117,7 +7117,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartFileSize(self):
-        """文件大小范围 Byte
+        r"""文件大小范围 Byte
         :rtype: int
         """
         return self._StartFileSize
@@ -7128,7 +7128,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndFileSize(self):
-        """文件大小范围 Byte
+        r"""文件大小范围 Byte
         :rtype: int
         """
         return self._EndFileSize
@@ -7139,7 +7139,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def IsRecording(self):
-        """录制状态，5: 录制回写完
+        r"""录制状态，5: 录制回写完
         :rtype: int
         """
         return self._IsRecording
@@ -7171,7 +7171,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
 
 class DescribeLiveVideoListResponse(AbstractModel):
-    """DescribeLiveVideoList返回参数结构体
+    r"""DescribeLiveVideoList返回参数结构体
 
     """
 
@@ -7190,7 +7190,7 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总的条数
+        r"""总的条数
         :rtype: int
         """
         return self._Total
@@ -7201,7 +7201,7 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def RecordList(self):
-        """录制任务详情数组
+        r"""录制任务详情数组
         :rtype: list of LiveRecordItem
         """
         return self._RecordList
@@ -7212,7 +7212,7 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7234,7 +7234,7 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
 
 class DescribeMessageForwardRequest(AbstractModel):
-    """DescribeMessageForward请求参数结构体
+    r"""DescribeMessageForward请求参数结构体
 
     """
 
@@ -7247,7 +7247,7 @@ class DescribeMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -7270,7 +7270,7 @@ class DescribeMessageForwardRequest(AbstractModel):
 
 
 class DescribeMessageForwardResponse(AbstractModel):
-    """DescribeMessageForward返回参数结构体
+    r"""DescribeMessageForward返回参数结构体
 
     """
 
@@ -7316,7 +7316,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RegionId(self):
-        """区域ID
+        r"""区域ID
         :rtype: str
         """
         return self._RegionId
@@ -7327,7 +7327,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RegionName(self):
-        """区域名称
+        r"""区域名称
         :rtype: str
         """
         return self._RegionName
@@ -7338,7 +7338,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def Instance(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._Instance
@@ -7349,7 +7349,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -7360,7 +7360,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -7371,7 +7371,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def MessageType(self):
-        """json数组， 转发类型 1: 告警 2:GPS
+        r"""json数组， 转发类型 1: 告警 2:GPS
         :rtype: str
         """
         return self._MessageType
@@ -7382,7 +7382,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        """kafka topic id
+        r"""kafka topic id
         :rtype: str
         """
         return self._TopicId
@@ -7393,7 +7393,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """配置创建时间
+        r"""配置创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7404,7 +7404,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """用户Uin信息
+        r"""用户Uin信息
         :rtype: str
         """
         return self._Uin
@@ -7415,7 +7415,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def TopicName(self):
-        """kafka topic 名称
+        r"""kafka topic 名称
         :rtype: str
         """
         return self._TopicName
@@ -7426,7 +7426,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -7437,7 +7437,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7463,7 +7463,7 @@ class DescribeMessageForwardResponse(AbstractModel):
 
 
 class DescribeMessageForwardsRequest(AbstractModel):
-    """DescribeMessageForwards请求参数结构体
+    r"""DescribeMessageForwards请求参数结构体
 
     """
 
@@ -7479,7 +7479,7 @@ class DescribeMessageForwardsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量限制
+        r"""数量限制
         :rtype: int
         """
         return self._Limit
@@ -7490,7 +7490,7 @@ class DescribeMessageForwardsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        r"""偏移
         :rtype: int
         """
         return self._Offset
@@ -7514,7 +7514,7 @@ class DescribeMessageForwardsRequest(AbstractModel):
 
 
 class DescribeMessageForwardsResponse(AbstractModel):
-    """DescribeMessageForwards返回参数结构体
+    r"""DescribeMessageForwards返回参数结构体
 
     """
 
@@ -7533,7 +7533,7 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """配置总数
+        r"""配置总数
         :rtype: int
         """
         return self._Total
@@ -7544,7 +7544,7 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def List(self):
-        """配置列表
+        r"""配置列表
         :rtype: list of MessageForward
         """
         return self._List
@@ -7555,7 +7555,7 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7577,7 +7577,7 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
 
 class DescribeMonitorDataByDateRequest(AbstractModel):
-    """DescribeMonitorDataByDate请求参数结构体
+    r"""DescribeMonitorDataByDate请求参数结构体
 
     """
 
@@ -7593,7 +7593,7 @@ class DescribeMonitorDataByDateRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳
+        r"""开始时间戳
         :rtype: int
         """
         return self._StartTime
@@ -7604,7 +7604,7 @@ class DescribeMonitorDataByDateRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳 最多显示30天数据
+        r"""结束时间戳 最多显示30天数据
         :rtype: int
         """
         return self._EndTime
@@ -7628,7 +7628,7 @@ class DescribeMonitorDataByDateRequest(AbstractModel):
 
 
 class DescribeMonitorDataByDateResponse(AbstractModel):
-    """DescribeMonitorDataByDate返回参数结构体
+    r"""DescribeMonitorDataByDate返回参数结构体
 
     """
 
@@ -7644,7 +7644,7 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
 
     @property
     def Data(self):
-        """统计数据列表
+        r"""统计数据列表
         :rtype: list of RecordStatistic
         """
         return self._Data
@@ -7655,7 +7655,7 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7676,7 +7676,7 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
 
 
 class DescribePresetListRequest(AbstractModel):
-    """DescribePresetList请求参数结构体
+    r"""DescribePresetList请求参数结构体
 
     """
 
@@ -7692,7 +7692,7 @@ class DescribePresetListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """视频通道唯一标识
+        r"""视频通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -7703,7 +7703,7 @@ class DescribePresetListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -7727,7 +7727,7 @@ class DescribePresetListRequest(AbstractModel):
 
 
 class DescribePresetListResponse(AbstractModel):
-    """DescribePresetList返回参数结构体
+    r"""DescribePresetList返回参数结构体
 
     """
 
@@ -7743,7 +7743,7 @@ class DescribePresetListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """预置列表
+        r"""预置列表
         :rtype: list of PresetItem
         """
         return self._Data
@@ -7754,7 +7754,7 @@ class DescribePresetListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7775,7 +7775,7 @@ class DescribePresetListResponse(AbstractModel):
 
 
 class DescribeRecordDatesByChannelRequest(AbstractModel):
-    """DescribeRecordDatesByChannel请求参数结构体
+    r"""DescribeRecordDatesByChannel请求参数结构体
 
     """
 
@@ -7800,7 +7800,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -7811,7 +7811,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -7822,7 +7822,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 云端录制 2: 本地录制
+        r"""1: 云端录制 2: 本地录制
         :rtype: int
         """
         return self._Type
@@ -7833,7 +7833,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认200
+        r"""限制量，默认200
         :rtype: int
         """
         return self._Limit
@@ -7844,7 +7844,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -7871,7 +7871,7 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
 
 class DescribeRecordDatesByChannelResponse(AbstractModel):
-    """DescribeRecordDatesByChannel返回参数结构体
+    r"""DescribeRecordDatesByChannel返回参数结构体
 
     """
 
@@ -7887,7 +7887,7 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
 
     @property
     def Dates(self):
-        """含有录像文件的日期列表
+        r"""含有录像文件的日期列表
         :rtype: list of str
         """
         return self._Dates
@@ -7898,7 +7898,7 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7914,7 +7914,7 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
 
 
 class DescribeRecordDatesByLiveRequest(AbstractModel):
-    """DescribeRecordDatesByLive请求参数结构体
+    r"""DescribeRecordDatesByLive请求参数结构体
 
     """
 
@@ -7933,7 +7933,7 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -7944,7 +7944,7 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页值，本地录制时参数无效
+        r"""分页值，本地录制时参数无效
         :rtype: int
         """
         return self._Offset
@@ -7955,7 +7955,7 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制值，本地录制时参数无效
+        r"""限制值，本地录制时参数无效
         :rtype: int
         """
         return self._Limit
@@ -7980,7 +7980,7 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
 
 class DescribeRecordDatesByLiveResponse(AbstractModel):
-    """DescribeRecordDatesByLive返回参数结构体
+    r"""DescribeRecordDatesByLive返回参数结构体
 
     """
 
@@ -7997,7 +7997,7 @@ class DescribeRecordDatesByLiveResponse(AbstractModel):
 
     @property
     def Dates(self):
-        """录制日期数组
+        r"""录制日期数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -8009,7 +8009,7 @@ class DescribeRecordDatesByLiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8025,7 +8025,7 @@ class DescribeRecordDatesByLiveResponse(AbstractModel):
 
 
 class DescribeRecordStreamData(AbstractModel):
-    """DescribeRecordStreamData 复杂类型
+    r"""DescribeRecordStreamData 复杂类型
 
     """
 
@@ -8050,7 +8050,7 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def RtspAddr(self):
-        """Rtsp地址
+        r"""Rtsp地址
         :rtype: str
         """
         return self._RtspAddr
@@ -8061,7 +8061,7 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def RtmpAddr(self):
-        """Rtmp地址
+        r"""Rtmp地址
         :rtype: str
         """
         return self._RtmpAddr
@@ -8072,7 +8072,7 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def HlsAddr(self):
-        """Hls地址
+        r"""Hls地址
         :rtype: str
         """
         return self._HlsAddr
@@ -8083,7 +8083,7 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def FlvAddr(self):
-        """Flv地址
+        r"""Flv地址
         :rtype: str
         """
         return self._FlvAddr
@@ -8094,7 +8094,7 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def StreamId(self):
-        """流Id
+        r"""流Id
         :rtype: str
         """
         return self._StreamId
@@ -8121,7 +8121,7 @@ class DescribeRecordStreamData(AbstractModel):
 
 
 class DescribeRecordStreamRequest(AbstractModel):
-    """DescribeRecordStream请求参数结构体
+    r"""DescribeRecordStream请求参数结构体
 
     """
 
@@ -8149,7 +8149,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -8160,7 +8160,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """流失效时间，UNIX时间戳，30天内
+        r"""流失效时间，UNIX时间戳，30天内
         :rtype: int
         """
         return self._ExpireTime
@@ -8171,7 +8171,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """录像文件ID
+        r"""录像文件ID
         :rtype: str
         """
         return self._RecordId
@@ -8182,7 +8182,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """录像流开始时间，当录像文件ID为空时有效，UNIX时间戳
+        r"""录像流开始时间，当录像文件ID为空时有效，UNIX时间戳
         :rtype: int
         """
         return self._StartTime
@@ -8193,7 +8193,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
+        r"""录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
         :rtype: int
         """
         return self._EndTime
@@ -8204,7 +8204,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识（此接口升级为必填字段）
+        r"""通道唯一标识（此接口升级为必填字段）
         :rtype: str
         """
         return self._ChannelId
@@ -8232,7 +8232,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
 
 class DescribeRecordStreamResponse(AbstractModel):
-    """DescribeRecordStream返回参数结构体
+    r"""DescribeRecordStream返回参数结构体
 
     """
 
@@ -8248,7 +8248,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def Data(self):
-        """结果
+        r"""结果
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
         """
         return self._Data
@@ -8259,7 +8259,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8277,7 +8277,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
 
 class DescribeRecordingPlanByIdRequest(AbstractModel):
-    """DescribeRecordingPlanById请求参数结构体
+    r"""DescribeRecordingPlanById请求参数结构体
 
     """
 
@@ -8290,7 +8290,7 @@ class DescribeRecordingPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -8313,7 +8313,7 @@ class DescribeRecordingPlanByIdRequest(AbstractModel):
 
 
 class DescribeRecordingPlanByIdResponse(AbstractModel):
-    """DescribeRecordingPlanById返回参数结构体
+    r"""DescribeRecordingPlanById返回参数结构体
 
     """
 
@@ -8329,7 +8329,7 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
 
     @property
     def Plan(self):
-        """录制计划详情
+        r"""录制计划详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanDetail`
         """
         return self._Plan
@@ -8340,7 +8340,7 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8358,13 +8358,13 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
 
 
 class DescribeRecordingPlansRequest(AbstractModel):
-    """DescribeRecordingPlans请求参数结构体
+    r"""DescribeRecordingPlans请求参数结构体
 
     """
 
 
 class DescribeRecordingPlansResponse(AbstractModel):
-    """DescribeRecordingPlans返回参数结构体
+    r"""DescribeRecordingPlans返回参数结构体
 
     """
 
@@ -8383,7 +8383,7 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def Plans(self):
-        """录制计划详情·列表
+        r"""录制计划详情·列表
         :rtype: list of RecordPlanDetail
         """
         return self._Plans
@@ -8394,7 +8394,7 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """录制计划总数
+        r"""录制计划总数
         :rtype: int
         """
         return self._TotalCount
@@ -8405,7 +8405,7 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8427,13 +8427,13 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
 
 class DescribeSIPServerRequest(AbstractModel):
-    """DescribeSIPServer请求参数结构体
+    r"""DescribeSIPServer请求参数结构体
 
     """
 
 
 class DescribeSIPServerResponse(AbstractModel):
-    """DescribeSIPServer返回参数结构体
+    r"""DescribeSIPServer返回参数结构体
 
     """
 
@@ -8449,7 +8449,7 @@ class DescribeSIPServerResponse(AbstractModel):
 
     @property
     def Data(self):
-        """SIP服务器相关配置项
+        r"""SIP服务器相关配置项
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ServerConfiguration`
         """
         return self._Data
@@ -8460,7 +8460,7 @@ class DescribeSIPServerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8478,7 +8478,7 @@ class DescribeSIPServerResponse(AbstractModel):
 
 
 class DescribeSceneRequest(AbstractModel):
-    """DescribeScene请求参数结构体
+    r"""DescribeScene请求参数结构体
 
     """
 
@@ -8491,7 +8491,7 @@ class DescribeSceneRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -8514,7 +8514,7 @@ class DescribeSceneRequest(AbstractModel):
 
 
 class DescribeSceneResponse(AbstractModel):
-    """DescribeScene返回参数结构体
+    r"""DescribeScene返回参数结构体
 
     """
 
@@ -8551,7 +8551,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -8562,7 +8562,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def RecordDuration(self):
-        """录制时长(秒)
+        r"""录制时长(秒)
         :rtype: int
         """
         return self._RecordDuration
@@ -8573,7 +8573,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._SceneName
@@ -8584,7 +8584,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def SceneTrigger(self):
-        """场景触发规则
+        r"""场景触发规则
         :rtype: str
         """
         return self._SceneTrigger
@@ -8595,7 +8595,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def StoreDuration(self):
-        """存储时长 (天)
+        r"""存储时长 (天)
         :rtype: int
         """
         return self._StoreDuration
@@ -8606,7 +8606,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -8617,7 +8617,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -8628,7 +8628,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """用户Uin
+        r"""用户Uin
         :rtype: str
         """
         return self._Uin
@@ -8639,7 +8639,7 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8662,7 +8662,7 @@ class DescribeSceneResponse(AbstractModel):
 
 
 class DescribeScenesRequest(AbstractModel):
-    """DescribeScenes请求参数结构体
+    r"""DescribeScenes请求参数结构体
 
     """
 
@@ -8678,7 +8678,7 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """条数限制
+        r"""条数限制
         :rtype: int
         """
         return self._Limit
@@ -8689,7 +8689,7 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        r"""偏移
         :rtype: int
         """
         return self._Offset
@@ -8713,7 +8713,7 @@ class DescribeScenesRequest(AbstractModel):
 
 
 class DescribeScenesResponse(AbstractModel):
-    """DescribeScenes返回参数结构体
+    r"""DescribeScenes返回参数结构体
 
     """
 
@@ -8732,7 +8732,7 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """场景总数
+        r"""场景总数
         :rtype: int
         """
         return self._Total
@@ -8743,7 +8743,7 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def List(self):
-        """场景列表
+        r"""场景列表
         :rtype: list of SceneItem
         """
         return self._List
@@ -8754,7 +8754,7 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8776,7 +8776,7 @@ class DescribeScenesResponse(AbstractModel):
 
 
 class DescribeStatisticDetailsRequest(AbstractModel):
-    """DescribeStatisticDetails请求参数结构体
+    r"""DescribeStatisticDetails请求参数结构体
 
     """
 
@@ -8802,7 +8802,7 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """开始日期，格式【YYYY-MM-DD】
+        r"""开始日期，格式【YYYY-MM-DD】
         :rtype: str
         """
         return self._StartDate
@@ -8813,7 +8813,7 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """结束日期，格式【YYYY-MM-DD】
+        r"""结束日期，格式【YYYY-MM-DD】
         :rtype: str
         """
         return self._EndDate
@@ -8824,7 +8824,7 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def StatisticField(self):
-        """统计项。取值范围：
+        r"""统计项。取值范围：
 1.录制设备数：RecordingDevice
 2.非录制设备数：NonRecordingDevice
 3.观看流量总数：WatchFlux
@@ -8856,7 +8856,7 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
 
 class DescribeStatisticDetailsResponse(AbstractModel):
-    """DescribeStatisticDetails返回参数结构体
+    r"""DescribeStatisticDetails返回参数结构体
 
     """
 
@@ -8873,7 +8873,7 @@ class DescribeStatisticDetailsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """统计详情列表
+        r"""统计详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatisticItem
         """
@@ -8885,7 +8885,7 @@ class DescribeStatisticDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8906,7 +8906,7 @@ class DescribeStatisticDetailsResponse(AbstractModel):
 
 
 class DescribeStatisticSummaryRequest(AbstractModel):
-    """DescribeStatisticSummary请求参数结构体
+    r"""DescribeStatisticSummary请求参数结构体
 
     """
 
@@ -8919,7 +8919,7 @@ class DescribeStatisticSummaryRequest(AbstractModel):
 
     @property
     def Date(self):
-        """指定日期。格式【YYYY-MM-DD】
+        r"""指定日期。格式【YYYY-MM-DD】
         :rtype: str
         """
         return self._Date
@@ -8942,7 +8942,7 @@ class DescribeStatisticSummaryRequest(AbstractModel):
 
 
 class DescribeStatisticSummaryResponse(AbstractModel):
-    """DescribeStatisticSummary返回参数结构体
+    r"""DescribeStatisticSummary返回参数结构体
 
     """
 
@@ -8976,7 +8976,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def RecordingDevice(self):
-        """录制设备总数
+        r"""录制设备总数
         :rtype: int
         """
         return self._RecordingDevice
@@ -8987,7 +8987,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def NonRecordingDevice(self):
-        """非录制设备总数
+        r"""非录制设备总数
         :rtype: int
         """
         return self._NonRecordingDevice
@@ -8998,7 +8998,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def WatchFlux(self):
-        """观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
+        r"""观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
         :rtype: float
         """
         return self._WatchFlux
@@ -9009,7 +9009,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def StorageUsage(self):
-        """累计有效存储容量总数。单位：GB
+        r"""累计有效存储容量总数。单位：GB
         :rtype: float
         """
         return self._StorageUsage
@@ -9020,7 +9020,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def P2PFluxTotal(self):
-        """X-P2P分享流量。单位 Byte
+        r"""X-P2P分享流量。单位 Byte
         :rtype: float
         """
         return self._P2PFluxTotal
@@ -9031,7 +9031,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def P2PPeakValue(self):
-        """X-P2P峰值带宽。 单位bps
+        r"""X-P2P峰值带宽。 单位bps
         :rtype: float
         """
         return self._P2PPeakValue
@@ -9042,7 +9042,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def LivePushTotal(self):
-        """RTMP推流路数 ( 直播推流)
+        r"""RTMP推流路数 ( 直播推流)
         :rtype: int
         """
         return self._LivePushTotal
@@ -9053,7 +9053,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9075,7 +9075,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
 
 class DescribeSubGroupsRequest(AbstractModel):
-    """DescribeSubGroups请求参数结构体
+    r"""DescribeSubGroups请求参数结构体
 
     """
 
@@ -9100,7 +9100,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -9111,7 +9111,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名称，根据名称模糊匹配子分组时为必填
+        r"""分组名称，根据名称模糊匹配子分组时为必填
         :rtype: str
         """
         return self._GroupName
@@ -9122,7 +9122,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -9133,7 +9133,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数，默认200
+        r"""限制数，默认200
         :rtype: int
         """
         return self._Limit
@@ -9144,7 +9144,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def OnlyGroup(self):
-        """是否统计子分组下的设备数，0：统计，1：不统计
+        r"""是否统计子分组下的设备数，0：统计，1：不统计
         :rtype: int
         """
         return self._OnlyGroup
@@ -9171,7 +9171,7 @@ class DescribeSubGroupsRequest(AbstractModel):
 
 
 class DescribeSubGroupsResponse(AbstractModel):
-    """DescribeSubGroups返回参数结构体
+    r"""DescribeSubGroups返回参数结构体
 
     """
 
@@ -9190,7 +9190,7 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def GroupList(self):
-        """子分组详情列表
+        r"""子分组详情列表
         :rtype: list of GroupItem
         """
         return self._GroupList
@@ -9201,7 +9201,7 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """子分组总数
+        r"""子分组总数
         :rtype: int
         """
         return self._TotalCount
@@ -9212,7 +9212,7 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9234,7 +9234,7 @@ class DescribeSubGroupsResponse(AbstractModel):
 
 
 class DescribeSubscriptionStatusRequest(AbstractModel):
-    """DescribeSubscriptionStatus请求参数结构体
+    r"""DescribeSubscriptionStatus请求参数结构体
 
     """
 
@@ -9247,7 +9247,7 @@ class DescribeSubscriptionStatusRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -9270,7 +9270,7 @@ class DescribeSubscriptionStatusRequest(AbstractModel):
 
 
 class DescribeSubscriptionStatusResponse(AbstractModel):
-    """DescribeSubscriptionStatus返回参数结构体
+    r"""DescribeSubscriptionStatus返回参数结构体
 
     """
 
@@ -9286,7 +9286,7 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
 
     @property
     def AlarmStatus(self):
-        """设备GB28181报警订阅状态 1：未开启订阅；2：已开启订阅
+        r"""设备GB28181报警订阅状态 1：未开启订阅；2：已开启订阅
         :rtype: int
         """
         return self._AlarmStatus
@@ -9297,7 +9297,7 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9313,7 +9313,7 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
 
 
 class DescribeVideoListByChannelRequest(AbstractModel):
-    """DescribeVideoListByChannel请求参数结构体
+    r"""DescribeVideoListByChannel请求参数结构体
 
     """
 
@@ -9342,7 +9342,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -9353,7 +9353,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -9364,7 +9364,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 云端录制 2: 本地录制
+        r"""1: 云端录制 2: 本地录制
         :rtype: int
         """
         return self._Type
@@ -9375,7 +9375,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Date(self):
-        """指定某天。取值【YYYY-MM-DD】
+        r"""指定某天。取值【YYYY-MM-DD】
 为空时默认查询最近一天的记录
         :rtype: str
         """
@@ -9387,7 +9387,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认2000
+        r"""限制量，默认2000
         :rtype: int
         """
         return self._Limit
@@ -9398,7 +9398,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -9426,7 +9426,7 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
 
 class DescribeVideoListByChannelResponse(AbstractModel):
-    """DescribeVideoListByChannel返回参数结构体
+    r"""DescribeVideoListByChannel返回参数结构体
 
     """
 
@@ -9445,7 +9445,7 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def VideoList(self):
-        """录像详情列表
+        r"""录像详情列表
         :rtype: list of RecordTaskItem
         """
         return self._VideoList
@@ -9456,7 +9456,7 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """录像总数
+        r"""录像总数
         :rtype: int
         """
         return self._TotalCount
@@ -9467,7 +9467,7 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9489,7 +9489,7 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
 
 class DescribeVideoListRequest(AbstractModel):
-    """DescribeVideoList请求参数结构体
+    r"""DescribeVideoList请求参数结构体
 
     """
 
@@ -9550,7 +9550,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        r"""偏移
         :rtype: int
         """
         return self._Offset
@@ -9561,7 +9561,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制
+        r"""限制
         :rtype: int
         """
         return self._Limit
@@ -9572,7 +9572,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳，秒级
+        r"""开始时间戳，秒级
         :rtype: int
         """
         return self._StartTime
@@ -9583,7 +9583,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳，秒级
+        r"""结束时间戳，秒级
         :rtype: int
         """
         return self._EndTime
@@ -9594,7 +9594,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -9605,7 +9605,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartRecordTime(self):
-        """开始录制范围 开始
+        r"""开始录制范围 开始
         :rtype: int
         """
         return self._StartRecordTime
@@ -9616,7 +9616,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndRecordTime(self):
-        """开始录制范围 结束
+        r"""开始录制范围 结束
         :rtype: int
         """
         return self._EndRecordTime
@@ -9627,7 +9627,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartExpireTime(self):
-        """过期时间范围 开始
+        r"""过期时间范围 开始
         :rtype: int
         """
         return self._StartExpireTime
@@ -9638,7 +9638,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndExpireTime(self):
-        """过期时间范围 结束
+        r"""过期时间范围 结束
         :rtype: int
         """
         return self._EndExpireTime
@@ -9649,7 +9649,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartFileSize(self):
-        """文件大小范围 开始 单位byte
+        r"""文件大小范围 开始 单位byte
         :rtype: int
         """
         return self._StartFileSize
@@ -9660,7 +9660,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndFileSize(self):
-        """文件大小范围 结束 单位byte
+        r"""文件大小范围 结束 单位byte
         :rtype: int
         """
         return self._EndFileSize
@@ -9671,7 +9671,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def IsRecording(self):
-        """录制状态 99: 录制方已经回写状态 1: 开始录制了，等待回写 2: 已经到了时间模板的停止时间，在等待录制方回写
+        r"""录制状态 99: 录制方已经回写状态 1: 开始录制了，等待回写 2: 已经到了时间模板的停止时间，在等待录制方回写
         :rtype: int
         """
         return self._IsRecording
@@ -9682,7 +9682,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道ID默认必传
+        r"""通道ID默认必传
         :rtype: str
         """
         return self._ChannelId
@@ -9693,7 +9693,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -9704,7 +9704,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -9715,7 +9715,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def WarnId(self):
-        """告警ID
+        r"""告警ID
         :rtype: int
         """
         return self._WarnId
@@ -9726,7 +9726,7 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """录制类型 1: 联动计划录制 2: 告警录制
+        r"""录制类型 1: 联动计划录制 2: 告警录制
         :rtype: list of int
         """
         return self._RecordType
@@ -9765,7 +9765,7 @@ class DescribeVideoListRequest(AbstractModel):
 
 
 class DescribeVideoListResponse(AbstractModel):
-    """DescribeVideoList返回参数结构体
+    r"""DescribeVideoList返回参数结构体
 
     """
 
@@ -9787,7 +9787,7 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -9798,7 +9798,7 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def VideoList(self):
-        """已废弃
+        r"""已废弃
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordTaskItem`
         """
         return self._VideoList
@@ -9809,7 +9809,7 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def RecordList(self):
-        """录像详情列表
+        r"""录像详情列表
         :rtype: list of RecordTaskItem
         """
         return self._RecordList
@@ -9820,7 +9820,7 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9845,13 +9845,13 @@ class DescribeVideoListResponse(AbstractModel):
 
 
 class DescribeWarnModRequest(AbstractModel):
-    """DescribeWarnMod请求参数结构体
+    r"""DescribeWarnMod请求参数结构体
 
     """
 
 
 class DescribeWarnModResponse(AbstractModel):
-    """DescribeWarnMod返回参数结构体
+    r"""DescribeWarnMod返回参数结构体
 
     """
 
@@ -9867,7 +9867,7 @@ class DescribeWarnModResponse(AbstractModel):
 
     @property
     def Data(self):
-        """告警类型
+        r"""告警类型
         :rtype: str
         """
         return self._Data
@@ -9878,7 +9878,7 @@ class DescribeWarnModResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9894,7 +9894,7 @@ class DescribeWarnModResponse(AbstractModel):
 
 
 class DescribeWarningsRequest(AbstractModel):
-    """DescribeWarnings请求参数结构体
+    r"""DescribeWarnings请求参数结构体
 
     """
 
@@ -9928,7 +9928,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """1:创建时间倒序 2：创建时间升序 3：level倒序 4：leve升序
+        r"""1:创建时间倒序 2：创建时间升序 3：level倒序 4：leve升序
         :rtype: int
         """
         return self._OrderType
@@ -9939,7 +9939,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """可选设备id
+        r"""可选设备id
         :rtype: str
         """
         return self._DeviceId
@@ -9950,7 +9950,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def WarnLevelArray(self):
-        """如果不传则查询所有，取值参见配置
+        r"""如果不传则查询所有，取值参见配置
         :rtype: list of int
         """
         return self._WarnLevelArray
@@ -9961,7 +9961,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def WarnModeArray(self):
-        """如果不传则查询所有，取值参见配置
+        r"""如果不传则查询所有，取值参见配置
         :rtype: list of int
         """
         return self._WarnModeArray
@@ -9972,7 +9972,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """不传认为是0
+        r"""不传认为是0
         :rtype: int
         """
         return self._Offset
@@ -9983,7 +9983,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """不传认为是20
+        r"""不传认为是20
         :rtype: int
         """
         return self._Limit
@@ -9994,7 +9994,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DateBegin(self):
-        """形似：2021-05-21 00:00:00 .取值在当前日前30天内，不传默认是当前日前30天日期
+        r"""形似：2021-05-21 00:00:00 .取值在当前日前30天内，不传默认是当前日前30天日期
         :rtype: str
         """
         return self._DateBegin
@@ -10005,7 +10005,7 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DateEnd(self):
-        """形似：2021-05-21 23:59:59 .取值在当前日前30天内，不传默认是当前日前30天日期
+        r"""形似：2021-05-21 23:59:59 .取值在当前日前30天内，不传默认是当前日前30天日期
         :rtype: str
         """
         return self._DateEnd
@@ -10035,7 +10035,7 @@ class DescribeWarningsRequest(AbstractModel):
 
 
 class DescribeWarningsResponse(AbstractModel):
-    """DescribeWarnings返回参数结构体
+    r"""DescribeWarnings返回参数结构体
 
     """
 
@@ -10054,7 +10054,7 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -10065,7 +10065,7 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """告警列表
+        r"""告警列表
         :rtype: list of WarningsData
         """
         return self._Data
@@ -10076,7 +10076,7 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10098,7 +10098,7 @@ class DescribeWarningsResponse(AbstractModel):
 
 
 class DescribeXP2PDataRequest(AbstractModel):
-    """DescribeXP2PData请求参数结构体
+    r"""DescribeXP2PData请求参数结构体
 
     """
 
@@ -10120,7 +10120,7 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def P2PAppId(self):
-        """P2P应用ID
+        r"""P2P应用ID
         :rtype: str
         """
         return self._P2PAppId
@@ -10131,7 +10131,7 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def From(self):
-        """查询开始时间，时间戳秒
+        r"""查询开始时间，时间戳秒
         :rtype: int
         """
         return self._From
@@ -10142,7 +10142,7 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def To(self):
-        """查询结束时间，时间戳秒
+        r"""查询结束时间，时间戳秒
         :rtype: int
         """
         return self._To
@@ -10153,7 +10153,7 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def P2PChannelId(self):
-        """P2P通路ID
+        r"""P2P通路ID
         :rtype: str
         """
         return self._P2PChannelId
@@ -10179,7 +10179,7 @@ class DescribeXP2PDataRequest(AbstractModel):
 
 
 class DescribeXP2PDataResponse(AbstractModel):
-    """DescribeXP2PData返回参数结构体
+    r"""DescribeXP2PData返回参数结构体
 
     """
 
@@ -10197,7 +10197,7 @@ class DescribeXP2PDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """[log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
+        r"""[log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
 [时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
 [1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
         :rtype: str
@@ -10210,7 +10210,7 @@ class DescribeXP2PDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10226,7 +10226,7 @@ class DescribeXP2PDataResponse(AbstractModel):
 
 
 class DevGroupInfo(AbstractModel):
-    """设备所在分组信息
+    r"""设备所在分组信息
 
     """
 
@@ -10251,7 +10251,7 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -10262,7 +10262,7 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -10273,7 +10273,7 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def GroupPath(self):
-        """分组路径
+        r"""分组路径
         :rtype: str
         """
         return self._GroupPath
@@ -10284,7 +10284,7 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID
+        r"""父分组ID
         :rtype: str
         """
         return self._ParentId
@@ -10295,7 +10295,7 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def Error(self):
-        """设备错误，仅在用户没权限或者设备已删除时返回具体结果
+        r"""设备错误，仅在用户没权限或者设备已删除时返回具体结果
         :rtype: str
         """
         return self._Error
@@ -10322,7 +10322,7 @@ class DevGroupInfo(AbstractModel):
 
 
 class DeviceItem(AbstractModel):
-    """用于描述唯一一个设备
+    r"""用于描述唯一一个设备
 
     """
 
@@ -10338,7 +10338,7 @@ class DeviceItem(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -10349,7 +10349,7 @@ class DeviceItem(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识
+        r"""通道唯一标识
         :rtype: str
         """
         return self._ChannelId
@@ -10373,7 +10373,7 @@ class DeviceItem(AbstractModel):
 
 
 class DeviceMonitorValue(AbstractModel):
-    """查询设备统计返回值
+    r"""查询设备统计返回值
 
     """
 
@@ -10389,7 +10389,7 @@ class DeviceMonitorValue(AbstractModel):
 
     @property
     def Value(self):
-        """统计值
+        r"""统计值
         :rtype: float
         """
         return self._Value
@@ -10400,7 +10400,7 @@ class DeviceMonitorValue(AbstractModel):
 
     @property
     def Time(self):
-        """统计时间
+        r"""统计时间
         :rtype: int
         """
         return self._Time
@@ -10424,7 +10424,7 @@ class DeviceMonitorValue(AbstractModel):
 
 
 class Events(AbstractModel):
-    """设备事件列表
+    r"""设备事件列表
 
     """
 
@@ -10461,7 +10461,7 @@ class Events(AbstractModel):
 
     @property
     def EventTime(self):
-        """开始时间，秒级时间戳
+        r"""开始时间，秒级时间戳
         :rtype: int
         """
         return self._EventTime
@@ -10472,7 +10472,7 @@ class Events(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+        r"""事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
         :rtype: int
         """
         return self._EventType
@@ -10483,7 +10483,7 @@ class Events(AbstractModel):
 
     @property
     def EventDesc(self):
-        """事件描述
+        r"""事件描述
         :rtype: str
         """
         return self._EventDesc
@@ -10494,7 +10494,7 @@ class Events(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型
+        r"""设备类型
         :rtype: int
         """
         return self._DeviceType
@@ -10505,7 +10505,7 @@ class Events(AbstractModel):
 
     @property
     def DeviceAddress(self):
-        """设备地址
+        r"""设备地址
         :rtype: str
         """
         return self._DeviceAddress
@@ -10516,7 +10516,7 @@ class Events(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -10527,7 +10527,7 @@ class Events(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道Id
+        r"""通道Id
         :rtype: str
         """
         return self._ChannelId
@@ -10538,7 +10538,7 @@ class Events(AbstractModel):
 
     @property
     def EventLog(self):
-        """事件日志
+        r"""事件日志
         :rtype: str
         """
         return self._EventLog
@@ -10549,7 +10549,7 @@ class Events(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备备注名称
+        r"""设备备注名称
         :rtype: str
         """
         return self._DeviceName
@@ -10580,7 +10580,7 @@ class Events(AbstractModel):
 
 
 class GetRecordDatesByDevRequest(AbstractModel):
-    """GetRecordDatesByDev请求参数结构体
+    r"""GetRecordDatesByDev请求参数结构体
 
     """
 
@@ -10605,7 +10605,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -10616,7 +10616,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认200
+        r"""限制量，默认200
         :rtype: int
         """
         return self._Limit
@@ -10627,7 +10627,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -10638,7 +10638,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
+        r"""通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
         :rtype: str
         """
         return self._ChannelId
@@ -10649,7 +10649,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 云端录制 2: 本地录制
+        r"""1: 云端录制 2: 本地录制
         :rtype: int
         """
         return self._Type
@@ -10676,7 +10676,7 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
 
 class GetRecordDatesByDevResponse(AbstractModel):
-    """GetRecordDatesByDev返回参数结构体
+    r"""GetRecordDatesByDev返回参数结构体
 
     """
 
@@ -10692,7 +10692,7 @@ class GetRecordDatesByDevResponse(AbstractModel):
 
     @property
     def Dates(self):
-        """含有录像文件的日期列表
+        r"""含有录像文件的日期列表
         :rtype: list of str
         """
         return self._Dates
@@ -10703,7 +10703,7 @@ class GetRecordDatesByDevResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10719,7 +10719,7 @@ class GetRecordDatesByDevResponse(AbstractModel):
 
 
 class GetRecordPlanByDevRequest(AbstractModel):
-    """GetRecordPlanByDev请求参数结构体
+    r"""GetRecordPlanByDev请求参数结构体
 
     """
 
@@ -10732,7 +10732,7 @@ class GetRecordPlanByDevRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -10755,7 +10755,7 @@ class GetRecordPlanByDevRequest(AbstractModel):
 
 
 class GetRecordPlanByDevResponse(AbstractModel):
-    """GetRecordPlanByDev返回参数结构体
+    r"""GetRecordPlanByDev返回参数结构体
 
     """
 
@@ -10771,7 +10771,7 @@ class GetRecordPlanByDevResponse(AbstractModel):
 
     @property
     def Plan(self):
-        """录制计划详情
+        r"""录制计划详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         """
         return self._Plan
@@ -10782,7 +10782,7 @@ class GetRecordPlanByDevResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10800,7 +10800,7 @@ class GetRecordPlanByDevResponse(AbstractModel):
 
 
 class GetRecordPlanByIdRequest(AbstractModel):
-    """GetRecordPlanById请求参数结构体
+    r"""GetRecordPlanById请求参数结构体
 
     """
 
@@ -10813,7 +10813,7 @@ class GetRecordPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -10836,7 +10836,7 @@ class GetRecordPlanByIdRequest(AbstractModel):
 
 
 class GetRecordPlanByIdResponse(AbstractModel):
-    """GetRecordPlanById返回参数结构体
+    r"""GetRecordPlanById返回参数结构体
 
     """
 
@@ -10852,7 +10852,7 @@ class GetRecordPlanByIdResponse(AbstractModel):
 
     @property
     def Plan(self):
-        """录制计划详情
+        r"""录制计划详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         """
         return self._Plan
@@ -10863,7 +10863,7 @@ class GetRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10881,13 +10881,13 @@ class GetRecordPlanByIdResponse(AbstractModel):
 
 
 class GetRecordPlansRequest(AbstractModel):
-    """GetRecordPlans请求参数结构体
+    r"""GetRecordPlans请求参数结构体
 
     """
 
 
 class GetRecordPlansResponse(AbstractModel):
-    """GetRecordPlans返回参数结构体
+    r"""GetRecordPlans返回参数结构体
 
     """
 
@@ -10906,7 +10906,7 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def Plans(self):
-        """录制计划详情·列表
+        r"""录制计划详情·列表
         :rtype: list of RecordPlanItem
         """
         return self._Plans
@@ -10917,7 +10917,7 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """录制计划总数
+        r"""录制计划总数
         :rtype: int
         """
         return self._TotalCount
@@ -10928,7 +10928,7 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10950,7 +10950,7 @@ class GetRecordPlansResponse(AbstractModel):
 
 
 class GetTimeTemplateByIdRequest(AbstractModel):
-    """GetTimeTemplateById请求参数结构体
+    r"""GetTimeTemplateById请求参数结构体
 
     """
 
@@ -10963,7 +10963,7 @@ class GetTimeTemplateByIdRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -10986,7 +10986,7 @@ class GetTimeTemplateByIdRequest(AbstractModel):
 
 
 class GetTimeTemplateByIdResponse(AbstractModel):
-    """GetTimeTemplateById返回参数结构体
+    r"""GetTimeTemplateById返回参数结构体
 
     """
 
@@ -11002,7 +11002,7 @@ class GetTimeTemplateByIdResponse(AbstractModel):
 
     @property
     def Template(self):
-        """时间模板详情
+        r"""时间模板详情
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.TimeTemplateItem`
         """
         return self._Template
@@ -11013,7 +11013,7 @@ class GetTimeTemplateByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11031,13 +11031,13 @@ class GetTimeTemplateByIdResponse(AbstractModel):
 
 
 class GetTimeTemplatesRequest(AbstractModel):
-    """GetTimeTemplates请求参数结构体
+    r"""GetTimeTemplates请求参数结构体
 
     """
 
 
 class GetTimeTemplatesResponse(AbstractModel):
-    """GetTimeTemplates返回参数结构体
+    r"""GetTimeTemplates返回参数结构体
 
     """
 
@@ -11056,7 +11056,7 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """时间模板列表
+        r"""时间模板列表
         :rtype: list of TimeTemplateItem
         """
         return self._Templates
@@ -11067,7 +11067,7 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """时间模板总数
+        r"""时间模板总数
         :rtype: int
         """
         return self._TotalCount
@@ -11078,7 +11078,7 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11100,7 +11100,7 @@ class GetTimeTemplatesResponse(AbstractModel):
 
 
 class GetVideoListByConRequest(AbstractModel):
-    """GetVideoListByCon请求参数结构体
+    r"""GetVideoListByCon请求参数结构体
 
     """
 
@@ -11132,7 +11132,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -11143,7 +11143,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -11154,7 +11154,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量
+        r"""限制量
         :rtype: int
         """
         return self._Limit
@@ -11165,7 +11165,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
+        r"""通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
         :rtype: str
         """
         return self._ChannelId
@@ -11176,7 +11176,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def LatestDay(self):
-        """0：查询指定日期的录像；1：查询最近一天的录像；默认0
+        r"""0：查询指定日期的录像；1：查询最近一天的录像；默认0
         :rtype: int
         """
         return self._LatestDay
@@ -11187,7 +11187,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Date(self):
-        """指定某天。取值【YYYY-MM-DD】
+        r"""指定某天。取值【YYYY-MM-DD】
 为空时默认查询最近一天的记录
         :rtype: str
         """
@@ -11199,7 +11199,7 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 云端录制 2: 本地录制
+        r"""1: 云端录制 2: 本地录制
         :rtype: int
         """
         return self._Type
@@ -11228,7 +11228,7 @@ class GetVideoListByConRequest(AbstractModel):
 
 
 class GetVideoListByConResponse(AbstractModel):
-    """GetVideoListByCon返回参数结构体
+    r"""GetVideoListByCon返回参数结构体
 
     """
 
@@ -11247,7 +11247,7 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def VideoList(self):
-        """录像详情列表
+        r"""录像详情列表
         :rtype: list of RecordTaskItem
         """
         return self._VideoList
@@ -11258,7 +11258,7 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """录像总数
+        r"""录像总数
         :rtype: int
         """
         return self._TotalCount
@@ -11269,7 +11269,7 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11291,7 +11291,7 @@ class GetVideoListByConResponse(AbstractModel):
 
 
 class GroupDeviceItem(AbstractModel):
-    """分组下设备信息
+    r"""分组下设备信息
 
     """
 
@@ -11340,7 +11340,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -11351,7 +11351,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._NickName
@@ -11362,7 +11362,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Status(self):
-        """设备状态
+        r"""设备状态
         :rtype: int
         """
         return self._Status
@@ -11373,7 +11373,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def ExtraInformation(self):
-        """扩展信息
+        r"""扩展信息
         :rtype: str
         """
         return self._ExtraInformation
@@ -11384,7 +11384,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型
+        r"""设备类型
         :rtype: int
         """
         return self._DeviceType
@@ -11395,7 +11395,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def RTSPUrl(self):
-        """rtsp地址
+        r"""rtsp地址
         :rtype: str
         """
         return self._RTSPUrl
@@ -11406,7 +11406,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceCode(self):
-        """设备编码
+        r"""设备编码
         :rtype: str
         """
         return self._DeviceCode
@@ -11417,7 +11417,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def IsRecord(self):
-        """是否存在录像
+        r"""是否存在录像
         :rtype: int
         """
         return self._IsRecord
@@ -11428,7 +11428,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Recordable(self):
-        """该设备是否可录制
+        r"""该设备是否可录制
         :rtype: int
         """
         return self._Recordable
@@ -11439,7 +11439,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Protocol(self):
-        """设备接入协议
+        r"""设备接入协议
         :rtype: str
         """
         return self._Protocol
@@ -11450,7 +11450,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """设备创建时间
+        r"""设备创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -11461,7 +11461,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def ChannelNum(self):
-        """设备通道总数
+        r"""设备通道总数
         :rtype: int
         """
         return self._ChannelNum
@@ -11472,7 +11472,7 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def VideoChannelNum(self):
-        """设备视频通道总数
+        r"""设备视频通道总数
         :rtype: int
         """
         return self._VideoChannelNum
@@ -11507,7 +11507,7 @@ class GroupDeviceItem(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """分组信息详情
+    r"""分组信息详情
 
     """
 
@@ -11547,7 +11547,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -11558,7 +11558,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._GroupName
@@ -11569,7 +11569,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        """分组类型
+        r"""分组类型
         :rtype: str
         """
         return self._GroupType
@@ -11580,7 +11580,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupPath(self):
-        """分组路径
+        r"""分组路径
         :rtype: str
         """
         return self._GroupPath
@@ -11591,7 +11591,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID
+        r"""父分组ID
         :rtype: str
         """
         return self._ParentId
@@ -11602,7 +11602,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupDescribe(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._GroupDescribe
@@ -11613,7 +11613,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ExtraInformation(self):
-        """扩展信息
+        r"""扩展信息
         :rtype: str
         """
         return self._ExtraInformation
@@ -11624,7 +11624,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -11635,7 +11635,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupStatus(self):
-        """分组状态
+        r"""分组状态
         :rtype: int
         """
         return self._GroupStatus
@@ -11646,7 +11646,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Error(self):
-        """设备不存在时产生的错误
+        r"""设备不存在时产生的错误
         :rtype: str
         """
         return self._Error
@@ -11678,7 +11678,7 @@ class GroupInfo(AbstractModel):
 
 
 class GroupItem(AbstractModel):
-    """分组信息
+    r"""分组信息
 
     """
 
@@ -11721,7 +11721,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._GroupName
@@ -11732,7 +11732,7 @@ class GroupItem(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID
+        r"""父分组ID
         :rtype: str
         """
         return self._ParentId
@@ -11743,7 +11743,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -11754,7 +11754,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupPath(self):
-        """分组路径
+        r"""分组路径
         :rtype: str
         """
         return self._GroupPath
@@ -11765,7 +11765,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupDescribe(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._GroupDescribe
@@ -11776,7 +11776,7 @@ class GroupItem(AbstractModel):
 
     @property
     def DeviceNum(self):
-        """分组绑定设备数
+        r"""分组绑定设备数
         :rtype: int
         """
         return self._DeviceNum
@@ -11787,7 +11787,7 @@ class GroupItem(AbstractModel):
 
     @property
     def SubGroupNum(self):
-        """子分组数量
+        r"""子分组数量
         :rtype: int
         """
         return self._SubGroupNum
@@ -11798,7 +11798,7 @@ class GroupItem(AbstractModel):
 
     @property
     def ExtraInformation(self):
-        """分组附加信息
+        r"""分组附加信息
         :rtype: str
         """
         return self._ExtraInformation
@@ -11809,7 +11809,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupType(self):
-        """分组类型
+        r"""分组类型
         :rtype: str
         """
         return self._GroupType
@@ -11820,7 +11820,7 @@ class GroupItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -11831,7 +11831,7 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupStatus(self):
-        """分组状态
+        r"""分组状态
         :rtype: int
         """
         return self._GroupStatus
@@ -11864,7 +11864,7 @@ class GroupItem(AbstractModel):
 
 
 class LiveChannelInfo(AbstractModel):
-    """频道信息
+    r"""频道信息
 
     """
 
@@ -11895,7 +11895,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """频道ID
+        r"""频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -11906,7 +11906,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelName(self):
-        """频道名称
+        r"""频道名称
         :rtype: str
         """
         return self._LiveChannelName
@@ -11917,7 +11917,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelType(self):
-        """频道类型
+        r"""频道类型
         :rtype: int
         """
         return self._LiveChannelType
@@ -11928,7 +11928,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveStatus(self):
-        """通道直播状态：1: 未推流，2: 推流中
+        r"""通道直播状态：1: 未推流，2: 推流中
         :rtype: int
         """
         return self._LiveStatus
@@ -11939,7 +11939,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def PushStreamAddress(self):
-        """推流地址
+        r"""推流地址
         :rtype: str
         """
         return self._PushStreamAddress
@@ -11950,7 +11950,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11961,7 +11961,7 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11990,7 +11990,7 @@ class LiveChannelInfo(AbstractModel):
 
 
 class LiveChannelItem(AbstractModel):
-    """直播频道详情
+    r"""直播频道详情
 
     """
 
@@ -12006,7 +12006,7 @@ class LiveChannelItem(AbstractModel):
 
     @property
     def ChannelId(self):
-        """频道ID
+        r"""频道ID
         :rtype: str
         """
         return self._ChannelId
@@ -12017,7 +12017,7 @@ class LiveChannelItem(AbstractModel):
 
     @property
     def ChannelName(self):
-        """频道名称
+        r"""频道名称
         :rtype: str
         """
         return self._ChannelName
@@ -12041,7 +12041,7 @@ class LiveChannelItem(AbstractModel):
 
 
 class LiveRecordItem(AbstractModel):
-    """直播录制详情item
+    r"""直播录制详情item
 
     """
 
@@ -12078,7 +12078,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def IntID(self):
-        """录制文件自增ID
+        r"""录制文件自增ID
         :rtype: int
         """
         return self._IntID
@@ -12089,7 +12089,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -12100,7 +12100,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def ExpectDeleteTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._ExpectDeleteTime
@@ -12111,7 +12111,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def RecordTimeLen(self):
-        """录制时长
+        r"""录制时长
         :rtype: int
         """
         return self._RecordTimeLen
@@ -12122,7 +12122,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小
+        r"""文件大小
         :rtype: int
         """
         return self._FileSize
@@ -12133,7 +12133,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """录制文件url
+        r"""录制文件url
         :rtype: str
         """
         return self._VideoUrl
@@ -12144,7 +12144,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def RecordPlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._RecordPlanId
@@ -12155,7 +12155,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def StartTime(self):
-        """录制开始时间
+        r"""录制开始时间
         :rtype: int
         """
         return self._StartTime
@@ -12166,7 +12166,7 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def EndTime(self):
-        """录制结束时间
+        r"""录制结束时间
         :rtype: int
         """
         return self._EndTime
@@ -12197,7 +12197,7 @@ class LiveRecordItem(AbstractModel):
 
 
 class LiveRecordPlanItem(AbstractModel):
-    """直播录制计划详情
+    r"""直播录制计划详情
 
     """
 
@@ -12213,7 +12213,7 @@ class LiveRecordPlanItem(AbstractModel):
 
     @property
     def PlanId(self):
-        """计划ID
+        r"""计划ID
         :rtype: str
         """
         return self._PlanId
@@ -12224,7 +12224,7 @@ class LiveRecordPlanItem(AbstractModel):
 
     @property
     def PlanName(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._PlanName
@@ -12248,7 +12248,7 @@ class LiveRecordPlanItem(AbstractModel):
 
 
 class MessageForward(AbstractModel):
-    """消息转发配置信息
+    r"""消息转发配置信息
 
     """
 
@@ -12291,7 +12291,7 @@ class MessageForward(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -12302,7 +12302,7 @@ class MessageForward(AbstractModel):
 
     @property
     def Uin(self):
-        """用户Uin
+        r"""用户Uin
         :rtype: str
         """
         return self._Uin
@@ -12313,7 +12313,7 @@ class MessageForward(AbstractModel):
 
     @property
     def MessageType(self):
-        """json数组， 转发类型 1: 告警 2:GPS
+        r"""json数组， 转发类型 1: 告警 2:GPS
         :rtype: str
         """
         return self._MessageType
@@ -12324,7 +12324,7 @@ class MessageForward(AbstractModel):
 
     @property
     def RegionId(self):
-        """区域ID
+        r"""区域ID
         :rtype: str
         """
         return self._RegionId
@@ -12335,7 +12335,7 @@ class MessageForward(AbstractModel):
 
     @property
     def RegionName(self):
-        """区域名称
+        r"""区域名称
         :rtype: str
         """
         return self._RegionName
@@ -12346,7 +12346,7 @@ class MessageForward(AbstractModel):
 
     @property
     def Instance(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._Instance
@@ -12357,7 +12357,7 @@ class MessageForward(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -12368,7 +12368,7 @@ class MessageForward(AbstractModel):
 
     @property
     def TopicId(self):
-        """kafka topic id
+        r"""kafka topic id
         :rtype: str
         """
         return self._TopicId
@@ -12379,7 +12379,7 @@ class MessageForward(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -12390,7 +12390,7 @@ class MessageForward(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -12401,7 +12401,7 @@ class MessageForward(AbstractModel):
 
     @property
     def TopicName(self):
-        """topic 名称
+        r"""topic 名称
         :rtype: str
         """
         return self._TopicName
@@ -12434,7 +12434,7 @@ class MessageForward(AbstractModel):
 
 
 class ModifyBindPlanLiveChannelRequest(AbstractModel):
-    """ModifyBindPlanLiveChannel请求参数结构体
+    r"""ModifyBindPlanLiveChannel请求参数结构体
 
     """
 
@@ -12453,7 +12453,7 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """直播录制计划ID
+        r"""直播录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -12464,7 +12464,7 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 绑定 2: 解绑
+        r"""1: 绑定 2: 解绑
         :rtype: int
         """
         return self._Type
@@ -12475,7 +12475,7 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelIds(self):
-        """直播频道ID列表
+        r"""直播频道ID列表
         :rtype: list of str
         """
         return self._LiveChannelIds
@@ -12500,7 +12500,7 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
 
 class ModifyBindPlanLiveChannelResponse(AbstractModel):
-    """ModifyBindPlanLiveChannel返回参数结构体
+    r"""ModifyBindPlanLiveChannel返回参数结构体
 
     """
 
@@ -12513,7 +12513,7 @@ class ModifyBindPlanLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12528,7 +12528,7 @@ class ModifyBindPlanLiveChannelResponse(AbstractModel):
 
 
 class ModifyBindRecordingPlanRequest(AbstractModel):
-    """ModifyBindRecordingPlan请求参数结构体
+    r"""ModifyBindRecordingPlan请求参数结构体
 
     """
 
@@ -12547,7 +12547,7 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def Type(self):
-        """操作类型： 1-绑定设备 ；2-解绑设备
+        r"""操作类型： 1-绑定设备 ；2-解绑设备
         :rtype: int
         """
         return self._Type
@@ -12558,7 +12558,7 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -12569,7 +12569,7 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
-        """录制通道列表
+        r"""录制通道列表
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -12599,7 +12599,7 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
 
 class ModifyBindRecordingPlanResponse(AbstractModel):
-    """ModifyBindRecordingPlan返回参数结构体
+    r"""ModifyBindRecordingPlan返回参数结构体
 
     """
 
@@ -12612,7 +12612,7 @@ class ModifyBindRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12627,7 +12627,7 @@ class ModifyBindRecordingPlanResponse(AbstractModel):
 
 
 class ModifyBindSceneChannelsRequest(AbstractModel):
-    """ModifyBindSceneChannels请求参数结构体
+    r"""ModifyBindSceneChannels请求参数结构体
 
     """
 
@@ -12646,7 +12646,7 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -12657,7 +12657,7 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 绑定 2: 解绑
+        r"""1: 绑定 2: 解绑
         :rtype: int
         """
         return self._Type
@@ -12668,7 +12668,7 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Channels(self):
-        """通道列表
+        r"""通道列表
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -12698,7 +12698,7 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
 
 class ModifyBindSceneChannelsResponse(AbstractModel):
-    """ModifyBindSceneChannels返回参数结构体
+    r"""ModifyBindSceneChannels返回参数结构体
 
     """
 
@@ -12711,7 +12711,7 @@ class ModifyBindSceneChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12726,7 +12726,7 @@ class ModifyBindSceneChannelsResponse(AbstractModel):
 
 
 class ModifyBindSceneDeviceRequest(AbstractModel):
-    """ModifyBindSceneDevice请求参数结构体
+    r"""ModifyBindSceneDevice请求参数结构体
 
     """
 
@@ -12745,7 +12745,7 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -12756,7 +12756,7 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """1: 绑定 2: 解绑
+        r"""1: 绑定 2: 解绑
         :rtype: int
         """
         return self._Type
@@ -12767,7 +12767,7 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def Devices(self):
-        """设备列表
+        r"""设备列表
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -12797,7 +12797,7 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
 
 class ModifyBindSceneDeviceResponse(AbstractModel):
-    """ModifyBindSceneDevice返回参数结构体
+    r"""ModifyBindSceneDevice返回参数结构体
 
     """
 
@@ -12810,7 +12810,7 @@ class ModifyBindSceneDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12825,7 +12825,7 @@ class ModifyBindSceneDeviceResponse(AbstractModel):
 
 
 class ModifyDeviceDataRequest(AbstractModel):
-    """ModifyDeviceData请求参数结构体
+    r"""ModifyDeviceData请求参数结构体
 
     """
 
@@ -12841,7 +12841,7 @@ class ModifyDeviceDataRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -12852,7 +12852,7 @@ class ModifyDeviceDataRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._NickName
@@ -12876,7 +12876,7 @@ class ModifyDeviceDataRequest(AbstractModel):
 
 
 class ModifyDeviceDataResponse(AbstractModel):
-    """ModifyDeviceData返回参数结构体
+    r"""ModifyDeviceData返回参数结构体
 
     """
 
@@ -12892,7 +12892,7 @@ class ModifyDeviceDataResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果,“OK”表示成功，其他表示失败。
+        r"""操作结果,“OK”表示成功，其他表示失败。
         :rtype: str
         """
         return self._Status
@@ -12903,7 +12903,7 @@ class ModifyDeviceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12919,7 +12919,7 @@ class ModifyDeviceDataResponse(AbstractModel):
 
 
 class ModifyLiveChannelRequest(AbstractModel):
-    """ModifyLiveChannel请求参数结构体
+    r"""ModifyLiveChannel请求参数结构体
 
     """
 
@@ -12935,7 +12935,7 @@ class ModifyLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
-        """直播频道ID
+        r"""直播频道ID
         :rtype: str
         """
         return self._LiveChannelId
@@ -12946,7 +12946,7 @@ class ModifyLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
-        """直播频道名
+        r"""直播频道名
         :rtype: str
         """
         return self._LiveChannelName
@@ -12970,7 +12970,7 @@ class ModifyLiveChannelRequest(AbstractModel):
 
 
 class ModifyLiveChannelResponse(AbstractModel):
-    """ModifyLiveChannel返回参数结构体
+    r"""ModifyLiveChannel返回参数结构体
 
     """
 
@@ -12983,7 +12983,7 @@ class ModifyLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12998,7 +12998,7 @@ class ModifyLiveChannelResponse(AbstractModel):
 
 
 class ModifyLiveRecordPlanRequest(AbstractModel):
-    """ModifyLiveRecordPlan请求参数结构体
+    r"""ModifyLiveRecordPlan请求参数结构体
 
     """
 
@@ -13017,7 +13017,7 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -13028,7 +13028,7 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        """录制计划名
+        r"""录制计划名
         :rtype: str
         """
         return self._PlanName
@@ -13039,7 +13039,7 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID，固定直播时为必填
+        r"""时间模板ID，固定直播时为必填
         :rtype: str
         """
         return self._TemplateId
@@ -13064,7 +13064,7 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
 
 class ModifyLiveRecordPlanResponse(AbstractModel):
-    """ModifyLiveRecordPlan返回参数结构体
+    r"""ModifyLiveRecordPlan返回参数结构体
 
     """
 
@@ -13077,7 +13077,7 @@ class ModifyLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13092,7 +13092,7 @@ class ModifyLiveRecordPlanResponse(AbstractModel):
 
 
 class ModifyLiveVideoRequest(AbstractModel):
-    """ModifyLiveVideo请求参数结构体
+    r"""ModifyLiveVideo请求参数结构体
 
     """
 
@@ -13108,7 +13108,7 @@ class ModifyLiveVideoRequest(AbstractModel):
 
     @property
     def IntIDs(self):
-        """视频ID 列表, 大小限制(100)
+        r"""视频ID 列表, 大小限制(100)
         :rtype: list of int
         """
         return self._IntIDs
@@ -13119,7 +13119,7 @@ class ModifyLiveVideoRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间 秒 (-1: 为永不过期)
+        r"""过期时间 秒 (-1: 为永不过期)
         :rtype: int
         """
         return self._ExpireTime
@@ -13143,7 +13143,7 @@ class ModifyLiveVideoRequest(AbstractModel):
 
 
 class ModifyLiveVideoResponse(AbstractModel):
-    """ModifyLiveVideo返回参数结构体
+    r"""ModifyLiveVideo返回参数结构体
 
     """
 
@@ -13156,7 +13156,7 @@ class ModifyLiveVideoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13171,7 +13171,7 @@ class ModifyLiveVideoResponse(AbstractModel):
 
 
 class ModifyMessageForwardRequest(AbstractModel):
-    """ModifyMessageForward请求参数结构体
+    r"""ModifyMessageForward请求参数结构体
 
     """
 
@@ -13187,7 +13187,7 @@ class ModifyMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """配置ID
+        r"""配置ID
         :rtype: int
         """
         return self._IntId
@@ -13198,7 +13198,7 @@ class ModifyMessageForwardRequest(AbstractModel):
 
     @property
     def MessageType(self):
-        """json数组， 转发类型 1: 告警 2:GPS
+        r"""json数组， 转发类型 1: 告警 2:GPS
         :rtype: str
         """
         return self._MessageType
@@ -13222,7 +13222,7 @@ class ModifyMessageForwardRequest(AbstractModel):
 
 
 class ModifyMessageForwardResponse(AbstractModel):
-    """ModifyMessageForward返回参数结构体
+    r"""ModifyMessageForward返回参数结构体
 
     """
 
@@ -13235,7 +13235,7 @@ class ModifyMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13250,7 +13250,7 @@ class ModifyMessageForwardResponse(AbstractModel):
 
 
 class ModifyPresetRequest(AbstractModel):
-    """ModifyPreset请求参数结构体
+    r"""ModifyPreset请求参数结构体
 
     """
 
@@ -13272,7 +13272,7 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """通道ID
+        r"""通道ID
         :rtype: str
         """
         return self._ChannelId
@@ -13283,7 +13283,7 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def PresetId(self):
-        """预置位编码 范围1-8
+        r"""预置位编码 范围1-8
         :rtype: int
         """
         return self._PresetId
@@ -13294,7 +13294,7 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def PresetName(self):
-        """预制位名称
+        r"""预制位名称
         :rtype: str
         """
         return self._PresetName
@@ -13305,7 +13305,7 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._DeviceId
@@ -13331,7 +13331,7 @@ class ModifyPresetRequest(AbstractModel):
 
 
 class ModifyPresetResponse(AbstractModel):
-    """ModifyPreset返回参数结构体
+    r"""ModifyPreset返回参数结构体
 
     """
 
@@ -13344,7 +13344,7 @@ class ModifyPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13359,7 +13359,7 @@ class ModifyPresetResponse(AbstractModel):
 
 
 class ModifyRecordingPlanRequest(AbstractModel):
-    """ModifyRecordingPlan请求参数结构体
+    r"""ModifyRecordingPlan请求参数结构体
 
     """
 
@@ -13378,7 +13378,7 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -13389,7 +13389,7 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -13400,7 +13400,7 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -13425,7 +13425,7 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
 
 class ModifyRecordingPlanResponse(AbstractModel):
-    """ModifyRecordingPlan返回参数结构体
+    r"""ModifyRecordingPlan返回参数结构体
 
     """
 
@@ -13441,7 +13441,7 @@ class ModifyRecordingPlanResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果
+        r"""操作结果
         :rtype: str
         """
         return self._Status
@@ -13452,7 +13452,7 @@ class ModifyRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13468,7 +13468,7 @@ class ModifyRecordingPlanResponse(AbstractModel):
 
 
 class ModifySceneRequest(AbstractModel):
-    """ModifyScene请求参数结构体
+    r"""ModifyScene请求参数结构体
 
     """
 
@@ -13490,7 +13490,7 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -13501,7 +13501,7 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._SceneName
@@ -13512,7 +13512,7 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def SceneTrigger(self):
-        """触发条件
+        r"""触发条件
         :rtype: str
         """
         return self._SceneTrigger
@@ -13523,7 +13523,7 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def RecordDuration(self):
-        """录制时长(秒)
+        r"""录制时长(秒)
         :rtype: int
         """
         return self._RecordDuration
@@ -13549,7 +13549,7 @@ class ModifySceneRequest(AbstractModel):
 
 
 class ModifySceneResponse(AbstractModel):
-    """ModifyScene返回参数结构体
+    r"""ModifyScene返回参数结构体
 
     """
 
@@ -13562,7 +13562,7 @@ class ModifySceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13577,7 +13577,7 @@ class ModifySceneResponse(AbstractModel):
 
 
 class ModifySubscriptionStatusRequest(AbstractModel):
-    """ModifySubscriptionStatus请求参数结构体
+    r"""ModifySubscriptionStatus请求参数结构体
 
     """
 
@@ -13596,7 +13596,7 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -13607,7 +13607,7 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """订阅状态 1：关闭订阅 2：开启订阅
+        r"""订阅状态 1：关闭订阅 2：开启订阅
         :rtype: int
         """
         return self._Status
@@ -13618,7 +13618,7 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def SubscriptionItem(self):
-        """订阅类型 Alarm:告警订阅 Catalog:目录订阅 MobilePosition:移动位置订阅
+        r"""订阅类型 Alarm:告警订阅 Catalog:目录订阅 MobilePosition:移动位置订阅
         :rtype: str
         """
         return self._SubscriptionItem
@@ -13643,7 +13643,7 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
 
 class ModifySubscriptionStatusResponse(AbstractModel):
-    """ModifySubscriptionStatus返回参数结构体
+    r"""ModifySubscriptionStatus返回参数结构体
 
     """
 
@@ -13656,7 +13656,7 @@ class ModifySubscriptionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13671,7 +13671,7 @@ class ModifySubscriptionStatusResponse(AbstractModel):
 
 
 class ModifyVideoInfoRequest(AbstractModel):
-    """ModifyVideoInfo请求参数结构体
+    r"""ModifyVideoInfo请求参数结构体
 
     """
 
@@ -13687,7 +13687,7 @@ class ModifyVideoInfoRequest(AbstractModel):
 
     @property
     def InitIDs(self):
-        """视频ID列表长度限制100内
+        r"""视频ID列表长度限制100内
         :rtype: list of int
         """
         return self._InitIDs
@@ -13698,7 +13698,7 @@ class ModifyVideoInfoRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间 时间戳 -1: 永不过期 0: 无效值
+        r"""过期时间 时间戳 -1: 永不过期 0: 无效值
         :rtype: int
         """
         return self._ExpireTime
@@ -13722,7 +13722,7 @@ class ModifyVideoInfoRequest(AbstractModel):
 
 
 class ModifyVideoInfoResponse(AbstractModel):
-    """ModifyVideoInfo返回参数结构体
+    r"""ModifyVideoInfo返回参数结构体
 
     """
 
@@ -13735,7 +13735,7 @@ class ModifyVideoInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13750,7 +13750,7 @@ class ModifyVideoInfoResponse(AbstractModel):
 
 
 class PresetItem(AbstractModel):
-    """预置位结构出参
+    r"""预置位结构出参
 
     """
 
@@ -13772,7 +13772,7 @@ class PresetItem(AbstractModel):
 
     @property
     def PresetId(self):
-        """预置位ID
+        r"""预置位ID
         :rtype: int
         """
         return self._PresetId
@@ -13783,7 +13783,7 @@ class PresetItem(AbstractModel):
 
     @property
     def PresetName(self):
-        """预置位名称
+        r"""预置位名称
         :rtype: str
         """
         return self._PresetName
@@ -13794,7 +13794,7 @@ class PresetItem(AbstractModel):
 
     @property
     def Status(self):
-        """预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
+        r"""预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
         :rtype: int
         """
         return self._Status
@@ -13805,7 +13805,7 @@ class PresetItem(AbstractModel):
 
     @property
     def ResetTime(self):
-        """预置位启用时的自动归位时间
+        r"""预置位启用时的自动归位时间
         :rtype: int
         """
         return self._ResetTime
@@ -13831,7 +13831,7 @@ class PresetItem(AbstractModel):
 
 
 class RecordPlanDetail(AbstractModel):
-    """录制计划详情
+    r"""录制计划详情
 
     """
 
@@ -13859,7 +13859,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def PlanId(self):
-        """计划ID
+        r"""计划ID
         :rtype: str
         """
         return self._PlanId
@@ -13870,7 +13870,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -13881,7 +13881,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -13892,7 +13892,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def TimeTemplateName(self):
-        """时间模板名称
+        r"""时间模板名称
         :rtype: str
         """
         return self._TimeTemplateName
@@ -13903,7 +13903,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def Channels(self):
-        """绑定的通道列表
+        r"""绑定的通道列表
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -13914,7 +13914,7 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """存储周期（天）
+        r"""存储周期（天）
         :rtype: int
         """
         return self._RecordStorageTime
@@ -13947,7 +13947,7 @@ class RecordPlanDetail(AbstractModel):
 
 
 class RecordPlanItem(AbstractModel):
-    """录制计划详情
+    r"""录制计划详情
 
     """
 
@@ -13978,7 +13978,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def PlanId(self):
-        """计划ID
+        r"""计划ID
         :rtype: str
         """
         return self._PlanId
@@ -13989,7 +13989,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -14000,7 +14000,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -14011,7 +14011,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def TimeTemplateName(self):
-        """时间模板名称
+        r"""时间模板名称
         :rtype: str
         """
         return self._TimeTemplateName
@@ -14022,7 +14022,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def EventId(self):
-        """录制类型
+        r"""录制类型
         :rtype: int
         """
         return self._EventId
@@ -14033,7 +14033,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def Devices(self):
-        """绑定的设备列表
+        r"""绑定的设备列表
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -14044,7 +14044,7 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def RecordStorageTime(self):
-        """录像存储天数
+        r"""录像存储天数
         :rtype: int
         """
         return self._RecordStorageTime
@@ -14078,7 +14078,7 @@ class RecordPlanItem(AbstractModel):
 
 
 class RecordStatistic(AbstractModel):
-    """大盘统计-录像存储统计 出参RecordStatistic
+    r"""大盘统计-录像存储统计 出参RecordStatistic
 
     """
 
@@ -14094,7 +14094,7 @@ class RecordStatistic(AbstractModel):
 
     @property
     def Time(self):
-        """时间戳
+        r"""时间戳
         :rtype: int
         """
         return self._Time
@@ -14105,7 +14105,7 @@ class RecordStatistic(AbstractModel):
 
     @property
     def Value(self):
-        """统计结果
+        r"""统计结果
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordStatisticValue`
         """
         return self._Value
@@ -14131,7 +14131,7 @@ class RecordStatistic(AbstractModel):
 
 
 class RecordStatisticValue(AbstractModel):
-    """大盘统计-录像存储统计 出参Value
+    r"""大盘统计-录像存储统计 出参Value
 
     """
 
@@ -14150,7 +14150,7 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def ExpectTimeLen(self):
-        """期望执行时间 秒
+        r"""期望执行时间 秒
         :rtype: int
         """
         return self._ExpectTimeLen
@@ -14161,7 +14161,7 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def RecordTimeLen(self):
-        """实际执行时间 秒
+        r"""实际执行时间 秒
         :rtype: int
         """
         return self._RecordTimeLen
@@ -14172,7 +14172,7 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def FileSize(self):
-        """存储大小 G
+        r"""存储大小 G
         :rtype: float
         """
         return self._FileSize
@@ -14197,7 +14197,7 @@ class RecordStatisticValue(AbstractModel):
 
 
 class RecordTaskItem(AbstractModel):
-    """普通设备的录像详情
+    r"""普通设备的录像详情
 
     """
 
@@ -14237,7 +14237,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordTaskId(self):
-        """录像任务ID
+        r"""录像任务ID
         :rtype: str
         """
         return self._RecordTaskId
@@ -14248,7 +14248,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordPlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._RecordPlanId
@@ -14259,7 +14259,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def StartTime(self):
-        """本录制片段开始时间
+        r"""本录制片段开始时间
         :rtype: int
         """
         return self._StartTime
@@ -14270,7 +14270,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EndTime(self):
-        """本录制片段结束时间
+        r"""本录制片段结束时间
         :rtype: int
         """
         return self._EndTime
@@ -14281,7 +14281,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EventId(self):
-        """录制模式
+        r"""录制模式
         :rtype: int
         """
         return self._EventId
@@ -14292,7 +14292,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """本录制片段对应的录制文件URL
+        r"""本录制片段对应的录制文件URL
         :rtype: str
         """
         return self._VideoUrl
@@ -14303,7 +14303,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordStatus(self):
-        """本录制片段当前的录制状态
+        r"""本录制片段当前的录制状态
         :rtype: int
         """
         return self._RecordStatus
@@ -14314,7 +14314,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._SceneId
@@ -14325,7 +14325,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def WarnId(self):
-        """告警ID
+        r"""告警ID
         :rtype: int
         """
         return self._WarnId
@@ -14336,7 +14336,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordId(self):
-        """录制id，NVR下属设备有效
+        r"""录制id，NVR下属设备有效
         :rtype: str
         """
         return self._RecordId
@@ -14368,7 +14368,7 @@ class RecordTaskItem(AbstractModel):
 
 
 class ResetWarningRequest(AbstractModel):
-    """ResetWarning请求参数结构体
+    r"""ResetWarning请求参数结构体
 
     """
 
@@ -14384,7 +14384,7 @@ class ResetWarningRequest(AbstractModel):
 
     @property
     def Id(self):
-        """告警ID
+        r"""告警ID
         :rtype: int
         """
         return self._Id
@@ -14395,7 +14395,7 @@ class ResetWarningRequest(AbstractModel):
 
     @property
     def Index(self):
-        """Es中告警ID
+        r"""Es中告警ID
         :rtype: str
         """
         return self._Index
@@ -14419,7 +14419,7 @@ class ResetWarningRequest(AbstractModel):
 
 
 class ResetWarningResponse(AbstractModel):
-    """ResetWarning返回参数结构体
+    r"""ResetWarning返回参数结构体
 
     """
 
@@ -14432,7 +14432,7 @@ class ResetWarningResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14447,7 +14447,7 @@ class ResetWarningResponse(AbstractModel):
 
 
 class SceneItem(AbstractModel):
-    """场景列表元素
+    r"""场景列表元素
 
     """
 
@@ -14481,7 +14481,7 @@ class SceneItem(AbstractModel):
 
     @property
     def IntId(self):
-        """场景ID
+        r"""场景ID
         :rtype: int
         """
         return self._IntId
@@ -14492,7 +14492,7 @@ class SceneItem(AbstractModel):
 
     @property
     def Uin(self):
-        """用户UIN
+        r"""用户UIN
         :rtype: str
         """
         return self._Uin
@@ -14503,7 +14503,7 @@ class SceneItem(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._SceneName
@@ -14514,7 +14514,7 @@ class SceneItem(AbstractModel):
 
     @property
     def SceneTrigger(self):
-        """触发规则
+        r"""触发规则
         :rtype: str
         """
         return self._SceneTrigger
@@ -14525,7 +14525,7 @@ class SceneItem(AbstractModel):
 
     @property
     def RecordDuration(self):
-        """录制时长 秒
+        r"""录制时长 秒
         :rtype: int
         """
         return self._RecordDuration
@@ -14536,7 +14536,7 @@ class SceneItem(AbstractModel):
 
     @property
     def StoreDuration(self):
-        """存储时长 天
+        r"""存储时长 天
         :rtype: int
         """
         return self._StoreDuration
@@ -14547,7 +14547,7 @@ class SceneItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -14558,7 +14558,7 @@ class SceneItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -14588,7 +14588,7 @@ class SceneItem(AbstractModel):
 
 
 class ServerConfiguration(AbstractModel):
-    """SIIP服务器相关配置项
+    r"""SIIP服务器相关配置项
 
     """
 
@@ -14610,7 +14610,7 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Host(self):
-        """SIP服务器地址
+        r"""SIP服务器地址
         :rtype: str
         """
         return self._Host
@@ -14621,7 +14621,7 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Port(self):
-        """SIP服务器端口
+        r"""SIP服务器端口
         :rtype: int
         """
         return self._Port
@@ -14632,7 +14632,7 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Serial(self):
-        """SIP服务器编码
+        r"""SIP服务器编码
         :rtype: str
         """
         return self._Serial
@@ -14643,7 +14643,7 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Realm(self):
-        """SIP服务器域
+        r"""SIP服务器域
         :rtype: str
         """
         return self._Realm
@@ -14669,7 +14669,7 @@ class ServerConfiguration(AbstractModel):
 
 
 class StatisticItem(AbstractModel):
-    """某天的统计数额
+    r"""某天的统计数额
 
     """
 
@@ -14685,7 +14685,7 @@ class StatisticItem(AbstractModel):
 
     @property
     def Date(self):
-        """日期。格式【YYYY-MM-DD】
+        r"""日期。格式【YYYY-MM-DD】
         :rtype: str
         """
         return self._Date
@@ -14696,7 +14696,7 @@ class StatisticItem(AbstractModel):
 
     @property
     def Sum(self):
-        """统计数额
+        r"""统计数额
         :rtype: float
         """
         return self._Sum
@@ -14720,7 +14720,7 @@ class StatisticItem(AbstractModel):
 
 
 class StreamAddress(AbstractModel):
-    """拉流地址，只有在推流情况下才有
+    r"""拉流地址，只有在推流情况下才有
 
     """
 
@@ -14745,7 +14745,7 @@ class StreamAddress(AbstractModel):
 
     @property
     def StreamId(self):
-        """流ID
+        r"""流ID
         :rtype: str
         """
         return self._StreamId
@@ -14756,7 +14756,7 @@ class StreamAddress(AbstractModel):
 
     @property
     def RtspAddr(self):
-        """rtsp流地址
+        r"""rtsp流地址
         :rtype: str
         """
         return self._RtspAddr
@@ -14767,7 +14767,7 @@ class StreamAddress(AbstractModel):
 
     @property
     def RtmpAddr(self):
-        """rtmp流地址
+        r"""rtmp流地址
         :rtype: str
         """
         return self._RtmpAddr
@@ -14778,7 +14778,7 @@ class StreamAddress(AbstractModel):
 
     @property
     def HlsAddr(self):
-        """hls流地址
+        r"""hls流地址
         :rtype: str
         """
         return self._HlsAddr
@@ -14789,7 +14789,7 @@ class StreamAddress(AbstractModel):
 
     @property
     def FlvAddr(self):
-        """flv流地址
+        r"""flv流地址
         :rtype: str
         """
         return self._FlvAddr
@@ -14816,7 +14816,7 @@ class StreamAddress(AbstractModel):
 
 
 class TimeTemplateItem(AbstractModel):
-    """时间模板详情
+    r"""时间模板详情
 
     """
 
@@ -14841,7 +14841,7 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -14852,7 +14852,7 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def Name(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._Name
@@ -14863,7 +14863,7 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def IsAllWeek(self):
-        """是否全时录制，即7*24小时录制 0-否 1-是
+        r"""是否全时录制，即7*24小时录制 0-否 1-是
         :rtype: int
         """
         return self._IsAllWeek
@@ -14874,7 +14874,7 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def Type(self):
-        """是否为自定义模板 0-否 1-是
+        r"""是否为自定义模板 0-否 1-是
         :rtype: int
         """
         return self._Type
@@ -14885,7 +14885,7 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
-        """时间片段详情
+        r"""时间片段详情
         :rtype: list of TimeTemplateSpec
         """
         return self._TimeTemplateSpecs
@@ -14917,7 +14917,7 @@ class TimeTemplateItem(AbstractModel):
 
 
 class TimeTemplateSpec(AbstractModel):
-    """在操作时间模板时，用于描述各个时间片段
+    r"""在操作时间模板时，用于描述各个时间片段
 
     """
 
@@ -14936,7 +14936,7 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def DayofWeek(self):
-        """一周中的周几
+        r"""一周中的周几
         :rtype: int
         """
         return self._DayofWeek
@@ -14947,7 +14947,7 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def BeginTime(self):
-        """时间片段的开始时分。格式【HH:MM】
+        r"""时间片段的开始时分。格式【HH:MM】
         :rtype: str
         """
         return self._BeginTime
@@ -14958,7 +14958,7 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def EndTime(self):
-        """时间片段的结束时分。格式【HH:MM】
+        r"""时间片段的结束时分。格式【HH:MM】
         :rtype: str
         """
         return self._EndTime
@@ -14983,7 +14983,7 @@ class TimeTemplateSpec(AbstractModel):
 
 
 class UpdateDeviceGroupRequest(AbstractModel):
-    """UpdateDeviceGroup请求参数结构体
+    r"""UpdateDeviceGroup请求参数结构体
 
     """
 
@@ -15005,7 +15005,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._GroupName
@@ -15016,7 +15016,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -15027,7 +15027,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupDescribe(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._GroupDescribe
@@ -15038,7 +15038,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def NewParentId(self):
-        """新父分组ID，用于修改分组路径
+        r"""新父分组ID，用于修改分组路径
         :rtype: str
         """
         return self._NewParentId
@@ -15064,7 +15064,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
 
 class UpdateDeviceGroupResponse(AbstractModel):
-    """UpdateDeviceGroup返回参数结构体
+    r"""UpdateDeviceGroup返回参数结构体
 
     """
 
@@ -15077,7 +15077,7 @@ class UpdateDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15092,7 +15092,7 @@ class UpdateDeviceGroupResponse(AbstractModel):
 
 
 class UpdateDevicePassWordRequest(AbstractModel):
-    """UpdateDevicePassWord请求参数结构体
+    r"""UpdateDevicePassWord请求参数结构体
 
     """
 
@@ -15108,7 +15108,7 @@ class UpdateDevicePassWordRequest(AbstractModel):
 
     @property
     def PassWord(self):
-        """设备密码
+        r"""设备密码
         :rtype: str
         """
         return self._PassWord
@@ -15119,7 +15119,7 @@ class UpdateDevicePassWordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._DeviceId
@@ -15143,7 +15143,7 @@ class UpdateDevicePassWordRequest(AbstractModel):
 
 
 class UpdateDevicePassWordResponse(AbstractModel):
-    """UpdateDevicePassWord返回参数结构体
+    r"""UpdateDevicePassWord返回参数结构体
 
     """
 
@@ -15159,7 +15159,7 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果，“OK”表示成功，其他表示失败。
+        r"""操作结果，“OK”表示成功，其他表示失败。
         :rtype: str
         """
         return self._Status
@@ -15170,7 +15170,7 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15186,7 +15186,7 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
 
 class UpdateRecordPlanRequest(AbstractModel):
-    """UpdateRecordPlan请求参数结构体
+    r"""UpdateRecordPlan请求参数结构体
 
     """
 
@@ -15216,7 +15216,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """录制计划ID
+        r"""录制计划ID
         :rtype: str
         """
         return self._PlanId
@@ -15227,7 +15227,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def Name(self):
-        """计划名称
+        r"""计划名称
         :rtype: str
         """
         return self._Name
@@ -15238,7 +15238,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TimeTemplateId
@@ -15249,7 +15249,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def EventId(self):
-        """触发录制的事件 1：全部
+        r"""触发录制的事件 1：全部
         :rtype: int
         """
         return self._EventId
@@ -15260,7 +15260,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def Devices(self):
-        """录制设备列表
+        r"""录制设备列表
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -15271,7 +15271,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def IsModifyDevices(self):
-        """是否更新绑定此录制计划的设备列表
+        r"""是否更新绑定此录制计划的设备列表
 0 - 不更新
 1 - 更新，如果Devices参数为空则清空设备列表，Devices不为空则全量更新设备列表
         :rtype: int
@@ -15306,7 +15306,7 @@ class UpdateRecordPlanRequest(AbstractModel):
 
 
 class UpdateRecordPlanResponse(AbstractModel):
-    """UpdateRecordPlan返回参数结构体
+    r"""UpdateRecordPlan返回参数结构体
 
     """
 
@@ -15322,7 +15322,7 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果
+        r"""操作结果
         :rtype: str
         """
         return self._Status
@@ -15333,7 +15333,7 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15349,7 +15349,7 @@ class UpdateRecordPlanResponse(AbstractModel):
 
 
 class UpdateTimeTemplateRequest(AbstractModel):
-    """UpdateTimeTemplate请求参数结构体
+    r"""UpdateTimeTemplate请求参数结构体
 
     """
 
@@ -15372,7 +15372,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """时间模板ID
+        r"""时间模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -15383,7 +15383,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """时间模板名称
+        r"""时间模板名称
         :rtype: str
         """
         return self._Name
@@ -15394,7 +15394,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def IsAllWeek(self):
-        """是否全时录制，即7*24小时录制。
+        r"""是否全时录制，即7*24小时录制。
 0：非全时录制；1：全时录制。默认1
         :rtype: int
         """
@@ -15406,7 +15406,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
-        """录制时间片段
+        r"""录制时间片段
         :rtype: list of TimeTemplateSpec
         """
         return self._TimeTemplateSpecs
@@ -15437,7 +15437,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
 
 class UpdateTimeTemplateResponse(AbstractModel):
-    """UpdateTimeTemplate返回参数结构体
+    r"""UpdateTimeTemplate返回参数结构体
 
     """
 
@@ -15453,7 +15453,7 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
     @property
     def Status(self):
-        """操作结果，“OK”表示成功，其他表示失败。
+        r"""操作结果，“OK”表示成功，其他表示失败。
         :rtype: str
         """
         return self._Status
@@ -15464,7 +15464,7 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15480,7 +15480,7 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
 
 class WarningsData(AbstractModel):
-    """告警列表出参
+    r"""告警列表出参
 
     """
 
@@ -15559,7 +15559,7 @@ class WarningsData(AbstractModel):
 
     @property
     def Id(self):
-        """唯一ID
+        r"""唯一ID
         :rtype: int
         """
         return self._Id
@@ -15570,7 +15570,7 @@ class WarningsData(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._DeviceId
@@ -15581,7 +15581,7 @@ class WarningsData(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -15592,7 +15592,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnChannel(self):
-        """告警通道
+        r"""告警通道
         :rtype: str
         """
         return self._WarnChannel
@@ -15603,7 +15603,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnLevel(self):
-        """告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
+        r"""告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
         :rtype: int
         """
         return self._WarnLevel
@@ -15614,7 +15614,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnLevelName(self):
-        """告警级别名称
+        r"""告警级别名称
         :rtype: str
         """
         return self._WarnLevelName
@@ -15625,7 +15625,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnMode(self):
-        """告警方式 2 设备报警 5 视频报警 6 设备故障报警
+        r"""告警方式 2 设备报警 5 视频报警 6 设备故障报警
         :rtype: int
         """
         return self._WarnMode
@@ -15636,7 +15636,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnModeName(self):
-        """告警方式名称
+        r"""告警方式名称
         :rtype: str
         """
         return self._WarnModeName
@@ -15647,7 +15647,7 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnType(self):
-        """告警类型  2: {
+        r"""告警类型  2: {
 			Name: "设备报警",
 			WarnType: map[int]string{
 				1: "视频丢失报警",
@@ -15691,7 +15691,7 @@ class WarningsData(AbstractModel):
 
     @property
     def Del(self):
-        """是否删除
+        r"""是否删除
         :rtype: int
         """
         return self._Del
@@ -15702,7 +15702,7 @@ class WarningsData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -15713,7 +15713,7 @@ class WarningsData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime

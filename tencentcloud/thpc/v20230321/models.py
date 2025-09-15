@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddClusterStorageOptionRequest(AbstractModel):
-    """AddClusterStorageOption请求参数结构体
+    r"""AddClusterStorageOption请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AddClusterStorageOptionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -46,7 +46,7 @@ class AddClusterStorageOptionRequest(AbstractModel):
 
     @property
     def StorageOption(self):
-        """集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
+        r"""集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.StorageOption`
         """
         return self._StorageOption
@@ -72,7 +72,7 @@ class AddClusterStorageOptionRequest(AbstractModel):
 
 
 class AddClusterStorageOptionResponse(AbstractModel):
-    """AddClusterStorageOption返回参数结构体
+    r"""AddClusterStorageOption返回参数结构体
 
     """
 
@@ -85,7 +85,7 @@ class AddClusterStorageOptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -100,7 +100,7 @@ class AddClusterStorageOptionResponse(AbstractModel):
 
 
 class AddNodesRequest(AbstractModel):
-    """AddNodes请求参数结构体
+    r"""AddNodes请求参数结构体
 
     """
 
@@ -180,7 +180,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Placement(self):
-        """集群中实例所在的位置。
+        r"""集群中实例所在的位置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -191,7 +191,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -202,7 +202,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def VirtualPrivateCloud(self):
-        """私有网络相关信息配置。
+        r"""私有网络相关信息配置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -213,7 +213,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Count(self):
-        """添加节点数量。
+        r"""添加节点数量。
         :rtype: int
         """
         return self._Count
@@ -224,7 +224,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
+        r"""指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :rtype: str
         """
         return self._ImageId
@@ -235,7 +235,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
         :rtype: str
         """
         return self._InstanceChargeType
@@ -246,7 +246,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -257,7 +257,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
+        r"""节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :rtype: str
         """
         return self._InstanceType
@@ -268,7 +268,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
         return self._SystemDisk
@@ -279,7 +279,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        r"""节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -290,7 +290,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        r"""公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -301,7 +301,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceName(self):
-        """节点显示名称。
+        r"""节点显示名称。
 不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。
         :rtype: str
@@ -314,7 +314,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginSettings(self):
-        """集群登录设置。
+        r"""集群登录设置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
         """
         return self._LoginSettings
@@ -325,7 +325,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SecurityGroupIds(self):
-        """集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -336,7 +336,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClientToken(self):
-        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :rtype: str
         """
         return self._ClientToken
@@ -347,7 +347,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def QueueName(self):
-        """队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。</li>
+        r"""队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。</li>
 
         :rtype: str
         """
@@ -359,7 +359,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def NodeRole(self):
-        """添加节点角色。默认值：Compute<br><li>Compute：计算节点。</li><li>Login：登录节点。</li>
+        r"""添加节点角色。默认值：Compute<br><li>Compute：计算节点。</li><li>Login：登录节点。</li>
         :rtype: str
         """
         return self._NodeRole
@@ -370,7 +370,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def DryRun(self):
-        """是否只预检此次请求。
+        r"""是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
 如果检查不通过，则返回对应错误码；
 如果检查通过，则返回RequestId.
@@ -385,7 +385,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def NodeType(self):
-        """添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。</li><li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。</li>
+        r"""添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。</li><li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。</li>
         :rtype: str
         """
         return self._NodeType
@@ -396,7 +396,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ProjectId(self):
-        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        r"""实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -407,7 +407,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ResourceType(self):
-        """要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        r"""要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
         :rtype: str
         """
         return self._ResourceType
@@ -467,7 +467,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
 
 class AddNodesResponse(AbstractModel):
-    """AddNodes返回参数结构体
+    r"""AddNodes返回参数结构体
 
     """
 
@@ -480,7 +480,7 @@ class AddNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -495,7 +495,7 @@ class AddNodesResponse(AbstractModel):
 
 
 class AddQueueRequest(AbstractModel):
-    """AddQueue请求参数结构体
+    r"""AddQueue请求参数结构体
 
     """
 
@@ -511,7 +511,7 @@ class AddQueueRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -522,7 +522,7 @@ class AddQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。<br><li>最多支持32个字符。</li>
+        r"""队列名称。<br><li>最多支持32个字符。</li>
         :rtype: str
         """
         return self._QueueName
@@ -546,7 +546,7 @@ class AddQueueRequest(AbstractModel):
 
 
 class AddQueueResponse(AbstractModel):
-    """AddQueue返回参数结构体
+    r"""AddQueue返回参数结构体
 
     """
 
@@ -559,7 +559,7 @@ class AddQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -574,7 +574,7 @@ class AddQueueResponse(AbstractModel):
 
 
 class Application(AbstractModel):
-    """任务的应用环境配置信息。
+    r"""任务的应用环境配置信息。
 
     """
 
@@ -607,7 +607,7 @@ class Application(AbstractModel):
 
     @property
     def Commands(self):
-        """待执行脚本命令。
+        r"""待执行脚本命令。
         :rtype: list of CommandItem
         """
         return self._Commands
@@ -618,7 +618,7 @@ class Application(AbstractModel):
 
     @property
     def StorageMounts(self):
-        """存储目录挂载配置。
+        r"""存储目录挂载配置。
         :rtype: list of StorageMount
         """
         return self._StorageMounts
@@ -629,7 +629,7 @@ class Application(AbstractModel):
 
     @property
     def EnvVars(self):
-        """用户自定义环境变量。
+        r"""用户自定义环境变量。
         :rtype: list of EnvVar
         """
         return self._EnvVars
@@ -640,7 +640,7 @@ class Application(AbstractModel):
 
     @property
     def Docker(self):
-        """容器配置信息。
+        r"""容器配置信息。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Docker`
         """
         return self._Docker
@@ -651,7 +651,7 @@ class Application(AbstractModel):
 
     @property
     def OutputRedirect(self):
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.thpc.v20230321.models.OutputRedirect`
         """
         return self._OutputRedirect
@@ -662,7 +662,7 @@ class Application(AbstractModel):
 
     @property
     def JobType(self):
-        """表示所选训练框架，支持可选参数
+        r"""表示所选训练框架，支持可选参数
  
 - PyTorch：表示提交PyTorch训练作业
 - Custom：表示用户自定义作业
@@ -714,7 +714,7 @@ class Application(AbstractModel):
 
 
 class AttachNodesRequest(AbstractModel):
-    """AttachNodes请求参数结构体
+    r"""AttachNodes请求参数结构体
 
     """
 
@@ -741,7 +741,7 @@ SLURM默认队列为：compute。
 
     @property
     def ClusterId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._ClusterId
@@ -752,7 +752,7 @@ SLURM默认队列为：compute。
 
     @property
     def ResourceSet(self):
-        """节点的实例id列表
+        r"""节点的实例id列表
         :rtype: list of str
         """
         return self._ResourceSet
@@ -763,7 +763,7 @@ SLURM默认队列为：compute。
 
     @property
     def QueueName(self):
-        """队列名称。不指定则为默认队列：
+        r"""队列名称。不指定则为默认队列：
 SLURM默认队列为：compute。 
 
         :rtype: str
@@ -776,7 +776,7 @@ SLURM默认队列为：compute。
 
     @property
     def ImageId(self):
-        """指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。
+        r"""指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。
         :rtype: str
         """
         return self._ImageId
@@ -787,7 +787,7 @@ SLURM默认队列为：compute。
 
     @property
     def ResourceType(self):
-        """要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        r"""要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
         :rtype: str
         """
         return self._ResourceType
@@ -814,7 +814,7 @@ SLURM默认队列为：compute。
 
 
 class AttachNodesResponse(AbstractModel):
-    """AttachNodes返回参数结构体
+    r"""AttachNodes返回参数结构体
 
     """
 
@@ -827,7 +827,7 @@ class AttachNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -842,7 +842,7 @@ class AttachNodesResponse(AbstractModel):
 
 
 class CFSOption(AbstractModel):
-    """描述CFS文件系统版本和挂载信息
+    r"""描述CFS文件系统版本和挂载信息
 
     """
 
@@ -876,7 +876,7 @@ class CFSOption(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统本地挂载路径。
+        r"""文件系统本地挂载路径。
         :rtype: str
         """
         return self._LocalPath
@@ -887,7 +887,7 @@ class CFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
-        """文件系统远程挂载ip及路径。
+        r"""文件系统远程挂载ip及路径。
         :rtype: str
         """
         return self._RemotePath
@@ -898,7 +898,7 @@ class CFSOption(AbstractModel):
 
     @property
     def Protocol(self):
-        """文件系统协议类型。
+        r"""文件系统协议类型。
 <li>NFS 3.0</li>
 <li>NFS 4.0</li>
 <li>TURBO</li>
@@ -912,7 +912,7 @@ class CFSOption(AbstractModel):
 
     @property
     def StorageType(self):
-        """文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+        r"""文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :rtype: str
         """
         return self._StorageType
@@ -923,7 +923,7 @@ class CFSOption(AbstractModel):
 
     @property
     def MountOption(self):
-        """文件系统挂载挂载命令参数选项。
+        r"""文件系统挂载挂载命令参数选项。
 - NFS 3.0默认值：vers=3,nolock,proto=tcp,noresvport
 - NFS 4.0默认值：vers=4.0,noresvport
 - TURBO默认值：user_xattr
@@ -937,7 +937,7 @@ class CFSOption(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID    文件系统ID通过调用接口[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)获取。
+        r"""文件系统ID    文件系统ID通过调用接口[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)获取。
         :rtype: str
         """
         return self._FileSystemId
@@ -965,7 +965,7 @@ class CFSOption(AbstractModel):
 
 
 class CFSOptionOverview(AbstractModel):
-    """CFS存储选项概览信息。
+    r"""CFS存储选项概览信息。
 
     """
 
@@ -993,7 +993,7 @@ class CFSOptionOverview(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统本地挂载路径。
+        r"""文件系统本地挂载路径。
         :rtype: str
         """
         return self._LocalPath
@@ -1004,7 +1004,7 @@ class CFSOptionOverview(AbstractModel):
 
     @property
     def RemotePath(self):
-        """文件系统远程挂载ip及路径。
+        r"""文件系统远程挂载ip及路径。
         :rtype: str
         """
         return self._RemotePath
@@ -1015,7 +1015,7 @@ class CFSOptionOverview(AbstractModel):
 
     @property
     def Protocol(self):
-        """文件系统协议类型。
+        r"""文件系统协议类型。
 <li>NFS 3.0。
 <li>NFS 4.0。
 <li>TURBO。
@@ -1029,7 +1029,7 @@ class CFSOptionOverview(AbstractModel):
 
     @property
     def StorageType(self):
-        """文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+        r"""文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :rtype: str
         """
         return self._StorageType
@@ -1040,7 +1040,7 @@ class CFSOptionOverview(AbstractModel):
 
     @property
     def MountOption(self):
-        """文件系统挂载命令参数选项。
+        r"""文件系统挂载命令参数选项。
         :rtype: str
         """
         return self._MountOption
@@ -1067,7 +1067,7 @@ class CFSOptionOverview(AbstractModel):
 
 
 class ClusterActivity(AbstractModel):
-    """符合条件的集群活动信息。
+    r"""符合条件的集群活动信息。
 
     """
 
@@ -1111,7 +1111,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -1122,7 +1122,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ActivityId(self):
-        """集群活动ID。
+        r"""集群活动ID。
         :rtype: str
         """
         return self._ActivityId
@@ -1133,7 +1133,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ActivityType(self):
-        """集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群</li><br><li>RemoveNodesFromCluster：从集群移除实例</li><br><li>TerminateNodes：销毁实例</li><br><li>MountStorageOption：增加挂载选项并进行挂载</li><br><li>UmountStorageOption：删除集群挂载存储选项并解挂载</li>
+        r"""集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群</li><br><li>RemoveNodesFromCluster：从集群移除实例</li><br><li>TerminateNodes：销毁实例</li><br><li>MountStorageOption：增加挂载选项并进行挂载</li><br><li>UmountStorageOption：删除集群挂载存储选项并解挂载</li>
         :rtype: str
         """
         return self._ActivityType
@@ -1144,7 +1144,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ActivityStatus(self):
-        """集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>
+        r"""集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>
         :rtype: str
         """
         return self._ActivityStatus
@@ -1155,7 +1155,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ActivityStatusCode(self):
-        """集群活动状态码。
+        r"""集群活动状态码。
         :rtype: str
         """
         return self._ActivityStatusCode
@@ -1166,7 +1166,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def ResultDetail(self):
-        """集群活动结果详情。
+        r"""集群活动结果详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1178,7 +1178,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def Cause(self):
-        """集群活动起因。
+        r"""集群活动起因。
         :rtype: str
         """
         return self._Cause
@@ -1189,7 +1189,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def Description(self):
-        """集群活动描述。
+        r"""集群活动描述。
         :rtype: str
         """
         return self._Description
@@ -1200,7 +1200,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def RelatedNodeActivitySet(self):
-        """集群活动相关节点活动集合。
+        r"""集群活动相关节点活动集合。
         :rtype: list of NodeActivity
         """
         return self._RelatedNodeActivitySet
@@ -1211,7 +1211,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def StartTime(self):
-        """集群活动开始时间。
+        r"""集群活动开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -1222,7 +1222,7 @@ class ClusterActivity(AbstractModel):
 
     @property
     def EndTime(self):
-        """集群活动结束时间。
+        r"""集群活动结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -1260,7 +1260,7 @@ class ClusterActivity(AbstractModel):
 
 
 class ClusterOverview(AbstractModel):
-    """集群概览信息。
+    r"""集群概览信息。
 
     """
 
@@ -1318,7 +1318,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -1329,7 +1329,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        """集群状态。取值范围：<li>PENDING：创建中</li><li>INITING：初始化中</li><li>INIT_FAILED：初始化失败</li><li>RUNNING：运行中</li><li>TERMINATING：销毁中</li>
+        r"""集群状态。取值范围：<li>PENDING：创建中</li><li>INITING：初始化中</li><li>INIT_FAILED：初始化失败</li><li>RUNNING：运行中</li><li>TERMINATING：销毁中</li>
         :rtype: str
         """
         return self._ClusterStatus
@@ -1340,7 +1340,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称。
+        r"""集群名称。
         :rtype: str
         """
         return self._ClusterName
@@ -1351,7 +1351,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def Placement(self):
-        """集群位置信息。
+        r"""集群位置信息。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -1362,7 +1362,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def CreateTime(self):
-        """集群创建时间。
+        r"""集群创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -1373,7 +1373,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def SchedulerType(self):
-        """集群调度器。
+        r"""集群调度器。
         :rtype: str
         """
         return self._SchedulerType
@@ -1384,7 +1384,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def SchedulerVersion(self):
-        """集群调度器版本。
+        r"""集群调度器版本。
         :rtype: str
         """
         return self._SchedulerVersion
@@ -1395,7 +1395,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ComputeNodeCount(self):
-        """计算节点数量。
+        r"""计算节点数量。
         :rtype: int
         """
         return self._ComputeNodeCount
@@ -1406,7 +1406,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ComputeNodeSet(self):
-        """计算节点概览。
+        r"""计算节点概览。
         :rtype: list of ComputeNodeOverview
         """
         return self._ComputeNodeSet
@@ -1417,7 +1417,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ManagerNodeCount(self):
-        """管控节点数量。
+        r"""管控节点数量。
         :rtype: int
         """
         return self._ManagerNodeCount
@@ -1428,7 +1428,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ManagerNodeSet(self):
-        """管控节点概览。
+        r"""管控节点概览。
         :rtype: list of ManagerNodeOverview
         """
         return self._ManagerNodeSet
@@ -1439,7 +1439,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def LoginNodeSet(self):
-        """登录节点概览。
+        r"""登录节点概览。
         :rtype: list of LoginNodeOverview
         """
         return self._LoginNodeSet
@@ -1450,7 +1450,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def LoginNodeCount(self):
-        """登录节点数量。
+        r"""登录节点数量。
         :rtype: int
         """
         return self._LoginNodeCount
@@ -1461,7 +1461,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def AutoScalingType(self):
-        """弹性伸缩类型。
+        r"""弹性伸缩类型。
         :rtype: str
         """
         return self._AutoScalingType
@@ -1472,7 +1472,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def VpcId(self):
-        """集群所属私有网络ID。
+        r"""集群所属私有网络ID。
         :rtype: str
         """
         return self._VpcId
@@ -1483,7 +1483,7 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        r"""集群类型
         :rtype: str
         """
         return self._ClusterType
@@ -1538,7 +1538,7 @@ class ClusterOverview(AbstractModel):
 
 
 class CommandItem(AbstractModel):
-    """任务执行命令脚本。
+    r"""任务执行命令脚本。
 
     """
 
@@ -1551,7 +1551,7 @@ class CommandItem(AbstractModel):
 
     @property
     def Command(self):
-        """脚本命令
+        r"""脚本命令
         :rtype: str
         """
         return self._Command
@@ -1574,7 +1574,7 @@ class CommandItem(AbstractModel):
 
 
 class ComputeNode(AbstractModel):
-    """计算节点信息。
+    r"""计算节点信息。
 
     """
 
@@ -1612,7 +1612,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
         :rtype: str
         """
         return self._InstanceChargeType
@@ -1623,7 +1623,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -1634,7 +1634,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。<li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
+        r"""节点机型。不同实例机型指定了不同的资源规格。<li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :rtype: str
         """
         return self._InstanceType
@@ -1645,7 +1645,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
         return self._SystemDisk
@@ -1656,7 +1656,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        r"""节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -1667,7 +1667,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        r"""公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -1678,7 +1678,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceName(self):
-        """节点显示名称。<li>不指定节点显示名称则默认显示‘未命名’。
+        r"""节点显示名称。<li>不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。</li>
         :rtype: str
         """
@@ -1690,7 +1690,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def ProjectId(self):
-        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        r"""实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -1701,7 +1701,7 @@ class ComputeNode(AbstractModel):
 
     @property
     def ResourceType(self):
-        """实例资源类型，默认是CVM资源
+        r"""实例资源类型，默认是CVM资源
         :rtype: str
         """
         return self._ResourceType
@@ -1743,7 +1743,7 @@ class ComputeNode(AbstractModel):
 
 
 class ComputeNodeOverview(AbstractModel):
-    """计算节点概览。
+    r"""计算节点概览。
 
     """
 
@@ -1756,7 +1756,7 @@ class ComputeNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
-        """计算节点ID。
+        r"""计算节点ID。
         :rtype: str
         """
         return self._NodeId
@@ -1779,7 +1779,7 @@ class ComputeNodeOverview(AbstractModel):
 
 
 class CreateClusterRequest(AbstractModel):
-    """CreateCluster请求参数结构体
+    r"""CreateCluster请求参数结构体
 
     """
 
@@ -1862,7 +1862,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Placement(self):
-        """集群中实例所在的位置。
+        r"""集群中实例所在的位置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -1873,7 +1873,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ManagerNode(self):
-        """指定管理节点。
+        r"""指定管理节点。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.ManagerNode`
         """
         return self._ManagerNode
@@ -1884,7 +1884,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ManagerNodeCount(self):
-        """指定管理节点的数量。默认取值：1。取值范围：1～2。
+        r"""指定管理节点的数量。默认取值：1。取值范围：1～2。
         :rtype: int
         """
         return self._ManagerNodeCount
@@ -1895,7 +1895,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ComputeNode(self):
-        """指定计算节点。
+        r"""指定计算节点。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.ComputeNode`
         """
         return self._ComputeNode
@@ -1906,7 +1906,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ComputeNodeCount(self):
-        """指定计算节点的数量。默认取值：0。
+        r"""指定计算节点的数量。默认取值：0。
         :rtype: int
         """
         return self._ComputeNodeCount
@@ -1917,7 +1917,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SchedulerType(self):
-        """调度器类型。默认取值：SLURM。<li>SLURM：SLURM调度器。</li>
+        r"""调度器类型。默认取值：SLURM。<li>SLURM：SLURM调度器。</li>
         :rtype: str
         """
         return self._SchedulerType
@@ -1928,7 +1928,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SchedulerVersion(self):
-        """创建调度器的版本号，可填写版本号为“latest” 和 各调度器支持的版本号；如果是"latest", 则代表创建的是平台当前支持的该类型调度器最新版本。如果不填写，默认创建的是“latest”版本调度器
+        r"""创建调度器的版本号，可填写版本号为“latest” 和 各调度器支持的版本号；如果是"latest", 则代表创建的是平台当前支持的该类型调度器最新版本。如果不填写，默认创建的是“latest”版本调度器
 各调度器支持的集群版本：
 <li>SLURM：21.08.8、23.11.7</li>
         :rtype: str
@@ -1941,7 +1941,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
+        r"""指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :rtype: str
         """
         return self._ImageId
@@ -1952,7 +1952,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def VirtualPrivateCloud(self):
-        """私有网络相关信息配置。
+        r"""私有网络相关信息配置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -1963,7 +1963,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginSettings(self):
-        """集群登录设置。
+        r"""集群登录设置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
         """
         return self._LoginSettings
@@ -1974,7 +1974,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SecurityGroupIds(self):
-        """集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -1985,7 +1985,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClientToken(self):
-        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :rtype: str
         """
         return self._ClientToken
@@ -1996,7 +1996,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def DryRun(self):
-        """是否只预检此次请求。
+        r"""是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
 如果检查不通过，则返回对应错误码；
 如果检查通过，则返回RequestId.
@@ -2011,7 +2011,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AccountType(self):
-        """域名字服务类型。默认取值：NIS。
+        r"""域名字服务类型。默认取值：NIS。
 <li>NIS：NIS域名字服务。</li>
         :rtype: str
         """
@@ -2023,7 +2023,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClusterName(self):
-        """集群显示名称。
+        r"""集群显示名称。
         :rtype: str
         """
         return self._ClusterName
@@ -2034,7 +2034,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def StorageOption(self):
-        """集群存储选项
+        r"""集群存储选项
         :rtype: :class:`tencentcloud.thpc.v20230321.models.StorageOption`
         """
         return self._StorageOption
@@ -2045,7 +2045,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginNode(self):
-        """指定登录节点。
+        r"""指定登录节点。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.LoginNode`
         """
         return self._LoginNode
@@ -2056,7 +2056,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginNodeCount(self):
-        """指定登录节点的数量。默认取值：0。取值范围：0～10。
+        r"""指定登录节点的数量。默认取值：0。取值范围：0～10。
         :rtype: int
         """
         return self._LoginNodeCount
@@ -2067,7 +2067,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Tags(self):
-        """创建集群时同时绑定的标签对说明。
+        r"""创建集群时同时绑定的标签对说明。
         :rtype: list of Tag
         """
         return self._Tags
@@ -2078,7 +2078,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AutoScalingType(self):
-        """弹性伸缩类型。默认值：THPC_AS
+        r"""弹性伸缩类型。默认值：THPC_AS
         :rtype: str
         """
         return self._AutoScalingType
@@ -2089,7 +2089,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InitNodeScripts(self):
-        """节点初始化脚本信息列表。
+        r"""节点初始化脚本信息列表。
         :rtype: list of NodeScript
         """
         return self._InitNodeScripts
@@ -2100,7 +2100,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def HpcClusterId(self):
-        """高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+        r"""高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
         :rtype: str
         """
         return self._HpcClusterId
@@ -2168,7 +2168,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
 
 class CreateClusterResponse(AbstractModel):
-    """CreateCluster返回参数结构体
+    r"""CreateCluster返回参数结构体
 
     """
 
@@ -2184,7 +2184,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -2195,7 +2195,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2211,7 +2211,7 @@ class CreateClusterResponse(AbstractModel):
 
 
 class CreateWorkspacesRequest(AbstractModel):
-    """CreateWorkspaces请求参数结构体
+    r"""CreateWorkspaces请求参数结构体
 
     """
 
@@ -2287,7 +2287,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :rtype: str
         """
         return self._ClientToken
@@ -2298,7 +2298,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def Placement(self):
-        """实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+        r"""实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SpacePlacement`
         """
         return self._Placement
@@ -2309,7 +2309,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
         """
         return self._SpaceChargePrepaid
@@ -2320,7 +2320,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceChargeType(self):
-        """工作空间计费类型，包括：PREPAID，UNDERWRITE。工作空间计费类型，包括：PREPAID，UNDERWRITE。
+        r"""工作空间计费类型，包括：PREPAID，UNDERWRITE。工作空间计费类型，包括：PREPAID，UNDERWRITE。
         :rtype: str
         """
         return self._SpaceChargeType
@@ -2331,7 +2331,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceType(self):
-        """工作空间规格
+        r"""工作空间规格
         :rtype: str
         """
         return self._SpaceType
@@ -2342,7 +2342,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """镜像ID
+        r"""镜像ID
         :rtype: str
         """
         return self._ImageId
@@ -2353,7 +2353,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """工作空间系统盘信息
+        r"""工作空间系统盘信息
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceSystemDisk`
         """
         return self._SystemDisk
@@ -2364,7 +2364,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def DataDisks(self):
-        """工作空间数据盘信息
+        r"""工作空间数据盘信息
         :rtype: list of SpaceDataDisk
         """
         return self._DataDisks
@@ -2375,7 +2375,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        """私有网络相关信息
+        r"""私有网络相关信息
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceVirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -2386,7 +2386,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置
+        r"""公网带宽相关信息设置
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceInternetAccessible`
         """
         return self._InternetAccessible
@@ -2397,7 +2397,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceCount(self):
-        """购买工作空间实例的数量
+        r"""购买工作空间实例的数量
         :rtype: int
         """
         return self._SpaceCount
@@ -2408,7 +2408,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceName(self):
-        """工作空间显示名称
+        r"""工作空间显示名称
         :rtype: str
         """
         return self._SpaceName
@@ -2419,7 +2419,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        """工作空间登陆设置
+        r"""工作空间登陆设置
         :rtype: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
         """
         return self._LoginSettings
@@ -2430,7 +2430,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """工作空间所属安全组
+        r"""工作空间所属安全组
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2441,7 +2441,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """增强服务
+        r"""增强服务
         :rtype: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         return self._EnhancedService
@@ -2452,7 +2452,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """是否只预检此次请求
+        r"""是否只预检此次请求
         :rtype: bool
         """
         return self._DryRun
@@ -2463,7 +2463,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def UserData(self):
-        """提供给工作空间使用的用户数据
+        r"""提供给工作空间使用的用户数据
         :rtype: str
         """
         return self._UserData
@@ -2474,7 +2474,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
-        """置放群组id
+        r"""置放群组id
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -2485,7 +2485,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """标签描述列表
+        r"""标签描述列表
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -2496,7 +2496,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def HpcClusterId(self):
-        """高性能计算集群ID
+        r"""高性能计算集群ID
         :rtype: str
         """
         return self._HpcClusterId
@@ -2507,7 +2507,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def CamRoleName(self):
-        """CAM角色名称
+        r"""CAM角色名称
         :rtype: str
         """
         return self._CamRoleName
@@ -2518,7 +2518,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def HostName(self):
-        """实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+        r"""实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
         :rtype: str
         """
         return self._HostName
@@ -2586,7 +2586,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
 
 class CreateWorkspacesResponse(AbstractModel):
-    """CreateWorkspaces返回参数结构体
+    r"""CreateWorkspaces返回参数结构体
 
     """
 
@@ -2602,7 +2602,7 @@ class CreateWorkspacesResponse(AbstractModel):
 
     @property
     def SpaceIdSet(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: list of str
         """
         return self._SpaceIdSet
@@ -2613,7 +2613,7 @@ class CreateWorkspacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2629,7 +2629,7 @@ class CreateWorkspacesResponse(AbstractModel):
 
 
 class DataDisk(AbstractModel):
-    """描述了数据盘的信息
+    r"""描述了数据盘的信息
 
     """
 
@@ -2647,7 +2647,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        r"""数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2659,7 +2659,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><li>CLOUD_BSSD：通用型SSD云硬盘
+        r"""数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><li>CLOUD_BSSD：通用型SSD云硬盘
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2684,7 +2684,7 @@ class DataDisk(AbstractModel):
 
 
 class DeleteClusterRequest(AbstractModel):
-    """DeleteCluster请求参数结构体
+    r"""DeleteCluster请求参数结构体
 
     """
 
@@ -2697,7 +2697,7 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -2720,7 +2720,7 @@ class DeleteClusterRequest(AbstractModel):
 
 
 class DeleteClusterResponse(AbstractModel):
-    """DeleteCluster返回参数结构体
+    r"""DeleteCluster返回参数结构体
 
     """
 
@@ -2733,7 +2733,7 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2748,7 +2748,7 @@ class DeleteClusterResponse(AbstractModel):
 
 
 class DeleteClusterStorageOptionRequest(AbstractModel):
-    """DeleteClusterStorageOption请求参数结构体
+    r"""DeleteClusterStorageOption请求参数结构体
 
     """
 
@@ -2764,7 +2764,7 @@ class DeleteClusterStorageOptionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -2775,7 +2775,7 @@ class DeleteClusterStorageOptionRequest(AbstractModel):
 
     @property
     def LocalPath(self):
-        """本地挂载路径。
+        r"""本地挂载路径。
         :rtype: str
         """
         return self._LocalPath
@@ -2799,7 +2799,7 @@ class DeleteClusterStorageOptionRequest(AbstractModel):
 
 
 class DeleteClusterStorageOptionResponse(AbstractModel):
-    """DeleteClusterStorageOption返回参数结构体
+    r"""DeleteClusterStorageOption返回参数结构体
 
     """
 
@@ -2812,7 +2812,7 @@ class DeleteClusterStorageOptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2827,7 +2827,7 @@ class DeleteClusterStorageOptionResponse(AbstractModel):
 
 
 class DeleteJobRequest(AbstractModel):
-    """DeleteJob请求参数结构体
+    r"""DeleteJob请求参数结构体
 
     """
 
@@ -2840,7 +2840,7 @@ class DeleteJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业任务ID
+        r"""作业任务ID
         :rtype: str
         """
         return self._JobId
@@ -2863,7 +2863,7 @@ class DeleteJobRequest(AbstractModel):
 
 
 class DeleteJobResponse(AbstractModel):
-    """DeleteJob返回参数结构体
+    r"""DeleteJob返回参数结构体
 
     """
 
@@ -2876,7 +2876,7 @@ class DeleteJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2891,7 +2891,7 @@ class DeleteJobResponse(AbstractModel):
 
 
 class DeleteNodesRequest(AbstractModel):
-    """DeleteNodes请求参数结构体
+    r"""DeleteNodes请求参数结构体
 
     """
 
@@ -2907,7 +2907,7 @@ class DeleteNodesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -2918,7 +2918,7 @@ class DeleteNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
-        """节点ID。
+        r"""节点ID。
         :rtype: list of str
         """
         return self._NodeIds
@@ -2942,7 +2942,7 @@ class DeleteNodesRequest(AbstractModel):
 
 
 class DeleteNodesResponse(AbstractModel):
-    """DeleteNodes返回参数结构体
+    r"""DeleteNodes返回参数结构体
 
     """
 
@@ -2955,7 +2955,7 @@ class DeleteNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2970,7 +2970,7 @@ class DeleteNodesResponse(AbstractModel):
 
 
 class DeleteQueueRequest(AbstractModel):
-    """DeleteQueue请求参数结构体
+    r"""DeleteQueue请求参数结构体
 
     """
 
@@ -2986,7 +2986,7 @@ class DeleteQueueRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -2997,7 +2997,7 @@ class DeleteQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。<br><li>最多支持32个字符。
+        r"""队列名称。<br><li>最多支持32个字符。
         :rtype: str
         """
         return self._QueueName
@@ -3021,7 +3021,7 @@ class DeleteQueueRequest(AbstractModel):
 
 
 class DeleteQueueResponse(AbstractModel):
-    """DeleteQueue返回参数结构体
+    r"""DeleteQueue返回参数结构体
 
     """
 
@@ -3034,7 +3034,7 @@ class DeleteQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3049,7 +3049,7 @@ class DeleteQueueResponse(AbstractModel):
 
 
 class DescribeAutoScalingConfigurationRequest(AbstractModel):
-    """DescribeAutoScalingConfiguration请求参数结构体
+    r"""DescribeAutoScalingConfiguration请求参数结构体
 
     """
 
@@ -3062,7 +3062,7 @@ class DescribeAutoScalingConfigurationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。	
+        r"""集群ID。	
         :rtype: str
         """
         return self._ClusterId
@@ -3085,7 +3085,7 @@ class DescribeAutoScalingConfigurationRequest(AbstractModel):
 
 
 class DescribeAutoScalingConfigurationResponse(AbstractModel):
-    """DescribeAutoScalingConfiguration返回参数结构体
+    r"""DescribeAutoScalingConfiguration返回参数结构体
 
     """
 
@@ -3110,7 +3110,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -3121,7 +3121,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ExpansionBusyTime(self):
-        """任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+        r"""任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
         :rtype: int
         """
         return self._ExpansionBusyTime
@@ -3132,7 +3132,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ShrinkIdleTime(self):
-        """节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+        r"""节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
         :rtype: int
         """
         return self._ShrinkIdleTime
@@ -3143,7 +3143,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def QueueConfigs(self):
-        """扩容队列配置概览列表。
+        r"""扩容队列配置概览列表。
         :rtype: list of QueueConfigOverview
         """
         return self._QueueConfigs
@@ -3154,7 +3154,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3178,7 +3178,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
 
 class DescribeClusterActivitiesRequest(AbstractModel):
-    """DescribeClusterActivities请求参数结构体
+    r"""DescribeClusterActivities请求参数结构体
 
     """
 
@@ -3197,7 +3197,7 @@ class DescribeClusterActivitiesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。通过该参数指定需要查询活动历史记录的集群。
+        r"""集群ID。通过该参数指定需要查询活动历史记录的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -3208,7 +3208,7 @@ class DescribeClusterActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -3219,7 +3219,7 @@ class DescribeClusterActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -3244,7 +3244,7 @@ class DescribeClusterActivitiesRequest(AbstractModel):
 
 
 class DescribeClusterActivitiesResponse(AbstractModel):
-    """DescribeClusterActivities返回参数结构体
+    r"""DescribeClusterActivities返回参数结构体
 
     """
 
@@ -3263,7 +3263,7 @@ class DescribeClusterActivitiesResponse(AbstractModel):
 
     @property
     def ClusterActivitySet(self):
-        """集群活动历史记录列表。
+        r"""集群活动历史记录列表。
         :rtype: list of ClusterActivity
         """
         return self._ClusterActivitySet
@@ -3274,7 +3274,7 @@ class DescribeClusterActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群活动历史记录数量。
+        r"""集群活动历史记录数量。
         :rtype: int
         """
         return self._TotalCount
@@ -3285,7 +3285,7 @@ class DescribeClusterActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3307,7 +3307,7 @@ class DescribeClusterActivitiesResponse(AbstractModel):
 
 
 class DescribeClusterStorageOptionRequest(AbstractModel):
-    """DescribeClusterStorageOption请求参数结构体
+    r"""DescribeClusterStorageOption请求参数结构体
 
     """
 
@@ -3320,7 +3320,7 @@ class DescribeClusterStorageOptionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -3343,7 +3343,7 @@ class DescribeClusterStorageOptionRequest(AbstractModel):
 
 
 class DescribeClusterStorageOptionResponse(AbstractModel):
-    """DescribeClusterStorageOption返回参数结构体
+    r"""DescribeClusterStorageOption返回参数结构体
 
     """
 
@@ -3359,7 +3359,7 @@ class DescribeClusterStorageOptionResponse(AbstractModel):
 
     @property
     def StorageOption(self):
-        """集群存储选项信息概览。
+        r"""集群存储选项信息概览。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.StorageOptionOverview`
         """
         return self._StorageOption
@@ -3370,7 +3370,7 @@ class DescribeClusterStorageOptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3388,7 +3388,7 @@ class DescribeClusterStorageOptionResponse(AbstractModel):
 
 
 class DescribeClustersRequest(AbstractModel):
-    """DescribeClusters请求参数结构体
+    r"""DescribeClusters请求参数结构体
 
     """
 
@@ -3417,7 +3417,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        """集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+        r"""集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
         :rtype: list of str
         """
         return self._ClusterIds
@@ -3428,7 +3428,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -3439,7 +3439,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -3450,7 +3450,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<ul>
+        r"""<ul>
     <li><strong>cluster-type</strong>
         <p style="padding-left: 30px;">按照【<strong>集群类型</strong>】进行过滤</p>
         <p style="padding-left: 30px;">类型：String</p>
@@ -3488,7 +3488,7 @@ class DescribeClustersRequest(AbstractModel):
 
 
 class DescribeClustersResponse(AbstractModel):
-    """DescribeClusters返回参数结构体
+    r"""DescribeClusters返回参数结构体
 
     """
 
@@ -3507,7 +3507,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def ClusterSet(self):
-        """集群概览信息列表。
+        r"""集群概览信息列表。
         :rtype: list of ClusterOverview
         """
         return self._ClusterSet
@@ -3518,7 +3518,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群数量。
+        r"""集群数量。
         :rtype: int
         """
         return self._TotalCount
@@ -3529,7 +3529,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3551,7 +3551,7 @@ class DescribeClustersResponse(AbstractModel):
 
 
 class DescribeInitNodeScriptsRequest(AbstractModel):
-    """DescribeInitNodeScripts请求参数结构体
+    r"""DescribeInitNodeScripts请求参数结构体
 
     """
 
@@ -3564,7 +3564,7 @@ class DescribeInitNodeScriptsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -3587,7 +3587,7 @@ class DescribeInitNodeScriptsRequest(AbstractModel):
 
 
 class DescribeInitNodeScriptsResponse(AbstractModel):
-    """DescribeInitNodeScripts返回参数结构体
+    r"""DescribeInitNodeScripts返回参数结构体
 
     """
 
@@ -3603,7 +3603,7 @@ class DescribeInitNodeScriptsResponse(AbstractModel):
 
     @property
     def InitNodeScriptSet(self):
-        """节点初始化脚本列表。
+        r"""节点初始化脚本列表。
         :rtype: list of NodeScript
         """
         return self._InitNodeScriptSet
@@ -3614,7 +3614,7 @@ class DescribeInitNodeScriptsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3635,7 +3635,7 @@ class DescribeInitNodeScriptsResponse(AbstractModel):
 
 
 class DescribeJobSubmitInfoRequest(AbstractModel):
-    """DescribeJobSubmitInfo请求参数结构体
+    r"""DescribeJobSubmitInfo请求参数结构体
 
     """
 
@@ -3648,7 +3648,7 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID
+        r"""作业ID
         :rtype: str
         """
         return self._JobId
@@ -3671,7 +3671,7 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
 
 class DescribeJobSubmitInfoResponse(AbstractModel):
-    """DescribeJobSubmitInfo返回参数结构体
+    r"""DescribeJobSubmitInfo返回参数结构体
 
     """
 
@@ -3693,7 +3693,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -3704,7 +3704,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -3715,7 +3715,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def Job(self):
-        """作业信息
+        r"""作业信息
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Job`
         """
         return self._Job
@@ -3726,7 +3726,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3746,13 +3746,13 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
 
 class DescribeJobsOverviewRequest(AbstractModel):
-    """DescribeJobsOverview请求参数结构体
+    r"""DescribeJobsOverview请求参数结构体
 
     """
 
 
 class DescribeJobsOverviewResponse(AbstractModel):
-    """DescribeJobsOverview返回参数结构体
+    r"""DescribeJobsOverview返回参数结构体
 
     """
 
@@ -3765,7 +3765,7 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3780,7 +3780,7 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
 
 class DescribeJobsRequest(AbstractModel):
-    """DescribeJobs请求参数结构体
+    r"""DescribeJobs请求参数结构体
 
     """
 
@@ -3802,7 +3802,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        """作业任务ID列表
+        r"""作业任务ID列表
         :rtype: list of str
         """
         return self._JobIds
@@ -3813,7 +3813,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤列表
+        r"""过滤列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -3824,7 +3824,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        r"""偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
         :rtype: int
         """
         return self._Offset
@@ -3835,7 +3835,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
         :rtype: int
         """
         return self._Limit
@@ -3866,7 +3866,7 @@ class DescribeJobsRequest(AbstractModel):
 
 
 class DescribeJobsResponse(AbstractModel):
-    """DescribeJobs返回参数结构体
+    r"""DescribeJobs返回参数结构体
 
     """
 
@@ -3885,7 +3885,7 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
-        """作业任务概览列表
+        r"""作业任务概览列表
         :rtype: list of JobView
         """
         return self._JobSet
@@ -3896,7 +3896,7 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的作业任务数量。
+        r"""符合条件的作业任务数量。
         :rtype: int
         """
         return self._TotalCount
@@ -3907,7 +3907,7 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3929,7 +3929,7 @@ class DescribeJobsResponse(AbstractModel):
 
 
 class DescribeNodesRequest(AbstractModel):
-    """DescribeNodes请求参数结构体
+    r"""DescribeNodes请求参数结构体
 
     """
 
@@ -3968,7 +3968,7 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -3979,7 +3979,7 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<ul>
+        r"""<ul>
     <li><strong>queue-name</strong>
         <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p>
         <p style="padding-left: 30px;">类型：String</p>
@@ -4007,7 +4007,7 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -4018,7 +4018,7 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -4049,7 +4049,7 @@ class DescribeNodesRequest(AbstractModel):
 
 
 class DescribeNodesResponse(AbstractModel):
-    """DescribeNodes返回参数结构体
+    r"""DescribeNodes返回参数结构体
 
     """
 
@@ -4068,7 +4068,7 @@ class DescribeNodesResponse(AbstractModel):
 
     @property
     def NodeSet(self):
-        """节点概览信息列表。
+        r"""节点概览信息列表。
         :rtype: list of NodeOverview
         """
         return self._NodeSet
@@ -4079,7 +4079,7 @@ class DescribeNodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的节点数量。
+        r"""符合条件的节点数量。
         :rtype: int
         """
         return self._TotalCount
@@ -4090,7 +4090,7 @@ class DescribeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4112,7 +4112,7 @@ class DescribeNodesResponse(AbstractModel):
 
 
 class DescribeQueuesRequest(AbstractModel):
-    """DescribeQueues请求参数结构体
+    r"""DescribeQueues请求参数结构体
 
     """
 
@@ -4131,7 +4131,7 @@ class DescribeQueuesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -4142,7 +4142,7 @@ class DescribeQueuesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -4153,7 +4153,7 @@ class DescribeQueuesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -4178,7 +4178,7 @@ class DescribeQueuesRequest(AbstractModel):
 
 
 class DescribeQueuesResponse(AbstractModel):
-    """DescribeQueues返回参数结构体
+    r"""DescribeQueues返回参数结构体
 
     """
 
@@ -4197,7 +4197,7 @@ class DescribeQueuesResponse(AbstractModel):
 
     @property
     def QueueSet(self):
-        """队列概览信息列表。
+        r"""队列概览信息列表。
         :rtype: list of QueueOverview
         """
         return self._QueueSet
@@ -4208,7 +4208,7 @@ class DescribeQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的队列数量。
+        r"""符合条件的队列数量。
         :rtype: int
         """
         return self._TotalCount
@@ -4219,7 +4219,7 @@ class DescribeQueuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4241,7 +4241,7 @@ class DescribeQueuesResponse(AbstractModel):
 
 
 class DescribeWorkspacesRequest(AbstractModel):
-    """DescribeWorkspaces请求参数结构体
+    r"""DescribeWorkspaces请求参数结构体
 
     """
 
@@ -4263,7 +4263,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceIds(self):
-        """集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+        r"""集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
         :rtype: list of str
         """
         return self._SpaceIds
@@ -4274,7 +4274,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -4285,7 +4285,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -4296,7 +4296,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<ul>   <li>     <strong>zone</strong>     <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-id</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间实例ID</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>cvm-instance-id</strong>     <p style="padding-left: 30px;">按照【<strong>CVM实例ID</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-state</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间状态</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-name</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间别名</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-charge-type</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间实例付费模式</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>tag-key</strong>     <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>tag-value</strong>     <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li> </ul> <p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
+        r"""<ul>   <li>     <strong>zone</strong>     <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-id</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间实例ID</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>cvm-instance-id</strong>     <p style="padding-left: 30px;">按照【<strong>CVM实例ID</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-state</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间状态</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-name</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间别名</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>space-charge-type</strong>     <p style="padding-left: 30px;">按照【<strong>工作空间实例付费模式</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>tag-key</strong>     <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li>     <li>     <strong>tag-value</strong>     <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤</p>     <p style="padding-left: 30px;">类型：String</p>     <p style="padding-left: 30px;">必选：否</p></li> </ul> <p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4327,7 +4327,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
 
 class DescribeWorkspacesResponse(AbstractModel):
-    """DescribeWorkspaces返回参数结构体
+    r"""DescribeWorkspaces返回参数结构体
 
     """
 
@@ -4346,7 +4346,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def SpaceSet(self):
-        """集群概览信息列表
+        r"""集群概览信息列表
         :rtype: list of SpaceInfo
         """
         return self._SpaceSet
@@ -4357,7 +4357,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群数量
+        r"""集群数量
         :rtype: int
         """
         return self._TotalCount
@@ -4368,7 +4368,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4390,7 +4390,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
 
 class DetachNodesRequest(AbstractModel):
-    """DetachNodes请求参数结构体
+    r"""DetachNodes请求参数结构体
 
     """
 
@@ -4406,7 +4406,7 @@ class DetachNodesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._ClusterId
@@ -4417,7 +4417,7 @@ class DetachNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
-        """集群中的节点id
+        r"""集群中的节点id
         :rtype: list of str
         """
         return self._NodeIds
@@ -4441,7 +4441,7 @@ class DetachNodesRequest(AbstractModel):
 
 
 class DetachNodesResponse(AbstractModel):
-    """DetachNodes返回参数结构体
+    r"""DetachNodes返回参数结构体
 
     """
 
@@ -4454,7 +4454,7 @@ class DetachNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4469,7 +4469,7 @@ class DetachNodesResponse(AbstractModel):
 
 
 class Docker(AbstractModel):
-    """容器配置信息。
+    r"""容器配置信息。
 
     """
 
@@ -4485,7 +4485,7 @@ class Docker(AbstractModel):
 
     @property
     def Image(self):
-        """容器镜像地址
+        r"""容器镜像地址
         :rtype: str
         """
         return self._Image
@@ -4496,7 +4496,7 @@ class Docker(AbstractModel):
 
     @property
     def RunArgs(self):
-        """容器运行参数
+        r"""容器运行参数
         :rtype: list of str
         """
         return self._RunArgs
@@ -4520,7 +4520,7 @@ class Docker(AbstractModel):
 
 
 class EnhancedService(AbstractModel):
-    """描述了实例的增强服务启用情况与其设置，如云安全，腾讯云可观测平台等实例 Agent
+    r"""描述了实例的增强服务启用情况与其设置，如云安全，腾讯云可观测平台等实例 Agent
 
     """
 
@@ -4539,7 +4539,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
-        """开启云安全服务。若不指定该参数，则默认开启云安全服务。
+        r"""开启云安全服务。若不指定该参数，则默认开启云安全服务。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunSecurityServiceEnabled`
         """
         return self._SecurityService
@@ -4550,7 +4550,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
-        """开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
+        r"""开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunMonitorServiceEnabled`
         """
         return self._MonitorService
@@ -4561,7 +4561,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationService(self):
-        """开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
+        r"""开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunAutomationServiceEnabled`
         """
         return self._AutomationService
@@ -4592,7 +4592,7 @@ class EnhancedService(AbstractModel):
 
 
 class EnvVar(AbstractModel):
-    """用户自定义环境变量。
+    r"""用户自定义环境变量。
 
     """
 
@@ -4608,7 +4608,7 @@ class EnvVar(AbstractModel):
 
     @property
     def Name(self):
-        """ENV
+        r"""ENV
         :rtype: str
         """
         return self._Name
@@ -4619,7 +4619,7 @@ class EnvVar(AbstractModel):
 
     @property
     def Value(self):
-        """test
+        r"""test
         :rtype: str
         """
         return self._Value
@@ -4643,7 +4643,7 @@ class EnvVar(AbstractModel):
 
 
 class ExpansionNodeConfig(AbstractModel):
-    """弹性扩容节点配置信息。
+    r"""弹性扩容节点配置信息。
 
     """
 
@@ -4672,7 +4672,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def Placement(self):
-        """扩容实例所在的位置。
+        r"""扩容实例所在的位置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -4683,7 +4683,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -4694,7 +4694,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -4705,7 +4705,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。
+        r"""节点机型。不同实例机型指定了不同的资源规格。
 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :rtype: str
         """
@@ -4717,7 +4717,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        """私有网络相关信息配置。
+        r"""私有网络相关信息配置。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -4728,7 +4728,7 @@ class ExpansionNodeConfig(AbstractModel):
 
     @property
     def ProjectId(self):
-        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        r"""实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -4762,7 +4762,7 @@ class ExpansionNodeConfig(AbstractModel):
 
 
 class ExpansionNodeConfigOverview(AbstractModel):
-    """扩容节点配置信息概览。
+    r"""扩容节点配置信息概览。
 
     """
 
@@ -4808,7 +4808,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。
+        r"""节点机型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4820,7 +4820,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def Placement(self):
-        """扩容实例所在的位置。
+        r"""扩容实例所在的位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
@@ -4832,7 +4832,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4844,7 +4844,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
@@ -4856,7 +4856,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        """私有网络相关信息配置。
+        r"""私有网络相关信息配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
         """
@@ -4868,7 +4868,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。
+        r"""指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4880,7 +4880,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。
+        r"""公网带宽相关信息设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
@@ -4892,7 +4892,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。
+        r"""节点系统盘配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
@@ -4904,7 +4904,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。
+        r"""节点数据盘配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -4951,7 +4951,7 @@ class ExpansionNodeConfigOverview(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r""">描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
     > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
 
@@ -4969,7 +4969,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。
+        r"""需要过滤的字段。
         :rtype: str
         """
         return self._Name
@@ -4980,7 +4980,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。
+        r"""字段的过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -5004,7 +5004,7 @@ class Filter(AbstractModel):
 
 
 class GooseFSOption(AbstractModel):
-    """描述GooseFS挂载信息
+    r"""描述GooseFS挂载信息
 
     """
 
@@ -5023,7 +5023,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统本地挂载路径。
+        r"""文件系统本地挂载路径。
         :rtype: str
         """
         return self._LocalPath
@@ -5034,7 +5034,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
-        """文件系统远程挂载路径。
+        r"""文件系统远程挂载路径。
         :rtype: str
         """
         return self._RemotePath
@@ -5045,7 +5045,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def Masters(self):
-        """文件系统master的ip和端口。
+        r"""文件系统master的ip和端口。
         :rtype: list of str
         """
         return self._Masters
@@ -5070,7 +5070,7 @@ class GooseFSOption(AbstractModel):
 
 
 class GooseFSOptionOverview(AbstractModel):
-    """GooseFS存储选项概览信息。
+    r"""GooseFS存储选项概览信息。
 
     """
 
@@ -5089,7 +5089,7 @@ class GooseFSOptionOverview(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统本地挂载路径。
+        r"""文件系统本地挂载路径。
         :rtype: str
         """
         return self._LocalPath
@@ -5100,7 +5100,7 @@ class GooseFSOptionOverview(AbstractModel):
 
     @property
     def RemotePath(self):
-        """文件系统远程挂载路径。
+        r"""文件系统远程挂载路径。
         :rtype: str
         """
         return self._RemotePath
@@ -5111,7 +5111,7 @@ class GooseFSOptionOverview(AbstractModel):
 
     @property
     def Masters(self):
-        """文件系统master的ip和端口。
+        r"""文件系统master的ip和端口。
         :rtype: list of str
         """
         return self._Masters
@@ -5136,7 +5136,7 @@ class GooseFSOptionOverview(AbstractModel):
 
 
 class GooseFSxOption(AbstractModel):
-    """描述GooseFSx挂载信息
+    r"""描述GooseFSx挂载信息
 
     """
 
@@ -5152,7 +5152,7 @@ class GooseFSxOption(AbstractModel):
 
     @property
     def Masters(self):
-        """文件系统master的ip和端口列表。
+        r"""文件系统master的ip和端口列表。
         :rtype: list of str
         """
         return self._Masters
@@ -5163,7 +5163,7 @@ class GooseFSxOption(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
+        r"""文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
         :rtype: str
         """
         return self._LocalPath
@@ -5187,7 +5187,7 @@ class GooseFSxOption(AbstractModel):
 
 
 class GooseFSxOptionOverview(AbstractModel):
-    """GooseFSx存储选项概览信息。
+    r"""GooseFSx存储选项概览信息。
 
     """
 
@@ -5203,7 +5203,7 @@ class GooseFSxOptionOverview(AbstractModel):
 
     @property
     def Masters(self):
-        """文件系统master的ip和端口列表。
+        r"""文件系统master的ip和端口列表。
         :rtype: list of str
         """
         return self._Masters
@@ -5214,7 +5214,7 @@ class GooseFSxOptionOverview(AbstractModel):
 
     @property
     def LocalPath(self):
-        """文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
+        r"""文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
         :rtype: str
         """
         return self._LocalPath
@@ -5238,7 +5238,7 @@ class GooseFSxOptionOverview(AbstractModel):
 
 
 class InstanceChargePrepaid(AbstractModel):
-    """描述了实例的计费模式
+    r"""描述了实例的计费模式
 
     """
 
@@ -5261,7 +5261,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def Period(self):
-        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        r"""购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5273,7 +5273,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：
+        r"""自动续费标识。取值范围：
 NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
@@ -5303,7 +5303,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
 
 class InternetAccessible(AbstractModel):
-    """描述了实例的公网可访问性，声明了实例的公网使用计费模式，最大带宽等
+    r"""描述了实例的公网可访问性，声明了实例的公网使用计费模式，最大带宽等
 
     """
 
@@ -5326,7 +5326,7 @@ BANDWIDTH_PACKAGE：带宽包用户
 
     @property
     def InternetChargeType(self):
-        """网络计费类型。取值范围：
+        r"""网络计费类型。取值范围：
 BANDWIDTH_PREPAID：预付费按带宽结算
 TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
 BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费
@@ -5343,7 +5343,7 @@ BANDWIDTH_PACKAGE：带宽包用户
 
     @property
     def InternetMaxBandwidthOut(self):
-        """公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
+        r"""公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5368,7 +5368,7 @@ BANDWIDTH_PACKAGE：带宽包用户
 
 
 class Job(AbstractModel):
-    """提交Job作业信息
+    r"""提交Job作业信息
 
     """
 
@@ -5393,7 +5393,7 @@ class Job(AbstractModel):
 
     @property
     def Tasks(self):
-        """任务配置信息。
+        r"""任务配置信息。
         :rtype: list of Task
         """
         return self._Tasks
@@ -5404,7 +5404,7 @@ class Job(AbstractModel):
 
     @property
     def JobName(self):
-        """作业名称。
+        r"""作业名称。
         :rtype: str
         """
         return self._JobName
@@ -5415,7 +5415,7 @@ class Job(AbstractModel):
 
     @property
     def JobDescription(self):
-        """作业描述。
+        r"""作业描述。
         :rtype: str
         """
         return self._JobDescription
@@ -5426,7 +5426,7 @@ class Job(AbstractModel):
 
     @property
     def Priority(self):
-        """作业优先级，数值越大，优先级越高，数值范围1～100。
+        r"""作业优先级，数值越大，优先级越高，数值范围1～100。
         :rtype: int
         """
         return self._Priority
@@ -5437,7 +5437,7 @@ class Job(AbstractModel):
 
     @property
     def TaskDependencies(self):
-        """描述任务的依赖关系，DAG有向无环图。
+        r"""描述任务的依赖关系，DAG有向无环图。
         :rtype: list of TaskDependence
         """
         return self._TaskDependencies
@@ -5474,7 +5474,7 @@ class Job(AbstractModel):
 
 
 class JobView(AbstractModel):
-    """作业概览信息
+    r"""作业概览信息
 
     """
 
@@ -5516,7 +5516,7 @@ FAILED
 
     @property
     def JobId(self):
-        """作业ID
+        r"""作业ID
         :rtype: str
         """
         return self._JobId
@@ -5527,7 +5527,7 @@ FAILED
 
     @property
     def JobName(self):
-        """作业名称
+        r"""作业名称
         :rtype: str
         """
         return self._JobName
@@ -5538,7 +5538,7 @@ FAILED
 
     @property
     def JobDescription(self):
-        """作业描述
+        r"""作业描述
         :rtype: str
         """
         return self._JobDescription
@@ -5549,7 +5549,7 @@ FAILED
 
     @property
     def Priority(self):
-        """作业优先级
+        r"""作业优先级
         :rtype: int
         """
         return self._Priority
@@ -5560,7 +5560,7 @@ FAILED
 
     @property
     def JobState(self):
-        """作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
+        r"""作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
 FAILED
 
         :rtype: str
@@ -5573,7 +5573,7 @@ FAILED
 
     @property
     def ClusterId(self):
-        """作业所属集群ID
+        r"""作业所属集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -5584,7 +5584,7 @@ FAILED
 
     @property
     def QueueName(self):
-        """作业所属队列名称
+        r"""作业所属队列名称
         :rtype: str
         """
         return self._QueueName
@@ -5595,7 +5595,7 @@ FAILED
 
     @property
     def OccupyResources(self):
-        """完成作业任务所需资源
+        r"""完成作业任务所需资源
         :rtype: str
         """
         return self._OccupyResources
@@ -5606,7 +5606,7 @@ FAILED
 
     @property
     def CreateTime(self):
-        """作业任务创建时间
+        r"""作业任务创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -5617,7 +5617,7 @@ FAILED
 
     @property
     def EndTime(self):
-        """作业任务结束时间
+        r"""作业任务结束时间
         :rtype: str
         """
         return self._EndTime
@@ -5649,7 +5649,7 @@ FAILED
 
 
 class LoginNode(AbstractModel):
-    """登录节点信息。
+    r"""登录节点信息。
 
     """
 
@@ -5686,7 +5686,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5697,7 +5697,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -5708,7 +5708,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。
+        r"""节点机型。不同实例机型指定了不同的资源规格。
 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :rtype: str
         """
@@ -5720,7 +5720,7 @@ class LoginNode(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
         return self._SystemDisk
@@ -5731,7 +5731,7 @@ class LoginNode(AbstractModel):
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        r"""节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -5742,7 +5742,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        r"""公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -5753,7 +5753,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceName(self):
-        """节点显示名称。<br><li>
+        r"""节点显示名称。<br><li>
 不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。</li>
         :rtype: str
@@ -5766,7 +5766,7 @@ class LoginNode(AbstractModel):
 
     @property
     def ProjectId(self):
-        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        r"""实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -5807,7 +5807,7 @@ class LoginNode(AbstractModel):
 
 
 class LoginNodeOverview(AbstractModel):
-    """登录节点概览。
+    r"""登录节点概览。
 
     """
 
@@ -5820,7 +5820,7 @@ class LoginNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
-        """登录节点ID。
+        r"""登录节点ID。
         :rtype: str
         """
         return self._NodeId
@@ -5843,7 +5843,7 @@ class LoginNodeOverview(AbstractModel):
 
 
 class LoginSettings(AbstractModel):
-    """描述了实例登录相关配置与信息。
+    r"""描述了实例登录相关配置与信息。
 
     """
 
@@ -5859,7 +5859,7 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
-        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li><br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        r"""实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li><br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
         :rtype: str
         """
         return self._Password
@@ -5870,7 +5870,7 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
-        """实例登录密钥
+        r"""实例登录密钥
         :rtype: list of str
         """
         return self._KeyIds
@@ -5894,7 +5894,7 @@ class LoginSettings(AbstractModel):
 
 
 class ManagerNode(AbstractModel):
-    """管控节点信息
+    r"""管控节点信息
 
     """
 
@@ -5931,7 +5931,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
+        r"""节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5942,7 +5942,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -5953,7 +5953,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
+        r"""节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
         :rtype: str
         """
         return self._InstanceType
@@ -5964,7 +5964,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
         return self._SystemDisk
@@ -5975,7 +5975,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        r"""节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -5986,7 +5986,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        r"""公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -5997,7 +5997,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceName(self):
-        """节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 </li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li> 最多支持60个字符（包含模式串）。</li>
+        r"""节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 </li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li> 最多支持60个字符（包含模式串）。</li>
         :rtype: str
         """
         return self._InstanceName
@@ -6008,7 +6008,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def ProjectId(self):
-        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        r"""实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -6019,7 +6019,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
+        r"""增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         return self._EnhancedService
@@ -6063,7 +6063,7 @@ class ManagerNode(AbstractModel):
 
 
 class ManagerNodeOverview(AbstractModel):
-    """管控节点概览。
+    r"""管控节点概览。
 
     """
 
@@ -6076,7 +6076,7 @@ class ManagerNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
-        """管控节点ID。
+        r"""管控节点ID。
         :rtype: str
         """
         return self._NodeId
@@ -6099,7 +6099,7 @@ class ManagerNodeOverview(AbstractModel):
 
 
 class ModifyInitNodeScriptsRequest(AbstractModel):
-    """ModifyInitNodeScripts请求参数结构体
+    r"""ModifyInitNodeScripts请求参数结构体
 
     """
 
@@ -6115,7 +6115,7 @@ class ModifyInitNodeScriptsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -6126,7 +6126,7 @@ class ModifyInitNodeScriptsRequest(AbstractModel):
 
     @property
     def InitNodeScripts(self):
-        """节点初始化脚本信息列表。
+        r"""节点初始化脚本信息列表。
         :rtype: list of NodeScript
         """
         return self._InitNodeScripts
@@ -6155,7 +6155,7 @@ class ModifyInitNodeScriptsRequest(AbstractModel):
 
 
 class ModifyInitNodeScriptsResponse(AbstractModel):
-    """ModifyInitNodeScripts返回参数结构体
+    r"""ModifyInitNodeScripts返回参数结构体
 
     """
 
@@ -6168,7 +6168,7 @@ class ModifyInitNodeScriptsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6183,7 +6183,7 @@ class ModifyInitNodeScriptsResponse(AbstractModel):
 
 
 class ModifyWorkspacesAttributeRequest(AbstractModel):
-    """ModifyWorkspacesAttribute请求参数结构体
+    r"""ModifyWorkspacesAttribute请求参数结构体
 
     """
 
@@ -6199,7 +6199,7 @@ class ModifyWorkspacesAttributeRequest(AbstractModel):
 
     @property
     def SpaceIds(self):
-        """工作空间列表
+        r"""工作空间列表
         :rtype: list of str
         """
         return self._SpaceIds
@@ -6210,7 +6210,7 @@ class ModifyWorkspacesAttributeRequest(AbstractModel):
 
     @property
     def SpaceName(self):
-        """修改后的工作空间名称。可任意命名，但不得超过60个字符。
+        r"""修改后的工作空间名称。可任意命名，但不得超过60个字符。
         :rtype: str
         """
         return self._SpaceName
@@ -6234,7 +6234,7 @@ class ModifyWorkspacesAttributeRequest(AbstractModel):
 
 
 class ModifyWorkspacesAttributeResponse(AbstractModel):
-    """ModifyWorkspacesAttribute返回参数结构体
+    r"""ModifyWorkspacesAttribute返回参数结构体
 
     """
 
@@ -6247,7 +6247,7 @@ class ModifyWorkspacesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6262,7 +6262,7 @@ class ModifyWorkspacesAttributeResponse(AbstractModel):
 
 
 class ModifyWorkspacesRenewFlagRequest(AbstractModel):
-    """ModifyWorkspacesRenewFlag请求参数结构体
+    r"""ModifyWorkspacesRenewFlag请求参数结构体
 
     """
 
@@ -6278,7 +6278,7 @@ class ModifyWorkspacesRenewFlagRequest(AbstractModel):
 
     @property
     def SpaceIds(self):
-        """工作空间列表
+        r"""工作空间列表
         :rtype: list of str
         """
         return self._SpaceIds
@@ -6289,7 +6289,7 @@ class ModifyWorkspacesRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        r"""自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :rtype: str
         """
         return self._RenewFlag
@@ -6313,7 +6313,7 @@ class ModifyWorkspacesRenewFlagRequest(AbstractModel):
 
 
 class ModifyWorkspacesRenewFlagResponse(AbstractModel):
-    """ModifyWorkspacesRenewFlag返回参数结构体
+    r"""ModifyWorkspacesRenewFlag返回参数结构体
 
     """
 
@@ -6326,7 +6326,7 @@ class ModifyWorkspacesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6341,7 +6341,7 @@ class ModifyWorkspacesRenewFlagResponse(AbstractModel):
 
 
 class NodeActivity(AbstractModel):
-    """节点活动信息。
+    r"""节点活动信息。
 
     """
 
@@ -6366,7 +6366,7 @@ class NodeActivity(AbstractModel):
 
     @property
     def NodeInstanceId(self):
-        """节点活动所在的实例ID。
+        r"""节点活动所在的实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6378,7 +6378,7 @@ class NodeActivity(AbstractModel):
 
     @property
     def NodeActivityStatus(self):
-        """节点活动状态。取值范围：<br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>FAILED：活动失败</li>
+        r"""节点活动状态。取值范围：<br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>FAILED：活动失败</li>
         :rtype: str
         """
         return self._NodeActivityStatus
@@ -6389,7 +6389,7 @@ class NodeActivity(AbstractModel):
 
     @property
     def NodeActivityStatusCode(self):
-        """节点活动状态码。
+        r"""节点活动状态码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6401,7 +6401,7 @@ class NodeActivity(AbstractModel):
 
     @property
     def NodeActivityStatusReason(self):
-        """节点活动状态原因。
+        r"""节点活动状态原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6428,7 +6428,7 @@ class NodeActivity(AbstractModel):
 
 
 class NodeOverview(AbstractModel):
-    """节点概览信息。
+    r"""节点概览信息。
 
     """
 
@@ -6482,7 +6482,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -6493,7 +6493,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def InstanceId(self):
-        """节点实例ID。
+        r"""节点实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6505,7 +6505,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def Zone(self):
-        """节点所在可用区信息。
+        r"""节点所在可用区信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6517,7 +6517,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeState(self):
-        """节点状态。<li>SUBMITTED：已完成提交。</li><li>CREATING：创建中。</li><li>CREATED：完成创建。</li><li>INITING：初始化中。</li><li>INIT_FAILED：初始化失败。</li><li>RUNNING：运行中。</li><li>DELETING：销毁中。</li>
+        r"""节点状态。<li>SUBMITTED：已完成提交。</li><li>CREATING：创建中。</li><li>CREATED：完成创建。</li><li>INITING：初始化中。</li><li>INIT_FAILED：初始化失败。</li><li>RUNNING：运行中。</li><li>DELETING：销毁中。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6529,7 +6529,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def ImageId(self):
-        """镜像ID。
+        r"""镜像ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6541,7 +6541,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def QueueName(self):
-        """节点所属队列名称。
+        r"""节点所属队列名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6553,7 +6553,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeRole(self):
-        """节点角色。<li>Manager：管控节点。</li><li>Compute：计算节点。</li><li>Login：登录节点。</li><li>ManagerBackup：备用管控节点。</li>
+        r"""节点角色。<li>Manager：管控节点。</li><li>Compute：计算节点。</li><li>Login：登录节点。</li><li>ManagerBackup：备用管控节点。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6565,7 +6565,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeType(self):
-        """节点类型。<li>STATIC：静态节点。</li><li>DYNAMIC：弹性节点。</li>
+        r"""节点类型。<li>STATIC：静态节点。</li><li>DYNAMIC：弹性节点。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6577,7 +6577,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
-        """thpc集群节点id
+        r"""thpc集群节点id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6589,7 +6589,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeAllocateState(self):
-        """节点的工作状态
+        r"""节点的工作状态
         :rtype: str
         """
         return self._NodeAllocateState
@@ -6600,7 +6600,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def NodeName(self):
-        """节点的名称
+        r"""节点的名称
         :rtype: str
         """
         return self._NodeName
@@ -6611,7 +6611,7 @@ class NodeOverview(AbstractModel):
 
     @property
     def CreateTime(self):
-        """节点的创建时间
+        r"""节点的创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6645,7 +6645,7 @@ class NodeOverview(AbstractModel):
 
 
 class NodeScript(AbstractModel):
-    """描述节点执行脚本信息。
+    r"""描述节点执行脚本信息。
 
     """
 
@@ -6662,7 +6662,7 @@ class NodeScript(AbstractModel):
 
     @property
     def ScriptPath(self):
-        """节点执行脚本获取地址。
+        r"""节点执行脚本获取地址。
 目前仅支持cos地址。地址最大长度：255。
         :rtype: str
         """
@@ -6674,7 +6674,7 @@ class NodeScript(AbstractModel):
 
     @property
     def Timeout(self):
-        """脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
+        r"""脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
         :rtype: int
         """
         return self._Timeout
@@ -6698,7 +6698,7 @@ class NodeScript(AbstractModel):
 
 
 class OutputRedirect(AbstractModel):
-    """输出重定向配置
+    r"""输出重定向配置
 
     """
 
@@ -6714,7 +6714,7 @@ class OutputRedirect(AbstractModel):
 
     @property
     def Driver(self):
-        """输出driver类型
+        r"""输出driver类型
         :rtype: str
         """
         return self._Driver
@@ -6725,7 +6725,7 @@ class OutputRedirect(AbstractModel):
 
     @property
     def Options(self):
-        """重定向配置参数
+        r"""重定向配置参数
         :rtype: list of str
         """
         return self._Options
@@ -6749,7 +6749,7 @@ class OutputRedirect(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述了实例的抽象位置
+    r"""描述了实例的抽象位置
 
     """
 
@@ -6763,7 +6763,7 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
-        """实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
+        r"""实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6787,7 +6787,7 @@ class Placement(AbstractModel):
 
 
 class QueueConfig(AbstractModel):
-    """扩容队列配置。
+    r"""扩容队列配置。
 
     """
 
@@ -6855,7 +6855,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。
+        r"""队列名称。
         :rtype: str
         """
         return self._QueueName
@@ -6866,7 +6866,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def MinSize(self):
-        """队列中弹性节点数量最小值。默认值：0。取值范围：0～200。
+        r"""队列中弹性节点数量最小值。默认值：0。取值范围：0～200。
         :rtype: int
         """
         return self._MinSize
@@ -6877,7 +6877,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def MaxSize(self):
-        """队列中弹性节点数量最大值。默认值：10。取值范围：0～200。
+        r"""队列中弹性节点数量最大值。默认值：10。取值范围：0～200。
         :rtype: int
         """
         return self._MaxSize
@@ -6888,7 +6888,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def EnableAutoExpansion(self):
-        """是否开启自动扩容。
+        r"""是否开启自动扩容。
         :rtype: bool
         """
         return self._EnableAutoExpansion
@@ -6899,7 +6899,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def EnableAutoShrink(self):
-        """是否开启自动缩容。
+        r"""是否开启自动缩容。
         :rtype: bool
         """
         return self._EnableAutoShrink
@@ -6910,7 +6910,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜和特定自定义镜像。
+        r"""指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜和特定自定义镜像。
         :rtype: str
         """
         return self._ImageId
@@ -6921,7 +6921,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        r"""节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
         """
         return self._SystemDisk
@@ -6932,7 +6932,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def DataDisks(self):
-        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        r"""节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -6943,7 +6943,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        r"""公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -6954,7 +6954,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def ExpansionNodeConfigs(self):
-        """扩容节点配置信息。
+        r"""扩容节点配置信息。
         :rtype: list of ExpansionNodeConfig
         """
         return self._ExpansionNodeConfigs
@@ -6965,7 +6965,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def DesiredIdleNodeCapacity(self):
-        """队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+        r"""队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
         :rtype: int
         """
         return self._DesiredIdleNodeCapacity
@@ -6976,7 +6976,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def DesiredNodeCount(self):
-        """队列中期望的总节点数。
+        r"""队列中期望的总节点数。
         :rtype: int
         """
         return self._DesiredNodeCount
@@ -6987,7 +6987,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def ScaleOutRatio(self):
-        """扩容比例。默认值：100。取值范围：1～100。
+        r"""扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
         :rtype: int
         """
@@ -6999,7 +6999,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def ScaleOutNodeThreshold(self):
-        """比例扩容阈值。默认值：0。取值范围：0～200。
+        r"""比例扩容阈值。默认值：0。取值范围：0～200。
 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
         :rtype: int
@@ -7012,7 +7012,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def MaxNodesPerCycle(self):
-        """每轮扩容最大节点个数。默认值：100。取值范围：1～100。
+        r"""每轮扩容最大节点个数。默认值：100。取值范围：1～100。
         :rtype: int
         """
         return self._MaxNodesPerCycle
@@ -7023,7 +7023,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def ScaleUpMemRatio(self):
-        """扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
+        r"""扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
 针对场景：由于实例机型的总内存会大于实例内部的可用内存，16GB内存规格的实例，实例操作系统内的可用内存只有约14.9GB内存。假设此时提交一个需要15GB内存的作业，
 
 - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
@@ -7038,7 +7038,7 @@ class QueueConfig(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
+        r"""增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         return self._EnhancedService
@@ -7093,7 +7093,7 @@ class QueueConfig(AbstractModel):
 
 
 class QueueConfigOverview(AbstractModel):
-    """扩容队列配置概览。
+    r"""扩容队列配置概览。
 
     """
 
@@ -7146,7 +7146,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。
+        r"""队列名称。
         :rtype: str
         """
         return self._QueueName
@@ -7157,7 +7157,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def MinSize(self):
-        """队列中弹性节点数量最小值。取值范围0～200。
+        r"""队列中弹性节点数量最小值。取值范围0～200。
         :rtype: int
         """
         return self._MinSize
@@ -7168,7 +7168,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def MaxSize(self):
-        """队列中弹性节点数量最大值。取值范围0～200。
+        r"""队列中弹性节点数量最大值。取值范围0～200。
         :rtype: int
         """
         return self._MaxSize
@@ -7179,7 +7179,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def EnableAutoExpansion(self):
-        """是否开启自动扩容。
+        r"""是否开启自动扩容。
         :rtype: bool
         """
         return self._EnableAutoExpansion
@@ -7190,7 +7190,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def EnableAutoShrink(self):
-        """是否开启自动缩容。
+        r"""是否开启自动缩容。
         :rtype: bool
         """
         return self._EnableAutoShrink
@@ -7201,7 +7201,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def ExpansionNodeConfigs(self):
-        """扩容节点配置信息。
+        r"""扩容节点配置信息。
         :rtype: list of ExpansionNodeConfigOverview
         """
         return self._ExpansionNodeConfigs
@@ -7212,7 +7212,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def DesiredIdleNodeCapacity(self):
-        """队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+        r"""队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
         :rtype: int
         """
         return self._DesiredIdleNodeCapacity
@@ -7223,7 +7223,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def DesiredNodeCount(self):
-        """队列中期望的总节点数。
+        r"""队列中期望的总节点数。
         :rtype: int
         """
         return self._DesiredNodeCount
@@ -7234,7 +7234,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def ScaleOutRatio(self):
-        """扩容比例。默认值：100。取值范围：1～100。
+        r"""扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
         :rtype: int
         """
@@ -7246,7 +7246,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def ScaleOutNodeThreshold(self):
-        """比例扩容阈值。默认值：0。取值范围：0～200。
+        r"""比例扩容阈值。默认值：0。取值范围：0～200。
 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
         :rtype: int
@@ -7259,7 +7259,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def MaxNodesPerCycle(self):
-        """每轮扩容最大节点个数。
+        r"""每轮扩容最大节点个数。
         :rtype: int
         """
         return self._MaxNodesPerCycle
@@ -7270,7 +7270,7 @@ class QueueConfigOverview(AbstractModel):
 
     @property
     def ScaleUpMemRatio(self):
-        """扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
+        r"""扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
 针对场景：由于实例机型的总内存会大于实例内部的可用内存，16GB内存规格的实例，实例操作系统内的可用内存只有约14.9GB内存。假设此时提交一个需要15GB内存的作业，
 
 - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
@@ -7313,7 +7313,7 @@ class QueueConfigOverview(AbstractModel):
 
 
 class QueueOverview(AbstractModel):
-    """队列信息概览。
+    r"""队列信息概览。
 
     """
 
@@ -7326,7 +7326,7 @@ class QueueOverview(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。
+        r"""队列名称。
         :rtype: str
         """
         return self._QueueName
@@ -7349,7 +7349,7 @@ class QueueOverview(AbstractModel):
 
 
 class RunAutomationServiceEnabled(AbstractModel):
-    """描述了 “云自动化助手” 服务相关的信息。
+    r"""描述了 “云自动化助手” 服务相关的信息。
 
     """
 
@@ -7362,7 +7362,7 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务</li><br><li>FALSE：表示不开启云自动化助手服务</li><br><br>默认取值：TRUE。
+        r"""是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务</li><br><li>FALSE：表示不开启云自动化助手服务</li><br><br>默认取值：TRUE。
         :rtype: bool
         """
         return self._Enabled
@@ -7385,7 +7385,7 @@ class RunAutomationServiceEnabled(AbstractModel):
 
 
 class RunMonitorServiceEnabled(AbstractModel):
-    """描述了 “腾讯云可观测平台” 服务相关的信息。
+    r"""描述了 “腾讯云可观测平台” 服务相关的信息。
 
     """
 
@@ -7398,7 +7398,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务</li><br><li>FALSE：表示不开启腾讯云可观测平台服务</li><br><br>默认取值：TRUE。
+        r"""是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务</li><br><li>FALSE：表示不开启腾讯云可观测平台服务</li><br><br>默认取值：TRUE。
         :rtype: bool
         """
         return self._Enabled
@@ -7421,7 +7421,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
 
 class RunSecurityServiceEnabled(AbstractModel):
-    """描述了 “云安全” 服务相关的信息。
+    r"""描述了 “云安全” 服务相关的信息。
 
     """
 
@@ -7434,7 +7434,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务</li><br><li>FALSE：表示不开启云安全服务</li><br><br>默认取值：TRUE。
+        r"""是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务</li><br><li>FALSE：表示不开启云安全服务</li><br><br>默认取值：TRUE。
         :rtype: bool
         """
         return self._Enabled
@@ -7457,7 +7457,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
 
 class SetAutoScalingConfigurationRequest(AbstractModel):
-    """SetAutoScalingConfiguration请求参数结构体
+    r"""SetAutoScalingConfiguration请求参数结构体
 
     """
 
@@ -7486,7 +7486,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ClusterId(self):
-        """集群ID。
+        r"""集群ID。
         :rtype: str
         """
         return self._ClusterId
@@ -7497,7 +7497,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ExpansionBusyTime(self):
-        """任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+        r"""任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
         :rtype: int
         """
         return self._ExpansionBusyTime
@@ -7508,7 +7508,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ShrinkIdleTime(self):
-        """节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+        r"""节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
         :rtype: int
         """
         return self._ShrinkIdleTime
@@ -7519,7 +7519,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def QueueConfigs(self):
-        """扩容队列配置列表。
+        r"""扩容队列配置列表。
         :rtype: list of QueueConfig
         """
         return self._QueueConfigs
@@ -7530,7 +7530,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def DryRun(self):
-        """是否只预检此次请求。
+        r"""是否只预检此次请求。
 true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
 如果检查不通过，则返回对应错误码；
 如果检查通过，则返回RequestId。
@@ -7566,7 +7566,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
 
 class SetAutoScalingConfigurationResponse(AbstractModel):
-    """SetAutoScalingConfiguration返回参数结构体
+    r"""SetAutoScalingConfiguration返回参数结构体
 
     """
 
@@ -7579,7 +7579,7 @@ class SetAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7594,7 +7594,7 @@ class SetAutoScalingConfigurationResponse(AbstractModel):
 
 
 class SpaceChargePrepaid(AbstractModel):
-    """描述了工作空间的计费模式
+    r"""描述了工作空间的计费模式
 
     """
 
@@ -7621,7 +7621,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def Period(self):
-        """购买实例的时长，单位：月。取值范围：1, 2, 3, 12, 24, 36。默认取值为1。
+        r"""购买实例的时长，单位：月。取值范围：1, 2, 3, 12, 24, 36。默认取值为1。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7633,7 +7633,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：
+        r"""自动续费标识。取值范围：
 
 NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
 
@@ -7667,7 +7667,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
 
 class SpaceDataDisk(AbstractModel):
-    """工作空间数据盘配置
+    r"""工作空间数据盘配置
 
     """
 
@@ -7757,7 +7757,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
+        r"""数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
 <li>
   LOCAL_BASIC：本地硬盘<br />
   <li>
@@ -7798,7 +7798,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def DiskId(self):
-        """数据盘
+        r"""数据盘
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7810,7 +7810,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        r"""数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :rtype: int
         """
         return self._DiskSize
@@ -7821,7 +7821,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
-        """数据盘是否随子机销毁。取值范围：
+        r"""数据盘是否随子机销毁。取值范围：
 <li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
 <li>
   FALSE：子机销毁时，保留数据盘<br />
@@ -7839,7 +7839,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+        r"""数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7851,7 +7851,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
-        """数据盘是加密。取值范围：
+        r"""数据盘是加密。取值范围：
 <li>true：加密</li>
 <li>
   false：不加密<br />
@@ -7869,7 +7869,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        """自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
+        r"""自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
 该参数目前仅用于 `CreateWorkspaces` 接口。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7883,7 +7883,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """云硬盘性能，单位：MB/s
+        r"""云硬盘性能，单位：MB/s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7895,7 +7895,7 @@ class SpaceDataDisk(AbstractModel):
 
     @property
     def BurstPerformance(self):
-        """突发性能
+        r"""突发性能
 
 注：内测中。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7929,7 +7929,7 @@ class SpaceDataDisk(AbstractModel):
 
 
 class SpaceInfo(AbstractModel):
-    """描述工作空间的信息
+    r"""描述工作空间的信息
 
     """
 
@@ -7983,7 +7983,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: str
         """
         return self._SpaceId
@@ -7994,7 +7994,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceFamily(self):
-        """工作空间类型
+        r"""工作空间类型
         :rtype: str
         """
         return self._SpaceFamily
@@ -8005,7 +8005,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceType(self):
-        """工作空间规格
+        r"""工作空间规格
         :rtype: str
         """
         return self._SpaceType
@@ -8016,7 +8016,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceName(self):
-        """工作空间名称
+        r"""工作空间名称
         :rtype: str
         """
         return self._SpaceName
@@ -8027,7 +8027,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceState(self):
-        """工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+        r"""工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
         :rtype: str
         """
         return self._SpaceState
@@ -8038,7 +8038,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceChargeType(self):
-        """工作空间计费模式
+        r"""工作空间计费模式
         :rtype: str
         """
         return self._SpaceChargeType
@@ -8049,7 +8049,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """工作空间对应资源ID
+        r"""工作空间对应资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -8060,7 +8060,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识
+        r"""自动续费标识
         :rtype: str
         """
         return self._RenewFlag
@@ -8071,7 +8071,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """工作空间关联的工作列表
+        r"""工作空间关联的工作列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -8082,7 +8082,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -8093,7 +8093,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """到期时间
+        r"""到期时间
         :rtype: str
         """
         return self._ExpiredTime
@@ -8104,7 +8104,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Placement(self):
-        """工作空间所在位置
+        r"""工作空间所在位置
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -8115,7 +8115,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def LatestOperation(self):
-        """工作空间的最新操作
+        r"""工作空间的最新操作
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8127,7 +8127,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def LatestOperationState(self):
-        """工作空间的最新操作状态
+        r"""工作空间的最新操作状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8171,7 +8171,7 @@ class SpaceInfo(AbstractModel):
 
 
 class SpaceInternetAccessible(AbstractModel):
-    """描述了工作空间的公网可访问性，声明了工作空间的公网使用计费模式，最大带宽等
+    r"""描述了工作空间的公网可访问性，声明了工作空间的公网使用计费模式，最大带宽等
 
     """
 
@@ -8197,7 +8197,7 @@ class SpaceInternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
-        """网络计费类型
+        r"""网络计费类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8209,7 +8209,7 @@ class SpaceInternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        """公网出带宽上限，默认为0
+        r"""公网出带宽上限，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8221,7 +8221,7 @@ class SpaceInternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
-        """是否分配公网IP
+        r"""是否分配公网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -8233,7 +8233,7 @@ class SpaceInternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """带宽包ID
+        r"""带宽包ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8260,7 +8260,7 @@ class SpaceInternetAccessible(AbstractModel):
 
 
 class SpacePlacement(AbstractModel):
-    """描述了实例的抽象位置，包括其所在的可用区，所属的项目
+    r"""描述了实例的抽象位置，包括其所在的可用区，所属的项目
 
     """
 
@@ -8276,7 +8276,7 @@ class SpacePlacement(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._Zone
@@ -8287,7 +8287,7 @@ class SpacePlacement(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目，默认是0
+        r"""项目，默认是0
         :rtype: int
         """
         return self._ProjectId
@@ -8311,7 +8311,7 @@ class SpacePlacement(AbstractModel):
 
 
 class SpaceSystemDisk(AbstractModel):
-    """工作空间系统盘配置
+    r"""工作空间系统盘配置
 
     """
 
@@ -8329,7 +8329,7 @@ class SpaceSystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<ul><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用性SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li></ul>默认取值：当前有库存的硬盘类型。
+        r"""系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<ul><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用性SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li></ul>默认取值：当前有库存的硬盘类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8341,7 +8341,7 @@ class SpaceSystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """系统盘大小，单位：GB。默认值为 50
+        r"""系统盘大小，单位：GB。默认值为 50
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8366,7 +8366,7 @@ class SpaceSystemDisk(AbstractModel):
 
 
 class SpaceVirtualPrivateCloud(AbstractModel):
-    """描述了工作空间VPC相关信息，包括子网，IP信息等
+    r"""描述了工作空间VPC相关信息，包括子网，IP信息等
 
     """
 
@@ -8391,7 +8391,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID
+        r"""私有网络ID
         :rtype: str
         """
         return self._VpcId
@@ -8402,7 +8402,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络子网ID
+        r"""私有网络子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -8413,7 +8413,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
     @property
     def AsVpcGateway(self):
-        """是否用作公网网关
+        r"""是否用作公网网关
         :rtype: bool
         """
         return self._AsVpcGateway
@@ -8424,7 +8424,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        """私有网络子网 IP 数组
+        r"""私有网络子网 IP 数组
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -8435,7 +8435,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
-        """为弹性网卡指定随机生成
+        r"""为弹性网卡指定随机生成
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -8462,7 +8462,7 @@ class SpaceVirtualPrivateCloud(AbstractModel):
 
 
 class StorageMount(AbstractModel):
-    """存储目录挂载配置。
+    r"""存储目录挂载配置。
 
     """
 
@@ -8481,7 +8481,7 @@ class StorageMount(AbstractModel):
 
     @property
     def Source(self):
-        """挂载源
+        r"""挂载源
         :rtype: str
         """
         return self._Source
@@ -8492,7 +8492,7 @@ class StorageMount(AbstractModel):
 
     @property
     def Target(self):
-        """目标挂载位置
+        r"""目标挂载位置
         :rtype: str
         """
         return self._Target
@@ -8503,7 +8503,7 @@ class StorageMount(AbstractModel):
 
     @property
     def StorageType(self):
-        """挂载的存储类型，目前仅支持：local
+        r"""挂载的存储类型，目前仅支持：local
         :rtype: str
         """
         return self._StorageType
@@ -8528,7 +8528,7 @@ class StorageMount(AbstractModel):
 
 
 class StorageOption(AbstractModel):
-    """描述集群文件系统选项
+    r"""描述集群文件系统选项
 
     """
 
@@ -8547,7 +8547,7 @@ class StorageOption(AbstractModel):
 
     @property
     def CFSOptions(self):
-        """集群挂载CFS文件系统选项。
+        r"""集群挂载CFS文件系统选项。
         :rtype: list of CFSOption
         """
         return self._CFSOptions
@@ -8558,7 +8558,7 @@ class StorageOption(AbstractModel):
 
     @property
     def GooseFSOptions(self):
-        """集群挂载GooseFS文件系统选项。
+        r"""集群挂载GooseFS文件系统选项。
         :rtype: list of GooseFSOption
         """
         return self._GooseFSOptions
@@ -8569,7 +8569,7 @@ class StorageOption(AbstractModel):
 
     @property
     def GooseFSxOptions(self):
-        """集群挂载GooseFSx文件系统选项。
+        r"""集群挂载GooseFSx文件系统选项。
         :rtype: list of GooseFSxOption
         """
         return self._GooseFSxOptions
@@ -8609,7 +8609,7 @@ class StorageOption(AbstractModel):
 
 
 class StorageOptionOverview(AbstractModel):
-    """集群存储选项概览信息。
+    r"""集群存储选项概览信息。
 
     """
 
@@ -8628,7 +8628,7 @@ class StorageOptionOverview(AbstractModel):
 
     @property
     def CFSOptions(self):
-        """CFS存储选项概览信息列表。
+        r"""CFS存储选项概览信息列表。
         :rtype: list of CFSOptionOverview
         """
         return self._CFSOptions
@@ -8639,7 +8639,7 @@ class StorageOptionOverview(AbstractModel):
 
     @property
     def GooseFSOptions(self):
-        """GooseFS存储选项概览信息列表。
+        r"""GooseFS存储选项概览信息列表。
         :rtype: list of GooseFSOptionOverview
         """
         return self._GooseFSOptions
@@ -8650,7 +8650,7 @@ class StorageOptionOverview(AbstractModel):
 
     @property
     def GooseFSxOptions(self):
-        """GooseFSx存储选项概览信息列表。
+        r"""GooseFSx存储选项概览信息列表。
         :rtype: list of GooseFSxOptionOverview
         """
         return self._GooseFSxOptions
@@ -8690,13 +8690,13 @@ class StorageOptionOverview(AbstractModel):
 
 
 class SubmitJobRequest(AbstractModel):
-    """SubmitJob请求参数结构体
+    r"""SubmitJob请求参数结构体
 
     """
 
 
 class SubmitJobResponse(AbstractModel):
-    """SubmitJob返回参数结构体
+    r"""SubmitJob返回参数结构体
 
     """
 
@@ -8709,7 +8709,7 @@ class SubmitJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8724,7 +8724,7 @@ class SubmitJobResponse(AbstractModel):
 
 
 class SystemDisk(AbstractModel):
-    """描述了操作系统所在块设备即系统盘的信息
+    r"""描述了操作系统所在块设备即系统盘的信息
 
     """
 
@@ -8747,7 +8747,7 @@ CLOUD_PREMIUM：高性能云硬盘
 
     @property
     def DiskType(self):
-        """系统盘类型。系统盘类型限制详见存储概述。取值范围：
+        r"""系统盘类型。系统盘类型限制详见存储概述。取值范围：
 CLOUD_BASIC：普通云硬盘
 CLOUD_SSD：SSD云硬盘
 CLOUD_PREMIUM：高性能云硬盘
@@ -8764,7 +8764,7 @@ CLOUD_PREMIUM：高性能云硬盘
 
     @property
     def DiskSize(self):
-        """系统盘大小，单位：GB。默认值为 50
+        r"""系统盘大小，单位：GB。默认值为 50
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8789,7 +8789,7 @@ CLOUD_PREMIUM：高性能云硬盘
 
 
 class Tag(AbstractModel):
-    """标签键值对。
+    r"""标签键值对。
 
     """
 
@@ -8805,7 +8805,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -8816,7 +8816,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -8840,7 +8840,7 @@ class Tag(AbstractModel):
 
 
 class TagSpecification(AbstractModel):
-    """创建资源工作空间时同时绑定的标签对说明
+    r"""创建资源工作空间时同时绑定的标签对说明
 
     """
 
@@ -8856,7 +8856,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
-        """标签绑定的资源类型
+        r"""标签绑定的资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -8867,7 +8867,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def Tags(self):
-        """标签对列表
+        r"""标签对列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -8896,7 +8896,7 @@ class TagSpecification(AbstractModel):
 
 
 class Task(AbstractModel):
-    """作业任务配置信息。
+    r"""作业任务配置信息。
 
     """
 
@@ -8918,7 +8918,7 @@ class Task(AbstractModel):
 
     @property
     def Application(self):
-        """作业任务的应用环境配置信息。
+        r"""作业任务的应用环境配置信息。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Application`
         """
         return self._Application
@@ -8929,7 +8929,7 @@ class Task(AbstractModel):
 
     @property
     def TaskName(self):
-        """作业任务名称。
+        r"""作业任务名称。
         :rtype: str
         """
         return self._TaskName
@@ -8940,7 +8940,7 @@ class Task(AbstractModel):
 
     @property
     def TaskInstanceNum(self):
-        """作业任务所需的节点数/副本数。
+        r"""作业任务所需的节点数/副本数。
         :rtype: int
         """
         return self._TaskInstanceNum
@@ -8951,7 +8951,7 @@ class Task(AbstractModel):
 
     @property
     def Timeout(self):
-        """任务超时时间(单位：秒)。
+        r"""任务超时时间(单位：秒)。
         :rtype: int
         """
         return self._Timeout
@@ -8979,7 +8979,7 @@ class Task(AbstractModel):
 
 
 class TaskDependence(AbstractModel):
-    """任务的依赖关系。
+    r"""任务的依赖关系。
 
     """
 
@@ -8995,7 +8995,7 @@ class TaskDependence(AbstractModel):
 
     @property
     def StartTask(self):
-        """依赖关系的起点任务名称。
+        r"""依赖关系的起点任务名称。
         :rtype: str
         """
         return self._StartTask
@@ -9006,7 +9006,7 @@ class TaskDependence(AbstractModel):
 
     @property
     def EndTask(self):
-        """依赖关系的终点任务名称。
+        r"""依赖关系的终点任务名称。
         :rtype: str
         """
         return self._EndTask
@@ -9030,7 +9030,7 @@ class TaskDependence(AbstractModel):
 
 
 class TerminateJobRequest(AbstractModel):
-    """TerminateJob请求参数结构体
+    r"""TerminateJob请求参数结构体
 
     """
 
@@ -9043,7 +9043,7 @@ class TerminateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业任务ID
+        r"""作业任务ID
         :rtype: str
         """
         return self._JobId
@@ -9066,7 +9066,7 @@ class TerminateJobRequest(AbstractModel):
 
 
 class TerminateJobResponse(AbstractModel):
-    """TerminateJob返回参数结构体
+    r"""TerminateJob返回参数结构体
 
     """
 
@@ -9079,7 +9079,7 @@ class TerminateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9094,7 +9094,7 @@ class TerminateJobResponse(AbstractModel):
 
 
 class TerminateWorkspacesRequest(AbstractModel):
-    """TerminateWorkspaces请求参数结构体
+    r"""TerminateWorkspaces请求参数结构体
 
     """
 
@@ -9110,7 +9110,7 @@ class TerminateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceIds(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: list of str
         """
         return self._SpaceIds
@@ -9121,7 +9121,7 @@ class TerminateWorkspacesRequest(AbstractModel):
 
     @property
     def ReleasePrepaidDataDisks(self):
-        """释放空间挂载的包年包月数据盘。true表示销毁空间同时释放包年包月数据盘，false表示只销毁空间。
+        r"""释放空间挂载的包年包月数据盘。true表示销毁空间同时释放包年包月数据盘，false表示只销毁空间。
         :rtype: bool
         """
         return self._ReleasePrepaidDataDisks
@@ -9145,7 +9145,7 @@ class TerminateWorkspacesRequest(AbstractModel):
 
 
 class TerminateWorkspacesResponse(AbstractModel):
-    """TerminateWorkspaces返回参数结构体
+    r"""TerminateWorkspaces返回参数结构体
 
     """
 
@@ -9158,7 +9158,7 @@ class TerminateWorkspacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9173,7 +9173,7 @@ class TerminateWorkspacesResponse(AbstractModel):
 
 
 class VirtualPrivateCloud(AbstractModel):
-    """描述了VPC相关信息
+    r"""描述了VPC相关信息
 
     """
 
@@ -9191,7 +9191,7 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        r"""私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9203,7 +9203,7 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        r"""私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

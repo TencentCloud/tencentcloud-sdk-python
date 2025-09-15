@@ -27,7 +27,7 @@ class IssClient(AbstractClient):
 
 
     def AddAITask(self, request):
-        """添加AI任务
+        r"""添加AI任务
 
         :param request: Request instance for AddAITask.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddAITaskRequest`
@@ -50,7 +50,7 @@ class IssClient(AbstractClient):
 
 
     def AddOrganization(self, request):
-        """用于新增组织。
+        r"""用于新增组织。
 
         :param request: Request instance for AddOrganization.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddOrganizationRequest`
@@ -73,7 +73,7 @@ class IssClient(AbstractClient):
 
 
     def AddRecordBackupPlan(self, request):
-        """用于新增录像上云计划 （当前仅适用于通过GB28181协议和网关接入的设备/视频通道）
+        r"""用于新增录像上云计划 （当前仅适用于通过GB28181协议和网关接入的设备/视频通道）
 
         :param request: Request instance for AddRecordBackupPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddRecordBackupPlanRequest`
@@ -96,7 +96,7 @@ class IssClient(AbstractClient):
 
 
     def AddRecordBackupTemplate(self, request):
-        """用于新增录像上云模板。
+        r"""用于新增录像上云模板。
         > 该功能本质是拉取设备本地录像数据上云（即存在 IPC 摄像头存储卡或 NVR 硬盘中的录像），操作时需先设定录像时间段（即想要上云的设备本地录像），再设定上云时间段和上云倍速，平台将于上云时间段倍速拉取设备对应前一天的录像时间段数据。
 
         > 设定需至少满足（上云时间段=前一天的录像时间段/上云倍速），建议上云时间段可多设定10%左右的时间，避免因网络波动导致数据拉取不完整。
@@ -122,7 +122,7 @@ class IssClient(AbstractClient):
 
 
     def AddRecordPlan(self, request):
-        """用于新增实时上云计划
+        r"""用于新增实时上云计划
 
         :param request: Request instance for AddRecordPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddRecordPlanRequest`
@@ -145,7 +145,7 @@ class IssClient(AbstractClient):
 
 
     def AddRecordRetrieveTask(self, request):
-        """用于新建取回任务
+        r"""用于新建取回任务
 
         :param request: Request instance for AddRecordRetrieveTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddRecordRetrieveTaskRequest`
@@ -168,7 +168,7 @@ class IssClient(AbstractClient):
 
 
     def AddRecordTemplate(self, request):
-        """用于新增实时上云模板
+        r"""用于新增实时上云模板
 
         :param request: Request instance for AddRecordTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddRecordTemplateRequest`
@@ -191,7 +191,7 @@ class IssClient(AbstractClient):
 
 
     def AddStreamAuth(self, request):
-        """用于设置推拉流鉴权配置。
+        r"""用于设置推拉流鉴权配置。
 
         :param request: Request instance for AddStreamAuth.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddStreamAuthRequest`
@@ -214,7 +214,7 @@ class IssClient(AbstractClient):
 
 
     def AddUserDevice(self, request):
-        """用于新增单个设备。添加设备之后，可根据返回结果到设备上进行配置，配置后等待设备注册/推流。
+        r"""用于新增单个设备。添加设备之后，可根据返回结果到设备上进行配置，配置后等待设备注册/推流。
 
         :param request: Request instance for AddUserDevice.
         :type request: :class:`tencentcloud.iss.v20230517.models.AddUserDeviceRequest`
@@ -237,7 +237,7 @@ class IssClient(AbstractClient):
 
 
     def BatchDeleteVideoDownloadTask(self, request):
-        """用于批量删除本地录像下载失败的任务
+        r"""用于批量删除本地录像下载失败的任务
 
         :param request: Request instance for BatchDeleteVideoDownloadTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.BatchDeleteVideoDownloadTaskRequest`
@@ -260,7 +260,7 @@ class IssClient(AbstractClient):
 
 
     def BatchOperateDevice(self, request):
-        """用于批量操作（启用，禁用，删除）设备
+        r"""用于批量操作（启用，禁用，删除）设备
 
         :param request: Request instance for BatchOperateDevice.
         :type request: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceRequest`
@@ -283,7 +283,7 @@ class IssClient(AbstractClient):
 
 
     def CallISAPI(self, request):
-        """本接口可基于海康ISUP 5.0协议实现透传ISAPI的请求数据，调用接口前需确保设备采用ISUP协议成功注册至本平台
+        r"""本接口可基于海康ISUP 5.0协议实现透传ISAPI的请求数据，调用接口前需确保设备采用ISUP协议成功注册至本平台
 
         :param request: Request instance for CallISAPI.
         :type request: :class:`tencentcloud.iss.v20230517.models.CallISAPIRequest`
@@ -306,7 +306,7 @@ class IssClient(AbstractClient):
 
 
     def ControlDevicePTZ(self, request):
-        """用于设备通道云台控制，包括转动、变倍、变焦、光圈等。
+        r"""用于设备通道云台控制，包括转动、变倍、变焦、光圈等。
 
         :param request: Request instance for ControlDevicePTZ.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlDevicePTZRequest`
@@ -329,7 +329,7 @@ class IssClient(AbstractClient):
 
 
     def ControlDevicePreset(self, request):
-        """用于操作设备预置位，包括设置、删除、调用。
+        r"""用于操作设备预置位，包括设置、删除、调用。
 
         :param request: Request instance for ControlDevicePreset.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlDevicePresetRequest`
@@ -352,7 +352,7 @@ class IssClient(AbstractClient):
 
 
     def ControlDeviceSnapshot(self, request):
-        """控制设备抓拍--单次，当前仅支持国标设备
+        r"""控制设备抓拍--单次，当前仅支持国标设备
 
         :param request: Request instance for ControlDeviceSnapshot.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlDeviceSnapshotRequest`
@@ -375,7 +375,7 @@ class IssClient(AbstractClient):
 
 
     def ControlDeviceStream(self, request):
-        """用于获取设备的实时开流地址。
+        r"""用于获取设备的实时开流地址。
 
         :param request: Request instance for ControlDeviceStream.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlDeviceStreamRequest`
@@ -398,7 +398,7 @@ class IssClient(AbstractClient):
 
 
     def ControlRecord(self, request):
-        """用于录像回放过程中的倍速、跳转、播放/暂停/停止等控制。
+        r"""用于录像回放过程中的倍速、跳转、播放/暂停/停止等控制。
 
         :param request: Request instance for ControlRecord.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlRecordRequest`
@@ -421,7 +421,7 @@ class IssClient(AbstractClient):
 
 
     def ControlRecordTimeline(self, request):
-        """用于查询设备本地录像时间轴信息，为NVR/IPC本地存储的录像。
+        r"""用于查询设备本地录像时间轴信息，为NVR/IPC本地存储的录像。
 
         :param request: Request instance for ControlRecordTimeline.
         :type request: :class:`tencentcloud.iss.v20230517.models.ControlRecordTimelineRequest`
@@ -444,7 +444,7 @@ class IssClient(AbstractClient):
 
 
     def CreateVideoDownloadTask(self, request):
-        """创建本地录像下载任务
+        r"""创建本地录像下载任务
 
         :param request: Request instance for CreateVideoDownloadTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.CreateVideoDownloadTaskRequest`
@@ -467,7 +467,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteAITask(self, request):
-        """删除AI任务
+        r"""删除AI任务
 
         :param request: Request instance for DeleteAITask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteAITaskRequest`
@@ -490,7 +490,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteDomain(self, request):
-        """用于删除域名。
+        r"""用于删除域名。
 
         :param request: Request instance for DeleteDomain.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteDomainRequest`
@@ -513,7 +513,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteGateway(self, request):
-        """用于删除网关。
+        r"""用于删除网关。
 
         :param request: Request instance for DeleteGateway.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteGatewayRequest`
@@ -536,7 +536,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteOrganization(self, request):
-        """用于删除组织。
+        r"""用于删除组织。
 
         :param request: Request instance for DeleteOrganization.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteOrganizationRequest`
@@ -559,7 +559,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteRecordBackupPlan(self, request):
-        """用于删除录像上云模板。
+        r"""用于删除录像上云模板。
 
         :param request: Request instance for DeleteRecordBackupPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteRecordBackupPlanRequest`
@@ -582,7 +582,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteRecordBackupTemplate(self, request):
-        """用于删除录像上云模板。
+        r"""用于删除录像上云模板。
 
         :param request: Request instance for DeleteRecordBackupTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteRecordBackupTemplateRequest`
@@ -605,7 +605,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteRecordPlan(self, request):
-        """用于删除实时上云计划
+        r"""用于删除实时上云计划
 
         :param request: Request instance for DeleteRecordPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteRecordPlanRequest`
@@ -628,7 +628,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteRecordRetrieveTask(self, request):
-        """用于删除取回任务
+        r"""用于删除取回任务
 
         :param request: Request instance for DeleteRecordRetrieveTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteRecordRetrieveTaskRequest`
@@ -651,7 +651,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteRecordTemplate(self, request):
-        """用于删除实时上云模板
+        r"""用于删除实时上云模板
 
         :param request: Request instance for DeleteRecordTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteRecordTemplateRequest`
@@ -674,7 +674,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """用于删除执行完成的任务
+        r"""用于删除执行完成的任务
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteTaskRequest`
@@ -697,7 +697,7 @@ class IssClient(AbstractClient):
 
 
     def DeleteUserDevice(self, request):
-        """用于删除已添加的设备。
+        r"""用于删除已添加的设备。
 
         :param request: Request instance for DeleteUserDevice.
         :type request: :class:`tencentcloud.iss.v20230517.models.DeleteUserDeviceRequest`
@@ -720,7 +720,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeAITask(self, request):
-        """获取AI任务详情
+        r"""获取AI任务详情
 
         :param request: Request instance for DescribeAITask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskRequest`
@@ -743,7 +743,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeAITaskResult(self, request):
-        """获取AI任务识别结果
+        r"""获取AI任务识别结果
 
         :param request: Request instance for DescribeAITaskResult.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskResultRequest`
@@ -766,7 +766,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeCNAME(self, request):
-        """用于根据服务节点获取 CNAME 值。
+        r"""用于根据服务节点获取 CNAME 值。
 
         :param request: Request instance for DescribeCNAME.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeCNAMERequest`
@@ -789,7 +789,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeDeviceChannel(self, request):
-        """用于查询设备的通道。
+        r"""用于查询设备的通道。
 
         :param request: Request instance for DescribeDeviceChannel.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeDeviceChannelRequest`
@@ -812,7 +812,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeDevicePreset(self, request):
-        """用于查询设备通道预置位信息。
+        r"""用于查询设备通道预置位信息。
 
         :param request: Request instance for DescribeDevicePreset.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeDevicePresetRequest`
@@ -835,7 +835,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeDeviceRegion(self, request):
-        """用于添加设备时，查询设备可以使用的服务节点，查询结果为已经绑定了域名的服务节点。
+        r"""用于添加设备时，查询设备可以使用的服务节点，查询结果为已经绑定了域名的服务节点。
 
         :param request: Request instance for DescribeDeviceRegion.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeDeviceRegionRequest`
@@ -858,7 +858,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeDomain(self, request):
-        """用于查询添加的域名列表。
+        r"""用于查询添加的域名列表。
 
         :param request: Request instance for DescribeDomain.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeDomainRequest`
@@ -881,7 +881,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeDomainRegion(self, request):
-        """用于用户添加域名时，查询可以绑定的服务节点，结果为平台支持的所有服务节点。（注意：每个服务节点只能绑定一个域名）
+        r"""用于用户添加域名时，查询可以绑定的服务节点，结果为平台支持的所有服务节点。（注意：每个服务节点只能绑定一个域名）
 
         :param request: Request instance for DescribeDomainRegion.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeDomainRegionRequest`
@@ -904,7 +904,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeGBDeviceAddr(self, request):
-        """用于获取国标设备的公网地址
+        r"""用于获取国标设备的公网地址
 
         :param request: Request instance for DescribeGBDeviceAddr.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGBDeviceAddrRequest`
@@ -927,7 +927,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeGateway(self, request):
-        """用于获取网关详情。
+        r"""用于获取网关详情。
 
         :param request: Request instance for DescribeGateway.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayRequest`
@@ -950,7 +950,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeGatewayMonitor(self, request):
-        """用于获取网关的数据及流量监控信息。
+        r"""用于获取网关的数据及流量监控信息。
 
         :param request: Request instance for DescribeGatewayMonitor.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayMonitorRequest`
@@ -973,7 +973,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeGatewayProtocol(self, request):
-        """用于查询网关接入协议。
+        r"""用于查询网关接入协议。
 
         :param request: Request instance for DescribeGatewayProtocol.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayProtocolRequest`
@@ -996,7 +996,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeGatewayVersion(self, request):
-        """查询网关服务版本
+        r"""查询网关服务版本
 
         :param request: Request instance for DescribeGatewayVersion.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayVersionRequest`
@@ -1019,7 +1019,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeOrganization(self, request):
-        """用于查询组织。
+        r"""用于查询组织。
 
         :param request: Request instance for DescribeOrganization.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeOrganizationRequest`
@@ -1042,7 +1042,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordBackupPlan(self, request):
-        """用于查询录像上云计划详情。
+        r"""用于查询录像上云计划详情。
 
         :param request: Request instance for DescribeRecordBackupPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordBackupPlanRequest`
@@ -1065,7 +1065,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordBackupTemplate(self, request):
-        """用于查询录像上云模板详情。
+        r"""用于查询录像上云模板详情。
 
         :param request: Request instance for DescribeRecordBackupTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordBackupTemplateRequest`
@@ -1088,7 +1088,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordFile(self, request):
-        """用于查询设备云端录像时间轴信息（即为视频上云后设置录像计划后云存储的录像）
+        r"""用于查询设备云端录像时间轴信息（即为视频上云后设置录像计划后云存储的录像）
 
         :param request: Request instance for DescribeRecordFile.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordFileRequest`
@@ -1111,7 +1111,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordPlan(self, request):
-        """用于查询实时上云计划详情
+        r"""用于查询实时上云计划详情
 
         :param request: Request instance for DescribeRecordPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordPlanRequest`
@@ -1134,7 +1134,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordPlaybackUrl(self, request):
-        """用于获取云端录像回放url地址
+        r"""用于获取云端录像回放url地址
 
         :param request: Request instance for DescribeRecordPlaybackUrl.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordPlaybackUrlRequest`
@@ -1157,7 +1157,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordRetrieveTask(self, request):
-        """用于查询云录像取回任务详情
+        r"""用于查询云录像取回任务详情
 
         :param request: Request instance for DescribeRecordRetrieveTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordRetrieveTaskRequest`
@@ -1180,7 +1180,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordSlice(self, request):
-        """平台支持将数据以TS切片的形式存入客户自有COS桶，该接口用于支持客户快捷查询切片信息列表
+        r"""平台支持将数据以TS切片的形式存入客户自有COS桶，该接口用于支持客户快捷查询切片信息列表
         （注意：只支持标准存储类型的查询）
 
         :param request: Request instance for DescribeRecordSlice.
@@ -1204,7 +1204,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeRecordTemplate(self, request):
-        """用于查询实时上云模板详情
+        r"""用于查询实时上云模板详情
 
         :param request: Request instance for DescribeRecordTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordTemplateRequest`
@@ -1227,7 +1227,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeStreamAuth(self, request):
-        """用于查询推拉流鉴权配置。
+        r"""用于查询推拉流鉴权配置。
 
         :param request: Request instance for DescribeStreamAuth.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeStreamAuthRequest`
@@ -1250,7 +1250,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """用于查询任务详情
+        r"""用于查询任务详情
 
         :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeTaskRequest`
@@ -1273,7 +1273,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeUserDevice(self, request):
-        """用于查询设备的详细信息。
+        r"""用于查询设备的详细信息。
 
         :param request: Request instance for DescribeUserDevice.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeUserDeviceRequest`
@@ -1296,7 +1296,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeUserDeviceList(self, request):
-        """用于批量查询设备详细信息。
+        r"""用于批量查询设备详细信息。
 
         :param request: Request instance for DescribeUserDeviceList.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeUserDeviceListRequest`
@@ -1319,7 +1319,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeVideoBitRate(self, request):
-        """用于获取视频通道的码率信息
+        r"""用于获取视频通道的码率信息
 
         :param request: Request instance for DescribeVideoBitRate.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVideoBitRateRequest`
@@ -1342,7 +1342,7 @@ class IssClient(AbstractClient):
 
 
     def DescribeVideoDownloadUrl(self, request):
-        """用于获取云录像下载 url
+        r"""用于获取云录像下载 url
 
         :param request: Request instance for DescribeVideoDownloadUrl.
         :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVideoDownloadUrlRequest`
@@ -1365,7 +1365,7 @@ class IssClient(AbstractClient):
 
 
     def ListAITasks(self, request):
-        """获取AI任务列表
+        r"""获取AI任务列表
 
         :param request: Request instance for ListAITasks.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListAITasksRequest`
@@ -1388,7 +1388,7 @@ class IssClient(AbstractClient):
 
 
     def ListDeviceSnapshots(self, request):
-        """获取设备抓拍结果列表
+        r"""获取设备抓拍结果列表
 
         :param request: Request instance for ListDeviceSnapshots.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListDeviceSnapshotsRequest`
@@ -1411,7 +1411,7 @@ class IssClient(AbstractClient):
 
 
     def ListDevices(self, request):
-        """用于获取对应组织下的设备列表。
+        r"""用于获取对应组织下的设备列表。
 
         :param request: Request instance for ListDevices.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListDevicesRequest`
@@ -1434,7 +1434,7 @@ class IssClient(AbstractClient):
 
 
     def ListGatewayDevices(self, request):
-        """用于查询网关下挂载的设备列表。
+        r"""用于查询网关下挂载的设备列表。
 
         :param request: Request instance for ListGatewayDevices.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesRequest`
@@ -1457,7 +1457,7 @@ class IssClient(AbstractClient):
 
 
     def ListGateways(self, request):
-        """用于获取网关列表。
+        r"""用于获取网关列表。
 
         :param request: Request instance for ListGateways.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListGatewaysRequest`
@@ -1480,7 +1480,7 @@ class IssClient(AbstractClient):
 
 
     def ListOrganizationChannelNumbers(self, request):
-        """用于查询组织目录下的未添加到实时上云计划中的通道数量
+        r"""用于查询组织目录下的未添加到实时上云计划中的通道数量
 
         :param request: Request instance for ListOrganizationChannelNumbers.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListOrganizationChannelNumbersRequest`
@@ -1503,7 +1503,7 @@ class IssClient(AbstractClient):
 
 
     def ListOrganizationChannels(self, request):
-        """用于查询组织目录下的通道列表
+        r"""用于查询组织目录下的通道列表
 
         :param request: Request instance for ListOrganizationChannels.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListOrganizationChannelsRequest`
@@ -1526,7 +1526,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordBackupPlanDevices(self, request):
-        """用于查询录像上云计划下的设备通道列表。
+        r"""用于查询录像上云计划下的设备通道列表。
 
         :param request: Request instance for ListRecordBackupPlanDevices.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordBackupPlanDevicesRequest`
@@ -1549,7 +1549,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordBackupPlans(self, request):
-        """用于查询录像上云计划列表。
+        r"""用于查询录像上云计划列表。
 
         :param request: Request instance for ListRecordBackupPlans.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordBackupPlansRequest`
@@ -1572,7 +1572,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordBackupTemplates(self, request):
-        """用于查询录像上云模板列表。
+        r"""用于查询录像上云模板列表。
 
         :param request: Request instance for ListRecordBackupTemplates.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordBackupTemplatesRequest`
@@ -1595,7 +1595,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordPlanChannels(self, request):
-        """用于查询用户下所有实时上云计划中的通道列表
+        r"""用于查询用户下所有实时上云计划中的通道列表
 
         :param request: Request instance for ListRecordPlanChannels.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordPlanChannelsRequest`
@@ -1618,7 +1618,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordPlanDevices(self, request):
-        """用于查询实时上云计划下的设备通道列表
+        r"""用于查询实时上云计划下的设备通道列表
 
         :param request: Request instance for ListRecordPlanDevices.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordPlanDevicesRequest`
@@ -1641,7 +1641,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordPlans(self, request):
-        """用于查询实时上云计划列表
+        r"""用于查询实时上云计划列表
 
         :param request: Request instance for ListRecordPlans.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordPlansRequest`
@@ -1664,7 +1664,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordRetrieveTasks(self, request):
-        """用于查询取回任务列表
+        r"""用于查询取回任务列表
 
         :param request: Request instance for ListRecordRetrieveTasks.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordRetrieveTasksRequest`
@@ -1687,7 +1687,7 @@ class IssClient(AbstractClient):
 
 
     def ListRecordTemplates(self, request):
-        """用于查询实时上云模板列表
+        r"""用于查询实时上云模板列表
 
         :param request: Request instance for ListRecordTemplates.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListRecordTemplatesRequest`
@@ -1710,7 +1710,7 @@ class IssClient(AbstractClient):
 
 
     def ListSubTasks(self, request):
-        """用于查询任务的子任务列表
+        r"""用于查询任务的子任务列表
 
         :param request: Request instance for ListSubTasks.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListSubTasksRequest`
@@ -1733,7 +1733,7 @@ class IssClient(AbstractClient):
 
 
     def ListTasks(self, request):
-        """用于查询批量任务和简单任务列表
+        r"""用于查询批量任务和简单任务列表
 
         :param request: Request instance for ListTasks.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListTasksRequest`
@@ -1756,7 +1756,7 @@ class IssClient(AbstractClient):
 
 
     def ListVideoDownloadTask(self, request):
-        """查询本店里录像下载任务列表
+        r"""查询本店里录像下载任务列表
 
         :param request: Request instance for ListVideoDownloadTask.
         :type request: :class:`tencentcloud.iss.v20230517.models.ListVideoDownloadTaskRequest`
@@ -1779,7 +1779,7 @@ class IssClient(AbstractClient):
 
 
     def PlayRecord(self, request):
-        """用于获取设备本地录像 URL 地址。
+        r"""用于获取设备本地录像 URL 地址。
 
         :param request: Request instance for PlayRecord.
         :type request: :class:`tencentcloud.iss.v20230517.models.PlayRecordRequest`
@@ -1802,7 +1802,7 @@ class IssClient(AbstractClient):
 
 
     def QueryForbidPlayChannelList(self, request):
-        """查询禁播通道列表
+        r"""查询禁播通道列表
 
         :param request: Request instance for QueryForbidPlayChannelList.
         :type request: :class:`tencentcloud.iss.v20230517.models.QueryForbidPlayChannelListRequest`
@@ -1825,7 +1825,7 @@ class IssClient(AbstractClient):
 
 
     def RefreshDeviceChannel(self, request):
-        """用于同步国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
+        r"""用于同步国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
 
         :param request: Request instance for RefreshDeviceChannel.
         :type request: :class:`tencentcloud.iss.v20230517.models.RefreshDeviceChannelRequest`
@@ -1848,7 +1848,7 @@ class IssClient(AbstractClient):
 
 
     def SetForbidPlayChannels(self, request):
-        """禁止主、子账号对视频通道的实况预览
+        r"""禁止主、子账号对视频通道的实况预览
 
         :param request: Request instance for SetForbidPlayChannels.
         :type request: :class:`tencentcloud.iss.v20230517.models.SetForbidPlayChannelsRequest`
@@ -1871,7 +1871,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateAITask(self, request):
-        """更新AI任务
+        r"""更新AI任务
 
         :param request: Request instance for UpdateAITask.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskRequest`
@@ -1894,7 +1894,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateAITaskStatus(self, request):
-        """更新 AI 任务状态
+        r"""更新 AI 任务状态
 
         :param request: Request instance for UpdateAITaskStatus.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskStatusRequest`
@@ -1917,7 +1917,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateDeviceOrganization(self, request):
-        """用于批量更改设备的组织。
+        r"""用于批量更改设备的组织。
 
         :param request: Request instance for UpdateDeviceOrganization.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateDeviceOrganizationRequest`
@@ -1940,7 +1940,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateDeviceStatus(self, request):
-        """用于启用/禁用设备，禁用后拒绝设备注册。
+        r"""用于启用/禁用设备，禁用后拒绝设备注册。
 
         :param request: Request instance for UpdateDeviceStatus.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateDeviceStatusRequest`
@@ -1963,7 +1963,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateGateway(self, request):
-        """用于修改网关信息（支持对网关名称和描述的修改）。
+        r"""用于修改网关信息（支持对网关名称和描述的修改）。
 
         :param request: Request instance for UpdateGateway.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateGatewayRequest`
@@ -1986,7 +1986,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateOrganization(self, request):
-        """用于修改组织。
+        r"""用于修改组织。
 
         :param request: Request instance for UpdateOrganization.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateOrganizationRequest`
@@ -2009,7 +2009,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateRecordBackupPlan(self, request):
-        """用于修改录像上云计划。
+        r"""用于修改录像上云计划。
 
         :param request: Request instance for UpdateRecordBackupPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupPlanRequest`
@@ -2032,7 +2032,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateRecordBackupTemplate(self, request):
-        """用于修改录像上云模板。
+        r"""用于修改录像上云模板。
 
         :param request: Request instance for UpdateRecordBackupTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupTemplateRequest`
@@ -2055,7 +2055,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateRecordPlan(self, request):
-        """用于修改实时上云计划
+        r"""用于修改实时上云计划
 
         :param request: Request instance for UpdateRecordPlan.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateRecordPlanRequest`
@@ -2078,7 +2078,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateRecordTemplate(self, request):
-        """用于修改实时上云模板
+        r"""用于修改实时上云模板
 
         :param request: Request instance for UpdateRecordTemplate.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateRecordTemplateRequest`
@@ -2101,7 +2101,7 @@ class IssClient(AbstractClient):
 
 
     def UpdateUserDevice(self, request):
-        """用于修改设备的配置信息。
+        r"""用于修改设备的配置信息。
 
         :param request: Request instance for UpdateUserDevice.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpdateUserDeviceRequest`
@@ -2124,7 +2124,7 @@ class IssClient(AbstractClient):
 
 
     def UpgradeGateway(self, request):
-        """用于网关升级（支持对所有待更新的服务一键升级）。
+        r"""用于网关升级（支持对所有待更新的服务一键升级）。
 
         :param request: Request instance for UpgradeGateway.
         :type request: :class:`tencentcloud.iss.v20230517.models.UpgradeGatewayRequest`

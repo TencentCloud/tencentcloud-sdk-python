@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def ControlAIConversation(self, request):
-        """提供服务端控制机器人的功能
+        r"""提供服务端控制机器人的功能
 
         :param request: Request instance for ControlAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ControlAIConversationRequest`
@@ -50,7 +50,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateBasicModeration(self, request):
-        """接口说明：
+        r"""接口说明：
         启动终端审核功能，完成房间内的音频审核。
 
         :param request: Request instance for CreateBasicModeration.
@@ -74,7 +74,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudModeration(self, request):
-        """接口说明：
+        r"""接口说明：
         启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
 
         您可以通过此接口实现如下目标：
@@ -102,7 +102,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudRecording(self, request):
-        """接口说明：
+        r"""接口说明：
         启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面合流混成一路。
 
         您可以通过此接口实现如下目标：
@@ -136,7 +136,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudSliceTask(self, request):
-        """接口说明：
+        r"""接口说明：
         启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
 
         您可以通过此接口实现如下目标：
@@ -164,7 +164,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreatePicture(self, request):
-        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁新增自定义背景图或水印，可通过此接口上传新的图片素材。无需频繁新增图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
+        r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁新增自定义背景图或水印，可通过此接口上传新的图片素材。无需频繁新增图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for CreatePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
@@ -187,7 +187,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteBasicModeration(self, request):
-        """成功开启审核任务后，可以使用此接口来停止任务。
+        r"""成功开启审核任务后，可以使用此接口来停止任务。
 
         :param request: Request instance for DeleteBasicModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteBasicModerationRequest`
@@ -210,7 +210,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudModeration(self, request):
-        """成功开启云端审核任务后，可以使用此接口来停止送审。
+        r"""成功开启云端审核任务后，可以使用此接口来停止送审。
 
         :param request: Request instance for DeleteCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationRequest`
@@ -233,7 +233,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudRecording(self, request):
-        """成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+        r"""成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 
         :param request: Request instance for DeleteCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudRecordingRequest`
@@ -256,7 +256,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudSliceTask(self, request):
-        """成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+        r"""成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 
         :param request: Request instance for DeleteCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskRequest`
@@ -279,7 +279,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeletePicture(self, request):
-        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁删除自定义背景图或水印，可通过此接口删除已上传的图片。无需频繁删除图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
+        r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁删除自定义背景图或水印，可通过此接口删除已上传的图片。无需频繁删除图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for DeletePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
@@ -302,7 +302,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteVoicePrint(self, request):
-        """传入声纹ID，删除之前注册的声纹信息
+        r"""传入声纹ID，删除之前注册的声纹信息
 
         :param request: Request instance for DeleteVoicePrint.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteVoicePrintRequest`
@@ -325,7 +325,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAIConversation(self, request):
-        """查询AI对话任务状态。
+        r"""查询AI对话任务状态。
 
         :param request: Request instance for DescribeAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationRequest`
@@ -348,7 +348,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAITranscription(self, request):
-        """查询AI转录任务状态。
+        r"""查询AI转录任务状态。
 
         :param request: Request instance for DescribeAITranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionRequest`
@@ -371,7 +371,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetailInfo(self, request):
-        """查询指定时间内的用户列表及用户通话质量数据，最大可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
+        r"""查询指定时间内的用户列表及用户通话质量数据，最大可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
         **注意**：
         1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
         2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
@@ -399,7 +399,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudModeration(self, request):
-        """成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+        r"""成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
 
         :param request: Request instance for DescribeCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationRequest`
@@ -422,7 +422,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudRecording(self, request):
-        """成功开启录制后，可以使用此接口来查询录制状态。仅在录制任务进行时有效，录制退出后查询将会返回错误。
+        r"""成功开启录制后，可以使用此接口来查询录制状态。仅在录制任务进行时有效，录制退出后查询将会返回错误。
         录制文件上传到云点播VOD时，StorageFileList中不会返回录制文件信息，请订阅相关录制文件回调事件，获取录制文件信息。
 
         :param request: Request instance for DescribeCloudRecording.
@@ -446,7 +446,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudSliceTask(self, request):
-        """成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+        r"""成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
 
         :param request: Request instance for DescribeCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskRequest`
@@ -469,7 +469,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeMixTranscodingUsage(self, request):
-        """获取TRTC混流转码的用量明细。
+        r"""获取TRTC混流转码的用量明细。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
@@ -497,7 +497,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribePicture(self, request):
-        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁查找自定义背景图或水印信息，可通过此接口查找已上传的图片信息。无需频繁查找图片信息的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中查看。
+        r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁查找自定义背景图或水印信息，可通过此接口查找已上传的图片信息。无需频繁查找图片信息的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中查看。
 
         :param request: Request instance for DescribePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
@@ -520,7 +520,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRecordStatistic(self, request):
-        """查询云端录制计费时长。
+        r"""查询云端录制计费时长。
 
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
@@ -548,7 +548,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRecordingUsage(self, request):
-        """获取TRTC录制的用量明细。
+        r"""获取TRTC录制的用量明细。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
@@ -576,7 +576,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRelayUsage(self, request):
-        """获取TRTC旁路转推的用量明细。
+        r"""获取TRTC旁路转推的用量明细。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
@@ -604,7 +604,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRoomInfo(self, request):
-        """查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。最大可查询14天内的数据。（同老接口DescribeRoomInformation）
+        r"""查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。最大可查询14天内的数据。（同老接口DescribeRoomInformation）
         **注意**：
         1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
         2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任意其一解锁：
@@ -632,7 +632,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeScaleInfo(self, request):
-        """可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数。（同老接口DescribeHistoryScale）
+        r"""可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数。（同老接口DescribeHistoryScale）
 
         :param request: Request instance for DescribeScaleInfo.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeScaleInfoRequest`
@@ -655,7 +655,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeStreamIngest(self, request):
-        """您可以查询输入在线媒体流任务的状态。
+        r"""您可以查询输入在线媒体流任务的状态。
 
         :param request: Request instance for DescribeStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestRequest`
@@ -678,7 +678,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketQualityData(self, request):
-        """查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
+        r"""查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
         joinSuccessIn5sRate：5s内加入频道成功率。
         audioFreezeRate：音频卡顿率。
@@ -709,7 +709,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketQualityMetricData(self, request):
-        """云监控monitor接口已下线，trtc同步下线接口
+        r"""云监控monitor接口已下线，trtc同步下线接口
 
         查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
@@ -742,7 +742,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketScaleData(self, request):
-        """查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
+        r"""查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
         userCount：通话人数，
         roomCount：通话房间数，从有用户加入频道到所有用户离开频道计为一个通话频道。
         peakCurrentChannels：峰值同时在线频道数。
@@ -772,7 +772,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketScaleMetricData(self, request):
-        """云监控monitor接口已下线，trtc同步下线接口
+        r"""云监控monitor接口已下线，trtc同步下线接口
 
         查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
         userCount：通话人数，
@@ -804,7 +804,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeQualityData(self, request):
-        """查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
+        r"""查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
         -视频卡顿率
         -音频卡顿率
         注意：
@@ -832,7 +832,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeQualityMetricData(self, request):
-        """云监控monitor接口已下线，trtc同步下线接口
+        r"""云监控monitor接口已下线，trtc同步下线接口
 
         查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
         -视频卡顿率
@@ -862,7 +862,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeScaleData(self, request):
-        """查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
+        r"""查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
         -userCount（在线用户数）
         -roomCount（在线房间数）
         注意：
@@ -890,7 +890,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeScaleMetricData(self, request):
-        """查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
+        r"""查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
         -userCount（在线用户数）
         -roomCount（在线房间数）
         注意：
@@ -920,7 +920,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcMcuTranscodeTime(self, request):
-        """查询旁路转码计费时长。
+        r"""查询旁路转码计费时长。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
@@ -947,7 +947,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcRoomUsage(self, request):
-        """查询TRTC音视频房间维度用量。
+        r"""查询TRTC音视频房间维度用量。
         - 单次只能查询一天数据，返回查询时间段内的汇总数据；通过多次查询可以查不同天数据。若查询跨天用量，由于统计延迟等原因，返回数据可能不够准确。
         - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用，不可用于账单核对，如需对账请使用账号/应用维度用量API：DescribeTrtcUsage。
         - 默认接口请求频率限制：1次/15秒。
@@ -974,7 +974,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcUsage(self, request):
-        """获取TRTC音视频互动的用量明细，单位:分钟。
+        r"""获取TRTC音视频互动的用量明细，单位:分钟。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
@@ -1002,7 +1002,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUnusualEvent(self, request):
-        """查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。（同老接口DescribeAbnormalEvent）
+        r"""查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。（同老接口DescribeAbnormalEvent）
         异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
 
         :param request: Request instance for DescribeUnusualEvent.
@@ -1026,7 +1026,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserEvent(self, request):
-        """查询用户某次通话内的进退房，视频开关等详细事件。可查询14天内数据。（同接口DescribeDetailEvent）
+        r"""查询用户某次通话内的进退房，视频开关等详细事件。可查询14天内数据。（同接口DescribeDetailEvent）
 
         :param request: Request instance for DescribeUserEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserEventRequest`
@@ -1049,7 +1049,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """查询指定时间内的用户列表，最大可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
+        r"""查询指定时间内的用户列表，最大可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
         **注意**：
         1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
         2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
@@ -1077,7 +1077,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeVoicePrint(self, request):
-        """查询先前注册的声纹信息
+        r"""查询先前注册的声纹信息
 
         :param request: Request instance for DescribeVoicePrint.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeVoicePrintRequest`
@@ -1100,7 +1100,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeWebRecord(self, request):
-        """查询页面录制任务
+        r"""查询页面录制任务
 
         :param request: Request instance for DescribeWebRecord.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordRequest`
@@ -1123,7 +1123,7 @@ class TrtcClient(AbstractClient):
 
 
     def DismissRoom(self, request):
-        """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+        r"""接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
         :param request: Request instance for DismissRoom.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomRequest`
@@ -1146,7 +1146,7 @@ class TrtcClient(AbstractClient):
 
 
     def DismissRoomByStrRoomId(self, request):
-        """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+        r"""接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
         :param request: Request instance for DismissRoomByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomByStrRoomIdRequest`
@@ -1169,7 +1169,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudModeration(self, request):
-        """成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+        r"""成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
 
         :param request: Request instance for ModifyCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationRequest`
@@ -1192,7 +1192,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudRecording(self, request):
-        """成功开启录制后，可以使用此接口来更新录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。更新操作是全量覆盖，并不是增量更新的模式，也就是说每次更新都需要携带全量的信息。
+        r"""成功开启录制后，可以使用此接口来更新录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。更新操作是全量覆盖，并不是增量更新的模式，也就是说每次更新都需要携带全量的信息。
 
         :param request: Request instance for ModifyCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudRecordingRequest`
@@ -1215,7 +1215,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudSliceTask(self, request):
-        """成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+        r"""成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
 
         :param request: Request instance for ModifyCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskRequest`
@@ -1238,7 +1238,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyPicture(self, request):
-        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁修改自定义背景图或水印素材，可通过此接口修改已上传的图片。无需频繁修改图片素材的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
+        r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁修改自定义背景图或水印素材，可通过此接口修改已上传的图片。无需频繁修改图片素材的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for ModifyPicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`
@@ -1261,7 +1261,7 @@ class TrtcClient(AbstractClient):
 
 
     def RegisterVoicePrint(self, request):
-        """传入音频base64串，注册声纹信息，返回声纹ID
+        r"""传入音频base64串，注册声纹信息，返回声纹ID
 
         :param request: Request instance for RegisterVoicePrint.
         :type request: :class:`tencentcloud.trtc.v20190722.models.RegisterVoicePrintRequest`
@@ -1284,7 +1284,7 @@ class TrtcClient(AbstractClient):
 
 
     def RemoveUser(self, request):
-        """接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+        r"""接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
         :param request: Request instance for RemoveUser.
         :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserRequest`
@@ -1307,7 +1307,7 @@ class TrtcClient(AbstractClient):
 
 
     def RemoveUserByStrRoomId(self, request):
-        """接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+        r"""接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
         :param request: Request instance for RemoveUserByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserByStrRoomIdRequest`
@@ -1330,7 +1330,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartAIConversation(self, request):
-        """启动AI对话任务，AI通道机器人进入TRTC房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
+        r"""启动AI对话任务，AI通道机器人进入TRTC房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
 
         TRTC AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
 
@@ -1355,7 +1355,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartAITranscription(self, request):
-        """启动转录机器人，后台会通过机器人拉流进行实时进行语音识别并下发字幕和转录消息。
+        r"""启动转录机器人，后台会通过机器人拉流进行实时进行语音识别并下发字幕和转录消息。
         转录机器人支持两种拉流方式，通过TranscriptionMode字段控制：
         - 拉取全房间的流。
         - 拉取特定用户的流。
@@ -1387,7 +1387,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartMCUMixTranscode(self, request):
-        """接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
+        r"""接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
 
         TRTC 的一个房间中可能会同时存在多路音视频流，您可以通过此 API 接口，通知腾讯云服务端将多路视频画面合成一路，并指定每一路画面的位置，同时将多路声音进行混音，最终形成一路音视频流，以便用于录制和直播观看。房间销毁后混流自动结束。
 
@@ -1430,7 +1430,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartMCUMixTranscodeByStrRoomId(self, request):
-        """接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
+        r"""接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
 
         TRTC 的一个房间中可能会同时存在多路音视频流，您可以通过此 API 接口，通知腾讯云服务端将多路视频画面合成一路，并指定每一路画面的位置，同时将多路声音进行混音，最终形成一路音视频流，以便用于录制和直播观看。
 
@@ -1473,7 +1473,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartPublishCdnStream(self, request):
-        """接口说明：
+        r"""接口说明：
         启动一个混流转推任务，将  TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。可以参考文档： [功能说明](https://cloud.tencent.com/document/product/647/84721#b9a855f4-e38c-4616-9b07-fc44e0e8282a) 和 [常见问题](https://cloud.tencent.com/document/product/647/62620)
 
         注意：
@@ -1503,7 +1503,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartStreamIngest(self, request):
-        """将一个在线媒体流推到TRTC房间，更多功能说明见[输入媒体流进房](https://cloud.tencent.com/document/product/647/102957#50940aad-d90f-4473-9f46-d5dd46917653)。
+        r"""将一个在线媒体流推到TRTC房间，更多功能说明见[输入媒体流进房](https://cloud.tencent.com/document/product/647/102957#50940aad-d90f-4473-9f46-d5dd46917653)。
         使用输入在线媒体流功能需先订阅 [尊享版或旗舰版套餐包](https://cloud.tencent.com/document/product/647/85386) 解锁能力位。
 
         :param request: Request instance for StartStreamIngest.
@@ -1527,7 +1527,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartWebRecord(self, request):
-        """通过此接口可以发起 WEB 页面录制任务，在接口参数中指定录制 URL，录制分辨率，录制结果存储等参数。
+        r"""通过此接口可以发起 WEB 页面录制任务，在接口参数中指定录制 URL，录制分辨率，录制结果存储等参数。
         因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
 
         :param request: Request instance for StartWebRecord.
@@ -1551,7 +1551,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopAIConversation(self, request):
-        """停止AI对话任务
+        r"""停止AI对话任务
 
         :param request: Request instance for StopAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationRequest`
@@ -1574,7 +1574,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopAITranscription(self, request):
-        """停止AI转录任务。
+        r"""停止AI转录任务。
 
         :param request: Request instance for StopAITranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionRequest`
@@ -1597,7 +1597,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopMCUMixTranscode(self, request):
-        """接口说明：结束云端混流
+        r"""接口说明：结束云端混流
 
         :param request: Request instance for StopMCUMixTranscode.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopMCUMixTranscodeRequest`
@@ -1620,7 +1620,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopMCUMixTranscodeByStrRoomId(self, request):
-        """接口说明：结束云端混流
+        r"""接口说明：结束云端混流
 
         :param request: Request instance for StopMCUMixTranscodeByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopMCUMixTranscodeByStrRoomIdRequest`
@@ -1643,7 +1643,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopPublishCdnStream(self, request):
-        """接口说明：
+        r"""接口说明：
         停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开 TRTC 房间超过 AgentParams.MaxIdleTime 设置的时间后，任务也会自动停止。
 
         :param request: Request instance for StopPublishCdnStream.
@@ -1667,7 +1667,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopStreamIngest(self, request):
-        """停止一个输入在线媒体流任务。
+        r"""停止一个输入在线媒体流任务。
 
         :param request: Request instance for StopStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestRequest`
@@ -1690,7 +1690,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopWebRecord(self, request):
-        """停止页面录制任务
+        r"""停止页面录制任务
 
         :param request: Request instance for StopWebRecord.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordRequest`
@@ -1713,7 +1713,7 @@ class TrtcClient(AbstractClient):
 
 
     def TextToSpeech(self, request):
-        """语音合成接口
+        r"""语音合成接口
 
         :param request: Request instance for TextToSpeech.
         :type request: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechRequest`
@@ -1736,7 +1736,7 @@ class TrtcClient(AbstractClient):
 
 
     def TextToSpeechSSE(self, request):
-        """SSE流式文本转语音
+        r"""SSE流式文本转语音
 
         :param request: Request instance for TextToSpeechSSE.
         :type request: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechSSERequest`
@@ -1754,7 +1754,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdateAIConversation(self, request):
-        """更新AIConversation参数
+        r"""更新AIConversation参数
 
         :param request: Request instance for UpdateAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateAIConversationRequest`
@@ -1777,7 +1777,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdatePublishCdnStream(self, request):
-        """接口说明：
+        r"""接口说明：
         成功发起混流转推后，可以使用此接口来更新任务。仅在任务进行时有效，任务退出后更新将会返回错误。更新操作为增量更新模式。
         注意：为了保障推流的稳定性，更新不支持任务在纯音频、音视频、纯视频之间进行切换。
 
@@ -1802,7 +1802,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdateStreamIngest(self, request):
-        """更新输入在线媒体流任务的StreamUrl
+        r"""更新输入在线媒体流任务的StreamUrl
 
         :param request: Request instance for UpdateStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateStreamIngestRequest`
@@ -1825,7 +1825,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdateVoicePrint(self, request):
-        """传入声纹ID以及对应音频信息，更新对应声纹信息
+        r"""传入声纹ID以及对应音频信息，更新对应声纹信息
 
         :param request: Request instance for UpdateVoicePrint.
         :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateVoicePrintRequest`
@@ -1848,7 +1848,7 @@ class TrtcClient(AbstractClient):
 
 
     def VoiceClone(self, request):
-        """声音克隆
+        r"""声音克隆
 
         :param request: Request instance for VoiceClone.
         :type request: :class:`tencentcloud.trtc.v20190722.models.VoiceCloneRequest`

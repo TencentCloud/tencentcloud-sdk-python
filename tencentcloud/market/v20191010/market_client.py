@@ -27,7 +27,7 @@ class MarketClient(AbstractClient):
 
 
     def FlowProductRemind(self, request):
-        """计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
+        r"""计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
 
         :param request: Request instance for FlowProductRemind.
         :type request: :class:`tencentcloud.market.v20191010.models.FlowProductRemindRequest`
@@ -50,7 +50,7 @@ class MarketClient(AbstractClient):
 
 
     def GetUsagePlanUsageAmount(self, request):
-        """该接口可以根据InstanceId查询实例的api的使用情况。
+        r"""该接口可以根据InstanceId查询实例的api的使用情况。
 
         :param request: Request instance for GetUsagePlanUsageAmount.
         :type request: :class:`tencentcloud.market.v20191010.models.GetUsagePlanUsageAmountRequest`

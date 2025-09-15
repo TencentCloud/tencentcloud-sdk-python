@@ -27,7 +27,7 @@ class CfwClient(AbstractClient):
 
 
     def AddAclRule(self, request):
-        """添加互联网边界访问控制规则
+        r"""添加互联网边界访问控制规则
 
         :param request: Request instance for AddAclRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddAclRuleRequest`
@@ -50,7 +50,7 @@ class CfwClient(AbstractClient):
 
 
     def AddEnterpriseSecurityGroupRules(self, request):
-        """创建新企业安全组规则
+        r"""创建新企业安全组规则
 
         :param request: Request instance for AddEnterpriseSecurityGroupRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddEnterpriseSecurityGroupRulesRequest`
@@ -73,7 +73,7 @@ class CfwClient(AbstractClient):
 
 
     def AddNatAcRule(self, request):
-        """添加nat访问控制规则
+        r"""添加nat访问控制规则
 
         :param request: Request instance for AddNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleRequest`
@@ -96,7 +96,7 @@ class CfwClient(AbstractClient):
 
 
     def AddVpcAcRule(self, request):
-        """添加VPC内网间规则
+        r"""添加VPC内网间规则
 
         :param request: Request instance for AddVpcAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddVpcAcRuleRequest`
@@ -119,7 +119,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAcRules(self, request):
-        """创建访问控制规则
+        r"""创建访问控制规则
 
         :param request: Request instance for CreateAcRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAcRulesRequest`
@@ -142,7 +142,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAddressTemplate(self, request):
-        """创建地址模板规则
+        r"""创建地址模板规则
 
         :param request: Request instance for CreateAddressTemplate.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAddressTemplateRequest`
@@ -165,7 +165,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAlertCenterIsolate(self, request):
-        """用户告警中心-封隔离处置按钮
+        r"""用户告警中心-封隔离处置按钮
 
         :param request: Request instance for CreateAlertCenterIsolate.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterIsolateRequest`
@@ -188,7 +188,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAlertCenterOmit(self, request):
-        """用户告警中心-忽略处置按钮
+        r"""用户告警中心-忽略处置按钮
 
         :param request: Request instance for CreateAlertCenterOmit.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterOmitRequest`
@@ -211,7 +211,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAlertCenterRule(self, request):
-        """用户告警中心-封禁、放通处置按钮
+        r"""用户告警中心-封禁、放通处置按钮
 
         :param request: Request instance for CreateAlertCenterRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterRuleRequest`
@@ -234,7 +234,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateBlockIgnoreRuleList(self, request):
-        """批量添加入侵防御封禁列表、放通列表规则
+        r"""批量添加入侵防御封禁列表、放通列表规则
 
         :param request: Request instance for CreateBlockIgnoreRuleList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleListRequest`
@@ -257,7 +257,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateBlockIgnoreRuleNew(self, request):
-        """批量添加入侵防御封禁列表、放通列表规则
+        r"""批量添加入侵防御封禁列表、放通列表规则
 
         :param request: Request instance for CreateBlockIgnoreRuleNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleNewRequest`
@@ -280,7 +280,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateChooseVpcs(self, request):
-        """创建、选择vpc
+        r"""创建、选择vpc
 
         :param request: Request instance for CreateChooseVpcs.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateChooseVpcsRequest`
@@ -303,7 +303,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateDatabaseWhiteListRules(self, request):
-        """创建暴露数据库白名单规则
+        r"""创建暴露数据库白名单规则
 
         :param request: Request instance for CreateDatabaseWhiteListRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateDatabaseWhiteListRulesRequest`
@@ -326,7 +326,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstance(self, request):
-        """创建NAT防火墙实例（Region参数必填）
+        r"""创建NAT防火墙实例（Region参数必填）
 
         :param request: Request instance for CreateNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceRequest`
@@ -349,7 +349,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstanceWithDomain(self, request):
-        """创建防火墙实例和接入域名（Region参数必填）
+        r"""创建防火墙实例和接入域名（Region参数必填）
 
         :param request: Request instance for CreateNatFwInstanceWithDomain.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceWithDomainRequest`
@@ -372,7 +372,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateSecurityGroupRules(self, request):
-        """创建企业安全组规则
+        r"""创建企业安全组规则
 
         :param request: Request instance for CreateSecurityGroupRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateSecurityGroupRulesRequest`
@@ -395,7 +395,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateVpcFwGroup(self, request):
-        """创建VPC间防火墙(防火墙组)
+        r"""创建VPC间防火墙(防火墙组)
 
         :param request: Request instance for CreateVpcFwGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateVpcFwGroupRequest`
@@ -418,7 +418,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAcRule(self, request):
-        """删除规则
+        r"""删除规则
 
         :param request: Request instance for DeleteAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAcRuleRequest`
@@ -441,7 +441,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAddressTemplate(self, request):
-        """删除地址模板规则
+        r"""删除地址模板规则
 
         :param request: Request instance for DeleteAddressTemplate.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAddressTemplateRequest`
@@ -464,7 +464,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAllAccessControlRule(self, request):
-        """全部删除规则
+        r"""全部删除规则
 
         :param request: Request instance for DeleteAllAccessControlRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`
@@ -487,7 +487,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteBlockIgnoreRuleList(self, request):
-        """批量删除入侵防御封禁列表、放通列表规则
+        r"""批量删除入侵防御封禁列表、放通列表规则
 
         :param request: Request instance for DeleteBlockIgnoreRuleList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteBlockIgnoreRuleListRequest`
@@ -510,7 +510,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteBlockIgnoreRuleNew(self, request):
-        """批量删除入侵防御封禁列表、放通列表规则（新）
+        r"""批量删除入侵防御封禁列表、放通列表规则（新）
 
         :param request: Request instance for DeleteBlockIgnoreRuleNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteBlockIgnoreRuleNewRequest`
@@ -533,7 +533,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteNatFwInstance(self, request):
-        """销毁防火墙实例
+        r"""销毁防火墙实例
 
         :param request: Request instance for DeleteNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteNatFwInstanceRequest`
@@ -556,7 +556,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteRemoteAccessDomain(self, request):
-        """删除远程运维域名
+        r"""删除远程运维域名
 
         :param request: Request instance for DeleteRemoteAccessDomain.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteRemoteAccessDomainRequest`
@@ -579,7 +579,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteResourceGroup(self, request):
-        """DeleteResourceGroup-资产中心资产组删除
+        r"""DeleteResourceGroup-资产中心资产组删除
 
         :param request: Request instance for DeleteResourceGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteResourceGroupRequest`
@@ -602,7 +602,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteSecurityGroupRule(self, request):
-        """删除规则
+        r"""删除规则
 
         :param request: Request instance for DeleteSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupRuleRequest`
@@ -625,7 +625,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteVpcFwGroup(self, request):
-        """删除防火墙(组)，或者删除其中实例
+        r"""删除防火墙(组)，或者删除其中实例
 
         :param request: Request instance for DeleteVpcFwGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcFwGroupRequest`
@@ -648,7 +648,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAcLists(self, request):
-        """访问控制列表
+        r"""访问控制列表
 
         :param request: Request instance for DescribeAcLists.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAcListsRequest`
@@ -671,7 +671,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAclRule(self, request):
-        """查询互联网边界访问控制列表
+        r"""查询互联网边界访问控制列表
 
         :param request: Request instance for DescribeAclRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAclRuleRequest`
@@ -694,7 +694,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAddressTemplateList(self, request):
-        """查询地址模板列表
+        r"""查询地址模板列表
 
         :param request: Request instance for DescribeAddressTemplateList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAddressTemplateListRequest`
@@ -717,7 +717,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAssetSync(self, request):
-        """资产同步状态查询
+        r"""资产同步状态查询
 
         :param request: Request instance for DescribeAssetSync.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAssetSyncRequest`
@@ -740,7 +740,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAssociatedInstanceList(self, request):
-        """获取安全组关联实例列表
+        r"""获取安全组关联实例列表
 
         :param request: Request instance for DescribeAssociatedInstanceList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAssociatedInstanceListRequest`
@@ -763,7 +763,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockByIpTimesList(self, request):
-        """DescribeBlockByIpTimesList 告警中心阻断IP折线图
+        r"""DescribeBlockByIpTimesList 告警中心阻断IP折线图
 
         :param request: Request instance for DescribeBlockByIpTimesList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockByIpTimesListRequest`
@@ -786,7 +786,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockIgnoreList(self, request):
-        """查询入侵防御放通封禁列表
+        r"""查询入侵防御放通封禁列表
 
         :param request: Request instance for DescribeBlockIgnoreList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockIgnoreListRequest`
@@ -809,7 +809,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockStaticList(self, request):
-        """DescribeBlockStaticList 告警中心柱形图
+        r"""DescribeBlockStaticList 告警中心柱形图
 
         :param request: Request instance for DescribeBlockStaticList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockStaticListRequest`
@@ -832,7 +832,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeCfwEips(self, request):
-        """查询防火墙弹性公网IP
+        r"""查询防火墙弹性公网IP
 
         :param request: Request instance for DescribeCfwEips.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwEipsRequest`
@@ -855,7 +855,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeCfwInsStatus(self, request):
-        """cfw实例运行状态查询
+        r"""cfw实例运行状态查询
 
         :param request: Request instance for DescribeCfwInsStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwInsStatusRequest`
@@ -878,7 +878,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeDefenseSwitch(self, request):
-        """获取入侵防御按钮列表
+        r"""获取入侵防御按钮列表
 
         :param request: Request instance for DescribeDefenseSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeDefenseSwitchRequest`
@@ -901,7 +901,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeEnterpriseSGRuleProgress(self, request):
-        """查询新版安全组下发进度
+        r"""查询新版安全组下发进度
 
         :param request: Request instance for DescribeEnterpriseSGRuleProgress.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSGRuleProgressRequest`
@@ -924,7 +924,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeEnterpriseSecurityGroupRule(self, request):
-        """查询新企业安全组规则
+        r"""查询新企业安全组规则
 
         :param request: Request instance for DescribeEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleRequest`
@@ -947,7 +947,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeEnterpriseSecurityGroupRuleList(self, request):
-        """查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
+        r"""查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
 
         :param request: Request instance for DescribeEnterpriseSecurityGroupRuleList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleListRequest`
@@ -970,7 +970,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeFwEdgeIps(self, request):
-        """串行防火墙IP开关列表
+        r"""串行防火墙IP开关列表
 
         :param request: Request instance for DescribeFwEdgeIps.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeFwEdgeIpsRequest`
@@ -993,7 +993,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeFwGroupInstanceInfo(self, request):
-        """获取租户所有VPC防火墙(组)及VPC防火墙实例卡片信息
+        r"""获取租户所有VPC防火墙(组)及VPC防火墙实例卡片信息
 
         :param request: Request instance for DescribeFwGroupInstanceInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeFwGroupInstanceInfoRequest`
@@ -1016,7 +1016,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeFwSyncStatus(self, request):
-        """获取防火墙同步状态，一般在执行同步操作后查询
+        r"""获取防火墙同步状态，一般在执行同步操作后查询
 
         :param request: Request instance for DescribeFwSyncStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeFwSyncStatusRequest`
@@ -1039,7 +1039,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeGuideScanInfo(self, request):
-        """DescribeGuideScanInfo新手引导扫描接口信息
+        r"""DescribeGuideScanInfo新手引导扫描接口信息
 
         :param request: Request instance for DescribeGuideScanInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeGuideScanInfoRequest`
@@ -1062,7 +1062,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeIPStatusList(self, request):
-        """IP防护状态查询
+        r"""IP防护状态查询
 
         :param request: Request instance for DescribeIPStatusList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIPStatusListRequest`
@@ -1085,7 +1085,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeLogStorageStatistic(self, request):
-        """租户日志存储统计
+        r"""租户日志存储统计
 
         :param request: Request instance for DescribeLogStorageStatistic.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeLogStorageStatisticRequest`
@@ -1108,7 +1108,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeLogs(self, request):
-        """日志审计日志查询
+        r"""日志审计日志查询
 
         :param request: Request instance for DescribeLogs.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeLogsRequest`
@@ -1131,7 +1131,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatAcRule(self, request):
-        """查询NAT访问控制列表
+        r"""查询NAT访问控制列表
 
         :param request: Request instance for DescribeNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatAcRuleRequest`
@@ -1154,7 +1154,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwDnatRule(self, request):
-        """查询Nat防火墙Dnat规则
+        r"""查询Nat防火墙Dnat规则
 
         :param request: Request instance for DescribeNatFwDnatRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwDnatRuleRequest`
@@ -1177,7 +1177,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInfoCount(self, request):
-        """获取当前用户接入nat防火墙的所有子网数及natfw实例个数
+        r"""获取当前用户接入nat防火墙的所有子网数及natfw实例个数
 
         :param request: Request instance for DescribeNatFwInfoCount.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInfoCountRequest`
@@ -1200,7 +1200,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstance(self, request):
-        """DescribeNatFwInstance 获取租户所有NAT实例
+        r"""DescribeNatFwInstance 获取租户所有NAT实例
 
         :param request: Request instance for DescribeNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstanceRequest`
@@ -1223,7 +1223,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstanceWithRegion(self, request):
-        """GetNatFwInstanceWithRegion 获取租户新增运维的NAT实例，带上地域
+        r"""GetNatFwInstanceWithRegion 获取租户新增运维的NAT实例，带上地域
 
         :param request: Request instance for DescribeNatFwInstanceWithRegion.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstanceWithRegionRequest`
@@ -1246,7 +1246,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstancesInfo(self, request):
-        """GetNatInstance 获取租户所有NAT实例及实例卡片信息
+        r"""GetNatInstance 获取租户所有NAT实例及实例卡片信息
 
         :param request: Request instance for DescribeNatFwInstancesInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstancesInfoRequest`
@@ -1269,7 +1269,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwVpcDnsLst(self, request):
-        """展示当前natfw 实例对应的vpc dns开关
+        r"""展示当前natfw 实例对应的vpc dns开关
 
         :param request: Request instance for DescribeNatFwVpcDnsLst.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwVpcDnsLstRequest`
@@ -1292,7 +1292,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeResourceGroup(self, request):
-        """DescribeResourceGroup资产中心资产树信息
+        r"""DescribeResourceGroup资产中心资产树信息
 
         :param request: Request instance for DescribeResourceGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupRequest`
@@ -1315,7 +1315,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeResourceGroupNew(self, request):
-        """资产中心资产组数数据信息查询
+        r"""资产中心资产组数数据信息查询
 
         :param request: Request instance for DescribeResourceGroupNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupNewRequest`
@@ -1338,7 +1338,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeRuleOverview(self, request):
-        """查询规则列表概况
+        r"""查询规则列表概况
 
         :param request: Request instance for DescribeRuleOverview.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeRuleOverviewRequest`
@@ -1361,7 +1361,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSecurityGroupList(self, request):
-        """查询安全组规则列表
+        r"""查询安全组规则列表
 
         :param request: Request instance for DescribeSecurityGroupList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupListRequest`
@@ -1384,7 +1384,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSourceAsset(self, request):
-        """DescribeSourceAsset-查询全部资产信息
+        r"""DescribeSourceAsset-查询全部资产信息
 
         :param request: Request instance for DescribeSourceAsset.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSourceAssetRequest`
@@ -1407,7 +1407,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSwitchLists(self, request):
-        """防火墙开关列表，请换用DescribeFwEdgeIps
+        r"""防火墙开关列表，请换用DescribeFwEdgeIps
 
         :param request: Request instance for DescribeSwitchLists.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSwitchListsRequest`
@@ -1430,7 +1430,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogInfo(self, request):
-        """DescribeTLogInfo告警中心概况查询
+        r"""DescribeTLogInfo告警中心概况查询
 
         :param request: Request instance for DescribeTLogInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogInfoRequest`
@@ -1453,7 +1453,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogIpList(self, request):
-        """DescribeTLogIpList告警中心IP柱形图
+        r"""DescribeTLogIpList告警中心IP柱形图
 
         :param request: Request instance for DescribeTLogIpList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogIpListRequest`
@@ -1476,7 +1476,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTableStatus(self, request):
-        """查询规则表状态
+        r"""查询规则表状态
 
         :param request: Request instance for DescribeTableStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTableStatusRequest`
@@ -1499,7 +1499,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeUnHandleEventTabList(self, request):
-        """DescribeUnHandleEventTabList 告警中心伪攻击链事件未处置接口
+        r"""DescribeUnHandleEventTabList 告警中心伪攻击链事件未处置接口
 
         :param request: Request instance for DescribeUnHandleEventTabList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeUnHandleEventTabListRequest`
@@ -1522,7 +1522,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeVpcAcRule(self, request):
-        """查询内网间访问控制列表
+        r"""查询内网间访问控制列表
 
         :param request: Request instance for DescribeVpcAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAcRuleRequest`
@@ -1545,7 +1545,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeVpcFwGroupSwitch(self, request):
-        """VPC防火墙(组)开关列表
+        r"""VPC防火墙(组)开关列表
 
         :param request: Request instance for DescribeVpcFwGroupSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcFwGroupSwitchRequest`
@@ -1568,7 +1568,7 @@ class CfwClient(AbstractClient):
 
 
     def ExpandCfwVertical(self, request):
-        """防火墙垂直扩容
+        r"""防火墙垂直扩容
 
         :param request: Request instance for ExpandCfwVertical.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ExpandCfwVerticalRequest`
@@ -1591,7 +1591,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAcRule(self, request):
-        """修改规则
+        r"""修改规则
 
         :param request: Request instance for ModifyAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAcRuleRequest`
@@ -1614,7 +1614,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAclRule(self, request):
-        """修改互联网边界访问控制规则
+        r"""修改互联网边界访问控制规则
 
         :param request: Request instance for ModifyAclRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAclRuleRequest`
@@ -1637,7 +1637,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAddressTemplate(self, request):
-        """修改地址模板
+        r"""修改地址模板
 
         :param request: Request instance for ModifyAddressTemplate.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAddressTemplateRequest`
@@ -1660,7 +1660,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllPublicIPSwitchStatus(self, request):
-        """互联网边界防火墙一键开关
+        r"""互联网边界防火墙一键开关
 
         :param request: Request instance for ModifyAllPublicIPSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllPublicIPSwitchStatusRequest`
@@ -1683,7 +1683,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllRuleStatus(self, request):
-        """启用停用全部规则
+        r"""启用停用全部规则
 
         :param request: Request instance for ModifyAllRuleStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllRuleStatusRequest`
@@ -1706,7 +1706,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAssetScan(self, request):
-        """资产扫描
+        r"""资产扫描
 
         :param request: Request instance for ModifyAssetScan.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAssetScanRequest`
@@ -1729,7 +1729,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAssetSync(self, request):
-        """资产同步
+        r"""资产同步
 
         :param request: Request instance for ModifyAssetSync.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAssetSyncRequest`
@@ -1752,7 +1752,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockIgnoreList(self, request):
-        """支持对封禁列表、放通列表如下操作：
+        r"""支持对封禁列表、放通列表如下操作：
         批量增加封禁IP、放通IP/域名
         批量删除封禁IP、放通IP/域名
         批量修改封禁IP、放通IP/域名生效事件
@@ -1778,7 +1778,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockIgnoreRule(self, request):
-        """编辑单条入侵防御封禁列表、放通列表规则
+        r"""编辑单条入侵防御封禁列表、放通列表规则
 
         :param request: Request instance for ModifyBlockIgnoreRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreRuleRequest`
@@ -1801,7 +1801,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockIgnoreRuleNew(self, request):
-        """编辑单条入侵防御封禁列表、放通列表规则（新）
+        r"""编辑单条入侵防御封禁列表、放通列表规则（新）
 
         :param request: Request instance for ModifyBlockIgnoreRuleNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreRuleNewRequest`
@@ -1824,7 +1824,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockTop(self, request):
-        """ModifyBlockTop取消置顶接口
+        r"""ModifyBlockTop取消置顶接口
 
         :param request: Request instance for ModifyBlockTop.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockTopRequest`
@@ -1847,7 +1847,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEWRuleStatus(self, request):
-        """启用停用VPC间规则或Nat边界规则
+        r"""启用停用VPC间规则或Nat边界规则
         VPC间规则需指定EdgeId。Nat边界规则需指定地域Region与Direction。
 
         :param request: Request instance for ModifyEWRuleStatus.
@@ -1871,7 +1871,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEdgeIpSwitch(self, request):
-        """修改边界防火墙开关(旁路、串行)
+        r"""修改边界防火墙开关(旁路、串行)
 
         :param request: Request instance for ModifyEdgeIpSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEdgeIpSwitchRequest`
@@ -1894,7 +1894,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEnterpriseSecurityDispatchStatus(self, request):
-        """修改企业安全组下发状态
+        r"""修改企业安全组下发状态
 
         :param request: Request instance for ModifyEnterpriseSecurityDispatchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEnterpriseSecurityDispatchStatusRequest`
@@ -1917,7 +1917,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEnterpriseSecurityGroupRule(self, request):
-        """编辑新企业安全组规则
+        r"""编辑新企业安全组规则
 
         :param request: Request instance for ModifyEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEnterpriseSecurityGroupRuleRequest`
@@ -1940,7 +1940,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyFwGroupSwitch(self, request):
-        """修改防火墙(组)开关(支持单点模式、多点模式、全互通模式)
+        r"""修改防火墙(组)开关(支持单点模式、多点模式、全互通模式)
 
         :param request: Request instance for ModifyFwGroupSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyFwGroupSwitchRequest`
@@ -1963,7 +1963,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatAcRule(self, request):
-        """修改NAT访问控制规则
+        r"""修改NAT访问控制规则
 
         :param request: Request instance for ModifyNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatAcRuleRequest`
@@ -1986,7 +1986,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwReSelect(self, request):
-        """防火墙实例重新选择vpc或nat
+        r"""防火墙实例重新选择vpc或nat
 
         :param request: Request instance for ModifyNatFwReSelect.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwReSelectRequest`
@@ -2009,7 +2009,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwSwitch(self, request):
-        """修改NAT防火墙开关
+        r"""修改NAT防火墙开关
 
         :param request: Request instance for ModifyNatFwSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwSwitchRequest`
@@ -2032,7 +2032,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwVpcDnsSwitch(self, request):
-        """nat 防火墙VPC DNS 开关切换
+        r"""nat 防火墙VPC DNS 开关切换
 
         :param request: Request instance for ModifyNatFwVpcDnsSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwVpcDnsSwitchRequest`
@@ -2055,7 +2055,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatInstance(self, request):
-        """编辑NAT防火墙
+        r"""编辑NAT防火墙
 
         :param request: Request instance for ModifyNatInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatInstanceRequest`
@@ -2078,7 +2078,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatSequenceRules(self, request):
-        """NAT防火墙规则快速排序
+        r"""NAT防火墙规则快速排序
 
         :param request: Request instance for ModifyNatSequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatSequenceRulesRequest`
@@ -2101,7 +2101,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyResourceGroup(self, request):
-        """ModifyResourceGroup-资产中心资产组信息修改
+        r"""ModifyResourceGroup-资产中心资产组信息修改
 
         :param request: Request instance for ModifyResourceGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyResourceGroupRequest`
@@ -2124,7 +2124,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyRunSyncAsset(self, request):
-        """同步资产-互联网&VPC（新）
+        r"""同步资产-互联网&VPC（新）
 
         :param request: Request instance for ModifyRunSyncAsset.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyRunSyncAssetRequest`
@@ -2147,7 +2147,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySecurityGroupItemRuleStatus(self, request):
-        """启用停用单条企业安全组规则
+        r"""启用停用单条企业安全组规则
 
         :param request: Request instance for ModifySecurityGroupItemRuleStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupItemRuleStatusRequest`
@@ -2170,7 +2170,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySecurityGroupRule(self, request):
-        """编辑单条安全组规则
+        r"""编辑单条安全组规则
 
         :param request: Request instance for ModifySecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupRuleRequest`
@@ -2193,7 +2193,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySecurityGroupSequenceRules(self, request):
-        """企业安全组规则快速排序
+        r"""企业安全组规则快速排序
 
         :param request: Request instance for ModifySecurityGroupSequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupSequenceRulesRequest`
@@ -2216,7 +2216,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySequenceAclRules(self, request):
-        """互联网边界规则快速排序
+        r"""互联网边界规则快速排序
 
         :param request: Request instance for ModifySequenceAclRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySequenceAclRulesRequest`
@@ -2239,7 +2239,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySequenceRules(self, request):
-        """修改规则执行顺序
+        r"""修改规则执行顺序
 
         :param request: Request instance for ModifySequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySequenceRulesRequest`
@@ -2262,7 +2262,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyStorageSetting(self, request):
-        """日志存储设置，可以修改存储时间和清空日志
+        r"""日志存储设置，可以修改存储时间和清空日志
 
         :param request: Request instance for ModifyStorageSetting.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyStorageSettingRequest`
@@ -2285,7 +2285,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyTableStatus(self, request):
-        """修改规则表状态
+        r"""修改规则表状态
 
         :param request: Request instance for ModifyTableStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyTableStatusRequest`
@@ -2308,7 +2308,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyVpcAcRule(self, request):
-        """修改内网间访问控制规则
+        r"""修改内网间访问控制规则
 
         :param request: Request instance for ModifyVpcAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyVpcAcRuleRequest`
@@ -2331,7 +2331,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyVpcFwGroup(self, request):
-        """编辑VPC间防火墙(防火墙组)
+        r"""编辑VPC间防火墙(防火墙组)
 
         :param request: Request instance for ModifyVpcFwGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyVpcFwGroupRequest`
@@ -2354,7 +2354,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyVpcFwSequenceRules(self, request):
-        """vpc间规则快速排序
+        r"""vpc间规则快速排序
 
         :param request: Request instance for ModifyVpcFwSequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyVpcFwSequenceRulesRequest`
@@ -2377,7 +2377,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveAcRule(self, request):
-        """删除互联网边界规则
+        r"""删除互联网边界规则
 
         :param request: Request instance for RemoveAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveAcRuleRequest`
@@ -2400,7 +2400,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveAclRule(self, request):
-        """删除互联网边界访问控制规则
+        r"""删除互联网边界访问控制规则
 
         :param request: Request instance for RemoveAclRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveAclRuleRequest`
@@ -2423,7 +2423,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveEnterpriseSecurityGroupRule(self, request):
-        """删除新企业安全组规则
+        r"""删除新企业安全组规则
 
         :param request: Request instance for RemoveEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveEnterpriseSecurityGroupRuleRequest`
@@ -2446,7 +2446,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveNatAcRule(self, request):
-        """删除NAT访问控制规则
+        r"""删除NAT访问控制规则
 
         :param request: Request instance for RemoveNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveNatAcRuleRequest`
@@ -2469,7 +2469,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveVpcAcRule(self, request):
-        """删除VPC间规则
+        r"""删除VPC间规则
 
         :param request: Request instance for RemoveVpcAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveVpcAcRuleRequest`
@@ -2492,7 +2492,7 @@ class CfwClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """本接口用于检索分析日志，使用该接口时请注意如下事项：
+        r"""本接口用于检索分析日志，使用该接口时请注意如下事项：
         1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
         2. 检索语法建议使用日志服务专用检索语法CQL，请使用SyntaxRule参数，将值设置为1，控制台默认也使用该语法规则。
         3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
@@ -2518,7 +2518,7 @@ class CfwClient(AbstractClient):
 
 
     def SetNatFwDnatRule(self, request):
-        """配置防火墙Dnat规则
+        r"""配置防火墙Dnat规则
 
         :param request: Request instance for SetNatFwDnatRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.SetNatFwDnatRuleRequest`
@@ -2541,7 +2541,7 @@ class CfwClient(AbstractClient):
 
 
     def SetNatFwEip(self, request):
-        """设置防火墙实例弹性公网ip，目前仅支持新增模式的防火墙实例
+        r"""设置防火墙实例弹性公网ip，目前仅支持新增模式的防火墙实例
 
         :param request: Request instance for SetNatFwEip.
         :type request: :class:`tencentcloud.cfw.v20190904.models.SetNatFwEipRequest`
@@ -2564,7 +2564,7 @@ class CfwClient(AbstractClient):
 
 
     def StopSecurityGroupRuleDispatch(self, request):
-        """中止安全组规则下发
+        r"""中止安全组规则下发
 
         :param request: Request instance for StopSecurityGroupRuleDispatch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.StopSecurityGroupRuleDispatchRequest`
@@ -2587,7 +2587,7 @@ class CfwClient(AbstractClient):
 
 
     def SyncFwOperate(self, request):
-        """同步防火墙操作，包括同步防火墙路由（若vpc，专线网关等增加了Cidr，需要手动同步一下路由使之在防火墙上生效）等。
+        r"""同步防火墙操作，包括同步防火墙路由（若vpc，专线网关等增加了Cidr，需要手动同步一下路由使之在防火墙上生效）等。
 
         :param request: Request instance for SyncFwOperate.
         :type request: :class:`tencentcloud.cfw.v20190904.models.SyncFwOperateRequest`

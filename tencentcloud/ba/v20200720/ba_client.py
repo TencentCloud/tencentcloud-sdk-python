@@ -27,7 +27,7 @@ class BaClient(AbstractClient):
 
 
     def CreateWeappQRUrl(self, request):
-        """创建渠道备案小程序二维码
+        r"""创建渠道备案小程序二维码
 
         :param request: Request instance for CreateWeappQRUrl.
         :type request: :class:`tencentcloud.ba.v20200720.models.CreateWeappQRUrlRequest`
@@ -50,7 +50,7 @@ class BaClient(AbstractClient):
 
 
     def DescribeGetAuthInfo(self, request):
-        """获取实名认证信息
+        r"""获取实名认证信息
 
         :param request: Request instance for DescribeGetAuthInfo.
         :type request: :class:`tencentcloud.ba.v20200720.models.DescribeGetAuthInfoRequest`
@@ -73,7 +73,7 @@ class BaClient(AbstractClient):
 
 
     def SyncIcpOrderWebInfo(self, request):
-        """将备案ICP订单下的一个网站信息 同步给订单下其他网站，需要被同步的网站被检查通过(isCheck:true)；
+        r"""将备案ICP订单下的一个网站信息 同步给订单下其他网站，需要被同步的网站被检查通过(isCheck:true)；
         只有指定的网站信息字段能被同步
 
         :param request: Request instance for SyncIcpOrderWebInfo.

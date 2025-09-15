@@ -27,7 +27,7 @@ class ScfClient(AbstractClient):
 
 
     def CopyFunction(self, request):
-        """复制一个函数，您可以选择将复制出的新函数放置在特定的Region和Namespace。
+        r"""复制一个函数，您可以选择将复制出的新函数放置在特定的Region和Namespace。
         注：本接口**不会**复制函数的以下对象或属性：
         1. 函数的触发器
         2. 除了$LATEST以外的其它版本
@@ -56,7 +56,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateAlias(self, request):
-        """为某个函数版本创建一个别名，您可以使用别名来标记特定的函数版本，如DEV/RELEASE版本，也可以随时修改别名指向的版本。
+        r"""为某个函数版本创建一个别名，您可以使用别名来标记特定的函数版本，如DEV/RELEASE版本，也可以随时修改别名指向的版本。
         一个别名必须指向一个主版本，此外还可以同时指向一个附加版本。调用函数时指定特定的别名，则请求会被发送到别名指向的版本上，您可以配置请求发送到主版本和附加版本的比例。
 
         :param request: Request instance for CreateAlias.
@@ -80,7 +80,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateCustomDomain(self, request):
-        """创建自定义域名
+        r"""创建自定义域名
 
         :param request: Request instance for CreateCustomDomain.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateCustomDomainRequest`
@@ -103,7 +103,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateFunction(self, request):
-        """该接口根据传入参数创建新的函数。
+        r"""该接口根据传入参数创建新的函数。
 
         :param request: Request instance for CreateFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateFunctionRequest`
@@ -126,7 +126,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """该接口根据传入的参数创建命名空间。
+        r"""该接口根据传入的参数创建命名空间。
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateNamespaceRequest`
@@ -149,7 +149,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateTrigger(self, request):
-        """该接口根据参数输入设置新的触发方式。
+        r"""该接口根据参数输入设置新的触发方式。
 
         :param request: Request instance for CreateTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateTriggerRequest`
@@ -172,7 +172,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteAlias(self, request):
-        """删除一个函数版本的别名
+        r"""删除一个函数版本的别名
 
         :param request: Request instance for DeleteAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteAliasRequest`
@@ -195,7 +195,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteCustomDomain(self, request):
-        """删除自定义域名
+        r"""删除自定义域名
 
         :param request: Request instance for DeleteCustomDomain.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteCustomDomainRequest`
@@ -218,7 +218,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteFunction(self, request):
-        """该接口根据传入参数删除函数。
+        r"""该接口根据传入参数删除函数。
 
         :param request: Request instance for DeleteFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteFunctionRequest`
@@ -241,7 +241,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteFunctionVersion(self, request):
-        """该接口根据传入参数删除函数的指定版本。
+        r"""该接口根据传入参数删除函数的指定版本。
 
         :param request: Request instance for DeleteFunctionVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteFunctionVersionRequest`
@@ -264,7 +264,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteLayerVersion(self, request):
-        """删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
+        r"""删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
 
         :param request: Request instance for DeleteLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionRequest`
@@ -287,7 +287,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """该接口根据传入的参数删除命名空间。
+        r"""该接口根据传入的参数删除命名空间。
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteNamespaceRequest`
@@ -310,7 +310,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteProvisionedConcurrencyConfig(self, request):
-        """删除函数版本的预置并发配置。
+        r"""删除函数版本的预置并发配置。
 
         :param request: Request instance for DeleteProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteProvisionedConcurrencyConfigRequest`
@@ -333,7 +333,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteReservedConcurrencyConfig(self, request):
-        """删除函数的最大独占配额配置。
+        r"""删除函数的最大独占配额配置。
 
         :param request: Request instance for DeleteReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigRequest`
@@ -356,7 +356,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteTrigger(self, request):
-        """该接口根据参数传入删除已有的触发方式。
+        r"""该接口根据参数传入删除已有的触发方式。
 
         :param request: Request instance for DeleteTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteTriggerRequest`
@@ -379,7 +379,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAccount(self, request):
-        """获取账户信息
+        r"""获取账户信息
 
         :param request: Request instance for GetAccount.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAccountRequest`
@@ -402,7 +402,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAlias(self, request):
-        """获取别名的详细信息，包括名称、描述、版本、路由信息等。
+        r"""获取别名的详细信息，包括名称、描述、版本、路由信息等。
 
         :param request: Request instance for GetAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAliasRequest`
@@ -425,7 +425,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAsyncEventStatus(self, request):
-        """获取函数异步执行事件状态，事件状态保留 3 * 24 小时（从事件完成开始计时）。
+        r"""获取函数异步执行事件状态，事件状态保留 3 * 24 小时（从事件完成开始计时）。
 
         :param request: Request instance for GetAsyncEventStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusRequest`
@@ -448,7 +448,7 @@ class ScfClient(AbstractClient):
 
 
     def GetCustomDomain(self, request):
-        """查看云函数自定义域名详情
+        r"""查看云函数自定义域名详情
 
         :param request: Request instance for GetCustomDomain.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetCustomDomainRequest`
@@ -471,7 +471,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunction(self, request):
-        """该接口获取某个函数的详细信息，包括名称、代码、处理方法、关联触发器和超时时间等字段。
+        r"""该接口获取某个函数的详细信息，包括名称、代码、处理方法、关联触发器和超时时间等字段。
 
         :param request: Request instance for GetFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionRequest`
@@ -494,7 +494,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionAddress(self, request):
-        """该接口用于获取函数代码包的下载地址。
+        r"""该接口用于获取函数代码包的下载地址。
 
         :param request: Request instance for GetFunctionAddress.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionAddressRequest`
@@ -517,7 +517,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionEventInvokeConfig(self, request):
-        """获取函数异步重试配置，包括重试次数和消息保留时间
+        r"""获取函数异步重试配置，包括重试次数和消息保留时间
 
         :param request: Request instance for GetFunctionEventInvokeConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigRequest`
@@ -540,7 +540,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionLogs(self, request):
-        """该接口根据指定的日志查询条件返回函数运行日志。该接口已下线，查询函数请求运行的返回信息，请使用 [GetRequestStatus](https://cloud.tencent.com/document/product/583/65348)。查询函数运行日志，请参考[日志检索教程](https://cloud.tencent.com/document/product/583/52637)。
+        r"""该接口根据指定的日志查询条件返回函数运行日志。该接口已下线，查询函数请求运行的返回信息，请使用 [GetRequestStatus](https://cloud.tencent.com/document/product/583/65348)。查询函数运行日志，请参考[日志检索教程](https://cloud.tencent.com/document/product/583/52637)。
 
         :param request: Request instance for GetFunctionLogs.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionLogsRequest`
@@ -563,7 +563,7 @@ class ScfClient(AbstractClient):
 
 
     def GetLayerVersion(self, request):
-        """获取层版本详细信息，包括用于下载层中文件的链接。
+        r"""获取层版本详细信息，包括用于下载层中文件的链接。
 
         :param request: Request instance for GetLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionRequest`
@@ -586,7 +586,7 @@ class ScfClient(AbstractClient):
 
 
     def GetProvisionedConcurrencyConfig(self, request):
-        """获取函数或函数某一版本的预置并发详情。
+        r"""获取函数或函数某一版本的预置并发详情。
 
         :param request: Request instance for GetProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetProvisionedConcurrencyConfigRequest`
@@ -609,7 +609,7 @@ class ScfClient(AbstractClient):
 
 
     def GetRequestStatus(self, request):
-        """该接口根据指定的查询条件返回函数单个请求运行状态。
+        r"""该接口根据指定的查询条件返回函数单个请求运行状态。
 
         :param request: Request instance for GetRequestStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusRequest`
@@ -632,7 +632,7 @@ class ScfClient(AbstractClient):
 
 
     def GetReservedConcurrencyConfig(self, request):
-        """获取函数的最大独占配额详情。
+        r"""获取函数的最大独占配额详情。
 
         :param request: Request instance for GetReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigRequest`
@@ -655,7 +655,7 @@ class ScfClient(AbstractClient):
 
 
     def Invoke(self, request):
-        """该接口用于运行函数。
+        r"""该接口用于运行函数。
 
         :param request: Request instance for Invoke.
         :type request: :class:`tencentcloud.scf.v20180416.models.InvokeRequest`
@@ -678,7 +678,7 @@ class ScfClient(AbstractClient):
 
 
     def InvokeFunction(self, request):
-        """SCF同步调用函数接口。
+        r"""SCF同步调用函数接口。
 
         :param request: Request instance for InvokeFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.InvokeFunctionRequest`
@@ -701,7 +701,7 @@ class ScfClient(AbstractClient):
 
 
     def ListAliases(self, request):
-        """返回一个函数下的全部别名，可以根据特定函数版本过滤。
+        r"""返回一个函数下的全部别名，可以根据特定函数版本过滤。
 
         :param request: Request instance for ListAliases.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListAliasesRequest`
@@ -724,7 +724,7 @@ class ScfClient(AbstractClient):
 
 
     def ListAsyncEvents(self, request):
-        """拉取函数异步事件列表
+        r"""拉取函数异步事件列表
 
         :param request: Request instance for ListAsyncEvents.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListAsyncEventsRequest`
@@ -747,7 +747,7 @@ class ScfClient(AbstractClient):
 
 
     def ListCustomDomains(self, request):
-        """遍历域名列表信息
+        r"""遍历域名列表信息
 
         :param request: Request instance for ListCustomDomains.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListCustomDomainsRequest`
@@ -770,7 +770,7 @@ class ScfClient(AbstractClient):
 
 
     def ListFunctions(self, request):
-        """该接口根据传入的查询参数返回相关函数信息。
+        r"""该接口根据传入的查询参数返回相关函数信息。
 
         :param request: Request instance for ListFunctions.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListFunctionsRequest`
@@ -793,7 +793,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayerVersions(self, request):
-        """返回指定层的全部版本的信息
+        r"""返回指定层的全部版本的信息
 
         :param request: Request instance for ListLayerVersions.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsRequest`
@@ -816,7 +816,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayers(self, request):
-        """返回全部层的列表，其中包含了每个层最新版本的信息，可以通过适配运行时进行过滤。
+        r"""返回全部层的列表，其中包含了每个层最新版本的信息，可以通过适配运行时进行过滤。
 
         :param request: Request instance for ListLayers.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayersRequest`
@@ -839,7 +839,7 @@ class ScfClient(AbstractClient):
 
 
     def ListNamespaces(self, request):
-        """列出命名空间列表
+        r"""列出命名空间列表
 
         :param request: Request instance for ListNamespaces.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListNamespacesRequest`
@@ -862,7 +862,7 @@ class ScfClient(AbstractClient):
 
 
     def ListTriggers(self, request):
-        """获取函数触发器列表
+        r"""获取函数触发器列表
 
         :param request: Request instance for ListTriggers.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListTriggersRequest`
@@ -885,7 +885,7 @@ class ScfClient(AbstractClient):
 
 
     def ListVersionByFunction(self, request):
-        """该接口根据传入的参数查询函数的版本。
+        r"""该接口根据传入的参数查询函数的版本。
 
         :param request: Request instance for ListVersionByFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListVersionByFunctionRequest`
@@ -908,7 +908,7 @@ class ScfClient(AbstractClient):
 
 
     def PublishLayerVersion(self, request):
-        """使用给定的zip文件或cos对象创建一个层的新版本，每次使用相同的层的名称调用本接口，都会生成一个新版本。
+        r"""使用给定的zip文件或cos对象创建一个层的新版本，每次使用相同的层的名称调用本接口，都会生成一个新版本。
 
         :param request: Request instance for PublishLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionRequest`
@@ -931,7 +931,7 @@ class ScfClient(AbstractClient):
 
 
     def PublishVersion(self, request):
-        """该接口用于用户发布新版本函数。
+        r"""该接口用于用户发布新版本函数。
 
         :param request: Request instance for PublishVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.PublishVersionRequest`
@@ -954,7 +954,7 @@ class ScfClient(AbstractClient):
 
 
     def PutProvisionedConcurrencyConfig(self, request):
-        """设置函数某一非$LATEST版本的预置并发。
+        r"""设置函数某一非$LATEST版本的预置并发。
 
         :param request: Request instance for PutProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutProvisionedConcurrencyConfigRequest`
@@ -977,7 +977,7 @@ class ScfClient(AbstractClient):
 
 
     def PutReservedConcurrencyConfig(self, request):
-        """设置函数最大独占配额
+        r"""设置函数最大独占配额
 
         :param request: Request instance for PutReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigRequest`
@@ -1000,7 +1000,7 @@ class ScfClient(AbstractClient):
 
 
     def PutTotalConcurrencyConfig(self, request):
-        """修改账号并发限制配额
+        r"""修改账号并发限制配额
 
         :param request: Request instance for PutTotalConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutTotalConcurrencyConfigRequest`
@@ -1023,7 +1023,7 @@ class ScfClient(AbstractClient):
 
 
     def TerminateAsyncEvent(self, request):
-        """终止正在运行中的函数异步事件
+        r"""终止正在运行中的函数异步事件
 
         :param request: Request instance for TerminateAsyncEvent.
         :type request: :class:`tencentcloud.scf.v20180416.models.TerminateAsyncEventRequest`
@@ -1046,7 +1046,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateAlias(self, request):
-        """更新别名的配置
+        r"""更新别名的配置
 
         :param request: Request instance for UpdateAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateAliasRequest`
@@ -1069,7 +1069,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateCustomDomain(self, request):
-        """更新自定义域名相关配置
+        r"""更新自定义域名相关配置
 
         :param request: Request instance for UpdateCustomDomain.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateCustomDomainRequest`
@@ -1092,7 +1092,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionCode(self, request):
-        """该接口根据传入参数更新函数代码。
+        r"""该接口根据传入参数更新函数代码。
 
         :param request: Request instance for UpdateFunctionCode.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionCodeRequest`
@@ -1115,7 +1115,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionConfiguration(self, request):
-        """该接口根据传入参数更新函数配置。
+        r"""该接口根据传入参数更新函数配置。
 
         :param request: Request instance for UpdateFunctionConfiguration.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationRequest`
@@ -1138,7 +1138,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionEventInvokeConfig(self, request):
-        """更新函数的异步重试配置，包括重试次数和消息保留时间
+        r"""更新函数的异步重试配置，包括重试次数和消息保留时间
 
         :param request: Request instance for UpdateFunctionEventInvokeConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigRequest`
@@ -1161,7 +1161,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateNamespace(self, request):
-        """更新命名空间
+        r"""更新命名空间
 
         :param request: Request instance for UpdateNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateNamespaceRequest`
@@ -1184,7 +1184,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateTrigger(self, request):
-        """支持触发器配置更新。
+        r"""支持触发器配置更新。
         默认接口请求频率限制：20次/秒
 
         注意：目前只支持timer触发器和ckafka触发器更新！
@@ -1222,7 +1222,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateTriggerStatus(self, request):
-        """更新触发器状态的值
+        r"""更新触发器状态的值
 
         :param request: Request instance for UpdateTriggerStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateTriggerStatusRequest`

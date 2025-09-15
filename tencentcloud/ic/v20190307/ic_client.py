@@ -27,7 +27,7 @@ class IcClient(AbstractClient):
 
 
     def DescribeApp(self, request):
-        """根据应用id查询物联卡应用详情
+        r"""根据应用id查询物联卡应用详情
 
         :param request: Request instance for DescribeApp.
         :type request: :class:`tencentcloud.ic.v20190307.models.DescribeAppRequest`
@@ -50,7 +50,7 @@ class IcClient(AbstractClient):
 
 
     def DescribeCard(self, request):
-        """查询卡片详细信息
+        r"""查询卡片详细信息
 
         :param request: Request instance for DescribeCard.
         :type request: :class:`tencentcloud.ic.v20190307.models.DescribeCardRequest`
@@ -73,7 +73,7 @@ class IcClient(AbstractClient):
 
 
     def DescribeCards(self, request):
-        """查询卡片列表信息
+        r"""查询卡片列表信息
 
         :param request: Request instance for DescribeCards.
         :type request: :class:`tencentcloud.ic.v20190307.models.DescribeCardsRequest`
@@ -96,7 +96,7 @@ class IcClient(AbstractClient):
 
 
     def DescribeSms(self, request):
-        """查询短信列表
+        r"""查询短信列表
 
         :param request: Request instance for DescribeSms.
         :type request: :class:`tencentcloud.ic.v20190307.models.DescribeSmsRequest`
@@ -119,7 +119,7 @@ class IcClient(AbstractClient):
 
 
     def ModifyUserCardRemark(self, request):
-        """编辑卡片备注
+        r"""编辑卡片备注
 
         :param request: Request instance for ModifyUserCardRemark.
         :type request: :class:`tencentcloud.ic.v20190307.models.ModifyUserCardRemarkRequest`
@@ -142,7 +142,7 @@ class IcClient(AbstractClient):
 
 
     def PayForExtendData(self, request):
-        """购买套外流量包
+        r"""购买套外流量包
 
         :param request: Request instance for PayForExtendData.
         :type request: :class:`tencentcloud.ic.v20190307.models.PayForExtendDataRequest`
@@ -165,7 +165,7 @@ class IcClient(AbstractClient):
 
 
     def RenewCards(self, request):
-        """批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
+        r"""批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
         续费的必要条件：
         1、单次续费的卡片不可以超过 100张。
         2、接口只支持在控制台购买的卡片进行续费
@@ -193,7 +193,7 @@ class IcClient(AbstractClient):
 
 
     def SendMultiSms(self, request):
-        """群发短信
+        r"""群发短信
 
         :param request: Request instance for SendMultiSms.
         :type request: :class:`tencentcloud.ic.v20190307.models.SendMultiSmsRequest`
@@ -216,7 +216,7 @@ class IcClient(AbstractClient):
 
 
     def SendSms(self, request):
-        """发送短信息接口
+        r"""发送短信息接口
 
         :param request: Request instance for SendSms.
         :type request: :class:`tencentcloud.ic.v20190307.models.SendSmsRequest`

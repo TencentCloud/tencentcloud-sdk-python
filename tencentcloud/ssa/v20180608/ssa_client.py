@@ -27,7 +27,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeAlarmStat(self, request):
-        """安全大屏-用户威胁告警信息
+        r"""安全大屏-用户威胁告警信息
 
         :param request: Request instance for DescribeAlarmStat.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAlarmStatRequest`
@@ -50,7 +50,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeAssetDetail(self, request):
-        """资产安全页资产详情
+        r"""资产安全页资产详情
 
         :param request: Request instance for DescribeAssetDetail.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailRequest`
@@ -73,7 +73,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeAssetDetailList(self, request):
-        """资产条件查询
+        r"""资产条件查询
 
         :param request: Request instance for DescribeAssetDetailList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailListRequest`
@@ -96,7 +96,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeAssetList(self, request):
-        """资产安全资产列表
+        r"""资产安全资产列表
 
         :param request: Request instance for DescribeAssetList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetListRequest`
@@ -119,7 +119,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeCheckConfigAssetList(self, request):
-        """云安全配置管理资产组列表
+        r"""云安全配置管理资产组列表
 
         :param request: Request instance for DescribeCheckConfigAssetList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigAssetListRequest`
@@ -142,7 +142,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeCheckConfigDetail(self, request):
-        """云安全配置检查项详情
+        r"""云安全配置检查项详情
 
         :param request: Request instance for DescribeCheckConfigDetail.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigDetailRequest`
@@ -165,7 +165,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeComplianceAssetList(self, request):
-        """合规管理-资产列表
+        r"""合规管理-资产列表
 
         :param request: Request instance for DescribeComplianceAssetList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceAssetListRequest`
@@ -188,7 +188,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeComplianceDetail(self, request):
-        """合规管理检查项详情
+        r"""合规管理检查项详情
 
         :param request: Request instance for DescribeComplianceDetail.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceDetailRequest`
@@ -211,7 +211,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeComplianceList(self, request):
-        """合规管理总览页检查项列表
+        r"""合规管理总览页检查项列表
 
         :param request: Request instance for DescribeComplianceList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceListRequest`
@@ -234,7 +234,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeConfigList(self, request):
-        """云配置检查项总览页检查项列表
+        r"""云配置检查项总览页检查项列表
 
         :param request: Request instance for DescribeConfigList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeConfigListRequest`
@@ -257,7 +257,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeDomainList(self, request):
-        """域名列表信息
+        r"""域名列表信息
 
         :param request: Request instance for DescribeDomainList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeDomainListRequest`
@@ -280,7 +280,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeEventDetail(self, request):
-        """获取安全事件详情
+        r"""获取安全事件详情
 
         :param request: Request instance for DescribeEventDetail.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeEventDetailRequest`
@@ -303,7 +303,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeLeakDetectionList(self, request):
-        """获取泄露列表
+        r"""获取泄露列表
 
         :param request: Request instance for DescribeLeakDetectionList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeLeakDetectionListRequest`
@@ -326,7 +326,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeMappingResults(self, request):
-        """获取测绘列表
+        r"""获取测绘列表
 
         :param request: Request instance for DescribeMappingResults.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeMappingResultsRequest`
@@ -349,7 +349,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeSocAlertDetails(self, request):
-        """返回告警详情
+        r"""返回告警详情
 
         :param request: Request instance for DescribeSocAlertDetails.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertDetailsRequest`
@@ -372,7 +372,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeSocAlertList(self, request):
-        """拉取告警列表
+        r"""拉取告警列表
 
         :param request: Request instance for DescribeSocAlertList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertListRequest`
@@ -395,7 +395,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeSocCheckItemList(self, request):
-        """云安全配置检查项列表
+        r"""云安全配置检查项列表
 
         :param request: Request instance for DescribeSocCheckItemList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckItemListRequest`
@@ -418,7 +418,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeSocCheckResultList(self, request):
-        """云安全配置检查项结果列表
+        r"""云安全配置检查项结果列表
 
         :param request: Request instance for DescribeSocCheckResultList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckResultListRequest`
@@ -441,7 +441,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeSocCspmCompliance(self, request):
-        """合规详情项
+        r"""合规详情项
 
         :param request: Request instance for DescribeSocCspmCompliance.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCspmComplianceRequest`
@@ -464,7 +464,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeVulDetail(self, request):
-        """漏洞列表页，获取漏洞详情信息
+        r"""漏洞列表页，获取漏洞详情信息
 
         :param request: Request instance for DescribeVulDetail.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeVulDetailRequest`
@@ -487,7 +487,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeVulList(self, request):
-        """漏洞管理页，获取漏洞列表
+        r"""漏洞管理页，获取漏洞列表
 
         :param request: Request instance for DescribeVulList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeVulListRequest`
@@ -510,7 +510,7 @@ class SsaClient(AbstractClient):
 
 
     def SaDivulgeScanRuleMutate(self, request):
-        """SaDivulgeScanRuleMutate
+        r"""SaDivulgeScanRuleMutate
 
         :param request: Request instance for SaDivulgeScanRuleMutate.
         :type request: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeScanRuleMutateRequest`
@@ -533,7 +533,7 @@ class SsaClient(AbstractClient):
 
 
     def SaEventPub(self, request):
-        """安全事件通用字段
+        r"""安全事件通用字段
 
         :param request: Request instance for SaEventPub.
         :type request: :class:`tencentcloud.ssa.v20180608.models.SaEventPubRequest`

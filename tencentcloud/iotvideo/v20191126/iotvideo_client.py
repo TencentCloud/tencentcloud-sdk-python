@@ -27,7 +27,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ClearDeviceActiveCode(self, request):
-        """清除设备激活码
+        r"""清除设备激活码
 
         :param request: Request instance for ClearDeviceActiveCode.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.ClearDeviceActiveCodeRequest`
@@ -50,7 +50,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateAnonymousAccessToken(self, request):
-        """创建匿名访问Token
+        r"""创建匿名访问Token
 
         :param request: Request instance for CreateAnonymousAccessToken.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateAnonymousAccessTokenRequest`
@@ -73,7 +73,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateAppUsr(self, request):
-        """本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
+        r"""本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
 
         :param request: Request instance for CreateAppUsr.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateAppUsrRequest`
@@ -96,7 +96,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateBinding(self, request):
-        """本接口（CreateBinding）用于终端用户和设备进行绑定，具体的应用场景如下：
+        r"""本接口（CreateBinding）用于终端用户和设备进行绑定，具体的应用场景如下：
             终端用户与设备具有“强关联”关系。用户与设备绑定之后，用户终端即具备了该设备的访问权限,访问或操作设备时，无需获取设备访问Token。
 
         :param request: Request instance for CreateBinding.
@@ -120,7 +120,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateDevToken(self, request):
-        """本接口（CreateDevToken）用于以下场景：
+        r"""本接口（CreateDevToken）用于以下场景：
         终端用户与设备没有强绑定关联关系;
         允许终端用户短时或一次性临时访问设备;
         当终端用户与设备有强绑定关系时，可以不用调用此接口
@@ -146,7 +146,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateDevices(self, request):
-        """本接口（CreateDevices）用于批量创建新的物联网视频通信设备。
+        r"""本接口（CreateDevices）用于批量创建新的物联网视频通信设备。
         注意：腾讯云不会对设备私钥进行保存，请自行保管好您的设备私钥。
 
         :param request: Request instance for CreateDevices.
@@ -170,7 +170,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateGencode(self, request):
-        """本接口（CreateGencode）用于生成设备物模型源代码
+        r"""本接口（CreateGencode）用于生成设备物模型源代码
 
         :param request: Request instance for CreateGencode.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateGencodeRequest`
@@ -193,7 +193,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateIotDataType(self, request):
-        """本接口（CreateIotDataType）用于创建自定义物模型数据类型。
+        r"""本接口（CreateIotDataType）用于创建自定义物模型数据类型。
 
         :param request: Request instance for CreateIotDataType.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateIotDataTypeRequest`
@@ -216,7 +216,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateIotModel(self, request):
-        """本接口（CreateIotModel）用于定义的物模型提交。
+        r"""本接口（CreateIotModel）用于定义的物模型提交。
         该接口实现了物模型草稿箱的功能，保存用户最后一次编辑的物模型数据。
 
         :param request: Request instance for CreateIotModel.
@@ -240,7 +240,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateProduct(self, request):
-        """本接口（CreateProduct）用于创建一个新的物联网智能视频产品。
+        r"""本接口（CreateProduct）用于创建一个新的物联网智能视频产品。
 
         :param request: Request instance for CreateProduct.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateProductRequest`
@@ -263,7 +263,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateStorage(self, request):
-        """该接口已经停止维护，请勿使用
+        r"""该接口已经停止维护，请勿使用
 
         :param request: Request instance for CreateStorage.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageRequest`
@@ -286,7 +286,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateStorageService(self, request):
-        """购买云存服务
+        r"""购买云存服务
 
         :param request: Request instance for CreateStorageService.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageServiceRequest`
@@ -309,7 +309,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateTraceIds(self, request):
-        """本接口（CreateTraceIds）用于将设备加到日志跟踪白名单。
+        r"""本接口（CreateTraceIds）用于将设备加到日志跟踪白名单。
 
         :param request: Request instance for CreateTraceIds.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateTraceIdsRequest`
@@ -332,7 +332,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateUploadPath(self, request):
-        """本接口（CreateUploadPath）用于获取固件上传路径。
+        r"""本接口（CreateUploadPath）用于获取固件上传路径。
 
         :param request: Request instance for CreateUploadPath.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadPathRequest`
@@ -355,7 +355,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateUploadTest(self, request):
-        """设备申请cos上传证书
+        r"""设备申请cos上传证书
 
         :param request: Request instance for CreateUploadTest.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadTestRequest`
@@ -378,7 +378,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateUsrToken(self, request):
-        """本接口（CreateUsrToken）用于终端用户获取IoT Video平台的accessToken，初始化SDK,连接到IoT Video接入服务器。
+        r"""本接口（CreateUsrToken）用于终端用户获取IoT Video平台的accessToken，初始化SDK,连接到IoT Video接入服务器。
 
         :param request: Request instance for CreateUsrToken.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateUsrTokenRequest`
@@ -401,7 +401,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteAppUsr(self, request):
-        """本接口（DeleteAppUsr）用于删除终端用户。
+        r"""本接口（DeleteAppUsr）用于删除终端用户。
 
         :param request: Request instance for DeleteAppUsr.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteAppUsrRequest`
@@ -424,7 +424,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteBinding(self, request):
-        """本接口（DeleteBinding）用于终端用户和设备进行解绑定。
+        r"""本接口（DeleteBinding）用于终端用户和设备进行解绑定。
 
         :param request: Request instance for DeleteBinding.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteBindingRequest`
@@ -447,7 +447,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """本接口（DeleteDevice）用于删除设备，可进行批量操作，每次操作最多100台设备。
+        r"""本接口（DeleteDevice）用于删除设备，可进行批量操作，每次操作最多100台设备。
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteDeviceRequest`
@@ -470,7 +470,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteIotDataType(self, request):
-        """本接口（DeleteIotDataType）用于删除自定义物模型数据类型。
+        r"""本接口（DeleteIotDataType）用于删除自定义物模型数据类型。
 
         :param request: Request instance for DeleteIotDataType.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteIotDataTypeRequest`
@@ -493,7 +493,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteMessageQueue(self, request):
-        """本接口（DeleteMessageQueue）用于删除物联网智能视频产品的转发消息配置信息。
+        r"""本接口（DeleteMessageQueue）用于删除物联网智能视频产品的转发消息配置信息。
 
         :param request: Request instance for DeleteMessageQueue.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteMessageQueueRequest`
@@ -516,7 +516,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteOtaVersion(self, request):
-        """本接口（DeleteOtaVersion）用于删除固件版本信息。
+        r"""本接口（DeleteOtaVersion）用于删除固件版本信息。
 
         :param request: Request instance for DeleteOtaVersion.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteOtaVersionRequest`
@@ -539,7 +539,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """本接口（DeleteProduct）用于删除一个物联网智能视频产品。
+        r"""本接口（DeleteProduct）用于删除一个物联网智能视频产品。
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteProductRequest`
@@ -562,7 +562,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteTraceIds(self, request):
-        """本接口（DeleteTraceIds）用于将设备从日志跟踪白名单中删除，该接口可批量操作，最多支持同时操作100台设备。
+        r"""本接口（DeleteTraceIds）用于将设备从日志跟踪白名单中删除，该接口可批量操作，最多支持同时操作100台设备。
 
         :param request: Request instance for DeleteTraceIds.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteTraceIdsRequest`
@@ -585,7 +585,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeliverStorageService(self, request):
-        """将已购买的云存服务转移到另一设备
+        r"""将已购买的云存服务转移到另一设备
 
         :param request: Request instance for DeliverStorageService.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeliverStorageServiceRequest`
@@ -608,7 +608,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAccountBalance(self, request):
-        """客户可通过本接口获取账户余额信息, 默认接口请求频率限制：1次/秒
+        r"""客户可通过本接口获取账户余额信息, 默认接口请求频率限制：1次/秒
 
         :param request: Request instance for DescribeAccountBalance.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeAccountBalanceRequest`
@@ -631,7 +631,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBindDev(self, request):
-        """本接口（DescribeBindDev）用于查询终端用户绑定的设备列表。
+        r"""本接口（DescribeBindDev）用于查询终端用户绑定的设备列表。
 
         :param request: Request instance for DescribeBindDev.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeBindDevRequest`
@@ -654,7 +654,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBindUsr(self, request):
-        """本接口（DescribeBindUsr）用于查询设备被分享的所有用户列表。
+        r"""本接口（DescribeBindUsr）用于查询设备被分享的所有用户列表。
 
         :param request: Request instance for DescribeBindUsr.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeBindUsrRequest`
@@ -677,7 +677,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDevice(self, request):
-        """本接口（DescribeDevice）获取设备信息。
+        r"""本接口（DescribeDevice）获取设备信息。
 
         :param request: Request instance for DescribeDevice.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeDeviceRequest`
@@ -700,7 +700,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceModel(self, request):
-        """本接口（DescribeDeviceModel）用于获取设备物模型。
+        r"""本接口（DescribeDeviceModel）用于获取设备物模型。
 
         :param request: Request instance for DescribeDeviceModel.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeDeviceModelRequest`
@@ -723,7 +723,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDevices(self, request):
-        """本接口（DescribeDevices）用于获取设备信息列表。
+        r"""本接口（DescribeDevices）用于获取设备信息列表。
 
         :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeDevicesRequest`
@@ -746,7 +746,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeIotDataType(self, request):
-        """本接口（DescribeIotDataType）用于查询自定义的物模型数据类型。
+        r"""本接口（DescribeIotDataType）用于查询自定义的物模型数据类型。
 
         :param request: Request instance for DescribeIotDataType.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeIotDataTypeRequest`
@@ -769,7 +769,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeIotModel(self, request):
-        """本接口（DescribeIotModel）用于获取物模型定义详情。
+        r"""本接口（DescribeIotModel）用于获取物模型定义详情。
 
         :param request: Request instance for DescribeIotModel.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeIotModelRequest`
@@ -792,7 +792,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeIotModels(self, request):
-        """本接口（DescribeIotModels）用于列出物模型历史版本列表。
+        r"""本接口（DescribeIotModels）用于列出物模型历史版本列表。
 
         :param request: Request instance for DescribeIotModels.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeIotModelsRequest`
@@ -815,7 +815,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeLogs(self, request):
-        """本接口（DescribeLogs）用于查询设备日志列表。
+        r"""本接口（DescribeLogs）用于查询设备日志列表。
         设备日志最长保留时长为15天,超期自动清除。
 
         :param request: Request instance for DescribeLogs.
@@ -839,7 +839,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeMessageQueue(self, request):
-        """本接口（DescribeMessageQueue）用于查询物联网智能视频产品转发消息配置。
+        r"""本接口（DescribeMessageQueue）用于查询物联网智能视频产品转发消息配置。
 
         :param request: Request instance for DescribeMessageQueue.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeMessageQueueRequest`
@@ -862,7 +862,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeModelDataRet(self, request):
-        """本接口（DescribeModelDataRet）用于根据TaskId获取对设备物模型操作最终响应的结果。
+        r"""本接口（DescribeModelDataRet）用于根据TaskId获取对设备物模型操作最终响应的结果。
 
         :param request: Request instance for DescribeModelDataRet.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeModelDataRetRequest`
@@ -885,7 +885,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeOsList(self, request):
-        """查看操作系统支持的芯片列表
+        r"""查看操作系统支持的芯片列表
 
         :param request: Request instance for DescribeOsList.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeOsListRequest`
@@ -908,7 +908,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeOtaVersions(self, request):
-        """本接口（DescribeOtaVersions）用于查询固件版本信息列表。
+        r"""本接口（DescribeOtaVersions）用于查询固件版本信息列表。
 
         :param request: Request instance for DescribeOtaVersions.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeOtaVersionsRequest`
@@ -931,7 +931,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeProduct(self, request):
-        """本接口（DescribeProduct）用于获取单个产品的详细信息。
+        r"""本接口（DescribeProduct）用于获取单个产品的详细信息。
 
         :param request: Request instance for DescribeProduct.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeProductRequest`
@@ -954,7 +954,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """本接口（DescribeProducts）用于列出用户账号下的物联网智能视频产品列表。
+        r"""本接口（DescribeProducts）用于列出用户账号下的物联网智能视频产品列表。
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeProductsRequest`
@@ -977,7 +977,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribePubVersions(self, request):
-        """本接口（DescribePubVersions）用于获取某一产品发布过的全部固件版本。
+        r"""本接口（DescribePubVersions）用于获取某一产品发布过的全部固件版本。
 
         :param request: Request instance for DescribePubVersions.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribePubVersionsRequest`
@@ -1000,7 +1000,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeRechargeRecords(self, request):
-        """客户可通过本接口获取充值记录信息, 一次最多返回50条记录。
+        r"""客户可通过本接口获取充值记录信息, 一次最多返回50条记录。
 
         :param request: Request instance for DescribeRechargeRecords.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRechargeRecordsRequest`
@@ -1023,7 +1023,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeRegistrationStatus(self, request):
-        """本接口（DescribeRegistrationStatus）用于查询终端用户的注册状态。
+        r"""本接口（DescribeRegistrationStatus）用于查询终端用户的注册状态。
 
         :param request: Request instance for DescribeRegistrationStatus.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRegistrationStatusRequest`
@@ -1046,7 +1046,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeRunLog(self, request):
-        """本接口（DescribeRunLog）用于获取设备运行日志。
+        r"""本接口（DescribeRunLog）用于获取设备运行日志。
 
         :param request: Request instance for DescribeRunLog.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRunLogRequest`
@@ -1069,7 +1069,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeStorageService(self, request):
-        """查询云存服务
+        r"""查询云存服务
 
         :param request: Request instance for DescribeStorageService.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStorageServiceRequest`
@@ -1092,7 +1092,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeStream(self, request):
-        """请求设备直播流地址
+        r"""请求设备直播流地址
 
         :param request: Request instance for DescribeStream.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStreamRequest`
@@ -1115,7 +1115,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeTraceIds(self, request):
-        """本接口（DescribeTraceIds）用于查询设备日志跟踪白名单。
+        r"""本接口（DescribeTraceIds）用于查询设备日志跟踪白名单。
 
         :param request: Request instance for DescribeTraceIds.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeTraceIdsRequest`
@@ -1138,7 +1138,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeTraceStatus(self, request):
-        """本接口（DescribeTraceStatus）用于查询指定设备是否在白名单中。
+        r"""本接口（DescribeTraceStatus）用于查询指定设备是否在白名单中。
 
         :param request: Request instance for DescribeTraceStatus.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeTraceStatusRequest`
@@ -1161,7 +1161,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DisableDevice(self, request):
-        """本接口（DisableDevice）用于禁用设备，可进行批量操作，每次操作最多100台设备。
+        r"""本接口（DisableDevice）用于禁用设备，可进行批量操作，每次操作最多100台设备。
 
         :param request: Request instance for DisableDevice.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DisableDeviceRequest`
@@ -1184,7 +1184,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DisableDeviceStream(self, request):
-        """本接口（DisableDeviceStream）用于停止设备推流，可进行批量操作，每次操作最多100台设备。
+        r"""本接口（DisableDeviceStream）用于停止设备推流，可进行批量操作，每次操作最多100台设备。
 
         :param request: Request instance for DisableDeviceStream.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DisableDeviceStreamRequest`
@@ -1207,7 +1207,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DisableOtaVersion(self, request):
-        """本接口（DisableOtaVersion）用于禁用固件版本。
+        r"""本接口（DisableOtaVersion）用于禁用固件版本。
 
         :param request: Request instance for DisableOtaVersion.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.DisableOtaVersionRequest`
@@ -1230,7 +1230,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDevice(self, request):
-        """修改设备信息
+        r"""修改设备信息
 
         :param request: Request instance for ModifyDevice.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyDeviceRequest`
@@ -1253,7 +1253,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDeviceAction(self, request):
-        """本接口（ModifyDeviceAction）用于修改设备物模型的行为（Action）。
+        r"""本接口（ModifyDeviceAction）用于修改设备物模型的行为（Action）。
 
         可对ctlVal数据属性进行写入,如:Action.takePhoto.ctlVal,设备在线且成功发送到设备才返回,物模型写入数据时,不需要传入时标信息,平台以当前时标作为数据的时标更新物模型中的时标信息。
         注意:
@@ -1282,7 +1282,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDeviceProperty(self, request):
-        """本接口（ModifyDeviceProperty）用于修改设备物模型的属性（ProWritable）。
+        r"""本接口（ModifyDeviceProperty）用于修改设备物模型的属性（ProWritable）。
         可对setVal数据属性进行写入,如:
         ProWritable.Pos.setVal
         对于嵌套类型的可写属性，可以仅对其部分数据内容进行写入，如:
@@ -1311,7 +1311,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyProduct(self, request):
-        """本接口（ModifyProduct）用于编辑物联网智能视频产品的相关信息。
+        r"""本接口（ModifyProduct）用于编辑物联网智能视频产品的相关信息。
 
         :param request: Request instance for ModifyProduct.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyProductRequest`
@@ -1334,7 +1334,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyVerContent(self, request):
-        """编辑版本描述信息
+        r"""编辑版本描述信息
 
         :param request: Request instance for ModifyVerContent.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyVerContentRequest`
@@ -1357,7 +1357,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RefundStorageService(self, request):
-        """本接口（RefundStorageService）用于退订已购买的云存服务。
+        r"""本接口（RefundStorageService）用于退订已购买的云存服务。
         退订时，云存服务对应订单的处理方式 :
         1. 未开始的订单自动回到已付费订单池
         2. 已开始的订单自动失效
@@ -1384,7 +1384,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RenewUploadTest(self, request):
-        """设备刷新cos上传证书
+        r"""设备刷新cos上传证书
 
         :param request: Request instance for RenewUploadTest.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RenewUploadTestRequest`
@@ -1407,7 +1407,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RunDevice(self, request):
-        """本接口（RunDevice）用于启用设备，可进行批量操作，每次操作最多100台设备。
+        r"""本接口（RunDevice）用于启用设备，可进行批量操作，每次操作最多100台设备。
 
         :param request: Request instance for RunDevice.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RunDeviceRequest`
@@ -1430,7 +1430,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RunDeviceStream(self, request):
-        """本接口（RunDeviceStream）用于开启设备推流，可进行批量操作，每次操作最多100台设备。
+        r"""本接口（RunDeviceStream）用于开启设备推流，可进行批量操作，每次操作最多100台设备。
 
         :param request: Request instance for RunDeviceStream.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RunDeviceStreamRequest`
@@ -1453,7 +1453,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RunIotModel(self, request):
-        """本接口（RunIotModel）用于对定义的物模型进行发布。
+        r"""本接口（RunIotModel）用于对定义的物模型进行发布。
 
         :param request: Request instance for RunIotModel.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RunIotModelRequest`
@@ -1476,7 +1476,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RunOtaVersion(self, request):
-        """本接口（RunOtaVersion）用于固件版本正式发布。
+        r"""本接口（RunOtaVersion）用于固件版本正式发布。
 
         :param request: Request instance for RunOtaVersion.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RunOtaVersionRequest`
@@ -1499,7 +1499,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RunTestOtaVersion(self, request):
-        """本接口（RunTestOtaVersion）用于固件版本测试发布。
+        r"""本接口（RunTestOtaVersion）用于固件版本测试发布。
 
         :param request: Request instance for RunTestOtaVersion.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.RunTestOtaVersionRequest`
@@ -1522,7 +1522,7 @@ class IotvideoClient(AbstractClient):
 
 
     def SendOnlineMsg(self, request):
-        """本接口（SendOnlineMsg）用于向设备发送在线消息。
+        r"""本接口（SendOnlineMsg）用于向设备发送在线消息。
         注意：
         若设备当前不在线,会直接返回错误;
         若设备网络出现异常时,消息发送可能超时,超时等待最长时间为3秒.waitresp非0情况下,会导致本接口阻塞3秒。
@@ -1548,7 +1548,7 @@ class IotvideoClient(AbstractClient):
 
 
     def SetMessageQueue(self, request):
-        """本接口（SetMessageQueue）用于配置物联网智能视频产品的转发消息队列。
+        r"""本接口（SetMessageQueue）用于配置物联网智能视频产品的转发消息队列。
 
         :param request: Request instance for SetMessageQueue.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.SetMessageQueueRequest`
@@ -1571,7 +1571,7 @@ class IotvideoClient(AbstractClient):
 
 
     def UpgradeDevice(self, request):
-        """本接口（UpgradeDevice）用于对设备进行固件升级。
+        r"""本接口（UpgradeDevice）用于对设备进行固件升级。
         该接口向指定的设备下发固件更新指令,可将固件升级到任意版本(可实现固件降级)。
         警告:使能UpgradeNow参数存在一定的风险性！建议仅在debug场景下使用!
 
@@ -1596,7 +1596,7 @@ class IotvideoClient(AbstractClient):
 
 
     def UploadOtaVersion(self, request):
-        """本接口（UploadOtaVersion）接收上传到控制台的固件版本信息。
+        r"""本接口（UploadOtaVersion）接收上传到控制台的固件版本信息。
 
         :param request: Request instance for UploadOtaVersion.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.UploadOtaVersionRequest`

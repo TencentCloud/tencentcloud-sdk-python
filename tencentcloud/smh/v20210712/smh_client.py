@@ -27,7 +27,7 @@ class SmhClient(AbstractClient):
 
 
     def CreateLibrary(self, request):
-        """创建 PaaS 服务媒体库
+        r"""创建 PaaS 服务媒体库
 
         :param request: Request instance for CreateLibrary.
         :type request: :class:`tencentcloud.smh.v20210712.models.CreateLibraryRequest`
@@ -50,7 +50,7 @@ class SmhClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """新建用户。
+        r"""新建用户。
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.smh.v20210712.models.CreateUserRequest`
@@ -73,7 +73,7 @@ class SmhClient(AbstractClient):
 
 
     def CreateUserLifecycle(self, request):
-        """设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
+        r"""设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
 
         :param request: Request instance for CreateUserLifecycle.
         :type request: :class:`tencentcloud.smh.v20210712.models.CreateUserLifecycleRequest`
@@ -96,7 +96,7 @@ class SmhClient(AbstractClient):
 
 
     def DeleteLibrary(self, request):
-        """删除 PaaS 服务媒体库
+        r"""删除 PaaS 服务媒体库
 
         :param request: Request instance for DeleteLibrary.
         :type request: :class:`tencentcloud.smh.v20210712.models.DeleteLibraryRequest`
@@ -119,7 +119,7 @@ class SmhClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """一次删除多个用户。
+        r"""一次删除多个用户。
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.smh.v20210712.models.DeleteUserRequest`
@@ -142,7 +142,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeLibraries(self, request):
-        """查询 PaaS 服务媒体库列表
+        r"""查询 PaaS 服务媒体库列表
 
         :param request: Request instance for DescribeLibraries.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeLibrariesRequest`
@@ -165,7 +165,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeLibrarySecret(self, request):
-        """查询 PaaS 服务媒体库密钥
+        r"""查询 PaaS 服务媒体库密钥
 
         :param request: Request instance for DescribeLibrarySecret.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeLibrarySecretRequest`
@@ -188,7 +188,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeOfficialInstances(self, request):
-        """查询官方云盘实例
+        r"""查询官方云盘实例
 
         :param request: Request instance for DescribeOfficialInstances.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeOfficialInstancesRequest`
@@ -211,7 +211,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeOfficialOverview(self, request):
-        """查询官方云盘实例概览数据
+        r"""查询官方云盘实例概览数据
 
         :param request: Request instance for DescribeOfficialOverview.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeOfficialOverviewRequest`
@@ -234,7 +234,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeTrafficPackages(self, request):
-        """查询流量资源包
+        r"""查询流量资源包
 
         :param request: Request instance for DescribeTrafficPackages.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeTrafficPackagesRequest`
@@ -257,7 +257,7 @@ class SmhClient(AbstractClient):
 
 
     def DescribeUserLifecycle(self, request):
-        """查询用户生命周期。
+        r"""查询用户生命周期。
 
         :param request: Request instance for DescribeUserLifecycle.
         :type request: :class:`tencentcloud.smh.v20210712.models.DescribeUserLifecycleRequest`
@@ -280,7 +280,7 @@ class SmhClient(AbstractClient):
 
 
     def ModifyLibrary(self, request):
-        """修改 PaaS 服务媒体库配置项
+        r"""修改 PaaS 服务媒体库配置项
 
         :param request: Request instance for ModifyLibrary.
         :type request: :class:`tencentcloud.smh.v20210712.models.ModifyLibraryRequest`
@@ -303,7 +303,7 @@ class SmhClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """更新用户信息。
+        r"""更新用户信息。
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.smh.v20210712.models.ModifyUserRequest`
@@ -326,7 +326,7 @@ class SmhClient(AbstractClient):
 
 
     def SendSmsCode(self, request):
-        """发送用于换绑官方云盘实例的超级管理员账号的短信验证码
+        r"""发送用于换绑官方云盘实例的超级管理员账号的短信验证码
 
         :param request: Request instance for SendSmsCode.
         :type request: :class:`tencentcloud.smh.v20210712.models.SendSmsCodeRequest`
@@ -349,7 +349,7 @@ class SmhClient(AbstractClient):
 
 
     def VerifySmsCode(self, request):
-        """验证短信验证码以换绑官方云盘实例的超级管理员账号
+        r"""验证短信验证码以换绑官方云盘实例的超级管理员账号
 
         :param request: Request instance for VerifySmsCode.
         :type request: :class:`tencentcloud.smh.v20210712.models.VerifySmsCodeRequest`

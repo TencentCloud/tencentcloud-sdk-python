@@ -27,7 +27,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddClusterStorageOption(self, request):
-        """本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+        r"""本接口（AddClusterStorageOption）用于添加集群存储选项信息。
 
         :param request: Request instance for AddClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20230321.models.AddClusterStorageOptionRequest`
@@ -50,7 +50,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddNodes(self, request):
-        """本接口(AddNodes)用于添加一个或者多个计算节点或者登录节点到指定集群。
+        r"""本接口(AddNodes)用于添加一个或者多个计算节点或者登录节点到指定集群。
 
         :param request: Request instance for AddNodes.
         :type request: :class:`tencentcloud.thpc.v20230321.models.AddNodesRequest`
@@ -73,7 +73,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddQueue(self, request):
-        """本接口(AddQueue)用于添加队列到指定集群。
+        r"""本接口(AddQueue)用于添加队列到指定集群。
         * 本接口为目前只支持SchedulerType为SLURM的集群。
         * 单个集群中队列数量上限为10个。
 
@@ -98,7 +98,7 @@ class ThpcClient(AbstractClient):
 
 
     def AttachNodes(self, request):
-        """本接口 (AttachNodes) 用于绑定一个或者多个计算节点指定资源到指定集群中。
+        r"""本接口 (AttachNodes) 用于绑定一个或者多个计算节点指定资源到指定集群中。
 
         :param request: Request instance for AttachNodes.
         :type request: :class:`tencentcloud.thpc.v20230321.models.AttachNodesRequest`
@@ -121,7 +121,7 @@ class ThpcClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """本接口 (CreateCluster) 用于创建并启动集群。
+        r"""本接口 (CreateCluster) 用于创建并启动集群。
 
         * 本接口为异步接口， 当创建集群请求下发成功后会返回一个集群`ID`和一个`RequestId`，此时创建集群操作并未立即完成。在此期间集群的状态将会处于“PENDING”或者“INITING”，集群创建结果可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/1527/72100)  接口查询，如果集群状态(ClusterStatus)变为“RUNNING(运行中)”，则代表集群创建成功，“ INIT_FAILED”代表集群创建失败。
 
@@ -146,7 +146,7 @@ class ThpcClient(AbstractClient):
 
 
     def CreateWorkspaces(self, request):
-        """本接口 (CreateWorkspaces) 用于创建工作空间。
+        r"""本接口 (CreateWorkspaces) 用于创建工作空间。
 
         :param request: Request instance for CreateWorkspaces.
         :type request: :class:`tencentcloud.thpc.v20230321.models.CreateWorkspacesRequest`
@@ -169,7 +169,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """本接口（DeleteCluster）用于删除一个指定的集群。
+        r"""本接口（DeleteCluster）用于删除一个指定的集群。
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DeleteClusterRequest`
@@ -192,7 +192,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteClusterStorageOption(self, request):
-        """本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
+        r"""本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 
         :param request: Request instance for DeleteClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DeleteClusterStorageOptionRequest`
@@ -215,7 +215,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteJob(self, request):
-        """本接口 (DeleteJob) 用于删除一个作业任务。
+        r"""本接口 (DeleteJob) 用于删除一个作业任务。
 
         :param request: Request instance for DeleteJob.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DeleteJobRequest`
@@ -238,7 +238,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteNodes(self, request):
-        """本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
+        r"""本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 
         :param request: Request instance for DeleteNodes.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DeleteNodesRequest`
@@ -261,7 +261,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteQueue(self, request):
-        """本接口(DeleteQueue)用于从指定集群删除队列。
+        r"""本接口(DeleteQueue)用于从指定集群删除队列。
         * 本接口为目前只支持SchedulerType为SLURM的集群。
 
         * 删除队列时，需要保证队列内不存在节点。
@@ -287,7 +287,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeAutoScalingConfiguration(self, request):
-        """本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
+        r"""本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
 
         :param request: Request instance for DescribeAutoScalingConfiguration.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeAutoScalingConfigurationRequest`
@@ -310,7 +310,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusterActivities(self, request):
-        """本接口（DescribeClusterActivities）用于查询集群活动历史记录列表。
+        r"""本接口（DescribeClusterActivities）用于查询集群活动历史记录列表。
 
         :param request: Request instance for DescribeClusterActivities.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeClusterActivitiesRequest`
@@ -333,7 +333,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusterStorageOption(self, request):
-        """本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
+        r"""本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 
         :param request: Request instance for DescribeClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeClusterStorageOptionRequest`
@@ -356,7 +356,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """本接口（DescribeClusters）用于查询集群列表。
+        r"""本接口（DescribeClusters）用于查询集群列表。
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeClustersRequest`
@@ -379,7 +379,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeInitNodeScripts(self, request):
-        """本接口 (DescribeInitNodeScripts) 用于查询节点初始化脚本列表。
+        r"""本接口 (DescribeInitNodeScripts) 用于查询节点初始化脚本列表。
 
         :param request: Request instance for DescribeInitNodeScripts.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeInitNodeScriptsRequest`
@@ -402,7 +402,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeJobSubmitInfo(self, request):
-        """本接口用于查询作业的提交信息。
+        r"""本接口用于查询作业的提交信息。
 
         :param request: Request instance for DescribeJobSubmitInfo.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobSubmitInfoRequest`
@@ -425,7 +425,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """本接口 (DescribeJobs) 用于查询作业任务列表信息。
+        r"""本接口 (DescribeJobs) 用于查询作业任务列表信息。
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsRequest`
@@ -448,7 +448,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeJobsOverview(self, request):
-        """本接口 (DescribeJobs) 用于查询作业任务列表信息。
+        r"""本接口 (DescribeJobs) 用于查询作业任务列表信息。
 
         :param request: Request instance for DescribeJobsOverview.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsOverviewRequest`
@@ -471,7 +471,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeNodes(self, request):
-        """本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
+        r"""本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
 
         :param request: Request instance for DescribeNodes.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeNodesRequest`
@@ -494,7 +494,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeQueues(self, request):
-        """本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
+        r"""本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
 
         :param request: Request instance for DescribeQueues.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeQueuesRequest`
@@ -517,7 +517,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeWorkspaces(self, request):
-        """本接口（DescribeWorkspaces）用于查询工作空间列表。
+        r"""本接口（DescribeWorkspaces）用于查询工作空间列表。
 
         :param request: Request instance for DescribeWorkspaces.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeWorkspacesRequest`
@@ -540,7 +540,7 @@ class ThpcClient(AbstractClient):
 
 
     def DetachNodes(self, request):
-        """本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
+        r"""本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 
         :param request: Request instance for DetachNodes.
         :type request: :class:`tencentcloud.thpc.v20230321.models.DetachNodesRequest`
@@ -563,7 +563,7 @@ class ThpcClient(AbstractClient):
 
 
     def ModifyInitNodeScripts(self, request):
-        """本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+        r"""本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
 
         :param request: Request instance for ModifyInitNodeScripts.
         :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyInitNodeScriptsRequest`
@@ -586,7 +586,7 @@ class ThpcClient(AbstractClient):
 
 
     def ModifyWorkspacesAttribute(self, request):
-        """本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+        r"""本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
 
         :param request: Request instance for ModifyWorkspacesAttribute.
         :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesAttributeRequest`
@@ -609,7 +609,7 @@ class ThpcClient(AbstractClient):
 
 
     def ModifyWorkspacesRenewFlag(self, request):
-        """本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+        r"""本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
 
         :param request: Request instance for ModifyWorkspacesRenewFlag.
         :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesRenewFlagRequest`
@@ -632,7 +632,7 @@ class ThpcClient(AbstractClient):
 
 
     def SetAutoScalingConfiguration(self, request):
-        """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
+        r"""本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 
         :param request: Request instance for SetAutoScalingConfiguration.
         :type request: :class:`tencentcloud.thpc.v20230321.models.SetAutoScalingConfigurationRequest`
@@ -655,7 +655,7 @@ class ThpcClient(AbstractClient):
 
 
     def SubmitJob(self, request):
-        """本接口 (SubmitJob) 用于提交一个作业任务。
+        r"""本接口 (SubmitJob) 用于提交一个作业任务。
 
         :param request: Request instance for SubmitJob.
         :type request: :class:`tencentcloud.thpc.v20230321.models.SubmitJobRequest`
@@ -678,7 +678,7 @@ class ThpcClient(AbstractClient):
 
 
     def TerminateJob(self, request):
-        """本接口 (TerminateJob) 用于终止一个作业任务。
+        r"""本接口 (TerminateJob) 用于终止一个作业任务。
 
         :param request: Request instance for TerminateJob.
         :type request: :class:`tencentcloud.thpc.v20230321.models.TerminateJobRequest`
@@ -701,7 +701,7 @@ class ThpcClient(AbstractClient):
 
 
     def TerminateWorkspaces(self, request):
-        """本接口 (TerminateWorkspaces) 用于主动退还工作空间。
+        r"""本接口 (TerminateWorkspaces) 用于主动退还工作空间。
 
         :param request: Request instance for TerminateWorkspaces.
         :type request: :class:`tencentcloud.thpc.v20230321.models.TerminateWorkspacesRequest`

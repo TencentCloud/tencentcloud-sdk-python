@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountGroupInfo(AbstractModel):
-    """查询账号组信息列表。
+    r"""查询账号组信息列表。
 
     """
 
@@ -41,7 +41,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID。
+        r"""账号组ID。
         :rtype: str
         """
         return self._AccountGroupId
@@ -52,7 +52,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """账号组名。
+        r"""账号组名。
         :rtype: str
         """
         return self._GroupName
@@ -63,7 +63,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """备注。
+        r"""备注。
         :rtype: str
         """
         return self._Description
@@ -74,7 +74,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreatedDate
@@ -100,7 +100,7 @@ class AccountGroupInfo(AbstractModel):
 
 
 class AccountGroupSearchCriteria(AbstractModel):
-    """账号组查询参数
+    r"""账号组查询参数
 
     """
 
@@ -113,7 +113,7 @@ class AccountGroupSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -136,7 +136,7 @@ class AccountGroupSearchCriteria(AbstractModel):
 
 
 class AddAccountToAccountGroupRequest(AbstractModel):
-    """AddAccountToAccountGroup请求参数结构体
+    r"""AddAccountToAccountGroup请求参数结构体
 
     """
 
@@ -152,7 +152,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -163,7 +163,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """加入账号组的账号ID列表。
+        r"""加入账号组的账号ID列表。
         :rtype: list of str
         """
         return self._AccountIds
@@ -187,7 +187,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
 
 class AddAccountToAccountGroupResponse(AbstractModel):
-    """AddAccountToAccountGroup返回参数结构体
+    r"""AddAccountToAccountGroup返回参数结构体
 
     """
 
@@ -200,7 +200,7 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -215,7 +215,7 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
 
 class AddUserToUserGroupRequest(AbstractModel):
-    """AddUserToUserGroup请求参数结构体
+    r"""AddUserToUserGroup请求参数结构体
 
     """
 
@@ -231,7 +231,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """加入用户组的用户ID列表。
+        r"""加入用户组的用户ID列表。
         :rtype: list of str
         """
         return self._UserIds
@@ -242,7 +242,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
         :rtype: str
         """
         return self._UserGroupId
@@ -266,7 +266,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
 
 class AddUserToUserGroupResponse(AbstractModel):
-    """AddUserToUserGroup返回参数结构体
+    r"""AddUserToUserGroup返回参数结构体
 
     """
 
@@ -283,7 +283,7 @@ class AddUserToUserGroupResponse(AbstractModel):
 
     @property
     def FailedItems(self):
-        """未成功加入用户组的用户ID列表信息。
+        r"""未成功加入用户组的用户ID列表信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -295,7 +295,7 @@ class AddUserToUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -311,7 +311,7 @@ class AddUserToUserGroupResponse(AbstractModel):
 
 
 class AppAccountInfo(AbstractModel):
-    """查询账号信息列表。
+    r"""查询账号信息列表。
 
     """
 
@@ -340,7 +340,7 @@ class AppAccountInfo(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号ID。
+        r"""账号ID。
         :rtype: str
         """
         return self._AccountId
@@ -351,7 +351,7 @@ class AppAccountInfo(AbstractModel):
 
     @property
     def AccountName(self):
-        """账号名。
+        r"""账号名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -363,7 +363,7 @@ class AppAccountInfo(AbstractModel):
 
     @property
     def UserList(self):
-        """用户信息列表。
+        r"""用户信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkUserInfo
         """
@@ -375,7 +375,7 @@ class AppAccountInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -387,7 +387,7 @@ class AppAccountInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """创建时间。
+        r"""创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -420,7 +420,7 @@ class AppAccountInfo(AbstractModel):
 
 
 class AppAccountSearchCriteria(AbstractModel):
-    """账号查询参数
+    r"""账号查询参数
 
     """
 
@@ -433,7 +433,7 @@ class AppAccountSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -456,7 +456,7 @@ class AppAccountSearchCriteria(AbstractModel):
 
 
 class ApplicationAuthorizationInfo(AbstractModel):
-    """应用信息列表。
+    r"""应用信息列表。
 
     """
 
@@ -486,7 +486,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     @property
     def ApplicationAccounts(self):
-        """用户在被授权应用下对应的账号列表
+        r"""用户在被授权应用下对应的账号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -498,7 +498,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，是应用的全局唯一标识。
+        r"""应用ID，是应用的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -510,7 +510,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     @property
     def InheritedForm(self):
-        """展示用户所在的用户组、机构节点拥有该应用的访问权限的ID信息列表。
+        r"""展示用户所在的用户组、机构节点拥有该应用的访问权限的ID信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
         """
@@ -522,7 +522,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """应用名称。
+        r"""应用名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -534,7 +534,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """应用创建时间。
+        r"""应用创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -564,7 +564,7 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
 
 class ApplicationInfoSearchCriteria(AbstractModel):
-    """应用属性搜索条件。
+    r"""应用属性搜索条件。
 
     """
 
@@ -580,7 +580,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。
+        r"""应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。
         :rtype: str
         """
         return self._Keyword
@@ -591,7 +591,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。
+        r"""应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。
         :rtype: str
         """
         return self._ApplicationType
@@ -615,7 +615,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
 
 class ApplicationInformation(AbstractModel):
-    """应用信息列表。
+    r"""应用信息列表。
 
     """
 
@@ -656,7 +656,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，是应用的全局唯一标识。
+        r"""应用ID，是应用的全局唯一标识。
         :rtype: str
         """
         return self._ApplicationId
@@ -667,7 +667,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def DisplayName(self):
-        """应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+        r"""应用展示名称，长度限制：64个字符。 默认与应用名字相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -679,7 +679,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """应用创建时间，符合 ISO8601 标准。
+        r"""应用创建时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -691,7 +691,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """上次更新时间，符合 ISO8601 标准。
+        r"""上次更新时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -703,7 +703,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def AppStatus(self):
-        """应用状态。
+        r"""应用状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -715,7 +715,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def Icon(self):
-        """应用图标。
+        r"""应用图标。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -727,7 +727,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型。
+        r"""应用类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -739,7 +739,7 @@ class ApplicationInformation(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端id。
+        r"""客户端id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -770,7 +770,7 @@ class ApplicationInformation(AbstractModel):
 
 
 class AuthorizationInfo(AbstractModel):
-    """返回的授权关系信息。
+    r"""返回的授权关系信息。
 
     """
 
@@ -798,7 +798,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """应用唯一ID。
+        r"""应用唯一ID。
         :rtype: str
         """
         return self._AppId
@@ -809,7 +809,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -820,7 +820,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def EntityName(self):
-        """类型名称。
+        r"""类型名称。
         :rtype: str
         """
         return self._EntityName
@@ -831,7 +831,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def EntityId(self):
-        """类型唯一ID。
+        r"""类型唯一ID。
         :rtype: str
         """
         return self._EntityId
@@ -842,7 +842,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """上次更新时间，符合 ISO8601 标准。
+        r"""上次更新时间，符合 ISO8601 标准。
         :rtype: str
         """
         return self._LastModifiedDate
@@ -853,7 +853,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AuthorizationId(self):
-        """授权类型唯一ID。
+        r"""授权类型唯一ID。
         :rtype: str
         """
         return self._AuthorizationId
@@ -881,7 +881,7 @@ class AuthorizationInfo(AbstractModel):
 
 
 class AuthorizationInfoSearchCriteria(AbstractModel):
-    """用户属性搜索条件。
+    r"""用户属性搜索条件。
 
     """
 
@@ -894,7 +894,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。
+        r"""名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。
         :rtype: str
         """
         return self._Keyword
@@ -917,7 +917,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
 
 class AuthorizationResourceEntityInfo(AbstractModel):
-    """授权资源详情
+    r"""授权资源详情
 
     """
 
@@ -943,7 +943,7 @@ class AuthorizationResourceEntityInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """授权关系的唯一ID
+        r"""授权关系的唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -955,7 +955,7 @@ class AuthorizationResourceEntityInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源授权类型
+        r"""资源授权类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -967,7 +967,7 @@ class AuthorizationResourceEntityInfo(AbstractModel):
 
     @property
     def Resource(self):
-        """授权的资源
+        r"""授权的资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -979,7 +979,7 @@ class AuthorizationResourceEntityInfo(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1006,7 +1006,7 @@ class AuthorizationResourceEntityInfo(AbstractModel):
 
 
 class AuthorizationUserResouceInfo(AbstractModel):
-    """返回符合条件的用户数据列表
+    r"""返回符合条件的用户数据列表
 
     """
 
@@ -1040,7 +1040,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1052,7 +1052,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1064,7 +1064,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def Resource(self):
-        """授权资源
+        r"""授权资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1076,7 +1076,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def InheritedForm(self):
-        """继承关系
+        r"""继承关系
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
         """
@@ -1088,7 +1088,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def ApplicationAccounts(self):
-        """应用账户
+        r"""应用账户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1100,7 +1100,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1131,7 +1131,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
 
 class CreateAccountGroupRequest(AbstractModel):
-    """CreateAccountGroup请求参数结构体
+    r"""CreateAccountGroup请求参数结构体
 
     """
 
@@ -1150,7 +1150,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -1161,7 +1161,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """账号组名。
+        r"""账号组名。
         :rtype: str
         """
         return self._GroupName
@@ -1172,7 +1172,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Description
@@ -1197,7 +1197,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
 
 class CreateAccountGroupResponse(AbstractModel):
-    """CreateAccountGroup返回参数结构体
+    r"""CreateAccountGroup返回参数结构体
 
     """
 
@@ -1214,7 +1214,7 @@ class CreateAccountGroupResponse(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID。
+        r"""账号组ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1226,7 +1226,7 @@ class CreateAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1242,7 +1242,7 @@ class CreateAccountGroupResponse(AbstractModel):
 
 
 class CreateAppAccountRequest(AbstractModel):
-    """CreateAppAccount请求参数结构体
+    r"""CreateAppAccount请求参数结构体
 
     """
 
@@ -1264,7 +1264,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -1275,7 +1275,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """账号名称
+        r"""账号名称
         :rtype: str
         """
         return self._AccountName
@@ -1286,7 +1286,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """账号密码
+        r"""账号密码
         :rtype: str
         """
         return self._Password
@@ -1297,7 +1297,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -1323,7 +1323,7 @@ class CreateAppAccountRequest(AbstractModel):
 
 
 class CreateAppAccountResponse(AbstractModel):
-    """CreateAppAccount返回参数结构体
+    r"""CreateAppAccount返回参数结构体
 
     """
 
@@ -1340,7 +1340,7 @@ class CreateAppAccountResponse(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号ID
+        r"""账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1352,7 +1352,7 @@ class CreateAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1368,7 +1368,7 @@ class CreateAppAccountResponse(AbstractModel):
 
 
 class CreateOrgNodeRequest(AbstractModel):
-    """CreateOrgNode请求参数结构体
+    r"""CreateOrgNode请求参数结构体
 
     """
 
@@ -1390,7 +1390,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """机构节点名称，长度限制：64个字符。
+        r"""机构节点名称，长度限制：64个字符。
         :rtype: str
         """
         return self._DisplayName
@@ -1401,7 +1401,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def ParentOrgNodeId(self):
-        """父机构节点ID，如果为空则默认创建在机构根节点下。
+        r"""父机构节点ID，如果为空则默认创建在机构根节点下。
         :rtype: str
         """
         return self._ParentOrgNodeId
@@ -1412,7 +1412,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """机构节点描述。
+        r"""机构节点描述。
         :rtype: str
         """
         return self._Description
@@ -1423,7 +1423,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """机构代码。如果为空，则默认生成机构代码。如果为非空，则校验机构代码的唯一性。
+        r"""机构代码。如果为空，则默认生成机构代码。如果为非空，则校验机构代码的唯一性。
         :rtype: str
         """
         return self._CustomizedOrgNodeId
@@ -1449,7 +1449,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
 
 class CreateOrgNodeResponse(AbstractModel):
-    """CreateOrgNode返回参数结构体
+    r"""CreateOrgNode返回参数结构体
 
     """
 
@@ -1466,7 +1466,7 @@ class CreateOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点的全局唯一标识。
+        r"""机构节点ID，是机构节点的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1478,7 +1478,7 @@ class CreateOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1494,7 +1494,7 @@ class CreateOrgNodeResponse(AbstractModel):
 
 
 class CreateUserGroupRequest(AbstractModel):
-    """CreateUserGroup请求参数结构体
+    r"""CreateUserGroup请求参数结构体
 
     """
 
@@ -1510,7 +1510,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """用户组昵称，长度限制：64个字符。 DisplayName是唯一的。
+        r"""用户组昵称，长度限制：64个字符。 DisplayName是唯一的。
         :rtype: str
         """
         return self._DisplayName
@@ -1521,7 +1521,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """用户组备注，长度限制：512个字符。
+        r"""用户组备注，长度限制：512个字符。
         :rtype: str
         """
         return self._Description
@@ -1545,7 +1545,7 @@ class CreateUserGroupRequest(AbstractModel):
 
 
 class CreateUserGroupResponse(AbstractModel):
-    """CreateUserGroup返回参数结构体
+    r"""CreateUserGroup返回参数结构体
 
     """
 
@@ -1562,7 +1562,7 @@ class CreateUserGroupResponse(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1574,7 +1574,7 @@ class CreateUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1590,7 +1590,7 @@ class CreateUserGroupResponse(AbstractModel):
 
 
 class CreateUserRequest(AbstractModel):
-    """CreateUser请求参数结构体
+    r"""CreateUser请求参数结构体
 
     """
 
@@ -1633,7 +1633,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：64个字符。
+        r"""用户名，长度限制：64个字符。
         :rtype: str
         """
         return self._UserName
@@ -1644,7 +1644,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """用户密码， 需要符合密码策略的配置。
+        r"""用户密码， 需要符合密码策略的配置。
         :rtype: str
         """
         return self._Password
@@ -1655,7 +1655,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称，长度限制：64个字符。 默认与用户名相同。
+        r"""昵称，长度限制：64个字符。 默认与用户名相同。
         :rtype: str
         """
         return self._DisplayName
@@ -1666,7 +1666,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Description(self):
-        """用户备注，长度限制：512个字符。
+        r"""用户备注，长度限制：512个字符。
         :rtype: str
         """
         return self._Description
@@ -1677,7 +1677,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """用户所属用户组ID列表。
+        r"""用户所属用户组ID列表。
         :rtype: list of str
         """
         return self._UserGroupIds
@@ -1688,7 +1688,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。例如：+86-1xxxxxxxxxx。
+        r"""用户手机号。例如：+86-1xxxxxxxxxx。
         :rtype: str
         """
         return self._Phone
@@ -1699,7 +1699,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
+        r"""用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
         :rtype: str
         """
         return self._OrgNodeId
@@ -1710,7 +1710,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """用户过期时间，遵循 ISO 8601 标准。
+        r"""用户过期时间，遵循 ISO 8601 标准。
         :rtype: str
         """
         return self._ExpirationTime
@@ -1721,7 +1721,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
         :rtype: str
         """
         return self._Email
@@ -1732,7 +1732,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PwdNeedReset(self):
-        """密码是否需要重置，为空默认为false不需要重置密码。
+        r"""密码是否需要重置，为空默认为false不需要重置密码。
         :rtype: bool
         """
         return self._PwdNeedReset
@@ -1743,7 +1743,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """用户所属的次要组织机构ID列表。
+        r"""用户所属的次要组织机构ID列表。
         :rtype: list of str
         """
         return self._SecondaryOrgNodeIdList
@@ -1776,7 +1776,7 @@ class CreateUserRequest(AbstractModel):
 
 
 class CreateUserResponse(AbstractModel):
-    """CreateUser返回参数结构体
+    r"""CreateUser返回参数结构体
 
     """
 
@@ -1793,7 +1793,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """返回的新创建的用户ID，是该用户的全局唯一标识。
+        r"""返回的新创建的用户ID，是该用户的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1805,7 +1805,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1821,7 +1821,7 @@ class CreateUserResponse(AbstractModel):
 
 
 class DeleteAccountGroupRequest(AbstractModel):
-    """DeleteAccountGroup请求参数结构体
+    r"""DeleteAccountGroup请求参数结构体
 
     """
 
@@ -1834,7 +1834,7 @@ class DeleteAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupIdList(self):
-        """账号组ID数组。
+        r"""账号组ID数组。
         :rtype: list of str
         """
         return self._AccountGroupIdList
@@ -1857,7 +1857,7 @@ class DeleteAccountGroupRequest(AbstractModel):
 
 
 class DeleteAccountGroupResponse(AbstractModel):
-    """DeleteAccountGroup返回参数结构体
+    r"""DeleteAccountGroup返回参数结构体
 
     """
 
@@ -1870,7 +1870,7 @@ class DeleteAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1885,7 +1885,7 @@ class DeleteAccountGroupResponse(AbstractModel):
 
 
 class DeleteAppAccountRequest(AbstractModel):
-    """DeleteAppAccount请求参数结构体
+    r"""DeleteAppAccount请求参数结构体
 
     """
 
@@ -1898,7 +1898,7 @@ class DeleteAppAccountRequest(AbstractModel):
 
     @property
     def AccountIdList(self):
-        """账号ID数组。
+        r"""账号ID数组。
         :rtype: list of str
         """
         return self._AccountIdList
@@ -1921,7 +1921,7 @@ class DeleteAppAccountRequest(AbstractModel):
 
 
 class DeleteAppAccountResponse(AbstractModel):
-    """DeleteAppAccount返回参数结构体
+    r"""DeleteAppAccount返回参数结构体
 
     """
 
@@ -1934,7 +1934,7 @@ class DeleteAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1949,7 +1949,7 @@ class DeleteAppAccountResponse(AbstractModel):
 
 
 class DeleteOrgNodeRequest(AbstractModel):
-    """DeleteOrgNode请求参数结构体
+    r"""DeleteOrgNode请求参数结构体
 
     """
 
@@ -1962,7 +1962,7 @@ class DeleteOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点的全局唯一标识。
+        r"""机构节点ID，是机构节点的全局唯一标识。
         :rtype: str
         """
         return self._OrgNodeId
@@ -1985,7 +1985,7 @@ class DeleteOrgNodeRequest(AbstractModel):
 
 
 class DeleteOrgNodeResponse(AbstractModel):
-    """DeleteOrgNode返回参数结构体
+    r"""DeleteOrgNode返回参数结构体
 
     """
 
@@ -1998,7 +1998,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2013,7 +2013,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
 
 class DeleteUserGroupRequest(AbstractModel):
-    """DeleteUserGroup请求参数结构体
+    r"""DeleteUserGroup请求参数结构体
 
     """
 
@@ -2026,7 +2026,7 @@ class DeleteUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
         :rtype: str
         """
         return self._UserGroupId
@@ -2049,7 +2049,7 @@ class DeleteUserGroupRequest(AbstractModel):
 
 
 class DeleteUserGroupResponse(AbstractModel):
-    """DeleteUserGroup返回参数结构体
+    r"""DeleteUserGroup返回参数结构体
 
     """
 
@@ -2062,7 +2062,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2077,7 +2077,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser请求参数结构体
+    r"""DeleteUser请求参数结构体
 
     """
 
@@ -2093,7 +2093,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        r"""用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
         :rtype: str
         """
         return self._UserName
@@ -2104,7 +2104,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        r"""用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
         :rtype: str
         """
         return self._UserId
@@ -2128,7 +2128,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser返回参数结构体
+    r"""DeleteUser返回参数结构体
 
     """
 
@@ -2141,7 +2141,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2156,7 +2156,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DeleteUsersRequest(AbstractModel):
-    """DeleteUsers请求参数结构体
+    r"""DeleteUsers请求参数结构体
 
     """
 
@@ -2172,7 +2172,7 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def DeleteIdList(self):
-        """被删除用户的ID列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
+        r"""被删除用户的ID列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
         :rtype: list of str
         """
         return self._DeleteIdList
@@ -2183,7 +2183,7 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def DeleteNameList(self):
-        """被删除用户的名称列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
+        r"""被删除用户的名称列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
         :rtype: list of str
         """
         return self._DeleteNameList
@@ -2207,7 +2207,7 @@ class DeleteUsersRequest(AbstractModel):
 
 
 class DeleteUsersResponse(AbstractModel):
-    """DeleteUsers返回参数结构体
+    r"""DeleteUsers返回参数结构体
 
     """
 
@@ -2224,7 +2224,7 @@ class DeleteUsersResponse(AbstractModel):
 
     @property
     def FailedItems(self):
-        """未被成功删除的用户信息。当业务参数为DeleteIdList时，本字段将返回未成功删除的用户ID列表。当业务参数为DeleteNameList时，本字段将返回未成功删除的用户名称列表。
+        r"""未被成功删除的用户信息。当业务参数为DeleteIdList时，本字段将返回未成功删除的用户ID列表。当业务参数为DeleteNameList时，本字段将返回未成功删除的用户名称列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2236,7 +2236,7 @@ class DeleteUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2252,7 +2252,7 @@ class DeleteUsersResponse(AbstractModel):
 
 
 class DescribeAccountGroupRequest(AbstractModel):
-    """DescribeAccountGroup请求参数结构体
+    r"""DescribeAccountGroup请求参数结构体
 
     """
 
@@ -2274,7 +2274,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -2285,7 +2285,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        r"""查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
         """
         return self._SearchCondition
@@ -2296,7 +2296,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0。
+        r"""偏移量，默认为 0。
         :rtype: int
         """
         return self._Offset
@@ -2307,7 +2307,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为 20，最大值为 100。
+        r"""返回数量，默认为 20，最大值为 100。
         :rtype: int
         """
         return self._Limit
@@ -2335,7 +2335,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
 
 class DescribeAccountGroupResponse(AbstractModel):
-    """DescribeAccountGroup返回参数结构体
+    r"""DescribeAccountGroup返回参数结构体
 
     """
 
@@ -2360,7 +2360,7 @@ class DescribeAccountGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回查询的总记录数。
+        r"""返回查询的总记录数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2372,7 +2372,7 @@ class DescribeAccountGroupResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2384,7 +2384,7 @@ class DescribeAccountGroupResponse(AbstractModel):
 
     @property
     def AccountGroupList(self):
-        """返回符合条件的数据列表。
+        r"""返回符合条件的数据列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccountGroupInfo
         """
@@ -2396,7 +2396,7 @@ class DescribeAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2419,7 +2419,7 @@ class DescribeAccountGroupResponse(AbstractModel):
 
 
 class DescribeAppAccountRequest(AbstractModel):
-    """DescribeAppAccount请求参数结构体
+    r"""DescribeAppAccount请求参数结构体
 
     """
 
@@ -2441,7 +2441,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -2452,7 +2452,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        r"""查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AppAccountSearchCriteria`
         """
         return self._SearchCondition
@@ -2463,7 +2463,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0。
+        r"""偏移量，默认为 0。
         :rtype: int
         """
         return self._Offset
@@ -2474,7 +2474,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为 20，最大值为 100。
+        r"""返回数量，默认为 20，最大值为 100。
         :rtype: int
         """
         return self._Limit
@@ -2502,7 +2502,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
 
 class DescribeAppAccountResponse(AbstractModel):
-    """DescribeAppAccount返回参数结构体
+    r"""DescribeAppAccount返回参数结构体
 
     """
 
@@ -2527,7 +2527,7 @@ class DescribeAppAccountResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回查询的总记录数。
+        r"""返回查询的总记录数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2539,7 +2539,7 @@ class DescribeAppAccountResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2551,7 +2551,7 @@ class DescribeAppAccountResponse(AbstractModel):
 
     @property
     def AppAccountList(self):
-        """返回符合条件的数据列表。
+        r"""返回符合条件的数据列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppAccountInfo
         """
@@ -2563,7 +2563,7 @@ class DescribeAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2586,7 +2586,7 @@ class DescribeAppAccountResponse(AbstractModel):
 
 
 class DescribeApplicationRequest(AbstractModel):
-    """DescribeApplication请求参数结构体
+    r"""DescribeApplication请求参数结构体
 
     """
 
@@ -2602,7 +2602,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id，是应用的全局唯一标识，与ClientId参数不能同时为空。
+        r"""应用id，是应用的全局唯一标识，与ClientId参数不能同时为空。
         :rtype: str
         """
         return self._ApplicationId
@@ -2613,7 +2613,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端id，与ApplicationId参数不能同时为空。
+        r"""客户端id，与ApplicationId参数不能同时为空。
         :rtype: str
         """
         return self._ClientId
@@ -2637,7 +2637,7 @@ class DescribeApplicationRequest(AbstractModel):
 
 
 class DescribeApplicationResponse(AbstractModel):
-    """DescribeApplication返回参数结构体
+    r"""DescribeApplication返回参数结构体
 
     """
 
@@ -2710,7 +2710,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def KeyId(self):
-        """密钥id。
+        r"""密钥id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2722,7 +2722,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def DisplayName(self):
-        """应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+        r"""应用展示名称，长度限制：64个字符。 默认与应用名字相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2734,7 +2734,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """应用最后修改时间，符合 ISO8601 标准。
+        r"""应用最后修改时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2746,7 +2746,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端id。
+        r"""客户端id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2758,7 +2758,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型，即创建应用时所选择的应用模板类型。
+        r"""应用类型，即创建应用时所选择的应用模板类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2770,7 +2770,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """应用创建时间，符合 ISO8601 标准。
+        r"""应用创建时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2782,7 +2782,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id，是应用的全局唯一标识。
+        r"""应用id，是应用的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2794,7 +2794,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def TokenExpired(self):
-        """令牌有效时间，单位为秒。
+        r"""令牌有效时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2806,7 +2806,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def ClientSecret(self):
-        """客户端secret。
+        r"""客户端secret。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2818,7 +2818,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def PublicKey(self):
-        """公钥信息。
+        r"""公钥信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2830,7 +2830,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def AuthorizeUrl(self):
-        """授权地址。
+        r"""授权地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2842,7 +2842,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def IconUrl(self):
-        """应用图标图片访问地址。
+        r"""应用图标图片访问地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2854,7 +2854,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def SecureLevel(self):
-        """安全等级。
+        r"""安全等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2866,7 +2866,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def AppStatus(self):
-        """应用状态。
+        r"""应用状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2878,7 +2878,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def Description(self):
-        """描述。
+        r"""描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2890,7 +2890,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2920,7 +2920,7 @@ class DescribeApplicationResponse(AbstractModel):
 
 
 class DescribeOrgNodeRequest(AbstractModel):
-    """DescribeOrgNode请求参数结构体
+    r"""DescribeOrgNode请求参数结构体
 
     """
 
@@ -2936,7 +2936,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点信息。
+        r"""机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点信息。
         :rtype: str
         """
         return self._OrgNodeId
@@ -2947,7 +2947,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     @property
     def IncludeOrgNodeChildInfo(self):
-        """是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
+        r"""是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
         :rtype: bool
         """
         return self._IncludeOrgNodeChildInfo
@@ -2971,7 +2971,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
 
 class DescribeOrgNodeResponse(AbstractModel):
-    """DescribeOrgNode返回参数结构体
+    r"""DescribeOrgNode返回参数结构体
 
     """
 
@@ -3020,7 +3020,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def DisplayName(self):
-        """机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
+        r"""机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3032,7 +3032,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """机构节点最后修改时间，符合 ISO8601 标准。
+        r"""机构节点最后修改时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3044,7 +3044,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """机构节点外部ID。
+        r"""机构节点外部ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3056,7 +3056,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def ParentOrgNodeId(self):
-        """当前机构节点的父节点ID。
+        r"""当前机构节点的父节点ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3068,7 +3068,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点的全局唯一标识。
+        r"""机构节点ID，是机构节点的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3080,7 +3080,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据来源。
+        r"""数据来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3092,7 +3092,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """机构节点创建时间，符合 ISO8601 标准。
+        r"""机构节点创建时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3104,7 +3104,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeChildInfo(self):
-        """当前机构节点下的子节点列表。
+        r"""当前机构节点下的子节点列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgNodeChildInfo
         """
@@ -3116,7 +3116,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def Description(self):
-        """机构节点描述。
+        r"""机构节点描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3128,7 +3128,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3157,7 +3157,7 @@ class DescribeOrgNodeResponse(AbstractModel):
 
 
 class DescribeOrgResourcesAuthorizationRequest(AbstractModel):
-    """DescribeOrgResourcesAuthorization请求参数结构体
+    r"""DescribeOrgResourcesAuthorization请求参数结构体
 
     """
 
@@ -3173,7 +3173,7 @@ class DescribeOrgResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -3184,7 +3184,7 @@ class DescribeOrgResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构ID
+        r"""机构ID
         :rtype: str
         """
         return self._OrgNodeId
@@ -3208,7 +3208,7 @@ class DescribeOrgResourcesAuthorizationRequest(AbstractModel):
 
 
 class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
-    """DescribeOrgResourcesAuthorization返回参数结构体
+    r"""DescribeOrgResourcesAuthorization返回参数结构体
 
     """
 
@@ -3244,7 +3244,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -3255,7 +3255,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """授权机构ID
+        r"""授权机构ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3267,7 +3267,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def OrgNodeName(self):
-        """机构名称
+        r"""机构名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3279,7 +3279,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def OrgNodePath(self):
-        """机构目录
+        r"""机构目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3291,7 +3291,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def AuthorizationOrgResourceList(self):
-        """资源列表
+        r"""资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthorizationResourceEntityInfo
         """
@@ -3303,7 +3303,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资源数量
+        r"""资源数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3315,7 +3315,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3341,7 +3341,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
 
 
 class DescribePublicKeyRequest(AbstractModel):
-    """DescribePublicKey请求参数结构体
+    r"""DescribePublicKey请求参数结构体
 
     """
 
@@ -3354,7 +3354,7 @@ class DescribePublicKeyRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，是应用的全局唯一标识。
+        r"""应用ID，是应用的全局唯一标识。
         :rtype: str
         """
         return self._ApplicationId
@@ -3377,7 +3377,7 @@ class DescribePublicKeyRequest(AbstractModel):
 
 
 class DescribePublicKeyResponse(AbstractModel):
-    """DescribePublicKey返回参数结构体
+    r"""DescribePublicKey返回参数结构体
 
     """
 
@@ -3402,7 +3402,7 @@ class DescribePublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
-        """jwt验证签名所用的公钥信息。
+        r"""jwt验证签名所用的公钥信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3414,7 +3414,7 @@ class DescribePublicKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
-        """jwt的密钥id。
+        r"""jwt的密钥id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3426,7 +3426,7 @@ class DescribePublicKeyResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，是应用的全局唯一标识。
+        r"""应用ID，是应用的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3438,7 +3438,7 @@ class DescribePublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3456,7 +3456,7 @@ class DescribePublicKeyResponse(AbstractModel):
 
 
 class DescribeUserGroupRequest(AbstractModel):
-    """DescribeUserGroup请求参数结构体
+    r"""DescribeUserGroup请求参数结构体
 
     """
 
@@ -3469,7 +3469,7 @@ class DescribeUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
         :rtype: str
         """
         return self._UserGroupId
@@ -3492,7 +3492,7 @@ class DescribeUserGroupRequest(AbstractModel):
 
 
 class DescribeUserGroupResourcesAuthorizationRequest(AbstractModel):
-    """DescribeUserGroupResourcesAuthorization请求参数结构体
+    r"""DescribeUserGroupResourcesAuthorization请求参数结构体
 
     """
 
@@ -3508,7 +3508,7 @@ class DescribeUserGroupResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -3519,7 +3519,7 @@ class DescribeUserGroupResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID
+        r"""用户组ID
         :rtype: str
         """
         return self._UserGroupId
@@ -3543,7 +3543,7 @@ class DescribeUserGroupResourcesAuthorizationRequest(AbstractModel):
 
 
 class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
-    """DescribeUserGroupResourcesAuthorization返回参数结构体
+    r"""DescribeUserGroupResourcesAuthorization返回参数结构体
 
     """
 
@@ -3572,7 +3572,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3584,7 +3584,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID
+        r"""用户组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3596,7 +3596,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def UserGroupName(self):
-        """用户组名称
+        r"""用户组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3608,7 +3608,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def AuthorizationUserGroupResourceList(self):
-        """资源列表
+        r"""资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthorizationResourceEntityInfo
         """
@@ -3620,7 +3620,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3644,7 +3644,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
 
 
 class DescribeUserGroupResponse(AbstractModel):
-    """DescribeUserGroup返回参数结构体
+    r"""DescribeUserGroup返回参数结构体
 
     """
 
@@ -3669,7 +3669,7 @@ class DescribeUserGroupResponse(AbstractModel):
 
     @property
     def DisplayName(self):
-        """用户组昵称，长度限制：64个字符。 DisplayName不唯一。
+        r"""用户组昵称，长度限制：64个字符。 DisplayName不唯一。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3681,7 +3681,7 @@ class DescribeUserGroupResponse(AbstractModel):
 
     @property
     def Description(self):
-        """用户组备注，长度限制：512个字符。
+        r"""用户组备注，长度限制：512个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3693,7 +3693,7 @@ class DescribeUserGroupResponse(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3705,7 +3705,7 @@ class DescribeUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3723,7 +3723,7 @@ class DescribeUserGroupResponse(AbstractModel):
 
 
 class DescribeUserInfoRequest(AbstractModel):
-    """DescribeUserInfo请求参数结构体
+    r"""DescribeUserInfo请求参数结构体
 
     """
 
@@ -3739,7 +3739,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        r"""用户名，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
         :rtype: str
         """
         return self._UserName
@@ -3750,7 +3750,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 id，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        r"""用户 id，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
         :rtype: str
         """
         return self._UserId
@@ -3774,7 +3774,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
 
 class DescribeUserInfoResponse(AbstractModel):
-    """DescribeUserInfo返回参数结构体
+    r"""DescribeUserInfo返回参数结构体
 
     """
 
@@ -3847,7 +3847,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名。
+        r"""用户名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3859,7 +3859,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+        r"""用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3871,7 +3871,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称。
+        r"""昵称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3883,7 +3883,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def Description(self):
-        """用户备注。
+        r"""用户备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3895,7 +3895,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """用户所属用户组 id 列表。
+        r"""用户所属用户组 id 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3907,7 +3907,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 id，长度限制：64个字符。
+        r"""用户 id，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3919,7 +3919,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3931,7 +3931,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。
+        r"""用户手机号。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3943,7 +3943,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """用户所属的主组织机构唯一ID。
+        r"""用户所属的主组织机构唯一ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3955,7 +3955,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据来源。
+        r"""数据来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3967,7 +3967,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """用户过期时间，遵循 ISO 8601 标准。
+        r"""用户过期时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3979,7 +3979,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def ActivationTime(self):
-        """用户激活时间，遵循 ISO 8601 标准。
+        r"""用户激活时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3991,7 +3991,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def PwdNeedReset(self):
-        """当前用户的密码是否需要重置，该字段为false表示不需要重置密码。
+        r"""当前用户的密码是否需要重置，该字段为false表示不需要重置密码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4003,7 +4003,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """用户所属的次要组织机构ID列表。
+        r"""用户所属的次要组织机构ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4015,7 +4015,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def AdminFlag(self):
-        """是否管理员标志，0为否、1为是。
+        r"""是否管理员标志，0为否、1为是。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4027,7 +4027,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4057,7 +4057,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
 
 class DescribeUserResourcesAuthorizationRequest(AbstractModel):
-    """DescribeUserResourcesAuthorization请求参数结构体
+    r"""DescribeUserResourcesAuthorization请求参数结构体
 
     """
 
@@ -4079,7 +4079,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -4090,7 +4090,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID。UserName 和 UserId 需至少一个不为空；都不为空时优先使用 UserName。
+        r"""用户ID。UserName 和 UserId 需至少一个不为空；都不为空时优先使用 UserName。
         :rtype: str
         """
         return self._UserId
@@ -4101,7 +4101,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名。UserName 和 UserId 需至少一个不为空；都不为空时优先使用 UserName。
+        r"""用户名。UserName 和 UserId 需至少一个不为空；都不为空时优先使用 UserName。
         :rtype: str
         """
         return self._UserName
@@ -4112,7 +4112,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def IncludeInheritedAuthorizations(self):
-        """查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 ，传false表示不查询该范围，传true查询该范围。
+        r"""查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 ，传false表示不查询该范围，传true查询该范围。
         :rtype: bool
         """
         return self._IncludeInheritedAuthorizations
@@ -4138,7 +4138,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
 
 class DescribeUserResourcesAuthorizationResponse(AbstractModel):
-    """DescribeUserResourcesAuthorization返回参数结构体
+    r"""DescribeUserResourcesAuthorization返回参数结构体
 
     """
 
@@ -4170,7 +4170,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用的唯一ID。
+        r"""应用的唯一ID。
         :rtype: str
         """
         return self._ApplicationId
@@ -4181,7 +4181,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def ApplicationAccounts(self):
-        """应用账户。
+        r"""应用账户。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4193,7 +4193,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """授权用户的唯一ID。
+        r"""授权用户的唯一ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4205,7 +4205,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def UserName(self):
-        """授权的用户名。
+        r"""授权的用户名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4217,7 +4217,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def AuthorizationUserResourceList(self):
-        """返回的资源列表。
+        r"""返回的资源列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthorizationUserResouceInfo
         """
@@ -4229,7 +4229,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4254,7 +4254,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
 
 class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
-    """DescribeUserThirdPartyAccountInfo请求参数结构体
+    r"""DescribeUserThirdPartyAccountInfo请求参数结构体
 
     """
 
@@ -4270,7 +4270,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        r"""用户名。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
         :rtype: str
         """
         return self._UserName
@@ -4281,7 +4281,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 ID。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        r"""用户 ID。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
         :rtype: str
         """
         return self._UserId
@@ -4305,7 +4305,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
 
 class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
-    """DescribeUserThirdPartyAccountInfo返回参数结构体
+    r"""DescribeUserThirdPartyAccountInfo返回参数结构体
 
     """
 
@@ -4328,7 +4328,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 id。
+        r"""用户 id。
         :rtype: str
         """
         return self._UserId
@@ -4339,7 +4339,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名。
+        r"""用户名。
         :rtype: str
         """
         return self._UserName
@@ -4350,7 +4350,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
     @property
     def ThirdPartyAccounts(self):
-        """三方账号的绑定情况。
+        r"""三方账号的绑定情况。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ThirdPartyAccountInfo
         """
@@ -4362,7 +4362,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4385,7 +4385,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
 
 class InheritedForm(AbstractModel):
-    """应用信息列表。
+    r"""应用信息列表。
 
     """
 
@@ -4403,7 +4403,7 @@ class InheritedForm(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """用户所在的用户组ID列表。
+        r"""用户所在的用户组ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4415,7 +4415,7 @@ class InheritedForm(AbstractModel):
 
     @property
     def OrgNodeIds(self):
-        """用户所在的机构节点ID列表。
+        r"""用户所在的机构节点ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4440,7 +4440,7 @@ class InheritedForm(AbstractModel):
 
 
 class LinkUserInfo(AbstractModel):
-    """账号关联的用户信息
+    r"""账号关联的用户信息
 
     """
 
@@ -4458,7 +4458,7 @@ class LinkUserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID，是用户全局唯一标识，长度限制：64个字符。
+        r"""用户ID，是用户全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4470,7 +4470,7 @@ class LinkUserInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称。
+        r"""用户名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4495,7 +4495,7 @@ class LinkUserInfo(AbstractModel):
 
 
 class ListAccountInAccountGroupRequest(AbstractModel):
-    """ListAccountInAccountGroup请求参数结构体
+    r"""ListAccountInAccountGroup请求参数结构体
 
     """
 
@@ -4517,7 +4517,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID。
+        r"""账号组ID。
         :rtype: str
         """
         return self._AccountGroupId
@@ -4528,7 +4528,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """查询条件，支持多搜索条件组合、多数据范围匹配的搜索。
+        r"""查询条件，支持多搜索条件组合、多数据范围匹配的搜索。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
         """
         return self._SearchCondition
@@ -4539,7 +4539,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0。
+        r"""偏移量，默认为 0。
         :rtype: int
         """
         return self._Offset
@@ -4550,7 +4550,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为 20，最大值为 100。
+        r"""返回数量，默认为 20，最大值为 100。
         :rtype: int
         """
         return self._Limit
@@ -4578,7 +4578,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
 
 class ListAccountInAccountGroupResponse(AbstractModel):
-    """ListAccountInAccountGroup返回参数结构体
+    r"""ListAccountInAccountGroup返回参数结构体
 
     """
 
@@ -4603,7 +4603,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
     @property
     def AccountList(self):
-        """查询返回的相关账号列表。
+        r"""查询返回的相关账号列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppAccountInfo
         """
@@ -4615,7 +4615,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回查询账号的总数量。
+        r"""返回查询账号的总数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4627,7 +4627,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID。
+        r"""账号组ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4639,7 +4639,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4662,7 +4662,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
 
 class ListApplicationAuthorizationsRequest(AbstractModel):
-    """ListApplicationAuthorizations请求参数结构体
+    r"""ListApplicationAuthorizations请求参数结构体
 
     """
 
@@ -4687,7 +4687,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def EntityType(self):
-        """查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。
+        r"""查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。
         :rtype: str
         """
         return self._EntityType
@@ -4698,7 +4698,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        r"""查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -4709,7 +4709,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。
+        r"""排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -4720,7 +4720,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        r"""分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :rtype: int
         """
         return self._Offset
@@ -4731,7 +4731,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        r"""分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :rtype: int
         """
         return self._Limit
@@ -4762,7 +4762,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
 
 class ListApplicationAuthorizationsResponse(AbstractModel):
-    """ListApplicationAuthorizations返回参数结构体
+    r"""ListApplicationAuthorizations返回参数结构体
 
     """
 
@@ -4783,7 +4783,7 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
 
     @property
     def AuthorizationInfoList(self):
-        """返回的应用授权信息列表。
+        r"""返回的应用授权信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthorizationInfo
         """
@@ -4795,7 +4795,7 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的应用信息总数。
+        r"""返回的应用信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4807,7 +4807,7 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4829,7 +4829,7 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
 
 
 class ListApplicationsRequest(AbstractModel):
-    """ListApplications请求参数结构体
+    r"""ListApplications请求参数结构体
 
     """
 
@@ -4854,7 +4854,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """模糊匹配搜索条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
+        r"""模糊匹配搜索条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -4865,7 +4865,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+        r"""排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -4876,7 +4876,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+        r"""排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
         :rtype: int
         """
         return self._Offset
@@ -4887,7 +4887,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        r"""分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :rtype: int
         """
         return self._Limit
@@ -4898,7 +4898,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationIdList(self):
-        """应用ID列表，通过应用ID列表精准匹配对应的应用信息。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
+        r"""应用ID列表，通过应用ID列表精准匹配对应的应用信息。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
         :rtype: list of str
         """
         return self._ApplicationIdList
@@ -4929,7 +4929,7 @@ class ListApplicationsRequest(AbstractModel):
 
 
 class ListApplicationsResponse(AbstractModel):
-    """ListApplications返回参数结构体
+    r"""ListApplications返回参数结构体
 
     """
 
@@ -4950,7 +4950,7 @@ class ListApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的应用信息总数。
+        r"""返回的应用信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4962,7 +4962,7 @@ class ListApplicationsResponse(AbstractModel):
 
     @property
     def ApplicationInfoList(self):
-        """返回的应用信息列表。
+        r"""返回的应用信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplicationInformation
         """
@@ -4974,7 +4974,7 @@ class ListApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4996,7 +4996,7 @@ class ListApplicationsResponse(AbstractModel):
 
 
 class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
-    """ListAuthorizedApplicationsToOrgNode请求参数结构体
+    r"""ListAuthorizedApplicationsToOrgNode请求参数结构体
 
     """
 
@@ -5009,7 +5009,7 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点 Id 。
+        r"""机构节点 Id 。
         :rtype: str
         """
         return self._OrgNodeId
@@ -5032,7 +5032,7 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
-    """ListAuthorizedApplicationsToOrgNode返回参数结构体
+    r"""ListAuthorizedApplicationsToOrgNode返回参数结构体
 
     """
 
@@ -5049,7 +5049,7 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
 
     @property
     def ApplicationIds(self):
-        """机构节点拥有访问权限的应用 id 列表。
+        r"""机构节点拥有访问权限的应用 id 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5061,7 +5061,7 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5077,7 +5077,7 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
-    """ListAuthorizedApplicationsToUserGroup请求参数结构体
+    r"""ListAuthorizedApplicationsToUserGroup请求参数结构体
 
     """
 
@@ -5090,7 +5090,7 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组 Id 。
+        r"""用户组 Id 。
         :rtype: str
         """
         return self._UserGroupId
@@ -5113,7 +5113,7 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
-    """ListAuthorizedApplicationsToUserGroup返回参数结构体
+    r"""ListAuthorizedApplicationsToUserGroup返回参数结构体
 
     """
 
@@ -5130,7 +5130,7 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
 
     @property
     def ApplicationIds(self):
-        """用户组拥有访问权限的应用 id 列表。
+        r"""用户组拥有访问权限的应用 id 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5142,7 +5142,7 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5158,7 +5158,7 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserRequest(AbstractModel):
-    """ListAuthorizedApplicationsToUser请求参数结构体
+    r"""ListAuthorizedApplicationsToUser请求参数结构体
 
     """
 
@@ -5174,7 +5174,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 ID。
+        r"""用户 ID。
         :rtype: str
         """
         return self._UserId
@@ -5185,7 +5185,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     @property
     def IncludeInheritedAuthorizations(self):
-        """查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。
+        r"""查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。
         :rtype: bool
         """
         return self._IncludeInheritedAuthorizations
@@ -5209,7 +5209,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserResponse(AbstractModel):
-    """ListAuthorizedApplicationsToUser返回参数结构体
+    r"""ListAuthorizedApplicationsToUser返回参数结构体
 
     """
 
@@ -5226,7 +5226,7 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
 
     @property
     def ApplicationAuthorizationInfo(self):
-        """用户拥有访问权限的应用信息列表。
+        r"""用户拥有访问权限的应用信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplicationAuthorizationInfo
         """
@@ -5238,7 +5238,7 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5259,7 +5259,7 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
 
 
 class ListUserGroupsOfUserRequest(AbstractModel):
-    """ListUserGroupsOfUser请求参数结构体
+    r"""ListUserGroupsOfUser请求参数结构体
 
     """
 
@@ -5284,7 +5284,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID，是用户的全局唯一标识。
+        r"""用户ID，是用户的全局唯一标识。
         :rtype: str
         """
         return self._UserId
@@ -5295,7 +5295,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """模糊查询条件，支持匹配用户组名称（DisplayName）。如果该字段为空，则默认展示该用户所有的用户组。
+        r"""模糊查询条件，支持匹配用户组名称（DisplayName）。如果该字段为空，则默认展示该用户所有的用户组。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserGroupInformationSearchCriteria`
         """
         return self._SearchCondition
@@ -5306,7 +5306,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、创建时间（CreatedDate）。如果该字段为空，则默认按照用户组名称正向排序。
+        r"""排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、创建时间（CreatedDate）。如果该字段为空，则默认按照用户组名称正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5317,7 +5317,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
+        r"""分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
         :rtype: int
         """
         return self._Offset
@@ -5328,7 +5328,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
+        r"""分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
         :rtype: int
         """
         return self._Limit
@@ -5359,7 +5359,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
 
 class ListUserGroupsOfUserResponse(AbstractModel):
-    """ListUserGroupsOfUser返回参数结构体
+    r"""ListUserGroupsOfUser返回参数结构体
 
     """
 
@@ -5388,7 +5388,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """用户所属的用户组ID列表。
+        r"""用户所属的用户组ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5400,7 +5400,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID，是用户的全局唯一标识。
+        r"""用户ID，是用户的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5412,7 +5412,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     @property
     def UserGroupInfoList(self):
-        """用户所属的用户组信息列表。
+        r"""用户所属的用户组信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserGroupInfo
         """
@@ -5424,7 +5424,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的用户组信息总数。
+        r"""返回的用户组信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5436,7 +5436,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5460,7 +5460,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
 
 class ListUserGroupsRequest(AbstractModel):
-    """ListUserGroups请求参数结构体
+    r"""ListUserGroups请求参数结构体
 
     """
 
@@ -5482,7 +5482,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        r"""查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -5493,7 +5493,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。
+        r"""排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5504,7 +5504,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        r"""分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :rtype: int
         """
         return self._Offset
@@ -5515,7 +5515,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        r"""分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :rtype: int
         """
         return self._Limit
@@ -5545,7 +5545,7 @@ class ListUserGroupsRequest(AbstractModel):
 
 
 class ListUserGroupsResponse(AbstractModel):
-    """ListUserGroups返回参数结构体
+    r"""ListUserGroups返回参数结构体
 
     """
 
@@ -5566,7 +5566,7 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def UserGroupList(self):
-        """返回的用户组列表。
+        r"""返回的用户组列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserGroupInformation
         """
@@ -5578,7 +5578,7 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的用户组信息总数。
+        r"""返回的用户组信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5590,7 +5590,7 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5612,7 +5612,7 @@ class ListUserGroupsResponse(AbstractModel):
 
 
 class ListUsersInOrgNodeRequest(AbstractModel):
-    """ListUsersInOrgNode请求参数结构体
+    r"""ListUsersInOrgNode请求参数结构体
 
     """
 
@@ -5640,7 +5640,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。
+        r"""机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。
         :rtype: str
         """
         return self._OrgNodeId
@@ -5651,7 +5651,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def IncludeOrgNodeChildInfo(self):
-        """是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
+        r"""是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
         :rtype: bool
         """
         return self._IncludeOrgNodeChildInfo
@@ -5662,7 +5662,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        r"""用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.ListUsersInOrgNodeSearchCriteria`
         """
         return self._SearchCondition
@@ -5673,7 +5673,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+        r"""排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5684,7 +5684,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        r"""分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
         :rtype: int
         """
         return self._Offset
@@ -5695,7 +5695,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        r"""分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
         :rtype: int
         """
         return self._Limit
@@ -5727,7 +5727,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
 
 class ListUsersInOrgNodeResponse(AbstractModel):
-    """ListUsersInOrgNode返回参数结构体
+    r"""ListUsersInOrgNode返回参数结构体
 
     """
 
@@ -5764,7 +5764,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeChildUserInfo(self):
-        """机构子节点下的用户信息列表。
+        r"""机构子节点下的用户信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgNodeChildUserInfo
         """
@@ -5776,7 +5776,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构ID，是机构节点全局唯一标识，长度限制：64个字符。
+        r"""机构ID，是机构节点全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5788,7 +5788,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """用户信息列表。
+        r"""用户信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInfo
         """
@@ -5800,7 +5800,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def TotalUserNum(self):
-        """当前机构节点下的用户总数。
+        r"""当前机构节点下的用户总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5812,7 +5812,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeIdPath(self):
-        """组织机构ID路径。
+        r"""组织机构ID路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5824,7 +5824,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def OrgNodeNamePath(self):
-        """组织机构名称路径。
+        r"""组织机构名称路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5836,7 +5836,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5867,7 +5867,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
 
 class ListUsersInOrgNodeSearchCriteria(AbstractModel):
-    """展示机构下用户的属性搜索条件。
+    r"""展示机构下用户的属性搜索条件。
 
     """
 
@@ -5898,7 +5898,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：64个字符。
+        r"""用户名，长度限制：64个字符。
         :rtype: str
         """
         return self._UserName
@@ -5909,7 +5909,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。
+        r"""用户手机号。
         :rtype: str
         """
         return self._Phone
@@ -5920,7 +5920,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
         :rtype: str
         """
         return self._Email
@@ -5931,7 +5931,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+        r"""用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
         :rtype: str
         """
         return self._Status
@@ -5942,7 +5942,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def CreationTime(self):
-        """用户创建时间，遵循 ISO 8601 标准。
+        r"""用户创建时间，遵循 ISO 8601 标准。
         :rtype: str
         """
         return self._CreationTime
@@ -5953,7 +5953,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """用户上次更新时间。
+        r"""用户上次更新时间。
         :rtype: str
         """
         return self._LastUpdateTime
@@ -5964,7 +5964,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """名称匹配搜索，匹配范围包括：用户名称、用户手机号。
+        r"""名称匹配搜索，匹配范围包括：用户名称、用户手机号。
         :rtype: str
         """
         return self._Keyword
@@ -5993,7 +5993,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
 
 class ListUsersInUserGroupRequest(AbstractModel):
-    """ListUsersInUserGroup请求参数结构体
+    r"""ListUsersInUserGroup请求参数结构体
 
     """
 
@@ -6018,7 +6018,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
         :rtype: str
         """
         return self._UserGroupId
@@ -6029,7 +6029,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        r"""用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
         """
         return self._SearchCondition
@@ -6040,7 +6040,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+        r"""排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -6051,7 +6051,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        r"""分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
         :rtype: int
         """
         return self._Offset
@@ -6062,7 +6062,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        r"""分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
         :rtype: int
         """
         return self._Limit
@@ -6093,7 +6093,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
 
 class ListUsersInUserGroupResponse(AbstractModel):
-    """ListUsersInUserGroup返回参数结构体
+    r"""ListUsersInUserGroup返回参数结构体
 
     """
 
@@ -6118,7 +6118,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6130,7 +6130,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """返回的用户信息列表。
+        r"""返回的用户信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInfo
         """
@@ -6142,7 +6142,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """返回的用户信息总数。
+        r"""返回的用户信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6154,7 +6154,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6177,7 +6177,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
 
 class ListUsersRequest(AbstractModel):
-    """ListUsers请求参数结构体
+    r"""ListUsers请求参数结构体
 
     """
 
@@ -6205,7 +6205,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        r"""用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
         """
         return self._SearchCondition
@@ -6216,7 +6216,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def ExpectedFields(self):
-        """指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
+        r"""指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
         :rtype: list of str
         """
         return self._ExpectedFields
@@ -6227,7 +6227,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+        r"""排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -6238,7 +6238,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+        r"""分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
         :rtype: int
         """
         return self._Offset
@@ -6249,7 +6249,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+        r"""分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
         :rtype: int
         """
         return self._Limit
@@ -6260,7 +6260,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def IncludeTotal(self):
-        """是否查看搜索结果的总数，默认该选项为false不查看。
+        r"""是否查看搜索结果的总数，默认该选项为false不查看。
         :rtype: bool
         """
         return self._IncludeTotal
@@ -6292,7 +6292,7 @@ class ListUsersRequest(AbstractModel):
 
 
 class ListUsersResponse(AbstractModel):
-    """ListUsers返回参数结构体
+    r"""ListUsers返回参数结构体
 
     """
 
@@ -6313,7 +6313,7 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def UserList(self):
-        """查询返回的相关用户列表。
+        r"""查询返回的相关用户列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInformation
         """
@@ -6325,7 +6325,7 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
+        r"""返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6337,7 +6337,7 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6359,7 +6359,7 @@ class ListUsersResponse(AbstractModel):
 
 
 class ModifyAccountGroupRequest(AbstractModel):
-    """ModifyAccountGroup请求参数结构体
+    r"""ModifyAccountGroup请求参数结构体
 
     """
 
@@ -6378,7 +6378,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID。
+        r"""账号组ID。
         :rtype: str
         """
         return self._AccountGroupId
@@ -6389,7 +6389,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """账号组名。未传入该参数时，表示不进行修改。
+        r"""账号组名。未传入该参数时，表示不进行修改。
         :rtype: str
         """
         return self._GroupName
@@ -6400,7 +6400,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述，未传入该参数时，表示不进行修改。
+        r"""描述，未传入该参数时，表示不进行修改。
         :rtype: str
         """
         return self._Description
@@ -6425,7 +6425,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
 
 class ModifyAccountGroupResponse(AbstractModel):
-    """ModifyAccountGroup返回参数结构体
+    r"""ModifyAccountGroup返回参数结构体
 
     """
 
@@ -6438,7 +6438,7 @@ class ModifyAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6453,7 +6453,7 @@ class ModifyAccountGroupResponse(AbstractModel):
 
 
 class ModifyAppAccountRequest(AbstractModel):
-    """ModifyAppAccount请求参数结构体
+    r"""ModifyAppAccount请求参数结构体
 
     """
 
@@ -6475,7 +6475,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号ID。
+        r"""账号ID。
         :rtype: str
         """
         return self._AccountId
@@ -6486,7 +6486,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """账号名称。未传入该参数时，表示不进行修改。
+        r"""账号名称。未传入该参数时，表示不进行修改。
         :rtype: str
         """
         return self._AccountName
@@ -6497,7 +6497,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """账号密码。未传入该参数时，表示不进行修改。
+        r"""账号密码。未传入该参数时，表示不进行修改。
         :rtype: str
         """
         return self._Password
@@ -6508,7 +6508,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述，未传入该参数时，表示不进行修改。
+        r"""描述，未传入该参数时，表示不进行修改。
         :rtype: str
         """
         return self._Description
@@ -6534,7 +6534,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
 
 class ModifyAppAccountResponse(AbstractModel):
-    """ModifyAppAccount返回参数结构体
+    r"""ModifyAppAccount返回参数结构体
 
     """
 
@@ -6547,7 +6547,7 @@ class ModifyAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6562,7 +6562,7 @@ class ModifyAppAccountResponse(AbstractModel):
 
 
 class ModifyApplicationRequest(AbstractModel):
-    """ModifyApplication请求参数结构体
+    r"""ModifyApplication请求参数结构体
 
     """
 
@@ -6590,7 +6590,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，是应用的全局唯一标识。
+        r"""应用ID，是应用的全局唯一标识。
         :rtype: str
         """
         return self._ApplicationId
@@ -6601,7 +6601,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def SecureLevel(self):
-        """安全级别。
+        r"""安全级别。
         :rtype: str
         """
         return self._SecureLevel
@@ -6612,7 +6612,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """应用展示名称，长度限制：32个字符。 默认与应用名字相同。
+        r"""应用展示名称，长度限制：32个字符。 默认与应用名字相同。
         :rtype: str
         """
         return self._DisplayName
@@ -6623,7 +6623,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def AppStatus(self):
-        """应用状态，true表示启用，false表示禁用。
+        r"""应用状态，true表示启用，false表示禁用。
         :rtype: bool
         """
         return self._AppStatus
@@ -6634,7 +6634,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def IconUrl(self):
-        """应用图标图片访问地址。
+        r"""应用图标图片访问地址。
         :rtype: str
         """
         return self._IconUrl
@@ -6645,7 +6645,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述。长度不超过128。
+        r"""描述。长度不超过128。
         :rtype: str
         """
         return self._Description
@@ -6673,7 +6673,7 @@ class ModifyApplicationRequest(AbstractModel):
 
 
 class ModifyApplicationResponse(AbstractModel):
-    """ModifyApplication返回参数结构体
+    r"""ModifyApplication返回参数结构体
 
     """
 
@@ -6686,7 +6686,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6701,7 +6701,7 @@ class ModifyApplicationResponse(AbstractModel):
 
 
 class ModifyUserInfoRequest(AbstractModel):
-    """ModifyUserInfo请求参数结构体
+    r"""ModifyUserInfo请求参数结构体
 
     """
 
@@ -6747,7 +6747,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        r"""用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
         :rtype: str
         """
         return self._UserName
@@ -6758,7 +6758,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称，长度限制：64个字符。 默认与用户名相同。
+        r"""昵称，长度限制：64个字符。 默认与用户名相同。
         :rtype: str
         """
         return self._DisplayName
@@ -6769,7 +6769,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        """用户备注，长度限制：512个字符。
+        r"""用户备注，长度限制：512个字符。
         :rtype: str
         """
         return self._Description
@@ -6780,7 +6780,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """用户所属用户组ID列表。
+        r"""用户所属用户组ID列表。
         :rtype: list of str
         """
         return self._UserGroupIds
@@ -6791,7 +6791,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        r"""用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
         :rtype: str
         """
         return self._UserId
@@ -6802,7 +6802,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。
+        r"""用户手机号。
         :rtype: str
         """
         return self._Phone
@@ -6813,7 +6813,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """用户过期时间，遵循 ISO 8601 标准。
+        r"""用户过期时间，遵循 ISO 8601 标准。
         :rtype: str
         """
         return self._ExpirationTime
@@ -6824,7 +6824,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Password(self):
-        """用户密码， 需要符合密码策略的配置。
+        r"""用户密码， 需要符合密码策略的配置。
         :rtype: str
         """
         return self._Password
@@ -6835,7 +6835,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
         :rtype: str
         """
         return self._Email
@@ -6846,7 +6846,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def PwdNeedReset(self):
-        """密码是否需要重置，为空默认为false不需要重置密码。
+        r"""密码是否需要重置，为空默认为false不需要重置密码。
         :rtype: bool
         """
         return self._PwdNeedReset
@@ -6857,7 +6857,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
+        r"""用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
         :rtype: str
         """
         return self._OrgNodeId
@@ -6868,7 +6868,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """用户所属的次要组织机构ID列表。
+        r"""用户所属的次要组织机构ID列表。
         :rtype: list of str
         """
         return self._SecondaryOrgNodeIdList
@@ -6902,7 +6902,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
 
 class ModifyUserInfoResponse(AbstractModel):
-    """ModifyUserInfo返回参数结构体
+    r"""ModifyUserInfo返回参数结构体
 
     """
 
@@ -6915,7 +6915,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6930,7 +6930,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
 
 class OrgNodeChildInfo(AbstractModel):
-    """当前机构节点下的子节点列表
+    r"""当前机构节点下的子节点列表
 
     """
 
@@ -6972,7 +6972,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        """机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
+        r"""机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6984,7 +6984,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """机构节点最后修改时间，符合 ISO8601 标准。
+        r"""机构节点最后修改时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6996,7 +6996,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """用户自定义可选填的机构节点对外ID。
+        r"""用户自定义可选填的机构节点对外ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7008,7 +7008,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def ParentOrgNodeId(self):
-        """当前机构节点的父节点ID。
+        r"""当前机构节点的父节点ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7020,7 +7020,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点的全局唯一标识。
+        r"""机构节点ID，是机构节点的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7032,7 +7032,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据来源。
+        r"""数据来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7044,7 +7044,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """机构节点创建时间，符合 ISO8601 标准。
+        r"""机构节点创建时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7056,7 +7056,7 @@ class OrgNodeChildInfo(AbstractModel):
 
     @property
     def Description(self):
-        """机构节点描述。
+        r"""机构节点描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7087,7 +7087,7 @@ class OrgNodeChildInfo(AbstractModel):
 
 
 class OrgNodeChildUserInfo(AbstractModel):
-    """机构子节点下的用户信息列表
+    r"""机构子节点下的用户信息列表
 
     """
 
@@ -7117,7 +7117,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构ID，是机构节点全局唯一标识，长度限制：64个字符。
+        r"""机构ID，是机构节点全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7129,7 +7129,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     @property
     def UserInfo(self):
-        """用户信息列表。
+        r"""用户信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInfo
         """
@@ -7141,7 +7141,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     @property
     def TotalUserNum(self):
-        """当前机构节点下的用户总数。
+        r"""当前机构节点下的用户总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7153,7 +7153,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     @property
     def OrgNodeIdPath(self):
-        """组织机构ID路径。
+        r"""组织机构ID路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7165,7 +7165,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     @property
     def OrgNodeNamePath(self):
-        """组织机构名称路径。
+        r"""组织机构名称路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7198,7 +7198,7 @@ class OrgNodeChildUserInfo(AbstractModel):
 
 
 class RemoveAccountFromAccountGroupRequest(AbstractModel):
-    """RemoveAccountFromAccountGroup请求参数结构体
+    r"""RemoveAccountFromAccountGroup请求参数结构体
 
     """
 
@@ -7214,7 +7214,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -7225,7 +7225,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """需要移除账号ID列表。
+        r"""需要移除账号ID列表。
         :rtype: list of str
         """
         return self._AccountIds
@@ -7249,7 +7249,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
 
 class RemoveAccountFromAccountGroupResponse(AbstractModel):
-    """RemoveAccountFromAccountGroup返回参数结构体
+    r"""RemoveAccountFromAccountGroup返回参数结构体
 
     """
 
@@ -7262,7 +7262,7 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7277,7 +7277,7 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
 
 class RemoveUserFromUserGroupRequest(AbstractModel):
-    """RemoveUserFromUserGroup请求参数结构体
+    r"""RemoveUserFromUserGroup请求参数结构体
 
     """
 
@@ -7293,7 +7293,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """要加入用户组的用户ID列表。
+        r"""要加入用户组的用户ID列表。
         :rtype: list of str
         """
         return self._UserIds
@@ -7304,7 +7304,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组的全局唯一标识。
+        r"""用户组ID，是用户组的全局唯一标识。
         :rtype: str
         """
         return self._UserGroupId
@@ -7328,7 +7328,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
 
 class RemoveUserFromUserGroupResponse(AbstractModel):
-    """RemoveUserFromUserGroup返回参数结构体
+    r"""RemoveUserFromUserGroup返回参数结构体
 
     """
 
@@ -7341,7 +7341,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7356,7 +7356,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
 
 class SortCondition(AbstractModel):
-    """排序条件。
+    r"""排序条件。
 
     """
 
@@ -7372,7 +7372,7 @@ class SortCondition(AbstractModel):
 
     @property
     def SortKey(self):
-        """排序属性。
+        r"""排序属性。
         :rtype: str
         """
         return self._SortKey
@@ -7383,7 +7383,7 @@ class SortCondition(AbstractModel):
 
     @property
     def SortOrder(self):
-        """排序顺序，ASC为正向排序，DESC为反向排序。
+        r"""排序顺序，ASC为正向排序，DESC为反向排序。
         :rtype: str
         """
         return self._SortOrder
@@ -7407,7 +7407,7 @@ class SortCondition(AbstractModel):
 
 
 class ThirdPartyAccountInfo(AbstractModel):
-    """三方账号信息。
+    r"""三方账号信息。
 
     """
 
@@ -7425,7 +7425,7 @@ class ThirdPartyAccountInfo(AbstractModel):
 
     @property
     def AccountCode(self):
-        """第三方账号代码。"2"代表企业微信。
+        r"""第三方账号代码。"2"代表企业微信。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7437,7 +7437,7 @@ class ThirdPartyAccountInfo(AbstractModel):
 
     @property
     def AccountName(self):
-        """账号对应的用户名。
+        r"""账号对应的用户名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7462,7 +7462,7 @@ class ThirdPartyAccountInfo(AbstractModel):
 
 
 class UpdateOrgNodeRequest(AbstractModel):
-    """UpdateOrgNode请求参数结构体
+    r"""UpdateOrgNode请求参数结构体
 
     """
 
@@ -7484,7 +7484,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """机构节点ID，是机构节点的全局唯一标识。
+        r"""机构节点ID，是机构节点的全局唯一标识。
         :rtype: str
         """
         return self._OrgNodeId
@@ -7495,7 +7495,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """机构节点名称，长度限制：64个字符。
+        r"""机构节点名称，长度限制：64个字符。
         :rtype: str
         """
         return self._DisplayName
@@ -7506,7 +7506,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """机构节点描述。
+        r"""机构节点描述。
         :rtype: str
         """
         return self._Description
@@ -7517,7 +7517,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """机构代码。如果非空则校验此ID的唯一性。
+        r"""机构代码。如果非空则校验此ID的唯一性。
         :rtype: str
         """
         return self._CustomizedOrgNodeId
@@ -7543,7 +7543,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
 
 class UpdateOrgNodeResponse(AbstractModel):
-    """UpdateOrgNode返回参数结构体
+    r"""UpdateOrgNode返回参数结构体
 
     """
 
@@ -7556,7 +7556,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7571,7 +7571,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
 
 class UserGroupInfo(AbstractModel):
-    """返回的用户组列表。
+    r"""返回的用户组列表。
 
     """
 
@@ -7597,7 +7597,7 @@ class UserGroupInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称，长度限制：64个字符。 默认与用户名相同。
+        r"""昵称，长度限制：64个字符。 默认与用户名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7609,7 +7609,7 @@ class UserGroupInfo(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID，是用户组全局唯一标识，长度限制：64个字符。
+        r"""用户组ID，是用户组全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7621,7 +7621,7 @@ class UserGroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """用户组备注。
+        r"""用户组备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7633,7 +7633,7 @@ class UserGroupInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """创建时间。
+        r"""创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7660,7 +7660,7 @@ class UserGroupInfo(AbstractModel):
 
 
 class UserGroupInfoSearchCriteria(AbstractModel):
-    """用户组属性搜索条件。
+    r"""用户组属性搜索条件。
 
     """
 
@@ -7673,7 +7673,7 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """名称匹配搜索，匹配范围包括：用户组名称、用户组ID。
+        r"""名称匹配搜索，匹配范围包括：用户组名称、用户组ID。
         :rtype: str
         """
         return self._Keyword
@@ -7696,7 +7696,7 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
 
 class UserGroupInformation(AbstractModel):
-    """返回的用户组列表。
+    r"""返回的用户组列表。
 
     """
 
@@ -7716,7 +7716,7 @@ class UserGroupInformation(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """用户组ID。
+        r"""用户组ID。
         :rtype: str
         """
         return self._UserGroupId
@@ -7727,7 +7727,7 @@ class UserGroupInformation(AbstractModel):
 
     @property
     def UserGroupName(self):
-        """用户组名称。
+        r"""用户组名称。
         :rtype: str
         """
         return self._UserGroupName
@@ -7738,7 +7738,7 @@ class UserGroupInformation(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """上次更新时间，符合 ISO8601 标准。
+        r"""上次更新时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7764,7 +7764,7 @@ class UserGroupInformation(AbstractModel):
 
 
 class UserGroupInformationSearchCriteria(AbstractModel):
-    """获取用户所在的用户组列表功能中用户组属性搜索条件。
+    r"""获取用户所在的用户组列表功能中用户组属性搜索条件。
 
     """
 
@@ -7777,7 +7777,7 @@ class UserGroupInformationSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """名称匹配搜索，匹配范围包括：用户组名称。
+        r"""名称匹配搜索，匹配范围包括：用户组名称。
         :rtype: str
         """
         return self._Keyword
@@ -7800,7 +7800,7 @@ class UserGroupInformationSearchCriteria(AbstractModel):
 
 
 class UserInfo(AbstractModel):
-    """用户信息列表。
+    r"""用户信息列表。
 
     """
 
@@ -7838,7 +7838,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID，是用户全局唯一标识，长度限制：64个字符。
+        r"""用户ID，是用户全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7850,7 +7850,7 @@ class UserInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称，长度限制：64个字符。 默认与用户名相同。
+        r"""昵称，长度限制：64个字符。 默认与用户名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7862,7 +7862,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称。
+        r"""用户名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7874,7 +7874,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。
+        r"""用户手机号。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7886,7 +7886,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱地址。
+        r"""邮箱地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7898,7 +7898,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态。
+        r"""用户状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7910,7 +7910,7 @@ class UserInfo(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据来源。
+        r"""数据来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7940,7 +7940,7 @@ class UserInfo(AbstractModel):
 
 
 class UserInformation(AbstractModel):
-    """用户信息列表。
+    r"""用户信息列表。
 
     """
 
@@ -7998,7 +7998,7 @@ class UserInformation(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：32个字符。
+        r"""用户名，长度限制：32个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8010,7 +8010,7 @@ class UserInformation(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态。
+        r"""用户状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8022,7 +8022,7 @@ class UserInformation(AbstractModel):
 
     @property
     def DisplayName(self):
-        """昵称，长度限制：64个字符。 默认与用户名相同。
+        r"""昵称，长度限制：64个字符。 默认与用户名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8034,7 +8034,7 @@ class UserInformation(AbstractModel):
 
     @property
     def Description(self):
-        """用户备注，长度限制：512个字符。
+        r"""用户备注，长度限制：512个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8046,7 +8046,7 @@ class UserInformation(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """用户上次更新时间，遵循 ISO 8601 标准。
+        r"""用户上次更新时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8058,7 +8058,7 @@ class UserInformation(AbstractModel):
 
     @property
     def CreationTime(self):
-        """用户创建时间，遵循 ISO 8601 标准。
+        r"""用户创建时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8070,7 +8070,7 @@ class UserInformation(AbstractModel):
 
     @property
     def OrgPath(self):
-        """用户所属主组织机构的路径ID。
+        r"""用户所属主组织机构的路径ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8082,7 +8082,7 @@ class UserInformation(AbstractModel):
 
     @property
     def Phone(self):
-        """带国家号的用户手机号，例如+86-00000000000。
+        r"""带国家号的用户手机号，例如+86-00000000000。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8094,7 +8094,7 @@ class UserInformation(AbstractModel):
 
     @property
     def SubjectGroups(self):
-        """用户所属用户组ID列表。
+        r"""用户所属用户组ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -8106,7 +8106,7 @@ class UserInformation(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8118,7 +8118,7 @@ class UserInformation(AbstractModel):
 
     @property
     def LastLoginTime(self):
-        """用户上次登录时间，遵循 ISO 8601 标准。
+        r"""用户上次登录时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8130,7 +8130,7 @@ class UserInformation(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID，是用户全局唯一标识，长度限制：64个字符。
+        r"""用户ID，是用户全局唯一标识，长度限制：64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8165,7 +8165,7 @@ class UserInformation(AbstractModel):
 
 
 class UserSearchCriteria(AbstractModel):
-    """用户属性搜索条件。
+    r"""用户属性搜索条件。
 
     """
 
@@ -8196,7 +8196,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名，长度限制：64个字符。
+        r"""用户名，长度限制：64个字符。
         :rtype: str
         """
         return self._UserName
@@ -8207,7 +8207,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Phone(self):
-        """用户手机号。
+        r"""用户手机号。
         :rtype: str
         """
         return self._Phone
@@ -8218,7 +8218,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Email(self):
-        """用户邮箱。
+        r"""用户邮箱。
         :rtype: str
         """
         return self._Email
@@ -8229,7 +8229,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+        r"""用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
         :rtype: str
         """
         return self._Status
@@ -8240,7 +8240,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def CreationTime(self):
-        """用户创建时间，遵循 ISO 8601 标准。
+        r"""用户创建时间，遵循 ISO 8601 标准。
         :rtype: str
         """
         return self._CreationTime
@@ -8251,7 +8251,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """用户上次更新时间区间。
+        r"""用户上次更新时间区间。
         :rtype: str
         """
         return self._LastUpdateTime
@@ -8262,7 +8262,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """名称匹配搜索，匹配范围包括：用户名称、用户ID。
+        r"""名称匹配搜索，匹配范围包括：用户名称、用户ID。
         :rtype: str
         """
         return self._Keyword

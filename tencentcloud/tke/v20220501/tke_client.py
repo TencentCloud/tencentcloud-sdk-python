@@ -27,7 +27,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateHealthCheckPolicy(self, request):
-        """创建健康检测策略
+        r"""创建健康检测策略
 
         :param request: Request instance for CreateHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.CreateHealthCheckPolicyRequest`
@@ -50,7 +50,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateNodePool(self, request):
-        """创建 TKE 节点池
+        r"""创建 TKE 节点池
 
         :param request: Request instance for CreateNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.CreateNodePoolRequest`
@@ -73,7 +73,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterMachines(self, request):
-        """删除原生节点池节点
+        r"""删除原生节点池节点
 
         :param request: Request instance for DeleteClusterMachines.
         :type request: :class:`tencentcloud.tke.v20220501.models.DeleteClusterMachinesRequest`
@@ -96,7 +96,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteHealthCheckPolicy(self, request):
-        """删除健康检测策略
+        r"""删除健康检测策略
 
         :param request: Request instance for DeleteHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.DeleteHealthCheckPolicyRequest`
@@ -119,7 +119,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteNodePool(self, request):
-        """删除 TKE 节点池
+        r"""删除 TKE 节点池
 
         :param request: Request instance for DeleteNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.DeleteNodePoolRequest`
@@ -142,7 +142,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """查询集群下节点实例信息
+        r"""查询集群下节点实例信息
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeClusterInstancesRequest`
@@ -165,7 +165,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckPolicies(self, request):
-        """查询健康检测策略
+        r"""查询健康检测策略
 
         :param request: Request instance for DescribeHealthCheckPolicies.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPoliciesRequest`
@@ -188,7 +188,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckPolicyBindings(self, request):
-        """查询健康检测策略绑定关系
+        r"""查询健康检测策略绑定关系
 
         :param request: Request instance for DescribeHealthCheckPolicyBindings.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPolicyBindingsRequest`
@@ -211,7 +211,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckTemplate(self, request):
-        """查询健康检测策略模板
+        r"""查询健康检测策略模板
 
         :param request: Request instance for DescribeHealthCheckTemplate.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckTemplateRequest`
@@ -234,7 +234,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeNodePools(self, request):
-        """查询 TKE 节点池列表
+        r"""查询 TKE 节点池列表
 
         :param request: Request instance for DescribeNodePools.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeNodePoolsRequest`
@@ -257,7 +257,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyHealthCheckPolicy(self, request):
-        """修改健康检测策略
+        r"""修改健康检测策略
 
         :param request: Request instance for ModifyHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.ModifyHealthCheckPolicyRequest`
@@ -280,7 +280,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyNodePool(self, request):
-        """更新 TKE 节点池
+        r"""更新 TKE 节点池
 
         :param request: Request instance for ModifyNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.ModifyNodePoolRequest`
@@ -303,7 +303,7 @@ class TkeClient(AbstractClient):
 
 
     def RebootMachines(self, request):
-        """重启原生节点实例
+        r"""重启原生节点实例
 
         :param request: Request instance for RebootMachines.
         :type request: :class:`tencentcloud.tke.v20220501.models.RebootMachinesRequest`
@@ -326,7 +326,7 @@ class TkeClient(AbstractClient):
 
 
     def SetMachineLogin(self, request):
-        """设置是否开启节点登录
+        r"""设置是否开启节点登录
 
         :param request: Request instance for SetMachineLogin.
         :type request: :class:`tencentcloud.tke.v20220501.models.SetMachineLoginRequest`
@@ -349,7 +349,7 @@ class TkeClient(AbstractClient):
 
 
     def StartMachines(self, request):
-        """本接口 (StartMachines) 用于启动一个或多个原生节点实例。
+        r"""本接口 (StartMachines) 用于启动一个或多个原生节点实例。
 
         只有状态为 Stopped 的实例才可以进行此操作。
         接口调用成功后，等待一分钟左右，实例会进入 Running 状态。
@@ -377,7 +377,7 @@ class TkeClient(AbstractClient):
 
 
     def StopMachines(self, request):
-        """本接口 (StopMachines) 用于关闭一个或多个原生节点实例。
+        r"""本接口 (StopMachines) 用于关闭一个或多个原生节点实例。
 
         只有状态为 Running 的实例才可以进行此操作。
         接口调用成功时，实例会进入 Stopping 状态；关闭实例成功时，实例会进入 Stopped 状态。

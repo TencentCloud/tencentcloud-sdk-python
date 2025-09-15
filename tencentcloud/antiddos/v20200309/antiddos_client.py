@@ -27,7 +27,7 @@ class AntiddosClient(AbstractClient):
 
 
     def AssociateDDoSEipAddress(self, request):
-        """本接口 (AssociateDDoSEipAddress) 用于将高防弹性公网IP绑定到实例或弹性网卡的指定内网 IP 上。
+        r"""本接口 (AssociateDDoSEipAddress) 用于将高防弹性公网IP绑定到实例或弹性网卡的指定内网 IP 上。
 
         :param request: Request instance for AssociateDDoSEipAddress.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipAddressRequest`
@@ -50,7 +50,7 @@ class AntiddosClient(AbstractClient):
 
 
     def AssociateDDoSEipLoadBalancer(self, request):
-        """本接口 (AssociateDDoSEipLoadBalancer) 用于将高防弹性公网IP绑定到负载均衡指定内网 IP 上。
+        r"""本接口 (AssociateDDoSEipLoadBalancer) 用于将高防弹性公网IP绑定到负载均衡指定内网 IP 上。
 
         :param request: Request instance for AssociateDDoSEipLoadBalancer.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerRequest`
@@ -73,7 +73,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateBlackWhiteIpList(self, request):
-        """添加DDoS防护的IP黑白名单
+        r"""添加DDoS防护的IP黑白名单
 
         :param request: Request instance for CreateBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBlackWhiteIpListRequest`
@@ -96,7 +96,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateBoundIP(self, request):
-        """绑定IP到高防包实例，支持独享包、共享包（新版）；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
+        r"""绑定IP到高防包实例，支持独享包、共享包（新版）；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
 
         :param request: Request instance for CreateBoundIP.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBoundIPRequest`
@@ -119,7 +119,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCCPrecisionPolicy(self, request):
-        """新增CC精准防护策略
+        r"""新增CC精准防护策略
 
         :param request: Request instance for CreateCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCPrecisionPolicyRequest`
@@ -142,7 +142,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCCReqLimitPolicy(self, request):
-        """新增CC频率限制策略
+        r"""新增CC频率限制策略
 
         :param request: Request instance for CreateCCReqLimitPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCReqLimitPolicyRequest`
@@ -165,7 +165,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCcBlackWhiteIpList(self, request):
-        """新建CC四层黑白名单
+        r"""新建CC四层黑白名单
 
         :param request: Request instance for CreateCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcBlackWhiteIpListRequest`
@@ -188,7 +188,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCcGeoIPBlockConfig(self, request):
-        """新建CC防护的地域封禁配置
+        r"""新建CC防护的地域封禁配置
 
         :param request: Request instance for CreateCcGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcGeoIPBlockConfigRequest`
@@ -211,7 +211,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSAI(self, request):
-        """设置DDoS防护的AI防护开关
+        r"""设置DDoS防护的AI防护开关
 
         :param request: Request instance for CreateDDoSAI.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSAIRequest`
@@ -234,7 +234,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSBlackWhiteIpList(self, request):
-        """添加DDoS防护的IP网段黑白名单
+        r"""添加DDoS防护的IP网段黑白名单
 
         :param request: Request instance for CreateDDoSBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSBlackWhiteIpListRequest`
@@ -257,7 +257,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSConnectLimit(self, request):
-        """配置DDoS连接抑制选项
+        r"""配置DDoS连接抑制选项
 
         :param request: Request instance for CreateDDoSConnectLimit.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSConnectLimitRequest`
@@ -280,7 +280,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSGeoIPBlockConfig(self, request):
-        """添加DDoS防护的区域封禁配置
+        r"""添加DDoS防护的区域封禁配置
 
         :param request: Request instance for CreateDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSGeoIPBlockConfigRequest`
@@ -303,7 +303,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSSpeedLimitConfig(self, request):
-        """添加DDoS防护的访问限速配置
+        r"""添加DDoS防护的访问限速配置
 
         :param request: Request instance for CreateDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSSpeedLimitConfigRequest`
@@ -326,7 +326,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDefaultAlarmThreshold(self, request):
-        """设置单IP默认告警阈值配置
+        r"""设置单IP默认告警阈值配置
 
         :param request: Request instance for CreateDefaultAlarmThreshold.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDefaultAlarmThresholdRequest`
@@ -349,7 +349,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateIPAlarmThresholdConfig(self, request):
-        """设置单IP告警阈值配置
+        r"""设置单IP告警阈值配置
 
         :param request: Request instance for CreateIPAlarmThresholdConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateIPAlarmThresholdConfigRequest`
@@ -372,7 +372,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateL7RuleCerts(self, request):
-        """批量配置L7转发规则的证书供SSL测调用
+        r"""批量配置L7转发规则的证书供SSL测调用
 
         :param request: Request instance for CreateL7RuleCerts.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsRequest`
@@ -395,7 +395,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateNewL7Rules(self, request):
-        """添加7层转发规则
+        r"""添加7层转发规则
 
         :param request: Request instance for CreateNewL7Rules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateNewL7RulesRequest`
@@ -418,7 +418,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreatePacketFilterConfig(self, request):
-        """添加DDoS防护的特征过滤规则
+        r"""添加DDoS防护的特征过滤规则
 
         :param request: Request instance for CreatePacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreatePacketFilterConfigRequest`
@@ -441,7 +441,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreatePortAclConfig(self, request):
-        """添加DDoS防护的端口acl策略
+        r"""添加DDoS防护的端口acl策略
 
         :param request: Request instance for CreatePortAclConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreatePortAclConfigRequest`
@@ -464,7 +464,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreatePortAclConfigList(self, request):
-        """批量添加DDoS防护的端口acl策略
+        r"""批量添加DDoS防护的端口acl策略
 
         :param request: Request instance for CreatePortAclConfigList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreatePortAclConfigListRequest`
@@ -487,7 +487,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateProtocolBlockConfig(self, request):
-        """设置DDoS防护的协议封禁配置
+        r"""设置DDoS防护的协议封禁配置
 
         :param request: Request instance for CreateProtocolBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateProtocolBlockConfigRequest`
@@ -510,7 +510,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateSchedulingDomain(self, request):
-        """创建一个域名，可用于在封堵时调度切换IP
+        r"""创建一个域名，可用于在封堵时调度切换IP
 
         :param request: Request instance for CreateSchedulingDomain.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateSchedulingDomainRequest`
@@ -533,7 +533,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateWaterPrintConfig(self, request):
-        """添加DDoS防护的水印防护配置
+        r"""添加DDoS防护的水印防护配置
 
         :param request: Request instance for CreateWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateWaterPrintConfigRequest`
@@ -556,7 +556,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateWaterPrintKey(self, request):
-        """添加DDoS防护的水印防护密钥
+        r"""添加DDoS防护的水印防护密钥
 
         :param request: Request instance for CreateWaterPrintKey.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateWaterPrintKeyRequest`
@@ -579,7 +579,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCLevelPolicy(self, request):
-        """删除CC分级策略
+        r"""删除CC分级策略
 
         :param request: Request instance for DeleteCCLevelPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCLevelPolicyRequest`
@@ -602,7 +602,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCPrecisionPolicy(self, request):
-        """删除CC精准防护策略
+        r"""删除CC精准防护策略
 
         :param request: Request instance for DeleteCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCPrecisionPolicyRequest`
@@ -625,7 +625,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCRequestLimitPolicy(self, request):
-        """删除CC频率限制策略
+        r"""删除CC频率限制策略
 
         :param request: Request instance for DeleteCCRequestLimitPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCRequestLimitPolicyRequest`
@@ -648,7 +648,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCThresholdPolicy(self, request):
-        """删除CC清洗阈值策略
+        r"""删除CC清洗阈值策略
 
         :param request: Request instance for DeleteCCThresholdPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCThresholdPolicyRequest`
@@ -671,7 +671,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCcBlackWhiteIpList(self, request):
-        """删除CC四层黑白名单
+        r"""删除CC四层黑白名单
 
         :param request: Request instance for DeleteCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcBlackWhiteIpListRequest`
@@ -694,7 +694,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCcGeoIPBlockConfig(self, request):
-        """删除CC防护的区域封禁配置
+        r"""删除CC防护的区域封禁配置
 
         :param request: Request instance for DeleteCcGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcGeoIPBlockConfigRequest`
@@ -717,7 +717,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteDDoSBlackWhiteIpList(self, request):
-        """删除DDoS防护的IP网段黑白名单
+        r"""删除DDoS防护的IP网段黑白名单
 
         :param request: Request instance for DeleteDDoSBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteDDoSBlackWhiteIpListRequest`
@@ -740,7 +740,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteDDoSGeoIPBlockConfig(self, request):
-        """删除DDoS防护的区域封禁配置
+        r"""删除DDoS防护的区域封禁配置
 
         :param request: Request instance for DeleteDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteDDoSGeoIPBlockConfigRequest`
@@ -763,7 +763,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteDDoSSpeedLimitConfig(self, request):
-        """删除DDoS防护的访问限速配置
+        r"""删除DDoS防护的访问限速配置
 
         :param request: Request instance for DeleteDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteDDoSSpeedLimitConfigRequest`
@@ -786,7 +786,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeletePacketFilterConfig(self, request):
-        """删除DDoS防护的特征过滤规则
+        r"""删除DDoS防护的特征过滤规则
 
         :param request: Request instance for DeletePacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeletePacketFilterConfigRequest`
@@ -809,7 +809,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeletePortAclConfig(self, request):
-        """删除DDoS防护的端口acl策略
+        r"""删除DDoS防护的端口acl策略
 
         :param request: Request instance for DeletePortAclConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeletePortAclConfigRequest`
@@ -832,7 +832,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteWaterPrintConfig(self, request):
-        """删除DDoS防护的水印防护配置
+        r"""删除DDoS防护的水印防护配置
 
         :param request: Request instance for DeleteWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteWaterPrintConfigRequest`
@@ -855,7 +855,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteWaterPrintKey(self, request):
-        """删除DDoS防护的水印防护密钥
+        r"""删除DDoS防护的水印防护密钥
 
         :param request: Request instance for DeleteWaterPrintKey.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteWaterPrintKeyRequest`
@@ -878,7 +878,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBGPIPL7Rules(self, request):
-        """高防IP获取7层规则
+        r"""高防IP获取7层规则
 
         :param request: Request instance for DescribeBGPIPL7Rules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBGPIPL7RulesRequest`
@@ -901,7 +901,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBasicDeviceStatus(self, request):
-        """获取基础防护攻击状态
+        r"""获取基础防护攻击状态
 
         :param request: Request instance for DescribeBasicDeviceStatus.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBasicDeviceStatusRequest`
@@ -924,7 +924,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBgpBizTrend(self, request):
-        """获取高防包流量折线图
+        r"""获取高防包流量折线图
 
         :param request: Request instance for DescribeBgpBizTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendRequest`
@@ -947,7 +947,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBizHttpStatus(self, request):
-        """获取业务流量状态码统计列表
+        r"""获取业务流量状态码统计列表
 
         :param request: Request instance for DescribeBizHttpStatus.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizHttpStatusRequest`
@@ -970,7 +970,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBizMonitorTrend(self, request):
-        """获取高防IP业务监控流量曲线
+        r"""获取高防IP业务监控流量曲线
 
         :param request: Request instance for DescribeBizMonitorTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizMonitorTrendRequest`
@@ -993,7 +993,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBizTrend(self, request):
-        """获取业务流量曲线
+        r"""获取业务流量曲线
 
         :param request: Request instance for DescribeBizTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizTrendRequest`
@@ -1016,7 +1016,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCLevelList(self, request):
-        """获取边界防护CC防护等级列表
+        r"""获取边界防护CC防护等级列表
 
         :param request: Request instance for DescribeCCLevelList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelListRequest`
@@ -1039,7 +1039,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCLevelPolicy(self, request):
-        """获取CC分级策略
+        r"""获取CC分级策略
 
         :param request: Request instance for DescribeCCLevelPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelPolicyRequest`
@@ -1062,7 +1062,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCPrecisionPlyList(self, request):
-        """获取CC精准防护列表
+        r"""获取CC精准防护列表
 
         :param request: Request instance for DescribeCCPrecisionPlyList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCPrecisionPlyListRequest`
@@ -1085,7 +1085,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCReqLimitPolicyList(self, request):
-        """获取CC频率限制策略列表
+        r"""获取CC频率限制策略列表
 
         :param request: Request instance for DescribeCCReqLimitPolicyList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCReqLimitPolicyListRequest`
@@ -1108,7 +1108,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCThresholdList(self, request):
-        """获取CC清洗阈值列表
+        r"""获取CC清洗阈值列表
 
         :param request: Request instance for DescribeCCThresholdList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCThresholdListRequest`
@@ -1131,7 +1131,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCTrend(self, request):
-        """获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
+        r"""获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
 
         :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendRequest`
@@ -1154,7 +1154,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCcBlackWhiteIpList(self, request):
-        """获取CC四层黑白名单列表
+        r"""获取CC四层黑白名单列表
 
         :param request: Request instance for DescribeCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcBlackWhiteIpListRequest`
@@ -1177,7 +1177,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCcGeoIPBlockConfigList(self, request):
-        """获取CC防护的区域封禁配置列表
+        r"""获取CC防护的区域封禁配置列表
 
         :param request: Request instance for DescribeCcGeoIPBlockConfigList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcGeoIPBlockConfigListRequest`
@@ -1200,7 +1200,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDDoSBlackWhiteIpList(self, request):
-        """获取DDoS防护的IP网段黑白名单
+        r"""获取DDoS防护的IP网段黑白名单
 
         :param request: Request instance for DescribeDDoSBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSBlackWhiteIpListRequest`
@@ -1223,7 +1223,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDDoSConnectLimitList(self, request):
-        """获取DDoS连接抑制配置列表
+        r"""获取DDoS连接抑制配置列表
 
         :param request: Request instance for DescribeDDoSConnectLimitList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSConnectLimitListRequest`
@@ -1246,7 +1246,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDDoSTrend(self, request):
-        """获取DDoS攻击流量带宽和攻击包速率数据
+        r"""获取DDoS攻击流量带宽和攻击包速率数据
 
         :param request: Request instance for DescribeDDoSTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSTrendRequest`
@@ -1269,7 +1269,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDefaultAlarmThreshold(self, request):
-        """获取单IP默认告警阈值配置
+        r"""获取单IP默认告警阈值配置
 
         :param request: Request instance for DescribeDefaultAlarmThreshold.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDefaultAlarmThresholdRequest`
@@ -1292,7 +1292,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeIpBlockList(self, request):
-        """获取IP封堵列表
+        r"""获取IP封堵列表
 
         :param request: Request instance for DescribeIpBlockList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListRequest`
@@ -1315,7 +1315,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeL7RulesBySSLCertId(self, request):
-        """查询与证书ID对于域名匹配的七层规则
+        r"""查询与证书ID对于域名匹配的七层规则
 
         :param request: Request instance for DescribeL7RulesBySSLCertId.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdRequest`
@@ -1338,7 +1338,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBGPIPInstances(self, request):
-        """获取高防IP资产实例列表
+        r"""获取高防IP资产实例列表
 
         :param request: Request instance for DescribeListBGPIPInstances.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBGPIPInstancesRequest`
@@ -1361,7 +1361,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBGPInstances(self, request):
-        """获取高防包资产实例列表
+        r"""获取高防包资产实例列表
 
         :param request: Request instance for DescribeListBGPInstances.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBGPInstancesRequest`
@@ -1384,7 +1384,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBlackWhiteIpList(self, request):
-        """获取DDoS防护的IP黑白名单列表
+        r"""获取DDoS防护的IP黑白名单列表
 
         :param request: Request instance for DescribeListBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBlackWhiteIpListRequest`
@@ -1407,7 +1407,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSAI(self, request):
-        """获取DDoS防护的AI防护开关列表
+        r"""获取DDoS防护的AI防护开关列表
 
         :param request: Request instance for DescribeListDDoSAI.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSAIRequest`
@@ -1430,7 +1430,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSGeoIPBlockConfig(self, request):
-        """获取DDoS防护的区域封禁配置列表
+        r"""获取DDoS防护的区域封禁配置列表
 
         :param request: Request instance for DescribeListDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSGeoIPBlockConfigRequest`
@@ -1453,7 +1453,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSSpeedLimitConfig(self, request):
-        """获取DDoS防护的访问限速配置列表
+        r"""获取DDoS防护的访问限速配置列表
 
         :param request: Request instance for DescribeListDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSSpeedLimitConfigRequest`
@@ -1476,7 +1476,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListIPAlarmConfig(self, request):
-        """获取单IP告警阈值配置列表
+        r"""获取单IP告警阈值配置列表
 
         :param request: Request instance for DescribeListIPAlarmConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListIPAlarmConfigRequest`
@@ -1499,7 +1499,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListListener(self, request):
-        """获取转发监听器列表
+        r"""获取转发监听器列表
 
         :param request: Request instance for DescribeListListener.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListListenerRequest`
@@ -1522,7 +1522,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListPacketFilterConfig(self, request):
-        """获取DDoS防护的特征过滤规则列表
+        r"""获取DDoS防护的特征过滤规则列表
 
         :param request: Request instance for DescribeListPacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListPacketFilterConfigRequest`
@@ -1545,7 +1545,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListPortAclList(self, request):
-        """获取DDoS防护的端口acl策略列表
+        r"""获取DDoS防护的端口acl策略列表
 
         :param request: Request instance for DescribeListPortAclList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListPortAclListRequest`
@@ -1568,7 +1568,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListProtocolBlockConfig(self, request):
-        """获取DDoS防护的协议封禁配置列表
+        r"""获取DDoS防护的协议封禁配置列表
 
         :param request: Request instance for DescribeListProtocolBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtocolBlockConfigRequest`
@@ -1591,7 +1591,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListSchedulingDomain(self, request):
-        """获取智能调度域名列表
+        r"""获取智能调度域名列表
 
         :param request: Request instance for DescribeListSchedulingDomain.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListSchedulingDomainRequest`
@@ -1614,7 +1614,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListWaterPrintConfig(self, request):
-        """获取DDoS防护的水印防护配置列表
+        r"""获取DDoS防护的水印防护配置列表
 
         :param request: Request instance for DescribeListWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListWaterPrintConfigRequest`
@@ -1637,7 +1637,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeNewL7Rules(self, request):
-        """高防IP获取7层规则
+        r"""高防IP获取7层规则
 
         :param request: Request instance for DescribeNewL7Rules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesRequest`
@@ -1660,7 +1660,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeNewL7RulesErrHealth(self, request):
-        """获取L7转发规则健康检查异常结果列表
+        r"""获取L7转发规则健康检查异常结果列表
 
         :param request: Request instance for DescribeNewL7RulesErrHealth.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesErrHealthRequest`
@@ -1683,7 +1683,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewAttackTrend(self, request):
-        """拉取防护概览攻击趋势
+        r"""拉取防护概览攻击趋势
 
         :param request: Request instance for DescribeOverviewAttackTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewAttackTrendRequest`
@@ -1706,7 +1706,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewCCTrend(self, request):
-        """获取防护概览总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
+        r"""获取防护概览总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
 
         :param request: Request instance for DescribeOverviewCCTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewCCTrendRequest`
@@ -1729,7 +1729,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewDDoSEventList(self, request):
-        """获取防护概览的ddos攻击事件
+        r"""获取防护概览的ddos攻击事件
 
         :param request: Request instance for DescribeOverviewDDoSEventList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListRequest`
@@ -1752,7 +1752,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewDDoSTrend(self, request):
-        """获取防护概览DDoS攻击流量带宽和攻击包速率数据
+        r"""获取防护概览DDoS攻击流量带宽和攻击包速率数据
 
         :param request: Request instance for DescribeOverviewDDoSTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSTrendRequest`
@@ -1775,7 +1775,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewIndex(self, request):
-        """拉取防护概览指标
+        r"""拉取防护概览指标
 
         :param request: Request instance for DescribeOverviewIndex.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewIndexRequest`
@@ -1798,7 +1798,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribePendingRiskInfo(self, request):
-        """查询账号维度待处理风险信息，包括是否为付费用户，查询攻击中、封堵中、过期资源数量等
+        r"""查询账号维度待处理风险信息，包括是否为付费用户，查询攻击中、封堵中、过期资源数量等
 
         :param request: Request instance for DescribePendingRiskInfo.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribePendingRiskInfoRequest`
@@ -1821,7 +1821,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DisassociateDDoSEipAddress(self, request):
-        """本接口 (DisassociateDDoSEipAddress) 用于解绑高防弹性公网IP。
+        r"""本接口 (DisassociateDDoSEipAddress) 用于解绑高防弹性公网IP。
 
         :param request: Request instance for DisassociateDDoSEipAddress.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DisassociateDDoSEipAddressRequest`
@@ -1844,7 +1844,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCCLevelPolicy(self, request):
-        """修改CC防护等级
+        r"""修改CC防护等级
 
         :param request: Request instance for ModifyCCLevelPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCLevelPolicyRequest`
@@ -1867,7 +1867,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCCPrecisionPolicy(self, request):
-        """修改CC精准防护策略
+        r"""修改CC精准防护策略
 
         :param request: Request instance for ModifyCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCPrecisionPolicyRequest`
@@ -1890,7 +1890,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCCReqLimitPolicy(self, request):
-        """修改CC频率限制策略
+        r"""修改CC频率限制策略
 
         :param request: Request instance for ModifyCCReqLimitPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCReqLimitPolicyRequest`
@@ -1913,7 +1913,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCCThresholdPolicy(self, request):
-        """修改CC清洗阈值
+        r"""修改CC清洗阈值
 
         :param request: Request instance for ModifyCCThresholdPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCThresholdPolicyRequest`
@@ -1936,7 +1936,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCcBlackWhiteIpList(self, request):
-        """修改CC四层黑白名单
+        r"""修改CC四层黑白名单
 
         :param request: Request instance for ModifyCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCcBlackWhiteIpListRequest`
@@ -1959,7 +1959,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSBlackWhiteIpList(self, request):
-        """修改DDoS黑白名单列表
+        r"""修改DDoS黑白名单列表
 
         :param request: Request instance for ModifyDDoSBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSBlackWhiteIpListRequest`
@@ -1982,7 +1982,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSGeoIPBlockConfig(self, request):
-        """修改DDoS防护的区域封禁配置
+        r"""修改DDoS防护的区域封禁配置
 
         :param request: Request instance for ModifyDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSGeoIPBlockConfigRequest`
@@ -2005,7 +2005,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSLevel(self, request):
-        """读取或修改DDoS的防护等级
+        r"""读取或修改DDoS的防护等级
 
         :param request: Request instance for ModifyDDoSLevel.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSLevelRequest`
@@ -2028,7 +2028,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSSpeedLimitConfig(self, request):
-        """修改DDoS防护的访问限速配置
+        r"""修改DDoS防护的访问限速配置
 
         :param request: Request instance for ModifyDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSSpeedLimitConfigRequest`
@@ -2051,7 +2051,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSThreshold(self, request):
-        """修改DDoS清洗阈值
+        r"""修改DDoS清洗阈值
 
         :param request: Request instance for ModifyDDoSThreshold.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSThresholdRequest`
@@ -2074,7 +2074,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDomainUsrName(self, request):
-        """修改智能解析域名名称
+        r"""修改智能解析域名名称
 
         :param request: Request instance for ModifyDomainUsrName.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDomainUsrNameRequest`
@@ -2097,7 +2097,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyNewDomainRules(self, request):
-        """修改7层转发规则
+        r"""修改7层转发规则
 
         :param request: Request instance for ModifyNewDomainRules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyNewDomainRulesRequest`
@@ -2120,7 +2120,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyPacketFilterConfig(self, request):
-        """修改DDoS防护的特征过滤规则
+        r"""修改DDoS防护的特征过滤规则
 
         :param request: Request instance for ModifyPacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyPacketFilterConfigRequest`
@@ -2143,7 +2143,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyPortAclConfig(self, request):
-        """修改DDoS防护的端口acl策略
+        r"""修改DDoS防护的端口acl策略
 
         :param request: Request instance for ModifyPortAclConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyPortAclConfigRequest`
@@ -2166,7 +2166,7 @@ class AntiddosClient(AbstractClient):
 
 
     def SwitchWaterPrintConfig(self, request):
-        """开启或关闭DDoS防护的水印防护配置，此功能为付费增值服务，有需求请联系售后
+        r"""开启或关闭DDoS防护的水印防护配置，此功能为付费增值服务，有需求请联系售后
 
         :param request: Request instance for SwitchWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.SwitchWaterPrintConfigRequest`

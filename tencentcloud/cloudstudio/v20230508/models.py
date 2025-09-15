@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateWorkspaceRequest(AbstractModel):
-    """CreateWorkspace请求参数结构体
+    r"""CreateWorkspace请求参数结构体
 
     """
 
@@ -68,7 +68,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """工作空间名称, 长度限制 2~64
+        r"""工作空间名称, 长度限制 2~64
         :rtype: str
         """
         return self._Name
@@ -79,7 +79,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """工作空间描述, 长度限制 0~255
+        r"""工作空间描述, 长度限制 0~255
         :rtype: str
         """
         return self._Description
@@ -90,7 +90,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Specs(self):
-        """工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+        r"""工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
         :rtype: str
         """
         return self._Specs
@@ -101,7 +101,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Image(self):
-        """工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
+        r"""工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
         :rtype: str
         """
         return self._Image
@@ -112,7 +112,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Repository(self):
-        """Git 仓库. 工作空间启动时会自动克隆该仓库
+        r"""Git 仓库. 工作空间启动时会自动克隆该仓库
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.GitRepository`
         """
         return self._Repository
@@ -123,7 +123,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Envs(self):
-        """环境变量. 会被注入到工作空间中
+        r"""环境变量. 会被注入到工作空间中
         :rtype: list of Env
         """
         return self._Envs
@@ -134,7 +134,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Extensions(self):
-        """预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
+        r"""预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
         :rtype: list of str
         """
         return self._Extensions
@@ -145,7 +145,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        r"""工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
         return self._Lifecycle
@@ -156,7 +156,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantAppId(self):
-        """应用名称
+        r"""应用名称
         :rtype: int
         """
         return self._TenantAppId
@@ -167,7 +167,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantUin(self):
-        """用户UIN
+        r"""用户UIN
         :rtype: str
         """
         return self._TenantUin
@@ -178,7 +178,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantUniqVpcId(self):
-        """VPCID
+        r"""VPCID
         :rtype: str
         """
         return self._TenantUniqVpcId
@@ -189,7 +189,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantSubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._TenantSubnetId
@@ -200,7 +200,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -244,7 +244,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
 
 class CreateWorkspaceResponse(AbstractModel):
-    """CreateWorkspace返回参数结构体
+    r"""CreateWorkspace返回参数结构体
 
     """
 
@@ -263,7 +263,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey
+        r"""工作空间 SpaceKey
         :rtype: str
         """
         return self._SpaceKey
@@ -274,7 +274,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
     @property
     def Name(self):
-        """工作空间名称
+        r"""工作空间名称
         :rtype: str
         """
         return self._Name
@@ -285,7 +285,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -302,7 +302,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
 
 class CreateWorkspaceTokenRequest(AbstractModel):
-    """CreateWorkspaceToken请求参数结构体
+    r"""CreateWorkspaceToken请求参数结构体
 
     """
 
@@ -321,7 +321,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey
+        r"""工作空间 SpaceKey
         :rtype: str
         """
         return self._SpaceKey
@@ -332,7 +332,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def TokenExpiredLimitSec(self):
-        """token过期时间，单位是秒，默认 3600
+        r"""token过期时间，单位是秒，默认 3600
         :rtype: int
         """
         return self._TokenExpiredLimitSec
@@ -343,7 +343,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def Policies(self):
-        """token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
+        r"""token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
         :rtype: list of str
         """
         return self._Policies
@@ -368,7 +368,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
 
 class CreateWorkspaceTokenResponse(AbstractModel):
-    """CreateWorkspaceToken返回参数结构体
+    r"""CreateWorkspaceToken返回参数结构体
 
     """
 
@@ -387,7 +387,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """访问工作空间临时凭证
+        r"""访问工作空间临时凭证
         :rtype: str
         """
         return self._Token
@@ -398,7 +398,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """token 过期时间
+        r"""token 过期时间
         :rtype: str
         """
         return self._ExpiredTime
@@ -409,7 +409,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -426,7 +426,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
 
 class DescribeConfigRequest(AbstractModel):
-    """DescribeConfig请求参数结构体
+    r"""DescribeConfig请求参数结构体
 
     """
 
@@ -439,7 +439,7 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        """配置名称
+        r"""配置名称
         :rtype: str
         """
         return self._Name
@@ -462,7 +462,7 @@ class DescribeConfigRequest(AbstractModel):
 
 
 class DescribeConfigResponse(AbstractModel):
-    """DescribeConfig返回参数结构体
+    r"""DescribeConfig返回参数结构体
 
     """
 
@@ -478,7 +478,7 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Data(self):
-        """配置值
+        r"""配置值
         :rtype: str
         """
         return self._Data
@@ -489,7 +489,7 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -505,13 +505,13 @@ class DescribeConfigResponse(AbstractModel):
 
 
 class DescribeImagesRequest(AbstractModel):
-    """DescribeImages请求参数结构体
+    r"""DescribeImages请求参数结构体
 
     """
 
 
 class DescribeImagesResponse(AbstractModel):
-    """DescribeImages返回参数结构体
+    r"""DescribeImages返回参数结构体
 
     """
 
@@ -527,7 +527,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def Images(self):
-        """镜像列表
+        r"""镜像列表
         :rtype: list of Image
         """
         return self._Images
@@ -538,7 +538,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -559,7 +559,7 @@ class DescribeImagesResponse(AbstractModel):
 
 
 class DescribeWorkspacesRequest(AbstractModel):
-    """DescribeWorkspaces请求参数结构体
+    r"""DescribeWorkspaces请求参数结构体
 
     """
 
@@ -572,7 +572,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """工作空间名称过滤条件
+        r"""工作空间名称过滤条件
         :rtype: str
         """
         return self._Name
@@ -595,7 +595,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
 
 class DescribeWorkspacesResponse(AbstractModel):
-    """DescribeWorkspaces返回参数结构体
+    r"""DescribeWorkspaces返回参数结构体
 
     """
 
@@ -611,7 +611,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """工作空间列表
+        r"""工作空间列表
         :rtype: list of WorkspaceStatusInfo
         """
         return self._Data
@@ -622,7 +622,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -643,7 +643,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
 
 class Env(AbstractModel):
-    """环境变量
+    r"""环境变量
 
     """
 
@@ -659,7 +659,7 @@ class Env(AbstractModel):
 
     @property
     def Name(self):
-        """环境变量 key
+        r"""环境变量 key
         :rtype: str
         """
         return self._Name
@@ -670,7 +670,7 @@ class Env(AbstractModel):
 
     @property
     def Value(self):
-        """环境变量 value
+        r"""环境变量 value
         :rtype: str
         """
         return self._Value
@@ -694,7 +694,7 @@ class Env(AbstractModel):
 
 
 class GitRepository(AbstractModel):
-    """Git 仓库
+    r"""Git 仓库
 
     """
 
@@ -710,7 +710,7 @@ class GitRepository(AbstractModel):
 
     @property
     def Url(self):
-        """Git 仓库地址
+        r"""Git 仓库地址
         :rtype: str
         """
         return self._Url
@@ -721,7 +721,7 @@ class GitRepository(AbstractModel):
 
     @property
     def Branch(self):
-        """Git 仓库分支名或 Tag 名
+        r"""Git 仓库分支名或 Tag 名
         :rtype: str
         """
         return self._Branch
@@ -745,7 +745,7 @@ class GitRepository(AbstractModel):
 
 
 class Image(AbstractModel):
-    """基础镜像
+    r"""基础镜像
 
     """
 
@@ -764,7 +764,7 @@ class Image(AbstractModel):
 
     @property
     def Name(self):
-        """镜像名称
+        r"""镜像名称
         :rtype: str
         """
         return self._Name
@@ -775,7 +775,7 @@ class Image(AbstractModel):
 
     @property
     def Repository(self):
-        """镜像仓库
+        r"""镜像仓库
         :rtype: str
         """
         return self._Repository
@@ -786,7 +786,7 @@ class Image(AbstractModel):
 
     @property
     def Tags(self):
-        """tag 列表
+        r"""tag 列表
         :rtype: list of str
         """
         return self._Tags
@@ -811,7 +811,7 @@ class Image(AbstractModel):
 
 
 class LifeCycle(AbstractModel):
-    """工作空间生命周期自动执行脚本
+    r"""工作空间生命周期自动执行脚本
 
     """
 
@@ -830,7 +830,7 @@ class LifeCycle(AbstractModel):
 
     @property
     def Init(self):
-        """工作空间首次初始化时执行
+        r"""工作空间首次初始化时执行
         :rtype: list of LifeCycleCommand
         """
         return self._Init
@@ -841,7 +841,7 @@ class LifeCycle(AbstractModel):
 
     @property
     def Start(self):
-        """每次工作空间启动时执行
+        r"""每次工作空间启动时执行
         :rtype: list of LifeCycleCommand
         """
         return self._Start
@@ -852,7 +852,7 @@ class LifeCycle(AbstractModel):
 
     @property
     def Destroy(self):
-        """每次工作空间关闭时执行
+        r"""每次工作空间关闭时执行
         :rtype: list of LifeCycleCommand
         """
         return self._Destroy
@@ -892,7 +892,7 @@ class LifeCycle(AbstractModel):
 
 
 class LifeCycleCommand(AbstractModel):
-    """工作空间生命周期执行指令
+    r"""工作空间生命周期执行指令
 
     """
 
@@ -908,7 +908,7 @@ class LifeCycleCommand(AbstractModel):
 
     @property
     def Name(self):
-        """指令描述
+        r"""指令描述
         :rtype: str
         """
         return self._Name
@@ -919,7 +919,7 @@ class LifeCycleCommand(AbstractModel):
 
     @property
     def Command(self):
-        """具体命令
+        r"""具体命令
         :rtype: str
         """
         return self._Command
@@ -943,7 +943,7 @@ class LifeCycleCommand(AbstractModel):
 
 
 class ModifyWorkspaceRequest(AbstractModel):
-    """ModifyWorkspace请求参数结构体
+    r"""ModifyWorkspace请求参数结构体
 
     """
 
@@ -974,7 +974,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey. 更新该工作空间的属性
+        r"""工作空间 SpaceKey. 更新该工作空间的属性
         :rtype: str
         """
         return self._SpaceKey
@@ -985,7 +985,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """工作空间名称
+        r"""工作空间名称
         :rtype: str
         """
         return self._Name
@@ -996,7 +996,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """工作空间描述
+        r"""工作空间描述
         :rtype: str
         """
         return self._Description
@@ -1007,7 +1007,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Specs(self):
-        """工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+        r"""工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
         :rtype: str
         """
         return self._Specs
@@ -1018,7 +1018,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Envs(self):
-        """环境变量. 会被注入到工作空间中
+        r"""环境变量. 会被注入到工作空间中
         :rtype: list of Env
         """
         return self._Envs
@@ -1029,7 +1029,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Extensions(self):
-        """预装插件. 工作空间启动时, 会自动安装这些插件 
+        r"""预装插件. 工作空间启动时, 会自动安装这些插件 
         :rtype: list of str
         """
         return self._Extensions
@@ -1040,7 +1040,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        r"""工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
         return self._Lifecycle
@@ -1076,7 +1076,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
 
 class ModifyWorkspaceResponse(AbstractModel):
-    """ModifyWorkspace返回参数结构体
+    r"""ModifyWorkspace返回参数结构体
 
     """
 
@@ -1089,7 +1089,7 @@ class ModifyWorkspaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1104,7 +1104,7 @@ class ModifyWorkspaceResponse(AbstractModel):
 
 
 class RemoveWorkspaceRequest(AbstractModel):
-    """RemoveWorkspace请求参数结构体
+    r"""RemoveWorkspace请求参数结构体
 
     """
 
@@ -1117,7 +1117,7 @@ class RemoveWorkspaceRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey
+        r"""工作空间 SpaceKey
         :rtype: str
         """
         return self._SpaceKey
@@ -1140,7 +1140,7 @@ class RemoveWorkspaceRequest(AbstractModel):
 
 
 class RemoveWorkspaceResponse(AbstractModel):
-    """RemoveWorkspace返回参数结构体
+    r"""RemoveWorkspace返回参数结构体
 
     """
 
@@ -1153,7 +1153,7 @@ class RemoveWorkspaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1168,7 +1168,7 @@ class RemoveWorkspaceResponse(AbstractModel):
 
 
 class RunWorkspaceRequest(AbstractModel):
-    """RunWorkspace请求参数结构体
+    r"""RunWorkspace请求参数结构体
 
     """
 
@@ -1181,7 +1181,7 @@ class RunWorkspaceRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey
+        r"""工作空间 SpaceKey
         :rtype: str
         """
         return self._SpaceKey
@@ -1204,7 +1204,7 @@ class RunWorkspaceRequest(AbstractModel):
 
 
 class RunWorkspaceResponse(AbstractModel):
-    """RunWorkspace返回参数结构体
+    r"""RunWorkspace返回参数结构体
 
     """
 
@@ -1217,7 +1217,7 @@ class RunWorkspaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1232,7 +1232,7 @@ class RunWorkspaceResponse(AbstractModel):
 
 
 class StopWorkspaceRequest(AbstractModel):
-    """StopWorkspace请求参数结构体
+    r"""StopWorkspace请求参数结构体
 
     """
 
@@ -1245,7 +1245,7 @@ class StopWorkspaceRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间 SpaceKey
+        r"""工作空间 SpaceKey
         :rtype: str
         """
         return self._SpaceKey
@@ -1268,7 +1268,7 @@ class StopWorkspaceRequest(AbstractModel):
 
 
 class StopWorkspaceResponse(AbstractModel):
-    """StopWorkspace返回参数结构体
+    r"""StopWorkspace返回参数结构体
 
     """
 
@@ -1281,7 +1281,7 @@ class StopWorkspaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1296,7 +1296,7 @@ class StopWorkspaceResponse(AbstractModel):
 
 
 class WorkspaceStatusInfo(AbstractModel):
-    """获取用户工作空间返回信息
+    r"""获取用户工作空间返回信息
 
     """
 
@@ -1348,7 +1348,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Id(self):
-        """工作空间 ID
+        r"""工作空间 ID
         :rtype: int
         """
         return self._Id
@@ -1359,7 +1359,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Name(self):
-        """工作空间名称
+        r"""工作空间名称
         :rtype: str
         """
         return self._Name
@@ -1370,7 +1370,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def SpaceKey(self):
-        """工作空间标识
+        r"""工作空间标识
         :rtype: str
         """
         return self._SpaceKey
@@ -1381,7 +1381,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Status(self):
-        """工作空间状态
+        r"""工作空间状态
         :rtype: str
         """
         return self._Status
@@ -1392,7 +1392,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        """CPU数量
+        r"""CPU数量
         :rtype: int
         """
         return self._Cpu
@@ -1403,7 +1403,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """内存
+        r"""内存
         :rtype: int
         """
         return self._Memory
@@ -1414,7 +1414,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Icon(self):
-        """工作空间图标
+        r"""工作空间图标
         :rtype: str
         """
         return self._Icon
@@ -1425,7 +1425,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def StatusReason(self):
-        """工作空间状态, 异常原因
+        r"""工作空间状态, 异常原因
         :rtype: str
         """
         return self._StatusReason
@@ -1436,7 +1436,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def Description(self):
-        """工作空间描述
+        r"""工作空间描述
         :rtype: str
         """
         return self._Description
@@ -1447,7 +1447,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def WorkspaceType(self):
-        """工作空间类型
+        r"""工作空间类型
         :rtype: str
         """
         return self._WorkspaceType
@@ -1458,7 +1458,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def VersionControlUrl(self):
-        """Git 仓库 HTTPS 地址
+        r"""Git 仓库 HTTPS 地址
         :rtype: str
         """
         return self._VersionControlUrl
@@ -1469,7 +1469,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def VersionControlRef(self):
-        """Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
+        r"""Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
         :rtype: str
         """
         return self._VersionControlRef
@@ -1480,7 +1480,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def LastOpsDate(self):
-        """最后操作时间
+        r"""最后操作时间
         :rtype: str
         """
         return self._LastOpsDate
@@ -1491,7 +1491,7 @@ class WorkspaceStatusInfo(AbstractModel):
 
     @property
     def CreateDate(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateDate

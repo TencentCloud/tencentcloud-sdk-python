@@ -27,7 +27,7 @@ class FmuClient(AbstractClient):
 
 
     def BeautifyPic(self, request):
-        """用户上传一张人脸图片（最多能处理一张图片中最大的五张人脸信息），精准定位五官，实现美肤、亮肤、祛痘等美颜功能。
+        r"""用户上传一张人脸图片（最多能处理一张图片中最大的五张人脸信息），精准定位五官，实现美肤、亮肤、祛痘等美颜功能。
 
         :param request: Request instance for BeautifyPic.
         :type request: :class:`tencentcloud.fmu.v20191213.models.BeautifyPicRequest`
@@ -50,7 +50,7 @@ class FmuClient(AbstractClient):
 
 
     def CreateModel(self, request):
-        """在使用LUT素材的modelid实现试唇色前，您需要先上传 LUT 格式的cube文件注册唇色ID。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。
+        r"""在使用LUT素材的modelid实现试唇色前，您需要先上传 LUT 格式的cube文件注册唇色ID。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。
 
         注：您也可以直接使用 [试唇色接口](https://cloud.tencent.com/document/product/1172/40706)，通过输入RGBA模型数值的方式指定唇色，更简单易用。
 
@@ -75,7 +75,7 @@ class FmuClient(AbstractClient):
 
 
     def DeleteModel(self, request):
-        """删除已注册的唇色素材。
+        r"""删除已注册的唇色素材。
 
         :param request: Request instance for DeleteModel.
         :type request: :class:`tencentcloud.fmu.v20191213.models.DeleteModelRequest`
@@ -98,7 +98,7 @@ class FmuClient(AbstractClient):
 
 
     def GetModelList(self, request):
-        """查询已注册的唇色素材。
+        r"""查询已注册的唇色素材。
 
         :param request: Request instance for GetModelList.
         :type request: :class:`tencentcloud.fmu.v20191213.models.GetModelListRequest`
@@ -121,7 +121,7 @@ class FmuClient(AbstractClient):
 
 
     def StyleImage(self, request):
-        """上传一张照片，输出滤镜处理后的图片。
+        r"""上传一张照片，输出滤镜处理后的图片。
 
         :param request: Request instance for StyleImage.
         :type request: :class:`tencentcloud.fmu.v20191213.models.StyleImageRequest`
@@ -144,7 +144,7 @@ class FmuClient(AbstractClient):
 
 
     def StyleImagePro(self, request):
-        """上传一张照片，输出滤镜处理后的图片。
+        r"""上传一张照片，输出滤镜处理后的图片。
 
         :param request: Request instance for StyleImagePro.
         :type request: :class:`tencentcloud.fmu.v20191213.models.StyleImageProRequest`
@@ -167,7 +167,7 @@ class FmuClient(AbstractClient):
 
 
     def TryLipstickPic(self, request):
-        """对图片中的人脸嘴唇进行着色，最多支持同时对一张图中的3张人脸进行试唇色。
+        r"""对图片中的人脸嘴唇进行着色，最多支持同时对一张图中的3张人脸进行试唇色。
 
         您可以通过事先注册在腾讯云的唇色素材（LUT文件）改变图片中的人脸唇色，也可以输入RGBA模型数值。
 

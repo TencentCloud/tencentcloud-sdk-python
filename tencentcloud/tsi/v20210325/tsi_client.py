@@ -27,7 +27,7 @@ class TsiClient(AbstractClient):
 
 
     def TongChuanDisplay(self, request):
-        """获取同传结果。
+        r"""获取同传结果。
 
         :param request: Request instance for TongChuanDisplay.
         :type request: :class:`tencentcloud.tsi.v20210325.models.TongChuanDisplayRequest`
@@ -50,7 +50,7 @@ class TsiClient(AbstractClient):
 
 
     def TongChuanRecognize(self, request):
-        """本接口提供上传音频，将音频进行语音识别并翻译成文本的服务。
+        r"""本接口提供上传音频，将音频进行语音识别并翻译成文本的服务。
         该接口需要配合[同传查询结果](https://cloud.tencent.com/document/product/1399/107636)接口使用，建议一个线程进行音频数据上传同时另外一个线程拉取同传结果。
         如果需要同步接口，既上传音频的同时拉取同传结果，可以使用[同传上传音频并查询结果](https://cloud.tencent.com/document/product/1399/107634)接口。
 
@@ -86,7 +86,7 @@ class TsiClient(AbstractClient):
 
 
     def TongChuanSync(self, request):
-        """本接口提供上传音频，将音频进行语音识别并翻译成文本的服务。
+        r"""本接口提供上传音频，将音频进行语音识别并翻译成文本的服务。
 
         -----------
         ### 接口要求

@@ -27,7 +27,7 @@ class GsClient(AbstractClient):
 
 
     def BackUpAndroidInstanceToStorage(self, request):
-        """备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
+        r"""备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for BackUpAndroidInstanceToStorage.
         :type request: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceToStorageRequest`
@@ -50,7 +50,7 @@ class GsClient(AbstractClient):
 
 
     def CleanAndroidInstancesAppData(self, request):
-        """批量清理安卓实例应用数据
+        r"""批量清理安卓实例应用数据
 
         :param request: Request instance for CleanAndroidInstancesAppData.
         :type request: :class:`tencentcloud.gs.v20191118.models.CleanAndroidInstancesAppDataRequest`
@@ -73,7 +73,7 @@ class GsClient(AbstractClient):
 
 
     def ConnectAndroidInstance(self, request):
-        """连接安卓实例
+        r"""连接安卓实例
 
         :param request: Request instance for ConnectAndroidInstance.
         :type request: :class:`tencentcloud.gs.v20191118.models.ConnectAndroidInstanceRequest`
@@ -96,7 +96,7 @@ class GsClient(AbstractClient):
 
 
     def CopyAndroidInstance(self, request):
-        """复制安卓实例：
+        r"""复制安卓实例：
         1. 排除和包含文件只能指定 /data 下的文件，不指定时复制整个 /data 目录
         2. 源实例和目的实例必须在同一区域
         3. 复制时，源实例和目的实例都会停机，复制完后实例会自动启动
@@ -123,7 +123,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidApp(self, request):
-        """创建安卓应用
+        r"""创建安卓应用
 
         :param request: Request instance for CreateAndroidApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppRequest`
@@ -146,7 +146,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidAppVersion(self, request):
-        """创建安卓应用版本
+        r"""创建安卓应用版本
 
         :param request: Request instance for CreateAndroidAppVersion.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppVersionRequest`
@@ -169,7 +169,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceADB(self, request):
-        """创建云手机实例 ADB 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 adb 连接实例。
+        r"""创建云手机实例 ADB 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 adb 连接实例。
 
         :param request: Request instance for CreateAndroidInstanceADB.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceADBRequest`
@@ -192,7 +192,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceImage(self, request):
-        """使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
+        r"""使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
 
         :param request: Request instance for CreateAndroidInstanceImage.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceImageRequest`
@@ -215,7 +215,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceLabel(self, request):
-        """创建安卓实例标签
+        r"""创建安卓实例标签
 
         :param request: Request instance for CreateAndroidInstanceLabel.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceLabelRequest`
@@ -238,7 +238,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceSSH(self, request):
-        """创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
+        r"""创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
 
         :param request: Request instance for CreateAndroidInstanceSSH.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceSSHRequest`
@@ -261,7 +261,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceWebShell(self, request):
-        """创建安卓实例 WebShell 连接信息，返回的 ConnectUrl 可通过浏览器直接打开访问，链接有效期 1 小时，链接打开后可持续使用。
+        r"""创建安卓实例 WebShell 连接信息，返回的 ConnectUrl 可通过浏览器直接打开访问，链接有效期 1 小时，链接打开后可持续使用。
 
         :param request: Request instance for CreateAndroidInstanceWebShell.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceWebShellRequest`
@@ -284,7 +284,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstances(self, request):
-        """创建安卓实例
+        r"""创建安卓实例
 
         :param request: Request instance for CreateAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesRequest`
@@ -307,7 +307,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstancesAccessToken(self, request):
-        """创建安卓实例访问Token
+        r"""创建安卓实例访问Token
 
         :param request: Request instance for CreateAndroidInstancesAccessToken.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesAccessTokenRequest`
@@ -330,7 +330,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstancesScreenshot(self, request):
-        """安卓实例截图
+        r"""安卓实例截图
 
         :param request: Request instance for CreateAndroidInstancesScreenshot.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesScreenshotRequest`
@@ -353,7 +353,7 @@ class GsClient(AbstractClient):
 
 
     def CreateCosCredential(self, request):
-        """用于创建 Cos 临时密钥
+        r"""用于创建 Cos 临时密钥
 
         :param request: Request instance for CreateCosCredential.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateCosCredentialRequest`
@@ -376,7 +376,7 @@ class GsClient(AbstractClient):
 
 
     def CreateSession(self, request):
-        """创建会话
+        r"""创建会话
 
         :param request: Request instance for CreateSession.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateSessionRequest`
@@ -399,7 +399,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidApp(self, request):
-        """删除安卓应用
+        r"""删除安卓应用
 
         :param request: Request instance for DeleteAndroidApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppRequest`
@@ -422,7 +422,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidAppVersion(self, request):
-        """删除安卓应用版本
+        r"""删除安卓应用版本
 
         :param request: Request instance for DeleteAndroidAppVersion.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppVersionRequest`
@@ -445,7 +445,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidInstanceBackupFiles(self, request):
-        """删除安卓实例备份文件
+        r"""删除安卓实例备份文件
 
         :param request: Request instance for DeleteAndroidInstanceBackupFiles.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceBackupFilesRequest`
@@ -468,7 +468,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidInstanceImages(self, request):
-        """删除安卓实例镜像
+        r"""删除安卓实例镜像
 
         :param request: Request instance for DeleteAndroidInstanceImages.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceImagesRequest`
@@ -491,7 +491,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidInstanceLabel(self, request):
-        """删除安卓实例标签
+        r"""删除安卓实例标签
 
         :param request: Request instance for DeleteAndroidInstanceLabel.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceLabelRequest`
@@ -514,7 +514,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidApps(self, request):
-        """查询安卓应用信息
+        r"""查询安卓应用信息
 
         :param request: Request instance for DescribeAndroidApps.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidAppsRequest`
@@ -537,7 +537,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceApps(self, request):
-        """查询安卓实例应用
+        r"""查询安卓实例应用
 
         :param request: Request instance for DescribeAndroidInstanceApps.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceAppsRequest`
@@ -560,7 +560,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceImages(self, request):
-        """查询安卓实例镜像信息，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像处于可用状态。
+        r"""查询安卓实例镜像信息，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像处于可用状态。
 
         :param request: Request instance for DescribeAndroidInstanceImages.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceImagesRequest`
@@ -583,7 +583,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceLabels(self, request):
-        """查询安卓实例标签
+        r"""查询安卓实例标签
 
         :param request: Request instance for DescribeAndroidInstanceLabels.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceLabelsRequest`
@@ -606,7 +606,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceTasksStatus(self, request):
-        """查询安卓实例任务状态
+        r"""查询安卓实例任务状态
 
         :param request: Request instance for DescribeAndroidInstanceTasksStatus.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceTasksStatusRequest`
@@ -629,7 +629,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstances(self, request):
-        """查询安卓实例
+        r"""查询安卓实例
 
         :param request: Request instance for DescribeAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesRequest`
@@ -652,7 +652,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstancesAppBlacklist(self, request):
-        """查询安卓实例黑名单
+        r"""查询安卓实例黑名单
 
         :param request: Request instance for DescribeAndroidInstancesAppBlacklist.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesAppBlacklistRequest`
@@ -675,7 +675,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstancesByApps(self, request):
-        """批量查询安装指定应用的安卓实例
+        r"""批量查询安装指定应用的安卓实例
 
         :param request: Request instance for DescribeAndroidInstancesByApps.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesByAppsRequest`
@@ -698,7 +698,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeInstancesCount(self, request):
-        """获取并发总数和运行数
+        r"""获取并发总数和运行数
 
         :param request: Request instance for DescribeInstancesCount.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeInstancesCountRequest`
@@ -721,7 +721,7 @@ class GsClient(AbstractClient):
 
 
     def DestroyAndroidInstances(self, request):
-        """销毁安卓实例
+        r"""销毁安卓实例
 
         :param request: Request instance for DestroyAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.DestroyAndroidInstancesRequest`
@@ -744,7 +744,7 @@ class GsClient(AbstractClient):
 
 
     def DisableAndroidInstancesApp(self, request):
-        """批量禁用安卓实例应用
+        r"""批量禁用安卓实例应用
 
         :param request: Request instance for DisableAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.DisableAndroidInstancesAppRequest`
@@ -767,7 +767,7 @@ class GsClient(AbstractClient):
 
 
     def DisconnectAndroidInstance(self, request):
-        """断开安卓实例
+        r"""断开安卓实例
 
         :param request: Request instance for DisconnectAndroidInstance.
         :type request: :class:`tencentcloud.gs.v20191118.models.DisconnectAndroidInstanceRequest`
@@ -790,7 +790,7 @@ class GsClient(AbstractClient):
 
 
     def DistributeFileToAndroidInstances(self, request):
-        """将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
+        r"""将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 
         :param request: Request instance for DistributeFileToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.DistributeFileToAndroidInstancesRequest`
@@ -813,7 +813,7 @@ class GsClient(AbstractClient):
 
 
     def DistributePhotoToAndroidInstances(self, request):
-        """将一张照片批量分发到多个实例的相册中，一次接口调用触发一次照片分发，一次照片分发只会从公网下载一次，然后照片会走内网分发到实例列表中的实例。
+        r"""将一张照片批量分发到多个实例的相册中，一次接口调用触发一次照片分发，一次照片分发只会从公网下载一次，然后照片会走内网分发到实例列表中的实例。
 
         :param request: Request instance for DistributePhotoToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.DistributePhotoToAndroidInstancesRequest`
@@ -836,7 +836,7 @@ class GsClient(AbstractClient):
 
 
     def EnableAndroidInstancesApp(self, request):
-        """批量启用安卓实例应用
+        r"""批量启用安卓实例应用
 
         :param request: Request instance for EnableAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.EnableAndroidInstancesAppRequest`
@@ -859,7 +859,7 @@ class GsClient(AbstractClient):
 
 
     def ExecuteCommandOnAndroidInstances(self, request):
-        """在安卓实例上异步执行命令，命令输出结果如果内容过长会被截断
+        r"""在安卓实例上异步执行命令，命令输出结果如果内容过长会被截断
 
         :param request: Request instance for ExecuteCommandOnAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.ExecuteCommandOnAndroidInstancesRequest`
@@ -882,7 +882,7 @@ class GsClient(AbstractClient):
 
 
     def FetchAndroidInstancesLogs(self, request):
-        """批量将实例的 logcat 日志文件上传到您已授权的 COS bucket 中，授权 COS bucket 请在控制台中操作。
+        r"""批量将实例的 logcat 日志文件上传到您已授权的 COS bucket 中，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for FetchAndroidInstancesLogs.
         :type request: :class:`tencentcloud.gs.v20191118.models.FetchAndroidInstancesLogsRequest`
@@ -905,7 +905,7 @@ class GsClient(AbstractClient):
 
 
     def ImportAndroidInstanceImage(self, request):
-        """导入安卓实例镜像，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像导入完成处于可用状态。
+        r"""导入安卓实例镜像，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像导入完成处于可用状态。
 
         :param request: Request instance for ImportAndroidInstanceImage.
         :type request: :class:`tencentcloud.gs.v20191118.models.ImportAndroidInstanceImageRequest`
@@ -928,7 +928,7 @@ class GsClient(AbstractClient):
 
 
     def InstallAndroidInstancesApp(self, request):
-        """安装安卓实例应用
+        r"""安装安卓实例应用
 
         :param request: Request instance for InstallAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.InstallAndroidInstancesAppRequest`
@@ -951,7 +951,7 @@ class GsClient(AbstractClient):
 
 
     def InstallAndroidInstancesAppWithURL(self, request):
-        """通过 URL 安装安卓实例应用
+        r"""通过 URL 安装安卓实例应用
 
         :param request: Request instance for InstallAndroidInstancesAppWithURL.
         :type request: :class:`tencentcloud.gs.v20191118.models.InstallAndroidInstancesAppWithURLRequest`
@@ -974,7 +974,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidApp(self, request):
-        """修改安卓应用信息
+        r"""修改安卓应用信息
 
         :param request: Request instance for ModifyAndroidApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppRequest`
@@ -997,7 +997,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidAppVersion(self, request):
-        """修改安卓应用版本
+        r"""修改安卓应用版本
 
         :param request: Request instance for ModifyAndroidAppVersion.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppVersionRequest`
@@ -1020,7 +1020,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstanceInformation(self, request):
-        """修改安卓实例的信息
+        r"""修改安卓实例的信息
 
         :param request: Request instance for ModifyAndroidInstanceInformation.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstanceInformationRequest`
@@ -1043,7 +1043,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstanceResolution(self, request):
-        """修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
+        r"""修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 
         :param request: Request instance for ModifyAndroidInstanceResolution.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstanceResolutionRequest`
@@ -1066,7 +1066,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesAppBlacklist(self, request):
-        """修改安卓实例应用黑名单
+        r"""修改安卓实例应用黑名单
 
         :param request: Request instance for ModifyAndroidInstancesAppBlacklist.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesAppBlacklistRequest`
@@ -1089,7 +1089,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesInformation(self, request):
-        """批量修改安卓实例信息
+        r"""批量修改安卓实例信息
 
         :param request: Request instance for ModifyAndroidInstancesInformation.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesInformationRequest`
@@ -1112,7 +1112,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesLabels(self, request):
-        """批量修改安卓实例的标签
+        r"""批量修改安卓实例的标签
 
         :param request: Request instance for ModifyAndroidInstancesLabels.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesLabelsRequest`
@@ -1135,7 +1135,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesProperties(self, request):
-        """批量修改安卓实例属性
+        r"""批量修改安卓实例属性
 
         :param request: Request instance for ModifyAndroidInstancesProperties.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesPropertiesRequest`
@@ -1158,7 +1158,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesResolution(self, request):
-        """修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
+        r"""修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
 
         :param request: Request instance for ModifyAndroidInstancesResolution.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResolutionRequest`
@@ -1181,7 +1181,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesResources(self, request):
-        """批量修改安卓实例资源限制
+        r"""批量修改安卓实例资源限制
 
         :param request: Request instance for ModifyAndroidInstancesResources.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResourcesRequest`
@@ -1204,7 +1204,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesUserId(self, request):
-        """批量修改安卓实例的用户ID
+        r"""批量修改安卓实例的用户ID
 
         :param request: Request instance for ModifyAndroidInstancesUserId.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesUserIdRequest`
@@ -1227,7 +1227,7 @@ class GsClient(AbstractClient):
 
 
     def RebootAndroidInstanceHosts(self, request):
-        """重启安卓实例宿主机。请注意：
+        r"""重启安卓实例宿主机。请注意：
 
         - 当前每 15 分钟只能重启一次
         - 一个宿主机可能有多个云手机实例，重启宿主机会影响运行在上面的所有实例，请确保该宿主机上的所有云手机实例未投入业务使用
@@ -1253,7 +1253,7 @@ class GsClient(AbstractClient):
 
 
     def RebootAndroidInstances(self, request):
-        """重启安卓实例
+        r"""重启安卓实例
 
         :param request: Request instance for RebootAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.RebootAndroidInstancesRequest`
@@ -1276,7 +1276,7 @@ class GsClient(AbstractClient):
 
 
     def RenewAndroidInstancesAccessToken(self, request):
-        """续期安卓实例访问Token
+        r"""续期安卓实例访问Token
 
         :param request: Request instance for RenewAndroidInstancesAccessToken.
         :type request: :class:`tencentcloud.gs.v20191118.models.RenewAndroidInstancesAccessTokenRequest`
@@ -1299,7 +1299,7 @@ class GsClient(AbstractClient):
 
 
     def ResetAndroidInstances(self, request):
-        """重置安卓实例
+        r"""重置安卓实例
 
         :param request: Request instance for ResetAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.ResetAndroidInstancesRequest`
@@ -1322,7 +1322,7 @@ class GsClient(AbstractClient):
 
 
     def RestartAndroidInstancesApp(self, request):
-        """重启安卓实例应用
+        r"""重启安卓实例应用
 
         :param request: Request instance for RestartAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.RestartAndroidInstancesAppRequest`
@@ -1345,7 +1345,7 @@ class GsClient(AbstractClient):
 
 
     def RestoreAndroidInstanceFromStorage(self, request):
-        """使用指定存储数据还原云手机，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果还原数据来自 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
+        r"""使用指定存储数据还原云手机，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果还原数据来自 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for RestoreAndroidInstanceFromStorage.
         :type request: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceFromStorageRequest`
@@ -1368,7 +1368,7 @@ class GsClient(AbstractClient):
 
 
     def SaveGameArchive(self, request):
-        """保存游戏存档
+        r"""保存游戏存档
 
         :param request: Request instance for SaveGameArchive.
         :type request: :class:`tencentcloud.gs.v20191118.models.SaveGameArchiveRequest`
@@ -1391,7 +1391,7 @@ class GsClient(AbstractClient):
 
 
     def SetAndroidInstancesBGAppKeepAlive(self, request):
-        """批量设置安卓实例应用后台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+        r"""批量设置安卓实例应用后台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
 
         :param request: Request instance for SetAndroidInstancesBGAppKeepAlive.
         :type request: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesBGAppKeepAliveRequest`
@@ -1414,7 +1414,7 @@ class GsClient(AbstractClient):
 
 
     def SetAndroidInstancesFGAppKeepAlive(self, request):
-        """批量设置安卓实例应用前台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+        r"""批量设置安卓实例应用前台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
 
         :param request: Request instance for SetAndroidInstancesFGAppKeepAlive.
         :type request: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesFGAppKeepAliveRequest`
@@ -1437,7 +1437,7 @@ class GsClient(AbstractClient):
 
 
     def StartAndroidInstances(self, request):
-        """开机安卓实例
+        r"""开机安卓实例
 
         :param request: Request instance for StartAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.StartAndroidInstancesRequest`
@@ -1460,7 +1460,7 @@ class GsClient(AbstractClient):
 
 
     def StartAndroidInstancesApp(self, request):
-        """启动安卓实例应用
+        r"""启动安卓实例应用
 
         :param request: Request instance for StartAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.StartAndroidInstancesAppRequest`
@@ -1483,7 +1483,7 @@ class GsClient(AbstractClient):
 
 
     def StartPublishStream(self, request):
-        """开始云端推流
+        r"""开始云端推流
 
         :param request: Request instance for StartPublishStream.
         :type request: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamRequest`
@@ -1506,7 +1506,7 @@ class GsClient(AbstractClient):
 
 
     def StartPublishStreamToCSS(self, request):
-        """开始云端推流
+        r"""开始云端推流
 
         :param request: Request instance for StartPublishStreamToCSS.
         :type request: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamToCSSRequest`
@@ -1529,7 +1529,7 @@ class GsClient(AbstractClient):
 
 
     def StopAndroidInstances(self, request):
-        """关机安卓实例
+        r"""关机安卓实例
 
         :param request: Request instance for StopAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.StopAndroidInstancesRequest`
@@ -1552,7 +1552,7 @@ class GsClient(AbstractClient):
 
 
     def StopAndroidInstancesApp(self, request):
-        """停止安卓实例应用
+        r"""停止安卓实例应用
 
         :param request: Request instance for StopAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.StopAndroidInstancesAppRequest`
@@ -1575,7 +1575,7 @@ class GsClient(AbstractClient):
 
 
     def StopGame(self, request):
-        """强制退出游戏
+        r"""强制退出游戏
 
         :param request: Request instance for StopGame.
         :type request: :class:`tencentcloud.gs.v20191118.models.StopGameRequest`
@@ -1598,7 +1598,7 @@ class GsClient(AbstractClient):
 
 
     def StopPublishStream(self, request):
-        """停止云端推流
+        r"""停止云端推流
 
         :param request: Request instance for StopPublishStream.
         :type request: :class:`tencentcloud.gs.v20191118.models.StopPublishStreamRequest`
@@ -1621,7 +1621,7 @@ class GsClient(AbstractClient):
 
 
     def SwitchGameArchive(self, request):
-        """切换游戏存档
+        r"""切换游戏存档
 
         :param request: Request instance for SwitchGameArchive.
         :type request: :class:`tencentcloud.gs.v20191118.models.SwitchGameArchiveRequest`
@@ -1644,7 +1644,7 @@ class GsClient(AbstractClient):
 
 
     def SyncAndroidInstanceImage(self, request):
-        """同步安卓实例镜像到其他区域，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像已经同步完成处于可用状态。
+        r"""同步安卓实例镜像到其他区域，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像已经同步完成处于可用状态。
 
         :param request: Request instance for SyncAndroidInstanceImage.
         :type request: :class:`tencentcloud.gs.v20191118.models.SyncAndroidInstanceImageRequest`
@@ -1667,7 +1667,7 @@ class GsClient(AbstractClient):
 
 
     def SyncExecuteCommandOnAndroidInstances(self, request):
-        """在安卓实例上同步执行命令，仅支持1秒内可以返回结果的命令，例如：ls、cd。同时执行的实例数量不能过多，否则可能云api返回超时。不支持超过1秒无法返回或无法自主结束的命令，例如：top、vim，执行结果最大1KB
+        r"""在安卓实例上同步执行命令，仅支持1秒内可以返回结果的命令，例如：ls、cd。同时执行的实例数量不能过多，否则可能云api返回超时。不支持超过1秒无法返回或无法自主结束的命令，例如：top、vim，执行结果最大1KB
 
         :param request: Request instance for SyncExecuteCommandOnAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.SyncExecuteCommandOnAndroidInstancesRequest`
@@ -1690,7 +1690,7 @@ class GsClient(AbstractClient):
 
 
     def TrylockWorker(self, request):
-        """尝试锁定机器
+        r"""尝试锁定机器
 
         :param request: Request instance for TrylockWorker.
         :type request: :class:`tencentcloud.gs.v20191118.models.TrylockWorkerRequest`
@@ -1713,7 +1713,7 @@ class GsClient(AbstractClient):
 
 
     def UninstallAndroidInstancesApp(self, request):
-        """卸载安卓实例应用
+        r"""卸载安卓实例应用
 
         :param request: Request instance for UninstallAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.UninstallAndroidInstancesAppRequest`
@@ -1736,7 +1736,7 @@ class GsClient(AbstractClient):
 
 
     def UploadFileToAndroidInstances(self, request):
-        """将文件下载到指定实例列表的实例上，每个实例都会从公网下载文件。如果您需要将同一个文件分发到多个实例，建议使用 DistributeFileToAndroidInstances 接口减少公网下载的流量。如果您需要将不同的文件下载到不同的实例，可考虑使用 UploadFilesToAndroidInstances 接口批量将不同文件下载到不同的实例。
+        r"""将文件下载到指定实例列表的实例上，每个实例都会从公网下载文件。如果您需要将同一个文件分发到多个实例，建议使用 DistributeFileToAndroidInstances 接口减少公网下载的流量。如果您需要将不同的文件下载到不同的实例，可考虑使用 UploadFilesToAndroidInstances 接口批量将不同文件下载到不同的实例。
 
         :param request: Request instance for UploadFileToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.UploadFileToAndroidInstancesRequest`
@@ -1759,7 +1759,7 @@ class GsClient(AbstractClient):
 
 
     def UploadFilesToAndroidInstances(self, request):
-        """批量将不同的文件下载到不同的实例，每个实例下载文件都是从公网下载，建议只用在文件下载使用一次的场景。如果您需要将同一个文件分发到不同实例，建议使用 DistributeFileToAndroidInstances 接口。
+        r"""批量将不同的文件下载到不同的实例，每个实例下载文件都是从公网下载，建议只用在文件下载使用一次的场景。如果您需要将同一个文件分发到不同实例，建议使用 DistributeFileToAndroidInstances 接口。
 
         :param request: Request instance for UploadFilesToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.UploadFilesToAndroidInstancesRequest`

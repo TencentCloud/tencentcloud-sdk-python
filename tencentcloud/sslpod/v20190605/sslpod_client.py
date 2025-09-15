@@ -27,7 +27,7 @@ class SslpodClient(AbstractClient):
 
 
     def CreateDomain(self, request):
-        """通过域名端口添加监控
+        r"""通过域名端口添加监控
 
         :param request: Request instance for CreateDomain.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.CreateDomainRequest`
@@ -50,7 +50,7 @@ class SslpodClient(AbstractClient):
 
 
     def DeleteDomain(self, request):
-        """通过域名ID删除监控的域名
+        r"""通过域名ID删除监控的域名
 
         :param request: Request instance for DeleteDomain.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DeleteDomainRequest`
@@ -73,7 +73,7 @@ class SslpodClient(AbstractClient):
 
 
     def DescribeDashboard(self, request):
-        """获取仪表盘数据
+        r"""获取仪表盘数据
 
         :param request: Request instance for DescribeDashboard.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DescribeDashboardRequest`
@@ -96,7 +96,7 @@ class SslpodClient(AbstractClient):
 
 
     def DescribeDomainCerts(self, request):
-        """获取域名关联证书
+        r"""获取域名关联证书
 
         :param request: Request instance for DescribeDomainCerts.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomainCertsRequest`
@@ -119,7 +119,7 @@ class SslpodClient(AbstractClient):
 
 
     def DescribeDomainTags(self, request):
-        """获取账号下所有tag
+        r"""获取账号下所有tag
 
         :param request: Request instance for DescribeDomainTags.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomainTagsRequest`
@@ -142,7 +142,7 @@ class SslpodClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """通过searchType搜索已经添加的域名
+        r"""通过searchType搜索已经添加的域名
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomainsRequest`
@@ -165,7 +165,7 @@ class SslpodClient(AbstractClient):
 
 
     def DescribeNoticeInfo(self, request):
-        """获取通知额度信息
+        r"""获取通知额度信息
 
         :param request: Request instance for DescribeNoticeInfo.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.DescribeNoticeInfoRequest`
@@ -188,7 +188,7 @@ class SslpodClient(AbstractClient):
 
 
     def ModifyDomainTags(self, request):
-        """修改域名tag
+        r"""修改域名tag
 
         :param request: Request instance for ModifyDomainTags.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.ModifyDomainTagsRequest`
@@ -211,7 +211,7 @@ class SslpodClient(AbstractClient):
 
 
     def RefreshDomain(self, request):
-        """强制重新检测域名
+        r"""强制重新检测域名
 
         :param request: Request instance for RefreshDomain.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.RefreshDomainRequest`
@@ -234,7 +234,7 @@ class SslpodClient(AbstractClient):
 
 
     def ResolveDomain(self, request):
-        """解析域名获得多个IP地址
+        r"""解析域名获得多个IP地址
 
         :param request: Request instance for ResolveDomain.
         :type request: :class:`tencentcloud.sslpod.v20190605.models.ResolveDomainRequest`

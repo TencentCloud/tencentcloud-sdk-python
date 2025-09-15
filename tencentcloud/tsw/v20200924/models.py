@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AgentShell(AbstractModel):
-    """agent安装脚本串
+    r"""agent安装脚本串
 
     """
 
@@ -61,7 +61,7 @@ class AgentShell(AbstractModel):
 
     @property
     def Token(self):
-        """鉴权token
+        r"""鉴权token
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -73,7 +73,7 @@ class AgentShell(AbstractModel):
 
     @property
     def EtlIp(self):
-        """数据接收Ip
+        r"""数据接收Ip
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85,7 +85,7 @@ class AgentShell(AbstractModel):
 
     @property
     def EtlPort(self):
-        """数据接收port
+        r"""数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -97,7 +97,7 @@ class AgentShell(AbstractModel):
 
     @property
     def ByHandAccess(self):
-        """手动接入脚本串
+        r"""手动接入脚本串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -109,7 +109,7 @@ class AgentShell(AbstractModel):
 
     @property
     def ByShellAccess(self):
-        """自动接入脚本串
+        r"""自动接入脚本串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -121,7 +121,7 @@ class AgentShell(AbstractModel):
 
     @property
     def SkyWalkingPort(self):
-        """SkyWalking数据接收port
+        r"""SkyWalking数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -133,7 +133,7 @@ class AgentShell(AbstractModel):
 
     @property
     def ZipkinPort(self):
-        """Zipkin数据接收port
+        r"""Zipkin数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -145,7 +145,7 @@ class AgentShell(AbstractModel):
 
     @property
     def JaegerPort(self):
-        """Jaeger数据接收port
+        r"""Jaeger数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -176,13 +176,13 @@ class AgentShell(AbstractModel):
 
 
 class DescribeAgentShellRequest(AbstractModel):
-    """DescribeAgentShell请求参数结构体
+    r"""DescribeAgentShell请求参数结构体
 
     """
 
 
 class DescribeAgentShellResponse(AbstractModel):
-    """DescribeAgentShell返回参数结构体
+    r"""DescribeAgentShell返回参数结构体
 
     """
 
@@ -199,7 +199,7 @@ class DescribeAgentShellResponse(AbstractModel):
 
     @property
     def Result(self):
-        """接入信息
+        r"""接入信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsw.v20200924.models.AgentShell`
         """
@@ -211,7 +211,7 @@ class DescribeAgentShellResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

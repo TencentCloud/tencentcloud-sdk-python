@@ -27,7 +27,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPBrand(self, request):
-        """添加品牌
+        r"""添加品牌
 
         :param request: Request instance for CreateBPBrand.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPBrandRequest`
@@ -50,7 +50,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFakeAPP(self, request):
-        """仿冒应用举报
+        r"""仿冒应用举报
 
         :param request: Request instance for CreateBPFakeAPP.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPFakeAPPRequest`
@@ -73,7 +73,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFakeAPPList(self, request):
-        """批量仿冒应用举报
+        r"""批量仿冒应用举报
 
         :param request: Request instance for CreateBPFakeAPPList.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPFakeAPPListRequest`
@@ -96,7 +96,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFakeURL(self, request):
-        """仿冒网址举报
+        r"""仿冒网址举报
 
         :param request: Request instance for CreateBPFakeURL.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPFakeURLRequest`
@@ -119,7 +119,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFakeURLs(self, request):
-        """批量仿冒网址举报
+        r"""批量仿冒网址举报
 
         :param request: Request instance for CreateBPFakeURLs.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPFakeURLsRequest`
@@ -142,7 +142,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPWhiteList(self, request):
-        """添加白名单
+        r"""添加白名单
 
         :param request: Request instance for CreateBPWhiteList.
         :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPWhiteListRequest`
@@ -165,7 +165,7 @@ class BmaClient(AbstractClient):
 
 
     def DeleteBPWhiteList(self, request):
-        """删除白名单
+        r"""删除白名单
 
         :param request: Request instance for DeleteBPWhiteList.
         :type request: :class:`tencentcloud.bma.v20221115.models.DeleteBPWhiteListRequest`
@@ -188,7 +188,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPBrands(self, request):
-        """查询品牌列表
+        r"""查询品牌列表
 
         :param request: Request instance for DescribeBPBrands.
         :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPBrandsRequest`
@@ -211,7 +211,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPFakeAPPList(self, request):
-        """查询仿冒应用列表
+        r"""查询仿冒应用列表
 
         :param request: Request instance for DescribeBPFakeAPPList.
         :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeAPPListRequest`
@@ -234,7 +234,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPFakeURLs(self, request):
-        """查询仿冒网址列表
+        r"""查询仿冒网址列表
 
         :param request: Request instance for DescribeBPFakeURLs.
         :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeURLsRequest`
@@ -257,7 +257,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPWhiteLists(self, request):
-        """查询白名单列表
+        r"""查询白名单列表
 
         :param request: Request instance for DescribeBPWhiteLists.
         :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPWhiteListsRequest`

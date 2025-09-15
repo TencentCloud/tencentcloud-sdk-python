@@ -27,7 +27,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddClusterStorageOption(self, request):
-        """本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+        r"""本接口（AddClusterStorageOption）用于添加集群存储选项信息。
 
         :param request: Request instance for AddClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20220401.models.AddClusterStorageOptionRequest`
@@ -50,7 +50,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddNodes(self, request):
-        """本接口(AddNodes)用于添加一个或者多个计算节点或者登录节点到指定集群。
+        r"""本接口(AddNodes)用于添加一个或者多个计算节点或者登录节点到指定集群。
 
         :param request: Request instance for AddNodes.
         :type request: :class:`tencentcloud.thpc.v20220401.models.AddNodesRequest`
@@ -73,7 +73,7 @@ class ThpcClient(AbstractClient):
 
 
     def AddQueue(self, request):
-        """本接口(AddQueue)用于添加队列到指定集群。
+        r"""本接口(AddQueue)用于添加队列到指定集群。
         * 本接口为目前只支持SchedulerType为SLURM的集群。
         * 单个集群中队列数量上限为10个。
 
@@ -98,7 +98,7 @@ class ThpcClient(AbstractClient):
 
 
     def BindAutoScalingGroup(self, request):
-        """本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+        r"""本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
 
         :param request: Request instance for BindAutoScalingGroup.
         :type request: :class:`tencentcloud.thpc.v20220401.models.BindAutoScalingGroupRequest`
@@ -121,7 +121,7 @@ class ThpcClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """本接口 (CreateCluster) 用于创建并启动集群。
+        r"""本接口 (CreateCluster) 用于创建并启动集群。
 
         * 本接口为异步接口， 当创建集群请求下发成功后会返回一个集群`ID`和一个`RequestId`，此时创建集群操作并未立即完成。在此期间集群的状态将会处于“PENDING”或者“INITING”，集群创建结果可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/1527/72100)  接口查询，如果集群状态(ClusterStatus)变为“RUNNING(运行中)”，则代表集群创建成功，“ INIT_FAILED”代表集群创建失败。
 
@@ -146,7 +146,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """本接口（DeleteCluster）用于删除一个指定的集群。
+        r"""本接口（DeleteCluster）用于删除一个指定的集群。
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DeleteClusterRequest`
@@ -169,7 +169,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteClusterStorageOption(self, request):
-        """本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
+        r"""本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 
         :param request: Request instance for DeleteClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DeleteClusterStorageOptionRequest`
@@ -192,7 +192,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteNodes(self, request):
-        """本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
+        r"""本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 
         :param request: Request instance for DeleteNodes.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DeleteNodesRequest`
@@ -215,7 +215,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteQueue(self, request):
-        """本接口(DeleteQueue)用于从指定集群删除队列。
+        r"""本接口(DeleteQueue)用于从指定集群删除队列。
         * 本接口为目前只支持SchedulerType为SLURM的集群。
 
         * 删除队列时，需要保证队列内不存在节点。
@@ -241,7 +241,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeAutoScalingConfiguration(self, request):
-        """本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
+        r"""本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
 
         :param request: Request instance for DescribeAutoScalingConfiguration.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeAutoScalingConfigurationRequest`
@@ -264,7 +264,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusterActivities(self, request):
-        """本接口（DescribeClusterActivities）用于查询集群活动历史记录列表。
+        r"""本接口（DescribeClusterActivities）用于查询集群活动历史记录列表。
 
         :param request: Request instance for DescribeClusterActivities.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeClusterActivitiesRequest`
@@ -287,7 +287,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusterStorageOption(self, request):
-        """本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
+        r"""本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 
         :param request: Request instance for DescribeClusterStorageOption.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeClusterStorageOptionRequest`
@@ -310,7 +310,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """本接口（DescribeClusters）用于查询集群列表。
+        r"""本接口（DescribeClusters）用于查询集群列表。
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeClustersRequest`
@@ -333,7 +333,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeNodes(self, request):
-        """本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
+        r"""本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
 
         :param request: Request instance for DescribeNodes.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeNodesRequest`
@@ -356,7 +356,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeQueues(self, request):
-        """本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
+        r"""本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
 
         :param request: Request instance for DescribeQueues.
         :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeQueuesRequest`
@@ -379,7 +379,7 @@ class ThpcClient(AbstractClient):
 
 
     def SetAutoScalingConfiguration(self, request):
-        """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
+        r"""本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 
         :param request: Request instance for SetAutoScalingConfiguration.
         :type request: :class:`tencentcloud.thpc.v20220401.models.SetAutoScalingConfigurationRequest`

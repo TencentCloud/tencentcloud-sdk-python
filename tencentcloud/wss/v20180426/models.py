@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DeleteCertRequest(AbstractModel):
-    """DeleteCert请求参数结构体
+    r"""DeleteCert请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class DeleteCertRequest(AbstractModel):
 
     @property
     def Id(self):
-        """证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
+        r"""证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
         :rtype: str
         """
         return self._Id
@@ -46,7 +46,7 @@ class DeleteCertRequest(AbstractModel):
 
     @property
     def ModuleType(self):
-        """模块名称，应填 ssl。
+        r"""模块名称，应填 ssl。
         :rtype: str
         """
         return self._ModuleType
@@ -70,7 +70,7 @@ class DeleteCertRequest(AbstractModel):
 
 
 class DeleteCertResponse(AbstractModel):
-    """DeleteCert返回参数结构体
+    r"""DeleteCert返回参数结构体
 
     """
 
@@ -83,7 +83,7 @@ class DeleteCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -98,7 +98,7 @@ class DeleteCertResponse(AbstractModel):
 
 
 class DescribeCertListRequest(AbstractModel):
-    """DescribeCertList请求参数结构体
+    r"""DescribeCertList请求参数结构体
 
     """
 
@@ -132,7 +132,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def ModuleType(self):
-        """模块名称，应填 ssl。
+        r"""模块名称，应填 ssl。
         :rtype: str
         """
         return self._ModuleType
@@ -143,7 +143,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """页数，默认第一页。
+        r"""页数，默认第一页。
         :rtype: int
         """
         return self._Offset
@@ -154,7 +154,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认每页20条。
+        r"""每页条数，默认每页20条。
         :rtype: int
         """
         return self._Limit
@@ -165,7 +165,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """搜索关键字。
+        r"""搜索关键字。
         :rtype: str
         """
         return self._SearchKey
@@ -176,7 +176,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
+        r"""证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
         :rtype: str
         """
         return self._CertType
@@ -187,7 +187,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Id(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._Id
@@ -198,7 +198,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def WithCert(self):
-        """是否同时获取证书内容。
+        r"""是否同时获取证书内容。
         :rtype: str
         """
         return self._WithCert
@@ -209,7 +209,7 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def AltDomain(self):
-        """如传，则只返回可以给该域名使用的证书。
+        r"""如传，则只返回可以给该域名使用的证书。
         :rtype: str
         """
         return self._AltDomain
@@ -239,7 +239,7 @@ class DescribeCertListRequest(AbstractModel):
 
 
 class DescribeCertListResponse(AbstractModel):
-    """DescribeCertList返回参数结构体
+    r"""DescribeCertList返回参数结构体
 
     """
 
@@ -258,7 +258,7 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数量。
+        r"""总数量。
         :rtype: int
         """
         return self._TotalCount
@@ -269,7 +269,7 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def CertificateSet(self):
-        """列表。
+        r"""列表。
         :rtype: list of SSLCertificate
         """
         return self._CertificateSet
@@ -280,7 +280,7 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -302,7 +302,7 @@ class DescribeCertListResponse(AbstractModel):
 
 
 class SSLCertificate(AbstractModel):
-    """获取证书列表（SSLCertificate）返回参数键为 CertificateSet 的内容。
+    r"""获取证书列表（SSLCertificate）返回参数键为 CertificateSet 的内容。
 
     """
 
@@ -416,7 +416,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """所属账户
+        r"""所属账户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -428,7 +428,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -440,7 +440,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def From(self):
-        """证书来源：trustasia = 亚洲诚信， upload = 用户上传
+        r"""证书来源：trustasia = 亚洲诚信， upload = 用户上传
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -452,7 +452,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Type(self):
-        """证书类型
+        r"""证书类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -464,7 +464,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+        r"""证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -476,7 +476,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProductZhName(self):
-        """证书办法者名称
+        r"""证书办法者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -488,7 +488,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Domain(self):
-        """主域名
+        r"""主域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -500,7 +500,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Alias(self):
-        """别名
+        r"""别名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -512,7 +512,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Status(self):
-        """状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
+        r"""状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -524,7 +524,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def VulnerabilityStatus(self):
-        """漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+        r"""漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -536,7 +536,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def StatusMsg(self):
-        """状态信息
+        r"""状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -548,7 +548,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def VerifyType(self):
-        """验证类型
+        r"""验证类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -560,7 +560,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertBeginTime(self):
-        """证书生效时间
+        r"""证书生效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -572,7 +572,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertEndTime(self):
-        """证书过期时间
+        r"""证书过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -584,7 +584,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ValidityPeriod(self):
-        """证书过期时间
+        r"""证书过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -596,7 +596,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def InsertTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -608,7 +608,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProjectInfo(self):
-        """项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
+        r"""项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wss.v20180426.models.SSLProjectInfo`
         """
@@ -620,7 +620,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Id(self):
-        """证书ID
+        r"""证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -632,7 +632,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def SubjectAltName(self):
-        """证书包含的多个域名（包含主域名）
+        r"""证书包含的多个域名（包含主域名）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -644,7 +644,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def TypeName(self):
-        """证书类型名称
+        r"""证书类型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -656,7 +656,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def StatusName(self):
-        """状态名称
+        r"""状态名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -668,7 +668,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsVip(self):
-        """是否为 VIP 客户
+        r"""是否为 VIP 客户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -680,7 +680,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsDv(self):
-        """是否我 DV 版证书
+        r"""是否我 DV 版证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -692,7 +692,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsWildcard(self):
-        """是否为泛域名证书
+        r"""是否为泛域名证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -704,7 +704,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsVulnerability(self):
-        """是否启用了漏洞扫描功能
+        r"""是否启用了漏洞扫描功能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -716,7 +716,7 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Cert(self):
-        """证书
+        r"""证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -767,7 +767,7 @@ class SSLCertificate(AbstractModel):
 
 
 class SSLProjectInfo(AbstractModel):
-    """获取证书列表接口（SSLProjectInfo）出参键为CertificateSet下的元素ProjectIno详情
+    r"""获取证书列表接口（SSLProjectInfo）出参键为CertificateSet下的元素ProjectIno详情
 
     """
 
@@ -801,7 +801,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -813,7 +813,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """项目所属的 uin（默认项目为0）
+        r"""项目所属的 uin（默认项目为0）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -825,7 +825,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -837,7 +837,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def CreatorUin(self):
-        """创建项目的 uin
+        r"""创建项目的 uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -849,7 +849,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """项目创建时间
+        r"""项目创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -861,7 +861,7 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def Info(self):
-        """项目说明
+        r"""项目说明
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -890,7 +890,7 @@ class SSLProjectInfo(AbstractModel):
 
 
 class UploadCertRequest(AbstractModel):
-    """UploadCert请求参数结构体
+    r"""UploadCert请求参数结构体
 
     """
 
@@ -918,7 +918,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Cert(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._Cert
@@ -929,7 +929,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
+        r"""证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
         :rtype: str
         """
         return self._CertType
@@ -940,7 +940,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
+        r"""项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
         :rtype: str
         """
         return self._ProjectId
@@ -951,7 +951,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def ModuleType(self):
-        """模块名称，应填 ssl。
+        r"""模块名称，应填 ssl。
         :rtype: str
         """
         return self._ModuleType
@@ -962,7 +962,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Key(self):
-        """证书私钥，certType=SVR 时必填。
+        r"""证书私钥，certType=SVR 时必填。
         :rtype: str
         """
         return self._Key
@@ -973,7 +973,7 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """证书备注。
+        r"""证书备注。
         :rtype: str
         """
         return self._Alias
@@ -1001,7 +1001,7 @@ class UploadCertRequest(AbstractModel):
 
 
 class UploadCertResponse(AbstractModel):
-    """UploadCert返回参数结构体
+    r"""UploadCert返回参数结构体
 
     """
 
@@ -1017,7 +1017,7 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def Id(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._Id
@@ -1028,7 +1028,7 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

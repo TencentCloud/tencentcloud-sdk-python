@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddCasterInputInfoRequest(AbstractModel):
-    """AddCasterInputInfo请求参数结构体
+    r"""AddCasterInputInfo请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AddCasterInputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -46,7 +46,7 @@ class AddCasterInputInfoRequest(AbstractModel):
 
     @property
     def InputInfo(self):
-        """导播台输入源详细信息。
+        r"""导播台输入源详细信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
         """
         return self._InputInfo
@@ -72,7 +72,7 @@ class AddCasterInputInfoRequest(AbstractModel):
 
 
 class AddCasterInputInfoResponse(AbstractModel):
-    """AddCasterInputInfo返回参数结构体
+    r"""AddCasterInputInfo返回参数结构体
 
     """
 
@@ -95,7 +95,7 @@ class AddCasterInputInfoResponse(AbstractModel):
 
     @property
     def InputPlayUrl(self):
-        """rtmp协议输入源播放地址。
+        r"""rtmp协议输入源播放地址。
 注：仅可作为预览使用，不可分发。
         :rtype: str
         """
@@ -107,7 +107,7 @@ class AddCasterInputInfoResponse(AbstractModel):
 
     @property
     def InputWebRTCPlayUrl(self):
-        """webrtc协议播放地址。
+        r"""webrtc协议播放地址。
 注：
 1. 需配合使用腾讯云快直播播放SDK使用才可正常播放。
 2. 仅作为预览使用，不可分发。
@@ -121,7 +121,7 @@ class AddCasterInputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -138,7 +138,7 @@ class AddCasterInputInfoResponse(AbstractModel):
 
 
 class AddCasterLayoutInfoRequest(AbstractModel):
-    """AddCasterLayoutInfo请求参数结构体
+    r"""AddCasterLayoutInfo请求参数结构体
 
     """
 
@@ -154,7 +154,7 @@ class AddCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -165,7 +165,7 @@ class AddCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def LayoutInfo(self):
-        """导播台布局参数信息。
+        r"""导播台布局参数信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
         """
         return self._LayoutInfo
@@ -191,7 +191,7 @@ class AddCasterLayoutInfoRequest(AbstractModel):
 
 
 class AddCasterLayoutInfoResponse(AbstractModel):
-    """AddCasterLayoutInfo返回参数结构体
+    r"""AddCasterLayoutInfo返回参数结构体
 
     """
 
@@ -204,7 +204,7 @@ class AddCasterLayoutInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -219,7 +219,7 @@ class AddCasterLayoutInfoResponse(AbstractModel):
 
 
 class AddCasterMarkPicInfoRequest(AbstractModel):
-    """AddCasterMarkPicInfo请求参数结构体
+    r"""AddCasterMarkPicInfo请求参数结构体
 
     """
 
@@ -235,7 +235,7 @@ class AddCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -246,7 +246,7 @@ class AddCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def MarkPicInfo(self):
-        """图片水印详细参数。
+        r"""图片水印详细参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
         """
         return self._MarkPicInfo
@@ -272,7 +272,7 @@ class AddCasterMarkPicInfoRequest(AbstractModel):
 
 
 class AddCasterMarkPicInfoResponse(AbstractModel):
-    """AddCasterMarkPicInfo返回参数结构体
+    r"""AddCasterMarkPicInfo返回参数结构体
 
     """
 
@@ -285,7 +285,7 @@ class AddCasterMarkPicInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -300,7 +300,7 @@ class AddCasterMarkPicInfoResponse(AbstractModel):
 
 
 class AddCasterMarkWordInfoRequest(AbstractModel):
-    """AddCasterMarkWordInfo请求参数结构体
+    r"""AddCasterMarkWordInfo请求参数结构体
 
     """
 
@@ -316,7 +316,7 @@ class AddCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -327,7 +327,7 @@ class AddCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def MarkWordInfo(self):
-        """文本的详细配置。
+        r"""文本的详细配置。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
         """
         return self._MarkWordInfo
@@ -353,7 +353,7 @@ class AddCasterMarkWordInfoRequest(AbstractModel):
 
 
 class AddCasterMarkWordInfoResponse(AbstractModel):
-    """AddCasterMarkWordInfo返回参数结构体
+    r"""AddCasterMarkWordInfo返回参数结构体
 
     """
 
@@ -366,7 +366,7 @@ class AddCasterMarkWordInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -381,7 +381,7 @@ class AddCasterMarkWordInfoResponse(AbstractModel):
 
 
 class AddCasterOutputInfoRequest(AbstractModel):
-    """AddCasterOutputInfo请求参数结构体
+    r"""AddCasterOutputInfo请求参数结构体
 
     """
 
@@ -397,7 +397,7 @@ class AddCasterOutputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -408,7 +408,7 @@ class AddCasterOutputInfoRequest(AbstractModel):
 
     @property
     def OutputInfo(self):
-        """导播台推流参数信息。
+        r"""导播台推流参数信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
         """
         return self._OutputInfo
@@ -434,7 +434,7 @@ class AddCasterOutputInfoRequest(AbstractModel):
 
 
 class AddCasterOutputInfoResponse(AbstractModel):
-    """AddCasterOutputInfo返回参数结构体
+    r"""AddCasterOutputInfo返回参数结构体
 
     """
 
@@ -447,7 +447,7 @@ class AddCasterOutputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -462,7 +462,7 @@ class AddCasterOutputInfoResponse(AbstractModel):
 
 
 class AddDelayLiveStreamRequest(AbstractModel):
-    """AddDelayLiveStream请求参数结构体
+    r"""AddDelayLiveStream请求参数结构体
 
     """
 
@@ -490,7 +490,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -501,7 +501,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -512,7 +512,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -523,7 +523,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        """延播时间，单位：秒，上限：600秒。
+        r"""延播时间，单位：秒，上限：600秒。
         :rtype: int
         """
         return self._DelayTime
@@ -534,7 +534,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        r"""延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认7天后过期，且最长支持7天内生效。
 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
@@ -564,7 +564,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
 
 class AddDelayLiveStreamResponse(AbstractModel):
-    """AddDelayLiveStream返回参数结构体
+    r"""AddDelayLiveStream返回参数结构体
 
     """
 
@@ -577,7 +577,7 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -592,7 +592,7 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
 
 class AddLiveDomainRequest(AbstractModel):
-    """AddLiveDomain请求参数结构体
+    r"""AddLiveDomain请求参数结构体
 
     """
 
@@ -637,7 +637,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def DomainName(self):
-        """域名名称。
+        r"""域名名称。
         :rtype: str
         """
         return self._DomainName
@@ -648,7 +648,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def DomainType(self):
-        """域名类型，
+        r"""域名类型，
 0：推流域名，
 1：播放域名。
         :rtype: int
@@ -661,7 +661,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def PlayType(self):
-        """拉流域名类型：
+        r"""拉流域名类型：
 1：国内，
 2：全球，
 3：境外。
@@ -676,7 +676,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def IsDelayLive(self):
-        """是否是慢直播：
+        r"""是否是慢直播：
 0： 普通直播，
 1 ：慢直播 。
 默认值： 0。
@@ -690,7 +690,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def IsMiniProgramLive(self):
-        """是否是小程序直播：
+        r"""是否是小程序直播：
 0： 标准直播，
 1 ：小程序直播 。
 默认值： 0。
@@ -704,7 +704,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def VerifyOwnerType(self):
-        """域名归属校验类型。
+        r"""域名归属校验类型。
 可取值（与 AuthenticateDomainOwner 接口的 VerifyType 参数一致。）：
 dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
 fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
@@ -737,7 +737,7 @@ dbCheck :  检查是否已经验证成功过。
 
 
 class AddLiveDomainResponse(AbstractModel):
-    """AddLiveDomain返回参数结构体
+    r"""AddLiveDomain返回参数结构体
 
     """
 
@@ -750,7 +750,7 @@ class AddLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -765,7 +765,7 @@ class AddLiveDomainResponse(AbstractModel):
 
 
 class AddLiveWatermarkRequest(AbstractModel):
-    """AddLiveWatermark请求参数结构体
+    r"""AddLiveWatermark请求参数结构体
 
     """
 
@@ -802,7 +802,7 @@ URL中禁止包含的字符：
 
     @property
     def PictureUrl(self):
-        """水印图片 URL。
+        r"""水印图片 URL。
 URL中禁止包含的字符：
  ;(){}$>`#"\'|
         :rtype: str
@@ -815,7 +815,7 @@ URL中禁止包含的字符：
 
     @property
     def WatermarkName(self):
-        """水印名称。
+        r"""水印名称。
 最长30字节。
         :rtype: str
         """
@@ -827,7 +827,7 @@ URL中禁止包含的字符：
 
     @property
     def XPosition(self):
-        """显示位置，X轴偏移，单位是百分比，默认 0。
+        r"""显示位置，X轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._XPosition
@@ -838,7 +838,7 @@ URL中禁止包含的字符：
 
     @property
     def YPosition(self):
-        """显示位置，Y轴偏移，单位是百分比，默认 0。
+        r"""显示位置，Y轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._YPosition
@@ -849,7 +849,7 @@ URL中禁止包含的字符：
 
     @property
     def Width(self):
-        """水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        r"""水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :rtype: int
         """
         return self._Width
@@ -860,7 +860,7 @@ URL中禁止包含的字符：
 
     @property
     def Height(self):
-        """水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        r"""水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :rtype: int
         """
         return self._Height
@@ -871,7 +871,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundWidth(self):
-        """背景水印宽度。默认宽度1920。
+        r"""背景水印宽度。默认宽度1920。
         :rtype: int
         """
         return self._BackgroundWidth
@@ -882,7 +882,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundHeight(self):
-        """背景水印高度。默认高度1080。
+        r"""背景水印高度。默认高度1080。
         :rtype: int
         """
         return self._BackgroundHeight
@@ -912,7 +912,7 @@ URL中禁止包含的字符：
 
 
 class AddLiveWatermarkResponse(AbstractModel):
-    """AddLiveWatermark返回参数结构体
+    r"""AddLiveWatermark返回参数结构体
 
     """
 
@@ -928,7 +928,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     @property
     def WatermarkId(self):
-        """水印ID。
+        r"""水印ID。
         :rtype: int
         """
         return self._WatermarkId
@@ -939,7 +939,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -955,7 +955,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
 
 class AuditKeyword(AbstractModel):
-    """直播审核关键词信息
+    r"""直播审核关键词信息
 
     """
 
@@ -972,7 +972,7 @@ class AuditKeyword(AbstractModel):
 
     @property
     def Content(self):
-        """关键词内容。
+        r"""关键词内容。
         :rtype: str
         """
         return self._Content
@@ -983,7 +983,7 @@ class AuditKeyword(AbstractModel):
 
     @property
     def Label(self):
-        """关键词标签。
+        r"""关键词标签。
 可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
         :rtype: str
         """
@@ -1008,7 +1008,7 @@ class AuditKeyword(AbstractModel):
 
 
 class AuditKeywordDeleteDetail(AbstractModel):
-    """直播审核删除关键词结果详情。
+    r"""直播审核删除关键词结果详情。
 
     """
 
@@ -1030,7 +1030,7 @@ class AuditKeywordDeleteDetail(AbstractModel):
 
     @property
     def KeywordId(self):
-        """关键词 Id。
+        r"""关键词 Id。
         :rtype: str
         """
         return self._KeywordId
@@ -1041,7 +1041,7 @@ class AuditKeywordDeleteDetail(AbstractModel):
 
     @property
     def Content(self):
-        """关键词内容。
+        r"""关键词内容。
         :rtype: str
         """
         return self._Content
@@ -1052,7 +1052,7 @@ class AuditKeywordDeleteDetail(AbstractModel):
 
     @property
     def Deleted(self):
-        """是否删除成功。
+        r"""是否删除成功。
         :rtype: bool
         """
         return self._Deleted
@@ -1063,7 +1063,7 @@ class AuditKeywordDeleteDetail(AbstractModel):
 
     @property
     def Error(self):
-        """如果删除失败，错误信息。
+        r"""如果删除失败，错误信息。
         :rtype: str
         """
         return self._Error
@@ -1089,7 +1089,7 @@ class AuditKeywordDeleteDetail(AbstractModel):
 
 
 class AuditKeywordInfo(AbstractModel):
-    """直播审核关键词查询信息。
+    r"""直播审核关键词查询信息。
 
     """
 
@@ -1114,7 +1114,7 @@ class AuditKeywordInfo(AbstractModel):
 
     @property
     def KeywordId(self):
-        """关键词 Id。
+        r"""关键词 Id。
         :rtype: str
         """
         return self._KeywordId
@@ -1125,7 +1125,7 @@ class AuditKeywordInfo(AbstractModel):
 
     @property
     def Content(self):
-        """关键词内容。
+        r"""关键词内容。
         :rtype: str
         """
         return self._Content
@@ -1136,7 +1136,7 @@ class AuditKeywordInfo(AbstractModel):
 
     @property
     def Label(self):
-        """关键词标签。
+        r"""关键词标签。
 可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
         :rtype: str
         """
@@ -1148,7 +1148,7 @@ class AuditKeywordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        r"""创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。
         :rtype: str
@@ -1176,7 +1176,7 @@ class AuditKeywordInfo(AbstractModel):
 
 
 class AuthenticateDomainOwnerRequest(AbstractModel):
-    """AuthenticateDomainOwner请求参数结构体
+    r"""AuthenticateDomainOwner请求参数结构体
 
     """
 
@@ -1195,7 +1195,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def DomainName(self):
-        """要验证的域名。
+        r"""要验证的域名。
         :rtype: str
         """
         return self._DomainName
@@ -1206,7 +1206,7 @@ dbCheck :  检查是否已经验证成功过。
 
     @property
     def VerifyType(self):
-        """验证类型。可取值：
+        r"""验证类型。可取值：
 dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
 fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
 dbCheck :  检查是否已经验证成功过。
@@ -1233,7 +1233,7 @@ dbCheck :  检查是否已经验证成功过。
 
 
 class AuthenticateDomainOwnerResponse(AbstractModel):
-    """AuthenticateDomainOwner返回参数结构体
+    r"""AuthenticateDomainOwner返回参数结构体
 
     """
 
@@ -1260,7 +1260,7 @@ VerifyType 传 fileCheck 时，为文件内容。
 
     @property
     def Content(self):
-        """验证内容。
+        r"""验证内容。
 VerifyType 传 dnsCheck 时，为要配的 TXT 记录值。
 VerifyType 传 fileCheck 时，为文件内容。
         :rtype: str
@@ -1273,7 +1273,7 @@ VerifyType 传 fileCheck 时，为文件内容。
 
     @property
     def Status(self):
-        """域名验证状态。
+        r"""域名验证状态。
 >=0 为已验证归属。
 <0 未验证归属权。
         :rtype: int
@@ -1286,7 +1286,7 @@ VerifyType 传 fileCheck 时，为文件内容。
 
     @property
     def MainDomain(self):
-        """DomainName 对应的主域名。
+        r"""DomainName 对应的主域名。
 同一主域名下的所有域名只需成功验证一次，后续均无需再验证。
         :rtype: str
         """
@@ -1298,7 +1298,7 @@ VerifyType 传 fileCheck 时，为文件内容。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1316,7 +1316,7 @@ VerifyType 传 fileCheck 时，为文件内容。
 
 
 class BackupStreamDetailData(AbstractModel):
-    """主备流详细信息。
+    r"""主备流详细信息。
 
     """
 
@@ -1351,7 +1351,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -1362,7 +1362,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -1373,7 +1373,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def PublishTime(self):
-        """ UTC 格式，例如：2018-06-29T19:00:00Z。
+        r""" UTC 格式，例如：2018-06-29T19:00:00Z。
 注意：和北京时间相差8小时。
         :rtype: str
         """
@@ -1385,7 +1385,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def UpstreamSequence(self):
-        """推流唯一标识。
+        r"""推流唯一标识。
         :rtype: str
         """
         return self._UpstreamSequence
@@ -1396,7 +1396,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def SourceFrom(self):
-        """推流来源。示例：
+        r"""推流来源。示例：
 直推流；
 拉流转推(1234)；
 注意：拉流转推来源括号中为拉流转推的任务 
@@ -1411,7 +1411,7 @@ class BackupStreamDetailData(AbstractModel):
 
     @property
     def MasterFlag(self):
-        """主备标识。
+        r"""主备标识。
 当前流为主流：1，
 当前流为备流: 0。
         :rtype: int
@@ -1441,7 +1441,7 @@ class BackupStreamDetailData(AbstractModel):
 
 
 class BackupStreamGroupInfo(AbstractModel):
-    """主备流分组信息。
+    r"""主备流分组信息。
 
     """
 
@@ -1465,7 +1465,7 @@ class BackupStreamGroupInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -1476,7 +1476,7 @@ class BackupStreamGroupInfo(AbstractModel):
 
     @property
     def BackupList(self):
-        """主备流信息。
+        r"""主备流信息。
         :rtype: list of BackupStreamDetailData
         """
         return self._BackupList
@@ -1487,7 +1487,7 @@ class BackupStreamGroupInfo(AbstractModel):
 
     @property
     def OptimalEnable(self):
-        """是否对该流开启了择优调度。
+        r"""是否对该流开启了择优调度。
 0 - 未开启。
 1 - 已开启。
         :rtype: int
@@ -1500,7 +1500,7 @@ class BackupStreamGroupInfo(AbstractModel):
 
     @property
     def HostGroupName(self):
-        """域名分组的分组名称。
+        r"""域名分组的分组名称。
         :rtype: str
         """
         return self._HostGroupName
@@ -1531,7 +1531,7 @@ class BackupStreamGroupInfo(AbstractModel):
 
 
 class BandwidthInfo(AbstractModel):
-    """带宽信息
+    r"""带宽信息
 
     """
 
@@ -1551,7 +1551,7 @@ class BandwidthInfo(AbstractModel):
 
     @property
     def Time(self):
-        """返回格式：
+        r"""返回格式：
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -1566,7 +1566,7 @@ class BandwidthInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽。
+        r"""带宽。
         :rtype: float
         """
         return self._Bandwidth
@@ -1590,7 +1590,7 @@ class BandwidthInfo(AbstractModel):
 
 
 class BatchDomainOperateErrors(AbstractModel):
-    """批量操作域名相关接口，若其中个别域名操作失败将会跳过，相应的域名错误信息将统一汇总在此类型中
+    r"""批量操作域名相关接口，若其中个别域名操作失败将会跳过，相应的域名错误信息将统一汇总在此类型中
 
     """
 
@@ -1609,7 +1609,7 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def DomainName(self):
-        """操作失败的域名。
+        r"""操作失败的域名。
         :rtype: str
         """
         return self._DomainName
@@ -1620,7 +1620,7 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def Code(self):
-        """API3.0错误码。
+        r"""API3.0错误码。
         :rtype: str
         """
         return self._Code
@@ -1631,7 +1631,7 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def Message(self):
-        """API3.0错误信息。
+        r"""API3.0错误信息。
         :rtype: str
         """
         return self._Message
@@ -1656,7 +1656,7 @@ class BatchDomainOperateErrors(AbstractModel):
 
 
 class BillAreaInfo(AbstractModel):
-    """海外分区直播带宽出参，分区信息
+    r"""海外分区直播带宽出参，分区信息
 
     """
 
@@ -1672,7 +1672,7 @@ class BillAreaInfo(AbstractModel):
 
     @property
     def Name(self):
-        """大区名称。
+        r"""大区名称。
         :rtype: str
         """
         return self._Name
@@ -1683,7 +1683,7 @@ class BillAreaInfo(AbstractModel):
 
     @property
     def Countrys(self):
-        """国家或地区明细数据。
+        r"""国家或地区明细数据。
         :rtype: list of BillCountryInfo
         """
         return self._Countrys
@@ -1712,7 +1712,7 @@ class BillAreaInfo(AbstractModel):
 
 
 class BillCountryInfo(AbstractModel):
-    """海外分区直播带宽出参国家带宽信息
+    r"""海外分区直播带宽出参国家带宽信息
 
     """
 
@@ -1728,7 +1728,7 @@ class BillCountryInfo(AbstractModel):
 
     @property
     def Name(self):
-        """国家名称
+        r"""国家名称
         :rtype: str
         """
         return self._Name
@@ -1739,7 +1739,7 @@ class BillCountryInfo(AbstractModel):
 
     @property
     def BandInfoList(self):
-        """带宽明细数据信息。
+        r"""带宽明细数据信息。
         :rtype: list of BillDataInfo
         """
         return self._BandInfoList
@@ -1768,7 +1768,7 @@ class BillCountryInfo(AbstractModel):
 
 
 class BillDataInfo(AbstractModel):
-    """带宽和流量信息。
+    r"""带宽和流量信息。
 
     """
 
@@ -1797,7 +1797,7 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Time(self):
-        """时间点，
+        r"""时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -1811,7 +1811,7 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位是 Mbps。
+        r"""带宽，单位是 Mbps。
         :rtype: float
         """
         return self._Bandwidth
@@ -1822,7 +1822,7 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Flux(self):
-        """流量，单位是 MB。
+        r"""流量，单位是 MB。
         :rtype: float
         """
         return self._Flux
@@ -1833,7 +1833,7 @@ class BillDataInfo(AbstractModel):
 
     @property
     def PeakTime(self):
-        """峰值时间点，
+        r"""峰值时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -1863,7 +1863,7 @@ class BillDataInfo(AbstractModel):
 
 
 class CallBackRuleInfo(AbstractModel):
-    """规则信息
+    r"""规则信息
 
     """
 
@@ -1890,7 +1890,7 @@ class CallBackRuleInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """规则创建时间。
+        r"""规则创建时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -1902,7 +1902,7 @@ class CallBackRuleInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """规则更新时间。
+        r"""规则更新时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -1914,7 +1914,7 @@ class CallBackRuleInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -1925,7 +1925,7 @@ class CallBackRuleInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -1936,7 +1936,7 @@ class CallBackRuleInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -1963,7 +1963,7 @@ class CallBackRuleInfo(AbstractModel):
 
 
 class CallBackTemplateInfo(AbstractModel):
-    """回调模板信息。
+    r"""回调模板信息。
 
     """
 
@@ -2017,7 +2017,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -2028,7 +2028,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -2039,7 +2039,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -2050,7 +2050,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def StreamBeginNotifyUrl(self):
-        """开播回调 URL。
+        r"""开播回调 URL。
         :rtype: str
         """
         return self._StreamBeginNotifyUrl
@@ -2061,7 +2061,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def StreamMixNotifyUrl(self):
-        """混流回调 URL。(参数已弃用)。
+        r"""混流回调 URL。(参数已弃用)。
         :rtype: str
         """
         return self._StreamMixNotifyUrl
@@ -2072,7 +2072,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def StreamEndNotifyUrl(self):
-        """断流回调 URL。
+        r"""断流回调 URL。
         :rtype: str
         """
         return self._StreamEndNotifyUrl
@@ -2083,7 +2083,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def RecordNotifyUrl(self):
-        """录制文件回调 URL。
+        r"""录制文件回调 URL。
         :rtype: str
         """
         return self._RecordNotifyUrl
@@ -2094,7 +2094,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def SnapshotNotifyUrl(self):
-        """截图回调 URL。
+        r"""截图回调 URL。
         :rtype: str
         """
         return self._SnapshotNotifyUrl
@@ -2105,7 +2105,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def PornCensorshipNotifyUrl(self):
-        """鉴黄回调 URL。
+        r"""鉴黄回调 URL。
         :rtype: str
         """
         return self._PornCensorshipNotifyUrl
@@ -2116,7 +2116,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调的鉴权 key。
+        r"""回调的鉴权 key。
         :rtype: str
         """
         return self._CallbackKey
@@ -2127,7 +2127,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def PushExceptionNotifyUrl(self):
-        """推流异常回调 URL。
+        r"""推流异常回调 URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2139,7 +2139,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def AudioAuditNotifyUrl(self):
-        """音频审核回调 URL。
+        r"""音频审核回调 URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2151,7 +2151,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def RecordExceptionNotifyUrl(self):
-        """录制异常回调 URL。
+        r"""录制异常回调 URL。
         :rtype: str
         """
         return self._RecordExceptionNotifyUrl
@@ -2162,7 +2162,7 @@ class CallBackTemplateInfo(AbstractModel):
 
     @property
     def RecordExceptionLevels(self):
-        """录制异常回调级别，可选择：error: 错误。alarm: 告警。
+        r"""录制异常回调级别，可选择：error: 错误。alarm: 告警。
         :rtype: list of str
         """
         return self._RecordExceptionLevels
@@ -2198,7 +2198,7 @@ class CallBackTemplateInfo(AbstractModel):
 
 
 class CallbackEventInfo(AbstractModel):
-    """回调事件信息
+    r"""回调事件信息
 
     """
 
@@ -2237,7 +2237,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def EventTime(self):
-        """事件时间。
+        r"""事件时间。
 接口返回支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
@@ -2252,7 +2252,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型。
+        r"""事件类型。
         :rtype: int
         """
         return self._EventType
@@ -2263,7 +2263,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def Request(self):
-        """回调请求。
+        r"""回调请求。
         :rtype: str
         """
         return self._Request
@@ -2274,7 +2274,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def Response(self):
-        """回调响应。
+        r"""回调响应。
         :rtype: str
         """
         return self._Response
@@ -2285,7 +2285,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def ResponseTime(self):
-        """客户接口响应时间。
+        r"""客户接口响应时间。
 接口返回支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
@@ -2300,7 +2300,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def ResultCode(self):
-        """回调结果。
+        r"""回调结果。
         :rtype: int
         """
         return self._ResultCode
@@ -2311,7 +2311,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def StreamId(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamId
@@ -2340,7 +2340,7 @@ class CallbackEventInfo(AbstractModel):
 
 
 class CancelCommonMixStreamRequest(AbstractModel):
-    """CancelCommonMixStream请求参数结构体
+    r"""CancelCommonMixStream请求参数结构体
 
     """
 
@@ -2354,7 +2354,7 @@ class CancelCommonMixStreamRequest(AbstractModel):
 
     @property
     def MixStreamSessionId(self):
-        """混流会话（申请混流开始到取消混流结束）标识 ID。
+        r"""混流会话（申请混流开始到取消混流结束）标识 ID。
 该值与CreateCommonMixStream中的MixStreamSessionId保持一致。
         :rtype: str
         """
@@ -2378,7 +2378,7 @@ class CancelCommonMixStreamRequest(AbstractModel):
 
 
 class CancelCommonMixStreamResponse(AbstractModel):
-    """CancelCommonMixStream返回参数结构体
+    r"""CancelCommonMixStream返回参数结构体
 
     """
 
@@ -2391,7 +2391,7 @@ class CancelCommonMixStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2406,7 +2406,7 @@ class CancelCommonMixStreamResponse(AbstractModel):
 
 
 class CasterBriefInfo(AbstractModel):
-    """导播台简略信息
+    r"""导播台简略信息
 
     """
 
@@ -2449,7 +2449,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -2460,7 +2460,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def CasterName(self):
-        """导播台名称
+        r"""导播台名称
         :rtype: str
         """
         return self._CasterName
@@ -2471,7 +2471,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def Description(self):
-        """导播台的描述
+        r"""导播台的描述
         :rtype: str
         """
         return self._Description
@@ -2482,7 +2482,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def StartBillingTime(self):
-        """开始计费时间，值为unix时间戳
+        r"""开始计费时间，值为unix时间戳
         :rtype: int
         """
         return self._StartBillingTime
@@ -2493,7 +2493,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def StopBillingTime(self):
-        """结束计费时间，值为unix时间戳
+        r"""结束计费时间，值为unix时间戳
         :rtype: int
         """
         return self._StopBillingTime
@@ -2504,7 +2504,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，值为unix时间戳
+        r"""创建时间，值为unix时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -2515,7 +2515,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def Status(self):
-        """导播台状态
+        r"""导播台状态
 0：停止状态，无预监，无主监
 1：无预监，有主监
 2：有预监，无主监
@@ -2530,7 +2530,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """导播台的过期时间，值为-1或unix时间戳。
+        r"""导播台的过期时间，值为-1或unix时间戳。
 当值为-1时，代表永不过期。
 当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
         :rtype: int
@@ -2543,7 +2543,7 @@ class CasterBriefInfo(AbstractModel):
 
     @property
     def FeeType(self):
-        """计费字段，该字段暂无作用
+        r"""计费字段，该字段暂无作用
         :rtype: int
         """
         return self._FeeType
@@ -2574,7 +2574,7 @@ class CasterBriefInfo(AbstractModel):
 
 
 class CasterDisplayInfo(AbstractModel):
-    """导播台展示信息，包括使用的布局、水印、字幕、转场、音频等信息
+    r"""导播台展示信息，包括使用的布局、水印、字幕、转场、音频等信息
 
     """
 
@@ -2619,7 +2619,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def LayoutIndex(self):
-        """布局Index。
+        r"""布局Index。
 如果使用自定义布局，为自定义布局下标。
 如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
         :rtype: int
@@ -2632,7 +2632,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def MarkPicIndexList(self):
-        """使用的水印Index列表。
+        r"""使用的水印Index列表。
 注：当作为入参使用时，列表中的水印Index需要已经存在。
         :rtype: list of int non-negative
         """
@@ -2644,7 +2644,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def MarkWordIndexList(self):
-        """使用的文字水印Index列表。
+        r"""使用的文字水印Index列表。
 注：作为入参使用时，列表中的Index需要已经存在。
         :rtype: list of int non-negative
         """
@@ -2656,7 +2656,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def TransitionType(self):
-        """使用的转场类型。
+        r"""使用的转场类型。
 注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
         :rtype: str
         """
@@ -2668,7 +2668,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def AudioIndexList(self):
-        """使用的音频输入Index列表。
+        r"""使用的音频输入Index列表。
 注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
         :rtype: list of int non-negative
         """
@@ -2680,7 +2680,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def InputStartType(self):
-        """作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
+        r"""作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
 默认为0。
 有效值，0,1。
 0代表不从头播放
@@ -2695,7 +2695,7 @@ class CasterDisplayInfo(AbstractModel):
 
     @property
     def LayoutIndexType(self):
-        """LayoutIndex类型，
+        r"""LayoutIndex类型，
 默认值:0
 可选值[0,1]
 0:默认类型，代表普通布局
@@ -2728,7 +2728,7 @@ class CasterDisplayInfo(AbstractModel):
 
 
 class CasterInfo(AbstractModel):
-    """导播台信息
+    r"""导播台信息
 
     """
 
@@ -2801,7 +2801,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -2812,7 +2812,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def CasterName(self):
-        """导播台名称
+        r"""导播台名称
         :rtype: str
         """
         return self._CasterName
@@ -2823,7 +2823,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def StartLiveTime(self):
-        """导播台上一次启动pgm的时间，值为unix时间戳。
+        r"""导播台上一次启动pgm的时间，值为unix时间戳。
         :rtype: int
         """
         return self._StartLiveTime
@@ -2834,7 +2834,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def Description(self):
-        """导播台的描述
+        r"""导播台的描述
         :rtype: str
         """
         return self._Description
@@ -2845,7 +2845,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """导播台创建时间，值为unix时间戳。
+        r"""导播台创建时间，值为unix时间戳。
         :rtype: int
         """
         return self._CreateTime
@@ -2856,7 +2856,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def Status(self):
-        """导播台状态 
+        r"""导播台状态 
 0：停止状态，无预监，无主监
 1：无预监，有主监
 2：有预监，无主监
@@ -2871,7 +2871,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """导播台的过期时间戳。值为-1或unix时间戳。 
+        r"""导播台的过期时间戳。值为-1或unix时间戳。 
 默认值为-1。 当值为-1时，表示该导播台永不过期。 
 当值为正常unix时间戳时，导播台将在该时间过期。 
 导播台过期后，预监与主监画面将自动停止，转推自动停止。 
@@ -2886,7 +2886,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def DelayTime(self):
-        """导播台延时播放时间，单位为秒。 
+        r"""导播台延时播放时间，单位为秒。 
         :rtype: int
         """
         return self._DelayTime
@@ -2897,7 +2897,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmWidth(self):
-        """导播台主监输出的宽度，单位为像素。
+        r"""导播台主监输出的宽度，单位为像素。
         :rtype: int
         """
         return self._PgmWidth
@@ -2908,7 +2908,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmHeight(self):
-        """导播台主监输出的高度，单位为像素。
+        r"""导播台主监输出的高度，单位为像素。
         :rtype: int
         """
         return self._PgmHeight
@@ -2919,7 +2919,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmFps(self):
-        """导播台主监输出的帧率。
+        r"""导播台主监输出的帧率。
         :rtype: int
         """
         return self._PgmFps
@@ -2930,7 +2930,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmBitRate(self):
-        """导播台主监输出的码率，单位为kbps
+        r"""导播台主监输出的码率，单位为kbps
         :rtype: int
         """
         return self._PgmBitRate
@@ -2941,7 +2941,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmAudioBitRate(self):
-        """导播台主监输出的音频码率，单位为kbps。
+        r"""导播台主监输出的音频码率，单位为kbps。
         :rtype: int
         """
         return self._PgmAudioBitRate
@@ -2952,7 +2952,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def FeeType(self):
-        """导播台的计费类型。 
+        r"""导播台的计费类型。 
 0 通用型 1 播单型。
 注： 本参数暂无作用。
         :rtype: int
@@ -2965,7 +2965,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordTemplateId(self):
-        """录制模板id。
+        r"""录制模板id。
         :rtype: int
         """
         return self._RecordTemplateId
@@ -2976,7 +2976,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordStatus(self):
-        """录制状态。 
+        r"""录制状态。 
 0：未录制 
 1：录制中
         :rtype: int
@@ -2989,7 +2989,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordTaskId(self):
-        """录制接口返回的taskid
+        r"""录制接口返回的taskid
         :rtype: str
         """
         return self._RecordTaskId
@@ -3028,7 +3028,7 @@ class CasterInfo(AbstractModel):
 
 
 class CasterInputInfo(AbstractModel):
-    """导播台输入信息参数
+    r"""导播台输入信息参数
 
     """
 
@@ -3087,7 +3087,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def InputIndex(self):
-        """输入源Index。
+        r"""输入源Index。
 范围[1, 24]
         :rtype: int
         """
@@ -3099,7 +3099,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def InputType(self):
-        """输入源类型。
+        r"""输入源类型。
 范围[0,1,2,3,4]。
 0：推流地址。
 1：点播文件地址。
@@ -3116,7 +3116,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def InputUrl(self):
-        """输入源的源地址。
+        r"""输入源的源地址。
 最大允许长度512。
 当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
 
@@ -3130,7 +3130,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def Description(self):
-        """输入源描述。
+        r"""输入源描述。
 最大允许长度256字符。
         :rtype: str
         """
@@ -3142,7 +3142,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def InputUrls(self):
-        """点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
+        r"""点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
 单个地址最大允许长度512字符。
 最多允许同时填入5个地址。
 注：此时需保持InputUrl字段为空。
@@ -3156,7 +3156,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def LoopEnable(self):
-        """是否启用点播无限循环播放。
+        r"""是否启用点播无限循环播放。
 注：当前该字段未生效，默认为True。
         :rtype: bool
         """
@@ -3168,7 +3168,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def LoopNumber(self):
-        """点播循环次数。
+        r"""点播循环次数。
 允许值-1或正整数。
 当值为-1时，表示无限循环。
 当值为其他正整数时，表示循环对应次数。
@@ -3183,7 +3183,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def PullPushEnable(self):
-        """是否启用拉取到导播台。
+        r"""是否启用拉取到导播台。
 注：该字段默认强制为true。
         :rtype: bool
         """
@@ -3195,7 +3195,7 @@ class CasterInputInfo(AbstractModel):
 
     @property
     def Volume(self):
-        """输入源音量百分比。
+        r"""输入源音量百分比。
 默认为100。表示音量为原始大小。
 允许值[0,200]。
         :rtype: int
@@ -3228,7 +3228,7 @@ class CasterInputInfo(AbstractModel):
 
 
 class CasterLayoutInfo(AbstractModel):
-    """导播台布局参数。
+    r"""导播台布局参数。
 
     """
 
@@ -3263,7 +3263,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutIndex(self):
-        """布局Index。
+        r"""布局Index。
         :rtype: int
         """
         return self._LayoutIndex
@@ -3274,7 +3274,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutTemplateId(self):
-        """布局模板Id。
+        r"""布局模板Id。
 有效值[1，20，21，31，32，41]
 当使用布局模版时，无需LayoutParams参数，导播台将使用模版布局参数。
 
@@ -3288,7 +3288,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def InputIndexList(self):
-        """布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
+        r"""布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
 已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
         :rtype: str
         """
@@ -3300,7 +3300,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutParams(self):
-        """详细的布局参数列表。
+        r"""详细的布局参数列表。
         :rtype: list of CasterLayoutParam
         """
         return self._LayoutParams
@@ -3311,7 +3311,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutWidth(self):
-        """布局输出的宽度，单位为像素。
+        r"""布局输出的宽度，单位为像素。
 默认为1280像素。
 注：该值仅在画中画布局，且未设置PgmWidth时生效。
         :rtype: int
@@ -3324,7 +3324,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutHeight(self):
-        """布局输出的高度，单位为像素。
+        r"""布局输出的高度，单位为像素。
 注：该参数仅在画中画布局，且未设置PgmHeight时生效。
         :rtype: int
         """
@@ -3358,7 +3358,7 @@ class CasterLayoutInfo(AbstractModel):
 
 
 class CasterLayoutParam(AbstractModel):
-    """导播台布局详细参数。
+    r"""导播台布局详细参数。
 
     """
 
@@ -3387,7 +3387,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerId(self):
-        """布局层ID。
+        r"""布局层ID。
 在画面最终渲染时，将按ID从小到大的顺序，由下至上渲染。
         :rtype: int
         """
@@ -3399,7 +3399,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerWidth(self):
-        """布局层宽度。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上所占的比例值。
+        r"""布局层宽度。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上所占的比例值。
         :rtype: float
         """
         return self._LayerWidth
@@ -3410,7 +3410,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerHeight(self):
-        """布局层高度。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面上所占的比例值。
+        r"""布局层高度。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面上所占的比例值。
         :rtype: float
         """
         return self._LayerHeight
@@ -3421,7 +3421,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerLocationX(self):
-        """布局层位置x坐标。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上x坐标所占的比例值。
+        r"""布局层位置x坐标。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上x坐标所占的比例值。
         :rtype: float
         """
         return self._LayerLocationX
@@ -3432,7 +3432,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerLocationY(self):
-        """布局层位置Y坐标。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面Y坐标上所占的比例值。
+        r"""布局层位置Y坐标。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面Y坐标上所占的比例值。
         :rtype: float
         """
         return self._LayerLocationY
@@ -3443,7 +3443,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def UsePortraitSegment(self):
-        """是否启用抠图。
+        r"""是否启用抠图。
         :rtype: bool
         """
         return self._UsePortraitSegment
@@ -3471,7 +3471,7 @@ class CasterLayoutParam(AbstractModel):
 
 
 class CasterMarkPicInfo(AbstractModel):
-    """导播台水印信息。
+    r"""导播台水印信息。
 
     """
 
@@ -3519,7 +3519,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicIndex(self):
-        """水印图片Index。
+        r"""水印图片Index。
         :rtype: int
         """
         return self._MarkPicIndex
@@ -3530,7 +3530,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicId(self):
-        """注：该字段已废弃。
+        r"""注：该字段已废弃。
         :rtype: int
         """
         return self._MarkPicId
@@ -3541,7 +3541,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicWidth(self):
-        """水印图片在输出时的宽度。
+        r"""水印图片在输出时的宽度。
 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上所占的比例值。
         :rtype: float
@@ -3554,7 +3554,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicHeight(self):
-        """水印图片在输出时的高度。
+        r"""水印图片在输出时的高度。
 当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
 当该值为小于1大于0的小数时，单位为百分比，表示水印在输出上所占的比例值。
         :rtype: float
@@ -3567,7 +3567,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicLocationX(self):
-        """水印图片在输出时的X轴坐标。
+        r"""水印图片在输出时的X轴坐标。
 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上x坐标所占的比例值。
         :rtype: float
@@ -3580,7 +3580,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicLocationY(self):
-        """水印图片在输出时的Y坐标。
+        r"""水印图片在输出时的Y坐标。
 当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面Y坐标上所占的比例值。
         :rtype: float
@@ -3593,7 +3593,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def MarkPicUrl(self):
-        """水印地址。
+        r"""水印地址。
 最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
         :rtype: str
         """
@@ -3605,7 +3605,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def Description(self):
-        """水印描述。
+        r"""水印描述。
 最大允许长度为256。
         :rtype: str
         """
@@ -3617,7 +3617,7 @@ class CasterMarkPicInfo(AbstractModel):
 
     @property
     def IsEqualProportion(self):
-        """是否启用了等比例缩放。
+        r"""是否启用了等比例缩放。
 注：该字段仅做状态保存，无实际效果。
         :rtype: bool
         """
@@ -3649,7 +3649,7 @@ class CasterMarkPicInfo(AbstractModel):
 
 
 class CasterMarkWordInfo(AbstractModel):
-    """导播台文字水印配置。
+    r"""导播台文字水印配置。
 
     """
 
@@ -3712,7 +3712,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordIndex(self):
-        """文字水印Index。
+        r"""文字水印Index。
         :rtype: int
         """
         return self._MarkWordIndex
@@ -3723,7 +3723,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordText(self):
-        """文字水印内容。
+        r"""文字水印内容。
         :rtype: str
         """
         return self._MarkWordText
@@ -3734,7 +3734,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordFontSize(self):
-        """文字水印的字号。
+        r"""文字水印的字号。
 范围[16, 60]
         :rtype: int
         """
@@ -3746,7 +3746,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordFontColor(self):
-        """文字水印的颜色，值为HEX颜色代码
+        r"""文字水印的颜色，值为HEX颜色代码
         :rtype: str
         """
         return self._MarkWordFontColor
@@ -3757,7 +3757,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordFontType(self):
-        """文字水印的字体类型。
+        r"""文字水印的字体类型。
 范围[1,2]。
 1. 宋体
 2. 黑体
@@ -3771,7 +3771,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordLocationX(self):
-        """文字水印的x坐标位置，单位百分比。
+        r"""文字水印的x坐标位置，单位百分比。
 范围[0.0, 1.0]
 
         :rtype: float
@@ -3784,7 +3784,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordLocationY(self):
-        """文字水印的Y坐标位置，单位百分比。
+        r"""文字水印的Y坐标位置，单位百分比。
 范围[0.0, 1.0]
 
         :rtype: float
@@ -3797,7 +3797,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordRollEnable(self):
-        """是否开启文字跑马灯功能。
+        r"""是否开启文字跑马灯功能。
 默认为false。
         :rtype: bool
         """
@@ -3809,7 +3809,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordRollOnceTime(self):
-        """跑马灯文字显示一遍的时间，单位为秒。
+        r"""跑马灯文字显示一遍的时间，单位为秒。
 默认为5s。
 范围[5, 600]。
         :rtype: int
@@ -3822,7 +3822,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordRollDirection(self):
-        """跑马灯文字的方向。
+        r"""跑马灯文字的方向。
 默认值为0。
 范围[0,1]。
 0 从左到右
@@ -3837,7 +3837,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordRollStartLocationX(self):
-        """跑马灯文字显示的起始x坐标，单位百分比。
+        r"""跑马灯文字显示的起始x坐标，单位百分比。
 范围[0.0, 1.0]
         :rtype: float
         """
@@ -3849,7 +3849,7 @@ class CasterMarkWordInfo(AbstractModel):
 
     @property
     def MarkWordRollEndLocationX(self):
-        """跑马灯文字显示的截止x坐标，单位百分比。
+        r"""跑马灯文字显示的截止x坐标，单位百分比。
 范围[0.0, 1.0]
         :rtype: float
         """
@@ -3884,7 +3884,7 @@ class CasterMarkWordInfo(AbstractModel):
 
 
 class CasterOutputInfo(AbstractModel):
-    """导播台推流信息。
+    r"""导播台推流信息。
     当导播台主监启动后，系统将自动将主监推流到腾讯云和其他第三方平台。
 
     """
@@ -3933,7 +3933,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputIndex(self):
-        """推流信息Index。
+        r"""推流信息Index。
 当OutputType为1（表示推流到腾讯云直播）时，该值固定为0。
 范围[0,10]。
         :rtype: int
@@ -3946,7 +3946,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputUrl(self):
-        """rtmp协议推流地址。
+        r"""rtmp协议推流地址。
 最大允许长度512字符。
         :rtype: str
         """
@@ -3958,7 +3958,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -3969,7 +3969,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputStreamId(self):
-        """推流到腾讯云直播源站时，使用的流ID。
+        r"""推流到腾讯云直播源站时，使用的流ID。
 仅当OutputType为1时生效。
 最大允许128字符。
         :rtype: str
@@ -3982,7 +3982,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputType(self):
-        """推流类型。
+        r"""推流类型。
 范围[1,2]
 1. 推送到腾讯云直播源站。
 2. 推送到第三方源站。
@@ -3996,7 +3996,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputDomainName(self):
-        """推到腾讯云直播源站时，使用的域名。
+        r"""推到腾讯云直播源站时，使用的域名。
 最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
 仅在OutputType为1时生效。
         :rtype: str
@@ -4009,7 +4009,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputAppName(self):
-        """推到腾讯云直播源站时，使用的AppName。
+        r"""推到腾讯云直播源站时，使用的AppName。
 最大允许64字符。
 仅在OutputType为1时生效。
         :rtype: str
@@ -4022,7 +4022,7 @@ class CasterOutputInfo(AbstractModel):
 
     @property
     def OutputParam(self):
-        """推到腾讯云直播源站时需要添加的推流参数。
+        r"""推到腾讯云直播源站时需要添加的推流参数。
 最大允许长度256字符。
 仅在OutputType为1时生效。
         :rtype: str
@@ -4054,7 +4054,7 @@ class CasterOutputInfo(AbstractModel):
 
 
 class CdnPlayStatData(AbstractModel):
-    """下行播放统计指标
+    r"""下行播放统计指标
 
     """
 
@@ -4082,7 +4082,7 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Time(self):
-        """时间点，
+        r"""时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -4096,7 +4096,7 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位: Mbps。
+        r"""带宽，单位: Mbps。
         :rtype: float
         """
         return self._Bandwidth
@@ -4107,7 +4107,7 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Flux(self):
-        """流量，单位: MB。
+        r"""流量，单位: MB。
         :rtype: float
         """
         return self._Flux
@@ -4118,7 +4118,7 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Request(self):
-        """新增请求数。
+        r"""新增请求数。
         :rtype: int
         """
         return self._Request
@@ -4129,7 +4129,7 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Online(self):
-        """并发连接数。
+        r"""并发连接数。
         :rtype: int
         """
         return self._Online
@@ -4156,7 +4156,7 @@ class CdnPlayStatData(AbstractModel):
 
 
 class CertInfo(AbstractModel):
-    """证书信息。
+    r"""证书信息。
 
     """
 
@@ -4194,7 +4194,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: int
         """
         return self._CertId
@@ -4205,7 +4205,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertName(self):
-        """证书名称。
+        r"""证书名称。
         :rtype: str
         """
         return self._CertName
@@ -4216,7 +4216,7 @@ class CertInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -4227,7 +4227,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，UTC 格式。
+        r"""创建时间，UTC 格式。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -4239,7 +4239,7 @@ class CertInfo(AbstractModel):
 
     @property
     def HttpsCrt(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._HttpsCrt
@@ -4250,7 +4250,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型。
+        r"""证书类型。
 0：用户添加证书，
 1：腾讯云托管证书。
         :rtype: int
@@ -4263,7 +4263,7 @@ class CertInfo(AbstractModel):
 
     @property
     def CertExpireTime(self):
-        """证书过期时间，UTC 格式。
+        r"""证书过期时间，UTC 格式。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -4275,7 +4275,7 @@ class CertInfo(AbstractModel):
 
     @property
     def DomainList(self):
-        """使用此证书的域名列表。
+        r"""使用此证书的域名列表。
         :rtype: list of str
         """
         return self._DomainList
@@ -4305,7 +4305,7 @@ class CertInfo(AbstractModel):
 
 
 class ChildTemplateInfo(AbstractModel):
-    """自适应码率转码模板，子模板，出入参数。
+    r"""自适应码率转码模板，子模板，出入参数。
 
     """
 
@@ -4402,7 +4402,7 @@ origin: 保持原始编码格式。
 
     @property
     def TemplateId(self):
-        """自适应码率转码模板，子模板Id。
+        r"""自适应码率转码模板，子模板Id。
 入参时候，填写此字段，表示更新子模板，否则是新增子模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -4415,7 +4415,7 @@ origin: 保持原始编码格式。
 
     @property
     def TemplateName(self):
-        """子模板名称。
+        r"""子模板名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4427,7 +4427,7 @@ origin: 保持原始编码格式。
 
     @property
     def Vcodec(self):
-        """视频编码：h264/h265/origin，默认origin。
+        r"""视频编码：h264/h265/origin，默认origin。
 
 origin: 保持原始编码格式。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4441,7 +4441,7 @@ origin: 保持原始编码格式。
 
     @property
     def VideoBitrate(self):
-        """视频码率。范围：0kbps - 8000kbps。
+        r"""视频码率。范围：0kbps - 8000kbps。
 0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4455,7 +4455,7 @@ origin: 保持原始编码格式。
 
     @property
     def Width(self):
-        """宽，默认0。
+        r"""宽，默认0。
 范围[0-3000]。
 数值必须是2的倍数，0是原始宽度。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4469,7 +4469,7 @@ origin: 保持原始编码格式。
 
     @property
     def Height(self):
-        """高，默认0。
+        r"""高，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始高度。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4483,7 +4483,7 @@ origin: 保持原始编码格式。
 
     @property
     def Fps(self):
-        """帧率，默认0。
+        r"""帧率，默认0。
 范围0-60fps。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -4496,7 +4496,7 @@ origin: 保持原始编码格式。
 
     @property
     def Gop(self):
-        """关键帧间隔，单位：秒。
+        r"""关键帧间隔，单位：秒。
 默认原始的间隔。
 范围2-6。
 同一个父模板下面的所有子模板，gop必须相等且存在。
@@ -4511,7 +4511,7 @@ origin: 保持原始编码格式。
 
     @property
     def NeedVideo(self):
-        """是否保留视频，0：否，1：是。默认1。
+        r"""是否保留视频，0：否，1：是。默认1。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4523,7 +4523,7 @@ origin: 保持原始编码格式。
 
     @property
     def NeedAudio(self):
-        """是否保留音频，0：否，1：是。默认1。
+        r"""是否保留音频，0：否，1：是。默认1。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4535,7 +4535,7 @@ origin: 保持原始编码格式。
 
     @property
     def BitrateToOrig(self):
-        """当设置的码率>原始码率时，是否以原始码率为准。
+        r"""当设置的码率>原始码率时，是否以原始码率为准。
 0：否， 1：是
 默认 0。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4549,7 +4549,7 @@ origin: 保持原始编码格式。
 
     @property
     def HeightToOrig(self):
-        """当设置的高度>原始高度时，是否以原始高度为准。
+        r"""当设置的高度>原始高度时，是否以原始高度为准。
 0：否， 1：是
 默认 0。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4563,7 +4563,7 @@ origin: 保持原始编码格式。
 
     @property
     def FpsToOrig(self):
-        """当设置的帧率>原始帧率时，是否以原始帧率为准。
+        r"""当设置的帧率>原始帧率时，是否以原始帧率为准。
 0：否， 1：是
 默认 0。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4577,7 +4577,7 @@ origin: 保持原始编码格式。
 
     @property
     def ShortEdgeAsHeight(self):
-        """是否以短边作为高度，0：否，1：是。默认0。
+        r"""是否以短边作为高度，0：否，1：是。默认0。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4589,7 +4589,7 @@ origin: 保持原始编码格式。
 
     @property
     def HlsContainerFormat(self):
-        """HLS 分片类型。
+        r"""HLS 分片类型。
 可选值：ts、fmp4。
 注：编码方式为 H.265 时生效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4603,7 +4603,7 @@ origin: 保持原始编码格式。
 
     @property
     def HlsMp4VideoCodecTag(self):
-        """编码标签。
+        r"""编码标签。
 可选值：hvc1、hev1。
 注：HLS 分片类型选择 fmp4 时生效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4644,7 +4644,7 @@ origin: 保持原始编码格式。
 
 
 class ClientIpPlaySumInfo(AbstractModel):
-    """客户端ip播放汇总信息。
+    r"""客户端ip播放汇总信息。
 
     """
 
@@ -4672,7 +4672,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        """客户端 IP，点分型。
+        r"""客户端 IP，点分型。
         :rtype: str
         """
         return self._ClientIp
@@ -4683,7 +4683,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def Province(self):
-        """客户端所在省份。
+        r"""客户端所在省份。
         :rtype: str
         """
         return self._Province
@@ -4694,7 +4694,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """总流量。
+        r"""总流量。
         :rtype: float
         """
         return self._TotalFlux
@@ -4705,7 +4705,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalRequest(self):
-        """总请求数。
+        r"""总请求数。
         :rtype: int
         """
         return self._TotalRequest
@@ -4716,7 +4716,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalFailedRequest(self):
-        """总失败请求数。
+        r"""总失败请求数。
         :rtype: int
         """
         return self._TotalFailedRequest
@@ -4727,7 +4727,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def CountryArea(self):
-        """客户端所在国家。
+        r"""客户端所在国家。
         :rtype: str
         """
         return self._CountryArea
@@ -4755,7 +4755,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
 
 class CloudEffectInfo(AbstractModel):
-    """云端特效信息。
+    r"""云端特效信息。
 
     """
 
@@ -4800,7 +4800,7 @@ UGC : 用户上传特效。
 
     @property
     def Id(self):
-        """云端特效 ID。
+        r"""云端特效 ID。
         :rtype: str
         """
         return self._Id
@@ -4811,7 +4811,7 @@ UGC : 用户上传特效。
 
     @property
     def Prompt(self):
-        """云端特效描述词。
+        r"""云端特效描述词。
         :rtype: str
         """
         return self._Prompt
@@ -4822,7 +4822,7 @@ UGC : 用户上传特效。
 
     @property
     def Flag(self):
-        """云端特效标签。
+        r"""云端特效标签。
         :rtype: str
         """
         return self._Flag
@@ -4833,7 +4833,7 @@ UGC : 用户上传特效。
 
     @property
     def Status(self):
-        """云端特效生成状态。
+        r"""云端特效生成状态。
 生成中 - GENERATING。
 处理中 - PROCESSING。
 生成失败 - FAILED。
@@ -4849,7 +4849,7 @@ UGC : 用户上传特效。
 
     @property
     def Message(self):
-        """特效信息，生成失败时，此处返回失败原因。
+        r"""特效信息，生成失败时，此处返回失败原因。
         :rtype: str
         """
         return self._Message
@@ -4860,7 +4860,7 @@ UGC : 用户上传特效。
 
     @property
     def PreviewImageUrl(self):
-        """云端特效预览图片。
+        r"""云端特效预览图片。
         :rtype: str
         """
         return self._PreviewImageUrl
@@ -4871,7 +4871,7 @@ UGC : 用户上传特效。
 
     @property
     def Type(self):
-        """云端特效类型。
+        r"""云端特效类型。
 PGC : 官方精品特效。
 AIGC : AI生成的特效。
 UGC : 用户上传特效。
@@ -4885,7 +4885,7 @@ UGC : 用户上传特效。
 
     @property
     def CreateTime(self):
-        """云端特效创建时间。
+        r"""云端特效创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -4896,7 +4896,7 @@ UGC : 用户上传特效。
 
     @property
     def UpdateTime(self):
-        """云端特效更新时间。
+        r"""云端特效更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -4927,7 +4927,7 @@ UGC : 用户上传特效。
 
 
 class CommonMixControlParams(AbstractModel):
-    """通用混流控制参数
+    r"""通用混流控制参数
 
     """
 
@@ -4953,7 +4953,7 @@ class CommonMixControlParams(AbstractModel):
 
     @property
     def UseMixCropCenter(self):
-        """取值范围[0,1]。
+        r"""取值范围[0,1]。
 填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
         :rtype: int
         """
@@ -4965,7 +4965,7 @@ class CommonMixControlParams(AbstractModel):
 
     @property
     def AllowCopy(self):
-        """取值范围[0,1]
+        r"""取值范围[0,1]
 填1时，当InputStreamList中个数为1时，且OutputParams.OutputStreamType为1时，不执行取消操作，执行拷贝流操作
         :rtype: int
         """
@@ -4977,7 +4977,7 @@ class CommonMixControlParams(AbstractModel):
 
     @property
     def PassInputSei(self):
-        """取值范围[0,1]
+        r"""取值范围[0,1]
 填1时，透传原始流的sei
         :rtype: int
         """
@@ -4989,7 +4989,7 @@ class CommonMixControlParams(AbstractModel):
 
     @property
     def UsePictureTransparent(self):
-        """取值范围[0,1]
+        r"""取值范围[0,1]
 填1时，图片输入中的透明通道生效。
         :rtype: int
         """
@@ -5016,7 +5016,7 @@ class CommonMixControlParams(AbstractModel):
 
 
 class CommonMixCropParams(AbstractModel):
-    """通用混流输入裁剪参数。
+    r"""通用混流输入裁剪参数。
 
     """
 
@@ -5038,7 +5038,7 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropWidth(self):
-        """裁剪的宽度。取值范围[0，2000]。
+        r"""裁剪的宽度。取值范围[0，2000]。
         :rtype: float
         """
         return self._CropWidth
@@ -5049,7 +5049,7 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropHeight(self):
-        """裁剪的高度。取值范围[0，2000]。
+        r"""裁剪的高度。取值范围[0，2000]。
         :rtype: float
         """
         return self._CropHeight
@@ -5060,7 +5060,7 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropStartLocationX(self):
-        """裁剪的起始X坐标。取值范围[0，2000]。
+        r"""裁剪的起始X坐标。取值范围[0，2000]。
         :rtype: float
         """
         return self._CropStartLocationX
@@ -5071,7 +5071,7 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropStartLocationY(self):
-        """裁剪的起始Y坐标。取值范围[0，2000]。
+        r"""裁剪的起始Y坐标。取值范围[0，2000]。
         :rtype: float
         """
         return self._CropStartLocationY
@@ -5097,7 +5097,7 @@ class CommonMixCropParams(AbstractModel):
 
 
 class CommonMixInputParam(AbstractModel):
-    """通用混流输入参数。
+    r"""通用混流输入参数。
 
     """
 
@@ -5121,7 +5121,7 @@ class CommonMixInputParam(AbstractModel):
 
     @property
     def InputStreamName(self):
-        """输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+        r"""输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
 当LayoutParams.InputType=0(音视频)/4(纯音频)/5(纯视频)时，该值为需要混流的流名称。
 当LayoutParams.InputType=2(图片)/3(画布)时，该值仅用作标识输入，可用类似Canvas1、Pictrue1的名称。
         :rtype: str
@@ -5134,7 +5134,7 @@ class CommonMixInputParam(AbstractModel):
 
     @property
     def LayoutParams(self):
-        """输入流布局参数。
+        r"""输入流布局参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
         """
         return self._LayoutParams
@@ -5145,7 +5145,7 @@ class CommonMixInputParam(AbstractModel):
 
     @property
     def CropParams(self):
-        """输入流裁剪参数。
+        r"""输入流裁剪参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
         """
         return self._CropParams
@@ -5156,7 +5156,7 @@ class CommonMixInputParam(AbstractModel):
 
     @property
     def PortraitSegmentParams(self):
-        """抠图参数。
+        r"""抠图参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.MixPortraitSegmentParams`
         """
         return self._PortraitSegmentParams
@@ -5188,7 +5188,7 @@ class CommonMixInputParam(AbstractModel):
 
 
 class CommonMixLayoutParams(AbstractModel):
-    """通用混流布局参数。
+    r"""通用混流布局参数。
 
     """
 
@@ -5257,7 +5257,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def ImageLayer(self):
-        """输入图层。取值范围[1，16]。
+        r"""输入图层。取值范围[1，16]。
 1)背景流（即大主播画面或画布）的 image_layer 填1。
 2)纯音频混流，该参数也需填。
 注意：不同输入，该值不可重复
@@ -5271,7 +5271,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def InputType(self):
-        """输入类型。取值范围[0，5]。
+        r"""输入类型。取值范围[0，5]。
 不填默认为0。
 0表示输入流为音视频。
 2表示输入流为图片。
@@ -5288,7 +5288,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """输入画面在输出时的高度。取值范围：
+        r"""输入画面在输出时的高度。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为输入流的高度。
@@ -5303,7 +5303,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """输入画面在输出时的宽度。取值范围：
+        r"""输入画面在输出时的宽度。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为输入流的宽度。
@@ -5318,7 +5318,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def LocationX(self):
-        """输入在输出画面的X偏移。取值范围：
+        r"""输入在输出画面的X偏移。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为0。
@@ -5334,7 +5334,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def LocationY(self):
-        """输入在输出画面的Y偏移。取值范围：
+        r"""输入在输出画面的Y偏移。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为0。
@@ -5350,7 +5350,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def Color(self):
-        """当InputType为3(画布)时，该值表示画布的颜色。
+        r"""当InputType为3(画布)时，该值表示画布的颜色。
 常用的颜色有：
 红色：0xCC0033。
 黄色：0xCC9900。
@@ -5369,7 +5369,7 @@ class CommonMixLayoutParams(AbstractModel):
 
     @property
     def WatermarkId(self):
-        """当InputType为2(图片)时，该值是水印ID。
+        r"""当InputType为2(图片)时，该值是水印ID。
         :rtype: int
         """
         return self._WatermarkId
@@ -5399,7 +5399,7 @@ class CommonMixLayoutParams(AbstractModel):
 
 
 class CommonMixOutputParams(AbstractModel):
-    """通用混流输出参数。
+    r"""通用混流输出参数。
 
     """
 
@@ -5446,7 +5446,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputStreamName(self):
-        """输出流名称。
+        r"""输出流名称。
         :rtype: str
         """
         return self._OutputStreamName
@@ -5457,7 +5457,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputStreamType(self):
-        """输出流类型，取值范围[0,1]。
+        r"""输出流类型，取值范围[0,1]。
 不填默认为0。
 当输出流为输入流 list 中的一条时，填写0。
 当期望生成的混流结果成为一条新流时，该值填为1。
@@ -5472,7 +5472,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputStreamBitRate(self):
-        """输出流比特率。取值范围[1，10000]。
+        r"""输出流比特率。取值范围[1，10000]。
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5484,7 +5484,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputStreamGop(self):
-        """输出流GOP大小。取值范围[1,10]。
+        r"""输出流GOP大小。取值范围[1,10]。
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5496,7 +5496,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputStreamFrameRate(self):
-        """输出流帧率大小。取值范围[1,60]。
+        r"""输出流帧率大小。取值范围[1,60]。
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5508,7 +5508,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputAudioBitRate(self):
-        """输出流音频比特率。取值范围[1,500]
+        r"""输出流音频比特率。取值范围[1,500]
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5520,7 +5520,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputAudioSampleRate(self):
-        """输出流音频采样率。取值范围[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
+        r"""输出流音频采样率。取值范围[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5532,7 +5532,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def OutputAudioChannels(self):
-        """输出流音频声道数。取值范围[1,2]。
+        r"""输出流音频声道数。取值范围[1,2]。
 不填的情况下，系统会自动判断。
         :rtype: int
         """
@@ -5544,7 +5544,7 @@ class CommonMixOutputParams(AbstractModel):
 
     @property
     def MixSei(self):
-        """输出流中的sei信息。如果无特殊需要，不填。
+        r"""输出流中的sei信息。如果无特殊需要，不填。
         :rtype: str
         """
         return self._MixSei
@@ -5575,7 +5575,7 @@ class CommonMixOutputParams(AbstractModel):
 
 
 class ConcurrentRecordStreamNum(AbstractModel):
-    """并发录制路数
+    r"""并发录制路数
 
     """
 
@@ -5591,7 +5591,7 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     @property
     def Time(self):
-        """时间点。
+        r"""时间点。
         :rtype: str
         """
         return self._Time
@@ -5602,7 +5602,7 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     @property
     def Num(self):
-        """路数。
+        r"""路数。
         :rtype: int
         """
         return self._Num
@@ -5626,7 +5626,7 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
 
 class CopyCasterRequest(AbstractModel):
-    """CopyCaster请求参数结构体
+    r"""CopyCaster请求参数结构体
 
     """
 
@@ -5646,7 +5646,7 @@ class CopyCasterRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """源导播台的ID
+        r"""源导播台的ID
         :rtype: int
         """
         return self._CasterId
@@ -5657,7 +5657,7 @@ class CopyCasterRequest(AbstractModel):
 
     @property
     def CasterName(self):
-        """复制产生的新导播台名称
+        r"""复制产生的新导播台名称
         :rtype: str
         """
         return self._CasterName
@@ -5668,7 +5668,7 @@ class CopyCasterRequest(AbstractModel):
 
     @property
     def OutputStreamId(self):
-        """复制产生的导播台推送到云直播的流id
+        r"""复制产生的导播台推送到云直播的流id
 注意：该流id不能与云直播中的流id重复
         :rtype: str
         """
@@ -5694,7 +5694,7 @@ class CopyCasterRequest(AbstractModel):
 
 
 class CopyCasterResponse(AbstractModel):
-    """CopyCaster返回参数结构体
+    r"""CopyCaster返回参数结构体
 
     """
 
@@ -5710,7 +5710,7 @@ class CopyCasterResponse(AbstractModel):
 
     @property
     def CasterId(self):
-        """复制生成的导播台ID
+        r"""复制生成的导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -5721,7 +5721,7 @@ class CopyCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5737,7 +5737,7 @@ class CopyCasterResponse(AbstractModel):
 
 
 class CreateAuditKeywordsRequest(AbstractModel):
-    """CreateAuditKeywords请求参数结构体
+    r"""CreateAuditKeywords请求参数结构体
 
     """
 
@@ -5753,7 +5753,7 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        """关键词列表。
+        r"""关键词列表。
         :rtype: list of AuditKeyword
         """
         return self._Keywords
@@ -5764,7 +5764,7 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     @property
     def LibId(self):
-        """直播审核词库Id。
+        r"""直播审核词库Id。
         :rtype: str
         """
         return self._LibId
@@ -5793,7 +5793,7 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
 
 class CreateAuditKeywordsResponse(AbstractModel):
-    """CreateAuditKeywords返回参数结构体
+    r"""CreateAuditKeywords返回参数结构体
 
     """
 
@@ -5812,7 +5812,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     @property
     def KeywordIds(self):
-        """添加成功的关键词 Id 列表。
+        r"""添加成功的关键词 Id 列表。
         :rtype: list of str
         """
         return self._KeywordIds
@@ -5823,7 +5823,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     @property
     def DupInfos(self):
-        """重复关键词列表。
+        r"""重复关键词列表。
         :rtype: list of AuditKeywordInfo
         """
         return self._DupInfos
@@ -5834,7 +5834,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5856,7 +5856,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
 
 class CreateCasterInputPushUrlRequest(AbstractModel):
-    """CreateCasterInputPushUrl请求参数结构体
+    r"""CreateCasterInputPushUrl请求参数结构体
 
     """
 
@@ -5878,7 +5878,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -5889,7 +5889,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
 
     @property
     def InputIndex(self):
-        """请求生成推流地址的输入Index。
+        r"""请求生成推流地址的输入Index。
 允许范围[1,24]。
         :rtype: int
         """
@@ -5901,7 +5901,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """生成推流地址协议。
+        r"""生成推流地址协议。
 范围[rtmp,webrtc]。
 注：获取webrtc推流地址时，需配合腾讯云快直播推流sdk才可成功推流。
         :rtype: str
@@ -5928,7 +5928,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
 
 
 class CreateCasterInputPushUrlResponse(AbstractModel):
-    """CreateCasterInputPushUrl返回参数结构体
+    r"""CreateCasterInputPushUrl返回参数结构体
 
     """
 
@@ -5944,7 +5944,7 @@ class CreateCasterInputPushUrlResponse(AbstractModel):
 
     @property
     def PushUrl(self):
-        """生成可使用的推流地址。
+        r"""生成可使用的推流地址。
         :rtype: str
         """
         return self._PushUrl
@@ -5955,7 +5955,7 @@ class CreateCasterInputPushUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5971,7 +5971,7 @@ class CreateCasterInputPushUrlResponse(AbstractModel):
 
 
 class CreateCasterPgmFromPvwRequest(AbstractModel):
-    """CreateCasterPgmFromPvw请求参数结构体
+    r"""CreateCasterPgmFromPvw请求参数结构体
 
     """
 
@@ -5984,7 +5984,7 @@ class CreateCasterPgmFromPvwRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -6007,7 +6007,7 @@ class CreateCasterPgmFromPvwRequest(AbstractModel):
 
 
 class CreateCasterPgmFromPvwResponse(AbstractModel):
-    """CreateCasterPgmFromPvw返回参数结构体
+    r"""CreateCasterPgmFromPvw返回参数结构体
 
     """
 
@@ -6036,7 +6036,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
     @property
     def PgmPlayUrl(self):
-        """主监任务的rtmp协议预览地址。 
+        r"""主监任务的rtmp协议预览地址。 
 注：该地址仅供预览，不可分发。
         :rtype: str
         """
@@ -6048,7 +6048,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
     @property
     def CdnPlayUrl(self):
-        """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
+        r"""注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
         :rtype: str
         """
         return self._CdnPlayUrl
@@ -6059,7 +6059,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
     @property
     def CdnStreamId(self):
-        """主监任务在腾讯云直播侧的流ID。
+        r"""主监任务在腾讯云直播侧的流ID。
         :rtype: str
         """
         return self._CdnStreamId
@@ -6070,7 +6070,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
     @property
     def PgmWebRTCPlayUrl(self):
-        """主监任务的webrtc协议播放地址。 
+        r"""主监任务的webrtc协议播放地址。 
 注：
 1.该预览地址仅作为预览，不可分发。
 2.webrtc播放地址需配合腾讯云快直播播放sdk使用。
@@ -6084,7 +6084,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6103,7 +6103,7 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 
 
 class CreateCasterPgmRequest(AbstractModel):
-    """CreateCasterPgm请求参数结构体
+    r"""CreateCasterPgm请求参数结构体
 
     """
 
@@ -6119,7 +6119,7 @@ class CreateCasterPgmRequest(AbstractModel):
 
     @property
     def PgmDisplayInfo(self):
-        """导播台展示信息参数。
+        r"""导播台展示信息参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PgmDisplayInfo
@@ -6130,7 +6130,7 @@ class CreateCasterPgmRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -6156,7 +6156,7 @@ class CreateCasterPgmRequest(AbstractModel):
 
 
 class CreateCasterPgmResponse(AbstractModel):
-    """CreateCasterPgm返回参数结构体
+    r"""CreateCasterPgm返回参数结构体
 
     """
 
@@ -6185,7 +6185,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
     @property
     def PgmPlayUrl(self):
-        """主监任务的rtmp协议预览地址。
+        r"""主监任务的rtmp协议预览地址。
 注：该地址仅供预览，不可分发。
         :rtype: str
         """
@@ -6197,7 +6197,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
     @property
     def CdnPlayUrl(self):
-        """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
+        r"""注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
         :rtype: str
         """
         return self._CdnPlayUrl
@@ -6208,7 +6208,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
     @property
     def CdnStreamId(self):
-        """主监任务在腾讯云直播侧的流ID。
+        r"""主监任务在腾讯云直播侧的流ID。
         :rtype: str
         """
         return self._CdnStreamId
@@ -6219,7 +6219,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
     @property
     def PgmWebRTCPlayUrl(self):
-        """主监任务的webrtc协议播放地址。
+        r"""主监任务的webrtc协议播放地址。
 注：
 1. 该预览地址仅作为预览，不可分发。
 2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
@@ -6233,7 +6233,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6252,7 +6252,7 @@ class CreateCasterPgmResponse(AbstractModel):
 
 
 class CreateCasterPvwRequest(AbstractModel):
-    """CreateCasterPvw请求参数结构体
+    r"""CreateCasterPvw请求参数结构体
 
     """
 
@@ -6268,7 +6268,7 @@ class CreateCasterPvwRequest(AbstractModel):
 
     @property
     def PvwDisplayInfo(self):
-        """导播台预监展示信息参数
+        r"""导播台预监展示信息参数
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PvwDisplayInfo
@@ -6279,7 +6279,7 @@ class CreateCasterPvwRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -6305,7 +6305,7 @@ class CreateCasterPvwRequest(AbstractModel):
 
 
 class CreateCasterPvwResponse(AbstractModel):
-    """CreateCasterPvw返回参数结构体
+    r"""CreateCasterPvw返回参数结构体
 
     """
 
@@ -6329,7 +6329,7 @@ class CreateCasterPvwResponse(AbstractModel):
 
     @property
     def PvwPlayUrl(self):
-        """预监任务的画面rtmp协议预览地址。
+        r"""预监任务的画面rtmp协议预览地址。
 注：该预览地址仅供画面预览，不可分发。
         :rtype: str
         """
@@ -6341,7 +6341,7 @@ class CreateCasterPvwResponse(AbstractModel):
 
     @property
     def PvwWebRTCPlayUrl(self):
-        """预监任务的webrtc协议预览画面。
+        r"""预监任务的webrtc协议预览画面。
 注：
 1. 该预览地址仅供预览，不可分发。
 2. webrtc播放地址，需配合腾讯云快直播播放sdk使用
@@ -6356,7 +6356,7 @@ class CreateCasterPvwResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6373,7 +6373,7 @@ class CreateCasterPvwResponse(AbstractModel):
 
 
 class CreateCasterRequest(AbstractModel):
-    """CreateCaster请求参数结构体
+    r"""CreateCaster请求参数结构体
 
     """
 
@@ -6436,7 +6436,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def CasterName(self):
-        """导播台名称
+        r"""导播台名称
         :rtype: str
         """
         return self._CasterName
@@ -6447,7 +6447,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def Description(self):
-        """导播台的描述
+        r"""导播台的描述
 最大允许长度256
         :rtype: str
         """
@@ -6459,7 +6459,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """导播台的过期时间戳。值为-1或unix时间戳。
+        r"""导播台的过期时间戳。值为-1或unix时间戳。
 默认值为-1。
 当值为-1时，表示该导播台永不过期。
 当值为正常unix时间戳时，导播台将在该时间过期。
@@ -6475,7 +6475,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        """导播台延时播放时间，单位为秒。
+        r"""导播台延时播放时间，单位为秒。
 默认为0，最大支持300秒
         :rtype: int
         """
@@ -6487,7 +6487,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def TransitionType(self):
-        """导播台转场类型。
+        r"""导播台转场类型。
 默认为空。
 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
         :rtype: str
@@ -6500,7 +6500,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmWidth(self):
-        """导播台主监输出的宽度，单位为像素。
+        r"""导播台主监输出的宽度，单位为像素。
 默认为1280，最大允许4096。
         :rtype: int
         """
@@ -6512,7 +6512,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmHeight(self):
-        """导播台主监输出的高度，单位为像素。
+        r"""导播台主监输出的高度，单位为像素。
 默认为720，最大允许2160。
         :rtype: int
         """
@@ -6524,7 +6524,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmFps(self):
-        """导播台主监输出的帧率。
+        r"""导播台主监输出的帧率。
 默认为0，表示随源输出。
 最大支持60。
         :rtype: int
@@ -6537,7 +6537,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmBitRate(self):
-        """导播台主监输出的码率，单位为kbps。
+        r"""导播台主监输出的码率，单位为kbps。
 默认为0，表示随源的码率输出。
 最大允许10000kbps。
         :rtype: int
@@ -6550,7 +6550,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def FeeType(self):
-        """导播台的计费类型。
+        r"""导播台的计费类型。
 0 通用型 
 1 播单型。
 注： 本参数暂无作用。
@@ -6564,7 +6564,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmAudioBitRate(self):
-        """导播台主监输出的音频码率，单位为kbps。
+        r"""导播台主监输出的音频码率，单位为kbps。
 可选项：[0, 128, 192, 256]
 默认值为0，表示随源的音频码率输出。
         :rtype: int
@@ -6599,7 +6599,7 @@ class CreateCasterRequest(AbstractModel):
 
 
 class CreateCasterResponse(AbstractModel):
-    """CreateCaster返回参数结构体
+    r"""CreateCaster返回参数结构体
 
     """
 
@@ -6615,7 +6615,7 @@ class CreateCasterResponse(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -6626,7 +6626,7 @@ class CreateCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6642,7 +6642,7 @@ class CreateCasterResponse(AbstractModel):
 
 
 class CreateCommonMixStreamRequest(AbstractModel):
-    """CreateCommonMixStream请求参数结构体
+    r"""CreateCommonMixStream请求参数结构体
 
     """
 
@@ -6673,7 +6673,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     @property
     def MixStreamSessionId(self):
-        """混流会话（申请混流开始到取消混流结束）标识 ID。80字节以内，仅含字母、数字以及下划线的字符串。
+        r"""混流会话（申请混流开始到取消混流结束）标识 ID。80字节以内，仅含字母、数字以及下划线的字符串。
         :rtype: str
         """
         return self._MixStreamSessionId
@@ -6684,7 +6684,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     @property
     def InputStreamList(self):
-        """混流输入流列表。
+        r"""混流输入流列表。
         :rtype: list of CommonMixInputParam
         """
         return self._InputStreamList
@@ -6695,7 +6695,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     @property
     def OutputParams(self):
-        """混流输出流参数。
+        r"""混流输出流参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
         """
         return self._OutputParams
@@ -6706,7 +6706,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     @property
     def MixStreamTemplateId(self):
-        """输入模板 ID，若设置该参数，将按默认模板布局输出，无需填入自定义位置参数。
+        r"""输入模板 ID，若设置该参数，将按默认模板布局输出，无需填入自定义位置参数。
 不填默认为0。
 两输入源支持10，20，30，40，50。
 三输入源支持310，390，391。
@@ -6723,7 +6723,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     @property
     def ControlParams(self):
-        """混流的特殊控制参数。如无特殊需求，无需填写。
+        r"""混流的特殊控制参数。如无特殊需求，无需填写。
         :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
         """
         return self._ControlParams
@@ -6759,7 +6759,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
 
 class CreateCommonMixStreamResponse(AbstractModel):
-    """CreateCommonMixStream返回参数结构体
+    r"""CreateCommonMixStream返回参数结构体
 
     """
 
@@ -6772,7 +6772,7 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6787,7 +6787,7 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):
-    """CreateLiveCallbackRule请求参数结构体
+    r"""CreateLiveCallbackRule请求参数结构体
 
     """
 
@@ -6806,7 +6806,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -6817,7 +6817,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :rtype: str
         """
         return self._AppName
@@ -6828,7 +6828,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID。
+        r"""模板ID。
         :rtype: int
         """
         return self._TemplateId
@@ -6853,7 +6853,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
 
 class CreateLiveCallbackRuleResponse(AbstractModel):
-    """CreateLiveCallbackRule返回参数结构体
+    r"""CreateLiveCallbackRule返回参数结构体
 
     """
 
@@ -6866,7 +6866,7 @@ class CreateLiveCallbackRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6881,7 +6881,7 @@ class CreateLiveCallbackRuleResponse(AbstractModel):
 
 
 class CreateLiveCallbackTemplateRequest(AbstractModel):
-    """CreateLiveCallbackTemplate请求参数结构体
+    r"""CreateLiveCallbackTemplate请求参数结构体
 
     """
 
@@ -6944,7 +6944,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -6957,7 +6957,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -6970,7 +6970,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamBeginNotifyUrl(self):
-        """开播回调 URL，
+        r"""开播回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -6982,7 +6982,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamEndNotifyUrl(self):
-        """断流回调 URL，
+        r"""断流回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -6994,7 +6994,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordNotifyUrl(self):
-        """录制文件回调 URL，
+        r"""录制文件回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -7006,7 +7006,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordStatusNotifyUrl(self):
-        """录制状态回调 URL ，
+        r"""录制状态回调 URL ，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -7018,7 +7018,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def SnapshotNotifyUrl(self):
-        """截图回调 URL，
+        r"""截图回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -7030,7 +7030,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PornCensorshipNotifyUrl(self):
-        """鉴黄回调 URL ，
+        r"""鉴黄回调 URL ，
 相关协议文档：[事件消息通知](/document/product/267/32741)。
         :rtype: str
         """
@@ -7042,7 +7042,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+        r"""回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 [事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -7054,7 +7054,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamMixNotifyUrl(self):
-        """参数已弃用。
+        r"""参数已弃用。
         :rtype: str
         """
         return self._StreamMixNotifyUrl
@@ -7065,7 +7065,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PushExceptionNotifyUrl(self):
-        """推流异常回调 URL。
+        r"""推流异常回调 URL。
         :rtype: str
         """
         return self._PushExceptionNotifyUrl
@@ -7076,7 +7076,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def AudioAuditNotifyUrl(self):
-        """音频审核回调 URL。
+        r"""音频审核回调 URL。
         :rtype: str
         """
         return self._AudioAuditNotifyUrl
@@ -7087,7 +7087,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordExceptionNotifyUrl(self):
-        """录制异常回调 URL。
+        r"""录制异常回调 URL。
         :rtype: str
         """
         return self._RecordExceptionNotifyUrl
@@ -7098,7 +7098,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordExceptionLevels(self):
-        """录制异常回调级别，可选择：error、warning、info。
+        r"""录制异常回调级别，可选择：error、warning、info。
         :rtype: list of str
         """
         return self._RecordExceptionLevels
@@ -7134,7 +7134,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
 
 class CreateLiveCallbackTemplateResponse(AbstractModel):
-    """CreateLiveCallbackTemplate返回参数结构体
+    r"""CreateLiveCallbackTemplate返回参数结构体
 
     """
 
@@ -7150,7 +7150,7 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID。
+        r"""模板ID。
         :rtype: int
         """
         return self._TemplateId
@@ -7161,7 +7161,7 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7177,7 +7177,7 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
 
 class CreateLivePadRuleRequest(AbstractModel):
-    """CreateLivePadRule请求参数结构体
+    r"""CreateLivePadRule请求参数结构体
 
     """
 
@@ -7200,7 +7200,7 @@ class CreateLivePadRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -7211,7 +7211,7 @@ class CreateLivePadRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -7222,7 +7222,7 @@ class CreateLivePadRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -7233,7 +7233,7 @@ class CreateLivePadRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
         :rtype: str
         """
@@ -7260,7 +7260,7 @@ class CreateLivePadRuleRequest(AbstractModel):
 
 
 class CreateLivePadRuleResponse(AbstractModel):
-    """CreateLivePadRule返回参数结构体
+    r"""CreateLivePadRule返回参数结构体
 
     """
 
@@ -7273,7 +7273,7 @@ class CreateLivePadRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7288,7 +7288,7 @@ class CreateLivePadRuleResponse(AbstractModel):
 
 
 class CreateLivePadTemplateRequest(AbstractModel):
-    """CreateLivePadTemplate请求参数结构体
+    r"""CreateLivePadTemplate请求参数结构体
 
     """
 
@@ -7326,7 +7326,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -7339,7 +7339,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Url(self):
-        """垫片内容。
+        r"""垫片内容。
         :rtype: str
         """
         return self._Url
@@ -7350,7 +7350,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -7363,7 +7363,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def WaitDuration(self):
-        """断流等待时间。
+        r"""断流等待时间。
 取值范围：0-30000。
 单位：ms。
         :rtype: int
@@ -7376,7 +7376,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def MaxDuration(self):
-        """最大垫片时长。
+        r"""最大垫片时长。
 取值范围：0 - 正无穷。
 单位：ms。
         :rtype: int
@@ -7389,7 +7389,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        """垫片内容类型：
+        r"""垫片内容类型：
 1：图片，2：视频。
 默认值：1。
         :rtype: int
@@ -7419,7 +7419,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
 
 class CreateLivePadTemplateResponse(AbstractModel):
-    """CreateLivePadTemplate返回参数结构体
+    r"""CreateLivePadTemplate返回参数结构体
 
     """
 
@@ -7435,7 +7435,7 @@ class CreateLivePadTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        r"""模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -7446,7 +7446,7 @@ class CreateLivePadTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7462,7 +7462,7 @@ class CreateLivePadTemplateResponse(AbstractModel):
 
 
 class CreateLivePullStreamTaskRequest(AbstractModel):
-    """CreateLivePullStreamTask请求参数结构体
+    r"""CreateLivePullStreamTask请求参数结构体
 
     """
 
@@ -7628,7 +7628,7 @@ PullVodPushLive -点播。
 
     @property
     def SourceType(self):
-        """拉流源的类型：
+        r"""拉流源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播，
 PullPicPushLive -图片。
@@ -7642,7 +7642,7 @@ PullPicPushLive -图片。
 
     @property
     def SourceUrls(self):
-        """拉流源 url 列表。
+        r"""拉流源 url 列表。
 SourceType 为直播（PullLivePushLive）只可以填1个，
 SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 当前支持的文件格式：flv，mp4，hls。
@@ -7665,7 +7665,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 将拉取过来的流推到该域名。
 注意：如果目标地址为非云直播，且样式不同于云直播，请使用 ToUrl 传入完整推流地址，详细用法请参考 ToUrl 参数说明。
         :rtype: str
@@ -7678,7 +7678,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
 将拉取过来的流推到该路径。
         :rtype: str
         """
@@ -7690,7 +7690,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def StreamName(self):
-        """推流名称。
+        r"""推流名称。
 将拉取过来的流推到该流名称。
         :rtype: str
         """
@@ -7702,7 +7702,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 使用 UTC 格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时。
@@ -7716,7 +7716,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def EndTime(self):
-        """结束时间，注意：1. 结束时间必须大于开始时间；2. 结束时间必须大于当前时间；3. 结束时间 和 开始时间 间隔必须小于30天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时。
+        r"""结束时间，注意：1. 结束时间必须大于开始时间；2. 结束时间必须大于当前时间；3. 结束时间 和 开始时间 间隔必须小于30天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时。
         :rtype: str
         """
         return self._EndTime
@@ -7727,7 +7727,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def Operator(self):
-        """任务操作人备注。
+        r"""任务操作人备注。
         :rtype: str
         """
         return self._Operator
@@ -7738,7 +7738,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def PushArgs(self):
-        """推流参数。
+        r"""推流参数。
 推流时携带自定义参数。
 示例：
 bak=1&test=2 。
@@ -7752,7 +7752,7 @@ bak=1&test=2 。
 
     @property
     def CallbackEvents(self):
-        """选择需要回调的事件（不填则回调全部）：
+        r"""选择需要回调的事件（不填则回调全部）：
 TaskStart：任务启动回调，
 TaskExit：任务停止回调，
 VodSourceFileStart：从点播源文件开始拉流回调，
@@ -7775,7 +7775,7 @@ FileEndEarly - 文件提前结束。
 
     @property
     def VodLoopTimes(self):
-        """点播拉流转推循环次数。默认：-1。
+        r"""点播拉流转推循环次数。默认：-1。
 -1：无限循环，直到任务结束。
 0：不循环。
 >0：具体循环次数。次数和时间以先结束的为准。
@@ -7790,7 +7790,7 @@ FileEndEarly - 文件提前结束。
 
     @property
     def VodRefreshType(self):
-        """点播更新SourceUrls后的播放方式：
+        r"""点播更新SourceUrls后的播放方式：
 ImmediateNewSource：立即播放新的拉流源内容；
 ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的拉流源播放。（旧拉流源未播放的点播 url 不会再播放）
 
@@ -7805,7 +7805,7 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
 
     @property
     def CallbackUrl(self):
-        """自定义回调地址。
+        r"""自定义回调地址。
 拉流转推任务相关事件会回调到该地址。
 回调事件使用方法请查看：
 https://cloud.tencent.com/document/product/267/32744
@@ -7820,7 +7820,7 @@ https://cloud.tencent.com/document/product/267/56208
 
     @property
     def ExtraCmd(self):
-        """其他参数。
+        r"""其他参数。
 示例: ignore_region  用于忽略传入地域, 内部按负载分配。
         :rtype: str
         """
@@ -7832,7 +7832,7 @@ https://cloud.tencent.com/document/product/267/56208
 
     @property
     def SpecifyTaskId(self):
-        """自定义任务 ID。
+        r"""自定义任务 ID。
 注：
 1. 该自定义 ID 为可选参数，如果传入，请确保该账号下传入的 ID 唯一。
 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
@@ -7846,7 +7846,7 @@ https://cloud.tencent.com/document/product/267/56208
 
     @property
     def Comment(self):
-        """任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
+        r"""任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
         :rtype: str
         """
         return self._Comment
@@ -7857,7 +7857,7 @@ https://cloud.tencent.com/document/product/267/56208
 
     @property
     def ToUrl(self):
-        """完整目标 URL 地址。
+        r"""完整目标 URL 地址。
 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空字符串，任务将会使用该 ToUrl 参数指定的目标地址。
 
 使用该方式传入目标地址支持的协议有：
@@ -7874,7 +7874,7 @@ rtmp、rtmps、rtsp、rtp、srt。
 
     @property
     def FileIndex(self):
-        """指定播放文件索引。
+        r"""指定播放文件索引。
 注意： 1. 从1开始，不大于SourceUrls中文件个数。
 2. 该偏移仅在首次轮播时有效。
 3. 提前创建的任务指定的偏移最长有效期为24小时，24小时后未开始的任务偏移失效。
@@ -7888,7 +7888,7 @@ rtmp、rtmps、rtsp、rtp、srt。
 
     @property
     def OffsetTime(self):
-        """指定播放文件偏移。
+        r"""指定播放文件偏移。
 注意：
 1. 单位：秒，配合FileIndex使用。
         :rtype: int
@@ -7901,7 +7901,7 @@ rtmp、rtmps、rtsp、rtp、srt。
 
     @property
     def BackupSourceType(self):
-        """备源的类型：
+        r"""备源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
 注意：
@@ -7918,7 +7918,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupSourceUrl(self):
-        """备源 URL。
+        r"""备源 URL。
 只允许填一个备源 URL
         :rtype: str
         """
@@ -7930,7 +7930,7 @@ PullVodPushLive -点播。
 
     @property
     def WatermarkList(self):
-        """水印信息列表。
+        r"""水印信息列表。
 注意：
 1. 最多支持4个不同位置的水印。
 2. 水印图片 URL 请使用合法外网可访问地址。
@@ -7945,7 +7945,7 @@ PullVodPushLive -点播。
 
     @property
     def VodLocalMode(self):
-        """点播源是否启用本地推流模式，默认0，不启用。
+        r"""点播源是否启用本地推流模式，默认0，不启用。
 0 - 不启用。
 1 - 启用。
 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
@@ -7959,7 +7959,7 @@ PullVodPushLive -点播。
 
     @property
     def RecordTemplateId(self):
-        """录制模板 ID。
+        r"""录制模板 ID。
         :rtype: str
         """
         return self._RecordTemplateId
@@ -7970,7 +7970,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupToUrl(self):
-        """新的目标地址，用于任务同时推两路场景。
+        r"""新的目标地址，用于任务同时推两路场景。
         :rtype: str
         """
         return self._BackupToUrl
@@ -7981,7 +7981,7 @@ PullVodPushLive -点播。
 
     @property
     def TranscodeTemplateName(self):
-        """直播转码模板，使用云直播的转码功能进行转码后再转推出去。转码模板需在云直播控制台创建。
+        r"""直播转码模板，使用云直播的转码功能进行转码后再转推出去。转码模板需在云直播控制台创建。
         :rtype: str
         """
         return self._TranscodeTemplateName
@@ -8034,7 +8034,7 @@ PullVodPushLive -点播。
 
 
 class CreateLivePullStreamTaskResponse(AbstractModel):
-    """CreateLivePullStreamTask返回参数结构体
+    r"""CreateLivePullStreamTask返回参数结构体
 
     """
 
@@ -8050,7 +8050,7 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 Id 。
+        r"""任务 Id 。
         :rtype: str
         """
         return self._TaskId
@@ -8061,7 +8061,7 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8077,7 +8077,7 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
 
 class CreateLiveRecordRequest(AbstractModel):
-    """CreateLiveRecord请求参数结构体
+    r"""CreateLiveRecord请求参数结构体
 
     """
 
@@ -8134,7 +8134,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -8145,7 +8145,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的 AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -8156,7 +8156,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def DomainName(self):
-        """推流域名。多域名推流必须设置。
+        r"""推流域名。多域名推流必须设置。
         :rtype: str
         """
         return self._DomainName
@@ -8167,7 +8167,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def StartTime(self):
-        """录制开始时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
+        r"""录制开始时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
 定时录制模式，必须设置该字段；实时视频录制模式，忽略该字段。
         :rtype: str
         """
@@ -8179,7 +8179,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def EndTime(self):
-        """录制结束时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
+        r"""录制结束时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
 定时录制模式，必须设置该字段；实时录制模式，为可选字段。如果通过Highlight参数，设置录制为实时视频录制模式，其设置的结束时间不应超过当前时间+30分钟，如果设置的结束时间超过当前时间+30分钟或者小于当前时间或者不设置该参数，则实际结束时间为当前时间+30分钟。
         :rtype: str
         """
@@ -8191,7 +8191,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def RecordType(self):
-        """录制类型。
+        r"""录制类型。
 “video” : 音视频录制【默认】。
 “audio” : 纯音频录制。
 在定时录制模式或实时视频录制模式下，该参数均有效，不区分大小写。
@@ -8205,7 +8205,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def FileFormat(self):
-        """录制文件格式。其值为：
+        r"""录制文件格式。其值为：
 “flv”【默认】,“hls”,”mp4”,“aac”,”mp3”。
 在定时录制模式或实时视频录制模式下，该参数均有效，不区分大小写。
         :rtype: str
@@ -8218,7 +8218,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def Highlight(self):
-        """开启实时视频录制模式标志。
+        r"""开启实时视频录制模式标志。
 0：不开启实时视频录制模式，即定时录制模式【默认】。见[示例一](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1)。
 1：开启实时视频录制模式。见[示例二](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1)。
         :rtype: int
@@ -8231,7 +8231,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def MixStream(self):
-        """开启 A+B=C混流C流录制标志。
+        r"""开启 A+B=C混流C流录制标志。
 0：不开启 A+B=C混流C流录制【默认】。
 1：开启 A+B=C混流C流录制。
 在定时录制模式或实时视频录制模式下，该参数均有效。
@@ -8245,7 +8245,7 @@ eg. record_interval=3600&storage_time=2592000。
 
     @property
     def StreamParam(self):
-        """录制流参数。当前支持以下参数：
+        r"""录制流参数。当前支持以下参数：
 record_interval - 录制分片时长，单位 秒，1800 - 7200。
 storage_time - 录制文件存储时长，单位 秒。
 eg. record_interval=3600&storage_time=2592000。
@@ -8282,7 +8282,7 @@ eg. record_interval=3600&storage_time=2592000。
 
 
 class CreateLiveRecordResponse(AbstractModel):
-    """CreateLiveRecord返回参数结构体
+    r"""CreateLiveRecord返回参数结构体
 
     """
 
@@ -8298,7 +8298,7 @@ class CreateLiveRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 ID，全局唯一标识录制任务。
+        r"""任务 ID，全局唯一标识录制任务。
         :rtype: int
         """
         return self._TaskId
@@ -8309,7 +8309,7 @@ class CreateLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8325,7 +8325,7 @@ class CreateLiveRecordResponse(AbstractModel):
 
 
 class CreateLiveRecordRuleRequest(AbstractModel):
-    """CreateLiveRecordRule请求参数结构体
+    r"""CreateLiveRecordRule请求参数结构体
 
     """
 
@@ -8348,7 +8348,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -8359,7 +8359,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -8370,7 +8370,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -8381,7 +8381,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
         :rtype: str
         """
@@ -8408,7 +8408,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
 
 class CreateLiveRecordRuleResponse(AbstractModel):
-    """CreateLiveRecordRule返回参数结构体
+    r"""CreateLiveRecordRule返回参数结构体
 
     """
 
@@ -8421,7 +8421,7 @@ class CreateLiveRecordRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8436,7 +8436,7 @@ class CreateLiveRecordRuleResponse(AbstractModel):
 
 
 class CreateLiveRecordTemplateRequest(AbstractModel):
-    """CreateLiveRecordTemplate请求参数结构体
+    r"""CreateLiveRecordTemplate请求参数结构体
 
     """
 
@@ -8485,7 +8485,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名。仅支持中文、英文、数字、_、-。
+        r"""模板名。仅支持中文、英文、数字、_、-。
         :rtype: str
         """
         return self._TemplateName
@@ -8496,7 +8496,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -8507,7 +8507,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvParam(self):
-        """Flv录制参数，开启Flv录制时设置。
+        r"""Flv录制参数，开启Flv录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._FlvParam
@@ -8518,7 +8518,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsParam(self):
-        """Hls录制参数，开启hls录制时设置。
+        r"""Hls录制参数，开启hls录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._HlsParam
@@ -8529,7 +8529,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp4Param(self):
-        """Mp4录制参数，开启Mp4录制时设置。
+        r"""Mp4录制参数，开启Mp4录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp4Param
@@ -8540,7 +8540,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def AacParam(self):
-        """Aac录制参数，开启Aac录制时设置。
+        r"""Aac录制参数，开启Aac录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._AacParam
@@ -8551,7 +8551,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        """直播类型，默认 0。
+        r"""直播类型，默认 0。
 0：普通直播，
 1：慢直播。
         :rtype: int
@@ -8564,7 +8564,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
-        """HLS专属录制参数。
+        r"""HLS专属录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         return self._HlsSpecialParam
@@ -8575,7 +8575,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp3Param(self):
-        """Mp3录制参数，开启Mp3录制时设置。
+        r"""Mp3录制参数，开启Mp3录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp3Param
@@ -8586,7 +8586,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def CosStore(self):
-        """是否存储至 cos，值为 1 时表示存储至 cos。
+        r"""是否存储至 cos，值为 1 时表示存储至 cos。
         :rtype: int
         """
         return self._CosStore
@@ -8597,7 +8597,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印，类型为慢直播时此参数无效。
+        r"""是否去除水印，类型为慢直播时此参数无效。
 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
         :rtype: bool
         """
@@ -8609,7 +8609,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
-        """FLV 录制特殊参数。
+        r"""FLV 录制特殊参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         return self._FlvSpecialParam
@@ -8657,7 +8657,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
 
 class CreateLiveRecordTemplateResponse(AbstractModel):
-    """CreateLiveRecordTemplate返回参数结构体
+    r"""CreateLiveRecordTemplate返回参数结构体
 
     """
 
@@ -8673,7 +8673,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        r"""模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -8684,7 +8684,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8700,7 +8700,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
 
 class CreateLiveSnapshotRuleRequest(AbstractModel):
-    """CreateLiveSnapshotRule请求参数结构体
+    r"""CreateLiveSnapshotRule请求参数结构体
 
     """
 
@@ -8723,7 +8723,7 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -8734,7 +8734,7 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -8745,7 +8745,7 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -8756,7 +8756,7 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
         :rtype: str
         """
@@ -8783,7 +8783,7 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
 
 class CreateLiveSnapshotRuleResponse(AbstractModel):
-    """CreateLiveSnapshotRule返回参数结构体
+    r"""CreateLiveSnapshotRule返回参数结构体
 
     """
 
@@ -8796,7 +8796,7 @@ class CreateLiveSnapshotRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8811,7 +8811,7 @@ class CreateLiveSnapshotRuleResponse(AbstractModel):
 
 
 class CreateLiveSnapshotTemplateRequest(AbstractModel):
-    """CreateLiveSnapshotTemplate请求参数结构体
+    r"""CreateLiveSnapshotTemplate请求参数结构体
 
     """
 
@@ -8868,7 +8868,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -8881,7 +8881,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosAppId(self):
-        """Cos 应用 ID。
+        r"""Cos 应用 ID。
         :rtype: int
         """
         return self._CosAppId
@@ -8892,7 +8892,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosBucket(self):
-        """Cos Bucket名称。
+        r"""Cos Bucket名称。
 注：CosBucket参数值不能包含-[appid] 部分。
         :rtype: str
         """
@@ -8904,7 +8904,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosRegion(self):
-        """Cos地区。
+        r"""Cos地区。
         :rtype: str
         """
         return self._CosRegion
@@ -8915,7 +8915,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -8928,7 +8928,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        """截图间隔，单位s，默认10s。
+        r"""截图间隔，单位s，默认10s。
 范围： 2s ~ 300s。
         :rtype: int
         """
@@ -8940,7 +8940,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """截图宽度。默认：0（原始宽）。
+        r"""截图宽度。默认：0（原始宽）。
 范围：0-3000 。
         :rtype: int
         """
@@ -8952,7 +8952,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """截图高度。默认：0（原始高）。
+        r"""截图高度。默认：0（原始高）。
 范围：0-2000 。
         :rtype: int
         """
@@ -8964,7 +8964,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def PornFlag(self):
-        """是否开启鉴黄，0：不开启，1：开启。默认：0。
+        r"""是否开启鉴黄，0：不开启，1：开启。默认：0。
         :rtype: int
         """
         return self._PornFlag
@@ -8975,7 +8975,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosPrefix(self):
-        """Cos Bucket文件夹前缀。
+        r"""Cos Bucket文件夹前缀。
 如不传，实际按默认值
 /{Year}-{Month}-{Day}
 生效
@@ -8989,7 +8989,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosFileName(self):
-        """Cos 文件名称。
+        r"""Cos 文件名称。
 如不传，实际按默认值
 {StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}
 生效
@@ -9025,7 +9025,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
 
 class CreateLiveSnapshotTemplateResponse(AbstractModel):
-    """CreateLiveSnapshotTemplate返回参数结构体
+    r"""CreateLiveSnapshotTemplate返回参数结构体
 
     """
 
@@ -9041,7 +9041,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        r"""模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -9052,7 +9052,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9068,7 +9068,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
 
 class CreateLiveStreamMonitorRequest(AbstractModel):
-    """CreateLiveStreamMonitor请求参数结构体
+    r"""CreateLiveStreamMonitor请求参数结构体
 
     """
 
@@ -9128,7 +9128,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def OutputInfo(self):
-        """监播任务的输出信息。
+        r"""监播任务的输出信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
         """
         return self._OutputInfo
@@ -9139,7 +9139,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def InputList(self):
-        """待监播的输入流信息列表。
+        r"""待监播的输入流信息列表。
         :rtype: list of LiveStreamMonitorInputInfo
         """
         return self._InputList
@@ -9150,7 +9150,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorName(self):
-        """监播任务名称。字段长度小于128字节（一个汉字两个字节）。
+        r"""监播任务名称。字段长度小于128字节（一个汉字两个字节）。
         :rtype: str
         """
         return self._MonitorName
@@ -9161,7 +9161,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def NotifyPolicy(self):
-        """监播事件通知策略。
+        r"""监播事件通知策略。
 不填默认为没有任何通知。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
         """
@@ -9173,7 +9173,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AsrLanguage(self):
-        """智能语音识别语种设置：
+        r"""智能语音识别语种设置：
 0 关闭 1 中文 2 英文 3 日文 4 韩文。
         :rtype: int
         """
@@ -9185,7 +9185,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def OcrLanguage(self):
-        """智能文字识别语种设置：
+        r"""智能文字识别语种设置：
 0 关闭 1 中、英文。
         :rtype: int
         """
@@ -9197,7 +9197,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiAsrInputIndexList(self):
-        """智能语音识别的输入列表，若开启语音识别则必填。
+        r"""智能语音识别的输入列表，若开启语音识别则必填。
 （第1条输入流index为1）
         :rtype: list of int non-negative
         """
@@ -9209,7 +9209,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiOcrInputIndexList(self):
-        """智能文字识别的输入列表，若开启文字识别则必填。
+        r"""智能文字识别的输入列表，若开启文字识别则必填。
 （第1条输入流index为1）
         :rtype: list of int non-negative
         """
@@ -9221,7 +9221,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def CheckStreamBroken(self):
-        """是否开启断流检测。
+        r"""是否开启断流检测。
         :rtype: int
         """
         return self._CheckStreamBroken
@@ -9232,7 +9232,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def CheckStreamLowFrameRate(self):
-        """是否开启低帧率检测。
+        r"""是否开启低帧率检测。
         :rtype: int
         """
         return self._CheckStreamLowFrameRate
@@ -9243,7 +9243,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AllowMonitorReport(self):
-        """是否存储监播事件到监播报告，以及是否允许查询监播报告。
+        r"""是否存储监播事件到监播报告，以及是否允许查询监播报告。
         :rtype: int
         """
         return self._AllowMonitorReport
@@ -9254,7 +9254,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiFormatDiagnose(self):
-        """是否开启格式诊断。
+        r"""是否开启格式诊断。
         :rtype: int
         """
         return self._AiFormatDiagnose
@@ -9265,7 +9265,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiQualityControl(self):
-        """是否开启内容质检。
+        r"""是否开启内容质检。
         :rtype: int
         """
         return self._AiQualityControl
@@ -9276,7 +9276,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台监播对应的导播台场次id。
+        r"""导播台监播对应的导播台场次id。
         :rtype: str
         """
         return self._CasterId
@@ -9287,7 +9287,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def PullPushTaskId(self):
-        """拉流转推监播任务对应的拉流转推场次id
+        r"""拉流转推监播任务对应的拉流转推场次id
         :rtype: str
         """
         return self._PullPushTaskId
@@ -9333,7 +9333,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
 
 
 class CreateLiveStreamMonitorResponse(AbstractModel):
-    """CreateLiveStreamMonitor返回参数结构体
+    r"""CreateLiveStreamMonitor返回参数结构体
 
     """
 
@@ -9349,7 +9349,7 @@ class CreateLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID。
+        r"""监播任务ID。
         :rtype: str
         """
         return self._MonitorId
@@ -9360,7 +9360,7 @@ class CreateLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9376,7 +9376,7 @@ class CreateLiveStreamMonitorResponse(AbstractModel):
 
 
 class CreateLiveTimeShiftRuleRequest(AbstractModel):
-    """CreateLiveTimeShiftRule请求参数结构体
+    r"""CreateLiveTimeShiftRule请求参数结构体
 
     """
 
@@ -9398,7 +9398,7 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -9409,7 +9409,7 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。注：如果需要对所有AppName生效，可填写“*”。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。注：如果需要对所有AppName生效，可填写“*”。
         :rtype: str
         """
         return self._AppName
@@ -9420,7 +9420,7 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。注：如果本参数设置为非空字符串，规则将只对此推流起作用。如果需要对所有StreamName生效，可填写“*”。
+        r"""流名称。注：如果本参数设置为非空字符串，规则将只对此推流起作用。如果需要对所有StreamName生效，可填写“*”。
         :rtype: str
         """
         return self._StreamName
@@ -9431,7 +9431,7 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -9457,7 +9457,7 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
 
 class CreateLiveTimeShiftRuleResponse(AbstractModel):
-    """CreateLiveTimeShiftRule返回参数结构体
+    r"""CreateLiveTimeShiftRule返回参数结构体
 
     """
 
@@ -9470,7 +9470,7 @@ class CreateLiveTimeShiftRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9485,7 +9485,7 @@ class CreateLiveTimeShiftRuleResponse(AbstractModel):
 
 
 class CreateLiveTimeShiftTemplateRequest(AbstractModel):
-    """CreateLiveTimeShiftTemplate请求参数结构体
+    r"""CreateLiveTimeShiftTemplate请求参数结构体
 
     """
 
@@ -9528,7 +9528,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -9541,7 +9541,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Duration(self):
-        """时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
+        r"""时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
         :rtype: int
         """
         return self._Duration
@@ -9552,7 +9552,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 仅支持中文、英文、数字、_、-。
         :rtype: str
         """
@@ -9564,7 +9564,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Area(self):
-        """地域。
+        r"""地域。
 Mainland：中国大陆。
 Overseas：海外及港澳台地区。
 默认值：Mainland。
@@ -9578,7 +9578,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def ItemDuration(self):
-        """分片时长。
+        r"""分片时长。
 可取3-10。
 单位：s。
 默认值：5。
@@ -9592,7 +9592,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印。
+        r"""是否去除水印。
 传true则将录制原始流。
 默认值：false。
         :rtype: bool
@@ -9605,7 +9605,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TranscodeTemplateIds(self):
-        """转码流id列表。
+        r"""转码流id列表。
 此参数仅在 RemoveWatermark为false时生效。
         :rtype: list of int
         """
@@ -9635,7 +9635,7 @@ Overseas：海外及港澳台地区。
 
 
 class CreateLiveTimeShiftTemplateResponse(AbstractModel):
-    """CreateLiveTimeShiftTemplate返回参数结构体
+    r"""CreateLiveTimeShiftTemplate返回参数结构体
 
     """
 
@@ -9651,7 +9651,7 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        r"""模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -9662,7 +9662,7 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9678,7 +9678,7 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
 
 class CreateLiveTranscodeRuleRequest(AbstractModel):
-    """CreateLiveTranscodeRule请求参数结构体
+    r"""CreateLiveTranscodeRule请求参数结构体
 
     """
 
@@ -9700,7 +9700,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -9711,7 +9711,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填""。
+        r"""推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填""。
         :rtype: str
         """
         return self._AppName
@@ -9722,7 +9722,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。已废弃该字段，请传入空字符串。
+        r"""流名称。已废弃该字段，请传入空字符串。
         :rtype: str
         """
         return self._StreamName
@@ -9733,7 +9733,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """指定已有的模板Id。
+        r"""指定已有的模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -9759,7 +9759,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
 
 class CreateLiveTranscodeRuleResponse(AbstractModel):
-    """CreateLiveTranscodeRule返回参数结构体
+    r"""CreateLiveTranscodeRule返回参数结构体
 
     """
 
@@ -9772,7 +9772,7 @@ class CreateLiveTranscodeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9787,7 +9787,7 @@ class CreateLiveTranscodeRuleResponse(AbstractModel):
 
 
 class CreateLiveTranscodeTemplateRequest(AbstractModel):
-    """CreateLiveTranscodeTemplate请求参数结构体
+    r"""CreateLiveTranscodeTemplate请求参数结构体
 
     """
 
@@ -9901,7 +9901,7 @@ baseline/main/high。默认baseline
 
     @property
     def TemplateName(self):
-        """模板名称，例： 900p 仅支持字母和数字的组合。
+        r"""模板名称，例： 900p 仅支持字母和数字的组合。
 长度限制：
   标准转码：1-10个字符
   极速高清转码：3-10个字符
@@ -9915,7 +9915,7 @@ baseline/main/high。默认baseline
 
     @property
     def VideoBitrate(self):
-        """视频码率。范围：0kbps - 8000kbps。
+        r"""视频码率。范围：0kbps - 8000kbps。
 0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :rtype: int
@@ -9928,7 +9928,7 @@ baseline/main/high。默认baseline
 
     @property
     def Acodec(self):
-        """音频编码：aac，默认aac。
+        r"""音频编码：aac，默认aac。
 注意：当前该参数未生效，待后续支持！
         :rtype: str
         """
@@ -9940,7 +9940,7 @@ baseline/main/high。默认baseline
 
     @property
     def AudioBitrate(self):
-        """音频码率，默认0。
+        r"""音频码率，默认0。
 范围：0-500。
         :rtype: int
         """
@@ -9952,7 +9952,7 @@ baseline/main/high。默认baseline
 
     @property
     def Vcodec(self):
-        """视频编码：h264/h265/origin，默认origin。
+        r"""视频编码：h264/h265/origin，默认origin。
 
 origin: 保持原始编码格式
         :rtype: str
@@ -9965,7 +9965,7 @@ origin: 保持原始编码格式
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -9976,7 +9976,7 @@ origin: 保持原始编码格式
 
     @property
     def NeedVideo(self):
-        """是否保留视频，0：否，1：是。默认1。
+        r"""是否保留视频，0：否，1：是。默认1。
         :rtype: int
         """
         return self._NeedVideo
@@ -9987,7 +9987,7 @@ origin: 保持原始编码格式
 
     @property
     def Width(self):
-        """宽，默认0。
+        r"""宽，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始宽度
         :rtype: int
@@ -10000,7 +10000,7 @@ origin: 保持原始编码格式
 
     @property
     def NeedAudio(self):
-        """是否保留音频，0：否，1：是。默认1。
+        r"""是否保留音频，0：否，1：是。默认1。
         :rtype: int
         """
         return self._NeedAudio
@@ -10011,7 +10011,7 @@ origin: 保持原始编码格式
 
     @property
     def Height(self):
-        """高，默认0。
+        r"""高，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始高度。
 极速高清模板（AiTransCode = 1 的时候）必须传。
@@ -10025,7 +10025,7 @@ origin: 保持原始编码格式
 
     @property
     def Fps(self):
-        """帧率，默认0。
+        r"""帧率，默认0。
 范围0-60fps
         :rtype: int
         """
@@ -10037,7 +10037,7 @@ origin: 保持原始编码格式
 
     @property
     def Gop(self):
-        """关键帧间隔，单位：秒。
+        r"""关键帧间隔，单位：秒。
 默认原始的间隔
 范围1-6
         :rtype: int
@@ -10050,7 +10050,7 @@ origin: 保持原始编码格式
 
     @property
     def Rotate(self):
-        """旋转角度，默认0。
+        r"""旋转角度，默认0。
 可取值：0，90，180，270
         :rtype: int
         """
@@ -10062,7 +10062,7 @@ origin: 保持原始编码格式
 
     @property
     def Profile(self):
-        """编码质量：
+        r"""编码质量：
 baseline/main/high。默认baseline
         :rtype: str
         """
@@ -10074,7 +10074,7 @@ baseline/main/high。默认baseline
 
     @property
     def BitrateToOrig(self):
-        """当设置的码率>原始码率时，是否以原始码率为准。
+        r"""当设置的码率>原始码率时，是否以原始码率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -10087,7 +10087,7 @@ baseline/main/high。默认baseline
 
     @property
     def HeightToOrig(self):
-        """当设置的高度>原始高度时，是否以原始高度为准。
+        r"""当设置的高度>原始高度时，是否以原始高度为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -10100,7 +10100,7 @@ baseline/main/high。默认baseline
 
     @property
     def FpsToOrig(self):
-        """当设置的帧率>原始帧率时，是否以原始帧率为准。
+        r"""当设置的帧率>原始帧率时，是否以原始帧率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -10113,7 +10113,7 @@ baseline/main/high。默认baseline
 
     @property
     def AiTransCode(self):
-        """是否是极速高清模板，0：否，1：是。默认0。
+        r"""是否是极速高清模板，0：否，1：是。默认0。
         :rtype: int
         """
         return self._AiTransCode
@@ -10124,7 +10124,7 @@ baseline/main/high。默认baseline
 
     @property
     def AdaptBitratePercent(self):
-        """极速高清视频码率压缩比。
+        r"""极速高清视频码率压缩比。
 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
 
 取值范围：0.0到0.5
@@ -10138,7 +10138,7 @@ baseline/main/high。默认baseline
 
     @property
     def ShortEdgeAsHeight(self):
-        """是否以短边作为高度，0：否，1：是。默认0。
+        r"""是否以短边作为高度，0：否，1：是。默认0。
         :rtype: int
         """
         return self._ShortEdgeAsHeight
@@ -10149,7 +10149,7 @@ baseline/main/high。默认baseline
 
     @property
     def DRMType(self):
-        """DRM 加密类型，可选值：fairplay、normalaes、widevine。
+        r"""DRM 加密类型，可选值：fairplay、normalaes、widevine。
 不传递或者为空字符串，清空之前的DRM配置。
         :rtype: str
         """
@@ -10161,7 +10161,7 @@ baseline/main/high。默认baseline
 
     @property
     def DRMTracks(self):
-        """DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+        r"""DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 不传递或者为空字符串，清空之前的DRM配置。
         :rtype: str
         """
@@ -10173,7 +10173,7 @@ baseline/main/high。默认baseline
 
     @property
     def IsAdaptiveBitRate(self):
-        """是否创建自适应码率，默认值 0。
+        r"""是否创建自适应码率，默认值 0。
 0：否。
 1：是。
         :rtype: int
@@ -10186,7 +10186,7 @@ baseline/main/high。默认baseline
 
     @property
     def AdaptiveChildren(self):
-        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        r"""自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
         :rtype: list of ChildTemplateInfo
         """
         return self._AdaptiveChildren
@@ -10237,7 +10237,7 @@ baseline/main/high。默认baseline
 
 
 class CreateLiveTranscodeTemplateResponse(AbstractModel):
-    """CreateLiveTranscodeTemplate返回参数结构体
+    r"""CreateLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -10253,7 +10253,7 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        r"""模板Id。
         :rtype: int
         """
         return self._TemplateId
@@ -10264,7 +10264,7 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10280,7 +10280,7 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
 
 class CreateLiveWatermarkRuleRequest(AbstractModel):
-    """CreateLiveWatermarkRule请求参数结构体
+    r"""CreateLiveWatermarkRule请求参数结构体
 
     """
 
@@ -10302,7 +10302,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -10313,7 +10313,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :rtype: str
         """
         return self._AppName
@@ -10324,7 +10324,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -10335,7 +10335,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """水印Id，即调用[AddLiveWatermark](/document/product/267/30154)接口返回的WatermarkId。
+        r"""水印Id，即调用[AddLiveWatermark](/document/product/267/30154)接口返回的WatermarkId。
         :rtype: int
         """
         return self._TemplateId
@@ -10361,7 +10361,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
 
 class CreateLiveWatermarkRuleResponse(AbstractModel):
-    """CreateLiveWatermarkRule返回参数结构体
+    r"""CreateLiveWatermarkRule返回参数结构体
 
     """
 
@@ -10374,7 +10374,7 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10389,7 +10389,7 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
 
 class CreatePullStreamConfigRequest(AbstractModel):
-    """CreatePullStreamConfig请求参数结构体
+    r"""CreatePullStreamConfig请求参数结构体
 
     """
 
@@ -10441,7 +10441,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def FromUrl(self):
-        """源 Url ，用于拉流的地址。目前可支持直播流及点播文件。
+        r"""源 Url ，用于拉流的地址。目前可支持直播流及点播文件。
 注意：
 1. 多个点播url之间使用空格拼接。
 2. 目前上限支持10个url。
@@ -10457,7 +10457,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def ToUrl(self):
-        """目的 Url ，用于推流的地址，目前限制该目标地址为腾讯域名。
+        r"""目的 Url ，用于推流的地址，目前限制该目标地址为腾讯域名。
 仅支持：rtmp 协议。
         :rtype: str
         """
@@ -10469,7 +10469,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def AreaId(self):
-        """选择完成转拉推的服务所在区域:
+        r"""选择完成转拉推的服务所在区域:
 1-深圳，
 2-上海，
 3-天津，
@@ -10484,7 +10484,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def IspId(self):
-        """选择完成转拉推服务使用的运营商网络：
+        r"""选择完成转拉推服务使用的运营商网络：
 1-电信，
 2-移动，
 3-联通，
@@ -10500,7 +10500,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 使用 UTC 格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -10514,7 +10514,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，注意：
+        r"""结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于七天。
@@ -10548,7 +10548,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
 
 class CreatePullStreamConfigResponse(AbstractModel):
-    """CreatePullStreamConfig返回参数结构体
+    r"""CreatePullStreamConfig返回参数结构体
 
     """
 
@@ -10564,7 +10564,7 @@ class CreatePullStreamConfigResponse(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置成功后的 ID。
+        r"""配置成功后的 ID。
         :rtype: str
         """
         return self._ConfigId
@@ -10575,7 +10575,7 @@ class CreatePullStreamConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10591,7 +10591,7 @@ class CreatePullStreamConfigResponse(AbstractModel):
 
 
 class CreateRecordTaskRequest(AbstractModel):
-    """CreateRecordTask请求参数结构体
+    r"""CreateRecordTask请求参数结构体
 
     """
 
@@ -10627,7 +10627,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -10638,7 +10638,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -10649,7 +10649,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -10660,7 +10660,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+        r"""录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
         :rtype: int
         """
         return self._EndTime
@@ -10671,7 +10671,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
+        r"""录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
         :rtype: int
         """
         return self._StartTime
@@ -10682,7 +10682,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamType(self):
-        """推流类型，默认0。取值：
+        r"""推流类型，默认0。取值：
 0-直播推流。
 1-合成流，即 A+B=C 类型混流。
         :rtype: int
@@ -10695,7 +10695,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+        r"""录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
         :rtype: int
         """
         return self._TemplateId
@@ -10706,7 +10706,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def Extension(self):
-        """扩展字段，暂无定义。默认为空。
+        r"""扩展字段，暂无定义。默认为空。
         :rtype: str
         """
         return self._Extension
@@ -10736,7 +10736,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
 
 class CreateRecordTaskResponse(AbstractModel):
-    """CreateRecordTask返回参数结构体
+    r"""CreateRecordTask返回参数结构体
 
     """
 
@@ -10752,7 +10752,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
+        r"""任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
         :rtype: str
         """
         return self._TaskId
@@ -10763,7 +10763,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10779,7 +10779,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
 
 class CreateScreenshotTaskRequest(AbstractModel):
-    """CreateScreenshotTask请求参数结构体
+    r"""CreateScreenshotTask请求参数结构体
 
     """
 
@@ -10815,7 +10815,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -10826,7 +10826,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -10837,7 +10837,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -10848,7 +10848,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+        r"""截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
         :rtype: int
         """
         return self._EndTime
@@ -10859,7 +10859,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
+        r"""截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
         :rtype: int
         """
         return self._TemplateId
@@ -10870,7 +10870,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。EndTime - StartTime不能超过24小时。
+        r"""截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。EndTime - StartTime不能超过24小时。
         :rtype: int
         """
         return self._StartTime
@@ -10881,7 +10881,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StreamType(self):
-        """推流类型，默认0。取值：
+        r"""推流类型，默认0。取值：
 0-直播推流。
 1-合成流，即 A+B=C 类型混流。
         :rtype: int
@@ -10894,7 +10894,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def Extension(self):
-        """扩展字段，暂无定义。默认为空。
+        r"""扩展字段，暂无定义。默认为空。
         :rtype: str
         """
         return self._Extension
@@ -10924,7 +10924,7 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
 
 class CreateScreenshotTaskResponse(AbstractModel):
-    """CreateScreenshotTask返回参数结构体
+    r"""CreateScreenshotTask返回参数结构体
 
     """
 
@@ -10940,7 +10940,7 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，全局唯一标识截图任务。返回TaskId字段说明截图任务创建成功。
+        r"""任务ID，全局唯一标识截图任务。返回TaskId字段说明截图任务创建成功。
         :rtype: str
         """
         return self._TaskId
@@ -10951,7 +10951,7 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10967,7 +10967,7 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
 
 class DayStreamPlayInfo(AbstractModel):
-    """流播放信息
+    r"""流播放信息
 
     """
 
@@ -10995,7 +10995,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间点，接口返回支持两种时间格式：
+        r"""数据时间点，接口返回支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见ISO日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 接口返回的时间格式和查询请求传入的时间格式一致。
@@ -11009,7 +11009,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽（单位Mbps）。
+        r"""带宽（单位Mbps）。
         :rtype: float
         """
         return self._Bandwidth
@@ -11020,7 +11020,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Flux(self):
-        """流量 （单位MB）。
+        r"""流量 （单位MB）。
         :rtype: float
         """
         return self._Flux
@@ -11031,7 +11031,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Request(self):
-        """请求数。
+        r"""请求数。
         :rtype: int
         """
         return self._Request
@@ -11042,7 +11042,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Online(self):
-        """在线人数。当前后端接口数据的统计方式与客户端侧不同，该数据仅供参考，具体数据请以业务客户端侧统计数据为准。
+        r"""在线人数。当前后端接口数据的统计方式与客户端侧不同，该数据仅供参考，具体数据请以业务客户端侧统计数据为准。
         :rtype: int
         """
         return self._Online
@@ -11069,7 +11069,7 @@ class DayStreamPlayInfo(AbstractModel):
 
 
 class DelayInfo(AbstractModel):
-    """延播信息。
+    r"""延播信息。
 
     """
 
@@ -11107,7 +11107,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -11118,7 +11118,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 
+        r"""推流路径，与推流和播放地址中的 
  AppName 保持一致，默认为 live。
         :rtype: str
         """
@@ -11130,7 +11130,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -11141,7 +11141,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def DelayInterval(self):
-        """延播时间，单位：秒。
+        r"""延播时间，单位：秒。
         :rtype: int
         """
         return self._DelayInterval
@@ -11152,7 +11152,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，UTC 时间。
+        r"""创建时间，UTC 时间。
 注意：UTC时间和北京时间相差8小时。
 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
         :rtype: str
@@ -11165,7 +11165,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间，UTC 时间。
+        r"""过期时间，UTC 时间。
 注意：UTC时间和北京时间相差8小时。
 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
         :rtype: str
@@ -11178,7 +11178,7 @@ class DelayInfo(AbstractModel):
 
     @property
     def Status(self):
-        """当前状态:
+        r"""当前状态:
 -1：已过期。
 1： 生效中。
         :rtype: int
@@ -11209,7 +11209,7 @@ class DelayInfo(AbstractModel):
 
 
 class DeleteAuditKeywordsRequest(AbstractModel):
-    """DeleteAuditKeywords请求参数结构体
+    r"""DeleteAuditKeywords请求参数结构体
 
     """
 
@@ -11225,7 +11225,7 @@ class DeleteAuditKeywordsRequest(AbstractModel):
 
     @property
     def KeywordIds(self):
-        """要删除的关键词 Id 列表。
+        r"""要删除的关键词 Id 列表。
         :rtype: list of str
         """
         return self._KeywordIds
@@ -11236,7 +11236,7 @@ class DeleteAuditKeywordsRequest(AbstractModel):
 
     @property
     def LibId(self):
-        """关键词库 Id。
+        r"""关键词库 Id。
         :rtype: str
         """
         return self._LibId
@@ -11260,7 +11260,7 @@ class DeleteAuditKeywordsRequest(AbstractModel):
 
 
 class DeleteAuditKeywordsResponse(AbstractModel):
-    """DeleteAuditKeywords返回参数结构体
+    r"""DeleteAuditKeywords返回参数结构体
 
     """
 
@@ -11279,7 +11279,7 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
     @property
     def SuccessCount(self):
-        """成功删除关键词的数量。
+        r"""成功删除关键词的数量。
         :rtype: int
         """
         return self._SuccessCount
@@ -11290,7 +11290,7 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """关键词详情列表。
+        r"""关键词详情列表。
         :rtype: list of AuditKeywordDeleteDetail
         """
         return self._Infos
@@ -11301,7 +11301,7 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11323,7 +11323,7 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
 
 class DeleteCasterInputInfoRequest(AbstractModel):
-    """DeleteCasterInputInfo请求参数结构体
+    r"""DeleteCasterInputInfo请求参数结构体
 
     """
 
@@ -11341,7 +11341,7 @@ class DeleteCasterInputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -11352,7 +11352,7 @@ class DeleteCasterInputInfoRequest(AbstractModel):
 
     @property
     def InputIndex(self):
-        """导播台输入Index。
+        r"""导播台输入Index。
 范围[0,20]
 注：该Index对应的输入源需存在。
         :rtype: int
@@ -11378,7 +11378,7 @@ class DeleteCasterInputInfoRequest(AbstractModel):
 
 
 class DeleteCasterInputInfoResponse(AbstractModel):
-    """DeleteCasterInputInfo返回参数结构体
+    r"""DeleteCasterInputInfo返回参数结构体
 
     """
 
@@ -11391,7 +11391,7 @@ class DeleteCasterInputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11406,7 +11406,7 @@ class DeleteCasterInputInfoResponse(AbstractModel):
 
 
 class DeleteCasterLayoutInfoRequest(AbstractModel):
-    """DeleteCasterLayoutInfo请求参数结构体
+    r"""DeleteCasterLayoutInfo请求参数结构体
 
     """
 
@@ -11423,7 +11423,7 @@ class DeleteCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -11434,7 +11434,7 @@ class DeleteCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def LayoutIndex(self):
-        """要删除的布局Index。
+        r"""要删除的布局Index。
 注：待删除的Index对应的布局需存在。
         :rtype: int
         """
@@ -11459,7 +11459,7 @@ class DeleteCasterLayoutInfoRequest(AbstractModel):
 
 
 class DeleteCasterLayoutInfoResponse(AbstractModel):
-    """DeleteCasterLayoutInfo返回参数结构体
+    r"""DeleteCasterLayoutInfo返回参数结构体
 
     """
 
@@ -11472,7 +11472,7 @@ class DeleteCasterLayoutInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11487,7 +11487,7 @@ class DeleteCasterLayoutInfoResponse(AbstractModel):
 
 
 class DeleteCasterMarkPicInfoRequest(AbstractModel):
-    """DeleteCasterMarkPicInfo请求参数结构体
+    r"""DeleteCasterMarkPicInfo请求参数结构体
 
     """
 
@@ -11503,7 +11503,7 @@ class DeleteCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -11514,7 +11514,7 @@ class DeleteCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def MarkPicIndex(self):
-        """需要删除的水印Index。
+        r"""需要删除的水印Index。
         :rtype: int
         """
         return self._MarkPicIndex
@@ -11538,7 +11538,7 @@ class DeleteCasterMarkPicInfoRequest(AbstractModel):
 
 
 class DeleteCasterMarkPicInfoResponse(AbstractModel):
-    """DeleteCasterMarkPicInfo返回参数结构体
+    r"""DeleteCasterMarkPicInfo返回参数结构体
 
     """
 
@@ -11551,7 +11551,7 @@ class DeleteCasterMarkPicInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11566,7 +11566,7 @@ class DeleteCasterMarkPicInfoResponse(AbstractModel):
 
 
 class DeleteCasterMarkWordInfoRequest(AbstractModel):
-    """DeleteCasterMarkWordInfo请求参数结构体
+    r"""DeleteCasterMarkWordInfo请求参数结构体
 
     """
 
@@ -11582,7 +11582,7 @@ class DeleteCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -11593,7 +11593,7 @@ class DeleteCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def MarkWordIndex(self):
-        """需要删除的文字水印Index。
+        r"""需要删除的文字水印Index。
         :rtype: int
         """
         return self._MarkWordIndex
@@ -11617,7 +11617,7 @@ class DeleteCasterMarkWordInfoRequest(AbstractModel):
 
 
 class DeleteCasterMarkWordInfoResponse(AbstractModel):
-    """DeleteCasterMarkWordInfo返回参数结构体
+    r"""DeleteCasterMarkWordInfo返回参数结构体
 
     """
 
@@ -11630,7 +11630,7 @@ class DeleteCasterMarkWordInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11645,7 +11645,7 @@ class DeleteCasterMarkWordInfoResponse(AbstractModel):
 
 
 class DeleteCasterOutputInfoRequest(AbstractModel):
-    """DeleteCasterOutputInfo请求参数结构体
+    r"""DeleteCasterOutputInfo请求参数结构体
 
     """
 
@@ -11662,7 +11662,7 @@ class DeleteCasterOutputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -11673,7 +11673,7 @@ class DeleteCasterOutputInfoRequest(AbstractModel):
 
     @property
     def OutputIndex(self):
-        """待删除的推流信息Index。
+        r"""待删除的推流信息Index。
 注：删除时，该Index对应的配置需要存在。
         :rtype: int
         """
@@ -11698,7 +11698,7 @@ class DeleteCasterOutputInfoRequest(AbstractModel):
 
 
 class DeleteCasterOutputInfoResponse(AbstractModel):
-    """DeleteCasterOutputInfo返回参数结构体
+    r"""DeleteCasterOutputInfo返回参数结构体
 
     """
 
@@ -11711,7 +11711,7 @@ class DeleteCasterOutputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11726,7 +11726,7 @@ class DeleteCasterOutputInfoResponse(AbstractModel):
 
 
 class DeleteCasterRequest(AbstractModel):
-    """DeleteCaster请求参数结构体
+    r"""DeleteCaster请求参数结构体
 
     """
 
@@ -11739,7 +11739,7 @@ class DeleteCasterRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """待删除的导播台ID
+        r"""待删除的导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -11762,7 +11762,7 @@ class DeleteCasterRequest(AbstractModel):
 
 
 class DeleteCasterResponse(AbstractModel):
-    """DeleteCaster返回参数结构体
+    r"""DeleteCaster返回参数结构体
 
     """
 
@@ -11775,7 +11775,7 @@ class DeleteCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11790,7 +11790,7 @@ class DeleteCasterResponse(AbstractModel):
 
 
 class DeleteLiveCallbackRuleRequest(AbstractModel):
-    """DeleteLiveCallbackRule请求参数结构体
+    r"""DeleteLiveCallbackRule请求参数结构体
 
     """
 
@@ -11806,7 +11806,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -11817,7 +11817,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -11841,7 +11841,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
 
 class DeleteLiveCallbackRuleResponse(AbstractModel):
-    """DeleteLiveCallbackRule返回参数结构体
+    r"""DeleteLiveCallbackRule返回参数结构体
 
     """
 
@@ -11854,7 +11854,7 @@ class DeleteLiveCallbackRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11869,7 +11869,7 @@ class DeleteLiveCallbackRuleResponse(AbstractModel):
 
 
 class DeleteLiveCallbackTemplateRequest(AbstractModel):
-    """DeleteLiveCallbackTemplate请求参数结构体
+    r"""DeleteLiveCallbackTemplate请求参数结构体
 
     """
 
@@ -11884,7 +11884,7 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
 2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
         :rtype: int
@@ -11909,7 +11909,7 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
 
 class DeleteLiveCallbackTemplateResponse(AbstractModel):
-    """DeleteLiveCallbackTemplate返回参数结构体
+    r"""DeleteLiveCallbackTemplate返回参数结构体
 
     """
 
@@ -11922,7 +11922,7 @@ class DeleteLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11937,7 +11937,7 @@ class DeleteLiveCallbackTemplateResponse(AbstractModel):
 
 
 class DeleteLiveDomainRequest(AbstractModel):
-    """DeleteLiveDomain请求参数结构体
+    r"""DeleteLiveDomain请求参数结构体
 
     """
 
@@ -11953,7 +11953,7 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """要删除的域名
+        r"""要删除的域名
         :rtype: str
         """
         return self._DomainName
@@ -11964,7 +11964,7 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     @property
     def DomainType(self):
-        """类型。0-推流，1-播放
+        r"""类型。0-推流，1-播放
         :rtype: int
         """
         return self._DomainType
@@ -11988,7 +11988,7 @@ class DeleteLiveDomainRequest(AbstractModel):
 
 
 class DeleteLiveDomainResponse(AbstractModel):
-    """DeleteLiveDomain返回参数结构体
+    r"""DeleteLiveDomain返回参数结构体
 
     """
 
@@ -12001,7 +12001,7 @@ class DeleteLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12016,7 +12016,7 @@ class DeleteLiveDomainResponse(AbstractModel):
 
 
 class DeleteLivePadRuleRequest(AbstractModel):
-    """DeleteLivePadRule请求参数结构体
+    r"""DeleteLivePadRule请求参数结构体
 
     """
 
@@ -12041,7 +12041,7 @@ class DeleteLivePadRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12053,7 +12053,7 @@ class DeleteLivePadRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12065,7 +12065,7 @@ class DeleteLivePadRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12077,7 +12077,7 @@ class DeleteLivePadRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """直播垫片模板id。
+        r"""直播垫片模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -12103,7 +12103,7 @@ class DeleteLivePadRuleRequest(AbstractModel):
 
 
 class DeleteLivePadRuleResponse(AbstractModel):
-    """DeleteLivePadRule返回参数结构体
+    r"""DeleteLivePadRule返回参数结构体
 
     """
 
@@ -12116,7 +12116,7 @@ class DeleteLivePadRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12131,7 +12131,7 @@ class DeleteLivePadRuleResponse(AbstractModel):
 
 
 class DeleteLivePadTemplateRequest(AbstractModel):
-    """DeleteLivePadTemplate请求参数结构体
+    r"""DeleteLivePadTemplate请求参数结构体
 
     """
 
@@ -12144,7 +12144,7 @@ class DeleteLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -12167,7 +12167,7 @@ class DeleteLivePadTemplateRequest(AbstractModel):
 
 
 class DeleteLivePadTemplateResponse(AbstractModel):
-    """DeleteLivePadTemplate返回参数结构体
+    r"""DeleteLivePadTemplate返回参数结构体
 
     """
 
@@ -12180,7 +12180,7 @@ class DeleteLivePadTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12195,7 +12195,7 @@ class DeleteLivePadTemplateResponse(AbstractModel):
 
 
 class DeleteLivePullStreamTaskRequest(AbstractModel):
-    """DeleteLivePullStreamTask请求参数结构体
+    r"""DeleteLivePullStreamTask请求参数结构体
 
     """
 
@@ -12214,7 +12214,7 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 Id。
+        r"""任务 Id。
         :rtype: str
         """
         return self._TaskId
@@ -12225,7 +12225,7 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人姓名。
+        r"""操作人姓名。
         :rtype: str
         """
         return self._Operator
@@ -12236,7 +12236,7 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def SpecifyTaskId(self):
-        """指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
+        r"""指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
         :rtype: str
         """
         return self._SpecifyTaskId
@@ -12261,7 +12261,7 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
 
 class DeleteLivePullStreamTaskResponse(AbstractModel):
-    """DeleteLivePullStreamTask返回参数结构体
+    r"""DeleteLivePullStreamTask返回参数结构体
 
     """
 
@@ -12274,7 +12274,7 @@ class DeleteLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12289,7 +12289,7 @@ class DeleteLivePullStreamTaskResponse(AbstractModel):
 
 
 class DeleteLiveRecordRequest(AbstractModel):
-    """DeleteLiveRecord请求参数结构体
+    r"""DeleteLiveRecord请求参数结构体
 
     """
 
@@ -12305,7 +12305,7 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -12316,7 +12316,7 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，由CreateLiveRecord接口返回。
+        r"""任务ID，由CreateLiveRecord接口返回。
         :rtype: int
         """
         return self._TaskId
@@ -12340,7 +12340,7 @@ class DeleteLiveRecordRequest(AbstractModel):
 
 
 class DeleteLiveRecordResponse(AbstractModel):
-    """DeleteLiveRecord返回参数结构体
+    r"""DeleteLiveRecord返回参数结构体
 
     """
 
@@ -12353,7 +12353,7 @@ class DeleteLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12368,7 +12368,7 @@ class DeleteLiveRecordResponse(AbstractModel):
 
 
 class DeleteLiveRecordRuleRequest(AbstractModel):
-    """DeleteLiveRecordRule请求参数结构体
+    r"""DeleteLiveRecordRule请求参数结构体
 
     """
 
@@ -12390,7 +12390,7 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12402,7 +12402,7 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12414,7 +12414,7 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12440,7 +12440,7 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
 
 class DeleteLiveRecordRuleResponse(AbstractModel):
-    """DeleteLiveRecordRule返回参数结构体
+    r"""DeleteLiveRecordRule返回参数结构体
 
     """
 
@@ -12453,7 +12453,7 @@ class DeleteLiveRecordRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12468,7 +12468,7 @@ class DeleteLiveRecordRuleResponse(AbstractModel):
 
 
 class DeleteLiveRecordTemplateRequest(AbstractModel):
-    """DeleteLiveRecordTemplate请求参数结构体
+    r"""DeleteLiveRecordTemplate请求参数结构体
 
     """
 
@@ -12481,7 +12481,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """DescribeRecordTemplates接口获取到的模板 ID。
+        r"""DescribeRecordTemplates接口获取到的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -12504,7 +12504,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
 
 class DeleteLiveRecordTemplateResponse(AbstractModel):
-    """DeleteLiveRecordTemplate返回参数结构体
+    r"""DeleteLiveRecordTemplate返回参数结构体
 
     """
 
@@ -12517,7 +12517,7 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12532,7 +12532,7 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
 
 
 class DeleteLiveSnapshotRuleRequest(AbstractModel):
-    """DeleteLiveSnapshotRule请求参数结构体
+    r"""DeleteLiveSnapshotRule请求参数结构体
 
     """
 
@@ -12551,7 +12551,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -12562,7 +12562,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -12573,7 +12573,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -12598,7 +12598,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
 
 class DeleteLiveSnapshotRuleResponse(AbstractModel):
-    """DeleteLiveSnapshotRule返回参数结构体
+    r"""DeleteLiveSnapshotRule返回参数结构体
 
     """
 
@@ -12611,7 +12611,7 @@ class DeleteLiveSnapshotRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12626,7 +12626,7 @@ class DeleteLiveSnapshotRuleResponse(AbstractModel):
 
 
 class DeleteLiveSnapshotTemplateRequest(AbstractModel):
-    """DeleteLiveSnapshotTemplate请求参数结构体
+    r"""DeleteLiveSnapshotTemplate请求参数结构体
 
     """
 
@@ -12641,7 +12641,7 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 1. 在创建截图模板接口 [CreateLiveSnapshotTemplate](/document/product/267/32624) 调用的返回值中获取。
 2. 可以从接口 [DescribeLiveSnapshotTemplates](/document/product/267/32619) 中查询已创建的截图模板列表。
         :rtype: int
@@ -12666,7 +12666,7 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
 
 class DeleteLiveSnapshotTemplateResponse(AbstractModel):
-    """DeleteLiveSnapshotTemplate返回参数结构体
+    r"""DeleteLiveSnapshotTemplate返回参数结构体
 
     """
 
@@ -12679,7 +12679,7 @@ class DeleteLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12694,7 +12694,7 @@ class DeleteLiveSnapshotTemplateResponse(AbstractModel):
 
 
 class DeleteLiveStreamMonitorRequest(AbstractModel):
-    """DeleteLiveStreamMonitor请求参数结构体
+    r"""DeleteLiveStreamMonitor请求参数结构体
 
     """
 
@@ -12707,7 +12707,7 @@ class DeleteLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID
+        r"""监播任务ID
         :rtype: str
         """
         return self._MonitorId
@@ -12730,7 +12730,7 @@ class DeleteLiveStreamMonitorRequest(AbstractModel):
 
 
 class DeleteLiveStreamMonitorResponse(AbstractModel):
-    """DeleteLiveStreamMonitor返回参数结构体
+    r"""DeleteLiveStreamMonitor返回参数结构体
 
     """
 
@@ -12743,7 +12743,7 @@ class DeleteLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12758,7 +12758,7 @@ class DeleteLiveStreamMonitorResponse(AbstractModel):
 
 
 class DeleteLiveTimeShiftRuleRequest(AbstractModel):
-    """DeleteLiveTimeShiftRule请求参数结构体
+    r"""DeleteLiveTimeShiftRule请求参数结构体
 
     """
 
@@ -12780,7 +12780,7 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12792,7 +12792,7 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12804,7 +12804,7 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :rtype: str
         """
@@ -12830,7 +12830,7 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
 
 class DeleteLiveTimeShiftRuleResponse(AbstractModel):
-    """DeleteLiveTimeShiftRule返回参数结构体
+    r"""DeleteLiveTimeShiftRule返回参数结构体
 
     """
 
@@ -12843,7 +12843,7 @@ class DeleteLiveTimeShiftRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12858,7 +12858,7 @@ class DeleteLiveTimeShiftRuleResponse(AbstractModel):
 
 
 class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
-    """DeleteLiveTimeShiftTemplate请求参数结构体
+    r"""DeleteLiveTimeShiftTemplate请求参数结构体
 
     """
 
@@ -12871,7 +12871,7 @@ class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -12894,7 +12894,7 @@ class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
 
 
 class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
-    """DeleteLiveTimeShiftTemplate返回参数结构体
+    r"""DeleteLiveTimeShiftTemplate返回参数结构体
 
     """
 
@@ -12907,7 +12907,7 @@ class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12922,7 +12922,7 @@ class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
 
 
 class DeleteLiveTranscodeRuleRequest(AbstractModel):
-    """DeleteLiveTranscodeRule请求参数结构体
+    r"""DeleteLiveTranscodeRule请求参数结构体
 
     """
 
@@ -12944,7 +12944,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -12955,7 +12955,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -12966,7 +12966,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -12977,7 +12977,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID。
+        r"""模板ID。
         :rtype: int
         """
         return self._TemplateId
@@ -13003,7 +13003,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
 
 class DeleteLiveTranscodeRuleResponse(AbstractModel):
-    """DeleteLiveTranscodeRule返回参数结构体
+    r"""DeleteLiveTranscodeRule返回参数结构体
 
     """
 
@@ -13016,7 +13016,7 @@ class DeleteLiveTranscodeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13031,7 +13031,7 @@ class DeleteLiveTranscodeRuleResponse(AbstractModel):
 
 
 class DeleteLiveTranscodeTemplateRequest(AbstractModel):
-    """DeleteLiveTranscodeTemplate请求参数结构体
+    r"""DeleteLiveTranscodeTemplate请求参数结构体
 
     """
 
@@ -13046,7 +13046,7 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 1. 在创建转码模板接口 [CreateLiveTranscodeTemplate](/document/product/267/32646) 调用的返回值中获取模板 ID。
 2. 可以从接口 [DescribeLiveTranscodeTemplates](/document/product/267/32641) 查询已经创建过的模板列表。
         :rtype: int
@@ -13071,7 +13071,7 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
 
 
 class DeleteLiveTranscodeTemplateResponse(AbstractModel):
-    """DeleteLiveTranscodeTemplate返回参数结构体
+    r"""DeleteLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -13084,7 +13084,7 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13099,7 +13099,7 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
 
 
 class DeleteLiveWatermarkRequest(AbstractModel):
-    """DeleteLiveWatermark请求参数结构体
+    r"""DeleteLiveWatermark请求参数结构体
 
     """
 
@@ -13114,7 +13114,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
 
     @property
     def WatermarkId(self):
-        """水印 ID。
+        r"""水印 ID。
 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
 或DescribeLiveWatermarks接口返回的水印ID。
         :rtype: int
@@ -13139,7 +13139,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
 
 
 class DeleteLiveWatermarkResponse(AbstractModel):
-    """DeleteLiveWatermark返回参数结构体
+    r"""DeleteLiveWatermark返回参数结构体
 
     """
 
@@ -13152,7 +13152,7 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13167,7 +13167,7 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
 
 class DeleteLiveWatermarkRuleRequest(AbstractModel):
-    """DeleteLiveWatermarkRule请求参数结构体
+    r"""DeleteLiveWatermarkRule请求参数结构体
 
     """
 
@@ -13186,7 +13186,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -13197,7 +13197,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。与推流和播放地址中的 AppName 保持一致，默认为live。
+        r"""推流路径。与推流和播放地址中的 AppName 保持一致，默认为live。
         :rtype: str
         """
         return self._AppName
@@ -13208,7 +13208,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -13233,7 +13233,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
 
 class DeleteLiveWatermarkRuleResponse(AbstractModel):
-    """DeleteLiveWatermarkRule返回参数结构体
+    r"""DeleteLiveWatermarkRule返回参数结构体
 
     """
 
@@ -13246,7 +13246,7 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13261,7 +13261,7 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
 
 class DeletePullStreamConfigRequest(AbstractModel):
-    """DeletePullStreamConfig请求参数结构体
+    r"""DeletePullStreamConfig请求参数结构体
 
     """
 
@@ -13276,7 +13276,7 @@ class DeletePullStreamConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置 ID。
+        r"""配置 ID。
 1. 在添加拉流配置接口 [CreatePullStreamConfig](/document/api/267/30159) 调用返回值中获取配置 ID。
 2. 可以从接口 [DescribePullStreamConfigs](/document/api/267/30158) 中查询已创建过的拉流配置列表。
         :rtype: str
@@ -13301,7 +13301,7 @@ class DeletePullStreamConfigRequest(AbstractModel):
 
 
 class DeletePullStreamConfigResponse(AbstractModel):
-    """DeletePullStreamConfig返回参数结构体
+    r"""DeletePullStreamConfig返回参数结构体
 
     """
 
@@ -13314,7 +13314,7 @@ class DeletePullStreamConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13329,7 +13329,7 @@ class DeletePullStreamConfigResponse(AbstractModel):
 
 
 class DeleteRecordTaskRequest(AbstractModel):
-    """DeleteRecordTask请求参数结构体
+    r"""DeleteRecordTask请求参数结构体
 
     """
 
@@ -13342,7 +13342,7 @@ class DeleteRecordTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，CreateRecordTask返回。删除TaskId指定的录制任务。
+        r"""任务ID，CreateRecordTask返回。删除TaskId指定的录制任务。
         :rtype: str
         """
         return self._TaskId
@@ -13365,7 +13365,7 @@ class DeleteRecordTaskRequest(AbstractModel):
 
 
 class DeleteRecordTaskResponse(AbstractModel):
-    """DeleteRecordTask返回参数结构体
+    r"""DeleteRecordTask返回参数结构体
 
     """
 
@@ -13378,7 +13378,7 @@ class DeleteRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13393,7 +13393,7 @@ class DeleteRecordTaskResponse(AbstractModel):
 
 
 class DeleteScreenshotTaskRequest(AbstractModel):
-    """DeleteScreenshotTask请求参数结构体
+    r"""DeleteScreenshotTask请求参数结构体
 
     """
 
@@ -13406,7 +13406,7 @@ class DeleteScreenshotTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，CreateScreenshotTask返回。删除TaskId指定的截图任务。
+        r"""任务ID，CreateScreenshotTask返回。删除TaskId指定的截图任务。
         :rtype: str
         """
         return self._TaskId
@@ -13429,7 +13429,7 @@ class DeleteScreenshotTaskRequest(AbstractModel):
 
 
 class DeleteScreenshotTaskResponse(AbstractModel):
-    """DeleteScreenshotTask返回参数结构体
+    r"""DeleteScreenshotTask返回参数结构体
 
     """
 
@@ -13442,7 +13442,7 @@ class DeleteScreenshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13457,7 +13457,7 @@ class DeleteScreenshotTaskResponse(AbstractModel):
 
 
 class DescribeAllStreamPlayInfoListRequest(AbstractModel):
-    """DescribeAllStreamPlayInfoList请求参数结构体
+    r"""DescribeAllStreamPlayInfoList请求参数结构体
 
     """
 
@@ -13476,7 +13476,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def QueryTime(self):
-        """查询时间点，精确到分钟粒度，接口查询支持两种时间格式：
+        r"""查询时间点，精确到分钟粒度，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的整点时间点。
@@ -13490,7 +13490,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表，若不填，表示总体数据。
+        r"""播放域名列表，若不填，表示总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -13514,7 +13514,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
 
 class DescribeAllStreamPlayInfoListResponse(AbstractModel):
-    """DescribeAllStreamPlayInfoList返回参数结构体
+    r"""DescribeAllStreamPlayInfoList返回参数结构体
 
     """
 
@@ -13533,7 +13533,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def QueryTime(self):
-        """查询时间点，回传的输入参数中的查询时间。
+        r"""查询时间点，回传的输入参数中的查询时间。
         :rtype: str
         """
         return self._QueryTime
@@ -13544,7 +13544,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """数据信息列表。
+        r"""数据信息列表。
         :rtype: list of MonitorStreamPlayInfo
         """
         return self._DataInfoList
@@ -13555,7 +13555,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13577,7 +13577,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
 
 class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
-    """DescribeAreaBillBandwidthAndFluxList请求参数结构体
+    r"""DescribeAreaBillBandwidthAndFluxList请求参数结构体
 
     """
 
@@ -13596,7 +13596,7 @@ class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._StartTime
@@ -13607,7 +13607,7 @@ class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
         :rtype: str
         """
         return self._EndTime
@@ -13618,7 +13618,7 @@ class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """直播播放域名，若不填，表示总体数据。
+        r"""直播播放域名，若不填，表示总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -13643,7 +13643,7 @@ class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
 
 
 class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
-    """DescribeAreaBillBandwidthAndFluxList返回参数结构体
+    r"""DescribeAreaBillBandwidthAndFluxList返回参数结构体
 
     """
 
@@ -13659,7 +13659,7 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """明细数据信息。
+        r"""明细数据信息。
         :rtype: list of BillAreaInfo
         """
         return self._DataInfoList
@@ -13670,7 +13670,7 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13691,7 +13691,7 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
 
 
 class DescribeAuditKeywordsRequest(AbstractModel):
-    """DescribeAuditKeywords请求参数结构体
+    r"""DescribeAuditKeywords请求参数结构体
 
     """
 
@@ -13717,7 +13717,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """获取偏移量。
+        r"""获取偏移量。
         :rtype: int
         """
         return self._Offset
@@ -13728,7 +13728,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单页条数，最大为100条，超过则按100条返回。
+        r"""单页条数，最大为100条，超过则按100条返回。
         :rtype: int
         """
         return self._Limit
@@ -13739,7 +13739,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     @property
     def LibId(self):
-        """关键词库 Id。
+        r"""关键词库 Id。
         :rtype: str
         """
         return self._LibId
@@ -13750,7 +13750,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     @property
     def Content(self):
-        """关键词搜索字段。
+        r"""关键词搜索字段。
 为空字符串时忽略。
         :rtype: str
         """
@@ -13762,7 +13762,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """标签类别搜索。
+        r"""标签类别搜索。
         :rtype: list of int
         """
         return self._Labels
@@ -13789,7 +13789,7 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
 
 class DescribeAuditKeywordsResponse(AbstractModel):
-    """DescribeAuditKeywords返回参数结构体
+    r"""DescribeAuditKeywords返回参数结构体
 
     """
 
@@ -13808,7 +13808,7 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """关键词总条数。
+        r"""关键词总条数。
         :rtype: int
         """
         return self._Total
@@ -13819,7 +13819,7 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """关键词详情列表。
+        r"""关键词详情列表。
         :rtype: list of AuditKeywordInfo
         """
         return self._Infos
@@ -13830,7 +13830,7 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13852,7 +13852,7 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
 
 class DescribeBackupStreamListRequest(AbstractModel):
-    """DescribeBackupStreamList请求参数结构体
+    r"""DescribeBackupStreamList请求参数结构体
 
     """
 
@@ -13865,7 +13865,7 @@ class DescribeBackupStreamListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，用于精确查询。
+        r"""流名称，用于精确查询。
         :rtype: str
         """
         return self._StreamName
@@ -13888,7 +13888,7 @@ class DescribeBackupStreamListRequest(AbstractModel):
 
 
 class DescribeBackupStreamListResponse(AbstractModel):
-    """DescribeBackupStreamList返回参数结构体
+    r"""DescribeBackupStreamList返回参数结构体
 
     """
 
@@ -13904,7 +13904,7 @@ class DescribeBackupStreamListResponse(AbstractModel):
 
     @property
     def StreamInfoList(self):
-        """主备流分组信息列表。
+        r"""主备流分组信息列表。
         :rtype: list of BackupStreamGroupInfo
         """
         return self._StreamInfoList
@@ -13915,7 +13915,7 @@ class DescribeBackupStreamListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13936,7 +13936,7 @@ class DescribeBackupStreamListResponse(AbstractModel):
 
 
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
-    """DescribeBillBandwidthAndFluxList请求参数结构体
+    r"""DescribeBillBandwidthAndFluxList请求参数结构体
 
     """
 
@@ -13985,7 +13985,7 @@ Africa 非洲。
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -13998,7 +13998,7 @@ Africa 非洲。
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 起始和结束时间跨度不支持超过31天。支持最近3年的数据查询
@@ -14012,7 +14012,7 @@ Africa 非洲。
 
     @property
     def PlayDomains(self):
-        """直播播放域名，若不填，表示总体数据。
+        r"""直播播放域名，若不填，表示总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -14023,7 +14023,7 @@ Africa 非洲。
 
     @property
     def MainlandOrOversea(self):
-        """可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
+        r"""可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -14034,7 +14034,7 @@ Africa 非洲。
 
     @property
     def Granularity(self):
-        """数据粒度，支持如下粒度：
+        r"""数据粒度，支持如下粒度：
 5：5分钟粒度，（跨度不支持超过1天），
 60：1小时粒度（跨度不支持超过一个月），
 1440：天粒度（跨度不支持超过一个月）。
@@ -14049,7 +14049,7 @@ Africa 非洲。
 
     @property
     def ServiceName(self):
-        """服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        r"""服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
         :rtype: str
         """
         return self._ServiceName
@@ -14060,7 +14060,7 @@ Africa 非洲。
 
     @property
     def RegionNames(self):
-        """大区，映射表如下：
+        r"""大区，映射表如下：
 China Mainland 中国大陆
 Asia Pacific I 亚太一区
 Asia Pacific II 亚太二区
@@ -14098,7 +14098,7 @@ Africa 非洲。
 
 
 class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
-    """DescribeBillBandwidthAndFluxList返回参数结构体
+    r"""DescribeBillBandwidthAndFluxList返回参数结构体
 
     """
 
@@ -14133,7 +14133,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidthTime(self):
-        """峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
+        r"""峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -14146,7 +14146,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidth(self):
-        """峰值带宽，单位是Mbps。
+        r"""峰值带宽，单位是Mbps。
         :rtype: float
         """
         return self._PeakBandwidth
@@ -14157,7 +14157,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidthTime(self):
-        """95峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
+        r"""95峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -14170,7 +14170,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidth(self):
-        """95峰值带宽，单位是Mbps。
+        r"""95峰值带宽，单位是Mbps。
         :rtype: float
         """
         return self._P95PeakBandwidth
@@ -14181,7 +14181,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def SumFlux(self):
-        """总流量，单位是MB。
+        r"""总流量，单位是MB。
         :rtype: float
         """
         return self._SumFlux
@@ -14192,7 +14192,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """明细数据信息。
+        r"""明细数据信息。
         :rtype: list of BillDataInfo
         """
         return self._DataInfoList
@@ -14203,7 +14203,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14229,7 +14229,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
 
 class DescribeCallbackRecordsListRequest(AbstractModel):
-    """DescribeCallbackRecordsList请求参数结构体
+    r"""DescribeCallbackRecordsList请求参数结构体
 
     """
 
@@ -14271,7 +14271,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -14284,7 +14284,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 
@@ -14299,7 +14299,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，精确匹配。
+        r"""流名称，精确匹配。
         :rtype: str
         """
         return self._StreamName
@@ -14310,7 +14310,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页码。
+        r"""页码。
         :rtype: int
         """
         return self._PageNum
@@ -14321,7 +14321,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数。
+        r"""每页条数。
         :rtype: int
         """
         return self._PageSize
@@ -14332,7 +14332,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型。
+        r"""事件类型。
 0: "断流",
 1: "推流",
 100: "录制"
@@ -14347,7 +14347,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
     @property
     def ResultCode(self):
-        """回调结果。
+        r"""回调结果。
 0为成功，其他为失败。
         :rtype: int
         """
@@ -14377,7 +14377,7 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
 
 
 class DescribeCallbackRecordsListResponse(AbstractModel):
-    """DescribeCallbackRecordsList返回参数结构体
+    r"""DescribeCallbackRecordsList返回参数结构体
 
     """
 
@@ -14405,7 +14405,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """回调事件列表。
+        r"""回调事件列表。
         :rtype: list of CallbackEventInfo
         """
         return self._DataInfoList
@@ -14416,7 +14416,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页码。
+        r"""页码。
         :rtype: int
         """
         return self._PageNum
@@ -14427,7 +14427,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数。
+        r"""每页条数。
         :rtype: int
         """
         return self._PageSize
@@ -14438,7 +14438,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总条数。
+        r"""总条数。
         :rtype: int
         """
         return self._TotalNum
@@ -14449,7 +14449,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -14460,7 +14460,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14485,7 +14485,7 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
 
 
 class DescribeCasterDisplayInfoRequest(AbstractModel):
-    """DescribeCasterDisplayInfo请求参数结构体
+    r"""DescribeCasterDisplayInfo请求参数结构体
 
     """
 
@@ -14498,7 +14498,7 @@ class DescribeCasterDisplayInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -14521,7 +14521,7 @@ class DescribeCasterDisplayInfoRequest(AbstractModel):
 
 
 class DescribeCasterDisplayInfoResponse(AbstractModel):
-    """DescribeCasterDisplayInfo返回参数结构体
+    r"""DescribeCasterDisplayInfo返回参数结构体
 
     """
 
@@ -14550,7 +14550,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """导播台状态
+        r"""导播台状态
 0：停止状态，无预监，无主监 
 1：无预监，有主监 
 2：有预监，无主监 
@@ -14565,7 +14565,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
     @property
     def PvwDisplayInfo(self):
-        """预监使用的展示参数。
+        r"""预监使用的展示参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PvwDisplayInfo
@@ -14576,7 +14576,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
     @property
     def PgmDisplayInfo(self):
-        """主监使用的展示参数。
+        r"""主监使用的展示参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PgmDisplayInfo
@@ -14587,7 +14587,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
     @property
     def StartLiveTime(self):
-        """启动直播的时间，值为unix时间戳。
+        r"""启动直播的时间，值为unix时间戳。
         :rtype: int
         """
         return self._StartLiveTime
@@ -14598,7 +14598,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14621,7 +14621,7 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 
 
 class DescribeCasterInputInfosRequest(AbstractModel):
-    """DescribeCasterInputInfos请求参数结构体
+    r"""DescribeCasterInputInfos请求参数结构体
 
     """
 
@@ -14634,7 +14634,7 @@ class DescribeCasterInputInfosRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -14657,7 +14657,7 @@ class DescribeCasterInputInfosRequest(AbstractModel):
 
 
 class DescribeCasterInputInfosResponse(AbstractModel):
-    """DescribeCasterInputInfos返回参数结构体
+    r"""DescribeCasterInputInfos返回参数结构体
 
     """
 
@@ -14673,7 +14673,7 @@ class DescribeCasterInputInfosResponse(AbstractModel):
 
     @property
     def InputInfos(self):
-        """导播台输入源信息列表。
+        r"""导播台输入源信息列表。
         :rtype: list of CasterInputInfo
         """
         return self._InputInfos
@@ -14684,7 +14684,7 @@ class DescribeCasterInputInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14705,7 +14705,7 @@ class DescribeCasterInputInfosResponse(AbstractModel):
 
 
 class DescribeCasterLayoutInfosRequest(AbstractModel):
-    """DescribeCasterLayoutInfos请求参数结构体
+    r"""DescribeCasterLayoutInfos请求参数结构体
 
     """
 
@@ -14718,7 +14718,7 @@ class DescribeCasterLayoutInfosRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -14741,7 +14741,7 @@ class DescribeCasterLayoutInfosRequest(AbstractModel):
 
 
 class DescribeCasterLayoutInfosResponse(AbstractModel):
-    """DescribeCasterLayoutInfos返回参数结构体
+    r"""DescribeCasterLayoutInfos返回参数结构体
 
     """
 
@@ -14757,7 +14757,7 @@ class DescribeCasterLayoutInfosResponse(AbstractModel):
 
     @property
     def LayoutInfos(self):
-        """导播台的布局列表。
+        r"""导播台的布局列表。
         :rtype: list of CasterLayoutInfo
         """
         return self._LayoutInfos
@@ -14768,7 +14768,7 @@ class DescribeCasterLayoutInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14789,13 +14789,13 @@ class DescribeCasterLayoutInfosResponse(AbstractModel):
 
 
 class DescribeCasterListRequest(AbstractModel):
-    """DescribeCasterList请求参数结构体
+    r"""DescribeCasterList请求参数结构体
 
     """
 
 
 class DescribeCasterListResponse(AbstractModel):
-    """DescribeCasterList返回参数结构体
+    r"""DescribeCasterList返回参数结构体
 
     """
 
@@ -14811,7 +14811,7 @@ class DescribeCasterListResponse(AbstractModel):
 
     @property
     def CasterList(self):
-        """用户对应的导播台简要信息列表
+        r"""用户对应的导播台简要信息列表
         :rtype: list of CasterBriefInfo
         """
         return self._CasterList
@@ -14822,7 +14822,7 @@ class DescribeCasterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14843,7 +14843,7 @@ class DescribeCasterListResponse(AbstractModel):
 
 
 class DescribeCasterMarkPicInfosRequest(AbstractModel):
-    """DescribeCasterMarkPicInfos请求参数结构体
+    r"""DescribeCasterMarkPicInfos请求参数结构体
 
     """
 
@@ -14856,7 +14856,7 @@ class DescribeCasterMarkPicInfosRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -14879,7 +14879,7 @@ class DescribeCasterMarkPicInfosRequest(AbstractModel):
 
 
 class DescribeCasterMarkPicInfosResponse(AbstractModel):
-    """DescribeCasterMarkPicInfos返回参数结构体
+    r"""DescribeCasterMarkPicInfos返回参数结构体
 
     """
 
@@ -14895,7 +14895,7 @@ class DescribeCasterMarkPicInfosResponse(AbstractModel):
 
     @property
     def MarkPicInfos(self):
-        """导播台的水印信息列表。
+        r"""导播台的水印信息列表。
         :rtype: list of CasterMarkPicInfo
         """
         return self._MarkPicInfos
@@ -14906,7 +14906,7 @@ class DescribeCasterMarkPicInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14927,7 +14927,7 @@ class DescribeCasterMarkPicInfosResponse(AbstractModel):
 
 
 class DescribeCasterMarkWordInfosRequest(AbstractModel):
-    """DescribeCasterMarkWordInfos请求参数结构体
+    r"""DescribeCasterMarkWordInfos请求参数结构体
 
     """
 
@@ -14940,7 +14940,7 @@ class DescribeCasterMarkWordInfosRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -14963,7 +14963,7 @@ class DescribeCasterMarkWordInfosRequest(AbstractModel):
 
 
 class DescribeCasterMarkWordInfosResponse(AbstractModel):
-    """DescribeCasterMarkWordInfos返回参数结构体
+    r"""DescribeCasterMarkWordInfos返回参数结构体
 
     """
 
@@ -14979,7 +14979,7 @@ class DescribeCasterMarkWordInfosResponse(AbstractModel):
 
     @property
     def MarkWordInfos(self):
-        """导播台的文本信息列表。
+        r"""导播台的文本信息列表。
         :rtype: list of CasterMarkWordInfo
         """
         return self._MarkWordInfos
@@ -14990,7 +14990,7 @@ class DescribeCasterMarkWordInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15011,7 +15011,7 @@ class DescribeCasterMarkWordInfosResponse(AbstractModel):
 
 
 class DescribeCasterOutputInfosRequest(AbstractModel):
-    """DescribeCasterOutputInfos请求参数结构体
+    r"""DescribeCasterOutputInfos请求参数结构体
 
     """
 
@@ -15024,7 +15024,7 @@ class DescribeCasterOutputInfosRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -15047,7 +15047,7 @@ class DescribeCasterOutputInfosRequest(AbstractModel):
 
 
 class DescribeCasterOutputInfosResponse(AbstractModel):
-    """DescribeCasterOutputInfos返回参数结构体
+    r"""DescribeCasterOutputInfos返回参数结构体
 
     """
 
@@ -15063,7 +15063,7 @@ class DescribeCasterOutputInfosResponse(AbstractModel):
 
     @property
     def OutputInfos(self):
-        """导播台的推流信息列表。
+        r"""导播台的推流信息列表。
         :rtype: list of CasterOutputInfo
         """
         return self._OutputInfos
@@ -15074,7 +15074,7 @@ class DescribeCasterOutputInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15095,7 +15095,7 @@ class DescribeCasterOutputInfosResponse(AbstractModel):
 
 
 class DescribeCasterPlayUrlRequest(AbstractModel):
-    """DescribeCasterPlayUrl请求参数结构体
+    r"""DescribeCasterPlayUrl请求参数结构体
 
     """
 
@@ -15119,7 +15119,7 @@ class DescribeCasterPlayUrlRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -15130,7 +15130,7 @@ class DescribeCasterPlayUrlRequest(AbstractModel):
 
     @property
     def PlayUrlType(self):
-        """请求播放url的类型。
+        r"""请求播放url的类型。
 取值范围[1，2，3]
 1：获取输入源的播放url
 2：获取pvw的播放url
@@ -15145,7 +15145,7 @@ class DescribeCasterPlayUrlRequest(AbstractModel):
 
     @property
     def PlayUrlIndex(self):
-        """仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
+        r"""仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
 注：对应的输入源必须存在。
         :rtype: int
         """
@@ -15171,7 +15171,7 @@ class DescribeCasterPlayUrlRequest(AbstractModel):
 
 
 class DescribeCasterPlayUrlResponse(AbstractModel):
-    """DescribeCasterPlayUrl返回参数结构体
+    r"""DescribeCasterPlayUrl返回参数结构体
 
     """
 
@@ -15193,7 +15193,7 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
 
     @property
     def PlayUrl(self):
-        """播放url。
+        r"""播放url。
 当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
         :rtype: str
         """
@@ -15205,7 +15205,7 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
 
     @property
     def WebRTCPlayUrl(self):
-        """webrtc协议播放地址。
+        r"""webrtc协议播放地址。
 当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
 注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
         :rtype: str
@@ -15218,7 +15218,7 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15235,7 +15235,7 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
 
 
 class DescribeCasterRequest(AbstractModel):
-    """DescribeCaster请求参数结构体
+    r"""DescribeCaster请求参数结构体
 
     """
 
@@ -15248,7 +15248,7 @@ class DescribeCasterRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """需查询的导播台ID
+        r"""需查询的导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -15271,7 +15271,7 @@ class DescribeCasterRequest(AbstractModel):
 
 
 class DescribeCasterResponse(AbstractModel):
-    """DescribeCaster返回参数结构体
+    r"""DescribeCaster返回参数结构体
 
     """
 
@@ -15287,7 +15287,7 @@ class DescribeCasterResponse(AbstractModel):
 
     @property
     def CasterInfo(self):
-        """导播台信息
+        r"""导播台信息
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterInfo`
         """
         return self._CasterInfo
@@ -15298,7 +15298,7 @@ class DescribeCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15316,7 +15316,7 @@ class DescribeCasterResponse(AbstractModel):
 
 
 class DescribeCasterTransitionTypesRequest(AbstractModel):
-    """DescribeCasterTransitionTypes请求参数结构体
+    r"""DescribeCasterTransitionTypes请求参数结构体
 
     """
 
@@ -15329,7 +15329,7 @@ class DescribeCasterTransitionTypesRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -15352,7 +15352,7 @@ class DescribeCasterTransitionTypesRequest(AbstractModel):
 
 
 class DescribeCasterTransitionTypesResponse(AbstractModel):
-    """DescribeCasterTransitionTypes返回参数结构体
+    r"""DescribeCasterTransitionTypes返回参数结构体
 
     """
 
@@ -15368,7 +15368,7 @@ class DescribeCasterTransitionTypesResponse(AbstractModel):
 
     @property
     def TransitionTypes(self):
-        """转场信息列表
+        r"""转场信息列表
         :rtype: list of TransitionTypeInfo
         """
         return self._TransitionTypes
@@ -15379,7 +15379,7 @@ class DescribeCasterTransitionTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15400,13 +15400,13 @@ class DescribeCasterTransitionTypesResponse(AbstractModel):
 
 
 class DescribeCasterUserStatusRequest(AbstractModel):
-    """DescribeCasterUserStatus请求参数结构体
+    r"""DescribeCasterUserStatus请求参数结构体
 
     """
 
 
 class DescribeCasterUserStatusResponse(AbstractModel):
-    """DescribeCasterUserStatus返回参数结构体
+    r"""DescribeCasterUserStatus返回参数结构体
 
     """
 
@@ -15425,7 +15425,7 @@ class DescribeCasterUserStatusResponse(AbstractModel):
 
     @property
     def UserStatus(self):
-        """0: 未开通导播台
+        r"""0: 未开通导播台
 1:开通了导播台，且处于正常状态
 2:开通了导播台，但处于欠费状态
 3:开通了导播台，但处于封禁状态
@@ -15439,7 +15439,7 @@ class DescribeCasterUserStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15455,7 +15455,7 @@ class DescribeCasterUserStatusResponse(AbstractModel):
 
 
 class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
-    """DescribeConcurrentRecordStreamNum请求参数结构体
+    r"""DescribeConcurrentRecordStreamNum请求参数结构体
 
     """
 
@@ -15487,7 +15487,7 @@ NormalLive：普通直播。
 
     @property
     def LiveType(self):
-        """直播类型，SlowLive：慢直播。
+        r"""直播类型，SlowLive：慢直播。
 NormalLive：普通直播。
         :rtype: str
         """
@@ -15499,7 +15499,7 @@ NormalLive：普通直播。
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 可以查询最近180天的数据。
@@ -15513,7 +15513,7 @@ NormalLive：普通直播。
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 时间跨度最大支持31天。
@@ -15527,7 +15527,7 @@ NormalLive：普通直播。
 
     @property
     def MainlandOrOversea(self):
-        """如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+        r"""如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -15538,7 +15538,7 @@ NormalLive：普通直播。
 
     @property
     def PushDomains(self):
-        """推流域名列表，不填表示总体数据。
+        r"""推流域名列表，不填表示总体数据。
         :rtype: list of str
         """
         return self._PushDomains
@@ -15565,7 +15565,7 @@ NormalLive：普通直播。
 
 
 class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
-    """DescribeConcurrentRecordStreamNum返回参数结构体
+    r"""DescribeConcurrentRecordStreamNum返回参数结构体
 
     """
 
@@ -15581,7 +15581,7 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """统计信息列表。
+        r"""统计信息列表。
         :rtype: list of ConcurrentRecordStreamNum
         """
         return self._DataInfoList
@@ -15592,7 +15592,7 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15613,7 +15613,7 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
 
 class DescribeDeliverBandwidthListRequest(AbstractModel):
-    """DescribeDeliverBandwidthList请求参数结构体
+    r"""DescribeDeliverBandwidthList请求参数结构体
 
     """
 
@@ -15634,7 +15634,7 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -15647,7 +15647,7 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近三个月的数据查询，时间跨度最大是1个月。
@@ -15674,7 +15674,7 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
 
 class DescribeDeliverBandwidthListResponse(AbstractModel):
-    """DescribeDeliverBandwidthList返回参数结构体
+    r"""DescribeDeliverBandwidthList返回参数结构体
 
     """
 
@@ -15690,7 +15690,7 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """转推计费带宽数据
+        r"""转推计费带宽数据
         :rtype: list of BandwidthInfo
         """
         return self._DataInfoList
@@ -15701,7 +15701,7 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15722,13 +15722,13 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
 
 class DescribeDeliverLogDownListRequest(AbstractModel):
-    """DescribeDeliverLogDownList请求参数结构体
+    r"""DescribeDeliverLogDownList请求参数结构体
 
     """
 
 
 class DescribeDeliverLogDownListResponse(AbstractModel):
-    """DescribeDeliverLogDownList返回参数结构体
+    r"""DescribeDeliverLogDownList返回参数结构体
 
     """
 
@@ -15747,7 +15747,7 @@ class DescribeDeliverLogDownListResponse(AbstractModel):
 
     @property
     def LogInfoList(self):
-        """日志信息列表。
+        r"""日志信息列表。
         :rtype: list of PushLogInfo
         """
         return self._LogInfoList
@@ -15758,7 +15758,7 @@ class DescribeDeliverLogDownListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总条数。
+        r"""总条数。
         :rtype: int
         """
         return self._TotalNum
@@ -15769,7 +15769,7 @@ class DescribeDeliverLogDownListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15791,7 +15791,7 @@ class DescribeDeliverLogDownListResponse(AbstractModel):
 
 
 class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
-    """DescribeGroupProIspPlayInfoList请求参数结构体
+    r"""DescribeGroupProIspPlayInfoList请求参数结构体
 
     """
 
@@ -15826,7 +15826,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，
+        r"""起始时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -15840,7 +15840,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，
+        r"""结束时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -15855,7 +15855,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名，默认为不填，表示求总体数据。
+        r"""播放域名，默认为不填，表示求总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -15866,7 +15866,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def ProvinceNames(self):
-        """省份列表，默认不填，则返回各省份的数据。
+        r"""省份列表，默认不填，则返回各省份的数据。
         :rtype: list of str
         """
         return self._ProvinceNames
@@ -15877,7 +15877,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def IspNames(self):
-        """运营商列表，默认不填，则返回整个运营商的数据。
+        r"""运营商列表，默认不填，则返回整个运营商的数据。
         :rtype: list of str
         """
         return self._IspNames
@@ -15888,7 +15888,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+        r"""国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -15916,7 +15916,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
 
 class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
-    """DescribeGroupProIspPlayInfoList返回参数结构体
+    r"""DescribeGroupProIspPlayInfoList返回参数结构体
 
     """
 
@@ -15932,7 +15932,7 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """数据内容。
+        r"""数据内容。
         :rtype: list of GroupProIspDataInfo
         """
         return self._DataInfoList
@@ -15943,7 +15943,7 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15964,7 +15964,7 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
 
 class DescribeHttpStatusInfoListRequest(AbstractModel):
-    """DescribeHttpStatusInfoList请求参数结构体
+    r"""DescribeHttpStatusInfoList请求参数结构体
 
     """
 
@@ -15989,7 +15989,7 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间，
+        r"""起始时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -16003,7 +16003,7 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，
+        r"""结束时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -16017,7 +16017,7 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表。
+        r"""播放域名列表。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -16042,7 +16042,7 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
 
 class DescribeHttpStatusInfoListResponse(AbstractModel):
-    """DescribeHttpStatusInfoList返回参数结构体
+    r"""DescribeHttpStatusInfoList返回参数结构体
 
     """
 
@@ -16058,7 +16058,7 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """播放状态码列表。
+        r"""播放状态码列表。
         :rtype: list of HttpStatusData
         """
         return self._DataInfoList
@@ -16069,7 +16069,7 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16090,13 +16090,13 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
 
 class DescribeLiveCallbackRulesRequest(AbstractModel):
-    """DescribeLiveCallbackRules请求参数结构体
+    r"""DescribeLiveCallbackRules请求参数结构体
 
     """
 
 
 class DescribeLiveCallbackRulesResponse(AbstractModel):
-    """DescribeLiveCallbackRules返回参数结构体
+    r"""DescribeLiveCallbackRules返回参数结构体
 
     """
 
@@ -16112,7 +16112,7 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """规则信息列表。
+        r"""规则信息列表。
         :rtype: list of CallBackRuleInfo
         """
         return self._Rules
@@ -16123,7 +16123,7 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16144,7 +16144,7 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
 
 class DescribeLiveCallbackTemplateRequest(AbstractModel):
-    """DescribeLiveCallbackTemplate请求参数结构体
+    r"""DescribeLiveCallbackTemplate请求参数结构体
 
     """
 
@@ -16159,7 +16159,7 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
 2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
         :rtype: int
@@ -16184,7 +16184,7 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
 
 
 class DescribeLiveCallbackTemplateResponse(AbstractModel):
-    """DescribeLiveCallbackTemplate返回参数结构体
+    r"""DescribeLiveCallbackTemplate返回参数结构体
 
     """
 
@@ -16200,7 +16200,7 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """回调模板信息。
+        r"""回调模板信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
         """
         return self._Template
@@ -16211,7 +16211,7 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16229,13 +16229,13 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
 
 class DescribeLiveCallbackTemplatesRequest(AbstractModel):
-    """DescribeLiveCallbackTemplates请求参数结构体
+    r"""DescribeLiveCallbackTemplates请求参数结构体
 
     """
 
 
 class DescribeLiveCallbackTemplatesResponse(AbstractModel):
-    """DescribeLiveCallbackTemplates返回参数结构体
+    r"""DescribeLiveCallbackTemplates返回参数结构体
 
     """
 
@@ -16251,7 +16251,7 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """模板信息列表。
+        r"""模板信息列表。
         :rtype: list of CallBackTemplateInfo
         """
         return self._Templates
@@ -16262,7 +16262,7 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16283,7 +16283,7 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
 
 class DescribeLiveCertRequest(AbstractModel):
-    """DescribeLiveCert请求参数结构体
+    r"""DescribeLiveCert请求参数结构体
 
     """
 
@@ -16296,7 +16296,7 @@ class DescribeLiveCertRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """DescribeLiveCerts接口获取到的证书Id。
+        r"""DescribeLiveCerts接口获取到的证书Id。
         :rtype: int
         """
         return self._CertId
@@ -16319,7 +16319,7 @@ class DescribeLiveCertRequest(AbstractModel):
 
 
 class DescribeLiveCertResponse(AbstractModel):
-    """DescribeLiveCert返回参数结构体
+    r"""DescribeLiveCert返回参数结构体
 
     """
 
@@ -16335,7 +16335,7 @@ class DescribeLiveCertResponse(AbstractModel):
 
     @property
     def CertInfo(self):
-        """证书信息。
+        r"""证书信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CertInfo`
         """
         return self._CertInfo
@@ -16346,7 +16346,7 @@ class DescribeLiveCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16364,13 +16364,13 @@ class DescribeLiveCertResponse(AbstractModel):
 
 
 class DescribeLiveCertsRequest(AbstractModel):
-    """DescribeLiveCerts请求参数结构体
+    r"""DescribeLiveCerts请求参数结构体
 
     """
 
 
 class DescribeLiveCertsResponse(AbstractModel):
-    """DescribeLiveCerts返回参数结构体
+    r"""DescribeLiveCerts返回参数结构体
 
     """
 
@@ -16386,7 +16386,7 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     @property
     def CertInfoSet(self):
-        """证书信息列表。
+        r"""证书信息列表。
         :rtype: list of CertInfo
         """
         return self._CertInfoSet
@@ -16397,7 +16397,7 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16418,7 +16418,7 @@ class DescribeLiveCertsResponse(AbstractModel):
 
 
 class DescribeLiveCloudEffectListRequest(AbstractModel):
-    """DescribeLiveCloudEffectList请求参数结构体
+    r"""DescribeLiveCloudEffectList请求参数结构体
 
     """
 
@@ -16440,7 +16440,7 @@ class DescribeLiveCloudEffectListRequest(AbstractModel):
 
     @property
     def Id(self):
-        """云端特效ID。
+        r"""云端特效ID。
         :rtype: str
         """
         return self._Id
@@ -16451,7 +16451,7 @@ class DescribeLiveCloudEffectListRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """云端特效描述词。由用户原始输入的描述词。
+        r"""云端特效描述词。由用户原始输入的描述词。
         :rtype: str
         """
         return self._Prompt
@@ -16462,7 +16462,7 @@ class DescribeLiveCloudEffectListRequest(AbstractModel):
 
     @property
     def Flag(self):
-        """云端特效标签。对云端特效进行分类标签，可用于分类搜索。
+        r"""云端特效标签。对云端特效进行分类标签，可用于分类搜索。
         :rtype: str
         """
         return self._Flag
@@ -16473,7 +16473,7 @@ class DescribeLiveCloudEffectListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
+        r"""云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
         :rtype: str
         """
         return self._Type
@@ -16499,7 +16499,7 @@ class DescribeLiveCloudEffectListRequest(AbstractModel):
 
 
 class DescribeLiveCloudEffectListResponse(AbstractModel):
-    """DescribeLiveCloudEffectList返回参数结构体
+    r"""DescribeLiveCloudEffectList返回参数结构体
 
     """
 
@@ -16521,7 +16521,7 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
 
     @property
     def InfoList(self):
-        """云端特效信息列表。
+        r"""云端特效信息列表。
         :rtype: list of CloudEffectInfo
         """
         return self._InfoList
@@ -16532,7 +16532,7 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
 
     @property
     def EnableCreateNum(self):
-        """允许创建的云端特效个数。
+        r"""允许创建的云端特效个数。
         :rtype: int
         """
         return self._EnableCreateNum
@@ -16543,7 +16543,7 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """当前已有的特效总个数。
+        r"""当前已有的特效总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -16554,7 +16554,7 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16577,13 +16577,13 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
 
 
 class DescribeLiveDelayInfoListRequest(AbstractModel):
-    """DescribeLiveDelayInfoList请求参数结构体
+    r"""DescribeLiveDelayInfoList请求参数结构体
 
     """
 
 
 class DescribeLiveDelayInfoListResponse(AbstractModel):
-    """DescribeLiveDelayInfoList返回参数结构体
+    r"""DescribeLiveDelayInfoList返回参数结构体
 
     """
 
@@ -16599,7 +16599,7 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     @property
     def DelayInfoList(self):
-        """延播信息列表。
+        r"""延播信息列表。
         :rtype: list of DelayInfo
         """
         return self._DelayInfoList
@@ -16610,7 +16610,7 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16631,7 +16631,7 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
 
 class DescribeLiveDomainCertBindingsRequest(AbstractModel):
-    """DescribeLiveDomainCertBindings请求参数结构体
+    r"""DescribeLiveDomainCertBindings请求参数结构体
 
     """
 
@@ -16659,7 +16659,7 @@ ExpireTimeDesc：证书过期时间降序。
 
     @property
     def DomainSearch(self):
-        """要搜索的域名字符串。
+        r"""要搜索的域名字符串。
         :rtype: str
         """
         return self._DomainSearch
@@ -16670,7 +16670,7 @@ ExpireTimeDesc：证书过期时间降序。
 
     @property
     def Offset(self):
-        """记录行的位置，从0开始。默认0。
+        r"""记录行的位置，从0开始。默认0。
         :rtype: int
         """
         return self._Offset
@@ -16681,7 +16681,7 @@ ExpireTimeDesc：证书过期时间降序。
 
     @property
     def Length(self):
-        """记录行的最大数目。默认50。
+        r"""记录行的最大数目。默认50。
 若不传，则最多返回50条数据。
         :rtype: int
         """
@@ -16693,7 +16693,7 @@ ExpireTimeDesc：证书过期时间降序。
 
     @property
     def DomainName(self):
-        """要查询的单个域名。
+        r"""要查询的单个域名。
         :rtype: str
         """
         return self._DomainName
@@ -16704,7 +16704,7 @@ ExpireTimeDesc：证书过期时间降序。
 
     @property
     def OrderBy(self):
-        """可取值：
+        r"""可取值：
 ExpireTimeAsc：证书过期时间升序。
 ExpireTimeDesc：证书过期时间降序。
         :rtype: str
@@ -16733,7 +16733,7 @@ ExpireTimeDesc：证书过期时间降序。
 
 
 class DescribeLiveDomainCertBindingsResponse(AbstractModel):
-    """DescribeLiveDomainCertBindings返回参数结构体
+    r"""DescribeLiveDomainCertBindings返回参数结构体
 
     """
 
@@ -16752,7 +16752,7 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def LiveDomainCertBindings(self):
-        """有绑定证书的域名信息数组。
+        r"""有绑定证书的域名信息数组。
         :rtype: list of LiveDomainCertBindings
         """
         return self._LiveDomainCertBindings
@@ -16763,7 +16763,7 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总的记录行数，便于分页。
+        r"""总的记录行数，便于分页。
         :rtype: int
         """
         return self._TotalNum
@@ -16774,7 +16774,7 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16796,7 +16796,7 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
 
 class DescribeLiveDomainCertRequest(AbstractModel):
-    """DescribeLiveDomainCert请求参数结构体
+    r"""DescribeLiveDomainCert请求参数结构体
 
     """
 
@@ -16809,7 +16809,7 @@ class DescribeLiveDomainCertRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -16832,7 +16832,7 @@ class DescribeLiveDomainCertRequest(AbstractModel):
 
 
 class DescribeLiveDomainCertResponse(AbstractModel):
-    """DescribeLiveDomainCert返回参数结构体
+    r"""DescribeLiveDomainCert返回参数结构体
 
     """
 
@@ -16848,7 +16848,7 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     @property
     def DomainCertInfo(self):
-        """证书信息。
+        r"""证书信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
         """
         return self._DomainCertInfo
@@ -16859,7 +16859,7 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16877,7 +16877,7 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
 
 class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
-    """DescribeLiveDomainPlayInfoList请求参数结构体
+    r"""DescribeLiveDomainPlayInfoList请求参数结构体
 
     """
 
@@ -16890,7 +16890,7 @@ class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表。
+        r"""播放域名列表。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -16913,7 +16913,7 @@ class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
 
 
 class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
-    """DescribeLiveDomainPlayInfoList返回参数结构体
+    r"""DescribeLiveDomainPlayInfoList返回参数结构体
 
     """
 
@@ -16944,7 +16944,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间，格式为yyyy-mm-dd HH:MM:SS。
+        r"""数据时间，格式为yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._Time
@@ -16955,7 +16955,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalBandwidth(self):
-        """实时总带宽。
+        r"""实时总带宽。
         :rtype: float
         """
         return self._TotalBandwidth
@@ -16966,7 +16966,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """实时总流量。
+        r"""实时总流量。
         :rtype: float
         """
         return self._TotalFlux
@@ -16977,7 +16977,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalRequest(self):
-        """总请求数。
+        r"""总请求数。
         :rtype: int
         """
         return self._TotalRequest
@@ -16988,7 +16988,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalOnline(self):
-        """实时总连接数。
+        r"""实时总连接数。
         :rtype: int
         """
         return self._TotalOnline
@@ -16999,7 +16999,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def DomainInfoList(self):
-        """分域名的数据情况。
+        r"""分域名的数据情况。
         :rtype: list of DomainInfoList
         """
         return self._DomainInfoList
@@ -17010,7 +17010,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17036,7 +17036,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
 
 class DescribeLiveDomainRefererRequest(AbstractModel):
-    """DescribeLiveDomainReferer请求参数结构体
+    r"""DescribeLiveDomainReferer请求参数结构体
 
     """
 
@@ -17049,7 +17049,7 @@ class DescribeLiveDomainRefererRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -17072,7 +17072,7 @@ class DescribeLiveDomainRefererRequest(AbstractModel):
 
 
 class DescribeLiveDomainRefererResponse(AbstractModel):
-    """DescribeLiveDomainReferer返回参数结构体
+    r"""DescribeLiveDomainReferer返回参数结构体
 
     """
 
@@ -17088,7 +17088,7 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RefererAuthConfig(self):
-        """域名 Referer 黑白名单配置。
+        r"""域名 Referer 黑白名单配置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
         """
         return self._RefererAuthConfig
@@ -17099,7 +17099,7 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17117,7 +17117,7 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
 
 class DescribeLiveDomainRequest(AbstractModel):
-    """DescribeLiveDomain请求参数结构体
+    r"""DescribeLiveDomain请求参数结构体
 
     """
 
@@ -17130,7 +17130,7 @@ class DescribeLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -17153,7 +17153,7 @@ class DescribeLiveDomainRequest(AbstractModel):
 
 
 class DescribeLiveDomainResponse(AbstractModel):
-    """DescribeLiveDomain返回参数结构体
+    r"""DescribeLiveDomain返回参数结构体
 
     """
 
@@ -17169,7 +17169,7 @@ class DescribeLiveDomainResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
-        """域名信息。
+        r"""域名信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.DomainInfo`
         """
         return self._DomainInfo
@@ -17180,7 +17180,7 @@ class DescribeLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17198,7 +17198,7 @@ class DescribeLiveDomainResponse(AbstractModel):
 
 
 class DescribeLiveDomainsRequest(AbstractModel):
-    """DescribeLiveDomains请求参数结构体
+    r"""DescribeLiveDomains请求参数结构体
 
     """
 
@@ -17232,7 +17232,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainStatus(self):
-        """域名状态过滤。0-停用，1-启用。
+        r"""域名状态过滤。0-停用，1-启用。
         :rtype: int
         """
         return self._DomainStatus
@@ -17243,7 +17243,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainType(self):
-        """域名类型过滤。0-推流，1-播放。
+        r"""域名类型过滤。0-推流，1-播放。
         :rtype: int
         """
         return self._DomainType
@@ -17254,7 +17254,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小，范围：10~100。默认10。
+        r"""分页大小，范围：10~100。默认10。
         :rtype: int
         """
         return self._PageSize
@@ -17265,7 +17265,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取第几页，范围：1~100000。默认1。
+        r"""取第几页，范围：1~100000。默认1。
         :rtype: int
         """
         return self._PageNum
@@ -17276,7 +17276,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        """0 普通直播 1慢直播 默认0。
+        r"""0 普通直播 1慢直播 默认0。
         :rtype: int
         """
         return self._IsDelayLive
@@ -17287,7 +17287,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainPrefix(self):
-        """域名前缀。
+        r"""域名前缀。
         :rtype: str
         """
         return self._DomainPrefix
@@ -17298,7 +17298,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PlayType(self):
-        """播放区域，只在 DomainType=1 时该参数有意义。
+        r"""播放区域，只在 DomainType=1 时该参数有意义。
 1: 国内。
 2: 全球。
 3: 海外。
@@ -17330,7 +17330,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
 
 class DescribeLiveDomainsResponse(AbstractModel):
-    """DescribeLiveDomains返回参数结构体
+    r"""DescribeLiveDomains返回参数结构体
 
     """
 
@@ -17355,7 +17355,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """总记录数。
+        r"""总记录数。
         :rtype: int
         """
         return self._AllCount
@@ -17366,7 +17366,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     @property
     def DomainList(self):
-        """域名详细信息列表。
+        r"""域名详细信息列表。
         :rtype: list of DomainInfo
         """
         return self._DomainList
@@ -17377,7 +17377,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     @property
     def CreateLimitCount(self):
-        """可继续添加域名数量。
+        r"""可继续添加域名数量。
         :rtype: int
         """
         return self._CreateLimitCount
@@ -17388,7 +17388,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     @property
     def PlayTypeCount(self):
-        """启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
+        r"""启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
         :rtype: list of int
         """
         return self._PlayTypeCount
@@ -17399,7 +17399,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17423,7 +17423,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
 
 class DescribeLiveEnhanceInfoListRequest(AbstractModel):
-    """DescribeLiveEnhanceInfoList请求参数结构体
+    r"""DescribeLiveEnhanceInfoList请求参数结构体
 
     """
 
@@ -17460,7 +17460,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，使用ISO格式时间，
+        r"""起始时间点，使用ISO格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
@@ -17474,7 +17474,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，使用ISO格式时间，
+        r"""结束时间点，使用ISO格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
@@ -17488,7 +17488,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """查询粒度，支持5，60分钟。
+        r"""查询粒度，支持5，60分钟。
         :rtype: int
         """
         return self._Granularity
@@ -17499,7 +17499,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def DomainNames(self):
-        """查询域名，如果不填则默认查全部的数据。
+        r"""查询域名，如果不填则默认查全部的数据。
         :rtype: list of str
         """
         return self._DomainNames
@@ -17510,7 +17510,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """增强服务类型，如果不填则默认查全部的数据。
+        r"""增强服务类型，如果不填则默认查全部的数据。
         :rtype: list of str
         """
         return self._Type
@@ -17521,7 +17521,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率，如果不填则默认查全部的数据。
+        r"""分辨率，如果不填则默认查全部的数据。
         :rtype: list of str
         """
         return self._Resolution
@@ -17532,7 +17532,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
     @property
     def Fps(self):
-        """帧率，如果不填则默认查全部的数据。
+        r"""帧率，如果不填则默认查全部的数据。
         :rtype: list of str
         """
         return self._Fps
@@ -17561,7 +17561,7 @@ class DescribeLiveEnhanceInfoListRequest(AbstractModel):
 
 
 class DescribeLiveEnhanceInfoListResponse(AbstractModel):
-    """DescribeLiveEnhanceInfoList返回参数结构体
+    r"""DescribeLiveEnhanceInfoList返回参数结构体
 
     """
 
@@ -17577,7 +17577,7 @@ class DescribeLiveEnhanceInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """直播增强统计信息列表。
+        r"""直播增强统计信息列表。
         :rtype: list of LiveEnhanceInfo
         """
         return self._DataInfoList
@@ -17588,7 +17588,7 @@ class DescribeLiveEnhanceInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17609,7 +17609,7 @@ class DescribeLiveEnhanceInfoListResponse(AbstractModel):
 
 
 class DescribeLiveForbidStreamListRequest(AbstractModel):
-    """DescribeLiveForbidStreamList请求参数结构体
+    r"""DescribeLiveForbidStreamList请求参数结构体
 
     """
 
@@ -17630,7 +17630,7 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页，默认1。
+        r"""取得第几页，默认1。
         :rtype: int
         """
         return self._PageNum
@@ -17641,7 +17641,7 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小，最大100。 
+        r"""每页大小，最大100。 
 取值：1~100之前的任意整数。
 默认值：10。
         :rtype: int
@@ -17654,7 +17654,7 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """按流名称查询。
+        r"""按流名称查询。
         :rtype: str
         """
         return self._StreamName
@@ -17679,7 +17679,7 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
 
 class DescribeLiveForbidStreamListResponse(AbstractModel):
-    """DescribeLiveForbidStreamList返回参数结构体
+    r"""DescribeLiveForbidStreamList返回参数结构体
 
     """
 
@@ -17707,7 +17707,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """符合条件的总个数。
+        r"""符合条件的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -17718,7 +17718,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -17729,7 +17729,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页的页码。
+        r"""分页的页码。
         :rtype: int
         """
         return self._PageNum
@@ -17740,7 +17740,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示的条数。
+        r"""每页显示的条数。
         :rtype: int
         """
         return self._PageSize
@@ -17751,7 +17751,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def ForbidStreamList(self):
-        """禁推流列表。
+        r"""禁推流列表。
         :rtype: list of ForbidStreamInfo
         """
         return self._ForbidStreamList
@@ -17762,7 +17762,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17787,7 +17787,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
 
 class DescribeLivePackageInfoRequest(AbstractModel):
-    """DescribeLivePackageInfo请求参数结构体
+    r"""DescribeLivePackageInfo请求参数结构体
 
     """
 
@@ -17820,7 +17820,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """包类型，可选值：
+        r"""包类型，可选值：
 0：流量包
 1：转码包
 2: 连麦包。
@@ -17834,7 +17834,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序规则:
+        r"""排序规则:
 1. BuyTimeDesc： 最新购买的排在最前面
 2. BuyTimeAsc： 最老购买的排在最前面
 3. ExpireTimeDesc： 最后过期的排在最前面
@@ -17852,7 +17852,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页的数据，和 PageSize 同时传递才会生效。
+        r"""取得第几页的数据，和 PageSize 同时传递才会生效。
         :rtype: int
         """
         return self._PageNum
@@ -17863,7 +17863,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小，和 PageNum 同时传递才会生效。
+        r"""分页大小，和 PageNum 同时传递才会生效。
 取值：10 ～ 100 之间的任意整数。
         :rtype: int
         """
@@ -17890,7 +17890,7 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 
 
 class DescribeLivePackageInfoResponse(AbstractModel):
-    """DescribeLivePackageInfo返回参数结构体
+    r"""DescribeLivePackageInfo返回参数结构体
 
     """
 
@@ -17941,7 +17941,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def LivePackageInfoList(self):
-        """套餐包信息。
+        r"""套餐包信息。
         :rtype: list of LivePackageInfo
         """
         return self._LivePackageInfoList
@@ -17952,7 +17952,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PackageBillMode(self):
-        """套餐包当前计费方式:
+        r"""套餐包当前计费方式:
 -1: 无计费方式或获取失败
 0: 无计费方式
 201: 月结带宽
@@ -17972,7 +17972,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17984,7 +17984,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """数据总条数。
+        r"""数据总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17996,7 +17996,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """当前页数。
+        r"""当前页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18008,7 +18008,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """当前每页数量。
+        r"""当前每页数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18020,7 +18020,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def FluxPackageBillMode(self):
-        """当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：
+        r"""当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：
 标准直播，中国大陆（境内全地区）计费方式。
 标准直播，国际/港澳台（境外多地区）计费方式。
 快直播，中国大陆（境内全地区）计费方式。
@@ -18035,7 +18035,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18062,13 +18062,13 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 
 
 class DescribeLivePadRulesRequest(AbstractModel):
-    """DescribeLivePadRules请求参数结构体
+    r"""DescribeLivePadRules请求参数结构体
 
     """
 
 
 class DescribeLivePadRulesResponse(AbstractModel):
-    """DescribeLivePadRules返回参数结构体
+    r"""DescribeLivePadRules返回参数结构体
 
     """
 
@@ -18084,7 +18084,7 @@ class DescribeLivePadRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """规则信息列表。
+        r"""规则信息列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -18095,7 +18095,7 @@ class DescribeLivePadRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18116,7 +18116,7 @@ class DescribeLivePadRulesResponse(AbstractModel):
 
 
 class DescribeLivePadStreamListRequest(AbstractModel):
-    """DescribeLivePadStreamList请求参数结构体
+    r"""DescribeLivePadStreamList请求参数结构体
 
     """
 
@@ -18141,7 +18141,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -18152,7 +18152,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -18163,7 +18163,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -18174,7 +18174,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页页数。
+        r"""分页页数。
         :rtype: int
         """
         return self._PageNum
@@ -18185,7 +18185,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数。
+        r"""每页个数。
         :rtype: int
         """
         return self._PageSize
@@ -18212,7 +18212,7 @@ class DescribeLivePadStreamListRequest(AbstractModel):
 
 
 class DescribeLivePadStreamListResponse(AbstractModel):
-    """DescribeLivePadStreamList返回参数结构体
+    r"""DescribeLivePadStreamList返回参数结构体
 
     """
 
@@ -18240,7 +18240,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def StreamInfoList(self):
-        """当前正在拉取垫片的流信息列表。
+        r"""当前正在拉取垫片的流信息列表。
         :rtype: list of PadStreamInfo
         """
         return self._StreamInfoList
@@ -18251,7 +18251,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """传入的分页页数。
+        r"""传入的分页页数。
         :rtype: int
         """
         return self._PageNum
@@ -18262,7 +18262,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """传入的分页个数。
+        r"""传入的分页个数。
         :rtype: int
         """
         return self._PageSize
@@ -18273,7 +18273,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """查询到的总个数。
+        r"""查询到的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -18284,7 +18284,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """可以分的总页数。
+        r"""可以分的总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -18295,7 +18295,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18320,7 +18320,7 @@ class DescribeLivePadStreamListResponse(AbstractModel):
 
 
 class DescribeLivePadTemplateRequest(AbstractModel):
-    """DescribeLivePadTemplate请求参数结构体
+    r"""DescribeLivePadTemplate请求参数结构体
 
     """
 
@@ -18333,7 +18333,7 @@ class DescribeLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id。
+        r"""模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -18356,7 +18356,7 @@ class DescribeLivePadTemplateRequest(AbstractModel):
 
 
 class DescribeLivePadTemplateResponse(AbstractModel):
-    """DescribeLivePadTemplate返回参数结构体
+    r"""DescribeLivePadTemplate返回参数结构体
 
     """
 
@@ -18372,7 +18372,7 @@ class DescribeLivePadTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """直播垫片模板信息。
+        r"""直播垫片模板信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.PadTemplate`
         """
         return self._Template
@@ -18383,7 +18383,7 @@ class DescribeLivePadTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18401,13 +18401,13 @@ class DescribeLivePadTemplateResponse(AbstractModel):
 
 
 class DescribeLivePadTemplatesRequest(AbstractModel):
-    """DescribeLivePadTemplates请求参数结构体
+    r"""DescribeLivePadTemplates请求参数结构体
 
     """
 
 
 class DescribeLivePadTemplatesResponse(AbstractModel):
-    """DescribeLivePadTemplates返回参数结构体
+    r"""DescribeLivePadTemplates返回参数结构体
 
     """
 
@@ -18423,7 +18423,7 @@ class DescribeLivePadTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """直播垫片模板信息。
+        r"""直播垫片模板信息。
         :rtype: list of PadTemplate
         """
         return self._Templates
@@ -18434,7 +18434,7 @@ class DescribeLivePadTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18455,7 +18455,7 @@ class DescribeLivePadTemplatesResponse(AbstractModel):
 
 
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
-    """DescribeLivePlayAuthKey请求参数结构体
+    r"""DescribeLivePlayAuthKey请求参数结构体
 
     """
 
@@ -18468,7 +18468,7 @@ class DescribeLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -18491,7 +18491,7 @@ class DescribeLivePlayAuthKeyRequest(AbstractModel):
 
 
 class DescribeLivePlayAuthKeyResponse(AbstractModel):
-    """DescribeLivePlayAuthKey返回参数结构体
+    r"""DescribeLivePlayAuthKey返回参数结构体
 
     """
 
@@ -18507,7 +18507,7 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def PlayAuthKeyInfo(self):
-        """播放鉴权key信息。
+        r"""播放鉴权key信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.PlayAuthKeyInfo`
         """
         return self._PlayAuthKeyInfo
@@ -18518,7 +18518,7 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18536,7 +18536,7 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
 
 class DescribeLivePullStreamTaskStatusRequest(AbstractModel):
-    """DescribeLivePullStreamTaskStatus请求参数结构体
+    r"""DescribeLivePullStreamTaskStatus请求参数结构体
 
     """
 
@@ -18549,7 +18549,7 @@ class DescribeLivePullStreamTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._TaskId
@@ -18572,7 +18572,7 @@ class DescribeLivePullStreamTaskStatusRequest(AbstractModel):
 
 
 class DescribeLivePullStreamTaskStatusResponse(AbstractModel):
-    """DescribeLivePullStreamTaskStatus返回参数结构体
+    r"""DescribeLivePullStreamTaskStatus返回参数结构体
 
     """
 
@@ -18588,7 +18588,7 @@ class DescribeLivePullStreamTaskStatusResponse(AbstractModel):
 
     @property
     def TaskStatusInfo(self):
-        """任务状态信息。
+        r"""任务状态信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.TaskStatusInfo`
         """
         return self._TaskStatusInfo
@@ -18599,7 +18599,7 @@ class DescribeLivePullStreamTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18617,7 +18617,7 @@ class DescribeLivePullStreamTaskStatusResponse(AbstractModel):
 
 
 class DescribeLivePullStreamTasksRequest(AbstractModel):
-    """DescribeLivePullStreamTasks请求参数结构体
+    r"""DescribeLivePullStreamTasks请求参数结构体
 
     """
 
@@ -18643,7 +18643,7 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 ID。 
+        r"""任务 ID。 
 来源：调用 CreateLivePullStreamTask 接口时返回。
 不填默认查询所有任务，按更新时间倒序排序。
         :rtype: str
@@ -18656,7 +18656,7 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页，默认值：1。
+        r"""取得第几页，默认值：1。
         :rtype: int
         """
         return self._PageNum
@@ -18667,7 +18667,7 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小，默认值：10。
+        r"""分页大小，默认值：10。
 取值范围：1~20 之前的任意整数。
         :rtype: int
         """
@@ -18679,7 +18679,7 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
     @property
     def SpecifyTaskId(self):
-        """使用指定任务 ID 查询任务信息。
+        r"""使用指定任务 ID 查询任务信息。
 注意：仅供使用指定 ID 创建的任务查询。
         :rtype: str
         """
@@ -18706,7 +18706,7 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
 
 class DescribeLivePullStreamTasksResponse(AbstractModel):
-    """DescribeLivePullStreamTasks返回参数结构体
+    r"""DescribeLivePullStreamTasks返回参数结构体
 
     """
 
@@ -18737,7 +18737,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
-        """直播拉流任务信息列表。
+        r"""直播拉流任务信息列表。
         :rtype: list of PullStreamTaskInfo
         """
         return self._TaskInfos
@@ -18748,7 +18748,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页的页码。
+        r"""分页的页码。
         :rtype: int
         """
         return self._PageNum
@@ -18759,7 +18759,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小。
+        r"""每页大小。
         :rtype: int
         """
         return self._PageSize
@@ -18770,7 +18770,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """符合条件的总个数。
+        r"""符合条件的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -18781,7 +18781,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -18792,7 +18792,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def LimitTaskNum(self):
-        """限制可创建的最大任务数。
+        r"""限制可创建的最大任务数。
         :rtype: int
         """
         return self._LimitTaskNum
@@ -18803,7 +18803,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18829,7 +18829,7 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
 
 class DescribeLivePushAuthKeyRequest(AbstractModel):
-    """DescribeLivePushAuthKey请求参数结构体
+    r"""DescribeLivePushAuthKey请求参数结构体
 
     """
 
@@ -18842,7 +18842,7 @@ class DescribeLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -18865,7 +18865,7 @@ class DescribeLivePushAuthKeyRequest(AbstractModel):
 
 
 class DescribeLivePushAuthKeyResponse(AbstractModel):
-    """DescribeLivePushAuthKey返回参数结构体
+    r"""DescribeLivePushAuthKey返回参数结构体
 
     """
 
@@ -18881,7 +18881,7 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def PushAuthKeyInfo(self):
-        """推流鉴权key信息。
+        r"""推流鉴权key信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.PushAuthKeyInfo`
         """
         return self._PushAuthKeyInfo
@@ -18892,7 +18892,7 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18910,13 +18910,13 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
 
 class DescribeLiveRecordRulesRequest(AbstractModel):
-    """DescribeLiveRecordRules请求参数结构体
+    r"""DescribeLiveRecordRules请求参数结构体
 
     """
 
 
 class DescribeLiveRecordRulesResponse(AbstractModel):
-    """DescribeLiveRecordRules返回参数结构体
+    r"""DescribeLiveRecordRules返回参数结构体
 
     """
 
@@ -18932,7 +18932,7 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """规则列表。
+        r"""规则列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -18943,7 +18943,7 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18964,7 +18964,7 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
 
 class DescribeLiveRecordTemplateRequest(AbstractModel):
-    """DescribeLiveRecordTemplate请求参数结构体
+    r"""DescribeLiveRecordTemplate请求参数结构体
 
     """
 
@@ -18977,7 +18977,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """[DescribeLiveRecordTemplates](/document/product/267/32609)接口获取到的模板 ID。
+        r"""[DescribeLiveRecordTemplates](/document/product/267/32609)接口获取到的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -19000,7 +19000,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
 
 class DescribeLiveRecordTemplateResponse(AbstractModel):
-    """DescribeLiveRecordTemplate返回参数结构体
+    r"""DescribeLiveRecordTemplate返回参数结构体
 
     """
 
@@ -19016,7 +19016,7 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """录制模板信息。
+        r"""录制模板信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`
         """
         return self._Template
@@ -19027,7 +19027,7 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19045,7 +19045,7 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
 
 class DescribeLiveRecordTemplatesRequest(AbstractModel):
-    """DescribeLiveRecordTemplates请求参数结构体
+    r"""DescribeLiveRecordTemplates请求参数结构体
 
     """
 
@@ -19060,7 +19060,7 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        """是否属于慢直播模板，默认：0。
+        r"""是否属于慢直播模板，默认：0。
 0： 标准直播。
 1：慢直播。
         :rtype: int
@@ -19085,7 +19085,7 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
 
 class DescribeLiveRecordTemplatesResponse(AbstractModel):
-    """DescribeLiveRecordTemplates返回参数结构体
+    r"""DescribeLiveRecordTemplates返回参数结构体
 
     """
 
@@ -19101,7 +19101,7 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """录制模板信息列表。
+        r"""录制模板信息列表。
         :rtype: list of RecordTemplateInfo
         """
         return self._Templates
@@ -19112,7 +19112,7 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19133,13 +19133,13 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
 
 class DescribeLiveSnapshotRulesRequest(AbstractModel):
-    """DescribeLiveSnapshotRules请求参数结构体
+    r"""DescribeLiveSnapshotRules请求参数结构体
 
     """
 
 
 class DescribeLiveSnapshotRulesResponse(AbstractModel):
-    """DescribeLiveSnapshotRules返回参数结构体
+    r"""DescribeLiveSnapshotRules返回参数结构体
 
     """
 
@@ -19155,7 +19155,7 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """规则列表。
+        r"""规则列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -19166,7 +19166,7 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19187,7 +19187,7 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
 
 class DescribeLiveSnapshotTemplateRequest(AbstractModel):
-    """DescribeLiveSnapshotTemplate请求参数结构体
+    r"""DescribeLiveSnapshotTemplate请求参数结构体
 
     """
 
@@ -19201,7 +19201,7 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 调用 [CreateLiveSnapshotTemplate](/document/product/267/32624) 时返回的模板 ID。
         :rtype: int
         """
@@ -19225,7 +19225,7 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
 
 
 class DescribeLiveSnapshotTemplateResponse(AbstractModel):
-    """DescribeLiveSnapshotTemplate返回参数结构体
+    r"""DescribeLiveSnapshotTemplate返回参数结构体
 
     """
 
@@ -19241,7 +19241,7 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """截图模板信息。
+        r"""截图模板信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
         """
         return self._Template
@@ -19252,7 +19252,7 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19270,13 +19270,13 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
 
 class DescribeLiveSnapshotTemplatesRequest(AbstractModel):
-    """DescribeLiveSnapshotTemplates请求参数结构体
+    r"""DescribeLiveSnapshotTemplates请求参数结构体
 
     """
 
 
 class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
-    """DescribeLiveSnapshotTemplates返回参数结构体
+    r"""DescribeLiveSnapshotTemplates返回参数结构体
 
     """
 
@@ -19292,7 +19292,7 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """截图模板列表。
+        r"""截图模板列表。
         :rtype: list of SnapshotTemplateInfo
         """
         return self._Templates
@@ -19303,7 +19303,7 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19324,7 +19324,7 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
 
 class DescribeLiveStreamEventListRequest(AbstractModel):
-    """DescribeLiveStreamEventList请求参数结构体
+    r"""DescribeLiveStreamEventList请求参数结构体
 
     """
 
@@ -19378,7 +19378,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
+        r"""起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
         :rtype: str
         """
         return self._StartTime
@@ -19389,7 +19389,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
+        r"""结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
         :rtype: str
         """
         return self._EndTime
@@ -19400,7 +19400,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -19411,7 +19411,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -19422,7 +19422,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，不支持通配符（*）查询，默认模糊匹配。
+        r"""流名称，不支持通配符（*）查询，默认模糊匹配。
 可使用IsStrict字段改为精确查询。
         :rtype: str
         """
@@ -19434,7 +19434,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页。
+        r"""取得第几页。
 默认值：1。
 注： 目前只支持10000条内的查询。
         :rtype: int
@@ -19447,7 +19447,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小。
+        r"""分页大小。
 最大值：100。
 取值范围：1~100 之间的任意整数。
 默认值：10。
@@ -19462,7 +19462,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def IsFilter(self):
-        """是否过滤，默认不过滤。
+        r"""是否过滤，默认不过滤。
 0：不进行任何过滤。
 1：过滤掉开播失败的，只返回开播成功的。
         :rtype: int
@@ -19475,7 +19475,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def IsStrict(self):
-        """是否精确查询，默认模糊匹配。
+        r"""是否精确查询，默认模糊匹配。
 0：模糊匹配。
 1：精确查询。
 注：使用StreamName时该参数生效。
@@ -19489,7 +19489,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     @property
     def IsAsc(self):
-        """是否按结束时间正序显示，默认逆序。
+        r"""是否按结束时间正序显示，默认逆序。
 0：逆序。
 1：正序。
         :rtype: int
@@ -19523,7 +19523,7 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
 
 class DescribeLiveStreamEventListResponse(AbstractModel):
-    """DescribeLiveStreamEventList返回参数结构体
+    r"""DescribeLiveStreamEventList返回参数结构体
 
     """
 
@@ -19551,7 +19551,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def EventList(self):
-        """推断流事件列表。
+        r"""推断流事件列表。
         :rtype: list of StreamEventInfo
         """
         return self._EventList
@@ -19562,7 +19562,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页的页码。
+        r"""分页的页码。
         :rtype: int
         """
         return self._PageNum
@@ -19573,7 +19573,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小。
+        r"""每页大小。
         :rtype: int
         """
         return self._PageSize
@@ -19584,7 +19584,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """符合条件的总个数。
+        r"""符合条件的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -19595,7 +19595,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -19606,7 +19606,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19631,7 +19631,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
 
 class DescribeLiveStreamMonitorListRequest(AbstractModel):
-    """DescribeLiveStreamMonitorList请求参数结构体
+    r"""DescribeLiveStreamMonitorList请求参数结构体
 
     """
 
@@ -19647,7 +19647,7 @@ class DescribeLiveStreamMonitorListRequest(AbstractModel):
 
     @property
     def Index(self):
-        """查询列表时的起始偏移。
+        r"""查询列表时的起始偏移。
         :rtype: int
         """
         return self._Index
@@ -19658,7 +19658,7 @@ class DescribeLiveStreamMonitorListRequest(AbstractModel):
 
     @property
     def Count(self):
-        """本次查询的记录个数。最小值为1。
+        r"""本次查询的记录个数。最小值为1。
         :rtype: int
         """
         return self._Count
@@ -19682,7 +19682,7 @@ class DescribeLiveStreamMonitorListRequest(AbstractModel):
 
 
 class DescribeLiveStreamMonitorListResponse(AbstractModel):
-    """DescribeLiveStreamMonitorList返回参数结构体
+    r"""DescribeLiveStreamMonitorList返回参数结构体
 
     """
 
@@ -19701,7 +19701,7 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """账号下的直播流监播任务个数。
+        r"""账号下的直播流监播任务个数。
         :rtype: int
         """
         return self._TotalNum
@@ -19712,7 +19712,7 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
 
     @property
     def LiveStreamMonitors(self):
-        """直播流监播任务列表
+        r"""直播流监播任务列表
         :rtype: list of LiveStreamMonitorInfo
         """
         return self._LiveStreamMonitors
@@ -19723,7 +19723,7 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19745,7 +19745,7 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
 
 
 class DescribeLiveStreamMonitorRequest(AbstractModel):
-    """DescribeLiveStreamMonitor请求参数结构体
+    r"""DescribeLiveStreamMonitor请求参数结构体
 
     """
 
@@ -19758,7 +19758,7 @@ class DescribeLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID。
+        r"""监播任务ID。
         :rtype: str
         """
         return self._MonitorId
@@ -19781,7 +19781,7 @@ class DescribeLiveStreamMonitorRequest(AbstractModel):
 
 
 class DescribeLiveStreamMonitorResponse(AbstractModel):
-    """DescribeLiveStreamMonitor返回参数结构体
+    r"""DescribeLiveStreamMonitor返回参数结构体
 
     """
 
@@ -19797,7 +19797,7 @@ class DescribeLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def LiveStreamMonitor(self):
-        """直播监播任务相关信息。
+        r"""直播监播任务相关信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorInfo`
         """
         return self._LiveStreamMonitor
@@ -19808,7 +19808,7 @@ class DescribeLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19826,7 +19826,7 @@ class DescribeLiveStreamMonitorResponse(AbstractModel):
 
 
 class DescribeLiveStreamOnlineListRequest(AbstractModel):
-    """DescribeLiveStreamOnlineList请求参数结构体
+    r"""DescribeLiveStreamOnlineList请求参数结构体
 
     """
 
@@ -19853,7 +19853,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。多域名用户需要填写 DomainName。
+        r"""推流域名。多域名用户需要填写 DomainName。
         :rtype: str
         """
         return self._DomainName
@@ -19864,7 +19864,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。多路径用户需要填写 AppName。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。多路径用户需要填写 AppName。
         :rtype: str
         """
         return self._AppName
@@ -19875,7 +19875,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页，默认1。
+        r"""取得第几页，默认1。
         :rtype: int
         """
         return self._PageNum
@@ -19886,7 +19886,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小，最大100。 
+        r"""每页大小，最大100。 
 取值：10~100之间的任意整数。
 默认值：10。
         :rtype: int
@@ -19899,7 +19899,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，用于精确查询。
+        r"""流名称，用于精确查询。
         :rtype: str
         """
         return self._StreamName
@@ -19926,7 +19926,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
 
 class DescribeLiveStreamOnlineListResponse(AbstractModel):
-    """DescribeLiveStreamOnlineList返回参数结构体
+    r"""DescribeLiveStreamOnlineList返回参数结构体
 
     """
 
@@ -19954,7 +19954,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """符合条件的总个数。
+        r"""符合条件的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -19965,7 +19965,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -19976,7 +19976,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页的页码。
+        r"""分页的页码。
         :rtype: int
         """
         return self._PageNum
@@ -19987,7 +19987,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示的条数。
+        r"""每页显示的条数。
         :rtype: int
         """
         return self._PageSize
@@ -19998,7 +19998,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def OnlineInfo(self):
-        """正在推送流的信息列表。
+        r"""正在推送流的信息列表。
         :rtype: list of StreamOnlineInfo
         """
         return self._OnlineInfo
@@ -20009,7 +20009,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20034,7 +20034,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
 
 class DescribeLiveStreamPublishedListRequest(AbstractModel):
-    """DescribeLiveStreamPublishedList请求参数结构体
+    r"""DescribeLiveStreamPublishedList请求参数结构体
 
     """
 
@@ -20069,7 +20069,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -20080,7 +20080,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
+        r"""结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
         :rtype: str
         """
         return self._EndTime
@@ -20091,7 +20091,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
+        r"""起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
         :rtype: str
         """
         return self._StartTime
@@ -20102,7 +20102,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
+        r"""推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
         :rtype: str
         """
         return self._AppName
@@ -20113,7 +20113,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """取得第几页。
+        r"""取得第几页。
 默认值：1。
         :rtype: int
         """
@@ -20125,7 +20125,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页大小。
+        r"""分页大小。
 最大值：100。
 取值范围：10~100 之前的任意整数。
 默认值：10。
@@ -20139,7 +20139,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，支持模糊匹配。
+        r"""流名称，支持模糊匹配。
         :rtype: str
         """
         return self._StreamName
@@ -20168,7 +20168,7 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
 
 class DescribeLiveStreamPublishedListResponse(AbstractModel):
-    """DescribeLiveStreamPublishedList返回参数结构体
+    r"""DescribeLiveStreamPublishedList返回参数结构体
 
     """
 
@@ -20196,7 +20196,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PublishInfo(self):
-        """推流记录信息。
+        r"""推流记录信息。
         :rtype: list of StreamName
         """
         return self._PublishInfo
@@ -20207,7 +20207,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """分页的页码。
+        r"""分页的页码。
         :rtype: int
         """
         return self._PageNum
@@ -20218,7 +20218,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._PageSize
@@ -20229,7 +20229,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """符合条件的总个数。
+        r"""符合条件的总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -20240,7 +20240,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -20251,7 +20251,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20276,7 +20276,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
 
 class DescribeLiveStreamPushInfoListRequest(AbstractModel):
-    """DescribeLiveStreamPushInfoList请求参数结构体
+    r"""DescribeLiveStreamPushInfoList请求参数结构体
 
     """
 
@@ -20302,7 +20302,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -20313,7 +20313,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :rtype: str
         """
         return self._AppName
@@ -20324,7 +20324,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页数，
+        r"""页数，
 范围[1,10000]，
 默认值：1。
         :rtype: int
@@ -20337,7 +20337,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，
+        r"""每页个数，
 范围：[1,1000]，
 默认值： 200。
         :rtype: int
@@ -20365,7 +20365,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
 
 class DescribeLiveStreamPushInfoListResponse(AbstractModel):
-    """DescribeLiveStreamPushInfoList返回参数结构体
+    r"""DescribeLiveStreamPushInfoList返回参数结构体
 
     """
 
@@ -20393,7 +20393,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """直播流的统计信息列表。
+        r"""直播流的统计信息列表。
         :rtype: list of PushDataInfo
         """
         return self._DataInfoList
@@ -20404,7 +20404,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """所有在线流的总数量。
+        r"""所有在线流的总数量。
         :rtype: int
         """
         return self._TotalNum
@@ -20415,7 +20415,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -20426,7 +20426,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """当前数据所在页码。
+        r"""当前数据所在页码。
         :rtype: int
         """
         return self._PageNum
@@ -20437,7 +20437,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页的在线流的个数。
+        r"""每页的在线流的个数。
         :rtype: int
         """
         return self._PageSize
@@ -20448,7 +20448,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20473,7 +20473,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
 
 class DescribeLiveStreamStateRequest(AbstractModel):
-    """DescribeLiveStreamState请求参数结构体
+    r"""DescribeLiveStreamState请求参数结构体
 
     """
 
@@ -20492,7 +20492,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -20503,7 +20503,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -20514,7 +20514,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -20539,7 +20539,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
 
 class DescribeLiveStreamStateResponse(AbstractModel):
-    """DescribeLiveStreamState返回参数结构体
+    r"""DescribeLiveStreamState返回参数结构体
 
     """
 
@@ -20558,7 +20558,7 @@ forbid：禁播。
 
     @property
     def StreamState(self):
-        """流状态，
+        r"""流状态，
 active：活跃，
 inactive：非活跃，
 forbid：禁播。
@@ -20572,7 +20572,7 @@ forbid：禁播。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20588,7 +20588,7 @@ forbid：禁播。
 
 
 class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
-    """DescribeLiveTimeShiftBillInfoList请求参数结构体
+    r"""DescribeLiveTimeShiftBillInfoList请求参数结构体
 
     """
 
@@ -20607,7 +20607,7 @@ class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """UTC开始时间，支持最近三个月的查询，查询时间最长跨度为一天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+        r"""UTC开始时间，支持最近三个月的查询，查询时间最长跨度为一天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
         :rtype: str
         """
         return self._StartTime
@@ -20618,7 +20618,7 @@ class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """UTC结束时间，支持最近三个月的查询，查询时间最长跨度为一天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+        r"""UTC结束时间，支持最近三个月的查询，查询时间最长跨度为一天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
         :rtype: str
         """
         return self._EndTime
@@ -20629,7 +20629,7 @@ class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
 
     @property
     def PushDomains(self):
-        """推流域名列表，若不传递此参数，则表示查询总体数据。
+        r"""推流域名列表，若不传递此参数，则表示查询总体数据。
         :rtype: list of str
         """
         return self._PushDomains
@@ -20654,7 +20654,7 @@ class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
 
 
 class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
-    """DescribeLiveTimeShiftBillInfoList返回参数结构体
+    r"""DescribeLiveTimeShiftBillInfoList返回参数结构体
 
     """
 
@@ -20670,7 +20670,7 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """时移计费明细数据。
+        r"""时移计费明细数据。
         :rtype: list of TimeShiftBillData
         """
         return self._DataInfoList
@@ -20681,7 +20681,7 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20702,13 +20702,13 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
 
 class DescribeLiveTimeShiftRulesRequest(AbstractModel):
-    """DescribeLiveTimeShiftRules请求参数结构体
+    r"""DescribeLiveTimeShiftRules请求参数结构体
 
     """
 
 
 class DescribeLiveTimeShiftRulesResponse(AbstractModel):
-    """DescribeLiveTimeShiftRules返回参数结构体
+    r"""DescribeLiveTimeShiftRules返回参数结构体
 
     """
 
@@ -20724,7 +20724,7 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """规则信息列表。
+        r"""规则信息列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -20735,7 +20735,7 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20756,13 +20756,13 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
 
 class DescribeLiveTimeShiftTemplatesRequest(AbstractModel):
-    """DescribeLiveTimeShiftTemplates请求参数结构体
+    r"""DescribeLiveTimeShiftTemplates请求参数结构体
 
     """
 
 
 class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
-    """DescribeLiveTimeShiftTemplates返回参数结构体
+    r"""DescribeLiveTimeShiftTemplates返回参数结构体
 
     """
 
@@ -20778,7 +20778,7 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """直播时移模板信息。
+        r"""直播时移模板信息。
         :rtype: list of TimeShiftTemplate
         """
         return self._Templates
@@ -20789,7 +20789,7 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20810,7 +20810,7 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
 
 class DescribeLiveTimeShiftWriteSizeInfoListRequest(AbstractModel):
-    """DescribeLiveTimeShiftWriteSizeInfoList请求参数结构体
+    r"""DescribeLiveTimeShiftWriteSizeInfoList请求参数结构体
 
     """
 
@@ -20850,7 +20850,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def StartTime(self):
-        """起始时间点，
+        r"""起始时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
@@ -20864,7 +20864,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def EndTime(self):
-        """结束时间点，
+        r"""结束时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
@@ -20878,7 +20878,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def DomainNames(self):
-        """域名。
+        r"""域名。
         :rtype: list of str
         """
         return self._DomainNames
@@ -20889,7 +20889,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def Dimensions(self):
-        """维度
+        r"""维度
 Area地区、Domain 域名、StorageDays 时移天数
         :rtype: list of str
         """
@@ -20901,7 +20901,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def StorageDays(self):
-        """时移天数。
+        r"""时移天数。
         :rtype: list of int
         """
         return self._StorageDays
@@ -20912,7 +20912,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def Granularity(self):
-        """时间跨度（分钟）
+        r"""时间跨度（分钟）
 默认5，可选 5、60或者1440。
         :rtype: int
         """
@@ -20924,7 +20924,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
     @property
     def MainlandOrOversea(self):
-        """区域
+        r"""区域
 可选Mainland、Oversea。
         :rtype: str
         """
@@ -20954,7 +20954,7 @@ Area地区、Domain 域名、StorageDays 时移天数
 
 
 class DescribeLiveTimeShiftWriteSizeInfoListResponse(AbstractModel):
-    """DescribeLiveTimeShiftWriteSizeInfoList返回参数结构体
+    r"""DescribeLiveTimeShiftWriteSizeInfoList返回参数结构体
 
     """
 
@@ -20970,7 +20970,7 @@ class DescribeLiveTimeShiftWriteSizeInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """直播时移写入量数据明细。
+        r"""直播时移写入量数据明细。
         :rtype: list of TimeShiftWriteSizeData
         """
         return self._DataInfoList
@@ -20981,7 +20981,7 @@ class DescribeLiveTimeShiftWriteSizeInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21002,7 +21002,7 @@ class DescribeLiveTimeShiftWriteSizeInfoListResponse(AbstractModel):
 
 
 class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
-    """DescribeLiveTranscodeDetailInfo请求参数结构体
+    r"""DescribeLiveTranscodeDetailInfo请求参数结构体
 
     """
 
@@ -21041,7 +21041,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -21052,7 +21052,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -21063,7 +21063,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def DayTime(self):
-        """查询时间，北京时间，
+        r"""查询时间，北京时间，
 格式：yyyymmdd。
 注意：支持查询近1个月内某天的详细数据，截止到昨天。
         :rtype: str
@@ -21076,7 +21076,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页数，默认1，
+        r"""页数，默认1，
 不超过100页。
         :rtype: int
         """
@@ -21088,7 +21088,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，默认20，
+        r"""每页个数，默认20，
 范围：[10,1000]。
         :rtype: int
         """
@@ -21100,7 +21100,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def StartDayTime(self):
-        """起始天时间，北京时间，
+        r"""起始天时间，北京时间，
 格式：yyyymmdd。
 注意：支持查询近1个月内的详细数据。
         :rtype: str
@@ -21113,7 +21113,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def EndDayTime(self):
-        """结束天时间，北京时间，
+        r"""结束天时间，北京时间，
 格式：yyyymmdd。
 注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
         :rtype: str
@@ -21144,7 +21144,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
 
 class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
-    """DescribeLiveTranscodeDetailInfo返回参数结构体
+    r"""DescribeLiveTranscodeDetailInfo返回参数结构体
 
     """
 
@@ -21172,7 +21172,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """统计数据列表。
+        r"""统计数据列表。
         :rtype: list of TranscodeDetailInfo
         """
         return self._DataInfoList
@@ -21183,7 +21183,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页码。
+        r"""页码。
         :rtype: int
         """
         return self._PageNum
@@ -21194,7 +21194,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数。
+        r"""每页个数。
         :rtype: int
         """
         return self._PageSize
@@ -21205,7 +21205,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总个数。
+        r"""总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -21216,7 +21216,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -21227,7 +21227,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21252,7 +21252,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
 
 class DescribeLiveTranscodeRulesRequest(AbstractModel):
-    """DescribeLiveTranscodeRules请求参数结构体
+    r"""DescribeLiveTranscodeRules请求参数结构体
 
     """
 
@@ -21268,7 +21268,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        """要筛选的模板ID数组。
+        r"""要筛选的模板ID数组。
         :rtype: list of int
         """
         return self._TemplateIds
@@ -21279,7 +21279,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def DomainNames(self):
-        """要筛选的域名数组。
+        r"""要筛选的域名数组。
         :rtype: list of str
         """
         return self._DomainNames
@@ -21303,7 +21303,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
 
 class DescribeLiveTranscodeRulesResponse(AbstractModel):
-    """DescribeLiveTranscodeRules返回参数结构体
+    r"""DescribeLiveTranscodeRules返回参数结构体
 
     """
 
@@ -21319,7 +21319,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """转码规则列表。
+        r"""转码规则列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -21330,7 +21330,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21351,7 +21351,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
 
 class DescribeLiveTranscodeTemplateRequest(AbstractModel):
-    """DescribeLiveTranscodeTemplate请求参数结构体
+    r"""DescribeLiveTranscodeTemplate请求参数结构体
 
     """
 
@@ -21365,7 +21365,7 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
 注意：在创建转码模板接口 [CreateLiveTranscodeTemplate](/document/product/267/32646) 调用的返回值中获取模板 ID。
         :rtype: int
         """
@@ -21389,7 +21389,7 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
 
 
 class DescribeLiveTranscodeTemplateResponse(AbstractModel):
-    """DescribeLiveTranscodeTemplate返回参数结构体
+    r"""DescribeLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -21405,7 +21405,7 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """模板信息。
+        r"""模板信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.TemplateInfo`
         """
         return self._Template
@@ -21416,7 +21416,7 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21434,7 +21434,7 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
 
 class DescribeLiveTranscodeTemplatesRequest(AbstractModel):
-    """DescribeLiveTranscodeTemplates请求参数结构体
+    r"""DescribeLiveTranscodeTemplates请求参数结构体
 
     """
 
@@ -21449,7 +21449,7 @@ class DescribeLiveTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        """转码模板类型，默认0。
+        r"""转码模板类型，默认0。
 0：普通转码模板。
 1：自适应码率转码模板。
         :rtype: int
@@ -21474,7 +21474,7 @@ class DescribeLiveTranscodeTemplatesRequest(AbstractModel):
 
 
 class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
-    """DescribeLiveTranscodeTemplates返回参数结构体
+    r"""DescribeLiveTranscodeTemplates返回参数结构体
 
     """
 
@@ -21490,7 +21490,7 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """转码模板列表。
+        r"""转码模板列表。
         :rtype: list of TemplateInfo
         """
         return self._Templates
@@ -21501,7 +21501,7 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21522,7 +21522,7 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
 
 class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
-    """DescribeLiveTranscodeTotalInfo请求参数结构体
+    r"""DescribeLiveTranscodeTotalInfo请求参数结构体
 
     """
 
@@ -21552,7 +21552,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def StartTime(self):
-        """开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
+        r"""开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -21565,7 +21565,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def EndTime(self):
-        """结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
+        r"""结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -21578,7 +21578,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def PushDomains(self):
-        """推流域名列表，若不填，表示查询所有域名总体数据。
+        r"""推流域名列表，若不填，表示查询所有域名总体数据。
 指定域名时返回1小时粒度数据。
         :rtype: list of str
         """
@@ -21590,7 +21590,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def MainlandOrOversea(self):
-        """可选值：
+        r"""可选值：
 Mainland：查询中国大陆（境内）数据，
 Oversea：则查询国际/港澳台（境外）数据，
 默认：查询全球地区（境内+境外）的数据。
@@ -21619,7 +21619,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
 
 class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
-    """DescribeLiveTranscodeTotalInfo返回参数结构体
+    r"""DescribeLiveTranscodeTotalInfo返回参数结构体
 
     """
 
@@ -21635,7 +21635,7 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """统计数据列表。
+        r"""统计数据列表。
         :rtype: list of TranscodeTotalInfo
         """
         return self._DataInfoList
@@ -21646,7 +21646,7 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21667,7 +21667,7 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
 
 class DescribeLiveWatermarkRequest(AbstractModel):
-    """DescribeLiveWatermark请求参数结构体
+    r"""DescribeLiveWatermark请求参数结构体
 
     """
 
@@ -21680,7 +21680,7 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     @property
     def WatermarkId(self):
-        """DescribeLiveWatermarks接口返回的水印 ID。
+        r"""DescribeLiveWatermarks接口返回的水印 ID。
         :rtype: int
         """
         return self._WatermarkId
@@ -21703,7 +21703,7 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
 
 class DescribeLiveWatermarkResponse(AbstractModel):
-    """DescribeLiveWatermark返回参数结构体
+    r"""DescribeLiveWatermark返回参数结构体
 
     """
 
@@ -21719,7 +21719,7 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     @property
     def Watermark(self):
-        """水印信息。
+        r"""水印信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
         """
         return self._Watermark
@@ -21730,7 +21730,7 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21748,13 +21748,13 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
 
 class DescribeLiveWatermarkRulesRequest(AbstractModel):
-    """DescribeLiveWatermarkRules请求参数结构体
+    r"""DescribeLiveWatermarkRules请求参数结构体
 
     """
 
 
 class DescribeLiveWatermarkRulesResponse(AbstractModel):
-    """DescribeLiveWatermarkRules返回参数结构体
+    r"""DescribeLiveWatermarkRules返回参数结构体
 
     """
 
@@ -21770,7 +21770,7 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """水印规则列表。
+        r"""水印规则列表。
         :rtype: list of RuleInfo
         """
         return self._Rules
@@ -21781,7 +21781,7 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21802,7 +21802,7 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
 
 class DescribeLiveWatermarksRequest(AbstractModel):
-    """DescribeLiveWatermarks请求参数结构体
+    r"""DescribeLiveWatermarks请求参数结构体
 
     """
 
@@ -21821,7 +21821,7 @@ class DescribeLiveWatermarksRequest(AbstractModel):
 
     @property
     def Name(self):
-        """水印名称
+        r"""水印名称
         :rtype: str
         """
         return self._Name
@@ -21832,7 +21832,7 @@ class DescribeLiveWatermarksRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """分页的索引参数，从1开始
+        r"""分页的索引参数，从1开始
         :rtype: int
         """
         return self._PageNo
@@ -21843,7 +21843,7 @@ class DescribeLiveWatermarksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页的大小参数，默认值500
+        r"""分页的大小参数，默认值500
         :rtype: int
         """
         return self._PageSize
@@ -21868,7 +21868,7 @@ class DescribeLiveWatermarksRequest(AbstractModel):
 
 
 class DescribeLiveWatermarksResponse(AbstractModel):
-    """DescribeLiveWatermarks返回参数结构体
+    r"""DescribeLiveWatermarks返回参数结构体
 
     """
 
@@ -21887,7 +21887,7 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """水印总个数。
+        r"""水印总个数。
         :rtype: int
         """
         return self._TotalNum
@@ -21898,7 +21898,7 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def WatermarkList(self):
-        """水印信息列表。
+        r"""水印信息列表。
         :rtype: list of WatermarkInfo
         """
         return self._WatermarkList
@@ -21909,7 +21909,7 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21931,7 +21931,7 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
 
 class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
-    """DescribeLiveXP2PDetailInfoList请求参数结构体
+    r"""DescribeLiveXP2PDetailInfoList请求参数结构体
 
     """
 
@@ -21956,7 +21956,7 @@ class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
 
     @property
     def QueryTime(self):
-        """utc分钟粒度查询时间，查询某一分钟的用量数据，格式为：yyyy-mm-ddTHH:MM:00Z，参考https://cloud.tencent.com/document/product/266/11732#I，
+        r"""utc分钟粒度查询时间，查询某一分钟的用量数据，格式为：yyyy-mm-ddTHH:MM:00Z，参考https://cloud.tencent.com/document/product/266/11732#I，
 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
 
 支持最近六个月的查询。
@@ -21970,7 +21970,7 @@ class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """类型数组，分直播live和点播vod，不传默认查全部。
+        r"""类型数组，分直播live和点播vod，不传默认查全部。
         :rtype: list of str
         """
         return self._Type
@@ -21981,7 +21981,7 @@ class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
 
     @property
     def StreamNames(self):
-        """查询流数组，不传默认查所有流。
+        r"""查询流数组，不传默认查所有流。
         :rtype: list of str
         """
         return self._StreamNames
@@ -21992,7 +21992,7 @@ class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """查询维度，不传该参数则默认查询流维度的数据，传递该参数则只查对应维度的数据，和返回值的字段相关，目前支持AppId维度查询。
+        r"""查询维度，不传该参数则默认查询流维度的数据，传递该参数则只查对应维度的数据，和返回值的字段相关，目前支持AppId维度查询。
         :rtype: list of str
         """
         return self._Dimension
@@ -22018,7 +22018,7 @@ class DescribeLiveXP2PDetailInfoListRequest(AbstractModel):
 
 
 class DescribeLiveXP2PDetailInfoListResponse(AbstractModel):
-    """DescribeLiveXP2PDetailInfoList返回参数结构体
+    r"""DescribeLiveXP2PDetailInfoList返回参数结构体
 
     """
 
@@ -22034,7 +22034,7 @@ class DescribeLiveXP2PDetailInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """P2P流统计信息。
+        r"""P2P流统计信息。
         :rtype: list of XP2PDetailInfo
         """
         return self._DataInfoList
@@ -22045,7 +22045,7 @@ class DescribeLiveXP2PDetailInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22066,7 +22066,7 @@ class DescribeLiveXP2PDetailInfoListResponse(AbstractModel):
 
 
 class DescribeLogDownloadListRequest(AbstractModel):
-    """DescribeLogDownloadList请求参数结构体
+    r"""DescribeLogDownloadList请求参数结构体
 
     """
 
@@ -22093,7 +22093,7 @@ class DescribeLogDownloadListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，北京时间。
+        r"""开始时间，北京时间。
 格式：yyyy-mm-dd HH:MM:SS。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
@@ -22106,7 +22106,7 @@ class DescribeLogDownloadListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，北京时间。
+        r"""结束时间，北京时间。
 格式：yyyy-mm-dd HH:MM:SS。
 注意：结束时间 - 开始时间 <=7天。
 注：此字段为北京时间（UTC+8时区）。
@@ -22120,7 +22120,7 @@ class DescribeLogDownloadListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """域名列表。
+        r"""域名列表。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -22131,7 +22131,7 @@ class DescribeLogDownloadListRequest(AbstractModel):
 
     @property
     def IsFastLive(self):
-        """快直播还是标准直播，0：标准直播，1：快直播。默认为0。
+        r"""快直播还是标准直播，0：标准直播，1：快直播。默认为0。
         :rtype: int
         """
         return self._IsFastLive
@@ -22157,7 +22157,7 @@ class DescribeLogDownloadListRequest(AbstractModel):
 
 
 class DescribeLogDownloadListResponse(AbstractModel):
-    """DescribeLogDownloadList返回参数结构体
+    r"""DescribeLogDownloadList返回参数结构体
 
     """
 
@@ -22176,7 +22176,7 @@ class DescribeLogDownloadListResponse(AbstractModel):
 
     @property
     def LogInfoList(self):
-        """日志信息列表。
+        r"""日志信息列表。
         :rtype: list of LogInfo
         """
         return self._LogInfoList
@@ -22187,7 +22187,7 @@ class DescribeLogDownloadListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总条数。
+        r"""总条数。
         :rtype: int
         """
         return self._TotalNum
@@ -22198,7 +22198,7 @@ class DescribeLogDownloadListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22220,7 +22220,7 @@ class DescribeLogDownloadListResponse(AbstractModel):
 
 
 class DescribeMonitorReportRequest(AbstractModel):
-    """DescribeMonitorReport请求参数结构体
+    r"""DescribeMonitorReport请求参数结构体
 
     """
 
@@ -22233,7 +22233,7 @@ class DescribeMonitorReportRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID。
+        r"""监播任务ID。
         :rtype: str
         """
         return self._MonitorId
@@ -22256,7 +22256,7 @@ class DescribeMonitorReportRequest(AbstractModel):
 
 
 class DescribeMonitorReportResponse(AbstractModel):
-    """DescribeMonitorReport返回参数结构体
+    r"""DescribeMonitorReport返回参数结构体
 
     """
 
@@ -22275,7 +22275,7 @@ class DescribeMonitorReportResponse(AbstractModel):
 
     @property
     def MPSResult(self):
-        """媒体处理结果信息。
+        r"""媒体处理结果信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.MPSResult`
         """
         return self._MPSResult
@@ -22286,7 +22286,7 @@ class DescribeMonitorReportResponse(AbstractModel):
 
     @property
     def DiagnoseResult(self):
-        """媒体诊断结果信息。
+        r"""媒体诊断结果信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.DiagnoseResult`
         """
         return self._DiagnoseResult
@@ -22297,7 +22297,7 @@ class DescribeMonitorReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22318,7 +22318,7 @@ class DescribeMonitorReportResponse(AbstractModel):
 
 
 class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
-    """DescribePlayErrorCodeDetailInfoList请求参数结构体
+    r"""DescribePlayErrorCodeDetailInfoList请求参数结构体
 
     """
 
@@ -22354,7 +22354,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间，
+        r"""起始时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -22368,7 +22368,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，
+        r"""结束时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -22383,7 +22383,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """查询粒度：
+        r"""查询粒度：
 1-1分钟粒度。
         :rtype: int
         """
@@ -22395,7 +22395,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def StatType(self):
-        """是，可选值包括”4xx”,”5xx”，支持”4xx,5xx”等这种混合模式。
+        r"""是，可选值包括”4xx”,”5xx”，支持”4xx,5xx”等这种混合模式。
         :rtype: str
         """
         return self._StatType
@@ -22406,7 +22406,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表。
+        r"""播放域名列表。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -22417,7 +22417,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        r"""地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -22445,7 +22445,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
 
 class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
-    """DescribePlayErrorCodeDetailInfoList返回参数结构体
+    r"""DescribePlayErrorCodeDetailInfoList返回参数结构体
 
     """
 
@@ -22464,7 +22464,7 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def HttpCodeList(self):
-        """统计信息列表。
+        r"""统计信息列表。
         :rtype: list of HttpCodeInfo
         """
         return self._HttpCodeList
@@ -22475,7 +22475,7 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def StatType(self):
-        """统计类型。
+        r"""统计类型。
         :rtype: str
         """
         return self._StatType
@@ -22486,7 +22486,7 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22508,7 +22508,7 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
 
 class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
-    """DescribePlayErrorCodeSumInfoList请求参数结构体
+    r"""DescribePlayErrorCodeSumInfoList请求参数结构体
 
     """
 
@@ -22545,7 +22545,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，北京时间。
+        r"""起始时间点，北京时间。
 格式：yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
@@ -22557,7 +22557,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，北京时间。
+        r"""结束时间点，北京时间。
 格式：yyyy-mm-dd HH:MM:SS。
 注：EndTime 和 StartTime 只支持最近1天的数据查询。
         :rtype: str
@@ -22570,7 +22570,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表，不填表示总体数据。
+        r"""播放域名列表，不填表示总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -22581,7 +22581,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页数，范围[1,1000]，默认值是1。
+        r"""页数，范围[1,1000]，默认值是1。
         :rtype: int
         """
         return self._PageNum
@@ -22592,7 +22592,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围：[1,1000]，默认值是20。
+        r"""每页个数，范围：[1,1000]，默认值是20。
         :rtype: int
         """
         return self._PageSize
@@ -22603,7 +22603,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        r"""地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -22614,7 +22614,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        """分组参数，可选值：CountryProIsp（默认值），Country（国家），默认是按照国家+省份+运营商来进行分组；目前国外的省份和运营商暂时无法识别。
+        r"""分组参数，可选值：CountryProIsp（默认值），Country（国家），默认是按照国家+省份+运营商来进行分组；目前国外的省份和运营商暂时无法识别。
         :rtype: str
         """
         return self._GroupType
@@ -22625,7 +22625,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def OutLanguage(self):
-        """输出字段使用的语言，可选值：Chinese（默认值），English，目前国家，省份和运营商支持多语言。
+        r"""输出字段使用的语言，可选值：Chinese（默认值），English，目前国家，省份和运营商支持多语言。
         :rtype: str
         """
         return self._OutLanguage
@@ -22655,7 +22655,7 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
 
 class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
-    """DescribePlayErrorCodeSumInfoList返回参数结构体
+    r"""DescribePlayErrorCodeSumInfoList返回参数结构体
 
     """
 
@@ -22701,7 +22701,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def ProIspInfoList(self):
-        """分省份分运营商错误码为2或3或4或5开头的状态码数据信息。
+        r"""分省份分运营商错误码为2或3或4或5开头的状态码数据信息。
         :rtype: list of ProIspPlayCodeDataInfo
         """
         return self._ProIspInfoList
@@ -22712,7 +22712,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCodeAll(self):
-        """所有状态码的加和的次数。
+        r"""所有状态码的加和的次数。
         :rtype: int
         """
         return self._TotalCodeAll
@@ -22723,7 +22723,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode4xx(self):
-        """状态码为4开头的总次数。
+        r"""状态码为4开头的总次数。
         :rtype: int
         """
         return self._TotalCode4xx
@@ -22734,7 +22734,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode5xx(self):
-        """状态码为5开头的总次数。
+        r"""状态码为5开头的总次数。
         :rtype: int
         """
         return self._TotalCode5xx
@@ -22745,7 +22745,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCodeList(self):
-        """各状态码的总次数。
+        r"""各状态码的总次数。
         :rtype: list of PlayCodeTotalInfo
         """
         return self._TotalCodeList
@@ -22756,7 +22756,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号。
+        r"""页号。
         :rtype: int
         """
         return self._PageNum
@@ -22767,7 +22767,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页大小。
+        r"""每页大小。
         :rtype: int
         """
         return self._PageSize
@@ -22778,7 +22778,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -22789,7 +22789,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总记录数。
+        r"""总记录数。
         :rtype: int
         """
         return self._TotalNum
@@ -22800,7 +22800,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode2xx(self):
-        """状态码为2开头的总次数。
+        r"""状态码为2开头的总次数。
         :rtype: int
         """
         return self._TotalCode2xx
@@ -22811,7 +22811,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode3xx(self):
-        """状态码为3开头的总次数。
+        r"""状态码为3开头的总次数。
         :rtype: int
         """
         return self._TotalCode3xx
@@ -22822,7 +22822,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22858,7 +22858,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
 
 class DescribeProIspPlaySumInfoListRequest(AbstractModel):
-    """DescribeProIspPlaySumInfoList请求参数结构体
+    r"""DescribeProIspPlaySumInfoList请求参数结构体
 
     """
 
@@ -22899,7 +22899,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间，
+        r"""起始时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -22913,7 +22913,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，
+        r"""结束时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -22928,7 +22928,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def StatType(self):
-        """统计的类型，可选值：”Province”(省份)，”Isp”(运营商)，“CountryOrArea”(国家或地区)。
+        r"""统计的类型，可选值：”Province”(省份)，”Isp”(运营商)，“CountryOrArea”(国家或地区)。
         :rtype: str
         """
         return self._StatType
@@ -22939,7 +22939,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表，不填则为全部。
+        r"""播放域名列表，不填则为全部。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -22950,7 +22950,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号，范围是[1,1000]，默认值是1。
+        r"""页号，范围是[1,1000]，默认值是1。
         :rtype: int
         """
         return self._PageNum
@@ -22961,7 +22961,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围是[1,1000]，默认值是20。
+        r"""每页个数，范围是[1,1000]，默认值是20。
         :rtype: int
         """
         return self._PageSize
@@ -22972,7 +22972,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        r"""地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -22983,7 +22983,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
     @property
     def OutLanguage(self):
-        """输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+        r"""输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
         :rtype: str
         """
         return self._OutLanguage
@@ -23013,7 +23013,7 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 
 
 class DescribeProIspPlaySumInfoListResponse(AbstractModel):
-    """DescribeProIspPlaySumInfoList返回参数结构体
+    r"""DescribeProIspPlaySumInfoList返回参数结构体
 
     """
 
@@ -23053,7 +23053,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """总流量。
+        r"""总流量。
         :rtype: float
         """
         return self._TotalFlux
@@ -23064,7 +23064,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def TotalRequest(self):
-        """总请求数。
+        r"""总请求数。
         :rtype: int
         """
         return self._TotalRequest
@@ -23075,7 +23075,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def StatType(self):
-        """统计的类型。
+        r"""统计的类型。
         :rtype: str
         """
         return self._StatType
@@ -23086,7 +23086,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页的记录数。
+        r"""每页的记录数。
         :rtype: int
         """
         return self._PageSize
@@ -23097,7 +23097,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号。
+        r"""页号。
         :rtype: int
         """
         return self._PageNum
@@ -23108,7 +23108,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总记录数。
+        r"""总记录数。
         :rtype: int
         """
         return self._TotalNum
@@ -23119,7 +23119,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -23130,7 +23130,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """省份，运营商，国家或地区汇总数据列表。
+        r"""省份，运营商，国家或地区汇总数据列表。
         :rtype: list of ProIspPlaySumInfo
         """
         return self._DataInfoList
@@ -23141,7 +23141,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def AvgFluxPerSecond(self):
-        """下载速度，单位：MB/s，计算方式：总流量/总时长。
+        r"""下载速度，单位：MB/s，计算方式：总流量/总时长。
         :rtype: float
         """
         return self._AvgFluxPerSecond
@@ -23152,7 +23152,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23181,7 +23181,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
 
 class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
-    """DescribeProvinceIspPlayInfoList请求参数结构体
+    r"""DescribeProvinceIspPlayInfoList请求参数结构体
 
     """
 
@@ -23232,7 +23232,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，
+        r"""起始时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -23246,7 +23246,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，
+        r"""结束时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -23261,7 +23261,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """支持如下粒度：
+        r"""支持如下粒度：
 1：1分钟粒度（跨度不支持超过1天）
         :rtype: int
         """
@@ -23273,7 +23273,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def StatType(self):
-        """统计指标类型：
+        r"""统计指标类型：
 “Bandwidth”：带宽
 “FluxPerSecond”：平均流量
 “Flux”：流量
@@ -23288,7 +23288,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名列表。
+        r"""播放域名列表。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -23299,7 +23299,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def ProvinceNames(self):
-        """要查询的省份（地区）英文名称列表，如 Beijing。
+        r"""要查询的省份（地区）英文名称列表，如 Beijing。
         :rtype: list of str
         """
         return self._ProvinceNames
@@ -23310,7 +23310,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def IspNames(self):
-        """要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据。
+        r"""要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据。
         :rtype: list of str
         """
         return self._IspNames
@@ -23321,7 +23321,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        r"""地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -23332,7 +23332,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     @property
     def IpType(self):
-        """ip类型：
+        r"""ip类型：
 “Ipv6”：Ipv6数据
 如果为空，查询总的数据；
         :rtype: str
@@ -23365,7 +23365,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
 
 class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
-    """DescribeProvinceIspPlayInfoList返回参数结构体
+    r"""DescribeProvinceIspPlayInfoList返回参数结构体
 
     """
 
@@ -23384,7 +23384,7 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """播放信息列表。
+        r"""播放信息列表。
         :rtype: list of PlayStatInfo
         """
         return self._DataInfoList
@@ -23395,7 +23395,7 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def StatType(self):
-        """统计的类型，和输入参数保持一致。
+        r"""统计的类型，和输入参数保持一致。
         :rtype: str
         """
         return self._StatType
@@ -23406,7 +23406,7 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23428,7 +23428,7 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
 
 class DescribePullStreamConfigsRequest(AbstractModel):
-    """DescribePullStreamConfigs请求参数结构体
+    r"""DescribePullStreamConfigs请求参数结构体
 
     """
 
@@ -23442,7 +23442,7 @@ class DescribePullStreamConfigsRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置 ID。
+        r"""配置 ID。
 获取途径：从 CreatePullStreamConfig 接口返回值获取。
         :rtype: str
         """
@@ -23466,7 +23466,7 @@ class DescribePullStreamConfigsRequest(AbstractModel):
 
 
 class DescribePullStreamConfigsResponse(AbstractModel):
-    """DescribePullStreamConfigs返回参数结构体
+    r"""DescribePullStreamConfigs返回参数结构体
 
     """
 
@@ -23482,7 +23482,7 @@ class DescribePullStreamConfigsResponse(AbstractModel):
 
     @property
     def PullStreamConfigs(self):
-        """拉流配置。
+        r"""拉流配置。
         :rtype: list of PullStreamConfig
         """
         return self._PullStreamConfigs
@@ -23493,7 +23493,7 @@ class DescribePullStreamConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23514,7 +23514,7 @@ class DescribePullStreamConfigsResponse(AbstractModel):
 
 
 class DescribePullTransformPushInfoRequest(AbstractModel):
-    """DescribePullTransformPushInfo请求参数结构体
+    r"""DescribePullTransformPushInfo请求参数结构体
 
     """
 
@@ -23544,7 +23544,7 @@ Oversea：则查询国外数据，
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -23557,7 +23557,7 @@ Oversea：则查询国外数据，
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
@@ -23571,7 +23571,7 @@ Oversea：则查询国外数据，
 
     @property
     def MainlandOrOversea(self):
-        """可选值：
+        r"""可选值：
 Mainland：查询国内数据，
 Oversea：则查询国外数据，
 默认：查询国内+国外的数据。
@@ -23585,7 +23585,7 @@ Oversea：则查询国外数据，
 
     @property
     def SourceType(self):
-        """可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
+        r"""可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
         :rtype: str
         """
         return self._SourceType
@@ -23611,7 +23611,7 @@ Oversea：则查询国外数据，
 
 
 class DescribePullTransformPushInfoResponse(AbstractModel):
-    """DescribePullTransformPushInfo返回参数结构体
+    r"""DescribePullTransformPushInfo返回参数结构体
 
     """
 
@@ -23633,7 +23633,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """时长统计数据列表
+        r"""时长统计数据列表
         :rtype: list of TaskDurationInfo
         """
         return self._DataInfoList
@@ -23644,7 +23644,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
 
     @property
     def TotalDuration(self):
-        """拉流转推得总时长
+        r"""拉流转推得总时长
         :rtype: int
         """
         return self._TotalDuration
@@ -23655,7 +23655,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
 
     @property
     def TotalDurationSecond(self):
-        """拉流转推得总时长（秒）
+        r"""拉流转推得总时长（秒）
         :rtype: int
         """
         return self._TotalDurationSecond
@@ -23666,7 +23666,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23689,7 +23689,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
 
 
 class DescribePushBandwidthAndFluxListRequest(AbstractModel):
-    """DescribePushBandwidthAndFluxList请求参数结构体
+    r"""DescribePushBandwidthAndFluxList请求参数结构体
 
     """
 
@@ -23743,7 +23743,7 @@ https://cloud.tencent.com/document/product/267/34019。
 
     @property
     def StartTime(self):
-        """查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
+        r"""查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
@@ -23757,7 +23757,7 @@ https://cloud.tencent.com/document/product/267/34019。
 
     @property
     def EndTime(self):
-        """查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
+        r"""查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
@@ -23771,7 +23771,7 @@ https://cloud.tencent.com/document/product/267/34019。
 
     @property
     def PushDomains(self):
-        """域名，可以填多个，若不填，表示总体数据。
+        r"""域名，可以填多个，若不填，表示总体数据。
         :rtype: list of str
         """
         return self._PushDomains
@@ -23782,7 +23782,7 @@ https://cloud.tencent.com/document/product/267/34019。
 
     @property
     def MainlandOrOversea(self):
-        """可选值：
+        r"""可选值：
 Mainland：查询中国大陆（境内）数据，
 Oversea：则查询国际/港澳台（境外）数据，
 不填则默认查询全球地区（境内+境外）的数据。
@@ -23796,7 +23796,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def Granularity(self):
-        """数据粒度，支持如下粒度：
+        r"""数据粒度，支持如下粒度：
 5：5分钟粒度，（跨度不支持超过1天），
 60：1小时粒度（跨度不支持超过一个月），
 1440：天粒度（跨度不支持超过一个月）。
@@ -23811,7 +23811,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def RegionNames(self):
-        """大区，映射表如下：
+        r"""大区，映射表如下：
 China Mainland 中国大陆
 Asia Pacific I 亚太一区
 Asia Pacific II 亚太二区
@@ -23831,7 +23831,7 @@ Africa 非洲。
 
     @property
     def CountryNames(self):
-        """国家，映射表参照如下文档：
+        r"""国家，映射表参照如下文档：
 https://cloud.tencent.com/document/product/267/34019。
         :rtype: list of str
         """
@@ -23861,7 +23861,7 @@ https://cloud.tencent.com/document/product/267/34019。
 
 
 class DescribePushBandwidthAndFluxListResponse(AbstractModel):
-    """DescribePushBandwidthAndFluxList返回参数结构体
+    r"""DescribePushBandwidthAndFluxList返回参数结构体
 
     """
 
@@ -23898,7 +23898,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidthTime(self):
-        """峰值带宽所在时间点，
+        r"""峰值带宽所在时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -23912,7 +23912,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidth(self):
-        """峰值带宽，单位是 Mbps。
+        r"""峰值带宽，单位是 Mbps。
         :rtype: float
         """
         return self._PeakBandwidth
@@ -23923,7 +23923,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidthTime(self):
-        """95峰值带宽所在时间点，
+        r"""95峰值带宽所在时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -23937,7 +23937,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidth(self):
-        """95峰值带宽，单位是 Mbps。
+        r"""95峰值带宽，单位是 Mbps。
         :rtype: float
         """
         return self._P95PeakBandwidth
@@ -23948,7 +23948,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def SumFlux(self):
-        """总流量，单位是 MB。
+        r"""总流量，单位是 MB。
         :rtype: float
         """
         return self._SumFlux
@@ -23959,7 +23959,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """明细数据信息。
+        r"""明细数据信息。
         :rtype: list of BillDataInfo
         """
         return self._DataInfoList
@@ -23970,7 +23970,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23996,7 +23996,7 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
 
 class DescribeRecordTaskRequest(AbstractModel):
-    """DescribeRecordTask请求参数结构体
+    r"""DescribeRecordTask请求参数结构体
 
     """
 
@@ -24024,7 +24024,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
+        r"""查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
         :rtype: int
         """
         return self._StartTime
@@ -24035,7 +24035,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
+        r"""查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
         :rtype: int
         """
         return self._EndTime
@@ -24046,7 +24046,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -24057,7 +24057,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -24068,7 +24068,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -24079,7 +24079,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
-        """翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        r"""翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
         :rtype: str
         """
         return self._ScrollToken
@@ -24107,7 +24107,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
 
 class DescribeRecordTaskResponse(AbstractModel):
-    """DescribeRecordTask返回参数结构体
+    r"""DescribeRecordTask返回参数结构体
 
     """
 
@@ -24126,7 +24126,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
-        """翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
+        r"""翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
         :rtype: str
         """
         return self._ScrollToken
@@ -24137,7 +24137,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """录制任务列表。当该字段为空，说明已返回所有数据。
+        r"""录制任务列表。当该字段为空，说明已返回所有数据。
         :rtype: list of RecordTask
         """
         return self._TaskList
@@ -24148,7 +24148,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24170,7 +24170,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
 
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
-    """DescribeScreenShotSheetNumList请求参数结构体
+    r"""DescribeScreenShotSheetNumList请求参数结构体
 
     """
 
@@ -24200,7 +24200,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -24213,7 +24213,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近三个月的查询，查询开始和结束时间跨度不支持超过31天。
@@ -24227,7 +24227,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
+        r"""地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
         :rtype: str
         """
         return self._Zone
@@ -24238,7 +24238,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def PushDomains(self):
-        """推流域名（支持查询2019年11 月1日之后的域名维度数据）。
+        r"""推流域名（支持查询2019年11 月1日之后的域名维度数据）。
         :rtype: list of str
         """
         return self._PushDomains
@@ -24249,7 +24249,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，按照北京时间做跨天处理，最大支持查询时间范围是186天当天）。
+        r"""数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，按照北京时间做跨天处理，最大支持查询时间范围是186天当天）。
         :rtype: str
         """
         return self._Granularity
@@ -24276,7 +24276,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
 
 class DescribeScreenShotSheetNumListResponse(AbstractModel):
-    """DescribeScreenShotSheetNumList返回参数结构体
+    r"""DescribeScreenShotSheetNumList返回参数结构体
 
     """
 
@@ -24292,7 +24292,7 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """数据信息列表。
+        r"""数据信息列表。
         :rtype: list of TimeValue
         """
         return self._DataInfoList
@@ -24303,7 +24303,7 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24324,7 +24324,7 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
 
 class DescribeScreenshotTaskRequest(AbstractModel):
-    """DescribeScreenshotTask请求参数结构体
+    r"""DescribeScreenshotTask请求参数结构体
 
     """
 
@@ -24352,7 +24352,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
+        r"""查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
         :rtype: int
         """
         return self._StartTime
@@ -24363,7 +24363,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
+        r"""查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
         :rtype: int
         """
         return self._EndTime
@@ -24374,7 +24374,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -24385,7 +24385,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -24396,7 +24396,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -24407,7 +24407,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
-        """翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        r"""翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
         :rtype: str
         """
         return self._ScrollToken
@@ -24435,7 +24435,7 @@ class DescribeScreenshotTaskRequest(AbstractModel):
 
 
 class DescribeScreenshotTaskResponse(AbstractModel):
-    """DescribeScreenshotTask返回参数结构体
+    r"""DescribeScreenshotTask返回参数结构体
 
     """
 
@@ -24454,7 +24454,7 @@ class DescribeScreenshotTaskResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
-        """翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
+        r"""翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
         :rtype: str
         """
         return self._ScrollToken
@@ -24465,7 +24465,7 @@ class DescribeScreenshotTaskResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """截图任务列表。当该字段为空，说明已返回所有数据。
+        r"""截图任务列表。当该字段为空，说明已返回所有数据。
         :rtype: list of ScreenshotTask
         """
         return self._TaskList
@@ -24476,7 +24476,7 @@ class DescribeScreenshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24498,7 +24498,7 @@ class DescribeScreenshotTaskResponse(AbstractModel):
 
 
 class DescribeStreamDayPlayInfoListRequest(AbstractModel):
-    """DescribeStreamDayPlayInfoList请求参数结构体
+    r"""DescribeStreamDayPlayInfoList请求参数结构体
 
     """
 
@@ -24530,7 +24530,7 @@ Oversea：则查询国外数据，
 
     @property
     def DayTime(self):
-        """日期，格式：YYYY-mm-dd。
+        r"""日期，格式：YYYY-mm-dd。
 第二天凌晨3点出昨天的数据，建议在这个时间点之后查询最新数据。支持最近3个月的数据查询。
         :rtype: str
         """
@@ -24542,7 +24542,7 @@ Oversea：则查询国外数据，
 
     @property
     def PlayDomain(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._PlayDomain
@@ -24553,7 +24553,7 @@ Oversea：则查询国外数据，
 
     @property
     def PageNum(self):
-        """页号，范围[1,1000]，默认值是1。
+        r"""页号，范围[1,1000]，默认值是1。
         :rtype: int
         """
         return self._PageNum
@@ -24564,7 +24564,7 @@ Oversea：则查询国外数据，
 
     @property
     def PageSize(self):
-        """每页个数，范围[100,1000]，默认值是1000。
+        r"""每页个数，范围[100,1000]，默认值是1000。
         :rtype: int
         """
         return self._PageSize
@@ -24575,7 +24575,7 @@ Oversea：则查询国外数据，
 
     @property
     def MainlandOrOversea(self):
-        """可选值：
+        r"""可选值：
 Mainland：查询国内数据，
 Oversea：则查询国外数据，
 默认：查询国内+国外的数据。
@@ -24589,7 +24589,7 @@ Oversea：则查询国外数据，
 
     @property
     def ServiceName(self):
-        """服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        r"""服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
         :rtype: str
         """
         return self._ServiceName
@@ -24617,7 +24617,7 @@ Oversea：则查询国外数据，
 
 
 class DescribeStreamDayPlayInfoListResponse(AbstractModel):
-    """DescribeStreamDayPlayInfoList返回参数结构体
+    r"""DescribeStreamDayPlayInfoList返回参数结构体
 
     """
 
@@ -24645,7 +24645,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """播放数据信息列表。
+        r"""播放数据信息列表。
         :rtype: list of PlayDataInfoByStream
         """
         return self._DataInfoList
@@ -24656,7 +24656,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总数量。
+        r"""总数量。
         :rtype: int
         """
         return self._TotalNum
@@ -24667,7 +24667,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数。
+        r"""总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -24678,7 +24678,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """当前数据所处页码。
+        r"""当前数据所处页码。
         :rtype: int
         """
         return self._PageNum
@@ -24689,7 +24689,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数。
+        r"""每页个数。
         :rtype: int
         """
         return self._PageSize
@@ -24700,7 +24700,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24725,7 +24725,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
 
 class DescribeStreamPlayInfoListRequest(AbstractModel):
-    """DescribeStreamPlayInfoList请求参数结构体
+    r"""DescribeStreamPlayInfoList请求参数结构体
 
     """
 
@@ -24762,7 +24762,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 开始时间和结束时间的格式需要保持一致。
@@ -24776,7 +24776,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
@@ -24790,7 +24790,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomain(self):
-        """播放域名，
+        r"""播放域名，
 若不填，则为查询所有播放域名的在线流数据。
         :rtype: str
         """
@@ -24802,7 +24802,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，精确匹配。
+        r"""流名称，精确匹配。
 若不填，则为查询总体播放数据。
         :rtype: str
         """
@@ -24814,7 +24814,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
+        r"""推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
 若不填，则为查询总体播放数据。
         :rtype: str
         """
@@ -24826,7 +24826,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        r"""服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
         :rtype: str
         """
         return self._ServiceName
@@ -24854,7 +24854,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):
-    """DescribeStreamPlayInfoList返回参数结构体
+    r"""DescribeStreamPlayInfoList返回参数结构体
 
     """
 
@@ -24870,7 +24870,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """统计信息列表，时间粒度是1分钟。
+        r"""统计信息列表，时间粒度是1分钟。
         :rtype: list of DayStreamPlayInfo
         """
         return self._DataInfoList
@@ -24881,7 +24881,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24902,7 +24902,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
 
 class DescribeStreamPushInfoListRequest(AbstractModel):
-    """DescribeStreamPushInfoList请求参数结构体
+    r"""DescribeStreamPushInfoList请求参数结构体
 
     """
 
@@ -24934,7 +24934,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -24945,7 +24945,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，
+        r"""起始时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -24959,7 +24959,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，
+        r"""结束时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -24974,7 +24974,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -24985,7 +24985,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -25012,7 +25012,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
 
 class DescribeStreamPushInfoListResponse(AbstractModel):
-    """DescribeStreamPushInfoList返回参数结构体
+    r"""DescribeStreamPushInfoList返回参数结构体
 
     """
 
@@ -25028,7 +25028,7 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """返回的数据列表。
+        r"""返回的数据列表。
         :rtype: list of PushQualityData
         """
         return self._DataInfoList
@@ -25039,7 +25039,7 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25060,7 +25060,7 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
 
 class DescribeTimeShiftRecordDetailRequest(AbstractModel):
-    """DescribeTimeShiftRecordDetail请求参数结构体
+    r"""DescribeTimeShiftRecordDetail请求参数结构体
 
     """
 
@@ -25091,7 +25091,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._Domain
@@ -25102,7 +25102,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -25113,7 +25113,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -25124,7 +25124,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询范围起始时间，Unix 时间戳。
+        r"""查询范围起始时间，Unix 时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -25135,7 +25135,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询范围终止时间，Unix 时间戳。 
+        r"""查询范围终止时间，Unix 时间戳。 
         :rtype: int
         """
         return self._EndTime
@@ -25146,7 +25146,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def DomainGroup(self):
-        """推流域名所属组，没有域名组或者域名组为空字符串可不填。
+        r"""推流域名所属组，没有域名组或者域名组为空字符串可不填。
         :rtype: str
         """
         return self._DomainGroup
@@ -25157,7 +25157,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def TransCodeId(self):
-        """转码模板ID，转码模板ID为0可不填。
+        r"""转码模板ID，转码模板ID为0可不填。
         :rtype: int
         """
         return self._TransCodeId
@@ -25186,7 +25186,7 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
 
 class DescribeTimeShiftRecordDetailResponse(AbstractModel):
-    """DescribeTimeShiftRecordDetail返回参数结构体
+    r"""DescribeTimeShiftRecordDetail返回参数结构体
 
     """
 
@@ -25202,7 +25202,7 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
 
     @property
     def RecordList(self):
-        """时移录制会话数组。
+        r"""时移录制会话数组。
         :rtype: list of TimeShiftRecord
         """
         return self._RecordList
@@ -25213,7 +25213,7 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25234,7 +25234,7 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
 
 
 class DescribeTimeShiftStreamListRequest(AbstractModel):
-    """DescribeTimeShiftStreamList请求参数结构体
+    r"""DescribeTimeShiftStreamList请求参数结构体
 
     """
 
@@ -25266,7 +25266,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询范围起始时间，Unix 时间戳。
+        r"""查询范围起始时间，Unix 时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -25277,7 +25277,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询范围结束时间，Unix 时间戳。
+        r"""查询范围结束时间，Unix 时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -25288,7 +25288,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -25299,7 +25299,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._Domain
@@ -25310,7 +25310,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def DomainGroup(self):
-        """推流域名所属域名组。
+        r"""推流域名所属域名组。
         :rtype: str
         """
         return self._DomainGroup
@@ -25321,7 +25321,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """用户指定要返回的最大结果数，取值范围[0,100]，不指定或者指定为0时，API 
+        r"""用户指定要返回的最大结果数，取值范围[0,100]，不指定或者指定为0时，API 
 默认值为100。指定超过100时，API 强制使用100。指定值为负数时，接口返回错误。
         :rtype: int
         """
@@ -25333,7 +25333,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """指定拉取的页码，不传时默认为1。
+        r"""指定拉取的页码，不传时默认为1。
         :rtype: int
         """
         return self._PageNum
@@ -25362,7 +25362,7 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
 
 class DescribeTimeShiftStreamListResponse(AbstractModel):
-    """DescribeTimeShiftStreamList返回参数结构体
+    r"""DescribeTimeShiftStreamList返回参数结构体
 
     """
 
@@ -25381,7 +25381,7 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
 
     @property
     def TotalSize(self):
-        """时间段内所有的数据量。
+        r"""时间段内所有的数据量。
         :rtype: int
         """
         return self._TotalSize
@@ -25392,7 +25392,7 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
 
     @property
     def StreamList(self):
-        """流列表。
+        r"""流列表。
         :rtype: list of TimeShiftStreamInfo
         """
         return self._StreamList
@@ -25403,7 +25403,7 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25425,7 +25425,7 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
 
 
 class DescribeTopClientIpSumInfoListRequest(AbstractModel):
-    """DescribeTopClientIpSumInfoList请求参数结构体
+    r"""DescribeTopClientIpSumInfoList请求参数结构体
 
     """
 
@@ -25466,7 +25466,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，
+        r"""起始时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -25480,7 +25480,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，
+        r"""结束时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -25495,7 +25495,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名，默认为不填，表示求总体数据。
+        r"""播放域名，默认为不填，表示求总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -25506,7 +25506,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号，范围是[1,1000]，默认值是1。
+        r"""页号，范围是[1,1000]，默认值是1。
         :rtype: int
         """
         return self._PageNum
@@ -25517,7 +25517,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围是[1,1000]，默认值是20。
+        r"""每页个数，范围是[1,1000]，默认值是20。
         :rtype: int
         """
         return self._PageSize
@@ -25528,7 +25528,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def OrderParam(self):
-        """排序指标，可选值包括TotalRequest（默认值），FailedRequest,TotalFlux。
+        r"""排序指标，可选值包括TotalRequest（默认值），FailedRequest,TotalFlux。
         :rtype: str
         """
         return self._OrderParam
@@ -25539,7 +25539,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
-        """地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        r"""地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -25550,7 +25550,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def OutLanguage(self):
-        """输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+        r"""输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
         :rtype: str
         """
         return self._OutLanguage
@@ -25580,7 +25580,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
 
 class DescribeTopClientIpSumInfoListResponse(AbstractModel):
-    """DescribeTopClientIpSumInfoList返回参数结构体
+    r"""DescribeTopClientIpSumInfoList返回参数结构体
 
     """
 
@@ -25611,7 +25611,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号，范围是[1,1000]，默认值是1。
+        r"""页号，范围是[1,1000]，默认值是1。
         :rtype: int
         """
         return self._PageNum
@@ -25622,7 +25622,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围是[1,1000]，默认值是20。
+        r"""每页个数，范围是[1,1000]，默认值是20。
         :rtype: int
         """
         return self._PageSize
@@ -25633,7 +25633,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def OrderParam(self):
-        """排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+        r"""排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
         :rtype: str
         """
         return self._OrderParam
@@ -25644,7 +25644,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """记录总数。
+        r"""记录总数。
         :rtype: int
         """
         return self._TotalNum
@@ -25655,7 +25655,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """记录总页数。
+        r"""记录总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -25666,7 +25666,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """数据内容。
+        r"""数据内容。
         :rtype: list of ClientIpPlaySumInfo
         """
         return self._DataInfoList
@@ -25677,7 +25677,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25703,7 +25703,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
 
 class DescribeTranscodeTaskNumRequest(AbstractModel):
-    """DescribeTranscodeTaskNum请求参数结构体
+    r"""DescribeTranscodeTaskNum请求参数结构体
 
     """
 
@@ -25722,7 +25722,7 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间，格式：yyyy-mm-dd HH:MM:SS。
+        r"""起始时间，格式：yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._StartTime
@@ -25733,7 +25733,7 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，格式：yyyy-mm-dd HH:MM:SS。
+        r"""结束时间，格式：yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._EndTime
@@ -25744,7 +25744,7 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def PushDomains(self):
-        """推流域名列表，不填表示总体数据。
+        r"""推流域名列表，不填表示总体数据。
         :rtype: list of str
         """
         return self._PushDomains
@@ -25769,7 +25769,7 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
 
 class DescribeTranscodeTaskNumResponse(AbstractModel):
-    """DescribeTranscodeTaskNum返回参数结构体
+    r"""DescribeTranscodeTaskNum返回参数结构体
 
     """
 
@@ -25785,7 +25785,7 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """任务数列表。
+        r"""任务数列表。
         :rtype: list of TranscodeTaskNum
         """
         return self._DataInfoList
@@ -25796,7 +25796,7 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25817,7 +25817,7 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
 
 class DescribeUploadStreamNumsRequest(AbstractModel):
-    """DescribeUploadStreamNums请求参数结构体
+    r"""DescribeUploadStreamNums请求参数结构体
 
     """
 
@@ -25847,7 +25847,7 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，接口查询支持两种时间格式：
+        r"""起始时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :rtype: str
@@ -25860,7 +25860,7 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，接口查询支持两种时间格式：
+        r"""结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 起始和结束时间跨度不支持超过31天。支持最近31天的数据查询
@@ -25874,7 +25874,7 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """直播域名，若不填，表示总体数据。
+        r"""直播域名，若不填，表示总体数据。
         :rtype: list of str
         """
         return self._Domains
@@ -25885,7 +25885,7 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """数据粒度，支持如下粒度：
+        r"""数据粒度，支持如下粒度：
 5：5分钟粒度，（跨度不支持超过1天），
 1440：天粒度（跨度不支持超过一个月）。
 默认值：5。
@@ -25914,7 +25914,7 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
 
 class DescribeUploadStreamNumsResponse(AbstractModel):
-    """DescribeUploadStreamNums返回参数结构体
+    r"""DescribeUploadStreamNums返回参数结构体
 
     """
 
@@ -25930,7 +25930,7 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """明细数据信息
+        r"""明细数据信息
         :rtype: list of ConcurrentRecordStreamNum
         """
         return self._DataInfoList
@@ -25941,7 +25941,7 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25962,7 +25962,7 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
 
 class DescribeVisitTopSumInfoListRequest(AbstractModel):
-    """DescribeVisitTopSumInfoList请求参数结构体
+    r"""DescribeVisitTopSumInfoList请求参数结构体
 
     """
 
@@ -25997,7 +25997,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._StartTime
@@ -26008,7 +26008,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS
 时间跨度在(0,4小时]，支持最近1天数据查询。
         :rtype: str
         """
@@ -26020,7 +26020,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def TopIndex(self):
-        """峰值指标，可选值包括”Domain”，”StreamId”。
+        r"""峰值指标，可选值包括”Domain”，”StreamId”。
         :rtype: str
         """
         return self._TopIndex
@@ -26031,7 +26031,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
-        """播放域名，默认为不填，表示求总体数据。
+        r"""播放域名，默认为不填，表示求总体数据。
         :rtype: list of str
         """
         return self._PlayDomains
@@ -26042,7 +26042,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号，
+        r"""页号，
 范围是[1,1000]，
 默认值是1。
         :rtype: int
@@ -26055,7 +26055,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围是[1,1000]，
+        r"""每页个数，范围是[1,1000]，
 默认值是20。
         :rtype: int
         """
@@ -26067,7 +26067,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     @property
     def OrderParam(self):
-        """排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+        r"""排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
         :rtype: str
         """
         return self._OrderParam
@@ -26096,7 +26096,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
 
 class DescribeVisitTopSumInfoListResponse(AbstractModel):
-    """DescribeVisitTopSumInfoList返回参数结构体
+    r"""DescribeVisitTopSumInfoList返回参数结构体
 
     """
 
@@ -26133,7 +26133,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """页号，
+        r"""页号，
 范围是[1,1000]，
 默认值是1。
         :rtype: int
@@ -26146,7 +26146,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页个数，范围是[1,1000]，
+        r"""每页个数，范围是[1,1000]，
 默认值是20。
         :rtype: int
         """
@@ -26158,7 +26158,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def TopIndex(self):
-        """峰值指标，可选值包括”Domain”，”StreamId”。
+        r"""峰值指标，可选值包括”Domain”，”StreamId”。
         :rtype: str
         """
         return self._TopIndex
@@ -26169,7 +26169,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def OrderParam(self):
-        """排序指标，可选值包括” AvgFluxPerSecond”(按每秒平均流量排序)，”TotalRequest”（默认，按总请求数排序）,“TotalFlux”（按总流量排序）。
+        r"""排序指标，可选值包括” AvgFluxPerSecond”(按每秒平均流量排序)，”TotalRequest”（默认，按总请求数排序）,“TotalFlux”（按总流量排序）。
         :rtype: str
         """
         return self._OrderParam
@@ -26180,7 +26180,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """记录总数。
+        r"""记录总数。
         :rtype: int
         """
         return self._TotalNum
@@ -26191,7 +26191,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """记录总页数。
+        r"""记录总页数。
         :rtype: int
         """
         return self._TotalPage
@@ -26202,7 +26202,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """数据内容。
+        r"""数据内容。
         :rtype: list of PlaySumStatInfo
         """
         return self._DataInfoList
@@ -26213,7 +26213,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26240,7 +26240,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
 
 class DiagnoseResult(AbstractModel):
-    """媒体诊断结果，包含断流信息、低帧率信息等
+    r"""媒体诊断结果，包含断流信息、低帧率信息等
 
     """
 
@@ -26259,7 +26259,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def StreamBrokenResults(self):
-        """断流信息
+        r"""断流信息
         :rtype: list of str
         """
         return self._StreamBrokenResults
@@ -26270,7 +26270,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def LowFrameRateResults(self):
-        """低帧率信息
+        r"""低帧率信息
         :rtype: list of str
         """
         return self._LowFrameRateResults
@@ -26281,7 +26281,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def StreamFormatResults(self):
-        """流格式诊断信息
+        r"""流格式诊断信息
         :rtype: list of str
         """
         return self._StreamFormatResults
@@ -26306,7 +26306,7 @@ class DiagnoseResult(AbstractModel):
 
 
 class DomainCertInfo(AbstractModel):
-    """域名证书信息
+    r"""域名证书信息
 
     """
 
@@ -26354,7 +26354,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertId(self):
-        """证书Id。
+        r"""证书Id。
         :rtype: int
         """
         return self._CertId
@@ -26365,7 +26365,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertName(self):
-        """证书名称。
+        r"""证书名称。
         :rtype: str
         """
         return self._CertName
@@ -26376,7 +26376,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -26387,7 +26387,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，UTC格式。
+        r"""创建时间，UTC格式。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -26399,7 +26399,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def HttpsCrt(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._HttpsCrt
@@ -26410,7 +26410,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型。
+        r"""证书类型。
 0：用户添加证书，
 1：腾讯云托管证书。
         :rtype: int
@@ -26423,7 +26423,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertExpireTime(self):
-        """证书过期时间，UTC格式。
+        r"""证书过期时间，UTC格式。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -26435,7 +26435,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """使用此证书的域名名称。
+        r"""使用此证书的域名名称。
         :rtype: str
         """
         return self._DomainName
@@ -26446,7 +26446,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def Status(self):
-        """证书状态。
+        r"""证书状态。
         :rtype: int
         """
         return self._Status
@@ -26457,7 +26457,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CertDomains(self):
-        """证书本身标识的域名列表。
+        r"""证书本身标识的域名列表。
 比如: ["*.x.com"]
         :rtype: list of str
         """
@@ -26469,7 +26469,7 @@ class DomainCertInfo(AbstractModel):
 
     @property
     def CloudCertId(self):
-        """腾讯云ssl的证书Id
+        r"""腾讯云ssl的证书Id
         :rtype: str
         """
         return self._CloudCertId
@@ -26502,7 +26502,7 @@ class DomainCertInfo(AbstractModel):
 
 
 class DomainDetailInfo(AbstractModel):
-    """每个域名的统计信息。
+    r"""每个域名的统计信息。
 
     """
 
@@ -26529,7 +26529,7 @@ Oversea: 表示国外数据。
 
     @property
     def MainlandOrOversea(self):
-        """国内还是国外:
+        r"""国内还是国外:
 Mainland: 表示国内数据。
 Oversea: 表示国外数据。
         :rtype: str
@@ -26542,7 +26542,7 @@ Oversea: 表示国外数据。
 
     @property
     def Bandwidth(self):
-        """带宽，单位: Mbps。
+        r"""带宽，单位: Mbps。
         :rtype: float
         """
         return self._Bandwidth
@@ -26553,7 +26553,7 @@ Oversea: 表示国外数据。
 
     @property
     def Flux(self):
-        """流量，单位: MB。
+        r"""流量，单位: MB。
         :rtype: float
         """
         return self._Flux
@@ -26564,7 +26564,7 @@ Oversea: 表示国外数据。
 
     @property
     def Online(self):
-        """人数。
+        r"""人数。
         :rtype: int
         """
         return self._Online
@@ -26575,7 +26575,7 @@ Oversea: 表示国外数据。
 
     @property
     def Request(self):
-        """请求数。
+        r"""请求数。
         :rtype: int
         """
         return self._Request
@@ -26602,7 +26602,7 @@ Oversea: 表示国外数据。
 
 
 class DomainInfo(AbstractModel):
-    """直播域名信息
+    r"""直播域名信息
 
     """
 
@@ -26662,7 +26662,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Name(self):
-        """直播域名。
+        r"""直播域名。
         :rtype: str
         """
         return self._Name
@@ -26673,7 +26673,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Type(self):
-        """域名类型:
+        r"""域名类型:
 0: 推流。
 1: 播放。
         :rtype: int
@@ -26686,7 +26686,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Status(self):
-        """域名状态:
+        r"""域名状态:
 0: 停用。
 1: 启用。
         :rtype: int
@@ -26699,7 +26699,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """添加时间。
+        r"""添加时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -26711,7 +26711,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def BCName(self):
-        """是否有 CName 到固定规则域名:
+        r"""是否有 CName 到固定规则域名:
 0: 否。
 1: 是。
         :rtype: int
@@ -26724,7 +26724,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def TargetDomain(self):
-        """cname 对应的域名。
+        r"""cname 对应的域名。
         :rtype: str
         """
         return self._TargetDomain
@@ -26735,7 +26735,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def PlayType(self):
-        """播放区域，只在 Type=1 时该参数有意义。
+        r"""播放区域，只在 Type=1 时该参数有意义。
 1: 国内。
 2: 全球。
 3: 海外。
@@ -26749,7 +26749,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        """是否慢直播:
+        r"""是否慢直播:
 0: 普通直播。
 1: 慢直播。
         :rtype: int
@@ -26762,7 +26762,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def CurrentCName(self):
-        """当前客户使用的 cname 信息。
+        r"""当前客户使用的 cname 信息。
         :rtype: str
         """
         return self._CurrentCName
@@ -26773,7 +26773,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def RentTag(self):
-        """失效参数，可忽略。
+        r"""失效参数，可忽略。
         :rtype: int
         """
         return self._RentTag
@@ -26784,7 +26784,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def RentExpireTime(self):
-        """失效参数，可忽略。
+        r"""失效参数，可忽略。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -26796,7 +26796,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsMiniProgramLive(self):
-        """0: 标准直播。
+        r"""0: 标准直播。
 1: 小程序直播。
         :rtype: int
         """
@@ -26831,7 +26831,7 @@ class DomainInfo(AbstractModel):
 
 
 class DomainInfoList(AbstractModel):
-    """多个域名信息列表
+    r"""多个域名信息列表
 
     """
 
@@ -26847,7 +26847,7 @@ class DomainInfoList(AbstractModel):
 
     @property
     def Domain(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._Domain
@@ -26858,7 +26858,7 @@ class DomainInfoList(AbstractModel):
 
     @property
     def DetailInfoList(self):
-        """明细信息。
+        r"""明细信息。
         :rtype: list of DomainDetailInfo
         """
         return self._DetailInfoList
@@ -26887,7 +26887,7 @@ class DomainInfoList(AbstractModel):
 
 
 class DropLiveStreamRequest(AbstractModel):
-    """DropLiveStream请求参数结构体
+    r"""DropLiveStream请求参数结构体
 
     """
 
@@ -26906,7 +26906,7 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -26917,7 +26917,7 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -26928,7 +26928,7 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -26953,7 +26953,7 @@ class DropLiveStreamRequest(AbstractModel):
 
 
 class DropLiveStreamResponse(AbstractModel):
-    """DropLiveStream返回参数结构体
+    r"""DropLiveStream返回参数结构体
 
     """
 
@@ -26966,7 +26966,7 @@ class DropLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26981,7 +26981,7 @@ class DropLiveStreamResponse(AbstractModel):
 
 
 class EnableLiveDomainRequest(AbstractModel):
-    """EnableLiveDomain请求参数结构体
+    r"""EnableLiveDomain请求参数结构体
 
     """
 
@@ -26994,7 +26994,7 @@ class EnableLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """待启用的直播域名。
+        r"""待启用的直播域名。
         :rtype: str
         """
         return self._DomainName
@@ -27017,7 +27017,7 @@ class EnableLiveDomainRequest(AbstractModel):
 
 
 class EnableLiveDomainResponse(AbstractModel):
-    """EnableLiveDomain返回参数结构体
+    r"""EnableLiveDomain返回参数结构体
 
     """
 
@@ -27030,7 +27030,7 @@ class EnableLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27045,7 +27045,7 @@ class EnableLiveDomainResponse(AbstractModel):
 
 
 class EnableOptimalSwitchingRequest(AbstractModel):
-    """EnableOptimalSwitching请求参数结构体
+    r"""EnableOptimalSwitching请求参数结构体
 
     """
 
@@ -27066,7 +27066,7 @@ class EnableOptimalSwitchingRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """针对该流 ID 启用择优调度。
+        r"""针对该流 ID 启用择优调度。
         :rtype: str
         """
         return self._StreamName
@@ -27077,7 +27077,7 @@ class EnableOptimalSwitchingRequest(AbstractModel):
 
     @property
     def EnableSwitch(self):
-        """启用开关，默认为启用。
+        r"""启用开关，默认为启用。
 0 - 禁用。
 1 - 启用。
         :rtype: int
@@ -27090,7 +27090,7 @@ class EnableOptimalSwitchingRequest(AbstractModel):
 
     @property
     def HostGroupName(self):
-        """要启用自动择优的流所属的域名分组名称。
+        r"""要启用自动择优的流所属的域名分组名称。
         :rtype: str
         """
         return self._HostGroupName
@@ -27115,7 +27115,7 @@ class EnableOptimalSwitchingRequest(AbstractModel):
 
 
 class EnableOptimalSwitchingResponse(AbstractModel):
-    """EnableOptimalSwitching返回参数结构体
+    r"""EnableOptimalSwitching返回参数结构体
 
     """
 
@@ -27128,7 +27128,7 @@ class EnableOptimalSwitchingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27143,7 +27143,7 @@ class EnableOptimalSwitchingResponse(AbstractModel):
 
 
 class FlvSpecialParam(AbstractModel):
-    """flv格式特殊配置
+    r"""flv格式特殊配置
 
     """
 
@@ -27156,7 +27156,7 @@ class FlvSpecialParam(AbstractModel):
 
     @property
     def UploadInRecording(self):
-        """是否开启边录边传，仅flv格式有效。
+        r"""是否开启边录边传，仅flv格式有效。
         :rtype: bool
         """
         return self._UploadInRecording
@@ -27179,7 +27179,7 @@ class FlvSpecialParam(AbstractModel):
 
 
 class ForbidLiveDomainRequest(AbstractModel):
-    """ForbidLiveDomain请求参数结构体
+    r"""ForbidLiveDomain请求参数结构体
 
     """
 
@@ -27192,7 +27192,7 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """待停用的直播域名。
+        r"""待停用的直播域名。
         :rtype: str
         """
         return self._DomainName
@@ -27215,7 +27215,7 @@ class ForbidLiveDomainRequest(AbstractModel):
 
 
 class ForbidLiveDomainResponse(AbstractModel):
-    """ForbidLiveDomain返回参数结构体
+    r"""ForbidLiveDomain返回参数结构体
 
     """
 
@@ -27228,7 +27228,7 @@ class ForbidLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27243,7 +27243,7 @@ class ForbidLiveDomainResponse(AbstractModel):
 
 
 class ForbidLiveStreamRequest(AbstractModel):
-    """ForbidLiveStream请求参数结构体
+    r"""ForbidLiveStream请求参数结构体
 
     """
 
@@ -27273,7 +27273,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -27284,7 +27284,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -27295,7 +27295,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -27306,7 +27306,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def ResumeTime(self):
-        """恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        r"""恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认禁推7天，且最长支持禁推90天。
 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
@@ -27320,7 +27320,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def Reason(self):
-        """禁推原因。
+        r"""禁推原因。
 注明：请务必填写禁推原因，防止误操作。
 长度限制：2048字节。
         :rtype: str
@@ -27349,7 +27349,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
 
 class ForbidLiveStreamResponse(AbstractModel):
-    """ForbidLiveStream返回参数结构体
+    r"""ForbidLiveStream返回参数结构体
 
     """
 
@@ -27362,7 +27362,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27377,7 +27377,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
 
 class ForbidStreamInfo(AbstractModel):
-    """禁推流列表
+    r"""禁推流列表
 
     """
 
@@ -27406,7 +27406,7 @@ class ForbidStreamInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -27417,7 +27417,7 @@ class ForbidStreamInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -27429,7 +27429,7 @@ class ForbidStreamInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """禁推过期时间。
+        r"""禁推过期时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -27441,7 +27441,7 @@ class ForbidStreamInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27453,7 +27453,7 @@ class ForbidStreamInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27481,7 +27481,7 @@ class ForbidStreamInfo(AbstractModel):
 
 
 class GroupProIspDataInfo(AbstractModel):
-    """某省份某运营商在某段时间内的带宽，流量，请求数和并发数
+    r"""某省份某运营商在某段时间内的带宽，流量，请求数和并发数
 
     """
 
@@ -27500,7 +27500,7 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def ProvinceName(self):
-        """省份。
+        r"""省份。
         :rtype: str
         """
         return self._ProvinceName
@@ -27511,7 +27511,7 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def IspName(self):
-        """运营商。
+        r"""运营商。
         :rtype: str
         """
         return self._IspName
@@ -27522,7 +27522,7 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def DetailInfoList(self):
-        """分钟维度的明细数据。
+        r"""分钟维度的明细数据。
         :rtype: list of CdnPlayStatData
         """
         return self._DetailInfoList
@@ -27552,7 +27552,7 @@ class GroupProIspDataInfo(AbstractModel):
 
 
 class HlsSpecialParam(AbstractModel):
-    """HLS专属录制参数
+    r"""HLS专属录制参数
 
     """
 
@@ -27567,7 +27567,7 @@ class HlsSpecialParam(AbstractModel):
 
     @property
     def FlowContinueDuration(self):
-        """HLS续流超时时间。
+        r"""HLS续流超时时间。
 取值范围[0，1800]。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -27592,7 +27592,7 @@ class HlsSpecialParam(AbstractModel):
 
 
 class HttpCodeInfo(AbstractModel):
-    """HTTP返回码和统计数据
+    r"""HTTP返回码和统计数据
 
     """
 
@@ -27609,7 +27609,7 @@ class HttpCodeInfo(AbstractModel):
 
     @property
     def HttpCode(self):
-        """HTTP协议返回码。
+        r"""HTTP协议返回码。
 例："2xx", "3xx", "4xx", "5xx"。
         :rtype: str
         """
@@ -27621,7 +27621,7 @@ class HttpCodeInfo(AbstractModel):
 
     @property
     def ValueList(self):
-        """统计信息，对于无数据的时间点，会补0。
+        r"""统计信息，对于无数据的时间点，会补0。
         :rtype: list of HttpCodeValue
         """
         return self._ValueList
@@ -27650,7 +27650,7 @@ class HttpCodeInfo(AbstractModel):
 
 
 class HttpCodeValue(AbstractModel):
-    """HTTP返回码数据信息
+    r"""HTTP返回码数据信息
 
     """
 
@@ -27672,7 +27672,7 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Time(self):
-        """时间，
+        r"""时间，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -27686,7 +27686,7 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Numbers(self):
-        """次数。
+        r"""次数。
         :rtype: int
         """
         return self._Numbers
@@ -27697,7 +27697,7 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Percentage(self):
-        """占比。
+        r"""占比。
         :rtype: float
         """
         return self._Percentage
@@ -27722,7 +27722,7 @@ class HttpCodeValue(AbstractModel):
 
 
 class HttpStatusData(AbstractModel):
-    """播放错误码信息
+    r"""播放错误码信息
 
     """
 
@@ -27741,7 +27741,7 @@ class HttpStatusData(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间点，
+        r"""数据时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -27755,7 +27755,7 @@ class HttpStatusData(AbstractModel):
 
     @property
     def HttpStatusInfoList(self):
-        """播放状态码详细信息。
+        r"""播放状态码详细信息。
         :rtype: list of HttpStatusInfo
         """
         return self._HttpStatusInfoList
@@ -27784,7 +27784,7 @@ class HttpStatusData(AbstractModel):
 
 
 class HttpStatusInfo(AbstractModel):
-    """播放错误码信息
+    r"""播放错误码信息
 
     """
 
@@ -27800,7 +27800,7 @@ class HttpStatusInfo(AbstractModel):
 
     @property
     def HttpStatus(self):
-        """播放HTTP状态码。
+        r"""播放HTTP状态码。
         :rtype: str
         """
         return self._HttpStatus
@@ -27811,7 +27811,7 @@ class HttpStatusInfo(AbstractModel):
 
     @property
     def Num(self):
-        """个数。
+        r"""个数。
         :rtype: int
         """
         return self._Num
@@ -27835,7 +27835,7 @@ class HttpStatusInfo(AbstractModel):
 
 
 class LiveCertDomainInfo(AbstractModel):
-    """用作批量绑定域名和证书。
+    r"""用作批量绑定域名和证书。
 
     """
 
@@ -27854,7 +27854,7 @@ class LiveCertDomainInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -27865,7 +27865,7 @@ class LiveCertDomainInfo(AbstractModel):
 
     @property
     def Status(self):
-        """是否启用域名的https规则。
+        r"""是否启用域名的https规则。
 1：启用
 0：禁用
 -1：保持不变
@@ -27892,7 +27892,7 @@ class LiveCertDomainInfo(AbstractModel):
 
 
 class LiveDomainCertBindings(AbstractModel):
-    """DescribeLiveDomainCertBindings, DescribeLiveDomainCertBindingsGray接口返回的域名证书信息
+    r"""DescribeLiveDomainCertBindings, DescribeLiveDomainCertBindingsGray接口返回的域名证书信息
 
     """
 
@@ -27933,7 +27933,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -27944,7 +27944,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def CertificateAlias(self):
-        """证书备注。与CertName同义。
+        r"""证书备注。与CertName同义。
         :rtype: str
         """
         return self._CertificateAlias
@@ -27955,7 +27955,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型。
+        r"""证书类型。
 0：自有证书
 1：腾讯云ssl托管证书
         :rtype: int
@@ -27968,7 +27968,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def Status(self):
-        """https状态。
+        r"""https状态。
 1：已开启。
 0：已关闭。
         :rtype: int
@@ -27981,7 +27981,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def CertExpireTime(self):
-        """证书过期时间。
+        r"""证书过期时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -27993,7 +27993,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def CertId(self):
-        """证书Id。
+        r"""证书Id。
         :rtype: int
         """
         return self._CertId
@@ -28004,7 +28004,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def CloudCertId(self):
-        """腾讯云ssl的证书Id。
+        r"""腾讯云ssl的证书Id。
         :rtype: str
         """
         return self._CloudCertId
@@ -28015,7 +28015,7 @@ class LiveDomainCertBindings(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """规则最后更新时间。
+        r"""规则最后更新时间。
 注：此字段为北京时间（UTC+8时区）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -28047,7 +28047,7 @@ class LiveDomainCertBindings(AbstractModel):
 
 
 class LiveEnhanceInfo(AbstractModel):
-    """直播增强计费信息。
+    r"""直播增强计费信息。
 
     """
 
@@ -28075,7 +28075,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._Domain
@@ -28086,7 +28086,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Time(self):
-        """时间。
+        r"""时间。
         :rtype: str
         """
         return self._Time
@@ -28097,7 +28097,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """计费时长，单位分钟。
+        r"""计费时长，单位分钟。
         :rtype: int
         """
         return self._Duration
@@ -28108,7 +28108,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Fps(self):
-        """帧率。
+        r"""帧率。
         :rtype: str
         """
         return self._Fps
@@ -28119,7 +28119,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率。
+        r"""分辨率。
         :rtype: str
         """
         return self._Resolution
@@ -28130,7 +28130,7 @@ class LiveEnhanceInfo(AbstractModel):
 
     @property
     def Type(self):
-        """增强服务类型。
+        r"""增强服务类型。
         :rtype: str
         """
         return self._Type
@@ -28158,7 +28158,7 @@ class LiveEnhanceInfo(AbstractModel):
 
 
 class LivePackageInfo(AbstractModel):
-    """直播包信息。
+    r"""直播包信息。
 
     """
 
@@ -28223,7 +28223,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Id(self):
-        """包 ID。
+        r"""包 ID。
         :rtype: str
         """
         return self._Id
@@ -28234,7 +28234,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Total(self):
-        """总量。
+        r"""总量。
 注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
         :rtype: int
@@ -28247,7 +28247,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Used(self):
-        """使用量。
+        r"""使用量。
 注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
 当为连麦包时单位为小时。
@@ -28261,7 +28261,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Left(self):
-        """剩余量。
+        r"""剩余量。
 注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
 当为连麦包时单位为小时。
@@ -28275,7 +28275,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def BuyTime(self):
-        """购买时间。
+        r"""购买时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -28287,7 +28287,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间。
+        r"""过期时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -28299,7 +28299,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Type(self):
-        """包类型，可选值:
+        r"""包类型，可选值:
 0: 流量包。
 1: 普通转码包。
 2: 极速高清包。
@@ -28314,7 +28314,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def Status(self):
-        """包状态，可选值:
+        r"""包状态，可选值:
 0: 未使用。
 1: 使用中。
 2: 已过期。
@@ -28331,7 +28331,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def WillRenew(self):
-        """是否自动续购。
+        r"""是否自动续购。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28343,7 +28343,7 @@ class LivePackageInfo(AbstractModel):
 
     @property
     def RenewalResult(self):
-        """续购状态。
+        r"""续购状态。
 1 ：续购成功。
 0 ：尚未续购。
 <0  : 续购失败。
@@ -28379,7 +28379,7 @@ class LivePackageInfo(AbstractModel):
 
 
 class LiveStreamMonitorInfo(AbstractModel):
-    """直播监播任务信息。
+    r"""直播监播任务信息。
 
     """
 
@@ -28459,7 +28459,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID。
+        r"""监播任务ID。
         :rtype: str
         """
         return self._MonitorId
@@ -28470,7 +28470,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def MonitorName(self):
-        """监播任务名称。128字节以内。
+        r"""监播任务名称。128字节以内。
         :rtype: str
         """
         return self._MonitorName
@@ -28481,7 +28481,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def OutputInfo(self):
-        """监播任务输出信息。
+        r"""监播任务输出信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
         """
         return self._OutputInfo
@@ -28492,7 +28492,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def InputList(self):
-        """待监播的输入流信息。
+        r"""待监播的输入流信息。
         :rtype: list of LiveStreamMonitorInputInfo
         """
         return self._InputList
@@ -28503,7 +28503,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def Status(self):
-        """监播任务状态。
+        r"""监播任务状态。
 0： 代表空闲
 1： 代表监播中。
         :rtype: int
@@ -28516,7 +28516,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """上一次的启动时间，unix时间戳。
+        r"""上一次的启动时间，unix时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -28527,7 +28527,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def StopTime(self):
-        """上一次的停止时间，unix时间戳。
+        r"""上一次的停止时间，unix时间戳。
         :rtype: int
         """
         return self._StopTime
@@ -28538,7 +28538,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """监播任务创建时间，unix时间戳
+        r"""监播任务创建时间，unix时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -28549,7 +28549,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """监播任务更新时间，unix时间戳
+        r"""监播任务更新时间，unix时间戳
         :rtype: int
         """
         return self._UpdateTime
@@ -28560,7 +28560,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def NotifyPolicy(self):
-        """监播事件通知策略。
+        r"""监播事件通知策略。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
         """
         return self._NotifyPolicy
@@ -28571,7 +28571,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AudibleInputIndexList(self):
-        """输出音频的输入Index列表。
+        r"""输出音频的输入Index列表。
         :rtype: list of int non-negative
         """
         return self._AudibleInputIndexList
@@ -28582,7 +28582,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AiAsrInputIndexList(self):
-        """开启智能语音识别的输入Index列表
+        r"""开启智能语音识别的输入Index列表
         :rtype: list of int non-negative
         """
         return self._AiAsrInputIndexList
@@ -28593,7 +28593,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def CheckStreamBroken(self):
-        """是否开启断流检测
+        r"""是否开启断流检测
         :rtype: int
         """
         return self._CheckStreamBroken
@@ -28604,7 +28604,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def CheckStreamLowFrameRate(self):
-        """是否开启低帧率检测
+        r"""是否开启低帧率检测
         :rtype: int
         """
         return self._CheckStreamLowFrameRate
@@ -28615,7 +28615,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AsrLanguage(self):
-        """智能语音识别语种：
+        r"""智能语音识别语种：
 0 关闭 1 中文 2 英文 3日文 4 韩文
         :rtype: int
         """
@@ -28627,7 +28627,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def OcrLanguage(self):
-        """智能文字识别语种：
+        r"""智能文字识别语种：
 0 关闭 1 中、英文
         :rtype: int
         """
@@ -28639,7 +28639,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AiOcrInputIndexList(self):
-        """开启智能文字识别的输入Index列表
+        r"""开启智能文字识别的输入Index列表
         :rtype: list of int non-negative
         """
         return self._AiOcrInputIndexList
@@ -28650,7 +28650,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AllowMonitorReport(self):
-        """是否存储监播事件到监播报告，以及是否允许查询监播报告
+        r"""是否存储监播事件到监播报告，以及是否允许查询监播报告
         :rtype: int
         """
         return self._AllowMonitorReport
@@ -28661,7 +28661,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AiFormatDiagnose(self):
-        """是否开启格式诊断
+        r"""是否开启格式诊断
         :rtype: int
         """
         return self._AiFormatDiagnose
@@ -28672,7 +28672,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def AiQualityControl(self):
-        """是否开启内容质检。
+        r"""是否开启内容质检。
         :rtype: int
         """
         return self._AiQualityControl
@@ -28683,7 +28683,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台监播对应的导播台场次id
+        r"""导播台监播对应的导播台场次id
         :rtype: str
         """
         return self._CasterId
@@ -28694,7 +28694,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
     @property
     def PullPushTaskId(self):
-        """拉流转推监播对应的拉流转推任务id
+        r"""拉流转推监播对应的拉流转推任务id
         :rtype: str
         """
         return self._PullPushTaskId
@@ -28747,7 +28747,7 @@ class LiveStreamMonitorInfo(AbstractModel):
 
 
 class LiveStreamMonitorInputInfo(AbstractModel):
-    """直播监播功能输入流信息
+    r"""直播监播功能输入流信息
 
     """
 
@@ -28781,7 +28781,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def InputStreamName(self):
-        """待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+        r"""待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
         :rtype: str
         """
         return self._InputStreamName
@@ -28792,7 +28792,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def InputDomain(self):
-        """待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
+        r"""待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
         :rtype: str
         """
         return self._InputDomain
@@ -28803,7 +28803,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def InputApp(self):
-        """待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+        r"""待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
         :rtype: str
         """
         return self._InputApp
@@ -28814,7 +28814,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def InputUrl(self):
-        """待监播的输入流推流url。一般场景下，无需该参数。
+        r"""待监播的输入流推流url。一般场景下，无需该参数。
         :rtype: str
         """
         return self._InputUrl
@@ -28825,7 +28825,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述。256字节以内。
+        r"""描述。256字节以内。
         :rtype: str
         """
         return self._Description
@@ -28836,7 +28836,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def CasterInputIndex(self):
-        """导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
+        r"""导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
         :rtype: int
         """
         return self._CasterInputIndex
@@ -28847,7 +28847,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def NeedMonitor(self):
-        """该输入源是否正在监播
+        r"""该输入源是否正在监播
         :rtype: bool
         """
         return self._NeedMonitor
@@ -28858,7 +28858,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
     @property
     def CdnStreamId(self):
-        """导播台pvw pgm的cdn流id
+        r"""导播台pvw pgm的cdn流id
         :rtype: str
         """
         return self._CdnStreamId
@@ -28888,7 +28888,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
 
 
 class LiveStreamMonitorNotifyPolicy(AbstractModel):
-    """直播流监播通知策略
+    r"""直播流监播通知策略
 
     """
 
@@ -28907,7 +28907,7 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
 
     @property
     def NotifyPolicyType(self):
-        """通知策略类型：范围[0,1]
+        r"""通知策略类型：范围[0,1]
 0:代表不使用任何通知策略
 1:代表使用全局回调策略，所有事件通知到CallbackUrl。
         :rtype: int
@@ -28920,7 +28920,7 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """回调URL：长度[0,512]
+        r"""回调URL：长度[0,512]
 只支持http和https类型的url。
         :rtype: str
         """
@@ -28945,7 +28945,7 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
 
 
 class LiveStreamMonitorOutputInfo(AbstractModel):
-    """直播流监播输出流信息
+    r"""直播流监播输出流信息
 
     """
 
@@ -28972,7 +28972,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
     @property
     def OutputStreamWidth(self):
-        """监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
+        r"""监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
         :rtype: int
         """
         return self._OutputStreamWidth
@@ -28983,7 +28983,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
     @property
     def OutputStreamHeight(self):
-        """监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
+        r"""监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
         :rtype: int
         """
         return self._OutputStreamHeight
@@ -28994,7 +28994,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
     @property
     def OutputStreamName(self):
-        """监播任务输出流名称。
+        r"""监播任务输出流名称。
 不填时，系统会自动生成。
 256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
         :rtype: str
@@ -29007,7 +29007,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
     @property
     def OutputDomain(self):
-        """监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
+        r"""监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
         :rtype: str
         """
         return self._OutputDomain
@@ -29018,7 +29018,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
     @property
     def OutputApp(self):
-        """监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+        r"""监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
         :rtype: str
         """
         return self._OutputApp
@@ -29045,7 +29045,7 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
 
 
 class LogInfo(AbstractModel):
-    """日志url信息。
+    r"""日志url信息。
 
     """
 
@@ -29068,7 +29068,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogName(self):
-        """日志名称。
+        r"""日志名称。
         :rtype: str
         """
         return self._LogName
@@ -29079,7 +29079,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogUrl(self):
-        """日志 URL。
+        r"""日志 URL。
         :rtype: str
         """
         return self._LogUrl
@@ -29090,7 +29090,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogTime(self):
-        """日志生成时间。
+        r"""日志生成时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -29102,7 +29102,7 @@ class LogInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小。
+        r"""文件大小。
         :rtype: int
         """
         return self._FileSize
@@ -29128,7 +29128,7 @@ class LogInfo(AbstractModel):
 
 
 class MPSResult(AbstractModel):
-    """媒体处理结果，包含智能语音识别、智能文字识别结果
+    r"""媒体处理结果，包含智能语音识别、智能文字识别结果
 
     """
 
@@ -29147,7 +29147,7 @@ class MPSResult(AbstractModel):
 
     @property
     def AiAsrResults(self):
-        """智能语音识别结果。
+        r"""智能语音识别结果。
         :rtype: list of str
         """
         return self._AiAsrResults
@@ -29158,7 +29158,7 @@ class MPSResult(AbstractModel):
 
     @property
     def AiOcrResults(self):
-        """智能文字识别结果。
+        r"""智能文字识别结果。
         :rtype: list of str
         """
         return self._AiOcrResults
@@ -29169,7 +29169,7 @@ class MPSResult(AbstractModel):
 
     @property
     def StreamQuaCtrlResults(self):
-        """内容质检结果。
+        r"""内容质检结果。
         :rtype: list of str
         """
         return self._StreamQuaCtrlResults
@@ -29194,7 +29194,7 @@ class MPSResult(AbstractModel):
 
 
 class MixPortraitSegmentParams(AbstractModel):
-    """混流抠图参数
+    r"""混流抠图参数
 
     """
 
@@ -29215,7 +29215,7 @@ class MixPortraitSegmentParams(AbstractModel):
 
     @property
     def Color(self):
-        """抠图背景颜色，
+        r"""抠图背景颜色，
 常用的颜色有：
 红色：0xcc0033。
 黄色：0xcc9900。
@@ -29246,7 +29246,7 @@ class MixPortraitSegmentParams(AbstractModel):
 
 
 class ModifyCasterInputInfoRequest(AbstractModel):
-    """ModifyCasterInputInfo请求参数结构体
+    r"""ModifyCasterInputInfo请求参数结构体
 
     """
 
@@ -29262,7 +29262,7 @@ class ModifyCasterInputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -29273,7 +29273,7 @@ class ModifyCasterInputInfoRequest(AbstractModel):
 
     @property
     def InputInfo(self):
-        """修改的导播台输入源信息
+        r"""修改的导播台输入源信息
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
         """
         return self._InputInfo
@@ -29299,7 +29299,7 @@ class ModifyCasterInputInfoRequest(AbstractModel):
 
 
 class ModifyCasterInputInfoResponse(AbstractModel):
-    """ModifyCasterInputInfo返回参数结构体
+    r"""ModifyCasterInputInfo返回参数结构体
 
     """
 
@@ -29321,7 +29321,7 @@ class ModifyCasterInputInfoResponse(AbstractModel):
 
     @property
     def InputPlayUrl(self):
-        """修改输入源后的预览地址。
+        r"""修改输入源后的预览地址。
 注：该地址仅作为预览使用，不可分发。
         :rtype: str
         """
@@ -29333,7 +29333,7 @@ class ModifyCasterInputInfoResponse(AbstractModel):
 
     @property
     def InputWebRTCPlayUrl(self):
-        """修改后的输入源webrtc预览地址。
+        r"""修改后的输入源webrtc预览地址。
 该地址需配合腾讯云快直播播放SDK使用。
 注：该地址仅做预览使用，不可分发。
         :rtype: str
@@ -29346,7 +29346,7 @@ class ModifyCasterInputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29363,7 +29363,7 @@ class ModifyCasterInputInfoResponse(AbstractModel):
 
 
 class ModifyCasterLayoutInfoRequest(AbstractModel):
-    """ModifyCasterLayoutInfo请求参数结构体
+    r"""ModifyCasterLayoutInfo请求参数结构体
 
     """
 
@@ -29379,7 +29379,7 @@ class ModifyCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -29390,7 +29390,7 @@ class ModifyCasterLayoutInfoRequest(AbstractModel):
 
     @property
     def LayoutInfo(self):
-        """导播台布局参数信息。
+        r"""导播台布局参数信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
         """
         return self._LayoutInfo
@@ -29416,7 +29416,7 @@ class ModifyCasterLayoutInfoRequest(AbstractModel):
 
 
 class ModifyCasterLayoutInfoResponse(AbstractModel):
-    """ModifyCasterLayoutInfo返回参数结构体
+    r"""ModifyCasterLayoutInfo返回参数结构体
 
     """
 
@@ -29429,7 +29429,7 @@ class ModifyCasterLayoutInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29444,7 +29444,7 @@ class ModifyCasterLayoutInfoResponse(AbstractModel):
 
 
 class ModifyCasterMarkPicInfoRequest(AbstractModel):
-    """ModifyCasterMarkPicInfo请求参数结构体
+    r"""ModifyCasterMarkPicInfo请求参数结构体
 
     """
 
@@ -29460,7 +29460,7 @@ class ModifyCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -29471,7 +29471,7 @@ class ModifyCasterMarkPicInfoRequest(AbstractModel):
 
     @property
     def MarkPicInfo(self):
-        """新的水印信息。
+        r"""新的水印信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
         """
         return self._MarkPicInfo
@@ -29497,7 +29497,7 @@ class ModifyCasterMarkPicInfoRequest(AbstractModel):
 
 
 class ModifyCasterMarkPicInfoResponse(AbstractModel):
-    """ModifyCasterMarkPicInfo返回参数结构体
+    r"""ModifyCasterMarkPicInfo返回参数结构体
 
     """
 
@@ -29510,7 +29510,7 @@ class ModifyCasterMarkPicInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29525,7 +29525,7 @@ class ModifyCasterMarkPicInfoResponse(AbstractModel):
 
 
 class ModifyCasterMarkWordInfoRequest(AbstractModel):
-    """ModifyCasterMarkWordInfo请求参数结构体
+    r"""ModifyCasterMarkWordInfo请求参数结构体
 
     """
 
@@ -29541,7 +29541,7 @@ class ModifyCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -29552,7 +29552,7 @@ class ModifyCasterMarkWordInfoRequest(AbstractModel):
 
     @property
     def MarkWordInfo(self):
-        """修改的文本配置。
+        r"""修改的文本配置。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
         """
         return self._MarkWordInfo
@@ -29578,7 +29578,7 @@ class ModifyCasterMarkWordInfoRequest(AbstractModel):
 
 
 class ModifyCasterMarkWordInfoResponse(AbstractModel):
-    """ModifyCasterMarkWordInfo返回参数结构体
+    r"""ModifyCasterMarkWordInfo返回参数结构体
 
     """
 
@@ -29591,7 +29591,7 @@ class ModifyCasterMarkWordInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29606,7 +29606,7 @@ class ModifyCasterMarkWordInfoResponse(AbstractModel):
 
 
 class ModifyCasterOutputInfoRequest(AbstractModel):
-    """ModifyCasterOutputInfo请求参数结构体
+    r"""ModifyCasterOutputInfo请求参数结构体
 
     """
 
@@ -29622,7 +29622,7 @@ class ModifyCasterOutputInfoRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -29633,7 +29633,7 @@ class ModifyCasterOutputInfoRequest(AbstractModel):
 
     @property
     def OutputInfo(self):
-        """导播台推流参数信息。
+        r"""导播台推流参数信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
         """
         return self._OutputInfo
@@ -29659,7 +29659,7 @@ class ModifyCasterOutputInfoRequest(AbstractModel):
 
 
 class ModifyCasterOutputInfoResponse(AbstractModel):
-    """ModifyCasterOutputInfo返回参数结构体
+    r"""ModifyCasterOutputInfo返回参数结构体
 
     """
 
@@ -29672,7 +29672,7 @@ class ModifyCasterOutputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29687,7 +29687,7 @@ class ModifyCasterOutputInfoResponse(AbstractModel):
 
 
 class ModifyCasterRequest(AbstractModel):
-    """ModifyCaster请求参数结构体
+    r"""ModifyCaster请求参数结构体
 
     """
 
@@ -29697,8 +29697,7 @@ class ModifyCasterRequest(AbstractModel):
         :type CasterId: int
         :param _CasterName: 导播台名称
         :type CasterName: str
-        :param _Description: 导播台的描述
-最大允许长度256
+        :param _Description: 导播台的描述，最大允许长度256
         :type Description: str
         :param _RecordTemplateId: 录制模板id。
 默认为0。
@@ -29768,7 +29767,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID
+        r"""导播台ID
         :rtype: int
         """
         return self._CasterId
@@ -29779,7 +29778,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def CasterName(self):
-        """导播台名称
+        r"""导播台名称
         :rtype: str
         """
         return self._CasterName
@@ -29790,8 +29789,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def Description(self):
-        """导播台的描述
-最大允许长度256
+        r"""导播台的描述，最大允许长度256
         :rtype: str
         """
         return self._Description
@@ -29802,7 +29800,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def RecordTemplateId(self):
-        """录制模板id。
+        r"""录制模板id。
 默认为0。
 当使用直播录制功能时，可将使用的录制模版填入。
 该接口仅保存字段，不涉及任何录制功能。
@@ -29816,7 +29814,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def RecordStatus(self):
-        """录制状态，当调用录制接口后，可通过该字段保存录制状态。
+        r"""录制状态，当调用录制接口后，可通过该字段保存录制状态。
 0：未录制 
 1：录制中
 该接口仅保存字段，不涉及任何录制处理。
@@ -29830,7 +29828,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """导播台的过期时间戳。值为-1或unix时间戳。
+        r"""导播台的过期时间戳。值为-1或unix时间戳。
 默认值为-1。 
 当值为-1时，表示该导播台永不过期。 
 当值为正常unix时间戳时，导播台将在该时间过期。
@@ -29846,7 +29844,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        """导播台延时播放时间，单位为秒。 
+        r"""导播台延时播放时间，单位为秒。 
 默认为0，最大支持300秒
         :rtype: int
         """
@@ -29858,7 +29856,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def TransitionType(self):
-        """导播台转场类型。 
+        r"""导播台转场类型。 
 默认为空。 
 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
         :rtype: str
@@ -29871,7 +29869,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def PgmWidth(self):
-        """导播台主监输出的宽度，单位为像素。 
+        r"""导播台主监输出的宽度，单位为像素。 
 默认为1280，最大允许4096。
         :rtype: int
         """
@@ -29883,7 +29881,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def PgmHeight(self):
-        """导播台主监输出的高度，单位为像素。 
+        r"""导播台主监输出的高度，单位为像素。 
 默认为720，最大允许2160。
         :rtype: int
         """
@@ -29895,7 +29893,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def PgmFps(self):
-        """导播台主监输出的帧率。 
+        r"""导播台主监输出的帧率。 
 默认为0，表示随源输出。 最大支持60。
         :rtype: int
         """
@@ -29907,7 +29905,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def PgmBitRate(self):
-        """导播台主监输出的码率，单位为kbps。 
+        r"""导播台主监输出的码率，单位为kbps。 
 默认为0，表示随源的码率输出。 
 最大允许10000kbps。
         :rtype: int
@@ -29920,7 +29918,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def FeeType(self):
-        """导播台的计费类型。 
+        r"""导播台的计费类型。 
 0 通用型 
 1 播单型。 
 注： 本参数暂无作用。
@@ -29934,7 +29932,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def RecordTaskId(self):
-        """录制接口返回的taskid
+        r"""录制接口返回的taskid
 注：该接口只做字段保存，不涉及录制操作。
         :rtype: str
         """
@@ -29946,7 +29944,7 @@ class ModifyCasterRequest(AbstractModel):
 
     @property
     def PgmAudioBitRate(self):
-        """导播台主监输出的音频码率，单位为kbps。 
+        r"""导播台主监输出的音频码率，单位为kbps。 
 可选项：[0, 128, 192, 256] 
 默认值为0，表示随源的音频码率输出。
         :rtype: int
@@ -29985,7 +29983,7 @@ class ModifyCasterRequest(AbstractModel):
 
 
 class ModifyCasterResponse(AbstractModel):
-    """ModifyCaster返回参数结构体
+    r"""ModifyCaster返回参数结构体
 
     """
 
@@ -29998,7 +29996,7 @@ class ModifyCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30013,7 +30011,7 @@ class ModifyCasterResponse(AbstractModel):
 
 
 class ModifyLiveCallbackTemplateRequest(AbstractModel):
-    """ModifyLiveCallbackTemplate请求参数结构体
+    r"""ModifyLiveCallbackTemplate请求参数结构体
 
     """
 
@@ -30066,7 +30064,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """DescribeLiveCallbackTemplates接口返回的模板 ID。
+        r"""DescribeLiveCallbackTemplates接口返回的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -30077,7 +30075,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -30088,7 +30086,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -30099,7 +30097,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamBeginNotifyUrl(self):
-        """开播回调 URL。
+        r"""开播回调 URL。
         :rtype: str
         """
         return self._StreamBeginNotifyUrl
@@ -30110,7 +30108,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamEndNotifyUrl(self):
-        """断流回调 URL。
+        r"""断流回调 URL。
         :rtype: str
         """
         return self._StreamEndNotifyUrl
@@ -30121,7 +30119,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordNotifyUrl(self):
-        """录制文件回调 URL。
+        r"""录制文件回调 URL。
         :rtype: str
         """
         return self._RecordNotifyUrl
@@ -30132,7 +30130,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordStatusNotifyUrl(self):
-        """录制状态回调 URL 。
+        r"""录制状态回调 URL 。
         :rtype: str
         """
         return self._RecordStatusNotifyUrl
@@ -30143,7 +30141,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def SnapshotNotifyUrl(self):
-        """截图回调 URL。
+        r"""截图回调 URL。
         :rtype: str
         """
         return self._SnapshotNotifyUrl
@@ -30154,7 +30152,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PornCensorshipNotifyUrl(self):
-        """鉴黄回调 URL。
+        r"""鉴黄回调 URL。
         :rtype: str
         """
         return self._PornCensorshipNotifyUrl
@@ -30165,7 +30163,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+        r"""回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 [事件消息通知](/document/product/267/32744)。
         :rtype: str
         """
@@ -30177,7 +30175,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PushExceptionNotifyUrl(self):
-        """推流异常回调 URL。
+        r"""推流异常回调 URL。
         :rtype: str
         """
         return self._PushExceptionNotifyUrl
@@ -30188,7 +30186,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def AudioAuditNotifyUrl(self):
-        """音频审核回调 URL。
+        r"""音频审核回调 URL。
         :rtype: str
         """
         return self._AudioAuditNotifyUrl
@@ -30199,7 +30197,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordExceptionNotifyUrl(self):
-        """录制异常回调 URL。	
+        r"""录制异常回调 URL。	
         :rtype: str
         """
         return self._RecordExceptionNotifyUrl
@@ -30210,7 +30208,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordExceptionLevels(self):
-        """录制异常回调级别，可选择：error、warning、info。
+        r"""录制异常回调级别，可选择：error、warning、info。
         :rtype: list of str
         """
         return self._RecordExceptionLevels
@@ -30246,7 +30244,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
 
 class ModifyLiveCallbackTemplateResponse(AbstractModel):
-    """ModifyLiveCallbackTemplate返回参数结构体
+    r"""ModifyLiveCallbackTemplate返回参数结构体
 
     """
 
@@ -30259,7 +30257,7 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30274,7 +30272,7 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
 
 class ModifyLiveDomainCertBindingsRequest(AbstractModel):
-    """ModifyLiveDomainCertBindings请求参数结构体
+    r"""ModifyLiveDomainCertBindings请求参数结构体
 
     """
 
@@ -30303,7 +30301,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def DomainInfos(self):
-        """要绑定证书的播放域名/状态 信息列表。
+        r"""要绑定证书的播放域名/状态 信息列表。
 如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
         :rtype: list of LiveCertDomainInfo
         """
@@ -30315,7 +30313,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CloudCertId(self):
-        """腾讯云ssl的证书Id。
+        r"""腾讯云ssl的证书Id。
 见 https://cloud.tencent.com/document/api/400/41665
         :rtype: str
         """
@@ -30327,7 +30325,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CertificatePublicKey(self):
-        """证书公钥。
+        r"""证书公钥。
 CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
         :rtype: str
         """
@@ -30339,7 +30337,7 @@ CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私�
 
     @property
     def CertificatePrivateKey(self):
-        """证书私钥。
+        r"""证书私钥。
 CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
         :rtype: str
         """
@@ -30351,7 +30349,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
     @property
     def CertificateAlias(self):
-        """上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+        r"""上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
         :rtype: str
         """
         return self._CertificateAlias
@@ -30383,7 +30381,7 @@ CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和�
 
 
 class ModifyLiveDomainCertBindingsResponse(AbstractModel):
-    """ModifyLiveDomainCertBindings返回参数结构体
+    r"""ModifyLiveDomainCertBindings返回参数结构体
 
     """
 
@@ -30402,7 +30400,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def MismatchedDomainNames(self):
-        """DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
+        r"""DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
         :rtype: list of str
         """
         return self._MismatchedDomainNames
@@ -30413,7 +30411,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def Errors(self):
-        """操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
+        r"""操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
         :rtype: list of BatchDomainOperateErrors
         """
         return self._Errors
@@ -30424,7 +30422,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30446,7 +30444,7 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
 
 class ModifyLiveDomainRefererRequest(AbstractModel):
-    """ModifyLiveDomainReferer请求参数结构体
+    r"""ModifyLiveDomainReferer请求参数结构体
 
     """
 
@@ -30471,7 +30469,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -30482,7 +30480,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否开启当前域名的 Referer 黑白名单鉴权。
+        r"""是否开启当前域名的 Referer 黑白名单鉴权。
         :rtype: int
         """
         return self._Enable
@@ -30493,7 +30491,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Type(self):
-        """名单类型，0：黑名单，1：白名单。
+        r"""名单类型，0：黑名单，1：白名单。
         :rtype: int
         """
         return self._Type
@@ -30504,7 +30502,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def AllowEmpty(self):
-        """是否允许空 Referer，0：不允许，1：允许。
+        r"""是否允许空 Referer，0：不允许，1：允许。
         :rtype: int
         """
         return self._AllowEmpty
@@ -30515,7 +30513,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """Referer 名单列表，以;分隔。
+        r"""Referer 名单列表，以;分隔。
         :rtype: str
         """
         return self._Rules
@@ -30542,7 +30540,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
 
 class ModifyLiveDomainRefererResponse(AbstractModel):
-    """ModifyLiveDomainReferer返回参数结构体
+    r"""ModifyLiveDomainReferer返回参数结构体
 
     """
 
@@ -30555,7 +30553,7 @@ class ModifyLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30570,7 +30568,7 @@ class ModifyLiveDomainRefererResponse(AbstractModel):
 
 
 class ModifyLivePadTemplateRequest(AbstractModel):
-    """ModifyLivePadTemplate请求参数结构体
+    r"""ModifyLivePadTemplate请求参数结构体
 
     """
 
@@ -30609,7 +30607,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id。
+        r"""模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -30620,7 +30618,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Url(self):
-        """垫片内容。
+        r"""垫片内容。
         :rtype: str
         """
         return self._Url
@@ -30631,7 +30629,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def WaitDuration(self):
-        """断流等待时间。
+        r"""断流等待时间。
 取值范围：0-30000。
 单位：ms。
         :rtype: int
@@ -30644,7 +30642,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def MaxDuration(self):
-        """最大垫片时长。
+        r"""最大垫片时长。
 取值范围：0 - 正无穷。
 单位：ms。
         :rtype: int
@@ -30657,7 +30655,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -30670,7 +30668,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -30683,7 +30681,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        """垫片内容类型： 1：图片，2：视频。 默认值：1。
+        r"""垫片内容类型： 1：图片，2：视频。 默认值：1。
         :rtype: int
         """
         return self._Type
@@ -30712,7 +30710,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
 
 class ModifyLivePadTemplateResponse(AbstractModel):
-    """ModifyLivePadTemplate返回参数结构体
+    r"""ModifyLivePadTemplate返回参数结构体
 
     """
 
@@ -30725,7 +30723,7 @@ class ModifyLivePadTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30740,7 +30738,7 @@ class ModifyLivePadTemplateResponse(AbstractModel):
 
 
 class ModifyLivePlayAuthKeyRequest(AbstractModel):
-    """ModifyLivePlayAuthKey请求参数结构体
+    r"""ModifyLivePlayAuthKey请求参数结构体
 
     """
 
@@ -30769,7 +30767,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -30780,7 +30778,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，0：关闭，1：启用。
+        r"""是否启用，0：关闭，1：启用。
 不传表示不修改当前值。
         :rtype: int
         """
@@ -30792,7 +30790,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def AuthKey(self):
-        """鉴权key。
+        r"""鉴权key。
 不传表示不修改当前值。
         :rtype: str
         """
@@ -30804,7 +30802,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def AuthDelta(self):
-        """有效时间，单位：秒。
+        r"""有效时间，单位：秒。
 不传表示不修改当前值。
         :rtype: int
         """
@@ -30816,7 +30814,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def AuthBackKey(self):
-        """鉴权备用key。
+        r"""鉴权备用key。
 不传表示不修改当前值。
         :rtype: str
         """
@@ -30844,7 +30842,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
 
 class ModifyLivePlayAuthKeyResponse(AbstractModel):
-    """ModifyLivePlayAuthKey返回参数结构体
+    r"""ModifyLivePlayAuthKey返回参数结构体
 
     """
 
@@ -30857,7 +30855,7 @@ class ModifyLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30872,7 +30870,7 @@ class ModifyLivePlayAuthKeyResponse(AbstractModel):
 
 
 class ModifyLivePlayDomainRequest(AbstractModel):
-    """ModifyLivePlayDomain请求参数结构体
+    r"""ModifyLivePlayDomain请求参数结构体
 
     """
 
@@ -30888,7 +30886,7 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -30899,7 +30897,7 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     @property
     def PlayType(self):
-        """拉流域名类型。1-国内；2-全球；3-境外
+        r"""拉流域名类型。1-国内；2-全球；3-境外
         :rtype: int
         """
         return self._PlayType
@@ -30923,7 +30921,7 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
 
 class ModifyLivePlayDomainResponse(AbstractModel):
-    """ModifyLivePlayDomain返回参数结构体
+    r"""ModifyLivePlayDomain返回参数结构体
 
     """
 
@@ -30936,7 +30934,7 @@ class ModifyLivePlayDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30951,7 +30949,7 @@ class ModifyLivePlayDomainResponse(AbstractModel):
 
 
 class ModifyLivePullStreamTaskRequest(AbstractModel):
-    """ModifyLivePullStreamTask请求参数结构体
+    r"""ModifyLivePullStreamTask请求参数结构体
 
     """
 
@@ -31076,7 +31074,7 @@ PullVodPushLive -点播。
 
     @property
     def TaskId(self):
-        """任务Id。
+        r"""任务Id。
         :rtype: str
         """
         return self._TaskId
@@ -31087,7 +31085,7 @@ PullVodPushLive -点播。
 
     @property
     def Operator(self):
-        """操作人姓名。
+        r"""操作人姓名。
         :rtype: str
         """
         return self._Operator
@@ -31098,7 +31096,7 @@ PullVodPushLive -点播。
 
     @property
     def SourceUrls(self):
-        """拉流源url列表。
+        r"""拉流源url列表。
 SourceType为直播（PullLivePushLive）只可以填1个，
 SourceType为点播（PullVodPushLive）可以填多个，上限30个。
         :rtype: list of str
@@ -31111,7 +31109,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
@@ -31125,7 +31123,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def EndTime(self):
-        """结束时间，注意：
+        r"""结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于30天。
@@ -31142,7 +31140,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def VodLoopTimes(self):
-        """点播拉流转推循环次数。
+        r"""点播拉流转推循环次数。
 -1：无限循环，直到任务结束。
 0：不循环。
 >0：具体循环次数。次数和时间以先结束的为准。
@@ -31157,7 +31155,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
 
     @property
     def VodRefreshType(self):
-        """点播更新SourceUrls后的播放方式：
+        r"""点播更新SourceUrls后的播放方式：
 ImmediateNewSource：立即从更新的拉流源开始播放；
 ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
 注意：拉流源为点播，该配置生效。
@@ -31171,7 +31169,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def Status(self):
-        """任务状态：
+        r"""任务状态：
 enable - 启用，
 pause - 暂停。
         :rtype: str
@@ -31184,7 +31182,7 @@ pause - 暂停。
 
     @property
     def CallbackEvents(self):
-        """选择需要回调的事件（不填则回调全部）：
+        r"""选择需要回调的事件（不填则回调全部）：
 TaskStart：任务启动回调，
 TaskExit：任务停止回调，
 VodSourceFileStart：从点播源文件开始拉流回调，
@@ -31200,7 +31198,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def CallbackUrl(self):
-        """自定义回调地址。
+        r"""自定义回调地址。
 相关事件会回调到该地址。
         :rtype: str
         """
@@ -31212,7 +31210,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def FileIndex(self):
-        """指定播放文件索引。
+        r"""指定播放文件索引。
 注意： 从1开始，不大于SourceUrls中文件个数。
         :rtype: int
         """
@@ -31224,7 +31222,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def OffsetTime(self):
-        """指定播放文件偏移。
+        r"""指定播放文件偏移。
 注意：
 1. 单位：秒，配合FileIndex使用。
         :rtype: int
@@ -31237,7 +31235,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def SpecifyTaskId(self):
-        """指定任务 ID 修改任务。
+        r"""指定任务 ID 修改任务。
 
 注意：该自定义任务 ID 只有在创建任务时指定了，才可在此处修改时使用。否则请使用系统返回的任务 ID。
         :rtype: str
@@ -31250,7 +31248,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def ToUrl(self):
-        """目标 Url。
+        r"""目标 Url。
 换目标地址，会断流重推到新地址。
         :rtype: str
         """
@@ -31262,7 +31260,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def Comment(self):
-        """任务备注。
+        r"""任务备注。
         :rtype: str
         """
         return self._Comment
@@ -31273,7 +31271,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def BackupSourceType(self):
-        """备源的类型：
+        r"""备源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
 注意：
@@ -31291,7 +31289,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupSourceUrl(self):
-        """备源 URL。
+        r"""备源 URL。
 只允许填一个备源 URL
         :rtype: str
         """
@@ -31303,7 +31301,7 @@ PullVodPushLive -点播。
 
     @property
     def WatermarkList(self):
-        """水印信息列表。
+        r"""水印信息列表。
 注意：
 1. 最多支持4个不同位置的水印。
 2. 水印图片 URL 请使用合法外网可访问地址。
@@ -31322,7 +31320,7 @@ PullVodPushLive -点播。
 
     @property
     def VodLocalMode(self):
-        """点播源是否启用本地推流模式，默认0，不启用。
+        r"""点播源是否启用本地推流模式，默认0，不启用。
 0 - 不启用。
 1 - 启用。
 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
@@ -31336,7 +31334,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupToUrl(self):
-        """新的目标地址。传空值，则取消该地址的推流。
+        r"""新的目标地址。传空值，则取消该地址的推流。
 传入新值，则替换原有地址。
         :rtype: str
         """
@@ -31348,7 +31346,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupVodUrl(self):
-        """点播垫片文件地址。注意：用于在主源拉不到时自动兜底到垫片文件，切到垫片文件后，每次播完垫片会尝试拉主源，如果主源恢复则自动切回主源。可根据需要的轮询检查时长来传入对应时长的垫片文件。
+        r"""点播垫片文件地址。注意：用于在主源拉不到时自动兜底到垫片文件，切到垫片文件后，每次播完垫片会尝试拉主源，如果主源恢复则自动切回主源。可根据需要的轮询检查时长来传入对应时长的垫片文件。
         :rtype: str
         """
         return self._BackupVodUrl
@@ -31396,7 +31394,7 @@ PullVodPushLive -点播。
 
 
 class ModifyLivePullStreamTaskResponse(AbstractModel):
-    """ModifyLivePullStreamTask返回参数结构体
+    r"""ModifyLivePullStreamTask返回参数结构体
 
     """
 
@@ -31409,7 +31407,7 @@ class ModifyLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31424,7 +31422,7 @@ class ModifyLivePullStreamTaskResponse(AbstractModel):
 
 
 class ModifyLivePushAuthKeyRequest(AbstractModel):
-    """ModifyLivePushAuthKey请求参数结构体
+    r"""ModifyLivePushAuthKey请求参数结构体
 
     """
 
@@ -31452,7 +31450,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -31463,7 +31461,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，0：关闭，1：启用。
+        r"""是否启用，0：关闭，1：启用。
 不传表示不修改当前值。
         :rtype: int
         """
@@ -31475,7 +31473,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def MasterAuthKey(self):
-        """主鉴权key。
+        r"""主鉴权key。
 不传表示不修改当前值。
         :rtype: str
         """
@@ -31487,7 +31485,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def BackupAuthKey(self):
-        """备鉴权key。
+        r"""备鉴权key。
 不传表示不修改当前值。
         :rtype: str
         """
@@ -31499,7 +31497,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def AuthDelta(self):
-        """有效时间，单位：秒。
+        r"""有效时间，单位：秒。
         :rtype: int
         """
         return self._AuthDelta
@@ -31526,7 +31524,7 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
 
 class ModifyLivePushAuthKeyResponse(AbstractModel):
-    """ModifyLivePushAuthKey返回参数结构体
+    r"""ModifyLivePushAuthKey返回参数结构体
 
     """
 
@@ -31539,7 +31537,7 @@ class ModifyLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31554,7 +31552,7 @@ class ModifyLivePushAuthKeyResponse(AbstractModel):
 
 
 class ModifyLiveRecordTemplateRequest(AbstractModel):
-    """ModifyLiveRecordTemplate请求参数结构体
+    r"""ModifyLiveRecordTemplate请求参数结构体
 
     """
 
@@ -31597,7 +31595,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """DescribeRecordTemplates接口获取到的模板 ID。
+        r"""DescribeRecordTemplates接口获取到的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -31608,7 +31606,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -31619,7 +31617,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -31630,7 +31628,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvParam(self):
-        """FLV 录制参数，开启 FLV 录制时设置。
+        r"""FLV 录制参数，开启 FLV 录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._FlvParam
@@ -31641,7 +31639,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsParam(self):
-        """HLS 录制参数，开启 HLS 录制时设置。
+        r"""HLS 录制参数，开启 HLS 录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._HlsParam
@@ -31652,7 +31650,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp4Param(self):
-        """MP4 录制参数，开启 MP4 录制时设置。
+        r"""MP4 录制参数，开启 MP4 录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp4Param
@@ -31663,7 +31661,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def AacParam(self):
-        """AAC 录制参数，开启 AAC 录制时设置。
+        r"""AAC 录制参数，开启 AAC 录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._AacParam
@@ -31674,7 +31672,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
-        """HLS 录制定制参数。
+        r"""HLS 录制定制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         return self._HlsSpecialParam
@@ -31685,7 +31683,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp3Param(self):
-        """MP3 录制参数，开启 MP3 录制时设置。
+        r"""MP3 录制参数，开启 MP3 录制时设置。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp3Param
@@ -31696,7 +31694,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印，类型为慢直播时此参数无效。
+        r"""是否去除水印，类型为慢直播时此参数无效。
         :rtype: bool
         """
         return self._RemoveWatermark
@@ -31707,7 +31705,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
-        """FLV 录制定制参数。
+        r"""FLV 录制定制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         return self._FlvSpecialParam
@@ -31754,7 +31752,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
 
 class ModifyLiveRecordTemplateResponse(AbstractModel):
-    """ModifyLiveRecordTemplate返回参数结构体
+    r"""ModifyLiveRecordTemplate返回参数结构体
 
     """
 
@@ -31767,7 +31765,7 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31782,7 +31780,7 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
 
 
 class ModifyLiveSnapshotTemplateRequest(AbstractModel):
-    """ModifyLiveSnapshotTemplate请求参数结构体
+    r"""ModifyLiveSnapshotTemplate请求参数结构体
 
     """
 
@@ -31837,7 +31835,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -31848,7 +31846,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosAppId(self):
-        """Cos 应用 ID。
+        r"""Cos 应用 ID。
 **注：此参数现在须必选。**
         :rtype: int
         """
@@ -31860,7 +31858,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosBucket(self):
-        """Cos Bucket名称。
+        r"""Cos Bucket名称。
 注：CosBucket参数值不能包含-[appid] 部分。
 **注：此参数现在须必选。**
         :rtype: str
@@ -31873,7 +31871,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosRegion(self):
-        """Cos 地域。
+        r"""Cos 地域。
 **注：此参数现在须必选。**
         :rtype: str
         """
@@ -31885,7 +31883,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 长度上限：255字节。
         :rtype: str
         """
@@ -31897,7 +31895,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
         :rtype: str
         """
@@ -31909,7 +31907,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        """截图间隔，单位s，默认10s。
+        r"""截图间隔，单位s，默认10s。
 范围： 5s ~ 300s。
         :rtype: int
         """
@@ -31921,7 +31919,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """截图宽度。默认：0（原始宽）。
+        r"""截图宽度。默认：0（原始宽）。
         :rtype: int
         """
         return self._Width
@@ -31932,7 +31930,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """截图高度。默认：0（原始高）。
+        r"""截图高度。默认：0（原始高）。
         :rtype: int
         """
         return self._Height
@@ -31943,7 +31941,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def PornFlag(self):
-        """是否开启鉴黄，默认 0 。
+        r"""是否开启鉴黄，默认 0 。
 0：不开启。
 1：开启。
         :rtype: int
@@ -31956,7 +31954,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosPrefix(self):
-        """Cos Bucket文件夹前缀。
+        r"""Cos Bucket文件夹前缀。
         :rtype: str
         """
         return self._CosPrefix
@@ -31967,7 +31965,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosFileName(self):
-        """Cos 文件名称。
+        r"""Cos 文件名称。
         :rtype: str
         """
         return self._CosFileName
@@ -32001,7 +31999,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
 
 class ModifyLiveSnapshotTemplateResponse(AbstractModel):
-    """ModifyLiveSnapshotTemplate返回参数结构体
+    r"""ModifyLiveSnapshotTemplate返回参数结构体
 
     """
 
@@ -32014,7 +32012,7 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32029,7 +32027,7 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
 
 
 class ModifyLiveStreamMonitorRequest(AbstractModel):
-    """ModifyLiveStreamMonitor请求参数结构体
+    r"""ModifyLiveStreamMonitor请求参数结构体
 
     """
 
@@ -32083,7 +32081,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播任务ID。
+        r"""监播任务ID。
         :rtype: str
         """
         return self._MonitorId
@@ -32094,7 +32092,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorName(self):
-        """监播任务的名称。长度128字节以内（一个汉字两个字节）。
+        r"""监播任务的名称。长度128字节以内（一个汉字两个字节）。
         :rtype: str
         """
         return self._MonitorName
@@ -32105,7 +32103,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def OutputInfo(self):
-        """监播任务输出信息。
+        r"""监播任务输出信息。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
         """
         return self._OutputInfo
@@ -32116,7 +32114,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def InputList(self):
-        """待监播的输入流信息。
+        r"""待监播的输入流信息。
         :rtype: list of LiveStreamMonitorInputInfo
         """
         return self._InputList
@@ -32127,7 +32125,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def NotifyPolicy(self):
-        """监播事件通知策略。
+        r"""监播事件通知策略。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
         """
         return self._NotifyPolicy
@@ -32138,7 +32136,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AsrLanguage(self):
-        """智能语音识别语种：
+        r"""智能语音识别语种：
 0 关闭 1 中文 2 英文 3 日文 4 韩文。
         :rtype: int
         """
@@ -32150,7 +32148,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def OcrLanguage(self):
-        """智能文字识别语种：
+        r"""智能文字识别语种：
 0 关闭 1 中、英文。
         :rtype: int
         """
@@ -32162,7 +32160,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiAsrInputIndexList(self):
-        """语音识别输入流列表，1代表第一条输入流。
+        r"""语音识别输入流列表，1代表第一条输入流。
         :rtype: list of int non-negative
         """
         return self._AiAsrInputIndexList
@@ -32173,7 +32171,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiOcrInputIndexList(self):
-        """文字识别输入流列表，1代表第一条输入流。
+        r"""文字识别输入流列表，1代表第一条输入流。
         :rtype: list of int non-negative
         """
         return self._AiOcrInputIndexList
@@ -32184,7 +32182,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def CheckStreamBroken(self):
-        """是否开启断流检测。
+        r"""是否开启断流检测。
         :rtype: int
         """
         return self._CheckStreamBroken
@@ -32195,7 +32193,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def CheckStreamLowFrameRate(self):
-        """是否开启低帧率检测。
+        r"""是否开启低帧率检测。
         :rtype: int
         """
         return self._CheckStreamLowFrameRate
@@ -32206,7 +32204,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AllowMonitorReport(self):
-        """是否存储监播事件到监播报告，以及是否允许查询监播报告。
+        r"""是否存储监播事件到监播报告，以及是否允许查询监播报告。
         :rtype: int
         """
         return self._AllowMonitorReport
@@ -32217,7 +32215,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiFormatDiagnose(self):
-        """是否开启格式诊断。
+        r"""是否开启格式诊断。
         :rtype: int
         """
         return self._AiFormatDiagnose
@@ -32228,7 +32226,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AiQualityControl(self):
-        """是否开启内容质检。
+        r"""是否开启内容质检。
         :rtype: int
         """
         return self._AiQualityControl
@@ -32273,7 +32271,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
 
 
 class ModifyLiveStreamMonitorResponse(AbstractModel):
-    """ModifyLiveStreamMonitor返回参数结构体
+    r"""ModifyLiveStreamMonitor返回参数结构体
 
     """
 
@@ -32286,7 +32284,7 @@ class ModifyLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32301,7 +32299,7 @@ class ModifyLiveStreamMonitorResponse(AbstractModel):
 
 
 class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
-    """ModifyLiveTimeShiftTemplate请求参数结构体
+    r"""ModifyLiveTimeShiftTemplate请求参数结构体
 
     """
 
@@ -32348,7 +32346,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TemplateId(self):
-        """时移模板id。
+        r"""时移模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -32359,7 +32357,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
 仅支持中文、英文、数字、_、-。
         :rtype: str
         """
@@ -32371,7 +32369,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
 长度上限：1024字节。
 仅支持中文、英文、数字、_、-。
         :rtype: str
@@ -32384,7 +32382,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Duration(self):
-        """时移时长。
+        r"""时移时长。
 单位：s。
         :rtype: int
         """
@@ -32396,7 +32394,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def ItemDuration(self):
-        """分片时长。
+        r"""分片时长。
 可取3-10。
 单位：s。
 默认值：5。
@@ -32410,7 +32408,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印。
+        r"""是否去除水印。
 传true则将录制原始流。
 默认值：false。
         :rtype: bool
@@ -32423,7 +32421,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def TranscodeTemplateIds(self):
-        """转码流id列表。
+        r"""转码流id列表。
 此参数仅在 RemoveWatermark为false时生效。
         :rtype: list of int
         """
@@ -32435,7 +32433,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Area(self):
-        """地域。
+        r"""地域。
 Mainland：中国大陆。
 Overseas：海外及港澳台地区。
 默认值：Mainland。
@@ -32468,7 +32466,7 @@ Overseas：海外及港澳台地区。
 
 
 class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
-    """ModifyLiveTimeShiftTemplate返回参数结构体
+    r"""ModifyLiveTimeShiftTemplate返回参数结构体
 
     """
 
@@ -32481,7 +32479,7 @@ class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32496,7 +32494,7 @@ class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
 
 
 class ModifyLiveTranscodeTemplateRequest(AbstractModel):
-    """ModifyLiveTranscodeTemplate请求参数结构体
+    r"""ModifyLiveTranscodeTemplate请求参数结构体
 
     """
 
@@ -32600,7 +32598,7 @@ baseline/main/high。
 
     @property
     def TemplateId(self):
-        """模板 Id。
+        r"""模板 Id。
         :rtype: int
         """
         return self._TemplateId
@@ -32611,7 +32609,7 @@ baseline/main/high。
 
     @property
     def Vcodec(self):
-        """视频编码：h264/h265/origin，默认origin。
+        r"""视频编码：h264/h265/origin，默认origin。
 
 origin: 保持原始编码格式
         :rtype: str
@@ -32624,7 +32622,7 @@ origin: 保持原始编码格式
 
     @property
     def Acodec(self):
-        """音频编码：aac，默认aac。
+        r"""音频编码：aac，默认aac。
 注意：当前该参数未生效，待后续支持！
         :rtype: str
         """
@@ -32636,7 +32634,7 @@ origin: 保持原始编码格式
 
     @property
     def AudioBitrate(self):
-        """音频码率，默认0。
+        r"""音频码率，默认0。
 范围：0-500。
         :rtype: int
         """
@@ -32648,7 +32646,7 @@ origin: 保持原始编码格式
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -32659,7 +32657,7 @@ origin: 保持原始编码格式
 
     @property
     def VideoBitrate(self):
-        """视频码率。范围：0kbps - 8000kbps。
+        r"""视频码率。范围：0kbps - 8000kbps。
 0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :rtype: int
@@ -32672,7 +32670,7 @@ origin: 保持原始编码格式
 
     @property
     def Width(self):
-        """宽。0-3000。
+        r"""宽。0-3000。
 数值必须是2的倍数，0是原始宽度
         :rtype: int
         """
@@ -32684,7 +32682,7 @@ origin: 保持原始编码格式
 
     @property
     def NeedVideo(self):
-        """是否保留视频，0：否，1：是。默认1。
+        r"""是否保留视频，0：否，1：是。默认1。
         :rtype: int
         """
         return self._NeedVideo
@@ -32695,7 +32693,7 @@ origin: 保持原始编码格式
 
     @property
     def NeedAudio(self):
-        """是否保留音频，0：否，1：是。默认1。
+        r"""是否保留音频，0：否，1：是。默认1。
         :rtype: int
         """
         return self._NeedAudio
@@ -32706,7 +32704,7 @@ origin: 保持原始编码格式
 
     @property
     def Height(self):
-        """高。0-3000。
+        r"""高。0-3000。
 数值必须是2的倍数，0是原始宽度
         :rtype: int
         """
@@ -32718,7 +32716,7 @@ origin: 保持原始编码格式
 
     @property
     def Fps(self):
-        """帧率，默认0。
+        r"""帧率，默认0。
 范围0-60
         :rtype: int
         """
@@ -32730,7 +32728,7 @@ origin: 保持原始编码格式
 
     @property
     def Gop(self):
-        """关键帧间隔，单位：秒。
+        r"""关键帧间隔，单位：秒。
 范围2-6
         :rtype: int
         """
@@ -32742,7 +32740,7 @@ origin: 保持原始编码格式
 
     @property
     def Rotate(self):
-        """旋转角度，默认0。
+        r"""旋转角度，默认0。
 可取值：0，90，180，270
         :rtype: int
         """
@@ -32754,7 +32752,7 @@ origin: 保持原始编码格式
 
     @property
     def Profile(self):
-        """编码质量：
+        r"""编码质量：
 baseline/main/high。
         :rtype: str
         """
@@ -32766,7 +32764,7 @@ baseline/main/high。
 
     @property
     def BitrateToOrig(self):
-        """当设置的码率>原始码率时，是否以原始码率为准。
+        r"""当设置的码率>原始码率时，是否以原始码率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -32779,7 +32777,7 @@ baseline/main/high。
 
     @property
     def HeightToOrig(self):
-        """当设置的高度>原始高度时，是否以原始高度为准。
+        r"""当设置的高度>原始高度时，是否以原始高度为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -32792,7 +32790,7 @@ baseline/main/high。
 
     @property
     def FpsToOrig(self):
-        """当设置的帧率>原始帧率时，是否以原始帧率为准。
+        r"""当设置的帧率>原始帧率时，是否以原始帧率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -32805,7 +32803,7 @@ baseline/main/high。
 
     @property
     def AdaptBitratePercent(self):
-        """极速高清视频码率压缩比。
+        r"""极速高清视频码率压缩比。
 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
 
 取值范围：0.0到0.5
@@ -32819,7 +32817,7 @@ baseline/main/high。
 
     @property
     def ShortEdgeAsHeight(self):
-        """是否以短边作为高度，0：否，1：是。默认0。
+        r"""是否以短边作为高度，0：否，1：是。默认0。
         :rtype: int
         """
         return self._ShortEdgeAsHeight
@@ -32830,7 +32828,7 @@ baseline/main/high。
 
     @property
     def DRMType(self):
-        """DRM 加密类型，可选值：fairplay、normalaes、widevine。
+        r"""DRM 加密类型，可选值：fairplay、normalaes、widevine。
 不传递或者为空字符串，清空之前的DRM配置。
         :rtype: str
         """
@@ -32842,7 +32840,7 @@ baseline/main/high。
 
     @property
     def DRMTracks(self):
-        """DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+        r"""DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 不传递或者为空字符串，清空之前的DRM配置。
         :rtype: str
         """
@@ -32854,7 +32852,7 @@ baseline/main/high。
 
     @property
     def IsAdaptiveBitRate(self):
-        """是否创建自适应码率，默认值 0。
+        r"""是否创建自适应码率，默认值 0。
 0：否。
 1：是。
         :rtype: int
@@ -32867,7 +32865,7 @@ baseline/main/high。
 
     @property
     def AdaptiveChildren(self):
-        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        r"""自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
         :rtype: list of ChildTemplateInfo
         """
         return self._AdaptiveChildren
@@ -32917,7 +32915,7 @@ baseline/main/high。
 
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):
-    """ModifyLiveTranscodeTemplate返回参数结构体
+    r"""ModifyLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -32930,7 +32928,7 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32945,7 +32943,7 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
 
 class ModifyPullStreamConfigRequest(AbstractModel):
-    """ModifyPullStreamConfig请求参数结构体
+    r"""ModifyPullStreamConfig请求参数结构体
 
     """
 
@@ -33006,7 +33004,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def ConfigId(self):
-        """配置 ID。
+        r"""配置 ID。
 获取来源：
 1. 创建拉流配置接口CreatePullStreamConfig返回的配置 ID。
 2. 通过查询接口DescribePullStreamConfigs获取配置 ID。
@@ -33020,7 +33018,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def FromUrl(self):
-        """源 URL，用于拉流的地址。目前可支持直播流及点播文件。
+        r"""源 URL，用于拉流的地址。目前可支持直播流及点播文件。
 注意：
 1. 多个点播 URL 之间使用空格拼接。
 2. 目前上限支持10个 URL。
@@ -33036,7 +33034,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def ToUrl(self):
-        """目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。
+        r"""目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。
 1. 仅支持 RTMP 协议。
 2. 使用标准三层样式，如：http://test.com/live/stream.flv。
         :rtype: str
@@ -33049,7 +33047,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def AreaId(self):
-        """区域 ID：
+        r"""区域 ID：
 1-深圳。
 2-上海。
 3-天津。
@@ -33065,7 +33063,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def IspId(self):
-        """运营商 ID，
+        r"""运营商 ID，
 1：电信。
 2：移动。
 3：联通。
@@ -33081,7 +33079,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -33095,7 +33093,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def EndTime(self):
-        """结束时间，注意：
+        r"""结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于七天。
@@ -33131,7 +33129,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
 
 class ModifyPullStreamConfigResponse(AbstractModel):
-    """ModifyPullStreamConfig返回参数结构体
+    r"""ModifyPullStreamConfig返回参数结构体
 
     """
 
@@ -33144,7 +33142,7 @@ class ModifyPullStreamConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -33159,7 +33157,7 @@ class ModifyPullStreamConfigResponse(AbstractModel):
 
 
 class ModifyPullStreamStatusRequest(AbstractModel):
-    """ModifyPullStreamStatus请求参数结构体
+    r"""ModifyPullStreamStatus请求参数结构体
 
     """
 
@@ -33175,7 +33173,7 @@ class ModifyPullStreamStatusRequest(AbstractModel):
 
     @property
     def ConfigIds(self):
-        """配置 ID 列表。
+        r"""配置 ID 列表。
         :rtype: list of str
         """
         return self._ConfigIds
@@ -33186,7 +33184,7 @@ class ModifyPullStreamStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """目标状态。0无效，2正在运行，4暂停。
+        r"""目标状态。0无效，2正在运行，4暂停。
         :rtype: str
         """
         return self._Status
@@ -33210,7 +33208,7 @@ class ModifyPullStreamStatusRequest(AbstractModel):
 
 
 class ModifyPullStreamStatusResponse(AbstractModel):
-    """ModifyPullStreamStatus返回参数结构体
+    r"""ModifyPullStreamStatus返回参数结构体
 
     """
 
@@ -33223,7 +33221,7 @@ class ModifyPullStreamStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -33238,7 +33236,7 @@ class ModifyPullStreamStatusResponse(AbstractModel):
 
 
 class MonitorStreamPlayInfo(AbstractModel):
-    """监控播放数据
+    r"""监控播放数据
 
     """
 
@@ -33269,7 +33267,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def PlayDomain(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._PlayDomain
@@ -33280,7 +33278,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流id。
+        r"""流id。
         :rtype: str
         """
         return self._StreamName
@@ -33291,7 +33289,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Rate(self):
-        """播放码率，0表示原始码率。
+        r"""播放码率，0表示原始码率。
         :rtype: int
         """
         return self._Rate
@@ -33302,7 +33300,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """播放协议，可选值包括 Unknown，Flv，Hls，Rtmp，Huyap2p。
+        r"""播放协议，可选值包括 Unknown，Flv，Hls，Rtmp，Huyap2p。
         :rtype: str
         """
         return self._Protocol
@@ -33313,7 +33311,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位是Mbps。
+        r"""带宽，单位是Mbps。
         :rtype: float
         """
         return self._Bandwidth
@@ -33324,7 +33322,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Online(self):
-        """在线人数，1分钟采样一个点，统计采样点的tcp链接数目。
+        r"""在线人数，1分钟采样一个点，统计采样点的tcp链接数目。
         :rtype: int
         """
         return self._Online
@@ -33335,7 +33333,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Request(self):
-        """请求数。
+        r"""请求数。
         :rtype: int
         """
         return self._Request
@@ -33364,7 +33362,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
 
 class PadStreamInfo(AbstractModel):
-    """查询当前垫片流的信息
+    r"""查询当前垫片流的信息
 
     """
 
@@ -33391,7 +33389,7 @@ class PadStreamInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -33402,7 +33400,7 @@ class PadStreamInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -33413,7 +33411,7 @@ class PadStreamInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -33424,7 +33422,7 @@ class PadStreamInfo(AbstractModel):
 
     @property
     def PadStreamType(self):
-        """垫片流类型。
+        r"""垫片流类型。
 0-自动垫片；
 1-手动切入垫片。
         :rtype: str
@@ -33437,7 +33435,7 @@ class PadStreamInfo(AbstractModel):
 
     @property
     def PublishTime(self):
-        """垫片流开始时间。UTC时间，示例：2025-04-10T00:01:00Z。注意：该时间与北京时间相差八小时。
+        r"""垫片流开始时间。UTC时间，示例：2025-04-10T00:01:00Z。注意：该时间与北京时间相差八小时。
         :rtype: str
         """
         return self._PublishTime
@@ -33464,7 +33462,7 @@ class PadStreamInfo(AbstractModel):
 
 
 class PadTemplate(AbstractModel):
-    """直播垫片模板。
+    r"""直播垫片模板。
 
     """
 
@@ -33505,7 +33503,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id。
+        r"""模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -33516,7 +33514,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -33527,7 +33525,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Url(self):
-        """垫片内容。
+        r"""垫片内容。
         :rtype: str
         """
         return self._Url
@@ -33538,7 +33536,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        """模板创建时间。
+        r"""模板创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -33549,7 +33547,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """模板修改时间。
+        r"""模板修改时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -33560,7 +33558,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -33571,7 +33569,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def WaitDuration(self):
-        """断流等待时间。
+        r"""断流等待时间。
 取值范围：0-30000。
 单位：ms。
         :rtype: int
@@ -33584,7 +33582,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def MaxDuration(self):
-        """最大垫片时长。
+        r"""最大垫片时长。
 取值范围：0 - 正无穷。
 单位：ms。
         :rtype: int
@@ -33597,7 +33595,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Type(self):
-        """垫片内容类型： 1：图片，2：视频。 默认值：1。
+        r"""垫片内容类型： 1：图片，2：视频。 默认值：1。
         :rtype: int
         """
         return self._Type
@@ -33628,7 +33626,7 @@ class PadTemplate(AbstractModel):
 
 
 class PlayAuthKeyInfo(AbstractModel):
-    """播放鉴权key信息。
+    r"""播放鉴权key信息。
 
     """
 
@@ -33655,7 +33653,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -33666,7 +33664,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用:
+        r"""是否启用:
 0: 关闭。
 1: 启用。
         :rtype: int
@@ -33679,7 +33677,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthKey(self):
-        """鉴权 Key。
+        r"""鉴权 Key。
         :rtype: str
         """
         return self._AuthKey
@@ -33690,7 +33688,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthDelta(self):
-        """有效时间，单位：秒。
+        r"""有效时间，单位：秒。
         :rtype: int
         """
         return self._AuthDelta
@@ -33701,7 +33699,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthBackKey(self):
-        """鉴权 BackKey。
+        r"""鉴权 BackKey。
         :rtype: str
         """
         return self._AuthBackKey
@@ -33728,7 +33726,7 @@ class PlayAuthKeyInfo(AbstractModel):
 
 
 class PlayCodeTotalInfo(AbstractModel):
-    """各状态码的总次数，支持大多数的 HTTP 协议返回码。
+    r"""各状态码的总次数，支持大多数的 HTTP 协议返回码。
 
     """
 
@@ -33745,7 +33743,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
     @property
     def Code(self):
-        """HTTP code，可选值包括:
+        r"""HTTP code，可选值包括:
 400，403，404，500，502，503，504。
         :rtype: str
         """
@@ -33757,7 +33755,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
     @property
     def Num(self):
-        """总次数。
+        r"""总次数。
         :rtype: int
         """
         return self._Num
@@ -33781,7 +33779,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
 
 class PlayDataInfoByStream(AbstractModel):
-    """流维度的播放信息。
+    r"""流维度的播放信息。
 
     """
 
@@ -33797,7 +33795,7 @@ class PlayDataInfoByStream(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -33808,7 +33806,7 @@ class PlayDataInfoByStream(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """总流量，单位: MB。
+        r"""总流量，单位: MB。
         :rtype: float
         """
         return self._TotalFlux
@@ -33832,7 +33830,7 @@ class PlayDataInfoByStream(AbstractModel):
 
 
 class PlayStatInfo(AbstractModel):
-    """按省份运营商查询的播放信息。
+    r"""按省份运营商查询的播放信息。
 
     """
 
@@ -33848,7 +33846,7 @@ class PlayStatInfo(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间点。
+        r"""数据时间点。
         :rtype: str
         """
         return self._Time
@@ -33859,7 +33857,7 @@ class PlayStatInfo(AbstractModel):
 
     @property
     def Value(self):
-        """带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
+        r"""带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
         :rtype: float
         """
         return self._Value
@@ -33883,7 +33881,7 @@ class PlayStatInfo(AbstractModel):
 
 
 class PlaySumStatInfo(AbstractModel):
-    """播放汇总统计信息。
+    r"""播放汇总统计信息。
 
     """
 
@@ -33907,7 +33905,7 @@ class PlaySumStatInfo(AbstractModel):
 
     @property
     def Name(self):
-        """域名或流 ID。
+        r"""域名或流 ID。
         :rtype: str
         """
         return self._Name
@@ -33918,7 +33916,7 @@ class PlaySumStatInfo(AbstractModel):
 
     @property
     def AvgFluxPerSecond(self):
-        """平均下载速度，
+        r"""平均下载速度，
 单位: MB/s。
 计算公式: 每分钟的下载速度求平均值。
         :rtype: float
@@ -33931,7 +33929,7 @@ class PlaySumStatInfo(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """总流量，单位: MB。
+        r"""总流量，单位: MB。
         :rtype: float
         """
         return self._TotalFlux
@@ -33942,7 +33940,7 @@ class PlaySumStatInfo(AbstractModel):
 
     @property
     def TotalRequest(self):
-        """总请求数。
+        r"""总请求数。
         :rtype: int
         """
         return self._TotalRequest
@@ -33968,7 +33966,7 @@ class PlaySumStatInfo(AbstractModel):
 
 
 class ProIspPlayCodeDataInfo(AbstractModel):
-    """播放错误码信息
+    r"""播放错误码信息
 
     """
 
@@ -33999,7 +33997,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def CountryAreaName(self):
-        """国家或地区。
+        r"""国家或地区。
         :rtype: str
         """
         return self._CountryAreaName
@@ -34010,7 +34008,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def ProvinceName(self):
-        """省份。
+        r"""省份。
         :rtype: str
         """
         return self._ProvinceName
@@ -34021,7 +34019,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def IspName(self):
-        """运营商。
+        r"""运营商。
         :rtype: str
         """
         return self._IspName
@@ -34032,7 +34030,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code2xx(self):
-        """错误码为2开头的次数。
+        r"""错误码为2开头的次数。
         :rtype: int
         """
         return self._Code2xx
@@ -34043,7 +34041,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code3xx(self):
-        """错误码为3开头的次数。
+        r"""错误码为3开头的次数。
         :rtype: int
         """
         return self._Code3xx
@@ -34054,7 +34052,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code4xx(self):
-        """错误码为4开头的次数。
+        r"""错误码为4开头的次数。
         :rtype: int
         """
         return self._Code4xx
@@ -34065,7 +34063,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code5xx(self):
-        """错误码为5开头的次数。
+        r"""错误码为5开头的次数。
         :rtype: int
         """
         return self._Code5xx
@@ -34094,7 +34092,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
 
 class ProIspPlaySumInfo(AbstractModel):
-    """获取省份/运营商的播放信息。
+    r"""获取省份/运营商的播放信息。
 
     """
 
@@ -34116,7 +34114,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
     @property
     def Name(self):
-        """省份/运营商/国家或地区。
+        r"""省份/运营商/国家或地区。
         :rtype: str
         """
         return self._Name
@@ -34127,7 +34125,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
     @property
     def TotalFlux(self):
-        """总流量，单位: MB。
+        r"""总流量，单位: MB。
         :rtype: float
         """
         return self._TotalFlux
@@ -34138,7 +34136,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
     @property
     def TotalRequest(self):
-        """总请求数。
+        r"""总请求数。
         :rtype: int
         """
         return self._TotalRequest
@@ -34149,7 +34147,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
     @property
     def AvgFluxPerSecond(self):
-        """平均下载流量，单位: MB/s。
+        r"""平均下载流量，单位: MB/s。
         :rtype: float
         """
         return self._AvgFluxPerSecond
@@ -34175,7 +34173,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
 
 class PublishTime(AbstractModel):
-    """推流时间。
+    r"""推流时间。
 
     """
 
@@ -34189,7 +34187,7 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
 
     @property
     def PublishTime(self):
-        """推流时间。
+        r"""推流时间。
 UTC 格式，例如：2018-06-29T19:00:00Z。
         :rtype: str
         """
@@ -34213,7 +34211,7 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
 
 
 class PullPushWatermarkInfo(AbstractModel):
-    """云转推水印信息。
+    r"""云转推水印信息。
 
     """
 
@@ -34247,7 +34245,7 @@ URL中禁止包含的字符：
 
     @property
     def PictureUrl(self):
-        """水印图片 URL。
+        r"""水印图片 URL。
 URL中禁止包含的字符：
 ;(){}$>`#"'|
         :rtype: str
@@ -34260,7 +34258,7 @@ URL中禁止包含的字符：
 
     @property
     def XPosition(self):
-        """显示位置，X轴偏移，单位是百分比，默认 0。
+        r"""显示位置，X轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._XPosition
@@ -34271,7 +34269,7 @@ URL中禁止包含的字符：
 
     @property
     def YPosition(self):
-        """显示位置，Y轴偏移，单位是百分比，默认 0。
+        r"""显示位置，Y轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._YPosition
@@ -34282,7 +34280,7 @@ URL中禁止包含的字符：
 
     @property
     def Width(self):
-        """水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        r"""水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :rtype: int
         """
         return self._Width
@@ -34293,7 +34291,7 @@ URL中禁止包含的字符：
 
     @property
     def Height(self):
-        """水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        r"""水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :rtype: int
         """
         return self._Height
@@ -34304,7 +34302,7 @@ URL中禁止包含的字符：
 
     @property
     def Location(self):
-        """水印位置，默认 0。
+        r"""水印位置，默认 0。
 0：左上角。
 1：右上角。
 2：右下角。
@@ -34336,7 +34334,7 @@ URL中禁止包含的字符：
 
 
 class PullStreamConfig(AbstractModel):
-    """拉流配置。
+    r"""拉流配置。
 
     """
 
@@ -34380,7 +34378,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def ConfigId(self):
-        """拉流配置 ID。
+        r"""拉流配置 ID。
         :rtype: str
         """
         return self._ConfigId
@@ -34391,7 +34389,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def FromUrl(self):
-        """源 URL。
+        r"""源 URL。
         :rtype: str
         """
         return self._FromUrl
@@ -34402,7 +34400,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def ToUrl(self):
-        """目的 URL。
+        r"""目的 URL。
         :rtype: str
         """
         return self._ToUrl
@@ -34413,7 +34411,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def AreaName(self):
-        """区域名。
+        r"""区域名。
         :rtype: str
         """
         return self._AreaName
@@ -34424,7 +34422,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def IspName(self):
-        """运营商名。
+        r"""运营商名。
         :rtype: str
         """
         return self._IspName
@@ -34435,7 +34433,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 UTC格式时间，例如: 2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :rtype: str
@@ -34448,7 +34446,7 @@ UTC格式时间，例如: 2019-01-08T10:00:00Z。
 
     @property
     def EndTime(self):
-        """结束时间。
+        r"""结束时间。
 
 UTC格式时间，例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -34462,7 +34460,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
     @property
     def Status(self):
-        """状态:
+        r"""状态:
 0: 无效。
 1: 初始状态。
 2: 正在运行。
@@ -34497,7 +34495,7 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
 
 
 class PullStreamTaskInfo(AbstractModel):
-    """直播拉流任务信息。
+    r"""直播拉流任务信息。
 
     """
 
@@ -34656,7 +34654,7 @@ PullVodPushLive -点播。
 
     @property
     def TaskId(self):
-        """拉流任务Id。
+        r"""拉流任务Id。
         :rtype: str
         """
         return self._TaskId
@@ -34667,7 +34665,7 @@ PullVodPushLive -点播。
 
     @property
     def SourceType(self):
-        """拉流源的类型：
+        r"""拉流源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播，
 PullPicPushLive -图片。
@@ -34681,7 +34679,7 @@ PullPicPushLive -图片。
 
     @property
     def SourceUrls(self):
-        """拉流源url列表。
+        r"""拉流源url列表。
 SourceType为直播（PullLiveToLive）只可以填1个，
 SourceType为点播（PullVodToLive）可以填多个，上限10个。
         :rtype: list of str
@@ -34694,7 +34692,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
 将拉到的源推到该域名。
         :rtype: str
         """
@@ -34706,7 +34704,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
 将拉到的源推到该路径。
         :rtype: str
         """
@@ -34718,7 +34716,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
 将拉到的源推到该流名称。
         :rtype: str
         """
@@ -34730,7 +34728,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def PushArgs(self):
-        """推流参数。
+        r"""推流参数。
 推流携带的自定义参数。
         :rtype: str
         """
@@ -34742,7 +34740,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def StartTime(self):
-        """开始时间。
+        r"""开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -34756,7 +34754,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def EndTime(self):
-        """结束时间，注意：
+        r"""结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于七天。
@@ -34773,7 +34771,7 @@ SourceType为点播（PullVodToLive）可以填多个，上限10个。
 
     @property
     def Region(self):
-        """任务创建所在地域：
+        r"""任务创建所在地域：
 ap-beijing - 华北地区(北京)，
 ap-shanghai -华东地区(上海)，
 ap-guangzhou -华南地区(广州)，
@@ -34796,7 +34794,7 @@ ap-tokyo - 日本。
 
     @property
     def VodLoopTimes(self):
-        """点播拉流转推循环次数。
+        r"""点播拉流转推循环次数。
 -1：无限循环，直到任务结束。
 0：不循环。
 >0：具体循环次数。次数和时间以先结束的为准。
@@ -34811,7 +34809,7 @@ ap-tokyo - 日本。
 
     @property
     def VodRefreshType(self):
-        """点播更新SourceUrls后的播放方式：
+        r"""点播更新SourceUrls后的播放方式：
 ImmediateNewSource：立即从更新的拉流源开始播放；
 ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
 
@@ -34826,7 +34824,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def CreateTime(self):
-        """任务创建时间。
+        r"""任务创建时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -34840,7 +34838,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def UpdateTime(self):
-        """任务更新时间。
+        r"""任务更新时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -34854,7 +34852,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def CreateBy(self):
-        """创建任务的操作者。
+        r"""创建任务的操作者。
         :rtype: str
         """
         return self._CreateBy
@@ -34865,7 +34863,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def UpdateBy(self):
-        """最后更新任务的操作者。
+        r"""最后更新任务的操作者。
         :rtype: str
         """
         return self._UpdateBy
@@ -34876,7 +34874,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def CallbackUrl(self):
-        """回调地址。
+        r"""回调地址。
         :rtype: str
         """
         return self._CallbackUrl
@@ -34887,7 +34885,7 @@ ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使�
 
     @property
     def CallbackEvents(self):
-        """选择需要回调的事件：
+        r"""选择需要回调的事件：
 TaskStart：任务启动回调，
 TaskExit：任务停止回调，
 VodSourceFileStart：从点播源文件开始拉流回调，
@@ -34903,7 +34901,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def CallbackInfo(self):
-        """注意：该信息暂不返回。
+        r"""注意：该信息暂不返回。
 最后一次回调信息。
         :rtype: str
         """
@@ -34915,7 +34913,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def ErrorInfo(self):
-        """注意：该信息暂不返回。
+        r"""注意：该信息暂不返回。
 错误信息。
         :rtype: str
         """
@@ -34927,7 +34925,7 @@ ResetTaskConfig：任务更新回调。
 
     @property
     def Status(self):
-        """状态。
+        r"""状态。
 enable：生效中。
 pause：暂停中。
         :rtype: str
@@ -34940,7 +34938,7 @@ pause：暂停中。
 
     @property
     def RecentPullInfo(self):
-        """注意：该信息仅在查询单个任务时返回。
+        r"""注意：该信息仅在查询单个任务时返回。
 任务最新拉流信息。
 包含：源 url，偏移时间，上报时间。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
@@ -34953,7 +34951,7 @@ pause：暂停中。
 
     @property
     def Comment(self):
-        """任务备注信息。
+        r"""任务备注信息。
         :rtype: str
         """
         return self._Comment
@@ -34964,7 +34962,7 @@ pause：暂停中。
 
     @property
     def BackupSourceType(self):
-        """备源类型：
+        r"""备源类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
         :rtype: str
@@ -34977,7 +34975,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupSourceUrl(self):
-        """备源URL。
+        r"""备源URL。
         :rtype: str
         """
         return self._BackupSourceUrl
@@ -34988,7 +34986,7 @@ PullVodPushLive -点播。
 
     @property
     def WatermarkList(self):
-        """水印信息列表。
+        r"""水印信息列表。
         :rtype: list of PullPushWatermarkInfo
         """
         return self._WatermarkList
@@ -34999,7 +34997,7 @@ PullVodPushLive -点播。
 
     @property
     def VodLocalMode(self):
-        """点播源是否启用本地推流模式，默认0，不启用。
+        r"""点播源是否启用本地推流模式，默认0，不启用。
 0 - 不启用。
 1 - 启用。
         :rtype: int
@@ -35012,7 +35010,7 @@ PullVodPushLive -点播。
 
     @property
     def RecordTemplateId(self):
-        """录制模板 ID。
+        r"""录制模板 ID。
         :rtype: str
         """
         return self._RecordTemplateId
@@ -35023,7 +35021,7 @@ PullVodPushLive -点播。
 
     @property
     def BackupToUrl(self):
-        """新增的推流地址。用于单任务推两路场景。
+        r"""新增的推流地址。用于单任务推两路场景。
         :rtype: str
         """
         return self._BackupToUrl
@@ -35034,7 +35032,7 @@ PullVodPushLive -点播。
 
     @property
     def TranscodeTemplateName(self):
-        """直播转码模板。
+        r"""直播转码模板。
         :rtype: str
         """
         return self._TranscodeTemplateName
@@ -35093,7 +35091,7 @@ PullVodPushLive -点播。
 
 
 class PushAuthKeyInfo(AbstractModel):
-    """推流鉴权key信息。
+    r"""推流鉴权key信息。
 
     """
 
@@ -35118,7 +35116,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -35129,7 +35127,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，0：关闭，1：启用。
+        r"""是否启用，0：关闭，1：启用。
         :rtype: int
         """
         return self._Enable
@@ -35140,7 +35138,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def MasterAuthKey(self):
-        """主鉴权 Key。
+        r"""主鉴权 Key。
         :rtype: str
         """
         return self._MasterAuthKey
@@ -35151,7 +35149,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def BackupAuthKey(self):
-        """备鉴权 Key。
+        r"""备鉴权 Key。
         :rtype: str
         """
         return self._BackupAuthKey
@@ -35162,7 +35160,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def AuthDelta(self):
-        """有效时间，单位：秒。
+        r"""有效时间，单位：秒。
         :rtype: int
         """
         return self._AuthDelta
@@ -35189,7 +35187,7 @@ class PushAuthKeyInfo(AbstractModel):
 
 
 class PushDataInfo(AbstractModel):
-    """推流数据信息
+    r"""推流数据信息
 
     """
 
@@ -35252,7 +35250,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -35263,7 +35261,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -35274,7 +35272,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        """推流客户端 IP。
+        r"""推流客户端 IP。
         :rtype: str
         """
         return self._ClientIp
@@ -35285,7 +35283,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def ServerIp(self):
-        """接流服务器 IP。
+        r"""接流服务器 IP。
         :rtype: str
         """
         return self._ServerIp
@@ -35296,7 +35294,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def VideoFps(self):
-        """推流视频帧率，单位: Hz。
+        r"""推流视频帧率，单位: Hz。
         :rtype: int
         """
         return self._VideoFps
@@ -35307,7 +35305,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def VideoSpeed(self):
-        """推流视频码率，单位: bps。
+        r"""推流视频码率，单位: bps。
         :rtype: int
         """
         return self._VideoSpeed
@@ -35318,7 +35316,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def AudioFps(self):
-        """推流音频帧率，单位: Hz。
+        r"""推流音频帧率，单位: Hz。
         :rtype: int
         """
         return self._AudioFps
@@ -35329,7 +35327,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def AudioSpeed(self):
-        """推流音频码率，单位: bps。
+        r"""推流音频码率，单位: bps。
         :rtype: int
         """
         return self._AudioSpeed
@@ -35340,7 +35338,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -35351,7 +35349,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def BeginPushTime(self):
-        """推流开始时间。
+        r"""推流开始时间。
         :rtype: str
         """
         return self._BeginPushTime
@@ -35362,7 +35360,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def Acodec(self):
-        """音频编码格式，
+        r"""音频编码格式，
 例："AAC"。
         :rtype: str
         """
@@ -35374,7 +35372,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def Vcodec(self):
-        """视频编码格式，
+        r"""视频编码格式，
 例："H264"。
         :rtype: str
         """
@@ -35386,7 +35384,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率。
+        r"""分辨率。
         :rtype: str
         """
         return self._Resolution
@@ -35397,7 +35395,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def AsampleRate(self):
-        """采样率。
+        r"""采样率。
         :rtype: int
         """
         return self._AsampleRate
@@ -35408,7 +35406,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def MetaAudioSpeed(self):
-        """metadata 中的音频码率，单位: bps。
+        r"""metadata 中的音频码率，单位: bps。
         :rtype: int
         """
         return self._MetaAudioSpeed
@@ -35419,7 +35417,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def MetaVideoSpeed(self):
-        """metadata 中的视频码率，单位: bps。
+        r"""metadata 中的视频码率，单位: bps。
         :rtype: int
         """
         return self._MetaVideoSpeed
@@ -35430,7 +35428,7 @@ class PushDataInfo(AbstractModel):
 
     @property
     def MetaFps(self):
-        """metadata 中的帧率。
+        r"""metadata 中的帧率。
         :rtype: int
         """
         return self._MetaFps
@@ -35469,7 +35467,7 @@ class PushDataInfo(AbstractModel):
 
 
 class PushLogInfo(AbstractModel):
-    """推流域名日志信息。
+    r"""推流域名日志信息。
 
     """
 
@@ -35493,7 +35491,7 @@ class PushLogInfo(AbstractModel):
 
     @property
     def LogName(self):
-        """日志名称。
+        r"""日志名称。
         :rtype: str
         """
         return self._LogName
@@ -35504,7 +35502,7 @@ class PushLogInfo(AbstractModel):
 
     @property
     def LogUrl(self):
-        """日志下载地址。
+        r"""日志下载地址。
         :rtype: str
         """
         return self._LogUrl
@@ -35515,7 +35513,7 @@ class PushLogInfo(AbstractModel):
 
     @property
     def LogTime(self):
-        """日志时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        r"""日志时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :rtype: str
@@ -35528,7 +35526,7 @@ class PushLogInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小，单位字节。
+        r"""文件大小，单位字节。
         :rtype: int
         """
         return self._FileSize
@@ -35554,7 +35552,7 @@ class PushLogInfo(AbstractModel):
 
 
 class PushQualityData(AbstractModel):
-    """某条流的推流质量详情数据。
+    r"""某条流的推流质量详情数据。
 
     """
 
@@ -35638,7 +35636,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间，使用UTC格式时间，
+        r"""数据时间，使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :rtype: str
@@ -35651,7 +35649,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -35662,7 +35660,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -35673,7 +35671,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def ClientIp(self):
-        """推流客户端 IP。
+        r"""推流客户端 IP。
         :rtype: str
         """
         return self._ClientIp
@@ -35684,7 +35682,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def BeginPushTime(self):
-        """开始推流时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+        r"""开始推流时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
         :rtype: str
         """
         return self._BeginPushTime
@@ -35695,7 +35693,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率信息。
+        r"""分辨率信息。
         :rtype: str
         """
         return self._Resolution
@@ -35706,7 +35704,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def VCodec(self):
-        """视频编码格式。
+        r"""视频编码格式。
         :rtype: str
         """
         return self._VCodec
@@ -35717,7 +35715,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def ACodec(self):
-        """音频编码格式。
+        r"""音频编码格式。
         :rtype: str
         """
         return self._ACodec
@@ -35728,7 +35726,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def Sequence(self):
-        """推流序列号，用来唯一的标志一次推流。
+        r"""推流序列号，用来唯一的标志一次推流。
         :rtype: str
         """
         return self._Sequence
@@ -35739,7 +35737,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def VideoFps(self):
-        """视频帧率。
+        r"""视频帧率。
         :rtype: int
         """
         return self._VideoFps
@@ -35750,7 +35748,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def VideoRate(self):
-        """视频码率，单位: bps。
+        r"""视频码率，单位: bps。
         :rtype: int
         """
         return self._VideoRate
@@ -35761,7 +35759,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def AudioFps(self):
-        """音频帧率。
+        r"""音频帧率。
         :rtype: int
         """
         return self._AudioFps
@@ -35772,7 +35770,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def AudioRate(self):
-        """音频码率，单位: bps。
+        r"""音频码率，单位: bps。
         :rtype: int
         """
         return self._AudioRate
@@ -35783,7 +35781,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def LocalTs(self):
-        """本地流逝时间，单位: ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
+        r"""本地流逝时间，单位: ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
         :rtype: int
         """
         return self._LocalTs
@@ -35794,7 +35792,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def VideoTs(self):
-        """视频流逝时间，单位: ms。
+        r"""视频流逝时间，单位: ms。
         :rtype: int
         """
         return self._VideoTs
@@ -35805,7 +35803,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def AudioTs(self):
-        """音频流逝时间，单位: ms。
+        r"""音频流逝时间，单位: ms。
         :rtype: int
         """
         return self._AudioTs
@@ -35816,7 +35814,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def MetaVideoRate(self):
-        """metadata 中的视频码率，单位: kbps。
+        r"""metadata 中的视频码率，单位: kbps。
         :rtype: int
         """
         return self._MetaVideoRate
@@ -35827,7 +35825,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def MetaAudioRate(self):
-        """metadata 中的音频码率，单位: kbps。
+        r"""metadata 中的音频码率，单位: kbps。
         :rtype: int
         """
         return self._MetaAudioRate
@@ -35838,7 +35836,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def MateFps(self):
-        """metadata 中的帧率。
+        r"""metadata 中的帧率。
         :rtype: int
         """
         return self._MateFps
@@ -35849,7 +35847,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def StreamParam(self):
-        """推流参数
+        r"""推流参数
         :rtype: str
         """
         return self._StreamParam
@@ -35860,7 +35858,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位Mbps。
+        r"""带宽，单位Mbps。
         :rtype: float
         """
         return self._Bandwidth
@@ -35871,7 +35869,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def Flux(self):
-        """流量，单位MB。
+        r"""流量，单位MB。
         :rtype: float
         """
         return self._Flux
@@ -35882,7 +35880,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def ServerIp(self):
-        """推流服务端 IP。
+        r"""推流服务端 IP。
         :rtype: str
         """
         return self._ServerIp
@@ -35893,7 +35891,7 @@ class PushQualityData(AbstractModel):
 
     @property
     def GopSize(self):
-        """关键帧间隔 GOP ，单位：ms。
+        r"""关键帧间隔 GOP ，单位：ms。
         :rtype: int
         """
         return self._GopSize
@@ -35939,7 +35937,7 @@ class PushQualityData(AbstractModel):
 
 
 class RecentPullInfo(AbstractModel):
-    """直播拉流当前正在拉的文件信息。
+    r"""直播拉流当前正在拉的文件信息。
 
     """
 
@@ -35963,7 +35961,7 @@ class RecentPullInfo(AbstractModel):
 
     @property
     def FileUrl(self):
-        """当前正在拉的文件地址。
+        r"""当前正在拉的文件地址。
         :rtype: str
         """
         return self._FileUrl
@@ -35974,7 +35972,7 @@ class RecentPullInfo(AbstractModel):
 
     @property
     def OffsetTime(self):
-        """当前正在拉的文件偏移，单位：秒。
+        r"""当前正在拉的文件偏移，单位：秒。
         :rtype: int
         """
         return self._OffsetTime
@@ -35985,7 +35983,7 @@ class RecentPullInfo(AbstractModel):
 
     @property
     def ReportTime(self):
-        """最新上报偏移信息时间。UTC格式。
+        r"""最新上报偏移信息时间。UTC格式。
 如：2020-07-23T03:20:39Z。
 注意：与北京时间相差八小时。
         :rtype: str
@@ -35998,7 +35996,7 @@ class RecentPullInfo(AbstractModel):
 
     @property
     def LoopedTimes(self):
-        """已经轮播的次数。
+        r"""已经轮播的次数。
         :rtype: int
         """
         return self._LoopedTimes
@@ -36024,7 +36022,7 @@ class RecentPullInfo(AbstractModel):
 
 
 class RecordParam(AbstractModel):
-    """录制模板参数。
+    r"""录制模板参数。
 
     """
 
@@ -36099,7 +36097,7 @@ cold：低频存储。
 
     @property
     def RecordInterval(self):
-        """录制间隔。
+        r"""录制间隔。
 单位秒，默认：1800。
 FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
@@ -36113,7 +36111,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def StorageTime(self):
-        """录制存储时长。
+        r"""录制存储时长。
 单位秒，取值范围： 0 - 1500天。
 0：表示永久存储。
         :rtype: int
@@ -36126,7 +36124,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def Enable(self):
-        """是否开启当前格式录制，默认值为0，0：否， 1：是。
+        r"""是否开启当前格式录制，默认值为0，0：否， 1：是。
         :rtype: int
         """
         return self._Enable
@@ -36137,7 +36135,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def VodSubAppId(self):
-        """点播子应用 ID。
+        r"""点播子应用 ID。
         :rtype: int
         """
         return self._VodSubAppId
@@ -36148,7 +36146,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def VodFileName(self):
-        """录制文件名。
+        r"""录制文件名。
 支持的特殊占位符有：
 {StreamID}: 流ID
 {StartYear}: 开始时间-年
@@ -36177,7 +36175,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def Procedure(self):
-        """任务流
+        r"""任务流
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36189,7 +36187,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 
     @property
     def StorageMode(self):
-        """视频存储策略。
+        r"""视频存储策略。
 normal：标准存储。
 cold：低频存储。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -36203,7 +36201,7 @@ cold：低频存储。
 
     @property
     def ClassId(self):
-        """点播应用分类
+        r"""点播应用分类
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36215,7 +36213,7 @@ cold：低频存储。
 
     @property
     def CosBucketName(self):
-        """存储至 cos 的 bucket 桶名称。
+        r"""存储至 cos 的 bucket 桶名称。
 注：CosBucketName参数值不能包含-[appid] 部分。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -36228,7 +36226,7 @@ cold：低频存储。
 
     @property
     def CosBucketRegion(self):
-        """存储至 cos 的 bucket 区域。
+        r"""存储至 cos 的 bucket 区域。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36240,7 +36238,7 @@ cold：低频存储。
 
     @property
     def CosBucketPath(self):
-        """存储至 cos 的 bucket 路径。
+        r"""存储至 cos 的 bucket 路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36274,7 +36272,7 @@ cold：低频存储。
 
 
 class RecordTask(AbstractModel):
-    """录制任务
+    r"""录制任务
 
     """
 
@@ -36308,7 +36306,7 @@ class RecordTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """录制任务ID。
+        r"""录制任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -36319,7 +36317,7 @@ class RecordTask(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -36330,7 +36328,7 @@ class RecordTask(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -36341,7 +36339,7 @@ class RecordTask(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -36352,7 +36350,7 @@ class RecordTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间，Unix时间戳。
+        r"""任务开始时间，Unix时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -36363,7 +36361,7 @@ class RecordTask(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务结束时间，Unix时间戳。
+        r"""任务结束时间，Unix时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -36374,7 +36372,7 @@ class RecordTask(AbstractModel):
 
     @property
     def TemplateId(self):
-        """录制模板ID。
+        r"""录制模板ID。
         :rtype: int
         """
         return self._TemplateId
@@ -36385,7 +36383,7 @@ class RecordTask(AbstractModel):
 
     @property
     def Stopped(self):
-        """调用 StopRecordTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
+        r"""调用 StopRecordTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
         :rtype: int
         """
         return self._Stopped
@@ -36415,7 +36413,7 @@ class RecordTask(AbstractModel):
 
 
 class RecordTemplateInfo(AbstractModel):
-    """录制模板信息
+    r"""录制模板信息
 
     """
 
@@ -36468,7 +36466,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -36479,7 +36477,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -36490,7 +36488,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息。
+        r"""描述信息。
         :rtype: str
         """
         return self._Description
@@ -36501,7 +36499,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def FlvParam(self):
-        """FLV 录制参数。
+        r"""FLV 录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._FlvParam
@@ -36512,7 +36510,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def HlsParam(self):
-        """HLS 录制参数。
+        r"""HLS 录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._HlsParam
@@ -36523,7 +36521,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def Mp4Param(self):
-        """MP4 录制参数。
+        r"""MP4 录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp4Param
@@ -36534,7 +36532,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def AacParam(self):
-        """AAC 录制参数。
+        r"""AAC 录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._AacParam
@@ -36545,7 +36543,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        """0：普通直播，
+        r"""0：普通直播，
 1：慢直播。
         :rtype: int
         """
@@ -36557,7 +36555,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
-        """HLS 录制定制参数。
+        r"""HLS 录制定制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         return self._HlsSpecialParam
@@ -36568,7 +36566,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def Mp3Param(self):
-        """MP3 录制参数。
+        r"""MP3 录制参数。
         :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         return self._Mp3Param
@@ -36579,7 +36577,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印。
+        r"""是否去除水印。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -36591,7 +36589,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def CosStore(self):
-        """是否存储至cos
+        r"""是否存储至cos
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36603,7 +36601,7 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
-        """FLV 录制定制参数。
+        r"""FLV 录制定制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
@@ -36653,7 +36651,7 @@ class RecordTemplateInfo(AbstractModel):
 
 
 class RefererAuthConfig(AbstractModel):
-    """直播域名Referer黑白名单配置
+    r"""直播域名Referer黑白名单配置
 
     """
 
@@ -36678,7 +36676,7 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def DomainName(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._DomainName
@@ -36689,7 +36687,7 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，0：关闭，1：启用。
+        r"""是否启用，0：关闭，1：启用。
         :rtype: int
         """
         return self._Enable
@@ -36700,7 +36698,7 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Type(self):
-        """名单类型，0：黑名单，1：白名单。
+        r"""名单类型，0：黑名单，1：白名单。
         :rtype: int
         """
         return self._Type
@@ -36711,7 +36709,7 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def AllowEmpty(self):
-        """是否允许空Referer，0：不允许，1：允许。
+        r"""是否允许空Referer，0：不允许，1：允许。
         :rtype: int
         """
         return self._AllowEmpty
@@ -36722,7 +36720,7 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Rules(self):
-        """名单列表，以分号(;)分隔。
+        r"""名单列表，以分号(;)分隔。
         :rtype: str
         """
         return self._Rules
@@ -36749,7 +36747,7 @@ class RefererAuthConfig(AbstractModel):
 
 
 class ReleaseCasterRequest(AbstractModel):
-    """ReleaseCaster请求参数结构体
+    r"""ReleaseCaster请求参数结构体
 
     """
 
@@ -36762,7 +36760,7 @@ class ReleaseCasterRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -36785,7 +36783,7 @@ class ReleaseCasterRequest(AbstractModel):
 
 
 class ReleaseCasterResponse(AbstractModel):
-    """ReleaseCaster返回参数结构体
+    r"""ReleaseCaster返回参数结构体
 
     """
 
@@ -36798,7 +36796,7 @@ class ReleaseCasterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -36813,7 +36811,7 @@ class ReleaseCasterResponse(AbstractModel):
 
 
 class RestartLivePullStreamTaskRequest(AbstractModel):
-    """RestartLivePullStreamTask请求参数结构体
+    r"""RestartLivePullStreamTask请求参数结构体
 
     """
 
@@ -36829,7 +36827,7 @@ class RestartLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 Id。
+        r"""任务 Id。
         :rtype: str
         """
         return self._TaskId
@@ -36840,7 +36838,7 @@ class RestartLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人备注名称。
+        r"""操作人备注名称。
         :rtype: str
         """
         return self._Operator
@@ -36864,7 +36862,7 @@ class RestartLivePullStreamTaskRequest(AbstractModel):
 
 
 class RestartLivePullStreamTaskResponse(AbstractModel):
-    """RestartLivePullStreamTask返回参数结构体
+    r"""RestartLivePullStreamTask返回参数结构体
 
     """
 
@@ -36877,7 +36875,7 @@ class RestartLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -36892,7 +36890,7 @@ class RestartLivePullStreamTaskResponse(AbstractModel):
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):
-    """ResumeDelayLiveStream请求参数结构体
+    r"""ResumeDelayLiveStream请求参数结构体
 
     """
 
@@ -36911,7 +36909,7 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :rtype: str
         """
         return self._AppName
@@ -36922,7 +36920,7 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -36933,7 +36931,7 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -36958,7 +36956,7 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
 
 class ResumeDelayLiveStreamResponse(AbstractModel):
-    """ResumeDelayLiveStream返回参数结构体
+    r"""ResumeDelayLiveStream返回参数结构体
 
     """
 
@@ -36971,7 +36969,7 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -36986,7 +36984,7 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
 
 class ResumeLiveStreamRequest(AbstractModel):
-    """ResumeLiveStream请求参数结构体
+    r"""ResumeLiveStream请求参数结构体
 
     """
 
@@ -37005,7 +37003,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -37016,7 +37014,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -37027,7 +37025,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -37052,7 +37050,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
 
 class ResumeLiveStreamResponse(AbstractModel):
-    """ResumeLiveStream返回参数结构体
+    r"""ResumeLiveStream返回参数结构体
 
     """
 
@@ -37065,7 +37063,7 @@ class ResumeLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -37080,7 +37078,7 @@ class ResumeLiveStreamResponse(AbstractModel):
 
 
 class RuleInfo(AbstractModel):
-    """规则信息。
+    r"""规则信息。
 
     """
 
@@ -37110,7 +37108,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """规则创建时间。
+        r"""规则创建时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -37122,7 +37120,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """规则更新时间。
+        r"""规则更新时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -37134,7 +37132,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -37145,7 +37143,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -37156,7 +37154,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -37167,7 +37165,7 @@ class RuleInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -37195,7 +37193,7 @@ class RuleInfo(AbstractModel):
 
 
 class ScreenshotTask(AbstractModel):
-    """截图任务
+    r"""截图任务
 
     """
 
@@ -37229,7 +37227,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """截图任务ID。
+        r"""截图任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -37240,7 +37238,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -37251,7 +37249,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -37262,7 +37260,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -37273,7 +37271,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间，Unix时间戳。
+        r"""任务开始时间，Unix时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -37284,7 +37282,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务结束时间，Unix时间戳。
+        r"""任务结束时间，Unix时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -37295,7 +37293,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def TemplateId(self):
-        """截图模板ID。
+        r"""截图模板ID。
         :rtype: int
         """
         return self._TemplateId
@@ -37306,7 +37304,7 @@ class ScreenshotTask(AbstractModel):
 
     @property
     def Stopped(self):
-        """调用 StopScreenshotTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
+        r"""调用 StopScreenshotTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
         :rtype: int
         """
         return self._Stopped
@@ -37336,7 +37334,7 @@ class ScreenshotTask(AbstractModel):
 
 
 class SendLiveCloudEffectRequest(AbstractModel):
-    """SendLiveCloudEffect请求参数结构体
+    r"""SendLiveCloudEffect请求参数结构体
 
     """
 
@@ -37376,7 +37374,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -37387,7 +37385,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def PushDomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._PushDomainName
@@ -37398,7 +37396,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -37409,7 +37407,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def Id(self):
-        """云端特效 ID。
+        r"""云端特效 ID。
         :rtype: str
         """
         return self._Id
@@ -37420,7 +37418,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def LoopTimes(self):
-        """默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
+        r"""默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
         :rtype: int
         """
         return self._LoopTimes
@@ -37431,7 +37429,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人备注信息。
+        r"""操作人备注信息。
         :rtype: str
         """
         return self._Operator
@@ -37442,7 +37440,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def ZoomFactor(self):
-        """缩小比例，默认0 不缩放。
+        r"""缩小比例，默认0 不缩放。
 可选值：0-9， 值越大，越缩小。
         :rtype: int
         """
@@ -37454,7 +37452,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def XPosition(self):
-        """指定云端特效渲染位置百分比。默认居中显示。
+        r"""指定云端特效渲染位置百分比。默认居中显示。
 原点为画面左上角，该参数指定特效渲染离原点的横向比例，可选值 0 - 100。
         :rtype: str
         """
@@ -37466,7 +37464,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
     @property
     def YPosition(self):
-        """指定云端特效渲染位置百分比。默认居中显示。
+        r"""指定云端特效渲染位置百分比。默认居中显示。
 原点为画面左上角，该参数指定特效渲染离原点的纵向比例，可选值 0 - 100。
         :rtype: str
         """
@@ -37498,7 +37496,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
 
 
 class SendLiveCloudEffectResponse(AbstractModel):
-    """SendLiveCloudEffect返回参数结构体
+    r"""SendLiveCloudEffect返回参数结构体
 
     """
 
@@ -37511,7 +37509,7 @@ class SendLiveCloudEffectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -37526,7 +37524,7 @@ class SendLiveCloudEffectResponse(AbstractModel):
 
 
 class SnapshotTemplateInfo(AbstractModel):
-    """截图模板信息。
+    r"""截图模板信息。
 
     """
 
@@ -37576,7 +37574,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -37587,7 +37585,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -37598,7 +37596,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        """截图时间间隔，5-300秒。
+        r"""截图时间间隔，5-300秒。
         :rtype: int
         """
         return self._SnapshotInterval
@@ -37609,7 +37607,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Width(self):
-        """截图宽度，范围：0-3000。 
+        r"""截图宽度，范围：0-3000。 
 0：原始宽度并适配原始比例。
         :rtype: int
         """
@@ -37621,7 +37619,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Height(self):
-        """截图高度，范围：0-2000。
+        r"""截图高度，范围：0-2000。
 0：原始高度并适配原始比例。
         :rtype: int
         """
@@ -37633,7 +37631,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def PornFlag(self):
-        """是否开启鉴黄，0：不开启，1：开启。
+        r"""是否开启鉴黄，0：不开启，1：开启。
         :rtype: int
         """
         return self._PornFlag
@@ -37644,7 +37642,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosAppId(self):
-        """Cos 应用 ID。
+        r"""Cos 应用 ID。
         :rtype: int
         """
         return self._CosAppId
@@ -37655,7 +37653,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosBucket(self):
-        """Cos Bucket名称。
+        r"""Cos Bucket名称。
         :rtype: str
         """
         return self._CosBucket
@@ -37666,7 +37664,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosRegion(self):
-        """Cos 地域。
+        r"""Cos 地域。
         :rtype: str
         """
         return self._CosRegion
@@ -37677,7 +37675,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -37688,7 +37686,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosPrefix(self):
-        """Cos Bucket文件夹前缀。
+        r"""Cos Bucket文件夹前缀。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37700,7 +37698,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosFileName(self):
-        """Cos 文件名称。
+        r"""Cos 文件名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37735,7 +37733,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
 
 class StartLivePadStreamRequest(AbstractModel):
-    """StartLivePadStream请求参数结构体
+    r"""StartLivePadStream请求参数结构体
 
     """
 
@@ -37757,7 +37755,7 @@ class StartLivePadStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -37768,7 +37766,7 @@ class StartLivePadStreamRequest(AbstractModel):
 
     @property
     def PushDomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._PushDomainName
@@ -37779,7 +37777,7 @@ class StartLivePadStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -37790,7 +37788,7 @@ class StartLivePadStreamRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人备注信息。
+        r"""操作人备注信息。
         :rtype: str
         """
         return self._Operator
@@ -37816,7 +37814,7 @@ class StartLivePadStreamRequest(AbstractModel):
 
 
 class StartLivePadStreamResponse(AbstractModel):
-    """StartLivePadStream返回参数结构体
+    r"""StartLivePadStream返回参数结构体
 
     """
 
@@ -37829,7 +37827,7 @@ class StartLivePadStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -37844,7 +37842,7 @@ class StartLivePadStreamResponse(AbstractModel):
 
 
 class StartLiveStreamMonitorRequest(AbstractModel):
-    """StartLiveStreamMonitor请求参数结构体
+    r"""StartLiveStreamMonitor请求参数结构体
 
     """
 
@@ -37862,7 +37860,7 @@ class StartLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播ID。
+        r"""监播ID。
         :rtype: str
         """
         return self._MonitorId
@@ -37873,7 +37871,7 @@ class StartLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def AudibleInputIndexList(self):
-        """监播画面声音InputIndex,支持多个输入声音。
+        r"""监播画面声音InputIndex,支持多个输入声音。
 取值范围 InputIndex必须已经存在。
 不填默认无声音输出。
         :rtype: list of int non-negative
@@ -37899,7 +37897,7 @@ class StartLiveStreamMonitorRequest(AbstractModel):
 
 
 class StartLiveStreamMonitorResponse(AbstractModel):
-    """StartLiveStreamMonitor返回参数结构体
+    r"""StartLiveStreamMonitor返回参数结构体
 
     """
 
@@ -37912,7 +37910,7 @@ class StartLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -37927,7 +37925,7 @@ class StartLiveStreamMonitorResponse(AbstractModel):
 
 
 class StopCasterPgmRequest(AbstractModel):
-    """StopCasterPgm请求参数结构体
+    r"""StopCasterPgm请求参数结构体
 
     """
 
@@ -37940,7 +37938,7 @@ class StopCasterPgmRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -37963,7 +37961,7 @@ class StopCasterPgmRequest(AbstractModel):
 
 
 class StopCasterPgmResponse(AbstractModel):
-    """StopCasterPgm返回参数结构体
+    r"""StopCasterPgm返回参数结构体
 
     """
 
@@ -37976,7 +37974,7 @@ class StopCasterPgmResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -37991,7 +37989,7 @@ class StopCasterPgmResponse(AbstractModel):
 
 
 class StopCasterPvwRequest(AbstractModel):
-    """StopCasterPvw请求参数结构体
+    r"""StopCasterPvw请求参数结构体
 
     """
 
@@ -38004,7 +38002,7 @@ class StopCasterPvwRequest(AbstractModel):
 
     @property
     def CasterId(self):
-        """导播台ID。
+        r"""导播台ID。
         :rtype: int
         """
         return self._CasterId
@@ -38027,7 +38025,7 @@ class StopCasterPvwRequest(AbstractModel):
 
 
 class StopCasterPvwResponse(AbstractModel):
-    """StopCasterPvw返回参数结构体
+    r"""StopCasterPvw返回参数结构体
 
     """
 
@@ -38040,7 +38038,7 @@ class StopCasterPvwResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38055,7 +38053,7 @@ class StopCasterPvwResponse(AbstractModel):
 
 
 class StopLivePadStreamRequest(AbstractModel):
-    """StopLivePadStream请求参数结构体
+    r"""StopLivePadStream请求参数结构体
 
     """
 
@@ -38077,7 +38075,7 @@ class StopLivePadStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        r"""推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :rtype: str
         """
         return self._AppName
@@ -38088,7 +38086,7 @@ class StopLivePadStreamRequest(AbstractModel):
 
     @property
     def PushDomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._PushDomainName
@@ -38099,7 +38097,7 @@ class StopLivePadStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38110,7 +38108,7 @@ class StopLivePadStreamRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人备注信息。
+        r"""操作人备注信息。
         :rtype: str
         """
         return self._Operator
@@ -38136,7 +38134,7 @@ class StopLivePadStreamRequest(AbstractModel):
 
 
 class StopLivePadStreamResponse(AbstractModel):
-    """StopLivePadStream返回参数结构体
+    r"""StopLivePadStream返回参数结构体
 
     """
 
@@ -38149,7 +38147,7 @@ class StopLivePadStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38164,7 +38162,7 @@ class StopLivePadStreamResponse(AbstractModel):
 
 
 class StopLiveRecordRequest(AbstractModel):
-    """StopLiveRecord请求参数结构体
+    r"""StopLiveRecord请求参数结构体
 
     """
 
@@ -38180,7 +38178,7 @@ class StopLiveRecordRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38191,7 +38189,7 @@ class StopLiveRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，由CreateLiveRecord接口返回。
+        r"""任务ID，由CreateLiveRecord接口返回。
         :rtype: int
         """
         return self._TaskId
@@ -38215,7 +38213,7 @@ class StopLiveRecordRequest(AbstractModel):
 
 
 class StopLiveRecordResponse(AbstractModel):
-    """StopLiveRecord返回参数结构体
+    r"""StopLiveRecord返回参数结构体
 
     """
 
@@ -38228,7 +38226,7 @@ class StopLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38243,7 +38241,7 @@ class StopLiveRecordResponse(AbstractModel):
 
 
 class StopLiveStreamMonitorRequest(AbstractModel):
-    """StopLiveStreamMonitor请求参数结构体
+    r"""StopLiveStreamMonitor请求参数结构体
 
     """
 
@@ -38256,7 +38254,7 @@ class StopLiveStreamMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监播ID
+        r"""监播ID
         :rtype: str
         """
         return self._MonitorId
@@ -38279,7 +38277,7 @@ class StopLiveStreamMonitorRequest(AbstractModel):
 
 
 class StopLiveStreamMonitorResponse(AbstractModel):
-    """StopLiveStreamMonitor返回参数结构体
+    r"""StopLiveStreamMonitor返回参数结构体
 
     """
 
@@ -38292,7 +38290,7 @@ class StopLiveStreamMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38307,7 +38305,7 @@ class StopLiveStreamMonitorResponse(AbstractModel):
 
 
 class StopRecordTaskRequest(AbstractModel):
-    """StopRecordTask请求参数结构体
+    r"""StopRecordTask请求参数结构体
 
     """
 
@@ -38320,7 +38318,7 @@ class StopRecordTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """录制任务ID。
+        r"""录制任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -38343,7 +38341,7 @@ class StopRecordTaskRequest(AbstractModel):
 
 
 class StopRecordTaskResponse(AbstractModel):
-    """StopRecordTask返回参数结构体
+    r"""StopRecordTask返回参数结构体
 
     """
 
@@ -38356,7 +38354,7 @@ class StopRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38371,7 +38369,7 @@ class StopRecordTaskResponse(AbstractModel):
 
 
 class StopScreenshotTaskRequest(AbstractModel):
-    """StopScreenshotTask请求参数结构体
+    r"""StopScreenshotTask请求参数结构体
 
     """
 
@@ -38384,7 +38382,7 @@ class StopScreenshotTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """截图任务ID。
+        r"""截图任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -38407,7 +38405,7 @@ class StopScreenshotTaskRequest(AbstractModel):
 
 
 class StopScreenshotTaskResponse(AbstractModel):
-    """StopScreenshotTask返回参数结构体
+    r"""StopScreenshotTask返回参数结构体
 
     """
 
@@ -38420,7 +38418,7 @@ class StopScreenshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38435,7 +38433,7 @@ class StopScreenshotTaskResponse(AbstractModel):
 
 
 class StreamEventInfo(AbstractModel):
-    """推断流事件信息。
+    r"""推断流事件信息。
 
     """
 
@@ -38475,7 +38473,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -38486,7 +38484,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -38497,7 +38495,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38508,7 +38506,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StreamStartTime(self):
-        """推流开始时间。
+        r"""推流开始时间。
 UTC 格式时间，例如：2019-01-07T12:00:00Z。
         :rtype: str
         """
@@ -38520,7 +38518,7 @@ UTC 格式时间，例如：2019-01-07T12:00:00Z。
 
     @property
     def StreamEndTime(self):
-        """推流结束时间。
+        r"""推流结束时间。
 UTC 格式时间，例如：2019-01-07T15:00:00Z。
         :rtype: str
         """
@@ -38532,7 +38530,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StopReason(self):
-        """停止原因。
+        r"""停止原因。
         :rtype: str
         """
         return self._StopReason
@@ -38543,7 +38541,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def Duration(self):
-        """推流持续时长，单位：秒。
+        r"""推流持续时长，单位：秒。
         :rtype: int
         """
         return self._Duration
@@ -38554,7 +38552,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def ClientIp(self):
-        """主播 IP。
+        r"""主播 IP。
 当客户端为内网推流时，展示为: - 。
         :rtype: str
         """
@@ -38566,7 +38564,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def Resolution(self):
-        """分辨率。
+        r"""分辨率。
         :rtype: str
         """
         return self._Resolution
@@ -38597,7 +38595,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
 
 
 class StreamName(AbstractModel):
-    """流名称列表。
+    r"""流名称列表。
 
     """
 
@@ -38636,7 +38634,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38647,7 +38645,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -38658,7 +38656,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -38669,7 +38667,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StreamStartTime(self):
-        """推流开始时间。
+        r"""推流开始时间。
 UTC格式时间，例如：2019-01-07T12:00:00Z。
         :rtype: str
         """
@@ -38681,7 +38679,7 @@ UTC格式时间，例如：2019-01-07T12:00:00Z。
 
     @property
     def StreamEndTime(self):
-        """推流结束时间。
+        r"""推流结束时间。
 UTC格式时间，例如：2019-01-07T15:00:00Z。
         :rtype: str
         """
@@ -38693,7 +38691,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def StopReason(self):
-        """停止原因。
+        r"""停止原因。
         :rtype: str
         """
         return self._StopReason
@@ -38704,7 +38702,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def Duration(self):
-        """推流持续时长，单位：秒。
+        r"""推流持续时长，单位：秒。
         :rtype: int
         """
         return self._Duration
@@ -38715,7 +38713,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def ClientIp(self):
-        """主播 IP。
+        r"""主播 IP。
         :rtype: str
         """
         return self._ClientIp
@@ -38726,7 +38724,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
     @property
     def Resolution(self):
-        """分辨率。
+        r"""分辨率。
         :rtype: str
         """
         return self._Resolution
@@ -38757,7 +38755,7 @@ UTC格式时间，例如：2019-01-07T15:00:00Z。
 
 
 class StreamOnlineInfo(AbstractModel):
-    """查询当前正在推流的信息
+    r"""查询当前正在推流的信息
 
     """
 
@@ -38784,7 +38782,7 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38795,7 +38793,7 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def PublishTimeList(self):
-        """推流时间列表
+        r"""推流时间列表
         :rtype: list of PublishTime
         """
         return self._PublishTimeList
@@ -38806,7 +38804,7 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -38817,7 +38815,7 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -38828,7 +38826,7 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def PushToDelay(self):
-        """流是否推送到延播。
+        r"""流是否推送到延播。
 0 - 无延播，
 1 - 有延播。
         :rtype: int
@@ -38862,7 +38860,7 @@ class StreamOnlineInfo(AbstractModel):
 
 
 class SwitchBackupStreamRequest(AbstractModel):
-    """SwitchBackupStream请求参数结构体
+    r"""SwitchBackupStream请求参数结构体
 
     """
 
@@ -38884,7 +38882,7 @@ class SwitchBackupStreamRequest(AbstractModel):
 
     @property
     def PushDomainName(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomainName
@@ -38895,7 +38893,7 @@ class SwitchBackupStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -38906,7 +38904,7 @@ class SwitchBackupStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -38917,7 +38915,7 @@ class SwitchBackupStreamRequest(AbstractModel):
 
     @property
     def UpstreamSequence(self):
-        """查询接口获取到该流所有在推的上行 Sequence。指定要切到的目标上行 Sequence。
+        r"""查询接口获取到该流所有在推的上行 Sequence。指定要切到的目标上行 Sequence。
         :rtype: str
         """
         return self._UpstreamSequence
@@ -38943,7 +38941,7 @@ class SwitchBackupStreamRequest(AbstractModel):
 
 
 class SwitchBackupStreamResponse(AbstractModel):
-    """SwitchBackupStream返回参数结构体
+    r"""SwitchBackupStream返回参数结构体
 
     """
 
@@ -38956,7 +38954,7 @@ class SwitchBackupStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38971,7 +38969,7 @@ class SwitchBackupStreamResponse(AbstractModel):
 
 
 class TaskDurationInfo(AbstractModel):
-    """拉流转推任务的时长分布信息
+    r"""拉流转推任务的时长分布信息
 
     """
 
@@ -38990,7 +38988,7 @@ class TaskDurationInfo(AbstractModel):
 
     @property
     def Time(self):
-        """拉流转推任务的时间点
+        r"""拉流转推任务的时间点
         :rtype: str
         """
         return self._Time
@@ -39001,7 +38999,7 @@ class TaskDurationInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """拉流转推任务的时长，单位为分钟
+        r"""拉流转推任务的时长，单位为分钟
         :rtype: int
         """
         return self._Duration
@@ -39012,7 +39010,7 @@ class TaskDurationInfo(AbstractModel):
 
     @property
     def DurationSecond(self):
-        """拉流转推任务的时长，单位为秒
+        r"""拉流转推任务的时长，单位为秒
         :rtype: int
         """
         return self._DurationSecond
@@ -39037,7 +39035,7 @@ class TaskDurationInfo(AbstractModel):
 
 
 class TaskStatusInfo(AbstractModel):
-    """直播拉流任务状态信息。
+    r"""直播拉流任务状态信息。
 
     """
 
@@ -39072,7 +39070,7 @@ inactive - 不活跃。
 
     @property
     def FileUrl(self):
-        """当前使用的源 URL。
+        r"""当前使用的源 URL。
         :rtype: str
         """
         return self._FileUrl
@@ -39083,7 +39081,7 @@ inactive - 不活跃。
 
     @property
     def LoopedTimes(self):
-        """点播源任务的轮播次数。
+        r"""点播源任务的轮播次数。
         :rtype: int
         """
         return self._LoopedTimes
@@ -39094,7 +39092,7 @@ inactive - 不活跃。
 
     @property
     def OffsetTime(self):
-        """点播源的播放偏移，单位：秒。
+        r"""点播源的播放偏移，单位：秒。
         :rtype: int
         """
         return self._OffsetTime
@@ -39105,7 +39103,7 @@ inactive - 不活跃。
 
     @property
     def ReportTime(self):
-        """最新心跳上报时间。UTC时间，例如：
+        r"""最新心跳上报时间。UTC时间，例如：
 2022-02-11T10:00:00Z。
 注意：UTC时间与北京时间相差八小时。
         :rtype: str
@@ -39118,7 +39116,7 @@ inactive - 不活跃。
 
     @property
     def RunStatus(self):
-        """实际运行状态：
+        r"""实际运行状态：
 active - 活跃，
 inactive - 不活跃。
         :rtype: str
@@ -39131,7 +39129,7 @@ inactive - 不活跃。
 
     @property
     def FileDuration(self):
-        """点播源的文件时长，单位：秒。
+        r"""点播源的文件时长，单位：秒。
         :rtype: int
         """
         return self._FileDuration
@@ -39142,7 +39140,7 @@ inactive - 不活跃。
 
     @property
     def NextFileUrl(self):
-        """下一进度点播文件 URL。
+        r"""下一进度点播文件 URL。
         :rtype: str
         """
         return self._NextFileUrl
@@ -39171,7 +39169,7 @@ inactive - 不活跃。
 
 
 class TemplateInfo(AbstractModel):
-    """转码模板信息。
+    r"""转码模板信息。
 
     """
 
@@ -39287,7 +39285,7 @@ baseline/main/high。默认baseline
 
     @property
     def Vcodec(self):
-        """视频编码：h264/h265/origin，默认h264。
+        r"""视频编码：h264/h265/origin，默认h264。
 
 origin: 保持原始编码格式
         :rtype: str
@@ -39300,7 +39298,7 @@ origin: 保持原始编码格式
 
     @property
     def VideoBitrate(self):
-        """视频码率。范围：0kbps - 8000kbps。
+        r"""视频码率。范围：0kbps - 8000kbps。
 0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :rtype: int
@@ -39313,7 +39311,7 @@ origin: 保持原始编码格式
 
     @property
     def Acodec(self):
-        """音频编码：aac，默认aac。
+        r"""音频编码：aac，默认aac。
 注意：当前该参数未生效，待后续支持！
         :rtype: str
         """
@@ -39325,7 +39323,7 @@ origin: 保持原始编码格式
 
     @property
     def AudioBitrate(self):
-        """音频码率。取值范围：0kbps - 500kbps。
+        r"""音频码率。取值范围：0kbps - 500kbps。
 默认0。
         :rtype: int
         """
@@ -39337,7 +39335,7 @@ origin: 保持原始编码格式
 
     @property
     def Width(self):
-        """宽，默认0。
+        r"""宽，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始宽度
         :rtype: int
@@ -39350,7 +39348,7 @@ origin: 保持原始编码格式
 
     @property
     def Height(self):
-        """高，默认0。
+        r"""高，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始宽度
         :rtype: int
@@ -39363,7 +39361,7 @@ origin: 保持原始编码格式
 
     @property
     def Fps(self):
-        """帧率，默认0。
+        r"""帧率，默认0。
 范围0-60fps
         :rtype: int
         """
@@ -39375,7 +39373,7 @@ origin: 保持原始编码格式
 
     @property
     def Gop(self):
-        """关键帧间隔，单位：秒。
+        r"""关键帧间隔，单位：秒。
 默认原始的间隔
 范围2-6
         :rtype: int
@@ -39388,7 +39386,7 @@ origin: 保持原始编码格式
 
     @property
     def Rotate(self):
-        """旋转角度，默认0。
+        r"""旋转角度，默认0。
 可取值：0，90，180，270
         :rtype: int
         """
@@ -39400,7 +39398,7 @@ origin: 保持原始编码格式
 
     @property
     def Profile(self):
-        """编码质量：
+        r"""编码质量：
 baseline/main/high。默认baseline
         :rtype: str
         """
@@ -39412,7 +39410,7 @@ baseline/main/high。默认baseline
 
     @property
     def BitrateToOrig(self):
-        """当设置的码率>原始码率时，是否以原始码率为准。
+        r"""当设置的码率>原始码率时，是否以原始码率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -39425,7 +39423,7 @@ baseline/main/high。默认baseline
 
     @property
     def HeightToOrig(self):
-        """当设置的高度>原始高度时，是否以原始高度为准。
+        r"""当设置的高度>原始高度时，是否以原始高度为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -39438,7 +39436,7 @@ baseline/main/high。默认baseline
 
     @property
     def FpsToOrig(self):
-        """当设置的帧率>原始帧率时，是否以原始帧率为准。
+        r"""当设置的帧率>原始帧率时，是否以原始帧率为准。
 0：否， 1：是
 默认 0。
         :rtype: int
@@ -39451,7 +39449,7 @@ baseline/main/high。默认baseline
 
     @property
     def NeedVideo(self):
-        """是否保留视频。0：否，1：是。
+        r"""是否保留视频。0：否，1：是。
         :rtype: int
         """
         return self._NeedVideo
@@ -39462,7 +39460,7 @@ baseline/main/high。默认baseline
 
     @property
     def NeedAudio(self):
-        """是否保留音频。0：否，1：是。
+        r"""是否保留音频。0：否，1：是。
         :rtype: int
         """
         return self._NeedAudio
@@ -39473,7 +39471,7 @@ baseline/main/high。默认baseline
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        r"""模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -39484,7 +39482,7 @@ baseline/main/high。默认baseline
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -39495,7 +39493,7 @@ baseline/main/high。默认baseline
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -39506,7 +39504,7 @@ baseline/main/high。默认baseline
 
     @property
     def AiTransCode(self):
-        """是否是极速高清模板，0：否，1：是。默认0。
+        r"""是否是极速高清模板，0：否，1：是。默认0。
         :rtype: int
         """
         return self._AiTransCode
@@ -39517,7 +39515,7 @@ baseline/main/high。默认baseline
 
     @property
     def AdaptBitratePercent(self):
-        """极速高清视频码率压缩比。
+        r"""极速高清视频码率压缩比。
 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
 
 取值范围：0.0到0.5
@@ -39531,7 +39529,7 @@ baseline/main/high。默认baseline
 
     @property
     def ShortEdgeAsHeight(self):
-        """是否以短边作为高度，0：否，1：是。默认0。
+        r"""是否以短边作为高度，0：否，1：是。默认0。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -39543,7 +39541,7 @@ baseline/main/high。默认baseline
 
     @property
     def DRMType(self):
-        """DRM 加密类型，可选值：fairplay、normalaes、widevine。
+        r"""DRM 加密类型，可选值：fairplay、normalaes、widevine。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39555,7 +39553,7 @@ baseline/main/high。默认baseline
 
     @property
     def DRMTracks(self):
-        """DRM 加密项，多个用|分割，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+        r"""DRM 加密项，多个用|分割，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39567,7 +39565,7 @@ baseline/main/high。默认baseline
 
     @property
     def IsAdaptiveBitRate(self):
-        """是否创建自适应码率，默认值 0。
+        r"""是否创建自适应码率，默认值 0。
 0：否。
 1：是。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -39581,7 +39579,7 @@ baseline/main/high。默认baseline
 
     @property
     def AdaptiveChildren(self):
-        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        r"""自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChildTemplateInfo
         """
@@ -39634,7 +39632,7 @@ baseline/main/high。默认baseline
 
 
 class TimeShiftBillData(AbstractModel):
-    """时移计费明细数据。
+    r"""时移计费明细数据。
 
     """
 
@@ -39659,7 +39657,7 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Domain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._Domain
@@ -39670,7 +39668,7 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Duration(self):
-        """时移文件时长，单位分钟。
+        r"""时移文件时长，单位分钟。
         :rtype: float
         """
         return self._Duration
@@ -39681,7 +39679,7 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def StoragePeriod(self):
-        """时移配置天数，单位天。
+        r"""时移配置天数，单位天。
         :rtype: float
         """
         return self._StoragePeriod
@@ -39692,7 +39690,7 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Time(self):
-        """时间点，格式: yyyy-mm-ddTHH:MM:SSZ。
+        r"""时间点，格式: yyyy-mm-ddTHH:MM:SSZ。
         :rtype: str
         """
         return self._Time
@@ -39703,7 +39701,7 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def TotalDuration(self):
-        """时移总时长，单位分钟。
+        r"""时移总时长，单位分钟。
         :rtype: float
         """
         return self._TotalDuration
@@ -39730,7 +39728,7 @@ class TimeShiftBillData(AbstractModel):
 
 
 class TimeShiftRecord(AbstractModel):
-    """时移录制段。
+    r"""时移录制段。
 
     """
 
@@ -39749,7 +39747,7 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def Sid(self):
-        """时移录制会话标识。
+        r"""时移录制会话标识。
         :rtype: str
         """
         return self._Sid
@@ -39760,7 +39758,7 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def StartTime(self):
-        """录制会话开始时间，Unix 时间戳。
+        r"""录制会话开始时间，Unix 时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -39771,7 +39769,7 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def EndTime(self):
-        """录制会话结束时间，Unix 时间戳。
+        r"""录制会话结束时间，Unix 时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -39796,7 +39794,7 @@ class TimeShiftRecord(AbstractModel):
 
 
 class TimeShiftStreamInfo(AbstractModel):
-    """时移流。
+    r"""时移流。
 
     """
 
@@ -39840,7 +39838,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def DomainGroup(self):
-        """推流域名所属组。
+        r"""推流域名所属组。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39852,7 +39850,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._Domain
@@ -39863,7 +39861,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """推流路径。
+        r"""推流路径。
         :rtype: str
         """
         return self._AppName
@@ -39874,7 +39872,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -39885,7 +39883,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """流起始时间，Unix 时间戳。
+        r"""流起始时间，Unix 时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -39896,7 +39894,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """截止查询时流结束时间，Unix 时间戳。
+        r"""截止查询时流结束时间，Unix 时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -39907,7 +39905,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def TransCodeId(self):
-        """转码模板ID。
+        r"""转码模板ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -39919,7 +39917,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def StreamType(self):
-        """流类型，取值0为原始流，1为水印流，2为转码流。
+        r"""流类型，取值0为原始流，1为水印流，2为转码流。
         :rtype: int
         """
         return self._StreamType
@@ -39930,7 +39928,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """时移数据存储时长，单位秒。
+        r"""时移数据存储时长，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -39942,7 +39940,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
     @property
     def TimeShiftSubStreams(self):
-        """时移自适应码率子流列表。
+        r"""时移自适应码率子流列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimeShiftSubStream
         """
@@ -39980,7 +39978,7 @@ class TimeShiftStreamInfo(AbstractModel):
 
 
 class TimeShiftSubStream(AbstractModel):
-    """时移自适应码率子流信息。
+    r"""时移自适应码率子流信息。
 
     """
 
@@ -39993,7 +39991,7 @@ class TimeShiftSubStream(AbstractModel):
 
     @property
     def TransCodeId(self):
-        """时移自适应码率子流转码模板ID。
+        r"""时移自适应码率子流转码模板ID。
         :rtype: int
         """
         return self._TransCodeId
@@ -40016,7 +40014,7 @@ class TimeShiftSubStream(AbstractModel):
 
 
 class TimeShiftTemplate(AbstractModel):
-    """直播时移模板配置
+    r"""直播时移模板配置
 
     """
 
@@ -40060,7 +40058,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -40071,7 +40069,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def Duration(self):
-        """时移时长。
+        r"""时移时长。
 单位：秒。
         :rtype: int
         """
@@ -40083,7 +40081,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def ItemDuration(self):
-        """分片时长。
+        r"""分片时长。
 可取3-10。
 单位：s。
 默认值：5。
@@ -40097,7 +40095,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def TemplateId(self):
-        """模板id。
+        r"""模板id。
         :rtype: int
         """
         return self._TemplateId
@@ -40108,7 +40106,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def Description(self):
-        """模板描述。
+        r"""模板描述。
         :rtype: str
         """
         return self._Description
@@ -40119,7 +40117,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def Area(self):
-        """地域：
+        r"""地域：
 Mainland：中国大陆；
 Overseas：海外及港澳台地区；
 默认值：Mainland。
@@ -40133,7 +40131,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def RemoveWatermark(self):
-        """是否去除水印。
+        r"""是否去除水印。
 为true则将录制原始流。
 默认值：false。
         :rtype: bool
@@ -40146,7 +40144,7 @@ Overseas：海外及港澳台地区；
 
     @property
     def TranscodeTemplateIds(self):
-        """转码流id列表。
+        r"""转码流id列表。
 此参数仅在 RemoveWatermark为false时生效。
         :rtype: list of int non-negative
         """
@@ -40177,7 +40175,7 @@ Overseas：海外及港澳台地区；
 
 
 class TimeShiftWriteSizeData(AbstractModel):
-    """直播时移写入量数据。
+    r"""直播时移写入量数据。
 
     """
 
@@ -40202,7 +40200,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
     @property
     def Area(self):
-        """区域。
+        r"""区域。
         :rtype: str
         """
         return self._Area
@@ -40213,7 +40211,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
     @property
     def Time(self):
-        """时间，格式为：yyyy-mm-ddTHH:MM:SSZ。
+        r"""时间，格式为：yyyy-mm-ddTHH:MM:SSZ。
         :rtype: str
         """
         return self._Time
@@ -40224,7 +40222,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
     @property
     def WriteSize(self):
-        """写入量（单位：字节）
+        r"""写入量（单位：字节）
         :rtype: float
         """
         return self._WriteSize
@@ -40235,7 +40233,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
     @property
     def Domain(self):
-        """域名。
+        r"""域名。
         :rtype: str
         """
         return self._Domain
@@ -40246,7 +40244,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
     @property
     def StorageDays(self):
-        """时移天数。
+        r"""时移天数。
         :rtype: int
         """
         return self._StorageDays
@@ -40273,7 +40271,7 @@ class TimeShiftWriteSizeData(AbstractModel):
 
 
 class TimeValue(AbstractModel):
-    """某个时间点的指标的数值是多少。
+    r"""某个时间点的指标的数值是多少。
 
     """
 
@@ -40289,7 +40287,7 @@ class TimeValue(AbstractModel):
 
     @property
     def Time(self):
-        """UTC 时间，时间格式：yyyy-mm-ddTHH:MM:SSZ。
+        r"""UTC 时间，时间格式：yyyy-mm-ddTHH:MM:SSZ。
         :rtype: str
         """
         return self._Time
@@ -40300,7 +40298,7 @@ class TimeValue(AbstractModel):
 
     @property
     def Num(self):
-        """数值。
+        r"""数值。
         :rtype: int
         """
         return self._Num
@@ -40324,7 +40322,7 @@ class TimeValue(AbstractModel):
 
 
 class TranscodeDetailInfo(AbstractModel):
-    """转码详细信息。
+    r"""转码详细信息。
 
     """
 
@@ -40373,7 +40371,7 @@ Overseas：海外。
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -40384,7 +40382,7 @@ Overseas：海外。
 
     @property
     def StartTime(self):
-        """开始时间（北京时间），格式：yyyy-mm-dd HH:MM。
+        r"""开始时间（北京时间），格式：yyyy-mm-dd HH:MM。
         :rtype: str
         """
         return self._StartTime
@@ -40395,7 +40393,7 @@ Overseas：海外。
 
     @property
     def EndTime(self):
-        """结束时间（北京时间），格式：yyyy-mm-dd HH:MM。
+        r"""结束时间（北京时间），格式：yyyy-mm-dd HH:MM。
         :rtype: str
         """
         return self._EndTime
@@ -40406,7 +40404,7 @@ Overseas：海外。
 
     @property
     def Duration(self):
-        """转码时长，单位：分钟。
+        r"""转码时长，单位：分钟。
 注意：因推流过程中可能有中断重推情况，此处时长为真实转码时长累加值，并非结束时间和开始时间的间隔。
         :rtype: int
         """
@@ -40418,7 +40416,7 @@ Overseas：海外。
 
     @property
     def ModuleCodec(self):
-        """编码方式，带模块，
+        r"""编码方式，带模块，
 示例：
 liveprocessor_ACC:  音频转码，
 liveprocessor_H264：直播转码-H264，
@@ -40435,7 +40433,7 @@ topspeed_H265：极速高清-H265。
 
     @property
     def Bitrate(self):
-        """码率。
+        r"""码率。
         :rtype: int
         """
         return self._Bitrate
@@ -40446,7 +40444,7 @@ topspeed_H265：极速高清-H265。
 
     @property
     def Type(self):
-        """类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark），快直播（Webrtc）。
+        r"""类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark），快直播（Webrtc）。
         :rtype: str
         """
         return self._Type
@@ -40457,7 +40455,7 @@ topspeed_H265：极速高清-H265。
 
     @property
     def PushDomain(self):
-        """推流域名。
+        r"""推流域名。
         :rtype: str
         """
         return self._PushDomain
@@ -40468,7 +40466,7 @@ topspeed_H265：极速高清-H265。
 
     @property
     def Resolution(self):
-        """分辨率。
+        r"""分辨率。
         :rtype: str
         """
         return self._Resolution
@@ -40479,7 +40477,7 @@ topspeed_H265：极速高清-H265。
 
     @property
     def MainlandOrOversea(self):
-        """地域：
+        r"""地域：
 Mainland：国内。
 Overseas：海外。
         :rtype: str
@@ -40513,7 +40511,7 @@ Overseas：海外。
 
 
 class TranscodeTaskNum(AbstractModel):
-    """转码任务数。
+    r"""转码任务数。
 
     """
 
@@ -40532,7 +40530,7 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def Time(self):
-        """时间点。
+        r"""时间点。
         :rtype: str
         """
         return self._Time
@@ -40543,7 +40541,7 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def CodeRate(self):
-        """码率。
+        r"""码率。
         :rtype: int
         """
         return self._CodeRate
@@ -40554,7 +40552,7 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def Num(self):
-        """任务数。
+        r"""任务数。
         :rtype: int
         """
         return self._Num
@@ -40579,7 +40577,7 @@ class TranscodeTaskNum(AbstractModel):
 
 
 class TranscodeTotalInfo(AbstractModel):
-    """转码总量数据
+    r"""转码总量数据
 
     """
 
@@ -40610,7 +40608,7 @@ topspeed_H265 =》极速高清-H265。
 
     @property
     def Time(self):
-        """时间点，
+        r"""时间点，
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -40624,7 +40622,7 @@ topspeed_H265 =》极速高清-H265。
 
     @property
     def Duration(self):
-        """转码时长，单位：分钟。
+        r"""转码时长，单位：分钟。
         :rtype: int
         """
         return self._Duration
@@ -40635,7 +40633,7 @@ topspeed_H265 =》极速高清-H265。
 
     @property
     def ModuleCodec(self):
-        """编码方式，带模块，
+        r"""编码方式，带模块，
 示例：
 liveprocessor_H264 =》直播转码-H264，
 liveprocessor_H265 =》 直播转码-H265，
@@ -40651,7 +40649,7 @@ topspeed_H265 =》极速高清-H265。
 
     @property
     def Resolution(self):
-        """分辨率，
+        r"""分辨率，
 示例：540*480。
         :rtype: str
         """
@@ -40678,7 +40676,7 @@ topspeed_H265 =》极速高清-H265。
 
 
 class TransitionTypeInfo(AbstractModel):
-    """转场信息
+    r"""转场信息
 
     """
 
@@ -40697,7 +40695,7 @@ class TransitionTypeInfo(AbstractModel):
 
     @property
     def TransitionType(self):
-        """转场名称
+        r"""转场名称
         :rtype: str
         """
         return self._TransitionType
@@ -40708,7 +40706,7 @@ class TransitionTypeInfo(AbstractModel):
 
     @property
     def SourceUrl(self):
-        """素材url
+        r"""素材url
         :rtype: str
         """
         return self._SourceUrl
@@ -40719,7 +40717,7 @@ class TransitionTypeInfo(AbstractModel):
 
     @property
     def Index(self):
-        """转场的下标，可用来排序，从1开始递增
+        r"""转场的下标，可用来排序，从1开始递增
         :rtype: int
         """
         return self._Index
@@ -40744,7 +40742,7 @@ class TransitionTypeInfo(AbstractModel):
 
 
 class UnBindLiveDomainCertRequest(AbstractModel):
-    """UnBindLiveDomainCert请求参数结构体
+    r"""UnBindLiveDomainCert请求参数结构体
 
     """
 
@@ -40764,7 +40762,7 @@ formal(默认): 解绑正式规则
 
     @property
     def DomainName(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._DomainName
@@ -40775,7 +40773,7 @@ formal(默认): 解绑正式规则
 
     @property
     def Type(self):
-        """枚举值：
+        r"""枚举值：
 gray: 解绑灰度规则
 formal(默认): 解绑正式规则
 
@@ -40803,7 +40801,7 @@ formal(默认): 解绑正式规则
 
 
 class UnBindLiveDomainCertResponse(AbstractModel):
-    """UnBindLiveDomainCert返回参数结构体
+    r"""UnBindLiveDomainCert返回参数结构体
 
     """
 
@@ -40816,7 +40814,7 @@ class UnBindLiveDomainCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -40831,7 +40829,7 @@ class UnBindLiveDomainCertResponse(AbstractModel):
 
 
 class UpdateLiveWatermarkRequest(AbstractModel):
-    """UpdateLiveWatermark请求参数结构体
+    r"""UpdateLiveWatermark请求参数结构体
 
     """
 
@@ -40872,7 +40870,7 @@ URL中禁止包含的字符：
 
     @property
     def WatermarkId(self):
-        """水印 ID。
+        r"""水印 ID。
 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
         :rtype: int
         """
@@ -40884,7 +40882,7 @@ URL中禁止包含的字符：
 
     @property
     def PictureUrl(self):
-        """水印图片 URL。
+        r"""水印图片 URL。
 URL中禁止包含的字符：
  ;(){}$>`#"\'|
         :rtype: str
@@ -40897,7 +40895,7 @@ URL中禁止包含的字符：
 
     @property
     def XPosition(self):
-        """显示位置，X轴偏移，单位是百分比，默认 0。
+        r"""显示位置，X轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._XPosition
@@ -40908,7 +40906,7 @@ URL中禁止包含的字符：
 
     @property
     def YPosition(self):
-        """显示位置，Y轴偏移，单位是百分比，默认 0。
+        r"""显示位置，Y轴偏移，单位是百分比，默认 0。
         :rtype: int
         """
         return self._YPosition
@@ -40919,7 +40917,7 @@ URL中禁止包含的字符：
 
     @property
     def WatermarkName(self):
-        """水印名称。
+        r"""水印名称。
 最长30字节。
         :rtype: str
         """
@@ -40931,7 +40929,7 @@ URL中禁止包含的字符：
 
     @property
     def Width(self):
-        """水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        r"""水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :rtype: int
         """
         return self._Width
@@ -40942,7 +40940,7 @@ URL中禁止包含的字符：
 
     @property
     def Height(self):
-        """水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        r"""水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :rtype: int
         """
         return self._Height
@@ -40953,7 +40951,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundWidth(self):
-        """背景水印宽度。默认宽度1920。
+        r"""背景水印宽度。默认宽度1920。
         :rtype: int
         """
         return self._BackgroundWidth
@@ -40964,7 +40962,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundHeight(self):
-        """背景水印高度。默认高度1080。
+        r"""背景水印高度。默认高度1080。
         :rtype: int
         """
         return self._BackgroundHeight
@@ -40995,7 +40993,7 @@ URL中禁止包含的字符：
 
 
 class UpdateLiveWatermarkResponse(AbstractModel):
-    """UpdateLiveWatermark返回参数结构体
+    r"""UpdateLiveWatermark返回参数结构体
 
     """
 
@@ -41008,7 +41006,7 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41023,7 +41021,7 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
 
 class WatermarkInfo(AbstractModel):
-    """水印信息。
+    r"""水印信息。
 
     """
 
@@ -41067,7 +41065,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def WatermarkId(self):
-        """水印 ID。
+        r"""水印 ID。
         :rtype: int
         """
         return self._WatermarkId
@@ -41078,7 +41076,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def PictureUrl(self):
-        """水印图片 URL。
+        r"""水印图片 URL。
         :rtype: str
         """
         return self._PictureUrl
@@ -41089,7 +41087,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def XPosition(self):
-        """显示位置，X 轴偏移。
+        r"""显示位置，X 轴偏移。
         :rtype: int
         """
         return self._XPosition
@@ -41100,7 +41098,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def YPosition(self):
-        """显示位置，Y 轴偏移。
+        r"""显示位置，Y 轴偏移。
         :rtype: int
         """
         return self._YPosition
@@ -41111,7 +41109,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def WatermarkName(self):
-        """水印名称。
+        r"""水印名称。
         :rtype: str
         """
         return self._WatermarkName
@@ -41122,7 +41120,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def Status(self):
-        """当前状态。0：未使用，1:使用中。
+        r"""当前状态。0：未使用，1:使用中。
         :rtype: int
         """
         return self._Status
@@ -41133,7 +41131,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """添加时间。
+        r"""添加时间。
 注：此字段为北京时间（UTC+8时区）。
         :rtype: str
         """
@@ -41145,7 +41143,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def Width(self):
-        """水印宽。
+        r"""水印宽。
         :rtype: int
         """
         return self._Width
@@ -41156,7 +41154,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def Height(self):
-        """水印高。
+        r"""水印高。
         :rtype: int
         """
         return self._Height
@@ -41167,7 +41165,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def BackgroundWidth(self):
-        """背景水印宽。
+        r"""背景水印宽。
         :rtype: int
         """
         return self._BackgroundWidth
@@ -41178,7 +41176,7 @@ class WatermarkInfo(AbstractModel):
 
     @property
     def BackgroundHeight(self):
-        """背景水印高。
+        r"""背景水印高。
         :rtype: int
         """
         return self._BackgroundHeight
@@ -41211,7 +41209,7 @@ class WatermarkInfo(AbstractModel):
 
 
 class XP2PDetailInfo(AbstractModel):
-    """P2P流信息。
+    r"""P2P流信息。
 
     """
 
@@ -41254,7 +41252,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def CdnBytes(self):
-        """CDN流量。
+        r"""CDN流量。
         :rtype: int
         """
         return self._CdnBytes
@@ -41265,7 +41263,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def P2pBytes(self):
-        """P2P流量。
+        r"""P2P流量。
         :rtype: int
         """
         return self._P2pBytes
@@ -41276,7 +41274,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def StuckPeople(self):
-        """卡播人数。
+        r"""卡播人数。
         :rtype: int
         """
         return self._StuckPeople
@@ -41287,7 +41285,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def StuckTimes(self):
-        """卡播次数。
+        r"""卡播次数。
         :rtype: int
         """
         return self._StuckTimes
@@ -41298,7 +41296,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def OnlinePeople(self):
-        """在线人数。
+        r"""在线人数。
         :rtype: int
         """
         return self._OnlinePeople
@@ -41309,7 +41307,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def Request(self):
-        """起播请求次数
+        r"""起播请求次数
         :rtype: int
         """
         return self._Request
@@ -41320,7 +41318,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def RequestSuccess(self):
-        """起播成功次数
+        r"""起播成功次数
         :rtype: int
         """
         return self._RequestSuccess
@@ -41331,7 +41329,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def Time(self):
-        """时间，一分钟粒度，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。。
+        r"""时间，一分钟粒度，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。。
         :rtype: str
         """
         return self._Time
@@ -41342,7 +41340,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型，分live和vod两种。
+        r"""类型，分live和vod两种。
         :rtype: str
         """
         return self._Type
@@ -41353,7 +41351,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """流ID。
+        r"""流ID。
         :rtype: str
         """
         return self._StreamName
@@ -41364,7 +41362,7 @@ class XP2PDetailInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """AppId。
+        r"""AppId。
         :rtype: str
         """
         return self._AppId

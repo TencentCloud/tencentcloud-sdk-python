@@ -27,7 +27,7 @@ class TcbrClient(AbstractClient):
 
 
     def CreateCloudRunEnv(self, request):
-        """创建云托管环境，并开通资源。
+        r"""创建云托管环境，并开通资源。
 
         :param request: Request instance for CreateCloudRunEnv.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.CreateCloudRunEnvRequest`
@@ -50,7 +50,7 @@ class TcbrClient(AbstractClient):
 
 
     def CreateCloudRunServer(self, request):
-        """创建云托管服务接口
+        r"""创建云托管服务接口
 
         :param request: Request instance for CreateCloudRunServer.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.CreateCloudRunServerRequest`
@@ -73,7 +73,7 @@ class TcbrClient(AbstractClient):
 
 
     def DescribeCloudRunEnvs(self, request):
-        """获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
+        r"""获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 
         :param request: Request instance for DescribeCloudRunEnvs.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunEnvsRequest`
@@ -96,7 +96,7 @@ class TcbrClient(AbstractClient):
 
 
     def DescribeCloudRunServerDetail(self, request):
-        """查询云托管服务详情
+        r"""查询云托管服务详情
 
         :param request: Request instance for DescribeCloudRunServerDetail.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunServerDetailRequest`
@@ -119,7 +119,7 @@ class TcbrClient(AbstractClient):
 
 
     def DescribeCloudRunServers(self, request):
-        """查询云托管服务列表接口
+        r"""查询云托管服务列表接口
 
         :param request: Request instance for DescribeCloudRunServers.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunServersRequest`
@@ -142,7 +142,7 @@ class TcbrClient(AbstractClient):
 
 
     def DescribeEnvBaseInfo(self, request):
-        """查询环境基础信息
+        r"""查询环境基础信息
 
         :param request: Request instance for DescribeEnvBaseInfo.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeEnvBaseInfoRequest`
@@ -165,7 +165,7 @@ class TcbrClient(AbstractClient):
 
 
     def DescribeServerManageTask(self, request):
-        """查询服务管理任务信息
+        r"""查询服务管理任务信息
 
         :param request: Request instance for DescribeServerManageTask.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeServerManageTaskRequest`
@@ -188,7 +188,7 @@ class TcbrClient(AbstractClient):
 
 
     def OperateServerManage(self, request):
-        """操作发布单
+        r"""操作发布单
 
         :param request: Request instance for OperateServerManage.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.OperateServerManageRequest`
@@ -211,7 +211,7 @@ class TcbrClient(AbstractClient):
 
 
     def ReleaseGray(self, request):
-        """灰度发布
+        r"""灰度发布
 
         :param request: Request instance for ReleaseGray.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.ReleaseGrayRequest`
@@ -234,7 +234,7 @@ class TcbrClient(AbstractClient):
 
 
     def UpdateCloudRunServer(self, request):
-        """更新云托管服务
+        r"""更新云托管服务
 
         :param request: Request instance for UpdateCloudRunServer.
         :type request: :class:`tencentcloud.tcbr.v20220217.models.UpdateCloudRunServerRequest`

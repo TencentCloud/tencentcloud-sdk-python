@@ -27,7 +27,7 @@ class MnaClient(AbstractClient):
 
 
     def ActivateHardware(self, request):
-        """激活硬件设备
+        r"""激活硬件设备
 
         :param request: Request instance for ActivateHardware.
         :type request: :class:`tencentcloud.mna.v20210119.models.ActivateHardwareRequest`
@@ -50,7 +50,7 @@ class MnaClient(AbstractClient):
 
 
     def AddDevice(self, request):
-        """新建设备记录
+        r"""新建设备记录
 
         :param request: Request instance for AddDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.AddDeviceRequest`
@@ -73,7 +73,7 @@ class MnaClient(AbstractClient):
 
 
     def AddGroup(self, request):
-        """新建分组
+        r"""新建分组
 
         :param request: Request instance for AddGroup.
         :type request: :class:`tencentcloud.mna.v20210119.models.AddGroupRequest`
@@ -96,7 +96,7 @@ class MnaClient(AbstractClient):
 
 
     def AddHardware(self, request):
-        """添加硬件设备，生成未激活的硬件设备，可支持批量添加
+        r"""添加硬件设备，生成未激活的硬件设备，可支持批量添加
 
         :param request: Request instance for AddHardware.
         :type request: :class:`tencentcloud.mna.v20210119.models.AddHardwareRequest`
@@ -119,7 +119,7 @@ class MnaClient(AbstractClient):
 
 
     def AddL3Conn(self, request):
-        """新建互通规则
+        r"""新建互通规则
 
         :param request: Request instance for AddL3Conn.
         :type request: :class:`tencentcloud.mna.v20210119.models.AddL3ConnRequest`
@@ -142,7 +142,7 @@ class MnaClient(AbstractClient):
 
 
     def CreateEncryptedKey(self, request):
-        """通过此接口设置和更新预置密钥
+        r"""通过此接口设置和更新预置密钥
 
         :param request: Request instance for CreateEncryptedKey.
         :type request: :class:`tencentcloud.mna.v20210119.models.CreateEncryptedKeyRequest`
@@ -165,7 +165,7 @@ class MnaClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """删除设备信息
+        r"""删除设备信息
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.DeleteDeviceRequest`
@@ -188,7 +188,7 @@ class MnaClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除分组
+        r"""删除分组
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.mna.v20210119.models.DeleteGroupRequest`
@@ -211,7 +211,7 @@ class MnaClient(AbstractClient):
 
 
     def DeleteL3Conn(self, request):
-        """删除互通规则
+        r"""删除互通规则
 
         :param request: Request instance for DeleteL3Conn.
         :type request: :class:`tencentcloud.mna.v20210119.models.DeleteL3ConnRequest`
@@ -234,7 +234,7 @@ class MnaClient(AbstractClient):
 
 
     def DownloadActiveDeviceCount(self, request):
-        """下载活跃设备数量统计
+        r"""下载活跃设备数量统计
 
         :param request: Request instance for DownloadActiveDeviceCount.
         :type request: :class:`tencentcloud.mna.v20210119.models.DownloadActiveDeviceCountRequest`
@@ -257,7 +257,7 @@ class MnaClient(AbstractClient):
 
 
     def GetActiveDeviceCount(self, request):
-        """活跃设备数量统计
+        r"""活跃设备数量统计
 
         :param request: Request instance for GetActiveDeviceCount.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetActiveDeviceCountRequest`
@@ -280,7 +280,7 @@ class MnaClient(AbstractClient):
 
 
     def GetDevice(self, request):
-        """通过指定设备的ID查找设备详细信息
+        r"""通过指定设备的ID查找设备详细信息
 
         :param request: Request instance for GetDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetDeviceRequest`
@@ -303,7 +303,7 @@ class MnaClient(AbstractClient):
 
 
     def GetDevicePayMode(self, request):
-        """获取设备付费模式
+        r"""获取设备付费模式
 
         :param request: Request instance for GetDevicePayMode.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetDevicePayModeRequest`
@@ -326,7 +326,7 @@ class MnaClient(AbstractClient):
 
 
     def GetDevices(self, request):
-        """获取设备信息列表
+        r"""获取设备信息列表
 
         :param request: Request instance for GetDevices.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetDevicesRequest`
@@ -349,7 +349,7 @@ class MnaClient(AbstractClient):
 
 
     def GetFlowAlarmInfo(self, request):
-        """根据AppId查询用户设置的流量告警信息，包括阈值，回调url和key
+        r"""根据AppId查询用户设置的流量告警信息，包括阈值，回调url和key
 
         :param request: Request instance for GetFlowAlarmInfo.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowAlarmInfoRequest`
@@ -372,7 +372,7 @@ class MnaClient(AbstractClient):
 
 
     def GetFlowPackages(self, request):
-        """获取流量包列表
+        r"""获取流量包列表
 
         :param request: Request instance for GetFlowPackages.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowPackagesRequest`
@@ -395,7 +395,7 @@ class MnaClient(AbstractClient):
 
 
     def GetFlowStatistic(self, request):
-        """获取指定设备Id，指定时间点数据流量使用情况
+        r"""获取指定设备Id，指定时间点数据流量使用情况
 
         :param request: Request instance for GetFlowStatistic.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticRequest`
@@ -418,7 +418,7 @@ class MnaClient(AbstractClient):
 
 
     def GetFlowStatisticByGroup(self, request):
-        """获取指定分组，指定时间数据流量使用情况
+        r"""获取指定分组，指定时间数据流量使用情况
 
         :param request: Request instance for GetFlowStatisticByGroup.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByGroupRequest`
@@ -441,7 +441,7 @@ class MnaClient(AbstractClient):
 
 
     def GetFlowStatisticByRegion(self, request):
-        """获取指定区域，指定时间点数据流量使用情况
+        r"""获取指定区域，指定时间点数据流量使用情况
 
         :param request: Request instance for GetFlowStatisticByRegion.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByRegionRequest`
@@ -464,7 +464,7 @@ class MnaClient(AbstractClient):
 
 
     def GetGroupDetail(self, request):
-        """查看分组详细信息
+        r"""查看分组详细信息
 
         :param request: Request instance for GetGroupDetail.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetGroupDetailRequest`
@@ -487,7 +487,7 @@ class MnaClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """获取分组列表
+        r"""获取分组列表
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetGroupListRequest`
@@ -510,7 +510,7 @@ class MnaClient(AbstractClient):
 
 
     def GetHardwareList(self, request):
-        """获取厂商硬件列表
+        r"""获取厂商硬件列表
 
         :param request: Request instance for GetHardwareList.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetHardwareListRequest`
@@ -533,7 +533,7 @@ class MnaClient(AbstractClient):
 
 
     def GetL3ConnList(self, request):
-        """获取互通规则列表
+        r"""获取互通规则列表
 
         :param request: Request instance for GetL3ConnList.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetL3ConnListRequest`
@@ -556,7 +556,7 @@ class MnaClient(AbstractClient):
 
 
     def GetMultiFlowStatistic(self, request):
-        """批量获取设备流量统计曲线
+        r"""批量获取设备流量统计曲线
 
         :param request: Request instance for GetMultiFlowStatistic.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetMultiFlowStatisticRequest`
@@ -579,7 +579,7 @@ class MnaClient(AbstractClient):
 
 
     def GetNetMonitor(self, request):
-        """获取单设备的实时流量统计指标
+        r"""获取单设备的实时流量统计指标
 
         :param request: Request instance for GetNetMonitor.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetNetMonitorRequest`
@@ -602,7 +602,7 @@ class MnaClient(AbstractClient):
 
 
     def GetPublicKey(self, request):
-        """获取公钥用于验签
+        r"""获取公钥用于验签
 
         :param request: Request instance for GetPublicKey.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetPublicKeyRequest`
@@ -625,7 +625,7 @@ class MnaClient(AbstractClient):
 
 
     def GetStatisticData(self, request):
-        """在用量统计页面下载流量数据
+        r"""在用量统计页面下载流量数据
 
         :param request: Request instance for GetStatisticData.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetStatisticDataRequest`
@@ -648,7 +648,7 @@ class MnaClient(AbstractClient):
 
 
     def GetVendorHardware(self, request):
-        """获取厂商硬件设备列表
+        r"""获取厂商硬件设备列表
 
         :param request: Request instance for GetVendorHardware.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetVendorHardwareRequest`
@@ -671,7 +671,7 @@ class MnaClient(AbstractClient):
 
 
     def GroupAddDevice(self, request):
-        """向已存在分组中添加设备
+        r"""向已存在分组中添加设备
 
         :param request: Request instance for GroupAddDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.GroupAddDeviceRequest`
@@ -694,7 +694,7 @@ class MnaClient(AbstractClient):
 
 
     def GroupDeleteDevice(self, request):
-        """删除分组中的设备
+        r"""删除分组中的设备
 
         :param request: Request instance for GroupDeleteDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.GroupDeleteDeviceRequest`
@@ -717,7 +717,7 @@ class MnaClient(AbstractClient):
 
 
     def ModifyPackageRenewFlag(self, request):
-        """可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
+        r"""可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
 
         :param request: Request instance for ModifyPackageRenewFlag.
         :type request: :class:`tencentcloud.mna.v20210119.models.ModifyPackageRenewFlagRequest`
@@ -740,7 +740,7 @@ class MnaClient(AbstractClient):
 
 
     def OrderFlowPackage(self, request):
-        """购买预付费流量包
+        r"""购买预付费流量包
 
         :param request: Request instance for OrderFlowPackage.
         :type request: :class:`tencentcloud.mna.v20210119.models.OrderFlowPackageRequest`
@@ -763,7 +763,7 @@ class MnaClient(AbstractClient):
 
 
     def OrderPerLicense(self, request):
-        """购买一次性授权License
+        r"""购买一次性授权License
 
         :param request: Request instance for OrderPerLicense.
         :type request: :class:`tencentcloud.mna.v20210119.models.OrderPerLicenseRequest`
@@ -786,7 +786,7 @@ class MnaClient(AbstractClient):
 
 
     def ReportOrder(self, request):
-        """用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+        r"""用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
 
         :param request: Request instance for ReportOrder.
         :type request: :class:`tencentcloud.mna.v20210119.models.ReportOrderRequest`
@@ -809,7 +809,7 @@ class MnaClient(AbstractClient):
 
 
     def SetNotifyUrl(self, request):
-        """设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
+        r"""设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
 
         :param request: Request instance for SetNotifyUrl.
         :type request: :class:`tencentcloud.mna.v20210119.models.SetNotifyUrlRequest`
@@ -832,7 +832,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateDevice(self, request):
-        """更新设备信息
+        r"""更新设备信息
 
         :param request: Request instance for UpdateDevice.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateDeviceRequest`
@@ -855,7 +855,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateGroup(self, request):
-        """更新分组备注
+        r"""更新分组备注
 
         :param request: Request instance for UpdateGroup.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateGroupRequest`
@@ -878,7 +878,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateHardware(self, request):
-        """更新硬件信息
+        r"""更新硬件信息
 
         :param request: Request instance for UpdateHardware.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateHardwareRequest`
@@ -901,7 +901,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateL3Cidr(self, request):
-        """更新互通规则CIDR
+        r"""更新互通规则CIDR
 
         :param request: Request instance for UpdateL3Cidr.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3CidrRequest`
@@ -924,7 +924,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateL3Conn(self, request):
-        """更新互通规则备注
+        r"""更新互通规则备注
 
         :param request: Request instance for UpdateL3Conn.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3ConnRequest`
@@ -947,7 +947,7 @@ class MnaClient(AbstractClient):
 
 
     def UpdateL3Switch(self, request):
-        """更新互通规则开关
+        r"""更新互通规则开关
 
         :param request: Request instance for UpdateL3Switch.
         :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3SwitchRequest`

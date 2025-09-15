@@ -27,7 +27,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFakeURL(self, request):
-        """添加仿冒链接（举报）
+        r"""添加仿冒链接（举报）
 
         :param request: Request instance for CreateBPFakeURL.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPFakeURLRequest`
@@ -50,7 +50,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPFalseTicket(self, request):
-        """添加误报工单
+        r"""添加误报工单
 
         :param request: Request instance for CreateBPFalseTicket.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPFalseTicketRequest`
@@ -73,7 +73,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPOfflineAttachment(self, request):
-        """添加下线材料
+        r"""添加下线材料
 
         :param request: Request instance for CreateBPOfflineAttachment.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineAttachmentRequest`
@@ -96,7 +96,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPOfflineTicket(self, request):
-        """添加下线工单
+        r"""添加下线工单
 
         :param request: Request instance for CreateBPOfflineTicket.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineTicketRequest`
@@ -119,7 +119,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateBPProtectURLs(self, request):
-        """添加保护网站
+        r"""添加保护网站
 
         :param request: Request instance for CreateBPProtectURLs.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPProtectURLsRequest`
@@ -142,7 +142,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRBlock(self, request):
-        """新建协查处置
+        r"""新建协查处置
 
         :param request: Request instance for CreateCRBlock.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRBlockRequest`
@@ -165,7 +165,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRCompanyVerify(self, request):
-        """本接口用于企业认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
+        r"""本接口用于企业认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 
         :param request: Request instance for CreateCRCompanyVerify.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRCompanyVerifyRequest`
@@ -188,7 +188,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRDesktopCode(self, request):
-        """新建过程取证码
+        r"""新建过程取证码
 
         :param request: Request instance for CreateCRDesktopCode.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRDesktopCodeRequest`
@@ -211,7 +211,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRRight(self, request):
-        """版权保护-新建发函接口
+        r"""版权保护-新建发函接口
 
         :param request: Request instance for CreateCRRight.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRRightRequest`
@@ -234,7 +234,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRRightFile(self, request):
-        """权属文件添加
+        r"""权属文件添加
 
         :param request: Request instance for CreateCRRightFile.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRRightFileRequest`
@@ -257,7 +257,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRTort(self, request):
-        """举报侵权链接
+        r"""举报侵权链接
 
         :param request: Request instance for CreateCRTort.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRTortRequest`
@@ -280,7 +280,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRUserVerify(self, request):
-        """本接口用于个人认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
+        r"""本接口用于个人认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 
         :param request: Request instance for CreateCRUserVerify.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRUserVerifyRequest`
@@ -303,7 +303,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRWork(self, request):
-        """新建作品
+        r"""新建作品
 
         :param request: Request instance for CreateCRWork.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRWorkRequest`
@@ -326,7 +326,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPCompanyInfo(self, request):
-        """查询企业信息
+        r"""查询企业信息
 
         :param request: Request instance for DescribeBPCompanyInfo.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPCompanyInfoRequest`
@@ -349,7 +349,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPFakeURLs(self, request):
-        """查询仿冒链接
+        r"""查询仿冒链接
 
         :param request: Request instance for DescribeBPFakeURLs.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPFakeURLsRequest`
@@ -372,7 +372,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPProtectURLs(self, request):
-        """查询保护网站
+        r"""查询保护网站
 
         :param request: Request instance for DescribeBPProtectURLs.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPProtectURLsRequest`
@@ -395,7 +395,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeBPReportFakeURLs(self, request):
-        """查询举报列表
+        r"""查询举报列表
 
         :param request: Request instance for DescribeBPReportFakeURLs.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPReportFakeURLsRequest`
@@ -418,7 +418,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeCRMonitorDetail(self, request):
-        """版权保护-查询作品监测详情接口
+        r"""版权保护-查询作品监测详情接口
 
         :param request: Request instance for DescribeCRMonitorDetail.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeCRMonitorDetailRequest`
@@ -441,7 +441,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeCRMonitors(self, request):
-        """版权保护-查询监测列表接口
+        r"""版权保护-查询监测列表接口
 
         :param request: Request instance for DescribeCRMonitors.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeCRMonitorsRequest`
@@ -464,7 +464,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeCRObtainDetail(self, request):
-        """查询取证详情
+        r"""查询取证详情
 
         :param request: Request instance for DescribeCRObtainDetail.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeCRObtainDetailRequest`
@@ -487,7 +487,7 @@ class BmaClient(AbstractClient):
 
 
     def DescribeCRWorkInfo(self, request):
-        """查询作品基本信息
+        r"""查询作品基本信息
 
         :param request: Request instance for DescribeCRWorkInfo.
         :type request: :class:`tencentcloud.bma.v20210624.models.DescribeCRWorkInfoRequest`
@@ -510,7 +510,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyBPOfflineAttachment(self, request):
-        """修改下线材料
+        r"""修改下线材料
 
         :param request: Request instance for ModifyBPOfflineAttachment.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyBPOfflineAttachmentRequest`
@@ -533,7 +533,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRBlockStatus(self, request):
-        """协查处置申请
+        r"""协查处置申请
 
         :param request: Request instance for ModifyCRBlockStatus.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRBlockStatusRequest`
@@ -556,7 +556,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRMonitor(self, request):
-        """开启/关闭监测
+        r"""开启/关闭监测
 
         :param request: Request instance for ModifyCRMonitor.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRMonitorRequest`
@@ -579,7 +579,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRObtainStatus(self, request):
-        """取证申请
+        r"""取证申请
 
         :param request: Request instance for ModifyCRObtainStatus.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRObtainStatusRequest`
@@ -602,7 +602,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRRightStatus(self, request):
-        """发函申请
+        r"""发函申请
 
         :param request: Request instance for ModifyCRRightStatus.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRRightStatusRequest`
@@ -625,7 +625,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRWhiteList(self, request):
-        """修改白名单列表
+        r"""修改白名单列表
 
         :param request: Request instance for ModifyCRWhiteList.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRWhiteListRequest`
@@ -648,7 +648,7 @@ class BmaClient(AbstractClient):
 
 
     def UpdateCRWork(self, request):
-        """更新作品
+        r"""更新作品
 
         :param request: Request instance for UpdateCRWork.
         :type request: :class:`tencentcloud.bma.v20210624.models.UpdateCRWorkRequest`

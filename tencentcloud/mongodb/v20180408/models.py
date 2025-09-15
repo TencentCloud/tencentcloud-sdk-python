@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AssignProjectRequest(AbstractModel):
-    """AssignProject请求参数结构体
+    r"""AssignProject请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AssignProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID 列表。格式如：cmgo-p8vn****，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""实例 ID 列表。格式如：cmgo-p8vn****，与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -46,7 +46,7 @@ class AssignProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。项目 ID 具有唯一性，请[登录 MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息的下拉菜单中，选择**项目管理**，即可获取项目ID。
+        r"""项目ID。项目 ID 具有唯一性，请[登录 MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息的下拉菜单中，选择**项目管理**，即可获取项目ID。
         :rtype: int
         """
         return self._ProjectId
@@ -70,7 +70,7 @@ class AssignProjectRequest(AbstractModel):
 
 
 class AssignProjectResponse(AbstractModel):
-    """AssignProject返回参数结构体
+    r"""AssignProject返回参数结构体
 
     """
 
@@ -86,7 +86,7 @@ class AssignProjectResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        """返回的异步任务ID列表。
+        r"""返回的异步任务ID列表。
         :rtype: list of int non-negative
         """
         return self._FlowIds
@@ -97,7 +97,7 @@ class AssignProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -113,7 +113,7 @@ class AssignProjectResponse(AbstractModel):
 
 
 class ClientConnection(AbstractModel):
-    """客户端连接信息，包括客户端IP和连接数
+    r"""客户端连接信息，包括客户端IP和连接数
 
     """
 
@@ -129,7 +129,7 @@ class ClientConnection(AbstractModel):
 
     @property
     def IP(self):
-        """连接的客户端IP
+        r"""连接的客户端IP
         :rtype: str
         """
         return self._IP
@@ -140,7 +140,7 @@ class ClientConnection(AbstractModel):
 
     @property
     def Count(self):
-        """对应客户端IP的连接数
+        r"""对应客户端IP的连接数
         :rtype: int
         """
         return self._Count
@@ -164,7 +164,7 @@ class ClientConnection(AbstractModel):
 
 
 class CreateDBInstanceHourRequest(AbstractModel):
-    """CreateDBInstanceHour请求参数结构体
+    r"""CreateDBInstanceHour请求参数结构体
 
     """
 
@@ -225,7 +225,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """实例内存大小，单位：GB
+        r"""实例内存大小，单位：GB
         :rtype: int
         """
         return self._Memory
@@ -236,7 +236,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Volume(self):
-        """实例硬盘大小，单位：GB
+        r"""实例硬盘大小，单位：GB
         :rtype: int
         """
         return self._Volume
@@ -247,7 +247,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ReplicateSetNum(self):
-        """副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
+        r"""副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -258,7 +258,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SecondaryNum(self):
-        """每个副本集内从节点个数，目前只支持从节点数为2
+        r"""每个副本集内从节点个数，目前只支持从节点数为2
         :rtype: int
         """
         return self._SecondaryNum
@@ -269,7 +269,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
+        r"""MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
         :rtype: str
         """
         return self._EngineVersion
@@ -280,7 +280,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Machine(self):
-        """实例类型，HIO10G：高IO万兆。
+        r"""实例类型，HIO10G：高IO万兆。
         :rtype: str
         """
         return self._Machine
@@ -291,7 +291,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """实例数量，默认值为1, 最小值1，最大值为10
+        r"""实例数量，默认值为1, 最小值1，最大值为10
         :rtype: int
         """
         return self._GoodsNum
@@ -302,7 +302,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区信息，格式如：ap-guangzhou-2
+        r"""可用区信息，格式如：ap-guangzhou-2
         :rtype: str
         """
         return self._Zone
@@ -313,7 +313,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        """实例角色，默认传MASTER即可
+        r"""实例角色，默认传MASTER即可
         :rtype: str
         """
         return self._InstanceRole
@@ -324,7 +324,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，REPLSET-副本集，SHARD-分片集群
+        r"""实例类型，REPLSET-副本集，SHARD-分片集群
         :rtype: str
         """
         return self._InstanceType
@@ -335,7 +335,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Encrypt(self):
-        """数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
+        r"""数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
         :rtype: int
         """
         return self._Encrypt
@@ -346,7 +346,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID，如果不传则默认选择基础网络
+        r"""私有网络ID，如果不传则默认选择基础网络
         :rtype: str
         """
         return self._VpcId
@@ -357,7 +357,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        r"""私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
         :rtype: str
         """
         return self._SubnetId
@@ -368,7 +368,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，不填为默认项目
+        r"""项目ID，不填为默认项目
         :rtype: int
         """
         return self._ProjectId
@@ -379,7 +379,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        """安全组参数
+        r"""安全组参数
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -390,7 +390,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """私有网络ID，如果不传则默认选择基础网络
+        r"""私有网络ID，如果不传则默认选择基础网络
         :rtype: str
         """
         return self._UniqVpcId
@@ -401,7 +401,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        """私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        r"""私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
         :rtype: str
         """
         return self._UniqSubnetId
@@ -440,7 +440,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
-    """CreateDBInstanceHour返回参数结构体
+    r"""CreateDBInstanceHour返回参数结构体
 
     """
 
@@ -459,7 +459,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def DealId(self):
-        """订单ID
+        r"""订单ID
         :rtype: str
         """
         return self._DealId
@@ -470,7 +470,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """创建的实例ID列表
+        r"""创建的实例ID列表
         :rtype: list of str
         """
         return self._InstanceIds
@@ -481,7 +481,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -498,7 +498,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
 
 class CreateDBInstanceRequest(AbstractModel):
-    """CreateDBInstance请求参数结构体
+    r"""CreateDBInstance请求参数结构体
 
     """
 
@@ -550,7 +550,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SecondaryNum(self):
-        """每个副本集内从节点个数
+        r"""每个副本集内从节点个数
         :rtype: int
         """
         return self._SecondaryNum
@@ -561,7 +561,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """实例内存大小，单位：GB
+        r"""实例内存大小，单位：GB
         :rtype: int
         """
         return self._Memory
@@ -572,7 +572,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        """实例硬盘大小，单位：GB
+        r"""实例硬盘大小，单位：GB
         :rtype: int
         """
         return self._Volume
@@ -583,7 +583,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        """指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。 - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+        r"""指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。 - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -594,7 +594,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MachineCode(self):
-        """机器类型，HIO10G：高IO万兆。
+        r"""机器类型，HIO10G：高IO万兆。
         :rtype: str
         """
         return self._MachineCode
@@ -605,7 +605,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """实例数量，默认值为1, 最小值1，最大值为10
+        r"""实例数量，默认值为1, 最小值1，最大值为10
         :rtype: int
         """
         return self._GoodsNum
@@ -616,7 +616,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """实例所属区域名称，格式如：ap-guangzhou-2
+        r"""实例所属区域名称，格式如：ap-guangzhou-2
         :rtype: str
         """
         return self._Zone
@@ -627,7 +627,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """时长，购买月数
+        r"""时长，购买月数
         :rtype: int
         """
         return self._TimeSpan
@@ -638,7 +638,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        """实例密码
+        r"""实例密码
         :rtype: str
         """
         return self._Password
@@ -649,7 +649,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，不填为默认项目
+        r"""项目ID，不填为默认项目
         :rtype: int
         """
         return self._ProjectId
@@ -660,7 +660,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        """安全组参数
+        r"""安全组参数
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -671,7 +671,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """私有网络ID，如果不传则默认选择基础网络
+        r"""私有网络ID，如果不传则默认选择基础网络
         :rtype: str
         """
         return self._UniqVpcId
@@ -682,7 +682,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        """私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        r"""私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
         :rtype: str
         """
         return self._UniqSubnetId
@@ -693,7 +693,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，REPLSET-副本集，SHARD-分片集群，默认为REPLSET
+        r"""实例类型，REPLSET-副本集，SHARD-分片集群，默认为REPLSET
         :rtype: str
         """
         return self._InstanceType
@@ -729,7 +729,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
 
 class CreateDBInstanceResponse(AbstractModel):
-    """CreateDBInstance返回参数结构体
+    r"""CreateDBInstance返回参数结构体
 
     """
 
@@ -748,7 +748,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def DealId(self):
-        """订单ID
+        r"""订单ID
         :rtype: str
         """
         return self._DealId
@@ -759,7 +759,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """创建的实例ID列表
+        r"""创建的实例ID列表
         :rtype: list of str
         """
         return self._InstanceIds
@@ -770,7 +770,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -787,7 +787,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
 
 class DescribeClientConnectionsRequest(AbstractModel):
-    """DescribeClientConnections请求参数结构体
+    r"""DescribeClientConnections请求参数结构体
 
     """
 
@@ -800,7 +800,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :rtype: str
         """
         return self._InstanceId
@@ -823,7 +823,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
 
 
 class DescribeClientConnectionsResponse(AbstractModel):
-    """DescribeClientConnections返回参数结构体
+    r"""DescribeClientConnections返回参数结构体
 
     """
 
@@ -842,7 +842,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     @property
     def Clients(self):
-        """客户端连接信息，包括客户端IP和对应IP的连接数量
+        r"""客户端连接信息，包括客户端IP和对应IP的连接数量
         :rtype: list of ClientConnection
         """
         return self._Clients
@@ -853,7 +853,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """连接数总结
+        r"""连接数总结
         :rtype: int
         """
         return self._TotalCount
@@ -864,7 +864,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -886,7 +886,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
 
 class DescribeDBInstancesRequest(AbstractModel):
-    """DescribeDBInstances请求参数结构体
+    r"""DescribeDBInstances请求参数结构体
 
     """
 
@@ -935,7 +935,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
+        r"""实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -946,7 +946,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，取值范围：
+        r"""实例类型，取值范围：
 <ul><li>0： 所有实例</li><li>1： 正式实例</li><li>2： 临时实例</li><li>3： 只读实例</li><li>-1： 正式实例+只读+灾备实例</li></ul>
         :rtype: int
         """
@@ -958,7 +958,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型，取值范围： 
+        r"""集群类型，取值范围： 
 <ul><li>0： 副本集实例</li><li>1： 正式实例</li> <li>-1： 所有实例</li></ul>
         :rtype: int
         """
@@ -970,7 +970,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态，取值范围： 
+        r"""实例状态，取值范围： 
 <ul><li>0： 待初始化</li><li>1： 流程执行中</li> <li>2： 有效实例</li><li>-2： 已过期实例</li></ul>
         :rtype: list of int
         """
@@ -982,7 +982,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络的ID，基础网络则不传该参数。
+        r"""私有网络的ID，基础网络则不传该参数。
         :rtype: str
         """
         return self._VpcId
@@ -993,7 +993,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
+        r"""私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
         :rtype: str
         """
         return self._SubnetId
@@ -1004,7 +1004,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费类型，取值范围：
+        r"""付费类型，取值范围：
 <ul><li>0： 按量计费</li><li>1：包年包月</li><li>-1： 按量计费+包年包月</li></ul>
         :rtype: int
         """
@@ -1016,7 +1016,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次请求返回的数量，最小值为1，最大值为100，默认值为20。
+        r"""单次请求返回的数量，最小值为1，最大值为100，默认值为20。
         :rtype: int
         """
         return self._Limit
@@ -1027,7 +1027,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认值为0。
+        r"""偏移量，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -1038,7 +1038,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """返回结果集排序的字段，目前支持： 
+        r"""返回结果集排序的字段，目前支持： 
 <ul><li>ProjectId： 按照项目ID排序</li><li>InstanceName：按照实例名称排序</li><li>CreateTime： 根据创建时间排序</li></ul>
         :rtype: str
         """
@@ -1050,7 +1050,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """返回结果集排序方式，目前支持："ASC"或者"DESC"。
+        r"""返回结果集排序方式，目前支持："ASC"或者"DESC"。
 <ul><li>ASC： 顺序取值</li><li>DESC：倒序取值</li></ul>
         :rtype: str
         """
@@ -1084,7 +1084,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
 
 class DescribeDBInstancesResponse(AbstractModel):
-    """DescribeDBInstances返回参数结构体
+    r"""DescribeDBInstances返回参数结构体
 
     """
 
@@ -1103,7 +1103,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合查询条件的实例总数
+        r"""符合查询条件的实例总数
         :rtype: int
         """
         return self._TotalCount
@@ -1114,7 +1114,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def InstanceDetails(self):
-        """实例详细信息
+        r"""实例详细信息
         :rtype: list of MongoDBInstanceDetail
         """
         return self._InstanceDetails
@@ -1125,7 +1125,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1147,7 +1147,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
 
 class DescribeSlowLogRequest(AbstractModel):
-    """DescribeSlowLog请求参数结构体
+    r"""DescribeSlowLog请求参数结构体
 
     """
 
@@ -1175,7 +1175,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :rtype: str
         """
         return self._InstanceId
@@ -1186,7 +1186,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._StartTime
@@ -1197,7 +1197,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._EndTime
@@ -1208,7 +1208,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def SlowMS(self):
-        """慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+        r"""慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
         :rtype: int
         """
         return self._SlowMS
@@ -1219,7 +1219,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，最小值为0，最大值为10000，默认值为0。
+        r"""偏移量，最小值为0，最大值为10000，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -1230,7 +1230,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，最小值为1，最大值为100，默认值为20。
+        r"""分页大小，最小值为1，最大值为100，默认值为20。
         :rtype: int
         """
         return self._Limit
@@ -1258,7 +1258,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
 
 class DescribeSlowLogResponse(AbstractModel):
-    """DescribeSlowLog返回参数结构体
+    r"""DescribeSlowLog返回参数结构体
 
     """
 
@@ -1277,7 +1277,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合查询条件的慢查询日志总数。
+        r"""符合查询条件的慢查询日志总数。
         :rtype: int
         """
         return self._TotalCount
@@ -1288,7 +1288,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def SlowLogList(self):
-        """符合查询条件的慢查询日志详情。
+        r"""符合查询条件的慢查询日志详情。
         :rtype: list of str
         """
         return self._SlowLogList
@@ -1299,7 +1299,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1316,7 +1316,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
 
 class DescribeSpecInfoRequest(AbstractModel):
-    """DescribeSpecInfo请求参数结构体
+    r"""DescribeSpecInfo请求参数结构体
 
     """
 
@@ -1329,7 +1329,7 @@ class DescribeSpecInfoRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._Zone
@@ -1352,7 +1352,7 @@ class DescribeSpecInfoRequest(AbstractModel):
 
 
 class DescribeSpecInfoResponse(AbstractModel):
-    """DescribeSpecInfo返回参数结构体
+    r"""DescribeSpecInfo返回参数结构体
 
     """
 
@@ -1368,7 +1368,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        """实例售卖规格信息列表
+        r"""实例售卖规格信息列表
         :rtype: list of SpecificationInfo
         """
         return self._SpecInfoList
@@ -1379,7 +1379,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1400,7 +1400,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
 
 class MongoDBInstance(AbstractModel):
-    """实例信息
+    r"""实例信息
 
     """
 
@@ -1416,7 +1416,7 @@ class MongoDBInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1427,7 +1427,7 @@ class MongoDBInstance(AbstractModel):
 
     @property
     def Region(self):
-        """地域信息
+        r"""地域信息
         :rtype: str
         """
         return self._Region
@@ -1451,7 +1451,7 @@ class MongoDBInstance(AbstractModel):
 
 
 class MongoDBInstanceDetail(AbstractModel):
-    """实例详情
+    r"""实例详情
 
     """
 
@@ -1575,7 +1575,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1586,7 +1586,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -1597,7 +1597,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费类型，可能的返回值：1-包年包月；0-按量计费
+        r"""付费类型，可能的返回值：1-包年包月；0-按量计费
         :rtype: int
         """
         return self._PayMode
@@ -1608,7 +1608,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -1619,7 +1619,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型，可能的返回值：0-副本集实例，1-分片实例，
+        r"""集群类型，可能的返回值：0-副本集实例，1-分片实例，
         :rtype: int
         """
         return self._ClusterType
@@ -1630,7 +1630,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
-        """地域信息
+        r"""地域信息
         :rtype: str
         """
         return self._Region
@@ -1641,7 +1641,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区信息
+        r"""可用区信息
         :rtype: str
         """
         return self._Zone
@@ -1652,7 +1652,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def NetType(self):
-        """网络类型，可能的返回值：0-基础网络，1-私有网络
+        r"""网络类型，可能的返回值：0-基础网络，1-私有网络
         :rtype: int
         """
         return self._NetType
@@ -1663,7 +1663,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络的ID
+        r"""私有网络的ID
         :rtype: str
         """
         return self._VpcId
@@ -1674,7 +1674,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络的子网ID
+        r"""私有网络的子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -1685,7 +1685,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
+        r"""实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
         :rtype: int
         """
         return self._Status
@@ -1696,7 +1696,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Vip(self):
-        """实例IP
+        r"""实例IP
         :rtype: str
         """
         return self._Vip
@@ -1707,7 +1707,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Vport(self):
-        """端口号
+        r"""端口号
         :rtype: int
         """
         return self._Vport
@@ -1718,7 +1718,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """实例创建时间
+        r"""实例创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1729,7 +1729,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def DeadLine(self):
-        """实例到期时间
+        r"""实例到期时间
         :rtype: str
         """
         return self._DeadLine
@@ -1740,7 +1740,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def MongoVersion(self):
-        """实例版本信息
+        r"""实例版本信息
         :rtype: str
         """
         return self._MongoVersion
@@ -1751,7 +1751,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Memory(self):
-        """实例内存规格，单位为MB
+        r"""实例内存规格，单位为MB
         :rtype: int
         """
         return self._Memory
@@ -1762,7 +1762,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Volume(self):
-        """实例磁盘规格，单位为MB
+        r"""实例磁盘规格，单位为MB
         :rtype: int
         """
         return self._Volume
@@ -1773,7 +1773,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def CpuNum(self):
-        """实例CPU核心数
+        r"""实例CPU核心数
         :rtype: int
         """
         return self._CpuNum
@@ -1784,7 +1784,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def MachineType(self):
-        """实例机器类型
+        r"""实例机器类型
         :rtype: str
         """
         return self._MachineType
@@ -1795,7 +1795,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def SecondaryNum(self):
-        """实例从节点数
+        r"""实例从节点数
         :rtype: int
         """
         return self._SecondaryNum
@@ -1806,7 +1806,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ReplicationSetNum(self):
-        """实例分片数
+        r"""实例分片数
         :rtype: int
         """
         return self._ReplicationSetNum
@@ -1817,7 +1817,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
+        r"""实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -1828,7 +1828,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def UsedVolume(self):
-        """已用容量，单位MB
+        r"""已用容量，单位MB
         :rtype: int
         """
         return self._UsedVolume
@@ -1839,7 +1839,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def MaintenanceStart(self):
-        """维护窗口起始时间
+        r"""维护窗口起始时间
         :rtype: str
         """
         return self._MaintenanceStart
@@ -1850,7 +1850,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def MaintenanceEnd(self):
-        """维护窗口结束时间
+        r"""维护窗口结束时间
         :rtype: str
         """
         return self._MaintenanceEnd
@@ -1861,7 +1861,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ReplicaSets(self):
-        """分片信息
+        r"""分片信息
         :rtype: list of MongodbShardInfo
         """
         return self._ReplicaSets
@@ -1872,7 +1872,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ReadonlyInstances(self):
-        """只读实例信息
+        r"""只读实例信息
         :rtype: list of MongoDBInstance
         """
         return self._ReadonlyInstances
@@ -1883,7 +1883,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def StandbyInstances(self):
-        """灾备实例信息
+        r"""灾备实例信息
         :rtype: list of MongoDBInstance
         """
         return self._StandbyInstances
@@ -1894,7 +1894,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def CloneInstances(self):
-        """临时实例信息
+        r"""临时实例信息
         :rtype: list of MongoDBInstance
         """
         return self._CloneInstances
@@ -1905,7 +1905,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def RelatedInstance(self):
-        """关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
+        r"""关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`
         """
         return self._RelatedInstance
@@ -1916,7 +1916,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """实例标签信息集合
+        r"""实例标签信息集合
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1927,7 +1927,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def InstanceVer(self):
-        """实例标记
+        r"""实例标记
         :rtype: int
         """
         return self._InstanceVer
@@ -1938,7 +1938,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def ClusterVer(self):
-        """实例标记
+        r"""实例标记
         :rtype: int
         """
         return self._ClusterVer
@@ -1949,7 +1949,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议信息，可能的返回值：1-mongodb，2-dynamodb
+        r"""协议信息，可能的返回值：1-mongodb，2-dynamodb
         :rtype: int
         """
         return self._Protocol
@@ -1960,7 +1960,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+        r"""实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
         :rtype: int
         """
         return self._InstanceType
@@ -1971,7 +1971,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def InstanceStatusDesc(self):
-        """实例状态描述
+        r"""实例状态描述
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -1982,7 +1982,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
     @property
     def RealInstanceId(self):
-        """实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        r"""实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
         :rtype: str
         """
         return self._RealInstanceId
@@ -2069,7 +2069,7 @@ class MongoDBInstanceDetail(AbstractModel):
 
 
 class MongodbShardInfo(AbstractModel):
-    """实例分片详情
+    r"""实例分片详情
 
     """
 
@@ -2103,7 +2103,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def UsedVolume(self):
-        """分片已使用容量
+        r"""分片已使用容量
         :rtype: float
         """
         return self._UsedVolume
@@ -2114,7 +2114,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def ReplicaSetId(self):
-        """分片ID
+        r"""分片ID
         :rtype: str
         """
         return self._ReplicaSetId
@@ -2125,7 +2125,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def ReplicaSetName(self):
-        """分片名
+        r"""分片名
         :rtype: str
         """
         return self._ReplicaSetName
@@ -2136,7 +2136,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """分片内存规格，单位为MB
+        r"""分片内存规格，单位为MB
         :rtype: int
         """
         return self._Memory
@@ -2147,7 +2147,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def Volume(self):
-        """分片磁盘规格，单位为MB
+        r"""分片磁盘规格，单位为MB
         :rtype: int
         """
         return self._Volume
@@ -2158,7 +2158,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def OplogSize(self):
-        """分片Oplog大小，单位为MB
+        r"""分片Oplog大小，单位为MB
         :rtype: int
         """
         return self._OplogSize
@@ -2169,7 +2169,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def SecondaryNum(self):
-        """分片从节点数
+        r"""分片从节点数
         :rtype: int
         """
         return self._SecondaryNum
@@ -2180,7 +2180,7 @@ class MongodbShardInfo(AbstractModel):
 
     @property
     def RealReplicaSetId(self):
-        """分片物理ID
+        r"""分片物理ID
         :rtype: str
         """
         return self._RealReplicaSetId
@@ -2210,7 +2210,7 @@ class MongodbShardInfo(AbstractModel):
 
 
 class RenameInstanceRequest(AbstractModel):
-    """RenameInstance请求参数结构体
+    r"""RenameInstance请求参数结构体
 
     """
 
@@ -2226,7 +2226,7 @@ class RenameInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :rtype: str
         """
         return self._InstanceId
@@ -2237,7 +2237,7 @@ class RenameInstanceRequest(AbstractModel):
 
     @property
     def NewName(self):
-        """实例自定义名称
+        r"""实例自定义名称
         :rtype: str
         """
         return self._NewName
@@ -2261,7 +2261,7 @@ class RenameInstanceRequest(AbstractModel):
 
 
 class RenameInstanceResponse(AbstractModel):
-    """RenameInstance返回参数结构体
+    r"""RenameInstance返回参数结构体
 
     """
 
@@ -2274,7 +2274,7 @@ class RenameInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2289,7 +2289,7 @@ class RenameInstanceResponse(AbstractModel):
 
 
 class SetAutoRenewRequest(AbstractModel):
-    """SetAutoRenew请求参数结构体
+    r"""SetAutoRenew请求参数结构体
 
     """
 
@@ -2308,7 +2308,7 @@ class SetAutoRenewRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2319,7 +2319,7 @@ class SetAutoRenewRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """配置自动续费标识。
+        r"""配置自动续费标识。
 - 0：手动续费。
 - 1：自动续费。
 - 2：确认不续费。
@@ -2346,7 +2346,7 @@ class SetAutoRenewRequest(AbstractModel):
 
 
 class SetAutoRenewResponse(AbstractModel):
-    """SetAutoRenew返回参数结构体
+    r"""SetAutoRenew返回参数结构体
 
     """
 
@@ -2359,7 +2359,7 @@ class SetAutoRenewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2374,7 +2374,7 @@ class SetAutoRenewResponse(AbstractModel):
 
 
 class SetPasswordRequest(AbstractModel):
-    """SetPassword请求参数结构体
+    r"""SetPassword请求参数结构体
 
     """
 
@@ -2393,7 +2393,7 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
         :rtype: str
         """
         return self._InstanceId
@@ -2404,7 +2404,7 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """实例账户名。初始化实例密码，本参数传mongouser。
+        r"""实例账户名。初始化实例密码，本参数传mongouser。
         :rtype: str
         """
         return self._UserName
@@ -2415,7 +2415,7 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """指定账户的新密码， 密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
+        r"""指定账户的新密码， 密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
         :rtype: str
         """
         return self._Password
@@ -2440,7 +2440,7 @@ class SetPasswordRequest(AbstractModel):
 
 
 class SetPasswordResponse(AbstractModel):
-    """SetPassword返回参数结构体
+    r"""SetPassword返回参数结构体
 
     """
 
@@ -2456,7 +2456,7 @@ class SetPasswordResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """返回的异步任务ID
+        r"""返回的异步任务ID
         :rtype: int
         """
         return self._FlowId
@@ -2467,7 +2467,7 @@ class SetPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2483,7 +2483,7 @@ class SetPasswordResponse(AbstractModel):
 
 
 class SpecItem(AbstractModel):
-    """mongodb售卖规格
+    r"""mongodb售卖规格
 
     """
 
@@ -2556,7 +2556,7 @@ class SpecItem(AbstractModel):
 
     @property
     def SpecCode(self):
-        """规格信息标识
+        r"""规格信息标识
         :rtype: str
         """
         return self._SpecCode
@@ -2567,7 +2567,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Status(self):
-        """规格有效标志，取值：0-停止售卖，1-开放售卖
+        r"""规格有效标志，取值：0-停止售卖，1-开放售卖
         :rtype: int
         """
         return self._Status
@@ -2578,7 +2578,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MachineType(self):
-        """机器类型，取值：0-HIO，4-HIO10G
+        r"""机器类型，取值：0-HIO，4-HIO10G
         :rtype: str
         """
         return self._MachineType
@@ -2589,7 +2589,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Cpu(self):
-        """cpu核心数
+        r"""cpu核心数
         :rtype: int
         """
         return self._Cpu
@@ -2600,7 +2600,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Memory(self):
-        """内存规格，单位为MB
+        r"""内存规格，单位为MB
         :rtype: int
         """
         return self._Memory
@@ -2611,7 +2611,7 @@ class SpecItem(AbstractModel):
 
     @property
     def DefaultStorage(self):
-        """默认磁盘规格，单位MB
+        r"""默认磁盘规格，单位MB
         :rtype: int
         """
         return self._DefaultStorage
@@ -2622,7 +2622,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MaxStorage(self):
-        """最大磁盘规格，单位MB
+        r"""最大磁盘规格，单位MB
         :rtype: int
         """
         return self._MaxStorage
@@ -2633,7 +2633,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MinStorage(self):
-        """最小磁盘规格，单位MB
+        r"""最小磁盘规格，单位MB
         :rtype: int
         """
         return self._MinStorage
@@ -2644,7 +2644,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Qps(self):
-        """可承载qps信息
+        r"""可承载qps信息
         :rtype: int
         """
         return self._Qps
@@ -2655,7 +2655,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Conns(self):
-        """连接数限制
+        r"""连接数限制
         :rtype: int
         """
         return self._Conns
@@ -2666,7 +2666,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MongoVersionCode(self):
-        """实例mongodb版本信息
+        r"""实例mongodb版本信息
         :rtype: str
         """
         return self._MongoVersionCode
@@ -2677,7 +2677,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MongoVersionValue(self):
-        """实例mongodb版本号
+        r"""实例mongodb版本号
         :rtype: int
         """
         return self._MongoVersionValue
@@ -2688,7 +2688,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Version(self):
-        """实例mongodb版本号（短）
+        r"""实例mongodb版本号（短）
         :rtype: str
         """
         return self._Version
@@ -2699,7 +2699,7 @@ class SpecItem(AbstractModel):
 
     @property
     def EngineName(self):
-        """存储引擎
+        r"""存储引擎
         :rtype: str
         """
         return self._EngineName
@@ -2710,7 +2710,7 @@ class SpecItem(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型，取值：1-分片集群，0-副本集集群
+        r"""集群类型，取值：1-分片集群，0-副本集集群
         :rtype: int
         """
         return self._ClusterType
@@ -2721,7 +2721,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MinNodeNum(self):
-        """最小副本集从节点数
+        r"""最小副本集从节点数
         :rtype: int
         """
         return self._MinNodeNum
@@ -2732,7 +2732,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MaxNodeNum(self):
-        """最大副本集从节点数
+        r"""最大副本集从节点数
         :rtype: int
         """
         return self._MaxNodeNum
@@ -2743,7 +2743,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MinReplicateSetNum(self):
-        """最小分片数
+        r"""最小分片数
         :rtype: int
         """
         return self._MinReplicateSetNum
@@ -2754,7 +2754,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MaxReplicateSetNum(self):
-        """最大分片数
+        r"""最大分片数
         :rtype: int
         """
         return self._MaxReplicateSetNum
@@ -2765,7 +2765,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MinReplicateSetNodeNum(self):
-        """最小分片从节点数
+        r"""最小分片从节点数
         :rtype: int
         """
         return self._MinReplicateSetNodeNum
@@ -2776,7 +2776,7 @@ class SpecItem(AbstractModel):
 
     @property
     def MaxReplicateSetNodeNum(self):
-        """最大分片从节点数
+        r"""最大分片从节点数
         :rtype: int
         """
         return self._MaxReplicateSetNodeNum
@@ -2819,7 +2819,7 @@ class SpecItem(AbstractModel):
 
 
 class SpecificationInfo(AbstractModel):
-    """实例规格信息
+    r"""实例规格信息
 
     """
 
@@ -2838,7 +2838,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域信息
+        r"""地域信息
         :rtype: str
         """
         return self._Region
@@ -2849,7 +2849,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区信息
+        r"""可用区信息
         :rtype: str
         """
         return self._Zone
@@ -2860,7 +2860,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def SpecItems(self):
-        """售卖规格信息
+        r"""售卖规格信息
         :rtype: list of SpecItem
         """
         return self._SpecItems
@@ -2890,7 +2890,7 @@ class SpecificationInfo(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """实例标签信息
+    r"""实例标签信息
 
     """
 
@@ -2906,7 +2906,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签Key值
+        r"""标签Key值
         :rtype: str
         """
         return self._TagKey
@@ -2917,7 +2917,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -2941,7 +2941,7 @@ class TagInfo(AbstractModel):
 
 
 class TerminateDBInstanceRequest(AbstractModel):
-    """TerminateDBInstance请求参数结构体
+    r"""TerminateDBInstance请求参数结构体
 
     """
 
@@ -2954,7 +2954,7 @@ class TerminateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vnipr5。
+        r"""实例ID，格式如：cmgo-p8vnipr5。
         :rtype: str
         """
         return self._InstanceId
@@ -2977,7 +2977,7 @@ class TerminateDBInstanceRequest(AbstractModel):
 
 
 class TerminateDBInstanceResponse(AbstractModel):
-    """TerminateDBInstance返回参数结构体
+    r"""TerminateDBInstance返回参数结构体
 
     """
 
@@ -2993,7 +2993,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        """订单ID，表示注销实例成功。
+        r"""订单ID，表示注销实例成功。
         :rtype: str
         """
         return self._AsyncRequestId
@@ -3004,7 +3004,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3020,7 +3020,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
 
 class UpgradeDBInstanceHourRequest(AbstractModel):
-    """UpgradeDBInstanceHour请求参数结构体
+    r"""UpgradeDBInstanceHour请求参数结构体
 
     """
 
@@ -3042,7 +3042,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-iga0****
+        r"""实例ID，格式如：cmgo-iga0****
         :rtype: str
         """
         return self._InstanceId
@@ -3053,7 +3053,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """升级后的内存大小，单位：GB
+        r"""升级后的内存大小，单位：GB
         :rtype: int
         """
         return self._Memory
@@ -3064,7 +3064,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
     @property
     def Volume(self):
-        """升级后的硬盘大小，单位：GB
+        r"""升级后的硬盘大小，单位：GB
         :rtype: int
         """
         return self._Volume
@@ -3075,7 +3075,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
     @property
     def OplogSize(self):
-        """升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        r"""升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
         :rtype: int
         """
         return self._OplogSize
@@ -3101,7 +3101,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
 
 class UpgradeDBInstanceHourResponse(AbstractModel):
-    """UpgradeDBInstanceHour返回参数结构体
+    r"""UpgradeDBInstanceHour返回参数结构体
 
     """
 
@@ -3117,7 +3117,7 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
 
     @property
     def DealId(self):
-        """订单ID
+        r"""订单ID
         :rtype: str
         """
         return self._DealId
@@ -3128,7 +3128,7 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3144,7 +3144,7 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
 
 
 class UpgradeDBInstanceRequest(AbstractModel):
-    """UpgradeDBInstance请求参数结构体
+    r"""UpgradeDBInstance请求参数结构体
 
     """
 
@@ -3166,7 +3166,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-iga0****。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID，格式如：cmgo-iga0****。与云数据库控制台页面中显示的实例ID相同
         :rtype: str
         """
         return self._InstanceId
@@ -3177,7 +3177,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """升级后的内存大小，单位：GB
+        r"""升级后的内存大小，单位：GB
         :rtype: int
         """
         return self._Memory
@@ -3188,7 +3188,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        """升级后的硬盘大小，单位：GB
+        r"""升级后的硬盘大小，单位：GB
         :rtype: int
         """
         return self._Volume
@@ -3199,7 +3199,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def OplogSize(self):
-        """升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        r"""升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
         :rtype: int
         """
         return self._OplogSize
@@ -3225,7 +3225,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
 
 class UpgradeDBInstanceResponse(AbstractModel):
-    """UpgradeDBInstance返回参数结构体
+    r"""UpgradeDBInstance返回参数结构体
 
     """
 
@@ -3241,7 +3241,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def DealId(self):
-        """订单ID
+        r"""订单ID
         :rtype: str
         """
         return self._DealId
@@ -3252,7 +3252,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

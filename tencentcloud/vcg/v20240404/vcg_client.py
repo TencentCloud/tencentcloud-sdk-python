@@ -27,7 +27,7 @@ class VcgClient(AbstractClient):
 
 
     def DescribeVideoStylizationJob(self, request):
-        """用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
+        r"""用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
         :param request: Request instance for DescribeVideoStylizationJob.
         :type request: :class:`tencentcloud.vcg.v20240404.models.DescribeVideoStylizationJobRequest`
@@ -50,7 +50,7 @@ class VcgClient(AbstractClient):
 
 
     def SubmitVideoStylizationJob(self, request):
-        """用于提交视频风格化任务。支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
+        r"""用于提交视频风格化任务。支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
         :param request: Request instance for SubmitVideoStylizationJob.
         :type request: :class:`tencentcloud.vcg.v20240404.models.SubmitVideoStylizationJobRequest`

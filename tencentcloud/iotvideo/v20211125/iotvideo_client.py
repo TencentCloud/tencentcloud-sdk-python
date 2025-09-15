@@ -27,7 +27,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ApplyAIModel(self, request):
-        """申请AI模型
+        r"""申请AI模型
 
         :param request: Request instance for ApplyAIModel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ApplyAIModelRequest`
@@ -50,7 +50,7 @@ class IotvideoClient(AbstractClient):
 
 
     def BatchUpdateFirmware(self, request):
-        """本接口（BatchUpdateFirmware）用于批量更新设备固件
+        r"""本接口（BatchUpdateFirmware）用于批量更新设备固件
 
         :param request: Request instance for BatchUpdateFirmware.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.BatchUpdateFirmwareRequest`
@@ -73,7 +73,7 @@ class IotvideoClient(AbstractClient):
 
 
     def BindCloudStorageUser(self, request):
-        """绑定云存用户
+        r"""绑定云存用户
 
         :param request: Request instance for BindCloudStorageUser.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.BindCloudStorageUserRequest`
@@ -96,7 +96,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CallDeviceActionAsync(self, request):
-        """异步调用设备行为
+        r"""异步调用设备行为
 
         :param request: Request instance for CallDeviceActionAsync.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CallDeviceActionAsyncRequest`
@@ -119,7 +119,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CallDeviceActionSync(self, request):
-        """同步调用设备行为
+        r"""同步调用设备行为
 
         :param request: Request instance for CallDeviceActionSync.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CallDeviceActionSyncRequest`
@@ -142,7 +142,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CallTRTCDevice(self, request):
-        """呼叫TRTC设备
+        r"""呼叫TRTC设备
 
         :param request: Request instance for CallTRTCDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CallTRTCDeviceRequest`
@@ -165,7 +165,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CancelAIModelApplication(self, request):
-        """取消AI模型申请
+        r"""取消AI模型申请
 
         :param request: Request instance for CancelAIModelApplication.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CancelAIModelApplicationRequest`
@@ -188,7 +188,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CancelDeviceFirmwareTask(self, request):
-        """本接口用于取消设备升级任务
+        r"""本接口用于取消设备升级任务
 
         :param request: Request instance for CancelDeviceFirmwareTask.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CancelDeviceFirmwareTaskRequest`
@@ -211,7 +211,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ChangeP2PRoute(self, request):
-        """p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
+        r"""p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 
         :param request: Request instance for ChangeP2PRoute.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ChangeP2PRouteRequest`
@@ -234,7 +234,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CheckForwardAuth(self, request):
-        """判断是否开启转发的权限
+        r"""判断是否开启转发的权限
 
         :param request: Request instance for CheckForwardAuth.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CheckForwardAuthRequest`
@@ -257,7 +257,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ControlDeviceData(self, request):
-        """根据设备产品ID、设备名称，设置控制设备的属性数据。
+        r"""根据设备产品ID、设备名称，设置控制设备的属性数据。
 
         :param request: Request instance for ControlDeviceData.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ControlDeviceDataRequest`
@@ -280,7 +280,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateAIDetection(self, request):
-        """发起AI推理请求
+        r"""发起AI推理请求
 
         :param request: Request instance for CreateAIDetection.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateAIDetectionRequest`
@@ -303,7 +303,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateBatch(self, request):
-        """创建批次
+        r"""创建批次
 
         :param request: Request instance for CreateBatch.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateBatchRequest`
@@ -326,7 +326,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateCOSCredentials(self, request):
-        """创建COS上传密钥
+        r"""创建COS上传密钥
 
         :param request: Request instance for CreateCOSCredentials.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateCOSCredentialsRequest`
@@ -349,7 +349,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateCloudStorage(self, request):
-        """开通云存服务
+        r"""开通云存服务
 
         :param request: Request instance for CreateCloudStorage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateCloudStorageRequest`
@@ -372,7 +372,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateDataForward(self, request):
-        """创建数据转发
+        r"""创建数据转发
 
         :param request: Request instance for CreateDataForward.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateDataForwardRequest`
@@ -395,7 +395,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateDeviceChannel(self, request):
-        """创建设备通道
+        r"""创建设备通道
 
         :param request: Request instance for CreateDeviceChannel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateDeviceChannelRequest`
@@ -418,7 +418,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateForwardRule(self, request):
-        """创建转发规则
+        r"""创建转发规则
 
         :param request: Request instance for CreateForwardRule.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateForwardRuleRequest`
@@ -441,7 +441,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateFreeCloudStorage(self, request):
-        """开通免费云存服务
+        r"""开通免费云存服务
 
         :param request: Request instance for CreateFreeCloudStorage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateFreeCloudStorageRequest`
@@ -464,7 +464,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateProduct(self, request):
-        """创建产品
+        r"""创建产品
 
         :param request: Request instance for CreateProduct.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateProductRequest`
@@ -487,7 +487,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateTaskFileUrl(self, request):
-        """本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+        r"""本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
 
         :param request: Request instance for CreateTaskFileUrl.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateTaskFileUrlRequest`
@@ -510,7 +510,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteCloudStorageEvent(self, request):
-        """删除云存事件
+        r"""删除云存事件
 
         :param request: Request instance for DeleteCloudStorageEvent.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteCloudStorageEventRequest`
@@ -533,7 +533,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """删除设备
+        r"""删除设备
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteDeviceRequest`
@@ -556,7 +556,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteFirmware(self, request):
-        """本接口（DeleteFirmware）用于删除固件
+        r"""本接口（DeleteFirmware）用于删除固件
 
         :param request: Request instance for DeleteFirmware.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteFirmwareRequest`
@@ -579,7 +579,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteForwardRule(self, request):
-        """删除转发规则
+        r"""删除转发规则
 
         :param request: Request instance for DeleteForwardRule.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteForwardRuleRequest`
@@ -602,7 +602,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """删除产品
+        r"""删除产品
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteProductRequest`
@@ -625,7 +625,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAIModelApplications(self, request):
-        """用户AI模型申请记录
+        r"""用户AI模型申请记录
 
         :param request: Request instance for DescribeAIModelApplications.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeAIModelApplicationsRequest`
@@ -648,7 +648,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAIModelChannel(self, request):
-        """查看AI推理结果推送配置
+        r"""查看AI推理结果推送配置
 
         :param request: Request instance for DescribeAIModelChannel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeAIModelChannelRequest`
@@ -671,7 +671,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAIModelUsage(self, request):
-        """查看AI模型资源包
+        r"""查看AI模型资源包
 
         :param request: Request instance for DescribeAIModelUsage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeAIModelUsageRequest`
@@ -694,7 +694,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAIModels(self, request):
-        """拉取AI模型列表
+        r"""拉取AI模型列表
 
         :param request: Request instance for DescribeAIModels.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeAIModelsRequest`
@@ -717,7 +717,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeAccount(self, request):
-        """获取消费版账号信息
+        r"""获取消费版账号信息
 
         :param request: Request instance for DescribeAccount.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeAccountRequest`
@@ -740,7 +740,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBalance(self, request):
-        """查询账户余额
+        r"""查询账户余额
 
         :param request: Request instance for DescribeBalance.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeBalanceRequest`
@@ -763,7 +763,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBalanceTransactions(self, request):
-        """拉取账户流水
+        r"""拉取账户流水
 
         :param request: Request instance for DescribeBalanceTransactions.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeBalanceTransactionsRequest`
@@ -786,7 +786,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBatch(self, request):
-        """获取批次详情
+        r"""获取批次详情
 
         :param request: Request instance for DescribeBatch.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeBatchRequest`
@@ -809,7 +809,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBatchs(self, request):
-        """获取批次列表
+        r"""获取批次列表
 
         :param request: Request instance for DescribeBatchs.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeBatchsRequest`
@@ -832,7 +832,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeBonuses(self, request):
-        """查看运营活动资源包列表
+        r"""查看运营活动资源包列表
 
         :param request: Request instance for DescribeBonuses.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeBonusesRequest`
@@ -855,7 +855,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCategory(self, request):
-        """获取Category详情
+        r"""获取Category详情
 
         :param request: Request instance for DescribeCategory.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCategoryRequest`
@@ -878,7 +878,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorage(self, request):
-        """获取设备云存服务详情
+        r"""获取设备云存服务详情
 
         :param request: Request instance for DescribeCloudStorage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageRequest`
@@ -901,7 +901,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageDate(self, request):
-        """获取具有云存的日期
+        r"""获取具有云存的日期
 
         :param request: Request instance for DescribeCloudStorageDate.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageDateRequest`
@@ -924,7 +924,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageEvents(self, request):
-        """拉取云存事件列表
+        r"""拉取云存事件列表
 
         :param request: Request instance for DescribeCloudStorageEvents.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageEventsRequest`
@@ -947,7 +947,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageMultiThumbnail(self, request):
-        """拉取多个云存事件缩略图
+        r"""拉取多个云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageMultiThumbnail.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageMultiThumbnailRequest`
@@ -970,7 +970,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageOrder(self, request):
-        """查询云存服务详情
+        r"""查询云存服务详情
 
         :param request: Request instance for DescribeCloudStorageOrder.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageOrderRequest`
@@ -993,7 +993,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStoragePackageConsumeDetails(self, request):
-        """获取云存套餐包消耗详细记录
+        r"""获取云存套餐包消耗详细记录
 
         :param request: Request instance for DescribeCloudStoragePackageConsumeDetails.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStoragePackageConsumeDetailsRequest`
@@ -1016,7 +1016,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStoragePackageConsumeStats(self, request):
-        """获取云存套餐包消耗统计
+        r"""获取云存套餐包消耗统计
 
         :param request: Request instance for DescribeCloudStoragePackageConsumeStats.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStoragePackageConsumeStatsRequest`
@@ -1039,7 +1039,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageStreamData(self, request):
-        """获取设备图片流数据
+        r"""获取设备图片流数据
 
         :param request: Request instance for DescribeCloudStorageStreamData.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageStreamDataRequest`
@@ -1062,7 +1062,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageThumbnail(self, request):
-        """拉取云存事件缩略图
+        r"""拉取云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageThumbnail.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageThumbnailRequest`
@@ -1085,7 +1085,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageThumbnailList(self, request):
-        """批量拉取云存事件缩略图
+        r"""批量拉取云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageThumbnailList.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageThumbnailListRequest`
@@ -1108,7 +1108,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageTime(self, request):
-        """获取某一天云存时间轴
+        r"""获取某一天云存时间轴
 
         :param request: Request instance for DescribeCloudStorageTime.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageTimeRequest`
@@ -1131,7 +1131,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCloudStorageUsers(self, request):
-        """拉取云存用户列表
+        r"""拉取云存用户列表
 
         :param request: Request instance for DescribeCloudStorageUsers.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageUsersRequest`
@@ -1154,7 +1154,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeCsReportCountDataInfo(self, request):
-        """获取云存上报统计信息
+        r"""获取云存上报统计信息
 
         :param request: Request instance for DescribeCsReportCountDataInfo.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCsReportCountDataInfoRequest`
@@ -1177,7 +1177,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDataForwardList(self, request):
-        """获取数据转发列表
+        r"""获取数据转发列表
 
         :param request: Request instance for DescribeDataForwardList.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDataForwardListRequest`
@@ -1200,7 +1200,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDevice(self, request):
-        """查看设备详情
+        r"""查看设备详情
 
         :param request: Request instance for DescribeDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceRequest`
@@ -1223,7 +1223,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceActionHistory(self, request):
-        """为用户提供获取动作历史的能力。
+        r"""为用户提供获取动作历史的能力。
 
         :param request: Request instance for DescribeDeviceActionHistory.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceActionHistoryRequest`
@@ -1246,7 +1246,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceCommLog(self, request):
-        """获取设备在指定时间范围内的通讯日志
+        r"""获取设备在指定时间范围内的通讯日志
 
         :param request: Request instance for DescribeDeviceCommLog.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceCommLogRequest`
@@ -1269,7 +1269,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceData(self, request):
-        """获取设备属性数据
+        r"""获取设备属性数据
 
         :param request: Request instance for DescribeDeviceData.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceDataRequest`
@@ -1292,7 +1292,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceDataHistory(self, request):
-        """获取设备在指定时间范围内上报的历史数据。
+        r"""获取设备在指定时间范围内上报的历史数据。
 
         :param request: Request instance for DescribeDeviceDataHistory.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceDataHistoryRequest`
@@ -1315,7 +1315,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceDataStats(self, request):
-        """查询设备数据统计
+        r"""查询设备数据统计
 
         :param request: Request instance for DescribeDeviceDataStats.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceDataStatsRequest`
@@ -1338,7 +1338,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceEventHistory(self, request):
-        """获取设备的历史事件
+        r"""获取设备的历史事件
 
         :param request: Request instance for DescribeDeviceEventHistory.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceEventHistoryRequest`
@@ -1361,7 +1361,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDevicePackages(self, request):
-        """根据设备信息拉取有效套餐列表
+        r"""根据设备信息拉取有效套餐列表
 
         :param request: Request instance for DescribeDevicePackages.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDevicePackagesRequest`
@@ -1384,7 +1384,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDeviceStatusLog(self, request):
-        """获取设备上下线日志
+        r"""获取设备上下线日志
 
         :param request: Request instance for DescribeDeviceStatusLog.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDeviceStatusLogRequest`
@@ -1407,7 +1407,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeDevices(self, request):
-        """获取设备列表
+        r"""获取设备列表
 
         :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDevicesRequest`
@@ -1430,7 +1430,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmware(self, request):
-        """本接口（DescribeFirmware）用于查询固件信息
+        r"""本接口（DescribeFirmware）用于查询固件信息
 
         :param request: Request instance for DescribeFirmware.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareRequest`
@@ -1453,7 +1453,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmwareTask(self, request):
-        """此接口查询固件升级任务详情
+        r"""此接口查询固件升级任务详情
 
         :param request: Request instance for DescribeFirmwareTask.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareTaskRequest`
@@ -1476,7 +1476,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmwareTaskDevices(self, request):
-        """本接口用于查询固件升级任务的设备列表
+        r"""本接口用于查询固件升级任务的设备列表
 
         :param request: Request instance for DescribeFirmwareTaskDevices.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareTaskDevicesRequest`
@@ -1499,7 +1499,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmwareTaskDistribution(self, request):
-        """本接口用于查询固件升级任务状态分布
+        r"""本接口用于查询固件升级任务状态分布
 
         :param request: Request instance for DescribeFirmwareTaskDistribution.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareTaskDistributionRequest`
@@ -1522,7 +1522,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmwareTaskStatistics(self, request):
-        """本接口用于查询固件升级任务统计信息
+        r"""本接口用于查询固件升级任务统计信息
 
         :param request: Request instance for DescribeFirmwareTaskStatistics.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareTaskStatisticsRequest`
@@ -1545,7 +1545,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFirmwareTasks(self, request):
-        """本接口用于查询固件升级任务列表
+        r"""本接口用于查询固件升级任务列表
 
         :param request: Request instance for DescribeFirmwareTasks.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFirmwareTasksRequest`
@@ -1568,7 +1568,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeForwardRule(self, request):
-        """获取产品转发规则
+        r"""获取产品转发规则
 
         :param request: Request instance for DescribeForwardRule.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeForwardRuleRequest`
@@ -1591,7 +1591,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeFreeCloudStorageNum(self, request):
-        """查询云存卡套餐信息
+        r"""查询云存卡套餐信息
 
         :param request: Request instance for DescribeFreeCloudStorageNum.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFreeCloudStorageNumRequest`
@@ -1614,7 +1614,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeMessageDataStats(self, request):
-        """查询设备消息数量统计
+        r"""查询设备消息数量统计
 
         :param request: Request instance for DescribeMessageDataStats.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeMessageDataStatsRequest`
@@ -1637,7 +1637,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeModelDefinition(self, request):
-        """查询产品配置的数据模板信息
+        r"""查询产品配置的数据模板信息
 
         :param request: Request instance for DescribeModelDefinition.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeModelDefinitionRequest`
@@ -1660,7 +1660,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeP2PInfo(self, request):
-        """拉取设备p2p信息
+        r"""拉取设备p2p信息
 
         :param request: Request instance for DescribeP2PInfo.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PInfoRequest`
@@ -1683,7 +1683,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeP2PRoute(self, request):
-        """当前p2p线路
+        r"""当前p2p线路
 
         :param request: Request instance for DescribeP2PRoute.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PRouteRequest`
@@ -1706,7 +1706,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribePackageConsumeTask(self, request):
-        """查询套餐消耗记录详情
+        r"""查询套餐消耗记录详情
 
         :param request: Request instance for DescribePackageConsumeTask.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribePackageConsumeTaskRequest`
@@ -1729,7 +1729,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribePackageConsumeTasks(self, request):
-        """查询套餐消耗记录列表
+        r"""查询套餐消耗记录列表
 
         :param request: Request instance for DescribePackageConsumeTasks.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribePackageConsumeTasksRequest`
@@ -1752,7 +1752,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeProduct(self, request):
-        """获取产品详情
+        r"""获取产品详情
 
         :param request: Request instance for DescribeProduct.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeProductRequest`
@@ -1775,7 +1775,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeProductDynamicRegister(self, request):
-        """获取产品动态注册详情
+        r"""获取产品动态注册详情
 
         :param request: Request instance for DescribeProductDynamicRegister.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeProductDynamicRegisterRequest`
@@ -1798,7 +1798,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """获取产品列表
+        r"""获取产品列表
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeProductsRequest`
@@ -1821,7 +1821,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribePushChannel(self, request):
-        """查看推送通道
+        r"""查看推送通道
 
         :param request: Request instance for DescribePushChannel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribePushChannelRequest`
@@ -1844,7 +1844,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeSDKLog(self, request):
-        """获取设备sdk日志
+        r"""获取设备sdk日志
 
         :param request: Request instance for DescribeSDKLog.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeSDKLogRequest`
@@ -1867,7 +1867,7 @@ class IotvideoClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """获取video消费版用户信息
+        r"""获取video消费版用户信息
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeUserRequest`
@@ -1890,7 +1890,7 @@ class IotvideoClient(AbstractClient):
 
 
     def EditFirmware(self, request):
-        """本接口用于编辑固件信息
+        r"""本接口用于编辑固件信息
 
         :param request: Request instance for EditFirmware.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.EditFirmwareRequest`
@@ -1913,7 +1913,7 @@ class IotvideoClient(AbstractClient):
 
 
     def GenSingleDeviceSignatureOfPublic(self, request):
-        """获取设备的绑定签名
+        r"""获取设备的绑定签名
 
         :param request: Request instance for GenSingleDeviceSignatureOfPublic.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.GenSingleDeviceSignatureOfPublicRequest`
@@ -1936,7 +1936,7 @@ class IotvideoClient(AbstractClient):
 
 
     def GenerateSignedVideoURL(self, request):
-        """获取视频防盗链播放URL
+        r"""获取视频防盗链播放URL
 
         :param request: Request instance for GenerateSignedVideoURL.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.GenerateSignedVideoURLRequest`
@@ -1959,7 +1959,7 @@ class IotvideoClient(AbstractClient):
 
 
     def GetAllFirmwareVersion(self, request):
-        """本接口（GetAllFirmwareVersion）用于获取所有的版本列表
+        r"""本接口（GetAllFirmwareVersion）用于获取所有的版本列表
 
         :param request: Request instance for GetAllFirmwareVersion.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.GetAllFirmwareVersionRequest`
@@ -1982,7 +1982,7 @@ class IotvideoClient(AbstractClient):
 
 
     def GetFirmwareURL(self, request):
-        """本接口（GetFirmwareURL）用于获取固件存储的URL
+        r"""本接口（GetFirmwareURL）用于获取固件存储的URL
 
         :param request: Request instance for GetFirmwareURL.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.GetFirmwareURLRequest`
@@ -2005,7 +2005,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ImportModelDefinition(self, request):
-        """导入其它产品的数据模板，覆盖现有数据模板的物模型和产品分类信息
+        r"""导入其它产品的数据模板，覆盖现有数据模板的物模型和产品分类信息
 
         :param request: Request instance for ImportModelDefinition.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ImportModelDefinitionRequest`
@@ -2028,7 +2028,7 @@ class IotvideoClient(AbstractClient):
 
 
     def InheritCloudStorageUser(self, request):
-        """继承云存用户
+        r"""继承云存用户
 
         :param request: Request instance for InheritCloudStorageUser.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.InheritCloudStorageUserRequest`
@@ -2051,7 +2051,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ListFirmwares(self, request):
-        """本接口（ListFirmwares）用于获取固件列表
+        r"""本接口（ListFirmwares）用于获取固件列表
 
         :param request: Request instance for ListFirmwares.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ListFirmwaresRequest`
@@ -2074,7 +2074,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDataForward(self, request):
-        """修改数据转发
+        r"""修改数据转发
 
         :param request: Request instance for ModifyDataForward.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyDataForwardRequest`
@@ -2097,7 +2097,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDataForwardStatus(self, request):
-        """设置数据转发状态
+        r"""设置数据转发状态
 
         :param request: Request instance for ModifyDataForwardStatus.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyDataForwardStatusRequest`
@@ -2120,7 +2120,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDevice(self, request):
-        """修改设备信息
+        r"""修改设备信息
 
         :param request: Request instance for ModifyDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyDeviceRequest`
@@ -2143,7 +2143,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyDeviceLogLevel(self, request):
-        """更新设备日志级别
+        r"""更新设备日志级别
 
         :param request: Request instance for ModifyDeviceLogLevel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyDeviceLogLevelRequest`
@@ -2166,7 +2166,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyForwardRule(self, request):
-        """修改转发规则
+        r"""修改转发规则
 
         :param request: Request instance for ModifyForwardRule.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyForwardRuleRequest`
@@ -2189,7 +2189,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyModelDefinition(self, request):
-        """提供修改产品的数据模板的能力
+        r"""提供修改产品的数据模板的能力
 
         :param request: Request instance for ModifyModelDefinition.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyModelDefinitionRequest`
@@ -2212,7 +2212,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyProduct(self, request):
-        """修改产品信息
+        r"""修改产品信息
 
         :param request: Request instance for ModifyProduct.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyProductRequest`
@@ -2235,7 +2235,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyProductDynamicRegister(self, request):
-        """修改产品动态注册
+        r"""修改产品动态注册
 
         :param request: Request instance for ModifyProductDynamicRegister.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyProductDynamicRegisterRequest`
@@ -2258,7 +2258,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ModifyPushChannel(self, request):
-        """更新推送通道
+        r"""更新推送通道
 
         :param request: Request instance for ModifyPushChannel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ModifyPushChannelRequest`
@@ -2281,7 +2281,7 @@ class IotvideoClient(AbstractClient):
 
 
     def PublishMessage(self, request):
-        """本接口（PublishMessage）用于使用自定义透传协议进行设备远控
+        r"""本接口（PublishMessage）用于使用自定义透传协议进行设备远控
 
         :param request: Request instance for PublishMessage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.PublishMessageRequest`
@@ -2304,7 +2304,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ReportAliveDevice(self, request):
-        """上报活跃设备
+        r"""上报活跃设备
 
         :param request: Request instance for ReportAliveDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ReportAliveDeviceRequest`
@@ -2327,7 +2327,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ResetCloudStorage(self, request):
-        """重置云存服务
+        r"""重置云存服务
 
         :param request: Request instance for ResetCloudStorage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ResetCloudStorageRequest`
@@ -2350,7 +2350,7 @@ class IotvideoClient(AbstractClient):
 
 
     def ResetCloudStorageEvent(self, request):
-        """重置云存事件
+        r"""重置云存事件
 
         :param request: Request instance for ResetCloudStorageEvent.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.ResetCloudStorageEventRequest`
@@ -2373,7 +2373,7 @@ class IotvideoClient(AbstractClient):
 
 
     def RetryDeviceFirmwareTask(self, request):
-        """本接口用于重试设备升级任务
+        r"""本接口用于重试设备升级任务
 
         :param request: Request instance for RetryDeviceFirmwareTask.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.RetryDeviceFirmwareTaskRequest`
@@ -2396,7 +2396,7 @@ class IotvideoClient(AbstractClient):
 
 
     def SetForwardAuth(self, request):
-        """设置转发权限
+        r"""设置转发权限
 
         :param request: Request instance for SetForwardAuth.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.SetForwardAuthRequest`
@@ -2419,7 +2419,7 @@ class IotvideoClient(AbstractClient):
 
 
     def TransferCloudStorage(self, request):
-        """转移云存服务
+        r"""转移云存服务
 
         :param request: Request instance for TransferCloudStorage.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.TransferCloudStorageRequest`
@@ -2442,7 +2442,7 @@ class IotvideoClient(AbstractClient):
 
 
     def UpdateAIModelChannel(self, request):
-        """更新AI推理结果推送配置
+        r"""更新AI推理结果推送配置
 
         :param request: Request instance for UpdateAIModelChannel.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.UpdateAIModelChannelRequest`
@@ -2465,7 +2465,7 @@ class IotvideoClient(AbstractClient):
 
 
     def UploadFirmware(self, request):
-        """本接口（UploadFirmware）用于上传设备固件信息
+        r"""本接口（UploadFirmware）用于上传设备固件信息
 
         :param request: Request instance for UploadFirmware.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.UploadFirmwareRequest`
@@ -2488,7 +2488,7 @@ class IotvideoClient(AbstractClient):
 
 
     def WakeUpDevice(self, request):
-        """设备唤醒
+        r"""设备唤醒
 
         :param request: Request instance for WakeUpDevice.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.WakeUpDeviceRequest`

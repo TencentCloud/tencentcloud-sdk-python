@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeEventStatisticsRequest(AbstractModel):
-    """DescribeEventStatistics请求参数结构体
+    r"""DescribeEventStatistics请求参数结构体
 
     """
 
@@ -37,7 +37,7 @@ class DescribeEventStatisticsRequest(AbstractModel):
 
     @property
     def RegionId(self):
-        """1. 查询非区域性产品事件时，地域ID指定为：non-regional
+        r"""1. 查询非区域性产品事件时，地域ID指定为：non-regional
 2. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
         :rtype: str
         """
@@ -49,7 +49,7 @@ class DescribeEventStatisticsRequest(AbstractModel):
 
     @property
     def ProductIds(self):
-        """1. 不指定产品列表时将查询所有产品。
+        r"""1. 不指定产品列表时将查询所有产品。
 2. 产品ID示例：cvm、lb、cdb、cdn、crs
         :rtype: list of str
         """
@@ -74,7 +74,7 @@ class DescribeEventStatisticsRequest(AbstractModel):
 
 
 class DescribeEventStatisticsResponse(AbstractModel):
-    """DescribeEventStatistics返回参数结构体
+    r"""DescribeEventStatistics返回参数结构体
 
     """
 
@@ -90,7 +90,7 @@ class DescribeEventStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """正常产品数
+        r"""正常产品数
         :rtype: :class:`tencentcloud.tchd.v20230306.models.TotalStatus`
         """
         return self._Data
@@ -101,7 +101,7 @@ class DescribeEventStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -119,7 +119,7 @@ class DescribeEventStatisticsResponse(AbstractModel):
 
 
 class DescribeEventsRequest(AbstractModel):
-    """DescribeEvents请求参数结构体
+    r"""DescribeEvents请求参数结构体
 
     """
 
@@ -141,7 +141,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def EventDate(self):
-        """事件的发生日期
+        r"""事件的发生日期
         :rtype: str
         """
         return self._EventDate
@@ -152,7 +152,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def ProductIds(self):
-        """1. 不指定产品列表时将查询所有产品。
+        r"""1. 不指定产品列表时将查询所有产品。
 2. 产品ID示例：cvm、lb、cdb、cdn、crs
         :rtype: list of str
         """
@@ -164,7 +164,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
-        """1. 不指定地域列表时将查询所有地域。
+        r"""1. 不指定地域列表时将查询所有地域。
 2. 查询非区域性产品事件时，地域ID指定为：non-regional
 3. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
         :rtype: list of str
@@ -191,7 +191,7 @@ class DescribeEventsRequest(AbstractModel):
 
 
 class DescribeEventsResponse(AbstractModel):
-    """DescribeEvents返回参数结构体
+    r"""DescribeEvents返回参数结构体
 
     """
 
@@ -207,7 +207,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """事件详情列表
+        r"""事件详情列表
         :rtype: :class:`tencentcloud.tchd.v20230306.models.ProductEventList`
         """
         return self._Data
@@ -218,7 +218,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -236,7 +236,7 @@ class DescribeEventsResponse(AbstractModel):
 
 
 class EventDetail(AbstractModel):
-    """事件详情信息，包含：产品名称、地域名称、事件开始时间、事件结束时间、事件当前状态；
+    r"""事件详情信息，包含：产品名称、地域名称、事件开始时间、事件结束时间、事件当前状态；
 
     """
 
@@ -267,7 +267,7 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -278,7 +278,7 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -289,7 +289,7 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID，非区域性地域返回non-regional
+        r"""地域ID，非区域性地域返回non-regional
         :rtype: str
         """
         return self._RegionId
@@ -300,7 +300,7 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -311,7 +311,7 @@ class EventDetail(AbstractModel):
 
     @property
     def StartTime(self):
-        """事件开始时间
+        r"""事件开始时间
         :rtype: str
         """
         return self._StartTime
@@ -322,7 +322,7 @@ class EventDetail(AbstractModel):
 
     @property
     def EndTime(self):
-        """事件结束时间，当事件正在发生还未结束时，结束时间返回空
+        r"""事件结束时间，当事件正在发生还未结束时，结束时间返回空
         :rtype: str
         """
         return self._EndTime
@@ -333,7 +333,7 @@ class EventDetail(AbstractModel):
 
     @property
     def CurrentStatus(self):
-        """事件当前状态：提示、异常、正常
+        r"""事件当前状态：提示、异常、正常
         :rtype: str
         """
         return self._CurrentStatus
@@ -362,7 +362,7 @@ class EventDetail(AbstractModel):
 
 
 class ProductEventList(AbstractModel):
-    """产品可用性事件详情列表
+    r"""产品可用性事件详情列表
 
     """
 
@@ -375,7 +375,7 @@ class ProductEventList(AbstractModel):
 
     @property
     def EventList(self):
-        """事件详情列表
+        r"""事件详情列表
         :rtype: list of EventDetail
         """
         return self._EventList
@@ -403,7 +403,7 @@ class ProductEventList(AbstractModel):
 
 
 class TotalStatus(AbstractModel):
-    """状态汇总
+    r"""状态汇总
 
     """
 
@@ -422,7 +422,7 @@ class TotalStatus(AbstractModel):
 
     @property
     def NormalCount(self):
-        """正常状态的数目
+        r"""正常状态的数目
         :rtype: int
         """
         return self._NormalCount
@@ -433,7 +433,7 @@ class TotalStatus(AbstractModel):
 
     @property
     def NotifyCount(self):
-        """通知状态的数目
+        r"""通知状态的数目
         :rtype: int
         """
         return self._NotifyCount
@@ -444,7 +444,7 @@ class TotalStatus(AbstractModel):
 
     @property
     def AbnormalCount(self):
-        """异常状态的数目
+        r"""异常状态的数目
         :rtype: int
         """
         return self._AbnormalCount

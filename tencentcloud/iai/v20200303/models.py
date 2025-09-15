@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AnalyzeDenseLandmarksRequest(AbstractModel):
-    """AnalyzeDenseLandmarks请求参数结构体
+    r"""AnalyzeDenseLandmarks请求参数结构体
 
     """
 
@@ -60,7 +60,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """检测模式。
+        r"""检测模式。
 - 取值范围：0 为检测所有出现的人脸， 1 为检测面积最大的人脸。 
 - 默认为 0。 
 - 最多返回 5 张人脸的五官定位（人脸关键点）具体信息。
@@ -74,7 +74,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。  
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -88,7 +88,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。  
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - Url、Image必须提供一个，如果都提供，只使用 Url。  
@@ -105,7 +105,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
+        r"""人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -116,7 +116,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -147,7 +147,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 
 
 class AnalyzeDenseLandmarksResponse(AbstractModel):
-    """AnalyzeDenseLandmarks返回参数结构体
+    r"""AnalyzeDenseLandmarks返回参数结构体
 
     """
 
@@ -172,7 +172,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """请求的图片宽度。
+        r"""请求的图片宽度。
         :rtype: int
         """
         return self._ImageWidth
@@ -183,7 +183,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """请求的图片高度。
+        r"""请求的图片高度。
         :rtype: int
         """
         return self._ImageHeight
@@ -194,7 +194,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
     @property
     def DenseFaceShapeSet(self):
-        """稠密人脸关键点具体信息。
+        r"""稠密人脸关键点具体信息。
         :rtype: list of DenseFaceShape
         """
         return self._DenseFaceShapeSet
@@ -205,7 +205,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
+        r"""人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -216,7 +216,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -240,7 +240,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
 
 
 class AnalyzeFaceRequest(AbstractModel):
-    """AnalyzeFace请求参数结构体
+    r"""AnalyzeFace请求参数结构体
 
     """
 
@@ -287,7 +287,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """检测模式。
+        r"""检测模式。
 - 取值范围：
 0 为检测所有出现的人脸。
 1 为检测面积最大的人脸。
@@ -303,7 +303,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -317,7 +317,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - Url、Image必须提供一个，如果都提供，只使用 Url。  
@@ -334,7 +334,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 - 目前入参支持 “2.0”和“3.0“ 两个输入。
 - 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
 - 2020年11月26日后开通服务的账号仅支持输入“3.0”。
@@ -349,7 +349,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -380,7 +380,7 @@ class AnalyzeFaceRequest(AbstractModel):
 
 
 class AnalyzeFaceResponse(AbstractModel):
-    """AnalyzeFace返回参数结构体
+    r"""AnalyzeFace返回参数结构体
 
     """
 
@@ -405,7 +405,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """请求的图片宽度。
+        r"""请求的图片宽度。
         :rtype: int
         """
         return self._ImageWidth
@@ -416,7 +416,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """请求的图片高度。
+        r"""请求的图片高度。
         :rtype: int
         """
         return self._ImageHeight
@@ -427,7 +427,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def FaceShapeSet(self):
-        """五官定位（人脸关键点）具体信息。
+        r"""五官定位（人脸关键点）具体信息。
         :rtype: list of FaceShape
         """
         return self._FaceShapeSet
@@ -438,7 +438,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -449,7 +449,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -473,7 +473,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
 
 class AttributeItem(AbstractModel):
-    """人脸属性信息
+    r"""人脸属性信息
 
     """
 
@@ -490,7 +490,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def Type(self):
-        """属性值。
+        r"""属性值。
         :rtype: int
         """
         return self._Type
@@ -501,7 +501,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值。
+        r"""Type识别概率值。
 - 取值范围：[0,1]，代表判断正确的概率。
         :rtype: float
         """
@@ -526,7 +526,7 @@ class AttributeItem(AbstractModel):
 
 
 class Candidate(AbstractModel):
-    """识别出的最相似候选人
+    r"""识别出的最相似候选人
 
     """
 
@@ -563,7 +563,7 @@ class Candidate(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -574,7 +574,7 @@ class Candidate(AbstractModel):
 
     @property
     def FaceId(self):
-        """人脸ID。
+        r"""人脸ID。
 - 仅在SearchFaces/SearchFacesReturnsByGroup接口返回时有效。
 - 人员搜索类接口采用融合特征方式检索，该字段无意义。
         :rtype: str
@@ -587,7 +587,7 @@ class Candidate(AbstractModel):
 
     @property
     def Score(self):
-        """候选者的匹配得分。 
+        r"""候选者的匹配得分。 
 - 1万大小人脸底库下，误识率百分之一对应分数为70分，误识率千分之一对应分数为80分，误识率万分之一对应分数为90分。
 - 10万大小人脸底库下，误识率百分之一对应分数为80分，误识率千分之一对应分数为90分，误识率万分之一对应分数为100分。
 - 30万大小人脸底库下，误识率百分之一对应分数为85分，误识率千分之一对应分数为95分。
@@ -602,7 +602,7 @@ class Candidate(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。
+        r"""人员名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -614,7 +614,7 @@ class Candidate(AbstractModel):
 
     @property
     def Gender(self):
-        """人员性别。
+        r"""人员性别。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -626,7 +626,7 @@ class Candidate(AbstractModel):
 
     @property
     def PersonGroupInfos(self):
-        """包含此人员的人员库及描述字段内容列表。
+        r"""包含此人员的人员库及描述字段内容列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PersonGroupInfo
         """
@@ -660,7 +660,7 @@ class Candidate(AbstractModel):
 
 
 class CompareFaceRequest(AbstractModel):
-    """CompareFace请求参数结构体
+    r"""CompareFace请求参数结构体
 
     """
 
@@ -735,7 +735,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def ImageA(self):
-        """A 图片 base64 数据。
+        r"""A 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中置信度最高的人脸。
@@ -750,7 +750,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def ImageB(self):
-        """B 图片 base64 数据。
+        r"""B 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中置信度最高的人脸。
@@ -765,7 +765,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def UrlA(self):
-        """A 图片的 Url。
+        r"""A 图片的 Url。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -783,7 +783,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def UrlB(self):
-        """B 图片的 Url 。
+        r"""B 图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -801,7 +801,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 - 目前入参支持 “2.0”和“3.0“ 两个输入。
 - 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
 - 2020年11月26日后开通服务的账号仅支持输入“3.0”。
@@ -816,7 +816,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制； 
 1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -836,7 +836,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -851,7 +851,7 @@ class CompareFaceRequest(AbstractModel):
 
     @property
     def FaceMatchingStrategy(self):
-        """若图片中包含多张人脸，指定选取策略，默认为0。
+        r"""若图片中包含多张人脸，指定选取策略，默认为0。
 - 0：选取其中置信度最高的人脸
 - 1：选取其中面积最大的人脸。
         :rtype: int
@@ -883,7 +883,7 @@ class CompareFaceRequest(AbstractModel):
 
 
 class CompareFaceResponse(AbstractModel):
-    """CompareFace返回参数结构体
+    r"""CompareFace返回参数结构体
 
     """
 
@@ -906,7 +906,7 @@ class CompareFaceResponse(AbstractModel):
 
     @property
     def Score(self):
-        """两张图片中人脸的相似度分数。
+        r"""两张图片中人脸的相似度分数。
 - 不同算法版本返回的相似度分数不同。 
 - 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
 - 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
@@ -921,7 +921,7 @@ class CompareFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -932,7 +932,7 @@ class CompareFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -949,7 +949,7 @@ class CompareFaceResponse(AbstractModel):
 
 
 class CompareMaskFaceRequest(AbstractModel):
-    """CompareMaskFace请求参数结构体
+    r"""CompareMaskFace请求参数结构体
 
     """
 
@@ -1007,7 +1007,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def ImageA(self):
-        """A 图片 base64 数据。
+        r"""A 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -1022,7 +1022,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def ImageB(self):
-        """B 图片 base64 数据。
+        r"""B 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -1037,7 +1037,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def UrlA(self):
-        """A 图片的 Url 。
+        r"""A 图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -1055,7 +1055,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def UrlB(self):
-        """B 图片的 Url 。
+        r"""B 图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -1073,7 +1073,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。该接口只支持"3.0"
+        r"""人脸识别服务所用的算法模型版本。该接口只支持"3.0"
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1084,7 +1084,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -1120,7 +1120,7 @@ class CompareMaskFaceRequest(AbstractModel):
 
 
 class CompareMaskFaceResponse(AbstractModel):
-    """CompareMaskFace返回参数结构体
+    r"""CompareMaskFace返回参数结构体
 
     """
 
@@ -1143,7 +1143,7 @@ class CompareMaskFaceResponse(AbstractModel):
 
     @property
     def Score(self):
-        """两张图片中人脸的相似度分数。
+        r"""两张图片中人脸的相似度分数。
 - 不同算法版本返回的相似度分数不同。 
 - 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
 - 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
@@ -1158,7 +1158,7 @@ class CompareMaskFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1169,7 +1169,7 @@ class CompareMaskFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1186,7 +1186,7 @@ class CompareMaskFaceResponse(AbstractModel):
 
 
 class CopyPersonRequest(AbstractModel):
-    """CopyPerson请求参数结构体
+    r"""CopyPerson请求参数结构体
 
     """
 
@@ -1202,7 +1202,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -1213,7 +1213,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId。
+        r"""待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -1237,7 +1237,7 @@ class CopyPersonRequest(AbstractModel):
 
 
 class CopyPersonResponse(AbstractModel):
-    """CopyPerson返回参数结构体
+    r"""CopyPerson返回参数结构体
 
     """
 
@@ -1256,7 +1256,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupNum(self):
-        """成功加入的人员库数量。
+        r"""成功加入的人员库数量。
         :rtype: int
         """
         return self._SucGroupNum
@@ -1267,7 +1267,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupIds(self):
-        """成功加入的人员库列表。
+        r"""成功加入的人员库列表。
         :rtype: list of str
         """
         return self._SucGroupIds
@@ -1278,7 +1278,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1295,7 +1295,7 @@ class CopyPersonResponse(AbstractModel):
 
 
 class CreateFaceRequest(AbstractModel):
-    """CreateFace请求参数结构体
+    r"""CreateFace请求参数结构体
 
     """
 
@@ -1350,7 +1350,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -1361,7 +1361,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def Images(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 人员人脸总数量不可超过5张。
@@ -1377,7 +1377,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def Urls(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - Url、Image必须提供一个，如果都提供，只使用 Url。  
@@ -1396,7 +1396,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def FaceMatchThreshold(self):
-        """只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
+        r"""只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
 - 默认值60分。
 - 取值范围：[0,100] 。
         :rtype: float
@@ -1409,7 +1409,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -1428,7 +1428,7 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -1460,7 +1460,7 @@ class CreateFaceRequest(AbstractModel):
 
 
 class CreateFaceResponse(AbstractModel):
-    """CreateFace返回参数结构体
+    r"""CreateFace返回参数结构体
 
     """
 
@@ -1500,7 +1500,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def SucFaceNum(self):
-        """加入成功的人脸数量。
+        r"""加入成功的人脸数量。
         :rtype: int
         """
         return self._SucFaceNum
@@ -1511,7 +1511,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def SucFaceIds(self):
-        """加入成功的人脸ID列表。
+        r"""加入成功的人脸ID列表。
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -1522,7 +1522,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def RetCode(self):
-        """每张人脸图片添加结果。
+        r"""每张人脸图片添加结果。
 - 其他非 0 值代表算法服务异常，取值范围：
 -1101 代表未检测到人脸。
 -1102 代表图片解码失败。
@@ -1540,7 +1540,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def SucIndexes(self):
-        """加入成功的人脸索引。
+        r"""加入成功的人脸索引。
 - 索引顺序和入参中 Images 或 Urls 的顺序一致。 
 - 例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
         :rtype: list of int non-negative
@@ -1553,7 +1553,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def SucFaceRects(self):
-        """加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
+        r"""加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
         :rtype: list of FaceRect
         """
         return self._SucFaceRects
@@ -1564,7 +1564,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1575,7 +1575,7 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1601,7 +1601,7 @@ class CreateFaceResponse(AbstractModel):
 
 
 class CreateGroupRequest(AbstractModel):
-    """CreateGroup请求参数结构体
+    r"""CreateGroup请求参数结构体
 
     """
 
@@ -1634,7 +1634,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称，[1,60]个字符，可修改，不可重复。
+        r"""人员库名称，[1,60]个字符，可修改，不可重复。
         :rtype: str
         """
         return self._GroupName
@@ -1645,7 +1645,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
+        r"""人员库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
         :rtype: str
         """
         return self._GroupId
@@ -1656,7 +1656,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupExDescriptions(self):
-        """人员库自定义描述字段，用于描述人员库中人员属性，该人员库下所有人员将拥有此描述字段。 
+        r"""人员库自定义描述字段，用于描述人员库中人员属性，该人员库下所有人员将拥有此描述字段。 
 - 最多可以创建5个。 
 - 每个自定义描述字段支持[1,30]个字符。 
 - 在同一人员库中自定义描述字段不可重复。 
@@ -1671,7 +1671,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注，[0，40]个字符。
+        r"""人员库信息备注，[0，40]个字符。
         :rtype: str
         """
         return self._Tag
@@ -1682,7 +1682,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 - 目前入参支持 “2.0”和“3.0“ 两个输入。
 - 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
 - 2020年11月26日后开通服务的账号仅支持输入“3.0”。
@@ -1713,7 +1713,7 @@ class CreateGroupRequest(AbstractModel):
 
 
 class CreateGroupResponse(AbstractModel):
-    """CreateGroup返回参数结构体
+    r"""CreateGroup返回参数结构体
 
     """
 
@@ -1729,7 +1729,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1740,7 +1740,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1756,7 +1756,7 @@ class CreateGroupResponse(AbstractModel):
 
 
 class CreatePersonRequest(AbstractModel):
-    """CreatePerson请求参数结构体
+    r"""CreatePerson请求参数结构体
 
     """
 
@@ -1830,7 +1830,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """待加入的人员库ID，取值为创建人员库接口中的GroupId。
+        r"""待加入的人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -1841,7 +1841,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。[1，60]个字符，可修改，可重复。
+        r"""人员名称。[1，60]个字符，可修改，可重复。
         :rtype: str
         """
         return self._PersonName
@@ -1852,7 +1852,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
 - 单个腾讯云账号下不可修改，不可重复。
 - 支持英文、数字、-%@#&_，长度限制64B。
         :rtype: str
@@ -1865,7 +1865,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Gender(self):
-        """性别。
+        r"""性别。
 - 取值范围：0代表未填写，1代表男性，2代表女性。
         :rtype: int
         """
@@ -1877,7 +1877,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonExDescriptionInfos(self):
-        """人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
+        r"""人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -1888,7 +1888,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1902,7 +1902,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - Url、Image必须提供一个，如果都提供，只使用 Url。  
@@ -1919,7 +1919,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def UniquePersonControl(self):
-        """此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
+        r"""此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
 - 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
 - 如果判断没有，则完成创建人员。 
 - 取值范围：
@@ -1940,7 +1940,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -1959,7 +1959,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -2000,7 +2000,7 @@ class CreatePersonRequest(AbstractModel):
 
 
 class CreatePersonResponse(AbstractModel):
-    """CreatePerson返回参数结构体
+    r"""CreatePerson返回参数结构体
 
     """
 
@@ -2027,7 +2027,7 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def FaceId(self):
-        """人脸图片唯一标识。
+        r"""人脸图片唯一标识。
         :rtype: str
         """
         return self._FaceId
@@ -2038,7 +2038,7 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def FaceRect(self):
-        """检测出的人脸框的位置。
+        r"""检测出的人脸框的位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
@@ -2050,7 +2050,7 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def SimilarPersonId(self):
-        """疑似同一人的PersonId。 
+        r"""疑似同一人的PersonId。 
 - 当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
         :rtype: str
         """
@@ -2062,7 +2062,7 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2073,7 +2073,7 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2094,7 +2094,7 @@ class CreatePersonResponse(AbstractModel):
 
 
 class DeleteFaceRequest(AbstractModel):
-    """DeleteFace请求参数结构体
+    r"""DeleteFace请求参数结构体
 
     """
 
@@ -2110,7 +2110,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -2121,7 +2121,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def FaceIds(self):
-        """待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId。
+        r"""待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId。
         :rtype: list of str
         """
         return self._FaceIds
@@ -2145,7 +2145,7 @@ class DeleteFaceRequest(AbstractModel):
 
 
 class DeleteFaceResponse(AbstractModel):
-    """DeleteFace返回参数结构体
+    r"""DeleteFace返回参数结构体
 
     """
 
@@ -2164,7 +2164,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucDeletedNum(self):
-        """删除成功的人脸数量.
+        r"""删除成功的人脸数量.
         :rtype: int
         """
         return self._SucDeletedNum
@@ -2175,7 +2175,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucFaceIds(self):
-        """删除成功的人脸ID列表。
+        r"""删除成功的人脸ID列表。
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -2186,7 +2186,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2203,7 +2203,7 @@ class DeleteFaceResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup请求参数结构体
+    r"""DeleteGroup请求参数结构体
 
     """
 
@@ -2216,7 +2216,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -2239,7 +2239,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup返回参数结构体
+    r"""DeleteGroup返回参数结构体
 
     """
 
@@ -2252,7 +2252,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2267,7 +2267,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeletePersonFromGroupRequest(AbstractModel):
-    """DeletePersonFromGroup请求参数结构体
+    r"""DeletePersonFromGroup请求参数结构体
 
     """
 
@@ -2283,7 +2283,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -2294,7 +2294,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -2318,7 +2318,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
 
 class DeletePersonFromGroupResponse(AbstractModel):
-    """DeletePersonFromGroup返回参数结构体
+    r"""DeletePersonFromGroup返回参数结构体
 
     """
 
@@ -2331,7 +2331,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2346,7 +2346,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
 
 class DeletePersonRequest(AbstractModel):
-    """DeletePerson请求参数结构体
+    r"""DeletePerson请求参数结构体
 
     """
 
@@ -2359,7 +2359,7 @@ class DeletePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -2382,7 +2382,7 @@ class DeletePersonRequest(AbstractModel):
 
 
 class DeletePersonResponse(AbstractModel):
-    """DeletePerson返回参数结构体
+    r"""DeletePerson返回参数结构体
 
     """
 
@@ -2395,7 +2395,7 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2410,7 +2410,7 @@ class DeletePersonResponse(AbstractModel):
 
 
 class DenseFaceShape(AbstractModel):
-    """稠密关键点详细信息
+    r"""稠密关键点详细信息
 
     """
 
@@ -2474,7 +2474,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。
+        r"""人脸框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -2485,7 +2485,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。
+        r"""人脸框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -2496,7 +2496,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框宽度。
+        r"""人脸框宽度。
         :rtype: int
         """
         return self._Width
@@ -2507,7 +2507,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框高度。
+        r"""人脸框高度。
         :rtype: int
         """
         return self._Height
@@ -2518,7 +2518,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def LeftEye(self):
-        """描述左侧眼睛轮廓的 XX 点。
+        r"""描述左侧眼睛轮廓的 XX 点。
         :rtype: list of Point
         """
         return self._LeftEye
@@ -2529,7 +2529,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def RightEye(self):
-        """描述右侧眼睛轮廓的 XX 点。
+        r"""描述右侧眼睛轮廓的 XX 点。
         :rtype: list of Point
         """
         return self._RightEye
@@ -2540,7 +2540,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def LeftEyeBrow(self):
-        """描述左侧眉毛轮廓的 XX 点。
+        r"""描述左侧眉毛轮廓的 XX 点。
         :rtype: list of Point
         """
         return self._LeftEyeBrow
@@ -2551,7 +2551,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def RightEyeBrow(self):
-        """描述右侧眉毛轮廓的 XX 点。
+        r"""描述右侧眉毛轮廓的 XX 点。
         :rtype: list of Point
         """
         return self._RightEyeBrow
@@ -2562,7 +2562,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def MouthOutside(self):
-        """描述外嘴巴轮廓的 XX 点， 从左侧开始逆时针返回。
+        r"""描述外嘴巴轮廓的 XX 点， 从左侧开始逆时针返回。
         :rtype: list of Point
         """
         return self._MouthOutside
@@ -2573,7 +2573,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def MouthInside(self):
-        """描述内嘴巴轮廓的 XX 点，从左侧开始逆时针返回。
+        r"""描述内嘴巴轮廓的 XX 点，从左侧开始逆时针返回。
         :rtype: list of Point
         """
         return self._MouthInside
@@ -2584,7 +2584,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Nose(self):
-        """描述鼻子轮廓的 XX 点。
+        r"""描述鼻子轮廓的 XX 点。
         :rtype: list of Point
         """
         return self._Nose
@@ -2595,7 +2595,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def LeftPupil(self):
-        """左瞳孔轮廓的 XX 个点。
+        r"""左瞳孔轮廓的 XX 个点。
         :rtype: list of Point
         """
         return self._LeftPupil
@@ -2606,7 +2606,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def RightPupil(self):
-        """右瞳孔轮廓的 XX 个点。
+        r"""右瞳孔轮廓的 XX 个点。
         :rtype: list of Point
         """
         return self._RightPupil
@@ -2617,7 +2617,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def CentralAxis(self):
-        """中轴线轮廓的 XX 个点。
+        r"""中轴线轮廓的 XX 个点。
         :rtype: list of Point
         """
         return self._CentralAxis
@@ -2628,7 +2628,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Chin(self):
-        """下巴轮廓的 XX 个点。
+        r"""下巴轮廓的 XX 个点。
         :rtype: list of Point
         """
         return self._Chin
@@ -2639,7 +2639,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def LeftEyeBags(self):
-        """左眼袋的 XX 个点。
+        r"""左眼袋的 XX 个点。
         :rtype: list of Point
         """
         return self._LeftEyeBags
@@ -2650,7 +2650,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def RightEyeBags(self):
-        """右眼袋的 XX 个点。
+        r"""右眼袋的 XX 个点。
         :rtype: list of Point
         """
         return self._RightEyeBags
@@ -2661,7 +2661,7 @@ class DenseFaceShape(AbstractModel):
 
     @property
     def Forehead(self):
-        """额头的 XX 个点。
+        r"""额头的 XX 个点。
         :rtype: list of Point
         """
         return self._Forehead
@@ -2771,7 +2771,7 @@ class DenseFaceShape(AbstractModel):
 
 
 class DetectFaceAttributesRequest(AbstractModel):
-    """DetectFaceAttributes请求参数结构体
+    r"""DetectFaceAttributes请求参数结构体
 
     """
 
@@ -2821,7 +2821,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多处理的人脸数目。 
+        r"""最多处理的人脸数目。 
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 - 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :rtype: int
@@ -2834,7 +2834,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 - 所有格式的图片短边像素不小于64。
@@ -2849,7 +2849,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。 
+        r"""图片的 Url 。 
 - 对应图片 base64 编码后大小不可超过5M。 
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -2866,7 +2866,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def FaceAttributesType(self):
-        """是否返回年龄、性别、情绪等属性。 
+        r"""是否返回年龄、性别、情绪等属性。 
 - 合法值为（大小写不敏感）：None、Age、Beauty、Emotion、Eye、Eyebrow、Gender、Hair、Hat、Headpose、Mask、Mouth、Moustache、Nose、Shape、Skin、Smile。 
 - None为不需要返回。
 - 默认为 None。即FaceAttributesType属性为空时，各属性返回值为0。
@@ -2883,7 +2883,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -2898,7 +2898,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。本接口仅支持“3.0”输入
+        r"""人脸识别服务所用的算法模型版本。本接口仅支持“3.0”输入
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2926,7 +2926,7 @@ class DetectFaceAttributesRequest(AbstractModel):
 
 
 class DetectFaceAttributesResponse(AbstractModel):
-    """DetectFaceAttributes返回参数结构体
+    r"""DetectFaceAttributes返回参数结构体
 
     """
 
@@ -2951,7 +2951,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """请求的图片宽度。
+        r"""请求的图片宽度。
         :rtype: int
         """
         return self._ImageWidth
@@ -2962,7 +2962,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """请求的图片高度。
+        r"""请求的图片高度。
         :rtype: int
         """
         return self._ImageHeight
@@ -2973,7 +2973,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def FaceDetailInfos(self):
-        """人脸信息列表。
+        r"""人脸信息列表。
         :rtype: list of FaceDetailInfo
         """
         return self._FaceDetailInfos
@@ -2984,7 +2984,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2995,7 +2995,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3019,7 +3019,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
 
 class DetectFaceRequest(AbstractModel):
-    """DetectFace请求参数结构体
+    r"""DetectFace请求参数结构体
 
     """
 
@@ -3085,7 +3085,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多处理的人脸数目。
+        r"""最多处理的人脸数目。
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 - 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :rtype: int
@@ -3098,7 +3098,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素，低于MinFaceSize值的人脸不会被检测。
+        r"""人脸长和宽的最小尺寸，单位为像素，低于MinFaceSize值的人脸不会被检测。
 - 只支持设置34和20，建议使用34。
         :rtype: int
         """
@@ -3110,7 +3110,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -3125,7 +3125,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -3143,7 +3143,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def NeedFaceAttributes(self):
-        """是否需要返回人脸属性信息（FaceAttributesInfo）。
+        r"""是否需要返回人脸属性信息（FaceAttributesInfo）。
 - 0 为不需要返回，1 为需要返回。
 - 默认为 0。 
 - 非 1 值均视为不需要返回，此时 FaceAttributesInfo 不具备参考意义。  
@@ -3159,7 +3159,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def NeedQualityDetection(self):
-        """是否开启质量检测。
+        r"""是否开启质量检测。
 - 0 为关闭，1 为开启。
 - 默认为 0。 
 - 非 1 值均视为不进行质量检测。
@@ -3175,7 +3175,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 - 目前入参支持 “2.0”和“3.0“ 两个输入。
 - 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
 - 2020年11月26日后开通服务的账号仅支持输入“3.0”。
@@ -3190,7 +3190,7 @@ class DetectFaceRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -3224,7 +3224,7 @@ class DetectFaceRequest(AbstractModel):
 
 
 class DetectFaceResponse(AbstractModel):
-    """DetectFace返回参数结构体
+    r"""DetectFace返回参数结构体
 
     """
 
@@ -3250,7 +3250,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """请求的图片宽度。
+        r"""请求的图片宽度。
         :rtype: int
         """
         return self._ImageWidth
@@ -3261,7 +3261,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """请求的图片高度。
+        r"""请求的图片高度。
         :rtype: int
         """
         return self._ImageHeight
@@ -3272,7 +3272,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def FaceInfos(self):
-        """人脸信息列表。
+        r"""人脸信息列表。
 - 包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
         :rtype: list of FaceInfo
         """
@@ -3284,7 +3284,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -3295,7 +3295,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3319,7 +3319,7 @@ class DetectFaceResponse(AbstractModel):
 
 
 class DetectFaceSimilarityRequest(AbstractModel):
-    """DetectFaceSimilarity请求参数结构体
+    r"""DetectFaceSimilarity请求参数结构体
 
     """
 
@@ -3375,7 +3375,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageA(self):
-        """A 图片 base64 数据。
+        r"""A 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中置信度最高的人脸。
@@ -3390,7 +3390,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageB(self):
-        """B 图片 base64 数据。
+        r"""B 图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中置信度最高的人脸。
@@ -3405,7 +3405,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlA(self):
-        """A 图片的 Url。
+        r"""A 图片的 Url。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -3423,7 +3423,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlB(self):
-        """B 图片的 Url 。
+        r"""B 图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 - B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -3441,7 +3441,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制； 
 1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -3477,7 +3477,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
 
 class DetectFaceSimilarityResponse(AbstractModel):
-    """DetectFaceSimilarity返回参数结构体
+    r"""DetectFaceSimilarity返回参数结构体
 
     """
 
@@ -3494,7 +3494,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     @property
     def Score(self):
-        """取值范围 [0.00, 100.00]。
+        r"""取值范围 [0.00, 100.00]。
 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
         :rtype: float
         """
@@ -3506,7 +3506,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3522,7 +3522,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
 
 class DetectLiveFaceAccurateRequest(AbstractModel):
-    """DetectLiveFaceAccurate请求参数结构体
+    r"""DetectLiveFaceAccurate请求参数结构体
 
     """
 
@@ -3553,7 +3553,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 - 图片的宽高比请接近 3:4，手机拍摄比例最佳。
@@ -3569,7 +3569,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -3587,7 +3587,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
+        r"""人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -3612,7 +3612,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
 
 class DetectLiveFaceAccurateResponse(AbstractModel):
-    """DetectLiveFaceAccurate返回参数结构体
+    r"""DetectLiveFaceAccurate返回参数结构体
 
     """
 
@@ -3634,7 +3634,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def Score(self):
-        """活体打分。
+        r"""活体打分。
 - 取值范围 [0,100]。
 - 根据活体分数对应的阈值区间来判断是否为翻拍。
 - 目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
@@ -3648,7 +3648,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -3659,7 +3659,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3676,7 +3676,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
 
 class DetectLiveFaceRequest(AbstractModel):
-    """DetectLiveFace请求参数结构体
+    r"""DetectLiveFace请求参数结构体
 
     """
 
@@ -3711,7 +3711,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
@@ -3724,7 +3724,7 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+        r"""图片的 Url 。对应图片 base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 Url、Image必须提供一个，如果都提供，只使用 Url。 
 （图片的宽高比请接近 3:4，不符合宽高比的图片返回的分值不具备参考意义） 
@@ -3741,7 +3741,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 
 目前入参支持 “2.0”和“3.0“ 两个输入。
 
@@ -3774,7 +3774,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class DetectLiveFaceResponse(AbstractModel):
-    """DetectLiveFace返回参数结构体
+    r"""DetectLiveFace返回参数结构体
 
     """
 
@@ -3798,7 +3798,7 @@ class DetectLiveFaceResponse(AbstractModel):
 
     @property
     def Score(self):
-        """活体打分，取值范围 [0,100]，分数一般落于[80, 100]区间内，0分也为常见值。推荐相大于 87 时可判断为活体。可根据具体场景自行调整阈值。
+        r"""活体打分，取值范围 [0,100]，分数一般落于[80, 100]区间内，0分也为常见值。推荐相大于 87 时可判断为活体。可根据具体场景自行调整阈值。
 本字段当且仅当FaceModelVersion为2.0时才具备参考意义。
         :rtype: float
         """
@@ -3810,7 +3810,7 @@ class DetectLiveFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -3821,7 +3821,7 @@ class DetectLiveFaceResponse(AbstractModel):
 
     @property
     def IsLiveness(self):
-        """活体检测是否通过。
+        r"""活体检测是否通过。
 本字段只有FaceModelVersion为3.0时才具备参考意义。
         :rtype: bool
         """
@@ -3833,7 +3833,7 @@ class DetectLiveFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3851,7 +3851,7 @@ class DetectLiveFaceResponse(AbstractModel):
 
 
 class Eye(AbstractModel):
-    """眼睛信息
+    r"""眼睛信息
 
     """
 
@@ -3877,7 +3877,7 @@ class Eye(AbstractModel):
 
     @property
     def Glass(self):
-        """识别是否佩戴眼镜。
+        r"""识别是否佩戴眼镜。
 - AttributeItem对应的Type为 —— 0：无眼镜，1：普通眼镜，2：墨镜
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3889,7 +3889,7 @@ class Eye(AbstractModel):
 
     @property
     def EyeOpen(self):
-        """识别眼睛的睁开、闭合状态。
+        r"""识别眼睛的睁开、闭合状态。
 - AttributeItem对应的Type为 —— 0：睁开，1：闭眼
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3901,7 +3901,7 @@ class Eye(AbstractModel):
 
     @property
     def EyelidType(self):
-        """识别是否双眼皮。
+        r"""识别是否双眼皮。
 - AttributeItem对应的Type为 —— 0：无，1：有。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3913,7 +3913,7 @@ class Eye(AbstractModel):
 
     @property
     def EyeSize(self):
-        """眼睛大小。
+        r"""眼睛大小。
 - AttributeItem对应的Type为 —— 0：小眼睛，1：普通眼睛，2：大眼睛。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3948,7 +3948,7 @@ class Eye(AbstractModel):
 
 
 class Eyebrow(AbstractModel):
-    """眉毛信息
+    r"""眉毛信息
 
     """
 
@@ -3970,7 +3970,7 @@ class Eyebrow(AbstractModel):
 
     @property
     def EyebrowDensity(self):
-        """眉毛浓密。
+        r"""眉毛浓密。
 - AttributeItem对应的Type为 —— 0：淡眉，1：浓眉。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3982,7 +3982,7 @@ class Eyebrow(AbstractModel):
 
     @property
     def EyebrowCurve(self):
-        """眉毛弯曲。
+        r"""眉毛弯曲。
 - AttributeItem对应的Type为 —— 0：不弯，1：弯眉。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3994,7 +3994,7 @@ class Eyebrow(AbstractModel):
 
     @property
     def EyebrowLength(self):
-        """眉毛长短。
+        r"""眉毛长短。
 - AttributeItem对应的Type为 —— 0：短眉毛，1：长眉毛。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -4026,7 +4026,7 @@ class Eyebrow(AbstractModel):
 
 
 class FaceAttributesInfo(AbstractModel):
-    """人脸属性信息，包含性别( gender )、年龄( age )、表情( expression )、
+    r"""人脸属性信息，包含性别( gender )、年龄( age )、表情( expression )、
     魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息，最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceAttributesInfo 不具备参考意义。
 
     """
@@ -4104,7 +4104,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Gender(self):
-        """性别。
+        r"""性别。
 - 取值说明：[0~49]为女性，[50，100]为男性，越接近0和100表示置信度越高。
 - NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4117,7 +4117,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Age(self):
-        """年龄 。
+        r"""年龄 。
 - 取值范围：[0~100]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4130,7 +4130,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Expression(self):
-        """微笑。
+        r"""微笑。
 - 取值说明：[0(normal，正常)~100(laugh，大笑)]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4143,7 +4143,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Glass(self):
-        """是否有眼镜。
+        r"""是否有眼镜。
 - 取值范围： [true,false]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: bool
@@ -4156,7 +4156,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Pitch(self):
-        """上下偏移。
+        r"""上下偏移。
 - 取值范围：[-30,30]，单位角度。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 - 建议：人脸入库选择[-10,10]的图片。
@@ -4170,7 +4170,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Yaw(self):
-        """左右偏移。
+        r"""左右偏移。
 - 取值范围：[-30,30]，单位角度。 
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 - 建议：人脸入库选择[-10,10]的图片。
@@ -4184,7 +4184,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Roll(self):
-        """平面旋转。
+        r"""平面旋转。
 - 取值范围：[-180,180]，单位角度。 
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。  
 - 建议：人脸入库选择[-20,20]的图片。
@@ -4198,7 +4198,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Beauty(self):
-        """魅力。
+        r"""魅力。
 - 取值范围：[0~100]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4211,7 +4211,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Hat(self):
-        """是否有帽子。
+        r"""是否有帽子。
 - 取值范围： [true,false]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4225,7 +4225,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Mask(self):
-        """是否有口罩。
+        r"""是否有口罩。
 - 取值范围： [true,false]。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4239,7 +4239,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def Hair(self):
-        """头发信息，包含头发长度（length）、有无刘海（bang）、头发颜色（color）。
+        r"""头发信息，包含头发长度（length）、有无刘海（bang）、头发颜色（color）。
 - NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceHairAttributesInfo`
@@ -4252,7 +4252,7 @@ class FaceAttributesInfo(AbstractModel):
 
     @property
     def EyeOpen(self):
-        """双眼是否睁开。
+        r"""双眼是否睁开。
 - 取值范围： [true,false]。
 - 只要有超过一只眼睛闭眼，就返回false。
 -  NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -4292,7 +4292,7 @@ class FaceAttributesInfo(AbstractModel):
 
 
 class FaceDetailAttributesInfo(AbstractModel):
-    """人脸属性信息，根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty）
+    r"""人脸属性信息，根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty）
     情绪（Emotion）、眼睛信息（Eye）、眉毛（Eyebrow）、性别（Gender）
     头发（Hair）、帽子（Hat）、姿态（Headpose）、口罩（Mask）、嘴巴（Mouth）、胡子（Moustache）
     鼻子（Nose）、脸型（Shape）、肤色（Skin）、微笑（Smile）等人脸属性信息。
@@ -4380,7 +4380,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Age(self):
-        """年龄。
+        r"""年龄。
 - 取值范围： [0,65]，其中65代表“65岁及以上”。 
 - FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4393,7 +4393,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Beauty(self):
-        """美丑打分。
+        r"""美丑打分。
 - 取值范围：[0,100]。 
 - FaceAttributesType 不含 Beauty 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4406,7 +4406,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Emotion(self):
-        """情绪，可识别自然、高兴、惊讶、生气、悲伤、厌恶、害怕。 
+        r"""情绪，可识别自然、高兴、惊讶、生气、悲伤、厌恶、害怕。 
 - AttributeItem对应的Type为 —— 0：自然，1：高兴，2：惊讶，3：生气，4：悲伤，5：厌恶，6：害怕。
 - FaceAttributesType 不含Emotion 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4419,7 +4419,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Eye(self):
-        """眼睛相关信息，可识别是否戴眼镜、是否闭眼、是否双眼皮和眼睛大小。 
+        r"""眼睛相关信息，可识别是否戴眼镜、是否闭眼、是否双眼皮和眼睛大小。 
 - FaceAttributesType 不含Eye 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.Eye`
         """
@@ -4431,7 +4431,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Eyebrow(self):
-        """眉毛相关信息，可识别眉毛浓密、弯曲、长短信息。 
+        r"""眉毛相关信息，可识别眉毛浓密、弯曲、长短信息。 
 FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.Eyebrow`
         """
@@ -4443,7 +4443,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Gender(self):
-        """性别信息。 
+        r"""性别信息。 
 - AttributeItem对应的Type为 —— 	0：男性，1：女性。
 - FaceAttributesType 不含Gender 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4456,7 +4456,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Hair(self):
-        """头发信息，包含头发长度、有无刘海、头发颜色。 
+        r"""头发信息，包含头发长度、有无刘海、头发颜色。 
 - FaceAttributesType 不含Hair 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.Hair`
         """
@@ -4468,7 +4468,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Hat(self):
-        """帽子信息，可识别是否佩戴帽子、帽子款式、帽子颜色。 
+        r"""帽子信息，可识别是否佩戴帽子、帽子款式、帽子颜色。 
 - FaceAttributesType 不含Hat 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.Hat`
         """
@@ -4480,7 +4480,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def HeadPose(self):
-        """姿态信息，包含人脸的上下偏移、左右偏移、平面旋转信息。 
+        r"""姿态信息，包含人脸的上下偏移、左右偏移、平面旋转信息。 
 - FaceAttributesType 不含Headpose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.HeadPose`
         """
@@ -4492,7 +4492,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Mask(self):
-        """口罩佩戴信息。 
+        r"""口罩佩戴信息。 
 - AttributeItem对应的Type为 —— 0: 无口罩， 1: 有口罩不遮脸，2: 有口罩遮下巴，3: 有口罩遮嘴，4: 正确佩戴口罩。
 - FaceAttributesType 不含Mask 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4505,7 +4505,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Mouth(self):
-        """嘴巴信息，可识别是否张嘴、嘴唇厚度。 
+        r"""嘴巴信息，可识别是否张嘴、嘴唇厚度。 
 - FaceAttributesType 不含 Mouth 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.Mouth`
         """
@@ -4517,7 +4517,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Moustache(self):
-        """胡子信息。
+        r"""胡子信息。
 - AttributeItem对应的Type为 —— 0：无胡子，1：有胡子。 
 - FaceAttributesType 不含 Moustache 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4530,7 +4530,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Nose(self):
-        """鼻子信息。 
+        r"""鼻子信息。 
 - AttributeItem对应的Type为 —— 0：朝天鼻，1：鹰钩鼻，2：普通，3：圆鼻头
 - FaceAttributesType 不含 Nose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4543,7 +4543,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Shape(self):
-        """脸型信息。 
+        r"""脸型信息。 
 - AttributeItem对应的Type为 —— 0：方脸，1：三角脸，2：鹅蛋脸，3：心形脸，4：圆脸。
 - FaceAttributesType 不含 Shape 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4556,7 +4556,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Skin(self):
-        """肤色信息。 
+        r"""肤色信息。 
 - AttributeItem对应的Type为 —— 0：黄色皮肤，1：棕色皮肤，2：黑色皮肤，3：白色皮肤。
 - FaceAttributesType 不含 Skin 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -4569,7 +4569,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
     @property
     def Smile(self):
-        """微笑程度
+        r"""微笑程度
 - 取值范围：[0,100]。 
 - FaceAttributesType 不含 Smile 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :rtype: int
@@ -4635,7 +4635,7 @@ FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍�
 
 
 class FaceDetailInfo(AbstractModel):
-    """人脸信息列表。
+    r"""人脸信息列表。
 
     """
 
@@ -4653,7 +4653,7 @@ class FaceDetailInfo(AbstractModel):
 
     @property
     def FaceRect(self):
-        """检测出的人脸框位置。
+        r"""检测出的人脸框位置。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -4664,7 +4664,7 @@ class FaceDetailInfo(AbstractModel):
 
     @property
     def FaceDetailAttributesInfo(self):
-        """人脸属性信息。
+        r"""人脸属性信息。
 - 根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty）、情绪（Emotion）、眼睛信息（Eye）、眉毛（Eyebrow）、性别（Gender）、头发（Hair）、帽子（Hat）、姿态（Headpose）、口罩（Mask）、嘴巴（Mouth）、胡子（Moustache） 、鼻子（Nose）、脸型（Shape）、肤色（Skin）、微笑（Smile）等人脸属性信息。  
 - 若 FaceAttributesType 没有输入相关类型，则FaceDetaiAttributesInfo返回的细项不具备参考意义。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceDetailAttributesInfo`
@@ -4694,7 +4694,7 @@ class FaceDetailInfo(AbstractModel):
 
 
 class FaceHairAttributesInfo(AbstractModel):
-    """人脸属性中的发型信息。
+    r"""人脸属性中的发型信息。
 
     """
 
@@ -4716,7 +4716,7 @@ class FaceHairAttributesInfo(AbstractModel):
 
     @property
     def Length(self):
-        """取值范围：0：光头，1：短发，2：中发，3：长发，4：绑发。
+        r"""取值范围：0：光头，1：短发，2：中发，3：长发，4：绑发。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4728,7 +4728,7 @@ class FaceHairAttributesInfo(AbstractModel):
 
     @property
     def Bang(self):
-        """取值范围：0：有刘海，1：无刘海。
+        r"""取值范围：0：有刘海，1：无刘海。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4740,7 +4740,7 @@ class FaceHairAttributesInfo(AbstractModel):
 
     @property
     def Color(self):
-        """取值范围：0：黑色，1：金色，2：棕色，3：灰白色。
+        r"""取值范围：0：黑色，1：金色，2：棕色，3：灰白色。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4766,7 +4766,7 @@ class FaceHairAttributesInfo(AbstractModel):
 
 
 class FaceInfo(AbstractModel):
-    """人脸信息列表。
+    r"""人脸信息列表。
 
     """
 
@@ -4803,7 +4803,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。
+        r"""人脸框左上角横坐标。
 - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 - 若需截取完整人脸，可以在完整分completeness满足需求的情况下，将负值坐标取0。
         :rtype: int
@@ -4816,7 +4816,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。 
+        r"""人脸框左上角纵坐标。 
 - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 - 若需截取完整人脸，可以在完整分completeness满足需求的情况下，将负值坐标取0。
         :rtype: int
@@ -4829,7 +4829,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框宽度。
+        r"""人脸框宽度。
         :rtype: int
         """
         return self._Width
@@ -4840,7 +4840,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框高度。
+        r"""人脸框高度。
         :rtype: int
         """
         return self._Height
@@ -4851,7 +4851,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def FaceAttributesInfo(self):
-        """人脸属性信息。
+        r"""人脸属性信息。
 - 包含性别( gender )、年龄( age )、表情( expression )、魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。
 - 只有当 NeedFaceAttributes 设为 1 时才返回有效信息。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceAttributesInfo`
@@ -4864,7 +4864,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def FaceQualityInfo(self):
-        """人脸质量信息。
+        r"""人脸质量信息。
 - 包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。
 - 只有当NeedFaceDetection设为1时才返回有效信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4899,7 +4899,7 @@ class FaceInfo(AbstractModel):
 
 
 class FaceQualityCompleteness(AbstractModel):
-    """五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
+    r"""五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
 
     """
 
@@ -4945,7 +4945,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Eyebrow(self):
-        """眉毛的遮挡分数。
+        r"""眉毛的遮挡分数。
 - 取值范围：[0,100]，分数越高遮挡越少。 
 - 参考范围：[0,80]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4959,7 +4959,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Eye(self):
-        """眼睛的遮挡分数。
+        r"""眼睛的遮挡分数。
 - 取值范围：[0,100],分数越高遮挡越少。 
 - 参考范围：[0,80]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4973,7 +4973,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Nose(self):
-        """鼻子的遮挡分数。
+        r"""鼻子的遮挡分数。
 - 取值范围：[0,100],分数越高遮挡越少。 
 - 参考范围：[0,60]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4987,7 +4987,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Cheek(self):
-        """脸颊的遮挡分数。
+        r"""脸颊的遮挡分数。
 - 取值范围：[0,100],分数越高遮挡越少。 
 - 参考范围：[0,70]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5001,7 +5001,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Mouth(self):
-        """嘴巴的遮挡分数。
+        r"""嘴巴的遮挡分数。
 - 取值范围：[0,100],分数越高遮挡越少。 
 - 参考范围：[0,50]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5015,7 +5015,7 @@ class FaceQualityCompleteness(AbstractModel):
 
     @property
     def Chin(self):
-        """下巴的遮挡分数。
+        r"""下巴的遮挡分数。
 - 取值范围：[0,100],分数越高遮挡越少。 
 - 参考范围：[0,70]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5046,7 +5046,7 @@ class FaceQualityCompleteness(AbstractModel):
 
 
 class FaceQualityInfo(AbstractModel):
-    """人脸质量信息，包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。只有当NeedFaceDetection设为1时才返回有效信息。
+    r"""人脸质量信息，包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。只有当NeedFaceDetection设为1时才返回有效信息。
 
     """
 
@@ -5082,7 +5082,7 @@ class FaceQualityInfo(AbstractModel):
 
     @property
     def Score(self):
-        """质量分。
+        r"""质量分。
 - 取值范围：[0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
 - 正常情况，只需要使用Score作为质量分总体的判断标准即可。Sharpness、Brightness、Completeness等细项分仅供参考。
 - 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
@@ -5098,7 +5098,7 @@ class FaceQualityInfo(AbstractModel):
 
     @property
     def Sharpness(self):
-        """清晰分。
+        r"""清晰分。
 - 取值范围：[0,100]，评价图片清晰程度，分数越高越清晰。 
 - 参考范围：[0,40]特别模糊，[40,60]模糊，[60,80]一般，[80,100]清晰。 
 - 建议：人脸入库选取80以上的图片。
@@ -5113,7 +5113,7 @@ class FaceQualityInfo(AbstractModel):
 
     @property
     def Brightness(self):
-        """光照分。
+        r"""光照分。
 - 取值范围：[0,100]，评价图片光照程度，分数越高越亮。 
 - 参考范围： [0,30]偏暗，[30,70]光照正常，[70,100]偏亮。 
 - 建议：人脸入库选取[30,70]的图片。
@@ -5128,7 +5128,7 @@ class FaceQualityInfo(AbstractModel):
 
     @property
     def Completeness(self):
-        """五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
+        r"""五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceQualityCompleteness`
         """
@@ -5157,7 +5157,7 @@ class FaceQualityInfo(AbstractModel):
 
 
 class FaceRect(AbstractModel):
-    """检测出的人脸框的位置
+    r"""检测出的人脸框的位置
 
     """
 
@@ -5183,7 +5183,7 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。 
+        r"""人脸框左上角横坐标。 
 - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 - 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :rtype: int
@@ -5196,7 +5196,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。 
+        r"""人脸框左上角纵坐标。 
 - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 - 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :rtype: int
@@ -5209,7 +5209,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
-        """人脸宽度。
+        r"""人脸宽度。
         :rtype: int
         """
         return self._Width
@@ -5220,7 +5220,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
-        """人脸高度。
+        r"""人脸高度。
         :rtype: int
         """
         return self._Height
@@ -5246,7 +5246,7 @@ class FaceRect(AbstractModel):
 
 
 class FaceShape(AbstractModel):
-    """五官定位（人脸关键点）具体信息。
+    r"""五官定位（人脸关键点）具体信息。
 
     """
 
@@ -5283,7 +5283,7 @@ class FaceShape(AbstractModel):
 
     @property
     def FaceProfile(self):
-        """描述脸型轮廓的 21 点。
+        r"""描述脸型轮廓的 21 点。
         :rtype: list of Point
         """
         return self._FaceProfile
@@ -5294,7 +5294,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftEye(self):
-        """描述左侧眼睛轮廓的 8 点。
+        r"""描述左侧眼睛轮廓的 8 点。
         :rtype: list of Point
         """
         return self._LeftEye
@@ -5305,7 +5305,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightEye(self):
-        """描述右侧眼睛轮廓的 8 点。
+        r"""描述右侧眼睛轮廓的 8 点。
         :rtype: list of Point
         """
         return self._RightEye
@@ -5316,7 +5316,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftEyeBrow(self):
-        """描述左侧眉毛轮廓的 8 点。
+        r"""描述左侧眉毛轮廓的 8 点。
         :rtype: list of Point
         """
         return self._LeftEyeBrow
@@ -5327,7 +5327,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightEyeBrow(self):
-        """描述右侧眉毛轮廓的 8 点。
+        r"""描述右侧眉毛轮廓的 8 点。
         :rtype: list of Point
         """
         return self._RightEyeBrow
@@ -5338,7 +5338,7 @@ class FaceShape(AbstractModel):
 
     @property
     def Mouth(self):
-        """描述嘴巴轮廓的 22 点。
+        r"""描述嘴巴轮廓的 22 点。
         :rtype: list of Point
         """
         return self._Mouth
@@ -5349,7 +5349,7 @@ class FaceShape(AbstractModel):
 
     @property
     def Nose(self):
-        """描述鼻子轮廓的 13 点。
+        r"""描述鼻子轮廓的 13 点。
         :rtype: list of Point
         """
         return self._Nose
@@ -5360,7 +5360,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftPupil(self):
-        """左瞳孔轮廓的 1 个点。
+        r"""左瞳孔轮廓的 1 个点。
         :rtype: list of Point
         """
         return self._LeftPupil
@@ -5371,7 +5371,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightPupil(self):
-        """右瞳孔轮廓的 1 个点。
+        r"""右瞳孔轮廓的 1 个点。
         :rtype: list of Point
         """
         return self._RightPupil
@@ -5447,7 +5447,7 @@ class FaceShape(AbstractModel):
 
 
 class GetGroupInfoRequest(AbstractModel):
-    """GetGroupInfo请求参数结构体
+    r"""GetGroupInfo请求参数结构体
 
     """
 
@@ -5460,7 +5460,7 @@ class GetGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库 ID，取值为创建人员库接口中的GroupId。
+        r"""人员库 ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -5483,7 +5483,7 @@ class GetGroupInfoRequest(AbstractModel):
 
 
 class GetGroupInfoResponse(AbstractModel):
-    """GetGroupInfo返回参数结构体
+    r"""GetGroupInfo返回参数结构体
 
     """
 
@@ -5514,7 +5514,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称。
+        r"""人员库名称。
         :rtype: str
         """
         return self._GroupName
@@ -5525,7 +5525,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID。
+        r"""人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -5536,7 +5536,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupExDescriptions(self):
-        """人员库自定义描述字段。
+        r"""人员库自定义描述字段。
         :rtype: list of str
         """
         return self._GroupExDescriptions
@@ -5547,7 +5547,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注。
+        r"""人员库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -5558,7 +5558,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -5569,7 +5569,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def CreationTimestamp(self):
-        """Group的创建时间和日期。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。
+        r"""Group的创建时间和日期。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。
         :rtype: int
         """
         return self._CreationTimestamp
@@ -5580,7 +5580,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5601,7 +5601,7 @@ class GetGroupInfoResponse(AbstractModel):
 
 
 class GetGroupListRequest(AbstractModel):
-    """GetGroupList请求参数结构体
+    r"""GetGroupList请求参数结构体
 
     """
 
@@ -5617,7 +5617,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0
+        r"""起始序号，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -5628,7 +5628,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000
+        r"""返回数量，默认值为10，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -5652,7 +5652,7 @@ class GetGroupListRequest(AbstractModel):
 
 
 class GetGroupListResponse(AbstractModel):
-    """GetGroupList返回参数结构体
+    r"""GetGroupList返回参数结构体
 
     """
 
@@ -5672,7 +5672,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def GroupInfos(self):
-        """返回的人员库信息
+        r"""返回的人员库信息
         :rtype: list of GroupInfo
         """
         return self._GroupInfos
@@ -5683,7 +5683,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def GroupNum(self):
-        """人员库总数量
+        r"""人员库总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5695,7 +5695,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5717,7 +5717,7 @@ class GetGroupListResponse(AbstractModel):
 
 
 class GetPersonBaseInfoRequest(AbstractModel):
-    """GetPersonBaseInfo请求参数结构体
+    r"""GetPersonBaseInfo请求参数结构体
 
     """
 
@@ -5730,7 +5730,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，创建人员接口中的PersonId。
+        r"""人员ID，创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -5753,7 +5753,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
 
 class GetPersonBaseInfoResponse(AbstractModel):
-    """GetPersonBaseInfo返回参数结构体
+    r"""GetPersonBaseInfo返回参数结构体
 
     """
 
@@ -5776,7 +5776,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。
+        r"""人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -5787,7 +5787,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def Gender(self):
-        """人员性别。
+        r"""人员性别。
 - 取值范围：0代表未填写，1代表男性，2代表女性。
         :rtype: int
         """
@@ -5799,7 +5799,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def FaceIds(self):
-        """包含的人脸 ID 列表。
+        r"""包含的人脸 ID 列表。
         :rtype: list of str
         """
         return self._FaceIds
@@ -5810,7 +5810,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5828,7 +5828,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
 
 class GetPersonGroupInfoRequest(AbstractModel):
-    """GetPersonGroupInfo请求参数结构体
+    r"""GetPersonGroupInfo请求参数结构体
 
     """
 
@@ -5847,7 +5847,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -5858,7 +5858,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -5869,7 +5869,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为100。
+        r"""返回数量，默认值为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -5894,7 +5894,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
 
 class GetPersonGroupInfoResponse(AbstractModel):
-    """GetPersonGroupInfo返回参数结构体
+    r"""GetPersonGroupInfo返回参数结构体
 
     """
 
@@ -5918,7 +5918,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def PersonGroupInfos(self):
-        """包含此人员的人员库及描述字段内容列表。
+        r"""包含此人员的人员库及描述字段内容列表。
         :rtype: list of PersonGroupInfo
         """
         return self._PersonGroupInfos
@@ -5929,7 +5929,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def GroupNum(self):
-        """人员库总数量。
+        r"""人员库总数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5941,7 +5941,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别服务所用的算法模型版本。
+        r"""人脸识别服务所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5953,7 +5953,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5976,7 +5976,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
 
 class GetPersonListNumRequest(AbstractModel):
-    """GetPersonListNum请求参数结构体
+    r"""GetPersonListNum请求参数结构体
 
     """
 
@@ -5989,7 +5989,7 @@ class GetPersonListNumRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -6012,7 +6012,7 @@ class GetPersonListNumRequest(AbstractModel):
 
 
 class GetPersonListNumResponse(AbstractModel):
-    """GetPersonListNum返回参数结构体
+    r"""GetPersonListNum返回参数结构体
 
     """
 
@@ -6031,7 +6031,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """人员数量。
+        r"""人员数量。
         :rtype: int
         """
         return self._PersonNum
@@ -6042,7 +6042,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """人脸数量。
+        r"""人脸数量。
         :rtype: int
         """
         return self._FaceNum
@@ -6053,7 +6053,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6070,7 +6070,7 @@ class GetPersonListNumResponse(AbstractModel):
 
 
 class GetPersonListRequest(AbstractModel):
-    """GetPersonList请求参数结构体
+    r"""GetPersonList请求参数结构体
 
     """
 
@@ -6089,7 +6089,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -6100,7 +6100,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -6111,7 +6111,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000。
+        r"""返回数量，默认值为10，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -6136,7 +6136,7 @@ class GetPersonListRequest(AbstractModel):
 
 
 class GetPersonListResponse(AbstractModel):
-    """GetPersonList返回参数结构体
+    r"""GetPersonList返回参数结构体
 
     """
 
@@ -6164,7 +6164,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonInfos(self):
-        """返回的人员信息。
+        r"""返回的人员信息。
         :rtype: list of PersonInfo
         """
         return self._PersonInfos
@@ -6175,7 +6175,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """该人员库的人员数量。
+        r"""该人员库的人员数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6187,7 +6187,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """该人员库的人脸数量。
+        r"""该人员库的人脸数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6199,7 +6199,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6211,7 +6211,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6235,7 +6235,7 @@ class GetPersonListResponse(AbstractModel):
 
 
 class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
-    """GetUpgradeGroupFaceModelVersionJobList请求参数结构体
+    r"""GetUpgradeGroupFaceModelVersionJobList请求参数结构体
 
     """
 
@@ -6251,7 +6251,7 @@ class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -6262,7 +6262,7 @@ class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000。
+        r"""返回数量，默认值为10，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -6286,7 +6286,7 @@ class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
 
 
 class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
-    """GetUpgradeGroupFaceModelVersionJobList返回参数结构体
+    r"""GetUpgradeGroupFaceModelVersionJobList返回参数结构体
 
     """
 
@@ -6305,7 +6305,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
 
     @property
     def JobInfos(self):
-        """人员库升级任务信息列表。
+        r"""人员库升级任务信息列表。
         :rtype: list of UpgradeJobInfo
         """
         return self._JobInfos
@@ -6316,7 +6316,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
 
     @property
     def JobNum(self):
-        """升级任务总数量。
+        r"""升级任务总数量。
         :rtype: int
         """
         return self._JobNum
@@ -6327,7 +6327,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6349,7 +6349,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
 
 
 class GetUpgradeGroupFaceModelVersionResultRequest(AbstractModel):
-    """GetUpgradeGroupFaceModelVersionResult请求参数结构体
+    r"""GetUpgradeGroupFaceModelVersionResult请求参数结构体
 
     """
 
@@ -6362,7 +6362,7 @@ class GetUpgradeGroupFaceModelVersionResultRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """升级任务ID，用于查询、获取人员库升级的进度和结果。
+        r"""升级任务ID，用于查询、获取人员库升级的进度和结果。
         :rtype: str
         """
         return self._JobId
@@ -6385,7 +6385,7 @@ class GetUpgradeGroupFaceModelVersionResultRequest(AbstractModel):
 
 
 class GetUpgradeGroupFaceModelVersionResultResponse(AbstractModel):
-    """GetUpgradeGroupFaceModelVersionResult返回参数结构体
+    r"""GetUpgradeGroupFaceModelVersionResult返回参数结构体
 
     """
 
@@ -6427,7 +6427,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def EndTimestamp(self):
-        """人员升级任务预估结束时间。 StartTimestamp的值是自 Unix 纪元时间到人员查重任务预估结束的毫秒数。  
+        r"""人员升级任务预估结束时间。 StartTimestamp的值是自 Unix 纪元时间到人员查重任务预估结束的毫秒数。  
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
 如果为0表示这个任务已经执行完毕。
         :rtype: int
@@ -6440,7 +6440,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def Progress(self):
-        """升级任务完成进度。取值[0.0，100.0]。
+        r"""升级任务完成进度。取值[0.0，100.0]。
         :rtype: float
         """
         return self._Progress
@@ -6451,7 +6451,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def Status(self):
-        """0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
+        r"""0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
         :rtype: int
         """
         return self._Status
@@ -6462,7 +6462,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def StartTime(self):
-        """升级起始时间。 
+        r"""升级起始时间。 
 StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
 有关更多信息，请参阅 Unix 时间。
@@ -6476,7 +6476,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def FromFaceModelVersion(self):
-        """当前算法模型版本。
+        r"""当前算法模型版本。
         :rtype: str
         """
         return self._FromFaceModelVersion
@@ -6487,7 +6487,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def ToFaceModelVersion(self):
-        """目标算法模型版本。
+        r"""目标算法模型版本。
         :rtype: str
         """
         return self._ToFaceModelVersion
@@ -6498,7 +6498,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def GroupId(self):
-        """人员库ID。
+        r"""人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -6509,7 +6509,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def FailedFacesUrl(self):
-        """无法升级的人脸Id信息，文件格式为json。内容参见下方示例。url有效期为半小时。
+        r"""无法升级的人脸Id信息，文件格式为json。内容参见下方示例。url有效期为半小时。
         :rtype: str
         """
         return self._FailedFacesUrl
@@ -6520,7 +6520,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6543,7 +6543,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
 
 class GroupCandidate(AbstractModel):
-    """分组识别结果Item
+    r"""分组识别结果Item
 
     """
 
@@ -6559,7 +6559,7 @@ class GroupCandidate(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID 。
+        r"""人员库ID 。
         :rtype: str
         """
         return self._GroupId
@@ -6570,7 +6570,7 @@ class GroupCandidate(AbstractModel):
 
     @property
     def Candidates(self):
-        """识别出的最相似候选人。
+        r"""识别出的最相似候选人。
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -6599,7 +6599,7 @@ class GroupCandidate(AbstractModel):
 
 
 class GroupExDescriptionInfo(AbstractModel):
-    """需要修改的人员库自定义描述字段key-value
+    r"""需要修改的人员库自定义描述字段key-value
 
     """
 
@@ -6615,7 +6615,7 @@ class GroupExDescriptionInfo(AbstractModel):
 
     @property
     def GroupExDescriptionIndex(self):
-        """人员库自定义描述字段Index，从0开始。
+        r"""人员库自定义描述字段Index，从0开始。
         :rtype: int
         """
         return self._GroupExDescriptionIndex
@@ -6626,7 +6626,7 @@ class GroupExDescriptionInfo(AbstractModel):
 
     @property
     def GroupExDescription(self):
-        """需要更新的人员库自定义描述字段内容。
+        r"""需要更新的人员库自定义描述字段内容。
         :rtype: str
         """
         return self._GroupExDescription
@@ -6650,7 +6650,7 @@ class GroupExDescriptionInfo(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """返回的人员库信息
+    r"""返回的人员库信息
 
     """
 
@@ -6685,7 +6685,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称。
+        r"""人员库名称。
         :rtype: str
         """
         return self._GroupName
@@ -6696,7 +6696,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID。
+        r"""人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -6707,7 +6707,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupExDescriptions(self):
-        """人员库自定义描述字段。
+        r"""人员库自定义描述字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6719,7 +6719,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注。
+        r"""人员库信息备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6731,7 +6731,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6743,7 +6743,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreationTimestamp(self):
-        """Group的创建时间和日期 CreationTimestamp。
+        r"""Group的创建时间和日期 CreationTimestamp。
 - CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 - Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。
 - 有关更多信息，请参阅 Unix 时间。
@@ -6775,7 +6775,7 @@ class GroupInfo(AbstractModel):
 
 
 class Hair(AbstractModel):
-    """头发信息
+    r"""头发信息
 
     """
 
@@ -6797,7 +6797,7 @@ AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：
 
     @property
     def Length(self):
-        """头发长度信息。
+        r"""头发长度信息。
 AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：长发，4：绑发。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -6809,7 +6809,7 @@ AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：
 
     @property
     def Bang(self):
-        """刘海信息。
+        r"""刘海信息。
 AttributeItem对应的Type为 —— 0：无刘海，1：有刘海。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -6821,7 +6821,7 @@ AttributeItem对应的Type为 —— 0：无刘海，1：有刘海。
 
     @property
     def Color(self):
-        """头发颜色信息。
+        r"""头发颜色信息。
 AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：灰白色。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -6853,7 +6853,7 @@ AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：
 
 
 class Hat(AbstractModel):
-    """帽子信息
+    r"""帽子信息
 
     """
 
@@ -6871,7 +6871,7 @@ AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄�
 
     @property
     def Style(self):
-        """帽子佩戴状态信息。
+        r"""帽子佩戴状态信息。
 AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -6883,7 +6883,7 @@ AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：�
 
     @property
     def Color(self):
-        """帽子颜色。
+        r"""帽子颜色。
 AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -6912,7 +6912,7 @@ AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄�
 
 
 class HeadPose(AbstractModel):
-    """姿态信息
+    r"""姿态信息
 
     """
 
@@ -6931,7 +6931,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Pitch(self):
-        """上下偏移[-30,30]。
+        r"""上下偏移[-30,30]。
         :rtype: int
         """
         return self._Pitch
@@ -6942,7 +6942,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Yaw(self):
-        """左右偏移[-30,30]。
+        r"""左右偏移[-30,30]。
         :rtype: int
         """
         return self._Yaw
@@ -6953,7 +6953,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Roll(self):
-        """平面旋转[-180,180]。
+        r"""平面旋转[-180,180]。
         :rtype: int
         """
         return self._Roll
@@ -6978,7 +6978,7 @@ class HeadPose(AbstractModel):
 
 
 class ModifyGroupRequest(AbstractModel):
-    """ModifyGroup请求参数结构体
+    r"""ModifyGroup请求参数结构体
 
     """
 
@@ -7000,7 +7000,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -7011,7 +7011,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称。
+        r"""人员库名称。
         :rtype: str
         """
         return self._GroupName
@@ -7022,7 +7022,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupExDescriptionInfos(self):
-        """需要修改的人员库自定义描述字段，key-value。
+        r"""需要修改的人员库自定义描述字段，key-value。
         :rtype: list of GroupExDescriptionInfo
         """
         return self._GroupExDescriptionInfos
@@ -7033,7 +7033,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注。
+        r"""人员库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -7064,7 +7064,7 @@ class ModifyGroupRequest(AbstractModel):
 
 
 class ModifyGroupResponse(AbstractModel):
-    """ModifyGroup返回参数结构体
+    r"""ModifyGroup返回参数结构体
 
     """
 
@@ -7077,7 +7077,7 @@ class ModifyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7092,7 +7092,7 @@ class ModifyGroupResponse(AbstractModel):
 
 
 class ModifyPersonBaseInfoRequest(AbstractModel):
-    """ModifyPersonBaseInfo请求参数结构体
+    r"""ModifyPersonBaseInfo请求参数结构体
 
     """
 
@@ -7111,7 +7111,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -7122,7 +7122,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonName(self):
-        """需要修改的人员名称。
+        r"""需要修改的人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -7133,7 +7133,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def Gender(self):
-        """需要修改的人员性别，1代表男性，2代表女性。
+        r"""需要修改的人员性别，1代表男性，2代表女性。
         :rtype: int
         """
         return self._Gender
@@ -7158,7 +7158,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
 
 class ModifyPersonBaseInfoResponse(AbstractModel):
-    """ModifyPersonBaseInfo返回参数结构体
+    r"""ModifyPersonBaseInfo返回参数结构体
 
     """
 
@@ -7171,7 +7171,7 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7186,7 +7186,7 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
 
 
 class ModifyPersonGroupInfoRequest(AbstractModel):
-    """ModifyPersonGroupInfo请求参数结构体
+    r"""ModifyPersonGroupInfo请求参数结构体
 
     """
 
@@ -7205,7 +7205,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId。
+        r"""人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -7216,7 +7216,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId。
+        r"""人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -7227,7 +7227,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonExDescriptionInfos(self):
-        """需要修改的人员描述字段内容，key-value。
+        r"""需要修改的人员描述字段内容，key-value。
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -7257,7 +7257,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
 
 class ModifyPersonGroupInfoResponse(AbstractModel):
-    """ModifyPersonGroupInfo返回参数结构体
+    r"""ModifyPersonGroupInfo返回参数结构体
 
     """
 
@@ -7270,7 +7270,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7285,7 +7285,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
 
 class Mouth(AbstractModel):
-    """嘴巴信息。
+    r"""嘴巴信息。
 
     """
 
@@ -7299,7 +7299,7 @@ AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
 
     @property
     def MouthOpen(self):
-        """是否张嘴信息。
+        r"""是否张嘴信息。
 AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -7325,7 +7325,7 @@ AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
 
 
 class PersonExDescriptionInfo(AbstractModel):
-    """需要修改的人员描述字段内容，key-value
+    r"""需要修改的人员描述字段内容，key-value
 
     """
 
@@ -7341,7 +7341,7 @@ class PersonExDescriptionInfo(AbstractModel):
 
     @property
     def PersonExDescriptionIndex(self):
-        """人员描述字段Index，从0开始。
+        r"""人员描述字段Index，从0开始。
         :rtype: int
         """
         return self._PersonExDescriptionIndex
@@ -7352,7 +7352,7 @@ class PersonExDescriptionInfo(AbstractModel):
 
     @property
     def PersonExDescription(self):
-        """需要更新的人员描述字段内容。
+        r"""需要更新的人员描述字段内容。
         :rtype: str
         """
         return self._PersonExDescription
@@ -7376,7 +7376,7 @@ class PersonExDescriptionInfo(AbstractModel):
 
 
 class PersonGroupInfo(AbstractModel):
-    """包含此人员的人员库及描述字段内容列表
+    r"""包含此人员的人员库及描述字段内容列表
 
     """
 
@@ -7392,7 +7392,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """包含此人员的人员库ID。
+        r"""包含此人员的人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -7403,7 +7403,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def PersonExDescriptions(self):
-        """人员描述字段内容。
+        r"""人员描述字段内容。
         :rtype: list of str
         """
         return self._PersonExDescriptions
@@ -7427,7 +7427,7 @@ class PersonGroupInfo(AbstractModel):
 
 
 class PersonInfo(AbstractModel):
-    """返回的人员信息
+    r"""返回的人员信息
 
     """
 
@@ -7458,7 +7458,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。
+        r"""人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -7469,7 +7469,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员Id。
+        r"""人员Id。
         :rtype: str
         """
         return self._PersonId
@@ -7480,7 +7480,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def Gender(self):
-        """人员性别。
+        r"""人员性别。
         :rtype: int
         """
         return self._Gender
@@ -7491,7 +7491,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonExDescriptions(self):
-        """人员描述字段内容。
+        r"""人员描述字段内容。
         :rtype: list of str
         """
         return self._PersonExDescriptions
@@ -7502,7 +7502,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def FaceIds(self):
-        """包含的人脸照片列表。
+        r"""包含的人脸照片列表。
         :rtype: list of str
         """
         return self._FaceIds
@@ -7513,7 +7513,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def CreationTimestamp(self):
-        """人员的创建时间和日期 CreationTimestamp。
+        r"""人员的创建时间和日期 CreationTimestamp。
 - CreationTimestamp 的值是自 Unix 纪元时间到Person创建时间的毫秒数。 
 - Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。
 - 有关更多信息，请参阅 Unix 时间。
@@ -7544,7 +7544,7 @@ class PersonInfo(AbstractModel):
 
 
 class Point(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -7560,7 +7560,7 @@ class Point(AbstractModel):
 
     @property
     def X(self):
-        """x坐标。
+        r"""x坐标。
         :rtype: int
         """
         return self._X
@@ -7571,7 +7571,7 @@ class Point(AbstractModel):
 
     @property
     def Y(self):
-        """Y坐标。
+        r"""Y坐标。
         :rtype: int
         """
         return self._Y
@@ -7595,7 +7595,7 @@ class Point(AbstractModel):
 
 
 class Result(AbstractModel):
-    """人脸的识别结果
+    r"""人脸的识别结果
 
     """
 
@@ -7616,7 +7616,7 @@ class Result(AbstractModel):
 
     @property
     def Candidates(self):
-        """识别出的最相似候选人。
+        r"""识别出的最相似候选人。
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -7627,7 +7627,7 @@ class Result(AbstractModel):
 
     @property
     def FaceRect(self):
-        """检测出的人脸框位置。
+        r"""检测出的人脸框位置。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -7638,7 +7638,7 @@ class Result(AbstractModel):
 
     @property
     def RetCode(self):
-        """检测出的人脸图片状态返回码。
+        r"""检测出的人脸图片状态返回码。
 - 0 表示正常。 
 - -1601代表不符合图片质量控制要求，此时Candidate内容为空。
         :rtype: int
@@ -7672,7 +7672,7 @@ class Result(AbstractModel):
 
 
 class ResultsReturnsByGroup(AbstractModel):
-    """识别结果。
+    r"""识别结果。
 
     """
 
@@ -7693,7 +7693,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def FaceRect(self):
-        """检测出的人脸框位置。
+        r"""检测出的人脸框位置。
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -7704,7 +7704,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def GroupCandidates(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: list of GroupCandidate
         """
         return self._GroupCandidates
@@ -7715,7 +7715,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def RetCode(self):
-        """检测出的人脸图片状态返回码。
+        r"""检测出的人脸图片状态返回码。
 - 0 表示正常。 
 - -1601代表不符合图片质量控制要求，此时Candidate内容为空。
         :rtype: int
@@ -7749,7 +7749,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
 
 class RevertGroupFaceModelVersionRequest(AbstractModel):
-    """RevertGroupFaceModelVersion请求参数结构体
+    r"""RevertGroupFaceModelVersion请求参数结构体
 
     """
 
@@ -7762,7 +7762,7 @@ class RevertGroupFaceModelVersionRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """需要回滚的升级任务ID。
+        r"""需要回滚的升级任务ID。
         :rtype: str
         """
         return self._JobId
@@ -7785,7 +7785,7 @@ class RevertGroupFaceModelVersionRequest(AbstractModel):
 
 
 class RevertGroupFaceModelVersionResponse(AbstractModel):
-    """RevertGroupFaceModelVersion返回参数结构体
+    r"""RevertGroupFaceModelVersion返回参数结构体
 
     """
 
@@ -7798,7 +7798,7 @@ class RevertGroupFaceModelVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7813,7 +7813,7 @@ class RevertGroupFaceModelVersionResponse(AbstractModel):
 
 
 class SearchFacesRequest(AbstractModel):
-    """SearchFaces请求参数结构体
+    r"""SearchFaces请求参数结构体
 
     """
 
@@ -7891,7 +7891,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限100个。
+        r"""希望搜索的人员库列表，上限100个。
 - 数组元素取值为创建人员库接口中的GroupId。
 - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :rtype: list of str
@@ -7904,7 +7904,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -7919,7 +7919,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -7937,7 +7937,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。
+        r"""最多识别的人脸数目。
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
 - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
 - 例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
@@ -7951,7 +7951,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。
+        r"""人脸长和宽的最小尺寸，单位为像素。
 - 默认为34。
 - 低于34的人脸图片无法被识别。
 - 建议设置为80。
@@ -7965,7 +7965,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def MaxPersonNum(self):
-        """单张被识别的人脸返回的最相似人员数量。
+        r"""单张被识别的人脸返回的最相似人员数量。
 - 默认值为5，最大值为100。 
 - 例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
 - 值越大，需要处理的时间越长。
@@ -7980,7 +7980,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。
+        r"""是否返回人员具体信息。
 - 取值范围：0 为关闭，1 为开启。
 - 默认为 0。
 - 其他非0非1值默认为0。
@@ -7994,7 +7994,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -8013,7 +8013,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def FaceMatchThreshold(self):
-        """出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+        r"""出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -8024,7 +8024,7 @@ class SearchFacesRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -8060,7 +8060,7 @@ class SearchFacesRequest(AbstractModel):
 
 
 class SearchFacesResponse(AbstractModel):
-    """SearchFaces返回参数结构体
+    r"""SearchFaces返回参数结构体
 
     """
 
@@ -8082,7 +8082,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def Results(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: list of Result
         """
         return self._Results
@@ -8093,7 +8093,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """搜索的人员库中包含的人脸数。
+        r"""搜索的人员库中包含的人脸数。
         :rtype: int
         """
         return self._FaceNum
@@ -8104,7 +8104,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -8115,7 +8115,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8138,7 +8138,7 @@ class SearchFacesResponse(AbstractModel):
 
 
 class SearchFacesReturnsByGroupRequest(AbstractModel):
-    """SearchFacesReturnsByGroup请求参数结构体
+    r"""SearchFacesReturnsByGroup请求参数结构体
 
     """
 
@@ -8216,7 +8216,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限60个。
+        r"""希望搜索的人员库列表，上限60个。
 - 数组元素取值为创建人员库接口中的GroupId。
 - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :rtype: list of str
@@ -8229,7 +8229,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8244,7 +8244,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8262,7 +8262,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。
+        r"""最多识别的人脸数目。
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
 - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 - 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
@@ -8276,7 +8276,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。
+        r"""人脸长和宽的最小尺寸，单位为像素。
 - 默认为34。
 - 低于34将影响搜索精度。
 - 建议设置为80。
@@ -8290,7 +8290,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def MaxPersonNumPerGroup(self):
-        """被检测到的人脸，对应最多返回的最相似人员数目。
+        r"""被检测到的人脸，对应最多返回的最相似人员数目。
 - 默认值为5，最大值为10。  
 - 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :rtype: int
@@ -8303,7 +8303,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。
+        r"""是否返回人员具体信息。
 - 取值范围：0 为关闭，1 为开启。
 - 默认为 0。
 - 其他非0非1值默认为0
@@ -8317,7 +8317,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -8336,7 +8336,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def FaceMatchThreshold(self):
-        """出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+        r"""出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
 - 默认为0。
 - 取值范围：[0.0,100.0) 。
         :rtype: float
@@ -8349,7 +8349,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -8385,7 +8385,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
 
 class SearchFacesReturnsByGroupResponse(AbstractModel):
-    """SearchFacesReturnsByGroup返回参数结构体
+    r"""SearchFacesReturnsByGroup返回参数结构体
 
     """
 
@@ -8407,7 +8407,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """搜索的人员库中包含的人脸数。
+        r"""搜索的人员库中包含的人脸数。
         :rtype: int
         """
         return self._FaceNum
@@ -8418,7 +8418,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def ResultsReturnsByGroup(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: list of ResultsReturnsByGroup
         """
         return self._ResultsReturnsByGroup
@@ -8429,7 +8429,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -8440,7 +8440,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8463,7 +8463,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
 
 class SearchPersonsRequest(AbstractModel):
-    """SearchPersons请求参数结构体
+    r"""SearchPersons请求参数结构体
 
     """
 
@@ -8541,7 +8541,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
+        r"""希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -8552,7 +8552,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8568,7 +8568,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8586,7 +8586,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。
+        r"""最多识别的人脸数目。
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
 - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 - 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
@@ -8600,7 +8600,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。
+        r"""人脸长和宽的最小尺寸，单位为像素。
 - 默认为34。
 - 低于34将影响搜索精度。
 - 建议设置为80。
@@ -8614,7 +8614,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def MaxPersonNum(self):
-        """单张被识别的人脸返回的最相似人员数量。
+        r"""单张被识别的人脸返回的最相似人员数量。
 - 默认值为5，最大值为100。
 - 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
 - 值越大，需要处理的时间越长。建议不要超过10。
@@ -8628,7 +8628,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -8647,7 +8647,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def FaceMatchThreshold(self):
-        """出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+        r"""出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
 - 默认为0。
 - 取值范围：[0.0,100.0) 。
         :rtype: float
@@ -8660,7 +8660,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。
+        r"""是否返回人员具体信息。
 - 取值范围：0 为关闭，1 为开启。
 - 默认为 0。
 - 其他非0非1值默认为0
@@ -8674,7 +8674,7 @@ class SearchPersonsRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -8710,7 +8710,7 @@ class SearchPersonsRequest(AbstractModel):
 
 
 class SearchPersonsResponse(AbstractModel):
-    """SearchPersons返回参数结构体
+    r"""SearchPersons返回参数结构体
 
     """
 
@@ -8733,7 +8733,7 @@ class SearchPersonsResponse(AbstractModel):
 
     @property
     def Results(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: list of Result
         """
         return self._Results
@@ -8744,7 +8744,7 @@ class SearchPersonsResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+        r"""搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
         :rtype: int
         """
         return self._PersonNum
@@ -8755,7 +8755,7 @@ class SearchPersonsResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8767,7 +8767,7 @@ class SearchPersonsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8790,7 +8790,7 @@ class SearchPersonsResponse(AbstractModel):
 
 
 class SearchPersonsReturnsByGroupRequest(AbstractModel):
-    """SearchPersonsReturnsByGroup请求参数结构体
+    r"""SearchPersonsReturnsByGroup请求参数结构体
 
     """
 
@@ -8864,7 +8864,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
+        r"""希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -8875,7 +8875,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8890,7 +8890,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -8908,7 +8908,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。
+        r"""最多识别的人脸数目。
 - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
 - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 - 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
@@ -8922,7 +8922,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。
+        r"""人脸长和宽的最小尺寸，单位为像素。
 - 默认为34。
 - 低于34将影响搜索精度。
 - 建议设置为80。
@@ -8936,7 +8936,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def MaxPersonNumPerGroup(self):
-        """被检测到的人脸，对应最多返回的最相似人员数目。
+        r"""被检测到的人脸，对应最多返回的最相似人员数目。
 - 默认值为5，最大值为10。  
 - 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :rtype: int
@@ -8949,7 +8949,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -8968,7 +8968,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def FaceMatchThreshold(self):
-        """出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+        r"""出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -8979,7 +8979,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。
+        r"""是否返回人员具体信息。
 - 取值范围：0 为关闭，1 为开启。
 - 默认为 0。
 - 其他非0非1值默认为0。
@@ -8993,7 +8993,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -9029,7 +9029,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
 
 class SearchPersonsReturnsByGroupResponse(AbstractModel):
-    """SearchPersonsReturnsByGroup返回参数结构体
+    r"""SearchPersonsReturnsByGroup返回参数结构体
 
     """
 
@@ -9051,7 +9051,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+        r"""搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
         :rtype: int
         """
         return self._PersonNum
@@ -9062,7 +9062,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def ResultsReturnsByGroup(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: list of ResultsReturnsByGroup
         """
         return self._ResultsReturnsByGroup
@@ -9073,7 +9073,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本。
+        r"""人脸识别所用的算法模型版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -9084,7 +9084,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9107,7 +9107,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
 
 class UpgradeGroupFaceModelVersionRequest(AbstractModel):
-    """UpgradeGroupFaceModelVersion请求参数结构体
+    r"""UpgradeGroupFaceModelVersion请求参数结构体
 
     """
 
@@ -9123,7 +9123,7 @@ class UpgradeGroupFaceModelVersionRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """需要升级的人员库ID。
+        r"""需要升级的人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -9134,7 +9134,7 @@ class UpgradeGroupFaceModelVersionRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """需要升级至的算法模型版本。默认为最新版本。不可逆向升级
+        r"""需要升级至的算法模型版本。默认为最新版本。不可逆向升级
         :rtype: str
         """
         return self._FaceModelVersion
@@ -9158,7 +9158,7 @@ class UpgradeGroupFaceModelVersionRequest(AbstractModel):
 
 
 class UpgradeGroupFaceModelVersionResponse(AbstractModel):
-    """UpgradeGroupFaceModelVersion返回参数结构体
+    r"""UpgradeGroupFaceModelVersion返回参数结构体
 
     """
 
@@ -9174,7 +9174,7 @@ class UpgradeGroupFaceModelVersionResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """升级任务ID，用于查询、获取升级的进度和结果。
+        r"""升级任务ID，用于查询、获取升级的进度和结果。
         :rtype: str
         """
         return self._JobId
@@ -9185,7 +9185,7 @@ class UpgradeGroupFaceModelVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9201,7 +9201,7 @@ class UpgradeGroupFaceModelVersionResponse(AbstractModel):
 
 
 class UpgradeJobInfo(AbstractModel):
-    """人员库升级任务信息
+    r"""人员库升级任务信息
 
     """
 
@@ -9232,7 +9232,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def JobId(self):
-        """人员库升级任务ID，用于查询、获取升级的进度和结果。
+        r"""人员库升级任务ID，用于查询、获取升级的进度和结果。
         :rtype: str
         """
         return self._JobId
@@ -9243,7 +9243,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def GroupId(self):
-        """人员库ID。
+        r"""人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -9254,7 +9254,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def FromFaceModelVersion(self):
-        """当前算法模型版本。
+        r"""当前算法模型版本。
         :rtype: str
         """
         return self._FromFaceModelVersion
@@ -9265,7 +9265,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def ToFaceModelVersion(self):
-        """目标算法模型版本。
+        r"""目标算法模型版本。
         :rtype: str
         """
         return self._ToFaceModelVersion
@@ -9276,7 +9276,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def StartTime(self):
-        """升级起始时间。 
+        r"""升级起始时间。 
 StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
 有关更多信息，请参阅 Unix 时间。
@@ -9290,7 +9290,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def Status(self):
-        """0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
+        r"""0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
         :rtype: int
         """
         return self._Status
@@ -9318,7 +9318,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
 
 class VerifyFaceRequest(AbstractModel):
-    """VerifyFace请求参数结构体
+    r"""VerifyFace请求参数结构体
 
     """
 
@@ -9368,7 +9368,7 @@ class VerifyFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+        r"""待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :rtype: str
         """
         return self._PersonId
@@ -9379,7 +9379,7 @@ class VerifyFaceRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -9395,7 +9395,7 @@ class VerifyFaceRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 - 对应图片 base64 编码后大小不可超过5M。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
@@ -9414,7 +9414,7 @@ class VerifyFaceRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -9433,7 +9433,7 @@ class VerifyFaceRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -9464,7 +9464,7 @@ class VerifyFaceRequest(AbstractModel):
 
 
 class VerifyFaceResponse(AbstractModel):
-    """VerifyFace返回参数结构体
+    r"""VerifyFace返回参数结构体
 
     """
 
@@ -9491,7 +9491,7 @@ class VerifyFaceResponse(AbstractModel):
 
     @property
     def Score(self):
-        """给定的人脸图片与 PersonId 对应人脸的相似度。
+        r"""给定的人脸图片与 PersonId 对应人脸的相似度。
 - 若 PersonId 下有多张人脸（Face），返回相似度最大的分数。
 - 不同算法版本返回的相似度分数不同。
 - 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。 一般超过50分则可认定为同一人。
@@ -9506,7 +9506,7 @@ class VerifyFaceResponse(AbstractModel):
 
     @property
     def IsMatch(self):
-        """是否为同一人判断，固定阈值分数为60分，若想更灵活地调整阈值可取Score参数返回进行判断。
+        r"""是否为同一人判断，固定阈值分数为60分，若想更灵活地调整阈值可取Score参数返回进行判断。
         :rtype: bool
         """
         return self._IsMatch
@@ -9517,7 +9517,7 @@ class VerifyFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。
+        r"""人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。
 - 在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
         :rtype: str
         """
@@ -9529,7 +9529,7 @@ class VerifyFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9547,7 +9547,7 @@ class VerifyFaceResponse(AbstractModel):
 
 
 class VerifyPersonRequest(AbstractModel):
-    """VerifyPerson请求参数结构体
+    r"""VerifyPerson请求参数结构体
 
     """
 
@@ -9595,7 +9595,7 @@ class VerifyPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+        r"""待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :rtype: str
         """
         return self._PersonId
@@ -9606,7 +9606,7 @@ class VerifyPersonRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
 - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -9621,7 +9621,7 @@ class VerifyPersonRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url 
+        r"""图片的 Url 
 - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 - 所有格式的图片短边像素不小于64。
 -  图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
@@ -9639,7 +9639,7 @@ class VerifyPersonRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """图片质量控制。 
+        r"""图片质量控制。 
 - 取值范围：
 0: 不进行控制。
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
@@ -9658,7 +9658,7 @@ class VerifyPersonRequest(AbstractModel):
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。
+        r"""是否开启图片旋转识别支持。
 - 取值范围：0为不开启，1为开启。
 - 默认为0。
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
@@ -9689,7 +9689,7 @@ class VerifyPersonRequest(AbstractModel):
 
 
 class VerifyPersonResponse(AbstractModel):
-    """VerifyPerson返回参数结构体
+    r"""VerifyPerson返回参数结构体
 
     """
 
@@ -9712,7 +9712,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def Score(self):
-        """给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
+        r"""给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
         :rtype: float
         """
         return self._Score
@@ -9723,7 +9723,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def IsMatch(self):
-        """是否为同一人的判断。
+        r"""是否为同一人的判断。
         :rtype: bool
         """
         return self._IsMatch
@@ -9734,7 +9734,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。
+        r"""人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。
 - 在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
         :rtype: str
         """
@@ -9746,7 +9746,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

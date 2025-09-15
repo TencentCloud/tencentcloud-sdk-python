@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActivateCaCertificateRequest(AbstractModel):
-    """ActivateCaCertificate请求参数结构体
+    r"""ActivateCaCertificate请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class ActivateCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -46,7 +46,7 @@ class ActivateCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        r"""CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -70,7 +70,7 @@ class ActivateCaCertificateRequest(AbstractModel):
 
 
 class ActivateCaCertificateResponse(AbstractModel):
-    """ActivateCaCertificate返回参数结构体
+    r"""ActivateCaCertificate返回参数结构体
 
     """
 
@@ -83,7 +83,7 @@ class ActivateCaCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -98,7 +98,7 @@ class ActivateCaCertificateResponse(AbstractModel):
 
 
 class ActivateDeviceCertificateRequest(AbstractModel):
-    """ActivateDeviceCertificate请求参数结构体
+    r"""ActivateDeviceCertificate请求参数结构体
 
     """
 
@@ -114,7 +114,7 @@ class ActivateDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -125,7 +125,7 @@ class ActivateDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        r"""设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -149,7 +149,7 @@ class ActivateDeviceCertificateRequest(AbstractModel):
 
 
 class ActivateDeviceCertificateResponse(AbstractModel):
-    """ActivateDeviceCertificate返回参数结构体
+    r"""ActivateDeviceCertificate返回参数结构体
 
     """
 
@@ -162,7 +162,7 @@ class ActivateDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -177,7 +177,7 @@ class ActivateDeviceCertificateResponse(AbstractModel):
 
 
 class ApplyRegistrationCodeRequest(AbstractModel):
-    """ApplyRegistrationCode请求参数结构体
+    r"""ApplyRegistrationCode请求参数结构体
 
     """
 
@@ -190,7 +190,7 @@ class ApplyRegistrationCodeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -213,7 +213,7 @@ class ApplyRegistrationCodeRequest(AbstractModel):
 
 
 class ApplyRegistrationCodeResponse(AbstractModel):
-    """ApplyRegistrationCode返回参数结构体
+    r"""ApplyRegistrationCode返回参数结构体
 
     """
 
@@ -232,7 +232,7 @@ class ApplyRegistrationCodeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -243,7 +243,7 @@ class ApplyRegistrationCodeResponse(AbstractModel):
 
     @property
     def RegistrationCode(self):
-        """注册码
+        r"""注册码
         :rtype: str
         """
         return self._RegistrationCode
@@ -254,7 +254,7 @@ class ApplyRegistrationCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -271,7 +271,7 @@ class ApplyRegistrationCodeResponse(AbstractModel):
 
 
 class AuthorizationPolicyItem(AbstractModel):
-    """AuthorizationPolicyItem
+    r"""AuthorizationPolicyItem
 
     """
 
@@ -339,7 +339,7 @@ sub：订阅mqtt消息
 
     @property
     def Id(self):
-        """策略规则ID
+        r"""策略规则ID
         :rtype: int
         """
         return self._Id
@@ -350,7 +350,7 @@ sub：订阅mqtt消息
 
     @property
     def InstanceId(self):
-        """MQTT集群ID
+        r"""MQTT集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -361,7 +361,7 @@ sub：订阅mqtt消息
 
     @property
     def PolicyName(self):
-        """策略规则名
+        r"""策略规则名
         :rtype: str
         """
         return self._PolicyName
@@ -372,7 +372,7 @@ sub：订阅mqtt消息
 
     @property
     def Version(self):
-        """规则语法版本，当前仅支持1，默认为1
+        r"""规则语法版本，当前仅支持1，默认为1
         :rtype: int
         """
         return self._Version
@@ -383,7 +383,7 @@ sub：订阅mqtt消息
 
     @property
     def Priority(self):
-        """策略优先级，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""策略优先级，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: int
         """
         return self._Priority
@@ -394,7 +394,7 @@ sub：订阅mqtt消息
 
     @property
     def Effect(self):
-        """决策
+        r"""决策
 allow：允许符合该策略的设备的访问请求。
 deny：拒绝覆盖该策略的设备的访问请求。
 可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
@@ -408,7 +408,7 @@ deny：拒绝覆盖该策略的设备的访问请求。
 
     @property
     def Actions(self):
-        """操作
+        r"""操作
 connect：连接
 pub：发布mqtt消息
 sub：订阅mqtt消息
@@ -423,7 +423,7 @@ sub：订阅mqtt消息
 
     @property
     def Resources(self):
-        """资源，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""资源，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._Resources
@@ -434,7 +434,7 @@ sub：订阅mqtt消息
 
     @property
     def ClientId(self):
-        """条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._ClientId
@@ -445,7 +445,7 @@ sub：订阅mqtt消息
 
     @property
     def Username(self):
-        """条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._Username
@@ -456,7 +456,7 @@ sub：订阅mqtt消息
 
     @property
     def Ip(self):
-        """条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._Ip
@@ -467,7 +467,7 @@ sub：订阅mqtt消息
 
     @property
     def Qos(self):
-        """条件-服务质量，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-服务质量，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._Qos
@@ -478,7 +478,7 @@ sub：订阅mqtt消息
 
     @property
     def Retain(self):
-        """条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 1：表示匹配retain消息
 2：表示匹配非retain消息
 3：表示匹配retain和非retain消息
@@ -492,7 +492,7 @@ sub：订阅mqtt消息
 
     @property
     def Remark(self):
-        """备注，长度不超过128个字符。
+        r"""备注，长度不超过128个字符。
         :rtype: str
         """
         return self._Remark
@@ -503,7 +503,7 @@ sub：订阅mqtt消息
 
     @property
     def CreatedTime(self):
-        """创建时间。毫秒级时间戳 。
+        r"""创建时间。毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -514,7 +514,7 @@ sub：订阅mqtt消息
 
     @property
     def UpdateTime(self):
-        """更新时间。毫秒级时间戳 。
+        r"""更新时间。毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -552,7 +552,7 @@ sub：订阅mqtt消息
 
 
 class AuthorizationPolicyPriority(AbstractModel):
-    """策略规则优先级
+    r"""策略规则优先级
 
     """
 
@@ -568,7 +568,7 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     @property
     def Id(self):
-        """授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
+        r"""授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
         :rtype: int
         """
         return self._Id
@@ -579,7 +579,7 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     @property
     def Priority(self):
-        """优先级
+        r"""优先级
         :rtype: int
         """
         return self._Priority
@@ -603,7 +603,7 @@ class AuthorizationPolicyPriority(AbstractModel):
 
 
 class BodyItem(AbstractModel):
-    """HTTP 认证器body
+    r"""HTTP 认证器body
 
     """
 
@@ -619,7 +619,7 @@ class BodyItem(AbstractModel):
 
     @property
     def Key(self):
-        """body key
+        r"""body key
         :rtype: str
         """
         return self._Key
@@ -630,7 +630,7 @@ class BodyItem(AbstractModel):
 
     @property
     def Value(self):
-        """body key
+        r"""body key
         :rtype: str
         """
         return self._Value
@@ -654,7 +654,7 @@ class BodyItem(AbstractModel):
 
 
 class CaCertificateItem(AbstractModel):
-    """CA证书信息
+    r"""CA证书信息
 
     """
 
@@ -707,7 +707,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def CaCn(self):
-        """证书的公用名(Common Name)
+        r"""证书的公用名(Common Name)
         :rtype: str
         """
         return self._CaCn
@@ -718,7 +718,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def CaCertificate(self):
-        """证书内容
+        r"""证书内容
         :rtype: str
         """
         return self._CaCertificate
@@ -729,7 +729,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def CaSn(self):
-        """证书序列号
+        r"""证书序列号
         :rtype: str
         """
         return self._CaSn
@@ -740,7 +740,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def Format(self):
-        """证书格式，当前仅支持 PEM 格式
+        r"""证书格式，当前仅支持 PEM 格式
         :rtype: str
         """
         return self._Format
@@ -751,7 +751,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def VerificationCertificate(self):
-        """验证证书内容
+        r"""验证证书内容
         :rtype: str
         """
         return self._VerificationCertificate
@@ -762,7 +762,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def Status(self):
-        """CA证书的状态
+        r"""CA证书的状态
     ACTIVE：激活
     INACTIVE：未激活
     REVOKED：吊销
@@ -777,7 +777,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def LastActivationTime(self):
-        """上次激活时间，毫秒级时间戳 。
+        r"""上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -788,7 +788,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -799,7 +799,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间，毫秒级时间戳 。
+        r"""更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -810,7 +810,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def LastInactivationTime(self):
-        """上次去激活时间，毫秒级时间戳 。
+        r"""上次去激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -821,7 +821,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def CaIssuerCn(self):
-        """Ca证书颁发者CN
+        r"""Ca证书颁发者CN
         :rtype: str
         """
         return self._CaIssuerCn
@@ -832,7 +832,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def NotBeforeTime(self):
-        """生效时间，毫秒级时间戳 。
+        r"""生效时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -843,7 +843,7 @@ class CaCertificateItem(AbstractModel):
 
     @property
     def NotAfterTime(self):
-        """失效时间，毫秒级时间戳 。
+        r"""失效时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -878,7 +878,7 @@ class CaCertificateItem(AbstractModel):
 
 
 class CreateAuthorizationPolicyRequest(AbstractModel):
-    """CreateAuthorizationPolicy请求参数结构体
+    r"""CreateAuthorizationPolicy请求参数结构体
 
     """
 
@@ -941,7 +941,7 @@ sub：订阅
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -952,7 +952,7 @@ sub：订阅
 
     @property
     def PolicyName(self):
-        """策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        r"""策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
         :rtype: str
         """
         return self._PolicyName
@@ -963,7 +963,7 @@ sub：订阅
 
     @property
     def PolicyVersion(self):
-        """策略版本,默认为1，当前仅支持1
+        r"""策略版本,默认为1，当前仅支持1
         :rtype: int
         """
         return self._PolicyVersion
@@ -974,7 +974,7 @@ sub：订阅
 
     @property
     def Priority(self):
-        """策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""策略优先级，越小越优先，不能重复，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: int
         """
         return self._Priority
@@ -985,7 +985,7 @@ sub：订阅
 
     @property
     def Effect(self):
-        """决策：
+        r"""决策：
 allow：允许符合该策略的设备的访问请求。
 deny：拒绝覆盖该策略的设备的访问请求。
 可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
@@ -999,7 +999,7 @@ deny：拒绝覆盖该策略的设备的访问请求。
 
     @property
     def Actions(self):
-        """操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 connect：连接
 pub：发布
 sub：订阅
@@ -1013,7 +1013,7 @@ sub：订阅
 
     @property
     def Retain(self):
-        """条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 1,匹配保留消息；
 2,匹配非保留消息，
 3.匹配保留和非保留消息
@@ -1027,7 +1027,7 @@ sub：订阅
 
     @property
     def Qos(self):
-        """条件：服务质量
+        r"""条件：服务质量
 0：最多一次
 1：最少一次
 2：精确一次
@@ -1042,7 +1042,7 @@ sub：订阅
 
     @property
     def Resources(self):
-        """资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 
         :rtype: str
         """
@@ -1054,7 +1054,7 @@ sub：订阅
 
     @property
     def Username(self):
-        """条件-用户名
+        r"""条件-用户名
         :rtype: str
         """
         return self._Username
@@ -1065,7 +1065,7 @@ sub：订阅
 
     @property
     def ClientId(self):
-        """条件：客户端ID，支持正则
+        r"""条件：客户端ID，支持正则
         :rtype: str
         """
         return self._ClientId
@@ -1076,7 +1076,7 @@ sub：订阅
 
     @property
     def Ip(self):
-        """条件：客户端IP地址，支持IP或者CIDR，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""条件：客户端IP地址，支持IP或者CIDR，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :rtype: str
         """
         return self._Ip
@@ -1087,7 +1087,7 @@ sub：订阅
 
     @property
     def Remark(self):
-        """备注信息，最长 128 字符
+        r"""备注信息，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -1122,7 +1122,7 @@ sub：订阅
 
 
 class CreateAuthorizationPolicyResponse(AbstractModel):
-    """CreateAuthorizationPolicy返回参数结构体
+    r"""CreateAuthorizationPolicy返回参数结构体
 
     """
 
@@ -1141,7 +1141,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群Id
+        r"""集群Id
         :rtype: str
         """
         return self._InstanceId
@@ -1152,7 +1152,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
-        """策略id
+        r"""策略id
         :rtype: int
         """
         return self._Id
@@ -1163,7 +1163,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1180,7 +1180,7 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
 
 class CreateDeviceIdentityRequest(AbstractModel):
-    """CreateDeviceIdentity请求参数结构体
+    r"""CreateDeviceIdentity请求参数结构体
 
     """
 
@@ -1209,7 +1209,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1220,7 +1220,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -1231,7 +1231,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def Status(self):
-        """1:ENABLED-可用（默认）
+        r"""1:ENABLED-可用（默认）
 2:DISABLE-不可用
         :rtype: str
         """
@@ -1243,7 +1243,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def PrimaryKey(self):
-        """主要签名key，不传则由系统自动生成，需要base64编码。
+        r"""主要签名key，不传则由系统自动生成，需要base64编码。
         :rtype: str
         """
         return self._PrimaryKey
@@ -1254,7 +1254,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def SecondaryKey(self):
-        """次要签名key，不传则由系统自动生成，需要base64编码。
+        r"""次要签名key，不传则由系统自动生成，需要base64编码。
         :rtype: str
         """
         return self._SecondaryKey
@@ -1265,7 +1265,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def PropagatingProperties(self):
-        """该设备id的传播属性设置
+        r"""该设备id的传播属性设置
         :rtype: list of PropagatingProperty
         """
         return self._PropagatingProperties
@@ -1298,7 +1298,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
 
 class CreateDeviceIdentityResponse(AbstractModel):
-    """CreateDeviceIdentity返回参数结构体
+    r"""CreateDeviceIdentity返回参数结构体
 
     """
 
@@ -1311,7 +1311,7 @@ class CreateDeviceIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1326,7 +1326,7 @@ class CreateDeviceIdentityResponse(AbstractModel):
 
 
 class CreateHttpAuthenticatorRequest(AbstractModel):
-    """CreateHttpAuthenticator请求参数结构体
+    r"""CreateHttpAuthenticator请求参数结构体
 
     """
 
@@ -1366,7 +1366,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1377,7 +1377,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """jwks服务地址
+        r"""jwks服务地址
         :rtype: str
         """
         return self._Endpoint
@@ -1388,7 +1388,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Concurrency(self):
-        """最大并发连接数，默认8，范围：1-10
+        r"""最大并发连接数，默认8，范围：1-10
         :rtype: int
         """
         return self._Concurrency
@@ -1399,7 +1399,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Method(self):
-        """网络请求方法 GET 或 POST，默认POST
+        r"""网络请求方法 GET 或 POST，默认POST
         :rtype: str
         """
         return self._Method
@@ -1410,7 +1410,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Status(self):
-        """认证器是否开启：open-启用；close-关闭，默认open-启用
+        r"""认证器是否开启：open-启用；close-关闭，默认open-启用
         :rtype: str
         """
         return self._Status
@@ -1421,7 +1421,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """说明，最多支持128个字符。
+        r"""说明，最多支持128个字符。
         :rtype: str
         """
         return self._Remark
@@ -1432,7 +1432,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """连接超时时间，单位：秒，范围：1-30
+        r"""连接超时时间，单位：秒，范围：1-30
         :rtype: int
         """
         return self._ConnectTimeout
@@ -1443,7 +1443,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def ReadTimeout(self):
-        """请求超时时间，单位：秒，范围：1-30
+        r"""请求超时时间，单位：秒，范围：1-30
         :rtype: int
         """
         return self._ReadTimeout
@@ -1454,7 +1454,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Header(self):
-        """转发请求header
+        r"""转发请求header
         :rtype: list of HeaderItem
         """
         return self._Header
@@ -1465,7 +1465,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Body(self):
-        """转发请求body
+        r"""转发请求body
         :rtype: list of BodyItem
         """
         return self._Body
@@ -1507,7 +1507,7 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
 
 
 class CreateHttpAuthenticatorResponse(AbstractModel):
-    """CreateHttpAuthenticator返回参数结构体
+    r"""CreateHttpAuthenticator返回参数结构体
 
     """
 
@@ -1520,7 +1520,7 @@ class CreateHttpAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1535,7 +1535,7 @@ class CreateHttpAuthenticatorResponse(AbstractModel):
 
 
 class CreateInsPublicEndpointRequest(AbstractModel):
-    """CreateInsPublicEndpoint请求参数结构体
+    r"""CreateInsPublicEndpoint请求参数结构体
 
     """
 
@@ -1554,7 +1554,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1565,7 +1565,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽,单位Mbps
+        r"""带宽,单位Mbps
         :rtype: int
         """
         return self._Bandwidth
@@ -1576,7 +1576,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -1606,7 +1606,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
 
 class CreateInsPublicEndpointResponse(AbstractModel):
-    """CreateInsPublicEndpoint返回参数结构体
+    r"""CreateInsPublicEndpoint返回参数结构体
 
     """
 
@@ -1619,7 +1619,7 @@ class CreateInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1634,7 +1634,7 @@ class CreateInsPublicEndpointResponse(AbstractModel):
 
 
 class CreateInstanceRequest(AbstractModel):
-    """CreateInstance请求参数结构体
+    r"""CreateInstance请求参数结构体
 
     """
 
@@ -1684,7 +1684,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
-        """实例类型，需要和SkuCode保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
+        r"""实例类型，需要和SkuCode保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
 BASIC 基础版
 PRO  专业版
 PLATINUM 铂金版
@@ -1699,7 +1699,7 @@ PLATINUM 铂金版
 
     @property
     def Name(self):
-        """集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        r"""集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
         :rtype: str
         """
         return self._Name
@@ -1710,7 +1710,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        """商品规格，需要和InstanceType保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
+        r"""商品规格，需要和InstanceType保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
         :rtype: str
         """
         return self._SkuCode
@@ -1721,7 +1721,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        """备注信息，最长 128 字符
+        r"""备注信息，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -1732,7 +1732,7 @@ PLATINUM 铂金版
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -1743,7 +1743,7 @@ PLATINUM 铂金版
 
     @property
     def VpcList(self):
-        """实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET
+        r"""实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET
         :rtype: list of VpcInfo
         """
         return self._VpcList
@@ -1754,7 +1754,7 @@ PLATINUM 铂金版
 
     @property
     def EnablePublic(self):
-        """是否开启公网，默认false（关闭）
+        r"""是否开启公网，默认false（关闭）
         :rtype: bool
         """
         return self._EnablePublic
@@ -1765,7 +1765,7 @@ PLATINUM 铂金版
 
     @property
     def Bandwidth(self):
-        """公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.
+        r"""公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.
         :rtype: int
         """
         return self._Bandwidth
@@ -1776,7 +1776,7 @@ PLATINUM 铂金版
 
     @property
     def IpRules(self):
-        """公网访问白名单，不传表示拒绝所有IP网络访问。
+        r"""公网访问白名单，不传表示拒绝所有IP网络访问。
         :rtype: list of IpRule
         """
         return self._IpRules
@@ -1787,7 +1787,7 @@ PLATINUM 铂金版
 
     @property
     def RenewFlag(self):
-        """是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费
+        r"""是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费
         :rtype: int
         """
         return self._RenewFlag
@@ -1798,7 +1798,7 @@ PLATINUM 铂金版
 
     @property
     def TimeSpan(self):
-        """购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；
+        r"""购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；
         :rtype: int
         """
         return self._TimeSpan
@@ -1809,7 +1809,7 @@ PLATINUM 铂金版
 
     @property
     def PayMode(self):
-        """付费模式（0: 后付费；1: 预付费），默认0（后付费）。
+        r"""付费模式（0: 后付费；1: 预付费），默认0（后付费）。
         :rtype: int
         """
         return self._PayMode
@@ -1858,7 +1858,7 @@ PLATINUM 铂金版
 
 
 class CreateInstanceResponse(AbstractModel):
-    """CreateInstance返回参数结构体
+    r"""CreateInstance返回参数结构体
 
     """
 
@@ -1874,7 +1874,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1885,7 +1885,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1901,7 +1901,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
 class CreateJWKSAuthenticatorRequest(AbstractModel):
-    """CreateJWKSAuthenticator请求参数结构体
+    r"""CreateJWKSAuthenticator请求参数结构体
 
     """
 
@@ -1936,7 +1936,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1947,7 +1947,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Endpoint(self):
-        """JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）
+        r"""JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）
         :rtype: str
         """
         return self._Endpoint
@@ -1958,7 +1958,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def RefreshInterval(self):
-        """认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。
+        r"""认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。
         :rtype: int
         """
         return self._RefreshInterval
@@ -1969,7 +1969,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Text(self):
-        """jwks文本，（Text字段和Endpoint字段必须选择一个填写）
+        r"""jwks文本，（Text字段和Endpoint字段必须选择一个填写）
         :rtype: str
         """
         return self._Text
@@ -1980,7 +1980,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Status(self):
-        """认证器是否开启：open-启用；close-关闭，默认open-启用
+        r"""认证器是否开启：open-启用；close-关闭，默认open-启用
         :rtype: str
         """
         return self._Status
@@ -1991,7 +1991,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Remark(self):
-        """说明，不能超过 128 个字符
+        r"""说明，不能超过 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -2002,7 +2002,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def From(self):
-        """认证字段；
+        r"""认证字段；
 username-对应 MQTT CONNECT Packet 中 username 字段，
 password-对应 MQTT CONNECT Packet 中 password 字段。
 
@@ -2035,7 +2035,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
 
 class CreateJWKSAuthenticatorResponse(AbstractModel):
-    """CreateJWKSAuthenticator返回参数结构体
+    r"""CreateJWKSAuthenticator返回参数结构体
 
     """
 
@@ -2048,7 +2048,7 @@ class CreateJWKSAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2063,7 +2063,7 @@ class CreateJWKSAuthenticatorResponse(AbstractModel):
 
 
 class CreateJWTAuthenticatorRequest(AbstractModel):
-    """CreateJWTAuthenticator请求参数结构体
+    r"""CreateJWTAuthenticator请求参数结构体
 
     """
 
@@ -2098,7 +2098,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2109,7 +2109,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Algorithm(self):
-        """签名方式：hmac-based，public-key
+        r"""签名方式：hmac-based，public-key
         :rtype: str
         """
         return self._Algorithm
@@ -2120,7 +2120,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def From(self):
-        """认证字段
+        r"""认证字段
 password：对应 MQTT CONNECT Packet 中 password 字段，
 username：对应 MQTT CONNECT Packet 中 username 字段
 默认username
@@ -2135,7 +2135,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Secret(self):
-        """密钥，Algorithm为hmac-based需要传递该字段。
+        r"""密钥，Algorithm为hmac-based需要传递该字段。
         :rtype: str
         """
         return self._Secret
@@ -2146,7 +2146,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def PublicKey(self):
-        """公钥，Algorithm为public-key时需要传递该字段。
+        r"""公钥，Algorithm为public-key时需要传递该字段。
         :rtype: str
         """
         return self._PublicKey
@@ -2157,7 +2157,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Status(self):
-        """认证器是否开启：open-启用；close-关闭，默认：open-启用
+        r"""认证器是否开启：open-启用；close-关闭，默认：open-启用
         :rtype: str
         """
         return self._Status
@@ -2168,7 +2168,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Remark(self):
-        """说明，不能超过 128 个字符。
+        r"""说明，不能超过 128 个字符。
         :rtype: str
         """
         return self._Remark
@@ -2197,7 +2197,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
 
 class CreateJWTAuthenticatorResponse(AbstractModel):
-    """CreateJWTAuthenticator返回参数结构体
+    r"""CreateJWTAuthenticator返回参数结构体
 
     """
 
@@ -2210,7 +2210,7 @@ class CreateJWTAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2225,7 +2225,7 @@ class CreateJWTAuthenticatorResponse(AbstractModel):
 
 
 class CreateTopicRequest(AbstractModel):
-    """CreateTopic请求参数结构体
+    r"""CreateTopic请求参数结构体
 
     """
 
@@ -2244,7 +2244,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2255,7 +2255,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        r"""主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
         :rtype: str
         """
         return self._Topic
@@ -2266,7 +2266,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注，最长 128 字符
+        r"""备注，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -2291,7 +2291,7 @@ class CreateTopicRequest(AbstractModel):
 
 
 class CreateTopicResponse(AbstractModel):
-    """CreateTopic返回参数结构体
+    r"""CreateTopic返回参数结构体
 
     """
 
@@ -2310,7 +2310,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -2321,7 +2321,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        r"""主题
         :rtype: str
         """
         return self._Topic
@@ -2332,7 +2332,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2349,7 +2349,7 @@ class CreateTopicResponse(AbstractModel):
 
 
 class CreateUserRequest(AbstractModel):
-    """CreateUser请求参数结构体
+    r"""CreateUser请求参数结构体
 
     """
 
@@ -2371,7 +2371,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2382,7 +2382,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
+        r"""用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
         :rtype: str
         """
         return self._Username
@@ -2393,7 +2393,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
+        r"""密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
         :rtype: str
         """
         return self._Password
@@ -2404,7 +2404,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注，长度不超过128个字符。
+        r"""备注，长度不超过128个字符。
         :rtype: str
         """
         return self._Remark
@@ -2430,7 +2430,7 @@ class CreateUserRequest(AbstractModel):
 
 
 class CreateUserResponse(AbstractModel):
-    """CreateUser返回参数结构体
+    r"""CreateUser返回参数结构体
 
     """
 
@@ -2443,7 +2443,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2458,7 +2458,7 @@ class CreateUserResponse(AbstractModel):
 
 
 class DeactivateCaCertificateRequest(AbstractModel):
-    """DeactivateCaCertificate请求参数结构体
+    r"""DeactivateCaCertificate请求参数结构体
 
     """
 
@@ -2474,7 +2474,7 @@ class DeactivateCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2485,7 +2485,7 @@ class DeactivateCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        r"""证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -2509,7 +2509,7 @@ class DeactivateCaCertificateRequest(AbstractModel):
 
 
 class DeactivateCaCertificateResponse(AbstractModel):
-    """DeactivateCaCertificate返回参数结构体
+    r"""DeactivateCaCertificate返回参数结构体
 
     """
 
@@ -2522,7 +2522,7 @@ class DeactivateCaCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2537,7 +2537,7 @@ class DeactivateCaCertificateResponse(AbstractModel):
 
 
 class DeactivateDeviceCertificateRequest(AbstractModel):
-    """DeactivateDeviceCertificate请求参数结构体
+    r"""DeactivateDeviceCertificate请求参数结构体
 
     """
 
@@ -2553,7 +2553,7 @@ class DeactivateDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2564,7 +2564,7 @@ class DeactivateDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、设备证书文件中获得。
+        r"""设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、设备证书文件中获得。
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -2588,7 +2588,7 @@ class DeactivateDeviceCertificateRequest(AbstractModel):
 
 
 class DeactivateDeviceCertificateResponse(AbstractModel):
-    """DeactivateDeviceCertificate返回参数结构体
+    r"""DeactivateDeviceCertificate返回参数结构体
 
     """
 
@@ -2601,7 +2601,7 @@ class DeactivateDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2616,7 +2616,7 @@ class DeactivateDeviceCertificateResponse(AbstractModel):
 
 
 class DeleteAuthenticatorRequest(AbstractModel):
-    """DeleteAuthenticator请求参数结构体
+    r"""DeleteAuthenticator请求参数结构体
 
     """
 
@@ -2635,7 +2635,7 @@ HTTP：HTTP认证器
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2646,7 +2646,7 @@ HTTP：HTTP认证器
 
     @property
     def Type(self):
-        """认证器类型:
+        r"""认证器类型:
 JWT：JWT认证器
 JWKS：JWKS认证器
 HTTP：HTTP认证器
@@ -2673,7 +2673,7 @@ HTTP：HTTP认证器
 
 
 class DeleteAuthenticatorResponse(AbstractModel):
-    """DeleteAuthenticator返回参数结构体
+    r"""DeleteAuthenticator返回参数结构体
 
     """
 
@@ -2686,7 +2686,7 @@ class DeleteAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2701,7 +2701,7 @@ class DeleteAuthenticatorResponse(AbstractModel):
 
 
 class DeleteAuthorizationPolicyRequest(AbstractModel):
-    """DeleteAuthorizationPolicy请求参数结构体
+    r"""DeleteAuthorizationPolicy请求参数结构体
 
     """
 
@@ -2717,7 +2717,7 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2728,7 +2728,7 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
-        """授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
+        r"""授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
         :rtype: int
         """
         return self._Id
@@ -2752,7 +2752,7 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
 
 class DeleteAuthorizationPolicyResponse(AbstractModel):
-    """DeleteAuthorizationPolicy返回参数结构体
+    r"""DeleteAuthorizationPolicy返回参数结构体
 
     """
 
@@ -2765,7 +2765,7 @@ class DeleteAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2780,7 +2780,7 @@ class DeleteAuthorizationPolicyResponse(AbstractModel):
 
 
 class DeleteCaCertificateRequest(AbstractModel):
-    """DeleteCaCertificate请求参数结构体
+    r"""DeleteCaCertificate请求参数结构体
 
     """
 
@@ -2796,7 +2796,7 @@ class DeleteCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2807,7 +2807,7 @@ class DeleteCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        r"""CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -2831,7 +2831,7 @@ class DeleteCaCertificateRequest(AbstractModel):
 
 
 class DeleteCaCertificateResponse(AbstractModel):
-    """DeleteCaCertificate返回参数结构体
+    r"""DeleteCaCertificate返回参数结构体
 
     """
 
@@ -2844,7 +2844,7 @@ class DeleteCaCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2859,7 +2859,7 @@ class DeleteCaCertificateResponse(AbstractModel):
 
 
 class DeleteDeviceCertificateRequest(AbstractModel):
-    """DeleteDeviceCertificate请求参数结构体
+    r"""DeleteDeviceCertificate请求参数结构体
 
     """
 
@@ -2875,7 +2875,7 @@ class DeleteDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -2886,7 +2886,7 @@ class DeleteDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书序列号
+        r"""设备证书序列号
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -2910,7 +2910,7 @@ class DeleteDeviceCertificateRequest(AbstractModel):
 
 
 class DeleteDeviceCertificateResponse(AbstractModel):
-    """DeleteDeviceCertificate返回参数结构体
+    r"""DeleteDeviceCertificate返回参数结构体
 
     """
 
@@ -2923,7 +2923,7 @@ class DeleteDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2938,7 +2938,7 @@ class DeleteDeviceCertificateResponse(AbstractModel):
 
 
 class DeleteDeviceIdentityRequest(AbstractModel):
-    """DeleteDeviceIdentity请求参数结构体
+    r"""DeleteDeviceIdentity请求参数结构体
 
     """
 
@@ -2954,7 +2954,7 @@ class DeleteDeviceIdentityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -2965,7 +2965,7 @@ class DeleteDeviceIdentityRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -2989,7 +2989,7 @@ class DeleteDeviceIdentityRequest(AbstractModel):
 
 
 class DeleteDeviceIdentityResponse(AbstractModel):
-    """DeleteDeviceIdentity返回参数结构体
+    r"""DeleteDeviceIdentity返回参数结构体
 
     """
 
@@ -3002,7 +3002,7 @@ class DeleteDeviceIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3017,7 +3017,7 @@ class DeleteDeviceIdentityResponse(AbstractModel):
 
 
 class DeleteInsPublicEndpointRequest(AbstractModel):
-    """DeleteInsPublicEndpoint请求参数结构体
+    r"""DeleteInsPublicEndpoint请求参数结构体
 
     """
 
@@ -3030,7 +3030,7 @@ class DeleteInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3053,7 +3053,7 @@ class DeleteInsPublicEndpointRequest(AbstractModel):
 
 
 class DeleteInsPublicEndpointResponse(AbstractModel):
-    """DeleteInsPublicEndpoint返回参数结构体
+    r"""DeleteInsPublicEndpoint返回参数结构体
 
     """
 
@@ -3066,7 +3066,7 @@ class DeleteInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3081,7 +3081,7 @@ class DeleteInsPublicEndpointResponse(AbstractModel):
 
 
 class DeleteInstanceRequest(AbstractModel):
-    """DeleteInstance请求参数结构体
+    r"""DeleteInstance请求参数结构体
 
     """
 
@@ -3094,7 +3094,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3117,7 +3117,7 @@ class DeleteInstanceRequest(AbstractModel):
 
 
 class DeleteInstanceResponse(AbstractModel):
-    """DeleteInstance返回参数结构体
+    r"""DeleteInstance返回参数结构体
 
     """
 
@@ -3130,7 +3130,7 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3145,7 +3145,7 @@ class DeleteInstanceResponse(AbstractModel):
 
 
 class DeleteTopicRequest(AbstractModel):
-    """DeleteTopic请求参数结构体
+    r"""DeleteTopic请求参数结构体
 
     """
 
@@ -3161,7 +3161,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -3172,7 +3172,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        r"""主题
         :rtype: str
         """
         return self._Topic
@@ -3196,7 +3196,7 @@ class DeleteTopicRequest(AbstractModel):
 
 
 class DeleteTopicResponse(AbstractModel):
-    """DeleteTopic返回参数结构体
+    r"""DeleteTopic返回参数结构体
 
     """
 
@@ -3209,7 +3209,7 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3224,7 +3224,7 @@ class DeleteTopicResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser请求参数结构体
+    r"""DeleteUser请求参数结构体
 
     """
 
@@ -3240,7 +3240,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -3251,7 +3251,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -3275,7 +3275,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser返回参数结构体
+    r"""DeleteUser返回参数结构体
 
     """
 
@@ -3288,7 +3288,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3303,7 +3303,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DescribeAuthenticatorRequest(AbstractModel):
-    """DescribeAuthenticator请求参数结构体
+    r"""DescribeAuthenticator请求参数结构体
 
     """
 
@@ -3322,7 +3322,7 @@ HTTP：HTTP认证器
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3333,7 +3333,7 @@ HTTP：HTTP认证器
 
     @property
     def Type(self):
-        """认证器类型:
+        r"""认证器类型:
 JWT：JWT认证器
 JWKS：JWKS认证器
 HTTP：HTTP认证器
@@ -3360,7 +3360,7 @@ HTTP：HTTP认证器
 
 
 class DescribeAuthenticatorResponse(AbstractModel):
-    """DescribeAuthenticator返回参数结构体
+    r"""DescribeAuthenticator返回参数结构体
 
     """
 
@@ -3376,7 +3376,7 @@ class DescribeAuthenticatorResponse(AbstractModel):
 
     @property
     def Authenticators(self):
-        """集群认证器列表
+        r"""集群认证器列表
         :rtype: list of MQTTAuthenticatorItem
         """
         return self._Authenticators
@@ -3387,7 +3387,7 @@ class DescribeAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3408,7 +3408,7 @@ class DescribeAuthenticatorResponse(AbstractModel):
 
 
 class DescribeAuthorizationPoliciesRequest(AbstractModel):
-    """DescribeAuthorizationPolicies请求参数结构体
+    r"""DescribeAuthorizationPolicies请求参数结构体
 
     """
 
@@ -3421,7 +3421,7 @@ class DescribeAuthorizationPoliciesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3444,7 +3444,7 @@ class DescribeAuthorizationPoliciesRequest(AbstractModel):
 
 
 class DescribeAuthorizationPoliciesResponse(AbstractModel):
-    """DescribeAuthorizationPolicies返回参数结构体
+    r"""DescribeAuthorizationPolicies返回参数结构体
 
     """
 
@@ -3460,7 +3460,7 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """规则
+        r"""规则
         :rtype: list of AuthorizationPolicyItem
         """
         return self._Data
@@ -3471,7 +3471,7 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3492,7 +3492,7 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
 
 class DescribeCaCertificateRequest(AbstractModel):
-    """DescribeCaCertificate请求参数结构体
+    r"""DescribeCaCertificate请求参数结构体
 
     """
 
@@ -3508,7 +3508,7 @@ class DescribeCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        r"""CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -3519,7 +3519,7 @@ class DescribeCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3543,7 +3543,7 @@ class DescribeCaCertificateRequest(AbstractModel):
 
 
 class DescribeCaCertificateResponse(AbstractModel):
-    """DescribeCaCertificate返回参数结构体
+    r"""DescribeCaCertificate返回参数结构体
 
     """
 
@@ -3595,7 +3595,7 @@ INACTIVE：未激活
 
     @property
     def CreatedTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -3606,7 +3606,7 @@ INACTIVE：未激活
 
     @property
     def UpdateTime(self):
-        """上次更新时间，毫秒级时间戳 。
+        r"""上次更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -3617,7 +3617,7 @@ INACTIVE：未激活
 
     @property
     def NotAfterTime(self):
-        """失效日期，毫秒级时间戳 。
+        r"""失效日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -3628,7 +3628,7 @@ INACTIVE：未激活
 
     @property
     def LastActivationTime(self):
-        """上次激活时间，毫秒级时间戳 。
+        r"""上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -3639,7 +3639,7 @@ INACTIVE：未激活
 
     @property
     def LastInactivationTime(self):
-        """上次吊销时间，毫秒级时间戳 。
+        r"""上次吊销时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -3650,7 +3650,7 @@ INACTIVE：未激活
 
     @property
     def Status(self):
-        """CA证书状态
+        r"""CA证书状态
  ACTIVE：激活
 INACTIVE：未激活
 
@@ -3664,7 +3664,7 @@ INACTIVE：未激活
 
     @property
     def CaSn(self):
-        """证书序列号
+        r"""证书序列号
         :rtype: str
         """
         return self._CaSn
@@ -3675,7 +3675,7 @@ INACTIVE：未激活
 
     @property
     def CaCn(self):
-        """证书的CN（Common Name），证书中用于标识主体的名称，通常是域名或组织名称
+        r"""证书的CN（Common Name），证书中用于标识主体的名称，通常是域名或组织名称
         :rtype: str
         """
         return self._CaCn
@@ -3686,7 +3686,7 @@ INACTIVE：未激活
 
     @property
     def CaCertificate(self):
-        """证书内容
+        r"""证书内容
         :rtype: str
         """
         return self._CaCertificate
@@ -3697,7 +3697,7 @@ INACTIVE：未激活
 
     @property
     def Format(self):
-        """证书格式，当仅支持PEM格式
+        r"""证书格式，当仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -3708,7 +3708,7 @@ INACTIVE：未激活
 
     @property
     def CaIssuerCn(self):
-        """Ca证书颁发者CN
+        r"""Ca证书颁发者CN
         :rtype: str
         """
         return self._CaIssuerCn
@@ -3719,7 +3719,7 @@ INACTIVE：未激活
 
     @property
     def NotBeforeTime(self):
-        """生效开始时间，毫秒级时间戳 。
+        r"""生效开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -3730,7 +3730,7 @@ INACTIVE：未激活
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3757,7 +3757,7 @@ INACTIVE：未激活
 
 
 class DescribeCaCertificatesRequest(AbstractModel):
-    """DescribeCaCertificates请求参数结构体
+    r"""DescribeCaCertificates请求参数结构体
 
     """
 
@@ -3770,7 +3770,7 @@ class DescribeCaCertificatesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3793,7 +3793,7 @@ class DescribeCaCertificatesRequest(AbstractModel):
 
 
 class DescribeCaCertificatesResponse(AbstractModel):
-    """DescribeCaCertificates返回参数结构体
+    r"""DescribeCaCertificates返回参数结构体
 
     """
 
@@ -3809,7 +3809,7 @@ class DescribeCaCertificatesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """ca证书列表
+        r"""ca证书列表
         :rtype: list of CaCertificateItem
         """
         return self._Data
@@ -3820,7 +3820,7 @@ class DescribeCaCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3841,7 +3841,7 @@ class DescribeCaCertificatesResponse(AbstractModel):
 
 
 class DescribeClientListRequest(AbstractModel):
-    """DescribeClientList请求参数结构体
+    r"""DescribeClientList请求参数结构体
 
     """
 
@@ -3860,7 +3860,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3871,7 +3871,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        r"""客户端ID
         :rtype: str
         """
         return self._ClientId
@@ -3882,7 +3882,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def Number(self):
-        """客户端数量限制,最大1024，默认1024
+        r"""客户端数量限制,最大1024，默认1024
         :rtype: str
         """
         return self._Number
@@ -3907,7 +3907,7 @@ class DescribeClientListRequest(AbstractModel):
 
 
 class DescribeClientListResponse(AbstractModel):
-    """DescribeClientList返回参数结构体
+    r"""DescribeClientList返回参数结构体
 
     """
 
@@ -3923,7 +3923,7 @@ class DescribeClientListResponse(AbstractModel):
 
     @property
     def Clients(self):
-        """客户端列表
+        r"""客户端列表
         :rtype: list of MQTTClientInfo
         """
         return self._Clients
@@ -3934,7 +3934,7 @@ class DescribeClientListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3955,7 +3955,7 @@ class DescribeClientListResponse(AbstractModel):
 
 
 class DescribeDeviceCertificateRequest(AbstractModel):
-    """DescribeDeviceCertificate请求参数结构体
+    r"""DescribeDeviceCertificate请求参数结构体
 
     """
 
@@ -3971,7 +3971,7 @@ class DescribeDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书的SN序列号，用于唯一标识一个设备证书。
+        r"""设备证书的SN序列号，用于唯一标识一个设备证书。
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -3982,7 +3982,7 @@ class DescribeDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4006,7 +4006,7 @@ class DescribeDeviceCertificateRequest(AbstractModel):
 
 
 class DescribeDeviceCertificateResponse(AbstractModel):
-    """DescribeDeviceCertificate返回参数结构体
+    r"""DescribeDeviceCertificate返回参数结构体
 
     """
 
@@ -4070,7 +4070,7 @@ JITP：自动注册
 
     @property
     def CreatedTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -4081,7 +4081,7 @@ JITP：自动注册
 
     @property
     def UpdateTime(self):
-        """上次更新时间，毫秒级时间戳 。
+        r"""上次更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -4092,7 +4092,7 @@ JITP：自动注册
 
     @property
     def NotAfterTime(self):
-        """证书失效日期，毫秒级时间戳 。
+        r"""证书失效日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -4103,7 +4103,7 @@ JITP：自动注册
 
     @property
     def LastActivationTime(self):
-        """上次激活时间，毫秒级时间戳 。
+        r"""上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -4114,7 +4114,7 @@ JITP：自动注册
 
     @property
     def LastInactivationTime(self):
-        """上次取消激活时间，毫秒级时间戳 。
+        r"""上次取消激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -4125,7 +4125,7 @@ JITP：自动注册
 
     @property
     def Status(self):
-        """设备证书的状态
+        r"""设备证书的状态
     ACTIVE：激活 
     INACTIVE：未激活
     REVOKED：吊销
@@ -4140,7 +4140,7 @@ JITP：自动注册
 
     @property
     def CaSn(self):
-        """Ca证书序列号
+        r"""Ca证书序列号
         :rtype: str
         """
         return self._CaSn
@@ -4151,7 +4151,7 @@ JITP：自动注册
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书序列号
+        r"""设备证书序列号
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -4162,7 +4162,7 @@ JITP：自动注册
 
     @property
     def DeviceCertificate(self):
-        """设备证书内容
+        r"""设备证书内容
         :rtype: str
         """
         return self._DeviceCertificate
@@ -4173,7 +4173,7 @@ JITP：自动注册
 
     @property
     def DeviceCertificateCn(self):
-        """设备证书common name
+        r"""设备证书common name
         :rtype: str
         """
         return self._DeviceCertificateCn
@@ -4184,7 +4184,7 @@ JITP：自动注册
 
     @property
     def Format(self):
-        """证书格式，当前仅支持PEM格式
+        r"""证书格式，当前仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -4195,7 +4195,7 @@ JITP：自动注册
 
     @property
     def ClientId(self):
-        """客户端id
+        r"""客户端id
         :rtype: str
         """
         return self._ClientId
@@ -4206,7 +4206,7 @@ JITP：自动注册
 
     @property
     def CertificateSource(self):
-        """证书来源    
+        r"""证书来源    
 API：手动注册   
 JITP：自动注册
         :rtype: str
@@ -4219,7 +4219,7 @@ JITP：自动注册
 
     @property
     def NotBeforeTime(self):
-        """证书生效开始时间，毫秒级时间戳 。
+        r"""证书生效开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -4230,7 +4230,7 @@ JITP：自动注册
 
     @property
     def OrganizationalUnit(self):
-        """组织单位
+        r"""组织单位
         :rtype: str
         """
         return self._OrganizationalUnit
@@ -4241,7 +4241,7 @@ JITP：自动注册
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4271,7 +4271,7 @@ JITP：自动注册
 
 
 class DescribeDeviceCertificatesRequest(AbstractModel):
-    """DescribeDeviceCertificates请求参数结构体
+    r"""DescribeDeviceCertificates请求参数结构体
 
     """
 
@@ -4309,7 +4309,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4320,7 +4320,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
     @property
     def Filters(self):
-        """支持搜索参数
+        r"""支持搜索参数
 ClientId：客户端id，根据实际业务使用获取
 CaSn：所属的CA证书SN序列号 可以从 [查询集群CA证书列表](https://cloud.tencent.com/document/api/1778/116206) 或者实际业务使用获取
 DeviceCertificateSn：设备证书SN序列号 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
@@ -4340,7 +4340,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
     @property
     def Limit(self):
-        """分页limit，默认20，最大100
+        r"""分页limit，默认20，最大100
         :rtype: int
         """
         return self._Limit
@@ -4351,7 +4351,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
     @property
     def Offset(self):
-        """分页偏移量，默认0
+        r"""分页偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -4362,7 +4362,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
     @property
     def OrderBy(self):
-        """排序规则
+        r"""排序规则
     CREATE_TIME_DESC, 创建时间降序
     CREATE_TIME_ASC,创建时间升序
     UPDATE_TIME_DESC,更新时间降序
@@ -4398,7 +4398,7 @@ Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REV
 
 
 class DescribeDeviceCertificatesResponse(AbstractModel):
-    """DescribeDeviceCertificates返回参数结构体
+    r"""DescribeDeviceCertificates返回参数结构体
 
     """
 
@@ -4417,7 +4417,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -4428,7 +4428,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """设备证书列表
+        r"""设备证书列表
         :rtype: list of DeviceCertificateItem
         """
         return self._Data
@@ -4439,7 +4439,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4461,7 +4461,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
 
 
 class DescribeDeviceIdentitiesRequest(AbstractModel):
-    """DescribeDeviceIdentities请求参数结构体
+    r"""DescribeDeviceIdentities请求参数结构体
 
     """
 
@@ -4480,7 +4480,7 @@ class DescribeDeviceIdentitiesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -4491,7 +4491,7 @@ class DescribeDeviceIdentitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -4502,7 +4502,7 @@ class DescribeDeviceIdentitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -4527,7 +4527,7 @@ class DescribeDeviceIdentitiesRequest(AbstractModel):
 
 
 class DescribeDeviceIdentitiesResponse(AbstractModel):
-    """DescribeDeviceIdentities返回参数结构体
+    r"""DescribeDeviceIdentities返回参数结构体
 
     """
 
@@ -4543,7 +4543,7 @@ class DescribeDeviceIdentitiesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的设备标识列表
+        r"""返回的设备标识列表
         :rtype: list of DeviceIdentityItem
         """
         return self._Data
@@ -4554,7 +4554,7 @@ class DescribeDeviceIdentitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4575,7 +4575,7 @@ class DescribeDeviceIdentitiesResponse(AbstractModel):
 
 
 class DescribeDeviceIdentityRequest(AbstractModel):
-    """DescribeDeviceIdentity请求参数结构体
+    r"""DescribeDeviceIdentity请求参数结构体
 
     """
 
@@ -4591,7 +4591,7 @@ class DescribeDeviceIdentityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -4602,7 +4602,7 @@ class DescribeDeviceIdentityRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -4626,7 +4626,7 @@ class DescribeDeviceIdentityRequest(AbstractModel):
 
 
 class DescribeDeviceIdentityResponse(AbstractModel):
-    """DescribeDeviceIdentity返回参数结构体
+    r"""DescribeDeviceIdentity返回参数结构体
 
     """
 
@@ -4661,7 +4661,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -4672,7 +4672,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -4683,7 +4683,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def Status(self):
-        """1:ENABLED-可用
+        r"""1:ENABLED-可用
  2:DISABLE-不可用
         :rtype: int
         """
@@ -4695,7 +4695,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def PrimaryKey(self):
-        """主要签名key
+        r"""主要签名key
         :rtype: str
         """
         return self._PrimaryKey
@@ -4706,7 +4706,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def SecondaryKey(self):
-        """次要签名key
+        r"""次要签名key
         :rtype: str
         """
         return self._SecondaryKey
@@ -4717,7 +4717,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedTime
@@ -4728,7 +4728,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def PropagatingProperties(self):
-        """该设备id的传播属性
+        r"""该设备id的传播属性
         :rtype: list of PropagatingProperty
         """
         return self._PropagatingProperties
@@ -4739,7 +4739,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4766,7 +4766,7 @@ class DescribeDeviceIdentityResponse(AbstractModel):
 
 
 class DescribeInsPublicEndpointsRequest(AbstractModel):
-    """DescribeInsPublicEndpoints请求参数结构体
+    r"""DescribeInsPublicEndpoints请求参数结构体
 
     """
 
@@ -4779,7 +4779,7 @@ class DescribeInsPublicEndpointsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4802,7 +4802,7 @@ class DescribeInsPublicEndpointsRequest(AbstractModel):
 
 
 class DescribeInsPublicEndpointsResponse(AbstractModel):
-    """DescribeInsPublicEndpoints返回参数结构体
+    r"""DescribeInsPublicEndpoints返回参数结构体
 
     """
 
@@ -4835,7 +4835,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        """接入点
+        r"""接入点
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -4846,7 +4846,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4857,7 +4857,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位Mbps
+        r"""带宽，单位Mbps
         :rtype: int
         """
         return self._Bandwidth
@@ -4868,7 +4868,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -4879,7 +4879,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """公网状态：
+        r"""公网状态：
     NORMAL-正常
     CLOSING-关闭中
     MODIFYING-修改中
@@ -4895,7 +4895,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4925,7 +4925,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
 
 class DescribeInsVPCEndpointsRequest(AbstractModel):
-    """DescribeInsVPCEndpoints请求参数结构体
+    r"""DescribeInsVPCEndpoints请求参数结构体
 
     """
 
@@ -4938,7 +4938,7 @@ class DescribeInsVPCEndpointsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4961,7 +4961,7 @@ class DescribeInsVPCEndpointsRequest(AbstractModel):
 
 
 class DescribeInsVPCEndpointsResponse(AbstractModel):
-    """DescribeInsVPCEndpoints返回参数结构体
+    r"""DescribeInsVPCEndpoints返回参数结构体
 
     """
 
@@ -4977,7 +4977,7 @@ class DescribeInsVPCEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        """接入点
+        r"""接入点
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -4988,7 +4988,7 @@ class DescribeInsVPCEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5009,7 +5009,7 @@ class DescribeInsVPCEndpointsResponse(AbstractModel):
 
 
 class DescribeInstanceListRequest(AbstractModel):
-    """DescribeInstanceList请求参数结构体
+    r"""DescribeInstanceList请求参数结构体
 
     """
 
@@ -5035,7 +5035,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Filters(self):
-        """查询条件列表,支持以下字段
+        r"""查询条件列表,支持以下字段
 InstanceName：集群名模糊搜索
 InstanceId：集群id精确搜索
 InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
@@ -5050,7 +5050,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Offset(self):
-        """查询起始位置，默认0
+        r"""查询起始位置，默认0
         :rtype: int
         """
         return self._Offset
@@ -5061,7 +5061,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20，最大100
+        r"""查询结果限制数量，默认20，最大100
         :rtype: int
         """
         return self._Limit
@@ -5072,7 +5072,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def TagFilters(self):
-        """标签过滤器
+        r"""标签过滤器
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -5108,7 +5108,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
 
 class DescribeInstanceListResponse(AbstractModel):
-    """DescribeInstanceList返回参数结构体
+    r"""DescribeInstanceList返回参数结构体
 
     """
 
@@ -5127,7 +5127,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -5138,7 +5138,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of MQTTInstanceItem
         """
         return self._Data
@@ -5149,7 +5149,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5171,7 +5171,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
 
 class DescribeInstanceRequest(AbstractModel):
-    """DescribeInstance请求参数结构体
+    r"""DescribeInstance请求参数结构体
 
     """
 
@@ -5184,7 +5184,7 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -5207,7 +5207,7 @@ class DescribeInstanceRequest(AbstractModel):
 
 
 class DescribeInstanceResponse(AbstractModel):
-    """DescribeInstance返回参数结构体
+    r"""DescribeInstance返回参数结构体
 
     """
 
@@ -5280,6 +5280,10 @@ API：通过API手动注册
         :type TrustedCaLimit: int
         :param _ServerCertLimit: 服务端证书最大数量
         :type ServerCertLimit: int
+        :param _TopicPrefixSlashLimit: topic前缀最大层级
+        :type TopicPrefixSlashLimit: int
+        :param _MessageRate: 单客户端发送消息限速，单位 条/秒
+        :type MessageRate: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5314,11 +5318,13 @@ API：通过API手动注册
         self._UseDefaultServerCert = None
         self._TrustedCaLimit = None
         self._ServerCertLimit = None
+        self._TopicPrefixSlashLimit = None
+        self._MessageRate = None
         self._RequestId = None
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
 BASIC 基础版
 PRO  专业版
 PLATINUM 铂金版
@@ -5332,7 +5338,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -5343,7 +5349,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -5354,7 +5360,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -5365,7 +5371,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLimit(self):
-        """实例最大主题数量
+        r"""实例最大主题数量
         :rtype: int
         """
         return self._TopicNumLimit
@@ -5376,7 +5382,7 @@ PLATINUM 铂金版
 
     @property
     def TpsLimit(self):
-        """TPS限流值
+        r"""TPS限流值
         :rtype: int
         """
         return self._TpsLimit
@@ -5387,7 +5393,7 @@ PLATINUM 铂金版
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        r"""创建时间，秒为单位
         :rtype: int
         """
         return self._CreatedTime
@@ -5398,7 +5404,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -5409,7 +5415,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
+        r"""实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
         :rtype: str
         """
         return self._InstanceStatus
@@ -5420,7 +5426,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        """实例规格
+        r"""实例规格
         :rtype: str
         """
         return self._SkuCode
@@ -5431,7 +5437,7 @@ PLATINUM 铂金版
 
     @property
     def MaxSubscriptionPerClient(self):
-        """单客户端最大订阅数
+        r"""单客户端最大订阅数
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -5442,7 +5448,7 @@ PLATINUM 铂金版
 
     @property
     def AuthorizationPolicyLimit(self):
-        """授权规则条数
+        r"""授权规则条数
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -5453,7 +5459,7 @@ PLATINUM 铂金版
 
     @property
     def ClientNumLimit(self):
-        """客户端数量上限
+        r"""客户端数量上限
         :rtype: int
         """
         return self._ClientNumLimit
@@ -5464,7 +5470,7 @@ PLATINUM 铂金版
 
     @property
     def DeviceCertificateProvisionType(self):
-        """客户端证书注册方式：
+        r"""客户端证书注册方式：
 JITP：自动注册
 API：通过API手动注册
         :rtype: str
@@ -5477,7 +5483,7 @@ API：通过API手动注册
 
     @property
     def AutomaticActivation(self):
-        """自动注册设备证书时是否自动激活
+        r"""自动注册设备证书时是否自动激活
         :rtype: bool
         """
         return self._AutomaticActivation
@@ -5488,7 +5494,7 @@ API：通过API手动注册
 
     @property
     def RenewFlag(self):
-        """是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
+        r"""是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
         :rtype: int
         """
         return self._RenewFlag
@@ -5499,7 +5505,7 @@ API：通过API手动注册
 
     @property
     def PayMode(self):
-        """计费模式， POSTPAID，按量计费 PREPAID，包年包月
+        r"""计费模式， POSTPAID，按量计费 PREPAID，包年包月
         :rtype: str
         """
         return self._PayMode
@@ -5510,7 +5516,7 @@ API：通过API手动注册
 
     @property
     def ExpiryTime(self):
-        """到期时间，毫秒级时间戳
+        r"""到期时间，毫秒级时间戳
         :rtype: int
         """
         return self._ExpiryTime
@@ -5521,7 +5527,7 @@ API：通过API手动注册
 
     @property
     def DestroyTime(self):
-        """预销毁时间，毫秒级时间戳
+        r"""预销毁时间，毫秒级时间戳
         :rtype: int
         """
         return self._DestroyTime
@@ -5532,7 +5538,7 @@ API：通过API手动注册
 
     @property
     def X509Mode(self):
-        """TLS,单向认证    mTLS,双向认证    BYOC;一机一证
+        r"""TLS,单向认证    mTLS,双向认证    BYOC;一机一证
         :rtype: str
         """
         return self._X509Mode
@@ -5543,7 +5549,7 @@ API：通过API手动注册
 
     @property
     def MaxCaNum(self):
-        """最大Ca配额
+        r"""最大Ca配额
         :rtype: int
         """
         return self._MaxCaNum
@@ -5554,7 +5560,7 @@ API：通过API手动注册
 
     @property
     def RegistrationCode(self):
-        """证书注册码
+        r"""证书注册码
         :rtype: str
         """
         return self._RegistrationCode
@@ -5565,7 +5571,7 @@ API：通过API手动注册
 
     @property
     def MaxSubscription(self):
-        """集群最大订阅数
+        r"""集群最大订阅数
         :rtype: int
         """
         return self._MaxSubscription
@@ -5576,7 +5582,7 @@ API：通过API手动注册
 
     @property
     def AuthorizationPolicy(self):
-        """授权策略开关
+        r"""授权策略开关
         :rtype: bool
         """
         return self._AuthorizationPolicy
@@ -5587,7 +5593,7 @@ API：通过API手动注册
 
     @property
     def SharedSubscriptionGroupLimit(self):
-        """共享订阅组数最大限制
+        r"""共享订阅组数最大限制
         :rtype: int
         """
         return self._SharedSubscriptionGroupLimit
@@ -5598,7 +5604,7 @@ API：通过API手动注册
 
     @property
     def MaxTopicFilterPerSharedSubscriptionGroup(self):
-        """单个共享订阅组TopicFilter数限制
+        r"""单个共享订阅组TopicFilter数限制
         :rtype: int
         """
         return self._MaxTopicFilterPerSharedSubscriptionGroup
@@ -5609,7 +5615,7 @@ API：通过API手动注册
 
     @property
     def AutoSubscriptionPolicyLimit(self):
-        """自动订阅规则条数限制
+        r"""自动订阅规则条数限制
         :rtype: int
         """
         return self._AutoSubscriptionPolicyLimit
@@ -5620,7 +5626,7 @@ API：通过API手动注册
 
     @property
     def MaxTopicFilterPerAutoSubscriptionPolicy(self):
-        """单条自动订阅规则TopicFilter数限制
+        r"""单条自动订阅规则TopicFilter数限制
         :rtype: int
         """
         return self._MaxTopicFilterPerAutoSubscriptionPolicy
@@ -5631,7 +5637,7 @@ API：通过API手动注册
 
     @property
     def UseDefaultServerCert(self):
-        """是否使用默认的服务端证书
+        r"""是否使用默认的服务端证书
         :rtype: bool
         """
         return self._UseDefaultServerCert
@@ -5642,7 +5648,7 @@ API：通过API手动注册
 
     @property
     def TrustedCaLimit(self):
-        """服务端CA最大数量
+        r"""服务端CA最大数量
         :rtype: int
         """
         return self._TrustedCaLimit
@@ -5653,7 +5659,7 @@ API：通过API手动注册
 
     @property
     def ServerCertLimit(self):
-        """服务端证书最大数量
+        r"""服务端证书最大数量
         :rtype: int
         """
         return self._ServerCertLimit
@@ -5663,8 +5669,30 @@ API：通过API手动注册
         self._ServerCertLimit = ServerCertLimit
 
     @property
+    def TopicPrefixSlashLimit(self):
+        r"""topic前缀最大层级
+        :rtype: int
+        """
+        return self._TopicPrefixSlashLimit
+
+    @TopicPrefixSlashLimit.setter
+    def TopicPrefixSlashLimit(self, TopicPrefixSlashLimit):
+        self._TopicPrefixSlashLimit = TopicPrefixSlashLimit
+
+    @property
+    def MessageRate(self):
+        r"""单客户端发送消息限速，单位 条/秒
+        :rtype: int
+        """
+        return self._MessageRate
+
+    @MessageRate.setter
+    def MessageRate(self, MessageRate):
+        self._MessageRate = MessageRate
+
+    @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5706,11 +5734,13 @@ API：通过API手动注册
         self._UseDefaultServerCert = params.get("UseDefaultServerCert")
         self._TrustedCaLimit = params.get("TrustedCaLimit")
         self._ServerCertLimit = params.get("ServerCertLimit")
+        self._TopicPrefixSlashLimit = params.get("TopicPrefixSlashLimit")
+        self._MessageRate = params.get("MessageRate")
         self._RequestId = params.get("RequestId")
 
 
 class DescribeMessageByTopicRequest(AbstractModel):
-    """DescribeMessageByTopic请求参数结构体
+    r"""DescribeMessageByTopic请求参数结构体
 
     """
 
@@ -5732,7 +5762,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -5743,7 +5773,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """home/room
+        r"""home/room
         :rtype: str
         """
         return self._Topic
@@ -5754,7 +5784,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，毫秒级时间戳 。
+        r"""开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._StartTime
@@ -5765,7 +5795,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def MaxNumber(self):
-        """查询消息条数，最大1024，默认100.
+        r"""查询消息条数，最大1024，默认100.
         :rtype: int
         """
         return self._MaxNumber
@@ -5791,7 +5821,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
 
 class DescribeMessageByTopicResponse(AbstractModel):
-    """DescribeMessageByTopic返回参数结构体
+    r"""DescribeMessageByTopic返回参数结构体
 
     """
 
@@ -5807,7 +5837,7 @@ class DescribeMessageByTopicResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消息列表
+        r"""消息列表
         :rtype: list of MQTTMessage
         """
         return self._Data
@@ -5818,7 +5848,7 @@ class DescribeMessageByTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5839,7 +5869,7 @@ class DescribeMessageByTopicResponse(AbstractModel):
 
 
 class DescribeMessageDetailsRequest(AbstractModel):
-    """DescribeMessageDetails请求参数结构体
+    r"""DescribeMessageDetails请求参数结构体
 
     """
 
@@ -5858,7 +5888,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -5869,7 +5899,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def MessageId(self):
-        """消息ID
+        r"""消息ID
         :rtype: str
         """
         return self._MessageId
@@ -5880,7 +5910,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def Subscription(self):
-        """订阅表达式
+        r"""订阅表达式
         :rtype: str
         """
         return self._Subscription
@@ -5905,7 +5935,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
 
 class DescribeMessageDetailsResponse(AbstractModel):
-    """DescribeMessageDetails返回参数结构体
+    r"""DescribeMessageDetails返回参数结构体
 
     """
 
@@ -5925,6 +5955,43 @@ class DescribeMessageDetailsResponse(AbstractModel):
         :type Qos: str
         :param _OriginTopic: 源topic
         :type OriginTopic: str
+        :param _ContentType: 内容类型（MQTT5）
+含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。
+示例：
+application/json：表示载荷是 JSON 格式的数据。
+text/plain：表示载荷是纯文本。
+application/octet-stream：表示载荷是二进制数据。
+        :type ContentType: str
+        :param _PayloadFormatIndicator: 载荷格式指示符（MQTT5）
+含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。
+示例：
+值为0：当载荷是二进制数据，如图片、音频等。
+值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。
+        :type PayloadFormatIndicator: int
+        :param _MessageExpiryInterval: 消息过期间隔（MQTT5）
+含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。
+示例：
+值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。
+值为0：表示消息不过期，永久有效（直到被接收或会话结束）。
+        :type MessageExpiryInterval: int
+        :param _ResponseTopic: 响应主题（MQTT5）
+含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。
+示例：
+发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。
+接收方处理请求后，将响应发布到devices/device1/responses主题。
+        :type ResponseTopic: str
+        :param _CorrelationData: 关联数据（MQTT5）
+含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。
+示例：
+发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。
+接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。
+        :type CorrelationData: str
+        :param _SubscriptionIdentifier: 订阅标识符（MQTT5）
+含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。
+示例：
+客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。
+当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。
+        :type SubscriptionIdentifier: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5935,11 +6002,17 @@ class DescribeMessageDetailsResponse(AbstractModel):
         self._ClientId = None
         self._Qos = None
         self._OriginTopic = None
+        self._ContentType = None
+        self._PayloadFormatIndicator = None
+        self._MessageExpiryInterval = None
+        self._ResponseTopic = None
+        self._CorrelationData = None
+        self._SubscriptionIdentifier = None
         self._RequestId = None
 
     @property
     def Body(self):
-        """消息体
+        r"""消息体
         :rtype: str
         """
         return self._Body
@@ -5950,7 +6023,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def UserProperties(self):
-        """用户自定义属性
+        r"""用户自定义属性
         :rtype: list of UserProperty
         """
         return self._UserProperties
@@ -5961,7 +6034,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def StoreTimestamp(self):
-        """消息存储时间，毫秒级时间戳。
+        r"""消息存储时间，毫秒级时间戳。
         :rtype: int
         """
         return self._StoreTimestamp
@@ -5972,7 +6045,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """消息ID
+        r"""消息ID
         :rtype: str
         """
         return self._MessageId
@@ -5983,7 +6056,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """生产者地址
+        r"""生产者地址
         :rtype: str
         """
         return self._ClientId
@@ -5994,7 +6067,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def Qos(self):
-        """Topic
+        r"""Topic
         :rtype: str
         """
         return self._Qos
@@ -6005,7 +6078,7 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     @property
     def OriginTopic(self):
-        """源topic
+        r"""源topic
         :rtype: str
         """
         return self._OriginTopic
@@ -6015,8 +6088,99 @@ class DescribeMessageDetailsResponse(AbstractModel):
         self._OriginTopic = OriginTopic
 
     @property
+    def ContentType(self):
+        r"""内容类型（MQTT5）
+含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。
+示例：
+application/json：表示载荷是 JSON 格式的数据。
+text/plain：表示载荷是纯文本。
+application/octet-stream：表示载荷是二进制数据。
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def PayloadFormatIndicator(self):
+        r"""载荷格式指示符（MQTT5）
+含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。
+示例：
+值为0：当载荷是二进制数据，如图片、音频等。
+值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。
+        :rtype: int
+        """
+        return self._PayloadFormatIndicator
+
+    @PayloadFormatIndicator.setter
+    def PayloadFormatIndicator(self, PayloadFormatIndicator):
+        self._PayloadFormatIndicator = PayloadFormatIndicator
+
+    @property
+    def MessageExpiryInterval(self):
+        r"""消息过期间隔（MQTT5）
+含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。
+示例：
+值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。
+值为0：表示消息不过期，永久有效（直到被接收或会话结束）。
+        :rtype: int
+        """
+        return self._MessageExpiryInterval
+
+    @MessageExpiryInterval.setter
+    def MessageExpiryInterval(self, MessageExpiryInterval):
+        self._MessageExpiryInterval = MessageExpiryInterval
+
+    @property
+    def ResponseTopic(self):
+        r"""响应主题（MQTT5）
+含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。
+示例：
+发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。
+接收方处理请求后，将响应发布到devices/device1/responses主题。
+        :rtype: str
+        """
+        return self._ResponseTopic
+
+    @ResponseTopic.setter
+    def ResponseTopic(self, ResponseTopic):
+        self._ResponseTopic = ResponseTopic
+
+    @property
+    def CorrelationData(self):
+        r"""关联数据（MQTT5）
+含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。
+示例：
+发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。
+接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。
+        :rtype: str
+        """
+        return self._CorrelationData
+
+    @CorrelationData.setter
+    def CorrelationData(self, CorrelationData):
+        self._CorrelationData = CorrelationData
+
+    @property
+    def SubscriptionIdentifier(self):
+        r"""订阅标识符（MQTT5）
+含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。
+示例：
+客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。
+当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。
+        :rtype: str
+        """
+        return self._SubscriptionIdentifier
+
+    @SubscriptionIdentifier.setter
+    def SubscriptionIdentifier(self, SubscriptionIdentifier):
+        self._SubscriptionIdentifier = SubscriptionIdentifier
+
+    @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6039,11 +6203,17 @@ class DescribeMessageDetailsResponse(AbstractModel):
         self._ClientId = params.get("ClientId")
         self._Qos = params.get("Qos")
         self._OriginTopic = params.get("OriginTopic")
+        self._ContentType = params.get("ContentType")
+        self._PayloadFormatIndicator = params.get("PayloadFormatIndicator")
+        self._MessageExpiryInterval = params.get("MessageExpiryInterval")
+        self._ResponseTopic = params.get("ResponseTopic")
+        self._CorrelationData = params.get("CorrelationData")
+        self._SubscriptionIdentifier = params.get("SubscriptionIdentifier")
         self._RequestId = params.get("RequestId")
 
 
 class DescribeMessageListRequest(AbstractModel):
-    """DescribeMessageList请求参数结构体
+    r"""DescribeMessageList请求参数结构体
 
     """
 
@@ -6074,7 +6244,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6085,7 +6255,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """要查询的一级Topic，可从 [查询MQTT主题列表](https://cloud.tencent.com/document/product/1778/111082) 获取。
+        r"""要查询的一级Topic，可从 [查询MQTT主题列表](https://cloud.tencent.com/document/product/1778/111082) 获取。
         :rtype: str
         """
         return self._Topic
@@ -6096,7 +6266,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，毫秒级时间戳 。
+        r"""开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._StartTime
@@ -6107,7 +6277,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，毫秒级时间戳 。
+        r"""结束时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._EndTime
@@ -6118,7 +6288,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """请求任务id，用于相同查询参数下查询加速，第一次查询时无需传递，第一次查询会根据本次查询参数生成查询任务ID，保留查询条件，查询下一页消息时可传递第一次查询返回的任务ID。
+        r"""请求任务id，用于相同查询参数下查询加速，第一次查询时无需传递，第一次查询会根据本次查询参数生成查询任务ID，保留查询条件，查询下一页消息时可传递第一次查询返回的任务ID。
         :rtype: str
         """
         return self._TaskRequestId
@@ -6129,7 +6299,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认0
+        r"""查询起始位置，默认0
         :rtype: int
         """
         return self._Offset
@@ -6140,7 +6310,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20，最大50
+        r"""查询结果限制数量，默认20，最大50
         :rtype: int
         """
         return self._Limit
@@ -6169,7 +6339,7 @@ class DescribeMessageListRequest(AbstractModel):
 
 
 class DescribeMessageListResponse(AbstractModel):
-    """DescribeMessageList返回参数结构体
+    r"""DescribeMessageList返回参数结构体
 
     """
 
@@ -6191,7 +6361,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -6202,7 +6372,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消息记录列表
+        r"""消息记录列表
         :rtype: list of MQTTMessageItem
         """
         return self._Data
@@ -6213,7 +6383,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """请求任务id
+        r"""请求任务id
         :rtype: str
         """
         return self._TaskRequestId
@@ -6224,7 +6394,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6247,13 +6417,13 @@ class DescribeMessageListResponse(AbstractModel):
 
 
 class DescribeProductSKUListRequest(AbstractModel):
-    """DescribeProductSKUList请求参数结构体
+    r"""DescribeProductSKUList请求参数结构体
 
     """
 
 
 class DescribeProductSKUListResponse(AbstractModel):
-    """DescribeProductSKUList返回参数结构体
+    r"""DescribeProductSKUList返回参数结构体
 
     """
 
@@ -6272,7 +6442,7 @@ class DescribeProductSKUListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -6283,7 +6453,7 @@ class DescribeProductSKUListResponse(AbstractModel):
 
     @property
     def MQTTProductSkuList(self):
-        """mqtt商品配置信息
+        r"""mqtt商品配置信息
         :rtype: list of ProductSkuItem
         """
         return self._MQTTProductSkuList
@@ -6294,7 +6464,7 @@ class DescribeProductSKUListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6316,7 +6486,7 @@ class DescribeProductSKUListResponse(AbstractModel):
 
 
 class DescribeSharedSubscriptionLagRequest(AbstractModel):
-    """DescribeSharedSubscriptionLag请求参数结构体
+    r"""DescribeSharedSubscriptionLag请求参数结构体
 
     """
 
@@ -6332,7 +6502,7 @@ class DescribeSharedSubscriptionLagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id	
+        r"""集群id	
         :rtype: str
         """
         return self._InstanceId
@@ -6343,7 +6513,7 @@ class DescribeSharedSubscriptionLagRequest(AbstractModel):
 
     @property
     def SharedSubscription(self):
-        """共享订阅表达式
+        r"""共享订阅表达式
         :rtype: str
         """
         return self._SharedSubscription
@@ -6367,7 +6537,7 @@ class DescribeSharedSubscriptionLagRequest(AbstractModel):
 
 
 class DescribeSharedSubscriptionLagResponse(AbstractModel):
-    """DescribeSharedSubscriptionLag返回参数结构体
+    r"""DescribeSharedSubscriptionLag返回参数结构体
 
     """
 
@@ -6383,7 +6553,7 @@ class DescribeSharedSubscriptionLagResponse(AbstractModel):
 
     @property
     def Lag(self):
-        """堆积值
+        r"""堆积值
         :rtype: int
         """
         return self._Lag
@@ -6394,7 +6564,7 @@ class DescribeSharedSubscriptionLagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6410,7 +6580,7 @@ class DescribeSharedSubscriptionLagResponse(AbstractModel):
 
 
 class DescribeTopicListRequest(AbstractModel):
-    """DescribeTopicList请求参数结构体
+    r"""DescribeTopicList请求参数结构体
 
     """
 
@@ -6433,7 +6603,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6444,7 +6614,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表:
+        r"""查询条件列表:
 支持TopicName模糊查询
         :rtype: list of Filter
         """
@@ -6456,7 +6626,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认0。
+        r"""查询起始位置，默认0。
         :rtype: int
         """
         return self._Offset
@@ -6467,7 +6637,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20，最大20
+        r"""查询结果限制数量，默认20，最大20
         :rtype: int
         """
         return self._Limit
@@ -6498,7 +6668,7 @@ class DescribeTopicListRequest(AbstractModel):
 
 
 class DescribeTopicListResponse(AbstractModel):
-    """DescribeTopicList返回参数结构体
+    r"""DescribeTopicList返回参数结构体
 
     """
 
@@ -6517,7 +6687,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -6528,7 +6698,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """主题列表
+        r"""主题列表
         :rtype: list of MQTTTopicItem
         """
         return self._Data
@@ -6539,7 +6709,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6561,7 +6731,7 @@ class DescribeTopicListResponse(AbstractModel):
 
 
 class DescribeTopicRequest(AbstractModel):
-    """DescribeTopic请求参数结构体
+    r"""DescribeTopic请求参数结构体
 
     """
 
@@ -6577,7 +6747,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -6588,7 +6758,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        r"""主题
         :rtype: str
         """
         return self._Topic
@@ -6612,7 +6782,7 @@ class DescribeTopicRequest(AbstractModel):
 
 
 class DescribeTopicResponse(AbstractModel):
-    """DescribeTopic返回参数结构体
+    r"""DescribeTopic返回参数结构体
 
     """
 
@@ -6637,7 +6807,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -6648,7 +6818,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -6659,7 +6829,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -6670,7 +6840,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        r"""创建时间，秒为单位
         :rtype: int
         """
         return self._CreatedTime
@@ -6681,7 +6851,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6700,7 +6870,7 @@ class DescribeTopicResponse(AbstractModel):
 
 
 class DescribeUserListRequest(AbstractModel):
-    """DescribeUserList请求参数结构体
+    r"""DescribeUserList请求参数结构体
 
     """
 
@@ -6723,7 +6893,7 @@ Username：按照【用户名】进行过滤，支持模糊过滤，类型：Str
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6734,7 +6904,7 @@ Username：按照【用户名】进行过滤，支持模糊过滤，类型：Str
 
     @property
     def Filters(self):
-        """查询条件列表支持字段
+        r"""查询条件列表支持字段
 Username：按照【用户名】进行过滤，支持模糊过滤，类型：String
         :rtype: list of Filter
         """
@@ -6746,7 +6916,7 @@ Username：按照【用户名】进行过滤，支持模糊过滤，类型：Str
 
     @property
     def Offset(self):
-        """查询起始位置，默认值0
+        r"""查询起始位置，默认值0
         :rtype: int
         """
         return self._Offset
@@ -6757,7 +6927,7 @@ Username：按照【用户名】进行过滤，支持模糊过滤，类型：Str
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认值20，最大值100
+        r"""查询结果限制数量，默认值20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -6788,7 +6958,7 @@ Username：按照【用户名】进行过滤，支持模糊过滤，类型：Str
 
 
 class DescribeUserListResponse(AbstractModel):
-    """DescribeUserList返回参数结构体
+    r"""DescribeUserList返回参数结构体
 
     """
 
@@ -6807,7 +6977,7 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -6818,7 +6988,7 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """角色信息列表
+        r"""角色信息列表
         :rtype: list of MQTTUserItem
         """
         return self._Data
@@ -6829,7 +6999,7 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6851,7 +7021,7 @@ class DescribeUserListResponse(AbstractModel):
 
 
 class DeviceCertificateItem(AbstractModel):
-    """设备证书信息
+    r"""设备证书信息
 
     """
 
@@ -6912,7 +7082,7 @@ JITP 自动注册
 
     @property
     def ClientId(self):
-        """客户端id
+        r"""客户端id
         :rtype: str
         """
         return self._ClientId
@@ -6923,7 +7093,7 @@ JITP 自动注册
 
     @property
     def DeviceCertificate(self):
-        """设备证书
+        r"""设备证书
         :rtype: str
         """
         return self._DeviceCertificate
@@ -6934,7 +7104,7 @@ JITP 自动注册
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书SN序列号，用于唯一标识一个设备证书
+        r"""设备证书SN序列号，用于唯一标识一个设备证书
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -6945,7 +7115,7 @@ JITP 自动注册
 
     @property
     def DeviceCertificateCn(self):
-        """设备证书Cn
+        r"""设备证书Cn
         :rtype: str
         """
         return self._DeviceCertificateCn
@@ -6956,7 +7126,7 @@ JITP 自动注册
 
     @property
     def CaSn(self):
-        """签发该证书的CA证书的序列号
+        r"""签发该证书的CA证书的序列号
         :rtype: str
         """
         return self._CaSn
@@ -6967,7 +7137,7 @@ JITP 自动注册
 
     @property
     def Format(self):
-        """证书格式，当前仅支持PEM
+        r"""证书格式，当前仅支持PEM
         :rtype: str
         """
         return self._Format
@@ -6978,7 +7148,7 @@ JITP 自动注册
 
     @property
     def Status(self):
-        """设备证书状态
+        r"""设备证书状态
     ACTIVE：激活
     INACTIVE：未激活
     REVOKED：吊销
@@ -6993,7 +7163,7 @@ JITP 自动注册
 
     @property
     def OrganizationalUnit(self):
-        """组织单位
+        r"""组织单位
         :rtype: str
         """
         return self._OrganizationalUnit
@@ -7004,7 +7174,7 @@ JITP 自动注册
 
     @property
     def LastActivationTime(self):
-        """上次激活时间，毫秒级时间戳 。
+        r"""上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -7015,7 +7185,7 @@ JITP 自动注册
 
     @property
     def LastInactivationTime(self):
-        """上次取消激活时间，毫秒级时间戳 。
+        r"""上次取消激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -7026,7 +7196,7 @@ JITP 自动注册
 
     @property
     def CreatedTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -7037,7 +7207,7 @@ JITP 自动注册
 
     @property
     def UpdateTime(self):
-        """更新时间，毫秒级时间戳 。
+        r"""更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -7048,7 +7218,7 @@ JITP 自动注册
 
     @property
     def CertificateSource(self):
-        """证书来源：
+        r"""证书来源：
 API, 手动注册   
 JITP 自动注册
         :rtype: str
@@ -7061,7 +7231,7 @@ JITP 自动注册
 
     @property
     def NotAfterTime(self):
-        """证书失效日期，毫秒级时间戳 。
+        r"""证书失效日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -7072,7 +7242,7 @@ JITP 自动注册
 
     @property
     def NotBeforeTime(self):
-        """证书生效开始日期，毫秒级时间戳 。
+        r"""证书生效开始日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -7109,7 +7279,7 @@ JITP 自动注册
 
 
 class DeviceIdentityItem(AbstractModel):
-    """设备标识列表
+    r"""设备标识列表
 
     """
 
@@ -7140,7 +7310,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -7151,7 +7321,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -7162,7 +7332,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def Status(self):
-        """1:ENABLED-可用2:DISABLE-不可用
+        r"""1:ENABLED-可用2:DISABLE-不可用
         :rtype: int
         """
         return self._Status
@@ -7173,7 +7343,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def PrimaryKey(self):
-        """主要签名key，不传则由系统自动生成
+        r"""主要签名key，不传则由系统自动生成
         :rtype: str
         """
         return self._PrimaryKey
@@ -7184,7 +7354,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def SecondaryKey(self):
-        """次要签名key，不传则由系统自动生成
+        r"""次要签名key，不传则由系统自动生成
         :rtype: str
         """
         return self._SecondaryKey
@@ -7195,7 +7365,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedTime
@@ -7206,7 +7376,7 @@ class DeviceIdentityItem(AbstractModel):
 
     @property
     def PropagatingProperties(self):
-        """传播属性列表
+        r"""传播属性列表
         :rtype: list of PropagatingProperty
         """
         return self._PropagatingProperties
@@ -7240,7 +7410,7 @@ class DeviceIdentityItem(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """查询过滤器
+    r"""查询过滤器
 
     """
 
@@ -7256,7 +7426,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤条件名
+        r"""过滤条件名
         :rtype: str
         """
         return self._Name
@@ -7267,7 +7437,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤条件的值
+        r"""过滤条件的值
         :rtype: list of str
         """
         return self._Values
@@ -7291,7 +7461,7 @@ class Filter(AbstractModel):
 
 
 class HeaderItem(AbstractModel):
-    """HTTP 认证器header
+    r"""HTTP 认证器header
 
     """
 
@@ -7307,7 +7477,7 @@ class HeaderItem(AbstractModel):
 
     @property
     def Key(self):
-        """header key
+        r"""header key
         :rtype: str
         """
         return self._Key
@@ -7318,7 +7488,7 @@ class HeaderItem(AbstractModel):
 
     @property
     def Value(self):
-        """header value
+        r"""header value
         :rtype: str
         """
         return self._Value
@@ -7342,7 +7512,7 @@ class HeaderItem(AbstractModel):
 
 
 class IpRule(AbstractModel):
-    """IP规则
+    r"""IP规则
 
     """
 
@@ -7361,7 +7531,7 @@ class IpRule(AbstractModel):
 
     @property
     def Ip(self):
-        """IP地址
+        r"""IP地址
         :rtype: str
         """
         return self._Ip
@@ -7372,7 +7542,7 @@ class IpRule(AbstractModel):
 
     @property
     def Allow(self):
-        """当前仅支持允许，默认允许。
+        r"""当前仅支持允许，默认允许。
         :rtype: bool
         """
         return self._Allow
@@ -7383,7 +7553,7 @@ class IpRule(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -7408,7 +7578,7 @@ class IpRule(AbstractModel):
 
 
 class MQTTAuthenticatorItem(AbstractModel):
-    """MQTT认证器信息
+    r"""MQTT认证器信息
 
     """
 
@@ -7467,7 +7637,7 @@ close：认证器关闭
 
     @property
     def Type(self):
-        """认证器类型
+        r"""认证器类型
 JWT：JWT认证器
 JWKS：JWKS认证器
 HTTP：HTTP认证器
@@ -7481,7 +7651,7 @@ HTTP：HTTP认证器
 
     @property
     def Config(self):
-        """JWT认证器字段说明
+        r"""JWT认证器字段说明
 from（认证字段）
     password：从password字段获取认证字段
     username：从username字段获取认证字段
@@ -7521,7 +7691,7 @@ concurrency（并发数）：最大并发请求数量
 
     @property
     def Status(self):
-        """认证器状态
+        r"""认证器状态
 open：认证器打开
 close：认证器关闭
         :rtype: str
@@ -7534,7 +7704,7 @@ close：认证器关闭
 
     @property
     def CreateTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreateTime
@@ -7545,7 +7715,7 @@ close：认证器关闭
 
     @property
     def Remark(self):
-        """说明，最长 128 字符。
+        r"""说明，最长 128 字符。
         :rtype: str
         """
         return self._Remark
@@ -7572,7 +7742,7 @@ close：认证器关闭
 
 
 class MQTTClientInfo(AbstractModel):
-    """MQTT客户端信息
+    r"""MQTT客户端信息
 
     """
 
@@ -7612,7 +7782,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        r"""客户端ID
         :rtype: str
         """
         return self._ClientId
@@ -7623,7 +7793,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def ClientAddress(self):
-        """客户端网络地址
+        r"""客户端网络地址
         :rtype: str
         """
         return self._ClientAddress
@@ -7634,7 +7804,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def ProtocolVersion(self):
-        """MQTT 协议版本
+        r"""MQTT 协议版本
 3：表示MQTT 3.1版本
 4：表示 MQTT 3.1.1
 5：表示MQTT 5.0协议
@@ -7648,7 +7818,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def Keepalive(self):
-        """保持连接时间，单位：秒
+        r"""保持连接时间，单位：秒
         :rtype: int
         """
         return self._Keepalive
@@ -7659,7 +7829,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def ConnectionStatus(self):
-        """连接状态，CONNECTED 已连接，DISCONNECTED 未连接
+        r"""连接状态，CONNECTED 已连接，DISCONNECTED 未连接
         :rtype: str
         """
         return self._ConnectionStatus
@@ -7670,7 +7840,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """客户端创建时间，毫秒级时间戳 。
+        r"""客户端创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreateTime
@@ -7681,7 +7851,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def ConnectTime(self):
-        """上次建立连接时间，毫秒级时间戳 。
+        r"""上次建立连接时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._ConnectTime
@@ -7692,7 +7862,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def DisconnectTime(self):
-        """上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义，毫秒级时间戳 。
+        r"""上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义，毫秒级时间戳 。
         :rtype: int
         """
         return self._DisconnectTime
@@ -7703,7 +7873,7 @@ class MQTTClientInfo(AbstractModel):
 
     @property
     def MQTTClientSubscriptions(self):
-        """客户端的订阅列表
+        r"""客户端的订阅列表
         :rtype: list of MQTTClientSubscription
         """
         return self._MQTTClientSubscriptions
@@ -7739,7 +7909,7 @@ class MQTTClientInfo(AbstractModel):
 
 
 class MQTTClientSubscription(AbstractModel):
-    """MQTT 订阅关系
+    r"""MQTT 订阅关系
 
     """
 
@@ -7767,7 +7937,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def TopicFilter(self):
-        """topic 订阅
+        r"""topic 订阅
         :rtype: str
         """
         return self._TopicFilter
@@ -7778,7 +7948,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def Qos(self):
-        """服务质量等级
+        r"""服务质量等级
 0: 至多一次
 1: 至少一次
 2: 恰好一次
@@ -7792,7 +7962,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def Lag(self):
-        """堆积数量
+        r"""堆积数量
         :rtype: int
         """
         return self._Lag
@@ -7803,7 +7973,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def Inflight(self):
-        """投递未确认数量
+        r"""投递未确认数量
         :rtype: int
         """
         return self._Inflight
@@ -7814,7 +7984,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def UserProperties(self):
-        """用户属性
+        r"""用户属性
         :rtype: list of SubscriptionUserProperty
         """
         return self._UserProperties
@@ -7846,7 +8016,7 @@ class MQTTClientSubscription(AbstractModel):
 
 
 class MQTTEndpointItem(AbstractModel):
-    """MQTTEndpoint
+    r"""MQTTEndpoint
 
     """
 
@@ -7877,7 +8047,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -7888,7 +8058,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Url(self):
-        """接入点
+        r"""接入点
         :rtype: str
         """
         return self._Url
@@ -7899,7 +8069,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc信息
+        r"""vpc信息
         :rtype: str
         """
         return self._VpcId
@@ -7910,7 +8080,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网信息
+        r"""子网信息
         :rtype: str
         """
         return self._SubnetId
@@ -7921,7 +8091,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Host(self):
-        """主机
+        r"""主机
         :rtype: str
         """
         return self._Host
@@ -7932,7 +8102,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -7943,7 +8113,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Ip(self):
-        """接入点ip
+        r"""接入点ip
         :rtype: str
         """
         return self._Ip
@@ -7972,7 +8142,7 @@ class MQTTEndpointItem(AbstractModel):
 
 
 class MQTTInstanceItem(AbstractModel):
-    """MQTT 实例信息
+    r"""MQTT 实例信息
 
     """
 
@@ -8068,7 +8238,7 @@ DELETING，删除中
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -8079,7 +8249,7 @@ DELETING，删除中
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -8090,7 +8260,7 @@ DELETING，删除中
 
     @property
     def Version(self):
-        """实例版本
+        r"""实例版本
         :rtype: str
         """
         return self._Version
@@ -8101,7 +8271,7 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
 BASIC，基础版
 PRO，专业版
 PLATINUM，铂金版
@@ -8115,7 +8285,7 @@ PLATINUM，铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态，
+        r"""实例状态，
 RUNNING, 运行中
 MAINTAINING，维护中
 ABNORMAL，异常
@@ -8135,7 +8305,7 @@ DELETING，删除中
 
     @property
     def TopicNumLimit(self):
-        """实例主题数上限
+        r"""实例主题数上限
         :rtype: int
         """
         return self._TopicNumLimit
@@ -8146,7 +8316,7 @@ DELETING，删除中
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -8157,7 +8327,7 @@ DELETING，删除中
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -8168,7 +8338,7 @@ DELETING，删除中
 
     @property
     def SkuCode(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._SkuCode
@@ -8179,7 +8349,7 @@ DELETING，删除中
 
     @property
     def TpsLimit(self):
-        """弹性TPS限流值
+        r"""弹性TPS限流值
         :rtype: int
         """
         return self._TpsLimit
@@ -8190,7 +8360,7 @@ DELETING，删除中
 
     @property
     def CreateTime(self):
-        """创建时间，毫秒级时间戳
+        r"""创建时间，毫秒级时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -8201,7 +8371,7 @@ DELETING，删除中
 
     @property
     def MaxSubscriptionPerClient(self):
-        """单客户端最大订阅数量
+        r"""单客户端最大订阅数量
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -8212,7 +8382,7 @@ DELETING，删除中
 
     @property
     def ClientNumLimit(self):
-        """客户端连接数上线
+        r"""客户端连接数上线
         :rtype: int
         """
         return self._ClientNumLimit
@@ -8223,7 +8393,7 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
-        """是否自动续费。仅包年包月集群生效。
+        r"""是否自动续费。仅包年包月集群生效。
 1:自动续费
 0:非自动续费
         :rtype: int
@@ -8236,7 +8406,7 @@ DELETING，删除中
 
     @property
     def PayMode(self):
-        """计费模式， POSTPAID，按量计费 PREPAID，包年包月
+        r"""计费模式， POSTPAID，按量计费 PREPAID，包年包月
         :rtype: str
         """
         return self._PayMode
@@ -8247,7 +8417,7 @@ DELETING，删除中
 
     @property
     def ExpiryTime(self):
-        """到期时间，毫秒级时间戳
+        r"""到期时间，毫秒级时间戳
         :rtype: int
         """
         return self._ExpiryTime
@@ -8258,7 +8428,7 @@ DELETING，删除中
 
     @property
     def DestroyTime(self):
-        """预销毁时间，毫秒级时间戳
+        r"""预销毁时间，毫秒级时间戳
         :rtype: int
         """
         return self._DestroyTime
@@ -8269,7 +8439,7 @@ DELETING，删除中
 
     @property
     def AuthorizationPolicyLimit(self):
-        """授权规则条数限制
+        r"""授权规则条数限制
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -8280,7 +8450,7 @@ DELETING，删除中
 
     @property
     def MaxCaNum(self):
-        """最大ca配额
+        r"""最大ca配额
         :rtype: int
         """
         return self._MaxCaNum
@@ -8291,7 +8461,7 @@ DELETING，删除中
 
     @property
     def MaxSubscription(self):
-        """最大订阅数
+        r"""最大订阅数
         :rtype: int
         """
         return self._MaxSubscription
@@ -8302,7 +8472,7 @@ DELETING，删除中
 
     @property
     def SharedSubscriptionGroupLimit(self):
-        """共享订阅组数最大限制
+        r"""共享订阅组数最大限制
         :rtype: int
         """
         return self._SharedSubscriptionGroupLimit
@@ -8313,7 +8483,7 @@ DELETING，删除中
 
     @property
     def MaxTopicFilterPerSharedSubscriptionGroup(self):
-        """单个共享订阅组TopicFilter数限制
+        r"""单个共享订阅组TopicFilter数限制
         :rtype: int
         """
         return self._MaxTopicFilterPerSharedSubscriptionGroup
@@ -8324,7 +8494,7 @@ DELETING，删除中
 
     @property
     def AutoSubscriptionPolicyLimit(self):
-        """自动订阅规则条数限制
+        r"""自动订阅规则条数限制
         :rtype: int
         """
         return self._AutoSubscriptionPolicyLimit
@@ -8335,7 +8505,7 @@ DELETING，删除中
 
     @property
     def MaxTopicFilterPerAutoSubscriptionPolicy(self):
-        """单条自动订阅规则TopicFilter数限制
+        r"""单条自动订阅规则TopicFilter数限制
         :rtype: int
         """
         return self._MaxTopicFilterPerAutoSubscriptionPolicy
@@ -8381,7 +8551,7 @@ DELETING，删除中
 
 
 class MQTTMessage(AbstractModel):
-    """MQTT消息
+    r"""MQTT消息
 
     """
 
@@ -8406,7 +8576,7 @@ class MQTTMessage(AbstractModel):
 
     @property
     def MessageId(self):
-        """消息id
+        r"""消息id
         :rtype: str
         """
         return self._MessageId
@@ -8417,7 +8587,7 @@ class MQTTMessage(AbstractModel):
 
     @property
     def ClientId(self):
-        """消息发送的客户端Id
+        r"""消息发送的客户端Id
         :rtype: str
         """
         return self._ClientId
@@ -8428,7 +8598,7 @@ class MQTTMessage(AbstractModel):
 
     @property
     def Qos(self):
-        """消息服务质量等级
+        r"""消息服务质量等级
         :rtype: str
         """
         return self._Qos
@@ -8439,7 +8609,7 @@ class MQTTMessage(AbstractModel):
 
     @property
     def StoreTimestamp(self):
-        """消息在服务端的存储时间，毫秒级时间戳
+        r"""消息在服务端的存储时间，毫秒级时间戳
         :rtype: int
         """
         return self._StoreTimestamp
@@ -8450,7 +8620,7 @@ class MQTTMessage(AbstractModel):
 
     @property
     def OriginTopic(self):
-        """源topic
+        r"""源topic
         :rtype: str
         """
         return self._OriginTopic
@@ -8477,7 +8647,7 @@ class MQTTMessage(AbstractModel):
 
 
 class MQTTMessageItem(AbstractModel):
-    """消息记录
+    r"""消息记录
 
     """
 
@@ -8517,7 +8687,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息ID
+        r"""消息ID
         :rtype: str
         """
         return self._MsgId
@@ -8528,7 +8698,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Tags(self):
-        """消息tag
+        r"""消息tag
         :rtype: str
         """
         return self._Tags
@@ -8539,7 +8709,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Keys(self):
-        """消息key
+        r"""消息key
         :rtype: str
         """
         return self._Keys
@@ -8550,7 +8720,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        """客户端地址	
+        r"""客户端地址	
         :rtype: str
         """
         return self._ProducerAddr
@@ -8561,7 +8731,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """消息发送时间，格式 日期时间：YYYY-MM-DD hh:mm:ss
+        r"""消息发送时间，格式 日期时间：YYYY-MM-DD hh:mm:ss
         :rtype: str
         """
         return self._ProduceTime
@@ -8574,7 +8744,7 @@ class MQTTMessageItem(AbstractModel):
     def DeadLetterResendTimes(self):
         warnings.warn("parameter `DeadLetterResendTimes` is deprecated", DeprecationWarning) 
 
-        """死信重发次数	
+        r"""死信重发次数	
         :rtype: int
         """
         return self._DeadLetterResendTimes
@@ -8589,7 +8759,7 @@ class MQTTMessageItem(AbstractModel):
     def DeadLetterResendSuccessTimes(self):
         warnings.warn("parameter `DeadLetterResendSuccessTimes` is deprecated", DeprecationWarning) 
 
-        """死信重发成功次数
+        r"""死信重发成功次数
         :rtype: int
         """
         return self._DeadLetterResendSuccessTimes
@@ -8604,7 +8774,7 @@ class MQTTMessageItem(AbstractModel):
     def SubTopic(self):
         warnings.warn("parameter `SubTopic` is deprecated", DeprecationWarning) 
 
-        """子topic
+        r"""子topic
         :rtype: str
         """
         return self._SubTopic
@@ -8617,7 +8787,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Qos(self):
-        """消息质量等级
+        r"""消息质量等级
 0：至多一次
 1：至少一次
 2：精确一次
@@ -8651,7 +8821,7 @@ class MQTTMessageItem(AbstractModel):
 
 
 class MQTTTopicItem(AbstractModel):
-    """MQTT 主题详情
+    r"""MQTT 主题详情
 
     """
 
@@ -8670,7 +8840,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID
+        r"""实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -8681,7 +8851,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -8692,7 +8862,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Remark(self):
-        """主题描述
+        r"""主题描述
         :rtype: str
         """
         return self._Remark
@@ -8717,7 +8887,7 @@ class MQTTTopicItem(AbstractModel):
 
 
 class MQTTUserItem(AbstractModel):
-    """MQTT集群用户信息
+    r"""MQTT集群用户信息
 
     """
 
@@ -8742,7 +8912,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -8753,7 +8923,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Password(self):
-        """密码
+        r"""密码
         :rtype: str
         """
         return self._Password
@@ -8764,7 +8934,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -8775,7 +8945,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间，毫秒级时间戳 。
+        r"""创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -8786,7 +8956,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """修改时间，毫秒级时间戳 。
+        r"""修改时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._ModifiedTime
@@ -8813,7 +8983,7 @@ class MQTTUserItem(AbstractModel):
 
 
 class ModifyAuthorizationPolicyRequest(AbstractModel):
-    """ModifyAuthorizationPolicy请求参数结构体
+    r"""ModifyAuthorizationPolicy请求参数结构体
 
     """
 
@@ -8878,7 +9048,7 @@ sub：订阅
 
     @property
     def Id(self):
-        """授权策略ID，从 [查询授权策略](https://cloud.tencent.com/document/product/1778/111074) 接口获取
+        r"""授权策略ID，从 [查询授权策略](https://cloud.tencent.com/document/product/1778/111074) 接口获取
         :rtype: int
         """
         return self._Id
@@ -8889,7 +9059,7 @@ sub：订阅
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 
         :rtype: str
         """
@@ -8901,7 +9071,7 @@ sub：订阅
 
     @property
     def PolicyName(self):
-        """策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+        r"""策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
         :rtype: str
         """
         return self._PolicyName
@@ -8912,7 +9082,7 @@ sub：订阅
 
     @property
     def PolicyVersion(self):
-        """策略版本,默认为1，当前仅支持1
+        r"""策略版本,默认为1，当前仅支持1
         :rtype: int
         """
         return self._PolicyVersion
@@ -8923,7 +9093,7 @@ sub：订阅
 
     @property
     def Priority(self):
-        """策略优先级，越小越优先，不能重复
+        r"""策略优先级，越小越优先，不能重复
         :rtype: int
         """
         return self._Priority
@@ -8934,7 +9104,7 @@ sub：订阅
 
     @property
     def Effect(self):
-        """决策：
+        r"""决策：
 allow 允许
 deny 拒绝
         :rtype: str
@@ -8947,7 +9117,7 @@ deny 拒绝
 
     @property
     def Actions(self):
-        """操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""操作,支持多选，多个操作用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 connect：连接
 pub：发布
 sub：订阅
@@ -8961,7 +9131,7 @@ sub：订阅
 
     @property
     def Resources(self):
-        """资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
+        r"""资源，需要匹配的订阅，支持配置多条匹配规则，多个用英文逗号隔开。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 
         :rtype: str
         """
@@ -8973,7 +9143,7 @@ sub：订阅
 
     @property
     def Username(self):
-        """条件-用户名
+        r"""条件-用户名
         :rtype: str
         """
         return self._Username
@@ -8984,7 +9154,7 @@ sub：订阅
 
     @property
     def Retain(self):
-        """条件-保留消息
+        r"""条件-保留消息
 1,匹配保留消息；
 2,匹配非保留消息，
 3.匹配保留和非保留消息
@@ -8998,7 +9168,7 @@ sub：订阅
 
     @property
     def ClientId(self):
-        """条件：客户端ID，支持正则
+        r"""条件：客户端ID，支持正则
         :rtype: str
         """
         return self._ClientId
@@ -9009,7 +9179,7 @@ sub：订阅
 
     @property
     def Ip(self):
-        """条件：客户端IP地址，支持IP或者CIDR
+        r"""条件：客户端IP地址，支持IP或者CIDR
         :rtype: str
         """
         return self._Ip
@@ -9020,7 +9190,7 @@ sub：订阅
 
     @property
     def Qos(self):
-        """条件：服务质量
+        r"""条件：服务质量
 0：最多一次
 1：最少一次
 2：精确一次
@@ -9034,7 +9204,7 @@ sub：订阅
 
     @property
     def Remark(self):
-        """备注信息，最长 128 字符
+        r"""备注信息，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -9070,7 +9240,7 @@ sub：订阅
 
 
 class ModifyAuthorizationPolicyResponse(AbstractModel):
-    """ModifyAuthorizationPolicy返回参数结构体
+    r"""ModifyAuthorizationPolicy返回参数结构体
 
     """
 
@@ -9083,7 +9253,7 @@ class ModifyAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9098,7 +9268,7 @@ class ModifyAuthorizationPolicyResponse(AbstractModel):
 
 
 class ModifyDeviceIdentityRequest(AbstractModel):
-    """ModifyDeviceIdentity请求参数结构体
+    r"""ModifyDeviceIdentity请求参数结构体
 
     """
 
@@ -9127,7 +9297,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9138,7 +9308,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -9149,7 +9319,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def Status(self):
-        """1:ENABLED-可用
+        r"""1:ENABLED-可用
 2:DISABLE-不可用
         :rtype: str
         """
@@ -9161,7 +9331,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def PrimaryKey(self):
-        """主要签名key，需要Base64编码。
+        r"""主要签名key，需要Base64编码。
         :rtype: str
         """
         return self._PrimaryKey
@@ -9172,7 +9342,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def SecondaryKey(self):
-        """次要签名key，需要Base64编码。
+        r"""次要签名key，需要Base64编码。
         :rtype: str
         """
         return self._SecondaryKey
@@ -9183,7 +9353,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
     @property
     def PropagatingProperties(self):
-        """该设备id的传播属性设置	
+        r"""该设备id的传播属性设置	
         :rtype: list of PropagatingProperty
         """
         return self._PropagatingProperties
@@ -9216,7 +9386,7 @@ class ModifyDeviceIdentityRequest(AbstractModel):
 
 
 class ModifyDeviceIdentityResponse(AbstractModel):
-    """ModifyDeviceIdentity返回参数结构体
+    r"""ModifyDeviceIdentity返回参数结构体
 
     """
 
@@ -9229,7 +9399,7 @@ class ModifyDeviceIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9244,7 +9414,7 @@ class ModifyDeviceIdentityResponse(AbstractModel):
 
 
 class ModifyHttpAuthenticatorRequest(AbstractModel):
-    """ModifyHttpAuthenticator请求参数结构体
+    r"""ModifyHttpAuthenticator请求参数结构体
 
     """
 
@@ -9284,7 +9454,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9295,7 +9465,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """服务地址
+        r"""服务地址
         :rtype: str
         """
         return self._Endpoint
@@ -9306,7 +9476,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Status(self):
-        """认证器状态：open-启用；close-关闭
+        r"""认证器状态：open-启用；close-关闭
         :rtype: str
         """
         return self._Status
@@ -9317,7 +9487,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Concurrency(self):
-        """最大并发连接数，默认8，范围：1-10
+        r"""最大并发连接数，默认8，范围：1-10
         :rtype: int
         """
         return self._Concurrency
@@ -9328,7 +9498,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """连接超时时间，单位：秒，范围：1-30
+        r"""连接超时时间，单位：秒，范围：1-30
         :rtype: int
         """
         return self._ConnectTimeout
@@ -9339,7 +9509,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def ReadTimeout(self):
-        """请求超时时间，单位：秒，范围：1-30
+        r"""请求超时时间，单位：秒，范围：1-30
         :rtype: int
         """
         return self._ReadTimeout
@@ -9350,7 +9520,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """说明，最多支持128个字符。
+        r"""说明，最多支持128个字符。
         :rtype: str
         """
         return self._Remark
@@ -9361,7 +9531,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Method(self):
-        """请求方法，GET 或者 POST
+        r"""请求方法，GET 或者 POST
         :rtype: str
         """
         return self._Method
@@ -9372,7 +9542,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求header
+        r"""请求header
         :rtype: list of HeaderItem
         """
         return self._Header
@@ -9383,7 +9553,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
     @property
     def Body(self):
-        """请求body
+        r"""请求body
         :rtype: list of BodyItem
         """
         return self._Body
@@ -9425,7 +9595,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
 
 
 class ModifyHttpAuthenticatorResponse(AbstractModel):
-    """ModifyHttpAuthenticator返回参数结构体
+    r"""ModifyHttpAuthenticator返回参数结构体
 
     """
 
@@ -9438,7 +9608,7 @@ class ModifyHttpAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9453,7 +9623,7 @@ class ModifyHttpAuthenticatorResponse(AbstractModel):
 
 
 class ModifyInsPublicEndpointRequest(AbstractModel):
-    """ModifyInsPublicEndpoint请求参数结构体
+    r"""ModifyInsPublicEndpoint请求参数结构体
 
     """
 
@@ -9472,7 +9642,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9483,7 +9653,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽，单位：Mbps
+        r"""带宽，单位：Mbps
         :rtype: int
         """
         return self._Bandwidth
@@ -9494,7 +9664,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -9524,7 +9694,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
 
 class ModifyInsPublicEndpointResponse(AbstractModel):
-    """ModifyInsPublicEndpoint返回参数结构体
+    r"""ModifyInsPublicEndpoint返回参数结构体
 
     """
 
@@ -9537,7 +9707,7 @@ class ModifyInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9552,7 +9722,7 @@ class ModifyInsPublicEndpointResponse(AbstractModel):
 
 
 class ModifyInstanceCertBindingRequest(AbstractModel):
-    """ModifyInstanceCertBinding请求参数结构体
+    r"""ModifyInstanceCertBinding请求参数结构体
 
     """
 
@@ -9586,7 +9756,7 @@ API：手动注册
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9597,7 +9767,7 @@ API：手动注册
 
     @property
     def X509Mode(self):
-        """加密通信方式
+        r"""加密通信方式
 TLS：单向证书认证
 mTLS：双向证书认证
 BYOC：一设备一证书认证
@@ -9611,7 +9781,7 @@ BYOC：一设备一证书认证
 
     @property
     def SSLServerCertId(self):
-        """服务端证书id，从 [获取证书列表](https://cloud.tencent.com/document/api/400/41671) 或者腾讯云证书服务控制台获取。X509Mode为mTLS或BYOC时为必填。
+        r"""服务端证书id，从 [获取证书列表](https://cloud.tencent.com/document/api/400/41671) 或者腾讯云证书服务控制台获取。X509Mode为mTLS或BYOC时为必填。
         :rtype: str
         """
         return self._SSLServerCertId
@@ -9622,7 +9792,7 @@ BYOC：一设备一证书认证
 
     @property
     def SSLCaCertId(self):
-        """CA证书id，从 [获取证书列表](https://cloud.tencent.com/document/api/400/41671) 或者腾讯云证书服务控制台获取。X509Mode为mTLS时为必填
+        r"""CA证书id，从 [获取证书列表](https://cloud.tencent.com/document/api/400/41671) 或者腾讯云证书服务控制台获取。X509Mode为mTLS时为必填
         :rtype: str
         """
         return self._SSLCaCertId
@@ -9633,7 +9803,7 @@ BYOC：一设备一证书认证
 
     @property
     def DeviceCertificateProvisionType(self):
-        """设备证书注册类型：
+        r"""设备证书注册类型：
 JITP：自动注册；
 API：手动注册
 默认值：API
@@ -9647,7 +9817,7 @@ API：手动注册
 
     @property
     def AutomaticActivation(self):
-        """是否自动激活，默认为false
+        r"""是否自动激活，默认为false
         :rtype: bool
         """
         return self._AutomaticActivation
@@ -9675,7 +9845,7 @@ API：手动注册
 
 
 class ModifyInstanceCertBindingResponse(AbstractModel):
-    """ModifyInstanceCertBinding返回参数结构体
+    r"""ModifyInstanceCertBinding返回参数结构体
 
     """
 
@@ -9688,7 +9858,7 @@ class ModifyInstanceCertBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9703,7 +9873,7 @@ class ModifyInstanceCertBindingResponse(AbstractModel):
 
 
 class ModifyInstanceRequest(AbstractModel):
-    """ModifyInstance请求参数结构体
+    r"""ModifyInstance请求参数结构体
 
     """
 
@@ -9732,6 +9902,8 @@ API：手动通过API注册
 mTLS；双向认证
 BYOC：一机一证
         :type X509Mode: str
+        :param _MessageRate: 单客户端消息收发限速单位 条/秒
+        :type MessageRate: int
         """
         self._InstanceId = None
         self._Name = None
@@ -9742,10 +9914,11 @@ BYOC：一机一证
         self._AuthorizationPolicy = None
         self._UseDefaultServerCert = None
         self._X509Mode = None
+        self._MessageRate = None
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9756,7 +9929,7 @@ BYOC：一机一证
 
     @property
     def Name(self):
-        """要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        r"""要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
         :rtype: str
         """
         return self._Name
@@ -9767,7 +9940,7 @@ BYOC：一机一证
 
     @property
     def Remark(self):
-        """要修改的备注信息，最多128个字符。
+        r"""要修改的备注信息，最多128个字符。
         :rtype: str
         """
         return self._Remark
@@ -9778,7 +9951,7 @@ BYOC：一机一证
 
     @property
     def SkuCode(self):
-        """需要变更的配置规格
+        r"""需要变更的配置规格
 基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
         :rtype: str
         """
@@ -9792,7 +9965,7 @@ BYOC：一机一证
     def DeviceCertificateProvisionType(self):
         warnings.warn("parameter `DeviceCertificateProvisionType` is deprecated", DeprecationWarning) 
 
-        """客户端证书注册方式：
+        r"""客户端证书注册方式：
 JITP：自动注册
 API：手动通过API注册
         :rtype: str
@@ -9809,7 +9982,7 @@ API：手动通过API注册
     def AutomaticActivation(self):
         warnings.warn("parameter `AutomaticActivation` is deprecated", DeprecationWarning) 
 
-        """自动注册证书是否自动激活
+        r"""自动注册证书是否自动激活
         :rtype: bool
         """
         return self._AutomaticActivation
@@ -9822,7 +9995,7 @@ API：手动通过API注册
 
     @property
     def AuthorizationPolicy(self):
-        """授权策略开关
+        r"""授权策略开关
         :rtype: bool
         """
         return self._AuthorizationPolicy
@@ -9833,7 +10006,7 @@ API：手动通过API注册
 
     @property
     def UseDefaultServerCert(self):
-        """是否使用默认的服务端证书
+        r"""是否使用默认的服务端证书
         :rtype: bool
         """
         return self._UseDefaultServerCert
@@ -9844,7 +10017,7 @@ API：手动通过API注册
 
     @property
     def X509Mode(self):
-        """TLS：单向认证
+        r"""TLS：单向认证
 mTLS；双向认证
 BYOC：一机一证
         :rtype: str
@@ -9854,6 +10027,17 @@ BYOC：一机一证
     @X509Mode.setter
     def X509Mode(self, X509Mode):
         self._X509Mode = X509Mode
+
+    @property
+    def MessageRate(self):
+        r"""单客户端消息收发限速单位 条/秒
+        :rtype: int
+        """
+        return self._MessageRate
+
+    @MessageRate.setter
+    def MessageRate(self, MessageRate):
+        self._MessageRate = MessageRate
 
 
     def _deserialize(self, params):
@@ -9866,6 +10050,7 @@ BYOC：一机一证
         self._AuthorizationPolicy = params.get("AuthorizationPolicy")
         self._UseDefaultServerCert = params.get("UseDefaultServerCert")
         self._X509Mode = params.get("X509Mode")
+        self._MessageRate = params.get("MessageRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9877,7 +10062,7 @@ BYOC：一机一证
 
 
 class ModifyInstanceResponse(AbstractModel):
-    """ModifyInstance返回参数结构体
+    r"""ModifyInstance返回参数结构体
 
     """
 
@@ -9890,7 +10075,7 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9905,7 +10090,7 @@ class ModifyInstanceResponse(AbstractModel):
 
 
 class ModifyJWKSAuthenticatorRequest(AbstractModel):
-    """ModifyJWKSAuthenticator请求参数结构体
+    r"""ModifyJWKSAuthenticator请求参数结构体
 
     """
 
@@ -9938,7 +10123,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9949,7 +10134,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Endpoint(self):
-        """JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）
+        r"""JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）
         :rtype: str
         """
         return self._Endpoint
@@ -9960,7 +10145,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Status(self):
-        """认证器状态：open-启用（默认）；close-关闭
+        r"""认证器状态：open-启用（默认）；close-关闭
         :rtype: str
         """
         return self._Status
@@ -9971,7 +10156,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def RefreshInterval(self):
-        """认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。
+        r"""认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。
         :rtype: int
         """
         return self._RefreshInterval
@@ -9982,7 +10167,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Text(self):
-        """JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）
+        r"""JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）
         :rtype: str
         """
         return self._Text
@@ -9993,7 +10178,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def From(self):
-        """认证字段；
+        r"""认证字段；
 username-对应 MQTT CONNECT Packet 中 username 字段， 
 password-对应 MQTT CONNECT Packet 中 password 字段。默认username
         :rtype: str
@@ -10006,7 +10191,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Remark(self):
-        """说明，不能超过 128 个字符
+        r"""说明，不能超过 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -10035,7 +10220,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
 
 class ModifyJWKSAuthenticatorResponse(AbstractModel):
-    """ModifyJWKSAuthenticator返回参数结构体
+    r"""ModifyJWKSAuthenticator返回参数结构体
 
     """
 
@@ -10048,7 +10233,7 @@ class ModifyJWKSAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10063,7 +10248,7 @@ class ModifyJWKSAuthenticatorResponse(AbstractModel):
 
 
 class ModifyJWTAuthenticatorRequest(AbstractModel):
-    """ModifyJWTAuthenticator请求参数结构体
+    r"""ModifyJWTAuthenticator请求参数结构体
 
     """
 
@@ -10099,7 +10284,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -10110,7 +10295,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Algorithm(self):
-        """签名方式：hmac-based，public-key
+        r"""签名方式：hmac-based，public-key
         :rtype: str
         """
         return self._Algorithm
@@ -10121,7 +10306,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def From(self):
-        """认证字段
+        r"""认证字段
 password：对应 MQTT CONNECT Packet 中 password 字段，
 username：对应 MQTT CONNECT Packet 中 username 字段
         :rtype: str
@@ -10134,7 +10319,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Secret(self):
-        """密钥，Algorithm为hmac-based需要传递该字段。
+        r"""密钥，Algorithm为hmac-based需要传递该字段。
         :rtype: str
         """
         return self._Secret
@@ -10145,7 +10330,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def PublicKey(self):
-        """公钥，Algorithm为public-key时需要传递该字段。
+        r"""公钥，Algorithm为public-key时需要传递该字段。
         :rtype: str
         """
         return self._PublicKey
@@ -10156,7 +10341,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Status(self):
-        """认证器是否开启：open-启用；close-关闭
+        r"""认证器是否开启：open-启用；close-关闭
         :rtype: str
         """
         return self._Status
@@ -10167,7 +10352,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
     @property
     def Remark(self):
-        """说明，不能超过 128 个字符
+        r"""说明，不能超过 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -10180,7 +10365,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
     def Text(self):
         warnings.warn("parameter `Text` is deprecated", DeprecationWarning) 
 
-        """JSKS文本
+        r"""JSKS文本
         :rtype: str
         """
         return self._Text
@@ -10212,7 +10397,7 @@ username：对应 MQTT CONNECT Packet 中 username 字段
 
 
 class ModifyJWTAuthenticatorResponse(AbstractModel):
-    """ModifyJWTAuthenticator返回参数结构体
+    r"""ModifyJWTAuthenticator返回参数结构体
 
     """
 
@@ -10225,7 +10410,7 @@ class ModifyJWTAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10240,7 +10425,7 @@ class ModifyJWTAuthenticatorResponse(AbstractModel):
 
 
 class ModifyTopicRequest(AbstractModel):
-    """ModifyTopic请求参数结构体
+    r"""ModifyTopic请求参数结构体
 
     """
 
@@ -10259,7 +10444,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -10270,7 +10455,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        r"""主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
         :rtype: str
         """
         return self._Topic
@@ -10281,7 +10466,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最长 128 字符
+        r"""备注信息，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -10306,7 +10491,7 @@ class ModifyTopicRequest(AbstractModel):
 
 
 class ModifyTopicResponse(AbstractModel):
-    """ModifyTopic返回参数结构体
+    r"""ModifyTopic返回参数结构体
 
     """
 
@@ -10319,7 +10504,7 @@ class ModifyTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10334,7 +10519,7 @@ class ModifyTopicResponse(AbstractModel):
 
 
 class ModifyUserRequest(AbstractModel):
-    """ModifyUser请求参数结构体
+    r"""ModifyUser请求参数结构体
 
     """
 
@@ -10353,7 +10538,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -10364,7 +10549,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -10375,7 +10560,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注，长度不超过128个字符。
+        r"""备注，长度不超过128个字符。
         :rtype: str
         """
         return self._Remark
@@ -10400,7 +10585,7 @@ class ModifyUserRequest(AbstractModel):
 
 
 class ModifyUserResponse(AbstractModel):
-    """ModifyUser返回参数结构体
+    r"""ModifyUser返回参数结构体
 
     """
 
@@ -10413,7 +10598,7 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10428,7 +10613,7 @@ class ModifyUserResponse(AbstractModel):
 
 
 class PriceTag(AbstractModel):
-    """价格标签信息
+    r"""价格标签信息
 
     """
 
@@ -10451,7 +10636,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Name(self):
-        """计价名称，表示规格的计费项项目分类，具体规格的计价名称可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
+        r"""计价名称，表示规格的计费项项目分类，具体规格的计价名称可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :rtype: str
         """
         return self._Name
@@ -10462,7 +10647,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Category(self):
-        """计价类别，计价名称子类，具体规格的计价类别可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 的返回结果。
+        r"""计价类别，计价名称子类，具体规格的计价类别可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 的返回结果。
         :rtype: str
         """
         return self._Category
@@ -10473,7 +10658,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Code(self):
-        """计费项标签，为计价名称（Name）下计价类别（Category）的子项目，表示一个具体的收费项。规格的计费项标签可参考 
+        r"""计费项标签，为计价名称（Name）下计价类别（Category）的子项目，表示一个具体的收费项。规格的计费项标签可参考 
  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :rtype: str
         """
@@ -10485,7 +10670,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Step(self):
-        """计费步长，表示该规格在 计价名称（Name）下的计价类别（Category）的计费项标签（Code）计费数量。具体规格该字段取值参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232)
+        r"""计费步长，表示该规格在 计价名称（Name）下的计价类别（Category）的计费项标签（Code）计费数量。具体规格该字段取值参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232)
         :rtype: int
         """
         return self._Step
@@ -10511,7 +10696,7 @@ class PriceTag(AbstractModel):
 
 
 class ProductSkuItem(AbstractModel):
-    """MQTT ProductSkuItem
+    r"""MQTT ProductSkuItem
 
     """
 
@@ -10553,7 +10738,7 @@ PLATINUM： 铂金版
 
     @property
     def InstanceType(self):
-        """规格类型
+        r"""规格类型
 BASIC：基础版
 PRO ：专业版
 PLATINUM： 铂金版
@@ -10567,7 +10752,7 @@ PLATINUM： 铂金版
 
     @property
     def SkuCode(self):
-        """规格代码
+        r"""规格代码
         :rtype: str
         """
         return self._SkuCode
@@ -10578,7 +10763,7 @@ PLATINUM： 铂金版
 
     @property
     def OnSale(self):
-        """是否售卖
+        r"""是否售卖
 1: 可售卖
 0: 不可售卖
         :rtype: bool
@@ -10591,7 +10776,7 @@ PLATINUM： 铂金版
 
     @property
     def TopicNumLimit(self):
-        """topic num限制
+        r"""topic num限制
         :rtype: int
         """
         return self._TopicNumLimit
@@ -10602,7 +10787,7 @@ PLATINUM： 铂金版
 
     @property
     def TpsLimit(self):
-        """MQTT 集群下每秒钟生产消息量和消费消息量之和。详细计算方式参考 [计费概述](https://cloud.tencent.com/document/product/1778/109698)
+        r"""MQTT 集群下每秒钟生产消息量和消费消息量之和。详细计算方式参考 [计费概述](https://cloud.tencent.com/document/product/1778/109698)
         :rtype: int
         """
         return self._TpsLimit
@@ -10613,7 +10798,7 @@ PLATINUM： 铂金版
 
     @property
     def ClientNumLimit(self):
-        """客户端连接数
+        r"""客户端连接数
         :rtype: int
         """
         return self._ClientNumLimit
@@ -10624,7 +10809,7 @@ PLATINUM： 铂金版
 
     @property
     def MaxSubscriptionPerClient(self):
-        """单客户端最大订阅数
+        r"""单客户端最大订阅数
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -10635,7 +10820,7 @@ PLATINUM： 铂金版
 
     @property
     def AuthorizationPolicyLimit(self):
-        """授权规则条数
+        r"""授权规则条数
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -10646,7 +10831,7 @@ PLATINUM： 铂金版
 
     @property
     def PriceTags(self):
-        """计费项信息
+        r"""计费项信息
         :rtype: list of PriceTag
         """
         return self._PriceTags
@@ -10682,7 +10867,7 @@ PLATINUM： 铂金版
 
 
 class PropagatingProperty(AbstractModel):
-    """传播属性结构
+    r"""传播属性结构
 
     """
 
@@ -10698,7 +10883,7 @@ class PropagatingProperty(AbstractModel):
 
     @property
     def Key(self):
-        """传播属性key
+        r"""传播属性key
         :rtype: str
         """
         return self._Key
@@ -10709,7 +10894,7 @@ class PropagatingProperty(AbstractModel):
 
     @property
     def Value(self):
-        """传播属性value
+        r"""传播属性value
         :rtype: str
         """
         return self._Value
@@ -10733,7 +10918,7 @@ class PropagatingProperty(AbstractModel):
 
 
 class PublicAccessRule(AbstractModel):
-    """公网访问安全规则
+    r"""公网访问安全规则
 
     """
 
@@ -10752,7 +10937,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def IpRule(self):
-        """ip网段信息
+        r"""ip网段信息
         :rtype: str
         """
         return self._IpRule
@@ -10763,7 +10948,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def Allow(self):
-        """当前仅支持允许，默认允许（allow）
+        r"""当前仅支持允许，默认允许（allow）
         :rtype: bool
         """
         return self._Allow
@@ -10774,7 +10959,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多64个字符。
+        r"""备注信息，最多64个字符。
         :rtype: str
         """
         return self._Remark
@@ -10799,7 +10984,7 @@ class PublicAccessRule(AbstractModel):
 
 
 class PublishMessageRequest(AbstractModel):
-    """PublishMessage请求参数结构体
+    r"""PublishMessage请求参数结构体
 
     """
 
@@ -10833,7 +11018,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -10844,7 +11029,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Payload(self):
-        """消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
+        r"""消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
         :rtype: str
         """
         return self._Payload
@@ -10855,7 +11040,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def TargetTopic(self):
-        """消息目的主题，该参数与 TargetClientId 二选一
+        r"""消息目的主题，该参数与 TargetClientId 二选一
         :rtype: str
         """
         return self._TargetTopic
@@ -10866,7 +11051,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def TargetClientId(self):
-        """消息目的客户端 ID，该参数与 TargetTopic 二选一
+        r"""消息目的客户端 ID，该参数与 TargetTopic 二选一
         :rtype: str
         """
         return self._TargetClientId
@@ -10877,7 +11062,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Encoding(self):
-        """消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+        r"""消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
         :rtype: str
         """
         return self._Encoding
@@ -10888,7 +11073,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Qos(self):
-        """消息的服务质量等级，默认为 1
+        r"""消息的服务质量等级，默认为 1
 QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。
 QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。
 QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。
@@ -10902,7 +11087,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Retain(self):
-        """是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+        r"""是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
         :rtype: bool
         """
         return self._Retain
@@ -10931,7 +11116,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
 
 class PublishMessageResponse(AbstractModel):
-    """PublishMessage返回参数结构体
+    r"""PublishMessage返回参数结构体
 
     """
 
@@ -10944,7 +11129,7 @@ class PublishMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10959,7 +11144,7 @@ class PublishMessageResponse(AbstractModel):
 
 
 class RegisterCaCertificateRequest(AbstractModel):
-    """RegisterCaCertificate请求参数结构体
+    r"""RegisterCaCertificate请求参数结构体
 
     """
 
@@ -10986,7 +11171,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -10997,7 +11182,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def CaCertificate(self):
-        """CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
+        r"""CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
         :rtype: str
         """
         return self._CaCertificate
@@ -11008,7 +11193,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def VerificationCertificate(self):
-        """验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
+        r"""验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
         :rtype: str
         """
         return self._VerificationCertificate
@@ -11019,7 +11204,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def Format(self):
-        """证书格式，不传默认PEM格式，当前仅支持PEM格式
+        r"""证书格式，不传默认PEM格式，当前仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -11030,7 +11215,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def Status(self):
-        """证书状态，不传默认ACTIVE状态
+        r"""证书状态，不传默认ACTIVE状态
     ACTIVE：激活
     INACTIVE：未激活
         :rtype: str
@@ -11059,7 +11244,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
 
 class RegisterCaCertificateResponse(AbstractModel):
-    """RegisterCaCertificate返回参数结构体
+    r"""RegisterCaCertificate返回参数结构体
 
     """
 
@@ -11078,7 +11263,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """mqtt实例ID
+        r"""mqtt实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -11089,7 +11274,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     @property
     def CaSn(self):
-        """ca 证书的序列号
+        r"""ca 证书的序列号
         :rtype: str
         """
         return self._CaSn
@@ -11100,7 +11285,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11117,7 +11302,7 @@ class RegisterCaCertificateResponse(AbstractModel):
 
 
 class RegisterDeviceCertificateRequest(AbstractModel):
-    """RegisterDeviceCertificate请求参数结构体
+    r"""RegisterDeviceCertificate请求参数结构体
 
     """
 
@@ -11147,7 +11332,7 @@ INACTIVE：未激活
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -11158,7 +11343,7 @@ INACTIVE：未激活
 
     @property
     def DeviceCertificate(self):
-        """设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
+        r"""设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
         :rtype: str
         """
         return self._DeviceCertificate
@@ -11169,7 +11354,7 @@ INACTIVE：未激活
 
     @property
     def CaSn(self):
-        """关联的CA证书SN
+        r"""关联的CA证书SN
         :rtype: str
         """
         return self._CaSn
@@ -11180,7 +11365,7 @@ INACTIVE：未激活
 
     @property
     def ClientId(self):
-        """客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
+        r"""客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
         :rtype: str
         """
         return self._ClientId
@@ -11191,7 +11376,7 @@ INACTIVE：未激活
 
     @property
     def Format(self):
-        """证书格式，默认为PEM，当前仅支持PEM格式
+        r"""证书格式，默认为PEM，当前仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -11202,7 +11387,7 @@ INACTIVE：未激活
 
     @property
     def Status(self):
-        """ 客户端证书状态，默认激活状态（ACTIVE）
+        r""" 客户端证书状态，默认激活状态（ACTIVE）
 ACTIVE：激活     
 INACTIVE：未激活     
         :rtype: str
@@ -11232,7 +11417,7 @@ INACTIVE：未激活
 
 
 class RegisterDeviceCertificateResponse(AbstractModel):
-    """RegisterDeviceCertificate返回参数结构体
+    r"""RegisterDeviceCertificate返回参数结构体
 
     """
 
@@ -11254,7 +11439,7 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -11265,7 +11450,7 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     @property
     def CaSn(self):
-        """关联的CA证书SN
+        r"""关联的CA证书SN
         :rtype: str
         """
         return self._CaSn
@@ -11276,7 +11461,7 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书的SN
+        r"""设备证书的SN
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -11287,7 +11472,7 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11305,7 +11490,7 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
 
 class RevokedDeviceCertificateRequest(AbstractModel):
-    """RevokedDeviceCertificate请求参数结构体
+    r"""RevokedDeviceCertificate请求参数结构体
 
     """
 
@@ -11321,7 +11506,7 @@ class RevokedDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._InstanceId
@@ -11332,7 +11517,7 @@ class RevokedDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书序列号
+        r"""设备证书序列号
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -11356,7 +11541,7 @@ class RevokedDeviceCertificateRequest(AbstractModel):
 
 
 class RevokedDeviceCertificateResponse(AbstractModel):
-    """RevokedDeviceCertificate返回参数结构体
+    r"""RevokedDeviceCertificate返回参数结构体
 
     """
 
@@ -11369,7 +11554,7 @@ class RevokedDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11384,7 +11569,7 @@ class RevokedDeviceCertificateResponse(AbstractModel):
 
 
 class SubscriptionUserProperty(AbstractModel):
-    """订阅的UserProperty结构
+    r"""订阅的UserProperty结构
 
     """
 
@@ -11400,7 +11585,7 @@ class SubscriptionUserProperty(AbstractModel):
 
     @property
     def Key(self):
-        """订阅的UserProperty键
+        r"""订阅的UserProperty键
         :rtype: str
         """
         return self._Key
@@ -11411,7 +11596,7 @@ class SubscriptionUserProperty(AbstractModel):
 
     @property
     def Value(self):
-        """订阅的UserProperty值
+        r"""订阅的UserProperty值
         :rtype: str
         """
         return self._Value
@@ -11435,7 +11620,7 @@ class SubscriptionUserProperty(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签数据
+    r"""标签数据
 
     """
 
@@ -11451,7 +11636,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._TagKey
@@ -11462,7 +11647,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -11486,7 +11671,7 @@ class Tag(AbstractModel):
 
 
 class TagFilter(AbstractModel):
-    """标签过滤器
+    r"""标签过滤器
 
     """
 
@@ -11502,7 +11687,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键名称
+        r"""标签键名称
         :rtype: str
         """
         return self._TagKey
@@ -11513,7 +11698,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValues(self):
-        """标签键名称
+        r"""标签键名称
         :rtype: list of str
         """
         return self._TagValues
@@ -11537,7 +11722,7 @@ class TagFilter(AbstractModel):
 
 
 class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
-    """UpdateAuthorizationPolicyPriority请求参数结构体
+    r"""UpdateAuthorizationPolicyPriority请求参数结构体
 
     """
 
@@ -11553,7 +11738,7 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -11564,7 +11749,7 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     @property
     def Priorities(self):
-        """策略ID和优先级
+        r"""策略ID和优先级
         :rtype: list of AuthorizationPolicyPriority
         """
         return self._Priorities
@@ -11593,7 +11778,7 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
 
 class UpdateAuthorizationPolicyPriorityResponse(AbstractModel):
-    """UpdateAuthorizationPolicyPriority返回参数结构体
+    r"""UpdateAuthorizationPolicyPriority返回参数结构体
 
     """
 
@@ -11606,7 +11791,7 @@ class UpdateAuthorizationPolicyPriorityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11621,7 +11806,7 @@ class UpdateAuthorizationPolicyPriorityResponse(AbstractModel):
 
 
 class UserProperty(AbstractModel):
-    """map结构返回
+    r"""map结构返回
 
     """
 
@@ -11637,7 +11822,7 @@ class UserProperty(AbstractModel):
 
     @property
     def Key(self):
-        """key
+        r"""key
         :rtype: str
         """
         return self._Key
@@ -11648,7 +11833,7 @@ class UserProperty(AbstractModel):
 
     @property
     def Value(self):
-        """value
+        r"""value
         :rtype: str
         """
         return self._Value
@@ -11672,7 +11857,7 @@ class UserProperty(AbstractModel):
 
 
 class VpcInfo(AbstractModel):
-    """VPC信息
+    r"""VPC信息
 
     """
 
@@ -11688,7 +11873,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -11699,7 +11884,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId

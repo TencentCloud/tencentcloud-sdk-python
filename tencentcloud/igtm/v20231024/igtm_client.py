@@ -27,7 +27,7 @@ class IgtmClient(AbstractClient):
 
 
     def CreateAddressPool(self, request):
-        """创建地址池
+        r"""创建地址池
 
         :param request: Request instance for CreateAddressPool.
         :type request: :class:`tencentcloud.igtm.v20231024.models.CreateAddressPoolRequest`
@@ -50,7 +50,7 @@ class IgtmClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建实例接口，仅供免费实例使用
+        r"""创建实例接口，仅供免费实例使用
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.igtm.v20231024.models.CreateInstanceRequest`
@@ -73,7 +73,7 @@ class IgtmClient(AbstractClient):
 
 
     def CreateMonitor(self, request):
-        """新增监控器
+        r"""新增监控器
 
         :param request: Request instance for CreateMonitor.
         :type request: :class:`tencentcloud.igtm.v20231024.models.CreateMonitorRequest`
@@ -96,7 +96,7 @@ class IgtmClient(AbstractClient):
 
 
     def CreateStrategy(self, request):
-        """新建策略接口
+        r"""新建策略接口
 
         :param request: Request instance for CreateStrategy.
         :type request: :class:`tencentcloud.igtm.v20231024.models.CreateStrategyRequest`
@@ -119,7 +119,7 @@ class IgtmClient(AbstractClient):
 
 
     def DeleteAddressPool(self, request):
-        """删除地址池
+        r"""删除地址池
 
         :param request: Request instance for DeleteAddressPool.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DeleteAddressPoolRequest`
@@ -142,7 +142,7 @@ class IgtmClient(AbstractClient):
 
 
     def DeleteMonitor(self, request):
-        """删除监控器
+        r"""删除监控器
 
         :param request: Request instance for DeleteMonitor.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DeleteMonitorRequest`
@@ -165,7 +165,7 @@ class IgtmClient(AbstractClient):
 
 
     def DeleteStrategy(self, request):
-        """删除策略接口
+        r"""删除策略接口
 
         :param request: Request instance for DeleteStrategy.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DeleteStrategyRequest`
@@ -188,7 +188,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeAddressLocation(self, request):
-        """获取地址所属地域
+        r"""获取地址所属地域
 
         :param request: Request instance for DescribeAddressLocation.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeAddressLocationRequest`
@@ -211,7 +211,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeAddressPoolDetail(self, request):
-        """地址池详情
+        r"""地址池详情
 
         :param request: Request instance for DescribeAddressPoolDetail.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeAddressPoolDetailRequest`
@@ -234,7 +234,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeAddressPoolList(self, request):
-        """地址池列表
+        r"""地址池列表
 
         :param request: Request instance for DescribeAddressPoolList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeAddressPoolListRequest`
@@ -257,7 +257,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeDetectPackageDetail(self, request):
-        """探测任务包详情
+        r"""探测任务包详情
 
         :param request: Request instance for DescribeDetectPackageDetail.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectPackageDetailRequest`
@@ -280,7 +280,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeDetectTaskPackageList(self, request):
-        """探测任务套餐列表
+        r"""探测任务套餐列表
 
         :param request: Request instance for DescribeDetectTaskPackageList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectTaskPackageListRequest`
@@ -303,7 +303,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeDetectors(self, request):
-        """获取探测节点列表接口
+        r"""获取探测节点列表接口
 
         :param request: Request instance for DescribeDetectors.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectorsRequest`
@@ -326,7 +326,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeDnsLineList(self, request):
-        """查询分组线路列表接口
+        r"""查询分组线路列表接口
 
         :param request: Request instance for DescribeDnsLineList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDnsLineListRequest`
@@ -349,7 +349,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeInstanceDetail(self, request):
-        """实例详情
+        r"""实例详情
 
         :param request: Request instance for DescribeInstanceDetail.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeInstanceDetailRequest`
@@ -372,7 +372,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeInstanceList(self, request):
-        """实例列表
+        r"""实例列表
 
         :param request: Request instance for DescribeInstanceList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeInstanceListRequest`
@@ -395,7 +395,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeInstancePackageList(self, request):
-        """实例套餐列表
+        r"""实例套餐列表
 
         :param request: Request instance for DescribeInstancePackageList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeInstancePackageListRequest`
@@ -418,7 +418,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeMonitorDetail(self, request):
-        """查询监控器详情接口
+        r"""查询监控器详情接口
 
         :param request: Request instance for DescribeMonitorDetail.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeMonitorDetailRequest`
@@ -441,7 +441,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeMonitors(self, request):
-        """获取所有监控器
+        r"""获取所有监控器
 
         :param request: Request instance for DescribeMonitors.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeMonitorsRequest`
@@ -464,7 +464,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeQuotas(self, request):
-        """配额查询
+        r"""配额查询
 
         :param request: Request instance for DescribeQuotas.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeQuotasRequest`
@@ -487,7 +487,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeStrategyDetail(self, request):
-        """策略详情
+        r"""策略详情
 
         :param request: Request instance for DescribeStrategyDetail.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeStrategyDetailRequest`
@@ -510,7 +510,7 @@ class IgtmClient(AbstractClient):
 
 
     def DescribeStrategyList(self, request):
-        """策略列表接口
+        r"""策略列表接口
 
         :param request: Request instance for DescribeStrategyList.
         :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeStrategyListRequest`
@@ -533,7 +533,7 @@ class IgtmClient(AbstractClient):
 
 
     def ModifyAddressPool(self, request):
-        """修改地址池
+        r"""修改地址池
 
         :param request: Request instance for ModifyAddressPool.
         :type request: :class:`tencentcloud.igtm.v20231024.models.ModifyAddressPoolRequest`
@@ -556,7 +556,7 @@ class IgtmClient(AbstractClient):
 
 
     def ModifyInstanceConfig(self, request):
-        """修改实例配置
+        r"""修改实例配置
 
         :param request: Request instance for ModifyInstanceConfig.
         :type request: :class:`tencentcloud.igtm.v20231024.models.ModifyInstanceConfigRequest`
@@ -579,7 +579,7 @@ class IgtmClient(AbstractClient):
 
 
     def ModifyMonitor(self, request):
-        """修改监控器
+        r"""修改监控器
 
         :param request: Request instance for ModifyMonitor.
         :type request: :class:`tencentcloud.igtm.v20231024.models.ModifyMonitorRequest`
@@ -602,7 +602,7 @@ class IgtmClient(AbstractClient):
 
 
     def ModifyStrategy(self, request):
-        """修改策略接口
+        r"""修改策略接口
 
         :param request: Request instance for ModifyStrategy.
         :type request: :class:`tencentcloud.igtm.v20231024.models.ModifyStrategyRequest`

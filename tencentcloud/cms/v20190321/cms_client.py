@@ -27,7 +27,7 @@ class CmsClient(AbstractClient):
 
 
     def CreateKeywordsSamples(self, request):
-        """创建关键词接口
+        r"""创建关键词接口
 
         :param request: Request instance for CreateKeywordsSamples.
         :type request: :class:`tencentcloud.cms.v20190321.models.CreateKeywordsSamplesRequest`
@@ -50,7 +50,7 @@ class CmsClient(AbstractClient):
 
 
     def DeleteLibSamples(self, request):
-        """删除关键词接口
+        r"""删除关键词接口
 
         :param request: Request instance for DeleteLibSamples.
         :type request: :class:`tencentcloud.cms.v20190321.models.DeleteLibSamplesRequest`
@@ -73,7 +73,7 @@ class CmsClient(AbstractClient):
 
 
     def DescribeKeywordsLibs(self, request):
-        """获取用户词库列表
+        r"""获取用户词库列表
 
         :param request: Request instance for DescribeKeywordsLibs.
         :type request: :class:`tencentcloud.cms.v20190321.models.DescribeKeywordsLibsRequest`
@@ -96,7 +96,7 @@ class CmsClient(AbstractClient):
 
 
     def DescribeLibSamples(self, request):
-        """获取关键词接口
+        r"""获取关键词接口
 
         :param request: Request instance for DescribeLibSamples.
         :type request: :class:`tencentcloud.cms.v20190321.models.DescribeLibSamplesRequest`
@@ -119,7 +119,7 @@ class CmsClient(AbstractClient):
 
 
     def ImageModeration(self, request):
-        """图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别涉黄、涉恐、涉政、涉毒等有害内容，同时支持用户配置图片黑名单，打击自定义的违规图片。
+        r"""图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别涉黄、涉恐、涉政、涉毒等有害内容，同时支持用户配置图片黑名单，打击自定义的违规图片。
 
         :param request: Request instance for ImageModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.ImageModerationRequest`
@@ -142,7 +142,7 @@ class CmsClient(AbstractClient):
 
 
     def TextModeration(self, request):
-        """文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
+        r"""文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
 
         :param request: Request instance for TextModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.TextModerationRequest`

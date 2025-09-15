@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeStatusRequest(AbstractModel):
-    """DescribeStatus请求参数结构体
+    r"""DescribeStatus请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class DescribeStatusRequest(AbstractModel):
 
     @property
     def Pk(self):
-        """购买服务后获得的授权帐号，用于保证请求有效性
+        r"""购买服务后获得的授权帐号，用于保证请求有效性
         :rtype: str
         """
         return self._Pk
@@ -46,7 +46,7 @@ class DescribeStatusRequest(AbstractModel):
 
     @property
     def Md5(self):
-        """需要获取分析结果的样本md5
+        r"""需要获取分析结果的样本md5
         :rtype: str
         """
         return self._Md5
@@ -70,7 +70,7 @@ class DescribeStatusRequest(AbstractModel):
 
 
 class DescribeStatusResponse(AbstractModel):
-    """DescribeStatus返回参数结构体
+    r"""DescribeStatus返回参数结构体
 
     """
 
@@ -92,7 +92,7 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """接口调用状态，1表示成功，非1表示失败
+        r"""接口调用状态，1表示成功，非1表示失败
         :rtype: int
         """
         return self._Status
@@ -103,7 +103,7 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Info(self):
-        """成功时返回success，失败时返回具体的失败原因，如样本分析未完成
+        r"""成功时返回success，失败时返回具体的失败原因，如样本分析未完成
         :rtype: str
         """
         return self._Info
@@ -114,7 +114,7 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """成功时返回样本日志下载地址，该地址10分钟内有效
+        r"""成功时返回样本日志下载地址，该地址10分钟内有效
         :rtype: str
         """
         return self._Data
@@ -125,7 +125,7 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -143,7 +143,7 @@ class DescribeStatusResponse(AbstractModel):
 
 
 class StartAnalyseRequest(AbstractModel):
-    """StartAnalyse请求参数结构体
+    r"""StartAnalyse请求参数结构体
 
     """
 
@@ -162,7 +162,7 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def Pk(self):
-        """购买服务后获得的授权帐号，用于保证请求有效性
+        r"""购买服务后获得的授权帐号，用于保证请求有效性
         :rtype: str
         """
         return self._Pk
@@ -173,7 +173,7 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def Md5(self):
-        """样本md5，用于对下载获得的样本完整性进行校验
+        r"""样本md5，用于对下载获得的样本完整性进行校验
         :rtype: str
         """
         return self._Md5
@@ -184,7 +184,7 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def DlUrl(self):
-        """待分析样本下载地址
+        r"""待分析样本下载地址
         :rtype: str
         """
         return self._DlUrl
@@ -209,7 +209,7 @@ class StartAnalyseRequest(AbstractModel):
 
 
 class StartAnalyseResponse(AbstractModel):
-    """StartAnalyse返回参数结构体
+    r"""StartAnalyse返回参数结构体
 
     """
 
@@ -231,7 +231,7 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Status(self):
-        """接口调用状态，1表示成功，非1表示失败
+        r"""接口调用状态，1表示成功，非1表示失败
         :rtype: int
         """
         return self._Status
@@ -242,7 +242,7 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Info(self):
-        """成功时返回success，失败时返回具体的失败原因
+        r"""成功时返回success，失败时返回具体的失败原因
         :rtype: str
         """
         return self._Info
@@ -253,7 +253,7 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Data(self):
-        """保留字段
+        r"""保留字段
         :rtype: str
         """
         return self._Data
@@ -264,7 +264,7 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

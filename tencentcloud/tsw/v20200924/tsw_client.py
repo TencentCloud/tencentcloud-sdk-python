@@ -27,7 +27,7 @@ class TswClient(AbstractClient):
 
 
     def DescribeAgentShell(self, request):
-        """获取服务接入信息
+        r"""获取服务接入信息
 
         :param request: Request instance for DescribeAgentShell.
         :type request: :class:`tencentcloud.tsw.v20200924.models.DescribeAgentShellRequest`

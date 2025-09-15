@@ -27,7 +27,7 @@ class TsfClient(AbstractClient):
 
 
     def AddClusterInstances(self, request):
-        """添加云主机节点至TSF集群
+        r"""添加云主机节点至TSF集群
 
         :param request: Request instance for AddClusterInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.AddClusterInstancesRequest`
@@ -50,7 +50,7 @@ class TsfClient(AbstractClient):
 
 
     def AddInstances(self, request):
-        """添加云主机节点至TSF集群
+        r"""添加云主机节点至TSF集群
 
         :param request: Request instance for AddInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.AddInstancesRequest`
@@ -73,7 +73,7 @@ class TsfClient(AbstractClient):
 
 
     def AssociateBusinessLogConfig(self, request):
-        """关联日志配置项到应用
+        r"""关联日志配置项到应用
 
         :param request: Request instance for AssociateBusinessLogConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.AssociateBusinessLogConfigRequest`
@@ -96,7 +96,7 @@ class TsfClient(AbstractClient):
 
 
     def AssociateConfigWithGroup(self, request):
-        """关联投递配置到部署组
+        r"""关联投递配置到部署组
 
         :param request: Request instance for AssociateConfigWithGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.AssociateConfigWithGroupRequest`
@@ -119,7 +119,7 @@ class TsfClient(AbstractClient):
 
 
     def BindApiGroup(self, request):
-        """网关与API分组批量绑定
+        r"""网关与API分组批量绑定
 
         :param request: Request instance for BindApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.BindApiGroupRequest`
@@ -142,7 +142,7 @@ class TsfClient(AbstractClient):
 
 
     def BindPlugin(self, request):
-        """插件与网关分组/API批量绑定
+        r"""插件与网关分组/API批量绑定
 
         :param request: Request instance for BindPlugin.
         :type request: :class:`tencentcloud.tsf.v20180326.models.BindPluginRequest`
@@ -165,7 +165,7 @@ class TsfClient(AbstractClient):
 
 
     def ChangeApiUsableStatus(self, request):
-        """启用或禁用API
+        r"""启用或禁用API
 
         :param request: Request instance for ChangeApiUsableStatus.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ChangeApiUsableStatusRequest`
@@ -188,7 +188,7 @@ class TsfClient(AbstractClient):
 
 
     def ContinueRunFailedTaskBatch(self, request):
-        """对执行失败的任务批次执行续跑
+        r"""对执行失败的任务批次执行续跑
 
         :param request: Request instance for ContinueRunFailedTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchRequest`
@@ -211,7 +211,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateAllGatewayApiAsync(self, request):
-        """一键导入API分组
+        r"""一键导入API分组
 
         :param request: Request instance for CreateAllGatewayApiAsync.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateAllGatewayApiAsyncRequest`
@@ -234,7 +234,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateApiGroup(self, request):
-        """创建API分组
+        r"""创建API分组
 
         :param request: Request instance for CreateApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApiGroupRequest`
@@ -257,7 +257,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateApiRateLimitRule(self, request):
-        """创建API限流规则
+        r"""创建API限流规则
 
         :param request: Request instance for CreateApiRateLimitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApiRateLimitRuleRequest`
@@ -280,7 +280,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateApiRateLimitRuleWithDetailResp(self, request):
-        """创建API限流规则,并返回规则信息
+        r"""创建API限流规则,并返回规则信息
 
         :param request: Request instance for CreateApiRateLimitRuleWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApiRateLimitRuleWithDetailRespRequest`
@@ -303,7 +303,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """创建应用
+        r"""创建应用
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApplicationRequest`
@@ -326,7 +326,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """创建集群
+        r"""创建集群
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateClusterRequest`
@@ -349,7 +349,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateConfig(self, request):
-        """创建配置项
+        r"""创建配置项
 
         :param request: Request instance for CreateConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigRequest`
@@ -372,7 +372,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateConfigTemplate(self, request):
-        """创建参数模板
+        r"""创建参数模板
 
         :param request: Request instance for CreateConfigTemplate.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigTemplateRequest`
@@ -395,7 +395,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateConfigTemplateWithDetailResp(self, request):
-        """创建参数模板，并返回模板详细信息
+        r"""创建参数模板，并返回模板详细信息
 
         :param request: Request instance for CreateConfigTemplateWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigTemplateWithDetailRespRequest`
@@ -418,7 +418,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateConfigWithDetailResp(self, request):
-        """创建配置项，返回详细信息
+        r"""创建配置项，返回详细信息
 
         :param request: Request instance for CreateConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigWithDetailRespRequest`
@@ -441,7 +441,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateContainGroup(self, request):
-        """（已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
+        r"""（已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
 
         :param request: Request instance for CreateContainGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateContainGroupRequest`
@@ -464,7 +464,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateFileConfig(self, request):
-        """创建文件配置项
+        r"""创建文件配置项
 
         :param request: Request instance for CreateFileConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigRequest`
@@ -487,7 +487,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateFileConfigWithDetailResp(self, request):
-        """创建文件配置项，返回详细信息。
+        r"""创建文件配置项，返回详细信息。
 
         :param request: Request instance for CreateFileConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigWithDetailRespRequest`
@@ -510,7 +510,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateGatewayApi(self, request):
-        """批量导入API至api分组(也支持新建API到分组)
+        r"""批量导入API至api分组(也支持新建API到分组)
 
         :param request: Request instance for CreateGatewayApi.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateGatewayApiRequest`
@@ -533,7 +533,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """创建虚拟机部署组
+        r"""创建虚拟机部署组
 
         :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateGroupRequest`
@@ -556,7 +556,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateLane(self, request):
-        """创建泳道配置
+        r"""创建泳道配置
 
         :param request: Request instance for CreateLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRequest`
@@ -579,7 +579,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateLaneRule(self, request):
-        """创建灰度发布规则
+        r"""创建灰度发布规则
 
         :param request: Request instance for CreateLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleRequest`
@@ -602,7 +602,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateMicroservice(self, request):
-        """新增微服务
+        r"""新增微服务
 
         :param request: Request instance for CreateMicroservice.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceRequest`
@@ -625,7 +625,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateMicroserviceWithDetailResp(self, request):
-        """新增微服务返回ID
+        r"""新增微服务返回ID
 
         :param request: Request instance for CreateMicroserviceWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceWithDetailRespRequest`
@@ -648,7 +648,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """创建命名空间
+        r"""创建命名空间
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateNamespaceRequest`
@@ -671,7 +671,7 @@ class TsfClient(AbstractClient):
 
 
     def CreatePathRewrites(self, request):
-        """创建路径重写
+        r"""创建路径重写
 
         :param request: Request instance for CreatePathRewrites.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePathRewritesRequest`
@@ -694,7 +694,7 @@ class TsfClient(AbstractClient):
 
 
     def CreatePathRewritesWithDetailResp(self, request):
-        """创建路径重写，并返回路径重写规则信息
+        r"""创建路径重写，并返回路径重写规则信息
 
         :param request: Request instance for CreatePathRewritesWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePathRewritesWithDetailRespRequest`
@@ -717,7 +717,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateProgram(self, request):
-        """创建数据集
+        r"""创建数据集
 
         :param request: Request instance for CreateProgram.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateProgramRequest`
@@ -740,7 +740,7 @@ class TsfClient(AbstractClient):
 
 
     def CreatePublicConfig(self, request):
-        """创建公共配置项
+        r"""创建公共配置项
 
         :param request: Request instance for CreatePublicConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigRequest`
@@ -763,7 +763,7 @@ class TsfClient(AbstractClient):
 
 
     def CreatePublicConfigWithDetailResp(self, request):
-        """创建公共配置项，并返回配置项详细信息。
+        r"""创建公共配置项，并返回配置项详细信息。
 
         :param request: Request instance for CreatePublicConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigWithDetailRespRequest`
@@ -786,7 +786,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateRepository(self, request):
-        """创建仓库
+        r"""创建仓库
 
         :param request: Request instance for CreateRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateRepositoryRequest`
@@ -809,7 +809,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """创建任务
+        r"""创建任务
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskRequest`
@@ -832,7 +832,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateTaskFlow(self, request):
-        """创建工作流
+        r"""创建工作流
 
         :param request: Request instance for CreateTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowRequest`
@@ -855,7 +855,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateUnitNamespaces(self, request):
-        """批量创建单元化命名空间
+        r"""批量创建单元化命名空间
 
         :param request: Request instance for CreateUnitNamespaces.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateUnitNamespacesRequest`
@@ -878,7 +878,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateUnitRule(self, request):
-        """创建单元化规则
+        r"""创建单元化规则
 
         :param request: Request instance for CreateUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateUnitRuleRequest`
@@ -901,7 +901,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateUnitRuleWithDetailResp(self, request):
-        """创建单元化规则, 并返回详细信息
+        r"""创建单元化规则, 并返回详细信息
 
         :param request: Request instance for CreateUnitRuleWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateUnitRuleWithDetailRespRequest`
@@ -924,7 +924,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteApiGroup(self, request):
-        """删除Api分组
+        r"""删除Api分组
 
         :param request: Request instance for DeleteApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteApiGroupRequest`
@@ -947,7 +947,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteApiRateLimitRule(self, request):
-        """删除API限流规则
+        r"""删除API限流规则
 
         :param request: Request instance for DeleteApiRateLimitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteApiRateLimitRuleRequest`
@@ -970,7 +970,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        """删除应用
+        r"""删除应用
 
         :param request: Request instance for DeleteApplication.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteApplicationRequest`
@@ -993,7 +993,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """删除集群
+        r"""删除集群
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteClusterRequest`
@@ -1016,7 +1016,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteConfig(self, request):
-        """删除配置项
+        r"""删除配置项
 
         :param request: Request instance for DeleteConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigRequest`
@@ -1039,7 +1039,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteConfigTemplate(self, request):
-        """删除模板
+        r"""删除模板
 
         :param request: Request instance for DeleteConfigTemplate.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigTemplateRequest`
@@ -1062,7 +1062,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteContainerGroup(self, request):
-        """删除容器部署组
+        r"""删除容器部署组
 
         :param request: Request instance for DeleteContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteContainerGroupRequest`
@@ -1085,7 +1085,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteFileConfig(self, request):
-        """删除文件配置项
+        r"""删除文件配置项
 
         :param request: Request instance for DeleteFileConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteFileConfigRequest`
@@ -1108,7 +1108,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteGatewayApi(self, request):
-        """批量删除API
+        r"""批量删除API
 
         :param request: Request instance for DeleteGatewayApi.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteGatewayApiRequest`
@@ -1131,7 +1131,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除容器部署组
+        r"""删除容器部署组
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteGroupRequest`
@@ -1154,7 +1154,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteImageTags(self, request):
-        """批量删除镜像版本
+        r"""批量删除镜像版本
 
         :param request: Request instance for DeleteImageTags.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteImageTagsRequest`
@@ -1177,7 +1177,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteLane(self, request):
-        """删除泳道配置
+        r"""删除泳道配置
 
         :param request: Request instance for DeleteLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRequest`
@@ -1200,7 +1200,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteLaneRule(self, request):
-        """删除灰度发布规则
+        r"""删除灰度发布规则
 
         :param request: Request instance for DeleteLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRuleRequest`
@@ -1223,7 +1223,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteMicroservice(self, request):
-        """删除微服务
+        r"""删除微服务
 
         :param request: Request instance for DeleteMicroservice.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteMicroserviceRequest`
@@ -1246,7 +1246,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """删除命名空间
+        r"""删除命名空间
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteNamespaceRequest`
@@ -1269,7 +1269,7 @@ class TsfClient(AbstractClient):
 
 
     def DeletePathRewrites(self, request):
-        """删除路径重写
+        r"""删除路径重写
 
         :param request: Request instance for DeletePathRewrites.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePathRewritesRequest`
@@ -1292,7 +1292,7 @@ class TsfClient(AbstractClient):
 
 
     def DeletePkgs(self, request):
-        """从软件仓库批量删除程序包。
+        r"""从软件仓库批量删除程序包。
         一次最多支持删除1000个包，数量超过1000，返回UpperDeleteLimit错误。
 
         :param request: Request instance for DeletePkgs.
@@ -1316,7 +1316,7 @@ class TsfClient(AbstractClient):
 
 
     def DeletePublicConfig(self, request):
-        """删除公共配置项
+        r"""删除公共配置项
 
         :param request: Request instance for DeletePublicConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePublicConfigRequest`
@@ -1339,7 +1339,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteRepository(self, request):
-        """删除仓库
+        r"""删除仓库
 
         :param request: Request instance for DeleteRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteRepositoryRequest`
@@ -1362,7 +1362,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteServerlessGroup(self, request):
-        """serverless 能力已下线。下线对应接口。
+        r"""serverless 能力已下线。下线对应接口。
 
         删除Serverless部署组
 
@@ -1387,7 +1387,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """删除任务
+        r"""删除任务
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskRequest`
@@ -1410,7 +1410,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteUnitNamespaces(self, request):
-        """删除单元化命名空间
+        r"""删除单元化命名空间
 
         :param request: Request instance for DeleteUnitNamespaces.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteUnitNamespacesRequest`
@@ -1433,7 +1433,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteUnitRule(self, request):
-        """删除单元化规则
+        r"""删除单元化规则
 
         :param request: Request instance for DeleteUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteUnitRuleRequest`
@@ -1456,7 +1456,7 @@ class TsfClient(AbstractClient):
 
 
     def DeployContainerApplication(self, request):
-        """部署容器应用-更新
+        r"""部署容器应用-更新
 
         :param request: Request instance for DeployContainerApplication.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationRequest`
@@ -1479,7 +1479,7 @@ class TsfClient(AbstractClient):
 
 
     def DeployContainerGroup(self, request):
-        """部署容器应用-更新
+        r"""部署容器应用-更新
 
         :param request: Request instance for DeployContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeployContainerGroupRequest`
@@ -1502,7 +1502,7 @@ class TsfClient(AbstractClient):
 
 
     def DeployGroup(self, request):
-        """部署虚拟机部署组应用
+        r"""部署虚拟机部署组应用
 
         :param request: Request instance for DeployGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeployGroupRequest`
@@ -1525,7 +1525,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiDetail(self, request):
-        """查询API详情
+        r"""查询API详情
 
         :param request: Request instance for DescribeApiDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiDetailRequest`
@@ -1548,7 +1548,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiGroup(self, request):
-        """查询API分组
+        r"""查询API分组
 
         :param request: Request instance for DescribeApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupRequest`
@@ -1571,7 +1571,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiGroups(self, request):
-        """查询API 分组信息列表
+        r"""查询API 分组信息列表
 
         :param request: Request instance for DescribeApiGroups.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupsRequest`
@@ -1594,7 +1594,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiRateLimitRules(self, request):
-        """查询API限流规则
+        r"""查询API限流规则
 
         :param request: Request instance for DescribeApiRateLimitRules.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiRateLimitRulesRequest`
@@ -1617,7 +1617,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiUseDetail(self, request):
-        """查询网关API监控明细数据
+        r"""查询网关API监控明细数据
 
         :param request: Request instance for DescribeApiUseDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiUseDetailRequest`
@@ -1640,7 +1640,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiVersions(self, request):
-        """查询API版本
+        r"""查询API版本
 
         :param request: Request instance for DescribeApiVersions.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsRequest`
@@ -1663,7 +1663,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApplication(self, request):
-        """获取应用详情
+        r"""获取应用详情
 
         :param request: Request instance for DescribeApplication.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationRequest`
@@ -1686,7 +1686,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApplicationAttribute(self, request):
-        """获取应用列表其它字段，如实例数量信息等
+        r"""获取应用列表其它字段，如实例数量信息等
 
         :param request: Request instance for DescribeApplicationAttribute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationAttributeRequest`
@@ -1709,7 +1709,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApplications(self, request):
-        """获取应用列表
+        r"""获取应用列表
 
         :param request: Request instance for DescribeApplications.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationsRequest`
@@ -1732,7 +1732,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeBasicResourceUsage(self, request):
-        """TSF基本资源信息概览接口
+        r"""TSF基本资源信息概览接口
 
         :param request: Request instance for DescribeBasicResourceUsage.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBasicResourceUsageRequest`
@@ -1755,7 +1755,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeBusinessLogConfig(self, request):
-        """查询业务日志配置项信息
+        r"""查询业务日志配置项信息
 
         :param request: Request instance for DescribeBusinessLogConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigRequest`
@@ -1778,7 +1778,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeBusinessLogConfigs(self, request):
-        """查询日志配置项列表
+        r"""查询日志配置项列表
 
         :param request: Request instance for DescribeBusinessLogConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigsRequest`
@@ -1801,7 +1801,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """查询集群实例
+        r"""查询集群实例
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeClusterInstancesRequest`
@@ -1824,7 +1824,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """获取集群列表
+        r"""获取集群列表
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeClustersRequest`
@@ -1847,7 +1847,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfig(self, request):
-        """查询配置
+        r"""查询配置
 
         :param request: Request instance for DescribeConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigRequest`
@@ -1870,7 +1870,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfigReleaseLogs(self, request):
-        """查询配置发布历史
+        r"""查询配置发布历史
 
         :param request: Request instance for DescribeConfigReleaseLogs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleaseLogsRequest`
@@ -1893,7 +1893,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfigReleases(self, request):
-        """查询配置发布信息
+        r"""查询配置发布信息
 
         :param request: Request instance for DescribeConfigReleases.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleasesRequest`
@@ -1916,7 +1916,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfigSummary(self, request):
-        """查询配置汇总列表
+        r"""查询配置汇总列表
 
         :param request: Request instance for DescribeConfigSummary.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigSummaryRequest`
@@ -1939,7 +1939,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfigTemplate(self, request):
-        """导入配置
+        r"""导入配置
 
         :param request: Request instance for DescribeConfigTemplate.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigTemplateRequest`
@@ -1962,7 +1962,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeConfigs(self, request):
-        """查询配置项列表
+        r"""查询配置项列表
 
         :param request: Request instance for DescribeConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigsRequest`
@@ -1985,7 +1985,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerEvents(self, request):
-        """获取容器事件列表
+        r"""获取容器事件列表
         参数限制
 
         - 当类型是 instance 时，GroupId是必填项
@@ -2011,7 +2011,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroupAttribute(self, request):
-        """获取部署组其他字段-用于前端并发调用
+        r"""获取部署组其他字段-用于前端并发调用
 
         :param request: Request instance for DescribeContainerGroupAttribute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupAttributeRequest`
@@ -2034,7 +2034,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroupDeployInfo(self, request):
-        """获取部署组详情
+        r"""获取部署组详情
 
         :param request: Request instance for DescribeContainerGroupDeployInfo.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDeployInfoRequest`
@@ -2057,7 +2057,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroupDetail(self, request):
-        """容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
+        r"""容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 
         :param request: Request instance for DescribeContainerGroupDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDetailRequest`
@@ -2080,7 +2080,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroups(self, request):
-        """容器部署组列表
+        r"""容器部署组列表
 
         :param request: Request instance for DescribeContainerGroups.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupsRequest`
@@ -2103,7 +2103,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeCreateGatewayApiStatus(self, request):
-        """查询一键导入API分组任务的状态
+        r"""查询一键导入API分组任务的状态
 
         :param request: Request instance for DescribeCreateGatewayApiStatus.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeCreateGatewayApiStatusRequest`
@@ -2126,7 +2126,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeDeliveryConfig(self, request):
-        """获取单个投递项配置信息
+        r"""获取单个投递项配置信息
 
         :param request: Request instance for DescribeDeliveryConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigRequest`
@@ -2149,7 +2149,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeDeliveryConfigByGroupId(self, request):
-        """用部署组id获取绑定信息
+        r"""用部署组id获取绑定信息
 
         :param request: Request instance for DescribeDeliveryConfigByGroupId.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigByGroupIdRequest`
@@ -2172,7 +2172,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeDeliveryConfigs(self, request):
-        """获取多个投递项配置
+        r"""获取多个投递项配置
 
         :param request: Request instance for DescribeDeliveryConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigsRequest`
@@ -2195,7 +2195,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeDownloadInfo(self, request):
-        """TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
+        r"""TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
         请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 
         :param request: Request instance for DescribeDownloadInfo.
@@ -2219,7 +2219,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeEnabledUnitRule(self, request):
-        """查询生效的单元化规则
+        r"""查询生效的单元化规则
 
         :param request: Request instance for DescribeEnabledUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeEnabledUnitRuleRequest`
@@ -2242,7 +2242,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeFileConfigReleases(self, request):
-        """查询文件配置项发布信息
+        r"""查询文件配置项发布信息
 
         :param request: Request instance for DescribeFileConfigReleases.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigReleasesRequest`
@@ -2265,7 +2265,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeFileConfigs(self, request):
-        """查询文件配置项列表
+        r"""查询文件配置项列表
 
         :param request: Request instance for DescribeFileConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigsRequest`
@@ -2288,7 +2288,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeFlowLastBatchState(self, request):
-        """查询工作流最新一个批次的状态信息
+        r"""查询工作流最新一个批次的状态信息
 
         :param request: Request instance for DescribeFlowLastBatchState.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateRequest`
@@ -2311,7 +2311,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGatewayAllGroupApis(self, request):
-        """查询网关所有分组下Api列表
+        r"""查询网关所有分组下Api列表
 
         :param request: Request instance for DescribeGatewayAllGroupApis.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayAllGroupApisRequest`
@@ -2334,7 +2334,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGatewayApis(self, request):
-        """查询API分组下的Api列表信息
+        r"""查询API分组下的Api列表信息
 
         :param request: Request instance for DescribeGatewayApis.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayApisRequest`
@@ -2357,7 +2357,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGatewayMonitorOverview(self, request):
-        """查询网关监控概览
+        r"""查询网关监控概览
 
         :param request: Request instance for DescribeGatewayMonitorOverview.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayMonitorOverviewRequest`
@@ -2380,7 +2380,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroup(self, request):
-        """查询虚拟机部署组详情
+        r"""查询虚拟机部署组详情
 
         :param request: Request instance for DescribeGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupRequest`
@@ -2403,7 +2403,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupAttribute(self, request):
-        """获取部署组其他属性
+        r"""获取部署组其他属性
 
         :param request: Request instance for DescribeGroupAttribute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupAttributeRequest`
@@ -2426,7 +2426,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupBindedGateways(self, request):
-        """查询某个API分组已绑定的网关部署组信息列表
+        r"""查询某个API分组已绑定的网关部署组信息列表
 
         :param request: Request instance for DescribeGroupBindedGateways.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBindedGatewaysRequest`
@@ -2449,7 +2449,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupBusinessLogConfigs(self, request):
-        """查询分组管理日志配置列表
+        r"""查询分组管理日志配置列表
 
         :param request: Request instance for DescribeGroupBusinessLogConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBusinessLogConfigsRequest`
@@ -2472,7 +2472,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupGateways(self, request):
-        """查询某个网关绑定的API 分组信息列表
+        r"""查询某个网关绑定的API 分组信息列表
 
         :param request: Request instance for DescribeGroupGateways.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupGatewaysRequest`
@@ -2495,7 +2495,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupInstances(self, request):
-        """查询虚拟机部署组云主机列表
+        r"""查询虚拟机部署组云主机列表
 
         :param request: Request instance for DescribeGroupInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupInstancesRequest`
@@ -2518,7 +2518,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupRelease(self, request):
-        """查询部署组相关的发布信息
+        r"""查询部署组相关的发布信息
 
         :param request: Request instance for DescribeGroupRelease.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupReleaseRequest`
@@ -2541,7 +2541,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupUseDetail(self, request):
-        """查询网关分组监控明细数据
+        r"""查询网关分组监控明细数据
 
         :param request: Request instance for DescribeGroupUseDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupUseDetailRequest`
@@ -2564,7 +2564,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroups(self, request):
-        """获取虚拟机部署组列表
+        r"""获取虚拟机部署组列表
 
         :param request: Request instance for DescribeGroups.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsRequest`
@@ -2587,7 +2587,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeGroupsWithPlugin(self, request):
-        """查询某个插件下绑定或未绑定的API分组
+        r"""查询某个插件下绑定或未绑定的API分组
 
         :param request: Request instance for DescribeGroupsWithPlugin.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsWithPluginRequest`
@@ -2610,7 +2610,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeImageRepository(self, request):
-        """查询镜像仓库列表
+        r"""查询镜像仓库列表
 
         :param request: Request instance for DescribeImageRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeImageRepositoryRequest`
@@ -2633,7 +2633,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeImageTags(self, request):
-        """镜像版本列表
+        r"""镜像版本列表
 
         :param request: Request instance for DescribeImageTags.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeImageTagsRequest`
@@ -2656,7 +2656,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInovcationIndicators(self, request):
-        """废弃接口
+        r"""废弃接口
 
         废弃
 
@@ -2681,7 +2681,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """无
+        r"""无
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInstancesRequest`
@@ -2704,7 +2704,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInvocationMetricDataCurve(self, request):
-        """查询调用指标数据变化曲线
+        r"""查询调用指标数据变化曲线
 
         :param request: Request instance for DescribeInvocationMetricDataCurve.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataCurveRequest`
@@ -2727,7 +2727,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInvocationMetricDataDimension(self, request):
-        """查询维度
+        r"""查询维度
 
         :param request: Request instance for DescribeInvocationMetricDataDimension.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataDimensionRequest`
@@ -2750,7 +2750,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInvocationMetricDataPoint(self, request):
-        """查询单值指标维度
+        r"""查询单值指标维度
 
         :param request: Request instance for DescribeInvocationMetricDataPoint.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataPointRequest`
@@ -2773,7 +2773,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInvocationMetricScatterPlot(self, request):
-        """查询调用指标数据散点图
+        r"""查询调用指标数据散点图
 
         :param request: Request instance for DescribeInvocationMetricScatterPlot.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricScatterPlotRequest`
@@ -2796,7 +2796,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeJvmMonitor(self, request):
-        """查询java实例jvm监控数据,返回数据可选
+        r"""查询java实例jvm监控数据,返回数据可选
 
         :param request: Request instance for DescribeJvmMonitor.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeJvmMonitorRequest`
@@ -2819,7 +2819,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLaneRules(self, request):
-        """查询灰度发布规则列表
+        r"""查询灰度发布规则列表
 
         :param request: Request instance for DescribeLaneRules.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesRequest`
@@ -2842,7 +2842,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLanes(self, request):
-        """查询泳道配置列表
+        r"""查询泳道配置列表
 
         :param request: Request instance for DescribeLanes.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesRequest`
@@ -2865,7 +2865,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLicenses(self, request):
-        """查询许可列表
+        r"""查询许可列表
 
         :param request: Request instance for DescribeLicenses.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLicensesRequest`
@@ -2888,7 +2888,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLogCapacity(self, request):
-        """获取用户日志使用量
+        r"""获取用户日志使用量
 
         :param request: Request instance for DescribeLogCapacity.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLogCapacityRequest`
@@ -2911,7 +2911,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeMicroservice(self, request):
-        """查询微服务详情
+        r"""查询微服务详情
 
         :param request: Request instance for DescribeMicroservice.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroserviceRequest`
@@ -2934,7 +2934,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeMicroservices(self, request):
-        """获取微服务列表
+        r"""获取微服务列表
 
         :param request: Request instance for DescribeMicroservices.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesRequest`
@@ -2957,7 +2957,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeMicroservicesByGroupIds(self, request):
-        """通过部署组ID获取微服务
+        r"""通过部署组ID获取微服务
 
         :param request: Request instance for DescribeMicroservicesByGroupIds.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesByGroupIdsRequest`
@@ -2980,7 +2980,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeMsApiList(self, request):
-        """查询服务API列表
+        r"""查询服务API列表
 
         :param request: Request instance for DescribeMsApiList.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMsApiListRequest`
@@ -3003,7 +3003,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeOverviewInvocation(self, request):
-        """服务调用监控统计概览
+        r"""服务调用监控统计概览
 
         :param request: Request instance for DescribeOverviewInvocation.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeOverviewInvocationRequest`
@@ -3026,7 +3026,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePathRewrite(self, request):
-        """查询路径重写
+        r"""查询路径重写
 
         :param request: Request instance for DescribePathRewrite.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewriteRequest`
@@ -3049,7 +3049,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePathRewrites(self, request):
-        """查询路径重写列表
+        r"""查询路径重写列表
 
         :param request: Request instance for DescribePathRewrites.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewritesRequest`
@@ -3072,7 +3072,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePkgs(self, request):
-        """无
+        r"""无
 
         :param request: Request instance for DescribePkgs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePkgsRequest`
@@ -3095,7 +3095,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePluginInstances(self, request):
-        """分页查询网关分组/API绑定（或未绑定）的插件列表
+        r"""分页查询网关分组/API绑定（或未绑定）的插件列表
 
         :param request: Request instance for DescribePluginInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePluginInstancesRequest`
@@ -3118,7 +3118,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePodInstances(self, request):
-        """获取部署组实例列表
+        r"""获取部署组实例列表
 
         :param request: Request instance for DescribePodInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePodInstancesRequest`
@@ -3141,7 +3141,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePrograms(self, request):
-        """查询数据集列表
+        r"""查询数据集列表
 
         :param request: Request instance for DescribePrograms.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeProgramsRequest`
@@ -3164,7 +3164,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePublicConfig(self, request):
-        """查询公共配置（单条）
+        r"""查询公共配置（单条）
 
         :param request: Request instance for DescribePublicConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigRequest`
@@ -3187,7 +3187,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePublicConfigReleaseLogs(self, request):
-        """查询公共配置发布历史
+        r"""查询公共配置发布历史
 
         :param request: Request instance for DescribePublicConfigReleaseLogs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleaseLogsRequest`
@@ -3210,7 +3210,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePublicConfigReleases(self, request):
-        """查询公共配置发布信息
+        r"""查询公共配置发布信息
 
         :param request: Request instance for DescribePublicConfigReleases.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleasesRequest`
@@ -3233,7 +3233,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePublicConfigSummary(self, request):
-        """查询公共配置汇总列表
+        r"""查询公共配置汇总列表
 
         :param request: Request instance for DescribePublicConfigSummary.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigSummaryRequest`
@@ -3256,7 +3256,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribePublicConfigs(self, request):
-        """查询公共配置项列表
+        r"""查询公共配置项列表
 
         :param request: Request instance for DescribePublicConfigs.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigsRequest`
@@ -3279,7 +3279,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeReleasedConfig(self, request):
-        """查询部署组发布的配置
+        r"""查询部署组发布的配置
 
         :param request: Request instance for DescribeReleasedConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigRequest`
@@ -3302,7 +3302,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeRepositories(self, request):
-        """查询仓库列表
+        r"""查询仓库列表
 
         :param request: Request instance for DescribeRepositories.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoriesRequest`
@@ -3325,7 +3325,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeRepository(self, request):
-        """查询仓库信息
+        r"""查询仓库信息
 
         :param request: Request instance for DescribeRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoryRequest`
@@ -3348,7 +3348,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeResourceConfig(self, request):
-        """无
+        r"""无
 
         :param request: Request instance for DescribeResourceConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigRequest`
@@ -3371,7 +3371,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeResourceTaskStatus(self, request):
-        """资源任务的执行状态描述接口
+        r"""资源任务的执行状态描述接口
 
         :param request: Request instance for DescribeResourceTaskStatus.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceTaskStatusRequest`
@@ -3394,7 +3394,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeSimpleApplications(self, request):
-        """查询简单应用列表
+        r"""查询简单应用列表
 
         :param request: Request instance for DescribeSimpleApplications.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleApplicationsRequest`
@@ -3417,7 +3417,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeSimpleClusters(self, request):
-        """查询简单集群列表
+        r"""查询简单集群列表
 
         :param request: Request instance for DescribeSimpleClusters.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleClustersRequest`
@@ -3440,7 +3440,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeSimpleGroups(self, request):
-        """查询简单部署组列表
+        r"""查询简单部署组列表
 
         :param request: Request instance for DescribeSimpleGroups.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleGroupsRequest`
@@ -3463,7 +3463,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeSimpleNamespaces(self, request):
-        """查询简单命名空间列表
+        r"""查询简单命名空间列表
 
         :param request: Request instance for DescribeSimpleNamespaces.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleNamespacesRequest`
@@ -3486,7 +3486,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeStatistics(self, request):
-        """服务统计页面：接口和服务维度
+        r"""服务统计页面：接口和服务维度
 
         :param request: Request instance for DescribeStatistics.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeStatisticsRequest`
@@ -3509,7 +3509,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """查询任务详情
+        r"""查询任务详情
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailRequest`
@@ -3532,7 +3532,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskLastStatus(self, request):
-        """查询任务最近一次执行状态
+        r"""查询任务最近一次执行状态
 
         :param request: Request instance for DescribeTaskLastStatus.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusRequest`
@@ -3555,7 +3555,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskRecords(self, request):
-        """翻页查询任务列表
+        r"""翻页查询任务列表
 
         :param request: Request instance for DescribeTaskRecords.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsRequest`
@@ -3578,7 +3578,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUnitApiUseDetail(self, request):
-        """查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
+        r"""查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
 
         :param request: Request instance for DescribeUnitApiUseDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitApiUseDetailRequest`
@@ -3601,7 +3601,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUnitNamespaces(self, request):
-        """查询单元化命名空间列表
+        r"""查询单元化命名空间列表
 
         :param request: Request instance for DescribeUnitNamespaces.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitNamespacesRequest`
@@ -3624,7 +3624,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUnitRule(self, request):
-        """查询单元化规则详情
+        r"""查询单元化规则详情
 
         :param request: Request instance for DescribeUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitRuleRequest`
@@ -3647,7 +3647,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUnitRules(self, request):
-        """查询单元化规则列表
+        r"""查询单元化规则列表
 
         :param request: Request instance for DescribeUnitRules.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitRulesRequest`
@@ -3670,7 +3670,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUnitRulesV2(self, request):
-        """查询单元化规则列表V2
+        r"""查询单元化规则列表V2
 
         :param request: Request instance for DescribeUnitRulesV2.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitRulesV2Request`
@@ -3693,7 +3693,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUploadInfo(self, request):
-        """TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
+        r"""TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
         请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 
         :param request: Request instance for DescribeUploadInfo.
@@ -3717,7 +3717,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeUsableUnitNamespaces(self, request):
-        """查询可用于被导入的命名空间列表
+        r"""查询可用于被导入的命名空间列表
 
         :param request: Request instance for DescribeUsableUnitNamespaces.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUsableUnitNamespacesRequest`
@@ -3740,7 +3740,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableLaneRule(self, request):
-        """禁用灰度发布规则
+        r"""禁用灰度发布规则
 
         :param request: Request instance for DisableLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableLaneRuleRequest`
@@ -3763,7 +3763,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableTask(self, request):
-        """停用任务
+        r"""停用任务
 
         :param request: Request instance for DisableTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskRequest`
@@ -3786,7 +3786,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableTaskFlow(self, request):
-        """停用工作流
+        r"""停用工作流
 
         :param request: Request instance for DisableTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowRequest`
@@ -3809,7 +3809,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableUnitRoute(self, request):
-        """禁用单元化路由
+        r"""禁用单元化路由
 
         :param request: Request instance for DisableUnitRoute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableUnitRouteRequest`
@@ -3832,7 +3832,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableUnitRule(self, request):
-        """禁用单元化规则
+        r"""禁用单元化规则
 
         :param request: Request instance for DisableUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableUnitRuleRequest`
@@ -3855,7 +3855,7 @@ class TsfClient(AbstractClient):
 
 
     def DisassociateBusinessLogConfig(self, request):
-        """取消关联业务日志配置项和应用
+        r"""取消关联业务日志配置项和应用
 
         :param request: Request instance for DisassociateBusinessLogConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisassociateBusinessLogConfigRequest`
@@ -3878,7 +3878,7 @@ class TsfClient(AbstractClient):
 
 
     def DisassociateKafkaConfig(self, request):
-        """取消关联投递信息和部署组
+        r"""取消关联投递信息和部署组
 
         :param request: Request instance for DisassociateKafkaConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisassociateKafkaConfigRequest`
@@ -3901,7 +3901,7 @@ class TsfClient(AbstractClient):
 
 
     def DraftApiGroup(self, request):
-        """下线Api分组
+        r"""下线Api分组
 
         :param request: Request instance for DraftApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DraftApiGroupRequest`
@@ -3924,7 +3924,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableLaneRule(self, request):
-        """启用灰度发布规则
+        r"""启用灰度发布规则
 
         :param request: Request instance for EnableLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableLaneRuleRequest`
@@ -3947,7 +3947,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableTask(self, request):
-        """启用任务
+        r"""启用任务
 
         :param request: Request instance for EnableTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskRequest`
@@ -3970,7 +3970,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableTaskFlow(self, request):
-        """启用工作流
+        r"""启用工作流
 
         :param request: Request instance for EnableTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowRequest`
@@ -3993,7 +3993,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableUnitRoute(self, request):
-        """启用单元化路由
+        r"""启用单元化路由
 
         :param request: Request instance for EnableUnitRoute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableUnitRouteRequest`
@@ -4016,7 +4016,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableUnitRule(self, request):
-        """启用单元化规则
+        r"""启用单元化规则
 
         :param request: Request instance for EnableUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableUnitRuleRequest`
@@ -4039,7 +4039,7 @@ class TsfClient(AbstractClient):
 
 
     def ExecuteTask(self, request):
-        """手动执行一次任务
+        r"""手动执行一次任务
 
         :param request: Request instance for ExecuteTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskRequest`
@@ -4062,7 +4062,7 @@ class TsfClient(AbstractClient):
 
 
     def ExecuteTaskFlow(self, request):
-        """执行一次工作流
+        r"""执行一次工作流
 
         :param request: Request instance for ExecuteTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowRequest`
@@ -4085,7 +4085,7 @@ class TsfClient(AbstractClient):
 
 
     def ExpandGroup(self, request):
-        """虚拟机部署组添加实例
+        r"""虚拟机部署组添加实例
 
         :param request: Request instance for ExpandGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExpandGroupRequest`
@@ -4108,7 +4108,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """修改应用
+        r"""修改应用
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyApplicationRequest`
@@ -4131,7 +4131,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyCluster(self, request):
-        """修改集群信息
+        r"""修改集群信息
 
         :param request: Request instance for ModifyCluster.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyClusterRequest`
@@ -4154,7 +4154,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyContainerGroup(self, request):
-        """修改容器部署组
+        r"""修改容器部署组
 
         :param request: Request instance for ModifyContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerGroupRequest`
@@ -4177,7 +4177,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyContainerReplicas(self, request):
-        """修改容器部署组实例数
+        r"""修改容器部署组实例数
 
         :param request: Request instance for ModifyContainerReplicas.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerReplicasRequest`
@@ -4200,7 +4200,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyGroup(self, request):
-        """更新部署组信息
+        r"""更新部署组信息
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyGroupRequest`
@@ -4223,7 +4223,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyLane(self, request):
-        """更新泳道配置信息
+        r"""更新泳道配置信息
 
         :param request: Request instance for ModifyLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRequest`
@@ -4246,7 +4246,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyLaneRule(self, request):
-        """更新灰度发布规则
+        r"""更新灰度发布规则
 
         :param request: Request instance for ModifyLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleRequest`
@@ -4269,7 +4269,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyMicroservice(self, request):
-        """修改微服务详情
+        r"""修改微服务详情
 
         :param request: Request instance for ModifyMicroservice.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyMicroserviceRequest`
@@ -4292,7 +4292,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """修改命名空间
+        r"""修改命名空间
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyNamespaceRequest`
@@ -4315,7 +4315,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyPathRewrite(self, request):
-        """修改路径重写
+        r"""修改路径重写
 
         :param request: Request instance for ModifyPathRewrite.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyPathRewriteRequest`
@@ -4338,7 +4338,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyProgram(self, request):
-        """更新数据集
+        r"""更新数据集
 
         :param request: Request instance for ModifyProgram.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyProgramRequest`
@@ -4361,7 +4361,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyTask(self, request):
-        """修改任务
+        r"""修改任务
 
         :param request: Request instance for ModifyTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskRequest`
@@ -4384,7 +4384,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyUploadInfo(self, request):
-        """调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
+        r"""调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
         调用此接口完成后，才标志上传包流程结束。
 
         :param request: Request instance for ModifyUploadInfo.
@@ -4408,7 +4408,7 @@ class TsfClient(AbstractClient):
 
 
     def OperateApplicationTcrBinding(self, request):
-        """绑定解绑tcr仓库
+        r"""绑定解绑tcr仓库
 
         :param request: Request instance for OperateApplicationTcrBinding.
         :type request: :class:`tencentcloud.tsf.v20180326.models.OperateApplicationTcrBindingRequest`
@@ -4431,7 +4431,7 @@ class TsfClient(AbstractClient):
 
 
     def ReassociateBusinessLogConfig(self, request):
-        """后端服务已经删除这个接口,  API 接口下线处理
+        r"""后端服务已经删除这个接口,  API 接口下线处理
 
         重关联业务日志配置
 
@@ -4456,7 +4456,7 @@ class TsfClient(AbstractClient):
 
 
     def RedoTask(self, request):
-        """重新执行任务
+        r"""重新执行任务
 
         :param request: Request instance for RedoTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskRequest`
@@ -4479,7 +4479,7 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskBatch(self, request):
-        """重新执行任务批次
+        r"""重新执行任务批次
 
         :param request: Request instance for RedoTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchRequest`
@@ -4502,7 +4502,7 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskExecute(self, request):
-        """重新执行在某个节点上执行任务。
+        r"""重新执行在某个节点上执行任务。
 
         :param request: Request instance for RedoTaskExecute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteRequest`
@@ -4525,7 +4525,7 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskFlowBatch(self, request):
-        """重新执行工作流批次
+        r"""重新执行工作流批次
 
         :param request: Request instance for RedoTaskFlowBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchRequest`
@@ -4548,7 +4548,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleaseApiGroup(self, request):
-        """发布Api分组
+        r"""发布Api分组
 
         :param request: Request instance for ReleaseApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseApiGroupRequest`
@@ -4571,7 +4571,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleaseConfig(self, request):
-        """发布配置
+        r"""发布配置
 
         :param request: Request instance for ReleaseConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigRequest`
@@ -4594,7 +4594,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleaseConfigWithDetailResp(self, request):
-        """发布配置，并且返回配置ID。
+        r"""发布配置，并且返回配置ID。
 
         :param request: Request instance for ReleaseConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigWithDetailRespRequest`
@@ -4617,7 +4617,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleaseFileConfig(self, request):
-        """发布文件配置
+        r"""发布文件配置
 
         :param request: Request instance for ReleaseFileConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseFileConfigRequest`
@@ -4640,7 +4640,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleasePublicConfig(self, request):
-        """发布公共配置
+        r"""发布公共配置
 
         :param request: Request instance for ReleasePublicConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleasePublicConfigRequest`
@@ -4663,7 +4663,7 @@ class TsfClient(AbstractClient):
 
 
     def RemoveInstances(self, request):
-        """从 TSF 集群中批量移除云主机节点
+        r"""从 TSF 集群中批量移除云主机节点
 
         :param request: Request instance for RemoveInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RemoveInstancesRequest`
@@ -4686,7 +4686,7 @@ class TsfClient(AbstractClient):
 
 
     def RevocationConfig(self, request):
-        """撤回已发布的配置
+        r"""撤回已发布的配置
 
         :param request: Request instance for RevocationConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationConfigRequest`
@@ -4709,7 +4709,7 @@ class TsfClient(AbstractClient):
 
 
     def RevocationPublicConfig(self, request):
-        """撤回已发布的公共配置
+        r"""撤回已发布的公共配置
 
         :param request: Request instance for RevocationPublicConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationPublicConfigRequest`
@@ -4732,7 +4732,7 @@ class TsfClient(AbstractClient):
 
 
     def RevokeFileConfig(self, request):
-        """撤回已发布的文件配置
+        r"""撤回已发布的文件配置
 
         :param request: Request instance for RevokeFileConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RevokeFileConfigRequest`
@@ -4755,7 +4755,7 @@ class TsfClient(AbstractClient):
 
 
     def RollbackConfig(self, request):
-        """回滚配置
+        r"""回滚配置
 
         :param request: Request instance for RollbackConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RollbackConfigRequest`
@@ -4778,7 +4778,7 @@ class TsfClient(AbstractClient):
 
 
     def SearchBusinessLog(self, request):
-        """业务日志搜索
+        r"""业务日志搜索
 
         :param request: Request instance for SearchBusinessLog.
         :type request: :class:`tencentcloud.tsf.v20180326.models.SearchBusinessLogRequest`
@@ -4801,7 +4801,7 @@ class TsfClient(AbstractClient):
 
 
     def SearchStdoutLog(self, request):
-        """标准输出日志搜索
+        r"""标准输出日志搜索
 
         :param request: Request instance for SearchStdoutLog.
         :type request: :class:`tencentcloud.tsf.v20180326.models.SearchStdoutLogRequest`
@@ -4824,7 +4824,7 @@ class TsfClient(AbstractClient):
 
 
     def ShrinkGroup(self, request):
-        """下线部署组所有机器实例
+        r"""下线部署组所有机器实例
 
         :param request: Request instance for ShrinkGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ShrinkGroupRequest`
@@ -4847,7 +4847,7 @@ class TsfClient(AbstractClient):
 
 
     def ShrinkInstances(self, request):
-        """虚拟机部署组下线实例
+        r"""虚拟机部署组下线实例
 
         :param request: Request instance for ShrinkInstances.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ShrinkInstancesRequest`
@@ -4870,7 +4870,7 @@ class TsfClient(AbstractClient):
 
 
     def StartContainerGroup(self, request):
-        """启动容器部署组
+        r"""启动容器部署组
 
         :param request: Request instance for StartContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StartContainerGroupRequest`
@@ -4893,7 +4893,7 @@ class TsfClient(AbstractClient):
 
 
     def StartGroup(self, request):
-        """启动分组
+        r"""启动分组
 
         :param request: Request instance for StartGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StartGroupRequest`
@@ -4916,7 +4916,7 @@ class TsfClient(AbstractClient):
 
 
     def StopContainerGroup(self, request):
-        """停止容器部署组
+        r"""停止容器部署组
 
         :param request: Request instance for StopContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopContainerGroupRequest`
@@ -4939,7 +4939,7 @@ class TsfClient(AbstractClient):
 
 
     def StopGroup(self, request):
-        """停止虚拟机部署组
+        r"""停止虚拟机部署组
 
         :param request: Request instance for StopGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopGroupRequest`
@@ -4962,7 +4962,7 @@ class TsfClient(AbstractClient):
 
 
     def StopTaskBatch(self, request):
-        """停止执行中的任务批次， 非运行中的任务不可调用。
+        r"""停止执行中的任务批次， 非运行中的任务不可调用。
 
         :param request: Request instance for StopTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchRequest`
@@ -4985,7 +4985,7 @@ class TsfClient(AbstractClient):
 
 
     def StopTaskExecute(self, request):
-        """停止正在某个节点上执行的任务
+        r"""停止正在某个节点上执行的任务
 
         :param request: Request instance for StopTaskExecute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteRequest`
@@ -5008,7 +5008,7 @@ class TsfClient(AbstractClient):
 
 
     def TerminateTaskFlowBatch(self, request):
-        """停止一个工作流批次
+        r"""停止一个工作流批次
 
         :param request: Request instance for TerminateTaskFlowBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchRequest`
@@ -5031,7 +5031,7 @@ class TsfClient(AbstractClient):
 
 
     def UnbindApiGroup(self, request):
-        """API分组批量与网关解绑
+        r"""API分组批量与网关解绑
 
         :param request: Request instance for UnbindApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UnbindApiGroupRequest`
@@ -5054,7 +5054,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateApiGroup(self, request):
-        """更新Api分组
+        r"""更新Api分组
 
         :param request: Request instance for UpdateApiGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiGroupRequest`
@@ -5077,7 +5077,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateApiRateLimitRule(self, request):
-        """更新API限流规则
+        r"""更新API限流规则
 
         :param request: Request instance for UpdateApiRateLimitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRuleRequest`
@@ -5100,7 +5100,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateApiRateLimitRules(self, request):
-        """批量更新API限流规则
+        r"""批量更新API限流规则
 
         :param request: Request instance for UpdateApiRateLimitRules.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRulesRequest`
@@ -5123,7 +5123,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateApiTimeouts(self, request):
-        """批量更新API超时
+        r"""批量更新API超时
 
         :param request: Request instance for UpdateApiTimeouts.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiTimeoutsRequest`
@@ -5146,7 +5146,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateConfigTemplate(self, request):
-        """更新参数模板
+        r"""更新参数模板
 
         :param request: Request instance for UpdateConfigTemplate.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateConfigTemplateRequest`
@@ -5169,7 +5169,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateGatewayApi(self, request):
-        """更新API
+        r"""更新API
 
         :param request: Request instance for UpdateGatewayApi.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateGatewayApiRequest`
@@ -5192,7 +5192,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateHealthCheckSettings(self, request):
-        """更新健康检查配置
+        r"""更新健康检查配置
 
         :param request: Request instance for UpdateHealthCheckSettings.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateHealthCheckSettingsRequest`
@@ -5215,7 +5215,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateRepository(self, request):
-        """更新仓库信息
+        r"""更新仓库信息
 
         :param request: Request instance for UpdateRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateRepositoryRequest`
@@ -5238,7 +5238,7 @@ class TsfClient(AbstractClient):
 
 
     def UpdateUnitRule(self, request):
-        """更新单元化规则
+        r"""更新单元化规则
 
         :param request: Request instance for UpdateUnitRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateUnitRuleRequest`

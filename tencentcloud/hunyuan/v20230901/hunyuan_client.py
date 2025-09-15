@@ -27,7 +27,7 @@ class HunyuanClient(AbstractClient):
 
 
     def ActivateService(self, request):
-        """开通服务
+        r"""开通服务
 
         :param request: Request instance for ActivateService.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.ActivateServiceRequest`
@@ -50,7 +50,7 @@ class HunyuanClient(AbstractClient):
 
 
     def ChatCompletions(self, request):
-        """如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -75,7 +75,7 @@ class HunyuanClient(AbstractClient):
 
 
     def ChatTranslations(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -98,7 +98,7 @@ class HunyuanClient(AbstractClient):
 
 
     def CreateThread(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -121,7 +121,7 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesDeletions(self, request):
-        """删除文件。
+        r"""删除文件。
 
         :param request: Request instance for FilesDeletions.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesDeletionsRequest`
@@ -139,7 +139,7 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesList(self, request):
-        """文件列表。
+        r"""文件列表。
 
         :param request: Request instance for FilesList.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesListRequest`
@@ -157,7 +157,7 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesUploads(self, request):
-        """上传用于不同用途的文件。
+        r"""上传用于不同用途的文件。
         当前用途仅支持 hunyuan 等模型的文档理解。
 
         :param request: Request instance for FilesUploads.
@@ -176,7 +176,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetEmbedding(self, request):
-        """腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
+        r"""腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 
         :param request: Request instance for GetEmbedding.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetEmbeddingRequest`
@@ -199,7 +199,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThread(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -222,7 +222,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThreadMessage(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -245,7 +245,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThreadMessageList(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -268,7 +268,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetTokenCount(self, request):
-        """该接口用于计算文本对应Token数、字符数。
+        r"""该接口用于计算文本对应Token数、字符数。
 
         :param request: Request instance for GetTokenCount.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetTokenCountRequest`
@@ -291,7 +291,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GroupChatCompletions(self, request):
-        """如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -316,7 +316,7 @@ class HunyuanClient(AbstractClient):
 
 
     def ImageQuestion(self, request):
-        """如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -341,7 +341,7 @@ class HunyuanClient(AbstractClient):
 
 
     def QueryHunyuanImageChatJob(self, request):
-        """混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+        r"""混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
         提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
         查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
         混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
@@ -367,7 +367,7 @@ class HunyuanClient(AbstractClient):
 
 
     def QueryHunyuanImageJob(self, request):
-        """混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+        r"""混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
         提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
         查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
         并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
@@ -393,7 +393,7 @@ class HunyuanClient(AbstractClient):
 
 
     def RunThread(self, request):
-        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -416,7 +416,7 @@ class HunyuanClient(AbstractClient):
 
 
     def SetPayMode(self, request):
-        """设置付费模式
+        r"""设置付费模式
 
         :param request: Request instance for SetPayMode.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.SetPayModeRequest`
@@ -439,7 +439,7 @@ class HunyuanClient(AbstractClient):
 
 
     def SubmitHunyuanImageChatJob(self, request):
-        """混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+        r"""混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
         提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
         查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
         混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
@@ -465,7 +465,7 @@ class HunyuanClient(AbstractClient):
 
 
     def SubmitHunyuanImageJob(self, request):
-        """混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+        r"""混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
         提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
         查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
         并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
@@ -491,7 +491,7 @@ class HunyuanClient(AbstractClient):
 
 
     def TextToImageLite(self, request):
-        """文生图轻量版接口根据输入的文本描述，智能生成与之相关的结果图。
+        r"""文生图轻量版接口根据输入的文本描述，智能生成与之相关的结果图。
         文生图轻量版默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 
         :param request: Request instance for TextToImageLite.

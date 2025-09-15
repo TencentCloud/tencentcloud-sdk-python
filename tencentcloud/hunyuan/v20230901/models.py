@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActivateServiceRequest(AbstractModel):
-    """ActivateService请求参数结构体
+    r"""ActivateService请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class ActivateServiceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
+        r"""开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
         :rtype: int
         """
         return self._PayMode
@@ -55,7 +55,7 @@ class ActivateServiceRequest(AbstractModel):
 
 
 class ActivateServiceResponse(AbstractModel):
-    """ActivateService返回参数结构体
+    r"""ActivateService返回参数结构体
 
     """
 
@@ -68,7 +68,7 @@ class ActivateServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -83,7 +83,7 @@ class ActivateServiceResponse(AbstractModel):
 
 
 class Approximate(AbstractModel):
-    """用户位置信息
+    r"""用户位置信息
 
     """
 
@@ -108,7 +108,7 @@ class Approximate(AbstractModel):
 
     @property
     def Country(self):
-        """表示 ISO 国家代码
+        r"""表示 ISO 国家代码
         :rtype: str
         """
         return self._Country
@@ -119,7 +119,7 @@ class Approximate(AbstractModel):
 
     @property
     def City(self):
-        """表示城市名称
+        r"""表示城市名称
         :rtype: str
         """
         return self._City
@@ -130,7 +130,7 @@ class Approximate(AbstractModel):
 
     @property
     def Region(self):
-        """表示区域名称
+        r"""表示区域名称
         :rtype: str
         """
         return self._Region
@@ -141,7 +141,7 @@ class Approximate(AbstractModel):
 
     @property
     def Timezone(self):
-        """表示IANA时区
+        r"""表示IANA时区
         :rtype: str
         """
         return self._Timezone
@@ -152,7 +152,7 @@ class Approximate(AbstractModel):
 
     @property
     def Address(self):
-        """表示详细地址
+        r"""表示详细地址
         :rtype: str
         """
         return self._Address
@@ -179,7 +179,7 @@ class Approximate(AbstractModel):
 
 
 class Character(AbstractModel):
-    """人物描述
+    r"""人物描述
 
     """
 
@@ -195,7 +195,7 @@ class Character(AbstractModel):
 
     @property
     def Name(self):
-        """人物名称
+        r"""人物名称
         :rtype: str
         """
         return self._Name
@@ -206,7 +206,7 @@ class Character(AbstractModel):
 
     @property
     def SystemPrompt(self):
-        """人物对应SystemPrompt
+        r"""人物对应SystemPrompt
         :rtype: str
         """
         return self._SystemPrompt
@@ -230,7 +230,7 @@ class Character(AbstractModel):
 
 
 class ChatCompletionsRequest(AbstractModel):
-    """ChatCompletions请求参数结构体
+    r"""ChatCompletions请求参数结构体
 
     """
 
@@ -368,7 +368,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中混元生文模型列表。
+        r"""模型名称，可选值参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中混元生文模型列表。
 示例值：hunyuan-turbos-latest
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :rtype: str
@@ -381,7 +381,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """聊天上下文信息。
+        r"""聊天上下文信息。
 说明：
 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
 2. Message.Role 可选值：system、user、assistant、 tool（functioncall场景）。
@@ -397,7 +397,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """流式调用开关。
+        r"""流式调用开关。
 说明：
 1. 未传值时默认为非流式调用（false）。
 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
@@ -418,7 +418,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def StreamModeration(self):
-        """流式输出审核开关。
+        r"""流式输出审核开关。
 说明：
 1. 当使用流式输出（Stream 字段值为 true）时，该字段生效。
 2. 输出审核有流式和同步两种模式，**流式模式首包响应更快**。未传值时默认为流式模式（true）。
@@ -437,7 +437,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopP(self):
-        """说明：
+        r"""说明：
 1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
         :rtype: float
@@ -450,7 +450,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """说明：
+        r"""说明：
 1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
         :rtype: float
@@ -463,7 +463,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableEnhancement(self):
-        """功能增强（如搜索）开关。
+        r"""功能增强（如搜索）开关。
 说明：
 1. hunyuan-lite 无功能增强（如搜索）能力，该参数对 hunyuan-lite 版本不生效。
 2. 未传值时默认关闭开关。
@@ -480,7 +480,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Tools(self):
-        """可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
+        r"""可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
         :rtype: list of Tool
         """
         return self._Tools
@@ -491,7 +491,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ToolChoice(self):
-        """工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        r"""工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
         :rtype: str
         """
         return self._ToolChoice
@@ -502,7 +502,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def CustomTool(self):
-        """强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        r"""强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Tool`
         """
         return self._CustomTool
@@ -513,7 +513,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def SearchInfo(self):
-        """默认是false，在值为true且命中搜索时，接口会返回SearchInfo
+        r"""默认是false，在值为true且命中搜索时，接口会返回SearchInfo
         :rtype: bool
         """
         return self._SearchInfo
@@ -524,7 +524,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Citation(self):
-        """搜索引文角标开关。
+        r"""搜索引文角标开关。
 说明：
 1. 配合EnableEnhancement和SearchInfo参数使用。打开后，回答中命中搜索的结果会在片段后增加角标标志，对应SearchInfo列表中的链接。
 2. false：开关关闭，true：开关打开。
@@ -539,7 +539,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableSpeedSearch(self):
-        """是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
+        r"""是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
         :rtype: bool
         """
         return self._EnableSpeedSearch
@@ -550,7 +550,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableMultimedia(self):
-        """多媒体开关。
+        r"""多媒体开关。
 详细介绍请阅读 [多媒体介绍](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
 说明：
 1. 该参数目前仅对白名单内用户生效，如您想体验该功能请 [联系我们](https://cloud.tencent.com/act/event/Online_service)。
@@ -568,7 +568,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableDeepSearch(self):
-        """是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
+        r"""是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
         :rtype: bool
         """
         return self._EnableDeepSearch
@@ -579,7 +579,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Seed(self):
-        """说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
+        r"""说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
         :rtype: int
         """
         return self._Seed
@@ -590,7 +590,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ForceSearchEnhancement(self):
-        """强制搜索增强开关。
+        r"""强制搜索增强开关。
 说明：
 1. 未传值时默认关闭。
 2. 开启后，将强制走AI搜索，当AI搜索结果为空时，由大模型回复兜底话术。
@@ -604,7 +604,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stop(self):
-        """自定义结束生成字符串
+        r"""自定义结束生成字符串
 
 调用 OpenAI 的接口时，如果您指定了 `stop` 参数, 模型会停止在匹配到 `stop` 的内容之前。
 在调用混元接口时，会停止在匹配到 `stop` 的内容之后。
@@ -622,7 +622,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableRecommendedQuestions(self):
-        """推荐问答开关。
+        r"""推荐问答开关。
 说明：
 1. 未传值时默认关闭。
 2. 开启后，在返回值的最后一个包中会增加 RecommendedQuestions 字段表示推荐问答， 最多返回3条。
@@ -636,7 +636,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableDeepRead(self):
-        """是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
+        r"""是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
         :rtype: bool
         """
         return self._EnableDeepRead
@@ -647,7 +647,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def WebSearchOptions(self):
-        """知识注入相关的参数信息
+        r"""知识注入相关的参数信息
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.WebSearchOptions`
         """
         return self._WebSearchOptions
@@ -658,7 +658,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopicChoice(self):
-        """用户传入Topic
+        r"""用户传入Topic
         :rtype: str
         """
         return self._TopicChoice
@@ -669,7 +669,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableThinking(self):
-        """模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
+        r"""模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
         :rtype: bool
         """
         return self._EnableThinking
@@ -728,7 +728,7 @@ class ChatCompletionsRequest(AbstractModel):
 
 
 class ChatCompletionsResponse(AbstractModel):
-    """ChatCompletions返回参数结构体
+    r"""ChatCompletions返回参数结构体
 
     """
 
@@ -780,7 +780,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Created(self):
-        """Unix 时间戳，单位为秒。
+        r"""Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._Created
@@ -791,7 +791,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 统计信息。
+        r"""Token 统计信息。
 按照总 Token 数量计费。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
         """
@@ -803,7 +803,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Note(self):
-        """免责声明。
+        r"""免责声明。
         :rtype: str
         """
         return self._Note
@@ -814,7 +814,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
-        """本次请求的 RequestId。
+        r"""本次请求的 RequestId。
         :rtype: str
         """
         return self._Id
@@ -825,7 +825,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容。
+        r"""回复内容。
         :rtype: list of Choice
         """
         return self._Choices
@@ -836,7 +836,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """错误信息。
+        r"""错误信息。
 如果流式返回中服务处理异常，返回该错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
@@ -851,7 +851,7 @@ class ChatCompletionsResponse(AbstractModel):
     def ModerationLevel(self):
         warnings.warn("parameter `ModerationLevel` is deprecated", DeprecationWarning) 
 
-        """多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+        r"""多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
         :rtype: str
         """
         return self._ModerationLevel
@@ -864,7 +864,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def SearchInfo(self):
-        """搜索结果信息
+        r"""搜索结果信息
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
         """
         return self._SearchInfo
@@ -875,7 +875,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Replaces(self):
-        """多媒体信息。
+        r"""多媒体信息。
 说明：
 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
@@ -889,7 +889,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def RecommendedQuestions(self):
-        """推荐问答。
+        r"""推荐问答。
         :rtype: list of str
         """
         return self._RecommendedQuestions
@@ -900,7 +900,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Processes(self):
-        """AI搜索返回状态
+        r"""AI搜索返回状态
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Processes`
         """
         return self._Processes
@@ -911,7 +911,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -955,7 +955,7 @@ class ChatCompletionsResponse(AbstractModel):
 
 
 class ChatTranslationsRequest(AbstractModel):
-    """ChatTranslations请求参数结构体
+    r"""ChatTranslations请求参数结构体
 
     """
 
@@ -1002,7 +1002,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-translation、hunyuan-translation-lite。
+        r"""模型名称，可选值包括 hunyuan-translation、hunyuan-translation-lite。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -1017,7 +1017,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """流式调用开关。
+        r"""流式调用开关。
 说明：
 1. 未传值时默认为非流式调用（false）。
 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
@@ -1038,7 +1038,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Text(self):
-        """待翻译的文本
+        r"""待翻译的文本
         :rtype: str
         """
         return self._Text
@@ -1049,7 +1049,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Source(self):
-        """源语言。
+        r"""源语言。
 支持语言列表: 1. 简体中文：zh，2. 粤语：yue，3. 英语：en，4. 法语：fr，5. 葡萄牙语：pt，6. 西班牙语：es，7. 日语：ja，8. 土耳其语：tr，9. 俄语：ru，10. 阿拉伯语：ar，11. 韩语：ko，12. 泰语：th，13. 意大利语：it，14. 德语：de，15. 越南语：vi，16. 马来语：ms，17. 印尼语：id
         :rtype: str
         """
@@ -1061,7 +1061,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言。
+        r"""目标语言。
 支持语言列表: 1. 简体中文：zh，2. 粤语：yue，3. 英语：en，4. 法语：fr，5. 葡萄牙语：pt，6. 西班牙语：es，7. 日语：ja，8. 土耳其语：tr，9. 俄语：ru，10. 阿拉伯语：ar，11. 韩语：ko，12. 泰语：th，13. 意大利语：it，14. 德语：de，15. 越南语：vi，16. 马来语：ms，17. 印尼语：id
         :rtype: str
         """
@@ -1073,7 +1073,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def Field(self):
-        """待翻译文本所属领域，例如游戏剧情等
+        r"""待翻译文本所属领域，例如游戏剧情等
         :rtype: str
         """
         return self._Field
@@ -1084,7 +1084,7 @@ class ChatTranslationsRequest(AbstractModel):
 
     @property
     def References(self):
-        """参考示例，最多10个
+        r"""参考示例，最多10个
         :rtype: list of Reference
         """
         return self._References
@@ -1118,7 +1118,7 @@ class ChatTranslationsRequest(AbstractModel):
 
 
 class ChatTranslationsResponse(AbstractModel):
-    """ChatTranslations返回参数结构体
+    r"""ChatTranslations返回参数结构体
 
     """
 
@@ -1151,7 +1151,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def Id(self):
-        """本次请求的 RequestId。
+        r"""本次请求的 RequestId。
         :rtype: str
         """
         return self._Id
@@ -1162,7 +1162,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def Note(self):
-        """免责声明。
+        r"""免责声明。
         :rtype: str
         """
         return self._Note
@@ -1173,7 +1173,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def Created(self):
-        """Unix 时间戳，单位为秒。
+        r"""Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._Created
@@ -1184,7 +1184,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 统计信息。
+        r"""Token 统计信息。
 按照总 Token 数量计费。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
         """
@@ -1196,7 +1196,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容。
+        r"""回复内容。
         :rtype: list of TranslationChoice
         """
         return self._Choices
@@ -1207,7 +1207,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """错误信息。
+        r"""错误信息。
 如果流式返回中服务处理异常，返回该错误信息。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
         """
@@ -1219,7 +1219,7 @@ class ChatTranslationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -1249,7 +1249,7 @@ class ChatTranslationsResponse(AbstractModel):
 
 
 class Choice(AbstractModel):
-    """返回的回复, 支持多个
+    r"""返回的回复, 支持多个
 
     """
 
@@ -1279,7 +1279,7 @@ tool_calls 标识函数调用。
 
     @property
     def FinishReason(self):
-        """结束标志位，可能为 stop、 sensitive或者tool_calls。
+        r"""结束标志位，可能为 stop、 sensitive或者tool_calls。
 stop 表示输出正常结束。
 sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
 tool_calls 标识函数调用。
@@ -1293,7 +1293,7 @@ tool_calls 标识函数调用。
 
     @property
     def Delta(self):
-        """增量返回值，流式调用时使用该字段。
+        r"""增量返回值，流式调用时使用该字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Delta`
         """
@@ -1305,7 +1305,7 @@ tool_calls 标识函数调用。
 
     @property
     def Message(self):
-        """返回值，非流式调用时使用该字段。
+        r"""返回值，非流式调用时使用该字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Message`
         """
@@ -1317,7 +1317,7 @@ tool_calls 标识函数调用。
 
     @property
     def Index(self):
-        """索引值，流式调用时使用该字段。
+        r"""索引值，流式调用时使用该字段。
         :rtype: int
         """
         return self._Index
@@ -1328,7 +1328,7 @@ tool_calls 标识函数调用。
 
     @property
     def ModerationLevel(self):
-        """多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+        r"""多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
         :rtype: str
         """
         return self._ModerationLevel
@@ -1359,7 +1359,7 @@ tool_calls 标识函数调用。
 
 
 class Content(AbstractModel):
-    """可以传入多种类型的内容，如图片、文本。
+    r"""可以传入多种类型的内容，如图片、文本。
 
     """
 
@@ -1385,7 +1385,7 @@ class Content(AbstractModel):
 
     @property
     def Type(self):
-        """内容类型
+        r"""内容类型
 注意：
 需包含至少一个 Type 为"text"的参数。
 参数值可选范围：[text", "image_url"]
@@ -1400,7 +1400,7 @@ class Content(AbstractModel):
 
     @property
     def Text(self):
-        """当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 image_url 时，当前字段内容需保持为空，传递内容不生效。
+        r"""当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 image_url 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1412,7 +1412,7 @@ class Content(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
+        r"""图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 text 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
@@ -1441,13 +1441,13 @@ class Content(AbstractModel):
 
 
 class CreateThreadRequest(AbstractModel):
-    """CreateThread请求参数结构体
+    r"""CreateThread请求参数结构体
 
     """
 
 
 class CreateThreadResponse(AbstractModel):
-    """CreateThread返回参数结构体
+    r"""CreateThread返回参数结构体
 
     """
 
@@ -1473,7 +1473,7 @@ class CreateThreadResponse(AbstractModel):
 
     @property
     def ID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ID
@@ -1484,7 +1484,7 @@ class CreateThreadResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._Object
@@ -1495,7 +1495,7 @@ class CreateThreadResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间，Unix 时间戳，单位为秒。
+        r"""创建时间，Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._CreatedAt
@@ -1506,7 +1506,7 @@ class CreateThreadResponse(AbstractModel):
 
     @property
     def ToolResources(self):
-        """提供给工具的资源列表
+        r"""提供给工具的资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
         """
@@ -1518,7 +1518,7 @@ class CreateThreadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -1539,7 +1539,7 @@ class CreateThreadResponse(AbstractModel):
 
 
 class Delta(AbstractModel):
-    """返回的内容（流式返回）
+    r"""返回的内容（流式返回）
 
     """
 
@@ -1565,7 +1565,7 @@ class Delta(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称。
+        r"""角色名称。
         :rtype: str
         """
         return self._Role
@@ -1576,7 +1576,7 @@ class Delta(AbstractModel):
 
     @property
     def Content(self):
-        """内容详情。
+        r"""内容详情。
         :rtype: str
         """
         return self._Content
@@ -1587,7 +1587,7 @@ class Delta(AbstractModel):
 
     @property
     def ToolCalls(self):
-        """模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+        r"""模型生成的工具调用，仅 hunyuan-functioncall 模型支持
 说明：
 对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。
 
@@ -1602,7 +1602,7 @@ class Delta(AbstractModel):
 
     @property
     def ReasoningContent(self):
-        """思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请不要将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
+        r"""思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请不要将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
         :rtype: str
         """
         return self._ReasoningContent
@@ -1633,7 +1633,7 @@ class Delta(AbstractModel):
 
 
 class EmbeddingData(AbstractModel):
-    """Embedding 信息。
+    r"""Embedding 信息。
 
     """
 
@@ -1655,7 +1655,7 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Embedding(self):
-        """Embedding 信息，目前为 1024 维浮点数。
+        r"""Embedding 信息，目前为 1024 维浮点数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -1667,7 +1667,7 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Index(self):
-        """下标，目前不支持批量，因此固定为 0。
+        r"""下标，目前不支持批量，因此固定为 0。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1679,7 +1679,7 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Object(self):
-        """目前固定为 "embedding"。
+        r"""目前固定为 "embedding"。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1705,7 +1705,7 @@ class EmbeddingData(AbstractModel):
 
 
 class EmbeddingUsage(AbstractModel):
-    """Token 使用计数。
+    r"""Token 使用计数。
 
     """
 
@@ -1721,7 +1721,7 @@ class EmbeddingUsage(AbstractModel):
 
     @property
     def PromptTokens(self):
-        """输入 Token 数。
+        r"""输入 Token 数。
         :rtype: int
         """
         return self._PromptTokens
@@ -1732,7 +1732,7 @@ class EmbeddingUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """总 Token 数。
+        r"""总 Token 数。
         :rtype: int
         """
         return self._TotalTokens
@@ -1756,7 +1756,7 @@ class EmbeddingUsage(AbstractModel):
 
 
 class ErrorMsg(AbstractModel):
-    """运行时异常信息。
+    r"""运行时异常信息。
 
     """
 
@@ -1775,7 +1775,7 @@ class ErrorMsg(AbstractModel):
 
     @property
     def Msg(self):
-        """错误提示信息。
+        r"""错误提示信息。
         :rtype: str
         """
         return self._Msg
@@ -1786,7 +1786,7 @@ class ErrorMsg(AbstractModel):
 
     @property
     def Code(self):
-        """错误码。
+        r"""错误码。
 4000 服务内部异常。
 4001 请求模型超时。
 
@@ -1813,7 +1813,7 @@ class ErrorMsg(AbstractModel):
 
 
 class FileObject(AbstractModel):
-    """已上传的文件对象。
+    r"""已上传的文件对象。
 
     """
 
@@ -1841,7 +1841,7 @@ class FileObject(AbstractModel):
 
     @property
     def ID(self):
-        """文件标识符，可在各个API中引用。
+        r"""文件标识符，可在各个API中引用。
         :rtype: str
         """
         return self._ID
@@ -1852,7 +1852,7 @@ class FileObject(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型，始终为 file。
+        r"""对象类型，始终为 file。
         :rtype: str
         """
         return self._Object
@@ -1863,7 +1863,7 @@ class FileObject(AbstractModel):
 
     @property
     def Bytes(self):
-        """文件大小，单位为字节。
+        r"""文件大小，单位为字节。
         :rtype: int
         """
         return self._Bytes
@@ -1874,7 +1874,7 @@ class FileObject(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """文件创建时的 Unix 时间戳（秒）。
+        r"""文件创建时的 Unix 时间戳（秒）。
         :rtype: int
         """
         return self._CreatedAt
@@ -1885,7 +1885,7 @@ class FileObject(AbstractModel):
 
     @property
     def Filename(self):
-        """文件名。
+        r"""文件名。
         :rtype: str
         """
         return self._Filename
@@ -1896,7 +1896,7 @@ class FileObject(AbstractModel):
 
     @property
     def Purpose(self):
-        """上传文件的用途。
+        r"""上传文件的用途。
         :rtype: str
         """
         return self._Purpose
@@ -1924,7 +1924,7 @@ class FileObject(AbstractModel):
 
 
 class FilesDeletionsRequest(AbstractModel):
-    """FilesDeletions请求参数结构体
+    r"""FilesDeletions请求参数结构体
 
     """
 
@@ -1937,7 +1937,7 @@ class FilesDeletionsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """文件标识符。
+        r"""文件标识符。
         :rtype: str
         """
         return self._ID
@@ -1960,7 +1960,7 @@ class FilesDeletionsRequest(AbstractModel):
 
 
 class FilesDeletionsResponse(AbstractModel):
-    """FilesDeletions返回参数结构体
+    r"""FilesDeletions返回参数结构体
 
     """
 
@@ -1982,7 +1982,7 @@ class FilesDeletionsResponse(AbstractModel):
 
     @property
     def ID(self):
-        """文件标识符。
+        r"""文件标识符。
         :rtype: str
         """
         return self._ID
@@ -1993,7 +1993,7 @@ class FilesDeletionsResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型，始终为 file。
+        r"""对象类型，始终为 file。
         :rtype: str
         """
         return self._Object
@@ -2004,7 +2004,7 @@ class FilesDeletionsResponse(AbstractModel):
 
     @property
     def Deleted(self):
-        """是否删除成功。
+        r"""是否删除成功。
         :rtype: bool
         """
         return self._Deleted
@@ -2015,7 +2015,7 @@ class FilesDeletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -2033,7 +2033,7 @@ class FilesDeletionsResponse(AbstractModel):
 
 
 class FilesListRequest(AbstractModel):
-    """FilesList请求参数结构体
+    r"""FilesList请求参数结构体
 
     """
 
@@ -2049,7 +2049,7 @@ class FilesListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量。
+        r"""分页偏移量。
         :rtype: int
         """
         return self._Offset
@@ -2060,7 +2060,7 @@ class FilesListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，最大 100。
+        r"""每页数量，最大 100。
         :rtype: int
         """
         return self._Limit
@@ -2084,7 +2084,7 @@ class FilesListRequest(AbstractModel):
 
 
 class FilesListResponse(AbstractModel):
-    """FilesList返回参数结构体
+    r"""FilesList返回参数结构体
 
     """
 
@@ -2106,7 +2106,7 @@ class FilesListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """文件数量。
+        r"""文件数量。
         :rtype: int
         """
         return self._Total
@@ -2117,7 +2117,7 @@ class FilesListResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型，始终为 list。
+        r"""对象类型，始终为 list。
         :rtype: str
         """
         return self._Object
@@ -2128,7 +2128,7 @@ class FilesListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """FileObject 列表。
+        r"""FileObject 列表。
         :rtype: list of FileObject
         """
         return self._Data
@@ -2139,7 +2139,7 @@ class FilesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -2162,7 +2162,7 @@ class FilesListResponse(AbstractModel):
 
 
 class FilesUploadsRequest(AbstractModel):
-    """FilesUploads请求参数结构体
+    r"""FilesUploads请求参数结构体
 
     """
 
@@ -2178,7 +2178,7 @@ class FilesUploadsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """文件名。
+        r"""文件名。
         :rtype: str
         """
         return self._Name
@@ -2189,7 +2189,7 @@ class FilesUploadsRequest(AbstractModel):
 
     @property
     def URL(self):
-        """文件链接。目前支持 csv, doc, docx, pdf, ppt, pptx, txt, xls, xlsx 格式，单文件大小限制为100M。
+        r"""文件链接。目前支持 csv, doc, docx, pdf, ppt, pptx, txt, xls, xlsx 格式，单文件大小限制为100M。
         :rtype: str
         """
         return self._URL
@@ -2213,7 +2213,7 @@ class FilesUploadsRequest(AbstractModel):
 
 
 class FilesUploadsResponse(AbstractModel):
-    """FilesUploads返回参数结构体
+    r"""FilesUploads返回参数结构体
 
     """
 
@@ -2244,7 +2244,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def ID(self):
-        """文件标识符，可在各个API中引用。
+        r"""文件标识符，可在各个API中引用。
         :rtype: str
         """
         return self._ID
@@ -2255,7 +2255,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型，始终为 file。
+        r"""对象类型，始终为 file。
         :rtype: str
         """
         return self._Object
@@ -2266,7 +2266,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def Bytes(self):
-        """文件大小，单位为字节。
+        r"""文件大小，单位为字节。
         :rtype: int
         """
         return self._Bytes
@@ -2277,7 +2277,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """文件创建时的 Unix 时间戳（秒）。
+        r"""文件创建时的 Unix 时间戳（秒）。
         :rtype: int
         """
         return self._CreatedAt
@@ -2288,7 +2288,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def Filename(self):
-        """文件名。
+        r"""文件名。
         :rtype: str
         """
         return self._Filename
@@ -2299,7 +2299,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def Purpose(self):
-        """上传文件的用途。
+        r"""上传文件的用途。
         :rtype: str
         """
         return self._Purpose
@@ -2310,7 +2310,7 @@ class FilesUploadsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -2331,7 +2331,7 @@ class FilesUploadsResponse(AbstractModel):
 
 
 class GetEmbeddingRequest(AbstractModel):
-    """GetEmbedding请求参数结构体
+    r"""GetEmbedding请求参数结构体
 
     """
 
@@ -2347,7 +2347,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def Input(self):
-        """输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
+        r"""输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
         :rtype: str
         """
         return self._Input
@@ -2358,7 +2358,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def InputList(self):
-        """输入文本数组。输入数组总长度不超过 50 。
+        r"""输入文本数组。输入数组总长度不超过 50 。
         :rtype: list of str
         """
         return self._InputList
@@ -2382,7 +2382,7 @@ class GetEmbeddingRequest(AbstractModel):
 
 
 class GetEmbeddingResponse(AbstractModel):
-    """GetEmbedding返回参数结构体
+    r"""GetEmbedding返回参数结构体
 
     """
 
@@ -2401,7 +2401,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的 Embedding 信息。
+        r"""返回的 Embedding 信息。
         :rtype: list of EmbeddingData
         """
         return self._Data
@@ -2412,7 +2412,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 使用计数，按照总 Token 数量收费。
+        r"""Token 使用计数，按照总 Token 数量收费。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
         """
         return self._Usage
@@ -2423,7 +2423,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2447,7 +2447,7 @@ class GetEmbeddingResponse(AbstractModel):
 
 
 class GetThreadMessageListRequest(AbstractModel):
-    """GetThreadMessageList请求参数结构体
+    r"""GetThreadMessageList请求参数结构体
 
     """
 
@@ -2466,7 +2466,7 @@ class GetThreadMessageListRequest(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -2477,7 +2477,7 @@ class GetThreadMessageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回的消息条数，1 - 100 条
+        r"""返回的消息条数，1 - 100 条
         :rtype: int
         """
         return self._Limit
@@ -2488,7 +2488,7 @@ class GetThreadMessageListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+        r"""排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
         :rtype: str
         """
         return self._Order
@@ -2513,7 +2513,7 @@ class GetThreadMessageListRequest(AbstractModel):
 
 
 class GetThreadMessageListResponse(AbstractModel):
-    """GetThreadMessageList返回参数结构体
+    r"""GetThreadMessageList返回参数结构体
 
     """
 
@@ -2549,7 +2549,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消息列表
+        r"""消息列表
         :rtype: list of ThreadMessage
         """
         return self._Data
@@ -2562,7 +2562,7 @@ class GetThreadMessageListResponse(AbstractModel):
     def FirstID(self):
         warnings.warn("parameter `FirstID` is deprecated", DeprecationWarning) 
 
-        """第一条消息 ID
+        r"""第一条消息 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2578,7 +2578,7 @@ class GetThreadMessageListResponse(AbstractModel):
     def LastID(self):
         warnings.warn("parameter `LastID` is deprecated", DeprecationWarning) 
 
-        """已废弃
+        r"""已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2592,7 +2592,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def HasMore(self):
-        """是否还有更多消息
+        r"""是否还有更多消息
         :rtype: bool
         """
         return self._HasMore
@@ -2603,7 +2603,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._Object
@@ -2614,7 +2614,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def FirstMsgID(self):
-        """第一条消息 ID
+        r"""第一条消息 ID
         :rtype: str
         """
         return self._FirstMsgID
@@ -2625,7 +2625,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def LastMsgID(self):
-        """最后一条消息 ID
+        r"""最后一条消息 ID
         :rtype: str
         """
         return self._LastMsgID
@@ -2636,7 +2636,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -2663,7 +2663,7 @@ class GetThreadMessageListResponse(AbstractModel):
 
 
 class GetThreadMessageRequest(AbstractModel):
-    """GetThreadMessage请求参数结构体
+    r"""GetThreadMessage请求参数结构体
 
     """
 
@@ -2679,7 +2679,7 @@ class GetThreadMessageRequest(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -2690,7 +2690,7 @@ class GetThreadMessageRequest(AbstractModel):
 
     @property
     def MessageID(self):
-        """消息 ID
+        r"""消息 ID
         :rtype: str
         """
         return self._MessageID
@@ -2714,7 +2714,7 @@ class GetThreadMessageRequest(AbstractModel):
 
 
 class GetThreadMessageResponse(AbstractModel):
-    """GetThreadMessage返回参数结构体
+    r"""GetThreadMessage返回参数结构体
 
     """
 
@@ -2772,7 +2772,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def ID(self):
-        """消息 ID
+        r"""消息 ID
         :rtype: str
         """
         return self._ID
@@ -2783,7 +2783,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._Object
@@ -2794,7 +2794,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedAt
@@ -2805,7 +2805,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -2816,7 +2816,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        r"""状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
         :rtype: str
         """
         return self._Status
@@ -2827,7 +2827,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def InCompleteDetails(self):
-        """未完成原因
+        r"""未完成原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
         """
@@ -2839,7 +2839,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def CompletedAt(self):
-        """完成时间
+        r"""完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2851,7 +2851,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def InCompleteAt(self):
-        """未完成时间
+        r"""未完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2863,7 +2863,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def Role(self):
-        """角色
+        r"""角色
         :rtype: str
         """
         return self._Role
@@ -2874,7 +2874,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -2885,7 +2885,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def AssistantID(self):
-        """助手 ID
+        r"""助手 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2897,7 +2897,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def RunID(self):
-        """运行 ID
+        r"""运行 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2909,7 +2909,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def Attachments(self):
-        """附件
+        r"""附件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ThreadMessageAttachmentObject
         """
@@ -2921,7 +2921,7 @@ class GetThreadMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -2956,7 +2956,7 @@ class GetThreadMessageResponse(AbstractModel):
 
 
 class GetThreadRequest(AbstractModel):
-    """GetThread请求参数结构体
+    r"""GetThread请求参数结构体
 
     """
 
@@ -2969,7 +2969,7 @@ class GetThreadRequest(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -2992,7 +2992,7 @@ class GetThreadRequest(AbstractModel):
 
 
 class GetThreadResponse(AbstractModel):
-    """GetThread返回参数结构体
+    r"""GetThread返回参数结构体
 
     """
 
@@ -3018,7 +3018,7 @@ class GetThreadResponse(AbstractModel):
 
     @property
     def ID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ID
@@ -3029,7 +3029,7 @@ class GetThreadResponse(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._Object
@@ -3040,7 +3040,7 @@ class GetThreadResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间，Unix 时间戳，单位为秒。
+        r"""创建时间，Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._CreatedAt
@@ -3051,7 +3051,7 @@ class GetThreadResponse(AbstractModel):
 
     @property
     def ToolResources(self):
-        """提供给工具的资源列表
+        r"""提供给工具的资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
         """
@@ -3063,7 +3063,7 @@ class GetThreadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -3084,7 +3084,7 @@ class GetThreadResponse(AbstractModel):
 
 
 class GetTokenCountRequest(AbstractModel):
-    """GetTokenCount请求参数结构体
+    r"""GetTokenCount请求参数结构体
 
     """
 
@@ -3097,7 +3097,7 @@ class GetTokenCountRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """输入文本
+        r"""输入文本
         :rtype: str
         """
         return self._Prompt
@@ -3120,7 +3120,7 @@ class GetTokenCountRequest(AbstractModel):
 
 
 class GetTokenCountResponse(AbstractModel):
-    """GetTokenCount返回参数结构体
+    r"""GetTokenCount返回参数结构体
 
     """
 
@@ -3142,7 +3142,7 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def TokenCount(self):
-        """token计数
+        r"""token计数
         :rtype: int
         """
         return self._TokenCount
@@ -3153,7 +3153,7 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def CharacterCount(self):
-        """字符计数
+        r"""字符计数
         :rtype: int
         """
         return self._CharacterCount
@@ -3164,7 +3164,7 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def Tokens(self):
-        """切分后的列表
+        r"""切分后的列表
         :rtype: list of str
         """
         return self._Tokens
@@ -3175,7 +3175,7 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3193,7 +3193,7 @@ class GetTokenCountResponse(AbstractModel):
 
 
 class GroupChatCompletionsRequest(AbstractModel):
-    """GroupChatCompletions请求参数结构体
+    r"""GroupChatCompletions请求参数结构体
 
     """
 
@@ -3234,7 +3234,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        r"""模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :rtype: str
         """
         return self._Model
@@ -3245,7 +3245,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """聊天上下文信息。
+        r"""聊天上下文信息。
         :rtype: list of GroupMessage
         """
         return self._Messages
@@ -3256,7 +3256,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """流式调用开关。
+        r"""流式调用开关。
 说明：
 1. 未传值时默认为非流式调用（false）。
 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
@@ -3277,7 +3277,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def TargetCharacterName(self):
-        """目标人物名称
+        r"""目标人物名称
         :rtype: str
         """
         return self._TargetCharacterName
@@ -3288,7 +3288,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def GroupChatConfig(self):
-        """角色描述
+        r"""角色描述
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GroupChatConfig`
         """
         return self._GroupChatConfig
@@ -3299,7 +3299,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -3310,7 +3310,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """对话接口
+        r"""对话接口
         :rtype: str
         """
         return self._SessionId
@@ -3346,7 +3346,7 @@ class GroupChatCompletionsRequest(AbstractModel):
 
 
 class GroupChatCompletionsResponse(AbstractModel):
-    """GroupChatCompletions返回参数结构体
+    r"""GroupChatCompletions返回参数结构体
 
     """
 
@@ -3392,7 +3392,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Created(self):
-        """Unix 时间戳，单位为秒。
+        r"""Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._Created
@@ -3403,7 +3403,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 统计信息。
+        r"""Token 统计信息。
 按照总 Token 数量计费。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
         """
@@ -3415,7 +3415,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Note(self):
-        """免责声明。
+        r"""免责声明。
         :rtype: str
         """
         return self._Note
@@ -3426,7 +3426,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
-        """本次请求的 RequestId。
+        r"""本次请求的 RequestId。
         :rtype: str
         """
         return self._Id
@@ -3437,7 +3437,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容。
+        r"""回复内容。
         :rtype: list of Choice
         """
         return self._Choices
@@ -3448,7 +3448,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """错误信息。
+        r"""错误信息。
 如果流式返回中服务处理异常，返回该错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
@@ -3461,7 +3461,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def SearchInfo(self):
-        """搜索结果信息
+        r"""搜索结果信息
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
         """
         return self._SearchInfo
@@ -3472,7 +3472,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def Replaces(self):
-        """多媒体信息。
+        r"""多媒体信息。
 说明：
 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
@@ -3486,7 +3486,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def RecommendedQuestions(self):
-        """推荐问答。
+        r"""推荐问答。
         :rtype: list of str
         """
         return self._RecommendedQuestions
@@ -3497,7 +3497,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -3537,7 +3537,7 @@ class GroupChatCompletionsResponse(AbstractModel):
 
 
 class GroupChatConfig(AbstractModel):
-    """群聊配置
+    r"""群聊配置
 
     """
 
@@ -3556,7 +3556,7 @@ class GroupChatConfig(AbstractModel):
 
     @property
     def UserName(self):
-        """人物名称
+        r"""人物名称
         :rtype: str
         """
         return self._UserName
@@ -3567,7 +3567,7 @@ class GroupChatConfig(AbstractModel):
 
     @property
     def Description(self):
-        """### 主题：\n武道修炼与科技创新的碰撞\n\n### 地点：\n布尔玛的实验室\n\n### 故事背景：\n布尔玛正在研发一种新型的龙珠雷达，旨在更精确地定位龙珠的位置。她邀请了孙悟空、天津饭、饺子和雅木茶前来测试新设备。然而，这些武道家们对科技的理解有限，导致了一系列有趣的误解和互动。\n\n### 人物关系：\n- **布尔玛**：天才科学家，负责研发和解释新设备。\n- **孙悟空**：纯粹的战斗狂，对科技一窍不通，但对新事物充满好奇。\n- **天津饭**：严肃自律的武道家，对科技持谨慎态度，但愿意尝试。\n- **饺子**：内向单纯，依赖天津饭，对科技感到困惑和害怕。\n- **雅木茶**：幽默自嘲的前沙漠强盗，对科技有一定了解，但更倾向于轻松调侃。\n\n### 人物目标：\n- **布尔玛**：希望新龙珠雷达能够得到有效测试，并得到反馈以改进。\n- **孙悟空**：希望通过新设备找到更强的对手进行战斗。\n- **天津饭**：希望通过测试新设备提升自己的武道修炼。\n- **饺子**：希望在不引起麻烦的情况下完成任务，并得到天津饭的认可。\n- **雅木茶**：希望通过参与测试证明自己的价值，同时享受与朋友们的互动。\n\n### 场景描述：\n布尔玛在实验室中展示她的新龙珠雷达，解释其工作原理和优势。孙悟空对设备的功能感到兴奋，但完全无法理解技术细节，不断提出天真的问题。天津饭则严肃地询问设备的安全性和可靠性，表现出对科技的谨慎态度。饺子对复杂的设备感到害怕，不断向天津饭寻求确认和安慰。雅木茶则在一旁调侃大家的反应，试图缓解紧张气氛。布尔玛在解释过程中不断被孙悟空的问题打断，感到无奈，但也被他的热情所感染。最终，大家决定一起外出测试新设备，展开一场充满欢笑和冒险的旅程。
+        r"""### 主题：\n武道修炼与科技创新的碰撞\n\n### 地点：\n布尔玛的实验室\n\n### 故事背景：\n布尔玛正在研发一种新型的龙珠雷达，旨在更精确地定位龙珠的位置。她邀请了孙悟空、天津饭、饺子和雅木茶前来测试新设备。然而，这些武道家们对科技的理解有限，导致了一系列有趣的误解和互动。\n\n### 人物关系：\n- **布尔玛**：天才科学家，负责研发和解释新设备。\n- **孙悟空**：纯粹的战斗狂，对科技一窍不通，但对新事物充满好奇。\n- **天津饭**：严肃自律的武道家，对科技持谨慎态度，但愿意尝试。\n- **饺子**：内向单纯，依赖天津饭，对科技感到困惑和害怕。\n- **雅木茶**：幽默自嘲的前沙漠强盗，对科技有一定了解，但更倾向于轻松调侃。\n\n### 人物目标：\n- **布尔玛**：希望新龙珠雷达能够得到有效测试，并得到反馈以改进。\n- **孙悟空**：希望通过新设备找到更强的对手进行战斗。\n- **天津饭**：希望通过测试新设备提升自己的武道修炼。\n- **饺子**：希望在不引起麻烦的情况下完成任务，并得到天津饭的认可。\n- **雅木茶**：希望通过参与测试证明自己的价值，同时享受与朋友们的互动。\n\n### 场景描述：\n布尔玛在实验室中展示她的新龙珠雷达，解释其工作原理和优势。孙悟空对设备的功能感到兴奋，但完全无法理解技术细节，不断提出天真的问题。天津饭则严肃地询问设备的安全性和可靠性，表现出对科技的谨慎态度。饺子对复杂的设备感到害怕，不断向天津饭寻求确认和安慰。雅木茶则在一旁调侃大家的反应，试图缓解紧张气氛。布尔玛在解释过程中不断被孙悟空的问题打断，感到无奈，但也被他的热情所感染。最终，大家决定一起外出测试新设备，展开一场充满欢笑和冒险的旅程。
         :rtype: str
         """
         return self._Description
@@ -3578,7 +3578,7 @@ class GroupChatConfig(AbstractModel):
 
     @property
     def Characters(self):
-        """角色描述
+        r"""角色描述
         :rtype: list of Character
         """
         return self._Characters
@@ -3608,7 +3608,7 @@ class GroupChatConfig(AbstractModel):
 
 
 class GroupMessage(AbstractModel):
-    """群聊会话内容
+    r"""群聊会话内容
 
     """
 
@@ -3627,7 +3627,7 @@ class GroupMessage(AbstractModel):
 
     @property
     def Role(self):
-        """角色，可选值包括 system、user、assistant、 tool。
+        r"""角色，可选值包括 system、user、assistant、 tool。
         :rtype: str
         """
         return self._Role
@@ -3638,7 +3638,7 @@ class GroupMessage(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Content
@@ -3649,7 +3649,7 @@ class GroupMessage(AbstractModel):
 
     @property
     def Name(self):
-        """角色名称
+        r"""角色名称
         :rtype: str
         """
         return self._Name
@@ -3674,7 +3674,7 @@ class GroupMessage(AbstractModel):
 
 
 class History(AbstractModel):
-    """混元生图多轮对话历史记录。
+    r"""混元生图多轮对话历史记录。
 
     """
 
@@ -3700,7 +3700,7 @@ class History(AbstractModel):
 
     @property
     def ChatId(self):
-        """对话的 ID，用于唯一标识一轮对话
+        r"""对话的 ID，用于唯一标识一轮对话
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3712,7 +3712,7 @@ class History(AbstractModel):
 
     @property
     def Prompt(self):
-        """原始输入的 Prompt 文本
+        r"""原始输入的 Prompt 文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3724,7 +3724,7 @@ class History(AbstractModel):
 
     @property
     def RevisedPrompt(self):
-        """扩写后的 Prompt 文本
+        r"""扩写后的 Prompt 文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3736,7 +3736,7 @@ class History(AbstractModel):
 
     @property
     def Seed(self):
-        """生成图的随机种子
+        r"""生成图的随机种子
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3763,7 +3763,7 @@ class History(AbstractModel):
 
 
 class Image(AbstractModel):
-    """图片信息
+    r"""图片信息
 
     """
 
@@ -3779,7 +3779,7 @@ class Image(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片Url。
+        r"""图片Url。
         :rtype: str
         """
         return self._ImageUrl
@@ -3790,7 +3790,7 @@ class Image(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片Base64。
+        r"""图片Base64。
         :rtype: str
         """
         return self._ImageBase64
@@ -3814,7 +3814,7 @@ class Image(AbstractModel):
 
 
 class ImageMessage(AbstractModel):
-    """拍照解题内容
+    r"""拍照解题内容
 
     """
 
@@ -3833,7 +3833,7 @@ class ImageMessage(AbstractModel):
 
     @property
     def Role(self):
-        """角色，可选值包括 system、user、assistant。
+        r"""角色，可选值包括 system、user、assistant。
         :rtype: str
         """
         return self._Role
@@ -3844,7 +3844,7 @@ class ImageMessage(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Content
@@ -3855,7 +3855,7 @@ class ImageMessage(AbstractModel):
 
     @property
     def Contents(self):
-        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        r"""多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
         :rtype: list of Content
         """
         return self._Contents
@@ -3885,7 +3885,7 @@ class ImageMessage(AbstractModel):
 
 
 class ImageQuestionRequest(AbstractModel):
-    """ImageQuestion请求参数结构体
+    r"""ImageQuestion请求参数结构体
 
     """
 
@@ -3914,7 +3914,7 @@ class ImageQuestionRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-vision-image-question。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        r"""模型名称，可选值包括 hunyuan-vision-image-question。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :rtype: str
         """
         return self._Model
@@ -3925,7 +3925,7 @@ class ImageQuestionRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """聊天上下文信息。说明：1. 长度最多为 40，按对话时间从旧到新在数组中排列。2. Message.Role 可选值：system、user、assistant。其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始，user提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
+        r"""聊天上下文信息。说明：1. 长度最多为 40，按对话时间从旧到新在数组中排列。2. Message.Role 可选值：system、user、assistant。其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始，user提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
         :rtype: list of ImageMessage
         """
         return self._Messages
@@ -3936,7 +3936,7 @@ class ImageQuestionRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """流式调用开关。
+        r"""流式调用开关。
 说明：
 1. 未传值时默认为非流式调用（false）。
 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
@@ -3976,7 +3976,7 @@ class ImageQuestionRequest(AbstractModel):
 
 
 class ImageQuestionResponse(AbstractModel):
-    """ImageQuestion返回参数结构体
+    r"""ImageQuestion返回参数结构体
 
     """
 
@@ -4010,7 +4010,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def Created(self):
-        """Unix 时间戳，单位为秒。
+        r"""Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._Created
@@ -4021,7 +4021,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 统计信息。
+        r"""Token 统计信息。
 按照总 Token 数量计费。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
         """
@@ -4033,7 +4033,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def Note(self):
-        """免责声明。
+        r"""免责声明。
         :rtype: str
         """
         return self._Note
@@ -4044,7 +4044,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def Id(self):
-        """本次请求的 RequestId。
+        r"""本次请求的 RequestId。
         :rtype: str
         """
         return self._Id
@@ -4055,7 +4055,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容。
+        r"""回复内容。
         :rtype: list of Choice
         """
         return self._Choices
@@ -4066,7 +4066,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """错误信息。
+        r"""错误信息。
 如果流式返回中服务处理异常，返回该错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
@@ -4079,7 +4079,7 @@ class ImageQuestionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -4109,7 +4109,7 @@ class ImageQuestionResponse(AbstractModel):
 
 
 class ImageUrl(AbstractModel):
-    """具体的图片内容
+    r"""具体的图片内容
 
     """
 
@@ -4123,7 +4123,7 @@ class ImageUrl(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url（以 http:// 或 https:// 开头）
+        r"""图片的 Url（以 http:// 或 https:// 开头）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4147,7 +4147,7 @@ class ImageUrl(AbstractModel):
 
 
 class Knowledge(AbstractModel):
-    """外部知识
+    r"""外部知识
 
     """
 
@@ -4160,7 +4160,7 @@ class Knowledge(AbstractModel):
 
     @property
     def Text(self):
-        """表示具体的知识信息文本
+        r"""表示具体的知识信息文本
         :rtype: str
         """
         return self._Text
@@ -4183,7 +4183,7 @@ class Knowledge(AbstractModel):
 
 
 class LogoParam(AbstractModel):
-    """logo参数
+    r"""logo参数
 
     """
 
@@ -4202,7 +4202,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """水印url
+        r"""水印url
         :rtype: str
         """
         return self._LogoUrl
@@ -4213,7 +4213,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoImage(self):
-        """水印base64，url和base64二选一传入
+        r"""水印base64，url和base64二选一传入
         :rtype: str
         """
         return self._LogoImage
@@ -4224,7 +4224,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
-        """水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+        r"""水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoRect`
         """
         return self._LogoRect
@@ -4251,7 +4251,7 @@ class LogoParam(AbstractModel):
 
 
 class LogoRect(AbstractModel):
-    """输入框
+    r"""输入框
 
     """
 
@@ -4273,7 +4273,7 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
-        """左上角X坐标
+        r"""左上角X坐标
         :rtype: int
         """
         return self._X
@@ -4284,7 +4284,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角Y坐标
+        r"""左上角Y坐标
         :rtype: int
         """
         return self._Y
@@ -4295,7 +4295,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
-        """方框宽度
+        r"""方框宽度
         :rtype: int
         """
         return self._Width
@@ -4306,7 +4306,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
-        """方框高度
+        r"""方框高度
         :rtype: int
         """
         return self._Height
@@ -4332,7 +4332,7 @@ class LogoRect(AbstractModel):
 
 
 class Message(AbstractModel):
-    """会话内容
+    r"""会话内容
 
     """
 
@@ -4367,7 +4367,7 @@ class Message(AbstractModel):
 
     @property
     def Role(self):
-        """角色，可选值包括 system、user、assistant、 tool。
+        r"""角色，可选值包括 system、user、assistant、 tool。
         :rtype: str
         """
         return self._Role
@@ -4378,7 +4378,7 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Content
@@ -4389,7 +4389,7 @@ class Message(AbstractModel):
 
     @property
     def Contents(self):
-        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        r"""多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Content
         """
@@ -4401,7 +4401,7 @@ class Message(AbstractModel):
 
     @property
     def ToolCallId(self):
-        """当role为tool时传入，标识具体的函数调用
+        r"""当role为tool时传入，标识具体的函数调用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4413,7 +4413,7 @@ class Message(AbstractModel):
 
     @property
     def ToolCalls(self):
-        """模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
+        r"""模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ToolCall
         """
@@ -4425,7 +4425,7 @@ class Message(AbstractModel):
 
     @property
     def FileIDs(self):
-        """文件标识符。单次最大 50 个文件。
+        r"""文件标识符。单次最大 50 个文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4437,7 +4437,7 @@ class Message(AbstractModel):
 
     @property
     def ReasoningContent(self):
-        """思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请**不要**将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
+        r"""思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请**不要**将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
         :rtype: str
         """
         return self._ReasoningContent
@@ -4476,7 +4476,7 @@ class Message(AbstractModel):
 
 
 class Mindmap(AbstractModel):
-    """脑图
+    r"""脑图
 
     """
 
@@ -4494,7 +4494,7 @@ class Mindmap(AbstractModel):
 
     @property
     def ThumbUrl(self):
-        """脑图缩略图链接
+        r"""脑图缩略图链接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4506,7 +4506,7 @@ class Mindmap(AbstractModel):
 
     @property
     def Url(self):
-        """脑图图片链接
+        r"""脑图图片链接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4531,7 +4531,7 @@ class Mindmap(AbstractModel):
 
 
 class Multimedia(AbstractModel):
-    """多媒体详情
+    r"""多媒体详情
 
     """
 
@@ -4604,7 +4604,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Type(self):
-        """多媒体类型，可选值包括 image、music、album、playlist。
+        r"""多媒体类型，可选值包括 image、music、album、playlist。
 说明：
 1. image：图片；music：单曲，类型为单曲时，会返回详细歌手和歌曲信息；album：专辑；playlist：歌单。
 2. 当 type 为 music、album、playlist 时，需要配合 [QQ音乐SDK](https://developer.y.qq.com/) 使用。
@@ -4618,7 +4618,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Url(self):
-        """多媒体地址。
+        r"""多媒体地址。
 说明：
 1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
         :rtype: str
@@ -4631,7 +4631,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Width(self):
-        """如果Url为图片地址，标识图片宽度。
+        r"""如果Url为图片地址，标识图片宽度。
         :rtype: int
         """
         return self._Width
@@ -4642,7 +4642,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Height(self):
-        """如果Url为图片地址，标识图片高度。
+        r"""如果Url为图片地址，标识图片高度。
         :rtype: int
         """
         return self._Height
@@ -4653,7 +4653,7 @@ class Multimedia(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """多媒体详情地址。
+        r"""多媒体详情地址。
 说明：
 1. 仅 type 为 image 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4667,7 +4667,7 @@ class Multimedia(AbstractModel):
 
     @property
     def ThumbURL(self):
-        """缩略图地址。
+        r"""缩略图地址。
         :rtype: str
         """
         return self._ThumbURL
@@ -4678,7 +4678,7 @@ class Multimedia(AbstractModel):
 
     @property
     def ThumbWidth(self):
-        """缩略图宽度
+        r"""缩略图宽度
         :rtype: int
         """
         return self._ThumbWidth
@@ -4689,7 +4689,7 @@ class Multimedia(AbstractModel):
 
     @property
     def ThumbHeight(self):
-        """缩略图高度
+        r"""缩略图高度
         :rtype: int
         """
         return self._ThumbHeight
@@ -4700,7 +4700,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Title(self):
-        """名称。
+        r"""名称。
 说明：
 1. type 为 image 时，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4714,7 +4714,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Desc(self):
-        """描述。
+        r"""描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4726,7 +4726,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Singer(self):
-        """歌手名称。
+        r"""歌手名称。
 说明：
 1. 仅 type 为 music 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4740,7 +4740,7 @@ class Multimedia(AbstractModel):
 
     @property
     def Ext(self):
-        """歌曲详情。
+        r"""歌曲详情。
 说明：
 1. 仅 type 为 music 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4754,7 +4754,7 @@ class Multimedia(AbstractModel):
 
     @property
     def PublishTime(self):
-        """发布时间。
+        r"""发布时间。
         :rtype: str
         """
         return self._PublishTime
@@ -4765,7 +4765,7 @@ class Multimedia(AbstractModel):
 
     @property
     def SiteName(self):
-        """站点名称
+        r"""站点名称
         :rtype: str
         """
         return self._SiteName
@@ -4776,7 +4776,7 @@ class Multimedia(AbstractModel):
 
     @property
     def SiteIcon(self):
-        """站点图标
+        r"""站点图标
         :rtype: str
         """
         return self._SiteIcon
@@ -4815,7 +4815,7 @@ class Multimedia(AbstractModel):
 
 
 class Processes(AbstractModel):
-    """大模型执行状态
+    r"""大模型执行状态
 
     """
 
@@ -4837,7 +4837,7 @@ quote:引用 n 篇资料作为参考
 
     @property
     def Message(self):
-        """输出信息
+        r"""输出信息
         :rtype: str
         """
         return self._Message
@@ -4848,7 +4848,7 @@ quote:引用 n 篇资料作为参考
 
     @property
     def State(self):
-        """plan:开始获取资料…
+        r"""plan:开始获取资料…
 recall:找到 n 篇相关资料
 quote:引用 n 篇资料作为参考
 
@@ -4862,7 +4862,7 @@ quote:引用 n 篇资料作为参考
 
     @property
     def Num(self):
-        """当状态是recall和quote，会给出来相关数量
+        r"""当状态是recall和quote，会给出来相关数量
         :rtype: int
         """
         return self._Num
@@ -4887,7 +4887,7 @@ quote:引用 n 篇资料作为参考
 
 
 class QueryHunyuanImageChatJobRequest(AbstractModel):
-    """QueryHunyuanImageChatJob请求参数结构体
+    r"""QueryHunyuanImageChatJob请求参数结构体
 
     """
 
@@ -4900,7 +4900,7 @@ class QueryHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -4923,7 +4923,7 @@ class QueryHunyuanImageChatJobRequest(AbstractModel):
 
 
 class QueryHunyuanImageChatJobResponse(AbstractModel):
-    """QueryHunyuanImageChatJob返回参数结构体
+    r"""QueryHunyuanImageChatJob返回参数结构体
 
     """
 
@@ -4967,7 +4967,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
-        """当前任务状态码：
+        r"""当前任务状态码：
 1：等待中、2：运行中、4：处理失败、5：处理完成。
         :rtype: str
         """
@@ -4979,7 +4979,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
-        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
 
         :rtype: str
         """
@@ -4991,7 +4991,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务处理失败错误码。
+        r"""任务处理失败错误码。
 
         :rtype: str
         """
@@ -5003,7 +5003,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务处理失败错误信息。
+        r"""任务处理失败错误信息。
 
         :rtype: str
         """
@@ -5015,7 +5015,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ChatId(self):
-        """本轮对话的 ChatId，ChatId 用于唯一标识一轮对话。
+        r"""本轮对话的 ChatId，ChatId 用于唯一标识一轮对话。
 一个对话组中，最多支持进行100轮对话。
 每轮对话数据有效期为7天，到期后 ChatId 失效，有效期内的历史对话数据可通过 History 查询，如有长期使用需求请及时保存输入输出数据。
         :rtype: str
@@ -5028,7 +5028,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """生成图 URL 列表，有效期7天，请及时保存。
+        r"""生成图 URL 列表，有效期7天，请及时保存。
         :rtype: list of str
         """
         return self._ResultImage
@@ -5039,7 +5039,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
-        """结果 detail 数组，Success 代表成功。
+        r"""结果 detail 数组，Success 代表成功。
 
         :rtype: list of str
         """
@@ -5051,7 +5051,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def History(self):
-        """本轮对话前置的历史对话数据（不含生成图）。
+        r"""本轮对话前置的历史对话数据（不含生成图）。
         :rtype: list of History
         """
         return self._History
@@ -5062,7 +5062,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5090,7 +5090,7 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
 
 class QueryHunyuanImageJobRequest(AbstractModel):
-    """QueryHunyuanImageJob请求参数结构体
+    r"""QueryHunyuanImageJob请求参数结构体
 
     """
 
@@ -5103,7 +5103,7 @@ class QueryHunyuanImageJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -5126,7 +5126,7 @@ class QueryHunyuanImageJobRequest(AbstractModel):
 
 
 class QueryHunyuanImageJobResponse(AbstractModel):
-    """QueryHunyuanImageJob返回参数结构体
+    r"""QueryHunyuanImageJob返回参数结构体
 
     """
 
@@ -5166,7 +5166,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
-        """当前任务状态码：
+        r"""当前任务状态码：
 1：等待中、2：运行中、4：处理失败、5：处理完成。
         :rtype: str
         """
@@ -5178,7 +5178,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
-        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
 
         :rtype: str
         """
@@ -5190,7 +5190,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务处理失败错误码。
+        r"""任务处理失败错误码。
 
         :rtype: str
         """
@@ -5202,7 +5202,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务处理失败错误信息。
+        r"""任务处理失败错误信息。
 
         :rtype: str
         """
@@ -5214,7 +5214,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """生成图 URL 列表，有效期1小时，请及时保存。
+        r"""生成图 URL 列表，有效期1小时，请及时保存。
 
         :rtype: list of str
         """
@@ -5226,7 +5226,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
-        """结果 detail 数组，Success 代表成功。
+        r"""结果 detail 数组，Success 代表成功。
 
         :rtype: list of str
         """
@@ -5238,7 +5238,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RevisedPrompt(self):
-        """对应 SubmitHunyuanImageJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        r"""对应 SubmitHunyuanImageJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
         :rtype: list of str
         """
         return self._RevisedPrompt
@@ -5249,7 +5249,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5271,7 +5271,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
 
 class Reference(AbstractModel):
-    """翻译对话参考示例
+    r"""翻译对话参考示例
 
     """
 
@@ -5290,7 +5290,7 @@ class Reference(AbstractModel):
 
     @property
     def Type(self):
-        """翻译文本类型，枚举"sentence"表示句子, "term"表示术语
+        r"""翻译文本类型，枚举"sentence"表示句子, "term"表示术语
         :rtype: str
         """
         return self._Type
@@ -5301,7 +5301,7 @@ class Reference(AbstractModel):
 
     @property
     def Text(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Text
@@ -5312,7 +5312,7 @@ class Reference(AbstractModel):
 
     @property
     def Translation(self):
-        """译文
+        r"""译文
         :rtype: str
         """
         return self._Translation
@@ -5337,7 +5337,7 @@ class Reference(AbstractModel):
 
 
 class RelevantEntity(AbstractModel):
-    """相关组织及人物
+    r"""相关组织及人物
 
     """
 
@@ -5359,7 +5359,7 @@ class RelevantEntity(AbstractModel):
 
     @property
     def Name(self):
-        """相关组织及人物名称
+        r"""相关组织及人物名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5371,7 +5371,7 @@ class RelevantEntity(AbstractModel):
 
     @property
     def Content(self):
-        """相关组织及人物内容
+        r"""相关组织及人物内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5383,7 +5383,7 @@ class RelevantEntity(AbstractModel):
 
     @property
     def Reference(self):
-        """相关事件引用文章标号
+        r"""相关事件引用文章标号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -5409,7 +5409,7 @@ class RelevantEntity(AbstractModel):
 
 
 class RelevantEvent(AbstractModel):
-    """相关事件
+    r"""相关事件
 
     """
 
@@ -5435,7 +5435,7 @@ class RelevantEvent(AbstractModel):
 
     @property
     def Title(self):
-        """相关事件标题
+        r"""相关事件标题
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5447,7 +5447,7 @@ class RelevantEvent(AbstractModel):
 
     @property
     def Content(self):
-        """相关事件内容
+        r"""相关事件内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5459,7 +5459,7 @@ class RelevantEvent(AbstractModel):
 
     @property
     def Datetime(self):
-        """相关事件时间
+        r"""相关事件时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5471,7 +5471,7 @@ class RelevantEvent(AbstractModel):
 
     @property
     def Reference(self):
-        """相关事件引用文章标号
+        r"""相关事件引用文章标号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -5498,7 +5498,7 @@ class RelevantEvent(AbstractModel):
 
 
 class Replace(AbstractModel):
-    """多媒体占位符替换信息
+    r"""多媒体占位符替换信息
 
     """
 
@@ -5514,7 +5514,7 @@ class Replace(AbstractModel):
 
     @property
     def Id(self):
-        """占位符序号
+        r"""占位符序号
         :rtype: str
         """
         return self._Id
@@ -5525,7 +5525,7 @@ class Replace(AbstractModel):
 
     @property
     def Multimedia(self):
-        """多媒体详情
+        r"""多媒体详情
         :rtype: list of Multimedia
         """
         return self._Multimedia
@@ -5554,7 +5554,7 @@ class Replace(AbstractModel):
 
 
 class RunThreadRequest(AbstractModel):
-    """RunThread请求参数结构体
+    r"""RunThread请求参数结构体
 
     """
 
@@ -5597,7 +5597,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -5608,7 +5608,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def AssistantID(self):
-        """助手 ID（目前未使用，留空）
+        r"""助手 ID（目前未使用，留空）
         :rtype: str
         """
         return self._AssistantID
@@ -5619,7 +5619,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        r"""模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :rtype: str
         """
         return self._Model
@@ -5630,7 +5630,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def AdditionalMessages(self):
-        """附加消息
+        r"""附加消息
         :rtype: list of ThreadAdditionalMessage
         """
         return self._AdditionalMessages
@@ -5641,7 +5641,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+        r"""说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
         :rtype: float
         """
         return self._Temperature
@@ -5652,7 +5652,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def TopP(self):
-        """说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+        r"""说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
         :rtype: float
         """
         return self._TopP
@@ -5663,7 +5663,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """是否流式输出，当前只允许 true
+        r"""是否流式输出，当前只允许 true
         :rtype: bool
         """
         return self._Stream
@@ -5674,7 +5674,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def MaxPromptTokens(self):
-        """运行过程中可使用的 token 最大数量。
+        r"""运行过程中可使用的 token 最大数量。
         :rtype: int
         """
         return self._MaxPromptTokens
@@ -5685,7 +5685,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def MaxCompletionTokens(self):
-        """运行过程中可使用的完成 token 的最大数量。
+        r"""运行过程中可使用的完成 token 的最大数量。
         :rtype: int
         """
         return self._MaxCompletionTokens
@@ -5696,7 +5696,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def Tools(self):
-        """可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+        r"""可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
         :rtype: list of Tool
         """
         return self._Tools
@@ -5707,7 +5707,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def ToolChoice(self):
-        """工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        r"""工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
         :rtype: str
         """
         return self._ToolChoice
@@ -5750,7 +5750,7 @@ class RunThreadRequest(AbstractModel):
 
 
 class RunThreadResponse(AbstractModel):
-    """RunThread返回参数结构体
+    r"""RunThread返回参数结构体
 
     """
 
@@ -5763,7 +5763,7 @@ class RunThreadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -5778,7 +5778,7 @@ class RunThreadResponse(AbstractModel):
 
 
 class SearchInfo(AbstractModel):
-    """搜索结果信息
+    r"""搜索结果信息
 
     """
 
@@ -5816,7 +5816,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def SearchResults(self):
-        """搜索引文信息
+        r"""搜索引文信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SearchResult
         """
@@ -5828,7 +5828,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def Mindmap(self):
-        """脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
+        r"""脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Mindmap`
         """
@@ -5840,7 +5840,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def RelevantEvents(self):
-        """相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+        r"""相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RelevantEvent
         """
@@ -5852,7 +5852,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def RelevantEntities(self):
-        """相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+        r"""相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RelevantEntity
         """
@@ -5864,7 +5864,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def Timeline(self):
-        """时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+        r"""时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Timeline
         """
@@ -5876,7 +5876,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def SupportDeepSearch(self):
-        """是否命中搜索深度模式
+        r"""是否命中搜索深度模式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5888,7 +5888,7 @@ class SearchInfo(AbstractModel):
 
     @property
     def Outline(self):
-        """搜索回复大纲（深度模式下返回）
+        r"""搜索回复大纲（深度模式下返回）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5940,7 +5940,7 @@ class SearchInfo(AbstractModel):
 
 
 class SearchResult(AbstractModel):
-    """搜索引文信息
+    r"""搜索引文信息
 
     """
 
@@ -5968,7 +5968,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Index(self):
-        """搜索引文序号
+        r"""搜索引文序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5980,7 +5980,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Title(self):
-        """搜索引文标题
+        r"""搜索引文标题
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5992,7 +5992,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Url(self):
-        """搜索引文链接
+        r"""搜索引文链接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6004,7 +6004,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Text(self):
-        """搜索引文站点名
+        r"""搜索引文站点名
         :rtype: str
         """
         return self._Text
@@ -6015,7 +6015,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Icon(self):
-        """搜索引文图标
+        r"""搜索引文图标
         :rtype: str
         """
         return self._Icon
@@ -6042,7 +6042,7 @@ class SearchResult(AbstractModel):
 
 
 class SetPayModeRequest(AbstractModel):
-    """SetPayMode请求参数结构体
+    r"""SetPayMode请求参数结构体
 
     """
 
@@ -6055,7 +6055,7 @@ class SetPayModeRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """设置后付费状态，0：后付费打开；1：后付费关闭
+        r"""设置后付费状态，0：后付费打开；1：后付费关闭
         :rtype: int
         """
         return self._PayMode
@@ -6078,7 +6078,7 @@ class SetPayModeRequest(AbstractModel):
 
 
 class SetPayModeResponse(AbstractModel):
-    """SetPayMode返回参数结构体
+    r"""SetPayMode返回参数结构体
 
     """
 
@@ -6091,7 +6091,7 @@ class SetPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6106,7 +6106,7 @@ class SetPayModeResponse(AbstractModel):
 
 
 class SongExt(AbstractModel):
-    """歌曲详情。具体含义参考  [QQ音乐SDK](https://developer.y.qq.com/)
+    r"""歌曲详情。具体含义参考  [QQ音乐SDK](https://developer.y.qq.com/)
 
     """
 
@@ -6125,7 +6125,7 @@ class SongExt(AbstractModel):
 
     @property
     def SongId(self):
-        """歌曲id
+        r"""歌曲id
         :rtype: int
         """
         return self._SongId
@@ -6136,7 +6136,7 @@ class SongExt(AbstractModel):
 
     @property
     def SongMid(self):
-        """歌曲mid
+        r"""歌曲mid
         :rtype: str
         """
         return self._SongMid
@@ -6147,7 +6147,7 @@ class SongExt(AbstractModel):
 
     @property
     def Vip(self):
-        """歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
+        r"""歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
         :rtype: int
         """
         return self._Vip
@@ -6172,7 +6172,7 @@ class SongExt(AbstractModel):
 
 
 class SubmitHunyuanImageChatJobRequest(AbstractModel):
-    """SubmitHunyuanImageChatJob请求参数结构体
+    r"""SubmitHunyuanImageChatJob请求参数结构体
 
     """
 
@@ -6207,7 +6207,7 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """本轮对话的文本描述。
+        r"""本轮对话的文本描述。
 提交一个任务请求对应发起一轮生图对话，每轮对话中可输入一条 Prompt，生成一张图像，支持通过多轮输入 Prompt 来不断调整图像内容。
 推荐使用中文，最多可传1024个 utf-8 字符。
 输入示例：
@@ -6224,7 +6224,7 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def ChatId(self):
-        """上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
+        r"""上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
 如果不传代表新建一个对话组，重新开启一轮新的对话。
 一个对话组中，最多支持进行100轮对话。
         :rtype: str
@@ -6237,7 +6237,7 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加显式水印标识的开关，默认为1。  
+        r"""为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
 其他数值：默认按1处理。  
@@ -6252,7 +6252,7 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         """
@@ -6281,7 +6281,7 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
 
 class SubmitHunyuanImageChatJobResponse(AbstractModel):
-    """SubmitHunyuanImageChatJob返回参数结构体
+    r"""SubmitHunyuanImageChatJob返回参数结构体
 
     """
 
@@ -6297,7 +6297,7 @@ class SubmitHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -6308,7 +6308,7 @@ class SubmitHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6324,7 +6324,7 @@ class SubmitHunyuanImageChatJobResponse(AbstractModel):
 
 
 class SubmitHunyuanImageJobRequest(AbstractModel):
-    """SubmitHunyuanImageJob请求参数结构体
+    r"""SubmitHunyuanImageJob请求参数结构体
 
     """
 
@@ -6390,7 +6390,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """文本描述。 
+        r"""文本描述。 
 算法将根据输入的文本智能生成与之相关的图像。 
 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
         :rtype: str
@@ -6403,7 +6403,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        """反向提示词。 
+        r"""反向提示词。 
 推荐使用中文。最多可传1024个 utf-8 字符。
         :rtype: str
         """
@@ -6415,7 +6415,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Style(self):
-        """绘画风格。
+        r"""绘画风格。
 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
 不传默认不指定风格。
         :rtype: str
@@ -6428,7 +6428,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """生成图分辨率。
+        r"""生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
 如果上传 ContentImage 参考图，分辨率仅支持：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1），不传将自动适配分辨率。如果参考图被用于做风格转换，将生成保持原图长宽比例且长边为1024的图片，指定的分辨率不生效。
         :rtype: str
@@ -6441,7 +6441,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Num(self):
-        """图片生成数量。
+        r"""图片生成数量。
 支持1 ~ 4张，默认生成1张。
         :rtype: int
         """
@@ -6453,7 +6453,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Clarity(self):
-        """超分选项，默认不做超分，可选开启。
+        r"""超分选项，默认不做超分，可选开启。
  x2：2倍超分
  x4：4倍超分
 在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
@@ -6467,7 +6467,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def ContentImage(self):
-        """用于引导内容的参考图。
+        r"""用于引导内容的参考图。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         """
@@ -6479,7 +6479,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Revise(self):
-        """prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+        r"""prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。如果上传了参考图，扩写关闭不生效，将保持开启。
 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
@@ -6493,7 +6493,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Seed(self):
-        """随机种子，默认随机。
+        r"""随机种子，默认随机。
 不传：随机种子生成。
 正数：固定种子生成。
 扩写开启时固定种子不生效，将保持随机。
@@ -6507,7 +6507,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加显式水印标识的开关，默认为1。  
+        r"""为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
 其他数值：默认按1处理。  
@@ -6522,7 +6522,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         """
@@ -6560,7 +6560,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
 
 class SubmitHunyuanImageJobResponse(AbstractModel):
-    """SubmitHunyuanImageJob返回参数结构体
+    r"""SubmitHunyuanImageJob返回参数结构体
 
     """
 
@@ -6576,7 +6576,7 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -6587,7 +6587,7 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6603,7 +6603,7 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
 
 
 class TextToImageLiteRequest(AbstractModel):
-    """TextToImageLite请求参数结构体
+    r"""TextToImageLite请求参数结构体
 
     """
 
@@ -6645,7 +6645,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """文本描述。
+        r"""文本描述。
 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
         :rtype: str
@@ -6658,7 +6658,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        """反向文本描述。
+        r"""反向文本描述。
 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 推荐使用中文。最多可传256个 utf-8 字符。
         :rtype: str
@@ -6671,7 +6671,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Style(self):
-        """绘画风格。
+        r"""绘画风格。
 请在 [文生图轻量版风格列表](https://cloud.tencent.com/document/product/1729/108992) 中选择期望的风格，传入风格编号。不传默认使用201（日系动漫风格）。
         :rtype: str
         """
@@ -6683,7 +6683,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """生成图分辨率。
+        r"""生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
         :rtype: str
         """
@@ -6695,7 +6695,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按0处理。
@@ -6710,7 +6710,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         """
@@ -6722,7 +6722,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -6753,7 +6753,7 @@ class TextToImageLiteRequest(AbstractModel):
 
 
 class TextToImageLiteResponse(AbstractModel):
-    """TextToImageLite返回参数结构体
+    r"""TextToImageLite返回参数结构体
 
     """
 
@@ -6771,7 +6771,7 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -6784,7 +6784,7 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6800,7 +6800,7 @@ class TextToImageLiteResponse(AbstractModel):
 
 
 class ThreadAdditionalMessage(AbstractModel):
-    """会话额外消息
+    r"""会话额外消息
 
     """
 
@@ -6820,7 +6820,7 @@ class ThreadAdditionalMessage(AbstractModel):
 
     @property
     def Role(self):
-        """角色
+        r"""角色
         :rtype: str
         """
         return self._Role
@@ -6831,7 +6831,7 @@ class ThreadAdditionalMessage(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -6842,7 +6842,7 @@ class ThreadAdditionalMessage(AbstractModel):
 
     @property
     def Attachments(self):
-        """附件
+        r"""附件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ThreadMessageAttachmentObject
         """
@@ -6873,7 +6873,7 @@ class ThreadAdditionalMessage(AbstractModel):
 
 
 class ThreadMessage(AbstractModel):
-    """会话消息
+    r"""会话消息
 
     """
 
@@ -6928,7 +6928,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def ID(self):
-        """消息 ID
+        r"""消息 ID
         :rtype: str
         """
         return self._ID
@@ -6939,7 +6939,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def Object(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._Object
@@ -6950,7 +6950,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedAt
@@ -6961,7 +6961,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def ThreadID(self):
-        """会话 ID
+        r"""会话 ID
         :rtype: str
         """
         return self._ThreadID
@@ -6972,7 +6972,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def Status(self):
-        """状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        r"""状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
         :rtype: str
         """
         return self._Status
@@ -6983,7 +6983,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def InCompleteDetails(self):
-        """未完成原因
+        r"""未完成原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
         """
@@ -6995,7 +6995,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def CompletedAt(self):
-        """完成时间
+        r"""完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7007,7 +7007,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def InCompleteAt(self):
-        """未完成时间
+        r"""未完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7019,7 +7019,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def Role(self):
-        """角色
+        r"""角色
         :rtype: str
         """
         return self._Role
@@ -7030,7 +7030,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -7041,7 +7041,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def AssistantID(self):
-        """助手 ID
+        r"""助手 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7053,7 +7053,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def RunID(self):
-        """运行 ID
+        r"""运行 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7065,7 +7065,7 @@ class ThreadMessage(AbstractModel):
 
     @property
     def Attachments(self):
-        """附件
+        r"""附件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ThreadMessageAttachmentObject
         """
@@ -7108,7 +7108,7 @@ class ThreadMessage(AbstractModel):
 
 
 class ThreadMessageAttachmentObject(AbstractModel):
-    """会话消息附件
+    r"""会话消息附件
 
     """
 
@@ -7122,7 +7122,7 @@ class ThreadMessageAttachmentObject(AbstractModel):
 
     @property
     def FileID(self):
-        """文件 ID
+        r"""文件 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7146,7 +7146,7 @@ class ThreadMessageAttachmentObject(AbstractModel):
 
 
 class ThreadMessageInCompleteDetailsObject(AbstractModel):
-    """会话消息未完成原因
+    r"""会话消息未完成原因
 
     """
 
@@ -7159,7 +7159,7 @@ class ThreadMessageInCompleteDetailsObject(AbstractModel):
 
     @property
     def Reason(self):
-        """会话消息未完成原因
+        r"""会话消息未完成原因
         :rtype: str
         """
         return self._Reason
@@ -7182,7 +7182,7 @@ class ThreadMessageInCompleteDetailsObject(AbstractModel):
 
 
 class ThreadToolResources(AbstractModel):
-    """在会话中提供给助手工具的一系列资源。不同类型的工具会有各自对应的资源。比如代码解释器需要一个文件 ID 的列表，而文件搜索工具则需要一个向量存储 ID 的列表。
+    r"""在会话中提供给助手工具的一系列资源。不同类型的工具会有各自对应的资源。比如代码解释器需要一个文件 ID 的列表，而文件搜索工具则需要一个向量存储 ID 的列表。
 
     """
 
@@ -7198,7 +7198,7 @@ class ThreadToolResources(AbstractModel):
 
     @property
     def CodeInterpreter(self):
-        """文件 ID 列表
+        r"""文件 ID 列表
         :rtype: list of str
         """
         return self._CodeInterpreter
@@ -7209,7 +7209,7 @@ class ThreadToolResources(AbstractModel):
 
     @property
     def VectorStoreIDs(self):
-        """向量存储 ID 列表
+        r"""向量存储 ID 列表
         :rtype: list of str
         """
         return self._VectorStoreIDs
@@ -7233,7 +7233,7 @@ class ThreadToolResources(AbstractModel):
 
 
 class Timeline(AbstractModel):
-    """时间线
+    r"""时间线
 
     """
 
@@ -7255,7 +7255,7 @@ class Timeline(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7267,7 +7267,7 @@ class Timeline(AbstractModel):
 
     @property
     def Datetime(self):
-        """时间
+        r"""时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7279,7 +7279,7 @@ class Timeline(AbstractModel):
 
     @property
     def Url(self):
-        """相关网页链接
+        r"""相关网页链接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7305,7 +7305,7 @@ class Timeline(AbstractModel):
 
 
 class Tool(AbstractModel):
-    """用户指定模型使用的工具
+    r"""用户指定模型使用的工具
 
     """
 
@@ -7321,7 +7321,7 @@ class Tool(AbstractModel):
 
     @property
     def Type(self):
-        """工具类型，当前只支持function
+        r"""工具类型，当前只支持function
         :rtype: str
         """
         return self._Type
@@ -7332,7 +7332,7 @@ class Tool(AbstractModel):
 
     @property
     def Function(self):
-        """具体要调用的function
+        r"""具体要调用的function
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ToolFunction`
         """
         return self._Function
@@ -7358,7 +7358,7 @@ class Tool(AbstractModel):
 
 
 class ToolCall(AbstractModel):
-    """模型生成的工具调用
+    r"""模型生成的工具调用
 
     """
 
@@ -7380,7 +7380,7 @@ class ToolCall(AbstractModel):
 
     @property
     def Id(self):
-        """工具调用id
+        r"""工具调用id
         :rtype: str
         """
         return self._Id
@@ -7391,7 +7391,7 @@ class ToolCall(AbstractModel):
 
     @property
     def Type(self):
-        """工具调用类型，当前只支持function
+        r"""工具调用类型，当前只支持function
         :rtype: str
         """
         return self._Type
@@ -7402,7 +7402,7 @@ class ToolCall(AbstractModel):
 
     @property
     def Function(self):
-        """具体的function调用
+        r"""具体的function调用
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ToolCallFunction`
         """
         return self._Function
@@ -7413,7 +7413,7 @@ class ToolCall(AbstractModel):
 
     @property
     def Index(self):
-        """索引值
+        r"""索引值
         :rtype: int
         """
         return self._Index
@@ -7441,7 +7441,7 @@ class ToolCall(AbstractModel):
 
 
 class ToolCallFunction(AbstractModel):
-    """具体的function调用
+    r"""具体的function调用
 
     """
 
@@ -7457,7 +7457,7 @@ class ToolCallFunction(AbstractModel):
 
     @property
     def Name(self):
-        """function名称
+        r"""function名称
         :rtype: str
         """
         return self._Name
@@ -7468,7 +7468,7 @@ class ToolCallFunction(AbstractModel):
 
     @property
     def Arguments(self):
-        """function参数，一般为json字符串
+        r"""function参数，一般为json字符串
         :rtype: str
         """
         return self._Arguments
@@ -7492,7 +7492,7 @@ class ToolCallFunction(AbstractModel):
 
 
 class ToolFunction(AbstractModel):
-    """function定义
+    r"""function定义
 
     """
 
@@ -7511,7 +7511,7 @@ class ToolFunction(AbstractModel):
 
     @property
     def Name(self):
-        """function名称，只能包含a-z，A-Z，0-9，\_或-
+        r"""function名称，只能包含a-z，A-Z，0-9，\_或-
         :rtype: str
         """
         return self._Name
@@ -7522,7 +7522,7 @@ class ToolFunction(AbstractModel):
 
     @property
     def Parameters(self):
-        """function参数，一般为json字符串
+        r"""function参数，一般为json字符串
         :rtype: str
         """
         return self._Parameters
@@ -7533,7 +7533,7 @@ class ToolFunction(AbstractModel):
 
     @property
     def Description(self):
-        """function的简单描述
+        r"""function的简单描述
         :rtype: str
         """
         return self._Description
@@ -7558,7 +7558,7 @@ class ToolFunction(AbstractModel):
 
 
 class TranslationChoice(AbstractModel):
-    """翻译接口返回的回复，支持多个
+    r"""翻译接口返回的回复，支持多个
 
     """
 
@@ -7582,7 +7582,7 @@ sensitive 只在开启流式输出审核时会出现，表示安全审核未通�
 
     @property
     def FinishReason(self):
-        """结束标志位，可能为 stop、 sensitive。
+        r"""结束标志位，可能为 stop、 sensitive。
 stop 表示输出正常结束。
 sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
         :rtype: str
@@ -7595,7 +7595,7 @@ sensitive 只在开启流式输出审核时会出现，表示安全审核未通�
 
     @property
     def Index(self):
-        """索引值，流式调用时使用该字段。
+        r"""索引值，流式调用时使用该字段。
         :rtype: int
         """
         return self._Index
@@ -7606,7 +7606,7 @@ sensitive 只在开启流式输出审核时会出现，表示安全审核未通�
 
     @property
     def Delta(self):
-        """增量返回值，流式调用时使用该字段。
+        r"""增量返回值，流式调用时使用该字段。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.TranslationDelta`
         """
         return self._Delta
@@ -7617,7 +7617,7 @@ sensitive 只在开启流式输出审核时会出现，表示安全审核未通�
 
     @property
     def Message(self):
-        """返回值，非流式调用时使用该字段。
+        r"""返回值，非流式调用时使用该字段。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.TranslationMessage`
         """
         return self._Message
@@ -7647,7 +7647,7 @@ sensitive 只在开启流式输出审核时会出现，表示安全审核未通�
 
 
 class TranslationDelta(AbstractModel):
-    """翻译接口返回的内容（流式返回）
+    r"""翻译接口返回的内容（流式返回）
 
     """
 
@@ -7663,7 +7663,7 @@ class TranslationDelta(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称。
+        r"""角色名称。
         :rtype: str
         """
         return self._Role
@@ -7674,7 +7674,7 @@ class TranslationDelta(AbstractModel):
 
     @property
     def Content(self):
-        """内容详情。
+        r"""内容详情。
         :rtype: str
         """
         return self._Content
@@ -7698,7 +7698,7 @@ class TranslationDelta(AbstractModel):
 
 
 class TranslationMessage(AbstractModel):
-    """翻译接口会话内容
+    r"""翻译接口会话内容
 
     """
 
@@ -7714,7 +7714,7 @@ class TranslationMessage(AbstractModel):
 
     @property
     def Role(self):
-        """角色，可选值包括 system、user、assistant、 tool。
+        r"""角色，可选值包括 system、user、assistant、 tool。
         :rtype: str
         """
         return self._Role
@@ -7725,7 +7725,7 @@ class TranslationMessage(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Content
@@ -7749,7 +7749,7 @@ class TranslationMessage(AbstractModel):
 
 
 class Usage(AbstractModel):
-    """Token 数量
+    r"""Token 数量
 
     """
 
@@ -7768,7 +7768,7 @@ class Usage(AbstractModel):
 
     @property
     def PromptTokens(self):
-        """输入 Token 数量。
+        r"""输入 Token 数量。
         :rtype: int
         """
         return self._PromptTokens
@@ -7779,7 +7779,7 @@ class Usage(AbstractModel):
 
     @property
     def CompletionTokens(self):
-        """输出 Token 数量。
+        r"""输出 Token 数量。
         :rtype: int
         """
         return self._CompletionTokens
@@ -7790,7 +7790,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """总 Token 数量。
+        r"""总 Token 数量。
         :rtype: int
         """
         return self._TotalTokens
@@ -7815,7 +7815,7 @@ class Usage(AbstractModel):
 
 
 class UserLocation(AbstractModel):
-    """用户位置详细信息
+    r"""用户位置详细信息
 
     """
 
@@ -7831,7 +7831,7 @@ class UserLocation(AbstractModel):
 
     @property
     def Type(self):
-        """表示位置类型
+        r"""表示位置类型
         :rtype: str
         """
         return self._Type
@@ -7842,7 +7842,7 @@ class UserLocation(AbstractModel):
 
     @property
     def Approximate(self):
-        """用户近似位置的详细信息
+        r"""用户近似位置的详细信息
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Approximate`
         """
         return self._Approximate
@@ -7868,7 +7868,7 @@ class UserLocation(AbstractModel):
 
 
 class WebSearchOptions(AbstractModel):
-    """知识注入相关的参数信息
+    r"""知识注入相关的参数信息
 
     """
 
@@ -7880,14 +7880,20 @@ class WebSearchOptions(AbstractModel):
         :type UserLocation: :class:`tencentcloud.hunyuan.v20230901.models.UserLocation`
         :param _Processes: 打开开关，会返回搜索状态
         :type Processes: bool
+        :param _EnableImage: 是否开启图文混排
+        :type EnableImage: bool
+        :param _EnableMusic: 是否开启音乐
+        :type EnableMusic: bool
         """
         self._Knowledge = None
         self._UserLocation = None
         self._Processes = None
+        self._EnableImage = None
+        self._EnableMusic = None
 
     @property
     def Knowledge(self):
-        """表示用户注入的知识信息
+        r"""表示用户注入的知识信息
         :rtype: list of Knowledge
         """
         return self._Knowledge
@@ -7898,7 +7904,7 @@ class WebSearchOptions(AbstractModel):
 
     @property
     def UserLocation(self):
-        """用户位置详细信息
+        r"""用户位置详细信息
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.UserLocation`
         """
         return self._UserLocation
@@ -7909,7 +7915,7 @@ class WebSearchOptions(AbstractModel):
 
     @property
     def Processes(self):
-        """打开开关，会返回搜索状态
+        r"""打开开关，会返回搜索状态
         :rtype: bool
         """
         return self._Processes
@@ -7917,6 +7923,28 @@ class WebSearchOptions(AbstractModel):
     @Processes.setter
     def Processes(self, Processes):
         self._Processes = Processes
+
+    @property
+    def EnableImage(self):
+        r"""是否开启图文混排
+        :rtype: bool
+        """
+        return self._EnableImage
+
+    @EnableImage.setter
+    def EnableImage(self, EnableImage):
+        self._EnableImage = EnableImage
+
+    @property
+    def EnableMusic(self):
+        r"""是否开启音乐
+        :rtype: bool
+        """
+        return self._EnableMusic
+
+    @EnableMusic.setter
+    def EnableMusic(self, EnableMusic):
+        self._EnableMusic = EnableMusic
 
 
     def _deserialize(self, params):
@@ -7930,6 +7958,8 @@ class WebSearchOptions(AbstractModel):
             self._UserLocation = UserLocation()
             self._UserLocation._deserialize(params.get("UserLocation"))
         self._Processes = params.get("Processes")
+        self._EnableImage = params.get("EnableImage")
+        self._EnableMusic = params.get("EnableMusic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

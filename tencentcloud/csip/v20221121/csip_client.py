@@ -27,7 +27,7 @@ class CsipClient(AbstractClient):
 
 
     def AddNewBindRoleUser(self, request):
-        """csip角色授权绑定接口
+        r"""csip角色授权绑定接口
 
         :param request: Request instance for AddNewBindRoleUser.
         :type request: :class:`tencentcloud.csip.v20221121.models.AddNewBindRoleUserRequest`
@@ -50,7 +50,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateAccessKeyCheckTask(self, request):
-        """检测AK 异步任务
+        r"""检测AK 异步任务
 
         :param request: Request instance for CreateAccessKeyCheckTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeyCheckTaskRequest`
@@ -73,7 +73,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateAccessKeySyncTask(self, request):
-        """发起AK资产同步任务
+        r"""发起AK资产同步任务
 
         :param request: Request instance for CreateAccessKeySyncTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeySyncTaskRequest`
@@ -96,7 +96,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateDomainAndIp(self, request):
-        """创建域名、ip相关信息
+        r"""创建域名、ip相关信息
 
         :param request: Request instance for CreateDomainAndIp.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateDomainAndIpRequest`
@@ -119,7 +119,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateRiskCenterScanTask(self, request):
-        """创建风险中心扫描任务
+        r"""创建风险中心扫描任务
 
         :param request: Request instance for CreateRiskCenterScanTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateRiskCenterScanTaskRequest`
@@ -142,7 +142,7 @@ class CsipClient(AbstractClient):
 
 
     def DeleteDomainAndIp(self, request):
-        """删除域名和ip请求
+        r"""删除域名和ip请求
 
         :param request: Request instance for DeleteDomainAndIp.
         :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDomainAndIpRequest`
@@ -165,7 +165,7 @@ class CsipClient(AbstractClient):
 
 
     def DeleteRiskScanTask(self, request):
-        """删除风险中心扫描任务
+        r"""删除风险中心扫描任务
 
         :param request: Request instance for DeleteRiskScanTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.DeleteRiskScanTaskRequest`
@@ -188,7 +188,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAbnormalCallRecord(self, request):
-        """获取调用记录列表
+        r"""获取调用记录列表
 
         :param request: Request instance for DescribeAbnormalCallRecord.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAbnormalCallRecordRequest`
@@ -211,7 +211,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyAlarm(self, request):
-        """访问密钥告警记录列表
+        r"""访问密钥告警记录列表
 
         :param request: Request instance for DescribeAccessKeyAlarm.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmRequest`
@@ -234,7 +234,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyAlarmDetail(self, request):
-        """访问密钥告警记录详情
+        r"""访问密钥告警记录详情
 
         :param request: Request instance for DescribeAccessKeyAlarmDetail.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmDetailRequest`
@@ -257,7 +257,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyAsset(self, request):
-        """获取用户访问密钥资产列表
+        r"""获取用户访问密钥资产列表
 
         :param request: Request instance for DescribeAccessKeyAsset.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAssetRequest`
@@ -280,7 +280,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyRisk(self, request):
-        """访问密钥风险记录列表
+        r"""访问密钥风险记录列表
 
         :param request: Request instance for DescribeAccessKeyRisk.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskRequest`
@@ -303,7 +303,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyRiskDetail(self, request):
-        """访问密钥风险记录详情
+        r"""访问密钥风险记录详情
 
         :param request: Request instance for DescribeAccessKeyRiskDetail.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskDetailRequest`
@@ -326,7 +326,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyUserDetail(self, request):
-        """查询用户的账号详情
+        r"""查询用户的账号详情
 
         :param request: Request instance for DescribeAccessKeyUserDetail.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserDetailRequest`
@@ -349,7 +349,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAccessKeyUserList(self, request):
-        """查询用户的账号列表
+        r"""查询用户的账号列表
 
         :param request: Request instance for DescribeAccessKeyUserList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserListRequest`
@@ -372,7 +372,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAlertList(self, request):
-        """告警中心全量告警列表接口
+        r"""告警中心全量告警列表接口
 
         :param request: Request instance for DescribeAlertList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAlertListRequest`
@@ -395,7 +395,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAssetProcessList(self, request):
-        """查询云边界分析-暴露路径下主机节点的进程列表
+        r"""查询云边界分析-暴露路径下主机节点的进程列表
 
         :param request: Request instance for DescribeAssetProcessList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAssetProcessListRequest`
@@ -418,7 +418,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAssetRiskList(self, request):
-        """资产视角下云资源配置风险列表
+        r"""资产视角下云资源配置风险列表
 
         :param request: Request instance for DescribeAssetRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAssetRiskListRequest`
@@ -441,7 +441,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeAssetViewVulRiskList(self, request):
-        """获取资产视角的漏洞风险列表
+        r"""获取资产视角的漏洞风险列表
 
         :param request: Request instance for DescribeAssetViewVulRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAssetViewVulRiskListRequest`
@@ -464,7 +464,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCFWAssetStatistics(self, request):
-        """云防资产中心统计数据
+        r"""云防资产中心统计数据
 
         :param request: Request instance for DescribeCFWAssetStatistics.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCFWAssetStatisticsRequest`
@@ -487,7 +487,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCSIPRiskStatistics(self, request):
-        """获取风险中心风险概况示例
+        r"""获取风险中心风险概况示例
 
         :param request: Request instance for DescribeCSIPRiskStatistics.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCSIPRiskStatisticsRequest`
@@ -510,7 +510,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCVMAssetInfo(self, request):
-        """cvm详情
+        r"""cvm详情
 
         :param request: Request instance for DescribeCVMAssetInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCVMAssetInfoRequest`
@@ -533,7 +533,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCVMAssets(self, request):
-        """获取cvm列表
+        r"""获取cvm列表
 
         :param request: Request instance for DescribeCVMAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCVMAssetsRequest`
@@ -556,7 +556,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCallRecord(self, request):
-        """获取调用记录列表
+        r"""获取调用记录列表
 
         :param request: Request instance for DescribeCallRecord.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCallRecordRequest`
@@ -579,7 +579,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCheckViewRisks(self, request):
-        """检查视角下云资源配置风险列表示例
+        r"""检查视角下云资源配置风险列表示例
 
         :param request: Request instance for DescribeCheckViewRisks.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCheckViewRisksRequest`
@@ -602,7 +602,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeClusterAssets(self, request):
-        """集群列表
+        r"""集群列表
 
         :param request: Request instance for DescribeClusterAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterAssetsRequest`
@@ -625,7 +625,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeClusterPodAssets(self, request):
-        """集群pod列表
+        r"""集群pod列表
 
         :param request: Request instance for DescribeClusterPodAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterPodAssetsRequest`
@@ -648,7 +648,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeConfigCheckRules(self, request):
-        """云资源配置风险规则列表示例
+        r"""云资源配置风险规则列表示例
 
         :param request: Request instance for DescribeConfigCheckRules.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeConfigCheckRulesRequest`
@@ -671,7 +671,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDbAssetInfo(self, request):
-        """db资产详情
+        r"""db资产详情
 
         :param request: Request instance for DescribeDbAssetInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDbAssetInfoRequest`
@@ -694,7 +694,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDbAssets(self, request):
-        """数据库资产列表
+        r"""数据库资产列表
 
         :param request: Request instance for DescribeDbAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDbAssetsRequest`
@@ -717,7 +717,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDomainAssets(self, request):
-        """域名列表
+        r"""域名列表
 
         :param request: Request instance for DescribeDomainAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDomainAssetsRequest`
@@ -740,7 +740,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeExposeAssetCategory(self, request):
-        """云边界分析资产分类
+        r"""云边界分析资产分类
 
         :param request: Request instance for DescribeExposeAssetCategory.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeExposeAssetCategoryRequest`
@@ -763,7 +763,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeExposePath(self, request):
-        """查询云边界分析路径节点
+        r"""查询云边界分析路径节点
 
         :param request: Request instance for DescribeExposePath.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeExposePathRequest`
@@ -786,7 +786,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeExposures(self, request):
-        """云边界分析资产列表
+        r"""云边界分析资产列表
 
         :param request: Request instance for DescribeExposures.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeExposuresRequest`
@@ -809,7 +809,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeGatewayAssets(self, request):
-        """获取网关列表
+        r"""获取网关列表
 
         :param request: Request instance for DescribeGatewayAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeGatewayAssetsRequest`
@@ -832,7 +832,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeHighBaseLineRiskList(self, request):
-        """查询云边界分析-暴露路径下主机节点的高危基线风险列表
+        r"""查询云边界分析-暴露路径下主机节点的高危基线风险列表
 
         :param request: Request instance for DescribeHighBaseLineRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeHighBaseLineRiskListRequest`
@@ -855,7 +855,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeListenerList(self, request):
-        """查询clb监听器列表
+        r"""查询clb监听器列表
 
         :param request: Request instance for DescribeListenerList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeListenerListRequest`
@@ -878,7 +878,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeNICAssets(self, request):
-        """获取网卡列表
+        r"""获取网卡列表
 
         :param request: Request instance for DescribeNICAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNICAssetsRequest`
@@ -901,7 +901,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOrganizationInfo(self, request):
-        """查询集团账号详情
+        r"""查询集团账号详情
 
         :param request: Request instance for DescribeOrganizationInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationInfoRequest`
@@ -924,7 +924,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOrganizationUserInfo(self, request):
-        """查询集团账号用户列表
+        r"""查询集团账号用户列表
 
         :param request: Request instance for DescribeOrganizationUserInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationUserInfoRequest`
@@ -947,7 +947,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOtherCloudAssets(self, request):
-        """资产列表
+        r"""资产列表
 
         :param request: Request instance for DescribeOtherCloudAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOtherCloudAssetsRequest`
@@ -970,7 +970,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribePublicIpAssets(self, request):
-        """ip公网列表
+        r"""ip公网列表
 
         :param request: Request instance for DescribePublicIpAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribePublicIpAssetsRequest`
@@ -993,7 +993,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRepositoryImageAssets(self, request):
-        """仓库镜像列表
+        r"""仓库镜像列表
 
         :param request: Request instance for DescribeRepositoryImageAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRepositoryImageAssetsRequest`
@@ -1016,7 +1016,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCallRecord(self, request):
-        """获取风险调用记录列表
+        r"""获取风险调用记录列表
 
         :param request: Request instance for DescribeRiskCallRecord.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCallRecordRequest`
@@ -1039,7 +1039,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewCFGRiskList(self, request):
-        """获取资产视角的配置风险列表
+        r"""获取资产视角的配置风险列表
 
         :param request: Request instance for DescribeRiskCenterAssetViewCFGRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewCFGRiskListRequest`
@@ -1062,7 +1062,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewPortRiskList(self, request):
-        """获取资产视角的端口风险列表
+        r"""获取资产视角的端口风险列表
 
         :param request: Request instance for DescribeRiskCenterAssetViewPortRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewPortRiskListRequest`
@@ -1085,7 +1085,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewVULRiskList(self, request):
-        """获取资产视角的漏洞风险列表
+        r"""获取资产视角的漏洞风险列表
 
         :param request: Request instance for DescribeRiskCenterAssetViewVULRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewVULRiskListRequest`
@@ -1108,7 +1108,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewWeakPasswordRiskList(self, request):
-        """获取资产视角的弱口令风险列表
+        r"""获取资产视角的弱口令风险列表
 
         :param request: Request instance for DescribeRiskCenterAssetViewWeakPasswordRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewWeakPasswordRiskListRequest`
@@ -1131,7 +1131,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterCFGViewCFGRiskList(self, request):
-        """获取配置视角的配置风险列表
+        r"""获取配置视角的配置风险列表
 
         :param request: Request instance for DescribeRiskCenterCFGViewCFGRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterCFGViewCFGRiskListRequest`
@@ -1154,7 +1154,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterPortViewPortRiskList(self, request):
-        """获取端口视角的端口风险列表
+        r"""获取端口视角的端口风险列表
 
         :param request: Request instance for DescribeRiskCenterPortViewPortRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterPortViewPortRiskListRequest`
@@ -1177,7 +1177,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterServerRiskList(self, request):
-        """获取风险服务列表
+        r"""获取风险服务列表
 
         :param request: Request instance for DescribeRiskCenterServerRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterServerRiskListRequest`
@@ -1200,7 +1200,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterVULViewVULRiskList(self, request):
-        """获取漏洞视角的漏洞风险列表
+        r"""获取漏洞视角的漏洞风险列表
 
         :param request: Request instance for DescribeRiskCenterVULViewVULRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterVULViewVULRiskListRequest`
@@ -1223,7 +1223,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterWebsiteRiskList(self, request):
-        """获取内容风险列表
+        r"""获取内容风险列表
 
         :param request: Request instance for DescribeRiskCenterWebsiteRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterWebsiteRiskListRequest`
@@ -1246,7 +1246,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskDetailList(self, request):
-        """风险详情列表示例
+        r"""风险详情列表示例
 
         :param request: Request instance for DescribeRiskDetailList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskDetailListRequest`
@@ -1269,7 +1269,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskRuleDetail(self, request):
-        """查询风险规则详情示例
+        r"""查询风险规则详情示例
 
         :param request: Request instance for DescribeRiskRuleDetail.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskRuleDetailRequest`
@@ -1292,7 +1292,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskRules(self, request):
-        """高级配置风险规则列表示例
+        r"""高级配置风险规则列表示例
 
         :param request: Request instance for DescribeRiskRules.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskRulesRequest`
@@ -1315,7 +1315,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeScanReportList(self, request):
-        """获取扫描报告列表
+        r"""获取扫描报告列表
 
         :param request: Request instance for DescribeScanReportList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanReportListRequest`
@@ -1338,7 +1338,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeScanStatistic(self, request):
-        """查询云边界分析扫描结果统计信息
+        r"""查询云边界分析扫描结果统计信息
 
         :param request: Request instance for DescribeScanStatistic.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanStatisticRequest`
@@ -1361,7 +1361,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeScanTaskList(self, request):
-        """获取扫描任务列表
+        r"""获取扫描任务列表
 
         :param request: Request instance for DescribeScanTaskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanTaskListRequest`
@@ -1384,7 +1384,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSearchBugInfo(self, request):
-        """立体防护中心查询漏洞信息
+        r"""立体防护中心查询漏洞信息
 
         :param request: Request instance for DescribeSearchBugInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSearchBugInfoRequest`
@@ -1407,7 +1407,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSourceIPAsset(self, request):
-        """获取用户访问密钥资产列表（源IP视角）
+        r"""获取用户访问密钥资产列表（源IP视角）
 
         :param request: Request instance for DescribeSourceIPAsset.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSourceIPAssetRequest`
@@ -1430,7 +1430,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSubUserInfo(self, request):
-        """查询集团的子账号列表
+        r"""查询集团的子账号列表
 
         :param request: Request instance for DescribeSubUserInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSubUserInfoRequest`
@@ -1453,7 +1453,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSubnetAssets(self, request):
-        """获取子网列表
+        r"""获取子网列表
 
         :param request: Request instance for DescribeSubnetAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSubnetAssetsRequest`
@@ -1476,7 +1476,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeTaskLogList(self, request):
-        """获取任务扫描报告列表
+        r"""获取任务扫描报告列表
 
         :param request: Request instance for DescribeTaskLogList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogListRequest`
@@ -1499,7 +1499,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeTaskLogURL(self, request):
-        """获取报告下载的临时链接
+        r"""获取报告下载的临时链接
 
         :param request: Request instance for DescribeTaskLogURL.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogURLRequest`
@@ -1522,7 +1522,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeTopAttackInfo(self, request):
-        """查询TOP攻击信息
+        r"""查询TOP攻击信息
 
         :param request: Request instance for DescribeTopAttackInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTopAttackInfoRequest`
@@ -1545,7 +1545,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeUebaRule(self, request):
-        """查询用户行为分析策略列表
+        r"""查询用户行为分析策略列表
 
         :param request: Request instance for DescribeUebaRule.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeUebaRuleRequest`
@@ -1568,7 +1568,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeUserCallRecord(self, request):
-        """获取账号调用记录列表
+        r"""获取账号调用记录列表
 
         :param request: Request instance for DescribeUserCallRecord.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeUserCallRecordRequest`
@@ -1591,7 +1591,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVULList(self, request):
-        """新安全中心风险中心-漏洞列表
+        r"""新安全中心风险中心-漏洞列表
 
         :param request: Request instance for DescribeVULList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVULListRequest`
@@ -1614,7 +1614,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVULRiskAdvanceCFGList(self, request):
-        """查询漏洞风险高级配置
+        r"""查询漏洞风险高级配置
 
         :param request: Request instance for DescribeVULRiskAdvanceCFGList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVULRiskAdvanceCFGListRequest`
@@ -1637,7 +1637,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVULRiskDetail(self, request):
-        """获取漏洞展开详情
+        r"""获取漏洞展开详情
 
         :param request: Request instance for DescribeVULRiskDetail.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVULRiskDetailRequest`
@@ -1660,7 +1660,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVpcAssets(self, request):
-        """获取vpc列表
+        r"""获取vpc列表
 
         :param request: Request instance for DescribeVpcAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVpcAssetsRequest`
@@ -1683,7 +1683,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVulRiskList(self, request):
-        """查询云边界分析-暴露路径下主机节点的漏洞列表
+        r"""查询云边界分析-暴露路径下主机节点的漏洞列表
 
         :param request: Request instance for DescribeVulRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulRiskListRequest`
@@ -1706,7 +1706,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVulViewVulRiskList(self, request):
-        """获取漏洞视角的漏洞风险列表
+        r"""获取漏洞视角的漏洞风险列表
 
         :param request: Request instance for DescribeVulViewVulRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulViewVulRiskListRequest`
@@ -1729,7 +1729,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyOrganizationAccountStatus(self, request):
-        """修改集团账号状态
+        r"""修改集团账号状态
 
         :param request: Request instance for ModifyOrganizationAccountStatus.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusRequest`
@@ -1752,7 +1752,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyRiskCenterRiskStatus(self, request):
-        """修改风险中心风险状态
+        r"""修改风险中心风险状态
 
         :param request: Request instance for ModifyRiskCenterRiskStatus.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterRiskStatusRequest`
@@ -1775,7 +1775,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyRiskCenterScanTask(self, request):
-        """修改风险中心扫描任务
+        r"""修改风险中心扫描任务
 
         :param request: Request instance for ModifyRiskCenterScanTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterScanTaskRequest`
@@ -1798,7 +1798,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyUebaRuleSwitch(self, request):
-        """更新自定义策略的开关
+        r"""更新自定义策略的开关
 
         :param request: Request instance for ModifyUebaRuleSwitch.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyUebaRuleSwitchRequest`
@@ -1821,7 +1821,7 @@ class CsipClient(AbstractClient):
 
 
     def StopRiskCenterTask(self, request):
-        """停止扫风险中心扫描任务
+        r"""停止扫风险中心扫描任务
 
         :param request: Request instance for StopRiskCenterTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.StopRiskCenterTaskRequest`
@@ -1844,7 +1844,7 @@ class CsipClient(AbstractClient):
 
 
     def UpdateAccessKeyAlarmStatus(self, request):
-        """标记风险或者告警为 已处置/已忽略
+        r"""标记风险或者告警为 已处置/已忽略
 
         :param request: Request instance for UpdateAccessKeyAlarmStatus.
         :type request: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyAlarmStatusRequest`
@@ -1867,7 +1867,7 @@ class CsipClient(AbstractClient):
 
 
     def UpdateAccessKeyRemark(self, request):
-        """编辑访问密钥/源IP备注
+        r"""编辑访问密钥/源IP备注
 
         :param request: Request instance for UpdateAccessKeyRemark.
         :type request: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyRemarkRequest`
@@ -1890,7 +1890,7 @@ class CsipClient(AbstractClient):
 
 
     def UpdateAlertStatusList(self, request):
-        """批量告警状态处理接口
+        r"""批量告警状态处理接口
 
         :param request: Request instance for UpdateAlertStatusList.
         :type request: :class:`tencentcloud.csip.v20221121.models.UpdateAlertStatusListRequest`

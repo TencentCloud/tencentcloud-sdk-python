@@ -27,7 +27,7 @@ class BmeipClient(AbstractClient):
 
 
     def BindEipAcls(self, request):
-        """此接口用于为某个 EIP 关联 ACL。
+        r"""此接口用于为某个 EIP 关联 ACL。
 
         :param request: Request instance for BindEipAcls.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.BindEipAclsRequest`
@@ -50,7 +50,7 @@ class BmeipClient(AbstractClient):
 
 
     def BindHosted(self, request):
-        """BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
+        r"""BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
 
         :param request: Request instance for BindHosted.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.BindHostedRequest`
@@ -73,7 +73,7 @@ class BmeipClient(AbstractClient):
 
 
     def BindRs(self, request):
-        """绑定黑石EIP
+        r"""绑定黑石EIP
 
         :param request: Request instance for BindRs.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.BindRsRequest`
@@ -96,7 +96,7 @@ class BmeipClient(AbstractClient):
 
 
     def BindVpcIp(self, request):
-        """黑石EIP绑定VPC IP
+        r"""黑石EIP绑定VPC IP
 
         :param request: Request instance for BindVpcIp.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.BindVpcIpRequest`
@@ -119,7 +119,7 @@ class BmeipClient(AbstractClient):
 
 
     def CreateEip(self, request):
-        """创建黑石弹性公网IP
+        r"""创建黑石弹性公网IP
 
         :param request: Request instance for CreateEip.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.CreateEipRequest`
@@ -142,7 +142,7 @@ class BmeipClient(AbstractClient):
 
 
     def CreateEipAcl(self, request):
-        """创建黑石弹性公网 EIP ACL
+        r"""创建黑石弹性公网 EIP ACL
 
         :param request: Request instance for CreateEipAcl.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.CreateEipAclRequest`
@@ -165,7 +165,7 @@ class BmeipClient(AbstractClient):
 
 
     def DeleteEip(self, request):
-        """释放黑石弹性公网IP
+        r"""释放黑石弹性公网IP
 
         :param request: Request instance for DeleteEip.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DeleteEipRequest`
@@ -188,7 +188,7 @@ class BmeipClient(AbstractClient):
 
 
     def DeleteEipAcl(self, request):
-        """删除弹性公网IP ACL
+        r"""删除弹性公网IP ACL
 
         :param request: Request instance for DeleteEipAcl.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DeleteEipAclRequest`
@@ -211,7 +211,7 @@ class BmeipClient(AbstractClient):
 
 
     def DescribeEipAcls(self, request):
-        """查询弹性公网IP ACL
+        r"""查询弹性公网IP ACL
 
         :param request: Request instance for DescribeEipAcls.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DescribeEipAclsRequest`
@@ -234,7 +234,7 @@ class BmeipClient(AbstractClient):
 
 
     def DescribeEipQuota(self, request):
-        """查询黑石EIP 限额
+        r"""查询黑石EIP 限额
 
         :param request: Request instance for DescribeEipQuota.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DescribeEipQuotaRequest`
@@ -257,7 +257,7 @@ class BmeipClient(AbstractClient):
 
 
     def DescribeEipTask(self, request):
-        """黑石EIP查询任务状态
+        r"""黑石EIP查询任务状态
 
         :param request: Request instance for DescribeEipTask.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DescribeEipTaskRequest`
@@ -280,7 +280,7 @@ class BmeipClient(AbstractClient):
 
 
     def DescribeEips(self, request):
-        """黑石EIP查询接口
+        r"""黑石EIP查询接口
 
         :param request: Request instance for DescribeEips.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.DescribeEipsRequest`
@@ -303,7 +303,7 @@ class BmeipClient(AbstractClient):
 
 
     def ModifyEipAcl(self, request):
-        """修改弹性公网IP ACL
+        r"""修改弹性公网IP ACL
 
         :param request: Request instance for ModifyEipAcl.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.ModifyEipAclRequest`
@@ -326,7 +326,7 @@ class BmeipClient(AbstractClient):
 
 
     def ModifyEipCharge(self, request):
-        """黑石EIP修改计费方式
+        r"""黑石EIP修改计费方式
 
         :param request: Request instance for ModifyEipCharge.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.ModifyEipChargeRequest`
@@ -349,7 +349,7 @@ class BmeipClient(AbstractClient):
 
 
     def ModifyEipName(self, request):
-        """更新黑石EIP名称
+        r"""更新黑石EIP名称
 
         :param request: Request instance for ModifyEipName.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.ModifyEipNameRequest`
@@ -372,7 +372,7 @@ class BmeipClient(AbstractClient):
 
 
     def UnbindEipAcls(self, request):
-        """解绑弹性公网IP ACL
+        r"""解绑弹性公网IP ACL
 
         :param request: Request instance for UnbindEipAcls.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindEipAclsRequest`
@@ -395,7 +395,7 @@ class BmeipClient(AbstractClient):
 
 
     def UnbindHosted(self, request):
-        """UnbindHosted接口用于解绑托管机器上的EIP
+        r"""UnbindHosted接口用于解绑托管机器上的EIP
 
         :param request: Request instance for UnbindHosted.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindHostedRequest`
@@ -418,7 +418,7 @@ class BmeipClient(AbstractClient):
 
 
     def UnbindRs(self, request):
-        """解绑黑石EIP
+        r"""解绑黑石EIP
 
         :param request: Request instance for UnbindRs.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindRsRequest`
@@ -441,7 +441,7 @@ class BmeipClient(AbstractClient):
 
 
     def UnbindRsList(self, request):
-        """批量解绑物理机弹性公网IP接口
+        r"""批量解绑物理机弹性公网IP接口
 
         :param request: Request instance for UnbindRsList.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindRsListRequest`
@@ -464,7 +464,7 @@ class BmeipClient(AbstractClient):
 
 
     def UnbindVpcIp(self, request):
-        """黑石EIP解绑VPCIP
+        r"""黑石EIP解绑VPCIP
 
         :param request: Request instance for UnbindVpcIp.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindVpcIpRequest`

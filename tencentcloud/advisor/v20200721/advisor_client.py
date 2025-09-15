@@ -27,7 +27,7 @@ class AdvisorClient(AbstractClient):
 
 
     def DescribeStrategies(self, request):
-        """用于查询评估项的信息
+        r"""用于查询评估项的信息
 
         :param request: Request instance for DescribeStrategies.
         :type request: :class:`tencentcloud.advisor.v20200721.models.DescribeStrategiesRequest`
@@ -50,7 +50,7 @@ class AdvisorClient(AbstractClient):
 
 
     def DescribeTaskStrategyRisks(self, request):
-        """查询评估项风险实例列表
+        r"""查询评估项风险实例列表
 
         :param request: Request instance for DescribeTaskStrategyRisks.
         :type request: :class:`tencentcloud.advisor.v20200721.models.DescribeTaskStrategyRisksRequest`

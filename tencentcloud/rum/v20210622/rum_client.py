@@ -27,7 +27,7 @@ class RumClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """创建 RUM 应用（归属于某个团队）
+        r"""创建 RUM 应用（归属于某个团队）
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
@@ -50,7 +50,7 @@ class RumClient(AbstractClient):
 
 
     def CreateReleaseFile(self, request):
-        """创建对应项目的文件记录
+        r"""创建对应项目的文件记录
 
         :param request: Request instance for CreateReleaseFile.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateReleaseFileRequest`
@@ -73,7 +73,7 @@ class RumClient(AbstractClient):
 
 
     def CreateStarProject(self, request):
-        """个人用户添加星标项目
+        r"""个人用户添加星标项目
 
         :param request: Request instance for CreateStarProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateStarProjectRequest`
@@ -96,7 +96,7 @@ class RumClient(AbstractClient):
 
 
     def CreateTawInstance(self, request):
-        """创建 RUM 业务系统
+        r"""创建 RUM 业务系统
 
         :param request: Request instance for CreateTawInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
@@ -119,7 +119,7 @@ class RumClient(AbstractClient):
 
 
     def CreateWhitelist(self, request):
-        """创建白名单
+        r"""创建白名单
 
         :param request: Request instance for CreateWhitelist.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateWhitelistRequest`
@@ -142,7 +142,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """删除实例，谨慎操作，不可恢复
+        r"""删除实例，谨慎操作，不可恢复
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteInstanceRequest`
@@ -165,7 +165,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """删除给定的 rum 的项目
+        r"""删除给定的 rum 的项目
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteProjectRequest`
@@ -188,7 +188,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteReleaseFile(self, request):
-        """将对应 sourcemap 文件删除
+        r"""将对应 sourcemap 文件删除
 
         :param request: Request instance for DeleteReleaseFile.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteReleaseFileRequest`
@@ -211,7 +211,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteStarProject(self, request):
-        """删除用户名下的星标项目
+        r"""删除用户名下的星标项目
 
         :param request: Request instance for DeleteStarProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteStarProjectRequest`
@@ -234,7 +234,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteWhitelist(self, request):
-        """删除白名单
+        r"""删除白名单
 
         :param request: Request instance for DeleteWhitelist.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteWhitelistRequest`
@@ -257,7 +257,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeAppDimensionMetrics(self, request):
-        """用于查询 app 监控多维分析数据
+        r"""用于查询 app 监控多维分析数据
 
         :param request: Request instance for DescribeAppDimensionMetrics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppDimensionMetricsRequest`
@@ -280,7 +280,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeAppMetricsData(self, request):
-        """获取 app 监控指标数据
+        r"""获取 app 监控指标数据
 
         :param request: Request instance for DescribeAppMetricsData.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppMetricsDataRequest`
@@ -303,7 +303,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeAppSingleCaseDetailList(self, request):
-        """查询 app 监控个例样本详情列表
+        r"""查询 app 监控个例样本详情列表
 
         :param request: Request instance for DescribeAppSingleCaseDetailList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseDetailListRequest`
@@ -326,7 +326,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeAppSingleCaseList(self, request):
-        """查询 app 监控个例聚合列表
+        r"""查询 app 监控个例聚合列表
 
         :param request: Request instance for DescribeAppSingleCaseList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseListRequest`
@@ -349,7 +349,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeData(self, request):
-        """转发monitor查询
+        r"""转发monitor查询
 
         :param request: Request instance for DescribeData.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataRequest`
@@ -372,7 +372,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataCustomUrl(self, request):
-        """获取DescribeDataCustomUrl信息
+        r"""获取DescribeDataCustomUrl信息
 
         :param request: Request instance for DescribeDataCustomUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlRequest`
@@ -395,7 +395,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataEventUrl(self, request):
-        """获取DescribeDataEventUrl信息
+        r"""获取DescribeDataEventUrl信息
 
         :param request: Request instance for DescribeDataEventUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlRequest`
@@ -418,7 +418,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchProject(self, request):
-        """获取DescribeDataFetchProject信息。已下线，请使用DescribeDataFetchUrl
+        r"""获取DescribeDataFetchProject信息。已下线，请使用DescribeDataFetchUrl
 
         :param request: Request instance for DescribeDataFetchProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchProjectRequest`
@@ -441,7 +441,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchUrl(self, request):
-        """获取DescribeDataFetchUrl信息
+        r"""获取DescribeDataFetchUrl信息
 
         :param request: Request instance for DescribeDataFetchUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlRequest`
@@ -464,7 +464,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchUrlInfo(self, request):
-        """获取DescribeDataFetchUrlInfo信息
+        r"""获取DescribeDataFetchUrlInfo信息
 
         :param request: Request instance for DescribeDataFetchUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlInfoRequest`
@@ -487,7 +487,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataLogUrlInfo(self, request):
-        """获取loginfo信息
+        r"""获取loginfo信息
 
         :param request: Request instance for DescribeDataLogUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlInfoRequest`
@@ -510,7 +510,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataLogUrlStatistics(self, request):
-        """获取LogUrlStatistics信息
+        r"""获取LogUrlStatistics信息
 
         :param request: Request instance for DescribeDataLogUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlStatisticsRequest`
@@ -533,7 +533,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPerformancePage(self, request):
-        """获取PerformancePage信息
+        r"""获取PerformancePage信息
 
         :param request: Request instance for DescribeDataPerformancePage.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformancePageRequest`
@@ -556,7 +556,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPvUrlInfo(self, request):
-        """获取PvUrlInfo信息
+        r"""获取PvUrlInfo信息
 
         :param request: Request instance for DescribeDataPvUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlInfoRequest`
@@ -579,7 +579,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPvUrlStatistics(self, request):
-        """获取DescribeDataPvUrlStatistics信息
+        r"""获取DescribeDataPvUrlStatistics信息
 
         :param request: Request instance for DescribeDataPvUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsRequest`
@@ -602,7 +602,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataReportCount(self, request):
-        """获取项目上报量
+        r"""获取项目上报量
 
         :param request: Request instance for DescribeDataReportCount.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountRequest`
@@ -625,7 +625,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataSetUrlStatistics(self, request):
-        """获取DescribeDataSetUrlStatistics信息
+        r"""获取DescribeDataSetUrlStatistics信息
 
         :param request: Request instance for DescribeDataSetUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsRequest`
@@ -648,7 +648,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticProject(self, request):
-        """获取DescribeDataStaticProject信息
+        r"""获取DescribeDataStaticProject信息
 
         :param request: Request instance for DescribeDataStaticProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectRequest`
@@ -671,7 +671,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticResource(self, request):
-        """获取DescribeDataStaticResource信息
+        r"""获取DescribeDataStaticResource信息
 
         :param request: Request instance for DescribeDataStaticResource.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceRequest`
@@ -694,7 +694,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticUrl(self, request):
-        """获取DescribeDataStaticUrl信息
+        r"""获取DescribeDataStaticUrl信息
 
         :param request: Request instance for DescribeDataStaticUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlRequest`
@@ -717,7 +717,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataWebVitalsPage(self, request):
-        """获取DescribeDataWebVitalsPage信息，用户核心活动信息
+        r"""获取DescribeDataWebVitalsPage信息，用户核心活动信息
         页面加载性能之Web Vitals。性能关键点
 
         :param request: Request instance for DescribeDataWebVitalsPage.
@@ -741,7 +741,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeError(self, request):
-        """获取首页错误信息
+        r"""获取首页错误信息
 
         :param request: Request instance for DescribeError.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeErrorRequest`
@@ -764,7 +764,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjectLimits(self, request):
-        """获取应用上报抽样信息
+        r"""获取应用上报抽样信息
 
         :param request: Request instance for DescribeProjectLimits.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsRequest`
@@ -787,7 +787,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """获取项目列表（实例创建的团队下的项目列表）
+        r"""获取项目列表（实例创建的团队下的项目列表）
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsRequest`
@@ -810,7 +810,7 @@ class RumClient(AbstractClient):
 
 
     def DescribePvList(self, request):
-        """获取项目下的PV列表
+        r"""获取项目下的PV列表
 
         :param request: Request instance for DescribePvList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribePvListRequest`
@@ -833,7 +833,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFileSign(self, request):
-        """获取上传文件存储的临时密钥
+        r"""获取上传文件存储的临时密钥
 
         :param request: Request instance for DescribeReleaseFileSign.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFileSignRequest`
@@ -856,7 +856,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFiles(self, request):
-        """获取应用对应sourcemap文件列表
+        r"""获取应用对应sourcemap文件列表
 
         :param request: Request instance for DescribeReleaseFiles.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesRequest`
@@ -879,7 +879,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumGroupLog(self, request):
-        """获取项目下的日志聚合信息
+        r"""获取项目下的日志聚合信息
 
         :param request: Request instance for DescribeRumGroupLog.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogRequest`
@@ -902,7 +902,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogExport(self, request):
-        """获取项目下的日志列表（实例创建的项目下的日志列表）
+        r"""获取项目下的日志列表（实例创建的项目下的日志列表）
 
         :param request: Request instance for DescribeRumLogExport.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportRequest`
@@ -925,7 +925,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogExports(self, request):
-        """获取项目下的日志导出列表
+        r"""获取项目下的日志导出列表
 
         :param request: Request instance for DescribeRumLogExports.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsRequest`
@@ -948,7 +948,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogList(self, request):
-        """获取项目下的日志列表（实例创建的项目下的日志列表）
+        r"""获取项目下的日志列表（实例创建的项目下的日志列表）
 
         :param request: Request instance for DescribeRumLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListRequest`
@@ -971,7 +971,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumStatsLogList(self, request):
-        """获取项目下的日志列表，分钟级
+        r"""获取项目下的日志列表，分钟级
 
         :param request: Request instance for DescribeRumStatsLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListRequest`
@@ -994,7 +994,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeScores(self, request):
-        """获取首页分数列表
+        r"""获取首页分数列表
 
         :param request: Request instance for DescribeScores.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeScoresRequest`
@@ -1017,7 +1017,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeTawAreas(self, request):
-        """查询片区信息
+        r"""查询片区信息
 
         :param request: Request instance for DescribeTawAreas.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawAreasRequest`
@@ -1040,7 +1040,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeTawInstances(self, request):
-        """查询实例信息
+        r"""查询实例信息
 
         :param request: Request instance for DescribeTawInstances.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesRequest`
@@ -1063,7 +1063,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeUvList(self, request):
-        """获取项目下的UV列表
+        r"""获取项目下的UV列表
 
         :param request: Request instance for DescribeUvList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeUvListRequest`
@@ -1086,7 +1086,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeWhitelists(self, request):
-        """获取白名单列表
+        r"""获取白名单列表
 
         :param request: Request instance for DescribeWhitelists.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeWhitelistsRequest`
@@ -1109,7 +1109,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改 RUM 业务系统
+        r"""修改 RUM 业务系统
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceRequest`
@@ -1132,7 +1132,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改 RUM 应用信息
+        r"""修改 RUM 应用信息
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectRequest`
@@ -1155,7 +1155,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProjectLimit(self, request):
-        """新增修改限流
+        r"""新增修改限流
 
         :param request: Request instance for ModifyProjectLimit.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectLimitRequest`
@@ -1178,7 +1178,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeInstance(self, request):
-        """恢复 RUM 业务系统，恢复后，用户可以正常使用和上报数据
+        r"""恢复 RUM 业务系统，恢复后，用户可以正常使用和上报数据
 
         :param request: Request instance for ResumeInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceRequest`
@@ -1201,7 +1201,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeProject(self, request):
-        """恢复应用使用与上报数据
+        r"""恢复应用使用与上报数据
 
         :param request: Request instance for ResumeProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeProjectRequest`
@@ -1224,7 +1224,7 @@ class RumClient(AbstractClient):
 
 
     def StopInstance(self, request):
-        """停止实例
+        r"""停止实例
 
         :param request: Request instance for StopInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.StopInstanceRequest`
@@ -1247,7 +1247,7 @@ class RumClient(AbstractClient):
 
 
     def StopProject(self, request):
-        """停止项目使用与上报数据
+        r"""停止项目使用与上报数据
 
         :param request: Request instance for StopProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.StopProjectRequest`

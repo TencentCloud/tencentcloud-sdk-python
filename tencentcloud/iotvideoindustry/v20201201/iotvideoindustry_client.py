@@ -27,7 +27,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def BindGroupDevices(self, request):
-        """本接口(BindGroupDevices) 用于绑定设备到分组。
+        r"""本接口(BindGroupDevices) 用于绑定设备到分组。
 
         :param request: Request instance for BindGroupDevices.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.BindGroupDevicesRequest`
@@ -50,7 +50,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlChannelLocalRecord(self, request):
-        """本接口（ControlChannelLocalRecord）用于对通道本地回放流进行控制，包括暂停、播放、拉动、结束等
+        r"""本接口（ControlChannelLocalRecord）用于对通道本地回放流进行控制，包括暂停、播放、拉动、结束等
 
         :param request: Request instance for ControlChannelLocalRecord.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelLocalRecordRequest`
@@ -73,7 +73,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlChannelPTZ(self, request):
-        """本接口(ControlChannelPTZ) 用于对支持GB28181 PTZ信令的设备进行指定通道的远程控制。
+        r"""本接口(ControlChannelPTZ) 用于对支持GB28181 PTZ信令的设备进行指定通道的远程控制。
 
         :param request: Request instance for ControlChannelPTZ.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelPTZRequest`
@@ -96,7 +96,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlDevicePTZ(self, request):
-        """本接口(ControlDevicePTZ) 用于对支持GB28181 PTZ信令的设备进行远程控制。
+        r"""本接口(ControlDevicePTZ) 用于对支持GB28181 PTZ信令的设备进行远程控制。
         请使用ControlChannelPTZ接口
 
         :param request: Request instance for ControlDevicePTZ.
@@ -120,7 +120,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlHomePosition(self, request):
-        """看守位控制
+        r"""看守位控制
 
         :param request: Request instance for ControlHomePosition.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlHomePositionRequest`
@@ -143,7 +143,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlPreset(self, request):
-        """预置位控制
+        r"""预置位控制
 
         :param request: Request instance for ControlPreset.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlPresetRequest`
@@ -166,7 +166,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ControlRecordStream(self, request):
-        """对回放流进行控制，包括暂停、播放、拉动、结束等
+        r"""对回放流进行控制，包括暂停、播放、拉动、结束等
         请使用ControlChannelLocalRecord接口
 
         :param request: Request instance for ControlRecordStream.
@@ -190,7 +190,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateDevice(self, request):
-        """本接口(CreateDevice) 用于创建设备。
+        r"""本接口(CreateDevice) 用于创建设备。
 
         :param request: Request instance for CreateDevice.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceRequest`
@@ -213,7 +213,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateDeviceGroup(self, request):
-        """本接口(CreateDeviceGroup) 用于创建设备管理分组。
+        r"""本接口(CreateDeviceGroup) 用于创建设备管理分组。
 
         :param request: Request instance for CreateDeviceGroup.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceGroupRequest`
@@ -236,7 +236,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateLiveChannel(self, request):
-        """创建直播频道
+        r"""创建直播频道
 
         :param request: Request instance for CreateLiveChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateLiveChannelRequest`
@@ -259,7 +259,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateLiveRecordPlan(self, request):
-        """创建直播录制计划，直播录制接口，暂时下线中，只有国标接口支持云端录制
+        r"""创建直播录制计划，直播录制接口，暂时下线中，只有国标接口支持云端录制
 
         :param request: Request instance for CreateLiveRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateLiveRecordPlanRequest`
@@ -282,7 +282,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateMessageForward(self, request):
-        """创建消息转发配置
+        r"""创建消息转发配置
 
         :param request: Request instance for CreateMessageForward.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateMessageForwardRequest`
@@ -305,7 +305,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateRecordPlan(self, request):
-        """本接口(CreateRecordPlan) 用于创建录制计划，使设备与时间模板绑定，以便及时启动录制
+        r"""本接口(CreateRecordPlan) 用于创建录制计划，使设备与时间模板绑定，以便及时启动录制
         请使用CreateRecordingPlan代替
 
         :param request: Request instance for CreateRecordPlan.
@@ -329,7 +329,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateRecordingPlan(self, request):
-        """本接口(CreateRecordingPlan) 用于创建录制计划，使通道与时间模板绑定，以便及时启动录制
+        r"""本接口(CreateRecordingPlan) 用于创建录制计划，使通道与时间模板绑定，以便及时启动录制
 
         :param request: Request instance for CreateRecordingPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordingPlanRequest`
@@ -352,7 +352,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateScene(self, request):
-        """创建场景
+        r"""创建场景
 
         :param request: Request instance for CreateScene.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateSceneRequest`
@@ -375,7 +375,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def CreateTimeTemplate(self, request):
-        """本接口(CreateTimeTemplate) 用于根据模板描述的具体录制时间片段，创建定制化的时间模板。
+        r"""本接口(CreateTimeTemplate) 用于根据模板描述的具体录制时间片段，创建定制化的时间模板。
 
         :param request: Request instance for CreateTimeTemplate.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateTimeTemplateRequest`
@@ -398,7 +398,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteChannel(self, request):
-        """本接口用于删除设备下的通道
+        r"""本接口用于删除设备下的通道
         注意： 在线状态的设备不允许删除
 
         :param request: Request instance for DeleteChannel.
@@ -422,7 +422,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """本接口(DeleteDevice)用于删除设备。
+        r"""本接口(DeleteDevice)用于删除设备。
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceRequest`
@@ -445,7 +445,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteDeviceGroup(self, request):
-        """本接口(DeleteDeviceGroup)用于删除分组。
+        r"""本接口(DeleteDeviceGroup)用于删除分组。
 
         :param request: Request instance for DeleteDeviceGroup.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceGroupRequest`
@@ -468,7 +468,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteLiveChannel(self, request):
-        """删除直播接口
+        r"""删除直播接口
 
         :param request: Request instance for DeleteLiveChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteLiveChannelRequest`
@@ -491,7 +491,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteLiveRecordPlan(self, request):
-        """删除直播录制计划
+        r"""删除直播录制计划
 
         :param request: Request instance for DeleteLiveRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteLiveRecordPlanRequest`
@@ -514,7 +514,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteLiveVideoList(self, request):
-        """直播录像删除
+        r"""直播录像删除
 
         :param request: Request instance for DeleteLiveVideoList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteLiveVideoListRequest`
@@ -537,7 +537,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteMessageForward(self, request):
-        """删除消息转发配置
+        r"""删除消息转发配置
 
         :param request: Request instance for DeleteMessageForward.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteMessageForwardRequest`
@@ -560,7 +560,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteRecordPlan(self, request):
-        """本接口(DeleteRecordPlan)用于删除录制计划
+        r"""本接口(DeleteRecordPlan)用于删除录制计划
         录制计划删除的同时，会停止该录制计划下的全部录制任务。
         请使用DeleteRecordingPlan接口
 
@@ -585,7 +585,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteRecordingPlan(self, request):
-        """本接口(DeleteRecordingPlan)用于删除录制计划
+        r"""本接口(DeleteRecordingPlan)用于删除录制计划
         录制计划删除的同时，会停止该录制计划下的全部录制任务。
 
         :param request: Request instance for DeleteRecordingPlan.
@@ -609,7 +609,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteScene(self, request):
-        """删除场景
+        r"""删除场景
 
         :param request: Request instance for DeleteScene.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteSceneRequest`
@@ -632,7 +632,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteTimeTemplate(self, request):
-        """本接口(DeleteTimeTemplate) 用于删除时间模板。
+        r"""本接口(DeleteTimeTemplate) 用于删除时间模板。
 
         :param request: Request instance for DeleteTimeTemplate.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteTimeTemplateRequest`
@@ -655,7 +655,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteVideoList(self, request):
-        """删除录像存储列表
+        r"""删除录像存储列表
 
         :param request: Request instance for DeleteVideoList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteVideoListRequest`
@@ -678,7 +678,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteWarning(self, request):
-        """设备告警-删除告警
+        r"""设备告警-删除告警
 
         :param request: Request instance for DeleteWarning.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteWarningRequest`
@@ -701,7 +701,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeAbnormalEvents(self, request):
-        """获取异常事件统计
+        r"""获取异常事件统计
 
         :param request: Request instance for DescribeAbnormalEvents.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAbnormalEventsRequest`
@@ -724,7 +724,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeAllDeviceList(self, request):
-        """本接口(DescribeAllDeviceList) 用于获取设备列表。
+        r"""本接口(DescribeAllDeviceList) 用于获取设备列表。
         请使用DescribeDevicesList接口
 
         :param request: Request instance for DescribeAllDeviceList.
@@ -748,7 +748,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeBindSceneChannels(self, request):
-        """获取场景绑定通道列表
+        r"""获取场景绑定通道列表
 
         :param request: Request instance for DescribeBindSceneChannels.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeBindSceneChannelsRequest`
@@ -771,7 +771,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeBindSceneDevices(self, request):
-        """获取场景绑定设备列表
+        r"""获取场景绑定设备列表
 
         :param request: Request instance for DescribeBindSceneDevices.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeBindSceneDevicesRequest`
@@ -794,7 +794,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeChannelLiveStreamURL(self, request):
-        """本接口(DescribeChannelLiveStreamURL)用于获取设备指定通道实时流地址，地址是动态生成，如重新播放需要调用此接口重新获取最新播放地址。
+        r"""本接口(DescribeChannelLiveStreamURL)用于获取设备指定通道实时流地址，地址是动态生成，如重新播放需要调用此接口重新获取最新播放地址。
         正常推流，如未设置对应录制计划，且180s无人观看此流，将会被自动掐断。
 
         :param request: Request instance for DescribeChannelLiveStreamURL.
@@ -818,7 +818,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeChannelLocalRecordURL(self, request):
-        """本接口（DescribeChannelLocalRecordURL）用于将NVR等设备对应通道本地回放文件，通过GB28181信令推送至云端，并生成对应的实时视频流URL，流地址URL是动态生成，如需重新播放请重新调用此接口获取最新地址。
+        r"""本接口（DescribeChannelLocalRecordURL）用于将NVR等设备对应通道本地回放文件，通过GB28181信令推送至云端，并生成对应的实时视频流URL，流地址URL是动态生成，如需重新播放请重新调用此接口获取最新地址。
         正常推流，如未设置对应录制计划，且180s无人观看此流，将会被自动掐断。
 
         :param request: Request instance for DescribeChannelLocalRecordURL.
@@ -842,7 +842,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeChannelStreamURL(self, request):
-        """本接口(DescribeChannelStreamURL)用于获取设备指定通道实时流地址，地址是动态生成，如重新播放需要调用此接口重新获取最新播放地址。
+        r"""本接口(DescribeChannelStreamURL)用于获取设备指定通道实时流地址，地址是动态生成，如重新播放需要调用此接口重新获取最新播放地址。
         正常推流，如未设置对应录制计划，且180s无人观看此流，将会被自动掐断。
 
         :param request: Request instance for DescribeChannelStreamURL.
@@ -866,7 +866,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeChannels(self, request):
-        """本接口（DescribeChannels）用于获取设备下属通道列表
+        r"""本接口（DescribeChannels）用于获取设备下属通道列表
 
         :param request: Request instance for DescribeChannels.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelsRequest`
@@ -889,7 +889,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeChannelsByLiveRecordPlan(self, request):
-        """根据直播录制计划获取频道列表
+        r"""根据直播录制计划获取频道列表
 
         :param request: Request instance for DescribeChannelsByLiveRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelsByLiveRecordPlanRequest`
@@ -912,7 +912,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeCurrentDeviceData(self, request):
-        """查询设备统计当前信息
+        r"""查询设备统计当前信息
 
         :param request: Request instance for DescribeCurrentDeviceData.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeCurrentDeviceDataRequest`
@@ -935,7 +935,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDevice(self, request):
-        """获取指定设备详细信息
+        r"""获取指定设备详细信息
 
         :param request: Request instance for DescribeDevice.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceRequest`
@@ -958,7 +958,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceEvent(self, request):
-        """获取设备事件
+        r"""获取设备事件
 
         :param request: Request instance for DescribeDeviceEvent.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceEventRequest`
@@ -981,7 +981,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceGroup(self, request):
-        """本接口(DescribeDeviceGroup)用于根据设备ID查询设备所在分组信息，可批量查询。
+        r"""本接口(DescribeDeviceGroup)用于根据设备ID查询设备所在分组信息，可批量查询。
 
         :param request: Request instance for DescribeDeviceGroup.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceGroupRequest`
@@ -1004,7 +1004,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceList(self, request):
-        """本接口(DescribeDeviceList) 用于获取设备列表，支持模糊搜索
+        r"""本接口(DescribeDeviceList) 用于获取设备列表，支持模糊搜索
 
         :param request: Request instance for DescribeDeviceList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceListRequest`
@@ -1027,7 +1027,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceMonitorData(self, request):
-        """查询设备统计monitor信息
+        r"""查询设备统计monitor信息
 
         :param request: Request instance for DescribeDeviceMonitorData.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceMonitorDataRequest`
@@ -1050,7 +1050,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDevicePassWord(self, request):
-        """本接口(DescribeDevicePassWord)用于查询设备密码。
+        r"""本接口(DescribeDevicePassWord)用于查询设备密码。
 
         :param request: Request instance for DescribeDevicePassWord.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDevicePassWordRequest`
@@ -1073,7 +1073,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceStreams(self, request):
-        """本接口(DescribeDeviceStreams)用于获取设备实时流地址。
+        r"""本接口(DescribeDeviceStreams)用于获取设备实时流地址。
         请使用DescribeChannelStreamURL接口
 
         :param request: Request instance for DescribeDeviceStreams.
@@ -1097,7 +1097,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeGroupById(self, request):
-        """本接口(DescribeGroupById)用于根据分组ID查询分组。
+        r"""本接口(DescribeGroupById)用于根据分组ID查询分组。
 
         :param request: Request instance for DescribeGroupById.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByIdRequest`
@@ -1120,7 +1120,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeGroupByPath(self, request):
-        """根据分组路径查询分组
+        r"""根据分组路径查询分组
 
         :param request: Request instance for DescribeGroupByPath.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByPathRequest`
@@ -1143,7 +1143,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeGroupDevices(self, request):
-        """本接口(DescribeGroupDevices)用于查询分组下的设备列表。
+        r"""本接口(DescribeGroupDevices)用于查询分组下的设备列表。
 
         :param request: Request instance for DescribeGroupDevices.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupDevicesRequest`
@@ -1166,7 +1166,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeGroups(self, request):
-        """本接口(DescribeGroups)用于批量查询分组信息。
+        r"""本接口(DescribeGroups)用于批量查询分组信息。
 
         :param request: Request instance for DescribeGroups.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupsRequest`
@@ -1189,7 +1189,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeIPCChannels(self, request):
-        """获取IPC设备下属通道
+        r"""获取IPC设备下属通道
         请使用DescribeChannels接口
 
         :param request: Request instance for DescribeIPCChannels.
@@ -1213,7 +1213,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveChannel(self, request):
-        """直播详情接口
+        r"""直播详情接口
 
         :param request: Request instance for DescribeLiveChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveChannelRequest`
@@ -1236,7 +1236,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveChannelList(self, request):
-        """直播列表接口
+        r"""直播列表接口
 
         :param request: Request instance for DescribeLiveChannelList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveChannelListRequest`
@@ -1259,7 +1259,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveRecordPlanById(self, request):
-        """获取直播录制计划详情
+        r"""获取直播录制计划详情
 
         :param request: Request instance for DescribeLiveRecordPlanById.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveRecordPlanByIdRequest`
@@ -1282,7 +1282,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveRecordPlanIds(self, request):
-        """获取直播录制计划列表
+        r"""获取直播录制计划列表
 
         :param request: Request instance for DescribeLiveRecordPlanIds.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveRecordPlanIdsRequest`
@@ -1305,7 +1305,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveStream(self, request):
-        """直播拉流接口
+        r"""直播拉流接口
 
         :param request: Request instance for DescribeLiveStream.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveStreamRequest`
@@ -1328,7 +1328,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeLiveVideoList(self, request):
-        """直播录像回放列表
+        r"""直播录像回放列表
 
         :param request: Request instance for DescribeLiveVideoList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeLiveVideoListRequest`
@@ -1351,7 +1351,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeMessageForward(self, request):
-        """查看消息转发配置详情
+        r"""查看消息转发配置详情
 
         :param request: Request instance for DescribeMessageForward.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeMessageForwardRequest`
@@ -1374,7 +1374,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeMessageForwards(self, request):
-        """查看消息转发配置列表
+        r"""查看消息转发配置列表
 
         :param request: Request instance for DescribeMessageForwards.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeMessageForwardsRequest`
@@ -1397,7 +1397,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeMonitorDataByDate(self, request):
-        """运营中心-设备录像存储统计
+        r"""运营中心-设备录像存储统计
 
         :param request: Request instance for DescribeMonitorDataByDate.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeMonitorDataByDateRequest`
@@ -1420,7 +1420,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribePresetList(self, request):
-        """获取预置位列表
+        r"""获取预置位列表
 
         :param request: Request instance for DescribePresetList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribePresetListRequest`
@@ -1443,7 +1443,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordDatesByChannel(self, request):
-        """本接口(DescribeRecordDatesByChannel)用于查询设备含有录像文件的日期列表。
+        r"""本接口(DescribeRecordDatesByChannel)用于查询设备含有录像文件的日期列表。
 
         :param request: Request instance for DescribeRecordDatesByChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordDatesByChannelRequest`
@@ -1466,7 +1466,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordDatesByLive(self, request):
-        """直播录像存储日期列表
+        r"""直播录像存储日期列表
 
         :param request: Request instance for DescribeRecordDatesByLive.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordDatesByLiveRequest`
@@ -1489,7 +1489,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordStream(self, request):
-        """获取回放视频流地址
+        r"""获取回放视频流地址
         请使用DescribeChannelLocalRecordURL接口
 
         RecordId和StartTime/EndTime互斥
@@ -1517,7 +1517,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordingPlanById(self, request):
-        """本接口(DescribeRecordingPlanById)用于根据录制计划ID获取录制计划。
+        r"""本接口(DescribeRecordingPlanById)用于根据录制计划ID获取录制计划。
 
         :param request: Request instance for DescribeRecordingPlanById.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlanByIdRequest`
@@ -1540,7 +1540,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordingPlans(self, request):
-        """本接口(DescribeRecordingPlans)用于获取用户的全部录制计划。
+        r"""本接口(DescribeRecordingPlans)用于获取用户的全部录制计划。
 
         :param request: Request instance for DescribeRecordingPlans.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlansRequest`
@@ -1563,7 +1563,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeSIPServer(self, request):
-        """本接口用于获取SIP服务器相关配置，用户可以通过这些配置项，将设备通过GB28181协议注册到本服务。
+        r"""本接口用于获取SIP服务器相关配置，用户可以通过这些配置项，将设备通过GB28181协议注册到本服务。
 
         :param request: Request instance for DescribeSIPServer.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSIPServerRequest`
@@ -1586,7 +1586,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeScene(self, request):
-        """场景详情
+        r"""场景详情
 
         :param request: Request instance for DescribeScene.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSceneRequest`
@@ -1609,7 +1609,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeScenes(self, request):
-        """获取场景列表
+        r"""获取场景列表
 
         :param request: Request instance for DescribeScenes.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeScenesRequest`
@@ -1632,7 +1632,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeStatisticDetails(self, request):
-        """本接口(DescribeStatisticDetails)用于查询指定统计项详情，返回结果按天为单位聚合，支持的最大时间查询范围为31天。
+        r"""本接口(DescribeStatisticDetails)用于查询指定统计项详情，返回结果按天为单位聚合，支持的最大时间查询范围为31天。
 
         :param request: Request instance for DescribeStatisticDetails.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticDetailsRequest`
@@ -1655,7 +1655,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeStatisticSummary(self, request):
-        """本接口(DescribeStatisticSummary)用于查询用户昨日的概览数据。
+        r"""本接口(DescribeStatisticSummary)用于查询用户昨日的概览数据。
 
         :param request: Request instance for DescribeStatisticSummary.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticSummaryRequest`
@@ -1678,7 +1678,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeSubGroups(self, request):
-        """本接口(DescribeSubGroups)用于查询分组下的子分组列表。
+        r"""本接口(DescribeSubGroups)用于查询分组下的子分组列表。
 
         :param request: Request instance for DescribeSubGroups.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSubGroupsRequest`
@@ -1701,7 +1701,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeSubscriptionStatus(self, request):
-        """查询主设备订阅状态
+        r"""查询主设备订阅状态
 
         :param request: Request instance for DescribeSubscriptionStatus.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSubscriptionStatusRequest`
@@ -1724,7 +1724,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeVideoList(self, request):
-        """根据时间获取云端录制文件列表
+        r"""根据时间获取云端录制文件列表
 
         :param request: Request instance for DescribeVideoList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeVideoListRequest`
@@ -1747,7 +1747,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeVideoListByChannel(self, request):
-        """本接口(DescribeVideoListByChannel)用于查询指定通道的录制文件列表
+        r"""本接口(DescribeVideoListByChannel)用于查询指定通道的录制文件列表
 
         :param request: Request instance for DescribeVideoListByChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeVideoListByChannelRequest`
@@ -1770,7 +1770,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeWarnMod(self, request):
-        """告警等级列表
+        r"""告警等级列表
 
         :param request: Request instance for DescribeWarnMod.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarnModRequest`
@@ -1793,7 +1793,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeWarnings(self, request):
-        """获取告警列表
+        r"""获取告警列表
 
         :param request: Request instance for DescribeWarnings.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarningsRequest`
@@ -1816,7 +1816,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeXP2PData(self, request):
-        """获取X-P2P的统计数据
+        r"""获取X-P2P的统计数据
 
         :param request: Request instance for DescribeXP2PData.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeXP2PDataRequest`
@@ -1839,7 +1839,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetRecordDatesByDev(self, request):
-        """本接口(GetRecordDatesByDev)用于查询设备含有录像文件的日期列表。
+        r"""本接口(GetRecordDatesByDev)用于查询设备含有录像文件的日期列表。
         请使用DescribeRecordDatesByChannel接口
 
         :param request: Request instance for GetRecordDatesByDev.
@@ -1863,7 +1863,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetRecordPlanByDev(self, request):
-        """本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划. 这个接口没有业务逻辑用到, 已废弃，统一用DescribeDevice
+        r"""本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划. 这个接口没有业务逻辑用到, 已废弃，统一用DescribeDevice
 
         :param request: Request instance for GetRecordPlanByDev.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByDevRequest`
@@ -1886,7 +1886,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetRecordPlanById(self, request):
-        """本接口(GetRecordPlanById)用于根据录制计划ID获取录制计划。
+        r"""本接口(GetRecordPlanById)用于根据录制计划ID获取录制计划。
         请使用DescribeRecordingPlanById接口
 
         :param request: Request instance for GetRecordPlanById.
@@ -1910,7 +1910,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetRecordPlans(self, request):
-        """本接口(GetRecordPlans)用于获取用户的全部录制计划。
+        r"""本接口(GetRecordPlans)用于获取用户的全部录制计划。
         请使用DescribeRecordingPlans接口
 
         :param request: Request instance for GetRecordPlans.
@@ -1934,7 +1934,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetTimeTemplateById(self, request):
-        """本接口(GetTimeTemplateById)用于根据模板ID获取时间模板详情。
+        r"""本接口(GetTimeTemplateById)用于根据模板ID获取时间模板详情。
 
         :param request: Request instance for GetTimeTemplateById.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplateByIdRequest`
@@ -1957,7 +1957,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetTimeTemplates(self, request):
-        """本接口(GetTimeTemplates)用于获取时间模板列表。
+        r"""本接口(GetTimeTemplates)用于获取时间模板列表。
 
         :param request: Request instance for GetTimeTemplates.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplatesRequest`
@@ -1980,7 +1980,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def GetVideoListByCon(self, request):
-        """本接口(GetVideoListByCon)用于查询设备的录制文件列表
+        r"""本接口(GetVideoListByCon)用于查询设备的录制文件列表
         请使用DescribeVideoListByChannel接口
 
         :param request: Request instance for GetVideoListByCon.
@@ -2004,7 +2004,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyBindPlanLiveChannel(self, request):
-        """直播录制计划绑定解绑直播频道
+        r"""直播录制计划绑定解绑直播频道
 
         :param request: Request instance for ModifyBindPlanLiveChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindPlanLiveChannelRequest`
@@ -2027,7 +2027,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyBindRecordingPlan(self, request):
-        """本接口(ModifyBindRecordingPlan)用于更新录制计划绑定的通道
+        r"""本接口(ModifyBindRecordingPlan)用于更新录制计划绑定的通道
 
         :param request: Request instance for ModifyBindRecordingPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindRecordingPlanRequest`
@@ -2050,7 +2050,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyBindSceneChannels(self, request):
-        """场景绑定解绑通道接口
+        r"""场景绑定解绑通道接口
 
         :param request: Request instance for ModifyBindSceneChannels.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneChannelsRequest`
@@ -2073,7 +2073,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyBindSceneDevice(self, request):
-        """场景绑定/解绑通道接口
+        r"""场景绑定/解绑通道接口
 
         :param request: Request instance for ModifyBindSceneDevice.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneDeviceRequest`
@@ -2096,7 +2096,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyDeviceData(self, request):
-        """本接口(ModifyDeviceData)用于编辑设备信息。
+        r"""本接口(ModifyDeviceData)用于编辑设备信息。
 
         :param request: Request instance for ModifyDeviceData.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyDeviceDataRequest`
@@ -2119,7 +2119,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyLiveChannel(self, request):
-        """编辑直播接口
+        r"""编辑直播接口
 
         :param request: Request instance for ModifyLiveChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyLiveChannelRequest`
@@ -2142,7 +2142,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyLiveRecordPlan(self, request):
-        """编辑直播录制计划
+        r"""编辑直播录制计划
 
         :param request: Request instance for ModifyLiveRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyLiveRecordPlanRequest`
@@ -2165,7 +2165,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyLiveVideo(self, request):
-        """直播录像编辑
+        r"""直播录像编辑
 
         :param request: Request instance for ModifyLiveVideo.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyLiveVideoRequest`
@@ -2188,7 +2188,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyMessageForward(self, request):
-        """修改消息转发配置
+        r"""修改消息转发配置
 
         :param request: Request instance for ModifyMessageForward.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyMessageForwardRequest`
@@ -2211,7 +2211,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyPreset(self, request):
-        """编辑预置位信息
+        r"""编辑预置位信息
 
         :param request: Request instance for ModifyPreset.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyPresetRequest`
@@ -2234,7 +2234,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyRecordingPlan(self, request):
-        """本接口(ModifyRecordingPlan)用于更新录制计划。
+        r"""本接口(ModifyRecordingPlan)用于更新录制计划。
 
         :param request: Request instance for ModifyRecordingPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyRecordingPlanRequest`
@@ -2257,7 +2257,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyScene(self, request):
-        """修改场景
+        r"""修改场景
 
         :param request: Request instance for ModifyScene.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifySceneRequest`
@@ -2280,7 +2280,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifySubscriptionStatus(self, request):
-        """编辑设备订阅状态
+        r"""编辑设备订阅状态
 
         :param request: Request instance for ModifySubscriptionStatus.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifySubscriptionStatusRequest`
@@ -2303,7 +2303,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ModifyVideoInfo(self, request):
-        """修改录像存储列表
+        r"""修改录像存储列表
 
         :param request: Request instance for ModifyVideoInfo.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyVideoInfoRequest`
@@ -2326,7 +2326,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def ResetWarning(self, request):
-        """重置设备告警
+        r"""重置设备告警
 
         :param request: Request instance for ResetWarning.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ResetWarningRequest`
@@ -2349,7 +2349,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def UpdateDeviceGroup(self, request):
-        """本接口(UpdateDeviceGroup)用于修改分组信息。
+        r"""本接口(UpdateDeviceGroup)用于修改分组信息。
 
         :param request: Request instance for UpdateDeviceGroup.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDeviceGroupRequest`
@@ -2372,7 +2372,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def UpdateDevicePassWord(self, request):
-        """本接口(UpdateDevicePassWord)用于修改设备密码。
+        r"""本接口(UpdateDevicePassWord)用于修改设备密码。
 
         :param request: Request instance for UpdateDevicePassWord.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDevicePassWordRequest`
@@ -2395,7 +2395,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def UpdateRecordPlan(self, request):
-        """本接口(UpdateRecordPlan)用于更新录制计划。
+        r"""本接口(UpdateRecordPlan)用于更新录制计划。
         请使用 ModifyRecordingPlan接口和ModifyBindRecordingPlan接口
 
         :param request: Request instance for UpdateRecordPlan.
@@ -2419,7 +2419,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def UpdateTimeTemplate(self, request):
-        """本接口(UpdateTimeTemplate)用于更新时间模板。
+        r"""本接口(UpdateTimeTemplate)用于更新时间模板。
 
         :param request: Request instance for UpdateTimeTemplate.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateTimeTemplateRequest`

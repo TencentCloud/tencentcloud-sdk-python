@@ -27,7 +27,7 @@ class TeoClient(AbstractClient):
 
 
     def BindSecurityTemplateToEntity(self, request):
-        """操作安全策略模板，支持将域名绑定或换绑到指定的策略模板，或者从指定的策略模板解绑。
+        r"""操作安全策略模板，支持将域名绑定或换绑到指定的策略模板，或者从指定的策略模板解绑。
 
         :param request: Request instance for BindSecurityTemplateToEntity.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityRequest`
@@ -50,7 +50,7 @@ class TeoClient(AbstractClient):
 
 
     def BindSharedCNAME(self, request):
-        """用于加速域名绑定或解绑共享 CNAME，该功能白名单内测中。
+        r"""用于加速域名绑定或解绑共享 CNAME，该功能白名单内测中。
 
         :param request: Request instance for BindSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindSharedCNAMERequest`
@@ -73,7 +73,7 @@ class TeoClient(AbstractClient):
 
 
     def BindZoneToPlan(self, request):
-        """将未绑定套餐的站点绑定到已有套餐
+        r"""将未绑定套餐的站点绑定到已有套餐
 
         :param request: Request instance for BindZoneToPlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindZoneToPlanRequest`
@@ -96,7 +96,7 @@ class TeoClient(AbstractClient):
 
 
     def CheckCnameStatus(self, request):
-        """校验域名 CNAME 状态
+        r"""校验域名 CNAME 状态
 
         :param request: Request instance for CheckCnameStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.CheckCnameStatusRequest`
@@ -119,7 +119,7 @@ class TeoClient(AbstractClient):
 
 
     def ConfirmOriginACLUpdate(self, request):
-        """本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
+        r"""本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
 
         :param request: Request instance for ConfirmOriginACLUpdate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateRequest`
@@ -142,7 +142,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateAccelerationDomain(self, request):
-        """在创建完站点之后，您可以通过本接口创建加速域名。
+        r"""在创建完站点之后，您可以通过本接口创建加速域名。
 
         CNAME 模式接入时，若您未完成站点归属权校验，本接口将为您返回域名归属权验证信息，您可以单独对域名进行归属权验证，详情参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。
 
@@ -167,7 +167,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateAliasDomain(self, request):
-        """创建别称域名。
+        r"""创建别称域名。
         该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for CreateAliasDomain.
@@ -191,7 +191,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxy(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版 [创建四层代理实例](https://cloud.tencent.com/document/product/1552/103417) 。
+        r"""本接口为旧版，如需调用请尽快迁移至新版 [创建四层代理实例](https://cloud.tencent.com/document/product/1552/103417) 。
 
         :param request: Request instance for CreateApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRequest`
@@ -214,7 +214,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRule(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [创建四层代理转发规则
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [创建四层代理转发规则
         ](https://cloud.tencent.com/document/product/1552/103416) 。
 
         :param request: Request instance for CreateApplicationProxyRule.
@@ -238,7 +238,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateCLSIndex(self, request):
-        """针对指定实时日志投递任务（task-id），在对应的腾讯云 CLS 日志主题中创建投递日志字段对应的键值索引。如果您在腾讯云 CLS 已经创建索引，本接口将采用合并的方式追加索引。
+        r"""针对指定实时日志投递任务（task-id），在对应的腾讯云 CLS 日志主题中创建投递日志字段对应的键值索引。如果您在腾讯云 CLS 已经创建索引，本接口将采用合并的方式追加索引。
 
         :param request: Request instance for CreateCLSIndex.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexRequest`
@@ -261,7 +261,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateConfigGroupVersion(self, request):
-        """在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for CreateConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`
@@ -284,7 +284,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateContentIdentifier(self, request):
-        """创建内容标识符，可以设置描述、标签等信息，同时需要绑定企业版套餐用于统计计费数据；一个内容标识符只能绑定一个计费套餐，一个计费套餐可以绑定多个内容标识符。该功能仅限白名单开放。
+        r"""创建内容标识符，可以设置描述、标签等信息，同时需要绑定企业版套餐用于统计计费数据；一个内容标识符只能绑定一个计费套餐，一个计费套餐可以绑定多个内容标识符。该功能仅限白名单开放。
 
         :param request: Request instance for CreateContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateContentIdentifierRequest`
@@ -307,7 +307,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateCustomizeErrorPage(self, request):
-        """创建自定义错误页面。
+        r"""创建自定义错误页面。
 
         :param request: Request instance for CreateCustomizeErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateCustomizeErrorPageRequest`
@@ -330,7 +330,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateDnsRecord(self, request):
-        """在创建完站点后，并且站点为 NS 模式接入时，您可以通过本接口创建 DNS 记录。
+        r"""在创建完站点后，并且站点为 NS 模式接入时，您可以通过本接口创建 DNS 记录。
 
         :param request: Request instance for CreateDnsRecord.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateDnsRecordRequest`
@@ -353,7 +353,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateFunction(self, request):
-        """创建并部署边缘函数至 EdgeOne 的边缘节点。
+        r"""创建并部署边缘函数至 EdgeOne 的边缘节点。
 
         :param request: Request instance for CreateFunction.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRequest`
@@ -376,7 +376,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateFunctionRule(self, request):
-        """创建边缘函数的触发规则。
+        r"""创建边缘函数的触发规则。
 
         :param request: Request instance for CreateFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRuleRequest`
@@ -399,7 +399,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateJustInTimeTranscodeTemplate(self, request):
-        """即时转码已经提供了预置转码模板，满足大部分的需求。如果有个性化的转码需求，可以通过本接口创建自定义的转码模板，最多可创建100个自定义转码模板。
+        r"""即时转码已经提供了预置转码模板，满足大部分的需求。如果有个性化的转码需求，可以通过本接口创建自定义的转码模板，最多可创建100个自定义转码模板。
         为了确保即时转码效果的一致性，避免因 EO 缓存或 M3U8 分片处理过程中的模板变更导致视频输出异常，模板在创建后不可进行修改。
         即时转码详细能力了解：[EdgeOne视频即时处理功能介绍](https://cloud.tencent.com/document/product/1552/111927)。
 
@@ -424,7 +424,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL4Proxy(self, request):
-        """用于创建四层代理实例。
+        r"""用于创建四层代理实例。
 
         :param request: Request instance for CreateL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRequest`
@@ -447,7 +447,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL4ProxyRules(self, request):
-        """用于创建四层代理实例规则，支持单条或者批量创建。
+        r"""用于创建四层代理实例规则，支持单条或者批量创建。
 
         :param request: Request instance for CreateL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesRequest`
@@ -470,7 +470,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL7AccRules(self, request):
-        """本接口用于在[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中创建规则，支持批量创建。
+        r"""本接口用于在[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中创建规则，支持批量创建。
 
         :param request: Request instance for CreateL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL7AccRulesRequest`
@@ -493,7 +493,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        """创建负载均衡实例。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223)。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+        r"""创建负载均衡实例。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223)。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 
         :param request: Request instance for CreateLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerRequest`
@@ -516,7 +516,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGateway(self, request):
-        """通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
+        r"""通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
 
         :param request: Request instance for CreateMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayRequest`
@@ -539,7 +539,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGatewayLine(self, request):
-        """通过本接口创建接入多通道安全加速网关的线路。包括 EdgeOne 四层代理线路、自定义线路。
+        r"""通过本接口创建接入多通道安全加速网关的线路。包括 EdgeOne 四层代理线路、自定义线路。
 
         :param request: Request instance for CreateMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineRequest`
@@ -562,7 +562,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGatewaySecretKey(self, request):
-        """通过本接口创建接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+        r"""通过本接口创建接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
 
         :param request: Request instance for CreateMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyRequest`
@@ -585,7 +585,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateOriginGroup(self, request):
-        """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
+        r"""创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
         :param request: Request instance for CreateOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupRequest`
@@ -608,7 +608,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePlan(self, request):
-        """若您需要使用 Edgeone 产品，您需要通过此接口创建计费套餐。
+        r"""若您需要使用 Edgeone 产品，您需要通过此接口创建计费套餐。
         > 创建套餐后，您需要通过 [CreateZone](https://cloud.tencent.com/document/product/1552/80719) 完成创建站点，绑定套餐的流程，Edgeone 才能正常提供服务。
 
         :param request: Request instance for CreatePlan.
@@ -632,7 +632,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePlanForZone(self, request):
-        """为未购买套餐的站点购买套餐
+        r"""为未购买套餐的站点购买套餐
 
         :param request: Request instance for CreatePlanForZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePlanForZoneRequest`
@@ -655,7 +655,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePrefetchTask(self, request):
-        """创建预热任务
+        r"""创建预热任务
 
         :param request: Request instance for CreatePrefetchTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePrefetchTaskRequest`
@@ -678,7 +678,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """当源站资源更新，但节点缓存 TTL 未过期时，用户仍会访问到旧的资源，此时可以通过该接口实现节点资源更新。触发更新的方法有以下两种：<li>直接删除：不做任何校验，直接删除节点缓存，用户请求时触发回源拉取；</li><li>标记过期：将节点资源置为过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
+        r"""当源站资源更新，但节点缓存 TTL 未过期时，用户仍会访问到旧的资源，此时可以通过该接口实现节点资源更新。触发更新的方法有以下两种：<li>直接删除：不做任何校验，直接删除节点缓存，用户请求时触发回源拉取；</li><li>标记过期：将节点资源置为过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
 
         清除缓存任务详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
 
@@ -703,7 +703,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateRealtimeLogDeliveryTask(self, request):
-        """本接口用于创建实时日志投递任务。本接口有如下限制：
+        r"""本接口用于创建实时日志投递任务。本接口有如下限制：
         - 当数据投递类型（LogType）为站点加速日志（七层访问日志）、四层代理日志、边缘函数运行日志时，同一个实体（七层域名、四层代理实例、边缘函数实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到如下实时日志投递任务类型（TaskType）组合中：
             - 一个推送至腾讯云  CLS 的任务，加上另一个推送至自定义 HTTP(S) 地址的任务；
             - 一个推送至腾讯云  CLS 的任务，加上另一个推送至 AWS S3 兼容对象存储的任务；
@@ -732,7 +732,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """本接口为旧版本创建规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本创建七层加速规则接口详情请参考 [CreateL7AccRules](https://cloud.tencent.com/document/product/1552/115822)。
+        r"""本接口为旧版本创建规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本创建七层加速规则接口详情请参考 [CreateL7AccRules](https://cloud.tencent.com/document/product/1552/115822)。
         <p style="color: red;">注意：自 2025 年 1 月 21 日起，旧版接口停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。为避免在使用旧版接口时出现数据字段冲突，建议您尽早迁移到新版规则引擎接口。</p>
 
         :param request: Request instance for CreateRule.
@@ -756,7 +756,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityAPIResource(self, request):
-        """用于创建 API 资源。
+        r"""用于创建 API 资源。
 
         :param request: Request instance for CreateSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceRequest`
@@ -779,7 +779,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityAPIService(self, request):
-        """用于创建 API 服务。
+        r"""用于创建 API 服务。
 
         :param request: Request instance for CreateSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceRequest`
@@ -802,7 +802,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityClientAttester(self, request):
-        """创建客户端认证选项。
+        r"""创建客户端认证选项。
 
         :param request: Request instance for CreateSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterRequest`
@@ -825,7 +825,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityIPGroup(self, request):
-        """创建安全 IP 组
+        r"""创建安全 IP 组
 
         :param request: Request instance for CreateSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityIPGroupRequest`
@@ -848,7 +848,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityJSInjectionRule(self, request):
-        """创建 JavaScript 注入规则。
+        r"""创建 JavaScript 注入规则。
 
         :param request: Request instance for CreateSecurityJSInjectionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleRequest`
@@ -871,7 +871,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSharedCNAME(self, request):
-        """用于创建共享 CNAME，该功能白名单内测中。
+        r"""用于创建共享 CNAME，该功能白名单内测中。
 
         :param request: Request instance for CreateSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSharedCNAMERequest`
@@ -894,7 +894,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateWebSecurityTemplate(self, request):
-        """创建安全策略配置模板
+        r"""创建安全策略配置模板
 
         :param request: Request instance for CreateWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateRequest`
@@ -917,7 +917,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateZone(self, request):
-        """EdgeOne 为您提供 CNAME、NS 和无域名接入三种接入方式，您需要先通过此接口完成站点创建。CNAME 和 NS 接入站点的场景可参考 [从零开始快速接入 EdgeOne](https://cloud.tencent.com/document/product/1552/87601); 无域名接入的场景可参考 [快速启用四层代理服务](https://cloud.tencent.com/document/product/1552/96051)。
+        r"""EdgeOne 为您提供 CNAME、NS 和无域名接入三种接入方式，您需要先通过此接口完成站点创建。CNAME 和 NS 接入站点的场景可参考 [从零开始快速接入 EdgeOne](https://cloud.tencent.com/document/product/1552/87601); 无域名接入的场景可参考 [快速启用四层代理服务](https://cloud.tencent.com/document/product/1552/96051)。
 
         > 建议您在账号下已存在套餐时调用本接口创建站点，请在入参时传入 PlanId ，直接将站点绑定至该套餐；不传入 PlanId 时，创建出来的站点会处于未激活状态，无法正常服务，您需要通过 [BindZoneToPlan](https://cloud.tencent.com/document/product/1552/83042) 完成套餐绑定之后，站点才可正常提供服务 。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
 
@@ -942,7 +942,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteAccelerationDomains(self, request):
-        """批量删除加速域名
+        r"""批量删除加速域名
 
         :param request: Request instance for DeleteAccelerationDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAccelerationDomainsRequest`
@@ -965,7 +965,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteAliasDomain(self, request):
-        """删除别称域名。
+        r"""删除别称域名。
         该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for DeleteAliasDomain.
@@ -989,7 +989,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxy(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理实例
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理实例
         ](https://cloud.tencent.com/document/product/1552/103415) 。
 
         :param request: Request instance for DeleteApplicationProxy.
@@ -1013,7 +1013,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxyRule(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理转发规则](https://cloud.tencent.com/document/product/1552/103414) 。
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理转发规则](https://cloud.tencent.com/document/product/1552/103414) 。
 
         :param request: Request instance for DeleteApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRuleRequest`
@@ -1036,7 +1036,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteContentIdentifier(self, request):
-        """删除指定的内容标识符。该功能仅白名单开放。
+        r"""删除指定的内容标识符。该功能仅白名单开放。
 
         :param request: Request instance for DeleteContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteContentIdentifierRequest`
@@ -1059,7 +1059,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteCustomErrorPage(self, request):
-        """删除自定义错误页面。
+        r"""删除自定义错误页面。
 
         :param request: Request instance for DeleteCustomErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteCustomErrorPageRequest`
@@ -1082,7 +1082,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteDnsRecords(self, request):
-        """您可以用本接口批量删除 DNS 记录。
+        r"""您可以用本接口批量删除 DNS 记录。
 
         :param request: Request instance for DeleteDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteDnsRecordsRequest`
@@ -1105,7 +1105,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteFunction(self, request):
-        """删除边缘函数，删除后函数无法恢复，关联的触发规则会一并删除。
+        r"""删除边缘函数，删除后函数无法恢复，关联的触发规则会一并删除。
 
         :param request: Request instance for DeleteFunction.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRequest`
@@ -1128,7 +1128,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteFunctionRules(self, request):
-        """删除边缘函数触发规则。
+        r"""删除边缘函数触发规则。
 
         :param request: Request instance for DeleteFunctionRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRulesRequest`
@@ -1151,7 +1151,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteJustInTimeTranscodeTemplates(self, request):
-        """根据站点 id 下唯一的模板标识，删除相应的即时转码模板。
+        r"""根据站点 id 下唯一的模板标识，删除相应的即时转码模板。
 
         :param request: Request instance for DeleteJustInTimeTranscodeTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesRequest`
@@ -1174,7 +1174,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL4Proxy(self, request):
-        """用于删除四层代理实例。
+        r"""用于删除四层代理实例。
 
         :param request: Request instance for DeleteL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRequest`
@@ -1197,7 +1197,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL4ProxyRules(self, request):
-        """用于删除四层代理转发规则，支持单条或者批量操作。
+        r"""用于删除四层代理转发规则，支持单条或者批量操作。
 
         :param request: Request instance for DeleteL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesRequest`
@@ -1220,7 +1220,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL7AccRules(self, request):
-        """本接口用于删除[规则引擎](https://cloud.tencent.com/document/product/1552/70901)的规则，支持批量删除。
+        r"""本接口用于删除[规则引擎](https://cloud.tencent.com/document/product/1552/70901)的规则，支持批量删除。
 
         :param request: Request instance for DeleteL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL7AccRulesRequest`
@@ -1243,7 +1243,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteLoadBalancer(self, request):
-        """删除负载均衡实例，若负载均衡示例被其他服务（例如：四层代理等）引用的时候，示例无法被删除，需要先解除引用关系。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+        r"""删除负载均衡实例，若负载均衡示例被其他服务（例如：四层代理等）引用的时候，示例无法被删除，需要先解除引用关系。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 
         :param request: Request instance for DeleteLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerRequest`
@@ -1266,7 +1266,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteMultiPathGateway(self, request):
-        """通过本接口删除多通道安全加速网关，包括自有网关和云上网关。
+        r"""通过本接口删除多通道安全加速网关，包括自有网关和云上网关。
 
         :param request: Request instance for DeleteMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayRequest`
@@ -1289,7 +1289,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteMultiPathGatewayLine(self, request):
-        """通过本接口删除接入多通道安全加速网关的线路，仅自定义线路支持删除。
+        r"""通过本接口删除接入多通道安全加速网关的线路，仅自定义线路支持删除。
 
         :param request: Request instance for DeleteMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineRequest`
@@ -1312,7 +1312,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteOriginGroup(self, request):
-        """删除源站组，若源站组仍然被服务（例如：四层代理，域名服务，负载均衡，规则引起）引用，将不允许删除。
+        r"""删除源站组，若源站组仍然被服务（例如：四层代理，域名服务，负载均衡，规则引起）引用，将不允许删除。
 
         :param request: Request instance for DeleteOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteOriginGroupRequest`
@@ -1335,7 +1335,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteRealtimeLogDeliveryTask(self, request):
-        """通过本接口删除实时日志投递任务。
+        r"""通过本接口删除实时日志投递任务。
 
         :param request: Request instance for DeleteRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRealtimeLogDeliveryTaskRequest`
@@ -1358,7 +1358,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteRules(self, request):
-        """本接口为旧版本删除规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本删除七层加速规则接口详情请参考 [DeleteL7AccRules](https://cloud.tencent.com/document/product/1552/115821)。
+        r"""本接口为旧版本删除规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本删除七层加速规则接口详情请参考 [DeleteL7AccRules](https://cloud.tencent.com/document/product/1552/115821)。
         <p style="color: red;">注意：自 2025 年 1 月 21 日起，旧版接口停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。为避免在使用旧版接口时出现数据字段冲突，建议您尽早迁移到新版规则引擎接口。</p>
 
         :param request: Request instance for DeleteRules.
@@ -1382,7 +1382,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityAPIResource(self, request):
-        """用于删除 API 资源。
+        r"""用于删除 API 资源。
 
         :param request: Request instance for DeleteSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceRequest`
@@ -1405,7 +1405,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityAPIService(self, request):
-        """用于删除 API 服务。
+        r"""用于删除 API 服务。
 
         :param request: Request instance for DeleteSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceRequest`
@@ -1428,7 +1428,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityClientAttester(self, request):
-        """删除客户端认证选项。
+        r"""删除客户端认证选项。
 
         :param request: Request instance for DeleteSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterRequest`
@@ -1451,7 +1451,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityIPGroup(self, request):
-        """删除指定 IP 组，如果有规则引用了 IP 组情况，则不允许删除。
+        r"""删除指定 IP 组，如果有规则引用了 IP 组情况，则不允许删除。
 
         :param request: Request instance for DeleteSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityIPGroupRequest`
@@ -1474,7 +1474,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityJSInjectionRule(self, request):
-        """删除 JavaScript 注入规则。
+        r"""删除 JavaScript 注入规则。
 
         :param request: Request instance for DeleteSecurityJSInjectionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityJSInjectionRuleRequest`
@@ -1497,7 +1497,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSharedCNAME(self, request):
-        """用于删除共享 CNAME，该功能白名单内测中。
+        r"""用于删除共享 CNAME，该功能白名单内测中。
 
         :param request: Request instance for DeleteSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSharedCNAMERequest`
@@ -1520,7 +1520,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteWebSecurityTemplate(self, request):
-        """删除安全策略配置模板
+        r"""删除安全策略配置模板
 
         :param request: Request instance for DeleteWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateRequest`
@@ -1543,7 +1543,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteZone(self, request):
-        """删除站点。
+        r"""删除站点。
 
         :param request: Request instance for DeleteZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteZoneRequest`
@@ -1566,7 +1566,7 @@ class TeoClient(AbstractClient):
 
 
     def DeployConfigGroupVersion(self, request):
-        """在版本管理模式下，用于版本发布，可通过 EnvId 将版本发布至测试环境或生产环境。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于版本发布，可通过 EnvId 将版本发布至测试环境或生产环境。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for DeployConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionRequest`
@@ -1589,7 +1589,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAccelerationDomains(self, request):
-        """您可以通过本接口查看站点下的域名信息，包括加速域名、源站以及域名状态等信息。您可以查看站点下全部域名的信息，也可以指定过滤条件查询对应的域名信息。
+        r"""您可以通过本接口查看站点下的域名信息，包括加速域名、源站以及域名状态等信息。您可以查看站点下全部域名的信息，也可以指定过滤条件查询对应的域名信息。
 
         :param request: Request instance for DescribeAccelerationDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAccelerationDomainsRequest`
@@ -1612,7 +1612,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAliasDomains(self, request):
-        """查询别称域名信息列表。
+        r"""查询别称域名信息列表。
         该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for DescribeAliasDomains.
@@ -1636,7 +1636,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxies(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，新版接口中将四层代理实例列表的查询和四层转发规则的查询拆分成两个接口，详情请参考 [查询四层代理实例列表](https://cloud.tencent.com/document/product/1552/103413) 和 [查询四层代理转发规则列表](https://cloud.tencent.com/document/product/1552/103412)。
+        r"""本接口为旧版，如需调用请尽快迁移至新版，新版接口中将四层代理实例列表的查询和四层转发规则的查询拆分成两个接口，详情请参考 [查询四层代理实例列表](https://cloud.tencent.com/document/product/1552/103413) 和 [查询四层代理转发规则列表](https://cloud.tencent.com/document/product/1552/103412)。
 
         :param request: Request instance for DescribeApplicationProxies.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeApplicationProxiesRequest`
@@ -1659,7 +1659,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAvailablePlans(self, request):
-        """查询当前账户可用套餐信息列表
+        r"""查询当前账户可用套餐信息列表
 
         :param request: Request instance for DescribeAvailablePlans.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailablePlansRequest`
@@ -1682,7 +1682,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeBillingData(self, request):
-        """通过本接口查询计费数据。
+        r"""通过本接口查询计费数据。
 
         :param request: Request instance for DescribeBillingData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataRequest`
@@ -1705,7 +1705,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeConfigGroupVersionDetail(self, request):
-        """在版本管理模式下，用于获取版本的详细信息，包括版本 ID、描述、状态、创建时间、所属配置组信息以及版本配置文件的内容。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于获取版本的详细信息，包括版本 ID、描述、状态、创建时间、所属配置组信息以及版本配置文件的内容。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for DescribeConfigGroupVersionDetail.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailRequest`
@@ -1728,7 +1728,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeConfigGroupVersions(self, request):
-        """在版本管理模式下，用于查询指定配置组的版本列表。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于查询指定配置组的版本列表。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for DescribeConfigGroupVersions.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsRequest`
@@ -1751,7 +1751,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeContentIdentifiers(self, request):
-        """批量查询内容标识符，可以根据 ID、描述、状态或者标签过滤。按照状态查询被删除的内容标识符仅保留三个月。该功能仅白名单开放。
+        r"""批量查询内容标识符，可以根据 ID、描述、状态或者标签过滤。按照状态查询被删除的内容标识符仅保留三个月。该功能仅白名单开放。
 
         :param request: Request instance for DescribeContentIdentifiers.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeContentIdentifiersRequest`
@@ -1774,7 +1774,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeContentQuota(self, request):
-        """查询内容管理接口配额
+        r"""查询内容管理接口配额
 
         :param request: Request instance for DescribeContentQuota.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeContentQuotaRequest`
@@ -1797,7 +1797,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeCustomErrorPages(self, request):
-        """查询自定义错误页列表。
+        r"""查询自定义错误页列表。
 
         :param request: Request instance for DescribeCustomErrorPages.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomErrorPagesRequest`
@@ -1820,7 +1820,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackData(self, request):
-        """本接口（DescribeDDoSAttackData）用于查询DDoS攻击时序数据。
+        r"""本接口（DescribeDDoSAttackData）用于查询DDoS攻击时序数据。
 
         :param request: Request instance for DescribeDDoSAttackData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackDataRequest`
@@ -1843,7 +1843,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackEvent(self, request):
-        """本接口（DescribeDDoSAttackEvent）用于查询DDoS攻击事件列表。
+        r"""本接口（DescribeDDoSAttackEvent）用于查询DDoS攻击事件列表。
 
         :param request: Request instance for DescribeDDoSAttackEvent.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventRequest`
@@ -1866,7 +1866,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackTopData(self, request):
-        """本接口（DescribeDDoSAttackTopData）用于查询DDoS攻击Top数据。
+        r"""本接口（DescribeDDoSAttackTopData）用于查询DDoS攻击Top数据。
 
         :param request: Request instance for DescribeDDoSAttackTopData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackTopDataRequest`
@@ -1889,7 +1889,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSProtection(self, request):
-        """获取站点的独立 DDoS 防护信息。
+        r"""获取站点的独立 DDoS 防护信息。
 
         :param request: Request instance for DescribeDDoSProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionRequest`
@@ -1912,7 +1912,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDefaultCertificates(self, request):
-        """查询默认证书列表
+        r"""查询默认证书列表
 
         :param request: Request instance for DescribeDefaultCertificates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDefaultCertificatesRequest`
@@ -1935,7 +1935,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDeployHistory(self, request):
-        """在版本管理模式下，用于查询生产/测试环境的版本发布历史。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于查询生产/测试环境的版本发布历史。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for DescribeDeployHistory.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryRequest`
@@ -1958,7 +1958,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnsRecords(self, request):
-        """您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息，支持指定过滤条件查询对应的 DNS 记录信息。
+        r"""您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息，支持指定过滤条件查询对应的 DNS 记录信息。
 
         :param request: Request instance for DescribeDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDnsRecordsRequest`
@@ -1981,7 +1981,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """在版本管理模式下，用于查询环境信息，可获取环境 ID、类型、当前生效版本等。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于查询环境信息，可获取环境 ID、类型、当前生效版本等。版本管理功能内测中，当前仅白名单开放。
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsRequest`
@@ -2004,7 +2004,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeFunctionRules(self, request):
-        """查询边缘函数触发规则列表，支持按照规则 ID、函数 ID、规则描述等条件进行过滤。
+        r"""查询边缘函数触发规则列表，支持按照规则 ID、函数 ID、规则描述等条件进行过滤。
 
         :param request: Request instance for DescribeFunctionRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRulesRequest`
@@ -2027,7 +2027,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeFunctionRuntimeEnvironment(self, request):
-        """查询边缘函数运行环境，包括环境变量。
+        r"""查询边缘函数运行环境，包括环境变量。
 
         :param request: Request instance for DescribeFunctionRuntimeEnvironment.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRuntimeEnvironmentRequest`
@@ -2050,7 +2050,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeFunctions(self, request):
-        """查询边缘函数列表，支持函数 ID、函数名称、描述等条件的过滤。
+        r"""查询边缘函数列表，支持函数 ID、函数名称、描述等条件的过滤。
 
         :param request: Request instance for DescribeFunctions.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionsRequest`
@@ -2073,7 +2073,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeHostsSetting(self, request):
-        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，可通过 [DescribeL7AccSetting](https://cloud.tencent.com/document/product/1552/115819) 和 [DescribeL7AccRules](https://cloud.tencent.com/document/product/1552/115820) 来获取域名的详细配置。
+        r"""本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，可通过 [DescribeL7AccSetting](https://cloud.tencent.com/document/product/1552/115819) 和 [DescribeL7AccRules](https://cloud.tencent.com/document/product/1552/115820) 来获取域名的详细配置。
 
         :param request: Request instance for DescribeHostsSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeHostsSettingRequest`
@@ -2096,7 +2096,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIPRegion(self, request):
-        """该接口可用于查询 IP 是否为 EdgeOne IP。
+        r"""该接口可用于查询 IP 是否为 EdgeOne IP。
 
         :param request: Request instance for DescribeIPRegion.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionRequest`
@@ -2119,7 +2119,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIdentifications(self, request):
-        """查询站点的验证信息。
+        r"""查询站点的验证信息。
 
         :param request: Request instance for DescribeIdentifications.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIdentificationsRequest`
@@ -2142,7 +2142,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeJustInTimeTranscodeTemplates(self, request):
-        """根据即时转码模板名字、模板类型或唯一标识，获取即时转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及预置模板。
+        r"""根据即时转码模板名字、模板类型或唯一标识，获取即时转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及预置模板。
 
         :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesRequest`
@@ -2165,7 +2165,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL4Proxy(self, request):
-        """用于查询四层代理实例列表。
+        r"""用于查询四层代理实例列表。
 
         :param request: Request instance for DescribeL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRequest`
@@ -2188,7 +2188,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL4ProxyRules(self, request):
-        """查询四层代理实例下的转发规则列表。
+        r"""查询四层代理实例下的转发规则列表。
 
         :param request: Request instance for DescribeL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesRequest`
@@ -2211,7 +2211,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL7AccRules(self, request):
-        """本接口用于查询[规则引擎](https://cloud.tencent.com/document/product/1552/70901)的规则列表。
+        r"""本接口用于查询[规则引擎](https://cloud.tencent.com/document/product/1552/70901)的规则列表。
 
         :param request: Request instance for DescribeL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccRulesRequest`
@@ -2234,7 +2234,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL7AccSetting(self, request):
-        """本接口用于查询[站点加速](https://cloud.tencent.com/document/product/1552/96193)全局配置。
+        r"""本接口用于查询[站点加速](https://cloud.tencent.com/document/product/1552/96193)全局配置。
 
         :param request: Request instance for DescribeL7AccSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccSettingRequest`
@@ -2257,7 +2257,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLoadBalancerList(self, request):
-        """查询负载均衡实例列表。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+        r"""查询负载均衡实例列表。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 
         :param request: Request instance for DescribeLoadBalancerList.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListRequest`
@@ -2280,7 +2280,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGateway(self, request):
-        """通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
+        r"""通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
 
         :param request: Request instance for DescribeMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRequest`
@@ -2303,7 +2303,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewayLine(self, request):
-        """通过本接口查询接入多通道安全加速网关的线路。包括直连、EdgeOne 四层代理线路、自定义线路。
+        r"""通过本接口查询接入多通道安全加速网关的线路。包括直连、EdgeOne 四层代理线路、自定义线路。
 
         :param request: Request instance for DescribeMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineRequest`
@@ -2326,7 +2326,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewayRegions(self, request):
-        """通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
+        r"""通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
 
         :param request: Request instance for DescribeMultiPathGatewayRegions.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsRequest`
@@ -2349,7 +2349,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewaySecretKey(self, request):
-        """通过本接口查询接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。
+        r"""通过本接口查询接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。
 
         :param request: Request instance for DescribeMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyRequest`
@@ -2372,7 +2372,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGateways(self, request):
-        """通过本接口查询用户创建的多通道安全加速网关列表。支持翻页。
+        r"""通过本接口查询用户创建的多通道安全加速网关列表。支持翻页。
 
         :param request: Request instance for DescribeMultiPathGateways.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysRequest`
@@ -2395,7 +2395,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginACL(self, request):
-        """本接口用于查询站点下的七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。如果您想通过自动化脚本定期获取回源 IP 网段的最新版本，可以较低频率（建议每三天一次）轮询本接口，若 NextOriginACL 字段有返回值，则将最新的回源 IP 网段同步到源站防火墙配置中。
+        r"""本接口用于查询站点下的七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。如果您想通过自动化脚本定期获取回源 IP 网段的最新版本，可以较低频率（建议每三天一次）轮询本接口，若 NextOriginACL 字段有返回值，则将最新的回源 IP 网段同步到源站防火墙配置中。
 
         :param request: Request instance for DescribeOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLRequest`
@@ -2418,7 +2418,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroup(self, request):
-        """获取源站组列表
+        r"""获取源站组列表
 
         :param request: Request instance for DescribeOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupRequest`
@@ -2441,7 +2441,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroupHealthStatus(self, request):
-        """查询负载均衡实例下源站组健康状态。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+        r"""查询负载均衡实例下源站组健康状态。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 
         :param request: Request instance for DescribeOriginGroupHealthStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusRequest`
@@ -2464,7 +2464,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginProtection(self, request):
-        """本接口为旧版本查询源站防护接口，EdgeOne 于 2025 年 6 月 27 日已对源站防护相关接口全面升级，新版本查询源站防护接口详情请参考 [DescribeOriginACL](https://cloud.tencent.com/document/product/1552/120408)。
+        r"""本接口为旧版本查询源站防护接口，EdgeOne 于 2025 年 6 月 27 日已对源站防护相关接口全面升级，新版本查询源站防护接口详情请参考 [DescribeOriginACL](https://cloud.tencent.com/document/product/1552/120408)。
 
         <p style="color: red;">注意：自 2025 年 6 月 27 日起，旧版接口停止更新迭代，后续新增功能将仅在新版接口中提供。为避免在使用旧版接口时出现数据字段冲突，建议您尽早迁移到新版源站防护接口。</p>
 
@@ -2489,7 +2489,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOverviewL7Data(self, request):
-        """本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
+        r"""本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 
         :param request: Request instance for DescribeOverviewL7Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOverviewL7DataRequest`
@@ -2512,7 +2512,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePlans(self, request):
-        """查询套餐信息列表，支持分页。
+        r"""查询套餐信息列表，支持分页。
 
         :param request: Request instance for DescribePlans.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePlansRequest`
@@ -2535,7 +2535,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePrefetchTasks(self, request):
-        """DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
+        r"""DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
 
         :param request: Request instance for DescribePrefetchTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePrefetchTasksRequest`
@@ -2558,7 +2558,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 CreatePurgeTasks 接口提交的任务均可通过此接口进行查询。
+        r"""DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 CreatePurgeTasks 接口提交的任务均可通过此接口进行查询。
 
         :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePurgeTasksRequest`
@@ -2581,7 +2581,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRealtimeLogDeliveryTasks(self, request):
-        """通过本接口查询实时日志投递任务列表。
+        r"""通过本接口查询实时日志投递任务列表。
 
         :param request: Request instance for DescribeRealtimeLogDeliveryTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksRequest`
@@ -2604,7 +2604,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """本接口为旧版本查询规则引擎规则接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本查询七层加速规则接口详情请参考  [DescribeL7AccRules](https://cloud.tencent.com/document/product/1552/115820)。
+        r"""本接口为旧版本查询规则引擎规则接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本查询七层加速规则接口详情请参考  [DescribeL7AccRules](https://cloud.tencent.com/document/product/1552/115820)。
         <p style="color: red;">注意：自 2025 年 1 月 21 日起，旧版接口停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。为避免在使用旧版接口时出现数据字段冲突，建议您尽早迁移到新版规则引擎接口。</p>
 
         :param request: Request instance for DescribeRules.
@@ -2628,7 +2628,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRulesSetting(self, request):
-        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [RuleEngineAction](https://cloud.tencent.com/document/product/1552/80721#RuleEngineAction)。
+        r"""本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [RuleEngineAction](https://cloud.tencent.com/document/product/1552/80721#RuleEngineAction)。
 
         :param request: Request instance for DescribeRulesSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesSettingRequest`
@@ -2651,7 +2651,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityAPIResource(self, request):
-        """查询站点下的 API 资源。
+        r"""查询站点下的 API 资源。
 
         :param request: Request instance for DescribeSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceRequest`
@@ -2674,7 +2674,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityAPIService(self, request):
-        """查询站点下的 API 服务。
+        r"""查询站点下的 API 服务。
 
         :param request: Request instance for DescribeSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceRequest`
@@ -2697,7 +2697,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityClientAttester(self, request):
-        """查询客户端认证选项配置。
+        r"""查询客户端认证选项配置。
 
         :param request: Request instance for DescribeSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterRequest`
@@ -2720,7 +2720,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroup(self, request):
-        """查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。本接口的查询结果中，每个 IP 组最多只返回 2000 个 IP / 网段。如果存在超过 2000 个 IP / 网段的超大 IP 组，请调用 DescribeSecurityIPGroupContent 进行分页查询。
+        r"""查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。本接口的查询结果中，每个 IP 组最多只返回 2000 个 IP / 网段。如果存在超过 2000 个 IP / 网段的超大 IP 组，请调用 DescribeSecurityIPGroupContent 进行分页查询。
 
         :param request: Request instance for DescribeSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupRequest`
@@ -2743,7 +2743,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroupContent(self, request):
-        """该接口用于分页查询指定 IP 组中的 IP 地址列表。当 IP 组中的 IP 地址数量超过 2000 个时，可以使用此接口进行分页查询，以获取完整的 IP 地址列表。
+        r"""该接口用于分页查询指定 IP 组中的 IP 地址列表。当 IP 组中的 IP 地址数量超过 2000 个时，可以使用此接口进行分页查询，以获取完整的 IP 地址列表。
 
         :param request: Request instance for DescribeSecurityIPGroupContent.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentRequest`
@@ -2766,7 +2766,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroupInfo(self, request):
-        """接口已废弃，将于 2024 年 6 月 30 日停止服务。请使用 [查询安全 IP 组
+        r"""接口已废弃，将于 2024 年 6 月 30 日停止服务。请使用 [查询安全 IP 组
         ](https://cloud.tencent.com/document/product/1552/105866) 接口。
 
         查询 IP 组的配置信息，包括 IP 组名称、 IP 组内容、 IP 组归属站点。
@@ -2792,7 +2792,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityJSInjectionRule(self, request):
-        """查询 JavaScript 注入规则。
+        r"""查询 JavaScript 注入规则。
 
         :param request: Request instance for DescribeSecurityJSInjectionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityJSInjectionRuleRequest`
@@ -2815,7 +2815,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicy(self, request):
-        """查询安全防护配置详情。
+        r"""查询安全防护配置详情。
 
         :param request: Request instance for DescribeSecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityPolicyRequest`
@@ -2838,7 +2838,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityTemplateBindings(self, request):
-        """查询指定策略模板的绑定关系列表。
+        r"""查询指定策略模板的绑定关系列表。
 
         :param request: Request instance for DescribeSecurityTemplateBindings.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsRequest`
@@ -2861,7 +2861,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        """本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
+        r"""本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4DataRequest`
@@ -2884,7 +2884,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        """本接口用于查询七层域名业务的时序数据。
+        r"""本接口用于查询七层域名业务的时序数据。
         注意：
         1. 本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
         2. 本接口默认返回防护后的流量请求数据，用户可在 `Filters.mitigatedByWebSecurity` 中自定义查询已防护缓释的数据。
@@ -2910,7 +2910,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7CacheData(self, request):
-        """本接口用于查询七层缓存分析时序类流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
+        r"""本接口用于查询七层缓存分析时序类流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 
         :param request: Request instance for DescribeTimingL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7CacheDataRequest`
@@ -2933,7 +2933,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        """本接口用于查询七层域名业务按照指定维度的 topN 数据。
+        r"""本接口用于查询七层域名业务按照指定维度的 topN 数据。
         注意：
         1. 本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
         2. 本接口默认返回防护后的流量请求数据，用户可在 `Filters.mitigatedByWebSecurity` 中自定义查询已防护缓释的数据。
@@ -2959,7 +2959,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7CacheData(self, request):
-        """本接口用于查询七层缓存分析 topN 数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80646"> DescribeTopL7AnalysisData</a> 接口。
+        r"""本接口用于查询七层缓存分析 topN 数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80646"> DescribeTopL7AnalysisData</a> 接口。
 
         :param request: Request instance for DescribeTopL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7CacheDataRequest`
@@ -2982,7 +2982,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebSecurityTemplate(self, request):
-        """查询安全策略配置模板详情
+        r"""查询安全策略配置模板详情
 
         :param request: Request instance for DescribeWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateRequest`
@@ -3005,7 +3005,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebSecurityTemplates(self, request):
-        """查询安全策略配置模板列表
+        r"""查询安全策略配置模板列表
 
         :param request: Request instance for DescribeWebSecurityTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesRequest`
@@ -3028,7 +3028,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneConfigImportResult(self, request):
-        """查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
+        r"""查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
 
         :param request: Request instance for DescribeZoneConfigImportResult.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultRequest`
@@ -3051,7 +3051,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneSetting(self, request):
-        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [DescribeL7AccSetting](https://cloud.tencent.com/document/product/1552/115819)。
+        r"""本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [DescribeL7AccSetting](https://cloud.tencent.com/document/product/1552/115819)。
 
         :param request: Request instance for DescribeZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneSettingRequest`
@@ -3074,7 +3074,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """该接口用于查询您有权限的站点信息。可根据不同查询条件筛选站点。
+        r"""该接口用于查询您有权限的站点信息。可根据不同查询条件筛选站点。
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZonesRequest`
@@ -3097,7 +3097,7 @@ class TeoClient(AbstractClient):
 
 
     def DestroyPlan(self, request):
-        """当您需要停止 Edgeone 套餐的计费，可以通过该接口销毁计费套餐。
+        r"""当您需要停止 Edgeone 套餐的计费，可以通过该接口销毁计费套餐。
         > 销毁计费套餐需要满足以下条件：
             1.套餐已过期（企业版套餐除外）；
             2.套餐下所有站点均已关闭或删除。
@@ -3127,7 +3127,7 @@ class TeoClient(AbstractClient):
 
 
     def DisableOriginACL(self, request):
-        """本接口用于关闭站点的源站防护功能。停用后，相关资源不再仅使用「源站防护」提供的回源 IP 网段请求您的源站，同时停止发送回源 IP 网段更新通知。
+        r"""本接口用于关闭站点的源站防护功能。停用后，相关资源不再仅使用「源站防护」提供的回源 IP 网段请求您的源站，同时停止发送回源 IP 网段更新通知。
 
         :param request: Request instance for DisableOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLRequest`
@@ -3150,7 +3150,7 @@ class TeoClient(AbstractClient):
 
 
     def DownloadL4Logs(self, request):
-        """本接口（DownloadL4Logs）用于下载四层离线日志。
+        r"""本接口（DownloadL4Logs）用于下载四层离线日志。
 
         :param request: Request instance for DownloadL4Logs.
         :type request: :class:`tencentcloud.teo.v20220901.models.DownloadL4LogsRequest`
@@ -3173,7 +3173,7 @@ class TeoClient(AbstractClient):
 
 
     def DownloadL7Logs(self, request):
-        """本接口（DownloadL7Logs）下载七层离线日志。
+        r"""本接口（DownloadL7Logs）下载七层离线日志。
 
         :param request: Request instance for DownloadL7Logs.
         :type request: :class:`tencentcloud.teo.v20220901.models.DownloadL7LogsRequest`
@@ -3196,7 +3196,7 @@ class TeoClient(AbstractClient):
 
 
     def EnableOriginACL(self, request):
-        """本接口用于站点首次开启源站防护，启用后 EdgeOne 将会使用特定的回源 IP 网段为七层加速域名/四层代理实例回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需要启用超过 200 个资源，可先通过指定资源的方式以最大数量启用，剩余资源通过 ModifyOriginACL 接口启用。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
+        r"""本接口用于站点首次开启源站防护，启用后 EdgeOne 将会使用特定的回源 IP 网段为七层加速域名/四层代理实例回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需要启用超过 200 个资源，可先通过指定资源的方式以最大数量启用，剩余资源通过 ModifyOriginACL 接口启用。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
 
         注意：
         - 调用本接口视为同意 [源站防护启用特别约定](https://cloud.tencent.com/document/product/1552/120141)；
@@ -3223,7 +3223,7 @@ class TeoClient(AbstractClient):
 
 
     def ExportZoneConfig(self, request):
-        """导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
+        r"""导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
 
         :param request: Request instance for ExportZoneConfig.
         :type request: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigRequest`
@@ -3246,7 +3246,7 @@ class TeoClient(AbstractClient):
 
 
     def HandleFunctionRuntimeEnvironment(self, request):
-        """操作边缘函数运行环境，支持环境变量的相关设置。
+        r"""操作边缘函数运行环境，支持环境变量的相关设置。
         设置环境变量后，可在函数代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
 
         :param request: Request instance for HandleFunctionRuntimeEnvironment.
@@ -3270,7 +3270,7 @@ class TeoClient(AbstractClient):
 
 
     def IdentifyZone(self, request):
-        """用于验证站点所有权。
+        r"""用于验证站点所有权。
 
         :param request: Request instance for IdentifyZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.IdentifyZoneRequest`
@@ -3293,7 +3293,7 @@ class TeoClient(AbstractClient):
 
 
     def ImportZoneConfig(self, request):
-        """导入站点配置接口，本接口支持站点配置文件的快速导入，发起导入后接口会返回对应的任务 ID（TaskId），用户需通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。该功能仅支持标准版和企业版套餐站点使用。
+        r"""导入站点配置接口，本接口支持站点配置文件的快速导入，发起导入后接口会返回对应的任务 ID（TaskId），用户需通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。该功能仅支持标准版和企业版套餐站点使用。
 
         :param request: Request instance for ImportZoneConfig.
         :type request: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigRequest`
@@ -3316,7 +3316,7 @@ class TeoClient(AbstractClient):
 
 
     def IncreasePlanQuota(self, request):
-        """当您的套餐绑定的站点数，或配置的 Web 防护 - 自定义规则 - 精准匹配策略的规则数，或 Web 防护 - 速率限制 - 精准速率限制模块的规则数达到套餐允许的配额上限，可以通过该接口增购对应配额。
+        r"""当您的套餐绑定的站点数，或配置的 Web 防护 - 自定义规则 - 精准匹配策略的规则数，或 Web 防护 - 速率限制 - 精准速率限制模块的规则数达到套餐允许的配额上限，可以通过该接口增购对应配额。
         > 该接口该仅支持企业版套餐。
 
         :param request: Request instance for IncreasePlanQuota.
@@ -3340,7 +3340,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAccelerationDomain(self, request):
-        """修改加速域名信息
+        r"""修改加速域名信息
 
         :param request: Request instance for ModifyAccelerationDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainRequest`
@@ -3363,7 +3363,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAccelerationDomainStatuses(self, request):
-        """批量修改加速域名状态
+        r"""批量修改加速域名状态
 
         :param request: Request instance for ModifyAccelerationDomainStatuses.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainStatusesRequest`
@@ -3386,7 +3386,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAliasDomain(self, request):
-        """修改别称域名。
+        r"""修改别称域名。
         该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for ModifyAliasDomain.
@@ -3410,7 +3410,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAliasDomainStatus(self, request):
-        """修改别称域名状态。
+        r"""修改别称域名状态。
         该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for ModifyAliasDomainStatus.
@@ -3434,7 +3434,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxy(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例
         ](https://cloud.tencent.com/document/product/1552/103411) 。
 
         :param request: Request instance for ModifyApplicationProxy.
@@ -3458,7 +3458,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRule(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则
         ](https://cloud.tencent.com/document/product/1552/103410) 。
 
         :param request: Request instance for ModifyApplicationProxyRule.
@@ -3482,7 +3482,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRuleStatus(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则状态
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则状态
         ](https://cloud.tencent.com/document/product/1552/103409) 。
 
         :param request: Request instance for ModifyApplicationProxyRuleStatus.
@@ -3506,7 +3506,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyStatus(self, request):
-        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例状态](https://cloud.tencent.com/document/product/1552/103408) 。
+        r"""本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例状态](https://cloud.tencent.com/document/product/1552/103408) 。
 
         :param request: Request instance for ModifyApplicationProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyStatusRequest`
@@ -3529,7 +3529,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyContentIdentifier(self, request):
-        """修改内容标识符，仅支持修改描述。该功能仅白名单开放。
+        r"""修改内容标识符，仅支持修改描述。该功能仅白名单开放。
 
         :param request: Request instance for ModifyContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyContentIdentifierRequest`
@@ -3552,7 +3552,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyCustomErrorPage(self, request):
-        """修改自定义错误页面。
+        r"""修改自定义错误页面。
 
         :param request: Request instance for ModifyCustomErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyCustomErrorPageRequest`
@@ -3575,7 +3575,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDDoSProtection(self, request):
-        """修改站点的独立 DDoS 防护。
+        r"""修改站点的独立 DDoS 防护。
 
         :param request: Request instance for ModifyDDoSProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionRequest`
@@ -3598,7 +3598,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecords(self, request):
-        """您可以通过本接口批量修改 DNS 记录。
+        r"""您可以通过本接口批量修改 DNS 记录。
 
         :param request: Request instance for ModifyDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsRequest`
@@ -3621,7 +3621,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecordsStatus(self, request):
-        """您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
+        r"""您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
 
         :param request: Request instance for ModifyDnsRecordsStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsStatusRequest`
@@ -3644,7 +3644,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunction(self, request):
-        """修改边缘函数，支持修改函数的内容及描述信息，修改且重新部署后，函数立刻生效。
+        r"""修改边缘函数，支持修改函数的内容及描述信息，修改且重新部署后，函数立刻生效。
 
         :param request: Request instance for ModifyFunction.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRequest`
@@ -3667,7 +3667,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunctionRule(self, request):
-        """修改边缘函数触发规则，支持修改规则条件、执行函数以及描述信息。
+        r"""修改边缘函数触发规则，支持修改规则条件、执行函数以及描述信息。
 
         :param request: Request instance for ModifyFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRuleRequest`
@@ -3690,7 +3690,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunctionRulePriority(self, request):
-        """修改边缘函数触发规则的优先级。
+        r"""修改边缘函数触发规则的优先级。
 
         :param request: Request instance for ModifyFunctionRulePriority.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRulePriorityRequest`
@@ -3713,7 +3713,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyHostsCertificate(self, request):
-        """完成域名创建之后，您可以为域名配置自有证书，也可以使用 EdgeOne 为您提供的 [免费证书](https://cloud.tencent.com/document/product/1552/90437)。
+        r"""完成域名创建之后，您可以为域名配置自有证书，也可以使用 EdgeOne 为您提供的 [免费证书](https://cloud.tencent.com/document/product/1552/90437)。
         如果您需要配置自有证书，请先将证书上传至 [SSL证书控制台](https://console.cloud.tencent.com/certoverview)，然后在本接口中传入对应的证书 ID。详情参考 [部署自有证书至 EdgeOne 域名
         ](https://cloud.tencent.com/document/product/1552/88874)。
 
@@ -3738,7 +3738,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4Proxy(self, request):
-        """用于修改四层代理实例的配置。
+        r"""用于修改四层代理实例的配置。
 
         :param request: Request instance for ModifyL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRequest`
@@ -3761,7 +3761,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4ProxyRules(self, request):
-        """用于修改四层代理转发规则，支持单条或者批量修改。
+        r"""用于修改四层代理转发规则，支持单条或者批量修改。
 
         :param request: Request instance for ModifyL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesRequest`
@@ -3784,7 +3784,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4ProxyRulesStatus(self, request):
-        """用于启用/停用四层代理转发规则状态，支持单条或者批量操作。
+        r"""用于启用/停用四层代理转发规则状态，支持单条或者批量操作。
 
         :param request: Request instance for ModifyL4ProxyRulesStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusRequest`
@@ -3807,7 +3807,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4ProxyStatus(self, request):
-        """用于启用/停用四层代理实例。
+        r"""用于启用/停用四层代理实例。
 
         :param request: Request instance for ModifyL4ProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusRequest`
@@ -3830,7 +3830,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccRule(self, request):
-        """本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中的规则，单次仅支持修改单条规则。
+        r"""本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中的规则，单次仅支持修改单条规则。
 
         :param request: Request instance for ModifyL7AccRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRuleRequest`
@@ -3853,7 +3853,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccRulePriority(self, request):
-        """本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中规则列表的优先级，本接口需要传入站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过[查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820)接口获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后执行。
+        r"""本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中规则列表的优先级，本接口需要传入站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过[查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820)接口获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后执行。
 
         :param request: Request instance for ModifyL7AccRulePriority.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRulePriorityRequest`
@@ -3876,7 +3876,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccSetting(self, request):
-        """本接口用于修改[站点加速](https://cloud.tencent.com/document/product/1552/96193)全局配置。
+        r"""本接口用于修改[站点加速](https://cloud.tencent.com/document/product/1552/96193)全局配置。
 
         :param request: Request instance for ModifyL7AccSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccSettingRequest`
@@ -3899,7 +3899,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyLoadBalancer(self, request):
-        """修改负载均衡实例配置。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+        r"""修改负载均衡实例配置。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 
         :param request: Request instance for ModifyLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancerRequest`
@@ -3922,7 +3922,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGateway(self, request):
-        """通过本接口修改多通道安全加速网关信息，如名称、网关 ID、IP、端口等。
+        r"""通过本接口修改多通道安全加速网关信息，如名称、网关 ID、IP、端口等。
 
         :param request: Request instance for ModifyMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayRequest`
@@ -3945,7 +3945,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGatewayLine(self, request):
-        """通过本接口修改接入多通道安全加速网关的线路，包括 EdgeOne 四层代理线路、自定义线路。
+        r"""通过本接口修改接入多通道安全加速网关的线路，包括 EdgeOne 四层代理线路、自定义线路。
 
         :param request: Request instance for ModifyMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineRequest`
@@ -3968,7 +3968,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGatewaySecretKey(self, request):
-        """通过本接口修改接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关，修改后原密钥失效。
+        r"""通过本接口修改接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关，修改后原密钥失效。
 
         :param request: Request instance for ModifyMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyRequest`
@@ -3991,7 +3991,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginACL(self, request):
-        """本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
+        r"""本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
 
         :param request: Request instance for ModifyOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLRequest`
@@ -4014,7 +4014,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginGroup(self, request):
-        """修改源站组配置，新提交的源站记录将会覆盖原有源站组中的源站记录。
+        r"""修改源站组配置，新提交的源站记录将会覆盖原有源站组中的源站记录。
 
         :param request: Request instance for ModifyOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupRequest`
@@ -4037,7 +4037,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyPlan(self, request):
-        """修改套餐配置。目前仅支持修改预付费套餐的自动续费开关。
+        r"""修改套餐配置。目前仅支持修改预付费套餐的自动续费开关。
 
         :param request: Request instance for ModifyPlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyPlanRequest`
@@ -4060,7 +4060,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRealtimeLogDeliveryTask(self, request):
-        """通过本接口修改实时日志投递任务配置。本接口有如下限制：<li>不支持修改实时日志投递任务目的地类型（TaskType）；</li><li>不支持修改数据投递类型（LogType）</li><li>不支持修改数据投递区域（Area）</li><li>当原实时日志投递任务的目的地为腾讯云 CLS 时，不支持修改目的地详细配置，如日志集、日志主题。</li>
+        r"""通过本接口修改实时日志投递任务配置。本接口有如下限制：<li>不支持修改实时日志投递任务目的地类型（TaskType）；</li><li>不支持修改数据投递类型（LogType）</li><li>不支持修改数据投递区域（Area）</li><li>当原实时日志投递任务的目的地为腾讯云 CLS 时，不支持修改目的地详细配置，如日志集、日志主题。</li>
 
         :param request: Request instance for ModifyRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskRequest`
@@ -4083,7 +4083,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """本接口为旧版本修改规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本修改七层加速规则接口详情请参考 [ModifyL7AccRule](https://cloud.tencent.com/document/product/1552/115818)。
+        r"""本接口为旧版本修改规则引擎接口，EdgeOne 于 2025 年 1 月 21 日已对规则引擎相关接口全面升级，新版本修改七层加速规则接口详情请参考 [ModifyL7AccRule](https://cloud.tencent.com/document/product/1552/115818)。
         <p style="color: red;">注意：自 2025 年 1 月 21 日起，旧版接口停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。为避免在使用旧版接口时出现数据字段冲突，建议您尽早迁移到新版规则引擎接口。</p>
 
         :param request: Request instance for ModifyRule.
@@ -4107,7 +4107,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityAPIResource(self, request):
-        """该接口用于修改 API 资源。
+        r"""该接口用于修改 API 资源。
 
         :param request: Request instance for ModifySecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceRequest`
@@ -4130,7 +4130,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityAPIService(self, request):
-        """该接口用于修改 API 服务。
+        r"""该接口用于修改 API 服务。
 
         :param request: Request instance for ModifySecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceRequest`
@@ -4153,7 +4153,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityClientAttester(self, request):
-        """修改客户端认证选项。
+        r"""修改客户端认证选项。
 
         :param request: Request instance for ModifySecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterRequest`
@@ -4176,7 +4176,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityIPGroup(self, request):
-        """修改安全 IP 组。
+        r"""修改安全 IP 组。
 
         :param request: Request instance for ModifySecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityIPGroupRequest`
@@ -4199,7 +4199,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityJSInjectionRule(self, request):
-        """修改 JavaScript 注入规则。
+        r"""修改 JavaScript 注入规则。
 
         :param request: Request instance for ModifySecurityJSInjectionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityJSInjectionRuleRequest`
@@ -4222,7 +4222,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        """修改Web&Bot安全配置。
+        r"""修改Web&Bot安全配置。
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityPolicyRequest`
@@ -4245,7 +4245,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyWebSecurityTemplate(self, request):
-        """修改安全策略配置模板
+        r"""修改安全策略配置模板
 
         :param request: Request instance for ModifyWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateRequest`
@@ -4268,7 +4268,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZone(self, request):
-        """修改站点信息。
+        r"""修改站点信息。
 
         :param request: Request instance for ModifyZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneRequest`
@@ -4291,7 +4291,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneSetting(self, request):
-        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [ModifyL7AccSetting](https://cloud.tencent.com/document/product/1552/115817)。
+        r"""本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [ModifyL7AccSetting](https://cloud.tencent.com/document/product/1552/115817)。
 
         :param request: Request instance for ModifyZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneSettingRequest`
@@ -4314,7 +4314,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneStatus(self, request):
-        """用于开启，关闭站点。
+        r"""用于开启，关闭站点。
 
         :param request: Request instance for ModifyZoneStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneStatusRequest`
@@ -4337,7 +4337,7 @@ class TeoClient(AbstractClient):
 
 
     def RefreshMultiPathGatewaySecretKey(self, request):
-        """通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
+        r"""通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
 
         :param request: Request instance for RefreshMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyRequest`
@@ -4360,7 +4360,7 @@ class TeoClient(AbstractClient):
 
 
     def RenewPlan(self, request):
-        """当您的套餐需要延长有效期，可以通过该接口进行续费。套餐续费仅支持个人版，基础版，标准版套餐。
+        r"""当您的套餐需要延长有效期，可以通过该接口进行续费。套餐续费仅支持个人版，基础版，标准版套餐。
         > 费用详情可参考 [套餐费用](https://cloud.tencent.com/document/product/1552/94158)
 
         :param request: Request instance for RenewPlan.
@@ -4384,7 +4384,7 @@ class TeoClient(AbstractClient):
 
 
     def UpgradePlan(self, request):
-        """当您需要使用高等级套餐才拥有的功能，可以通过本接口升级套餐，仅支持个人版，基础版套餐进行升级。
+        r"""当您需要使用高等级套餐才拥有的功能，可以通过本接口升级套餐，仅支持个人版，基础版套餐进行升级。
         > 不同类型 Edgeone 计费套餐区别参考 [Edgeone计费套餐选型对比](https://cloud.tencent.com/document/product/1552/94165)
         计费套餐升级规则以及资费详情参考 [Edgeone计费套餐升配说明](https://cloud.tencent.com/document/product/1552/95291)
         如果需要将套餐升级至企业版，请 [联系我们](https://cloud.tencent.com/online-service)
@@ -4410,7 +4410,7 @@ class TeoClient(AbstractClient):
 
 
     def VerifyOwnership(self, request):
-        """在 CNAME 接入模式下，您需要对站点或者域名的归属权进行验证，可以通过本接口触发验证。若站点通过归属权验证后，后续添加域名无需再验证。详情参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。
+        r"""在 CNAME 接入模式下，您需要对站点或者域名的归属权进行验证，可以通过本接口触发验证。若站点通过归属权验证后，后续添加域名无需再验证。详情参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。
 
         在 NS 接入模式下，您也可以通过本接口来查询 NS 服务器是否切换成功，详情参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452)。
 

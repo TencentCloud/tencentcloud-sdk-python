@@ -27,7 +27,7 @@ class ThpcClient(AbstractClient):
 
 
     def BindAutoScalingGroup(self, request):
-        """本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+        r"""本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
 
         :param request: Request instance for BindAutoScalingGroup.
         :type request: :class:`tencentcloud.thpc.v20211109.models.BindAutoScalingGroupRequest`
@@ -50,7 +50,7 @@ class ThpcClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """本接口 (CreateCluster) 用于创建并启动集群。
+        r"""本接口 (CreateCluster) 用于创建并启动集群。
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.thpc.v20211109.models.CreateClusterRequest`
@@ -73,7 +73,7 @@ class ThpcClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """本接口（DeleteCluster）用于删除一个指定的集群。
+        r"""本接口（DeleteCluster）用于删除一个指定的集群。
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.thpc.v20211109.models.DeleteClusterRequest`
@@ -96,7 +96,7 @@ class ThpcClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """本接口（DescribeClusters）用于查询集群列表。
+        r"""本接口（DescribeClusters）用于查询集群列表。
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.thpc.v20211109.models.DescribeClustersRequest`

@@ -27,7 +27,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ArchiveDynamicFlow(self, request):
-        """该接口用于结束动态签署方2.0的合同流程。
+        r"""该接口用于结束动态签署方2.0的合同流程。
 
 
         **功能开通**
@@ -57,7 +57,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelBatchCancelFlows(self, request):
-        """通过合同编号批量撤销合同，单次最多支持撤销100份合同。
+        r"""通过合同编号批量撤销合同，单次最多支持撤销100份合同。
 
         适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 
@@ -94,7 +94,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCancelFlow(self, request):
-        """撤销签署流程接口
+        r"""撤销签署流程接口
 
         适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 
@@ -128,7 +128,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCancelMultiFlowSignQRCode(self, request):
-        """此接口（CancelMultiFlowSignQRCode）用于废除取消一码多签签署码。
+        r"""此接口（CancelMultiFlowSignQRCode）用于废除取消一码多签签署码。
         该接口所需的二维码ID，源自[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)生成的。
         如果该签署码尚处于有效期内，可通过本接口将其设置为失效状态。
 
@@ -153,7 +153,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCancelUserAutoSignEnableUrl(self, request):
-        """此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+        r"""此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
 
         :param request: Request instance for ChannelCancelUserAutoSignEnableUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCancelUserAutoSignEnableUrlRequest`
@@ -176,7 +176,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBatchCancelFlowUrl(self, request):
-        """通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
+        r"""通过合同编号生成批量撤销合同的链接，单次最多支持撤销100份合同,   返回的链接需要有此权限的人<font color='red'>**合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人**</font>在<font color='red'>**手机端**</font>打开,  跳转到腾讯电子签小程序输入撤销原因来进行撤销合同
 
         适用场景：如果某个合同当前**至少还有一方没有签署**，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
 
@@ -211,7 +211,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBatchQuickSignUrl(self, request):
-        """该接口用于发起合同后，生成个人/企业用户的批量待办链接。
+        r"""该接口用于发起合同后，生成个人/企业用户的批量待办链接。
         **注意：**
         1. 该接口可生成签署人的批量、合同组签署/查看链接 。
         2. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
@@ -241,7 +241,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBatchSignUrl(self, request):
-        """通过此接口，创建小程序批量签署链接，个人/企业员工点击此链接即可跳转小程序进行批量签署。
+        r"""通过此接口，创建小程序批量签署链接，个人/企业员工点击此链接即可跳转小程序进行批量签署。
         请确保生成链接时候的身份信息和签署合同参与方的信息保持一致。
 
         注：
@@ -276,7 +276,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBoundFlows(self, request):
-        """此接口（ChannelCreateBoundFlows）用于子客企业领取未归属给员工的合同，将合同领取给当前员工，合同不能重复领取。
+        r"""此接口（ChannelCreateBoundFlows）用于子客企业领取未归属给员工的合同，将合同领取给当前员工，合同不能重复领取。
 
 
         **未归属合同发起方式**
@@ -319,7 +319,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateConvertTaskApi(self, request):
-        """此接口（ChannelCreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
+        r"""此接口（ChannelCreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
         前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
         适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
         适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
@@ -349,7 +349,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateDynamicFlowApprover(self, request):
-        """接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
+        r"""接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
         **注**:
         <ul>
         <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
@@ -379,7 +379,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateEmbedWebUrl(self, request):
-        """本接口（ChannelCreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
+        r"""本接口（ChannelCreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
         1. 创建印章
         2. 创建模板
         3. 修改模板
@@ -413,7 +413,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowApprovers(self, request):
-        """**适用场景**：
+        r"""**适用场景**：
         当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
 
         **接口使用说明**：
@@ -456,7 +456,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowByFiles(self, request):
-        """接口（ChannelCreateFlowByFiles）用PDF文件创建签署流程。
+        r"""接口（ChannelCreateFlowByFiles）用PDF文件创建签署流程。
 
         适用场景：适用非制式的合同文件签署，开发者有每个签署流程的PDF，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
 
@@ -506,7 +506,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowGroupByFiles(self, request):
-        """接口（ChannelCreateFlowGroupByFiles）用于使用 PDF 文件创建合同组签署流程。
+        r"""接口（ChannelCreateFlowGroupByFiles）用于使用 PDF 文件创建合同组签署流程。
 
         - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
         - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
@@ -595,7 +595,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowGroupByTemplates(self, request):
-        """接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
+        r"""接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
 
         - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
         - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
@@ -682,7 +682,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowReminds(self, request):
-        """指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办
+        r"""指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办
         1. 合同中当前状态为 **待签署** 的签署人是催办的对象
         2. **每个合同只能催办一次**
 
@@ -714,7 +714,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignReview(self, request):
-        """提交企业流程审批结果
+        r"""提交企业流程审批结果
         **当前存在两种审核操作：**
         <ul>
         <li>签署审核
@@ -752,7 +752,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignUrl(self, request):
-        """该接口用于发起合同后，生成用户的签署链接 <br/>
+        r"""该接口用于发起合同后，生成用户的签署链接 <br/>
 
         **注意**
         1. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
@@ -782,7 +782,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateMultiFlowSignQRCode(self, request):
-        """此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多签签署码。
+        r"""此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多签签署码。
 
         **适用场景**:
         签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
@@ -821,7 +821,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateOrganizationBatchSignUrl(self, request):
-        """通过此接口，可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。
+        r"""通过此接口，可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。
 
         注：
         - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方或者领取方。
@@ -852,7 +852,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateOrganizationModifyQrCode(self, request):
-        """生成渠道子客编辑企业信息二维码
+        r"""生成渠道子客编辑企业信息二维码
 
         :param request: Request instance for ChannelCreateOrganizationModifyQrCode.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateOrganizationModifyQrCodeRequest`
@@ -875,7 +875,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreatePrepareFlow(self, request):
-        """通过此接口指定合同、签署人、填写控件等信息，生成嵌入式链接，此链接可以嵌入到其他网页或者直接打开，打开后进入发起页面。在此页面上，合同信息和签署人信息均不可更改。
+        r"""通过此接口指定合同、签署人、填写控件等信息，生成嵌入式链接，此链接可以嵌入到其他网页或者直接打开，打开后进入发起页面。在此页面上，合同信息和签署人信息均不可更改。
 
         注意：
         1. <font color="red">仅支持在PC浏览器</font>上进行操作和使用。
@@ -935,7 +935,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreatePrepareFlowGroup(self, request):
-        """接口（ChannelCreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
+        r"""接口（ChannelCreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
 
         - 该接口当前仅支持文件发起
         - 该接口能力和ChannelCreateFlowGroupByFiles，~~ChannelCreateFlowGroupByTemplates~~保持一致。
@@ -962,7 +962,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreatePreparedPersonalEsign(self, request):
-        """本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
+        r"""本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 
         :param request: Request instance for ChannelCreatePreparedPersonalEsign.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreatePreparedPersonalEsignRequest`
@@ -985,7 +985,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateReleaseFlow(self, request):
-        """发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
+        r"""发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
         解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
 
         注意：
@@ -1019,7 +1019,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateRole(self, request):
-        """此接口（ChannelCreateRole）用来创建企业自定义角色。
+        r"""此接口（ChannelCreateRole）用来创建企业自定义角色。
 
         适用场景1：创建当前企业的自定义角色，并且创建时不进行权限的设置（PermissionGroups 参数不传），角色中的权限内容可通过接口 ChannelModifyRole 完成更新。
 
@@ -1046,7 +1046,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateSealPolicy(self, request):
-        """将指定印章授权给第三方平台子客企业下的某些员工
+        r"""将指定印章授权给第三方平台子客企业下的某些员工
 
         :param request: Request instance for ChannelCreateSealPolicy.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateSealPolicyRequest`
@@ -1069,7 +1069,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateUserAutoSignEnableUrl(self, request):
-        """获取个人用户自动签的开通链接。
+        r"""获取个人用户自动签的开通链接。
 
         注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 
@@ -1094,7 +1094,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateUserAutoSignSealUrl(self, request):
-        """获取设置自动签印章小程序链接。
+        r"""获取设置自动签印章小程序链接。
 
         注意：
         <ul><li>需要<code>企业开通自动签</code>后使用。</li>
@@ -1124,7 +1124,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateUserRoles(self, request):
-        """使用此接口，用来绑定企业实名员工的角色，
+        r"""使用此接口，用来绑定企业实名员工的角色，
         支持以电子签userId、客户系统openId两种方式进行绑定。
 
         对应控制台的操作如下图
@@ -1151,7 +1151,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateWebThemeConfig(self, request):
-        """用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+        r"""用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
         创建配置对当前第三方应用全局生效，如果多次调用，会以最后一次的配置为准
 
         :param request: Request instance for ChannelCreateWebThemeConfig.
@@ -1175,7 +1175,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDeleteRole(self, request):
-        """此接口（ChannelDeleteRole）用来删除企业自定义角色。
+        r"""此接口（ChannelDeleteRole）用来删除企业自定义角色。
 
         注：**系统角色不可删除。**
 
@@ -1200,7 +1200,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDeleteRoleUsers(self, request):
-        """通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
+        r"""通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
 
         对应控制台的操作如下图
         ![image](https://qcloudimg.tencent-cloud.cn/raw/5b41194d3cb3f2058ec0ba0fb5ebc6a6.png)
@@ -1226,7 +1226,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDeleteSealPolicies(self, request):
-        """此接口（ChannelDeleteSealPolicies）用于删除已指定员工印章授权信息，删除员工的印章授权后，该员工使用印章进行盖章时，将需要提交印章授权申请且通过审核后才能使用该印章进行签署。
+        r"""此接口（ChannelDeleteSealPolicies）用于删除已指定员工印章授权信息，删除员工的印章授权后，该员工使用印章进行盖章时，将需要提交印章授权申请且通过审核后才能使用该印章进行签署。
 
         :param request: Request instance for ChannelDeleteSealPolicies.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteSealPoliciesRequest`
@@ -1249,7 +1249,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeAccountBillDetail(self, request):
-        """通过此接口（ChannelDescribeAccountBillDetail）查询该第三方平台子客账号绑定中、剩余可绑定账号等套餐使用情况。
+        r"""通过此接口（ChannelDescribeAccountBillDetail）查询该第三方平台子客账号绑定中、剩余可绑定账号等套餐使用情况。
         <ul>
         <li>对于渠道客户企业的查询，通过指定渠道企业的唯一标识(Agent.ProxyOrganizationId)来查询“子客账号”套餐消耗详情</li>
         </ul>
@@ -1275,7 +1275,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeBillUsageDetail(self, request):
-        """通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。可以支持单个子客和整个应用下所有子客的查询。
+        r"""通过此接口（ChannelDescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。可以支持单个子客和整个应用下所有子客的查询。
         <ul>
         <li>对于单个子客企业的查询，通过指定子客的唯一标识(Agent.ProxyOrganizationOpenId)来查询该子客消耗详情</li>
         <li>对于整个应用下所有企业的查询，不需要指定子客的唯一标识，只需要传入渠道应用标识(Agent.AppId)直接查询整个应用下所有子客企业消耗详情</li>
@@ -1302,7 +1302,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeEmployees(self, request):
-        """获取企业员工信息, 可以获取员工的名字,OpenId,UserId和简述的角色等信息，支持设置过滤条件以筛选员工查询结果。
+        r"""获取企业员工信息, 可以获取员工的名字,OpenId,UserId和简述的角色等信息，支持设置过滤条件以筛选员工查询结果。
 
         **注**:通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/SyncProxyOrganizationOperators" target="_blank">企业员工新增或离职</a>接口增加的新员工或者离职的员工也会在列表中。
 
@@ -1327,7 +1327,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeFlowComponents(self, request):
-        """您可以通过合同流程ID查询相关的<font color="red"><b>填写控件</b></font>信息及其内容。这包括控件的归属方、控件的填写状态（是否已填写）以及具体的填写内容。
+        r"""您可以通过合同流程ID查询相关的<font color="red"><b>填写控件</b></font>信息及其内容。这包括控件的归属方、控件的填写状态（是否已填写）以及具体的填写内容。
 
         无论是<font color="red"><b>发起方还是签署方</b></font>填写的控件，均包含在查询结果中。
 
@@ -1384,7 +1384,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeOrganizationSeals(self, request):
-        """此接口查询子企业电子印章。<br />
+        r"""此接口查询子企业电子印章。<br />
 
         注：
         1. 此操作要求操作者具备<b>印章查询权限</b>（若调用者尚无此权限，请联系超级管理员前往Web控制台【组织管理】->【角色管理】添加相应权限）。
@@ -1410,7 +1410,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeRoles(self, request):
-        """分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列。
+        r"""分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列。
 
 
         <font color="red">系统默认角色</font>说明可参考下表
@@ -1445,7 +1445,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeSignFaceVideo(self, request):
-        """该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
+        r"""该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
 
         1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取认证的视频内容。
         2. 该接口**不支持小程序端**的签署认证的视频获取。
@@ -1474,7 +1474,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeUserAutoSignStatus(self, request):
-        """通过此接口获取个人用户自动签的开通状态。
+        r"""通过此接口获取个人用户自动签的开通状态。
 
         注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 
@@ -1499,7 +1499,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDisableUserAutoSign(self, request):
-        """通过此接口可以关闭个人用户自动签功能。
+        r"""通过此接口可以关闭个人用户自动签功能。
         无需对应的用户刷脸等方式同意即可关闭。
 
         注意:
@@ -1528,7 +1528,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelGetTaskResultApi(self, request):
-        """此接口（ChannelGetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
+        r"""此接口（ChannelGetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
         前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 
         适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
@@ -1557,7 +1557,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelModifyRole(self, request):
-        """此接口（ChannelModifyRole）用来更新企业自定义角色。
+        r"""此接口（ChannelModifyRole）用来更新企业自定义角色。
 
         适用场景1：更新当前企业的自定义角色的名称或描述等其他信息，更新时不进行权限的设置（PermissionGroups 参数不传）。
 
@@ -1584,7 +1584,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelRenewAutoSignLicense(self, request):
-        """已经不再使用
+        r"""已经不再使用
 
         给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 
@@ -1611,7 +1611,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelUpdateSealStatus(self, request):
-        """此接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态。
+        r"""此接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态。
 
         :param request: Request instance for ChannelUpdateSealStatus.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelUpdateSealStatusRequest`
@@ -1634,7 +1634,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelVerifyPdf(self, request):
-        """对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
+        r"""对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 
         **补充**： 可以到控制台[合同验签](https://qian.tencent.com/verifySign)体验验签功能，界面如下
         ![image](https://qcloudimg.tencent-cloud.cn/raw/81c333ccb07f0c5fbaf840d9cee61333.png)
@@ -1660,7 +1660,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateBatchInitOrganizationUrl(self, request):
-        """支持企业进行批量初始化操作：
+        r"""支持企业进行批量初始化操作：
 
         此接口存在以下限制：
         1. 批量操作的企业需要已经完成电子签的认证流程。
@@ -1689,7 +1689,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateBatchOrganizationAuthorizationUrl(self, request):
-        """此接口用于获取企业批量认证链接-单链接包含多条认证流。
+        r"""此接口用于获取企业批量认证链接-单链接包含多条认证流。
 
         前提条件：已调用 [CreateBatchOrganizationRegistrationTasks创建子企业批量认证链接任务接口](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接DescribeBatchOrganizationRegistrationUrls](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 确保认证任务已经完成。
 
@@ -1717,7 +1717,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateBatchOrganizationRegistrationTasks(self, request):
-        """该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
+        r"""该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
         此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationTasks)配合使用，整体流程如下图。
         ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 
@@ -1760,7 +1760,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelFlowEvidenceReport(self, request):
-        """提交申请出证报告任务并返回报告ID。
+        r"""提交申请出证报告任务并返回报告ID。
 
         出证报告的示例样式可以参考 [出征报告.PDF](https://qcloudimg.tencent-cloud.cn/raw/a55214fcddaebbd1582cc9c57cc6cf1b.pdf)
 
@@ -1794,7 +1794,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelOrganizationInfoChangeUrl(self, request):
-        """此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接。
+        r"""此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接。
 
         <h3 id="1">支持变更链接类型，通过入参 Endpoint 指定，默认为WEIXINAPP。</h3>
 
@@ -1865,7 +1865,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelSubOrganizationActive(self, request):
-        """激活或续期子客企业， 在激活状态下，企业可以正常发起合同；在非激活状态下，企业仅能查看和签署合同。
+        r"""激活或续期子客企业， 在激活状态下，企业可以正常发起合同；在非激活状态下，企业仅能查看和签署合同。
 
         **1. 激活**：使用一个许可证将子客企业从未激活状态转变为激活状态。**激活状态的有效期为一年，一年后将自动回到未激活状态**。
 
@@ -1902,7 +1902,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateCloseOrganizationUrl(self, request):
-        """创建企业注销链接
+        r"""创建企业注销链接
 
         系统将返回操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成企业的注销操作。
 
@@ -1929,7 +1929,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateConsoleLoginUrl(self, request):
-        """此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客web企业控制台的唯一入口。
+        r"""此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客web企业控制台的唯一入口。
 
         Web链接访问后，会根据子客企业(**Agent中ProxyOrganizationOpenId表示**)和员工(**Agent中OpenId表示**)的状态，进入不同的流程，主要情况分类如下：
         <table>
@@ -1991,7 +1991,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateEmployeeChangeUrl(self, request):
-        """生成员工信息变更链接，当前仅支持变更手机号
+        r"""生成员工信息变更链接，当前仅支持变更手机号
 
         注:
         1. 目前仅支持修改员工手机号，待修改员工必须已经实名且在职
@@ -2018,7 +2018,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateEmployeeQualificationSealQrCode(self, request):
-        """该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。
+        r"""该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。
 
         扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。
 
@@ -2053,7 +2053,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowBlockchainEvidenceUrl(self, request):
-        """获取区块链存证证书查看链接/二维码接口
+        r"""获取区块链存证证书查看链接/二维码接口
 
         适用场景：企业员工可以通过此接口生成合同区块链存证证书的查看链接/二维码，以供他人扫码打开腾讯电子签小程序查看。
 
@@ -2086,7 +2086,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowForwards(self, request):
-        """该接口用于将合同中本企业当前经办人转为本企业其他员工进行操作。
+        r"""该接口用于将合同中本企业当前经办人转为本企业其他员工进行操作。
 
         注意：
         1. 转交的目标经办人需要已经加入企业，且完成实名。
@@ -2116,7 +2116,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowGroupSignReview(self, request):
-        """1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
+        r"""1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
           - [FlowInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowinfo)
           - [FlowFileInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowfileinfo)
           - [FlowApproverInfo.ApproverNeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo)
@@ -2144,7 +2144,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowsByTemplates(self, request):
-        """接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
+        r"""接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
         如若在模板中配置了动态表格, 上传的附件必须为A4大小
         合同发起人必须在电子签已经进行实名。
 
@@ -2230,7 +2230,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateLegalSealQrCode(self, request):
-        """该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
+        r"""该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
 
         **注意**
         1. 该二维码**有效期为7天**，过期后将失效，可重新创建 。
@@ -2261,7 +2261,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateModifyAdminAuthorizationUrl(self, request):
-        """本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+        r"""本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
 
         注意:
         1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书审核结果回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%9B%9B-%E6%8E%88%E6%9D%83%E4%B9%A6%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
@@ -2287,7 +2287,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateOrganizationAuthFile(self, request):
-        """生成合成后的各类企业授权书，包括：
+        r"""生成合成后的各类企业授权书，包括：
         - 企业认证超管授权书
         - 超管变更授权书
         - 企业注销授权书
@@ -2315,7 +2315,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreatePartnerAutoSignAuthUrl(self, request):
-        """创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
+        r"""创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 
         如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 
@@ -2350,7 +2350,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreatePersonAuthCertificateImage(self, request):
-        """获取个人用户认证证书图片下载URL
+        r"""获取个人用户认证证书图片下载URL
 
         个人用户认证证书图片样式如下图
 
@@ -2383,7 +2383,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateSealByImage(self, request):
-        """1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
+        r"""1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
 
         2. 可以使用**系统生成印章**为子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
 
@@ -2410,7 +2410,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateSignUrls(self, request):
-        """创建跳转小程序查看或签署的链接
+        r"""创建跳转小程序查看或签署的链接
 
         **腾讯电子签小程序的AppID 和 原始Id如下:**
 
@@ -2450,7 +2450,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DeleteOrganizationAuthorizations(self, request):
-        """批量清理未认证的企业认证流程。
+        r"""批量清理未认证的企业认证流程。
 
         此接口用来清除企业方认证信息填写错误，批量清理认证中的认证流信息。
         为接口[提交子企业批量认证链接创建任务](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 接口的扩展接口。即在批量认证过程中，当发起认证企业发现超管信息错误的时候，可以将当前超管下的所有认证流企业清除。
@@ -2479,7 +2479,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeBatchOrganizationRegistrationTasks(self, request):
-        """本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+        r"""本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
 
         :param request: Request instance for DescribeBatchOrganizationRegistrationTasks.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeBatchOrganizationRegistrationTasksRequest`
@@ -2502,7 +2502,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeBatchOrganizationRegistrationUrls(self, request):
-        """此接口用于获取企业批量认证异步任务的状态及结果。需要先调用接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>获取到任务ID，然后再调用此接口获取到各个子企业的注册认证链接。整体流程如下图。
+        r"""此接口用于获取企业批量认证异步任务的状态及结果。需要先调用接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>获取到任务ID，然后再调用此接口获取到各个子企业的注册认证链接。整体流程如下图。
         ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 
 
@@ -2530,7 +2530,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeCancelFlowsTask(self, request):
-        """通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+        r"""通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
 
         :param request: Request instance for DescribeCancelFlowsTask.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeCancelFlowsTaskRequest`
@@ -2553,7 +2553,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeChannelFlowEvidenceReport(self, request):
-        """获取出证报告任务执行结果，返回报告 URL。
+        r"""获取出证报告任务执行结果，返回报告 URL。
 
         注意：
 
@@ -2583,7 +2583,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeChannelOrganizations(self, request):
-        """查询渠道子客企业信息时，可以支持单个子客和整个应用下所有子客的查询。返回的信息包括超管、法人的信息以及当前企业的认证状态等信息。
+        r"""查询渠道子客企业信息时，可以支持单个子客和整个应用下所有子客的查询。返回的信息包括超管、法人的信息以及当前企业的认证状态等信息。
 
         - 对于单个企业的查询，通过**指定子客的唯一标识**来查询该子客的企业信息
         - 对于整个应用下所有企业的查询，**不需要指定子客的唯一标识**，直接查询整个应用下所有子客企业的企业信息
@@ -2609,7 +2609,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeChannelSealPolicyWorkflowUrl(self, request):
-        """生成用印申请审批链接，审批人可以通过此链接进入小程序进行审批。
+        r"""生成用印申请审批链接，审批人可以通过此链接进入小程序进行审批。
          p.s.
         Agent参数中的OpenId 必须为审批者的openId，且链接必须由审批人打开。
 
@@ -2634,7 +2634,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeExtendedServiceAuthDetail(self, request):
-        """查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+        r"""查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
 
         1. **企业自动签**
         2. **批量签署**
@@ -2663,7 +2663,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeExtendedServiceAuthInfo(self, request):
-        """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+        r"""查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
 
         1. **企业自动签**
         2. **企业与港澳台居民签署合同**
@@ -2699,7 +2699,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeFlowDetailInfo(self, request):
-        """此接口用于查询合同或者合同组的详情信息，支持查询多个（数量不能超过100）。
+        r"""此接口用于查询合同或者合同组的详情信息，支持查询多个（数量不能超过100）。
 
         适用场景：可用于主动查询某个合同或者合同组的详情信息。
 
@@ -2726,7 +2726,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeResourceUrlsByFlows(self, request):
-        """获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同。
+        r"""获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同。
 
 
 
@@ -2775,7 +2775,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeTemplates(self, request):
-        """通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板。
+        r"""通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板。
 
         **适用场景**
          该接口常用来配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates" target="_blank">用模板创建签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>接口，作为创建合同的前置接口使用。
@@ -2829,7 +2829,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeUsage(self, request):
-        """此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
+        r"""此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 
         <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
 
@@ -2856,7 +2856,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeUserFlowType(self, request):
-        """查询用户模版类型，分为两种模式：
+        r"""查询用户模版类型，分为两种模式：
         <ul>
         <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
         <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
@@ -2883,7 +2883,7 @@ class EssbasicClient(AbstractClient):
 
 
     def GetDownloadFlowUrl(self, request):
-        """此接口（GetDownloadFlowUrl）用户获取合同控制台下载页面链接,  点击链接后会跳转至本企业合同管理控制台(会筛选出传入的合同列表), 点击**下载**按钮后就会下载传入的合同列表, 下载页面如下图
+        r"""此接口（GetDownloadFlowUrl）用户获取合同控制台下载页面链接,  点击链接后会跳转至本企业合同管理控制台(会筛选出传入的合同列表), 点击**下载**按钮后就会下载传入的合同列表, 下载页面如下图
         ![image](https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl.png)
 
         注:
@@ -2913,7 +2913,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ModifyExtendedService(self, request):
-        """管理企业扩展服务
+        r"""管理企业扩展服务
 
         - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业拓展服务将会直接被开通或关闭。
 
@@ -2948,7 +2948,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ModifyFlowDeadline(self, request):
-        """在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
+        r"""在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
         1. <b> 合同（流程）层面</b>：仅需提供签署流程ID。此操作将对整个签署流程以及未单独设置签署截止时间的签署人进行延期。
         2. <b> 签署人层面</b>  ：需提供流程ID和签署人ID。此操作针对特定签署人进行延期，特别是对于有序合同（流程），签署截止时间不得超过后续签署人的流程截止时间。
 
@@ -2984,7 +2984,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ModifyPartnerAutoSignAuthUrl(self, request):
-        """创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签更新授权（印章）操作。
+        r"""创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签更新授权（印章）操作。
 
         如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 
@@ -3016,7 +3016,7 @@ class EssbasicClient(AbstractClient):
 
 
     def OperateChannelTemplate(self, request):
-        """此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业发布授权的查询和设置。
+        r"""此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业发布授权的查询和设置。
         平台模板库中的模板的位置在控制台 企业应用管理 中下面的应用模板库管理目录, 可以参照下图位置
         ![image](https://qcloudimg.tencent-cloud.cn/raw/7f2b6c94164b3e931efc9a037e0400f7.png)
 
@@ -3056,7 +3056,7 @@ class EssbasicClient(AbstractClient):
 
 
     def OperateTemplate(self, request):
-        """此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/partner/callback_types_templates" target="_blank">模板操作相关回调</a>
+        r"""此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/partner/callback_types_templates" target="_blank">模板操作相关回调</a>
 
         # 支持的操作
         ## 1. 删除模板 (OperateType=DELETE)
@@ -3092,7 +3092,7 @@ class EssbasicClient(AbstractClient):
 
 
     def PrepareFlows(self, request):
-        """已经不再使用
+        r"""已经不再使用
 
         该接口 (PrepareFlows) 用于创建待发起文件
         用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
@@ -3119,7 +3119,7 @@ class EssbasicClient(AbstractClient):
 
 
     def SyncProxyOrganization(self, request):
-        """此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，包括企业名称、企业营业执照、企业统一社会信用代码和法人姓名等，便于子客企业在企业激活过程中无需手动上传营业执照或补充企业信息。
+        r"""此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，包括企业名称、企业营业执照、企业统一社会信用代码和法人姓名等，便于子客企业在企业激活过程中无需手动上传营业执照或补充企业信息。
 
         注意：
 
@@ -3155,7 +3155,7 @@ class EssbasicClient(AbstractClient):
 
 
     def SyncProxyOrganizationOperators(self, request):
-        """此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。
+        r"""此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。
         子客Web控制台的组织架构管理，依赖于第三方应用平台的，无法在页面针对员工做新增/更新/离职等操作， 必须通过 API 来操作。
 
         - **新增员工的场景**:    通过本接口提前导入员工列表, 然后调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>分享给对应的员工进行实名, 新增员工后员工的状态为**未实名**, 通过链接实名后状态变为**已实名**, 已实名员工就可以参与合同的发起。
@@ -3190,7 +3190,7 @@ class EssbasicClient(AbstractClient):
 
 
     def UploadFiles(self, request):
-        """此接口（UploadFiles）文件上传。<br/>
+        r"""此接口（UploadFiles）文件上传。<br/>
 
         适用场景：用于合同，印章的文件上传。文件上传以后，
         如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起

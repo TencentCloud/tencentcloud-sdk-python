@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CancelVRSTaskRequest(AbstractModel):
-    """CancelVRSTask请求参数结构体
+    r"""CancelVRSTask请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class CancelVRSTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -55,7 +55,7 @@ class CancelVRSTaskRequest(AbstractModel):
 
 
 class CancelVRSTaskResponse(AbstractModel):
-    """CancelVRSTask返回参数结构体
+    r"""CancelVRSTask返回参数结构体
 
     """
 
@@ -71,7 +71,7 @@ class CancelVRSTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务ID
+        r"""任务ID
         :rtype: :class:`tencentcloud.vrs.v20200824.models.CancelVRSTaskRsp`
         """
         return self._Data
@@ -82,7 +82,7 @@ class CancelVRSTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -100,7 +100,7 @@ class CancelVRSTaskResponse(AbstractModel):
 
 
 class CancelVRSTaskRsp(AbstractModel):
-    """取消任务响应
+    r"""取消任务响应
 
     """
 
@@ -114,7 +114,7 @@ class CancelVRSTaskRsp(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -138,7 +138,7 @@ class CancelVRSTaskRsp(AbstractModel):
 
 
 class CreateVRSTaskRequest(AbstractModel):
-    """CreateVRSTask请求参数结构体
+    r"""CreateVRSTask请求参数结构体
 
     """
 
@@ -196,7 +196,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """唯一请求 ID
+        r"""唯一请求 ID
         :rtype: str
         """
         return self._SessionId
@@ -207,7 +207,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceName(self):
-        """音色名称
+        r"""音色名称
         :rtype: str
         """
         return self._VoiceName
@@ -218,7 +218,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceGender(self):
-        """音色性别:
+        r"""音色性别:
 
 1-male
 
@@ -233,7 +233,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceLanguage(self):
-        """语言类型：
+        r"""语言类型：
 
 1-中文
         :rtype: int
@@ -246,7 +246,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def AudioIdList(self):
-        """音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
+        r"""音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
         :rtype: list of str
         """
         return self._AudioIdList
@@ -257,7 +257,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率：
+        r"""音频采样率：
 
 16000：16k
         :rtype: int
@@ -270,7 +270,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def Codec(self):
-        """音频格式，音频类型(wav,mp3,aac,m4a)
+        r"""音频格式，音频类型(wav,mp3,aac,m4a)
         :rtype: str
         """
         return self._Codec
@@ -281,7 +281,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式目前仅支持轻量版声音复刻）
+        r"""回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式目前仅支持轻量版声音复刻）
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :rtype: str
         """
@@ -293,7 +293,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        """模型类型 1:在线 2:离线  默认为1
+        r"""模型类型 1:在线 2:离线  默认为1
         :rtype: int
         """
         return self._ModelType
@@ -304,7 +304,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """复刻类型。
+        r"""复刻类型。
 0 - 轻量版声音复刻（默认）；
 5 - 一句话声音复刻。
         :rtype: int
@@ -317,7 +317,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VPRAudioId(self):
-        """校验音频ID。（仅基础版声音复刻使用）
+        r"""校验音频ID。（仅基础版声音复刻使用）
         :rtype: str
         """
         return self._VPRAudioId
@@ -328,7 +328,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def EnableVoiceEnhance(self):
-        """是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
+        r"""是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
 语音增强仅适用于一句话复刻场景
         :rtype: int
         """
@@ -363,7 +363,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
 
 class CreateVRSTaskRespData(AbstractModel):
-    """声音复刻任务创建响应
+    r"""声音复刻任务创建响应
 
     """
 
@@ -377,7 +377,7 @@ class CreateVRSTaskRespData(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -401,7 +401,7 @@ class CreateVRSTaskRespData(AbstractModel):
 
 
 class CreateVRSTaskResponse(AbstractModel):
-    """CreateVRSTask返回参数结构体
+    r"""CreateVRSTask返回参数结构体
 
     """
 
@@ -417,7 +417,7 @@ class CreateVRSTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """创建任务结果
+        r"""创建任务结果
         :rtype: :class:`tencentcloud.vrs.v20200824.models.CreateVRSTaskRespData`
         """
         return self._Data
@@ -428,7 +428,7 @@ class CreateVRSTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -446,7 +446,7 @@ class CreateVRSTaskResponse(AbstractModel):
 
 
 class DescribeVRSTaskStatusRequest(AbstractModel):
-    """DescribeVRSTaskStatus请求参数结构体
+    r"""DescribeVRSTaskStatus请求参数结构体
 
     """
 
@@ -459,7 +459,7 @@ class DescribeVRSTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -482,7 +482,7 @@ class DescribeVRSTaskStatusRequest(AbstractModel):
 
 
 class DescribeVRSTaskStatusRespData(AbstractModel):
-    """任务结果
+    r"""任务结果
 
     """
 
@@ -520,7 +520,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -532,7 +532,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
+        r"""任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -544,7 +544,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def StatusStr(self):
-        """任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
+        r"""任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -556,7 +556,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def VoiceType(self):
-        """音色id。（若为一句话复刻时，该值为固定值“200000000”）
+        r"""音色id。（若为一句话复刻时，该值为固定值“200000000”）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -568,7 +568,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """失败原因说明。
+        r"""失败原因说明。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -580,7 +580,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """任务过期时间。（当复刻类型为一句话复刻时展示）
+        r"""任务过期时间。（当复刻类型为一句话复刻时展示）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -592,7 +592,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def FastVoiceType(self):
-        """快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+        r"""快速复刻音色ID。（当复刻类型为一句话复刻时展示）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -622,7 +622,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
 
 class DescribeVRSTaskStatusResponse(AbstractModel):
-    """DescribeVRSTaskStatus返回参数结构体
+    r"""DescribeVRSTaskStatus返回参数结构体
 
     """
 
@@ -638,7 +638,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """声音复刻任务结果
+        r"""声音复刻任务结果
         :rtype: :class:`tencentcloud.vrs.v20200824.models.DescribeVRSTaskStatusRespData`
         """
         return self._Data
@@ -649,7 +649,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -667,7 +667,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
 
 class DetectEnvAndSoundQualityRequest(AbstractModel):
-    """DetectEnvAndSoundQuality请求参数结构体
+    r"""DetectEnvAndSoundQuality请求参数结构体
 
     """
 
@@ -700,7 +700,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TextId(self):
-        """标注文本信息 ID
+        r"""标注文本信息 ID
         :rtype: str
         """
         return self._TextId
@@ -711,7 +711,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def AudioData(self):
-        """语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
+        r"""语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
         :rtype: str
         """
         return self._AudioData
@@ -722,7 +722,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TypeId(self):
-        """1:环境检测 2:音质检测
+        r"""1:环境检测 2:音质检测
         :rtype: int
         """
         return self._TypeId
@@ -733,7 +733,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def Codec(self):
-        """音频格式，音频类型(wav,mp3,aac,m4a)
+        r"""音频格式，音频类型(wav,mp3,aac,m4a)
         :rtype: str
         """
         return self._Codec
@@ -744,7 +744,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率。
+        r"""音频采样率。
 16000：16k（默认）；
 24000：24k（仅一句话声音复刻支持）；
 48000：48k（仅一句话声音复刻支持）。
@@ -758,7 +758,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """复刻类型。
+        r"""复刻类型。
 0 - 轻量版声音复刻（默认）;
 5 - 一句话声音复刻。
         :rtype: int
@@ -788,7 +788,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
 
 class DetectEnvAndSoundQualityResponse(AbstractModel):
-    """DetectEnvAndSoundQuality返回参数结构体
+    r"""DetectEnvAndSoundQuality返回参数结构体
 
     """
 
@@ -804,7 +804,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     @property
     def Data(self):
-        """检测结果
+        r"""检测结果
         :rtype: :class:`tencentcloud.vrs.v20200824.models.DetectionEnvAndSoundQualityRespData`
         """
         return self._Data
@@ -815,7 +815,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -833,7 +833,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
 
 class DetectionEnvAndSoundQualityRespData(AbstractModel):
-    """环境检测和音频检测响应
+    r"""环境检测和音频检测响应
 
     """
 
@@ -864,7 +864,7 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def AudioId(self):
-        """音频ID （用于创建任务接口AudioIds）,环境检测该值为空，仅在音质检测情况下返回
+        r"""音频ID （用于创建任务接口AudioIds）,环境检测该值为空，仅在音质检测情况下返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -876,7 +876,7 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionCode(self):
-        """检测code 
+        r"""检测code 
 
 0 表示当前语音通过
 -1 表示检测失败，需要重试
@@ -893,7 +893,7 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionMsg(self):
-        """检测提示信息
+        r"""检测提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -905,7 +905,7 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionTip(self):
-        """检测提示信息
+        r"""检测提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Words
         """
@@ -937,7 +937,7 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
 
 class DownloadVRSModelRequest(AbstractModel):
-    """DownloadVRSModel请求参数结构体
+    r"""DownloadVRSModel请求参数结构体
 
     """
 
@@ -950,7 +950,7 @@ class DownloadVRSModelRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -973,7 +973,7 @@ class DownloadVRSModelRequest(AbstractModel):
 
 
 class DownloadVRSModelResponse(AbstractModel):
-    """DownloadVRSModel返回参数结构体
+    r"""DownloadVRSModel返回参数结构体
 
     """
 
@@ -989,7 +989,7 @@ class DownloadVRSModelResponse(AbstractModel):
 
     @property
     def Data(self):
-        """响应
+        r"""响应
         :rtype: :class:`tencentcloud.vrs.v20200824.models.DownloadVRSModelRsp`
         """
         return self._Data
@@ -1000,7 +1000,7 @@ class DownloadVRSModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1018,7 +1018,7 @@ class DownloadVRSModelResponse(AbstractModel):
 
 
 class DownloadVRSModelRsp(AbstractModel):
-    """离线声音复刻模型下载响应
+    r"""离线声音复刻模型下载响应
 
     """
 
@@ -1050,7 +1050,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def Model(self):
-        """模型cos地址
+        r"""模型cos地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1062,7 +1062,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceName(self):
-        """音色名称
+        r"""音色名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1074,7 +1074,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceGender(self):
-        """音色性别:
+        r"""音色性别:
 1-male
 2-female
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1088,7 +1088,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceLanguage(self):
-        """语言类型：
+        r"""语言类型：
 1-中文
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -1101,7 +1101,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1128,7 +1128,7 @@ class DownloadVRSModelRsp(AbstractModel):
 
 
 class GetTrainingTextRequest(AbstractModel):
-    """GetTrainingText请求参数结构体
+    r"""GetTrainingText请求参数结构体
 
     """
 
@@ -1154,7 +1154,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """复刻类型。
+        r"""复刻类型。
 0 - 轻量版声音复刻（默认）;
 5 - 一句话声音复刻。
         :rtype: int
@@ -1167,7 +1167,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
+        r"""音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
 0 - 通用场景（默认）； 
 1 - 聊天场景； 
 2 - 阅读场景； 
@@ -1182,7 +1182,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TextLanguage(self):
-        """文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
+        r"""文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
 1 - 中文（默认）。
         :rtype: int
         """
@@ -1208,7 +1208,7 @@ class GetTrainingTextRequest(AbstractModel):
 
 
 class GetTrainingTextResponse(AbstractModel):
-    """GetTrainingText返回参数结构体
+    r"""GetTrainingText返回参数结构体
 
     """
 
@@ -1224,7 +1224,7 @@ class GetTrainingTextResponse(AbstractModel):
 
     @property
     def Data(self):
-        """文本列表
+        r"""文本列表
         :rtype: :class:`tencentcloud.vrs.v20200824.models.TrainingTexts`
         """
         return self._Data
@@ -1235,7 +1235,7 @@ class GetTrainingTextResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1253,7 +1253,7 @@ class GetTrainingTextResponse(AbstractModel):
 
 
 class GetVRSVoiceTypeInfoRequest(AbstractModel):
-    """GetVRSVoiceTypeInfo请求参数结构体
+    r"""GetVRSVoiceTypeInfo请求参数结构体
 
     """
 
@@ -1272,7 +1272,7 @@ class GetVRSVoiceTypeInfoRequest(AbstractModel):
 
     @property
     def VoiceType(self):
-        """音色id。
+        r"""音色id。
         :rtype: int
         """
         return self._VoiceType
@@ -1283,7 +1283,7 @@ class GetVRSVoiceTypeInfoRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
+        r"""0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
         :rtype: int
         """
         return self._TaskType
@@ -1294,7 +1294,7 @@ class GetVRSVoiceTypeInfoRequest(AbstractModel):
 
     @property
     def FastVoiceType(self):
-        """快速复刻音色id。
+        r"""快速复刻音色id。
         :rtype: str
         """
         return self._FastVoiceType
@@ -1319,7 +1319,7 @@ class GetVRSVoiceTypeInfoRequest(AbstractModel):
 
 
 class GetVRSVoiceTypeInfoResponse(AbstractModel):
-    """GetVRSVoiceTypeInfo返回参数结构体
+    r"""GetVRSVoiceTypeInfo返回参数结构体
 
     """
 
@@ -1335,7 +1335,7 @@ class GetVRSVoiceTypeInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """音色信息
+        r"""音色信息
         :rtype: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeInfo`
         """
         return self._Data
@@ -1346,7 +1346,7 @@ class GetVRSVoiceTypeInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1364,7 +1364,7 @@ class GetVRSVoiceTypeInfoResponse(AbstractModel):
 
 
 class GetVRSVoiceTypesRequest(AbstractModel):
-    """GetVRSVoiceTypes请求参数结构体
+    r"""GetVRSVoiceTypes请求参数结构体
 
     """
 
@@ -1379,7 +1379,7 @@ class GetVRSVoiceTypesRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """复刻类型。
+        r"""复刻类型。
 0 - 除快速声音复刻外其他复刻类型（默认）；
 5 - 一句话声音复刻。
         :rtype: int
@@ -1404,7 +1404,7 @@ class GetVRSVoiceTypesRequest(AbstractModel):
 
 
 class GetVRSVoiceTypesResponse(AbstractModel):
-    """GetVRSVoiceTypes返回参数结构体
+    r"""GetVRSVoiceTypes返回参数结构体
 
     """
 
@@ -1420,7 +1420,7 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """复刻音色信息
+        r"""复刻音色信息
         :rtype: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeListData`
         """
         return self._Data
@@ -1431,7 +1431,7 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1449,7 +1449,7 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
 
 class TrainingText(AbstractModel):
-    """训练文本
+    r"""训练文本
 
     """
 
@@ -1468,7 +1468,7 @@ class TrainingText(AbstractModel):
 
     @property
     def TextId(self):
-        """文本ID
+        r"""文本ID
 当复刻类型为一句话声音复刻时，生成的TextId有效期为7天，且在成功创建一次复刻任务后失效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1481,7 +1481,7 @@ class TrainingText(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1506,7 +1506,7 @@ class TrainingText(AbstractModel):
 
 
 class TrainingTexts(AbstractModel):
-    """训练文本列表
+    r"""训练文本列表
 
     """
 
@@ -1520,7 +1520,7 @@ class TrainingTexts(AbstractModel):
 
     @property
     def TrainingTextList(self):
-        """训练文本列表
+        r"""训练文本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TrainingText
         """
@@ -1549,7 +1549,7 @@ class TrainingTexts(AbstractModel):
 
 
 class VoiceTypeInfo(AbstractModel):
-    """复刻音色详情
+    r"""复刻音色详情
 
     """
 
@@ -1589,7 +1589,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceType(self):
-        """音色id。（若为一句话复刻时，该值为固定值“200000000”）
+        r"""音色id。（若为一句话复刻时，该值为固定值“200000000”）
         :rtype: int
         """
         return self._VoiceType
@@ -1600,7 +1600,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceName(self):
-        """音色名称
+        r"""音色名称
         :rtype: str
         """
         return self._VoiceName
@@ -1611,7 +1611,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceGender(self):
-        """音色性别: 1-male 2-female
+        r"""音色性别: 1-male 2-female
         :rtype: int
         """
         return self._VoiceGender
@@ -1622,7 +1622,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        """复刻类型: 0-轻量版复刻 1-基础版复刻
+        r"""复刻类型: 0-轻量版复刻 1-基础版复刻
         :rtype: int
         """
         return self._TaskType
@@ -1633,7 +1633,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def TaskID(self):
-        """复刻任务 ID
+        r"""复刻任务 ID
         :rtype: str
         """
         return self._TaskID
@@ -1644,7 +1644,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def DateCreated(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._DateCreated
@@ -1655,7 +1655,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def IsDeployed(self):
-        """部署状态。若已部署，则可通过语音合成接口调用该音色
+        r"""部署状态。若已部署，则可通过语音合成接口调用该音色
         :rtype: bool
         """
         return self._IsDeployed
@@ -1666,7 +1666,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """任务过期时间。（当复刻类型为一句话复刻时展示）
+        r"""任务过期时间。（当复刻类型为一句话复刻时展示）
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1679,7 +1679,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def FastVoiceType(self):
-        """快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+        r"""快速复刻音色ID。（当复刻类型为一句话复刻时展示）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1711,7 +1711,7 @@ class VoiceTypeInfo(AbstractModel):
 
 
 class VoiceTypeListData(AbstractModel):
-    """音色信息列表
+    r"""音色信息列表
 
     """
 
@@ -1725,7 +1725,7 @@ class VoiceTypeListData(AbstractModel):
 
     @property
     def VoiceTypeList(self):
-        """音色信息列表
+        r"""音色信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VoiceTypeInfo
         """
@@ -1754,7 +1754,7 @@ class VoiceTypeListData(AbstractModel):
 
 
 class Words(AbstractModel):
-    """音频检测提示信息：
+    r"""音频检测提示信息：
     1.检测字是否存在多读、 少读、 错读等
     2.检测准确度和流畅度
 
@@ -1788,7 +1788,7 @@ class Words(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """准确度 (小于75则认为不合格)
+        r"""准确度 (小于75则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1800,7 +1800,7 @@ class Words(AbstractModel):
 
     @property
     def PronFluency(self):
-        """流畅度 (小于0.95则认为不合格)
+        r"""流畅度 (小于0.95则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1812,7 +1812,7 @@ class Words(AbstractModel):
 
     @property
     def Tag(self):
-        """tag: 
+        r"""tag: 
 0: match  匹配
 1: insert   多读
 2: delete  少读
@@ -1830,7 +1830,7 @@ class Words(AbstractModel):
 
     @property
     def Word(self):
-        """字
+        r"""字
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

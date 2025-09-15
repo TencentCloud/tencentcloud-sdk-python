@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ArtifactReduction(AbstractModel):
-    """去编码毛刺、伪影参数
+    r"""去编码毛刺、伪影参数
 
     """
 
@@ -39,7 +39,7 @@ wdaf，
 
     @property
     def Type(self):
-        """去毛刺方式：weak,,strong
+        r"""去毛刺方式：weak,,strong
         :rtype: str
         """
         return self._Type
@@ -50,7 +50,7 @@ wdaf，
 
     @property
     def Algorithm(self):
-        """去毛刺算法，可选项：
+        r"""去毛刺算法，可选项：
 edaf,
 wdaf，
 默认edaf。
@@ -78,7 +78,7 @@ wdaf，
 
 
 class AudioEnhance(AbstractModel):
-    """音频音效增强，只支持无背景音的音频
+    r"""音频音效增强，只支持无背景音的音频
 
     """
 
@@ -91,7 +91,7 @@ class AudioEnhance(AbstractModel):
 
     @property
     def Type(self):
-        """音效增强种类，可选项：normal
+        r"""音效增强种类，可选项：normal
         :rtype: str
         """
         return self._Type
@@ -114,7 +114,7 @@ class AudioEnhance(AbstractModel):
 
 
 class AudioInfo(AbstractModel):
-    """音频参数信息
+    r"""音频参数信息
 
     """
 
@@ -158,7 +158,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Bitrate(self):
-        """音频码率，取值范围：0 和 [26, 256]，单位：kbps。
+        r"""音频码率，取值范围：0 和 [26, 256]，单位：kbps。
 注意：当取值为 0，表示音频码率和原始音频保持一致。
         :rtype: int
         """
@@ -170,7 +170,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Codec(self):
-        """音频编码器，可选项：aac,mp3,ac3,flac,mp2。
+        r"""音频编码器，可选项：aac,mp3,ac3,flac,mp2。
         :rtype: str
         """
         return self._Codec
@@ -181,7 +181,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Channel(self):
-        """声道数，可选项：
+        r"""声道数，可选项：
 1：单声道，
 2：双声道，
 6：立体声。
@@ -195,7 +195,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def SampleRate(self):
-        """采样率，单位：Hz。可选项：32000，44100,48000
+        r"""采样率，单位：Hz。可选项：32000，44100,48000
         :rtype: int
         """
         return self._SampleRate
@@ -206,7 +206,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Denoise(self):
-        """音频降噪信息
+        r"""音频降噪信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.Denoise`
         """
         return self._Denoise
@@ -217,7 +217,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def EnableMuteAudio(self):
-        """开启添加静音，可选项：
+        r"""开启添加静音，可选项：
 0：不开启，
 1：开启，
 默认不开启
@@ -231,7 +231,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def LoudnessInfo(self):
-        """音频响度信息
+        r"""音频响度信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.LoudnessInfo`
         """
         return self._LoudnessInfo
@@ -242,7 +242,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def AudioEnhance(self):
-        """音频音效增强
+        r"""音频音效增强
         :rtype: :class:`tencentcloud.ie.v20200304.models.AudioEnhance`
         """
         return self._AudioEnhance
@@ -253,7 +253,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def RemoveReverb(self):
-        """去除混音
+        r"""去除混音
         :rtype: :class:`tencentcloud.ie.v20200304.models.RemoveReverb`
         """
         return self._RemoveReverb
@@ -292,7 +292,7 @@ class AudioInfo(AbstractModel):
 
 
 class AudioInfoResultItem(AbstractModel):
-    """任务结束后生成的文件音频信息
+    r"""任务结束后生成的文件音频信息
 
     """
 
@@ -325,7 +325,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Stream(self):
-        """音频流的流id。
+        r"""音频流的流id。
         :rtype: int
         """
         return self._Stream
@@ -336,7 +336,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Sample(self):
-        """音频采样率 。
+        r"""音频采样率 。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -348,7 +348,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Channel(self):
-        """音频声道数。
+        r"""音频声道数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -360,7 +360,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Codec(self):
-        """编码格式，如aac, mp3等。
+        r"""编码格式，如aac, mp3等。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -372,7 +372,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        """码率，单位：bps。
+        r"""码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -384,7 +384,7 @@ class AudioInfoResultItem(AbstractModel):
 
     @property
     def Duration(self):
-        """音频时长，单位：ms。
+        r"""音频时长，单位：ms。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -413,7 +413,7 @@ class AudioInfoResultItem(AbstractModel):
 
 
 class CallbackInfo(AbstractModel):
-    """任务结果回调地址信息
+    r"""任务结果回调地址信息
 
     """
 
@@ -426,7 +426,7 @@ class CallbackInfo(AbstractModel):
 
     @property
     def Url(self):
-        """回调URL。
+        r"""回调URL。
         :rtype: str
         """
         return self._Url
@@ -449,7 +449,7 @@ class CallbackInfo(AbstractModel):
 
 
 class ClassificationEditingInfo(AbstractModel):
-    """视频分类识别任务参数信息
+    r"""视频分类识别任务参数信息
 
     """
 
@@ -465,7 +465,7 @@ class ClassificationEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启视频分类识别。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启视频分类识别。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -476,7 +476,7 @@ class ClassificationEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -500,7 +500,7 @@ class ClassificationEditingInfo(AbstractModel):
 
 
 class ClassificationTaskResult(AbstractModel):
-    """视频分类识别结果信息
+    r"""视频分类识别结果信息
 
     """
 
@@ -525,7 +525,7 @@ class ClassificationTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -537,7 +537,7 @@ class ClassificationTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -549,7 +549,7 @@ class ClassificationTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -560,7 +560,7 @@ class ClassificationTaskResult(AbstractModel):
 
     @property
     def ItemSet(self):
-        """视频分类识别结果集。
+        r"""视频分类识别结果集。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClassificationTaskResultItem
         """
@@ -592,7 +592,7 @@ class ClassificationTaskResult(AbstractModel):
 
 
 class ClassificationTaskResultItem(AbstractModel):
-    """视频分类识别结果项
+    r"""视频分类识别结果项
 
     """
 
@@ -608,7 +608,7 @@ class ClassificationTaskResultItem(AbstractModel):
 
     @property
     def Classification(self):
-        """分类名称。
+        r"""分类名称。
         :rtype: str
         """
         return self._Classification
@@ -619,7 +619,7 @@ class ClassificationTaskResultItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -643,7 +643,7 @@ class ClassificationTaskResultItem(AbstractModel):
 
 
 class ColorEnhance(AbstractModel):
-    """颜色增强参数
+    r"""颜色增强参数
 
     """
 
@@ -661,7 +661,7 @@ class ColorEnhance(AbstractModel):
 
     @property
     def Type(self):
-        """颜色增强类型，可选项：
+        r"""颜色增强类型，可选项：
 1.  tra；
 2.  weak；
 3.  normal;
@@ -689,7 +689,7 @@ class ColorEnhance(AbstractModel):
 
 
 class CosAuthMode(AbstractModel):
-    """任务视频cos授权信息
+    r"""任务视频cos授权信息
 
     """
 
@@ -718,7 +718,7 @@ class CosAuthMode(AbstractModel):
 
     @property
     def Type(self):
-        """授权类型，可选值： 
+        r"""授权类型，可选值： 
 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271和100012301793），否则会读写cos失败； 
 1：key托管，把cos的账号id和key托管于本服务，本服务会提供一个托管id； 
 3：临时key授权。
@@ -733,7 +733,7 @@ class CosAuthMode(AbstractModel):
 
     @property
     def HostedId(self):
-        """cos账号托管id，Type等于1时必选。
+        r"""cos账号托管id，Type等于1时必选。
         :rtype: str
         """
         return self._HostedId
@@ -744,7 +744,7 @@ class CosAuthMode(AbstractModel):
 
     @property
     def SecretId(self):
-        """cos身份识别id，Type等于3时必选。
+        r"""cos身份识别id，Type等于3时必选。
         :rtype: str
         """
         return self._SecretId
@@ -755,7 +755,7 @@ class CosAuthMode(AbstractModel):
 
     @property
     def SecretKey(self):
-        """cos身份秘钥，Type等于3时必选。
+        r"""cos身份秘钥，Type等于3时必选。
         :rtype: str
         """
         return self._SecretKey
@@ -766,7 +766,7 @@ class CosAuthMode(AbstractModel):
 
     @property
     def Token(self):
-        """临时授权 token，Type等于3时必选。
+        r"""临时授权 token，Type等于3时必选。
         :rtype: str
         """
         return self._Token
@@ -793,7 +793,7 @@ class CosAuthMode(AbstractModel):
 
 
 class CosInfo(AbstractModel):
-    """任务视频cos信息
+    r"""任务视频cos信息
 
     """
 
@@ -817,7 +817,7 @@ class CosInfo(AbstractModel):
 
     @property
     def Region(self):
-        """cos 区域值。例如：ap-beijing。
+        r"""cos 区域值。例如：ap-beijing。
         :rtype: str
         """
         return self._Region
@@ -828,7 +828,7 @@ class CosInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """cos 存储桶，格式为BuketName-AppId。例如：test-123456。
+        r"""cos 存储桶，格式为BuketName-AppId。例如：test-123456。
         :rtype: str
         """
         return self._Bucket
@@ -839,7 +839,7 @@ class CosInfo(AbstractModel):
 
     @property
     def Path(self):
-        """cos 路径。 
+        r"""cos 路径。 
 对于写表示目录，例如：/test； 
 对于读表示文件路径，例如：/test/test.mp4。
         :rtype: str
@@ -852,7 +852,7 @@ class CosInfo(AbstractModel):
 
     @property
     def CosAuthMode(self):
-        """cos 授权信息，不填默认为公有权限。
+        r"""cos 授权信息，不填默认为公有权限。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CosAuthMode`
         """
         return self._CosAuthMode
@@ -880,7 +880,7 @@ class CosInfo(AbstractModel):
 
 
 class CoverEditingInfo(AbstractModel):
-    """智能封面任务参数信息
+    r"""智能封面任务参数信息
 
     """
 
@@ -896,7 +896,7 @@ class CoverEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启智能封面。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启智能封面。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -907,7 +907,7 @@ class CoverEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -931,7 +931,7 @@ class CoverEditingInfo(AbstractModel):
 
 
 class CoverTaskResult(AbstractModel):
-    """智能封面结果信息
+    r"""智能封面结果信息
 
     """
 
@@ -956,7 +956,7 @@ class CoverTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -968,7 +968,7 @@ class CoverTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -980,7 +980,7 @@ class CoverTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -991,7 +991,7 @@ class CoverTaskResult(AbstractModel):
 
     @property
     def ItemSet(self):
-        """智能封面结果集。
+        r"""智能封面结果集。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CoverTaskResultItem
         """
@@ -1023,7 +1023,7 @@ class CoverTaskResult(AbstractModel):
 
 
 class CoverTaskResultItem(AbstractModel):
-    """智能封面结果项
+    r"""智能封面结果项
 
     """
 
@@ -1039,7 +1039,7 @@ class CoverTaskResultItem(AbstractModel):
 
     @property
     def CoverUrl(self):
-        """智能封面地址。
+        r"""智能封面地址。
         :rtype: str
         """
         return self._CoverUrl
@@ -1050,7 +1050,7 @@ class CoverTaskResultItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -1074,7 +1074,7 @@ class CoverTaskResultItem(AbstractModel):
 
 
 class CreateEditingTaskRequest(AbstractModel):
-    """CreateEditingTask请求参数结构体
+    r"""CreateEditingTask请求参数结构体
 
     """
 
@@ -1096,7 +1096,7 @@ class CreateEditingTaskRequest(AbstractModel):
 
     @property
     def EditingInfo(self):
-        """智能编辑任务参数。
+        r"""智能编辑任务参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.EditingInfo`
         """
         return self._EditingInfo
@@ -1107,7 +1107,7 @@ class CreateEditingTaskRequest(AbstractModel):
 
     @property
     def DownInfo(self):
-        """视频源信息。
+        r"""视频源信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         """
         return self._DownInfo
@@ -1118,7 +1118,7 @@ class CreateEditingTaskRequest(AbstractModel):
 
     @property
     def SaveInfo(self):
-        """结果存储信息。对于包含智能拆条、智能集锦或者智能封面的任务必选。
+        r"""结果存储信息。对于包含智能拆条、智能集锦或者智能封面的任务必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.SaveInfo`
         """
         return self._SaveInfo
@@ -1129,7 +1129,7 @@ class CreateEditingTaskRequest(AbstractModel):
 
     @property
     def CallbackInfo(self):
-        """任务结果回调地址信息。
+        r"""任务结果回调地址信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CallbackInfo`
         """
         return self._CallbackInfo
@@ -1163,7 +1163,7 @@ class CreateEditingTaskRequest(AbstractModel):
 
 
 class CreateEditingTaskResponse(AbstractModel):
-    """CreateEditingTask返回参数结构体
+    r"""CreateEditingTask返回参数结构体
 
     """
 
@@ -1179,7 +1179,7 @@ class CreateEditingTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑任务 ID，可以通过该 ID 查询任务状态。
+        r"""编辑任务 ID，可以通过该 ID 查询任务状态。
         :rtype: str
         """
         return self._TaskId
@@ -1190,7 +1190,7 @@ class CreateEditingTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1206,7 +1206,7 @@ class CreateEditingTaskResponse(AbstractModel):
 
 
 class CreateMediaProcessTaskRequest(AbstractModel):
-    """CreateMediaProcessTask请求参数结构体
+    r"""CreateMediaProcessTask请求参数结构体
 
     """
 
@@ -1228,7 +1228,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
 
     @property
     def MediaProcessInfo(self):
-        """编辑处理任务参数。
+        r"""编辑处理任务参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaProcessInfo`
         """
         return self._MediaProcessInfo
@@ -1239,7 +1239,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
 
     @property
     def SourceInfoSet(self):
-        """编辑处理任务输入源列表。
+        r"""编辑处理任务输入源列表。
         :rtype: list of MediaSourceInfo
         """
         return self._SourceInfoSet
@@ -1250,7 +1250,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
 
     @property
     def SaveInfoSet(self):
-        """结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
+        r"""结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
         :rtype: list of SaveInfo
         """
         return self._SaveInfoSet
@@ -1261,7 +1261,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
 
     @property
     def CallbackInfoSet(self):
-        """任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
+        r"""任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
         :rtype: list of CallbackInfo
         """
         return self._CallbackInfoSet
@@ -1304,7 +1304,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
 
 
 class CreateMediaProcessTaskResponse(AbstractModel):
-    """CreateMediaProcessTask返回参数结构体
+    r"""CreateMediaProcessTask返回参数结构体
 
     """
 
@@ -1321,7 +1321,7 @@ class CreateMediaProcessTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑任务 ID，可以通过该 ID 查询任务状态和结果。
+        r"""编辑任务 ID，可以通过该 ID 查询任务状态和结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1333,7 +1333,7 @@ class CreateMediaProcessTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1349,7 +1349,7 @@ class CreateMediaProcessTaskResponse(AbstractModel):
 
 
 class CreateMediaQualityRestorationTaskRequest(AbstractModel):
-    """CreateMediaQualityRestorationTask请求参数结构体
+    r"""CreateMediaQualityRestorationTask请求参数结构体
 
     """
 
@@ -1374,7 +1374,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def DownInfo(self):
-        """源文件地址。
+        r"""源文件地址。
         :rtype: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         """
         return self._DownInfo
@@ -1385,7 +1385,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def TransInfo(self):
-        """画质重生任务参数信息。
+        r"""画质重生任务参数信息。
         :rtype: list of SubTaskTranscodeInfo
         """
         return self._TransInfo
@@ -1396,7 +1396,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def SaveInfo(self):
-        """任务结束后文件存储信息。
+        r"""任务结束后文件存储信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.SaveInfo`
         """
         return self._SaveInfo
@@ -1407,7 +1407,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def CallbackInfo(self):
-        """任务结果回调地址信息。
+        r"""任务结果回调地址信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CallbackInfo`
         """
         return self._CallbackInfo
@@ -1418,7 +1418,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def TopSpeedCodecChannel(self):
-        """极速高清体验馆渠道标志。
+        r"""极速高清体验馆渠道标志。
         :rtype: int
         """
         return self._TopSpeedCodecChannel
@@ -1456,7 +1456,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
 
 
 class CreateMediaQualityRestorationTaskResponse(AbstractModel):
-    """CreateMediaQualityRestorationTask返回参数结构体
+    r"""CreateMediaQualityRestorationTask返回参数结构体
 
     """
 
@@ -1472,7 +1472,7 @@ class CreateMediaQualityRestorationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """画质重生任务ID，可以通过该ID查询任务状态。
+        r"""画质重生任务ID，可以通过该ID查询任务状态。
         :rtype: str
         """
         return self._TaskId
@@ -1483,7 +1483,7 @@ class CreateMediaQualityRestorationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1499,7 +1499,7 @@ class CreateMediaQualityRestorationTaskResponse(AbstractModel):
 
 
 class CreateQualityControlTaskRequest(AbstractModel):
-    """CreateQualityControlTask请求参数结构体
+    r"""CreateQualityControlTask请求参数结构体
 
     """
 
@@ -1518,7 +1518,7 @@ class CreateQualityControlTaskRequest(AbstractModel):
 
     @property
     def QualityControlInfo(self):
-        """质检任务参数
+        r"""质检任务参数
         :rtype: :class:`tencentcloud.ie.v20200304.models.QualityControlInfo`
         """
         return self._QualityControlInfo
@@ -1529,7 +1529,7 @@ class CreateQualityControlTaskRequest(AbstractModel):
 
     @property
     def DownInfo(self):
-        """视频源信息
+        r"""视频源信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         """
         return self._DownInfo
@@ -1540,7 +1540,7 @@ class CreateQualityControlTaskRequest(AbstractModel):
 
     @property
     def CallbackInfo(self):
-        """任务结果回调地址信息
+        r"""任务结果回调地址信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.CallbackInfo`
         """
         return self._CallbackInfo
@@ -1571,7 +1571,7 @@ class CreateQualityControlTaskRequest(AbstractModel):
 
 
 class CreateQualityControlTaskResponse(AbstractModel):
-    """CreateQualityControlTask返回参数结构体
+    r"""CreateQualityControlTask返回参数结构体
 
     """
 
@@ -1588,7 +1588,7 @@ class CreateQualityControlTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """质检任务 ID
+        r"""质检任务 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1600,7 +1600,7 @@ class CreateQualityControlTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1616,7 +1616,7 @@ class CreateQualityControlTaskResponse(AbstractModel):
 
 
 class DarInfo(AbstractModel):
-    """视频Dar信息
+    r"""视频Dar信息
 
     """
 
@@ -1632,7 +1632,7 @@ class DarInfo(AbstractModel):
 
     @property
     def FillMode(self):
-        """填充模式，可选值：
+        r"""填充模式，可选值：
 1：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。
 2：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“。
 默认为2。
@@ -1658,7 +1658,7 @@ class DarInfo(AbstractModel):
 
 
 class Denoise(AbstractModel):
-    """音频降噪
+    r"""音频降噪
 
     """
 
@@ -1675,7 +1675,7 @@ class Denoise(AbstractModel):
 
     @property
     def Type(self):
-        """音频降噪强度，可选项：
+        r"""音频降噪强度，可选项：
 1. weak
 2.normal，
 3.strong
@@ -1702,7 +1702,7 @@ class Denoise(AbstractModel):
 
 
 class Denoising(AbstractModel):
-    """去噪参数
+    r"""去噪参数
 
     """
 
@@ -1727,7 +1727,7 @@ fast-spatial：快速空域降噪。
 
     @property
     def Type(self):
-        """去噪方式，可选项：
+        r"""去噪方式，可选项：
 templ：时域降噪；
 spatial：空域降噪,
 fast-spatial：快速空域降噪。
@@ -1744,7 +1744,7 @@ fast-spatial：快速空域降噪。
 
     @property
     def TemplStrength(self):
-        """时域去噪强度，可选值：0.0-1.0 。小于0.0的默认为0.0，大于1.0的默认为1.0。
+        r"""时域去噪强度，可选值：0.0-1.0 。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :rtype: float
         """
         return self._TemplStrength
@@ -1755,7 +1755,7 @@ fast-spatial：快速空域降噪。
 
     @property
     def SpatialStrength(self):
-        """空域去噪强度，可选值：0.0-1.0 。小于0.0的默认为0.0，大于1.0的默认为1.0。
+        r"""空域去噪强度，可选值：0.0-1.0 。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :rtype: float
         """
         return self._SpatialStrength
@@ -1780,7 +1780,7 @@ fast-spatial：快速空域降噪。
 
 
 class DescribeEditingTaskResultRequest(AbstractModel):
-    """DescribeEditingTaskResult请求参数结构体
+    r"""DescribeEditingTaskResult请求参数结构体
 
     """
 
@@ -1793,7 +1793,7 @@ class DescribeEditingTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑任务 ID。
+        r"""编辑任务 ID。
         :rtype: str
         """
         return self._TaskId
@@ -1816,7 +1816,7 @@ class DescribeEditingTaskResultRequest(AbstractModel):
 
 
 class DescribeEditingTaskResultResponse(AbstractModel):
-    """DescribeEditingTaskResult返回参数结构体
+    r"""DescribeEditingTaskResult返回参数结构体
 
     """
 
@@ -1832,7 +1832,7 @@ class DescribeEditingTaskResultResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        """编辑任务结果信息。
+        r"""编辑任务结果信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.EditingTaskResult`
         """
         return self._TaskResult
@@ -1843,7 +1843,7 @@ class DescribeEditingTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1861,7 +1861,7 @@ class DescribeEditingTaskResultResponse(AbstractModel):
 
 
 class DescribeMediaProcessTaskResultRequest(AbstractModel):
-    """DescribeMediaProcessTaskResult请求参数结构体
+    r"""DescribeMediaProcessTaskResult请求参数结构体
 
     """
 
@@ -1874,7 +1874,7 @@ class DescribeMediaProcessTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑处理任务ID。
+        r"""编辑处理任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -1897,7 +1897,7 @@ class DescribeMediaProcessTaskResultRequest(AbstractModel):
 
 
 class DescribeMediaProcessTaskResultResponse(AbstractModel):
-    """DescribeMediaProcessTaskResult返回参数结构体
+    r"""DescribeMediaProcessTaskResult返回参数结构体
 
     """
 
@@ -1914,7 +1914,7 @@ class DescribeMediaProcessTaskResultResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        """任务处理结果。
+        r"""任务处理结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaProcessTaskResult`
         """
@@ -1926,7 +1926,7 @@ class DescribeMediaProcessTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1944,7 +1944,7 @@ class DescribeMediaProcessTaskResultResponse(AbstractModel):
 
 
 class DescribeMediaQualityRestorationTaskRusultRequest(AbstractModel):
-    """DescribeMediaQualityRestorationTaskRusult请求参数结构体
+    r"""DescribeMediaQualityRestorationTaskRusult请求参数结构体
 
     """
 
@@ -1957,7 +1957,7 @@ class DescribeMediaQualityRestorationTaskRusultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """画质重生任务ID
+        r"""画质重生任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1980,7 +1980,7 @@ class DescribeMediaQualityRestorationTaskRusultRequest(AbstractModel):
 
 
 class DescribeMediaQualityRestorationTaskRusultResponse(AbstractModel):
-    """DescribeMediaQualityRestorationTaskRusult返回参数结构体
+    r"""DescribeMediaQualityRestorationTaskRusult返回参数结构体
 
     """
 
@@ -1996,7 +1996,7 @@ class DescribeMediaQualityRestorationTaskRusultResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        """画质重生任务结果信息
+        r"""画质重生任务结果信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaQualityRestorationTaskResult`
         """
         return self._TaskResult
@@ -2007,7 +2007,7 @@ class DescribeMediaQualityRestorationTaskRusultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2025,7 +2025,7 @@ class DescribeMediaQualityRestorationTaskRusultResponse(AbstractModel):
 
 
 class DescribeQualityControlTaskResultRequest(AbstractModel):
-    """DescribeQualityControlTaskResult请求参数结构体
+    r"""DescribeQualityControlTaskResult请求参数结构体
 
     """
 
@@ -2038,7 +2038,7 @@ class DescribeQualityControlTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """质检任务 ID
+        r"""质检任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -2061,7 +2061,7 @@ class DescribeQualityControlTaskResultRequest(AbstractModel):
 
 
 class DescribeQualityControlTaskResultResponse(AbstractModel):
-    """DescribeQualityControlTaskResult返回参数结构体
+    r"""DescribeQualityControlTaskResult返回参数结构体
 
     """
 
@@ -2077,7 +2077,7 @@ class DescribeQualityControlTaskResultResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        """质检任务结果信息
+        r"""质检任务结果信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.QualityControlInfoTaskResult`
         """
         return self._TaskResult
@@ -2088,7 +2088,7 @@ class DescribeQualityControlTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2106,7 +2106,7 @@ class DescribeQualityControlTaskResultResponse(AbstractModel):
 
 
 class DownInfo(AbstractModel):
-    """视频源信息
+    r"""视频源信息
 
     """
 
@@ -2127,7 +2127,7 @@ class DownInfo(AbstractModel):
 
     @property
     def Type(self):
-        """下载类型，可选值： 
+        r"""下载类型，可选值： 
 0：UrlInfo； 
 1：CosInfo。
         :rtype: int
@@ -2140,7 +2140,7 @@ class DownInfo(AbstractModel):
 
     @property
     def UrlInfo(self):
-        """Url形式下载信息，当Type等于0时必选。
+        r"""Url形式下载信息，当Type等于0时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.UrlInfo`
         """
         return self._UrlInfo
@@ -2151,7 +2151,7 @@ class DownInfo(AbstractModel):
 
     @property
     def CosInfo(self):
-        """Cos形式下载信息，当Type等于1时必选。
+        r"""Cos形式下载信息，当Type等于1时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CosInfo`
         """
         return self._CosInfo
@@ -2180,7 +2180,7 @@ class DownInfo(AbstractModel):
 
 
 class DynamicImageInfo(AbstractModel):
-    """动图参数
+    r"""动图参数
 
     """
 
@@ -2195,7 +2195,7 @@ class DynamicImageInfo(AbstractModel):
 
     @property
     def Quality(self):
-        """画面质量，范围：1~100。
+        r"""画面质量，范围：1~100。
 <li>对于webp格式，默认：75</li>
 <li>对于gif格式，小于10为低质量，大于50为高质量，其它为普通。默认：低质量。</li>
         :rtype: int
@@ -2220,7 +2220,7 @@ class DynamicImageInfo(AbstractModel):
 
 
 class EditInfo(AbstractModel):
-    """画质重生子任务视频剪辑参数
+    r"""画质重生子任务视频剪辑参数
 
     """
 
@@ -2236,7 +2236,7 @@ class EditInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """剪辑开始时间，单位：ms。
+        r"""剪辑开始时间，单位：ms。
         :rtype: int
         """
         return self._StartTime
@@ -2247,7 +2247,7 @@ class EditInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """剪辑结束时间，单位：ms
+        r"""剪辑结束时间，单位：ms
         :rtype: int
         """
         return self._EndTime
@@ -2271,7 +2271,7 @@ class EditInfo(AbstractModel):
 
 
 class EditingInfo(AbstractModel):
-    """智能编辑任务参数信息
+    r"""智能编辑任务参数信息
 
     """
 
@@ -2299,7 +2299,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def TagEditingInfo(self):
-        """视频标签识别任务参数，不填则不开启。
+        r"""视频标签识别任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TagEditingInfo`
         """
         return self._TagEditingInfo
@@ -2310,7 +2310,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def ClassificationEditingInfo(self):
-        """视频分类识别任务参数，不填则不开启。
+        r"""视频分类识别任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.ClassificationEditingInfo`
         """
         return self._ClassificationEditingInfo
@@ -2321,7 +2321,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def StripEditingInfo(self):
-        """智能拆条任务参数，不填则不开启。
+        r"""智能拆条任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.StripEditingInfo`
         """
         return self._StripEditingInfo
@@ -2332,7 +2332,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def HighlightsEditingInfo(self):
-        """智能集锦任务参数，不填则不开启。
+        r"""智能集锦任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.HighlightsEditingInfo`
         """
         return self._HighlightsEditingInfo
@@ -2343,7 +2343,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def CoverEditingInfo(self):
-        """智能封面任务参数，不填则不开启。
+        r"""智能封面任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CoverEditingInfo`
         """
         return self._CoverEditingInfo
@@ -2354,7 +2354,7 @@ class EditingInfo(AbstractModel):
 
     @property
     def OpeningEndingEditingInfo(self):
-        """片头片尾识别任务参数，不填则不开启。
+        r"""片头片尾识别任务参数，不填则不开启。
         :rtype: :class:`tencentcloud.ie.v20200304.models.OpeningEndingEditingInfo`
         """
         return self._OpeningEndingEditingInfo
@@ -2394,7 +2394,7 @@ class EditingInfo(AbstractModel):
 
 
 class EditingTaskResult(AbstractModel):
-    """智能识别任务结果信息
+    r"""智能识别任务结果信息
 
     """
 
@@ -2435,7 +2435,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑任务 ID。
+        r"""编辑任务 ID。
         :rtype: str
         """
         return self._TaskId
@@ -2446,7 +2446,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：已完成。
         :rtype: int
         """
@@ -2458,7 +2458,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def TagTaskResult(self):
-        """视频标签识别结果。
+        r"""视频标签识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TagTaskResult`
         """
@@ -2470,7 +2470,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def ClassificationTaskResult(self):
-        """视频分类识别结果。
+        r"""视频分类识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.ClassificationTaskResult`
         """
@@ -2482,7 +2482,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def StripTaskResult(self):
-        """智能拆条结果。
+        r"""智能拆条结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.StripTaskResult`
         """
@@ -2494,7 +2494,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def HighlightsTaskResult(self):
-        """智能集锦结果。
+        r"""智能集锦结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.HighlightsTaskResult`
         """
@@ -2506,7 +2506,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def CoverTaskResult(self):
-        """智能封面结果。
+        r"""智能封面结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CoverTaskResult`
         """
@@ -2518,7 +2518,7 @@ class EditingTaskResult(AbstractModel):
 
     @property
     def OpeningEndingTaskResult(self):
-        """片头片尾识别结果。
+        r"""片头片尾识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.OpeningEndingTaskResult`
         """
@@ -2561,7 +2561,7 @@ class EditingTaskResult(AbstractModel):
 
 
 class FaceProtect(AbstractModel):
-    """人脸保护参数
+    r"""人脸保护参数
 
     """
 
@@ -2574,7 +2574,7 @@ class FaceProtect(AbstractModel):
 
     @property
     def FaceUsmRatio(self):
-        """人脸区域增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
+        r"""人脸区域增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :rtype: float
         """
         return self._FaceUsmRatio
@@ -2597,7 +2597,7 @@ class FaceProtect(AbstractModel):
 
 
 class FileInfo(AbstractModel):
-    """画质重生处理后文件的详细信息
+    r"""画质重生处理后文件的详细信息
 
     """
 
@@ -2631,7 +2631,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """任务结束后生成的文件大小。
+        r"""任务结束后生成的文件大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2643,7 +2643,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileType(self):
-        """任务结束后生成的文件格式，例如：mp4,flv等等。
+        r"""任务结束后生成的文件格式，例如：mp4,flv等等。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2655,7 +2655,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Bitrate(self):
-        """任务结束后生成的文件整体码率，单位：bps。
+        r"""任务结束后生成的文件整体码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2667,7 +2667,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """任务结束后生成的文件时长，单位：ms。
+        r"""任务结束后生成的文件时长，单位：ms。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2679,7 +2679,7 @@ class FileInfo(AbstractModel):
 
     @property
     def VideoInfoResult(self):
-        """任务结束后生成的文件视频信息。
+        r"""任务结束后生成的文件视频信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoInfoResultItem
         """
@@ -2691,7 +2691,7 @@ class FileInfo(AbstractModel):
 
     @property
     def AudioInfoResult(self):
-        """任务结束后生成的文件音频信息。
+        r"""任务结束后生成的文件音频信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioInfoResultItem
         """
@@ -2730,7 +2730,7 @@ class FileInfo(AbstractModel):
 
 
 class FrameTagItem(AbstractModel):
-    """帧标签
+    r"""帧标签
 
     """
 
@@ -2752,7 +2752,7 @@ class FrameTagItem(AbstractModel):
 
     @property
     def StartPts(self):
-        """标签起始时间戳PTS(ms)
+        r"""标签起始时间戳PTS(ms)
         :rtype: int
         """
         return self._StartPts
@@ -2763,7 +2763,7 @@ class FrameTagItem(AbstractModel):
 
     @property
     def EndPts(self):
-        """语句结束时间戳PTS(ms)
+        r"""语句结束时间戳PTS(ms)
         :rtype: int
         """
         return self._EndPts
@@ -2774,7 +2774,7 @@ class FrameTagItem(AbstractModel):
 
     @property
     def Period(self):
-        """字符串形式的起始结束时间
+        r"""字符串形式的起始结束时间
         :rtype: str
         """
         return self._Period
@@ -2785,7 +2785,7 @@ class FrameTagItem(AbstractModel):
 
     @property
     def TagItems(self):
-        """标签数组
+        r"""标签数组
         :rtype: list of TagItem
         """
         return self._TagItems
@@ -2816,7 +2816,7 @@ class FrameTagItem(AbstractModel):
 
 
 class FrameTagRec(AbstractModel):
-    """帧标签任务参数
+    r"""帧标签任务参数
 
     """
 
@@ -2840,7 +2840,7 @@ class FrameTagRec(AbstractModel):
 
     @property
     def TagType(self):
-        """标签类型：
+        r"""标签类型：
 "Common": 通用类型
 "Game":游戏类型
         :rtype: str
@@ -2853,7 +2853,7 @@ class FrameTagRec(AbstractModel):
 
     @property
     def GameExtendType(self):
-        """游戏具体类型:
+        r"""游戏具体类型:
 "HonorOfKings_AnchorViews":王者荣耀主播视角
 "HonorOfKings_GameViews":王者荣耀比赛视角
 "LOL_AnchorViews":英雄联盟主播视角
@@ -2883,7 +2883,7 @@ class FrameTagRec(AbstractModel):
 
 
 class FrameTagResult(AbstractModel):
-    """帧标签结果
+    r"""帧标签结果
 
     """
 
@@ -2896,7 +2896,7 @@ class FrameTagResult(AbstractModel):
 
     @property
     def FrameTagItems(self):
-        """帧标签结果数组
+        r"""帧标签结果数组
         :rtype: list of FrameTagItem
         """
         return self._FrameTagItems
@@ -2924,7 +2924,7 @@ class FrameTagResult(AbstractModel):
 
 
 class HiddenMarkInfo(AbstractModel):
-    """数字水印
+    r"""数字水印
 
     """
 
@@ -2946,7 +2946,7 @@ class HiddenMarkInfo(AbstractModel):
 
     @property
     def Path(self):
-        """数字水印路径,，如果不从Cos拉取水印，则必填
+        r"""数字水印路径,，如果不从Cos拉取水印，则必填
         :rtype: str
         """
         return self._Path
@@ -2957,7 +2957,7 @@ class HiddenMarkInfo(AbstractModel):
 
     @property
     def Frequency(self):
-        """数字水印频率，可选值：[1,256]，默认值为30
+        r"""数字水印频率，可选值：[1,256]，默认值为30
         :rtype: int
         """
         return self._Frequency
@@ -2968,7 +2968,7 @@ class HiddenMarkInfo(AbstractModel):
 
     @property
     def Strength(self):
-        """数字水印强度，可选值：[32,128]，默认值为64
+        r"""数字水印强度，可选值：[32,128]，默认值为64
         :rtype: int
         """
         return self._Strength
@@ -2979,7 +2979,7 @@ class HiddenMarkInfo(AbstractModel):
 
     @property
     def CosInfo(self):
-        """数字水印的Cos 信息，从Cos上拉取图片水印时必填。
+        r"""数字水印的Cos 信息，从Cos上拉取图片水印时必填。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CosInfo`
         """
         return self._CosInfo
@@ -3007,7 +3007,7 @@ class HiddenMarkInfo(AbstractModel):
 
 
 class HighlightsEditingInfo(AbstractModel):
-    """智能集锦任务参数信息
+    r"""智能集锦任务参数信息
 
     """
 
@@ -3023,7 +3023,7 @@ class HighlightsEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -3034,7 +3034,7 @@ class HighlightsEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -3058,7 +3058,7 @@ class HighlightsEditingInfo(AbstractModel):
 
 
 class HighlightsTaskResult(AbstractModel):
-    """智能集锦结果信息
+    r"""智能集锦结果信息
 
     """
 
@@ -3083,7 +3083,7 @@ class HighlightsTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -3095,7 +3095,7 @@ class HighlightsTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -3107,7 +3107,7 @@ class HighlightsTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -3118,7 +3118,7 @@ class HighlightsTaskResult(AbstractModel):
 
     @property
     def ItemSet(self):
-        """智能集锦结果集。
+        r"""智能集锦结果集。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HighlightsTaskResultItem
         """
@@ -3150,7 +3150,7 @@ class HighlightsTaskResult(AbstractModel):
 
 
 class HighlightsTaskResultItem(AbstractModel):
-    """智能集锦结果项
+    r"""智能集锦结果项
 
     """
 
@@ -3175,7 +3175,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
     @property
     def HighlightUrl(self):
-        """智能集锦地址。
+        r"""智能集锦地址。
         :rtype: str
         """
         return self._HighlightUrl
@@ -3186,7 +3186,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
     @property
     def CovImgUrl(self):
-        """智能集锦封面地址。
+        r"""智能集锦封面地址。
         :rtype: str
         """
         return self._CovImgUrl
@@ -3197,7 +3197,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -3208,7 +3208,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
     @property
     def Duration(self):
-        """智能集锦持续时间，单位：秒。
+        r"""智能集锦持续时间，单位：秒。
         :rtype: float
         """
         return self._Duration
@@ -3219,7 +3219,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
-        """智能集锦子片段结果集，集锦片段由这些子片段拼接生成。
+        r"""智能集锦子片段结果集，集锦片段由这些子片段拼接生成。
         :rtype: list of HighlightsTaskResultItemSegment
         """
         return self._SegmentSet
@@ -3251,7 +3251,7 @@ class HighlightsTaskResultItem(AbstractModel):
 
 
 class HighlightsTaskResultItemSegment(AbstractModel):
-    """智能集锦结果片段
+    r"""智能集锦结果片段
 
     """
 
@@ -3270,7 +3270,7 @@ class HighlightsTaskResultItemSegment(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -3281,7 +3281,7 @@ class HighlightsTaskResultItemSegment(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        """集锦片段起始的偏移时间，单位：秒。
+        r"""集锦片段起始的偏移时间，单位：秒。
         :rtype: float
         """
         return self._StartTimeOffset
@@ -3292,7 +3292,7 @@ class HighlightsTaskResultItemSegment(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        """集锦片段终止的偏移时间，单位：秒。
+        r"""集锦片段终止的偏移时间，单位：秒。
         :rtype: float
         """
         return self._EndTimeOffset
@@ -3317,7 +3317,7 @@ class HighlightsTaskResultItemSegment(AbstractModel):
 
 
 class IntervalTime(AbstractModel):
-    """周期时间点信息。
+    r"""周期时间点信息。
 
     """
 
@@ -3333,7 +3333,7 @@ class IntervalTime(AbstractModel):
 
     @property
     def Interval(self):
-        """间隔周期，单位ms
+        r"""间隔周期，单位ms
         :rtype: int
         """
         return self._Interval
@@ -3344,7 +3344,7 @@ class IntervalTime(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间点，单位ms
+        r"""开始时间点，单位ms
         :rtype: int
         """
         return self._StartTime
@@ -3368,7 +3368,7 @@ class IntervalTime(AbstractModel):
 
 
 class LoudnessInfo(AbstractModel):
-    """音频响度信息
+    r"""音频响度信息
 
     """
 
@@ -3384,7 +3384,7 @@ class LoudnessInfo(AbstractModel):
 
     @property
     def Loudness(self):
-        """音频整体响度
+        r"""音频整体响度
         :rtype: float
         """
         return self._Loudness
@@ -3395,7 +3395,7 @@ class LoudnessInfo(AbstractModel):
 
     @property
     def LoudnessRange(self):
-        """音频响度范围
+        r"""音频响度范围
         :rtype: float
         """
         return self._LoudnessRange
@@ -3419,7 +3419,7 @@ class LoudnessInfo(AbstractModel):
 
 
 class LowLightEnhance(AbstractModel):
-    """低光照增强参数
+    r"""低光照增强参数
 
     """
 
@@ -3432,7 +3432,7 @@ class LowLightEnhance(AbstractModel):
 
     @property
     def Type(self):
-        """低光照增强类型，可选项：normal。
+        r"""低光照增强类型，可选项：normal。
         :rtype: str
         """
         return self._Type
@@ -3455,7 +3455,7 @@ class LowLightEnhance(AbstractModel):
 
 
 class MediaCuttingInfo(AbstractModel):
-    """编辑处理/剪切任务信息。
+    r"""编辑处理/剪切任务信息。
     截图结果默认存在 SaveInfoSet 的第一个存储位置。
 
     """
@@ -3487,7 +3487,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def TimeInfo(self):
-        """截取时间信息。
+        r"""截取时间信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingTimeInfo`
         """
         return self._TimeInfo
@@ -3498,7 +3498,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def TargetInfo(self):
-        """输出结果信息。
+        r"""输出结果信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
         """
         return self._TargetInfo
@@ -3509,7 +3509,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def OutForm(self):
-        """截取结果形式信息。
+        r"""截取结果形式信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingOutForm`
         """
         return self._OutForm
@@ -3520,7 +3520,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def ResultListSaveType(self):
-        """列表文件形式，存储到用户存储服务中，可选值：
+        r"""列表文件形式，存储到用户存储服务中，可选值：
 <li>NoListFile：不存储结果列表; </li>
 <li>UseSaveInfo：默认，结果列表和结果存储同一位置（即SaveInfoSet 的第一个存储位置）；</li>
 <li>SaveInfoSet 存储的Id：存储在指定的存储位置。</li>
@@ -3534,7 +3534,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def WatermarkInfoSet(self):
-        """水印信息，最多支持 10 个水印。
+        r"""水印信息，最多支持 10 个水印。
         :rtype: list of MediaCuttingWatermark
         """
         return self._WatermarkInfoSet
@@ -3545,7 +3545,7 @@ class MediaCuttingInfo(AbstractModel):
 
     @property
     def DropPureColor(self):
-        """是否去除纯色截图，如果值为 True ，对应时间点的截图如果是纯色，将略过。
+        r"""是否去除纯色截图，如果值为 True ，对应时间点的截图如果是纯色，将略过。
         :rtype: str
         """
         return self._DropPureColor
@@ -3584,7 +3584,7 @@ class MediaCuttingInfo(AbstractModel):
 
 
 class MediaCuttingOutForm(AbstractModel):
-    """编辑处理/剪切任务/输出形式信息
+    r"""编辑处理/剪切任务/输出形式信息
 
     """
 
@@ -3629,7 +3629,7 @@ Gaussian：高斯模糊；
 
     @property
     def Type(self):
-        """输出类型，可选值：
+        r"""输出类型，可选值：
 Static：静态图；
 Dynamic：动态图；
 Sprite：雪碧图；
@@ -3652,7 +3652,7 @@ Video：mp4。
 
     @property
     def FillType(self):
-        """背景填充方式，可选值：
+        r"""背景填充方式，可选值：
 White：白色填充；
 Black：黑色填充；
 Stretch：拉伸；
@@ -3668,7 +3668,7 @@ Gaussian：高斯模糊；
 
     @property
     def SpriteRowCount(self):
-        """【废弃】参考SpriteInfo
+        r"""【废弃】参考SpriteInfo
         :rtype: int
         """
         return self._SpriteRowCount
@@ -3679,7 +3679,7 @@ Gaussian：高斯模糊；
 
     @property
     def SpriteColumnCount(self):
-        """【废弃】参考SpriteInfo
+        r"""【废弃】参考SpriteInfo
         :rtype: int
         """
         return self._SpriteColumnCount
@@ -3690,7 +3690,7 @@ Gaussian：高斯模糊；
 
     @property
     def SpriteInfo(self):
-        """Type=Sprite时有效，表示雪碧图参数信息。
+        r"""Type=Sprite时有效，表示雪碧图参数信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.SpriteImageInfo`
         """
         return self._SpriteInfo
@@ -3701,7 +3701,7 @@ Gaussian：高斯模糊；
 
     @property
     def DynamicInfo(self):
-        """Type=Dynamic时有效，表示动图参数信息。
+        r"""Type=Dynamic时有效，表示动图参数信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.DynamicImageInfo`
         """
         return self._DynamicInfo
@@ -3733,7 +3733,7 @@ Gaussian：高斯模糊；
 
 
 class MediaCuttingTaskResult(AbstractModel):
-    """编辑处理/剪切任务/处理结果
+    r"""编辑处理/剪切任务/处理结果
 
     """
 
@@ -3766,7 +3766,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
     @property
     def ListFile(self):
-        """如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
+        r"""如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
         """
@@ -3778,7 +3778,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
     @property
     def ResultCount(self):
-        """结果个数。
+        r"""结果个数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3790,7 +3790,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
     @property
     def FirstFile(self):
-        """第一个结果文件。
+        r"""第一个结果文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
         """
@@ -3802,7 +3802,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
     @property
     def LastFile(self):
-        """最后一个结果文件。
+        r"""最后一个结果文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
         """
@@ -3814,7 +3814,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
     @property
     def ImageCount(self):
-        """任务结果包含的图片总数。
+        r"""任务结果包含的图片总数。
 静态图：总数即为文件数；
 雪碧图：所有小图总数；
 动图、视频：不计算图片数，为 0。
@@ -3851,7 +3851,7 @@ class MediaCuttingTaskResult(AbstractModel):
 
 
 class MediaCuttingTimeInfo(AbstractModel):
-    """编辑处理/剪切任务/时间信息
+    r"""编辑处理/剪切任务/时间信息
 
     """
 
@@ -3876,7 +3876,7 @@ SectionSet：时间片段集合。
 
     @property
     def Type(self):
-        """时间类型，可选值：
+        r"""时间类型，可选值：
 PointSet：时间点集合；
 IntervalPoint：周期采样点；
 SectionSet：时间片段集合。
@@ -3890,7 +3890,7 @@ SectionSet：时间片段集合。
 
     @property
     def PointSet(self):
-        """截取时间点集合，单位毫秒，Type=PointSet时必选。
+        r"""截取时间点集合，单位毫秒，Type=PointSet时必选。
         :rtype: list of int
         """
         return self._PointSet
@@ -3901,7 +3901,7 @@ SectionSet：时间片段集合。
 
     @property
     def IntervalPoint(self):
-        """周期采样点信息，Type=IntervalPoint时必选。
+        r"""周期采样点信息，Type=IntervalPoint时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.IntervalTime`
         """
         return self._IntervalPoint
@@ -3912,7 +3912,7 @@ SectionSet：时间片段集合。
 
     @property
     def SectionSet(self):
-        """时间区间集合信息，Type=SectionSet时必选。
+        r"""时间区间集合信息，Type=SectionSet时必选。
         :rtype: list of SectionTime
         """
         return self._SectionSet
@@ -3945,7 +3945,7 @@ SectionSet：时间片段集合。
 
 
 class MediaCuttingWatermark(AbstractModel):
-    """媒体剪切水印信息。
+    r"""媒体剪切水印信息。
 
     """
 
@@ -3966,7 +3966,7 @@ class MediaCuttingWatermark(AbstractModel):
 
     @property
     def Type(self):
-        """水印类型，可选值：
+        r"""水印类型，可选值：
 <li>Image：图像水印；</li>
 <li>Text：文字水印。</li>
         :rtype: str
@@ -3979,7 +3979,7 @@ class MediaCuttingWatermark(AbstractModel):
 
     @property
     def Image(self):
-        """图像水印信息，当 Type=Image 时必选。
+        r"""图像水印信息，当 Type=Image 时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingWatermarkImage`
         """
         return self._Image
@@ -3990,7 +3990,7 @@ class MediaCuttingWatermark(AbstractModel):
 
     @property
     def Text(self):
-        """文字水印信息，当 Type=Text 时必选。
+        r"""文字水印信息，当 Type=Text 时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingWatermarkText`
         """
         return self._Text
@@ -4019,7 +4019,7 @@ class MediaCuttingWatermark(AbstractModel):
 
 
 class MediaCuttingWatermarkImage(AbstractModel):
-    """媒体剪切图像水印参数。
+    r"""媒体剪切图像水印参数。
 
     """
 
@@ -4060,7 +4060,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def SourceId(self):
-        """水印源的ID，对应SourceInfoSet内的源。
+        r"""水印源的ID，对应SourceInfoSet内的源。
 注意1：对应的 MediaSourceInfo.Type需要为Image。
 注意2：对于动图，只取第一帧图像作为水印源。
         :rtype: str
@@ -4073,7 +4073,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def PosX(self):
-        """水印水平坐标，单位像素，默认：0。
+        r"""水印水平坐标，单位像素，默认：0。
         :rtype: int
         """
         return self._PosX
@@ -4084,7 +4084,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def PosY(self):
-        """水印垂直坐标，单位像素，默认：0。
+        r"""水印垂直坐标，单位像素，默认：0。
         :rtype: int
         """
         return self._PosY
@@ -4095,7 +4095,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def Width(self):
-        """水印宽度，单位像素，默认：0。
+        r"""水印宽度，单位像素，默认：0。
         :rtype: int
         """
         return self._Width
@@ -4106,7 +4106,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def Height(self):
-        """水印高度，单位像素，默认：0。
+        r"""水印高度，单位像素，默认：0。
 注意：对于宽高符合以下规则：
 1、Width>0 且 Height>0，按指定宽高拉伸；
 2、Width=0 且 Height>0，以Height为基准等比缩放；
@@ -4122,7 +4122,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
     @property
     def PosOriginType(self):
-        """指定坐标原点，可选值：
+        r"""指定坐标原点，可选值：
 <li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
 <li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
 <li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
@@ -4156,7 +4156,7 @@ class MediaCuttingWatermarkImage(AbstractModel):
 
 
 class MediaCuttingWatermarkText(AbstractModel):
-    """媒体剪切文字水印参数。
+    r"""媒体剪切文字水印参数。
 
     """
 
@@ -4200,7 +4200,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def Text(self):
-        """水印文字。
+        r"""水印文字。
         :rtype: str
         """
         return self._Text
@@ -4211,7 +4211,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def FontSize(self):
-        """文字大小
+        r"""文字大小
         :rtype: int
         """
         return self._FontSize
@@ -4222,7 +4222,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def PosX(self):
-        """水印水平坐标，单位像素，默认：0。
+        r"""水印水平坐标，单位像素，默认：0。
         :rtype: int
         """
         return self._PosX
@@ -4233,7 +4233,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def PosY(self):
-        """水印垂直坐标，单位像素，默认：0。
+        r"""水印垂直坐标，单位像素，默认：0。
         :rtype: int
         """
         return self._PosY
@@ -4244,7 +4244,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def FontColor(self):
-        """文字颜色，格式为：#RRGGBBAA，默认值：#000000。
+        r"""文字颜色，格式为：#RRGGBBAA，默认值：#000000。
         :rtype: str
         """
         return self._FontColor
@@ -4255,7 +4255,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def FontAlpha(self):
-        """文字透明度，范围：0~100，默认值：100。
+        r"""文字透明度，范围：0~100，默认值：100。
         :rtype: int
         """
         return self._FontAlpha
@@ -4266,7 +4266,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def PosOriginType(self):
-        """指定坐标原点，可选值：
+        r"""指定坐标原点，可选值：
 <li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
 <li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
 <li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
@@ -4283,7 +4283,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
     @property
     def Font(self):
-        """字体，可选值：
+        r"""字体，可选值：
 <li>SimHei</li>
 <li>SimKai</li>
 <li>Arial</li>
@@ -4317,7 +4317,7 @@ class MediaCuttingWatermarkText(AbstractModel):
 
 
 class MediaJoiningInfo(AbstractModel):
-    """编辑处理/拼接任务信息
+    r"""编辑处理/拼接任务信息
 
     """
 
@@ -4336,7 +4336,7 @@ Normal：正常；
 
     @property
     def TargetInfo(self):
-        """输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
+        r"""输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
 其中Format只支持mp4.
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
         """
@@ -4348,7 +4348,7 @@ Normal：正常；
 
     @property
     def Mode(self):
-        """拼接模式：
+        r"""拼接模式：
 Fast：快速；
 Normal：正常；
         :rtype: str
@@ -4376,7 +4376,7 @@ Normal：正常；
 
 
 class MediaJoiningTaskResult(AbstractModel):
-    """编辑处理/拼接任务/处理结果
+    r"""编辑处理/拼接任务/处理结果
 
     """
 
@@ -4390,7 +4390,7 @@ class MediaJoiningTaskResult(AbstractModel):
 
     @property
     def File(self):
-        """拼接结果文件。
+        r"""拼接结果文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
         """
@@ -4416,7 +4416,7 @@ class MediaJoiningTaskResult(AbstractModel):
 
 
 class MediaProcessInfo(AbstractModel):
-    """编辑处理/任务信息
+    r"""编辑处理/任务信息
 
     """
 
@@ -4442,7 +4442,7 @@ MediaRecognition: 媒体识别。
 
     @property
     def Type(self):
-        """编辑处理任务类型，可选值：
+        r"""编辑处理任务类型，可选值：
 MediaEditing：媒体编辑（待上线）；
 MediaCutting：媒体剪切；
 MediaJoining：媒体拼接。
@@ -4457,7 +4457,7 @@ MediaRecognition: 媒体识别。
 
     @property
     def MediaCuttingInfo(self):
-        """视频剪切任务参数，Type=MediaCutting时必选。
+        r"""视频剪切任务参数，Type=MediaCutting时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingInfo`
         """
         return self._MediaCuttingInfo
@@ -4468,7 +4468,7 @@ MediaRecognition: 媒体识别。
 
     @property
     def MediaJoiningInfo(self):
-        """视频拼接任务参数，Type=MediaJoining时必选。
+        r"""视频拼接任务参数，Type=MediaJoining时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaJoiningInfo`
         """
         return self._MediaJoiningInfo
@@ -4479,7 +4479,7 @@ MediaRecognition: 媒体识别。
 
     @property
     def MediaRecognitionInfo(self):
-        """媒体识别任务参数，Type=MediaRecognition时必选
+        r"""媒体识别任务参数，Type=MediaRecognition时必选
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaRecognitionInfo`
         """
         return self._MediaRecognitionInfo
@@ -4511,7 +4511,7 @@ MediaRecognition: 媒体识别。
 
 
 class MediaProcessTaskResult(AbstractModel):
-    """编辑处理/任务处理结果
+    r"""编辑处理/任务处理结果
 
     """
 
@@ -4565,7 +4565,7 @@ MediaRecognition：媒体识别；
 
     @property
     def TaskId(self):
-        """编辑处理任务ID。
+        r"""编辑处理任务ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4577,7 +4577,7 @@ MediaRecognition：媒体识别；
 
     @property
     def Type(self):
-        """编辑处理任务类型，取值：
+        r"""编辑处理任务类型，取值：
 MediaEditing：视频编辑（待上线）；
 MediaCutting：视频剪切；
 MediaJoining：视频拼接。
@@ -4593,7 +4593,7 @@ MediaRecognition：媒体识别；
 
     @property
     def Progress(self):
-        """处理进度，范围：[0,100]
+        r"""处理进度，范围：[0,100]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4605,7 +4605,7 @@ MediaRecognition：媒体识别；
 
     @property
     def Status(self):
-        """任务状态：
+        r"""任务状态：
 1100：等待中；
 1200：执行中；
 2000：成功；
@@ -4621,7 +4621,7 @@ MediaRecognition：媒体识别；
 
     @property
     def ErrCode(self):
-        """任务错误码。
+        r"""任务错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4633,7 +4633,7 @@ MediaRecognition：媒体识别；
 
     @property
     def ErrMsg(self):
-        """任务错误信息。
+        r"""任务错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4645,7 +4645,7 @@ MediaRecognition：媒体识别；
 
     @property
     def MediaCuttingTaskResult(self):
-        """剪切任务处理结果，当Type=MediaCutting时才有效。
+        r"""剪切任务处理结果，当Type=MediaCutting时才有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaCuttingTaskResult`
         """
@@ -4657,7 +4657,7 @@ MediaRecognition：媒体识别；
 
     @property
     def MediaJoiningTaskResult(self):
-        """拼接任务处理结果，当Type=MediaJoining时才有效。
+        r"""拼接任务处理结果，当Type=MediaJoining时才有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaJoiningTaskResult`
         """
@@ -4669,7 +4669,7 @@ MediaRecognition：媒体识别；
 
     @property
     def MediaRecognitionTaskResult(self):
-        """媒体识别任务处理结果，当Type=MediaRecognition时才有效。
+        r"""媒体识别任务处理结果，当Type=MediaRecognition时才有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaRecognitionTaskResult`
         """
@@ -4707,7 +4707,7 @@ MediaRecognition：媒体识别；
 
 
 class MediaQualityRestorationTaskResult(AbstractModel):
-    """画质重生任务结果
+    r"""画质重生任务结果
 
     """
 
@@ -4723,7 +4723,7 @@ class MediaQualityRestorationTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """画质重生任务ID
+        r"""画质重生任务ID
         :rtype: str
         """
         return self._TaskId
@@ -4734,7 +4734,7 @@ class MediaQualityRestorationTaskResult(AbstractModel):
 
     @property
     def SubTaskResult(self):
-        """画质重生处理后文件的详细信息。
+        r"""画质重生处理后文件的详细信息。
         :rtype: list of SubTaskResultItem
         """
         return self._SubTaskResult
@@ -4763,7 +4763,7 @@ class MediaQualityRestorationTaskResult(AbstractModel):
 
 
 class MediaRecognitionInfo(AbstractModel):
-    """媒体识别任务参数
+    r"""媒体识别任务参数
 
     """
 
@@ -4779,7 +4779,7 @@ class MediaRecognitionInfo(AbstractModel):
 
     @property
     def FrameTagRec(self):
-        """帧标签识别
+        r"""帧标签识别
         :rtype: :class:`tencentcloud.ie.v20200304.models.FrameTagRec`
         """
         return self._FrameTagRec
@@ -4790,7 +4790,7 @@ class MediaRecognitionInfo(AbstractModel):
 
     @property
     def SubtitleRec(self):
-        """语音字幕识别
+        r"""语音字幕识别
         :rtype: :class:`tencentcloud.ie.v20200304.models.SubtitleRec`
         """
         return self._SubtitleRec
@@ -4818,7 +4818,7 @@ class MediaRecognitionInfo(AbstractModel):
 
 
 class MediaRecognitionTaskResult(AbstractModel):
-    """媒体识别任务处理结果
+    r"""媒体识别任务处理结果
 
     """
 
@@ -4836,7 +4836,7 @@ class MediaRecognitionTaskResult(AbstractModel):
 
     @property
     def FrameTagResults(self):
-        """帧标签识别结果
+        r"""帧标签识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.FrameTagResult`
         """
@@ -4848,7 +4848,7 @@ class MediaRecognitionTaskResult(AbstractModel):
 
     @property
     def SubtitleResults(self):
-        """语音字幕识别结果
+        r"""语音字幕识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.SubtitleResult`
         """
@@ -4877,7 +4877,7 @@ class MediaRecognitionTaskResult(AbstractModel):
 
 
 class MediaResultInfo(AbstractModel):
-    """结果文件媒体信息
+    r"""结果文件媒体信息
 
     """
 
@@ -4899,7 +4899,7 @@ class MediaResultInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """媒体时长，单位：毫秒
+        r"""媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4911,7 +4911,7 @@ class MediaResultInfo(AbstractModel):
 
     @property
     def ResultVideoInfoSet(self):
-        """视频流信息
+        r"""视频流信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultVideoInfo
         """
@@ -4923,7 +4923,7 @@ class MediaResultInfo(AbstractModel):
 
     @property
     def ResultAudioInfoSet(self):
-        """音频流信息
+        r"""音频流信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultAudioInfo
         """
@@ -4959,7 +4959,7 @@ class MediaResultInfo(AbstractModel):
 
 
 class MediaSourceInfo(AbstractModel):
-    """编辑处理的媒体源
+    r"""编辑处理的媒体源
 
     """
 
@@ -4982,7 +4982,7 @@ Audio：音频
 
     @property
     def DownInfo(self):
-        """媒体源资源下载信息。
+        r"""媒体源资源下载信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         """
         return self._DownInfo
@@ -4993,7 +4993,7 @@ Audio：音频
 
     @property
     def Id(self):
-        """媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+        r"""媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
 ID只能包含字母、数字、下划线、中划线，长读不能超过128。
         :rtype: str
         """
@@ -5005,7 +5005,7 @@ ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 
     @property
     def Type(self):
-        """媒体源类型，具体类型如下：
+        r"""媒体源类型，具体类型如下：
 Video：视频
 Image：图片
 Audio：音频
@@ -5035,7 +5035,7 @@ Audio：音频
 
 
 class MediaTargetInfo(AbstractModel):
-    """目标媒体信息。
+    r"""目标媒体信息。
 
     """
 
@@ -5061,7 +5061,7 @@ index：序号；
 
     @property
     def FileName(self):
-        """目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
+        r"""目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
 
 注1：部分子服务支持占位符，形式为： {parameter}
 预设parameter有：
@@ -5076,7 +5076,7 @@ index：序号；
 
     @property
     def Format(self):
-        """媒体封装格式，最长5字符，具体格式支持根据子任务确定。
+        r"""媒体封装格式，最长5字符，具体格式支持根据子任务确定。
         :rtype: str
         """
         return self._Format
@@ -5087,7 +5087,7 @@ index：序号；
 
     @property
     def TargetVideoInfo(self):
-        """视频流信息。
+        r"""视频流信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TargetVideoInfo`
         """
         return self._TargetVideoInfo
@@ -5098,7 +5098,7 @@ index：序号；
 
     @property
     def ResultListSaveType(self):
-        """【不再使用】
+        r"""【不再使用】
         :rtype: str
         """
         return self._ResultListSaveType
@@ -5126,7 +5126,7 @@ index：序号；
 
 
 class MuxInfo(AbstractModel):
-    """流封装信息
+    r"""流封装信息
 
     """
 
@@ -5142,7 +5142,7 @@ class MuxInfo(AbstractModel):
 
     @property
     def DeleteStream(self):
-        """删除流，可选项：video,audio。
+        r"""删除流，可选项：video,audio。
         :rtype: str
         """
         return self._DeleteStream
@@ -5153,7 +5153,7 @@ class MuxInfo(AbstractModel):
 
     @property
     def FlvFlags(self):
-        """Flv 参数，目前支持add_keyframe_index
+        r"""Flv 参数，目前支持add_keyframe_index
         :rtype: str
         """
         return self._FlvFlags
@@ -5177,7 +5177,7 @@ class MuxInfo(AbstractModel):
 
 
 class OpeningEndingEditingInfo(AbstractModel):
-    """片头片尾识别任务参数信息
+    r"""片头片尾识别任务参数信息
 
     """
 
@@ -5193,7 +5193,7 @@ class OpeningEndingEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启片头片尾识别。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启片头片尾识别。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -5204,7 +5204,7 @@ class OpeningEndingEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -5228,7 +5228,7 @@ class OpeningEndingEditingInfo(AbstractModel):
 
 
 class OpeningEndingTaskResult(AbstractModel):
-    """片头片尾识别结果信息
+    r"""片头片尾识别结果信息
 
     """
 
@@ -5253,7 +5253,7 @@ class OpeningEndingTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -5265,7 +5265,7 @@ class OpeningEndingTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -5277,7 +5277,7 @@ class OpeningEndingTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -5288,7 +5288,7 @@ class OpeningEndingTaskResult(AbstractModel):
 
     @property
     def Item(self):
-        """片头片尾识别结果项。
+        r"""片头片尾识别结果项。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.OpeningEndingTaskResultItem`
         """
@@ -5317,7 +5317,7 @@ class OpeningEndingTaskResult(AbstractModel):
 
 
 class OpeningEndingTaskResultItem(AbstractModel):
-    """片头片尾识别结果项
+    r"""片头片尾识别结果项
 
     """
 
@@ -5339,7 +5339,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
 
     @property
     def OpeningTimeOffset(self):
-        """视频片头的结束时间点，单位：秒。
+        r"""视频片头的结束时间点，单位：秒。
         :rtype: float
         """
         return self._OpeningTimeOffset
@@ -5350,7 +5350,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
 
     @property
     def OpeningConfidence(self):
-        """片头识别置信度，取值范围是 0 到 100。
+        r"""片头识别置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._OpeningConfidence
@@ -5361,7 +5361,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
 
     @property
     def EndingTimeOffset(self):
-        """视频片尾的开始时间点，单位：秒。
+        r"""视频片尾的开始时间点，单位：秒。
         :rtype: float
         """
         return self._EndingTimeOffset
@@ -5372,7 +5372,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
 
     @property
     def EndingConfidence(self):
-        """片尾识别置信度，取值范围是 0 到 100。
+        r"""片尾识别置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._EndingConfidence
@@ -5398,7 +5398,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
 
 
 class PicMarkInfoItem(AbstractModel):
-    """图片水印信息
+    r"""图片水印信息
 
     """
 
@@ -5432,7 +5432,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def PosX(self):
-        """图片水印的X坐标。
+        r"""图片水印的X坐标。
         :rtype: int
         """
         return self._PosX
@@ -5443,7 +5443,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def PosY(self):
-        """图片水印的Y坐标 。
+        r"""图片水印的Y坐标 。
         :rtype: int
         """
         return self._PosY
@@ -5454,7 +5454,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def Path(self):
-        """图片水印路径,，如果不从Cos拉取水印，则必填
+        r"""图片水印路径,，如果不从Cos拉取水印，则必填
         :rtype: str
         """
         return self._Path
@@ -5465,7 +5465,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def CosInfo(self):
-        """图片水印的Cos 信息，从Cos上拉取图片水印时必填。
+        r"""图片水印的Cos 信息，从Cos上拉取图片水印时必填。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CosInfo`
         """
         return self._CosInfo
@@ -5476,7 +5476,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def Width(self):
-        """图片水印宽度，不填为图片原始宽度。
+        r"""图片水印宽度，不填为图片原始宽度。
         :rtype: int
         """
         return self._Width
@@ -5487,7 +5487,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def Height(self):
-        """图片水印高度，不填为图片原始高度。
+        r"""图片水印高度，不填为图片原始高度。
         :rtype: int
         """
         return self._Height
@@ -5498,7 +5498,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def StartTime(self):
-        """添加图片水印的开始时间,单位：ms。
+        r"""添加图片水印的开始时间,单位：ms。
         :rtype: int
         """
         return self._StartTime
@@ -5509,7 +5509,7 @@ class PicMarkInfoItem(AbstractModel):
 
     @property
     def EndTime(self):
-        """添加图片水印的结束时间,单位：ms。
+        r"""添加图片水印的结束时间,单位：ms。
         :rtype: int
         """
         return self._EndTime
@@ -5541,7 +5541,7 @@ class PicMarkInfoItem(AbstractModel):
 
 
 class QualityControlInfo(AbstractModel):
-    """媒体质检任务参数信息
+    r"""媒体质检任务参数信息
 
     """
 
@@ -5590,7 +5590,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Interval(self):
-        """对流进行截图的间隔ms，默认1000ms
+        r"""对流进行截图的间隔ms，默认1000ms
         :rtype: int
         """
         return self._Interval
@@ -5601,7 +5601,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def VideoShot(self):
-        """是否保存截图
+        r"""是否保存截图
         :rtype: bool
         """
         return self._VideoShot
@@ -5612,7 +5612,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Jitter(self):
-        """是否检测抖动重影
+        r"""是否检测抖动重影
         :rtype: bool
         """
         return self._Jitter
@@ -5623,7 +5623,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Blur(self):
-        """是否检测模糊
+        r"""是否检测模糊
         :rtype: bool
         """
         return self._Blur
@@ -5634,7 +5634,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def AbnormalLighting(self):
-        """是否检测低光照、过曝
+        r"""是否检测低光照、过曝
         :rtype: bool
         """
         return self._AbnormalLighting
@@ -5645,7 +5645,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def CrashScreen(self):
-        """是否检测花屏
+        r"""是否检测花屏
         :rtype: bool
         """
         return self._CrashScreen
@@ -5656,7 +5656,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def BlackWhiteEdge(self):
-        """是否检测黑边、白边、黑屏、白屏、绿屏
+        r"""是否检测黑边、白边、黑屏、白屏、绿屏
         :rtype: bool
         """
         return self._BlackWhiteEdge
@@ -5667,7 +5667,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Noise(self):
-        """是否检测噪点
+        r"""是否检测噪点
         :rtype: bool
         """
         return self._Noise
@@ -5678,7 +5678,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Mosaic(self):
-        """是否检测马赛克
+        r"""是否检测马赛克
         :rtype: bool
         """
         return self._Mosaic
@@ -5689,7 +5689,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def QRCode(self):
-        """是否检测二维码，包括小程序码、条形码
+        r"""是否检测二维码，包括小程序码、条形码
         :rtype: bool
         """
         return self._QRCode
@@ -5700,7 +5700,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def QualityEvaluation(self):
-        """是否开启画面质量评价
+        r"""是否开启画面质量评价
         :rtype: bool
         """
         return self._QualityEvaluation
@@ -5711,7 +5711,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def QualityEvalScore(self):
-        """画面质量评价过滤阈值，结果只返回低于阈值的时间段，默认60
+        r"""画面质量评价过滤阈值，结果只返回低于阈值的时间段，默认60
         :rtype: int
         """
         return self._QualityEvalScore
@@ -5722,7 +5722,7 @@ class QualityControlInfo(AbstractModel):
 
     @property
     def Voice(self):
-        """是否检测视频音频，包含静音、低音、爆音
+        r"""是否检测视频音频，包含静音、低音、爆音
         :rtype: bool
         """
         return self._Voice
@@ -5757,7 +5757,7 @@ class QualityControlInfo(AbstractModel):
 
 
 class QualityControlInfoTaskResult(AbstractModel):
-    """媒体质检结果信息
+    r"""媒体质检结果信息
 
     """
 
@@ -5843,7 +5843,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """质检任务 ID
+        r"""质检任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -5854,7 +5854,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """质检任务状态。
+        r"""质检任务状态。
 1：执行中；2：成功；3：失败
         :rtype: int
         """
@@ -5866,7 +5866,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def Progress(self):
-        """表示处理进度百分比
+        r"""表示处理进度百分比
         :rtype: int
         """
         return self._Progress
@@ -5877,7 +5877,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def UsedTime(self):
-        """处理时长(s)
+        r"""处理时长(s)
         :rtype: int
         """
         return self._UsedTime
@@ -5888,7 +5888,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def Duration(self):
-        """计费时长(s)
+        r"""计费时长(s)
         :rtype: int
         """
         return self._Duration
@@ -5899,7 +5899,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def NoAudio(self):
-        """为true时表示视频无音频轨
+        r"""为true时表示视频无音频轨
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5911,7 +5911,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def NoVideo(self):
-        """为true时表示视频无视频轨
+        r"""为true时表示视频无视频轨
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5923,7 +5923,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
-        """视频无参考质量打分，百分制
+        r"""视频无参考质量打分，百分制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5935,7 +5935,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def QualityEvaluationResults(self):
-        """视频画面无参考评分低于阈值的时间段
+        r"""视频画面无参考评分低于阈值的时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -5947,7 +5947,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def JitterResults(self):
-        """视频画面抖动时间段
+        r"""视频画面抖动时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -5959,7 +5959,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def BlurResults(self):
-        """视频画面模糊时间段
+        r"""视频画面模糊时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -5971,7 +5971,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def AbnormalLightingResults(self):
-        """视频画面低光、过曝时间段
+        r"""视频画面低光、过曝时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -5983,7 +5983,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def CrashScreenResults(self):
-        """视频画面花屏时间段
+        r"""视频画面花屏时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -5995,7 +5995,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def BlackWhiteEdgeResults(self):
-        """视频画面黑边、白边、黑屏、白屏、纯色屏时间段
+        r"""视频画面黑边、白边、黑屏、白屏、纯色屏时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -6007,7 +6007,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def NoiseResults(self):
-        """视频画面有噪点时间段
+        r"""视频画面有噪点时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -6019,7 +6019,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def MosaicResults(self):
-        """视频画面有马赛克时间段
+        r"""视频画面有马赛克时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -6031,7 +6031,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def QRCodeResults(self):
-        """视频画面有二维码的时间段，包括小程序码、条形码
+        r"""视频画面有二维码的时间段，包括小程序码、条形码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -6043,7 +6043,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def VoiceResults(self):
-        """视频音频异常时间段，包括静音、低音、爆音
+        r"""视频音频异常时间段，包括静音、低音、爆音
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResultItems
         """
@@ -6055,7 +6055,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """任务错误码
+        r"""任务错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6067,7 +6067,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """任务错误信息
+        r"""任务错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6160,7 +6160,7 @@ class QualityControlInfoTaskResult(AbstractModel):
 
 
 class QualityControlItem(AbstractModel):
-    """质检结果项
+    r"""质检结果项
 
     """
 
@@ -6184,7 +6184,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100
+        r"""置信度，取值范围是 0 到 100
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6196,7 +6196,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        """出现的起始时间戳，秒
+        r"""出现的起始时间戳，秒
         :rtype: float
         """
         return self._StartTimeOffset
@@ -6207,7 +6207,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        """出现的结束时间戳，秒
+        r"""出现的结束时间戳，秒
         :rtype: float
         """
         return self._EndTimeOffset
@@ -6218,7 +6218,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def AreaCoordsSet(self):
-        """区域坐标(px)，即左上角坐标、右下角坐标
+        r"""区域坐标(px)，即左上角坐标、右下角坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -6245,7 +6245,7 @@ class QualityControlItem(AbstractModel):
 
 
 class QualityControlResultItems(AbstractModel):
-    """质检结果项数组
+    r"""质检结果项数组
 
     """
 
@@ -6262,7 +6262,7 @@ class QualityControlResultItems(AbstractModel):
 
     @property
     def Id(self):
-        """异常类型
+        r"""异常类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6274,7 +6274,7 @@ class QualityControlResultItems(AbstractModel):
 
     @property
     def QualityControlItems(self):
-        """质检结果项
+        r"""质检结果项
         :rtype: list of QualityControlItem
         """
         return self._QualityControlItems
@@ -6303,7 +6303,7 @@ class QualityControlResultItems(AbstractModel):
 
 
 class RemoveReverb(AbstractModel):
-    """音频去除混响
+    r"""音频去除混响
 
     """
 
@@ -6316,7 +6316,7 @@ class RemoveReverb(AbstractModel):
 
     @property
     def Type(self):
-        """去混响类型，可选项：normal
+        r"""去混响类型，可选项：normal
         :rtype: str
         """
         return self._Type
@@ -6339,7 +6339,7 @@ class RemoveReverb(AbstractModel):
 
 
 class ResultAudioInfo(AbstractModel):
-    """结果媒体文件的视频流信息
+    r"""结果媒体文件的视频流信息
 
     """
 
@@ -6357,7 +6357,7 @@ class ResultAudioInfo(AbstractModel):
 
     @property
     def StreamId(self):
-        """流在媒体文件中的流ID
+        r"""流在媒体文件中的流ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6369,7 +6369,7 @@ class ResultAudioInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """流的时长，单位：毫秒
+        r"""流的时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6394,7 +6394,7 @@ class ResultAudioInfo(AbstractModel):
 
 
 class ResultVideoInfo(AbstractModel):
-    """结果媒体文件的视频流信息
+    r"""结果媒体文件的视频流信息
 
     """
 
@@ -6424,7 +6424,7 @@ class ResultVideoInfo(AbstractModel):
 
     @property
     def StreamId(self):
-        """流在媒体文件中的流ID
+        r"""流在媒体文件中的流ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6436,7 +6436,7 @@ class ResultVideoInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """流的时长，单位：毫秒
+        r"""流的时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6448,7 +6448,7 @@ class ResultVideoInfo(AbstractModel):
 
     @property
     def Width(self):
-        """画面宽度
+        r"""画面宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6460,7 +6460,7 @@ class ResultVideoInfo(AbstractModel):
 
     @property
     def Height(self):
-        """画面高度
+        r"""画面高度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6472,7 +6472,7 @@ class ResultVideoInfo(AbstractModel):
 
     @property
     def Fps(self):
-        """视频帧率，如果高于原始帧率，部分服务将无效。
+        r"""视频帧率，如果高于原始帧率，部分服务将无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6500,7 +6500,7 @@ class ResultVideoInfo(AbstractModel):
 
 
 class SaveInfo(AbstractModel):
-    """任务存储信息
+    r"""任务存储信息
 
     """
 
@@ -6521,7 +6521,7 @@ ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 
     @property
     def Type(self):
-        """存储类型，可选值： 
+        r"""存储类型，可选值： 
 1：CosInfo。
         :rtype: int
         """
@@ -6533,7 +6533,7 @@ ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 
     @property
     def CosInfo(self):
-        """Cos形式存储信息，当Type等于1时必选。
+        r"""Cos形式存储信息，当Type等于1时必选。
         :rtype: :class:`tencentcloud.ie.v20200304.models.CosInfo`
         """
         return self._CosInfo
@@ -6544,7 +6544,7 @@ ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 
     @property
     def Id(self):
-        """存储信息ID标记，用于多个输出场景。部分任务支持多输出时，一般要求必选。
+        r"""存储信息ID标记，用于多个输出场景。部分任务支持多输出时，一般要求必选。
 ID只能包含字母、数字、下划线、中划线，长读不能超过128。
         :rtype: str
         """
@@ -6572,7 +6572,7 @@ ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 
 
 class ScratchRepair(AbstractModel):
-    """去划痕参数
+    r"""去划痕参数
 
     """
 
@@ -6588,7 +6588,7 @@ class ScratchRepair(AbstractModel):
 
     @property
     def Type(self):
-        """去划痕方式，取值：normal。
+        r"""去划痕方式，取值：normal。
         :rtype: str
         """
         return self._Type
@@ -6599,7 +6599,7 @@ class ScratchRepair(AbstractModel):
 
     @property
     def Ratio(self):
-        """去划痕强度， 可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
+        r"""去划痕强度， 可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :rtype: float
         """
         return self._Ratio
@@ -6623,7 +6623,7 @@ class ScratchRepair(AbstractModel):
 
 
 class SectionTime(AbstractModel):
-    """时间区间。
+    r"""时间区间。
 
     """
 
@@ -6639,7 +6639,7 @@ class SectionTime(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间点，单位ms
+        r"""开始时间点，单位ms
         :rtype: int
         """
         return self._StartTime
@@ -6650,7 +6650,7 @@ class SectionTime(AbstractModel):
 
     @property
     def Duration(self):
-        """时间区间时长，单位ms
+        r"""时间区间时长，单位ms
         :rtype: int
         """
         return self._Duration
@@ -6674,7 +6674,7 @@ class SectionTime(AbstractModel):
 
 
 class SegmentInfo(AbstractModel):
-    """输出文件切片信息
+    r"""输出文件切片信息
 
     """
 
@@ -6695,7 +6695,7 @@ class SegmentInfo(AbstractModel):
 
     @property
     def FragmentTime(self):
-        """每个切片平均时长，默认10s。
+        r"""每个切片平均时长，默认10s。
         :rtype: int
         """
         return self._FragmentTime
@@ -6706,7 +6706,7 @@ class SegmentInfo(AbstractModel):
 
     @property
     def SegmentType(self):
-        """切片类型，可选项：hls，不填时默认hls。
+        r"""切片类型，可选项：hls，不填时默认hls。
         :rtype: str
         """
         return self._SegmentType
@@ -6717,7 +6717,7 @@ class SegmentInfo(AbstractModel):
 
     @property
     def FragmentName(self):
-        """切片文件名字。注意：
+        r"""切片文件名字。注意：
 1.不填切片文件名时，默认按照按照如下格式命名：m3u8文件名{order}。
 2.若填了切片文件名字，则会按照如下格式命名：用户指定文件名{order}。
         :rtype: str
@@ -6744,7 +6744,7 @@ class SegmentInfo(AbstractModel):
 
 
 class Sharp(AbstractModel):
-    """细节增强参数
+    r"""细节增强参数
 
     """
 
@@ -6760,7 +6760,7 @@ class Sharp(AbstractModel):
 
     @property
     def Type(self):
-        """细节增强方式,取值：normal。
+        r"""细节增强方式,取值：normal。
         :rtype: str
         """
         return self._Type
@@ -6771,7 +6771,7 @@ class Sharp(AbstractModel):
 
     @property
     def Ratio(self):
-        """细节增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
+        r"""细节增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :rtype: float
         """
         return self._Ratio
@@ -6795,7 +6795,7 @@ class Sharp(AbstractModel):
 
 
 class SpriteImageInfo(AbstractModel):
-    """雪碧图参数信息
+    r"""雪碧图参数信息
     注意：雪碧图大图整体的宽和高都不能大于 15000 像素。
 
     """
@@ -6839,7 +6839,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def RowCount(self):
-        """表示雪碧图行数，默认：10。
+        r"""表示雪碧图行数，默认：10。
         :rtype: int
         """
         return self._RowCount
@@ -6850,7 +6850,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def ColumnCount(self):
-        """表示雪碧图列数，默认：10。
+        r"""表示雪碧图列数，默认：10。
         :rtype: int
         """
         return self._ColumnCount
@@ -6861,7 +6861,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def MarginTop(self):
-        """第一行元素与顶部像素距离，默认：0。
+        r"""第一行元素与顶部像素距离，默认：0。
         :rtype: int
         """
         return self._MarginTop
@@ -6872,7 +6872,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def MarginBottom(self):
-        """最后一行元素与底部像素距离，默认：0。
+        r"""最后一行元素与底部像素距离，默认：0。
         :rtype: int
         """
         return self._MarginBottom
@@ -6883,7 +6883,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def MarginLeft(self):
-        """最左一行元素与左边像素距离，默认：0。
+        r"""最左一行元素与左边像素距离，默认：0。
         :rtype: int
         """
         return self._MarginLeft
@@ -6894,7 +6894,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def MarginRight(self):
-        """最右一行元素与右边像素距离，默认：0。
+        r"""最右一行元素与右边像素距离，默认：0。
         :rtype: int
         """
         return self._MarginRight
@@ -6905,7 +6905,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def PaddingTop(self):
-        """小图与元素顶部像素距离，默认：0。
+        r"""小图与元素顶部像素距离，默认：0。
         :rtype: int
         """
         return self._PaddingTop
@@ -6916,7 +6916,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def PaddingBottom(self):
-        """小图与元素底部像素距离，默认：0。
+        r"""小图与元素底部像素距离，默认：0。
         :rtype: int
         """
         return self._PaddingBottom
@@ -6927,7 +6927,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def PaddingLeft(self):
-        """小图与元素左边像素距离，默认：0。
+        r"""小图与元素左边像素距离，默认：0。
         :rtype: int
         """
         return self._PaddingLeft
@@ -6938,7 +6938,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def PaddingRight(self):
-        """小图与元素右边像素距离，默认：0。
+        r"""小图与元素右边像素距离，默认：0。
         :rtype: int
         """
         return self._PaddingRight
@@ -6949,7 +6949,7 @@ class SpriteImageInfo(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """背景颜色，格式：#RRGGBB，默认：#FFFFFF。
+        r"""背景颜色，格式：#RRGGBB，默认：#FFFFFF。
         :rtype: str
         """
         return self._BackgroundColor
@@ -6982,7 +6982,7 @@ class SpriteImageInfo(AbstractModel):
 
 
 class StopMediaProcessTaskRequest(AbstractModel):
-    """StopMediaProcessTask请求参数结构体
+    r"""StopMediaProcessTask请求参数结构体
 
     """
 
@@ -6995,7 +6995,7 @@ class StopMediaProcessTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """编辑处理任务ID。
+        r"""编辑处理任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -7018,7 +7018,7 @@ class StopMediaProcessTaskRequest(AbstractModel):
 
 
 class StopMediaProcessTaskResponse(AbstractModel):
-    """StopMediaProcessTask返回参数结构体
+    r"""StopMediaProcessTask返回参数结构体
 
     """
 
@@ -7031,7 +7031,7 @@ class StopMediaProcessTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7046,7 +7046,7 @@ class StopMediaProcessTaskResponse(AbstractModel):
 
 
 class StopMediaQualityRestorationTaskRequest(AbstractModel):
-    """StopMediaQualityRestorationTask请求参数结构体
+    r"""StopMediaQualityRestorationTask请求参数结构体
 
     """
 
@@ -7059,7 +7059,7 @@ class StopMediaQualityRestorationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """要删除的画质重生任务ID。
+        r"""要删除的画质重生任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -7082,7 +7082,7 @@ class StopMediaQualityRestorationTaskRequest(AbstractModel):
 
 
 class StopMediaQualityRestorationTaskResponse(AbstractModel):
-    """StopMediaQualityRestorationTask返回参数结构体
+    r"""StopMediaQualityRestorationTask返回参数结构体
 
     """
 
@@ -7095,7 +7095,7 @@ class StopMediaQualityRestorationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7110,7 +7110,7 @@ class StopMediaQualityRestorationTaskResponse(AbstractModel):
 
 
 class StripEditingInfo(AbstractModel):
-    """智能拆条任务参数信息
+    r"""智能拆条任务参数信息
 
     """
 
@@ -7126,7 +7126,7 @@ class StripEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启智能拆条。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启智能拆条。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -7137,7 +7137,7 @@ class StripEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -7161,7 +7161,7 @@ class StripEditingInfo(AbstractModel):
 
 
 class StripTaskResult(AbstractModel):
-    """智能拆条结果信息
+    r"""智能拆条结果信息
 
     """
 
@@ -7186,7 +7186,7 @@ class StripTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -7198,7 +7198,7 @@ class StripTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -7210,7 +7210,7 @@ class StripTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -7221,7 +7221,7 @@ class StripTaskResult(AbstractModel):
 
     @property
     def ItemSet(self):
-        """智能拆条结果集。
+        r"""智能拆条结果集。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StripTaskResultItem
         """
@@ -7253,7 +7253,7 @@ class StripTaskResult(AbstractModel):
 
 
 class StripTaskResultItem(AbstractModel):
-    """智能拆条结果项
+    r"""智能拆条结果项
 
     """
 
@@ -7278,7 +7278,7 @@ class StripTaskResultItem(AbstractModel):
 
     @property
     def SegmentUrl(self):
-        """视频拆条片段地址。
+        r"""视频拆条片段地址。
         :rtype: str
         """
         return self._SegmentUrl
@@ -7289,7 +7289,7 @@ class StripTaskResultItem(AbstractModel):
 
     @property
     def CovImgUrl(self):
-        """拆条封面图片地址。
+        r"""拆条封面图片地址。
         :rtype: str
         """
         return self._CovImgUrl
@@ -7300,7 +7300,7 @@ class StripTaskResultItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -7311,7 +7311,7 @@ class StripTaskResultItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        """拆条片段起始的偏移时间，单位：秒。
+        r"""拆条片段起始的偏移时间，单位：秒。
         :rtype: float
         """
         return self._StartTimeOffset
@@ -7322,7 +7322,7 @@ class StripTaskResultItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        """拆条片段终止的偏移时间，单位：秒。
+        r"""拆条片段终止的偏移时间，单位：秒。
         :rtype: float
         """
         return self._EndTimeOffset
@@ -7349,7 +7349,7 @@ class StripTaskResultItem(AbstractModel):
 
 
 class SubTaskResultItem(AbstractModel):
-    """画质重生子任务结果
+    r"""画质重生子任务结果
 
     """
 
@@ -7388,7 +7388,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def TaskName(self):
-        """子任务名称。
+        r"""子任务名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7400,7 +7400,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def StatusCode(self):
-        """子任务状态。
+        r"""子任务状态。
 0：成功；
 1：执行中；
 其他值：失败。
@@ -7414,7 +7414,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def StatusMsg(self):
-        """子任务状态描述。
+        r"""子任务状态描述。
         :rtype: str
         """
         return self._StatusMsg
@@ -7425,7 +7425,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def ProgressRate(self):
-        """子任务进度。
+        r"""子任务进度。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7437,7 +7437,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """画质重生处理后文件的下载地址。
+        r"""画质重生处理后文件的下载地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7449,7 +7449,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def Md5(self):
-        """画质重生处理后文件的MD5。
+        r"""画质重生处理后文件的MD5。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7461,7 +7461,7 @@ class SubTaskResultItem(AbstractModel):
 
     @property
     def FileInfo(self):
-        """画质重生处理后文件的详细信息。
+        r"""画质重生处理后文件的详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.FileInfo`
         """
@@ -7493,7 +7493,7 @@ class SubTaskResultItem(AbstractModel):
 
 
 class SubTaskTranscodeInfo(AbstractModel):
-    """画质重生子任务参数信息
+    r"""画质重生子任务参数信息
 
     """
 
@@ -7521,7 +7521,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        """子任务名称。
+        r"""子任务名称。
         :rtype: str
         """
         return self._TaskName
@@ -7532,7 +7532,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def TargetInfo(self):
-        """目标文件信息。
+        r"""目标文件信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.TargetInfo`
         """
         return self._TargetInfo
@@ -7543,7 +7543,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def EditInfo(self):
-        """视频剪辑信息。注意：如果填写了EditInfo，则VideoInfo和AudioInfo必填
+        r"""视频剪辑信息。注意：如果填写了EditInfo，则VideoInfo和AudioInfo必填
         :rtype: :class:`tencentcloud.ie.v20200304.models.EditInfo`
         """
         return self._EditInfo
@@ -7554,7 +7554,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def VideoInfo(self):
-        """视频转码信息，不填保持和源文件一致。
+        r"""视频转码信息，不填保持和源文件一致。
         :rtype: :class:`tencentcloud.ie.v20200304.models.VideoInfo`
         """
         return self._VideoInfo
@@ -7565,7 +7565,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def AudioInfo(self):
-        """音频转码信息，不填保持和源文件一致。
+        r"""音频转码信息，不填保持和源文件一致。
         :rtype: :class:`tencentcloud.ie.v20200304.models.AudioInfo`
         """
         return self._AudioInfo
@@ -7576,7 +7576,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
     @property
     def MuxInfo(self):
-        """指定封装信息。
+        r"""指定封装信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MuxInfo`
         """
         return self._MuxInfo
@@ -7614,7 +7614,7 @@ class SubTaskTranscodeInfo(AbstractModel):
 
 
 class SubtitleItem(AbstractModel):
-    """语音字幕识别项
+    r"""语音字幕识别项
 
     """
 
@@ -7654,7 +7654,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def Id(self):
-        """语音识别结果
+        r"""语音识别结果
         :rtype: str
         """
         return self._Id
@@ -7665,7 +7665,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def Zh(self):
-        """中文翻译结果
+        r"""中文翻译结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7677,7 +7677,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def En(self):
-        """英文翻译结果
+        r"""英文翻译结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7689,7 +7689,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def StartPts(self):
-        """语句起始时间戳PTS(ms)
+        r"""语句起始时间戳PTS(ms)
         :rtype: int
         """
         return self._StartPts
@@ -7700,7 +7700,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def EndPts(self):
-        """语句结束时间戳PTS(ms)
+        r"""语句结束时间戳PTS(ms)
         :rtype: int
         """
         return self._EndPts
@@ -7711,7 +7711,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def Period(self):
-        """字符串形式的起始结束时间
+        r"""字符串形式的起始结束时间
         :rtype: str
         """
         return self._Period
@@ -7722,7 +7722,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """结果的置信度（百分制）
+        r"""结果的置信度（百分制）
         :rtype: int
         """
         return self._Confidence
@@ -7733,7 +7733,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def EndFlag(self):
-        """当前语句是否结束
+        r"""当前语句是否结束
         :rtype: bool
         """
         return self._EndFlag
@@ -7744,7 +7744,7 @@ class SubtitleItem(AbstractModel):
 
     @property
     def PuncEndTs(self):
-        """语句分割时间戳
+        r"""语句分割时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7776,7 +7776,7 @@ class SubtitleItem(AbstractModel):
 
 
 class SubtitleRec(AbstractModel):
-    """语音字幕任务参数
+    r"""语音字幕任务参数
 
     """
 
@@ -7796,7 +7796,7 @@ en：英文
 
     @property
     def AsrDst(self):
-        """语音识别：
+        r"""语音识别：
 zh：中文
 en：英文
         :rtype: str
@@ -7809,7 +7809,7 @@ en：英文
 
     @property
     def TransDst(self):
-        """翻译识别：
+        r"""翻译识别：
 zh：中文
 en：英文
         :rtype: str
@@ -7835,7 +7835,7 @@ en：英文
 
 
 class SubtitleResult(AbstractModel):
-    """语音字幕识别结果
+    r"""语音字幕识别结果
 
     """
 
@@ -7848,7 +7848,7 @@ class SubtitleResult(AbstractModel):
 
     @property
     def SubtitleItems(self):
-        """语音字幕数组
+        r"""语音字幕数组
         :rtype: list of SubtitleItem
         """
         return self._SubtitleItems
@@ -7876,7 +7876,7 @@ class SubtitleResult(AbstractModel):
 
 
 class TagEditingInfo(AbstractModel):
-    """视频标签识别任务参数信息
+    r"""视频标签识别任务参数信息
 
     """
 
@@ -7892,7 +7892,7 @@ class TagEditingInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
+        r"""是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
         :rtype: int
         """
         return self._Switch
@@ -7903,7 +7903,7 @@ class TagEditingInfo(AbstractModel):
 
     @property
     def CustomInfo(self):
-        """额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
+        r"""额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
         :rtype: str
         """
         return self._CustomInfo
@@ -7927,7 +7927,7 @@ class TagEditingInfo(AbstractModel):
 
 
 class TagItem(AbstractModel):
-    """标签项
+    r"""标签项
 
     """
 
@@ -7951,7 +7951,7 @@ class TagItem(AbstractModel):
 
     @property
     def Id(self):
-        """标签内容
+        r"""标签内容
         :rtype: str
         """
         return self._Id
@@ -7962,7 +7962,7 @@ class TagItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """结果的置信度（百分制）
+        r"""结果的置信度（百分制）
         :rtype: int
         """
         return self._Confidence
@@ -7973,7 +7973,7 @@ class TagItem(AbstractModel):
 
     @property
     def Categorys(self):
-        """分级数组
+        r"""分级数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7985,7 +7985,7 @@ class TagItem(AbstractModel):
 
     @property
     def Ext(self):
-        """标签备注
+        r"""标签备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8012,7 +8012,7 @@ class TagItem(AbstractModel):
 
 
 class TagTaskResult(AbstractModel):
-    """视频标签识别结果信息
+    r"""视频标签识别结果信息
 
     """
 
@@ -8037,7 +8037,7 @@ class TagTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """编辑任务状态。 
+        r"""编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :rtype: int
         """
@@ -8049,7 +8049,7 @@ class TagTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        """编辑任务失败错误码。 
+        r"""编辑任务失败错误码。 
 0：成功；其他值：失败。
         :rtype: int
         """
@@ -8061,7 +8061,7 @@ class TagTaskResult(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """编辑任务失败错误描述。
+        r"""编辑任务失败错误描述。
         :rtype: str
         """
         return self._ErrMsg
@@ -8072,7 +8072,7 @@ class TagTaskResult(AbstractModel):
 
     @property
     def ItemSet(self):
-        """视频标签识别结果集。
+        r"""视频标签识别结果集。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagTaskResultItem
         """
@@ -8104,7 +8104,7 @@ class TagTaskResult(AbstractModel):
 
 
 class TagTaskResultItem(AbstractModel):
-    """视频标签识别结果项
+    r"""视频标签识别结果项
 
     """
 
@@ -8120,7 +8120,7 @@ class TagTaskResultItem(AbstractModel):
 
     @property
     def Tag(self):
-        """标签名称。
+        r"""标签名称。
         :rtype: str
         """
         return self._Tag
@@ -8131,7 +8131,7 @@ class TagTaskResultItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值范围是 0 到 100。
+        r"""置信度，取值范围是 0 到 100。
         :rtype: float
         """
         return self._Confidence
@@ -8155,7 +8155,7 @@ class TagTaskResultItem(AbstractModel):
 
 
 class TargetInfo(AbstractModel):
-    """输出文件信息
+    r"""输出文件信息
 
     """
 
@@ -8171,7 +8171,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """目标文件名
+        r"""目标文件名
         :rtype: str
         """
         return self._FileName
@@ -8182,7 +8182,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def SegmentInfo(self):
-        """目标文件切片信息
+        r"""目标文件切片信息
         :rtype: :class:`tencentcloud.ie.v20200304.models.SegmentInfo`
         """
         return self._SegmentInfo
@@ -8208,7 +8208,7 @@ class TargetInfo(AbstractModel):
 
 
 class TargetVideoInfo(AbstractModel):
-    """目标视频信息。
+    r"""目标视频信息。
 
     """
 
@@ -8227,7 +8227,7 @@ class TargetVideoInfo(AbstractModel):
 
     @property
     def Width(self):
-        """视频宽度，单位像素，一般要求是偶数，否则会向下对齐。
+        r"""视频宽度，单位像素，一般要求是偶数，否则会向下对齐。
         :rtype: int
         """
         return self._Width
@@ -8238,7 +8238,7 @@ class TargetVideoInfo(AbstractModel):
 
     @property
     def Height(self):
-        """视频高度，单位像素，一般要求是偶数，否则会向下对齐。
+        r"""视频高度，单位像素，一般要求是偶数，否则会向下对齐。
         :rtype: int
         """
         return self._Height
@@ -8249,7 +8249,7 @@ class TargetVideoInfo(AbstractModel):
 
     @property
     def FrameRate(self):
-        """视频帧率，范围在1到120之间
+        r"""视频帧率，范围在1到120之间
         :rtype: int
         """
         return self._FrameRate
@@ -8274,7 +8274,7 @@ class TargetVideoInfo(AbstractModel):
 
 
 class TaskResultFile(AbstractModel):
-    """任务结果文件信息
+    r"""任务结果文件信息
 
     """
 
@@ -8300,7 +8300,7 @@ class TaskResultFile(AbstractModel):
 
     @property
     def Url(self):
-        """文件链接。
+        r"""文件链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8312,7 +8312,7 @@ class TaskResultFile(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小，部分任务支持，单位：字节
+        r"""文件大小，部分任务支持，单位：字节
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8324,7 +8324,7 @@ class TaskResultFile(AbstractModel):
 
     @property
     def MediaInfo(self):
-        """媒体信息，对于媒体文件，部分任务支持返回
+        r"""媒体信息，对于媒体文件，部分任务支持返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ie.v20200304.models.MediaResultInfo`
         """
@@ -8336,7 +8336,7 @@ class TaskResultFile(AbstractModel):
 
     @property
     def Md5(self):
-        """文件对应的md5。
+        r"""文件对应的md5。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8365,7 +8365,7 @@ class TaskResultFile(AbstractModel):
 
 
 class TextMarkInfoItem(AbstractModel):
-    """画质重生子任务文字水印信息
+    r"""画质重生子任务文字水印信息
 
     """
 
@@ -8396,7 +8396,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def Text(self):
-        """文字内容。
+        r"""文字内容。
         :rtype: str
         """
         return self._Text
@@ -8407,7 +8407,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def PosX(self):
-        """文字水印X坐标。
+        r"""文字水印X坐标。
         :rtype: int
         """
         return self._PosX
@@ -8418,7 +8418,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def PosY(self):
-        """文字水印Y坐标。
+        r"""文字水印Y坐标。
         :rtype: int
         """
         return self._PosY
@@ -8429,7 +8429,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def FontSize(self):
-        """文字大小
+        r"""文字大小
         :rtype: int
         """
         return self._FontSize
@@ -8440,7 +8440,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def FontFile(self):
-        """字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
+        r"""字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
         :rtype: str
         """
         return self._FontFile
@@ -8451,7 +8451,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def FontColor(self):
-        """字体颜色，颜色见附录，不填默认black。
+        r"""字体颜色，颜色见附录，不填默认black。
         :rtype: str
         """
         return self._FontColor
@@ -8462,7 +8462,7 @@ class TextMarkInfoItem(AbstractModel):
 
     @property
     def FontAlpha(self):
-        """文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
+        r"""文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
         :rtype: float
         """
         return self._FontAlpha
@@ -8491,7 +8491,7 @@ class TextMarkInfoItem(AbstractModel):
 
 
 class UrlInfo(AbstractModel):
-    """任务视频Url形式下载信息。
+    r"""任务视频Url形式下载信息。
 
     """
 
@@ -8514,7 +8514,7 @@ class UrlInfo(AbstractModel):
 
     @property
     def Url(self):
-        """视频 URL。
+        r"""视频 URL。
 注意：编辑理解仅支持mp4、flv等格式的点播文件，不支持hls；
         :rtype: str
         """
@@ -8526,7 +8526,7 @@ class UrlInfo(AbstractModel):
 
     @property
     def Format(self):
-        """视频地址格式，可选值： 
+        r"""视频地址格式，可选值： 
 0：音视频 ;
 1：直播流。 
 默认为0。其他非0非1值默认为0。画质重生任务只支持0。
@@ -8540,7 +8540,7 @@ class UrlInfo(AbstractModel):
 
     @property
     def Host(self):
-        """【不再支持】指定请求资源时，HTTP头部host的值。
+        r"""【不再支持】指定请求资源时，HTTP头部host的值。
         :rtype: str
         """
         return self._Host
@@ -8565,7 +8565,7 @@ class UrlInfo(AbstractModel):
 
 
 class VideoEnhance(AbstractModel):
-    """画质增强参数信息
+    r"""画质增强参数信息
 
     """
 
@@ -8610,7 +8610,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def ArtifactReduction(self):
-        """去编码毛刺、伪影参数。
+        r"""去编码毛刺、伪影参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.ArtifactReduction`
         """
         return self._ArtifactReduction
@@ -8621,7 +8621,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def Denoising(self):
-        """去噪声参数。
+        r"""去噪声参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.Denoising`
         """
         return self._Denoising
@@ -8632,7 +8632,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def ColorEnhance(self):
-        """颜色增强参数。
+        r"""颜色增强参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.ColorEnhance`
         """
         return self._ColorEnhance
@@ -8643,7 +8643,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def Sharp(self):
-        """细节增强参数。
+        r"""细节增强参数。
         :rtype: :class:`tencentcloud.ie.v20200304.models.Sharp`
         """
         return self._Sharp
@@ -8654,7 +8654,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def WdSuperResolution(self):
-        """超分参数，可选项：2，目前仅支持2倍超分。
+        r"""超分参数，可选项：2，目前仅支持2倍超分。
 注意：此参数已经弃用，超分可以使用VideoSuperResolution参数
         :rtype: int
         """
@@ -8666,7 +8666,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def FaceProtect(self):
-        """人脸保护信息。
+        r"""人脸保护信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.FaceProtect`
         """
         return self._FaceProtect
@@ -8677,7 +8677,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def WdFps(self):
-        """插帧，取值范围：[0, 60]，单位：Hz。
+        r"""插帧，取值范围：[0, 60]，单位：Hz。
 注意：当取值为 0，表示帧率和原始视频保持一致。
         :rtype: int
         """
@@ -8689,7 +8689,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def ScratchRepair(self):
-        """去划痕参数
+        r"""去划痕参数
         :rtype: :class:`tencentcloud.ie.v20200304.models.ScratchRepair`
         """
         return self._ScratchRepair
@@ -8700,7 +8700,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def LowLightEnhance(self):
-        """低光照增强参数
+        r"""低光照增强参数
         :rtype: :class:`tencentcloud.ie.v20200304.models.LowLightEnhance`
         """
         return self._LowLightEnhance
@@ -8711,7 +8711,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def VideoSuperResolution(self):
-        """视频超分参数
+        r"""视频超分参数
         :rtype: :class:`tencentcloud.ie.v20200304.models.VideoSuperResolution`
         """
         return self._VideoSuperResolution
@@ -8722,7 +8722,7 @@ class VideoEnhance(AbstractModel):
 
     @property
     def VideoRepair(self):
-        """视频画质修复参数
+        r"""视频画质修复参数
         :rtype: :class:`tencentcloud.ie.v20200304.models.VideoRepair`
         """
         return self._VideoRepair
@@ -8773,7 +8773,7 @@ class VideoEnhance(AbstractModel):
 
 
 class VideoInfo(AbstractModel):
-    """视频转码信息
+    r"""视频转码信息
 
     """
 
@@ -8855,7 +8855,7 @@ hlg。
 
     @property
     def Fps(self):
-        """视频帧率，取值范围：[0, 60]，单位：Hz。
+        r"""视频帧率，取值范围：[0, 60]，单位：Hz。
 注意：当取值为 0，表示帧率和原始视频保持一致。
         :rtype: int
         """
@@ -8867,7 +8867,7 @@ hlg。
 
     @property
     def Width(self):
-        """宽度，取值范围：0 和 [128, 4096]
+        r"""宽度，取值范围：0 和 [128, 4096]
 注意：
 当 Width、Height 均为 0，则分辨率同源；
 当 Width 为 0，Height 非 0，则 Width 按比例缩放；
@@ -8883,7 +8883,7 @@ hlg。
 
     @property
     def Height(self):
-        """高度，取值范围：0 和 [128, 4096]
+        r"""高度，取值范围：0 和 [128, 4096]
 注意：
 当 Width、Height 均为 0，则分辨率同源；
 当 Width 为 0，Height 非 0，则 Width 按比例缩放；
@@ -8899,7 +8899,7 @@ hlg。
 
     @property
     def LongSide(self):
-        """长边分辨率，取值范围：0 和 [128, 4096]
+        r"""长边分辨率，取值范围：0 和 [128, 4096]
 注意：
 当 LongSide、ShortSide 均为 0，则分辨率按照Width，Height；
 当 LongSide 为 0，ShortSide 非 0，则 LongSide 按比例缩放；
@@ -8916,7 +8916,7 @@ hlg。
 
     @property
     def ShortSide(self):
-        """短边分辨率，取值范围：0 和 [128, 4096]
+        r"""短边分辨率，取值范围：0 和 [128, 4096]
 注意：
 当 LongSide、ShortSide 均为 0，则分辨率按照Width，Height；
 当 LongSide 为 0，ShortSide 非 0，则 LongSide 按比例缩放；
@@ -8933,7 +8933,7 @@ hlg。
 
     @property
     def Bitrate(self):
-        """视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。当取值为 0，表示视频码率和原始视频保持一致。
+        r"""视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。当取值为 0，表示视频码率和原始视频保持一致。
         :rtype: int
         """
         return self._Bitrate
@@ -8944,7 +8944,7 @@ hlg。
 
     @property
     def Gop(self):
-        """固定I帧之间，视频帧数量，取值范围： [25, 2500]，如果不填，使用编码默认最优序列。
+        r"""固定I帧之间，视频帧数量，取值范围： [25, 2500]，如果不填，使用编码默认最优序列。
         :rtype: int
         """
         return self._Gop
@@ -8955,7 +8955,7 @@ hlg。
 
     @property
     def VideoCodec(self):
-        """编码器支持选项，可选值：
+        r"""编码器支持选项，可选值：
 h264,
 h265,
 av1。
@@ -8970,7 +8970,7 @@ av1。
 
     @property
     def PicMarkInfo(self):
-        """图片水印。
+        r"""图片水印。
         :rtype: list of PicMarkInfoItem
         """
         return self._PicMarkInfo
@@ -8981,7 +8981,7 @@ av1。
 
     @property
     def DarInfo(self):
-        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。
+        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。
         :rtype: :class:`tencentcloud.ie.v20200304.models.DarInfo`
         """
         return self._DarInfo
@@ -8992,7 +8992,7 @@ av1。
 
     @property
     def Hdr(self):
-        """支持hdr,可选项：
+        r"""支持hdr,可选项：
 hdr10,
 hlg。
 此时，VideoCodec会强制设置为h265, 编码位深为10
@@ -9006,7 +9006,7 @@ hlg。
 
     @property
     def VideoEnhance(self):
-        """画质增强参数信息。
+        r"""画质增强参数信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.VideoEnhance`
         """
         return self._VideoEnhance
@@ -9017,7 +9017,7 @@ hlg。
 
     @property
     def HiddenMarkInfo(self):
-        """数字水印参数信息。
+        r"""数字水印参数信息。
         :rtype: :class:`tencentcloud.ie.v20200304.models.HiddenMarkInfo`
         """
         return self._HiddenMarkInfo
@@ -9028,7 +9028,7 @@ hlg。
 
     @property
     def TextMarkInfo(self):
-        """文本水印参数信息。
+        r"""文本水印参数信息。
         :rtype: list of TextMarkInfoItem
         """
         return self._TextMarkInfo
@@ -9080,7 +9080,7 @@ hlg。
 
 
 class VideoInfoResultItem(AbstractModel):
-    """任务结束后生成的文件视频信息
+    r"""任务结束后生成的文件视频信息
 
     """
 
@@ -9125,7 +9125,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Stream(self):
-        """视频流的流id。
+        r"""视频流的流id。
         :rtype: int
         """
         return self._Stream
@@ -9136,7 +9136,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Width(self):
-        """视频宽度。
+        r"""视频宽度。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9148,7 +9148,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Height(self):
-        """视频高度。
+        r"""视频高度。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9160,7 +9160,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        """视频码率，单位：bps。
+        r"""视频码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9172,7 +9172,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Fps(self):
-        """视频帧率，用分数格式表示，如：25/1, 99/32等等。
+        r"""视频帧率，用分数格式表示，如：25/1, 99/32等等。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9184,7 +9184,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Codec(self):
-        """编码格式，如h264,h265等等 。
+        r"""编码格式，如h264,h265等等 。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9196,7 +9196,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Rotate(self):
-        """播放旋转角度，可选值0-360。
+        r"""播放旋转角度，可选值0-360。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9208,7 +9208,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def Duration(self):
-        """视频时长，单位：ms 。
+        r"""视频时长，单位：ms 。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9220,7 +9220,7 @@ class VideoInfoResultItem(AbstractModel):
 
     @property
     def PixFormat(self):
-        """颜色空间，如yuv420p，yuv444p等等。
+        r"""颜色空间，如yuv420p，yuv444p等等。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9252,7 +9252,7 @@ class VideoInfoResultItem(AbstractModel):
 
 
 class VideoRepair(AbstractModel):
-    """综合画质修复，包括：去噪，去毛刺，细节增强，主观画质提升。
+    r"""综合画质修复，包括：去噪，去毛刺，细节增强，主观画质提升。
 
     """
 
@@ -9266,7 +9266,7 @@ class VideoRepair(AbstractModel):
 
     @property
     def Type(self):
-        """画质修复类型，可选值：weak，normal，strong;
+        r"""画质修复类型，可选值：weak，normal，strong;
 默认值: weak
         :rtype: str
         """
@@ -9290,7 +9290,7 @@ class VideoRepair(AbstractModel):
 
 
 class VideoSuperResolution(AbstractModel):
-    """视频超分
+    r"""视频超分
 
     """
 
@@ -9310,7 +9310,7 @@ hq: 针对高清晰度视频超分;
 
     @property
     def Type(self):
-        """超分视频类型：可选值：lq,hq
+        r"""超分视频类型：可选值：lq,hq
 lq: 针对低清晰度有较多噪声视频的超分;
 hq: 针对高清晰度视频超分;
 默认取值：lq。
@@ -9324,7 +9324,7 @@ hq: 针对高清晰度视频超分;
 
     @property
     def Size(self):
-        """超分倍数，可选值：2。
+        r"""超分倍数，可选值：2。
 注意：当前只支持两倍超分。
         :rtype: int
         """

@@ -27,7 +27,7 @@ class ApeClient(AbstractClient):
 
 
     def BatchDescribeOrderCertificate(self, request):
-        """批量获取授权书下载地址
+        r"""批量获取授权书下载地址
 
         :param request: Request instance for BatchDescribeOrderCertificate.
         :type request: :class:`tencentcloud.ape.v20200513.models.BatchDescribeOrderCertificateRequest`
@@ -50,7 +50,7 @@ class ApeClient(AbstractClient):
 
 
     def BatchDescribeOrderImage(self, request):
-        """批量获取图片下载地址
+        r"""批量获取图片下载地址
 
         :param request: Request instance for BatchDescribeOrderImage.
         :type request: :class:`tencentcloud.ape.v20200513.models.BatchDescribeOrderImageRequest`
@@ -73,7 +73,7 @@ class ApeClient(AbstractClient):
 
 
     def CreateOrderAndDownloads(self, request):
-        """核销图片，获取原图URL地址
+        r"""核销图片，获取原图URL地址
 
         :param request: Request instance for CreateOrderAndDownloads.
         :type request: :class:`tencentcloud.ape.v20200513.models.CreateOrderAndDownloadsRequest`
@@ -96,7 +96,7 @@ class ApeClient(AbstractClient):
 
 
     def CreateOrderAndPay(self, request):
-        """购买一张图片并且支付
+        r"""购买一张图片并且支付
 
         :param request: Request instance for CreateOrderAndPay.
         :type request: :class:`tencentcloud.ape.v20200513.models.CreateOrderAndPayRequest`
@@ -119,7 +119,7 @@ class ApeClient(AbstractClient):
 
 
     def DescribeAuthUsers(self, request):
-        """分页查询授权人列表
+        r"""分页查询授权人列表
 
         :param request: Request instance for DescribeAuthUsers.
         :type request: :class:`tencentcloud.ape.v20200513.models.DescribeAuthUsersRequest`
@@ -142,7 +142,7 @@ class ApeClient(AbstractClient):
 
 
     def DescribeDownloadInfos(self, request):
-        """获取用户图片下载记录
+        r"""获取用户图片下载记录
 
         :param request: Request instance for DescribeDownloadInfos.
         :type request: :class:`tencentcloud.ape.v20200513.models.DescribeDownloadInfosRequest`
@@ -165,7 +165,7 @@ class ApeClient(AbstractClient):
 
 
     def DescribeImage(self, request):
-        """根据ID查询一张图片的详细信息
+        r"""根据ID查询一张图片的详细信息
 
         :param request: Request instance for DescribeImage.
         :type request: :class:`tencentcloud.ape.v20200513.models.DescribeImageRequest`
@@ -188,7 +188,7 @@ class ApeClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """根据关键字搜索图片列表
+        r"""根据关键字搜索图片列表
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.ape.v20200513.models.DescribeImagesRequest`

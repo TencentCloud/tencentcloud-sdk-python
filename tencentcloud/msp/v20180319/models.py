@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DeregisterMigrationTaskRequest(AbstractModel):
-    """DeregisterMigrationTask请求参数结构体
+    r"""DeregisterMigrationTask请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -55,7 +55,7 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
 
 class DeregisterMigrationTaskResponse(AbstractModel):
-    """DeregisterMigrationTask返回参数结构体
+    r"""DeregisterMigrationTask返回参数结构体
 
     """
 
@@ -68,7 +68,7 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -83,7 +83,7 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
 
 class DescribeMigrationTaskRequest(AbstractModel):
-    """DescribeMigrationTask请求参数结构体
+    r"""DescribeMigrationTask请求参数结构体
 
     """
 
@@ -96,7 +96,7 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，例如msp-jitoh33n
+        r"""任务ID，例如msp-jitoh33n
         :rtype: str
         """
         return self._TaskId
@@ -119,7 +119,7 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
 
 class DescribeMigrationTaskResponse(AbstractModel):
-    """DescribeMigrationTask返回参数结构体
+    r"""DescribeMigrationTask返回参数结构体
 
     """
 
@@ -135,7 +135,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """迁移详情列表
+        r"""迁移详情列表
         :rtype: list of TaskStatus
         """
         return self._TaskStatus
@@ -146,7 +146,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -167,7 +167,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
 
 class DstInfo(AbstractModel):
-    """迁移目的信息
+    r"""迁移目的信息
 
     """
 
@@ -189,7 +189,7 @@ class DstInfo(AbstractModel):
 
     @property
     def Region(self):
-        """迁移目的地域
+        r"""迁移目的地域
         :rtype: str
         """
         return self._Region
@@ -200,7 +200,7 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
-        """迁移目的Ip
+        r"""迁移目的Ip
         :rtype: str
         """
         return self._Ip
@@ -211,7 +211,7 @@ class DstInfo(AbstractModel):
 
     @property
     def Port(self):
-        """迁移目的端口
+        r"""迁移目的端口
         :rtype: str
         """
         return self._Port
@@ -222,7 +222,7 @@ class DstInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """迁移目的实例Id
+        r"""迁移目的实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -248,7 +248,7 @@ class DstInfo(AbstractModel):
 
 
 class ListMigrationProjectRequest(AbstractModel):
-    """ListMigrationProject请求参数结构体
+    r"""ListMigrationProject请求参数结构体
 
     """
 
@@ -264,7 +264,7 @@ class ListMigrationProjectRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """记录起始数，默认值为0
+        r"""记录起始数，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -275,7 +275,7 @@ class ListMigrationProjectRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回条数，默认值为500
+        r"""返回条数，默认值为500
         :rtype: int
         """
         return self._Limit
@@ -299,7 +299,7 @@ class ListMigrationProjectRequest(AbstractModel):
 
 
 class ListMigrationProjectResponse(AbstractModel):
-    """ListMigrationProject返回参数结构体
+    r"""ListMigrationProject返回参数结构体
 
     """
 
@@ -318,7 +318,7 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def Projects(self):
-        """项目列表
+        r"""项目列表
         :rtype: list of Project
         """
         return self._Projects
@@ -329,7 +329,7 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """项目总数
+        r"""项目总数
         :rtype: int
         """
         return self._TotalCount
@@ -340,7 +340,7 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -362,7 +362,7 @@ class ListMigrationProjectResponse(AbstractModel):
 
 
 class ListMigrationTaskRequest(AbstractModel):
-    """ListMigrationTask请求参数结构体
+    r"""ListMigrationTask请求参数结构体
 
     """
 
@@ -381,7 +381,7 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """记录起始数，默认值为0
+        r"""记录起始数，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -392,7 +392,7 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """记录条数，默认值为10
+        r"""记录条数，默认值为10
         :rtype: int
         """
         return self._Limit
@@ -403,7 +403,7 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，默认值为空
+        r"""项目ID，默认值为空
         :rtype: int
         """
         return self._ProjectId
@@ -428,7 +428,7 @@ class ListMigrationTaskRequest(AbstractModel):
 
 
 class ListMigrationTaskResponse(AbstractModel):
-    """ListMigrationTask返回参数结构体
+    r"""ListMigrationTask返回参数结构体
 
     """
 
@@ -447,7 +447,7 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """记录总条数
+        r"""记录总条数
         :rtype: int
         """
         return self._TotalCount
@@ -458,7 +458,7 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """迁移任务列表
+        r"""迁移任务列表
         :rtype: list of Task
         """
         return self._Tasks
@@ -469,7 +469,7 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -491,7 +491,7 @@ class ListMigrationTaskResponse(AbstractModel):
 
 
 class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
-    """ModifyMigrationTaskBelongToProject请求参数结构体
+    r"""ModifyMigrationTaskBelongToProject请求参数结构体
 
     """
 
@@ -507,7 +507,7 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，例如msp-jitoh33n
+        r"""任务ID，例如msp-jitoh33n
         :rtype: str
         """
         return self._TaskId
@@ -518,7 +518,7 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，例如10005
+        r"""项目ID，例如10005
         :rtype: int
         """
         return self._ProjectId
@@ -542,7 +542,7 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
 
 class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
-    """ModifyMigrationTaskBelongToProject返回参数结构体
+    r"""ModifyMigrationTaskBelongToProject返回参数结构体
 
     """
 
@@ -555,7 +555,7 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -570,7 +570,7 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
 
 class ModifyMigrationTaskStatusRequest(AbstractModel):
-    """ModifyMigrationTaskStatus请求参数结构体
+    r"""ModifyMigrationTaskStatus请求参数结构体
 
     """
 
@@ -586,7 +586,7 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
+        r"""任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
         :rtype: str
         """
         return self._Status
@@ -597,7 +597,7 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，例如msp-jitoh33n
+        r"""任务ID，例如msp-jitoh33n
         :rtype: str
         """
         return self._TaskId
@@ -621,7 +621,7 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
 
 class ModifyMigrationTaskStatusResponse(AbstractModel):
-    """ModifyMigrationTaskStatus返回参数结构体
+    r"""ModifyMigrationTaskStatus返回参数结构体
 
     """
 
@@ -634,7 +634,7 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -649,7 +649,7 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
 
 class Project(AbstractModel):
-    """列表类型
+    r"""列表类型
 
     """
 
@@ -665,7 +665,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -676,7 +676,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -700,7 +700,7 @@ class Project(AbstractModel):
 
 
 class RegisterMigrationTaskRequest(AbstractModel):
-    """RegisterMigrationTask请求参数结构体
+    r"""RegisterMigrationTask请求参数结构体
 
     """
 
@@ -746,7 +746,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
+        r"""任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
         :rtype: str
         """
         return self._TaskType
@@ -757,7 +757,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -768,7 +768,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def ServiceSupplier(self):
-        """服务提供商名称
+        r"""服务提供商名称
         :rtype: str
         """
         return self._ServiceSupplier
@@ -779,7 +779,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        """迁移任务创建时间
+        r"""迁移任务创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -790,7 +790,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """迁移任务更新时间
+        r"""迁移任务更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -801,7 +801,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrateClass(self):
-        """迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
+        r"""迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
         :rtype: str
         """
         return self._MigrateClass
@@ -812,7 +812,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
-        """迁移任务源信息
+        r"""迁移任务源信息
         :rtype: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
         """
         return self._SrcInfo
@@ -823,7 +823,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstInfo(self):
-        """迁移任务目的信息
+        r"""迁移任务目的信息
         :rtype: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         """
         return self._DstInfo
@@ -834,7 +834,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        """源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        r"""源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
         :rtype: str
         """
         return self._SrcAccessType
@@ -845,7 +845,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        """源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+        r"""源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -856,7 +856,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        """目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        r"""目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
         :rtype: str
         """
         return self._DstAccessType
@@ -867,7 +867,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        """目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+        r"""目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
         :rtype: str
         """
         return self._DstDatabaseType
@@ -905,7 +905,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
 
 class RegisterMigrationTaskResponse(AbstractModel):
-    """RegisterMigrationTask返回参数结构体
+    r"""RegisterMigrationTask返回参数结构体
 
     """
 
@@ -921,7 +921,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -932,7 +932,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -948,7 +948,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
 
 class SrcInfo(AbstractModel):
-    """迁移源信息
+    r"""迁移源信息
 
     """
 
@@ -970,7 +970,7 @@ class SrcInfo(AbstractModel):
 
     @property
     def Region(self):
-        """迁移源地域
+        r"""迁移源地域
         :rtype: str
         """
         return self._Region
@@ -981,7 +981,7 @@ class SrcInfo(AbstractModel):
 
     @property
     def Ip(self):
-        """迁移源Ip
+        r"""迁移源Ip
         :rtype: str
         """
         return self._Ip
@@ -992,7 +992,7 @@ class SrcInfo(AbstractModel):
 
     @property
     def Port(self):
-        """迁移源端口
+        r"""迁移源端口
         :rtype: str
         """
         return self._Port
@@ -1003,7 +1003,7 @@ class SrcInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """迁移源实例Id
+        r"""迁移源实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1029,7 +1029,7 @@ class SrcInfo(AbstractModel):
 
 
 class Task(AbstractModel):
-    """迁移任务类别
+    r"""迁移任务类别
 
     """
 
@@ -1069,7 +1069,7 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -1080,7 +1080,7 @@ class Task(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -1091,7 +1091,7 @@ class Task(AbstractModel):
 
     @property
     def MigrationType(self):
-        """迁移类型
+        r"""迁移类型
         :rtype: str
         """
         return self._MigrationType
@@ -1102,7 +1102,7 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
-        """迁移状态
+        r"""迁移状态
         :rtype: str
         """
         return self._Status
@@ -1113,7 +1113,7 @@ class Task(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目Id
+        r"""项目Id
         :rtype: int
         """
         return self._ProjectId
@@ -1124,7 +1124,7 @@ class Task(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -1135,7 +1135,7 @@ class Task(AbstractModel):
 
     @property
     def SrcInfo(self):
-        """迁移源信息
+        r"""迁移源信息
         :rtype: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
         """
         return self._SrcInfo
@@ -1146,7 +1146,7 @@ class Task(AbstractModel):
 
     @property
     def MigrationTimeLine(self):
-        """迁移时间信息
+        r"""迁移时间信息
         :rtype: :class:`tencentcloud.msp.v20180319.models.TimeObj`
         """
         return self._MigrationTimeLine
@@ -1157,7 +1157,7 @@ class Task(AbstractModel):
 
     @property
     def Updated(self):
-        """状态更新时间
+        r"""状态更新时间
         :rtype: str
         """
         return self._Updated
@@ -1168,7 +1168,7 @@ class Task(AbstractModel):
 
     @property
     def DstInfo(self):
-        """迁移目的信息
+        r"""迁移目的信息
         :rtype: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         """
         return self._DstInfo
@@ -1206,7 +1206,7 @@ class Task(AbstractModel):
 
 
 class TaskStatus(AbstractModel):
-    """迁移详情列表
+    r"""迁移详情列表
 
     """
 
@@ -1225,7 +1225,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Status(self):
-        """迁移状态
+        r"""迁移状态
         :rtype: str
         """
         return self._Status
@@ -1236,7 +1236,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Progress(self):
-        """迁移进度
+        r"""迁移进度
         :rtype: str
         """
         return self._Progress
@@ -1247,7 +1247,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """迁移日期
+        r"""迁移日期
         :rtype: str
         """
         return self._UpdateTime
@@ -1272,7 +1272,7 @@ class TaskStatus(AbstractModel):
 
 
 class TimeObj(AbstractModel):
-    """时间对象
+    r"""时间对象
 
     """
 
@@ -1288,7 +1288,7 @@ class TimeObj(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1299,7 +1299,7 @@ class TimeObj(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime

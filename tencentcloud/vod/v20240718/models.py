@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateIncrementalMigrationStrategyRequest(AbstractModel):
-    """CreateIncrementalMigrationStrategy请求参数结构体
+    r"""CreateIncrementalMigrationStrategy请求参数结构体
 
     """
 
@@ -45,7 +45,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -56,7 +56,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def BucketId(self):
-        """策略生效的存储桶 ID。
+        r"""策略生效的存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -67,7 +67,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        """增量迁移策略名称，名称长度不超过100个字符，允许的字符为：`中文、英文、0-9、_、-`。
+        r"""增量迁移策略名称，名称长度不超过100个字符，允许的字符为：`中文、英文、0-9、_、-`。
         :rtype: str
         """
         return self._StrategyName
@@ -78,7 +78,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def OriginType(self):
-        """源站类型。取值有：
+        r"""源站类型。取值有：
 <li>HTTP：HTTP 源。</li>
         :rtype: str
         """
@@ -90,7 +90,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def HttpOriginConfig(self):
-        """增量迁移 HTTP 回源源站配置，当 OriginType 取值 `HTTP` 时必填。
+        r"""增量迁移 HTTP 回源源站配置，当 OriginType 取值 `HTTP` 时必填。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginConfig`
         """
         return self._HttpOriginConfig
@@ -119,7 +119,7 @@ class CreateIncrementalMigrationStrategyRequest(AbstractModel):
 
 
 class CreateIncrementalMigrationStrategyResponse(AbstractModel):
-    """CreateIncrementalMigrationStrategy返回参数结构体
+    r"""CreateIncrementalMigrationStrategy返回参数结构体
 
     """
 
@@ -135,7 +135,7 @@ class CreateIncrementalMigrationStrategyResponse(AbstractModel):
 
     @property
     def StrategyId(self):
-        """增量迁移策略 ID。
+        r"""增量迁移策略 ID。
         :rtype: str
         """
         return self._StrategyId
@@ -146,7 +146,7 @@ class CreateIncrementalMigrationStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -162,7 +162,7 @@ class CreateIncrementalMigrationStrategyResponse(AbstractModel):
 
 
 class CreateStorageCredentialsRequest(AbstractModel):
-    """CreateStorageCredentials请求参数结构体
+    r"""CreateStorageCredentials请求参数结构体
 
     """
 
@@ -187,7 +187,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播专业版[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播专业版[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -198,7 +198,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def Policy(self):
-        """按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。
+        r"""按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。
 注意： 
 1.策略语法参照[访问管理策略](/document/product/598/10603)。
 2.策略中不能包含 principal 元素。
@@ -214,7 +214,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        """指定临时证书的有效期，单位：秒。
+        r"""指定临时证书的有效期，单位：秒。
 默认 1800 秒，最大 129600 秒。
         :rtype: int
         """
@@ -240,7 +240,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
 
 class CreateStorageCredentialsResponse(AbstractModel):
-    """CreateStorageCredentials返回参数结构体
+    r"""CreateStorageCredentials返回参数结构体
 
     """
 
@@ -256,7 +256,7 @@ class CreateStorageCredentialsResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """临时访问凭证。
+        r"""临时访问凭证。
         :rtype: :class:`tencentcloud.vod.v20240718.models.Credentials`
         """
         return self._Credentials
@@ -267,7 +267,7 @@ class CreateStorageCredentialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -285,7 +285,7 @@ class CreateStorageCredentialsResponse(AbstractModel):
 
 
 class CreateStorageRequest(AbstractModel):
-    """CreateStorage请求参数结构体
+    r"""CreateStorage请求参数结构体
 
     """
 
@@ -308,7 +308,7 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播专业版[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播专业版[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -319,7 +319,7 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        """存储地域，必须是系统支持地域。
+        r"""存储地域，必须是系统支持地域。
 通过 [DescribeStorageRegions](https://cloud.tencent.com/document/product/266/72480) 接口可以查询到所有存储地域及已经开通存储桶的地域。
         :rtype: str
         """
@@ -331,7 +331,7 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def StorageName(self):
-        """存储名称。
+        r"""存储名称。
 <li>仅支持小写英文字母、数字、中划线 “-” 及其组合；</li>
 <li>存储命名不能以 “-” 开头或结尾；</li>
 <li>存储命名最大长度为 64 字符。</li>
@@ -359,7 +359,7 @@ class CreateStorageRequest(AbstractModel):
 
 
 class CreateStorageResponse(AbstractModel):
-    """CreateStorage返回参数结构体
+    r"""CreateStorage返回参数结构体
 
     """
 
@@ -375,7 +375,7 @@ class CreateStorageResponse(AbstractModel):
 
     @property
     def BucketId(self):
-        """存储桶 ID。
+        r"""存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -386,7 +386,7 @@ class CreateStorageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -402,7 +402,7 @@ class CreateStorageResponse(AbstractModel):
 
 
 class Credentials(AbstractModel):
-    """临时访问凭证。
+    r"""临时访问凭证。
 
     """
 
@@ -424,7 +424,7 @@ class Credentials(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """访问凭证 ID。
+        r"""访问凭证 ID。
         :rtype: str
         """
         return self._AccessKeyId
@@ -435,7 +435,7 @@ class Credentials(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        """访问凭证 Key。
+        r"""访问凭证 Key。
         :rtype: str
         """
         return self._SecretAccessKey
@@ -446,7 +446,7 @@ class Credentials(AbstractModel):
 
     @property
     def SessionToken(self):
-        """访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。
+        r"""访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。
         :rtype: str
         """
         return self._SessionToken
@@ -457,7 +457,7 @@ class Credentials(AbstractModel):
 
     @property
     def Expiration(self):
-        """访问凭证的过期时间。
+        r"""访问凭证的过期时间。
         :rtype: str
         """
         return self._Expiration
@@ -483,7 +483,7 @@ class Credentials(AbstractModel):
 
 
 class DeleteIncrementalMigrationStrategyRequest(AbstractModel):
-    """DeleteIncrementalMigrationStrategy请求参数结构体
+    r"""DeleteIncrementalMigrationStrategy请求参数结构体
 
     """
 
@@ -502,7 +502,7 @@ class DeleteIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -513,7 +513,7 @@ class DeleteIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def BucketId(self):
-        """策略生效的存储桶 ID。
+        r"""策略生效的存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -524,7 +524,7 @@ class DeleteIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """增量迁移策略 ID。
+        r"""增量迁移策略 ID。
         :rtype: str
         """
         return self._StrategyId
@@ -549,7 +549,7 @@ class DeleteIncrementalMigrationStrategyRequest(AbstractModel):
 
 
 class DeleteIncrementalMigrationStrategyResponse(AbstractModel):
-    """DeleteIncrementalMigrationStrategy返回参数结构体
+    r"""DeleteIncrementalMigrationStrategy返回参数结构体
 
     """
 
@@ -562,7 +562,7 @@ class DeleteIncrementalMigrationStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -577,7 +577,7 @@ class DeleteIncrementalMigrationStrategyResponse(AbstractModel):
 
 
 class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
-    """DescribeIncrementalMigrationStrategyInfos请求参数结构体
+    r"""DescribeIncrementalMigrationStrategyInfos请求参数结构体
 
     """
 
@@ -602,7 +602,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -613,7 +613,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，Filters.Values 的上限为 `20`；若 Filters 长度为 `0` 则查询时无过滤条件限制。 详细的过滤条件如下： <li>BucketId<br>   按照【<strong>存储桶 ID</strong>】进行过滤<br>   类型：String<br>   必选：否<br></li><li>StrategyId<br>   按照【<strong>策略 ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li> 
+        r"""过滤条件，Filters.Values 的上限为 `20`；若 Filters 长度为 `0` 则查询时无过滤条件限制。 详细的过滤条件如下： <li>BucketId<br>   按照【<strong>存储桶 ID</strong>】进行过滤<br>   类型：String<br>   必选：否<br></li><li>StrategyId<br>   按照【<strong>策略 ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li> 
         :rtype: list of Filter
         """
         return self._Filters
@@ -624,7 +624,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果的排序。 SortBy.Field 取值有：<li>UpdateTime：创建时间。</li>若不填，SortBy.Field 默认值为 `UpdateTime`，SortBy.Order 默认值为 `Desc`。
+        r"""返回结果的排序。 SortBy.Field 取值有：<li>UpdateTime：创建时间。</li>若不填，SortBy.Field 默认值为 `UpdateTime`，SortBy.Order 默认值为 `Desc`。
         :rtype: :class:`tencentcloud.vod.v20240718.models.SortBy`
         """
         return self._SortBy
@@ -635,7 +635,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页返回的起始偏移量，默认值为 `0`。
+        r"""分页返回的起始偏移量，默认值为 `0`。
         :rtype: int
         """
         return self._Offset
@@ -646,7 +646,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页返回的记录条数，默认值为 `20`，最大值为 `100`。
+        r"""分页返回的记录条数，默认值为 `20`，最大值为 `100`。
         :rtype: int
         """
         return self._Limit
@@ -680,7 +680,7 @@ class DescribeIncrementalMigrationStrategyInfosRequest(AbstractModel):
 
 
 class DescribeIncrementalMigrationStrategyInfosResponse(AbstractModel):
-    """DescribeIncrementalMigrationStrategyInfos返回参数结构体
+    r"""DescribeIncrementalMigrationStrategyInfos返回参数结构体
 
     """
 
@@ -699,7 +699,7 @@ class DescribeIncrementalMigrationStrategyInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数。
+        r"""总数。
         :rtype: int
         """
         return self._TotalCount
@@ -710,7 +710,7 @@ class DescribeIncrementalMigrationStrategyInfosResponse(AbstractModel):
 
     @property
     def StrategyInfoSet(self):
-        """策略信息集合。
+        r"""策略信息集合。
         :rtype: list of IncrementalMigrationStrategyInfo
         """
         return self._StrategyInfoSet
@@ -721,7 +721,7 @@ class DescribeIncrementalMigrationStrategyInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -743,7 +743,7 @@ class DescribeIncrementalMigrationStrategyInfosResponse(AbstractModel):
 
 
 class DescribeStorageRequest(AbstractModel):
-    """DescribeStorage请求参数结构体
+    r"""DescribeStorage请求参数结构体
 
     """
 
@@ -771,7 +771,7 @@ class DescribeStorageRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播专业版[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播专业版[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -782,7 +782,7 @@ class DescribeStorageRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，Filters.Values 的上限为 20；若 Filters 长度为 0 则分页查询子应用 SubAppId 下的存储信息。 详细的过滤条件如下：
+        r"""过滤条件，Filters.Values 的上限为 20；若 Filters 长度为 0 则分页查询子应用 SubAppId 下的存储信息。 详细的过滤条件如下：
 <li>BucketId<br>   按照【<strong>存储桶 ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
 <li>StorageName<br>   按照【<strong>存储名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
         :rtype: list of Filter
@@ -795,7 +795,7 @@ class DescribeStorageRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果的排序。 SortBy.Field 取值有：
+        r"""返回结果的排序。 SortBy.Field 取值有：
 <li>CreateTime：创建时间。</li>若不填，SortBy.Field 默认值为 CreateTime，SortBy.Order 默认值为 Asc。
         :rtype: :class:`tencentcloud.vod.v20240718.models.SortBy`
         """
@@ -807,7 +807,7 @@ class DescribeStorageRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页返回的起始偏移量，默认值为 0。
+        r"""分页返回的起始偏移量，默认值为 0。
         :rtype: int
         """
         return self._Offset
@@ -818,7 +818,7 @@ class DescribeStorageRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页返回的记录条数，默认值为 20，最大值为 1000。
+        r"""分页返回的记录条数，默认值为 20，最大值为 1000。
         :rtype: int
         """
         return self._Limit
@@ -852,7 +852,7 @@ class DescribeStorageRequest(AbstractModel):
 
 
 class DescribeStorageResponse(AbstractModel):
-    """DescribeStorage返回参数结构体
+    r"""DescribeStorage返回参数结构体
 
     """
 
@@ -871,7 +871,7 @@ class DescribeStorageResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的存储数量。
+        r"""符合条件的存储数量。
         :rtype: int
         """
         return self._TotalCount
@@ -882,7 +882,7 @@ class DescribeStorageResponse(AbstractModel):
 
     @property
     def StorageInfoSet(self):
-        """符合条件的存储信息列表。
+        r"""符合条件的存储信息列表。
         :rtype: list of StorageInfo
         """
         return self._StorageInfoSet
@@ -893,7 +893,7 @@ class DescribeStorageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -915,7 +915,7 @@ class DescribeStorageResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """键值对过滤器，用于条件过滤查询。例如过滤 ID、名称或状态等。
+    r"""键值对过滤器，用于条件过滤查询。例如过滤 ID、名称或状态等。
     若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
     若同一个 Filter 存在多个 Values，同一 Filter 下 Values 间的关系为逻辑或（OR）关系。
 
@@ -935,7 +935,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。
+        r"""需要过滤的字段。
         :rtype: str
         """
         return self._Name
@@ -946,7 +946,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。
+        r"""字段的过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -970,7 +970,7 @@ class Filter(AbstractModel):
 
 
 class IncrementalMigrationHttpEndpointInfo(AbstractModel):
-    """增量迁移源站地址信息。
+    r"""增量迁移源站地址信息。
 
     """
 
@@ -986,7 +986,7 @@ class IncrementalMigrationHttpEndpointInfo(AbstractModel):
 
     @property
     def Endpoint(self):
-        """地址信息，支持域名或 IP 地址。
+        r"""地址信息，支持域名或 IP 地址。
         :rtype: str
         """
         return self._Endpoint
@@ -997,7 +997,7 @@ class IncrementalMigrationHttpEndpointInfo(AbstractModel):
 
     @property
     def StandbyEndpointSet(self):
-        """备份地址信息。
+        r"""备份地址信息。
         :rtype: list of str
         """
         return self._StandbyEndpointSet
@@ -1021,7 +1021,7 @@ class IncrementalMigrationHttpEndpointInfo(AbstractModel):
 
 
 class IncrementalMigrationHttpHeader(AbstractModel):
-    """增量迁移回源 HTTP Header。
+    r"""增量迁移回源 HTTP Header。
 
     """
 
@@ -1037,7 +1037,7 @@ class IncrementalMigrationHttpHeader(AbstractModel):
 
     @property
     def Key(self):
-        """Header 键。
+        r"""Header 键。
         :rtype: str
         """
         return self._Key
@@ -1048,7 +1048,7 @@ class IncrementalMigrationHttpHeader(AbstractModel):
 
     @property
     def Value(self):
-        """Header 值。
+        r"""Header 值。
         :rtype: str
         """
         return self._Value
@@ -1072,7 +1072,7 @@ class IncrementalMigrationHttpHeader(AbstractModel):
 
 
 class IncrementalMigrationHttpHeaderInfo(AbstractModel):
-    """增量迁移回源 HTTP Header 信息。
+    r"""增量迁移回源 HTTP Header 信息。
 
     """
 
@@ -1094,7 +1094,7 @@ class IncrementalMigrationHttpHeaderInfo(AbstractModel):
 
     @property
     def HeaderFollowMode(self):
-        """Http Header 透传模式。取值有：
+        r"""Http Header 透传模式。取值有：
 <li>FOLLOW_ALL：透传所有头部信息；</li>
 <li>FOLLOW_PART：透传部分头部信息；</li>
 <li>IGNORE_PART：忽略部分头部信息。</li>参数必填。
@@ -1108,7 +1108,7 @@ class IncrementalMigrationHttpHeaderInfo(AbstractModel):
 
     @property
     def FollowHttpHeaderKeySet(self):
-        """需透传 Header Key 集合，仅当 HeaderFollowMode 取值 `FOLLOW_PART` 时需要填充。
+        r"""需透传 Header Key 集合，仅当 HeaderFollowMode 取值 `FOLLOW_PART` 时需要填充。
         :rtype: list of str
         """
         return self._FollowHttpHeaderKeySet
@@ -1119,7 +1119,7 @@ class IncrementalMigrationHttpHeaderInfo(AbstractModel):
 
     @property
     def NewHttpHeaderSet(self):
-        """新增 Header 键值对集合。
+        r"""新增 Header 键值对集合。
         :rtype: list of IncrementalMigrationHttpHeader
         """
         return self._NewHttpHeaderSet
@@ -1149,7 +1149,7 @@ class IncrementalMigrationHttpHeaderInfo(AbstractModel):
 
 
 class IncrementalMigrationHttpOriginCondition(AbstractModel):
-    """增量迁移回源条件。
+    r"""增量迁移回源条件。
 
     """
 
@@ -1165,7 +1165,7 @@ class IncrementalMigrationHttpOriginCondition(AbstractModel):
 
     @property
     def HttpStatusCode(self):
-        """触发回源条件的 HTTP Code。若不填充，默认取值 `404`。
+        r"""触发回源条件的 HTTP Code。若不填充，默认取值 `404`。
         :rtype: int
         """
         return self._HttpStatusCode
@@ -1176,7 +1176,7 @@ class IncrementalMigrationHttpOriginCondition(AbstractModel):
 
     @property
     def Prefix(self):
-        """触发回源条件的对象键前缀。
+        r"""触发回源条件的对象键前缀。
         :rtype: str
         """
         return self._Prefix
@@ -1200,7 +1200,7 @@ class IncrementalMigrationHttpOriginCondition(AbstractModel):
 
 
 class IncrementalMigrationHttpOriginConfig(AbstractModel):
-    """增量迁移回源源站配置。
+    r"""增量迁移回源源站配置。
 
     """
 
@@ -1224,7 +1224,7 @@ class IncrementalMigrationHttpOriginConfig(AbstractModel):
 
     @property
     def OriginInfo(self):
-        """回源源站信息。
+        r"""回源源站信息。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginInfo`
         """
         return self._OriginInfo
@@ -1235,7 +1235,7 @@ class IncrementalMigrationHttpOriginConfig(AbstractModel):
 
     @property
     def OriginParameter(self):
-        """回源参数。
+        r"""回源参数。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginParameter`
         """
         return self._OriginParameter
@@ -1246,7 +1246,7 @@ class IncrementalMigrationHttpOriginConfig(AbstractModel):
 
     @property
     def Mode(self):
-        """回源模式。取值有：
+        r"""回源模式。取值有：
 <li>SYNC：同步回源；</li>
 <li>ASYNC：异步回源。</li>若不填，默认取 `SYNC` 同步回源。
         :rtype: str
@@ -1259,7 +1259,7 @@ class IncrementalMigrationHttpOriginConfig(AbstractModel):
 
     @property
     def OriginCondition(self):
-        """回源条件。
+        r"""回源条件。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginCondition`
         """
         return self._OriginCondition
@@ -1291,7 +1291,7 @@ class IncrementalMigrationHttpOriginConfig(AbstractModel):
 
 
 class IncrementalMigrationHttpOriginInfo(AbstractModel):
-    """增量迁移源站信息。
+    r"""增量迁移源站信息。
 
     """
 
@@ -1307,7 +1307,7 @@ class IncrementalMigrationHttpOriginInfo(AbstractModel):
 
     @property
     def EndpointInfo(self):
-        """增量迁移源站地址信息。
+        r"""增量迁移源站地址信息。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpEndpointInfo`
         """
         return self._EndpointInfo
@@ -1318,7 +1318,7 @@ class IncrementalMigrationHttpOriginInfo(AbstractModel):
 
     @property
     def FileInfo(self):
-        """增量迁移源站文件信息。
+        r"""增量迁移源站文件信息。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationOriginFileInfo`
         """
         return self._FileInfo
@@ -1346,7 +1346,7 @@ class IncrementalMigrationHttpOriginInfo(AbstractModel):
 
 
 class IncrementalMigrationHttpOriginParameter(AbstractModel):
-    """增量迁移回源参数。
+    r"""增量迁移回源参数。
 
     """
 
@@ -1378,7 +1378,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
     @property
     def HttpHeaderInfo(self):
-        """HTTP 头部透传信息。
+        r"""HTTP 头部透传信息。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpHeaderInfo`
         """
         return self._HttpHeaderInfo
@@ -1389,7 +1389,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
     @property
     def Protocol(self):
-        """回源协议。取值有：
+        r"""回源协议。取值有：
 <li>HTTP：强制 HTTP；</li>
 <li>HTTPS：强制 HTTPS；</li>
 <li>FOLLOW：跟随请求协议。</li>若不填，默认取值 `FOLLOW`。
@@ -1403,7 +1403,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
     @property
     def QueryStringFollowMode(self):
-        """请求参数透传模式。取值有：
+        r"""请求参数透传模式。取值有：
 <li>FOLLOW：全部透传；</li>
 <li>IGNORE：忽略，全部不透传。</li> 默认取值 `FOLLOW`。
         :rtype: str
@@ -1416,7 +1416,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
     @property
     def HttpRedirectCode(self):
-        """重定向的 HTTP Code，目前仅支持 `301`，`302` 和 `307`。默认取值 `302`。
+        r"""重定向的 HTTP Code，目前仅支持 `301`，`302` 和 `307`。默认取值 `302`。
         :rtype: int
         """
         return self._HttpRedirectCode
@@ -1427,7 +1427,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
     @property
     def OriginRedirectionFollowMode(self):
-        """源站重定向跟随模式。取值有：
+        r"""源站重定向跟随模式。取值有：
 <li>FOLLOW：跟随源站重定向；</li>
 <li>IGNORE：忽略源站重定向。</li> 默认取值 `FOLLOW` 跟随源站重定向，即源站返回 `3xx` 时，会默认跟随至对应源站拉取数据。
         :rtype: str
@@ -1458,7 +1458,7 @@ class IncrementalMigrationHttpOriginParameter(AbstractModel):
 
 
 class IncrementalMigrationOriginFileInfo(AbstractModel):
-    """增量迁移源站文件信息。
+    r"""增量迁移源站文件信息。
 
     """
 
@@ -1477,7 +1477,7 @@ class IncrementalMigrationOriginFileInfo(AbstractModel):
 
     @property
     def PrefixConfig(self):
-        """文件前缀配置。
+        r"""文件前缀配置。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationOriginPrefixConfig`
         """
         return self._PrefixConfig
@@ -1488,7 +1488,7 @@ class IncrementalMigrationOriginFileInfo(AbstractModel):
 
     @property
     def SuffixConfig(self):
-        """文件后缀配置。
+        r"""文件后缀配置。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationOriginSuffixConfig`
         """
         return self._SuffixConfig
@@ -1499,7 +1499,7 @@ class IncrementalMigrationOriginFileInfo(AbstractModel):
 
     @property
     def FixedFileConfig(self):
-        """固定文件配置。
+        r"""固定文件配置。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationOriginFixedFileConfig`
         """
         return self._FixedFileConfig
@@ -1530,7 +1530,7 @@ class IncrementalMigrationOriginFileInfo(AbstractModel):
 
 
 class IncrementalMigrationOriginFixedFileConfig(AbstractModel):
-    """增量迁移源站固定文件路径配置。
+    r"""增量迁移源站固定文件路径配置。
 
     """
 
@@ -1543,7 +1543,7 @@ class IncrementalMigrationOriginFixedFileConfig(AbstractModel):
 
     @property
     def FixedFilePath(self):
-        """固定文件路径；如填充 `example/test.png`，则回源地址为： `http(s)://<回源域名>/example/test.png`。
+        r"""固定文件路径；如填充 `example/test.png`，则回源地址为： `http(s)://<回源域名>/example/test.png`。
         :rtype: str
         """
         return self._FixedFilePath
@@ -1566,7 +1566,7 @@ class IncrementalMigrationOriginFixedFileConfig(AbstractModel):
 
 
 class IncrementalMigrationOriginPrefixConfig(AbstractModel):
-    """增量迁移源站地址前缀配置。
+    r"""增量迁移源站地址前缀配置。
 
     """
 
@@ -1579,7 +1579,7 @@ class IncrementalMigrationOriginPrefixConfig(AbstractModel):
 
     @property
     def Prefix(self):
-        """源站地址前缀，如填充 `test/`，则回源地址为 `http(s)://<回源域名>/test/<文件名>`。
+        r"""源站地址前缀，如填充 `test/`，则回源地址为 `http(s)://<回源域名>/test/<文件名>`。
         :rtype: str
         """
         return self._Prefix
@@ -1602,7 +1602,7 @@ class IncrementalMigrationOriginPrefixConfig(AbstractModel):
 
 
 class IncrementalMigrationOriginSuffixConfig(AbstractModel):
-    """增量迁移源站文件后缀配置。
+    r"""增量迁移源站文件后缀配置。
 
     """
 
@@ -1615,7 +1615,7 @@ class IncrementalMigrationOriginSuffixConfig(AbstractModel):
 
     @property
     def Suffix(self):
-        """文件后缀；如填充 `.ts` ，则回源地址为：`http(s)://<回源域名>/<文件名>.ts`。
+        r"""文件后缀；如填充 `.ts` ，则回源地址为：`http(s)://<回源域名>/<文件名>.ts`。
         :rtype: str
         """
         return self._Suffix
@@ -1638,7 +1638,7 @@ class IncrementalMigrationOriginSuffixConfig(AbstractModel):
 
 
 class IncrementalMigrationStrategyInfo(AbstractModel):
-    """增量迁移策略信息。
+    r"""增量迁移策略信息。
 
     """
 
@@ -1666,7 +1666,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略 ID。
+        r"""策略 ID。
         :rtype: str
         """
         return self._StrategyId
@@ -1677,7 +1677,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称。
+        r"""策略名称。
         :rtype: str
         """
         return self._StrategyName
@@ -1688,7 +1688,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>策略生效的点播专业版[应用](/document/product/266/14574) ID。</b>
+        r"""<b>策略生效的点播专业版[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -1699,7 +1699,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def BucketId(self):
-        """策略生效的存储桶 ID。
+        r"""策略生效的存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -1710,7 +1710,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def OriginType(self):
-        """源站类型。取值有：<li>HTTP：HTTP 源。</li>
+        r"""源站类型。取值有：<li>HTTP：HTTP 源。</li>
         :rtype: str
         """
         return self._OriginType
@@ -1721,7 +1721,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
     @property
     def HttpOriginConfig(self):
-        """回源源站配置。
+        r"""回源源站配置。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginConfig`
         """
         return self._HttpOriginConfig
@@ -1751,7 +1751,7 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
 
 
 class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
-    """ModifyIncrementalMigrationStrategy请求参数结构体
+    r"""ModifyIncrementalMigrationStrategy请求参数结构体
 
     """
 
@@ -1779,7 +1779,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
+        r"""<b>点播[专业版](/document/product/266/115396)[应用](/document/product/266/14574) ID。</b>
         :rtype: int
         """
         return self._SubAppId
@@ -1790,7 +1790,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def BucketId(self):
-        """策略生效的存储桶 ID。
+        r"""策略生效的存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -1801,7 +1801,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """增量迁移策略 ID。
+        r"""增量迁移策略 ID。
         :rtype: str
         """
         return self._StrategyId
@@ -1812,7 +1812,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称。若不填充或填充空字符串，则不修改。
+        r"""策略名称。若不填充或填充空字符串，则不修改。
         :rtype: str
         """
         return self._StrategyName
@@ -1823,7 +1823,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def OriginType(self):
-        """源站类型。取值有：<li>HTTP：HTTP 源。</li>若不填或填充空字符串，则不修改。
+        r"""源站类型。取值有：<li>HTTP：HTTP 源。</li>若不填或填充空字符串，则不修改。
         :rtype: str
         """
         return self._OriginType
@@ -1834,7 +1834,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
     @property
     def HttpOriginConfig(self):
-        """HTTP 回源源站配置，若不填则默认不修改。
+        r"""HTTP 回源源站配置，若不填则默认不修改。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginConfig`
         """
         return self._HttpOriginConfig
@@ -1864,7 +1864,7 @@ class ModifyIncrementalMigrationStrategyRequest(AbstractModel):
 
 
 class ModifyIncrementalMigrationStrategyResponse(AbstractModel):
-    """ModifyIncrementalMigrationStrategy返回参数结构体
+    r"""ModifyIncrementalMigrationStrategy返回参数结构体
 
     """
 
@@ -1877,7 +1877,7 @@ class ModifyIncrementalMigrationStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1892,7 +1892,7 @@ class ModifyIncrementalMigrationStrategyResponse(AbstractModel):
 
 
 class SortBy(AbstractModel):
-    """排序依据。
+    r"""排序依据。
 
     """
 
@@ -1910,7 +1910,7 @@ class SortBy(AbstractModel):
 
     @property
     def Field(self):
-        """排序字段。
+        r"""排序字段。
         :rtype: str
         """
         return self._Field
@@ -1921,7 +1921,7 @@ class SortBy(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式，可选值有：
+        r"""排序方式，可选值有：
 <li>Asc: 升序；</li>
 <li>Desc: 降序。</li>
         :rtype: str
@@ -1947,7 +1947,7 @@ class SortBy(AbstractModel):
 
 
 class StorageInfo(AbstractModel):
-    """专业版应用的存储信息。
+    r"""专业版应用的存储信息。
 
     """
 
@@ -1977,7 +1977,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def BucketId(self):
-        """存储桶 ID。
+        r"""存储桶 ID。
         :rtype: str
         """
         return self._BucketId
@@ -1988,7 +1988,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def StorageName(self):
-        """存储名称。
+        r"""存储名称。
         :rtype: str
         """
         return self._StorageName
@@ -1999,7 +1999,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def StorageRegion(self):
-        """存储所在区域。
+        r"""存储所在区域。
         :rtype: str
         """
         return self._StorageRegion
@@ -2010,7 +2010,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def InternetAccessDomainStatus(self):
-        """存储公网源站访问域名的状态，取值有：
+        r"""存储公网源站访问域名的状态，取值有：
 <li>ONLINE：已生效；</li>
 <li>DEPLOYING： 部署中。</li>
         :rtype: str
@@ -2023,7 +2023,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def InternetAccessDomain(self):
-        """存储公网源站访问域名。
+        r"""存储公网源站访问域名。
         :rtype: str
         """
         return self._InternetAccessDomain
@@ -2034,7 +2034,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """存储的创建时间。
+        r"""存储的创建时间。
         :rtype: str
         """
         return self._CreateTime

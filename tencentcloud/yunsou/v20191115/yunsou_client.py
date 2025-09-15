@@ -27,7 +27,7 @@ class YunsouClient(AbstractClient):
 
 
     def DataManipulation(self, request):
-        """上传云搜数据的API接口。
+        r"""上传云搜数据的API接口。
 
         :param request: Request instance for DataManipulation.
         :type request: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationRequest`
@@ -50,7 +50,7 @@ class YunsouClient(AbstractClient):
 
 
     def DataSearch(self, request):
-        """用于检索云搜中的数据。
+        r"""用于检索云搜中的数据。
 
         :param request: Request instance for DataSearch.
         :type request: :class:`tencentcloud.yunsou.v20191115.models.DataSearchRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeVideoStylizationJobRequest(AbstractModel):
-    """DescribeVideoStylizationJob请求参数结构体
+    r"""DescribeVideoStylizationJob请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class DescribeVideoStylizationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._JobId
@@ -55,7 +55,7 @@ class DescribeVideoStylizationJobRequest(AbstractModel):
 
 
 class DescribeVideoStylizationJobResponse(AbstractModel):
-    """DescribeVideoStylizationJob返回参数结构体
+    r"""DescribeVideoStylizationJob返回参数结构体
 
     """
 
@@ -85,7 +85,7 @@ JobSuccess: "处理完成"。
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -96,7 +96,7 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusCode(self):
-        """任务状态码：
+        r"""任务状态码：
 JobInit:  "初始化中"
 JobModerationFailed: "审核失败",
 JobRunning: "处理中",
@@ -112,7 +112,7 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusMsg(self):
-        """任务状态描述。
+        r"""任务状态描述。
         :rtype: str
         """
         return self._StatusMsg
@@ -123,7 +123,7 @@ JobSuccess: "处理完成"。
 
     @property
     def ResultVideoUrl(self):
-        """处理结果视频Url。URL有效期为24小时。
+        r"""处理结果视频Url。URL有效期为24小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -134,7 +134,7 @@ JobSuccess: "处理完成"。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -153,7 +153,7 @@ JobSuccess: "处理完成"。
 
 
 class SubmitVideoStylizationJobRequest(AbstractModel):
-    """SubmitVideoStylizationJob请求参数结构体
+    r"""SubmitVideoStylizationJob请求参数结构体
 
     """
 
@@ -174,7 +174,7 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def StyleId(self):
-        """风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+        r"""风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
         :rtype: str
         """
         return self._StyleId
@@ -185,7 +185,7 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """输入视频URL。视频要求：
+        r"""输入视频URL。视频要求：
 - 视频格式：mp4、mov；
 - 视频时长：1～60秒；
 - 视频分辨率：540P~2056P，即长宽像素数均在540px～2056px范围内；
@@ -214,7 +214,7 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
 
 class SubmitVideoStylizationJobResponse(AbstractModel):
-    """SubmitVideoStylizationJob返回参数结构体
+    r"""SubmitVideoStylizationJob返回参数结构体
 
     """
 
@@ -230,7 +230,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._JobId
@@ -241,7 +241,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

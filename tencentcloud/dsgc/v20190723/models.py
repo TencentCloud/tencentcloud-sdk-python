@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AKSKLeak(AbstractModel):
-    """AKSK泄漏信息
+    r"""AKSK泄漏信息
 
     """
 
@@ -38,7 +38,7 @@ class AKSKLeak(AbstractModel):
 
     @property
     def AK(self):
-        """AK编码
+        r"""AK编码
         :rtype: str
         """
         return self._AK
@@ -49,7 +49,7 @@ class AKSKLeak(AbstractModel):
 
     @property
     def SK(self):
-        """SK编码
+        r"""SK编码
         :rtype: str
         """
         return self._SK
@@ -60,7 +60,7 @@ class AKSKLeak(AbstractModel):
 
     @property
     def URL(self):
-        """URL编码
+        r"""URL编码
         :rtype: str
         """
         return self._URL
@@ -85,7 +85,7 @@ class AKSKLeak(AbstractModel):
 
 
 class AccountRisk(AbstractModel):
-    """账户风险
+    r"""账户风险
 
     """
 
@@ -101,7 +101,7 @@ class AccountRisk(AbstractModel):
 
     @property
     def Id(self):
-        """id（可不参考）
+        r"""id（可不参考）
         :rtype: str
         """
         return self._Id
@@ -112,7 +112,7 @@ class AccountRisk(AbstractModel):
 
     @property
     def RiskAccount(self):
-        """风险账户
+        r"""风险账户
         :rtype: str
         """
         return self._RiskAccount
@@ -136,7 +136,7 @@ class AccountRisk(AbstractModel):
 
 
 class AssessmentControlItem(AbstractModel):
-    """DSPA评估控制项
+    r"""DSPA评估控制项
 
     """
 
@@ -173,7 +173,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemId(self):
-        """评估项Id
+        r"""评估项Id
         :rtype: str
         """
         return self._ItemId
@@ -184,7 +184,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemName(self):
-        """评估项名称
+        r"""评估项名称
         :rtype: str
         """
         return self._ItemName
@@ -195,7 +195,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Description(self):
-        """评估项描述
+        r"""评估项描述
         :rtype: str
         """
         return self._Description
@@ -206,7 +206,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Source(self):
-        """评估项来源，内置/用户自定，取值（system，user）
+        r"""评估项来源，内置/用户自定，取值（system，user）
         :rtype: str
         """
         return self._Source
@@ -217,7 +217,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemType(self):
-        """评估项类型，问卷/自动化，取值（questionnaire，auto）
+        r"""评估项类型，问卷/自动化，取值（questionnaire，auto）
         :rtype: str
         """
         return self._ItemType
@@ -228,7 +228,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemSubType(self):
-        """评估项子类型，单选/多选/时间/文本/AKSK等，取值（singlechoice，multichoice，date，text，AKSK……等）
+        r"""评估项子类型，单选/多选/时间/文本/AKSK等，取值（singlechoice，multichoice，date，text，AKSK……等）
         :rtype: str
         """
         return self._ItemSubType
@@ -239,7 +239,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """评估项创建时间
+        r"""评估项创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -250,7 +250,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Status(self):
-        """评估项启用状态，启用/未启用，取值draft / launched
+        r"""评估项启用状态，启用/未启用，取值draft / launched
         :rtype: str
         """
         return self._Status
@@ -261,7 +261,7 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def TemplateCount(self):
-        """评估项关联的模板数量
+        r"""评估项关联的模板数量
         :rtype: int
         """
         return self._TemplateCount
@@ -292,7 +292,7 @@ class AssessmentControlItem(AbstractModel):
 
 
 class AssessmentRisk(AbstractModel):
-    """DSPA评估风险项
+    r"""DSPA评估风险项
 
     """
 
@@ -362,7 +362,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险项Id
+        r"""风险项Id
         :rtype: str
         """
         return self._RiskId
@@ -373,7 +373,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskDescription(self):
-        """风险项描述
+        r"""风险项描述
         :rtype: str
         """
         return self._RiskDescription
@@ -384,7 +384,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板Id
+        r"""评估模板Id
         :rtype: str
         """
         return self._TemplateId
@@ -395,7 +395,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def TemplateName(self):
-        """评估模板名称
+        r"""评估模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -406,7 +406,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemId(self):
-        """评估项Id
+        r"""评估项Id
         :rtype: str
         """
         return self._ControlItemId
@@ -417,7 +417,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemName(self):
-        """评估项名称
+        r"""评估项名称
         :rtype: str
         """
         return self._ControlItemName
@@ -428,7 +428,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemDesc(self):
-        """评估描述
+        r"""评估描述
         :rtype: str
         """
         return self._ControlItemDesc
@@ -439,7 +439,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级，取值（high，medium，low）
+        r"""风险等级，取值（high，medium，low）
         :rtype: str
         """
         return self._RiskLevel
@@ -450,7 +450,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskMitigation(self):
-        """风险缓解措施
+        r"""风险缓解措施
         :rtype: str
         """
         return self._RiskMitigation
@@ -461,7 +461,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def Status(self):
-        """风险处理状态。(waiting待处理, processing处理中, finished已处理)
+        r"""风险处理状态。(waiting待处理, processing处理中, finished已处理)
         :rtype: str
         """
         return self._Status
@@ -472,7 +472,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """风险生成时间
+        r"""风险生成时间
         :rtype: str
         """
         return self._CreatedTime
@@ -483,7 +483,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskOwner(self):
-        """风险负责人
+        r"""风险负责人
         :rtype: str
         """
         return self._RiskOwner
@@ -494,7 +494,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RelatedAsset(self):
-        """风险涉及资产
+        r"""风险涉及资产
         :rtype: str
         """
         return self._RelatedAsset
@@ -505,7 +505,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """风险涉及资产id
+        r"""风险涉及资产id
         :rtype: str
         """
         return self._DataSourceId
@@ -516,7 +516,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """风险涉及资产名称
+        r"""风险涉及资产名称
         :rtype: str
         """
         return self._DataSourceName
@@ -527,7 +527,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名称
+        r"""资产名称
         :rtype: str
         """
         return self._AssetName
@@ -538,7 +538,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def SecurityProduct(self):
-        """建议使用安全产品
+        r"""建议使用安全产品
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -549,7 +549,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -560,7 +560,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: str
         """
         return self._RiskSide
@@ -571,7 +571,7 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -618,7 +618,7 @@ class AssessmentRisk(AbstractModel):
 
 
 class AssessmentRiskItem(AbstractModel):
-    """风险项列表详细数据
+    r"""风险项列表详细数据
 
     """
 
@@ -655,7 +655,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Id(self):
-        """脆弱项id
+        r"""脆弱项id
         :rtype: int
         """
         return self._Id
@@ -666,7 +666,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskName(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._RiskName
@@ -677,7 +677,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Level(self):
-        """脆弱性级别
+        r"""脆弱性级别
         :rtype: str
         """
         return self._Level
@@ -688,7 +688,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Description(self):
-        """说明
+        r"""说明
         :rtype: str
         """
         return self._Description
@@ -699,7 +699,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -710,7 +710,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def ReferTemplateCount(self):
-        """关联模板个数
+        r"""关联模板个数
         :rtype: int
         """
         return self._ReferTemplateCount
@@ -721,7 +721,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def SupportDataSource(self):
-        """支持的数据源
+        r"""支持的数据源
         :rtype: list of str
         """
         return self._SupportDataSource
@@ -732,7 +732,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: str
         """
         return self._RiskSide
@@ -743,7 +743,7 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def ReferTemplateList(self):
-        """关联模板列表
+        r"""关联模板列表
         :rtype: list of TemplateInfo
         """
         return self._ReferTemplateList
@@ -779,7 +779,7 @@ class AssessmentRiskItem(AbstractModel):
 
 
 class AssessmentTask(AbstractModel):
-    """DSPA评估任务
+    r"""DSPA评估任务
 
     """
 
@@ -850,7 +850,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """评估任务Id
+        r"""评估任务Id
         :rtype: str
         """
         return self._TaskId
@@ -861,7 +861,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskUid(self):
-        """评估任务的自增ID
+        r"""评估任务的自增ID
 
         :rtype: int
         """
@@ -873,7 +873,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskName(self):
-        """评估任务名称
+        r"""评估任务名称
         :rtype: str
         """
         return self._TaskName
@@ -884,7 +884,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessName(self):
-        """业务名称
+        r"""业务名称
         :rtype: str
         """
         return self._BusinessName
@@ -895,7 +895,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessDept(self):
-        """业务所属部门
+        r"""业务所属部门
         :rtype: str
         """
         return self._BusinessDept
@@ -906,7 +906,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessOwner(self):
-        """业务负责人
+        r"""业务负责人
         :rtype: str
         """
         return self._BusinessOwner
@@ -917,7 +917,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板Id
+        r"""评估模板Id
         :rtype: str
         """
         return self._TemplateId
@@ -928,7 +928,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateName(self):
-        """评估模板名称
+        r"""评估模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -939,7 +939,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """分类分级模板Id
+        r"""分类分级模板Id
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -950,7 +950,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ComplianceGroupName(self):
-        """分类分级模板名称
+        r"""分类分级模板名称
         :rtype: str
         """
         return self._ComplianceGroupName
@@ -961,7 +961,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ControlItemCount(self):
-        """评估项数量
+        r"""评估项数量
         :rtype: int
         """
         return self._ControlItemCount
@@ -972,7 +972,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def RiskCount(self):
-        """风险项数量（仅状态为finished的风险项不计入总数，其余状态均算入该数量）
+        r"""风险项数量（仅状态为finished的风险项不计入总数，其余状态均算入该数量）
         :rtype: int
         """
         return self._RiskCount
@@ -983,7 +983,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def FinishedTime(self):
-        """评估任务完成时间
+        r"""评估任务完成时间
         :rtype: str
         """
         return self._FinishedTime
@@ -994,7 +994,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """评估任务发起时间
+        r"""评估任务发起时间
         :rtype: str
         """
         return self._CreatedTime
@@ -1005,7 +1005,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def Status(self):
-        """评估状态。(waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        r"""评估状态。(waiting待评估，processing评估中, , finished已评估, failed评估失败)
         :rtype: str
         """
         return self._Status
@@ -1016,7 +1016,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def RiskCountInfoList(self):
-        """待处理各等级风险项信息
+        r"""待处理各等级风险项信息
         :rtype: list of RiskCountInfo
         """
         return self._RiskCountInfoList
@@ -1027,7 +1027,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def DiscoveryCondition(self):
-        """数据源信息
+        r"""数据源信息
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         """
         return self._DiscoveryCondition
@@ -1038,7 +1038,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ErrorInfo(self):
-        """评估任务失败信息
+        r"""评估任务失败信息
         :rtype: str
         """
         return self._ErrorInfo
@@ -1049,7 +1049,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateUid(self):
-        """模板主键id
+        r"""模板主键id
         :rtype: int
         """
         return self._TemplateUid
@@ -1060,7 +1060,7 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ProgressPercent(self):
-        """进度百分比
+        r"""进度百分比
         :rtype: int
         """
         return self._ProgressPercent
@@ -1109,7 +1109,7 @@ class AssessmentTask(AbstractModel):
 
 
 class AssessmentTemplate(AbstractModel):
-    """DSPA评估模板
+    r"""DSPA评估模板
 
     """
 
@@ -1158,7 +1158,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Id(self):
-        """id
+        r"""id
         :rtype: int
         """
         return self._Id
@@ -1169,7 +1169,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板Id
+        r"""评估模板Id
         :rtype: str
         """
         return self._TemplateId
@@ -1180,7 +1180,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
-        """评估模板名称
+        r"""评估模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -1191,7 +1191,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Description
@@ -1202,7 +1202,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Source(self):
-        """模板来源，内置/用户自定，取值（system，user）
+        r"""模板来源，内置/用户自定，取值（system，user）
         :rtype: str
         """
         return self._Source
@@ -1213,7 +1213,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def UseType(self):
-        """模板类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
+        r"""模板类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
         :rtype: str
         """
         return self._UseType
@@ -1224,7 +1224,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """评估模板创建时间
+        r"""评估模板创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -1235,7 +1235,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def ControlItemCount(self):
-        """模板关联的评估项数量
+        r"""模板关联的评估项数量
         :rtype: int
         """
         return self._ControlItemCount
@@ -1246,7 +1246,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def AppliedItemCount(self):
-        """模板已启用的评估项数量
+        r"""模板已启用的评估项数量
         :rtype: int
         """
         return self._AppliedItemCount
@@ -1257,7 +1257,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Status(self):
-        """模板启用状态，草稿/已启用，取值draft / launched
+        r"""模板启用状态，草稿/已启用，取值draft / launched
         :rtype: str
         """
         return self._Status
@@ -1268,7 +1268,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def SupportDataSource(self):
-        """支持的数据源类型
+        r"""支持的数据源类型
         :rtype: list of str
         """
         return self._SupportDataSource
@@ -1279,7 +1279,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def IsASMTemplate(self):
-        """是否包含攻击面风险
+        r"""是否包含攻击面风险
         :rtype: bool
         """
         return self._IsASMTemplate
@@ -1290,7 +1290,7 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -1325,7 +1325,7 @@ class AssessmentTemplate(AbstractModel):
 
 
 class AssetCosDetail(AbstractModel):
-    """数据资产报告-cos的资产详情
+    r"""数据资产报告-cos的资产详情
 
     """
 
@@ -1353,7 +1353,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def Bucket(self):
-        """桶的名
+        r"""桶的名
         :rtype: str
         """
         return self._Bucket
@@ -1364,7 +1364,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def DataType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataType
@@ -1375,7 +1375,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def FileNums(self):
-        """文件的个数
+        r"""文件的个数
         :rtype: int
         """
         return self._FileNums
@@ -1386,7 +1386,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def SensitiveFileNums(self):
-        """敏感的文件个数
+        r"""敏感的文件个数
         :rtype: int
         """
         return self._SensitiveFileNums
@@ -1397,7 +1397,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def DistributionData(self):
-        """敏感分布
+        r"""敏感分布
         :rtype: list of Note
         """
         return self._DistributionData
@@ -1408,7 +1408,7 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def MatchedNum(self):
-        """cos文件的敏感数据个数
+        r"""cos文件的敏感数据个数
         :rtype: int
         """
         return self._MatchedNum
@@ -1441,7 +1441,7 @@ class AssetCosDetail(AbstractModel):
 
 
 class AssetDBDetail(AbstractModel):
-    """RDB敏感资产详情列表
+    r"""RDB敏感资产详情列表
 
     """
 
@@ -1475,7 +1475,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -1486,7 +1486,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DdName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DdName
@@ -1497,7 +1497,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
-        """数据库类型
+        r"""数据库类型
         :rtype: str
         """
         return self._DataType
@@ -1508,7 +1508,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def TableNums(self):
-        """表的数量
+        r"""表的数量
         :rtype: int
         """
         return self._TableNums
@@ -1519,7 +1519,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def SensitiveTableNums(self):
-        """敏感表数量
+        r"""敏感表数量
         :rtype: int
         """
         return self._SensitiveTableNums
@@ -1530,7 +1530,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段的数量
+        r"""字段的数量
         :rtype: int
         """
         return self._FieldNums
@@ -1541,7 +1541,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感字段的数量
+        r"""敏感字段的数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -1552,7 +1552,7 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
-        """敏感数据分布
+        r"""敏感数据分布
         :rtype: list of Note
         """
         return self._DistributionData
@@ -1587,7 +1587,7 @@ class AssetDBDetail(AbstractModel):
 
 
 class AssetList(AbstractModel):
-    """数据资产报告页面-用户查询入参
+    r"""数据资产报告页面-用户查询入参
 
     """
 
@@ -1603,7 +1603,7 @@ class AssetList(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -1614,7 +1614,7 @@ class AssetList(AbstractModel):
 
     @property
     def DataSourceInfo(self):
-        """数据源信息
+        r"""数据源信息
         :rtype: list of DataSourceInfo
         """
         return self._DataSourceInfo
@@ -1643,7 +1643,7 @@ class AssetList(AbstractModel):
 
 
 class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
-    """AuthorizeDSPAMetaResources请求参数结构体
+    r"""AuthorizeDSPAMetaResources请求参数结构体
 
     """
 
@@ -1674,7 +1674,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -1685,7 +1685,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        """授权方式，可选：automatic(一键自动授权) 、 account(指定用户名授权)。
+        r"""授权方式，可选：automatic(一键自动授权) 、 account(指定用户名授权)。
         :rtype: str
         """
         return self._AuthType
@@ -1696,7 +1696,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型。
+        r"""资源类型。
         :rtype: str
         """
         return self._MetaType
@@ -1707,7 +1707,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -1718,7 +1718,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourcesAccount(self):
-        """用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
+        r"""用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
         :rtype: list of DspaResourceAccount
         """
         return self._ResourcesAccount
@@ -1729,7 +1729,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def CreateDefaultTask(self):
-        """创建默认主模板扫描任务
+        r"""创建默认主模板扫描任务
         :rtype: bool
         """
         return self._CreateDefaultTask
@@ -1740,7 +1740,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def AuthRange(self):
-        """授权范围（all:授权整个数据源 manual:手动指定数据库）
+        r"""授权范围（all:授权整个数据源 manual:手动指定数据库）
         :rtype: str
         """
         return self._AuthRange
@@ -1774,7 +1774,7 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
 
 class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
-    """AuthorizeDSPAMetaResources返回参数结构体
+    r"""AuthorizeDSPAMetaResources返回参数结构体
 
     """
 
@@ -1793,7 +1793,7 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -1804,7 +1804,7 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def Results(self):
-        """授权结果。
+        r"""授权结果。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -1815,7 +1815,7 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1837,7 +1837,7 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
 
 class BindDSPAResourceCosBucketsRequest(AbstractModel):
-    """BindDSPAResourceCosBuckets请求参数结构体
+    r"""BindDSPAResourceCosBuckets请求参数结构体
 
     """
 
@@ -1856,7 +1856,7 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -1867,7 +1867,7 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def BindCosResourceItems(self):
-        """绑定的COS桶信息。
+        r"""绑定的COS桶信息。
         :rtype: list of CosResourceItem
         """
         return self._BindCosResourceItems
@@ -1878,7 +1878,7 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def UnbindCosResourceItems(self):
-        """解绑的COS桶信息。
+        r"""解绑的COS桶信息。
         :rtype: list of CosResourceItem
         """
         return self._UnbindCosResourceItems
@@ -1913,7 +1913,7 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
 
 class BindDSPAResourceCosBucketsResponse(AbstractModel):
-    """BindDSPAResourceCosBuckets返回参数结构体
+    r"""BindDSPAResourceCosBuckets返回参数结构体
 
     """
 
@@ -1929,7 +1929,7 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
 
     @property
     def CosTaskResults(self):
-        """绑定结果数组
+        r"""绑定结果数组
         :rtype: list of CosTaskResult
         """
         return self._CosTaskResults
@@ -1940,7 +1940,7 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1961,7 +1961,7 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
 
 
 class BindDSPAResourceDatabasesRequest(AbstractModel):
-    """BindDSPAResourceDatabases请求参数结构体
+    r"""BindDSPAResourceDatabases请求参数结构体
 
     """
 
@@ -1986,7 +1986,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -1997,7 +1997,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """数据库实例ID。
+        r"""数据库实例ID。
         :rtype: str
         """
         return self._ResourceId
@@ -2008,7 +2008,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """数据库实例类型。
+        r"""数据库实例类型。
         :rtype: str
         """
         return self._MetaType
@@ -2019,7 +2019,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def BindDbItems(self):
-        """绑定DB列表。
+        r"""绑定DB列表。
         :rtype: list of DbResourceItem
         """
         return self._BindDbItems
@@ -2030,7 +2030,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def UnbindDbItems(self):
-        """解绑DB列表。
+        r"""解绑DB列表。
         :rtype: list of DbResourceItem
         """
         return self._UnbindDbItems
@@ -2067,7 +2067,7 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
 
 class BindDSPAResourceDatabasesResponse(AbstractModel):
-    """BindDSPAResourceDatabases返回参数结构体
+    r"""BindDSPAResourceDatabases返回参数结构体
 
     """
 
@@ -2083,7 +2083,7 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
 
     @property
     def DbTaskResults(self):
-        """绑定结果数组
+        r"""绑定结果数组
         :rtype: list of DbTaskResult
         """
         return self._DbTaskResults
@@ -2094,7 +2094,7 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2115,7 +2115,7 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
 
 
 class COSDataRule(AbstractModel):
-    """COS敏感数据识别规则
+    r"""COS敏感数据识别规则
 
     """
 
@@ -2132,7 +2132,7 @@ class COSDataRule(AbstractModel):
 
     @property
     def Operator(self):
-        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
+        r"""只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 默认值为or
         :rtype: str
         """
@@ -2144,7 +2144,7 @@ class COSDataRule(AbstractModel):
 
     @property
     def Contents(self):
-        """规则内容
+        r"""规则内容
         :rtype: list of DataContent
         """
         return self._Contents
@@ -2173,7 +2173,7 @@ class COSDataRule(AbstractModel):
 
 
 class COSInstance(AbstractModel):
-    """COS数据源实例信息
+    r"""COS数据源实例信息
 
     """
 
@@ -2192,7 +2192,7 @@ class COSInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源Id
+        r"""数据源Id
         :rtype: str
         """
         return self._DataSourceId
@@ -2203,7 +2203,7 @@ class COSInstance(AbstractModel):
 
     @property
     def BucketName(self):
-        """桶名
+        r"""桶名
         :rtype: str
         """
         return self._BucketName
@@ -2214,7 +2214,7 @@ class COSInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -2239,7 +2239,7 @@ class COSInstance(AbstractModel):
 
 
 class CategoryRule(AbstractModel):
-    """分类规则信息
+    r"""分类规则信息
 
     """
 
@@ -2279,7 +2279,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -2290,7 +2290,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -2301,7 +2301,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -2312,7 +2312,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def LevelId(self):
-        """级别id
+        r"""级别id
         :rtype: int
         """
         return self._LevelId
@@ -2323,7 +2323,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def LevelName(self):
-        """级别名称
+        r"""级别名称
         :rtype: str
         """
         return self._LevelName
@@ -2334,7 +2334,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def Id(self):
-        """分类规则绑定关系id
+        r"""分类规则绑定关系id
         :rtype: int
         """
         return self._Id
@@ -2345,7 +2345,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def AliasRuleId(self):
-        """别名ID
+        r"""别名ID
         :rtype: int
         """
         return self._AliasRuleId
@@ -2356,7 +2356,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def AliasRuleName(self):
-        """别名规则名称
+        r"""别名规则名称
         :rtype: str
         """
         return self._AliasRuleName
@@ -2367,7 +2367,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleEffectItems(self):
-        """各类分类分级规则数量
+        r"""各类分类分级规则数量
         :rtype: list of RuleEffectItem
         """
         return self._RuleEffectItems
@@ -2378,7 +2378,7 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleStatus(self):
-        """规则状态
+        r"""规则状态
         :rtype: int
         """
         return self._RuleStatus
@@ -2415,7 +2415,7 @@ class CategoryRule(AbstractModel):
 
 
 class CategoryRuleStatistic(AbstractModel):
-    """分类规则统计信息
+    r"""分类规则统计信息
 
     """
 
@@ -2434,7 +2434,7 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -2445,7 +2445,7 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def RuleCount(self):
-        """规则数量
+        r"""规则数量
         :rtype: int
         """
         return self._RuleCount
@@ -2456,7 +2456,7 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def CategoryName(self):
-        """分类名称
+        r"""分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -2481,7 +2481,7 @@ class CategoryRuleStatistic(AbstractModel):
 
 
 class CloudResourceItem(AbstractModel):
-    """云数据库资源项
+    r"""云数据库资源项
 
     """
 
@@ -2497,7 +2497,7 @@ class CloudResourceItem(AbstractModel):
 
     @property
     def Region(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._Region
@@ -2508,7 +2508,7 @@ class CloudResourceItem(AbstractModel):
 
     @property
     def Items(self):
-        """	云上资源列表。
+        r"""	云上资源列表。
         :rtype: list of DspaCloudResourceMeta
         """
         return self._Items
@@ -2537,7 +2537,7 @@ class CloudResourceItem(AbstractModel):
 
 
 class ComplianceGroupDetail(AbstractModel):
-    """模板详情
+    r"""模板详情
 
     """
 
@@ -2574,7 +2574,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Id(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._Id
@@ -2585,7 +2585,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Name(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._Name
@@ -2596,7 +2596,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -2607,7 +2607,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
-        """模板类型
+        r"""模板类型
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -2618,7 +2618,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """模板分级方案id
+        r"""模板分级方案id
         :rtype: int
         """
         return self._LevelGroupId
@@ -2629,7 +2629,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def LevelGroupName(self):
-        """模板分级方案名称
+        r"""模板分级方案名称
         :rtype: str
         """
         return self._LevelGroupName
@@ -2640,7 +2640,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2651,7 +2651,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._ModifyTime
@@ -2662,7 +2662,7 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def IsAlias(self):
-        """是否开启别名
+        r"""是否开启别名
         :rtype: bool
         """
         return self._IsAlias
@@ -2693,7 +2693,7 @@ class ComplianceGroupDetail(AbstractModel):
 
 
 class ComplianceGroupRuleIdInfo(AbstractModel):
-    """合规组中规则信息：包括规则ID，数据分类ID, 数据分级标识ID
+    r"""合规组中规则信息：包括规则ID，数据分类ID, 数据分级标识ID
 
     """
 
@@ -2712,7 +2712,7 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        """敏感数据识别规则ID
+        r"""敏感数据识别规则ID
         :rtype: int
         """
         return self._RuleId
@@ -2723,7 +2723,7 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -2734,7 +2734,7 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级标识ID, 系统支持高、中、低三级，也支持自定义分级
+        r"""敏感数据分级标识ID, 系统支持高、中、低三级，也支持自定义分级
         :rtype: int
         """
         return self._LevelId
@@ -2759,7 +2759,7 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
 
 class CopyDSPATemplateRequest(AbstractModel):
-    """CopyDSPATemplate请求参数结构体
+    r"""CopyDSPATemplate请求参数结构体
 
     """
 
@@ -2775,7 +2775,7 @@ class CopyDSPATemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -2786,7 +2786,7 @@ class CopyDSPATemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._TemplateId
@@ -2810,7 +2810,7 @@ class CopyDSPATemplateRequest(AbstractModel):
 
 
 class CopyDSPATemplateResponse(AbstractModel):
-    """CopyDSPATemplate返回参数结构体
+    r"""CopyDSPATemplate返回参数结构体
 
     """
 
@@ -2826,7 +2826,7 @@ class CopyDSPATemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateId
@@ -2837,7 +2837,7 @@ class CopyDSPATemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2853,7 +2853,7 @@ class CopyDSPATemplateResponse(AbstractModel):
 
 
 class CosAsset(AbstractModel):
-    """数据资产报告-cos的敏感资产报告详情
+    r"""数据资产报告-cos的敏感资产报告详情
 
     """
 
@@ -2875,7 +2875,7 @@ class CosAsset(AbstractModel):
 
     @property
     def BucketNums(self):
-        """桶的个数
+        r"""桶的个数
         :rtype: int
         """
         return self._BucketNums
@@ -2886,7 +2886,7 @@ class CosAsset(AbstractModel):
 
     @property
     def SensitiveBucketNums(self):
-        """敏感桶的个数
+        r"""敏感桶的个数
         :rtype: int
         """
         return self._SensitiveBucketNums
@@ -2897,7 +2897,7 @@ class CosAsset(AbstractModel):
 
     @property
     def FileNums(self):
-        """文件个数
+        r"""文件个数
         :rtype: int
         """
         return self._FileNums
@@ -2908,7 +2908,7 @@ class CosAsset(AbstractModel):
 
     @property
     def SensitiveFileNums(self):
-        """敏感文件的个数
+        r"""敏感文件的个数
         :rtype: int
         """
         return self._SensitiveFileNums
@@ -2934,7 +2934,7 @@ class CosAsset(AbstractModel):
 
 
 class CosBucketItem(AbstractModel):
-    """cos桶资源项
+    r"""cos桶资源项
 
     """
 
@@ -2950,7 +2950,7 @@ class CosBucketItem(AbstractModel):
 
     @property
     def Region(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._Region
@@ -2961,7 +2961,7 @@ class CosBucketItem(AbstractModel):
 
     @property
     def Buckets(self):
-        """COS桶列表。
+        r"""COS桶列表。
         :rtype: list of str
         """
         return self._Buckets
@@ -2985,7 +2985,7 @@ class CosBucketItem(AbstractModel):
 
 
 class CosResourceItem(AbstractModel):
-    """COS资源的桶信息
+    r"""COS资源的桶信息
 
     """
 
@@ -3004,7 +3004,7 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceId(self):
-        """cos数据源ID。
+        r"""cos数据源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -3015,7 +3015,7 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """桶所在地域。
+        r"""桶所在地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -3026,7 +3026,7 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceName(self):
-        """桶名称。
+        r"""桶名称。
         :rtype: str
         """
         return self._ResourceName
@@ -3051,7 +3051,7 @@ class CosResourceItem(AbstractModel):
 
 
 class CosTaskResult(AbstractModel):
-    """cos批量操作返回结果结构体
+    r"""cos批量操作返回结果结构体
 
     """
 
@@ -3073,7 +3073,7 @@ class CosTaskResult(AbstractModel):
 
     @property
     def Result(self):
-        """结果类型。
+        r"""结果类型。
         :rtype: str
         """
         return self._Result
@@ -3084,7 +3084,7 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
-        """结果描述。
+        r"""结果描述。
         :rtype: str
         """
         return self._ResultDescription
@@ -3095,7 +3095,7 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ErrDescription(self):
-        """错误信息描述。
+        r"""错误信息描述。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         """
         return self._ErrDescription
@@ -3106,7 +3106,7 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID。
+        r"""资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -3134,7 +3134,7 @@ class CosTaskResult(AbstractModel):
 
 
 class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
-    """CreateAssetSortingReportRetryTask请求参数结构体
+    r"""CreateAssetSortingReportRetryTask请求参数结构体
 
     """
 
@@ -3150,7 +3150,7 @@ class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
 
     @property
     def ReportTaskId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._ReportTaskId
@@ -3161,7 +3161,7 @@ class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -3185,7 +3185,7 @@ class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
 
 
 class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
-    """CreateAssetSortingReportRetryTask返回参数结构体
+    r"""CreateAssetSortingReportRetryTask返回参数结构体
 
     """
 
@@ -3204,7 +3204,7 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def ReportTaskId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._ReportTaskId
@@ -3215,7 +3215,7 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._Remark
@@ -3226,7 +3226,7 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3243,7 +3243,7 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
 
 class CreateAssetSortingReportTaskRequest(AbstractModel):
-    """CreateAssetSortingReportTask请求参数结构体
+    r"""CreateAssetSortingReportTask请求参数结构体
 
     """
 
@@ -3262,7 +3262,7 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -3273,7 +3273,7 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """识别模板id
+        r"""识别模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -3284,7 +3284,7 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """选中资产列表
+        r"""选中资产列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -3314,7 +3314,7 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
 
 class CreateAssetSortingReportTaskResponse(AbstractModel):
-    """CreateAssetSortingReportTask返回参数结构体
+    r"""CreateAssetSortingReportTask返回参数结构体
 
     """
 
@@ -3333,7 +3333,7 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def ReportTaskId(self):
-        """报表任务id
+        r"""报表任务id
         :rtype: int
         """
         return self._ReportTaskId
@@ -3344,7 +3344,7 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._Remark
@@ -3355,7 +3355,7 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3372,7 +3372,7 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
 
 class CreateComplianceRules(AbstractModel):
-    """合规组分类关联规则信息
+    r"""合规组分类关联规则信息
 
     """
 
@@ -3388,7 +3388,7 @@ class CreateComplianceRules(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -3399,7 +3399,7 @@ class CreateComplianceRules(AbstractModel):
 
     @property
     def LevelId(self):
-        """级别id
+        r"""级别id
         :rtype: int
         """
         return self._LevelId
@@ -3423,7 +3423,7 @@ class CreateComplianceRules(AbstractModel):
 
 
 class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
-    """CreateDSPAAssessmentRiskLevel请求参数结构体
+    r"""CreateDSPAAssessmentRiskLevel请求参数结构体
 
     """
 
@@ -3448,7 +3448,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -3459,7 +3459,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级名称
+        r"""风险等级名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -3470,7 +3470,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
-        """识别模板
+        r"""识别模板
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -3481,7 +3481,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelRule(self):
-        """风险等级矩阵
+        r"""风险等级矩阵
         :rtype: list of RiskLevelMatrix
         """
         return self._RiskLevelRule
@@ -3492,7 +3492,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
-        """风险等级的描述
+        r"""风险等级的描述
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -3524,7 +3524,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
 
 class CreateDSPAAssessmentRiskLevelResponse(AbstractModel):
-    """CreateDSPAAssessmentRiskLevel返回参数结构体
+    r"""CreateDSPAAssessmentRiskLevel返回参数结构体
 
     """
 
@@ -3537,7 +3537,7 @@ class CreateDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3552,7 +3552,7 @@ class CreateDSPAAssessmentRiskLevelResponse(AbstractModel):
 
 
 class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
-    """CreateDSPAAssessmentRiskTemplate请求参数结构体
+    r"""CreateDSPAAssessmentRiskTemplate请求参数结构体
 
     """
 
@@ -3577,7 +3577,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -3588,7 +3588,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -3599,7 +3599,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
-        """风险等级id
+        r"""风险等级id
         :rtype: int
         """
         return self._RiskLevelId
@@ -3610,7 +3610,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskIdList(self):
-        """风险id列表
+        r"""风险id列表
         :rtype: list of int
         """
         return self._RiskIdList
@@ -3621,7 +3621,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """模板描述
+        r"""模板描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -3648,7 +3648,7 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
 
 class CreateDSPAAssessmentRiskTemplateResponse(AbstractModel):
-    """CreateDSPAAssessmentRiskTemplate返回参数结构体
+    r"""CreateDSPAAssessmentRiskTemplate返回参数结构体
 
     """
 
@@ -3661,7 +3661,7 @@ class CreateDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3676,7 +3676,7 @@ class CreateDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
 
 class CreateDSPAAssessmentTaskRequest(AbstractModel):
-    """CreateDSPAAssessmentTask请求参数结构体
+    r"""CreateDSPAAssessmentTask请求参数结构体
 
     """
 
@@ -3713,7 +3713,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -3724,7 +3724,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        """评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        r"""评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :rtype: str
         """
         return self._Name
@@ -3735,7 +3735,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板Id，格式“template-xxxxxxxx”
+        r"""评估模板Id，格式“template-xxxxxxxx”
         :rtype: str
         """
         return self._TemplateId
@@ -3748,7 +3748,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessName(self):
         warnings.warn("parameter `BusinessName` is deprecated", DeprecationWarning) 
 
-        """评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        r"""评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :rtype: str
         """
         return self._BusinessName
@@ -3763,7 +3763,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessDept(self):
         warnings.warn("parameter `BusinessDept` is deprecated", DeprecationWarning) 
 
-        """业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        r"""业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :rtype: str
         """
         return self._BusinessDept
@@ -3778,7 +3778,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessOwner(self):
         warnings.warn("parameter `BusinessOwner` is deprecated", DeprecationWarning) 
 
-        """业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        r"""业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :rtype: str
         """
         return self._BusinessOwner
@@ -3791,7 +3791,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """分类分级模板Id
+        r"""分类分级模板Id
         :rtype: int
         """
         return self._ComplianceId
@@ -3802,7 +3802,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DiscoveryCondition(self):
-        """敏感数据扫描数据源条件。
+        r"""敏感数据扫描数据源条件。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         """
         return self._DiscoveryCondition
@@ -3813,7 +3813,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        """说明
+        r"""说明
         :rtype: str
         """
         return self._Description
@@ -3846,7 +3846,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
 
 class CreateDSPAAssessmentTaskResponse(AbstractModel):
-    """CreateDSPAAssessmentTask返回参数结构体
+    r"""CreateDSPAAssessmentTask返回参数结构体
 
     """
 
@@ -3862,7 +3862,7 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """评估任务Id，格式“task-xxxxxxxx”
+        r"""评估任务Id，格式“task-xxxxxxxx”
         :rtype: str
         """
         return self._TaskId
@@ -3873,7 +3873,7 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3889,7 +3889,7 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
 
 
 class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
-    """CreateDSPACOSDiscoveryTask请求参数结构体
+    r"""CreateDSPACOSDiscoveryTask请求参数结构体
 
     """
 
@@ -3942,7 +3942,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -3953,7 +3953,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -3964,7 +3964,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -3975,7 +3975,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关，0 关闭，1 启用
+        r"""任务开关，0 关闭，1 启用
         :rtype: int
         """
         return self._Enable
@@ -3986,7 +3986,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """桶名
+        r"""桶名
         :rtype: str
         """
         return self._Bucket
@@ -3997,7 +3997,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
+        r"""执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
         :rtype: int
         """
         return self._Plan
@@ -4008,7 +4008,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Period(self):
-        """扫描周期，0单次 1每天 2每周 3每月
+        r"""扫描周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -4019,7 +4019,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileTypes(self):
-        """待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
+        r"""待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
         :rtype: list of str
         """
         return self._FileTypes
@@ -4030,7 +4030,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileSizeLimit(self):
-        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
+        r"""文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
         :rtype: int
         """
         return self._FileSizeLimit
@@ -4041,7 +4041,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -4052,7 +4052,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述，最大长度为1024个字符
+        r"""任务描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -4063,7 +4063,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -4074,7 +4074,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ComplianceGroupIds(self):
-        """合规组ID列表，最多支持添加5个
+        r"""合规组ID列表，最多支持添加5个
         :rtype: list of int
         """
         return self._ComplianceGroupIds
@@ -4085,7 +4085,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """任务定时启动时间，格式如：2006-01-02 15:04:05
+        r"""任务定时启动时间，格式如：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
         :rtype: str
         """
@@ -4122,7 +4122,7 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
 
 class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
-    """CreateDSPACOSDiscoveryTask返回参数结构体
+    r"""CreateDSPACOSDiscoveryTask返回参数结构体
 
     """
 
@@ -4141,7 +4141,7 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -4152,7 +4152,7 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
-        """扫描结果ID
+        r"""扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -4163,7 +4163,7 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4180,7 +4180,7 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
 
 class CreateDSPACategoryRelationRequest(AbstractModel):
-    """CreateDSPACategoryRelation请求参数结构体
+    r"""CreateDSPACategoryRelation请求参数结构体
 
     """
 
@@ -4202,7 +4202,7 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -4213,7 +4213,7 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -4224,7 +4224,7 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ParentCategoryId(self):
-        """父级分类id（无父级分类传-1）
+        r"""父级分类id（无父级分类传-1）
         :rtype: int
         """
         return self._ParentCategoryId
@@ -4235,7 +4235,7 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """分类模板id
+        r"""分类模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -4261,7 +4261,7 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
 
 class CreateDSPACategoryRelationResponse(AbstractModel):
-    """CreateDSPACategoryRelation返回参数结构体
+    r"""CreateDSPACategoryRelation返回参数结构体
 
     """
 
@@ -4274,7 +4274,7 @@ class CreateDSPACategoryRelationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4289,7 +4289,7 @@ class CreateDSPACategoryRelationResponse(AbstractModel):
 
 
 class CreateDSPACategoryRequest(AbstractModel):
-    """CreateDSPACategory请求参数结构体
+    r"""CreateDSPACategory请求参数结构体
 
     """
 
@@ -4305,7 +4305,7 @@ class CreateDSPACategoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -4316,7 +4316,7 @@ class CreateDSPACategoryRequest(AbstractModel):
 
     @property
     def Name(self):
-        """敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -4340,7 +4340,7 @@ class CreateDSPACategoryRequest(AbstractModel):
 
 
 class CreateDSPACategoryResponse(AbstractModel):
-    """CreateDSPACategory返回参数结构体
+    r"""CreateDSPACategory返回参数结构体
 
     """
 
@@ -4356,7 +4356,7 @@ class CreateDSPACategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -4367,7 +4367,7 @@ class CreateDSPACategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4383,7 +4383,7 @@ class CreateDSPACategoryResponse(AbstractModel):
 
 
 class CreateDSPAComplianceGroupRequest(AbstractModel):
-    """CreateDSPAComplianceGroup请求参数结构体
+    r"""CreateDSPAComplianceGroup请求参数结构体
 
     """
 
@@ -4414,7 +4414,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -4425,7 +4425,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -4436,7 +4436,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """合规组描述，最大长度为1024个字符
+        r"""合规组描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -4447,7 +4447,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
-        """合规组规则配置（参数已废弃，请传空数组）
+        r"""合规组规则配置（参数已废弃，请传空数组）
         :rtype: list of ComplianceGroupRuleIdInfo
         """
         return self._ComplianceGroupRules
@@ -4458,7 +4458,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """分级组ID，默认值为1，新增参数，可选
+        r"""分级组ID，默认值为1，新增参数，可选
         :rtype: int
         """
         return self._LevelGroupId
@@ -4469,7 +4469,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Status(self):
-        """1代表模板开启，0代表模板关闭
+        r"""1代表模板开启，0代表模板关闭
         :rtype: int
         """
         return self._Status
@@ -4480,7 +4480,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def CloseComplianceId(self):
-        """该complianceId的开启状态将被关闭
+        r"""该complianceId的开启状态将被关闭
         :rtype: int
         """
         return self._CloseComplianceId
@@ -4514,7 +4514,7 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
 
 class CreateDSPAComplianceGroupResponse(AbstractModel):
-    """CreateDSPAComplianceGroup返回参数结构体
+    r"""CreateDSPAComplianceGroup返回参数结构体
 
     """
 
@@ -4530,7 +4530,7 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -4541,7 +4541,7 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4557,7 +4557,7 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
 
 
 class CreateDSPAComplianceRulesRequest(AbstractModel):
-    """CreateDSPAComplianceRules请求参数结构体
+    r"""CreateDSPAComplianceRules请求参数结构体
 
     """
 
@@ -4579,7 +4579,7 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -4590,7 +4590,7 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -4601,7 +4601,7 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组模板id
+        r"""合规组模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -4612,7 +4612,7 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """规则列表
+        r"""规则列表
         :rtype: list of CreateComplianceRules
         """
         return self._Rules
@@ -4643,7 +4643,7 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
 
 class CreateDSPAComplianceRulesResponse(AbstractModel):
-    """CreateDSPAComplianceRules返回参数结构体
+    r"""CreateDSPAComplianceRules返回参数结构体
 
     """
 
@@ -4656,7 +4656,7 @@ class CreateDSPAComplianceRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4671,7 +4671,7 @@ class CreateDSPAComplianceRulesResponse(AbstractModel):
 
 
 class CreateDSPACosMetaResourcesRequest(AbstractModel):
-    """CreateDSPACosMetaResources请求参数结构体
+    r"""CreateDSPACosMetaResources请求参数结构体
 
     """
 
@@ -4693,7 +4693,7 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -4706,7 +4706,7 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -4721,7 +4721,7 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
     def Buckets(self):
         warnings.warn("parameter `Buckets` is deprecated", DeprecationWarning) 
 
-        """COS桶列表
+        r"""COS桶列表
         :rtype: list of str
         """
         return self._Buckets
@@ -4734,7 +4734,7 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
     @property
     def CosBucketItems(self):
-        """必填，COS资源列表
+        r"""必填，COS资源列表
         :rtype: list of CosBucketItem
         """
         return self._CosBucketItems
@@ -4765,7 +4765,7 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
 
 class CreateDSPACosMetaResourcesResponse(AbstractModel):
-    """CreateDSPACosMetaResources返回参数结构体
+    r"""CreateDSPACosMetaResources返回参数结构体
 
     """
 
@@ -4778,7 +4778,7 @@ class CreateDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4793,7 +4793,7 @@ class CreateDSPACosMetaResourcesResponse(AbstractModel):
 
 
 class CreateDSPADbMetaResourcesRequest(AbstractModel):
-    """CreateDSPADbMetaResources请求参数结构体
+    r"""CreateDSPADbMetaResources请求参数结构体
 
     """
 
@@ -4824,7 +4824,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -4835,7 +4835,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        r"""资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
         :rtype: str
         """
         return self._MetaType
@@ -4848,7 +4848,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -4863,7 +4863,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def UpdateStatus(self):
         warnings.warn("parameter `UpdateStatus` is deprecated", DeprecationWarning) 
 
-        """用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
+        r"""用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
         :rtype: str
         """
         return self._UpdateStatus
@@ -4878,7 +4878,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def UpdateId(self):
         warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
 
-        """本次更新的ID号，用来标记一次完整的更新过程。
+        r"""本次更新的ID号，用来标记一次完整的更新过程。
         :rtype: str
         """
         return self._UpdateId
@@ -4893,7 +4893,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def Items(self):
         warnings.warn("parameter `Items` is deprecated", DeprecationWarning) 
 
-        """云上资源列表。
+        r"""云上资源列表。
         :rtype: list of DspaCloudResourceMeta
         """
         return self._Items
@@ -4906,7 +4906,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def CloudResourceItems(self):
-        """必填，云数据库资源列表。
+        r"""必填，云数据库资源列表。
         :rtype: list of CloudResourceItem
         """
         return self._CloudResourceItems
@@ -4945,7 +4945,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
 
 class CreateDSPADbMetaResourcesResponse(AbstractModel):
-    """CreateDSPADbMetaResources返回参数结构体
+    r"""CreateDSPADbMetaResources返回参数结构体
 
     """
 
@@ -4972,7 +4972,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
     def UpdateId(self):
         warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
 
-        """本次更新的ID号，用来标记一次完整的更新过程。
+        r"""本次更新的ID号，用来标记一次完整的更新过程。
         :rtype: str
         """
         return self._UpdateId
@@ -4985,7 +4985,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        r"""资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
         :rtype: str
         """
         return self._MetaType
@@ -4996,7 +4996,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -5009,7 +5009,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -5022,7 +5022,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5041,7 +5041,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
 
 class CreateDSPADiscoveryRuleRequest(AbstractModel):
-    """CreateDSPADiscoveryRule请求参数结构体
+    r"""CreateDSPADiscoveryRule请求参数结构体
 
     """
 
@@ -5069,7 +5069,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -5080,7 +5080,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -5091,7 +5091,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述，最大长度为1024个字符
+        r"""规则描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -5102,7 +5102,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RDBRules(self):
-        """RDB类敏感数据识别规则
+        r"""RDB类敏感数据识别规则
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
         """
         return self._RDBRules
@@ -5113,7 +5113,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
-        """COS类敏感数据识别规则
+        r"""COS类敏感数据识别规则
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
         """
         return self._COSRules
@@ -5124,7 +5124,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态；0 不启用, 1 启用
+        r"""规则状态；0 不启用, 1 启用
         :rtype: int
         """
         return self._Status
@@ -5156,7 +5156,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
 
 class CreateDSPADiscoveryRuleResponse(AbstractModel):
-    """CreateDSPADiscoveryRule返回参数结构体
+    r"""CreateDSPADiscoveryRule返回参数结构体
 
     """
 
@@ -5172,7 +5172,7 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -5183,7 +5183,7 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5199,7 +5199,7 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
 
 
 class CreateDSPADiscoveryTaskRequest(AbstractModel):
-    """CreateDSPADiscoveryTask请求参数结构体
+    r"""CreateDSPADiscoveryTask请求参数结构体
 
     """
 
@@ -5268,7 +5268,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -5279,7 +5279,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Name(self):
-        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -5290,7 +5290,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -5301,7 +5301,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Enable(self):
-        """任务开关，0 关闭，1 启用
+        r"""任务开关，0 关闭，1 启用
         :rtype: int
         """
         return self._Enable
@@ -5312,7 +5312,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Plan(self):
-        """执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        r"""执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
         :rtype: int
         """
         return self._Plan
@@ -5323,7 +5323,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Period(self):
-        """扫描周期，0单次 1每天 2每周 3每月
+        r"""扫描周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -5334,7 +5334,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -5345,7 +5345,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
-        """数据源类型，可取值如下：
+        r"""数据源类型，可取值如下：
 cdb 表示云数据库 MySQL,
 dcdb 表示TDSQL MySQL版,
 mariadb 表示云数据库 MariaDB,
@@ -5365,7 +5365,7 @@ selfbuilt-db 表示自建数据库
     def GeneralRuleSetEnable(self):
         warnings.warn("parameter `GeneralRuleSetEnable` is deprecated", DeprecationWarning) 
 
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -5378,7 +5378,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Description(self):
-        """任务描述，最大长度为1024个字符
+        r"""任务描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -5389,7 +5389,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Condition(self):
-        """用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
+        r"""用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
         :rtype: str
         """
         return self._Condition
@@ -5400,7 +5400,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ComplianceGroupIds(self):
-        """此参数必选。合规组ID列表，最多支持添加5个
+        r"""此参数必选。合规组ID列表，最多支持添加5个
         :rtype: list of int
         """
         return self._ComplianceGroupIds
@@ -5411,7 +5411,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TimingStartTime(self):
-        """任务定时启动时间，格式如：2006-01-02 15:04:05
+        r"""任务定时启动时间，格式如：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
         :rtype: str
         """
@@ -5423,7 +5423,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Order(self):
-        """random-随机，asc生序，desc降序
+        r"""random-随机，asc生序，desc降序
         :rtype: str
         """
         return self._Order
@@ -5434,7 +5434,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Rows(self):
-        """抽样的条数，范围30-1000
+        r"""抽样的条数，范围30-1000
         :rtype: int
         """
         return self._Rows
@@ -5445,7 +5445,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def GlobalOrderField(self):
-        """抽样的排序字段
+        r"""抽样的排序字段
         :rtype: str
         """
         return self._GlobalOrderField
@@ -5456,7 +5456,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ScanRange(self):
-        """full:全量扫描 incre:变更扫描
+        r"""full:全量扫描 incre:变更扫描
         :rtype: str
         """
         return self._ScanRange
@@ -5495,7 +5495,7 @@ selfbuilt-db 表示自建数据库
 
 
 class CreateDSPADiscoveryTaskResponse(AbstractModel):
-    """CreateDSPADiscoveryTask返回参数结构体
+    r"""CreateDSPADiscoveryTask返回参数结构体
 
     """
 
@@ -5514,7 +5514,7 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -5525,7 +5525,7 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
-        """扫描结果ID
+        r"""扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -5536,7 +5536,7 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5553,7 +5553,7 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
 
 class CreateDSPALevelGroupRequest(AbstractModel):
-    """CreateDSPALevelGroup请求参数结构体
+    r"""CreateDSPALevelGroup请求参数结构体
 
     """
 
@@ -5575,7 +5575,7 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -5586,7 +5586,7 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -5597,7 +5597,7 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def ItemLevels(self):
-        """分级标识配置
+        r"""分级标识配置
         :rtype: list of ItemLevel
         """
         return self._ItemLevels
@@ -5608,7 +5608,7 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """分级组描述，最多1024字符
+        r"""分级组描述，最多1024字符
         :rtype: str
         """
         return self._Description
@@ -5639,7 +5639,7 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
 
 class CreateDSPALevelGroupResponse(AbstractModel):
-    """CreateDSPALevelGroup返回参数结构体
+    r"""CreateDSPALevelGroup返回参数结构体
 
     """
 
@@ -5655,7 +5655,7 @@ class CreateDSPALevelGroupResponse(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """分级组ID
+        r"""分级组ID
         :rtype: int
         """
         return self._LevelGroupId
@@ -5666,7 +5666,7 @@ class CreateDSPALevelGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5682,7 +5682,7 @@ class CreateDSPALevelGroupResponse(AbstractModel):
 
 
 class CreateDSPAMetaResourcesRequest(AbstractModel):
-    """CreateDSPAMetaResources请求参数结构体
+    r"""CreateDSPAMetaResources请求参数结构体
 
     """
 
@@ -5710,7 +5710,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        r"""资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
         :rtype: str
         """
         return self._MetaType
@@ -5721,7 +5721,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -5732,7 +5732,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -5743,7 +5743,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def UpdateStatus(self):
-        """用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
+        r"""用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
         :rtype: str
         """
         return self._UpdateStatus
@@ -5754,7 +5754,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def UpdateId(self):
-        """本次更新的ID号，用来标记一次完整的更新过程。
+        r"""本次更新的ID号，用来标记一次完整的更新过程。
         :rtype: str
         """
         return self._UpdateId
@@ -5765,7 +5765,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def Items(self):
-        """资源列表。
+        r"""资源列表。
         :rtype: list of DspaUserResourceMeta
         """
         return self._Items
@@ -5798,7 +5798,7 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
 
 class CreateDSPAMetaResourcesResponse(AbstractModel):
-    """CreateDSPAMetaResources返回参数结构体
+    r"""CreateDSPAMetaResources返回参数结构体
 
     """
 
@@ -5823,7 +5823,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def UpdateId(self):
-        """本次更新的ID号，用来标记一次完整的更新过程。
+        r"""本次更新的ID号，用来标记一次完整的更新过程。
         :rtype: str
         """
         return self._UpdateId
@@ -5834,7 +5834,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        r"""资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
         :rtype: str
         """
         return self._MetaType
@@ -5845,7 +5845,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -5856,7 +5856,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -5867,7 +5867,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5886,7 +5886,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
 
 class CreateDSPASelfBuildMetaResourceRequest(AbstractModel):
-    """CreateDSPASelfBuildMetaResource请求参数结构体
+    r"""CreateDSPASelfBuildMetaResource请求参数结构体
 
     """
 
@@ -5951,7 +5951,7 @@ serviceName
 
     @property
     def DspaId(self):
-        """Dspa实例ID。
+        r"""Dspa实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -5962,7 +5962,7 @@ serviceName
 
     @property
     def MetaType(self):
-        """自建数据库类型。目前支持的自建数据库类型按照协议进行区分，支持两种开源数据库协议：
+        r"""自建数据库类型。目前支持的自建数据库类型按照协议进行区分，支持两种开源数据库协议：
 mysql_like_proto -- Mysql协议类关系型数据库，
 postgre_like_proto -- Postgre协议类关系型数据库。
 其他闭源协议的数据库如SqlServer、Oracle等暂不支持。
@@ -5976,7 +5976,7 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -5987,7 +5987,7 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 
     @property
     def ResourceId(self):
-        """自建云资源ID。
+        r"""自建云资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -5998,7 +5998,7 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 
     @property
     def ResourceUniqueVpcId(self):
-        """自建云资源的VPC ID。
+        r"""自建云资源的VPC ID。
         :rtype: str
         """
         return self._ResourceUniqueVpcId
@@ -6009,7 +6009,7 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 
     @property
     def ResourceUniqueSubnetId(self):
-        """自建云资源的Subnet ID。
+        r"""自建云资源的Subnet ID。
         :rtype: str
         """
         return self._ResourceUniqueSubnetId
@@ -6020,7 +6020,7 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 
     @property
     def ResourceAccessType(self):
-        """自建云资源所处的服务类型，可选：
+        r"""自建云资源所处的服务类型，可选：
 cvm - 通过云服务器直接访问。
 clb - 通过LB的方式进行访问。
         :rtype: str
@@ -6033,7 +6033,7 @@ clb - 通过LB的方式进行访问。
 
     @property
     def ResourceVip(self):
-        """可用于访问自建云资源的IP。
+        r"""可用于访问自建云资源的IP。
 emr的连接不需要使用该字段
         :rtype: str
         """
@@ -6045,7 +6045,7 @@ emr的连接不需要使用该字段
 
     @property
     def ResourceVPort(self):
-        """可用于访问自建云资源的端口。
+        r"""可用于访问自建云资源的端口。
 emr的连接不需要使用该字段
         :rtype: int
         """
@@ -6057,7 +6057,7 @@ emr的连接不需要使用该字段
 
     @property
     def UserName(self):
-        """账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
+        r"""账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :rtype: str
         """
         return self._UserName
@@ -6068,7 +6068,7 @@ emr的连接不需要使用该字段
 
     @property
     def Password(self):
-        """账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
+        r"""账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :rtype: str
         """
         return self._Password
@@ -6079,7 +6079,7 @@ emr的连接不需要使用该字段
 
     @property
     def ResourceName(self):
-        """资源名称，1-60个字符。
+        r"""资源名称，1-60个字符。
         :rtype: str
         """
         return self._ResourceName
@@ -6090,7 +6090,7 @@ emr的连接不需要使用该字段
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
 databse
 sid
 serviceName
@@ -6104,7 +6104,7 @@ serviceName
 
     @property
     def InstanceValue(self):
-        """实例值
+        r"""实例值
         :rtype: str
         """
         return self._InstanceValue
@@ -6115,7 +6115,7 @@ serviceName
 
     @property
     def AuthRange(self):
-        """授权范围（all:授权整个数据源 manual:手动指定数据库）
+        r"""授权范围（all:授权整个数据源 manual:手动指定数据库）
         :rtype: str
         """
         return self._AuthRange
@@ -6152,7 +6152,7 @@ serviceName
 
 
 class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
-    """CreateDSPASelfBuildMetaResource返回参数结构体
+    r"""CreateDSPASelfBuildMetaResource返回参数结构体
 
     """
 
@@ -6171,7 +6171,7 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def ConnectivityStatus(self):
-        """连通性测试情况，success表示可正常访问，failed表示无法访问。
+        r"""连通性测试情况，success表示可正常访问，failed表示无法访问。
         :rtype: str
         """
         return self._ConnectivityStatus
@@ -6182,7 +6182,7 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def ConnectivityDescription(self):
-        """连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
+        r"""连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
         :rtype: str
         """
         return self._ConnectivityDescription
@@ -6193,7 +6193,7 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6210,7 +6210,7 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
 
 class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
-    """CreateIdentifyRuleAnotherName请求参数结构体
+    r"""CreateIdentifyRuleAnotherName请求参数结构体
 
     """
 
@@ -6244,7 +6244,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -6255,7 +6255,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -6266,7 +6266,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """规则绑定的分类id
+        r"""规则绑定的分类id
         :rtype: int
         """
         return self._CategoryId
@@ -6277,7 +6277,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -6288,7 +6288,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -6299,7 +6299,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AnotherName(self):
-        """规则别名
+        r"""规则别名
         :rtype: str
         """
         return self._AnotherName
@@ -6310,7 +6310,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AliasRuleId(self):
-        """别名规则id
+        r"""别名规则id
         :rtype: int
         """
         return self._AliasRuleId
@@ -6321,7 +6321,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AliasRuleName(self):
-        """别名规则名称
+        r"""别名规则名称
         :rtype: str
         """
         return self._AliasRuleName
@@ -6351,7 +6351,7 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
 
 class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
-    """CreateIdentifyRuleAnotherName返回参数结构体
+    r"""CreateIdentifyRuleAnotherName返回参数结构体
 
     """
 
@@ -6370,7 +6370,7 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def AliasRuleId(self):
-        """创建的别名规则id
+        r"""创建的别名规则id
         :rtype: int
         """
         return self._AliasRuleId
@@ -6381,7 +6381,7 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def AliasRuleName(self):
-        """别名规则名称
+        r"""别名规则名称
         :rtype: str
         """
         return self._AliasRuleName
@@ -6392,7 +6392,7 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6409,7 +6409,7 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
 
 class DBInstanceInfo(AbstractModel):
-    """绑定的实例信息
+    r"""绑定的实例信息
 
     """
 
@@ -6425,7 +6425,7 @@ class DBInstanceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._ResourceId
@@ -6436,7 +6436,7 @@ class DBInstanceInfo(AbstractModel):
 
     @property
     def DbInfos(self):
-        """数据源绑定的db信息
+        r"""数据源绑定的db信息
         :rtype: list of DbInfo
         """
         return self._DbInfos
@@ -6465,7 +6465,7 @@ class DBInstanceInfo(AbstractModel):
 
 
 class DBStatements(AbstractModel):
-    """数据库信息
+    r"""数据库信息
 
     """
 
@@ -6481,7 +6481,7 @@ class DBStatements(AbstractModel):
 
     @property
     def DBName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DBName
@@ -6492,7 +6492,7 @@ class DBStatements(AbstractModel):
 
     @property
     def DBSchema(self):
-        """数据库Schema
+        r"""数据库Schema
         :rtype: str
         """
         return self._DBSchema
@@ -6516,7 +6516,7 @@ class DBStatements(AbstractModel):
 
 
 class DSPACosMetaDataInfo(AbstractModel):
-    """COS元数据信息
+    r"""COS元数据信息
 
     """
 
@@ -6550,7 +6550,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS桶名
+        r"""COS桶名
         :rtype: str
         """
         return self._Bucket
@@ -6561,7 +6561,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """COS桶创建时间
+        r"""COS桶创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6572,7 +6572,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def Valid(self):
-        """1 -- 有效，0 -- 无效，资源可能已被删除。
+        r"""1 -- 有效，0 -- 无效，资源可能已被删除。
         :rtype: int
         """
         return self._Valid
@@ -6583,7 +6583,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """DSPA为COS资源生成的资源ID
+        r"""DSPA为COS资源生成的资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -6594,7 +6594,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """COS资源所处的地域
+        r"""COS资源所处的地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -6605,7 +6605,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def BindStatus(self):
-        """COS桶绑定状态
+        r"""COS桶绑定状态
         :rtype: str
         """
         return self._BindStatus
@@ -6616,7 +6616,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def Storage(self):
-        """COS桶存储量
+        r"""COS桶存储量
         :rtype: float
         """
         return self._Storage
@@ -6627,7 +6627,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def GovernAuthStatus(self):
-        """治理授权状态，0:关闭 1：开启
+        r"""治理授权状态，0:关闭 1：开启
         :rtype: int
         """
         return self._GovernAuthStatus
@@ -6657,7 +6657,7 @@ class DSPACosMetaDataInfo(AbstractModel):
 
 
 class DSPADataSourceDbInfo(AbstractModel):
-    """DSPA数据源的数据库信息
+    r"""DSPA数据源的数据库信息
 
     """
 
@@ -6670,7 +6670,7 @@ class DSPADataSourceDbInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -6693,7 +6693,7 @@ class DSPADataSourceDbInfo(AbstractModel):
 
 
 class DSPAMetaType(AbstractModel):
-    """元数据类型
+    r"""元数据类型
 
     """
 
@@ -6715,7 +6715,7 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def MetaType(self):
-        """元数据类型
+        r"""元数据类型
         :rtype: str
         """
         return self._MetaType
@@ -6726,7 +6726,7 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def Regions(self):
-        """支持的此元数据类型的地域列表
+        r"""支持的此元数据类型的地域列表
         :rtype: list of str
         """
         return self._Regions
@@ -6737,7 +6737,7 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def SupportedAuthTypes(self):
-        """此元数据类型支持的授权类型：
+        r"""此元数据类型支持的授权类型：
 account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
 automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
 如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
@@ -6765,7 +6765,7 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
 
 class DSPATableInfo(AbstractModel):
-    """DSPA分类分级任务扫描的表信息
+    r"""DSPA分类分级任务扫描的表信息
 
     """
 
@@ -6778,7 +6778,7 @@ class DSPATableInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """表名
+        r"""表名
         :rtype: str
         """
         return self._TableName
@@ -6801,7 +6801,7 @@ class DSPATableInfo(AbstractModel):
 
 
 class DataCategory(AbstractModel):
-    """敏感数据分类
+    r"""敏感数据分类
 
     """
 
@@ -6823,7 +6823,7 @@ class DataCategory(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类ID
+        r"""分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -6834,7 +6834,7 @@ class DataCategory(AbstractModel):
 
     @property
     def Name(self):
-        """敏感数据分类名称
+        r"""敏感数据分类名称
         :rtype: str
         """
         return self._Name
@@ -6845,7 +6845,7 @@ class DataCategory(AbstractModel):
 
     @property
     def Source(self):
-        """敏感数据分类来源，取值：0 内置, 1 自定义
+        r"""敏感数据分类来源，取值：0 内置, 1 自定义
         :rtype: int
         """
         return self._Source
@@ -6856,7 +6856,7 @@ class DataCategory(AbstractModel):
 
     @property
     def RelateComplianceCount(self):
-        """关联模板数量
+        r"""关联模板数量
         :rtype: int
         """
         return self._RelateComplianceCount
@@ -6882,7 +6882,7 @@ class DataCategory(AbstractModel):
 
 
 class DataContent(AbstractModel):
-    """扫描规则内容
+    r"""扫描规则内容
 
     """
 
@@ -6901,7 +6901,7 @@ true:区分大小写
 
     @property
     def RuleContent(self):
-        """规则内容，可以是正则规则，关键词，
+        r"""规则内容，可以是正则规则，关键词，
 忽略词扥
         :rtype: str
         """
@@ -6913,7 +6913,7 @@ true:区分大小写
 
     @property
     def IsIgnoreCase(self):
-        """是否区分大小写
+        r"""是否区分大小写
 false: 不区分大小写
 true:区分大小写
         :rtype: bool
@@ -6939,7 +6939,7 @@ true:区分大小写
 
 
 class DataRule(AbstractModel):
-    """敏感数据识别规则
+    r"""敏感数据识别规则
 
     """
 
@@ -6960,7 +6960,7 @@ regex 正则
 
     @property
     def RuleType(self):
-        """规则类型；取值：
+        r"""规则类型；取值：
 keyword 关键字, 
 regex 正则
         :rtype: str
@@ -6973,7 +6973,7 @@ regex 正则
 
     @property
     def RuleContent(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._RuleContent
@@ -6984,7 +6984,7 @@ regex 正则
 
     @property
     def ExtendParameters(self):
-        """该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
+        r"""该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
         :rtype: list of DatagovRuleExtendParameter
         """
         return self._ExtendParameters
@@ -7014,7 +7014,7 @@ regex 正则
 
 
 class DataRules(AbstractModel):
-    """敏感数据识别规则集
+    r"""敏感数据识别规则集
 
     """
 
@@ -7030,7 +7030,7 @@ class DataRules(AbstractModel):
 
     @property
     def Operator(self):
-        """操作符；只能取and, or的其中一种
+        r"""操作符；只能取and, or的其中一种
         :rtype: str
         """
         return self._Operator
@@ -7041,7 +7041,7 @@ class DataRules(AbstractModel):
 
     @property
     def Contents(self):
-        """规则
+        r"""规则
         :rtype: list of DataRule
         """
         return self._Contents
@@ -7070,7 +7070,7 @@ class DataRules(AbstractModel):
 
 
 class DataSourceInfo(AbstractModel):
-    """dsgc-资产梳理报表-数据源信息
+    r"""dsgc-资产梳理报表-数据源信息
 
     """
 
@@ -7086,7 +7086,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -7097,7 +7097,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def BindList(self):
-        """针对rbd-就是绑定的db_name
+        r"""针对rbd-就是绑定的db_name
         :rtype: list of str
         """
         return self._BindList
@@ -7121,7 +7121,7 @@ class DataSourceInfo(AbstractModel):
 
 
 class DatagovRuleExtendParameter(AbstractModel):
-    """敏感数据识别规则扩展参数
+    r"""敏感数据识别规则扩展参数
 
     """
 
@@ -7139,7 +7139,7 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
 
     @property
     def Name(self):
-        """扩展参数名称，目前支持如下两个扩展属性名称：
+        r"""扩展参数名称，目前支持如下两个扩展属性名称：
 IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
 IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
         :rtype: str
@@ -7152,7 +7152,7 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
 
     @property
     def Value(self):
-        """扩展参数值
+        r"""扩展参数值
         :rtype: str
         """
         return self._Value
@@ -7176,7 +7176,7 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
 
 
 class DbInfo(AbstractModel):
-    """查询绑定的db信息
+    r"""查询绑定的db信息
 
     """
 
@@ -7195,7 +7195,7 @@ class DbInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -7206,7 +7206,7 @@ class DbInfo(AbstractModel):
 
     @property
     def ValidStatus(self):
-        """绑定的状态
+        r"""绑定的状态
         :rtype: str
         """
         return self._ValidStatus
@@ -7217,7 +7217,7 @@ class DbInfo(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定的类型
+        r"""绑定的类型
         :rtype: str
         """
         return self._BindType
@@ -7242,7 +7242,7 @@ class DbInfo(AbstractModel):
 
 
 class DbRelationStatusItem(AbstractModel):
-    """数据库实例的DB绑定关系状态信息。
+    r"""数据库实例的DB绑定关系状态信息。
 
     """
 
@@ -7261,7 +7261,7 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def DbName(self):
-        """DB名称。
+        r"""DB名称。
         :rtype: str
         """
         return self._DbName
@@ -7272,7 +7272,7 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def BindStatus(self):
-        """DB绑定状态。
+        r"""DB绑定状态。
         :rtype: str
         """
         return self._BindStatus
@@ -7283,7 +7283,7 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def ValidStatus(self):
-        """DB有效性状态。
+        r"""DB有效性状态。
         :rtype: str
         """
         return self._ValidStatus
@@ -7308,7 +7308,7 @@ class DbRelationStatusItem(AbstractModel):
 
 
 class DbResourceItem(AbstractModel):
-    """数据库DB资源项
+    r"""数据库DB资源项
 
     """
 
@@ -7321,7 +7321,7 @@ class DbResourceItem(AbstractModel):
 
     @property
     def DbName(self):
-        """DB名称。
+        r"""DB名称。
         :rtype: str
         """
         return self._DbName
@@ -7344,7 +7344,7 @@ class DbResourceItem(AbstractModel):
 
 
 class DbTaskResult(AbstractModel):
-    """database批量操作返回结果结构体
+    r"""database批量操作返回结果结构体
 
     """
 
@@ -7369,7 +7369,7 @@ class DbTaskResult(AbstractModel):
 
     @property
     def Result(self):
-        """结果类型。
+        r"""结果类型。
         :rtype: str
         """
         return self._Result
@@ -7380,7 +7380,7 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
-        """结果描述。
+        r"""结果描述。
         :rtype: str
         """
         return self._ResultDescription
@@ -7391,7 +7391,7 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ErrDescription(self):
-        """错误信息描述。
+        r"""错误信息描述。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         """
         return self._ErrDescription
@@ -7402,7 +7402,7 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID。
+        r"""资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -7413,7 +7413,7 @@ class DbTaskResult(AbstractModel):
 
     @property
     def DbName(self):
-        """database名称。
+        r"""database名称。
         :rtype: str
         """
         return self._DbName
@@ -7442,7 +7442,7 @@ class DbTaskResult(AbstractModel):
 
 
 class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
-    """DecribeSuggestRiskLevelMatrix请求参数结构体
+    r"""DecribeSuggestRiskLevelMatrix请求参数结构体
 
     """
 
@@ -7462,7 +7462,7 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspaId
+        r"""dspaId
 
         :rtype: str
         """
@@ -7474,7 +7474,7 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def SensitiveLevelList(self):
-        """分类分级等级列表
+        r"""分类分级等级列表
         :rtype: list of RiskMatrixLevel
         """
         return self._SensitiveLevelList
@@ -7485,7 +7485,7 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def VulnerabilityLevelList(self):
-        """脆弱项等级列表
+        r"""脆弱项等级列表
         :rtype: list of RiskMatrixLevel
         """
         return self._VulnerabilityLevelList
@@ -7520,7 +7520,7 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
 
 class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
-    """DecribeSuggestRiskLevelMatrix返回参数结构体
+    r"""DecribeSuggestRiskLevelMatrix返回参数结构体
 
     """
 
@@ -7536,7 +7536,7 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
 
     @property
     def SuggestRiskLevelMatrix(self):
-        """矩阵
+        r"""矩阵
         :rtype: list of SuggestRiskLevelMatrix
         """
         return self._SuggestRiskLevelMatrix
@@ -7547,7 +7547,7 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7568,7 +7568,7 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
 
 
 class DeleteCosMetaResourceRequest(AbstractModel):
-    """DeleteCosMetaResource请求参数结构体
+    r"""DeleteCosMetaResource请求参数结构体
 
     """
 
@@ -7587,7 +7587,7 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """实例Id。
+        r"""实例Id。
         :rtype: str
         """
         return self._DspaId
@@ -7598,7 +7598,7 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -7609,7 +7609,7 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源实例ID。
+        r"""资源实例ID。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -7634,7 +7634,7 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
 
 class DeleteCosMetaResourceResponse(AbstractModel):
-    """DeleteCosMetaResource返回参数结构体
+    r"""DeleteCosMetaResource返回参数结构体
 
     """
 
@@ -7653,7 +7653,7 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def Results(self):
-        """结果集合。
+        r"""结果集合。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -7664,7 +7664,7 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -7675,7 +7675,7 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7697,7 +7697,7 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
 
 class DeleteDSPAAssessmentTaskRequest(AbstractModel):
-    """DeleteDSPAAssessmentTask请求参数结构体
+    r"""DeleteDSPAAssessmentTask请求参数结构体
 
     """
 
@@ -7713,7 +7713,7 @@ class DeleteDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -7724,7 +7724,7 @@ class DeleteDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """评估任务Id，格式“task-xxxxxxxx”
+        r"""评估任务Id，格式“task-xxxxxxxx”
         :rtype: str
         """
         return self._TaskId
@@ -7748,7 +7748,7 @@ class DeleteDSPAAssessmentTaskRequest(AbstractModel):
 
 
 class DeleteDSPAAssessmentTaskResponse(AbstractModel):
-    """DeleteDSPAAssessmentTask返回参数结构体
+    r"""DeleteDSPAAssessmentTask返回参数结构体
 
     """
 
@@ -7761,7 +7761,7 @@ class DeleteDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7776,7 +7776,7 @@ class DeleteDSPAAssessmentTaskResponse(AbstractModel):
 
 
 class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
-    """DeleteDSPACOSDiscoveryTask请求参数结构体
+    r"""DeleteDSPACOSDiscoveryTask请求参数结构体
 
     """
 
@@ -7792,7 +7792,7 @@ class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -7803,7 +7803,7 @@ class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -7827,7 +7827,7 @@ class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
 
 
 class DeleteDSPACOSDiscoveryTaskResponse(AbstractModel):
-    """DeleteDSPACOSDiscoveryTask返回参数结构体
+    r"""DeleteDSPACOSDiscoveryTask返回参数结构体
 
     """
 
@@ -7840,7 +7840,7 @@ class DeleteDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7855,7 +7855,7 @@ class DeleteDSPACOSDiscoveryTaskResponse(AbstractModel):
 
 
 class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
-    """DeleteDSPACOSDiscoveryTaskResult请求参数结构体
+    r"""DeleteDSPACOSDiscoveryTaskResult请求参数结构体
 
     """
 
@@ -7871,7 +7871,7 @@ class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -7882,7 +7882,7 @@ class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def BucketResultId(self):
-        """扫描bucket结果ID
+        r"""扫描bucket结果ID
         :rtype: int
         """
         return self._BucketResultId
@@ -7906,7 +7906,7 @@ class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
 
 
 class DeleteDSPACOSDiscoveryTaskResultResponse(AbstractModel):
-    """DeleteDSPACOSDiscoveryTaskResult返回参数结构体
+    r"""DeleteDSPACOSDiscoveryTaskResult返回参数结构体
 
     """
 
@@ -7919,7 +7919,7 @@ class DeleteDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7934,7 +7934,7 @@ class DeleteDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
 
 class DeleteDSPADiscoveryTaskRequest(AbstractModel):
-    """DeleteDSPADiscoveryTask请求参数结构体
+    r"""DeleteDSPADiscoveryTask请求参数结构体
 
     """
 
@@ -7953,7 +7953,7 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -7964,7 +7964,7 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -7975,7 +7975,7 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -8000,7 +8000,7 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
 
 class DeleteDSPADiscoveryTaskResponse(AbstractModel):
-    """DeleteDSPADiscoveryTask返回参数结构体
+    r"""DeleteDSPADiscoveryTask返回参数结构体
 
     """
 
@@ -8013,7 +8013,7 @@ class DeleteDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8028,7 +8028,7 @@ class DeleteDSPADiscoveryTaskResponse(AbstractModel):
 
 
 class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
-    """DeleteDSPADiscoveryTaskResult请求参数结构体
+    r"""DeleteDSPADiscoveryTaskResult请求参数结构体
 
     """
 
@@ -8044,7 +8044,7 @@ class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -8055,7 +8055,7 @@ class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DbResultId(self):
-        """扫描数据库结果ID
+        r"""扫描数据库结果ID
         :rtype: int
         """
         return self._DbResultId
@@ -8079,7 +8079,7 @@ class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
 
 
 class DeleteDSPADiscoveryTaskResultResponse(AbstractModel):
-    """DeleteDSPADiscoveryTaskResult返回参数结构体
+    r"""DeleteDSPADiscoveryTaskResult返回参数结构体
 
     """
 
@@ -8092,7 +8092,7 @@ class DeleteDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8107,7 +8107,7 @@ class DeleteDSPADiscoveryTaskResultResponse(AbstractModel):
 
 
 class DeleteDSPAMetaResourceRequest(AbstractModel):
-    """DeleteDSPAMetaResource请求参数结构体
+    r"""DeleteDSPAMetaResource请求参数结构体
 
     """
 
@@ -8123,7 +8123,7 @@ class DeleteDSPAMetaResourceRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -8134,7 +8134,7 @@ class DeleteDSPAMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
-        """用户云资源ID。
+        r"""用户云资源ID。
         :rtype: list of str
         """
         return self._ResourceIDs
@@ -8158,7 +8158,7 @@ class DeleteDSPAMetaResourceRequest(AbstractModel):
 
 
 class DeleteDSPAMetaResourceResponse(AbstractModel):
-    """DeleteDSPAMetaResource返回参数结构体
+    r"""DeleteDSPAMetaResource返回参数结构体
 
     """
 
@@ -8177,7 +8177,7 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -8188,7 +8188,7 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def Results(self):
-        """删除结果。
+        r"""删除结果。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -8199,7 +8199,7 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8221,7 +8221,7 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
 
 class DescribeAssetDetailDataExportResultRequest(AbstractModel):
-    """DescribeAssetDetailDataExportResult请求参数结构体
+    r"""DescribeAssetDetailDataExportResult请求参数结构体
 
     """
 
@@ -8237,7 +8237,7 @@ class DescribeAssetDetailDataExportResultRequest(AbstractModel):
 
     @property
     def ExportTaskId(self):
-        """导出任务id
+        r"""导出任务id
         :rtype: int
         """
         return self._ExportTaskId
@@ -8248,7 +8248,7 @@ class DescribeAssetDetailDataExportResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -8272,7 +8272,7 @@ class DescribeAssetDetailDataExportResultRequest(AbstractModel):
 
 
 class DescribeAssetDetailDataExportResultResponse(AbstractModel):
-    """DescribeAssetDetailDataExportResult返回参数结构体
+    r"""DescribeAssetDetailDataExportResult返回参数结构体
 
     """
 
@@ -8291,7 +8291,7 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def ExportResult(self):
-        """导出结果
+        r"""导出结果
         :rtype: str
         """
         return self._ExportResult
@@ -8302,7 +8302,7 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def ExportFileUrl(self):
-        """导出文件地址
+        r"""导出文件地址
         :rtype: str
         """
         return self._ExportFileUrl
@@ -8313,7 +8313,7 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8330,7 +8330,7 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
 
 class DescribeAssetOverviewRequest(AbstractModel):
-    """DescribeAssetOverview请求参数结构体
+    r"""DescribeAssetOverview请求参数结构体
 
     """
 
@@ -8349,7 +8349,7 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -8360,7 +8360,7 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -8371,7 +8371,7 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -8401,7 +8401,7 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
 
 class DescribeAssetOverviewResponse(AbstractModel):
-    """DescribeAssetOverview返回参数结构体
+    r"""DescribeAssetOverview返回参数结构体
 
     """
 
@@ -8462,7 +8462,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBInstanceNums(self):
-        """数据库实例id
+        r"""数据库实例id
         :rtype: int
         """
         return self._DBInstanceNums
@@ -8473,7 +8473,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBNums(self):
-        """数据库个数
+        r"""数据库个数
         :rtype: int
         """
         return self._DBNums
@@ -8484,7 +8484,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def TableNums(self):
-        """表的个数
+        r"""表的个数
         :rtype: int
         """
         return self._TableNums
@@ -8495,7 +8495,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段个数
+        r"""字段个数
         :rtype: int
         """
         return self._FieldNums
@@ -8506,7 +8506,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBInstanceDistribution(self):
-        """数据库实例的分布情况
+        r"""数据库实例的分布情况
         :rtype: list of Note
         """
         return self._DBInstanceDistribution
@@ -8517,7 +8517,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBDistribution(self):
-        """db分布情况
+        r"""db分布情况
         :rtype: list of Note
         """
         return self._DBDistribution
@@ -8528,7 +8528,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def BucketNums(self):
-        """cos桶的数量
+        r"""cos桶的数量
         :rtype: int
         """
         return self._BucketNums
@@ -8539,7 +8539,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def FileNums(self):
-        """文件个数
+        r"""文件个数
         :rtype: int
         """
         return self._FileNums
@@ -8550,7 +8550,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """用于对用户进行提示信息
+        r"""用于对用户进行提示信息
         :rtype: str
         """
         return self._Remark
@@ -8561,7 +8561,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsInstanceNums(self):
-        """es实例数量
+        r"""es实例数量
         :rtype: int
         """
         return self._EsInstanceNums
@@ -8572,7 +8572,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsIndexNums(self):
-        """es索引数量
+        r"""es索引数量
         :rtype: int
         """
         return self._EsIndexNums
@@ -8583,7 +8583,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsFieldNums(self):
-        """es字段数量
+        r"""es字段数量
         :rtype: int
         """
         return self._EsFieldNums
@@ -8594,7 +8594,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoInstanceNums(self):
-        """mongo实例数量
+        r"""mongo实例数量
         :rtype: int
         """
         return self._MongoInstanceNums
@@ -8605,7 +8605,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoDbNums(self):
-        """mongo数据库数量
+        r"""mongo数据库数量
         :rtype: int
         """
         return self._MongoDbNums
@@ -8616,7 +8616,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoColNums(self):
-        """mongo集合数量
+        r"""mongo集合数量
         :rtype: int
         """
         return self._MongoColNums
@@ -8627,7 +8627,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoFieldNums(self):
-        """mongo字段数量
+        r"""mongo字段数量
         :rtype: int
         """
         return self._MongoFieldNums
@@ -8638,7 +8638,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8679,7 +8679,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
 
 class DescribeBindDBListRequest(AbstractModel):
-    """DescribeBindDBList请求参数结构体
+    r"""DescribeBindDBList请求参数结构体
 
     """
 
@@ -8698,7 +8698,7 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -8711,7 +8711,7 @@ class DescribeBindDBListRequest(AbstractModel):
     def DataSourceType(self):
         warnings.warn("parameter `DataSourceType` is deprecated", DeprecationWarning) 
 
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -8726,7 +8726,7 @@ class DescribeBindDBListRequest(AbstractModel):
     def DataSourceId(self):
         warnings.warn("parameter `DataSourceId` is deprecated", DeprecationWarning) 
 
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -8753,7 +8753,7 @@ class DescribeBindDBListRequest(AbstractModel):
 
 
 class DescribeBindDBListResponse(AbstractModel):
-    """DescribeBindDBList返回参数结构体
+    r"""DescribeBindDBList返回参数结构体
 
     """
 
@@ -8772,7 +8772,7 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def BindDBList(self):
-        """绑定的DB列表（已废弃）
+        r"""绑定的DB列表（已废弃）
         :rtype: list of str
         """
         return self._BindDBList
@@ -8783,7 +8783,7 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def BindList(self):
-        """绑定信息
+        r"""绑定信息
         :rtype: list of DBInstanceInfo
         """
         return self._BindList
@@ -8794,7 +8794,7 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8816,7 +8816,7 @@ class DescribeBindDBListResponse(AbstractModel):
 
 
 class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
-    """DescribeCOSAssetSensitiveDistribution请求参数结构体
+    r"""DescribeCOSAssetSensitiveDistribution请求参数结构体
 
     """
 
@@ -8835,7 +8835,7 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -8846,7 +8846,7 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -8857,7 +8857,7 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产列表
+        r"""查询的资产列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -8887,7 +8887,7 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
 
 class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
-    """DescribeCOSAssetSensitiveDistribution返回参数结构体
+    r"""DescribeCOSAssetSensitiveDistribution返回参数结构体
 
     """
 
@@ -8909,7 +8909,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def CosAsset(self):
-        """cos的涉敏资产
+        r"""cos的涉敏资产
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.CosAsset`
         """
         return self._CosAsset
@@ -8920,7 +8920,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
-        """涉敏top
+        r"""涉敏top
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -8931,7 +8931,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def CosDetail(self):
-        """cos资产详情列表
+        r"""cos资产详情列表
         :rtype: list of AssetCosDetail
         """
         return self._CosDetail
@@ -8942,7 +8942,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8972,7 +8972,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentHighRiskTop10Overview请求参数结构体
+    r"""DescribeDSPAAssessmentHighRiskTop10Overview请求参数结构体
 
     """
 
@@ -8992,7 +8992,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例Id
+        r"""dspa实例Id
         :rtype: str
         """
         return self._DspaId
@@ -9003,7 +9003,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -9014,7 +9014,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤条件， rdb（数据库）cos（对象存储）
+        r"""过滤条件， rdb（数据库）cos（对象存储）
 不传就是全部
         :rtype: str
         """
@@ -9040,7 +9040,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentHighRiskTop10Overview返回参数结构体
+    r"""DescribeDSPAAssessmentHighRiskTop10Overview返回参数结构体
 
     """
 
@@ -9056,7 +9056,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
 
     @property
     def AssetsList(self):
-        """含高风险资产TOP10的列表数据
+        r"""含高风险资产TOP10的列表数据
         :rtype: list of HighRiskAssetsDetail
         """
         return self._AssetsList
@@ -9067,7 +9067,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9088,7 +9088,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
-    """DescribeDSPAAssessmentLatestRiskDetailInfo请求参数结构体
+    r"""DescribeDSPAAssessmentLatestRiskDetailInfo请求参数结构体
 
     """
 
@@ -9107,7 +9107,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例Id
+        r"""dspa实例Id
         :rtype: str
         """
         return self._DspaId
@@ -9118,7 +9118,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -9129,7 +9129,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险id
+        r"""风险id
         :rtype: int
         """
         return self._RiskId
@@ -9154,7 +9154,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
-    """DescribeDSPAAssessmentLatestRiskDetailInfo返回参数结构体
+    r"""DescribeDSPAAssessmentLatestRiskDetailInfo返回参数结构体
 
     """
 
@@ -9224,7 +9224,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -9235,7 +9235,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源name
+        r"""数据源name
         :rtype: str
         """
         return self._DataSourceName
@@ -9246,7 +9246,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产对象名称
+        r"""资产对象名称
         :rtype: str
         """
         return self._AssetName
@@ -9257,7 +9257,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AssessmentTemplateId(self):
-        """风险评估模板id
+        r"""风险评估模板id
         :rtype: int
         """
         return self._AssessmentTemplateId
@@ -9268,7 +9268,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def IdentifyTemplateId(self):
-        """分类分级的模板id
+        r"""分类分级的模板id
         :rtype: int
         """
         return self._IdentifyTemplateId
@@ -9279,7 +9279,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -9290,7 +9290,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险项
+        r"""风险项
         :rtype: str
         """
         return self._RiskName
@@ -9301,7 +9301,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskDescription(self):
-        """风险的描述
+        r"""风险的描述
         :rtype: str
         """
         return self._RiskDescription
@@ -9312,7 +9312,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险的级别
+        r"""风险的级别
         :rtype: str
         """
         return self._RiskLevel
@@ -9323,7 +9323,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def SuggestAction(self):
-        """处置的建议
+        r"""处置的建议
         :rtype: str
         """
         return self._SuggestAction
@@ -9334,7 +9334,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """处置状态
+        r"""处置状态
         :rtype: int
         """
         return self._Status
@@ -9345,7 +9345,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -9356,7 +9356,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def SecurityProduct(self):
-        """安全产品
+        r"""安全产品
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -9367,7 +9367,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskDimension(self):
-        """风险归属
+        r"""风险归属
         :rtype: str
         """
         return self._RiskDimension
@@ -9378,7 +9378,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RelationAsset(self):
-        """关联数据库（如果风险归属是instance）
+        r"""关联数据库（如果风险归属是instance）
         :rtype: list of str
         """
         return self._RelationAsset
@@ -9389,7 +9389,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AccountRiskDetail(self):
-        """风险账号详情
+        r"""风险账号详情
         :rtype: list of AccountRisk
         """
         return self._AccountRiskDetail
@@ -9400,7 +9400,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def PrivilegeRiskDetail(self):
-        """权限风险详情
+        r"""权限风险详情
         :rtype: list of PrivilegeRisk
         """
         return self._PrivilegeRiskDetail
@@ -9411,7 +9411,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def PolicyRiskCosFileList(self):
-        """策略风险的cos风险文件列表
+        r"""策略风险的cos风险文件列表
         :rtype: list of str
         """
         return self._PolicyRiskCosFileList
@@ -9422,7 +9422,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AKSKLeak(self):
-        """AKSK泄漏列表
+        r"""AKSK泄漏列表
         :rtype: list of AKSKLeak
         """
         return self._AKSKLeak
@@ -9433,7 +9433,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9487,7 +9487,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
-    """DescribeDSPAAssessmentLatestRiskList请求参数结构体
+    r"""DescribeDSPAAssessmentLatestRiskList请求参数结构体
 
     """
 
@@ -9536,7 +9536,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例Id
+        r"""dspa实例Id
         :rtype: str
         """
         return self._DspaId
@@ -9547,7 +9547,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -9558,7 +9558,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制条数
+        r"""限制条数
         :rtype: int
         """
         return self._Limit
@@ -9569,7 +9569,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: str
         """
         return self._Offset
@@ -9580,7 +9580,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """资产名称，数据源id
+        r"""资产名称，数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -9591,7 +9591,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -9602,7 +9602,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def ControlItemId(self):
-        """风险项
+        r"""风险项
         :rtype: str
         """
         return self._ControlItemId
@@ -9613,7 +9613,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """风险状态
+        r"""风险状态
         :rtype: int
         """
         return self._Status
@@ -9624,7 +9624,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """扫描开始时间
+        r"""扫描开始时间
         :rtype: str
         """
         return self._BeginTime
@@ -9635,7 +9635,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """扫描结束时间
+        r"""扫描结束时间
         :rtype: str
         """
         return self._EndTime
@@ -9646,7 +9646,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级筛选
+        r"""风险等级筛选
         :rtype: str
         """
         return self._RiskLevel
@@ -9657,7 +9657,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面筛选
+        r"""风险面筛选
         :rtype: list of str
         """
         return self._RiskSide
@@ -9668,7 +9668,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def TimeSort(self):
-        """ASC 正序，DESC倒叙
+        r"""ASC 正序，DESC倒叙
         :rtype: str
         """
         return self._TimeSort
@@ -9703,7 +9703,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
-    """DescribeDSPAAssessmentLatestRiskList返回参数结构体
+    r"""DescribeDSPAAssessmentLatestRiskList返回参数结构体
 
     """
 
@@ -9722,7 +9722,7 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def LatestRiskList(self):
-        """最新风险详情列表
+        r"""最新风险详情列表
         :rtype: list of RiskItemInfo
         """
         return self._LatestRiskList
@@ -9733,7 +9733,7 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -9744,7 +9744,7 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9766,7 +9766,7 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentNewDiscoveredRiskOverview请求参数结构体
+    r"""DescribeDSPAAssessmentNewDiscoveredRiskOverview请求参数结构体
 
     """
 
@@ -9782,7 +9782,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -9793,7 +9793,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -9817,7 +9817,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentNewDiscoveredRiskOverview返回参数结构体
+    r"""DescribeDSPAAssessmentNewDiscoveredRiskOverview返回参数结构体
 
     """
 
@@ -9839,7 +9839,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def NewDiscoveredRiskCount(self):
-        """待处理的风险数
+        r"""待处理的风险数
         :rtype: int
         """
         return self._NewDiscoveredRiskCount
@@ -9850,7 +9850,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
-        """受影响的资产数
+        r"""受影响的资产数
         :rtype: int
         """
         return self._AffectedAssetCount
@@ -9861,7 +9861,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
-        """周同比
+        r"""周同比
         :rtype: float
         """
         return self._WeekRatio
@@ -9872,7 +9872,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9890,7 +9890,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentPendingRiskOverview请求参数结构体
+    r"""DescribeDSPAAssessmentPendingRiskOverview请求参数结构体
 
     """
 
@@ -9906,7 +9906,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -9917,7 +9917,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -9941,7 +9941,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentPendingRiskOverview返回参数结构体
+    r"""DescribeDSPAAssessmentPendingRiskOverview返回参数结构体
 
     """
 
@@ -9963,7 +9963,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def PendingRiskCount(self):
-        """待处理的风险数
+        r"""待处理的风险数
         :rtype: int
         """
         return self._PendingRiskCount
@@ -9974,7 +9974,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
-        """受影响的资产数
+        r"""受影响的资产数
         :rtype: int
         """
         return self._AffectedAssetCount
@@ -9985,7 +9985,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
-        """周同比
+        r"""周同比
         :rtype: float
         """
         return self._WeekRatio
@@ -9996,7 +9996,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10014,7 +10014,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentProcessingRiskOverview请求参数结构体
+    r"""DescribeDSPAAssessmentProcessingRiskOverview请求参数结构体
 
     """
 
@@ -10030,7 +10030,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10041,7 +10041,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -10065,7 +10065,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentProcessingRiskOverview返回参数结构体
+    r"""DescribeDSPAAssessmentProcessingRiskOverview返回参数结构体
 
     """
 
@@ -10087,7 +10087,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def ProcessingRiskCount(self):
-        """待处理的风险数
+        r"""待处理的风险数
         :rtype: int
         """
         return self._ProcessingRiskCount
@@ -10098,7 +10098,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
-        """受影响的资产数
+        r"""受影响的资产数
         :rtype: int
         """
         return self._AffectedAssetCount
@@ -10109,7 +10109,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
-        """周同比
+        r"""周同比
         :rtype: float
         """
         return self._WeekRatio
@@ -10120,7 +10120,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10138,7 +10138,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskAmountOverview请求参数结构体
+    r"""DescribeDSPAAssessmentRiskAmountOverview请求参数结构体
 
     """
 
@@ -10154,7 +10154,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10165,7 +10165,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -10189,7 +10189,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskAmountOverview返回参数结构体
+    r"""DescribeDSPAAssessmentRiskAmountOverview返回参数结构体
 
     """
 
@@ -10208,7 +10208,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def TotalRiskCount(self):
-        """风险总数
+        r"""风险总数
         :rtype: int
         """
         return self._TotalRiskCount
@@ -10219,7 +10219,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def TotalAffectedAssetCount(self):
-        """受影响的资产数
+        r"""受影响的资产数
         :rtype: int
         """
         return self._TotalAffectedAssetCount
@@ -10230,7 +10230,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10247,7 +10247,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDatasourceTop5Request(AbstractModel):
-    """DescribeDSPAAssessmentRiskDatasourceTop5请求参数结构体
+    r"""DescribeDSPAAssessmentRiskDatasourceTop5请求参数结构体
 
     """
 
@@ -10260,7 +10260,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Request(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10283,7 +10283,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Request(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
-    """DescribeDSPAAssessmentRiskDatasourceTop5返回参数结构体
+    r"""DescribeDSPAAssessmentRiskDatasourceTop5返回参数结构体
 
     """
 
@@ -10299,7 +10299,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     @property
     def Items(self):
-        """风险值
+        r"""风险值
         :rtype: list of RiskItem
         """
         return self._Items
@@ -10310,7 +10310,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10331,7 +10331,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDealedOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskDealedOverview请求参数结构体
+    r"""DescribeDSPAAssessmentRiskDealedOverview请求参数结构体
 
     """
 
@@ -10344,7 +10344,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10367,7 +10367,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskDealedOverview返回参数结构体
+    r"""DescribeDSPAAssessmentRiskDealedOverview返回参数结构体
 
     """
 
@@ -10392,7 +10392,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """遗留待处理风险总数
+        r"""遗留待处理风险总数
         :rtype: int
         """
         return self._TotalCount
@@ -10403,7 +10403,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def YesterdayDealedCount(self):
-        """昨日完成风险处置数
+        r"""昨日完成风险处置数
         :rtype: int
         """
         return self._YesterdayDealedCount
@@ -10414,7 +10414,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def UnDealedRiskWeekRatio(self):
-        """遗留待处理风险数周同比
+        r"""遗留待处理风险数周同比
         :rtype: float
         """
         return self._UnDealedRiskWeekRatio
@@ -10425,7 +10425,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def UnDealedRiskDayRatio(self):
-        """遗留待处理风险数日环比
+        r"""遗留待处理风险数日环比
         :rtype: float
         """
         return self._UnDealedRiskDayRatio
@@ -10436,7 +10436,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10455,7 +10455,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskDealedTrend请求参数结构体
+    r"""DescribeDSPAAssessmentRiskDealedTrend请求参数结构体
 
     """
 
@@ -10477,7 +10477,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10488,7 +10488,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始日期
+        r"""开始日期
         :rtype: str
         """
         return self._StartTime
@@ -10499,7 +10499,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束日期
+        r"""结束日期
         :rtype: str
         """
         return self._EndTime
@@ -10510,7 +10510,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: str
         """
         return self._TemplateId
@@ -10536,7 +10536,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskDealedTrend返回参数结构体
+    r"""DescribeDSPAAssessmentRiskDealedTrend返回参数结构体
 
     """
 
@@ -10552,7 +10552,7 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
 
     @property
     def Items(self):
-        """趋势统计结果
+        r"""趋势统计结果
         :rtype: list of RiskDealedTrendItem
         """
         return self._Items
@@ -10563,7 +10563,7 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10584,7 +10584,7 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskDistributionOverview请求参数结构体
+    r"""DescribeDSPAAssessmentRiskDistributionOverview请求参数结构体
 
     """
 
@@ -10604,7 +10604,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例Id
+        r"""dspa实例Id
         :rtype: str
         """
         return self._DspaId
@@ -10615,7 +10615,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -10626,7 +10626,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """风险资产分布的过滤条件
+        r"""风险资产分布的过滤条件
 （rdb，cos，不传就筛选全部）
         :rtype: str
         """
@@ -10652,7 +10652,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskDistributionOverview返回参数结构体
+    r"""DescribeDSPAAssessmentRiskDistributionOverview返回参数结构体
 
     """
 
@@ -10674,7 +10674,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskTypeDistribution(self):
-        """风险类型分布
+        r"""风险类型分布
         :rtype: list of Note
         """
         return self._RiskTypeDistribution
@@ -10685,7 +10685,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskDetailDistribution(self):
-        """风险详情分布
+        r"""风险详情分布
         :rtype: list of Note
         """
         return self._RiskDetailDistribution
@@ -10696,7 +10696,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskAssetsDistribution(self):
-        """风险资产详情
+        r"""风险资产详情
         :rtype: list of Note
         """
         return self._RiskAssetsDistribution
@@ -10707,7 +10707,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10740,7 +10740,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskItemTop5Request(AbstractModel):
-    """DescribeDSPAAssessmentRiskItemTop5请求参数结构体
+    r"""DescribeDSPAAssessmentRiskItemTop5请求参数结构体
 
     """
 
@@ -10753,7 +10753,7 @@ class DescribeDSPAAssessmentRiskItemTop5Request(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10776,7 +10776,7 @@ class DescribeDSPAAssessmentRiskItemTop5Request(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
-    """DescribeDSPAAssessmentRiskItemTop5返回参数结构体
+    r"""DescribeDSPAAssessmentRiskItemTop5返回参数结构体
 
     """
 
@@ -10792,7 +10792,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     @property
     def Items(self):
-        """风险结果
+        r"""风险结果
         :rtype: list of RiskItem
         """
         return self._Items
@@ -10803,7 +10803,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10824,7 +10824,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelDetail请求参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelDetail请求参数结构体
 
     """
 
@@ -10840,7 +10840,7 @@ class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -10851,7 +10851,7 @@ class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
-        """风险级别id
+        r"""风险级别id
         :rtype: int
         """
         return self._RiskLevelId
@@ -10875,7 +10875,7 @@ class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelDetail返回参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelDetail返回参数结构体
 
     """
 
@@ -10903,7 +10903,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险级别名称
+        r"""风险级别名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -10914,7 +10914,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
-        """风险级别描述
+        r"""风险级别描述
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -10925,7 +10925,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
-        """分类分级id
+        r"""分类分级id
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -10936,7 +10936,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def IdentifyComplianceName(self):
-        """分类分级模板名称
+        r"""分类分级模板名称
         :rtype: str
         """
         return self._IdentifyComplianceName
@@ -10947,7 +10947,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelMatrix(self):
-        """风险数据
+        r"""风险数据
         :rtype: list of RiskLevelMatrix
         """
         return self._RiskLevelMatrix
@@ -10958,7 +10958,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10983,7 +10983,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelList请求参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelList请求参数结构体
 
     """
 
@@ -11002,7 +11002,7 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11013,7 +11013,7 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制条数
+        r"""限制条数
         :rtype: int
         """
         return self._Limit
@@ -11024,7 +11024,7 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -11049,7 +11049,7 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelList返回参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelList返回参数结构体
 
     """
 
@@ -11068,7 +11068,7 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -11079,7 +11079,7 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def RiskLevelList(self):
-        """风险等级列表
+        r"""风险等级列表
         :rtype: list of RiskLevelRisk
         """
         return self._RiskLevelList
@@ -11090,7 +11090,7 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11112,7 +11112,7 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelTrend请求参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelTrend请求参数结构体
 
     """
 
@@ -11134,7 +11134,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11145,7 +11145,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始日期
+        r"""开始日期
         :rtype: str
         """
         return self._StartTime
@@ -11156,7 +11156,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时日期
+        r"""结束时日期
         :rtype: str
         """
         return self._EndTime
@@ -11167,7 +11167,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: str
         """
         return self._TemplateId
@@ -11193,7 +11193,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskLevelTrend返回参数结构体
+    r"""DescribeDSPAAssessmentRiskLevelTrend返回参数结构体
 
     """
 
@@ -11209,7 +11209,7 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
 
     @property
     def Items(self):
-        """结果集
+        r"""结果集
         :rtype: list of RiskLevelTrendItem
         """
         return self._Items
@@ -11220,7 +11220,7 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11241,7 +11241,7 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskOverviewRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskOverview请求参数结构体
+    r"""DescribeDSPAAssessmentRiskOverview请求参数结构体
 
     """
 
@@ -11254,7 +11254,7 @@ class DescribeDSPAAssessmentRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11277,7 +11277,7 @@ class DescribeDSPAAssessmentRiskOverviewRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskOverview返回参数结构体
+    r"""DescribeDSPAAssessmentRiskOverview返回参数结构体
 
     """
 
@@ -11302,7 +11302,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """风险总数
+        r"""风险总数
         :rtype: int
         """
         return self._TotalCount
@@ -11313,7 +11313,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskCount(self):
-        """高危风险数
+        r"""高危风险数
         :rtype: int
         """
         return self._HighRiskCount
@@ -11324,7 +11324,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskWeekRatio(self):
-        """周同比
+        r"""周同比
         :rtype: float
         """
         return self._HighRiskWeekRatio
@@ -11335,7 +11335,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskDayRatio(self):
-        """高危风险数日环比
+        r"""高危风险数日环比
         :rtype: float
         """
         return self._HighRiskDayRatio
@@ -11346,7 +11346,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11365,7 +11365,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskProcessHistory请求参数结构体
+    r"""DescribeDSPAAssessmentRiskProcessHistory请求参数结构体
 
     """
 
@@ -11381,7 +11381,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11392,7 +11392,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险id
+        r"""风险id
         :rtype: int
         """
         return self._RiskId
@@ -11416,7 +11416,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskProcessHistory返回参数结构体
+    r"""DescribeDSPAAssessmentRiskProcessHistory返回参数结构体
 
     """
 
@@ -11432,7 +11432,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
 
     @property
     def ProcessHistory(self):
-        """处理的历史
+        r"""处理的历史
         :rtype: list of ProcessHistory
         """
         return self._ProcessHistory
@@ -11443,7 +11443,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11464,7 +11464,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskSideDistributed请求参数结构体
+    r"""DescribeDSPAAssessmentRiskSideDistributed请求参数结构体
 
     """
 
@@ -11480,7 +11480,7 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -11491,7 +11491,7 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -11515,7 +11515,7 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskSideDistributed返回参数结构体
+    r"""DescribeDSPAAssessmentRiskSideDistributed返回参数结构体
 
     """
 
@@ -11531,7 +11531,7 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
 
     @property
     def RiskSideDistributed(self):
-        """风险面的分布
+        r"""风险面的分布
         :rtype: list of RiskSideDistributed
         """
         return self._RiskSideDistributed
@@ -11542,7 +11542,7 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11563,7 +11563,7 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskSideList请求参数结构体
+    r"""DescribeDSPAAssessmentRiskSideList请求参数结构体
 
     """
 
@@ -11579,7 +11579,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -11590,7 +11590,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """评估模板id
+        r"""评估模板id
         :rtype: int
         """
         return self._TemplateId
@@ -11614,7 +11614,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskSideList返回参数结构体
+    r"""DescribeDSPAAssessmentRiskSideList返回参数结构体
 
     """
 
@@ -11635,7 +11635,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
     def RiskSideItmeList(self):
         warnings.warn("parameter `RiskSideItmeList` is deprecated", DeprecationWarning) 
 
-        """风险面列表
+        r"""风险面列表
         :rtype: list of Note
         """
         return self._RiskSideItmeList
@@ -11648,7 +11648,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @property
     def RiskSideItemList(self):
-        """风险面列表
+        r"""风险面列表
         :rtype: list of Note
         """
         return self._RiskSideItemList
@@ -11659,7 +11659,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11686,7 +11686,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskTemplateDetail请求参数结构体
+    r"""DescribeDSPAAssessmentRiskTemplateDetail请求参数结构体
 
     """
 
@@ -11708,7 +11708,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11719,7 +11719,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateId
@@ -11730,7 +11730,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制条数
+        r"""限制条数
         :rtype: int
         """
         return self._Limit
@@ -11741,7 +11741,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -11767,7 +11767,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskTemplateDetail返回参数结构体
+    r"""DescribeDSPAAssessmentRiskTemplateDetail返回参数结构体
 
     """
 
@@ -11804,7 +11804,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateId
@@ -11815,7 +11815,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -11826,7 +11826,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """模板的描述
+        r"""模板的描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -11837,7 +11837,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskLevelId(self):
-        """风险等级
+        r"""风险等级
         :rtype: int
         """
         return self._RiskLevelId
@@ -11848,7 +11848,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级名称
+        r"""风险等级名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -11859,7 +11859,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskItemList(self):
-        """脆弱项配置列表
+        r"""脆弱项配置列表
         :rtype: list of AssessmentRiskItem
         """
         return self._RiskItemList
@@ -11870,7 +11870,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """脆弱项配置条数
+        r"""脆弱项配置条数
         :rtype: int
         """
         return self._TotalCount
@@ -11881,7 +11881,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TaskCitations(self):
-        """被任务引用次数
+        r"""被任务引用次数
         :rtype: int
         """
         return self._TaskCitations
@@ -11892,7 +11892,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11920,7 +11920,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
-    """DescribeDSPAAssessmentRiskTemplateVulnerableList请求参数结构体
+    r"""DescribeDSPAAssessmentRiskTemplateVulnerableList请求参数结构体
 
     """
 
@@ -11948,7 +11948,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -11959,7 +11959,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制条数
+        r"""限制条数
         :rtype: int
         """
         return self._Limit
@@ -11970,7 +11970,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -11981,7 +11981,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -11992,7 +11992,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskName
@@ -12003,7 +12003,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: str
         """
         return self._RiskSide
@@ -12031,7 +12031,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
-    """DescribeDSPAAssessmentRiskTemplateVulnerableList返回参数结构体
+    r"""DescribeDSPAAssessmentRiskTemplateVulnerableList返回参数结构体
 
     """
 
@@ -12050,7 +12050,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def RiskItemList(self):
-        """脆弱项列表
+        r"""脆弱项列表
         :rtype: list of AssessmentRiskItem
         """
         return self._RiskItemList
@@ -12061,7 +12061,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -12072,7 +12072,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12094,7 +12094,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentRisksRequest(AbstractModel):
-    """DescribeDSPAAssessmentRisks请求参数结构体
+    r"""DescribeDSPAAssessmentRisks请求参数结构体
 
     """
 
@@ -12123,7 +12123,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -12134,7 +12134,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def TaskId(self):
-        """评估任务Id，格式“task-xxxxxxxx”
+        r"""评估任务Id，格式“task-xxxxxxxx”
         :rtype: str
         """
         return self._TaskId
@@ -12145,7 +12145,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Offset(self):
-        """偏移量。默认为0
+        r"""偏移量。默认为0
         :rtype: int
         """
         return self._Offset
@@ -12156,7 +12156,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Limit(self):
-        """结果集个数限制。默认为20，最大值为100
+        r"""结果集个数限制。默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -12167,7 +12167,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Filters(self):
-        """过滤项。
+        r"""过滤项。
 支持模糊搜索：ControlItemName。
 支持过滤：
 RiskLevel：风险等级（high，medium，low）
@@ -12203,7 +12203,7 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
 
 class DescribeDSPAAssessmentRisksResponse(AbstractModel):
-    """DescribeDSPAAssessmentRisks返回参数结构体
+    r"""DescribeDSPAAssessmentRisks返回参数结构体
 
     """
 
@@ -12222,7 +12222,7 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的评估风险项数目
+        r"""符合条件的评估风险项数目
         :rtype: int
         """
         return self._TotalCount
@@ -12233,7 +12233,7 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def Items(self):
-        """评估风险项列表
+        r"""评估风险项列表
         :rtype: list of AssessmentRisk
         """
         return self._Items
@@ -12244,7 +12244,7 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12266,7 +12266,7 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentTasksRequest(AbstractModel):
-    """DescribeDSPAAssessmentTasks请求参数结构体
+    r"""DescribeDSPAAssessmentTasks请求参数结构体
 
     """
 
@@ -12288,7 +12288,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -12299,7 +12299,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。默认为0
+        r"""偏移量。默认为0
         :rtype: int
         """
         return self._Offset
@@ -12310,7 +12310,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """结果集个数限制。默认为20，最大值为100
+        r"""结果集个数限制。默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -12321,7 +12321,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        r"""过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
         :rtype: list of DspaAssessmentFilter
         """
         return self._Filters
@@ -12352,7 +12352,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentTasksResponse(AbstractModel):
-    """DescribeDSPAAssessmentTasks返回参数结构体
+    r"""DescribeDSPAAssessmentTasks返回参数结构体
 
     """
 
@@ -12371,7 +12371,7 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的评估任务数目
+        r"""符合条件的评估任务数目
         :rtype: int
         """
         return self._TotalCount
@@ -12382,7 +12382,7 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def Items(self):
-        """评估任务列表
+        r"""评估任务列表
         :rtype: list of AssessmentTask
         """
         return self._Items
@@ -12393,7 +12393,7 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12415,7 +12415,7 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentTemplateControlItemsRequest(AbstractModel):
-    """DescribeDSPAAssessmentTemplateControlItems请求参数结构体
+    r"""DescribeDSPAAssessmentTemplateControlItems请求参数结构体
 
     """
 
@@ -12446,7 +12446,7 @@ Status：评估项启用状态，draft / launched
 
     @property
     def DspaId(self):
-        """DSPA实例Id。格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id。格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -12457,7 +12457,7 @@ Status：评估项启用状态，draft / launched
 
     @property
     def TemplateId(self):
-        """评估模板Id。格式“template-xxxxxxxx”
+        r"""评估模板Id。格式“template-xxxxxxxx”
         :rtype: str
         """
         return self._TemplateId
@@ -12468,7 +12468,7 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Offset(self):
-        """偏移量。默认为0
+        r"""偏移量。默认为0
         :rtype: int
         """
         return self._Offset
@@ -12479,7 +12479,7 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Limit(self):
-        """结果集个数限制。默认为20，最大值为100
+        r"""结果集个数限制。默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -12490,7 +12490,7 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Filters(self):
-        """过滤项。
+        r"""过滤项。
 支持模糊搜索：ItemId，ItemName
 支持过滤：
 Source：评估项来源，system / user
@@ -12528,7 +12528,7 @@ Status：评估项启用状态，draft / launched
 
 
 class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
-    """DescribeDSPAAssessmentTemplateControlItems返回参数结构体
+    r"""DescribeDSPAAssessmentTemplateControlItems返回参数结构体
 
     """
 
@@ -12547,7 +12547,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的评估项数目
+        r"""符合条件的评估项数目
         :rtype: int
         """
         return self._TotalCount
@@ -12558,7 +12558,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """模板关联的评估项列表
+        r"""模板关联的评估项列表
         :rtype: list of AssessmentControlItem
         """
         return self._Items
@@ -12569,7 +12569,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12591,7 +12591,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
 
 class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
-    """DescribeDSPAAssessmentTemplates请求参数结构体
+    r"""DescribeDSPAAssessmentTemplates请求参数结构体
 
     """
 
@@ -12613,7 +12613,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -12624,7 +12624,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。默认为0
+        r"""偏移量。默认为0
         :rtype: int
         """
         return self._Offset
@@ -12635,7 +12635,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """结果集个数限制。默认为20，最大值为100
+        r"""结果集个数限制。默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -12646,7 +12646,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模板id
+        r"""过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模板id
         :rtype: list of DspaAssessmentFilter
         """
         return self._Filters
@@ -12677,7 +12677,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
 
 class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
-    """DescribeDSPAAssessmentTemplates返回参数结构体
+    r"""DescribeDSPAAssessmentTemplates返回参数结构体
 
     """
 
@@ -12696,7 +12696,7 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的模板数目
+        r"""符合条件的模板数目
         :rtype: int
         """
         return self._TotalCount
@@ -12707,7 +12707,7 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """模板列表。
+        r"""模板列表。
         :rtype: list of AssessmentTemplate
         """
         return self._Items
@@ -12718,7 +12718,7 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12740,7 +12740,7 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
-    """DescribeDSPACOSDataAssetBuckets请求参数结构体
+    r"""DescribeDSPACOSDataAssetBuckets请求参数结构体
 
     """
 
@@ -12756,7 +12756,7 @@ class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id
+        r"""DSPA实例Id
         :rtype: str
         """
         return self._DspaId
@@ -12767,7 +12767,7 @@ class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组Id
+        r"""合规组Id
         :rtype: int
         """
         return self._ComplianceId
@@ -12791,7 +12791,7 @@ class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
-    """DescribeDSPACOSDataAssetBuckets返回参数结构体
+    r"""DescribeDSPACOSDataAssetBuckets返回参数结构体
 
     """
 
@@ -12807,7 +12807,7 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
 
     @property
     def Buckets(self):
-        """COS对象存储敏感数据资产已扫描的桶集合。
+        r"""COS对象存储敏感数据资产已扫描的桶集合。
         :rtype: list of str
         """
         return self._Buckets
@@ -12818,7 +12818,7 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12834,7 +12834,7 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
-    """DescribeDSPACOSDataAssetByComplianceId请求参数结构体
+    r"""DescribeDSPACOSDataAssetByComplianceId请求参数结构体
 
     """
 
@@ -12850,7 +12850,7 @@ class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -12861,7 +12861,7 @@ class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -12885,7 +12885,7 @@ class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
-    """DescribeDSPACOSDataAssetByComplianceId返回参数结构体
+    r"""DescribeDSPACOSDataAssetByComplianceId返回参数结构体
 
     """
 
@@ -12902,7 +12902,7 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
-        """符合条件的COS存储对象的敏感数据资产统计记录
+        r"""符合条件的COS存储对象的敏感数据资产统计记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDataAssetCount`
         """
@@ -12914,7 +12914,7 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12932,7 +12932,7 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
-    """DescribeDSPACOSDataAssetDetail请求参数结构体
+    r"""DescribeDSPACOSDataAssetDetail请求参数结构体
 
     """
 
@@ -12948,7 +12948,7 @@ class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -12959,7 +12959,7 @@ class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -12983,7 +12983,7 @@ class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
 
 
 class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
-    """DescribeDSPACOSDataAssetDetail返回参数结构体
+    r"""DescribeDSPACOSDataAssetDetail返回参数结构体
 
     """
 
@@ -13002,7 +13002,7 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
-        """COS对象存储敏感数据资产详情列表
+        r"""COS对象存储敏感数据资产详情列表
         :rtype: list of DspaCOSDataAssetDetail
         """
         return self._Details
@@ -13013,7 +13013,7 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的COS对象存储敏感数据资产数量
+        r"""符合条件的COS对象存储敏感数据资产数量
         :rtype: int
         """
         return self._TotalCount
@@ -13024,7 +13024,7 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13046,7 +13046,7 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskDetail请求参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskDetail请求参数结构体
 
     """
 
@@ -13062,7 +13062,7 @@ class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -13073,7 +13073,7 @@ class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -13097,7 +13097,7 @@ class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskDetail返回参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskDetail返回参数结构体
 
     """
 
@@ -13113,7 +13113,7 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def Task(self):
-        """任务详情
+        r"""任务详情
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDetail`
         """
         return self._Task
@@ -13124,7 +13124,7 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13142,7 +13142,7 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskFiles请求参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskFiles请求参数结构体
 
     """
 
@@ -13164,7 +13164,7 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id
+        r"""DSPA实例Id
         :rtype: str
         """
         return self._DspaId
@@ -13175,7 +13175,7 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """扫描任务ID
+        r"""扫描任务ID
         :rtype: int
         """
         return self._TaskId
@@ -13188,7 +13188,7 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
     def BucketResultId(self):
         warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
 
-        """扫描Bucket任务结果ID
+        r"""扫描Bucket任务结果ID
         :rtype: int
         """
         return self._BucketResultId
@@ -13201,7 +13201,7 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def ScanResultId(self):
-        """扫描结果id
+        r"""扫描结果id
         :rtype: int
         """
         return self._ScanResultId
@@ -13227,7 +13227,7 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskFiles返回参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskFiles返回参数结构体
 
     """
 
@@ -13243,7 +13243,7 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
 
     @property
     def Files(self):
-        """文件列表
+        r"""文件列表
         :rtype: list of str
         """
         return self._Files
@@ -13254,7 +13254,7 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13270,7 +13270,7 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTaskResultRequest(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskResult请求参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskResult请求参数结构体
 
     """
 
@@ -13307,7 +13307,7 @@ ResourceRegion：资源所在地域
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -13318,7 +13318,7 @@ ResourceRegion：资源所在地域
 
     @property
     def Offset(self):
-        """偏移量，默认值为0
+        r"""偏移量，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -13329,7 +13329,7 @@ ResourceRegion：资源所在地域
 
     @property
     def Limit(self):
-        """返回数量，默认值为20，最大值为100
+        r"""返回数量，默认值为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -13340,7 +13340,7 @@ ResourceRegion：资源所在地域
 
     @property
     def Filters(self):
-        """Array of Filter	此参数对外不可见。过滤数组。支持的Name：
+        r"""Array of Filter	此参数对外不可见。过滤数组。支持的Name：
 BucketName 对象桶名
 TaskID 任务ID，
 TaskName 任务名，
@@ -13357,7 +13357,7 @@ ResourceRegion：资源所在地域
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -13368,7 +13368,7 @@ ResourceRegion：资源所在地域
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -13379,7 +13379,7 @@ ResourceRegion：资源所在地域
 
     @property
     def FetchHistory(self):
-        """是否查询历史结果
+        r"""是否查询历史结果
         :rtype: bool
         """
         return self._FetchHistory
@@ -13413,7 +13413,7 @@ ResourceRegion：资源所在地域
 
 
 class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
-    """DescribeDSPACOSDiscoveryTaskResult返回参数结构体
+    r"""DescribeDSPACOSDiscoveryTaskResult返回参数结构体
 
     """
 
@@ -13435,7 +13435,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def Items(self):
-        """扫描任务结果项
+        r"""扫描任务结果项
         :rtype: list of DspaCOSDiscoveryTaskResult
         """
         return self._Items
@@ -13446,7 +13446,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的数据结果数目
+        r"""符合条件的数据结果数目
         :rtype: int
         """
         return self._TotalCount
@@ -13457,7 +13457,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def MaxCount(self):
-        """最大展示扫描结果次数
+        r"""最大展示扫描结果次数
         :rtype: int
         """
         return self._MaxCount
@@ -13468,7 +13468,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13491,7 +13491,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
-    """DescribeDSPACOSDiscoveryTasks请求参数结构体
+    r"""DescribeDSPACOSDiscoveryTasks请求参数结构体
 
     """
 
@@ -13519,7 +13519,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -13530,7 +13530,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -13541,7 +13541,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -13552,7 +13552,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def StatusList(self):
-        """任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        r"""任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :rtype: list of int
         """
         return self._StatusList
@@ -13563,7 +13563,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -13574,7 +13574,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        r"""返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
         :rtype: int
         """
         return self._Limit
@@ -13602,7 +13602,7 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
 
 class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
-    """DescribeDSPACOSDiscoveryTasks返回参数结构体
+    r"""DescribeDSPACOSDiscoveryTasks返回参数结构体
 
     """
 
@@ -13621,7 +13621,7 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def Items(self):
-        """任务列表
+        r"""任务列表
         :rtype: list of DspaCOSDiscoveryTask
         """
         return self._Items
@@ -13632,7 +13632,7 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的任务列表数
+        r"""符合条件的任务列表数
         :rtype: int
         """
         return self._TotalCount
@@ -13643,7 +13643,7 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13665,7 +13665,7 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
 
 class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
-    """DescribeDSPACOSTaskResultDetail请求参数结构体
+    r"""DescribeDSPACOSTaskResultDetail请求参数结构体
 
     """
 
@@ -13711,7 +13711,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -13722,7 +13722,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -13733,7 +13733,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -13746,7 +13746,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
     def BucketResultId(self):
         warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
 
-        """扫描Bucket结果ID
+        r"""扫描Bucket结果ID
         :rtype: int
         """
         return self._BucketResultId
@@ -13759,7 +13759,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
         :rtype: str
         """
         return self._FileName
@@ -13770,7 +13770,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -13781,7 +13781,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID
+        r"""敏感数据分级ID
         :rtype: int
         """
         return self._LevelId
@@ -13792,7 +13792,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -13803,7 +13803,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为20，最大值为100
+        r"""返回数量，默认值为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -13814,7 +13814,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """扫描桶名称。
+        r"""扫描桶名称。
         :rtype: str
         """
         return self._BucketName
@@ -13825,7 +13825,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
-        """多级分类的分类ID集合
+        r"""多级分类的分类ID集合
         :rtype: list of int
         """
         return self._CategoryIdList
@@ -13836,7 +13836,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def ScanResultId(self):
-        """扫描结果id
+        r"""扫描结果id
         :rtype: int
         """
         return self._ScanResultId
@@ -13870,7 +13870,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
 
 class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
-    """DescribeDSPACOSTaskResultDetail返回参数结构体
+    r"""DescribeDSPACOSTaskResultDetail返回参数结构体
 
     """
 
@@ -13889,7 +13889,7 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
-        """扫描结果详情列表
+        r"""扫描结果详情列表
         :rtype: list of DspaDiscoveryCOSTaskResultDetail
         """
         return self._Items
@@ -13900,7 +13900,7 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的详情数量
+        r"""符合条件的详情数量
         :rtype: int
         """
         return self._TotalCount
@@ -13911,7 +13911,7 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13933,7 +13933,7 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
 
 class DescribeDSPACategoriesRequest(AbstractModel):
-    """DescribeDSPACategories请求参数结构体
+    r"""DescribeDSPACategories请求参数结构体
 
     """
 
@@ -13958,7 +13958,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -13969,7 +13969,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """数据分类ID
+        r"""数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -13980,7 +13980,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """敏感数据分类名称
+        r"""敏感数据分类名称
         :rtype: str
         """
         return self._Name
@@ -13991,7 +13991,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认值为0
+        r"""偏移量，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -14002,7 +14002,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        r"""返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
         :rtype: int
         """
         return self._Limit
@@ -14029,7 +14029,7 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
 
 class DescribeDSPACategoriesResponse(AbstractModel):
-    """DescribeDSPACategories返回参数结构体
+    r"""DescribeDSPACategories返回参数结构体
 
     """
 
@@ -14048,7 +14048,7 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """敏感数据分类列表
+        r"""敏感数据分类列表
         :rtype: list of DataCategory
         """
         return self._Items
@@ -14059,7 +14059,7 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的敏感数据分类数
+        r"""符合条件的敏感数据分类数
         :rtype: int
         """
         return self._TotalCount
@@ -14070,7 +14070,7 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14092,7 +14092,7 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
 
 class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
-    """DescribeDSPACategoryRuleStatistic请求参数结构体
+    r"""DescribeDSPACategoryRuleStatistic请求参数结构体
 
     """
 
@@ -14108,7 +14108,7 @@ class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14119,7 +14119,7 @@ class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组模板id
+        r"""合规组模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -14143,7 +14143,7 @@ class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
 
 
 class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
-    """DescribeDSPACategoryRuleStatistic返回参数结构体
+    r"""DescribeDSPACategoryRuleStatistic返回参数结构体
 
     """
 
@@ -14159,7 +14159,7 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
 
     @property
     def StatisticSet(self):
-        """分类规则统计信息
+        r"""分类规则统计信息
         :rtype: list of CategoryRuleStatistic
         """
         return self._StatisticSet
@@ -14170,7 +14170,7 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14191,7 +14191,7 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
 
 
 class DescribeDSPACategoryRulesRequest(AbstractModel):
-    """DescribeDSPACategoryRules请求参数结构体
+    r"""DescribeDSPACategoryRules请求参数结构体
 
     """
 
@@ -14210,7 +14210,7 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14221,7 +14221,7 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -14232,7 +14232,7 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组模板id
+        r"""合规组模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -14257,7 +14257,7 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
 
 class DescribeDSPACategoryRulesResponse(AbstractModel):
-    """DescribeDSPACategoryRules返回参数结构体
+    r"""DescribeDSPACategoryRules返回参数结构体
 
     """
 
@@ -14273,7 +14273,7 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
 
     @property
     def CategoryRules(self):
-        """分类规则信息
+        r"""分类规则信息
         :rtype: list of CategoryRule
         """
         return self._CategoryRules
@@ -14284,7 +14284,7 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14305,7 +14305,7 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
 
 
 class DescribeDSPACategoryTreeRequest(AbstractModel):
-    """DescribeDSPACategoryTree请求参数结构体
+    r"""DescribeDSPACategoryTree请求参数结构体
 
     """
 
@@ -14321,7 +14321,7 @@ class DescribeDSPACategoryTreeRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14332,7 +14332,7 @@ class DescribeDSPACategoryTreeRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -14356,7 +14356,7 @@ class DescribeDSPACategoryTreeRequest(AbstractModel):
 
 
 class DescribeDSPACategoryTreeResponse(AbstractModel):
-    """DescribeDSPACategoryTree返回参数结构体
+    r"""DescribeDSPACategoryTree返回参数结构体
 
     """
 
@@ -14372,7 +14372,7 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
 
     @property
     def ResultJson(self):
-        """分类树json
+        r"""分类树json
         :rtype: str
         """
         return self._ResultJson
@@ -14383,7 +14383,7 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14399,7 +14399,7 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
 
 
 class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
-    """DescribeDSPACategoryTreeWithRules请求参数结构体
+    r"""DescribeDSPACategoryTreeWithRules请求参数结构体
 
     """
 
@@ -14418,7 +14418,7 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14429,7 +14429,7 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组模板id
+        r"""合规组模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -14440,7 +14440,7 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -14465,7 +14465,7 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
 
 class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
-    """DescribeDSPACategoryTreeWithRules返回参数结构体
+    r"""DescribeDSPACategoryTreeWithRules返回参数结构体
 
     """
 
@@ -14481,7 +14481,7 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
 
     @property
     def ResultJson(self):
-        """分类树json
+        r"""分类树json
         :rtype: str
         """
         return self._ResultJson
@@ -14492,7 +14492,7 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14508,7 +14508,7 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
 
 
 class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
-    """DescribeDSPAComplianceGroupDetail请求参数结构体
+    r"""DescribeDSPAComplianceGroupDetail请求参数结构体
 
     """
 
@@ -14524,7 +14524,7 @@ class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14535,7 +14535,7 @@ class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -14559,7 +14559,7 @@ class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
 
 
 class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
-    """DescribeDSPAComplianceGroupDetail返回参数结构体
+    r"""DescribeDSPAComplianceGroupDetail返回参数结构体
 
     """
 
@@ -14575,7 +14575,7 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """模板详情
+        r"""模板详情
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ComplianceGroupDetail`
         """
         return self._Detail
@@ -14586,7 +14586,7 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14604,7 +14604,7 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
 
 
 class DescribeDSPAComplianceGroupsRequest(AbstractModel):
-    """DescribeDSPAComplianceGroups请求参数结构体
+    r"""DescribeDSPAComplianceGroups请求参数结构体
 
     """
 
@@ -14635,7 +14635,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -14646,7 +14646,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -14657,7 +14657,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """合规组名称
+        r"""合规组名称
         :rtype: str
         """
         return self._Name
@@ -14668,7 +14668,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认值为0
+        r"""偏移量，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -14679,7 +14679,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        r"""返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
         :rtype: int
         """
         return self._Limit
@@ -14690,7 +14690,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def ComplianceGroupTypeList(self):
-        """合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
+        r"""合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
         :rtype: list of int
         """
         return self._ComplianceGroupTypeList
@@ -14701,7 +14701,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def IsFilterCloseComplianceGroup(self):
-        """是否仅显示已开启模板
+        r"""是否仅显示已开启模板
         :rtype: bool
         """
         return self._IsFilterCloseComplianceGroup
@@ -14730,7 +14730,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
 
 class DescribeDSPAComplianceGroupsResponse(AbstractModel):
-    """DescribeDSPAComplianceGroups返回参数结构体
+    r"""DescribeDSPAComplianceGroups返回参数结构体
 
     """
 
@@ -14749,7 +14749,7 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """合规组列表
+        r"""合规组列表
         :rtype: list of DspaDiscoveryComplianceGroupInfo
         """
         return self._Items
@@ -14760,7 +14760,7 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的合规组列表数
+        r"""符合条件的合规组列表数
         :rtype: int
         """
         return self._TotalCount
@@ -14771,7 +14771,7 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14793,7 +14793,7 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
 
 class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
-    """DescribeDSPAComplianceUpdateNotification请求参数结构体
+    r"""DescribeDSPAComplianceUpdateNotification请求参数结构体
 
     """
 
@@ -14809,7 +14809,7 @@ class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -14820,7 +14820,7 @@ class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组分类模板id
+        r"""合规组分类模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -14844,7 +14844,7 @@ class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
 
 
 class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
-    """DescribeDSPAComplianceUpdateNotification返回参数结构体
+    r"""DescribeDSPAComplianceUpdateNotification返回参数结构体
 
     """
 
@@ -14863,7 +14863,7 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def IsUpdated(self):
-        """模板是否更新
+        r"""模板是否更新
         :rtype: bool
         """
         return self._IsUpdated
@@ -14874,7 +14874,7 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def TaskNameSet(self):
-        """任务名称集合
+        r"""任务名称集合
         :rtype: list of str
         """
         return self._TaskNameSet
@@ -14885,7 +14885,7 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14902,7 +14902,7 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
 
 class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
-    """DescribeDSPADataSourceDbInfo请求参数结构体
+    r"""DescribeDSPADataSourceDbInfo请求参数结构体
 
     """
 
@@ -14921,7 +14921,7 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -14932,7 +14932,7 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -14943,7 +14943,7 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -14968,7 +14968,7 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
 
 class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
-    """DescribeDSPADataSourceDbInfo返回参数结构体
+    r"""DescribeDSPADataSourceDbInfo返回参数结构体
 
     """
 
@@ -14987,7 +14987,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
     @property
     def Items(self):
-        """数据库信息列表
+        r"""数据库信息列表
         :rtype: list of DSPADataSourceDbInfo
         """
         return self._Items
@@ -14998,7 +14998,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -15009,7 +15009,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15031,7 +15031,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryRulesRequest(AbstractModel):
-    """DescribeDSPADiscoveryRules请求参数结构体
+    r"""DescribeDSPADiscoveryRules请求参数结构体
 
     """
 
@@ -15059,7 +15059,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15070,7 +15070,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -15081,7 +15081,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回上限，默认值10， 最大值10000。
+        r"""返回上限，默认值10， 最大值10000。
         :rtype: int
         """
         return self._Limit
@@ -15092,7 +15092,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -15103,7 +15103,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -15114,7 +15114,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def FilterRuleSource(self):
-        """是否需要过滤别名
+        r"""是否需要过滤别名
         :rtype: bool
         """
         return self._FilterRuleSource
@@ -15142,7 +15142,7 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
 
 class DescribeDSPADiscoveryRulesResponse(AbstractModel):
-    """DescribeDSPADiscoveryRules返回参数结构体
+    r"""DescribeDSPADiscoveryRules返回参数结构体
 
     """
 
@@ -15161,7 +15161,7 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._TotalCount
@@ -15172,7 +15172,7 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """规则集合
+        r"""规则集合
         :rtype: list of DspaDiscoveryRuleDetail
         """
         return self._Items
@@ -15183,7 +15183,7 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15205,7 +15205,7 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryServiceStatusRequest(AbstractModel):
-    """DescribeDSPADiscoveryServiceStatus请求参数结构体
+    r"""DescribeDSPADiscoveryServiceStatus请求参数结构体
 
     """
 
@@ -15218,7 +15218,7 @@ class DescribeDSPADiscoveryServiceStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15241,7 +15241,7 @@ class DescribeDSPADiscoveryServiceStatusRequest(AbstractModel):
 
 
 class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
-    """DescribeDSPADiscoveryServiceStatus返回参数结构体
+    r"""DescribeDSPADiscoveryServiceStatus返回参数结构体
 
     """
 
@@ -15257,7 +15257,7 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
-        """分类分级服务是否开通，true 表示已开通，false表示未开通
+        r"""分类分级服务是否开通，true 表示已开通，false表示未开通
         :rtype: bool
         """
         return self._ServiceEnabled
@@ -15268,7 +15268,7 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15284,7 +15284,7 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
-    """DescribeDSPADiscoveryTaskDetail请求参数结构体
+    r"""DescribeDSPADiscoveryTaskDetail请求参数结构体
 
     """
 
@@ -15300,7 +15300,7 @@ class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15311,7 +15311,7 @@ class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -15335,7 +15335,7 @@ class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
-    """DescribeDSPADiscoveryTaskDetail返回参数结构体
+    r"""DescribeDSPADiscoveryTaskDetail返回参数结构体
 
     """
 
@@ -15351,7 +15351,7 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def Task(self):
-        """任务详情
+        r"""任务详情
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDetail`
         """
         return self._Task
@@ -15362,7 +15362,7 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15380,7 +15380,7 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
-    """DescribeDSPADiscoveryTaskResultDetail请求参数结构体
+    r"""DescribeDSPADiscoveryTaskResultDetail请求参数结构体
 
     """
 
@@ -15426,7 +15426,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15437,7 +15437,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -15448,7 +15448,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbResultId(self):
-        """扫描数据库结果ID
+        r"""扫描数据库结果ID
         :rtype: int
         """
         return self._DbResultId
@@ -15459,7 +15459,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -15470,7 +15470,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名
+        r"""数据库名
         :rtype: str
         """
         return self._DbName
@@ -15481,7 +15481,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """所属数据表名
+        r"""所属数据表名
         :rtype: str
         """
         return self._TableName
@@ -15492,7 +15492,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -15503,7 +15503,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID
+        r"""敏感数据分级ID
         :rtype: int
         """
         return self._LevelId
@@ -15514,7 +15514,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -15525,7 +15525,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为20，最大值为100
+        r"""返回数量，默认值为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -15536,7 +15536,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
-        """多级分类的分类ID集合
+        r"""多级分类的分类ID集合
         :rtype: list of int
         """
         return self._CategoryIdList
@@ -15547,7 +15547,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def ScanResultId(self):
-        """任务扫描id
+        r"""任务扫描id
         :rtype: int
         """
         return self._ScanResultId
@@ -15581,7 +15581,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
-    """DescribeDSPADiscoveryTaskResultDetail返回参数结构体
+    r"""DescribeDSPADiscoveryTaskResultDetail返回参数结构体
 
     """
 
@@ -15600,7 +15600,7 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
-        """扫描结果详情列表
+        r"""扫描结果详情列表
         :rtype: list of DspaDiscoveryTaskResultDetail
         """
         return self._Items
@@ -15611,7 +15611,7 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的扫描结果详情记录数
+        r"""符合条件的扫描结果详情记录数
         :rtype: int
         """
         return self._TotalCount
@@ -15622,7 +15622,7 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15644,7 +15644,7 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskResultRequest(AbstractModel):
-    """DescribeDSPADiscoveryTaskResult请求参数结构体
+    r"""DescribeDSPADiscoveryTaskResult请求参数结构体
 
     """
 
@@ -15697,7 +15697,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15708,7 +15708,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
-        """数据源类型，可取值如下：
+        r"""数据源类型，可取值如下：
 cdb 表示云数据库 MySQL,
 dcdb 表示TDSQL MySQL版,
 mariadb 表示云数据库 MariaDB,
@@ -15726,7 +15726,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -15737,7 +15737,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -15748,7 +15748,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -15759,7 +15759,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -15770,7 +15770,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Offset(self):
-        """偏移量，默认值为0
+        r"""偏移量，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -15781,7 +15781,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Limit(self):
-        """返回数量，默认值为20，最大值为100
+        r"""返回数量，默认值为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -15792,7 +15792,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -15803,7 +15803,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -15814,7 +15814,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -15825,7 +15825,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def FetchHistory(self):
-        """是否查询历史结果
+        r"""是否查询历史结果
         :rtype: bool
         """
         return self._FetchHistory
@@ -15859,7 +15859,7 @@ selfbuilt-db 表示自建数据库
 
 
 class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
-    """DescribeDSPADiscoveryTaskResult返回参数结构体
+    r"""DescribeDSPADiscoveryTaskResult返回参数结构体
 
     """
 
@@ -15881,7 +15881,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def Items(self):
-        """扫描任务结果项
+        r"""扫描任务结果项
         :rtype: list of DspaDiscoveryTaskDbResult
         """
         return self._Items
@@ -15892,7 +15892,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的扫描任务结果记录数
+        r"""符合条件的扫描任务结果记录数
         :rtype: int
         """
         return self._TotalCount
@@ -15903,7 +15903,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def MaxCount(self):
-        """最大展示扫描结果次数
+        r"""最大展示扫描结果次数
         :rtype: int
         """
         return self._MaxCount
@@ -15914,7 +15914,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15937,7 +15937,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
-    """DescribeDSPADiscoveryTaskTables请求参数结构体
+    r"""DescribeDSPADiscoveryTaskTables请求参数结构体
 
     """
 
@@ -15962,7 +15962,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -15973,7 +15973,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -15986,7 +15986,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
     def DbResultId(self):
         warnings.warn("parameter `DbResultId` is deprecated", DeprecationWarning) 
 
-        """数据库扫描结果ID
+        r"""数据库扫描结果ID
         :rtype: int
         """
         return self._DbResultId
@@ -15999,7 +15999,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """db名称
+        r"""db名称
         :rtype: str
         """
         return self._DbName
@@ -16010,7 +16010,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def ScanResultId(self):
-        """任务扫描id
+        r"""任务扫描id
         :rtype: int
         """
         return self._ScanResultId
@@ -16037,7 +16037,7 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
 
 class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
-    """DescribeDSPADiscoveryTaskTables返回参数结构体
+    r"""DescribeDSPADiscoveryTaskTables返回参数结构体
 
     """
 
@@ -16053,7 +16053,7 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """分类分级扫描表集合
+        r"""分类分级扫描表集合
         :rtype: list of DSPATableInfo
         """
         return self._Items
@@ -16064,7 +16064,7 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16085,7 +16085,7 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
 
 
 class DescribeDSPADiscoveryTasksRequest(AbstractModel):
-    """DescribeDSPADiscoveryTasks请求参数结构体
+    r"""DescribeDSPADiscoveryTasks请求参数结构体
 
     """
 
@@ -16123,7 +16123,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -16134,7 +16134,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
-        """数据源类型，可取值如下：
+        r"""数据源类型，可取值如下：
 cdb 表示云数据库 MySQL,
 dcdb 表示TDSQL MySQL版,
 mariadb 表示云数据库 MariaDB,
@@ -16152,7 +16152,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -16163,7 +16163,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -16174,7 +16174,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def StatusList(self):
-        """任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        r"""任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :rtype: list of int
         """
         return self._StatusList
@@ -16185,7 +16185,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -16196,7 +16196,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Limit(self):
-        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        r"""返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
         :rtype: int
         """
         return self._Limit
@@ -16225,7 +16225,7 @@ selfbuilt-db 表示自建数据库
 
 
 class DescribeDSPADiscoveryTasksResponse(AbstractModel):
-    """DescribeDSPADiscoveryTasks返回参数结构体
+    r"""DescribeDSPADiscoveryTasks返回参数结构体
 
     """
 
@@ -16244,7 +16244,7 @@ class DescribeDSPADiscoveryTasksResponse(AbstractModel):
 
     @property
     def Items(self):
-        """任务列表
+        r"""任务列表
         :rtype: list of DspaDiscoveryTask
         """
         return self._Items
@@ -16255,7 +16255,7 @@ class DescribeDSPADiscoveryTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的任务列表数
+        r"""符合条件的任务列表数
         :rtype: int
         """
         return self._TotalCount
@@ -16266,7 +16266,7 @@ class DescribeDSPADiscoveryTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16288,7 +16288,7 @@ class DescribeDSPADiscoveryTasksResponse(AbstractModel):
 
 
 class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
-    """DescribeDSPAESDataAssetByComplianceId请求参数结构体
+    r"""DescribeDSPAESDataAssetByComplianceId请求参数结构体
 
     """
 
@@ -16311,7 +16311,7 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -16322,7 +16322,7 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -16333,7 +16333,7 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def BuildType(self):
-        """云上还是自建
+        r"""云上还是自建
 
         :rtype: str
         """
@@ -16345,7 +16345,7 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -16371,7 +16371,7 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
 
 class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
-    """DescribeDSPAESDataAssetByComplianceId返回参数结构体
+    r"""DescribeDSPAESDataAssetByComplianceId返回参数结构体
 
     """
 
@@ -16387,7 +16387,7 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
-        """概览统计结果
+        r"""概览统计结果
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESDataAssetCountDto`
         """
         return self._Stats
@@ -16398,7 +16398,7 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16416,7 +16416,7 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
 
 
 class DescribeDSPAESDataAssetDetailRequest(AbstractModel):
-    """DescribeDSPAESDataAssetDetail请求参数结构体
+    r"""DescribeDSPAESDataAssetDetail请求参数结构体
 
     """
 
@@ -16445,7 +16445,7 @@ DESC降序
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -16456,7 +16456,7 @@ DESC降序
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -16467,7 +16467,7 @@ DESC降序
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -16478,7 +16478,7 @@ DESC降序
 
     @property
     def Limit(self):
-        """限制条目数
+        r"""限制条目数
         :rtype: int
         """
         return self._Limit
@@ -16489,7 +16489,7 @@ DESC降序
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -16500,7 +16500,7 @@ DESC降序
 
     @property
     def CreditScore(self):
-        """可信分排序，ASC升序
+        r"""可信分排序，ASC升序
 DESC降序
         :rtype: str
         """
@@ -16534,7 +16534,7 @@ DESC降序
 
 
 class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
-    """DescribeDSPAESDataAssetDetail返回参数结构体
+    r"""DescribeDSPAESDataAssetDetail返回参数结构体
 
     """
 
@@ -16553,7 +16553,7 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总的个数
+        r"""总的个数
         :rtype: int
         """
         return self._TotalCount
@@ -16564,7 +16564,7 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
-        """概览详情列表
+        r"""概览详情列表
         :rtype: list of ESDataAssetDetail
         """
         return self._Details
@@ -16575,7 +16575,7 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16597,7 +16597,7 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
 
 class DescribeDSPAESDataSampleRequest(AbstractModel):
-    """DescribeDSPAESDataSample请求参数结构体
+    r"""DescribeDSPAESDataSample请求参数结构体
 
     """
 
@@ -16619,7 +16619,7 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -16630,7 +16630,7 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """字段扫描结果ID
+        r"""字段扫描结果ID
         :rtype: int
         """
         return self._FieldResultId
@@ -16641,7 +16641,7 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式
+        r"""排序方式
         :rtype: str
         """
         return self._Order
@@ -16652,7 +16652,7 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._OrderField
@@ -16678,7 +16678,7 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
 
 class DescribeDSPAESDataSampleResponse(AbstractModel):
-    """DescribeDSPAESDataSample返回参数结构体
+    r"""DescribeDSPAESDataSample返回参数结构体
 
     """
 
@@ -16694,7 +16694,7 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
 
     @property
     def Items(self):
-        """数据样本列表，最多10条数据
+        r"""数据样本列表，最多10条数据
         :rtype: list of str
         """
         return self._Items
@@ -16705,7 +16705,7 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16721,7 +16721,7 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
 
 
 class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
-    """DescribeDSPAESDiscoveryTaskResultDetail请求参数结构体
+    r"""DescribeDSPAESDiscoveryTaskResultDetail请求参数结构体
 
     """
 
@@ -16755,7 +16755,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -16766,7 +16766,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -16777,7 +16777,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -16788,7 +16788,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -16799,7 +16799,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为20，最大值为100
+        r"""返回数量，默认值为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -16810,7 +16810,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
-        """多级分类的分类ID集合
+        r"""多级分类的分类ID集合
         :rtype: list of int
         """
         return self._CategoryIdList
@@ -16821,7 +16821,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID
+        r"""敏感数据分级ID
         :rtype: int
         """
         return self._LevelId
@@ -16832,7 +16832,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -16862,7 +16862,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
 
 class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
-    """DescribeDSPAESDiscoveryTaskResultDetail返回参数结构体
+    r"""DescribeDSPAESDiscoveryTaskResultDetail返回参数结构体
 
     """
 
@@ -16881,7 +16881,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
-        """ES扫描结果详情列表
+        r"""ES扫描结果详情列表
         :rtype: list of ESTaskResultDetail
         """
         return self._Items
@@ -16892,7 +16892,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的扫描结果详情记录数
+        r"""符合条件的扫描结果详情记录数
         :rtype: int
         """
         return self._TotalCount
@@ -16903,7 +16903,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16925,7 +16925,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
 
 class DescribeDSPALevelDetailRequest(AbstractModel):
-    """DescribeDSPALevelDetail请求参数结构体
+    r"""DescribeDSPALevelDetail请求参数结构体
 
     """
 
@@ -16943,7 +16943,7 @@ LevelGroupId 敏感分级组ID
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -16954,7 +16954,7 @@ LevelGroupId 敏感分级组ID
 
     @property
     def Filters(self):
-        """过滤数组。支持的Name：
+        r"""过滤数组。支持的Name：
 ComplianceId 合规组ID
 LevelGroupId 敏感分级组ID
         :rtype: list of Filter
@@ -16985,7 +16985,7 @@ LevelGroupId 敏感分级组ID
 
 
 class DescribeDSPALevelDetailResponse(AbstractModel):
-    """DescribeDSPALevelDetail返回参数结构体
+    r"""DescribeDSPALevelDetail返回参数结构体
 
     """
 
@@ -17006,7 +17006,7 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def Items(self):
-        """符合条件的敏感数据分级标识记录
+        r"""符合条件的敏感数据分级标识记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LevelItem
         """
@@ -17018,7 +17018,7 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的敏感数据分级标识记录数
+        r"""符合条件的敏感数据分级标识记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17030,7 +17030,7 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17052,7 +17052,7 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
 
 class DescribeDSPALevelGroupsRequest(AbstractModel):
-    """DescribeDSPALevelGroups请求参数结构体
+    r"""DescribeDSPALevelGroups请求参数结构体
 
     """
 
@@ -17074,7 +17074,7 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -17085,7 +17085,7 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """分级组名称
+        r"""分级组名称
         :rtype: str
         """
         return self._Name
@@ -17096,7 +17096,7 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页返回的记录数
+        r"""每页返回的记录数
         :rtype: int
         """
         return self._Limit
@@ -17107,7 +17107,7 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """从第几条记录开始返回
+        r"""从第几条记录开始返回
         :rtype: int
         """
         return self._Offset
@@ -17133,7 +17133,7 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
 
 class DescribeDSPALevelGroupsResponse(AbstractModel):
-    """DescribeDSPALevelGroups返回参数结构体
+    r"""DescribeDSPALevelGroups返回参数结构体
 
     """
 
@@ -17154,7 +17154,7 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """符合条件的敏感数据分级标识记录
+        r"""符合条件的敏感数据分级标识记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryLevelDetail
         """
@@ -17166,7 +17166,7 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的敏感数据分级标识记录数
+        r"""符合条件的敏感数据分级标识记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17178,7 +17178,7 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17200,7 +17200,7 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
 
 class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
-    """DescribeDSPARDBDataAssetByComplianceId请求参数结构体
+    r"""DescribeDSPARDBDataAssetByComplianceId请求参数结构体
 
     """
 
@@ -17222,7 +17222,7 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -17233,7 +17233,7 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -17244,7 +17244,7 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
+        r"""数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
         :rtype: str
         """
         return self._DataSourceType
@@ -17255,7 +17255,7 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def BuildType(self):
-        """自建还是云上
+        r"""自建还是云上
         :rtype: str
         """
         return self._BuildType
@@ -17281,7 +17281,7 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
 
 class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
-    """DescribeDSPARDBDataAssetByComplianceId返回参数结构体
+    r"""DescribeDSPARDBDataAssetByComplianceId返回参数结构体
 
     """
 
@@ -17298,7 +17298,7 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
-        """符合条件的RDB关系数据库敏感数据资产统计记录
+        r"""符合条件的RDB关系数据库敏感数据资产统计记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaRDBDataAssetCount`
         """
@@ -17310,7 +17310,7 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17328,7 +17328,7 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
 
 
 class DescribeDSPARDBDataAssetDetailRequest(AbstractModel):
-    """DescribeDSPARDBDataAssetDetail请求参数结构体
+    r"""DescribeDSPARDBDataAssetDetail请求参数结构体
 
     """
 
@@ -17366,7 +17366,7 @@ DESC降序
 
     @property
     def DspaId(self):
-        """DSPA实例Id
+        r"""DSPA实例Id
         :rtype: str
         """
         return self._DspaId
@@ -17377,7 +17377,7 @@ DESC降序
 
     @property
     def ComplianceId(self):
-        """合规组Id
+        r"""合规组Id
         :rtype: int
         """
         return self._ComplianceId
@@ -17388,7 +17388,7 @@ DESC降序
 
     @property
     def Filters(self):
-        """过滤数组。支持的Name：
+        r"""过滤数组。支持的Name：
 DataSourceID 数据源ID
 DbName 数据库名称
 CategoryID 敏感数据分类ID
@@ -17408,7 +17408,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -17419,7 +17419,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -17430,7 +17430,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def CreditScore(self):
-        """可信分排序，ASC-升序
+        r"""可信分排序，ASC-升序
 DESC降序
         :rtype: str
         """
@@ -17464,7 +17464,7 @@ DESC降序
 
 
 class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
-    """DescribeDSPARDBDataAssetDetail返回参数结构体
+    r"""DescribeDSPARDBDataAssetDetail返回参数结构体
 
     """
 
@@ -17483,7 +17483,7 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
-        """RDB关系数据库敏感数据资产详情列表
+        r"""RDB关系数据库敏感数据资产详情列表
         :rtype: list of DspaRDBDataAssetDetail
         """
         return self._Details
@@ -17494,7 +17494,7 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的RDB关系数据库敏感数据资产数量
+        r"""符合条件的RDB关系数据库敏感数据资产数量
         :rtype: int
         """
         return self._TotalCount
@@ -17505,7 +17505,7 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17527,7 +17527,7 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
 
 class DescribeDSPASupportedMetasRequest(AbstractModel):
-    """DescribeDSPASupportedMetas请求参数结构体
+    r"""DescribeDSPASupportedMetas请求参数结构体
 
     """
 
@@ -17540,7 +17540,7 @@ class DescribeDSPASupportedMetasRequest(AbstractModel):
 
     @property
     def MetaTypes(self):
-        """元数据类型
+        r"""元数据类型
         :rtype: list of str
         """
         return self._MetaTypes
@@ -17563,7 +17563,7 @@ class DescribeDSPASupportedMetasRequest(AbstractModel):
 
 
 class DescribeDSPASupportedMetasResponse(AbstractModel):
-    """DescribeDSPASupportedMetas返回参数结构体
+    r"""DescribeDSPASupportedMetas返回参数结构体
 
     """
 
@@ -17582,7 +17582,7 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def Metas(self):
-        """支持的元数据类型
+        r"""支持的元数据类型
         :rtype: list of DSPAMetaType
         """
         return self._Metas
@@ -17593,7 +17593,7 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def MaxDBInstanceLimit(self):
-        """最大支持每批次同步数量
+        r"""最大支持每批次同步数量
         :rtype: int
         """
         return self._MaxDBInstanceLimit
@@ -17604,7 +17604,7 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17626,7 +17626,7 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
 
 class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
-    """DescribeDSPATaskResultDataSample请求参数结构体
+    r"""DescribeDSPATaskResultDataSample请求参数结构体
 
     """
 
@@ -17648,7 +17648,7 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -17659,7 +17659,7 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """字段扫描结果ID
+        r"""字段扫描结果ID
         :rtype: int
         """
         return self._FieldResultId
@@ -17670,7 +17670,7 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式
+        r"""排序方式
         :rtype: str
         """
         return self._Order
@@ -17681,7 +17681,7 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._OrderField
@@ -17707,7 +17707,7 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
 
 class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
-    """DescribeDSPATaskResultDataSample返回参数结构体
+    r"""DescribeDSPATaskResultDataSample返回参数结构体
 
     """
 
@@ -17723,7 +17723,7 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
 
     @property
     def Items(self):
-        """数据样本列表，最多10条数据
+        r"""数据样本列表，最多10条数据
         :rtype: list of DspaFieldResultDataSample
         """
         return self._Items
@@ -17734,7 +17734,7 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17755,7 +17755,7 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
 
 
 class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
-    """DescribeESAssetSensitiveDistribution请求参数结构体
+    r"""DescribeESAssetSensitiveDistribution请求参数结构体
 
     """
 
@@ -17774,7 +17774,7 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -17785,7 +17785,7 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -17796,7 +17796,7 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -17826,7 +17826,7 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
 
 class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
-    """DescribeESAssetSensitiveDistribution返回参数结构体
+    r"""DescribeESAssetSensitiveDistribution返回参数结构体
 
     """
 
@@ -17848,7 +17848,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def ESAsset(self):
-        """ES的资产统计数据
+        r"""ES的资产统计数据
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESAsset`
         """
         return self._ESAsset
@@ -17859,7 +17859,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
-        """涉敏top数据
+        r"""涉敏top数据
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -17870,7 +17870,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def ESDetail(self):
-        """ES的详情列表
+        r"""ES的详情列表
         :rtype: list of ESAssetDBDetail
         """
         return self._ESDetail
@@ -17881,7 +17881,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17911,7 +17911,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
 
 class DescribeExportTaskResultRequest(AbstractModel):
-    """DescribeExportTaskResult请求参数结构体
+    r"""DescribeExportTaskResult请求参数结构体
 
     """
 
@@ -17927,7 +17927,7 @@ class DescribeExportTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -17938,7 +17938,7 @@ class DescribeExportTaskResultRequest(AbstractModel):
 
     @property
     def ExportTaskId(self):
-        """导出任务id
+        r"""导出任务id
         :rtype: int
         """
         return self._ExportTaskId
@@ -17962,7 +17962,7 @@ class DescribeExportTaskResultRequest(AbstractModel):
 
 
 class DescribeExportTaskResultResponse(AbstractModel):
-    """DescribeExportTaskResult返回参数结构体
+    r"""DescribeExportTaskResult返回参数结构体
 
     """
 
@@ -17981,7 +17981,7 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def ExportResult(self):
-        """导出任务结果
+        r"""导出任务结果
         :rtype: str
         """
         return self._ExportResult
@@ -17992,7 +17992,7 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def ExportFileUrl(self):
-        """导出文件地址
+        r"""导出文件地址
         :rtype: str
         """
         return self._ExportFileUrl
@@ -18003,7 +18003,7 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18020,7 +18020,7 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
 
 class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
-    """DescribeMongoAssetSensitiveDistribution请求参数结构体
+    r"""DescribeMongoAssetSensitiveDistribution请求参数结构体
 
     """
 
@@ -18039,7 +18039,7 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -18050,7 +18050,7 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -18061,7 +18061,7 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -18091,7 +18091,7 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
 
 class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
-    """DescribeMongoAssetSensitiveDistribution返回参数结构体
+    r"""DescribeMongoAssetSensitiveDistribution返回参数结构体
 
     """
 
@@ -18113,7 +18113,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def MongoAsset(self):
-        """mongo的资产统计数据
+        r"""mongo的资产统计数据
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.MongoAsset`
         """
         return self._MongoAsset
@@ -18124,7 +18124,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
-        """涉敏top数据
+        r"""涉敏top数据
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -18135,7 +18135,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def MongoDetail(self):
-        """mongo的详情列表
+        r"""mongo的详情列表
         :rtype: list of MongoAssetDBDetail
         """
         return self._MongoDetail
@@ -18146,7 +18146,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18176,7 +18176,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
 
 class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
-    """DescribeRDBAssetSensitiveDistribution请求参数结构体
+    r"""DescribeRDBAssetSensitiveDistribution请求参数结构体
 
     """
 
@@ -18195,7 +18195,7 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -18206,7 +18206,7 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -18217,7 +18217,7 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -18247,7 +18247,7 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
 
 class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
-    """DescribeRDBAssetSensitiveDistribution返回参数结构体
+    r"""DescribeRDBAssetSensitiveDistribution返回参数结构体
 
     """
 
@@ -18269,7 +18269,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RDBAsset(self):
-        """rdb的资产统计数据
+        r"""rdb的资产统计数据
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RDBAsset`
         """
         return self._RDBAsset
@@ -18280,7 +18280,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
-        """涉敏top数据
+        r"""涉敏top数据
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -18291,7 +18291,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RDBDetail(self):
-        """rdb的详情列表
+        r"""rdb的详情列表
         :rtype: list of AssetDBDetail
         """
         return self._RDBDetail
@@ -18302,7 +18302,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18332,7 +18332,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
 
 class DescribeReportTaskDownloadUrlRequest(AbstractModel):
-    """DescribeReportTaskDownloadUrl请求参数结构体
+    r"""DescribeReportTaskDownloadUrl请求参数结构体
 
     """
 
@@ -18351,7 +18351,7 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def ReportTaskId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._ReportTaskId
@@ -18362,7 +18362,7 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -18373,7 +18373,7 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def IsWithSensitiveDetailReport(self):
-        """是否同时下载敏感资产详情报告
+        r"""是否同时下载敏感资产详情报告
         :rtype: bool
         """
         return self._IsWithSensitiveDetailReport
@@ -18398,7 +18398,7 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
 
 class DescribeReportTaskDownloadUrlResponse(AbstractModel):
-    """DescribeReportTaskDownloadUrl返回参数结构体
+    r"""DescribeReportTaskDownloadUrl返回参数结构体
 
     """
 
@@ -18414,7 +18414,7 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrlSet(self):
-        """下载链接集合
+        r"""下载链接集合
         :rtype: list of str
         """
         return self._DownloadUrlSet
@@ -18425,7 +18425,7 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18441,7 +18441,7 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
 
 
 class DescribeReportTasksRequest(AbstractModel):
-    """DescribeReportTasks请求参数结构体
+    r"""DescribeReportTasks请求参数结构体
 
     """
 
@@ -18463,7 +18463,7 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -18474,7 +18474,7 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -18485,7 +18485,7 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -18496,7 +18496,7 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def ReportName(self):
-        """报表名称
+        r"""报表名称
         :rtype: str
         """
         return self._ReportName
@@ -18522,7 +18522,7 @@ class DescribeReportTasksRequest(AbstractModel):
 
 
 class DescribeReportTasksResponse(AbstractModel):
-    """DescribeReportTasks返回参数结构体
+    r"""DescribeReportTasks返回参数结构体
 
     """
 
@@ -18541,7 +18541,7 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -18552,7 +18552,7 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def ItemSet(self):
-        """报表信息
+        r"""报表信息
         :rtype: list of ReportInfo
         """
         return self._ItemSet
@@ -18563,7 +18563,7 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18585,7 +18585,7 @@ class DescribeReportTasksResponse(AbstractModel):
 
 
 class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
-    """DescribeSensitiveCOSDataDistribution请求参数结构体
+    r"""DescribeSensitiveCOSDataDistribution请求参数结构体
 
     """
 
@@ -18604,7 +18604,7 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -18615,7 +18615,7 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """2331
+        r"""2331
         :rtype: int
         """
         return self._ComplianceId
@@ -18626,7 +18626,7 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -18656,7 +18656,7 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
 
 class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
-    """DescribeSensitiveCOSDataDistribution返回参数结构体
+    r"""DescribeSensitiveCOSDataDistribution返回参数结构体
 
     """
 
@@ -18681,7 +18681,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def LevelDistribution(self):
-        """分级分布
+        r"""分级分布
         :rtype: list of Note
         """
         return self._LevelDistribution
@@ -18692,7 +18692,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def CategoryDistribution(self):
-        """分类分布
+        r"""分类分布
         :rtype: list of Note
         """
         return self._CategoryDistribution
@@ -18703,7 +18703,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def RuleDistribution(self):
-        """规则分布详情
+        r"""规则分布详情
         :rtype: list of RuleDistribution
         """
         return self._RuleDistribution
@@ -18714,7 +18714,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def SensitiveDataNum(self):
-        """计算占比
+        r"""计算占比
         :rtype: int
         """
         return self._SensitiveDataNum
@@ -18725,7 +18725,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18759,7 +18759,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
 
 class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
-    """DescribeSensitiveRDBDataDistribution请求参数结构体
+    r"""DescribeSensitiveRDBDataDistribution请求参数结构体
 
     """
 
@@ -18778,7 +18778,7 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa-实例id
+        r"""dspa-实例id
         :rtype: str
         """
         return self._DspaId
@@ -18789,7 +18789,7 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -18800,7 +18800,7 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
-        """查询的资产信息列表
+        r"""查询的资产信息列表
         :rtype: list of AssetList
         """
         return self._AssetList
@@ -18830,7 +18830,7 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
 
 class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
-    """DescribeSensitiveRDBDataDistribution返回参数结构体
+    r"""DescribeSensitiveRDBDataDistribution返回参数结构体
 
     """
 
@@ -18855,7 +18855,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def LevelDistribution(self):
-        """分级分布
+        r"""分级分布
         :rtype: list of Note
         """
         return self._LevelDistribution
@@ -18866,7 +18866,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def CategoryDistribution(self):
-        """分类分布
+        r"""分类分布
         :rtype: list of Note
         """
         return self._CategoryDistribution
@@ -18877,7 +18877,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def RuleDistribution(self):
-        """敏感规则分布详情列表
+        r"""敏感规则分布详情列表
         :rtype: list of RuleDistribution
         """
         return self._RuleDistribution
@@ -18888,7 +18888,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def SensitiveDataNum(self):
-        """计算占比字段
+        r"""计算占比字段
         :rtype: int
         """
         return self._SensitiveDataNum
@@ -18899,7 +18899,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18933,7 +18933,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
 
 class DisableDSPAMetaResourceAuthRequest(AbstractModel):
-    """DisableDSPAMetaResourceAuth请求参数结构体
+    r"""DisableDSPAMetaResourceAuth请求参数结构体
 
     """
 
@@ -18955,7 +18955,7 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -18966,7 +18966,7 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型。
+        r"""资源类型。
         :rtype: str
         """
         return self._MetaType
@@ -18977,7 +18977,7 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -18988,7 +18988,7 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
-        """用户云资源ID列表。
+        r"""用户云资源ID列表。
         :rtype: list of str
         """
         return self._ResourceIDs
@@ -19014,7 +19014,7 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
 
 class DisableDSPAMetaResourceAuthResponse(AbstractModel):
-    """DisableDSPAMetaResourceAuth返回参数结构体
+    r"""DisableDSPAMetaResourceAuth返回参数结构体
 
     """
 
@@ -19033,7 +19033,7 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -19044,7 +19044,7 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def Results(self):
-        """授权结果。
+        r"""授权结果。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -19055,7 +19055,7 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19077,7 +19077,7 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
 
 class DiscoveryCondition(AbstractModel):
-    """DSPA敏感数据扫描数据源条件
+    r"""DSPA敏感数据扫描数据源条件
 
     """
 
@@ -19099,7 +19099,7 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def RDBInstances(self):
-        """RDB实例列表
+        r"""RDB实例列表
         :rtype: list of RDBInstance
         """
         return self._RDBInstances
@@ -19110,7 +19110,7 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def COSInstances(self):
-        """COS实例列表
+        r"""COS实例列表
         :rtype: list of COSInstance
         """
         return self._COSInstances
@@ -19121,7 +19121,7 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def NOSQLInstances(self):
-        """Mongo实例列表
+        r"""Mongo实例列表
         :rtype: list of NOSQLInstance
         """
         return self._NOSQLInstances
@@ -19132,7 +19132,7 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def ESInstances(self):
-        """ES实例列表
+        r"""ES实例列表
         :rtype: list of ESInstance
         """
         return self._ESInstances
@@ -19178,7 +19178,7 @@ class DiscoveryCondition(AbstractModel):
 
 
 class DspaAssessmentFilter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询
+    r"""描述键值对过滤器，用于条件过滤查询
 
     """
 
@@ -19194,7 +19194,7 @@ class DspaAssessmentFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤类型。
+        r"""过滤类型。
         :rtype: str
         """
         return self._Name
@@ -19205,7 +19205,7 @@ class DspaAssessmentFilter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤类型的值。
+        r"""过滤类型的值。
         :rtype: list of str
         """
         return self._Values
@@ -19229,7 +19229,7 @@ class DspaAssessmentFilter(AbstractModel):
 
 
 class DspaCOSDataAssetCount(AbstractModel):
-    """COS对象存储敏感数据资产统计
+    r"""COS对象存储敏感数据资产统计
 
     """
 
@@ -19266,7 +19266,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def DataAssetType(self):
-        """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
+        r"""数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
         :rtype: int
         """
         return self._DataAssetType
@@ -19277,7 +19277,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def TotalBucketCnt(self):
-        """已扫描的存储桶的个数
+        r"""已扫描的存储桶的个数
         :rtype: int
         """
         return self._TotalBucketCnt
@@ -19288,7 +19288,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def TotalObjectCnt(self):
-        """对象总数
+        r"""对象总数
         :rtype: int
         """
         return self._TotalObjectCnt
@@ -19299,7 +19299,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
-        """敏感数据类型个数
+        r"""敏感数据类型个数
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -19310,7 +19310,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveDataCnt(self):
-        """敏感数据条数
+        r"""敏感数据条数
         :rtype: int
         """
         return self._SensitiveDataCnt
@@ -19321,7 +19321,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveLevel(self):
-        """敏感等级分布
+        r"""敏感等级分布
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -19332,7 +19332,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveBucketCnt(self):
-        """敏感存储桶个数
+        r"""敏感存储桶个数
         :rtype: int
         """
         return self._SensitiveBucketCnt
@@ -19343,7 +19343,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveObjectCnt(self):
-        """敏感对象个数
+        r"""敏感对象个数
         :rtype: int
         """
         return self._SensitiveObjectCnt
@@ -19354,7 +19354,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def CategoryDistributed(self):
-        """数据分类分布
+        r"""数据分类分布
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -19395,7 +19395,7 @@ class DspaCOSDataAssetCount(AbstractModel):
 
 
 class DspaCOSDataAssetDetail(AbstractModel):
-    """COS对象存储数据资产详情
+    r"""COS对象存储数据资产详情
 
     """
 
@@ -19467,7 +19467,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def BucketName(self):
-        """对象桶
+        r"""对象桶
         :rtype: str
         """
         return self._BucketName
@@ -19478,7 +19478,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileName(self):
-        """对象名称
+        r"""对象名称
         :rtype: str
         """
         return self._FileName
@@ -19489,7 +19489,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -19500,7 +19500,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def SensitiveDataCount(self):
-        """出现次数
+        r"""出现次数
         :rtype: int
         """
         return self._SensitiveDataCount
@@ -19511,7 +19511,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """敏感数据分类
+        r"""敏感数据分类
         :rtype: str
         """
         return self._CategoryName
@@ -19522,7 +19522,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """敏感等级
+        r"""敏感等级
         :rtype: str
         """
         return self._LevelRiskName
@@ -19533,7 +19533,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def KMSEncrypted(self):
-        """KMS加密
+        r"""KMS加密
         :rtype: bool
         """
         return self._KMSEncrypted
@@ -19544,7 +19544,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型
+        r"""文件类型
         :rtype: str
         """
         return self._FileType
@@ -19555,7 +19555,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小
+        r"""文件大小
         :rtype: str
         """
         return self._FileSize
@@ -19566,7 +19566,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """敏感数据分级分数
+        r"""敏感数据分级分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -19577,7 +19577,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -19588,7 +19588,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -19599,7 +19599,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -19610,7 +19610,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类ID
+        r"""分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -19621,7 +19621,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级ID
+        r"""分级ID
         :rtype: int
         """
         return self._LevelId
@@ -19632,7 +19632,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileResultId(self):
-        """文件扫描结果ID
+        r"""文件扫描结果ID
         :rtype: int
         """
         return self._FileResultId
@@ -19643,7 +19643,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -19654,7 +19654,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
-        """分类路径
+        r"""分类路径
         :rtype: str
         """
         return self._CategoryFullPath
@@ -19665,7 +19665,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """0-系统识别
+        r"""0-系统识别
 1-人工识别
         :rtype: int
         """
@@ -19677,7 +19677,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """0-系统识别
+        r"""0-系统识别
 1-人工识别
         :rtype: int
         """
@@ -19720,7 +19720,7 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
 
 class DspaCOSDiscoveryTask(AbstractModel):
-    """COS敏感数据扫描任务相关信息
+    r"""COS敏感数据扫描任务相关信息
 
     """
 
@@ -19760,7 +19760,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -19771,7 +19771,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._Description
@@ -19782,7 +19782,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Period(self):
-        """执行周期，0单次 1每天 2每周 3每月
+        r"""执行周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -19793,7 +19793,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划，0立即 1定时
+        r"""执行计划，0立即 1定时
         :rtype: int
         """
         return self._Plan
@@ -19804,7 +19804,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关；1 打开，0 关闭
+        r"""任务开关；1 打开，0 关闭
         :rtype: int
         """
         return self._Enable
@@ -19815,7 +19815,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def DataSourceInfo(self):
-        """数据源对象信息
+        r"""数据源对象信息
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDataSourceInfo`
         """
         return self._DataSourceInfo
@@ -19826,7 +19826,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -19837,7 +19837,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Result(self):
-        """任务最新的一次执行结果信息，该字段用于查询任务列表接口
+        r"""任务最新的一次执行结果信息，该字段用于查询任务列表接口
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         """
         return self._Result
@@ -19848,7 +19848,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """定时开始时间
+        r"""定时开始时间
         :rtype: str
         """
         return self._TimingStartTime
@@ -19859,7 +19859,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def ComplianceUpdate(self):
-        """关联分类模板是否更新
+        r"""关联分类模板是否更新
         :rtype: bool
         """
         return self._ComplianceUpdate
@@ -19895,7 +19895,7 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
 
 class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
-    """扫描任务元数据信息
+    r"""扫描任务元数据信息
 
     """
 
@@ -19920,7 +19920,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -19931,7 +19931,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        """代理地址
+        r"""代理地址
         :rtype: list of str
         """
         return self._ProxyAddress
@@ -19942,7 +19942,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -19953,7 +19953,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def Condition(self):
-        """扫描任务条件
+        r"""扫描任务条件
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskCOSCondition`
         """
         return self._Condition
@@ -19964,7 +19964,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -19993,7 +19993,7 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
 
 class DspaCOSDiscoveryTaskDetail(AbstractModel):
-    """COS敏感数据扫描任务相关信息
+    r"""COS敏感数据扫描任务相关信息
 
     """
 
@@ -20033,7 +20033,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -20044,7 +20044,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._Description
@@ -20055,7 +20055,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Period(self):
-        """执行周期，0单次 1每天 2每周 3每月
+        r"""执行周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -20066,7 +20066,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划，0立即 1定时
+        r"""执行计划，0立即 1定时
         :rtype: int
         """
         return self._Plan
@@ -20077,7 +20077,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关；1 打开，0 关闭
+        r"""任务开关；1 打开，0 关闭
         :rtype: int
         """
         return self._Enable
@@ -20088,7 +20088,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DataSourceInfo(self):
-        """数据源对象信息
+        r"""数据源对象信息
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDataSourceInfo`
         """
         return self._DataSourceInfo
@@ -20099,7 +20099,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -20110,7 +20110,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DefaultComplianceInfo(self):
-        """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
+        r"""当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._DefaultComplianceInfo
@@ -20121,7 +20121,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def CustomComplianceInfo(self):
-        """该任务中用户选择的合规组信息列表
+        r"""该任务中用户选择的合规组信息列表
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._CustomComplianceInfo
@@ -20132,7 +20132,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """定时开始时间
+        r"""定时开始时间
         :rtype: str
         """
         return self._TimingStartTime
@@ -20176,7 +20176,7 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
 
 class DspaCOSDiscoveryTaskResult(AbstractModel):
-    """COS扫描任务结果，按照数据库级别展示
+    r"""COS扫描任务结果，按照数据库级别展示
 
     """
 
@@ -20234,7 +20234,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def BucketResultId(self):
-        """扫描bucket结果ID
+        r"""扫描bucket结果ID
         :rtype: int
         """
         return self._BucketResultId
@@ -20245,7 +20245,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -20256,7 +20256,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -20267,7 +20267,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ResultId(self):
-        """扫描任务最新一次扫描结果ID
+        r"""扫描任务最新一次扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -20278,7 +20278,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -20289,7 +20289,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def BucketName(self):
-        """桶名称
+        r"""桶名称
         :rtype: str
         """
         return self._BucketName
@@ -20300,7 +20300,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TotalFiles(self):
-        """总文件数
+        r"""总文件数
         :rtype: int
         """
         return self._TotalFiles
@@ -20311,7 +20311,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def SensitiveDataNums(self):
-        """被识别出的敏感数据数
+        r"""被识别出的敏感数据数
         :rtype: int
         """
         return self._SensitiveDataNums
@@ -20322,7 +20322,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """Bucket扫描的结束时间，格式如：2006-01-02 15:04:05
+        r"""Bucket扫描的结束时间，格式如：2006-01-02 15:04:05
         :rtype: str
         """
         return self._EndTime
@@ -20333,7 +20333,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -20344,7 +20344,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        r"""Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :rtype: int
         """
         return self._Status
@@ -20355,7 +20355,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ErrorInfo(self):
-        """Bucket扫描结果错误信息
+        r"""Bucket扫描结果错误信息
         :rtype: str
         """
         return self._ErrorInfo
@@ -20366,7 +20366,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -20377,7 +20377,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def OverSize(self):
-        """是否超额
+        r"""是否超额
         :rtype: str
         """
         return self._OverSize
@@ -20388,7 +20388,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TaskInstanceId(self):
-        """任务实例id
+        r"""任务实例id
         :rtype: str
         """
         return self._TaskInstanceId
@@ -20399,7 +20399,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -20437,7 +20437,7 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
 
 class DspaCloudResourceMeta(AbstractModel):
-    """云上资源元数据
+    r"""云上资源元数据
 
     """
 
@@ -20468,7 +20468,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceId(self):
-        """用户资源ID。
+        r"""用户资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -20479,7 +20479,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称。
+        r"""资源名称。
         :rtype: str
         """
         return self._ResourceName
@@ -20490,7 +20490,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceVip(self):
-        """资源VIP。
+        r"""资源VIP。
         :rtype: str
         """
         return self._ResourceVip
@@ -20501,7 +20501,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceVPort(self):
-        """资源端口。
+        r"""资源端口。
         :rtype: int
         """
         return self._ResourceVPort
@@ -20512,7 +20512,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源被创建时间。
+        r"""资源被创建时间。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -20523,7 +20523,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueVpcId(self):
-        """用户资源VPC ID 字符串。
+        r"""用户资源VPC ID 字符串。
         :rtype: str
         """
         return self._ResourceUniqueVpcId
@@ -20534,7 +20534,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueSubnetId(self):
-        """用户资源Subnet ID 字符串。
+        r"""用户资源Subnet ID 字符串。
         :rtype: str
         """
         return self._ResourceUniqueSubnetId
@@ -20563,7 +20563,7 @@ class DspaCloudResourceMeta(AbstractModel):
 
 
 class DspaDataCategoryDistributed(AbstractModel):
-    """DSPA数据分类分布
+    r"""DSPA数据分类分布
 
     """
 
@@ -20585,7 +20585,7 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryId(self):
-        """数据分类ID
+        r"""数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -20596,7 +20596,7 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryName(self):
-        """数据分类名称
+        r"""数据分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -20607,7 +20607,7 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def Count(self):
-        """数据分类统计个数
+        r"""数据分类统计个数
         :rtype: int
         """
         return self._Count
@@ -20618,7 +20618,7 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryFullPath(self):
-        """分类路径
+        r"""分类路径
         :rtype: str
         """
         return self._CategoryFullPath
@@ -20644,7 +20644,7 @@ class DspaDataCategoryDistributed(AbstractModel):
 
 
 class DspaDataSourceMngFilter(AbstractModel):
-    """过滤内容
+    r"""过滤内容
 
     """
 
@@ -20660,7 +20660,7 @@ class DspaDataSourceMngFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤类型。
+        r"""过滤类型。
         :rtype: str
         """
         return self._Name
@@ -20671,7 +20671,7 @@ class DspaDataSourceMngFilter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤类型的值。
+        r"""过滤类型的值。
         :rtype: list of str
         """
         return self._Values
@@ -20695,7 +20695,7 @@ class DspaDataSourceMngFilter(AbstractModel):
 
 
 class DspaDiscoveryCOSDataRule(AbstractModel):
-    """COS敏感数据识别规则
+    r"""COS敏感数据识别规则
 
     """
 
@@ -20712,7 +20712,7 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
 
     @property
     def Operator(self):
-        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
+        r"""只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 默认值为or
         :rtype: str
         """
@@ -20724,7 +20724,7 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
 
     @property
     def Contents(self):
-        """规则内容
+        r"""规则内容
         :rtype: list of DspaDiscoveryDataContent
         """
         return self._Contents
@@ -20753,7 +20753,7 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
 
 
 class DspaDiscoveryCOSRules(AbstractModel):
-    """分类分级任务COS识别规则
+    r"""分类分级任务COS识别规则
 
     """
 
@@ -20778,7 +20778,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态；0 不启用, 1 启用
+        r"""规则状态；0 不启用, 1 启用
         :rtype: int
         """
         return self._Status
@@ -20789,7 +20789,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def RegexRule(self):
-        """regex规则内容
+        r"""regex规则内容
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._RegexRule
@@ -20800,7 +20800,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def KeywordRule(self):
-        """关键词规则内容组，最大支持5个关键词。
+        r"""关键词规则内容组，最大支持5个关键词。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._KeywordRule
@@ -20811,7 +20811,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def IgnoreStringRule(self):
-        """忽略词规则内容组，最大支持5个忽略词。
+        r"""忽略词规则内容组，最大支持5个忽略词。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._IgnoreStringRule
@@ -20822,7 +20822,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def MaxMatch(self):
-        """最大匹配距离，默认值为100。上限为500.
+        r"""最大匹配距离，默认值为100。上限为500.
         :rtype: int
         """
         return self._MaxMatch
@@ -20855,7 +20855,7 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
 
 class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
-    """COS扫描任务结果详情
+    r"""COS扫描任务结果详情
 
     """
 
@@ -20922,7 +20922,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -20933,7 +20933,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileResultId(self):
-        """扫描File结果详情ID
+        r"""扫描File结果详情ID
         :rtype: int
         """
         return self._FileResultId
@@ -20944,7 +20944,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def BucketName(self):
-        """所属桶名
+        r"""所属桶名
         :rtype: str
         """
         return self._BucketName
@@ -20955,7 +20955,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileName(self):
-        """所属文件名
+        r"""所属文件名
         :rtype: str
         """
         return self._FileName
@@ -20966,7 +20966,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -20977,7 +20977,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """敏感数据分类名称
+        r"""敏感数据分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -20988,7 +20988,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID
+        r"""敏感数据分级ID
         :rtype: int
         """
         return self._LevelId
@@ -20999,7 +20999,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
-        """敏感数据分级名称
+        r"""敏感数据分级名称
         :rtype: str
         """
         return self._LevelName
@@ -21010,7 +21010,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def KMSEncrypted(self):
-        """KMS加密，true or false
+        r"""KMS加密，true or false
         :rtype: bool
         """
         return self._KMSEncrypted
@@ -21021,7 +21021,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -21032,7 +21032,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -21043,7 +21043,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """敏感数据分级分数
+        r"""敏感数据分级分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -21054,7 +21054,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小，单位为KB
+        r"""文件大小，单位为KB
         :rtype: int
         """
         return self._FileSize
@@ -21065,7 +21065,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型，如csv，txt
+        r"""文件类型，如csv，txt
         :rtype: str
         """
         return self._FileType
@@ -21076,7 +21076,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def SensitiveDataCount(self):
-        """敏感数据出现次数
+        r"""敏感数据出现次数
         :rtype: int
         """
         return self._SensitiveDataCount
@@ -21087,7 +21087,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
-        """分类树路径
+        r"""分类树路径
         :rtype: list of str
         """
         return self._CategoryFullPath
@@ -21098,7 +21098,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryArr(self):
-        """分类树路径
+        r"""分类树路径
         :rtype: list of str
         """
         return self._CategoryArr
@@ -21109,7 +21109,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -21120,7 +21120,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def ResultId(self):
-        """结果id
+        r"""结果id
         :rtype: int
         """
         return self._ResultId
@@ -21161,7 +21161,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
 
 class DspaDiscoveryComplianceGroup(AbstractModel):
-    """合规组
+    r"""合规组
 
     """
 
@@ -21189,7 +21189,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -21200,7 +21200,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def Name(self):
-        """合规组名称
+        r"""合规组名称
         :rtype: str
         """
         return self._Name
@@ -21211,7 +21211,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def Description(self):
-        """合规组描述信息
+        r"""合规组描述信息
         :rtype: str
         """
         return self._Description
@@ -21222,7 +21222,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
-        """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
+        r"""合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -21233,7 +21233,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
-        """合规组对应的规则项
+        r"""合规组对应的规则项
         :rtype: list of DspaDiscoveryComplianceGroupRuleInfo
         """
         return self._ComplianceGroupRules
@@ -21244,7 +21244,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """合规组对应的分级组ID
+        r"""合规组对应的分级组ID
         :rtype: int
         """
         return self._LevelGroupId
@@ -21277,7 +21277,7 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
 
 class DspaDiscoveryComplianceGroupInfo(AbstractModel):
-    """合规组信息
+    r"""合规组信息
 
     """
 
@@ -21317,7 +21317,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -21328,7 +21328,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Name(self):
-        """合规组名称
+        r"""合规组名称
         :rtype: str
         """
         return self._Name
@@ -21339,7 +21339,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """合规组描述信息
+        r"""合规组描述信息
         :rtype: str
         """
         return self._Description
@@ -21350,7 +21350,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
-        """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
+        r"""合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -21361,7 +21361,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
-        """合规组对应的规则项
+        r"""合规组对应的规则项
         :rtype: list of DspaDiscoveryComplianceGroupRule
         """
         return self._ComplianceGroupRules
@@ -21372,7 +21372,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """合规组对应的分级组ID
+        r"""合规组对应的分级组ID
         :rtype: int
         """
         return self._LevelGroupId
@@ -21383,7 +21383,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Disabled(self):
-        """是否禁止使用（true，禁止使用，false，可以使用）
+        r"""是否禁止使用（true，禁止使用，false，可以使用）
         :rtype: bool
         """
         return self._Disabled
@@ -21394,7 +21394,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def IsAlias(self):
-        """是否别名
+        r"""是否别名
         :rtype: bool
         """
         return self._IsAlias
@@ -21405,7 +21405,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Status(self):
-        """1代表模板开启，0代表模板关闭
+        r"""1代表模板开启，0代表模板关闭
         :rtype: int
         """
         return self._Status
@@ -21416,7 +21416,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """模板最后修改时间
+        r"""模板最后修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -21453,7 +21453,7 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
 
 class DspaDiscoveryComplianceGroupRule(AbstractModel):
-    """合规组中规则信息，用于合规组列表中规则信息展示
+    r"""合规组中规则信息，用于合规组列表中规则信息展示
 
     """
 
@@ -21481,7 +21481,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def RuleId(self):
-        """敏感数据识别规则ID
+        r"""敏感数据识别规则ID
         :rtype: int
         """
         return self._RuleId
@@ -21492,7 +21492,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """敏感数据识别规则名称
+        r"""敏感数据识别规则名称
         :rtype: str
         """
         return self._RuleName
@@ -21503,7 +21503,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -21514,7 +21514,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID, 目前只支持高、中、低三级
+        r"""敏感数据分级ID, 目前只支持高、中、低三级
         :rtype: int
         """
         return self._LevelId
@@ -21525,7 +21525,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def CategoryName(self):
-        """合规组对应的分类信息
+        r"""合规组对应的分类信息
         :rtype: str
         """
         return self._CategoryName
@@ -21536,7 +21536,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """分级名称
+        r"""分级名称
         :rtype: str
         """
         return self._LevelRiskName
@@ -21564,7 +21564,7 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
 
 class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
-    """合规组中规则信息，用于合规组列表中规则信息展示
+    r"""合规组中规则信息，用于合规组列表中规则信息展示
 
     """
 
@@ -21586,7 +21586,7 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        """敏感数据识别规则ID
+        r"""敏感数据识别规则ID
         :rtype: int
         """
         return self._RuleId
@@ -21597,7 +21597,7 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def RuleName(self):
-        """敏感数据识别规则名称
+        r"""敏感数据识别规则名称
         :rtype: str
         """
         return self._RuleName
@@ -21608,7 +21608,7 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -21619,7 +21619,7 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID, 目前只支持高、中、低三级
+        r"""敏感数据分级ID, 目前只支持高、中、低三级
         :rtype: int
         """
         return self._LevelId
@@ -21645,7 +21645,7 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
 
 class DspaDiscoveryDataContent(AbstractModel):
-    """扫描规则内容
+    r"""扫描规则内容
 
     """
 
@@ -21664,7 +21664,7 @@ true:区分大小写
 
     @property
     def RuleContent(self):
-        """规则内容，可以是正则规则，关键词，
+        r"""规则内容，可以是正则规则，关键词，
 忽略词扥
         :rtype: str
         """
@@ -21676,7 +21676,7 @@ true:区分大小写
 
     @property
     def IsIgnoreCase(self):
-        """是否区分大小写
+        r"""是否区分大小写
 false: 不区分大小写
 true:区分大小写
         :rtype: bool
@@ -21702,7 +21702,7 @@ true:区分大小写
 
 
 class DspaDiscoveryDataRule(AbstractModel):
-    """敏感数据识别规则
+    r"""敏感数据识别规则
 
     """
 
@@ -21723,7 +21723,7 @@ regex 正则
 
     @property
     def RuleType(self):
-        """规则类型；取值：
+        r"""规则类型；取值：
 keyword 关键字, 
 regex 正则
         :rtype: str
@@ -21736,7 +21736,7 @@ regex 正则
 
     @property
     def RuleContent(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._RuleContent
@@ -21747,7 +21747,7 @@ regex 正则
 
     @property
     def ExtendParameters(self):
-        """该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
+        r"""该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
         :rtype: list of DatagovRuleExtendParameter
         """
         return self._ExtendParameters
@@ -21777,7 +21777,7 @@ regex 正则
 
 
 class DspaDiscoveryDataRules(AbstractModel):
-    """敏感数据识别规则集
+    r"""敏感数据识别规则集
 
     """
 
@@ -21793,7 +21793,7 @@ class DspaDiscoveryDataRules(AbstractModel):
 
     @property
     def Operator(self):
-        """操作符；只能取and, or的其中一种
+        r"""操作符；只能取and, or的其中一种
         :rtype: str
         """
         return self._Operator
@@ -21804,7 +21804,7 @@ class DspaDiscoveryDataRules(AbstractModel):
 
     @property
     def Contents(self):
-        """规则
+        r"""规则
         :rtype: list of DspaDiscoveryDataRule
         """
         return self._Contents
@@ -21833,7 +21833,7 @@ class DspaDiscoveryDataRules(AbstractModel):
 
 
 class DspaDiscoveryLevelDetail(AbstractModel):
-    """敏感数据分级信息
+    r"""敏感数据分级信息
 
     """
 
@@ -21864,7 +21864,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupName(self):
-        """分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._LevelGroupName
@@ -21875,7 +21875,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def Source(self):
-        """分级组来源，0为内置，1为自定义
+        r"""分级组来源，0为内置，1为自定义
         :rtype: int
         """
         return self._Source
@@ -21886,7 +21886,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupDesc(self):
-        """分级组描述，最多1024字符
+        r"""分级组描述，最多1024字符
         :rtype: str
         """
         return self._LevelGroupDesc
@@ -21897,7 +21897,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelDetail(self):
-        """具体分级标识详情
+        r"""具体分级标识详情
         :rtype: list of LevelItem
         """
         return self._LevelDetail
@@ -21908,7 +21908,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def RefComplianceCnt(self):
-        """引用合规组次数
+        r"""引用合规组次数
         :rtype: int
         """
         return self._RefComplianceCnt
@@ -21919,7 +21919,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def RefCompliance(self):
-        """引用合规组
+        r"""引用合规组
         :rtype: list of DspaDiscoveryComplianceGroup
         """
         return self._RefCompliance
@@ -21930,7 +21930,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """分级组ID
+        r"""分级组ID
         :rtype: int
         """
         return self._LevelGroupId
@@ -21969,7 +21969,7 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
 
 class DspaDiscoveryRDBRules(AbstractModel):
-    """分类分级任务RDB数据规则
+    r"""分类分级任务RDB数据规则
 
     """
 
@@ -21991,7 +21991,7 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态；0 不启用, 1 启用
+        r"""规则状态；0 不启用, 1 启用
         :rtype: int
         """
         return self._Status
@@ -22002,7 +22002,7 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def MatchOperator(self):
-        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+        r"""只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
         :rtype: str
         """
         return self._MatchOperator
@@ -22013,7 +22013,7 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def MetaRule(self):
-        """字段名包含规则，最大支持选择9项
+        r"""字段名包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         """
         return self._MetaRule
@@ -22024,7 +22024,7 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def ContentRule(self):
-        """内容包含规则，最大支持选择9项
+        r"""内容包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         """
         return self._ContentRule
@@ -22054,7 +22054,7 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
 
 class DspaDiscoveryRuleDetail(AbstractModel):
-    """敏感数据扫描任务识别规则详情
+    r"""敏感数据扫描任务识别规则详情
 
     """
 
@@ -22085,7 +22085,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -22096,7 +22096,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -22107,7 +22107,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._Description
@@ -22118,7 +22118,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Source(self):
-        """规则来源，取值：0 内置, 1 自定义
+        r"""规则来源，取值：0 内置, 1 自定义
         :rtype: int
         """
         return self._Source
@@ -22129,7 +22129,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def RDBRules(self):
-        """RDB规则详情
+        r"""RDB规则详情
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
         """
         return self._RDBRules
@@ -22140,7 +22140,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def COSRules(self):
-        """COS规则详情
+        r"""COS规则详情
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
         """
         return self._COSRules
@@ -22151,7 +22151,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Status(self):
-        """0关闭，1开启
+        r"""0关闭，1开启
         :rtype: int
         """
         return self._Status
@@ -22184,7 +22184,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
 
 class DspaDiscoveryTask(AbstractModel):
-    """分类分级任务相关信息
+    r"""分类分级任务相关信息
 
     """
 
@@ -22231,7 +22231,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -22242,7 +22242,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -22253,7 +22253,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._Description
@@ -22264,7 +22264,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Period(self):
-        """执行周期，0单次 1每天 2每周 3每月
+        r"""执行周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -22275,7 +22275,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划，0立即 1定时
+        r"""执行计划，0立即 1定时
         :rtype: int
         """
         return self._Plan
@@ -22286,7 +22286,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关；1 打开，0 关闭
+        r"""任务开关；1 打开，0 关闭
         :rtype: int
         """
         return self._Enable
@@ -22297,7 +22297,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def DataSourceInfo(self):
-        """元数据对象信息
+        r"""元数据对象信息
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
         """
         return self._DataSourceInfo
@@ -22308,7 +22308,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -22319,7 +22319,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def Result(self):
-        """任务最新的一次执行结果信息，该字段用于查询任务列表接口
+        r"""任务最新的一次执行结果信息，该字段用于查询任务列表接口
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         """
         return self._Result
@@ -22330,7 +22330,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """定时开始时间
+        r"""定时开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22342,7 +22342,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def ComplianceUpdate(self):
-        """关联模板是否更新
+        r"""关联模板是否更新
         :rtype: bool
         """
         return self._ComplianceUpdate
@@ -22353,7 +22353,7 @@ class DspaDiscoveryTask(AbstractModel):
 
     @property
     def ScanRange(self):
-        """	full:全量扫描 incre:变更扫描
+        r"""	full:全量扫描 incre:变更扫描
         :rtype: str
         """
         return self._ScanRange
@@ -22391,7 +22391,7 @@ class DspaDiscoveryTask(AbstractModel):
 
 
 class DspaDiscoveryTaskCOSCondition(AbstractModel):
-    """描述对象存储类敏感识别扫描人元数据条件。
+    r"""描述对象存储类敏感识别扫描人元数据条件。
 
     """
 
@@ -22410,7 +22410,7 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def Bucket(self):
-        """数据桶名称
+        r"""数据桶名称
         :rtype: str
         """
         return self._Bucket
@@ -22421,7 +22421,7 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def FileTypes(self):
-        """文件类型
+        r"""文件类型
         :rtype: list of str
         """
         return self._FileTypes
@@ -22432,7 +22432,7 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def FileSizeLimit(self):
-        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
+        r"""文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
         :rtype: int
         """
         return self._FileSizeLimit
@@ -22457,7 +22457,7 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
 
 class DspaDiscoveryTaskDataSource(AbstractModel):
-    """扫描任务数据源信息
+    r"""扫描任务数据源信息
 
     """
 
@@ -22485,7 +22485,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -22496,7 +22496,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def Condition(self):
-        """用于传入的数据源的条件，可以选择多个数据库，数据库之间通过逗号分隔，如果为空，默认是全部数据库
+        r"""用于传入的数据源的条件，可以选择多个数据库，数据库之间通过逗号分隔，如果为空，默认是全部数据库
         :rtype: str
         """
         return self._Condition
@@ -22507,7 +22507,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        """代理地址
+        r"""代理地址
         :rtype: list of str
         """
         return self._ProxyAddress
@@ -22518,7 +22518,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -22529,7 +22529,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -22540,7 +22540,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -22568,7 +22568,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
 
 class DspaDiscoveryTaskDbResult(AbstractModel):
-    """扫描任务结果，按照数据库级别展示
+    r"""扫描任务结果，按照数据库级别展示
 
     """
 
@@ -22632,7 +22632,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DbResultId(self):
-        """扫描数据库结果ID
+        r"""扫描数据库结果ID
         :rtype: int
         """
         return self._DbResultId
@@ -22643,7 +22643,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -22654,7 +22654,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -22665,7 +22665,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ResultId(self):
-        """扫描任务最新一次扫描结果ID
+        r"""扫描任务最新一次扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -22676,7 +22676,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -22687,7 +22687,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -22698,7 +22698,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TotalTables(self):
-        """总表数
+        r"""总表数
         :rtype: int
         """
         return self._TotalTables
@@ -22709,7 +22709,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def SensitiveTables(self):
-        """敏感表数
+        r"""敏感表数
         :rtype: int
         """
         return self._SensitiveTables
@@ -22720,7 +22720,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """DB扫描的结束时间，格式如：2006-01-02 15:04:05
+        r"""DB扫描的结束时间，格式如：2006-01-02 15:04:05
         :rtype: str
         """
         return self._EndTime
@@ -22731,7 +22731,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -22742,7 +22742,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def Status(self):
-        """DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        r"""DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :rtype: int
         """
         return self._Status
@@ -22753,7 +22753,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ErrorInfo(self):
-        """DB扫描结果错误信息
+        r"""DB扫描结果错误信息
         :rtype: str
         """
         return self._ErrorInfo
@@ -22764,7 +22764,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -22775,7 +22775,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def SensitiveField(self):
-        """敏感字段数
+        r"""敏感字段数
         :rtype: int
         """
         return self._SensitiveField
@@ -22786,7 +22786,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TotalField(self):
-        """总的字段数
+        r"""总的字段数
         :rtype: int
         """
         return self._TotalField
@@ -22797,7 +22797,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TaskInstanceId(self):
-        """任务实例id
+        r"""任务实例id
         :rtype: str
         """
         return self._TaskInstanceId
@@ -22808,7 +22808,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -22819,7 +22819,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ScanRange(self):
-        """扫描范围（full:全量扫描 incre：变更扫描）
+        r"""扫描范围（full:全量扫描 incre：变更扫描）
         :rtype: str
         """
         return self._ScanRange
@@ -22859,7 +22859,7 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
 
 class DspaDiscoveryTaskDetail(AbstractModel):
-    """敏感数据扫描任务相关信息
+    r"""敏感数据扫描任务相关信息
 
     """
 
@@ -22902,7 +22902,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -22913,7 +22913,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._Description
@@ -22924,7 +22924,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Period(self):
-        """执行周期，0单次 1每天 2每周 3每月
+        r"""执行周期，0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -22935,7 +22935,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划，0立即 1定时
+        r"""执行计划，0立即 1定时
         :rtype: int
         """
         return self._Plan
@@ -22946,7 +22946,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关；1 打开，0 关闭
+        r"""任务开关；1 打开，0 关闭
         :rtype: int
         """
         return self._Enable
@@ -22957,7 +22957,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DataSourceInfo(self):
-        """元数据对象信息
+        r"""元数据对象信息
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
         """
         return self._DataSourceInfo
@@ -22968,7 +22968,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
+        r"""通用规则集开关，0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -22979,7 +22979,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DefaultComplianceInfo(self):
-        """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
+        r"""当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._DefaultComplianceInfo
@@ -22990,7 +22990,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def CustomComplianceInfo(self):
-        """该任务中用户选择的合规组信息列表
+        r"""该任务中用户选择的合规组信息列表
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._CustomComplianceInfo
@@ -23001,7 +23001,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """定时开始时间
+        r"""定时开始时间
         :rtype: str
         """
         return self._TimingStartTime
@@ -23012,7 +23012,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def ScanRange(self):
-        """full:全量扫描 incre:变更扫描
+        r"""full:全量扫描 incre:变更扫描
         :rtype: str
         """
         return self._ScanRange
@@ -23057,7 +23057,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
 
 class DspaDiscoveryTaskResultDetail(AbstractModel):
-    """扫描任务结果详情
+    r"""扫描任务结果详情
 
     """
 
@@ -23109,7 +23109,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -23120,7 +23120,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """扫描结果详情ID
+        r"""扫描结果详情ID
         :rtype: int
         """
         return self._FieldResultId
@@ -23131,7 +23131,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def TableName(self):
-        """所属数据表名
+        r"""所属数据表名
         :rtype: str
         """
         return self._TableName
@@ -23142,7 +23142,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def FieldName(self):
-        """字段名
+        r"""字段名
         :rtype: str
         """
         return self._FieldName
@@ -23153,7 +23153,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """敏感数据分类ID
+        r"""敏感数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -23164,7 +23164,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """敏感数据分类名称
+        r"""敏感数据分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -23175,7 +23175,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """敏感数据分级ID
+        r"""敏感数据分级ID
         :rtype: int
         """
         return self._LevelId
@@ -23186,7 +23186,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
-        """敏感数据分级名称
+        r"""敏感数据分级名称
         :rtype: str
         """
         return self._LevelName
@@ -23197,7 +23197,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -23208,7 +23208,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -23219,7 +23219,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """敏感数据分级分数
+        r"""敏感数据分级分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -23230,7 +23230,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def SafeGuard(self):
-        """保护措施
+        r"""保护措施
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         """
         return self._SafeGuard
@@ -23241,7 +23241,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
-        """分类路径
+        r"""分类路径
         :rtype: str
         """
         return self._CategoryFullPath
@@ -23252,7 +23252,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def SchemaName(self):
-        """模式名
+        r"""模式名
         :rtype: str
         """
         return self._SchemaName
@@ -23290,7 +23290,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
 
 class DspaFieldResultDataSample(AbstractModel):
-    """数据样本
+    r"""数据样本
 
     """
 
@@ -23303,7 +23303,7 @@ class DspaFieldResultDataSample(AbstractModel):
 
     @property
     def DataSample(self):
-        """数据样本
+        r"""数据样本
         :rtype: str
         """
         return self._DataSample
@@ -23326,7 +23326,7 @@ class DspaFieldResultDataSample(AbstractModel):
 
 
 class DspaInstance(AbstractModel):
-    """Dspa实例信息
+    r"""Dspa实例信息
 
     """
 
@@ -23392,7 +23392,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -23403,7 +23403,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def DspaName(self):
-        """DSPA实例名称。
+        r"""DSPA实例名称。
         :rtype: str
         """
         return self._DspaName
@@ -23414,7 +23414,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def DspaDescription(self):
-        """DSPA实例描述信息。
+        r"""DSPA实例描述信息。
         :rtype: str
         """
         return self._DspaDescription
@@ -23425,7 +23425,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def DBAuthCount(self):
-        """DSPA实例已授权的数据库实例数量。
+        r"""DSPA实例已授权的数据库实例数量。
         :rtype: int
         """
         return self._DBAuthCount
@@ -23436,7 +23436,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosBindCount(self):
-        """DSPA实例已绑定的cos桶数量。
+        r"""DSPA实例已绑定的cos桶数量。
         :rtype: int
         """
         return self._CosBindCount
@@ -23447,7 +23447,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        """DSPA实例版本。
+        r"""DSPA实例版本。
         :rtype: str
         """
         return self._InstanceVersion
@@ -23458,7 +23458,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def Status(self):
-        """DSPA实例状态。
+        r"""DSPA实例状态。
         :rtype: str
         """
         return self._Status
@@ -23469,7 +23469,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def ExpiredAt(self):
-        """实例过期时间戳。
+        r"""实例过期时间戳。
         :rtype: int
         """
         return self._ExpiredAt
@@ -23480,7 +23480,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def AppId(self):
-        """账户APPID。
+        r"""账户APPID。
         :rtype: int
         """
         return self._AppId
@@ -23491,7 +23491,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def TrialVersion(self):
-        """体验版本信息。
+        r"""体验版本信息。
         :rtype: str
         """
         return self._TrialVersion
@@ -23502,7 +23502,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def TrialEndAt(self):
-        """体验版本过期时间戳。
+        r"""体验版本过期时间戳。
         :rtype: int
         """
         return self._TrialEndAt
@@ -23513,7 +23513,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def DbTotalQuota(self):
-        """DB已购配额。
+        r"""DB已购配额。
         :rtype: int
         """
         return self._DbTotalQuota
@@ -23524,7 +23524,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosTotalQuota(self):
-        """COS已购配额。
+        r"""COS已购配额。
         :rtype: int
         """
         return self._CosTotalQuota
@@ -23535,7 +23535,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosQuotaUnit(self):
-        """COS配额单位，例如:TB。
+        r"""COS配额单位，例如:TB。
         :rtype: str
         """
         return self._CosQuotaUnit
@@ -23546,7 +23546,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """0: 默认状态(用户未设置)
+        r"""0: 默认状态(用户未设置)
 1: 开启自动续费
 2: 明确不自动续费
         :rtype: int
@@ -23559,7 +23559,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def Channel(self):
-        """实例渠道
+        r"""实例渠道
         :rtype: str
         """
         return self._Channel
@@ -23570,7 +23570,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def InsAuthCount(self):
-        """已授权的实例数量
+        r"""已授权的实例数量
         :rtype: int
         """
         return self._InsAuthCount
@@ -23581,7 +23581,7 @@ class DspaInstance(AbstractModel):
 
     @property
     def InsTotalQuota(self):
-        """已购买的实例数量
+        r"""已购买的实例数量
         :rtype: int
         """
         return self._InsTotalQuota
@@ -23621,7 +23621,7 @@ class DspaInstance(AbstractModel):
 
 
 class DspaRDBDataAssetCount(AbstractModel):
-    """RDB关系型数据库敏感数据资产统计
+    r"""RDB关系型数据库敏感数据资产统计
 
     """
 
@@ -23661,7 +23661,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def DataAssetType(self):
-        """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
+        r"""数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
         :rtype: int
         """
         return self._DataAssetType
@@ -23672,7 +23672,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalDbCnt(self):
-        """已扫描的数据库的个数
+        r"""已扫描的数据库的个数
         :rtype: int
         """
         return self._TotalDbCnt
@@ -23683,7 +23683,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalTableCnt(self):
-        """数据库表的个数
+        r"""数据库表的个数
         :rtype: int
         """
         return self._TotalTableCnt
@@ -23694,7 +23694,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
-        """敏感数据类型个数
+        r"""敏感数据类型个数
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -23705,7 +23705,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveFieldCnt(self):
-        """敏感字段的个数
+        r"""敏感字段的个数
         :rtype: int
         """
         return self._SensitiveFieldCnt
@@ -23716,7 +23716,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveLevel(self):
-        """敏感等级分布
+        r"""敏感等级分布
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -23727,7 +23727,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveDbCnt(self):
-        """敏感数据库的个数
+        r"""敏感数据库的个数
         :rtype: int
         """
         return self._SensitiveDbCnt
@@ -23738,7 +23738,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveTableCnt(self):
-        """敏感数据库表的个数
+        r"""敏感数据库表的个数
         :rtype: int
         """
         return self._SensitiveTableCnt
@@ -23749,7 +23749,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalFieldCnt(self):
-        """扫描字段的个数
+        r"""扫描字段的个数
         :rtype: int
         """
         return self._TotalFieldCnt
@@ -23760,7 +23760,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def CategoryDistributed(self):
-        """数据分类分布
+        r"""数据分类分布
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -23802,7 +23802,7 @@ class DspaRDBDataAssetCount(AbstractModel):
 
 
 class DspaRDBDataAssetDetail(AbstractModel):
-    """关系型数据库资产详情
+    r"""关系型数据库资产详情
 
     """
 
@@ -23878,7 +23878,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -23889,7 +23889,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DbType(self):
-        """数据库类型
+        r"""数据库类型
         :rtype: str
         """
         return self._DbType
@@ -23900,7 +23900,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -23911,7 +23911,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def TableName(self):
-        """数据库表名称
+        r"""数据库表名称
         :rtype: str
         """
         return self._TableName
@@ -23922,7 +23922,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def FieldName(self):
-        """数据库表字段名称
+        r"""数据库表字段名称
         :rtype: str
         """
         return self._FieldName
@@ -23933,7 +23933,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -23944,7 +23944,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """数据分类
+        r"""数据分类
         :rtype: str
         """
         return self._CategoryName
@@ -23955,7 +23955,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """敏感等级
+        r"""敏感等级
         :rtype: str
         """
         return self._LevelRiskName
@@ -23966,7 +23966,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级风险分数，1-10，最小值为1，最大值为10
+        r"""分级风险分数，1-10，最小值为1，最大值为10
         :rtype: int
         """
         return self._LevelRiskScore
@@ -23977,7 +23977,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def TrustedScore(self):
-        """可信分
+        r"""可信分
         :rtype: str
         """
         return self._TrustedScore
@@ -23988,7 +23988,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -23999,7 +23999,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """字段扫描结果ID
+        r"""字段扫描结果ID
         :rtype: str
         """
         return self._FieldResultId
@@ -24010,7 +24010,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -24021,7 +24021,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级ID
+        r"""分级ID
         :rtype: int
         """
         return self._LevelId
@@ -24032,7 +24032,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类ID
+        r"""分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -24043,7 +24043,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -24054,7 +24054,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def SafeGuard(self):
-        """保护措施
+        r"""保护措施
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         """
         return self._SafeGuard
@@ -24065,7 +24065,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
-        """分类路径
+        r"""分类路径
         :rtype: str
         """
         return self._CategoryFullPath
@@ -24076,7 +24076,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """0.系统识别，1人工打标
+        r"""0.系统识别，1人工打标
         :rtype: int
         """
         return self._IdentifyType
@@ -24087,7 +24087,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """0未核查 1已核查
+        r"""0未核查 1已核查
         :rtype: int
         """
         return self._CheckStatus
@@ -24098,7 +24098,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def IsSensitiveData(self):
-        """0非敏感，1敏感
+        r"""0非敏感，1敏感
         :rtype: int
         """
         return self._IsSensitiveData
@@ -24109,7 +24109,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def SchemaName(self):
-        """模式名
+        r"""模式名
         :rtype: str
         """
         return self._SchemaName
@@ -24155,7 +24155,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
 
 class DspaResourceAccount(AbstractModel):
-    """资源账户信息
+    r"""资源账户信息
 
     """
 
@@ -24174,7 +24174,7 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID。
+        r"""资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -24185,7 +24185,7 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名。
+        r"""用户名。
         :rtype: str
         """
         return self._UserName
@@ -24196,7 +24196,7 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def Password(self):
-        """密码。
+        r"""密码。
         :rtype: str
         """
         return self._Password
@@ -24221,7 +24221,7 @@ class DspaResourceAccount(AbstractModel):
 
 
 class DspaSafeGuard(AbstractModel):
-    """分类分级扫描结果字段的保护措施
+    r"""分类分级扫描结果字段的保护措施
 
     """
 
@@ -24243,7 +24243,7 @@ ENABLE 规则设置并启用
 
     @property
     def Encrypt(self):
-        """加密状态，可取值如下：
+        r"""加密状态，可取值如下：
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
@@ -24257,7 +24257,7 @@ ENABLE 规则设置并启用
 
     @property
     def Desensitization(self):
-        """脱敏状态，可取值如下：
+        r"""脱敏状态，可取值如下：
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
@@ -24284,7 +24284,7 @@ ENABLE 规则设置并启用
 
 
 class DspaTaskResult(AbstractModel):
-    """任务执行结果描述。
+    r"""任务执行结果描述。
 
     """
 
@@ -24306,7 +24306,7 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def Result(self):
-        """任务结果。
+        r"""任务结果。
         :rtype: str
         """
         return self._Result
@@ -24317,7 +24317,7 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
-        """结果描述。
+        r"""结果描述。
         :rtype: str
         """
         return self._ResultDescription
@@ -24328,7 +24328,7 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID。
+        r"""资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -24339,7 +24339,7 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型。
+        r"""资源类型。
         :rtype: str
         """
         return self._MetaType
@@ -24365,7 +24365,7 @@ class DspaTaskResult(AbstractModel):
 
 
 class DspaUserResourceMeta(AbstractModel):
-    """DSPA用户资源元信息
+    r"""DSPA用户资源元信息
 
     """
 
@@ -24444,7 +24444,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceId(self):
-        """用户资源ID。
+        r"""用户资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -24455,7 +24455,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称。
+        r"""资源名称。
         :rtype: str
         """
         return self._ResourceName
@@ -24466,7 +24466,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVip(self):
-        """资源VIP。
+        r"""资源VIP。
         :rtype: str
         """
         return self._ResourceVip
@@ -24477,7 +24477,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVPort(self):
-        """资源端口。
+        r"""资源端口。
         :rtype: int
         """
         return self._ResourceVPort
@@ -24488,7 +24488,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源被创建时间。
+        r"""资源被创建时间。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -24499,7 +24499,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueVpcId(self):
-        """用户资源VPC ID 字符串。
+        r"""用户资源VPC ID 字符串。
         :rtype: str
         """
         return self._ResourceUniqueVpcId
@@ -24510,7 +24510,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueSubnetId(self):
-        """用户资源Subnet ID 字符串。
+        r"""用户资源Subnet ID 字符串。
         :rtype: str
         """
         return self._ResourceUniqueSubnetId
@@ -24521,7 +24521,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def MetaType(self):
-        """用户资源类型信息。
+        r"""用户资源类型信息。
         :rtype: str
         """
         return self._MetaType
@@ -24532,7 +24532,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -24543,7 +24543,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceSyncTime(self):
-        """资源被同步时间。
+        r"""资源被同步时间。
         :rtype: str
         """
         return self._ResourceSyncTime
@@ -24554,7 +24554,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def AuthStatus(self):
-        """资源被授权状态。
+        r"""资源被授权状态。
         :rtype: str
         """
         return self._AuthStatus
@@ -24565,7 +24565,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def BuildType(self):
-        """资源创建类型，cloud-云原生资源，build-用户自建资源。
+        r"""资源创建类型，cloud-云原生资源，build-用户自建资源。
         :rtype: str
         """
         return self._BuildType
@@ -24576,7 +24576,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def MasterInsId(self):
-        """主实例ID。
+        r"""主实例ID。
         :rtype: str
         """
         return self._MasterInsId
@@ -24587,7 +24587,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVpcId(self):
-        """用户资源VPC ID 整数。
+        r"""用户资源VPC ID 整数。
         :rtype: int
         """
         return self._ResourceVpcId
@@ -24598,7 +24598,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceSubnetId(self):
-        """用户资源Subnet ID 整数。
+        r"""用户资源Subnet ID 整数。
         :rtype: int
         """
         return self._ResourceSubnetId
@@ -24609,7 +24609,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议类型。
+        r"""协议类型。
         :rtype: str
         """
         return self._Protocol
@@ -24620,7 +24620,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVersion(self):
-        """资源版本号。
+        r"""资源版本号。
         :rtype: str
         """
         return self._ResourceVersion
@@ -24631,7 +24631,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceAuthType(self):
-        """授权方式
+        r"""授权方式
         :rtype: str
         """
         return self._ResourceAuthType
@@ -24642,7 +24642,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceAuthAccount(self):
-        """授权账号名
+        r"""授权账号名
         :rtype: str
         """
         return self._ResourceAuthAccount
@@ -24653,7 +24653,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -24664,7 +24664,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def InstanceValue(self):
-        """实例值
+        r"""实例值
         :rtype: str
         """
         return self._InstanceValue
@@ -24675,7 +24675,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def GovernAuthStatus(self):
-        """//治理授权状态（0：关闭 1：开启）
+        r"""//治理授权状态（0：关闭 1：开启）
         :rtype: int
         """
         return self._GovernAuthStatus
@@ -24686,7 +24686,7 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def AuthRange(self):
-        """授权范围：all - 授权整个数据源 manual:手动指定数据源
+        r"""授权范围：all - 授权整个数据源 manual:手动指定数据源
         :rtype: str
         """
         return self._AuthRange
@@ -24731,7 +24731,7 @@ class DspaUserResourceMeta(AbstractModel):
 
 
 class ESAsset(AbstractModel):
-    """es的资产统计结果
+    r"""es的资产统计结果
 
     """
 
@@ -24753,7 +24753,7 @@ class ESAsset(AbstractModel):
 
     @property
     def IndexNums(self):
-        """索引总数量
+        r"""索引总数量
         :rtype: int
         """
         return self._IndexNums
@@ -24764,7 +24764,7 @@ class ESAsset(AbstractModel):
 
     @property
     def SensitiveIndexNums(self):
-        """敏感索引的数量
+        r"""敏感索引的数量
         :rtype: int
         """
         return self._SensitiveIndexNums
@@ -24775,7 +24775,7 @@ class ESAsset(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段数量
+        r"""字段数量
         :rtype: int
         """
         return self._FieldNums
@@ -24786,7 +24786,7 @@ class ESAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感的字段数量
+        r"""敏感的字段数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -24812,7 +24812,7 @@ class ESAsset(AbstractModel):
 
 
 class ESAssetDBDetail(AbstractModel):
-    """es敏感资产详情列表
+    r"""es敏感资产详情列表
 
     """
 
@@ -24840,7 +24840,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -24851,7 +24851,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def IndexName(self):
-        """索引名称
+        r"""索引名称
         :rtype: str
         """
         return self._IndexName
@@ -24862,7 +24862,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
-        """数据库类型
+        r"""数据库类型
         :rtype: str
         """
         return self._DataType
@@ -24873,7 +24873,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段的数量
+        r"""字段的数量
         :rtype: int
         """
         return self._FieldNums
@@ -24884,7 +24884,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感字段的数量
+        r"""敏感字段的数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -24895,7 +24895,7 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
-        """敏感数据分布
+        r"""敏感数据分布
         :rtype: list of Note
         """
         return self._DistributionData
@@ -24928,7 +24928,7 @@ class ESAssetDBDetail(AbstractModel):
 
 
 class ESDataAssetCountDto(AbstractModel):
-    """ES的概览页统计数据
+    r"""ES的概览页统计数据
 
     """
 
@@ -24962,7 +24962,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def DataAssetType(self):
-        """es
+        r"""es
         :rtype: int
         """
         return self._DataAssetType
@@ -24973,7 +24973,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveIndexCnt(self):
-        """敏感索引个数
+        r"""敏感索引个数
         :rtype: int
         """
         return self._SensitiveIndexCnt
@@ -24984,7 +24984,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def TotalIndexCnt(self):
-        """总的索引个数
+        r"""总的索引个数
         :rtype: int
         """
         return self._TotalIndexCnt
@@ -24995,7 +24995,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveFieldCnt(self):
-        """敏感字段个数
+        r"""敏感字段个数
         :rtype: int
         """
         return self._SensitiveFieldCnt
@@ -25006,7 +25006,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def TotalFieldCnt(self):
-        """总的字段个数
+        r"""总的字段个数
         :rtype: int
         """
         return self._TotalFieldCnt
@@ -25017,7 +25017,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
-        """敏感分类的个数
+        r"""敏感分类的个数
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -25028,7 +25028,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveLevel(self):
-        """敏感分级的分布
+        r"""敏感分级的分布
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -25039,7 +25039,7 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def CategoryDistributed(self):
-        """敏感分类的分布
+        r"""敏感分类的分布
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -25079,7 +25079,7 @@ class ESDataAssetCountDto(AbstractModel):
 
 
 class ESDataAssetDetail(AbstractModel):
-    """ES的概览页资产详情
+    r"""ES的概览页资产详情
 
     """
 
@@ -25143,7 +25143,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """id
+        r"""id
         :rtype: int
         """
         return self._FieldResultId
@@ -25154,7 +25154,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -25165,7 +25165,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -25176,7 +25176,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._DataSourceType
@@ -25187,7 +25187,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """地域信息
+        r"""地域信息
         :rtype: str
         """
         return self._ResourceRegion
@@ -25198,7 +25198,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def IndexName(self):
-        """索引名称
+        r"""索引名称
         :rtype: str
         """
         return self._IndexName
@@ -25209,7 +25209,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def FieldName(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._FieldName
@@ -25220,7 +25220,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -25231,7 +25231,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """分类名称
+        r"""分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -25242,7 +25242,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryArr(self):
-        """分类路径数组
+        r"""分类路径数组
         :rtype: list of str
         """
         return self._CategoryArr
@@ -25253,7 +25253,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """等级id
+        r"""等级id
         :rtype: int
         """
         return self._LevelId
@@ -25264,7 +25264,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """分级名称
+        r"""分级名称
         :rtype: str
         """
         return self._LevelRiskName
@@ -25275,7 +25275,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级分数
+        r"""分级分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -25286,7 +25286,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def TrustedScore(self):
-        """可信分
+        r"""可信分
         :rtype: float
         """
         return self._TrustedScore
@@ -25297,7 +25297,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -25308,7 +25308,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -25319,7 +25319,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """0系统识别，1人工打标
+        r"""0系统识别，1人工打标
         :rtype: int
         """
         return self._IdentifyType
@@ -25330,7 +25330,7 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """0未核查，1已核查
+        r"""0未核查，1已核查
         :rtype: int
         """
         return self._CheckStatus
@@ -25370,7 +25370,7 @@ class ESDataAssetDetail(AbstractModel):
 
 
 class ESInstance(AbstractModel):
-    """创建评估任务的ES详情
+    r"""创建评估任务的ES详情
 
     """
 
@@ -25395,7 +25395,7 @@ class ESInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -25406,7 +25406,7 @@ class ESInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -25417,7 +25417,7 @@ class ESInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -25428,7 +25428,7 @@ class ESInstance(AbstractModel):
 
     @property
     def DiscoveryTaskId(self):
-        """扫描任务ID
+        r"""扫描任务ID
         :rtype: int
         """
         return self._DiscoveryTaskId
@@ -25439,7 +25439,7 @@ class ESInstance(AbstractModel):
 
     @property
     def DiscoveryTaskInstanceID(self):
-        """扫描任务实例ID
+        r"""扫描任务实例ID
         :rtype: int
         """
         return self._DiscoveryTaskInstanceID
@@ -25466,7 +25466,7 @@ class ESInstance(AbstractModel):
 
 
 class ESTaskResultDetail(AbstractModel):
-    """ES扫描任务结果详情
+    r"""ES扫描任务结果详情
 
     """
 
@@ -25509,7 +25509,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def Id(self):
-        """id
+        r"""id
         :rtype: int
         """
         return self._Id
@@ -25520,7 +25520,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._TaskId
@@ -25531,7 +25531,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def FieldName(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._FieldName
@@ -25542,7 +25542,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -25553,7 +25553,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -25564,7 +25564,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
-        """分类id
+        r"""分类id
         :rtype: int
         """
         return self._CategoryId
@@ -25575,7 +25575,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
-        """分类名称
+        r"""分类名称
         :rtype: str
         """
         return self._CategoryName
@@ -25586,7 +25586,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryArr(self):
-        """多级分类的路径
+        r"""多级分类的路径
         :rtype: list of str
         """
         return self._CategoryArr
@@ -25597,7 +25597,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级id
+        r"""分级id
         :rtype: int
         """
         return self._LevelId
@@ -25608,7 +25608,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
-        """分级名称
+        r"""分级名称
         :rtype: str
         """
         return self._LevelName
@@ -25619,7 +25619,7 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级分数
+        r"""分级分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -25652,7 +25652,7 @@ class ESTaskResultDetail(AbstractModel):
 
 
 class EnableDSPADiscoveryRuleRequest(AbstractModel):
-    """EnableDSPADiscoveryRule请求参数结构体
+    r"""EnableDSPADiscoveryRule请求参数结构体
 
     """
 
@@ -25671,7 +25671,7 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -25682,7 +25682,7 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -25693,7 +25693,7 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """开关ScanRule
+        r"""开关ScanRule
         :rtype: bool
         """
         return self._Enable
@@ -25718,7 +25718,7 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
 
 class EnableDSPADiscoveryRuleResponse(AbstractModel):
-    """EnableDSPADiscoveryRule返回参数结构体
+    r"""EnableDSPADiscoveryRule返回参数结构体
 
     """
 
@@ -25731,7 +25731,7 @@ class EnableDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25746,7 +25746,7 @@ class EnableDSPADiscoveryRuleResponse(AbstractModel):
 
 
 class EnableTrialVersionRequest(AbstractModel):
-    """EnableTrialVersion请求参数结构体
+    r"""EnableTrialVersion请求参数结构体
 
     """
 
@@ -25762,7 +25762,7 @@ class EnableTrialVersionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -25773,7 +25773,7 @@ class EnableTrialVersionRequest(AbstractModel):
 
     @property
     def TrialVersion(self):
-        """体验版本名称。
+        r"""体验版本名称。
         :rtype: str
         """
         return self._TrialVersion
@@ -25797,7 +25797,7 @@ class EnableTrialVersionRequest(AbstractModel):
 
 
 class EnableTrialVersionResponse(AbstractModel):
-    """EnableTrialVersion返回参数结构体
+    r"""EnableTrialVersion返回参数结构体
 
     """
 
@@ -25810,7 +25810,7 @@ class EnableTrialVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25825,7 +25825,7 @@ class EnableTrialVersionResponse(AbstractModel):
 
 
 class ErrDescription(AbstractModel):
-    """错误信息描述
+    r"""错误信息描述
 
     """
 
@@ -25841,7 +25841,7 @@ class ErrDescription(AbstractModel):
 
     @property
     def ErrCode(self):
-        """错误码。
+        r"""错误码。
         :rtype: str
         """
         return self._ErrCode
@@ -25852,7 +25852,7 @@ class ErrDescription(AbstractModel):
 
     @property
     def ErrMessage(self):
-        """具体错误信息。
+        r"""具体错误信息。
         :rtype: str
         """
         return self._ErrMessage
@@ -25876,7 +25876,7 @@ class ErrDescription(AbstractModel):
 
 
 class ExportAssetDetailDataRequest(AbstractModel):
-    """ExportAssetDetailData请求参数结构体
+    r"""ExportAssetDetailData请求参数结构体
 
     """
 
@@ -25909,7 +25909,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -25920,7 +25920,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def ComplianceId(self):
-        """合规组id
+        r"""合规组id
         :rtype: int
         """
         return self._ComplianceId
@@ -25931,7 +25931,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def MetaDataType(self):
-        """资产类型（rdb,cvm_db,cos）
+        r"""资产类型（rdb,cvm_db,cos）
         :rtype: str
         """
         return self._MetaDataType
@@ -25942,7 +25942,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def Filters(self):
-        """过滤数组。支持的Name：
+        r"""过滤数组。支持的Name：
 DataSourceID 数据源ID
 DbName 数据库名称
 CategoryID 敏感数据分类ID
@@ -25961,7 +25961,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def CasbId(self):
-        """casbId
+        r"""casbId
         :rtype: str
         """
         return self._CasbId
@@ -25993,7 +25993,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
 
 class ExportAssetDetailDataResponse(AbstractModel):
-    """ExportAssetDetailData返回参数结构体
+    r"""ExportAssetDetailData返回参数结构体
 
     """
 
@@ -26009,7 +26009,7 @@ class ExportAssetDetailDataResponse(AbstractModel):
 
     @property
     def ExportTaskId(self):
-        """导出任务id
+        r"""导出任务id
         :rtype: int
         """
         return self._ExportTaskId
@@ -26020,7 +26020,7 @@ class ExportAssetDetailDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26036,7 +26036,7 @@ class ExportAssetDetailDataResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
     若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
@@ -26055,7 +26055,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。
+        r"""需要过滤的字段。
         :rtype: str
         """
         return self._Name
@@ -26066,7 +26066,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。
+        r"""字段的过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -26090,7 +26090,7 @@ class Filter(AbstractModel):
 
 
 class GetResourceConnectionStatusRequest(AbstractModel):
-    """GetResourceConnectionStatus请求参数结构体
+    r"""GetResourceConnectionStatus请求参数结构体
 
     """
 
@@ -26112,7 +26112,7 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -26123,7 +26123,7 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型。
+        r"""资源类型。
         :rtype: str
         """
         return self._MetaType
@@ -26134,7 +26134,7 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所处地域。
+        r"""资源所处地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -26145,7 +26145,7 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源列表中展示的资源ID。
+        r"""资源列表中展示的资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -26171,7 +26171,7 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
 
 class GetResourceConnectionStatusResponse(AbstractModel):
-    """GetResourceConnectionStatus返回参数结构体
+    r"""GetResourceConnectionStatus返回参数结构体
 
     """
 
@@ -26190,7 +26190,7 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def ConnectionStatus(self):
-        """连接状态，success -- 连接成功，failed -- 连接失败
+        r"""连接状态，success -- 连接成功，failed -- 连接失败
         :rtype: str
         """
         return self._ConnectionStatus
@@ -26201,7 +26201,7 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def ConnectionDesc(self):
-        """连接状态的描述信息。
+        r"""连接状态的描述信息。
         :rtype: str
         """
         return self._ConnectionDesc
@@ -26212,7 +26212,7 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26229,7 +26229,7 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
 
 class GetTrialVersionRequest(AbstractModel):
-    """GetTrialVersion请求参数结构体
+    r"""GetTrialVersion请求参数结构体
 
     """
 
@@ -26242,7 +26242,7 @@ class GetTrialVersionRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -26265,7 +26265,7 @@ class GetTrialVersionRequest(AbstractModel):
 
 
 class GetTrialVersionResponse(AbstractModel):
-    """GetTrialVersion返回参数结构体
+    r"""GetTrialVersion返回参数结构体
 
     """
 
@@ -26284,7 +26284,7 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def TrialVersion(self):
-        """体验版本名称。
+        r"""体验版本名称。
         :rtype: str
         """
         return self._TrialVersion
@@ -26295,7 +26295,7 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def TrialEndAt(self):
-        """版本体验结束时间戳。
+        r"""版本体验结束时间戳。
         :rtype: int
         """
         return self._TrialEndAt
@@ -26306,7 +26306,7 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26323,7 +26323,7 @@ class GetTrialVersionResponse(AbstractModel):
 
 
 class GetUserQuotaInfoRequest(AbstractModel):
-    """GetUserQuotaInfo请求参数结构体
+    r"""GetUserQuotaInfo请求参数结构体
 
     """
 
@@ -26336,7 +26336,7 @@ class GetUserQuotaInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -26359,7 +26359,7 @@ class GetUserQuotaInfoRequest(AbstractModel):
 
 
 class GetUserQuotaInfoResponse(AbstractModel):
-    """GetUserQuotaInfo返回参数结构体
+    r"""GetUserQuotaInfo返回参数结构体
 
     """
 
@@ -26405,7 +26405,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -26416,7 +26416,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DbTotalQuota(self):
-        """用户购买的DB配额。
+        r"""用户购买的DB配额。
         :rtype: int
         """
         return self._DbTotalQuota
@@ -26427,7 +26427,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosTotalQuota(self):
-        """用户购买的COS存储量配额。
+        r"""用户购买的COS存储量配额。
         :rtype: int
         """
         return self._CosTotalQuota
@@ -26438,7 +26438,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DbRemainQuota(self):
-        """用户可用的DB配额。
+        r"""用户可用的DB配额。
         :rtype: int
         """
         return self._DbRemainQuota
@@ -26449,7 +26449,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosRemainQuota(self):
-        """用户可用的COS存储量配额。
+        r"""用户可用的COS存储量配额。
         :rtype: float
         """
         return self._CosRemainQuota
@@ -26460,7 +26460,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosQuotaUnit(self):
-        """COS存储量单位，例如TB。
+        r"""COS存储量单位，例如TB。
         :rtype: str
         """
         return self._CosQuotaUnit
@@ -26471,7 +26471,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DBUnbindNum(self):
-        """db月解绑次数
+        r"""db月解绑次数
         :rtype: int
         """
         return self._DBUnbindNum
@@ -26482,7 +26482,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def COSUnbindNum(self):
-        """cos月解绑次数
+        r"""cos月解绑次数
         :rtype: int
         """
         return self._COSUnbindNum
@@ -26493,7 +26493,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def InsTotalQuota(self):
-        """用户购买的实例配额。
+        r"""用户购买的实例配额。
         :rtype: int
         """
         return self._InsTotalQuota
@@ -26504,7 +26504,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def InsRemainQuota(self):
-        """用户可用的实例配额。
+        r"""用户可用的实例配额。
         :rtype: int
         """
         return self._InsRemainQuota
@@ -26515,7 +26515,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def Version(self):
-        """用户购买的版本
+        r"""用户购买的版本
         :rtype: str
         """
         return self._Version
@@ -26526,7 +26526,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26552,7 +26552,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
 
 class HighRiskAssetsDetail(AbstractModel):
-    """高风险资产详情信息
+    r"""高风险资产详情信息
 
     """
 
@@ -26589,7 +26589,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -26600,7 +26600,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -26611,7 +26611,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -26622,7 +26622,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def AssetsName(self):
-        """资产对象名称
+        r"""资产对象名称
         :rtype: str
         """
         return self._AssetsName
@@ -26633,7 +26633,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def HighRiskCount(self):
-        """高风险个数
+        r"""高风险个数
         :rtype: int
         """
         return self._HighRiskCount
@@ -26644,7 +26644,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -26655,7 +26655,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def TotalRiskCount(self):
-        """总的风险个数
+        r"""总的风险个数
         :rtype: int
         """
         return self._TotalRiskCount
@@ -26666,7 +26666,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: str
         """
         return self._RiskSide
@@ -26677,7 +26677,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -26708,7 +26708,7 @@ class HighRiskAssetsDetail(AbstractModel):
 
 
 class ItemLevel(AbstractModel):
-    """某个分级单个信息
+    r"""某个分级单个信息
 
     """
 
@@ -26724,7 +26724,7 @@ class ItemLevel(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """分级标识名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""分级标识名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._LevelRiskName
@@ -26735,7 +26735,7 @@ class ItemLevel(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级标识对应的风险分数值，1-10，最小为1，最大为10
+        r"""分级标识对应的风险分数值，1-10，最小为1，最大为10
         :rtype: int
         """
         return self._LevelRiskScore
@@ -26759,7 +26759,7 @@ class ItemLevel(AbstractModel):
 
 
 class LevelItem(AbstractModel):
-    """分级单项信息
+    r"""分级单项信息
 
     """
 
@@ -26781,7 +26781,7 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级ID
+        r"""分级ID
         :rtype: int
         """
         return self._LevelId
@@ -26792,7 +26792,7 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """分级组ID
+        r"""分级组ID
         :rtype: int
         """
         return self._LevelGroupId
@@ -26803,7 +26803,7 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """分级标识名称，支持内置分级，内置分级取值：高，中，低，也可以自定义
+        r"""分级标识名称，支持内置分级，内置分级取值：高，中，低，也可以自定义
         :rtype: str
         """
         return self._LevelRiskName
@@ -26814,7 +26814,7 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级风险分数，1-10，最小值为1，最大值为10
+        r"""分级风险分数，1-10，最小值为1，最大值为10
         :rtype: int
         """
         return self._LevelRiskScore
@@ -26840,7 +26840,7 @@ class LevelItem(AbstractModel):
 
 
 class ListDSPAClustersRequest(AbstractModel):
-    """ListDSPAClusters请求参数结构体
+    r"""ListDSPAClusters请求参数结构体
 
     """
 
@@ -26873,7 +26873,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
 
     @property
     def Limit(self):
-        """分页步长，默认为100。
+        r"""分页步长，默认为100。
         :rtype: int
         """
         return self._Limit
@@ -26884,7 +26884,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。
+        r"""分页偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -26895,7 +26895,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
 
     @property
     def Filters(self):
-        """过滤项。
+        r"""过滤项。
 支持的过滤项包括：DspaId、Status、Version、DspaName、Channel。
 DspaId和DspaName支持模糊搜索。
 Status支持的可选值：enabled、disabled。
@@ -26911,7 +26911,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
 
     @property
     def ListMode(self):
-        """展示模式。
+        r"""展示模式。
 
 目前只有两个值的处理逻辑：
 
@@ -26948,7 +26948,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
 
 
 class ListDSPAClustersResponse(AbstractModel):
-    """ListDSPAClusters返回参数结构体
+    r"""ListDSPAClusters返回参数结构体
 
     """
 
@@ -26970,7 +26970,7 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资源总数。
+        r"""资源总数。
         :rtype: int
         """
         return self._TotalCount
@@ -26981,7 +26981,7 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """资源列表。
+        r"""资源列表。
         :rtype: list of DspaInstance
         """
         return self._InstanceList
@@ -26992,7 +26992,7 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def DenyAll(self):
-        """是否被拒绝访问所有dspa实例资源。
+        r"""是否被拒绝访问所有dspa实例资源。
         :rtype: bool
         """
         return self._DenyAll
@@ -27003,7 +27003,7 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27026,7 +27026,7 @@ class ListDSPAClustersResponse(AbstractModel):
 
 
 class ListDSPACosMetaResourcesRequest(AbstractModel):
-    """ListDSPACosMetaResources请求参数结构体
+    r"""ListDSPACosMetaResources请求参数结构体
 
     """
 
@@ -27056,7 +27056,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def DspaId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._DspaId
@@ -27067,7 +27067,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Filters(self):
-        """过滤数组。支持的Name：
+        r"""过滤数组。支持的Name：
 Bucket - 桶名，支持模糊匹配
 
 ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
@@ -27083,7 +27083,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -27094,7 +27094,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Limit(self):
-        """返回数量，默认为100。
+        r"""返回数量，默认为100。
         :rtype: int
         """
         return self._Limit
@@ -27105,7 +27105,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def BindType(self):
-        """资源绑定状态过滤，默认为全部
+        r"""资源绑定状态过滤，默认为全部
         :rtype: str
         """
         return self._BindType
@@ -27137,7 +27137,7 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
 
 class ListDSPACosMetaResourcesResponse(AbstractModel):
-    """ListDSPACosMetaResources返回参数结构体
+    r"""ListDSPACosMetaResources返回参数结构体
 
     """
 
@@ -27159,7 +27159,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的COS元数据数量。
+        r"""符合条件的COS元数据数量。
         :rtype: int
         """
         return self._TotalCount
@@ -27170,7 +27170,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """COS元数据信息
+        r"""COS元数据信息
         :rtype: list of DSPACosMetaDataInfo
         """
         return self._Items
@@ -27181,7 +27181,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -27192,7 +27192,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27215,7 +27215,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
 
 class ListDSPAMetaResourcesRequest(AbstractModel):
-    """ListDSPAMetaResources请求参数结构体
+    r"""ListDSPAMetaResources请求参数结构体
 
     """
 
@@ -27252,7 +27252,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -27263,7 +27263,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
     @property
     def Filters(self):
-        """过滤项。
+        r"""过滤项。
 可过滤值包括：
 ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
 
@@ -27286,7 +27286,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
     @property
     def Limit(self):
-        """分页步长，默认为100。
+        r"""分页步长，默认为100。
         :rtype: int
         """
         return self._Limit
@@ -27297,7 +27297,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。
+        r"""分页偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -27308,7 +27308,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
     @property
     def BindType(self):
-        """资源绑定状态过滤，默认为全部
+        r"""资源绑定状态过滤，默认为全部
         :rtype: str
         """
         return self._BindType
@@ -27340,7 +27340,7 @@ CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用
 
 
 class ListDSPAMetaResourcesResponse(AbstractModel):
-    """ListDSPAMetaResources返回参数结构体
+    r"""ListDSPAMetaResources返回参数结构体
 
     """
 
@@ -27362,7 +27362,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -27373,7 +27373,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def Resources(self):
-        """用户资源列表。
+        r"""用户资源列表。
         :rtype: list of DspaUserResourceMeta
         """
         return self._Resources
@@ -27384,7 +27384,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资源总量。
+        r"""资源总量。
         :rtype: int
         """
         return self._TotalCount
@@ -27395,7 +27395,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27418,7 +27418,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
-    """ModifyDSPAAssessmentRiskLatest请求参数结构体
+    r"""ModifyDSPAAssessmentRiskLatest请求参数结构体
 
     """
 
@@ -27446,7 +27446,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -27457,7 +27457,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def Status(self):
-        """风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
+        r"""风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
         :rtype: str
         """
         return self._Status
@@ -27470,7 +27470,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
     def RiskLatestTableId(self):
         warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
 
-        """最新风险项Id
+        r"""最新风险项Id
         :rtype: int
         """
         return self._RiskLatestTableId
@@ -27483,7 +27483,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def Note(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Note
@@ -27494,7 +27494,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def ProcessPeople(self):
-        """处置人
+        r"""处置人
         :rtype: str
         """
         return self._ProcessPeople
@@ -27505,7 +27505,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def BathRiskIdList(self):
-        """批量处理的列表
+        r"""批量处理的列表
         :rtype: list of int
         """
         return self._BathRiskIdList
@@ -27533,7 +27533,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskLatestResponse(AbstractModel):
-    """ModifyDSPAAssessmentRiskLatest返回参数结构体
+    r"""ModifyDSPAAssessmentRiskLatest返回参数结构体
 
     """
 
@@ -27546,7 +27546,7 @@ class ModifyDSPAAssessmentRiskLatestResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27561,7 +27561,7 @@ class ModifyDSPAAssessmentRiskLatestResponse(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
-    """ModifyDSPAAssessmentRiskLevel请求参数结构体
+    r"""ModifyDSPAAssessmentRiskLevel请求参数结构体
 
     """
 
@@ -27586,7 +27586,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -27597,7 +27597,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级名称
+        r"""风险等级名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -27608,7 +27608,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
-        """风险的描述
+        r"""风险的描述
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -27619,7 +27619,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险id
+        r"""风险id
         :rtype: int
         """
         return self._RiskId
@@ -27630,7 +27630,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def ModifyRiskItem(self):
-        """需要修改的风险列表
+        r"""需要修改的风险列表
         :rtype: list of RiskLevelMatrix
         """
         return self._ModifyRiskItem
@@ -27662,7 +27662,7 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskLevelResponse(AbstractModel):
-    """ModifyDSPAAssessmentRiskLevel返回参数结构体
+    r"""ModifyDSPAAssessmentRiskLevel返回参数结构体
 
     """
 
@@ -27675,7 +27675,7 @@ class ModifyDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27690,7 +27690,7 @@ class ModifyDSPAAssessmentRiskLevelResponse(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskRequest(AbstractModel):
-    """ModifyDSPAAssessmentRisk请求参数结构体
+    r"""ModifyDSPAAssessmentRisk请求参数结构体
 
     """
 
@@ -27712,7 +27712,7 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -27723,7 +27723,7 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """评估任务Id，格式“task-xxxxxxxx”
+        r"""评估任务Id，格式“task-xxxxxxxx”
         :rtype: str
         """
         return self._TaskId
@@ -27734,7 +27734,7 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险项Id，格式“risk-xxxxxxxx”
+        r"""风险项Id，格式“risk-xxxxxxxx”
         :rtype: str
         """
         return self._RiskId
@@ -27745,7 +27745,7 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def Status(self):
-        """风险项状态。（waiting:待处理，processing:处理中，finished:已处理）
+        r"""风险项状态。（waiting:待处理，processing:处理中，finished:已处理）
         :rtype: str
         """
         return self._Status
@@ -27771,7 +27771,7 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskResponse(AbstractModel):
-    """ModifyDSPAAssessmentRisk返回参数结构体
+    r"""ModifyDSPAAssessmentRisk返回参数结构体
 
     """
 
@@ -27784,7 +27784,7 @@ class ModifyDSPAAssessmentRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27799,7 +27799,7 @@ class ModifyDSPAAssessmentRiskResponse(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
-    """ModifyDSPAAssessmentRiskTemplate请求参数结构体
+    r"""ModifyDSPAAssessmentRiskTemplate请求参数结构体
 
     """
 
@@ -27827,7 +27827,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -27838,7 +27838,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -27849,7 +27849,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateId
@@ -27860,7 +27860,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
-        """修改的风险等级id
+        r"""修改的风险等级id
         :rtype: int
         """
         return self._RiskLevelId
@@ -27871,7 +27871,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """模板的描述
+        r"""模板的描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -27882,7 +27882,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskIdList(self):
-        """脆弱项列表
+        r"""脆弱项列表
         :rtype: list of int
         """
         return self._RiskIdList
@@ -27910,7 +27910,7 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
 
 class ModifyDSPAAssessmentRiskTemplateResponse(AbstractModel):
-    """ModifyDSPAAssessmentRiskTemplate返回参数结构体
+    r"""ModifyDSPAAssessmentRiskTemplate返回参数结构体
 
     """
 
@@ -27923,7 +27923,7 @@ class ModifyDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27938,7 +27938,7 @@ class ModifyDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
 
 class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
-    """ModifyDSPACOSDiscoveryTask请求参数结构体
+    r"""ModifyDSPACOSDiscoveryTask请求参数结构体
 
     """
 
@@ -27988,7 +27988,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -27999,7 +27999,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -28010,7 +28010,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -28021,7 +28021,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        """任务描述，最大长度为1024个字符
+        r"""任务描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -28032,7 +28032,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """任务开关，0 关闭，1 启用
+        r"""任务开关，0 关闭，1 启用
         :rtype: int
         """
         return self._Enable
@@ -28043,7 +28043,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关；0 关闭，1 启用
+        r"""通用规则集开关；0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -28054,7 +28054,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ComplianceGroupIds(self):
-        """合规组ID列表，最多支持添加5个
+        r"""合规组ID列表，最多支持添加5个
         :rtype: list of int
         """
         return self._ComplianceGroupIds
@@ -28065,7 +28065,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Plan(self):
-        """执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        r"""执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
         :rtype: int
         """
         return self._Plan
@@ -28076,7 +28076,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Period(self):
-        """扫描周期；0单次 1每天 2每周 3每月
+        r"""扫描周期；0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -28087,7 +28087,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """任务定时启动时间，格式：2006-01-02 15:04:05
+        r"""任务定时启动时间，格式：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
         :rtype: str
         """
@@ -28099,7 +28099,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileTypes(self):
-        """待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
+        r"""待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
         :rtype: list of str
         """
         return self._FileTypes
@@ -28110,7 +28110,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileSizeLimit(self):
-        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
+        r"""文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
         :rtype: int
         """
         return self._FileSizeLimit
@@ -28121,7 +28121,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -28156,7 +28156,7 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
 
 class ModifyDSPACOSDiscoveryTaskResponse(AbstractModel):
-    """ModifyDSPACOSDiscoveryTask返回参数结构体
+    r"""ModifyDSPACOSDiscoveryTask返回参数结构体
 
     """
 
@@ -28169,7 +28169,7 @@ class ModifyDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28184,7 +28184,7 @@ class ModifyDSPACOSDiscoveryTaskResponse(AbstractModel):
 
 
 class ModifyDSPACOSTaskResultRequest(AbstractModel):
-    """ModifyDSPACOSTaskResult请求参数结构体
+    r"""ModifyDSPACOSTaskResult请求参数结构体
 
     """
 
@@ -28215,7 +28215,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -28226,7 +28226,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -28237,7 +28237,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def FileResultId(self):
-        """文件扫描结果ID
+        r"""文件扫描结果ID
         :rtype: int
         """
         return self._FileResultId
@@ -28248,7 +28248,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveFile(self):
-        """是否设置为非敏感文件
+        r"""是否设置为非敏感文件
         :rtype: bool
         """
         return self._IsSetNonSensitiveFile
@@ -28259,7 +28259,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
         :rtype: str
         """
         return self._FileName
@@ -28270,7 +28270,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """桶名
+        r"""桶名
         :rtype: str
         """
         return self._BucketName
@@ -28281,7 +28281,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -28310,7 +28310,7 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
 
 class ModifyDSPACOSTaskResultResponse(AbstractModel):
-    """ModifyDSPACOSTaskResult返回参数结构体
+    r"""ModifyDSPACOSTaskResult返回参数结构体
 
     """
 
@@ -28323,7 +28323,7 @@ class ModifyDSPACOSTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28338,7 +28338,7 @@ class ModifyDSPACOSTaskResultResponse(AbstractModel):
 
 
 class ModifyDSPACategoryRelationRequest(AbstractModel):
-    """ModifyDSPACategoryRelation请求参数结构体
+    r"""ModifyDSPACategoryRelation请求参数结构体
 
     """
 
@@ -28360,7 +28360,7 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """dspa实例id
+        r"""dspa实例id
         :rtype: str
         """
         return self._DspaId
@@ -28371,7 +28371,7 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """当前分类id
+        r"""当前分类id
         :rtype: int
         """
         return self._CategoryId
@@ -28382,7 +28382,7 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def MergedCategoryId(self):
-        """合并到的分类id
+        r"""合并到的分类id
         :rtype: int
         """
         return self._MergedCategoryId
@@ -28393,7 +28393,7 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组模板id
+        r"""合规组模板id
         :rtype: int
         """
         return self._ComplianceId
@@ -28419,7 +28419,7 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
 
 class ModifyDSPACategoryRelationResponse(AbstractModel):
-    """ModifyDSPACategoryRelation返回参数结构体
+    r"""ModifyDSPACategoryRelation返回参数结构体
 
     """
 
@@ -28432,7 +28432,7 @@ class ModifyDSPACategoryRelationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28447,7 +28447,7 @@ class ModifyDSPACategoryRelationResponse(AbstractModel):
 
 
 class ModifyDSPACategoryRequest(AbstractModel):
-    """ModifyDSPACategory请求参数结构体
+    r"""ModifyDSPACategory请求参数结构体
 
     """
 
@@ -28466,7 +28466,7 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -28477,7 +28477,7 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """数据分类ID
+        r"""数据分类ID
         :rtype: int
         """
         return self._CategoryId
@@ -28488,7 +28488,7 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def Name(self):
-        """敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -28513,7 +28513,7 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
 
 class ModifyDSPACategoryResponse(AbstractModel):
-    """ModifyDSPACategory返回参数结构体
+    r"""ModifyDSPACategory返回参数结构体
 
     """
 
@@ -28526,7 +28526,7 @@ class ModifyDSPACategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28541,7 +28541,7 @@ class ModifyDSPACategoryResponse(AbstractModel):
 
 
 class ModifyDSPAClusterInfoRequest(AbstractModel):
-    """ModifyDSPAClusterInfo请求参数结构体
+    r"""ModifyDSPAClusterInfo请求参数结构体
 
     """
 
@@ -28560,7 +28560,7 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -28571,7 +28571,7 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaName(self):
-        """DSPA实例名。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字。
+        r"""DSPA实例名。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字。
         :rtype: str
         """
         return self._DspaName
@@ -28582,7 +28582,7 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaDescription(self):
-        """DSPA实例描述信息。最长1024个字符。
+        r"""DSPA实例描述信息。最长1024个字符。
         :rtype: str
         """
         return self._DspaDescription
@@ -28607,7 +28607,7 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
 
 class ModifyDSPAClusterInfoResponse(AbstractModel):
-    """ModifyDSPAClusterInfo返回参数结构体
+    r"""ModifyDSPAClusterInfo返回参数结构体
 
     """
 
@@ -28620,7 +28620,7 @@ class ModifyDSPAClusterInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28635,7 +28635,7 @@ class ModifyDSPAClusterInfoResponse(AbstractModel):
 
 
 class ModifyDSPAComplianceGroupRequest(AbstractModel):
-    """ModifyDSPAComplianceGroup请求参数结构体
+    r"""ModifyDSPAComplianceGroup请求参数结构体
 
     """
 
@@ -28666,7 +28666,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -28677,7 +28677,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -28688,7 +28688,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -28699,7 +28699,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """合规组描述，最大长度为1024个字符
+        r"""合规组描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -28710,7 +28710,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
-        """合规组规则配置（参数已废弃，请传空数组）
+        r"""合规组规则配置（参数已废弃，请传空数组）
         :rtype: list of ComplianceGroupRuleIdInfo
         """
         return self._ComplianceGroupRules
@@ -28721,7 +28721,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def LevelGroupId(self):
-        """分级组ID，新增参数，可选参数，默认值为1
+        r"""分级组ID，新增参数，可选参数，默认值为1
         :rtype: int
         """
         return self._LevelGroupId
@@ -28732,7 +28732,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def RuleAlias(self):
-        """是否开启别名
+        r"""是否开启别名
         :rtype: bool
         """
         return self._RuleAlias
@@ -28766,7 +28766,7 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
 
 class ModifyDSPAComplianceGroupResponse(AbstractModel):
-    """ModifyDSPAComplianceGroup返回参数结构体
+    r"""ModifyDSPAComplianceGroup返回参数结构体
 
     """
 
@@ -28779,7 +28779,7 @@ class ModifyDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28794,7 +28794,7 @@ class ModifyDSPAComplianceGroupResponse(AbstractModel):
 
 
 class ModifyDSPADiscoveryRuleRequest(AbstractModel):
-    """ModifyDSPADiscoveryRule请求参数结构体
+    r"""ModifyDSPADiscoveryRule请求参数结构体
 
     """
 
@@ -28825,7 +28825,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -28836,7 +28836,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -28847,7 +28847,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._RuleId
@@ -28858,7 +28858,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述，最大长度为1024个字符
+        r"""规则描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -28869,7 +28869,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RDBRules(self):
-        """RDB类敏感数据识别规则
+        r"""RDB类敏感数据识别规则
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskRDBRules`
         """
         return self._RDBRules
@@ -28880,7 +28880,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
-        """COS类敏感数据识别规则
+        r"""COS类敏感数据识别规则
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskCOSRules`
         """
         return self._COSRules
@@ -28891,7 +28891,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态
+        r"""规则状态
         :rtype: int
         """
         return self._Status
@@ -28924,7 +28924,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
 
 class ModifyDSPADiscoveryRuleResponse(AbstractModel):
-    """ModifyDSPADiscoveryRule返回参数结构体
+    r"""ModifyDSPADiscoveryRule返回参数结构体
 
     """
 
@@ -28937,7 +28937,7 @@ class ModifyDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28952,7 +28952,7 @@ class ModifyDSPADiscoveryRuleResponse(AbstractModel):
 
 
 class ModifyDSPADiscoveryTaskRequest(AbstractModel):
-    """ModifyDSPADiscoveryTask请求参数结构体
+    r"""ModifyDSPADiscoveryTask请求参数结构体
 
     """
 
@@ -29015,7 +29015,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -29026,7 +29026,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -29037,7 +29037,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Name(self):
-        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        r"""任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
         :rtype: str
         """
         return self._Name
@@ -29048,7 +29048,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Description(self):
-        """任务描述，最大长度为1024个字符
+        r"""任务描述，最大长度为1024个字符
         :rtype: str
         """
         return self._Description
@@ -29059,7 +29059,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Enable(self):
-        """任务开关，0 关闭，1 启用
+        r"""任务开关，0 关闭，1 启用
         :rtype: int
         """
         return self._Enable
@@ -29070,7 +29070,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
-        """数据源ID
+        r"""数据源ID
         :rtype: str
         """
         return self._DataSourceId
@@ -29081,7 +29081,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Condition(self):
-        """用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，最多添加5个数据库，之间通过逗号分隔
+        r"""用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，最多添加5个数据库，之间通过逗号分隔
         :rtype: str
         """
         return self._Condition
@@ -29092,7 +29092,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def GeneralRuleSetEnable(self):
-        """通用规则集开关；0 关闭，1 启用
+        r"""通用规则集开关；0 关闭，1 启用
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -29103,7 +29103,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ComplianceGroupIds(self):
-        """合规组ID列表，最多支持添加5个
+        r"""合规组ID列表，最多支持添加5个
         :rtype: list of int
         """
         return self._ComplianceGroupIds
@@ -29114,7 +29114,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Plan(self):
-        """执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        r"""执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
         :rtype: int
         """
         return self._Plan
@@ -29125,7 +29125,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Period(self):
-        """扫描周期；0单次 1每天 2每周 3每月
+        r"""扫描周期；0单次 1每天 2每周 3每月
         :rtype: int
         """
         return self._Period
@@ -29136,7 +29136,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TimingStartTime(self):
-        """任务定时启动时间，格式：2006-01-02 15:04:05
+        r"""任务定时启动时间，格式：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
         :rtype: str
         """
@@ -29148,7 +29148,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -29159,7 +29159,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
-        """数据源类型，可取值如下：
+        r"""数据源类型，可取值如下：
 cdb 表示云数据库 MySQL,
 dcdb 表示TDSQL MySQL版,
 mariadb 表示云数据库 MariaDB,
@@ -29177,7 +29177,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ScanRange(self):
-        """	full:全量扫描 incre:变更扫描
+        r"""	full:全量扫描 incre:变更扫描
         :rtype: str
         """
         return self._ScanRange
@@ -29214,7 +29214,7 @@ selfbuilt-db 表示自建数据库
 
 
 class ModifyDSPADiscoveryTaskResponse(AbstractModel):
-    """ModifyDSPADiscoveryTask返回参数结构体
+    r"""ModifyDSPADiscoveryTask返回参数结构体
 
     """
 
@@ -29227,7 +29227,7 @@ class ModifyDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29242,7 +29242,7 @@ class ModifyDSPADiscoveryTaskResponse(AbstractModel):
 
 
 class ModifyDSPAESTaskResultRequest(AbstractModel):
-    """ModifyDSPAESTaskResult请求参数结构体
+    r"""ModifyDSPAESTaskResult请求参数结构体
 
     """
 
@@ -29285,7 +29285,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -29296,7 +29296,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """字段扫描结果ID
+        r"""字段扫描结果ID
         :rtype: int
         """
         return self._FieldResultId
@@ -29307,7 +29307,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -29318,7 +29318,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveField(self):
-        """是否设置为非敏感字段
+        r"""是否设置为非敏感字段
         :rtype: bool
         """
         return self._IsSetNonSensitiveField
@@ -29329,7 +29329,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestRuleId(self):
-        """调整后新的规则ID
+        r"""调整后新的规则ID
         :rtype: int
         """
         return self._DestRuleId
@@ -29340,7 +29340,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestCategoryId(self):
-        """调整后新的分类ID
+        r"""调整后新的分类ID
         :rtype: int
         """
         return self._DestCategoryId
@@ -29351,7 +29351,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestLevelId(self):
-        """调整后新的分级ID
+        r"""调整后新的分级ID
         :rtype: int
         """
         return self._DestLevelId
@@ -29362,7 +29362,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcRuleId(self):
-        """调整前的规则id（系统识别的id）
+        r"""调整前的规则id（系统识别的id）
         :rtype: int
         """
         return self._SrcRuleId
@@ -29373,7 +29373,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcCategoryId(self):
-        """调整前的规则id（系统识别的id）
+        r"""调整前的规则id（系统识别的id）
         :rtype: int
         """
         return self._SrcCategoryId
@@ -29384,7 +29384,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcLevelId(self):
-        """调整前的等级id
+        r"""调整前的等级id
         :rtype: int
         """
         return self._SrcLevelId
@@ -29395,7 +29395,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """0系统识别，1人工打标
+        r"""0系统识别，1人工打标
         :rtype: int
         """
         return self._IdentifyType
@@ -29428,7 +29428,7 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
 
 class ModifyDSPAESTaskResultResponse(AbstractModel):
-    """ModifyDSPAESTaskResult返回参数结构体
+    r"""ModifyDSPAESTaskResult返回参数结构体
 
     """
 
@@ -29441,7 +29441,7 @@ class ModifyDSPAESTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29456,7 +29456,7 @@ class ModifyDSPAESTaskResultResponse(AbstractModel):
 
 
 class ModifyDSPATaskResultRequest(AbstractModel):
-    """ModifyDSPATaskResult请求参数结构体
+    r"""ModifyDSPATaskResult请求参数结构体
 
     """
 
@@ -29501,7 +29501,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -29512,7 +29512,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
-        """字段扫描结果ID
+        r"""字段扫描结果ID
         :rtype: int
         """
         return self._FieldResultId
@@ -29523,7 +29523,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceId
@@ -29534,7 +29534,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveField(self):
-        """是否设置为非敏感字段
+        r"""是否设置为非敏感字段
         :rtype: bool
         """
         return self._IsSetNonSensitiveField
@@ -29545,7 +29545,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestRuleId(self):
-        """调整后新的规则ID
+        r"""调整后新的规则ID
         :rtype: int
         """
         return self._DestRuleId
@@ -29556,7 +29556,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestCategoryId(self):
-        """调整后新的分类ID
+        r"""调整后新的分类ID
         :rtype: int
         """
         return self._DestCategoryId
@@ -29567,7 +29567,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestLevelId(self):
-        """调整后新的分级ID
+        r"""调整后新的分级ID
         :rtype: int
         """
         return self._DestLevelId
@@ -29578,7 +29578,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcRuleId(self):
-        """调整前的规则ID
+        r"""调整前的规则ID
 
         :rtype: int
         """
@@ -29590,7 +29590,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcCategoryId(self):
-        """调整之前的分类id
+        r"""调整之前的分类id
         :rtype: int
         """
         return self._SrcCategoryId
@@ -29601,7 +29601,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcLevelId(self):
-        """调整之前的分级id
+        r"""调整之前的分级id
         :rtype: int
         """
         return self._SrcLevelId
@@ -29612,7 +29612,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """识别方式
+        r"""识别方式
 0-系统识别，1-人工打标
         :rtype: int
         """
@@ -29646,7 +29646,7 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
 
 class ModifyDSPATaskResultResponse(AbstractModel):
-    """ModifyDSPATaskResult返回参数结构体
+    r"""ModifyDSPATaskResult返回参数结构体
 
     """
 
@@ -29659,7 +29659,7 @@ class ModifyDSPATaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29674,7 +29674,7 @@ class ModifyDSPATaskResultResponse(AbstractModel):
 
 
 class MongoAsset(AbstractModel):
-    """mongo的资产统计结果
+    r"""mongo的资产统计结果
 
     """
 
@@ -29702,7 +29702,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def DbNums(self):
-        """DB总数量
+        r"""DB总数量
         :rtype: int
         """
         return self._DbNums
@@ -29713,7 +29713,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveDbNums(self):
-        """敏感DB数量
+        r"""敏感DB数量
         :rtype: int
         """
         return self._SensitiveDbNums
@@ -29724,7 +29724,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def ColNums(self):
-        """集合数量
+        r"""集合数量
         :rtype: int
         """
         return self._ColNums
@@ -29735,7 +29735,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveColNums(self):
-        """敏感集合的数量
+        r"""敏感集合的数量
         :rtype: int
         """
         return self._SensitiveColNums
@@ -29746,7 +29746,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段数量
+        r"""字段数量
         :rtype: int
         """
         return self._FieldNums
@@ -29757,7 +29757,7 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感的字段数量
+        r"""敏感的字段数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -29785,7 +29785,7 @@ class MongoAsset(AbstractModel):
 
 
 class MongoAssetDBDetail(AbstractModel):
-    """mongo敏感资产详情列表
+    r"""mongo敏感资产详情列表
 
     """
 
@@ -29819,7 +29819,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -29830,7 +29830,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DdName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DdName
@@ -29841,7 +29841,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
-        """数据库类型
+        r"""数据库类型
         :rtype: str
         """
         return self._DataType
@@ -29852,7 +29852,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def ColNums(self):
-        """集合的数量
+        r"""集合的数量
         :rtype: int
         """
         return self._ColNums
@@ -29863,7 +29863,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveColNums(self):
-        """敏感集合数量
+        r"""敏感集合数量
         :rtype: int
         """
         return self._SensitiveColNums
@@ -29874,7 +29874,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段的数量
+        r"""字段的数量
         :rtype: int
         """
         return self._FieldNums
@@ -29885,7 +29885,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感字段的数量
+        r"""敏感字段的数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -29896,7 +29896,7 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
-        """敏感数据分布
+        r"""敏感数据分布
         :rtype: list of Note
         """
         return self._DistributionData
@@ -29931,7 +29931,7 @@ class MongoAssetDBDetail(AbstractModel):
 
 
 class NOSQLInstance(AbstractModel):
-    """NOSQL类型的数据源实例
+    r"""NOSQL类型的数据源实例
 
     """
 
@@ -29956,7 +29956,7 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -29967,7 +29967,7 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto,mongodb
+        r"""cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto,mongodb
         :rtype: str
         """
         return self._DataSourceType
@@ -29978,7 +29978,7 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -29989,7 +29989,7 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DiscoveryTaskId(self):
-        """根据实例创建的敏感数据识别扫描任务Id
+        r"""根据实例创建的敏感数据识别扫描任务Id
         :rtype: int
         """
         return self._DiscoveryTaskId
@@ -30000,7 +30000,7 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DiscoveryTaskInstanceID(self):
-        """敏感数据识别任务实例id
+        r"""敏感数据识别任务实例id
         :rtype: int
         """
         return self._DiscoveryTaskInstanceID
@@ -30027,7 +30027,7 @@ class NOSQLInstance(AbstractModel):
 
 
 class Note(AbstractModel):
-    """数据资产报告-各种key-value的展示数据结构
+    r"""数据资产报告-各种key-value的展示数据结构
 
     """
 
@@ -30043,7 +30043,7 @@ class Note(AbstractModel):
 
     @property
     def Key(self):
-        """通用key，例如分类名称
+        r"""通用key，例如分类名称
         :rtype: str
         """
         return self._Key
@@ -30054,7 +30054,7 @@ class Note(AbstractModel):
 
     @property
     def Value(self):
-        """通用value，例如分类个数
+        r"""通用value，例如分类个数
         :rtype: int
         """
         return self._Value
@@ -30078,7 +30078,7 @@ class Note(AbstractModel):
 
 
 class PrivilegeRisk(AbstractModel):
-    """权限风险详情
+    r"""权限风险详情
 
     """
 
@@ -30097,7 +30097,7 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def AccountName(self):
-        """账户名
+        r"""账户名
         :rtype: list of str
         """
         return self._AccountName
@@ -30108,7 +30108,7 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def TableName(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._TableName
@@ -30119,7 +30119,7 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def Description(self):
-        """说明
+        r"""说明
         :rtype: str
         """
         return self._Description
@@ -30144,7 +30144,7 @@ class PrivilegeRisk(AbstractModel):
 
 
 class ProcessHistory(AbstractModel):
-    """处理历史
+    r"""处理历史
 
     """
 
@@ -30166,7 +30166,7 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Time(self):
-        """处理时间
+        r"""处理时间
         :rtype: str
         """
         return self._Time
@@ -30177,7 +30177,7 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -30188,7 +30188,7 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Handler(self):
-        """处理人
+        r"""处理人
         :rtype: str
         """
         return self._Handler
@@ -30199,7 +30199,7 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Note(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Note
@@ -30225,7 +30225,7 @@ class ProcessHistory(AbstractModel):
 
 
 class QueryDSPAMetaResourceDbListRequest(AbstractModel):
-    """QueryDSPAMetaResourceDbList请求参数结构体
+    r"""QueryDSPAMetaResourceDbList请求参数结构体
 
     """
 
@@ -30247,7 +30247,7 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -30258,7 +30258,7 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """数据库实例ID。
+        r"""数据库实例ID。
         :rtype: str
         """
         return self._ResourceId
@@ -30269,7 +30269,7 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """数据库实例所在地域。
+        r"""数据库实例所在地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -30280,7 +30280,7 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """数据库实例类型。
+        r"""数据库实例类型。
         :rtype: str
         """
         return self._MetaType
@@ -30306,7 +30306,7 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
 
 class QueryDSPAMetaResourceDbListResponse(AbstractModel):
-    """QueryDSPAMetaResourceDbList返回参数结构体
+    r"""QueryDSPAMetaResourceDbList返回参数结构体
 
     """
 
@@ -30322,7 +30322,7 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
 
     @property
     def DbRelationStatusItems(self):
-        """数据库实例DB列表的查询结果。
+        r"""数据库实例DB列表的查询结果。
         :rtype: list of DbRelationStatusItem
         """
         return self._DbRelationStatusItems
@@ -30333,7 +30333,7 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30354,7 +30354,7 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
 
 
 class QueryResourceDbBindStatusRequest(AbstractModel):
-    """QueryResourceDbBindStatus请求参数结构体
+    r"""QueryResourceDbBindStatus请求参数结构体
 
     """
 
@@ -30376,7 +30376,7 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -30387,7 +30387,7 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID。
+        r"""资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -30398,7 +30398,7 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域。
+        r"""资源所在地域。
         :rtype: str
         """
         return self._ResourceRegion
@@ -30409,7 +30409,7 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        """资源类型。
+        r"""资源类型。
         :rtype: str
         """
         return self._MetaType
@@ -30435,7 +30435,7 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
 
 class QueryResourceDbBindStatusResponse(AbstractModel):
-    """QueryResourceDbBindStatus返回参数结构体
+    r"""QueryResourceDbBindStatus返回参数结构体
 
     """
 
@@ -30454,7 +30454,7 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def BindDbNums(self):
-        """绑定DB数量。
+        r"""绑定DB数量。
         :rtype: int
         """
         return self._BindDbNums
@@ -30465,7 +30465,7 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def UnbindDbNums(self):
-        """未绑定DB数量。
+        r"""未绑定DB数量。
         :rtype: int
         """
         return self._UnbindDbNums
@@ -30476,7 +30476,7 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30493,7 +30493,7 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
 
 class RDBAsset(AbstractModel):
-    """rdb的资产统计结果
+    r"""rdb的资产统计结果
 
     """
 
@@ -30521,7 +30521,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def DbNums(self):
-        """DB总数量
+        r"""DB总数量
         :rtype: int
         """
         return self._DbNums
@@ -30532,7 +30532,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveDbNums(self):
-        """敏感DB数量
+        r"""敏感DB数量
         :rtype: int
         """
         return self._SensitiveDbNums
@@ -30543,7 +30543,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def TableNums(self):
-        """表数量
+        r"""表数量
         :rtype: int
         """
         return self._TableNums
@@ -30554,7 +30554,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveTableNums(self):
-        """敏感表的数量
+        r"""敏感表的数量
         :rtype: int
         """
         return self._SensitiveTableNums
@@ -30565,7 +30565,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def FieldNums(self):
-        """字段数量
+        r"""字段数量
         :rtype: int
         """
         return self._FieldNums
@@ -30576,7 +30576,7 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
-        """敏感的字段数量
+        r"""敏感的字段数量
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -30604,7 +30604,7 @@ class RDBAsset(AbstractModel):
 
 
 class RDBInstance(AbstractModel):
-    """RDB实例信息
+    r"""RDB实例信息
 
     """
 
@@ -30626,7 +30626,7 @@ class RDBInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源Id
+        r"""数据源Id
         :rtype: str
         """
         return self._DataSourceId
@@ -30637,7 +30637,7 @@ class RDBInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto
+        r"""cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto
         :rtype: str
         """
         return self._DataSourceType
@@ -30648,7 +30648,7 @@ class RDBInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -30659,7 +30659,7 @@ class RDBInstance(AbstractModel):
 
     @property
     def DBs(self):
-        """若未来扩展到DBName粒度，可采用
+        r"""若未来扩展到DBName粒度，可采用
         :rtype: list of DBStatements
         """
         return self._DBs
@@ -30690,7 +30690,7 @@ class RDBInstance(AbstractModel):
 
 
 class ReportInfo(AbstractModel):
-    """报表信息
+    r"""报表信息
 
     """
 
@@ -30745,7 +30745,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def Id(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._Id
@@ -30756,7 +30756,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportName(self):
-        """报告名称
+        r"""报告名称
         :rtype: str
         """
         return self._ReportName
@@ -30767,7 +30767,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportType(self):
-        """报告类型（AssetSorting:资产梳理）
+        r"""报告类型（AssetSorting:资产梳理）
         :rtype: str
         """
         return self._ReportType
@@ -30778,7 +30778,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportPeriod(self):
-        """报告周期（0单次 1每天 2每周 3每月）
+        r"""报告周期（0单次 1每天 2每周 3每月）
         :rtype: int
         """
         return self._ReportPeriod
@@ -30789,7 +30789,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportPlan(self):
-        """执行计划 （0:单次报告 1:定时报告）
+        r"""执行计划 （0:单次报告 1:定时报告）
         :rtype: int
         """
         return self._ReportPlan
@@ -30800,7 +30800,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportStatus(self):
-        """报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
+        r"""报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
         :rtype: str
         """
         return self._ReportStatus
@@ -30811,7 +30811,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def TimingStartTime(self):
-        """任务下次启动时间
+        r"""任务下次启动时间
         :rtype: str
         """
         return self._TimingStartTime
@@ -30822,7 +30822,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -30833,7 +30833,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def FinishedTime(self):
-        """完成时间
+        r"""完成时间
         :rtype: str
         """
         return self._FinishedTime
@@ -30844,7 +30844,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def SubUin(self):
-        """子账号uin
+        r"""子账号uin
         :rtype: str
         """
         return self._SubUin
@@ -30855,7 +30855,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def FailedMessage(self):
-        """失败信息
+        r"""失败信息
         :rtype: str
         """
         return self._FailedMessage
@@ -30866,7 +30866,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用（0：否 1：是）
+        r"""是否启用（0：否 1：是）
         :rtype: int
         """
         return self._Enable
@@ -30877,7 +30877,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ComplianceName(self):
-        """识别模板名称
+        r"""识别模板名称
         :rtype: str
         """
         return self._ComplianceName
@@ -30888,7 +30888,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ProgressPercent(self):
-        """进度百分比
+        r"""进度百分比
         :rtype: int
         """
         return self._ProgressPercent
@@ -30899,7 +30899,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportTemplateName(self):
-        """报告模板名称
+        r"""报告模板名称
         :rtype: str
         """
         return self._ReportTemplateName
@@ -30936,7 +30936,7 @@ class ReportInfo(AbstractModel):
 
 
 class RestartDSPAAssessmentTaskRequest(AbstractModel):
-    """RestartDSPAAssessmentTask请求参数结构体
+    r"""RestartDSPAAssessmentTask请求参数结构体
 
     """
 
@@ -30952,7 +30952,7 @@ class RestartDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        r"""DSPA实例Id，格式“dspa-xxxxxxxx”
         :rtype: str
         """
         return self._DspaId
@@ -30963,7 +30963,7 @@ class RestartDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """评估任务Id，格式“task-xxxxxxxx”
+        r"""评估任务Id，格式“task-xxxxxxxx”
         :rtype: str
         """
         return self._TaskId
@@ -30987,7 +30987,7 @@ class RestartDSPAAssessmentTaskRequest(AbstractModel):
 
 
 class RestartDSPAAssessmentTaskResponse(AbstractModel):
-    """RestartDSPAAssessmentTask返回参数结构体
+    r"""RestartDSPAAssessmentTask返回参数结构体
 
     """
 
@@ -31000,7 +31000,7 @@ class RestartDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31015,7 +31015,7 @@ class RestartDSPAAssessmentTaskResponse(AbstractModel):
 
 
 class RiskCountInfo(AbstractModel):
-    """待处理风险项数量信息
+    r"""待处理风险项数量信息
 
     """
 
@@ -31034,7 +31034,7 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._RiskLevel
@@ -31045,7 +31045,7 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def Count(self):
-        """该等级风险项数量
+        r"""该等级风险项数量
         :rtype: int
         """
         return self._Count
@@ -31056,7 +31056,7 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级名称
+        r"""风险等级名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -31081,7 +31081,7 @@ class RiskCountInfo(AbstractModel):
 
 
 class RiskDealedTrendItem(AbstractModel):
-    """风险趋势项
+    r"""风险趋势项
 
     """
 
@@ -31103,7 +31103,7 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -31114,7 +31114,7 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Unhandled(self):
-        """未解决数量
+        r"""未解决数量
         :rtype: int
         """
         return self._Unhandled
@@ -31125,7 +31125,7 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Handled(self):
-        """已解决数量
+        r"""已解决数量
         :rtype: int
         """
         return self._Handled
@@ -31136,7 +31136,7 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def NewDiscoveryHandled(self):
-        """新发现
+        r"""新发现
         :rtype: int
         """
         return self._NewDiscoveryHandled
@@ -31162,7 +31162,7 @@ class RiskDealedTrendItem(AbstractModel):
 
 
 class RiskItem(AbstractModel):
-    """风险TOP5统计项
+    r"""风险TOP5统计项
 
     """
 
@@ -31178,7 +31178,7 @@ class RiskItem(AbstractModel):
 
     @property
     def ItemName(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._ItemName
@@ -31189,7 +31189,7 @@ class RiskItem(AbstractModel):
 
     @property
     def RiskNum(self):
-        """风险数量
+        r"""风险数量
         :rtype: int
         """
         return self._RiskNum
@@ -31213,7 +31213,7 @@ class RiskItem(AbstractModel):
 
 
 class RiskItemInfo(AbstractModel):
-    """最新的风险详情信息数据
+    r"""最新的风险详情信息数据
 
     """
 
@@ -31283,7 +31283,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Id(self):
-        """最新风险项id
+        r"""最新风险项id
         :rtype: int
         """
         return self._Id
@@ -31294,7 +31294,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -31305,7 +31305,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSourceName
@@ -31316,7 +31316,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DataSourceType
@@ -31327,7 +31327,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -31338,7 +31338,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名称
+        r"""资产名称
         :rtype: str
         """
         return self._AssetName
@@ -31349,7 +31349,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -31360,7 +31360,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险项
+        r"""风险项
         :rtype: str
         """
         return self._RiskName
@@ -31371,7 +31371,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险级别
+        r"""风险级别
         :rtype: str
         """
         return self._RiskLevel
@@ -31382,7 +31382,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskDescription(self):
-        """风险描述
+        r"""风险描述
         :rtype: str
         """
         return self._RiskDescription
@@ -31393,7 +31393,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def SuggestAction(self):
-        """建议措施
+        r"""建议措施
         :rtype: str
         """
         return self._SuggestAction
@@ -31404,7 +31404,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def SecurityProduct(self):
-        """安全产品（可能有多个）
+        r"""安全产品（可能有多个）
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -31415,7 +31415,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Status(self):
-        """状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
+        r"""状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
         :rtype: int
         """
         return self._Status
@@ -31426,7 +31426,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ScanTime(self):
-        """扫描时间
+        r"""扫描时间
         :rtype: str
         """
         return self._ScanTime
@@ -31437,7 +31437,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def LastProcessTime(self):
-        """最后处置时间
+        r"""最后处置时间
         :rtype: str
         """
         return self._LastProcessTime
@@ -31448,7 +31448,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
-        """分类分级合规组Id
+        r"""分类分级合规组Id
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -31459,7 +31459,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ItemSubType(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._ItemSubType
@@ -31470,7 +31470,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: str
         """
         return self._RiskSide
@@ -31481,7 +31481,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def APIRiskLinkURL(self):
-        """API安全风险链接
+        r"""API安全风险链接
         :rtype: str
         """
         return self._APIRiskLinkURL
@@ -31492,7 +31492,7 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -31539,7 +31539,7 @@ class RiskItemInfo(AbstractModel):
 
 
 class RiskLevelMatrix(AbstractModel):
-    """风险级别详情的矩阵
+    r"""风险级别详情的矩阵
 
     """
 
@@ -31564,7 +31564,7 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def Id(self):
-        """存储id
+        r"""存储id
         :rtype: int
         """
         return self._Id
@@ -31575,7 +31575,7 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def SensitiveLevelId(self):
-        """分类分级levelID
+        r"""分类分级levelID
         :rtype: int
         """
         return self._SensitiveLevelId
@@ -31586,7 +31586,7 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def SensitiveLevelName(self):
-        """分类分级名称
+        r"""分类分级名称
         :rtype: str
         """
         return self._SensitiveLevelName
@@ -31597,7 +31597,7 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def VulnerabilityLevel(self):
-        """漏洞级别
+        r"""漏洞级别
         :rtype: str
         """
         return self._VulnerabilityLevel
@@ -31608,7 +31608,7 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险级别
+        r"""风险级别
         :rtype: str
         """
         return self._RiskLevel
@@ -31635,7 +31635,7 @@ class RiskLevelMatrix(AbstractModel):
 
 
 class RiskLevelRisk(AbstractModel):
-    """风险等级列表
+    r"""风险等级列表
 
     """
 
@@ -31660,7 +31660,7 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def Id(self):
-        """风险id
+        r"""风险id
         :rtype: int
         """
         return self._Id
@@ -31671,7 +31671,7 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级列表
+        r"""风险等级列表
         :rtype: str
         """
         return self._RiskLevelName
@@ -31682,7 +31682,7 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
-        """风险级别描述
+        r"""风险级别描述
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -31693,7 +31693,7 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def IdentifyComplianceName(self):
-        """引用的分类分级模板
+        r"""引用的分类分级模板
         :rtype: str
         """
         return self._IdentifyComplianceName
@@ -31704,7 +31704,7 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def Type(self):
-        """类型，区分自定义还是系统内置
+        r"""类型，区分自定义还是系统内置
         :rtype: str
         """
         return self._Type
@@ -31731,7 +31731,7 @@ class RiskLevelRisk(AbstractModel):
 
 
 class RiskLevelTrendItem(AbstractModel):
-    """风险级别趋势项
+    r"""风险级别趋势项
 
     """
 
@@ -31756,7 +31756,7 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -31767,7 +31767,7 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def High(self):
-        """高风险数量
+        r"""高风险数量
         :rtype: int
         """
         return self._High
@@ -31778,7 +31778,7 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Medium(self):
-        """中风险数量
+        r"""中风险数量
         :rtype: int
         """
         return self._Medium
@@ -31789,7 +31789,7 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Low(self):
-        """低风险数量
+        r"""低风险数量
         :rtype: int
         """
         return self._Low
@@ -31800,7 +31800,7 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -31827,7 +31827,7 @@ class RiskLevelTrendItem(AbstractModel):
 
 
 class RiskMatrixLevel(AbstractModel):
-    """用于生成默认的风险级别矩阵
+    r"""用于生成默认的风险级别矩阵
 
     """
 
@@ -31846,7 +31846,7 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -31857,7 +31857,7 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Id(self):
-        """就是id
+        r"""就是id
         :rtype: int
         """
         return self._Id
@@ -31868,7 +31868,7 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Score(self):
-        """分数
+        r"""分数
         :rtype: float
         """
         return self._Score
@@ -31893,7 +31893,7 @@ class RiskMatrixLevel(AbstractModel):
 
 
 class RiskSideDistributed(AbstractModel):
-    """风险面的分布
+    r"""风险面的分布
 
     """
 
@@ -31909,7 +31909,7 @@ class RiskSideDistributed(AbstractModel):
 
     @property
     def AssessmentRiskSide(self):
-        """风险面
+        r"""风险面
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.Note`
         """
         return self._AssessmentRiskSide
@@ -31920,7 +31920,7 @@ class RiskSideDistributed(AbstractModel):
 
     @property
     def AssessmentRisk(self):
-        """风险类型
+        r"""风险类型
         :rtype: list of Note
         """
         return self._AssessmentRisk
@@ -31951,7 +31951,7 @@ class RiskSideDistributed(AbstractModel):
 
 
 class RuleDistribution(AbstractModel):
-    """数据资产报告-rdb的敏感数据规则分布
+    r"""数据资产报告-rdb的敏感数据规则分布
 
     """
 
@@ -31976,7 +31976,7 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: int
         """
         return self._RuleId
@@ -31987,7 +31987,7 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -31998,7 +31998,7 @@ class RuleDistribution(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级id
+        r"""分级id
         :rtype: int
         """
         return self._LevelId
@@ -32009,7 +32009,7 @@ class RuleDistribution(AbstractModel):
 
     @property
     def LevelName(self):
-        """分级名称
+        r"""分级名称
         :rtype: str
         """
         return self._LevelName
@@ -32020,7 +32020,7 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleCnt(self):
-        """规则数量
+        r"""规则数量
         :rtype: int
         """
         return self._RuleCnt
@@ -32047,7 +32047,7 @@ class RuleDistribution(AbstractModel):
 
 
 class RuleEffectItem(AbstractModel):
-    """分类分级规则数量
+    r"""分类分级规则数量
 
     """
 
@@ -32063,7 +32063,7 @@ class RuleEffectItem(AbstractModel):
 
     @property
     def Name(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._Name
@@ -32074,7 +32074,7 @@ class RuleEffectItem(AbstractModel):
 
     @property
     def Value(self):
-        """规则值
+        r"""规则值
         :rtype: int
         """
         return self._Value
@@ -32098,7 +32098,7 @@ class RuleEffectItem(AbstractModel):
 
 
 class ScanTaskCOSRules(AbstractModel):
-    """敏感识别任务COS识别规则
+    r"""敏感识别任务COS识别规则
 
     """
 
@@ -32123,7 +32123,7 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def RegexRule(self):
-        """regex规则内容
+        r"""regex规则内容
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._RegexRule
@@ -32134,7 +32134,7 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态；0 不启用, 1 启用
+        r"""规则状态；0 不启用, 1 启用
         :rtype: int
         """
         return self._Status
@@ -32145,7 +32145,7 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def KeywordRule(self):
-        """关键词规则内容组，最大支持5个关键词。
+        r"""关键词规则内容组，最大支持5个关键词。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._KeywordRule
@@ -32156,7 +32156,7 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def IgnoreStringRule(self):
-        """忽略词规则内容组，最大支持5个忽略词。
+        r"""忽略词规则内容组，最大支持5个忽略词。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._IgnoreStringRule
@@ -32167,7 +32167,7 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def MaxMatch(self):
-        """最大匹配距离，默认值为100。上限为500.
+        r"""最大匹配距离，默认值为100。上限为500.
         :rtype: int
         """
         return self._MaxMatch
@@ -32200,7 +32200,7 @@ class ScanTaskCOSRules(AbstractModel):
 
 
 class ScanTaskComplianceInfo(AbstractModel):
-    """扫描任务选择的合规组信息
+    r"""扫描任务选择的合规组信息
 
     """
 
@@ -32216,7 +32216,7 @@ class ScanTaskComplianceInfo(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
-        """合规组ID
+        r"""合规组ID
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -32227,7 +32227,7 @@ class ScanTaskComplianceInfo(AbstractModel):
 
     @property
     def ComplianceGroupName(self):
-        """合规组名称
+        r"""合规组名称
         :rtype: str
         """
         return self._ComplianceGroupName
@@ -32251,7 +32251,7 @@ class ScanTaskComplianceInfo(AbstractModel):
 
 
 class ScanTaskRDBRules(AbstractModel):
-    """敏感识别任务RDB数据规则
+    r"""敏感识别任务RDB数据规则
 
     """
 
@@ -32273,7 +32273,7 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态；0 不启用, 1 启用
+        r"""规则状态；0 不启用, 1 启用
         :rtype: int
         """
         return self._Status
@@ -32284,7 +32284,7 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def MatchOperator(self):
-        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+        r"""只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
         :rtype: str
         """
         return self._MatchOperator
@@ -32295,7 +32295,7 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def MetaRule(self):
-        """字段名包含规则，最大支持选择9项
+        r"""字段名包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
         """
         return self._MetaRule
@@ -32306,7 +32306,7 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def ContentRule(self):
-        """内容包含规则，最大支持选择9项
+        r"""内容包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
         """
         return self._ContentRule
@@ -32336,7 +32336,7 @@ class ScanTaskRDBRules(AbstractModel):
 
 
 class ScanTaskResult(AbstractModel):
-    """扫描任务结果信息
+    r"""扫描任务结果信息
 
     """
 
@@ -32367,7 +32367,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Id(self):
-        """任务最新一次运行结果ID
+        r"""任务最新一次运行结果ID
         :rtype: int
         """
         return self._Id
@@ -32378,7 +32378,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务扫描结束的时间，格式如：2021-12-12 12:12:12
+        r"""任务扫描结束的时间，格式如：2021-12-12 12:12:12
         :rtype: str
         """
         return self._EndTime
@@ -32389,7 +32389,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态，-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        r"""任务状态，-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :rtype: int
         """
         return self._Status
@@ -32400,7 +32400,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Result(self):
-        """扫描任务结果展示，如果扫描失败，则显示失败原因
+        r"""扫描任务结果展示，如果扫描失败，则显示失败原因
         :rtype: str
         """
         return self._Result
@@ -32411,7 +32411,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
-        """结果描述
+        r"""结果描述
         :rtype: str
         """
         return self._ResultDescription
@@ -32422,7 +32422,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """结果建议
+        r"""结果建议
         :rtype: str
         """
         return self._Suggestion
@@ -32433,7 +32433,7 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Progress(self):
-        """扫描进度
+        r"""扫描进度
         :rtype: float
         """
         return self._Progress
@@ -32462,7 +32462,7 @@ class ScanTaskResult(AbstractModel):
 
 
 class SecurityProduct(AbstractModel):
-    """建议使用的安全产品
+    r"""建议使用的安全产品
 
     """
 
@@ -32478,7 +32478,7 @@ class SecurityProduct(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -32489,7 +32489,7 @@ class SecurityProduct(AbstractModel):
 
     @property
     def ReferUrl(self):
-        """产品链接
+        r"""产品链接
         :rtype: str
         """
         return self._ReferUrl
@@ -32513,7 +32513,7 @@ class SecurityProduct(AbstractModel):
 
 
 class SensitiveLevel(AbstractModel):
-    """敏感等级分布
+    r"""敏感等级分布
 
     """
 
@@ -32535,7 +32535,7 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelId(self):
-        """分级标识ID
+        r"""分级标识ID
         :rtype: int
         """
         return self._LevelId
@@ -32546,7 +32546,7 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelCnt(self):
-        """分级标识统计
+        r"""分级标识统计
         :rtype: int
         """
         return self._LevelCnt
@@ -32557,7 +32557,7 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelRiskName(self):
-        """分级标识名称
+        r"""分级标识名称
         :rtype: str
         """
         return self._LevelRiskName
@@ -32568,7 +32568,7 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelRiskScore(self):
-        """分级标识分数
+        r"""分级标识分数
         :rtype: int
         """
         return self._LevelRiskScore
@@ -32594,7 +32594,7 @@ class SensitiveLevel(AbstractModel):
 
 
 class StartDSPADiscoveryTaskRequest(AbstractModel):
-    """StartDSPADiscoveryTask请求参数结构体
+    r"""StartDSPADiscoveryTask请求参数结构体
 
     """
 
@@ -32610,7 +32610,7 @@ class StartDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -32621,7 +32621,7 @@ class StartDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -32645,7 +32645,7 @@ class StartDSPADiscoveryTaskRequest(AbstractModel):
 
 
 class StartDSPADiscoveryTaskResponse(AbstractModel):
-    """StartDSPADiscoveryTask返回参数结构体
+    r"""StartDSPADiscoveryTask返回参数结构体
 
     """
 
@@ -32661,7 +32661,7 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
-        """任务扫描结果ID
+        r"""任务扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -32672,7 +32672,7 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32688,7 +32688,7 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
 
 
 class StopDSPADiscoveryTaskRequest(AbstractModel):
-    """StopDSPADiscoveryTask请求参数结构体
+    r"""StopDSPADiscoveryTask请求参数结构体
 
     """
 
@@ -32704,7 +32704,7 @@ class StopDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -32715,7 +32715,7 @@ class StopDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -32739,7 +32739,7 @@ class StopDSPADiscoveryTaskRequest(AbstractModel):
 
 
 class StopDSPADiscoveryTaskResponse(AbstractModel):
-    """StopDSPADiscoveryTask返回参数结构体
+    r"""StopDSPADiscoveryTask返回参数结构体
 
     """
 
@@ -32755,7 +32755,7 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
-        """任务扫描结果ID
+        r"""任务扫描结果ID
         :rtype: int
         """
         return self._ResultId
@@ -32766,7 +32766,7 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32782,7 +32782,7 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
 
 
 class SuggestRiskLevelMatrix(AbstractModel):
-    """生成的建议的风险等级矩阵
+    r"""生成的建议的风险等级矩阵
 
     """
 
@@ -32795,7 +32795,7 @@ class SuggestRiskLevelMatrix(AbstractModel):
 
     @property
     def RiskLevelMatrix(self):
-        """矩阵
+        r"""矩阵
         :rtype: list of SuggestRiskLevelMatrixItem
         """
         return self._RiskLevelMatrix
@@ -32823,7 +32823,7 @@ class SuggestRiskLevelMatrix(AbstractModel):
 
 
 class SuggestRiskLevelMatrixItem(AbstractModel):
-    """建议生成的二位矩阵的第二层
+    r"""建议生成的二位矩阵的第二层
 
     """
 
@@ -32845,7 +32845,7 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def SensitiveLevel(self):
-        """分类分级等级
+        r"""分类分级等级
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         """
         return self._SensitiveLevel
@@ -32856,7 +32856,7 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def VulnerabilityLevel(self):
-        """脆弱项等级
+        r"""脆弱项等级
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         """
         return self._VulnerabilityLevel
@@ -32867,7 +32867,7 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险名
+        r"""风险名
         :rtype: str
         """
         return self._RiskName
@@ -32878,7 +32878,7 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def RiskScore(self):
-        """分数
+        r"""分数
         :rtype: float
         """
         return self._RiskScore
@@ -32908,7 +32908,7 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """评估模板的详情数据
+    r"""评估模板的详情数据
 
     """
 
@@ -32924,7 +32924,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateId
@@ -32935,7 +32935,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -32959,7 +32959,7 @@ class TemplateInfo(AbstractModel):
 
 
 class TopAsset(AbstractModel):
-    """数据资产报告-涉敏top的资产
+    r"""数据资产报告-涉敏top的资产
 
     """
 
@@ -32975,7 +32975,7 @@ class TopAsset(AbstractModel):
 
     @property
     def LevelName(self):
-        """分级名称
+        r"""分级名称
         :rtype: str
         """
         return self._LevelName
@@ -32986,7 +32986,7 @@ class TopAsset(AbstractModel):
 
     @property
     def TopStat(self):
-        """top数据信息
+        r"""top数据信息
         :rtype: list of TopAssetStat
         """
         return self._TopStat
@@ -33015,7 +33015,7 @@ class TopAsset(AbstractModel):
 
 
 class TopAssetStat(AbstractModel):
-    """设敏top资产的信息
+    r"""设敏top资产的信息
 
     """
 
@@ -33034,7 +33034,7 @@ class TopAssetStat(AbstractModel):
 
     @property
     def DataSourceId(self):
-        """数据源id
+        r"""数据源id
         :rtype: str
         """
         return self._DataSourceId
@@ -33045,7 +33045,7 @@ class TopAssetStat(AbstractModel):
 
     @property
     def SubData(self):
-        """db_name
+        r"""db_name
         :rtype: str
         """
         return self._SubData
@@ -33056,7 +33056,7 @@ class TopAssetStat(AbstractModel):
 
     @property
     def SensitiveCnt(self):
-        """敏感个数
+        r"""敏感个数
         :rtype: int
         """
         return self._SensitiveCnt
@@ -33081,7 +33081,7 @@ class TopAssetStat(AbstractModel):
 
 
 class UpdateDSPASelfBuildResourceRequest(AbstractModel):
-    """UpdateDSPASelfBuildResource请求参数结构体
+    r"""UpdateDSPASelfBuildResource请求参数结构体
 
     """
 
@@ -33114,7 +33114,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def DspaId(self):
-        """DSPA实例ID。
+        r"""DSPA实例ID。
         :rtype: str
         """
         return self._DspaId
@@ -33125,7 +33125,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def ResourceId(self):
-        """云资源名称，如果是通过CVM访问则填写CVM的资源ID，如果是通过LB访问则填写LB的资源ID。
+        r"""云资源名称，如果是通过CVM访问则填写CVM的资源ID，如果是通过LB访问则填写LB的资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -33136,7 +33136,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def ResourceVPort(self):
-        """资源绑定的端口，为0则表示不更新。
+        r"""资源绑定的端口，为0则表示不更新。
         :rtype: int
         """
         return self._ResourceVPort
@@ -33147,7 +33147,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def UserName(self):
-        """账户名，为空则表示不更新。
+        r"""账户名，为空则表示不更新。
 UserName和Password必须同时填写或同时为空。
         :rtype: str
         """
@@ -33159,7 +33159,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def Password(self):
-        """账户密码，为空则表示不更新。
+        r"""账户密码，为空则表示不更新。
 UserName和Password必须同时填写或同时为空。
         :rtype: str
         """
@@ -33171,7 +33171,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def AuthRange(self):
-        """授权范围：all 授权全部  manual：手动指定
+        r"""授权范围：all 授权全部  manual：手动指定
         :rtype: str
         """
         return self._AuthRange
@@ -33182,7 +33182,7 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def ResourceName(self):
-        """自建数据资产的名称，支持修改
+        r"""自建数据资产的名称，支持修改
         :rtype: str
         """
         return self._ResourceName
@@ -33211,7 +33211,7 @@ UserName和Password必须同时填写或同时为空。
 
 
 class UpdateDSPASelfBuildResourceResponse(AbstractModel):
-    """UpdateDSPASelfBuildResource返回参数结构体
+    r"""UpdateDSPASelfBuildResource返回参数结构体
 
     """
 
@@ -33224,7 +33224,7 @@ class UpdateDSPASelfBuildResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -33239,7 +33239,7 @@ class UpdateDSPASelfBuildResourceResponse(AbstractModel):
 
 
 class VerifyDSPACOSRuleRequest(AbstractModel):
-    """VerifyDSPACOSRule请求参数结构体
+    r"""VerifyDSPACOSRule请求参数结构体
 
     """
 
@@ -33258,7 +33258,7 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -33269,7 +33269,7 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
-        """待验证COS规则
+        r"""待验证COS规则
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskCOSRules`
         """
         return self._COSRules
@@ -33280,7 +33280,7 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def Data(self):
-        """待验证数据
+        r"""待验证数据
         :rtype: str
         """
         return self._Data
@@ -33307,7 +33307,7 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
 
 class VerifyDSPACOSRuleResponse(AbstractModel):
-    """VerifyDSPACOSRule返回参数结构体
+    r"""VerifyDSPACOSRule返回参数结构体
 
     """
 
@@ -33328,7 +33328,7 @@ Failed 验证失败
 
     @property
     def VerifyResult(self):
-        """验证结果
+        r"""验证结果
 Success 验证成功
 Failed 验证失败
         :rtype: str
@@ -33341,7 +33341,7 @@ Failed 验证失败
 
     @property
     def DetailInfo(self):
-        """验证结果详情
+        r"""验证结果详情
         :rtype: str
         """
         return self._DetailInfo
@@ -33352,7 +33352,7 @@ Failed 验证失败
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -33369,7 +33369,7 @@ Failed 验证失败
 
 
 class VerifyDSPADiscoveryRuleRequest(AbstractModel):
-    """VerifyDSPADiscoveryRule请求参数结构体
+    r"""VerifyDSPADiscoveryRule请求参数结构体
 
     """
 
@@ -33397,7 +33397,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        """DSPA实例ID
+        r"""DSPA实例ID
         :rtype: str
         """
         return self._DspaId
@@ -33408,7 +33408,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def MatchOperator(self):
-        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+        r"""只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
         :rtype: str
         """
         return self._MatchOperator
@@ -33419,7 +33419,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def MetaRule(self):
-        """字段名包含规则，最大支持选择9项
+        r"""字段名包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
         """
         return self._MetaRule
@@ -33430,7 +33430,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def ContentRule(self):
-        """内容包含规则，最大支持选择9项
+        r"""内容包含规则，最大支持选择9项
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
         """
         return self._ContentRule
@@ -33441,7 +33441,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def VerifyMeta(self):
-        """验证规则字段名，最大长度为1024个字符
+        r"""验证规则字段名，最大长度为1024个字符
         :rtype: str
         """
         return self._VerifyMeta
@@ -33452,7 +33452,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def VerifyContent(self):
-        """验证规则数据内容，最大长度为1024个字符
+        r"""验证规则数据内容，最大长度为1024个字符
         :rtype: str
         """
         return self._VerifyContent
@@ -33484,7 +33484,7 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
 
 class VerifyDSPADiscoveryRuleResponse(AbstractModel):
-    """VerifyDSPADiscoveryRule返回参数结构体
+    r"""VerifyDSPADiscoveryRule返回参数结构体
 
     """
 
@@ -33505,7 +33505,7 @@ Failed 验证失败
 
     @property
     def VerifyResult(self):
-        """验证结果
+        r"""验证结果
 Success 验证成功
 Failed 验证失败
         :rtype: str
@@ -33518,7 +33518,7 @@ Failed 验证失败
 
     @property
     def DetailInfo(self):
-        """验证结果详情
+        r"""验证结果详情
         :rtype: str
         """
         return self._DetailInfo
@@ -33529,7 +33529,7 @@ Failed 验证失败
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

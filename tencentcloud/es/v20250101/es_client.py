@@ -27,7 +27,7 @@ class EsClient(AbstractClient):
 
 
     def ChatCompletions(self, request):
-        """本服务支持一系列高性能的大语言模型，包括DeepSeek以及腾讯自主研发的混元大模型，结合混合搜索等先进搜索技术，快速高效实现RAG，有效解决幻觉和知识更新问题。
+        r"""本服务支持一系列高性能的大语言模型，包括DeepSeek以及腾讯自主研发的混元大模型，结合混合搜索等先进搜索技术，快速高效实现RAG，有效解决幻觉和知识更新问题。
         本接口有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for ChatCompletions.
@@ -47,7 +47,7 @@ class EsClient(AbstractClient):
 
 
     def ChunkDocument(self, request):
-        """文本切片是将长文本分割为短片段的技术，用于适配模型输入、提升处理效率或信息检索，平衡片段长度与语义连贯性，适用于NLP、数据分析等场景。
+        r"""文本切片是将长文本分割为短片段的技术，用于适配模型输入、提升处理效率或信息检索，平衡片段长度与语义连贯性，适用于NLP、数据分析等场景。
         本接口为分隔符规则切片接口，有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for ChunkDocument.
@@ -71,7 +71,7 @@ class EsClient(AbstractClient):
 
 
     def ChunkDocumentAsync(self, request):
-        """文本切片是将长文本分割为短片段的技术，用于适配模型输入、提升处理效率或信息检索，平衡片段长度与语义连贯性，适用于NLP、数据分析等场景。
+        r"""文本切片是将长文本分割为短片段的技术，用于适配模型输入、提升处理效率或信息检索，平衡片段长度与语义连贯性，适用于NLP、数据分析等场景。
         本接口为异步接口，有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 
         :param request: Request instance for ChunkDocumentAsync.
@@ -95,7 +95,7 @@ class EsClient(AbstractClient):
 
 
     def GetDocumentChunkResult(self, request):
-        """获取文档切片结果
+        r"""获取文档切片结果
 
         :param request: Request instance for GetDocumentChunkResult.
         :type request: :class:`tencentcloud.es.v20250101.models.GetDocumentChunkResultRequest`
@@ -118,7 +118,7 @@ class EsClient(AbstractClient):
 
 
     def GetDocumentParseResult(self, request):
-        """本接口用于获取文档解析异步处理结果。
+        r"""本接口用于获取文档解析异步处理结果。
 
         :param request: Request instance for GetDocumentParseResult.
         :type request: :class:`tencentcloud.es.v20250101.models.GetDocumentParseResultRequest`
@@ -141,7 +141,7 @@ class EsClient(AbstractClient):
 
 
     def GetTextEmbedding(self, request):
-        """Embedding是一种将高维数据映射到低维空间的技术，通常用于将非结构化数据，如文本、图像或音频转化为向量表示，使其更容易输入机器模型进行处理，并且向量之间的距离可以反映对象之间的相似性。
+        r"""Embedding是一种将高维数据映射到低维空间的技术，通常用于将非结构化数据，如文本、图像或音频转化为向量表示，使其更容易输入机器模型进行处理，并且向量之间的距离可以反映对象之间的相似性。
         本接口有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for GetTextEmbedding.
@@ -165,7 +165,7 @@ class EsClient(AbstractClient):
 
 
     def ParseDocument(self, request):
-        """本服务可将各类格式文档精准转换为标准格式，满足企业知识库建设、技术文档迁移、内容平台结构化存储等需求。
+        r"""本服务可将各类格式文档精准转换为标准格式，满足企业知识库建设、技术文档迁移、内容平台结构化存储等需求。
         本接口有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)。
 
         :param request: Request instance for ParseDocument.
@@ -185,7 +185,7 @@ class EsClient(AbstractClient):
 
 
     def ParseDocumentAsync(self, request):
-        """本服务可将各类格式文档精准转换为标准格式，满足企业知识库建设、技术文档迁移、内容平台结构化存储等需求。
+        r"""本服务可将各类格式文档精准转换为标准格式，满足企业知识库建设、技术文档迁移、内容平台结构化存储等需求。
         本接口为异步接口，有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for ParseDocumentAsync.
@@ -209,7 +209,7 @@ class EsClient(AbstractClient):
 
 
     def RunRerank(self, request):
-        """重排是指在 RAG 过程中，通过评估文档与查询之间的相关性，将最相关的文档放在前面，确保语言模型在生成回答时优先考虑排名靠前的上下文，提高生成结果的准确性和可信度，也可以通过这种方式进行过滤，减少大模型成本。
+        r"""重排是指在 RAG 过程中，通过评估文档与查询之间的相关性，将最相关的文档放在前面，确保语言模型在生成回答时优先考虑排名靠前的上下文，提高生成结果的准确性和可信度，也可以通过这种方式进行过滤，减少大模型成本。
         本接口有单账号调用上限控制，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for RunRerank.

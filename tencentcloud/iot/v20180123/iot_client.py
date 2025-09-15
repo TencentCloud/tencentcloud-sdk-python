@@ -27,7 +27,7 @@ class IotClient(AbstractClient):
 
 
     def ActivateRule(self, request):
-        """启用规则
+        r"""启用规则
 
         :param request: Request instance for ActivateRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.ActivateRuleRequest`
@@ -50,7 +50,7 @@ class IotClient(AbstractClient):
 
 
     def AddDevice(self, request):
-        """提供在指定的产品Id下创建一个设备的能力，生成设备名称与设备秘钥。
+        r"""提供在指定的产品Id下创建一个设备的能力，生成设备名称与设备秘钥。
 
         :param request: Request instance for AddDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.AddDeviceRequest`
@@ -73,7 +73,7 @@ class IotClient(AbstractClient):
 
 
     def AddProduct(self, request):
-        """本接口(AddProduct)用于创建、定义某款硬件产品。
+        r"""本接口(AddProduct)用于创建、定义某款硬件产品。
 
         :param request: Request instance for AddProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.AddProductRequest`
@@ -96,7 +96,7 @@ class IotClient(AbstractClient):
 
 
     def AddRule(self, request):
-        """新增规则
+        r"""新增规则
 
         :param request: Request instance for AddRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.AddRuleRequest`
@@ -119,7 +119,7 @@ class IotClient(AbstractClient):
 
 
     def AddTopic(self, request):
-        """新增Topic，用于设备或应用发布消息至该Topic或订阅该Topic的消息。
+        r"""新增Topic，用于设备或应用发布消息至该Topic或订阅该Topic的消息。
 
         :param request: Request instance for AddTopic.
         :type request: :class:`tencentcloud.iot.v20180123.models.AddTopicRequest`
@@ -142,7 +142,7 @@ class IotClient(AbstractClient):
 
 
     def AppAddUser(self, request):
-        """为APP提供用户注册功能
+        r"""为APP提供用户注册功能
 
         :param request: Request instance for AppAddUser.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppAddUserRequest`
@@ -165,7 +165,7 @@ class IotClient(AbstractClient):
 
 
     def AppDeleteDevice(self, request):
-        """用户解除与设备的关联关系，解除后APP用户无法控制设备，获取设备数据
+        r"""用户解除与设备的关联关系，解除后APP用户无法控制设备，获取设备数据
 
         :param request: Request instance for AppDeleteDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppDeleteDeviceRequest`
@@ -188,7 +188,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetDevice(self, request):
-        """获取绑定设备的基本信息与数据模板定义
+        r"""获取绑定设备的基本信息与数据模板定义
 
         :param request: Request instance for AppGetDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceRequest`
@@ -211,7 +211,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetDeviceData(self, request):
-        """获取绑定设备数据，用于实时展示设备的最新数据
+        r"""获取绑定设备数据，用于实时展示设备的最新数据
 
         :param request: Request instance for AppGetDeviceData.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceDataRequest`
@@ -234,7 +234,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetDeviceStatuses(self, request):
-        """获取绑定设备的上下线状态
+        r"""获取绑定设备的上下线状态
 
         :param request: Request instance for AppGetDeviceStatuses.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceStatusesRequest`
@@ -257,7 +257,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetDevices(self, request):
-        """获取用户的绑定设备列表
+        r"""获取用户的绑定设备列表
 
         :param request: Request instance for AppGetDevices.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDevicesRequest`
@@ -280,7 +280,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetToken(self, request):
-        """获取用户token
+        r"""获取用户token
 
         :param request: Request instance for AppGetToken.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetTokenRequest`
@@ -303,7 +303,7 @@ class IotClient(AbstractClient):
 
 
     def AppGetUser(self, request):
-        """获取用户信息
+        r"""获取用户信息
 
         :param request: Request instance for AppGetUser.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppGetUserRequest`
@@ -326,7 +326,7 @@ class IotClient(AbstractClient):
 
 
     def AppIssueDeviceControl(self, request):
-        """用户通过APP控制设备
+        r"""用户通过APP控制设备
 
         :param request: Request instance for AppIssueDeviceControl.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppIssueDeviceControlRequest`
@@ -349,7 +349,7 @@ class IotClient(AbstractClient):
 
 
     def AppResetPassword(self, request):
-        """重置APP用户密码
+        r"""重置APP用户密码
 
         :param request: Request instance for AppResetPassword.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppResetPasswordRequest`
@@ -372,7 +372,7 @@ class IotClient(AbstractClient):
 
 
     def AppSecureAddDevice(self, request):
-        """用户绑定设备，绑定后可以在APP端进行控制。绑定设备前需调用“获取设备绑定签名”接口
+        r"""用户绑定设备，绑定后可以在APP端进行控制。绑定设备前需调用“获取设备绑定签名”接口
 
         :param request: Request instance for AppSecureAddDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppSecureAddDeviceRequest`
@@ -395,7 +395,7 @@ class IotClient(AbstractClient):
 
 
     def AppUpdateDevice(self, request):
-        """修改设备别名，便于用户个性化定义设备的名称
+        r"""修改设备别名，便于用户个性化定义设备的名称
 
         :param request: Request instance for AppUpdateDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppUpdateDeviceRequest`
@@ -418,7 +418,7 @@ class IotClient(AbstractClient):
 
 
     def AppUpdateUser(self, request):
-        """修改用户信息
+        r"""修改用户信息
 
         :param request: Request instance for AppUpdateUser.
         :type request: :class:`tencentcloud.iot.v20180123.models.AppUpdateUserRequest`
@@ -441,7 +441,7 @@ class IotClient(AbstractClient):
 
 
     def AssociateSubDeviceToGatewayProduct(self, request):
-        """关联子设备产品和网关产品
+        r"""关联子设备产品和网关产品
 
         :param request: Request instance for AssociateSubDeviceToGatewayProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.AssociateSubDeviceToGatewayProductRequest`
@@ -464,7 +464,7 @@ class IotClient(AbstractClient):
 
 
     def DeactivateRule(self, request):
-        """禁用规则
+        r"""禁用规则
 
         :param request: Request instance for DeactivateRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.DeactivateRuleRequest`
@@ -487,7 +487,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """提供在指定的产品Id下删除一个设备的能力。
+        r"""提供在指定的产品Id下删除一个设备的能力。
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteDeviceRequest`
@@ -510,7 +510,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """删除用户指定的产品Id对应的信息。
+        r"""删除用户指定的产品Id对应的信息。
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteProductRequest`
@@ -533,7 +533,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """删除规则
+        r"""删除规则
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteRuleRequest`
@@ -556,7 +556,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """删除Topic
+        r"""删除Topic
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteTopicRequest`
@@ -579,7 +579,7 @@ class IotClient(AbstractClient):
 
 
     def GetDataHistory(self, request):
-        """批量获取设备某一段时间范围的设备上报数据。该接口适用于使用高级版类型的产品
+        r"""批量获取设备某一段时间范围的设备上报数据。该接口适用于使用高级版类型的产品
 
         :param request: Request instance for GetDataHistory.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDataHistoryRequest`
@@ -602,7 +602,7 @@ class IotClient(AbstractClient):
 
 
     def GetDebugLog(self, request):
-        """获取设备的调试日志，用于定位问题
+        r"""获取设备的调试日志，用于定位问题
 
         :param request: Request instance for GetDebugLog.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDebugLogRequest`
@@ -625,7 +625,7 @@ class IotClient(AbstractClient):
 
 
     def GetDevice(self, request):
-        """提供查询某个设备详细信息的能力。
+        r"""提供查询某个设备详细信息的能力。
 
         :param request: Request instance for GetDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceRequest`
@@ -648,7 +648,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceData(self, request):
-        """获取某个设备当前上报到云端的数据，该接口适用于使用数据模板协议的产品。
+        r"""获取某个设备当前上报到云端的数据，该接口适用于使用数据模板协议的产品。
 
         :param request: Request instance for GetDeviceData.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceDataRequest`
@@ -671,7 +671,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceLog(self, request):
-        """批量获取设备与云端的详细通信日志，该接口适用于使用高级版类型的产品。
+        r"""批量获取设备与云端的详细通信日志，该接口适用于使用高级版类型的产品。
 
         :param request: Request instance for GetDeviceLog.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceLogRequest`
@@ -694,7 +694,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceSignatures(self, request):
-        """获取设备绑定签名，用于用户绑定某个设备的应用场景
+        r"""获取设备绑定签名，用于用户绑定某个设备的应用场景
 
         :param request: Request instance for GetDeviceSignatures.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceSignaturesRequest`
@@ -717,7 +717,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceStatistics(self, request):
-        """查询某段时间范围内产品的在线、激活设备数
+        r"""查询某段时间范围内产品的在线、激活设备数
 
         :param request: Request instance for GetDeviceStatistics.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceStatisticsRequest`
@@ -740,7 +740,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceStatuses(self, request):
-        """批量获取设备的当前状态，状态包括在线、离线或未激活状态。
+        r"""批量获取设备的当前状态，状态包括在线、离线或未激活状态。
 
         :param request: Request instance for GetDeviceStatuses.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceStatusesRequest`
@@ -763,7 +763,7 @@ class IotClient(AbstractClient):
 
 
     def GetDevices(self, request):
-        """提供分页查询某个产品Id下设备信息的能力。
+        r"""提供分页查询某个产品Id下设备信息的能力。
 
         :param request: Request instance for GetDevices.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDevicesRequest`
@@ -786,7 +786,7 @@ class IotClient(AbstractClient):
 
 
     def GetProduct(self, request):
-        """获取产品定义的详细信息，包括产品名称、产品描述，鉴权模式等信息。
+        r"""获取产品定义的详细信息，包括产品名称、产品描述，鉴权模式等信息。
 
         :param request: Request instance for GetProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetProductRequest`
@@ -809,7 +809,7 @@ class IotClient(AbstractClient):
 
 
     def GetProducts(self, request):
-        """获取用户在物联网套件所创建的所有产品信息。
+        r"""获取用户在物联网套件所创建的所有产品信息。
 
         :param request: Request instance for GetProducts.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetProductsRequest`
@@ -832,7 +832,7 @@ class IotClient(AbstractClient):
 
 
     def GetRule(self, request):
-        """获取转发规则信息
+        r"""获取转发规则信息
 
         :param request: Request instance for GetRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetRuleRequest`
@@ -855,7 +855,7 @@ class IotClient(AbstractClient):
 
 
     def GetRules(self, request):
-        """获取转发规则列表
+        r"""获取转发规则列表
 
         :param request: Request instance for GetRules.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetRulesRequest`
@@ -878,7 +878,7 @@ class IotClient(AbstractClient):
 
 
     def GetTopic(self, request):
-        """获取Topic信息
+        r"""获取Topic信息
 
         :param request: Request instance for GetTopic.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetTopicRequest`
@@ -901,7 +901,7 @@ class IotClient(AbstractClient):
 
 
     def GetTopics(self, request):
-        """获取Topic列表
+        r"""获取Topic列表
 
         :param request: Request instance for GetTopics.
         :type request: :class:`tencentcloud.iot.v20180123.models.GetTopicsRequest`
@@ -924,7 +924,7 @@ class IotClient(AbstractClient):
 
 
     def IssueDeviceControl(self, request):
-        """提供下发控制指令到指定设备的能力，该接口适用于使用高级版类型的产品。
+        r"""提供下发控制指令到指定设备的能力，该接口适用于使用高级版类型的产品。
 
         :param request: Request instance for IssueDeviceControl.
         :type request: :class:`tencentcloud.iot.v20180123.models.IssueDeviceControlRequest`
@@ -947,7 +947,7 @@ class IotClient(AbstractClient):
 
 
     def PublishMsg(self, request):
-        """提供向指定的Topic发布消息的能力，常用于向设备下发控制指令。该接口只适用于产品版本为“基础版”类型的产品，使用高级版的产品需使用“下发设备控制指令”接口
+        r"""提供向指定的Topic发布消息的能力，常用于向设备下发控制指令。该接口只适用于产品版本为“基础版”类型的产品，使用高级版的产品需使用“下发设备控制指令”接口
 
         :param request: Request instance for PublishMsg.
         :type request: :class:`tencentcloud.iot.v20180123.models.PublishMsgRequest`
@@ -970,7 +970,7 @@ class IotClient(AbstractClient):
 
 
     def ResetDevice(self, request):
-        """重置设备操作，将会为设备生成新的证书及清空最新数据，需谨慎操作。
+        r"""重置设备操作，将会为设备生成新的证书及清空最新数据，需谨慎操作。
 
         :param request: Request instance for ResetDevice.
         :type request: :class:`tencentcloud.iot.v20180123.models.ResetDeviceRequest`
@@ -993,7 +993,7 @@ class IotClient(AbstractClient):
 
 
     def UnassociateSubDeviceFromGatewayProduct(self, request):
-        """业务无客户使用，下线接口。
+        r"""业务无客户使用，下线接口。
 
         取消子设备产品与网关设备产品的关联
 
@@ -1018,7 +1018,7 @@ class IotClient(AbstractClient):
 
 
     def UpdateProduct(self, request):
-        """提供修改产品信息及数据模板的能力。
+        r"""提供修改产品信息及数据模板的能力。
 
         :param request: Request instance for UpdateProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.UpdateProductRequest`
@@ -1041,7 +1041,7 @@ class IotClient(AbstractClient):
 
 
     def UpdateRule(self, request):
-        """更新规则
+        r"""更新规则
 
         :param request: Request instance for UpdateRule.
         :type request: :class:`tencentcloud.iot.v20180123.models.UpdateRuleRequest`

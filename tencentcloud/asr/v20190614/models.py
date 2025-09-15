@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AsyncRecognitionTaskInfo(AbstractModel):
-    """[音频流异步识别](https://cloud.tencent.com/document/api/1093/37824#AsyncRecognitionTasks)任务信息
+    r"""[音频流异步识别](https://cloud.tencent.com/document/api/1093/37824#AsyncRecognitionTasks)任务信息
 
     """
 
@@ -35,7 +35,7 @@ class AsyncRecognitionTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -46,7 +46,7 @@ class AsyncRecognitionTaskInfo(AbstractModel):
 
     @property
     def Url(self):
-        """音频流Url
+        r"""音频流Url
         :rtype: str
         """
         return self._Url
@@ -70,7 +70,7 @@ class AsyncRecognitionTaskInfo(AbstractModel):
 
 
 class AsyncRecognitionTasks(AbstractModel):
-    """[音频流异步识别任务列表](https://cloud.tencent.com/document/product/1093/52060#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[音频流异步识别任务列表](https://cloud.tencent.com/document/product/1093/52060#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -84,7 +84,7 @@ class AsyncRecognitionTasks(AbstractModel):
 
     @property
     def Tasks(self):
-        """任务列表
+        r"""任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AsyncRecognitionTaskInfo
         """
@@ -113,7 +113,7 @@ class AsyncRecognitionTasks(AbstractModel):
 
 
 class CloseAsyncRecognitionTaskRequest(AbstractModel):
-    """CloseAsyncRecognitionTask请求参数结构体
+    r"""CloseAsyncRecognitionTask请求参数结构体
 
     """
 
@@ -126,7 +126,7 @@ class CloseAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """语音流异步识别任务的唯一标识，在创建任务时会返回
+        r"""语音流异步识别任务的唯一标识，在创建任务时会返回
         :rtype: int
         """
         return self._TaskId
@@ -149,7 +149,7 @@ class CloseAsyncRecognitionTaskRequest(AbstractModel):
 
 
 class CloseAsyncRecognitionTaskResponse(AbstractModel):
-    """CloseAsyncRecognitionTask返回参数结构体
+    r"""CloseAsyncRecognitionTask返回参数结构体
 
     """
 
@@ -162,7 +162,7 @@ class CloseAsyncRecognitionTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -177,7 +177,7 @@ class CloseAsyncRecognitionTaskResponse(AbstractModel):
 
 
 class CreateAsrKeyWordLibRequest(AbstractModel):
-    """CreateAsrKeyWordLib请求参数结构体
+    r"""CreateAsrKeyWordLib请求参数结构体
 
     """
 
@@ -198,7 +198,7 @@ class CreateAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def Name(self):
-        """词表名称，长度在1-20之间
+        r"""词表名称，长度在1-20之间
 仅限中英文数字-_
         :rtype: str
         """
@@ -210,7 +210,7 @@ class CreateAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def KeyWordFile(self):
-        """词文件（纯文本文件）的二进制base64编码，以行分隔
+        r"""词文件（纯文本文件）的二进制base64编码，以行分隔
 格式要求：TXT
 每行只有一个词，不满足格式则报错无法上传
 每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
@@ -238,7 +238,7 @@ class CreateAsrKeyWordLibRequest(AbstractModel):
 
 
 class CreateAsrKeyWordLibResponse(AbstractModel):
-    """CreateAsrKeyWordLib返回参数结构体
+    r"""CreateAsrKeyWordLib返回参数结构体
 
     """
 
@@ -254,7 +254,7 @@ class CreateAsrKeyWordLibResponse(AbstractModel):
 
     @property
     def Data(self):
-        """词表ID数据
+        r"""词表ID数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.KeyWordLibIdData`
         """
         return self._Data
@@ -265,7 +265,7 @@ class CreateAsrKeyWordLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -283,7 +283,7 @@ class CreateAsrKeyWordLibResponse(AbstractModel):
 
 
 class CreateAsrVocabRequest(AbstractModel):
-    """CreateAsrVocab请求参数结构体
+    r"""CreateAsrVocab请求参数结构体
 
     """
 
@@ -309,7 +309,7 @@ class CreateAsrVocabRequest(AbstractModel):
 
     @property
     def Name(self):
-        """热词表名称，长度在1-255之间
+        r"""热词表名称，长度在1-255之间
         :rtype: str
         """
         return self._Name
@@ -320,7 +320,7 @@ class CreateAsrVocabRequest(AbstractModel):
 
     @property
     def Description(self):
-        """热词表描述，长度在0-1000之间
+        r"""热词表描述，长度在0-1000之间
         :rtype: str
         """
         return self._Description
@@ -331,7 +331,7 @@ class CreateAsrVocabRequest(AbstractModel):
 
     @property
     def WordWeights(self):
-        """词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000
+        r"""词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000
 注意: 
 - 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
 - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
@@ -345,7 +345,7 @@ class CreateAsrVocabRequest(AbstractModel):
 
     @property
     def WordWeightStr(self):
-        """词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+        r"""词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
         :rtype: str
         """
@@ -377,7 +377,7 @@ class CreateAsrVocabRequest(AbstractModel):
 
 
 class CreateAsrVocabResponse(AbstractModel):
-    """CreateAsrVocab返回参数结构体
+    r"""CreateAsrVocab返回参数结构体
 
     """
 
@@ -393,7 +393,7 @@ class CreateAsrVocabResponse(AbstractModel):
 
     @property
     def VocabId(self):
-        """词表ID，可用于获取词表信息
+        r"""词表ID，可用于获取词表信息
         :rtype: str
         """
         return self._VocabId
@@ -404,7 +404,7 @@ class CreateAsrVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -420,7 +420,7 @@ class CreateAsrVocabResponse(AbstractModel):
 
 
 class CreateAsyncRecognitionTaskRequest(AbstractModel):
-    """CreateAsyncRecognitionTask请求参数结构体
+    r"""CreateAsyncRecognitionTask请求参数结构体
 
     """
 
@@ -476,7 +476,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        """引擎模型类型。
+        r"""引擎模型类型。
 • 16k_zh：中文普通话通用；
 • 16k_en：英语；
 • 16k_yue：粤语；
@@ -500,7 +500,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def Url(self):
-        """语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
+        r"""语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
         :rtype: str
         """
         return self._Url
@@ -511,7 +511,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """支持HTTP和HTTPS协议，用于接收识别结果，您需要自行搭建公网可调用的服务。回调格式&内容详见：[语音流异步识别回调说明](https://cloud.tencent.com/document/product/1093/52633)
+        r"""支持HTTP和HTTPS协议，用于接收识别结果，您需要自行搭建公网可调用的服务。回调格式&内容详见：[语音流异步识别回调说明](https://cloud.tencent.com/document/product/1093/52633)
         :rtype: str
         """
         return self._CallbackUrl
@@ -522,7 +522,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def SignToken(self):
-        """用于生成回调通知中的签名
+        r"""用于生成回调通知中的签名
         :rtype: str
         """
         return self._SignToken
@@ -533,7 +533,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def FilterDirty(self):
-        """是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0
+        r"""是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0
         :rtype: int
         """
         return self._FilterDirty
@@ -544,7 +544,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def FilterModal(self):
-        """是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0
+        r"""是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0
         :rtype: int
         """
         return self._FilterModal
@@ -555,7 +555,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def FilterPunc(self):
-        """是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0
+        r"""是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0
         :rtype: int
         """
         return self._FilterPunc
@@ -566,7 +566,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def ConvertNumMode(self):
-        """是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
+        r"""是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
         :rtype: int
         """
         return self._ConvertNumMode
@@ -577,7 +577,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def WordInfo(self):
-        """是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认为0
+        r"""是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认为0
         :rtype: int
         """
         return self._WordInfo
@@ -588,7 +588,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def HotwordId(self):
-        """热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+        r"""热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :rtype: str
         """
         return self._HotwordId
@@ -599,7 +599,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
     @property
     def AudioData(self):
-        """回调数据中，是否需要对应音频数据。
+        r"""回调数据中，是否需要对应音频数据。
         :rtype: bool
         """
         return self._AudioData
@@ -632,7 +632,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 
 
 class CreateAsyncRecognitionTaskResponse(AbstractModel):
-    """CreateAsyncRecognitionTask返回参数结构体
+    r"""CreateAsyncRecognitionTask返回参数结构体
 
     """
 
@@ -648,7 +648,7 @@ class CreateAsyncRecognitionTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """请求返回结果，包含本次的任务ID(TaskId)
+        r"""请求返回结果，包含本次的任务ID(TaskId)
         :rtype: :class:`tencentcloud.asr.v20190614.models.Task`
         """
         return self._Data
@@ -659,7 +659,7 @@ class CreateAsyncRecognitionTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -677,7 +677,7 @@ class CreateAsyncRecognitionTaskResponse(AbstractModel):
 
 
 class CreateCustomizationRequest(AbstractModel):
-    """CreateCustomization请求参数结构体
+    r"""CreateCustomization请求参数结构体
 
     """
 
@@ -699,7 +699,7 @@ class CreateCustomizationRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """自学习模型名称，需在1-20字符之间
+        r"""自学习模型名称，需在1-20字符之间
         :rtype: str
         """
         return self._ModelName
@@ -710,7 +710,7 @@ class CreateCustomizationRequest(AbstractModel):
 
     @property
     def TextUrl(self):
-        """文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        r"""文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :rtype: str
         """
         return self._TextUrl
@@ -721,7 +721,7 @@ class CreateCustomizationRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        """自学习模型类型，填写8k或者16k
+        r"""自学习模型类型，填写8k或者16k
         :rtype: str
         """
         return self._ModelType
@@ -734,7 +734,7 @@ class CreateCustomizationRequest(AbstractModel):
     def TagInfos(self):
         warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
 
-        """标签信息
+        r"""标签信息
         :rtype: list of str
         """
         return self._TagInfos
@@ -762,7 +762,7 @@ class CreateCustomizationRequest(AbstractModel):
 
 
 class CreateCustomizationResponse(AbstractModel):
-    """CreateCustomization返回参数结构体
+    r"""CreateCustomization返回参数结构体
 
     """
 
@@ -778,7 +778,7 @@ class CreateCustomizationResponse(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型ID
+        r"""模型ID
         :rtype: str
         """
         return self._ModelId
@@ -789,7 +789,7 @@ class CreateCustomizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -805,7 +805,7 @@ class CreateCustomizationResponse(AbstractModel):
 
 
 class CreateRecTaskRequest(AbstractModel):
-    """CreateRecTask请求参数结构体
+    r"""CreateRecTask请求参数结构体
 
     """
 
@@ -1033,7 +1033,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def EngineModelType(self):
-        """引擎模型类型
+        r"""引擎模型类型
 识别引擎采用分级计费方案，标记为“大模型版”的引擎适用大模型计费方案，[点击这里](https://cloud.tencent.com/document/product/1093/35686) 查看产品计费说明
 
 电话通讯场景引擎：
@@ -1080,7 +1080,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def ChannelNum(self):
-        """识别声道数
+        r"""识别声道数
 1：单声道（16k音频仅支持单声道，**请勿**设置为双声道）；
 2：双声道（仅支持8k电话音频，且双声道应分别为通话双方）
 
@@ -1097,7 +1097,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def ResTextFormat(self):
-        """识别结果返回样式
+        r"""识别结果返回样式
 0：基础识别结果（仅包含有效人声时间戳，无词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)）；
 1：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值，**不含标点**）；
 2：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点）；
@@ -1118,7 +1118,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        """音频数据来源
+        r"""音频数据来源
 0：音频URL；
 1：音频数据（post body）
         :rtype: int
@@ -1131,7 +1131,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def Data(self):
-        """音频数据base64编码
+        r"""音频数据base64编码
 **当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
 
 注意：音频数据要小于5MB（含）
@@ -1145,7 +1145,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def DataLen(self):
-        """数据长度（此数据长度为数据未进行base64编码时的长度）
+        r"""数据长度（此数据长度为数据未进行base64编码时的长度）
         :rtype: int
         """
         return self._DataLen
@@ -1156,7 +1156,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def Url(self):
-        """音频URL的地址（需要公网环境浏览器可下载）
+        r"""音频URL的地址（需要公网环境浏览器可下载）
 **当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
 
 注意：
@@ -1172,7 +1172,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """回调 URL
+        r"""回调 URL
 用户自行搭建的用于接收识别结果的服务URL
 回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
 
@@ -1190,7 +1190,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SpeakerDiarization(self):
-        """是否开启说话人分离
+        r"""是否开启说话人分离
 0：不开启；
 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect，且ChannelNum=1时可用）；
 默认值为 0
@@ -1207,7 +1207,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SpeakerNumber(self):
-        """说话人分离人数
+        r"""说话人分离人数
 **需配合开启说话人分离使用，不开启无效**，取值范围：0-10
 0：自动分离（最多分离出20个人）；
 1-10：指定人数分离；
@@ -1223,7 +1223,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def HotwordId(self):
-        """热词表id
+        r"""热词表id
 如不设置该参数，将自动生效默认热词表；
 如设置该参数，将生效对应id的热词表；
 点击这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)
@@ -1239,7 +1239,7 @@ class CreateRecTaskRequest(AbstractModel):
     def ReinforceHotword(self):
         warnings.warn("parameter `ReinforceHotword` is deprecated", DeprecationWarning) 
 
-        """热词增强功能（目前仅支持8k_zh/16k_zh引擎）
+        r"""热词增强功能（目前仅支持8k_zh/16k_zh引擎）
 1：开启热词增强功能
 
 注意：热词增强功能开启后，将对传入的热词表id开启同音替换功能，可以在这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)。效果举例：在热词表中配置“蜜制”一词，并开启增强功能，与“蜜制”（mìzhì）同音同调的“秘制”（mìzhì）的识别结果会被强制替换成“蜜制”。**建议客户根据实际的业务需求开启该功能**
@@ -1255,7 +1255,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def CustomizationId(self):
-        """自学习定制模型 id
+        r"""自学习定制模型 id
 如设置了该参数，将生效对应id的自学习定制模型；
 点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
         :rtype: str
@@ -1268,7 +1268,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def EmotionRecognition(self):
-        """**【增值付费功能】**情绪识别能力（目前仅支持16k_zh,8k_zh）
+        r"""**【增值付费功能】**情绪识别能力（目前仅支持16k_zh,8k_zh）
 0：不开启；
 1：开启情绪识别，但不在文本展示情绪标签；
 2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
@@ -1289,7 +1289,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def EmotionalEnergy(self):
-        """情绪能量值
+        r"""情绪能量值
 取值为音量分贝值/10，取值范围：[1,10]，值越高情绪越强烈
 0：不开启；
 1：开启；
@@ -1304,7 +1304,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def ConvertNumMode(self):
-        """阿拉伯数字智能转换（目前支持中文普通话引擎）
+        r"""阿拉伯数字智能转换（目前支持中文普通话引擎）
 0：不转换，直接输出中文数字；
 1：根据场景智能转换为阿拉伯数字；
 3：打开数学相关数字转换（如：阿尔法转写为α）；
@@ -1319,7 +1319,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def FilterDirty(self):
-        """脏词过滤（目前支持中文普通话引擎）
+        r"""脏词过滤（目前支持中文普通话引擎）
 0：不过滤脏词；
 1：过滤脏词；
 2：将脏词替换为 * ；
@@ -1334,7 +1334,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def FilterPunc(self):
-        """标点符号过滤（目前支持中文普通话引擎）
+        r"""标点符号过滤（目前支持中文普通话引擎）
 0：不过滤标点；
 1：过滤句末标点；
 2：过滤所有标点；
@@ -1349,7 +1349,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def FilterModal(self):
-        """语气词过滤（目前支持中文普通话引擎）
+        r"""语气词过滤（目前支持中文普通话引擎）
 0：不过滤语气词；
 1：过滤部分语气词；
 2：严格过滤语气词；
@@ -1364,7 +1364,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def SentenceMaxLength(self):
-        """单标点最多字数（目前支持中文普通话引擎）
+        r"""单标点最多字数（目前支持中文普通话引擎）
 **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
 0：不开启该功能；
 默认值为0
@@ -1380,7 +1380,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def Extra(self):
-        """附加参数**（该参数无意义，忽略即可）**
+        r"""附加参数**（该参数无意义，忽略即可）**
         :rtype: str
         """
         return self._Extra
@@ -1391,7 +1391,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def HotwordList(self):
-        """临时热词表：该参数用于提升识别准确率。
+        r"""临时热词表：该参数用于提升识别准确率。
 
 - 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如：“腾讯云|5” 或“ASR|11”；
 
@@ -1420,7 +1420,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def KeyWordLibIdList(self):
-        """关键词识别ID列表，默认空为不进行识别，最多10个
+        r"""关键词识别ID列表，默认空为不进行识别，最多10个
 
         :rtype: list of str
         """
@@ -1432,7 +1432,7 @@ class CreateRecTaskRequest(AbstractModel):
 
     @property
     def ReplaceTextId(self):
-        """替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+        r"""替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
 
 注意：
 1. 本功能配置完成后，预计在10分钟后生效
@@ -1482,7 +1482,7 @@ class CreateRecTaskRequest(AbstractModel):
 
 
 class CreateRecTaskResponse(AbstractModel):
-    """CreateRecTask返回参数结构体
+    r"""CreateRecTask返回参数结构体
 
     """
 
@@ -1500,7 +1500,7 @@ class CreateRecTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """录音文件识别的请求返回结果，包含结果查询需要的TaskId。
+        r"""录音文件识别的请求返回结果，包含结果查询需要的TaskId。
 **注意：TaskId有效期为24小时，不同日期可能出现重复TaskId，请不要依赖TaskId作为您业务系统里的唯一ID。**
 
         :rtype: :class:`tencentcloud.asr.v20190614.models.Task`
@@ -1513,7 +1513,7 @@ class CreateRecTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1531,7 +1531,7 @@ class CreateRecTaskResponse(AbstractModel):
 
 
 class DeleteAsrKeyWordLibRequest(AbstractModel):
-    """DeleteAsrKeyWordLib请求参数结构体
+    r"""DeleteAsrKeyWordLib请求参数结构体
 
     """
 
@@ -1544,7 +1544,7 @@ class DeleteAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def KeyWordLibId(self):
-        """关键词表ID
+        r"""关键词表ID
         :rtype: str
         """
         return self._KeyWordLibId
@@ -1567,7 +1567,7 @@ class DeleteAsrKeyWordLibRequest(AbstractModel):
 
 
 class DeleteAsrKeyWordLibResponse(AbstractModel):
-    """DeleteAsrKeyWordLib返回参数结构体
+    r"""DeleteAsrKeyWordLib返回参数结构体
 
     """
 
@@ -1580,7 +1580,7 @@ class DeleteAsrKeyWordLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1595,7 +1595,7 @@ class DeleteAsrKeyWordLibResponse(AbstractModel):
 
 
 class DeleteAsrVocabRequest(AbstractModel):
-    """DeleteAsrVocab请求参数结构体
+    r"""DeleteAsrVocab请求参数结构体
 
     """
 
@@ -1608,7 +1608,7 @@ class DeleteAsrVocabRequest(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表Id
+        r"""热词表Id
         :rtype: str
         """
         return self._VocabId
@@ -1631,7 +1631,7 @@ class DeleteAsrVocabRequest(AbstractModel):
 
 
 class DeleteAsrVocabResponse(AbstractModel):
-    """DeleteAsrVocab返回参数结构体
+    r"""DeleteAsrVocab返回参数结构体
 
     """
 
@@ -1644,7 +1644,7 @@ class DeleteAsrVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1659,7 +1659,7 @@ class DeleteAsrVocabResponse(AbstractModel):
 
 
 class DeleteCustomizationRequest(AbstractModel):
-    """DeleteCustomization请求参数结构体
+    r"""DeleteCustomization请求参数结构体
 
     """
 
@@ -1672,7 +1672,7 @@ class DeleteCustomizationRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """要删除的模型ID
+        r"""要删除的模型ID
         :rtype: str
         """
         return self._ModelId
@@ -1695,7 +1695,7 @@ class DeleteCustomizationRequest(AbstractModel):
 
 
 class DeleteCustomizationResponse(AbstractModel):
-    """DeleteCustomization返回参数结构体
+    r"""DeleteCustomization返回参数结构体
 
     """
 
@@ -1708,7 +1708,7 @@ class DeleteCustomizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1723,13 +1723,13 @@ class DeleteCustomizationResponse(AbstractModel):
 
 
 class DescribeAsyncRecognitionTasksRequest(AbstractModel):
-    """DescribeAsyncRecognitionTasks请求参数结构体
+    r"""DescribeAsyncRecognitionTasks请求参数结构体
 
     """
 
 
 class DescribeAsyncRecognitionTasksResponse(AbstractModel):
-    """DescribeAsyncRecognitionTasks返回参数结构体
+    r"""DescribeAsyncRecognitionTasks返回参数结构体
 
     """
 
@@ -1746,7 +1746,7 @@ class DescribeAsyncRecognitionTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务列表
+        r"""任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.asr.v20190614.models.AsyncRecognitionTasks`
         """
@@ -1758,7 +1758,7 @@ class DescribeAsyncRecognitionTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1776,7 +1776,7 @@ class DescribeAsyncRecognitionTasksResponse(AbstractModel):
 
 
 class DescribeTaskStatusRequest(AbstractModel):
-    """DescribeTaskStatus请求参数结构体
+    r"""DescribeTaskStatus请求参数结构体
 
     """
 
@@ -1790,7 +1790,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """从CreateRecTask接口获取的TaskId，用于获取任务状态与结果。
+        r"""从CreateRecTask接口获取的TaskId，用于获取任务状态与结果。
 **注意：TaskId有效期为24小时，超过24小时的TaskId请不要再查询。**
         :rtype: int
         """
@@ -1814,7 +1814,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
 
 class DescribeTaskStatusResponse(AbstractModel):
-    """DescribeTaskStatus返回参数结构体
+    r"""DescribeTaskStatus返回参数结构体
 
     """
 
@@ -1830,7 +1830,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """录音文件识别的请求返回结果。
+        r"""录音文件识别的请求返回结果。
         :rtype: :class:`tencentcloud.asr.v20190614.models.TaskStatus`
         """
         return self._Data
@@ -1841,7 +1841,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1859,7 +1859,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
 
 class DownloadAsrVocabRequest(AbstractModel):
-    """DownloadAsrVocab请求参数结构体
+    r"""DownloadAsrVocab请求参数结构体
 
     """
 
@@ -1872,7 +1872,7 @@ class DownloadAsrVocabRequest(AbstractModel):
 
     @property
     def VocabId(self):
-        """词表ID。
+        r"""词表ID。
         :rtype: str
         """
         return self._VocabId
@@ -1895,7 +1895,7 @@ class DownloadAsrVocabRequest(AbstractModel):
 
 
 class DownloadAsrVocabResponse(AbstractModel):
-    """DownloadAsrVocab返回参数结构体
+    r"""DownloadAsrVocab返回参数结构体
 
     """
 
@@ -1914,7 +1914,7 @@ class DownloadAsrVocabResponse(AbstractModel):
 
     @property
     def VocabId(self):
-        """词表ID。
+        r"""词表ID。
         :rtype: str
         """
         return self._VocabId
@@ -1925,7 +1925,7 @@ class DownloadAsrVocabResponse(AbstractModel):
 
     @property
     def WordWeightStr(self):
-        """词表权重文件形式的base64值。
+        r"""词表权重文件形式的base64值。
         :rtype: str
         """
         return self._WordWeightStr
@@ -1936,7 +1936,7 @@ class DownloadAsrVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1953,7 +1953,7 @@ class DownloadAsrVocabResponse(AbstractModel):
 
 
 class DownloadCustomizationRequest(AbstractModel):
-    """DownloadCustomization请求参数结构体
+    r"""DownloadCustomization请求参数结构体
 
     """
 
@@ -1966,7 +1966,7 @@ class DownloadCustomizationRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """自学习模型ID
+        r"""自学习模型ID
         :rtype: str
         """
         return self._ModelId
@@ -1989,7 +1989,7 @@ class DownloadCustomizationRequest(AbstractModel):
 
 
 class DownloadCustomizationResponse(AbstractModel):
-    """DownloadCustomization返回参数结构体
+    r"""DownloadCustomization返回参数结构体
 
     """
 
@@ -2005,7 +2005,7 @@ class DownloadCustomizationResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """下载地址
+        r"""下载地址
         :rtype: str
         """
         return self._DownloadUrl
@@ -2016,7 +2016,7 @@ class DownloadCustomizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2032,7 +2032,7 @@ class DownloadCustomizationResponse(AbstractModel):
 
 
 class GetAsrKeyWordLibListRequest(AbstractModel):
-    """GetAsrKeyWordLibList请求参数结构体
+    r"""GetAsrKeyWordLibList请求参数结构体
 
     """
 
@@ -2054,7 +2054,7 @@ class GetAsrKeyWordLibListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -2065,7 +2065,7 @@ class GetAsrKeyWordLibListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -2076,7 +2076,7 @@ class GetAsrKeyWordLibListRequest(AbstractModel):
 
     @property
     def SpecifyNames(self):
-        """词库名称或者UIN检索
+        r"""词库名称或者UIN检索
         :rtype: list of str
         """
         return self._SpecifyNames
@@ -2087,7 +2087,7 @@ class GetAsrKeyWordLibListRequest(AbstractModel):
 
     @property
     def OnlySelf(self):
-        """只看用户自己创建的
+        r"""只看用户自己创建的
         :rtype: bool
         """
         return self._OnlySelf
@@ -2113,7 +2113,7 @@ class GetAsrKeyWordLibListRequest(AbstractModel):
 
 
 class GetAsrKeyWordLibListResponse(AbstractModel):
-    """GetAsrKeyWordLibList返回参数结构体
+    r"""GetAsrKeyWordLibList返回参数结构体
 
     """
 
@@ -2129,7 +2129,7 @@ class GetAsrKeyWordLibListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """关键词列表返回数据
+        r"""关键词列表返回数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.KeyWordLibListData`
         """
         return self._Data
@@ -2140,7 +2140,7 @@ class GetAsrKeyWordLibListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2158,7 +2158,7 @@ class GetAsrKeyWordLibListResponse(AbstractModel):
 
 
 class GetAsrVocabListRequest(AbstractModel):
-    """GetAsrVocabList请求参数结构体
+    r"""GetAsrVocabList请求参数结构体
 
     """
 
@@ -2179,7 +2179,7 @@ class GetAsrVocabListRequest(AbstractModel):
     def TagInfos(self):
         warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
 
-        """标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+        r"""标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :rtype: list of str
         """
         return self._TagInfos
@@ -2192,7 +2192,7 @@ class GetAsrVocabListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -2203,7 +2203,7 @@ class GetAsrVocabListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -2228,7 +2228,7 @@ class GetAsrVocabListRequest(AbstractModel):
 
 
 class GetAsrVocabListResponse(AbstractModel):
-    """GetAsrVocabList返回参数结构体
+    r"""GetAsrVocabList返回参数结构体
 
     """
 
@@ -2247,7 +2247,7 @@ class GetAsrVocabListResponse(AbstractModel):
 
     @property
     def VocabList(self):
-        """热词表列表
+        r"""热词表列表
         :rtype: list of Vocab
         """
         return self._VocabList
@@ -2258,7 +2258,7 @@ class GetAsrVocabListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """热词列表总数
+        r"""热词列表总数
         :rtype: int
         """
         return self._TotalCount
@@ -2269,7 +2269,7 @@ class GetAsrVocabListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2291,7 +2291,7 @@ class GetAsrVocabListResponse(AbstractModel):
 
 
 class GetAsrVocabRequest(AbstractModel):
-    """GetAsrVocab请求参数结构体
+    r"""GetAsrVocab请求参数结构体
 
     """
 
@@ -2304,7 +2304,7 @@ class GetAsrVocabRequest(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -2327,7 +2327,7 @@ class GetAsrVocabRequest(AbstractModel):
 
 
 class GetAsrVocabResponse(AbstractModel):
-    """GetAsrVocab返回参数结构体
+    r"""GetAsrVocab返回参数结构体
 
     """
 
@@ -2361,7 +2361,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def Name(self):
-        """热词表名称
+        r"""热词表名称
         :rtype: str
         """
         return self._Name
@@ -2372,7 +2372,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def Description(self):
-        """热词表描述
+        r"""热词表描述
         :rtype: str
         """
         return self._Description
@@ -2383,7 +2383,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -2394,7 +2394,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def WordWeights(self):
-        """词权重列表
+        r"""词权重列表
         :rtype: list of HotWord
         """
         return self._WordWeights
@@ -2405,7 +2405,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """词表创建时间
+        r"""词表创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2416,7 +2416,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """词表更新时间
+        r"""词表更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -2427,7 +2427,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def State(self):
-        """热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+        r"""热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
         :rtype: int
         """
         return self._State
@@ -2438,7 +2438,7 @@ class GetAsrVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2465,7 +2465,7 @@ class GetAsrVocabResponse(AbstractModel):
 
 
 class GetCustomizationListRequest(AbstractModel):
-    """GetCustomizationList请求参数结构体
+    r"""GetCustomizationList请求参数结构体
 
     """
 
@@ -2486,7 +2486,7 @@ class GetCustomizationListRequest(AbstractModel):
     def TagInfos(self):
         warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
 
-        """标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+        r"""标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :rtype: list of str
         """
         return self._TagInfos
@@ -2499,7 +2499,7 @@ class GetCustomizationListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认1000
+        r"""分页大小，默认1000
         :rtype: int
         """
         return self._Limit
@@ -2510,7 +2510,7 @@ class GetCustomizationListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页offset，默认0
+        r"""分页offset，默认0
         :rtype: int
         """
         return self._Offset
@@ -2535,7 +2535,7 @@ class GetCustomizationListRequest(AbstractModel):
 
 
 class GetCustomizationListResponse(AbstractModel):
-    """GetCustomizationList返回参数结构体
+    r"""GetCustomizationList返回参数结构体
 
     """
 
@@ -2556,7 +2556,7 @@ class GetCustomizationListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """自学习模型数组
+        r"""自学习模型数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Model
         """
@@ -2568,7 +2568,7 @@ class GetCustomizationListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """自学习模型总量
+        r"""自学习模型总量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2580,7 +2580,7 @@ class GetCustomizationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2602,7 +2602,7 @@ class GetCustomizationListResponse(AbstractModel):
 
 
 class GetModelInfoRequest(AbstractModel):
-    """GetModelInfo请求参数结构体
+    r"""GetModelInfo请求参数结构体
 
     """
 
@@ -2615,7 +2615,7 @@ class GetModelInfoRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型id
+        r"""模型id
         :rtype: str
         """
         return self._ModelId
@@ -2638,7 +2638,7 @@ class GetModelInfoRequest(AbstractModel):
 
 
 class GetModelInfoResponse(AbstractModel):
-    """GetModelInfo返回参数结构体
+    r"""GetModelInfo返回参数结构体
 
     """
 
@@ -2654,7 +2654,7 @@ class GetModelInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """模型信息
+        r"""模型信息
         :rtype: :class:`tencentcloud.asr.v20190614.models.Model`
         """
         return self._Data
@@ -2665,7 +2665,7 @@ class GetModelInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2683,7 +2683,7 @@ class GetModelInfoResponse(AbstractModel):
 
 
 class GetUsageByDateRequest(AbstractModel):
-    """GetUsageByDate请求参数结构体
+    r"""GetUsageByDate请求参数结构体
 
     """
 
@@ -2708,7 +2708,7 @@ class GetUsageByDateRequest(AbstractModel):
 
     @property
     def BizNameList(self):
-        """需要查询的业务类型名字列表
+        r"""需要查询的业务类型名字列表
 - asr_rt 实时识别
 - asr_rec 录音文件识别
         :rtype: list of str
@@ -2721,7 +2721,7 @@ class GetUsageByDateRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """查询开始时间
+        r"""查询开始时间
 开始时间包含当天，支持 YYYY-MM-DD 日期以国内时区为准
 开始时间到结束时间需要在3个月以内
         :rtype: str
@@ -2734,7 +2734,7 @@ class GetUsageByDateRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """查询结束时间
+        r"""查询结束时间
 结束时间包含当天，，支持 YYYY-MM-DD 日期以国内时区为准
 开始时间到结束时间需要在3个月以内
         :rtype: str
@@ -2761,7 +2761,7 @@ class GetUsageByDateRequest(AbstractModel):
 
 
 class GetUsageByDateResponse(AbstractModel):
-    """GetUsageByDate返回参数结构体
+    r"""GetUsageByDate返回参数结构体
 
     """
 
@@ -2777,7 +2777,7 @@ class GetUsageByDateResponse(AbstractModel):
 
     @property
     def Data(self):
-        """用量次数
+        r"""用量次数
         :rtype: :class:`tencentcloud.asr.v20190614.models.UsageByDateInfoData`
         """
         return self._Data
@@ -2788,7 +2788,7 @@ class GetUsageByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2806,7 +2806,7 @@ class GetUsageByDateResponse(AbstractModel):
 
 
 class HotWord(AbstractModel):
-    """[热词的词和权重](https://cloud.tencent.com/document/product/1093/41111#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0)
+    r"""[热词的词和权重](https://cloud.tencent.com/document/product/1093/41111#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0)
 
     """
 
@@ -2824,7 +2824,7 @@ class HotWord(AbstractModel):
 
     @property
     def Word(self):
-        """热词
+        r"""热词
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2836,7 +2836,7 @@ class HotWord(AbstractModel):
 
     @property
     def Weight(self):
-        """权重
+        r"""权重
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2861,7 +2861,7 @@ class HotWord(AbstractModel):
 
 
 class KeyWordLib(AbstractModel):
-    """关键词表信息
+    r"""关键词表信息
 
     """
 
@@ -2891,7 +2891,7 @@ class KeyWordLib(AbstractModel):
 
     @property
     def KeyWordLibId(self):
-        """关键词表ID
+        r"""关键词表ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2903,7 +2903,7 @@ class KeyWordLib(AbstractModel):
 
     @property
     def Name(self):
-        """关键词表名称
+        r"""关键词表名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2915,7 +2915,7 @@ class KeyWordLib(AbstractModel):
 
     @property
     def KeyWordList(self):
-        """关键词列表
+        r"""关键词列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2927,7 +2927,7 @@ class KeyWordLib(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2939,7 +2939,7 @@ class KeyWordLib(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2967,7 +2967,7 @@ class KeyWordLib(AbstractModel):
 
 
 class KeyWordLibIdData(AbstractModel):
-    """关键词ID
+    r"""关键词ID
 
     """
 
@@ -2981,7 +2981,7 @@ class KeyWordLibIdData(AbstractModel):
 
     @property
     def KeyWordLibId(self):
-        """关键词ID
+        r"""关键词ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3005,7 +3005,7 @@ class KeyWordLibIdData(AbstractModel):
 
 
 class KeyWordLibListData(AbstractModel):
-    """查询列表返回数据
+    r"""查询列表返回数据
 
     """
 
@@ -3023,7 +3023,7 @@ class KeyWordLibListData(AbstractModel):
 
     @property
     def KeyWordLibList(self):
-        """关键词表列表
+        r"""关键词表列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyWordLib
         """
@@ -3035,7 +3035,7 @@ class KeyWordLibListData(AbstractModel):
 
     @property
     def TotalCount(self):
-        """关键词列表总数
+        r"""关键词列表总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3065,7 +3065,7 @@ class KeyWordLibListData(AbstractModel):
 
 
 class KeyWordResult(AbstractModel):
-    """关键字识别结果
+    r"""关键字识别结果
 
     """
 
@@ -3087,7 +3087,7 @@ class KeyWordResult(AbstractModel):
 
     @property
     def KeyWordLibID(self):
-        """关键词库ID
+        r"""关键词库ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3099,7 +3099,7 @@ class KeyWordResult(AbstractModel):
 
     @property
     def KeyWordLibName(self):
-        """关键词库名称
+        r"""关键词库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3111,7 +3111,7 @@ class KeyWordResult(AbstractModel):
 
     @property
     def KeyWords(self):
-        """匹配到的关键词
+        r"""匹配到的关键词
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3137,7 +3137,7 @@ class KeyWordResult(AbstractModel):
 
 
 class Model(AbstractModel):
-    """[自学习模型信息](https://cloud.tencent.com/document/product/1093/90813#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[自学习模型信息](https://cloud.tencent.com/document/product/1093/90813#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -3178,7 +3178,7 @@ class Model(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._ModelName
@@ -3189,7 +3189,7 @@ class Model(AbstractModel):
 
     @property
     def DictName(self):
-        """模型文件名称
+        r"""模型文件名称
         :rtype: str
         """
         return self._DictName
@@ -3200,7 +3200,7 @@ class Model(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型Id
+        r"""模型Id
         :rtype: str
         """
         return self._ModelId
@@ -3211,7 +3211,7 @@ class Model(AbstractModel):
 
     @property
     def ModelType(self):
-        """模型类型，“8k”或者”16k“
+        r"""模型类型，“8k”或者”16k“
         :rtype: str
         """
         return self._ModelType
@@ -3222,7 +3222,7 @@ class Model(AbstractModel):
 
     @property
     def ServiceType(self):
-        """服务类型
+        r"""服务类型
         :rtype: str
         """
         return self._ServiceType
@@ -3233,7 +3233,7 @@ class Model(AbstractModel):
 
     @property
     def ModelState(self):
-        """模型状态：
+        r"""模型状态：
 -2：模型训练失败；
 -1：已下线；
 0：训练中；
@@ -3250,7 +3250,7 @@ class Model(AbstractModel):
 
     @property
     def AtUpdated(self):
-        """最后更新时间
+        r"""最后更新时间
         :rtype: str
         """
         return self._AtUpdated
@@ -3263,7 +3263,7 @@ class Model(AbstractModel):
     def TagInfos(self):
         warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
 
-        """标签信息
+        r"""标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3296,7 +3296,7 @@ class Model(AbstractModel):
 
 
 class ModifyCustomizationRequest(AbstractModel):
-    """ModifyCustomization请求参数结构体
+    r"""ModifyCustomization请求参数结构体
 
     """
 
@@ -3318,7 +3318,7 @@ class ModifyCustomizationRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """要修改的模型ID
+        r"""要修改的模型ID
         :rtype: str
         """
         return self._ModelId
@@ -3329,7 +3329,7 @@ class ModifyCustomizationRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """要修改的模型名称，长度需在1-20个字符之间
+        r"""要修改的模型名称，长度需在1-20个字符之间
         :rtype: str
         """
         return self._ModelName
@@ -3340,7 +3340,7 @@ class ModifyCustomizationRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        """要修改的模型类型，为8k或者16k
+        r"""要修改的模型类型，为8k或者16k
         :rtype: str
         """
         return self._ModelType
@@ -3351,7 +3351,7 @@ class ModifyCustomizationRequest(AbstractModel):
 
     @property
     def TextUrl(self):
-        """要修改的模型语料的下载地址，目前仅支持腾讯云cos
+        r"""要修改的模型语料的下载地址，目前仅支持腾讯云cos
         :rtype: str
         """
         return self._TextUrl
@@ -3377,7 +3377,7 @@ class ModifyCustomizationRequest(AbstractModel):
 
 
 class ModifyCustomizationResponse(AbstractModel):
-    """ModifyCustomization返回参数结构体
+    r"""ModifyCustomization返回参数结构体
 
     """
 
@@ -3390,7 +3390,7 @@ class ModifyCustomizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3405,7 +3405,7 @@ class ModifyCustomizationResponse(AbstractModel):
 
 
 class ModifyCustomizationStateRequest(AbstractModel):
-    """ModifyCustomizationState请求参数结构体
+    r"""ModifyCustomizationState请求参数结构体
 
     """
 
@@ -3421,7 +3421,7 @@ class ModifyCustomizationStateRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """自学习模型ID
+        r"""自学习模型ID
         :rtype: str
         """
         return self._ModelId
@@ -3432,7 +3432,7 @@ class ModifyCustomizationStateRequest(AbstractModel):
 
     @property
     def ToState(self):
-        """想要变换的模型状态，-1代表下线，1代表上线
+        r"""想要变换的模型状态，-1代表下线，1代表上线
         :rtype: int
         """
         return self._ToState
@@ -3456,7 +3456,7 @@ class ModifyCustomizationStateRequest(AbstractModel):
 
 
 class ModifyCustomizationStateResponse(AbstractModel):
-    """ModifyCustomizationState返回参数结构体
+    r"""ModifyCustomizationState返回参数结构体
 
     """
 
@@ -3472,7 +3472,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
 
     @property
     def ModelId(self):
-        """自学习模型ID
+        r"""自学习模型ID
         :rtype: str
         """
         return self._ModelId
@@ -3483,7 +3483,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3499,7 +3499,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
 
 
 class SentenceDetail(AbstractModel):
-    """单句的详细识别结果，包含单个词的时间偏移，一般用于生成字幕的场景。
+    r"""单句的详细识别结果，包含单个词的时间偏移，一般用于生成字幕的场景。
 
     """
 
@@ -3562,7 +3562,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def FinalSentence(self):
-        """单句最终识别结果
+        r"""单句最终识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3574,7 +3574,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SliceSentence(self):
-        """单句中间识别结果，使用空格拆分为多个词
+        r"""单句中间识别结果，使用空格拆分为多个词
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3586,7 +3586,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def WrittenText(self):
-        """口语转书面语结果，开启改功能才有值
+        r"""口语转书面语结果，开启改功能才有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3598,7 +3598,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def StartMs(self):
-        """单句开始时间（毫秒）
+        r"""单句开始时间（毫秒）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3610,7 +3610,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EndMs(self):
-        """单句结束时间（毫秒）
+        r"""单句结束时间（毫秒）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3622,7 +3622,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def WordsNum(self):
-        """单句中词个数
+        r"""单句中词个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3634,7 +3634,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def Words(self):
-        """单句中词详情
+        r"""单句中词详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SentenceWords
         """
@@ -3646,7 +3646,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SpeechSpeed(self):
-        """单句语速，单位：字数/秒
+        r"""单句语速，单位：字数/秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3658,7 +3658,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SpeakerId(self):
-        """声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
+        r"""声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
 单声道话者分离时不同的值代表不同的说话人； 8k双声道话者分离时speakerId的值为0代表左声道，值为1代表右声道。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -3671,7 +3671,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EmotionalEnergy(self):
-        """情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。
+        r"""情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3683,7 +3683,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SilenceTime(self):
-        """本句与上一句之间的静音时长
+        r"""本句与上一句之间的静音时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3695,7 +3695,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EmotionType(self):
-        """情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）
+        r"""情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3707,7 +3707,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def KeyWordResults(self):
-        """关键词识别结果列表
+        r"""关键词识别结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyWordResult
         """
@@ -3753,7 +3753,7 @@ class SentenceDetail(AbstractModel):
 
 
 class SentenceRecognitionRequest(AbstractModel):
-    """SentenceRecognition请求参数结构体
+    r"""SentenceRecognition请求参数结构体
 
     """
 
@@ -3856,7 +3856,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def EngSerViceType(self):
-        """引擎模型类型。
+        r"""引擎模型类型。
 电话场景：
 • 8k_zh：中文电话通用；
 • 8k_en：英文电话通用；
@@ -3892,7 +3892,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def SourceType(self):
-        """语音数据来源。0：语音 URL；1：语音数据（post body）。
+        r"""语音数据来源。0：语音 URL；1：语音数据（post body）。
         :rtype: int
         """
         return self._SourceType
@@ -3903,7 +3903,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def VoiceFormat(self):
-        """识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac、amr。
+        r"""识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac、amr。
         :rtype: str
         """
         return self._VoiceFormat
@@ -3916,7 +3916,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
     def ProjectId(self):
         warnings.warn("parameter `ProjectId` is deprecated", DeprecationWarning) 
 
-        """腾讯云项目 ID，废弃参数，填写0即可。
+        r"""腾讯云项目 ID，废弃参数，填写0即可。
         :rtype: int
         """
         return self._ProjectId
@@ -3931,7 +3931,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
     def SubServiceType(self):
         warnings.warn("parameter `SubServiceType` is deprecated", DeprecationWarning) 
 
-        """子服务类型。2： 一句话识别。
+        r"""子服务类型。2： 一句话识别。
         :rtype: int
         """
         return self._SubServiceType
@@ -3944,7 +3944,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def Url(self):
-        """语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
+        r"""语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 
 注意：推荐使用 [腾讯云COS](https://cloud.tencent.com/document/product/436/38484) 来存储音频、生成URL并提交请求，此种方式会走内网下载音频，极大降低整体请求时延；并且不会产生外网和流量下行费用，可节约成本（COS桶权限需要设置公有读私有写，或URL设置时效访问签名）
         :rtype: str
@@ -3959,7 +3959,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
     def UsrAudioKey(self):
         warnings.warn("parameter `UsrAudioKey` is deprecated", DeprecationWarning) 
 
-        """废弃参数，填写任意字符串即可。
+        r"""废弃参数，填写任意字符串即可。
         :rtype: str
         """
         return self._UsrAudioKey
@@ -3972,7 +3972,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def Data(self):
-        """语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
+        r"""语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
         :rtype: str
         """
         return self._Data
@@ -3983,7 +3983,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def DataLen(self):
-        """数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
+        r"""数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :rtype: int
         """
         return self._DataLen
@@ -3994,7 +3994,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def WordInfo(self):
-        """是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认值为 0。
+        r"""是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认值为 0。
         :rtype: int
         """
         return self._WordInfo
@@ -4005,7 +4005,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def FilterDirty(self):
-        """是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
+        r"""是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
         :rtype: int
         """
         return self._FilterDirty
@@ -4016,7 +4016,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def FilterModal(self):
-        """是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
+        r"""是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
         :rtype: int
         """
         return self._FilterModal
@@ -4027,7 +4027,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def FilterPunc(self):
-        """是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
+        r"""是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
         :rtype: int
         """
         return self._FilterPunc
@@ -4038,7 +4038,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def ConvertNumMode(self):
-        """是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1。
+        r"""是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1。
         :rtype: int
         """
         return self._ConvertNumMode
@@ -4049,7 +4049,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def HotwordId(self):
-        """热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+        r"""热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :rtype: str
         """
         return self._HotwordId
@@ -4060,7 +4060,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def CustomizationId(self):
-        """自学习模型 id。如设置了该参数，将生效对应的自学习模型。
+        r"""自学习模型 id。如设置了该参数，将生效对应的自学习模型。
         :rtype: str
         """
         return self._CustomizationId
@@ -4073,7 +4073,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
     def ReinforceHotword(self):
         warnings.warn("parameter `ReinforceHotword` is deprecated", DeprecationWarning) 
 
-        """热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+        r"""热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
         :rtype: int
         """
         return self._ReinforceHotword
@@ -4086,7 +4086,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def HotwordList(self):
-        """临时热词表：该参数用于提升识别准确率。
+        r"""临时热词表：该参数用于提升识别准确率。
 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重1-11或者100，如：“腾讯云|5” 或 “ASR|11”；
 临时热词表限制：多个热词用英文逗号分割，最多支持128个热词，如：“腾讯云|10,语音识别|5,ASR|11”；
 参数 hotword_list（临时热词表） 与 hotword_id（热词表） 区别：
@@ -4106,7 +4106,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
     @property
     def InputSampleRate(self):
-        """支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
+        r"""支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
         :rtype: int
         """
         return self._InputSampleRate
@@ -4147,7 +4147,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
 
 
 class SentenceRecognitionResponse(AbstractModel):
-    """SentenceRecognition返回参数结构体
+    r"""SentenceRecognition返回参数结构体
 
     """
 
@@ -4174,7 +4174,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
     @property
     def Result(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: str
         """
         return self._Result
@@ -4185,7 +4185,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
     @property
     def AudioDuration(self):
-        """请求的音频时长，单位为ms
+        r"""请求的音频时长，单位为ms
         :rtype: int
         """
         return self._AudioDuration
@@ -4196,7 +4196,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
     @property
     def WordSize(self):
-        """词时间戳列表的长度
+        r"""词时间戳列表的长度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4208,7 +4208,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """词时间戳列表
+        r"""词时间戳列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SentenceWord
         """
@@ -4220,7 +4220,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4244,7 +4244,7 @@ class SentenceRecognitionResponse(AbstractModel):
 
 
 class SentenceWord(AbstractModel):
-    """[一句话识别](https://cloud.tencent.com/document/product/1093/35646#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)返回的词时间戳
+    r"""[一句话识别](https://cloud.tencent.com/document/product/1093/35646#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)返回的词时间戳
 
     """
 
@@ -4263,7 +4263,7 @@ class SentenceWord(AbstractModel):
 
     @property
     def Word(self):
-        """词结果
+        r"""词结果
         :rtype: str
         """
         return self._Word
@@ -4274,7 +4274,7 @@ class SentenceWord(AbstractModel):
 
     @property
     def StartTime(self):
-        """词在音频中的开始时间
+        r"""词在音频中的开始时间
         :rtype: int
         """
         return self._StartTime
@@ -4285,7 +4285,7 @@ class SentenceWord(AbstractModel):
 
     @property
     def EndTime(self):
-        """词在音频中的结束时间
+        r"""词在音频中的结束时间
         :rtype: int
         """
         return self._EndTime
@@ -4310,7 +4310,7 @@ class SentenceWord(AbstractModel):
 
 
 class SentenceWords(AbstractModel):
-    """识别结果中词文本，以及对应时间偏移
+    r"""识别结果中词文本，以及对应时间偏移
 
     """
 
@@ -4332,7 +4332,7 @@ class SentenceWords(AbstractModel):
 
     @property
     def Word(self):
-        """词文本
+        r"""词文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4344,7 +4344,7 @@ class SentenceWords(AbstractModel):
 
     @property
     def OffsetStartMs(self):
-        """在句子中的开始时间偏移量
+        r"""在句子中的开始时间偏移量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4356,7 +4356,7 @@ class SentenceWords(AbstractModel):
 
     @property
     def OffsetEndMs(self):
-        """在句子中的结束时间偏移量
+        r"""在句子中的结束时间偏移量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4382,7 +4382,7 @@ class SentenceWords(AbstractModel):
 
 
 class SetVocabStateRequest(AbstractModel):
-    """SetVocabState请求参数结构体
+    r"""SetVocabState请求参数结构体
 
     """
 
@@ -4398,7 +4398,7 @@ class SetVocabStateRequest(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID。
+        r"""热词表ID。
         :rtype: str
         """
         return self._VocabId
@@ -4409,7 +4409,7 @@ class SetVocabStateRequest(AbstractModel):
 
     @property
     def State(self):
-        """热词表状态，1：设为默认状态；0：设为非默认状态。
+        r"""热词表状态，1：设为默认状态；0：设为非默认状态。
         :rtype: int
         """
         return self._State
@@ -4433,7 +4433,7 @@ class SetVocabStateRequest(AbstractModel):
 
 
 class SetVocabStateResponse(AbstractModel):
-    """SetVocabState返回参数结构体
+    r"""SetVocabState返回参数结构体
 
     """
 
@@ -4449,7 +4449,7 @@ class SetVocabStateResponse(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -4460,7 +4460,7 @@ class SetVocabStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4476,7 +4476,7 @@ class SetVocabStateResponse(AbstractModel):
 
 
 class Task(AbstractModel):
-    """[录音文件识别](https://cloud.tencent.com/document/product/1093/37823#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)、[实时语音异步识别](https://cloud.tencent.com/document/product/1093/52061#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)请求的返回数据
+    r"""[录音文件识别](https://cloud.tencent.com/document/product/1093/37823#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)、[实时语音异步识别](https://cloud.tencent.com/document/product/1093/52061#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)请求的返回数据
 
     """
 
@@ -4490,7 +4490,7 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可通过此ID在轮询接口获取识别状态与结果。TaskId数据类型为**uint64**。
+        r"""任务ID，可通过此ID在轮询接口获取识别状态与结果。TaskId数据类型为**uint64**。
 **注意：TaskId有效期为24小时，不同日期可能出现重复TaskId，请不要依赖TaskId作为您业务系统里的唯一ID。**
         :rtype: int
         """
@@ -4514,7 +4514,7 @@ class Task(AbstractModel):
 
 
 class TaskStatus(AbstractModel):
-    """[获取录音识别结果的返回参数](https://cloud.tencent.com/document/product/1093/37822#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[获取录音识别结果的返回参数](https://cloud.tencent.com/document/product/1093/37822#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -4547,7 +4547,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务标识。注意：TaskId数据类型为uint64。
+        r"""任务标识。注意：TaskId数据类型为uint64。
         :rtype: int
         """
         return self._TaskId
@@ -4558,7 +4558,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
+        r"""任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
         :rtype: int
         """
         return self._Status
@@ -4569,7 +4569,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def StatusStr(self):
-        """任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
+        r"""任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
         :rtype: str
         """
         return self._StatusStr
@@ -4580,7 +4580,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def Result(self):
-        """识别结果。
+        r"""识别结果。
         :rtype: str
         """
         return self._Result
@@ -4591,7 +4591,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """失败原因说明。
+        r"""失败原因说明。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4602,7 +4602,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def ResultDetail(self):
-        """识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
+        r"""识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SentenceDetail
         """
@@ -4614,7 +4614,7 @@ class TaskStatus(AbstractModel):
 
     @property
     def AudioDuration(self):
-        """音频时长(秒)。
+        r"""音频时长(秒)。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4649,7 +4649,7 @@ class TaskStatus(AbstractModel):
 
 
 class UpdateAsrKeyWordLibRequest(AbstractModel):
-    """UpdateAsrKeyWordLib请求参数结构体
+    r"""UpdateAsrKeyWordLib请求参数结构体
 
     """
 
@@ -4672,7 +4672,7 @@ class UpdateAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def KeyWordLibId(self):
-        """关键词表ID
+        r"""关键词表ID
         :rtype: str
         """
         return self._KeyWordLibId
@@ -4683,7 +4683,7 @@ class UpdateAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def Name(self):
-        """词表名称，长度在1-20之间
+        r"""词表名称，长度在1-20之间
 仅限中英文数字-_
         :rtype: str
         """
@@ -4695,7 +4695,7 @@ class UpdateAsrKeyWordLibRequest(AbstractModel):
 
     @property
     def KeyWordFile(self):
-        """- 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
+        r"""- 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
 - 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
 - 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
 - 此参数为空则只更新词表名称
@@ -4723,7 +4723,7 @@ class UpdateAsrKeyWordLibRequest(AbstractModel):
 
 
 class UpdateAsrKeyWordLibResponse(AbstractModel):
-    """UpdateAsrKeyWordLib返回参数结构体
+    r"""UpdateAsrKeyWordLib返回参数结构体
 
     """
 
@@ -4739,7 +4739,7 @@ class UpdateAsrKeyWordLibResponse(AbstractModel):
 
     @property
     def Data(self):
-        """关键词表ID数据
+        r"""关键词表ID数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.KeyWordLibIdData`
         """
         return self._Data
@@ -4750,7 +4750,7 @@ class UpdateAsrKeyWordLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4768,7 +4768,7 @@ class UpdateAsrKeyWordLibResponse(AbstractModel):
 
 
 class UpdateAsrVocabRequest(AbstractModel):
-    """UpdateAsrVocab请求参数结构体
+    r"""UpdateAsrVocab请求参数结构体
 
     """
 
@@ -4795,7 +4795,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -4806,7 +4806,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
     @property
     def Name(self):
-        """热词表名称，长度在1-255之间
+        r"""热词表名称，长度在1-255之间
         :rtype: str
         """
         return self._Name
@@ -4817,7 +4817,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
     @property
     def WordWeights(self):
-        """词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或100，数组长度不大于1000 (注意：如果仅更新热词表名称或者描述字段，请求不用带本参数）
+        r"""词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或100，数组长度不大于1000 (注意：如果仅更新热词表名称或者描述字段，请求不用带本参数）
         :rtype: list of HotWord
         """
         return self._WordWeights
@@ -4828,7 +4828,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
     @property
     def WordWeightStr(self):
-        """词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+        r"""词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
  (注意：如果仅更新热词表名称或者描述字段，请求不用带本参数）
         :rtype: str
@@ -4841,7 +4841,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
     @property
     def Description(self):
-        """热词表描述，长度在0-1000之间
+        r"""热词表描述，长度在0-1000之间
         :rtype: str
         """
         return self._Description
@@ -4873,7 +4873,7 @@ class UpdateAsrVocabRequest(AbstractModel):
 
 
 class UpdateAsrVocabResponse(AbstractModel):
-    """UpdateAsrVocab返回参数结构体
+    r"""UpdateAsrVocab返回参数结构体
 
     """
 
@@ -4889,7 +4889,7 @@ class UpdateAsrVocabResponse(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -4900,7 +4900,7 @@ class UpdateAsrVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4916,7 +4916,7 @@ class UpdateAsrVocabResponse(AbstractModel):
 
 
 class UsageByDateInfo(AbstractModel):
-    """用户用量信息
+    r"""用户用量信息
 
     """
 
@@ -4940,7 +4940,7 @@ class UsageByDateInfo(AbstractModel):
 
     @property
     def BizName(self):
-        """业务类型名称
+        r"""业务类型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4952,7 +4952,7 @@ class UsageByDateInfo(AbstractModel):
 
     @property
     def Count(self):
-        """识别次数
+        r"""识别次数
 单位：次
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -4965,7 +4965,7 @@ class UsageByDateInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """识别时长
+        r"""识别时长
 单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -4992,7 +4992,7 @@ class UsageByDateInfo(AbstractModel):
 
 
 class UsageByDateInfoData(AbstractModel):
-    """用户用量信息
+    r"""用户用量信息
 
     """
 
@@ -5006,7 +5006,7 @@ class UsageByDateInfoData(AbstractModel):
 
     @property
     def UsageByDateInfoList(self):
-        """用量信息列表
+        r"""用量信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsageByDateInfo
         """
@@ -5035,7 +5035,7 @@ class UsageByDateInfoData(AbstractModel):
 
 
 class VerifyTop(AbstractModel):
-    """声纹组对比结果top数据
+    r"""声纹组对比结果top数据
 
     """
 
@@ -5057,7 +5057,7 @@ class VerifyTop(AbstractModel):
 
     @property
     def Score(self):
-        """相似度打分
+        r"""相似度打分
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5069,7 +5069,7 @@ class VerifyTop(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id
+        r"""说话人id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5081,7 +5081,7 @@ class VerifyTop(AbstractModel):
 
     @property
     def SpeakerId(self):
-        """说话人昵称
+        r"""说话人昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5107,7 +5107,7 @@ class VerifyTop(AbstractModel):
 
 
 class VerifyTopResult(AbstractModel):
-    """说话人验证1:N返回结果
+    r"""说话人验证1:N返回结果
 
     """
 
@@ -5121,7 +5121,7 @@ class VerifyTopResult(AbstractModel):
 
     @property
     def VerifyTops(self):
-        """对比打分结果，按照打分降序排列返回
+        r"""对比打分结果，按照打分降序排列返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VerifyTop
         """
@@ -5150,7 +5150,7 @@ class VerifyTopResult(AbstractModel):
 
 
 class Vocab(AbstractModel):
-    """[词表内容](https://cloud.tencent.com/document/product/1093/41484#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[词表内容](https://cloud.tencent.com/document/product/1093/41484#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -5185,7 +5185,7 @@ class Vocab(AbstractModel):
 
     @property
     def Name(self):
-        """热词表名称
+        r"""热词表名称
         :rtype: str
         """
         return self._Name
@@ -5196,7 +5196,7 @@ class Vocab(AbstractModel):
 
     @property
     def Description(self):
-        """热词表描述
+        r"""热词表描述
         :rtype: str
         """
         return self._Description
@@ -5207,7 +5207,7 @@ class Vocab(AbstractModel):
 
     @property
     def VocabId(self):
-        """热词表ID
+        r"""热词表ID
         :rtype: str
         """
         return self._VocabId
@@ -5218,7 +5218,7 @@ class Vocab(AbstractModel):
 
     @property
     def WordWeights(self):
-        """词权重列表
+        r"""词权重列表
         :rtype: list of HotWord
         """
         return self._WordWeights
@@ -5229,7 +5229,7 @@ class Vocab(AbstractModel):
 
     @property
     def CreateTime(self):
-        """词表创建时间
+        r"""词表创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -5240,7 +5240,7 @@ class Vocab(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """词表更新时间
+        r"""词表更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -5251,7 +5251,7 @@ class Vocab(AbstractModel):
 
     @property
     def State(self):
-        """热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+        r"""热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
         :rtype: int
         """
         return self._State
@@ -5262,7 +5262,7 @@ class Vocab(AbstractModel):
 
     @property
     def TagInfos(self):
-        """标签数组
+        r"""标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5298,7 +5298,7 @@ class Vocab(AbstractModel):
 
 
 class VoicePrintBaseData(AbstractModel):
-    """[说话人基础数据](https://cloud.tencent.com/document/product/1093/94483#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)，包括说话人id和说话人昵称
+    r"""[说话人基础数据](https://cloud.tencent.com/document/product/1093/94483#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)，包括说话人id和说话人昵称
 
     """
 
@@ -5316,7 +5316,7 @@ class VoicePrintBaseData(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id
+        r"""说话人id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5328,7 +5328,7 @@ class VoicePrintBaseData(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        """说话人昵称
+        r"""说话人昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5353,7 +5353,7 @@ class VoicePrintBaseData(AbstractModel):
 
 
 class VoicePrintCompareData(AbstractModel):
-    """音频声纹比对结果，包含比对分数
+    r"""音频声纹比对结果，包含比对分数
 
     """
 
@@ -5371,7 +5371,7 @@ class VoicePrintCompareData(AbstractModel):
 
     @property
     def Score(self):
-        """匹配度 取值范围(0.0 - 100.0)
+        r"""匹配度 取值范围(0.0 - 100.0)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5383,7 +5383,7 @@ class VoicePrintCompareData(AbstractModel):
 
     @property
     def Decision(self):
-        """验证结果 0: 未通过 1: 通过
+        r"""验证结果 0: 未通过 1: 通过
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5408,7 +5408,7 @@ class VoicePrintCompareData(AbstractModel):
 
 
 class VoicePrintCompareRequest(AbstractModel):
-    """VoicePrintCompare请求参数结构体
+    r"""VoicePrintCompare请求参数结构体
 
     """
 
@@ -5430,7 +5430,7 @@ class VoicePrintCompareRequest(AbstractModel):
 
     @property
     def VoiceFormat(self):
-        """音频格式 0: pcm, 1: wav；pcm和wav音频无损压缩，识别准确度更高
+        r"""音频格式 0: pcm, 1: wav；pcm和wav音频无损压缩，识别准确度更高
         :rtype: int
         """
         return self._VoiceFormat
@@ -5441,7 +5441,7 @@ class VoicePrintCompareRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率，目前仅支持16k，请填写16000
+        r"""音频采样率，目前仅支持16k，请填写16000
         :rtype: int
         """
         return self._SampleRate
@@ -5452,7 +5452,7 @@ class VoicePrintCompareRequest(AbstractModel):
 
     @property
     def SrcAudioData(self):
-        """对比源音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+        r"""对比源音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
         :rtype: str
         """
         return self._SrcAudioData
@@ -5463,7 +5463,7 @@ class VoicePrintCompareRequest(AbstractModel):
 
     @property
     def DestAudioData(self):
-        """对比目标音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+        r"""对比目标音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
         :rtype: str
         """
         return self._DestAudioData
@@ -5489,7 +5489,7 @@ class VoicePrintCompareRequest(AbstractModel):
 
 
 class VoicePrintCompareResponse(AbstractModel):
-    """VoicePrintCompare返回参数结构体
+    r"""VoicePrintCompare返回参数结构体
 
     """
 
@@ -5505,7 +5505,7 @@ class VoicePrintCompareResponse(AbstractModel):
 
     @property
     def Data(self):
-        """音频声纹比对结果，包含相似度打分
+        r"""音频声纹比对结果，包含相似度打分
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintCompareData`
         """
         return self._Data
@@ -5516,7 +5516,7 @@ class VoicePrintCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5534,7 +5534,7 @@ class VoicePrintCompareResponse(AbstractModel):
 
 
 class VoicePrintCountData(AbstractModel):
-    """统计返回[说话人注册数量](https://cloud.tencent.com/document/product/1093/96061#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""统计返回[说话人注册数量](https://cloud.tencent.com/document/product/1093/96061#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -5552,7 +5552,7 @@ class VoicePrintCountData(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5564,7 +5564,7 @@ class VoicePrintCountData(AbstractModel):
 
     @property
     def VoicePrintList(self):
-        """说话人id列表
+        r"""说话人id列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VoicePrintBaseData
         """
@@ -5594,7 +5594,7 @@ class VoicePrintCountData(AbstractModel):
 
 
 class VoicePrintCountRequest(AbstractModel):
-    """VoicePrintCount请求参数结构体
+    r"""VoicePrintCount请求参数结构体
 
     """
 
@@ -5612,7 +5612,7 @@ class VoicePrintCountRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+        r"""分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
         :rtype: str
         """
         return self._GroupId
@@ -5623,7 +5623,7 @@ class VoicePrintCountRequest(AbstractModel):
 
     @property
     def CountMod(self):
-        """统计模式
+        r"""统计模式
 0: 统计所有声纹数量
 1: 统计指定分组下的声纹数量
         :rtype: int
@@ -5649,7 +5649,7 @@ class VoicePrintCountRequest(AbstractModel):
 
 
 class VoicePrintCountResponse(AbstractModel):
-    """VoicePrintCount返回参数结构体
+    r"""VoicePrintCount返回参数结构体
 
     """
 
@@ -5665,7 +5665,7 @@ class VoicePrintCountResponse(AbstractModel):
 
     @property
     def Data(self):
-        """统计数据
+        r"""统计数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintCountData`
         """
         return self._Data
@@ -5676,7 +5676,7 @@ class VoicePrintCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5694,7 +5694,7 @@ class VoicePrintCountResponse(AbstractModel):
 
 
 class VoicePrintDeleteRequest(AbstractModel):
-    """VoicePrintDelete请求参数结构体
+    r"""VoicePrintDelete请求参数结构体
 
     """
 
@@ -5716,7 +5716,7 @@ class VoicePrintDeleteRequest(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id，说话人唯一标识
+        r"""说话人id，说话人唯一标识
         :rtype: str
         """
         return self._VoicePrintId
@@ -5727,7 +5727,7 @@ class VoicePrintDeleteRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """说话人分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+        r"""说话人分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
         :rtype: str
         """
         return self._GroupId
@@ -5738,7 +5738,7 @@ class VoicePrintDeleteRequest(AbstractModel):
 
     @property
     def DelMod(self):
-        """删除模式: 
+        r"""删除模式: 
 0.默认值，删除该条声纹
 1.从分组中删除该条声纹，声纹本身不删除
 2.从声纹库中删除分组，仅删除分组信息，不会真正删除分组中的声纹
@@ -5766,7 +5766,7 @@ class VoicePrintDeleteRequest(AbstractModel):
 
 
 class VoicePrintDeleteResponse(AbstractModel):
-    """VoicePrintDelete返回参数结构体
+    r"""VoicePrintDelete返回参数结构体
 
     """
 
@@ -5782,7 +5782,7 @@ class VoicePrintDeleteResponse(AbstractModel):
 
     @property
     def Data(self):
-        """说话人基本信息
+        r"""说话人基本信息
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         """
         return self._Data
@@ -5793,7 +5793,7 @@ class VoicePrintDeleteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5811,7 +5811,7 @@ class VoicePrintDeleteResponse(AbstractModel):
 
 
 class VoicePrintEnrollRequest(AbstractModel):
-    """VoicePrintEnroll请求参数结构体
+    r"""VoicePrintEnroll请求参数结构体
 
     """
 
@@ -5836,7 +5836,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def VoiceFormat(self):
-        """音频格式 0: pcm, 1: wav
+        r"""音频格式 0: pcm, 1: wav
         :rtype: int
         """
         return self._VoiceFormat
@@ -5847,7 +5847,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率，目前支持16000，单位：Hz，必填
+        r"""音频采样率，目前支持16000，单位：Hz，必填
         :rtype: int
         """
         return self._SampleRate
@@ -5858,7 +5858,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def Data(self):
-        """音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
         :rtype: str
         """
         return self._Data
@@ -5869,7 +5869,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        """说话人昵称  不超过32字节
+        r"""说话人昵称  不超过32字节
         :rtype: str
         """
         return self._SpeakerNick
@@ -5880,7 +5880,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+        r"""分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
         :rtype: str
         """
         return self._GroupId
@@ -5907,7 +5907,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
 
 class VoicePrintEnrollResponse(AbstractModel):
-    """VoicePrintEnroll返回参数结构体
+    r"""VoicePrintEnroll返回参数结构体
 
     """
 
@@ -5923,7 +5923,7 @@ class VoicePrintEnrollResponse(AbstractModel):
 
     @property
     def Data(self):
-        """说话人基本数据
+        r"""说话人基本数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         """
         return self._Data
@@ -5934,7 +5934,7 @@ class VoicePrintEnrollResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5952,7 +5952,7 @@ class VoicePrintEnrollResponse(AbstractModel):
 
 
 class VoicePrintGroupVerifyRequest(AbstractModel):
-    """VoicePrintGroupVerify请求参数结构体
+    r"""VoicePrintGroupVerify请求参数结构体
 
     """
 
@@ -5977,7 +5977,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
     @property
     def VoiceFormat(self):
-        """音频格式 0: pcm, 1: wav
+        r"""音频格式 0: pcm, 1: wav
         :rtype: int
         """
         return self._VoiceFormat
@@ -5988,7 +5988,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率，目前支持16000，单位：Hz，必填
+        r"""音频采样率，目前支持16000，单位：Hz，必填
         :rtype: int
         """
         return self._SampleRate
@@ -5999,7 +5999,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
     @property
     def Data(self):
-        """音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
         :rtype: str
         """
         return self._Data
@@ -6010,7 +6010,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组id, 支持数字，字母，下划线，长度不超过128
+        r"""分组id, 支持数字，字母，下划线，长度不超过128
         :rtype: str
         """
         return self._GroupId
@@ -6021,7 +6021,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
     @property
     def TopN(self):
-        """返回打分结果降序排列topN, TopN大于0， 小于可创建声纹最大数量
+        r"""返回打分结果降序排列topN, TopN大于0， 小于可创建声纹最大数量
         :rtype: int
         """
         return self._TopN
@@ -6048,7 +6048,7 @@ class VoicePrintGroupVerifyRequest(AbstractModel):
 
 
 class VoicePrintGroupVerifyResponse(AbstractModel):
-    """VoicePrintGroupVerify返回参数结构体
+    r"""VoicePrintGroupVerify返回参数结构体
 
     """
 
@@ -6064,7 +6064,7 @@ class VoicePrintGroupVerifyResponse(AbstractModel):
 
     @property
     def Data(self):
-        """TopN 返回结果;系统建议打分70分以上为同一个人音色，评分也取决于音频质量、长度等其他原因影响，您可以按照业务需求适当提高或降低分数要求
+        r"""TopN 返回结果;系统建议打分70分以上为同一个人音色，评分也取决于音频质量、长度等其他原因影响，您可以按照业务需求适当提高或降低分数要求
         :rtype: :class:`tencentcloud.asr.v20190614.models.VerifyTopResult`
         """
         return self._Data
@@ -6075,7 +6075,7 @@ class VoicePrintGroupVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6093,7 +6093,7 @@ class VoicePrintGroupVerifyResponse(AbstractModel):
 
 
 class VoicePrintUpdateRequest(AbstractModel):
-    """VoicePrintUpdate请求参数结构体
+    r"""VoicePrintUpdate请求参数结构体
 
     """
 
@@ -6118,7 +6118,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def VoiceFormat(self):
-        """音频格式 0: pcm, 1: wav
+        r"""音频格式 0: pcm, 1: wav
         :rtype: int
         """
         return self._VoiceFormat
@@ -6129,7 +6129,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率 目前仅支持16000 单位Hz
+        r"""音频采样率 目前仅支持16000 单位Hz
         :rtype: int
         """
         return self._SampleRate
@@ -6140,7 +6140,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id， 说话人唯一标识
+        r"""说话人id， 说话人唯一标识
         :rtype: str
         """
         return self._VoicePrintId
@@ -6151,7 +6151,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def Data(self):
-        """音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
         :rtype: str
         """
         return self._Data
@@ -6162,7 +6162,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        """说话人昵称  不超过32字节
+        r"""说话人昵称  不超过32字节
         :rtype: str
         """
         return self._SpeakerNick
@@ -6189,7 +6189,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
 
 class VoicePrintUpdateResponse(AbstractModel):
-    """VoicePrintUpdate返回参数结构体
+    r"""VoicePrintUpdate返回参数结构体
 
     """
 
@@ -6205,7 +6205,7 @@ class VoicePrintUpdateResponse(AbstractModel):
 
     @property
     def Data(self):
-        """说话人基础数据
+        r"""说话人基础数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         """
         return self._Data
@@ -6216,7 +6216,7 @@ class VoicePrintUpdateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6234,7 +6234,7 @@ class VoicePrintUpdateResponse(AbstractModel):
 
 
 class VoicePrintVerifyData(AbstractModel):
-    """[说话人验证数据](https://cloud.tencent.com/document/product/1093/94481#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[说话人验证数据](https://cloud.tencent.com/document/product/1093/94481#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -6256,7 +6256,7 @@ class VoicePrintVerifyData(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id
+        r"""说话人id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6268,7 +6268,7 @@ class VoicePrintVerifyData(AbstractModel):
 
     @property
     def Score(self):
-        """匹配度 取值范围(0.0 - 100.0)
+        r"""匹配度 取值范围(0.0 - 100.0)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6280,7 +6280,7 @@ class VoicePrintVerifyData(AbstractModel):
 
     @property
     def Decision(self):
-        """验证结果 0: 未通过 1: 通过
+        r"""验证结果 0: 未通过 1: 通过
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6306,7 +6306,7 @@ class VoicePrintVerifyData(AbstractModel):
 
 
 class VoicePrintVerifyRequest(AbstractModel):
-    """VoicePrintVerify请求参数结构体
+    r"""VoicePrintVerify请求参数结构体
 
     """
 
@@ -6328,7 +6328,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     @property
     def VoiceFormat(self):
-        """音频格式 0: pcm, 1: wav
+        r"""音频格式 0: pcm, 1: wav
         :rtype: int
         """
         return self._VoiceFormat
@@ -6339,7 +6339,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率，目前支持16000，单位：Hz，必填
+        r"""音频采样率，目前支持16000，单位：Hz，必填
         :rtype: int
         """
         return self._SampleRate
@@ -6350,7 +6350,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     @property
     def Data(self):
-        """音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
         :rtype: str
         """
         return self._Data
@@ -6361,7 +6361,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        """说话人id, 说话人唯一标识
+        r"""说话人id, 说话人唯一标识
         :rtype: str
         """
         return self._VoicePrintId
@@ -6387,7 +6387,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
 
 class VoicePrintVerifyResponse(AbstractModel):
-    """VoicePrintVerify返回参数结构体
+    r"""VoicePrintVerify返回参数结构体
 
     """
 
@@ -6403,7 +6403,7 @@ class VoicePrintVerifyResponse(AbstractModel):
 
     @property
     def Data(self):
-        """说话人验证数据
+        r"""说话人验证数据
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintVerifyData`
         """
         return self._Data
@@ -6414,7 +6414,7 @@ class VoicePrintVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

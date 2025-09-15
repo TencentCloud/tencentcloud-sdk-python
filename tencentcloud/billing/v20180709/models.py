@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActionSummaryOverviewItem(AbstractModel):
-    """按交易类型汇总消费详情
+    r"""按交易类型汇总消费详情
 
     """
 
@@ -59,7 +59,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -70,7 +70,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -81,7 +81,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -92,7 +92,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -103,7 +103,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -114,7 +114,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -125,7 +125,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -136,7 +136,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -147,7 +147,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月份，格式2019-08
+        r"""账单月份，格式2019-08
         :rtype: str
         """
         return self._BillMonth
@@ -158,7 +158,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -190,7 +190,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
 
 class AdjustInfoDetail(AbstractModel):
-    """UIN异常调整明细
+    r"""UIN异常调整明细
 
     """
 
@@ -221,7 +221,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -232,7 +232,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式：yyyy-MM
+        r"""账单月份，格式：yyyy-MM
         :rtype: str
         """
         return self._Month
@@ -243,7 +243,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def AdjustType(self):
-        """调整类型
+        r"""调整类型
 调账：manualAdjustment
 补结算：supplementarySettlement
 重结算：reSettlement
@@ -257,7 +257,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def AdjustNum(self):
-        """调整单号
+        r"""调整单号
         :rtype: str
         """
         return self._AdjustNum
@@ -268,7 +268,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def AdjustCompletionTime(self):
-        """异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
+        r"""异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._AdjustCompletionTime
@@ -279,7 +279,7 @@ class AdjustInfoDetail(AbstractModel):
 
     @property
     def AdjustAmount(self):
-        """调整金额
+        r"""调整金额
         :rtype: float
         """
         return self._AdjustAmount
@@ -307,7 +307,7 @@ class AdjustInfoDetail(AbstractModel):
 
 
 class AllocationAverageData(AbstractModel):
-    """分账账单趋势图平均值
+    r"""分账账单趋势图平均值
 
     """
 
@@ -326,7 +326,7 @@ class AllocationAverageData(AbstractModel):
 
     @property
     def BeginMonth(self):
-        """起始月份
+        r"""起始月份
         :rtype: str
         """
         return self._BeginMonth
@@ -337,7 +337,7 @@ class AllocationAverageData(AbstractModel):
 
     @property
     def EndMonth(self):
-        """结束月份
+        r"""结束月份
         :rtype: str
         """
         return self._EndMonth
@@ -348,7 +348,7 @@ class AllocationAverageData(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """合计费用(折后总额)平均值
+        r"""合计费用(折后总额)平均值
         :rtype: str
         """
         return self._RealTotalCost
@@ -373,7 +373,7 @@ class AllocationAverageData(AbstractModel):
 
 
 class AllocationBillTrendDetail(AbstractModel):
-    """分账趋势图详情数据
+    r"""分账趋势图详情数据
 
     """
 
@@ -392,7 +392,7 @@ class AllocationBillTrendDetail(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份
+        r"""账单月份
         :rtype: str
         """
         return self._Month
@@ -403,7 +403,7 @@ class AllocationBillTrendDetail(AbstractModel):
 
     @property
     def Name(self):
-        """账单月份展示名称
+        r"""账单月份展示名称
         :rtype: str
         """
         return self._Name
@@ -414,7 +414,7 @@ class AllocationBillTrendDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        r"""合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
         :rtype: str
         """
         return self._RealTotalCost
@@ -439,7 +439,7 @@ class AllocationBillTrendDetail(AbstractModel):
 
 
 class AllocationDetail(AbstractModel):
-    """分账账单明细
+    r"""分账账单明细
 
     """
 
@@ -673,7 +673,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -684,7 +684,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -695,7 +695,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BillDate(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDate
@@ -706,7 +706,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -717,7 +717,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN：实际使用资源的账号 ID
+        r"""使用者 UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -728,7 +728,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
         :rtype: str
         """
         return self._OperateUin
@@ -739,7 +739,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -750,7 +750,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -761,7 +761,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -772,7 +772,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -783,7 +783,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -794,7 +794,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -805,7 +805,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -816,7 +816,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域
+        r"""地域名称：资源所属地域
         :rtype: str
         """
         return self._RegionName
@@ -827,7 +827,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: int
         """
         return self._ZoneId
@@ -838,7 +838,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区
+        r"""可用区：资源所属可用区
         :rtype: str
         """
         return self._ZoneName
@@ -849,7 +849,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
         :rtype: str
         """
         return self._ResourceId
@@ -860,7 +860,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        r"""实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
         :rtype: str
         """
         return self._ResourceName
@@ -871,7 +871,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: str
         """
         return self._InstanceType
@@ -882,7 +882,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
         :rtype: str
         """
         return self._InstanceTypeName
@@ -895,7 +895,7 @@ class AllocationDetail(AbstractModel):
     def SplitItemId(self):
         warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
 
-        """分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -911,7 +911,7 @@ class AllocationDetail(AbstractModel):
     def SplitItemName(self):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
-        """分拆项名称：涉及分拆产品的分拆后的分拆项
+        r"""分拆项名称：涉及分拆产品的分拆后的分拆项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -925,7 +925,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -936,7 +936,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型
+        r"""子产品名称：用户采购的具体产品细分类型
         :rtype: str
         """
         return self._ProductCodeName
@@ -947,7 +947,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -958,7 +958,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：明细交易类型
+        r"""交易类型：明细交易类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -969,7 +969,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单 ID：包年包月计费模式下订购的订单号
+        r"""订单 ID：包年包月计费模式下订购的订单号
 
         :rtype: str
         """
@@ -981,7 +981,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BillId(self):
-        """交易 ID：结算扣费单号
+        r"""交易 ID：结算扣费单号
         :rtype: str
         """
         return self._BillId
@@ -992,7 +992,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -1003,7 +1003,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -1014,7 +1014,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -1025,7 +1025,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """组件类型编码
+        r"""组件类型编码
         :rtype: str
         """
         return self._ComponentCode
@@ -1036,7 +1036,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """组件类型：用户购买的产品或服务对应的组件大类
+        r"""组件类型：用户购买的产品或服务对应的组件大类
         :rtype: str
         """
         return self._ComponentCodeName
@@ -1047,7 +1047,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SinglePrice(self):
-        """组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
+        r"""组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
         :rtype: str
         """
         return self._SinglePrice
@@ -1058,7 +1058,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ContractPrice(self):
-        """组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+        r"""组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
         :rtype: str
         """
         return self._ContractPrice
@@ -1069,7 +1069,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SinglePriceUnit(self):
-        """组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
+        r"""组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
         :rtype: str
         """
         return self._SinglePriceUnit
@@ -1080,7 +1080,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
+        r"""组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
         :rtype: str
         """
         return self._UsedAmount
@@ -1091,7 +1091,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        """组件用量单位：组件用量对应的单位
+        r"""组件用量单位：组件用量对应的单位
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -1102,7 +1102,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
+        r"""使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
         :rtype: str
         """
         return self._TimeSpan
@@ -1113,7 +1113,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """时长单位：资源使用时长的单位
+        r"""时长单位：资源使用时长的单位
         :rtype: str
         """
         return self._TimeUnit
@@ -1124,7 +1124,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ReserveDetail(self):
-        """备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+        r"""备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
         :rtype: str
         """
         return self._ReserveDetail
@@ -1135,7 +1135,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SplitRatio(self):
-        """分拆项用量/时长占比：分拆项用量（时长）占比，分拆项用量（时长）/ 拆分前合计用量（时长）
+        r"""分拆项用量/时长占比：分拆项用量（时长）占比，分拆项用量（时长）/ 拆分前合计用量（时长）
         :rtype: str
         """
         return self._SplitRatio
@@ -1146,7 +1146,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TotalCost(self):
-        """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+        r"""组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
         :rtype: str
         """
         return self._TotalCost
@@ -1157,7 +1157,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RITimeSpan(self):
-        """预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+        r"""预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
         :rtype: str
         """
         return self._RITimeSpan
@@ -1168,7 +1168,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RICost(self):
-        """预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+        r"""预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
         :rtype: str
         """
         return self._RICost
@@ -1179,7 +1179,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SPCost(self):
-        """节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+        r"""节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
         :rtype: str
         """
         return self._SPCost
@@ -1190,7 +1190,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        r"""折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
         :rtype: str
         """
         return self._Discount
@@ -1201,7 +1201,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BlendedDiscount(self):
-        """混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
+        r"""混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
         :rtype: str
         """
         return self._BlendedDiscount
@@ -1212,7 +1212,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._RealTotalCost
@@ -1223,7 +1223,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出(元)：通过现金账户支付的金额
+        r"""现金账户支出(元)：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -1234,7 +1234,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -1245,7 +1245,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出(元)：使用赠送金支付的金额
+        r"""赠送账户支出(元)：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -1256,7 +1256,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成账户支出(元)：通过分成金账户支付的金额
+        r"""分成账户支出(元)：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -1267,7 +1267,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def Tag(self):
-        """分账标签：资源绑定的标签
+        r"""分账标签：资源绑定的标签
         :rtype: list of BillTag
         """
         return self._Tag
@@ -1278,7 +1278,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RegionType(self):
-        """国内国际编码
+        r"""国内国际编码
         :rtype: str
         """
         return self._RegionType
@@ -1289,7 +1289,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        """国内国际：资源所属区域类型（国内、国际）
+        r"""国内国际：资源所属区域类型（国内、国际）
         :rtype: str
         """
         return self._RegionTypeName
@@ -1300,7 +1300,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ItemCode(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: str
         """
         return self._ItemCode
@@ -1311,7 +1311,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""组件名称：用户购买的产品或服务，所包含的具体组件
         :rtype: str
         """
         return self._ItemCodeName
@@ -1322,7 +1322,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def AssociatedOrder(self):
-        """关联单据ID：和本笔交易关联单据ID，如退费订单对应的原新购订单等
+        r"""关联单据ID：和本笔交易关联单据ID，如退费订单对应的原新购订单等
         :rtype: str
         """
         return self._AssociatedOrder
@@ -1333,7 +1333,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def PriceInfo(self):
-        """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        r"""价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
         :rtype: list of str
         """
         return self._PriceInfo
@@ -1344,7 +1344,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def Formula(self):
-        """计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        r"""计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
         :rtype: str
         """
         return self._Formula
@@ -1355,7 +1355,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def FormulaUrl(self):
-        """计费规则：各产品详细的计费规则官网说明链接
+        r"""计费规则：各产品详细的计费规则官网说明链接
         :rtype: str
         """
         return self._FormulaUrl
@@ -1366,7 +1366,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def RealTotalMeasure(self):
-        """原始用量/时长：组件被资源包抵扣前的原始用量
+        r"""原始用量/时长：组件被资源包抵扣前的原始用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
         :rtype: str
         """
@@ -1378,7 +1378,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def DeductedMeasure(self):
-        """抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
+        r"""抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
         :rtype: str
         """
@@ -1390,7 +1390,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        """配置描述：资源配置规格信息
+        r"""配置描述：资源配置规格信息
         :rtype: str
         """
         return self._ComponentConfig
@@ -1401,7 +1401,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def AllocationType(self):
-        """费用归集类型：费用来源类型，分摊、归集、未分配
+        r"""费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
 2 - 未分配
@@ -1415,7 +1415,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def DiscountObject(self):
-        """当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+        r"""当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
         :rtype: str
         """
         return self._DiscountObject
@@ -1426,7 +1426,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def DiscountType(self):
-        """当前消费项的优惠类型，例如：折扣、合同价。
+        r"""当前消费项的优惠类型，例如：折扣、合同价。
         :rtype: str
         """
         return self._DiscountType
@@ -1437,7 +1437,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def DiscountContent(self):
-        """对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+        r"""对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
         :rtype: str
         """
         return self._DiscountContent
@@ -1448,7 +1448,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SPDeduction(self):
-        """SPDeduction
+        r"""SPDeduction
         :rtype: str
         """
         return self._SPDeduction
@@ -1459,7 +1459,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SPDeductionRate(self):
-        """SPDeduction
+        r"""SPDeduction
         :rtype: str
         """
         return self._SPDeductionRate
@@ -1470,7 +1470,7 @@ class AllocationDetail(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月
+        r"""账单月
         :rtype: str
         """
         return self._BillMonth
@@ -1569,7 +1569,7 @@ class AllocationDetail(AbstractModel):
 
 
 class AllocationMonthOverviewDetail(AbstractModel):
-    """分账账单月概览金额明细
+    r"""分账账单月概览金额明细
 
     """
 
@@ -1636,7 +1636,7 @@ none - 平稳
 
     @property
     def GatherCashPayAmount(self):
-        """归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        r"""归集费用(现金)：基于归集规则直接归集到分账单元的现金
         :rtype: str
         """
         return self._GatherCashPayAmount
@@ -1647,7 +1647,7 @@ none - 平稳
 
     @property
     def GatherVoucherPayAmount(self):
-        """归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        r"""归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
         :rtype: str
         """
         return self._GatherVoucherPayAmount
@@ -1658,7 +1658,7 @@ none - 平稳
 
     @property
     def GatherIncentivePayAmount(self):
-        """归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        r"""归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
         :rtype: str
         """
         return self._GatherIncentivePayAmount
@@ -1669,7 +1669,7 @@ none - 平稳
 
     @property
     def GatherTransferPayAmount(self):
-        """归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        r"""归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
         :rtype: str
         """
         return self._GatherTransferPayAmount
@@ -1680,7 +1680,7 @@ none - 平稳
 
     @property
     def AllocateCashPayAmount(self):
-        """分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        r"""分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
         :rtype: str
         """
         return self._AllocateCashPayAmount
@@ -1691,7 +1691,7 @@ none - 平稳
 
     @property
     def AllocateVoucherPayAmount(self):
-        """分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        r"""分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
         :rtype: str
         """
         return self._AllocateVoucherPayAmount
@@ -1702,7 +1702,7 @@ none - 平稳
 
     @property
     def AllocateIncentivePayAmount(self):
-        """分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        r"""分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
         :rtype: str
         """
         return self._AllocateIncentivePayAmount
@@ -1713,7 +1713,7 @@ none - 平稳
 
     @property
     def AllocateTransferPayAmount(self):
-        """分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        r"""分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
         :rtype: str
         """
         return self._AllocateTransferPayAmount
@@ -1724,7 +1724,7 @@ none - 平稳
 
     @property
     def TotalCashPayAmount(self):
-        """合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        r"""合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
         :rtype: str
         """
         return self._TotalCashPayAmount
@@ -1735,7 +1735,7 @@ none - 平稳
 
     @property
     def TotalVoucherPayAmount(self):
-        """合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        r"""合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
         :rtype: str
         """
         return self._TotalVoucherPayAmount
@@ -1746,7 +1746,7 @@ none - 平稳
 
     @property
     def TotalIncentivePayAmount(self):
-        """合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        r"""合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
         :rtype: str
         """
         return self._TotalIncentivePayAmount
@@ -1757,7 +1757,7 @@ none - 平稳
 
     @property
     def TotalTransferPayAmount(self):
-        """合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        r"""合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
         :rtype: str
         """
         return self._TotalTransferPayAmount
@@ -1768,7 +1768,7 @@ none - 平稳
 
     @property
     def GatherRealCost(self):
-        """归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        r"""归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._GatherRealCost
@@ -1779,7 +1779,7 @@ none - 平稳
 
     @property
     def AllocateRealCost(self):
-        """分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        r"""分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._AllocateRealCost
@@ -1790,7 +1790,7 @@ none - 平稳
 
     @property
     def RealTotalCost(self):
-        """合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        r"""合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
         :rtype: str
         """
         return self._RealTotalCost
@@ -1801,7 +1801,7 @@ none - 平稳
 
     @property
     def Ratio(self):
-        """占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        r"""占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :rtype: str
         """
         return self._Ratio
@@ -1812,7 +1812,7 @@ none - 平稳
 
     @property
     def Trend(self):
-        """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+        r"""环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
         :rtype: str
         """
         return self._Trend
@@ -1823,7 +1823,7 @@ none - 平稳
 
     @property
     def TrendType(self):
-        """环比箭头
+        r"""环比箭头
 upward -上升
 downward - 下降
 none - 平稳
@@ -1866,7 +1866,7 @@ none - 平稳
 
 
 class AllocationOverviewDetail(AbstractModel):
-    """分账概览明细
+    r"""分账概览明细
 
     """
 
@@ -1942,7 +1942,7 @@ none - 平稳
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -1953,7 +1953,7 @@ none - 平稳
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -1964,7 +1964,7 @@ none - 平稳
 
     @property
     def BillDate(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDate
@@ -1975,7 +1975,7 @@ none - 平稳
 
     @property
     def GatherCashPayAmount(self):
-        """归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        r"""归集费用(现金)：基于归集规则直接归集到分账单元的现金
         :rtype: str
         """
         return self._GatherCashPayAmount
@@ -1986,7 +1986,7 @@ none - 平稳
 
     @property
     def GatherVoucherPayAmount(self):
-        """归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        r"""归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
         :rtype: str
         """
         return self._GatherVoucherPayAmount
@@ -1997,7 +1997,7 @@ none - 平稳
 
     @property
     def GatherIncentivePayAmount(self):
-        """归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        r"""归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
         :rtype: str
         """
         return self._GatherIncentivePayAmount
@@ -2008,7 +2008,7 @@ none - 平稳
 
     @property
     def GatherTransferPayAmount(self):
-        """归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        r"""归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
         :rtype: str
         """
         return self._GatherTransferPayAmount
@@ -2019,7 +2019,7 @@ none - 平稳
 
     @property
     def AllocateCashPayAmount(self):
-        """分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        r"""分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
         :rtype: str
         """
         return self._AllocateCashPayAmount
@@ -2030,7 +2030,7 @@ none - 平稳
 
     @property
     def AllocateVoucherPayAmount(self):
-        """分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        r"""分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
         :rtype: str
         """
         return self._AllocateVoucherPayAmount
@@ -2041,7 +2041,7 @@ none - 平稳
 
     @property
     def AllocateIncentivePayAmount(self):
-        """分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        r"""分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
         :rtype: str
         """
         return self._AllocateIncentivePayAmount
@@ -2052,7 +2052,7 @@ none - 平稳
 
     @property
     def AllocateTransferPayAmount(self):
-        """分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        r"""分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
         :rtype: str
         """
         return self._AllocateTransferPayAmount
@@ -2063,7 +2063,7 @@ none - 平稳
 
     @property
     def TotalCashPayAmount(self):
-        """合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        r"""合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
         :rtype: str
         """
         return self._TotalCashPayAmount
@@ -2074,7 +2074,7 @@ none - 平稳
 
     @property
     def TotalVoucherPayAmount(self):
-        """合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        r"""合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
         :rtype: str
         """
         return self._TotalVoucherPayAmount
@@ -2085,7 +2085,7 @@ none - 平稳
 
     @property
     def TotalIncentivePayAmount(self):
-        """合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        r"""合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
         :rtype: str
         """
         return self._TotalIncentivePayAmount
@@ -2096,7 +2096,7 @@ none - 平稳
 
     @property
     def TotalTransferPayAmount(self):
-        """合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        r"""合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
         :rtype: str
         """
         return self._TotalTransferPayAmount
@@ -2107,7 +2107,7 @@ none - 平稳
 
     @property
     def GatherRealCost(self):
-        """归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        r"""归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._GatherRealCost
@@ -2118,7 +2118,7 @@ none - 平稳
 
     @property
     def AllocateRealCost(self):
-        """分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        r"""分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._AllocateRealCost
@@ -2129,7 +2129,7 @@ none - 平稳
 
     @property
     def RealTotalCost(self):
-        """合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        r"""合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
         :rtype: str
         """
         return self._RealTotalCost
@@ -2140,7 +2140,7 @@ none - 平稳
 
     @property
     def Ratio(self):
-        """占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        r"""占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :rtype: str
         """
         return self._Ratio
@@ -2151,7 +2151,7 @@ none - 平稳
 
     @property
     def Trend(self):
-        """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+        r"""环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
         :rtype: str
         """
         return self._Trend
@@ -2162,7 +2162,7 @@ none - 平稳
 
     @property
     def TrendType(self):
-        """环比箭头
+        r"""环比箭头
 upward -上升
 downward - 下降
 none - 平稳
@@ -2208,7 +2208,7 @@ none - 平稳
 
 
 class AllocationOverviewNode(AbstractModel):
-    """分账账单月概览详情
+    r"""分账账单月概览详情
 
     """
 
@@ -2240,7 +2240,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def Id(self):
-        """分账单元ID
+        r"""分账单元ID
         :rtype: int
         """
         return self._Id
@@ -2251,7 +2251,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def Name(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._Name
@@ -2262,7 +2262,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -2273,7 +2273,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def Symbol(self):
-        """分账单元包含规则标志
+        r"""分账单元包含规则标志
 0 - 不存在规则
 1 - 同时存在归集规则和公摊规则
 2 - 仅存在归集规则
@@ -2288,7 +2288,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def Children(self):
-        """子单元月概览详情
+        r"""子单元月概览详情
         :rtype: list of AllocationOverviewNode
         """
         return self._Children
@@ -2299,7 +2299,7 @@ class AllocationOverviewNode(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单月概览金额明细
+        r"""分账账单月概览金额明细
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
         """
         return self._Detail
@@ -2334,7 +2334,7 @@ class AllocationOverviewNode(AbstractModel):
 
 
 class AllocationOverviewTotal(AbstractModel):
-    """分账账单概览金额汇总
+    r"""分账账单概览金额汇总
 
     """
 
@@ -2364,7 +2364,7 @@ class AllocationOverviewTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """总费用：现金费用合计+分成金费用合计+赠送金费用合计+优惠券费用合计
+        r"""总费用：现金费用合计+分成金费用合计+赠送金费用合计+优惠券费用合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2376,7 +2376,7 @@ class AllocationOverviewTotal(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金： 现金费用合计
+        r"""现金： 现金费用合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2388,7 +2388,7 @@ class AllocationOverviewTotal(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金：赠送金费用合计
+        r"""赠送金：赠送金费用合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2400,7 +2400,7 @@ class AllocationOverviewTotal(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券：优惠券费用合计
+        r"""优惠券：优惠券费用合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2412,7 +2412,7 @@ class AllocationOverviewTotal(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金：分成金费用合计
+        r"""分成金：分成金费用合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2440,7 +2440,7 @@ class AllocationOverviewTotal(AbstractModel):
 
 
 class AllocationRationExpression(AbstractModel):
-    """分摊比例表达式
+    r"""分摊比例表达式
 
     """
 
@@ -2456,7 +2456,7 @@ class AllocationRationExpression(AbstractModel):
 
     @property
     def NodeId(self):
-        """公摊规则所属分账单元ID
+        r"""公摊规则所属分账单元ID
         :rtype: int
         """
         return self._NodeId
@@ -2467,7 +2467,7 @@ class AllocationRationExpression(AbstractModel):
 
     @property
     def Ratio(self):
-        """分账单元所占公摊比例，按占比分摊传0
+        r"""分账单元所占公摊比例，按占比分摊传0
         :rtype: float
         """
         return self._Ratio
@@ -2491,7 +2491,7 @@ class AllocationRationExpression(AbstractModel):
 
 
 class AllocationRule(AbstractModel):
-    """当前资源命中公摊规则信息
+    r"""当前资源命中公摊规则信息
 
     """
 
@@ -2507,7 +2507,7 @@ class AllocationRule(AbstractModel):
 
     @property
     def RuleId(self):
-        """公摊规则ID
+        r"""公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -2518,7 +2518,7 @@ class AllocationRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """公摊规则名称
+        r"""公摊规则名称
         :rtype: str
         """
         return self._RuleName
@@ -2542,7 +2542,7 @@ class AllocationRule(AbstractModel):
 
 
 class AllocationRuleExpression(AbstractModel):
-    """分账规则表达式
+    r"""分账规则表达式
 
     """
 
@@ -2585,7 +2585,7 @@ or - 或
 
     @property
     def RuleKey(self):
-        """RuleKey：分账维度
+        r"""RuleKey：分账维度
 枚举值：
 ownerUin - 使用者UIN,
 operateUin - 操作者UIN,
@@ -2609,7 +2609,7 @@ actionType - 交易类型
 
     @property
     def Operator(self):
-        """分账维度规则
+        r"""分账维度规则
 枚举值：
 in - 是
 not in - 不是
@@ -2623,7 +2623,7 @@ not in - 不是
 
     @property
     def RuleValue(self):
-        """分账维度值，例如当RuleKey为businessCode时，["p_cbs","p_sqlserver"]表示产品一层是"p_cbs","p_sqlserver"的费用
+        r"""分账维度值，例如当RuleKey为businessCode时，["p_cbs","p_sqlserver"]表示产品一层是"p_cbs","p_sqlserver"的费用
         :rtype: list of str
         """
         return self._RuleValue
@@ -2634,7 +2634,7 @@ not in - 不是
 
     @property
     def Connectors(self):
-        """分账逻辑连接词，枚举值如下：
+        r"""分账逻辑连接词，枚举值如下：
 and - 且
 or - 或
         :rtype: str
@@ -2647,7 +2647,7 @@ or - 或
 
     @property
     def Children(self):
-        """嵌套规则
+        r"""嵌套规则
         :rtype: list of AllocationRuleExpression
         """
         return self._Children
@@ -2679,7 +2679,7 @@ or - 或
 
 
 class AllocationRuleOverview(AbstractModel):
-    """公摊规则概览
+    r"""公摊规则概览
 
     """
 
@@ -2708,7 +2708,7 @@ class AllocationRuleOverview(AbstractModel):
 
     @property
     def RuleId(self):
-        """公摊规则ID
+        r"""公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -2719,7 +2719,7 @@ class AllocationRuleOverview(AbstractModel):
 
     @property
     def RuleName(self):
-        """公摊规则名称
+        r"""公摊规则名称
         :rtype: str
         """
         return self._RuleName
@@ -2730,7 +2730,7 @@ class AllocationRuleOverview(AbstractModel):
 
     @property
     def Type(self):
-        """公摊策略类型
+        r"""公摊策略类型
 枚举值：
 1 - 自定义分摊占比 
 2 - 等比分摊 
@@ -2745,7 +2745,7 @@ class AllocationRuleOverview(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """公摊规则最后更新时间
+        r"""公摊规则最后更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -2756,7 +2756,7 @@ class AllocationRuleOverview(AbstractModel):
 
     @property
     def AllocationNode(self):
-        """分账单元概览
+        r"""分账单元概览
         :rtype: list of AllocationUnit
         """
         return self._AllocationNode
@@ -2788,7 +2788,7 @@ class AllocationRuleOverview(AbstractModel):
 
 
 class AllocationRulesSummary(AbstractModel):
-    """公摊规则列表
+    r"""公摊规则列表
 
     """
 
@@ -2813,7 +2813,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def Name(self):
-        """新增公摊规则名称
+        r"""新增公摊规则名称
         :rtype: str
         """
         return self._Name
@@ -2824,7 +2824,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def Type(self):
-        """公摊策略类型，枚举值如下：
+        r"""公摊策略类型，枚举值如下：
 1 - 自定义分摊占比 
 2 - 等比分摊
 3 - 按占比分摊
@@ -2838,7 +2838,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """公摊规则表达式
+        r"""公摊规则表达式
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -2849,7 +2849,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """公摊比例表达式，按占比分摊不传
+        r"""公摊比例表达式，按占比分摊不传
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -2882,7 +2882,7 @@ class AllocationRulesSummary(AbstractModel):
 
 
 class AllocationStat(AbstractModel):
-    """分账账单趋势图
+    r"""分账账单趋势图
 
     """
 
@@ -2895,7 +2895,7 @@ class AllocationStat(AbstractModel):
 
     @property
     def Average(self):
-        """费用平均信息
+        r"""费用平均信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
         """
         return self._Average
@@ -2920,7 +2920,7 @@ class AllocationStat(AbstractModel):
 
 
 class AllocationSummaryByBusiness(AbstractModel):
-    """分账账单按产品汇总明细
+    r"""分账账单按产品汇总明细
 
     """
 
@@ -3027,7 +3027,7 @@ none - 平稳
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -3038,7 +3038,7 @@ none - 平稳
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -3049,7 +3049,7 @@ none - 平稳
 
     @property
     def BillDate(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDate
@@ -3060,7 +3060,7 @@ none - 平稳
 
     @property
     def GatherCashPayAmount(self):
-        """归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        r"""归集费用(现金)：基于归集规则直接归集到分账单元的现金
         :rtype: str
         """
         return self._GatherCashPayAmount
@@ -3071,7 +3071,7 @@ none - 平稳
 
     @property
     def GatherVoucherPayAmount(self):
-        """归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        r"""归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
         :rtype: str
         """
         return self._GatherVoucherPayAmount
@@ -3082,7 +3082,7 @@ none - 平稳
 
     @property
     def GatherIncentivePayAmount(self):
-        """归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        r"""归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
         :rtype: str
         """
         return self._GatherIncentivePayAmount
@@ -3093,7 +3093,7 @@ none - 平稳
 
     @property
     def GatherTransferPayAmount(self):
-        """归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        r"""归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
         :rtype: str
         """
         return self._GatherTransferPayAmount
@@ -3104,7 +3104,7 @@ none - 平稳
 
     @property
     def AllocateCashPayAmount(self):
-        """分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        r"""分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
         :rtype: str
         """
         return self._AllocateCashPayAmount
@@ -3115,7 +3115,7 @@ none - 平稳
 
     @property
     def AllocateVoucherPayAmount(self):
-        """分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        r"""分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
         :rtype: str
         """
         return self._AllocateVoucherPayAmount
@@ -3126,7 +3126,7 @@ none - 平稳
 
     @property
     def AllocateIncentivePayAmount(self):
-        """分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        r"""分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
         :rtype: str
         """
         return self._AllocateIncentivePayAmount
@@ -3137,7 +3137,7 @@ none - 平稳
 
     @property
     def AllocateTransferPayAmount(self):
-        """分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        r"""分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
         :rtype: str
         """
         return self._AllocateTransferPayAmount
@@ -3148,7 +3148,7 @@ none - 平稳
 
     @property
     def TotalCashPayAmount(self):
-        """合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        r"""合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
         :rtype: str
         """
         return self._TotalCashPayAmount
@@ -3159,7 +3159,7 @@ none - 平稳
 
     @property
     def TotalVoucherPayAmount(self):
-        """合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        r"""合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
         :rtype: str
         """
         return self._TotalVoucherPayAmount
@@ -3170,7 +3170,7 @@ none - 平稳
 
     @property
     def TotalIncentivePayAmount(self):
-        """合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        r"""合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
         :rtype: str
         """
         return self._TotalIncentivePayAmount
@@ -3181,7 +3181,7 @@ none - 平稳
 
     @property
     def TotalTransferPayAmount(self):
-        """合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        r"""合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
         :rtype: str
         """
         return self._TotalTransferPayAmount
@@ -3192,7 +3192,7 @@ none - 平稳
 
     @property
     def GatherRealCost(self):
-        """归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        r"""归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._GatherRealCost
@@ -3203,7 +3203,7 @@ none - 平稳
 
     @property
     def AllocateRealCost(self):
-        """分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        r"""分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
         :rtype: str
         """
         return self._AllocateRealCost
@@ -3214,7 +3214,7 @@ none - 平稳
 
     @property
     def RealTotalCost(self):
-        """合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        r"""合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
         :rtype: str
         """
         return self._RealTotalCost
@@ -3225,7 +3225,7 @@ none - 平稳
 
     @property
     def Ratio(self):
-        """占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        r"""占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :rtype: str
         """
         return self._Ratio
@@ -3236,7 +3236,7 @@ none - 平稳
 
     @property
     def Trend(self):
-        """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+        r"""环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
         :rtype: str
         """
         return self._Trend
@@ -3247,7 +3247,7 @@ none - 平稳
 
     @property
     def TrendType(self):
-        """环比箭头
+        r"""环比箭头
 upward -上升
 downward - 下降
 none - 平稳
@@ -3261,7 +3261,7 @@ none - 平稳
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -3272,7 +3272,7 @@ none - 平稳
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3283,7 +3283,7 @@ none - 平稳
 
     @property
     def TotalCost(self):
-        """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+        r"""组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
         :rtype: str
         """
         return self._TotalCost
@@ -3294,7 +3294,7 @@ none - 平稳
 
     @property
     def RICost(self):
-        """预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+        r"""预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
         :rtype: str
         """
         return self._RICost
@@ -3305,7 +3305,7 @@ none - 平稳
 
     @property
     def SPCost(self):
-        """节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+        r"""节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
         :rtype: str
         """
         return self._SPCost
@@ -3316,7 +3316,7 @@ none - 平稳
 
     @property
     def CashPayAmount(self):
-        """现金账户支出(元)：通过现金账户支付的金额
+        r"""现金账户支出(元)：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -3327,7 +3327,7 @@ none - 平稳
 
     @property
     def VoucherPayAmount(self):
-        """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
 
         :rtype: str
         """
@@ -3339,7 +3339,7 @@ none - 平稳
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出(元)：使用赠送金支付的金额
+        r"""赠送账户支出(元)：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -3350,7 +3350,7 @@ none - 平稳
 
     @property
     def TransferPayAmount(self):
-        """分成账户支出(元)：通过分成金账户支付的金额
+        r"""分成账户支出(元)：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -3361,7 +3361,7 @@ none - 平稳
 
     @property
     def AllocationRealTotalCost(self):
-        """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._AllocationRealTotalCost
@@ -3414,7 +3414,7 @@ none - 平稳
 
 
 class AllocationSummaryByItem(AbstractModel):
-    """分账账单按组件汇总明细
+    r"""分账账单按组件汇总明细
 
     """
 
@@ -3635,7 +3635,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -3646,7 +3646,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -3657,7 +3657,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def BillDate(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDate
@@ -3668,7 +3668,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -3679,7 +3679,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN：实际使用资源的账号 ID
+        r"""使用者 UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -3690,7 +3690,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
         :rtype: str
         """
         return self._OperateUin
@@ -3701,7 +3701,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -3712,7 +3712,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -3723,7 +3723,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -3734,7 +3734,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：明细交易类型
+        r"""交易类型：明细交易类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -3745,7 +3745,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -3756,7 +3756,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3767,7 +3767,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -3778,7 +3778,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型
+        r"""子产品名称：用户采购的具体产品细分类型
         :rtype: str
         """
         return self._ProductCodeName
@@ -3789,7 +3789,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -3800,7 +3800,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域
+        r"""地域名称：资源所属地域
         :rtype: str
         """
         return self._RegionName
@@ -3811,7 +3811,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: int
         """
         return self._ZoneId
@@ -3822,7 +3822,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区
+        r"""可用区：资源所属可用区
         :rtype: str
         """
         return self._ZoneName
@@ -3833,7 +3833,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: str
         """
         return self._InstanceType
@@ -3844,7 +3844,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
         :rtype: str
         """
         return self._InstanceTypeName
@@ -3855,7 +3855,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
         :rtype: str
         """
         return self._ResourceId
@@ -3866,7 +3866,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ResourceName(self):
-        """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        r"""实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
         :rtype: str
         """
         return self._ResourceName
@@ -3877,7 +3877,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def Tag(self):
-        """分账标签：资源绑定的标签
+        r"""分账标签：资源绑定的标签
         :rtype: list of BillTag
         """
         return self._Tag
@@ -3888,7 +3888,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -3899,7 +3899,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -3910,7 +3910,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def AllocationType(self):
-        """费用归集类型：费用来源类型，分摊、归集、未分配
+        r"""费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
 -1 - 未分配
@@ -3924,7 +3924,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+        r"""组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
         :rtype: str
         """
         return self._TotalCost
@@ -3935,7 +3935,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RiTimeSpan(self):
-        """预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+        r"""预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
         :rtype: str
         """
         return self._RiTimeSpan
@@ -3946,7 +3946,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RiCost(self):
-        """预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+        r"""预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
         :rtype: str
         """
         return self._RiCost
@@ -3957,7 +3957,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._RealTotalCost
@@ -3968,7 +3968,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出(元)：通过现金账户支付的金额
+        r"""现金账户支出(元)：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -3979,7 +3979,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -3990,7 +3990,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出(元)：使用赠送金支付的金额
+        r"""赠送账户支出(元)：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -4001,7 +4001,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成账户支出(元)：通过分成金账户支付的金额
+        r"""分成账户支出(元)：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4012,7 +4012,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ItemCode(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: str
         """
         return self._ItemCode
@@ -4023,7 +4023,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""组件名称：用户购买的产品或服务，所包含的具体组件
         :rtype: str
         """
         return self._ItemCodeName
@@ -4034,7 +4034,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """组件类型编码
+        r"""组件类型编码
         :rtype: str
         """
         return self._ComponentCode
@@ -4045,7 +4045,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """组件类型：用户购买的产品或服务对应的组件大类
+        r"""组件类型：用户购买的产品或服务对应的组件大类
         :rtype: str
         """
         return self._ComponentCodeName
@@ -4058,7 +4058,7 @@ class AllocationSummaryByItem(AbstractModel):
     def SplitItemId(self):
         warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
 
-        """分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4074,7 +4074,7 @@ class AllocationSummaryByItem(AbstractModel):
     def SplitItemName(self):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
-        """分拆项名称：涉及分拆产品的分拆后的分拆项
+        r"""分拆项名称：涉及分拆产品的分拆后的分拆项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4088,7 +4088,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -4099,7 +4099,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -4110,7 +4110,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SPCost(self):
-        """节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+        r"""节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
         :rtype: str
         """
         return self._SPCost
@@ -4121,7 +4121,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RegionType(self):
-        """国内国际编码
+        r"""国内国际编码
         :rtype: str
         """
         return self._RegionType
@@ -4132,7 +4132,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        """国内国际：资源所属区域类型（国内、国际）
+        r"""国内国际：资源所属区域类型（国内、国际）
         :rtype: str
         """
         return self._RegionTypeName
@@ -4143,7 +4143,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SinglePrice(self):
-        """组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
+        r"""组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
         :rtype: str
         """
         return self._SinglePrice
@@ -4154,7 +4154,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ContractPrice(self):
-        """组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+        r"""组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
         :rtype: str
         """
         return self._ContractPrice
@@ -4165,7 +4165,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SinglePriceUnit(self):
-        """组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
+        r"""组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
         :rtype: str
         """
         return self._SinglePriceUnit
@@ -4176,7 +4176,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
+        r"""组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
         :rtype: str
         """
         return self._UsedAmount
@@ -4187,7 +4187,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        """组件用量单位：组件用量对应的单位
+        r"""组件用量单位：组件用量对应的单位
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -4198,7 +4198,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
+        r"""使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
         :rtype: str
         """
         return self._TimeSpan
@@ -4209,7 +4209,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """时长单位：资源使用时长的单位
+        r"""时长单位：资源使用时长的单位
         :rtype: str
         """
         return self._TimeUnit
@@ -4220,7 +4220,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ReserveDetail(self):
-        """备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+        r"""备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
         :rtype: str
         """
         return self._ReserveDetail
@@ -4231,7 +4231,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def RealTotalMeasure(self):
-        """原始用量/时长：组件被资源包抵扣前的原始用量
+        r"""原始用量/时长：组件被资源包抵扣前的原始用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
         :rtype: str
         """
@@ -4243,7 +4243,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def DeductedMeasure(self):
-        """抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
+        r"""抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
         :rtype: str
         """
@@ -4255,7 +4255,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        r"""折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
         :rtype: str
         """
         return self._Discount
@@ -4266,7 +4266,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def BlendedDiscount(self):
-        """混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
+        r"""混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
         :rtype: str
         """
         return self._BlendedDiscount
@@ -4277,7 +4277,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def PriceInfo(self):
-        """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        r"""价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
         :rtype: list of str
         """
         return self._PriceInfo
@@ -4288,7 +4288,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def Formula(self):
-        """计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        r"""计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
         :rtype: str
         """
         return self._Formula
@@ -4299,7 +4299,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def FormulaUrl(self):
-        """计费规则：各产品详细的计费规则官网说明链接
+        r"""计费规则：各产品详细的计费规则官网说明链接
         :rtype: str
         """
         return self._FormulaUrl
@@ -4310,7 +4310,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        """配置描述：资源配置规格信息
+        r"""配置描述：资源配置规格信息
         :rtype: str
         """
         return self._ComponentConfig
@@ -4321,7 +4321,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SPDeduction(self):
-        """SPDeduction
+        r"""SPDeduction
         :rtype: str
         """
         return self._SPDeduction
@@ -4332,7 +4332,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SPDeductionRate(self):
-        """节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+        r"""节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
         :rtype: str
         """
         return self._SPDeductionRate
@@ -4343,7 +4343,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def AssociatedOrder(self):
-        """AssociatedOrder
+        r"""AssociatedOrder
         :rtype: str
         """
         return self._AssociatedOrder
@@ -4354,7 +4354,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def DiscountObject(self):
-        """当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+        r"""当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
         :rtype: str
         """
         return self._DiscountObject
@@ -4365,7 +4365,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def DiscountType(self):
-        """当前消费项的优惠类型，例如：折扣、合同价。
+        r"""当前消费项的优惠类型，例如：折扣、合同价。
         :rtype: str
         """
         return self._DiscountType
@@ -4376,7 +4376,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def DiscountContent(self):
-        """对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+        r"""对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
         :rtype: str
         """
         return self._DiscountContent
@@ -4387,7 +4387,7 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月
+        r"""账单月
         :rtype: str
         """
         return self._BillMonth
@@ -4482,7 +4482,7 @@ class AllocationSummaryByItem(AbstractModel):
 
 
 class AllocationSummaryByResource(AbstractModel):
-    """分账账单按资源汇总明细
+    r"""分账账单按资源汇总明细
 
     """
 
@@ -4629,7 +4629,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -4640,7 +4640,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -4651,7 +4651,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def BillDate(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDate
@@ -4662,7 +4662,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -4673,7 +4673,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN：实际使用资源的账号 ID
+        r"""使用者 UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -4684,7 +4684,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
         :rtype: str
         """
         return self._OperateUin
@@ -4695,7 +4695,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -4706,7 +4706,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -4717,7 +4717,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -4728,7 +4728,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：明细交易类型
+        r"""交易类型：明细交易类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -4739,7 +4739,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -4750,7 +4750,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -4761,7 +4761,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -4772,7 +4772,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型
+        r"""子产品名称：用户采购的具体产品细分类型
         :rtype: str
         """
         return self._ProductCodeName
@@ -4783,7 +4783,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -4794,7 +4794,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域
+        r"""地域名称：资源所属地域
         :rtype: str
         """
         return self._RegionName
@@ -4805,7 +4805,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: int
         """
         return self._ZoneId
@@ -4816,7 +4816,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区
+        r"""可用区：资源所属可用区
         :rtype: str
         """
         return self._ZoneName
@@ -4827,7 +4827,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: str
         """
         return self._InstanceType
@@ -4838,7 +4838,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
         :rtype: str
         """
         return self._InstanceTypeName
@@ -4849,7 +4849,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
         :rtype: str
         """
         return self._ResourceId
@@ -4860,7 +4860,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ResourceName(self):
-        """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        r"""实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
         :rtype: str
         """
         return self._ResourceName
@@ -4871,7 +4871,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def Tag(self):
-        """分账标签：资源绑定的标签
+        r"""分账标签：资源绑定的标签
         :rtype: list of BillTag
         """
         return self._Tag
@@ -4882,7 +4882,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -4893,7 +4893,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -4904,7 +4904,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def AllocationType(self):
-        """费用归集类型：费用来源类型，分摊、归集、未分配
+        r"""费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊 
 1 - 归集 
 -1 -  未分配
@@ -4918,7 +4918,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def TotalCost(self):
-        """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+        r"""组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
         :rtype: str
         """
         return self._TotalCost
@@ -4929,7 +4929,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RiTimeSpan(self):
-        """预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+        r"""预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
         :rtype: str
         """
         return self._RiTimeSpan
@@ -4940,7 +4940,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RiCost(self):
-        """预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+        r"""预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
         :rtype: str
         """
         return self._RiCost
@@ -4951,7 +4951,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._RealTotalCost
@@ -4962,7 +4962,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出(元)：通过现金账户支付的金额
+        r"""现金账户支出(元)：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -4973,7 +4973,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -4984,7 +4984,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出(元)：使用赠送金支付的金额
+        r"""赠送账户支出(元)：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -4995,7 +4995,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成账户支出(元)：通过分成金账户支付的金额
+        r"""分成账户支出(元)：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5008,7 +5008,7 @@ class AllocationSummaryByResource(AbstractModel):
     def SplitItemId(self):
         warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
 
-        """分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5024,7 +5024,7 @@ class AllocationSummaryByResource(AbstractModel):
     def SplitItemName(self):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
-        """分拆项名称：涉及分拆产品的分拆后的分拆项
+        r"""分拆项名称：涉及分拆产品的分拆后的分拆项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5038,7 +5038,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -5049,7 +5049,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -5060,7 +5060,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def SPCost(self):
-        """节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+        r"""节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
         :rtype: str
         """
         return self._SPCost
@@ -5071,7 +5071,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RegionType(self):
-        """国内国际编码
+        r"""国内国际编码
         :rtype: str
         """
         return self._RegionType
@@ -5082,7 +5082,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        """国内国际：资源所属区域类型（国内、国际）
+        r"""国内国际：资源所属区域类型（国内、国际）
         :rtype: str
         """
         return self._RegionTypeName
@@ -5093,7 +5093,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        """配置描述：对应资源下各组件名称及用量（如组件为用量累加型计费则为合计用量）
+        r"""配置描述：对应资源下各组件名称及用量（如组件为用量累加型计费则为合计用量）
         :rtype: str
         """
         return self._ComponentConfig
@@ -5104,7 +5104,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def SPDeduction(self):
-        """SPDeduction
+        r"""SPDeduction
         :rtype: str
         """
         return self._SPDeduction
@@ -5115,7 +5115,7 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月
+        r"""账单月
         :rtype: str
         """
         return self._BillMonth
@@ -5186,7 +5186,7 @@ class AllocationSummaryByResource(AbstractModel):
 
 
 class AllocationTree(AbstractModel):
-    """分账目录树
+    r"""分账目录树
 
     """
 
@@ -5208,7 +5208,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Id(self):
-        """分账单元ID
+        r"""分账单元ID
         :rtype: int
         """
         return self._Id
@@ -5219,7 +5219,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Name(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._Name
@@ -5230,7 +5230,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -5241,7 +5241,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Children(self):
-        """子树
+        r"""子树
         :rtype: list of AllocationTree
         """
         return self._Children
@@ -5272,7 +5272,7 @@ class AllocationTree(AbstractModel):
 
 
 class AllocationTreeNode(AbstractModel):
-    """当前归属单元信息
+    r"""当前归属单元信息
 
     """
 
@@ -5288,7 +5288,7 @@ class AllocationTreeNode(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -5299,7 +5299,7 @@ class AllocationTreeNode(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -5323,7 +5323,7 @@ class AllocationTreeNode(AbstractModel):
 
 
 class AllocationUnit(AbstractModel):
-    """分账单元id和名称
+    r"""分账单元id和名称
 
     """
 
@@ -5339,7 +5339,7 @@ class AllocationUnit(AbstractModel):
 
     @property
     def NodeId(self):
-        """分账单元ID
+        r"""分账单元ID
         :rtype: int
         """
         return self._NodeId
@@ -5350,7 +5350,7 @@ class AllocationUnit(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账规则名称
+        r"""分账规则名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -5374,7 +5374,7 @@ class AllocationUnit(AbstractModel):
 
 
 class AnalyseActionTypeDetail(AbstractModel):
-    """成本分析交易类型复杂类型
+    r"""成本分析交易类型复杂类型
 
     """
 
@@ -5390,7 +5390,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型code
+        r"""交易类型code
         :rtype: str
         """
         return self._ActionType
@@ -5401,7 +5401,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型Name
+        r"""交易类型Name
         :rtype: str
         """
         return self._ActionTypeName
@@ -5425,7 +5425,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
 
 class AnalyseAmountDetail(AbstractModel):
-    """成本分析金额返回数据模型
+    r"""成本分析金额返回数据模型
 
     """
 
@@ -5441,7 +5441,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Key(self):
-        """费用类型
+        r"""费用类型
         :rtype: str
         """
         return self._Key
@@ -5452,7 +5452,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Display(self):
-        """是否展示
+        r"""是否展示
         :rtype: int
         """
         return self._Display
@@ -5476,7 +5476,7 @@ class AnalyseAmountDetail(AbstractModel):
 
 
 class AnalyseBusinessDetail(AbstractModel):
-    """成本分析产品返回复杂类型
+    r"""成本分析产品返回复杂类型
 
     """
 
@@ -5492,7 +5492,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品码code
+        r"""产品码code
         :rtype: str
         """
         return self._BusinessCode
@@ -5503,7 +5503,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -5527,7 +5527,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
 
 class AnalyseConditionDetail(AbstractModel):
-    """成本分析过滤框复杂类型
+    r"""成本分析过滤框复杂类型
 
     """
 
@@ -5561,7 +5561,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Business(self):
-        """产品
+        r"""产品
         :rtype: list of AnalyseBusinessDetail
         """
         return self._Business
@@ -5572,7 +5572,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Project(self):
-        """项目
+        r"""项目
         :rtype: list of AnalyseProjectDetail
         """
         return self._Project
@@ -5583,7 +5583,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: list of AnalyseRegionDetail
         """
         return self._Region
@@ -5594,7 +5594,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式
+        r"""计费模式
         :rtype: list of AnalysePayModeDetail
         """
         return self._PayMode
@@ -5605,7 +5605,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型
+        r"""交易类型
         :rtype: list of AnalyseActionTypeDetail
         """
         return self._ActionType
@@ -5616,7 +5616,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
         :rtype: list of AnalyseZoneDetail
         """
         return self._Zone
@@ -5627,7 +5627,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """资源所有者Uin
+        r"""资源所有者Uin
         :rtype: list of AnalyseOwnerUinDetail
         """
         return self._OwnerUin
@@ -5638,7 +5638,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Amount(self):
-        """费用类型
+        r"""费用类型
         :rtype: list of AnalyseAmountDetail
         """
         return self._Amount
@@ -5708,7 +5708,7 @@ class AnalyseConditionDetail(AbstractModel):
 
 
 class AnalyseConditions(AbstractModel):
-    """成本分析查询条件
+    r"""成本分析查询条件
 
     """
 
@@ -5762,7 +5762,7 @@ costBeforeTax:税前价
 
     @property
     def BusinessCodes(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: str
         """
         return self._BusinessCodes
@@ -5773,7 +5773,7 @@ costBeforeTax:税前价
 
     @property
     def ProductCodes(self):
-        """子产品名称代码
+        r"""子产品名称代码
         :rtype: str
         """
         return self._ProductCodes
@@ -5784,7 +5784,7 @@ costBeforeTax:税前价
 
     @property
     def ComponentCode(self):
-        """组件类型代码
+        r"""组件类型代码
         :rtype: str
         """
         return self._ComponentCode
@@ -5795,7 +5795,7 @@ costBeforeTax:税前价
 
     @property
     def ZoneIds(self):
-        """可用区ID：资源所属可用区ID
+        r"""可用区ID：资源所属可用区ID
         :rtype: str
         """
         return self._ZoneIds
@@ -5806,7 +5806,7 @@ costBeforeTax:税前价
 
     @property
     def RegionIds(self):
-        """地域ID:资源所属地域ID
+        r"""地域ID:资源所属地域ID
         :rtype: str
         """
         return self._RegionIds
@@ -5817,7 +5817,7 @@ costBeforeTax:税前价
 
     @property
     def ProjectIds(self):
-        """项目ID:资源所属项目ID
+        r"""项目ID:资源所属项目ID
         :rtype: str
         """
         return self._ProjectIds
@@ -5828,7 +5828,7 @@ costBeforeTax:税前价
 
     @property
     def PayModes(self):
-        """计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+        r"""计费模式 prePay(表示包年包月)/postPay(表示按量计费)
         :rtype: str
         """
         return self._PayModes
@@ -5839,7 +5839,7 @@ costBeforeTax:税前价
 
     @property
     def ActionTypes(self):
-        """交易类型，查询交易类型（请使用交易类型code入参）
+        r"""交易类型，查询交易类型（请使用交易类型code入参）
         :rtype: str
         """
         return self._ActionTypes
@@ -5850,7 +5850,7 @@ costBeforeTax:税前价
 
     @property
     def Tags(self):
-        """分账标签键
+        r"""分账标签键
         :rtype: str
         """
         return self._Tags
@@ -5861,7 +5861,7 @@ costBeforeTax:税前价
 
     @property
     def FeeType(self):
-        """费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
+        r"""费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
 cashPayAmount:现金 
 incentivePayAmount:赠送金 
 voucherPayAmount:优惠券 
@@ -5877,7 +5877,7 @@ costBeforeTax:税前价
 
     @property
     def PayerUins(self):
-        """查询成本分析数据的用户UIN
+        r"""查询成本分析数据的用户UIN
         :rtype: str
         """
         return self._PayerUins
@@ -5888,7 +5888,7 @@ costBeforeTax:税前价
 
     @property
     def OwnerUins(self):
-        """使用资源的用户UIN
+        r"""使用资源的用户UIN
         :rtype: str
         """
         return self._OwnerUins
@@ -5899,7 +5899,7 @@ costBeforeTax:税前价
 
     @property
     def ConsumptionTypes(self):
-        """消耗类型，查询消耗类型（请使用消耗类型code入参）
+        r"""消耗类型，查询消耗类型（请使用消耗类型code入参）
         :rtype: str
         """
         return self._ConsumptionTypes
@@ -5934,7 +5934,7 @@ costBeforeTax:税前价
 
 
 class AnalyseDetail(AbstractModel):
-    """成本分析数据复杂类型
+    r"""成本分析数据复杂类型
 
     """
 
@@ -5953,7 +5953,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def Name(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Name
@@ -5964,7 +5964,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -5975,7 +5975,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def TimeDetail(self):
-        """日期明细金额
+        r"""日期明细金额
         :rtype: list of AnalyseTimeDetail
         """
         return self._TimeDetail
@@ -6005,7 +6005,7 @@ class AnalyseDetail(AbstractModel):
 
 
 class AnalyseHeaderDetail(AbstractModel):
-    """成本分析表头数据复杂类型
+    r"""成本分析表头数据复杂类型
 
     """
 
@@ -6024,7 +6024,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def HeadDetail(self):
-        """表头日期
+        r"""表头日期
         :rtype: list of AnalyseHeaderTimeDetail
         """
         return self._HeadDetail
@@ -6035,7 +6035,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Name(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Name
@@ -6046,7 +6046,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Total(self):
-        """总计
+        r"""总计
         :rtype: str
         """
         return self._Total
@@ -6076,7 +6076,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
 
 class AnalyseHeaderTimeDetail(AbstractModel):
-    """成本分析header表头数据
+    r"""成本分析header表头数据
 
     """
 
@@ -6089,7 +6089,7 @@ class AnalyseHeaderTimeDetail(AbstractModel):
 
     @property
     def Name(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Name
@@ -6112,7 +6112,7 @@ class AnalyseHeaderTimeDetail(AbstractModel):
 
 
 class AnalyseOwnerUinDetail(AbstractModel):
-    """成本分析使用者uin复杂类型
+    r"""成本分析使用者uin复杂类型
 
     """
 
@@ -6125,7 +6125,7 @@ class AnalyseOwnerUinDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者uin
+        r"""使用者uin
         :rtype: str
         """
         return self._OwnerUin
@@ -6148,7 +6148,7 @@ class AnalyseOwnerUinDetail(AbstractModel):
 
 
 class AnalysePayModeDetail(AbstractModel):
-    """成本分析支付方式复杂类型
+    r"""成本分析支付方式复杂类型
 
     """
 
@@ -6164,7 +6164,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式code
+        r"""计费模式code
         :rtype: str
         """
         return self._PayMode
@@ -6175,7 +6175,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式Name
+        r"""计费模式Name
         :rtype: str
         """
         return self._PayModeName
@@ -6199,7 +6199,7 @@ class AnalysePayModeDetail(AbstractModel):
 
 
 class AnalyseProjectDetail(AbstractModel):
-    """成本分析项目返回复杂类型
+    r"""成本分析项目返回复杂类型
 
     """
 
@@ -6215,7 +6215,7 @@ class AnalyseProjectDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目id
+        r"""项目id
         :rtype: str
         """
         return self._ProjectId
@@ -6226,7 +6226,7 @@ class AnalyseProjectDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """默认项目
+        r"""默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -6250,7 +6250,7 @@ class AnalyseProjectDetail(AbstractModel):
 
 
 class AnalyseRegionDetail(AbstractModel):
-    """成本分析地域返回复杂类型
+    r"""成本分析地域返回复杂类型
 
     """
 
@@ -6266,7 +6266,7 @@ class AnalyseRegionDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域id
+        r"""地域id
         :rtype: str
         """
         return self._RegionId
@@ -6277,7 +6277,7 @@ class AnalyseRegionDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -6301,7 +6301,7 @@ class AnalyseRegionDetail(AbstractModel):
 
 
 class AnalyseTimeDetail(AbstractModel):
-    """成本分返回值复杂类型
+    r"""成本分返回值复杂类型
 
     """
 
@@ -6317,7 +6317,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Time(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Time
@@ -6328,7 +6328,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Money(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Money
@@ -6352,7 +6352,7 @@ class AnalyseTimeDetail(AbstractModel):
 
 
 class AnalyseZoneDetail(AbstractModel):
-    """成本分析可用区复杂类型
+    r"""成本分析可用区复杂类型
 
     """
 
@@ -6368,7 +6368,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区id
+        r"""可用区id
         :rtype: str
         """
         return self._ZoneId
@@ -6379,7 +6379,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区Name
+        r"""可用区Name
         :rtype: str
         """
         return self._ZoneName
@@ -6403,7 +6403,7 @@ class AnalyseZoneDetail(AbstractModel):
 
 
 class ApplicableProducts(AbstractModel):
-    """适用商品信息
+    r"""适用商品信息
 
     """
 
@@ -6419,7 +6419,7 @@ class ApplicableProducts(AbstractModel):
 
     @property
     def GoodsName(self):
-        """适用商品名称，值为“全产品通用”或商品名称组成的string，以","分割。
+        r"""适用商品名称，值为“全产品通用”或商品名称组成的string，以","分割。
         :rtype: str
         """
         return self._GoodsName
@@ -6430,7 +6430,7 @@ class ApplicableProducts(AbstractModel):
 
     @property
     def PayMode(self):
-        """postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。如GoodsName为多个商品名以","分割组成的string，而PayMode为"*"，表示每一件商品的模式都为"*"。
+        r"""postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。如GoodsName为多个商品名以","分割组成的string，而PayMode为"*"，表示每一件商品的模式都为"*"。
         :rtype: str
         """
         return self._PayMode
@@ -6454,7 +6454,7 @@ class ApplicableProducts(AbstractModel):
 
 
 class BillActionType(AbstractModel):
-    """交易类型筛选列表
+    r"""交易类型筛选列表
 
     """
 
@@ -6470,7 +6470,7 @@ class BillActionType(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -6481,7 +6481,7 @@ class BillActionType(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：明细交易类型
+        r"""交易类型：明细交易类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -6505,7 +6505,7 @@ class BillActionType(AbstractModel):
 
 
 class BillBusiness(AbstractModel):
-    """产品筛选列表
+    r"""产品筛选列表
 
     """
 
@@ -6522,7 +6522,7 @@ class BillBusiness(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
 
         :rtype: str
         """
@@ -6534,7 +6534,7 @@ class BillBusiness(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -6558,7 +6558,7 @@ class BillBusiness(AbstractModel):
 
 
 class BillBusinessLink(AbstractModel):
-    """产品级联筛选值
+    r"""产品级联筛选值
 
     """
 
@@ -6577,7 +6577,7 @@ class BillBusinessLink(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -6588,7 +6588,7 @@ class BillBusinessLink(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -6599,7 +6599,7 @@ class BillBusinessLink(AbstractModel):
 
     @property
     def Children(self):
-        """子产品
+        r"""子产品
         :rtype: list of BillProductLink
         """
         return self._Children
@@ -6629,7 +6629,7 @@ class BillBusinessLink(AbstractModel):
 
 
 class BillComponent(AbstractModel):
-    """组件类型筛选列表
+    r"""组件类型筛选列表
 
     """
 
@@ -6645,7 +6645,7 @@ class BillComponent(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """组件类型编码
+        r"""组件类型编码
         :rtype: str
         """
         return self._ComponentCode
@@ -6656,7 +6656,7 @@ class BillComponent(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """组件类型：用户购买的产品或服务对应的组件大类
+        r"""组件类型：用户购买的产品或服务对应的组件大类
         :rtype: str
         """
         return self._ComponentCodeName
@@ -6680,7 +6680,7 @@ class BillComponent(AbstractModel):
 
 
 class BillDays(AbstractModel):
-    """日期筛选列表
+    r"""日期筛选列表
 
     """
 
@@ -6693,7 +6693,7 @@ class BillDays(AbstractModel):
 
     @property
     def BillDay(self):
-        """日期：结算日期
+        r"""日期：结算日期
         :rtype: str
         """
         return self._BillDay
@@ -6716,7 +6716,7 @@ class BillDays(AbstractModel):
 
 
 class BillDetail(AbstractModel):
-    """账单明细数据对象
+    r"""账单明细数据对象
 
     """
 
@@ -6838,7 +6838,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -6849,7 +6849,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -6860,7 +6860,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -6871,7 +6871,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -6882,7 +6882,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域：资源所属地域，如华南地区（广州）
+        r"""地域：资源所属地域，如华南地区（广州）
         :rtype: str
         """
         return self._RegionName
@@ -6893,7 +6893,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区，如广州三区
+        r"""可用区：资源所属可用区，如广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -6904,7 +6904,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
         :rtype: str
         """
         return self._ResourceId
@@ -6915,7 +6915,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        r"""资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
         :rtype: str
         """
         return self._ResourceName
@@ -6926,7 +6926,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -6937,7 +6937,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。
+        r"""订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。
 
         :rtype: str
         """
@@ -6949,7 +6949,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillId(self):
-        """交易ID：结算扣费单号
+        r"""交易ID：结算扣费单号
         :rtype: str
         """
         return self._BillId
@@ -6960,7 +6960,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -6971,7 +6971,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -6982,7 +6982,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -6993,7 +6993,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        """组件列表
+        r"""组件列表
         :rtype: list of BillDetailComponent
         """
         return self._ComponentSet
@@ -7004,7 +7004,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -7015,7 +7015,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者UIN：实际使用资源的账号 ID
+        r"""使用者UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -7026,7 +7026,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :rtype: str
         """
         return self._OperateUin
@@ -7037,7 +7037,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -7048,7 +7048,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -7059,7 +7059,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -7070,7 +7070,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -7081,7 +7081,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -7092,7 +7092,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -7103,7 +7103,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PriceInfo(self):
-        """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        r"""价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
         :rtype: list of str
         """
         return self._PriceInfo
@@ -7114,7 +7114,7 @@ class BillDetail(AbstractModel):
 
     @property
     def AssociatedOrder(self):
-        """关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+        r"""关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -7125,7 +7125,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Formula(self):
-        """计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        r"""计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
         :rtype: str
         """
         return self._Formula
@@ -7136,7 +7136,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FormulaUrl(self):
-        """计费规则：各产品详细的计费规则官网说明链接
+        r"""计费规则：各产品详细的计费规则官网说明链接
         :rtype: str
         """
         return self._FormulaUrl
@@ -7147,7 +7147,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillDay(self):
-        """账单归属日
+        r"""账单归属日
         :rtype: str
         """
         return self._BillDay
@@ -7158,7 +7158,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单归属月
+        r"""账单归属月
         :rtype: str
         """
         return self._BillMonth
@@ -7169,7 +7169,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Id(self):
-        """账单记录ID
+        r"""账单记录ID
         :rtype: str
         """
         return self._Id
@@ -7180,7 +7180,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionType(self):
-        """国内国际编码
+        r"""国内国际编码
         :rtype: str
         """
         return self._RegionType
@@ -7191,7 +7191,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        """国内国际：资源所属区域类型（国内、国际）
+        r"""国内国际：资源所属区域类型（国内、国际）
         :rtype: str
         """
         return self._RegionTypeName
@@ -7202,7 +7202,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ReserveDetail(self):
-        """备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+        r"""备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
         :rtype: str
         """
         return self._ReserveDetail
@@ -7213,7 +7213,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountObject(self):
-        """优惠对象
+        r"""优惠对象
         :rtype: str
         """
         return self._DiscountObject
@@ -7224,7 +7224,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountType(self):
-        """优惠类型
+        r"""优惠类型
         :rtype: str
         """
         return self._DiscountType
@@ -7235,7 +7235,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountContent(self):
-        """优惠内容
+        r"""优惠内容
         :rtype: str
         """
         return self._DiscountContent
@@ -7306,7 +7306,7 @@ class BillDetail(AbstractModel):
 
 
 class BillDetailAssociatedOrder(AbstractModel):
-    """明细账单关联单据信息
+    r"""明细账单关联单据信息
 
     """
 
@@ -7334,7 +7334,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def PrepayPurchase(self):
-        """新购订单
+        r"""新购订单
         :rtype: str
         """
         return self._PrepayPurchase
@@ -7345,7 +7345,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def PrepayRenew(self):
-        """续费订单
+        r"""续费订单
         :rtype: str
         """
         return self._PrepayRenew
@@ -7356,7 +7356,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def PrepayModifyUp(self):
-        """升配订单
+        r"""升配订单
         :rtype: str
         """
         return self._PrepayModifyUp
@@ -7367,7 +7367,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def ReverseOrder(self):
-        """冲销订单
+        r"""冲销订单
         :rtype: str
         """
         return self._ReverseOrder
@@ -7378,7 +7378,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def NewOrder(self):
-        """优惠调整后订单
+        r"""优惠调整后订单
         :rtype: str
         """
         return self._NewOrder
@@ -7389,7 +7389,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     @property
     def Original(self):
-        """优惠调整前订单
+        r"""优惠调整前订单
         :rtype: str
         """
         return self._Original
@@ -7417,7 +7417,7 @@ class BillDetailAssociatedOrder(AbstractModel):
 
 
 class BillDetailComponent(AbstractModel):
-    """账单明细组件对象
+    r"""账单明细组件对象
 
     """
 
@@ -7518,7 +7518,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """组件类型：用户购买的产品或服务对应的组件大类，例如：云服务器 CVM 的组件：CPU、内存等
+        r"""组件类型：用户购买的产品或服务对应的组件大类，例如：云服务器 CVM 的组件：CPU、内存等
         :rtype: str
         """
         return self._ComponentCodeName
@@ -7529,7 +7529,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""组件名称：用户购买的产品或服务，所包含的具体组件
         :rtype: str
         """
         return self._ItemCodeName
@@ -7540,7 +7540,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def SinglePrice(self):
-        """组件刊例价：组件的官网原始单价（如果客户享受一口价/合同价则默认不展示）
+        r"""组件刊例价：组件的官网原始单价（如果客户享受一口价/合同价则默认不展示）
         :rtype: str
         """
         return self._SinglePrice
@@ -7553,7 +7553,7 @@ class BillDetailComponent(AbstractModel):
     def SpecifiedPrice(self):
         warnings.warn("parameter `SpecifiedPrice` is deprecated", DeprecationWarning) 
 
-        """组件指定价（已废弃）
+        r"""组件指定价（已废弃）
         :rtype: str
         """
         return self._SpecifiedPrice
@@ -7566,7 +7566,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def PriceUnit(self):
-        """组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
+        r"""组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
         :rtype: str
         """
         return self._PriceUnit
@@ -7577,7 +7577,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """组件用量：该组件实际结算用量，组件用量 = 组件原始用量 - 抵扣用量（含资源包
+        r"""组件用量：该组件实际结算用量，组件用量 = 组件原始用量 - 抵扣用量（含资源包
         :rtype: str
         """
         return self._UsedAmount
@@ -7588,7 +7588,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        """组件用量单位：组件用量对应的单位
+        r"""组件用量单位：组件用量对应的单位
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -7599,7 +7599,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def RealTotalMeasure(self):
-        """原始用量/时长：组件被资源包抵扣前的原始用量/时长
+        r"""原始用量/时长：组件被资源包抵扣前的原始用量/时长
         :rtype: str
         """
         return self._RealTotalMeasure
@@ -7610,7 +7610,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def DeductedMeasure(self):
-        """抵扣用量/时长（含资源包）：组件被资源包抵扣的用量/时长
+        r"""抵扣用量/时长（含资源包）：组件被资源包抵扣的用量/时长
         :rtype: str
         """
         return self._DeductedMeasure
@@ -7621,7 +7621,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """使用时长：资源使用的时长
+        r"""使用时长：资源使用的时长
         :rtype: str
         """
         return self._TimeSpan
@@ -7632,7 +7632,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def TimeUnitName(self):
-        """时长单位：资源使用时长的单位
+        r"""时长单位：资源使用时长的单位
         :rtype: str
         """
         return self._TimeUnitName
@@ -7643,7 +7643,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def Cost(self):
-        """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+        r"""组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
         :rtype: str
         """
         return self._Cost
@@ -7654,7 +7654,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        r"""折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
         :rtype: str
         """
         return self._Discount
@@ -7665,7 +7665,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ReduceType(self):
-        """优惠类型
+        r"""优惠类型
         :rtype: str
         """
         return self._ReduceType
@@ -7676,7 +7676,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def RealCost(self):
-        """优惠后总价：优惠后总价=（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价=（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._RealCost
@@ -7687,7 +7687,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -7698,7 +7698,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -7709,7 +7709,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -7720,7 +7720,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -7731,7 +7731,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ItemCode(self):
-        """组件类型编码
+        r"""组件类型编码
         :rtype: str
         """
         return self._ItemCode
@@ -7742,7 +7742,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: str
         """
         return self._ComponentCode
@@ -7753,7 +7753,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ContractPrice(self):
-        """组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+        r"""组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
         :rtype: str
         """
         return self._ContractPrice
@@ -7764,7 +7764,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
         :rtype: str
         """
         return self._InstanceType
@@ -7775,7 +7775,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def RiTimeSpan(self):
-        """预留实例抵扣的使用时长：本产品或服务使用预留实例抵扣的使用时长
+        r"""预留实例抵扣的使用时长：本产品或服务使用预留实例抵扣的使用时长
         :rtype: str
         """
         return self._RiTimeSpan
@@ -7786,7 +7786,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def OriginalCostWithRI(self):
-        """预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额
+        r"""预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -7797,7 +7797,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def SPDeductionRate(self):
-        """节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+        r"""节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
         :rtype: str
         """
         return self._SPDeductionRate
@@ -7810,7 +7810,7 @@ class BillDetailComponent(AbstractModel):
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """节省计划抵扣金额（已废弃）
+        r"""节省计划抵扣金额（已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7824,7 +7824,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def OriginalCostWithSP(self):
-        """节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
+        r"""节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -7835,7 +7835,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def BlendedDiscount(self):
-        """混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
+        r"""混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
         :rtype: str
         """
         return self._BlendedDiscount
@@ -7846,7 +7846,7 @@ class BillDetailComponent(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        """配置描述：资源配置规格信息
+        r"""配置描述：资源配置规格信息
         :rtype: list of BillDetailComponentConfig
         """
         return self._ComponentConfig
@@ -7903,7 +7903,7 @@ class BillDetailComponent(AbstractModel):
 
 
 class BillDetailComponentConfig(AbstractModel):
-    """明细账单配置描述结构
+    r"""明细账单配置描述结构
 
     """
 
@@ -7919,7 +7919,7 @@ class BillDetailComponentConfig(AbstractModel):
 
     @property
     def Name(self):
-        """配置描述名称
+        r"""配置描述名称
         :rtype: str
         """
         return self._Name
@@ -7930,7 +7930,7 @@ class BillDetailComponentConfig(AbstractModel):
 
     @property
     def Value(self):
-        """配置描述值
+        r"""配置描述值
         :rtype: str
         """
         return self._Value
@@ -7954,7 +7954,7 @@ class BillDetailComponentConfig(AbstractModel):
 
 
 class BillDistributionResourceSummary(AbstractModel):
-    """经销账单资源汇总数据对象
+    r"""经销账单资源汇总数据对象
 
     """
 
@@ -8078,7 +8078,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -8089,7 +8089,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -8100,7 +8100,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -8111,7 +8111,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -8122,7 +8122,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域：资源所属地域，如华南地区（广州）
+        r"""地域：资源所属地域，如华南地区（广州）
         :rtype: str
         """
         return self._RegionName
@@ -8133,7 +8133,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区，如广州三区
+        r"""可用区：资源所属可用区，如广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -8144,7 +8144,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
+        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
         :rtype: str
         """
         return self._ResourceId
@@ -8155,7 +8155,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        r"""资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
         :rtype: str
         """
         return self._ResourceName
@@ -8166,7 +8166,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -8177,7 +8177,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID：包年包月计费模式下订购的订单号
+        r"""订单ID：包年包月计费模式下订购的订单号
         :rtype: str
         """
         return self._OrderId
@@ -8188,7 +8188,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -8199,7 +8199,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -8210,7 +8210,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -8221,7 +8221,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ConfigDesc(self):
-        """配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
+        r"""配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
         :rtype: str
         """
         return self._ConfigDesc
@@ -8232,7 +8232,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ExtendField1(self):
-        """扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField1
@@ -8243,7 +8243,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ExtendField2(self):
-        """扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField2
@@ -8254,7 +8254,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+        r"""原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
         :rtype: str
         """
         return self._TotalCost
@@ -8265,7 +8265,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        r"""折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
         :rtype: str
         """
         return self._Discount
@@ -8276,7 +8276,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ReduceType(self):
-        """优惠类型
+        r"""优惠类型
         :rtype: str
         """
         return self._ReduceType
@@ -8287,7 +8287,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -8298,7 +8298,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -8309,7 +8309,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -8320,7 +8320,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -8331,7 +8331,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -8342,7 +8342,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ExtendField3(self):
-        """扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField3
@@ -8353,7 +8353,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ExtendField4(self):
-        """扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField4
@@ -8364,7 +8364,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ExtendField5(self):
-        """扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField5
@@ -8375,7 +8375,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -8386,7 +8386,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者UIN：实际使用资源的账号 ID
+        r"""使用者UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -8397,7 +8397,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :rtype: str
         """
         return self._OperateUin
@@ -8408,7 +8408,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -8419,7 +8419,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -8430,7 +8430,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -8441,7 +8441,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
         :rtype: str
         """
         return self._InstanceType
@@ -8452,7 +8452,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithRI(self):
-        """预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
+        r"""预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -8465,7 +8465,7 @@ class BillDistributionResourceSummary(AbstractModel):
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """节省计划抵扣金额（已废弃）
+        r"""节省计划抵扣金额（已废弃）
         :rtype: str
         """
         return self._SPDeduction
@@ -8478,7 +8478,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithSP(self):
-        """节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
+        r"""节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -8489,7 +8489,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单归属月
+        r"""账单归属月
         :rtype: str
         """
         return self._BillMonth
@@ -8554,7 +8554,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
 
 class BillInstanceType(AbstractModel):
-    """实例类型筛选列表
+    r"""实例类型筛选列表
 
     """
 
@@ -8570,7 +8570,7 @@ class BillInstanceType(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: str
         """
         return self._InstanceType
@@ -8581,7 +8581,7 @@ class BillInstanceType(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
         :rtype: str
         """
         return self._InstanceTypeName
@@ -8605,7 +8605,7 @@ class BillInstanceType(AbstractModel):
 
 
 class BillItem(AbstractModel):
-    """组件名称筛选列表
+    r"""组件名称筛选列表
 
     """
 
@@ -8621,7 +8621,7 @@ class BillItem(AbstractModel):
 
     @property
     def ItemCode(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: str
         """
         return self._ItemCode
@@ -8632,7 +8632,7 @@ class BillItem(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""组件名称：用户购买的产品或服务，所包含的具体组件
         :rtype: str
         """
         return self._ItemCodeName
@@ -8656,7 +8656,7 @@ class BillItem(AbstractModel):
 
 
 class BillOperateUin(AbstractModel):
-    """操作者 UIN筛选列表
+    r"""操作者 UIN筛选列表
 
     """
 
@@ -8669,7 +8669,7 @@ class BillOperateUin(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
         :rtype: str
         """
         return self._OperateUin
@@ -8692,7 +8692,7 @@ class BillOperateUin(AbstractModel):
 
 
 class BillOwnerUin(AbstractModel):
-    """使用者 UIN筛选列表
+    r"""使用者 UIN筛选列表
 
     """
 
@@ -8705,7 +8705,7 @@ class BillOwnerUin(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN：实际使用资源的账号 ID
+        r"""使用者 UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -8728,7 +8728,7 @@ class BillOwnerUin(AbstractModel):
 
 
 class BillPayMode(AbstractModel):
-    """计费模式筛选列表
+    r"""计费模式筛选列表
 
     """
 
@@ -8744,7 +8744,7 @@ class BillPayMode(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -8755,7 +8755,7 @@ class BillPayMode(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -8779,7 +8779,7 @@ class BillPayMode(AbstractModel):
 
 
 class BillProduct(AbstractModel):
-    """子产品筛选列表
+    r"""子产品筛选列表
 
     """
 
@@ -8795,7 +8795,7 @@ class BillProduct(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -8806,7 +8806,7 @@ class BillProduct(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型
+        r"""子产品名称：用户采购的具体产品细分类型
         :rtype: str
         """
         return self._ProductCodeName
@@ -8830,7 +8830,7 @@ class BillProduct(AbstractModel):
 
 
 class BillProductLink(AbstractModel):
-    """分账条件子产品筛选
+    r"""分账条件子产品筛选
 
     """
 
@@ -8849,7 +8849,7 @@ class BillProductLink(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -8860,7 +8860,7 @@ class BillProductLink(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称
+        r"""子产品名称
         :rtype: str
         """
         return self._ProductCodeName
@@ -8871,7 +8871,7 @@ class BillProductLink(AbstractModel):
 
     @property
     def Children(self):
-        """组件名称
+        r"""组件名称
         :rtype: list of BillItem
         """
         return self._Children
@@ -8901,7 +8901,7 @@ class BillProductLink(AbstractModel):
 
 
 class BillProject(AbstractModel):
-    """项目筛选列表
+    r"""项目筛选列表
 
     """
 
@@ -8917,7 +8917,7 @@ class BillProject(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -8928,7 +8928,7 @@ class BillProject(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -8952,7 +8952,7 @@ class BillProject(AbstractModel):
 
 
 class BillRegion(AbstractModel):
-    """地域筛选列表
+    r"""地域筛选列表
 
     """
 
@@ -8968,7 +8968,7 @@ class BillRegion(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -8979,7 +8979,7 @@ class BillRegion(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域
+        r"""地域名称：资源所属地域
         :rtype: str
         """
         return self._RegionName
@@ -9003,7 +9003,7 @@ class BillRegion(AbstractModel):
 
 
 class BillResourceSummary(AbstractModel):
-    """账单资源汇总数据对象
+    r"""账单资源汇总数据对象
 
     """
 
@@ -9130,7 +9130,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -9141,7 +9141,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -9152,7 +9152,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -9163,7 +9163,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -9174,7 +9174,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域：资源所属地域，如华南地区（广州）
+        r"""地域：资源所属地域，如华南地区（广州）
         :rtype: str
         """
         return self._RegionName
@@ -9185,7 +9185,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区，如广州三区
+        r"""可用区：资源所属可用区，如广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -9196,7 +9196,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
+        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
         :rtype: str
         """
         return self._ResourceId
@@ -9207,7 +9207,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        r"""资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
         :rtype: str
         """
         return self._ResourceName
@@ -9218,7 +9218,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -9229,7 +9229,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID：包年包月计费模式下订购的订单号
+        r"""订单ID：包年包月计费模式下订购的订单号
         :rtype: str
         """
         return self._OrderId
@@ -9240,7 +9240,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -9251,7 +9251,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -9262,7 +9262,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -9273,7 +9273,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ConfigDesc(self):
-        """配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
+        r"""配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
         :rtype: str
         """
         return self._ConfigDesc
@@ -9284,7 +9284,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField1(self):
-        """扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField1
@@ -9295,7 +9295,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField2(self):
-        """扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField2
@@ -9306,7 +9306,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+        r"""原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
         :rtype: str
         """
         return self._TotalCost
@@ -9317,7 +9317,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        r"""折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
         :rtype: str
         """
         return self._Discount
@@ -9328,7 +9328,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ReduceType(self):
-        """优惠类型
+        r"""优惠类型
         :rtype: str
         """
         return self._ReduceType
@@ -9339,7 +9339,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -9350,7 +9350,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -9361,7 +9361,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -9372,7 +9372,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -9383,7 +9383,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -9394,7 +9394,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField3(self):
-        """扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField3
@@ -9405,7 +9405,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField4(self):
-        """扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField4
@@ -9416,7 +9416,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField5(self):
-        """扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
+        r"""扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
         :rtype: str
         """
         return self._ExtendField5
@@ -9427,7 +9427,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -9438,7 +9438,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -9449,7 +9449,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者UIN：实际使用资源的账号 ID
+        r"""使用者UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -9460,7 +9460,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :rtype: str
         """
         return self._OperateUin
@@ -9471,7 +9471,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -9482,7 +9482,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -9493,7 +9493,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -9504,7 +9504,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
         :rtype: str
         """
         return self._InstanceType
@@ -9515,7 +9515,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithRI(self):
-        """预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
+        r"""预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -9528,7 +9528,7 @@ class BillResourceSummary(AbstractModel):
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """节省计划抵扣金额（已废弃）
+        r"""节省计划抵扣金额（已废弃）
         :rtype: str
         """
         return self._SPDeduction
@@ -9541,7 +9541,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithSP(self):
-        """节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
+        r"""节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -9552,7 +9552,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单归属月
+        r"""账单归属月
         :rtype: str
         """
         return self._BillMonth
@@ -9618,7 +9618,7 @@ class BillResourceSummary(AbstractModel):
 
 
 class BillTag(AbstractModel):
-    """标签筛选列表
+    r"""标签筛选列表
 
     """
 
@@ -9634,7 +9634,7 @@ class BillTag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -9645,7 +9645,7 @@ class BillTag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -9669,7 +9669,7 @@ class BillTag(AbstractModel):
 
 
 class BillTagInfo(AbstractModel):
-    """账单 Tag 信息
+    r"""账单 Tag 信息
 
     """
 
@@ -9685,7 +9685,7 @@ class BillTagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键
+        r"""分账标签键
         :rtype: str
         """
         return self._TagKey
@@ -9696,7 +9696,7 @@ class BillTagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -9720,7 +9720,7 @@ class BillTagInfo(AbstractModel):
 
 
 class BillTransactionInfo(AbstractModel):
-    """收支明细的流水信息
+    r"""收支明细的流水信息
 
     """
 
@@ -9763,7 +9763,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def ActionType(self):
-        """收支类型：deduct 扣费, recharge 充值, return 退费， block 冻结, unblock 解冻
+        r"""收支类型：deduct 扣费, recharge 充值, return 退费， block 冻结, unblock 解冻
         :rtype: str
         """
         return self._ActionType
@@ -9774,7 +9774,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def Amount(self):
-        """流水金额，单位（分）；正数表示入账，负数表示出账
+        r"""流水金额，单位（分）；正数表示入账，负数表示出账
         :rtype: int
         """
         return self._Amount
@@ -9785,7 +9785,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def Balance(self):
-        """可用余额，单位（分）；正数表示入账，负数表示出账
+        r"""可用余额，单位（分）；正数表示入账，负数表示出账
         :rtype: int
         """
         return self._Balance
@@ -9796,7 +9796,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def BillId(self):
-        """流水号，如20190131020000236005203583326401
+        r"""流水号，如20190131020000236005203583326401
         :rtype: str
         """
         return self._BillId
@@ -9807,7 +9807,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def OperationInfo(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._OperationInfo
@@ -9818,7 +9818,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def OperationTime(self):
-        """操作时间"2019-01-31 23:35:10.000"
+        r"""操作时间"2019-01-31 23:35:10.000"
         :rtype: str
         """
         return self._OperationTime
@@ -9829,7 +9829,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def Cash(self):
-        """现金账户余额，单位（分）
+        r"""现金账户余额，单位（分）
         :rtype: int
         """
         return self._Cash
@@ -9840,7 +9840,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def Incentive(self):
-        """赠送金余额，单位（分）
+        r"""赠送金余额，单位（分）
         :rtype: int
         """
         return self._Incentive
@@ -9851,7 +9851,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def Freezing(self):
-        """冻结余额，单位（分）
+        r"""冻结余额，单位（分）
         :rtype: int
         """
         return self._Freezing
@@ -9862,7 +9862,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def PayChannel(self):
-        """交易渠道
+        r"""交易渠道
         :rtype: str
         """
         return self._PayChannel
@@ -9873,7 +9873,7 @@ class BillTransactionInfo(AbstractModel):
 
     @property
     def DeductMode(self):
-        """扣费模式：trade 包年包月(预付费)，hourh  按量-小时结，hourd 按量-日结，hourm 按量-月结，month 按量-月结
+        r"""扣费模式：trade 包年包月(预付费)，hourh  按量-小时结，hourd 按量-日结，hourm 按量-月结，month 按量-月结
         :rtype: str
         """
         return self._DeductMode
@@ -9906,7 +9906,7 @@ class BillTransactionInfo(AbstractModel):
 
 
 class BillZoneId(AbstractModel):
-    """可用区筛选列表
+    r"""可用区筛选列表
 
     """
 
@@ -9922,7 +9922,7 @@ class BillZoneId(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: int
         """
         return self._ZoneId
@@ -9933,7 +9933,7 @@ class BillZoneId(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区
+        r"""可用区：资源所属可用区
         :rtype: str
         """
         return self._ZoneName
@@ -9957,7 +9957,7 @@ class BillZoneId(AbstractModel):
 
 
 class BusinessSummaryInfo(AbstractModel):
-    """产品汇总信息
+    r"""产品汇总信息
 
     """
 
@@ -9991,7 +9991,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -10002,7 +10002,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -10013,7 +10013,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -10024,7 +10024,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -10035,7 +10035,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -10046,7 +10046,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -10057,7 +10057,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -10068,7 +10068,7 @@ class BusinessSummaryInfo(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -10098,7 +10098,7 @@ class BusinessSummaryInfo(AbstractModel):
 
 
 class BusinessSummaryOverviewItem(AbstractModel):
-    """按产品汇总产品详情
+    r"""按产品汇总产品详情
 
     """
 
@@ -10138,7 +10138,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -10149,7 +10149,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -10160,7 +10160,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -10171,7 +10171,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -10182,7 +10182,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -10193,7 +10193,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -10204,7 +10204,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -10215,7 +10215,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -10226,7 +10226,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月份，格式2019-08
+        r"""账单月份，格式2019-08
         :rtype: str
         """
         return self._BillMonth
@@ -10237,7 +10237,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -10269,7 +10269,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
 
 class BusinessSummaryTotal(AbstractModel):
-    """按产品汇总总费用
+    r"""按产品汇总总费用
 
     """
 
@@ -10298,7 +10298,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
 
         :rtype: str
         """
@@ -10310,7 +10310,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -10321,7 +10321,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -10332,7 +10332,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -10343,7 +10343,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -10354,7 +10354,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -10382,7 +10382,7 @@ class BusinessSummaryTotal(AbstractModel):
 
 
 class ConditionBusiness(AbstractModel):
-    """产品过滤条件
+    r"""产品过滤条件
 
     """
 
@@ -10398,7 +10398,7 @@ class ConditionBusiness(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: str
         """
         return self._BusinessCode
@@ -10409,7 +10409,7 @@ class ConditionBusiness(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -10433,7 +10433,7 @@ class ConditionBusiness(AbstractModel):
 
 
 class ConditionPayMode(AbstractModel):
-    """付费模式过滤条件
+    r"""付费模式过滤条件
 
     """
 
@@ -10449,7 +10449,7 @@ class ConditionPayMode(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式
+        r"""付费模式
         :rtype: str
         """
         return self._PayMode
@@ -10460,7 +10460,7 @@ class ConditionPayMode(AbstractModel):
 
     @property
     def PayModeName(self):
-        """付费模式名称
+        r"""付费模式名称
         :rtype: str
         """
         return self._PayModeName
@@ -10484,7 +10484,7 @@ class ConditionPayMode(AbstractModel):
 
 
 class ConditionProject(AbstractModel):
-    """项目过滤条件
+    r"""项目过滤条件
 
     """
 
@@ -10500,7 +10500,7 @@ class ConditionProject(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: str
         """
         return self._ProjectId
@@ -10511,7 +10511,7 @@ class ConditionProject(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -10535,7 +10535,7 @@ class ConditionProject(AbstractModel):
 
 
 class ConditionRegion(AbstractModel):
-    """地域过滤条件
+    r"""地域过滤条件
 
     """
 
@@ -10551,7 +10551,7 @@ class ConditionRegion(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -10562,7 +10562,7 @@ class ConditionRegion(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -10586,7 +10586,7 @@ class ConditionRegion(AbstractModel):
 
 
 class Conditions(AbstractModel):
-    """账单筛选条件对象
+    r"""账单筛选条件对象
 
     """
 
@@ -10653,7 +10653,7 @@ class Conditions(AbstractModel):
 
     @property
     def TimeRange(self):
-        """只支持6和12两个值
+        r"""只支持6和12两个值
         :rtype: int
         """
         return self._TimeRange
@@ -10664,7 +10664,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: str
         """
         return self._BusinessCode
@@ -10675,7 +10675,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -10686,7 +10686,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -10697,7 +10697,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式，可选prePay和postPay
+        r"""付费模式，可选prePay和postPay
         :rtype: str
         """
         return self._PayMode
@@ -10708,7 +10708,7 @@ class Conditions(AbstractModel):
 
     @property
     def ResourceKeyword(self):
-        """资源关键字
+        r"""资源关键字
         :rtype: str
         """
         return self._ResourceKeyword
@@ -10719,7 +10719,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -10730,7 +10730,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProductCodes(self):
-        """子产品名称代码
+        r"""子产品名称代码
         :rtype: list of str
         """
         return self._ProductCodes
@@ -10741,7 +10741,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionIds(self):
-        """地域ID
+        r"""地域ID
         :rtype: list of int
         """
         return self._RegionIds
@@ -10752,7 +10752,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """项目ID
+        r"""项目ID
         :rtype: list of int
         """
         return self._ProjectIds
@@ -10763,7 +10763,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayModes(self):
-        """付费模式，可选prePay和postPay
+        r"""付费模式，可选prePay和postPay
         :rtype: list of str
         """
         return self._PayModes
@@ -10774,7 +10774,7 @@ class Conditions(AbstractModel):
 
     @property
     def ActionTypes(self):
-        """交易类型
+        r"""交易类型
         :rtype: list of str
         """
         return self._ActionTypes
@@ -10785,7 +10785,7 @@ class Conditions(AbstractModel):
 
     @property
     def HideFreeCost(self):
-        """是否隐藏0元流水
+        r"""是否隐藏0元流水
         :rtype: int
         """
         return self._HideFreeCost
@@ -10796,7 +10796,7 @@ class Conditions(AbstractModel):
 
     @property
     def OrderByCost(self):
-        """排序规则，可选desc和asc
+        r"""排序规则，可选desc和asc
         :rtype: str
         """
         return self._OrderByCost
@@ -10807,7 +10807,7 @@ class Conditions(AbstractModel):
 
     @property
     def BillIds(self):
-        """交易ID
+        r"""交易ID
         :rtype: list of str
         """
         return self._BillIds
@@ -10818,7 +10818,7 @@ class Conditions(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        """组件编码
+        r"""组件编码
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -10829,7 +10829,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileIds(self):
-        """文件ID
+        r"""文件ID
         :rtype: list of str
         """
         return self._FileIds
@@ -10840,7 +10840,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileTypes(self):
-        """文件类型
+        r"""文件类型
         :rtype: list of str
         """
         return self._FileTypes
@@ -10851,7 +10851,7 @@ class Conditions(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: list of int non-negative
         """
         return self._Status
@@ -10892,7 +10892,7 @@ class Conditions(AbstractModel):
 
 
 class ConsumptionBusinessSummaryDataItem(AbstractModel):
-    """消耗按产品汇总详情
+    r"""消耗按产品汇总详情
 
     """
 
@@ -10929,7 +10929,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: str
         """
         return self._BusinessCode
@@ -10940,7 +10940,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -10951,7 +10951,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """折后总价
+        r"""折后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -10962,7 +10962,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        """费用趋势
+        r"""费用趋势
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -10973,7 +10973,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金
+        r"""现金
         :rtype: str
         """
         return self._CashPayAmount
@@ -10984,7 +10984,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金
+        r"""赠送金
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -10995,7 +10995,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券
+        r"""代金券
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11006,7 +11006,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金
+        r"""分成金
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11017,7 +11017,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称（仅在地域汇总总展示）
+        r"""地域名称（仅在地域汇总总展示）
         :rtype: str
         """
         return self._RegionName
@@ -11050,7 +11050,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
 
 class ConsumptionProjectSummaryDataItem(AbstractModel):
-    """消耗按项目汇总详情
+    r"""消耗按项目汇总详情
 
     """
 
@@ -11087,7 +11087,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: str
         """
         return self._ProjectId
@@ -11098,7 +11098,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -11109,7 +11109,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """折后总价
+        r"""折后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -11120,7 +11120,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        """趋势
+        r"""趋势
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -11131,7 +11131,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def Business(self):
-        """产品消耗详情
+        r"""产品消耗详情
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -11142,7 +11142,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金
+        r"""现金
         :rtype: str
         """
         return self._CashPayAmount
@@ -11153,7 +11153,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金
+        r"""赠送金
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -11164,7 +11164,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券
+        r"""代金券
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11175,7 +11175,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金
+        r"""分成金
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11213,7 +11213,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
 
 class ConsumptionRegionSummaryDataItem(AbstractModel):
-    """消耗按地域汇总详情
+    r"""消耗按地域汇总详情
 
     """
 
@@ -11250,7 +11250,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -11261,7 +11261,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -11272,7 +11272,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """折后总价
+        r"""折后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -11283,7 +11283,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        """趋势
+        r"""趋势
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -11294,7 +11294,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def Business(self):
-        """产品消费详情
+        r"""产品消费详情
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -11305,7 +11305,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金
+        r"""现金
         :rtype: str
         """
         return self._CashPayAmount
@@ -11316,7 +11316,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券
+        r"""代金券
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11327,7 +11327,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金
+        r"""赠送金
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -11338,7 +11338,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金
+        r"""分成金
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11376,7 +11376,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
 
 class ConsumptionResourceSummaryConditionValue(AbstractModel):
-    """消耗按资源汇总过滤条件
+    r"""消耗按资源汇总过滤条件
 
     """
 
@@ -11398,7 +11398,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Business(self):
-        """产品列表
+        r"""产品列表
         :rtype: list of ConditionBusiness
         """
         return self._Business
@@ -11409,7 +11409,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Project(self):
-        """项目列表
+        r"""项目列表
         :rtype: list of ConditionProject
         """
         return self._Project
@@ -11420,7 +11420,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Region(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of ConditionRegion
         """
         return self._Region
@@ -11431,7 +11431,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式列表
+        r"""付费模式列表
         :rtype: list of ConditionPayMode
         """
         return self._PayMode
@@ -11477,7 +11477,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
 
 class ConsumptionResourceSummaryDataItem(AbstractModel):
-    """消耗按资源汇总详情
+    r"""消耗按资源汇总详情
 
     """
 
@@ -11607,7 +11607,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -11618,7 +11618,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._ResourceName
@@ -11629,7 +11629,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """折后总价
+        r"""折后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -11640,7 +11640,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金花费
+        r"""现金花费
         :rtype: str
         """
         return self._CashPayAmount
@@ -11651,7 +11651,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: str
         """
         return self._ProjectId
@@ -11662,7 +11662,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -11673,7 +11673,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -11684,7 +11684,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称
+        r"""地域名称
         :rtype: str
         """
         return self._RegionName
@@ -11695,7 +11695,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式
+        r"""付费模式
         :rtype: str
         """
         return self._PayMode
@@ -11706,7 +11706,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        """付费模式名称
+        r"""付费模式名称
         :rtype: str
         """
         return self._PayModeName
@@ -11717,7 +11717,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
         :rtype: str
         """
         return self._BusinessCode
@@ -11728,7 +11728,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -11739,7 +11739,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ConsumptionTypeName(self):
-        """消耗类型
+        r"""消耗类型
         :rtype: str
         """
         return self._ConsumptionTypeName
@@ -11750,7 +11750,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RealCost(self):
-        """折前价
+        r"""折前价
         :rtype: str
         """
         return self._RealCost
@@ -11761,7 +11761,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """费用起始时间
+        r"""费用起始时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -11772,7 +11772,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """费用结束时间
+        r"""费用结束时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -11783,7 +11783,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def DayDiff(self):
-        """天数
+        r"""天数
         :rtype: str
         """
         return self._DayDiff
@@ -11794,7 +11794,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def DailyTotalCost(self):
-        """每日消耗
+        r"""每日消耗
         :rtype: str
         """
         return self._DailyTotalCost
@@ -11805,7 +11805,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单号
+        r"""订单号
         :rtype: str
         """
         return self._OrderId
@@ -11816,7 +11816,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券
+        r"""代金券
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11827,7 +11827,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金
+        r"""赠送金
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -11838,7 +11838,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金
+        r"""分成金
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11849,7 +11849,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -11860,7 +11860,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者UIN：实际使用资源的账号 ID
+        r"""使用者UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -11871,7 +11871,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :rtype: str
         """
         return self._OperateUin
@@ -11882,7 +11882,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -11893,7 +11893,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -11904,7 +11904,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionType(self):
-        """地域类型
+        r"""地域类型
         :rtype: str
         """
         return self._RegionType
@@ -11915,7 +11915,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        """地域类型名称
+        r"""地域类型名称
         :rtype: str
         """
         return self._RegionTypeName
@@ -11926,7 +11926,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend1(self):
-        """扩展字段1
+        r"""扩展字段1
         :rtype: str
         """
         return self._Extend1
@@ -11937,7 +11937,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend2(self):
-        """扩展字段2
+        r"""扩展字段2
         :rtype: str
         """
         return self._Extend2
@@ -11948,7 +11948,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend3(self):
-        """扩展字段3
+        r"""扩展字段3
         :rtype: str
         """
         return self._Extend3
@@ -11959,7 +11959,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend4(self):
-        """扩展字段4
+        r"""扩展字段4
         :rtype: str
         """
         return self._Extend4
@@ -11970,7 +11970,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend5(self):
-        """扩展字段5
+        r"""扩展字段5
         :rtype: str
         """
         return self._Extend5
@@ -11981,7 +11981,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -11992,7 +11992,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型名称
+        r"""实例类型名称
         :rtype: str
         """
         return self._InstanceTypeName
@@ -12003,7 +12003,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -12014,7 +12014,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区，如广州三区
+        r"""可用区：资源所属可用区，如广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -12025,7 +12025,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        """配置描述
+        r"""配置描述
         :rtype: str
         """
         return self._ComponentConfig
@@ -12036,7 +12036,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: str
         """
         return self._Tags
@@ -12098,7 +12098,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
 
 class ConsumptionSummaryTotal(AbstractModel):
-    """消耗汇总详情
+    r"""消耗汇总详情
 
     """
 
@@ -12111,7 +12111,7 @@ class ConsumptionSummaryTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """折后总价
+        r"""折后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -12134,7 +12134,7 @@ class ConsumptionSummaryTotal(AbstractModel):
 
 
 class ConsumptionSummaryTrend(AbstractModel):
-    """消耗费用趋势
+    r"""消耗费用趋势
 
     """
 
@@ -12150,7 +12150,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
     @property
     def Type(self):
-        """趋势类型，upward上升/downward下降/none无
+        r"""趋势类型，upward上升/downward下降/none无
         :rtype: str
         """
         return self._Type
@@ -12161,7 +12161,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
     @property
     def Value(self):
-        """趋势值，Type为none是该字段值为null
+        r"""趋势值，Type为none是该字段值为null
         :rtype: str
         """
         return self._Value
@@ -12185,7 +12185,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
 
 class CosDetailSets(AbstractModel):
-    """cos产品用量明细返回数据结构
+    r"""cos产品用量明细返回数据结构
 
     """
 
@@ -12216,7 +12216,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def BucketName(self):
-        """存储桶名称
+        r"""存储桶名称
         :rtype: str
         """
         return self._BucketName
@@ -12227,7 +12227,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageBeginTime(self):
-        """用量开始时间
+        r"""用量开始时间
         :rtype: str
         """
         return self._DosageBeginTime
@@ -12238,7 +12238,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageEndTime(self):
-        """用量结束时间
+        r"""用量结束时间
         :rtype: str
         """
         return self._DosageEndTime
@@ -12249,7 +12249,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def SubProductCodeName(self):
-        """子产品名称
+        r"""子产品名称
         :rtype: str
         """
         return self._SubProductCodeName
@@ -12260,7 +12260,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def BillingItemCodeName(self):
-        """计费项名称
+        r"""计费项名称
         :rtype: str
         """
         return self._BillingItemCodeName
@@ -12271,7 +12271,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageValue(self):
-        """用量
+        r"""用量
         :rtype: str
         """
         return self._DosageValue
@@ -12282,7 +12282,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -12311,7 +12311,7 @@ class CosDetailSets(AbstractModel):
 
 
 class CostComponentSet(AbstractModel):
-    """消耗组件明细
+    r"""消耗组件明细
 
     """
 
@@ -12357,7 +12357,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """组件类型名称
+        r"""组件类型名称
         :rtype: str
         """
         return self._ComponentCodeName
@@ -12368,7 +12368,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称
+        r"""组件名称
         :rtype: str
         """
         return self._ItemCodeName
@@ -12379,7 +12379,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def SinglePrice(self):
-        """刊例价
+        r"""刊例价
         :rtype: str
         """
         return self._SinglePrice
@@ -12390,7 +12390,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def PriceUnit(self):
-        """刊例价单位
+        r"""刊例价单位
         :rtype: str
         """
         return self._PriceUnit
@@ -12401,7 +12401,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """用量
+        r"""用量
         :rtype: str
         """
         return self._UsedAmount
@@ -12412,7 +12412,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        """用量单位
+        r"""用量单位
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -12423,7 +12423,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Cost(self):
-        """原价
+        r"""原价
         :rtype: str
         """
         return self._Cost
@@ -12434,7 +12434,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣
+        r"""折扣
         :rtype: str
         """
         return self._Discount
@@ -12445,7 +12445,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def RealCost(self):
-        """折后价
+        r"""折后价
         :rtype: str
         """
         return self._RealCost
@@ -12456,7 +12456,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券支付金额
+        r"""代金券支付金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -12467,7 +12467,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金支付金额
+        r"""现金支付金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -12478,7 +12478,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送金支付金额
+        r"""赠送金支付金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -12512,7 +12512,7 @@ class CostComponentSet(AbstractModel):
 
 
 class CostDetail(AbstractModel):
-    """消耗明细数据类型
+    r"""消耗明细数据类型
 
     """
 
@@ -12570,7 +12570,7 @@ class CostDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者uin
+        r"""支付者uin
         :rtype: str
         """
         return self._PayerUin
@@ -12581,7 +12581,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._BusinessCodeName
@@ -12592,7 +12592,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称
+        r"""子产品名称
         :rtype: str
         """
         return self._ProductCodeName
@@ -12603,7 +12603,7 @@ class CostDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式名称
+        r"""计费模式名称
         :rtype: str
         """
         return self._PayModeName
@@ -12614,7 +12614,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -12625,7 +12625,7 @@ class CostDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """区域名称
+        r"""区域名称
         :rtype: str
         """
         return self._RegionName
@@ -12636,7 +12636,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """地区名称
+        r"""地区名称
         :rtype: str
         """
         return self._ZoneName
@@ -12647,7 +12647,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -12658,7 +12658,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._ResourceName
@@ -12669,7 +12669,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """类型名称
+        r"""类型名称
         :rtype: str
         """
         return self._ActionTypeName
@@ -12680,7 +12680,7 @@ class CostDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单id
+        r"""订单id
         :rtype: str
         """
         return self._OrderId
@@ -12691,7 +12691,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BillId(self):
-        """交易id
+        r"""交易id
         :rtype: str
         """
         return self._BillId
@@ -12702,7 +12702,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """费用开始时间
+        r"""费用开始时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -12713,7 +12713,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """费用结束时间
+        r"""费用结束时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -12724,7 +12724,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        """组件明细
+        r"""组件明细
         :rtype: list of CostComponentSet
         """
         return self._ComponentSet
@@ -12735,7 +12735,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品名称代码
+        r"""子产品名称代码
         :rtype: str
         """
         return self._ProductCode
@@ -12778,7 +12778,7 @@ class CostDetail(AbstractModel):
 
 
 class CreateAllocationRuleRequest(AbstractModel):
-    """CreateAllocationRule请求参数结构体
+    r"""CreateAllocationRule请求参数结构体
 
     """
 
@@ -12794,7 +12794,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """公摊规则列表
+        r"""公摊规则列表
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
         """
         return self._RuleList
@@ -12805,7 +12805,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -12831,7 +12831,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
 
 class CreateAllocationRuleResponse(AbstractModel):
-    """CreateAllocationRule返回参数结构体
+    r"""CreateAllocationRule返回参数结构体
 
     """
 
@@ -12847,7 +12847,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        """新增公摊规则ID
+        r"""新增公摊规则ID
         :rtype: int
         """
         return self._Id
@@ -12858,7 +12858,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12874,7 +12874,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
 
 class CreateAllocationTagRequest(AbstractModel):
-    """CreateAllocationTag请求参数结构体
+    r"""CreateAllocationTag请求参数结构体
 
     """
 
@@ -12887,7 +12887,7 @@ class CreateAllocationTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """用户分账标签键
+        r"""用户分账标签键
         :rtype: list of str
         """
         return self._TagKey
@@ -12910,7 +12910,7 @@ class CreateAllocationTagRequest(AbstractModel):
 
 
 class CreateAllocationTagResponse(AbstractModel):
-    """CreateAllocationTag返回参数结构体
+    r"""CreateAllocationTag返回参数结构体
 
     """
 
@@ -12923,7 +12923,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12938,7 +12938,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
 
 class CreateAllocationUnitRequest(AbstractModel):
-    """CreateAllocationUnit请求参数结构体
+    r"""CreateAllocationUnit请求参数结构体
 
     """
 
@@ -12957,7 +12957,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """新增分账单元父节点ID
+        r"""新增分账单元父节点ID
         :rtype: int
         """
         return self._ParentId
@@ -12968,7 +12968,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        """新增分账单元名称
+        r"""新增分账单元名称
         :rtype: str
         """
         return self._Name
@@ -12979,7 +12979,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -13004,7 +13004,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
 
 class CreateAllocationUnitResponse(AbstractModel):
-    """CreateAllocationUnit返回参数结构体
+    r"""CreateAllocationUnit返回参数结构体
 
     """
 
@@ -13023,7 +13023,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def Id(self):
-        """新增分账单元ID
+        r"""新增分账单元ID
         :rtype: int
         """
         return self._Id
@@ -13034,7 +13034,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -13045,7 +13045,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13062,7 +13062,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
 
 class CreateGatherRuleRequest(AbstractModel):
-    """CreateGatherRule请求参数结构体
+    r"""CreateGatherRule请求参数结构体
 
     """
 
@@ -13081,7 +13081,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """规则所属分账单元ID
+        r"""规则所属分账单元ID
         :rtype: int
         """
         return self._Id
@@ -13092,7 +13092,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """归集规则详情
+        r"""归集规则详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
         """
         return self._RuleList
@@ -13103,7 +13103,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -13130,7 +13130,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
 
 class CreateGatherRuleResponse(AbstractModel):
-    """CreateGatherRule返回参数结构体
+    r"""CreateGatherRule返回参数结构体
 
     """
 
@@ -13146,7 +13146,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        """归集规则ID
+        r"""归集规则ID
         :rtype: int
         """
         return self._Id
@@ -13157,7 +13157,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13173,7 +13173,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
 
 class Deal(AbstractModel):
-    """订单数据对象
+    r"""订单数据对象
 
     """
 
@@ -13274,7 +13274,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def OrderId(self):
-        """订单号
+        r"""订单号
         :rtype: str
         """
         return self._OrderId
@@ -13285,7 +13285,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Status(self):
-        """订单的状态 1：未支付 2：已支付3：发货中 4：已发货 5：发货失败 6：已退款 7：已关单 8：订单过期 9：订单已失效 10：产品已失效 11：代付拒绝 12：支付中
+        r"""订单的状态 1：未支付 2：已支付3：发货中 4：已发货 5：发货失败 6：已退款 7：已关单 8：订单过期 9：订单已失效 10：产品已失效 11：代付拒绝 12：支付中
         :rtype: int
         """
         return self._Status
@@ -13296,7 +13296,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Payer(self):
-        """支付者
+        r"""支付者
         :rtype: str
         """
         return self._Payer
@@ -13307,7 +13307,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -13318,7 +13318,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Creator(self):
-        """创建人
+        r"""创建人
         :rtype: str
         """
         return self._Creator
@@ -13329,7 +13329,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def RealTotalCost(self):
-        """实际支付金额（分）
+        r"""实际支付金额（分）
         :rtype: int
         """
         return self._RealTotalCost
@@ -13340,7 +13340,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def VoucherDecline(self):
-        """代金券抵扣金额（分）
+        r"""代金券抵扣金额（分）
         :rtype: int
         """
         return self._VoucherDecline
@@ -13351,7 +13351,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -13362,7 +13362,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def GoodsCategoryId(self):
-        """产品分类ID
+        r"""产品分类ID
         :rtype: int
         """
         return self._GoodsCategoryId
@@ -13373,7 +13373,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def ProductInfo(self):
-        """产品详情
+        r"""产品详情
         :rtype: list of ProductInfo
         """
         return self._ProductInfo
@@ -13384,7 +13384,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def TimeSpan(self):
-        """时长
+        r"""时长
         :rtype: float
         """
         return self._TimeSpan
@@ -13395,7 +13395,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def TimeUnit(self):
-        """时间单位
+        r"""时间单位
         :rtype: str
         """
         return self._TimeUnit
@@ -13406,7 +13406,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Currency(self):
-        """货币单位
+        r"""货币单位
         :rtype: str
         """
         return self._Currency
@@ -13417,7 +13417,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Policy(self):
-        """折扣率
+        r"""折扣率
         :rtype: float
         """
         return self._Policy
@@ -13428,7 +13428,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Price(self):
-        """单价（分）
+        r"""单价（分）
         :rtype: float
         """
         return self._Price
@@ -13439,7 +13439,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def TotalCost(self):
-        """原价（分）
+        r"""原价（分）
         :rtype: float
         """
         return self._TotalCost
@@ -13450,7 +13450,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def ProductCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -13461,7 +13461,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def SubProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._SubProductCode
@@ -13472,7 +13472,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def BigDealId(self):
-        """大订单号
+        r"""大订单号
         :rtype: str
         """
         return self._BigDealId
@@ -13483,7 +13483,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Formula(self):
-        """退费公式
+        r"""退费公式
         :rtype: str
         """
         return self._Formula
@@ -13494,7 +13494,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def RefReturnDeals(self):
-        """退费涉及订单信息
+        r"""退费涉及订单信息
         :rtype: str
         """
         return self._RefReturnDeals
@@ -13505,7 +13505,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def PayMode(self):
-        """付费模式：prePay 预付费 postPay后付费 riPay预留实例
+        r"""付费模式：prePay 预付费 postPay后付费 riPay预留实例
         :rtype: str
         """
         return self._PayMode
@@ -13516,7 +13516,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def Action(self):
-        """交易类型
+        r"""交易类型
 modifyNetworkMode 调整带宽模式
 modifyNetworkSize 调整带宽大小
 refund 退款
@@ -13539,7 +13539,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def ProductName(self):
-        """产品编码中文名称
+        r"""产品编码中文名称
         :rtype: str
         """
         return self._ProductName
@@ -13550,7 +13550,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def SubProductName(self):
-        """子产品编码中文名称
+        r"""子产品编码中文名称
         :rtype: str
         """
         return self._SubProductName
@@ -13561,7 +13561,7 @@ postMoveIn 按量计费迁入资源
 
     @property
     def ResourceId(self):
-        """订单对应的资源id, 查询参数Limit超过200，将返回null
+        r"""订单对应的资源id, 查询参数Limit超过200，将返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13615,7 +13615,7 @@ postMoveIn 按量计费迁入资源
 
 
 class DeleteAllocationRuleRequest(AbstractModel):
-    """DeleteAllocationRule请求参数结构体
+    r"""DeleteAllocationRule请求参数结构体
 
     """
 
@@ -13631,7 +13631,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """所删除公摊规则ID
+        r"""所删除公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -13642,7 +13642,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -13666,7 +13666,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
 
 class DeleteAllocationRuleResponse(AbstractModel):
-    """DeleteAllocationRule返回参数结构体
+    r"""DeleteAllocationRule返回参数结构体
 
     """
 
@@ -13679,7 +13679,7 @@ class DeleteAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13694,7 +13694,7 @@ class DeleteAllocationRuleResponse(AbstractModel):
 
 
 class DeleteAllocationTagRequest(AbstractModel):
-    """DeleteAllocationTag请求参数结构体
+    r"""DeleteAllocationTag请求参数结构体
 
     """
 
@@ -13707,7 +13707,7 @@ class DeleteAllocationTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """用户分账标签键
+        r"""用户分账标签键
         :rtype: list of str
         """
         return self._TagKey
@@ -13730,7 +13730,7 @@ class DeleteAllocationTagRequest(AbstractModel):
 
 
 class DeleteAllocationTagResponse(AbstractModel):
-    """DeleteAllocationTag返回参数结构体
+    r"""DeleteAllocationTag返回参数结构体
 
     """
 
@@ -13743,7 +13743,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13758,7 +13758,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
 
 class DeleteAllocationUnitRequest(AbstractModel):
-    """DeleteAllocationUnit请求参数结构体
+    r"""DeleteAllocationUnit请求参数结构体
 
     """
 
@@ -13774,7 +13774,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        """所删除分账单元ID
+        r"""所删除分账单元ID
         :rtype: int
         """
         return self._Id
@@ -13785,7 +13785,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -13809,7 +13809,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
 
 class DeleteAllocationUnitResponse(AbstractModel):
-    """DeleteAllocationUnit返回参数结构体
+    r"""DeleteAllocationUnit返回参数结构体
 
     """
 
@@ -13822,7 +13822,7 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13837,7 +13837,7 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
 
 class DeleteGatherRuleRequest(AbstractModel):
-    """DeleteGatherRule请求参数结构体
+    r"""DeleteGatherRule请求参数结构体
 
     """
 
@@ -13853,7 +13853,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """所删除归集规则ID
+        r"""所删除归集规则ID
         :rtype: int
         """
         return self._RuleId
@@ -13864,7 +13864,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -13888,7 +13888,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
 
 class DeleteGatherRuleResponse(AbstractModel):
-    """DeleteGatherRule返回参数结构体
+    r"""DeleteGatherRule返回参数结构体
 
     """
 
@@ -13901,7 +13901,7 @@ class DeleteGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13916,13 +13916,13 @@ class DeleteGatherRuleResponse(AbstractModel):
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
-    """DescribeAccountBalance请求参数结构体
+    r"""DescribeAccountBalance请求参数结构体
 
     """
 
 
 class DescribeAccountBalanceResponse(AbstractModel):
-    """DescribeAccountBalance返回参数结构体
+    r"""DescribeAccountBalance返回参数结构体
 
     """
 
@@ -13974,7 +13974,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Balance(self):
-        """接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
+        r"""接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
         :rtype: int
         """
         return self._Balance
@@ -13985,7 +13985,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """查询的用户Uin
+        r"""查询的用户Uin
         :rtype: int
         """
         return self._Uin
@@ -13996,7 +13996,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealBalance(self):
-        """当前真实可用余额,单位 分
+        r"""当前真实可用余额,单位 分
         :rtype: float
         """
         return self._RealBalance
@@ -14007,7 +14007,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CashAccountBalance(self):
-        """现金账户余额,单位 分
+        r"""现金账户余额,单位 分
         :rtype: float
         """
         return self._CashAccountBalance
@@ -14018,7 +14018,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IncomeIntoAccountBalance(self):
-        """收益转入账户余额,单位 分
+        r"""收益转入账户余额,单位 分
         :rtype: float
         """
         return self._IncomeIntoAccountBalance
@@ -14029,7 +14029,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def PresentAccountBalance(self):
-        """赠送账户余额,单位 分
+        r"""赠送账户余额,单位 分
         :rtype: float
         """
         return self._PresentAccountBalance
@@ -14040,7 +14040,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def FreezeAmount(self):
-        """冻结金额,单位 分
+        r"""冻结金额,单位 分
         :rtype: float
         """
         return self._FreezeAmount
@@ -14051,7 +14051,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def OweAmount(self):
-        """欠费金额,单位 分
+        r"""欠费金额,单位 分
         :rtype: float
         """
         return self._OweAmount
@@ -14064,7 +14064,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     def IsAllowArrears(self):
         warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
 
-        """是否允许欠费消费
+        r"""是否允许欠费消费
         :rtype: bool
         """
         return self._IsAllowArrears
@@ -14079,7 +14079,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     def IsCreditLimited(self):
         warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
 
-        """是否限制信用额度
+        r"""是否限制信用额度
         :rtype: bool
         """
         return self._IsCreditLimited
@@ -14092,7 +14092,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditAmount(self):
-        """信用额度,单位 分
+        r"""信用额度,单位 分
         :rtype: float
         """
         return self._CreditAmount
@@ -14103,7 +14103,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditBalance(self):
-        """可用信用额度,单位 分
+        r"""可用信用额度,单位 分
         :rtype: float
         """
         return self._CreditBalance
@@ -14114,7 +14114,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealCreditBalance(self):
-        """真实可用信用额度,单位 分
+        r"""真实可用信用额度,单位 分
         :rtype: float
         """
         return self._RealCreditBalance
@@ -14125,7 +14125,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14153,7 +14153,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
 
 class DescribeAllocateConditionsRequest(AbstractModel):
-    """DescribeAllocateConditions请求参数结构体
+    r"""DescribeAllocateConditions请求参数结构体
 
     """
 
@@ -14166,7 +14166,7 @@ class DescribeAllocateConditionsRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -14189,7 +14189,7 @@ class DescribeAllocateConditionsRequest(AbstractModel):
 
 
 class DescribeAllocateConditionsResponse(AbstractModel):
-    """DescribeAllocateConditions返回参数结构体
+    r"""DescribeAllocateConditions返回参数结构体
 
     """
 
@@ -14235,7 +14235,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Business(self):
-        """产品筛选列表
+        r"""产品筛选列表
         :rtype: list of BillBusinessLink
         """
         return self._Business
@@ -14246,7 +14246,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Product(self):
-        """子产品筛选列表
+        r"""子产品筛选列表
         :rtype: list of BillProduct
         """
         return self._Product
@@ -14257,7 +14257,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Item(self):
-        """组件名称筛选列表
+        r"""组件名称筛选列表
         :rtype: list of BillItem
         """
         return self._Item
@@ -14268,7 +14268,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Region(self):
-        """地域筛选列表
+        r"""地域筛选列表
         :rtype: list of BillRegion
         """
         return self._Region
@@ -14279,7 +14279,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型筛选列表
+        r"""实例类型筛选列表
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -14290,7 +14290,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式筛选列表
+        r"""计费模式筛选列表
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -14301,7 +14301,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Project(self):
-        """项目筛选列表
+        r"""项目筛选列表
         :rtype: list of BillProject
         """
         return self._Project
@@ -14312,7 +14312,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """标签筛选列表
+        r"""标签筛选列表
         :rtype: list of BillTag
         """
         return self._Tag
@@ -14323,7 +14323,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN 筛选列表
+        r"""使用者 UIN 筛选列表
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -14334,7 +14334,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN 筛选列表
+        r"""操作者 UIN 筛选列表
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -14345,7 +14345,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型筛选列表
+        r"""交易类型筛选列表
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -14356,7 +14356,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14437,7 +14437,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
 
 class DescribeAllocationBillConditionsRequest(AbstractModel):
-    """DescribeAllocationBillConditions请求参数结构体
+    r"""DescribeAllocationBillConditions请求参数结构体
 
     """
 
@@ -14501,7 +14501,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -14512,7 +14512,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -14523,7 +14523,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def BillDates(self):
-        """日期
+        r"""日期
         :rtype: list of str
         """
         return self._BillDates
@@ -14534,7 +14534,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        """产品编码
+        r"""产品编码
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -14545,7 +14545,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def OwnerUins(self):
-        """使用者UIN
+        r"""使用者UIN
         :rtype: list of str
         """
         return self._OwnerUins
@@ -14556,7 +14556,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def OperateUins(self):
-        """操作者UIN
+        r"""操作者UIN
         :rtype: list of str
         """
         return self._OperateUins
@@ -14567,7 +14567,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def PayModes(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: list of str
         """
         return self._PayModes
@@ -14578,7 +14578,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ActionTypes(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: list of str
         """
         return self._ActionTypes
@@ -14589,7 +14589,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ProductCodes(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: list of str
         """
         return self._ProductCodes
@@ -14600,7 +14600,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
-        """地域ID
+        r"""地域ID
         :rtype: list of str
         """
         return self._RegionIds
@@ -14611,7 +14611,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14622,7 +14622,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -14633,7 +14633,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of str
         """
         return self._Tag
@@ -14644,7 +14644,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        """组件类型编码
+        r"""组件类型编码
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -14655,7 +14655,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ItemCodes(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: list of str
         """
         return self._ItemCodes
@@ -14666,7 +14666,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """模糊搜索条件
+        r"""模糊搜索条件
         :rtype: str
         """
         return self._SearchKey
@@ -14677,7 +14677,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """项目id
+        r"""项目id
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -14688,7 +14688,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def AllocationType(self):
-        """费用归集类型
+        r"""费用归集类型
         :rtype: list of int
         """
         return self._AllocationType
@@ -14728,7 +14728,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
 
 class DescribeAllocationBillConditionsResponse(AbstractModel):
-    """DescribeAllocationBillConditions返回参数结构体
+    r"""DescribeAllocationBillConditions返回参数结构体
 
     """
 
@@ -14789,7 +14789,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Business(self):
-        """产品筛选列表
+        r"""产品筛选列表
         :rtype: list of BillBusiness
         """
         return self._Business
@@ -14800,7 +14800,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Product(self):
-        """子产品筛选列表
+        r"""子产品筛选列表
         :rtype: list of BillProduct
         """
         return self._Product
@@ -14811,7 +14811,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Item(self):
-        """组件名称筛选列表
+        r"""组件名称筛选列表
         :rtype: list of BillItem
         """
         return self._Item
@@ -14822,7 +14822,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Region(self):
-        """地域筛选列表
+        r"""地域筛选列表
         :rtype: list of BillRegion
         """
         return self._Region
@@ -14833,7 +14833,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型筛选列表
+        r"""实例类型筛选列表
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -14844,7 +14844,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式筛选列表
+        r"""计费模式筛选列表
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -14855,7 +14855,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Project(self):
-        """项目筛选列表
+        r"""项目筛选列表
         :rtype: list of BillProject
         """
         return self._Project
@@ -14866,7 +14866,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """标签筛选列表
+        r"""标签筛选列表
         :rtype: list of BillTag
         """
         return self._Tag
@@ -14877,7 +14877,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN 筛选列表
+        r"""使用者 UIN 筛选列表
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -14888,7 +14888,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN 筛选列表
+        r"""操作者 UIN 筛选列表
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -14899,7 +14899,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def BillDay(self):
-        """日期筛选列表
+        r"""日期筛选列表
         :rtype: list of BillDays
         """
         return self._BillDay
@@ -14910,7 +14910,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型筛选列表
+        r"""交易类型筛选列表
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -14921,7 +14921,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Component(self):
-        """组件类型筛选列表
+        r"""组件类型筛选列表
         :rtype: list of BillComponent
         """
         return self._Component
@@ -14932,7 +14932,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区筛选列表
+        r"""可用区筛选列表
         :rtype: list of BillZoneId
         """
         return self._Zone
@@ -14943,7 +14943,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def AllocationTreeNode(self):
-        """分账单元筛选列表
+        r"""分账单元筛选列表
         :rtype: list of AllocationTreeNode
         """
         return self._AllocationTreeNode
@@ -14954,7 +14954,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键
+        r"""分账标签键
         :rtype: list of str
         """
         return self._TagKey
@@ -14965,7 +14965,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15071,7 +15071,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
 
 class DescribeAllocationBillDetailRequest(AbstractModel):
-    """DescribeAllocationBillDetail请求参数结构体
+    r"""DescribeAllocationBillDetail请求参数结构体
 
     """
 
@@ -15151,7 +15151,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -15162,7 +15162,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -15173,7 +15173,7 @@ desc - 降序
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -15184,7 +15184,7 @@ desc - 降序
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -15195,7 +15195,7 @@ desc - 降序
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下：
+        r"""排序字段，枚举值如下：
 RiTimeSpan - 预留实例抵扣时长
 ExtendPayAmount1 - 预留实例抵扣组件原价
 RealCost - 折后总价
@@ -15214,7 +15214,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -15227,7 +15227,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -15238,7 +15238,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        """使用者UIN，用作筛选
+        r"""使用者UIN，用作筛选
         :rtype: list of str
         """
         return self._OwnerUins
@@ -15249,7 +15249,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        """操作者UIN，用作筛选
+        r"""操作者UIN，用作筛选
         :rtype: list of str
         """
         return self._OperateUins
@@ -15260,7 +15260,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        """计费模式编码，用作筛选
+        r"""计费模式编码，用作筛选
         :rtype: list of str
         """
         return self._PayModes
@@ -15271,7 +15271,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        """交易类型编码，用作筛选
+        r"""交易类型编码，用作筛选
         :rtype: list of str
         """
         return self._ActionTypes
@@ -15282,7 +15282,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        """子产品编码，用作筛选
+        r"""子产品编码，用作筛选
         :rtype: list of str
         """
         return self._ProductCodes
@@ -15293,7 +15293,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        """地域ID，用作筛选
+        r"""地域ID，用作筛选
         :rtype: list of str
         """
         return self._RegionIds
@@ -15304,7 +15304,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        """可用区ID，用作筛选
+        r"""可用区ID，用作筛选
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15315,7 +15315,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        """实例类型编码，用作筛选
+        r"""实例类型编码，用作筛选
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -15326,7 +15326,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        """标签，用作筛选
+        r"""标签，用作筛选
         :rtype: list of str
         """
         return self._Tag
@@ -15337,7 +15337,7 @@ desc - 降序
 
     @property
     def ComponentCodes(self):
-        """组件类型编码，用作筛选
+        r"""组件类型编码，用作筛选
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -15348,7 +15348,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        """组件名称编码，用作筛选
+        r"""组件名称编码，用作筛选
         :rtype: list of str
         """
         return self._ItemCodes
@@ -15359,7 +15359,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        """模糊搜索：支持标签、资源id、资源别名
+        r"""模糊搜索：支持标签、资源id、资源别名
         :rtype: str
         """
         return self._SearchKey
@@ -15370,7 +15370,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        """项目ID，用作筛选
+        r"""项目ID，用作筛选
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -15412,7 +15412,7 @@ desc - 降序
 
 
 class DescribeAllocationBillDetailResponse(AbstractModel):
-    """DescribeAllocationBillDetail返回参数结构体
+    r"""DescribeAllocationBillDetail返回参数结构体
 
     """
 
@@ -15434,7 +15434,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._RecordNum
@@ -15445,7 +15445,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15456,7 +15456,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单明细
+        r"""分账账单明细
         :rtype: list of AllocationDetail
         """
         return self._Detail
@@ -15467,7 +15467,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15492,7 +15492,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
 
 class DescribeAllocationMonthOverviewRequest(AbstractModel):
-    """DescribeAllocationMonthOverview请求参数结构体
+    r"""DescribeAllocationMonthOverview请求参数结构体
 
     """
 
@@ -15505,7 +15505,7 @@ class DescribeAllocationMonthOverviewRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -15528,7 +15528,7 @@ class DescribeAllocationMonthOverviewRequest(AbstractModel):
 
 
 class DescribeAllocationMonthOverviewResponse(AbstractModel):
-    """DescribeAllocationMonthOverview返回参数结构体
+    r"""DescribeAllocationMonthOverview返回参数结构体
 
     """
 
@@ -15547,7 +15547,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单月概览详情
+        r"""分账账单月概览详情
         :rtype: list of AllocationOverviewNode
         """
         return self._Detail
@@ -15558,7 +15558,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15569,7 +15569,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15593,7 +15593,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
 
 class DescribeAllocationOverviewRequest(AbstractModel):
-    """DescribeAllocationOverview请求参数结构体
+    r"""DescribeAllocationOverview请求参数结构体
 
     """
 
@@ -15647,7 +15647,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -15658,7 +15658,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -15669,7 +15669,7 @@ desc - 降序
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -15680,7 +15680,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        """统计周期，枚举值如下
+        r"""统计周期，枚举值如下
 month - 月
 day - 日
         :rtype: str
@@ -15693,7 +15693,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -15704,7 +15704,7 @@ day - 日
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下： 
+        r"""排序字段，枚举值如下： 
 GatherCashPayAmount - 归集费用(现金)
 GatherVoucherPayAmount- 归集费用(优惠券)
 GatherIncentivePayAmount -  归集费用(赠送金)
@@ -15731,7 +15731,7 @@ Ratio  - 占比(折后总额)
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -15744,7 +15744,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        """日期，用作筛选
+        r"""日期，用作筛选
         :rtype: list of str
         """
         return self._BillDates
@@ -15774,7 +15774,7 @@ desc - 降序
 
 
 class DescribeAllocationOverviewResponse(AbstractModel):
-    """DescribeAllocationOverview返回参数结构体
+    r"""DescribeAllocationOverview返回参数结构体
 
     """
 
@@ -15796,7 +15796,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._RecordNum
@@ -15807,7 +15807,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15818,7 +15818,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账概览明细
+        r"""分账概览明细
         :rtype: list of AllocationOverviewDetail
         """
         return self._Detail
@@ -15829,7 +15829,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15854,7 +15854,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
 
 class DescribeAllocationRuleDetailRequest(AbstractModel):
-    """DescribeAllocationRuleDetail请求参数结构体
+    r"""DescribeAllocationRuleDetail请求参数结构体
 
     """
 
@@ -15870,7 +15870,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """所查询公摊规则ID
+        r"""所查询公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -15881,7 +15881,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -15905,7 +15905,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
 
 class DescribeAllocationRuleDetailResponse(AbstractModel):
-    """DescribeAllocationRuleDetail返回参数结构体
+    r"""DescribeAllocationRuleDetail返回参数结构体
 
     """
 
@@ -15939,7 +15939,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """公摊规则ID
+        r"""公摊规则ID
         :rtype: int
         """
         return self._Id
@@ -15950,7 +15950,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """公摊规则所属UIN
+        r"""公摊规则所属UIN
         :rtype: str
         """
         return self._Uin
@@ -15961,7 +15961,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        """公摊规则名称
+        r"""公摊规则名称
         :rtype: str
         """
         return self._Name
@@ -15972,7 +15972,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        """公摊策略类型，枚举值如下：
+        r"""公摊策略类型，枚举值如下：
 1 - 自定义分摊占比 
 2 - 等比分摊 
 3 - 按占比分摊
@@ -15986,7 +15986,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """公摊规则表达式
+        r"""公摊规则表达式
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -15997,7 +15997,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """公摊比例表达式，Type为1和2时返回
+        r"""公摊比例表达式，Type为1和2时返回
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -16008,7 +16008,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16036,7 +16036,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
 
 class DescribeAllocationRuleSummaryRequest(AbstractModel):
-    """DescribeAllocationRuleSummary请求参数结构体
+    r"""DescribeAllocationRuleSummary请求参数结构体
 
     """
 
@@ -16065,7 +16065,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取数据量，最大值1000
+        r"""每次获取数据量，最大值1000
         :rtype: int
         """
         return self._Limit
@@ -16076,7 +16076,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -16087,7 +16087,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -16098,7 +16098,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Type(self):
-        """公摊策略类型，用于筛选。
+        r"""公摊策略类型，用于筛选。
 枚举值如下： 
 1 - 自定义分摊占比 
 2 - 等比分摊 
@@ -16113,7 +16113,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Name(self):
-        """公摊规则名称或分账单元名称，用于模糊筛选。
+        r"""公摊规则名称或分账单元名称，用于模糊筛选。
         :rtype: str
         """
         return self._Name
@@ -16140,7 +16140,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
 
 class DescribeAllocationRuleSummaryResponse(AbstractModel):
-    """DescribeAllocationRuleSummary返回参数结构体
+    r"""DescribeAllocationRuleSummary返回参数结构体
 
     """
 
@@ -16159,7 +16159,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def RuleList(self):
-        """公摊规则表达式
+        r"""公摊规则表达式
         :rtype: list of AllocationRuleOverview
         """
         return self._RuleList
@@ -16170,7 +16170,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """规则总数
+        r"""规则总数
         :rtype: int
         """
         return self._Total
@@ -16181,7 +16181,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16203,7 +16203,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
 
 class DescribeAllocationSummaryByBusinessRequest(AbstractModel):
-    """DescribeAllocationSummaryByBusiness请求参数结构体
+    r"""DescribeAllocationSummaryByBusiness请求参数结构体
 
     """
 
@@ -16268,7 +16268,7 @@ Trend - 环比(折后总额)
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -16279,7 +16279,7 @@ Trend - 环比(折后总额)
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -16290,7 +16290,7 @@ Trend - 环比(折后总额)
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
 
         :rtype: str
         """
@@ -16302,7 +16302,7 @@ Trend - 环比(折后总额)
 
     @property
     def PeriodType(self):
-        """统计周期，枚举值如下
+        r"""统计周期，枚举值如下
 month - 月
 day - 日
         :rtype: str
@@ -16315,7 +16315,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
 
         :rtype: list of str
         """
@@ -16327,7 +16327,7 @@ day - 日
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -16340,7 +16340,7 @@ desc - 降序
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下：
+        r"""排序字段，枚举值如下：
 GatherCashPayAmount - 归集费用(现金)
 GatherVoucherPayAmount- 归集费用(优惠券)
 GatherIncentivePayAmount - 归集费用(赠送金)
@@ -16369,7 +16369,7 @@ Trend - 环比(折后总额)
 
     @property
     def BillDates(self):
-        """日期，用作筛选，PeriodType=day时可传
+        r"""日期，用作筛选，PeriodType=day时可传
 
         :rtype: list of str
         """
@@ -16381,7 +16381,7 @@ Trend - 环比(折后总额)
 
     @property
     def BusinessCodes(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -16394,7 +16394,7 @@ Trend - 环比(折后总额)
     def SearchKey(self):
         warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
 
-        """模糊搜索条件
+        r"""模糊搜索条件
         :rtype: str
         """
         return self._SearchKey
@@ -16428,7 +16428,7 @@ Trend - 环比(折后总额)
 
 
 class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
-    """DescribeAllocationSummaryByBusiness返回参数结构体
+    r"""DescribeAllocationSummaryByBusiness返回参数结构体
 
     """
 
@@ -16451,7 +16451,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._RecordNum
@@ -16462,7 +16462,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
 
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
@@ -16474,7 +16474,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单按产品汇总明细
+        r"""分账账单按产品汇总明细
         :rtype: list of AllocationSummaryByBusiness
         """
         return self._Detail
@@ -16485,7 +16485,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16510,7 +16510,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
 
 class DescribeAllocationSummaryByItemRequest(AbstractModel):
-    """DescribeAllocationSummaryByItem请求参数结构体
+    r"""DescribeAllocationSummaryByItem请求参数结构体
 
     """
 
@@ -16619,7 +16619,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
 
         :rtype: int
         """
@@ -16631,7 +16631,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -16642,7 +16642,7 @@ desc - 降序
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
 
         :rtype: str
         """
@@ -16654,7 +16654,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        """统计周期，枚举值如下
+        r"""统计周期，枚举值如下
 month - 月
 day - 日
         :rtype: str
@@ -16667,7 +16667,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
 
         :rtype: list of str
         """
@@ -16679,7 +16679,7 @@ day - 日
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下：
+        r"""排序字段，枚举值如下：
 RiTimeSpan - 预留实例抵扣时长
 ExtendPayAmount1 - 预留实例抵扣组件原价
 RealCost - 折后总价
@@ -16698,7 +16698,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -16711,7 +16711,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        """日期，用作筛选
+        r"""日期，用作筛选
 
         :rtype: list of str
         """
@@ -16723,7 +16723,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
 
         :rtype: list of str
         """
@@ -16735,7 +16735,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        """使用者UIN，用作筛选
+        r"""使用者UIN，用作筛选
 
         :rtype: list of str
         """
@@ -16747,7 +16747,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        """操作者UIN，用作筛选
+        r"""操作者UIN，用作筛选
 
         :rtype: list of str
         """
@@ -16759,7 +16759,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        """计费模式编码，用作筛选
+        r"""计费模式编码，用作筛选
 
         :rtype: list of str
         """
@@ -16771,7 +16771,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        """交易类型编码，用作筛选
+        r"""交易类型编码，用作筛选
 
         :rtype: list of str
         """
@@ -16783,7 +16783,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        """子产品编码，用作筛选
+        r"""子产品编码，用作筛选
 
         :rtype: list of str
         """
@@ -16795,7 +16795,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        """地域ID，用作筛选
+        r"""地域ID，用作筛选
 
         :rtype: list of str
         """
@@ -16807,7 +16807,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        """可用区ID，用作筛选
+        r"""可用区ID，用作筛选
 
         :rtype: list of str
         """
@@ -16819,7 +16819,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        """实例类型编码，用作筛选
+        r"""实例类型编码，用作筛选
 
         :rtype: list of str
         """
@@ -16831,7 +16831,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        """标签，用作筛选
+        r"""标签，用作筛选
 
         :rtype: list of str
         """
@@ -16843,7 +16843,7 @@ desc - 降序
 
     @property
     def ComponentCodes(self):
-        """组件类型编码，用作筛选
+        r"""组件类型编码，用作筛选
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -16854,7 +16854,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        """组件名称编码，用作筛选
+        r"""组件名称编码，用作筛选
         :rtype: list of str
         """
         return self._ItemCodes
@@ -16865,7 +16865,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        """模糊搜索：支持标签、资源id、资源别名
+        r"""模糊搜索：支持标签、资源id、资源别名
         :rtype: str
         """
         return self._SearchKey
@@ -16876,7 +16876,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        """项目ID，用作筛选
+        r"""项目ID，用作筛选
 
         :rtype: list of int non-negative
         """
@@ -16888,7 +16888,7 @@ desc - 降序
 
     @property
     def AllocationType(self):
-        """费用归集类型，枚举值如下：
+        r"""费用归集类型，枚举值如下：
 0 - 分摊
 1 - 归集
 -1 - 未分配
@@ -16936,7 +16936,7 @@ desc - 降序
 
 
 class DescribeAllocationSummaryByItemResponse(AbstractModel):
-    """DescribeAllocationSummaryByItem返回参数结构体
+    r"""DescribeAllocationSummaryByItem返回参数结构体
 
     """
 
@@ -16960,7 +16960,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
 
         :rtype: int
         """
@@ -16972,7 +16972,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -16983,7 +16983,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单按组件汇总明细
+        r"""分账账单按组件汇总明细
 
         :rtype: list of AllocationSummaryByItem
         """
@@ -16995,7 +16995,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17020,7 +17020,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
 
 class DescribeAllocationSummaryByResourceRequest(AbstractModel):
-    """DescribeAllocationSummaryByResource请求参数结构体
+    r"""DescribeAllocationSummaryByResource请求参数结构体
 
     """
 
@@ -17110,7 +17110,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
 
         :rtype: int
         """
@@ -17122,7 +17122,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -17133,7 +17133,7 @@ desc - 降序
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
 
         :rtype: str
         """
@@ -17145,7 +17145,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        """统计周期，枚举值如下
+        r"""统计周期，枚举值如下
 month - 月
 day - 日
         :rtype: str
@@ -17158,7 +17158,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -17169,7 +17169,7 @@ day - 日
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下：
+        r"""排序字段，枚举值如下：
 RiTimeSpan - 预留实例抵扣时长
 ExtendPayAmount1 - 预留实例抵扣组件原价
 RealCost - 折后总价
@@ -17188,7 +17188,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -17201,7 +17201,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        """日期，用作筛选
+        r"""日期，用作筛选
         :rtype: list of str
         """
         return self._BillDates
@@ -17212,7 +17212,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -17223,7 +17223,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        """使用者UIN，用作筛选
+        r"""使用者UIN，用作筛选
         :rtype: list of str
         """
         return self._OwnerUins
@@ -17234,7 +17234,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        """操作者UIN，用作筛选
+        r"""操作者UIN，用作筛选
         :rtype: list of str
         """
         return self._OperateUins
@@ -17245,7 +17245,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        """计费模式编码，用作筛选
+        r"""计费模式编码，用作筛选
         :rtype: list of str
         """
         return self._PayModes
@@ -17256,7 +17256,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        """交易类型编码，用作筛选
+        r"""交易类型编码，用作筛选
         :rtype: list of str
         """
         return self._ActionTypes
@@ -17267,7 +17267,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        """子产品编码，用作筛选
+        r"""子产品编码，用作筛选
         :rtype: list of str
         """
         return self._ProductCodes
@@ -17278,7 +17278,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        """地域ID，用作筛选
+        r"""地域ID，用作筛选
         :rtype: list of str
         """
         return self._RegionIds
@@ -17289,7 +17289,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        """可用区ID，用作筛选
+        r"""可用区ID，用作筛选
         :rtype: list of str
         """
         return self._ZoneIds
@@ -17300,7 +17300,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        """实例类型编码，用作筛选
+        r"""实例类型编码，用作筛选
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -17311,7 +17311,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        """标签，用作筛选
+        r"""标签，用作筛选
         :rtype: list of str
         """
         return self._Tag
@@ -17322,7 +17322,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        """模糊搜索：支持标签、资源id、资源别名
+        r"""模糊搜索：支持标签、资源id、资源别名
         :rtype: str
         """
         return self._SearchKey
@@ -17333,7 +17333,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        """项目ID，用作筛选
+        r"""项目ID，用作筛选
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -17344,7 +17344,7 @@ desc - 降序
 
     @property
     def AllocationType(self):
-        """费用归集类型，枚举值如下：
+        r"""费用归集类型，枚举值如下：
 0 - 分摊 
 1 - 归集 
 -1 -  未分配
@@ -17390,7 +17390,7 @@ desc - 降序
 
 
 class DescribeAllocationSummaryByResourceResponse(AbstractModel):
-    """DescribeAllocationSummaryByResource返回参数结构体
+    r"""DescribeAllocationSummaryByResource返回参数结构体
 
     """
 
@@ -17415,7 +17415,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
 
         :rtype: int
         """
@@ -17427,7 +17427,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def Total(self):
-        """分账账单概览金额汇总
+        r"""分账账单概览金额汇总
 
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
@@ -17439,7 +17439,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """分账账单按资源汇总明细
+        r"""分账账单按资源汇总明细
 
         :rtype: list of AllocationSummaryByResource
         """
@@ -17451,7 +17451,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17476,7 +17476,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
 
 class DescribeAllocationTreeRequest(AbstractModel):
-    """DescribeAllocationTree请求参数结构体
+    r"""DescribeAllocationTree请求参数结构体
 
     """
 
@@ -17489,7 +17489,7 @@ class DescribeAllocationTreeRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -17512,7 +17512,7 @@ class DescribeAllocationTreeRequest(AbstractModel):
 
 
 class DescribeAllocationTreeResponse(AbstractModel):
-    """DescribeAllocationTree返回参数结构体
+    r"""DescribeAllocationTree返回参数结构体
 
     """
 
@@ -17537,7 +17537,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Id(self):
-        """分账单元ID
+        r"""分账单元ID
         :rtype: int
         """
         return self._Id
@@ -17548,7 +17548,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Name(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._Name
@@ -17559,7 +17559,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -17570,7 +17570,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Children(self):
-        """子树
+        r"""子树
         :rtype: list of AllocationTree
         """
         return self._Children
@@ -17581,7 +17581,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17605,7 +17605,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
 
 class DescribeAllocationTrendByMonthRequest(AbstractModel):
-    """DescribeAllocationTrendByMonth请求参数结构体
+    r"""DescribeAllocationTrendByMonth请求参数结构体
 
     """
 
@@ -17624,7 +17624,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -17635,7 +17635,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -17646,7 +17646,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
         :rtype: str
         """
         return self._BusinessCode
@@ -17671,7 +17671,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
 
 class DescribeAllocationTrendByMonthResponse(AbstractModel):
-    """DescribeAllocationTrendByMonth返回参数结构体
+    r"""DescribeAllocationTrendByMonth返回参数结构体
 
     """
 
@@ -17693,7 +17693,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Current(self):
-        """当月费用信息
+        r"""当月费用信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
         """
         return self._Current
@@ -17704,7 +17704,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Previous(self):
-        """之前月份费用信息
+        r"""之前月份费用信息
         :rtype: list of AllocationBillTrendDetail
         """
         return self._Previous
@@ -17715,7 +17715,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Stat(self):
-        """费用统计信息
+        r"""费用统计信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
         """
         return self._Stat
@@ -17726,7 +17726,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17753,7 +17753,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
 
 class DescribeAllocationUnitDetailRequest(AbstractModel):
-    """DescribeAllocationUnitDetail请求参数结构体
+    r"""DescribeAllocationUnitDetail请求参数结构体
 
     """
 
@@ -17769,7 +17769,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        """所查询分账单元Id
+        r"""所查询分账单元Id
         :rtype: int
         """
         return self._Id
@@ -17780,7 +17780,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -17804,7 +17804,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
 
 class DescribeAllocationUnitDetailResponse(AbstractModel):
-    """DescribeAllocationUnitDetail返回参数结构体
+    r"""DescribeAllocationUnitDetail返回参数结构体
 
     """
 
@@ -17844,7 +17844,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """分账单元ID
+        r"""分账单元ID
         :rtype: int
         """
         return self._Id
@@ -17855,7 +17855,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """分账单元所属UIN
+        r"""分账单元所属UIN
         :rtype: str
         """
         return self._Uin
@@ -17866,7 +17866,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._Name
@@ -17877,7 +17877,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def ParentId(self):
-        """分账单元父节点ID
+        r"""分账单元父节点ID
         :rtype: int
         """
         return self._ParentId
@@ -17888,7 +17888,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceName(self):
-        """源组织名称
+        r"""源组织名称
         :rtype: str
         """
         return self._SourceName
@@ -17899,7 +17899,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceId(self):
-        """源组织ID
+        r"""源组织ID
         :rtype: str
         """
         return self._SourceId
@@ -17910,7 +17910,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注说明
+        r"""备注说明
         :rtype: str
         """
         return self._Remark
@@ -17921,7 +17921,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元标识
+        r"""分账单元标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -17932,7 +17932,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+        r"""若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
         :rtype: int
         """
         return self._RuleId
@@ -17943,7 +17943,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17967,7 +17967,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
 
 class DescribeBillAdjustInfoRequest(AbstractModel):
-    """DescribeBillAdjustInfo请求参数结构体
+    r"""DescribeBillAdjustInfo请求参数结构体
 
     """
 
@@ -17989,7 +17989,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     @property
     def Month(self):
-        """格式：yyyy-MM
+        r"""格式：yyyy-MM
 账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
         :rtype: str
         """
@@ -18001,7 +18001,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        """格式：yyyy-MM-dd
+        r"""格式：yyyy-MM-dd
 开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
         :rtype: str
         """
@@ -18013,7 +18013,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        """格式：yyyy-MM-dd
+        r"""格式：yyyy-MM-dd
 截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
         :rtype: str
         """
@@ -18039,7 +18039,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
 
 class DescribeBillAdjustInfoResponse(AbstractModel):
-    """DescribeBillAdjustInfo返回参数结构体
+    r"""DescribeBillAdjustInfo返回参数结构体
 
     """
 
@@ -18058,7 +18058,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        """数据总量
+        r"""数据总量
         :rtype: int
         """
         return self._Total
@@ -18069,7 +18069,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """明细数据
+        r"""明细数据
         :rtype: list of AdjustInfoDetail
         """
         return self._Data
@@ -18080,7 +18080,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18102,7 +18102,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
 
 class DescribeBillDetailForOrganizationRequest(AbstractModel):
-    """DescribeBillDetailForOrganization请求参数结构体
+    r"""DescribeBillDetailForOrganization请求参数结构体
 
     """
 
@@ -18181,7 +18181,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :rtype: int
         """
         return self._Offset
@@ -18192,7 +18192,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为100
+        r"""数量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -18205,7 +18205,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        r"""周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
         :rtype: str
         """
         return self._PeriodType
@@ -18218,7 +18218,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。最多可拉取近18个月内的数据。
+        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。最多可拉取近18个月内的数据。
         :rtype: str
         """
         return self._Month
@@ -18229,7 +18229,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取18个月内的数据。
+        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取18个月内的数据。
         :rtype: str
         """
         return self._BeginTime
@@ -18240,7 +18240,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取近18个月内的数据。
+        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取近18个月内的数据。
         :rtype: str
         """
         return self._EndTime
@@ -18251,7 +18251,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要访问列表的总记录数，用于前端分页
+        r"""是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :rtype: int
         """
@@ -18263,7 +18263,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式 prePay(表示包年包月)/postPay(表示按时按量)
+        r"""付费模式 prePay(表示包年包月)/postPay(表示按时按量)
         :rtype: str
         """
         return self._PayMode
@@ -18274,7 +18274,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """查询指定资源信息
+        r"""查询指定资源信息
         :rtype: str
         """
         return self._ResourceId
@@ -18285,7 +18285,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+        r"""查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 包年包月新购
 包年包月续费
 包年包月配置变更
@@ -18324,7 +18324,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID:资源所属项目ID
+        r"""项目ID:资源所属项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -18335,7 +18335,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
         :rtype: str
         """
@@ -18347,7 +18347,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
     @property
     def Context(self):
-        """上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+        r"""上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
         :rtype: str
         """
         return self._Context
@@ -18382,7 +18382,7 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
 
 
 class DescribeBillDetailForOrganizationResponse(AbstractModel):
-    """DescribeBillDetailForOrganization返回参数结构体
+    r"""DescribeBillDetailForOrganization返回参数结构体
 
     """
 
@@ -18405,7 +18405,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        """详情列表
+        r"""详情列表
         :rtype: list of DistributionBillDetail
         """
         return self._DetailSet
@@ -18416,7 +18416,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总记录数，24小时缓存一次，可能比实际总记录数少
+        r"""总记录数，24小时缓存一次，可能比实际总记录数少
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18428,7 +18428,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 
     @property
     def Context(self):
-        """本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
+        r"""本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
         :rtype: str
         """
         return self._Context
@@ -18439,7 +18439,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18462,7 +18462,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 
 
 class DescribeBillDetailRequest(AbstractModel):
-    """DescribeBillDetail请求参数结构体
+    r"""DescribeBillDetail请求参数结构体
 
     """
 
@@ -18547,7 +18547,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :rtype: int
         """
         return self._Offset
@@ -18558,7 +18558,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为300
+        r"""数量，最大值为300
         :rtype: int
         """
         return self._Limit
@@ -18571,7 +18571,7 @@ class DescribeBillDetailRequest(AbstractModel):
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        r"""周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
         :rtype: str
         """
         return self._PeriodType
@@ -18584,7 +18584,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。最多可拉取近18个月内的数据。
+        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。最多可拉取近18个月内的数据。
         :rtype: str
         """
         return self._Month
@@ -18595,7 +18595,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取18个月内的数据。
+        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取18个月内的数据。
         :rtype: str
         """
         return self._BeginTime
@@ -18606,7 +18606,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取近18个月内的数据。
+        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。最多可拉取近18个月内的数据。
         :rtype: str
         """
         return self._EndTime
@@ -18617,7 +18617,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要访问列表的总记录数，用于前端分页
+        r"""是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :rtype: int
         """
@@ -18631,7 +18631,7 @@ class DescribeBillDetailRequest(AbstractModel):
     def ProductCode(self):
         warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
 
-        """已废弃参数，未开放
+        r"""已废弃参数，未开放
         :rtype: str
         """
         return self._ProductCode
@@ -18644,7 +18644,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式 prePay(表示包年包月)/postPay(表示按时按量)
+        r"""付费模式 prePay(表示包年包月)/postPay(表示按时按量)
         :rtype: str
         """
         return self._PayMode
@@ -18655,7 +18655,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """查询指定资源信息
+        r"""查询指定资源信息
         :rtype: str
         """
         return self._ResourceId
@@ -18666,7 +18666,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+        r"""查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 包年包月新购
 包年包月续费
 包年包月配置变更
@@ -18705,7 +18705,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID:资源所属项目ID
+        r"""项目ID:资源所属项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -18716,7 +18716,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
         :rtype: str
         """
@@ -18728,7 +18728,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Context(self):
-        """上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+        r"""上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
         :rtype: str
         """
         return self._Context
@@ -18739,7 +18739,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        r"""支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
         :rtype: str
         """
         return self._PayerUin
@@ -18776,7 +18776,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
 
 class DescribeBillDetailResponse(AbstractModel):
-    """DescribeBillDetail返回参数结构体
+    r"""DescribeBillDetail返回参数结构体
 
     """
 
@@ -18798,7 +18798,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        """详情列表
+        r"""详情列表
         :rtype: list of BillDetail
         """
         return self._DetailSet
@@ -18809,7 +18809,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总记录数，24小时缓存一次，可能比实际总记录数少
+        r"""总记录数，24小时缓存一次，可能比实际总记录数少
         :rtype: int
         """
         return self._Total
@@ -18820,7 +18820,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def Context(self):
-        """本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
+        r"""本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
         :rtype: str
         """
         return self._Context
@@ -18831,7 +18831,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18854,7 +18854,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
 
 class DescribeBillDownloadUrlRequest(AbstractModel):
-    """DescribeBillDownloadUrl请求参数结构体
+    r"""DescribeBillDownloadUrl请求参数结构体
 
     """
 
@@ -18880,7 +18880,7 @@ L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账�
 
     @property
     def FileType(self):
-        """账单类型，枚举值
+        r"""账单类型，枚举值
 billOverview=L0-PDF账单
 billSummary=L1-汇总账单	
 billResource=L2-资源账单	
@@ -18896,7 +18896,7 @@ billPack=账单包
 
     @property
     def Month(self):
-        """账单月份
+        r"""账单月份
 支持的最早开始月份为2021-01
 L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
         :rtype: str
@@ -18909,7 +18909,7 @@ L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账�
 
     @property
     def ChildUin(self):
-        """下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+        r"""下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
         :rtype: list of str
         """
         return self._ChildUin
@@ -18934,7 +18934,7 @@ L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账�
 
 
 class DescribeBillDownloadUrlResponse(AbstractModel):
-    """DescribeBillDownloadUrl返回参数结构体
+    r"""DescribeBillDownloadUrl返回参数结构体
 
     """
 
@@ -18954,7 +18954,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """账单文件是否准备就绪，0文件生成中，1文件已生成
+        r"""账单文件是否准备就绪，0文件生成中，1文件已生成
         :rtype: int
         """
         return self._Ready
@@ -18965,7 +18965,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """账单文件下载链接，有效时长为一天
+        r"""账单文件下载链接，有效时长为一天
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18977,7 +18977,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18994,7 +18994,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
 
 class DescribeBillListRequest(AbstractModel):
-    """DescribeBillList请求参数结构体
+    r"""DescribeBillList请求参数结构体
 
     """
 
@@ -19048,7 +19048,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def StartTime(self):
-        """查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
+        r"""查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
         :rtype: str
         """
         return self._StartTime
@@ -19059,7 +19059,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def EndTime(self):
-        """查询范围的结束时间（包含）时间格式 yyyy-MM-dd HH:mm:ss ，开始时间和结束时间差值小于等于六个月
+        r"""查询范围的结束时间（包含）时间格式 yyyy-MM-dd HH:mm:ss ，开始时间和结束时间差值小于等于六个月
         :rtype: str
         """
         return self._EndTime
@@ -19070,7 +19070,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def Offset(self):
-        """翻页偏移量，初始值为0
+        r"""翻页偏移量，初始值为0
         :rtype: int
         """
         return self._Offset
@@ -19081,7 +19081,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def Limit(self):
-        """每页的限制数量
+        r"""每页的限制数量
         :rtype: int
         """
         return self._Limit
@@ -19092,7 +19092,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def PayType(self):
-        """交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
+        r"""交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
         :rtype: list of str
         """
         return self._PayType
@@ -19103,7 +19103,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def SubPayType(self):
-        """扣费模式，
+        r"""扣费模式，
 当所选的交易类型为扣费deduct时： 
 all所有扣费类型;trade预付费支付;hour_h按量小时结;hour_d按量日结;hour_m按量月结;decompensate调账扣费;other第三方扣费;panshi 线下项目扣费;offline 线下产品扣费;
 
@@ -19137,7 +19137,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
     @property
     def WithZeroAmount(self):
-        """是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
+        r"""是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
         :rtype: int
         """
         return self._WithZeroAmount
@@ -19166,7 +19166,7 @@ other 第三方解冻;hour 按量解冻;month 按月解冻
 
 
 class DescribeBillListResponse(AbstractModel):
-    """DescribeBillList返回参数结构体
+    r"""DescribeBillList返回参数结构体
 
     """
 
@@ -19215,7 +19215,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def TransactionList(self):
-        """收支明细列表
+        r"""收支明细列表
         :rtype: list of BillTransactionInfo
         """
         return self._TransactionList
@@ -19226,7 +19226,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._Total
@@ -19237,7 +19237,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def ReturnAmount(self):
-        """退费总额，单位（分）
+        r"""退费总额，单位（分）
         :rtype: float
         """
         return self._ReturnAmount
@@ -19248,7 +19248,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def RechargeAmount(self):
-        """充值总额，单位（分）
+        r"""充值总额，单位（分）
         :rtype: float
         """
         return self._RechargeAmount
@@ -19259,7 +19259,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def BlockAmount(self):
-        """冻结总额，单位（分）
+        r"""冻结总额，单位（分）
         :rtype: float
         """
         return self._BlockAmount
@@ -19270,7 +19270,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def UnblockAmount(self):
-        """解冻总额，单位（分）
+        r"""解冻总额，单位（分）
         :rtype: float
         """
         return self._UnblockAmount
@@ -19281,7 +19281,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def DeductAmount(self):
-        """扣费总额，单位（分）
+        r"""扣费总额，单位（分）
         :rtype: float
         """
         return self._DeductAmount
@@ -19292,7 +19292,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def AgentInAmount(self):
-        """资金转入总额，单位（分）
+        r"""资金转入总额，单位（分）
         :rtype: float
         """
         return self._AgentInAmount
@@ -19303,7 +19303,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def AdvanceRechargeAmount(self):
-        """垫付充值总额，单位（分）
+        r"""垫付充值总额，单位（分）
         :rtype: float
         """
         return self._AdvanceRechargeAmount
@@ -19314,7 +19314,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def WithdrawAmount(self):
-        """提现扣减总额，单位（分）
+        r"""提现扣减总额，单位（分）
         :rtype: float
         """
         return self._WithdrawAmount
@@ -19325,7 +19325,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def AgentOutAmount(self):
-        """资金转出总额，单位（分）
+        r"""资金转出总额，单位（分）
         :rtype: float
         """
         return self._AgentOutAmount
@@ -19336,7 +19336,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def AdvancePayAmount(self):
-        """还垫付总额，单位（分）
+        r"""还垫付总额，单位（分）
         :rtype: float
         """
         return self._AdvancePayAmount
@@ -19347,7 +19347,7 @@ class DescribeBillListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19379,7 +19379,7 @@ class DescribeBillListResponse(AbstractModel):
 
 
 class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
-    """DescribeBillResourceSummaryForOrganization请求参数结构体
+    r"""DescribeBillResourceSummaryForOrganization请求参数结构体
 
     """
 
@@ -19453,7 +19453,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :rtype: int
         """
         return self._Offset
@@ -19464,7 +19464,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -19475,7 +19475,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+        r"""月份，格式为yyyy-mm。不能早于开通账单2.0的月份
         :rtype: str
         """
         return self._Month
@@ -19488,7 +19488,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        r"""周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
         :rtype: str
         """
         return self._PeriodType
@@ -19501,7 +19501,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要访问列表的总记录数，用于前端分页
+        r"""是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :rtype: int
         """
@@ -19513,7 +19513,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+        r"""查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 包年包月新购
 包年包月续费
 包年包月配置变更
@@ -19552,7 +19552,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """查询指定资源信息
+        r"""查询指定资源信息
         :rtype: str
         """
         return self._ResourceId
@@ -19563,7 +19563,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式 prePay/postPay
+        r"""付费模式 prePay/postPay
         :rtype: str
         """
         return self._PayMode
@@ -19574,7 +19574,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
         :rtype: str
         """
@@ -19586,7 +19586,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键，用户自定义（支持2021-01以后账单查询）
+        r"""分账标签键，用户自定义（支持2021-01以后账单查询）
         :rtype: str
         """
         return self._TagKey
@@ -19597,7 +19597,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """分账标签值，该参数为空表示该标签键下未设置标签值的记录
+        r"""分账标签值，该参数为空表示该标签键下未设置标签值的记录
 （支持2021-01以后账单查询）
         :rtype: str
         """
@@ -19631,7 +19631,7 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 
 
 class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
-    """DescribeBillResourceSummaryForOrganization返回参数结构体
+    r"""DescribeBillResourceSummaryForOrganization返回参数结构体
 
     """
 
@@ -19651,7 +19651,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
-        """资源汇总列表
+        r"""资源汇总列表
         :rtype: list of BillDistributionResourceSummary
         """
         return self._ResourceSummarySet
@@ -19662,7 +19662,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def Total(self):
-        """资源汇总列表总数，入参NeedRecordNum为0时不返回
+        r"""资源汇总列表总数，入参NeedRecordNum为0时不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -19674,7 +19674,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19696,7 +19696,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
 
 
 class DescribeBillResourceSummaryRequest(AbstractModel):
-    """DescribeBillResourceSummary请求参数结构体
+    r"""DescribeBillResourceSummary请求参数结构体
 
     """
 
@@ -19773,7 +19773,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :rtype: int
         """
         return self._Offset
@@ -19784,7 +19784,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -19795,7 +19795,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+        r"""月份，格式为yyyy-mm。不能早于开通账单2.0的月份
         :rtype: str
         """
         return self._Month
@@ -19808,7 +19808,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        r"""周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
         :rtype: str
         """
         return self._PeriodType
@@ -19821,7 +19821,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要访问列表的总记录数，用于前端分页
+        r"""是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :rtype: int
         """
@@ -19833,7 +19833,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+        r"""查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 包年包月新购
 包年包月续费
 包年包月配置变更
@@ -19872,7 +19872,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """查询指定资源信息
+        r"""查询指定资源信息
         :rtype: str
         """
         return self._ResourceId
@@ -19883,7 +19883,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式 prePay/postPay
+        r"""付费模式 prePay/postPay
         :rtype: str
         """
         return self._PayMode
@@ -19894,7 +19894,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品名称代码
+        r"""产品名称代码
 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
         :rtype: str
         """
@@ -19906,7 +19906,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        r"""支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
         :rtype: str
         """
         return self._PayerUin
@@ -19917,7 +19917,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键，用户自定义（支持2021-01以后账单查询）
+        r"""分账标签键，用户自定义（支持2021-01以后账单查询）
         :rtype: str
         """
         return self._TagKey
@@ -19928,7 +19928,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """分账标签值，该参数为空表示该标签键下未设置标签值的记录
+        r"""分账标签值，该参数为空表示该标签键下未设置标签值的记录
 （支持2021-01以后账单查询）
         :rtype: str
         """
@@ -19963,7 +19963,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):
-    """DescribeBillResourceSummary返回参数结构体
+    r"""DescribeBillResourceSummary返回参数结构体
 
     """
 
@@ -19983,7 +19983,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
-        """资源汇总列表
+        r"""资源汇总列表
         :rtype: list of BillResourceSummary
         """
         return self._ResourceSummarySet
@@ -19994,7 +19994,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """资源汇总列表总数，入参NeedRecordNum为0时不返回
+        r"""资源汇总列表总数，入参NeedRecordNum为0时不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20006,7 +20006,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20028,7 +20028,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
 
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
-    """DescribeBillSummaryByPayMode请求参数结构体
+    r"""DescribeBillSummaryByPayMode请求参数结构体
 
     """
 
@@ -20047,7 +20047,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -20058,7 +20058,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -20069,7 +20069,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -20094,7 +20094,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
 
 class DescribeBillSummaryByPayModeResponse(AbstractModel):
-    """DescribeBillSummaryByPayMode返回参数结构体
+    r"""DescribeBillSummaryByPayMode返回参数结构体
 
     """
 
@@ -20114,7 +20114,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20125,7 +20125,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        """各付费模式花费分布详情
+        r"""各付费模式花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PayModeSummaryOverviewItem
         """
@@ -20137,7 +20137,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20159,7 +20159,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
 
 class DescribeBillSummaryByProductRequest(AbstractModel):
-    """DescribeBillSummaryByProduct请求参数结构体
+    r"""DescribeBillSummaryByProduct请求参数结构体
 
     """
 
@@ -20186,7 +20186,7 @@ adjustment-调账
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -20197,7 +20197,7 @@ adjustment-调账
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -20208,7 +20208,7 @@ adjustment-调账
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -20219,7 +20219,7 @@ adjustment-调账
 
     @property
     def PayType(self):
-        """款项类别，与L0账单上的汇总类别对应。
+        r"""款项类别，与L0账单上的汇总类别对应。
 此参数自账单3.0（即2021-05）之后开始生效。
 枚举值：
 consume-消费
@@ -20250,7 +20250,7 @@ adjustment-调账
 
 
 class DescribeBillSummaryByProductResponse(AbstractModel):
-    """DescribeBillSummaryByProduct返回参数结构体
+    r"""DescribeBillSummaryByProduct返回参数结构体
 
     """
 
@@ -20274,7 +20274,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20285,7 +20285,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def SummaryTotal(self):
-        """总花费详情
+        r"""总花费详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`
         """
@@ -20297,7 +20297,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        """各产品花费分布
+        r"""各产品花费分布
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BusinessSummaryOverviewItem
         """
@@ -20309,7 +20309,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20334,7 +20334,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
 
 class DescribeBillSummaryByProjectRequest(AbstractModel):
-    """DescribeBillSummaryByProject请求参数结构体
+    r"""DescribeBillSummaryByProject请求参数结构体
 
     """
 
@@ -20353,7 +20353,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -20364,7 +20364,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -20375,7 +20375,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -20400,7 +20400,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
 
 class DescribeBillSummaryByProjectResponse(AbstractModel):
-    """DescribeBillSummaryByProject返回参数结构体
+    r"""DescribeBillSummaryByProject返回参数结构体
 
     """
 
@@ -20420,7 +20420,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20431,7 +20431,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        """各项目花费分布详情
+        r"""各项目花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProjectSummaryOverviewItem
         """
@@ -20443,7 +20443,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20465,7 +20465,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
 
 class DescribeBillSummaryByRegionRequest(AbstractModel):
-    """DescribeBillSummaryByRegion请求参数结构体
+    r"""DescribeBillSummaryByRegion请求参数结构体
 
     """
 
@@ -20484,7 +20484,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -20495,7 +20495,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -20506,7 +20506,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -20531,7 +20531,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
 
 class DescribeBillSummaryByRegionResponse(AbstractModel):
-    """DescribeBillSummaryByRegion返回参数结构体
+    r"""DescribeBillSummaryByRegion返回参数结构体
 
     """
 
@@ -20551,7 +20551,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20562,7 +20562,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        """各地域花费分布详情
+        r"""各地域花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionSummaryOverviewItem
         """
@@ -20574,7 +20574,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20596,7 +20596,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
 
 class DescribeBillSummaryByTagRequest(AbstractModel):
-    """DescribeBillSummaryByTag请求参数结构体
+    r"""DescribeBillSummaryByTag请求参数结构体
 
     """
 
@@ -20621,7 +20621,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -20632,7 +20632,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -20643,7 +20643,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键，用户自定义
+        r"""分账标签键，用户自定义
         :rtype: str
         """
         return self._TagKey
@@ -20654,7 +20654,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -20665,7 +20665,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """分账标签值
+        r"""分账标签值
         :rtype: str
         """
         return self._TagValue
@@ -20692,7 +20692,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
 
 class DescribeBillSummaryByTagResponse(AbstractModel):
-    """DescribeBillSummaryByTag返回参数结构体
+    r"""DescribeBillSummaryByTag返回参数结构体
 
     """
 
@@ -20716,7 +20716,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20727,7 +20727,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def SummaryOverview(self):
-        """各标签值花费分布详情
+        r"""各标签值花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagSummaryOverviewItem
         """
@@ -20739,7 +20739,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def SummaryTotal(self):
-        """总数
+        r"""总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
         """
@@ -20751,7 +20751,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20776,7 +20776,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
 
 class DescribeBillSummaryForOrganizationRequest(AbstractModel):
-    """DescribeBillSummaryForOrganization请求参数结构体
+    r"""DescribeBillSummaryForOrganization请求参数结构体
 
     """
 
@@ -20795,7 +20795,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2023-04
+        r"""账单月份，格式为2023-04
         :rtype: str
         """
         return self._Month
@@ -20806,7 +20806,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        """账单维度类型，枚举值如下：business、project、region、payMode、tag
+        r"""账单维度类型，枚举值如下：business、project、region、payMode、tag
         :rtype: str
         """
         return self._GroupType
@@ -20817,7 +20817,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键，GroupType=tag获取标签维度账单时传
+        r"""标签键，GroupType=tag获取标签维度账单时传
         :rtype: list of str
         """
         return self._TagKey
@@ -20842,7 +20842,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
 
 class DescribeBillSummaryForOrganizationResponse(AbstractModel):
-    """DescribeBillSummaryForOrganization返回参数结构体
+    r"""DescribeBillSummaryForOrganization返回参数结构体
 
     """
 
@@ -20861,7 +20861,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -20872,7 +20872,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        """账单多维度汇总消费详情
+        r"""账单多维度汇总消费详情
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail
@@ -20883,7 +20883,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20905,7 +20905,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
 
 class DescribeBillSummaryRequest(AbstractModel):
-    """DescribeBillSummary请求参数结构体
+    r"""DescribeBillSummary请求参数结构体
 
     """
 
@@ -20924,7 +20924,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        """账单月份，格式为2023-04
+        r"""账单月份，格式为2023-04
         :rtype: str
         """
         return self._Month
@@ -20935,7 +20935,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        """账单维度类型，枚举值如下：business、project、region、payMode、tag
+        r"""账单维度类型，枚举值如下：business、project、region、payMode、tag
         :rtype: str
         """
         return self._GroupType
@@ -20946,7 +20946,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键，GroupType=tag获取标签维度账单时传
+        r"""标签键，GroupType=tag获取标签维度账单时传
         :rtype: list of str
         """
         return self._TagKey
@@ -20971,7 +20971,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
 
 class DescribeBillSummaryResponse(AbstractModel):
-    """DescribeBillSummary返回参数结构体
+    r"""DescribeBillSummary返回参数结构体
 
     """
 
@@ -20990,7 +20990,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :rtype: int
         """
         return self._Ready
@@ -21001,7 +21001,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        """账单多维度汇总消费详情
+        r"""账单多维度汇总消费详情
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail
@@ -21012,7 +21012,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21034,7 +21034,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
 
 class DescribeCostDetailRequest(AbstractModel):
-    """DescribeCostDetail请求参数结构体
+    r"""DescribeCostDetail请求参数结构体
 
     """
 
@@ -21072,7 +21072,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为100
+        r"""数量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -21083,7 +21083,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -21094,7 +21094,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
         :rtype: str
         """
         return self._BeginTime
@@ -21105,7 +21105,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
         :rtype: str
         """
         return self._EndTime
@@ -21116,7 +21116,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要访问列表的总记录数，用于前端分页
+        r"""是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :rtype: int
         """
@@ -21128,7 +21128,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
         :rtype: str
         """
         return self._Month
@@ -21139,7 +21139,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """查询指定产品信息
+        r"""查询指定产品信息
         :rtype: str
         """
         return self._ProductCode
@@ -21150,7 +21150,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式 prePay/postPay
+        r"""付费模式 prePay/postPay
         :rtype: str
         """
         return self._PayMode
@@ -21161,7 +21161,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """查询指定资源信息
+        r"""查询指定资源信息
         :rtype: str
         """
         return self._ResourceId
@@ -21192,7 +21192,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
 
 class DescribeCostDetailResponse(AbstractModel):
-    """DescribeCostDetail返回参数结构体
+    r"""DescribeCostDetail返回参数结构体
 
     """
 
@@ -21212,7 +21212,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        """消耗明细
+        r"""消耗明细
         :rtype: list of CostDetail
         """
         return self._DetailSet
@@ -21223,7 +21223,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录数
+        r"""记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21235,7 +21235,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21257,7 +21257,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
 
 class DescribeCostExplorerSummaryRequest(AbstractModel):
-    """DescribeCostExplorerSummary请求参数结构体
+    r"""DescribeCostExplorerSummary请求参数结构体
 
     """
 
@@ -21313,7 +21313,7 @@ ownerUin=使用者账号
 
     @property
     def BeginTime(self):
-        """周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss
         :rtype: str
         """
         return self._BeginTime
@@ -21324,7 +21324,7 @@ ownerUin=使用者账号
 
     @property
     def EndTime(self):
-        """周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss
         :rtype: str
         """
         return self._EndTime
@@ -21335,7 +21335,7 @@ ownerUin=使用者账号
 
     @property
     def BillType(self):
-        """账单类型：1-费用账单、2-消耗账单
+        r"""账单类型：1-费用账单、2-消耗账单
         :rtype: str
         """
         return self._BillType
@@ -21346,7 +21346,7 @@ ownerUin=使用者账号
 
     @property
     def PeriodType(self):
-        """统计周期：日-day，月-month；
+        r"""统计周期：日-day，月-month；
         :rtype: str
         """
         return self._PeriodType
@@ -21357,7 +21357,7 @@ ownerUin=使用者账号
 
     @property
     def Dimensions(self):
-        """分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
+        r"""分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
 default=仅总计
 feeType=费用类型
 billType=账单类型
@@ -21381,7 +21381,7 @@ ownerUin=使用者账号
 
     @property
     def FeeType(self):
-        """费用类型：cost-总费用，totalCost-原价费用
+        r"""费用类型：cost-总费用，totalCost-原价费用
         :rtype: str
         """
         return self._FeeType
@@ -21392,7 +21392,7 @@ ownerUin=使用者账号
 
     @property
     def PageSize(self):
-        """数量，每页最大值为100
+        r"""数量，每页最大值为100
         :rtype: int
         """
         return self._PageSize
@@ -21403,7 +21403,7 @@ ownerUin=使用者账号
 
     @property
     def PageNo(self):
-        """起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+        r"""起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
         :rtype: int
         """
         return self._PageNo
@@ -21414,7 +21414,7 @@ ownerUin=使用者账号
 
     @property
     def TagKeyStr(self):
-        """分账标签值
+        r"""分账标签值
         :rtype: str
         """
         return self._TagKeyStr
@@ -21425,7 +21425,7 @@ ownerUin=使用者账号
 
     @property
     def NeedConditionValue(self):
-        """是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+        r"""是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
         :rtype: str
         """
         return self._NeedConditionValue
@@ -21436,7 +21436,7 @@ ownerUin=使用者账号
 
     @property
     def Conditions(self):
-        """筛选参数
+        r"""筛选参数
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
         """
         return self._Conditions
@@ -21471,7 +21471,7 @@ ownerUin=使用者账号
 
 
 class DescribeCostExplorerSummaryResponse(AbstractModel):
-    """DescribeCostExplorerSummary返回参数结构体
+    r"""DescribeCostExplorerSummary返回参数结构体
 
     """
 
@@ -21499,7 +21499,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """数据条数
+        r"""数据条数
         :rtype: int
         """
         return self._Total
@@ -21510,7 +21510,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Header(self):
-        """表头信息
+        r"""表头信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
         """
         return self._Header
@@ -21521,7 +21521,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """数据明细
+        r"""数据明细
         :rtype: list of AnalyseDetail
         """
         return self._Detail
@@ -21532,7 +21532,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def TotalDetail(self):
-        """数据总计
+        r"""数据总计
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
         """
         return self._TotalDetail
@@ -21543,7 +21543,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def ConditionValue(self):
-        """筛选框
+        r"""筛选框
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         """
         return self._ConditionValue
@@ -21554,7 +21554,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21585,7 +21585,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
 
 class DescribeCostSummaryByProductRequest(AbstractModel):
-    """DescribeCostSummaryByProduct请求参数结构体
+    r"""DescribeCostSummaryByProduct请求参数结构体
 
     """
 
@@ -21613,7 +21613,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -21624,7 +21624,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -21635,7 +21635,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取数据量，最大值为100
+        r"""每次获取数据量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -21646,7 +21646,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量,默认从0开始
+        r"""偏移量,默认从0开始
         :rtype: int
         """
         return self._Offset
@@ -21657,7 +21657,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -21668,7 +21668,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要返回记录数量，0不需要，1需要，默认不需要
+        r"""是否需要返回记录数量，0不需要，1需要，默认不需要
         :rtype: int
         """
         return self._NeedRecordNum
@@ -21696,7 +21696,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
 
 class DescribeCostSummaryByProductResponse(AbstractModel):
-    """DescribeCostSummaryByProduct返回参数结构体
+    r"""DescribeCostSummaryByProduct返回参数结构体
 
     """
 
@@ -21721,7 +21721,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0未准备好，1准备好
+        r"""数据是否准备好，0未准备好，1准备好
         :rtype: int
         """
         return self._Ready
@@ -21732,7 +21732,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Total(self):
-        """消耗详情
+        r"""消耗详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -21743,7 +21743,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消耗按产品汇总详情
+        r"""消耗按产品汇总详情
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Data
@@ -21754,7 +21754,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量，NeedRecordNum为0时返回null
+        r"""记录数量，NeedRecordNum为0时返回null
         :rtype: int
         """
         return self._RecordNum
@@ -21765,7 +21765,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21791,7 +21791,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
 
 class DescribeCostSummaryByProjectRequest(AbstractModel):
-    """DescribeCostSummaryByProject请求参数结构体
+    r"""DescribeCostSummaryByProject请求参数结构体
 
     """
 
@@ -21819,7 +21819,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -21830,7 +21830,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -21841,7 +21841,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取数据量，最大值为100
+        r"""每次获取数据量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -21852,7 +21852,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量,默认从0开始
+        r"""偏移量,默认从0开始
         :rtype: int
         """
         return self._Offset
@@ -21863,7 +21863,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -21874,7 +21874,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要返回记录数量，0不需要，1需要，默认不需要
+        r"""是否需要返回记录数量，0不需要，1需要，默认不需要
         :rtype: int
         """
         return self._NeedRecordNum
@@ -21902,7 +21902,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
 
 class DescribeCostSummaryByProjectResponse(AbstractModel):
-    """DescribeCostSummaryByProject返回参数结构体
+    r"""DescribeCostSummaryByProject返回参数结构体
 
     """
 
@@ -21927,7 +21927,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0未准备好，1准备好
+        r"""数据是否准备好，0未准备好，1准备好
         :rtype: int
         """
         return self._Ready
@@ -21938,7 +21938,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Total(self):
-        """消耗详情
+        r"""消耗详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -21949,7 +21949,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消耗按业务汇总详情
+        r"""消耗按业务汇总详情
         :rtype: list of ConsumptionProjectSummaryDataItem
         """
         return self._Data
@@ -21960,7 +21960,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量，NeedRecordNum为0时返回null
+        r"""记录数量，NeedRecordNum为0时返回null
         :rtype: int
         """
         return self._RecordNum
@@ -21971,7 +21971,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21997,7 +21997,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
 
 class DescribeCostSummaryByRegionRequest(AbstractModel):
-    """DescribeCostSummaryByRegion请求参数结构体
+    r"""DescribeCostSummaryByRegion请求参数结构体
 
     """
 
@@ -22025,7 +22025,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -22036,7 +22036,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -22047,7 +22047,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取数据量，最大值为100
+        r"""每次获取数据量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -22058,7 +22058,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量,默认从0开始
+        r"""偏移量,默认从0开始
         :rtype: int
         """
         return self._Offset
@@ -22069,7 +22069,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -22080,7 +22080,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要返回记录数量，0不需要，1需要，默认不需要
+        r"""是否需要返回记录数量，0不需要，1需要，默认不需要
         :rtype: int
         """
         return self._NeedRecordNum
@@ -22108,7 +22108,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
 
 class DescribeCostSummaryByRegionResponse(AbstractModel):
-    """DescribeCostSummaryByRegion返回参数结构体
+    r"""DescribeCostSummaryByRegion返回参数结构体
 
     """
 
@@ -22133,7 +22133,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0未准备好，1准备好
+        r"""数据是否准备好，0未准备好，1准备好
         :rtype: int
         """
         return self._Ready
@@ -22144,7 +22144,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Total(self):
-        """消耗详情
+        r"""消耗详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -22155,7 +22155,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消耗按地域汇总详情
+        r"""消耗按地域汇总详情
         :rtype: list of ConsumptionRegionSummaryDataItem
         """
         return self._Data
@@ -22166,7 +22166,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量，NeedRecordNum为0时返回null
+        r"""记录数量，NeedRecordNum为0时返回null
         :rtype: int
         """
         return self._RecordNum
@@ -22177,7 +22177,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22203,7 +22203,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
 
 class DescribeCostSummaryByResourceRequest(AbstractModel):
-    """DescribeCostSummaryByResource请求参数结构体
+    r"""DescribeCostSummaryByResource请求参数结构体
 
     """
 
@@ -22237,7 +22237,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._BeginTime
@@ -22248,7 +22248,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :rtype: str
         """
         return self._EndTime
@@ -22259,7 +22259,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取数据量，最大值为100
+        r"""每次获取数据量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -22270,7 +22270,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量,默认从0开始
+        r"""偏移量,默认从0开始
         :rtype: int
         """
         return self._Offset
@@ -22281,7 +22281,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """查询账单数据的用户UIN
+        r"""查询账单数据的用户UIN
         :rtype: str
         """
         return self._PayerUin
@@ -22292,7 +22292,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """是否需要返回记录数量，0不需要，1需要，默认不需要
+        r"""是否需要返回记录数量，0不需要，1需要，默认不需要
         :rtype: int
         """
         return self._NeedRecordNum
@@ -22303,7 +22303,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedConditionValue(self):
-        """是否需要返回过滤条件，0不需要，1需要，默认不需要
+        r"""是否需要返回过滤条件，0不需要，1需要，默认不需要
         :rtype: int
         """
         return self._NeedConditionValue
@@ -22314,7 +22314,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Conditions(self):
-        """过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+        r"""过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
         :rtype: :class:`tencentcloud.billing.v20180709.models.Conditions`
         """
         return self._Conditions
@@ -22346,7 +22346,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
 
 class DescribeCostSummaryByResourceResponse(AbstractModel):
-    """DescribeCostSummaryByResource返回参数结构体
+    r"""DescribeCostSummaryByResource返回参数结构体
 
     """
 
@@ -22376,7 +22376,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """数据是否准备好，0未准备好，1准备好
+        r"""数据是否准备好，0未准备好，1准备好
         :rtype: int
         """
         return self._Ready
@@ -22387,7 +22387,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Total(self):
-        """消耗详情
+        r"""消耗详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -22398,7 +22398,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def ConditionValue(self):
-        """过滤条件
+        r"""过滤条件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
         """
@@ -22410,7 +22410,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量
+        r"""记录数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22422,7 +22422,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资源消耗详情
+        r"""资源消耗详情
         :rtype: list of ConsumptionResourceSummaryDataItem
         """
         return self._Data
@@ -22433,7 +22433,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22462,7 +22462,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
 
 class DescribeDealsByCondRequest(AbstractModel):
-    """DescribeDealsByCond请求参数结构体
+    r"""DescribeDealsByCond请求参数结构体
 
     """
 
@@ -22508,7 +22508,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间 2016-01-01 00:00:00
+        r"""开始时间 2016-01-01 00:00:00
         :rtype: str
         """
         return self._StartTime
@@ -22519,7 +22519,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
+        r"""结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
         :rtype: str
         """
         return self._EndTime
@@ -22530,7 +22530,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """一页多少条数据，默认是20条，最大不超过1000
+        r"""一页多少条数据，默认是20条，最大不超过1000
         :rtype: int
         """
         return self._Limit
@@ -22541,7 +22541,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """第多少页，从0开始，默认是0
+        r"""第多少页，从0开始，默认是0
         :rtype: int
         """
         return self._Offset
@@ -22552,7 +22552,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Status(self):
-        """订单状态,默认为4（成功的订单）
+        r"""订单状态,默认为4（成功的订单）
 订单的状态
 1：未支付
 2：已支付3：发货中
@@ -22575,7 +22575,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """子订单号
+        r"""子订单号
         :rtype: str
         """
         return self._OrderId
@@ -22586,7 +22586,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def BigDealId(self):
-        """大订单号
+        r"""大订单号
         :rtype: str
         """
         return self._BigDealId
@@ -22597,7 +22597,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -22627,7 +22627,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
 
 class DescribeDealsByCondResponse(AbstractModel):
-    """DescribeDealsByCond返回参数结构体
+    r"""DescribeDealsByCond返回参数结构体
 
     """
 
@@ -22646,7 +22646,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def Deals(self):
-        """订单列表
+        r"""订单列表
         :rtype: list of Deal
         """
         return self._Deals
@@ -22657,7 +22657,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """订单总数
+        r"""订单总数
         :rtype: int
         """
         return self._TotalCount
@@ -22668,7 +22668,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22690,7 +22690,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
 
 class DescribeDosageCosDetailByDateRequest(AbstractModel):
-    """DescribeDosageCosDetailByDate请求参数结构体
+    r"""DescribeDosageCosDetailByDate请求参数结构体
 
     """
 
@@ -22709,7 +22709,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """查询用量开始时间，格式为yyyy-mm-dd，例如：2020-09-01
+        r"""查询用量开始时间，格式为yyyy-mm-dd，例如：2020-09-01
         :rtype: str
         """
         return self._StartDate
@@ -22720,7 +22720,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """查询用量结束时间，格式为yyyy-mm-dd，例如：2020-09-30（与开始时间同月，不支持跨月查询）
+        r"""查询用量结束时间，格式为yyyy-mm-dd，例如：2020-09-30（与开始时间同月，不支持跨月查询）
         :rtype: str
         """
         return self._EndDate
@@ -22731,7 +22731,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291
+        r"""COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291
         :rtype: str
         """
         return self._BucketName
@@ -22756,7 +22756,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
 
 class DescribeDosageCosDetailByDateResponse(AbstractModel):
-    """DescribeDosageCosDetailByDate返回参数结构体
+    r"""DescribeDosageCosDetailByDate返回参数结构体
 
     """
 
@@ -22772,7 +22772,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
     @property
     def DetailSets(self):
-        """用量数组
+        r"""用量数组
         :rtype: list of CosDetailSets
         """
         return self._DetailSets
@@ -22783,7 +22783,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22804,7 +22804,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
 
 class DescribeDosageDetail(AbstractModel):
-    """计量标准接入类产品支持API接口获取用量明细返回数据结构
+    r"""计量标准接入类产品支持API接口获取用量明细返回数据结构
 
     """
 
@@ -22875,7 +22875,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -22886,7 +22886,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def Uin(self):
-        """账号 ID 是用户在腾讯云的唯一账号标识
+        r"""账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._Uin
@@ -22897,7 +22897,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DosageType(self):
-        """用量统计类型
+        r"""用量统计类型
         :rtype: str
         """
         return self._DosageType
@@ -22908,7 +22908,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -22919,7 +22919,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._SubProductCode
@@ -22930,7 +22930,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def BillingItemCode(self):
-        """组件类型编码
+        r"""组件类型编码
 
         :rtype: str
         """
@@ -22942,7 +22942,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SubBillingItemCode(self):
-        """组件编码
+        r"""组件编码
         :rtype: str
         """
         return self._SubBillingItemCode
@@ -22953,7 +22953,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductCodeName
@@ -22964,7 +22964,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SubProductCodeName(self):
-        """子产品名称
+        r"""子产品名称
         :rtype: str
         """
         return self._SubProductCodeName
@@ -22975,7 +22975,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def BillingItemCodeName(self):
-        """组件类型
+        r"""组件类型
         :rtype: str
         """
         return self._BillingItemCodeName
@@ -22986,7 +22986,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SubBillingItemCodeName(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._SubBillingItemCodeName
@@ -22997,7 +22997,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DosageUnit(self):
-        """用量单位
+        r"""用量单位
         :rtype: str
         """
         return self._DosageUnit
@@ -23008,7 +23008,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DosageBeginTime(self):
-        """用量起始时间
+        r"""用量起始时间
         :rtype: str
         """
         return self._DosageBeginTime
@@ -23019,7 +23019,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DosageEndTime(self):
-        """用量截止时间
+        r"""用量截止时间
         :rtype: str
         """
         return self._DosageEndTime
@@ -23030,7 +23030,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DosageValue(self):
-        """标准用量
+        r"""标准用量
         :rtype: float
         """
         return self._DosageValue
@@ -23041,7 +23041,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def DeductValue(self):
-        """抵扣用量
+        r"""抵扣用量
         :rtype: float
         """
         return self._DeductValue
@@ -23052,7 +23052,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def RemainValue(self):
-        """抵扣余量
+        r"""抵扣余量
         :rtype: float
         """
         return self._RemainValue
@@ -23063,7 +23063,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """sdkAppId
+        r"""sdkAppId
         :rtype: str
         """
         return self._SdkAppId
@@ -23074,7 +23074,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def AttrStr(self):
-        """其他信息
+        r"""其他信息
         :rtype: list of JsonObject
         """
         return self._AttrStr
@@ -23085,7 +23085,7 @@ class DescribeDosageDetail(AbstractModel):
 
     @property
     def SheetName(self):
-        """用量模板名称
+        r"""用量模板名称
         :rtype: list of str
         """
         return self._SheetName
@@ -23132,7 +23132,7 @@ class DescribeDosageDetail(AbstractModel):
 
 
 class DescribeDosageDetailByDateRequest(AbstractModel):
-    """DescribeDosageDetailByDate请求参数结构体
+    r"""DescribeDosageDetailByDate请求参数结构体
 
     """
 
@@ -23181,7 +23181,7 @@ cdn业务：
 
     @property
     def StartDate(self):
-        """查询账单开始日期，如 2019-01-01
+        r"""查询账单开始日期，如 2019-01-01
         :rtype: str
         """
         return self._StartDate
@@ -23192,7 +23192,7 @@ cdn业务：
 
     @property
     def EndDate(self):
-        """查询账单结束日期，如 2019-01-01， 时间跨度不超过7天
+        r"""查询账单结束日期，如 2019-01-01， 时间跨度不超过7天
         :rtype: str
         """
         return self._EndDate
@@ -23203,7 +23203,7 @@ cdn业务：
 
     @property
     def ProductCode(self):
-        """互动直播：
+        r"""互动直播：
 10194   互动直播-核心机房           :
 10195   互动直播-边缘机房
 
@@ -23233,7 +23233,7 @@ cdn业务：
 
     @property
     def Domain(self):
-        """查询域名 例如 www.qq.com
+        r"""查询域名 例如 www.qq.com
 非CDN业务查询时传入空字符串，返回的值为空
         :rtype: str
         """
@@ -23245,7 +23245,7 @@ cdn业务：
 
     @property
     def InstanceID(self):
-        """1、如果为空，则返回EIP或CLB所有实例的明细；
+        r"""1、如果为空，则返回EIP或CLB所有实例的明细；
 2、如果传入实例名，则返回该实例明细
         :rtype: str
         """
@@ -23257,7 +23257,7 @@ cdn业务：
 
     @property
     def PayerUin(self):
-        """支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        r"""支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
         :rtype: str
         """
         return self._PayerUin
@@ -23285,7 +23285,7 @@ cdn业务：
 
 
 class DescribeDosageDetailByDateResponse(AbstractModel):
-    """DescribeDosageDetailByDate返回参数结构体
+    r"""DescribeDosageDetailByDate返回参数结构体
 
     """
 
@@ -23310,7 +23310,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
     @property
     def Unit(self):
-        """计量单位
+        r"""计量单位
         :rtype: str
         """
         return self._Unit
@@ -23321,7 +23321,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
     @property
     def DetailSets(self):
-        """用量数组
+        r"""用量数组
         :rtype: list of DetailSet
         """
         return self._DetailSets
@@ -23332,7 +23332,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
     @property
     def RetCode(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._RetCode
@@ -23343,7 +23343,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
     @property
     def RetMsg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._RetMsg
@@ -23354,7 +23354,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23378,7 +23378,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
 
 
 class DescribeDosageDetailListRequest(AbstractModel):
-    """DescribeDosageDetailList请求参数结构体
+    r"""DescribeDosageDetailList请求参数结构体
 
     """
 
@@ -23418,7 +23418,7 @@ p_dsa（全球IP应用加速）：minute
 
     @property
     def StartTime(self):
-        """用量起始时间，如：2023-02-01
+        r"""用量起始时间，如：2023-02-01
         :rtype: str
         """
         return self._StartTime
@@ -23429,7 +23429,7 @@ p_dsa（全球IP应用加速）：minute
 
     @property
     def EndTime(self):
-        """用量截止时间，如：2023-02-28
+        r"""用量截止时间，如：2023-02-28
         :rtype: str
         """
         return self._EndTime
@@ -23440,7 +23440,7 @@ p_dsa（全球IP应用加速）：minute
 
     @property
     def ProductCode(self):
-        """产品编码，已支持查询的产品如下：
+        r"""产品编码，已支持查询的产品如下：
 p_ccc（云联络中心）
 p_rav（实时音视频）
 p_pstn（号码保护）
@@ -23457,7 +23457,7 @@ p_dsa（全球IP应用加速）
 
     @property
     def Offset(self):
-        """数据偏移量（从0开始）
+        r"""数据偏移量（从0开始）
         :rtype: int
         """
         return self._Offset
@@ -23468,7 +23468,7 @@ p_dsa（全球IP应用加速）
 
     @property
     def Limit(self):
-        """单次数据量（最大3000）
+        r"""单次数据量（最大3000）
         :rtype: int
         """
         return self._Limit
@@ -23479,7 +23479,7 @@ p_dsa（全球IP应用加速）
 
     @property
     def DosageType(self):
-        """用量统计类型：用量明细的数据统计汇总周期类型，包括minute-按5分钟汇总、hour-按小时汇总、day-按天汇总、month-按月汇总、comm-其他，默认查询所有类型明细，目前各产品已支持的统计类型如下：
+        r"""用量统计类型：用量明细的数据统计汇总周期类型，包括minute-按5分钟汇总、hour-按小时汇总、day-按天汇总、month-按月汇总、comm-其他，默认查询所有类型明细，目前各产品已支持的统计类型如下：
 p_ccc（云联络中心）：comm、day
 p_rav（实时音视频）：minute、day
 p_pstn（号码保护）：comm
@@ -23513,7 +23513,7 @@ p_dsa（全球IP应用加速）：minute
 
 
 class DescribeDosageDetailListResponse(AbstractModel):
-    """DescribeDosageDetailList返回参数结构体
+    r"""DescribeDosageDetailList返回参数结构体
 
     """
 
@@ -23529,7 +23529,7 @@ class DescribeDosageDetailListResponse(AbstractModel):
 
     @property
     def Record(self):
-        """用量明细集合
+        r"""用量明细集合
         :rtype: list of DescribeDosageDetail
         """
         return self._Record
@@ -23540,7 +23540,7 @@ class DescribeDosageDetailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23561,7 +23561,7 @@ class DescribeDosageDetailListResponse(AbstractModel):
 
 
 class DescribeGatherResourceRequest(AbstractModel):
-    """DescribeGatherResource请求参数结构体
+    r"""DescribeGatherResource请求参数结构体
 
     """
 
@@ -23637,7 +23637,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -23648,7 +23648,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :rtype: int
         """
         return self._Offset
@@ -23659,7 +23659,7 @@ desc - 降序
 
     @property
     def Month(self):
-        """账单月份，格式为2024-02，不传默认当前月
+        r"""账单月份，格式为2024-02，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -23670,7 +23670,7 @@ desc - 降序
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识，用作筛选
+        r"""分账单元唯一标识，用作筛选
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -23681,7 +23681,7 @@ desc - 降序
 
     @property
     def GatherType(self):
-        """资源目录类别，枚举值如下：
+        r"""资源目录类别，枚举值如下：
 all - 全部 
 none - 未归集
         :rtype: str
@@ -23694,7 +23694,7 @@ none - 未归集
 
     @property
     def Sort(self):
-        """排序字段，枚举值如下：
+        r"""排序字段，枚举值如下：
 realCost  - 折后总价
 cashPayAmount - 现金金额
 voucherPayAmount - 代金券金额
@@ -23710,7 +23710,7 @@ transferPayAmount -分成金金额
 
     @property
     def SortType(self):
-        """排序类型，枚举值如下：
+        r"""排序类型，枚举值如下：
 asc - 升序
 desc - 降序
         :rtype: str
@@ -23723,7 +23723,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        """产品编码，用作筛选
+        r"""产品编码，用作筛选
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -23734,7 +23734,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        """子产品编码，用作筛选
+        r"""子产品编码，用作筛选
         :rtype: list of str
         """
         return self._ProductCodes
@@ -23745,7 +23745,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        """组件名称编码，用作筛选
+        r"""组件名称编码，用作筛选
         :rtype: list of str
         """
         return self._ItemCodes
@@ -23756,7 +23756,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        """地域ID，用作筛选
+        r"""地域ID，用作筛选
         :rtype: list of int non-negative
         """
         return self._RegionIds
@@ -23767,7 +23767,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        """实例类型编码，用作筛选
+        r"""实例类型编码，用作筛选
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -23778,7 +23778,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        """计费模式编码，用作筛选
+        r"""计费模式编码，用作筛选
         :rtype: list of str
         """
         return self._PayModes
@@ -23789,7 +23789,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        """操作者UIN，用作筛选
+        r"""操作者UIN，用作筛选
         :rtype: list of str
         """
         return self._OperateUins
@@ -23800,7 +23800,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        """使用者UIN，用作筛选
+        r"""使用者UIN，用作筛选
         :rtype: list of str
         """
         return self._OwnerUins
@@ -23811,7 +23811,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        """模糊搜索：支持标签、资源id、资源别名
+        r"""模糊搜索：支持标签、资源id、资源别名
         :rtype: str
         """
         return self._SearchKey
@@ -23822,7 +23822,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        """标签，用作筛选
+        r"""标签，用作筛选
         :rtype: list of str
         """
         return self._Tag
@@ -23833,7 +23833,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        """项目ID，用作筛选
+        r"""项目ID，用作筛选
         :rtype: list of str
         """
         return self._ProjectIds
@@ -23844,7 +23844,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        """交易类型编码，用作筛选
+        r"""交易类型编码，用作筛选
         :rtype: list of str
         """
         return self._ActionTypes
@@ -23885,7 +23885,7 @@ desc - 降序
 
 
 class DescribeGatherResourceResponse(AbstractModel):
-    """DescribeGatherResource返回参数结构体
+    r"""DescribeGatherResource返回参数结构体
 
     """
 
@@ -23909,7 +23909,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._RecordNum
@@ -23920,7 +23920,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def GatherResourceSummary(self):
-        """资源归集汇总
+        r"""资源归集汇总
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatherResourceSummary
         """
@@ -23932,7 +23932,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """数据更新时间
+        r"""数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23944,7 +23944,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23967,7 +23967,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
 
 class DescribeGatherRuleDetailRequest(AbstractModel):
-    """DescribeGatherRuleDetail请求参数结构体
+    r"""DescribeGatherRuleDetail请求参数结构体
 
     """
 
@@ -23983,7 +23983,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        """所查询归集规则ID
+        r"""所查询归集规则ID
         :rtype: int
         """
         return self._Id
@@ -23994,7 +23994,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -24018,7 +24018,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
 
 class DescribeGatherRuleDetailResponse(AbstractModel):
-    """DescribeGatherRuleDetail返回参数结构体
+    r"""DescribeGatherRuleDetail返回参数结构体
 
     """
 
@@ -24043,7 +24043,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """归集规则ID
+        r"""归集规则ID
         :rtype: int
         """
         return self._Id
@@ -24054,7 +24054,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """归集规则所属UIN
+        r"""归集规则所属UIN
         :rtype: str
         """
         return self._Uin
@@ -24065,7 +24065,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """归集规则最后更新时间
+        r"""归集规则最后更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -24076,7 +24076,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """归集规则详情
+        r"""归集规则详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -24087,7 +24087,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24108,7 +24108,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
 
 class DescribeSavingPlanResourceInfoRequest(AbstractModel):
-    """DescribeSavingPlanResourceInfo请求参数结构体
+    r"""DescribeSavingPlanResourceInfo请求参数结构体
 
     """
 
@@ -24130,7 +24130,7 @@ class DescribeSavingPlanResourceInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为100
+        r"""数量，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -24141,7 +24141,7 @@ class DescribeSavingPlanResourceInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -24152,7 +24152,7 @@ class DescribeSavingPlanResourceInfoRequest(AbstractModel):
 
     @property
     def CreateStartDate(self):
-        """购买开始时间，格式yyyy-MM-dd
+        r"""购买开始时间，格式yyyy-MM-dd
         :rtype: str
         """
         return self._CreateStartDate
@@ -24163,7 +24163,7 @@ class DescribeSavingPlanResourceInfoRequest(AbstractModel):
 
     @property
     def CreateEndDate(self):
-        """购买结束时间，格式yyyy-MM-dd
+        r"""购买结束时间，格式yyyy-MM-dd
         :rtype: str
         """
         return self._CreateEndDate
@@ -24189,7 +24189,7 @@ class DescribeSavingPlanResourceInfoRequest(AbstractModel):
 
 
 class DescribeSavingPlanResourceInfoResponse(AbstractModel):
-    """DescribeSavingPlanResourceInfo返回参数结构体
+    r"""DescribeSavingPlanResourceInfo返回参数结构体
 
     """
 
@@ -24205,7 +24205,7 @@ class DescribeSavingPlanResourceInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录数
+        r"""记录数
         :rtype: int
         """
         return self._Total
@@ -24216,7 +24216,7 @@ class DescribeSavingPlanResourceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24232,7 +24232,7 @@ class DescribeSavingPlanResourceInfoResponse(AbstractModel):
 
 
 class DescribeTagListRequest(AbstractModel):
-    """DescribeTagList请求参数结构体
+    r"""DescribeTagList请求参数结构体
 
     """
 
@@ -24257,7 +24257,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数量，最大值为1000
+        r"""数量，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -24268,7 +24268,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :rtype: int
         """
         return self._Offset
@@ -24279,7 +24279,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键，用作模糊搜索
+        r"""分账标签键，用作模糊搜索
         :rtype: str
         """
         return self._TagKey
@@ -24290,7 +24290,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """标签类型，枚举值：0普通标签，1分账标签，用作筛选，不传获取全部标签键
+        r"""标签类型，枚举值：0普通标签，1分账标签，用作筛选，不传获取全部标签键
         :rtype: int
         """
         return self._Status
@@ -24301,7 +24301,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式，枚举值：asc排升序，desc排降序
+        r"""排序方式，枚举值：asc排升序，desc排降序
         :rtype: str
         """
         return self._OrderType
@@ -24328,7 +24328,7 @@ class DescribeTagListRequest(AbstractModel):
 
 
 class DescribeTagListResponse(AbstractModel):
-    """DescribeTagList返回参数结构体
+    r"""DescribeTagList返回参数结构体
 
     """
 
@@ -24347,7 +24347,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """总记录数
+        r"""总记录数
         :rtype: int
         """
         return self._RecordNum
@@ -24358,7 +24358,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of TagDataInfo
         """
         return self._Data
@@ -24369,7 +24369,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24391,7 +24391,7 @@ class DescribeTagListResponse(AbstractModel):
 
 
 class DescribeVoucherInfoRequest(AbstractModel):
-    """DescribeVoucherInfo请求参数结构体
+    r"""DescribeVoucherInfo请求参数结构体
 
     """
 
@@ -24470,7 +24470,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """一页多少条数据，默认是20条，最大不超过1000
+        r"""一页多少条数据，默认是20条，最大不超过1000
         :rtype: int
         """
         return self._Limit
@@ -24481,7 +24481,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """第多少页，默认是1
+        r"""第多少页，默认是1
         :rtype: int
         """
         return self._Offset
@@ -24492,7 +24492,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Status(self):
-        """券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        r"""券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
         :rtype: str
         """
         return self._Status
@@ -24503,7 +24503,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        """代金券id
+        r"""代金券id
         :rtype: str
         """
         return self._VoucherId
@@ -24514,7 +24514,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CodeId(self):
-        """代金券订单id
+        r"""代金券订单id
         :rtype: str
         """
         return self._CodeId
@@ -24525,7 +24525,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """商品码
+        r"""商品码
         :rtype: str
         """
         return self._ProductCode
@@ -24536,7 +24536,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """活动id
+        r"""活动id
         :rtype: str
         """
         return self._ActivityId
@@ -24547,7 +24547,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherName(self):
-        """代金券名称
+        r"""代金券名称
         :rtype: str
         """
         return self._VoucherName
@@ -24558,7 +24558,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        """发放开始时间,例：2021-01-01
+        r"""发放开始时间,例：2021-01-01
         :rtype: str
         """
         return self._TimeFrom
@@ -24569,7 +24569,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        """发放结束时间，例：2021-01-01
+        r"""发放结束时间，例：2021-01-01
         :rtype: str
         """
         return self._TimeTo
@@ -24580,7 +24580,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortField(self):
-        """指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
+        r"""指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
         :rtype: str
         """
         return self._SortField
@@ -24591,7 +24591,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        """指定升序降序：desc、asc
+        r"""指定升序降序：desc、asc
         :rtype: str
         """
         return self._SortOrder
@@ -24602,7 +24602,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
+        r"""付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
         :rtype: str
         """
         return self._PayMode
@@ -24613,7 +24613,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayScene(self):
-        """付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        r"""付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
         :rtype: str
         """
         return self._PayScene
@@ -24624,7 +24624,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人，默认就是用户uin
+        r"""操作人，默认就是用户uin
         :rtype: str
         """
         return self._Operator
@@ -24635,7 +24635,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherMainType(self):
-        """代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+        r"""代金券主类型 has_price 为有价现金券 no_price 为无价代金券
         :rtype: str
         """
         return self._VoucherMainType
@@ -24646,7 +24646,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherSubType(self):
-        """代金券副类型 discount 为折扣券 deduct 为抵扣券
+        r"""代金券副类型 discount 为折扣券 deduct 为抵扣券
         :rtype: str
         """
         return self._VoucherSubType
@@ -24657,7 +24657,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def StartTimeFrom(self):
-        """券有效时间开始时间
+        r"""券有效时间开始时间
         :rtype: str
         """
         return self._StartTimeFrom
@@ -24668,7 +24668,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def StartTimeTo(self):
-        """券有效时间结束时间
+        r"""券有效时间结束时间
         :rtype: str
         """
         return self._StartTimeTo
@@ -24679,7 +24679,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def EndTimeFrom(self):
-        """券失效时间开始时间
+        r"""券失效时间开始时间
         :rtype: str
         """
         return self._EndTimeFrom
@@ -24690,7 +24690,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def EndTimeTo(self):
-        """券失效时间结束时间
+        r"""券失效时间结束时间
         :rtype: str
         """
         return self._EndTimeTo
@@ -24701,7 +24701,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CreateTimeFrom(self):
-        """发券时间开始时间
+        r"""发券时间开始时间
         :rtype: str
         """
         return self._CreateTimeFrom
@@ -24712,7 +24712,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CreateTimeTo(self):
-        """发券时间结束时间
+        r"""发券时间结束时间
         :rtype: str
         """
         return self._CreateTimeTo
@@ -24757,7 +24757,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
 
 class DescribeVoucherInfoResponse(AbstractModel):
-    """DescribeVoucherInfo返回参数结构体
+    r"""DescribeVoucherInfo返回参数结构体
 
     """
 
@@ -24779,7 +24779,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """券总数
+        r"""券总数
         :rtype: int
         """
         return self._TotalCount
@@ -24790,7 +24790,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def TotalBalance(self):
-        """总余额（微分）
+        r"""总余额（微分）
         :rtype: int
         """
         return self._TotalBalance
@@ -24801,7 +24801,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def VoucherInfos(self):
-        """代金券相关信息
+        r"""代金券相关信息
         :rtype: list of VoucherInfos
         """
         return self._VoucherInfos
@@ -24812,7 +24812,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24835,7 +24835,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
 
 class DescribeVoucherUsageDetailsRequest(AbstractModel):
-    """DescribeVoucherUsageDetails请求参数结构体
+    r"""DescribeVoucherUsageDetails请求参数结构体
 
     """
 
@@ -24857,7 +24857,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """一页多少条数据，默认是20条，最大不超过1000
+        r"""一页多少条数据，默认是20条，最大不超过1000
         :rtype: int
         """
         return self._Limit
@@ -24868,7 +24868,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """第多少页，默认是1
+        r"""第多少页，默认是1
         :rtype: int
         """
         return self._Offset
@@ -24879,7 +24879,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        """代金券id
+        r"""代金券id
         :rtype: str
         """
         return self._VoucherId
@@ -24890,7 +24890,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人，默认就是用户uin
+        r"""操作人，默认就是用户uin
         :rtype: str
         """
         return self._Operator
@@ -24916,7 +24916,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
 
 class DescribeVoucherUsageDetailsResponse(AbstractModel):
-    """DescribeVoucherUsageDetails返回参数结构体
+    r"""DescribeVoucherUsageDetails返回参数结构体
 
     """
 
@@ -24938,7 +24938,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """券总数
+        r"""券总数
         :rtype: int
         """
         return self._TotalCount
@@ -24949,7 +24949,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
 
     @property
     def TotalUsedAmount(self):
-        """总已用金额（微分）
+        r"""总已用金额（微分）
         :rtype: int
         """
         return self._TotalUsedAmount
@@ -24960,7 +24960,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
 
     @property
     def UsageRecords(self):
-        """代金券使用记录细节
+        r"""代金券使用记录细节
         :rtype: list of UsageRecords
         """
         return self._UsageRecords
@@ -24971,7 +24971,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24994,7 +24994,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
 
 
 class DetailPoint(AbstractModel):
-    """由时间和值组成的数据结构
+    r"""由时间和值组成的数据结构
 
     """
 
@@ -25010,7 +25010,7 @@ class DetailPoint(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -25021,7 +25021,7 @@ class DetailPoint(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -25045,7 +25045,7 @@ class DetailPoint(AbstractModel):
 
 
 class DetailSet(AbstractModel):
-    """由域名和使用明细组成的数据结构
+    r"""由域名和使用明细组成的数据结构
 
     """
 
@@ -25064,7 +25064,7 @@ class DetailSet(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -25075,7 +25075,7 @@ class DetailSet(AbstractModel):
 
     @property
     def DetailPoints(self):
-        """使用数据明细
+        r"""使用数据明细
         :rtype: list of DetailPoint
         """
         return self._DetailPoints
@@ -25086,7 +25086,7 @@ class DetailSet(AbstractModel):
 
     @property
     def InstanceID(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceID
@@ -25116,7 +25116,7 @@ class DetailSet(AbstractModel):
 
 
 class DistributionBillDetail(AbstractModel):
-    """经销账单明细数据对象
+    r"""经销账单明细数据对象
 
     """
 
@@ -25213,7 +25213,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :rtype: str
         """
         return self._BusinessCodeName
@@ -25224,7 +25224,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -25235,7 +25235,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -25246,7 +25246,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -25257,7 +25257,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域：资源所属地域，如华南地区（广州）
+        r"""地域：资源所属地域，如华南地区（广州）
         :rtype: str
         """
         return self._RegionName
@@ -25268,7 +25268,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区：资源所属可用区，如广州三区
+        r"""可用区：资源所属可用区，如广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -25279,7 +25279,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
         :rtype: str
         """
         return self._ResourceId
@@ -25290,7 +25290,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        r"""资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
         :rtype: str
         """
         return self._ResourceName
@@ -25301,7 +25301,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -25312,7 +25312,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID：包年包月计费模式下订购的订单号
+        r"""订单ID：包年包月计费模式下订购的订单号
         :rtype: str
         """
         return self._OrderId
@@ -25323,7 +25323,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def BillId(self):
-        """交易ID：结算扣费单号
+        r"""交易ID：结算扣费单号
         :rtype: str
         """
         return self._BillId
@@ -25334,7 +25334,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def PayTime(self):
-        """扣费时间：结算扣费时间
+        r"""扣费时间：结算扣费时间
         :rtype: str
         """
         return self._PayTime
@@ -25345,7 +25345,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """开始使用时间：产品服务开始使用时间
+        r"""开始使用时间：产品服务开始使用时间
         :rtype: str
         """
         return self._FeeBeginTime
@@ -25356,7 +25356,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """结束使用时间：产品服务结束使用时间
+        r"""结束使用时间：产品服务结束使用时间
         :rtype: str
         """
         return self._FeeEndTime
@@ -25367,7 +25367,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        """组件列表
+        r"""组件列表
         :rtype: list of BillDetailComponent
         """
         return self._ComponentSet
@@ -25378,7 +25378,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者UIN：实际使用资源的账号 ID
+        r"""使用者UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -25389,7 +25389,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :rtype: str
         """
         return self._OperateUin
@@ -25400,7 +25400,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -25411,7 +25411,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -25422,7 +25422,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -25433,7 +25433,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -25444,7 +25444,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -25455,7 +25455,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -25466,7 +25466,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def PriceInfo(self):
-        """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        r"""价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
         :rtype: list of str
         """
         return self._PriceInfo
@@ -25477,7 +25477,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def AssociatedOrder(self):
-        """关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+        r"""关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -25488,7 +25488,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def Formula(self):
-        """计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        r"""计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
         :rtype: str
         """
         return self._Formula
@@ -25499,7 +25499,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def FormulaUrl(self):
-        """计费规则：各产品详细的计费规则官网说明链接
+        r"""计费规则：各产品详细的计费规则官网说明链接
         :rtype: str
         """
         return self._FormulaUrl
@@ -25510,7 +25510,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单归属月
+        r"""账单归属月
         :rtype: str
         """
         return self._BillMonth
@@ -25521,7 +25521,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def BillDay(self):
-        """账单归属日
+        r"""账单归属日
         :rtype: str
         """
         return self._BillDay
@@ -25584,7 +25584,7 @@ class DistributionBillDetail(AbstractModel):
 
 
 class ExcludedProducts(AbstractModel):
-    """不适用商品信息
+    r"""不适用商品信息
 
     """
 
@@ -25600,7 +25600,7 @@ class ExcludedProducts(AbstractModel):
 
     @property
     def GoodsName(self):
-        """不适用商品名称
+        r"""不适用商品名称
         :rtype: str
         """
         return self._GoodsName
@@ -25611,7 +25611,7 @@ class ExcludedProducts(AbstractModel):
 
     @property
     def PayMode(self):
-        """postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。
+        r"""postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。
         :rtype: str
         """
         return self._PayMode
@@ -25635,7 +25635,7 @@ class ExcludedProducts(AbstractModel):
 
 
 class GatherResourceSummary(AbstractModel):
-    """资源归集汇总
+    r"""资源归集汇总
 
     """
 
@@ -25764,7 +25764,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def PayerUin(self):
-        """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
         :rtype: str
         """
         return self._PayerUin
@@ -25775,7 +25775,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """使用者 UIN：实际使用资源的账号 ID
+        r"""使用者 UIN：实际使用资源的账号 ID
         :rtype: str
         """
         return self._OwnerUin
@@ -25786,7 +25786,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OperateUin(self):
-        """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
         :rtype: str
         """
         return self._OperateUin
@@ -25797,7 +25797,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型编码
+        r"""实例类型编码
         :rtype: str
         """
         return self._InstanceType
@@ -25808,7 +25808,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
         :rtype: str
         """
         return self._InstanceTypeName
@@ -25819,7 +25819,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
         :rtype: str
         """
         return self._ResourceId
@@ -25830,7 +25830,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ResourceName(self):
-        """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        r"""实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
         :rtype: str
         """
         return self._ResourceName
@@ -25841,7 +25841,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """分账单元唯一标识
+        r"""分账单元唯一标识
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -25852,7 +25852,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """分账单元名称
+        r"""分账单元名称
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -25863,7 +25863,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RuleId(self):
-        """资源命中公摊规则ID
+        r"""资源命中公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -25874,7 +25874,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RuleName(self):
-        """资源命中公摊规则名称
+        r"""资源命中公摊规则名称
         :rtype: str
         """
         return self._RuleName
@@ -25885,7 +25885,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """产品编码
+        r"""产品编码
         :rtype: str
         """
         return self._BusinessCode
@@ -25896,7 +25896,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """产品名称：用户所采购的各类云产品
+        r"""产品名称：用户所采购的各类云产品
         :rtype: str
         """
         return self._BusinessCodeName
@@ -25907,7 +25907,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ItemCode(self):
-        """组件名称编码
+        r"""组件名称编码
         :rtype: str
         """
         return self._ItemCode
@@ -25918,7 +25918,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""组件名称：用户购买的产品或服务，所包含的具体组件
         :rtype: str
         """
         return self._ItemCodeName
@@ -25929,7 +25929,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -25940,7 +25940,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域
+        r"""地域名称：资源所属地域
         :rtype: str
         """
         return self._RegionName
@@ -25951,7 +25951,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def Tag(self):
-        """分账标签：资源绑定的标签
+        r"""分账标签：资源绑定的标签
         :rtype: list of BillTag
         """
         return self._Tag
@@ -25962,7 +25962,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
         :rtype: str
         """
         return self._RealTotalCost
@@ -25973,7 +25973,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出(元)：通过现金账户支付的金额
+        r"""现金账户支出(元)：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -25984,7 +25984,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -25995,7 +25995,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出(元)：使用赠送金支付的金额
+        r"""赠送账户支出(元)：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -26006,7 +26006,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成账户支出(元)：通过分成金账户支付的金额
+        r"""分成账户支出(元)：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -26017,7 +26017,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def AllocationType(self):
-        """费用归集类型：费用来源类型，分摊、归集、未分配
+        r"""费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
 -1 - 未分配
@@ -26031,7 +26031,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BelongTreeNodeUniqKey(self):
-        """当前归属单元信息
+        r"""当前归属单元信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
         """
         return self._BelongTreeNodeUniqKey
@@ -26042,7 +26042,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BelongRule(self):
-        """当前资源命中公摊规则信息
+        r"""当前资源命中公摊规则信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
         """
         return self._BelongRule
@@ -26053,7 +26053,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OtherTreeNodeUniqKeys(self):
-        """其它归属单元信息
+        r"""其它归属单元信息
         :rtype: list of AllocationTreeNode
         """
         return self._OtherTreeNodeUniqKeys
@@ -26064,7 +26064,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OtherRules(self):
-        """其他命中规则信息
+        r"""其他命中规则信息
         :rtype: list of AllocationRule
         """
         return self._OtherRules
@@ -26075,7 +26075,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -26086,7 +26086,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -26097,7 +26097,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProductCode(self):
-        """子产品编码
+        r"""子产品编码
         :rtype: str
         """
         return self._ProductCode
@@ -26108,7 +26108,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """子产品名称：用户采购的具体产品细分类型
+        r"""子产品名称：用户采购的具体产品细分类型
         :rtype: str
         """
         return self._ProductCodeName
@@ -26119,7 +26119,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -26130,7 +26130,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -26141,7 +26141,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ActionType(self):
-        """交易类型编码
+        r"""交易类型编码
         :rtype: str
         """
         return self._ActionType
@@ -26152,7 +26152,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """交易类型：明细交易类型
+        r"""交易类型：明细交易类型
         :rtype: str
         """
         return self._ActionTypeName
@@ -26165,7 +26165,7 @@ class GatherResourceSummary(AbstractModel):
     def SplitItemId(self):
         warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
 
-        """分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26181,7 +26181,7 @@ class GatherResourceSummary(AbstractModel):
     def SplitItemName(self):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
-        """分拆项名称：涉及分拆产品的分拆后的分拆项
+        r"""分拆项名称：涉及分拆产品的分拆后的分拆项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26263,7 +26263,7 @@ class GatherResourceSummary(AbstractModel):
 
 
 class GatherRuleSummary(AbstractModel):
-    """归集规则列表
+    r"""归集规则列表
 
     """
 
@@ -26276,7 +26276,7 @@ class GatherRuleSummary(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """分账规则表达式
+        r"""分账规则表达式
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -26301,7 +26301,7 @@ class GatherRuleSummary(AbstractModel):
 
 
 class JsonObject(AbstractModel):
-    """Json对象
+    r"""Json对象
 
     """
 
@@ -26317,7 +26317,7 @@ class JsonObject(AbstractModel):
 
     @property
     def Key(self):
-        """key值
+        r"""key值
         :rtype: str
         """
         return self._Key
@@ -26328,7 +26328,7 @@ class JsonObject(AbstractModel):
 
     @property
     def Value(self):
-        """value值
+        r"""value值
         :rtype: str
         """
         return self._Value
@@ -26352,7 +26352,7 @@ class JsonObject(AbstractModel):
 
 
 class ModifyAllocationRuleRequest(AbstractModel):
-    """ModifyAllocationRule请求参数结构体
+    r"""ModifyAllocationRule请求参数结构体
 
     """
 
@@ -26380,7 +26380,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """所编辑公摊规则ID
+        r"""所编辑公摊规则ID
         :rtype: int
         """
         return self._RuleId
@@ -26391,7 +26391,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """编辑后公摊规则名称
+        r"""编辑后公摊规则名称
         :rtype: str
         """
         return self._Name
@@ -26402,7 +26402,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        """公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+        r"""公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
         :rtype: int
         """
         return self._Type
@@ -26413,7 +26413,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """编辑后公摊规则表达式
+        r"""编辑后公摊规则表达式
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -26424,7 +26424,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """编辑后公摊比例表达式
+        r"""编辑后公摊比例表达式
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -26435,7 +26435,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -26470,7 +26470,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
 
 class ModifyAllocationRuleResponse(AbstractModel):
-    """ModifyAllocationRule返回参数结构体
+    r"""ModifyAllocationRule返回参数结构体
 
     """
 
@@ -26483,7 +26483,7 @@ class ModifyAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26498,7 +26498,7 @@ class ModifyAllocationRuleResponse(AbstractModel):
 
 
 class ModifyAllocationUnitRequest(AbstractModel):
-    """ModifyAllocationUnit请求参数结构体
+    r"""ModifyAllocationUnit请求参数结构体
 
     """
 
@@ -26526,7 +26526,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        """所修改分账单元ID
+        r"""所修改分账单元ID
         :rtype: int
         """
         return self._Id
@@ -26537,7 +26537,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        """修改后分账单元名称
+        r"""修改后分账单元名称
         :rtype: str
         """
         return self._Name
@@ -26548,7 +26548,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        """修改后分账单元源组织名称
+        r"""修改后分账单元源组织名称
         :rtype: str
         """
         return self._SourceName
@@ -26559,7 +26559,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceId(self):
-        """修改后分账单元源组织ID
+        r"""修改后分账单元源组织ID
         :rtype: str
         """
         return self._SourceId
@@ -26570,7 +26570,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """分账单元备注说明
+        r"""分账单元备注说明
         :rtype: str
         """
         return self._Remark
@@ -26581,7 +26581,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -26609,7 +26609,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
 
 class ModifyAllocationUnitResponse(AbstractModel):
-    """ModifyAllocationUnit返回参数结构体
+    r"""ModifyAllocationUnit返回参数结构体
 
     """
 
@@ -26622,7 +26622,7 @@ class ModifyAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26637,7 +26637,7 @@ class ModifyAllocationUnitResponse(AbstractModel):
 
 
 class ModifyGatherRuleRequest(AbstractModel):
-    """ModifyGatherRule请求参数结构体
+    r"""ModifyGatherRule请求参数结构体
 
     """
 
@@ -26656,7 +26656,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """所编辑归集规则ID
+        r"""所编辑归集规则ID
         :rtype: int
         """
         return self._Id
@@ -26667,7 +26667,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """所编辑分账规则详情
+        r"""所编辑分账规则详情
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -26678,7 +26678,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """月份，不传默认当前月
+        r"""月份，不传默认当前月
         :rtype: str
         """
         return self._Month
@@ -26705,7 +26705,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
 
 class ModifyGatherRuleResponse(AbstractModel):
-    """ModifyGatherRule返回参数结构体
+    r"""ModifyGatherRule返回参数结构体
 
     """
 
@@ -26718,7 +26718,7 @@ class ModifyGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26733,7 +26733,7 @@ class ModifyGatherRuleResponse(AbstractModel):
 
 
 class PayDealsRequest(AbstractModel):
-    """PayDeals请求参数结构体
+    r"""PayDeals请求参数结构体
 
     """
 
@@ -26761,7 +26761,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def OrderIds(self):
-        """需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
+        r"""需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
         :rtype: list of str
         """
         return self._OrderIds
@@ -26772,7 +26772,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券,1:是,0否,默认0
+        r"""是否自动使用代金券,1:是,0否,默认0
         :rtype: int
         """
         return self._AutoVoucher
@@ -26783,7 +26783,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券ID列表,目前仅支持指定一张代金券
+        r"""代金券ID列表,目前仅支持指定一张代金券
         :rtype: list of str
         """
         return self._VoucherIds
@@ -26794,7 +26794,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def BigDealIds(self):
-        """需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
+        r"""需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
         :rtype: list of str
         """
         return self._BigDealIds
@@ -26805,7 +26805,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def AgentPay(self):
-        """0非代理，1代理商代付，3集团代理，4代理商为代客下产品级代付单，默认0
+        r"""0非代理，1代理商代付，3集团代理，4代理商为代客下产品级代付单，默认0
         :rtype: int
         """
         return self._AgentPay
@@ -26816,7 +26816,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def CpsUin(self):
-        """推荐者，用于返利
+        r"""推荐者，用于返利
         :rtype: str
         """
         return self._CpsUin
@@ -26844,7 +26844,7 @@ class PayDealsRequest(AbstractModel):
 
 
 class PayDealsResponse(AbstractModel):
-    """PayDeals返回参数结构体
+    r"""PayDeals返回参数结构体
 
     """
 
@@ -26866,7 +26866,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def OrderIds(self):
-        """此次操作支付成功的子订单号数组
+        r"""此次操作支付成功的子订单号数组
         :rtype: list of str
         """
         return self._OrderIds
@@ -26877,7 +26877,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """此次操作支付成功的资源Id数组
+        r"""此次操作支付成功的资源Id数组
         :rtype: list of str
         """
         return self._ResourceIds
@@ -26888,7 +26888,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def BigDealIds(self):
-        """此次操作支付成功的大订单号数组
+        r"""此次操作支付成功的大订单号数组
         :rtype: list of str
         """
         return self._BigDealIds
@@ -26899,7 +26899,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26917,7 +26917,7 @@ class PayDealsResponse(AbstractModel):
 
 
 class PayModeSummaryOverviewItem(AbstractModel):
-    """按计费模式汇总消费详情
+    r"""按计费模式汇总消费详情
 
     """
 
@@ -26957,7 +26957,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式编码
+        r"""计费模式编码
         :rtype: str
         """
         return self._PayMode
@@ -26968,7 +26968,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        """计费模式：区分为包年包月和按量计费
+        r"""计费模式：区分为包年包月和按量计费
         :rtype: str
         """
         return self._PayModeName
@@ -26979,7 +26979,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -26990,7 +26990,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27001,7 +27001,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -27012,7 +27012,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27023,7 +27023,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -27034,7 +27034,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -27045,7 +27045,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27056,7 +27056,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def Detail(self):
-        """按交易类型汇总消费详情
+        r"""按交易类型汇总消费详情
         :rtype: list of ActionSummaryOverviewItem
         """
         return self._Detail
@@ -27093,7 +27093,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
 
 class ProductInfo(AbstractModel):
-    """商品详细信息
+    r"""商品详细信息
 
     """
 
@@ -27109,7 +27109,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Name(self):
-        """商品详情名称标识
+        r"""商品详情名称标识
         :rtype: str
         """
         return self._Name
@@ -27120,7 +27120,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Value(self):
-        """商品详情
+        r"""商品详情
         :rtype: str
         """
         return self._Value
@@ -27144,7 +27144,7 @@ class ProductInfo(AbstractModel):
 
 
 class ProjectSummaryOverviewItem(AbstractModel):
-    """按项目汇总消费详情
+    r"""按项目汇总消费详情
 
     """
 
@@ -27184,7 +27184,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: str
         """
         return self._ProjectId
@@ -27195,7 +27195,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
         :rtype: str
         """
         return self._ProjectName
@@ -27206,7 +27206,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -27217,7 +27217,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27228,7 +27228,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -27239,7 +27239,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27250,7 +27250,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -27261,7 +27261,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -27272,7 +27272,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月份，格式2019-08
+        r"""账单月份，格式2019-08
         :rtype: str
         """
         return self._BillMonth
@@ -27283,7 +27283,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27315,7 +27315,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
 
 class RegionSummaryOverviewItem(AbstractModel):
-    """按地域汇总消费详情
+    r"""按地域汇总消费详情
 
     """
 
@@ -27355,7 +27355,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: str
         """
         return self._RegionId
@@ -27366,7 +27366,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域名称：资源所属地域，例如华南地区（广州）
+        r"""地域名称：资源所属地域，例如华南地区（广州）
         :rtype: str
         """
         return self._RegionName
@@ -27377,7 +27377,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -27388,7 +27388,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27399,7 +27399,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -27410,7 +27410,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27421,7 +27421,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -27432,7 +27432,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -27443,7 +27443,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """账单月份，格式2019-08
+        r"""账单月份，格式2019-08
         :rtype: str
         """
         return self._BillMonth
@@ -27454,7 +27454,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27486,7 +27486,7 @@ class RegionSummaryOverviewItem(AbstractModel):
 
 
 class SummaryDetail(AbstractModel):
-    """账单多维度汇总消费详情
+    r"""账单多维度汇总消费详情
 
     """
 
@@ -27523,7 +27523,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupKey(self):
-        """账单维度编码
+        r"""账单维度编码
         :rtype: str
         """
         return self._GroupKey
@@ -27534,7 +27534,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupValue(self):
-        """账单维度值
+        r"""账单维度值
         :rtype: str
         """
         return self._GroupValue
@@ -27545,7 +27545,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27556,7 +27556,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27567,7 +27567,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -27578,7 +27578,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27589,7 +27589,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -27600,7 +27600,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -27611,7 +27611,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def Business(self):
-        """产品汇总信息
+        r"""产品汇总信息
         :rtype: list of BusinessSummaryInfo
         """
         return self._Business
@@ -27647,7 +27647,7 @@ class SummaryDetail(AbstractModel):
 
 
 class SummaryTotal(AbstractModel):
-    """总数
+    r"""总数
 
     """
 
@@ -27663,7 +27663,7 @@ class SummaryTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27674,7 +27674,7 @@ class SummaryTotal(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27698,7 +27698,7 @@ class SummaryTotal(AbstractModel):
 
 
 class TagDataInfo(AbstractModel):
-    """标签信息
+    r"""标签信息
 
     """
 
@@ -27717,7 +27717,7 @@ class TagDataInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """分账标签键
+        r"""分账标签键
         :rtype: str
         """
         return self._TagKey
@@ -27728,7 +27728,7 @@ class TagDataInfo(AbstractModel):
 
     @property
     def Status(self):
-        """标签类型，0普通标签，1分账标签
+        r"""标签类型，0普通标签，1分账标签
         :rtype: int
         """
         return self._Status
@@ -27739,7 +27739,7 @@ class TagDataInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """设置分账标签时间，普通标签不返回
+        r"""设置分账标签时间，普通标签不返回
         :rtype: str
         """
         return self._UpdateTime
@@ -27764,7 +27764,7 @@ class TagDataInfo(AbstractModel):
 
 
 class TagSummaryOverviewItem(AbstractModel):
-    """按标签汇总消费详情
+    r"""按标签汇总消费详情
 
     """
 
@@ -27798,7 +27798,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -27809,7 +27809,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """费用所占百分比，两位小数
+        r"""费用所占百分比，两位小数
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -27820,7 +27820,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """优惠后总价
+        r"""优惠后总价
         :rtype: str
         """
         return self._RealTotalCost
@@ -27831,7 +27831,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """现金账户支出：通过现金账户支付的金额
+        r"""现金账户支出：通过现金账户支付的金额
         :rtype: str
         """
         return self._CashPayAmount
@@ -27842,7 +27842,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """赠送账户支出：使用赠送金支付的金额
+        r"""赠送账户支出：使用赠送金支付的金额
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27853,7 +27853,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -27864,7 +27864,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """分成金账户支出：通过分成金账户支付的金额
+        r"""分成金账户支出：通过分成金账户支付的金额
         :rtype: str
         """
         return self._TransferPayAmount
@@ -27875,7 +27875,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        r"""原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :rtype: str
         """
         return self._TotalCost
@@ -27905,7 +27905,7 @@ class TagSummaryOverviewItem(AbstractModel):
 
 
 class UsageDetails(AbstractModel):
-    """购买商品信息
+    r"""购买商品信息
 
     """
 
@@ -27945,7 +27945,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def ProductName(self):
-        """商品名
+        r"""商品名
         :rtype: str
         """
         return self._ProductName
@@ -27956,7 +27956,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def SubProductName(self):
-        """商品细节
+        r"""商品细节
         :rtype: str
         """
         return self._SubProductName
@@ -27967,7 +27967,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def ProductCode(self):
-        """产品码	
+        r"""产品码	
         :rtype: str
         """
         return self._ProductCode
@@ -27978,7 +27978,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """子产品码	
+        r"""子产品码	
         :rtype: str
         """
         return self._SubProductCode
@@ -27989,7 +27989,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def BillingItemCode(self):
-        """计费项码	
+        r"""计费项码	
         :rtype: str
         """
         return self._BillingItemCode
@@ -28000,7 +28000,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def SubBillingItemCode(self):
-        """计费细项码	
+        r"""计费细项码	
         :rtype: str
         """
         return self._SubBillingItemCode
@@ -28011,7 +28011,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def ProductEnName(self):
-        """产品英文名	
+        r"""产品英文名	
         :rtype: str
         """
         return self._ProductEnName
@@ -28022,7 +28022,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def SubProductEnName(self):
-        """子产品英文名	
+        r"""子产品英文名	
         :rtype: str
         """
         return self._SubProductEnName
@@ -28033,7 +28033,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def CalcUnit(self):
-        """结算周期	
+        r"""结算周期	
         :rtype: str
         """
         return self._CalcUnit
@@ -28044,7 +28044,7 @@ class UsageDetails(AbstractModel):
 
     @property
     def Action(self):
-        """payMode为prepay 且 payScene为common的情况下存在
+        r"""payMode为prepay 且 payScene为common的情况下存在
         :rtype: str
         """
         return self._Action
@@ -28076,7 +28076,7 @@ class UsageDetails(AbstractModel):
 
 
 class UsageRecords(AbstractModel):
-    """使用记录
+    r"""使用记录
 
     """
 
@@ -28107,7 +28107,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """使用金额（微分）
+        r"""使用金额（微分）
         :rtype: int
         """
         return self._UsedAmount
@@ -28118,7 +28118,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def UsedTime(self):
-        """使用时间
+        r"""使用时间
         :rtype: str
         """
         return self._UsedTime
@@ -28129,7 +28129,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def UsageDetails(self):
-        """使用记录细节
+        r"""使用记录细节
         :rtype: list of UsageDetails
         """
         return self._UsageDetails
@@ -28140,7 +28140,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式
+        r"""付费模式
         :rtype: str
         """
         return self._PayMode
@@ -28151,7 +28151,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def VoucherId(self):
-        """查询的券id
+        r"""查询的券id
         :rtype: str
         """
         return self._VoucherId
@@ -28162,7 +28162,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def PayScene(self):
-        """交易场景：（adjust：调账、common：正常交易场景）
+        r"""交易场景：（adjust：调账、common：正常交易场景）
         :rtype: str
         """
         return self._PayScene
@@ -28173,7 +28173,7 @@ class UsageRecords(AbstractModel):
 
     @property
     def SeqId(self):
-        """唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
+        r"""唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
         :rtype: str
         """
         return self._SeqId
@@ -28207,7 +28207,7 @@ class UsageRecords(AbstractModel):
 
 
 class VoucherInfos(AbstractModel):
-    """代金券相关信息
+    r"""代金券相关信息
 
     """
 
@@ -28256,7 +28256,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """代金券拥有者
+        r"""代金券拥有者
         :rtype: str
         """
         return self._OwnerUin
@@ -28267,7 +28267,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def Status(self):
-        """券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        r"""券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
         :rtype: str
         """
         return self._Status
@@ -28278,7 +28278,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def NominalValue(self):
-        """代金券面额（微分）
+        r"""代金券面额（微分）
         :rtype: int
         """
         return self._NominalValue
@@ -28289,7 +28289,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def Balance(self):
-        """剩余金额（微分）
+        r"""剩余金额（微分）
         :rtype: int
         """
         return self._Balance
@@ -28300,7 +28300,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def VoucherId(self):
-        """代金券id
+        r"""代金券id
         :rtype: str
         """
         return self._VoucherId
@@ -28311,7 +28311,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def PayMode(self):
-        """postPay后付费/prePay预付费/riPay预留实例/空字符串或者'*'表示全部模式
+        r"""postPay后付费/prePay预付费/riPay预留实例/空字符串或者'*'表示全部模式
         :rtype: str
         """
         return self._PayMode
@@ -28322,7 +28322,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def PayScene(self):
-        """付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        r"""付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
         :rtype: str
         """
         return self._PayScene
@@ -28333,7 +28333,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def BeginTime(self):
-        """有效期生效时间
+        r"""有效期生效时间
         :rtype: str
         """
         return self._BeginTime
@@ -28344,7 +28344,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def EndTime(self):
-        """有效期截止时间
+        r"""有效期截止时间
         :rtype: str
         """
         return self._EndTime
@@ -28355,7 +28355,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def ApplicableProducts(self):
-        """适用商品信息
+        r"""适用商品信息
         :rtype: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         """
         return self._ApplicableProducts
@@ -28366,7 +28366,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def ExcludedProducts(self):
-        """不适用商品信息
+        r"""不适用商品信息
         :rtype: list of ExcludedProducts
         """
         return self._ExcludedProducts
@@ -28377,7 +28377,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def PolicyRemark(self):
-        """使用说明/批次备注
+        r"""使用说明/批次备注
         :rtype: str
         """
         return self._PolicyRemark
@@ -28388,7 +28388,7 @@ class VoucherInfos(AbstractModel):
 
     @property
     def CreateTime(self):
-        """发券时间
+        r"""发券时间
         :rtype: str
         """
         return self._CreateTime

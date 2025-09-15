@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AvailableModelVersion(AbstractModel):
-    """已通过设备型号评估的型号信息
+    r"""已通过设备型号评估的型号信息
 
     """
 
@@ -38,7 +38,7 @@ class AvailableModelVersion(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """带有版本号的设备型号
+        r"""带有版本号的设备型号
         :rtype: str
         """
         return self._ModelVersion
@@ -49,7 +49,7 @@ class AvailableModelVersion(AbstractModel):
 
     @property
     def DevHeight(self):
-        """设备高度
+        r"""设备高度
         :rtype: str
         """
         return self._DevHeight
@@ -60,7 +60,7 @@ class AvailableModelVersion(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server 服务器，netDevice 网络设备
+        r"""设备类型，server 服务器，netDevice 网络设备
         :rtype: str
         """
         return self._DeviceType
@@ -85,7 +85,7 @@ class AvailableModelVersion(AbstractModel):
 
 
 class Cage(AbstractModel):
-    """围笼
+    r"""围笼
 
     """
 
@@ -101,7 +101,7 @@ class Cage(AbstractModel):
 
     @property
     def CageName(self):
-        """围笼名称
+        r"""围笼名称
         :rtype: str
         """
         return self._CageName
@@ -112,7 +112,7 @@ class Cage(AbstractModel):
 
     @property
     def CheckerSet(self):
-        """围笼审核人账号ID
+        r"""围笼审核人账号ID
         :rtype: list of str
         """
         return self._CheckerSet
@@ -136,7 +136,7 @@ class Cage(AbstractModel):
 
 
 class Campus(AbstractModel):
-    """园区信息
+    r"""园区信息
 
     """
 
@@ -152,7 +152,7 @@ class Campus(AbstractModel):
 
     @property
     def CampusId(self):
-        """园区ID
+        r"""园区ID
         :rtype: int
         """
         return self._CampusId
@@ -163,7 +163,7 @@ class Campus(AbstractModel):
 
     @property
     def CampusName(self):
-        """园区名称
+        r"""园区名称
         :rtype: str
         """
         return self._CampusName
@@ -187,7 +187,7 @@ class Campus(AbstractModel):
 
 
 class CommonServiceBaseInfo(AbstractModel):
-    """通用服务的基本信息
+    r"""通用服务的基本信息
 
     """
 
@@ -215,7 +215,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -226,7 +226,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def ContactName(self):
-        """业务联系人
+        r"""业务联系人
         :rtype: str
         """
         return self._ContactName
@@ -237,7 +237,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def ContactPhone(self):
-        """联系人电话
+        r"""联系人电话
         :rtype: str
         """
         return self._ContactPhone
@@ -248,7 +248,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def Instructions(self):
-        """操作说明
+        r"""操作说明
         :rtype: str
         """
         return self._Instructions
@@ -259,7 +259,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def ServiceLevel(self):
-        """1 、2 、3 分别代表 L1、L2、L3
+        r"""1 、2 、3 分别代表 L1、L2、L3
         :rtype: int
         """
         return self._ServiceLevel
@@ -270,7 +270,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
     @property
     def PreAuthorization(self):
-        """操作预授权
+        r"""操作预授权
         :rtype: bool
         """
         return self._PreAuthorization
@@ -298,7 +298,7 @@ class CommonServiceBaseInfo(AbstractModel):
 
 
 class ConfirmCommonServiceWorkOrderRequest(AbstractModel):
-    """ConfirmCommonServiceWorkOrder请求参数结构体
+    r"""ConfirmCommonServiceWorkOrder请求参数结构体
 
     """
 
@@ -311,7 +311,7 @@ class ConfirmCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -334,7 +334,7 @@ class ConfirmCommonServiceWorkOrderRequest(AbstractModel):
 
 
 class ConfirmCommonServiceWorkOrderResponse(AbstractModel):
-    """ConfirmCommonServiceWorkOrder返回参数结构体
+    r"""ConfirmCommonServiceWorkOrder返回参数结构体
 
     """
 
@@ -347,7 +347,7 @@ class ConfirmCommonServiceWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -362,7 +362,7 @@ class ConfirmCommonServiceWorkOrderResponse(AbstractModel):
 
 
 class CreateCommonServiceWorkOrderRequest(AbstractModel):
-    """CreateCommonServiceWorkOrder请求参数结构体
+    r"""CreateCommonServiceWorkOrder请求参数结构体
 
     """
 
@@ -393,7 +393,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def DevicePositionSet(self):
-        """设备及位置信息列表
+        r"""设备及位置信息列表
         :rtype: list of DevicePosition
         """
         return self._DevicePositionSet
@@ -404,7 +404,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def ServiceLevel(self):
-        """服务级别，只支持传入 1、2、3，分别对应 L1、L2、L3
+        r"""服务级别，只支持传入 1、2、3，分别对应 L1、L2、L3
         :rtype: int
         """
         return self._ServiceLevel
@@ -415,7 +415,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def PreAuthorization(self):
-        """操作预授权
+        r"""操作预授权
         :rtype: bool
         """
         return self._PreAuthorization
@@ -426,7 +426,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def ContactName(self):
-        """业务联系人
+        r"""业务联系人
         :rtype: str
         """
         return self._ContactName
@@ -437,7 +437,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def ContactPhone(self):
-        """联系人电话
+        r"""联系人电话
         :rtype: str
         """
         return self._ContactPhone
@@ -448,7 +448,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型 server 服务器，netDevice 网络设备	
+        r"""设备类型 server 服务器，netDevice 网络设备	
         :rtype: str
         """
         return self._DeviceType
@@ -459,7 +459,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
     @property
     def Instructions(self):
-        """操作说明
+        r"""操作说明
         :rtype: str
         """
         return self._Instructions
@@ -493,7 +493,7 @@ class CreateCommonServiceWorkOrderRequest(AbstractModel):
 
 
 class CreateCommonServiceWorkOrderResponse(AbstractModel):
-    """CreateCommonServiceWorkOrder返回参数结构体
+    r"""CreateCommonServiceWorkOrder返回参数结构体
 
     """
 
@@ -509,7 +509,7 @@ class CreateCommonServiceWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -520,7 +520,7 @@ class CreateCommonServiceWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -541,7 +541,7 @@ class CreateCommonServiceWorkOrderResponse(AbstractModel):
 
 
 class CreateModelEvaluationWorkOrderRequest(AbstractModel):
-    """CreateModelEvaluationWorkOrder请求参数结构体
+    r"""CreateModelEvaluationWorkOrder请求参数结构体
 
     """
 
@@ -563,7 +563,7 @@ class CreateModelEvaluationWorkOrderRequest(AbstractModel):
 
     @property
     def ModelSet(self):
-        """设备名称及型号
+        r"""设备名称及型号
         :rtype: list of ModelVersion
         """
         return self._ModelSet
@@ -574,7 +574,7 @@ class CreateModelEvaluationWorkOrderRequest(AbstractModel):
 
     @property
     def CampusId(self):
-        """园区ID
+        r"""园区ID
         :rtype: int
         """
         return self._CampusId
@@ -585,7 +585,7 @@ class CreateModelEvaluationWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """只支持传入 server 和 netDevice
+        r"""只支持传入 server 和 netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -596,7 +596,7 @@ class CreateModelEvaluationWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -627,7 +627,7 @@ class CreateModelEvaluationWorkOrderRequest(AbstractModel):
 
 
 class CreateModelEvaluationWorkOrderResponse(AbstractModel):
-    """CreateModelEvaluationWorkOrder返回参数结构体
+    r"""CreateModelEvaluationWorkOrder返回参数结构体
 
     """
 
@@ -643,7 +643,7 @@ class CreateModelEvaluationWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -654,7 +654,7 @@ class CreateModelEvaluationWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -675,7 +675,7 @@ class CreateModelEvaluationWorkOrderResponse(AbstractModel):
 
 
 class CreateMovingWorkOrderRequest(AbstractModel):
-    """CreateMovingWorkOrder请求参数结构体
+    r"""CreateMovingWorkOrder请求参数结构体
 
     """
 
@@ -700,7 +700,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -711,7 +711,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice
+        r"""设备类型，server, netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -722,7 +722,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
     @property
     def WithPowerOn(self):
-        """上架后是否开电
+        r"""上架后是否开电
         :rtype: bool
         """
         return self._WithPowerOn
@@ -733,7 +733,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceMovingList(self):
-        """设备搬迁信息列表
+        r"""设备搬迁信息列表
         :rtype: list of DeviceRackOn
         """
         return self._DeviceMovingList
@@ -744,7 +744,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -776,7 +776,7 @@ class CreateMovingWorkOrderRequest(AbstractModel):
 
 
 class CreateMovingWorkOrderResponse(AbstractModel):
-    """CreateMovingWorkOrder返回参数结构体
+    r"""CreateMovingWorkOrder返回参数结构体
 
     """
 
@@ -792,7 +792,7 @@ class CreateMovingWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -803,7 +803,7 @@ class CreateMovingWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -824,7 +824,7 @@ class CreateMovingWorkOrderResponse(AbstractModel):
 
 
 class CreateNetDeviceModelRequest(AbstractModel):
-    """CreateNetDeviceModel请求参数结构体
+    r"""CreateNetDeviceModel请求参数结构体
 
     """
 
@@ -837,7 +837,7 @@ class CreateNetDeviceModelRequest(AbstractModel):
 
     @property
     def ModelDetail(self):
-        """网络设备型号
+        r"""网络设备型号
         :rtype: :class:`tencentcloud.chc.v20230418.models.NetDeviceModel`
         """
         return self._ModelDetail
@@ -862,7 +862,7 @@ class CreateNetDeviceModelRequest(AbstractModel):
 
 
 class CreateNetDeviceModelResponse(AbstractModel):
-    """CreateNetDeviceModel返回参数结构体
+    r"""CreateNetDeviceModel返回参数结构体
 
     """
 
@@ -881,7 +881,7 @@ class CreateNetDeviceModelResponse(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名称
+        r"""型号名称
         :rtype: str
         """
         return self._DevModel
@@ -892,7 +892,7 @@ class CreateNetDeviceModelResponse(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -903,7 +903,7 @@ class CreateNetDeviceModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -920,7 +920,7 @@ class CreateNetDeviceModelResponse(AbstractModel):
 
 
 class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
-    """CreatePersonnelVisitWorkOrder请求参数结构体
+    r"""CreatePersonnelVisitWorkOrder请求参数结构体
 
     """
 
@@ -940,6 +940,8 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
         :type VisitReason: list of str
         :param _VisitRemark: 到访说明
         :type VisitRemark: str
+        :param _CarSet: 到访人员车辆信息
+        :type CarSet: list of PersonnelVisitCar
         """
         self._PersonnelSet = None
         self._IdcId = None
@@ -948,10 +950,11 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
         self._EnterEndTime = None
         self._VisitReason = None
         self._VisitRemark = None
+        self._CarSet = None
 
     @property
     def PersonnelSet(self):
-        """到访人员信息
+        r"""到访人员信息
         :rtype: list of Personnel
         """
         return self._PersonnelSet
@@ -962,7 +965,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房 ID
+        r"""机房 ID
         :rtype: int
         """
         return self._IdcId
@@ -973,7 +976,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def IdcUnitIdSet(self):
-        """机房管理单元列表
+        r"""机房管理单元列表
         :rtype: list of int non-negative
         """
         return self._IdcUnitIdSet
@@ -984,7 +987,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def EnterStartTime(self):
-        """到访开始时间
+        r"""到访开始时间
         :rtype: str
         """
         return self._EnterStartTime
@@ -995,7 +998,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def EnterEndTime(self):
-        """到访结束时间
+        r"""到访结束时间
         :rtype: str
         """
         return self._EnterEndTime
@@ -1006,7 +1009,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def VisitReason(self):
-        """到访原因，映射关系：IT_OPERATION IT运维 OTHER 其他
+        r"""到访原因，映射关系：IT_OPERATION IT运维 OTHER 其他
         :rtype: list of str
         """
         return self._VisitReason
@@ -1017,7 +1020,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
     @property
     def VisitRemark(self):
-        """到访说明
+        r"""到访说明
         :rtype: str
         """
         return self._VisitRemark
@@ -1025,6 +1028,17 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
     @VisitRemark.setter
     def VisitRemark(self, VisitRemark):
         self._VisitRemark = VisitRemark
+
+    @property
+    def CarSet(self):
+        r"""到访人员车辆信息
+        :rtype: list of PersonnelVisitCar
+        """
+        return self._CarSet
+
+    @CarSet.setter
+    def CarSet(self, CarSet):
+        self._CarSet = CarSet
 
 
     def _deserialize(self, params):
@@ -1040,6 +1054,12 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
         self._EnterEndTime = params.get("EnterEndTime")
         self._VisitReason = params.get("VisitReason")
         self._VisitRemark = params.get("VisitRemark")
+        if params.get("CarSet") is not None:
+            self._CarSet = []
+            for item in params.get("CarSet"):
+                obj = PersonnelVisitCar()
+                obj._deserialize(item)
+                self._CarSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1051,7 +1071,7 @@ class CreatePersonnelVisitWorkOrderRequest(AbstractModel):
 
 
 class CreatePersonnelVisitWorkOrderResponse(AbstractModel):
-    """CreatePersonnelVisitWorkOrder返回参数结构体
+    r"""CreatePersonnelVisitWorkOrder返回参数结构体
 
     """
 
@@ -1067,7 +1087,7 @@ class CreatePersonnelVisitWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1078,7 +1098,7 @@ class CreatePersonnelVisitWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1099,7 +1119,7 @@ class CreatePersonnelVisitWorkOrderResponse(AbstractModel):
 
 
 class CreatePowerOffWorkOrderRequest(AbstractModel):
-    """CreatePowerOffWorkOrder请求参数结构体
+    r"""CreatePowerOffWorkOrder请求参数结构体
 
     """
 
@@ -1127,7 +1147,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -1138,7 +1158,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice
+        r"""设备类型，server, netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -1149,7 +1169,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def IsPowerOffConfirm(self):
-        """关电确认，1.授权时关电 2.关电前需要确认
+        r"""关电确认，1.授权时关电 2.关电前需要确认
         :rtype: str
         """
         return self._IsPowerOffConfirm
@@ -1160,7 +1180,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceSnList(self):
-        """设备sn列表
+        r"""设备sn列表
         :rtype: list of str
         """
         return self._DeviceSnList
@@ -1171,7 +1191,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def PowerOffConfirmInfo(self):
-        """关电前需要确认时必填
+        r"""关电前需要确认时必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.PowerOffConfirm`
         """
         return self._PowerOffConfirmInfo
@@ -1182,7 +1202,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1212,7 +1232,7 @@ class CreatePowerOffWorkOrderRequest(AbstractModel):
 
 
 class CreatePowerOffWorkOrderResponse(AbstractModel):
-    """CreatePowerOffWorkOrder返回参数结构体
+    r"""CreatePowerOffWorkOrder返回参数结构体
 
     """
 
@@ -1228,7 +1248,7 @@ class CreatePowerOffWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1239,7 +1259,7 @@ class CreatePowerOffWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1260,7 +1280,7 @@ class CreatePowerOffWorkOrderResponse(AbstractModel):
 
 
 class CreatePowerOnWorkOrderRequest(AbstractModel):
-    """CreatePowerOnWorkOrder请求参数结构体
+    r"""CreatePowerOnWorkOrder请求参数结构体
 
     """
 
@@ -1279,7 +1299,7 @@ class CreatePowerOnWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -1290,7 +1310,7 @@ class CreatePowerOnWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice
+        r"""设备类型，server, netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -1301,7 +1321,7 @@ class CreatePowerOnWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceSnList(self):
-        """设备sn列表
+        r"""设备sn列表
         :rtype: list of str
         """
         return self._DeviceSnList
@@ -1326,7 +1346,7 @@ class CreatePowerOnWorkOrderRequest(AbstractModel):
 
 
 class CreatePowerOnWorkOrderResponse(AbstractModel):
-    """CreatePowerOnWorkOrder返回参数结构体
+    r"""CreatePowerOnWorkOrder返回参数结构体
 
     """
 
@@ -1342,7 +1362,7 @@ class CreatePowerOnWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1353,7 +1373,7 @@ class CreatePowerOnWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1374,7 +1394,7 @@ class CreatePowerOnWorkOrderResponse(AbstractModel):
 
 
 class CreateQuitWorkOrderRequest(AbstractModel):
-    """CreateQuitWorkOrder请求参数结构体
+    r"""CreateQuitWorkOrder请求参数结构体
 
     """
 
@@ -1417,7 +1437,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -1428,7 +1448,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice, otherDevice
+        r"""设备类型，server, netDevice, otherDevice
         :rtype: str
         """
         return self._DeviceType
@@ -1439,7 +1459,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def StuffOption(self):
-        """下架选择 1.自行解决 2.由腾讯IDC负责
+        r"""下架选择 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -1450,7 +1470,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def IsPowerOffConfirm(self):
-        """关电确认 1.授权时关电 2.关电前需要确认
+        r"""关电确认 1.授权时关电 2.关电前需要确认
         :rtype: str
         """
         return self._IsPowerOffConfirm
@@ -1461,7 +1481,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceSnList(self):
-        """设备sn列表
+        r"""设备sn列表
         :rtype: list of str
         """
         return self._DeviceSnList
@@ -1472,7 +1492,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def HandoverMethod(self):
-        """交接方式 1.物流上门收货 2.客户上门自提
+        r"""交接方式 1.物流上门收货 2.客户上门自提
         :rtype: str
         """
         return self._HandoverMethod
@@ -1483,7 +1503,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def SelfOperationInfo(self):
-        """自行解决必填
+        r"""自行解决必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
         """
         return self._SelfOperationInfo
@@ -1494,7 +1514,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def PowerOffConfirmInfo(self):
-        """关电前需要确认时必填
+        r"""关电前需要确认时必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.PowerOffConfirm`
         """
         return self._PowerOffConfirmInfo
@@ -1505,7 +1525,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1516,7 +1536,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def LogisticsReceipt(self):
-        """物流上门收货必传
+        r"""物流上门收货必传
         :rtype: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
         """
         return self._LogisticsReceipt
@@ -1527,7 +1547,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def CustomerReceipt(self):
-        """客户上门自提必传
+        r"""客户上门自提必传
         :rtype: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
         """
         return self._CustomerReceipt
@@ -1568,7 +1588,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
 
 class CreateQuitWorkOrderResponse(AbstractModel):
-    """CreateQuitWorkOrder返回参数结构体
+    r"""CreateQuitWorkOrder返回参数结构体
 
     """
 
@@ -1584,7 +1604,7 @@ class CreateQuitWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1595,7 +1615,7 @@ class CreateQuitWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1616,7 +1636,7 @@ class CreateQuitWorkOrderResponse(AbstractModel):
 
 
 class CreateRackOffWorkOrderRequest(AbstractModel):
-    """CreateRackOffWorkOrder请求参数结构体
+    r"""CreateRackOffWorkOrder请求参数结构体
 
     """
 
@@ -1650,7 +1670,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -1661,7 +1681,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice
+        r"""设备类型，server, netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -1672,7 +1692,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def StuffOption(self):
-        """下架人员 1.自行解决 2.由腾讯IDC负责
+        r"""下架人员 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -1683,7 +1703,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def IsPowerOffConfirm(self):
-        """关电确认 1.授权时关电 2.关电前需要确认
+        r"""关电确认 1.授权时关电 2.关电前需要确认
         :rtype: str
         """
         return self._IsPowerOffConfirm
@@ -1694,7 +1714,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceSnList(self):
-        """设备sn列表
+        r"""设备sn列表
         :rtype: list of str
         """
         return self._DeviceSnList
@@ -1705,7 +1725,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def SelfOperationInfo(self):
-        """自行解决必填
+        r"""自行解决必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
         """
         return self._SelfOperationInfo
@@ -1716,7 +1736,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def PowerOffConfirmInfo(self):
-        """关电前需要确认时必填
+        r"""关电前需要确认时必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.PowerOffConfirm`
         """
         return self._PowerOffConfirmInfo
@@ -1727,7 +1747,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1761,7 +1781,7 @@ class CreateRackOffWorkOrderRequest(AbstractModel):
 
 
 class CreateRackOffWorkOrderResponse(AbstractModel):
-    """CreateRackOffWorkOrder返回参数结构体
+    r"""CreateRackOffWorkOrder返回参数结构体
 
     """
 
@@ -1777,7 +1797,7 @@ class CreateRackOffWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1788,7 +1808,7 @@ class CreateRackOffWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1809,7 +1829,7 @@ class CreateRackOffWorkOrderResponse(AbstractModel):
 
 
 class CreateRackOnWorkOrderRequest(AbstractModel):
-    """CreateRackOnWorkOrder请求参数结构体
+    r"""CreateRackOnWorkOrder请求参数结构体
 
     """
 
@@ -1837,7 +1857,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -1848,7 +1868,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice
+        r"""设备类型，server, netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -1859,7 +1879,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def StuffOption(self):
-        """上架人员 1.自行解决 2.由腾讯IDC负责
+        r"""上架人员 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -1870,7 +1890,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def WithPowerOn(self):
-        """上架后是否开电
+        r"""上架后是否开电
         :rtype: bool
         """
         return self._WithPowerOn
@@ -1881,7 +1901,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceRackOnList(self):
-        """服务器收货列表
+        r"""服务器收货列表
         :rtype: list of DeviceRackOn
         """
         return self._DeviceRackOnList
@@ -1892,7 +1912,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
     @property
     def SelfOperationInfo(self):
-        """自行解决必填
+        r"""自行解决必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
         """
         return self._SelfOperationInfo
@@ -1927,7 +1947,7 @@ class CreateRackOnWorkOrderRequest(AbstractModel):
 
 
 class CreateRackOnWorkOrderResponse(AbstractModel):
-    """CreateRackOnWorkOrder返回参数结构体
+    r"""CreateRackOnWorkOrder返回参数结构体
 
     """
 
@@ -1943,7 +1963,7 @@ class CreateRackOnWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -1954,7 +1974,7 @@ class CreateRackOnWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1975,7 +1995,7 @@ class CreateRackOnWorkOrderResponse(AbstractModel):
 
 
 class CreateReceivingWorkOrderRequest(AbstractModel):
-    """CreateReceivingWorkOrder请求参数结构体
+    r"""CreateReceivingWorkOrder请求参数结构体
 
     """
 
@@ -2033,7 +2053,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -2044,7 +2064,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，server, netDevice, wire, otherDevice
+        r"""设备类型，server, netDevice, wire, otherDevice
         :rtype: str
         """
         return self._DeviceType
@@ -2055,7 +2075,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def EntryTime(self):
-        """进入时间
+        r"""进入时间
         :rtype: str
         """
         return self._EntryTime
@@ -2066,7 +2086,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def ReceivingOperation(self):
-        """1.收货-仅核对外包装完整和数量，不开箱 2.验收-开箱核对型号SN一致
+        r"""1.收货-仅核对外包装完整和数量，不开箱 2.验收-开箱核对型号SN一致
         :rtype: str
         """
         return self._ReceivingOperation
@@ -2077,7 +2097,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def IsExpressDelivery(self):
-        """是否快递寄件
+        r"""是否快递寄件
         :rtype: bool
         """
         return self._IsExpressDelivery
@@ -2088,7 +2108,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def ExpressInfo(self):
-        """快递寄件信息,快递寄件必填
+        r"""快递寄件信息,快递寄件必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.ExpressDelivery`
         """
         return self._ExpressInfo
@@ -2099,7 +2119,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2110,7 +2130,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def ServerDeviceList(self):
-        """服务器收货列表。最大值：200
+        r"""服务器收货列表。最大值：200
         :rtype: list of ServerReceivingInfo
         """
         return self._ServerDeviceList
@@ -2121,7 +2141,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def NetDeviceList(self):
-        """网络设备收货列表
+        r"""网络设备收货列表
         :rtype: list of NetReceivingInfo
         """
         return self._NetDeviceList
@@ -2132,7 +2152,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def WireDeviceList(self):
-        """线材收货列表
+        r"""线材收货列表
         :rtype: list of WireReceivingInfo
         """
         return self._WireDeviceList
@@ -2143,7 +2163,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def OtherDeviceList(self):
-        """其他设备收货列表
+        r"""其他设备收货列表
         :rtype: list of OtherDevReceivingInfo
         """
         return self._OtherDeviceList
@@ -2154,7 +2174,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def WithRackOn(self):
-        """收货后自动上架。此参数为true时，后台会自动提设备上架单
+        r"""收货后自动上架。此参数为true时，后台会自动提设备上架单
         :rtype: bool
         """
         return self._WithRackOn
@@ -2165,7 +2185,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceRackOnList(self):
-        """设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
+        r"""设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
         :rtype: list of DeviceRackOn
         """
         return self._DeviceRackOnList
@@ -2176,7 +2196,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def StuffOption(self):
-        """上架人员 1.自行解决 2.由腾讯IDC负责
+        r"""上架人员 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -2187,7 +2207,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def SelfOperationInfo(self):
-        """自行解决信息。当StuffOption为1时，此参数必填
+        r"""自行解决信息。当StuffOption为1时，此参数必填
         :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
         """
         return self._SelfOperationInfo
@@ -2198,7 +2218,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def WithPowerOn(self):
-        """上架后自动开电。此参数为true时，后台会自动提设备开电单
+        r"""上架后自动开电。此参数为true时，后台会自动提设备开电单
         :rtype: bool
         """
         return self._WithPowerOn
@@ -2265,7 +2285,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
 
 class CreateReceivingWorkOrderResponse(AbstractModel):
-    """CreateReceivingWorkOrder返回参数结构体
+    r"""CreateReceivingWorkOrder返回参数结构体
 
     """
 
@@ -2281,7 +2301,7 @@ class CreateReceivingWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -2292,7 +2312,7 @@ class CreateReceivingWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2313,7 +2333,7 @@ class CreateReceivingWorkOrderResponse(AbstractModel):
 
 
 class CreateServerModelRequest(AbstractModel):
-    """CreateServerModel请求参数结构体
+    r"""CreateServerModel请求参数结构体
 
     """
 
@@ -2326,7 +2346,7 @@ class CreateServerModelRequest(AbstractModel):
 
     @property
     def ModelDetail(self):
-        """设备型号详情
+        r"""设备型号详情
         :rtype: :class:`tencentcloud.chc.v20230418.models.ServerModel`
         """
         return self._ModelDetail
@@ -2351,7 +2371,7 @@ class CreateServerModelRequest(AbstractModel):
 
 
 class CreateServerModelResponse(AbstractModel):
-    """CreateServerModel返回参数结构体
+    r"""CreateServerModel返回参数结构体
 
     """
 
@@ -2370,7 +2390,7 @@ class CreateServerModelResponse(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名称
+        r"""型号名称
         :rtype: str
         """
         return self._DevModel
@@ -2381,7 +2401,7 @@ class CreateServerModelResponse(AbstractModel):
 
     @property
     def Version(self):
-        """版本
+        r"""版本
         :rtype: str
         """
         return self._Version
@@ -2392,7 +2412,7 @@ class CreateServerModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2409,7 +2429,7 @@ class CreateServerModelResponse(AbstractModel):
 
 
 class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
-    """CreateSpeciallyQuitWorkOrder请求参数结构体
+    r"""CreateSpeciallyQuitWorkOrder请求参数结构体
 
     """
 
@@ -2440,7 +2460,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -2451,7 +2471,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型：otherDevice。此接口只支持其他设备
+        r"""设备类型：otherDevice。此接口只支持其他设备
         :rtype: str
         """
         return self._DeviceType
@@ -2462,7 +2482,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def HandoverMethod(self):
-        """交接方式 1.物流上门收货 2.客户上门自提
+        r"""交接方式 1.物流上门收货 2.客户上门自提
         :rtype: str
         """
         return self._HandoverMethod
@@ -2473,7 +2493,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def LogisticsReceipt(self):
-        """物流上门收货必传
+        r"""物流上门收货必传
         :rtype: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
         """
         return self._LogisticsReceipt
@@ -2484,7 +2504,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def CustomerReceipt(self):
-        """客户上门自提必传
+        r"""客户上门自提必传
         :rtype: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
         """
         return self._CustomerReceipt
@@ -2495,7 +2515,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -2506,7 +2526,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
     @property
     def OtherDeviceList(self):
-        """当设备类型为otherDevice，此参数必传
+        r"""当设备类型为otherDevice，此参数必传
         :rtype: list of OtherDevReceivingInfo
         """
         return self._OtherDeviceList
@@ -2544,7 +2564,7 @@ class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
 
 
 class CreateSpeciallyQuitWorkOrderResponse(AbstractModel):
-    """CreateSpeciallyQuitWorkOrder返回参数结构体
+    r"""CreateSpeciallyQuitWorkOrder返回参数结构体
 
     """
 
@@ -2560,7 +2580,7 @@ class CreateSpeciallyQuitWorkOrderResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """创建的工单信息
+        r"""创建的工单信息
         :rtype: list of WorkOrderTinyInfo
         """
         return self._WorkOrderSet
@@ -2571,7 +2591,7 @@ class CreateSpeciallyQuitWorkOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2592,7 +2612,7 @@ class CreateSpeciallyQuitWorkOrderResponse(AbstractModel):
 
 
 class CustomerInfo(AbstractModel):
-    """客户信息
+    r"""客户信息
 
     """
 
@@ -2611,7 +2631,7 @@ class CustomerInfo(AbstractModel):
 
     @property
     def CustomerName(self):
-        """公司全称
+        r"""公司全称
         :rtype: str
         """
         return self._CustomerName
@@ -2622,7 +2642,7 @@ class CustomerInfo(AbstractModel):
 
     @property
     def ShortCustomerName(self):
-        """公司简称
+        r"""公司简称
         :rtype: str
         """
         return self._ShortCustomerName
@@ -2633,7 +2653,7 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WholeFlag(self):
-        """是否全托管用户
+        r"""是否全托管用户
         :rtype: bool
         """
         return self._WholeFlag
@@ -2658,7 +2678,7 @@ class CustomerInfo(AbstractModel):
 
 
 class CustomerReceipt(AbstractModel):
-    """客户上门自提信息
+    r"""客户上门自提信息
 
     """
 
@@ -2688,7 +2708,7 @@ OTHER: 其他
 
     @property
     def PickUpStuff(self):
-        """自提人员姓名
+        r"""自提人员姓名
         :rtype: str
         """
         return self._PickUpStuff
@@ -2699,7 +2719,7 @@ OTHER: 其他
 
     @property
     def PickUpStuffContact(self):
-        """自提人电话
+        r"""自提人电话
         :rtype: str
         """
         return self._PickUpStuffContact
@@ -2710,7 +2730,7 @@ OTHER: 其他
 
     @property
     def PickUpStuffIDCard(self):
-        """自提人证件号码
+        r"""自提人证件号码
         :rtype: str
         """
         return self._PickUpStuffIDCard
@@ -2721,7 +2741,7 @@ OTHER: 其他
 
     @property
     def PickUpTime(self):
-        """自提时间
+        r"""自提时间
         :rtype: str
         """
         return self._PickUpTime
@@ -2732,7 +2752,7 @@ OTHER: 其他
 
     @property
     def IDCardType(self):
-        """证件类型，非必传，默认为IDENTITY_CARD。
+        r"""证件类型，非必传，默认为IDENTITY_CARD。
 对应关系如下：IDENTITY_CARD: 身份证,
 HONG_KONG_AND_MACAO_PASS: 港澳通行证',
 PASSPORT: 护照,
@@ -2764,7 +2784,7 @@ OTHER: 其他
 
 
 class DescribeAvailableModelListRequest(AbstractModel):
-    """DescribeAvailableModelList请求参数结构体
+    r"""DescribeAvailableModelList请求参数结构体
 
     """
 
@@ -2780,7 +2800,7 @@ class DescribeAvailableModelListRequest(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房ID
+        r"""机房ID
         :rtype: int
         """
         return self._IdcId
@@ -2791,7 +2811,7 @@ class DescribeAvailableModelListRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """server 服务器，netDevice 网络设备
+        r"""server 服务器，netDevice 网络设备
         :rtype: str
         """
         return self._DeviceType
@@ -2815,7 +2835,7 @@ class DescribeAvailableModelListRequest(AbstractModel):
 
 
 class DescribeAvailableModelListResponse(AbstractModel):
-    """DescribeAvailableModelList返回参数结构体
+    r"""DescribeAvailableModelList返回参数结构体
 
     """
 
@@ -2831,7 +2851,7 @@ class DescribeAvailableModelListResponse(AbstractModel):
 
     @property
     def ModelVersionSet(self):
-        """机房内可用的设备型号及版本列表
+        r"""机房内可用的设备型号及版本列表
         :rtype: list of AvailableModelVersion
         """
         return self._ModelVersionSet
@@ -2842,7 +2862,7 @@ class DescribeAvailableModelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2863,13 +2883,13 @@ class DescribeAvailableModelListResponse(AbstractModel):
 
 
 class DescribeCampusListRequest(AbstractModel):
-    """DescribeCampusList请求参数结构体
+    r"""DescribeCampusList请求参数结构体
 
     """
 
 
 class DescribeCampusListResponse(AbstractModel):
-    """DescribeCampusList返回参数结构体
+    r"""DescribeCampusList返回参数结构体
 
     """
 
@@ -2885,7 +2905,7 @@ class DescribeCampusListResponse(AbstractModel):
 
     @property
     def CampusSet(self):
-        """客户可操作的园区列表
+        r"""客户可操作的园区列表
         :rtype: list of Campus
         """
         return self._CampusSet
@@ -2896,7 +2916,7 @@ class DescribeCampusListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2917,7 +2937,7 @@ class DescribeCampusListResponse(AbstractModel):
 
 
 class DescribeCommonServiceWorkOrderDetailRequest(AbstractModel):
-    """DescribeCommonServiceWorkOrderDetail请求参数结构体
+    r"""DescribeCommonServiceWorkOrderDetail请求参数结构体
 
     """
 
@@ -2930,7 +2950,7 @@ class DescribeCommonServiceWorkOrderDetailRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -2953,7 +2973,7 @@ class DescribeCommonServiceWorkOrderDetailRequest(AbstractModel):
 
 
 class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
-    """DescribeCommonServiceWorkOrderDetail返回参数结构体
+    r"""DescribeCommonServiceWorkOrderDetail返回参数结构体
 
     """
 
@@ -2981,7 +3001,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def StepSet(self):
-        """进度
+        r"""进度
         :rtype: list of OrderStep
         """
         return self._StepSet
@@ -2992,7 +3012,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
-        """基本信息
+        r"""基本信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.CommonServiceBaseInfo`
         """
         return self._BaseInfo
@@ -3003,7 +3023,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
-        """设备信息
+        r"""设备信息
         :rtype: list of DevicePosition
         """
         return self._DeviceSet
@@ -3014,7 +3034,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """工单状态
+        r"""工单状态
         :rtype: str
         """
         return self._OrderStatus
@@ -3025,7 +3045,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RejectReason(self):
-        """拒绝原因
+        r"""拒绝原因
         :rtype: str
         """
         return self._RejectReason
@@ -3036,7 +3056,7 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3068,13 +3088,13 @@ class DescribeCommonServiceWorkOrderDetailResponse(AbstractModel):
 
 
 class DescribeCustomerInfoRequest(AbstractModel):
-    """DescribeCustomerInfo请求参数结构体
+    r"""DescribeCustomerInfo请求参数结构体
 
     """
 
 
 class DescribeCustomerInfoResponse(AbstractModel):
-    """DescribeCustomerInfo返回参数结构体
+    r"""DescribeCustomerInfo返回参数结构体
 
     """
 
@@ -3090,7 +3110,7 @@ class DescribeCustomerInfoResponse(AbstractModel):
 
     @property
     def CustomerInfo(self):
-        """客户信息
+        r"""客户信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.CustomerInfo`
         """
         return self._CustomerInfo
@@ -3101,7 +3121,7 @@ class DescribeCustomerInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3119,7 +3139,7 @@ class DescribeCustomerInfoResponse(AbstractModel):
 
 
 class DescribeDeviceListRequest(AbstractModel):
-    """DescribeDeviceList请求参数结构体
+    r"""DescribeDeviceList请求参数结构体
 
     """
 
@@ -3148,7 +3168,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型 server 服务器，netDevice 网络设备，otherDevice 其他设备
+        r"""设备类型 server 服务器，netDevice 网络设备，otherDevice 其他设备
         :rtype: str
         """
         return self._DeviceType
@@ -3159,7 +3179,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """
+        r"""
 <li><strong>rack-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机架ID</strong>】进行过滤。例如：15082。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"></p> <li><strong> sn</strong></li> <p style="padding-left: 30px;">按照【<strong>设备 SN 码</strong>】进行过滤，设备 SN 例如：TEN948P004。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong> idc-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机房ID</strong>】进行过滤，机房ID例如：159。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>  <li><strong>idc-unit-id </strong></li> <p style="padding-left: 30px;">按照【<strong>机房管理单元ID</strong>】进行过滤，机房管理ID例如：568。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>server-type-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机器子类型</strong>】进行过滤，只包含以下几种：1:服务器, 2:Twins主机, 3:Twins子机,5:虚拟机, 6:2U4S主机, 7:2U4S子机,8 Rack主机,9 Rack子机，例如： 1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>status</strong></li> <p style="padding-left: 30px;">按照【<strong>设备状态</strong>】进行过滤，操作状态只包含：POWER_ON 设备开电，POWER_OFF 设备关电，RACK_OFF 未上架，MOVING 搬迁中 。例如： POWER_OFF。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>svr-is-special</strong></li> <p style="padding-left: 30px;">按照【<strong>是否</strong>】进行过滤，支持 0：自有，1 租用。例如： 1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
@@ -3174,7 +3194,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -3185,7 +3205,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为1000
+        r"""返回数量，默认为20，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -3196,7 +3216,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DstService(self):
-        """传入目标服务，返回允许进行此服务的设备列表；可以和Filters一起使用。允许的值：('rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit', 'moving'，'netDeviceCommon', 'serverCommon')
+        r"""传入目标服务，返回允许进行此服务的设备列表；可以和Filters一起使用。允许的值：('rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit', 'moving'，'netDeviceCommon', 'serverCommon')
         :rtype: str
         """
         return self._DstService
@@ -3228,7 +3248,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
 
 class DescribeDeviceListResponse(AbstractModel):
-    """DescribeDeviceList返回参数结构体
+    r"""DescribeDeviceList返回参数结构体
 
     """
 
@@ -3247,7 +3267,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3258,7 +3278,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
-        """服务器列表
+        r"""服务器列表
         :rtype: list of Device
         """
         return self._DeviceSet
@@ -3269,7 +3289,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3291,7 +3311,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
 
 class DescribeDeviceWorkOrderDetailRequest(AbstractModel):
-    """DescribeDeviceWorkOrderDetail请求参数结构体
+    r"""DescribeDeviceWorkOrderDetail请求参数结构体
 
     """
 
@@ -3304,7 +3324,7 @@ class DescribeDeviceWorkOrderDetailRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -3327,7 +3347,7 @@ class DescribeDeviceWorkOrderDetailRequest(AbstractModel):
 
 
 class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
-    """DescribeDeviceWorkOrderDetail返回参数结构体
+    r"""DescribeDeviceWorkOrderDetail返回参数结构体
 
     """
 
@@ -3364,7 +3384,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -3375,7 +3395,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def ServiceType(self):
-        """服务类型
+        r"""服务类型
         :rtype: str
         """
         return self._ServiceType
@@ -3386,7 +3406,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderType(self):
-        """工单类型
+        r"""工单类型
         :rtype: str
         """
         return self._OrderType
@@ -3397,7 +3417,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """工单状态
+        r"""工单状态
         :rtype: str
         """
         return self._OrderStatus
@@ -3408,7 +3428,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def StepSet(self):
-        """工单流程状态
+        r"""工单流程状态
         :rtype: list of OrderStep
         """
         return self._StepSet
@@ -3419,7 +3439,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
-        """工单设备信息
+        r"""工单设备信息
         :rtype: list of DeviceHistory
         """
         return self._DeviceSet
@@ -3430,7 +3450,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
-        """工单的入参信息
+        r"""工单的入参信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.DeviceOrderBaseInfo`
         """
         return self._BaseInfo
@@ -3441,7 +3461,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RejectReason(self):
-        """工单的拒绝原因，工单状态为reject的时候返回
+        r"""工单的拒绝原因，工单状态为reject的时候返回
         :rtype: str
         """
         return self._RejectReason
@@ -3452,7 +3472,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3487,7 +3507,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
 
 class DescribeIdcUnitAssetDetailRequest(AbstractModel):
-    """DescribeIdcUnitAssetDetail请求参数结构体
+    r"""DescribeIdcUnitAssetDetail请求参数结构体
 
     """
 
@@ -3500,7 +3520,7 @@ class DescribeIdcUnitAssetDetailRequest(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元ID
+        r"""机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -3523,7 +3543,7 @@ class DescribeIdcUnitAssetDetailRequest(AbstractModel):
 
 
 class DescribeIdcUnitAssetDetailResponse(AbstractModel):
-    """DescribeIdcUnitAssetDetail返回参数结构体
+    r"""DescribeIdcUnitAssetDetail返回参数结构体
 
     """
 
@@ -3539,7 +3559,7 @@ class DescribeIdcUnitAssetDetailResponse(AbstractModel):
 
     @property
     def IdcUnitDetail(self):
-        """机房管理单元详情
+        r"""机房管理单元详情
         :rtype: :class:`tencentcloud.chc.v20230418.models.IdcUnitInfo`
         """
         return self._IdcUnitDetail
@@ -3550,7 +3570,7 @@ class DescribeIdcUnitAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3568,7 +3588,7 @@ class DescribeIdcUnitAssetDetailResponse(AbstractModel):
 
 
 class DescribeIdcUnitDetailRequest(AbstractModel):
-    """DescribeIdcUnitDetail请求参数结构体
+    r"""DescribeIdcUnitDetail请求参数结构体
 
     """
 
@@ -3581,7 +3601,7 @@ class DescribeIdcUnitDetailRequest(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元ID
+        r"""机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -3604,7 +3624,7 @@ class DescribeIdcUnitDetailRequest(AbstractModel):
 
 
 class DescribeIdcUnitDetailResponse(AbstractModel):
-    """DescribeIdcUnitDetail返回参数结构体
+    r"""DescribeIdcUnitDetail返回参数结构体
 
     """
 
@@ -3620,7 +3640,7 @@ class DescribeIdcUnitDetailResponse(AbstractModel):
 
     @property
     def IdcUnitDetail(self):
-        """机房管理单元详情
+        r"""机房管理单元详情
         :rtype: :class:`tencentcloud.chc.v20230418.models.IdcUnitInfo`
         """
         return self._IdcUnitDetail
@@ -3631,7 +3651,7 @@ class DescribeIdcUnitDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3649,13 +3669,13 @@ class DescribeIdcUnitDetailResponse(AbstractModel):
 
 
 class DescribeIdcsRequest(AbstractModel):
-    """DescribeIdcs请求参数结构体
+    r"""DescribeIdcs请求参数结构体
 
     """
 
 
 class DescribeIdcsResponse(AbstractModel):
-    """DescribeIdcs返回参数结构体
+    r"""DescribeIdcs返回参数结构体
 
     """
 
@@ -3671,7 +3691,7 @@ class DescribeIdcsResponse(AbstractModel):
 
     @property
     def IdcSet(self):
-        """机房管理单元列表
+        r"""机房管理单元列表
         :rtype: list of Idc
         """
         return self._IdcSet
@@ -3682,7 +3702,7 @@ class DescribeIdcsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3703,7 +3723,7 @@ class DescribeIdcsResponse(AbstractModel):
 
 
 class DescribeModelEvaluationWorkOrderDetailRequest(AbstractModel):
-    """DescribeModelEvaluationWorkOrderDetail请求参数结构体
+    r"""DescribeModelEvaluationWorkOrderDetail请求参数结构体
 
     """
 
@@ -3716,7 +3736,7 @@ class DescribeModelEvaluationWorkOrderDetailRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -3739,7 +3759,7 @@ class DescribeModelEvaluationWorkOrderDetailRequest(AbstractModel):
 
 
 class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
-    """DescribeModelEvaluationWorkOrderDetail返回参数结构体
+    r"""DescribeModelEvaluationWorkOrderDetail返回参数结构体
 
     """
 
@@ -3770,7 +3790,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def StepSet(self):
-        """工单进度
+        r"""工单进度
         :rtype: list of OrderStep
         """
         return self._StepSet
@@ -3781,7 +3801,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
-        """工单详情
+        r"""工单详情
         :rtype: :class:`tencentcloud.chc.v20230418.models.ModelEvaluationBaseInfo`
         """
         return self._BaseInfo
@@ -3792,7 +3812,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def NetDeviceModelSet(self):
-        """评估中的网络设备型号详情
+        r"""评估中的网络设备型号详情
         :rtype: list of ModelVersionDetail
         """
         return self._NetDeviceModelSet
@@ -3803,7 +3823,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def ServerModelSet(self):
-        """评估中的服务器型号详情
+        r"""评估中的服务器型号详情
         :rtype: list of ModelVersionDetail
         """
         return self._ServerModelSet
@@ -3814,7 +3834,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """订单状态, process 处理中 ，reject 已拒绝 ，finish 已完成，exception 异常
+        r"""订单状态, process 处理中 ，reject 已拒绝 ，finish 已完成，exception 异常
         :rtype: str
         """
         return self._OrderStatus
@@ -3825,7 +3845,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RejectReason(self):
-        """工单拒绝原因
+        r"""工单拒绝原因
         :rtype: str
         """
         return self._RejectReason
@@ -3836,7 +3856,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3874,7 +3894,7 @@ class DescribeModelEvaluationWorkOrderDetailResponse(AbstractModel):
 
 
 class DescribeModelRequest(AbstractModel):
-    """DescribeModel请求参数结构体
+    r"""DescribeModel请求参数结构体
 
     """
 
@@ -3896,7 +3916,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def DevModel(self):
-        """服务器设备型号
+        r"""服务器设备型号
         :rtype: str
         """
         return self._DevModel
@@ -3907,7 +3927,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def CampusId(self):
-        """园区ID
+        r"""园区ID
         :rtype: int
         """
         return self._CampusId
@@ -3918,7 +3938,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，服务器传入 server，网络设备传入 netDevice
+        r"""设备类型，服务器传入 server，网络设备传入 netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -3929,7 +3949,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def Checked(self):
-        """是否只返回已评估的版本
+        r"""是否只返回已评估的版本
         :rtype: bool
         """
         return self._Checked
@@ -3955,7 +3975,7 @@ class DescribeModelRequest(AbstractModel):
 
 
 class DescribeModelResponse(AbstractModel):
-    """DescribeModel返回参数结构体
+    r"""DescribeModel返回参数结构体
 
     """
 
@@ -3971,7 +3991,7 @@ class DescribeModelResponse(AbstractModel):
 
     @property
     def ModelSet(self):
-        """设备型号详情
+        r"""设备型号详情
         :rtype: list of ModelVersionDetail
         """
         return self._ModelSet
@@ -3982,7 +4002,7 @@ class DescribeModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4003,7 +4023,7 @@ class DescribeModelResponse(AbstractModel):
 
 
 class DescribeModelTemplateRequest(AbstractModel):
-    """DescribeModelTemplate请求参数结构体
+    r"""DescribeModelTemplate请求参数结构体
 
     """
 
@@ -4016,7 +4036,7 @@ class DescribeModelTemplateRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """型号类型，只支持传入 server 和 netDevice
+        r"""型号类型，只支持传入 server 和 netDevice
         :rtype: str
         """
         return self._DeviceType
@@ -4039,7 +4059,7 @@ class DescribeModelTemplateRequest(AbstractModel):
 
 
 class DescribeModelTemplateResponse(AbstractModel):
-    """DescribeModelTemplate返回参数结构体
+    r"""DescribeModelTemplate返回参数结构体
 
     """
 
@@ -4055,7 +4075,7 @@ class DescribeModelTemplateResponse(AbstractModel):
 
     @property
     def TemplateDetail(self):
-        """该型号模板的选项列表
+        r"""该型号模板的选项列表
         :rtype: list of TemplateOption
         """
         return self._TemplateDetail
@@ -4066,7 +4086,7 @@ class DescribeModelTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4087,7 +4107,7 @@ class DescribeModelTemplateResponse(AbstractModel):
 
 
 class DescribeModelVersionListRequest(AbstractModel):
-    """DescribeModelVersionList请求参数结构体
+    r"""DescribeModelVersionList请求参数结构体
 
     """
 
@@ -4112,7 +4132,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """型号类型，只支持传入 netDevice 和 server
+        r"""型号类型，只支持传入 netDevice 和 server
         :rtype: str
         """
         return self._DeviceType
@@ -4123,7 +4143,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """model-name  型号名称  类型：String  必选：否
+        r"""model-name  型号名称  类型：String  必选：否
         :rtype: list of Filter
         """
         return self._Filters
@@ -4134,7 +4154,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
     @property
     def Checked(self):
-        """是否已评估
+        r"""是否已评估
         :rtype: bool
         """
         return self._Checked
@@ -4145,7 +4165,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
     @property
     def CampusId(self):
-        """园区ID，当 Checked 参数传 True 时，该参数必须传值
+        r"""园区ID，当 Checked 参数传 True 时，该参数必须传值
         :rtype: int
         """
         return self._CampusId
@@ -4156,7 +4176,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """型号关键字，可以实现模糊匹配搜索功能
+        r"""型号关键字，可以实现模糊匹配搜索功能
         :rtype: str
         """
         return self._ModelName
@@ -4188,7 +4208,7 @@ class DescribeModelVersionListRequest(AbstractModel):
 
 
 class DescribeModelVersionListResponse(AbstractModel):
-    """DescribeModelVersionList返回参数结构体
+    r"""DescribeModelVersionList返回参数结构体
 
     """
 
@@ -4204,7 +4224,7 @@ class DescribeModelVersionListResponse(AbstractModel):
 
     @property
     def ModelVersionSet(self):
-        """型号和对应的版本数量
+        r"""型号和对应的版本数量
         :rtype: list of ModelVersionCount
         """
         return self._ModelVersionSet
@@ -4215,7 +4235,7 @@ class DescribeModelVersionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4236,7 +4256,7 @@ class DescribeModelVersionListResponse(AbstractModel):
 
 
 class DescribePersonnelVisitWorkOrderDetailRequest(AbstractModel):
-    """DescribePersonnelVisitWorkOrderDetail请求参数结构体
+    r"""DescribePersonnelVisitWorkOrderDetail请求参数结构体
 
     """
 
@@ -4249,7 +4269,7 @@ class DescribePersonnelVisitWorkOrderDetailRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        """工单ID
+        r"""工单ID
         :rtype: str
         """
         return self._OrderId
@@ -4272,7 +4292,7 @@ class DescribePersonnelVisitWorkOrderDetailRequest(AbstractModel):
 
 
 class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
-    """DescribePersonnelVisitWorkOrderDetail返回参数结构体
+    r"""DescribePersonnelVisitWorkOrderDetail返回参数结构体
 
     """
 
@@ -4288,6 +4308,8 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
         :type OrderStatus: str
         :param _RejectReason: 拒绝原因
         :type RejectReason: str
+        :param _CarSet: 到访人员车辆信息
+        :type CarSet: list of PersonnelVisitCar
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4296,11 +4318,12 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
         self._PersonnelSet = None
         self._OrderStatus = None
         self._RejectReason = None
+        self._CarSet = None
         self._RequestId = None
 
     @property
     def StepSet(self):
-        """工单进度	
+        r"""工单进度	
         :rtype: list of OrderStep
         """
         return self._StepSet
@@ -4311,7 +4334,7 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
-        """工单详情
+        r"""工单详情
         :rtype: :class:`tencentcloud.chc.v20230418.models.PersonnelVisitBaseInfo`
         """
         return self._BaseInfo
@@ -4322,7 +4345,7 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
 
     @property
     def PersonnelSet(self):
-        """到访人员详情
+        r"""到访人员详情
         :rtype: list of Personnel
         """
         return self._PersonnelSet
@@ -4333,7 +4356,7 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """工单状态 订单状态, processing 处理中 ，reject 已拒绝 ，finish 已完成，exception 异常
+        r"""工单状态 订单状态, processing 处理中 ，reject 已拒绝 ，finish 已完成，exception 异常
         :rtype: str
         """
         return self._OrderStatus
@@ -4344,7 +4367,7 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RejectReason(self):
-        """拒绝原因
+        r"""拒绝原因
         :rtype: str
         """
         return self._RejectReason
@@ -4354,8 +4377,19 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
         self._RejectReason = RejectReason
 
     @property
+    def CarSet(self):
+        r"""到访人员车辆信息
+        :rtype: list of PersonnelVisitCar
+        """
+        return self._CarSet
+
+    @CarSet.setter
+    def CarSet(self, CarSet):
+        self._CarSet = CarSet
+
+    @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4383,11 +4417,17 @@ class DescribePersonnelVisitWorkOrderDetailResponse(AbstractModel):
                 self._PersonnelSet.append(obj)
         self._OrderStatus = params.get("OrderStatus")
         self._RejectReason = params.get("RejectReason")
+        if params.get("CarSet") is not None:
+            self._CarSet = []
+            for item in params.get("CarSet"):
+                obj = PersonnelVisitCar()
+                obj._deserialize(item)
+                self._CarSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
 class DescribePositionStatusSummaryRequest(AbstractModel):
-    """DescribePositionStatusSummary请求参数结构体
+    r"""DescribePositionStatusSummary请求参数结构体
 
     """
 
@@ -4400,7 +4440,7 @@ class DescribePositionStatusSummaryRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li><strong>rack-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机架ID</strong>】进行过滤。例如：15082。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"></p> <li><strong> rack-name</strong></li> <p style="padding-left: 30px;">按照【<strong>机架名称</strong>】进行过滤，机架名称例如：M301-E10。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong> idc-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机房ID</strong>】进行过滤，机房ID例如：159。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>  <li><strong>idc-unit-id </strong></li> <p style="padding-left: 30px;">按照【<strong>机房管理单元ID</strong>】进行过滤，机房管理ID例如：568。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>position-status</strong></li> <p style="padding-left: 30px;">按照【<strong>机位状态</strong>】进行过滤，机位状态只包含以下四种：机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留，例如： 0。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>op-status</strong></li> <p style="padding-left: 30px;">按照【<strong>操作状态</strong>】进行过滤，操作状态只包含两种：FINISH 操作完成，PENDING 操作中，例如： PENDING。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+        r"""<li><strong>rack-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机架ID</strong>】进行过滤。例如：15082。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"></p> <li><strong> rack-name</strong></li> <p style="padding-left: 30px;">按照【<strong>机架名称</strong>】进行过滤，机架名称例如：M301-E10。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong> idc-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机房ID</strong>】进行过滤，机房ID例如：159。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>  <li><strong>idc-unit-id </strong></li> <p style="padding-left: 30px;">按照【<strong>机房管理单元ID</strong>】进行过滤，机房管理ID例如：568。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>position-status</strong></li> <p style="padding-left: 30px;">按照【<strong>机位状态</strong>】进行过滤，机位状态只包含以下四种：机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留，例如： 0。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>op-status</strong></li> <p style="padding-left: 30px;">按照【<strong>操作状态</strong>】进行过滤，操作状态只包含两种：FINISH 操作完成，PENDING 操作中，例如： PENDING。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4428,7 +4468,7 @@ class DescribePositionStatusSummaryRequest(AbstractModel):
 
 
 class DescribePositionStatusSummaryResponse(AbstractModel):
-    """DescribePositionStatusSummary返回参数结构体
+    r"""DescribePositionStatusSummary返回参数结构体
 
     """
 
@@ -4447,7 +4487,7 @@ class DescribePositionStatusSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4458,7 +4498,7 @@ class DescribePositionStatusSummaryResponse(AbstractModel):
 
     @property
     def StatusCountSet(self):
-        """状态及对应数量
+        r"""状态及对应数量
         :rtype: list of PositionStatusItem
         """
         return self._StatusCountSet
@@ -4469,7 +4509,7 @@ class DescribePositionStatusSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4491,7 +4531,7 @@ class DescribePositionStatusSummaryResponse(AbstractModel):
 
 
 class DescribePositionsRequest(AbstractModel):
-    """DescribePositions请求参数结构体
+    r"""DescribePositions请求参数结构体
 
     """
 
@@ -4512,7 +4552,7 @@ class DescribePositionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -4523,7 +4563,7 @@ class DescribePositionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -4534,7 +4574,7 @@ class DescribePositionsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li><strong>rack-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机架ID</strong>】进行过滤。例如：15082。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"></p> <li><strong> rack-name</strong></li> <p style="padding-left: 30px;">按照【<strong>机架名称</strong>】进行过滤，机架名称例如：M301-E10。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong> idc-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机房ID</strong>】进行过滤，机房ID例如：159。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>  <li><strong>idc-unit-id </strong></li> <p style="padding-left: 30px;">按照【<strong>机房管理单元ID</strong>】进行过滤，机房管理ID例如：568。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>position-status</strong></li> <p style="padding-left: 30px;">按照【<strong>机位状态</strong>】进行过滤，机位状态只包含以下四种：机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留，例如： 0。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+        r"""<li><strong>rack-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机架ID</strong>】进行过滤。例如：15082。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"></p> <li><strong> rack-name</strong></li> <p style="padding-left: 30px;">按照【<strong>机架名称</strong>】进行过滤，机架名称例如：M301-E10。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong> idc-id</strong></li> <p style="padding-left: 30px;">按照【<strong>机房ID</strong>】进行过滤，机房ID例如：159。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>  <li><strong>idc-unit-id </strong></li> <p style="padding-left: 30px;">按照【<strong>机房管理单元ID</strong>】进行过滤，机房管理ID例如：568。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>position-status</strong></li> <p style="padding-left: 30px;">按照【<strong>机位状态</strong>】进行过滤，机位状态只包含以下四种：机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留，例如： 0。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>op-status</strong></li> <p style="padding-left: 30px;">按照【<strong>操作状态</strong>】进行过滤，操作状态只包含两种：FINISH 操作完成，PENDING 操作中，例如： PENDING。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 
         :rtype: list of Filter
@@ -4566,7 +4606,7 @@ class DescribePositionsRequest(AbstractModel):
 
 
 class DescribePositionsResponse(AbstractModel):
-    """DescribePositions返回参数结构体
+    r"""DescribePositions返回参数结构体
 
     """
 
@@ -4585,7 +4625,7 @@ class DescribePositionsResponse(AbstractModel):
 
     @property
     def PositionSet(self):
-        """客户拥有的机位列表
+        r"""客户拥有的机位列表
         :rtype: list of Position
         """
         return self._PositionSet
@@ -4596,7 +4636,7 @@ class DescribePositionsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4607,7 +4647,7 @@ class DescribePositionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4629,7 +4669,7 @@ class DescribePositionsResponse(AbstractModel):
 
 
 class DescribeRacksDistributionRequest(AbstractModel):
-    """DescribeRacksDistribution请求参数结构体
+    r"""DescribeRacksDistribution请求参数结构体
 
     """
 
@@ -4642,7 +4682,7 @@ class DescribeRacksDistributionRequest(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元ID
+        r"""机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -4665,7 +4705,7 @@ class DescribeRacksDistributionRequest(AbstractModel):
 
 
 class DescribeRacksDistributionResponse(AbstractModel):
-    """DescribeRacksDistribution返回参数结构体
+    r"""DescribeRacksDistribution返回参数结构体
 
     """
 
@@ -4681,7 +4721,7 @@ class DescribeRacksDistributionResponse(AbstractModel):
 
     @property
     def DistributionSet(self):
-        """机架的用量分布
+        r"""机架的用量分布
         :rtype: list of Distribution
         """
         return self._DistributionSet
@@ -4692,7 +4732,7 @@ class DescribeRacksDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4713,7 +4753,7 @@ class DescribeRacksDistributionResponse(AbstractModel):
 
 
 class DescribeRacksRequest(AbstractModel):
-    """DescribeRacks请求参数结构体
+    r"""DescribeRacks请求参数结构体
 
     """
 
@@ -4770,7 +4810,7 @@ hosting-type
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -4781,7 +4821,7 @@ hosting-type
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -4792,7 +4832,7 @@ hosting-type
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
 
 rack-id
 按照机架id进行过滤。
@@ -4835,7 +4875,7 @@ hosting-type
 
     @property
     def DstService(self):
-        """传入目标服务，返回允许进行此服务的机架列表；可以和Filters一起使用。允许的值：('rackPowerOn', 'rackPowerOff')
+        r"""传入目标服务，返回允许进行此服务的机架列表；可以和Filters一起使用。允许的值：('rackPowerOn', 'rackPowerOff')
         :rtype: str
         """
         return self._DstService
@@ -4846,7 +4886,7 @@ hosting-type
 
     @property
     def RackName(self):
-        """机架名称关键字实现模糊搜索
+        r"""机架名称关键字实现模糊搜索
         :rtype: str
         """
         return self._RackName
@@ -4878,7 +4918,7 @@ hosting-type
 
 
 class DescribeRacksResponse(AbstractModel):
-    """DescribeRacks返回参数结构体
+    r"""DescribeRacks返回参数结构体
 
     """
 
@@ -4897,7 +4937,7 @@ class DescribeRacksResponse(AbstractModel):
 
     @property
     def RackSet(self):
-        """客户拥有的机架列表
+        r"""客户拥有的机架列表
         :rtype: list of Rack
         """
         return self._RackSet
@@ -4908,7 +4948,7 @@ class DescribeRacksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4919,7 +4959,7 @@ class DescribeRacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4941,7 +4981,7 @@ class DescribeRacksResponse(AbstractModel):
 
 
 class DescribeResourceUsageRequest(AbstractModel):
-    """DescribeResourceUsage请求参数结构体
+    r"""DescribeResourceUsage请求参数结构体
 
     """
 
@@ -4954,7 +4994,7 @@ class DescribeResourceUsageRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -4982,7 +5022,7 @@ class DescribeResourceUsageRequest(AbstractModel):
 
 
 class DescribeResourceUsageResponse(AbstractModel):
-    """DescribeResourceUsage返回参数结构体
+    r"""DescribeResourceUsage返回参数结构体
 
     """
 
@@ -5022,7 +5062,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def HostingServerCount(self):
-        """托管服务器数量
+        r"""托管服务器数量
         :rtype: int
         """
         return self._HostingServerCount
@@ -5033,7 +5073,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RentServerCount(self):
-        """租用服务器数量
+        r"""租用服务器数量
         :rtype: int
         """
         return self._RentServerCount
@@ -5044,7 +5084,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def NetDeviceCount(self):
-        """网络设备数量
+        r"""网络设备数量
         :rtype: int
         """
         return self._NetDeviceCount
@@ -5055,7 +5095,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RackTotalCount(self):
-        """机架总数
+        r"""机架总数
         :rtype: int
         """
         return self._RackTotalCount
@@ -5066,7 +5106,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RackPowerOnCount(self):
-        """开电机架总数
+        r"""开电机架总数
         :rtype: int
         """
         return self._RackPowerOnCount
@@ -5077,7 +5117,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def PositionUsedCount(self):
-        """机位使用数量
+        r"""机位使用数量
         :rtype: int
         """
         return self._PositionUsedCount
@@ -5088,7 +5128,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def PositionTotalCount(self):
-        """机位总数
+        r"""机位总数
         :rtype: int
         """
         return self._PositionTotalCount
@@ -5099,7 +5139,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RackPowerOnRate(self):
-        """机架开电率，保留一位小数
+        r"""机架开电率，保留一位小数
         :rtype: str
         """
         return self._RackPowerOnRate
@@ -5110,7 +5150,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def PositionUsedRate(self):
-        """机位使用率，
+        r"""机位使用率，
         :rtype: str
         """
         return self._PositionUsedRate
@@ -5121,7 +5161,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5145,7 +5185,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
 
 class DescribeWorkOrderListRequest(AbstractModel):
-    """DescribeWorkOrderList请求参数结构体
+    r"""DescribeWorkOrderList请求参数结构体
 
     """
 
@@ -5167,7 +5207,7 @@ class DescribeWorkOrderListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件。支持：service-type、order-type、order-status、order-id
+        r"""过滤条件。支持：service-type、order-type、order-status、order-id
         :rtype: list of Filter
         """
         return self._Filters
@@ -5178,7 +5218,7 @@ class DescribeWorkOrderListRequest(AbstractModel):
 
     @property
     def SnList(self):
-        """通过sn过滤工单，上限10个
+        r"""通过sn过滤工单，上限10个
         :rtype: list of str
         """
         return self._SnList
@@ -5189,7 +5229,7 @@ class DescribeWorkOrderListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始
+        r"""起始
         :rtype: int
         """
         return self._Offset
@@ -5200,7 +5240,7 @@ class DescribeWorkOrderListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """长度
+        r"""长度
         :rtype: int
         """
         return self._Limit
@@ -5231,7 +5271,7 @@ class DescribeWorkOrderListRequest(AbstractModel):
 
 
 class DescribeWorkOrderListResponse(AbstractModel):
-    """DescribeWorkOrderList返回参数结构体
+    r"""DescribeWorkOrderList返回参数结构体
 
     """
 
@@ -5250,7 +5290,7 @@ class DescribeWorkOrderListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -5261,7 +5301,7 @@ class DescribeWorkOrderListResponse(AbstractModel):
 
     @property
     def WorkOrderSet(self):
-        """查询结果
+        r"""查询结果
         :rtype: list of WorkOrderData
         """
         return self._WorkOrderSet
@@ -5272,7 +5312,7 @@ class DescribeWorkOrderListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5294,13 +5334,13 @@ class DescribeWorkOrderListResponse(AbstractModel):
 
 
 class DescribeWorkOrderStatisticsRequest(AbstractModel):
-    """DescribeWorkOrderStatistics请求参数结构体
+    r"""DescribeWorkOrderStatistics请求参数结构体
 
     """
 
 
 class DescribeWorkOrderStatisticsResponse(AbstractModel):
-    """DescribeWorkOrderStatistics返回参数结构体
+    r"""DescribeWorkOrderStatistics返回参数结构体
 
     """
 
@@ -5337,7 +5377,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """总工单数量
+        r"""总工单数量
         :rtype: int
         """
         return self._TotalNum
@@ -5348,7 +5388,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def ProcessingNum(self):
-        """进行中的工单数量
+        r"""进行中的工单数量
         :rtype: int
         """
         return self._ProcessingNum
@@ -5359,7 +5399,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def ConfirmingNum(self):
-        """待确认的工单数量
+        r"""待确认的工单数量
         :rtype: int
         """
         return self._ConfirmingNum
@@ -5370,7 +5410,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def FinishNum(self):
-        """完成的工单数量
+        r"""完成的工单数量
         :rtype: int
         """
         return self._FinishNum
@@ -5381,7 +5421,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def RejectNum(self):
-        """拒绝的工单数量
+        r"""拒绝的工单数量
         :rtype: int
         """
         return self._RejectNum
@@ -5392,7 +5432,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def ExceptionNum(self):
-        """异常的工单数量
+        r"""异常的工单数量
         :rtype: int
         """
         return self._ExceptionNum
@@ -5403,7 +5443,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def CancelNum(self):
-        """客户取消的工单数量
+        r"""客户取消的工单数量
         :rtype: int
         """
         return self._CancelNum
@@ -5414,7 +5454,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def CheckingNum(self):
-        """围笼进出审核的工单数量
+        r"""围笼进出审核的工单数量
         :rtype: int
         """
         return self._CheckingNum
@@ -5425,7 +5465,7 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5448,13 +5488,13 @@ class DescribeWorkOrderStatisticsResponse(AbstractModel):
 
 
 class DescribeWorkOrderTypesRequest(AbstractModel):
-    """DescribeWorkOrderTypes请求参数结构体
+    r"""DescribeWorkOrderTypes请求参数结构体
 
     """
 
 
 class DescribeWorkOrderTypesResponse(AbstractModel):
-    """DescribeWorkOrderTypes返回参数结构体
+    r"""DescribeWorkOrderTypes返回参数结构体
 
     """
 
@@ -5473,7 +5513,7 @@ class DescribeWorkOrderTypesResponse(AbstractModel):
 
     @property
     def CollectedWorkOderTypeSet(self):
-        """已收藏的工单类型列表
+        r"""已收藏的工单类型列表
         :rtype: list of WorkOrderTypeDetail
         """
         return self._CollectedWorkOderTypeSet
@@ -5484,7 +5524,7 @@ class DescribeWorkOrderTypesResponse(AbstractModel):
 
     @property
     def WorkOrderFamilySet(self):
-        """全部工单类型列表
+        r"""全部工单类型列表
         :rtype: list of WorkOrderFamilyDetail
         """
         return self._WorkOrderFamilySet
@@ -5495,7 +5535,7 @@ class DescribeWorkOrderTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5522,7 +5562,7 @@ class DescribeWorkOrderTypesResponse(AbstractModel):
 
 
 class Device(AbstractModel):
-    """服务器信息
+    r"""服务器信息
 
     """
 
@@ -5592,7 +5632,7 @@ class Device(AbstractModel):
 
     @property
     def Sn(self):
-        """设备 SN 码
+        r"""设备 SN 码
         :rtype: str
         """
         return self._Sn
@@ -5603,7 +5643,7 @@ class Device(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """设备型号版本
+        r"""设备型号版本
         :rtype: str
         """
         return self._ModelVersion
@@ -5614,7 +5654,7 @@ class Device(AbstractModel):
 
     @property
     def AssetId(self):
-        """设备固资号。只有设备类型为服务器时才返回
+        r"""设备固资号。只有设备类型为服务器时才返回
         :rtype: str
         """
         return self._AssetId
@@ -5625,7 +5665,7 @@ class Device(AbstractModel):
 
     @property
     def SvrIsSpecial(self):
-        """0 自有，1 租用。只有设备类型为服务器时才返回
+        r"""0 自有，1 租用。只有设备类型为服务器时才返回
         :rtype: int
         """
         return self._SvrIsSpecial
@@ -5636,7 +5676,7 @@ class Device(AbstractModel):
 
     @property
     def Ip(self):
-        """IP。
+        r"""IP。
         :rtype: str
         """
         return self._Ip
@@ -5647,7 +5687,7 @@ class Device(AbstractModel):
 
     @property
     def IdcName(self):
-        """设备所属的机房名称
+        r"""设备所属的机房名称
         :rtype: str
         """
         return self._IdcName
@@ -5658,7 +5698,7 @@ class Device(AbstractModel):
 
     @property
     def IdcId(self):
-        """设备所属的机房ID
+        r"""设备所属的机房ID
         :rtype: int
         """
         return self._IdcId
@@ -5669,7 +5709,7 @@ class Device(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """设备所属的机房管理单元ID
+        r"""设备所属的机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -5680,7 +5720,7 @@ class Device(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """设备所属的机房管理单元名称
+        r"""设备所属的机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -5691,7 +5731,7 @@ class Device(AbstractModel):
 
     @property
     def RackId(self):
-        """已上架设备所在的机架ID，未上架设备不返回
+        r"""已上架设备所在的机架ID，未上架设备不返回
         :rtype: int
         """
         return self._RackId
@@ -5702,7 +5742,7 @@ class Device(AbstractModel):
 
     @property
     def ServerTypeId(self):
-        """服务器类型， 1 代表服务器， 7 代表 2U4S。只有设备类型为服务器时才返回
+        r"""服务器类型， 1 代表服务器， 7 代表 2U4S。只有设备类型为服务器时才返回
         :rtype: int
         """
         return self._ServerTypeId
@@ -5713,7 +5753,7 @@ class Device(AbstractModel):
 
     @property
     def RackName(self):
-        """已上架设备所在的机架名称，未上架设备不返回
+        r"""已上架设备所在的机架名称，未上架设备不返回
         :rtype: str
         """
         return self._RackName
@@ -5724,7 +5764,7 @@ class Device(AbstractModel):
 
     @property
     def PositionCode(self):
-        """已上架设备所在的机位编号，未上架设备不返回。只有设备类型为服务器时才返回
+        r"""已上架设备所在的机位编号，未上架设备不返回。只有设备类型为服务器时才返回
         :rtype: int
         """
         return self._PositionCode
@@ -5735,7 +5775,7 @@ class Device(AbstractModel):
 
     @property
     def Status(self):
-        """设备状态：POWER_ON 已开电 POWER_OFF 未开电 RACK_OFF 未上架 MOVING 搬迁中
+        r"""设备状态：POWER_ON 已开电 POWER_OFF 未开电 RACK_OFF 未上架 MOVING 搬迁中
         :rtype: str
         """
         return self._Status
@@ -5746,7 +5786,7 @@ class Device(AbstractModel):
 
     @property
     def PowerOnTime(self):
-        """设备最近一次的开电时间，YYYY-MM-DD 格式。
+        r"""设备最近一次的开电时间，YYYY-MM-DD 格式。
         :rtype: str
         """
         return self._PowerOnTime
@@ -5757,7 +5797,7 @@ class Device(AbstractModel):
 
     @property
     def OnshelfDate(self):
-        """设备最近一次的上架时间，YYYY-MM-DD 格式。
+        r"""设备最近一次的上架时间，YYYY-MM-DD 格式。
         :rtype: str
         """
         return self._OnshelfDate
@@ -5768,7 +5808,7 @@ class Device(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型 server 服务器，netDevice 网络设备
+        r"""设备类型 server 服务器，netDevice 网络设备
         :rtype: str
         """
         return self._DeviceType
@@ -5779,7 +5819,7 @@ class Device(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """厂商
+        r"""厂商
         :rtype: str
         """
         return self._Manufacturer
@@ -5790,7 +5830,7 @@ class Device(AbstractModel):
 
     @property
     def TypeName(self):
-        """其他设备-设备子类型
+        r"""其他设备-设备子类型
         :rtype: str
         """
         return self._TypeName
@@ -5801,7 +5841,7 @@ class Device(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -5843,7 +5883,7 @@ class Device(AbstractModel):
 
 
 class DeviceHistory(AbstractModel):
-    """工单的设备信息
+    r"""工单的设备信息
 
     """
 
@@ -5925,7 +5965,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def Sn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._Sn
@@ -5936,7 +5976,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型
+        r"""设备类型
         :rtype: str
         """
         return self._DeviceType
@@ -5947,7 +5987,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def RackName(self):
-        """机架名
+        r"""机架名
         :rtype: str
         """
         return self._RackName
@@ -5958,7 +5998,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def PositionCode(self):
-        """机位号
+        r"""机位号
         :rtype: int
         """
         return self._PositionCode
@@ -5969,7 +6009,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -5980,7 +6020,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -5991,7 +6031,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元id
+        r"""机房管理单元id
         :rtype: int
         """
         return self._IdcUnitId
@@ -6002,7 +6042,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """机房管理单元名称
+        r"""机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -6013,7 +6053,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def AssetId(self):
-        """固资号
+        r"""固资号
         :rtype: str
         """
         return self._AssetId
@@ -6024,7 +6064,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """设备型号-版本，只有收货单详情返回
+        r"""设备型号-版本，只有收货单详情返回
         :rtype: str
         """
         return self._ModelVersion
@@ -6035,7 +6075,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def DeviceHeight(self):
-        """设备高度，只有收货单详情返回
+        r"""设备高度，只有收货单详情返回
         :rtype: str
         """
         return self._DeviceHeight
@@ -6046,7 +6086,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def Need10GbSlot(self):
-        """需要万兆机位，只有收货单详情返回
+        r"""需要万兆机位，只有收货单详情返回
         :rtype: str
         """
         return self._Need10GbSlot
@@ -6057,7 +6097,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def NeedDCPower(self):
-        """需要直流电，只有收货单详情返回
+        r"""需要直流电，只有收货单详情返回
         :rtype: str
         """
         return self._NeedDCPower
@@ -6068,7 +6108,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def NeedExtranet(self):
-        """需要外网，只有收货单详情返回
+        r"""需要外网，只有收货单详情返回
         :rtype: str
         """
         return self._NeedExtranet
@@ -6079,7 +6119,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def NeedVirtualization(self):
-        """需要虚拟化，只有收货单详情返回
+        r"""需要虚拟化，只有收货单详情返回
         :rtype: str
         """
         return self._NeedVirtualization
@@ -6090,7 +6130,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """厂商,只有收货单详情返回
+        r"""厂商,只有收货单详情返回
         :rtype: str
         """
         return self._Manufacturer
@@ -6101,7 +6141,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -6112,7 +6152,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def DstRackName(self):
-        """目标机架
+        r"""目标机架
         :rtype: str
         """
         return self._DstRackName
@@ -6123,7 +6163,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def DstPositionCode(self):
-        """目标机位
+        r"""目标机位
         :rtype: str
         """
         return self._DstPositionCode
@@ -6134,7 +6174,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def DstIp(self):
-        """目标ip
+        r"""目标ip
         :rtype: str
         """
         return self._DstIp
@@ -6145,7 +6185,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def TypeName(self):
-        """设备子类型, 其他设备/线材用
+        r"""设备子类型, 其他设备/线材用
         :rtype: str
         """
         return self._TypeName
@@ -6156,7 +6196,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def Quantity(self):
-        """线材-数量，只有收货单详情返回
+        r"""线材-数量，只有收货单详情返回
         :rtype: int
         """
         return self._Quantity
@@ -6167,7 +6207,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def Unit(self):
-        """计量单位，，只有收货单详情返回，'箱', '卷', '套'
+        r"""计量单位，，只有收货单详情返回，'箱', '卷', '套'
         :rtype: str
         """
         return self._Unit
@@ -6178,7 +6218,7 @@ class DeviceHistory(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """线材-收货凭证号，只有收货单详情返回
+        r"""线材-收货凭证号，只有收货单详情返回
         :rtype: str
         """
         return self._ReceiptNumber
@@ -6224,7 +6264,7 @@ class DeviceHistory(AbstractModel):
 
 
 class DeviceOrderBaseInfo(AbstractModel):
-    """设备类工单的基础历史入参信息
+    r"""设备类工单的基础历史入参信息
 
     """
 
@@ -6282,7 +6322,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房id
+        r"""机房id
         :rtype: int
         """
         return self._IdcId
@@ -6293,7 +6333,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -6304,7 +6344,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型
+        r"""设备类型
         :rtype: str
         """
         return self._DeviceType
@@ -6315,7 +6355,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -6326,7 +6366,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def ReceivingOperation(self):
-        """1.收货-仅核对外包装完整和数量，不开箱 2.验收-开箱核对型号SN一致
+        r"""1.收货-仅核对外包装完整和数量，不开箱 2.验收-开箱核对型号SN一致
         :rtype: str
         """
         return self._ReceivingOperation
@@ -6337,7 +6377,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def EntryTime(self):
-        """设备收货-进入时间
+        r"""设备收货-进入时间
         :rtype: str
         """
         return self._EntryTime
@@ -6348,7 +6388,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def IsExpressDelivery(self):
-        """设备收货-是否快递寄件
+        r"""设备收货-是否快递寄件
         :rtype: bool
         """
         return self._IsExpressDelivery
@@ -6359,7 +6399,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def ExpressInfo(self):
-        """设备收货-快递寄件信息
+        r"""设备收货-快递寄件信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.ExpressDelivery`
         """
         return self._ExpressInfo
@@ -6370,7 +6410,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def StuffOption(self):
-        """上/下架人员 1.自行解决 2.由腾讯IDC负责
+        r"""上/下架人员 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -6381,7 +6421,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def SelfOperationInfo(self):
-        """上/下架自行解决信息
+        r"""上/下架自行解决信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
         """
         return self._SelfOperationInfo
@@ -6392,7 +6432,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def WithPowerOn(self):
-        """上架后开电
+        r"""上架后开电
         :rtype: bool
         """
         return self._WithPowerOn
@@ -6403,7 +6443,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def IsPowerOffConfirm(self):
-        """关电确认 1.授权时关电 2.关电前需要确认
+        r"""关电确认 1.授权时关电 2.关电前需要确认
         :rtype: str
         """
         return self._IsPowerOffConfirm
@@ -6414,7 +6454,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def PowerOffConfirmInfo(self):
-        """关电前需要确认信息
+        r"""关电前需要确认信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.PowerOffConfirm`
         """
         return self._PowerOffConfirmInfo
@@ -6425,7 +6465,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def HandoverMethod(self):
-        """退出交接方式 1.物流上门收货 2.客户上门自提
+        r"""退出交接方式 1.物流上门收货 2.客户上门自提
         :rtype: str
         """
         return self._HandoverMethod
@@ -6436,7 +6476,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def CustomerReceipt(self):
-        """客户上门自提信息
+        r"""客户上门自提信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
         """
         return self._CustomerReceipt
@@ -6447,7 +6487,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
     @property
     def LogisticsReceipt(self):
-        """物流上门收货信息
+        r"""物流上门收货信息
         :rtype: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
         """
         return self._LogisticsReceipt
@@ -6495,7 +6535,7 @@ class DeviceOrderBaseInfo(AbstractModel):
 
 
 class DevicePosition(AbstractModel):
-    """设备及位置信息
+    r"""设备及位置信息
 
     """
 
@@ -6529,7 +6569,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def Sn(self):
-        """设备SN
+        r"""设备SN
         :rtype: str
         """
         return self._Sn
@@ -6540,7 +6580,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def RackName(self):
-        """机架名称
+        r"""机架名称
         :rtype: str
         """
         return self._RackName
@@ -6551,7 +6591,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元ID
+        r"""机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -6562,7 +6602,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -6573,7 +6613,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """机房管理单元名称
+        r"""机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -6584,7 +6624,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def AssetId(self):
-        """设备固资。只有服务器设备才需要这个值
+        r"""设备固资。只有服务器设备才需要这个值
         :rtype: str
         """
         return self._AssetId
@@ -6595,7 +6635,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def PositionCode(self):
-        """机位编号，只有服务器设备才需要传这个值
+        r"""机位编号，只有服务器设备才需要传这个值
         :rtype: int
         """
         return self._PositionCode
@@ -6606,7 +6646,7 @@ class DevicePosition(AbstractModel):
 
     @property
     def DeviceType(self):
-        """server 代表服务器，netDevice 代表网络设备
+        r"""server 代表服务器，netDevice 代表网络设备
         :rtype: str
         """
         return self._DeviceType
@@ -6636,7 +6676,7 @@ class DevicePosition(AbstractModel):
 
 
 class DeviceRackOn(AbstractModel):
-    """设备上架信息
+    r"""设备上架信息
 
     """
 
@@ -6658,7 +6698,7 @@ class DeviceRackOn(AbstractModel):
 
     @property
     def DeviceSn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._DeviceSn
@@ -6669,7 +6709,7 @@ class DeviceRackOn(AbstractModel):
 
     @property
     def DstRackName(self):
-        """目标机架
+        r"""目标机架
         :rtype: str
         """
         return self._DstRackName
@@ -6680,7 +6720,7 @@ class DeviceRackOn(AbstractModel):
 
     @property
     def DstPositionCode(self):
-        """目标机位,服务器必传,网络设备不用传
+        r"""目标机位,服务器必传,网络设备不用传
         :rtype: str
         """
         return self._DstPositionCode
@@ -6691,7 +6731,7 @@ class DeviceRackOn(AbstractModel):
 
     @property
     def DstIp(self):
-        """设备ip
+        r"""设备ip
         :rtype: str
         """
         return self._DstIp
@@ -6717,7 +6757,7 @@ class DeviceRackOn(AbstractModel):
 
 
 class Distribution(AbstractModel):
-    """机架用量分布
+    r"""机架用量分布
 
     """
 
@@ -6733,7 +6773,7 @@ class Distribution(AbstractModel):
 
     @property
     def RackNumber(self):
-        """机架编号
+        r"""机架编号
         :rtype: str
         """
         return self._RackNumber
@@ -6744,7 +6784,7 @@ class Distribution(AbstractModel):
 
     @property
     def RackUsageSet(self):
-        """机架的用量分布
+        r"""机架的用量分布
         :rtype: list of RackUsage
         """
         return self._RackUsageSet
@@ -6773,7 +6813,7 @@ class Distribution(AbstractModel):
 
 
 class ExportCustomerWorkOrderDetailRequest(AbstractModel):
-    """ExportCustomerWorkOrderDetail请求参数结构体
+    r"""ExportCustomerWorkOrderDetail请求参数结构体
 
     """
 
@@ -6792,7 +6832,7 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
     @property
     def WorkOrderType(self):
-        """服务工单类型
+        r"""服务工单类型
         :rtype: list of str
         """
         return self._WorkOrderType
@@ -6803,7 +6843,7 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
     @property
     def BeginDateTime(self):
-        """要导出的工单的起始时间
+        r"""要导出的工单的起始时间
         :rtype: str
         """
         return self._BeginDateTime
@@ -6814,7 +6854,7 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
     @property
     def EndDateTime(self):
-        """要导出的工单的结束时间
+        r"""要导出的工单的结束时间
         :rtype: str
         """
         return self._EndDateTime
@@ -6839,7 +6879,7 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
 
 class ExportCustomerWorkOrderDetailResponse(AbstractModel):
-    """ExportCustomerWorkOrderDetail返回参数结构体
+    r"""ExportCustomerWorkOrderDetail返回参数结构体
 
     """
 
@@ -6855,7 +6895,7 @@ class ExportCustomerWorkOrderDetailResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """返回下载地址
+        r"""返回下载地址
         :rtype: str
         """
         return self._DownloadUrl
@@ -6866,7 +6906,7 @@ class ExportCustomerWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6882,7 +6922,7 @@ class ExportCustomerWorkOrderDetailResponse(AbstractModel):
 
 
 class ExpressDelivery(AbstractModel):
-    """快递寄件信息,快递寄件必填
+    r"""快递寄件信息,快递寄件必填
 
     """
 
@@ -6898,7 +6938,7 @@ class ExpressDelivery(AbstractModel):
 
     @property
     def LogisticsCompany(self):
-        """物流公司
+        r"""物流公司
         :rtype: str
         """
         return self._LogisticsCompany
@@ -6909,7 +6949,7 @@ class ExpressDelivery(AbstractModel):
 
     @property
     def ExpressNumber(self):
-        """快递单号
+        r"""快递单号
         :rtype: str
         """
         return self._ExpressNumber
@@ -6933,7 +6973,7 @@ class ExpressDelivery(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
     若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
@@ -6952,7 +6992,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。	
+        r"""需要过滤的字段。	
         :rtype: str
         """
         return self._Name
@@ -6963,7 +7003,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。	
+        r"""字段的过滤值。	
         :rtype: list of str
         """
         return self._Values
@@ -6987,7 +7027,7 @@ class Filter(AbstractModel):
 
 
 class Idc(AbstractModel):
-    """机房信息
+    r"""机房信息
 
     """
 
@@ -7006,7 +7046,7 @@ class Idc(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -7017,7 +7057,7 @@ class Idc(AbstractModel):
 
     @property
     def IdcId(self):
-        """机房ID
+        r"""机房ID
         :rtype: int
         """
         return self._IdcId
@@ -7028,7 +7068,7 @@ class Idc(AbstractModel):
 
     @property
     def IdcUnitSet(self):
-        """机房管理单元详情列表
+        r"""机房管理单元详情列表
         :rtype: list of IdcUnit
         """
         return self._IdcUnitSet
@@ -7058,7 +7098,7 @@ class Idc(AbstractModel):
 
 
 class IdcUnit(AbstractModel):
-    """机房管理单元
+    r"""机房管理单元
 
     """
 
@@ -7077,7 +7117,7 @@ class IdcUnit(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机房管理单元 ID
+        r"""机房管理单元 ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -7088,7 +7128,7 @@ class IdcUnit(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """机房管理单元名称
+        r"""机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -7099,7 +7139,7 @@ class IdcUnit(AbstractModel):
 
     @property
     def CageSet(self):
-        """围笼列表
+        r"""围笼列表
         :rtype: list of Cage
         """
         return self._CageSet
@@ -7129,7 +7169,7 @@ class IdcUnit(AbstractModel):
 
 
 class IdcUnitInfo(AbstractModel):
-    """机房管理单元
+    r"""机房管理单元
 
     """
 
@@ -7154,7 +7194,7 @@ class IdcUnitInfo(AbstractModel):
 
     @property
     def Address(self):
-        """机房管理单元地址
+        r"""机房管理单元地址
         :rtype: str
         """
         return self._Address
@@ -7165,7 +7205,7 @@ class IdcUnitInfo(AbstractModel):
 
     @property
     def Operator(self):
-        """机房经理
+        r"""机房经理
         :rtype: str
         """
         return self._Operator
@@ -7176,7 +7216,7 @@ class IdcUnitInfo(AbstractModel):
 
     @property
     def TelNumber(self):
-        """联系电话
+        r"""联系电话
         :rtype: str
         """
         return self._TelNumber
@@ -7187,7 +7227,7 @@ class IdcUnitInfo(AbstractModel):
 
     @property
     def AssetManager(self):
-        """资产管理员
+        r"""资产管理员
         :rtype: str
         """
         return self._AssetManager
@@ -7198,7 +7238,7 @@ class IdcUnitInfo(AbstractModel):
 
     @property
     def AssetManagerTelNumber(self):
-        """资产管理员电话
+        r"""资产管理员电话
         :rtype: str
         """
         return self._AssetManagerTelNumber
@@ -7225,7 +7265,7 @@ class IdcUnitInfo(AbstractModel):
 
 
 class LogisticsReceipt(AbstractModel):
-    """物流上门收货信息
+    r"""物流上门收货信息
 
     """
 
@@ -7256,7 +7296,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def LogisticsArrivalTime(self):
-        """物流预计上门时间
+        r"""物流预计上门时间
         :rtype: str
         """
         return self._LogisticsArrivalTime
@@ -7267,7 +7307,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def LogisticsCompany(self):
-        """物流公司名称
+        r"""物流公司名称
         :rtype: str
         """
         return self._LogisticsCompany
@@ -7278,7 +7318,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def LogisticsStuff(self):
-        """物流联系人
+        r"""物流联系人
         :rtype: str
         """
         return self._LogisticsStuff
@@ -7289,7 +7329,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def LogisticsStuffContact(self):
-        """物流电话
+        r"""物流电话
         :rtype: str
         """
         return self._LogisticsStuffContact
@@ -7300,7 +7340,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def ReceiverContact(self):
-        """收货人电话
+        r"""收货人电话
         :rtype: str
         """
         return self._ReceiverContact
@@ -7311,7 +7351,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def ReceiverName(self):
-        """收货人姓名
+        r"""收货人姓名
         :rtype: str
         """
         return self._ReceiverName
@@ -7322,7 +7362,7 @@ class LogisticsReceipt(AbstractModel):
 
     @property
     def ShippingAddress(self):
-        """收货地址
+        r"""收货地址
         :rtype: str
         """
         return self._ShippingAddress
@@ -7351,7 +7391,7 @@ class LogisticsReceipt(AbstractModel):
 
 
 class ModelEvaluationBaseInfo(AbstractModel):
-    """设备评估工单基本信息
+    r"""设备评估工单基本信息
 
     """
 
@@ -7373,7 +7413,7 @@ class ModelEvaluationBaseInfo(AbstractModel):
 
     @property
     def CustomerName(self):
-        """客户名称
+        r"""客户名称
         :rtype: str
         """
         return self._CustomerName
@@ -7384,7 +7424,7 @@ class ModelEvaluationBaseInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        """server 服务器  netDevice 网络设备
+        r"""server 服务器  netDevice 网络设备
         :rtype: str
         """
         return self._DeviceType
@@ -7395,7 +7435,7 @@ class ModelEvaluationBaseInfo(AbstractModel):
 
     @property
     def CampusName(self):
-        """园区名称
+        r"""园区名称
         :rtype: str
         """
         return self._CampusName
@@ -7406,7 +7446,7 @@ class ModelEvaluationBaseInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -7432,7 +7472,7 @@ class ModelEvaluationBaseInfo(AbstractModel):
 
 
 class ModelVersion(AbstractModel):
-    """型号以及版本号
+    r"""型号以及版本号
 
     """
 
@@ -7448,7 +7488,7 @@ class ModelVersion(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名称
+        r"""型号名称
         :rtype: str
         """
         return self._DevModel
@@ -7459,7 +7499,7 @@ class ModelVersion(AbstractModel):
 
     @property
     def Version(self):
-        """版本
+        r"""版本
         :rtype: str
         """
         return self._Version
@@ -7483,7 +7523,7 @@ class ModelVersion(AbstractModel):
 
 
 class ModelVersionCount(AbstractModel):
-    """型号和对应的版本数量
+    r"""型号和对应的版本数量
 
     """
 
@@ -7499,7 +7539,7 @@ class ModelVersionCount(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名称
+        r"""型号名称
         :rtype: str
         """
         return self._DevModel
@@ -7510,7 +7550,7 @@ class ModelVersionCount(AbstractModel):
 
     @property
     def VersionCount(self):
-        """版本数量
+        r"""版本数量
         :rtype: int
         """
         return self._VersionCount
@@ -7534,7 +7574,7 @@ class ModelVersionCount(AbstractModel):
 
 
 class ModelVersionDetail(AbstractModel):
-    """带有园区评估记录的型号详情
+    r"""带有园区评估记录的型号详情
 
     """
 
@@ -7556,7 +7596,7 @@ class ModelVersionDetail(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -7567,7 +7607,7 @@ class ModelVersionDetail(AbstractModel):
 
     @property
     def CheckResult(self):
-        """0 代表在当前园区没评估过，1 代表完全满足IDC准入标准 2 代表存在托管风险 3 代表不满足IDC准入标准
+        r"""0 代表在当前园区没评估过，1 代表完全满足IDC准入标准 2 代表存在托管风险 3 代表不满足IDC准入标准
         :rtype: int
         """
         return self._CheckResult
@@ -7578,7 +7618,7 @@ class ModelVersionDetail(AbstractModel):
 
     @property
     def OptionSet(self):
-        """型号各个配置项的详情
+        r"""型号各个配置项的详情
         :rtype: list of TemplateOption
         """
         return self._OptionSet
@@ -7589,7 +7629,7 @@ class ModelVersionDetail(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """设备型号名称及版本
+        r"""设备型号名称及版本
         :rtype: str
         """
         return self._ModelVersion
@@ -7620,7 +7660,7 @@ class ModelVersionDetail(AbstractModel):
 
 
 class ModifyWorkOrderTypeCollectFlagRequest(AbstractModel):
-    """ModifyWorkOrderTypeCollectFlag请求参数结构体
+    r"""ModifyWorkOrderTypeCollectFlag请求参数结构体
 
     """
 
@@ -7633,7 +7673,7 @@ class ModifyWorkOrderTypeCollectFlagRequest(AbstractModel):
 
     @property
     def WorkOrderType(self):
-        """工单类型的唯一英文标识
+        r"""工单类型的唯一英文标识
         :rtype: str
         """
         return self._WorkOrderType
@@ -7656,7 +7696,7 @@ class ModifyWorkOrderTypeCollectFlagRequest(AbstractModel):
 
 
 class ModifyWorkOrderTypeCollectFlagResponse(AbstractModel):
-    """ModifyWorkOrderTypeCollectFlag返回参数结构体
+    r"""ModifyWorkOrderTypeCollectFlag返回参数结构体
 
     """
 
@@ -7672,7 +7712,7 @@ class ModifyWorkOrderTypeCollectFlagResponse(AbstractModel):
 
     @property
     def CurrentCollectFlag(self):
-        """工单类型当前的收藏状态
+        r"""工单类型当前的收藏状态
         :rtype: bool
         """
         return self._CurrentCollectFlag
@@ -7683,7 +7723,7 @@ class ModifyWorkOrderTypeCollectFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7699,7 +7739,7 @@ class ModifyWorkOrderTypeCollectFlagResponse(AbstractModel):
 
 
 class NetDeviceModel(AbstractModel):
-    """网络设备型号详情
+    r"""网络设备型号详情
 
     """
 
@@ -7772,7 +7812,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -7783,7 +7823,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """型号和版本的组合名称
+        r"""型号和版本的组合名称
         :rtype: str
         """
         return self._ModelVersion
@@ -7794,7 +7834,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名
+        r"""型号名
         :rtype: str
         """
         return self._DevModel
@@ -7805,7 +7845,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def DevWidth(self):
-        """宽度
+        r"""宽度
         :rtype: str
         """
         return self._DevWidth
@@ -7816,7 +7856,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def DevDepth(self):
-        """深度
+        r"""深度
         :rtype: str
         """
         return self._DevDepth
@@ -7827,7 +7867,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def DevWeight(self):
-        """重量
+        r"""重量
         :rtype: str
         """
         return self._DevWeight
@@ -7838,7 +7878,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def MountEar(self):
-        """是否携带挂耳
+        r"""是否携带挂耳
         :rtype: str
         """
         return self._MountEar
@@ -7849,7 +7889,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def AccordCCC(self):
-        """是否符合CCC认证
+        r"""是否符合CCC认证
         :rtype: str
         """
         return self._AccordCCC
@@ -7860,7 +7900,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PassNetwork(self):
-        """是否通过入网许可认证
+        r"""是否通过入网许可认证
         :rtype: str
         """
         return self._PassNetwork
@@ -7871,7 +7911,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PowerportType(self):
-        """电源接口型号
+        r"""电源接口型号
         :rtype: str
         """
         return self._PowerportType
@@ -7882,7 +7922,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PowerModule(self):
-        """电源模块
+        r"""电源模块
         :rtype: str
         """
         return self._PowerModule
@@ -7893,7 +7933,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PowermoduleNum(self):
-        """电源模块数量
+        r"""电源模块数量
         :rtype: str
         """
         return self._PowermoduleNum
@@ -7904,7 +7944,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PowermodulePosition(self):
-        """电源模块位置
+        r"""电源模块位置
         :rtype: str
         """
         return self._PowermodulePosition
@@ -7915,7 +7955,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def HighVoltageAdapt(self):
-        """高压直流自适应
+        r"""高压直流自适应
         :rtype: str
         """
         return self._HighVoltageAdapt
@@ -7926,7 +7966,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def PowerEnergy(self):
-        """实际工作功耗(W)
+        r"""实际工作功耗(W)
         :rtype: str
         """
         return self._PowerEnergy
@@ -7937,7 +7977,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def InwindPosition(self):
-        """进风口位置
+        r"""进风口位置
         :rtype: str
         """
         return self._InwindPosition
@@ -7948,7 +7988,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def OutwindPosition(self):
-        """出风口位置
+        r"""出风口位置
         :rtype: str
         """
         return self._OutwindPosition
@@ -7959,7 +7999,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def BusinessPortPosition(self):
-        """业务端口位置
+        r"""业务端口位置
         :rtype: str
         """
         return self._BusinessPortPosition
@@ -7970,7 +8010,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def LineManager(self):
-        """带有理线器
+        r"""带有理线器
         :rtype: str
         """
         return self._LineManager
@@ -7981,7 +8021,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def CheckResult(self):
-        """0 代表在当前园区没评估过，1 代表完全满足IDC准入标准  2 代表存在托管风险  3 代表不满足IDC准入标准
+        r"""0 代表在当前园区没评估过，1 代表完全满足IDC准入标准  2 代表存在托管风险  3 代表不满足IDC准入标准
         :rtype: int
         """
         return self._CheckResult
@@ -7992,7 +8032,7 @@ class NetDeviceModel(AbstractModel):
 
     @property
     def DevHeight(self):
-        """设备高度
+        r"""设备高度
         :rtype: str
         """
         return self._DevHeight
@@ -8035,7 +8075,7 @@ class NetDeviceModel(AbstractModel):
 
 
 class NetReceivingInfo(AbstractModel):
-    """网络设备收货详情
+    r"""网络设备收货详情
 
     """
 
@@ -8057,7 +8097,7 @@ class NetReceivingInfo(AbstractModel):
 
     @property
     def DeviceSn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._DeviceSn
@@ -8068,7 +8108,7 @@ class NetReceivingInfo(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """设备型号-版本
+        r"""设备型号-版本
         :rtype: str
         """
         return self._ModelVersion
@@ -8079,7 +8119,7 @@ class NetReceivingInfo(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -8090,7 +8130,7 @@ class NetReceivingInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """厂商
+        r"""厂商
         :rtype: str
         """
         return self._Manufacturer
@@ -8116,7 +8156,7 @@ class NetReceivingInfo(AbstractModel):
 
 
 class OptionValueItem(AbstractModel):
-    """型号选项下拉框中的选项值
+    r"""型号选项下拉框中的选项值
 
     """
 
@@ -8132,7 +8172,7 @@ class OptionValueItem(AbstractModel):
 
     @property
     def OptionValue(self):
-        """选项的值
+        r"""选项的值
         :rtype: str
         """
         return self._OptionValue
@@ -8143,7 +8183,7 @@ class OptionValueItem(AbstractModel):
 
     @property
     def Selected(self):
-        """是否默认选中
+        r"""是否默认选中
         :rtype: bool
         """
         return self._Selected
@@ -8167,7 +8207,7 @@ class OptionValueItem(AbstractModel):
 
 
 class OrderStep(AbstractModel):
-    """工单详情中的工单流程步骤
+    r"""工单详情中的工单流程步骤
 
     """
 
@@ -8192,7 +8232,7 @@ class OrderStep(AbstractModel):
 
     @property
     def StepName(self):
-        """步骤名
+        r"""步骤名
         :rtype: str
         """
         return self._StepName
@@ -8203,7 +8243,7 @@ class OrderStep(AbstractModel):
 
     @property
     def OwnerName(self):
-        """处理人
+        r"""处理人
         :rtype: str
         """
         return self._OwnerName
@@ -8214,7 +8254,7 @@ class OrderStep(AbstractModel):
 
     @property
     def OwnerPhone(self):
-        """处理人手机号
+        r"""处理人手机号
         :rtype: str
         """
         return self._OwnerPhone
@@ -8225,7 +8265,7 @@ class OrderStep(AbstractModel):
 
     @property
     def FinishTime(self):
-        """完成时间
+        r"""完成时间
         :rtype: str
         """
         return self._FinishTime
@@ -8236,7 +8276,7 @@ class OrderStep(AbstractModel):
 
     @property
     def StepStatus(self):
-        """此步骤状态
+        r"""此步骤状态
         :rtype: str
         """
         return self._StepStatus
@@ -8263,7 +8303,7 @@ class OrderStep(AbstractModel):
 
 
 class OtherDevReceivingInfo(AbstractModel):
-    """其他设备收货信息
+    r"""其他设备收货信息
 
     """
 
@@ -8285,7 +8325,7 @@ class OtherDevReceivingInfo(AbstractModel):
 
     @property
     def DeviceSn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._DeviceSn
@@ -8296,7 +8336,7 @@ class OtherDevReceivingInfo(AbstractModel):
 
     @property
     def TypeName(self):
-        """'USB', '移动硬盘', '网络设备板卡', '网络设备模块', '服务器硬盘', '服务器内存', '其他'
+        r"""'USB', '移动硬盘', '网络设备板卡', '网络设备模块', '服务器硬盘', '服务器内存', '其他'
         :rtype: str
         """
         return self._TypeName
@@ -8307,7 +8347,7 @@ class OtherDevReceivingInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """厂商
+        r"""厂商
         :rtype: str
         """
         return self._Manufacturer
@@ -8318,7 +8358,7 @@ class OtherDevReceivingInfo(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -8344,7 +8384,7 @@ class OtherDevReceivingInfo(AbstractModel):
 
 
 class Personnel(AbstractModel):
-    """到访人员
+    r"""到访人员
 
     """
 
@@ -8385,7 +8425,7 @@ OTHER: 其他
 
     @property
     def IDCardNumber(self):
-        """证件号码
+        r"""证件号码
         :rtype: str
         """
         return self._IDCardNumber
@@ -8396,7 +8436,7 @@ OTHER: 其他
 
     @property
     def IDCardType(self):
-        """证件类型。对应关系如下：IDENTITY_CARD: 身份证,
+        r"""证件类型。对应关系如下：IDENTITY_CARD: 身份证,
 HONG_KONG_AND_MACAO_PASS: 港澳通行证',
 PASSPORT: 护照,
 DRIVING_LICENSE: 驾照,
@@ -8411,7 +8451,7 @@ OTHER: 其他
 
     @property
     def Company(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._Company
@@ -8422,7 +8462,7 @@ OTHER: 其他
 
     @property
     def LanguageType(self):
-        """语言。对应关系：ENGLISH: 英文, CHINESE: 中文
+        r"""语言。对应关系：ENGLISH: 英文, CHINESE: 中文
         :rtype: str
         """
         return self._LanguageType
@@ -8433,7 +8473,7 @@ OTHER: 其他
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -8444,7 +8484,7 @@ OTHER: 其他
 
     @property
     def TelNumber(self):
-        """电话
+        r"""电话
         :rtype: str
         """
         return self._TelNumber
@@ -8455,7 +8495,7 @@ OTHER: 其他
 
     @property
     def Position(self):
-        """职位
+        r"""职位
         :rtype: str
         """
         return self._Position
@@ -8466,7 +8506,7 @@ OTHER: 其他
 
     @property
     def Wechat(self):
-        """微信
+        r"""微信
         :rtype: str
         """
         return self._Wechat
@@ -8477,7 +8517,7 @@ OTHER: 其他
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -8508,7 +8548,7 @@ OTHER: 其他
 
 
 class PersonnelVisitBaseInfo(AbstractModel):
-    """人员到访工单基本信息
+    r"""人员到访工单基本信息
 
     """
 
@@ -8536,7 +8576,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def IdcName(self):
-        """机房名称
+        r"""机房名称
         :rtype: str
         """
         return self._IdcName
@@ -8547,7 +8587,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def VisitReason(self):
-        """到访原因。到访原因，映射关系：DEVICE_MAINTENANCE 设备维护 DEVICE_MOVE 设备收货上下架 CHECK 盘点 OTHER 其他
+        r"""到访原因。到访原因，映射关系：DEVICE_MAINTENANCE 设备维护 DEVICE_MOVE 设备收货上下架 CHECK 盘点 OTHER 其他
         :rtype: list of str
         """
         return self._VisitReason
@@ -8558,7 +8598,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def VisitRemark(self):
-        """到访原因
+        r"""到访原因
         :rtype: str
         """
         return self._VisitRemark
@@ -8569,7 +8609,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def EnterStartTime(self):
-        """到访结束时间
+        r"""到访结束时间
         :rtype: str
         """
         return self._EnterStartTime
@@ -8580,7 +8620,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def EnterEndTime(self):
-        """到访开始时间
+        r"""到访开始时间
         :rtype: str
         """
         return self._EnterEndTime
@@ -8591,7 +8631,7 @@ class PersonnelVisitBaseInfo(AbstractModel):
 
     @property
     def IdcUnitNameList(self):
-        """机房管理单元列表
+        r"""机房管理单元列表
         :rtype: list of str
         """
         return self._IdcUnitNameList
@@ -8618,8 +8658,74 @@ class PersonnelVisitBaseInfo(AbstractModel):
         
 
 
+class PersonnelVisitCar(AbstractModel):
+    r"""人员到访时的车辆信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CarNumber: 车牌号
+        :type CarNumber: str
+        :param _DriverName: 驾驶人姓名
+        :type DriverName: str
+        :param _DriverNumber: 驾驶人身份证号
+        :type DriverNumber: str
+        """
+        self._CarNumber = None
+        self._DriverName = None
+        self._DriverNumber = None
+
+    @property
+    def CarNumber(self):
+        r"""车牌号
+        :rtype: str
+        """
+        return self._CarNumber
+
+    @CarNumber.setter
+    def CarNumber(self, CarNumber):
+        self._CarNumber = CarNumber
+
+    @property
+    def DriverName(self):
+        r"""驾驶人姓名
+        :rtype: str
+        """
+        return self._DriverName
+
+    @DriverName.setter
+    def DriverName(self, DriverName):
+        self._DriverName = DriverName
+
+    @property
+    def DriverNumber(self):
+        r"""驾驶人身份证号
+        :rtype: str
+        """
+        return self._DriverNumber
+
+    @DriverNumber.setter
+    def DriverNumber(self, DriverNumber):
+        self._DriverNumber = DriverNumber
+
+
+    def _deserialize(self, params):
+        self._CarNumber = params.get("CarNumber")
+        self._DriverName = params.get("DriverName")
+        self._DriverNumber = params.get("DriverNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Position(AbstractModel):
-    """机位信息
+    r"""机位信息
 
     """
 
@@ -8671,7 +8777,7 @@ class Position(AbstractModel):
 
     @property
     def PositionId(self):
-        """机位ID
+        r"""机位ID
         :rtype: int
         """
         return self._PositionId
@@ -8682,7 +8788,7 @@ class Position(AbstractModel):
 
     @property
     def Height(self):
-        """机位高度
+        r"""机位高度
         :rtype: int
         """
         return self._Height
@@ -8693,7 +8799,7 @@ class Position(AbstractModel):
 
     @property
     def PositionCode(self):
-        """机位编号
+        r"""机位编号
         :rtype: str
         """
         return self._PositionCode
@@ -8704,7 +8810,7 @@ class Position(AbstractModel):
 
     @property
     def PositionStatus(self):
-        """机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留
+        r"""机位状态,0 空闲,1 已用,2 不可用,3 预占用,4 预留
         :rtype: int
         """
         return self._PositionStatus
@@ -8715,7 +8821,7 @@ class Position(AbstractModel):
 
     @property
     def PlanDeviceType(self):
-        """设备规划类型ID
+        r"""设备规划类型ID
         :rtype: int
         """
         return self._PlanDeviceType
@@ -8726,7 +8832,7 @@ class Position(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机位所属的机房管理单元ID
+        r"""机位所属的机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -8737,7 +8843,7 @@ class Position(AbstractModel):
 
     @property
     def RackId(self):
-        """机位所属的机架ID
+        r"""机位所属的机架ID
         :rtype: int
         """
         return self._RackId
@@ -8748,7 +8854,7 @@ class Position(AbstractModel):
 
     @property
     def RackName(self):
-        """机位所属的机架名称
+        r"""机位所属的机架名称
         :rtype: str
         """
         return self._RackName
@@ -8759,7 +8865,7 @@ class Position(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """机位所属的机房管理单元名称
+        r"""机位所属的机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -8770,7 +8876,7 @@ class Position(AbstractModel):
 
     @property
     def IdcName(self):
-        """机位所属的机房名称
+        r"""机位所属的机房名称
         :rtype: str
         """
         return self._IdcName
@@ -8781,7 +8887,7 @@ class Position(AbstractModel):
 
     @property
     def IdcId(self):
-        """机位所属的机房ID
+        r"""机位所属的机房ID
         :rtype: int
         """
         return self._IdcId
@@ -8792,7 +8898,7 @@ class Position(AbstractModel):
 
     @property
     def Sn(self):
-        """机位上如果有设备，该字段代表设备的 SN 码，如果是空闲机位，不返回该字段。
+        r"""机位上如果有设备，该字段代表设备的 SN 码，如果是空闲机位，不返回该字段。
         :rtype: str
         """
         return self._Sn
@@ -8803,7 +8909,7 @@ class Position(AbstractModel):
 
     @property
     def AssetId(self):
-        """机位上如果有设备，该字段代表设备的固资号，如果是空闲机位，不返回该字段。
+        r"""机位上如果有设备，该字段代表设备的固资号，如果是空闲机位，不返回该字段。
         :rtype: str
         """
         return self._AssetId
@@ -8814,7 +8920,7 @@ class Position(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """机位上如果有设备，该字段代表设备的设备型号加版本号，如果是空闲机位，不返回该字段。
+        r"""机位上如果有设备，该字段代表设备的设备型号加版本号，如果是空闲机位，不返回该字段。
         :rtype: str
         """
         return self._ModelVersion
@@ -8850,7 +8956,7 @@ class Position(AbstractModel):
 
 
 class PositionStatusItem(AbstractModel):
-    """机位状态及对应的数量
+    r"""机位状态及对应的数量
 
     """
 
@@ -8866,7 +8972,7 @@ class PositionStatusItem(AbstractModel):
 
     @property
     def PositionStatus(self):
-        """状态值
+        r"""状态值
         :rtype: int
         """
         return self._PositionStatus
@@ -8877,7 +8983,7 @@ class PositionStatusItem(AbstractModel):
 
     @property
     def Count(self):
-        """对应的机位数量
+        r"""对应的机位数量
         :rtype: int
         """
         return self._Count
@@ -8901,7 +9007,7 @@ class PositionStatusItem(AbstractModel):
 
 
 class PowerOffConfirm(AbstractModel):
-    """关电确认信息
+    r"""关电确认信息
 
     """
 
@@ -8917,7 +9023,7 @@ class PowerOffConfirm(AbstractModel):
 
     @property
     def ConfirmContact(self):
-        """联系人
+        r"""联系人
         :rtype: str
         """
         return self._ConfirmContact
@@ -8928,7 +9034,7 @@ class PowerOffConfirm(AbstractModel):
 
     @property
     def ConfirmContactNumber(self):
-        """联系人电话
+        r"""联系人电话
         :rtype: str
         """
         return self._ConfirmContactNumber
@@ -8952,7 +9058,7 @@ class PowerOffConfirm(AbstractModel):
 
 
 class Rack(AbstractModel):
-    """机架的信息
+    r"""机架的信息
 
     """
 
@@ -8989,7 +9095,7 @@ class Rack(AbstractModel):
 
     @property
     def RackName(self):
-        """机架名称
+        r"""机架名称
         :rtype: str
         """
         return self._RackName
@@ -9000,7 +9106,7 @@ class Rack(AbstractModel):
 
     @property
     def IdcUnitId(self):
-        """机架所属的机房管理单元ID
+        r"""机架所属的机房管理单元ID
         :rtype: int
         """
         return self._IdcUnitId
@@ -9011,7 +9117,7 @@ class Rack(AbstractModel):
 
     @property
     def IdcUnitName(self):
-        """机架所属的机房管理单元名称
+        r"""机架所属的机房管理单元名称
         :rtype: str
         """
         return self._IdcUnitName
@@ -9022,7 +9128,7 @@ class Rack(AbstractModel):
 
     @property
     def IdcName(self):
-        """机架所属的机房名称
+        r"""机架所属的机房名称
         :rtype: str
         """
         return self._IdcName
@@ -9033,7 +9139,7 @@ class Rack(AbstractModel):
 
     @property
     def IdcId(self):
-        """机架所属的机房ID
+        r"""机架所属的机房ID
         :rtype: int
         """
         return self._IdcId
@@ -9044,7 +9150,7 @@ class Rack(AbstractModel):
 
     @property
     def RackId(self):
-        """机架ID
+        r"""机架ID
         :rtype: int
         """
         return self._RackId
@@ -9055,7 +9161,7 @@ class Rack(AbstractModel):
 
     @property
     def IsPowerOn(self):
-        """是否开电
+        r"""是否开电
         :rtype: bool
         """
         return self._IsPowerOn
@@ -9066,7 +9172,7 @@ class Rack(AbstractModel):
 
     @property
     def RackOpenTime(self):
-        """机架最近一次开电时间，YYYY-MM-DD 格式
+        r"""机架最近一次开电时间，YYYY-MM-DD 格式
         :rtype: str
         """
         return self._RackOpenTime
@@ -9077,7 +9183,7 @@ class Rack(AbstractModel):
 
     @property
     def HostingType(self):
-        """托管类型
+        r"""托管类型
         :rtype: str
         """
         return self._HostingType
@@ -9108,7 +9214,7 @@ class Rack(AbstractModel):
 
 
 class RackUsage(AbstractModel):
-    """机架用量
+    r"""机架用量
 
     """
 
@@ -9136,7 +9242,7 @@ class RackUsage(AbstractModel):
 
     @property
     def RackId(self):
-        """机架ID
+        r"""机架ID
         :rtype: int
         """
         return self._RackId
@@ -9147,7 +9253,7 @@ class RackUsage(AbstractModel):
 
     @property
     def UsedNum(self):
-        """已使用的机位数量
+        r"""已使用的机位数量
         :rtype: int
         """
         return self._UsedNum
@@ -9158,7 +9264,7 @@ class RackUsage(AbstractModel):
 
     @property
     def UnusedNum(self):
-        """空闲机位数量
+        r"""空闲机位数量
         :rtype: int
         """
         return self._UnusedNum
@@ -9169,7 +9275,7 @@ class RackUsage(AbstractModel):
 
     @property
     def RackShortName(self):
-        """机架简称
+        r"""机架简称
         :rtype: str
         """
         return self._RackShortName
@@ -9180,7 +9286,7 @@ class RackUsage(AbstractModel):
 
     @property
     def TotalNum(self):
-        """机位总数
+        r"""机位总数
         :rtype: int
         """
         return self._TotalNum
@@ -9191,7 +9297,7 @@ class RackUsage(AbstractModel):
 
     @property
     def UsedRate(self):
-        """机位使用率
+        r"""机位使用率
         :rtype: float
         """
         return self._UsedRate
@@ -9219,7 +9325,7 @@ class RackUsage(AbstractModel):
 
 
 class SelfOperation(AbstractModel):
-    """客户自行上门信息
+    r"""客户自行上门信息
 
     """
 
@@ -9249,7 +9355,7 @@ OTHER: 其他
 
     @property
     def StuffContact(self):
-        """联系人员电话
+        r"""联系人员电话
         :rtype: str
         """
         return self._StuffContact
@@ -9260,7 +9366,7 @@ OTHER: 其他
 
     @property
     def StuffIDCard(self):
-        """证件号码
+        r"""证件号码
         :rtype: str
         """
         return self._StuffIDCard
@@ -9271,7 +9377,7 @@ OTHER: 其他
 
     @property
     def StuffName(self):
-        """人员姓名
+        r"""人员姓名
         :rtype: str
         """
         return self._StuffName
@@ -9282,7 +9388,7 @@ OTHER: 其他
 
     @property
     def OperationTime(self):
-        """上门时间
+        r"""上门时间
         :rtype: str
         """
         return self._OperationTime
@@ -9293,7 +9399,7 @@ OTHER: 其他
 
     @property
     def IDCardType(self):
-        """证件类型，非必传，默认为IDENTITY_CARD。
+        r"""证件类型，非必传，默认为IDENTITY_CARD。
 对应关系如下：IDENTITY_CARD: 身份证,
 HONG_KONG_AND_MACAO_PASS: 港澳通行证',
 PASSPORT: 护照,
@@ -9325,7 +9431,7 @@ OTHER: 其他
 
 
 class ServerModel(AbstractModel):
-    """服务器设备型号
+    r"""服务器设备型号
 
     """
 
@@ -9392,7 +9498,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevModel(self):
-        """型号名称
+        r"""型号名称
         :rtype: str
         """
         return self._DevModel
@@ -9403,7 +9509,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevNode(self):
-        """节点数
+        r"""节点数
         :rtype: str
         """
         return self._DevNode
@@ -9414,7 +9520,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevHeight(self):
-        """设备高度
+        r"""设备高度
         :rtype: str
         """
         return self._DevHeight
@@ -9425,7 +9531,7 @@ class ServerModel(AbstractModel):
 
     @property
     def PowerEnergy(self):
-        """功耗
+        r"""功耗
         :rtype: str
         """
         return self._PowerEnergy
@@ -9436,7 +9542,7 @@ class ServerModel(AbstractModel):
 
     @property
     def PowerportType(self):
-        """电源接口型号
+        r"""电源接口型号
         :rtype: str
         """
         return self._PowerportType
@@ -9447,7 +9553,7 @@ class ServerModel(AbstractModel):
 
     @property
     def PowermoduleNum(self):
-        """电源模块数量
+        r"""电源模块数量
         :rtype: str
         """
         return self._PowermoduleNum
@@ -9458,7 +9564,7 @@ class ServerModel(AbstractModel):
 
     @property
     def InwindPosition(self):
-        """进风口位置
+        r"""进风口位置
         :rtype: str
         """
         return self._InwindPosition
@@ -9469,7 +9575,7 @@ class ServerModel(AbstractModel):
 
     @property
     def OutwindPosition(self):
-        """出风口位置
+        r"""出风口位置
         :rtype: str
         """
         return self._OutwindPosition
@@ -9480,7 +9586,7 @@ class ServerModel(AbstractModel):
 
     @property
     def NetportPosition(self):
-        """网卡接口位置
+        r"""网卡接口位置
         :rtype: str
         """
         return self._NetportPosition
@@ -9491,7 +9597,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevWidth(self):
-        """宽度
+        r"""宽度
         :rtype: str
         """
         return self._DevWidth
@@ -9502,7 +9608,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevDepth(self):
-        """深度
+        r"""深度
         :rtype: str
         """
         return self._DevDepth
@@ -9513,7 +9619,7 @@ class ServerModel(AbstractModel):
 
     @property
     def DevWeight(self):
-        """重量
+        r"""重量
         :rtype: str
         """
         return self._DevWeight
@@ -9524,7 +9630,7 @@ class ServerModel(AbstractModel):
 
     @property
     def PowerModule(self):
-        """电源模块
+        r"""电源模块
         :rtype: str
         """
         return self._PowerModule
@@ -9535,7 +9641,7 @@ class ServerModel(AbstractModel):
 
     @property
     def PowermodulePosition(self):
-        """电源模块位置
+        r"""电源模块位置
         :rtype: str
         """
         return self._PowermodulePosition
@@ -9546,7 +9652,7 @@ class ServerModel(AbstractModel):
 
     @property
     def NetportType(self):
-        """网络接口类型
+        r"""网络接口类型
         :rtype: str
         """
         return self._NetportType
@@ -9557,7 +9663,7 @@ class ServerModel(AbstractModel):
 
     @property
     def NetSpeed(self):
-        """网卡速率
+        r"""网卡速率
         :rtype: str
         """
         return self._NetSpeed
@@ -9568,7 +9674,7 @@ class ServerModel(AbstractModel):
 
     @property
     def CheckResult(self):
-        """0 代表在当前园区没评估过，1 代表完全满足IDC准入标准 2 代表存在托管风险 3 代表不满足IDC准入标准
+        r"""0 代表在当前园区没评估过，1 代表完全满足IDC准入标准 2 代表存在托管风险 3 代表不满足IDC准入标准
         :rtype: int
         """
         return self._CheckResult
@@ -9579,7 +9685,7 @@ class ServerModel(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -9590,7 +9696,7 @@ class ServerModel(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """型号和版本的组合名称
+        r"""型号和版本的组合名称
         :rtype: str
         """
         return self._ModelVersion
@@ -9631,7 +9737,7 @@ class ServerModel(AbstractModel):
 
 
 class ServerReceivingInfo(AbstractModel):
-    """服务器收货信息
+    r"""服务器收货信息
 
     """
 
@@ -9662,7 +9768,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def DeviceSn(self):
-        """设备sn
+        r"""设备sn
         :rtype: str
         """
         return self._DeviceSn
@@ -9673,7 +9779,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def ModelVersion(self):
-        """设备型号-版本
+        r"""设备型号-版本
         :rtype: str
         """
         return self._ModelVersion
@@ -9684,7 +9790,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def Need10GbSlot(self):
-        """需要万兆机位
+        r"""需要万兆机位
         :rtype: str
         """
         return self._Need10GbSlot
@@ -9695,7 +9801,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def NeedDCPower(self):
-        """需要直流电
+        r"""需要直流电
         :rtype: str
         """
         return self._NeedDCPower
@@ -9706,7 +9812,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def NeedExtranet(self):
-        """需要外网
+        r"""需要外网
         :rtype: str
         """
         return self._NeedExtranet
@@ -9717,7 +9823,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def NeedVirtualization(self):
-        """需要虚拟化
+        r"""需要虚拟化
         :rtype: str
         """
         return self._NeedVirtualization
@@ -9728,7 +9834,7 @@ class ServerReceivingInfo(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -9757,7 +9863,7 @@ class ServerReceivingInfo(AbstractModel):
 
 
 class TemplateOption(AbstractModel):
-    """型号模板的选项
+    r"""型号模板的选项
 
     """
 
@@ -9800,7 +9906,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def OptionName(self):
-        """选项名称
+        r"""选项名称
         :rtype: str
         """
         return self._OptionName
@@ -9811,7 +9917,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def Standard(self):
-        """腾讯的标准
+        r"""腾讯的标准
         :rtype: str
         """
         return self._Standard
@@ -9822,7 +9928,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def StandardInfo(self):
-        """腾讯标准的展示字段
+        r"""腾讯标准的展示字段
         :rtype: str
         """
         return self._StandardInfo
@@ -9833,7 +9939,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def OptionKey(self):
-        """选项的唯一标识
+        r"""选项的唯一标识
         :rtype: str
         """
         return self._OptionKey
@@ -9844,7 +9950,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def InputType(self):
-        """输入的类型
+        r"""输入的类型
         :rtype: str
         """
         return self._InputType
@@ -9855,7 +9961,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def ValueType(self):
-        """输入值的类型
+        r"""输入值的类型
         :rtype: str
         """
         return self._ValueType
@@ -9866,7 +9972,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def CompareType(self):
-        """是否符合腾讯标准的比较方式，-- 为不做比较
+        r"""是否符合腾讯标准的比较方式，-- 为不做比较
         :rtype: str
         """
         return self._CompareType
@@ -9877,7 +9983,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def OptionValueSet(self):
-        """下拉列表中填充的选项值
+        r"""下拉列表中填充的选项值
         :rtype: list of OptionValueItem
         """
         return self._OptionValueSet
@@ -9888,7 +9994,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def InputHint(self):
-        """输入框中的占位的提示符
+        r"""输入框中的占位的提示符
         :rtype: str
         """
         return self._InputHint
@@ -9899,7 +10005,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def InputInfo(self):
-        """输入框下方的提示文案
+        r"""输入框下方的提示文案
         :rtype: str
         """
         return self._InputInfo
@@ -9910,7 +10016,7 @@ class TemplateOption(AbstractModel):
 
     @property
     def OptionValue(self):
-        """客户写入的值
+        r"""客户写入的值
         :rtype: str
         """
         return self._OptionValue
@@ -9948,7 +10054,7 @@ class TemplateOption(AbstractModel):
 
 
 class WireReceivingInfo(AbstractModel):
-    """线材收货信息
+    r"""线材收货信息
 
     """
 
@@ -9973,7 +10079,7 @@ class WireReceivingInfo(AbstractModel):
 
     @property
     def TypeName(self):
-        """'光纤', '网线', '电源线'
+        r"""'光纤', '网线', '电源线'
         :rtype: str
         """
         return self._TypeName
@@ -9984,7 +10090,7 @@ class WireReceivingInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Quantity
@@ -9995,7 +10101,7 @@ class WireReceivingInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """'箱', '卷', '套'
+        r"""'箱', '卷', '套'
         :rtype: str
         """
         return self._Unit
@@ -10006,7 +10112,7 @@ class WireReceivingInfo(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """收货凭证号
+        r"""收货凭证号
         :rtype: str
         """
         return self._ReceiptNumber
@@ -10017,7 +10123,7 @@ class WireReceivingInfo(AbstractModel):
 
     @property
     def HardwareMemo(self):
-        """硬件备注
+        r"""硬件备注
         :rtype: str
         """
         return self._HardwareMemo
@@ -10044,7 +10150,7 @@ class WireReceivingInfo(AbstractModel):
 
 
 class WorkOrderData(AbstractModel):
-    """工单的常用信息返回
+    r"""工单的常用信息返回
 
     """
 
@@ -10064,6 +10170,8 @@ class WorkOrderData(AbstractModel):
         :type CreateTime: str
         :param _FinishTime: 工单完成时间
         :type FinishTime: str
+        :param _TicketId: 工单关联的dcops单号
+        :type TicketId: str
         """
         self._WorkOrderId = None
         self._ServiceType = None
@@ -10072,10 +10180,11 @@ class WorkOrderData(AbstractModel):
         self._Creator = None
         self._CreateTime = None
         self._FinishTime = None
+        self._TicketId = None
 
     @property
     def WorkOrderId(self):
-        """工单号
+        r"""工单号
         :rtype: str
         """
         return self._WorkOrderId
@@ -10086,7 +10195,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def ServiceType(self):
-        """服务类型，一个服务可能会产生多个工单
+        r"""服务类型，一个服务可能会产生多个工单
         :rtype: str
         """
         return self._ServiceType
@@ -10097,7 +10206,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def OrderType(self):
-        """工单类型
+        r"""工单类型
         :rtype: str
         """
         return self._OrderType
@@ -10108,7 +10217,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def OrderStatus(self):
-        """工单状态
+        r"""工单状态
         :rtype: str
         """
         return self._OrderStatus
@@ -10119,7 +10228,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def Creator(self):
-        """工单创建人
+        r"""工单创建人
         :rtype: str
         """
         return self._Creator
@@ -10130,7 +10239,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """工单创建时间
+        r"""工单创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -10141,7 +10250,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def FinishTime(self):
-        """工单完成时间
+        r"""工单完成时间
         :rtype: str
         """
         return self._FinishTime
@@ -10149,6 +10258,17 @@ class WorkOrderData(AbstractModel):
     @FinishTime.setter
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
+
+    @property
+    def TicketId(self):
+        r"""工单关联的dcops单号
+        :rtype: str
+        """
+        return self._TicketId
+
+    @TicketId.setter
+    def TicketId(self, TicketId):
+        self._TicketId = TicketId
 
 
     def _deserialize(self, params):
@@ -10159,6 +10279,7 @@ class WorkOrderData(AbstractModel):
         self._Creator = params.get("Creator")
         self._CreateTime = params.get("CreateTime")
         self._FinishTime = params.get("FinishTime")
+        self._TicketId = params.get("TicketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10170,7 +10291,7 @@ class WorkOrderData(AbstractModel):
 
 
 class WorkOrderFamilyDetail(AbstractModel):
-    """带有分类的工单类型列表
+    r"""带有分类的工单类型列表
 
     """
 
@@ -10186,7 +10307,7 @@ class WorkOrderFamilyDetail(AbstractModel):
 
     @property
     def WorkOrderFamily(self):
-        """工单类型大类的名称
+        r"""工单类型大类的名称
         :rtype: str
         """
         return self._WorkOrderFamily
@@ -10197,7 +10318,7 @@ class WorkOrderFamilyDetail(AbstractModel):
 
     @property
     def WorkOrderTypeSet(self):
-        """工单类型详情列表
+        r"""工单类型详情列表
         :rtype: list of WorkOrderTypeDetail
         """
         return self._WorkOrderTypeSet
@@ -10226,7 +10347,7 @@ class WorkOrderFamilyDetail(AbstractModel):
 
 
 class WorkOrderTinyInfo(AbstractModel):
-    """工单信息的简要，一般用于工单创建的返回
+    r"""工单信息的简要，一般用于工单创建的返回
 
     """
 
@@ -10245,7 +10366,7 @@ class WorkOrderTinyInfo(AbstractModel):
 
     @property
     def WorkOrderId(self):
-        """工单id
+        r"""工单id
         :rtype: str
         """
         return self._WorkOrderId
@@ -10256,7 +10377,7 @@ class WorkOrderTinyInfo(AbstractModel):
 
     @property
     def ServiceType(self):
-        """服务类型，一个服务可能会产生多个工单
+        r"""服务类型，一个服务可能会产生多个工单
         :rtype: str
         """
         return self._ServiceType
@@ -10267,7 +10388,7 @@ class WorkOrderTinyInfo(AbstractModel):
 
     @property
     def OrderType(self):
-        """工单类型
+        r"""工单类型
         :rtype: str
         """
         return self._OrderType
@@ -10292,7 +10413,7 @@ class WorkOrderTinyInfo(AbstractModel):
 
 
 class WorkOrderTypeDetail(AbstractModel):
-    """工单类型详情
+    r"""工单类型详情
 
     """
 
@@ -10320,7 +10441,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def WorkOrderFamily(self):
-        """工单类型所属的大类
+        r"""工单类型所属的大类
         :rtype: str
         """
         return self._WorkOrderFamily
@@ -10331,7 +10452,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def WorkOrderName(self):
-        """工单类型名称
+        r"""工单类型名称
         :rtype: str
         """
         return self._WorkOrderName
@@ -10342,7 +10463,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def WorkOrderType(self):
-        """工单类型的唯一英文标识
+        r"""工单类型的唯一英文标识
         :rtype: str
         """
         return self._WorkOrderType
@@ -10353,7 +10474,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def WorkOrderDescription(self):
-        """工单类型简述
+        r"""工单类型简述
         :rtype: str
         """
         return self._WorkOrderDescription
@@ -10364,7 +10485,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def CollectFlag(self):
-        """是否被收藏
+        r"""是否被收藏
         :rtype: bool
         """
         return self._CollectFlag
@@ -10375,7 +10496,7 @@ class WorkOrderTypeDetail(AbstractModel):
 
     @property
     def SlaMessage(self):
-        """服务时效
+        r"""服务时效
         :rtype: str
         """
         return self._SlaMessage

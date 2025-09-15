@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateRuleRequest(AbstractModel):
-    """CreateRule请求参数结构体
+    r"""CreateRule请求参数结构体
 
     """
 
@@ -68,7 +68,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """自动化规则名称
+        r"""自动化规则名称
         :rtype: str
         """
         return self._Name
@@ -79,7 +79,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        """规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
+        r"""规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
         :rtype: int
         """
         return self._Type
@@ -90,7 +90,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
         :rtype: bool
         """
         return self._IsActive
@@ -101,7 +101,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Notice(self):
-        """触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
+        r"""触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
         :rtype: int
         """
         return self._Notice
@@ -112,7 +112,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -123,7 +123,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Url(self):
-        """推送的API地址
+        r"""推送的API地址
         :rtype: str
         """
         return self._Url
@@ -134,7 +134,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def DataThreshold(self):
-        """用量阈值
+        r"""用量阈值
         :rtype: int
         """
         return self._DataThreshold
@@ -145,7 +145,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def District(self):
-        """行政区类型：1. 省份 2. 城市 3. 区
+        r"""行政区类型：1. 省份 2. 城市 3. 区
         :rtype: int
         """
         return self._District
@@ -156,7 +156,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Distance(self):
-        """心跳移动距离阈值
+        r"""心跳移动距离阈值
         :rtype: int
         """
         return self._Distance
@@ -167,7 +167,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def SignalStrength(self):
-        """信号强度阈值
+        r"""信号强度阈值
         :rtype: int
         """
         return self._SignalStrength
@@ -178,7 +178,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def LostDay(self):
-        """盲点时间阈值，天
+        r"""盲点时间阈值，天
         :rtype: int
         """
         return self._LostDay
@@ -189,7 +189,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def TagIDs(self):
-        """标签ID集合
+        r"""标签ID集合
         :rtype: list of int
         """
         return self._TagIDs
@@ -200,7 +200,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def SalePlan(self):
-        """资费计划
+        r"""资费计划
         :rtype: str
         """
         return self._SalePlan
@@ -235,7 +235,7 @@ class CreateRuleRequest(AbstractModel):
 
 
 class CreateRuleResponse(AbstractModel):
-    """CreateRule返回参数结构体
+    r"""CreateRule返回参数结构体
 
     """
 
@@ -248,7 +248,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -263,7 +263,7 @@ class CreateRuleResponse(AbstractModel):
 
 
 class CreateTacticRequest(AbstractModel):
-    """CreateTactic请求参数结构体
+    r"""CreateTactic请求参数结构体
 
     """
 
@@ -327,7 +327,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def Name(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._Name
@@ -338,7 +338,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsAuto(self):
-        """是否自动执行
+        r"""是否自动执行
         :rtype: int
         """
         return self._IsAuto
@@ -349,7 +349,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def PingInterval(self):
-        """心跳上报间隔(s)
+        r"""心跳上报间隔(s)
         :rtype: int
         """
         return self._PingInterval
@@ -360,7 +360,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsWeak(self):
-        """是否开启弱信号检测
+        r"""是否开启弱信号检测
         :rtype: int
         """
         return self._IsWeak
@@ -371,7 +371,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def WeakThreshold(self):
-        """弱信号阈值（-dbm）
+        r"""弱信号阈值（-dbm）
         :rtype: int
         """
         return self._WeakThreshold
@@ -382,7 +382,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsDelay(self):
-        """是否开启时延切换
+        r"""是否开启时延切换
         :rtype: int
         """
         return self._IsDelay
@@ -393,7 +393,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def DelayThreshold(self):
-        """网络时延阈值（ms）
+        r"""网络时延阈值（ms）
         :rtype: int
         """
         return self._DelayThreshold
@@ -404,7 +404,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsFake(self):
-        """是否开启假信号检测
+        r"""是否开启假信号检测
         :rtype: int
         """
         return self._IsFake
@@ -415,7 +415,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def FakeIP(self):
-        """假信号检测IP字符串，用逗号分隔
+        r"""假信号检测IP字符串，用逗号分隔
         :rtype: str
         """
         return self._FakeIP
@@ -426,7 +426,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def FakeInterval(self):
-        """假信号检测间隔（s）
+        r"""假信号检测间隔（s）
         :rtype: int
         """
         return self._FakeInterval
@@ -437,7 +437,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsNet(self):
-        """是否开启网络制式检测
+        r"""是否开启网络制式检测
         :rtype: int
         """
         return self._IsNet
@@ -448,7 +448,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def Network(self):
-        """网络回落制式 1 2G、 2 3G 、 3 2/3G
+        r"""网络回落制式 1 2G、 2 3G 、 3 2/3G
         :rtype: int
         """
         return self._Network
@@ -459,7 +459,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsMove(self):
-        """是否开启移动检测
+        r"""是否开启移动检测
         :rtype: int
         """
         return self._IsMove
@@ -470,7 +470,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsPriorityTele(self):
-        """是否开启最优先运营商
+        r"""是否开启最优先运营商
         :rtype: int
         """
         return self._IsPriorityTele
@@ -481,7 +481,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def PriorityTele(self):
-        """最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        r"""最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
         :rtype: int
         """
         return self._PriorityTele
@@ -492,7 +492,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsBottomTele(self):
-        """是否开启最不优先运营商
+        r"""是否开启最不优先运营商
         :rtype: int
         """
         return self._IsBottomTele
@@ -503,7 +503,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def BottomTele(self):
-        """最不优先运营商 1 移动、 2 联通、 3 电信
+        r"""最不优先运营商 1 移动、 2 联通、 3 电信
         :rtype: int
         """
         return self._BottomTele
@@ -514,7 +514,7 @@ class CreateTacticRequest(AbstractModel):
 
     @property
     def IsBestSignal(self):
-        """最优先信号选取策略
+        r"""最优先信号选取策略
         :rtype: int
         """
         return self._IsBestSignal
@@ -554,7 +554,7 @@ class CreateTacticRequest(AbstractModel):
 
 
 class CreateTacticResponse(AbstractModel):
-    """CreateTactic返回参数结构体
+    r"""CreateTactic返回参数结构体
 
     """
 
@@ -567,7 +567,7 @@ class CreateTacticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -582,7 +582,7 @@ class CreateTacticResponse(AbstractModel):
 
 
 class CreateTagRequest(AbstractModel):
-    """CreateTag请求参数结构体
+    r"""CreateTag请求参数结构体
 
     """
 
@@ -598,7 +598,7 @@ class CreateTagRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -609,7 +609,7 @@ class CreateTagRequest(AbstractModel):
 
     @property
     def Comment(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Comment
@@ -633,7 +633,7 @@ class CreateTagRequest(AbstractModel):
 
 
 class CreateTagResponse(AbstractModel):
-    """CreateTag返回参数结构体
+    r"""CreateTag返回参数结构体
 
     """
 
@@ -646,7 +646,7 @@ class CreateTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -661,7 +661,7 @@ class CreateTagResponse(AbstractModel):
 
 
 class DeleteRuleRequest(AbstractModel):
-    """DeleteRule请求参数结构体
+    r"""DeleteRule请求参数结构体
 
     """
 
@@ -674,7 +674,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: int
         """
         return self._RuleID
@@ -697,7 +697,7 @@ class DeleteRuleRequest(AbstractModel):
 
 
 class DeleteRuleResponse(AbstractModel):
-    """DeleteRule返回参数结构体
+    r"""DeleteRule返回参数结构体
 
     """
 
@@ -710,7 +710,7 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -725,7 +725,7 @@ class DeleteRuleResponse(AbstractModel):
 
 
 class DeleteTacticRequest(AbstractModel):
-    """DeleteTactic请求参数结构体
+    r"""DeleteTactic请求参数结构体
 
     """
 
@@ -738,7 +738,7 @@ class DeleteTacticRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -761,7 +761,7 @@ class DeleteTacticRequest(AbstractModel):
 
 
 class DeleteTacticResponse(AbstractModel):
-    """DeleteTactic返回参数结构体
+    r"""DeleteTactic返回参数结构体
 
     """
 
@@ -774,7 +774,7 @@ class DeleteTacticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -789,7 +789,7 @@ class DeleteTacticResponse(AbstractModel):
 
 
 class DeleteTagRequest(AbstractModel):
-    """DeleteTag请求参数结构体
+    r"""DeleteTag请求参数结构体
 
     """
 
@@ -802,7 +802,7 @@ class DeleteTagRequest(AbstractModel):
 
     @property
     def TagID(self):
-        """标签ID
+        r"""标签ID
         :rtype: int
         """
         return self._TagID
@@ -825,7 +825,7 @@ class DeleteTagRequest(AbstractModel):
 
 
 class DeleteTagResponse(AbstractModel):
-    """DeleteTag返回参数结构体
+    r"""DeleteTag返回参数结构体
 
     """
 
@@ -838,7 +838,7 @@ class DeleteTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -853,7 +853,7 @@ class DeleteTagResponse(AbstractModel):
 
 
 class DescribeLinkRequest(AbstractModel):
-    """DescribeLink请求参数结构体
+    r"""DescribeLink请求参数结构体
 
     """
 
@@ -869,7 +869,7 @@ class DescribeLinkRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔卡ID
+        r"""云兔卡ID
         :rtype: int
         """
         return self._LinkID
@@ -880,7 +880,7 @@ class DescribeLinkRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """具体的账号
+        r"""具体的账号
         :rtype: str
         """
         return self._UinAccount
@@ -904,7 +904,7 @@ class DescribeLinkRequest(AbstractModel):
 
 
 class DescribeLinkResponse(AbstractModel):
-    """DescribeLink返回参数结构体
+    r"""DescribeLink返回参数结构体
 
     """
 
@@ -920,7 +920,7 @@ class DescribeLinkResponse(AbstractModel):
 
     @property
     def Data(self):
-        """云兔连接详细信息
+        r"""云兔连接详细信息
         :rtype: :class:`tencentcloud.hasim.v20210716.models.LinkDetailInfo`
         """
         return self._Data
@@ -931,7 +931,7 @@ class DescribeLinkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -949,7 +949,7 @@ class DescribeLinkResponse(AbstractModel):
 
 
 class DescribeLinksRequest(AbstractModel):
-    """DescribeLinks请求参数结构体
+    r"""DescribeLinks请求参数结构体
 
     """
 
@@ -992,7 +992,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔卡ID
+        r"""云兔卡ID
         :rtype: int
         """
         return self._LinkID
@@ -1003,7 +1003,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def ICCID(self):
-        """运营商ICCID
+        r"""运营商ICCID
         :rtype: str
         """
         return self._ICCID
@@ -1014,7 +1014,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def IMEI(self):
-        """设备码
+        r"""设备码
         :rtype: str
         """
         return self._IMEI
@@ -1025,7 +1025,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """卡片状态
+        r"""卡片状态
         :rtype: int
         """
         return self._Status
@@ -1036,7 +1036,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def TeleOperator(self):
-        """运营商 1移动 2联通 3电信
+        r"""运营商 1移动 2联通 3电信
         :rtype: int
         """
         return self._TeleOperator
@@ -1047,7 +1047,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def TagID(self):
-        """标签ID
+        r"""标签ID
         :rtype: int
         """
         return self._TagID
@@ -1058,7 +1058,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -1069,7 +1069,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def LinkedState(self):
-        """设备在线状态 0 未激活 1 在线 2 离线
+        r"""设备在线状态 0 未激活 1 在线 2 离线
         :rtype: int
         """
         return self._LinkedState
@@ -1080,7 +1080,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def TagIDs(self):
-        """标签ID 集合
+        r"""标签ID 集合
         :rtype: list of int
         """
         return self._TagIDs
@@ -1091,7 +1091,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小, 默认翻页大小为10，最大数量为500
+        r"""翻页大小, 默认翻页大小为10，最大数量为500
         :rtype: int
         """
         return self._Limit
@@ -1102,7 +1102,7 @@ class DescribeLinksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页起始
+        r"""翻页起始
         :rtype: int
         """
         return self._Offset
@@ -1135,7 +1135,7 @@ class DescribeLinksRequest(AbstractModel):
 
 
 class DescribeLinksResponse(AbstractModel):
-    """DescribeLinks返回参数结构体
+    r"""DescribeLinks返回参数结构体
 
     """
 
@@ -1152,7 +1152,7 @@ class DescribeLinksResponse(AbstractModel):
 
     @property
     def Data(self):
-        """云兔连接响应信息
+        r"""云兔连接响应信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hasim.v20210716.models.LinkInfos`
         """
@@ -1164,7 +1164,7 @@ class DescribeLinksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1182,7 +1182,7 @@ class DescribeLinksResponse(AbstractModel):
 
 
 class DescribeOrdersRequest(AbstractModel):
-    """DescribeOrders请求参数结构体
+    r"""DescribeOrders请求参数结构体
 
     """
 
@@ -1210,7 +1210,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def DealName(self):
-        """子订单ID
+        r"""子订单ID
         :rtype: str
         """
         return self._DealName
@@ -1221,7 +1221,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """审批状态 0全部 1通过 2驳回 3待审核
+        r"""审批状态 0全部 1通过 2驳回 3待审核
         :rtype: int
         """
         return self._AuditStatus
@@ -1232,7 +1232,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -1243,7 +1243,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移
+        r"""翻页偏移
         :rtype: int
         """
         return self._Offset
@@ -1254,7 +1254,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始时间,例如2022-06-30 00:00:00
+        r"""开始时间,例如2022-06-30 00:00:00
         :rtype: str
         """
         return self._BeginTime
@@ -1265,7 +1265,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间,例如2022-06-30 00:00:00
+        r"""结束时间,例如2022-06-30 00:00:00
         :rtype: str
         """
         return self._EndTime
@@ -1293,7 +1293,7 @@ class DescribeOrdersRequest(AbstractModel):
 
 
 class DescribeOrdersResponse(AbstractModel):
-    """DescribeOrders返回参数结构体
+    r"""DescribeOrders返回参数结构体
 
     """
 
@@ -1309,7 +1309,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def Data(self):
-        """订单列表
+        r"""订单列表
         :rtype: :class:`tencentcloud.hasim.v20210716.models.Orders`
         """
         return self._Data
@@ -1320,7 +1320,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1338,7 +1338,7 @@ class DescribeOrdersResponse(AbstractModel):
 
 
 class DescribeRuleRequest(AbstractModel):
-    """DescribeRule请求参数结构体
+    r"""DescribeRule请求参数结构体
 
     """
 
@@ -1351,7 +1351,7 @@ class DescribeRuleRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: int
         """
         return self._RuleID
@@ -1374,7 +1374,7 @@ class DescribeRuleRequest(AbstractModel):
 
 
 class DescribeRuleResponse(AbstractModel):
-    """DescribeRule返回参数结构体
+    r"""DescribeRule返回参数结构体
 
     """
 
@@ -1390,7 +1390,7 @@ class DescribeRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        """策略信息
+        r"""策略信息
         :rtype: :class:`tencentcloud.hasim.v20210716.models.RuleDetail`
         """
         return self._Data
@@ -1401,7 +1401,7 @@ class DescribeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1419,7 +1419,7 @@ class DescribeRuleResponse(AbstractModel):
 
 
 class DescribeRulesRequest(AbstractModel):
-    """DescribeRules请求参数结构体
+    r"""DescribeRules请求参数结构体
 
     """
 
@@ -1450,7 +1450,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: int
         """
         return self._RuleID
@@ -1461,7 +1461,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def RuleIDs(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: list of int
         """
         return self._RuleIDs
@@ -1472,7 +1472,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -1483,7 +1483,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: int
         """
         return self._Type
@@ -1494,7 +1494,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
         :rtype: int
         """
         return self._IsActive
@@ -1505,7 +1505,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -1516,7 +1516,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移
+        r"""翻页偏移
         :rtype: int
         """
         return self._Offset
@@ -1545,7 +1545,7 @@ class DescribeRulesRequest(AbstractModel):
 
 
 class DescribeRulesResponse(AbstractModel):
-    """DescribeRules返回参数结构体
+    r"""DescribeRules返回参数结构体
 
     """
 
@@ -1562,7 +1562,7 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """自动化规则列表集合
+        r"""自动化规则列表集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hasim.v20210716.models.RuleInfos`
         """
@@ -1574,7 +1574,7 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1592,7 +1592,7 @@ class DescribeRulesResponse(AbstractModel):
 
 
 class DescribeTacticRequest(AbstractModel):
-    """DescribeTactic请求参数结构体
+    r"""DescribeTactic请求参数结构体
 
     """
 
@@ -1605,7 +1605,7 @@ class DescribeTacticRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -1628,7 +1628,7 @@ class DescribeTacticRequest(AbstractModel):
 
 
 class DescribeTacticResponse(AbstractModel):
-    """DescribeTactic返回参数结构体
+    r"""DescribeTactic返回参数结构体
 
     """
 
@@ -1644,7 +1644,7 @@ class DescribeTacticResponse(AbstractModel):
 
     @property
     def Data(self):
-        """策略信息
+        r"""策略信息
         :rtype: :class:`tencentcloud.hasim.v20210716.models.Tactic`
         """
         return self._Data
@@ -1655,7 +1655,7 @@ class DescribeTacticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1673,7 +1673,7 @@ class DescribeTacticResponse(AbstractModel):
 
 
 class DescribeTacticsRequest(AbstractModel):
-    """DescribeTactics请求参数结构体
+    r"""DescribeTactics请求参数结构体
 
     """
 
@@ -1689,7 +1689,7 @@ class DescribeTacticsRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -1700,7 +1700,7 @@ class DescribeTacticsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._Name
@@ -1724,7 +1724,7 @@ class DescribeTacticsRequest(AbstractModel):
 
 
 class DescribeTacticsResponse(AbstractModel):
-    """DescribeTactics返回参数结构体
+    r"""DescribeTactics返回参数结构体
 
     """
 
@@ -1740,7 +1740,7 @@ class DescribeTacticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """策略集合信息
+        r"""策略集合信息
         :rtype: :class:`tencentcloud.hasim.v20210716.models.TacticInfos`
         """
         return self._Data
@@ -1751,7 +1751,7 @@ class DescribeTacticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1769,7 +1769,7 @@ class DescribeTacticsResponse(AbstractModel):
 
 
 class DescribeTagsRequest(AbstractModel):
-    """DescribeTags请求参数结构体
+    r"""DescribeTags请求参数结构体
 
     """
 
@@ -1782,7 +1782,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Name
@@ -1805,7 +1805,7 @@ class DescribeTagsRequest(AbstractModel):
 
 
 class DescribeTagsResponse(AbstractModel):
-    """DescribeTags返回参数结构体
+    r"""DescribeTags返回参数结构体
 
     """
 
@@ -1821,7 +1821,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: :class:`tencentcloud.hasim.v20210716.models.TagInfos`
         """
         return self._Data
@@ -1832,7 +1832,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1850,7 +1850,7 @@ class DescribeTagsResponse(AbstractModel):
 
 
 class DeviceReport(AbstractModel):
-    """设备上报信息
+    r"""设备上报信息
 
     """
 
@@ -1931,7 +1931,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Imei(self):
-        """移动设备ID
+        r"""移动设备ID
         :rtype: str
         """
         return self._Imei
@@ -1942,7 +1942,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Lng(self):
-        """经度
+        r"""经度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1954,7 +1954,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Lat(self):
-        """维度
+        r"""维度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1966,7 +1966,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Lac(self):
-        """运营商基站ID
+        r"""运营商基站ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1978,7 +1978,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Cell(self):
-        """小区CellID
+        r"""小区CellID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1990,7 +1990,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Iccid(self):
-        """当前上报运营商ID
+        r"""当前上报运营商ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2002,7 +2002,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Rss(self):
-        """信号强度
+        r"""信号强度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2014,7 +2014,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Tele(self):
-        """运营商: 1 移动 2 联通 3 电信
+        r"""运营商: 1 移动 2 联通 3 电信
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2026,7 +2026,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Tid(self):
-        """当前设备策略ID
+        r"""当前设备策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2038,7 +2038,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Ping(self):
-        """心跳间隔,单位秒
+        r"""心跳间隔,单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2050,7 +2050,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Delay(self):
-        """网络延迟,单位毫秒
+        r"""网络延迟,单位毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2062,7 +2062,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Log(self):
-        """高级日志启停状态
+        r"""高级日志启停状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2074,7 +2074,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def DevType(self):
-        """设备型号
+        r"""设备型号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2086,7 +2086,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def DevModel(self):
-        """设备型号
+        r"""设备型号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2098,7 +2098,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Version(self):
-        """设备版本
+        r"""设备版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2110,7 +2110,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def UploadTime(self):
-        """设备刷新时间戳
+        r"""设备刷新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2122,7 +2122,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def Status(self):
-        """网络环境: 0 正常 1 弱网
+        r"""网络环境: 0 正常 1 弱网
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2134,7 +2134,7 @@ class DeviceReport(AbstractModel):
 
     @property
     def MonthFirstTime(self):
-        """每月第一次上报心跳时间
+        r"""每月第一次上报心跳时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2175,7 +2175,7 @@ class DeviceReport(AbstractModel):
 
 
 class LinkDetailInfo(AbstractModel):
-    """云兔连接详细信息
+    r"""云兔连接详细信息
 
     """
 
@@ -2253,7 +2253,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def ID(self):
-        """云兔连接ID
+        r"""云兔连接ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2265,7 +2265,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def Status(self):
-        """卡片状态
+        r"""卡片状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2277,7 +2277,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """激活时间
+        r"""激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2289,7 +2289,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间
+        r"""过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2301,7 +2301,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def DataUse(self):
-        """数据用量
+        r"""数据用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2313,7 +2313,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def AudioUse(self):
-        """语音用量
+        r"""语音用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2325,7 +2325,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def SmsUse(self):
-        """短信用量
+        r"""短信用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2337,7 +2337,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def LinkedState(self):
-        """在线状态 0 未激活 1 在线 2 离线
+        r"""在线状态 0 未激活 1 在线 2 离线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2349,7 +2349,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def TacticID(self):
-        """预期策略ID
+        r"""预期策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2361,7 +2361,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def TacticStatus(self):
-        """策略下发状态
+        r"""策略下发状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2373,7 +2373,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def TacticExpireTime(self):
-        """策略下发成功过期时间
+        r"""策略下发成功过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2385,7 +2385,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def IsActiveLog(self):
-        """高级日志预期状态
+        r"""高级日志预期状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2397,7 +2397,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def TeleOperator(self):
-        """运营商 1移动 2联通 3电信
+        r"""运营商 1移动 2联通 3电信
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2409,7 +2409,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def Report(self):
-        """设备最新上报信息
+        r"""设备最新上报信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hasim.v20210716.models.DeviceReport`
         """
@@ -2421,7 +2421,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -2433,7 +2433,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def Cards(self):
-        """运营商ICCID信息集合
+        r"""运营商ICCID信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeleOperatorCard
         """
@@ -2445,7 +2445,7 @@ class LinkDetailInfo(AbstractModel):
 
     @property
     def CardID(self):
-        """云兔实际卡片ID
+        r"""云兔实际卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2497,7 +2497,7 @@ class LinkDetailInfo(AbstractModel):
 
 
 class LinkInfo(AbstractModel):
-    """云兔连接基本信息
+    r"""云兔连接基本信息
 
     """
 
@@ -2563,7 +2563,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def ID(self):
-        """云兔连接ID
+        r"""云兔连接ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2575,7 +2575,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def Status(self):
-        """卡片状态
+        r"""卡片状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2587,7 +2587,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """激活时间
+        r"""激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2599,7 +2599,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间
+        r"""过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2611,7 +2611,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def DataUse(self):
-        """数据用量
+        r"""数据用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2623,7 +2623,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def AudioUse(self):
-        """语音用量
+        r"""语音用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2635,7 +2635,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def SmsUse(self):
-        """短信用量
+        r"""短信用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2647,7 +2647,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def LinkedState(self):
-        """在线状态 0 未激活 1 在线 2 离线
+        r"""在线状态 0 未激活 1 在线 2 离线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2659,7 +2659,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def TacticID(self):
-        """预期策略ID
+        r"""预期策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2671,7 +2671,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def TacticStatus(self):
-        """策略下发状态
+        r"""策略下发状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2683,7 +2683,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def TacticExpireTime(self):
-        """策略下发成功过期时间
+        r"""策略下发成功过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2695,7 +2695,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def IsActiveLog(self):
-        """高级日志预期状态
+        r"""高级日志预期状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2707,7 +2707,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def TeleOperator(self):
-        """运营商 1移动 2联通 3电信
+        r"""运营商 1移动 2联通 3电信
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2719,7 +2719,7 @@ class LinkInfo(AbstractModel):
 
     @property
     def Report(self):
-        """设备最新上报信息
+        r"""设备最新上报信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hasim.v20210716.models.DeviceReport`
         """
@@ -2758,7 +2758,7 @@ class LinkInfo(AbstractModel):
 
 
 class LinkInfos(AbstractModel):
-    """云兔连接信息集合
+    r"""云兔连接信息集合
 
     """
 
@@ -2775,7 +2775,7 @@ class LinkInfos(AbstractModel):
 
     @property
     def Total(self):
-        """总量
+        r"""总量
         :rtype: int
         """
         return self._Total
@@ -2786,7 +2786,7 @@ class LinkInfos(AbstractModel):
 
     @property
     def List(self):
-        """云兔连接列表
+        r"""云兔连接列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkInfo
         """
@@ -2816,7 +2816,7 @@ class LinkInfos(AbstractModel):
 
 
 class ModifyLinkAdvancedLogRequest(AbstractModel):
-    """ModifyLinkAdvancedLog请求参数结构体
+    r"""ModifyLinkAdvancedLog请求参数结构体
 
     """
 
@@ -2832,7 +2832,7 @@ class ModifyLinkAdvancedLogRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔ID
+        r"""云兔ID
         :rtype: int
         """
         return self._LinkID
@@ -2843,7 +2843,7 @@ class ModifyLinkAdvancedLogRequest(AbstractModel):
 
     @property
     def IsAdLog(self):
-        """是否激活高级日志 0 关闭 1激活
+        r"""是否激活高级日志 0 关闭 1激活
         :rtype: int
         """
         return self._IsAdLog
@@ -2867,7 +2867,7 @@ class ModifyLinkAdvancedLogRequest(AbstractModel):
 
 
 class ModifyLinkAdvancedLogResponse(AbstractModel):
-    """ModifyLinkAdvancedLog返回参数结构体
+    r"""ModifyLinkAdvancedLog返回参数结构体
 
     """
 
@@ -2880,7 +2880,7 @@ class ModifyLinkAdvancedLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2895,7 +2895,7 @@ class ModifyLinkAdvancedLogResponse(AbstractModel):
 
 
 class ModifyLinkTacticRequest(AbstractModel):
-    """ModifyLinkTactic请求参数结构体
+    r"""ModifyLinkTactic请求参数结构体
 
     """
 
@@ -2911,7 +2911,7 @@ class ModifyLinkTacticRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔ID
+        r"""云兔ID
         :rtype: int
         """
         return self._LinkID
@@ -2922,7 +2922,7 @@ class ModifyLinkTacticRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -2946,7 +2946,7 @@ class ModifyLinkTacticRequest(AbstractModel):
 
 
 class ModifyLinkTacticResponse(AbstractModel):
-    """ModifyLinkTactic返回参数结构体
+    r"""ModifyLinkTactic返回参数结构体
 
     """
 
@@ -2959,7 +2959,7 @@ class ModifyLinkTacticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2974,7 +2974,7 @@ class ModifyLinkTacticResponse(AbstractModel):
 
 
 class ModifyLinkTeleRequest(AbstractModel):
-    """ModifyLinkTele请求参数结构体
+    r"""ModifyLinkTele请求参数结构体
 
     """
 
@@ -2990,7 +2990,7 @@ class ModifyLinkTeleRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔ID
+        r"""云兔ID
         :rtype: int
         """
         return self._LinkID
@@ -3001,7 +3001,7 @@ class ModifyLinkTeleRequest(AbstractModel):
 
     @property
     def TeleOperator(self):
-        """运营商 1 移动 2 联通 3 电信
+        r"""运营商 1 移动 2 联通 3 电信
         :rtype: int
         """
         return self._TeleOperator
@@ -3025,7 +3025,7 @@ class ModifyLinkTeleRequest(AbstractModel):
 
 
 class ModifyLinkTeleResponse(AbstractModel):
-    """ModifyLinkTele返回参数结构体
+    r"""ModifyLinkTele返回参数结构体
 
     """
 
@@ -3038,7 +3038,7 @@ class ModifyLinkTeleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3053,7 +3053,7 @@ class ModifyLinkTeleResponse(AbstractModel):
 
 
 class ModifyRuleRequest(AbstractModel):
-    """ModifyRule请求参数结构体
+    r"""ModifyRule请求参数结构体
 
     """
 
@@ -3105,7 +3105,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """自动化规则名称
+        r"""自动化规则名称
         :rtype: str
         """
         return self._Name
@@ -3116,7 +3116,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        """规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
+        r"""规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
         :rtype: int
         """
         return self._Type
@@ -3127,7 +3127,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
         :rtype: bool
         """
         return self._IsActive
@@ -3138,7 +3138,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Notice(self):
-        """触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
+        r"""触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
         :rtype: int
         """
         return self._Notice
@@ -3149,7 +3149,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: int
         """
         return self._RuleID
@@ -3160,7 +3160,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -3171,7 +3171,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Url(self):
-        """推送的API地址
+        r"""推送的API地址
         :rtype: str
         """
         return self._Url
@@ -3182,7 +3182,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def DataThreshold(self):
-        """用量阈值
+        r"""用量阈值
         :rtype: int
         """
         return self._DataThreshold
@@ -3193,7 +3193,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def District(self):
-        """行政区类型：1. 省份 2. 城市 3. 区
+        r"""行政区类型：1. 省份 2. 城市 3. 区
         :rtype: int
         """
         return self._District
@@ -3204,7 +3204,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Distance(self):
-        """心跳移动距离阈值
+        r"""心跳移动距离阈值
         :rtype: int
         """
         return self._Distance
@@ -3215,7 +3215,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def SignalStrength(self):
-        """信号强度阈值
+        r"""信号强度阈值
         :rtype: int
         """
         return self._SignalStrength
@@ -3226,7 +3226,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def TagIDs(self):
-        """标签ID集合
+        r"""标签ID集合
         :rtype: list of int
         """
         return self._TagIDs
@@ -3237,7 +3237,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def SalePlan(self):
-        """资费计划
+        r"""资费计划
         :rtype: str
         """
         return self._SalePlan
@@ -3248,7 +3248,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """具体的账号
+        r"""具体的账号
         :rtype: str
         """
         return self._UinAccount
@@ -3284,7 +3284,7 @@ class ModifyRuleRequest(AbstractModel):
 
 
 class ModifyRuleResponse(AbstractModel):
-    """ModifyRule返回参数结构体
+    r"""ModifyRule返回参数结构体
 
     """
 
@@ -3297,7 +3297,7 @@ class ModifyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3312,7 +3312,7 @@ class ModifyRuleResponse(AbstractModel):
 
 
 class ModifyRuleStatusRequest(AbstractModel):
-    """ModifyRuleStatus请求参数结构体
+    r"""ModifyRuleStatus请求参数结构体
 
     """
 
@@ -3328,7 +3328,7 @@ class ModifyRuleStatusRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """自动化规则ID
+        r"""自动化规则ID
         :rtype: int
         """
         return self._RuleID
@@ -3339,7 +3339,7 @@ class ModifyRuleStatusRequest(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
         :rtype: bool
         """
         return self._IsActive
@@ -3363,7 +3363,7 @@ class ModifyRuleStatusRequest(AbstractModel):
 
 
 class ModifyRuleStatusResponse(AbstractModel):
-    """ModifyRuleStatus返回参数结构体
+    r"""ModifyRuleStatus返回参数结构体
 
     """
 
@@ -3376,7 +3376,7 @@ class ModifyRuleStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3391,7 +3391,7 @@ class ModifyRuleStatusResponse(AbstractModel):
 
 
 class ModifyTacticRequest(AbstractModel):
-    """ModifyTactic请求参数结构体
+    r"""ModifyTactic请求参数结构体
 
     """
 
@@ -3458,7 +3458,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def Name(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._Name
@@ -3469,7 +3469,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsAuto(self):
-        """是否自动执行
+        r"""是否自动执行
         :rtype: int
         """
         return self._IsAuto
@@ -3480,7 +3480,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def PingInterval(self):
-        """心跳上报间隔(s)
+        r"""心跳上报间隔(s)
         :rtype: int
         """
         return self._PingInterval
@@ -3491,7 +3491,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsWeak(self):
-        """是否开启弱信号检测
+        r"""是否开启弱信号检测
         :rtype: int
         """
         return self._IsWeak
@@ -3502,7 +3502,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def WeakThreshold(self):
-        """弱信号阈值（-dbm）
+        r"""弱信号阈值（-dbm）
         :rtype: int
         """
         return self._WeakThreshold
@@ -3513,7 +3513,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsDelay(self):
-        """是否开启时延切换
+        r"""是否开启时延切换
         :rtype: int
         """
         return self._IsDelay
@@ -3524,7 +3524,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def DelayThreshold(self):
-        """网络时延阈值（ms）
+        r"""网络时延阈值（ms）
         :rtype: int
         """
         return self._DelayThreshold
@@ -3535,7 +3535,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsFake(self):
-        """是否开启假信号检测
+        r"""是否开启假信号检测
         :rtype: int
         """
         return self._IsFake
@@ -3546,7 +3546,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def FakeInterval(self):
-        """假信号检测间隔（s）
+        r"""假信号检测间隔（s）
         :rtype: int
         """
         return self._FakeInterval
@@ -3557,7 +3557,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsNet(self):
-        """是否开启网络制式检测
+        r"""是否开启网络制式检测
         :rtype: int
         """
         return self._IsNet
@@ -3568,7 +3568,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def Network(self):
-        """网络回落制式 1 2G、 2 3G 、 3 2/3G
+        r"""网络回落制式 1 2G、 2 3G 、 3 2/3G
         :rtype: int
         """
         return self._Network
@@ -3579,7 +3579,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsMove(self):
-        """是否开启移动检测
+        r"""是否开启移动检测
         :rtype: int
         """
         return self._IsMove
@@ -3590,7 +3590,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def TacticID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._TacticID
@@ -3601,7 +3601,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsPriorityTele(self):
-        """是否开启最优先运营商
+        r"""是否开启最优先运营商
         :rtype: int
         """
         return self._IsPriorityTele
@@ -3612,7 +3612,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def PriorityTele(self):
-        """最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        r"""最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
         :rtype: int
         """
         return self._PriorityTele
@@ -3623,7 +3623,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsBottomTele(self):
-        """是否开启最不优先运营商
+        r"""是否开启最不优先运营商
         :rtype: int
         """
         return self._IsBottomTele
@@ -3634,7 +3634,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def BottomTele(self):
-        """最不优先运营商 1 移动、 2 联通、 3 电信
+        r"""最不优先运营商 1 移动、 2 联通、 3 电信
         :rtype: int
         """
         return self._BottomTele
@@ -3645,7 +3645,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def IsBestSignal(self):
-        """是否最优先信号选取策略
+        r"""是否最优先信号选取策略
         :rtype: int
         """
         return self._IsBestSignal
@@ -3656,7 +3656,7 @@ class ModifyTacticRequest(AbstractModel):
 
     @property
     def FakeIP(self):
-        """假信号检测IP字符串，用逗号分隔
+        r"""假信号检测IP字符串，用逗号分隔
         :rtype: str
         """
         return self._FakeIP
@@ -3697,7 +3697,7 @@ class ModifyTacticRequest(AbstractModel):
 
 
 class ModifyTacticResponse(AbstractModel):
-    """ModifyTactic返回参数结构体
+    r"""ModifyTactic返回参数结构体
 
     """
 
@@ -3710,7 +3710,7 @@ class ModifyTacticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3725,7 +3725,7 @@ class ModifyTacticResponse(AbstractModel):
 
 
 class ModifyTagRequest(AbstractModel):
-    """ModifyTag请求参数结构体
+    r"""ModifyTag请求参数结构体
 
     """
 
@@ -3744,7 +3744,7 @@ class ModifyTagRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -3755,7 +3755,7 @@ class ModifyTagRequest(AbstractModel):
 
     @property
     def TagID(self):
-        """标签ID
+        r"""标签ID
         :rtype: int
         """
         return self._TagID
@@ -3766,7 +3766,7 @@ class ModifyTagRequest(AbstractModel):
 
     @property
     def Comment(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Comment
@@ -3791,7 +3791,7 @@ class ModifyTagRequest(AbstractModel):
 
 
 class ModifyTagResponse(AbstractModel):
-    """ModifyTag返回参数结构体
+    r"""ModifyTag返回参数结构体
 
     """
 
@@ -3804,7 +3804,7 @@ class ModifyTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3819,7 +3819,7 @@ class ModifyTagResponse(AbstractModel):
 
 
 class OrderInfo(AbstractModel):
-    """订单信息
+    r"""订单信息
 
     """
 
@@ -3887,7 +3887,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def DealName(self):
-        """子订单ID
+        r"""子订单ID
         :rtype: str
         """
         return self._DealName
@@ -3898,7 +3898,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3910,7 +3910,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """订单账户
+        r"""订单账户
         :rtype: str
         """
         return self._Uin
@@ -3921,7 +3921,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def BuyNum(self):
-        """购买数量
+        r"""购买数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3933,7 +3933,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def IndustryCode(self):
-        """行业代码
+        r"""行业代码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3945,7 +3945,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3957,7 +3957,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Contact(self):
-        """联系人
+        r"""联系人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3969,7 +3969,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Msisdn(self):
-        """电话号码
+        r"""电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3981,7 +3981,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """卡片规格
+        r"""卡片规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3993,7 +3993,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Comment(self):
-        """用户订单备注
+        r"""用户订单备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4005,7 +4005,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def BigDealId(self):
-        """大订单号
+        r"""大订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4017,7 +4017,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """审批状态
+        r"""审批状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4029,7 +4029,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
-        """发货状态
+        r"""发货状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4041,7 +4041,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """审批备注
+        r"""审批备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4053,7 +4053,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def RefundBigDealId(self):
-        """退费订单
+        r"""退费订单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4091,7 +4091,7 @@ class OrderInfo(AbstractModel):
 
 
 class Orders(AbstractModel):
-    """订单列表
+    r"""订单列表
 
     """
 
@@ -4108,7 +4108,7 @@ class Orders(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4119,7 +4119,7 @@ class Orders(AbstractModel):
 
     @property
     def List(self):
-        """订单集合
+        r"""订单集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrderInfo
         """
@@ -4149,7 +4149,7 @@ class Orders(AbstractModel):
 
 
 class RenewLinkInfoRequest(AbstractModel):
-    """RenewLinkInfo请求参数结构体
+    r"""RenewLinkInfo请求参数结构体
 
     """
 
@@ -4165,7 +4165,7 @@ class RenewLinkInfoRequest(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔ID
+        r"""云兔ID
         :rtype: int
         """
         return self._LinkID
@@ -4176,7 +4176,7 @@ class RenewLinkInfoRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """具体的账号
+        r"""具体的账号
         :rtype: str
         """
         return self._UinAccount
@@ -4200,7 +4200,7 @@ class RenewLinkInfoRequest(AbstractModel):
 
 
 class RenewLinkInfoResponse(AbstractModel):
-    """RenewLinkInfo返回参数结构体
+    r"""RenewLinkInfo返回参数结构体
 
     """
 
@@ -4213,7 +4213,7 @@ class RenewLinkInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4228,7 +4228,7 @@ class RenewLinkInfoResponse(AbstractModel):
 
 
 class Rule(AbstractModel):
-    """自动化规则
+    r"""自动化规则
 
     """
 
@@ -4304,7 +4304,7 @@ class Rule(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -4315,7 +4315,7 @@ class Rule(AbstractModel):
 
     @property
     def ID(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._ID
@@ -4326,7 +4326,7 @@ class Rule(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4338,7 +4338,7 @@ class Rule(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4350,7 +4350,7 @@ class Rule(AbstractModel):
 
     @property
     def DeletedAt(self):
-        """删除时间
+        r"""删除时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4362,7 +4362,7 @@ class Rule(AbstractModel):
 
     @property
     def Type(self):
-        """规则类型
+        r"""规则类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4374,7 +4374,7 @@ class Rule(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4386,7 +4386,7 @@ class Rule(AbstractModel):
 
     @property
     def Notice(self):
-        """触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
+        r"""触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4398,7 +4398,7 @@ class Rule(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4410,7 +4410,7 @@ class Rule(AbstractModel):
 
     @property
     def Url(self):
-        """回调API地址
+        r"""回调API地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4422,7 +4422,7 @@ class Rule(AbstractModel):
 
     @property
     def DataThreshold(self):
-        """用量类：用量阈值,单位MB
+        r"""用量类：用量阈值,单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4434,7 +4434,7 @@ class Rule(AbstractModel):
 
     @property
     def District(self):
-        """行政区类型：1. 省份 2. 城市 3. 区
+        r"""行政区类型：1. 省份 2. 城市 3. 区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4446,7 +4446,7 @@ class Rule(AbstractModel):
 
     @property
     def Distance(self):
-        """移动距离阈值，单位KM
+        r"""移动距离阈值，单位KM
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4458,7 +4458,7 @@ class Rule(AbstractModel):
 
     @property
     def SignalStrength(self):
-        """信号强度阈值(-dbm）
+        r"""信号强度阈值(-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4470,7 +4470,7 @@ class Rule(AbstractModel):
 
     @property
     def LostDay(self):
-        """盲点阈值天数
+        r"""盲点阈值天数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4482,7 +4482,7 @@ class Rule(AbstractModel):
 
     @property
     def TagIDs(self):
-        """绑定的标签ID集合
+        r"""绑定的标签ID集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -4494,7 +4494,7 @@ class Rule(AbstractModel):
 
     @property
     def SalePlan(self):
-        """绑定的资费计划
+        r"""绑定的资费计划
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4534,7 +4534,7 @@ class Rule(AbstractModel):
 
 
 class RuleDetail(AbstractModel):
-    """自动化规则详细信息
+    r"""自动化规则详细信息
 
     """
 
@@ -4610,7 +4610,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -4621,7 +4621,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def ID(self):
-        """规则ID
+        r"""规则ID
         :rtype: int
         """
         return self._ID
@@ -4632,7 +4632,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4644,7 +4644,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4656,7 +4656,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def DeletedAt(self):
-        """删除时间
+        r"""删除时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4668,7 +4668,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Type(self):
-        """规则类型
+        r"""规则类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4680,7 +4680,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活
+        r"""是否激活
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4692,7 +4692,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Notice(self):
-        """触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
+        r"""触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4704,7 +4704,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4716,7 +4716,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Url(self):
-        """回调API地址
+        r"""回调API地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4728,7 +4728,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def DataThreshold(self):
-        """用量类：用量阈值,单位MB
+        r"""用量类：用量阈值,单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4740,7 +4740,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def District(self):
-        """行政区类型：1. 省份 2. 城市 3. 区
+        r"""行政区类型：1. 省份 2. 城市 3. 区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4752,7 +4752,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def Distance(self):
-        """移动距离阈值，单位KM
+        r"""移动距离阈值，单位KM
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4764,7 +4764,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def SignalStrength(self):
-        """信号强度阈值(-dbm）
+        r"""信号强度阈值(-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4776,7 +4776,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def LostDay(self):
-        """盲点阈值天数
+        r"""盲点阈值天数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4788,7 +4788,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def TagIDs(self):
-        """标签ID集合
+        r"""标签ID集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -4800,7 +4800,7 @@ class RuleDetail(AbstractModel):
 
     @property
     def SalePlan(self):
-        """资费信息
+        r"""资费信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4840,7 +4840,7 @@ class RuleDetail(AbstractModel):
 
 
 class RuleInfos(AbstractModel):
-    """自动化规则集合
+    r"""自动化规则集合
 
     """
 
@@ -4857,7 +4857,7 @@ class RuleInfos(AbstractModel):
 
     @property
     def Total(self):
-        """总量
+        r"""总量
         :rtype: int
         """
         return self._Total
@@ -4868,7 +4868,7 @@ class RuleInfos(AbstractModel):
 
     @property
     def List(self):
-        """列表
+        r"""列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Rule
         """
@@ -4898,7 +4898,7 @@ class RuleInfos(AbstractModel):
 
 
 class Tactic(AbstractModel):
-    """策略信息
+    r"""策略信息
 
     """
 
@@ -4985,7 +4985,7 @@ class Tactic(AbstractModel):
 
     @property
     def ID(self):
-        """策略ID
+        r"""策略ID
         :rtype: int
         """
         return self._ID
@@ -4996,7 +4996,7 @@ class Tactic(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5008,7 +5008,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsAuto(self):
-        """是否自动执行策略
+        r"""是否自动执行策略
         :rtype: int
         """
         return self._IsAuto
@@ -5019,7 +5019,7 @@ class Tactic(AbstractModel):
 
     @property
     def PingInterval(self):
-        """设备上报信息间隔
+        r"""设备上报信息间隔
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5031,7 +5031,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsWeak(self):
-        """是否开启弱信号检查
+        r"""是否开启弱信号检查
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5043,7 +5043,7 @@ class Tactic(AbstractModel):
 
     @property
     def WeakThreshold(self):
-        """弱信号阈值（-dbm）
+        r"""弱信号阈值（-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5055,7 +5055,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsDelay(self):
-        """忘了时延切换
+        r"""忘了时延切换
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5067,7 +5067,7 @@ class Tactic(AbstractModel):
 
     @property
     def DelayThreshold(self):
-        """时延阈值（ms）
+        r"""时延阈值（ms）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5079,7 +5079,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsFake(self):
-        """是否开启假信号检测
+        r"""是否开启假信号检测
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5091,7 +5091,7 @@ class Tactic(AbstractModel):
 
     @property
     def FakeIP(self):
-        """假信号检测IP字符串，用逗号分隔
+        r"""假信号检测IP字符串，用逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5103,7 +5103,7 @@ class Tactic(AbstractModel):
 
     @property
     def FakeInterval(self):
-        """假信号检测间隔（s）
+        r"""假信号检测间隔（s）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5115,7 +5115,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsNet(self):
-        """是否开启网络制式检测
+        r"""是否开启网络制式检测
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5127,7 +5127,7 @@ class Tactic(AbstractModel):
 
     @property
     def Network(self):
-        """网络回落制式 1: 2G、 2: 3G 、 3: 2/3G
+        r"""网络回落制式 1: 2G、 2: 3G 、 3: 2/3G
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5139,7 +5139,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsMove(self):
-        """是否开启移动检测
+        r"""是否开启移动检测
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5151,7 +5151,7 @@ class Tactic(AbstractModel):
 
     @property
     def Name(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._Name
@@ -5162,7 +5162,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsPriorityTele(self):
-        """是否开启最优先运营商
+        r"""是否开启最优先运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5174,7 +5174,7 @@ class Tactic(AbstractModel):
 
     @property
     def PriorityTele(self):
-        """最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        r"""最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5186,7 +5186,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsBottomTele(self):
-        """是否开启最不优先运营商
+        r"""是否开启最不优先运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5198,7 +5198,7 @@ class Tactic(AbstractModel):
 
     @property
     def BottomTele(self):
-        """最不优先运营商 1 移动、 2 联通、 3 电信
+        r"""最不优先运营商 1 移动、 2 联通、 3 电信
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5210,7 +5210,7 @@ class Tactic(AbstractModel):
 
     @property
     def IsBestSignal(self):
-        """是否开启最优先信号选取策略
+        r"""是否开启最优先信号选取策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5253,7 +5253,7 @@ class Tactic(AbstractModel):
 
 
 class TacticInfos(AbstractModel):
-    """策略信息集合
+    r"""策略信息集合
 
     """
 
@@ -5270,7 +5270,7 @@ class TacticInfos(AbstractModel):
 
     @property
     def Total(self):
-        """总量
+        r"""总量
         :rtype: int
         """
         return self._Total
@@ -5281,7 +5281,7 @@ class TacticInfos(AbstractModel):
 
     @property
     def List(self):
-        """策略列表
+        r"""策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tactic
         """
@@ -5311,7 +5311,7 @@ class TacticInfos(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """云兔标签信息
+    r"""云兔标签信息
 
     """
 
@@ -5339,7 +5339,7 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Name
@@ -5350,7 +5350,7 @@ class Tag(AbstractModel):
 
     @property
     def ID(self):
-        """标签ID
+        r"""标签ID
         :rtype: int
         """
         return self._ID
@@ -5361,7 +5361,7 @@ class Tag(AbstractModel):
 
     @property
     def Comment(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5373,7 +5373,7 @@ class Tag(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5385,7 +5385,7 @@ class Tag(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更改时间
+        r"""更改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5413,7 +5413,7 @@ class Tag(AbstractModel):
 
 
 class TagInfos(AbstractModel):
-    """标签列表集合
+    r"""标签列表集合
 
     """
 
@@ -5430,7 +5430,7 @@ class TagInfos(AbstractModel):
 
     @property
     def Total(self):
-        """总量
+        r"""总量
         :rtype: int
         """
         return self._Total
@@ -5441,7 +5441,7 @@ class TagInfos(AbstractModel):
 
     @property
     def List(self):
-        """列表
+        r"""列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -5471,7 +5471,7 @@ class TagInfos(AbstractModel):
 
 
 class TeleOperatorCard(AbstractModel):
-    """运营商卡片信息
+    r"""运营商卡片信息
 
     """
 
@@ -5506,7 +5506,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def AccountTime(self):
-        """开户时间
+        r"""开户时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5518,7 +5518,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """激活时间
+        r"""激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5530,7 +5530,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def ICCID(self):
-        """运营商ICCID
+        r"""运营商ICCID
         :rtype: str
         """
         return self._ICCID
@@ -5541,7 +5541,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def LinkID(self):
-        """云兔卡ID
+        r"""云兔卡ID
         :rtype: int
         """
         return self._LinkID
@@ -5552,7 +5552,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def Msisdn(self):
-        """电话号码
+        r"""电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5564,7 +5564,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def IMSI(self):
-        """移动用户识别码
+        r"""移动用户识别码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5576,7 +5576,7 @@ class TeleOperatorCard(AbstractModel):
 
     @property
     def TeleOperator(self):
-        """运营商: 1 移动 2 联通 3 电信
+        r"""运营商: 1 移动 2 联通 3 电信
         :rtype: int
         """
         return self._TeleOperator

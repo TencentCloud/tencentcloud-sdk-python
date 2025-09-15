@@ -27,7 +27,7 @@ class LcicClient(AbstractClient):
 
 
     def AddGroupMember(self, request):
-        """此接口用于添加成员列表到指定群组
+        r"""此接口用于添加成员列表到指定群组
 
         :param request: Request instance for AddGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberRequest`
@@ -50,7 +50,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchAddGroupMember(self, request):
-        """此接口用于批量添加成员列表到指定群组
+        r"""此接口用于批量添加成员列表到指定群组
 
         :param request: Request instance for BatchAddGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberRequest`
@@ -73,7 +73,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchCreateGroupWithMembers(self, request):
-        """此接口用于批量创建群组
+        r"""此接口用于批量创建群组
 
         :param request: Request instance for BatchCreateGroupWithMembers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersRequest`
@@ -96,7 +96,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchCreateRoom(self, request):
-        """批量创建房间接口
+        r"""批量创建房间接口
 
         :param request: Request instance for BatchCreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateRoomRequest`
@@ -119,7 +119,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchDeleteGroupMember(self, request):
-        """此接口用于批量删除成员列表到指定群组列表
+        r"""此接口用于批量删除成员列表到指定群组列表
 
         :param request: Request instance for BatchDeleteGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberRequest`
@@ -142,7 +142,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchDeleteRecord(self, request):
-        """批量删除多个房间的录制文件
+        r"""批量删除多个房间的录制文件
 
         :param request: Request instance for BatchDeleteRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteRecordRequest`
@@ -165,7 +165,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchDescribeDocument(self, request):
-        """批量获取文档详情
+        r"""批量获取文档详情
 
         :param request: Request instance for BatchDescribeDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDescribeDocumentRequest`
@@ -188,7 +188,7 @@ class LcicClient(AbstractClient):
 
 
     def BatchRegister(self, request):
-        """如果批量注册的用户已存在，则会被覆盖。一次最多注册1000个用户。默认请求频率限制：10次/秒
+        r"""如果批量注册的用户已存在，则会被覆盖。一次最多注册1000个用户。默认请求频率限制：10次/秒
 
         :param request: Request instance for BatchRegister.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchRegisterRequest`
@@ -211,7 +211,7 @@ class LcicClient(AbstractClient):
 
 
     def BindDocumentToRoom(self, request):
-        """功能概述
+        r"""功能概述
         本接口提供教学场景下的课程文档预绑定能力，支持将课件课堂ID进行关联映射，实现课件的自动化预加载。
 
         应用场景建议
@@ -254,7 +254,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateDocument(self, request):
-        """创建房间内可以使用的文档。
+        r"""创建房间内可以使用的文档。
 
         :param request: Request instance for CreateDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateDocumentRequest`
@@ -277,7 +277,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateGroupWithMembers(self, request):
-        """此接口根据成员列表创建群组
+        r"""此接口根据成员列表创建群组
 
         :param request: Request instance for CreateGroupWithMembers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersRequest`
@@ -300,7 +300,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateGroupWithSubGroup(self, request):
-        """此接口会聚合子群组创建联合群组
+        r"""此接口会聚合子群组创建联合群组
 
         :param request: Request instance for CreateGroupWithSubGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupRequest`
@@ -323,7 +323,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateRoom(self, request):
-        """创建课堂
+        r"""创建课堂
 
         :param request: Request instance for CreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateRoomRequest`
@@ -346,7 +346,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateSupervisor(self, request):
-        """创建巡课
+        r"""创建巡课
 
         :param request: Request instance for CreateSupervisor.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateSupervisorRequest`
@@ -369,7 +369,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteAppCustomContent(self, request):
-        """删除设置自定义元素。如果参数scenes为空则删除所有自定义元素，否则删除指定的scene自定义元素。
+        r"""删除设置自定义元素。如果参数scenes为空则删除所有自定义元素，否则删除指定的scene自定义元素。
 
         :param request: Request instance for DeleteAppCustomContent.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteAppCustomContentRequest`
@@ -392,7 +392,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteDocument(self, request):
-        """删除文档
+        r"""删除文档
 
         :param request: Request instance for DeleteDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteDocumentRequest`
@@ -415,7 +415,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """此接口用于删除指定群组，支持批量操作。
+        r"""此接口用于删除指定群组，支持批量操作。
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupRequest`
@@ -438,7 +438,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteGroupMember(self, request):
-        """此接口用于删除群组中指定成员
+        r"""此接口用于删除群组中指定成员
 
         :param request: Request instance for DeleteGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberRequest`
@@ -461,7 +461,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteRecord(self, request):
-        """删除指定房间的录制文件
+        r"""删除指定房间的录制文件
 
         :param request: Request instance for DeleteRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteRecordRequest`
@@ -484,7 +484,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteRoom(self, request):
-        """删除房间
+        r"""删除房间
         删除课堂前，请先删除该课堂下的各类资源（包括录制文件、板书等），并解绑相关课件。
 
         :param request: Request instance for DeleteRoom.
@@ -508,7 +508,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteSupervisor(self, request):
-        """删除巡课
+        r"""删除巡课
 
         :param request: Request instance for DeleteSupervisor.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteSupervisorRequest`
@@ -531,7 +531,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """删除已注册用户。注：如果该成员已被添加到群组，请先在群组中删除该成员。
+        r"""删除已注册用户。注：如果该成员已被添加到群组，请先在群组中删除该成员。
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteUserRequest`
@@ -554,7 +554,7 @@ class LcicClient(AbstractClient):
 
 
     def DeleteWhiteBoardSnapshot(self, request):
-        """删除白板板书截图
+        r"""删除白板板书截图
 
         :param request: Request instance for DeleteWhiteBoardSnapshot.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteWhiteBoardSnapshotRequest`
@@ -577,7 +577,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeAnswerList(self, request):
-        """获取房间答题详情
+        r"""获取房间答题详情
 
         :param request: Request instance for DescribeAnswerList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeAnswerListRequest`
@@ -600,7 +600,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeAppDetail(self, request):
-        """获取应用详情
+        r"""获取应用详情
 
         :param request: Request instance for DescribeAppDetail.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeAppDetailRequest`
@@ -623,7 +623,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeCurrentMemberList(self, request):
-        """获取当前房间的成员列表，房间结束或过期后无法使用。
+        r"""获取当前房间的成员列表，房间结束或过期后无法使用。
 
         :param request: Request instance for DescribeCurrentMemberList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListRequest`
@@ -646,7 +646,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDeveloper(self, request):
-        """开发商信息获取
+        r"""开发商信息获取
 
         :param request: Request instance for DescribeDeveloper.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperRequest`
@@ -669,7 +669,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDocument(self, request):
-        """获取文档信息
+        r"""获取文档信息
 
         :param request: Request instance for DescribeDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentRequest`
@@ -692,7 +692,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDocuments(self, request):
-        """有新接口替换
+        r"""有新接口替换
 
         批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 
@@ -717,7 +717,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDocumentsByRoom(self, request):
-        """此接口获取指定房间下课件列表
+        r"""此接口获取指定房间下课件列表
 
         :param request: Request instance for DescribeDocumentsByRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsByRoomRequest`
@@ -740,7 +740,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeGroup(self, request):
-        """此接口用于获取群组详情
+        r"""此接口用于获取群组详情
 
         :param request: Request instance for DescribeGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupRequest`
@@ -763,7 +763,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeGroupList(self, request):
-        """获取群组列表
+        r"""获取群组列表
 
         :param request: Request instance for DescribeGroupList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListRequest`
@@ -786,7 +786,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeGroupMemberList(self, request):
-        """此接口用于获取群组成员列表
+        r"""此接口用于获取群组成员列表
 
         :param request: Request instance for DescribeGroupMemberList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListRequest`
@@ -809,7 +809,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeMarquee(self, request):
-        """查询跑马灯配置
+        r"""查询跑马灯配置
 
         :param request: Request instance for DescribeMarquee.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeMarqueeRequest`
@@ -832,7 +832,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeQuestionList(self, request):
-        """获取房间提问列表
+        r"""获取房间提问列表
 
         :param request: Request instance for DescribeQuestionList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeQuestionListRequest`
@@ -855,7 +855,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRecord(self, request):
-        """查询录制信息
+        r"""查询录制信息
 
         :param request: Request instance for DescribeRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordRequest`
@@ -878,7 +878,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRecordStream(self, request):
-        """录制流查询
+        r"""录制流查询
 
         :param request: Request instance for DescribeRecordStream.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordStreamRequest`
@@ -901,7 +901,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRecordTask(self, request):
-        """查询录制任务ID
+        r"""查询录制任务ID
 
         :param request: Request instance for DescribeRecordTask.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordTaskRequest`
@@ -924,7 +924,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRoom(self, request):
-        """获取房间配置信息
+        r"""获取房间配置信息
 
         :param request: Request instance for DescribeRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomRequest`
@@ -947,7 +947,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRoomForbiddenUser(self, request):
-        """根据房间ID获取群组中被禁言的用户列表。
+        r"""根据房间ID获取群组中被禁言的用户列表。
 
         :param request: Request instance for DescribeRoomForbiddenUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomForbiddenUserRequest`
@@ -970,7 +970,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRoomStatistics(self, request):
-        """获取房间统计信息，仅可在房间结束后调用。
+        r"""获取房间统计信息，仅可在房间结束后调用。
 
         :param request: Request instance for DescribeRoomStatistics.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomStatisticsRequest`
@@ -993,7 +993,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeScoreList(self, request):
-        """获取课堂评分列表
+        r"""获取课堂评分列表
 
         :param request: Request instance for DescribeScoreList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeScoreListRequest`
@@ -1016,7 +1016,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeSdkAppIdUsers(self, request):
-        """此接口用于获取指定应用ID下用户列表
+        r"""此接口用于获取指定应用ID下用户列表
 
         :param request: Request instance for DescribeSdkAppIdUsers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeSdkAppIdUsersRequest`
@@ -1039,7 +1039,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeSupervisors(self, request):
-        """获取巡课列表
+        r"""获取巡课列表
 
         :param request: Request instance for DescribeSupervisors.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeSupervisorsRequest`
@@ -1062,7 +1062,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """获取用户信息
+        r"""获取用户信息
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeUserRequest`
@@ -1085,7 +1085,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeUserDetail(self, request):
-        """获取用户信息
+        r"""获取用户信息
 
         :param request: Request instance for DescribeUserDetail.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeUserDetailRequest`
@@ -1108,7 +1108,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeWhiteBoardSnapshot(self, request):
-        """查询白板板书截图
+        r"""查询白板板书截图
         课程结束后，可以查询和以图片的形式导出这些内容，方便后续查看、整理与分享。
         注意：不支持屏幕共享中的板书导出。
 
@@ -1133,7 +1133,7 @@ class LcicClient(AbstractClient):
 
 
     def EndRoom(self, request):
-        """结束房间的直播
+        r"""结束房间的直播
 
         :param request: Request instance for EndRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.EndRoomRequest`
@@ -1156,7 +1156,7 @@ class LcicClient(AbstractClient):
 
 
     def ForbidSendMsg(self, request):
-        """禁止指定房间中某些用户在一段时间内发言。
+        r"""禁止指定房间中某些用户在一段时间内发言。
         取消对某些用户的禁言。
         被禁言用户退出房间之后再进入同一房间，禁言仍然有效。
 
@@ -1181,7 +1181,7 @@ class LcicClient(AbstractClient):
 
 
     def GetRoomEvent(self, request):
-        """获取房间事件,仅在课堂结束1小时内有效。
+        r"""获取房间事件,仅在课堂结束1小时内有效。
 
         :param request: Request instance for GetRoomEvent.
         :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomEventRequest`
@@ -1204,7 +1204,7 @@ class LcicClient(AbstractClient):
 
 
     def GetRoomMessage(self, request):
-        """获取房间历史消息(房间历史消息保存7天)
+        r"""获取房间历史消息(房间历史消息保存7天)
 
         :param request: Request instance for GetRoomMessage.
         :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomMessageRequest`
@@ -1227,7 +1227,7 @@ class LcicClient(AbstractClient):
 
 
     def GetRooms(self, request):
-        """获取房间列表
+        r"""获取房间列表
 
         :param request: Request instance for GetRooms.
         :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomsRequest`
@@ -1250,7 +1250,7 @@ class LcicClient(AbstractClient):
 
 
     def GetWatermark(self, request):
-        """获取水印设置
+        r"""获取水印设置
 
         :param request: Request instance for GetWatermark.
         :type request: :class:`tencentcloud.lcic.v20220817.models.GetWatermarkRequest`
@@ -1273,7 +1273,7 @@ class LcicClient(AbstractClient):
 
 
     def KickUserFromRoom(self, request):
-        """从房间里面踢出用户
+        r"""从房间里面踢出用户
 
         :param request: Request instance for KickUserFromRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.KickUserFromRoomRequest`
@@ -1296,7 +1296,7 @@ class LcicClient(AbstractClient):
 
 
     def LoginOriginId(self, request):
-        """使用源账号登录，源账号为注册时填入的originId
+        r"""使用源账号登录，源账号为注册时填入的originId
 
         :param request: Request instance for LoginOriginId.
         :type request: :class:`tencentcloud.lcic.v20220817.models.LoginOriginIdRequest`
@@ -1319,7 +1319,7 @@ class LcicClient(AbstractClient):
 
 
     def LoginUser(self, request):
-        """登录
+        r"""登录
 
         :param request: Request instance for LoginUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.LoginUserRequest`
@@ -1342,7 +1342,7 @@ class LcicClient(AbstractClient):
 
 
     def ModifyApp(self, request):
-        """修改应用
+        r"""修改应用
 
         :param request: Request instance for ModifyApp.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyAppRequest`
@@ -1365,7 +1365,7 @@ class LcicClient(AbstractClient):
 
 
     def ModifyGroup(self, request):
-        """此接口修改群组信息
+        r"""此接口修改群组信息
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupRequest`
@@ -1388,7 +1388,7 @@ class LcicClient(AbstractClient):
 
 
     def ModifyRoom(self, request):
-        """修改房间
+        r"""修改房间
 
         :param request: Request instance for ModifyRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyRoomRequest`
@@ -1411,7 +1411,7 @@ class LcicClient(AbstractClient):
 
 
     def ModifyUserProfile(self, request):
-        """此接口用于修改用户信息，例如头像、昵称（用户名）等。注意，课中的用户信息不会立即同步修改，需待下次上课时，修改后的信息才会更新显示。
+        r"""此接口用于修改用户信息，例如头像、昵称（用户名）等。注意，课中的用户信息不会立即同步修改，需待下次上课时，修改后的信息才会更新显示。
 
         :param request: Request instance for ModifyUserProfile.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyUserProfileRequest`
@@ -1434,7 +1434,7 @@ class LcicClient(AbstractClient):
 
 
     def RegisterUser(self, request):
-        """注册用户
+        r"""注册用户
 
         :param request: Request instance for RegisterUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.RegisterUserRequest`
@@ -1457,7 +1457,7 @@ class LcicClient(AbstractClient):
 
 
     def SendRoomNormalMessage(self, request):
-        """1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
+        r"""1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
 
         :param request: Request instance for SendRoomNormalMessage.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SendRoomNormalMessageRequest`
@@ -1480,7 +1480,7 @@ class LcicClient(AbstractClient):
 
 
     def SendRoomNotificationMessage(self, request):
-        """App 管理员可以通过该接口在群组中发送通知、公告等。目前仅支持文本消息。
+        r"""App 管理员可以通过该接口在群组中发送通知、公告等。目前仅支持文本消息。
 
         :param request: Request instance for SendRoomNotificationMessage.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SendRoomNotificationMessageRequest`
@@ -1503,7 +1503,7 @@ class LcicClient(AbstractClient):
 
 
     def SetAppCustomContent(self, request):
-        """设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
+        r"""设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 
         :param request: Request instance for SetAppCustomContent.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SetAppCustomContentRequest`
@@ -1526,7 +1526,7 @@ class LcicClient(AbstractClient):
 
 
     def SetMarquee(self, request):
-        """设置跑马灯参数设置
+        r"""设置跑马灯参数设置
 
         :param request: Request instance for SetMarquee.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SetMarqueeRequest`
@@ -1549,7 +1549,7 @@ class LcicClient(AbstractClient):
 
 
     def SetWatermark(self, request):
-        """设置水印
+        r"""设置水印
 
         :param request: Request instance for SetWatermark.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SetWatermarkRequest`
@@ -1572,7 +1572,7 @@ class LcicClient(AbstractClient):
 
 
     def StartRecord(self, request):
-        """开始录制
+        r"""开始录制
 
         :param request: Request instance for StartRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.StartRecordRequest`
@@ -1595,7 +1595,7 @@ class LcicClient(AbstractClient):
 
 
     def StartRoom(self, request):
-        """开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
+        r"""开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
 
         :param request: Request instance for StartRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.StartRoomRequest`
@@ -1618,7 +1618,7 @@ class LcicClient(AbstractClient):
 
 
     def StopRecord(self, request):
-        """停止录制
+        r"""停止录制
 
         :param request: Request instance for StopRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.StopRecordRequest`
@@ -1641,7 +1641,7 @@ class LcicClient(AbstractClient):
 
 
     def UnbindDocumentFromRoom(self, request):
-        """文档从房间解绑
+        r"""文档从房间解绑
 
         :param request: Request instance for UnbindDocumentFromRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.UnbindDocumentFromRoomRequest`
@@ -1664,7 +1664,7 @@ class LcicClient(AbstractClient):
 
 
     def UnblockKickedUser(self, request):
-        """解禁从房间里面踢出的用户
+        r"""解禁从房间里面踢出的用户
 
         :param request: Request instance for UnblockKickedUser.
         :type request: :class:`tencentcloud.lcic.v20220817.models.UnblockKickedUserRequest`

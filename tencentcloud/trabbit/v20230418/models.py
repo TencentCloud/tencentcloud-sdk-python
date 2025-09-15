@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateRabbitMQServerlessBindingRequest(AbstractModel):
-    """CreateRabbitMQServerlessBinding请求参数结构体
+    r"""CreateRabbitMQServerlessBinding请求参数结构体
 
     """
 
@@ -47,7 +47,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -58,7 +58,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -69,7 +69,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def Source(self):
-        """源exchange
+        r"""源exchange
         :rtype: str
         """
         return self._Source
@@ -80,7 +80,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def DestinationType(self):
-        """目标类型,取值queue或exchange
+        r"""目标类型,取值queue或exchange
         :rtype: str
         """
         return self._DestinationType
@@ -91,7 +91,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def Destination(self):
-        """目标队列或者交换机
+        r"""目标队列或者交换机
         :rtype: str
         """
         return self._Destination
@@ -102,7 +102,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
-        """绑定key
+        r"""绑定key
         :rtype: str
         """
         return self._RoutingKey
@@ -130,7 +130,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
 
 class CreateRabbitMQServerlessBindingResponse(AbstractModel):
-    """CreateRabbitMQServerlessBinding返回参数结构体
+    r"""CreateRabbitMQServerlessBinding返回参数结构体
 
     """
 
@@ -152,7 +152,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._InstanceId
@@ -163,7 +163,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost参数
+        r"""vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -174,7 +174,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def BindingId(self):
-        """路由关系Id
+        r"""路由关系Id
         :rtype: int
         """
         return self._BindingId
@@ -185,7 +185,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -203,7 +203,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
 
 class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
-    """CreateRabbitMQServerlessExchange请求参数结构体
+    r"""CreateRabbitMQServerlessExchange请求参数结构体
 
     """
 
@@ -243,7 +243,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -254,7 +254,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """VHost参数
+        r"""VHost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -265,7 +265,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -276,7 +276,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def ExchangeType(self):
-        """exchange 类型, 支持 "fanout","direct","topic","headers"
+        r"""exchange 类型, 支持 "fanout","direct","topic","headers"
         :rtype: str
         """
         return self._ExchangeType
@@ -287,7 +287,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """exchange 备注
+        r"""exchange 备注
         :rtype: str
         """
         return self._Remark
@@ -298,7 +298,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def Durable(self):
-        """是否为持久化 exchange, 当集群重启时,将会清除所有该字段为"false"的 exchange
+        r"""是否为持久化 exchange, 当集群重启时,将会清除所有该字段为"false"的 exchange
         :rtype: bool
         """
         return self._Durable
@@ -309,7 +309,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """是否自动删除该 exchange, 如果为 "true", 当解绑所有当前 exchange 上的路由关系时, 该 exchange 将会被自动删除
+        r"""是否自动删除该 exchange, 如果为 "true", 当解绑所有当前 exchange 上的路由关系时, 该 exchange 将会被自动删除
         :rtype: bool
         """
         return self._AutoDelete
@@ -320,7 +320,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def Internal(self):
-        """是否为内部 exchange, 如果为 "true", 则无法直接投递消息到该 exchange, 需要在路由设置中通过其他 exchange 进行转发
+        r"""是否为内部 exchange, 如果为 "true", 则无法直接投递消息到该 exchange, 需要在路由设置中通过其他 exchange 进行转发
         :rtype: bool
         """
         return self._Internal
@@ -331,7 +331,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def AlternateExchange(self):
-        """替代 exchange, 如果消息无法发送到当前 exchange, 就会发送到该替代 exchange
+        r"""替代 exchange, 如果消息无法发送到当前 exchange, 就会发送到该替代 exchange
         :rtype: str
         """
         return self._AlternateExchange
@@ -342,7 +342,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def DelayedExchangeType(self):
-        """延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
+        r"""延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
         :rtype: str
         """
         return self._DelayedExchangeType
@@ -374,7 +374,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
 
 
 class CreateRabbitMQServerlessExchangeResponse(AbstractModel):
-    """CreateRabbitMQServerlessExchange返回参数结构体
+    r"""CreateRabbitMQServerlessExchange返回参数结构体
 
     """
 
@@ -390,7 +390,7 @@ class CreateRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -401,7 +401,7 @@ class CreateRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -417,7 +417,7 @@ class CreateRabbitMQServerlessExchangeResponse(AbstractModel):
 
 
 class CreateRabbitMQServerlessQueueRequest(AbstractModel):
-    """CreateRabbitMQServerlessQueue请求参数结构体
+    r"""CreateRabbitMQServerlessQueue请求参数结构体
 
     """
 
@@ -502,7 +502,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -513,7 +513,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """VHost参数
+        r"""VHost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -524,7 +524,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -535,7 +535,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QueueType(self):
-        """只支持 classic
+        r"""只支持 classic
         :rtype: str
         """
         return self._QueueType
@@ -546,7 +546,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def Durable(self):
-        """持久标记,classic类型必传,quorum类型无需传入固定为true
+        r"""持久标记,classic类型必传,quorum类型无需传入固定为true
         :rtype: bool
         """
         return self._Durable
@@ -557,7 +557,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """自动清除,classic类型必传,quorum类型无需传入固定为false
+        r"""自动清除,classic类型必传,quorum类型无需传入固定为false
         :rtype: bool
         """
         return self._AutoDelete
@@ -568,7 +568,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -579,7 +579,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MessageTTL(self):
-        """MessageTTL参数,classic类型专用
+        r"""MessageTTL参数,classic类型专用
         :rtype: int
         """
         return self._MessageTTL
@@ -590,7 +590,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def AutoExpire(self):
-        """AutoExpire参数，单位为 ms，队列在指定时间内没有被使用，将会被删除
+        r"""AutoExpire参数，单位为 ms，队列在指定时间内没有被使用，将会被删除
         :rtype: int
         """
         return self._AutoExpire
@@ -601,7 +601,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MaxLength(self):
-        """MaxLength参数。队列可以容纳的最大条数。若超出上限，将根据 overview behavior 处理
+        r"""MaxLength参数。队列可以容纳的最大条数。若超出上限，将根据 overview behavior 处理
         :rtype: int
         """
         return self._MaxLength
@@ -612,7 +612,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MaxLengthBytes(self):
-        """MaxLengthBytes参数。若超出上限，将根据 overview behavior 处理。
+        r"""MaxLengthBytes参数。若超出上限，将根据 overview behavior 处理。
         :rtype: int
         """
         return self._MaxLengthBytes
@@ -623,7 +623,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def DeliveryLimit(self):
-        """DeliveryLimit参数,quorum类型专用
+        r"""DeliveryLimit参数,quorum类型专用
         :rtype: int
         """
         return self._DeliveryLimit
@@ -634,7 +634,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def OverflowBehaviour(self):
-        """OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
+        r"""OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
         :rtype: str
         """
         return self._OverflowBehaviour
@@ -645,7 +645,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def DeadLetterExchange(self):
-        """DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
+        r"""DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
         :rtype: str
         """
         return self._DeadLetterExchange
@@ -656,7 +656,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def DeadLetterRoutingKey(self):
-        """DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
+        r"""DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
         :rtype: str
         """
         return self._DeadLetterRoutingKey
@@ -667,7 +667,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def SingleActiveConsumer(self):
-        """SingleActiveConsumer参数。若开启，需确保每次有且只有一个消费者从队列中消费
+        r"""SingleActiveConsumer参数。若开启，需确保每次有且只有一个消费者从队列中消费
         :rtype: bool
         """
         return self._SingleActiveConsumer
@@ -678,7 +678,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MaximumPriority(self):
-        """MaximumPriority参数,classic类型专用
+        r"""MaximumPriority参数,classic类型专用
         :rtype: int
         """
         return self._MaximumPriority
@@ -689,7 +689,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def LazyMode(self):
-        """LazyMode参数,classic类型专用
+        r"""LazyMode参数,classic类型专用
         :rtype: bool
         """
         return self._LazyMode
@@ -700,7 +700,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MasterLocator(self):
-        """MasterLocator参数,classic类型专用,取值为min-masters,client-local或random
+        r"""MasterLocator参数,classic类型专用,取值为min-masters,client-local或random
         :rtype: str
         """
         return self._MasterLocator
@@ -711,7 +711,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MaxInMemoryLength(self):
-        """MaxInMemoryLength参数，quorum类型专用。quorum 队列的内存中最大消息数量
+        r"""MaxInMemoryLength参数，quorum类型专用。quorum 队列的内存中最大消息数量
         :rtype: int
         """
         return self._MaxInMemoryLength
@@ -722,7 +722,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def MaxInMemoryBytes(self):
-        """MaxInMemoryBytes参数，quorum类型专用。quorum 队列的内存中最大数总消息大小
+        r"""MaxInMemoryBytes参数，quorum类型专用。quorum 队列的内存中最大数总消息大小
         :rtype: int
         """
         return self._MaxInMemoryBytes
@@ -733,7 +733,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def Node(self):
-        """Node参数，非必填，指定创建 queue 所在节点
+        r"""Node参数，非必填，指定创建 queue 所在节点
         :rtype: str
         """
         return self._Node
@@ -744,7 +744,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def DeadLetterStrategy(self):
-        """仲裁队列死信一致性策略，at-most-once、at-least-once，默认是at-most-once
+        r"""仲裁队列死信一致性策略，at-most-once、at-least-once，默认是at-most-once
         :rtype: str
         """
         return self._DeadLetterStrategy
@@ -755,7 +755,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QueueLeaderLocator(self):
-        """仲裁队列的领导者选举策略，client-local、balanced，默认是client-local
+        r"""仲裁队列的领导者选举策略，client-local、balanced，默认是client-local
         :rtype: str
         """
         return self._QueueLeaderLocator
@@ -766,7 +766,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QuorumInitialGroupSize(self):
-        """仲裁队列的初始副本组大小，默认3
+        r"""仲裁队列的初始副本组大小，默认3
         :rtype: int
         """
         return self._QuorumInitialGroupSize
@@ -813,7 +813,7 @@ class CreateRabbitMQServerlessQueueRequest(AbstractModel):
 
 
 class CreateRabbitMQServerlessQueueResponse(AbstractModel):
-    """CreateRabbitMQServerlessQueue返回参数结构体
+    r"""CreateRabbitMQServerlessQueue返回参数结构体
 
     """
 
@@ -829,7 +829,7 @@ class CreateRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -840,7 +840,7 @@ class CreateRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -856,7 +856,7 @@ class CreateRabbitMQServerlessQueueResponse(AbstractModel):
 
 
 class CreateRabbitMQServerlessUserRequest(AbstractModel):
-    """CreateRabbitMQServerlessUser请求参数结构体
+    r"""CreateRabbitMQServerlessUser请求参数结构体
 
     """
 
@@ -887,7 +887,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -898,7 +898,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        r"""用户名，登录时使用
         :rtype: str
         """
         return self._User
@@ -909,7 +909,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码，登录时使用
+        r"""密码，登录时使用
         :rtype: str
         """
         return self._Password
@@ -920,7 +920,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -931,7 +931,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """serverless 实例该字段无效
+        r"""serverless 实例该字段无效
         :rtype: list of str
         """
         return self._Tags
@@ -942,7 +942,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def MaxConnections(self):
-        """该用户的最大连接数，不填写则不限制
+        r"""该用户的最大连接数，不填写则不限制
         :rtype: int
         """
         return self._MaxConnections
@@ -953,7 +953,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def MaxChannels(self):
-        """该用户的最大channel数，不填写则不限制
+        r"""该用户的最大channel数，不填写则不限制
         :rtype: int
         """
         return self._MaxChannels
@@ -982,7 +982,7 @@ class CreateRabbitMQServerlessUserRequest(AbstractModel):
 
 
 class CreateRabbitMQServerlessUserResponse(AbstractModel):
-    """CreateRabbitMQServerlessUser返回参数结构体
+    r"""CreateRabbitMQServerlessUser返回参数结构体
 
     """
 
@@ -998,7 +998,7 @@ class CreateRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        r"""用户名，登录时使用
         :rtype: str
         """
         return self._User
@@ -1009,7 +1009,7 @@ class CreateRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1025,7 +1025,7 @@ class CreateRabbitMQServerlessUserResponse(AbstractModel):
 
 
 class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
-    """CreateRabbitMQServerlessVirtualHost请求参数结构体
+    r"""CreateRabbitMQServerlessVirtualHost请求参数结构体
 
     """
 
@@ -1050,7 +1050,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1061,7 +1061,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名称
+        r"""vhost名称
         :rtype: str
         """
         return self._VirtualHost
@@ -1072,7 +1072,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Description
@@ -1083,7 +1083,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def TraceFlag(self):
-        """消息轨迹开关,true打开,false关闭,默认关闭
+        r"""消息轨迹开关,true打开,false关闭,默认关闭
         :rtype: bool
         """
         return self._TraceFlag
@@ -1094,7 +1094,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        """是否创建镜像队列策略，默认值 true
+        r"""是否创建镜像队列策略，默认值 true
         :rtype: bool
         """
         return self._MirrorQueuePolicyFlag
@@ -1121,7 +1121,7 @@ class CreateRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
 
 class CreateRabbitMQServerlessVirtualHostResponse(AbstractModel):
-    """CreateRabbitMQServerlessVirtualHost返回参数结构体
+    r"""CreateRabbitMQServerlessVirtualHost返回参数结构体
 
     """
 
@@ -1137,7 +1137,7 @@ class CreateRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名称
+        r"""vhost名称
         :rtype: str
         """
         return self._VirtualHost
@@ -1148,7 +1148,7 @@ class CreateRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1164,7 +1164,7 @@ class CreateRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessBindingRequest(AbstractModel):
-    """DeleteRabbitMQServerlessBinding请求参数结构体
+    r"""DeleteRabbitMQServerlessBinding请求参数结构体
 
     """
 
@@ -1183,7 +1183,7 @@ class DeleteRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1194,7 +1194,7 @@ class DeleteRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -1205,7 +1205,7 @@ class DeleteRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def BindingId(self):
-        """路由关系Id
+        r"""路由关系Id
         :rtype: int
         """
         return self._BindingId
@@ -1230,7 +1230,7 @@ class DeleteRabbitMQServerlessBindingRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
-    """DeleteRabbitMQServerlessBinding返回参数结构体
+    r"""DeleteRabbitMQServerlessBinding返回参数结构体
 
     """
 
@@ -1252,7 +1252,7 @@ class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._InstanceId
@@ -1263,7 +1263,7 @@ class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost参数
+        r"""vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -1274,7 +1274,7 @@ class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def BindingId(self):
-        """路由关系Id
+        r"""路由关系Id
         :rtype: int
         """
         return self._BindingId
@@ -1285,7 +1285,7 @@ class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1303,7 +1303,7 @@ class DeleteRabbitMQServerlessBindingResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessExchangeRequest(AbstractModel):
-    """DeleteRabbitMQServerlessExchange请求参数结构体
+    r"""DeleteRabbitMQServerlessExchange请求参数结构体
 
     """
 
@@ -1322,7 +1322,7 @@ class DeleteRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 id
+        r"""实例 id
         :rtype: str
         """
         return self._InstanceId
@@ -1333,7 +1333,7 @@ class DeleteRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost 参数
+        r"""vhost 参数
         :rtype: str
         """
         return self._VirtualHost
@@ -1344,7 +1344,7 @@ class DeleteRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -1369,7 +1369,7 @@ class DeleteRabbitMQServerlessExchangeRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessExchangeResponse(AbstractModel):
-    """DeleteRabbitMQServerlessExchange返回参数结构体
+    r"""DeleteRabbitMQServerlessExchange返回参数结构体
 
     """
 
@@ -1385,7 +1385,7 @@ class DeleteRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -1396,7 +1396,7 @@ class DeleteRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1412,7 +1412,7 @@ class DeleteRabbitMQServerlessExchangeResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessPermissionRequest(AbstractModel):
-    """DeleteRabbitMQServerlessPermission请求参数结构体
+    r"""DeleteRabbitMQServerlessPermission请求参数结构体
 
     """
 
@@ -1431,7 +1431,7 @@ class DeleteRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1442,7 +1442,7 @@ class DeleteRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        r"""用户名，登录时使用
         :rtype: str
         """
         return self._User
@@ -1453,7 +1453,7 @@ class DeleteRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -1478,7 +1478,7 @@ class DeleteRabbitMQServerlessPermissionRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessPermissionResponse(AbstractModel):
-    """DeleteRabbitMQServerlessPermission返回参数结构体
+    r"""DeleteRabbitMQServerlessPermission返回参数结构体
 
     """
 
@@ -1491,7 +1491,7 @@ class DeleteRabbitMQServerlessPermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1506,7 +1506,7 @@ class DeleteRabbitMQServerlessPermissionResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessQueueRequest(AbstractModel):
-    """DeleteRabbitMQServerlessQueue请求参数结构体
+    r"""DeleteRabbitMQServerlessQueue请求参数结构体
 
     """
 
@@ -1525,7 +1525,7 @@ class DeleteRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1536,7 +1536,7 @@ class DeleteRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -1547,7 +1547,7 @@ class DeleteRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -1572,7 +1572,7 @@ class DeleteRabbitMQServerlessQueueRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessQueueResponse(AbstractModel):
-    """DeleteRabbitMQServerlessQueue返回参数结构体
+    r"""DeleteRabbitMQServerlessQueue返回参数结构体
 
     """
 
@@ -1588,7 +1588,7 @@ class DeleteRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -1599,7 +1599,7 @@ class DeleteRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1615,7 +1615,7 @@ class DeleteRabbitMQServerlessQueueResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessUserRequest(AbstractModel):
-    """DeleteRabbitMQServerlessUser请求参数结构体
+    r"""DeleteRabbitMQServerlessUser请求参数结构体
 
     """
 
@@ -1631,7 +1631,7 @@ class DeleteRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1642,7 +1642,7 @@ class DeleteRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        r"""用户名，登录时使用
         :rtype: str
         """
         return self._User
@@ -1666,7 +1666,7 @@ class DeleteRabbitMQServerlessUserRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessUserResponse(AbstractModel):
-    """DeleteRabbitMQServerlessUser返回参数结构体
+    r"""DeleteRabbitMQServerlessUser返回参数结构体
 
     """
 
@@ -1679,7 +1679,7 @@ class DeleteRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1694,7 +1694,7 @@ class DeleteRabbitMQServerlessUserResponse(AbstractModel):
 
 
 class DeleteRabbitMQServerlessVirtualHostRequest(AbstractModel):
-    """DeleteRabbitMQServerlessVirtualHost请求参数结构体
+    r"""DeleteRabbitMQServerlessVirtualHost请求参数结构体
 
     """
 
@@ -1710,7 +1710,7 @@ class DeleteRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1721,7 +1721,7 @@ class DeleteRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -1745,7 +1745,7 @@ class DeleteRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
 
 class DeleteRabbitMQServerlessVirtualHostResponse(AbstractModel):
-    """DeleteRabbitMQServerlessVirtualHost返回参数结构体
+    r"""DeleteRabbitMQServerlessVirtualHost返回参数结构体
 
     """
 
@@ -1758,7 +1758,7 @@ class DeleteRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1773,7 +1773,7 @@ class DeleteRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
-    """DescribeRabbitMQServerlessBindings请求参数结构体
+    r"""DescribeRabbitMQServerlessBindings请求参数结构体
 
     """
 
@@ -1807,7 +1807,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1818,7 +1818,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -1829,7 +1829,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页offset
+        r"""分页offset
         :rtype: int
         """
         return self._Offset
@@ -1840,7 +1840,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页limit
+        r"""分页limit
         :rtype: int
         """
         return self._Limit
@@ -1851,7 +1851,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+        r"""搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
         :rtype: str
         """
         return self._SearchWord
@@ -1862,7 +1862,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def SourceExchange(self):
-        """根据源Exchange精准搜索过滤
+        r"""根据源Exchange精准搜索过滤
         :rtype: str
         """
         return self._SourceExchange
@@ -1873,7 +1873,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        r"""根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
         :rtype: str
         """
         return self._QueueName
@@ -1884,7 +1884,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def DestinationExchange(self):
-        """根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+        r"""根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
         :rtype: str
         """
         return self._DestinationExchange
@@ -1914,7 +1914,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
-    """DescribeRabbitMQServerlessBindings返回参数结构体
+    r"""DescribeRabbitMQServerlessBindings返回参数结构体
 
     """
 
@@ -1933,7 +1933,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     @property
     def BindingInfoList(self):
-        """路由关系列表
+        r"""路由关系列表
         :rtype: list of RabbitMQBindingListInfo
         """
         return self._BindingInfoList
@@ -1944,7 +1944,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -1955,7 +1955,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1977,7 +1977,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
-    """DescribeRabbitMQServerlessConnection请求参数结构体
+    r"""DescribeRabbitMQServerlessConnection请求参数结构体
 
     """
 
@@ -1993,7 +1993,7 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id	
+        r"""集群实例Id	
         :rtype: str
         """
         return self._InstanceId
@@ -2004,7 +2004,7 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -2028,7 +2028,7 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessConnectionResponse(AbstractModel):
-    """DescribeRabbitMQServerlessConnection返回参数结构体
+    r"""DescribeRabbitMQServerlessConnection返回参数结构体
 
     """
 
@@ -2047,7 +2047,7 @@ class DescribeRabbitMQServerlessConnectionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回连接数量
+        r"""返回连接数量
         :rtype: int
         """
         return self._TotalCount
@@ -2058,7 +2058,7 @@ class DescribeRabbitMQServerlessConnectionResponse(AbstractModel):
 
     @property
     def Connections(self):
-        """连接详情列表
+        r"""连接详情列表
         :rtype: list of RabbitMQConnection
         """
         return self._Connections
@@ -2069,7 +2069,7 @@ class DescribeRabbitMQServerlessConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2091,7 +2091,7 @@ class DescribeRabbitMQServerlessConnectionResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
-    """DescribeRabbitMQServerlessConsumers请求参数结构体
+    r"""DescribeRabbitMQServerlessConsumers请求参数结构体
 
     """
 
@@ -2119,7 +2119,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -2130,7 +2130,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -2141,7 +2141,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名
+        r"""队列名
         :rtype: str
         """
         return self._QueueName
@@ -2152,7 +2152,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -2163,7 +2163,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -2174,7 +2174,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键词
+        r"""搜索关键词
         :rtype: str
         """
         return self._SearchWord
@@ -2202,7 +2202,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessConsumersResponse(AbstractModel):
-    """DescribeRabbitMQServerlessConsumers返回参数结构体
+    r"""DescribeRabbitMQServerlessConsumers返回参数结构体
 
     """
 
@@ -2221,7 +2221,7 @@ class DescribeRabbitMQServerlessConsumersResponse(AbstractModel):
 
     @property
     def ConsumerInfoList(self):
-        """消费者列表信息
+        r"""消费者列表信息
         :rtype: list of RabbitMQConsumersListInfo
         """
         return self._ConsumerInfoList
@@ -2232,7 +2232,7 @@ class DescribeRabbitMQServerlessConsumersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -2243,7 +2243,7 @@ class DescribeRabbitMQServerlessConsumersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2265,7 +2265,7 @@ class DescribeRabbitMQServerlessConsumersResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessExchangeDetailRequest(AbstractModel):
-    """DescribeRabbitMQServerlessExchangeDetail请求参数结构体
+    r"""DescribeRabbitMQServerlessExchangeDetail请求参数结构体
 
     """
 
@@ -2284,7 +2284,7 @@ class DescribeRabbitMQServerlessExchangeDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 id
+        r"""实例 id
         :rtype: str
         """
         return self._InstanceId
@@ -2295,7 +2295,7 @@ class DescribeRabbitMQServerlessExchangeDetailRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost 参数
+        r"""vhost 参数
         :rtype: str
         """
         return self._VirtualHost
@@ -2306,7 +2306,7 @@ class DescribeRabbitMQServerlessExchangeDetailRequest(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -2331,7 +2331,7 @@ class DescribeRabbitMQServerlessExchangeDetailRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
-    """DescribeRabbitMQServerlessExchangeDetail返回参数结构体
+    r"""DescribeRabbitMQServerlessExchangeDetail返回参数结构体
 
     """
 
@@ -2374,7 +2374,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名
+        r"""exchange 名
         :rtype: str
         """
         return self._ExchangeName
@@ -2385,7 +2385,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注说明
+        r"""备注说明
         :rtype: str
         """
         return self._Remark
@@ -2396,7 +2396,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def Durable(self):
-        """是否为持久化 exchange, 当集群重启时, 将会清除所有该字段为 "false" 的 exchange
+        r"""是否为持久化 exchange, 当集群重启时, 将会清除所有该字段为 "false" 的 exchange
         :rtype: bool
         """
         return self._Durable
@@ -2407,7 +2407,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """是否自动删除该 exchange, 如果为 "true", 当解绑所有当前 exchange 上的路由关系时, 该 exchange 将会被自动删除
+        r"""是否自动删除该 exchange, 如果为 "true", 当解绑所有当前 exchange 上的路由关系时, 该 exchange 将会被自动删除
         :rtype: bool
         """
         return self._AutoDelete
@@ -2418,7 +2418,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def Internal(self):
-        """是否为内部 exchange, 如果为 "true", 则无法直接投递消息到该 exchange, 需要在路由设置中通过其他 exchange 进行转发
+        r"""是否为内部 exchange, 如果为 "true", 则无法直接投递消息到该 exchange, 需要在路由设置中通过其他 exchange 进行转发
         :rtype: bool
         """
         return self._Internal
@@ -2429,7 +2429,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def AlternateExchange(self):
-        """替代 exchange, 如果消息没有匹配当前 exchange 绑定的所有 queue 或 exchange, 就会发送到该替代 exchange
+        r"""替代 exchange, 如果消息没有匹配当前 exchange 绑定的所有 queue 或 exchange, 就会发送到该替代 exchange
         :rtype: str
         """
         return self._AlternateExchange
@@ -2440,7 +2440,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def ExchangeType(self):
-        """exchange 类型, 支持 "fanout","direct","topic","headers"
+        r"""exchange 类型, 支持 "fanout","direct","topic","headers"
         :rtype: str
         """
         return self._ExchangeType
@@ -2451,7 +2451,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """VHost参数
+        r"""VHost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -2462,7 +2462,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def ExchangeCreator(self):
-        """exchange 创建者, "system":"系统创建", "user":"用户创建"
+        r"""exchange 创建者, "system":"系统创建", "user":"用户创建"
         :rtype: str
         """
         return self._ExchangeCreator
@@ -2473,7 +2473,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def Arguments(self):
-        """扩展参数 key-value 字符串
+        r"""扩展参数 key-value 字符串
         :rtype: str
         """
         return self._Arguments
@@ -2484,7 +2484,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2509,7 +2509,7 @@ class DescribeRabbitMQServerlessExchangeDetailResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessExchangesRequest(AbstractModel):
-    """DescribeRabbitMQServerlessExchanges请求参数结构体
+    r"""DescribeRabbitMQServerlessExchanges请求参数结构体
 
     """
 
@@ -2552,7 +2552,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        """实例 id
+        r"""实例 id
         :rtype: str
         """
         return self._InstanceId
@@ -2563,7 +2563,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        """vhost 参数
+        r"""vhost 参数
         :rtype: str
         """
         return self._VirtualHost
@@ -2574,7 +2574,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        """分页 offset
+        r"""分页 offset
         :rtype: int
         """
         return self._Offset
@@ -2585,7 +2585,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        """分页 limit
+        r"""分页 limit
         :rtype: int
         """
         return self._Limit
@@ -2596,7 +2596,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SearchWord(self):
-        """搜索关键词, 支持模糊匹配 
+        r"""搜索关键词, 支持模糊匹配 
         :rtype: str
         """
         return self._SearchWord
@@ -2607,7 +2607,7 @@ MessageRateOut - 消费速率；
 
     @property
     def ExchangeTypeFilters(self):
-        """筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+        r"""筛选 exchange 类型, 数组中每个元素为选中的过滤类型
         :rtype: list of str
         """
         return self._ExchangeTypeFilters
@@ -2618,7 +2618,7 @@ MessageRateOut - 消费速率；
 
     @property
     def ExchangeCreatorFilters(self):
-        """筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
+        r"""筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
         :rtype: list of str
         """
         return self._ExchangeCreatorFilters
@@ -2629,7 +2629,7 @@ MessageRateOut - 消费速率；
 
     @property
     def ExchangeName(self):
-        """exchange 名称，用于精确匹配
+        r"""exchange 名称，用于精确匹配
         :rtype: str
         """
         return self._ExchangeName
@@ -2640,7 +2640,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortElement(self):
-        """排序依据的字段：
+        r"""排序依据的字段：
 MessageRateInOut - 生产消费速率之和；
 MessageRateIn - 生产速率；
 MessageRateOut - 消费速率；
@@ -2654,7 +2654,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortOrder(self):
-        """排序顺序，ascend 或 descend
+        r"""排序顺序，ascend 或 descend
         :rtype: str
         """
         return self._SortOrder
@@ -2686,7 +2686,7 @@ MessageRateOut - 消费速率；
 
 
 class DescribeRabbitMQServerlessExchangesResponse(AbstractModel):
-    """DescribeRabbitMQServerlessExchanges返回参数结构体
+    r"""DescribeRabbitMQServerlessExchanges返回参数结构体
 
     """
 
@@ -2705,7 +2705,7 @@ class DescribeRabbitMQServerlessExchangesResponse(AbstractModel):
 
     @property
     def ExchangeInfoList(self):
-        """交换机列表
+        r"""交换机列表
         :rtype: list of RabbitMQExchangeListInfo
         """
         return self._ExchangeInfoList
@@ -2716,7 +2716,7 @@ class DescribeRabbitMQServerlessExchangesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """交换机总数
+        r"""交换机总数
         :rtype: int
         """
         return self._TotalCount
@@ -2727,7 +2727,7 @@ class DescribeRabbitMQServerlessExchangesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2749,7 +2749,7 @@ class DescribeRabbitMQServerlessExchangesResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessInstanceRequest(AbstractModel):
-    """DescribeRabbitMQServerlessInstance请求参数结构体
+    r"""DescribeRabbitMQServerlessInstance请求参数结构体
 
     """
 
@@ -2762,7 +2762,7 @@ class DescribeRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -2785,7 +2785,7 @@ class DescribeRabbitMQServerlessInstanceRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
-    """DescribeRabbitMQServerlessInstance返回参数结构体
+    r"""DescribeRabbitMQServerlessInstance返回参数结构体
 
     """
 
@@ -2822,7 +2822,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def ClusterInfo(self):
-        """集群信息
+        r"""集群信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQClusterInfo`
         """
         return self._ClusterInfo
@@ -2833,7 +2833,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def ClusterSpecInfo(self):
-        """集群规格信息
+        r"""集群规格信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQClusterSpecInfo`
         """
         return self._ClusterSpecInfo
@@ -2844,7 +2844,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def VirtualHostQuota(self):
-        """vhost配额信息
+        r"""vhost配额信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.VirtualHostQuota`
         """
         return self._VirtualHostQuota
@@ -2855,7 +2855,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def ExchangeQuota(self):
-        """exchange配额信息
+        r"""exchange配额信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.ExchangeQuota`
         """
         return self._ExchangeQuota
@@ -2866,7 +2866,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def QueueQuota(self):
-        """queue配额信息
+        r"""queue配额信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.QueueQuota`
         """
         return self._QueueQuota
@@ -2877,7 +2877,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def ClusterNetInfo(self):
-        """网络信息
+        r"""网络信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQServerlessAccessInfo`
         """
         return self._ClusterNetInfo
@@ -2888,7 +2888,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def ClusterWhiteListInfo(self):
-        """公网白名单信息
+        r"""公网白名单信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQServerlessWhiteListInfo`
         """
         return self._ClusterWhiteListInfo
@@ -2899,7 +2899,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def UserQuota(self):
-        """user配额信息
+        r"""user配额信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.UserQuota`
         """
         return self._UserQuota
@@ -2910,7 +2910,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2949,7 +2949,7 @@ class DescribeRabbitMQServerlessInstanceResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
-    """DescribeRabbitMQServerlessPermission请求参数结构体
+    r"""DescribeRabbitMQServerlessPermission请求参数结构体
 
     """
 
@@ -2974,7 +2974,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例id
+        r"""集群实例id
         :rtype: str
         """
         return self._InstanceId
@@ -2985,7 +2985,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，用于查询过滤，不传则查询全部
+        r"""用户名，用于查询过滤，不传则查询全部
         :rtype: str
         """
         return self._User
@@ -2996,7 +2996,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名，用于查询过滤，不传则查询全部
+        r"""vhost名，用于查询过滤，不传则查询全部
         :rtype: str
         """
         return self._VirtualHost
@@ -3007,7 +3007,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -3018,7 +3018,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -3045,7 +3045,7 @@ class DescribeRabbitMQServerlessPermissionRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessPermissionResponse(AbstractModel):
-    """DescribeRabbitMQServerlessPermission返回参数结构体
+    r"""DescribeRabbitMQServerlessPermission返回参数结构体
 
     """
 
@@ -3064,7 +3064,7 @@ class DescribeRabbitMQServerlessPermissionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回权限数量
+        r"""返回权限数量
         :rtype: int
         """
         return self._TotalCount
@@ -3075,7 +3075,7 @@ class DescribeRabbitMQServerlessPermissionResponse(AbstractModel):
 
     @property
     def RabbitMQPermissionList(self):
-        """权限详情列表
+        r"""权限详情列表
         :rtype: list of RabbitMQPermission
         """
         return self._RabbitMQPermissionList
@@ -3086,7 +3086,7 @@ class DescribeRabbitMQServerlessPermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3108,7 +3108,7 @@ class DescribeRabbitMQServerlessPermissionResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessQueueDetailRequest(AbstractModel):
-    """DescribeRabbitMQServerlessQueueDetail请求参数结构体
+    r"""DescribeRabbitMQServerlessQueueDetail请求参数结构体
 
     """
 
@@ -3127,7 +3127,7 @@ class DescribeRabbitMQServerlessQueueDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -3138,7 +3138,7 @@ class DescribeRabbitMQServerlessQueueDetailRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -3149,7 +3149,7 @@ class DescribeRabbitMQServerlessQueueDetailRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -3174,7 +3174,7 @@ class DescribeRabbitMQServerlessQueueDetailRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
-    """DescribeRabbitMQServerlessQueueDetail返回参数结构体
+    r"""DescribeRabbitMQServerlessQueueDetail返回参数结构体
 
     """
 
@@ -3277,7 +3277,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -3288,7 +3288,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -3299,7 +3299,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -3310,7 +3310,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def QueueType(self):
-        """队列类型,取值classic或quorum
+        r"""队列类型,取值classic或quorum
         :rtype: str
         """
         return self._QueueType
@@ -3321,7 +3321,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Consumers(self):
-        """在线消费者数量
+        r"""在线消费者数量
         :rtype: int
         """
         return self._Consumers
@@ -3332,7 +3332,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Durable(self):
-        """持久标记
+        r"""持久标记
         :rtype: bool
         """
         return self._Durable
@@ -3343,7 +3343,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """自动清除
+        r"""自动清除
         :rtype: bool
         """
         return self._AutoDelete
@@ -3354,7 +3354,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3365,7 +3365,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MessageTTL(self):
-        """MessageTTL参数,classic类型专用
+        r"""MessageTTL参数,classic类型专用
         :rtype: int
         """
         return self._MessageTTL
@@ -3376,7 +3376,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def AutoExpire(self):
-        """AutoExpire参数
+        r"""AutoExpire参数
         :rtype: int
         """
         return self._AutoExpire
@@ -3387,7 +3387,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MaxLength(self):
-        """MaxLength参数
+        r"""MaxLength参数
         :rtype: int
         """
         return self._MaxLength
@@ -3398,7 +3398,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MaxLengthBytes(self):
-        """MaxLengthBytes参数
+        r"""MaxLengthBytes参数
         :rtype: int
         """
         return self._MaxLengthBytes
@@ -3409,7 +3409,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def DeliveryLimit(self):
-        """DeliveryLimit参数,quorum类型专用
+        r"""DeliveryLimit参数,quorum类型专用
         :rtype: int
         """
         return self._DeliveryLimit
@@ -3420,7 +3420,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def OverflowBehaviour(self):
-        """OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
+        r"""OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
         :rtype: str
         """
         return self._OverflowBehaviour
@@ -3431,7 +3431,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def DeadLetterExchange(self):
-        """DeadLetterExchange参数
+        r"""DeadLetterExchange参数
         :rtype: str
         """
         return self._DeadLetterExchange
@@ -3442,7 +3442,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def DeadLetterRoutingKey(self):
-        """DeadLetterRoutingKey参数
+        r"""DeadLetterRoutingKey参数
         :rtype: str
         """
         return self._DeadLetterRoutingKey
@@ -3453,7 +3453,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def SingleActiveConsumer(self):
-        """SingleActiveConsumer参数
+        r"""SingleActiveConsumer参数
         :rtype: bool
         """
         return self._SingleActiveConsumer
@@ -3464,7 +3464,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MaximumPriority(self):
-        """MaximumPriority参数,classic类型专用
+        r"""MaximumPriority参数,classic类型专用
         :rtype: int
         """
         return self._MaximumPriority
@@ -3475,7 +3475,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def LazyMode(self):
-        """LazyMode参数,classic类型专用
+        r"""LazyMode参数,classic类型专用
         :rtype: bool
         """
         return self._LazyMode
@@ -3486,7 +3486,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MasterLocator(self):
-        """MasterLocator参数,classic类型专用
+        r"""MasterLocator参数,classic类型专用
         :rtype: str
         """
         return self._MasterLocator
@@ -3497,7 +3497,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MaxInMemoryLength(self):
-        """MaxInMemoryLength参数,quorum类型专用
+        r"""MaxInMemoryLength参数,quorum类型专用
         :rtype: int
         """
         return self._MaxInMemoryLength
@@ -3508,7 +3508,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def MaxInMemoryBytes(self):
-        """MaxInMemoryBytes参数,quorum类型专用
+        r"""MaxInMemoryBytes参数,quorum类型专用
         :rtype: int
         """
         return self._MaxInMemoryBytes
@@ -3519,7 +3519,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间戳,单位秒
+        r"""创建时间戳,单位秒
         :rtype: int
         """
         return self._CreateTime
@@ -3530,7 +3530,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Node(self):
-        """节点
+        r"""节点
         :rtype: str
         """
         return self._Node
@@ -3541,7 +3541,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def DeadLetterStrategy(self):
-        """仲裁队列死信一致性策略
+        r"""仲裁队列死信一致性策略
         :rtype: str
         """
         return self._DeadLetterStrategy
@@ -3552,7 +3552,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def QueueLeaderLocator(self):
-        """仲裁队列的领导者选举策略
+        r"""仲裁队列的领导者选举策略
         :rtype: str
         """
         return self._QueueLeaderLocator
@@ -3563,7 +3563,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def QuorumInitialGroupSize(self):
-        """仲裁队列的初始副本组大小
+        r"""仲裁队列的初始副本组大小
         :rtype: int
         """
         return self._QuorumInitialGroupSize
@@ -3574,7 +3574,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Exclusive(self):
-        """是否为独占队列
+        r"""是否为独占队列
         :rtype: bool
         """
         return self._Exclusive
@@ -3585,7 +3585,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Policy(self):
-        """生效的策略名
+        r"""生效的策略名
         :rtype: str
         """
         return self._Policy
@@ -3596,7 +3596,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def Arguments(self):
-        """扩展参数 key-value
+        r"""扩展参数 key-value
         :rtype: str
         """
         return self._Arguments
@@ -3607,7 +3607,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3652,7 +3652,7 @@ class DescribeRabbitMQServerlessQueueDetailResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessQueuesRequest(AbstractModel):
-    """DescribeRabbitMQServerlessQueues请求参数结构体
+    r"""DescribeRabbitMQServerlessQueues请求参数结构体
 
     """
 
@@ -3691,7 +3691,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -3702,7 +3702,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -3713,7 +3713,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -3724,7 +3724,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -3735,7 +3735,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SearchWord(self):
-        """搜索关键词
+        r"""搜索关键词
         :rtype: str
         """
         return self._SearchWord
@@ -3746,7 +3746,7 @@ MessageRateOut - 消费速率；
 
     @property
     def QueueType(self):
-        """队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        r"""队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
         :rtype: str
         """
         return self._QueueType
@@ -3757,7 +3757,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortElement(self):
-        """排序依据的字段：
+        r"""排序依据的字段：
 ConsumerNumber - 在线消费者数量；
 MessageHeapCount - 消息堆积数；
 MessageRateInOut - 生产消费速率之和；
@@ -3773,7 +3773,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortOrder(self):
-        """排序顺序，ascend 或 descend
+        r"""排序顺序，ascend 或 descend
         :rtype: str
         """
         return self._SortOrder
@@ -3803,7 +3803,7 @@ MessageRateOut - 消费速率；
 
 
 class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
-    """DescribeRabbitMQServerlessQueues返回参数结构体
+    r"""DescribeRabbitMQServerlessQueues返回参数结构体
 
     """
 
@@ -3822,7 +3822,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     @property
     def QueueInfoList(self):
-        """队列列表信息
+        r"""队列列表信息
         :rtype: list of RabbitMQQueueListInfo
         """
         return self._QueueInfoList
@@ -3833,7 +3833,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -3844,7 +3844,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3866,7 +3866,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessUserRequest(AbstractModel):
-    """DescribeRabbitMQServerlessUser请求参数结构体
+    r"""DescribeRabbitMQServerlessUser请求参数结构体
 
     """
 
@@ -3894,7 +3894,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -3905,7 +3905,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def SearchUser(self):
-        """用户名检索，支持前缀匹配，后缀匹配
+        r"""用户名检索，支持前缀匹配，后缀匹配
         :rtype: str
         """
         return self._SearchUser
@@ -3916,7 +3916,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -3927,7 +3927,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -3938,7 +3938,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，精确查询
+        r"""用户名，精确查询
         :rtype: str
         """
         return self._User
@@ -3949,7 +3949,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，根据标签过滤列表
+        r"""用户标签，根据标签过滤列表
         :rtype: list of str
         """
         return self._Tags
@@ -3977,7 +3977,7 @@ class DescribeRabbitMQServerlessUserRequest(AbstractModel):
 
 
 class DescribeRabbitMQServerlessUserResponse(AbstractModel):
-    """DescribeRabbitMQServerlessUser返回参数结构体
+    r"""DescribeRabbitMQServerlessUser返回参数结构体
 
     """
 
@@ -3996,7 +3996,7 @@ class DescribeRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的User数量
+        r"""返回的User数量
         :rtype: int
         """
         return self._TotalCount
@@ -4007,7 +4007,7 @@ class DescribeRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def RabbitMQUserList(self):
-        """当前已创建的RabbitMQ用户列表
+        r"""当前已创建的RabbitMQ用户列表
         :rtype: list of RabbitMQUser
         """
         return self._RabbitMQUserList
@@ -4018,7 +4018,7 @@ class DescribeRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4040,7 +4040,7 @@ class DescribeRabbitMQServerlessUserResponse(AbstractModel):
 
 
 class DescribeRabbitMQServerlessVirtualHostRequest(AbstractModel):
-    """DescribeRabbitMQServerlessVirtualHost请求参数结构体
+    r"""DescribeRabbitMQServerlessVirtualHost请求参数结构体
 
     """
 
@@ -4075,7 +4075,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4086,7 +4086,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        """vhost名,不传则查询全部
+        r"""vhost名,不传则查询全部
         :rtype: str
         """
         return self._VirtualHost
@@ -4097,7 +4097,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -4108,7 +4108,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -4119,7 +4119,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Filters(self):
-        """search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
+        r"""search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.Filter`
         """
         return self._Filters
@@ -4130,7 +4130,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortElement(self):
-        """排序依据的字段：
+        r"""排序依据的字段：
 MessageHeapCount - 消息堆积数；
 MessageRateInOut - 生产消费速率之和；
 MessageRateIn - 生产速率；
@@ -4145,7 +4145,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortOrder(self):
-        """排序顺序，ascend 或 descend
+        r"""排序顺序，ascend 或 descend
         :rtype: str
         """
         return self._SortOrder
@@ -4176,7 +4176,7 @@ MessageRateOut - 消费速率；
 
 
 class DescribeRabbitMQServerlessVirtualHostResponse(AbstractModel):
-    """DescribeRabbitMQServerlessVirtualHost返回参数结构体
+    r"""DescribeRabbitMQServerlessVirtualHost返回参数结构体
 
     """
 
@@ -4195,7 +4195,7 @@ class DescribeRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回vhost数量
+        r"""返回vhost数量
         :rtype: int
         """
         return self._TotalCount
@@ -4206,7 +4206,7 @@ class DescribeRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def VirtualHostList(self):
-        """vhost详情列表
+        r"""vhost详情列表
         :rtype: list of RabbitMQVirtualHostInfo
         """
         return self._VirtualHostList
@@ -4217,7 +4217,7 @@ class DescribeRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4239,7 +4239,7 @@ class DescribeRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
 
 class ExchangeQuota(AbstractModel):
-    """exchange使用配额信息
+    r"""exchange使用配额信息
 
     """
 
@@ -4255,7 +4255,7 @@ class ExchangeQuota(AbstractModel):
 
     @property
     def MaxExchange(self):
-        """可创建最大exchange数
+        r"""可创建最大exchange数
         :rtype: int
         """
         return self._MaxExchange
@@ -4266,7 +4266,7 @@ class ExchangeQuota(AbstractModel):
 
     @property
     def UsedExchange(self):
-        """已创建exchange数
+        r"""已创建exchange数
         :rtype: int
         """
         return self._UsedExchange
@@ -4290,7 +4290,7 @@ class ExchangeQuota(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤参数
+    r"""过滤参数
 
     """
 
@@ -4306,7 +4306,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤参数的名字
+        r"""过滤参数的名字
         :rtype: str
         """
         return self._Name
@@ -4317,7 +4317,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """数值
+        r"""数值
         :rtype: list of str
         """
         return self._Values
@@ -4341,7 +4341,7 @@ class Filter(AbstractModel):
 
 
 class ListRabbitMQServerlessInstancesRequest(AbstractModel):
-    """ListRabbitMQServerlessInstances请求参数结构体
+    r"""ListRabbitMQServerlessInstances请求参数结构体
 
     """
 
@@ -4360,7 +4360,7 @@ class ListRabbitMQServerlessInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -4371,7 +4371,7 @@ class ListRabbitMQServerlessInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -4382,7 +4382,7 @@ class ListRabbitMQServerlessInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页的起始索引值
+        r"""翻页的起始索引值
         :rtype: int
         """
         return self._Offset
@@ -4412,7 +4412,7 @@ class ListRabbitMQServerlessInstancesRequest(AbstractModel):
 
 
 class ListRabbitMQServerlessInstancesResponse(AbstractModel):
-    """ListRabbitMQServerlessInstances返回参数结构体
+    r"""ListRabbitMQServerlessInstances返回参数结构体
 
     """
 
@@ -4431,7 +4431,7 @@ class ListRabbitMQServerlessInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of RabbitMQServerlessInstance
         """
         return self._Instances
@@ -4442,7 +4442,7 @@ class ListRabbitMQServerlessInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -4453,7 +4453,7 @@ class ListRabbitMQServerlessInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4475,7 +4475,7 @@ class ListRabbitMQServerlessInstancesResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
-    """ModifyRabbitMQServerlessExchange请求参数结构体
+    r"""ModifyRabbitMQServerlessExchange请求参数结构体
 
     """
 
@@ -4497,7 +4497,7 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 id
+        r"""实例 id
         :rtype: str
         """
         return self._InstanceId
@@ -4508,7 +4508,7 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost 参数
+        r"""vhost 参数
         :rtype: str
         """
         return self._VirtualHost
@@ -4519,7 +4519,7 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -4530,7 +4530,7 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -4556,7 +4556,7 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessExchangeResponse(AbstractModel):
-    """ModifyRabbitMQServerlessExchange返回参数结构体
+    r"""ModifyRabbitMQServerlessExchange返回参数结构体
 
     """
 
@@ -4572,7 +4572,7 @@ class ModifyRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名称
+        r"""exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -4583,7 +4583,7 @@ class ModifyRabbitMQServerlessExchangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4599,7 +4599,7 @@ class ModifyRabbitMQServerlessExchangeResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
-    """ModifyRabbitMQServerlessInstance请求参数结构体
+    r"""ModifyRabbitMQServerlessInstance请求参数结构体
 
     """
 
@@ -4624,7 +4624,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4635,7 +4635,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名
+        r"""集群名
         :rtype: str
         """
         return self._ClusterName
@@ -4646,7 +4646,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -4657,7 +4657,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def TraceFlag(self):
-        """是否开启trace
+        r"""是否开启trace
         :rtype: bool
         """
         return self._TraceFlag
@@ -4668,7 +4668,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
     @property
     def SendReceiveRatio(self):
-        """限流生产消费比例
+        r"""限流生产消费比例
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -4695,7 +4695,7 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessInstanceResponse(AbstractModel):
-    """ModifyRabbitMQServerlessInstance返回参数结构体
+    r"""ModifyRabbitMQServerlessInstance返回参数结构体
 
     """
 
@@ -4711,7 +4711,7 @@ class ModifyRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4722,7 +4722,7 @@ class ModifyRabbitMQServerlessInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4738,7 +4738,7 @@ class ModifyRabbitMQServerlessInstanceResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
-    """ModifyRabbitMQServerlessPermission请求参数结构体
+    r"""ModifyRabbitMQServerlessPermission请求参数结构体
 
     """
 
@@ -4766,7 +4766,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4777,7 +4777,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，权限关联的用户
+        r"""用户名，权限关联的用户
         :rtype: str
         """
         return self._User
@@ -4788,7 +4788,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -4799,7 +4799,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def ConfigRegexp(self):
-        """权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._ConfigRegexp
@@ -4810,7 +4810,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def WriteRegexp(self):
-        """权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._WriteRegexp
@@ -4821,7 +4821,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
     @property
     def ReadRegexp(self):
-        """权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._ReadRegexp
@@ -4849,7 +4849,7 @@ class ModifyRabbitMQServerlessPermissionRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessPermissionResponse(AbstractModel):
-    """ModifyRabbitMQServerlessPermission返回参数结构体
+    r"""ModifyRabbitMQServerlessPermission返回参数结构体
 
     """
 
@@ -4862,7 +4862,7 @@ class ModifyRabbitMQServerlessPermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4877,7 +4877,7 @@ class ModifyRabbitMQServerlessPermissionResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
-    """ModifyRabbitMQServerlessQueue请求参数结构体
+    r"""ModifyRabbitMQServerlessQueue请求参数结构体
 
     """
 
@@ -4899,7 +4899,7 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4910,7 +4910,7 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -4921,7 +4921,7 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -4932,7 +4932,7 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """新修改的备注
+        r"""新修改的备注
         :rtype: str
         """
         return self._Remark
@@ -4958,7 +4958,7 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessQueueResponse(AbstractModel):
-    """ModifyRabbitMQServerlessQueue返回参数结构体
+    r"""ModifyRabbitMQServerlessQueue返回参数结构体
 
     """
 
@@ -4974,7 +4974,7 @@ class ModifyRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称
+        r"""队列名称
         :rtype: str
         """
         return self._QueueName
@@ -4985,7 +4985,7 @@ class ModifyRabbitMQServerlessQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5001,7 +5001,7 @@ class ModifyRabbitMQServerlessQueueResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessUserRequest(AbstractModel):
-    """ModifyRabbitMQServerlessUser请求参数结构体
+    r"""ModifyRabbitMQServerlessUser请求参数结构体
 
     """
 
@@ -5032,7 +5032,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -5043,7 +5043,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._User
@@ -5054,7 +5054,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码
+        r"""密码
         :rtype: str
         """
         return self._Password
@@ -5065,7 +5065,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述，不传则不修改
+        r"""描述，不传则不修改
         :rtype: str
         """
         return self._Description
@@ -5076,7 +5076,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+        r"""用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
         :rtype: list of str
         """
         return self._Tags
@@ -5087,7 +5087,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def MaxConnections(self):
-        """该用户的最大连接数，不传则不修改
+        r"""该用户的最大连接数，不传则不修改
         :rtype: int
         """
         return self._MaxConnections
@@ -5098,7 +5098,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
     @property
     def MaxChannels(self):
-        """该用户的最大channel数，不传则不修改
+        r"""该用户的最大channel数，不传则不修改
         :rtype: int
         """
         return self._MaxChannels
@@ -5127,7 +5127,7 @@ class ModifyRabbitMQServerlessUserRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessUserResponse(AbstractModel):
-    """ModifyRabbitMQServerlessUser返回参数结构体
+    r"""ModifyRabbitMQServerlessUser返回参数结构体
 
     """
 
@@ -5140,7 +5140,7 @@ class ModifyRabbitMQServerlessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5155,7 +5155,7 @@ class ModifyRabbitMQServerlessUserResponse(AbstractModel):
 
 
 class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
-    """ModifyRabbitMQServerlessVirtualHost请求参数结构体
+    r"""ModifyRabbitMQServerlessVirtualHost请求参数结构体
 
     """
 
@@ -5177,7 +5177,7 @@ class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -5188,7 +5188,7 @@ class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -5199,7 +5199,7 @@ class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def Description(self):
-        """vhost描述信息
+        r"""vhost描述信息
         :rtype: str
         """
         return self._Description
@@ -5210,7 +5210,7 @@ class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
     @property
     def TraceFlag(self):
-        """消息轨迹开关,true打开,false关闭
+        r"""消息轨迹开关,true打开,false关闭
         :rtype: bool
         """
         return self._TraceFlag
@@ -5236,7 +5236,7 @@ class ModifyRabbitMQServerlessVirtualHostRequest(AbstractModel):
 
 
 class ModifyRabbitMQServerlessVirtualHostResponse(AbstractModel):
-    """ModifyRabbitMQServerlessVirtualHost返回参数结构体
+    r"""ModifyRabbitMQServerlessVirtualHost返回参数结构体
 
     """
 
@@ -5249,7 +5249,7 @@ class ModifyRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5264,7 +5264,7 @@ class ModifyRabbitMQServerlessVirtualHostResponse(AbstractModel):
 
 
 class QueueQuota(AbstractModel):
-    """queue使用配额信息
+    r"""queue使用配额信息
 
     """
 
@@ -5280,7 +5280,7 @@ class QueueQuota(AbstractModel):
 
     @property
     def MaxQueue(self):
-        """可创建最大Queue数
+        r"""可创建最大Queue数
         :rtype: int
         """
         return self._MaxQueue
@@ -5291,7 +5291,7 @@ class QueueQuota(AbstractModel):
 
     @property
     def UsedQueue(self):
-        """已创建Queue数
+        r"""已创建Queue数
         :rtype: int
         """
         return self._UsedQueue
@@ -5315,7 +5315,7 @@ class QueueQuota(AbstractModel):
 
 
 class RabbitMQBindingListInfo(AbstractModel):
-    """Rabbitmq路由关系列表成员
+    r"""Rabbitmq路由关系列表成员
 
     """
 
@@ -5352,7 +5352,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def BindingId(self):
-        """路由关系id
+        r"""路由关系id
         :rtype: int
         """
         return self._BindingId
@@ -5363,7 +5363,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        r"""Vhost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -5374,7 +5374,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def Source(self):
-        """源exchange名称
+        r"""源exchange名称
         :rtype: str
         """
         return self._Source
@@ -5385,7 +5385,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def DestinationType(self):
-        """目标类型,queue或exchange
+        r"""目标类型,queue或exchange
         :rtype: str
         """
         return self._DestinationType
@@ -5396,7 +5396,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def Destination(self):
-        """目标资源名称
+        r"""目标资源名称
         :rtype: str
         """
         return self._Destination
@@ -5407,7 +5407,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def RoutingKey(self):
-        """绑定key
+        r"""绑定key
         :rtype: str
         """
         return self._RoutingKey
@@ -5418,7 +5418,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def SourceExchangeType(self):
-        """源exchange类型
+        r"""源exchange类型
         :rtype: str
         """
         return self._SourceExchangeType
@@ -5429,7 +5429,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -5440,7 +5440,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -5471,7 +5471,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
 
 class RabbitMQClusterInfo(AbstractModel):
-    """RabbiteMQ集群基本信息
+    r"""RabbiteMQ集群基本信息
 
     """
 
@@ -5562,7 +5562,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -5573,7 +5573,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._ClusterName
@@ -5584,7 +5584,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域信息
+        r"""地域信息
         :rtype: str
         """
         return self._Region
@@ -5595,7 +5595,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，毫秒为单位
+        r"""创建时间，毫秒为单位
         :rtype: int
         """
         return self._CreateTime
@@ -5606,7 +5606,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """集群说明信息
+        r"""集群说明信息
         :rtype: str
         """
         return self._Remark
@@ -5617,7 +5617,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Vpcs(self):
-        """VPC及网络信息
+        r"""VPC及网络信息
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -5628,7 +5628,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """可用区信息
+        r"""可用区信息
         :rtype: list of int
         """
         return self._ZoneIds
@@ -5639,7 +5639,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def VirtualHostNumber(self):
-        """虚拟主机数量
+        r"""虚拟主机数量
         :rtype: int
         """
         return self._VirtualHostNumber
@@ -5650,7 +5650,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def QueueNumber(self):
-        """队列数量
+        r"""队列数量
         :rtype: int
         """
         return self._QueueNumber
@@ -5661,7 +5661,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessagePublishRate(self):
-        """每秒生产消息数 单位：条/秒
+        r"""每秒生产消息数 单位：条/秒
         :rtype: float
         """
         return self._MessagePublishRate
@@ -5672,7 +5672,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageStackNumber(self):
-        """堆积消息数 单位：条
+        r"""堆积消息数 单位：条
         :rtype: int
         """
         return self._MessageStackNumber
@@ -5683,7 +5683,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._ExpireTime
@@ -5694,7 +5694,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ChannelNumber(self):
-        """Channel数量
+        r"""Channel数量
         :rtype: int
         """
         return self._ChannelNumber
@@ -5705,7 +5705,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConnectionNumber(self):
-        """Connection数量
+        r"""Connection数量
         :rtype: int
         """
         return self._ConnectionNumber
@@ -5716,7 +5716,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConsumerNumber(self):
-        """Consumer数量
+        r"""Consumer数量
         :rtype: int
         """
         return self._ConsumerNumber
@@ -5727,7 +5727,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExchangeNumber(self):
-        """Exchang数量
+        r"""Exchang数量
         :rtype: int
         """
         return self._ExchangeNumber
@@ -5738,7 +5738,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        """集群异常信息
+        r"""集群异常信息
         :rtype: str
         """
         return self._ExceptionInformation
@@ -5749,7 +5749,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        """实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :rtype: int
         """
         return self._ClusterStatus
@@ -5760,7 +5760,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -5771,7 +5771,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        """是否开启镜像队列策略。1表示开启，0表示没开启。
+        r"""是否开启镜像队列策略。1表示开启，0表示没开启。
         :rtype: int
         """
         return self._MirrorQueuePolicyFlag
@@ -5782,7 +5782,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageConsumeRate(self):
-        """每秒消费消息数 单位：条/秒
+        r"""每秒消费消息数 单位：条/秒
         :rtype: float
         """
         return self._MessageConsumeRate
@@ -5793,7 +5793,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        """集群版本信息
+        r"""集群版本信息
         :rtype: str
         """
         return self._ClusterVersion
@@ -5804,7 +5804,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式，0-后付费，1-预付费
+        r"""计费模式，0-后付费，1-预付费
         :rtype: int
         """
         return self._PayMode
@@ -5815,7 +5815,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """集群类型
+        r"""集群类型
         :rtype: int
         """
         return self._InstanceType
@@ -5826,7 +5826,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageRetainTime(self):
-        """消息保留时间，单位小时
+        r"""消息保留时间，单位小时
         :rtype: int
         """
         return self._MessageRetainTime
@@ -5837,7 +5837,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def SendReceiveRatio(self):
-        """发送消息流量比例
+        r"""发送消息流量比例
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -5848,7 +5848,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def TraceTime(self):
-        """消息轨迹保留时间，单位小时
+        r"""消息轨迹保留时间，单位小时
         :rtype: int
         """
         return self._TraceTime
@@ -5902,7 +5902,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
 
 class RabbitMQClusterSpecInfo(AbstractModel):
-    """RabbitMQ集群规格信息
+    r"""RabbitMQ集群规格信息
 
     """
 
@@ -5942,7 +5942,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def SpecName(self):
-        """集群规格名称
+        r"""集群规格名称
         :rtype: str
         """
         return self._SpecName
@@ -5953,7 +5953,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTps(self):
-        """峰值tps
+        r"""峰值tps
         :rtype: int
         """
         return self._MaxTps
@@ -5964,7 +5964,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxQueueNum(self):
-        """最大队列数
+        r"""最大队列数
         :rtype: int
         """
         return self._MaxQueueNum
@@ -5975,7 +5975,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxExchangeNum(self):
-        """最大交换机数
+        r"""最大交换机数
         :rtype: int
         """
         return self._MaxExchangeNum
@@ -5986,7 +5986,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxVhostNum(self):
-        """最大vhost数
+        r"""最大vhost数
         :rtype: int
         """
         return self._MaxVhostNum
@@ -5997,7 +5997,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxConnNum(self):
-        """最大连接数
+        r"""最大连接数
         :rtype: int
         """
         return self._MaxConnNum
@@ -6008,7 +6008,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxUserNum(self):
-        """最大用户数
+        r"""最大用户数
         :rtype: int
         """
         return self._MaxUserNum
@@ -6019,7 +6019,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        """峰值带宽，已废弃
+        r"""峰值带宽，已废弃
         :rtype: int
         """
         return self._MaxBandWidth
@@ -6030,7 +6030,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def PublicNetworkTps(self):
-        """公网带宽，已废弃
+        r"""公网带宽，已废弃
         :rtype: int
         """
         return self._PublicNetworkTps
@@ -6041,7 +6041,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def Features(self):
-        """实例对应的功能列表，true表示支持，false 表示不支持
+        r"""实例对应的功能列表，true表示支持，false 表示不支持
         :rtype: str
         """
         return self._Features
@@ -6073,7 +6073,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
 
 class RabbitMQConnection(AbstractModel):
-    """RabbitMQ连接详情
+    r"""RabbitMQ连接详情
 
     """
 
@@ -6104,7 +6104,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def ConnectionName(self):
-        """连接名称
+        r"""连接名称
         :rtype: str
         """
         return self._ConnectionName
@@ -6115,7 +6115,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def PeerHost(self):
-        """客户端ip
+        r"""客户端ip
         :rtype: str
         """
         return self._PeerHost
@@ -6126,7 +6126,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def State(self):
-        """连接状态，包括 starting、tuning、opening、running、flow、blocking、blocked、closing 和 closed
+        r"""连接状态，包括 starting、tuning、opening、running、flow、blocking、blocked、closing 和 closed
         :rtype: str
         """
         return self._State
@@ -6137,7 +6137,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def User(self):
-        """连接使用用户
+        r"""连接使用用户
         :rtype: str
         """
         return self._User
@@ -6148,7 +6148,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def SSL(self):
-        """是否开启ssl
+        r"""是否开启ssl
         :rtype: bool
         """
         return self._SSL
@@ -6159,7 +6159,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def Protocol(self):
-        """连接协议
+        r"""连接协议
         :rtype: str
         """
         return self._Protocol
@@ -6170,7 +6170,7 @@ class RabbitMQConnection(AbstractModel):
 
     @property
     def Channels(self):
-        """连接下的channel数
+        r"""连接下的channel数
         :rtype: int
         """
         return self._Channels
@@ -6199,7 +6199,7 @@ class RabbitMQConnection(AbstractModel):
 
 
 class RabbitMQConsumersListInfo(AbstractModel):
-    """队列消费者列表信息
+    r"""队列消费者列表信息
 
     """
 
@@ -6215,7 +6215,7 @@ class RabbitMQConsumersListInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        """客户端Ip
+        r"""客户端Ip
         :rtype: str
         """
         return self._ClientIp
@@ -6226,7 +6226,7 @@ class RabbitMQConsumersListInfo(AbstractModel):
 
     @property
     def ConsumerTag(self):
-        """消费者Tag
+        r"""消费者Tag
         :rtype: str
         """
         return self._ConsumerTag
@@ -6250,7 +6250,7 @@ class RabbitMQConsumersListInfo(AbstractModel):
 
 
 class RabbitMQExchangeListInfo(AbstractModel):
-    """RabbitMQ exchange列表成员信息
+    r"""RabbitMQ exchange列表成员信息
 
     """
 
@@ -6308,7 +6308,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def ExchangeName(self):
-        """exchange 名
+        r"""exchange 名
         :rtype: str
         """
         return self._ExchangeName
@@ -6319,7 +6319,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注说明
+        r"""备注说明
         :rtype: str
         """
         return self._Remark
@@ -6330,7 +6330,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def ExchangeType(self):
-        """exchange 类型, 支持 "fanout","direct","topic","headers"
+        r"""exchange 类型, 支持 "fanout","direct","topic","headers"
         :rtype: str
         """
         return self._ExchangeType
@@ -6341,7 +6341,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """VHost参数
+        r"""VHost参数
         :rtype: str
         """
         return self._VirtualHost
@@ -6352,7 +6352,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def ExchangeCreator(self):
-        """exchange 创建者, "system":"系统创建", "user":"用户创建"
+        r"""exchange 创建者, "system":"系统创建", "user":"用户创建"
         :rtype: str
         """
         return self._ExchangeCreator
@@ -6363,7 +6363,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def CreateTimeStamp(self):
-        """exchange 创建时间
+        r"""exchange 创建时间
         :rtype: str
         """
         return self._CreateTimeStamp
@@ -6374,7 +6374,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def ModTimeStamp(self):
-        """exchange 修改时间
+        r"""exchange 修改时间
         :rtype: str
         """
         return self._ModTimeStamp
@@ -6385,7 +6385,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def MessageRateIn(self):
-        """输入消息速率
+        r"""输入消息速率
         :rtype: float
         """
         return self._MessageRateIn
@@ -6396,7 +6396,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def MessageRateOut(self):
-        """输出消息速率
+        r"""输出消息速率
         :rtype: float
         """
         return self._MessageRateOut
@@ -6407,7 +6407,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def Durable(self):
-        """是否为持久化交换机，true 为持久化，false 为非持久化
+        r"""是否为持久化交换机，true 为持久化，false 为非持久化
         :rtype: bool
         """
         return self._Durable
@@ -6418,7 +6418,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """是否为自动删除交换机，true 为自动删除，false 为非自动删除
+        r"""是否为自动删除交换机，true 为自动删除，false 为非自动删除
         :rtype: bool
         """
         return self._AutoDelete
@@ -6429,7 +6429,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def Internal(self):
-        """是否为内部交换机，true 为内部交换机
+        r"""是否为内部交换机，true 为内部交换机
         :rtype: bool
         """
         return self._Internal
@@ -6440,7 +6440,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """交换机所属实例 ID
+        r"""交换机所属实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -6451,7 +6451,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def Policy(self):
-        """生效的策略名称
+        r"""生效的策略名称
         :rtype: str
         """
         return self._Policy
@@ -6462,7 +6462,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def Arguments(self):
-        """扩展参数 key-value 对象
+        r"""扩展参数 key-value 对象
         :rtype: str
         """
         return self._Arguments
@@ -6473,7 +6473,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def MessagesDelayed(self):
-        """未调度的延时消息数量
+        r"""未调度的延时消息数量
         :rtype: int
         """
         return self._MessagesDelayed
@@ -6511,7 +6511,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
 
 class RabbitMQPermission(AbstractModel):
-    """RabbitMQ权限详情
+    r"""RabbitMQ权限详情
 
     """
 
@@ -6545,7 +6545,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -6556,7 +6556,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def User(self):
-        """用户名，权限关联的用户
+        r"""用户名，权限关联的用户
         :rtype: str
         """
         return self._User
@@ -6567,7 +6567,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -6578,7 +6578,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def ConfigRegexp(self):
-        """权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._ConfigRegexp
@@ -6589,7 +6589,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def WriteRegexp(self):
-        """权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._WriteRegexp
@@ -6600,7 +6600,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def ReadRegexp(self):
-        """权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+        r"""权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
         :rtype: str
         """
         return self._ReadRegexp
@@ -6611,7 +6611,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6622,7 +6622,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -6652,7 +6652,7 @@ class RabbitMQPermission(AbstractModel):
 
 
 class RabbitMQQueueListConsumerDetailInfo(AbstractModel):
-    """RabbitMQ队列列表消费者信息
+    r"""RabbitMQ队列列表消费者信息
 
     """
 
@@ -6665,7 +6665,7 @@ class RabbitMQQueueListConsumerDetailInfo(AbstractModel):
 
     @property
     def ConsumersNumber(self):
-        """消费者数量
+        r"""消费者数量
         :rtype: int
         """
         return self._ConsumersNumber
@@ -6688,7 +6688,7 @@ class RabbitMQQueueListConsumerDetailInfo(AbstractModel):
 
 
 class RabbitMQQueueListInfo(AbstractModel):
-    """RabbitMQ队列列表成员信息
+    r"""RabbitMQ队列列表成员信息
 
     """
 
@@ -6749,7 +6749,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名
+        r"""队列名
         :rtype: str
         """
         return self._QueueName
@@ -6760,7 +6760,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注说明
+        r"""备注说明
         :rtype: str
         """
         return self._Remark
@@ -6771,7 +6771,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def ConsumerDetail(self):
-        """消费者信息
+        r"""消费者信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQQueueListConsumerDetailInfo`
         """
         return self._ConsumerDetail
@@ -6782,7 +6782,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def QueueType(self):
-        """队列类型，取值 "classic"，"quorum"
+        r"""队列类型，取值 "classic"，"quorum"
         :rtype: str
         """
         return self._QueueType
@@ -6793,7 +6793,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def MessageHeapCount(self):
-        """消息堆积数
+        r"""消息堆积数
         :rtype: int
         """
         return self._MessageHeapCount
@@ -6804,7 +6804,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def MessageRateIn(self):
-        """消息生产速率，每秒
+        r"""消息生产速率，每秒
         :rtype: float
         """
         return self._MessageRateIn
@@ -6815,7 +6815,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def MessageRateOut(self):
-        """消息消费速率，每秒
+        r"""消息消费速率，每秒
         :rtype: float
         """
         return self._MessageRateOut
@@ -6826,7 +6826,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6837,7 +6837,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -6848,7 +6848,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Durable(self):
-        """队列是否持久化，true 为持久化，false 为非持久化
+        r"""队列是否持久化，true 为持久化，false 为非持久化
         :rtype: bool
         """
         return self._Durable
@@ -6859,7 +6859,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def AutoDelete(self):
-        """队列是否为自动删除队列，true 为自动删除，false 为非自动删除
+        r"""队列是否为自动删除队列，true 为自动删除，false 为非自动删除
         :rtype: bool
         """
         return self._AutoDelete
@@ -6870,7 +6870,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """队列所属实例 ID
+        r"""队列所属实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -6881,7 +6881,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """队列所属虚拟主机名称
+        r"""队列所属虚拟主机名称
         :rtype: str
         """
         return self._VirtualHost
@@ -6892,7 +6892,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Node(self):
-        """队列所在主节点名称
+        r"""队列所在主节点名称
         :rtype: str
         """
         return self._Node
@@ -6903,7 +6903,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Policy(self):
-        """生效的策略名称
+        r"""生效的策略名称
         :rtype: str
         """
         return self._Policy
@@ -6914,7 +6914,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Arguments(self):
-        """扩展参数 key-value 对象
+        r"""扩展参数 key-value 对象
         :rtype: str
         """
         return self._Arguments
@@ -6925,7 +6925,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
     @property
     def Exclusive(self):
-        """是否独占队列
+        r"""是否独占队列
         :rtype: bool
         """
         return self._Exclusive
@@ -6966,7 +6966,7 @@ class RabbitMQQueueListInfo(AbstractModel):
 
 
 class RabbitMQServerlessAccessInfo(AbstractModel):
-    """公网访问信息
+    r"""公网访问信息
 
     """
 
@@ -6985,7 +6985,7 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
 
     @property
     def PublicAccessEndpoint(self):
-        """公网域名
+        r"""公网域名
         :rtype: str
         """
         return self._PublicAccessEndpoint
@@ -6996,7 +6996,7 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
 
     @property
     def PublicDataStreamStatus(self):
-        """公网状态
+        r"""公网状态
         :rtype: str
         """
         return self._PublicDataStreamStatus
@@ -7007,7 +7007,7 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
 
     @property
     def PublicClbId(self):
-        """公网CLB实例ID
+        r"""公网CLB实例ID
         :rtype: str
         """
         return self._PublicClbId
@@ -7032,7 +7032,7 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
 
 
 class RabbitMQServerlessEndpoint(AbstractModel):
-    """接入点
+    r"""接入点
 
     """
 
@@ -7063,7 +7063,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
         :rtype: str
         """
         return self._VpcId
@@ -7074,7 +7074,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def SubnetId(self):
-        """subnet id
+        r"""subnet id
         :rtype: str
         """
         return self._SubnetId
@@ -7085,7 +7085,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def VpcEndpoint(self):
-        """接入地址
+        r"""接入地址
         :rtype: str
         """
         return self._VpcEndpoint
@@ -7096,7 +7096,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def VpcDataStreamEndpointStatus(self):
-        """接入地址状态
+        r"""接入地址状态
         :rtype: str
         """
         return self._VpcDataStreamEndpointStatus
@@ -7107,7 +7107,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        """是否是公网
+        r"""是否是公网
         :rtype: bool
         """
         return self._PublicNetwork
@@ -7118,7 +7118,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def AccessStrategy(self):
-        """访问策略
+        r"""访问策略
         :rtype: str
         """
         return self._AccessStrategy
@@ -7129,7 +7129,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._Bandwidth
@@ -7158,7 +7158,7 @@ class RabbitMQServerlessEndpoint(AbstractModel):
 
 
 class RabbitMQServerlessInstance(AbstractModel):
-    """rabbitmq serverless 实例
+    r"""rabbitmq serverless 实例
 
     """
 
@@ -7232,7 +7232,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7243,7 +7243,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -7254,7 +7254,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        """实例版本号
+        r"""实例版本号
         :rtype: str
         """
         return self._InstanceVersion
@@ -7265,7 +7265,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :rtype: int
         """
         return self._Status
@@ -7276,7 +7276,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def MaxTps(self):
-        """TPS
+        r"""TPS
         :rtype: int
         """
         return self._MaxTps
@@ -7287,7 +7287,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._MaxBandWidth
@@ -7298,7 +7298,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """集群过期时间
+        r"""集群过期时间
         :rtype: int
         """
         return self._ExpireTime
@@ -7309,7 +7309,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7320,7 +7320,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        """0-后付费，1-预付费
+        r"""0-后付费，1-预付费
         :rtype: int
         """
         return self._PayMode
@@ -7331,7 +7331,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -7342,7 +7342,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def SpecName(self):
-        """集群规格
+        r"""集群规格
         :rtype: str
         """
         return self._SpecName
@@ -7353,7 +7353,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        """异常信息
+        r"""异常信息
         :rtype: str
         """
         return self._ExceptionInformation
@@ -7364,7 +7364,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def PublicAccessEndpoint(self):
-        """公网接入点
+        r"""公网接入点
         :rtype: str
         """
         return self._PublicAccessEndpoint
@@ -7375,7 +7375,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def Vpcs(self):
-        """私有网络接入点
+        r"""私有网络接入点
         :rtype: list of RabbitMQServerlessEndpoint
         """
         return self._Vpcs
@@ -7386,7 +7386,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        """实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 
         :rtype: int
         """
@@ -7398,7 +7398,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """集群类型：1
+        r"""集群类型：1
         :rtype: int
         """
         return self._InstanceType
@@ -7409,7 +7409,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._CreateTime
@@ -7420,7 +7420,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def NodeCount(self):
-        """为了兼容托管版，固定值 0
+        r"""为了兼容托管版，固定值 0
         :rtype: int
         """
         return self._NodeCount
@@ -7431,7 +7431,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def MaxStorage(self):
-        """为了兼容托管版，固定值 0
+        r"""为了兼容托管版，固定值 0
         :rtype: int
         """
         return self._MaxStorage
@@ -7442,7 +7442,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """隔离时间
+        r"""隔离时间
         :rtype: int
         """
         return self._IsolatedTime
@@ -7453,7 +7453,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
     @property
     def ServerlessExt(self):
-        """Serverless 扩展字段
+        r"""Serverless 扩展字段
         :rtype: str
         """
         return self._ServerlessExt
@@ -7501,7 +7501,7 @@ class RabbitMQServerlessInstance(AbstractModel):
 
 
 class RabbitMQServerlessWhiteListInfo(AbstractModel):
-    """公网白名单信息
+    r"""公网白名单信息
 
     """
 
@@ -7517,7 +7517,7 @@ class RabbitMQServerlessWhiteListInfo(AbstractModel):
 
     @property
     def PublicDataStreamWhiteList(self):
-        """公网数据流白名单
+        r"""公网数据流白名单
         :rtype: str
         """
         return self._PublicDataStreamWhiteList
@@ -7528,7 +7528,7 @@ class RabbitMQServerlessWhiteListInfo(AbstractModel):
 
     @property
     def PublicDataStreamWhiteListStatus(self):
-        """公网数据流白名单状态
+        r"""公网数据流白名单状态
         :rtype: str
         """
         return self._PublicDataStreamWhiteListStatus
@@ -7552,7 +7552,7 @@ class RabbitMQServerlessWhiteListInfo(AbstractModel):
 
 
 class RabbitMQUser(AbstractModel):
-    """RabbitMQ用户实体详情
+    r"""RabbitMQ用户实体详情
 
     """
 
@@ -7592,7 +7592,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7603,7 +7603,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        r"""用户名，登录时使用
         :rtype: str
         """
         return self._User
@@ -7614,7 +7614,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Password(self):
-        """密码，登录时使用
+        r"""密码，登录时使用
         :rtype: str
         """
         return self._Password
@@ -7625,7 +7625,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Description(self):
-        """用户描述
+        r"""用户描述
         :rtype: str
         """
         return self._Description
@@ -7636,7 +7636,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+        r"""用户标签，用于决定改用户访问RabbitMQ Management的权限范围
         :rtype: list of str
         """
         return self._Tags
@@ -7647,7 +7647,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def CreateTime(self):
-        """用户创建时间
+        r"""用户创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7658,7 +7658,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """用户最后修改时间
+        r"""用户最后修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -7669,7 +7669,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Type(self):
-        """用户类型，System：系统创建，User：用户创建
+        r"""用户类型，System：系统创建，User：用户创建
         :rtype: str
         """
         return self._Type
@@ -7680,7 +7680,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def MaxConnections(self):
-        """该用户所能允许的最大连接数
+        r"""该用户所能允许的最大连接数
         :rtype: int
         """
         return self._MaxConnections
@@ -7691,7 +7691,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def MaxChannels(self):
-        """该用户所能允许的最大通道数
+        r"""该用户所能允许的最大通道数
         :rtype: int
         """
         return self._MaxChannels
@@ -7723,7 +7723,7 @@ class RabbitMQUser(AbstractModel):
 
 
 class RabbitMQVirtualHostInfo(AbstractModel):
-    """RabbitMQ的vhost详情
+    r"""RabbitMQ的vhost详情
 
     """
 
@@ -7769,7 +7769,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        r"""集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7780,7 +7780,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        r"""vhost名
         :rtype: str
         """
         return self._VirtualHost
@@ -7791,7 +7791,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def Description(self):
-        """vhost描述信息
+        r"""vhost描述信息
         :rtype: str
         """
         return self._Description
@@ -7802,7 +7802,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """vhost标签
+        r"""vhost标签
         :rtype: list of str
         """
         return self._Tags
@@ -7813,7 +7813,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7824,7 +7824,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -7835,7 +7835,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def VirtualHostStatistics(self):
-        """vhost概览统计信息
+        r"""vhost概览统计信息
         :rtype: :class:`tencentcloud.trabbit.v20230418.models.RabbitMQVirtualHostStatistics`
         """
         return self._VirtualHostStatistics
@@ -7846,7 +7846,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def Status(self):
-        """vhost状态，与原生控制台对应，有running、partial、stopped、unknown
+        r"""vhost状态，与原生控制台对应，有running、partial、stopped、unknown
         :rtype: str
         """
         return self._Status
@@ -7857,7 +7857,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def MessageHeapCount(self):
-        """消息堆积数
+        r"""消息堆积数
         :rtype: int
         """
         return self._MessageHeapCount
@@ -7868,7 +7868,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def MessageRateIn(self):
-        """输入消息速率
+        r"""输入消息速率
         :rtype: float
         """
         return self._MessageRateIn
@@ -7879,7 +7879,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def MessageRateOut(self):
-        """输出消息速率
+        r"""输出消息速率
         :rtype: float
         """
         return self._MessageRateOut
@@ -7890,7 +7890,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        """是否存在镜像队列策略，true 为存在，false 为不存
+        r"""是否存在镜像队列策略，true 为存在，false 为不存
         :rtype: bool
         """
         return self._MirrorQueuePolicyFlag
@@ -7926,7 +7926,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
 
 
 class RabbitMQVirtualHostStatistics(AbstractModel):
-    """vhost概览统计信息
+    r"""vhost概览统计信息
 
     """
 
@@ -7951,7 +7951,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
     @property
     def CurrentQueues(self):
-        """当前vhost的queue数量
+        r"""当前vhost的queue数量
         :rtype: int
         """
         return self._CurrentQueues
@@ -7962,7 +7962,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
     @property
     def CurrentExchanges(self):
-        """当前vhost的exchange数量
+        r"""当前vhost的exchange数量
         :rtype: int
         """
         return self._CurrentExchanges
@@ -7973,7 +7973,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
     @property
     def CurrentConnections(self):
-        """当前vhost的连接数量
+        r"""当前vhost的连接数量
         :rtype: int
         """
         return self._CurrentConnections
@@ -7984,7 +7984,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
     @property
     def CurrentChannels(self):
-        """当前vhost的channel数量
+        r"""当前vhost的channel数量
         :rtype: int
         """
         return self._CurrentChannels
@@ -7995,7 +7995,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
     @property
     def CurrentUsers(self):
-        """当前vhost的用户数量
+        r"""当前vhost的用户数量
         :rtype: int
         """
         return self._CurrentUsers
@@ -8022,7 +8022,7 @@ class RabbitMQVirtualHostStatistics(AbstractModel):
 
 
 class UserQuota(AbstractModel):
-    """用户数配额
+    r"""用户数配额
 
     """
 
@@ -8038,7 +8038,7 @@ class UserQuota(AbstractModel):
 
     @property
     def MaxUser(self):
-        """最大用户数
+        r"""最大用户数
         :rtype: int
         """
         return self._MaxUser
@@ -8049,7 +8049,7 @@ class UserQuota(AbstractModel):
 
     @property
     def UsedUser(self):
-        """已用用户数
+        r"""已用用户数
         :rtype: int
         """
         return self._UsedUser
@@ -8073,7 +8073,7 @@ class UserQuota(AbstractModel):
 
 
 class VirtualHostQuota(AbstractModel):
-    """虚拟主机配额
+    r"""虚拟主机配额
 
     """
 
@@ -8089,7 +8089,7 @@ class VirtualHostQuota(AbstractModel):
 
     @property
     def MaxVirtualHost(self):
-        """最大虚拟主机数
+        r"""最大虚拟主机数
         :rtype: int
         """
         return self._MaxVirtualHost
@@ -8100,7 +8100,7 @@ class VirtualHostQuota(AbstractModel):
 
     @property
     def UsedVirtualHost(self):
-        """已经使用的虚拟主机数
+        r"""已经使用的虚拟主机数
         :rtype: int
         """
         return self._UsedVirtualHost
@@ -8124,7 +8124,7 @@ class VirtualHostQuota(AbstractModel):
 
 
 class VpcEndpointInfo(AbstractModel):
-    """VPC接入点信息
+    r"""VPC接入点信息
 
     """
 
@@ -8147,7 +8147,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcId(self):
-        """vpc的id
+        r"""vpc的id
         :rtype: str
         """
         return self._VpcId
@@ -8158,7 +8158,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def SubnetId(self):
-        """子网id
+        r"""子网id
         :rtype: str
         """
         return self._SubnetId
@@ -8169,7 +8169,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcEndpoint(self):
-        """vpc接入点信息
+        r"""vpc接入点信息
         :rtype: str
         """
         return self._VpcEndpoint
@@ -8180,7 +8180,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcDataStreamEndpointStatus(self):
-        """vpc接入点状态
+        r"""vpc接入点状态
 OFF/ON/CREATING/DELETING
         :rtype: str
         """

@@ -27,7 +27,7 @@ class TcmClient(AbstractClient):
 
 
     def CreateMesh(self, request):
-        """创建网格
+        r"""创建网格
 
         :param request: Request instance for CreateMesh.
         :type request: :class:`tencentcloud.tcm.v20210413.models.CreateMeshRequest`
@@ -50,7 +50,7 @@ class TcmClient(AbstractClient):
 
 
     def DeleteMesh(self, request):
-        """删除网格
+        r"""删除网格
 
         :param request: Request instance for DeleteMesh.
         :type request: :class:`tencentcloud.tcm.v20210413.models.DeleteMeshRequest`
@@ -73,7 +73,7 @@ class TcmClient(AbstractClient):
 
 
     def DescribeAccessLogConfig(self, request):
-        """获取AccessLog配置
+        r"""获取AccessLog配置
 
         :param request: Request instance for DescribeAccessLogConfig.
         :type request: :class:`tencentcloud.tcm.v20210413.models.DescribeAccessLogConfigRequest`
@@ -96,7 +96,7 @@ class TcmClient(AbstractClient):
 
 
     def DescribeMesh(self, request):
-        """查询网格详情
+        r"""查询网格详情
 
         :param request: Request instance for DescribeMesh.
         :type request: :class:`tencentcloud.tcm.v20210413.models.DescribeMeshRequest`
@@ -119,7 +119,7 @@ class TcmClient(AbstractClient):
 
 
     def DescribeMeshList(self, request):
-        """查询网格列表
+        r"""查询网格列表
 
         :param request: Request instance for DescribeMeshList.
         :type request: :class:`tencentcloud.tcm.v20210413.models.DescribeMeshListRequest`
@@ -142,7 +142,7 @@ class TcmClient(AbstractClient):
 
 
     def LinkClusterList(self, request):
-        """关联集群
+        r"""关联集群
 
         :param request: Request instance for LinkClusterList.
         :type request: :class:`tencentcloud.tcm.v20210413.models.LinkClusterListRequest`
@@ -165,7 +165,7 @@ class TcmClient(AbstractClient):
 
 
     def LinkPrometheus(self, request):
-        """关联Prometheus
+        r"""关联Prometheus
 
         :param request: Request instance for LinkPrometheus.
         :type request: :class:`tencentcloud.tcm.v20210413.models.LinkPrometheusRequest`
@@ -188,7 +188,7 @@ class TcmClient(AbstractClient):
 
 
     def ModifyAccessLogConfig(self, request):
-        """修改访问日志配置
+        r"""修改访问日志配置
 
         :param request: Request instance for ModifyAccessLogConfig.
         :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyAccessLogConfigRequest`
@@ -211,7 +211,7 @@ class TcmClient(AbstractClient):
 
 
     def ModifyMesh(self, request):
-        """修改网格
+        r"""修改网格
 
         :param request: Request instance for ModifyMesh.
         :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyMeshRequest`
@@ -234,7 +234,7 @@ class TcmClient(AbstractClient):
 
 
     def ModifyTracingConfig(self, request):
-        """修改 Tracing 配置
+        r"""修改 Tracing 配置
 
         :param request: Request instance for ModifyTracingConfig.
         :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyTracingConfigRequest`
@@ -257,7 +257,7 @@ class TcmClient(AbstractClient):
 
 
     def UnlinkCluster(self, request):
-        """解关联集群
+        r"""解关联集群
 
         :param request: Request instance for UnlinkCluster.
         :type request: :class:`tencentcloud.tcm.v20210413.models.UnlinkClusterRequest`
@@ -280,7 +280,7 @@ class TcmClient(AbstractClient):
 
 
     def UnlinkPrometheus(self, request):
-        """解除关联Prometheus
+        r"""解除关联Prometheus
 
         :param request: Request instance for UnlinkPrometheus.
         :type request: :class:`tencentcloud.tcm.v20210413.models.UnlinkPrometheusRequest`

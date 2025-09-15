@@ -27,7 +27,7 @@ class EmrClient(AbstractClient):
 
 
     def AddMetricScaleStrategy(self, request):
-        """添加扩缩容规则，按负载和时间
+        r"""添加扩缩容规则，按负载和时间
 
         :param request: Request instance for AddMetricScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.AddMetricScaleStrategyRequest`
@@ -50,7 +50,7 @@ class EmrClient(AbstractClient):
 
 
     def AddNodeResourceConfig(self, request):
-        """增加当前集群的节点规格配置
+        r"""增加当前集群的节点规格配置
 
         :param request: Request instance for AddNodeResourceConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.AddNodeResourceConfigRequest`
@@ -73,7 +73,7 @@ class EmrClient(AbstractClient):
 
 
     def AddUsersForUserManager(self, request):
-        """该接口支持安装了OpenLdap组件的集群。
+        r"""该接口支持安装了OpenLdap组件的集群。
         新增用户列表（用户管理）。
 
         :param request: Request instance for AddUsersForUserManager.
@@ -97,7 +97,7 @@ class EmrClient(AbstractClient):
 
 
     def AttachDisks(self, request):
-        """云盘挂载
+        r"""云盘挂载
 
         :param request: Request instance for AttachDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.AttachDisksRequest`
@@ -120,7 +120,7 @@ class EmrClient(AbstractClient):
 
 
     def ConvertPreToPostCluster(self, request):
-        """包月集群转按量集群（不含cdb）
+        r"""包月集群转按量集群（不含cdb）
 
         :param request: Request instance for ConvertPreToPostCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.ConvertPreToPostClusterRequest`
@@ -143,7 +143,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateCloudInstance(self, request):
-        """创建EMR容器集群实例
+        r"""创建EMR容器集群实例
 
         :param request: Request instance for CreateCloudInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateCloudInstanceRequest`
@@ -166,7 +166,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """创建EMR集群实例
+        r"""创建EMR集群实例
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateClusterRequest`
@@ -189,7 +189,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateGroupsSTD(self, request):
-        """用户管理-批量创建用户组
+        r"""用户管理-批量创建用户组
 
         :param request: Request instance for CreateGroupsSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateGroupsSTDRequest`
@@ -212,7 +212,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建EMR集群实例
+        r"""创建EMR集群实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
@@ -235,7 +235,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateSLInstance(self, request):
-        """本接口（CreateSLInstance）用于创建Serverless HBase实例
+        r"""本接口（CreateSLInstance）用于创建Serverless HBase实例
         - 接口调用成功，会创建Serverless HBase实例，创建实例请求成功会返回创建实例的InstaceId和请求的 RequestID。
         - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用DescribeInstancesList查看当前实例的StatusDesc状态。
 
@@ -260,7 +260,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteAutoScaleStrategy(self, request):
-        """删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
+        r"""删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
 
         :param request: Request instance for DeleteAutoScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteAutoScaleStrategyRequest`
@@ -283,7 +283,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteGroupsSTD(self, request):
-        """批量删除用户组
+        r"""批量删除用户组
 
         :param request: Request instance for DeleteGroupsSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteGroupsSTDRequest`
@@ -306,7 +306,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteNodeResourceConfig(self, request):
-        """删除当前集群的节点规格配置
+        r"""删除当前集群的节点规格配置
 
         :param request: Request instance for DeleteNodeResourceConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteNodeResourceConfigRequest`
@@ -329,7 +329,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteUserManagerUserList(self, request):
-        """删除用户列表（用户管理）
+        r"""删除用户列表（用户管理）
 
         :param request: Request instance for DeleteUserManagerUserList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteUserManagerUserListRequest`
@@ -352,7 +352,7 @@ class EmrClient(AbstractClient):
 
 
     def DeployYarnConf(self, request):
-        """yarn资源调度-部署生效
+        r"""yarn资源调度-部署生效
 
         :param request: Request instance for DeployYarnConf.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfRequest`
@@ -375,7 +375,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleGroupGlobalConf(self, request):
-        """获取自动扩缩容全局配置
+        r"""获取自动扩缩容全局配置
 
         :param request: Request instance for DescribeAutoScaleGroupGlobalConf.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleGroupGlobalConfRequest`
@@ -398,7 +398,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleRecords(self, request):
-        """获取集群的自动扩缩容的详细记录
+        r"""获取集群的自动扩缩容的详细记录
 
         :param request: Request instance for DescribeAutoScaleRecords.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleRecordsRequest`
@@ -421,7 +421,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleStrategies(self, request):
-        """获取自动扩缩容规则
+        r"""获取自动扩缩容规则
 
         :param request: Request instance for DescribeAutoScaleStrategies.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleStrategiesRequest`
@@ -444,7 +444,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeClusterFlowStatusDetail(self, request):
-        """查询EMR任务运行详情状态
+        r"""查询EMR任务运行详情状态
 
         :param request: Request instance for DescribeClusterFlowStatusDetail.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterFlowStatusDetailRequest`
@@ -467,7 +467,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeClusterNodes(self, request):
-        """查询集群节点信息
+        r"""查询集群节点信息
 
         :param request: Request instance for DescribeClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
@@ -490,7 +490,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeCvmQuota(self, request):
-        """获取账户的CVM配额
+        r"""获取账户的CVM配额
 
         :param request: Request instance for DescribeCvmQuota.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaRequest`
@@ -513,7 +513,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeDAGInfo(self, request):
-        """查询DAG信息
+        r"""查询DAG信息
 
         :param request: Request instance for DescribeDAGInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDAGInfoRequest`
@@ -536,7 +536,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeEmrApplicationStatics(self, request):
-        """yarn application 统计接口查询
+        r"""yarn application 统计接口查询
 
         :param request: Request instance for DescribeEmrApplicationStatics.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrApplicationStaticsRequest`
@@ -559,7 +559,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeEmrOverviewMetrics(self, request):
-        """查询监控概览页指标数据
+        r"""查询监控概览页指标数据
 
         :param request: Request instance for DescribeEmrOverviewMetrics.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrOverviewMetricsRequest`
@@ -582,7 +582,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeGlobalConfig(self, request):
-        """查询YARN资源调度的全局配置
+        r"""查询YARN资源调度的全局配置
 
         :param request: Request instance for DescribeGlobalConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigRequest`
@@ -605,7 +605,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeGroupsSTD(self, request):
-        """查询用户组
+        r"""查询用户组
 
         :param request: Request instance for DescribeGroupsSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGroupsSTDRequest`
@@ -628,7 +628,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeHBaseTableOverview(self, request):
-        """获取Hbase表级监控数据概览接口
+        r"""获取Hbase表级监控数据概览接口
 
         :param request: Request instance for DescribeHBaseTableOverview.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableOverviewRequest`
@@ -651,7 +651,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeHDFSStorageInfo(self, request):
-        """查询HDFS存储文件信息
+        r"""查询HDFS存储文件信息
 
         :param request: Request instance for DescribeHDFSStorageInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHDFSStorageInfoRequest`
@@ -674,7 +674,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeHiveQueries(self, request):
-        """获取hive查询信息
+        r"""获取hive查询信息
 
         :param request: Request instance for DescribeHiveQueries.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesRequest`
@@ -697,7 +697,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeImpalaQueries(self, request):
-        """DescribeImpalaQueries
+        r"""DescribeImpalaQueries
 
         :param request: Request instance for DescribeImpalaQueries.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeImpalaQueriesRequest`
@@ -720,7 +720,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInsightList(self, request):
-        """获取洞察结果信息
+        r"""获取洞察结果信息
 
         :param request: Request instance for DescribeInsightList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInsightListRequest`
@@ -743,7 +743,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInspectionTaskResult(self, request):
-        """获取巡检任务结果列表
+        r"""获取巡检任务结果列表
 
         :param request: Request instance for DescribeInspectionTaskResult.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInspectionTaskResultRequest`
@@ -766,7 +766,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstanceRenewNodes(self, request):
-        """查询待续费节点信息
+        r"""查询待续费节点信息
 
         :param request: Request instance for DescribeInstanceRenewNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesRequest`
@@ -789,7 +789,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询集群实例信息
+        r"""查询集群实例信息
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
@@ -812,7 +812,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstancesList(self, request):
-        """查询集群列表
+        r"""查询集群列表
 
         :param request: Request instance for DescribeInstancesList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
@@ -835,7 +835,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeJobFlow(self, request):
-        """查询流程任务
+        r"""查询流程任务
 
         :param request: Request instance for DescribeJobFlow.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowRequest`
@@ -858,7 +858,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeKyuubiQueryInfo(self, request):
-        """查询Kyuubi查询信息
+        r"""查询Kyuubi查询信息
 
         :param request: Request instance for DescribeKyuubiQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeKyuubiQueryInfoRequest`
@@ -881,7 +881,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeNodeDataDisks(self, request):
-        """查询节点数据盘信息
+        r"""查询节点数据盘信息
 
         :param request: Request instance for DescribeNodeDataDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeDataDisksRequest`
@@ -904,7 +904,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeNodeResourceConfigFast(self, request):
-        """快速获取当前集群的节点规格配置
+        r"""快速获取当前集群的节点规格配置
 
         :param request: Request instance for DescribeNodeResourceConfigFast.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeResourceConfigFastRequest`
@@ -927,7 +927,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeNodeSpec(self, request):
-        """查询节点规格
+        r"""查询节点规格
 
         :param request: Request instance for DescribeNodeSpec.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeSpecRequest`
@@ -950,7 +950,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
+        r"""查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
@@ -973,7 +973,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceScheduleDiffDetail(self, request):
-        """YARN资源调度-变更详情
+        r"""YARN资源调度-变更详情
 
         :param request: Request instance for DescribeResourceScheduleDiffDetail.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailRequest`
@@ -996,7 +996,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSLInstance(self, request):
-        """本接口（DescribeSLInstance）用于查询 Serverless HBase实例基本信息
+        r"""本接口（DescribeSLInstance）用于查询 Serverless HBase实例基本信息
 
         :param request: Request instance for DescribeSLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceRequest`
@@ -1019,7 +1019,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSLInstanceList(self, request):
-        """本接口（DescribeSLInstanceList）用于查询Serverless HBase实例列表详细信息
+        r"""本接口（DescribeSLInstanceList）用于查询Serverless HBase实例列表详细信息
 
         :param request: Request instance for DescribeSLInstanceList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListRequest`
@@ -1042,7 +1042,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeServiceConfGroupInfos(self, request):
-        """描述服务配置组信息
+        r"""描述服务配置组信息
 
         :param request: Request instance for DescribeServiceConfGroupInfos.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeServiceConfGroupInfosRequest`
@@ -1065,7 +1065,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeServiceNodeInfos(self, request):
-        """查询服务进程信息
+        r"""查询服务进程信息
 
         :param request: Request instance for DescribeServiceNodeInfos.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeServiceNodeInfosRequest`
@@ -1088,7 +1088,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSparkApplications(self, request):
-        """获取spark应用列表
+        r"""获取spark应用列表
 
         :param request: Request instance for DescribeSparkApplications.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkApplicationsRequest`
@@ -1111,7 +1111,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSparkQueries(self, request):
-        """查询Spark查询信息列表
+        r"""查询Spark查询信息列表
 
         :param request: Request instance for DescribeSparkQueries.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkQueriesRequest`
@@ -1134,7 +1134,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeStarRocksQueryInfo(self, request):
-        """查询StarRocks查询信息
+        r"""查询StarRocks查询信息
 
         :param request: Request instance for DescribeStarRocksQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeStarRocksQueryInfoRequest`
@@ -1157,7 +1157,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeTrinoQueryInfo(self, request):
-        """查询Trino(PrestoSQL)查询信息
+        r"""查询Trino(PrestoSQL)查询信息
 
         :param request: Request instance for DescribeTrinoQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeTrinoQueryInfoRequest`
@@ -1180,7 +1180,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeUsersForUserManager(self, request):
-        """该接口支持安装了OpenLdap组件的集群。
+        r"""该接口支持安装了OpenLdap组件的集群。
         批量导出用户。对于kerberos集群，如果需要kertab文件下载地址，可以将NeedKeytabInfo设置为true；注意SupportDownLoadKeyTab为true，但是DownLoadKeyTabUrl为空字符串，表示keytab文件在后台没有准备好（正在生成）。
 
         :param request: Request instance for DescribeUsersForUserManager.
@@ -1204,7 +1204,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeYarnApplications(self, request):
-        """DescribeYarnApplications
+        r"""DescribeYarnApplications
 
         :param request: Request instance for DescribeYarnApplications.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnApplicationsRequest`
@@ -1227,7 +1227,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeYarnQueue(self, request):
-        """获取资源调度中的队列信息
+        r"""获取资源调度中的队列信息
 
         :param request: Request instance for DescribeYarnQueue.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnQueueRequest`
@@ -1250,7 +1250,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeYarnScheduleHistory(self, request):
-        """查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
+        r"""查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
 
         :param request: Request instance for DescribeYarnScheduleHistory.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryRequest`
@@ -1273,7 +1273,7 @@ class EmrClient(AbstractClient):
 
 
     def InquirePriceRenewEmr(self, request):
-        """集群续费询价。
+        r"""集群续费询价。
 
         :param request: Request instance for InquirePriceRenewEmr.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrRequest`
@@ -1296,7 +1296,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceCreateInstance(self, request):
-        """创建实例询价
+        r"""创建实例询价
 
         :param request: Request instance for InquiryPriceCreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceRequest`
@@ -1319,7 +1319,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceRenewInstance(self, request):
-        """续费询价。
+        r"""续费询价。
 
         :param request: Request instance for InquiryPriceRenewInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
@@ -1342,7 +1342,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceScaleOutInstance(self, request):
-        """扩容询价. 当扩容时候，请通过该接口查询价格。
+        r"""扩容询价. 当扩容时候，请通过该接口查询价格。
 
         :param request: Request instance for InquiryPriceScaleOutInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
@@ -1365,7 +1365,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceUpdateInstance(self, request):
-        """变配询价
+        r"""变配询价
 
         :param request: Request instance for InquiryPriceUpdateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
@@ -1388,7 +1388,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyAutoRenewFlag(self, request):
-        """前提：预付费集群
+        r"""前提：预付费集群
         资源级别开启或关闭自动续费
 
         :param request: Request instance for ModifyAutoRenewFlag.
@@ -1412,7 +1412,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyAutoScaleStrategy(self, request):
-        """修改自动扩缩容规则
+        r"""修改自动扩缩容规则
 
         :param request: Request instance for ModifyAutoScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoScaleStrategyRequest`
@@ -1435,7 +1435,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyGlobalConfig(self, request):
-        """修改YARN资源调度的全局配置
+        r"""修改YARN资源调度的全局配置
 
         :param request: Request instance for ModifyGlobalConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigRequest`
@@ -1458,7 +1458,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyInspectionSettings(self, request):
-        """设置巡检任务配置
+        r"""设置巡检任务配置
 
         :param request: Request instance for ModifyInspectionSettings.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInspectionSettingsRequest`
@@ -1481,7 +1481,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyInstanceBasic(self, request):
-        """修改集群名称
+        r"""修改集群名称
 
         :param request: Request instance for ModifyInstanceBasic.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInstanceBasicRequest`
@@ -1504,7 +1504,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyPodNum(self, request):
-        """调整Pod数量
+        r"""调整Pod数量
 
         :param request: Request instance for ModifyPodNum.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyPodNumRequest`
@@ -1527,7 +1527,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResource(self, request):
-        """变配实例
+        r"""变配实例
 
         :param request: Request instance for ModifyResource.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceRequest`
@@ -1550,7 +1550,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourcePools(self, request):
-        """已废弃，请使用DeployYarnConf\\n，近一年未被调用
+        r"""已废弃，请使用DeployYarnConf\\n，近一年未被调用
 
         刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 
@@ -1575,7 +1575,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduleConfig(self, request):
-        """已废弃，请使用ModifyYarnQueueV2来修改队列配置，近一年无相关日志
+        r"""已废弃，请使用ModifyYarnQueueV2来修改队列配置，近一年无相关日志
 
         修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 
@@ -1600,7 +1600,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduler(self, request):
-        """修改了yarn的资源调度器，点击部署生效。
+        r"""修改了yarn的资源调度器，点击部署生效。
 
         :param request: Request instance for ModifyResourceScheduler.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
@@ -1623,7 +1623,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourcesTags(self, request):
-        """强制修改标签
+        r"""强制修改标签
 
         :param request: Request instance for ModifyResourcesTags.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsRequest`
@@ -1646,7 +1646,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifySLInstance(self, request):
-        """本接口（ModifySLInstance）用于Serverless HBase变配实例。
+        r"""本接口（ModifySLInstance）用于Serverless HBase变配实例。
         - 接口调用成功，会创建Serverless HBase实例，创建实例请求成功会返回请求的 RequestID。
         - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用DescribeInstancesList查看当前实例的StatusDesc状态。
 
@@ -1671,7 +1671,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifySLInstanceBasic(self, request):
-        """serverless hbase修改实例名称
+        r"""serverless hbase修改实例名称
 
         :param request: Request instance for ModifySLInstanceBasic.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicRequest`
@@ -1694,7 +1694,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyUserGroup(self, request):
-        """用户管理-修改用户组
+        r"""用户管理-修改用户组
 
         :param request: Request instance for ModifyUserGroup.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserGroupRequest`
@@ -1717,7 +1717,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyUserManagerPwd(self, request):
-        """修改用户密码（用户管理）
+        r"""修改用户密码（用户管理）
 
         :param request: Request instance for ModifyUserManagerPwd.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdRequest`
@@ -1740,7 +1740,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyUsersOfGroupSTD(self, request):
-        """变更用户组用户信息
+        r"""变更用户组用户信息
 
         :param request: Request instance for ModifyUsersOfGroupSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUsersOfGroupSTDRequest`
@@ -1763,7 +1763,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyYarnDeploy(self, request):
-        """该接口已废弃，请使用DeployYarnConf完成部署生效
+        r"""该接口已废弃，请使用DeployYarnConf完成部署生效
 
         部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 
@@ -1788,7 +1788,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyYarnQueueV2(self, request):
-        """修改资源调度中队列信息
+        r"""修改资源调度中队列信息
 
         :param request: Request instance for ModifyYarnQueueV2.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnQueueV2Request`
@@ -1811,7 +1811,7 @@ class EmrClient(AbstractClient):
 
 
     def ResetYarnConfig(self, request):
-        """修改YARN资源调度的资源配置
+        r"""修改YARN资源调度的资源配置
 
         :param request: Request instance for ResetYarnConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ResetYarnConfigRequest`
@@ -1834,7 +1834,7 @@ class EmrClient(AbstractClient):
 
 
     def ResizeDataDisks(self, request):
-        """云数据盘扩容
+        r"""云数据盘扩容
 
         :param request: Request instance for ResizeDataDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.ResizeDataDisksRequest`
@@ -1857,7 +1857,7 @@ class EmrClient(AbstractClient):
 
 
     def RunJobFlow(self, request):
-        """创建流程作业
+        r"""创建流程作业
 
         :param request: Request instance for RunJobFlow.
         :type request: :class:`tencentcloud.emr.v20190103.models.RunJobFlowRequest`
@@ -1880,7 +1880,7 @@ class EmrClient(AbstractClient):
 
 
     def ScaleOutCluster(self, request):
-        """扩容集群节点
+        r"""扩容集群节点
 
         :param request: Request instance for ScaleOutCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutClusterRequest`
@@ -1903,7 +1903,7 @@ class EmrClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """扩容节点
+        r"""扩容节点
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
@@ -1926,7 +1926,7 @@ class EmrClient(AbstractClient):
 
 
     def SetNodeResourceConfigDefault(self, request):
-        """设置当前集群的某个节点规格配置为默认或取消默认
+        r"""设置当前集群的某个节点规格配置为默认或取消默认
 
         :param request: Request instance for SetNodeResourceConfigDefault.
         :type request: :class:`tencentcloud.emr.v20190103.models.SetNodeResourceConfigDefaultRequest`
@@ -1949,7 +1949,7 @@ class EmrClient(AbstractClient):
 
 
     def StartStopServiceOrMonitor(self, request):
-        """用于启停服务 重启服务等功能
+        r"""用于启停服务 重启服务等功能
 
         :param request: Request instance for StartStopServiceOrMonitor.
         :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`
@@ -1972,7 +1972,7 @@ class EmrClient(AbstractClient):
 
 
     def SyncPodState(self, request):
-        """EMR同步TKE中POD状态
+        r"""EMR同步TKE中POD状态
 
         :param request: Request instance for SyncPodState.
         :type request: :class:`tencentcloud.emr.v20190103.models.SyncPodStateRequest`
@@ -1995,7 +1995,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateClusterNodes(self, request):
-        """销毁集群节点
+        r"""销毁集群节点
 
         :param request: Request instance for TerminateClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesRequest`
@@ -2018,7 +2018,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateInstance(self, request):
-        """销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
+        r"""销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
 
         :param request: Request instance for TerminateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
@@ -2041,7 +2041,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateSLInstance(self, request):
-        """本接口（TerminateSLInstance）用于销毁Serverless HBase实例
+        r"""本接口（TerminateSLInstance）用于销毁Serverless HBase实例
 
         :param request: Request instance for TerminateSLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceRequest`
@@ -2064,7 +2064,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateTasks(self, request):
-        """缩容Task节点
+        r"""缩容Task节点
 
         :param request: Request instance for TerminateTasks.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`

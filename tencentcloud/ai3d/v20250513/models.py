@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class File3D(AbstractModel):
-    """3D文件
+    r"""3D文件
 
     """
 
@@ -38,7 +38,7 @@ class File3D(AbstractModel):
 
     @property
     def Type(self):
-        """文件格式
+        r"""文件格式
         :rtype: str
         """
         return self._Type
@@ -49,7 +49,7 @@ class File3D(AbstractModel):
 
     @property
     def Url(self):
-        """文件的Url（有效期24小时）
+        r"""文件的Url（有效期24小时）
         :rtype: str
         """
         return self._Url
@@ -60,7 +60,7 @@ class File3D(AbstractModel):
 
     @property
     def PreviewImageUrl(self):
-        """预览图片Url
+        r"""预览图片Url
         :rtype: str
         """
         return self._PreviewImageUrl
@@ -85,7 +85,7 @@ class File3D(AbstractModel):
 
 
 class QueryHunyuanTo3DJobRequest(AbstractModel):
-    """QueryHunyuanTo3DJob请求参数结构体
+    r"""QueryHunyuanTo3DJob请求参数结构体
 
     """
 
@@ -98,7 +98,7 @@ class QueryHunyuanTo3DJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -121,7 +121,7 @@ class QueryHunyuanTo3DJobRequest(AbstractModel):
 
 
 class QueryHunyuanTo3DJobResponse(AbstractModel):
-    """QueryHunyuanTo3DJob返回参数结构体
+    r"""QueryHunyuanTo3DJob返回参数结构体
 
     """
 
@@ -146,7 +146,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
         :rtype: str
         """
         return self._Status
@@ -157,7 +157,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """错误码
+        r"""错误码
         :rtype: str
         """
         return self._ErrorCode
@@ -168,7 +168,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._ErrorMessage
@@ -179,7 +179,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def ResultFile3Ds(self):
-        """生成的3D文件数组。
+        r"""生成的3D文件数组。
         :rtype: list of File3D
         """
         return self._ResultFile3Ds
@@ -190,7 +190,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -214,7 +214,7 @@ class QueryHunyuanTo3DJobResponse(AbstractModel):
 
 
 class SubmitHunyuanTo3DJobRequest(AbstractModel):
-    """SubmitHunyuanTo3DJob请求参数结构体
+    r"""SubmitHunyuanTo3DJob请求参数结构体
 
     """
 
@@ -260,7 +260,7 @@ back：后视图；
 
     @property
     def Prompt(self):
-        """文生3D，3D内容的描述，中文正向提示词。
+        r"""文生3D，3D内容的描述，中文正向提示词。
 最多支持1024个 utf-8 字符。
 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
         :rtype: str
@@ -273,7 +273,7 @@ back：后视图；
 
     @property
     def ImageBase64(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
 格式：jpg，png，jpeg，webp。
 ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
@@ -287,7 +287,7 @@ ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl�
 
     @property
     def ImageUrl(self):
-        """输入图Url。
+        r"""输入图Url。
 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
 格式：jpg，png，jpeg，webp。
 ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
@@ -301,7 +301,7 @@ ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不
 
     @property
     def MultiViewImages(self):
-        """多视角的模型图片，视角参考值：
+        r"""多视角的模型图片，视角参考值：
 left：左视图；
 right：右视图；
 back：后视图；
@@ -320,7 +320,7 @@ back：后视图；
 
     @property
     def ResultFormat(self):
-        """生成模型的格式，仅限制生成一种格式。
+        r"""生成模型的格式，仅限制生成一种格式。
 生成模型文件组默认返回obj格式。
 可选值：OBJ，GLB，STL，USDZ，FBX，MP4。
         :rtype: str
@@ -333,7 +333,7 @@ back：后视图；
 
     @property
     def EnablePBR(self):
-        """是否开启 PBR材质生成，默认 false。
+        r"""是否开启 PBR材质生成，默认 false。
         :rtype: bool
         """
         return self._EnablePBR
@@ -366,7 +366,7 @@ back：后视图；
 
 
 class SubmitHunyuanTo3DJobResponse(AbstractModel):
-    """SubmitHunyuanTo3DJob返回参数结构体
+    r"""SubmitHunyuanTo3DJob返回参数结构体
 
     """
 
@@ -382,7 +382,7 @@ class SubmitHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID（有效期24小时）
+        r"""任务ID（有效期24小时）
         :rtype: str
         """
         return self._JobId
@@ -393,7 +393,7 @@ class SubmitHunyuanTo3DJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -409,7 +409,7 @@ class SubmitHunyuanTo3DJobResponse(AbstractModel):
 
 
 class ViewImage(AbstractModel):
-    """多视角图片
+    r"""多视角图片
 
     """
 
@@ -426,7 +426,7 @@ class ViewImage(AbstractModel):
 
     @property
     def ViewType(self):
-        """视角类型。
+        r"""视角类型。
 取值：back、left、right
         :rtype: str
         """
@@ -438,7 +438,7 @@ class ViewImage(AbstractModel):
 
     @property
     def ViewImageUrl(self):
-        """图片Url地址
+        r"""图片Url地址
         :rtype: str
         """
         return self._ViewImageUrl

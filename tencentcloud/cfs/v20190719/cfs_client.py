@@ -27,7 +27,7 @@ class CfsClient(AbstractClient):
 
 
     def ApplyPathLifecyclePolicy(self, request):
-        """配置生命周期策略关联到的目录列表
+        r"""配置生命周期策略关联到的目录列表
 
         :param request: Request instance for ApplyPathLifecyclePolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ApplyPathLifecyclePolicyRequest`
@@ -50,7 +50,7 @@ class CfsClient(AbstractClient):
 
 
     def BindAutoSnapshotPolicy(self, request):
-        """文件系统绑定快照策略，可以同时绑定多个fs，一个fs 只能跟一个策略绑定
+        r"""文件系统绑定快照策略，可以同时绑定多个fs，一个fs 只能跟一个策略绑定
 
         :param request: Request instance for BindAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.BindAutoSnapshotPolicyRequest`
@@ -73,7 +73,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateAccessCert(self, request):
-        """创建用于访问文件系统的凭证
+        r"""创建用于访问文件系统的凭证
 
         :param request: Request instance for CreateAccessCert.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateAccessCertRequest`
@@ -96,7 +96,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateAutoSnapshotPolicy(self, request):
-        """创建定期快照策略
+        r"""创建定期快照策略
 
         :param request: Request instance for CreateAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateAutoSnapshotPolicyRequest`
@@ -119,7 +119,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsFileSystem(self, request):
-        """用于添加新文件系统
+        r"""用于添加新文件系统
 
         :param request: Request instance for CreateCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsFileSystemRequest`
@@ -142,7 +142,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsPGroup(self, request):
-        """本接口（CreateCfsPGroup）用于创建权限组
+        r"""本接口（CreateCfsPGroup）用于创建权限组
 
         :param request: Request instance for CreateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsPGroupRequest`
@@ -165,7 +165,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsRule(self, request):
-        """本接口（CreateCfsRule）用于创建权限组规则。
+        r"""本接口（CreateCfsRule）用于创建权限组规则。
 
         :param request: Request instance for CreateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsRuleRequest`
@@ -188,7 +188,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsSnapshot(self, request):
-        """创建文件系统快照
+        r"""创建文件系统快照
 
         :param request: Request instance for CreateCfsSnapshot.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsSnapshotRequest`
@@ -211,7 +211,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateDataFlow(self, request):
-        """创建数据流动接口
+        r"""创建数据流动接口
 
         :param request: Request instance for CreateDataFlow.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateDataFlowRequest`
@@ -234,7 +234,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateLifecycleDataTask(self, request):
-        """支持主动沉降/预热接口
+        r"""支持主动沉降/预热接口
 
         :param request: Request instance for CreateLifecycleDataTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecycleDataTaskRequest`
@@ -257,7 +257,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateLifecyclePolicy(self, request):
-        """创建文件存储生命周期策略
+        r"""创建文件存储生命周期策略
 
         :param request: Request instance for CreateLifecyclePolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyRequest`
@@ -280,7 +280,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateLifecyclePolicyDownloadTask(self, request):
-        """下载生命周期任务中文件列表
+        r"""下载生命周期任务中文件列表
 
         :param request: Request instance for CreateLifecyclePolicyDownloadTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyDownloadTaskRequest`
@@ -303,7 +303,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateMigrationTask(self, request):
-        """用于创建迁移任务。
+        r"""用于创建迁移任务。
 
         :param request: Request instance for CreateMigrationTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateMigrationTaskRequest`
@@ -326,7 +326,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteAutoSnapshotPolicy(self, request):
-        """删除快照定期策略
+        r"""删除快照定期策略
 
         :param request: Request instance for DeleteAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteAutoSnapshotPolicyRequest`
@@ -349,7 +349,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsFileSystem(self, request):
-        """用于删除文件系统
+        r"""用于删除文件系统
 
         :param request: Request instance for DeleteCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsFileSystemRequest`
@@ -372,7 +372,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsPGroup(self, request):
-        """本接口（DeleteCfsPGroup）用于删除权限组，只有未绑定文件系统的权限组才能够被此接口删除。
+        r"""本接口（DeleteCfsPGroup）用于删除权限组，只有未绑定文件系统的权限组才能够被此接口删除。
 
         :param request: Request instance for DeleteCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsPGroupRequest`
@@ -395,7 +395,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsRule(self, request):
-        """本接口（DeleteCfsRule）用于删除权限组规则。
+        r"""本接口（DeleteCfsRule）用于删除权限组规则。
 
         :param request: Request instance for DeleteCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsRuleRequest`
@@ -418,7 +418,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsSnapshot(self, request):
-        """删除文件系统快照
+        r"""删除文件系统快照
 
         :param request: Request instance for DeleteCfsSnapshot.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsSnapshotRequest`
@@ -441,7 +441,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteDataFlow(self, request):
-        """删除数据流动
+        r"""删除数据流动
 
         :param request: Request instance for DeleteDataFlow.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteDataFlowRequest`
@@ -464,7 +464,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteLifecyclePolicy(self, request):
-        """删除生命周期管理策略
+        r"""删除生命周期管理策略
 
         :param request: Request instance for DeleteLifecyclePolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteLifecyclePolicyRequest`
@@ -487,7 +487,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteMigrationTask(self, request):
-        """用于删除迁移任务。不支持删除等待中、创建中、运行中、取消中、终止中状态的任务。
+        r"""用于删除迁移任务。不支持删除等待中、创建中、运行中、取消中、终止中状态的任务。
 
         :param request: Request instance for DeleteMigrationTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteMigrationTaskRequest`
@@ -510,7 +510,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteMountTarget(self, request):
-        """本接口（DeleteMountTarget）用于删除挂载点
+        r"""本接口（DeleteMountTarget）用于删除挂载点
         说明：2022年6月1日之后创建的CFS文件系统删除时无需单独调用删除挂载点操作，此API仅适用老版本的CFS实例。
 
         :param request: Request instance for DeleteMountTarget.
@@ -534,7 +534,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteUserQuota(self, request):
-        """指定条件删除文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
+        r"""指定条件删除文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 
         :param request: Request instance for DeleteUserQuota.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteUserQuotaRequest`
@@ -557,7 +557,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeAutoSnapshotPolicies(self, request):
-        """查询文件系统快照定期策略列表信息
+        r"""查询文件系统快照定期策略列表信息
 
         :param request: Request instance for DescribeAutoSnapshotPolicies.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAutoSnapshotPoliciesRequest`
@@ -580,7 +580,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeAvailableZoneInfo(self, request):
-        """本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
+        r"""本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
 
         :param request: Request instance for DescribeAvailableZoneInfo.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAvailableZoneInfoRequest`
@@ -603,7 +603,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeBucketList(self, request):
-        """用于获取数据源桶列表。
+        r"""用于获取数据源桶列表。
 
         :param request: Request instance for DescribeBucketList.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeBucketListRequest`
@@ -626,7 +626,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsFileSystemClients(self, request):
-        """查询挂载该文件系统的客户端。此功能需要客户端安装CFS监控插件。
+        r"""查询挂载该文件系统的客户端。此功能需要客户端安装CFS监控插件。
 
         :param request: Request instance for DescribeCfsFileSystemClients.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsRequest`
@@ -649,7 +649,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsFileSystems(self, request):
-        """本接口（DescribeCfsFileSystems）用于查询文件系统
+        r"""本接口（DescribeCfsFileSystems）用于查询文件系统
 
         :param request: Request instance for DescribeCfsFileSystems.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemsRequest`
@@ -672,7 +672,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsPGroups(self, request):
-        """本接口（DescribeCfsPGroups）用于查询权限组列表。
+        r"""本接口（DescribeCfsPGroups）用于查询权限组列表。
 
         :param request: Request instance for DescribeCfsPGroups.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsPGroupsRequest`
@@ -695,7 +695,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsRules(self, request):
-        """本接口（DescribeCfsRules）用于查询权限组规则列表。
+        r"""本接口（DescribeCfsRules）用于查询权限组规则列表。
 
         :param request: Request instance for DescribeCfsRules.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsRulesRequest`
@@ -718,7 +718,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsServiceStatus(self, request):
-        """本接口（DescribeCfsServiceStatus）用于查询用户使用CFS的服务状态。
+        r"""本接口（DescribeCfsServiceStatus）用于查询用户使用CFS的服务状态。
 
         :param request: Request instance for DescribeCfsServiceStatus.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsServiceStatusRequest`
@@ -741,7 +741,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsSnapshotOverview(self, request):
-        """文件系统快照概览
+        r"""文件系统快照概览
 
         :param request: Request instance for DescribeCfsSnapshotOverview.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsSnapshotOverviewRequest`
@@ -764,7 +764,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsSnapshots(self, request):
-        """查询文件系统快照列表
+        r"""查询文件系统快照列表
 
         :param request: Request instance for DescribeCfsSnapshots.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsSnapshotsRequest`
@@ -787,7 +787,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeDataFlow(self, request):
-        """查询数据流动信息接口
+        r"""查询数据流动信息接口
 
         :param request: Request instance for DescribeDataFlow.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeDataFlowRequest`
@@ -810,7 +810,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeLifecycleDataTask(self, request):
-        """查询生命周期任务的接口
+        r"""查询生命周期任务的接口
 
         :param request: Request instance for DescribeLifecycleDataTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecycleDataTaskRequest`
@@ -833,7 +833,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeLifecyclePolicies(self, request):
-        """查询生命周期管理策略
+        r"""查询生命周期管理策略
 
         :param request: Request instance for DescribeLifecyclePolicies.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecyclePoliciesRequest`
@@ -856,7 +856,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeMigrationTasks(self, request):
-        """用于获取迁移任务列表。
+        r"""用于获取迁移任务列表。
         此接口需提交工单，开启白名单之后才能使用。
 
         :param request: Request instance for DescribeMigrationTasks.
@@ -880,7 +880,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeMountTargets(self, request):
-        """本接口（DescribeMountTargets）用于查询文件系统挂载点信息
+        r"""本接口（DescribeMountTargets）用于查询文件系统挂载点信息
 
         :param request: Request instance for DescribeMountTargets.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeMountTargetsRequest`
@@ -903,7 +903,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeSnapshotOperationLogs(self, request):
-        """查询快照操作日志
+        r"""查询快照操作日志
 
         :param request: Request instance for DescribeSnapshotOperationLogs.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeSnapshotOperationLogsRequest`
@@ -926,7 +926,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeUserQuota(self, request):
-        """查询文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
+        r"""查询文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 
         :param request: Request instance for DescribeUserQuota.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeUserQuotaRequest`
@@ -949,7 +949,7 @@ class CfsClient(AbstractClient):
 
 
     def DoDirectoryOperation(self, request):
-        """文件系统目录操作接口
+        r"""文件系统目录操作接口
 
         :param request: Request instance for DoDirectoryOperation.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DoDirectoryOperationRequest`
@@ -972,7 +972,7 @@ class CfsClient(AbstractClient):
 
 
     def ModifyDataFlow(self, request):
-        """修改数据流动相关参数
+        r"""修改数据流动相关参数
 
         :param request: Request instance for ModifyDataFlow.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyDataFlowRequest`
@@ -995,7 +995,7 @@ class CfsClient(AbstractClient):
 
 
     def ModifyFileSystemAutoScaleUpRule(self, request):
-        """用来设置文件系统扩容策略，该接口只支持turbo文件系统
+        r"""用来设置文件系统扩容策略，该接口只支持turbo文件系统
 
         :param request: Request instance for ModifyFileSystemAutoScaleUpRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleRequest`
@@ -1018,7 +1018,7 @@ class CfsClient(AbstractClient):
 
 
     def ModifyLifecyclePolicy(self, request):
-        """更新文件存储生命周期策略
+        r"""更新文件存储生命周期策略
 
         :param request: Request instance for ModifyLifecyclePolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyLifecyclePolicyRequest`
@@ -1041,7 +1041,7 @@ class CfsClient(AbstractClient):
 
 
     def ScaleUpFileSystem(self, request):
-        """该接口用于对turbo 文件系统扩容使用,该接口只支持扩容不支持缩容。turbo标准型扩容步长是10240GIB，turbo性能型扩容步长是5120GIB
+        r"""该接口用于对turbo 文件系统扩容使用,该接口只支持扩容不支持缩容。turbo标准型扩容步长是10240GIB，turbo性能型扩容步长是5120GIB
 
         :param request: Request instance for ScaleUpFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemRequest`
@@ -1064,7 +1064,7 @@ class CfsClient(AbstractClient):
 
 
     def SetUserQuota(self, request):
-        """设置文件系统配额，提供UID/GID的配额设置的接口（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
+        r"""设置文件系统配额，提供UID/GID的配额设置的接口（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 
         :param request: Request instance for SetUserQuota.
         :type request: :class:`tencentcloud.cfs.v20190719.models.SetUserQuotaRequest`
@@ -1087,7 +1087,7 @@ class CfsClient(AbstractClient):
 
 
     def SignUpCfsService(self, request):
-        """本接口（SignUpCfsService）用于开通CFS服务。
+        r"""本接口（SignUpCfsService）用于开通CFS服务。
 
         :param request: Request instance for SignUpCfsService.
         :type request: :class:`tencentcloud.cfs.v20190719.models.SignUpCfsServiceRequest`
@@ -1110,7 +1110,7 @@ class CfsClient(AbstractClient):
 
 
     def StopLifecycleDataTask(self, request):
-        """终止生命周期任务的接口
+        r"""终止生命周期任务的接口
 
         :param request: Request instance for StopLifecycleDataTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.StopLifecycleDataTaskRequest`
@@ -1133,7 +1133,7 @@ class CfsClient(AbstractClient):
 
 
     def StopMigrationTask(self, request):
-        """用于终止迁移任务，可以终止等待中、运行中状态的任务。
+        r"""用于终止迁移任务，可以终止等待中、运行中状态的任务。
 
         :param request: Request instance for StopMigrationTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.StopMigrationTaskRequest`
@@ -1156,7 +1156,7 @@ class CfsClient(AbstractClient):
 
 
     def UnbindAutoSnapshotPolicy(self, request):
-        """解除文件系统绑定的快照策略
+        r"""解除文件系统绑定的快照策略
 
         :param request: Request instance for UnbindAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UnbindAutoSnapshotPolicyRequest`
@@ -1179,7 +1179,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateAutoSnapshotPolicy(self, request):
-        """更新定期自动快照策略
+        r"""更新定期自动快照策略
 
         :param request: Request instance for UpdateAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateAutoSnapshotPolicyRequest`
@@ -1202,7 +1202,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemName(self, request):
-        """本接口（UpdateCfsFileSystemName）用于更新文件系统名
+        r"""本接口（UpdateCfsFileSystemName）用于更新文件系统名
 
         :param request: Request instance for UpdateCfsFileSystemName.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameRequest`
@@ -1225,7 +1225,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemPGroup(self, request):
-        """本接口（UpdateCfsFileSystemPGroup）用于更新文件系统所使用的权限组
+        r"""本接口（UpdateCfsFileSystemPGroup）用于更新文件系统所使用的权限组
 
         :param request: Request instance for UpdateCfsFileSystemPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemPGroupRequest`
@@ -1248,7 +1248,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemSizeLimit(self, request):
-        """本接口（UpdateCfsFileSystemSizeLimit）用于更新文件系统存储容量限制。
+        r"""本接口（UpdateCfsFileSystemSizeLimit）用于更新文件系统存储容量限制。
 
         :param request: Request instance for UpdateCfsFileSystemSizeLimit.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemSizeLimitRequest`
@@ -1271,7 +1271,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsPGroup(self, request):
-        """本接口（UpdateCfsPGroup）更新权限组信息。
+        r"""本接口（UpdateCfsPGroup）更新权限组信息。
 
         :param request: Request instance for UpdateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsPGroupRequest`
@@ -1294,7 +1294,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsRule(self, request):
-        """本接口（UpdateCfsRule）用于更新权限规则。
+        r"""本接口（UpdateCfsRule）用于更新权限规则。
 
         :param request: Request instance for UpdateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsRuleRequest`
@@ -1317,7 +1317,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsSnapshotAttribute(self, request):
-        """更新文件系统快照名称及保留时长
+        r"""更新文件系统快照名称及保留时长
 
         :param request: Request instance for UpdateCfsSnapshotAttribute.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsSnapshotAttributeRequest`
@@ -1340,7 +1340,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateFileSystemBandwidthLimit(self, request):
-        """更新文件系统吞吐
+        r"""更新文件系统吞吐
         仅吞吐型支持此接口
 
         :param request: Request instance for UpdateFileSystemBandwidthLimit.

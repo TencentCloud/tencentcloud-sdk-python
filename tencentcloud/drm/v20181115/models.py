@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddFairPlayPemRequest(AbstractModel):
-    """AddFairPlayPem请求参数结构体
+    r"""AddFairPlayPem请求参数结构体
 
     """
 
@@ -49,7 +49,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Pem(self):
-        """加密后的fairplay方案申请时使用的私钥。
+        r"""加密后的fairplay方案申请时使用的私钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
@@ -61,7 +61,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Ask(self):
-        """加密后的fairplay方案申请返回的ask数据。
+        r"""加密后的fairplay方案申请返回的ask数据。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
@@ -73,7 +73,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def PemDecryptKey(self):
-        """私钥的解密密钥。
+        r"""私钥的解密密钥。
 openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :rtype: str
@@ -86,7 +86,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def BailorId(self):
-        """委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        r"""委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :rtype: int
         """
         return self._BailorId
@@ -97,7 +97,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Priority(self):
-        """私钥的优先级，优先级数值越高，优先级越高。
+        r"""私钥的优先级，优先级数值越高，优先级越高。
 该值可以不传，后台将自动分配一个优先级。
         :rtype: int
         """
@@ -125,7 +125,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
 
 class AddFairPlayPemResponse(AbstractModel):
-    """AddFairPlayPem返回参数结构体
+    r"""AddFairPlayPem返回参数结构体
 
     """
 
@@ -146,7 +146,7 @@ class AddFairPlayPemResponse(AbstractModel):
 
     @property
     def FairPlayPemId(self):
-        """设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+        r"""设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -158,7 +158,7 @@ class AddFairPlayPemResponse(AbstractModel):
 
     @property
     def Priority(self):
-        """私钥的优先级，优先级数值越高，优先级越高。
+        r"""私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -170,7 +170,7 @@ class AddFairPlayPemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -187,7 +187,7 @@ class AddFairPlayPemResponse(AbstractModel):
 
 
 class CreateEncryptKeysRequest(AbstractModel):
-    """CreateEncryptKeys请求参数结构体
+    r"""CreateEncryptKeys请求参数结构体
 
     """
 
@@ -209,7 +209,7 @@ class CreateEncryptKeysRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        r"""使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :rtype: str
         """
         return self._DrmType
@@ -220,7 +220,7 @@ class CreateEncryptKeysRequest(AbstractModel):
 
     @property
     def Keys(self):
-        """设置的加密密钥列表。
+        r"""设置的加密密钥列表。
         :rtype: list of KeyParam
         """
         return self._Keys
@@ -231,7 +231,7 @@ class CreateEncryptKeysRequest(AbstractModel):
 
     @property
     def ContentId(self):
-        """一个加密内容的唯一标识。
+        r"""一个加密内容的唯一标识。
         :rtype: str
         """
         return self._ContentId
@@ -242,7 +242,7 @@ class CreateEncryptKeysRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型。接口取值VodVideo,LiveVideo。
+        r"""内容类型。接口取值VodVideo,LiveVideo。
         :rtype: str
         """
         return self._ContentType
@@ -273,7 +273,7 @@ class CreateEncryptKeysRequest(AbstractModel):
 
 
 class CreateEncryptKeysResponse(AbstractModel):
-    """CreateEncryptKeys返回参数结构体
+    r"""CreateEncryptKeys返回参数结构体
 
     """
 
@@ -286,7 +286,7 @@ class CreateEncryptKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -301,7 +301,7 @@ class CreateEncryptKeysResponse(AbstractModel):
 
 
 class CreateLicenseRequest(AbstractModel):
-    """CreateLicense请求参数结构体
+    r"""CreateLicense请求参数结构体
 
     """
 
@@ -331,7 +331,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
+        r"""DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
         :rtype: str
         """
         return self._DrmType
@@ -342,7 +342,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def LicenseRequest(self):
-        """Base64编码的终端设备License Request数据。
+        r"""Base64编码的终端设备License Request数据。
         :rtype: str
         """
         return self._LicenseRequest
@@ -353,7 +353,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型，接口取值：VodVideo,LiveVideo。
+        r"""内容类型，接口取值：VodVideo,LiveVideo。
         :rtype: str
         """
         return self._ContentType
@@ -364,7 +364,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def Tracks(self):
-        """授权播放的Track列表。
+        r"""授权播放的Track列表。
 该值为空时，默认授权所有track播放。
         :rtype: list of str
         """
@@ -376,7 +376,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def PlaybackPolicy(self):
-        """播放策略参数。
+        r"""播放策略参数。
         :rtype: :class:`tencentcloud.drm.v20181115.models.PlaybackPolicy`
         """
         return self._PlaybackPolicy
@@ -387,7 +387,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def WidevineSecurityLevel(self):
-        """Widevine安全级别，接口取值[L1, L2, L3]。
+        r"""Widevine安全级别，接口取值[L1, L2, L3]。
 安全级别定义参考Widevine安全级别定义。
         :rtype: str
         """
@@ -418,7 +418,7 @@ class CreateLicenseRequest(AbstractModel):
 
 
 class CreateLicenseResponse(AbstractModel):
-    """CreateLicense返回参数结构体
+    r"""CreateLicense返回参数结构体
 
     """
 
@@ -437,7 +437,7 @@ class CreateLicenseResponse(AbstractModel):
 
     @property
     def License(self):
-        """Base64 编码的许可证二进制数据。
+        r"""Base64 编码的许可证二进制数据。
         :rtype: str
         """
         return self._License
@@ -448,7 +448,7 @@ class CreateLicenseResponse(AbstractModel):
 
     @property
     def ContentId(self):
-        """加密内容的内容ID
+        r"""加密内容的内容ID
         :rtype: str
         """
         return self._ContentId
@@ -459,7 +459,7 @@ class CreateLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -476,7 +476,7 @@ class CreateLicenseResponse(AbstractModel):
 
 
 class DeleteFairPlayPemRequest(AbstractModel):
-    """DeleteFairPlayPem请求参数结构体
+    r"""DeleteFairPlayPem请求参数结构体
 
     """
 
@@ -493,7 +493,7 @@ class DeleteFairPlayPemRequest(AbstractModel):
 
     @property
     def BailorId(self):
-        """委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        r"""委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :rtype: int
         """
         return self._BailorId
@@ -504,7 +504,7 @@ class DeleteFairPlayPemRequest(AbstractModel):
 
     @property
     def FairPlayPemId(self):
-        """要删除的pem id。
+        r"""要删除的pem id。
 当未传入该值时，将删除所有的私钥。
         :rtype: int
         """
@@ -529,7 +529,7 @@ class DeleteFairPlayPemRequest(AbstractModel):
 
 
 class DeleteFairPlayPemResponse(AbstractModel):
-    """DeleteFairPlayPem返回参数结构体
+    r"""DeleteFairPlayPem返回参数结构体
 
     """
 
@@ -542,7 +542,7 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -557,7 +557,7 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
 
 class DescribeAllKeysRequest(AbstractModel):
-    """DescribeAllKeys请求参数结构体
+    r"""DescribeAllKeys请求参数结构体
 
     """
 
@@ -580,7 +580,7 @@ class DescribeAllKeysRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        r"""使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :rtype: str
         """
         return self._DrmType
@@ -591,7 +591,7 @@ class DescribeAllKeysRequest(AbstractModel):
 
     @property
     def RsaPublicKey(self):
-        """Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+        r"""Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 如果该参数为空，则出参中SessionKey为明文。
         :rtype: str
         """
@@ -603,7 +603,7 @@ class DescribeAllKeysRequest(AbstractModel):
 
     @property
     def ContentId(self):
-        """一个加密内容的唯一标识。
+        r"""一个加密内容的唯一标识。
         :rtype: str
         """
         return self._ContentId
@@ -614,7 +614,7 @@ class DescribeAllKeysRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型。接口取值VodVideo,LiveVideo。
+        r"""内容类型。接口取值VodVideo,LiveVideo。
         :rtype: str
         """
         return self._ContentType
@@ -640,7 +640,7 @@ class DescribeAllKeysRequest(AbstractModel):
 
 
 class DescribeAllKeysResponse(AbstractModel):
-    """DescribeAllKeys返回参数结构体
+    r"""DescribeAllKeys返回参数结构体
 
     """
 
@@ -667,7 +667,7 @@ class DescribeAllKeysResponse(AbstractModel):
 
     @property
     def Keys(self):
-        """加密密钥列表。
+        r"""加密密钥列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Key
         """
@@ -679,7 +679,7 @@ class DescribeAllKeysResponse(AbstractModel):
 
     @property
     def SessionKey(self):
-        """用来加密密钥。
+        r"""用来加密密钥。
 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -693,7 +693,7 @@ class DescribeAllKeysResponse(AbstractModel):
 
     @property
     def ContentId(self):
-        """内容ID
+        r"""内容ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -705,7 +705,7 @@ class DescribeAllKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -728,7 +728,7 @@ class DescribeAllKeysResponse(AbstractModel):
 
 
 class DescribeDRMLicenseRequest(AbstractModel):
-    """DescribeDRMLicense请求参数结构体
+    r"""DescribeDRMLicense请求参数结构体
 
     """
 
@@ -750,7 +750,7 @@ class DescribeDRMLicenseRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值 NORMALAES 。
+        r"""使用的DRM方案类型，接口取值 NORMALAES 。
         :rtype: str
         """
         return self._DrmType
@@ -761,7 +761,7 @@ class DescribeDRMLicenseRequest(AbstractModel):
 
     @property
     def Tracks(self):
-        """加密的track列表，接口取值 SD 。
+        r"""加密的track列表，接口取值 SD 。
         :rtype: list of str
         """
         return self._Tracks
@@ -772,7 +772,7 @@ class DescribeDRMLicenseRequest(AbstractModel):
 
     @property
     def ContentId(self):
-        """一个加密内容的唯一标识。
+        r"""一个加密内容的唯一标识。
         :rtype: str
         """
         return self._ContentId
@@ -783,7 +783,7 @@ class DescribeDRMLicenseRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型。接口取值 LiveVideo 。
+        r"""内容类型。接口取值 LiveVideo 。
         :rtype: str
         """
         return self._ContentType
@@ -809,7 +809,7 @@ class DescribeDRMLicenseRequest(AbstractModel):
 
 
 class DescribeDRMLicenseResponse(AbstractModel):
-    """DescribeDRMLicense返回参数结构体
+    r"""DescribeDRMLicense返回参数结构体
 
     """
 
@@ -828,7 +828,7 @@ class DescribeDRMLicenseResponse(AbstractModel):
 
     @property
     def ContentId(self):
-        """内容ID。
+        r"""内容ID。
         :rtype: str
         """
         return self._ContentId
@@ -839,7 +839,7 @@ class DescribeDRMLicenseResponse(AbstractModel):
 
     @property
     def TXEncryptionToken(self):
-        """加密密钥。
+        r"""加密密钥。
         :rtype: str
         """
         return self._TXEncryptionToken
@@ -850,7 +850,7 @@ class DescribeDRMLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -867,7 +867,7 @@ class DescribeDRMLicenseResponse(AbstractModel):
 
 
 class DescribeFairPlayPemRequest(AbstractModel):
-    """DescribeFairPlayPem请求参数结构体
+    r"""DescribeFairPlayPem请求参数结构体
 
     """
 
@@ -884,7 +884,7 @@ class DescribeFairPlayPemRequest(AbstractModel):
 
     @property
     def BailorId(self):
-        """委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        r"""委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :rtype: int
         """
         return self._BailorId
@@ -895,7 +895,7 @@ class DescribeFairPlayPemRequest(AbstractModel):
 
     @property
     def FairPlayPemId(self):
-        """需要查询的pem id。
+        r"""需要查询的pem id。
 当该值未填入时，将返回所有的私钥信息。
         :rtype: int
         """
@@ -920,7 +920,7 @@ class DescribeFairPlayPemRequest(AbstractModel):
 
 
 class DescribeFairPlayPemResponse(AbstractModel):
-    """DescribeFairPlayPem返回参数结构体
+    r"""DescribeFairPlayPem返回参数结构体
 
     """
 
@@ -937,7 +937,7 @@ class DescribeFairPlayPemResponse(AbstractModel):
 
     @property
     def FairPlayPems(self):
-        """该账户下，所有设置的FairPlay私钥摘要信息
+        r"""该账户下，所有设置的FairPlay私钥摘要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FairPlayPemDigestInfo
         """
@@ -949,7 +949,7 @@ class DescribeFairPlayPemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -970,7 +970,7 @@ class DescribeFairPlayPemResponse(AbstractModel):
 
 
 class DescribeKeysRequest(AbstractModel):
-    """DescribeKeys请求参数结构体
+    r"""DescribeKeys请求参数结构体
 
     """
 
@@ -997,7 +997,7 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        r"""使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :rtype: str
         """
         return self._DrmType
@@ -1008,7 +1008,7 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def Tracks(self):
-        """加密的track列表，接口取值VIDEO、AUDIO。
+        r"""加密的track列表，接口取值VIDEO、AUDIO。
         :rtype: list of str
         """
         return self._Tracks
@@ -1019,7 +1019,7 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型。接口取值VodVideo,LiveVideo
+        r"""内容类型。接口取值VodVideo,LiveVideo
         :rtype: str
         """
         return self._ContentType
@@ -1030,7 +1030,7 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def RsaPublicKey(self):
-        """Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+        r"""Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 如果该参数为空，则出参中SessionKey为明文。
         :rtype: str
         """
@@ -1042,7 +1042,7 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def ContentId(self):
-        """一个加密内容的唯一标识。
+        r"""一个加密内容的唯一标识。
 如果该参数为空，则后台自动生成
         :rtype: str
         """
@@ -1070,7 +1070,7 @@ class DescribeKeysRequest(AbstractModel):
 
 
 class DescribeKeysResponse(AbstractModel):
-    """DescribeKeys返回参数结构体
+    r"""DescribeKeys返回参数结构体
 
     """
 
@@ -1098,7 +1098,7 @@ Fairplay方案无该值。
 
     @property
     def Keys(self):
-        """加密密钥列表
+        r"""加密密钥列表
         :rtype: list of Key
         """
         return self._Keys
@@ -1109,7 +1109,7 @@ Fairplay方案无该值。
 
     @property
     def SessionKey(self):
-        """用来加密密钥。
+        r"""用来加密密钥。
 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
         :rtype: str
@@ -1122,7 +1122,7 @@ Fairplay方案无该值。
 
     @property
     def ContentId(self):
-        """内容ID
+        r"""内容ID
         :rtype: str
         """
         return self._ContentId
@@ -1133,7 +1133,7 @@ Fairplay方案无该值。
 
     @property
     def Pssh(self):
-        """Widevine方案的Pssh数据，Base64编码。
+        r"""Widevine方案的Pssh数据，Base64编码。
 Fairplay方案无该值。
         :rtype: str
         """
@@ -1145,7 +1145,7 @@ Fairplay方案无该值。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1169,7 +1169,7 @@ Fairplay方案无该值。
 
 
 class DrmOutputObject(AbstractModel):
-    """DRM加密后的输出对象
+    r"""DRM加密后的输出对象
 
     """
 
@@ -1188,7 +1188,7 @@ class DrmOutputObject(AbstractModel):
 
     @property
     def BucketName(self):
-        """输出的桶名称。
+        r"""输出的桶名称。
         :rtype: str
         """
         return self._BucketName
@@ -1199,7 +1199,7 @@ class DrmOutputObject(AbstractModel):
 
     @property
     def ObjectName(self):
-        """输出的对象名称。
+        r"""输出的对象名称。
         :rtype: str
         """
         return self._ObjectName
@@ -1210,7 +1210,7 @@ class DrmOutputObject(AbstractModel):
 
     @property
     def Para(self):
-        """输出对象参数。
+        r"""输出对象参数。
         :rtype: :class:`tencentcloud.drm.v20181115.models.DrmOutputPara`
         """
         return self._Para
@@ -1237,7 +1237,7 @@ class DrmOutputObject(AbstractModel):
 
 
 class DrmOutputPara(AbstractModel):
-    """Drm加密对象输出参数
+    r"""Drm加密对象输出参数
 
     """
 
@@ -1253,7 +1253,7 @@ class DrmOutputPara(AbstractModel):
 
     @property
     def Type(self):
-        """内容类型。例:video，audio，mpd，m3u8
+        r"""内容类型。例:video，audio，mpd，m3u8
         :rtype: str
         """
         return self._Type
@@ -1264,7 +1264,7 @@ class DrmOutputPara(AbstractModel):
 
     @property
     def Language(self):
-        """语言,例: en, zh-cn
+        r"""语言,例: en, zh-cn
         :rtype: str
         """
         return self._Language
@@ -1288,7 +1288,7 @@ class DrmOutputPara(AbstractModel):
 
 
 class DrmSourceObject(AbstractModel):
-    """用于DRM加密的源对象
+    r"""用于DRM加密的源对象
 
     """
 
@@ -1304,7 +1304,7 @@ class DrmSourceObject(AbstractModel):
 
     @property
     def BucketName(self):
-        """输入的桶名称。
+        r"""输入的桶名称。
         :rtype: str
         """
         return self._BucketName
@@ -1315,7 +1315,7 @@ class DrmSourceObject(AbstractModel):
 
     @property
     def ObjectName(self):
-        """输入对象名称。
+        r"""输入对象名称。
         :rtype: str
         """
         return self._ObjectName
@@ -1339,7 +1339,7 @@ class DrmSourceObject(AbstractModel):
 
 
 class FairPlayPemDigestInfo(AbstractModel):
-    """FairPlay 私钥摘要信息。
+    r"""FairPlay 私钥摘要信息。
 
     """
 
@@ -1369,7 +1369,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     @property
     def FairPlayPemId(self):
-        """fairplay 私钥pem id。
+        r"""fairplay 私钥pem id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1381,7 +1381,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     @property
     def Priority(self):
-        """私钥的优先级。
+        r"""私钥的优先级。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1393,7 +1393,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     @property
     def Md5Pem(self):
-        """私钥的md5 信息。
+        r"""私钥的md5 信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1405,7 +1405,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     @property
     def Md5Ask(self):
-        """ASK的md5信息。
+        r"""ASK的md5信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1417,7 +1417,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     @property
     def Md5PemDecryptKey(self):
-        """私钥解密密钥的md5值。
+        r"""私钥解密密钥的md5值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1445,7 +1445,7 @@ class FairPlayPemDigestInfo(AbstractModel):
 
 
 class GenerateTDRMKeyRequest(AbstractModel):
-    """GenerateTDRMKey请求参数结构体
+    r"""GenerateTDRMKey请求参数结构体
 
     """
 
@@ -1467,7 +1467,7 @@ class GenerateTDRMKeyRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值 NORMALAES 。
+        r"""使用的DRM方案类型，接口取值 NORMALAES 。
         :rtype: str
         """
         return self._DrmType
@@ -1478,7 +1478,7 @@ class GenerateTDRMKeyRequest(AbstractModel):
 
     @property
     def Tracks(self):
-        """加密的track列表，接口取值 SD 。
+        r"""加密的track列表，接口取值 SD 。
         :rtype: list of str
         """
         return self._Tracks
@@ -1489,7 +1489,7 @@ class GenerateTDRMKeyRequest(AbstractModel):
 
     @property
     def ContentId(self):
-        """一个加密内容的唯一标识。
+        r"""一个加密内容的唯一标识。
         :rtype: str
         """
         return self._ContentId
@@ -1500,7 +1500,7 @@ class GenerateTDRMKeyRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """内容类型。接口取值 LiveVideo 。
+        r"""内容类型。接口取值 LiveVideo 。
         :rtype: str
         """
         return self._ContentType
@@ -1526,7 +1526,7 @@ class GenerateTDRMKeyRequest(AbstractModel):
 
 
 class GenerateTDRMKeyResponse(AbstractModel):
-    """GenerateTDRMKey返回参数结构体
+    r"""GenerateTDRMKey返回参数结构体
 
     """
 
@@ -1545,7 +1545,7 @@ class GenerateTDRMKeyResponse(AbstractModel):
 
     @property
     def ContentId(self):
-        """内容ID。
+        r"""内容ID。
         :rtype: str
         """
         return self._ContentId
@@ -1556,7 +1556,7 @@ class GenerateTDRMKeyResponse(AbstractModel):
 
     @property
     def TXEncryptionToken(self):
-        """加密密钥。
+        r"""加密密钥。
         :rtype: str
         """
         return self._TXEncryptionToken
@@ -1567,7 +1567,7 @@ class GenerateTDRMKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1584,7 +1584,7 @@ class GenerateTDRMKeyResponse(AbstractModel):
 
 
 class Key(AbstractModel):
-    """DRM加密密钥
+    r"""DRM加密密钥
 
     """
 
@@ -1610,7 +1610,7 @@ class Key(AbstractModel):
 
     @property
     def Track(self):
-        """加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
+        r"""加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
         :rtype: str
         """
         return self._Track
@@ -1621,7 +1621,7 @@ class Key(AbstractModel):
 
     @property
     def KeyId(self):
-        """密钥ID。
+        r"""密钥ID。
         :rtype: str
         """
         return self._KeyId
@@ -1632,7 +1632,7 @@ class Key(AbstractModel):
 
     @property
     def Key(self):
-        """原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
+        r"""原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
         :rtype: str
         """
         return self._Key
@@ -1643,7 +1643,7 @@ class Key(AbstractModel):
 
     @property
     def Iv(self):
-        """原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
+        r"""原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
         :rtype: str
         """
         return self._Iv
@@ -1654,7 +1654,7 @@ class Key(AbstractModel):
 
     @property
     def InsertTimestamp(self):
-        """该key生成时的时间戳
+        r"""该key生成时的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1682,7 +1682,7 @@ class Key(AbstractModel):
 
 
 class KeyParam(AbstractModel):
-    """设置加密密钥所需的参数
+    r"""设置加密密钥所需的参数
 
     """
 
@@ -1705,7 +1705,7 @@ SD、HD、UHD1、UHD2、AUDIO
 
     @property
     def Track(self):
-        """加密track类型。取值范围：
+        r"""加密track类型。取值范围：
 SD、HD、UHD1、UHD2、AUDIO
         :rtype: str
         """
@@ -1717,7 +1717,7 @@ SD、HD、UHD1、UHD2、AUDIO
 
     @property
     def Key(self):
-        """请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        r"""请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
         return self._Key
@@ -1728,7 +1728,7 @@ SD、HD、UHD1、UHD2、AUDIO
 
     @property
     def KeyId(self):
-        """密钥ID。
+        r"""密钥ID。
         :rtype: str
         """
         return self._KeyId
@@ -1739,7 +1739,7 @@ SD、HD、UHD1、UHD2、AUDIO
 
     @property
     def Iv(self):
-        """请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        r"""请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
         return self._Iv
@@ -1765,7 +1765,7 @@ SD、HD、UHD1、UHD2、AUDIO
 
 
 class ModifyFairPlayPemRequest(AbstractModel):
-    """ModifyFairPlayPem请求参数结构体
+    r"""ModifyFairPlayPem请求参数结构体
 
     """
 
@@ -1798,7 +1798,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Pem(self):
-        """加密后的fairplay方案申请时使用的私钥。
+        r"""加密后的fairplay方案申请时使用的私钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
@@ -1810,7 +1810,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Ask(self):
-        """加密后的fairplay方案申请返回的ask数据。
+        r"""加密后的fairplay方案申请返回的ask数据。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
         :rtype: str
         """
@@ -1822,7 +1822,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def FairPlayPemId(self):
-        """要修改的私钥id
+        r"""要修改的私钥id
         :rtype: int
         """
         return self._FairPlayPemId
@@ -1833,7 +1833,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def PemDecryptKey(self):
-        """私钥的解密密钥。
+        r"""私钥的解密密钥。
 openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :rtype: str
@@ -1846,7 +1846,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def BailorId(self):
-        """委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        r"""委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :rtype: int
         """
         return self._BailorId
@@ -1857,7 +1857,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
     @property
     def Priority(self):
-        """私钥的优先级，优先级数值越高，优先级越高。
+        r"""私钥的优先级，优先级数值越高，优先级越高。
 该值可以不传，后台将自动分配一个优先级。
         :rtype: int
         """
@@ -1886,7 +1886,7 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
 
 
 class ModifyFairPlayPemResponse(AbstractModel):
-    """ModifyFairPlayPem返回参数结构体
+    r"""ModifyFairPlayPem返回参数结构体
 
     """
 
@@ -1907,7 +1907,7 @@ class ModifyFairPlayPemResponse(AbstractModel):
 
     @property
     def FairPlayPemId(self):
-        """设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+        r"""设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1919,7 +1919,7 @@ class ModifyFairPlayPemResponse(AbstractModel):
 
     @property
     def Priority(self):
-        """私钥的优先级，优先级数值越高，优先级越高。
+        r"""私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1931,7 +1931,7 @@ class ModifyFairPlayPemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1948,7 +1948,7 @@ class ModifyFairPlayPemResponse(AbstractModel):
 
 
 class PlaybackPolicy(AbstractModel):
-    """播放控制参数
+    r"""播放控制参数
 
     """
 
@@ -1964,7 +1964,7 @@ class PlaybackPolicy(AbstractModel):
 
     @property
     def LicenseDurationSeconds(self):
-        """播放许可证的有效期
+        r"""播放许可证的有效期
         :rtype: int
         """
         return self._LicenseDurationSeconds
@@ -1975,7 +1975,7 @@ class PlaybackPolicy(AbstractModel):
 
     @property
     def PlaybackDurationSeconds(self):
-        """开始播放后，允许最长播放时间
+        r"""开始播放后，允许最长播放时间
         :rtype: int
         """
         return self._PlaybackDurationSeconds
@@ -1999,7 +1999,7 @@ class PlaybackPolicy(AbstractModel):
 
 
 class StartEncryptionRequest(AbstractModel):
-    """StartEncryption请求参数结构体
+    r"""StartEncryption请求参数结构体
 
     """
 
@@ -2027,7 +2027,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def CosEndPoint(self):
-        """cos的end point。
+        r"""cos的end point。
         :rtype: str
         """
         return self._CosEndPoint
@@ -2038,7 +2038,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def CosSecretId(self):
-        """cos api密钥id。
+        r"""cos api密钥id。
         :rtype: str
         """
         return self._CosSecretId
@@ -2049,7 +2049,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def CosSecretKey(self):
-        """cos api密钥。
+        r"""cos api密钥。
         :rtype: str
         """
         return self._CosSecretKey
@@ -2060,7 +2060,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        """使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
+        r"""使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
         :rtype: str
         """
         return self._DrmType
@@ -2071,7 +2071,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def SourceObject(self):
-        """存储在COS上的原始内容信息
+        r"""存储在COS上的原始内容信息
         :rtype: :class:`tencentcloud.drm.v20181115.models.DrmSourceObject`
         """
         return self._SourceObject
@@ -2082,7 +2082,7 @@ class StartEncryptionRequest(AbstractModel):
 
     @property
     def OutputObjects(self):
-        """加密后的内容存储到COS的对象
+        r"""加密后的内容存储到COS的对象
         :rtype: list of DrmOutputObject
         """
         return self._OutputObjects
@@ -2117,7 +2117,7 @@ class StartEncryptionRequest(AbstractModel):
 
 
 class StartEncryptionResponse(AbstractModel):
-    """StartEncryption返回参数结构体
+    r"""StartEncryption返回参数结构体
 
     """
 
@@ -2130,7 +2130,7 @@ class StartEncryptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

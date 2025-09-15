@@ -27,7 +27,7 @@ class CccClient(AbstractClient):
 
 
     def AbortAgentCruiseDialingCampaign(self, request):
-        """停止座席巡航式外呼任务
+        r"""停止座席巡航式外呼任务
 
         :param request: Request instance for AbortAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.AbortAgentCruiseDialingCampaignRequest`
@@ -50,7 +50,7 @@ class CccClient(AbstractClient):
 
 
     def AbortPredictiveDialingCampaign(self, request):
-        """停止预测式外呼任务
+        r"""停止预测式外呼任务
 
         :param request: Request instance for AbortPredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.AbortPredictiveDialingCampaignRequest`
@@ -73,7 +73,7 @@ class CccClient(AbstractClient):
 
 
     def BindNumberCallInInterface(self, request):
-        """绑定号码呼入回调接口
+        r"""绑定号码呼入回调接口
 
         :param request: Request instance for BindNumberCallInInterface.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceRequest`
@@ -96,7 +96,7 @@ class CccClient(AbstractClient):
 
 
     def BindNumberCallOutSkillGroup(self, request):
-        """绑定号码外呼技能组
+        r"""绑定号码外呼技能组
 
         :param request: Request instance for BindNumberCallOutSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallOutSkillGroupRequest`
@@ -119,7 +119,7 @@ class CccClient(AbstractClient):
 
 
     def BindStaffSkillGroupList(self, request):
-        """绑定座席所属技能组
+        r"""绑定座席所属技能组
 
         :param request: Request instance for BindStaffSkillGroupList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListRequest`
@@ -142,7 +142,7 @@ class CccClient(AbstractClient):
 
 
     def ControlAIConversation(self, request):
-        """提供服务端控制机器人的功能
+        r"""提供服务端控制机器人的功能
 
         :param request: Request instance for ControlAIConversation.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationRequest`
@@ -165,7 +165,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAIAgentCall(self, request):
-        """用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+        r"""用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
 
         发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
 
@@ -190,7 +190,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAICall(self, request):
-        """用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+        r"""用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
 
         发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
 
@@ -215,7 +215,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAdminURL(self, request):
-        """创建管理端访问链接
+        r"""创建管理端访问链接
 
         :param request: Request instance for CreateAdminURL.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAdminURLRequest`
@@ -238,7 +238,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAgentCruiseDialingCampaign(self, request):
-        """座席巡航式外呼。
+        r"""座席巡航式外呼。
 
         :param request: Request instance for CreateAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAgentCruiseDialingCampaignRequest`
@@ -261,7 +261,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAutoCalloutTask(self, request):
-        """创建自动外呼任务
+        r"""创建自动外呼任务
 
         :param request: Request instance for CreateAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
@@ -284,7 +284,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCCCSkillGroup(self, request):
-        """新建技能组
+        r"""新建技能组
 
         :param request: Request instance for CreateCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCCCSkillGroupRequest`
@@ -307,7 +307,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCallOutSession(self, request):
-        """创建外呼会话，当前仅支持双呼，即先使用平台号码呼出到座席手机上，座席接听后，然后再外呼用户，而且由于运营商频率限制，座席手机号必须先加白名单，避免频控导致外呼失败。所以调用此接口前，下述操作均已完成
+        r"""创建外呼会话，当前仅支持双呼，即先使用平台号码呼出到座席手机上，座席接听后，然后再外呼用户，而且由于运营商频率限制，座席手机号必须先加白名单，避免频控导致外呼失败。所以调用此接口前，下述操作均已完成
         1. UserId 指定的座席已经[绑定手机号](https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF)
         2. 座席绑定的手机号已经[申请并通过了外呼白名单](https://cloud.tencent.com/document/product/679/76744#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4)
         3. 当前座席侧只能呼叫其手机，所以 IsForceMobile 字段当前必须为 true
@@ -334,7 +334,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCarrierPrivilegeNumberApplicant(self, request):
-        """用于无限频率地呼叫坐席手机
+        r"""用于无限频率地呼叫坐席手机
 
         :param request: Request instance for CreateCarrierPrivilegeNumberApplicant.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCarrierPrivilegeNumberApplicantRequest`
@@ -357,7 +357,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCompanyApply(self, request):
-        """创建公司资质申请（1、首次使用接口，建议先在云联络中心控制台查看各个资料模板:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+        r"""创建公司资质申请（1、首次使用接口，建议先在云联络中心控制台查看各个资料模板:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
 
         :param request: Request instance for CreateCompanyApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCompanyApplyRequest`
@@ -380,7 +380,7 @@ class CccClient(AbstractClient):
 
 
     def CreateExtension(self, request):
-        """创建话机账号
+        r"""创建话机账号
 
         :param request: Request instance for CreateExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateExtensionRequest`
@@ -403,7 +403,7 @@ class CccClient(AbstractClient):
 
 
     def CreateIVRSession(self, request):
-        """创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
+        r"""创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
 
         :param request: Request instance for CreateIVRSession.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateIVRSessionRequest`
@@ -426,7 +426,7 @@ class CccClient(AbstractClient):
 
 
     def CreateOwnNumberApply(self, request):
-        """创建客户自携号码接入审核
+        r"""创建客户自携号码接入审核
 
         :param request: Request instance for CreateOwnNumberApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateOwnNumberApplyRequest`
@@ -449,7 +449,7 @@ class CccClient(AbstractClient):
 
 
     def CreatePredictiveDialingCampaign(self, request):
-        """创建预测式外呼任务
+        r"""创建预测式外呼任务
 
         :param request: Request instance for CreatePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreatePredictiveDialingCampaignRequest`
@@ -472,7 +472,7 @@ class CccClient(AbstractClient):
 
 
     def CreateSDKLoginToken(self, request):
-        """创建 SDK 登录 Token。
+        r"""创建 SDK 登录 Token。
 
         :param request: Request instance for CreateSDKLoginToken.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenRequest`
@@ -495,7 +495,7 @@ class CccClient(AbstractClient):
 
 
     def CreateStaff(self, request):
-        """创建客服账号。
+        r"""创建客服账号。
 
         :param request: Request instance for CreateStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateStaffRequest`
@@ -518,7 +518,7 @@ class CccClient(AbstractClient):
 
 
     def CreateUserSig(self, request):
-        """创建用户数据签名
+        r"""创建用户数据签名
 
         :param request: Request instance for CreateUserSig.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigRequest`
@@ -541,7 +541,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteCCCSkillGroup(self, request):
-        """删除技能组
+        r"""删除技能组
 
         :param request: Request instance for DeleteCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupRequest`
@@ -564,7 +564,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteExtension(self, request):
-        """删除话机账号
+        r"""删除话机账号
 
         :param request: Request instance for DeleteExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteExtensionRequest`
@@ -587,7 +587,7 @@ class CccClient(AbstractClient):
 
 
     def DeletePredictiveDialingCampaign(self, request):
-        """删除预测式外呼任务
+        r"""删除预测式外呼任务
 
         :param request: Request instance for DeletePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeletePredictiveDialingCampaignRequest`
@@ -610,7 +610,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteStaff(self, request):
-        """删除坐席信息
+        r"""删除坐席信息
 
         :param request: Request instance for DeleteStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffRequest`
@@ -633,7 +633,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAICallExtractResult(self, request):
-        """获取 AI 通话内容提取结果。
+        r"""获取 AI 通话内容提取结果。
 
         :param request: Request instance for DescribeAICallExtractResult.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultRequest`
@@ -656,7 +656,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAILatency(self, request):
-        """获取 AI 时延信息
+        r"""获取 AI 时延信息
 
         :param request: Request instance for DescribeAILatency.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyRequest`
@@ -679,7 +679,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeActiveCarrierPrivilegeNumber(self, request):
-        """查询生效运营商白名单规则
+        r"""查询生效运营商白名单规则
 
         :param request: Request instance for DescribeActiveCarrierPrivilegeNumber.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeActiveCarrierPrivilegeNumberRequest`
@@ -702,7 +702,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAgentCruiseDialingCampaign(self, request):
-        """查询 座席巡航式外呼任务
+        r"""查询 座席巡航式外呼任务
 
         :param request: Request instance for DescribeAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAgentCruiseDialingCampaignRequest`
@@ -725,7 +725,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTask(self, request):
-        """查询自动外呼任务详情
+        r"""查询自动外呼任务详情
 
         :param request: Request instance for DescribeAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
@@ -748,7 +748,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTasks(self, request):
-        """批量查询自动外呼任务
+        r"""批量查询自动外呼任务
 
         :param request: Request instance for DescribeAutoCalloutTasks.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTasksRequest`
@@ -771,7 +771,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCCCBuyInfoList(self, request):
-        """获取用户购买信息列表
+        r"""获取用户购买信息列表
 
         :param request: Request instance for DescribeCCCBuyInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCCCBuyInfoListRequest`
@@ -794,7 +794,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCallInMetrics(self, request):
-        """获取呼入实时数据统计指标
+        r"""获取呼入实时数据统计指标
 
         :param request: Request instance for DescribeCallInMetrics.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsRequest`
@@ -817,7 +817,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCarrierPrivilegeNumberApplicants(self, request):
-        """查询单状态
+        r"""查询单状态
 
         :param request: Request instance for DescribeCarrierPrivilegeNumberApplicants.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCarrierPrivilegeNumberApplicantsRequest`
@@ -840,7 +840,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeChatMessages(self, request):
-        """获取指定服务记录文本聊天内容，需要先使用查询在线客服记录（DescribeIMCdrs） API 获取服务记录 SessionId。
+        r"""获取指定服务记录文本聊天内容，需要先使用查询在线客服记录（DescribeIMCdrs） API 获取服务记录 SessionId。
 
         文本聊天记录只保存了 1 年内的，1 年之前会自动清理。
 
@@ -865,7 +865,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCompanyList(self, request):
-        """查询公司资质申请列表
+        r"""查询公司资质申请列表
 
         :param request: Request instance for DescribeCompanyList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCompanyListRequest`
@@ -888,7 +888,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeExtension(self, request):
-        """获取话机信息
+        r"""获取话机信息
 
         :param request: Request instance for DescribeExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeExtensionRequest`
@@ -911,7 +911,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeExtensions(self, request):
-        """查询话机列表信息
+        r"""查询话机列表信息
 
         :param request: Request instance for DescribeExtensions.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeExtensionsRequest`
@@ -934,7 +934,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeIMCdrList(self, request):
-        """获取包括全媒体和文本会话两种类型的服务记录。
+        r"""获取包括全媒体和文本会话两种类型的服务记录。
 
         :param request: Request instance for DescribeIMCdrList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrListRequest`
@@ -957,7 +957,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeIMCdrs(self, request):
-        """获取包括全媒体和文本会话两种类型的服务记录。
+        r"""获取包括全媒体和文本会话两种类型的服务记录。
 
         :param request: Request instance for DescribeIMCdrs.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrsRequest`
@@ -980,7 +980,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeIvrAudioList(self, request):
-        """查询IVR音频文件列表信息
+        r"""查询IVR音频文件列表信息
 
         :param request: Request instance for DescribeIvrAudioList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIvrAudioListRequest`
@@ -1003,7 +1003,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeNumbers(self, request):
-        """查询号码列表
+        r"""查询号码列表
 
         :param request: Request instance for DescribeNumbers.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeNumbersRequest`
@@ -1026,7 +1026,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePSTNActiveSessionList(self, request):
-        """获取当前正在通话的会话列表
+        r"""获取当前正在通话的会话列表
 
         :param request: Request instance for DescribePSTNActiveSessionList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListRequest`
@@ -1049,7 +1049,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingCampaign(self, request):
-        """查询预测式外呼任务
+        r"""查询预测式外呼任务
 
         :param request: Request instance for DescribePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingCampaignRequest`
@@ -1072,7 +1072,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingCampaigns(self, request):
-        """查询预测式外呼任务列表
+        r"""查询预测式外呼任务列表
 
         :param request: Request instance for DescribePredictiveDialingCampaigns.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingCampaignsRequest`
@@ -1095,7 +1095,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingSessions(self, request):
-        """查询预测式外呼呼叫列表
+        r"""查询预测式外呼呼叫列表
 
         :param request: Request instance for DescribePredictiveDialingSessions.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingSessionsRequest`
@@ -1118,7 +1118,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeProtectedTelCdr(self, request):
-        """获取主被叫受保护的电话服务记录与录音
+        r"""获取主被叫受保护的电话服务记录与录音
 
         :param request: Request instance for DescribeProtectedTelCdr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeProtectedTelCdrRequest`
@@ -1141,7 +1141,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSessionDetail(self, request):
-        """获取通话详情
+        r"""获取通话详情
 
         :param request: Request instance for DescribeSessionDetail.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`
@@ -1164,7 +1164,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSkillGroupInfoList(self, request):
-        """获取技能组信息列表
+        r"""获取技能组信息列表
 
         :param request: Request instance for DescribeSkillGroupInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListRequest`
@@ -1187,7 +1187,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffInfoList(self, request):
-        """获取坐席信息列表
+        r"""获取坐席信息列表
 
         :param request: Request instance for DescribeStaffInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListRequest`
@@ -1210,7 +1210,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffStatusHistory(self, request):
-        """查询座席状态历史
+        r"""查询座席状态历史
 
         :param request: Request instance for DescribeStaffStatusHistory.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryRequest`
@@ -1233,7 +1233,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffStatusMetrics(self, request):
-        """获取坐席实时状态统计指标
+        r"""获取坐席实时状态统计指标
 
         :param request: Request instance for DescribeStaffStatusMetrics.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsRequest`
@@ -1256,7 +1256,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelCallInfo(self, request):
-        """按实例获取电话消耗统计
+        r"""按实例获取电话消耗统计
 
         :param request: Request instance for DescribeTelCallInfo.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCallInfoRequest`
@@ -1279,7 +1279,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelCdr(self, request):
-        """获取电话服务记录与录音
+        r"""获取电话服务记录与录音
 
         :param request: Request instance for DescribeTelCdr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCdrRequest`
@@ -1302,7 +1302,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelRecordAsr(self, request):
-        """拉取会话录音转文本信息
+        r"""拉取会话录音转文本信息
 
         :param request: Request instance for DescribeTelRecordAsr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelRecordAsrRequest`
@@ -1325,7 +1325,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelSession(self, request):
-        """获取 PSTN 会话信息
+        r"""获取 PSTN 会话信息
 
         :param request: Request instance for DescribeTelSession.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionRequest`
@@ -1348,7 +1348,7 @@ class CccClient(AbstractClient):
 
 
     def DisableCCCPhoneNumber(self, request):
-        """停用号码
+        r"""停用号码
 
         :param request: Request instance for DisableCCCPhoneNumber.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DisableCCCPhoneNumberRequest`
@@ -1371,7 +1371,7 @@ class CccClient(AbstractClient):
 
 
     def ForceMemberOffline(self, request):
-        """强制客服下线
+        r"""强制客服下线
 
         :param request: Request instance for ForceMemberOffline.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineRequest`
@@ -1394,7 +1394,7 @@ class CccClient(AbstractClient):
 
 
     def HangUpCall(self, request):
-        """挂断电话
+        r"""挂断电话
 
         :param request: Request instance for HangUpCall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.HangUpCallRequest`
@@ -1417,7 +1417,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyCompanyApply(self, request):
-        """修改公司资质申请，只能修改状态为驳回或待审核的申请单。（1、首次使用接口，建议先在云联络中心控制台查看各个资料模板:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+        r"""修改公司资质申请，只能修改状态为驳回或待审核的申请单。（1、首次使用接口，建议先在云联络中心控制台查看各个资料模板:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
 
         :param request: Request instance for ModifyCompanyApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyCompanyApplyRequest`
@@ -1440,7 +1440,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyExtension(self, request):
-        """修改话机账号(绑定技能组、绑定坐席账号)
+        r"""修改话机账号(绑定技能组、绑定坐席账号)
 
         :param request: Request instance for ModifyExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyExtensionRequest`
@@ -1463,7 +1463,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyOwnNumberApply(self, request):
-        """修改客户自携号码审批单
+        r"""修改客户自携号码审批单
 
         :param request: Request instance for ModifyOwnNumberApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyOwnNumberApplyRequest`
@@ -1486,7 +1486,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyStaff(self, request):
-        """修改客服账号
+        r"""修改客服账号
 
         :param request: Request instance for ModifyStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffRequest`
@@ -1509,7 +1509,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyStaffPassword(self, request):
-        """修改座席的密码
+        r"""修改座席的密码
 
         :param request: Request instance for ModifyStaffPassword.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffPasswordRequest`
@@ -1532,7 +1532,7 @@ class CccClient(AbstractClient):
 
 
     def PausePredictiveDialingCampaign(self, request):
-        """暂停预测式外呼任务
+        r"""暂停预测式外呼任务
 
         :param request: Request instance for PausePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.PausePredictiveDialingCampaignRequest`
@@ -1555,7 +1555,7 @@ class CccClient(AbstractClient):
 
 
     def ResetExtensionPassword(self, request):
-        """重置话机注册密码
+        r"""重置话机注册密码
 
         :param request: Request instance for ResetExtensionPassword.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ResetExtensionPasswordRequest`
@@ -1578,7 +1578,7 @@ class CccClient(AbstractClient):
 
 
     def RestoreMemberOnline(self, request):
-        """恢复客服上线
+        r"""恢复客服上线
 
         :param request: Request instance for RestoreMemberOnline.
         :type request: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineRequest`
@@ -1601,7 +1601,7 @@ class CccClient(AbstractClient):
 
 
     def ResumePredictiveDialingCampaign(self, request):
-        """恢复预测式外呼任务
+        r"""恢复预测式外呼任务
 
         :param request: Request instance for ResumePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ResumePredictiveDialingCampaignRequest`
@@ -1624,7 +1624,7 @@ class CccClient(AbstractClient):
 
 
     def StopAutoCalloutTask(self, request):
-        """停止自动外呼任务
+        r"""停止自动外呼任务
 
         :param request: Request instance for StopAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskRequest`
@@ -1647,7 +1647,7 @@ class CccClient(AbstractClient):
 
 
     def TransferToManual(self, request):
-        """特定场景下讲会话转接到人工坐席
+        r"""特定场景下讲会话转接到人工坐席
 
         :param request: Request instance for TransferToManual.
         :type request: :class:`tencentcloud.ccc.v20200210.models.TransferToManualRequest`
@@ -1670,7 +1670,7 @@ class CccClient(AbstractClient):
 
 
     def UnbindNumberCallOutSkillGroup(self, request):
-        """解绑号码外呼技能组
+        r"""解绑号码外呼技能组
 
         :param request: Request instance for UnbindNumberCallOutSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindNumberCallOutSkillGroupRequest`
@@ -1693,7 +1693,7 @@ class CccClient(AbstractClient):
 
 
     def UnbindStaffSkillGroupList(self, request):
-        """解绑坐席所属技能组
+        r"""解绑坐席所属技能组
 
         :param request: Request instance for UnbindStaffSkillGroupList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListRequest`
@@ -1716,7 +1716,7 @@ class CccClient(AbstractClient):
 
 
     def UpdateCCCSkillGroup(self, request):
-        """更新技能组
+        r"""更新技能组
 
         :param request: Request instance for UpdateCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UpdateCCCSkillGroupRequest`
@@ -1739,7 +1739,7 @@ class CccClient(AbstractClient):
 
 
     def UpdatePredictiveDialingCampaign(self, request):
-        """任务未启动前，更新预测式外呼任务。
+        r"""任务未启动前，更新预测式外呼任务。
 
         :param request: Request instance for UpdatePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UpdatePredictiveDialingCampaignRequest`
@@ -1762,7 +1762,7 @@ class CccClient(AbstractClient):
 
 
     def UploadIvrAudio(self, request):
-        """上传IVR中使用的音频文件，每日上传文件限制50个。（参数中音频文件Url建议使用腾讯云Cos存储的临时链接）
+        r"""上传IVR中使用的音频文件，每日上传文件限制50个。（参数中音频文件Url建议使用腾讯云Cos存储的临时链接）
 
         :param request: Request instance for UploadIvrAudio.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UploadIvrAudioRequest`

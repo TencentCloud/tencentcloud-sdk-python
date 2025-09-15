@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CaptchaOperDataInterceptUnit(AbstractModel):
-    """DescribeCaptchaOperData方法 拦截情况type = 2 返回的数据结构
+    r"""DescribeCaptchaOperData方法 拦截情况type = 2 返回的数据结构
 
     """
 
@@ -41,7 +41,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -52,7 +52,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
     @property
     def AllStopCnt(self):
-        """停止验证数量
+        r"""停止验证数量
         :rtype: float
         """
         return self._AllStopCnt
@@ -63,7 +63,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
     @property
     def PicStopCnt(self):
-        """图片停止加载数量
+        r"""图片停止加载数量
         :rtype: float
         """
         return self._PicStopCnt
@@ -74,7 +74,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
     @property
     def StrategyStopCnt(self):
-        """策略拦截数量
+        r"""策略拦截数量
         :rtype: float
         """
         return self._StrategyStopCnt
@@ -100,7 +100,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
 
 class CaptchaOperDataLoadTimeUnit(AbstractModel):
-    """操作数据查询方法DescribeCaptchaOperData 的返回结果，安全验证码加载耗时type = 1
+    r"""操作数据查询方法DescribeCaptchaOperData 的返回结果，安全验证码加载耗时type = 1
 
     """
 
@@ -119,7 +119,7 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -130,7 +130,7 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
 
     @property
     def MarketLoadTime(self):
-        """Market加载时间
+        r"""Market加载时间
         :rtype: float
         """
         return self._MarketLoadTime
@@ -141,7 +141,7 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
 
     @property
     def AppIdLoadTime(self):
-        """AppId加载时间
+        r"""AppId加载时间
         :rtype: float
         """
         return self._AppIdLoadTime
@@ -166,7 +166,7 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
 
 
 class CaptchaOperDataRes(AbstractModel):
-    """DescribeCaptchaOperData 接口 返回数据类型集合
+    r"""DescribeCaptchaOperData 接口 返回数据类型集合
 
     """
 
@@ -192,7 +192,7 @@ class CaptchaOperDataRes(AbstractModel):
 
     @property
     def OperDataLoadTimeUnitArray(self):
-        """验证码加载耗时数据返回
+        r"""验证码加载耗时数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaOperDataLoadTimeUnit
         """
@@ -204,7 +204,7 @@ class CaptchaOperDataRes(AbstractModel):
 
     @property
     def OperDataInterceptUnitArray(self):
-        """验证码拦截情况数据返回
+        r"""验证码拦截情况数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaOperDataInterceptUnit
         """
@@ -216,7 +216,7 @@ class CaptchaOperDataRes(AbstractModel):
 
     @property
     def OperDataTryTimesUnitArray(self):
-        """验证码尝试次数数据返回
+        r"""验证码尝试次数数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaOperDataTryTimesUnit
         """
@@ -228,7 +228,7 @@ class CaptchaOperDataRes(AbstractModel):
 
     @property
     def OperDataTryTimesDistributeUnitArray(self):
-        """验证码尝试次数分布数据返回
+        r"""验证码尝试次数分布数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaOperDataTryTimesDistributeUnit
         """
@@ -275,7 +275,7 @@ class CaptchaOperDataRes(AbstractModel):
 
 
 class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
-    """DescribeCaptchaOperData方法 尝试次数分布 type = 4
+    r"""DescribeCaptchaOperData方法 尝试次数分布 type = 4
 
     """
 
@@ -291,7 +291,7 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
 
     @property
     def TryCount(self):
-        """尝试次数
+        r"""尝试次数
         :rtype: int
         """
         return self._TryCount
@@ -302,7 +302,7 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
 
     @property
     def UserCount(self):
-        """用户请求数量
+        r"""用户请求数量
         :rtype: int
         """
         return self._UserCount
@@ -326,7 +326,7 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
 
 
 class CaptchaOperDataTryTimesUnit(AbstractModel):
-    """DescribeCaptchaOperData操作数据查询尝试次数 type = 3
+    r"""DescribeCaptchaOperData操作数据查询尝试次数 type = 3
 
     """
 
@@ -345,7 +345,7 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -356,7 +356,7 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
 
     @property
     def CntPerPass(self):
-        """平均尝试次数
+        r"""平均尝试次数
         :rtype: list of float
         """
         return self._CntPerPass
@@ -367,7 +367,7 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
 
     @property
     def MarketCntPerPass(self):
-        """market平均尝试次数
+        r"""market平均尝试次数
         :rtype: float
         """
         return self._MarketCntPerPass
@@ -392,7 +392,7 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
 
 
 class CaptchaQueryData(AbstractModel):
-    """该类型为DescribeCaptchaData 方法返回数据类型
+    r"""该类型为DescribeCaptchaData 方法返回数据类型
 
     """
 
@@ -408,7 +408,7 @@ class CaptchaQueryData(AbstractModel):
 
     @property
     def Cnt(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Cnt
@@ -419,7 +419,7 @@ class CaptchaQueryData(AbstractModel):
 
     @property
     def Date(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Date
@@ -443,7 +443,7 @@ class CaptchaQueryData(AbstractModel):
 
 
 class CaptchaStatisticObj(AbstractModel):
-    """验证码统计图Obj
+    r"""验证码统计图Obj
 
     """
 
@@ -486,7 +486,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def ActionTotal(self):
-        """请求总量
+        r"""请求总量
         :rtype: int
         """
         return self._ActionTotal
@@ -497,7 +497,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyTotal(self):
-        """验证总量
+        r"""验证总量
         :rtype: int
         """
         return self._VerifyTotal
@@ -508,7 +508,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyThroughTotal(self):
-        """验证通过总量
+        r"""验证通过总量
         :rtype: int
         """
         return self._VerifyThroughTotal
@@ -519,7 +519,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyInterceptTotal(self):
-        """验证拦截总量
+        r"""验证拦截总量
         :rtype: int
         """
         return self._VerifyInterceptTotal
@@ -530,7 +530,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketTotal(self):
-        """票据校验总量
+        r"""票据校验总量
         :rtype: int
         """
         return self._TicketTotal
@@ -541,7 +541,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketThroughTotal(self):
-        """票据通过总量
+        r"""票据通过总量
         :rtype: int
         """
         return self._TicketThroughTotal
@@ -552,7 +552,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketInterceptTotal(self):
-        """票据拦截总量
+        r"""票据拦截总量
         :rtype: int
         """
         return self._TicketInterceptTotal
@@ -563,7 +563,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def RequestTrend(self):
-        """请求趋势图
+        r"""请求趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RequestTrendObj
         """
@@ -575,7 +575,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def InterceptPerTrend(self):
-        """拦截率趋势图
+        r"""拦截率趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InterceptPerTrendObj
         """
@@ -587,7 +587,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketCheckTrend(self):
-        """票据校验趋势图
+        r"""票据校验趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TicketCheckTrendObj
         """
@@ -635,7 +635,7 @@ class CaptchaStatisticObj(AbstractModel):
 
 
 class CaptchaTicketDataRes(AbstractModel):
-    """DescribeCaptchaTicketData 接口 返回数据类型集合
+    r"""DescribeCaptchaTicketData 接口 返回数据类型集合
 
     """
 
@@ -654,7 +654,7 @@ class CaptchaTicketDataRes(AbstractModel):
 
     @property
     def TicketAmountArray(self):
-        """票据验证总量返回
+        r"""票据验证总量返回
         :rtype: list of TicketAmountUnit
         """
         return self._TicketAmountArray
@@ -665,7 +665,7 @@ class CaptchaTicketDataRes(AbstractModel):
 
     @property
     def TicketThroughArray(self):
-        """票据验证通过量返回
+        r"""票据验证通过量返回
         :rtype: list of TicketThroughUnit
         """
         return self._TicketThroughArray
@@ -676,7 +676,7 @@ class CaptchaTicketDataRes(AbstractModel):
 
     @property
     def TicketInterceptArray(self):
-        """票据验证拦截量返回
+        r"""票据验证拦截量返回
         :rtype: list of TicketInterceptUnit
         """
         return self._TicketInterceptArray
@@ -716,7 +716,7 @@ class CaptchaTicketDataRes(AbstractModel):
 
 
 class CaptchaUserAllAppId(AbstractModel):
-    """用户注册的APPID和应用名称对象
+    r"""用户注册的APPID和应用名称对象
 
     """
 
@@ -738,7 +738,7 @@ class CaptchaUserAllAppId(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -749,7 +749,7 @@ class CaptchaUserAllAppId(AbstractModel):
 
     @property
     def AppName(self):
-        """注册应用名称
+        r"""注册应用名称
         :rtype: str
         """
         return self._AppName
@@ -760,7 +760,7 @@ class CaptchaUserAllAppId(AbstractModel):
 
     @property
     def TcAppId(self):
-        """腾讯云APPID
+        r"""腾讯云APPID
         :rtype: int
         """
         return self._TcAppId
@@ -771,7 +771,7 @@ class CaptchaUserAllAppId(AbstractModel):
 
     @property
     def ChannelInfo(self):
-        """渠道信息
+        r"""渠道信息
         :rtype: str
         """
         return self._ChannelInfo
@@ -797,7 +797,7 @@ class CaptchaUserAllAppId(AbstractModel):
 
 
 class DescribeCaptchaAppIdInfoRequest(AbstractModel):
-    """DescribeCaptchaAppIdInfo请求参数结构体
+    r"""DescribeCaptchaAppIdInfo请求参数结构体
 
     """
 
@@ -810,7 +810,7 @@ class DescribeCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用注册APPID
+        r"""验证码应用注册APPID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -833,7 +833,7 @@ class DescribeCaptchaAppIdInfoRequest(AbstractModel):
 
 
 class DescribeCaptchaAppIdInfoResponse(AbstractModel):
-    """DescribeCaptchaAppIdInfo返回参数结构体
+    r"""DescribeCaptchaAppIdInfo返回参数结构体
 
     """
 
@@ -892,7 +892,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def SchemeColor(self):
-        """界面风格
+        r"""界面风格
         :rtype: str
         """
         return self._SchemeColor
@@ -903,7 +903,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def Language(self):
-        """语言
+        r"""语言
         :rtype: int
         """
         return self._Language
@@ -914,7 +914,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def SceneType(self):
-        """场景
+        r"""场景
         :rtype: int
         """
         return self._SceneType
@@ -925,7 +925,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def EvilInterceptGrade(self):
-        """防控风险等级
+        r"""防控风险等级
         :rtype: int
         """
         return self._EvilInterceptGrade
@@ -936,7 +936,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def SmartVerify(self):
-        """智能验证
+        r"""智能验证
         :rtype: int
         """
         return self._SmartVerify
@@ -947,7 +947,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def SmartEngine(self):
-        """智能引擎
+        r"""智能引擎
         :rtype: int
         """
         return self._SmartEngine
@@ -958,7 +958,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def CapType(self):
-        """验证码类型
+        r"""验证码类型
         :rtype: int
         """
         return self._CapType
@@ -969,7 +969,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -980,7 +980,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def DomainLimit(self):
-        """域名限制
+        r"""域名限制
         :rtype: str
         """
         return self._DomainLimit
@@ -991,7 +991,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def MailAlarm(self):
-        """邮件告警
+        r"""邮件告警
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1003,7 +1003,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def TrafficThreshold(self):
-        """流量控制
+        r"""流量控制
         :rtype: int
         """
         return self._TrafficThreshold
@@ -1014,7 +1014,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def EncryptKey(self):
-        """加密key
+        r"""加密key
         :rtype: str
         """
         return self._EncryptKey
@@ -1025,7 +1025,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def TopFullScreen(self):
-        """是否全屏
+        r"""是否全屏
         :rtype: int
         """
         return self._TopFullScreen
@@ -1036,7 +1036,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回0 其它失败
+        r"""成功返回0 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1047,7 +1047,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回操作信息
+        r"""返回操作信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1058,7 +1058,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1088,7 +1088,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
 
 class DescribeCaptchaDataRequest(AbstractModel):
-    """DescribeCaptchaData请求参数结构体
+    r"""DescribeCaptchaData请求参数结构体
 
     """
 
@@ -1110,7 +1110,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1121,7 +1121,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间
+        r"""查询开始时间
         :rtype: int
         """
         return self._Start
@@ -1132,7 +1132,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间
+        r"""查询结束时间
         :rtype: int
         """
         return self._End
@@ -1143,7 +1143,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """查询类型
+        r"""查询类型
         :rtype: int
         """
         return self._Type
@@ -1169,7 +1169,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
 
 class DescribeCaptchaDataResponse(AbstractModel):
-    """DescribeCaptchaData返回参数结构体
+    r"""DescribeCaptchaData返回参数结构体
 
     """
 
@@ -1191,7 +1191,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """返回码 0 成功 其它失败
+        r"""返回码 0 成功 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1202,7 +1202,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据数组
+        r"""数据数组
         :rtype: list of CaptchaQueryData
         """
         return self._Data
@@ -1213,7 +1213,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息描述
+        r"""返回信息描述
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1224,7 +1224,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1247,7 +1247,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
 
 class DescribeCaptchaDataSumRequest(AbstractModel):
-    """DescribeCaptchaDataSum请求参数结构体
+    r"""DescribeCaptchaDataSum请求参数结构体
 
     """
 
@@ -1266,7 +1266,7 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1277,7 +1277,7 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间
+        r"""查询开始时间
         :rtype: int
         """
         return self._Start
@@ -1288,7 +1288,7 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间
+        r"""查询结束时间
         :rtype: int
         """
         return self._End
@@ -1313,7 +1313,7 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
 
 
 class DescribeCaptchaDataSumResponse(AbstractModel):
-    """DescribeCaptchaDataSum返回参数结构体
+    r"""DescribeCaptchaDataSum返回参数结构体
 
     """
 
@@ -1353,7 +1353,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def GetSum(self):
-        """请求总量
+        r"""请求总量
         :rtype: int
         """
         return self._GetSum
@@ -1364,7 +1364,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def VfySuccSum(self):
-        """请求验证成功量
+        r"""请求验证成功量
         :rtype: int
         """
         return self._VfySuccSum
@@ -1375,7 +1375,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def VfySum(self):
-        """请求验证量
+        r"""请求验证量
         :rtype: int
         """
         return self._VfySum
@@ -1386,7 +1386,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def AttackSum(self):
-        """拦截攻击量
+        r"""拦截攻击量
         :rtype: int
         """
         return self._AttackSum
@@ -1397,7 +1397,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1408,7 +1408,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回0  其它失败
+        r"""成功返回0  其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1419,7 +1419,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def CheckTicketSum(self):
-        """票据校验总量
+        r"""票据校验总量
         :rtype: int
         """
         return self._CheckTicketSum
@@ -1430,7 +1430,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def TicketThroughputSum(self):
-        """票据验证通过量
+        r"""票据验证通过量
         :rtype: int
         """
         return self._TicketThroughputSum
@@ -1441,7 +1441,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def TicketInterceptSum(self):
-        """票据验证拦截量
+        r"""票据验证拦截量
         :rtype: int
         """
         return self._TicketInterceptSum
@@ -1452,7 +1452,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1476,7 +1476,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
 
 class DescribeCaptchaMiniDataRequest(AbstractModel):
-    """DescribeCaptchaMiniData请求参数结构体
+    r"""DescribeCaptchaMiniData请求参数结构体
 
     """
 
@@ -1498,7 +1498,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1509,7 +1509,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间 例如：2019112900
+        r"""查询开始时间 例如：2019112900
         :rtype: int
         """
         return self._Start
@@ -1520,7 +1520,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间 例如：2019112902
+        r"""查询结束时间 例如：2019112902
         :rtype: int
         """
         return self._End
@@ -1531,7 +1531,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+        r"""查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
         :rtype: int
         """
         return self._Type
@@ -1557,7 +1557,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
 
 class DescribeCaptchaMiniDataResponse(AbstractModel):
-    """DescribeCaptchaMiniData返回参数结构体
+    r"""DescribeCaptchaMiniData返回参数结构体
 
     """
 
@@ -1579,7 +1579,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """返回码 0 成功 其它失败
+        r"""返回码 0 成功 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1590,7 +1590,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据数组
+        r"""数据数组
         :rtype: list of CaptchaQueryData
         """
         return self._Data
@@ -1601,7 +1601,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息描述
+        r"""返回信息描述
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1612,7 +1612,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1635,7 +1635,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
 
 class DescribeCaptchaMiniDataSumRequest(AbstractModel):
-    """DescribeCaptchaMiniDataSum请求参数结构体
+    r"""DescribeCaptchaMiniDataSum请求参数结构体
 
     """
 
@@ -1654,7 +1654,7 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1665,7 +1665,7 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间
+        r"""查询开始时间
         :rtype: int
         """
         return self._Start
@@ -1676,7 +1676,7 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间
+        r"""查询结束时间
         :rtype: int
         """
         return self._End
@@ -1701,7 +1701,7 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
 
 
 class DescribeCaptchaMiniDataSumResponse(AbstractModel):
-    """DescribeCaptchaMiniDataSum返回参数结构体
+    r"""DescribeCaptchaMiniDataSum返回参数结构体
 
     """
 
@@ -1741,7 +1741,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def GetSum(self):
-        """请求总量
+        r"""请求总量
         :rtype: int
         """
         return self._GetSum
@@ -1752,7 +1752,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def VfySuccSum(self):
-        """请求验证成功量
+        r"""请求验证成功量
         :rtype: int
         """
         return self._VfySuccSum
@@ -1763,7 +1763,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def VfySum(self):
-        """请求验证量
+        r"""请求验证量
         :rtype: int
         """
         return self._VfySum
@@ -1774,7 +1774,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def AttackSum(self):
-        """拦截攻击量
+        r"""拦截攻击量
         :rtype: int
         """
         return self._AttackSum
@@ -1785,7 +1785,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1796,7 +1796,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回0  其它失败
+        r"""成功返回0  其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1807,7 +1807,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def CheckTicketSum(self):
-        """票据校验总量
+        r"""票据校验总量
         :rtype: int
         """
         return self._CheckTicketSum
@@ -1818,7 +1818,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def TicketThroughputSum(self):
-        """票据验证通过量
+        r"""票据验证通过量
         :rtype: int
         """
         return self._TicketThroughputSum
@@ -1829,7 +1829,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def TicketInterceptSum(self):
-        """票据验证拦截量
+        r"""票据验证拦截量
         :rtype: int
         """
         return self._TicketInterceptSum
@@ -1840,7 +1840,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1864,7 +1864,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
 
 class DescribeCaptchaMiniOperDataRequest(AbstractModel):
-    """DescribeCaptchaMiniOperData请求参数结构体
+    r"""DescribeCaptchaMiniOperData请求参数结构体
 
     """
 
@@ -1886,7 +1886,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1897,7 +1897,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间
+        r"""查询开始时间
         :rtype: int
         """
         return self._Start
@@ -1908,7 +1908,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """查询类型
+        r"""查询类型
         :rtype: int
         """
         return self._Type
@@ -1919,7 +1919,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间
+        r"""查询结束时间
         :rtype: int
         """
         return self._End
@@ -1945,7 +1945,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
 
 class DescribeCaptchaMiniOperDataResponse(AbstractModel):
-    """DescribeCaptchaMiniOperData返回参数结构体
+    r"""DescribeCaptchaMiniOperData返回参数结构体
 
     """
 
@@ -1967,7 +1967,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回 0 其它失败
+        r"""成功返回 0 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -1978,7 +1978,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1989,7 +1989,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """用户操作数据
+        r"""用户操作数据
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         """
         return self._Data
@@ -2000,7 +2000,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2020,7 +2020,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
 
 class DescribeCaptchaMiniResultRequest(AbstractModel):
-    """DescribeCaptchaMiniResult请求参数结构体
+    r"""DescribeCaptchaMiniResult请求参数结构体
 
     """
 
@@ -2057,7 +2057,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        """固定填值：9
+        r"""固定填值：9
         :rtype: int
         """
         return self._CaptchaType
@@ -2068,7 +2068,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        """验证码返回给用户的票据
+        r"""验证码返回给用户的票据
         :rtype: str
         """
         return self._Ticket
@@ -2079,7 +2079,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """业务侧获取到的验证码使用者的外网IP
+        r"""业务侧获取到的验证码使用者的外网IP
         :rtype: str
         """
         return self._UserIp
@@ -2090,7 +2090,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        r"""验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :rtype: int
         """
         return self._CaptchaAppId
@@ -2101,7 +2101,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        """验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        r"""验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :rtype: str
         """
         return self._AppSecretKey
@@ -2112,7 +2112,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        r"""业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :rtype: int
         """
         return self._BusinessId
@@ -2123,7 +2123,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        r"""场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
         :rtype: int
         """
         return self._SceneId
@@ -2134,7 +2134,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        """mac 地址或设备唯一标识
+        r"""mac 地址或设备唯一标识
         :rtype: str
         """
         return self._MacAddress
@@ -2145,7 +2145,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """手机设备号
+        r"""手机设备号
         :rtype: str
         """
         return self._Imei
@@ -2176,7 +2176,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
 
 class DescribeCaptchaMiniResultResponse(AbstractModel):
-    """DescribeCaptchaMiniResult返回参数结构体
+    r"""DescribeCaptchaMiniResult返回参数结构体
 
     """
 
@@ -2205,7 +2205,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """1     ticket verification succeeded     票据验证成功
+        r"""1     ticket verification succeeded     票据验证成功
 7     CaptchaAppId does not match     票据与验证码应用APPID不匹配
 8     ticket expired     票据超时
 10    ticket format error     票据格式不正确
@@ -2226,7 +2226,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """状态描述及验证错误信息
+        r"""状态描述及验证错误信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2237,7 +2237,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2254,7 +2254,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 
 
 class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
-    """DescribeCaptchaMiniRiskResult请求参数结构体
+    r"""DescribeCaptchaMiniRiskResult请求参数结构体
 
     """
 
@@ -2297,7 +2297,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        """固定填值：9（滑块验证码）
+        r"""固定填值：9（滑块验证码）
         :rtype: int
         """
         return self._CaptchaType
@@ -2308,7 +2308,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        """验证码返回给用户的票据
+        r"""验证码返回给用户的票据
         :rtype: str
         """
         return self._Ticket
@@ -2319,7 +2319,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """业务侧获取到的验证码使用者的外网IP
+        r"""业务侧获取到的验证码使用者的外网IP
         :rtype: str
         """
         return self._UserIp
@@ -2330,7 +2330,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用APPID
+        r"""验证码应用APPID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -2341,7 +2341,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        """用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+        r"""用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
         :rtype: str
         """
         return self._AppSecretKey
@@ -2352,7 +2352,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        r"""业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :rtype: int
         """
         return self._BusinessId
@@ -2363,7 +2363,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        r"""场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
         :rtype: int
         """
         return self._SceneId
@@ -2374,7 +2374,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        """mac 地址或设备唯一标识
+        r"""mac 地址或设备唯一标识
         :rtype: str
         """
         return self._MacAddress
@@ -2385,7 +2385,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """手机设备号
+        r"""手机设备号
         :rtype: str
         """
         return self._Imei
@@ -2396,7 +2396,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def SceneCode(self):
-        """验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
+        r"""验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
         :rtype: int
         """
         return self._SceneCode
@@ -2407,7 +2407,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     @property
     def WeChatOpenId(self):
-        """用户操作来源的微信开放账号
+        r"""用户操作来源的微信开放账号
         :rtype: str
         """
         return self._WeChatOpenId
@@ -2440,7 +2440,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
 
 class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
-    """DescribeCaptchaMiniRiskResult返回参数结构体
+    r"""DescribeCaptchaMiniRiskResult返回参数结构体
 
     """
 
@@ -2473,7 +2473,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """1 ticket verification succeeded 票据验证成功
+        r"""1 ticket verification succeeded 票据验证成功
 7 CaptchaAppId does not match 票据与验证码应用APPID不匹配
 8 ticket expired 票据超时
 10 ticket format error 票据格式不正确
@@ -2493,7 +2493,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """状态描述及验证错误信息
+        r"""状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2505,7 +2505,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
     @property
     def ManageMarketingRiskValue(self):
-        """拦截策略返回信息
+        r"""拦截策略返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.OutputManageMarketingRiskValue`
         """
@@ -2517,7 +2517,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2537,7 +2537,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
 
 class DescribeCaptchaOperDataRequest(AbstractModel):
-    """DescribeCaptchaOperData请求参数结构体
+    r"""DescribeCaptchaOperData请求参数结构体
 
     """
 
@@ -2559,7 +2559,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -2570,7 +2570,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间
+        r"""查询开始时间
         :rtype: int
         """
         return self._Start
@@ -2581,7 +2581,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """查询类型
+        r"""查询类型
         :rtype: int
         """
         return self._Type
@@ -2592,7 +2592,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间
+        r"""查询结束时间
         :rtype: int
         """
         return self._End
@@ -2618,7 +2618,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
 
 class DescribeCaptchaOperDataResponse(AbstractModel):
-    """DescribeCaptchaOperData返回参数结构体
+    r"""DescribeCaptchaOperData返回参数结构体
 
     """
 
@@ -2640,7 +2640,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回 0 其它失败
+        r"""成功返回 0 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -2651,7 +2651,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2662,7 +2662,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """用户操作数据
+        r"""用户操作数据
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         """
         return self._Data
@@ -2673,7 +2673,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2693,7 +2693,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
 
 class DescribeCaptchaRceResultRequest(AbstractModel):
-    """DescribeCaptchaRceResult请求参数结构体
+    r"""DescribeCaptchaRceResult请求参数结构体
 
     """
 
@@ -2736,7 +2736,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        """固定填值：9。
+        r"""固定填值：9。
         :rtype: int
         """
         return self._CaptchaType
@@ -2747,7 +2747,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        """前端回调函数返回的用户验证票据
+        r"""前端回调函数返回的用户验证票据
         :rtype: str
         """
         return self._Ticket
@@ -2758,7 +2758,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """业务侧获取到的验证码使用者的外网IP
+        r"""业务侧获取到的验证码使用者的外网IP
         :rtype: str
         """
         return self._UserIp
@@ -2769,7 +2769,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
-        """前端回调函数返回的随机字符串
+        r"""前端回调函数返回的随机字符串
         :rtype: str
         """
         return self._Randstr
@@ -2780,7 +2780,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        r"""验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :rtype: int
         """
         return self._CaptchaAppId
@@ -2791,7 +2791,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        """验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        r"""验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :rtype: str
         """
         return self._AppSecretKey
@@ -2802,7 +2802,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """预留字段
+        r"""预留字段
         :rtype: int
         """
         return self._BusinessId
@@ -2813,7 +2813,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """预留字段
+        r"""预留字段
         :rtype: int
         """
         return self._SceneId
@@ -2824,7 +2824,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        """mac 地址或设备唯一标识
+        r"""mac 地址或设备唯一标识
         :rtype: str
         """
         return self._MacAddress
@@ -2835,7 +2835,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """手机设备号
+        r"""手机设备号
         :rtype: str
         """
         return self._Imei
@@ -2846,7 +2846,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
-        """是否返回前端获取验证码时间，取值1：需要返回
+        r"""是否返回前端获取验证码时间，取值1：需要返回
         :rtype: int
         """
         return self._NeedGetCaptchaTime
@@ -2879,7 +2879,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
 
 class DescribeCaptchaRceResultResponse(AbstractModel):
-    """DescribeCaptchaRceResult返回参数结构体
+    r"""DescribeCaptchaRceResult返回参数结构体
 
     """
 
@@ -2926,7 +2926,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaCode(self):
-        """1 OK 验证通过
+        r"""1 OK 验证通过
 7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
 8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
 9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
@@ -2944,7 +2944,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaMsg(self):
-        """状态描述及验证错误信息
+        r"""状态描述及验证错误信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2955,7 +2955,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilLevel(self):
-        """无感验证模式下，该参数返回验证结果：
+        r"""无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
         :rtype: int
@@ -2968,7 +2968,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def GetCaptchaTime(self):
-        """前端获取验证码时间，时间戳格式
+        r"""前端获取验证码时间，时间戳格式
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -2979,7 +2979,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilBitmap(self):
-        """拦截类型
+        r"""拦截类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2991,7 +2991,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def SubmitCaptchaTime(self):
-        """提交验证码时间
+        r"""提交验证码时间
         :rtype: int
         """
         return self._SubmitCaptchaTime
@@ -3002,7 +3002,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def RceResult(self):
-        """rce检测结果
+        r"""rce检测结果
         :rtype: :class:`tencentcloud.captcha.v20190722.models.RceResult`
         """
         return self._RceResult
@@ -3013,7 +3013,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def DeviceRiskCategory(self):
-        """设备风险大类
+        r"""设备风险大类
         :rtype: str
         """
         return self._DeviceRiskCategory
@@ -3024,7 +3024,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3049,7 +3049,7 @@ EvilLevel=100 请求有恶意
 
 
 class DescribeCaptchaResultRequest(AbstractModel):
-    """DescribeCaptchaResult请求参数结构体
+    r"""DescribeCaptchaResult请求参数结构体
 
     """
 
@@ -3092,7 +3092,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        """固定填值：9。
+        r"""固定填值：9。
         :rtype: int
         """
         return self._CaptchaType
@@ -3103,7 +3103,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        """前端回调函数返回的用户验证票据
+        r"""前端回调函数返回的用户验证票据
         :rtype: str
         """
         return self._Ticket
@@ -3114,7 +3114,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """业务侧获取到的验证码使用者的外网IP
+        r"""业务侧获取到的验证码使用者的外网IP
         :rtype: str
         """
         return self._UserIp
@@ -3125,7 +3125,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
-        """前端回调函数返回的随机字符串
+        r"""前端回调函数返回的随机字符串
         :rtype: str
         """
         return self._Randstr
@@ -3136,7 +3136,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        r"""验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :rtype: int
         """
         return self._CaptchaAppId
@@ -3147,7 +3147,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        """验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        r"""验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :rtype: str
         """
         return self._AppSecretKey
@@ -3158,7 +3158,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """预留字段
+        r"""预留字段
         :rtype: int
         """
         return self._BusinessId
@@ -3169,7 +3169,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """预留字段
+        r"""预留字段
         :rtype: int
         """
         return self._SceneId
@@ -3180,7 +3180,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        """mac 地址或设备唯一标识
+        r"""mac 地址或设备唯一标识
         :rtype: str
         """
         return self._MacAddress
@@ -3191,7 +3191,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """手机设备号
+        r"""手机设备号
         :rtype: str
         """
         return self._Imei
@@ -3202,7 +3202,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
-        """是否返回前端获取验证码时间，取值1：需要返回
+        r"""是否返回前端获取验证码时间，取值1：需要返回
         :rtype: int
         """
         return self._NeedGetCaptchaTime
@@ -3235,7 +3235,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
 
 class DescribeCaptchaResultResponse(AbstractModel):
-    """DescribeCaptchaResult返回参数结构体
+    r"""DescribeCaptchaResult返回参数结构体
 
     """
 
@@ -3283,7 +3283,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaCode(self):
-        """1 OK 验证通过
+        r"""1 OK 验证通过
 7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
 8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
 9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
@@ -3301,7 +3301,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaMsg(self):
-        """状态描述及验证错误信息
+        r"""状态描述及验证错误信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3312,7 +3312,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilLevel(self):
-        """无感验证模式下，该参数返回验证结果：
+        r"""无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
         :rtype: int
@@ -3325,7 +3325,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def GetCaptchaTime(self):
-        """前端获取验证码时间，时间戳格式
+        r"""前端获取验证码时间，时间戳格式
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -3336,7 +3336,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilBitmap(self):
-        """拦截类型
+        r"""拦截类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3348,7 +3348,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def SubmitCaptchaTime(self):
-        """提交验证码时间
+        r"""提交验证码时间
         :rtype: int
         """
         return self._SubmitCaptchaTime
@@ -3359,7 +3359,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def DeviceRiskCategory(self):
-        """设备风险大类
+        r"""设备风险大类
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3371,7 +3371,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def Score(self):
-        """验证码评分
+        r"""验证码评分
         :rtype: int
         """
         return self._Score
@@ -3382,7 +3382,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3405,7 +3405,7 @@ EvilLevel=100 请求有恶意
 
 
 class DescribeCaptchaTicketDataRequest(AbstractModel):
-    """DescribeCaptchaTicketData请求参数结构体
+    r"""DescribeCaptchaTicketData请求参数结构体
 
     """
 
@@ -3424,7 +3424,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -3435,7 +3435,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
 
     @property
     def Start(self):
-        """查询开始时间 例如：20200909
+        r"""查询开始时间 例如：20200909
         :rtype: int
         """
         return self._Start
@@ -3446,7 +3446,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
 
     @property
     def End(self):
-        """查询结束时间 例如：20220314
+        r"""查询结束时间 例如：20220314
         :rtype: int
         """
         return self._End
@@ -3471,7 +3471,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
 
 
 class DescribeCaptchaTicketDataResponse(AbstractModel):
-    """DescribeCaptchaTicketData返回参数结构体
+    r"""DescribeCaptchaTicketData返回参数结构体
 
     """
 
@@ -3493,7 +3493,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回 0 其它失败
+        r"""成功返回 0 其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -3504,7 +3504,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3515,7 +3515,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """验证码票据信息
+        r"""验证码票据信息
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
         """
         return self._Data
@@ -3526,7 +3526,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3546,13 +3546,13 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
 
 class DescribeCaptchaUserAllAppIdRequest(AbstractModel):
-    """DescribeCaptchaUserAllAppId请求参数结构体
+    r"""DescribeCaptchaUserAllAppId请求参数结构体
 
     """
 
 
 class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
-    """DescribeCaptchaUserAllAppId返回参数结构体
+    r"""DescribeCaptchaUserAllAppId返回参数结构体
 
     """
 
@@ -3574,7 +3574,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
     @property
     def Data(self):
-        """用户注册的所有Appid和应用名称
+        r"""用户注册的所有Appid和应用名称
         :rtype: list of CaptchaUserAllAppId
         """
         return self._Data
@@ -3585,7 +3585,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """成功返回 0  其它失败
+        r"""成功返回 0  其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -3596,7 +3596,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回操作信息
+        r"""返回操作信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3607,7 +3607,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3630,7 +3630,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
 
 class GetRequestStatisticsRequest(AbstractModel):
-    """GetRequestStatistics请求参数结构体
+    r"""GetRequestStatistics请求参数结构体
 
     """
 
@@ -3652,7 +3652,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码AppId
+        r"""验证码AppId
         :rtype: str
         """
         return self._CaptchaAppId
@@ -3663,7 +3663,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        """开始时间字符串
+        r"""开始时间字符串
         :rtype: str
         """
         return self._StartTimeStr
@@ -3674,7 +3674,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        """结束时间字符串
+        r"""结束时间字符串
         :rtype: str
         """
         return self._EndTimeStr
@@ -3685,7 +3685,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """查询粒度
+        r"""查询粒度
         :rtype: str
         """
         return self._Dimension
@@ -3711,7 +3711,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
 
 class GetRequestStatisticsResponse(AbstractModel):
-    """GetRequestStatistics返回参数结构体
+    r"""GetRequestStatistics返回参数结构体
 
     """
 
@@ -3734,7 +3734,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询后数据块
+        r"""查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -3746,7 +3746,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """验证码返回码
+        r"""验证码返回码
         :rtype: int
         """
         return self._CaptchaCode
@@ -3757,7 +3757,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """验证码返回信息
+        r"""验证码返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3768,7 +3768,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3788,7 +3788,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
 
 class GetTicketStatisticsRequest(AbstractModel):
-    """GetTicketStatistics请求参数结构体
+    r"""GetTicketStatistics请求参数结构体
 
     """
 
@@ -3810,7 +3810,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码AppId
+        r"""验证码AppId
         :rtype: str
         """
         return self._CaptchaAppId
@@ -3821,7 +3821,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        """开始时间字符串
+        r"""开始时间字符串
         :rtype: str
         """
         return self._StartTimeStr
@@ -3832,7 +3832,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        """结束时间字符串
+        r"""结束时间字符串
         :rtype: str
         """
         return self._EndTimeStr
@@ -3843,7 +3843,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """查询粒度
+        r"""查询粒度
         :rtype: str
         """
         return self._Dimension
@@ -3869,7 +3869,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
 
 class GetTicketStatisticsResponse(AbstractModel):
-    """GetTicketStatistics返回参数结构体
+    r"""GetTicketStatistics返回参数结构体
 
     """
 
@@ -3892,7 +3892,7 @@ class GetTicketStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询后数据块
+        r"""查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -3904,7 +3904,7 @@ class GetTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """验证码返回码
+        r"""验证码返回码
         :rtype: int
         """
         return self._CaptchaCode
@@ -3915,7 +3915,7 @@ class GetTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """验证码返回信息
+        r"""验证码返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3926,7 +3926,7 @@ class GetTicketStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3946,7 +3946,7 @@ class GetTicketStatisticsResponse(AbstractModel):
 
 
 class GetTotalRequestStatisticsRequest(AbstractModel):
-    """GetTotalRequestStatistics请求参数结构体
+    r"""GetTotalRequestStatistics请求参数结构体
 
     """
 
@@ -3965,7 +3965,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        """开始时间字符串
+        r"""开始时间字符串
         :rtype: str
         """
         return self._StartTimeStr
@@ -3976,7 +3976,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        """结束时间字符串
+        r"""结束时间字符串
         :rtype: str
         """
         return self._EndTimeStr
@@ -3987,7 +3987,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """查询粒度
+        r"""查询粒度
         :rtype: str
         """
         return self._Dimension
@@ -4012,7 +4012,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
 
 class GetTotalRequestStatisticsResponse(AbstractModel):
-    """GetTotalRequestStatistics返回参数结构体
+    r"""GetTotalRequestStatistics返回参数结构体
 
     """
 
@@ -4035,7 +4035,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询后数据块
+        r"""查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -4047,7 +4047,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """验证码返回码
+        r"""验证码返回码
         :rtype: int
         """
         return self._CaptchaCode
@@ -4058,7 +4058,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """验证码返回信息
+        r"""验证码返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -4069,7 +4069,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4089,7 +4089,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
 
 class GetTotalTicketStatisticsRequest(AbstractModel):
-    """GetTotalTicketStatistics请求参数结构体
+    r"""GetTotalTicketStatistics请求参数结构体
 
     """
 
@@ -4111,7 +4111,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTimeStr
@@ -4122,7 +4122,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTimeStr
@@ -4133,7 +4133,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """查询粒度
+        r"""查询粒度
 分钟：“1”
 小时：“2”
 天：“3”
@@ -4161,7 +4161,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
 
 class GetTotalTicketStatisticsResponse(AbstractModel):
-    """GetTotalTicketStatistics返回参数结构体
+    r"""GetTotalTicketStatistics返回参数结构体
 
     """
 
@@ -4184,7 +4184,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回数据
+        r"""返回数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -4196,7 +4196,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """返回码
+        r"""返回码
         :rtype: int
         """
         return self._CaptchaCode
@@ -4207,7 +4207,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -4218,7 +4218,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4238,7 +4238,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
 
 class InterceptPerTrendObj(AbstractModel):
-    """拦截率趋势obj
+    r"""拦截率趋势obj
 
     """
 
@@ -4260,7 +4260,7 @@ class InterceptPerTrendObj(AbstractModel):
 
     @property
     def Ftime(self):
-        """时间参数
+        r"""时间参数
         :rtype: str
         """
         return self._Ftime
@@ -4271,7 +4271,7 @@ class InterceptPerTrendObj(AbstractModel):
 
     @property
     def RequestInterceptPer(self):
-        """拦截率
+        r"""拦截率
         :rtype: float
         """
         return self._RequestInterceptPer
@@ -4282,7 +4282,7 @@ class InterceptPerTrendObj(AbstractModel):
 
     @property
     def AnswerInterceptPer(self):
-        """答案拦截率
+        r"""答案拦截率
         :rtype: float
         """
         return self._AnswerInterceptPer
@@ -4293,7 +4293,7 @@ class InterceptPerTrendObj(AbstractModel):
 
     @property
     def PolicyInterceptPer(self):
-        """策略拦截率
+        r"""策略拦截率
         :rtype: float
         """
         return self._PolicyInterceptPer
@@ -4319,7 +4319,7 @@ class InterceptPerTrendObj(AbstractModel):
 
 
 class OutputManageMarketingRiskValue(AbstractModel):
-    """拦截策略返回信息
+    r"""拦截策略返回信息
 
     """
 
@@ -4378,7 +4378,7 @@ reject：拒绝，高风险恶意
 
     @property
     def UserId(self):
-        """账号 ID。对应输入参数： AccountType 是 1 时，对应 QQ 的 OpenID。
+        r"""账号 ID。对应输入参数： AccountType 是 1 时，对应 QQ 的 OpenID。
 AccountType 是 2 时，对应微信的 OpenID/UnionID。
 AccountType 是 4 时，对应手机号。
 AccountType 是 8 时，对应 imei、idfa、imeiMD5 或者 idfaMD5。
@@ -4395,7 +4395,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
 
     @property
     def PostTime(self):
-        """操作时间戳，单位秒（对应输入参数）。 
+        r"""操作时间戳，单位秒（对应输入参数）。 
 
         :rtype: int
         """
@@ -4407,7 +4407,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
 
     @property
     def AssociateAccount(self):
-        """对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
+        r"""对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4419,7 +4419,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
 
     @property
     def UserIp(self):
-        """业务详情
+        r"""业务详情
         :rtype: str
         """
         return self._UserIp
@@ -4430,7 +4430,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
 
     @property
     def RiskLevel(self):
-        """风险值 pass : 无恶意
+        r"""风险值 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
         :rtype: str
@@ -4443,7 +4443,7 @@ reject：拒绝，高风险恶意
 
     @property
     def RiskType(self):
-        """风险类型，请查看下面详细说明 
+        r"""风险类型，请查看下面详细说明 
 账号风险	
         账号信用低	1	账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 	疑似 低活跃账号	11	账号活跃度与正常用户有差异
@@ -4492,7 +4492,7 @@ reject：拒绝，高风险恶意
 
 
 class RceResult(AbstractModel):
-    """验证码拼装Rce结果，Rce结果部分
+    r"""验证码拼装Rce结果，Rce结果部分
 
     """
 
@@ -4526,7 +4526,7 @@ class RceResult(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -4537,7 +4537,7 @@ class RceResult(AbstractModel):
 
     @property
     def PostTime(self):
-        """操作时间戳
+        r"""操作时间戳
         :rtype: int
         """
         return self._PostTime
@@ -4548,7 +4548,7 @@ class RceResult(AbstractModel):
 
     @property
     def AssociateAccount(self):
-        """业务参数
+        r"""业务参数
         :rtype: str
         """
         return self._AssociateAccount
@@ -4559,7 +4559,7 @@ class RceResult(AbstractModel):
 
     @property
     def UserIp(self):
-        """用户Ip
+        r"""用户Ip
         :rtype: str
         """
         return self._UserIp
@@ -4570,7 +4570,7 @@ class RceResult(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._RiskLevel
@@ -4581,7 +4581,7 @@ class RceResult(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: list of int
         """
         return self._RiskType
@@ -4592,7 +4592,7 @@ class RceResult(AbstractModel):
 
     @property
     def ConstId(self):
-        """设备唯一ID
+        r"""设备唯一ID
         :rtype: str
         """
         return self._ConstId
@@ -4603,7 +4603,7 @@ class RceResult(AbstractModel):
 
     @property
     def RiskInformation(self):
-        """风险扩展参数
+        r"""风险扩展参数
         :rtype: str
         """
         return self._RiskInformation
@@ -4633,7 +4633,7 @@ class RceResult(AbstractModel):
 
 
 class RequestTrendObj(AbstractModel):
-    """验证码请求趋势图obj
+    r"""验证码请求趋势图obj
 
     """
 
@@ -4658,7 +4658,7 @@ class RequestTrendObj(AbstractModel):
 
     @property
     def Ftime(self):
-        """时间参数
+        r"""时间参数
         :rtype: str
         """
         return self._Ftime
@@ -4669,7 +4669,7 @@ class RequestTrendObj(AbstractModel):
 
     @property
     def RequestAction(self):
-        """请求量
+        r"""请求量
         :rtype: int
         """
         return self._RequestAction
@@ -4680,7 +4680,7 @@ class RequestTrendObj(AbstractModel):
 
     @property
     def RequestVerify(self):
-        """验证量
+        r"""验证量
         :rtype: int
         """
         return self._RequestVerify
@@ -4691,7 +4691,7 @@ class RequestTrendObj(AbstractModel):
 
     @property
     def RequestThroughput(self):
-        """通过量
+        r"""通过量
         :rtype: int
         """
         return self._RequestThroughput
@@ -4702,7 +4702,7 @@ class RequestTrendObj(AbstractModel):
 
     @property
     def RequestIntercept(self):
-        """拦截量
+        r"""拦截量
         :rtype: int
         """
         return self._RequestIntercept
@@ -4729,7 +4729,7 @@ class RequestTrendObj(AbstractModel):
 
 
 class TicketAmountUnit(AbstractModel):
-    """DescribeCaptchaTicketData 返回的数据结构
+    r"""DescribeCaptchaTicketData 返回的数据结构
 
     """
 
@@ -4745,7 +4745,7 @@ class TicketAmountUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -4756,7 +4756,7 @@ class TicketAmountUnit(AbstractModel):
 
     @property
     def Amount(self):
-        """票据验证总量
+        r"""票据验证总量
         :rtype: int
         """
         return self._Amount
@@ -4780,7 +4780,7 @@ class TicketAmountUnit(AbstractModel):
 
 
 class TicketCheckTrendObj(AbstractModel):
-    """验证码票据校验趋势obj
+    r"""验证码票据校验趋势obj
 
     """
 
@@ -4802,7 +4802,7 @@ class TicketCheckTrendObj(AbstractModel):
 
     @property
     def Ftime(self):
-        """时间参数
+        r"""时间参数
         :rtype: str
         """
         return self._Ftime
@@ -4813,7 +4813,7 @@ class TicketCheckTrendObj(AbstractModel):
 
     @property
     def TicketCount(self):
-        """票据校验量
+        r"""票据校验量
         :rtype: int
         """
         return self._TicketCount
@@ -4824,7 +4824,7 @@ class TicketCheckTrendObj(AbstractModel):
 
     @property
     def TicketThroughput(self):
-        """票据通过量
+        r"""票据通过量
         :rtype: int
         """
         return self._TicketThroughput
@@ -4835,7 +4835,7 @@ class TicketCheckTrendObj(AbstractModel):
 
     @property
     def TicketIntercept(self):
-        """票据拦截量
+        r"""票据拦截量
         :rtype: int
         """
         return self._TicketIntercept
@@ -4861,7 +4861,7 @@ class TicketCheckTrendObj(AbstractModel):
 
 
 class TicketInterceptUnit(AbstractModel):
-    """DescribeCaptchaTicketData 返回的数据结构
+    r"""DescribeCaptchaTicketData 返回的数据结构
 
     """
 
@@ -4877,7 +4877,7 @@ class TicketInterceptUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -4888,7 +4888,7 @@ class TicketInterceptUnit(AbstractModel):
 
     @property
     def Intercept(self):
-        """票据验证拦截量
+        r"""票据验证拦截量
         :rtype: int
         """
         return self._Intercept
@@ -4912,7 +4912,7 @@ class TicketInterceptUnit(AbstractModel):
 
 
 class TicketThroughUnit(AbstractModel):
-    """DescribeCaptchaTicketData 返回的数据结构
+    r"""DescribeCaptchaTicketData 返回的数据结构
 
     """
 
@@ -4928,7 +4928,7 @@ class TicketThroughUnit(AbstractModel):
 
     @property
     def DateKey(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DateKey
@@ -4939,7 +4939,7 @@ class TicketThroughUnit(AbstractModel):
 
     @property
     def Through(self):
-        """票据验证的通过量
+        r"""票据验证的通过量
         :rtype: int
         """
         return self._Through
@@ -4963,7 +4963,7 @@ class TicketThroughUnit(AbstractModel):
 
 
 class UpdateCaptchaAppIdInfoRequest(AbstractModel):
-    """UpdateCaptchaAppIdInfo请求参数结构体
+    r"""UpdateCaptchaAppIdInfo请求参数结构体
 
     """
 
@@ -5012,7 +5012,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """验证码应用ID
+        r"""验证码应用ID
         :rtype: int
         """
         return self._CaptchaAppId
@@ -5023,7 +5023,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名
+        r"""应用名
         :rtype: str
         """
         return self._AppName
@@ -5034,7 +5034,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def DomainLimit(self):
-        """域名限制
+        r"""域名限制
         :rtype: str
         """
         return self._DomainLimit
@@ -5045,7 +5045,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        """场景类型
+        r"""场景类型
         :rtype: int
         """
         return self._SceneType
@@ -5056,7 +5056,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def CapType(self):
-        """验证码类型
+        r"""验证码类型
         :rtype: int
         """
         return self._CapType
@@ -5067,7 +5067,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def EvilInterceptGrade(self):
-        """风险级别
+        r"""风险级别
         :rtype: int
         """
         return self._EvilInterceptGrade
@@ -5078,7 +5078,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def SmartVerify(self):
-        """智能检测
+        r"""智能检测
         :rtype: int
         """
         return self._SmartVerify
@@ -5089,7 +5089,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def SmartEngine(self):
-        """开启智能引擎
+        r"""开启智能引擎
         :rtype: int
         """
         return self._SmartEngine
@@ -5100,7 +5100,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def SchemeColor(self):
-        """web风格
+        r"""web风格
         :rtype: str
         """
         return self._SchemeColor
@@ -5111,7 +5111,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def CaptchaLanguage(self):
-        """语言
+        r"""语言
         :rtype: int
         """
         return self._CaptchaLanguage
@@ -5122,7 +5122,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def MailAlarm(self):
-        """告警邮箱
+        r"""告警邮箱
         :rtype: str
         """
         return self._MailAlarm
@@ -5133,7 +5133,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def TopFullScreen(self):
-        """是否全屏
+        r"""是否全屏
         :rtype: int
         """
         return self._TopFullScreen
@@ -5144,7 +5144,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     @property
     def TrafficThreshold(self):
-        """流量限制
+        r"""流量限制
         :rtype: int
         """
         return self._TrafficThreshold
@@ -5179,7 +5179,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
 
 class UpdateCaptchaAppIdInfoResponse(AbstractModel):
-    """UpdateCaptchaAppIdInfo返回参数结构体
+    r"""UpdateCaptchaAppIdInfo返回参数结构体
 
     """
 
@@ -5198,7 +5198,7 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        """返回码 0 成功，其它失败
+        r"""返回码 0 成功，其它失败
         :rtype: int
         """
         return self._CaptchaCode
@@ -5209,7 +5209,7 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        """返回操作信息
+        r"""返回操作信息
         :rtype: str
         """
         return self._CaptchaMsg
@@ -5220,7 +5220,7 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

@@ -27,7 +27,7 @@ class DtsClient(AbstractClient):
 
 
     def CompleteMigrateJob(self, request):
-        """本接口（CompleteMigrateJob）用于完成数据迁移任务。
+        r"""本接口（CompleteMigrateJob）用于完成数据迁移任务。
         选择采用增量迁移方式的任务, 需要在迁移进度进入准备完成阶段后, 调用本接口, 停止迁移增量数据。
         通过DescribeMigrationJobs接口查询到任务的状态为准备完成（Status="readyComplete"）时，此时可以调用本接口完成迁移任务。
 
@@ -52,7 +52,7 @@ class DtsClient(AbstractClient):
 
 
     def ConfigureSubscribeJob(self, request):
-        """本接口(ConfigureSubscribeJob)用于配置数据订阅实例。
+        r"""本接口(ConfigureSubscribeJob)用于配置数据订阅实例。
 
         :param request: Request instance for ConfigureSubscribeJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ConfigureSubscribeJobRequest`
@@ -75,7 +75,7 @@ class DtsClient(AbstractClient):
 
 
     def ConfigureSyncJob(self, request):
-        """配置一个同步任务
+        r"""配置一个同步任务
 
         :param request: Request instance for ConfigureSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ConfigureSyncJobRequest`
@@ -98,7 +98,7 @@ class DtsClient(AbstractClient):
 
 
     def ContinueMigrateJob(self, request):
-        """恢复一个暂停中的迁移任务。
+        r"""恢复一个暂停中的迁移任务。
 
         :param request: Request instance for ContinueMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobRequest`
@@ -121,7 +121,7 @@ class DtsClient(AbstractClient):
 
 
     def ContinueSyncJob(self, request):
-        """恢复处于已暂停状态的数据同步任务。
+        r"""恢复处于已暂停状态的数据同步任务。
 
         :param request: Request instance for ContinueSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobRequest`
@@ -144,7 +144,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateCheckSyncJob(self, request):
-        """校验同步任务，检查必要参数和周边配置。
+        r"""校验同步任务，检查必要参数和周边配置。
 
         :param request: Request instance for CreateCheckSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateCheckSyncJobRequest`
@@ -167,7 +167,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateCompareTask(self, request):
-        """本接口用于创建数据对比任务，创建成功后会返回数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，创建成功后可通过StartCompare启动一致性校验任务
+        r"""本接口用于创建数据对比任务，创建成功后会返回数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，创建成功后可通过StartCompare启动一致性校验任务
 
         :param request: Request instance for CreateCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateCompareTaskRequest`
@@ -190,7 +190,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateConsumerGroup(self, request):
-        """为订阅实例创建消费者组
+        r"""为订阅实例创建消费者组
 
         :param request: Request instance for CreateConsumerGroup.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateConsumerGroupRequest`
@@ -213,7 +213,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrateCheckJob(self, request):
-        """校验迁移任务，
+        r"""校验迁移任务，
         在开始迁移前, 必须调用本接口创建校验迁移任务, 且校验成功后才能开始迁移. 校验的结果可以通过DescribeMigrationCheckJob查看，
         校验成功后,迁移任务若有修改, 则必须重新校验并通过后, 才能开始迁移
 
@@ -238,7 +238,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrationService(self, request):
-        """购买迁移任务。购买成功后会返回随机生成的迁移任务id列表，也可以通过查询迁移任务任务列表接口`DescribeMigrationJobs`看到购买成功的实例Id。注意，一旦购买成功后源及目标数据库类型，源及目标实例地域不可修改。
+        r"""购买迁移任务。购买成功后会返回随机生成的迁移任务id列表，也可以通过查询迁移任务任务列表接口`DescribeMigrationJobs`看到购买成功的实例Id。注意，一旦购买成功后源及目标数据库类型，源及目标实例地域不可修改。
 
         :param request: Request instance for CreateMigrationService.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateMigrationServiceRequest`
@@ -261,7 +261,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateModifyCheckSyncJob(self, request):
-        """在修改同步任务的配置后、通过该接口校验当前任务是否支持修改对象操作
+        r"""在修改同步任务的配置后、通过该接口校验当前任务是否支持修改对象操作
 
         :param request: Request instance for CreateModifyCheckSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobRequest`
@@ -284,7 +284,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSubscribe(self, request):
-        """本接口(CreateSubscribe)用于创建一个数据订阅任务。
+        r"""本接口(CreateSubscribe)用于创建一个数据订阅任务。
 
         :param request: Request instance for CreateSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeRequest`
@@ -307,7 +307,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSubscribeCheckJob(self, request):
-        """本接口(CreateSubscribeCheckJob)用于创建一个订阅校验任务。任务必须已经成功调用ConfigureSubscribeJob接口配置了所有的必要信息才能启动校验。
+        r"""本接口(CreateSubscribeCheckJob)用于创建一个订阅校验任务。任务必须已经成功调用ConfigureSubscribeJob接口配置了所有的必要信息才能启动校验。
 
         :param request: Request instance for CreateSubscribeCheckJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeCheckJobRequest`
@@ -330,7 +330,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSyncJob(self, request):
-        """创建一个同步任务
+        r"""创建一个同步任务
 
         :param request: Request instance for CreateSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSyncJobRequest`
@@ -353,7 +353,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteCompareTask(self, request):
-        """删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
+        r"""删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
 
         :param request: Request instance for DeleteCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.DeleteCompareTaskRequest`
@@ -376,7 +376,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteConsumerGroup(self, request):
-        """本接口(DeleteConsumerGroup)用于删除一个订阅任务的消费组。
+        r"""本接口(DeleteConsumerGroup)用于删除一个订阅任务的消费组。
 
         :param request: Request instance for DeleteConsumerGroup.
         :type request: :class:`tencentcloud.dts.v20211206.models.DeleteConsumerGroupRequest`
@@ -399,7 +399,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCheckSyncJobResult(self, request):
-        """查询同步校验任务结果，检查必要参数和周边配置
+        r"""查询同步校验任务结果，检查必要参数和周边配置
 
         :param request: Request instance for DescribeCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCheckSyncJobResultRequest`
@@ -422,7 +422,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCompareReport(self, request):
-        """查询一致性校验任务详情
+        r"""查询一致性校验任务详情
 
         :param request: Request instance for DescribeCompareReport.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCompareReportRequest`
@@ -445,7 +445,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCompareTasks(self, request):
-        """查询一致性校验任务列表，调用该接口后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态。
+        r"""查询一致性校验任务列表，调用该接口后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态。
 
         :param request: Request instance for DescribeCompareTasks.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCompareTasksRequest`
@@ -468,7 +468,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeConsumerGroups(self, request):
-        """本接口(DescribeConsumerGroups)用于获取订阅实例配置的消费者组详情。
+        r"""本接口(DescribeConsumerGroups)用于获取订阅实例配置的消费者组详情。
 
         :param request: Request instance for DescribeConsumerGroups.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeConsumerGroupsRequest`
@@ -491,7 +491,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrateDBInstances(self, request):
-        """本接口用于查询支持迁移的云数据库实例
+        r"""本接口用于查询支持迁移的云数据库实例
 
         :param request: Request instance for DescribeMigrateDBInstances.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrateDBInstancesRequest`
@@ -514,7 +514,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationCheckJob(self, request):
-        """本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度.
+        r"""本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度.
         若通过校验, 则可调用'StartMigrateJob' 开始迁移.
         若未通过校验, 则能查询到校验失败的原因. 请按照报错, 通过'ModifyMigrationJob'修改迁移配置或是调整源/目标实例的相关参数.
 
@@ -539,7 +539,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationDetail(self, request):
-        """查询某个迁移任务详情
+        r"""查询某个迁移任务详情
 
         :param request: Request instance for DescribeMigrationDetail.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationDetailRequest`
@@ -562,7 +562,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationJobs(self, request):
-        """查询数据迁移任务列表
+        r"""查询数据迁移任务列表
 
         :param request: Request instance for DescribeMigrationJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationJobsRequest`
@@ -585,7 +585,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeModifyCheckSyncJobResult(self, request):
-        """在创建修改对象的校验任务后、通过该接口查看校验任务的结果
+        r"""在创建修改对象的校验任务后、通过该接口查看校验任务的结果
 
         :param request: Request instance for DescribeModifyCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultRequest`
@@ -608,7 +608,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeOffsetByTime(self, request):
-        """本接口(DescribeOffsetByTime)查询KafkaTopic中指定时间前最近的offset。
+        r"""本接口(DescribeOffsetByTime)查询KafkaTopic中指定时间前最近的offset。
         接口输出的offset是离这个时间最近的offset。
         如果输入时间比当前时间晚的多，相当于输出的就是最新的offset；
         如果输入时间比当前时间早的多，相当于输出的就是最老的offset；
@@ -635,7 +635,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeCheckJob(self, request):
-        """本接口(DescribeSubscribeCheckJob)用于查询订阅校验任务结果。
+        r"""本接口(DescribeSubscribeCheckJob)用于查询订阅校验任务结果。
 
         :param request: Request instance for DescribeSubscribeCheckJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeCheckJobRequest`
@@ -658,7 +658,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeDetail(self, request):
-        """本接口(DescribeSubscribeDetail)获取数据订阅实例的配置信息。
+        r"""本接口(DescribeSubscribeDetail)获取数据订阅实例的配置信息。
 
         :param request: Request instance for DescribeSubscribeDetail.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeDetailRequest`
@@ -681,7 +681,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeJobs(self, request):
-        """本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
+        r"""本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
 
         :param request: Request instance for DescribeSubscribeJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeJobsRequest`
@@ -704,7 +704,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeReturnable(self, request):
-        """本接口(DescribeSubscribeReturnable)用于查询订阅任务是否可以销毁和退货。
+        r"""本接口(DescribeSubscribeReturnable)用于查询订阅任务是否可以销毁和退货。
 
         :param request: Request instance for DescribeSubscribeReturnable.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeReturnableRequest`
@@ -727,7 +727,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSyncJobs(self, request):
-        """查询同步任务信息
+        r"""查询同步任务信息
 
         :param request: Request instance for DescribeSyncJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncJobsRequest`
@@ -750,7 +750,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroyIsolatedSubscribe(self, request):
-        """本接口（DestroyIsolatedSubscribe）用于下线已隔离的数据订阅实例
+        r"""本接口（DestroyIsolatedSubscribe）用于下线已隔离的数据订阅实例
 
         :param request: Request instance for DestroyIsolatedSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroyIsolatedSubscribeRequest`
@@ -773,7 +773,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroyMigrateJob(self, request):
-        """下线数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
+        r"""下线数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
 
         :param request: Request instance for DestroyMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroyMigrateJobRequest`
@@ -796,7 +796,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroySyncJob(self, request):
-        """下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs获取任务列表查看状态，此操作成功后无法看到此任务表示下线成功。
+        r"""下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs获取任务列表查看状态，此操作成功后无法看到此任务表示下线成功。
 
         :param request: Request instance for DestroySyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroySyncJobRequest`
@@ -819,7 +819,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateMigrateJob(self, request):
-        """隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrationJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
+        r"""隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrationJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
 
         :param request: Request instance for IsolateMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateMigrateJobRequest`
@@ -842,7 +842,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSubscribe(self, request):
-        """本接口（IsolateSubscribe）用于隔离订阅任务。调用后，订阅任务将不能使用。按量计费的任务会停止计费，包年包月的任务会自动退费
+        r"""本接口（IsolateSubscribe）用于隔离订阅任务。调用后，订阅任务将不能使用。按量计费的任务会停止计费，包年包月的任务会自动退费
 
         :param request: Request instance for IsolateSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSubscribeRequest`
@@ -865,7 +865,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSyncJob(self, request):
-        """隔离同步任务，隔离后可通过查询同步任务信息接口DescribeSyncJobs获取隔离后状态。在任务隔离后可进行解除隔离(RecoverSyncJob)操作或直接进行下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
+        r"""隔离同步任务，隔离后可通过查询同步任务信息接口DescribeSyncJobs获取隔离后状态。在任务隔离后可进行解除隔离(RecoverSyncJob)操作或直接进行下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
 
         :param request: Request instance for IsolateSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSyncJobRequest`
@@ -888,7 +888,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyCompareTask(self, request):
-        """修改一致性校验任务，在任务创建后启动之前，可修改一致性校验参数
+        r"""修改一致性校验任务，在任务创建后启动之前，可修改一致性校验参数
 
         :param request: Request instance for ModifyCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyCompareTaskRequest`
@@ -911,7 +911,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyCompareTaskName(self, request):
-        """修改一致性校验任务名称
+        r"""修改一致性校验任务名称
 
         :param request: Request instance for ModifyCompareTaskName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyCompareTaskNameRequest`
@@ -934,7 +934,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyConsumerGroupDescription(self, request):
-        """本接口(ModifyConsumerGroupDescription)用于修改指定订阅消费组备注。
+        r"""本接口(ModifyConsumerGroupDescription)用于修改指定订阅消费组备注。
 
         :param request: Request instance for ModifyConsumerGroupDescription.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupDescriptionRequest`
@@ -957,7 +957,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyConsumerGroupPassword(self, request):
-        """本接口(ModifyConsumerGroupPassword)用于修改指定订阅消费组密码。
+        r"""本接口(ModifyConsumerGroupPassword)用于修改指定订阅消费组密码。
 
         :param request: Request instance for ModifyConsumerGroupPassword.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupPasswordRequest`
@@ -980,7 +980,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateJobSpec(self, request):
-        """调整实例规格，此接口只支持按量计费任务的调整。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+        r"""调整实例规格，此接口只支持按量计费任务的调整。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 
         :param request: Request instance for ModifyMigrateJobSpec.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateJobSpecRequest`
@@ -1003,7 +1003,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateName(self, request):
-        """修改迁移任务名
+        r"""修改迁移任务名
 
         :param request: Request instance for ModifyMigrateName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateNameRequest`
@@ -1026,7 +1026,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateRateLimit(self, request):
-        """用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+        r"""用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
 
         :param request: Request instance for ModifyMigrateRateLimit.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitRequest`
@@ -1049,7 +1049,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateRuntimeAttribute(self, request):
-        """修改任务运行时属性，此接口不同于配置类接口，不会进行状态机判断。
+        r"""修改任务运行时属性，此接口不同于配置类接口，不会进行状态机判断。
 
         :param request: Request instance for ModifyMigrateRuntimeAttribute.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeRequest`
@@ -1072,7 +1072,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrationJob(self, request):
-        """配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
+        r"""配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
 
         :param request: Request instance for ModifyMigrationJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrationJobRequest`
@@ -1095,7 +1095,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeAutoRenewFlag(self, request):
-        """修改订阅实例自动续费标识。只有包年包月的任务修改才有意义，按量计费任务修改后无影响。
+        r"""修改订阅实例自动续费标识。只有包年包月的任务修改才有意义，按量计费任务修改后无影响。
 
         :param request: Request instance for ModifySubscribeAutoRenewFlag.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeAutoRenewFlagRequest`
@@ -1118,7 +1118,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeName(self, request):
-        """本接口(ModifySubscribeName)用于修改数据订阅实例的名称
+        r"""本接口(ModifySubscribeName)用于修改数据订阅实例的名称
 
         :param request: Request instance for ModifySubscribeName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeNameRequest`
@@ -1141,7 +1141,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeObjects(self, request):
-        """本接口(ModifySubscribeObjects)用于修改数据订阅对象和kafka分区规则，如果是mongo订阅，还可以修改输出聚合规则。
+        r"""本接口(ModifySubscribeObjects)用于修改数据订阅对象和kafka分区规则，如果是mongo订阅，还可以修改输出聚合规则。
 
         :param request: Request instance for ModifySubscribeObjects.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeObjectsRequest`
@@ -1164,7 +1164,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySyncJobConfig(self, request):
-        """该接口支持在同步任务启动后修改任务的配置
+        r"""该接口支持在同步任务启动后修改任务的配置
         修改同步配置的完整流程：修改同步任务配置->创建修改同步任务配置的校验任务->查询修改配置的校验任务的结果->启动修改配置任务
 
         :param request: Request instance for ModifySyncJobConfig.
@@ -1188,7 +1188,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySyncRateLimit(self, request):
-        """用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+        r"""用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
 
         :param request: Request instance for ModifySyncRateLimit.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitRequest`
@@ -1211,7 +1211,7 @@ class DtsClient(AbstractClient):
 
 
     def PauseMigrateJob(self, request):
-        """暂停一个迁移任务。
+        r"""暂停一个迁移任务。
 
         :param request: Request instance for PauseMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobRequest`
@@ -1234,7 +1234,7 @@ class DtsClient(AbstractClient):
 
 
     def PauseSyncJob(self, request):
-        """暂停处于同步中的数据同步任务。
+        r"""暂停处于同步中的数据同步任务。
 
         :param request: Request instance for PauseSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.PauseSyncJobRequest`
@@ -1257,7 +1257,7 @@ class DtsClient(AbstractClient):
 
 
     def RecoverMigrateJob(self, request):
-        """解除隔离数据迁移任务，用户手动发起隔离后的手动解隔离，只有任务状态为已隔离(手动操作)状态下才能触发此操作。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+        r"""解除隔离数据迁移任务，用户手动发起隔离后的手动解隔离，只有任务状态为已隔离(手动操作)状态下才能触发此操作。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 
         :param request: Request instance for RecoverMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.RecoverMigrateJobRequest`
@@ -1280,7 +1280,7 @@ class DtsClient(AbstractClient):
 
 
     def RecoverSyncJob(self, request):
-        """解除隔离同步任务，任务在已隔离状态下可调用该接口解除隔离状态任务，同时可通过查询同步任务信息接口DescribeSyncJobs，获取操作后状态。
+        r"""解除隔离同步任务，任务在已隔离状态下可调用该接口解除隔离状态任务，同时可通过查询同步任务信息接口DescribeSyncJobs，获取操作后状态。
 
         :param request: Request instance for RecoverSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.RecoverSyncJobRequest`
@@ -1303,7 +1303,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetConsumerGroupOffset(self, request):
-        """本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。调用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
+        r"""本接口(ResetConsumerGroupOffset)用于重置订阅消费组的offset。调用DescribeConsumerGroups接口查询消费组状态，只有消费组状态为 Dead 或 Empty 才可以执行重置该操作。否则重置不会生效，接口也不会报错。
 
         :param request: Request instance for ResetConsumerGroupOffset.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResetConsumerGroupOffsetRequest`
@@ -1326,7 +1326,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetSubscribe(self, request):
-        """本接口(ResetSubscribe)用于重置订阅实例，重置后，可以重新配置订阅任务。
+        r"""本接口(ResetSubscribe)用于重置订阅实例，重置后，可以重新配置订阅任务。
         可以调用 DescribeSubscribeDetail 查询订阅信息判断是否置成功。当SubsStatus变为notStarted时，表示重置成功。
 
         :param request: Request instance for ResetSubscribe.
@@ -1350,7 +1350,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetSyncJob(self, request):
-        """重置已经结束的同步任务，重置后可以重新配置启动任务。
+        r"""重置已经结束的同步任务，重置后可以重新配置启动任务。
 
         :param request: Request instance for ResetSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResetSyncJobRequest`
@@ -1373,7 +1373,7 @@ class DtsClient(AbstractClient):
 
 
     def ResizeSyncJob(self, request):
-        """调整同步任务规格，此接口只支持按量计费任务的调整，调用此接口后不会立即生效，后台调整时间大概为3~5分钟。调用此接口后可通过查询同步任务信息接口DescribeSyncJobs，获取变配后的状态。
+        r"""调整同步任务规格，此接口只支持按量计费任务的调整，调用此接口后不会立即生效，后台调整时间大概为3~5分钟。调用此接口后可通过查询同步任务信息接口DescribeSyncJobs，获取变配后的状态。
 
         :param request: Request instance for ResizeSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResizeSyncJobRequest`
@@ -1396,7 +1396,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeMigrateJob(self, request):
-        """重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+        r"""重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 
         :param request: Request instance for ResumeMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeMigrateJobRequest`
@@ -1419,7 +1419,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeSubscribe(self, request):
-        """本接口(ResumeSubscribe) 用于恢复报错的订阅任务。当订阅任务的状态为error时，可通过本接口尝试对任务进行恢复。
+        r"""本接口(ResumeSubscribe) 用于恢复报错的订阅任务。当订阅任务的状态为error时，可通过本接口尝试对任务进行恢复。
 
         :param request: Request instance for ResumeSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeSubscribeRequest`
@@ -1442,7 +1442,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeSyncJob(self, request):
-        """重试同步任务，部分可恢复报错情况下，可通过该接口重试同步任务，可通过查询同步任务信息接口DescribeSyncJobs，获取操作后状态。
+        r"""重试同步任务，部分可恢复报错情况下，可通过该接口重试同步任务，可通过查询同步任务信息接口DescribeSyncJobs，获取操作后状态。
 
         :param request: Request instance for ResumeSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeSyncJobRequest`
@@ -1465,7 +1465,7 @@ class DtsClient(AbstractClient):
 
 
     def SkipCheckItem(self, request):
-        """本接口用于校验检查项不通过后，可进行跳过此校验项操作，后端将不再校验该项。任何校验步骤都是不应该跳过的，通过校验是能正确执行的前置条件。支持跳过的产品及链路的校验项可 [参考文档](https://cloud.tencent.com/document/product/571/61639)。
+        r"""本接口用于校验检查项不通过后，可进行跳过此校验项操作，后端将不再校验该项。任何校验步骤都是不应该跳过的，通过校验是能正确执行的前置条件。支持跳过的产品及链路的校验项可 [参考文档](https://cloud.tencent.com/document/product/571/61639)。
 
         :param request: Request instance for SkipCheckItem.
         :type request: :class:`tencentcloud.dts.v20211206.models.SkipCheckItemRequest`
@@ -1488,7 +1488,7 @@ class DtsClient(AbstractClient):
 
 
     def SkipSyncCheckItem(self, request):
-        """本接口用于校验检查项不通过后，可进行跳过此校验项操作，后端将不再校验该项。任何校验步骤都是不应该跳过的，通过校验是能正确执行的前置条件。支持跳过的产品及链路的校验项可 [参考文档](https://cloud.tencent.com/document/product/571/61639)。
+        r"""本接口用于校验检查项不通过后，可进行跳过此校验项操作，后端将不再校验该项。任何校验步骤都是不应该跳过的，通过校验是能正确执行的前置条件。支持跳过的产品及链路的校验项可 [参考文档](https://cloud.tencent.com/document/product/571/61639)。
 
         :param request: Request instance for SkipSyncCheckItem.
         :type request: :class:`tencentcloud.dts.v20211206.models.SkipSyncCheckItemRequest`
@@ -1511,7 +1511,7 @@ class DtsClient(AbstractClient):
 
 
     def StartCompare(self, request):
-        """启动一致性校验任务，启动之前需要先通过接口`CreateCompareTask` 创建一致性校验任务，启动后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态
+        r"""启动一致性校验任务，启动之前需要先通过接口`CreateCompareTask` 创建一致性校验任务，启动后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态
 
         :param request: Request instance for StartCompare.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartCompareRequest`
@@ -1534,7 +1534,7 @@ class DtsClient(AbstractClient):
 
 
     def StartMigrateJob(self, request):
-        """本接口（StartMigrationJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+        r"""本接口（StartMigrationJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 
         :param request: Request instance for StartMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartMigrateJobRequest`
@@ -1557,7 +1557,7 @@ class DtsClient(AbstractClient):
 
 
     def StartModifySyncJob(self, request):
-        """在查询修改对象的校验任务的结果中的status为success后、通过该接口开始修改配置流程
+        r"""在查询修改对象的校验任务的结果中的status为success后、通过该接口开始修改配置流程
 
         :param request: Request instance for StartModifySyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobRequest`
@@ -1580,7 +1580,7 @@ class DtsClient(AbstractClient):
 
 
     def StartSubscribe(self, request):
-        """本接口(StartSubscribe)用于启动一个kafka版本的数据订阅实例。只有当订阅任务的状态为checkPass时，才能调用本接口。
+        r"""本接口(StartSubscribe)用于启动一个kafka版本的数据订阅实例。只有当订阅任务的状态为checkPass时，才能调用本接口。
 
         :param request: Request instance for StartSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartSubscribeRequest`
@@ -1603,7 +1603,7 @@ class DtsClient(AbstractClient):
 
 
     def StartSyncJob(self, request):
-        """启动同步任务
+        r"""启动同步任务
 
         :param request: Request instance for StartSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartSyncJobRequest`
@@ -1626,7 +1626,7 @@ class DtsClient(AbstractClient):
 
 
     def StopCompare(self, request):
-        """终止一致性校验任务
+        r"""终止一致性校验任务
 
         :param request: Request instance for StopCompare.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopCompareRequest`
@@ -1649,7 +1649,7 @@ class DtsClient(AbstractClient):
 
 
     def StopMigrateJob(self, request):
-        """本接口（StopMigrateJob）用于终止数据迁移任务。
+        r"""本接口（StopMigrateJob）用于终止数据迁移任务。
         调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 
         :param request: Request instance for StopMigrateJob.
@@ -1673,7 +1673,7 @@ class DtsClient(AbstractClient):
 
 
     def StopSyncJob(self, request):
-        """结束同步任务，操作后可通过查询同步任务信息接口DescribeSyncJobs，获取操作后的状态。
+        r"""结束同步任务，操作后可通过查询同步任务信息接口DescribeSyncJobs，获取操作后的状态。
 
         :param request: Request instance for StopSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopSyncJobRequest`

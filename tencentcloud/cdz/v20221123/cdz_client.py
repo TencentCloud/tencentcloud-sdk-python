@@ -27,7 +27,7 @@ class CdzClient(AbstractClient):
 
 
     def DescribeCloudDedicatedZoneHosts(self, request):
-        """查询可用区的Host和Host上部署的实例
+        r"""查询可用区的Host和Host上部署的实例
 
         :param request: Request instance for DescribeCloudDedicatedZoneHosts.
         :type request: :class:`tencentcloud.cdz.v20221123.models.DescribeCloudDedicatedZoneHostsRequest`
@@ -50,7 +50,7 @@ class CdzClient(AbstractClient):
 
 
     def DescribeCloudDedicatedZoneResourceSummary(self, request):
-        """查询专属可用区各个垂直产品的资源使用情况
+        r"""查询专属可用区各个垂直产品的资源使用情况
 
         :param request: Request instance for DescribeCloudDedicatedZoneResourceSummary.
         :type request: :class:`tencentcloud.cdz.v20221123.models.DescribeCloudDedicatedZoneResourceSummaryRequest`

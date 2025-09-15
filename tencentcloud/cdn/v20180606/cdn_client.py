@@ -27,7 +27,7 @@ class CdnClient(AbstractClient):
 
 
     def AddCLSTopicDomains(self, request):
-        """AddCLSTopicDomains 用于新增域名到某日志主题下
+        r"""AddCLSTopicDomains 用于新增域名到某日志主题下
 
         :param request: Request instance for AddCLSTopicDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.AddCLSTopicDomainsRequest`
@@ -50,7 +50,7 @@ class CdnClient(AbstractClient):
 
 
     def AddCdnDomain(self, request):
-        """AddCdnDomain 用于新增内容分发网络加速域名。1分钟内最多可新增100个域名。
+        r"""AddCdnDomain 用于新增内容分发网络加速域名。1分钟内最多可新增100个域名。
 
         :param request: Request instance for AddCdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainRequest`
@@ -73,7 +73,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateClsLogTopic(self, request):
-        """CreateClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
+        r"""CreateClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
 
         :param request: Request instance for CreateClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicRequest`
@@ -96,7 +96,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateDiagnoseUrl(self, request):
-        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
 
         ### <font color=red>**该接口已废弃** </font><br>
         CreateDiagnoseUrl 用于添加域名诊断任务URL。
@@ -122,7 +122,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateEdgePackTask(self, request):
-        """动态打包任务提交接口
+        r"""动态打包任务提交接口
 
         :param request: Request instance for CreateEdgePackTask.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateEdgePackTaskRequest`
@@ -145,7 +145,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateVerifyRecord(self, request):
-        """CreateVerifyRecord 用于生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
+        r"""CreateVerifyRecord 用于生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
         生成的解析记录可通过 [VerifyDomainRecord](https://cloud.tencent.com/document/product/228/48117) 完成归属权校验。
         注意：生成的解析记录有效期为24小时，超过24小时后，需重新生成。
         具体流程可参考：[使用API接口进行域名归属校验](https://cloud.tencent.com/document/product/228/61702#.E6.96.B9.E6.B3.95.E4.B8.89.EF.BC.9Aapi-.E6.8E.A5.E5.8F.A3.E6.93.8D.E4.BD.9C)
@@ -171,7 +171,7 @@ class CdnClient(AbstractClient):
 
 
     def DeleteCdnDomain(self, request):
-        """DeleteCdnDomain 用于删除指定加速域名
+        r"""DeleteCdnDomain 用于删除指定加速域名
 
         :param request: Request instance for DeleteCdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteCdnDomainRequest`
@@ -194,7 +194,7 @@ class CdnClient(AbstractClient):
 
 
     def DeleteClsLogTopic(self, request):
-        """DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约为 5~15 分钟。
+        r"""DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约为 5~15 分钟。
 
         :param request: Request instance for DeleteClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicRequest`
@@ -217,7 +217,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeBillingData(self, request):
-        """DescribeBillingData 用于查询实际计费数据明细。
+        r"""DescribeBillingData 用于查询实际计费数据明细。
 
         :param request: Request instance for DescribeBillingData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataRequest`
@@ -240,7 +240,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnData(self, request):
-        """DescribeCdnData 用于查询 CDN 实时访问监控数据，支持以下指标查询：
+        r"""DescribeCdnData 用于查询 CDN 实时访问监控数据，支持以下指标查询：
 
         + 流量（单位为 byte）
         + 带宽（单位为 bps）
@@ -275,7 +275,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnDomainLogs(self, request):
-        """DescribeCdnDomainLogs 用于查询访问日志下载地址，仅支持 30 天以内的境内、境外访问日志下载链接查询。
+        r"""DescribeCdnDomainLogs 用于查询访问日志下载地址，仅支持 30 天以内的境内、境外访问日志下载链接查询。
 
         :param request: Request instance for DescribeCdnDomainLogs.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDomainLogsRequest`
@@ -298,7 +298,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnIp(self, request):
-        """DescribeCdnIp 用于查询 CDN IP 归属。
+        r"""DescribeCdnIp 用于查询 CDN IP 归属。
         （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
 
         :param request: Request instance for DescribeCdnIp.
@@ -322,7 +322,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnOriginIp(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        r"""### <font color=red>**该接口已废弃** </font><br>
         本接口（DescribeCdnOriginIp）用于查询 CDN 回源节点的IP信息。（注：替换接口为DescribeIpStatus）
 
         :param request: Request instance for DescribeCdnOriginIp.
@@ -346,7 +346,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCertDomains(self, request):
-        """DescribeCertDomains 用于校验SSL证书并提取证书中包含的域名。
+        r"""DescribeCertDomains 用于校验SSL证书并提取证书中包含的域名。
 
         :param request: Request instance for DescribeCertDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsRequest`
@@ -369,7 +369,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDiagnoseReport(self, request):
-        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
 
         ### <font color=red>**该接口已废弃** </font><br>
         DescribeDiagnoseReport 用于获取指定报告id的内容。
@@ -395,7 +395,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDistrictIspData(self, request):
-        """查询指定域名的区域、运营商明细数据
+        r"""查询指定域名的区域、运营商明细数据
         注意事项：接口尚未全面开放，未在内测名单中的账号不支持调用
 
         :param request: Request instance for DescribeDistrictIspData.
@@ -419,7 +419,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
+        r"""DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsRequest`
@@ -442,7 +442,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDomainsConfig(self, request):
-        """DescribeDomainsConfig 用于查询内容分发网络加速域名（含境内、境外）的所有配置信息。
+        r"""DescribeDomainsConfig 用于查询内容分发网络加速域名（含境内、境外）的所有配置信息。
 
         :param request: Request instance for DescribeDomainsConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsConfigRequest`
@@ -465,7 +465,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeEdgePackTaskStatus(self, request):
-        """DescribeEdgePackTaskStatus 用于查询动态打包任务状态列表
+        r"""DescribeEdgePackTaskStatus 用于查询动态打包任务状态列表
 
         :param request: Request instance for DescribeEdgePackTaskStatus.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeEdgePackTaskStatusRequest`
@@ -488,7 +488,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeHttpsPackages(self, request):
-        """DescribeHttpsPackages 用于查询 CDN HTTPS请求包详情。
+        r"""DescribeHttpsPackages 用于查询 CDN HTTPS请求包详情。
 
         :param request: Request instance for DescribeHttpsPackages.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeHttpsPackagesRequest`
@@ -511,7 +511,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeImageConfig(self, request):
-        """DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
+        r"""DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
 
         :param request: Request instance for DescribeImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeImageConfigRequest`
@@ -534,7 +534,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeIpStatus(self, request):
-        """DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息并且数据会存在一定延迟。
+        r"""DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息并且数据会存在一定延迟。
 
         >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41954"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 
@@ -559,7 +559,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeIpVisit(self, request):
-        """DescribeIpVisit 用于查询 5 分钟活跃用户数，及日活跃用户数明细
+        r"""DescribeIpVisit 用于查询 5 分钟活跃用户数，及日活跃用户数明细
 
         + 5 分钟活跃用户数：根据日志中客户端 IP，5 分钟粒度去重统计
         + 日活跃用户数：根据日志中客户端 IP，按天粒度去重统计
@@ -585,7 +585,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeMapInfo(self, request):
-        """DescribeMapInfo 用于查询省份对应的 ID，运营商对应的 ID 信息。
+        r"""DescribeMapInfo 用于查询省份对应的 ID，运营商对应的 ID 信息。
 
         :param request: Request instance for DescribeMapInfo.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeMapInfoRequest`
@@ -608,7 +608,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeOriginData(self, request):
-        """DescribeOriginData 用于查询 CDN 实时回源监控数据，支持以下指标查询：
+        r"""DescribeOriginData 用于查询 CDN 实时回源监控数据，支持以下指标查询：
 
         + 回源流量（单位为 byte）
         + 回源带宽（单位为 bps）
@@ -641,7 +641,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePayType(self, request):
-        """DescribePayType 用于查询用户的计费类型，计费周期等信息。
+        r"""DescribePayType 用于查询用户的计费类型，计费周期等信息。
 
         :param request: Request instance for DescribePayType.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePayTypeRequest`
@@ -664,7 +664,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePurgeQuota(self, request):
-        """DescribePurgeQuota 用于查询账户刷新配额和每日可用量。
+        r"""DescribePurgeQuota 用于查询账户刷新配额和每日可用量。
 
         :param request: Request instance for DescribePurgeQuota.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeQuotaRequest`
@@ -687,7 +687,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
+        r"""DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
 
         :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksRequest`
@@ -710,7 +710,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePushQuota(self, request):
-        """DescribePushQuota  用于查询预热配额和每日可用量。
+        r"""DescribePushQuota  用于查询预热配额和每日可用量。
 
         :param request: Request instance for DescribePushQuota.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushQuotaRequest`
@@ -733,7 +733,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePushTasks(self, request):
-        """DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
+        r"""DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
 
         :param request: Request instance for DescribePushTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`
@@ -756,7 +756,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeReportData(self, request):
-        """DescribeReportData 用于查询域名/项目维度的日/周/月报表数据。
+        r"""DescribeReportData 用于查询域名/项目维度的日/周/月报表数据。
 
         :param request: Request instance for DescribeReportData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeReportDataRequest`
@@ -779,7 +779,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeTopData(self, request):
-        """DescribeTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
+        r"""DescribeTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
         + 依据总流量、总请求数对访问 IP 排序，从大至小返回 TOP 100 IP
         + 依据总流量、总请求数对访问 Refer 排序，从大至小返回 TOP 100 Refer
@@ -811,7 +811,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeTrafficPackages(self, request):
-        """DescribeTrafficPackages 用于查询 CDN 流量包详情。
+        r"""DescribeTrafficPackages 用于查询 CDN 流量包详情。
 
         :param request: Request instance for DescribeTrafficPackages.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesRequest`
@@ -834,7 +834,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeUrlViolations(self, request):
-        """DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
+        r"""DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
         对应内容分发网络控制台【内容合规】页面。
 
         :param request: Request instance for DescribeUrlViolations.
@@ -858,7 +858,7 @@ class CdnClient(AbstractClient):
 
 
     def DisableCaches(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        r"""### <font color=red>**该接口已废弃** </font><br>
         DisableCaches 用于禁用 CDN 上指定 URL 的访问，禁用完成后，中国境内访问会直接返回 403。
 
         :param request: Request instance for DisableCaches.
@@ -882,7 +882,7 @@ class CdnClient(AbstractClient):
 
 
     def DisableClsLogTopic(self, request):
-        """DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约为 5~15 分钟。
+        r"""DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约为 5~15 分钟。
 
         :param request: Request instance for DisableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicRequest`
@@ -905,7 +905,7 @@ class CdnClient(AbstractClient):
 
 
     def DuplicateDomainConfig(self, request):
-        """拷贝参考域名的配置至新域名。暂不支持自有证书以及定制化配置
+        r"""拷贝参考域名的配置至新域名。暂不支持自有证书以及定制化配置
 
         :param request: Request instance for DuplicateDomainConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DuplicateDomainConfigRequest`
@@ -928,7 +928,7 @@ class CdnClient(AbstractClient):
 
 
     def EnableCaches(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        r"""### <font color=red>**该接口已废弃** </font><br>
         EnableCaches 用于解禁手工封禁的 URL，解禁成功后，全网生效时间约 5~10 分钟。
 
         :param request: Request instance for EnableCaches.
@@ -952,7 +952,7 @@ class CdnClient(AbstractClient):
 
 
     def EnableClsLogTopic(self, request):
-        """EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约为 5~15 分钟。
+        r"""EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约为 5~15 分钟。
 
         :param request: Request instance for EnableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicRequest`
@@ -975,7 +975,7 @@ class CdnClient(AbstractClient):
 
 
     def GetDisableRecords(self, request):
-        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
 
         ### <font color=red>**该接口已废弃** </font><br>
         GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。
@@ -1001,7 +1001,7 @@ class CdnClient(AbstractClient):
 
 
     def ListClsLogTopics(self, request):
-        """ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
+        r"""ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
 
         :param request: Request instance for ListClsLogTopics.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsLogTopicsRequest`
@@ -1024,7 +1024,7 @@ class CdnClient(AbstractClient):
 
 
     def ListClsTopicDomains(self, request):
-        """ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
+        r"""ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
 
         :param request: Request instance for ListClsTopicDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsRequest`
@@ -1047,7 +1047,7 @@ class CdnClient(AbstractClient):
 
 
     def ListDiagnoseReport(self, request):
-        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
 
         ### <font color=red>**该接口已废弃** </font><br>
         ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
@@ -1073,7 +1073,7 @@ class CdnClient(AbstractClient):
 
 
     def ListTopClsLogData(self, request):
-        """通过CLS日志计算Top信息。支持近7天的日志数据。
+        r"""通过CLS日志计算Top信息。支持近7天的日志数据。
 
         :param request: Request instance for ListTopClsLogData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopClsLogDataRequest`
@@ -1096,7 +1096,7 @@ class CdnClient(AbstractClient):
 
 
     def ListTopData(self, request):
-        """ListTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
+        r"""ListTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
         + 依据总流量、总请求数对访问 URL 排序，从大至小返回 TOP 1000 URL
         + 依据总流量、总请求数对客户端省份排序，从大至小返回省份列表
@@ -1127,7 +1127,7 @@ class CdnClient(AbstractClient):
 
 
     def ManageClsTopicDomains(self, request):
-        """ManageClsTopicDomains 用于管理某日志主题下绑定的域名列表。
+        r"""ManageClsTopicDomains 用于管理某日志主题下绑定的域名列表。
 
         :param request: Request instance for ManageClsTopicDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ManageClsTopicDomainsRequest`
@@ -1150,7 +1150,7 @@ class CdnClient(AbstractClient):
 
 
     def ModifyDomainConfig(self, request):
-        """ModifyDomainConfig 用于修改内容分发网络加速域名配置信息
+        r"""ModifyDomainConfig 用于修改内容分发网络加速域名配置信息
         注意：
         Route 字段，使用点分隔，最后一段称为叶子节点，非叶子节点配置保持不变；
         Value 字段，使用 json 进行序列化，其中固定 update 作为 key，配置路径值参考 https://cloud.tencent.com/document/product/228/41116 接口各配置项复杂类型，为配置路径对应复杂类型下的节点。
@@ -1177,7 +1177,7 @@ class CdnClient(AbstractClient):
 
 
     def ModifyPurgeFetchTaskStatus(self, request):
-        """ModifyPurgeFetchTaskStatus 用于上报定时刷新预热任务执行状态
+        r"""ModifyPurgeFetchTaskStatus 用于上报定时刷新预热任务执行状态
 
         :param request: Request instance for ModifyPurgeFetchTaskStatus.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ModifyPurgeFetchTaskStatusRequest`
@@ -1200,7 +1200,7 @@ class CdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
+        r"""PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
         默认情况下境内、境外加速区域每日目录刷新额度为各 100 条，每次最多可提交 500 条。
 
         :param request: Request instance for PurgePathCache.
@@ -1224,7 +1224,7 @@ class CdnClient(AbstractClient):
 
 
     def PurgeUrlsCache(self, request):
-        """PurgeUrlsCache 用于批量提交 URL 进行刷新，根据 URL 中域名的当前加速区域进行对应区域的刷新。
+        r"""PurgeUrlsCache 用于批量提交 URL 进行刷新，根据 URL 中域名的当前加速区域进行对应区域的刷新。
         默认情况下境内、境外加速区域每日 URL 刷新额度各为 10000 条，每次最多可提交 1000 条。
 
         :param request: Request instance for PurgeUrlsCache.
@@ -1248,7 +1248,7 @@ class CdnClient(AbstractClient):
 
 
     def PushUrlsCache(self, request):
-        """PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，支持指定加速区域预热。
+        r"""PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，支持指定加速区域预热。
         默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 500 条 URL，每次提交的数量会消耗配额总数。如：1次提交500条URL全球预热，此时境内、境外预热 URL 各剩余 500条。注意：中国境外区域预热，资源默认加载至中国境外边缘节点。
 
         :param request: Request instance for PushUrlsCache.
@@ -1272,7 +1272,7 @@ class CdnClient(AbstractClient):
 
 
     def SearchClsLog(self, request):
-        """SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
+        r"""SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
 
         :param request: Request instance for SearchClsLog.
         :type request: :class:`tencentcloud.cdn.v20180606.models.SearchClsLogRequest`
@@ -1295,7 +1295,7 @@ class CdnClient(AbstractClient):
 
 
     def StartCdnDomain(self, request):
-        """StartCdnDomain 用于启用已停用域名的加速服务
+        r"""StartCdnDomain 用于启用已停用域名的加速服务
 
         :param request: Request instance for StartCdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.StartCdnDomainRequest`
@@ -1318,7 +1318,7 @@ class CdnClient(AbstractClient):
 
 
     def StopCdnDomain(self, request):
-        """StopCdnDomain 用于停止域名的加速服务。
+        r"""StopCdnDomain 用于停止域名的加速服务。
         注意：停止加速服务后，访问至加速节点的请求将会直接返回 404。为避免对您的业务造成影响，请在停止加速服务前将解析切走。
 
         :param request: Request instance for StopCdnDomain.
@@ -1342,7 +1342,7 @@ class CdnClient(AbstractClient):
 
 
     def UpdateDomainConfig(self, request):
-        """UpdateDomainConfig 用于修改内容分发网络加速域名配置信息。
+        r"""UpdateDomainConfig 用于修改内容分发网络加速域名配置信息。
         注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值，建议通过查询接口获取配置属性后，直接修改后传递给本接口；如果仅修改单独配置项只传对应配置参数即可。
         操作审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到操作审计。
 
@@ -1367,7 +1367,7 @@ class CdnClient(AbstractClient):
 
 
     def UpdateImageConfig(self, request):
-        """UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG、 Guetzli 和 Avif。
+        r"""UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG、 Guetzli 和 Avif。
 
         :param request: Request instance for UpdateImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateImageConfigRequest`
@@ -1390,7 +1390,7 @@ class CdnClient(AbstractClient):
 
 
     def UpdatePayType(self, request):
-        """本接口(UpdatePayType)用于修改账号计费类型，暂不支持月结用户或子账号修改。
+        r"""本接口(UpdatePayType)用于修改账号计费类型，暂不支持月结用户或子账号修改。
 
         :param request: Request instance for UpdatePayType.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdatePayTypeRequest`
@@ -1413,7 +1413,7 @@ class CdnClient(AbstractClient):
 
 
     def VerifyDomainRecord(self, request):
-        """VerifyDomainRecord 用于验证域名解析值。
+        r"""VerifyDomainRecord 用于验证域名解析值。
         验证域名解析记录值前，您需要通过 [CreateVerifyRecord](https://cloud.tencent.com/document/product/228/48118) 生成校验解析值，验证通过后，24小时有效。
         具体流程可参考：[使用API接口进行域名归属校验](https://cloud.tencent.com/document/product/228/61702#.E6.96.B9.E6.B3.95.E4.B8.89.EF.BC.9Aapi-.E6.8E.A5.E5.8F.A3.E6.93.8D.E4.BD.9C)
 

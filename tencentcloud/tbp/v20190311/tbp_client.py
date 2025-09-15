@@ -27,7 +27,7 @@ class TbpClient(AbstractClient):
 
 
     def CreateBot(self, request):
-        """创建机器人
+        r"""创建机器人
 
         :param request: Request instance for CreateBot.
         :type request: :class:`tencentcloud.tbp.v20190311.models.CreateBotRequest`
@@ -50,7 +50,7 @@ class TbpClient(AbstractClient):
 
 
     def Reset(self, request):
-        """对当前机器人的会话状态进行复位
+        r"""对当前机器人的会话状态进行复位
 
         :param request: Request instance for Reset.
         :type request: :class:`tencentcloud.tbp.v20190311.models.ResetRequest`
@@ -73,7 +73,7 @@ class TbpClient(AbstractClient):
 
 
     def TextProcess(self, request):
-        """接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+        r"""接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
 
         :param request: Request instance for TextProcess.
         :type request: :class:`tencentcloud.tbp.v20190311.models.TextProcessRequest`
@@ -96,7 +96,7 @@ class TbpClient(AbstractClient):
 
 
     def TextReset(self, request):
-        """会话重置接口。已废弃，推荐使用最新版TextReset接口。
+        r"""会话重置接口。已废弃，推荐使用最新版TextReset接口。
 
         :param request: Request instance for TextReset.
         :type request: :class:`tencentcloud.tbp.v20190311.models.TextResetRequest`

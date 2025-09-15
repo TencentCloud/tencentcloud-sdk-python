@@ -27,7 +27,7 @@ class VodClient(AbstractClient):
 
 
     def CreateIncrementalMigrationStrategy(self, request):
-        """创建增量迁移策略。
+        r"""创建增量迁移策略。
 
         :param request: Request instance for CreateIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.CreateIncrementalMigrationStrategyRequest`
@@ -50,7 +50,7 @@ class VodClient(AbstractClient):
 
 
     def CreateStorage(self, request):
-        """该接口用于为专业版应用创建存储桶。
+        r"""该接口用于为专业版应用创建存储桶。
 
         注：
         - 本接口仅用于专业版应用；
@@ -78,7 +78,7 @@ class VodClient(AbstractClient):
 
 
     def CreateStorageCredentials(self, request):
-        """用于按指定策略，生成专业版应用的临时访问凭证，比如生成用于客户端上传的临时凭证。
+        r"""用于按指定策略，生成专业版应用的临时访问凭证，比如生成用于客户端上传的临时凭证。
 
         :param request: Request instance for CreateStorageCredentials.
         :type request: :class:`tencentcloud.vod.v20240718.models.CreateStorageCredentialsRequest`
@@ -101,7 +101,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteIncrementalMigrationStrategy(self, request):
-        """删除增量迁移策略。
+        r"""删除增量迁移策略。
 
         :param request: Request instance for DeleteIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.DeleteIncrementalMigrationStrategyRequest`
@@ -124,7 +124,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeIncrementalMigrationStrategyInfos(self, request):
-        """查询增量迁移策略信息。
+        r"""查询增量迁移策略信息。
 
         :param request: Request instance for DescribeIncrementalMigrationStrategyInfos.
         :type request: :class:`tencentcloud.vod.v20240718.models.DescribeIncrementalMigrationStrategyInfosRequest`
@@ -147,7 +147,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeStorage(self, request):
-        """该接口用于查询专业版应用中的存储桶信息，同时支持分页查询。
+        r"""该接口用于查询专业版应用中的存储桶信息，同时支持分页查询。
 
         注：
         - 本接口仅用于专业版应用。
@@ -173,7 +173,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyIncrementalMigrationStrategy(self, request):
-        """创建增量迁移策略。
+        r"""创建增量迁移策略。
 
         :param request: Request instance for ModifyIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.ModifyIncrementalMigrationStrategyRequest`

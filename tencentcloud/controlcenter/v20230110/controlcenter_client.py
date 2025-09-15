@@ -27,7 +27,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def BatchApplyAccountBaselines(self, request):
-        """批量对存量账号应用基线
+        r"""批量对存量账号应用基线
 
         :param request: Request instance for BatchApplyAccountBaselines.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.BatchApplyAccountBaselinesRequest`
@@ -50,7 +50,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def GetAccountFactoryBaseline(self, request):
-        """获取用户基线配置数据
+        r"""获取用户基线配置数据
 
         :param request: Request instance for GetAccountFactoryBaseline.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.GetAccountFactoryBaselineRequest`
@@ -73,7 +73,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def ListAccountFactoryBaselineItems(self, request):
-        """获取账号工厂系统基线项
+        r"""获取账号工厂系统基线项
 
         :param request: Request instance for ListAccountFactoryBaselineItems.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsRequest`
@@ -96,7 +96,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def ListDeployStepTasks(self, request):
-        """获取某个基线项历史应用信息
+        r"""获取某个基线项历史应用信息
 
         :param request: Request instance for ListDeployStepTasks.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListDeployStepTasksRequest`
@@ -119,7 +119,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def UpdateAccountFactoryBaseline(self, request):
-        """更新用户当前基线项配置，基线配置会覆盖更新为当前配置。新增基线项时需要将新增的基线配置加到现有配置，删除基线项时需要将删除的基线配置从现有配置移除，然后保存最新基线配置。
+        r"""更新用户当前基线项配置，基线配置会覆盖更新为当前配置。新增基线项时需要将新增的基线配置加到现有配置，删除基线项时需要将删除的基线配置从现有配置移除，然后保存最新基线配置。
 
         :param request: Request instance for UpdateAccountFactoryBaseline.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.UpdateAccountFactoryBaselineRequest`

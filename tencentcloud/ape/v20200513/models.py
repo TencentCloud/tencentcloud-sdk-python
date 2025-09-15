@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AuthInfo(AbstractModel):
-    """授权人信息
+    r"""授权人信息
 
     """
 
@@ -44,7 +44,7 @@ class AuthInfo(AbstractModel):
 
     @property
     def Id(self):
-        """主键
+        r"""主键
         :rtype: str
         """
         return self._Id
@@ -55,7 +55,7 @@ class AuthInfo(AbstractModel):
 
     @property
     def Name(self):
-        """授权人名称
+        r"""授权人名称
         :rtype: str
         """
         return self._Name
@@ -66,7 +66,7 @@ class AuthInfo(AbstractModel):
 
     @property
     def Code(self):
-        """身份证号/社会信用代码
+        r"""身份证号/社会信用代码
         :rtype: str
         """
         return self._Code
@@ -77,7 +77,7 @@ class AuthInfo(AbstractModel):
 
     @property
     def Type(self):
-        """授权人类型
+        r"""授权人类型
         :rtype: int
         """
         return self._Type
@@ -88,7 +88,7 @@ class AuthInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -115,7 +115,7 @@ class AuthInfo(AbstractModel):
 
 
 class BatchDescribeOrderCertificateRequest(AbstractModel):
-    """BatchDescribeOrderCertificate请求参数结构体
+    r"""BatchDescribeOrderCertificate请求参数结构体
 
     """
 
@@ -128,7 +128,7 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
 
     @property
     def OrderIds(self):
-        """要下载授权书的订单id
+        r"""要下载授权书的订单id
         :rtype: list of str
         """
         return self._OrderIds
@@ -151,7 +151,7 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
 
 
 class BatchDescribeOrderCertificateResponse(AbstractModel):
-    """BatchDescribeOrderCertificate返回参数结构体
+    r"""BatchDescribeOrderCertificate返回参数结构体
 
     """
 
@@ -167,7 +167,7 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
 
     @property
     def CertificateUrls(self):
-        """授权书的下载地址
+        r"""授权书的下载地址
         :rtype: list of str
         """
         return self._CertificateUrls
@@ -178,7 +178,7 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -194,7 +194,7 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
 
 
 class BatchDescribeOrderImageRequest(AbstractModel):
-    """BatchDescribeOrderImage请求参数结构体
+    r"""BatchDescribeOrderImage请求参数结构体
 
     """
 
@@ -207,7 +207,7 @@ class BatchDescribeOrderImageRequest(AbstractModel):
 
     @property
     def OrderIds(self):
-        """要下载图片的订单id
+        r"""要下载图片的订单id
         :rtype: list of str
         """
         return self._OrderIds
@@ -230,7 +230,7 @@ class BatchDescribeOrderImageRequest(AbstractModel):
 
 
 class BatchDescribeOrderImageResponse(AbstractModel):
-    """BatchDescribeOrderImage返回参数结构体
+    r"""BatchDescribeOrderImage返回参数结构体
 
     """
 
@@ -246,7 +246,7 @@ class BatchDescribeOrderImageResponse(AbstractModel):
 
     @property
     def ImageUrls(self):
-        """图片的下载地址
+        r"""图片的下载地址
         :rtype: list of str
         """
         return self._ImageUrls
@@ -257,7 +257,7 @@ class BatchDescribeOrderImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -273,7 +273,7 @@ class BatchDescribeOrderImageResponse(AbstractModel):
 
 
 class CreateOrderAndDownloadsRequest(AbstractModel):
-    """CreateOrderAndDownloads请求参数结构体
+    r"""CreateOrderAndDownloads请求参数结构体
 
     """
 
@@ -286,7 +286,7 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
 
     @property
     def ImageInfos(self):
-        """ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
+        r"""ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
         :rtype: list of ImageInfo
         """
         return self._ImageInfos
@@ -314,7 +314,7 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
 
 
 class CreateOrderAndDownloadsResponse(AbstractModel):
-    """CreateOrderAndDownloads返回参数结构体
+    r"""CreateOrderAndDownloads返回参数结构体
 
     """
 
@@ -334,7 +334,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
 
     @property
     def DownloadInfos(self):
-        """成功核销后可以获取图片基本信息和原图地址
+        r"""成功核销后可以获取图片基本信息和原图地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DownloadInfo
         """
@@ -346,7 +346,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """可下载图片数量
+        r"""可下载图片数量
         :rtype: int
         """
         return self._TotalCount
@@ -357,7 +357,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -379,7 +379,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
 
 
 class CreateOrderAndPayRequest(AbstractModel):
-    """CreateOrderAndPay请求参数结构体
+    r"""CreateOrderAndPay请求参数结构体
 
     """
 
@@ -398,7 +398,7 @@ class CreateOrderAndPayRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片ID
+        r"""图片ID
         :rtype: int
         """
         return self._ImageId
@@ -409,7 +409,7 @@ class CreateOrderAndPayRequest(AbstractModel):
 
     @property
     def AuthUserId(self):
-        """授权人ID
+        r"""授权人ID
         :rtype: str
         """
         return self._AuthUserId
@@ -420,7 +420,7 @@ class CreateOrderAndPayRequest(AbstractModel):
 
     @property
     def MarshalId(self):
-        """售卖组合id
+        r"""售卖组合id
         :rtype: int
         """
         return self._MarshalId
@@ -445,7 +445,7 @@ class CreateOrderAndPayRequest(AbstractModel):
 
 
 class CreateOrderAndPayResponse(AbstractModel):
-    """CreateOrderAndPay返回参数结构体
+    r"""CreateOrderAndPay返回参数结构体
 
     """
 
@@ -461,7 +461,7 @@ class CreateOrderAndPayResponse(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单ID
+        r"""订单ID
         :rtype: str
         """
         return self._OrderId
@@ -472,7 +472,7 @@ class CreateOrderAndPayResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -488,7 +488,7 @@ class CreateOrderAndPayResponse(AbstractModel):
 
 
 class DescribeAuthUsersRequest(AbstractModel):
-    """DescribeAuthUsers请求参数结构体
+    r"""DescribeAuthUsers请求参数结构体
 
     """
 
@@ -504,7 +504,7 @@ class DescribeAuthUsersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -515,7 +515,7 @@ class DescribeAuthUsersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """页偏移量
+        r"""页偏移量
         :rtype: int
         """
         return self._Offset
@@ -539,7 +539,7 @@ class DescribeAuthUsersRequest(AbstractModel):
 
 
 class DescribeAuthUsersResponse(AbstractModel):
-    """DescribeAuthUsers返回参数结构体
+    r"""DescribeAuthUsers返回参数结构体
 
     """
 
@@ -562,7 +562,7 @@ class DescribeAuthUsersResponse(AbstractModel):
 
     @property
     def Users(self):
-        """授权人信息数组
+        r"""授权人信息数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthInfo
         """
@@ -574,7 +574,7 @@ class DescribeAuthUsersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总记录数
+        r"""总记录数
         :rtype: int
         """
         return self._TotalCount
@@ -585,7 +585,7 @@ class DescribeAuthUsersResponse(AbstractModel):
 
     @property
     def OldUser(self):
-        """是否是老策略用户
+        r"""是否是老策略用户
         :rtype: bool
         """
         return self._OldUser
@@ -596,7 +596,7 @@ class DescribeAuthUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -619,7 +619,7 @@ class DescribeAuthUsersResponse(AbstractModel):
 
 
 class DescribeDownloadInfosRequest(AbstractModel):
-    """DescribeDownloadInfos请求参数结构体
+    r"""DescribeDownloadInfos请求参数结构体
 
     """
 
@@ -644,7 +644,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """默认10
+        r"""默认10
         :rtype: int
         """
         return self._Limit
@@ -655,7 +655,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """默认0
+        r"""默认0
         :rtype: int
         """
         return self._Offset
@@ -666,7 +666,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """开始时间晚于指定时间
+        r"""开始时间晚于指定时间
         :rtype: str
         """
         return self._BeginTime
@@ -677,7 +677,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间早于指定时间
+        r"""结束时间早于指定时间
         :rtype: str
         """
         return self._EndTime
@@ -688,7 +688,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     @property
     def ImageIds(self):
-        """无效值，过滤结果为空
+        r"""无效值，过滤结果为空
         :rtype: list of int
         """
         return self._ImageIds
@@ -715,7 +715,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
 
 class DescribeDownloadInfosResponse(AbstractModel):
-    """DescribeDownloadInfos返回参数结构体
+    r"""DescribeDownloadInfos返回参数结构体
 
     """
 
@@ -735,7 +735,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
 
     @property
     def DownloadInfos(self):
-        """核销下载记录
+        r"""核销下载记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DownloadInfo
         """
@@ -747,7 +747,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总记录数量
+        r"""总记录数量
         :rtype: int
         """
         return self._TotalCount
@@ -758,7 +758,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -780,7 +780,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
 
 
 class DescribeImageRequest(AbstractModel):
-    """DescribeImage请求参数结构体
+    r"""DescribeImage请求参数结构体
 
     """
 
@@ -793,7 +793,7 @@ class DescribeImageRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片ID
+        r"""图片ID
         :rtype: int
         """
         return self._ImageId
@@ -816,7 +816,7 @@ class DescribeImageRequest(AbstractModel):
 
 
 class DescribeImageResponse(AbstractModel):
-    """DescribeImage返回参数结构体
+    r"""DescribeImage返回参数结构体
 
     """
 
@@ -871,7 +871,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片ID
+        r"""图片ID
         :rtype: int
         """
         return self._ImageId
@@ -882,7 +882,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Title(self):
-        """图片标题
+        r"""图片标题
         :rtype: str
         """
         return self._Title
@@ -893,7 +893,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Description(self):
-        """图片描述
+        r"""图片描述
         :rtype: str
         """
         return self._Description
@@ -904,7 +904,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """图片预览链接
+        r"""图片预览链接
         :rtype: str
         """
         return self._PreviewUrl
@@ -915,7 +915,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def ThumbUrl(self):
-        """图片缩略图
+        r"""图片缩略图
         :rtype: str
         """
         return self._ThumbUrl
@@ -926,7 +926,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Vendor(self):
-        """图片供应商
+        r"""图片供应商
         :rtype: str
         """
         return self._Vendor
@@ -937,7 +937,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Marshals(self):
-        """图片售卖组合信息
+        r"""图片售卖组合信息
         :rtype: list of ImageMarshal
         """
         return self._Marshals
@@ -948,7 +948,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Width(self):
-        """宽
+        r"""宽
         :rtype: int
         """
         return self._Width
@@ -959,7 +959,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Height(self):
-        """高
+        r"""高
         :rtype: int
         """
         return self._Height
@@ -970,7 +970,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def ImageFormat(self):
-        """图片格式 jpg/eps/psd/...
+        r"""图片格式 jpg/eps/psd/...
         :rtype: str
         """
         return self._ImageFormat
@@ -981,7 +981,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def ImageSenseType(self):
-        """图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
+        r"""图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
         :rtype: str
         """
         return self._ImageSenseType
@@ -992,7 +992,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Keywords(self):
-        """关键词，多关键词用空格分隔
+        r"""关键词，多关键词用空格分隔
         :rtype: str
         """
         return self._Keywords
@@ -1003,7 +1003,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def LayeredGalleryId(self):
-        """分层图库id
+        r"""分层图库id
         :rtype: int
         """
         return self._LayeredGalleryId
@@ -1014,7 +1014,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def Orientation(self):
-        """构图方式：horizontal:横图、vertical:竖图、square:方图
+        r"""构图方式：horizontal:横图、vertical:竖图、square:方图
         :rtype: str
         """
         return self._Orientation
@@ -1025,7 +1025,7 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1059,7 +1059,7 @@ class DescribeImageResponse(AbstractModel):
 
 
 class DescribeImagesRequest(AbstractModel):
-    """DescribeImages请求参数结构体
+    r"""DescribeImages请求参数结构体
 
     """
 
@@ -1087,7 +1087,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """页偏移量
+        r"""页偏移量
         :rtype: int
         """
         return self._Offset
@@ -1098,7 +1098,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """页大小
+        r"""页大小
         :rtype: int
         """
         return self._Limit
@@ -1109,7 +1109,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索关键字
+        r"""搜索关键字
         :rtype: str
         """
         return self._Keyword
@@ -1120,7 +1120,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Orientation(self):
-        """构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
+        r"""构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
         :rtype: str
         """
         return self._Orientation
@@ -1131,7 +1131,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def ImageSenseType(self):
-        """图片类型，可选以下值：照片、插画
+        r"""图片类型，可选以下值：照片、插画
         :rtype: str
         """
         return self._ImageSenseType
@@ -1142,7 +1142,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def LayeredGalleryIds(self):
-        """分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
+        r"""分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
         :rtype: list of int
         """
         return self._LayeredGalleryIds
@@ -1170,7 +1170,7 @@ class DescribeImagesRequest(AbstractModel):
 
 
 class DescribeImagesResponse(AbstractModel):
-    """DescribeImages返回参数结构体
+    r"""DescribeImages返回参数结构体
 
     """
 
@@ -1198,7 +1198,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """页偏移量
+        r"""页偏移量
         :rtype: int
         """
         return self._Offset
@@ -1209,7 +1209,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """页大小
+        r"""页大小
         :rtype: int
         """
         return self._Limit
@@ -1220,7 +1220,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._Total
@@ -1231,7 +1231,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def HaveMore(self):
-        """是否有下一页
+        r"""是否有下一页
         :rtype: bool
         """
         return self._HaveMore
@@ -1242,7 +1242,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """图片信息数组
+        r"""图片信息数组
         :rtype: list of ImageItem
         """
         return self._Items
@@ -1253,7 +1253,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1278,7 +1278,7 @@ class DescribeImagesResponse(AbstractModel):
 
 
 class DownloadInfo(AbstractModel):
-    """图片下载信息
+    r"""图片下载信息
 
     """
 
@@ -1315,7 +1315,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def ImageInfo(self):
-        """图片基础信息
+        r"""图片基础信息
         :rtype: :class:`tencentcloud.ape.v20200513.models.ImageInfo`
         """
         return self._ImageInfo
@@ -1326,7 +1326,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片原图URL
+        r"""图片原图URL
         :rtype: str
         """
         return self._ImageUrl
@@ -1337,7 +1337,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def ImageThumbUrl(self):
-        """图片缩略图URL
+        r"""图片缩略图URL
         :rtype: str
         """
         return self._ImageThumbUrl
@@ -1348,7 +1348,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def OrderId(self):
-        """订单Id
+        r"""订单Id
         :rtype: str
         """
         return self._OrderId
@@ -1359,7 +1359,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def OrderCreateTime(self):
-        """订单创建时间
+        r"""订单创建时间
         :rtype: str
         """
         return self._OrderCreateTime
@@ -1370,7 +1370,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def DownloadId(self):
-        """下载Id
+        r"""下载Id
         :rtype: str
         """
         return self._DownloadId
@@ -1381,7 +1381,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def DownloadTime(self):
-        """下载时间
+        r"""下载时间
         :rtype: str
         """
         return self._DownloadTime
@@ -1392,7 +1392,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def ConsumeType(self):
-        """图片购买类型，单张/会员
+        r"""图片购买类型，单张/会员
         :rtype: int
         """
         return self._ConsumeType
@@ -1403,7 +1403,7 @@ class DownloadInfo(AbstractModel):
 
     @property
     def FirstDownload(self):
-        """是否首次下载
+        r"""是否首次下载
         :rtype: bool
         """
         return self._FirstDownload
@@ -1436,7 +1436,7 @@ class DownloadInfo(AbstractModel):
 
 
 class ImageInfo(AbstractModel):
-    """图片基础信息
+    r"""图片基础信息
 
     """
 
@@ -1468,7 +1468,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片Id
+        r"""图片Id
         :rtype: int
         """
         return self._ImageId
@@ -1479,7 +1479,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def LicenseScopeId(self):
-        """授权场景Id
+        r"""授权场景Id
         :rtype: int
         """
         return self._LicenseScopeId
@@ -1490,7 +1490,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def DimensionsNameId(self):
-        """尺寸名称Id
+        r"""尺寸名称Id
         :rtype: int
         """
         return self._DimensionsNameId
@@ -1501,7 +1501,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """平台用户标识
+        r"""平台用户标识
         :rtype: str
         """
         return self._UserId
@@ -1512,7 +1512,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def DownloadPrice(self):
-        """平台用户下载图片购买的价格(单位:分)
+        r"""平台用户下载图片购买的价格(单位:分)
         :rtype: int
         """
         return self._DownloadPrice
@@ -1523,7 +1523,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def DownloadType(self):
-        """下载类型。匹配集合中的任意元素：
+        r"""下载类型。匹配集合中的任意元素：
 <li>Single: 单张购买下载</li>
 <li>BasicEnterpriseMember: 企业基础会员下载</li>
 <li>AdvancedEnterpriseMember: 企业高级会员下载</li>
@@ -1555,7 +1555,7 @@ class ImageInfo(AbstractModel):
 
 
 class ImageItem(AbstractModel):
-    """图片信息条目
+    r"""图片信息条目
 
     """
 
@@ -1592,7 +1592,7 @@ class ImageItem(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片ID
+        r"""图片ID
         :rtype: int
         """
         return self._ImageId
@@ -1603,7 +1603,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Title(self):
-        """图片标题
+        r"""图片标题
         :rtype: str
         """
         return self._Title
@@ -1614,7 +1614,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Description(self):
-        """图片描述
+        r"""图片描述
         :rtype: str
         """
         return self._Description
@@ -1625,7 +1625,7 @@ class ImageItem(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """图片预览链接
+        r"""图片预览链接
         :rtype: str
         """
         return self._PreviewUrl
@@ -1636,7 +1636,7 @@ class ImageItem(AbstractModel):
 
     @property
     def ThumbUrl(self):
-        """图片缩略图
+        r"""图片缩略图
         :rtype: str
         """
         return self._ThumbUrl
@@ -1647,7 +1647,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Vendor(self):
-        """图片供应商
+        r"""图片供应商
         :rtype: str
         """
         return self._Vendor
@@ -1658,7 +1658,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Keywords(self):
-        """图片关键词
+        r"""图片关键词
         :rtype: str
         """
         return self._Keywords
@@ -1669,7 +1669,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Width(self):
-        """宽
+        r"""宽
         :rtype: int
         """
         return self._Width
@@ -1680,7 +1680,7 @@ class ImageItem(AbstractModel):
 
     @property
     def Height(self):
-        """高
+        r"""高
         :rtype: int
         """
         return self._Height
@@ -1711,7 +1711,7 @@ class ImageItem(AbstractModel):
 
 
 class ImageMarshal(AbstractModel):
-    """图片售卖组合信息
+    r"""图片售卖组合信息
 
     """
 
@@ -1754,7 +1754,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def MarshalId(self):
-        """售卖组合唯一标识
+        r"""售卖组合唯一标识
         :rtype: int
         """
         return self._MarshalId
@@ -1765,7 +1765,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def Height(self):
-        """图片高度
+        r"""图片高度
         :rtype: int
         """
         return self._Height
@@ -1776,7 +1776,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def Width(self):
-        """图片宽度
+        r"""图片宽度
         :rtype: int
         """
         return self._Width
@@ -1787,7 +1787,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def Size(self):
-        """图片大小
+        r"""图片大小
         :rtype: int
         """
         return self._Size
@@ -1798,7 +1798,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def Format(self):
-        """图片格式
+        r"""图片格式
         :rtype: str
         """
         return self._Format
@@ -1809,7 +1809,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def Price(self):
-        """图片价格(单位:分)
+        r"""图片价格(单位:分)
         :rtype: int
         """
         return self._Price
@@ -1820,7 +1820,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def LicenseScope(self):
-        """授权范围
+        r"""授权范围
         :rtype: str
         """
         return self._LicenseScope
@@ -1831,7 +1831,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def IsVip(self):
-        """是否支持VIP购买
+        r"""是否支持VIP购买
         :rtype: bool
         """
         return self._IsVip
@@ -1842,7 +1842,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def LicenseScopeId(self):
-        """授权范围id
+        r"""授权范围id
         :rtype: int
         """
         return self._LicenseScopeId
@@ -1853,7 +1853,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def DimensionsName(self):
-        """尺寸
+        r"""尺寸
         :rtype: str
         """
         return self._DimensionsName
@@ -1864,7 +1864,7 @@ class ImageMarshal(AbstractModel):
 
     @property
     def DimensionsNameId(self):
-        """尺寸id
+        r"""尺寸id
         :rtype: int
         """
         return self._DimensionsNameId

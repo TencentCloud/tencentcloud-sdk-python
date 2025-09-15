@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddressUnsubscribeConfigData(AbstractModel):
-    """地址级退订配置
+    r"""地址级退订配置
 
     """
 
@@ -38,7 +38,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def Address(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._Address
@@ -49,7 +49,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -60,7 +60,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def Status(self):
-        """0:关闭，1:开启
+        r"""0:关闭，1:开启
         :rtype: int
         """
         return self._Status
@@ -85,7 +85,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
 
 class Attachment(AbstractModel):
-    """附件结构，包含附件名和base64之后的附件内容。
+    r"""附件结构，包含附件名和base64之后的附件内容。
 
     """
 
@@ -104,7 +104,7 @@ class Attachment(AbstractModel):
 
     @property
     def FileName(self):
-        """附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
+        r"""附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
         :rtype: str
         """
         return self._FileName
@@ -115,7 +115,7 @@ class Attachment(AbstractModel):
 
     @property
     def Content(self):
-        """Base64之后的附件内容，您可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
+        r"""Base64之后的附件内容，您可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
         :rtype: str
         """
         return self._Content
@@ -126,7 +126,7 @@ class Attachment(AbstractModel):
 
     @property
     def FileURL(self):
-        """附件URL。未开放功能，请勿使用。
+        r"""附件URL。未开放功能，请勿使用。
         :rtype: str
         """
         return self._FileURL
@@ -151,7 +151,7 @@ class Attachment(AbstractModel):
 
 
 class BatchSendEmailRequest(AbstractModel):
-    """BatchSendEmail请求参数结构体
+    r"""BatchSendEmail请求参数结构体
 
     """
 
@@ -200,7 +200,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        """发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
+        r"""发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
         :rtype: str
@@ -213,7 +213,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID
+        r"""收件人列表ID
         :rtype: int
         """
         return self._ReceiverId
@@ -224,7 +224,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        """邮件主题
+        r"""邮件主题
         :rtype: str
         """
         return self._Subject
@@ -235,7 +235,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+        r"""任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
         :rtype: int
         """
         return self._TaskType
@@ -246,7 +246,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ReplyToAddresses(self):
-        """邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        r"""邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -257,7 +257,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Template(self):
-        """使用模板发送时，填写的模板相关参数
+        r"""使用模板发送时，填写的模板相关参数
 <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
@@ -269,7 +269,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Simple(self):
-        """已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+        r"""已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -280,7 +280,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Attachments(self):
-        """需要发送附件时，填写附件相关参数（暂未支持）
+        r"""需要发送附件时，填写附件相关参数（暂未支持）
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -291,7 +291,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def CycleParam(self):
-        """周期发送任务的必要参数
+        r"""周期发送任务的必要参数
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
         return self._CycleParam
@@ -302,7 +302,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def TimedParam(self):
-        """定时发送任务的必要参数
+        r"""定时发送任务的必要参数
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
         return self._TimedParam
@@ -313,7 +313,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Unsubscribe(self):
-        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :rtype: str
         """
         return self._Unsubscribe
@@ -324,7 +324,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ADLocation(self):
-        """是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        r"""是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
         :rtype: int
         """
         return self._ADLocation
@@ -371,7 +371,7 @@ class BatchSendEmailRequest(AbstractModel):
 
 
 class BatchSendEmailResponse(AbstractModel):
-    """BatchSendEmail返回参数结构体
+    r"""BatchSendEmail返回参数结构体
 
     """
 
@@ -387,7 +387,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """发送任务ID
+        r"""发送任务ID
         :rtype: int
         """
         return self._TaskId
@@ -398,7 +398,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -414,7 +414,7 @@ class BatchSendEmailResponse(AbstractModel):
 
 
 class BlackAddressDetail(AbstractModel):
-    """黑名单详情
+    r"""黑名单详情
 
     """
 
@@ -439,7 +439,7 @@ class BlackAddressDetail(AbstractModel):
 
     @property
     def Id(self):
-        """黑名单地址id
+        r"""黑名单地址id
         :rtype: int
         """
         return self._Id
@@ -450,7 +450,7 @@ class BlackAddressDetail(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱地址
+        r"""邮箱地址
         :rtype: str
         """
         return self._Email
@@ -461,7 +461,7 @@ class BlackAddressDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -472,7 +472,7 @@ class BlackAddressDetail(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """过期时间
+        r"""过期时间
         :rtype: str
         """
         return self._ExpireDate
@@ -483,7 +483,7 @@ class BlackAddressDetail(AbstractModel):
 
     @property
     def Status(self):
-        """黑名单状态，0:已过期，1:生效中
+        r"""黑名单状态，0:已过期，1:生效中
         :rtype: int
         """
         return self._Status
@@ -510,7 +510,7 @@ class BlackAddressDetail(AbstractModel):
 
 
 class BlackEmailAddress(AbstractModel):
-    """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间，以及被拉黑的理由
+    r"""邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间，以及被拉黑的理由
 
     """
 
@@ -529,7 +529,7 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def BounceTime(self):
-        """邮箱被拉黑时间
+        r"""邮箱被拉黑时间
         :rtype: str
         """
         return self._BounceTime
@@ -540,7 +540,7 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """被拉黑的邮箱地址
+        r"""被拉黑的邮箱地址
         :rtype: str
         """
         return self._EmailAddress
@@ -551,7 +551,7 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def IspDesc(self):
-        """被拉黑的理由
+        r"""被拉黑的理由
         :rtype: str
         """
         return self._IspDesc
@@ -576,7 +576,7 @@ class BlackEmailAddress(AbstractModel):
 
 
 class CreateAddressUnsubscribeConfigRequest(AbstractModel):
-    """CreateAddressUnsubscribeConfig请求参数结构体
+    r"""CreateAddressUnsubscribeConfig请求参数结构体
 
     """
 
@@ -595,7 +595,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._Address
@@ -606,7 +606,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -617,7 +617,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        """0:关闭，1:打开
+        r"""0:关闭，1:打开
         :rtype: int
         """
         return self._Status
@@ -642,7 +642,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class CreateAddressUnsubscribeConfigResponse(AbstractModel):
-    """CreateAddressUnsubscribeConfig返回参数结构体
+    r"""CreateAddressUnsubscribeConfig返回参数结构体
 
     """
 
@@ -655,7 +655,7 @@ class CreateAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -670,7 +670,7 @@ class CreateAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class CreateCustomBlacklistRequest(AbstractModel):
-    """CreateCustomBlacklist请求参数结构体
+    r"""CreateCustomBlacklist请求参数结构体
 
     """
 
@@ -686,7 +686,7 @@ class CreateCustomBlacklistRequest(AbstractModel):
 
     @property
     def Emails(self):
-        """添加到黑名单的邮件地址
+        r"""添加到黑名单的邮件地址
         :rtype: list of str
         """
         return self._Emails
@@ -697,7 +697,7 @@ class CreateCustomBlacklistRequest(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """过期日期
+        r"""过期日期
         :rtype: str
         """
         return self._ExpireDate
@@ -721,7 +721,7 @@ class CreateCustomBlacklistRequest(AbstractModel):
 
 
 class CreateCustomBlacklistResponse(AbstractModel):
-    """CreateCustomBlacklist返回参数结构体
+    r"""CreateCustomBlacklist返回参数结构体
 
     """
 
@@ -749,7 +749,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """收件人总数
+        r"""收件人总数
         :rtype: int
         """
         return self._TotalCount
@@ -760,7 +760,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def ValidCount(self):
-        """实际上传数量
+        r"""实际上传数量
         :rtype: int
         """
         return self._ValidCount
@@ -771,7 +771,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def TooLongCount(self):
-        """数据过长数量
+        r"""数据过长数量
         :rtype: int
         """
         return self._TooLongCount
@@ -782,7 +782,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def RepeatCount(self):
-        """重复数量
+        r"""重复数量
         :rtype: int
         """
         return self._RepeatCount
@@ -793,7 +793,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def InvalidCount(self):
-        """格式不正确数量
+        r"""格式不正确数量
         :rtype: int
         """
         return self._InvalidCount
@@ -804,7 +804,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -824,7 +824,7 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
 
 class CreateEmailAddressRequest(AbstractModel):
-    """CreateEmailAddress请求参数结构体
+    r"""CreateEmailAddress请求参数结构体
 
     """
 
@@ -840,7 +840,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """您的发信地址（发信地址总数上限为10个）
+        r"""您的发信地址（发信地址总数上限为10个）
         :rtype: str
         """
         return self._EmailAddress
@@ -851,7 +851,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailSenderName(self):
-        """发件人别名
+        r"""发件人别名
         :rtype: str
         """
         return self._EmailSenderName
@@ -875,7 +875,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
 
 class CreateEmailAddressResponse(AbstractModel):
-    """CreateEmailAddress返回参数结构体
+    r"""CreateEmailAddress返回参数结构体
 
     """
 
@@ -888,7 +888,7 @@ class CreateEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -903,7 +903,7 @@ class CreateEmailAddressResponse(AbstractModel):
 
 
 class CreateEmailIdentityRequest(AbstractModel):
-    """CreateEmailIdentity请求参数结构体
+    r"""CreateEmailIdentity请求参数结构体
 
     """
 
@@ -922,7 +922,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+        r"""您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
         :rtype: str
         """
         return self._EmailIdentity
@@ -933,7 +933,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def DKIMOption(self):
-        """生成的dkim密钥长度。0:1024，1:2048
+        r"""生成的dkim密钥长度。0:1024，1:2048
         :rtype: int
         """
         return self._DKIMOption
@@ -944,7 +944,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """tag 标签
+        r"""tag 标签
         :rtype: list of TagList
         """
         return self._TagList
@@ -974,7 +974,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
 
 class CreateEmailIdentityResponse(AbstractModel):
-    """CreateEmailIdentity返回参数结构体
+    r"""CreateEmailIdentity返回参数结构体
 
     """
 
@@ -996,7 +996,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """验证类型。固定值：DOMAIN
+        r"""验证类型。固定值：DOMAIN
         :rtype: str
         """
         return self._IdentityType
@@ -1007,7 +1007,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """是否已通过验证
+        r"""是否已通过验证
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -1018,7 +1018,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """需要配置的DNS信息
+        r"""需要配置的DNS信息
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -1029,7 +1029,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1052,7 +1052,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
 
 class CreateEmailTemplateRequest(AbstractModel):
-    """CreateEmailTemplate请求参数结构体
+    r"""CreateEmailTemplate请求参数结构体
 
     """
 
@@ -1068,7 +1068,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -1079,7 +1079,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """模板内容
+        r"""模板内容
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -1105,7 +1105,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
 
 class CreateEmailTemplateResponse(AbstractModel):
-    """CreateEmailTemplate返回参数结构体
+    r"""CreateEmailTemplate返回参数结构体
 
     """
 
@@ -1121,7 +1121,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板id
+        r"""模板id
         :rtype: int
         """
         return self._TemplateID
@@ -1132,7 +1132,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1148,7 +1148,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
 
 class CreateReceiverDetailRequest(AbstractModel):
-    """CreateReceiverDetail请求参数结构体
+    r"""CreateReceiverDetail请求参数结构体
 
     """
 
@@ -1164,7 +1164,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID
+        r"""收件人列表ID
         :rtype: int
         """
         return self._ReceiverId
@@ -1175,7 +1175,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def Emails(self):
-        """邮箱
+        r"""邮箱
         :rtype: list of str
         """
         return self._Emails
@@ -1199,7 +1199,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
 
 class CreateReceiverDetailResponse(AbstractModel):
-    """CreateReceiverDetail返回参数结构体
+    r"""CreateReceiverDetail返回参数结构体
 
     """
 
@@ -1227,7 +1227,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """收件人总数
+        r"""收件人总数
         :rtype: int
         """
         return self._TotalCount
@@ -1238,7 +1238,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def ValidCount(self):
-        """实际上传数量
+        r"""实际上传数量
         :rtype: int
         """
         return self._ValidCount
@@ -1249,7 +1249,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def TooLongCount(self):
-        """数据过长数量
+        r"""数据过长数量
         :rtype: int
         """
         return self._TooLongCount
@@ -1260,7 +1260,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def EmptyEmailCount(self):
-        """邮件地址为空数量
+        r"""邮件地址为空数量
         :rtype: int
         """
         return self._EmptyEmailCount
@@ -1271,7 +1271,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def RepeatCount(self):
-        """重复数量
+        r"""重复数量
         :rtype: int
         """
         return self._RepeatCount
@@ -1282,7 +1282,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1302,7 +1302,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
 
 class CreateReceiverDetailWithDataRequest(AbstractModel):
-    """CreateReceiverDetailWithData请求参数结构体
+    r"""CreateReceiverDetailWithData请求参数结构体
 
     """
 
@@ -1318,7 +1318,7 @@ class CreateReceiverDetailWithDataRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID
+        r"""收件人列表ID
         :rtype: int
         """
         return self._ReceiverId
@@ -1329,7 +1329,7 @@ class CreateReceiverDetailWithDataRequest(AbstractModel):
 
     @property
     def Datas(self):
-        """收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
+        r"""收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
         :rtype: list of ReceiverInputData
         """
         return self._Datas
@@ -1358,7 +1358,7 @@ class CreateReceiverDetailWithDataRequest(AbstractModel):
 
 
 class CreateReceiverDetailWithDataResponse(AbstractModel):
-    """CreateReceiverDetailWithData返回参数结构体
+    r"""CreateReceiverDetailWithData返回参数结构体
 
     """
 
@@ -1386,7 +1386,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """收件人总数
+        r"""收件人总数
         :rtype: int
         """
         return self._TotalCount
@@ -1397,7 +1397,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def ValidCount(self):
-        """实际上传数量
+        r"""实际上传数量
         :rtype: int
         """
         return self._ValidCount
@@ -1408,7 +1408,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def TooLongCount(self):
-        """数据过长数量
+        r"""数据过长数量
         :rtype: int
         """
         return self._TooLongCount
@@ -1419,7 +1419,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def EmptyEmailCount(self):
-        """邮件地址为空数量
+        r"""邮件地址为空数量
         :rtype: int
         """
         return self._EmptyEmailCount
@@ -1430,7 +1430,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def RepeatCount(self):
-        """重复数量
+        r"""重复数量
         :rtype: int
         """
         return self._RepeatCount
@@ -1441,7 +1441,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1461,7 +1461,7 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
 
 class CreateReceiverRequest(AbstractModel):
-    """CreateReceiver请求参数结构体
+    r"""CreateReceiver请求参数结构体
 
     """
 
@@ -1477,7 +1477,7 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def ReceiversName(self):
-        """收件人列表名称
+        r"""收件人列表名称
         :rtype: str
         """
         return self._ReceiversName
@@ -1488,7 +1488,7 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """收件人列表描述
+        r"""收件人列表描述
         :rtype: str
         """
         return self._Desc
@@ -1512,7 +1512,7 @@ class CreateReceiverRequest(AbstractModel):
 
 
 class CreateReceiverResponse(AbstractModel):
-    """CreateReceiver返回参数结构体
+    r"""CreateReceiver返回参数结构体
 
     """
 
@@ -1528,7 +1528,7 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表id，后续根据收件人列表id上传收件人地址
+        r"""收件人列表id，后续根据收件人列表id上传收件人地址
         :rtype: int
         """
         return self._ReceiverId
@@ -1539,7 +1539,7 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1555,7 +1555,7 @@ class CreateReceiverResponse(AbstractModel):
 
 
 class CycleEmailParam(AbstractModel):
-    """创建重复周期发送邮件任务的参数
+    r"""创建重复周期发送邮件任务的参数
 
     """
 
@@ -1574,7 +1574,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
-        """任务开始时间
+        r"""任务开始时间
         :rtype: str
         """
         return self._BeginTime
@@ -1585,7 +1585,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """任务周期 小时维度
+        r"""任务周期 小时维度
         :rtype: int
         """
         return self._IntervalTime
@@ -1596,7 +1596,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def TermCycle(self):
-        """是否终止周期，用于任务更新 0否1是
+        r"""是否终止周期，用于任务更新 0否1是
         :rtype: int
         """
         return self._TermCycle
@@ -1621,7 +1621,7 @@ class CycleEmailParam(AbstractModel):
 
 
 class DNSAttributes(AbstractModel):
-    """用于描述DNS记录的域名、记录类型、期望得到的值、目前配置的值
+    r"""用于描述DNS记录的域名、记录类型、期望得到的值、目前配置的值
 
     """
 
@@ -1646,7 +1646,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Type(self):
-        """记录类型 CNAME | A | TXT | MX
+        r"""记录类型 CNAME | A | TXT | MX
         :rtype: str
         """
         return self._Type
@@ -1657,7 +1657,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def SendDomain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._SendDomain
@@ -1668,7 +1668,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def ExpectedValue(self):
-        """需要配置的值
+        r"""需要配置的值
         :rtype: str
         """
         return self._ExpectedValue
@@ -1679,7 +1679,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """腾讯云目前检测到的值
+        r"""腾讯云目前检测到的值
         :rtype: str
         """
         return self._CurrentValue
@@ -1690,7 +1690,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Status(self):
-        """检测是否通过，创建时默认为false
+        r"""检测是否通过，创建时默认为false
         :rtype: bool
         """
         return self._Status
@@ -1717,7 +1717,7 @@ class DNSAttributes(AbstractModel):
 
 
 class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
-    """DeleteAddressUnsubscribeConfig请求参数结构体
+    r"""DeleteAddressUnsubscribeConfig请求参数结构体
 
     """
 
@@ -1730,7 +1730,7 @@ class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """需要操作的发信地址
+        r"""需要操作的发信地址
         :rtype: str
         """
         return self._Address
@@ -1753,7 +1753,7 @@ class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
-    """DeleteAddressUnsubscribeConfig返回参数结构体
+    r"""DeleteAddressUnsubscribeConfig返回参数结构体
 
     """
 
@@ -1766,7 +1766,7 @@ class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1781,7 +1781,7 @@ class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class DeleteBlackListRequest(AbstractModel):
-    """DeleteBlackList请求参数结构体
+    r"""DeleteBlackList请求参数结构体
 
     """
 
@@ -1794,7 +1794,7 @@ class DeleteBlackListRequest(AbstractModel):
 
     @property
     def EmailAddressList(self):
-        """需要清除的黑名单邮箱列表，数组长度至少为1
+        r"""需要清除的黑名单邮箱列表，数组长度至少为1
         :rtype: list of str
         """
         return self._EmailAddressList
@@ -1817,7 +1817,7 @@ class DeleteBlackListRequest(AbstractModel):
 
 
 class DeleteBlackListResponse(AbstractModel):
-    """DeleteBlackList返回参数结构体
+    r"""DeleteBlackList返回参数结构体
 
     """
 
@@ -1830,7 +1830,7 @@ class DeleteBlackListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1845,7 +1845,7 @@ class DeleteBlackListResponse(AbstractModel):
 
 
 class DeleteCustomBlackListRequest(AbstractModel):
-    """DeleteCustomBlackList请求参数结构体
+    r"""DeleteCustomBlackList请求参数结构体
 
     """
 
@@ -1858,7 +1858,7 @@ class DeleteCustomBlackListRequest(AbstractModel):
 
     @property
     def Emails(self):
-        """需要删除的邮箱地址
+        r"""需要删除的邮箱地址
         :rtype: list of str
         """
         return self._Emails
@@ -1881,7 +1881,7 @@ class DeleteCustomBlackListRequest(AbstractModel):
 
 
 class DeleteCustomBlackListResponse(AbstractModel):
-    """DeleteCustomBlackList返回参数结构体
+    r"""DeleteCustomBlackList返回参数结构体
 
     """
 
@@ -1894,7 +1894,7 @@ class DeleteCustomBlackListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1909,7 +1909,7 @@ class DeleteCustomBlackListResponse(AbstractModel):
 
 
 class DeleteEmailAddressRequest(AbstractModel):
-    """DeleteEmailAddress请求参数结构体
+    r"""DeleteEmailAddress请求参数结构体
 
     """
 
@@ -1922,7 +1922,7 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._EmailAddress
@@ -1945,7 +1945,7 @@ class DeleteEmailAddressRequest(AbstractModel):
 
 
 class DeleteEmailAddressResponse(AbstractModel):
-    """DeleteEmailAddress返回参数结构体
+    r"""DeleteEmailAddress返回参数结构体
 
     """
 
@@ -1958,7 +1958,7 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1973,7 +1973,7 @@ class DeleteEmailAddressResponse(AbstractModel):
 
 
 class DeleteEmailIdentityRequest(AbstractModel):
-    """DeleteEmailIdentity请求参数结构体
+    r"""DeleteEmailIdentity请求参数结构体
 
     """
 
@@ -1986,7 +1986,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """发信域名
+        r"""发信域名
         :rtype: str
         """
         return self._EmailIdentity
@@ -2009,7 +2009,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
 
 class DeleteEmailIdentityResponse(AbstractModel):
-    """DeleteEmailIdentity返回参数结构体
+    r"""DeleteEmailIdentity返回参数结构体
 
     """
 
@@ -2022,7 +2022,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2037,7 +2037,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
 
 class DeleteEmailTemplateRequest(AbstractModel):
-    """DeleteEmailTemplate请求参数结构体
+    r"""DeleteEmailTemplate请求参数结构体
 
     """
 
@@ -2050,7 +2050,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板ID
+        r"""模板ID
         :rtype: int
         """
         return self._TemplateID
@@ -2073,7 +2073,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
 
 class DeleteEmailTemplateResponse(AbstractModel):
-    """DeleteEmailTemplate返回参数结构体
+    r"""DeleteEmailTemplate返回参数结构体
 
     """
 
@@ -2086,7 +2086,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2101,7 +2101,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
 
 class DeleteReceiverRequest(AbstractModel):
-    """DeleteReceiver请求参数结构体
+    r"""DeleteReceiver请求参数结构体
 
     """
 
@@ -2114,7 +2114,7 @@ class DeleteReceiverRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表id，创建收件人列表时会返回
+        r"""收件人列表id，创建收件人列表时会返回
         :rtype: int
         """
         return self._ReceiverId
@@ -2137,7 +2137,7 @@ class DeleteReceiverRequest(AbstractModel):
 
 
 class DeleteReceiverResponse(AbstractModel):
-    """DeleteReceiver返回参数结构体
+    r"""DeleteReceiver返回参数结构体
 
     """
 
@@ -2150,7 +2150,7 @@ class DeleteReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2165,7 +2165,7 @@ class DeleteReceiverResponse(AbstractModel):
 
 
 class EmailIdentity(AbstractModel):
-    """发信域名验证列表结构体
+    r"""发信域名验证列表结构体
 
     """
 
@@ -2196,7 +2196,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityName(self):
-        """发信域名
+        r"""发信域名
         :rtype: str
         """
         return self._IdentityName
@@ -2207,7 +2207,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
-        """验证类型，固定为DOMAIN
+        r"""验证类型，固定为DOMAIN
         :rtype: str
         """
         return self._IdentityType
@@ -2218,7 +2218,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendingEnabled(self):
-        """是否已通过验证
+        r"""是否已通过验证
         :rtype: bool
         """
         return self._SendingEnabled
@@ -2229,7 +2229,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def CurrentReputationLevel(self):
-        """当前信誉等级
+        r"""当前信誉等级
         :rtype: int
         """
         return self._CurrentReputationLevel
@@ -2240,7 +2240,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def DailyQuota(self):
-        """当日最高发信量
+        r"""当日最高发信量
         :rtype: int
         """
         return self._DailyQuota
@@ -2251,7 +2251,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendIp(self):
-        """域名配置的独立ip
+        r"""域名配置的独立ip
         :rtype: list of str
         """
         return self._SendIp
@@ -2262,7 +2262,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def TagList(self):
-        """tag 标签
+        r"""tag 标签
         :rtype: list of TagList
         """
         return self._TagList
@@ -2296,7 +2296,7 @@ class EmailIdentity(AbstractModel):
 
 
 class EmailSender(AbstractModel):
-    """用于描述发件人相关信息
+    r"""用于描述发件人相关信息
 
     """
 
@@ -2318,7 +2318,7 @@ class EmailSender(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._EmailAddress
@@ -2329,7 +2329,7 @@ class EmailSender(AbstractModel):
 
     @property
     def EmailSenderName(self):
-        """发信人别名
+        r"""发信人别名
         :rtype: str
         """
         return self._EmailSenderName
@@ -2340,7 +2340,7 @@ class EmailSender(AbstractModel):
 
     @property
     def CreatedTimestamp(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedTimestamp
@@ -2351,7 +2351,7 @@ class EmailSender(AbstractModel):
 
     @property
     def SmtpPwdType(self):
-        """smtp密码类型,0=没有设置密码,1=已经设置了密码
+        r"""smtp密码类型,0=没有设置密码,1=已经设置了密码
         :rtype: int
         """
         return self._SmtpPwdType
@@ -2377,7 +2377,7 @@ class EmailSender(AbstractModel):
 
 
 class GetEmailIdentityRequest(AbstractModel):
-    """GetEmailIdentity请求参数结构体
+    r"""GetEmailIdentity请求参数结构体
 
     """
 
@@ -2390,7 +2390,7 @@ class GetEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """发信域名
+        r"""发信域名
         :rtype: str
         """
         return self._EmailIdentity
@@ -2413,7 +2413,7 @@ class GetEmailIdentityRequest(AbstractModel):
 
 
 class GetEmailIdentityResponse(AbstractModel):
-    """GetEmailIdentity返回参数结构体
+    r"""GetEmailIdentity返回参数结构体
 
     """
 
@@ -2435,7 +2435,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """验证类型。固定值：DOMAIN
+        r"""验证类型。固定值：DOMAIN
         :rtype: str
         """
         return self._IdentityType
@@ -2446,7 +2446,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """是否已通过验证
+        r"""是否已通过验证
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -2457,7 +2457,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """DNS配置详情
+        r"""DNS配置详情
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -2468,7 +2468,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2491,7 +2491,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
 
 class GetEmailTemplateRequest(AbstractModel):
-    """GetEmailTemplate请求参数结构体
+    r"""GetEmailTemplate请求参数结构体
 
     """
 
@@ -2504,7 +2504,7 @@ class GetEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板ID
+        r"""模板ID
         :rtype: int
         """
         return self._TemplateID
@@ -2527,7 +2527,7 @@ class GetEmailTemplateRequest(AbstractModel):
 
 
 class GetEmailTemplateResponse(AbstractModel):
-    """GetEmailTemplate返回参数结构体
+    r"""GetEmailTemplate返回参数结构体
 
     """
 
@@ -2549,7 +2549,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """模板内容数据
+        r"""模板内容数据
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -2560,7 +2560,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateStatus(self):
-        """模板状态 0-审核通过 1-待审核 2-审核拒绝
+        r"""模板状态 0-审核通过 1-待审核 2-审核拒绝
         :rtype: int
         """
         return self._TemplateStatus
@@ -2571,7 +2571,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -2582,7 +2582,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2602,7 +2602,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
 
 class GetSendEmailStatusRequest(AbstractModel):
-    """GetSendEmailStatus请求参数结构体
+    r"""GetSendEmailStatus请求参数结构体
 
     """
 
@@ -2627,7 +2627,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def RequestDate(self):
-        """发送的日期，必填。仅支持查询某个日期，不支持范围查询。
+        r"""发送的日期，必填。仅支持查询某个日期，不支持范围查询。
         :rtype: str
         """
         return self._RequestDate
@@ -2638,7 +2638,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。默认为0
+        r"""偏移量。默认为0
         :rtype: int
         """
         return self._Offset
@@ -2649,7 +2649,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，最多 100。
+        r"""拉取最大条数，最多 100。
         :rtype: int
         """
         return self._Limit
@@ -2660,7 +2660,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def MessageId(self):
-        """SendMail接口返回的MessageId字段。
+        r"""SendMail接口返回的MessageId字段。
         :rtype: str
         """
         return self._MessageId
@@ -2671,7 +2671,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def ToEmailAddress(self):
-        """收件人邮箱。
+        r"""收件人邮箱。
         :rtype: str
         """
         return self._ToEmailAddress
@@ -2698,7 +2698,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
 
 class GetSendEmailStatusResponse(AbstractModel):
-    """GetSendEmailStatus返回参数结构体
+    r"""GetSendEmailStatus返回参数结构体
 
     """
 
@@ -2714,7 +2714,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def EmailStatusList(self):
-        """邮件发送状态列表
+        r"""邮件发送状态列表
         :rtype: list of SendEmailStatus
         """
         return self._EmailStatusList
@@ -2725,7 +2725,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2746,7 +2746,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
 
 class GetStatisticsReportRequest(AbstractModel):
-    """GetStatisticsReport请求参数结构体
+    r"""GetStatisticsReport请求参数结构体
 
     """
 
@@ -2768,7 +2768,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """开始日期
+        r"""开始日期
         :rtype: str
         """
         return self._StartDate
@@ -2779,7 +2779,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """结束日期
+        r"""结束日期
         :rtype: str
         """
         return self._EndDate
@@ -2790,7 +2790,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """发信域名
+        r"""发信域名
         :rtype: str
         """
         return self._Domain
@@ -2801,7 +2801,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def ReceivingMailboxType(self):
-        """收件方邮箱类型，例如gmail.com
+        r"""收件方邮箱类型，例如gmail.com
         :rtype: str
         """
         return self._ReceivingMailboxType
@@ -2827,7 +2827,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
 
 class GetStatisticsReportResponse(AbstractModel):
-    """GetStatisticsReport返回参数结构体
+    r"""GetStatisticsReport返回参数结构体
 
     """
 
@@ -2846,7 +2846,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def DailyVolumes(self):
-        """发信统计报告，按天
+        r"""发信统计报告，按天
         :rtype: list of Volume
         """
         return self._DailyVolumes
@@ -2857,7 +2857,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def OverallVolume(self):
-        """发信统计报告，总览
+        r"""发信统计报告，总览
         :rtype: :class:`tencentcloud.ses.v20201002.models.Volume`
         """
         return self._OverallVolume
@@ -2868,7 +2868,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2892,7 +2892,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
 
 class ListAddressUnsubscribeConfigRequest(AbstractModel):
-    """ListAddressUnsubscribeConfig请求参数结构体
+    r"""ListAddressUnsubscribeConfig请求参数结构体
 
     """
 
@@ -2908,7 +2908,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -2919,7 +2919,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，不超过100
+        r"""拉取最大条数，不超过100
         :rtype: str
         """
         return self._Limit
@@ -2943,7 +2943,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class ListAddressUnsubscribeConfigResponse(AbstractModel):
-    """ListAddressUnsubscribeConfig返回参数结构体
+    r"""ListAddressUnsubscribeConfig返回参数结构体
 
     """
 
@@ -2962,7 +2962,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def AddressUnsubscribeConfigList(self):
-        """地址级退订配置
+        r"""地址级退订配置
         :rtype: list of AddressUnsubscribeConfigData
         """
         return self._AddressUnsubscribeConfigList
@@ -2973,7 +2973,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -2984,7 +2984,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3006,7 +3006,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class ListBlackEmailAddressRequest(AbstractModel):
-    """ListBlackEmailAddress请求参数结构体
+    r"""ListBlackEmailAddress请求参数结构体
 
     """
 
@@ -3034,7 +3034,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """开始日期，格式为YYYY-MM-DD
+        r"""开始日期，格式为YYYY-MM-DD
         :rtype: str
         """
         return self._StartDate
@@ -3045,7 +3045,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """结束日期，格式为YYYY-MM-DD
+        r"""结束日期，格式为YYYY-MM-DD
         :rtype: str
         """
         return self._EndDate
@@ -3056,7 +3056,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """规范，配合Offset使用
+        r"""规范，配合Offset使用
         :rtype: int
         """
         return self._Limit
@@ -3067,7 +3067,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """规范，配合Limit使用，Limit最大取值为100
+        r"""规范，配合Limit使用，Limit最大取值为100
         :rtype: int
         """
         return self._Offset
@@ -3078,7 +3078,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """可以指定邮箱进行查询
+        r"""可以指定邮箱进行查询
         :rtype: str
         """
         return self._EmailAddress
@@ -3089,7 +3089,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """已废弃
+        r"""已废弃
         :rtype: str
         """
         return self._TaskID
@@ -3117,7 +3117,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
 
 class ListBlackEmailAddressResponse(AbstractModel):
-    """ListBlackEmailAddress返回参数结构体
+    r"""ListBlackEmailAddress返回参数结构体
 
     """
 
@@ -3136,7 +3136,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def BlackList(self):
-        """黑名单列表
+        r"""黑名单列表
         :rtype: list of BlackEmailAddress
         """
         return self._BlackList
@@ -3147,7 +3147,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """黑名单总数
+        r"""黑名单总数
         :rtype: int
         """
         return self._TotalCount
@@ -3158,7 +3158,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3180,7 +3180,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
 
 class ListCustomBlacklistRequest(AbstractModel):
-    """ListCustomBlacklist请求参数结构体
+    r"""ListCustomBlacklist请求参数结构体
 
     """
 
@@ -3202,7 +3202,7 @@ class ListCustomBlacklistRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，整型，从0开始
+        r"""偏移量，整型，从0开始
         :rtype: int
         """
         return self._Offset
@@ -3213,7 +3213,7 @@ class ListCustomBlacklistRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目，整型,不超过100
+        r"""限制数目，整型,不超过100
         :rtype: int
         """
         return self._Limit
@@ -3224,7 +3224,7 @@ class ListCustomBlacklistRequest(AbstractModel):
 
     @property
     def Status(self):
-        """筛选黑名单的状态，0:已过期，1:生效中, 2:全部
+        r"""筛选黑名单的状态，0:已过期，1:生效中, 2:全部
         :rtype: int
         """
         return self._Status
@@ -3235,7 +3235,7 @@ class ListCustomBlacklistRequest(AbstractModel):
 
     @property
     def Email(self):
-        """黑名单中的邮箱地址
+        r"""黑名单中的邮箱地址
         :rtype: str
         """
         return self._Email
@@ -3261,7 +3261,7 @@ class ListCustomBlacklistRequest(AbstractModel):
 
 
 class ListCustomBlacklistResponse(AbstractModel):
-    """ListCustomBlacklist返回参数结构体
+    r"""ListCustomBlacklist返回参数结构体
 
     """
 
@@ -3280,7 +3280,7 @@ class ListCustomBlacklistResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """列表总数
+        r"""列表总数
         :rtype: int
         """
         return self._TotalCount
@@ -3291,7 +3291,7 @@ class ListCustomBlacklistResponse(AbstractModel):
 
     @property
     def Data(self):
-        """黑名单列表详情
+        r"""黑名单列表详情
         :rtype: list of BlackAddressDetail
         """
         return self._Data
@@ -3302,7 +3302,7 @@ class ListCustomBlacklistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3324,13 +3324,13 @@ class ListCustomBlacklistResponse(AbstractModel):
 
 
 class ListEmailAddressRequest(AbstractModel):
-    """ListEmailAddress请求参数结构体
+    r"""ListEmailAddress请求参数结构体
 
     """
 
 
 class ListEmailAddressResponse(AbstractModel):
-    """ListEmailAddress返回参数结构体
+    r"""ListEmailAddress返回参数结构体
 
     """
 
@@ -3346,7 +3346,7 @@ class ListEmailAddressResponse(AbstractModel):
 
     @property
     def EmailSenders(self):
-        """发信地址列表详情
+        r"""发信地址列表详情
         :rtype: list of EmailSender
         """
         return self._EmailSenders
@@ -3357,7 +3357,7 @@ class ListEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3378,7 +3378,7 @@ class ListEmailAddressResponse(AbstractModel):
 
 
 class ListEmailIdentitiesRequest(AbstractModel):
-    """ListEmailIdentities请求参数结构体
+    r"""ListEmailIdentities请求参数结构体
 
     """
 
@@ -3397,7 +3397,7 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """tag 标签
+        r"""tag 标签
         :rtype: list of TagList
         """
         return self._TagList
@@ -3408,7 +3408,7 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页 limit
+        r"""分页 limit
         :rtype: int
         """
         return self._Limit
@@ -3419,7 +3419,7 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页 offset
+        r"""分页 offset
         :rtype: int
         """
         return self._Offset
@@ -3449,7 +3449,7 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
 
 class ListEmailIdentitiesResponse(AbstractModel):
-    """ListEmailIdentities返回参数结构体
+    r"""ListEmailIdentities返回参数结构体
 
     """
 
@@ -3474,7 +3474,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def EmailIdentities(self):
-        """发信域名列表
+        r"""发信域名列表
         :rtype: list of EmailIdentity
         """
         return self._EmailIdentities
@@ -3485,7 +3485,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxReputationLevel(self):
-        """最大信誉等级
+        r"""最大信誉等级
         :rtype: int
         """
         return self._MaxReputationLevel
@@ -3496,7 +3496,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxDailyQuota(self):
-        """单域名最高日发送量
+        r"""单域名最高日发送量
         :rtype: int
         """
         return self._MaxDailyQuota
@@ -3507,7 +3507,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3518,7 +3518,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3542,7 +3542,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
 
 class ListEmailTemplatesRequest(AbstractModel):
-    """ListEmailTemplates请求参数结构体
+    r"""ListEmailTemplates请求参数结构体
 
     """
 
@@ -3558,7 +3558,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """获取模板数据量，用于分页
+        r"""获取模板数据量，用于分页
         :rtype: int
         """
         return self._Limit
@@ -3569,7 +3569,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """获取模板偏移值，用于分页
+        r"""获取模板偏移值，用于分页
         :rtype: int
         """
         return self._Offset
@@ -3593,7 +3593,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
 
 class ListEmailTemplatesResponse(AbstractModel):
-    """ListEmailTemplates返回参数结构体
+    r"""ListEmailTemplates返回参数结构体
 
     """
 
@@ -3612,7 +3612,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TemplatesMetadata(self):
-        """邮件模板列表
+        r"""邮件模板列表
         :rtype: list of TemplatesMetadata
         """
         return self._TemplatesMetadata
@@ -3623,7 +3623,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """模板总数量
+        r"""模板总数量
         :rtype: int
         """
         return self._TotalCount
@@ -3634,7 +3634,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3656,7 +3656,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
 
 class ListReceiverDetailsRequest(AbstractModel):
-    """ListReceiverDetails请求参数结构体
+    r"""ListReceiverDetails请求参数结构体
 
     """
 
@@ -3687,7 +3687,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID,CreateReceiver接口创建收件人列表时会返回该值
+        r"""收件人列表ID,CreateReceiver接口创建收件人列表时会返回该值
         :rtype: int
         """
         return self._ReceiverId
@@ -3698,7 +3698,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，整型，从0开始
+        r"""偏移量，整型，从0开始
         :rtype: int
         """
         return self._Offset
@@ -3709,7 +3709,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目，整型,不超过100
+        r"""限制数目，整型,不超过100
         :rtype: int
         """
         return self._Limit
@@ -3720,7 +3720,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def Email(self):
-        """收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
+        r"""收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
         :rtype: str
         """
         return self._Email
@@ -3731,7 +3731,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def CreateTimeBegin(self):
-        """搜索开始时间
+        r"""搜索开始时间
         :rtype: str
         """
         return self._CreateTimeBegin
@@ -3742,7 +3742,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def CreateTimeEnd(self):
-        """搜索结束时间
+        r"""搜索结束时间
         :rtype: str
         """
         return self._CreateTimeEnd
@@ -3753,7 +3753,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """1:有效，2:无效
+        r"""1:有效，2:无效
         :rtype: int
         """
         return self._Status
@@ -3782,7 +3782,7 @@ class ListReceiverDetailsRequest(AbstractModel):
 
 
 class ListReceiverDetailsResponse(AbstractModel):
-    """ListReceiverDetails返回参数结构体
+    r"""ListReceiverDetails返回参数结构体
 
     """
 
@@ -3807,7 +3807,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -3818,7 +3818,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据记录
+        r"""数据记录
         :rtype: list of ReceiverDetail
         """
         return self._Data
@@ -3829,7 +3829,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
     @property
     def ValidCount(self):
-        """有效邮件地址数
+        r"""有效邮件地址数
         :rtype: int
         """
         return self._ValidCount
@@ -3840,7 +3840,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
     @property
     def InvalidCount(self):
-        """无效邮件地址数
+        r"""无效邮件地址数
         :rtype: int
         """
         return self._InvalidCount
@@ -3851,7 +3851,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3875,7 +3875,7 @@ class ListReceiverDetailsResponse(AbstractModel):
 
 
 class ListReceiversRequest(AbstractModel):
-    """ListReceivers请求参数结构体
+    r"""ListReceivers请求参数结构体
 
     """
 
@@ -3897,7 +3897,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，整型，从0开始
+        r"""偏移量，整型，从0开始
         :rtype: int
         """
         return self._Offset
@@ -3908,7 +3908,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目，整型，不超过100
+        r"""限制数目，整型，不超过100
         :rtype: int
         """
         return self._Limit
@@ -3919,7 +3919,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Status(self):
-        """列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
+        r"""列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
         :rtype: int
         """
         return self._Status
@@ -3930,7 +3930,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """列表名称的关键字，模糊查询
+        r"""列表名称的关键字，模糊查询
         :rtype: str
         """
         return self._KeyWord
@@ -3956,7 +3956,7 @@ class ListReceiversRequest(AbstractModel):
 
 
 class ListReceiversResponse(AbstractModel):
-    """ListReceivers返回参数结构体
+    r"""ListReceivers返回参数结构体
 
     """
 
@@ -3975,7 +3975,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -3986,7 +3986,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据记录
+        r"""数据记录
         :rtype: list of ReceiverData
         """
         return self._Data
@@ -3997,7 +3997,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4019,7 +4019,7 @@ class ListReceiversResponse(AbstractModel):
 
 
 class ListSendTasksRequest(AbstractModel):
-    """ListSendTasks请求参数结构体
+    r"""ListSendTasks请求参数结构体
 
     """
 
@@ -4044,7 +4044,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，整型，从0开始，0代表跳过0行
+        r"""偏移量，整型，从0开始，0代表跳过0行
         :rtype: int
         """
         return self._Offset
@@ -4055,7 +4055,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目，整型,不超过100
+        r"""限制数目，整型,不超过100
         :rtype: int
         """
         return self._Limit
@@ -4066,7 +4066,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
+        r"""任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
         :rtype: int
         """
         return self._Status
@@ -4077,7 +4077,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID
+        r"""收件人列表ID
         :rtype: int
         """
         return self._ReceiverId
@@ -4088,7 +4088,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
+        r"""任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
         :rtype: int
         """
         return self._TaskType
@@ -4115,7 +4115,7 @@ class ListSendTasksRequest(AbstractModel):
 
 
 class ListSendTasksResponse(AbstractModel):
-    """ListSendTasks返回参数结构体
+    r"""ListSendTasks返回参数结构体
 
     """
 
@@ -4134,7 +4134,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -4145,7 +4145,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据记录
+        r"""数据记录
         :rtype: list of SendTaskData
         """
         return self._Data
@@ -4156,7 +4156,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4178,7 +4178,7 @@ class ListSendTasksResponse(AbstractModel):
 
 
 class ReceiverData(AbstractModel):
-    """收件人列表数据类型
+    r"""收件人列表数据类型
 
     """
 
@@ -4209,7 +4209,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表ID
+        r"""收件人列表ID
         :rtype: int
         """
         return self._ReceiverId
@@ -4220,7 +4220,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def ReceiversName(self):
-        """收件人列表名称
+        r"""收件人列表名称
         :rtype: str
         """
         return self._ReceiversName
@@ -4231,7 +4231,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def Count(self):
-        """收件人地址总数
+        r"""收件人地址总数
         :rtype: int
         """
         return self._Count
@@ -4242,7 +4242,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def Desc(self):
-        """收件人列表描述
+        r"""收件人列表描述
         :rtype: str
         """
         return self._Desc
@@ -4253,7 +4253,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def ReceiversStatus(self):
-        """列表状态(1 待上传 2 上传中 3 上传完成)
+        r"""列表状态(1 待上传 2 上传中 3 上传完成)
         :rtype: int
         """
         return self._ReceiversStatus
@@ -4264,7 +4264,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间,如:2021-09-28 16:40:35
+        r"""创建时间,如:2021-09-28 16:40:35
         :rtype: str
         """
         return self._CreateTime
@@ -4275,7 +4275,7 @@ class ReceiverData(AbstractModel):
 
     @property
     def InvalidCount(self):
-        """无效收件人数量
+        r"""无效收件人数量
         :rtype: int
         """
         return self._InvalidCount
@@ -4304,7 +4304,7 @@ class ReceiverData(AbstractModel):
 
 
 class ReceiverDetail(AbstractModel):
-    """收件人列表详情
+    r"""收件人列表详情
 
     """
 
@@ -4332,7 +4332,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def Email(self):
-        """收件人地址
+        r"""收件人地址
         :rtype: str
         """
         return self._Email
@@ -4343,7 +4343,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -4354,7 +4354,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def TemplateData(self):
-        """模板参数
+        r"""模板参数
         :rtype: str
         """
         return self._TemplateData
@@ -4365,7 +4365,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def Reason(self):
-        """无效原因
+        r"""无效原因
         :rtype: str
         """
         return self._Reason
@@ -4376,7 +4376,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def Status(self):
-        """1:有效，2:无效
+        r"""1:有效，2:无效
         :rtype: int
         """
         return self._Status
@@ -4387,7 +4387,7 @@ class ReceiverDetail(AbstractModel):
 
     @property
     def EmailId(self):
-        """收件人地址id
+        r"""收件人地址id
         :rtype: int
         """
         return self._EmailId
@@ -4415,7 +4415,7 @@ class ReceiverDetail(AbstractModel):
 
 
 class ReceiverInputData(AbstractModel):
-    """收件人明细输入参数，包含收件人邮箱，以及模板参数
+    r"""收件人明细输入参数，包含收件人邮箱，以及模板参数
 
     """
 
@@ -4432,7 +4432,7 @@ class ReceiverInputData(AbstractModel):
 
     @property
     def Email(self):
-        """收件人邮箱
+        r"""收件人邮箱
         :rtype: str
         """
         return self._Email
@@ -4443,7 +4443,7 @@ class ReceiverInputData(AbstractModel):
 
     @property
     def TemplateData(self):
-        """模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+        r"""模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
 注意：参数值不能是html等复杂类型的数据。TemplateData (整个 JSON 结构) 总长度限制为 800 bytes。
         :rtype: str
         """
@@ -4468,7 +4468,7 @@ class ReceiverInputData(AbstractModel):
 
 
 class SendEmailRequest(AbstractModel):
-    """SendEmail请求参数结构体
+    r"""SendEmail请求参数结构体
 
     """
 
@@ -4522,7 +4522,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        """发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
+        r"""发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
         :rtype: str
         """
         return self._FromEmailAddress
@@ -4533,7 +4533,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Destination(self):
-        """收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+        r"""收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :rtype: list of str
         """
         return self._Destination
@@ -4544,7 +4544,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        """邮件主题
+        r"""邮件主题
         :rtype: str
         """
         return self._Subject
@@ -4555,7 +4555,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def ReplyToAddresses(self):
-        """邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        r"""邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -4566,7 +4566,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Cc(self):
-        """抄送人邮箱地址，最多支持抄送20人。
+        r"""抄送人邮箱地址，最多支持抄送20人。
         :rtype: list of str
         """
         return self._Cc
@@ -4577,7 +4577,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Bcc(self):
-        """密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
+        r"""密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
         :rtype: list of str
         """
         return self._Bcc
@@ -4588,7 +4588,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Template(self):
-        """使用模板发送时，填写模板相关参数。
+        r"""使用模板发送时，填写模板相关参数。
 <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
@@ -4600,7 +4600,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Simple(self):
-        """已废弃
+        r"""已废弃
 <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
@@ -4612,7 +4612,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Attachments(self):
-        """需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
+        r"""需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -4623,7 +4623,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Unsubscribe(self):
-        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :rtype: str
         """
         return self._Unsubscribe
@@ -4634,7 +4634,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        """邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        r"""邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
         :rtype: int
         """
         return self._TriggerType
@@ -4645,7 +4645,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def SmtpMessageId(self):
-        """smtp头中的Message-Id字段
+        r"""smtp头中的Message-Id字段
         :rtype: str
         """
         return self._SmtpMessageId
@@ -4656,7 +4656,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def SmtpHeaders(self):
-        """smtp头中可以设置的其它字段
+        r"""smtp头中可以设置的其它字段
         :rtype: str
         """
         return self._SmtpHeaders
@@ -4667,7 +4667,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def HeaderFrom(self):
-        """smtp头中的from字段，建议域名与FromEmailAddress保持一致
+        r"""smtp头中的from字段，建议域名与FromEmailAddress保持一致
         :rtype: str
         """
         return self._HeaderFrom
@@ -4712,7 +4712,7 @@ class SendEmailRequest(AbstractModel):
 
 
 class SendEmailResponse(AbstractModel):
-    """SendEmail返回参数结构体
+    r"""SendEmail返回参数结构体
 
     """
 
@@ -4728,7 +4728,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """接受消息生成的唯一消息标识符。
+        r"""接受消息生成的唯一消息标识符。
         :rtype: str
         """
         return self._MessageId
@@ -4739,7 +4739,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4755,7 +4755,7 @@ class SendEmailResponse(AbstractModel):
 
 
 class SendEmailStatus(AbstractModel):
-    """描述邮件发送状态
+    r"""描述邮件发送状态
 
     """
 
@@ -4833,7 +4833,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def MessageId(self):
-        """SendEmail返回的MessageId
+        r"""SendEmail返回的MessageId
         :rtype: str
         """
         return self._MessageId
@@ -4844,7 +4844,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def ToEmailAddress(self):
-        """收件人邮箱
+        r"""收件人邮箱
         :rtype: str
         """
         return self._ToEmailAddress
@@ -4855,7 +4855,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        """发件人邮箱
+        r"""发件人邮箱
         :rtype: str
         """
         return self._FromEmailAddress
@@ -4866,7 +4866,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def SendStatus(self):
-        """腾讯云处理状态
+        r"""腾讯云处理状态
 0: 处理成功
 1001: 内部系统异常
 1002: 内部系统异常
@@ -4901,7 +4901,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverStatus(self):
-        """收件方处理状态
+        r"""收件方处理状态
 0: 请求成功被腾讯云接受，进入发送队列
 1: 邮件递送成功，DeliverTime表示递送成功的时间
 2: 邮件因某种原因被丢弃，DeliverMessage表示丢弃原因
@@ -4917,7 +4917,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverMessage(self):
-        """收件方处理状态描述
+        r"""收件方处理状态描述
         :rtype: str
         """
         return self._DeliverMessage
@@ -4928,7 +4928,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def RequestTime(self):
-        """请求到达腾讯云时间戳
+        r"""请求到达腾讯云时间戳
         :rtype: int
         """
         return self._RequestTime
@@ -4939,7 +4939,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverTime(self):
-        """腾讯云执行递送时间戳
+        r"""腾讯云执行递送时间戳
         :rtype: int
         """
         return self._DeliverTime
@@ -4950,7 +4950,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserOpened(self):
-        """用户是否打开该邮件
+        r"""用户是否打开该邮件
         :rtype: bool
         """
         return self._UserOpened
@@ -4961,7 +4961,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserClicked(self):
-        """用户是否点击该邮件中的链接
+        r"""用户是否点击该邮件中的链接
         :rtype: bool
         """
         return self._UserClicked
@@ -4972,7 +4972,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserUnsubscribed(self):
-        """用户是否取消该发送者的订阅
+        r"""用户是否取消该发送者的订阅
         :rtype: bool
         """
         return self._UserUnsubscribed
@@ -4985,7 +4985,7 @@ class SendEmailStatus(AbstractModel):
     def UserComplainted(self):
         warnings.warn("parameter `UserComplainted` is deprecated", DeprecationWarning) 
 
-        """用户是否举报该发送者
+        r"""用户是否举报该发送者
         :rtype: bool
         """
         return self._UserComplainted
@@ -4998,7 +4998,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserComplained(self):
-        """用户是否举报该发送者
+        r"""用户是否举报该发送者
         :rtype: bool
         """
         return self._UserComplained
@@ -5033,7 +5033,7 @@ class SendEmailStatus(AbstractModel):
 
 
 class SendTaskData(AbstractModel):
-    """发送任务数据
+    r"""发送任务数据
 
     """
 
@@ -5093,7 +5093,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._TaskId
@@ -5104,7 +5104,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._FromEmailAddress
@@ -5115,7 +5115,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """收件人列表Id
+        r"""收件人列表Id
         :rtype: int
         """
         return self._ReceiverId
@@ -5126,7 +5126,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
+        r"""任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
         :rtype: int
         """
         return self._TaskStatus
@@ -5137,7 +5137,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型 1 即时 2 定时 3 周期
+        r"""任务类型 1 即时 2 定时 3 周期
         :rtype: int
         """
         return self._TaskType
@@ -5148,7 +5148,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def RequestCount(self):
-        """任务请求发信数量
+        r"""任务请求发信数量
         :rtype: int
         """
         return self._RequestCount
@@ -5159,7 +5159,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def SendCount(self):
-        """已经发送数量
+        r"""已经发送数量
         :rtype: int
         """
         return self._SendCount
@@ -5170,7 +5170,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def CacheCount(self):
-        """缓存数量
+        r"""缓存数量
         :rtype: int
         """
         return self._CacheCount
@@ -5181,7 +5181,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -5192,7 +5192,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """任务更新时间
+        r"""任务更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -5203,7 +5203,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def Subject(self):
-        """邮件主题
+        r"""邮件主题
         :rtype: str
         """
         return self._Subject
@@ -5214,7 +5214,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def Template(self):
-        """模板和模板数据
+        r"""模板和模板数据
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -5225,7 +5225,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def CycleParam(self):
-        """周期任务参数
+        r"""周期任务参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
@@ -5237,7 +5237,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def TimedParam(self):
-        """定时任务参数
+        r"""定时任务参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
@@ -5249,7 +5249,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """任务异常信息
+        r"""任务异常信息
         :rtype: str
         """
         return self._ErrMsg
@@ -5260,7 +5260,7 @@ class SendTaskData(AbstractModel):
 
     @property
     def ReceiversName(self):
-        """收件人列表名称
+        r"""收件人列表名称
         :rtype: str
         """
         return self._ReceiversName
@@ -5304,7 +5304,7 @@ class SendTaskData(AbstractModel):
 
 
 class Simple(AbstractModel):
-    """邮件发送的内容，可以是纯文本(TEXT)，也可以是纯代码(HTML)，或者纯文本+HTML的组合(建议方式)
+    r"""邮件发送的内容，可以是纯文本(TEXT)，也可以是纯代码(HTML)，或者纯文本+HTML的组合(建议方式)
 
     """
 
@@ -5320,7 +5320,7 @@ class Simple(AbstractModel):
 
     @property
     def Html(self):
-        """base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
+        r"""base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
         :rtype: str
         """
         return self._Html
@@ -5331,7 +5331,7 @@ class Simple(AbstractModel):
 
     @property
     def Text(self):
-        """base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
+        r"""base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
         :rtype: str
         """
         return self._Text
@@ -5355,7 +5355,7 @@ class Simple(AbstractModel):
 
 
 class TagList(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -5371,7 +5371,7 @@ class TagList(AbstractModel):
 
     @property
     def TagKey(self):
-        """产品
+        r"""产品
         :rtype: str
         """
         return self._TagKey
@@ -5382,7 +5382,7 @@ class TagList(AbstractModel):
 
     @property
     def TagValue(self):
-        """ses
+        r"""ses
         :rtype: str
         """
         return self._TagValue
@@ -5406,7 +5406,7 @@ class TagList(AbstractModel):
 
 
 class Template(AbstractModel):
-    """模板发送相关信息，包含模板ID，模板变量参数等信息
+    r"""模板发送相关信息，包含模板ID，模板变量参数等信息
 
     """
 
@@ -5424,7 +5424,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板ID。如果没有模板，请先新建一个
+        r"""模板ID。如果没有模板，请先新建一个
         :rtype: int
         """
         return self._TemplateID
@@ -5435,7 +5435,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateData(self):
-        """模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+        r"""模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
 注意：参数值不能是html等复杂类型的数据。
 示例：{"name":"xxx","age":"xx"}
         :rtype: str
@@ -5461,7 +5461,7 @@ class Template(AbstractModel):
 
 
 class TemplateContent(AbstractModel):
-    """模板内容，TEXT和HTML必须至少存在一项，建议使用TEXT和HTML的组合
+    r"""模板内容，TEXT和HTML必须至少存在一项，建议使用TEXT和HTML的组合
 
     """
 
@@ -5477,7 +5477,7 @@ class TemplateContent(AbstractModel):
 
     @property
     def Html(self):
-        """base64之后的Html代码
+        r"""base64之后的Html代码
         :rtype: str
         """
         return self._Html
@@ -5488,7 +5488,7 @@ class TemplateContent(AbstractModel):
 
     @property
     def Text(self):
-        """base64之后的文本内容
+        r"""base64之后的文本内容
         :rtype: str
         """
         return self._Text
@@ -5512,7 +5512,7 @@ class TemplateContent(AbstractModel):
 
 
 class TemplatesMetadata(AbstractModel):
-    """模板列表结构
+    r"""模板列表结构
 
     """
 
@@ -5537,7 +5537,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def CreatedTimestamp(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedTimestamp
@@ -5548,7 +5548,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -5559,7 +5559,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateStatus(self):
-        """模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
+        r"""模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
         :rtype: int
         """
         return self._TemplateStatus
@@ -5570,7 +5570,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板ID
+        r"""模板ID
         :rtype: int
         """
         return self._TemplateID
@@ -5581,7 +5581,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def ReviewReason(self):
-        """审核原因
+        r"""审核原因
         :rtype: str
         """
         return self._ReviewReason
@@ -5608,7 +5608,7 @@ class TemplatesMetadata(AbstractModel):
 
 
 class TimedEmailParam(AbstractModel):
-    """创建定时发送邮件任务时，设置的定时参数，比如开始时间之类
+    r"""创建定时发送邮件任务时，设置的定时参数，比如开始时间之类
 
     """
 
@@ -5621,7 +5621,7 @@ class TimedEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
-        """定时发送邮件的开始时间
+        r"""定时发送邮件的开始时间
         :rtype: str
         """
         return self._BeginTime
@@ -5644,7 +5644,7 @@ class TimedEmailParam(AbstractModel):
 
 
 class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
-    """UpdateAddressUnsubscribeConfig请求参数结构体
+    r"""UpdateAddressUnsubscribeConfig请求参数结构体
 
     """
 
@@ -5663,7 +5663,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """发信地址
+        r"""发信地址
         :rtype: str
         """
         return self._Address
@@ -5674,7 +5674,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -5685,7 +5685,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        """0:关闭配置，1:打开配置
+        r"""0:关闭配置，1:打开配置
         :rtype: int
         """
         return self._Status
@@ -5710,7 +5710,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
-    """UpdateAddressUnsubscribeConfig返回参数结构体
+    r"""UpdateAddressUnsubscribeConfig返回参数结构体
 
     """
 
@@ -5723,7 +5723,7 @@ class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5738,7 +5738,7 @@ class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class UpdateCustomBlackListRequest(AbstractModel):
-    """UpdateCustomBlackList请求参数结构体
+    r"""UpdateCustomBlackList请求参数结构体
 
     """
 
@@ -5757,7 +5757,7 @@ class UpdateCustomBlackListRequest(AbstractModel):
 
     @property
     def Id(self):
-        """需要更改的黑名单id
+        r"""需要更改的黑名单id
         :rtype: int
         """
         return self._Id
@@ -5768,7 +5768,7 @@ class UpdateCustomBlackListRequest(AbstractModel):
 
     @property
     def Email(self):
-        """修改后的邮件地址
+        r"""修改后的邮件地址
         :rtype: str
         """
         return self._Email
@@ -5779,7 +5779,7 @@ class UpdateCustomBlackListRequest(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """过期时间，为空则表示永久有效
+        r"""过期时间，为空则表示永久有效
         :rtype: str
         """
         return self._ExpireDate
@@ -5804,7 +5804,7 @@ class UpdateCustomBlackListRequest(AbstractModel):
 
 
 class UpdateCustomBlackListResponse(AbstractModel):
-    """UpdateCustomBlackList返回参数结构体
+    r"""UpdateCustomBlackList返回参数结构体
 
     """
 
@@ -5817,7 +5817,7 @@ class UpdateCustomBlackListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5832,7 +5832,7 @@ class UpdateCustomBlackListResponse(AbstractModel):
 
 
 class UpdateEmailIdentityRequest(AbstractModel):
-    """UpdateEmailIdentity请求参数结构体
+    r"""UpdateEmailIdentity请求参数结构体
 
     """
 
@@ -5845,7 +5845,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """请求验证的域名
+        r"""请求验证的域名
         :rtype: str
         """
         return self._EmailIdentity
@@ -5868,7 +5868,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
 
 class UpdateEmailIdentityResponse(AbstractModel):
-    """UpdateEmailIdentity返回参数结构体
+    r"""UpdateEmailIdentity返回参数结构体
 
     """
 
@@ -5890,7 +5890,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """验证类型。固定值：DOMAIN
+        r"""验证类型。固定值：DOMAIN
         :rtype: str
         """
         return self._IdentityType
@@ -5901,7 +5901,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """是否已通过验证
+        r"""是否已通过验证
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -5912,7 +5912,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """需要配置的DNS信息
+        r"""需要配置的DNS信息
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -5923,7 +5923,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5946,7 +5946,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
 
 class UpdateEmailSmtpPassWordRequest(AbstractModel):
-    """UpdateEmailSmtpPassWord请求参数结构体
+    r"""UpdateEmailSmtpPassWord请求参数结构体
 
     """
 
@@ -5962,7 +5962,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """smtp密码，长度限制64
+        r"""smtp密码，长度限制64
         :rtype: str
         """
         return self._Password
@@ -5973,7 +5973,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """发信邮箱,长度限制128
+        r"""发信邮箱,长度限制128
         :rtype: str
         """
         return self._EmailAddress
@@ -5997,7 +5997,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
 
 class UpdateEmailSmtpPassWordResponse(AbstractModel):
-    """UpdateEmailSmtpPassWord返回参数结构体
+    r"""UpdateEmailSmtpPassWord返回参数结构体
 
     """
 
@@ -6010,7 +6010,7 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6025,7 +6025,7 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
 
 class UpdateEmailTemplateRequest(AbstractModel):
-    """UpdateEmailTemplate请求参数结构体
+    r"""UpdateEmailTemplate请求参数结构体
 
     """
 
@@ -6044,7 +6044,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """模板内容
+        r"""模板内容
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -6055,7 +6055,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板ID
+        r"""模板ID
         :rtype: int
         """
         return self._TemplateID
@@ -6066,7 +6066,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名字
+        r"""模板名字
         :rtype: str
         """
         return self._TemplateName
@@ -6093,7 +6093,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
 
 class UpdateEmailTemplateResponse(AbstractModel):
-    """UpdateEmailTemplate返回参数结构体
+    r"""UpdateEmailTemplate返回参数结构体
 
     """
 
@@ -6106,7 +6106,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6121,7 +6121,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
 
 class Volume(AbstractModel):
-    """统计数据的结构体
+    r"""统计数据的结构体
 
     """
 
@@ -6155,7 +6155,7 @@ class Volume(AbstractModel):
 
     @property
     def SendDate(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._SendDate
@@ -6166,7 +6166,7 @@ class Volume(AbstractModel):
 
     @property
     def RequestCount(self):
-        """邮件请求数量
+        r"""邮件请求数量
         :rtype: int
         """
         return self._RequestCount
@@ -6177,7 +6177,7 @@ class Volume(AbstractModel):
 
     @property
     def AcceptedCount(self):
-        """腾讯云通过数量
+        r"""腾讯云通过数量
         :rtype: int
         """
         return self._AcceptedCount
@@ -6188,7 +6188,7 @@ class Volume(AbstractModel):
 
     @property
     def DeliveredCount(self):
-        """送达数量
+        r"""送达数量
         :rtype: int
         """
         return self._DeliveredCount
@@ -6199,7 +6199,7 @@ class Volume(AbstractModel):
 
     @property
     def OpenedCount(self):
-        """打开邮件的用户数量，根据收件人去重
+        r"""打开邮件的用户数量，根据收件人去重
         :rtype: int
         """
         return self._OpenedCount
@@ -6210,7 +6210,7 @@ class Volume(AbstractModel):
 
     @property
     def ClickedCount(self):
-        """点击了邮件中的链接数量用户数量
+        r"""点击了邮件中的链接数量用户数量
         :rtype: int
         """
         return self._ClickedCount
@@ -6221,7 +6221,7 @@ class Volume(AbstractModel):
 
     @property
     def BounceCount(self):
-        """退信数量
+        r"""退信数量
         :rtype: int
         """
         return self._BounceCount
@@ -6232,7 +6232,7 @@ class Volume(AbstractModel):
 
     @property
     def UnsubscribeCount(self):
-        """取消订阅的用户数量
+        r"""取消订阅的用户数量
         :rtype: int
         """
         return self._UnsubscribeCount

@@ -27,7 +27,7 @@ class DbdcClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """本接口用于查询独享集群内的DB实例列表
+        r"""本接口用于查询独享集群内的DB实例列表
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBInstancesRequest`
@@ -50,7 +50,7 @@ class DbdcClient(AbstractClient):
 
 
     def DescribeHostList(self, request):
-        """本接口用于查询主机列表
+        r"""本接口用于查询主机列表
 
         :param request: Request instance for DescribeHostList.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeHostListRequest`
@@ -73,7 +73,7 @@ class DbdcClient(AbstractClient):
 
 
     def DescribeInstanceDetail(self, request):
-        """本接口用于查询独享集群详情
+        r"""本接口用于查询独享集群详情
 
         :param request: Request instance for DescribeInstanceDetail.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeInstanceDetailRequest`
@@ -96,7 +96,7 @@ class DbdcClient(AbstractClient):
 
 
     def DescribeInstanceList(self, request):
-        """本接口用于查询独享集群实例列表
+        r"""本接口用于查询独享集群实例列表
 
         :param request: Request instance for DescribeInstanceList.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeInstanceListRequest`
@@ -119,7 +119,7 @@ class DbdcClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """根据不同地域不同用户，获取集群列表信息
+        r"""根据不同地域不同用户，获取集群列表信息
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeInstancesRequest`
@@ -142,7 +142,7 @@ class DbdcClient(AbstractClient):
 
 
     def ModifyInstanceName(self, request):
-        """本接口用于修改集群名称
+        r"""本接口用于修改集群名称
 
         :param request: Request instance for ModifyInstanceName.
         :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyInstanceNameRequest`

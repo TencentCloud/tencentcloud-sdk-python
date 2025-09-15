@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CloudDedicatedZoneHostsInfo(AbstractModel):
-    """CDZ的母机和子机的对应关系
+    r"""CDZ的母机和子机的对应关系
 
     """
 
@@ -35,7 +35,7 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
 
     @property
     def HostUuid(self):
-        """Host的唯一标识uuid
+        r"""Host的唯一标识uuid
         :rtype: str
         """
         return self._HostUuid
@@ -46,7 +46,7 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
 
     @property
     def InstancesInfo(self):
-        """实例名称数组
+        r"""实例名称数组
         :rtype: list of str
         """
         return self._InstancesInfo
@@ -70,7 +70,7 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
 
 
 class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
-    """专属可用区资源统计项数据详情，对应一个具体的垂直产品的资源统计项。
+    r"""专属可用区资源统计项数据详情，对应一个具体的垂直产品的资源统计项。
 
     """
 
@@ -110,7 +110,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Item(self):
-        """资源统计项名称
+        r"""资源统计项名称
         :rtype: str
         """
         return self._Item
@@ -121,7 +121,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """资源统计项单位
+        r"""资源统计项单位
         :rtype: str
         """
         return self._Unit
@@ -132,7 +132,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Total(self):
-        """资源总量
+        r"""资源总量
         :rtype: str
         """
         return self._Total
@@ -143,7 +143,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Usage(self):
-        """已用资源
+        r"""已用资源
         :rtype: str
         """
         return self._Usage
@@ -154,7 +154,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def UsageRate(self):
-        """已用资源占比
+        r"""已用资源占比
         :rtype: str
         """
         return self._UsageRate
@@ -165,7 +165,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Remain(self):
-        """剩余资源
+        r"""剩余资源
         :rtype: str
         """
         return self._Remain
@@ -176,7 +176,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def RemainRate(self):
-        """剩余资源占比
+        r"""剩余资源占比
         :rtype: str
         """
         return self._RemainRate
@@ -187,7 +187,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def ThisMondayUsageRate(self):
-        """本周一零点资源使用率
+        r"""本周一零点资源使用率
         :rtype: str
         """
         return self._ThisMondayUsageRate
@@ -198,7 +198,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def ThisMondayUsageGrowthRate(self):
-        """本周资源增长比例
+        r"""本周资源增长比例
         :rtype: str
         """
         return self._ThisMondayUsageGrowthRate
@@ -209,7 +209,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def LastMondayUsageGrowthRate(self):
-        """上周资源增长比例
+        r"""上周资源增长比例
         :rtype: str
         """
         return self._LastMondayUsageGrowthRate
@@ -241,7 +241,7 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
 
 class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
-    """专属可用区资源水位数据详情，对应一个具体的垂直产品。
+    r"""专属可用区资源水位数据详情，对应一个具体的垂直产品。
 
     """
 
@@ -260,7 +260,7 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -271,7 +271,7 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def SubProductName(self):
-        """子产品名称
+        r"""子产品名称
         :rtype: str
         """
         return self._SubProductName
@@ -282,7 +282,7 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def Statistics(self):
-        """资源统计详情
+        r"""资源统计详情
         :rtype: list of CloudDedicatedZoneResourceStatisticsInfo
         """
         return self._Statistics
@@ -312,7 +312,7 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
 
 class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
-    """DescribeCloudDedicatedZoneHosts请求参数结构体
+    r"""DescribeCloudDedicatedZoneHosts请求参数结构体
 
     """
 
@@ -337,7 +337,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def CloudDedicatedZoneID(self):
-        """专属可用区ID 
+        r"""专属可用区ID 
         :rtype: str
         """
         return self._CloudDedicatedZoneID
@@ -348,7 +348,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def HostUuids(self):
-        """一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+        r"""一个或多个Host面的CVM实例信息。最大支持查询100台Host。
         :rtype: list of str
         """
         return self._HostUuids
@@ -359,7 +359,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+        r"""查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -370,7 +370,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
         :rtype: int
         """
         return self._Offset
@@ -381,7 +381,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
         :rtype: int
         """
         return self._Limit
@@ -408,7 +408,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
 
 class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
-    """DescribeCloudDedicatedZoneHosts返回参数结构体
+    r"""DescribeCloudDedicatedZoneHosts返回参数结构体
 
     """
 
@@ -424,7 +424,7 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
     @property
     def CloudDedicatedZoneHostsInfoSet(self):
-        """返回Host和Host上部署的实例信息之间的关系
+        r"""返回Host和Host上部署的实例信息之间的关系
         :rtype: list of CloudDedicatedZoneHostsInfo
         """
         return self._CloudDedicatedZoneHostsInfoSet
@@ -435,7 +435,7 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -456,7 +456,7 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
 
 class DescribeCloudDedicatedZoneResourceSummaryRequest(AbstractModel):
-    """DescribeCloudDedicatedZoneResourceSummary请求参数结构体
+    r"""DescribeCloudDedicatedZoneResourceSummary请求参数结构体
 
     """
 
@@ -469,7 +469,7 @@ class DescribeCloudDedicatedZoneResourceSummaryRequest(AbstractModel):
 
     @property
     def CdzId(self):
-        """专属可用区唯一标识
+        r"""专属可用区唯一标识
         :rtype: str
         """
         return self._CdzId
@@ -492,7 +492,7 @@ class DescribeCloudDedicatedZoneResourceSummaryRequest(AbstractModel):
 
 
 class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
-    """DescribeCloudDedicatedZoneResourceSummary返回参数结构体
+    r"""DescribeCloudDedicatedZoneResourceSummary返回参数结构体
 
     """
 
@@ -511,7 +511,7 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
-        """资源水位详情
+        r"""资源水位详情
         :rtype: list of CloudDedicatedZoneResourceSummaryInfo
         """
         return self._ResourceSummarySet
@@ -522,7 +522,7 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        """资源水位扩展信息
+        r"""资源水位扩展信息
         :rtype: :class:`tencentcloud.cdz.v20221123.models.ExtraInfo`
         """
         return self._ExtraInfo
@@ -533,7 +533,7 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -557,7 +557,7 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    """专属可用区资源水位数据扩展信息，包含可用区当地时间等数据。
+    r"""专属可用区资源水位数据扩展信息，包含可用区当地时间等数据。
 
     """
 
@@ -573,7 +573,7 @@ class ExtraInfo(AbstractModel):
 
     @property
     def ThisMondayLocalDate(self):
-        """专属可用区当地时间本周一日期
+        r"""专属可用区当地时间本周一日期
         :rtype: str
         """
         return self._ThisMondayLocalDate
@@ -584,7 +584,7 @@ class ExtraInfo(AbstractModel):
 
     @property
     def LastMondayLocalDate(self):
-        """专属可用区当地时间上周一日期
+        r"""专属可用区当地时间上周一日期
         :rtype: str
         """
         return self._LastMondayLocalDate

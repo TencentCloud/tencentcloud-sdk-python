@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ManagePortraitRiskInput(AbstractModel):
-    """业务入参
+    r"""业务入参
 
     """
 
@@ -38,7 +38,7 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def PostTime(self):
-        """请求时间戳秒
+        r"""请求时间戳秒
         :rtype: int
         """
         return self._PostTime
@@ -49,7 +49,7 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def UserIp(self):
-        """用户公网ip（仅支持IPv4）
+        r"""用户公网ip（仅支持IPv4）
         :rtype: str
         """
         return self._UserIp
@@ -60,7 +60,7 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def Channel(self):
-        """渠道号
+        r"""渠道号
         :rtype: int
         """
         return self._Channel
@@ -85,7 +85,7 @@ class ManagePortraitRiskInput(AbstractModel):
 
 
 class ManagePortraitRiskOutput(AbstractModel):
-    """业务出参
+    r"""业务出参
 
     """
 
@@ -105,7 +105,7 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Code(self):
-        """返回码（0，成功，其他失败）
+        r"""返回码（0，成功，其他失败）
         :rtype: int
         """
         return self._Code
@@ -116,7 +116,7 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Message(self):
-        """返回码对应的信息
+        r"""返回码对应的信息
         :rtype: str
         """
         return self._Message
@@ -127,7 +127,7 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Value(self):
-        """结果
+        r"""结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskValueOutput`
         """
@@ -155,7 +155,7 @@ class ManagePortraitRiskOutput(AbstractModel):
 
 
 class ManagePortraitRiskRequest(AbstractModel):
-    """ManagePortraitRisk请求参数结构体
+    r"""ManagePortraitRisk请求参数结构体
 
     """
 
@@ -168,7 +168,7 @@ class ManagePortraitRiskRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
-        """业务入参
+        r"""业务入参
         :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskInput`
         """
         return self._BusinessSecurityData
@@ -193,7 +193,7 @@ class ManagePortraitRiskRequest(AbstractModel):
 
 
 class ManagePortraitRiskResponse(AbstractModel):
-    """ManagePortraitRisk返回参数结构体
+    r"""ManagePortraitRisk返回参数结构体
 
     """
 
@@ -210,7 +210,7 @@ class ManagePortraitRiskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务出参
+        r"""业务出参
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskOutput`
         """
@@ -222,7 +222,7 @@ class ManagePortraitRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -240,7 +240,7 @@ class ManagePortraitRiskResponse(AbstractModel):
 
 
 class ManagePortraitRiskValueOutput(AbstractModel):
-    """业务出参
+    r"""业务出参
 
     """
 
@@ -256,7 +256,7 @@ class ManagePortraitRiskValueOutput(AbstractModel):
 
     @property
     def UserIp(self):
-        """对应的IP
+        r"""对应的IP
         :rtype: str
         """
         return self._UserIp
@@ -267,7 +267,7 @@ class ManagePortraitRiskValueOutput(AbstractModel):
 
     @property
     def Level(self):
-        """返回风险等级, 0 - 4，0代表无风险，数值越大，风险越高
+        r"""返回风险等级, 0 - 4，0代表无风险，数值越大，风险越高
         :rtype: int
         """
         return self._Level

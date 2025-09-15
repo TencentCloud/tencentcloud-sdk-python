@@ -27,7 +27,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationRule(self, request):
-        """创建公摊规则
+        r"""创建公摊规则
 
         :param request: Request instance for CreateAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleRequest`
@@ -50,7 +50,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationTag(self, request):
-        """批量设置分账标签
+        r"""批量设置分账标签
 
         :param request: Request instance for CreateAllocationTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagRequest`
@@ -73,7 +73,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationUnit(self, request):
-        """创建分账单元
+        r"""创建分账单元
 
         :param request: Request instance for CreateAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitRequest`
@@ -96,7 +96,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateGatherRule(self, request):
-        """创建归集规则
+        r"""创建归集规则
 
         :param request: Request instance for CreateGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleRequest`
@@ -119,7 +119,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationRule(self, request):
-        """公摊规则删除接口
+        r"""公摊规则删除接口
 
         :param request: Request instance for DeleteAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleRequest`
@@ -142,7 +142,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationTag(self, request):
-        """批量取消设置分账标签
+        r"""批量取消设置分账标签
 
         :param request: Request instance for DeleteAllocationTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagRequest`
@@ -165,7 +165,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationUnit(self, request):
-        """删除分账单元
+        r"""删除分账单元
 
         :param request: Request instance for DeleteAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitRequest`
@@ -188,7 +188,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteGatherRule(self, request):
-        """删除归集规则
+        r"""删除归集规则
 
         :param request: Request instance for DeleteGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleRequest`
@@ -211,7 +211,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAccountBalance(self, request):
-        """获取云账户余额信息。
+        r"""获取云账户余额信息。
 
         :param request: Request instance for DescribeAccountBalance.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceRequest`
@@ -234,7 +234,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocateConditions(self, request):
-        """查询资源目录筛选条件
+        r"""查询资源目录筛选条件
 
         :param request: Request instance for DescribeAllocateConditions.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocateConditionsRequest`
@@ -257,7 +257,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationBillConditions(self, request):
-        """查询分账账单筛选条件
+        r"""查询分账账单筛选条件
 
         :param request: Request instance for DescribeAllocationBillConditions.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillConditionsRequest`
@@ -280,7 +280,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationBillDetail(self, request):
-        """查询分账账单明细
+        r"""查询分账账单明细
 
         :param request: Request instance for DescribeAllocationBillDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillDetailRequest`
@@ -303,7 +303,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationMonthOverview(self, request):
-        """查询分账账单月概览
+        r"""查询分账账单月概览
 
         :param request: Request instance for DescribeAllocationMonthOverview.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationMonthOverviewRequest`
@@ -326,7 +326,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationOverview(self, request):
-        """查询分账账单日概览
+        r"""查询分账账单日概览
 
         :param request: Request instance for DescribeAllocationOverview.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationOverviewRequest`
@@ -349,7 +349,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationRuleDetail(self, request):
-        """查询公摊规则详情
+        r"""查询公摊规则详情
 
         :param request: Request instance for DescribeAllocationRuleDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailRequest`
@@ -372,7 +372,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationRuleSummary(self, request):
-        """查询所有公摊规则概览
+        r"""查询所有公摊规则概览
 
         :param request: Request instance for DescribeAllocationRuleSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryRequest`
@@ -395,7 +395,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationSummaryByBusiness(self, request):
-        """查询分账账单按产品汇总
+        r"""查询分账账单按产品汇总
 
         :param request: Request instance for DescribeAllocationSummaryByBusiness.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByBusinessRequest`
@@ -418,7 +418,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationSummaryByItem(self, request):
-        """查询分账账单按组件汇总
+        r"""查询分账账单按组件汇总
 
         :param request: Request instance for DescribeAllocationSummaryByItem.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByItemRequest`
@@ -441,7 +441,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationSummaryByResource(self, request):
-        """查询分账账单按资源汇总
+        r"""查询分账账单按资源汇总
 
         :param request: Request instance for DescribeAllocationSummaryByResource.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByResourceRequest`
@@ -464,7 +464,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationTree(self, request):
-        """查询分账目录树
+        r"""查询分账目录树
 
         :param request: Request instance for DescribeAllocationTree.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeRequest`
@@ -487,7 +487,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationTrendByMonth(self, request):
-        """查询分账账单费用趋势
+        r"""查询分账账单费用趋势
 
         :param request: Request instance for DescribeAllocationTrendByMonth.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTrendByMonthRequest`
@@ -510,7 +510,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationUnitDetail(self, request):
-        """查询分账单元详情
+        r"""查询分账单元详情
 
         :param request: Request instance for DescribeAllocationUnitDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailRequest`
@@ -533,7 +533,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillAdjustInfo(self, request):
-        """可以通过API获取当前UIN是否有调账，客户可以更快地主动地获取调账情况。
+        r"""可以通过API获取当前UIN是否有调账，客户可以更快地主动地获取调账情况。
 
         :param request: Request instance for DescribeBillAdjustInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoRequest`
@@ -556,7 +556,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """获取账单明细数据。
+        r"""获取账单明细数据。
         注意事项：
         1.在请求接口时，由于网络不稳定或其它异常，可能会导致请求失败。如果您遇到这种情况，我们建议您在接口请求失败时，手动发起重试操作，这样可以更好地确保您的接口请求能够成功执行。
         2.对于账单明细数据量级很大（例如每月账单明细量级超过20w）的客户，通过 API 调用账单数据效率较低，建议您开通账单数据存储功能，通过存储桶中获取账单文件进行分析。[账单存储至COS桶](https://cloud.tencent.com/document/product/555/61275)
@@ -582,7 +582,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetailForOrganization(self, request):
-        """成员账号获取管理账号代付账单（费用明细）。
+        r"""成员账号获取管理账号代付账单（费用明细）。
         注意事项：在请求接口时，由于网络不稳定或其它异常，可能会导致请求失败。如果您遇到这种情况，我们建议您在接口请求失败时，手动发起重试操作，这样可以更好地确保您的接口请求能够成功执行。
 
         :param request: Request instance for DescribeBillDetailForOrganization.
@@ -606,7 +606,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDownloadUrl(self, request):
-        """该接口支持通过传参，获取L0-PDF、L1-汇总、L2-资源、L3-明细、账单包、五类账单文件下载链接
+        r"""该接口支持通过传参，获取L0-PDF、L1-汇总、L2-资源、L3-明细、账单包、五类账单文件下载链接
 
         :param request: Request instance for DescribeBillDownloadUrl.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDownloadUrlRequest`
@@ -629,7 +629,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillList(self, request):
-        """获取收支明细列表，支持翻页和参数过滤
+        r"""获取收支明细列表，支持翻页和参数过滤
 
         :param request: Request instance for DescribeBillList.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillListRequest`
@@ -652,7 +652,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillResourceSummary(self, request):
-        """获取账单资源汇总数据
+        r"""获取账单资源汇总数据
 
         :param request: Request instance for DescribeBillResourceSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryRequest`
@@ -675,7 +675,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillResourceSummaryForOrganization(self, request):
-        """成员账号获取管理账号代付账单（按资源汇总）
+        r"""成员账号获取管理账号代付账单（按资源汇总）
 
         :param request: Request instance for DescribeBillResourceSummaryForOrganization.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryForOrganizationRequest`
@@ -698,7 +698,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummary(self, request):
-        """该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+        r"""该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
 
         :param request: Request instance for DescribeBillSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryRequest`
@@ -721,7 +721,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByPayMode(self, request):
-        """获取按计费模式汇总费用分布
+        r"""获取按计费模式汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`
@@ -744,7 +744,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByProduct(self, request):
-        """获取产品汇总费用分布
+        r"""获取产品汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByProduct.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductRequest`
@@ -767,7 +767,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByProject(self, request):
-        """获取按项目汇总费用分布
+        r"""获取按项目汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByProject.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectRequest`
@@ -790,7 +790,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByRegion(self, request):
-        """获取按地域汇总费用分布
+        r"""获取按地域汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByRegion.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionRequest`
@@ -813,7 +813,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByTag(self, request):
-        """获取按标签汇总费用分布
+        r"""获取按标签汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagRequest`
@@ -836,7 +836,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryForOrganization(self, request):
-        """该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+        r"""该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
 
         :param request: Request instance for DescribeBillSummaryForOrganization.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryForOrganizationRequest`
@@ -859,7 +859,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostDetail(self, request):
-        """查询消耗明细
+        r"""查询消耗明细
 
         注意事项：
         1. 对于消耗明细数据量级很大（例如每月消耗明细量级超过100w）的客户，通过 API 调用明细数据会有超时风险，建议您开通消耗账单数据存储功能，通过存储桶中获取账单文件进行分析。[账单存储至COS桶](https://cloud.tencent.com/document/product/555/61275)
@@ -885,7 +885,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostExplorerSummary(self, request):
-        """查看成本分析明细
+        r"""查看成本分析明细
 
         :param request: Request instance for DescribeCostExplorerSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostExplorerSummaryRequest`
@@ -908,7 +908,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByProduct(self, request):
-        """获取按产品汇总消耗详情
+        r"""获取按产品汇总消耗详情
 
         :param request: Request instance for DescribeCostSummaryByProduct.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductRequest`
@@ -931,7 +931,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByProject(self, request):
-        """获取按项目汇总消耗详情
+        r"""获取按项目汇总消耗详情
 
         :param request: Request instance for DescribeCostSummaryByProject.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectRequest`
@@ -954,7 +954,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByRegion(self, request):
-        """获取按地域汇总消耗详情
+        r"""获取按地域汇总消耗详情
 
         :param request: Request instance for DescribeCostSummaryByRegion.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionRequest`
@@ -977,7 +977,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByResource(self, request):
-        """获取按资源汇总消耗详情
+        r"""获取按资源汇总消耗详情
 
         :param request: Request instance for DescribeCostSummaryByResource.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceRequest`
@@ -1000,7 +1000,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDealsByCond(self, request):
-        """查询订单
+        r"""查询订单
 
         :param request: Request instance for DescribeDealsByCond.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondRequest`
@@ -1023,7 +1023,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDosageCosDetailByDate(self, request):
-        """获取COS产品用量明细
+        r"""获取COS产品用量明细
 
         :param request: Request instance for DescribeDosageCosDetailByDate.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageCosDetailByDateRequest`
@@ -1046,7 +1046,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDosageDetailByDate(self, request):
-        """按日期获取产品用量明细
+        r"""按日期获取产品用量明细
 
         :param request: Request instance for DescribeDosageDetailByDate.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailByDateRequest`
@@ -1069,7 +1069,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDosageDetailList(self, request):
-        """获取已接入标准用量明细模板产品的用量明细数据，目前已接入并支持查询的产品包括：云联络中心、实时音视频、实时音视频、智能媒资托管、CODING DevOps、全球IP应用加速
+        r"""获取已接入标准用量明细模板产品的用量明细数据，目前已接入并支持查询的产品包括：云联络中心、实时音视频、实时音视频、智能媒资托管、CODING DevOps、全球IP应用加速
 
         :param request: Request instance for DescribeDosageDetailList.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailListRequest`
@@ -1092,7 +1092,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeGatherResource(self, request):
-        """查询分账账单资源归集汇总
+        r"""查询分账账单资源归集汇总
 
         :param request: Request instance for DescribeGatherResource.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherResourceRequest`
@@ -1115,7 +1115,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeGatherRuleDetail(self, request):
-        """查询归集规则详情
+        r"""查询归集规则详情
 
         :param request: Request instance for DescribeGatherRuleDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailRequest`
@@ -1138,7 +1138,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeSavingPlanResourceInfo(self, request):
-        """查询节省计划详情
+        r"""查询节省计划详情
 
         :param request: Request instance for DescribeSavingPlanResourceInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanResourceInfoRequest`
@@ -1161,7 +1161,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeTagList(self, request):
-        """获取分账标签
+        r"""获取分账标签
 
         :param request: Request instance for DescribeTagList.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeTagListRequest`
@@ -1184,7 +1184,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherInfo(self, request):
-        """获取代金券相关信息
+        r"""获取代金券相关信息
 
         :param request: Request instance for DescribeVoucherInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherInfoRequest`
@@ -1207,7 +1207,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherUsageDetails(self, request):
-        """获取代金券使用记录
+        r"""获取代金券使用记录
 
         :param request: Request instance for DescribeVoucherUsageDetails.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherUsageDetailsRequest`
@@ -1230,7 +1230,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyAllocationRule(self, request):
-        """编辑公摊规则
+        r"""编辑公摊规则
 
         :param request: Request instance for ModifyAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleRequest`
@@ -1253,7 +1253,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyAllocationUnit(self, request):
-        """修改分账单元信息
+        r"""修改分账单元信息
 
         :param request: Request instance for ModifyAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitRequest`
@@ -1276,7 +1276,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyGatherRule(self, request):
-        """编辑归集规则
+        r"""编辑归集规则
 
         :param request: Request instance for ModifyGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleRequest`
@@ -1299,7 +1299,7 @@ class BillingClient(AbstractClient):
 
 
     def PayDeals(self, request):
-        """支付订单
+        r"""支付订单
 
         :param request: Request instance for PayDeals.
         :type request: :class:`tencentcloud.billing.v20180709.models.PayDealsRequest`

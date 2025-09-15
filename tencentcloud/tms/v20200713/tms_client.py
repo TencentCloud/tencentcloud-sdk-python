@@ -27,7 +27,7 @@ class TmsClient(AbstractClient):
 
 
     def AccountTipoffAccess(self, request):
-        """举报恶意账号
+        r"""举报恶意账号
 
         :param request: Request instance for AccountTipoffAccess.
         :type request: :class:`tencentcloud.tms.v20200713.models.AccountTipoffAccessRequest`
@@ -50,7 +50,7 @@ class TmsClient(AbstractClient):
 
 
     def DescribeTextLib(self, request):
-        """控制台获取用户词库列表
+        r"""控制台获取用户词库列表
 
         :param request: Request instance for DescribeTextLib.
         :type request: :class:`tencentcloud.tms.v20200713.models.DescribeTextLibRequest`
@@ -73,7 +73,7 @@ class TmsClient(AbstractClient):
 
 
     def DescribeTextStat(self, request):
-        """控制台识别统计
+        r"""控制台识别统计
 
         :param request: Request instance for DescribeTextStat.
         :type request: :class:`tencentcloud.tms.v20200713.models.DescribeTextStatRequest`
@@ -96,7 +96,7 @@ class TmsClient(AbstractClient):
 
 
     def TextModeration(self, request):
-        """文本内容检测（Text Moderation）服务使用了深度学习技术，识别可能令人反感、不安全或不适宜的文本内容，同时支持用户配置词库黑白名单，打击自定义识别类型的图片。
+        r"""文本内容检测（Text Moderation）服务使用了深度学习技术，识别可能令人反感、不安全或不适宜的文本内容，同时支持用户配置词库黑白名单，打击自定义识别类型的图片。
 
         :param request: Request instance for TextModeration.
         :type request: :class:`tencentcloud.tms.v20200713.models.TextModerationRequest`

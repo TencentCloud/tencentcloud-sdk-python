@@ -27,7 +27,7 @@ class CdwchClient(AbstractClient):
 
 
     def ActionAlterCkUser(self, request):
-        """新增和修改用户接口
+        r"""新增和修改用户接口
 
         :param request: Request instance for ActionAlterCkUser.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ActionAlterCkUserRequest`
@@ -50,7 +50,7 @@ class CdwchClient(AbstractClient):
 
 
     def CreateBackUpSchedule(self, request):
-        """创建或者修改备份策略
+        r"""创建或者修改备份策略
 
         :param request: Request instance for CreateBackUpSchedule.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.CreateBackUpScheduleRequest`
@@ -73,7 +73,7 @@ class CdwchClient(AbstractClient):
 
 
     def CreateInstanceNew(self, request):
-        """创建集群
+        r"""创建集群
 
         :param request: Request instance for CreateInstanceNew.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.CreateInstanceNewRequest`
@@ -96,7 +96,7 @@ class CdwchClient(AbstractClient):
 
 
     def DeleteBackUpData(self, request):
-        """删除备份数据
+        r"""删除备份数据
 
         :param request: Request instance for DeleteBackUpData.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DeleteBackUpDataRequest`
@@ -119,7 +119,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeBackUpJob(self, request):
-        """查询备份任务列表
+        r"""查询备份任务列表
 
         :param request: Request instance for DescribeBackUpJob.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpJobRequest`
@@ -142,7 +142,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeBackUpJobDetail(self, request):
-        """查询备份任务详情
+        r"""查询备份任务详情
 
         :param request: Request instance for DescribeBackUpJobDetail.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpJobDetailRequest`
@@ -165,7 +165,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeBackUpSchedule(self, request):
-        """查询备份策略信息
+        r"""查询备份策略信息
 
         :param request: Request instance for DescribeBackUpSchedule.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpScheduleRequest`
@@ -188,7 +188,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeBackUpTables(self, request):
-        """获取可备份表信息
+        r"""获取可备份表信息
 
         :param request: Request instance for DescribeBackUpTables.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpTablesRequest`
@@ -211,7 +211,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeCNInstances(self, request):
-        """获取云原生实例列表
+        r"""获取云原生实例列表
 
         :param request: Request instance for DescribeCNInstances.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeCNInstancesRequest`
@@ -234,7 +234,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeCkSqlApis(self, request):
-        """查询集群用户、集群表，数据库等相关信息
+        r"""查询集群用户、集群表，数据库等相关信息
 
         :param request: Request instance for DescribeCkSqlApis.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeCkSqlApisRequest`
@@ -257,7 +257,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeClusterConfigs(self, request):
-        """获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+        r"""获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 
         :param request: Request instance for DescribeClusterConfigs.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeClusterConfigsRequest`
@@ -280,7 +280,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """根据实例ID查询某个实例的具体信息
+        r"""根据实例ID查询某个实例的具体信息
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceRequest`
@@ -303,7 +303,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstanceClusters(self, request):
-        """集群vcluster列表
+        r"""集群vcluster列表
 
         :param request: Request instance for DescribeInstanceClusters.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceClustersRequest`
@@ -326,7 +326,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstanceKeyValConfigs(self, request):
-        """在集群详情页面获取所有参数列表
+        r"""在集群详情页面获取所有参数列表
 
         :param request: Request instance for DescribeInstanceKeyValConfigs.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceKeyValConfigsRequest`
@@ -349,7 +349,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """获取实例节点信息列表
+        r"""获取实例节点信息列表
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceNodesRequest`
@@ -372,7 +372,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstanceShards(self, request):
-        """获取实例shard信息列表
+        r"""获取实例shard信息列表
 
         :param request: Request instance for DescribeInstanceShards.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceShardsRequest`
@@ -395,7 +395,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstanceState(self, request):
-        """集群详情页中显示集群状态、流程进度等
+        r"""集群详情页中显示集群状态、流程进度等
 
         :param request: Request instance for DescribeInstanceState.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceStateRequest`
@@ -418,7 +418,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeInstancesNew(self, request):
-        """获取实例列表，供外部sdk使用
+        r"""获取实例列表，供外部sdk使用
 
         :param request: Request instance for DescribeInstancesNew.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstancesNewRequest`
@@ -441,7 +441,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeSpec(self, request):
-        """购买页拉取集群的数据节点和zookeeper节点的规格列表
+        r"""购买页拉取集群的数据节点和zookeeper节点的规格列表
 
         :param request: Request instance for DescribeSpec.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeSpecRequest`
@@ -464,7 +464,7 @@ class CdwchClient(AbstractClient):
 
 
     def DestroyInstance(self, request):
-        """销毁集群 open api
+        r"""销毁集群 open api
 
         :param request: Request instance for DestroyInstance.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DestroyInstanceRequest`
@@ -487,7 +487,7 @@ class CdwchClient(AbstractClient):
 
 
     def ModifyClusterConfigs(self, request):
-        """在集群配置页面修改集群配置文件接口，xml模式
+        r"""在集群配置页面修改集群配置文件接口，xml模式
 
         :param request: Request instance for ModifyClusterConfigs.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ModifyClusterConfigsRequest`
@@ -510,7 +510,7 @@ class CdwchClient(AbstractClient):
 
 
     def ModifyInstanceKeyValConfigs(self, request):
-        """KV模式修改配置接口
+        r"""KV模式修改配置接口
 
         :param request: Request instance for ModifyInstanceKeyValConfigs.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ModifyInstanceKeyValConfigsRequest`
@@ -533,7 +533,7 @@ class CdwchClient(AbstractClient):
 
 
     def ModifyUserNewPrivilege(self, request):
-        """针对集群账号的权限做管控（新版）
+        r"""针对集群账号的权限做管控（新版）
 
         :param request: Request instance for ModifyUserNewPrivilege.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ModifyUserNewPrivilegeRequest`
@@ -556,7 +556,7 @@ class CdwchClient(AbstractClient):
 
 
     def OpenBackUp(self, request):
-        """开启或者关闭策略
+        r"""开启或者关闭策略
 
         :param request: Request instance for OpenBackUp.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.OpenBackUpRequest`
@@ -579,7 +579,7 @@ class CdwchClient(AbstractClient):
 
 
     def RecoverBackUpJob(self, request):
-        """备份恢复
+        r"""备份恢复
 
         :param request: Request instance for RecoverBackUpJob.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.RecoverBackUpJobRequest`
@@ -602,7 +602,7 @@ class CdwchClient(AbstractClient):
 
 
     def ResizeDisk(self, request):
-        """扩容磁盘，包含扩容数据节点，zk节点
+        r"""扩容磁盘，包含扩容数据节点，zk节点
 
         :param request: Request instance for ResizeDisk.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ResizeDiskRequest`
@@ -625,7 +625,7 @@ class CdwchClient(AbstractClient):
 
 
     def ScaleCNOutUpInstance(self, request):
-        """open-api接口提供弹性伸缩云原生集群能力
+        r"""open-api接口提供弹性伸缩云原生集群能力
 
         :param request: Request instance for ScaleCNOutUpInstance.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleCNOutUpInstanceRequest`
@@ -648,7 +648,7 @@ class CdwchClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """调整clickhouse节点数量
+        r"""调整clickhouse节点数量
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleOutInstanceRequest`
@@ -671,7 +671,7 @@ class CdwchClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
+        r"""垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleUpInstanceRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APIGWParams(AbstractModel):
-    """APIGWParams描述
+    r"""APIGWParams描述
 
     """
 
@@ -35,7 +35,7 @@ class APIGWParams(AbstractModel):
 
     @property
     def Protocol(self):
-        """HTTPS
+        r"""HTTPS
         :rtype: str
         """
         return self._Protocol
@@ -46,7 +46,7 @@ class APIGWParams(AbstractModel):
 
     @property
     def Method(self):
-        """POST
+        r"""POST
         :rtype: str
         """
         return self._Method
@@ -70,7 +70,7 @@ class APIGWParams(AbstractModel):
 
 
 class CheckRuleRequest(AbstractModel):
-    """CheckRule请求参数结构体
+    r"""CheckRule请求参数结构体
 
     """
 
@@ -86,7 +86,7 @@ class CheckRuleRequest(AbstractModel):
 
     @property
     def Event(self):
-        """Event信息
+        r"""Event信息
         :rtype: str
         """
         return self._Event
@@ -97,7 +97,7 @@ class CheckRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
-        """EventPattern信息
+        r"""EventPattern信息
         :rtype: str
         """
         return self._EventPattern
@@ -121,7 +121,7 @@ class CheckRuleRequest(AbstractModel):
 
 
 class CheckRuleResponse(AbstractModel):
-    """CheckRule返回参数结构体
+    r"""CheckRule返回参数结构体
 
     """
 
@@ -134,7 +134,7 @@ class CheckRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -149,7 +149,7 @@ class CheckRuleResponse(AbstractModel):
 
 
 class CheckTransformationRequest(AbstractModel):
-    """CheckTransformation请求参数结构体
+    r"""CheckTransformation请求参数结构体
 
     """
 
@@ -165,7 +165,7 @@ class CheckTransformationRequest(AbstractModel):
 
     @property
     def Input(self):
-        """待处理的json字符串
+        r"""待处理的json字符串
         :rtype: str
         """
         return self._Input
@@ -176,7 +176,7 @@ class CheckTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
-        """一个转换规则列表
+        r"""一个转换规则列表
         :rtype: list of Transformation
         """
         return self._Transformations
@@ -205,7 +205,7 @@ class CheckTransformationRequest(AbstractModel):
 
 
 class CheckTransformationResponse(AbstractModel):
-    """CheckTransformation返回参数结构体
+    r"""CheckTransformation返回参数结构体
 
     """
 
@@ -221,7 +221,7 @@ class CheckTransformationResponse(AbstractModel):
 
     @property
     def Output(self):
-        """经过Transformations处理之后的数据
+        r"""经过Transformations处理之后的数据
         :rtype: str
         """
         return self._Output
@@ -232,7 +232,7 @@ class CheckTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -248,7 +248,7 @@ class CheckTransformationResponse(AbstractModel):
 
 
 class CkafkaDeliveryParams(AbstractModel):
-    """用来描述需要投递到kafka topic的参数
+    r"""用来描述需要投递到kafka topic的参数
 
     """
 
@@ -264,7 +264,7 @@ class CkafkaDeliveryParams(AbstractModel):
 
     @property
     def TopicName(self):
-        """ckafka topic name
+        r"""ckafka topic name
         :rtype: str
         """
         return self._TopicName
@@ -275,7 +275,7 @@ class CkafkaDeliveryParams(AbstractModel):
 
     @property
     def ResourceDescription(self):
-        """ckafka资源qcs六段式
+        r"""ckafka资源qcs六段式
         :rtype: str
         """
         return self._ResourceDescription
@@ -299,7 +299,7 @@ class CkafkaDeliveryParams(AbstractModel):
 
 
 class CkafkaParams(AbstractModel):
-    """Ckafka 连接器参数
+    r"""Ckafka 连接器参数
 
     """
 
@@ -315,7 +315,7 @@ class CkafkaParams(AbstractModel):
 
     @property
     def Offset(self):
-        """kafka offset
+        r"""kafka offset
         :rtype: str
         """
         return self._Offset
@@ -326,7 +326,7 @@ class CkafkaParams(AbstractModel):
 
     @property
     def TopicName(self):
-        """ckafka  topic
+        r"""ckafka  topic
         :rtype: str
         """
         return self._TopicName
@@ -350,7 +350,7 @@ class CkafkaParams(AbstractModel):
 
 
 class CkafkaTargetParams(AbstractModel):
-    """用来描述ckafka投递目标
+    r"""用来描述ckafka投递目标
 
     """
 
@@ -366,7 +366,7 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def TopicName(self):
-        """要投递到的ckafka topic
+        r"""要投递到的ckafka topic
         :rtype: str
         """
         return self._TopicName
@@ -377,7 +377,7 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def RetryPolicy(self):
-        """重试策略
+        r"""重试策略
         :rtype: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
         """
         return self._RetryPolicy
@@ -403,7 +403,7 @@ class CkafkaTargetParams(AbstractModel):
 
 
 class Connection(AbstractModel):
-    """Connection信息
+    r"""Connection信息
 
     """
 
@@ -443,7 +443,7 @@ class Connection(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -454,7 +454,7 @@ class Connection(AbstractModel):
 
     @property
     def ModTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._ModTime
@@ -465,7 +465,7 @@ class Connection(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关
+        r"""使能开关
         :rtype: bool
         """
         return self._Enable
@@ -476,7 +476,7 @@ class Connection(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -487,7 +487,7 @@ class Connection(AbstractModel):
 
     @property
     def AddTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._AddTime
@@ -498,7 +498,7 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionId(self):
-        """连接器ID
+        r"""连接器ID
         :rtype: str
         """
         return self._ConnectionId
@@ -509,7 +509,7 @@ class Connection(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -520,7 +520,7 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionDescription(self):
-        """连接器描述
+        r"""连接器描述
         :rtype: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
         """
         return self._ConnectionDescription
@@ -531,7 +531,7 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectionName
@@ -542,7 +542,7 @@ class Connection(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -576,7 +576,7 @@ class Connection(AbstractModel):
 
 
 class ConnectionBrief(AbstractModel):
-    """连接器基础信息
+    r"""连接器基础信息
 
     """
 
@@ -594,7 +594,7 @@ class ConnectionBrief(AbstractModel):
 
     @property
     def Type(self):
-        """连接器类型
+        r"""连接器类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -606,7 +606,7 @@ class ConnectionBrief(AbstractModel):
 
     @property
     def Status(self):
-        """连接器状态
+        r"""连接器状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -631,7 +631,7 @@ class ConnectionBrief(AbstractModel):
 
 
 class ConnectionDescription(AbstractModel):
-    """ConnectionDescription描述
+    r"""ConnectionDescription描述
 
     """
 
@@ -660,7 +660,7 @@ class ConnectionDescription(AbstractModel):
 
     @property
     def ResourceDescription(self):
-        """资源qcs六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)
+        r"""资源qcs六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)
         :rtype: str
         """
         return self._ResourceDescription
@@ -671,7 +671,7 @@ class ConnectionDescription(AbstractModel):
 
     @property
     def APIGWParams(self):
-        """apigw参数
+        r"""apigw参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.APIGWParams`
         """
@@ -683,7 +683,7 @@ class ConnectionDescription(AbstractModel):
 
     @property
     def CkafkaParams(self):
-        """ckafka参数
+        r"""ckafka参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaParams`
         """
@@ -695,7 +695,7 @@ class ConnectionDescription(AbstractModel):
 
     @property
     def DTSParams(self):
-        """data transfer service (DTS)参数
+        r"""data transfer service (DTS)参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.DTSParams`
         """
@@ -707,7 +707,7 @@ class ConnectionDescription(AbstractModel):
 
     @property
     def TDMQParams(self):
-        """tdmq参数
+        r"""tdmq参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.TDMQParams`
         """
@@ -743,7 +743,7 @@ class ConnectionDescription(AbstractModel):
 
 
 class CreateConnectionRequest(AbstractModel):
-    """CreateConnection请求参数结构体
+    r"""CreateConnection请求参数结构体
 
     """
 
@@ -771,7 +771,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionDescription(self):
-        """连接器描述
+        r"""连接器描述
         :rtype: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
         """
         return self._ConnectionDescription
@@ -782,7 +782,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -793,7 +793,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectionName
@@ -804,7 +804,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -815,7 +815,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关
+        r"""使能开关
         :rtype: bool
         """
         return self._Enable
@@ -826,7 +826,7 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Type(self):
-        """连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
+        r"""连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
         :rtype: str
         """
         return self._Type
@@ -856,7 +856,7 @@ class CreateConnectionRequest(AbstractModel):
 
 
 class CreateConnectionResponse(AbstractModel):
-    """CreateConnection返回参数结构体
+    r"""CreateConnection返回参数结构体
 
     """
 
@@ -872,7 +872,7 @@ class CreateConnectionResponse(AbstractModel):
 
     @property
     def ConnectionId(self):
-        """连接器ID
+        r"""连接器ID
         :rtype: str
         """
         return self._ConnectionId
@@ -883,7 +883,7 @@ class CreateConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -899,7 +899,7 @@ class CreateConnectionResponse(AbstractModel):
 
 
 class CreateEventBusRequest(AbstractModel):
-    """CreateEventBus请求参数结构体
+    r"""CreateEventBus请求参数结构体
 
     """
 
@@ -921,7 +921,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
-        """事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        r"""事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :rtype: str
         """
         return self._EventBusName
@@ -932,7 +932,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
-        """事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        r"""事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :rtype: str
         """
         return self._Description
@@ -943,7 +943,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
-        """EB存储时长
+        r"""EB存储时长
         :rtype: int
         """
         return self._SaveDays
@@ -954,7 +954,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
-        """EB是否开启存储
+        r"""EB是否开启存储
         :rtype: bool
         """
         return self._EnableStore
@@ -980,7 +980,7 @@ class CreateEventBusRequest(AbstractModel):
 
 
 class CreateEventBusResponse(AbstractModel):
-    """CreateEventBus返回参数结构体
+    r"""CreateEventBus返回参数结构体
 
     """
 
@@ -996,7 +996,7 @@ class CreateEventBusResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1007,7 +1007,7 @@ class CreateEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1023,7 +1023,7 @@ class CreateEventBusResponse(AbstractModel):
 
 
 class CreateRuleRequest(AbstractModel):
-    """CreateRule请求参数结构体
+    r"""CreateRule请求参数结构体
 
     """
 
@@ -1048,7 +1048,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
-        """参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
+        r"""参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
         :rtype: str
         """
         return self._EventPattern
@@ -1059,7 +1059,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1070,7 +1070,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        r"""事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :rtype: str
         """
         return self._RuleName
@@ -1081,7 +1081,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关。
+        r"""使能开关。
         :rtype: bool
         """
         return self._Enable
@@ -1092,7 +1092,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        r"""事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :rtype: str
         """
         return self._Description
@@ -1119,7 +1119,7 @@ class CreateRuleRequest(AbstractModel):
 
 
 class CreateRuleResponse(AbstractModel):
-    """CreateRule返回参数结构体
+    r"""CreateRule返回参数结构体
 
     """
 
@@ -1135,7 +1135,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -1146,7 +1146,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1162,7 +1162,7 @@ class CreateRuleResponse(AbstractModel):
 
 
 class CreateTargetRequest(AbstractModel):
-    """CreateTarget请求参数结构体
+    r"""CreateTarget请求参数结构体
 
     """
 
@@ -1193,7 +1193,7 @@ es类型示例:
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1204,7 +1204,7 @@ es类型示例:
 
     @property
     def Type(self):
-        """目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
+        r"""目标类型;取值范围:scf(云函数)/cls(日志服务)/amp(消息推送)/ckafka(消息推送)/es(大数据elastic-search)
         :rtype: str
         """
         return self._Type
@@ -1215,7 +1215,7 @@ es类型示例:
 
     @property
     def TargetDescription(self):
-        """目标描述;scf类型示例:
+        r"""目标描述;scf类型示例:
 {"ResourceDescription":"qcs::scf:ap-guangzhou:uin/2252646423:namespace/default/function/john-test-0326/$LATEST"};
 cls类型示例:
 {"ResourceDescription":"qcs::cls:ap-guangzhou:uin/12323442323:topic/7103f705-6c38-4b64-ac9d-428af0f2e732"}
@@ -1235,7 +1235,7 @@ es类型示例:
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -1263,7 +1263,7 @@ es类型示例:
 
 
 class CreateTargetResponse(AbstractModel):
-    """CreateTarget返回参数结构体
+    r"""CreateTarget返回参数结构体
 
     """
 
@@ -1279,7 +1279,7 @@ class CreateTargetResponse(AbstractModel):
 
     @property
     def TargetId(self):
-        """目标ID
+        r"""目标ID
         :rtype: str
         """
         return self._TargetId
@@ -1290,7 +1290,7 @@ class CreateTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1306,7 +1306,7 @@ class CreateTargetResponse(AbstractModel):
 
 
 class CreateTransformationRequest(AbstractModel):
-    """CreateTransformation请求参数结构体
+    r"""CreateTransformation请求参数结构体
 
     """
 
@@ -1325,7 +1325,7 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件总线 id
+        r"""事件总线 id
         :rtype: str
         """
         return self._EventBusId
@@ -1336,7 +1336,7 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则id
+        r"""规则id
         :rtype: str
         """
         return self._RuleId
@@ -1347,7 +1347,7 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
-        """一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
+        r"""一个转换规则列表，当前仅限定一个;示例如下：[{"Extraction":{"ExtractionInputPath":"$.data.payload","Format":"JSON"},"EtlFilter":{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"},"Transform":{"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"},{"Key":"table","Value":"$.source.table","ValueType":"JSONPATH"},{"Key":"id","Value":"$.after.id","ValueType":"JSONPATH"},{"Key":"app_id","Value":"$.after.app_id","ValueType":"JSONPATH"},{"Key":"spu_id","Value":"$.after.spu_id","ValueType":"JSONPATH"}]}}]
         :rtype: list of Transformation
         """
         return self._Transformations
@@ -1377,7 +1377,7 @@ class CreateTransformationRequest(AbstractModel):
 
 
 class CreateTransformationResponse(AbstractModel):
-    """CreateTransformation返回参数结构体
+    r"""CreateTransformation返回参数结构体
 
     """
 
@@ -1393,7 +1393,7 @@ class CreateTransformationResponse(AbstractModel):
 
     @property
     def TransformationId(self):
-        """生成的转换器id
+        r"""生成的转换器id
         :rtype: str
         """
         return self._TransformationId
@@ -1404,7 +1404,7 @@ class CreateTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1420,7 +1420,7 @@ class CreateTransformationResponse(AbstractModel):
 
 
 class DTSParams(AbstractModel):
-    """Data Transfer Service参数
+    r"""Data Transfer Service参数
 
     """
 
@@ -1440,7 +1440,7 @@ class DTSParams(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer Group Name
+        r"""Consumer Group Name
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -1451,7 +1451,7 @@ class DTSParams(AbstractModel):
 
     @property
     def Account(self):
-        """账户名
+        r"""账户名
         :rtype: str
         """
         return self._Account
@@ -1462,7 +1462,7 @@ class DTSParams(AbstractModel):
 
     @property
     def Password(self):
-        """密码
+        r"""密码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1488,7 +1488,7 @@ class DTSParams(AbstractModel):
 
 
 class DeadLetterConfig(AbstractModel):
-    """rule对应的dlq配置
+    r"""rule对应的dlq配置
 
     """
 
@@ -1505,7 +1505,7 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def DisposeMethod(self):
-        """支持dlq、丢弃、忽略错误继续传递三种模式, 分别对应: DLQ,DROP,IGNORE_ERROR
+        r"""支持dlq、丢弃、忽略错误继续传递三种模式, 分别对应: DLQ,DROP,IGNORE_ERROR
         :rtype: str
         """
         return self._DisposeMethod
@@ -1516,7 +1516,7 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def CkafkaDeliveryParams(self):
-        """设置了DLQ方式后,此选项必填. 错误消息会被投递到对应的kafka topic中
+        r"""设置了DLQ方式后,此选项必填. 错误消息会被投递到对应的kafka topic中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaDeliveryParams`
         """
@@ -1543,7 +1543,7 @@ class DeadLetterConfig(AbstractModel):
 
 
 class DeleteConnectionRequest(AbstractModel):
-    """DeleteConnection请求参数结构体
+    r"""DeleteConnection请求参数结构体
 
     """
 
@@ -1559,7 +1559,7 @@ class DeleteConnectionRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        """连接器ID
+        r"""连接器ID
         :rtype: str
         """
         return self._ConnectionId
@@ -1570,7 +1570,7 @@ class DeleteConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1594,7 +1594,7 @@ class DeleteConnectionRequest(AbstractModel):
 
 
 class DeleteConnectionResponse(AbstractModel):
-    """DeleteConnection返回参数结构体
+    r"""DeleteConnection返回参数结构体
 
     """
 
@@ -1607,7 +1607,7 @@ class DeleteConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1622,7 +1622,7 @@ class DeleteConnectionResponse(AbstractModel):
 
 
 class DeleteEventBusRequest(AbstractModel):
-    """DeleteEventBus请求参数结构体
+    r"""DeleteEventBus请求参数结构体
 
     """
 
@@ -1635,7 +1635,7 @@ class DeleteEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1658,7 +1658,7 @@ class DeleteEventBusRequest(AbstractModel):
 
 
 class DeleteEventBusResponse(AbstractModel):
-    """DeleteEventBus返回参数结构体
+    r"""DeleteEventBus返回参数结构体
 
     """
 
@@ -1671,7 +1671,7 @@ class DeleteEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1686,7 +1686,7 @@ class DeleteEventBusResponse(AbstractModel):
 
 
 class DeleteRuleRequest(AbstractModel):
-    """DeleteRule请求参数结构体
+    r"""DeleteRule请求参数结构体
 
     """
 
@@ -1702,7 +1702,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1713,7 +1713,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -1737,7 +1737,7 @@ class DeleteRuleRequest(AbstractModel):
 
 
 class DeleteRuleResponse(AbstractModel):
-    """DeleteRule返回参数结构体
+    r"""DeleteRule返回参数结构体
 
     """
 
@@ -1750,7 +1750,7 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1765,7 +1765,7 @@ class DeleteRuleResponse(AbstractModel):
 
 
 class DeleteTargetRequest(AbstractModel):
-    """DeleteTarget请求参数结构体
+    r"""DeleteTarget请求参数结构体
 
     """
 
@@ -1784,7 +1784,7 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1795,7 +1795,7 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def TargetId(self):
-        """事件目标ID
+        r"""事件目标ID
         :rtype: str
         """
         return self._TargetId
@@ -1806,7 +1806,7 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -1831,7 +1831,7 @@ class DeleteTargetRequest(AbstractModel):
 
 
 class DeleteTargetResponse(AbstractModel):
-    """DeleteTarget返回参数结构体
+    r"""DeleteTarget返回参数结构体
 
     """
 
@@ -1844,7 +1844,7 @@ class DeleteTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1859,7 +1859,7 @@ class DeleteTargetResponse(AbstractModel):
 
 
 class DeleteTransformationRequest(AbstractModel):
-    """DeleteTransformation请求参数结构体
+    r"""DeleteTransformation请求参数结构体
 
     """
 
@@ -1878,7 +1878,7 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -1889,7 +1889,7 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._RuleId
@@ -1900,7 +1900,7 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
-        """转换器id
+        r"""转换器id
         :rtype: str
         """
         return self._TransformationId
@@ -1925,7 +1925,7 @@ class DeleteTransformationRequest(AbstractModel):
 
 
 class DeleteTransformationResponse(AbstractModel):
-    """DeleteTransformation返回参数结构体
+    r"""DeleteTransformation返回参数结构体
 
     """
 
@@ -1938,7 +1938,7 @@ class DeleteTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1953,7 +1953,7 @@ class DeleteTransformationResponse(AbstractModel):
 
 
 class DescribeLogTagValueRequest(AbstractModel):
-    """DescribeLogTagValue请求参数结构体
+    r"""DescribeLogTagValue请求参数结构体
 
     """
 
@@ -1984,7 +1984,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间
+        r"""起始时间
         :rtype: int
         """
         return self._StartTime
@@ -1995,7 +1995,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -2006,7 +2006,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -2017,7 +2017,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def GroupField(self):
-        """聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
+        r"""聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
         :rtype: str
         """
         return self._GroupField
@@ -2028,7 +2028,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Page(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._Page
@@ -2039,7 +2039,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据大小
+        r"""每页数据大小
         :rtype: int
         """
         return self._Limit
@@ -2050,7 +2050,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """筛选条件
+        r"""筛选条件
         :rtype: list of LogFilter
         """
         return self._Filter
@@ -2084,7 +2084,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
 
 class DescribeLogTagValueResponse(AbstractModel):
-    """DescribeLogTagValue返回参数结构体
+    r"""DescribeLogTagValue返回参数结构体
 
     """
 
@@ -2101,7 +2101,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
     @property
     def Results(self):
-        """事件查询维度值结果
+        r"""事件查询维度值结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2113,7 +2113,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2129,7 +2129,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
 
 class ESTargetParams(AbstractModel):
-    """描述Es规则目标
+    r"""描述Es规则目标
 
     """
 
@@ -2163,7 +2163,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def NetMode(self):
-        """网络连接类型
+        r"""网络连接类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2175,7 +2175,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexPrefix(self):
-        """索引前缀
+        r"""索引前缀
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2187,7 +2187,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def RotationInterval(self):
-        """es日志轮换粒度
+        r"""es日志轮换粒度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2199,7 +2199,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def OutputMode(self):
-        """DTS事件配置
+        r"""DTS事件配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2211,7 +2211,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexSuffixMode(self):
-        """DTS索引配置
+        r"""DTS索引配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2223,7 +2223,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexTemplateType(self):
-        """es模版类型
+        r"""es模版类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2252,7 +2252,7 @@ class ESTargetParams(AbstractModel):
 
 
 class EtlFilter(AbstractModel):
-    """描述如何过滤数据
+    r"""描述如何过滤数据
 
     """
 
@@ -2265,7 +2265,7 @@ class EtlFilter(AbstractModel):
 
     @property
     def Filter(self):
-        """语法Rule规则保持一致
+        r"""语法Rule规则保持一致
         :rtype: str
         """
         return self._Filter
@@ -2288,7 +2288,7 @@ class EtlFilter(AbstractModel):
 
 
 class Event(AbstractModel):
-    """eb event信息
+    r"""eb event信息
 
     """
 
@@ -2326,7 +2326,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Source(self):
-        """事件源的信息,新产品上报必须符合EB的规范
+        r"""事件源的信息,新产品上报必须符合EB的规范
         :rtype: str
         """
         return self._Source
@@ -2337,7 +2337,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Data(self):
-        """事件数据，内容由创建事件的系统来控制，当前datacontenttype仅支持application/json;charset=utf-8，所以该字段是json字符串
+        r"""事件数据，内容由创建事件的系统来控制，当前datacontenttype仅支持application/json;charset=utf-8，所以该字段是json字符串
         :rtype: str
         """
         return self._Data
@@ -2348,7 +2348,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Type(self):
-        """事件类型，可自定义，选填。云服务默认写 COS:Created:PostObject，用“：”分割类型字段
+        r"""事件类型，可自定义，选填。云服务默认写 COS:Created:PostObject，用“：”分割类型字段
         :rtype: str
         """
         return self._Type
@@ -2359,7 +2359,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Subject(self):
-        """事件来源详细描述，可自定义，选填。云服务默认为标准qcs资源表示语法：qcs::dts:ap-guangzhou:appid/uin:xxx
+        r"""事件来源详细描述，可自定义，选填。云服务默认为标准qcs资源表示语法：qcs::dts:ap-guangzhou:appid/uin:xxx
         :rtype: str
         """
         return self._Subject
@@ -2370,7 +2370,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Time(self):
-        """事件发生的毫秒时间戳，
+        r"""事件发生的毫秒时间戳，
 time.Now().UnixNano()/1e6
         :rtype: int
         """
@@ -2382,7 +2382,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Region(self):
-        """事件的地域信息，没有则默认是EB所在的地域信息
+        r"""事件的地域信息，没有则默认是EB所在的地域信息
         :rtype: str
         """
         return self._Region
@@ -2393,7 +2393,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Status(self):
-        """用于描述事件状态，非必须，默认是""
+        r"""用于描述事件状态，非必须，默认是""
         :rtype: str
         """
         return self._Status
@@ -2404,7 +2404,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def Id(self):
-        """事件的唯一id，用户侧主动上传则需要保证风格一致
+        r"""事件的唯一id，用户侧主动上传则需要保证风格一致
         :rtype: str
         """
         return self._Id
@@ -2415,7 +2415,7 @@ time.Now().UnixNano()/1e6
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -2451,7 +2451,7 @@ time.Now().UnixNano()/1e6
 
 
 class EventBus(AbstractModel):
-    """事件集信息
+    r"""事件集信息
 
     """
 
@@ -2491,7 +2491,7 @@ class EventBus(AbstractModel):
 
     @property
     def ModTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._ModTime
@@ -2502,7 +2502,7 @@ class EventBus(AbstractModel):
 
     @property
     def Description(self):
-        """事件集描述，不限字符类型，200字符描述以内
+        r"""事件集描述，不限字符类型，200字符描述以内
         :rtype: str
         """
         return self._Description
@@ -2513,7 +2513,7 @@ class EventBus(AbstractModel):
 
     @property
     def AddTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._AddTime
@@ -2524,7 +2524,7 @@ class EventBus(AbstractModel):
 
     @property
     def EventBusName(self):
-        """事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        r"""事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
         :rtype: str
         """
         return self._EventBusName
@@ -2535,7 +2535,7 @@ class EventBus(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -2546,7 +2546,7 @@ class EventBus(AbstractModel):
 
     @property
     def Type(self):
-        """事件集类型
+        r"""事件集类型
         :rtype: str
         """
         return self._Type
@@ -2557,7 +2557,7 @@ class EventBus(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式
+        r"""计费模式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2569,7 +2569,7 @@ class EventBus(AbstractModel):
 
     @property
     def ConnectionBriefs(self):
-        """连接器基础信息
+        r"""连接器基础信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConnectionBrief
         """
@@ -2581,7 +2581,7 @@ class EventBus(AbstractModel):
 
     @property
     def TargetBriefs(self):
-        """目标简要信息
+        r"""目标简要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetBrief
         """
@@ -2623,7 +2623,7 @@ class EventBus(AbstractModel):
 
 
 class Extraction(AbstractModel):
-    """描述如何提取数据
+    r"""描述如何提取数据
 
     """
 
@@ -2643,7 +2643,7 @@ class Extraction(AbstractModel):
 
     @property
     def ExtractionInputPath(self):
-        """JsonPath, 不指定则使用默认值$.
+        r"""JsonPath, 不指定则使用默认值$.
         :rtype: str
         """
         return self._ExtractionInputPath
@@ -2654,7 +2654,7 @@ class Extraction(AbstractModel):
 
     @property
     def Format(self):
-        """取值: TEXT/JSON
+        r"""取值: TEXT/JSON
         :rtype: str
         """
         return self._Format
@@ -2665,7 +2665,7 @@ class Extraction(AbstractModel):
 
     @property
     def TextParams(self):
-        """仅在Text需要传递
+        r"""仅在Text需要传递
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.TextParams`
         """
@@ -2693,7 +2693,7 @@ class Extraction(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
     * 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     * 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 
@@ -2711,7 +2711,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """一个或者多个过滤值。
+        r"""一个或者多个过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -2722,7 +2722,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤键的名称。EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)
+        r"""过滤键的名称。EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)
         :rtype: str
         """
         return self._Name
@@ -2746,7 +2746,7 @@ class Filter(AbstractModel):
 
 
 class GetEventBusRequest(AbstractModel):
-    """GetEventBus请求参数结构体
+    r"""GetEventBus请求参数结构体
 
     """
 
@@ -2759,7 +2759,7 @@ class GetEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -2782,7 +2782,7 @@ class GetEventBusRequest(AbstractModel):
 
 
 class GetEventBusResponse(AbstractModel):
-    """GetEventBus返回参数结构体
+    r"""GetEventBus返回参数结构体
 
     """
 
@@ -2838,7 +2838,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ModTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._ModTime
@@ -2849,7 +2849,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def Description(self):
-        """事件集描述
+        r"""事件集描述
         :rtype: str
         """
         return self._Description
@@ -2860,7 +2860,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._ClsTopicId
@@ -2871,7 +2871,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def AddTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._AddTime
@@ -2882,7 +2882,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._ClsLogsetId
@@ -2893,7 +2893,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EventBusName(self):
-        """事件集名称
+        r"""事件集名称
         :rtype: str
         """
         return self._EventBusName
@@ -2904,7 +2904,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -2915,7 +2915,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def Type(self):
-        """（已废弃）事件集类型
+        r"""（已废弃）事件集类型
         :rtype: str
         """
         return self._Type
@@ -2926,7 +2926,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式
+        r"""计费模式
         :rtype: str
         """
         return self._PayMode
@@ -2937,7 +2937,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def SaveDays(self):
-        """EB日志存储时长
+        r"""EB日志存储时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2949,7 +2949,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def LogTopicId(self):
-        """EB日志主题ID
+        r"""EB日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2961,7 +2961,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EnableStore(self):
-        """是否开启存储
+        r"""是否开启存储
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2973,7 +2973,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def LinkMode(self):
-        """消息序列，是否有序
+        r"""消息序列，是否有序
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2985,7 +2985,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3013,7 +3013,7 @@ class GetEventBusResponse(AbstractModel):
 
 
 class GetPlatformEventTemplateRequest(AbstractModel):
-    """GetPlatformEventTemplate请求参数结构体
+    r"""GetPlatformEventTemplate请求参数结构体
 
     """
 
@@ -3026,7 +3026,7 @@ class GetPlatformEventTemplateRequest(AbstractModel):
 
     @property
     def EventType(self):
-        """平台产品事件类型
+        r"""平台产品事件类型
         :rtype: str
         """
         return self._EventType
@@ -3049,7 +3049,7 @@ class GetPlatformEventTemplateRequest(AbstractModel):
 
 
 class GetPlatformEventTemplateResponse(AbstractModel):
-    """GetPlatformEventTemplate返回参数结构体
+    r"""GetPlatformEventTemplate返回参数结构体
 
     """
 
@@ -3065,7 +3065,7 @@ class GetPlatformEventTemplateResponse(AbstractModel):
 
     @property
     def EventTemplate(self):
-        """平台产品事件模板
+        r"""平台产品事件模板
         :rtype: str
         """
         return self._EventTemplate
@@ -3076,7 +3076,7 @@ class GetPlatformEventTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3092,7 +3092,7 @@ class GetPlatformEventTemplateResponse(AbstractModel):
 
 
 class GetRuleRequest(AbstractModel):
-    """GetRule请求参数结构体
+    r"""GetRule请求参数结构体
 
     """
 
@@ -3108,7 +3108,7 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -3119,7 +3119,7 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -3143,7 +3143,7 @@ class GetRuleRequest(AbstractModel):
 
 
 class GetRuleResponse(AbstractModel):
-    """GetRule返回参数结构体
+    r"""GetRule返回参数结构体
 
     """
 
@@ -3183,7 +3183,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集id
+        r"""事件集id
         :rtype: str
         """
         return self._EventBusId
@@ -3194,7 +3194,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则id
+        r"""事件规则id
         :rtype: str
         """
         return self._RuleId
@@ -3205,7 +3205,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleName(self):
-        """事件规则名称
+        r"""事件规则名称
         :rtype: str
         """
         return self._RuleName
@@ -3216,7 +3216,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        """事件规则状态
+        r"""事件规则状态
         :rtype: str
         """
         return self._Status
@@ -3227,7 +3227,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关
+        r"""使能开关
         :rtype: bool
         """
         return self._Enable
@@ -3238,7 +3238,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Description(self):
-        """事件规则描述
+        r"""事件规则描述
         :rtype: str
         """
         return self._Description
@@ -3249,7 +3249,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventPattern(self):
-        """事件模式
+        r"""事件模式
         :rtype: str
         """
         return self._EventPattern
@@ -3260,7 +3260,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def AddTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._AddTime
@@ -3271,7 +3271,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def ModTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._ModTime
@@ -3282,7 +3282,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3306,7 +3306,7 @@ class GetRuleResponse(AbstractModel):
 
 
 class GetTransformationRequest(AbstractModel):
-    """GetTransformation请求参数结构体
+    r"""GetTransformation请求参数结构体
 
     """
 
@@ -3325,7 +3325,7 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -3336,7 +3336,7 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._RuleId
@@ -3347,7 +3347,7 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
-        """转换器id
+        r"""转换器id
         :rtype: str
         """
         return self._TransformationId
@@ -3372,7 +3372,7 @@ class GetTransformationRequest(AbstractModel):
 
 
 class GetTransformationResponse(AbstractModel):
-    """GetTransformation返回参数结构体
+    r"""GetTransformation返回参数结构体
 
     """
 
@@ -3388,7 +3388,7 @@ class GetTransformationResponse(AbstractModel):
 
     @property
     def Transformations(self):
-        """转换规则列表
+        r"""转换规则列表
         :rtype: list of Transformation
         """
         return self._Transformations
@@ -3399,7 +3399,7 @@ class GetTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3420,7 +3420,7 @@ class GetTransformationResponse(AbstractModel):
 
 
 class ListConnectionsRequest(AbstractModel):
-    """ListConnections请求参数结构体
+    r"""ListConnections请求参数结构体
 
     """
 
@@ -3445,7 +3445,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -3456,7 +3456,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
+        r"""根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
         :rtype: str
         """
         return self._OrderBy
@@ -3467,7 +3467,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -3478,7 +3478,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        r"""以升序还是降序的方式返回结果，可选值 ASC 和 DESC
         :rtype: str
         """
         return self._Order
@@ -3489,7 +3489,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3516,7 +3516,7 @@ class ListConnectionsRequest(AbstractModel):
 
 
 class ListConnectionsResponse(AbstractModel):
-    """ListConnections返回参数结构体
+    r"""ListConnections返回参数结构体
 
     """
 
@@ -3535,7 +3535,7 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def Connections(self):
-        """连接器信息
+        r"""连接器信息
         :rtype: list of Connection
         """
         return self._Connections
@@ -3546,7 +3546,7 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """连接器总数
+        r"""连接器总数
         :rtype: int
         """
         return self._TotalCount
@@ -3557,7 +3557,7 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3579,7 +3579,7 @@ class ListConnectionsResponse(AbstractModel):
 
 
 class ListEventBusesRequest(AbstractModel):
-    """ListEventBuses请求参数结构体
+    r"""ListEventBuses请求参数结构体
 
     """
 
@@ -3604,7 +3604,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
+        r"""根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
         :rtype: str
         """
         return self._OrderBy
@@ -3615,7 +3615,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -3626,7 +3626,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
         :rtype: str
         """
         return self._Order
@@ -3637,7 +3637,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
+        r"""过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
         :rtype: list of Filter
         """
         return self._Filters
@@ -3648,7 +3648,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。
+        r"""分页偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3680,7 +3680,7 @@ class ListEventBusesRequest(AbstractModel):
 
 
 class ListEventBusesResponse(AbstractModel):
-    """ListEventBuses返回参数结构体
+    r"""ListEventBuses返回参数结构体
 
     """
 
@@ -3699,7 +3699,7 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def EventBuses(self):
-        """事件集信息
+        r"""事件集信息
         :rtype: list of EventBus
         """
         return self._EventBuses
@@ -3710,7 +3710,7 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """事件集总数
+        r"""事件集总数
         :rtype: int
         """
         return self._TotalCount
@@ -3721,7 +3721,7 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3743,7 +3743,7 @@ class ListEventBusesResponse(AbstractModel):
 
 
 class ListPlatformEventNamesRequest(AbstractModel):
-    """ListPlatformEventNames请求参数结构体
+    r"""ListPlatformEventNames请求参数结构体
 
     """
 
@@ -3756,7 +3756,7 @@ class ListPlatformEventNamesRequest(AbstractModel):
 
     @property
     def ProductType(self):
-        """平台产品类型
+        r"""平台产品类型
         :rtype: str
         """
         return self._ProductType
@@ -3779,7 +3779,7 @@ class ListPlatformEventNamesRequest(AbstractModel):
 
 
 class ListPlatformEventNamesResponse(AbstractModel):
-    """ListPlatformEventNames返回参数结构体
+    r"""ListPlatformEventNames返回参数结构体
 
     """
 
@@ -3795,7 +3795,7 @@ class ListPlatformEventNamesResponse(AbstractModel):
 
     @property
     def EventNames(self):
-        """平台产品列表
+        r"""平台产品列表
         :rtype: list of PlatformEventDetail
         """
         return self._EventNames
@@ -3806,7 +3806,7 @@ class ListPlatformEventNamesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3827,7 +3827,7 @@ class ListPlatformEventNamesResponse(AbstractModel):
 
 
 class ListPlatformEventPatternsRequest(AbstractModel):
-    """ListPlatformEventPatterns请求参数结构体
+    r"""ListPlatformEventPatterns请求参数结构体
 
     """
 
@@ -3840,7 +3840,7 @@ class ListPlatformEventPatternsRequest(AbstractModel):
 
     @property
     def ProductType(self):
-        """平台产品类型
+        r"""平台产品类型
         :rtype: str
         """
         return self._ProductType
@@ -3863,7 +3863,7 @@ class ListPlatformEventPatternsRequest(AbstractModel):
 
 
 class ListPlatformEventPatternsResponse(AbstractModel):
-    """ListPlatformEventPatterns返回参数结构体
+    r"""ListPlatformEventPatterns返回参数结构体
 
     """
 
@@ -3879,7 +3879,7 @@ class ListPlatformEventPatternsResponse(AbstractModel):
 
     @property
     def EventPatterns(self):
-        """平台产品事件匹配规则
+        r"""平台产品事件匹配规则
         :rtype: list of PlatformEventSummary
         """
         return self._EventPatterns
@@ -3890,7 +3890,7 @@ class ListPlatformEventPatternsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3911,13 +3911,13 @@ class ListPlatformEventPatternsResponse(AbstractModel):
 
 
 class ListPlatformProductsRequest(AbstractModel):
-    """ListPlatformProducts请求参数结构体
+    r"""ListPlatformProducts请求参数结构体
 
     """
 
 
 class ListPlatformProductsResponse(AbstractModel):
-    """ListPlatformProducts返回参数结构体
+    r"""ListPlatformProducts返回参数结构体
 
     """
 
@@ -3933,7 +3933,7 @@ class ListPlatformProductsResponse(AbstractModel):
 
     @property
     def PlatformProducts(self):
-        """平台产品列表
+        r"""平台产品列表
         :rtype: list of PlatformProduct
         """
         return self._PlatformProducts
@@ -3944,7 +3944,7 @@ class ListPlatformProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3965,7 +3965,7 @@ class ListPlatformProductsResponse(AbstractModel):
 
 
 class ListRulesRequest(AbstractModel):
-    """ListRules请求参数结构体
+    r"""ListRules请求参数结构体
 
     """
 
@@ -3990,7 +3990,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -4001,7 +4001,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
+        r"""根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
         :rtype: str
         """
         return self._OrderBy
@@ -4012,7 +4012,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -4023,7 +4023,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。
+        r"""分页偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -4034,7 +4034,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
         :rtype: str
         """
         return self._Order
@@ -4061,7 +4061,7 @@ class ListRulesRequest(AbstractModel):
 
 
 class ListRulesResponse(AbstractModel):
-    """ListRules返回参数结构体
+    r"""ListRules返回参数结构体
 
     """
 
@@ -4080,7 +4080,7 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """事件规则信息
+        r"""事件规则信息
         :rtype: list of Rule
         """
         return self._Rules
@@ -4091,7 +4091,7 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """事件规则总数
+        r"""事件规则总数
         :rtype: int
         """
         return self._TotalCount
@@ -4102,7 +4102,7 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4124,7 +4124,7 @@ class ListRulesResponse(AbstractModel):
 
 
 class ListTargetsRequest(AbstractModel):
-    """ListTargets请求参数结构体
+    r"""ListTargets请求参数结构体
 
     """
 
@@ -4152,7 +4152,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -4163,7 +4163,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -4174,7 +4174,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        r"""根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
         :rtype: str
         """
         return self._OrderBy
@@ -4185,7 +4185,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。
+        r"""返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -4196,7 +4196,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认为0。
+        r"""分页偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -4207,7 +4207,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
         :rtype: str
         """
         return self._Order
@@ -4235,7 +4235,7 @@ class ListTargetsRequest(AbstractModel):
 
 
 class ListTargetsResponse(AbstractModel):
-    """ListTargets返回参数结构体
+    r"""ListTargets返回参数结构体
 
     """
 
@@ -4254,7 +4254,7 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """目标总数
+        r"""目标总数
         :rtype: int
         """
         return self._TotalCount
@@ -4265,7 +4265,7 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def Targets(self):
-        """目标信息
+        r"""目标信息
         :rtype: list of Target
         """
         return self._Targets
@@ -4276,7 +4276,7 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4298,7 +4298,7 @@ class ListTargetsResponse(AbstractModel):
 
 
 class LogFilter(AbstractModel):
-    """日志查询相关接口filter参数定义
+    r"""日志查询相关接口filter参数定义
 
     """
 
@@ -4324,7 +4324,7 @@ class LogFilter(AbstractModel):
 
     @property
     def Key(self):
-        """过滤字段名称
+        r"""过滤字段名称
         :rtype: str
         """
         return self._Key
@@ -4335,7 +4335,7 @@ class LogFilter(AbstractModel):
 
     @property
     def Operator(self):
-        """运算符，全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+        r"""运算符，全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
         :rtype: str
         """
         return self._Operator
@@ -4346,7 +4346,7 @@ class LogFilter(AbstractModel):
 
     @property
     def Value(self):
-        """过滤值,范围运算需要同时输入两个值，以英文逗号分隔
+        r"""过滤值,范围运算需要同时输入两个值，以英文逗号分隔
 
         :rtype: str
         """
@@ -4358,7 +4358,7 @@ class LogFilter(AbstractModel):
 
     @property
     def Type(self):
-        """该层级filters逻辑关系，取值 "AND" 或 "OR"
+        r"""该层级filters逻辑关系，取值 "AND" 或 "OR"
         :rtype: str
         """
         return self._Type
@@ -4369,7 +4369,7 @@ class LogFilter(AbstractModel):
 
     @property
     def Filters(self):
-        """LogFilters数组
+        r"""LogFilters数组
         :rtype: list of LogFilters
         """
         return self._Filters
@@ -4401,7 +4401,7 @@ class LogFilter(AbstractModel):
 
 
 class LogFilters(AbstractModel):
-    """日志存储过滤条件
+    r"""日志存储过滤条件
 
     """
 
@@ -4421,7 +4421,7 @@ class LogFilters(AbstractModel):
 
     @property
     def Key(self):
-        """过滤字段名称，取值范围如下:region(地域)，type(事件类型)，source(事件源)，status(事件状态)
+        r"""过滤字段名称，取值范围如下:region(地域)，type(事件类型)，source(事件源)，status(事件状态)
         :rtype: str
         """
         return self._Key
@@ -4432,7 +4432,7 @@ class LogFilters(AbstractModel):
 
     @property
     def Operator(self):
-        """运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+        r"""运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
         :rtype: str
         """
         return self._Operator
@@ -4443,7 +4443,7 @@ class LogFilters(AbstractModel):
 
     @property
     def Value(self):
-        """过滤值，范围运算需要同时输入两个值，以英文逗号分隔
+        r"""过滤值，范围运算需要同时输入两个值，以英文逗号分隔
 
         :rtype: str
         """
@@ -4469,7 +4469,7 @@ class LogFilters(AbstractModel):
 
 
 class OutputStructParam(AbstractModel):
-    """Transform输出参数
+    r"""Transform输出参数
 
     """
 
@@ -4488,7 +4488,7 @@ class OutputStructParam(AbstractModel):
 
     @property
     def Key(self):
-        """对应输出json中的key
+        r"""对应输出json中的key
         :rtype: str
         """
         return self._Key
@@ -4499,7 +4499,7 @@ class OutputStructParam(AbstractModel):
 
     @property
     def Value(self):
-        """可以填json-path也可以支持常量或者内置关键字date类型
+        r"""可以填json-path也可以支持常量或者内置关键字date类型
         :rtype: str
         """
         return self._Value
@@ -4510,7 +4510,7 @@ class OutputStructParam(AbstractModel):
 
     @property
     def ValueType(self):
-        """value的数据类型, 可选值: STRING, NUMBER,BOOLEAN,NULL,SYS_VARIABLE,JSONPATH
+        r"""value的数据类型, 可选值: STRING, NUMBER,BOOLEAN,NULL,SYS_VARIABLE,JSONPATH
         :rtype: str
         """
         return self._ValueType
@@ -4535,7 +4535,7 @@ class OutputStructParam(AbstractModel):
 
 
 class PlatformEventDetail(AbstractModel):
-    """平台事件名称
+    r"""平台事件名称
 
     """
 
@@ -4553,7 +4553,7 @@ class PlatformEventDetail(AbstractModel):
 
     @property
     def EventName(self):
-        """事件名称
+        r"""事件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4565,7 +4565,7 @@ class PlatformEventDetail(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型
+        r"""事件类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4590,7 +4590,7 @@ class PlatformEventDetail(AbstractModel):
 
 
 class PlatformEventSummary(AbstractModel):
-    """平台事件匹配规则
+    r"""平台事件匹配规则
 
     """
 
@@ -4608,7 +4608,7 @@ class PlatformEventSummary(AbstractModel):
 
     @property
     def EventName(self):
-        """平台事件名称
+        r"""平台事件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4620,7 +4620,7 @@ class PlatformEventSummary(AbstractModel):
 
     @property
     def EventPattern(self):
-        """平台事件匹配规则
+        r"""平台事件匹配规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4645,7 +4645,7 @@ class PlatformEventSummary(AbstractModel):
 
 
 class PlatformProduct(AbstractModel):
-    """平台产品基础信息
+    r"""平台产品基础信息
 
     """
 
@@ -4661,7 +4661,7 @@ class PlatformProduct(AbstractModel):
 
     @property
     def ProductName(self):
-        """平台产品名称
+        r"""平台产品名称
         :rtype: str
         """
         return self._ProductName
@@ -4672,7 +4672,7 @@ class PlatformProduct(AbstractModel):
 
     @property
     def ProductType(self):
-        """平台产品类型
+        r"""平台产品类型
         :rtype: str
         """
         return self._ProductType
@@ -4696,7 +4696,7 @@ class PlatformProduct(AbstractModel):
 
 
 class PublishEventRequest(AbstractModel):
-    """PublishEvent请求参数结构体
+    r"""PublishEvent请求参数结构体
 
     """
 
@@ -4712,7 +4712,7 @@ class PublishEventRequest(AbstractModel):
 
     @property
     def EventList(self):
-        """事件列表
+        r"""事件列表
         :rtype: list of Event
         """
         return self._EventList
@@ -4723,7 +4723,7 @@ class PublishEventRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -4752,7 +4752,7 @@ class PublishEventRequest(AbstractModel):
 
 
 class PublishEventResponse(AbstractModel):
-    """PublishEvent返回参数结构体
+    r"""PublishEvent返回参数结构体
 
     """
 
@@ -4765,7 +4765,7 @@ class PublishEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4780,7 +4780,7 @@ class PublishEventResponse(AbstractModel):
 
 
 class PutEventsRequest(AbstractModel):
-    """PutEvents请求参数结构体
+    r"""PutEvents请求参数结构体
 
     """
 
@@ -4796,7 +4796,7 @@ class PutEventsRequest(AbstractModel):
 
     @property
     def EventList(self):
-        """事件列表
+        r"""事件列表
         :rtype: list of Event
         """
         return self._EventList
@@ -4807,7 +4807,7 @@ class PutEventsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -4836,7 +4836,7 @@ class PutEventsRequest(AbstractModel):
 
 
 class PutEventsResponse(AbstractModel):
-    """PutEvents返回参数结构体
+    r"""PutEvents返回参数结构体
 
     """
 
@@ -4849,7 +4849,7 @@ class PutEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4864,7 +4864,7 @@ class PutEventsResponse(AbstractModel):
 
 
 class RetryPolicy(AbstractModel):
-    """用来描述一个ckafka投递目标的重试策略
+    r"""用来描述一个ckafka投递目标的重试策略
 
     """
 
@@ -4880,7 +4880,7 @@ class RetryPolicy(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """重试间隔 单位:秒
+        r"""重试间隔 单位:秒
         :rtype: int
         """
         return self._RetryInterval
@@ -4891,7 +4891,7 @@ class RetryPolicy(AbstractModel):
 
     @property
     def MaxRetryAttempts(self):
-        """最大重试次数
+        r"""最大重试次数
         :rtype: int
         """
         return self._MaxRetryAttempts
@@ -4915,7 +4915,7 @@ class RetryPolicy(AbstractModel):
 
 
 class Rule(AbstractModel):
-    """规则信息
+    r"""规则信息
 
     """
 
@@ -4957,7 +4957,7 @@ class Rule(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -4968,7 +4968,7 @@ class Rule(AbstractModel):
 
     @property
     def ModTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModTime
@@ -4979,7 +4979,7 @@ class Rule(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关
+        r"""使能开关
         :rtype: bool
         """
         return self._Enable
@@ -4990,7 +4990,7 @@ class Rule(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -5001,7 +5001,7 @@ class Rule(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._RuleId
@@ -5012,7 +5012,7 @@ class Rule(AbstractModel):
 
     @property
     def AddTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._AddTime
@@ -5023,7 +5023,7 @@ class Rule(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -5034,7 +5034,7 @@ class Rule(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -5045,7 +5045,7 @@ class Rule(AbstractModel):
 
     @property
     def Targets(self):
-        """Target 简要信息
+        r"""Target 简要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetBrief
         """
@@ -5057,7 +5057,7 @@ class Rule(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
-        """rule设置的dlq规则. 可能为null
+        r"""rule设置的dlq规则. 可能为null
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.DeadLetterConfig`
         """
@@ -5097,7 +5097,7 @@ class Rule(AbstractModel):
 
 
 class SCFParams(AbstractModel):
-    """云函数参数
+    r"""云函数参数
 
     """
 
@@ -5119,7 +5119,7 @@ class SCFParams(AbstractModel):
 
     @property
     def BatchTimeout(self):
-        """批量投递最长等待时间
+        r"""批量投递最长等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5131,7 +5131,7 @@ class SCFParams(AbstractModel):
 
     @property
     def BatchEventCount(self):
-        """批量投递最大事件条数
+        r"""批量投递最大事件条数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5143,7 +5143,7 @@ class SCFParams(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
-        """开启批量投递使能
+        r"""开启批量投递使能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5169,7 +5169,7 @@ class SCFParams(AbstractModel):
 
 
 class SearchLogRequest(AbstractModel):
-    """SearchLog请求参数结构体
+    r"""SearchLog请求参数结构体
 
     """
 
@@ -5203,7 +5203,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间unix 毫秒时间戳
+        r"""起始时间unix 毫秒时间戳
         :rtype: int
         """
         return self._StartTime
@@ -5214,7 +5214,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间unix 毫秒时间戳
+        r"""结束时间unix 毫秒时间戳
         :rtype: int
         """
         return self._EndTime
@@ -5225,7 +5225,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -5236,7 +5236,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._Page
@@ -5247,7 +5247,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据大小
+        r"""每页数据大小
         :rtype: int
         """
         return self._Limit
@@ -5258,7 +5258,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
+        r"""事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
         :rtype: list of LogFilter
         """
         return self._Filter
@@ -5269,7 +5269,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderFields(self):
-        """事件查询结果排序，["timestamp","subject"]
+        r"""事件查询结果排序，["timestamp","subject"]
         :rtype: list of str
         """
         return self._OrderFields
@@ -5280,7 +5280,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序方式，asc 从旧到新，desc 从新到旧
+        r"""排序方式，asc 从旧到新，desc 从新到旧
         :rtype: str
         """
         return self._OrderBy
@@ -5315,7 +5315,7 @@ class SearchLogRequest(AbstractModel):
 
 
 class SearchLogResponse(AbstractModel):
-    """SearchLog返回参数结构体
+    r"""SearchLog返回参数结构体
 
     """
 
@@ -5344,7 +5344,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Total(self):
-        """事件总数
+        r"""事件总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5356,7 +5356,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页事件条数
+        r"""每页事件条数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5368,7 +5368,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Page(self):
-        """页码
+        r"""页码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5380,7 +5380,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Results(self):
-        """事件查询结果
+        r"""事件查询结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SearchLogResult
         """
@@ -5392,7 +5392,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5416,7 +5416,7 @@ class SearchLogResponse(AbstractModel):
 
 
 class SearchLogResult(AbstractModel):
-    """日志检索详情
+    r"""日志检索详情
 
     """
 
@@ -5458,7 +5458,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Timestamp(self):
-        """单条日志上报时间
+        r"""单条日志上报时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5470,7 +5470,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Message(self):
-        """日志内容详情
+        r"""日志内容详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5482,7 +5482,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Source(self):
-        """事件来源
+        r"""事件来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5494,7 +5494,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Type(self):
-        """事件类型
+        r"""事件类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5506,7 +5506,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def RuleIds(self):
-        """事件匹配规则
+        r"""事件匹配规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5518,7 +5518,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Subject(self):
-        """实例ID
+        r"""实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5530,7 +5530,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5542,7 +5542,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Status(self):
-        """事件状态
+        r"""事件状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5573,7 +5573,7 @@ class SearchLogResult(AbstractModel):
 
 
 class TDMQParams(AbstractModel):
-    """TDMQ参数详情
+    r"""TDMQ参数详情
 
     """
 
@@ -5591,7 +5591,7 @@ class TDMQParams(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        r"""集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5603,7 +5603,7 @@ class TDMQParams(AbstractModel):
 
     @property
     def ClusterEndPoint(self):
-        """集群支撑网接入点
+        r"""集群支撑网接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5628,7 +5628,7 @@ class TDMQParams(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """事件总线资源标签
+    r"""事件总线资源标签
 
     """
 
@@ -5644,7 +5644,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Key
@@ -5655,7 +5655,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -5679,7 +5679,7 @@ class Tag(AbstractModel):
 
 
 class Target(AbstractModel):
-    """Target信息
+    r"""Target信息
 
     """
 
@@ -5716,7 +5716,7 @@ class Target(AbstractModel):
 
     @property
     def Type(self):
-        """目标类型
+        r"""目标类型
         :rtype: str
         """
         return self._Type
@@ -5727,7 +5727,7 @@ class Target(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -5738,7 +5738,7 @@ class Target(AbstractModel):
 
     @property
     def TargetId(self):
-        """目标ID
+        r"""目标ID
         :rtype: str
         """
         return self._TargetId
@@ -5749,7 +5749,7 @@ class Target(AbstractModel):
 
     @property
     def TargetDescription(self):
-        """目标描述
+        r"""目标描述
         :rtype: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
         """
         return self._TargetDescription
@@ -5760,7 +5760,7 @@ class Target(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -5771,7 +5771,7 @@ class Target(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
-        """开启批量投递使能
+        r"""开启批量投递使能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5783,7 +5783,7 @@ class Target(AbstractModel):
 
     @property
     def BatchTimeout(self):
-        """批量投递最长等待时间
+        r"""批量投递最长等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5795,7 +5795,7 @@ class Target(AbstractModel):
 
     @property
     def BatchEventCount(self):
-        """批量投递最大事件条数
+        r"""批量投递最大事件条数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5828,7 +5828,7 @@ class Target(AbstractModel):
 
 
 class TargetBrief(AbstractModel):
-    """目标简要信息
+    r"""目标简要信息
 
     """
 
@@ -5844,7 +5844,7 @@ class TargetBrief(AbstractModel):
 
     @property
     def TargetId(self):
-        """目标ID
+        r"""目标ID
         :rtype: str
         """
         return self._TargetId
@@ -5855,7 +5855,7 @@ class TargetBrief(AbstractModel):
 
     @property
     def Type(self):
-        """目标类型
+        r"""目标类型
         :rtype: str
         """
         return self._Type
@@ -5879,7 +5879,7 @@ class TargetBrief(AbstractModel):
 
 
 class TargetDescription(AbstractModel):
-    """TargetDescription描述
+    r"""TargetDescription描述
 
     """
 
@@ -5901,7 +5901,7 @@ class TargetDescription(AbstractModel):
 
     @property
     def ResourceDescription(self):
-        """QCS资源六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)；scf资源六段式示例[qcs::scf:ap-guangzhou:uin/123:namespace/test(函数命名空间)/function/test(函数名)/$LATEST(函数版本)] amp资源六段式示例[qcs::eb-amp:ap-guangzhou:uin/123:] ckafka资源六段式示例[qcs::ckafka:ap-guangzhou:uin/123:ckafkaId/uin/123/ckafka-123(ckafka实例Id)] cls资源六段式示例[qcs::cls:ap-guangzhou:uin/123:topic/122332442(topicId)] es资源六段式示例[qcs::es:ap-guangzhou:appid/123/uin/456:instance/es-7cplmhsd(es实例Id)]
+        r"""QCS资源六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)；scf资源六段式示例[qcs::scf:ap-guangzhou:uin/123:namespace/test(函数命名空间)/function/test(函数名)/$LATEST(函数版本)] amp资源六段式示例[qcs::eb-amp:ap-guangzhou:uin/123:] ckafka资源六段式示例[qcs::ckafka:ap-guangzhou:uin/123:ckafkaId/uin/123/ckafka-123(ckafka实例Id)] cls资源六段式示例[qcs::cls:ap-guangzhou:uin/123:topic/122332442(topicId)] es资源六段式示例[qcs::es:ap-guangzhou:appid/123/uin/456:instance/es-7cplmhsd(es实例Id)]
         :rtype: str
         """
         return self._ResourceDescription
@@ -5912,7 +5912,7 @@ class TargetDescription(AbstractModel):
 
     @property
     def SCFParams(self):
-        """云函数参数
+        r"""云函数参数
         :rtype: :class:`tencentcloud.eb.v20210416.models.SCFParams`
         """
         return self._SCFParams
@@ -5923,7 +5923,7 @@ class TargetDescription(AbstractModel):
 
     @property
     def CkafkaTargetParams(self):
-        """Ckafka参数
+        r"""Ckafka参数
         :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaTargetParams`
         """
         return self._CkafkaTargetParams
@@ -5934,7 +5934,7 @@ class TargetDescription(AbstractModel):
 
     @property
     def ESTargetParams(self):
-        """ElasticSearch参数
+        r"""ElasticSearch参数
         :rtype: :class:`tencentcloud.eb.v20210416.models.ESTargetParams`
         """
         return self._ESTargetParams
@@ -5966,7 +5966,7 @@ class TargetDescription(AbstractModel):
 
 
 class TextParams(AbstractModel):
-    """描述如何切分数据
+    r"""描述如何切分数据
 
     """
 
@@ -5984,7 +5984,7 @@ class TextParams(AbstractModel):
 
     @property
     def Separator(self):
-        """逗号、| 、制表符、空格、换行符、%、#，限制长度为 1。
+        r"""逗号、| 、制表符、空格、换行符、%、#，限制长度为 1。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5996,7 +5996,7 @@ class TextParams(AbstractModel):
 
     @property
     def Regex(self):
-        """填写正则表达式：长度128
+        r"""填写正则表达式：长度128
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6021,7 +6021,7 @@ class TextParams(AbstractModel):
 
 
 class Transform(AbstractModel):
-    """描述如何数据转换
+    r"""描述如何数据转换
 
     """
 
@@ -6034,7 +6034,7 @@ class Transform(AbstractModel):
 
     @property
     def OutputStructs(self):
-        """描述如何数据转换
+        r"""描述如何数据转换
         :rtype: list of OutputStructParam
         """
         return self._OutputStructs
@@ -6062,7 +6062,7 @@ class Transform(AbstractModel):
 
 
 class Transformation(AbstractModel):
-    """一个转换器
+    r"""一个转换器
 
     """
 
@@ -6084,7 +6084,7 @@ class Transformation(AbstractModel):
 
     @property
     def Extraction(self):
-        """描述如何提取数据，{"ExtractionInputPath":"$.data.payload","Format":"JSON"}
+        r"""描述如何提取数据，{"ExtractionInputPath":"$.data.payload","Format":"JSON"}
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.Extraction`
         """
@@ -6096,7 +6096,7 @@ class Transformation(AbstractModel):
 
     @property
     def EtlFilter(self):
-        """描述如何过滤数据;{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"}
+        r"""描述如何过滤数据;{"Filter":"{\"source\":\"ckafka.cloud.tencent\"}"}
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.EtlFilter`
         """
@@ -6108,7 +6108,7 @@ class Transformation(AbstractModel):
 
     @property
     def Transform(self):
-        """描述如何数据转换;"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"}]
+        r"""描述如何数据转换;"OutputStructs":[{"Key":"op","Value":"$.op","ValueType":"JSONPATH"}]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.Transform`
         """
@@ -6140,7 +6140,7 @@ class Transformation(AbstractModel):
 
 
 class UpdateConnectionRequest(AbstractModel):
-    """UpdateConnection请求参数结构体
+    r"""UpdateConnection请求参数结构体
 
     """
 
@@ -6165,7 +6165,7 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        """连接器ID
+        r"""连接器ID
         :rtype: str
         """
         return self._ConnectionId
@@ -6176,7 +6176,7 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -6187,7 +6187,7 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关
+        r"""使能开关
         :rtype: bool
         """
         return self._Enable
@@ -6198,7 +6198,7 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -6209,7 +6209,7 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectionName
@@ -6236,7 +6236,7 @@ class UpdateConnectionRequest(AbstractModel):
 
 
 class UpdateConnectionResponse(AbstractModel):
-    """UpdateConnection返回参数结构体
+    r"""UpdateConnection返回参数结构体
 
     """
 
@@ -6249,7 +6249,7 @@ class UpdateConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6264,7 +6264,7 @@ class UpdateConnectionResponse(AbstractModel):
 
 
 class UpdateEventBusRequest(AbstractModel):
-    """UpdateEventBus请求参数结构体
+    r"""UpdateEventBus请求参数结构体
 
     """
 
@@ -6292,7 +6292,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -6303,7 +6303,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
-        """事件集描述，不限字符类型，200字符描述以内
+        r"""事件集描述，不限字符类型，200字符描述以内
         :rtype: str
         """
         return self._Description
@@ -6314,7 +6314,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
-        """事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        r"""事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
         :rtype: str
         """
         return self._EventBusName
@@ -6325,7 +6325,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
-        """EB日志存储时长
+        r"""EB日志存储时长
         :rtype: int
         """
         return self._SaveDays
@@ -6336,7 +6336,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def LogTopicId(self):
-        """EB日志主题ID
+        r"""EB日志主题ID
         :rtype: str
         """
         return self._LogTopicId
@@ -6347,7 +6347,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
-        """是否开启存储
+        r"""是否开启存储
         :rtype: bool
         """
         return self._EnableStore
@@ -6375,7 +6375,7 @@ class UpdateEventBusRequest(AbstractModel):
 
 
 class UpdateEventBusResponse(AbstractModel):
-    """UpdateEventBus返回参数结构体
+    r"""UpdateEventBus返回参数结构体
 
     """
 
@@ -6388,7 +6388,7 @@ class UpdateEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6403,7 +6403,7 @@ class UpdateEventBusResponse(AbstractModel):
 
 
 class UpdateRuleRequest(AbstractModel):
-    """UpdateRule请求参数结构体
+    r"""UpdateRule请求参数结构体
 
     """
 
@@ -6431,7 +6431,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -6442,7 +6442,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -6453,7 +6453,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """使能开关。
+        r"""使能开关。
         :rtype: bool
         """
         return self._Enable
@@ -6464,7 +6464,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        r"""事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :rtype: str
         """
         return self._Description
@@ -6475,7 +6475,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
-        """参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
+        r"""参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
         :rtype: str
         """
         return self._EventPattern
@@ -6486,7 +6486,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        r"""事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :rtype: str
         """
         return self._RuleName
@@ -6514,7 +6514,7 @@ class UpdateRuleRequest(AbstractModel):
 
 
 class UpdateRuleResponse(AbstractModel):
-    """UpdateRule返回参数结构体
+    r"""UpdateRule返回参数结构体
 
     """
 
@@ -6527,7 +6527,7 @@ class UpdateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6542,7 +6542,7 @@ class UpdateRuleResponse(AbstractModel):
 
 
 class UpdateTargetRequest(AbstractModel):
-    """UpdateTarget请求参数结构体
+    r"""UpdateTarget请求参数结构体
 
     """
 
@@ -6570,7 +6570,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -6581,7 +6581,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """事件规则ID
+        r"""事件规则ID
         :rtype: str
         """
         return self._RuleId
@@ -6592,7 +6592,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def TargetId(self):
-        """事件目标ID
+        r"""事件目标ID
         :rtype: str
         """
         return self._TargetId
@@ -6603,7 +6603,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
-        """开启批量投递使能
+        r"""开启批量投递使能
         :rtype: bool
         """
         return self._EnableBatchDelivery
@@ -6614,7 +6614,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def BatchTimeout(self):
-        """批量投递最长等待时间
+        r"""批量投递最长等待时间
         :rtype: int
         """
         return self._BatchTimeout
@@ -6625,7 +6625,7 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def BatchEventCount(self):
-        """批量投递最大事件条数
+        r"""批量投递最大事件条数
         :rtype: int
         """
         return self._BatchEventCount
@@ -6653,7 +6653,7 @@ class UpdateTargetRequest(AbstractModel):
 
 
 class UpdateTargetResponse(AbstractModel):
-    """UpdateTarget返回参数结构体
+    r"""UpdateTarget返回参数结构体
 
     """
 
@@ -6666,7 +6666,7 @@ class UpdateTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6681,7 +6681,7 @@ class UpdateTargetResponse(AbstractModel):
 
 
 class UpdateTransformationRequest(AbstractModel):
-    """UpdateTransformation请求参数结构体
+    r"""UpdateTransformation请求参数结构体
 
     """
 
@@ -6703,7 +6703,7 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """事件集ID
+        r"""事件集ID
         :rtype: str
         """
         return self._EventBusId
@@ -6714,7 +6714,7 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._RuleId
@@ -6725,7 +6725,7 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
-        """转换器id
+        r"""转换器id
         :rtype: str
         """
         return self._TransformationId
@@ -6736,7 +6736,7 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
-        """一个转换规则列表，当前仅限定一个
+        r"""一个转换规则列表，当前仅限定一个
         :rtype: list of Transformation
         """
         return self._Transformations
@@ -6767,7 +6767,7 @@ class UpdateTransformationRequest(AbstractModel):
 
 
 class UpdateTransformationResponse(AbstractModel):
-    """UpdateTransformation返回参数结构体
+    r"""UpdateTransformation返回参数结构体
 
     """
 
@@ -6780,7 +6780,7 @@ class UpdateTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

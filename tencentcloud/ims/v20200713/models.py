@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Device(AbstractModel):
-    """Device结果
+    r"""Device结果
 
     """
 
@@ -53,7 +53,7 @@ class Device(AbstractModel):
 
     @property
     def Ip(self):
-        """发表消息设备IP
+        r"""发表消息设备IP
         :rtype: str
         """
         return self._Ip
@@ -64,7 +64,7 @@ class Device(AbstractModel):
 
     @property
     def Mac(self):
-        """Mac地址
+        r"""Mac地址
         :rtype: str
         """
         return self._Mac
@@ -75,7 +75,7 @@ class Device(AbstractModel):
 
     @property
     def TokenId(self):
-        """设备指纹Token
+        r"""设备指纹Token
         :rtype: str
         """
         return self._TokenId
@@ -86,7 +86,7 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备指纹ID
+        r"""设备指纹ID
         :rtype: str
         """
         return self._DeviceId
@@ -97,7 +97,7 @@ class Device(AbstractModel):
 
     @property
     def IMEI(self):
-        """设备序列号
+        r"""设备序列号
         :rtype: str
         """
         return self._IMEI
@@ -108,7 +108,7 @@ class Device(AbstractModel):
 
     @property
     def IDFA(self):
-        """IOS设备，Identifier For Advertising（广告标识符）
+        r"""IOS设备，Identifier For Advertising（广告标识符）
         :rtype: str
         """
         return self._IDFA
@@ -119,7 +119,7 @@ class Device(AbstractModel):
 
     @property
     def IDFV(self):
-        """IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        r"""IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
         :rtype: str
         """
         return self._IDFV
@@ -130,7 +130,7 @@ class Device(AbstractModel):
 
     @property
     def IpType(self):
-        """IP地址类型 0 代表ipv4 1 代表ipv6
+        r"""IP地址类型 0 代表ipv4 1 代表ipv6
         :rtype: int
         """
         return self._IpType
@@ -160,7 +160,7 @@ class Device(AbstractModel):
 
 
 class ImageModerationRequest(AbstractModel):
-    """ImageModeration请求参数结构体
+    r"""ImageModeration请求参数结构体
 
     """
 
@@ -194,7 +194,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
+        r"""该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
         :rtype: str
         """
         return self._BizType
@@ -205,7 +205,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """数据ID，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        r"""数据ID，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :rtype: str
         """
         return self._DataId
@@ -216,7 +216,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        """数据Base64编码，图片检测接口为图片文件内容，大小不能超过5M
+        r"""数据Base64编码，图片检测接口为图片文件内容，大小不能超过5M
         :rtype: str
         """
         return self._FileContent
@@ -227,7 +227,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """图片资源访问链接，__与FileContent参数必须二选一输入__ 。由于网络安全策略，送审带重定向的链接，可能引起下载失败，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError
+        r"""图片资源访问链接，__与FileContent参数必须二选一输入__ 。由于网络安全策略，送审带重定向的链接，可能引起下载失败，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError
         :rtype: str
         """
         return self._FileUrl
@@ -238,7 +238,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """截帧频率，GIF图/长图检测专用，默认值为0，表示只会检测GIF图/长图的第一帧
+        r"""截帧频率，GIF图/长图检测专用，默认值为0，表示只会检测GIF图/长图的第一帧
         :rtype: int
         """
         return self._Interval
@@ -249,7 +249,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def MaxFrames(self):
-        """GIF图/长图检测专用，代表均匀最大截帧数量，默认值为1（即只取GIF第一张，或长图不做切分处理（可能会造成处理超时））。
+        r"""GIF图/长图检测专用，代表均匀最大截帧数量，默认值为1（即只取GIF第一张，或长图不做切分处理（可能会造成处理超时））。
         :rtype: int
         """
         return self._MaxFrames
@@ -260,7 +260,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        """账号相关信息字段，填入后可识别违规风险账号。
+        r"""账号相关信息字段，填入后可识别违规风险账号。
         :rtype: :class:`tencentcloud.ims.v20200713.models.User`
         """
         return self._User
@@ -271,7 +271,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        """设备相关信息字段，填入后可识别违规风险设备。
+        r"""设备相关信息字段，填入后可识别违规风险设备。
         :rtype: :class:`tencentcloud.ims.v20200713.models.Device`
         """
         return self._Device
@@ -305,7 +305,7 @@ class ImageModerationRequest(AbstractModel):
 
 
 class ImageModerationResponse(AbstractModel):
-    """ImageModeration返回参数结构体
+    r"""ImageModeration返回参数结构体
 
     """
 
@@ -369,7 +369,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def HitFlag(self):
-        """数据是否属于恶意类型。
+        r"""数据是否属于恶意类型。
 0：正常，1：可疑；
         :rtype: int
         """
@@ -381,7 +381,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -393,7 +393,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -405,7 +405,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def SubLabel(self):
-        """子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
+        r"""子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
         :rtype: str
         """
         return self._SubLabel
@@ -416,7 +416,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Score(self):
-        """机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
+        r"""机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :rtype: int
         """
@@ -428,7 +428,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def LabelResults(self):
-        """智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
+        r"""智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LabelResult
         """
@@ -440,7 +440,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def ObjectResults(self):
-        """物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
+        r"""物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectResult
         """
@@ -452,7 +452,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def OcrResults(self):
-        """OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
+        r"""OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OcrResult
         """
@@ -464,7 +464,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def LibResults(self):
-        """基于图片风险库识别的结果。
+        r"""基于图片风险库识别的结果。
 风险库包括不安全黑库与正常白库的结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LibResult
@@ -477,7 +477,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
-        """请求参数中的DataId。
+        r"""请求参数中的DataId。
         :rtype: str
         """
         return self._DataId
@@ -488,7 +488,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def BizType(self):
-        """您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+        r"""您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
         :rtype: str
         """
         return self._BizType
@@ -499,7 +499,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
-        """扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+        r"""扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -512,7 +512,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def RecognitionResults(self):
-        """该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+        r"""该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionResult
         """
@@ -524,7 +524,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -577,7 +577,7 @@ class ImageModerationResponse(AbstractModel):
 
 
 class LabelDetailItem(AbstractModel):
-    """分类模型命中子标签结果
+    r"""分类模型命中子标签结果
 
     """
 
@@ -599,7 +599,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Id(self):
-        """序号
+        r"""序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -611,7 +611,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Name(self):
-        """子标签名称
+        r"""子标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -623,7 +623,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Score(self):
-        """子标签分数
+        r"""子标签分数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -649,7 +649,7 @@ class LabelDetailItem(AbstractModel):
 
 
 class LabelResult(AbstractModel):
-    """分类模型命中结果
+    r"""分类模型命中结果
 
     """
 
@@ -681,7 +681,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Scene(self):
-        """场景识别结果
+        r"""场景识别结果
         :rtype: str
         """
         return self._Scene
@@ -692,7 +692,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -704,7 +704,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -716,7 +716,7 @@ class LabelResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """子标签检测结果
+        r"""子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -728,7 +728,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
         :rtype: int
         """
         return self._Score
@@ -739,7 +739,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Details(self):
-        """分类模型命中子标签结果
+        r"""分类模型命中子标签结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LabelDetailItem
         """
@@ -773,7 +773,7 @@ class LabelResult(AbstractModel):
 
 
 class LibDetail(AbstractModel):
-    """自定义库/黑白库明细
+    r"""自定义库/黑白库明细
 
     """
 
@@ -807,7 +807,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Id(self):
-        """序号
+        r"""序号
         :rtype: int
         """
         return self._Id
@@ -818,7 +818,7 @@ class LibDetail(AbstractModel):
 
     @property
     def LibId(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义库id
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义库id
         :rtype: str
         """
         return self._LibId
@@ -829,7 +829,7 @@ class LibDetail(AbstractModel):
 
     @property
     def LibName(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义库名称
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -841,7 +841,7 @@ class LibDetail(AbstractModel):
 
     @property
     def ImageId(self):
-        """图片ID
+        r"""图片ID
         :rtype: str
         """
         return self._ImageId
@@ -852,7 +852,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -864,7 +864,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Tag(self):
-        """自定义标签
+        r"""自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -876,7 +876,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Score(self):
-        """命中的模型分值
+        r"""命中的模型分值
         :rtype: int
         """
         return self._Score
@@ -905,7 +905,7 @@ class LibDetail(AbstractModel):
 
 
 class LibResult(AbstractModel):
-    """黑白库结果明细
+    r"""黑白库结果明细
 
     """
 
@@ -937,7 +937,7 @@ class LibResult(AbstractModel):
 
     @property
     def Scene(self):
-        """场景识别结果
+        r"""场景识别结果
         :rtype: str
         """
         return self._Scene
@@ -948,7 +948,7 @@ class LibResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -960,7 +960,7 @@ class LibResult(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -972,7 +972,7 @@ class LibResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """子标签检测结果
+        r"""子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -984,7 +984,7 @@ class LibResult(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
         :rtype: int
         """
         return self._Score
@@ -995,7 +995,7 @@ class LibResult(AbstractModel):
 
     @property
     def Details(self):
-        """黑白库结果明细
+        r"""黑白库结果明细
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LibDetail
         """
@@ -1029,7 +1029,7 @@ class LibResult(AbstractModel):
 
 
 class Location(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -1054,7 +1054,7 @@ class Location(AbstractModel):
 
     @property
     def X(self):
-        """左上角横坐标
+        r"""左上角横坐标
         :rtype: float
         """
         return self._X
@@ -1065,7 +1065,7 @@ class Location(AbstractModel):
 
     @property
     def Y(self):
-        """左上角纵坐标
+        r"""左上角纵坐标
         :rtype: float
         """
         return self._Y
@@ -1076,7 +1076,7 @@ class Location(AbstractModel):
 
     @property
     def Width(self):
-        """宽度
+        r"""宽度
         :rtype: float
         """
         return self._Width
@@ -1087,7 +1087,7 @@ class Location(AbstractModel):
 
     @property
     def Height(self):
-        """高度
+        r"""高度
         :rtype: float
         """
         return self._Height
@@ -1098,7 +1098,7 @@ class Location(AbstractModel):
 
     @property
     def Rotate(self):
-        """检测框的旋转角度
+        r"""检测框的旋转角度
         :rtype: float
         """
         return self._Rotate
@@ -1125,7 +1125,7 @@ class Location(AbstractModel):
 
 
 class ObjectDetail(AbstractModel):
-    """实体检测结果明细，当检测场景为实体、广告台标、二维码时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
+    r"""实体检测结果明细，当检测场景为实体、广告台标、二维码时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
 
     """
 
@@ -1162,7 +1162,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Id(self):
-        """序号
+        r"""序号
         :rtype: int
         """
         return self._Id
@@ -1173,7 +1173,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Name
@@ -1184,7 +1184,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Value(self):
-        """标签值，
+        r"""标签值，
 当标签为二维码时，表示URL地址，如Name为QrCode时，Value为"http//abc.com/aaa"
         :rtype: str
         """
@@ -1196,7 +1196,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Score(self):
-        """分数
+        r"""分数
         :rtype: int
         """
         return self._Score
@@ -1207,7 +1207,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Location(self):
-        """检测框坐标
+        r"""检测框坐标
         :rtype: :class:`tencentcloud.ims.v20200713.models.Location`
         """
         return self._Location
@@ -1218,7 +1218,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """二级标签名称
+        r"""二级标签名称
         :rtype: str
         """
         return self._SubLabel
@@ -1229,7 +1229,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库或人脸库id
+        r"""图库或人脸库id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1241,7 +1241,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def ObjectId(self):
-        """图或人脸id
+        r"""图或人脸id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1274,7 +1274,7 @@ class ObjectDetail(AbstractModel):
 
 
 class ObjectResult(AbstractModel):
-    """实体检测结果详情：实体、广告台标、二维码
+    r"""实体检测结果详情：实体、广告台标、二维码
 
     """
 
@@ -1310,7 +1310,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Scene(self):
-        """场景识别结果
+        r"""场景识别结果
         :rtype: str
         """
         return self._Scene
@@ -1321,7 +1321,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -1333,7 +1333,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -1345,7 +1345,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """子标签检测结果
+        r"""子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1357,7 +1357,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
         :rtype: int
         """
         return self._Score
@@ -1368,7 +1368,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Names(self):
-        """实体名称
+        r"""实体名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1380,7 +1380,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Details(self):
-        """实体检测结果明细
+        r"""实体检测结果明细
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectDetail
         """
@@ -1415,7 +1415,7 @@ class ObjectResult(AbstractModel):
 
 
 class OcrResult(AbstractModel):
-    """OCR结果检测详情
+    r"""OCR结果检测详情
 
     """
 
@@ -1451,7 +1451,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Scene(self):
-        """场景识别结果
+        r"""场景识别结果
         :rtype: str
         """
         return self._Scene
@@ -1462,7 +1462,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -1474,7 +1474,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -1486,7 +1486,7 @@ class OcrResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """子标签检测结果
+        r"""子标签检测结果
         :rtype: str
         """
         return self._SubLabel
@@ -1497,7 +1497,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
         :rtype: int
         """
         return self._Score
@@ -1508,7 +1508,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Details(self):
-        """ocr结果详情
+        r"""ocr结果详情
         :rtype: list of OcrTextDetail
         """
         return self._Details
@@ -1519,7 +1519,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Text(self):
-        """ocr识别出的文本结果
+        r"""ocr识别出的文本结果
         :rtype: str
         """
         return self._Text
@@ -1530,7 +1530,7 @@ class OcrResult(AbstractModel):
 
     @property
     def HitFlag(self):
-        """是否命中结果，0 未命中 1命中
+        r"""是否命中结果，0 未命中 1命中
         :rtype: int
         """
         return self._HitFlag
@@ -1565,7 +1565,7 @@ class OcrResult(AbstractModel):
 
 
 class OcrTextDetail(AbstractModel):
-    """OCR文本结果详情
+    r"""OCR文本结果详情
 
     """
 
@@ -1603,7 +1603,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Text(self):
-        """OCR文本内容
+        r"""OCR文本内容
         :rtype: str
         """
         return self._Text
@@ -1614,7 +1614,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -1626,7 +1626,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibId(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义库id
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义库id
         :rtype: str
         """
         return self._LibId
@@ -1637,7 +1637,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibName(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义库名称
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义库名称
         :rtype: str
         """
         return self._LibName
@@ -1648,7 +1648,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Keywords(self):
-        """该标签下命中的关键词
+        r"""该标签下命中的关键词
         :rtype: list of str
         """
         return self._Keywords
@@ -1659,7 +1659,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
         :rtype: int
         """
         return self._Score
@@ -1670,7 +1670,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Location(self):
-        """OCR位置
+        r"""OCR位置
         :rtype: :class:`tencentcloud.ims.v20200713.models.Location`
         """
         return self._Location
@@ -1681,7 +1681,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Rate(self):
-        """OCR文本识别置信度
+        r"""OCR文本识别置信度
         :rtype: int
         """
         return self._Rate
@@ -1692,7 +1692,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """OCR文本命中的二级标签
+        r"""OCR文本命中的二级标签
         :rtype: str
         """
         return self._SubLabel
@@ -1725,7 +1725,7 @@ class OcrTextDetail(AbstractModel):
 
 
 class RecognitionResult(AbstractModel):
-    """识别类型标签结果信息
+    r"""识别类型标签结果信息
 
     """
 
@@ -1743,7 +1743,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Label(self):
-        """当前可能的取值：Scene（图片场景模型）
+        r"""当前可能的取值：Scene（图片场景模型）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1755,7 +1755,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Tags(self):
-        """Label对应模型下的识别标签信息
+        r"""Label对应模型下的识别标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionTag
         """
@@ -1785,7 +1785,7 @@ class RecognitionResult(AbstractModel):
 
 
 class RecognitionTag(AbstractModel):
-    """识别类型标签信息
+    r"""识别类型标签信息
 
     """
 
@@ -1807,7 +1807,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1819,7 +1819,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Score(self):
-        """置信分：0～100，数值越大表示置信度越高
+        r"""置信分：0～100，数值越大表示置信度越高
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1831,7 +1831,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Location(self):
-        """标签位置信息，若模型无位置信息，则可能为零值
+        r"""标签位置信息，若模型无位置信息，则可能为零值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ims.v20200713.models.Location`
         """
@@ -1859,7 +1859,7 @@ class RecognitionTag(AbstractModel):
 
 
 class User(AbstractModel):
-    """User结果
+    r"""User结果
 
     """
 
@@ -1896,7 +1896,7 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
-        """业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        r"""业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :rtype: str
         """
         return self._UserId
@@ -1907,7 +1907,7 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
-        """业务用户ID类型 "1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        r"""业务用户ID类型 "1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
         :rtype: str
         """
         return self._AccountType
@@ -1918,7 +1918,7 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nickname
@@ -1929,7 +1929,7 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
-        """性别 默认0 未知 1 男性 2 女性
+        r"""性别 默认0 未知 1 男性 2 女性
         :rtype: int
         """
         return self._Gender
@@ -1940,7 +1940,7 @@ class User(AbstractModel):
 
     @property
     def Age(self):
-        """年龄 默认0 未知
+        r"""年龄 默认0 未知
         :rtype: int
         """
         return self._Age
@@ -1951,7 +1951,7 @@ class User(AbstractModel):
 
     @property
     def Level(self):
-        """用户等级，默认0 未知 1 低 2 中 3 高
+        r"""用户等级，默认0 未知 1 低 2 中 3 高
         :rtype: int
         """
         return self._Level
@@ -1962,7 +1962,7 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
-        """手机号
+        r"""手机号
         :rtype: str
         """
         return self._Phone
@@ -1973,7 +1973,7 @@ class User(AbstractModel):
 
     @property
     def Desc(self):
-        """用户简介，长度不超过5000字
+        r"""用户简介，长度不超过5000字
         :rtype: str
         """
         return self._Desc
@@ -1984,7 +1984,7 @@ class User(AbstractModel):
 
     @property
     def HeadUrl(self):
-        """用户头像图片链接
+        r"""用户头像图片链接
         :rtype: str
         """
         return self._HeadUrl

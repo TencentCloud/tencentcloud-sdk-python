@@ -27,7 +27,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         本接口（DescribeDomains）用于查询CDN域名基本信息，包括项目id，状态，业务类型，创建时间，更新时间等。
 
@@ -54,7 +54,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeDomainsConfig(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         本接口（DescribeDomainsConfig）用于查询CDN加速域名详细配置信息。
 
@@ -81,7 +81,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnDomainLogs(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         本接口（DescribeEcdnDomainLogs）用于查询域名的访问日志下载地址。
 
@@ -106,7 +106,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnDomainStatistics(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         本接口（DescribeEcdnDomainStatistics）用于查询指定时间段内的域名访问统计指标。
 
@@ -133,7 +133,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnStatistics(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         DescribeEcdnStatistics用于查询 ECDN 实时访问监控数据，支持以下指标查询：
 
@@ -166,7 +166,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeIpStatus(self, request):
-        """ECDN平台下线，接口开始预下线处理
+        r"""ECDN平台下线，接口开始预下线处理
 
         DescribeIpStatus 用于查询域名所在加速平台的所有节点信息, 如果您的源站有白名单设置,可以通过本接口获取ECDN服务的节点IP进行加白, 本接口为内测接口,请联系腾讯云工程师开白。
 

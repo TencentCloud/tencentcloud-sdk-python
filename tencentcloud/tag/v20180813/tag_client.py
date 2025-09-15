@@ -27,7 +27,7 @@ class TagClient(AbstractClient):
 
 
     def AddProject(self, request):
-        """创建项目
+        r"""创建项目
 
         :param request: Request instance for AddProject.
         :type request: :class:`tencentcloud.tag.v20180813.models.AddProjectRequest`
@@ -50,7 +50,7 @@ class TagClient(AbstractClient):
 
 
     def AddResourceTag(self, request):
-        """本接口用于给标签关联资源
+        r"""本接口用于给标签关联资源
 
         :param request: Request instance for AddResourceTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.AddResourceTagRequest`
@@ -73,7 +73,7 @@ class TagClient(AbstractClient):
 
 
     def AttachResourcesTag(self, request):
-        """给多个资源关联某个标签
+        r"""给多个资源关联某个标签
 
         :param request: Request instance for AttachResourcesTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.AttachResourcesTagRequest`
@@ -96,7 +96,7 @@ class TagClient(AbstractClient):
 
 
     def CreateTag(self, request):
-        """本接口用于创建一对标签键和标签值
+        r"""本接口用于创建一对标签键和标签值
 
         :param request: Request instance for CreateTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagRequest`
@@ -119,7 +119,7 @@ class TagClient(AbstractClient):
 
 
     def CreateTags(self, request):
-        """本接口用于创建多对标签键和标签值
+        r"""本接口用于创建多对标签键和标签值
 
         :param request: Request instance for CreateTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagsRequest`
@@ -142,7 +142,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteResourceTag(self, request):
-        """本接口用于解除标签和资源的关联关系
+        r"""本接口用于解除标签和资源的关联关系
 
         :param request: Request instance for DeleteResourceTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagRequest`
@@ -165,7 +165,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTag(self, request):
-        """本接口用于删除一对标签键和标签值
+        r"""本接口用于删除一对标签键和标签值
 
         :param request: Request instance for DeleteTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagRequest`
@@ -188,7 +188,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """本接口用于批量删除标签键和标签值。
+        r"""本接口用于批量删除标签键和标签值。
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`
@@ -211,7 +211,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """获取项目列表
+        r"""获取项目列表
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeProjectsRequest`
@@ -234,7 +234,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTags(self, request):
-        """查询资源关联标签
+        r"""查询资源关联标签
 
         :param request: Request instance for DescribeResourceTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsRequest`
@@ -257,7 +257,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByResourceIds(self, request):
-        """用于批量查询已有资源关联的标签键值对
+        r"""用于批量查询已有资源关联的标签键值对
 
         :param request: Request instance for DescribeResourceTagsByResourceIds.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsRequest`
@@ -280,7 +280,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByResourceIdsSeq(self, request):
-        """按顺序查看资源关联的标签
+        r"""按顺序查看资源关联的标签
 
         :param request: Request instance for DescribeResourceTagsByResourceIdsSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsSeqRequest`
@@ -303,7 +303,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByTagKeys(self, request):
-        """根据标签键获取资源标签
+        r"""根据标签键获取资源标签
 
         :param request: Request instance for DescribeResourceTagsByTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByTagKeysRequest`
@@ -326,7 +326,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTags(self, request):
-        """通过标签查询资源列表
+        r"""通过标签查询资源列表
 
         :param request: Request instance for DescribeResourcesByTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsRequest`
@@ -349,7 +349,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTagsUnion(self, request):
-        """通过标签查询资源列表并集
+        r"""通过标签查询资源列表并集
 
         :param request: Request instance for DescribeResourcesByTagsUnion.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsUnionRequest`
@@ -372,7 +372,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagKeys(self, request):
-        """用于查询已建立的标签列表中的标签键。
+        r"""用于查询已建立的标签列表中的标签键。
 
         :param request: Request instance for DescribeTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysRequest`
@@ -395,7 +395,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagValues(self, request):
-        """用于查询已建立的标签列表中的标签值。
+        r"""用于查询已建立的标签列表中的标签值。
 
         :param request: Request instance for DescribeTagValues.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesRequest`
@@ -418,7 +418,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagValuesSeq(self, request):
-        """用于查询已建立的标签列表中的标签值。
+        r"""用于查询已建立的标签列表中的标签值。
 
         :param request: Request instance for DescribeTagValuesSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesSeqRequest`
@@ -441,7 +441,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """用于查询已建立的标签列表。
+        r"""用于查询已建立的标签列表。
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
@@ -464,7 +464,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagsSeq(self, request):
-        """用于查询已建立的标签列表。
+        r"""用于查询已建立的标签列表。
 
         :param request: Request instance for DescribeTagsSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsSeqRequest`
@@ -487,7 +487,7 @@ class TagClient(AbstractClient):
 
 
     def DetachResourcesTag(self, request):
-        """解绑多个资源关联的某个标签
+        r"""解绑多个资源关联的某个标签
 
         :param request: Request instance for DetachResourcesTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DetachResourcesTagRequest`
@@ -510,7 +510,7 @@ class TagClient(AbstractClient):
 
 
     def GetResources(self, request):
-        """查询绑定了标签的资源列表。
+        r"""查询绑定了标签的资源列表。
 
         :param request: Request instance for GetResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetResourcesRequest`
@@ -533,7 +533,7 @@ class TagClient(AbstractClient):
 
 
     def GetTagKeys(self, request):
-        """查询标签键列表。
+        r"""查询标签键列表。
 
         :param request: Request instance for GetTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagKeysRequest`
@@ -556,7 +556,7 @@ class TagClient(AbstractClient):
 
 
     def GetTagValues(self, request):
-        """用于查询已建立的标签列表中的标签值。
+        r"""用于查询已建立的标签列表中的标签值。
 
         :param request: Request instance for GetTagValues.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagValuesRequest`
@@ -579,7 +579,7 @@ class TagClient(AbstractClient):
 
 
     def GetTags(self, request):
-        """用于获取已建立的标签列表。
+        r"""用于获取已建立的标签列表。
 
         :param request: Request instance for GetTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagsRequest`
@@ -602,7 +602,7 @@ class TagClient(AbstractClient):
 
 
     def ModifyResourceTags(self, request):
-        """本接口用于修改资源关联的所有标签
+        r"""本接口用于修改资源关联的所有标签
 
         :param request: Request instance for ModifyResourceTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsRequest`
@@ -625,7 +625,7 @@ class TagClient(AbstractClient):
 
 
     def ModifyResourcesTagValue(self, request):
-        """修改多个资源关联的某个标签键对应的标签值
+        r"""修改多个资源关联的某个标签键对应的标签值
 
         :param request: Request instance for ModifyResourcesTagValue.
         :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourcesTagValueRequest`
@@ -648,7 +648,7 @@ class TagClient(AbstractClient):
 
 
     def TagResources(self, request):
-        """为指定的多个云产品的多个云资源统一创建并绑定标签。
+        r"""为指定的多个云产品的多个云资源统一创建并绑定标签。
 
         :param request: Request instance for TagResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.TagResourcesRequest`
@@ -671,7 +671,7 @@ class TagClient(AbstractClient):
 
 
     def UnTagResources(self, request):
-        """指定的多个云产品的多个云资源统一解绑标签。
+        r"""指定的多个云产品的多个云资源统一解绑标签。
 
         :param request: Request instance for UnTagResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesRequest`
@@ -694,7 +694,7 @@ class TagClient(AbstractClient):
 
 
     def UpdateProject(self, request):
-        """修改项目
+        r"""修改项目
 
         :param request: Request instance for UpdateProject.
         :type request: :class:`tencentcloud.tag.v20180813.models.UpdateProjectRequest`
@@ -717,7 +717,7 @@ class TagClient(AbstractClient):
 
 
     def UpdateResourceTagValue(self, request):
-        """本接口用于修改资源已关联的标签值（标签键不变）
+        r"""本接口用于修改资源已关联的标签值（标签键不变）
 
         :param request: Request instance for UpdateResourceTagValue.
         :type request: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeProductsRequest(AbstractModel):
-    """DescribeProducts请求参数结构体
+    r"""DescribeProducts请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为 20，最大值为 100。
+        r"""返回数量，默认为 20，最大值为 100。
         :rtype: int
         """
         return self._Limit
@@ -46,7 +46,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0。
+        r"""偏移量，默认为 0。
         :rtype: int
         """
         return self._Offset
@@ -70,7 +70,7 @@ class DescribeProductsRequest(AbstractModel):
 
 
 class DescribeProductsResponse(AbstractModel):
-    """DescribeProducts返回参数结构体
+    r"""DescribeProducts返回参数结构体
 
     """
 
@@ -89,7 +89,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def Products(self):
-        """产品详细信息列表。
+        r"""产品详细信息列表。
         :rtype: list of RegionProduct
         """
         return self._Products
@@ -100,7 +100,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """产品总数量。
+        r"""产品总数量。
         :rtype: int
         """
         return self._TotalCount
@@ -111,7 +111,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -133,7 +133,7 @@ class DescribeProductsResponse(AbstractModel):
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions请求参数结构体
+    r"""DescribeRegions请求参数结构体
 
     """
 
@@ -149,7 +149,7 @@ class DescribeRegionsRequest(AbstractModel):
 
     @property
     def Product(self):
-        """待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
+        r"""待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :rtype: str
         """
         return self._Product
@@ -160,7 +160,7 @@ class DescribeRegionsRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+        r"""不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
         :rtype: int
         """
         return self._Scene
@@ -184,7 +184,7 @@ class DescribeRegionsRequest(AbstractModel):
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions返回参数结构体
+    r"""DescribeRegions返回参数结构体
 
     """
 
@@ -203,7 +203,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """地域数量
+        r"""地域数量
         :rtype: int
         """
         return self._TotalCount
@@ -214,7 +214,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """地域列表信息
+        r"""地域列表信息
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -225,7 +225,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -247,7 +247,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeZonesRequest(AbstractModel):
-    """DescribeZones请求参数结构体
+    r"""DescribeZones请求参数结构体
 
     """
 
@@ -263,7 +263,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Product(self):
-        """待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
+        r"""待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :rtype: str
         """
         return self._Product
@@ -274,7 +274,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+        r"""不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
         :rtype: int
         """
         return self._Scene
@@ -298,7 +298,7 @@ class DescribeZonesRequest(AbstractModel):
 
 
 class DescribeZonesResponse(AbstractModel):
-    """DescribeZones返回参数结构体
+    r"""DescribeZones返回参数结构体
 
     """
 
@@ -317,7 +317,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """可用区数量。
+        r"""可用区数量。
         :rtype: int
         """
         return self._TotalCount
@@ -328,7 +328,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """可用区列表信息。
+        r"""可用区列表信息。
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet
@@ -339,7 +339,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -361,7 +361,7 @@ class DescribeZonesResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """地域信息
+    r"""地域信息
 
     """
 
@@ -396,7 +396,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域名称，例如，ap-guangzhou
+        r"""地域名称，例如，ap-guangzhou
         :rtype: str
         """
         return self._Region
@@ -407,7 +407,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """地域描述，例如，华南地区(广州)
+        r"""地域描述，例如，华南地区(广州)
         :rtype: str
         """
         return self._RegionName
@@ -418,7 +418,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
-        """地域是否可用状态
+        r"""地域是否可用状态
         :rtype: str
         """
         return self._RegionState
@@ -429,7 +429,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionTypeMC(self):
-        """控制台类型，api调用时默认null
+        r"""控制台类型，api调用时默认null
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -441,7 +441,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def LocationMC(self):
-        """不同语言的地区
+        r"""不同语言的地区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -453,7 +453,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionNameMC(self):
-        """控制台展示的地域描述
+        r"""控制台展示的地域描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -465,7 +465,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionIdMC(self):
-        """1
+        r"""1
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -495,7 +495,7 @@ class RegionInfo(AbstractModel):
 
 
 class RegionProduct(AbstractModel):
-    """地域管理系统支持的产品信息
+    r"""地域管理系统支持的产品信息
 
     """
 
@@ -508,7 +508,7 @@ class RegionProduct(AbstractModel):
 
     @property
     def Name(self):
-        """产品名称，如cvm
+        r"""产品名称，如cvm
         :rtype: str
         """
         return self._Name
@@ -531,7 +531,7 @@ class RegionProduct(AbstractModel):
 
 
 class ZoneInfo(AbstractModel):
-    """可用区信息
+    r"""可用区信息
 
     """
 
@@ -619,7 +619,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区名称，例如，ap-guangzhou-3
+        r"""可用区名称，例如，ap-guangzhou-3
 全网可用区名称如下：
 <li> ap-chongqing-1 </li>
 <li> ap-seoul-1 </li>
@@ -672,7 +672,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        """可用区描述，例如，广州三区
+        r"""可用区描述，例如，广州三区
         :rtype: str
         """
         return self._ZoneName
@@ -683,7 +683,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """可用区ID
+        r"""可用区ID
         :rtype: str
         """
         return self._ZoneId
@@ -694,7 +694,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneState(self):
-        """可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        r"""可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
         :rtype: str
         """
         return self._ZoneState
@@ -705,7 +705,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZone(self):
-        """父级zone
+        r"""父级zone
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -717,7 +717,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZoneId(self):
-        """父级可用区ID
+        r"""父级可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -729,7 +729,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZoneName(self):
-        """父级可用区描述
+        r"""父级可用区描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -741,7 +741,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneType(self):
-        """zone类型
+        r"""zone类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -753,7 +753,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def MachineRoomTypeMC(self):
-        """控制台类型
+        r"""控制台类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -765,7 +765,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneIdMC(self):
-        """和ZoneId一样，适用于控制台调用。
+        r"""和ZoneId一样，适用于控制台调用。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

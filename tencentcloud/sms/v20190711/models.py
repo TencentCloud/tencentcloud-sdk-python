@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddSignStatus(AbstractModel):
-    """添加签名响应
+    r"""添加签名响应
 
     """
 
@@ -35,7 +35,7 @@ class AddSignStatus(AbstractModel):
 
     @property
     def SignId(self):
-        """签名Id。
+        r"""签名Id。
         :rtype: int
         """
         return self._SignId
@@ -46,7 +46,7 @@ class AddSignStatus(AbstractModel):
 
     @property
     def SignApplyId(self):
-        """签名申请Id。
+        r"""签名申请Id。
         :rtype: int
         """
         return self._SignApplyId
@@ -70,7 +70,7 @@ class AddSignStatus(AbstractModel):
 
 
 class AddSmsSignRequest(AbstractModel):
-    """AddSmsSign请求参数结构体
+    r"""AddSmsSign请求参数结构体
 
     """
 
@@ -127,7 +127,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def SignName(self):
-        """签名名称。
+        r"""签名名称。
 注：不能重复申请已通过或待审核的签名。
         :rtype: str
         """
@@ -139,7 +139,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def SignType(self):
-        """签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+        r"""签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 0：公司，可选 DocumentType 有（0，1）。
 1：APP，可选 DocumentType 有（0，1，2，3，4） 。
 4：商标，可选 DocumentType 有（7）。
@@ -156,7 +156,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def DocumentType(self):
-        """证明类型：
+        r"""证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
@@ -174,7 +174,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -187,7 +187,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def UsedMethod(self):
-        """签名用途：
+        r"""签名用途：
 0：自用。
 1：他用。
         :rtype: int
@@ -200,7 +200,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def ProofImage(self):
-        """签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        r"""签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
         :rtype: str
         """
         return self._ProofImage
@@ -211,7 +211,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def CommissionImage(self):
-        """委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+        r"""委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
         :rtype: str
@@ -224,7 +224,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """签名的申请备注。
+        r"""签名的申请备注。
         :rtype: str
         """
         return self._Remark
@@ -235,7 +235,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def QualificationId(self):
-        """已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        r"""已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
         :rtype: int
         """
         return self._QualificationId
@@ -266,7 +266,7 @@ class AddSmsSignRequest(AbstractModel):
 
 
 class AddSmsSignResponse(AbstractModel):
-    """AddSmsSign返回参数结构体
+    r"""AddSmsSign返回参数结构体
 
     """
 
@@ -282,7 +282,7 @@ class AddSmsSignResponse(AbstractModel):
 
     @property
     def AddSignStatus(self):
-        """添加签名响应
+        r"""添加签名响应
         :rtype: :class:`tencentcloud.sms.v20190711.models.AddSignStatus`
         """
         return self._AddSignStatus
@@ -293,7 +293,7 @@ class AddSmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -311,7 +311,7 @@ class AddSmsSignResponse(AbstractModel):
 
 
 class AddSmsTemplateRequest(AbstractModel):
-    """AddSmsTemplate请求参数结构体
+    r"""AddSmsTemplate请求参数结构体
 
     """
 
@@ -339,7 +339,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -350,7 +350,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """模板内容。
+        r"""模板内容。
         :rtype: str
         """
         return self._TemplateContent
@@ -361,7 +361,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def SmsType(self):
-        """短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+        r"""短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
         :rtype: int
         """
@@ -373,7 +373,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -386,7 +386,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """模板备注，例如申请原因，使用场景等。
+        r"""模板备注，例如申请原因，使用场景等。
         :rtype: str
         """
         return self._Remark
@@ -413,7 +413,7 @@ class AddSmsTemplateRequest(AbstractModel):
 
 
 class AddSmsTemplateResponse(AbstractModel):
-    """AddSmsTemplate返回参数结构体
+    r"""AddSmsTemplate返回参数结构体
 
     """
 
@@ -429,7 +429,7 @@ class AddSmsTemplateResponse(AbstractModel):
 
     @property
     def AddTemplateStatus(self):
-        """添加短信模板响应包体
+        r"""添加短信模板响应包体
         :rtype: :class:`tencentcloud.sms.v20190711.models.AddTemplateStatus`
         """
         return self._AddTemplateStatus
@@ -440,7 +440,7 @@ class AddSmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -458,7 +458,7 @@ class AddSmsTemplateResponse(AbstractModel):
 
 
 class AddTemplateStatus(AbstractModel):
-    """添加模板参数响应
+    r"""添加模板参数响应
 
     """
 
@@ -471,7 +471,7 @@ class AddTemplateStatus(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板参数
+        r"""模板参数
         :rtype: str
         """
         return self._TemplateId
@@ -494,7 +494,7 @@ class AddTemplateStatus(AbstractModel):
 
 
 class CallbackStatusStatistics(AbstractModel):
-    """回执数据统计响应包体
+    r"""回执数据统计响应包体
 
     """
 
@@ -531,7 +531,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackCount(self):
-        """短信回执量统计。
+        r"""短信回执量统计。
         :rtype: int
         """
         return self._CallbackCount
@@ -542,7 +542,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
-        """短信提交成功量统计。
+        r"""短信提交成功量统计。
         :rtype: int
         """
         return self._RequestSuccessCount
@@ -553,7 +553,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackFailCount(self):
-        """短信回执失败量统计。
+        r"""短信回执失败量统计。
         :rtype: int
         """
         return self._CallbackFailCount
@@ -564,7 +564,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackSuccessCount(self):
-        """短信回执成功量统计。
+        r"""短信回执成功量统计。
         :rtype: int
         """
         return self._CallbackSuccessCount
@@ -575,7 +575,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InternalErrorCount(self):
-        """运营商内部错误统计。
+        r"""运营商内部错误统计。
         :rtype: int
         """
         return self._InternalErrorCount
@@ -586,7 +586,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InvalidNumberCount(self):
-        """号码无效或空号统计。
+        r"""号码无效或空号统计。
         :rtype: int
         """
         return self._InvalidNumberCount
@@ -597,7 +597,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def ShutdownErrorCount(self):
-        """停机、关机等错误统计。
+        r"""停机、关机等错误统计。
         :rtype: int
         """
         return self._ShutdownErrorCount
@@ -608,7 +608,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def BlackListCount(self):
-        """号码拉入黑名单统计。
+        r"""号码拉入黑名单统计。
         :rtype: int
         """
         return self._BlackListCount
@@ -619,7 +619,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def FrequencyLimitCount(self):
-        """运营商频率限制统计。
+        r"""运营商频率限制统计。
         :rtype: int
         """
         return self._FrequencyLimitCount
@@ -650,7 +650,7 @@ class CallbackStatusStatistics(AbstractModel):
 
 
 class CallbackStatusStatisticsRequest(AbstractModel):
-    """CallbackStatusStatistics请求参数结构体
+    r"""CallbackStatusStatistics请求参数结构体
 
     """
 
@@ -678,7 +678,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     @property
     def StartDateTime(self):
-        """开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
+        r"""开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :rtype: int
         """
         return self._StartDateTime
@@ -689,7 +689,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     @property
     def EndDataTime(self):
-        """结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
+        r"""结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
 注：EndDataTime 必须大于等于 StartDateTime。
         :rtype: int
         """
@@ -701,7 +701,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -712,7 +712,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大上限。
+        r"""最大上限。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -724,7 +724,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -752,7 +752,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
 
 class CallbackStatusStatisticsResponse(AbstractModel):
-    """CallbackStatusStatistics返回参数结构体
+    r"""CallbackStatusStatistics返回参数结构体
 
     """
 
@@ -768,7 +768,7 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     @property
     def CallbackStatusStatistics(self):
-        """回执数据统计响应包体。
+        r"""回执数据统计响应包体。
         :rtype: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
         """
         return self._CallbackStatusStatistics
@@ -779,7 +779,7 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -797,7 +797,7 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
 
 class DeleteSignStatus(AbstractModel):
-    """删除签名响应
+    r"""删除签名响应
 
     """
 
@@ -813,7 +813,7 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteStatus(self):
-        """删除状态信息。
+        r"""删除状态信息。
         :rtype: str
         """
         return self._DeleteStatus
@@ -824,7 +824,7 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteTime(self):
-        """删除时间，UNIX 时间戳（单位：秒）。
+        r"""删除时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._DeleteTime
@@ -848,7 +848,7 @@ class DeleteSignStatus(AbstractModel):
 
 
 class DeleteSmsSignRequest(AbstractModel):
-    """DeleteSmsSign请求参数结构体
+    r"""DeleteSmsSign请求参数结构体
 
     """
 
@@ -861,7 +861,7 @@ class DeleteSmsSignRequest(AbstractModel):
 
     @property
     def SignId(self):
-        """待删除的签名 ID。
+        r"""待删除的签名 ID。
         :rtype: int
         """
         return self._SignId
@@ -884,7 +884,7 @@ class DeleteSmsSignRequest(AbstractModel):
 
 
 class DeleteSmsSignResponse(AbstractModel):
-    """DeleteSmsSign返回参数结构体
+    r"""DeleteSmsSign返回参数结构体
 
     """
 
@@ -900,7 +900,7 @@ class DeleteSmsSignResponse(AbstractModel):
 
     @property
     def DeleteSignStatus(self):
-        """删除签名响应
+        r"""删除签名响应
         :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteSignStatus`
         """
         return self._DeleteSignStatus
@@ -911,7 +911,7 @@ class DeleteSmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -929,7 +929,7 @@ class DeleteSmsSignResponse(AbstractModel):
 
 
 class DeleteSmsTemplateRequest(AbstractModel):
-    """DeleteSmsTemplate请求参数结构体
+    r"""DeleteSmsTemplate请求参数结构体
 
     """
 
@@ -942,7 +942,7 @@ class DeleteSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """待删除的模板 ID。
+        r"""待删除的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -965,7 +965,7 @@ class DeleteSmsTemplateRequest(AbstractModel):
 
 
 class DeleteSmsTemplateResponse(AbstractModel):
-    """DeleteSmsTemplate返回参数结构体
+    r"""DeleteSmsTemplate返回参数结构体
 
     """
 
@@ -981,7 +981,7 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
     @property
     def DeleteTemplateStatus(self):
-        """删除模板响应
+        r"""删除模板响应
         :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteTemplateStatus`
         """
         return self._DeleteTemplateStatus
@@ -992,7 +992,7 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1010,7 +1010,7 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
 
 class DeleteTemplateStatus(AbstractModel):
-    """删除模板响应
+    r"""删除模板响应
 
     """
 
@@ -1026,7 +1026,7 @@ class DeleteTemplateStatus(AbstractModel):
 
     @property
     def DeleteStatus(self):
-        """删除状态信息。
+        r"""删除状态信息。
         :rtype: str
         """
         return self._DeleteStatus
@@ -1037,7 +1037,7 @@ class DeleteTemplateStatus(AbstractModel):
 
     @property
     def DeleteTime(self):
-        """删除时间，UNIX 时间戳（单位：秒）。
+        r"""删除时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._DeleteTime
@@ -1061,7 +1061,7 @@ class DeleteTemplateStatus(AbstractModel):
 
 
 class DescribeSignListStatus(AbstractModel):
-    """获取短信签名信息响应
+    r"""获取短信签名信息响应
 
     """
 
@@ -1103,7 +1103,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def SignId(self):
-        """签名Id
+        r"""签名Id
         :rtype: int
         """
         return self._SignId
@@ -1114,7 +1114,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -1127,7 +1127,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def StatusCode(self):
-        """申请签名状态。其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
+        r"""申请签名状态。其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
         :rtype: int
         """
         return self._StatusCode
@@ -1138,7 +1138,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def ReviewReply(self):
-        """审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        r"""审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :rtype: str
         """
         return self._ReviewReply
@@ -1149,7 +1149,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def SignName(self):
-        """签名名称。
+        r"""签名名称。
         :rtype: str
         """
         return self._SignName
@@ -1160,7 +1160,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def CreateTime(self):
-        """提交审核时间，UNIX 时间戳（单位：秒）。
+        r"""提交审核时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._CreateTime
@@ -1171,7 +1171,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def QualificationId(self):
-        """国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+        r"""国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
 注：国际短信不涉及，默认为0。
         :rtype: int
         """
@@ -1183,7 +1183,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def QualificationName(self):
-        """国内短信的资质名称。
+        r"""国内短信的资质名称。
 注：国际短信不涉及，默认为空。
         :rtype: str
         """
@@ -1195,7 +1195,7 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def QualificationStatusCode(self):
-        """国内短信的资质状态。其中0表示待审核，1表示已通过，2表示已拒绝，3表示待补充后提交，4表示变更后待审核，5表示变更后被驳回。可参考 [实名资质审核状态说明](https://cloud.tencent.com/document/product/382/13444#.E5.AE.A1.E6.A0.B8.E7.8A.B6.E6.80.81.E8.AF.B4.E6.98.8E) 。
+        r"""国内短信的资质状态。其中0表示待审核，1表示已通过，2表示已拒绝，3表示待补充后提交，4表示变更后待审核，5表示变更后被驳回。可参考 [实名资质审核状态说明](https://cloud.tencent.com/document/product/382/13444#.E5.AE.A1.E6.A0.B8.E7.8A.B6.E6.80.81.E8.AF.B4.E6.98.8E) 。
 注：国际短信不涉及，默认为0。
         :rtype: int
         """
@@ -1227,7 +1227,7 @@ class DescribeSignListStatus(AbstractModel):
 
 
 class DescribeSmsSignListRequest(AbstractModel):
-    """DescribeSmsSignList请求参数结构体
+    r"""DescribeSmsSignList请求参数结构体
 
     """
 
@@ -1245,7 +1245,7 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     @property
     def SignIdSet(self):
-        """签名 ID 数组。
+        r"""签名 ID 数组。
         :rtype: list of int non-negative
         """
         return self._SignIdSet
@@ -1256,7 +1256,7 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -1282,7 +1282,7 @@ class DescribeSmsSignListRequest(AbstractModel):
 
 
 class DescribeSmsSignListResponse(AbstractModel):
-    """DescribeSmsSignList返回参数结构体
+    r"""DescribeSmsSignList返回参数结构体
 
     """
 
@@ -1298,7 +1298,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     @property
     def DescribeSignListStatusSet(self):
-        """获取签名信息响应
+        r"""获取签名信息响应
         :rtype: list of DescribeSignListStatus
         """
         return self._DescribeSignListStatusSet
@@ -1309,7 +1309,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1330,7 +1330,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
 
 class DescribeSmsTemplateListRequest(AbstractModel):
-    """DescribeSmsTemplateList请求参数结构体
+    r"""DescribeSmsTemplateList请求参数结构体
 
     """
 
@@ -1348,7 +1348,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     @property
     def TemplateIdSet(self):
-        """模板 ID 数组。
+        r"""模板 ID 数组。
         :rtype: list of int non-negative
         """
         return self._TemplateIdSet
@@ -1359,7 +1359,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -1385,7 +1385,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
 
 class DescribeSmsTemplateListResponse(AbstractModel):
-    """DescribeSmsTemplateList返回参数结构体
+    r"""DescribeSmsTemplateList返回参数结构体
 
     """
 
@@ -1401,7 +1401,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     @property
     def DescribeTemplateStatusSet(self):
-        """获取短信模板信息响应
+        r"""获取短信模板信息响应
         :rtype: list of DescribeTemplateListStatus
         """
         return self._DescribeTemplateStatusSet
@@ -1412,7 +1412,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1433,7 +1433,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
 
 class DescribeTemplateListStatus(AbstractModel):
-    """获取短信模板信息响应
+    r"""获取短信模板信息响应
 
     """
 
@@ -1463,7 +1463,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id
+        r"""模板Id
         :rtype: int
         """
         return self._TemplateId
@@ -1474,7 +1474,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -1487,7 +1487,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def StatusCode(self):
-        """申请模板状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
+        r"""申请模板状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
         :rtype: int
         """
         return self._StatusCode
@@ -1498,7 +1498,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def ReviewReply(self):
-        """审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        r"""审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :rtype: str
         """
         return self._ReviewReply
@@ -1509,7 +1509,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称。
+        r"""模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -1520,7 +1520,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def CreateTime(self):
-        """提交审核时间，UNIX 时间戳（单位：秒）。
+        r"""提交审核时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._CreateTime
@@ -1548,7 +1548,7 @@ class DescribeTemplateListStatus(AbstractModel):
 
 
 class ModifySignStatus(AbstractModel):
-    """修改签名响应
+    r"""修改签名响应
 
     """
 
@@ -1564,7 +1564,7 @@ class ModifySignStatus(AbstractModel):
 
     @property
     def SignId(self):
-        """签名Id
+        r"""签名Id
         :rtype: int
         """
         return self._SignId
@@ -1575,7 +1575,7 @@ class ModifySignStatus(AbstractModel):
 
     @property
     def SignApplyId(self):
-        """签名修改申请Id
+        r"""签名修改申请Id
         :rtype: str
         """
         return self._SignApplyId
@@ -1599,7 +1599,7 @@ class ModifySignStatus(AbstractModel):
 
 
 class ModifySmsSignRequest(AbstractModel):
-    """ModifySmsSign请求参数结构体
+    r"""ModifySmsSign请求参数结构体
 
     """
 
@@ -1659,7 +1659,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignId(self):
-        """待修改的签名 ID。
+        r"""待修改的签名 ID。
         :rtype: int
         """
         return self._SignId
@@ -1670,7 +1670,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignName(self):
-        """签名名称。
+        r"""签名名称。
         :rtype: str
         """
         return self._SignName
@@ -1681,7 +1681,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignType(self):
-        """签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+        r"""签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 0：公司，可选 DocumentType 有（0，1）。
 1：APP，可选 DocumentType 有（0，1，2，3，4） 。
 4：商标，可选 DocumentType 有（7）。
@@ -1698,7 +1698,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def DocumentType(self):
-        """证明类型：
+        r"""证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
@@ -1716,7 +1716,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
 注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。
@@ -1730,7 +1730,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def UsedMethod(self):
-        """签名用途：
+        r"""签名用途：
 0：自用。
 1：他用。
         :rtype: int
@@ -1743,7 +1743,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def ProofImage(self):
-        """签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        r"""签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
         :rtype: str
         """
         return self._ProofImage
@@ -1754,7 +1754,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def CommissionImage(self):
-        """委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+        r"""委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
         :rtype: str
@@ -1767,7 +1767,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """签名的申请备注。
+        r"""签名的申请备注。
         :rtype: str
         """
         return self._Remark
@@ -1778,7 +1778,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def QualificationId(self):
-        """已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        r"""已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
         :rtype: int
         """
         return self._QualificationId
@@ -1810,7 +1810,7 @@ class ModifySmsSignRequest(AbstractModel):
 
 
 class ModifySmsSignResponse(AbstractModel):
-    """ModifySmsSign返回参数结构体
+    r"""ModifySmsSign返回参数结构体
 
     """
 
@@ -1826,7 +1826,7 @@ class ModifySmsSignResponse(AbstractModel):
 
     @property
     def ModifySignStatus(self):
-        """修改签名响应
+        r"""修改签名响应
         :rtype: :class:`tencentcloud.sms.v20190711.models.ModifySignStatus`
         """
         return self._ModifySignStatus
@@ -1837,7 +1837,7 @@ class ModifySmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1855,7 +1855,7 @@ class ModifySmsSignResponse(AbstractModel):
 
 
 class ModifySmsTemplateRequest(AbstractModel):
-    """ModifySmsTemplate请求参数结构体
+    r"""ModifySmsTemplate请求参数结构体
 
     """
 
@@ -1886,7 +1886,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """待修改的模板的模板 ID。
+        r"""待修改的模板的模板 ID。
         :rtype: int
         """
         return self._TemplateId
@@ -1897,7 +1897,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """新的模板名称。
+        r"""新的模板名称。
         :rtype: str
         """
         return self._TemplateName
@@ -1908,7 +1908,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """新的模板内容。
+        r"""新的模板内容。
         :rtype: str
         """
         return self._TemplateContent
@@ -1919,7 +1919,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def SmsType(self):
-        """短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+        r"""短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
         :rtype: int
         """
@@ -1931,7 +1931,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def International(self):
-        """是否国际/港澳台短信：
+        r"""是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :rtype: int
@@ -1944,7 +1944,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """模板备注，例如申请原因，使用场景等。
+        r"""模板备注，例如申请原因，使用场景等。
         :rtype: str
         """
         return self._Remark
@@ -1972,7 +1972,7 @@ class ModifySmsTemplateRequest(AbstractModel):
 
 
 class ModifySmsTemplateResponse(AbstractModel):
-    """ModifySmsTemplate返回参数结构体
+    r"""ModifySmsTemplate返回参数结构体
 
     """
 
@@ -1988,7 +1988,7 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     @property
     def ModifyTemplateStatus(self):
-        """修改模板参数响应
+        r"""修改模板参数响应
         :rtype: :class:`tencentcloud.sms.v20190711.models.ModifyTemplateStatus`
         """
         return self._ModifyTemplateStatus
@@ -1999,7 +1999,7 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2017,7 +2017,7 @@ class ModifySmsTemplateResponse(AbstractModel):
 
 
 class ModifyTemplateStatus(AbstractModel):
-    """修改模板参数响应
+    r"""修改模板参数响应
 
     """
 
@@ -2030,7 +2030,7 @@ class ModifyTemplateStatus(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板参数
+        r"""模板参数
         :rtype: int
         """
         return self._TemplateId
@@ -2053,7 +2053,7 @@ class ModifyTemplateStatus(AbstractModel):
 
 
 class PullSmsReplyStatus(AbstractModel):
-    """短信回复状态
+    r"""短信回复状态
 
     """
 
@@ -2084,7 +2084,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ExtendCode(self):
-        """短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
+        r"""短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :rtype: str
         """
         return self._ExtendCode
@@ -2095,7 +2095,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def NationCode(self):
-        """国家（或地区）码。
+        r"""国家（或地区）码。
         :rtype: str
         """
         return self._NationCode
@@ -2106,7 +2106,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
+        r"""手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: str
         """
         return self._PhoneNumber
@@ -2117,7 +2117,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def Sign(self):
-        """短信签名。
+        r"""短信签名。
         :rtype: str
         """
         return self._Sign
@@ -2128,7 +2128,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyContent(self):
-        """用户回复的内容。
+        r"""用户回复的内容。
         :rtype: str
         """
         return self._ReplyContent
@@ -2139,7 +2139,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyTime(self):
-        """回复时间（例如：2019-10-08 17:18:37）。
+        r"""回复时间（例如：2019-10-08 17:18:37）。
         :rtype: str
         """
         return self._ReplyTime
@@ -2150,7 +2150,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyUnixTime(self):
-        """回复时间，UNIX 时间戳（单位：秒）。
+        r"""回复时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._ReplyUnixTime
@@ -2179,7 +2179,7 @@ class PullSmsReplyStatus(AbstractModel):
 
 
 class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
-    """PullSmsReplyStatusByPhoneNumber请求参数结构体
+    r"""PullSmsReplyStatusByPhoneNumber请求参数结构体
 
     """
 
@@ -2209,7 +2209,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def SendDateTime(self):
-        """拉取起始时间，UNIX 时间戳（时间：秒）。
+        r"""拉取起始时间，UNIX 时间戳（时间：秒）。
 注：最大可拉取当前时期7天前的数据。
         :rtype: int
         """
@@ -2221,7 +2221,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -2233,7 +2233,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，最多 100。
+        r"""拉取最大条数，最多 100。
         :rtype: int
         """
         return self._Limit
@@ -2244,7 +2244,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
+        r"""下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: str
         """
         return self._PhoneNumber
@@ -2255,7 +2255,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -2266,7 +2266,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def EndDateTime(self):
-        """拉取截止时间，UNIX 时间戳（时间：秒）。
+        r"""拉取截止时间，UNIX 时间戳（时间：秒）。
         :rtype: int
         """
         return self._EndDateTime
@@ -2294,7 +2294,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
 
 class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
-    """PullSmsReplyStatusByPhoneNumber返回参数结构体
+    r"""PullSmsReplyStatusByPhoneNumber返回参数结构体
 
     """
 
@@ -2310,7 +2310,7 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def PullSmsReplyStatusSet(self):
-        """回复状态响应集合。
+        r"""回复状态响应集合。
         :rtype: list of PullSmsReplyStatus
         """
         return self._PullSmsReplyStatusSet
@@ -2321,7 +2321,7 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2342,7 +2342,7 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
 
 class PullSmsReplyStatusRequest(AbstractModel):
-    """PullSmsReplyStatus请求参数结构体
+    r"""PullSmsReplyStatus请求参数结构体
 
     """
 
@@ -2358,7 +2358,7 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，最多100条。
+        r"""拉取最大条数，最多100条。
         :rtype: int
         """
         return self._Limit
@@ -2369,7 +2369,7 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际 SdkAppid，例如1400006666。
+        r"""短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际 SdkAppid，例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -2393,7 +2393,7 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
 
 class PullSmsReplyStatusResponse(AbstractModel):
-    """PullSmsReplyStatus返回参数结构体
+    r"""PullSmsReplyStatus返回参数结构体
 
     """
 
@@ -2409,7 +2409,7 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     @property
     def PullSmsReplyStatusSet(self):
-        """回复状态响应集合。
+        r"""回复状态响应集合。
         :rtype: list of PullSmsReplyStatus
         """
         return self._PullSmsReplyStatusSet
@@ -2420,7 +2420,7 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2441,7 +2441,7 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
 
 class PullSmsSendStatus(AbstractModel):
-    """短信的下发状态详细信息
+    r"""短信的下发状态详细信息
 
     """
 
@@ -2475,7 +2475,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def UserReceiveTime(self):
-        """用户实际接收到短信的时间。
+        r"""用户实际接收到短信的时间。
         :rtype: str
         """
         return self._UserReceiveTime
@@ -2486,7 +2486,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def UserReceiveUnixTime(self):
-        """用户实际接收到短信的时间，UNIX 时间戳（单位：秒）。
+        r"""用户实际接收到短信的时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._UserReceiveUnixTime
@@ -2497,7 +2497,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def NationCode(self):
-        """国家（或地区）码。
+        r"""国家（或地区）码。
         :rtype: str
         """
         return self._NationCode
@@ -2508,7 +2508,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def PurePhoneNumber(self):
-        """手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
+        r"""手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: str
         """
         return self._PurePhoneNumber
@@ -2519,7 +2519,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """手机号码，普通格式，示例如：18501234444。
+        r"""手机号码，普通格式，示例如：18501234444。
         :rtype: str
         """
         return self._PhoneNumber
@@ -2530,7 +2530,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def SerialNo(self):
-        """本次发送标识 ID。
+        r"""本次发送标识 ID。
         :rtype: str
         """
         return self._SerialNo
@@ -2541,7 +2541,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def ReportStatus(self):
-        """实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）。
+        r"""实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）。
         :rtype: str
         """
         return self._ReportStatus
@@ -2552,7 +2552,7 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def Description(self):
-        """用户接收短信状态描述。
+        r"""用户接收短信状态描述。
         :rtype: str
         """
         return self._Description
@@ -2582,7 +2582,7 @@ class PullSmsSendStatus(AbstractModel):
 
 
 class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
-    """PullSmsSendStatusByPhoneNumber请求参数结构体
+    r"""PullSmsSendStatusByPhoneNumber请求参数结构体
 
     """
 
@@ -2612,7 +2612,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def SendDateTime(self):
-        """拉取起始时间，UNIX 时间戳（时间：秒）。
+        r"""拉取起始时间，UNIX 时间戳（时间：秒）。
 注：最大可拉取当前时期7天前的数据。
         :rtype: int
         """
@@ -2624,7 +2624,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -2636,7 +2636,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，最多 100。
+        r"""拉取最大条数，最多 100。
         :rtype: int
         """
         return self._Limit
@@ -2647,7 +2647,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
+        r"""下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: str
         """
         return self._PhoneNumber
@@ -2658,7 +2658,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -2669,7 +2669,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     @property
     def EndDateTime(self):
-        """拉取截止时间，UNIX 时间戳（时间：秒）。
+        r"""拉取截止时间，UNIX 时间戳（时间：秒）。
         :rtype: int
         """
         return self._EndDateTime
@@ -2697,7 +2697,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
 
 class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
-    """PullSmsSendStatusByPhoneNumber返回参数结构体
+    r"""PullSmsSendStatusByPhoneNumber返回参数结构体
 
     """
 
@@ -2713,7 +2713,7 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def PullSmsSendStatusSet(self):
-        """下发状态响应集合。
+        r"""下发状态响应集合。
         :rtype: list of PullSmsSendStatus
         """
         return self._PullSmsSendStatusSet
@@ -2724,7 +2724,7 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2745,7 +2745,7 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
 
 class PullSmsSendStatusRequest(AbstractModel):
-    """PullSmsSendStatus请求参数结构体
+    r"""PullSmsSendStatus请求参数结构体
 
     """
 
@@ -2761,7 +2761,7 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取最大条数，最多100条。
+        r"""拉取最大条数，最多100条。
         :rtype: int
         """
         return self._Limit
@@ -2772,7 +2772,7 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -2796,7 +2796,7 @@ class PullSmsSendStatusRequest(AbstractModel):
 
 
 class PullSmsSendStatusResponse(AbstractModel):
-    """PullSmsSendStatus返回参数结构体
+    r"""PullSmsSendStatus返回参数结构体
 
     """
 
@@ -2812,7 +2812,7 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     @property
     def PullSmsSendStatusSet(self):
-        """下发状态响应集合。
+        r"""下发状态响应集合。
         :rtype: list of PullSmsSendStatus
         """
         return self._PullSmsSendStatusSet
@@ -2823,7 +2823,7 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2844,7 +2844,7 @@ class PullSmsSendStatusResponse(AbstractModel):
 
 
 class SendSmsRequest(AbstractModel):
-    """SendSms请求参数结构体
+    r"""SendSms请求参数结构体
 
     """
 
@@ -2879,7 +2879,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def PhoneNumberSet(self):
-        """下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+        r"""下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: list of str
         """
@@ -2891,7 +2891,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
+        r"""模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
         :rtype: str
         """
         return self._TemplateID
@@ -2902,7 +2902,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2)  添加应用后生成的实际SdkAppid，示例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2)  添加应用后生成的实际SdkAppid，示例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -2913,7 +2913,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Sign(self):
-        """短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/smsv2)  查看。注：国内短信为必填参数。
+        r"""短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/smsv2)  查看。注：国内短信为必填参数。
         :rtype: str
         """
         return self._Sign
@@ -2924,7 +2924,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def TemplateParamSet(self):
-        """模板参数，若无模板参数，则设置为空。
+        r"""模板参数，若无模板参数，则设置为空。
         :rtype: list of str
         """
         return self._TemplateParamSet
@@ -2935,7 +2935,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def ExtendCode(self):
-        """短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
+        r"""短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :rtype: str
         """
         return self._ExtendCode
@@ -2946,7 +2946,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        """用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。
+        r"""用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。
         :rtype: str
         """
         return self._SessionContext
@@ -2957,7 +2957,7 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def SenderId(self):
-        """国内短信无senderid，无需填写该项；若需开通国际/港澳台短信senderid，请联系smshelper。
+        r"""国内短信无senderid，无需填写该项；若需开通国际/港澳台短信senderid，请联系smshelper。
         :rtype: str
         """
         return self._SenderId
@@ -2987,7 +2987,7 @@ class SendSmsRequest(AbstractModel):
 
 
 class SendSmsResponse(AbstractModel):
-    """SendSms返回参数结构体
+    r"""SendSms返回参数结构体
 
     """
 
@@ -3003,7 +3003,7 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def SendStatusSet(self):
-        """短信发送状态。
+        r"""短信发送状态。
         :rtype: list of SendStatus
         """
         return self._SendStatusSet
@@ -3014,7 +3014,7 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3035,7 +3035,7 @@ class SendSmsResponse(AbstractModel):
 
 
 class SendStatus(AbstractModel):
-    """发送短信状态
+    r"""发送短信状态
 
     """
 
@@ -3066,7 +3066,7 @@ class SendStatus(AbstractModel):
 
     @property
     def SerialNo(self):
-        """发送流水号。
+        r"""发送流水号。
         :rtype: str
         """
         return self._SerialNo
@@ -3077,7 +3077,7 @@ class SendStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
+        r"""手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :rtype: str
         """
         return self._PhoneNumber
@@ -3088,7 +3088,7 @@ class SendStatus(AbstractModel):
 
     @property
     def Fee(self):
-        """计费条数，计费规则请查询 [计费策略](https://cloud.tencent.com/document/product/382/36135)。
+        r"""计费条数，计费规则请查询 [计费策略](https://cloud.tencent.com/document/product/382/36135)。
         :rtype: int
         """
         return self._Fee
@@ -3099,7 +3099,7 @@ class SendStatus(AbstractModel):
 
     @property
     def SessionContext(self):
-        """用户Session内容。
+        r"""用户Session内容。
         :rtype: str
         """
         return self._SessionContext
@@ -3110,7 +3110,7 @@ class SendStatus(AbstractModel):
 
     @property
     def Code(self):
-        """短信请求错误码，具体含义请参考错误码。
+        r"""短信请求错误码，具体含义请参考错误码。
         :rtype: str
         """
         return self._Code
@@ -3121,7 +3121,7 @@ class SendStatus(AbstractModel):
 
     @property
     def Message(self):
-        """短信请求错误码描述。
+        r"""短信请求错误码描述。
         :rtype: str
         """
         return self._Message
@@ -3132,7 +3132,7 @@ class SendStatus(AbstractModel):
 
     @property
     def IsoCode(self):
-        """国家码或地区码，例如CN,US等，对于未识别出国家码或者地区码，默认返回DEF,具体支持列表请参考国际/港澳台计费总览。
+        r"""国家码或地区码，例如CN,US等，对于未识别出国家码或者地区码，默认返回DEF,具体支持列表请参考国际/港澳台计费总览。
         :rtype: str
         """
         return self._IsoCode
@@ -3161,7 +3161,7 @@ class SendStatus(AbstractModel):
 
 
 class SendStatusStatistics(AbstractModel):
-    """发送数据统计响应包体
+    r"""发送数据统计响应包体
 
     """
 
@@ -3180,7 +3180,7 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def FeeCount(self):
-        """短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条。
+        r"""短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条。
         :rtype: int
         """
         return self._FeeCount
@@ -3191,7 +3191,7 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def RequestCount(self):
-        """短信提交量统计。
+        r"""短信提交量统计。
         :rtype: int
         """
         return self._RequestCount
@@ -3202,7 +3202,7 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
-        """短信提交成功量统计。
+        r"""短信提交成功量统计。
         :rtype: int
         """
         return self._RequestSuccessCount
@@ -3227,7 +3227,7 @@ class SendStatusStatistics(AbstractModel):
 
 
 class SendStatusStatisticsRequest(AbstractModel):
-    """SendStatusStatistics请求参数结构体
+    r"""SendStatusStatistics请求参数结构体
 
     """
 
@@ -3255,7 +3255,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def StartDateTime(self):
-        """拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
+        r"""拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :rtype: int
         """
         return self._StartDateTime
@@ -3266,7 +3266,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def EndDataTime(self):
-        """结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
+        r"""结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
 注：EndDataTime 必须大于等于 StartDateTime。
         :rtype: int
         """
@@ -3278,7 +3278,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -3289,7 +3289,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大上限。
+        r"""最大上限。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -3301,7 +3301,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
 注：目前固定设置为0。
         :rtype: int
         """
@@ -3329,7 +3329,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
 
 class SendStatusStatisticsResponse(AbstractModel):
-    """SendStatusStatistics返回参数结构体
+    r"""SendStatusStatistics返回参数结构体
 
     """
 
@@ -3345,7 +3345,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     @property
     def SendStatusStatistics(self):
-        """发送数据统计响应包体。
+        r"""发送数据统计响应包体。
         :rtype: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
         """
         return self._SendStatusStatistics
@@ -3356,7 +3356,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3374,7 +3374,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
 
 class SmsPackagesStatistics(AbstractModel):
-    """套餐包信息统计响应包体
+    r"""套餐包信息统计响应包体
 
     """
 
@@ -3414,7 +3414,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageCreateTime(self):
-        """套餐包创建时间，标准时间，例如：2019-10-08 17:18:37。
+        r"""套餐包创建时间，标准时间，例如：2019-10-08 17:18:37。
         :rtype: str
         """
         return self._PackageCreateTime
@@ -3425,7 +3425,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageCreateUnixTime(self):
-        """套餐包创建时间，UNIX 时间戳（单位：秒）。
+        r"""套餐包创建时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._PackageCreateUnixTime
@@ -3436,7 +3436,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageEffectiveTime(self):
-        """套餐包生效时间，标准时间，例如：2019-10-08 17:18:37。
+        r"""套餐包生效时间，标准时间，例如：2019-10-08 17:18:37。
         :rtype: str
         """
         return self._PackageEffectiveTime
@@ -3447,7 +3447,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageEffectiveUnixTime(self):
-        """套餐包生效时间，UNIX 时间戳（单位：秒）。
+        r"""套餐包生效时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._PackageEffectiveUnixTime
@@ -3458,7 +3458,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageExpiredTime(self):
-        """套餐包过期时间，标准时间，例如：2019-10-08 17:18:37。
+        r"""套餐包过期时间，标准时间，例如：2019-10-08 17:18:37。
         :rtype: str
         """
         return self._PackageExpiredTime
@@ -3469,7 +3469,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageExpiredUnixTime(self):
-        """套餐包过期时间，UNIX 时间戳（单位：秒）。
+        r"""套餐包过期时间，UNIX 时间戳（单位：秒）。
         :rtype: int
         """
         return self._PackageExpiredUnixTime
@@ -3480,7 +3480,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def AmountOfPackage(self):
-        """套餐包条数。
+        r"""套餐包条数。
         :rtype: int
         """
         return self._AmountOfPackage
@@ -3491,7 +3491,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def TypeOfPackage(self):
-        """0表示赠送套餐包，1表示购买套餐包。
+        r"""0表示赠送套餐包，1表示购买套餐包。
         :rtype: int
         """
         return self._TypeOfPackage
@@ -3502,7 +3502,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageId(self):
-        """套餐包 ID。
+        r"""套餐包 ID。
         :rtype: int
         """
         return self._PackageId
@@ -3513,7 +3513,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def CurrentUsage(self):
-        """当前使用量。
+        r"""当前使用量。
         :rtype: int
         """
         return self._CurrentUsage
@@ -3545,7 +3545,7 @@ class SmsPackagesStatistics(AbstractModel):
 
 
 class SmsPackagesStatisticsRequest(AbstractModel):
-    """SmsPackagesStatistics请求参数结构体
+    r"""SmsPackagesStatistics请求参数结构体
 
     """
 
@@ -3565,7 +3565,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
-        """短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        r"""短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :rtype: str
         """
         return self._SmsSdkAppid
@@ -3576,7 +3576,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大上限(需要拉取的套餐包个数)。
+        r"""最大上限(需要拉取的套餐包个数)。
 注：Limit默认最大值为500，可结合Offset实现分页查询。
         :rtype: int
         """
@@ -3588,7 +3588,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
         :rtype: int
         """
         return self._Offset
@@ -3613,7 +3613,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
 
 class SmsPackagesStatisticsResponse(AbstractModel):
-    """SmsPackagesStatistics返回参数结构体
+    r"""SmsPackagesStatistics返回参数结构体
 
     """
 
@@ -3629,7 +3629,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     @property
     def SmsPackagesStatisticsSet(self):
-        """发送数据统计响应包体。
+        r"""发送数据统计响应包体。
         :rtype: list of SmsPackagesStatistics
         """
         return self._SmsPackagesStatisticsSet
@@ -3640,7 +3640,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

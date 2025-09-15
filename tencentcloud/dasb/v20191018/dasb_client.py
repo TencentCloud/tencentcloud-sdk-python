@@ -27,7 +27,7 @@ class DasbClient(AbstractClient):
 
 
     def AddDeviceGroupMembers(self, request):
-        """添加资产组成员
+        r"""添加资产组成员
 
         :param request: Request instance for AddDeviceGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.AddDeviceGroupMembersRequest`
@@ -50,7 +50,7 @@ class DasbClient(AbstractClient):
 
 
     def AddUserGroupMembers(self, request):
-        """添加用户组成员
+        r"""添加用户组成员
 
         :param request: Request instance for AddUserGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.AddUserGroupMembersRequest`
@@ -73,7 +73,7 @@ class DasbClient(AbstractClient):
 
 
     def BindDeviceAccountPassword(self, request):
-        """绑定主机账号密码
+        r"""绑定主机账号密码
 
         :param request: Request instance for BindDeviceAccountPassword.
         :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPasswordRequest`
@@ -96,7 +96,7 @@ class DasbClient(AbstractClient):
 
 
     def BindDeviceAccountPrivateKey(self, request):
-        """绑定主机账号私钥
+        r"""绑定主机账号私钥
 
         :param request: Request instance for BindDeviceAccountPrivateKey.
         :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPrivateKeyRequest`
@@ -119,7 +119,7 @@ class DasbClient(AbstractClient):
 
 
     def BindDeviceResource(self, request):
-        """修改资产绑定的堡垒机服务
+        r"""修改资产绑定的堡垒机服务
 
         :param request: Request instance for BindDeviceResource.
         :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceResourceRequest`
@@ -142,7 +142,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateAcl(self, request):
-        """新建访问权限
+        r"""新建访问权限
 
         :param request: Request instance for CreateAcl.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateAclRequest`
@@ -165,7 +165,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateAssetSyncJob(self, request):
-        """创建手工资产同步任务
+        r"""创建手工资产同步任务
 
         :param request: Request instance for CreateAssetSyncJob.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateAssetSyncJobRequest`
@@ -188,7 +188,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateChangePwdTask(self, request):
-        """创建修改密码任务
+        r"""创建修改密码任务
 
         :param request: Request instance for CreateChangePwdTask.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateChangePwdTaskRequest`
@@ -211,7 +211,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateCmdTemplate(self, request):
-        """新建高危命令模板
+        r"""新建高危命令模板
 
         :param request: Request instance for CreateCmdTemplate.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateCmdTemplateRequest`
@@ -234,7 +234,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateDeviceAccount(self, request):
-        """新建主机账号
+        r"""新建主机账号
 
         :param request: Request instance for CreateDeviceAccount.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceAccountRequest`
@@ -257,7 +257,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateDeviceGroup(self, request):
-        """新建资产组
+        r"""新建资产组
 
         :param request: Request instance for CreateDeviceGroup.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceGroupRequest`
@@ -280,7 +280,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """创建堡垒机实例
+        r"""创建堡垒机实例
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateResourceRequest`
@@ -303,7 +303,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """新建用户
+        r"""新建用户
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateUserRequest`
@@ -326,7 +326,7 @@ class DasbClient(AbstractClient):
 
 
     def CreateUserGroup(self, request):
-        """新建用户组
+        r"""新建用户组
 
         :param request: Request instance for CreateUserGroup.
         :type request: :class:`tencentcloud.dasb.v20191018.models.CreateUserGroupRequest`
@@ -349,7 +349,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteAcls(self, request):
-        """删除访问权限
+        r"""删除访问权限
 
         :param request: Request instance for DeleteAcls.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteAclsRequest`
@@ -372,7 +372,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteChangePwdTask(self, request):
-        """删除改密任务
+        r"""删除改密任务
 
         :param request: Request instance for DeleteChangePwdTask.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteChangePwdTaskRequest`
@@ -395,7 +395,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteCmdTemplates(self, request):
-        """删除高危命令模板
+        r"""删除高危命令模板
 
         :param request: Request instance for DeleteCmdTemplates.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteCmdTemplatesRequest`
@@ -418,7 +418,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteDeviceAccounts(self, request):
-        """删除主机账号
+        r"""删除主机账号
 
         :param request: Request instance for DeleteDeviceAccounts.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceAccountsRequest`
@@ -441,7 +441,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteDeviceGroupMembers(self, request):
-        """删除资产组成员
+        r"""删除资产组成员
 
         :param request: Request instance for DeleteDeviceGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupMembersRequest`
@@ -464,7 +464,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteDeviceGroups(self, request):
-        """删除资产组
+        r"""删除资产组
 
         :param request: Request instance for DeleteDeviceGroups.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupsRequest`
@@ -487,7 +487,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteDevices(self, request):
-        """删除主机
+        r"""删除主机
 
         :param request: Request instance for DeleteDevices.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDevicesRequest`
@@ -510,7 +510,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteUserGroupMembers(self, request):
-        """删除用户组成员
+        r"""删除用户组成员
 
         :param request: Request instance for DeleteUserGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupMembersRequest`
@@ -533,7 +533,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteUserGroups(self, request):
-        """删除用户组
+        r"""删除用户组
 
         :param request: Request instance for DeleteUserGroups.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupsRequest`
@@ -556,7 +556,7 @@ class DasbClient(AbstractClient):
 
 
     def DeleteUsers(self, request):
-        """删除用户
+        r"""删除用户
 
         :param request: Request instance for DeleteUsers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteUsersRequest`
@@ -579,7 +579,7 @@ class DasbClient(AbstractClient):
 
 
     def DeployResource(self, request):
-        """开通服务，初始化资源，只针对新购资源
+        r"""开通服务，初始化资源，只针对新购资源
 
         :param request: Request instance for DeployResource.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DeployResourceRequest`
@@ -602,7 +602,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeAcls(self, request):
-        """查询访问权限列表
+        r"""查询访问权限列表
 
         :param request: Request instance for DescribeAcls.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeAclsRequest`
@@ -625,7 +625,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeAssetSyncStatus(self, request):
-        """查询资产同步状态
+        r"""查询资产同步状态
 
         :param request: Request instance for DescribeAssetSyncStatus.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeAssetSyncStatusRequest`
@@ -648,7 +648,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeChangePwdTask(self, request):
-        """查询改密任务列表
+        r"""查询改密任务列表
 
         :param request: Request instance for DescribeChangePwdTask.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskRequest`
@@ -671,7 +671,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeChangePwdTaskDetail(self, request):
-        """查询改密任务详情
+        r"""查询改密任务详情
 
         :param request: Request instance for DescribeChangePwdTaskDetail.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskDetailRequest`
@@ -694,7 +694,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeCmdTemplates(self, request):
-        """查询命令模板列表
+        r"""查询命令模板列表
 
         :param request: Request instance for DescribeCmdTemplates.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeCmdTemplatesRequest`
@@ -717,7 +717,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDasbImageIds(self, request):
-        """获取镜像列表
+        r"""获取镜像列表
 
         :param request: Request instance for DescribeDasbImageIds.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDasbImageIdsRequest`
@@ -740,7 +740,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDeviceAccounts(self, request):
-        """查询主机账号列表
+        r"""查询主机账号列表
 
         :param request: Request instance for DescribeDeviceAccounts.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceAccountsRequest`
@@ -763,7 +763,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDeviceGroupMembers(self, request):
-        """查询资产组成员列表
+        r"""查询资产组成员列表
 
         :param request: Request instance for DescribeDeviceGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupMembersRequest`
@@ -786,7 +786,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDeviceGroups(self, request):
-        """查询资产组列表
+        r"""查询资产组列表
 
         :param request: Request instance for DescribeDeviceGroups.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupsRequest`
@@ -809,7 +809,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDevices(self, request):
-        """查询资产列表
+        r"""查询资产列表
 
         :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDevicesRequest`
@@ -832,7 +832,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """查询网络域
+        r"""查询网络域
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDomainsRequest`
@@ -855,7 +855,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeLoginEvent(self, request):
-        """查询登录日志
+        r"""查询登录日志
 
         :param request: Request instance for DescribeLoginEvent.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeLoginEventRequest`
@@ -878,7 +878,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeOperationEvent(self, request):
-        """查询操作日志
+        r"""查询操作日志
 
         :param request: Request instance for DescribeOperationEvent.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeOperationEventRequest`
@@ -901,7 +901,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeResources(self, request):
-        """查询用户购买的堡垒机服务信息，包括资源ID、授权点数、VPC、过期时间等。
+        r"""查询用户购买的堡垒机服务信息，包括资源ID、授权点数、VPC、过期时间等。
 
         :param request: Request instance for DescribeResources.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeResourcesRequest`
@@ -924,7 +924,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeUserGroupMembers(self, request):
-        """查询用户组成员列表
+        r"""查询用户组成员列表
 
         :param request: Request instance for DescribeUserGroupMembers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupMembersRequest`
@@ -947,7 +947,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeUserGroups(self, request):
-        """查询用户组列表
+        r"""查询用户组列表
 
         :param request: Request instance for DescribeUserGroups.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupsRequest`
@@ -970,7 +970,7 @@ class DasbClient(AbstractClient):
 
 
     def DescribeUsers(self, request):
-        """查询用户列表
+        r"""查询用户列表
 
         :param request: Request instance for DescribeUsers.
         :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeUsersRequest`
@@ -993,7 +993,7 @@ class DasbClient(AbstractClient):
 
 
     def ImportExternalDevice(self, request):
-        """导入外部资产信息
+        r"""导入外部资产信息
 
         :param request: Request instance for ImportExternalDevice.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ImportExternalDeviceRequest`
@@ -1016,7 +1016,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyAcl(self, request):
-        """修改访问权限
+        r"""修改访问权限
 
         :param request: Request instance for ModifyAcl.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyAclRequest`
@@ -1039,7 +1039,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyChangePwdTask(self, request):
-        """更新修改密码任务
+        r"""更新修改密码任务
 
         :param request: Request instance for ModifyChangePwdTask.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyChangePwdTaskRequest`
@@ -1062,7 +1062,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyCmdTemplate(self, request):
-        """修改高危命令模板
+        r"""修改高危命令模板
 
         :param request: Request instance for ModifyCmdTemplate.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyCmdTemplateRequest`
@@ -1085,7 +1085,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyDevice(self, request):
-        """修改资产信息
+        r"""修改资产信息
 
         :param request: Request instance for ModifyDevice.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceRequest`
@@ -1108,7 +1108,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyDeviceGroup(self, request):
-        """修改资产组
+        r"""修改资产组
 
         :param request: Request instance for ModifyDeviceGroup.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceGroupRequest`
@@ -1131,7 +1131,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyOAuthSetting(self, request):
-        """设置OAuth认证参数
+        r"""设置OAuth认证参数
 
         :param request: Request instance for ModifyOAuthSetting.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyOAuthSettingRequest`
@@ -1154,7 +1154,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyResource(self, request):
-        """资源变配
+        r"""资源变配
 
         :param request: Request instance for ModifyResource.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyResourceRequest`
@@ -1177,7 +1177,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """修改用户信息
+        r"""修改用户信息
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyUserRequest`
@@ -1200,7 +1200,7 @@ class DasbClient(AbstractClient):
 
 
     def ModifyUserGroup(self, request):
-        """修改用户组
+        r"""修改用户组
 
         :param request: Request instance for ModifyUserGroup.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyUserGroupRequest`
@@ -1223,7 +1223,7 @@ class DasbClient(AbstractClient):
 
 
     def ResetDeviceAccountPassword(self, request):
-        """清除设备账号绑定密码
+        r"""清除设备账号绑定密码
 
         :param request: Request instance for ResetDeviceAccountPassword.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPasswordRequest`
@@ -1246,7 +1246,7 @@ class DasbClient(AbstractClient):
 
 
     def ResetDeviceAccountPrivateKey(self, request):
-        """清除设备账号绑定的密钥
+        r"""清除设备账号绑定的密钥
 
         :param request: Request instance for ResetDeviceAccountPrivateKey.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPrivateKeyRequest`
@@ -1269,7 +1269,7 @@ class DasbClient(AbstractClient):
 
 
     def ResetUser(self, request):
-        """重置用户
+        r"""重置用户
 
         :param request: Request instance for ResetUser.
         :type request: :class:`tencentcloud.dasb.v20191018.models.ResetUserRequest`
@@ -1292,7 +1292,7 @@ class DasbClient(AbstractClient):
 
 
     def RunChangePwdTask(self, request):
-        """执行改密任务
+        r"""执行改密任务
 
         :param request: Request instance for RunChangePwdTask.
         :type request: :class:`tencentcloud.dasb.v20191018.models.RunChangePwdTaskRequest`
@@ -1315,7 +1315,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchAuditLog(self, request):
-        """搜索审计日志
+        r"""搜索审计日志
 
         :param request: Request instance for SearchAuditLog.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchAuditLogRequest`
@@ -1338,7 +1338,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchCommand(self, request):
-        """命令执行检索
+        r"""命令执行检索
 
         :param request: Request instance for SearchCommand.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchCommandRequest`
@@ -1361,7 +1361,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchCommandBySid(self, request):
-        """根据会话Id搜索Command
+        r"""根据会话Id搜索Command
 
         :param request: Request instance for SearchCommandBySid.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchCommandBySidRequest`
@@ -1384,7 +1384,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchFile(self, request):
-        """文件传输检索
+        r"""文件传输检索
 
         :param request: Request instance for SearchFile.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchFileRequest`
@@ -1407,7 +1407,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchFileBySid(self, request):
-        """搜索文件传输会话下文件操作列表
+        r"""搜索文件传输会话下文件操作列表
 
         :param request: Request instance for SearchFileBySid.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchFileBySidRequest`
@@ -1430,7 +1430,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchSession(self, request):
-        """搜索会话
+        r"""搜索会话
 
         :param request: Request instance for SearchSession.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchSessionRequest`
@@ -1453,7 +1453,7 @@ class DasbClient(AbstractClient):
 
 
     def SearchSessionCommand(self, request):
-        """命令检索
+        r"""命令检索
 
         :param request: Request instance for SearchSessionCommand.
         :type request: :class:`tencentcloud.dasb.v20191018.models.SearchSessionCommandRequest`

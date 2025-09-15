@@ -27,7 +27,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePrefetchTask(self, request):
-        """老版本接口，最近一次调用时23年11月了
+        r"""老版本接口，最近一次调用时23年11月了
 
         创建预热任务
 
@@ -52,7 +52,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """老版本接口，老版本pod的最近一次调用在23年11月
+        r"""老版本接口，老版本pod的最近一次调用在23年11月
 
         创建清除缓存任务
 
@@ -77,7 +77,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePrefetchTasks(self, request):
-        """查询预热任务状态
+        r"""查询预热任务状态
 
         :param request: Request instance for DescribePrefetchTasks.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksRequest`
@@ -100,7 +100,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """查询清除缓存历史记录
+        r"""查询清除缓存历史记录
 
         :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribePurgeTasksRequest`
@@ -123,7 +123,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """用户查询用户站点信息列表，支持分页
+        r"""用户查询用户站点信息列表，支持分页
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZonesRequest`

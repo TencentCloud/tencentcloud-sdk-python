@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateSessionRequest(AbstractModel):
-    """CreateSession请求参数结构体
+    r"""CreateSession请求参数结构体
 
     """
 
@@ -50,7 +50,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def ClientSession(self):
-        """客户端session信息，从JSSDK请求中获得
+        r"""客户端session信息，从JSSDK请求中获得
         :rtype: str
         """
         return self._ClientSession
@@ -61,7 +61,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def GameId(self):
-        """游戏ID
+        r"""游戏ID
         :rtype: str
         """
         return self._GameId
@@ -72,7 +72,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """游戏用户ID
+        r"""游戏用户ID
         :rtype: str
         """
         return self._UserId
@@ -83,7 +83,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def GameParas(self):
-        """游戏参数
+        r"""游戏参数
         :rtype: str
         """
         return self._GameParas
@@ -94,7 +94,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def GameRegion(self):
-        """游戏区域
+        r"""游戏区域
         :rtype: str
         """
         return self._GameRegion
@@ -105,7 +105,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """背景图url
+        r"""背景图url
         :rtype: str
         """
         return self._ImageUrl
@@ -116,7 +116,7 @@ class CreateSessionRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率
+        r"""分辨率
         :rtype: str
         """
         return self._Resolution
@@ -145,7 +145,7 @@ class CreateSessionRequest(AbstractModel):
 
 
 class CreateSessionResponse(AbstractModel):
-    """CreateSession返回参数结构体
+    r"""CreateSession返回参数结构体
 
     """
 
@@ -161,7 +161,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def ServerSession(self):
-        """服务端session信息，返回给JSSDK
+        r"""服务端session信息，返回给JSSDK
         :rtype: str
         """
         return self._ServerSession
@@ -172,7 +172,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -188,7 +188,7 @@ class CreateSessionResponse(AbstractModel):
 
 
 class DayStreamPlayInfo(AbstractModel):
-    """流播放信息
+    r"""流播放信息
 
     """
 
@@ -213,7 +213,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽（单位Mbps）。
+        r"""带宽（单位Mbps）。
         :rtype: float
         """
         return self._Bandwidth
@@ -224,7 +224,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Flux(self):
-        """流量 （单位MB）。
+        r"""流量 （单位MB）。
         :rtype: float
         """
         return self._Flux
@@ -235,7 +235,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Online(self):
-        """在线人数。
+        r"""在线人数。
         :rtype: int
         """
         return self._Online
@@ -246,7 +246,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Request(self):
-        """请求数。
+        r"""请求数。
         :rtype: int
         """
         return self._Request
@@ -257,7 +257,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Time(self):
-        """数据时间点，格式：yyyy-mm-dd HH:MM:SS。
+        r"""数据时间点，格式：yyyy-mm-dd HH:MM:SS。
         :rtype: str
         """
         return self._Time
@@ -284,7 +284,7 @@ class DayStreamPlayInfo(AbstractModel):
 
 
 class DescribeStreamPlayInfoListRequest(AbstractModel):
-    """DescribeStreamPlayInfoList请求参数结构体
+    r"""DescribeStreamPlayInfoList请求参数结构体
 
     """
 
@@ -309,7 +309,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，北京时间，格式：2019-04-28 10:36:00
+        r"""结束时间，北京时间，格式：2019-04-28 10:36:00
 结束时间 和 开始时间  必须在同一天内。
         :rtype: str
         """
@@ -321,7 +321,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomain(self):
-        """播放域名。
+        r"""播放域名。
         :rtype: str
         """
         return self._PlayDomain
@@ -332,7 +332,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，北京时间，格式：2019-04-28 10:36:00
+        r"""开始时间，北京时间，格式：2019-04-28 10:36:00
 当前时间 和 开始时间 间隔不超过30天。
         :rtype: str
         """
@@ -344,7 +344,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称，精确匹配。
+        r"""流名称，精确匹配。
 若不填，则为查询总体播放数据。
         :rtype: str
         """
@@ -371,7 +371,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):
-    """DescribeStreamPlayInfoList返回参数结构体
+    r"""DescribeStreamPlayInfoList返回参数结构体
 
     """
 
@@ -387,7 +387,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        """统计信息列表。
+        r"""统计信息列表。
         :rtype: list of DayStreamPlayInfo
         """
         return self._DataInfoList
@@ -398,7 +398,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -419,13 +419,13 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
 
 class DescribeWorkersRequest(AbstractModel):
-    """DescribeWorkers请求参数结构体
+    r"""DescribeWorkers请求参数结构体
 
     """
 
 
 class DescribeWorkersResponse(AbstractModel):
-    """DescribeWorkers返回参数结构体
+    r"""DescribeWorkers返回参数结构体
 
     """
 
@@ -447,7 +447,7 @@ class DescribeWorkersResponse(AbstractModel):
 
     @property
     def RegionDetail(self):
-        """各个区域的机器情况
+        r"""各个区域的机器情况
         :rtype: list of WorkerRegionInfo
         """
         return self._RegionDetail
@@ -458,7 +458,7 @@ class DescribeWorkersResponse(AbstractModel):
 
     @property
     def Idle(self):
-        """空闲机器总数量
+        r"""空闲机器总数量
         :rtype: int
         """
         return self._Idle
@@ -469,7 +469,7 @@ class DescribeWorkersResponse(AbstractModel):
 
     @property
     def RegionNum(self):
-        """区域个数
+        r"""区域个数
         :rtype: int
         """
         return self._RegionNum
@@ -480,7 +480,7 @@ class DescribeWorkersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -503,7 +503,7 @@ class DescribeWorkersResponse(AbstractModel):
 
 
 class ForbidLiveStreamRequest(AbstractModel):
-    """ForbidLiveStream请求参数结构体
+    r"""ForbidLiveStream请求参数结构体
 
     """
 
@@ -526,7 +526,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称。
+        r"""应用名称。
         :rtype: str
         """
         return self._AppName
@@ -537,7 +537,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """您的推流域名。
+        r"""您的推流域名。
         :rtype: str
         """
         return self._DomainName
@@ -548,7 +548,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        """流名称。
+        r"""流名称。
         :rtype: str
         """
         return self._StreamName
@@ -559,7 +559,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     @property
     def ResumeTime(self):
-        """恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        r"""恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：默认禁播90天，且最长支持禁播90天。
         :rtype: str
         """
@@ -586,7 +586,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
 
 class ForbidLiveStreamResponse(AbstractModel):
-    """ForbidLiveStream返回参数结构体
+    r"""ForbidLiveStream返回参数结构体
 
     """
 
@@ -599,7 +599,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -614,7 +614,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
 
 class RegisterIMRequest(AbstractModel):
-    """RegisterIM请求参数结构体
+    r"""RegisterIM请求参数结构体
 
     """
 
@@ -636,7 +636,7 @@ class RegisterIMRequest(AbstractModel):
 
     @property
     def Nickname(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nickname
@@ -647,7 +647,7 @@ class RegisterIMRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，建议采用用户小程序OpenID加盐形式
+        r"""用户唯一ID，建议采用用户小程序OpenID加盐形式
         :rtype: str
         """
         return self._UserId
@@ -658,7 +658,7 @@ class RegisterIMRequest(AbstractModel):
 
     @property
     def HeadImgUrl(self):
-        """用户头像URL
+        r"""用户头像URL
         :rtype: str
         """
         return self._HeadImgUrl
@@ -669,7 +669,7 @@ class RegisterIMRequest(AbstractModel):
 
     @property
     def Level(self):
-        """用户身份，默认值：0，表示无特殊身份
+        r"""用户身份，默认值：0，表示无特殊身份
         :rtype: int
         """
         return self._Level
@@ -695,7 +695,7 @@ class RegisterIMRequest(AbstractModel):
 
 
 class RegisterIMResponse(AbstractModel):
-    """RegisterIM返回参数结构体
+    r"""RegisterIM返回参数结构体
 
     """
 
@@ -711,7 +711,7 @@ class RegisterIMResponse(AbstractModel):
 
     @property
     def UserKey(self):
-        """用来传递给插件的关键字段
+        r"""用来传递给插件的关键字段
         :rtype: str
         """
         return self._UserKey
@@ -722,7 +722,7 @@ class RegisterIMResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -738,7 +738,7 @@ class RegisterIMResponse(AbstractModel):
 
 
 class StopGameRequest(AbstractModel):
-    """StopGame请求参数结构体
+    r"""StopGame请求参数结构体
 
     """
 
@@ -751,7 +751,7 @@ class StopGameRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """游戏用户ID
+        r"""游戏用户ID
         :rtype: str
         """
         return self._UserId
@@ -774,7 +774,7 @@ class StopGameRequest(AbstractModel):
 
 
 class StopGameResponse(AbstractModel):
-    """StopGame返回参数结构体
+    r"""StopGame返回参数结构体
 
     """
 
@@ -787,7 +787,7 @@ class StopGameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -802,7 +802,7 @@ class StopGameResponse(AbstractModel):
 
 
 class WorkerRegionInfo(AbstractModel):
-    """worker的区域信息
+    r"""worker的区域信息
 
     """
 
@@ -818,7 +818,7 @@ class WorkerRegionInfo(AbstractModel):
 
     @property
     def Idle(self):
-        """该区域空闲机器数量
+        r"""该区域空闲机器数量
         :rtype: int
         """
         return self._Idle
@@ -829,7 +829,7 @@ class WorkerRegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Region

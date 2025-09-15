@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AttributeItem(AbstractModel):
-    """属性信息
+    r"""属性信息
 
     """
 
@@ -45,7 +45,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def AttributeId(self):
-        """属性id
+        r"""属性id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57,7 +57,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def AttributeKey(self):
-        """属性标识
+        r"""属性标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -69,7 +69,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def AttributeName(self):
-        """属性名称
+        r"""属性名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -81,7 +81,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def Labels(self):
-        """标签名称
+        r"""标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttributeLabelItem
         """
@@ -113,7 +113,7 @@ class AttributeItem(AbstractModel):
 
 
 class AttributeLabelItem(AbstractModel):
-    """属性标签信息
+    r"""属性标签信息
 
     """
 
@@ -131,7 +131,7 @@ class AttributeLabelItem(AbstractModel):
 
     @property
     def LabelId(self):
-        """标签id
+        r"""标签id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -143,7 +143,7 @@ class AttributeLabelItem(AbstractModel):
 
     @property
     def LabelName(self):
-        """标签名称，最大80个英文字符
+        r"""标签名称，最大80个英文字符
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -168,7 +168,7 @@ class AttributeLabelItem(AbstractModel):
 
 
 class AttributeLabelReferItem(AbstractModel):
-    """属性标签引用
+    r"""属性标签引用
 
     """
 
@@ -186,7 +186,7 @@ class AttributeLabelReferItem(AbstractModel):
 
     @property
     def AttributeId(self):
-        """属性id
+        r"""属性id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -198,7 +198,7 @@ class AttributeLabelReferItem(AbstractModel):
 
     @property
     def LabelIds(self):
-        """标签id
+        r"""标签id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -223,7 +223,7 @@ class AttributeLabelReferItem(AbstractModel):
 
 
 class ChatCompletionsRequest(AbstractModel):
-    """ChatCompletions请求参数结构体
+    r"""ChatCompletions请求参数结构体
 
     """
 
@@ -256,7 +256,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._Model
@@ -267,7 +267,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """聊天上下文信息。
+        r"""聊天上下文信息。
 说明：
 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
 2. Message.Role 可选值：system、user、assistant。
@@ -283,7 +283,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """是否流式输出
+        r"""是否流式输出
         :rtype: bool
         """
         return self._Stream
@@ -294,7 +294,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """控制生成的随机性，较高的值会产生更多样化的输出。
+        r"""控制生成的随机性，较高的值会产生更多样化的输出。
         :rtype: float
         """
         return self._Temperature
@@ -305,7 +305,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def MaxTokens(self):
-        """最大生成的token数量，默认为4096，最大可设置为16384
+        r"""最大生成的token数量，默认为4096，最大可设置为16384
         :rtype: int
         """
         return self._MaxTokens
@@ -316,7 +316,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableSearch(self):
-        """是否启用联网搜索
+        r"""是否启用联网搜索
         :rtype: bool
         """
         return self._EnableSearch
@@ -349,7 +349,7 @@ class ChatCompletionsRequest(AbstractModel):
 
 
 class ChatCompletionsResponse(AbstractModel):
-    """ChatCompletions返回参数结构体
+    r"""ChatCompletions返回参数结构体
 
     """
 
@@ -378,7 +378,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Created(self):
-        """Unix 时间戳，单位为秒。
+        r"""Unix 时间戳，单位为秒。
         :rtype: int
         """
         return self._Created
@@ -389,7 +389,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token 统计信息。
+        r"""Token 统计信息。
 按照总 Token 数量计费。
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.ChatUsage`
         """
@@ -401,7 +401,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
-        """本次请求的 RequestId。
+        r"""本次请求的 RequestId。
         :rtype: str
         """
         return self._Id
@@ -412,7 +412,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容。
+        r"""回复内容。
         :rtype: list of Choice
         """
         return self._Choices
@@ -423,7 +423,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称。
+        r"""模型名称。
         :rtype: str
         """
         return self._Model
@@ -434,7 +434,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -461,7 +461,7 @@ class ChatCompletionsResponse(AbstractModel):
 
 
 class ChatUsage(AbstractModel):
-    """消耗量
+    r"""消耗量
 
     """
 
@@ -480,7 +480,7 @@ class ChatUsage(AbstractModel):
 
     @property
     def PromptTokens(self):
-        """输入token数
+        r"""输入token数
         :rtype: int
         """
         return self._PromptTokens
@@ -491,7 +491,7 @@ class ChatUsage(AbstractModel):
 
     @property
     def CompletionTokens(self):
-        """输出token数
+        r"""输出token数
         :rtype: int
         """
         return self._CompletionTokens
@@ -502,7 +502,7 @@ class ChatUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """总token数
+        r"""总token数
         :rtype: int
         """
         return self._TotalTokens
@@ -527,7 +527,7 @@ class ChatUsage(AbstractModel):
 
 
 class Choice(AbstractModel):
-    """返回的回复, 支持多个
+    r"""返回的回复, 支持多个
 
     """
 
@@ -551,7 +551,7 @@ content_filter 只在开启流式输出审核时会出现，表示安全审核�
 
     @property
     def FinishReason(self):
-        """结束标志位，可能为 stop、 content_filter。
+        r"""结束标志位，可能为 stop、 content_filter。
 stop 表示输出正常结束。
 content_filter 只在开启流式输出审核时会出现，表示安全审核未通过。
         :rtype: str
@@ -564,7 +564,7 @@ content_filter 只在开启流式输出审核时会出现，表示安全审核�
 
     @property
     def Delta(self):
-        """增量返回值，流式调用时使用该字段。
+        r"""增量返回值，流式调用时使用该字段。
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Delta`
         """
         return self._Delta
@@ -575,7 +575,7 @@ content_filter 只在开启流式输出审核时会出现，表示安全审核�
 
     @property
     def Message(self):
-        """返回值，非流式调用时使用该字段。
+        r"""返回值，非流式调用时使用该字段。
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Message`
         """
         return self._Message
@@ -586,7 +586,7 @@ content_filter 只在开启流式输出审核时会出现，表示安全审核�
 
     @property
     def Index(self):
-        """索引值，流式调用时使用该字段。
+        r"""索引值，流式调用时使用该字段。
         :rtype: int
         """
         return self._Index
@@ -616,7 +616,7 @@ content_filter 只在开启流式输出审核时会出现，表示安全审核�
 
 
 class CreateAttributeLabelRequest(AbstractModel):
-    """CreateAttributeLabel请求参数结构体
+    r"""CreateAttributeLabel请求参数结构体
 
     """
 
@@ -638,7 +638,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -649,7 +649,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeKey(self):
-        """属性标识，最大40个英文字符，如style
+        r"""属性标识，最大40个英文字符，如style
         :rtype: str
         """
         return self._AttributeKey
@@ -660,7 +660,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeName(self):
-        """属性名称，最大80个英文字符，如风格
+        r"""属性名称，最大80个英文字符，如风格
         :rtype: str
         """
         return self._AttributeName
@@ -671,7 +671,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """属性标签信息
+        r"""属性标签信息
         :rtype: list of AttributeLabelItem
         """
         return self._Labels
@@ -702,7 +702,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
 
 class CreateAttributeLabelResponse(AbstractModel):
-    """CreateAttributeLabel返回参数结构体
+    r"""CreateAttributeLabel返回参数结构体
 
     """
 
@@ -715,7 +715,7 @@ class CreateAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -730,13 +730,13 @@ class CreateAttributeLabelResponse(AbstractModel):
 
 
 class CreateKnowledgeBaseRequest(AbstractModel):
-    """CreateKnowledgeBase请求参数结构体
+    r"""CreateKnowledgeBase请求参数结构体
 
     """
 
 
 class CreateKnowledgeBaseResponse(AbstractModel):
-    """CreateKnowledgeBase返回参数结构体
+    r"""CreateKnowledgeBase返回参数结构体
 
     """
 
@@ -752,7 +752,7 @@ class CreateKnowledgeBaseResponse(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -763,7 +763,7 @@ class CreateKnowledgeBaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -779,7 +779,7 @@ class CreateKnowledgeBaseResponse(AbstractModel):
 
 
 class CreateQARequest(AbstractModel):
-    """CreateQA请求参数结构体
+    r"""CreateQA请求参数结构体
 
     """
 
@@ -801,7 +801,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -812,7 +812,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def Question(self):
-        """问题，最大1000个英文字符
+        r"""问题，最大1000个英文字符
         :rtype: str
         """
         return self._Question
@@ -823,7 +823,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def Answer(self):
-        """答案，最大4000个英文字符
+        r"""答案，最大4000个英文字符
         :rtype: str
         """
         return self._Answer
@@ -834,7 +834,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签
+        r"""属性标签
         :rtype: list of AttributeLabelReferItem
         """
         return self._AttributeLabels
@@ -865,7 +865,7 @@ class CreateQARequest(AbstractModel):
 
 
 class CreateQAResponse(AbstractModel):
-    """CreateQA返回参数结构体
+    r"""CreateQA返回参数结构体
 
     """
 
@@ -881,7 +881,7 @@ class CreateQAResponse(AbstractModel):
 
     @property
     def QaId(self):
-        """问答对ID
+        r"""问答对ID
         :rtype: str
         """
         return self._QaId
@@ -892,7 +892,7 @@ class CreateQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -908,7 +908,7 @@ class CreateQAResponse(AbstractModel):
 
 
 class CreateReconstructDocumentFlowConfig(AbstractModel):
-    """创建智能文档解析任务的配置信息
+    r"""创建智能文档解析任务的配置信息
 
     """
 
@@ -936,7 +936,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     @property
     def TableResultType(self):
-        """Markdown文件中表格返回的形式
+        r"""Markdown文件中表格返回的形式
 0，表格以MD形式返回
 1，表格以HTML形式返回
 默认为0
@@ -950,7 +950,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     @property
     def ResultType(self):
-        """智能文档解析返回结果的格式
+        r"""智能文档解析返回结果的格式
 0：只返回全文MD；
 1：只返回每一页的OCR原始Json；
 2：只返回每一页的MD，
@@ -967,7 +967,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        """是否忽略失败页，返回已成功的页数据。默认为true。
+        r"""是否忽略失败页，返回已成功的页数据。默认为true。
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -992,7 +992,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
 
 class CreateReconstructDocumentFlowRequest(AbstractModel):
-    """CreateReconstructDocumentFlow请求参数结构体
+    r"""CreateReconstructDocumentFlow请求参数结构体
 
     """
 
@@ -1032,7 +1032,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。**支持的文件类型：**- `WPS、PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
+        r"""文件类型。**支持的文件类型：**- `WPS、PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
         :rtype: str
         """
         return self._FileType
@@ -1043,7 +1043,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """说明：文件的 URL 地址。
+        r"""说明：文件的 URL 地址。
 备注：文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :rtype: str
@@ -1056,7 +1056,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """文件的 Base64 值。
+        r"""文件的 Base64 值。
 支持的文件类型： PNG、JPG、JPEG、PDF、GIF、BMP、TIFF
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 支持的图片像素：单边介于20-10000px之间。
@@ -1071,7 +1071,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """说明：文档的起始页码。
+        r"""说明：文档的起始页码。
 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
 默认值：无
         :rtype: int
@@ -1084,7 +1084,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """说明：文档的结束页码。
+        r"""说明：文档的结束页码。
 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
 默认值：无
         :rtype: int
@@ -1097,7 +1097,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def Config(self):
-        """说明：创建文档解析任务配置信息。
+        r"""说明：创建文档解析任务配置信息。
 备注：可设置结果的返回格式
 默认值：无
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.CreateReconstructDocumentFlowConfig`
@@ -1129,7 +1129,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
 
 class CreateReconstructDocumentFlowResponse(AbstractModel):
-    """CreateReconstructDocumentFlow返回参数结构体
+    r"""CreateReconstructDocumentFlow返回参数结构体
 
     """
 
@@ -1145,7 +1145,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一id。30天内可以通过GetReconstructDocumentResult接口查询TaskId对应的处理结果。
+        r"""任务唯一id。30天内可以通过GetReconstructDocumentResult接口查询TaskId对应的处理结果。
         :rtype: str
         """
         return self._TaskId
@@ -1156,7 +1156,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1172,7 +1172,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
 
 class CreateSplitDocumentFlowConfig(AbstractModel):
-    """创建智能文档拆分任务的配置信息
+    r"""创建智能文档拆分任务的配置信息
 
     """
 
@@ -1210,7 +1210,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
     def TableResultType(self):
         warnings.warn("parameter `TableResultType` is deprecated", DeprecationWarning) 
 
-        """Markdown文件中表格返回的形式
+        r"""Markdown文件中表格返回的形式
 0，表格以MD形式返回
 1，表格以HTML形式返回
 默认为
@@ -1228,7 +1228,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
     def ResultType(self):
         warnings.warn("parameter `ResultType` is deprecated", DeprecationWarning) 
 
-        """智能文档解析返回结果的格式
+        r"""智能文档解析返回结果的格式
 0：只返回全文MD；
 1：只返回每一页的OCR原始Json；
 2：只返回每一页的MD，
@@ -1249,7 +1249,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def EnableMllm(self):
-        """是否开启mllm
+        r"""是否开启mllm
         :rtype: bool
         """
         return self._EnableMllm
@@ -1260,7 +1260,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        """最大分片长度
+        r"""最大分片长度
         :rtype: int
         """
         return self._MaxChunkSize
@@ -1271,7 +1271,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        """是否忽略返回失败页码
+        r"""是否忽略返回失败页码
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -1298,7 +1298,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
 
 class CreateSplitDocumentFlowRequest(AbstractModel):
-    """CreateSplitDocumentFlow请求参数结构体
+    r"""CreateSplitDocumentFlow请求参数结构体
 
     """
 
@@ -1338,7 +1338,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。**支持的文件类型：**- `WPS`、`PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
+        r"""文件类型。**支持的文件类型：**- `WPS`、`PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
         :rtype: str
         """
         return self._FileType
@@ -1349,7 +1349,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 URL 地址。
+        r"""文件的 URL 地址。
 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :rtype: str
@@ -1362,7 +1362,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名，可选。
+        r"""文件名，可选。
 **需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
         :rtype: str
         """
@@ -1376,7 +1376,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
     def FileBase64(self):
         warnings.warn("parameter `FileBase64` is deprecated", DeprecationWarning) 
 
-        """文件的 Base64 值。
+        r"""文件的 Base64 值。
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 支持的图片像素：单边介于20-10000px之间。
 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
@@ -1392,7 +1392,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """文档的起始页码。
+        r"""文档的起始页码。
 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
         :rtype: int
         """
@@ -1404,7 +1404,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """文档的结束页码。
+        r"""文档的结束页码。
 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
         :rtype: int
         """
@@ -1416,7 +1416,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
     @property
     def Config(self):
-        """文档拆分任务的配置信息。
+        r"""文档拆分任务的配置信息。
 
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.CreateSplitDocumentFlowConfig`
         """
@@ -1448,7 +1448,7 @@ class CreateSplitDocumentFlowRequest(AbstractModel):
 
 
 class CreateSplitDocumentFlowResponse(AbstractModel):
-    """CreateSplitDocumentFlow返回参数结构体
+    r"""CreateSplitDocumentFlow返回参数结构体
 
     """
 
@@ -1465,7 +1465,7 @@ class CreateSplitDocumentFlowResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """拆分任务唯一ID。
+        r"""拆分任务唯一ID。
 30天内可以通过`GetSplitDocumentResult`接口查询TaskId对应的拆分结果。
         :rtype: str
         """
@@ -1477,7 +1477,7 @@ class CreateSplitDocumentFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1493,7 +1493,7 @@ class CreateSplitDocumentFlowResponse(AbstractModel):
 
 
 class DeleteAttributeLabelsRequest(AbstractModel):
-    """DeleteAttributeLabels请求参数结构体
+    r"""DeleteAttributeLabels请求参数结构体
 
     """
 
@@ -1509,7 +1509,7 @@ class DeleteAttributeLabelsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -1520,7 +1520,7 @@ class DeleteAttributeLabelsRequest(AbstractModel):
 
     @property
     def AttributeIds(self):
-        """属性ID
+        r"""属性ID
         :rtype: list of str
         """
         return self._AttributeIds
@@ -1544,7 +1544,7 @@ class DeleteAttributeLabelsRequest(AbstractModel):
 
 
 class DeleteAttributeLabelsResponse(AbstractModel):
-    """DeleteAttributeLabels返回参数结构体
+    r"""DeleteAttributeLabels返回参数结构体
 
     """
 
@@ -1557,7 +1557,7 @@ class DeleteAttributeLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1572,7 +1572,7 @@ class DeleteAttributeLabelsResponse(AbstractModel):
 
 
 class DeleteDocsRequest(AbstractModel):
-    """DeleteDocs请求参数结构体
+    r"""DeleteDocs请求参数结构体
 
     """
 
@@ -1588,7 +1588,7 @@ class DeleteDocsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -1599,7 +1599,7 @@ class DeleteDocsRequest(AbstractModel):
 
     @property
     def DocIds(self):
-        """文档ID列表。支持批量删除，数量不超过100
+        r"""文档ID列表。支持批量删除，数量不超过100
         :rtype: list of str
         """
         return self._DocIds
@@ -1623,7 +1623,7 @@ class DeleteDocsRequest(AbstractModel):
 
 
 class DeleteDocsResponse(AbstractModel):
-    """DeleteDocs返回参数结构体
+    r"""DeleteDocs返回参数结构体
 
     """
 
@@ -1636,7 +1636,7 @@ class DeleteDocsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1651,7 +1651,7 @@ class DeleteDocsResponse(AbstractModel):
 
 
 class DeleteKnowledgeBaseRequest(AbstractModel):
-    """DeleteKnowledgeBase请求参数结构体
+    r"""DeleteKnowledgeBase请求参数结构体
 
     """
 
@@ -1664,7 +1664,7 @@ class DeleteKnowledgeBaseRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -1687,7 +1687,7 @@ class DeleteKnowledgeBaseRequest(AbstractModel):
 
 
 class DeleteKnowledgeBaseResponse(AbstractModel):
-    """DeleteKnowledgeBase返回参数结构体
+    r"""DeleteKnowledgeBase返回参数结构体
 
     """
 
@@ -1700,7 +1700,7 @@ class DeleteKnowledgeBaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1715,7 +1715,7 @@ class DeleteKnowledgeBaseResponse(AbstractModel):
 
 
 class DeleteQAsRequest(AbstractModel):
-    """DeleteQAs请求参数结构体
+    r"""DeleteQAs请求参数结构体
 
     """
 
@@ -1731,7 +1731,7 @@ class DeleteQAsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -1742,7 +1742,7 @@ class DeleteQAsRequest(AbstractModel):
 
     @property
     def QaIds(self):
-        """问答对ID列表。支持批量删除，数量不超过100
+        r"""问答对ID列表。支持批量删除，数量不超过100
         :rtype: list of str
         """
         return self._QaIds
@@ -1766,7 +1766,7 @@ class DeleteQAsRequest(AbstractModel):
 
 
 class DeleteQAsResponse(AbstractModel):
-    """DeleteQAs返回参数结构体
+    r"""DeleteQAs返回参数结构体
 
     """
 
@@ -1779,7 +1779,7 @@ class DeleteQAsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1794,7 +1794,7 @@ class DeleteQAsResponse(AbstractModel):
 
 
 class Delta(AbstractModel):
-    """返回的内容
+    r"""返回的内容
 
     """
 
@@ -1813,7 +1813,7 @@ class Delta(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称。
+        r"""角色名称。
         :rtype: str
         """
         return self._Role
@@ -1824,7 +1824,7 @@ class Delta(AbstractModel):
 
     @property
     def Content(self):
-        """内容详情。
+        r"""内容详情。
         :rtype: str
         """
         return self._Content
@@ -1835,7 +1835,7 @@ class Delta(AbstractModel):
 
     @property
     def ReasoningContent(self):
-        """思维链内容。 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+        r"""思维链内容。 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
         :rtype: str
         """
         return self._ReasoningContent
@@ -1860,7 +1860,7 @@ class Delta(AbstractModel):
 
 
 class DescribeDocRequest(AbstractModel):
-    """DescribeDoc请求参数结构体
+    r"""DescribeDoc请求参数结构体
 
     """
 
@@ -1876,7 +1876,7 @@ class DescribeDocRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -1887,7 +1887,7 @@ class DescribeDocRequest(AbstractModel):
 
     @property
     def DocId(self):
-        """文档ID
+        r"""文档ID
         :rtype: str
         """
         return self._DocId
@@ -1911,7 +1911,7 @@ class DescribeDocRequest(AbstractModel):
 
 
 class DescribeDocResponse(AbstractModel):
-    """DescribeDoc返回参数结构体
+    r"""DescribeDoc返回参数结构体
 
     """
 
@@ -1948,7 +1948,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def DocId(self):
-        """文档ID
+        r"""文档ID
         :rtype: str
         """
         return self._DocId
@@ -1959,7 +1959,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态，
+        r"""状态，
 
 - Uploading  上传中  
 - Auditing 审核中
@@ -1979,7 +1979,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
         :rtype: str
         """
         return self._FileName
@@ -1990,7 +1990,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -2001,7 +2001,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签
+        r"""属性标签
         :rtype: list of AttributeLabelReferItem
         """
         return self._AttributeLabels
@@ -2012,7 +2012,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2037,7 +2037,7 @@ class DescribeDocResponse(AbstractModel):
 
 
 class DocItem(AbstractModel):
-    """离线文档列表回包
+    r"""离线文档列表回包
 
     """
 
@@ -2075,7 +2075,7 @@ class DocItem(AbstractModel):
 
     @property
     def DocId(self):
-        """文档id
+        r"""文档id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2087,7 +2087,7 @@ class DocItem(AbstractModel):
 
     @property
     def Status(self):
-        """ 状态，
+        r""" 状态，
 - Uploading  上传中  
 - Auditing 审核中
 - Parsing 解析中  
@@ -2107,7 +2107,7 @@ class DocItem(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2119,7 +2119,7 @@ class DocItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2131,7 +2131,7 @@ class DocItem(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签
+        r"""属性标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttributeLabelReferItem
         """
@@ -2164,7 +2164,7 @@ class DocItem(AbstractModel):
 
 
 class DocumentUsage(AbstractModel):
-    """文档拆分任务的用量
+    r"""文档拆分任务的用量
 
     """
 
@@ -2198,7 +2198,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """文档拆分任务的页数
+        r"""文档拆分任务的页数
         :rtype: int
         """
         return self._PageNumber
@@ -2211,7 +2211,7 @@ class DocumentUsage(AbstractModel):
     def TotalToken(self):
         warnings.warn("parameter `TotalToken` is deprecated", DeprecationWarning) 
 
-        """文档拆分任务消耗的总token数
+        r"""文档拆分任务消耗的总token数
         :rtype: int
         """
         return self._TotalToken
@@ -2224,7 +2224,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """文档拆分任务消耗的总token数
+        r"""文档拆分任务消耗的总token数
         :rtype: int
         """
         return self._TotalTokens
@@ -2235,7 +2235,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def SplitTokens(self):
-        """拆分消耗的token数
+        r"""拆分消耗的token数
         :rtype: int
         """
         return self._SplitTokens
@@ -2246,7 +2246,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def MllmTokens(self):
-        """mllm消耗的token数
+        r"""mllm消耗的token数
         :rtype: int
         """
         return self._MllmTokens
@@ -2257,7 +2257,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def SuccessPageNum(self):
-        """解析成功页数
+        r"""解析成功页数
         :rtype: int
         """
         return self._SuccessPageNum
@@ -2268,7 +2268,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def FailPageNum(self):
-        """解析失败页数
+        r"""解析失败页数
         :rtype: int
         """
         return self._FailPageNum
@@ -2279,7 +2279,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小，单位：字节
+        r"""文件大小，单位：字节
         :rtype: int
         """
         return self._FileSize
@@ -2309,7 +2309,7 @@ class DocumentUsage(AbstractModel):
 
 
 class EmbeddingObject(AbstractModel):
-    """向量
+    r"""向量
 
     """
 
@@ -2322,7 +2322,7 @@ class EmbeddingObject(AbstractModel):
 
     @property
     def Embedding(self):
-        """向量
+        r"""向量
         :rtype: list of float
         """
         return self._Embedding
@@ -2345,7 +2345,7 @@ class EmbeddingObject(AbstractModel):
 
 
 class ErrorInfo(AbstractModel):
-    """错误信息
+    r"""错误信息
 
     """
 
@@ -2361,7 +2361,7 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: str
         """
         return self._Code
@@ -2372,7 +2372,7 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -2396,13 +2396,13 @@ class ErrorInfo(AbstractModel):
 
 
 class GetCharacterUsageRequest(AbstractModel):
-    """GetCharacterUsage请求参数结构体
+    r"""GetCharacterUsage请求参数结构体
 
     """
 
 
 class GetCharacterUsageResponse(AbstractModel):
-    """GetCharacterUsage返回参数结构体
+    r"""GetCharacterUsage返回参数结构体
 
     """
 
@@ -2421,7 +2421,7 @@ class GetCharacterUsageResponse(AbstractModel):
 
     @property
     def Used(self):
-        """已用字符数
+        r"""已用字符数
         :rtype: int
         """
         return self._Used
@@ -2432,7 +2432,7 @@ class GetCharacterUsageResponse(AbstractModel):
 
     @property
     def Total(self):
-        """可用字符数
+        r"""可用字符数
         :rtype: int
         """
         return self._Total
@@ -2443,7 +2443,7 @@ class GetCharacterUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2460,7 +2460,7 @@ class GetCharacterUsageResponse(AbstractModel):
 
 
 class GetEmbeddingRequest(AbstractModel):
-    """GetEmbedding请求参数结构体
+    r"""GetEmbedding请求参数结构体
 
     """
 
@@ -2472,13 +2472,19 @@ class GetEmbeddingRequest(AbstractModel):
         :param _Inputs: 说明：需要 embedding 的文本
 备注：单条query最多2000个字符，总条数最多7条
         :type Inputs: list of str
+        :param _TextType: 说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
+        :type TextType: str
+        :param _Instruction: 说明：自定义任务指令词，当且仅当TextType=query时，生效
+        :type Instruction: str
         """
         self._Model = None
         self._Inputs = None
+        self._TextType = None
+        self._Instruction = None
 
     @property
     def Model(self):
-        """说明：选择生成向量的模型
+        r"""说明：选择生成向量的模型
 备注：仅一个模型可选
         :rtype: str
         """
@@ -2490,7 +2496,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def Inputs(self):
-        """说明：需要 embedding 的文本
+        r"""说明：需要 embedding 的文本
 备注：单条query最多2000个字符，总条数最多7条
         :rtype: list of str
         """
@@ -2500,10 +2506,34 @@ class GetEmbeddingRequest(AbstractModel):
     def Inputs(self, Inputs):
         self._Inputs = Inputs
 
+    @property
+    def TextType(self):
+        r"""说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
+        :rtype: str
+        """
+        return self._TextType
+
+    @TextType.setter
+    def TextType(self, TextType):
+        self._TextType = TextType
+
+    @property
+    def Instruction(self):
+        r"""说明：自定义任务指令词，当且仅当TextType=query时，生效
+        :rtype: str
+        """
+        return self._Instruction
+
+    @Instruction.setter
+    def Instruction(self, Instruction):
+        self._Instruction = Instruction
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Inputs = params.get("Inputs")
+        self._TextType = params.get("TextType")
+        self._Instruction = params.get("Instruction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2515,7 +2545,7 @@ class GetEmbeddingRequest(AbstractModel):
 
 
 class GetEmbeddingResponse(AbstractModel):
-    """GetEmbedding返回参数结构体
+    r"""GetEmbedding返回参数结构体
 
     """
 
@@ -2534,7 +2564,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
-        """特征
+        r"""特征
         :rtype: list of EmbeddingObject
         """
         return self._Data
@@ -2545,7 +2575,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗量，返回TotalToken
+        r"""消耗量，返回TotalToken
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage
@@ -2556,7 +2586,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2580,7 +2610,7 @@ class GetEmbeddingResponse(AbstractModel):
 
 
 class GetReconstructDocumentResultRequest(AbstractModel):
-    """GetReconstructDocumentResult请求参数结构体
+    r"""GetReconstructDocumentResult请求参数结构体
 
     """
 
@@ -2594,7 +2624,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """说明：解析任务ID
+        r"""说明：解析任务ID
 备注：仅支持单个任务ID
         :rtype: str
         """
@@ -2618,7 +2648,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
 
 class GetReconstructDocumentResultResponse(AbstractModel):
-    """GetReconstructDocumentResult返回参数结构体
+    r"""GetReconstructDocumentResult返回参数结构体
 
     """
 
@@ -2651,7 +2681,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。
+        r"""任务状态。
 - `Success`：执行完成
 - `Processing`：执行中
 -  `Pause`: 暂停
@@ -2667,7 +2697,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
+        r"""解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl
@@ -2678,7 +2708,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """文档解析失败的页码
+        r"""文档解析失败的页码
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -2689,7 +2719,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """文档拆分任务的用量	
+        r"""文档拆分任务的用量	
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
         """
         return self._Usage
@@ -2700,7 +2730,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Error(self):
-        """文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
+        r"""文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
         """
         return self._Error
@@ -2711,7 +2741,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2740,7 +2770,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
 
 class GetSplitDocumentResultRequest(AbstractModel):
-    """GetSplitDocumentResult请求参数结构体
+    r"""GetSplitDocumentResult请求参数结构体
 
     """
 
@@ -2753,7 +2783,7 @@ class GetSplitDocumentResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """拆分任务ID
+        r"""拆分任务ID
         :rtype: str
         """
         return self._TaskId
@@ -2776,7 +2806,7 @@ class GetSplitDocumentResultRequest(AbstractModel):
 
 
 class GetSplitDocumentResultResponse(AbstractModel):
-    """GetSplitDocumentResult返回参数结构体
+    r"""GetSplitDocumentResult返回参数结构体
 
     """
 
@@ -2820,7 +2850,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。
+        r"""任务状态。
 
 - `Success`：执行完成
 - `Processing`：执行中
@@ -2837,7 +2867,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """拆分结果的临时下载地址。
+        r"""拆分结果的临时下载地址。
 文件类型为zip压缩包，下载链接有效期30分钟。
 压缩包内包含\*.md、\*.jsonl、\*mllm.json以及images文件夹。
 
@@ -2860,7 +2890,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
     def FailedPages(self):
         warnings.warn("parameter `FailedPages` is deprecated", DeprecationWarning) 
 
-        """文档拆分失败的页码
+        r"""文档拆分失败的页码
         :rtype: list of SplitDocumentFailedPage
         """
         return self._FailedPages
@@ -2873,7 +2903,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """文档拆分任务的用量
+        r"""文档拆分任务的用量
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
         """
         return self._Usage
@@ -2884,7 +2914,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def Error(self):
-        """文档拆分失败的错误信息，当拆分任务失败时返回该错误信息
+        r"""文档拆分失败的错误信息，当拆分任务失败时返回该错误信息
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
         """
         return self._Error
@@ -2895,7 +2925,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2924,7 +2954,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
 
 class ImportQAsRequest(AbstractModel):
-    """ImportQAs请求参数结构体
+    r"""ImportQAs请求参数结构体
 
     """
 
@@ -2947,7 +2977,7 @@ class ImportQAsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -2958,7 +2988,7 @@ class ImportQAsRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
         :rtype: str
         """
         return self._FileName
@@ -2969,7 +2999,7 @@ class ImportQAsRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 导入模板：https://cdn.xiaowei.qq.com/lke/assets//static/批量导入问答模板v6.xlsx
         :rtype: str
         """
@@ -2981,7 +3011,7 @@ class ImportQAsRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型，仅支持XLSX格式，请使用模板
+        r"""文件类型，仅支持XLSX格式，请使用模板
         :rtype: str
         """
         return self._FileType
@@ -3007,7 +3037,7 @@ class ImportQAsRequest(AbstractModel):
 
 
 class ImportQAsResponse(AbstractModel):
-    """ImportQAs返回参数结构体
+    r"""ImportQAs返回参数结构体
 
     """
 
@@ -3020,7 +3050,7 @@ class ImportQAsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3035,7 +3065,7 @@ class ImportQAsResponse(AbstractModel):
 
 
 class LabelItem(AbstractModel):
-    """属性标签
+    r"""属性标签
 
     """
 
@@ -3051,7 +3081,7 @@ class LabelItem(AbstractModel):
 
     @property
     def Name(self):
-        """属性key
+        r"""属性key
         :rtype: str
         """
         return self._Name
@@ -3062,7 +3092,7 @@ class LabelItem(AbstractModel):
 
     @property
     def Values(self):
-        """标签值
+        r"""标签值
         :rtype: list of str
         """
         return self._Values
@@ -3086,7 +3116,7 @@ class LabelItem(AbstractModel):
 
 
 class ListAttributeLabelsRequest(AbstractModel):
-    """ListAttributeLabels请求参数结构体
+    r"""ListAttributeLabels请求参数结构体
 
     """
 
@@ -3105,7 +3135,7 @@ class ListAttributeLabelsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3116,7 +3146,7 @@ class ListAttributeLabelsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码，默认1
+        r"""页码，默认1
         :rtype: int
         """
         return self._PageNumber
@@ -3127,7 +3157,7 @@ class ListAttributeLabelsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数目，最大50，默认20
+        r"""每页数目，最大50，默认20
         :rtype: int
         """
         return self._PageSize
@@ -3152,7 +3182,7 @@ class ListAttributeLabelsRequest(AbstractModel):
 
 
 class ListAttributeLabelsResponse(AbstractModel):
-    """ListAttributeLabels返回参数结构体
+    r"""ListAttributeLabels返回参数结构体
 
     """
 
@@ -3171,7 +3201,7 @@ class ListAttributeLabelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """属性总数
+        r"""属性总数
         :rtype: int
         """
         return self._TotalCount
@@ -3182,7 +3212,7 @@ class ListAttributeLabelsResponse(AbstractModel):
 
     @property
     def List(self):
-        """属性标签列表
+        r"""属性标签列表
         :rtype: list of AttributeItem
         """
         return self._List
@@ -3193,7 +3223,7 @@ class ListAttributeLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3215,7 +3245,7 @@ class ListAttributeLabelsResponse(AbstractModel):
 
 
 class ListDocsRequest(AbstractModel):
-    """ListDocs请求参数结构体
+    r"""ListDocs请求参数结构体
 
     """
 
@@ -3234,7 +3264,7 @@ class ListDocsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3245,7 +3275,7 @@ class ListDocsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码，默认1
+        r"""页码，默认1
         :rtype: int
         """
         return self._PageNumber
@@ -3256,7 +3286,7 @@ class ListDocsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数目，最大50，默认20
+        r"""每页数目，最大50，默认20
         :rtype: int
         """
         return self._PageSize
@@ -3281,7 +3311,7 @@ class ListDocsRequest(AbstractModel):
 
 
 class ListDocsResponse(AbstractModel):
-    """ListDocs返回参数结构体
+    r"""ListDocs返回参数结构体
 
     """
 
@@ -3300,7 +3330,7 @@ class ListDocsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """文档总数
+        r"""文档总数
         :rtype: int
         """
         return self._TotalCount
@@ -3311,7 +3341,7 @@ class ListDocsResponse(AbstractModel):
 
     @property
     def List(self):
-        """文档信息
+        r"""文档信息
         :rtype: list of DocItem
         """
         return self._List
@@ -3322,7 +3352,7 @@ class ListDocsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3344,7 +3374,7 @@ class ListDocsResponse(AbstractModel):
 
 
 class ListQAsRequest(AbstractModel):
-    """ListQAs请求参数结构体
+    r"""ListQAs请求参数结构体
 
     """
 
@@ -3363,7 +3393,7 @@ class ListQAsRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3374,7 +3404,7 @@ class ListQAsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码，默认1
+        r"""页码，默认1
         :rtype: int
         """
         return self._PageNumber
@@ -3385,7 +3415,7 @@ class ListQAsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数目，最大50，默认20
+        r"""每页数目，最大50，默认20
         :rtype: int
         """
         return self._PageSize
@@ -3410,7 +3440,7 @@ class ListQAsRequest(AbstractModel):
 
 
 class ListQAsResponse(AbstractModel):
-    """ListQAs返回参数结构体
+    r"""ListQAs返回参数结构体
 
     """
 
@@ -3429,7 +3459,7 @@ class ListQAsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """问答对总数量
+        r"""问答对总数量
         :rtype: int
         """
         return self._TotalCount
@@ -3440,7 +3470,7 @@ class ListQAsResponse(AbstractModel):
 
     @property
     def List(self):
-        """问答对信息
+        r"""问答对信息
         :rtype: list of QaItem
         """
         return self._List
@@ -3451,7 +3481,7 @@ class ListQAsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3473,7 +3503,7 @@ class ListQAsResponse(AbstractModel):
 
 
 class Message(AbstractModel):
-    """会话内容
+    r"""会话内容
 
     """
 
@@ -3496,7 +3526,7 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 
     @property
     def Role(self):
-        """角色
+        r"""角色
         :rtype: str
         """
         return self._Role
@@ -3507,7 +3537,7 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -3518,7 +3548,7 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 
     @property
     def ReasoningContent(self):
-        """思维链内容。
+        r"""思维链内容。
 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
         :rtype: str
         """
@@ -3530,7 +3560,7 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 
     @property
     def SearchResults(self):
-        """搜索结果
+        r"""搜索结果
         :rtype: list of SearchResult
         """
         return self._SearchResults
@@ -3561,7 +3591,7 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 
 
 class ModifyAttributeLabelRequest(AbstractModel):
-    """ModifyAttributeLabel请求参数结构体
+    r"""ModifyAttributeLabel请求参数结构体
 
     """
 
@@ -3586,7 +3616,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3597,7 +3627,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeId(self):
-        """属性ID
+        r"""属性ID
         :rtype: str
         """
         return self._AttributeId
@@ -3608,7 +3638,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeKey(self):
-        """属性标识，最大40个英文字符，如style
+        r"""属性标识，最大40个英文字符，如style
         :rtype: str
         """
         return self._AttributeKey
@@ -3619,7 +3649,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeName(self):
-        """属性名称，最大80个英文字符，如风格
+        r"""属性名称，最大80个英文字符，如风格
         :rtype: str
         """
         return self._AttributeName
@@ -3630,7 +3660,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """属性标签
+        r"""属性标签
         :rtype: list of AttributeLabelItem
         """
         return self._Labels
@@ -3662,7 +3692,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
 
 class ModifyAttributeLabelResponse(AbstractModel):
-    """ModifyAttributeLabel返回参数结构体
+    r"""ModifyAttributeLabel返回参数结构体
 
     """
 
@@ -3675,7 +3705,7 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3690,7 +3720,7 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
 
 class ModifyQARequest(AbstractModel):
-    """ModifyQA请求参数结构体
+    r"""ModifyQA请求参数结构体
 
     """
 
@@ -3715,7 +3745,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3726,7 +3756,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def QaId(self):
-        """问答对ID
+        r"""问答对ID
         :rtype: str
         """
         return self._QaId
@@ -3737,7 +3767,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def Question(self):
-        """问题，最大1000个英文字符
+        r"""问题，最大1000个英文字符
         :rtype: str
         """
         return self._Question
@@ -3748,7 +3778,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def Answer(self):
-        """答案，最大4000个英文字符
+        r"""答案，最大4000个英文字符
         :rtype: str
         """
         return self._Answer
@@ -3759,7 +3789,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签
+        r"""属性标签
         :rtype: list of AttributeLabelReferItem
         """
         return self._AttributeLabels
@@ -3791,7 +3821,7 @@ class ModifyQARequest(AbstractModel):
 
 
 class ModifyQAResponse(AbstractModel):
-    """ModifyQA返回参数结构体
+    r"""ModifyQA返回参数结构体
 
     """
 
@@ -3804,7 +3834,7 @@ class ModifyQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3819,7 +3849,7 @@ class ModifyQAResponse(AbstractModel):
 
 
 class QaItem(AbstractModel):
-    """问答对信息
+    r"""问答对信息
 
     """
 
@@ -3853,7 +3883,7 @@ class QaItem(AbstractModel):
 
     @property
     def QaId(self):
-        """问答id
+        r"""问答id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3865,7 +3895,7 @@ class QaItem(AbstractModel):
 
     @property
     def Question(self):
-        """问题
+        r"""问题
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3877,7 +3907,7 @@ class QaItem(AbstractModel):
 
     @property
     def Answer(self):
-        """答案
+        r"""答案
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3889,7 +3919,7 @@ class QaItem(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签
+        r"""属性标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttributeLabelReferItem
         """
@@ -3901,7 +3931,7 @@ class QaItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3913,7 +3943,7 @@ class QaItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3947,7 +3977,7 @@ class QaItem(AbstractModel):
 
 
 class QueryRewriteRequest(AbstractModel):
-    """QueryRewrite请求参数结构体
+    r"""QueryRewrite请求参数结构体
 
     """
 
@@ -3966,7 +3996,7 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """说明：需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入
+        r"""说明：需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入
 备注：由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写。四轮对话最多包含3600个字符。
         :rtype: list of Message
         """
@@ -3978,7 +4008,7 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Model(self):
-        """说明：模型名称
+        r"""说明：模型名称
 备注：仅一个模型可选
 默认值：lke-query-rewrite-base
         :rtype: str
@@ -4009,7 +4039,7 @@ class QueryRewriteRequest(AbstractModel):
 
 
 class QueryRewriteResponse(AbstractModel):
-    """QueryRewrite返回参数结构体
+    r"""QueryRewrite返回参数结构体
 
     """
 
@@ -4028,7 +4058,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def Content(self):
-        """改写结果
+        r"""改写结果
         :rtype: str
         """
         return self._Content
@@ -4039,7 +4069,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗量，返回输入token数，输出token数以及总token数
+        r"""消耗量，返回输入token数，输出token数以及总token数
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage
@@ -4050,7 +4080,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4069,7 +4099,7 @@ class QueryRewriteResponse(AbstractModel):
 
 
 class ReconstructDocumentFailedPage(AbstractModel):
-    """文档解析失败记录
+    r"""文档解析失败记录
 
     """
 
@@ -4083,7 +4113,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """失败页码	
+        r"""失败页码	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4107,7 +4137,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
 
 class ReconstructDocumentSSEConfig(AbstractModel):
-    """ReconstructDocumentSSE 功能配置参数
+    r"""ReconstructDocumentSSE 功能配置参数
 
     """
 
@@ -4138,7 +4168,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def TableResultType(self):
-        """Markdown文件中表格返回的形式
+        r"""Markdown文件中表格返回的形式
 0，表格以MD形式返回
 1，表格以HTML形式返回
 默认为0
@@ -4152,7 +4182,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def MarkdownImageResponseType(self):
-        """Markdown文件中图片返回的形式
+        r"""Markdown文件中图片返回的形式
 0:markdown中图片以链接形式返回
 1:markdown中图片只返回图片中提取的文本内容
 默认是0
@@ -4166,7 +4196,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def ReturnPageFormat(self):
-        """Markdown文件中是否包含页码信息
+        r"""Markdown文件中是否包含页码信息
         :rtype: bool
         """
         return self._ReturnPageFormat
@@ -4177,7 +4207,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def PageFormat(self):
-        """自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
+        r"""自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
         :rtype: str
         """
         return self._PageFormat
@@ -4188,7 +4218,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        """是否忽略失败页，返回已成功的页数据
+        r"""是否忽略失败页，返回已成功的页数据
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -4215,7 +4245,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
 
 class ReconstructDocumentSSERequest(AbstractModel):
-    """ReconstructDocumentSSE请求参数结构体
+    r"""ReconstructDocumentSSE请求参数结构体
 
     """
 
@@ -4257,7 +4287,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileType(self):
-        """支持解析的文件类型。**支持的文件类型**：WPS、PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2**支持的文件大小**：- WPS、PDF、DOC、DOCX、PPT、PPTX 支持100M- MD、TXT、XLS、XLSX、CSV 支持10M- 其他支持20M
+        r"""支持解析的文件类型。**支持的文件类型**：WPS、PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2**支持的文件大小**：- WPS、PDF、DOC、DOCX、PPT、PPTX 支持100M- MD、TXT、XLS、XLSX、CSV 支持10M- 其他支持20M
         :rtype: str
         """
         return self._FileType
@@ -4268,7 +4298,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+        r"""文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
 
 默认值：无
@@ -4282,7 +4312,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """说明：文件的 Base64 值。
+        r"""说明：文件的 Base64 值。
 备注：支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 
@@ -4297,7 +4327,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """说明：文档的起始页码。
+        r"""说明：文档的起始页码。
 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
 默认值：无
         :rtype: int
@@ -4310,7 +4340,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """说明：文档的结束页码。
+        r"""说明：文档的结束页码。
 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
 默认值：无
         :rtype: int
@@ -4323,7 +4353,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def Config(self):
-        """说明：文档解析配置信息	
+        r"""说明：文档解析配置信息	
 备注：可设置返回markdown结果的格式
 默认值：无
 
@@ -4356,7 +4386,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
 
 class ReconstructDocumentSSEResponse(AbstractModel):
-    """ReconstructDocumentSSE返回参数结构体
+    r"""ReconstructDocumentSSE返回参数结构体
 
     """
 
@@ -4394,7 +4424,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。本次请求的唯一标识
+        r"""任务ID。本次请求的唯一标识
         :rtype: str
         """
         return self._TaskId
@@ -4405,7 +4435,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def ResponseType(self):
-        """响应类型。1：返回进度信息， 2：返回解析结果
+        r"""响应类型。1：返回进度信息， 2：返回解析结果
         :rtype: str
         """
         return self._ResponseType
@@ -4416,7 +4446,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """进度。0~100
+        r"""进度。0~100
         :rtype: str
         """
         return self._Progress
@@ -4427,7 +4457,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def ProgressMessage(self):
-        """进度信息。
+        r"""进度信息。
         :rtype: str
         """
         return self._ProgressMessage
@@ -4438,7 +4468,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """文档解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。
+        r"""文档解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。
 
         :rtype: str
         """
@@ -4450,7 +4480,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """文档解析失败的页码。
+        r"""文档解析失败的页码。
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -4461,7 +4491,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def FailPageNum(self):
-        """文档解析失败页数
+        r"""文档解析失败页数
         :rtype: int
         """
         return self._FailPageNum
@@ -4472,7 +4502,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def SuccessPageNum(self):
-        """文档解析成功页数
+        r"""文档解析成功页数
         :rtype: int
         """
         return self._SuccessPageNum
@@ -4483,7 +4513,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -4511,7 +4541,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
 
 class RetrievalRecord(AbstractModel):
-    """检索的结果
+    r"""检索的结果
 
     """
 
@@ -4530,7 +4560,7 @@ class RetrievalRecord(AbstractModel):
 
     @property
     def Metadata(self):
-        """检索结果的元数据
+        r"""检索结果的元数据
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.RetrievalRecordMetadata`
         """
         return self._Metadata
@@ -4541,7 +4571,7 @@ class RetrievalRecord(AbstractModel):
 
     @property
     def Title(self):
-        """检索到的标题
+        r"""检索到的标题
         :rtype: str
         """
         return self._Title
@@ -4552,7 +4582,7 @@ class RetrievalRecord(AbstractModel):
 
     @property
     def Content(self):
-        """检索到的内容
+        r"""检索到的内容
         :rtype: str
         """
         return self._Content
@@ -4579,7 +4609,7 @@ class RetrievalRecord(AbstractModel):
 
 
 class RetrievalRecordMetadata(AbstractModel):
-    """检索结果的元数据
+    r"""检索结果的元数据
 
     """
 
@@ -4602,7 +4632,7 @@ class RetrievalRecordMetadata(AbstractModel):
 
     @property
     def Type(self):
-        """结果的类型。
+        r"""结果的类型。
 - `DOC`：文档
 - `QA`：问答对
         :rtype: str
@@ -4615,7 +4645,7 @@ class RetrievalRecordMetadata(AbstractModel):
 
     @property
     def ResultSource(self):
-        """检索结果的来源。
+        r"""检索结果的来源。
 - `SEMANTIC`：从语义检索中得到的结果
 - `FULL_TEXT`：从全文检索中得到的结果
         :rtype: str
@@ -4628,7 +4658,7 @@ class RetrievalRecordMetadata(AbstractModel):
 
     @property
     def ChunkPageNumbers(self):
-        """切片在文档中的页码，仅部分文档支持
+        r"""切片在文档中的页码，仅部分文档支持
         :rtype: list of int
         """
         return self._ChunkPageNumbers
@@ -4653,7 +4683,7 @@ class RetrievalRecordMetadata(AbstractModel):
 
 
 class RetrievalSetting(AbstractModel):
-    """检索参数设置
+    r"""检索参数设置
 
     """
 
@@ -4676,7 +4706,7 @@ class RetrievalSetting(AbstractModel):
 
     @property
     def Type(self):
-        """检索的类型，不填该参数则检索全部。
+        r"""检索的类型，不填该参数则检索全部。
 - `DOC`：文档
 - `QA`：QA
 
@@ -4691,7 +4721,7 @@ class RetrievalSetting(AbstractModel):
 
     @property
     def TopK(self):
-        """返回个数
+        r"""返回个数
         :rtype: int
         """
         return self._TopK
@@ -4702,7 +4732,7 @@ class RetrievalSetting(AbstractModel):
 
     @property
     def ScoreThreshold(self):
-        """分数过滤
+        r"""分数过滤
         :rtype: float
         """
         return self._ScoreThreshold
@@ -4727,7 +4757,7 @@ class RetrievalSetting(AbstractModel):
 
 
 class RetrieveKnowledgeRequest(AbstractModel):
-    """RetrieveKnowledge请求参数结构体
+    r"""RetrieveKnowledge请求参数结构体
 
     """
 
@@ -4755,7 +4785,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID。
+        r"""知识库ID。
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -4766,7 +4796,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
     @property
     def Query(self):
-        """用于检索的文本。
+        r"""用于检索的文本。
         :rtype: str
         """
         return self._Query
@@ -4777,7 +4807,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
     @property
     def RetrievalMethod(self):
-        """检索方法，默认使用`HYBRID`混合检索。
+        r"""检索方法，默认使用`HYBRID`混合检索。
 - `SEMANTIC`：语义检索
 - `FULL_TEXT`：全文检索
 - `HYBRID`：混合检索
@@ -4791,7 +4821,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
     @property
     def RetrievalSetting(self):
-        """检索设置。
+        r"""检索设置。
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.RetrievalSetting`
         """
         return self._RetrievalSetting
@@ -4802,7 +4832,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """标签过滤。
+        r"""标签过滤。
         :rtype: list of LabelItem
         """
         return self._AttributeLabels
@@ -4836,7 +4866,7 @@ class RetrieveKnowledgeRequest(AbstractModel):
 
 
 class RetrieveKnowledgeResponse(AbstractModel):
-    """RetrieveKnowledge返回参数结构体
+    r"""RetrieveKnowledge返回参数结构体
 
     """
 
@@ -4855,7 +4885,7 @@ class RetrieveKnowledgeResponse(AbstractModel):
 
     @property
     def Records(self):
-        """检索结果
+        r"""检索结果
         :rtype: list of RetrievalRecord
         """
         return self._Records
@@ -4866,7 +4896,7 @@ class RetrieveKnowledgeResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """检索结果数量
+        r"""检索结果数量
         :rtype: int
         """
         return self._TotalCount
@@ -4877,7 +4907,7 @@ class RetrieveKnowledgeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4899,7 +4929,7 @@ class RetrieveKnowledgeResponse(AbstractModel):
 
 
 class RunRerankRequest(AbstractModel):
-    """RunRerank请求参数结构体
+    r"""RunRerank请求参数结构体
 
     """
 
@@ -4922,7 +4952,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """说明：查询内容
+        r"""说明：查询内容
 备注：用于匹配的query
         :rtype: str
         """
@@ -4934,7 +4964,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Docs(self):
-        """说明：文档列表
+        r"""说明：文档列表
 备注：最多60个，Query字段和Docs字段的总长度上限为2000字符
         :rtype: list of str
         """
@@ -4946,7 +4976,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Model(self):
-        """说明：模型名称
+        r"""说明：模型名称
 备注：仅一个模型可选
 默认值：lke-reranker-base
         :rtype: str
@@ -4973,7 +5003,7 @@ class RunRerankRequest(AbstractModel):
 
 
 class RunRerankResponse(AbstractModel):
-    """RunRerank返回参数结构体
+    r"""RunRerank返回参数结构体
 
     """
 
@@ -4992,7 +5022,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def ScoreList(self):
-        """相关性, 数值越大越相关
+        r"""相关性, 数值越大越相关
         :rtype: list of float
         """
         return self._ScoreList
@@ -5003,7 +5033,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗量，仅返回TotalToken
+        r"""消耗量，仅返回TotalToken
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage
@@ -5014,7 +5044,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5033,7 +5063,7 @@ class RunRerankResponse(AbstractModel):
 
 
 class SearchResult(AbstractModel):
-    """搜索结果
+    r"""搜索结果
 
     """
 
@@ -5064,7 +5094,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: int
         """
         return self._Index
@@ -5075,7 +5105,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Url(self):
-        """链接地址
+        r"""链接地址
         :rtype: str
         """
         return self._Url
@@ -5086,7 +5116,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Name(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Name
@@ -5097,7 +5127,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Snippet(self):
-        """摘要
+        r"""摘要
         :rtype: str
         """
         return self._Snippet
@@ -5108,7 +5138,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Icon(self):
-        """图标
+        r"""图标
         :rtype: str
         """
         return self._Icon
@@ -5119,7 +5149,7 @@ class SearchResult(AbstractModel):
 
     @property
     def Site(self):
-        """站点
+        r"""站点
         :rtype: str
         """
         return self._Site
@@ -5130,7 +5160,7 @@ class SearchResult(AbstractModel):
 
     @property
     def PublishedTime(self):
-        """1740412800
+        r"""1740412800
         :rtype: int
         """
         return self._PublishedTime
@@ -5159,7 +5189,7 @@ class SearchResult(AbstractModel):
 
 
 class SegmentationConfig(AbstractModel):
-    """分段配置
+    r"""分段配置
 
     """
 
@@ -5172,7 +5202,7 @@ class SegmentationConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        """最大分片长度
+        r"""最大分片长度
         :rtype: int
         """
         return self._MaxChunkSize
@@ -5195,7 +5225,7 @@ class SegmentationConfig(AbstractModel):
 
 
 class SplitDocumentFailedPage(AbstractModel):
-    """文档解析失败记录
+    r"""文档解析失败记录
 
     """
 
@@ -5209,7 +5239,7 @@ class SplitDocumentFailedPage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """失败页码	
+        r"""失败页码	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5233,7 +5263,7 @@ class SplitDocumentFailedPage(AbstractModel):
 
 
 class UploadDocRequest(AbstractModel):
-    """UploadDoc请求参数结构体
+    r"""UploadDoc请求参数结构体
 
     """
 
@@ -5276,7 +5306,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        """知识库ID
+        r"""知识库ID
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -5287,7 +5317,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名。
+        r"""文件名。
 **需带文件类型后缀**
         :rtype: str
         """
@@ -5299,7 +5329,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。
+        r"""文件类型。
 
 **支持的文件类型：**
 - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`
@@ -5319,7 +5349,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 URL 地址。
+        r"""文件的 URL 地址。
 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :rtype: str
@@ -5334,7 +5364,7 @@ class UploadDocRequest(AbstractModel):
     def AttributeLabel(self):
         warnings.warn("parameter `AttributeLabel` is deprecated", DeprecationWarning) 
 
-        """属性标签引用
+        r"""属性标签引用
         :rtype: list of AttributeLabelReferItem
         """
         return self._AttributeLabel
@@ -5347,7 +5377,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def AttributeLabels(self):
-        """属性标签引用
+        r"""属性标签引用
         :rtype: list of AttributeLabelReferItem
         """
         return self._AttributeLabels
@@ -5358,7 +5388,7 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def Config(self):
-        """分段信息
+        r"""分段信息
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.SegmentationConfig`
         """
         return self._Config
@@ -5399,7 +5429,7 @@ class UploadDocRequest(AbstractModel):
 
 
 class UploadDocResponse(AbstractModel):
-    """UploadDoc返回参数结构体
+    r"""UploadDoc返回参数结构体
 
     """
 
@@ -5415,7 +5445,7 @@ class UploadDocResponse(AbstractModel):
 
     @property
     def DocId(self):
-        """文档ID
+        r"""文档ID
         :rtype: str
         """
         return self._DocId
@@ -5426,7 +5456,7 @@ class UploadDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5442,7 +5472,7 @@ class UploadDocResponse(AbstractModel):
 
 
 class Usage(AbstractModel):
-    """消耗量
+    r"""消耗量
 
     """
 
@@ -5464,7 +5494,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalPages(self):
-        """文档页数
+        r"""文档页数
         :rtype: int
         """
         return self._TotalPages
@@ -5475,7 +5505,7 @@ class Usage(AbstractModel):
 
     @property
     def InputTokens(self):
-        """输入token数
+        r"""输入token数
         :rtype: int
         """
         return self._InputTokens
@@ -5486,7 +5516,7 @@ class Usage(AbstractModel):
 
     @property
     def OutputTokens(self):
-        """输出token数
+        r"""输出token数
         :rtype: int
         """
         return self._OutputTokens
@@ -5497,7 +5527,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """总token数
+        r"""总token数
         :rtype: int
         """
         return self._TotalTokens

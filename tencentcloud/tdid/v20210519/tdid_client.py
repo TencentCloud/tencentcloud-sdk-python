@@ -27,7 +27,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateDisclosedCredential(self, request):
-        """根据披露策略创建选择性披露凭证
+        r"""根据披露策略创建选择性披露凭证
 
         :param request: Request instance for CreateDisclosedCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateDisclosedCredentialRequest`
@@ -50,7 +50,7 @@ class TdidClient(AbstractClient):
 
 
     def CreatePresentation(self, request):
-        """创建凭证持有人的可验证表达
+        r"""创建凭证持有人的可验证表达
 
         :param request: Request instance for CreatePresentation.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreatePresentationRequest`
@@ -73,7 +73,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByHost(self, request):
-        """自动生成公私钥对托管在DID平台，并注册DID标识
+        r"""自动生成公私钥对托管在DID平台，并注册DID标识
 
         :param request: Request instance for CreateTDidByHost.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByHostRequest`
@@ -96,7 +96,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByPubKey(self, request):
-        """使用导入的公钥文件注册DID标识
+        r"""使用导入的公钥文件注册DID标识
 
         :param request: Request instance for CreateTDidByPubKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPubKeyRequest`
@@ -119,7 +119,7 @@ class TdidClient(AbstractClient):
 
 
     def DeactivateTDid(self, request):
-        """更新DID标识的禁用状态
+        r"""更新DID标识的禁用状态
 
         :param request: Request instance for DeactivateTDid.
         :type request: :class:`tencentcloud.tdid.v20210519.models.DeactivateTDidRequest`
@@ -142,7 +142,7 @@ class TdidClient(AbstractClient):
 
 
     def GetAppSummary(self, request):
-        """获取某个应用关键指标统计数据
+        r"""获取某个应用关键指标统计数据
 
         :param request: Request instance for GetAppSummary.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAppSummaryRequest`
@@ -165,7 +165,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialState(self, request):
-        """获取凭证链上状态信息
+        r"""获取凭证链上状态信息
 
         :param request: Request instance for GetCredentialState.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStateRequest`
@@ -188,7 +188,7 @@ class TdidClient(AbstractClient):
 
 
     def GetOverSummary(self, request):
-        """获取某个应用关键指标统计数据
+        r"""获取某个应用关键指标统计数据
 
         :param request: Request instance for GetOverSummary.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetOverSummaryRequest`
@@ -211,7 +211,7 @@ class TdidClient(AbstractClient):
 
 
     def GetTDidByObjectId(self, request):
-        """通过业务层绑定的对象ID获取DID标识
+        r"""通过业务层绑定的对象ID获取DID标识
 
         :param request: Request instance for GetTDidByObjectId.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetTDidByObjectIdRequest`
@@ -234,7 +234,7 @@ class TdidClient(AbstractClient):
 
 
     def GetTDidDocument(self, request):
-        """获取DID标识的文档
+        r"""获取DID标识的文档
 
         :param request: Request instance for GetTDidDocument.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetTDidDocumentRequest`
@@ -257,7 +257,7 @@ class TdidClient(AbstractClient):
 
 
     def GetTDidPubKey(self, request):
-        """查询DID标识的认证公钥
+        r"""查询DID标识的认证公钥
 
         :param request: Request instance for GetTDidPubKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetTDidPubKeyRequest`
@@ -280,7 +280,7 @@ class TdidClient(AbstractClient):
 
 
     def IssueCredential(self, request):
-        """颁发可验证凭证
+        r"""颁发可验证凭证
 
         :param request: Request instance for IssueCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.IssueCredentialRequest`
@@ -303,7 +303,7 @@ class TdidClient(AbstractClient):
 
 
     def QueryAuthorityInfo(self, request):
-        """查询权威机构信息
+        r"""查询权威机构信息
 
         :param request: Request instance for QueryAuthorityInfo.
         :type request: :class:`tencentcloud.tdid.v20210519.models.QueryAuthorityInfoRequest`
@@ -326,7 +326,7 @@ class TdidClient(AbstractClient):
 
 
     def QueryCPT(self, request):
-        """查询凭证模板内容
+        r"""查询凭证模板内容
 
         :param request: Request instance for QueryCPT.
         :type request: :class:`tencentcloud.tdid.v20210519.models.QueryCPTRequest`
@@ -349,7 +349,7 @@ class TdidClient(AbstractClient):
 
 
     def SetTDidAttribute(self, request):
-        """设置DID文档的自定义属性
+        r"""设置DID文档的自定义属性
 
         :param request: Request instance for SetTDidAttribute.
         :type request: :class:`tencentcloud.tdid.v20210519.models.SetTDidAttributeRequest`
@@ -372,7 +372,7 @@ class TdidClient(AbstractClient):
 
 
     def UpdateCredentialState(self, request):
-        """1. 首次更新凭证状态基于不同场景参数有所差异，分以下两种场景：
+        r"""1. 首次更新凭证状态基于不同场景参数有所差异，分以下两种场景：
         (1)  颁发凭证的DID是本腾讯云账号创建
         (2) 颁发凭证的DID是非本腾讯云账号创建(此调用方式也适用于场景1)
         2. 首次更新过凭证状态后，凭证状态已绑定该账号的链上用户，后续更新凭证状态只需参数CredentialStatus即可, OperateCredential和OriginCredential参数均不需要
@@ -398,7 +398,7 @@ class TdidClient(AbstractClient):
 
 
     def VerifyCredentials(self, request):
-        """验证已签名的可验证凭证
+        r"""验证已签名的可验证凭证
 
         :param request: Request instance for VerifyCredentials.
         :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialsRequest`
@@ -421,7 +421,7 @@ class TdidClient(AbstractClient):
 
 
     def VerifyPresentation(self, request):
-        """验证可验证表达的内容
+        r"""验证可验证表达的内容
 
         :param request: Request instance for VerifyPresentation.
         :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyPresentationRequest`

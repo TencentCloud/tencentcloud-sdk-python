@@ -27,7 +27,7 @@ class MonitorClient(AbstractClient):
 
 
     def BindPrometheusManagedGrafana(self, request):
-        """绑定 Grafana 可视化服务实例
+        r"""绑定 Grafana 可视化服务实例
 
         :param request: Request instance for BindPrometheusManagedGrafana.
         :type request: :class:`tencentcloud.monitor.v20180724.models.BindPrometheusManagedGrafanaRequest`
@@ -50,7 +50,7 @@ class MonitorClient(AbstractClient):
 
 
     def BindingPolicyObject(self, request):
-        """将告警策略绑定到特定对象
+        r"""将告警策略绑定到特定对象
 
         :param request: Request instance for BindingPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectRequest`
@@ -73,7 +73,7 @@ class MonitorClient(AbstractClient):
 
 
     def BindingPolicyTag(self, request):
-        """策略绑定标签
+        r"""策略绑定标签
 
         :param request: Request instance for BindingPolicyTag.
         :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyTagRequest`
@@ -96,7 +96,7 @@ class MonitorClient(AbstractClient):
 
 
     def CleanGrafanaInstance(self, request):
-        """强制销毁 Grafana 实例
+        r"""强制销毁 Grafana 实例
 
         :param request: Request instance for CleanGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CleanGrafanaInstanceRequest`
@@ -119,7 +119,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """创建通知模板
+        r"""创建通知模板
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmNoticeRequest`
@@ -142,7 +142,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmPolicy(self, request):
-        """创建告警策略
+        r"""创建告警策略
 
         :param request: Request instance for CreateAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyRequest`
@@ -165,7 +165,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmShield(self, request):
-        """创建告警屏蔽规则
+        r"""创建告警屏蔽规则
 
         :param request: Request instance for CreateAlarmShield.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmShieldRequest`
@@ -188,7 +188,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlertRule(self, request):
-        """创建 Prometheus 告警规则。
+        r"""创建 Prometheus 告警规则。
 
         请注意，**告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description**，，请参考 [Prometheus Rule更多配置请参考](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)。
 
@@ -213,7 +213,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateConditionsTemplate(self, request):
-        """创建告警条件模板
+        r"""创建告警条件模板
 
         :param request: Request instance for CreateConditionsTemplate.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateConditionsTemplateRequest`
@@ -236,7 +236,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateExporterIntegration(self, request):
-        """创建集成中心 exporter 集成，因集成较多，建议控制台创建集成。(前提：已授权创建托管 EKS 集群，验证方式：1. 控制台界面确认，未提示授权则表示已授权创建；2. 通过 DescribePrometheusInstanceInitStatus 接口查询集群状态，如果托管集群不存在，可通过 RunPrometheusInstance 接口创建)
+        r"""创建集成中心 exporter 集成，因集成较多，建议控制台创建集成。(前提：已授权创建托管 EKS 集群，验证方式：1. 控制台界面确认，未提示授权则表示已授权创建；2. 通过 DescribePrometheusInstanceInitStatus 接口查询集群状态，如果托管集群不存在，可通过 RunPrometheusInstance 接口创建)
 
         :param request: Request instance for CreateExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExporterIntegrationRequest`
@@ -259,7 +259,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateExternalCluster(self, request):
-        """注册外部集群到云上 TMP 实例
+        r"""注册外部集群到云上 TMP 实例
 
         :param request: Request instance for CreateExternalCluster.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExternalClusterRequest`
@@ -282,7 +282,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaInstance(self, request):
-        """本接口（CreateGrafanaInstance）用于创建 Grafana 包年包月实例，默认基础版、到期自动续费、不可使用代金券。
+        r"""本接口（CreateGrafanaInstance）用于创建 Grafana 包年包月实例，默认基础版、到期自动续费、不可使用代金券。
 
         :param request: Request instance for CreateGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaInstanceRequest`
@@ -305,7 +305,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaIntegration(self, request):
-        """创建 Grafana 集成配置，其中 Prometheus 集成不通过该接口创建，可参考 BindPrometheusManagedGrafana 接口
+        r"""创建 Grafana 集成配置，其中 Prometheus 集成不通过该接口创建，可参考 BindPrometheusManagedGrafana 接口
 
         :param request: Request instance for CreateGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaIntegrationRequest`
@@ -328,7 +328,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaNotificationChannel(self, request):
-        """创建 Grafana 告警通道
+        r"""创建 Grafana 告警通道
 
         :param request: Request instance for CreateGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaNotificationChannelRequest`
@@ -351,7 +351,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePolicyGroup(self, request):
-        """增加策略组
+        r"""增加策略组
 
         :param request: Request instance for CreatePolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupRequest`
@@ -374,7 +374,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusAgent(self, request):
-        """创建 Prometheus CVM Agent
+        r"""创建 Prometheus CVM Agent
 
         :param request: Request instance for CreatePrometheusAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAgentRequest`
@@ -397,7 +397,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusAlertGroup(self, request):
-        """创建Prometheus告警规则分组
+        r"""创建Prometheus告警规则分组
 
         告警分组中可包含多条告警规则，分组内告警消息通过告警分组的通知模板发送。
         支持单个告警分组下分别创建启用/禁用的告警规则。
@@ -423,7 +423,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusAlertPolicy(self, request):
-        """创建 Prometheus 告警策略(将逐步废弃，建议使用 CreatePrometheusAlertGroup 创建告警策略)
+        r"""创建 Prometheus 告警策略(将逐步废弃，建议使用 CreatePrometheusAlertGroup 创建告警策略)
 
         :param request: Request instance for CreatePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAlertPolicyRequest`
@@ -446,7 +446,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusClusterAgent(self, request):
-        """与腾讯云可观测融合的2.0实例关联集群
+        r"""与腾讯云可观测融合的2.0实例关联集群
 
         :param request: Request instance for CreatePrometheusClusterAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusClusterAgentRequest`
@@ -469,7 +469,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusConfig(self, request):
-        """创建prometheus配置
+        r"""创建prometheus配置
 
         :param request: Request instance for CreatePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusConfigRequest`
@@ -492,7 +492,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusGlobalNotification(self, request):
-        """创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
+        r"""创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 
         :param request: Request instance for CreatePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusGlobalNotificationRequest`
@@ -515,7 +515,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusMultiTenantInstancePostPayMode(self, request):
-        """创建按量 Prometheus 实例，根据用量收费实例
+        r"""创建按量 Prometheus 实例，根据用量收费实例
 
         :param request: Request instance for CreatePrometheusMultiTenantInstancePostPayMode.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusMultiTenantInstancePostPayModeRequest`
@@ -538,7 +538,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusRecordRuleYaml(self, request):
-        """以Yaml的方式创建聚合规则
+        r"""以Yaml的方式创建聚合规则
 
         :param request: Request instance for CreatePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusRecordRuleYamlRequest`
@@ -561,7 +561,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusScrapeJob(self, request):
-        """创建 Prometheus Agent 抓取任务
+        r"""创建 Prometheus Agent 抓取任务
 
         :param request: Request instance for CreatePrometheusScrapeJob.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusScrapeJobRequest`
@@ -584,7 +584,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusTemp(self, request):
-        """创建一个云原生Prometheus模板
+        r"""创建一个云原生Prometheus模板
 
         :param request: Request instance for CreatePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusTempRequest`
@@ -607,7 +607,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateRecordingRule(self, request):
-        """创建 Prometheus 的预聚合规则
+        r"""创建 Prometheus 的预聚合规则
 
         :param request: Request instance for CreateRecordingRule.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleRequest`
@@ -630,7 +630,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateSSOAccount(self, request):
-        """Grafana实例授权其他腾讯云用户
+        r"""Grafana实例授权其他腾讯云用户
 
         :param request: Request instance for CreateSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateSSOAccountRequest`
@@ -653,7 +653,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateServiceDiscovery(self, request):
-        """在腾讯云容器服务下创建 Prometheus 服务发现。
+        r"""在腾讯云容器服务下创建 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
         <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 
@@ -678,7 +678,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlarmNotices(self, request):
-        """删除告警通知模板
+        r"""删除告警通知模板
 
         :param request: Request instance for DeleteAlarmNotices.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmNoticesRequest`
@@ -701,7 +701,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlarmPolicy(self, request):
-        """删除告警策略
+        r"""删除告警策略
 
         :param request: Request instance for DeleteAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmPolicyRequest`
@@ -724,7 +724,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlarmShields(self, request):
-        """删除告警屏蔽规则
+        r"""删除告警屏蔽规则
 
         :param request: Request instance for DeleteAlarmShields.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmShieldsRequest`
@@ -747,7 +747,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlertRules(self, request):
-        """批量删除 Prometheus 报警规则
+        r"""批量删除 Prometheus 报警规则
 
         :param request: Request instance for DeleteAlertRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesRequest`
@@ -770,7 +770,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteExporterIntegration(self, request):
-        """删除集成中心 exporter 集成
+        r"""删除集成中心 exporter 集成
 
         :param request: Request instance for DeleteExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteExporterIntegrationRequest`
@@ -793,7 +793,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaInstance(self, request):
-        """本接口（DeleteGrafanaInstance）用于 Grafana 包年包月实例的退费，调用后实例处于停服状态，不可使用，7天后自动销毁。
+        r"""本接口（DeleteGrafanaInstance）用于 Grafana 包年包月实例的退费，调用后实例处于停服状态，不可使用，7天后自动销毁。
 
         :param request: Request instance for DeleteGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaInstanceRequest`
@@ -816,7 +816,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaIntegration(self, request):
-        """删除 Grafana 集成配置
+        r"""删除 Grafana 集成配置
 
         :param request: Request instance for DeleteGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaIntegrationRequest`
@@ -839,7 +839,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaNotificationChannel(self, request):
-        """删除 Grafana 告警通道
+        r"""删除 Grafana 告警通道
 
         :param request: Request instance for DeleteGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaNotificationChannelRequest`
@@ -862,7 +862,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePolicyGroup(self, request):
-        """删除告警策略组
+        r"""删除告警策略组
 
         :param request: Request instance for DeletePolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupRequest`
@@ -885,7 +885,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusAlertGroups(self, request):
-        """删除Prometheus告警规则分组
+        r"""删除Prometheus告警规则分组
 
         :param request: Request instance for DeletePrometheusAlertGroups.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusAlertGroupsRequest`
@@ -908,7 +908,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusAlertPolicy(self, request):
-        """删除2.0实例告警策略
+        r"""删除2.0实例告警策略
 
         :param request: Request instance for DeletePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusAlertPolicyRequest`
@@ -931,7 +931,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusClusterAgent(self, request):
-        """解除TMP实例的集群关联
+        r"""解除TMP实例的集群关联
 
         :param request: Request instance for DeletePrometheusClusterAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusClusterAgentRequest`
@@ -954,7 +954,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusConfig(self, request):
-        """删除Prometheus配置，如果目标不存在，将返回成功
+        r"""删除Prometheus配置，如果目标不存在，将返回成功
 
         :param request: Request instance for DeletePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusConfigRequest`
@@ -977,7 +977,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusRecordRuleYaml(self, request):
-        """删除聚合实例
+        r"""删除聚合实例
 
         :param request: Request instance for DeletePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusRecordRuleYamlRequest`
@@ -1000,7 +1000,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusScrapeJobs(self, request):
-        """删除 Prometheus Agent 抓取任务
+        r"""删除 Prometheus Agent 抓取任务
 
         :param request: Request instance for DeletePrometheusScrapeJobs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusScrapeJobsRequest`
@@ -1023,7 +1023,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusTemp(self, request):
-        """删除一个云原生Prometheus配置模板
+        r"""删除一个云原生Prometheus配置模板
 
         :param request: Request instance for DeletePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempRequest`
@@ -1046,7 +1046,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusTempSync(self, request):
-        """解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
+        r"""解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
 
         :param request: Request instance for DeletePrometheusTempSync.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempSyncRequest`
@@ -1069,7 +1069,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteRecordingRules(self, request):
-        """批量删除 Prometheus 预聚合规则
+        r"""批量删除 Prometheus 预聚合规则
 
         :param request: Request instance for DeleteRecordingRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesRequest`
@@ -1092,7 +1092,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteSSOAccount(self, request):
-        """Grafana可视化服务 删除授权用户
+        r"""Grafana可视化服务 删除授权用户
 
         :param request: Request instance for DeleteSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteSSOAccountRequest`
@@ -1115,7 +1115,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteServiceDiscovery(self, request):
-        """删除在腾讯云容器服务下创建的 Prometheus 服务发现。
+        r"""删除在腾讯云容器服务下创建的 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
         <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 
@@ -1140,7 +1140,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAccidentEventList(self, request):
-        """获取平台事件列表
+        r"""获取平台事件列表
 
         :param request: Request instance for DescribeAccidentEventList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListRequest`
@@ -1163,7 +1163,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmEvents(self, request):
-        """查询告警事件列表
+        r"""查询告警事件列表
 
         :param request: Request instance for DescribeAlarmEvents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmEventsRequest`
@@ -1186,7 +1186,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmHistories(self, request):
-        """查询告警历史
+        r"""查询告警历史
 
         请注意，**如果使用子用户进行告警历史的查询，只能查询到被授权项目下的告警历史**，或不区分项目的产品的告警历史。如何对子账户授予项目的权限，请参考 [访问管理-项目与标签](https://cloud.tencent.com/document/product/598/32738)。
 
@@ -1211,7 +1211,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmMetrics(self, request):
-        """查询告警指标列表
+        r"""查询告警指标列表
 
         :param request: Request instance for DescribeAlarmMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmMetricsRequest`
@@ -1234,7 +1234,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotice(self, request):
-        """查询单个通知模板的详情
+        r"""查询单个通知模板的详情
 
         :param request: Request instance for DescribeAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeRequest`
@@ -1257,7 +1257,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNoticeCallbacks(self, request):
-        """获取告警通知模板所有回调URL
+        r"""获取告警通知模板所有回调URL
 
         :param request: Request instance for DescribeAlarmNoticeCallbacks.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeCallbacksRequest`
@@ -1280,7 +1280,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """查询通知模板列表
+        r"""查询通知模板列表
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticesRequest`
@@ -1303,7 +1303,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicies(self, request):
-        """查询告警策略列表
+        r"""查询告警策略列表
 
         :param request: Request instance for DescribeAlarmPolicies.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPoliciesRequest`
@@ -1326,7 +1326,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicy(self, request):
-        """获取单个告警策略详情
+        r"""获取单个告警策略详情
 
         :param request: Request instance for DescribeAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPolicyRequest`
@@ -1349,7 +1349,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmSmsQuota(self, request):
-        """获取告警短信配额
+        r"""获取告警短信配额
 
         :param request: Request instance for DescribeAlarmSmsQuota.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmSmsQuotaRequest`
@@ -1372,7 +1372,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlertRules(self, request):
-        """Prometheus 报警规则查询接口
+        r"""Prometheus 报警规则查询接口
 
         :param request: Request instance for DescribeAlertRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesRequest`
@@ -1395,7 +1395,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAllNamespaces(self, request):
-        """查询所有名字空间
+        r"""查询所有名字空间
 
         :param request: Request instance for DescribeAllNamespaces.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAllNamespacesRequest`
@@ -1418,7 +1418,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBaseMetrics(self, request):
-        """获取基础指标属性
+        r"""获取基础指标属性
 
         :param request: Request instance for DescribeBaseMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`
@@ -1441,7 +1441,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBasicAlarmList(self, request):
-        """获取基础告警列表
+        r"""获取基础告警列表
 
         :param request: Request instance for DescribeBasicAlarmList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListRequest`
@@ -1464,7 +1464,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBindingPolicyObjectList(self, request):
-        """获取已绑定对象列表
+        r"""获取已绑定对象列表
 
         :param request: Request instance for DescribeBindingPolicyObjectList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListRequest`
@@ -1487,7 +1487,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeClusterAgentCreatingProgress(self, request):
-        """获取prom实例中集群详细的关联状态
+        r"""获取prom实例中集群详细的关联状态
 
         :param request: Request instance for DescribeClusterAgentCreatingProgress.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeClusterAgentCreatingProgressRequest`
@@ -1510,7 +1510,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeConditionsTemplateList(self, request):
-        """获取条件模板列表
+        r"""获取条件模板列表
 
         :param request: Request instance for DescribeConditionsTemplateList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeConditionsTemplateListRequest`
@@ -1533,7 +1533,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeDNSConfig(self, request):
-        """列出 Grafana DNS 配置
+        r"""列出 Grafana DNS 配置
 
         :param request: Request instance for DescribeDNSConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeDNSConfigRequest`
@@ -1556,7 +1556,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeExporterIntegrations(self, request):
-        """查询集成中心 exporter 集成列表
+        r"""查询集成中心 exporter 集成列表
 
         :param request: Request instance for DescribeExporterIntegrations.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExporterIntegrationsRequest`
@@ -1579,7 +1579,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeExternalClusterRegisterCommand(self, request):
-        """查看外部集群注册命令
+        r"""查看外部集群注册命令
 
         :param request: Request instance for DescribeExternalClusterRegisterCommand.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterRegisterCommandRequest`
@@ -1602,7 +1602,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeExternalClusterUninstallCommand(self, request):
-        """查看外部集群 Agent 卸载命令
+        r"""查看外部集群 Agent 卸载命令
 
         :param request: Request instance for DescribeExternalClusterUninstallCommand.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterUninstallCommandRequest`
@@ -1625,7 +1625,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaChannels(self, request):
-        """列出 Grafana 所有告警通道
+        r"""列出 Grafana 所有告警通道
 
         :param request: Request instance for DescribeGrafanaChannels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaChannelsRequest`
@@ -1648,7 +1648,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaConfig(self, request):
-        """列出 Grafana 的设置，即 grafana.ini 文件内容
+        r"""列出 Grafana 的设置，即 grafana.ini 文件内容
 
         :param request: Request instance for DescribeGrafanaConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaConfigRequest`
@@ -1671,7 +1671,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaEnvironments(self, request):
-        """列出 Grafana 环境变量
+        r"""列出 Grafana 环境变量
 
         :param request: Request instance for DescribeGrafanaEnvironments.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaEnvironmentsRequest`
@@ -1694,7 +1694,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaInstances(self, request):
-        """列出用户所有的 Grafana 服务
+        r"""列出用户所有的 Grafana 服务
 
         :param request: Request instance for DescribeGrafanaInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaInstancesRequest`
@@ -1717,7 +1717,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaIntegrations(self, request):
-        """列出 Grafana 已安装的集成
+        r"""列出 Grafana 已安装的集成
 
         :param request: Request instance for DescribeGrafanaIntegrations.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaIntegrationsRequest`
@@ -1740,7 +1740,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaNotificationChannels(self, request):
-        """列出 Grafana 告警通道
+        r"""列出 Grafana 告警通道
 
         :param request: Request instance for DescribeGrafanaNotificationChannels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaNotificationChannelsRequest`
@@ -1763,7 +1763,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaWhiteList(self, request):
-        """列出 Grafana 白名单
+        r"""列出 Grafana 白名单
 
         :param request: Request instance for DescribeGrafanaWhiteList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaWhiteListRequest`
@@ -1786,7 +1786,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeInstalledPlugins(self, request):
-        """列出实例已安装的插件
+        r"""列出实例已安装的插件
 
         :param request: Request instance for DescribeInstalledPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeInstalledPluginsRequest`
@@ -1809,7 +1809,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeMonitorResourceInfo(self, request):
-        """获取资源消耗页概览
+        r"""获取资源消耗页概览
 
         :param request: Request instance for DescribeMonitorResourceInfo.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorResourceInfoRequest`
@@ -1832,7 +1832,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeMonitorTypes(self, request):
-        """腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
+        r"""腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 
         :param request: Request instance for DescribeMonitorTypes.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorTypesRequest`
@@ -1855,7 +1855,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePhoneAlarmFlowTotalCount(self, request):
-        """查询周期内电话流水总数
+        r"""查询周期内电话流水总数
 
         :param request: Request instance for DescribePhoneAlarmFlowTotalCount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePhoneAlarmFlowTotalCountRequest`
@@ -1878,7 +1878,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePluginOverviews(self, request):
-        """列出可安装的所有 Grafana 插件。
+        r"""列出可安装的所有 Grafana 插件。
 
         :param request: Request instance for DescribePluginOverviews.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePluginOverviewsRequest`
@@ -1901,7 +1901,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyConditionList(self, request):
-        """获取基础告警策略条件
+        r"""获取基础告警策略条件
 
         :param request: Request instance for DescribePolicyConditionList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListRequest`
@@ -1924,7 +1924,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyGroupInfo(self, request):
-        """获取基础策略组详情
+        r"""获取基础策略组详情
 
         :param request: Request instance for DescribePolicyGroupInfo.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoRequest`
@@ -1947,7 +1947,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyGroupList(self, request):
-        """获取基础策略告警组列表
+        r"""获取基础策略告警组列表
 
         :param request: Request instance for DescribePolicyGroupList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListRequest`
@@ -1970,7 +1970,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyObjectCount(self, request):
-        """查询策略组在每个地域下面绑定的对象数统计
+        r"""查询策略组在每个地域下面绑定的对象数统计
 
         :param request: Request instance for DescribePolicyObjectCount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyObjectCountRequest`
@@ -1993,7 +1993,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeProductEventList(self, request):
-        """分页获取产品事件的列表
+        r"""分页获取产品事件的列表
 
         :param request: Request instance for DescribeProductEventList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListRequest`
@@ -2016,7 +2016,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeProductList(self, request):
-        """查询腾讯云可观测平台云产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
+        r"""查询腾讯云可观测平台云产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 
         :param request: Request instance for DescribeProductList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductListRequest`
@@ -2039,7 +2039,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAgentInstances(self, request):
-        """获取关联目标集群的实例列表
+        r"""获取关联目标集群的实例列表
 
         :param request: Request instance for DescribePrometheusAgentInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentInstancesRequest`
@@ -2062,7 +2062,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAgents(self, request):
-        """列出 Prometheus CVM Agent
+        r"""列出 Prometheus CVM Agent
 
         :param request: Request instance for DescribePrometheusAgents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentsRequest`
@@ -2085,7 +2085,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAlertGroups(self, request):
-        """查询给定prometheus下的告警分组
+        r"""查询给定prometheus下的告警分组
 
         :param request: Request instance for DescribePrometheusAlertGroups.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertGroupsRequest`
@@ -2108,7 +2108,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAlertPolicy(self, request):
-        """获取2.0实例告警策略列表
+        r"""获取2.0实例告警策略列表
 
         :param request: Request instance for DescribePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertPolicyRequest`
@@ -2131,7 +2131,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusClusterAgents(self, request):
-        """获取TMP实例关联集群列表
+        r"""获取TMP实例关联集群列表
 
         :param request: Request instance for DescribePrometheusClusterAgents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusClusterAgentsRequest`
@@ -2154,7 +2154,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusConfig(self, request):
-        """拉取Prometheus配置
+        r"""拉取Prometheus配置
 
         :param request: Request instance for DescribePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusConfigRequest`
@@ -2177,7 +2177,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusGlobalConfig(self, request):
-        """获得实例级别抓取配置
+        r"""获得实例级别抓取配置
 
         :param request: Request instance for DescribePrometheusGlobalConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusGlobalConfigRequest`
@@ -2200,7 +2200,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusGlobalNotification(self, request):
-        """查询全局告警通知渠道
+        r"""查询全局告警通知渠道
 
         :param request: Request instance for DescribePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusGlobalNotificationRequest`
@@ -2223,7 +2223,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceDetail(self, request):
-        """获取TMP实例详情
+        r"""获取TMP实例详情
 
         :param request: Request instance for DescribePrometheusInstanceDetail.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceDetailRequest`
@@ -2246,7 +2246,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceInitStatus(self, request):
-        """获取2.0实例初始化任务状态
+        r"""获取2.0实例初始化任务状态
 
         :param request: Request instance for DescribePrometheusInstanceInitStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceInitStatusRequest`
@@ -2269,7 +2269,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceUsage(self, request):
-        """查询Prometheus按量实例用量
+        r"""查询Prometheus按量实例用量
 
         :param request: Request instance for DescribePrometheusInstanceUsage.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceUsageRequest`
@@ -2292,7 +2292,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstances(self, request):
-        """本接口 (DescribePrometheusInstances) 用于查询一个或多个实例的详细信息。
+        r"""本接口 (DescribePrometheusInstances) 用于查询一个或多个实例的详细信息。
         <ul>
         <li>可以根据实例ID、实例名称或者实例状态等信息来查询实例的详细信息</li>
         <li>如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例。</li>
@@ -2319,7 +2319,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstancesOverview(self, request):
-        """获取与 Prometheus 监控融合实例列表
+        r"""获取与 Prometheus 监控融合实例列表
 
         :param request: Request instance for DescribePrometheusInstancesOverview.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesOverviewRequest`
@@ -2342,7 +2342,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusIntegrationMetrics(self, request):
-        """获取prometheus集成指标
+        r"""获取prometheus集成指标
 
         :param request: Request instance for DescribePrometheusIntegrationMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusIntegrationMetricsRequest`
@@ -2365,7 +2365,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusRecordRules(self, request):
-        """获取聚合规则列表，包含关联集群内crd资源创建的record rule
+        r"""获取聚合规则列表，包含关联集群内crd资源创建的record rule
 
         :param request: Request instance for DescribePrometheusRecordRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRulesRequest`
@@ -2388,7 +2388,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusRegions(self, request):
-        """列出 Prometheus 服务所有可用的地域
+        r"""列出 Prometheus 服务所有可用的地域
 
         :param request: Request instance for DescribePrometheusRegions.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRegionsRequest`
@@ -2411,7 +2411,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusScrapeJobs(self, request):
-        """列出 Prometheus 抓取任务
+        r"""列出 Prometheus 抓取任务
 
         :param request: Request instance for DescribePrometheusScrapeJobs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeJobsRequest`
@@ -2434,7 +2434,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTargetsTMP(self, request):
-        """获取targets信息，在过滤条件中指定job名称时返回targets详情，否则仅返回数量
+        r"""获取targets信息，在过滤条件中指定job名称时返回targets详情，否则仅返回数量
 
         :param request: Request instance for DescribePrometheusTargetsTMP.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTargetsTMPRequest`
@@ -2457,7 +2457,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTemp(self, request):
-        """拉取模板列表，默认模板将总是在最前面
+        r"""拉取模板列表，默认模板将总是在最前面
 
         :param request: Request instance for DescribePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempRequest`
@@ -2480,7 +2480,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTempSync(self, request):
-        """获取模板关联实例信息，针对V2版本实例
+        r"""获取模板关联实例信息，针对V2版本实例
 
         :param request: Request instance for DescribePrometheusTempSync.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempSyncRequest`
@@ -2503,7 +2503,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusZones(self, request):
-        """列出 Prometheus 服务可用区。
+        r"""列出 Prometheus 服务可用区。
 
         :param request: Request instance for DescribePrometheusZones.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesRequest`
@@ -2526,7 +2526,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeRecordingRules(self, request):
-        """根据条件查询 Prometheus 预聚合规则
+        r"""根据条件查询 Prometheus 预聚合规则
 
         :param request: Request instance for DescribeRecordingRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesRequest`
@@ -2549,7 +2549,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeRemoteURLs(self, request):
-        """获取多写配置详情
+        r"""获取多写配置详情
 
         :param request: Request instance for DescribeRemoteURLs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRemoteURLsRequest`
@@ -2572,7 +2572,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeSSOAccount(self, request):
-        """列出当前grafana实例的所有授权账号
+        r"""列出当前grafana实例的所有授权账号
 
         :param request: Request instance for DescribeSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeSSOAccountRequest`
@@ -2595,7 +2595,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeServiceDiscovery(self, request):
-        """列出在腾讯云容器服务下创建的 Prometheus 服务发现。
+        r"""列出在腾讯云容器服务下创建的 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
         <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 
@@ -2620,7 +2620,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeStatisticData(self, request):
-        """根据维度条件查询监控数据
+        r"""根据维度条件查询监控数据
 
         :param request: Request instance for DescribeStatisticData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeStatisticDataRequest`
@@ -2643,7 +2643,7 @@ class MonitorClient(AbstractClient):
 
 
     def DestroyPrometheusInstance(self, request):
-        """彻底删除 Prometheus 实例相关数据，给定的实例必须先被 Terminate(该接口是异步接口，实例是否释放需要通过 DescribePrometheusInstances 接口返回的状态来判断)。
+        r"""彻底删除 Prometheus 实例相关数据，给定的实例必须先被 Terminate(该接口是异步接口，实例是否释放需要通过 DescribePrometheusInstances 接口返回的状态来判断)。
 
         :param request: Request instance for DestroyPrometheusInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DestroyPrometheusInstanceRequest`
@@ -2666,7 +2666,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableGrafanaInternet(self, request):
-        """设置 Grafana 公网访问
+        r"""设置 Grafana 公网访问
 
         :param request: Request instance for EnableGrafanaInternet.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableGrafanaInternetRequest`
@@ -2689,7 +2689,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableGrafanaSSO(self, request):
-        """设置 Grafana 单点登录，使用腾讯云账号
+        r"""设置 Grafana 单点登录，使用腾讯云账号
 
         :param request: Request instance for EnableGrafanaSSO.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableGrafanaSSORequest`
@@ -2712,7 +2712,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableSSOCamCheck(self, request):
-        """SSO单点登录时，设置是否cam鉴权
+        r"""SSO单点登录时，设置是否cam鉴权
 
         :param request: Request instance for EnableSSOCamCheck.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableSSOCamCheckRequest`
@@ -2735,7 +2735,7 @@ class MonitorClient(AbstractClient):
 
 
     def ExportPrometheusReadOnlyDynamicAPI(self, request):
-        """Prometheus 内部动态 api 代理，仅内部使用
+        r"""Prometheus 内部动态 api 代理，仅内部使用
 
         :param request: Request instance for ExportPrometheusReadOnlyDynamicAPI.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ExportPrometheusReadOnlyDynamicAPIRequest`
@@ -2758,7 +2758,7 @@ class MonitorClient(AbstractClient):
 
 
     def GetMonitorData(self, request):
-        """获取云产品的监控数据。此接口不适用于拉取容器服务监控数据，如需拉取容器服务监控数据，请使用[根据维度条件查询监控数据](https://cloud.tencent.com/document/product/248/51845)接口。
+        r"""获取云产品的监控数据。此接口不适用于拉取容器服务监控数据，如需拉取容器服务监控数据，请使用[根据维度条件查询监控数据](https://cloud.tencent.com/document/product/248/51845)接口。
         传入产品的命名空间、对象维度描述和监控指标即可获得相应的监控数据。
         接口调用限制：单请求最多可支持批量拉取10个实例的监控数据，单请求的数据点数限制为1440个。
         若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
@@ -2790,7 +2790,7 @@ class MonitorClient(AbstractClient):
 
 
     def GetPrometheusAgentManagementCommand(self, request):
-        """获取 Prometheus Agent 管理相关的命令行
+        r"""获取 Prometheus Agent 管理相关的命令行
 
         :param request: Request instance for GetPrometheusAgentManagementCommand.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetPrometheusAgentManagementCommandRequest`
@@ -2813,7 +2813,7 @@ class MonitorClient(AbstractClient):
 
 
     def GetTopNMonitorData(self, request):
-        """支持TopN查询，对于给定的监控指标和时间区间，按照指标大小按序返回不同维度组合及数据。
+        r"""支持TopN查询，对于给定的监控指标和时间区间，按照指标大小按序返回不同维度组合及数据。
 
         :param request: Request instance for GetTopNMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetTopNMonitorDataRequest`
@@ -2836,7 +2836,7 @@ class MonitorClient(AbstractClient):
 
 
     def InstallPlugins(self, request):
-        """安装 Grafana Plugin
+        r"""安装 Grafana Plugin
 
         :param request: Request instance for InstallPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.InstallPluginsRequest`
@@ -2859,7 +2859,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """编辑告警通知模板
+        r"""编辑告警通知模板
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmNoticeRequest`
@@ -2882,7 +2882,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyCondition(self, request):
-        """修改告警策略触发条件
+        r"""修改告警策略触发条件
 
         :param request: Request instance for ModifyAlarmPolicyCondition.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionRequest`
@@ -2905,7 +2905,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyInfo(self, request):
-        """告警2.0编辑告警策略基本信息，包括策略名、备注
+        r"""告警2.0编辑告警策略基本信息，包括策略名、备注
 
         :param request: Request instance for ModifyAlarmPolicyInfo.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyInfoRequest`
@@ -2928,7 +2928,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyNotice(self, request):
-        """修改告警策略绑定的告警通知模板
+        r"""修改告警策略绑定的告警通知模板
 
         :param request: Request instance for ModifyAlarmPolicyNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyNoticeRequest`
@@ -2951,7 +2951,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyStatus(self, request):
-        """启停告警策略
+        r"""启停告警策略
 
         :param request: Request instance for ModifyAlarmPolicyStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyStatusRequest`
@@ -2974,7 +2974,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyTasks(self, request):
-        """修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
+        r"""修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
 
         :param request: Request instance for ModifyAlarmPolicyTasks.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyTasksRequest`
@@ -2997,7 +2997,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmReceivers(self, request):
-        """修改告警接收人
+        r"""修改告警接收人
 
         :param request: Request instance for ModifyAlarmReceivers.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversRequest`
@@ -3020,7 +3020,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyGrafanaInstance(self, request):
-        """修改 Grafana 实例属性
+        r"""修改 Grafana 实例属性
 
         :param request: Request instance for ModifyGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyGrafanaInstanceRequest`
@@ -3043,7 +3043,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPolicyGroup(self, request):
-        """更新策略组
+        r"""更新策略组
 
         :param request: Request instance for ModifyPolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupRequest`
@@ -3066,7 +3066,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusAgentExternalLabels(self, request):
-        """修改被关联集群的external labels
+        r"""修改被关联集群的external labels
 
         :param request: Request instance for ModifyPrometheusAgentExternalLabels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusAgentExternalLabelsRequest`
@@ -3089,7 +3089,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusAlertPolicy(self, request):
-        """修改2.0实例告警策略
+        r"""修改2.0实例告警策略
 
         :param request: Request instance for ModifyPrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusAlertPolicyRequest`
@@ -3112,7 +3112,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusConfig(self, request):
-        """修改prometheus采集配置
+        r"""修改prometheus采集配置
 
         :param request: Request instance for ModifyPrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusConfigRequest`
@@ -3135,7 +3135,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusGlobalNotification(self, request):
-        """修改全局告警通知渠道
+        r"""修改全局告警通知渠道
 
         :param request: Request instance for ModifyPrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusGlobalNotificationRequest`
@@ -3158,7 +3158,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusInstanceAttributes(self, request):
-        """修改 Prometheus 实例相关属性
+        r"""修改 Prometheus 实例相关属性
 
         :param request: Request instance for ModifyPrometheusInstanceAttributes.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAttributesRequest`
@@ -3181,7 +3181,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusRecordRuleYaml(self, request):
-        """通过yaml的方式修改Prometheus预聚合规则
+        r"""通过yaml的方式修改Prometheus预聚合规则
 
         :param request: Request instance for ModifyPrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusRecordRuleYamlRequest`
@@ -3204,7 +3204,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusTemp(self, request):
-        """修改模板内容
+        r"""修改模板内容
 
         :param request: Request instance for ModifyPrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusTempRequest`
@@ -3227,7 +3227,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyRemoteURLs(self, request):
-        """修改多写配置
+        r"""修改多写配置
 
         :param request: Request instance for ModifyRemoteURLs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyRemoteURLsRequest`
@@ -3250,7 +3250,7 @@ class MonitorClient(AbstractClient):
 
 
     def ResumeGrafanaInstance(self, request):
-        """本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
+        r"""本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 
         :param request: Request instance for ResumeGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ResumeGrafanaInstanceRequest`
@@ -3273,7 +3273,7 @@ class MonitorClient(AbstractClient):
 
 
     def RunPrometheusInstance(self, request):
-        """初始化TMP实例，开启集成中心时调用
+        r"""初始化TMP实例，开启集成中心时调用
 
         :param request: Request instance for RunPrometheusInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.RunPrometheusInstanceRequest`
@@ -3296,7 +3296,7 @@ class MonitorClient(AbstractClient):
 
 
     def SetDefaultAlarmPolicy(self, request):
-        """设置一个策略为该告警策略类型、该项目的默认告警策略。
+        r"""设置一个策略为该告警策略类型、该项目的默认告警策略。
         同一项目下相同的告警策略类型，就会被设置为非默认。
 
         :param request: Request instance for SetDefaultAlarmPolicy.
@@ -3320,7 +3320,7 @@ class MonitorClient(AbstractClient):
 
 
     def SyncPrometheusTemp(self, request):
-        """同步模板到实例或者集群，针对V2版本实例
+        r"""同步模板到实例或者集群，针对V2版本实例
 
         :param request: Request instance for SyncPrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.SyncPrometheusTempRequest`
@@ -3343,7 +3343,7 @@ class MonitorClient(AbstractClient):
 
 
     def TerminatePrometheusInstances(self, request):
-        """销毁按量 Prometheus 实例
+        r"""销毁按量 Prometheus 实例
 
         :param request: Request instance for TerminatePrometheusInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.TerminatePrometheusInstancesRequest`
@@ -3366,7 +3366,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnBindingAllPolicyObject(self, request):
-        """删除全部的关联对象
+        r"""删除全部的关联对象
 
         :param request: Request instance for UnBindingAllPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectRequest`
@@ -3389,7 +3389,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnBindingPolicyObject(self, request):
-        """删除策略的关联对象
+        r"""删除策略的关联对象
 
         :param request: Request instance for UnBindingPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectRequest`
@@ -3412,7 +3412,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnbindPrometheusManagedGrafana(self, request):
-        """解除实例绑定的 Grafana 可视化实例
+        r"""解除实例绑定的 Grafana 可视化实例
 
         :param request: Request instance for UnbindPrometheusManagedGrafana.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnbindPrometheusManagedGrafanaRequest`
@@ -3435,7 +3435,7 @@ class MonitorClient(AbstractClient):
 
 
     def UninstallGrafanaDashboard(self, request):
-        """删除 Grafana Dashboard
+        r"""删除 Grafana Dashboard
 
         :param request: Request instance for UninstallGrafanaDashboard.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaDashboardRequest`
@@ -3458,7 +3458,7 @@ class MonitorClient(AbstractClient):
 
 
     def UninstallGrafanaPlugins(self, request):
-        """删除已安装的插件
+        r"""删除已安装的插件
 
         :param request: Request instance for UninstallGrafanaPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaPluginsRequest`
@@ -3481,7 +3481,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateAlertRule(self, request):
-        """更新 Prometheus 的告警规则。
+        r"""更新 Prometheus 的告警规则。
 
         请注意，**告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description**，请参考 [Prometheus Rule更多配置请参考](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)。
 
@@ -3506,7 +3506,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateAlertRuleState(self, request):
-        """更新 Prometheus 报警策略状态
+        r"""更新 Prometheus 报警策略状态
 
         :param request: Request instance for UpdateAlertRuleState.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateRequest`
@@ -3529,7 +3529,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateDNSConfig(self, request):
-        """更新 Grafana 的 DNS 配置
+        r"""更新 Grafana 的 DNS 配置
 
         :param request: Request instance for UpdateDNSConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateDNSConfigRequest`
@@ -3552,7 +3552,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateExporterIntegration(self, request):
-        """更新 exporter 集成配置
+        r"""更新 exporter 集成配置
 
         :param request: Request instance for UpdateExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateExporterIntegrationRequest`
@@ -3575,7 +3575,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaConfig(self, request):
-        """更新 Grafana 配置
+        r"""更新 Grafana 配置
 
         :param request: Request instance for UpdateGrafanaConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaConfigRequest`
@@ -3598,7 +3598,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaEnvironments(self, request):
-        """更新 Grafana 环境变量
+        r"""更新 Grafana 环境变量
 
         :param request: Request instance for UpdateGrafanaEnvironments.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaEnvironmentsRequest`
@@ -3621,7 +3621,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaIntegration(self, request):
-        """更新 Grafana 集成配置
+        r"""更新 Grafana 集成配置
 
         :param request: Request instance for UpdateGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaIntegrationRequest`
@@ -3644,7 +3644,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaNotificationChannel(self, request):
-        """更新 Grafana 告警通道
+        r"""更新 Grafana 告警通道
 
         :param request: Request instance for UpdateGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaNotificationChannelRequest`
@@ -3667,7 +3667,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaWhiteList(self, request):
-        """更新 Grafana 白名单
+        r"""更新 Grafana 白名单
 
         :param request: Request instance for UpdateGrafanaWhiteList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaWhiteListRequest`
@@ -3690,7 +3690,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusAgentStatus(self, request):
-        """更新 Prometheus CVM Agent 状态
+        r"""更新 Prometheus CVM Agent 状态
 
         :param request: Request instance for UpdatePrometheusAgentStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAgentStatusRequest`
@@ -3713,7 +3713,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusAlertGroup(self, request):
-        """更新Prometheus告警规则分组
+        r"""更新Prometheus告警规则分组
 
         :param request: Request instance for UpdatePrometheusAlertGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupRequest`
@@ -3736,7 +3736,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusAlertGroupState(self, request):
-        """批量更新告警分组状态，将分组中全部告警规则更新为目标状态
+        r"""批量更新告警分组状态，将分组中全部告警规则更新为目标状态
 
         :param request: Request instance for UpdatePrometheusAlertGroupState.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupStateRequest`
@@ -3759,7 +3759,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusScrapeJob(self, request):
-        """更新 Prometheus Agent 抓取任务
+        r"""更新 Prometheus Agent 抓取任务
 
         :param request: Request instance for UpdatePrometheusScrapeJob.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusScrapeJobRequest`
@@ -3782,7 +3782,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateRecordingRule(self, request):
-        """更新 Prometheus 的预聚合规则
+        r"""更新 Prometheus 的预聚合规则
 
         :param request: Request instance for UpdateRecordingRule.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleRequest`
@@ -3805,7 +3805,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateSSOAccount(self, request):
-        """更新已授权账号的备注、权限信息，会直接覆盖原有的信息，不传则不会更新。
+        r"""更新已授权账号的备注、权限信息，会直接覆盖原有的信息，不传则不会更新。
 
         :param request: Request instance for UpdateSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateSSOAccountRequest`
@@ -3828,7 +3828,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateServiceDiscovery(self, request):
-        """在腾讯云容器服务下更新 Prometheus 服务发现。
+        r"""在腾讯云容器服务下更新 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
         <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 
@@ -3853,7 +3853,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpgradeGrafanaDashboard(self, request):
-        """升级 Grafana Dashboard
+        r"""升级 Grafana Dashboard
 
         :param request: Request instance for UpgradeGrafanaDashboard.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaDashboardRequest`
@@ -3876,7 +3876,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpgradeGrafanaInstance(self, request):
-        """升级 Grafana 实例
+        r"""升级 Grafana 实例
 
         :param request: Request instance for UpgradeGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaInstanceRequest`

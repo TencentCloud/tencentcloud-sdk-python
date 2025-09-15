@@ -27,7 +27,7 @@ class CaClient(AbstractClient):
 
 
     def CreateVerifyReport(self, request):
-        """创建签名验证报告任务，此接口为异步盖章接口，盖章时效24小时。
+        r"""创建签名验证报告任务，此接口为异步盖章接口，盖章时效24小时。
 
         :param request: Request instance for CreateVerifyReport.
         :type request: :class:`tencentcloud.ca.v20230228.models.CreateVerifyReportRequest`
@@ -50,7 +50,7 @@ class CaClient(AbstractClient):
 
 
     def DescribeVerifyReport(self, request):
-        """下载验签报告url，url有效期默认12小时
+        r"""下载验签报告url，url有效期默认12小时
 
         :param request: Request instance for DescribeVerifyReport.
         :type request: :class:`tencentcloud.ca.v20230228.models.DescribeVerifyReportRequest`
@@ -73,7 +73,7 @@ class CaClient(AbstractClient):
 
 
     def UploadFile(self, request):
-        """文件上传接口
+        r"""文件上传接口
 
         :param request: Request instance for UploadFile.
         :type request: :class:`tencentcloud.ca.v20230228.models.UploadFileRequest`

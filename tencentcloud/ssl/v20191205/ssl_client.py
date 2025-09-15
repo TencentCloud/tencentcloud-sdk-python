@@ -27,7 +27,7 @@ class SslClient(AbstractClient):
 
 
     def ApplyCertificate(self, request):
-        """本接口（ApplyCertificate）用于免费证书申请。
+        r"""本接口（ApplyCertificate）用于免费证书申请。
 
         :param request: Request instance for ApplyCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ApplyCertificateRequest`
@@ -50,7 +50,7 @@ class SslClient(AbstractClient):
 
 
     def CancelAuditCertificate(self, request):
-        """取消证书审核
+        r"""取消证书审核
 
         :param request: Request instance for CancelAuditCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateRequest`
@@ -73,7 +73,7 @@ class SslClient(AbstractClient):
 
 
     def CancelCertificateOrder(self, request):
-        """取消证书订单。
+        r"""取消证书订单。
 
         :param request: Request instance for CancelCertificateOrder.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CancelCertificateOrderRequest`
@@ -96,7 +96,7 @@ class SslClient(AbstractClient):
 
 
     def CertificateInfoSubmit(self, request):
-        """付费提交证书资料
+        r"""付费提交证书资料
 
         :param request: Request instance for CertificateInfoSubmit.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CertificateInfoSubmitRequest`
@@ -119,7 +119,7 @@ class SslClient(AbstractClient):
 
 
     def CertificateOrderSubmit(self, request):
-        """提交付费证书订单
+        r"""提交付费证书订单
 
         :param request: Request instance for CertificateOrderSubmit.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CertificateOrderSubmitRequest`
@@ -142,7 +142,7 @@ class SslClient(AbstractClient):
 
 
     def CheckCertificateChain(self, request):
-        """本接口（CheckCertificateChain）用于检查证书链是否完整。
+        r"""本接口（CheckCertificateChain）用于检查证书链是否完整。
 
         :param request: Request instance for CheckCertificateChain.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateChainRequest`
@@ -165,7 +165,7 @@ class SslClient(AbstractClient):
 
 
     def CheckCertificateDomainVerification(self, request):
-        """检查证书域名验证结果
+        r"""检查证书域名验证结果
 
         :param request: Request instance for CheckCertificateDomainVerification.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationRequest`
@@ -188,7 +188,7 @@ class SslClient(AbstractClient):
 
 
     def CheckCertificateExist(self, request):
-        """根据证书内容检测当前账号下是否存在一致的证书， 存在则返回证书ID， 不存在则返回空
+        r"""根据证书内容检测当前账号下是否存在一致的证书， 存在则返回证书ID， 不存在则返回空
 
         :param request: Request instance for CheckCertificateExist.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateExistRequest`
@@ -211,7 +211,7 @@ class SslClient(AbstractClient):
 
 
     def CommitCertificateInformation(self, request):
-        """付费证书提交订单； 本接口不维护新功能， 可使用新接口进行提交， [CertificateOrderSubmit](https://cloud.tencent.com/document/product/400/116032)
+        r"""付费证书提交订单； 本接口不维护新功能， 可使用新接口进行提交， [CertificateOrderSubmit](https://cloud.tencent.com/document/product/400/116032)
 
         :param request: Request instance for CommitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CommitCertificateInformationRequest`
@@ -234,7 +234,7 @@ class SslClient(AbstractClient):
 
 
     def CompleteCertificate(self, request):
-        """本接口（CompleteCertificate）用于主动触发证书验证。DNSPod和Wotrus品牌的证书不支持使用此接口。
+        r"""本接口（CompleteCertificate）用于主动触发证书验证。DNSPod和Wotrus品牌的证书不支持使用此接口。
 
         :param request: Request instance for CompleteCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CompleteCertificateRequest`
@@ -257,7 +257,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCertificate(self, request):
-        """本接口（CreateCertificate）用于创建付费证书。
+        r"""本接口（CreateCertificate）用于创建付费证书。
 
         :param request: Request instance for CreateCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateRequest`
@@ -280,7 +280,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCertificateBindResourceSyncTask(self, request):
-        """创建证书绑定关联云资源异步任务， 该接口用于查询证书关联云资源。 若证书ID已存在查询云资源任务，则结果返回该任务ID。关联云资源类型，支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos。查询关联云资源结果使用DescribeCertificateBindResourceTaskResult接口
+        r"""创建证书绑定关联云资源异步任务， 该接口用于查询证书关联云资源。 若证书ID已存在查询云资源任务，则结果返回该任务ID。关联云资源类型，支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos。查询关联云资源结果使用DescribeCertificateBindResourceTaskResult接口
 
         :param request: Request instance for CreateCertificateBindResourceSyncTask.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskRequest`
@@ -303,7 +303,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCertificateByPackage(self, request):
-        """使用权益点创建证书
+        r"""使用权益点创建证书
 
         :param request: Request instance for CreateCertificateByPackage.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateByPackageRequest`
@@ -326,7 +326,7 @@ class SslClient(AbstractClient):
 
 
     def DeleteCertificate(self, request):
-        """本接口（DeleteCertificate）用于删除证书。
+        r"""本接口（DeleteCertificate）用于删除证书。
 
         :param request: Request instance for DeleteCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificateRequest`
@@ -349,7 +349,7 @@ class SslClient(AbstractClient):
 
 
     def DeleteCertificates(self, request):
-        """批量删除证书，删除证书前支持查询证书是否关联了腾讯云云资源 （需自定义配置参数，参数名称：IsSync）
+        r"""批量删除证书，删除证书前支持查询证书是否关联了腾讯云云资源 （需自定义配置参数，参数名称：IsSync）
 
         :param request: Request instance for DeleteCertificates.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificatesRequest`
@@ -372,7 +372,7 @@ class SslClient(AbstractClient):
 
 
     def DeleteManager(self, request):
-        """删除管理人
+        r"""删除管理人
 
         :param request: Request instance for DeleteManager.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteManagerRequest`
@@ -395,7 +395,7 @@ class SslClient(AbstractClient):
 
 
     def DeployCertificateInstance(self, request):
-        """证书部署到云资源实例列表，本接口只会创建部署任务， 部署任务结果可通过DescribeHostDeployRecordDetail查询。本接口创建部署任务时，会校验证书和部署实例的匹配关系，存在不匹配的则会创建部署任务失败。以下为匹配关系校验规则：
+        r"""证书部署到云资源实例列表，本接口只会创建部署任务， 部署任务结果可通过DescribeHostDeployRecordDetail查询。本接口创建部署任务时，会校验证书和部署实例的匹配关系，存在不匹配的则会创建部署任务失败。以下为匹配关系校验规则：
         - 若待部署的证书和传入实例域名的当前绑定的证书一致， 则不会创建成功
         - 若待部署的证书和传入域名不匹配， 则不会创建成功
         - 若部署clb实例时， 7层监听器下无规则，则不会创建成功
@@ -425,7 +425,7 @@ class SslClient(AbstractClient):
 
 
     def DeployCertificateRecordRetry(self, request):
-        """云资源部署重试部署记录
+        r"""云资源部署重试部署记录
 
         :param request: Request instance for DeployCertificateRecordRetry.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRetryRequest`
@@ -448,7 +448,7 @@ class SslClient(AbstractClient):
 
 
     def DeployCertificateRecordRollback(self, request):
-        """云资源部署成功记录回滚， 部署失败的记录不会回滚； 接口调用成功后， 会创建一个用于回滚的部署任务， 并返回该任务的ID
+        r"""云资源部署成功记录回滚， 部署失败的记录不会回滚； 接口调用成功后， 会创建一个用于回滚的部署任务， 并返回该任务的ID
 
         :param request: Request instance for DeployCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRollbackRequest`
@@ -471,7 +471,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificate(self, request):
-        """本接口（DescribeCertificate）用于获取证书信息。
+        r"""本接口（DescribeCertificate）用于获取证书信息。
 
         :param request: Request instance for DescribeCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateRequest`
@@ -494,7 +494,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskDetail(self, request):
-        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
+        r"""查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
 
         :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`
@@ -517,7 +517,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskResult(self, request):
-        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
+        r"""查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
 
         :param request: Request instance for DescribeCertificateBindResourceTaskResult.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultRequest`
@@ -540,7 +540,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateDetail(self, request):
-        """获取证书详情。
+        r"""获取证书详情。
 
         :param request: Request instance for DescribeCertificateDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateDetailRequest`
@@ -563,7 +563,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateOperateLogs(self, request):
-        """获取用户账号下有关证书的操作日志。
+        r"""获取用户账号下有关证书的操作日志。
 
         :param request: Request instance for DescribeCertificateOperateLogs.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateOperateLogsRequest`
@@ -586,7 +586,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificates(self, request):
-        """本接口（DescribeCertificates）用于获取证书列表。
+        r"""本接口（DescribeCertificates）用于获取证书列表。
 
         :param request: Request instance for DescribeCertificates.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificatesRequest`
@@ -609,7 +609,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCompanies(self, request):
-        """查询公司列表
+        r"""查询公司列表
 
         :param request: Request instance for DescribeCompanies.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCompaniesRequest`
@@ -632,7 +632,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeDeleteCertificatesTaskResult(self, request):
-        """查询批量删除任务结果
+        r"""查询批量删除任务结果
 
         :param request: Request instance for DescribeDeleteCertificatesTaskResult.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDeleteCertificatesTaskResultRequest`
@@ -655,7 +655,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeDeployedResources(self, request):
-        """证书查询关联资源， 最新查询接口请使用CreateCertificateBindResourceSyncTask， 可以查询更多支持的云资源
+        r"""证书查询关联资源， 最新查询接口请使用CreateCertificateBindResourceSyncTask， 可以查询更多支持的云资源
 
         :param request: Request instance for DescribeDeployedResources.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDeployedResourcesRequest`
@@ -678,7 +678,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeDownloadCertificateUrl(self, request):
-        """获取下载证书链接
+        r"""获取下载证书链接
 
         :param request: Request instance for DescribeDownloadCertificateUrl.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDownloadCertificateUrlRequest`
@@ -701,7 +701,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostApiGatewayInstanceList(self, request):
-        """查询证书apiGateway云资源部署实例列表
+        r"""查询证书apiGateway云资源部署实例列表
 
         :param request: Request instance for DescribeHostApiGatewayInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostApiGatewayInstanceListRequest`
@@ -724,7 +724,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostCdnInstanceList(self, request):
-        """查询证书cdn云资源部署实例列表
+        r"""查询证书cdn云资源部署实例列表
 
         :param request: Request instance for DescribeHostCdnInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCdnInstanceListRequest`
@@ -747,7 +747,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostClbInstanceList(self, request):
-        """查询证书clb云资源部署实例列表
+        r"""查询证书clb云资源部署实例列表
 
         :param request: Request instance for DescribeHostClbInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostClbInstanceListRequest`
@@ -770,7 +770,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostCosInstanceList(self, request):
-        """查询证书cos云资源部署实例列表
+        r"""查询证书cos云资源部署实例列表
 
         :param request: Request instance for DescribeHostCosInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCosInstanceListRequest`
@@ -793,7 +793,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostDdosInstanceList(self, request):
-        """查询证书ddos云资源部署实例列表
+        r"""查询证书ddos云资源部署实例列表
 
         :param request: Request instance for DescribeHostDdosInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDdosInstanceListRequest`
@@ -816,7 +816,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostDeployRecord(self, request):
-        """查询证书云资源部署记录列表
+        r"""查询证书云资源部署记录列表
 
         :param request: Request instance for DescribeHostDeployRecord.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordRequest`
@@ -839,7 +839,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostDeployRecordDetail(self, request):
-        """查询证书云资源部署记录详情列表
+        r"""查询证书云资源部署记录详情列表
 
         :param request: Request instance for DescribeHostDeployRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordDetailRequest`
@@ -862,7 +862,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostLighthouseInstanceList(self, request):
-        """查询证书Lighthouse云资源部署实例列表
+        r"""查询证书Lighthouse云资源部署实例列表
 
         :param request: Request instance for DescribeHostLighthouseInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLighthouseInstanceListRequest`
@@ -885,7 +885,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostLiveInstanceList(self, request):
-        """查询证书live云资源部署实例列表
+        r"""查询证书live云资源部署实例列表
 
         :param request: Request instance for DescribeHostLiveInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLiveInstanceListRequest`
@@ -908,7 +908,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostTeoInstanceList(self, request):
-        """查询证书EdgeOne云资源部署实例列表
+        r"""查询证书EdgeOne云资源部署实例列表
 
         :param request: Request instance for DescribeHostTeoInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListRequest`
@@ -931,7 +931,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostTkeInstanceList(self, request):
-        """查询证书tke云资源部署实例列表
+        r"""查询证书tke云资源部署实例列表
 
         :param request: Request instance for DescribeHostTkeInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTkeInstanceListRequest`
@@ -954,7 +954,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUpdateRecord(self, request):
-        """查询证书云资源更新记录列表
+        r"""查询证书云资源更新记录列表
 
         :param request: Request instance for DescribeHostUpdateRecord.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordRequest`
@@ -977,7 +977,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUpdateRecordDetail(self, request):
-        """查询证书云资源更新记录详情
+        r"""查询证书云资源更新记录详情
 
         :param request: Request instance for DescribeHostUpdateRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailRequest`
@@ -1000,7 +1000,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUploadUpdateRecord(self, request):
-        """查询证书云资源更新（证书ID不变）记录列表
+        r"""查询证书云资源更新（证书ID不变）记录列表
 
         :param request: Request instance for DescribeHostUploadUpdateRecord.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordRequest`
@@ -1023,7 +1023,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUploadUpdateRecordDetail(self, request):
-        """查询证书更新（证书ID不变）部署记录详情
+        r"""查询证书更新（证书ID不变）部署记录详情
 
         :param request: Request instance for DescribeHostUploadUpdateRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordDetailRequest`
@@ -1046,7 +1046,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostVodInstanceList(self, request):
-        """查询证书Vod云资源部署实例列表
+        r"""查询证书Vod云资源部署实例列表
 
         :param request: Request instance for DescribeHostVodInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostVodInstanceListRequest`
@@ -1069,7 +1069,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostWafInstanceList(self, request):
-        """查询证书waf云资源部署实例列表
+        r"""查询证书waf云资源部署实例列表
 
         :param request: Request instance for DescribeHostWafInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostWafInstanceListRequest`
@@ -1092,7 +1092,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeManagerDetail(self, request):
-        """查询管理人详情
+        r"""查询管理人详情
 
         :param request: Request instance for DescribeManagerDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeManagerDetailRequest`
@@ -1115,7 +1115,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeManagers(self, request):
-        """查询管理人列表
+        r"""查询管理人列表
 
         :param request: Request instance for DescribeManagers.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeManagersRequest`
@@ -1138,7 +1138,7 @@ class SslClient(AbstractClient):
 
 
     def DescribePackages(self, request):
-        """获得权益包列表
+        r"""获得权益包列表
 
         :param request: Request instance for DescribePackages.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribePackagesRequest`
@@ -1161,7 +1161,7 @@ class SslClient(AbstractClient):
 
 
     def DownloadCertificate(self, request):
-        """本接口（DownloadCertificate）用于下载证书。
+        r"""本接口（DownloadCertificate）用于下载证书。
 
         :param request: Request instance for DownloadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DownloadCertificateRequest`
@@ -1184,7 +1184,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateAlias(self, request):
-        """用户传入证书id和备注来修改证书备注。
+        r"""用户传入证书id和备注来修改证书备注。
 
         :param request: Request instance for ModifyCertificateAlias.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateAliasRequest`
@@ -1207,7 +1207,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateProject(self, request):
-        """批量修改证书所属项目。
+        r"""批量修改证书所属项目。
 
         :param request: Request instance for ModifyCertificateProject.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateProjectRequest`
@@ -1230,7 +1230,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateResubmit(self, request):
-        """针对审核失败或审核取消的付费证书，重新发起审核
+        r"""针对审核失败或审核取消的付费证书，重新发起审核
 
         :param request: Request instance for ModifyCertificateResubmit.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitRequest`
@@ -1253,7 +1253,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificatesExpiringNotificationSwitch(self, request):
-        """修改忽略证书到期通知。打开或关闭证书到期通知。
+        r"""修改忽略证书到期通知。打开或关闭证书到期通知。
 
         :param request: Request instance for ModifyCertificatesExpiringNotificationSwitch.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificatesExpiringNotificationSwitchRequest`
@@ -1276,7 +1276,7 @@ class SslClient(AbstractClient):
 
 
     def ReplaceCertificate(self, request):
-        """本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发，并且目前仅支持1次重颁发。
+        r"""本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发，并且目前仅支持1次重颁发。
 
         :param request: Request instance for ReplaceCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ReplaceCertificateRequest`
@@ -1299,7 +1299,7 @@ class SslClient(AbstractClient):
 
 
     def RevokeCertificate(self, request):
-        """本接口（RevokeCertificate）用于吊销证书。
+        r"""本接口（RevokeCertificate）用于吊销证书。
 
         :param request: Request instance for RevokeCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.RevokeCertificateRequest`
@@ -1322,7 +1322,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitAuditManager(self, request):
-        """重新提交审核管理人
+        r"""重新提交审核管理人
 
         :param request: Request instance for SubmitAuditManager.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitAuditManagerRequest`
@@ -1345,7 +1345,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitCertificateInformation(self, request):
-        """付费证书提交资料； 本接口不维护新功能， 可使用新接口进行资料提交， [CertificateInfoSubmit](https://cloud.tencent.com/document/product/400/116033)
+        r"""付费证书提交资料； 本接口不维护新功能， 可使用新接口进行资料提交， [CertificateInfoSubmit](https://cloud.tencent.com/document/product/400/116033)
 
         :param request: Request instance for SubmitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitCertificateInformationRequest`
@@ -1368,7 +1368,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateInstance(self, request):
-        """一键更新旧证书资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""一键更新旧证书资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
 
         :param request: Request instance for UpdateCertificateInstance.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceRequest`
@@ -1391,7 +1391,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateRecordRetry(self, request):
-        """云资源更新重试部署记录
+        r"""云资源更新重试部署记录
 
         :param request: Request instance for UpdateCertificateRecordRetry.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryRequest`
@@ -1414,7 +1414,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateRecordRollback(self, request):
-        """云资源更新成功记录回滚， 只对更新已成功的记录回滚
+        r"""云资源更新成功记录回滚， 只对更新已成功的记录回滚
 
         :param request: Request instance for UpdateCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackRequest`
@@ -1437,7 +1437,7 @@ class SslClient(AbstractClient):
 
 
     def UploadCertificate(self, request):
-        """本接口（UploadCertificate）用于上传证书。
+        r"""本接口（UploadCertificate）用于上传证书。
 
         :param request: Request instance for UploadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadCertificateRequest`
@@ -1460,7 +1460,7 @@ class SslClient(AbstractClient):
 
 
     def UploadConfirmLetter(self, request):
-        """本接口（UploadConfirmLetter）上传证书确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书确认函
+        r"""本接口（UploadConfirmLetter）上传证书确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书确认函
 
         :param request: Request instance for UploadConfirmLetter.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterRequest`
@@ -1483,7 +1483,7 @@ class SslClient(AbstractClient):
 
 
     def UploadRevokeLetter(self, request):
-        """本接口（UploadRevokeLetter）上传证书吊销确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书吊销确认函
+        r"""本接口（UploadRevokeLetter）上传证书吊销确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书吊销确认函
 
         :param request: Request instance for UploadRevokeLetter.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadRevokeLetterRequest`
@@ -1506,7 +1506,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateInstance(self, request):
-        """更新证书内容（证书ID不变）并更新关联的云资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""更新证书内容（证书ID不变）并更新关联的云资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
 
         :param request: Request instance for UploadUpdateCertificateInstance.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateInstanceRequest`
@@ -1529,7 +1529,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateRecordRetry(self, request):
-        """云资源更新（证书ID不变）重试部署记录
+        r"""云资源更新（证书ID不变）重试部署记录
 
         :param request: Request instance for UploadUpdateCertificateRecordRetry.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRetryRequest`
@@ -1552,7 +1552,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateRecordRollback(self, request):
-        """云资源更新成功（证书ID不变）记录回滚， 会对全量任务进行回滚
+        r"""云资源更新成功（证书ID不变）记录回滚， 会对全量任务进行回滚
 
         :param request: Request instance for UploadUpdateCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRollbackRequest`
@@ -1575,7 +1575,7 @@ class SslClient(AbstractClient):
 
 
     def VerifyManager(self, request):
-        """重新核验管理人
+        r"""重新核验管理人
 
         :param request: Request instance for VerifyManager.
         :type request: :class:`tencentcloud.ssl.v20191205.models.VerifyManagerRequest`

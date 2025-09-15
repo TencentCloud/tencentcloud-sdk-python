@@ -27,7 +27,7 @@ class MemcachedClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """获取Cmem实例列表
+        r"""获取Cmem实例列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.memcached.v20190318.models.DescribeInstancesRequest`

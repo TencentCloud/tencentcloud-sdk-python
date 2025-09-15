@@ -27,7 +27,7 @@ class VdbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+        r"""本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.vdb.v20230616.models.AssociateSecurityGroupsRequest`
@@ -50,7 +50,7 @@ class VdbClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """本接口（CreateInstance）用于创建向量数据库实例。
+        r"""本接口（CreateInstance）用于创建向量数据库实例。
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.vdb.v20230616.models.CreateInstanceRequest`
@@ -73,7 +73,7 @@ class VdbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+        r"""本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeDBSecurityGroupsRequest`
@@ -96,7 +96,7 @@ class VdbClient(AbstractClient):
 
 
     def DescribeInstanceMaintenanceWindow(self, request):
-        """本接口（DescribeInstanceMaintenanceWindow）用于查看实例维护时间窗。
+        r"""本接口（DescribeInstanceMaintenanceWindow）用于查看实例维护时间窗。
 
         :param request: Request instance for DescribeInstanceMaintenanceWindow.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceMaintenanceWindowRequest`
@@ -119,7 +119,7 @@ class VdbClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """查询实例pod列表
+        r"""查询实例pod列表
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceNodesRequest`
@@ -142,7 +142,7 @@ class VdbClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询实例列表
+        r"""查询实例列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstancesRequest`
@@ -165,7 +165,7 @@ class VdbClient(AbstractClient):
 
 
     def DestroyInstances(self, request):
-        """本接口（DestroyInstances）用于销毁实例。
+        r"""本接口（DestroyInstances）用于销毁实例。
 
         :param request: Request instance for DestroyInstances.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DestroyInstancesRequest`
@@ -188,7 +188,7 @@ class VdbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+        r"""本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DisassociateSecurityGroupsRequest`
@@ -211,7 +211,7 @@ class VdbClient(AbstractClient):
 
 
     def IsolateInstance(self, request):
-        """本接口（IsolateInstance）用于隔离实例于回收站，在回收站保护时长内可恢复实例。
+        r"""本接口（IsolateInstance）用于隔离实例于回收站，在回收站保护时长内可恢复实例。
 
         :param request: Request instance for IsolateInstance.
         :type request: :class:`tencentcloud.vdb.v20230616.models.IsolateInstanceRequest`
@@ -234,7 +234,7 @@ class VdbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+        r"""本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.vdb.v20230616.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -257,7 +257,7 @@ class VdbClient(AbstractClient):
 
 
     def ModifyInstanceMaintenanceWindow(self, request):
-        """本接口（ModifyInstanceMaintenanceWindow）用于修改实例维护时间窗范围。
+        r"""本接口（ModifyInstanceMaintenanceWindow）用于修改实例维护时间窗范围。
 
         :param request: Request instance for ModifyInstanceMaintenanceWindow.
         :type request: :class:`tencentcloud.vdb.v20230616.models.ModifyInstanceMaintenanceWindowRequest`
@@ -280,7 +280,7 @@ class VdbClient(AbstractClient):
 
 
     def RecoverInstance(self, request):
-        """本接口（RecoverInstance）用于恢复在回收站隔离的实例。
+        r"""本接口（RecoverInstance）用于恢复在回收站隔离的实例。
 
         :param request: Request instance for RecoverInstance.
         :type request: :class:`tencentcloud.vdb.v20230616.models.RecoverInstanceRequest`
@@ -303,7 +303,7 @@ class VdbClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """本接口（ScaleOutInstance）用于水平扩容节点数量。
+        r"""本接口（ScaleOutInstance）用于水平扩容节点数量。
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.vdb.v20230616.models.ScaleOutInstanceRequest`
@@ -326,7 +326,7 @@ class VdbClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """本接口（ScaleUpInstance）用于升级节点配置规格。
+        r"""本接口（ScaleUpInstance）用于升级节点配置规格。
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.vdb.v20230616.models.ScaleUpInstanceRequest`

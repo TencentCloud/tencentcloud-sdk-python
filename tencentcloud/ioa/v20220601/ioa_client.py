@@ -27,7 +27,7 @@ class IoaClient(AbstractClient):
 
 
     def CreateDLPFileDetectionTask(self, request):
-        """提交送检任务
+        r"""提交送检任务
 
         :param request: Request instance for CreateDLPFileDetectionTask.
         :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskRequest`
@@ -50,7 +50,7 @@ class IoaClient(AbstractClient):
 
 
     def CreateDeviceTask(self, request):
-        """创建获取终端进程网络服务信息任务，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+        r"""创建获取终端进程网络服务信息任务，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
 
         :param request: Request instance for CreateDeviceTask.
         :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceTaskRequest`
@@ -73,7 +73,7 @@ class IoaClient(AbstractClient):
 
 
     def CreateDeviceVirtualGroup(self, request):
-        """创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
+        r"""创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
 
         :param request: Request instance for CreateDeviceVirtualGroup.
         :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRequest`
@@ -96,7 +96,7 @@ class IoaClient(AbstractClient):
 
 
     def CreatePrivilegeCode(self, request):
-        """生成特权码，私有化调用path为：capi/Assets/Device/CreatePrivilegeCode，生成的特权码、卸载码，仅对该设备当天有效
+        r"""生成特权码，私有化调用path为：capi/Assets/Device/CreatePrivilegeCode，生成的特权码、卸载码，仅对该设备当天有效
 
         :param request: Request instance for CreatePrivilegeCode.
         :type request: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeRequest`
@@ -119,7 +119,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeAccountGroups(self, request):
-        """以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
+        r"""以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 
         :param request: Request instance for DescribeAccountGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsRequest`
@@ -142,7 +142,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeAggrSoftCategorySoftList(self, request):
-        """聚合的分类软件列表
+        r"""聚合的分类软件列表
 
         :param request: Request instance for DescribeAggrSoftCategorySoftList.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftCategorySoftListRequest`
@@ -165,7 +165,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeAggrSoftDetail(self, request):
-        """聚合的软件详情
+        r"""聚合的软件详情
 
         :param request: Request instance for DescribeAggrSoftDetail.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDetailRequest`
@@ -188,7 +188,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeAggrSoftDeviceList(self, request):
-        """聚合软件的已安装终端列表
+        r"""聚合软件的已安装终端列表
 
         :param request: Request instance for DescribeAggrSoftDeviceList.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDeviceListRequest`
@@ -211,7 +211,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDLPFileDetectResult(self, request):
-        """webservice查询文件检测结果
+        r"""webservice查询文件检测结果
 
         :param request: Request instance for DescribeDLPFileDetectResult.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultRequest`
@@ -234,7 +234,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDeviceChildGroups(self, request):
-        """查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
+        r"""查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
 
         :param request: Request instance for DescribeDeviceChildGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceChildGroupsRequest`
@@ -257,7 +257,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDeviceDetailList(self, request):
-        """基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
+        r"""基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
 
         :param request: Request instance for DescribeDeviceDetailList.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceDetailListRequest`
@@ -280,7 +280,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDeviceHardwareInfoList(self, request):
-        """查询满足条件的查询终端硬件信息列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceHardwareInfoList
+        r"""查询满足条件的查询终端硬件信息列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceHardwareInfoList
 
         :param request: Request instance for DescribeDeviceHardwareInfoList.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListRequest`
@@ -303,7 +303,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDeviceInfo(self, request):
-        """获取终端进程网络服务信息，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+        r"""获取终端进程网络服务信息，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
 
         :param request: Request instance for DescribeDeviceInfo.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoRequest`
@@ -326,7 +326,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDeviceVirtualGroups(self, request):
-        """查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
+        r"""查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
 
         :param request: Request instance for DescribeDeviceVirtualGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsRequest`
@@ -349,7 +349,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDevices(self, request):
-        """查询满足条件的终端数据详情，私有化调用path为：/capi/Assets/Device/DescribeDevices
+        r"""查询满足条件的终端数据详情，私有化调用path为：/capi/Assets/Device/DescribeDevices
 
         :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDevicesRequest`
@@ -372,7 +372,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeLocalAccounts(self, request):
-        """获取账号列表，支持分页，模糊搜索，私有化调用path为：/capi/Assets/Account/DescribeLocalAccounts
+        r"""获取账号列表，支持分页，模糊搜索，私有化调用path为：/capi/Assets/Account/DescribeLocalAccounts
 
         :param request: Request instance for DescribeLocalAccounts.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeLocalAccountsRequest`
@@ -395,7 +395,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeRootAccountGroup(self, request):
-        """查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
+        r"""查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
 
         :param request: Request instance for DescribeRootAccountGroup.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeRootAccountGroupRequest`
@@ -418,7 +418,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeSoftCensusListByDevice(self, request):
-        """查看终端树下的软件列表,私有化调用path为：capi/Software/DescribeSoftCensusListByDevice
+        r"""查看终端树下的软件列表,私有化调用path为：capi/Software/DescribeSoftCensusListByDevice
 
         :param request: Request instance for DescribeSoftCensusListByDevice.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftCensusListByDeviceRequest`
@@ -441,7 +441,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeSoftwareInformation(self, request):
-        """查看指定终端的软件详情列表,私有化调用path为：capi/Software/DescribeSoftwareInformation
+        r"""查看指定终端的软件详情列表,私有化调用path为：capi/Software/DescribeSoftwareInformation
 
         :param request: Request instance for DescribeSoftwareInformation.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationRequest`
@@ -464,7 +464,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeVirtualDevices(self, request):
-        """展示自定义分组终端列表，私有化调用path为：/capi/Assets/DescribeVirtualDevices
+        r"""展示自定义分组终端列表，私有化调用path为：/capi/Assets/DescribeVirtualDevices
 
         :param request: Request instance for DescribeVirtualDevices.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualDevicesRequest`
@@ -487,7 +487,7 @@ class IoaClient(AbstractClient):
 
 
     def ExportSoftwareInformationList(self, request):
-        """导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
+        r"""导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
 
         :param request: Request instance for ExportSoftwareInformationList.
         :type request: :class:`tencentcloud.ioa.v20220601.models.ExportSoftwareInformationListRequest`
@@ -510,7 +510,7 @@ class IoaClient(AbstractClient):
 
 
     def ModifyVirtualDeviceGroups(self, request):
-        """终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+        r"""终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
 
         :param request: Request instance for ModifyVirtualDeviceGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyVirtualDeviceGroupsRequest`

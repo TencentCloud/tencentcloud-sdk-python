@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApiKey(AbstractModel):
-    """API密钥数据列表
+    r"""API密钥数据列表
 
     """
 
@@ -38,7 +38,7 @@ class ApiKey(AbstractModel):
 
     @property
     def SecretId(self):
-        """密钥ID
+        r"""密钥ID
         :rtype: str
         """
         return self._SecretId
@@ -49,7 +49,7 @@ class ApiKey(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间(时间戳)
+        r"""创建时间(时间戳)
         :rtype: int
         """
         return self._CreateTime
@@ -60,7 +60,7 @@ class ApiKey(AbstractModel):
 
     @property
     def Status(self):
-        """状态(2:有效, 3:禁用, 4:已删除)
+        r"""状态(2:有效, 3:禁用, 4:已删除)
         :rtype: int
         """
         return self._Status
@@ -85,7 +85,7 @@ class ApiKey(AbstractModel):
 
 
 class AssumeRoleRequest(AbstractModel):
-    """AssumeRole请求参数结构体
+    r"""AssumeRole请求参数结构体
 
     """
 
@@ -132,7 +132,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def RoleArn(self):
-        """角色的资源描述，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+        r"""角色的资源描述，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
 普通角色：
 qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
 服务角色：
@@ -147,7 +147,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def RoleSessionName(self):
-        """临时会话名称，由用户自定义名称。
+        r"""临时会话名称，由用户自定义名称。
 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
         :rtype: str
         """
@@ -159,7 +159,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def DurationSeconds(self):
-        """指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        r"""指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :rtype: int
         """
         return self._DurationSeconds
@@ -170,7 +170,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def Policy(self):
-        """策略描述
+        r"""策略描述
 注意：
 1、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
@@ -185,7 +185,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def ExternalId(self):
-        """角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+        r"""角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:\/-]*
         :rtype: str
         """
@@ -197,7 +197,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def Tags(self):
-        """会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
+        r"""会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
         :rtype: list of Tag
         """
         return self._Tags
@@ -208,7 +208,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def SourceIdentity(self):
-        """调用者身份uin
+        r"""调用者身份uin
         :rtype: str
         """
         return self._SourceIdentity
@@ -219,7 +219,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def SerialNumber(self):
-        """MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        r"""MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
         :rtype: str
         """
         return self._SerialNumber
@@ -230,7 +230,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
     @property
     def TokenCode(self):
-        """mfa身份验证码。
+        r"""mfa身份验证码。
         :rtype: str
         """
         return self._TokenCode
@@ -266,7 +266,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
 
 
 class AssumeRoleResponse(AbstractModel):
-    """AssumeRole返回参数结构体
+    r"""AssumeRole返回参数结构体
 
     """
 
@@ -288,7 +288,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """临时访问凭证
+        r"""临时访问凭证
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -299,7 +299,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
+        r"""临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
         :rtype: int
         """
         return self._ExpiredTime
@@ -310,7 +310,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        """临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
+        r"""临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
         :rtype: str
         """
         return self._Expiration
@@ -321,7 +321,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -341,7 +341,7 @@ class AssumeRoleResponse(AbstractModel):
 
 
 class AssumeRoleWithSAMLRequest(AbstractModel):
-    """AssumeRoleWithSAML请求参数结构体
+    r"""AssumeRoleWithSAML请求参数结构体
 
     """
 
@@ -366,7 +366,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def SAMLAssertion(self):
-        """base64 编码的 SAML 断言信息
+        r"""base64 编码的 SAML 断言信息
         :rtype: str
         """
         return self._SAMLAssertion
@@ -377,7 +377,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def PrincipalArn(self):
-        """扮演者访问描述名
+        r"""扮演者访问描述名
         :rtype: str
         """
         return self._PrincipalArn
@@ -388,7 +388,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        """角色访问描述名
+        r"""角色访问描述名
         :rtype: str
         """
         return self._RoleArn
@@ -399,7 +399,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def RoleSessionName(self):
-        """会话名称
+        r"""会话名称
         :rtype: str
         """
         return self._RoleSessionName
@@ -410,7 +410,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        """指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        r"""指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :rtype: int
         """
         return self._DurationSeconds
@@ -437,7 +437,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
 
 class AssumeRoleWithSAMLResponse(AbstractModel):
-    """AssumeRoleWithSAML返回参数结构体
+    r"""AssumeRoleWithSAML返回参数结构体
 
     """
 
@@ -459,7 +459,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """对象里面包含 Token，TmpSecretId，TmpSecretKey 三元组
+        r"""对象里面包含 Token，TmpSecretId，TmpSecretKey 三元组
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -470,7 +470,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
+        r"""临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
         :rtype: int
         """
         return self._ExpiredTime
@@ -481,7 +481,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        """临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
+        r"""临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
         :rtype: str
         """
         return self._Expiration
@@ -492,7 +492,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -512,7 +512,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
 
 class AssumeRoleWithWebIdentityRequest(AbstractModel):
-    """AssumeRoleWithWebIdentity请求参数结构体
+    r"""AssumeRoleWithWebIdentity请求参数结构体
 
     """
 
@@ -537,7 +537,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def ProviderId(self):
-        """身份提供商名称
+        r"""身份提供商名称
         :rtype: str
         """
         return self._ProviderId
@@ -548,7 +548,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def WebIdentityToken(self):
-        """IdP签发的OIDC令牌
+        r"""IdP签发的OIDC令牌
         :rtype: str
         """
         return self._WebIdentityToken
@@ -559,7 +559,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        """角色访问描述名
+        r"""角色访问描述名
         :rtype: str
         """
         return self._RoleArn
@@ -570,7 +570,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def RoleSessionName(self):
-        """会话名称
+        r"""会话名称
         :rtype: str
         """
         return self._RoleSessionName
@@ -581,7 +581,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        """指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        r"""指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :rtype: int
         """
         return self._DurationSeconds
@@ -608,7 +608,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
 
 class AssumeRoleWithWebIdentityResponse(AbstractModel):
-    """AssumeRoleWithWebIdentity返回参数结构体
+    r"""AssumeRoleWithWebIdentity返回参数结构体
 
     """
 
@@ -630,7 +630,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """临时访问凭证过期时间(时间戳)
+        r"""临时访问凭证过期时间(时间戳)
         :rtype: int
         """
         return self._ExpiredTime
@@ -641,7 +641,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        """临时访问凭证过期时间
+        r"""临时访问凭证过期时间
         :rtype: str
         """
         return self._Expiration
@@ -652,7 +652,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """临时访问凭证
+        r"""临时访问凭证
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -663,7 +663,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -683,7 +683,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
 
 class Credentials(AbstractModel):
-    """临时证书
+    r"""临时证书
 
     """
 
@@ -702,7 +702,7 @@ class Credentials(AbstractModel):
 
     @property
     def Token(self):
-        """token。token长度和绑定的策略有关，最长不超过4096字节。
+        r"""token。token长度和绑定的策略有关，最长不超过4096字节。
         :rtype: str
         """
         return self._Token
@@ -713,7 +713,7 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """临时证书密钥ID。最长不超过1024字节。
+        r"""临时证书密钥ID。最长不超过1024字节。
         :rtype: str
         """
         return self._TmpSecretId
@@ -724,7 +724,7 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """临时证书密钥Key。最长不超过1024字节。
+        r"""临时证书密钥Key。最长不超过1024字节。
         :rtype: str
         """
         return self._TmpSecretKey
@@ -749,13 +749,13 @@ class Credentials(AbstractModel):
 
 
 class GetCallerIdentityRequest(AbstractModel):
-    """GetCallerIdentity请求参数结构体
+    r"""GetCallerIdentity请求参数结构体
 
     """
 
 
 class GetCallerIdentityResponse(AbstractModel):
-    """GetCallerIdentity返回参数结构体
+    r"""GetCallerIdentity返回参数结构体
 
     """
 
@@ -788,7 +788,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def Arn(self):
-        """当前调用者ARN。
+        r"""当前调用者ARN。
         :rtype: str
         """
         return self._Arn
@@ -799,7 +799,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def AccountId(self):
-        """当前调用者所属主账号Uin。
+        r"""当前调用者所属主账号Uin。
         :rtype: str
         """
         return self._AccountId
@@ -810,7 +810,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """身份标识。
+        r"""身份标识。
 1. 调用者是云账号时，返回的是当前账号Uin
 2. 调用者是角色时，返回的是roleId:roleSessionName
 3. 调用者是联合身份时，返回的是uin:federatedUserName
@@ -824,7 +824,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def PrincipalId(self):
-        """密钥所属账号Uin。
+        r"""密钥所属账号Uin。
 1. 调用者是云账号，返回的当前账号Uin
 2, 调用者是角色，返回的申请角色密钥的账号Uin
         :rtype: str
@@ -837,7 +837,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def Type(self):
-        """身份类型。
+        r"""身份类型。
         :rtype: str
         """
         return self._Type
@@ -848,7 +848,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -868,7 +868,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
 
 class GetFederationTokenRequest(AbstractModel):
-    """GetFederationToken请求参数结构体
+    r"""GetFederationToken请求参数结构体
 
     """
 
@@ -890,7 +890,7 @@ class GetFederationTokenRequest(AbstractModel):
 
     @property
     def Name(self):
-        """您可以自定义调用方英文名称，由字母组成。
+        r"""您可以自定义调用方英文名称，由字母组成。
         :rtype: str
         """
         return self._Name
@@ -901,7 +901,7 @@ class GetFederationTokenRequest(AbstractModel):
 
     @property
     def Policy(self):
-        """注意：
+        r"""注意：
 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 2、策略中不能包含 principal 元素。
 3、该参数需要做urlencode，服务端会对该字段做urldecode， 并按处理后Policy授予临时访问凭证权限，请按规范传入参数。
@@ -915,7 +915,7 @@ class GetFederationTokenRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        """指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
+        r"""指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
         :rtype: int
         """
         return self._DurationSeconds
@@ -940,7 +940,7 @@ class GetFederationTokenRequest(AbstractModel):
 
 
 class GetFederationTokenResponse(AbstractModel):
-    """GetFederationToken返回参数结构体
+    r"""GetFederationToken返回参数结构体
 
     """
 
@@ -963,7 +963,7 @@ class GetFederationTokenResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """临时访问凭证
+        r"""临时访问凭证
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -974,7 +974,7 @@ class GetFederationTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """临时访问凭证有效的时间，返回 Unix 时间戳，精确到秒
+        r"""临时访问凭证有效的时间，返回 Unix 时间戳，精确到秒
         :rtype: int
         """
         return self._ExpiredTime
@@ -985,7 +985,7 @@ class GetFederationTokenResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        """临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
+        r"""临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -997,7 +997,7 @@ class GetFederationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1017,7 +1017,7 @@ class GetFederationTokenResponse(AbstractModel):
 
 
 class GetSessionTokenRequest(AbstractModel):
-    """GetSessionToken请求参数结构体
+    r"""GetSessionToken请求参数结构体
 
     """
 
@@ -1036,7 +1036,7 @@ class GetSessionTokenRequest(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        r"""MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
         :rtype: str
         """
         return self._SerialNumber
@@ -1047,7 +1047,7 @@ class GetSessionTokenRequest(AbstractModel):
 
     @property
     def TokenCode(self):
-        """mfa身份验证码。
+        r"""mfa身份验证码。
         :rtype: str
         """
         return self._TokenCode
@@ -1058,7 +1058,7 @@ class GetSessionTokenRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        """指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
+        r"""指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
         :rtype: int
         """
         return self._DurationSeconds
@@ -1083,7 +1083,7 @@ class GetSessionTokenRequest(AbstractModel):
 
 
 class GetSessionTokenResponse(AbstractModel):
-    """GetSessionToken返回参数结构体
+    r"""GetSessionToken返回参数结构体
 
     """
 
@@ -1105,7 +1105,7 @@ class GetSessionTokenResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """临时访问凭证
+        r"""临时访问凭证
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -1116,7 +1116,7 @@ class GetSessionTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """证书无效的时间，返回 Unix 时间戳，精确到秒
+        r"""证书无效的时间，返回 Unix 时间戳，精确到秒
         :rtype: int
         """
         return self._ExpiredTime
@@ -1127,7 +1127,7 @@ class GetSessionTokenResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        """临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
+        r"""临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
         :rtype: str
         """
         return self._Expiration
@@ -1138,7 +1138,7 @@ class GetSessionTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1158,7 +1158,7 @@ class GetSessionTokenResponse(AbstractModel):
 
 
 class QueryApiKeyRequest(AbstractModel):
-    """QueryApiKey请求参数结构体
+    r"""QueryApiKey请求参数结构体
 
     """
 
@@ -1171,7 +1171,7 @@ class QueryApiKeyRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """待查询的账号uin(不填默认查当前账号uin)
+        r"""待查询的账号uin(不填默认查当前账号uin)
         :rtype: int
         """
         return self._TargetUin
@@ -1194,7 +1194,7 @@ class QueryApiKeyRequest(AbstractModel):
 
 
 class QueryApiKeyResponse(AbstractModel):
-    """QueryApiKey返回参数结构体
+    r"""QueryApiKey返回参数结构体
 
     """
 
@@ -1210,7 +1210,7 @@ class QueryApiKeyResponse(AbstractModel):
 
     @property
     def IdKeys(self):
-        """密钥ID列表。
+        r"""密钥ID列表。
         :rtype: list of ApiKey
         """
         return self._IdKeys
@@ -1221,7 +1221,7 @@ class QueryApiKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1242,7 +1242,7 @@ class QueryApiKeyResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -1258,7 +1258,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键，最长128个字符，区分大小写。
+        r"""标签键，最长128个字符，区分大小写。
         :rtype: str
         """
         return self._Key
@@ -1269,7 +1269,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值，最长256个字符，区分大小写。
+        r"""标签值，最长256个字符，区分大小写。
         :rtype: str
         """
         return self._Value

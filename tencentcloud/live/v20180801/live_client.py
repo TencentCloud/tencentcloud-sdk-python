@@ -27,7 +27,7 @@ class LiveClient(AbstractClient):
 
 
     def AddCasterInputInfo(self, request):
-        """该接口用来向导播台中添加一个输入源，该输入源可以是拉流地址、或是一个文件链接
+        r"""该接口用来向导播台中添加一个输入源，该输入源可以是拉流地址、或是一个文件链接
 
         :param request: Request instance for AddCasterInputInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.AddCasterInputInfoRequest`
@@ -50,7 +50,7 @@ class LiveClient(AbstractClient):
 
 
     def AddCasterLayoutInfo(self, request):
-        """该接口用来增加导播台的布局参数。
+        r"""该接口用来增加导播台的布局参数。
 
         :param request: Request instance for AddCasterLayoutInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.AddCasterLayoutInfoRequest`
@@ -73,7 +73,7 @@ class LiveClient(AbstractClient):
 
 
     def AddCasterMarkPicInfo(self, request):
-        """该接口用来新增图片水印。
+        r"""该接口用来新增图片水印。
 
         :param request: Request instance for AddCasterMarkPicInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.AddCasterMarkPicInfoRequest`
@@ -96,7 +96,7 @@ class LiveClient(AbstractClient):
 
 
     def AddCasterMarkWordInfo(self, request):
-        """为导播台添加文本配置。
+        r"""为导播台添加文本配置。
 
         :param request: Request instance for AddCasterMarkWordInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.AddCasterMarkWordInfoRequest`
@@ -119,7 +119,7 @@ class LiveClient(AbstractClient):
 
 
     def AddCasterOutputInfo(self, request):
-        """该接口用来新增导播台推流信息。导播台主监启动后，将会将主监画面推向该接口设置的地址。
+        r"""该接口用来新增导播台推流信息。导播台主监启动后，将会将主监画面推向该接口设置的地址。
 
         :param request: Request instance for AddCasterOutputInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.AddCasterOutputInfoRequest`
@@ -142,7 +142,7 @@ class LiveClient(AbstractClient):
 
 
     def AddDelayLiveStream(self, request):
-        """针对大型活动直播，通过对直播流设置延时来控制现场与观众播放画面的时间间隔，避免突发状况造成影响。
+        r"""针对大型活动直播，通过对直播流设置延时来控制现场与观众播放画面的时间间隔，避免突发状况造成影响。
 
         注意：如果在推流前设置延播，需要提前5分钟设置，目前该接口只支持流粒度。
 
@@ -167,7 +167,7 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveDomain(self, request):
-        """添加域名，一次只能提交一个域名。域名必须已备案。
+        r"""添加域名，一次只能提交一个域名。域名必须已备案。
 
         :param request: Request instance for AddLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.AddLiveDomainRequest`
@@ -190,7 +190,7 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveWatermark(self, request):
-        """添加水印，成功返回水印 ID 后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印 ID 绑定到流使用。 水印数量上限 100，超过后需要先删除，再添加。
+        r"""添加水印，成功返回水印 ID 后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印 ID 绑定到流使用。 水印数量上限 100，超过后需要先删除，再添加。
 
         :param request: Request instance for AddLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkRequest`
@@ -213,7 +213,7 @@ class LiveClient(AbstractClient):
 
 
     def AuthenticateDomainOwner(self, request):
-        """验证用户是否拥有特定直播域名。
+        r"""验证用户是否拥有特定直播域名。
 
         :param request: Request instance for AuthenticateDomainOwner.
         :type request: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerRequest`
@@ -236,7 +236,7 @@ class LiveClient(AbstractClient):
 
 
     def CancelCommonMixStream(self, request):
-        """该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
+        r"""该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
 
         :param request: Request instance for CancelCommonMixStream.
         :type request: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamRequest`
@@ -259,7 +259,7 @@ class LiveClient(AbstractClient):
 
 
     def CopyCaster(self, request):
-        """该接口用来复制导播台配置
+        r"""该接口用来复制导播台配置
 
         :param request: Request instance for CopyCaster.
         :type request: :class:`tencentcloud.live.v20180801.models.CopyCasterRequest`
@@ -282,7 +282,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateAuditKeywords(self, request):
-        """创建关键词，并关联到关键词库。
+        r"""创建关键词，并关联到关键词库。
 
         :param request: Request instance for CreateAuditKeywords.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateAuditKeywordsRequest`
@@ -305,7 +305,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCaster(self, request):
-        """该接口用来创建新的导播台
+        r"""该接口用来创建新的导播台
 
         :param request: Request instance for CreateCaster.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterRequest`
@@ -328,7 +328,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCasterInputPushUrl(self, request):
-        """该接口用来生成导播台推流地址
+        r"""该接口用来生成导播台推流地址
 
         :param request: Request instance for CreateCasterInputPushUrl.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterInputPushUrlRequest`
@@ -351,7 +351,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCasterPgm(self, request):
-        """该接口用来启动主监任务，并将获取主监画面的播放地址。
+        r"""该接口用来启动主监任务，并将获取主监画面的播放地址。
 
         :param request: Request instance for CreateCasterPgm.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterPgmRequest`
@@ -374,7 +374,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCasterPgmFromPvw(self, request):
-        """该接口用来将预监画面的布局、水印、字幕等配置，复制到主监画面中。
+        r"""该接口用来将预监画面的布局、水印、字幕等配置，复制到主监画面中。
         该接口使用时，预监任务需处于运行状态。
 
         :param request: Request instance for CreateCasterPgmFromPvw.
@@ -398,7 +398,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCasterPvw(self, request):
-        """该接口用来启动预监任务，并将获取预监画面的播放地址。
+        r"""该接口用来启动预监任务，并将获取预监画面的播放地址。
 
         :param request: Request instance for CreateCasterPvw.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterPvwRequest`
@@ -421,7 +421,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCommonMixStream(self, request):
-        """该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
+        r"""该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
         注意：当前最多支持16路混流。
         最佳实践：https://cloud.tencent.com/document/product/267/45566
 
@@ -446,7 +446,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackRule(self, request):
-        """创建回调规则，需要先调用[CreateLiveCallbackTemplate](/document/product/267/32637)接口创建回调模板，将返回的模板id绑定到域名/路径进行使用。
+        r"""创建回调规则，需要先调用[CreateLiveCallbackTemplate](/document/product/267/32637)接口创建回调模板，将返回的模板id绑定到域名/路径进行使用。
         <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
 
         :param request: Request instance for CreateLiveCallbackRule.
@@ -470,7 +470,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """创建回调模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板 ID 绑定到域名/路径使用。
+        r"""创建回调模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板 ID 绑定到域名/路径使用。
         <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
         注意：至少填写一个回调 URL。
 
@@ -495,7 +495,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePadRule(self, request):
-        """创建直播垫片规则。
+        r"""创建直播垫片规则。
 
         :param request: Request instance for CreateLivePadRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleRequest`
@@ -518,7 +518,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePadTemplate(self, request):
-        """创建直播垫片模板。
+        r"""创建直播垫片模板。
 
         :param request: Request instance for CreateLivePadTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateRequest`
@@ -541,7 +541,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePullStreamTask(self, request):
-        """创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到指定的目标地址。
+        r"""创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到指定的目标地址。
         注意：
         1. 默认支持任务数上限200个，如有特殊需求，可通过提单到售后进行评估增加上限。
         2. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
@@ -571,7 +571,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecord(self, request):
-        """- 使用前提
+        r"""- 使用前提
           1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
           2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2838)。
 
@@ -609,7 +609,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordRule(self, request):
-        """创建录制规则，需要先调用[CreateLiveRecordTemplate](/document/product/267/32614)接口创建录制模板，将返回的模板id绑定到流使用。
+        r"""创建录制规则，需要先调用[CreateLiveRecordTemplate](/document/product/267/32614)接口创建录制模板，将返回的模板id绑定到流使用。
         <br>录制相关文档：[直播录制](/document/product/267/32739)。
 
         :param request: Request instance for CreateLiveRecordRule.
@@ -633,7 +633,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordTemplate(self, request):
-        """创建录制模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveRecordRule](/document/product/267/32615)接口，将模板id绑定到流进行使用。
+        r"""创建录制模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveRecordRule](/document/product/267/32615)接口，将模板id绑定到流进行使用。
         <br>录制相关文档：[直播录制](/document/product/267/32739)。
 
         :param request: Request instance for CreateLiveRecordTemplate.
@@ -657,7 +657,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotRule(self, request):
-        """创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
+        r"""创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
         <br>截图相关文档：[直播截图](/document/product/267/32737)。
         注意：单个域名仅支持关联一个截图模板。
 
@@ -682,7 +682,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotTemplate(self, request):
-        """创建截图模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
+        r"""创建截图模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
         <br>截图相关文档：[直播截图](/document/product/267/32737)。
 
         :param request: Request instance for CreateLiveSnapshotTemplate.
@@ -706,7 +706,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveStreamMonitor(self, request):
-        """该接口用来创建直播流监播任务。
+        r"""该接口用来创建直播流监播任务。
 
         :param request: Request instance for CreateLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveStreamMonitorRequest`
@@ -729,7 +729,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftRule(self, request):
-        """创建直播时移规则，需要先调用[CreateLiveTimeShiftTemplate](/document/product/267/86169)接口创建直播时移模板，将返回的模板id绑定到流使用。
+        r"""创建直播时移规则，需要先调用[CreateLiveTimeShiftTemplate](/document/product/267/86169)接口创建直播时移模板，将返回的模板id绑定到流使用。
         <br>直播时移相关文档：[直播时移](/document/product/267/86134)。
 
         :param request: Request instance for CreateLiveTimeShiftRule.
@@ -753,7 +753,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftTemplate(self, request):
-        """创建直播时移模板。
+        r"""创建直播时移模板。
 
         :param request: Request instance for CreateLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTimeShiftTemplateRequest`
@@ -776,7 +776,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeRule(self, request):
-        """创建转码规则，数量上限：50，需要先调用[CreateLiveTranscodeTemplate](/document/product/267/32646)接口创建转码模板，将返回的模板id绑定到流使用。
+        r"""创建转码规则，数量上限：50，需要先调用[CreateLiveTranscodeTemplate](/document/product/267/32646)接口创建转码模板，将返回的模板id绑定到流使用。
         <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
 
         :param request: Request instance for CreateLiveTranscodeRule.
@@ -800,7 +800,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeTemplate(self, request):
-        """创建转码模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveTranscodeRule](/document/product/267/32647)接口，将返回的模板id绑定到流使用。
+        r"""创建转码模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveTranscodeRule](/document/product/267/32647)接口，将返回的模板id绑定到流使用。
         <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
 
         :param request: Request instance for CreateLiveTranscodeTemplate.
@@ -824,7 +824,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveWatermarkRule(self, request):
-        """创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
+        r"""创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
 
         :param request: Request instance for CreateLiveWatermarkRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveWatermarkRuleRequest`
@@ -847,7 +847,7 @@ class LiveClient(AbstractClient):
 
 
     def CreatePullStreamConfig(self, request):
-        """创建临时拉流转推任务，目前限制添加10条任务。
+        r"""创建临时拉流转推任务，目前限制添加10条任务。
         该接口已下线,请使用新接口 CreateLivePullStreamTask。
 
         注意：该接口用于创建临时拉流转推任务，
@@ -875,7 +875,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateRecordTask(self, request):
-        """创建一个在指定时间启动、结束的录制任务，并使用指定录制模板ID对应的配置进行录制。
+        r"""创建一个在指定时间启动、结束的录制任务，并使用指定录制模板ID对应的配置进行录制。
         - 使用前提
         1. 录制文件存放于点播平台或对象存储内，所以用户如需使用录制功能，需首先自行开通点播服务或对象存储服务。
         2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考[对应文档](https://cloud.tencent.com/document/product/266/2837)。
@@ -907,7 +907,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateScreenshotTask(self, request):
-        """创建一个在指定时间启动、结束的截图任务，并使用指定截图模板ID对应的配置进行截图。
+        r"""创建一个在指定时间启动、结束的截图任务，并使用指定截图模板ID对应的配置进行截图。
         - 注意事项
         1. 断流会结束当前截图。在结束时间到达之前任务仍然有效，期间只要正常推流都会正常截图，与是否多次推、断流无关。
         2. 使用上避免创建时间段相互重叠的截图任务。若同一条流当前存在多个时段重叠的任务，为避免重复系统将启动最多3个截图任务。
@@ -936,7 +936,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteAuditKeywords(self, request):
-        """删除关键词信息。
+        r"""删除关键词信息。
 
         :param request: Request instance for DeleteAuditKeywords.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteAuditKeywordsRequest`
@@ -959,7 +959,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCaster(self, request):
-        """该接口用来删除一个导播台的所有信息。
+        r"""该接口用来删除一个导播台的所有信息。
         注意，调用该接口后，所有的导播台信息将被清除，包括正在直播的内容也将直接中断。
 
         :param request: Request instance for DeleteCaster.
@@ -983,7 +983,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCasterInputInfo(self, request):
-        """该接口用来删除导播台中的输入源信息。
+        r"""该接口用来删除导播台中的输入源信息。
 
         :param request: Request instance for DeleteCasterInputInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterInputInfoRequest`
@@ -1006,7 +1006,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCasterLayoutInfo(self, request):
-        """该接口用来将布局信息从导播台中删除
+        r"""该接口用来将布局信息从导播台中删除
 
         :param request: Request instance for DeleteCasterLayoutInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterLayoutInfoRequest`
@@ -1029,7 +1029,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCasterMarkPicInfo(self, request):
-        """该接口用来删除导播台某个Index对应的水印。
+        r"""该接口用来删除导播台某个Index对应的水印。
 
         :param request: Request instance for DeleteCasterMarkPicInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkPicInfoRequest`
@@ -1052,7 +1052,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCasterMarkWordInfo(self, request):
-        """该接口用来删除导播台的文本配置。
+        r"""该接口用来删除导播台的文本配置。
 
         :param request: Request instance for DeleteCasterMarkWordInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkWordInfoRequest`
@@ -1075,7 +1075,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteCasterOutputInfo(self, request):
-        """该接口用来删除导播台的推流信息。
+        r"""该接口用来删除导播台的推流信息。
         注：若删除推流到腾讯云直播源站配置，即OutputIndex为0，OutputType为1的推流配置，在重新启动主监后，系统会自动重新生成一个推流到腾讯云直播源站配置。
 
         :param request: Request instance for DeleteCasterOutputInfo.
@@ -1099,7 +1099,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackRule(self, request):
-        """删除回调规则。
+        r"""删除回调规则。
 
         :param request: Request instance for DeleteLiveCallbackRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackRuleRequest`
@@ -1122,7 +1122,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackTemplate(self, request):
-        """删除回调模板。
+        r"""删除回调模板。
 
         :param request: Request instance for DeleteLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackTemplateRequest`
@@ -1145,7 +1145,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveDomain(self, request):
-        """删除已添加的直播域名
+        r"""删除已添加的直播域名
 
         :param request: Request instance for DeleteLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainRequest`
@@ -1168,7 +1168,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLivePadRule(self, request):
-        """删除直播垫片规则。
+        r"""删除直播垫片规则。
 
         :param request: Request instance for DeleteLivePadRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePadRuleRequest`
@@ -1191,7 +1191,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLivePadTemplate(self, request):
-        """删除直播垫片模板。
+        r"""删除直播垫片模板。
 
         :param request: Request instance for DeleteLivePadTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePadTemplateRequest`
@@ -1214,7 +1214,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLivePullStreamTask(self, request):
-        """删除接口 CreateLivePullStreamTask 创建的拉流任务。
+        r"""删除接口 CreateLivePullStreamTask 创建的拉流任务。
         注意：
         1. 入参中的 TaskId 为 CreateLivePullStreamTask 接口创建时返回的TaskId。
         2. 也可通过 DescribeLivePullStreamTasks 进行查询创建的任务。
@@ -1240,7 +1240,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """注：DeleteLiveRecord 接口仅用于删除录制任务记录，不具备停止录制的功能，也不能删除正在进行中的录制。如果需要停止录制任务，请使用终止录制[StopLiveRecord](/document/product/267/30146) 接口。
+        r"""注：DeleteLiveRecord 接口仅用于删除录制任务记录，不具备停止录制的功能，也不能删除正在进行中的录制。如果需要停止录制任务，请使用终止录制[StopLiveRecord](/document/product/267/30146) 接口。
 
         :param request: Request instance for DeleteLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -1263,7 +1263,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordRule(self, request):
-        """删除录制规则。
+        r"""删除录制规则。
 
         :param request: Request instance for DeleteLiveRecordRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRuleRequest`
@@ -1286,7 +1286,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordTemplate(self, request):
-        """删除录制模板。
+        r"""删除录制模板。
 
         :param request: Request instance for DeleteLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordTemplateRequest`
@@ -1309,7 +1309,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveSnapshotRule(self, request):
-        """删除截图规则。
+        r"""删除截图规则。
 
         :param request: Request instance for DeleteLiveSnapshotRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotRuleRequest`
@@ -1332,7 +1332,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveSnapshotTemplate(self, request):
-        """删除截图模板
+        r"""删除截图模板
 
         :param request: Request instance for DeleteLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotTemplateRequest`
@@ -1355,7 +1355,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveStreamMonitor(self, request):
-        """该接口用来删除直播流监播任务。
+        r"""该接口用来删除直播流监播任务。
 
         :param request: Request instance for DeleteLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveStreamMonitorRequest`
@@ -1378,7 +1378,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTimeShiftRule(self, request):
-        """删除直播时移规则。
+        r"""删除直播时移规则。
 
         :param request: Request instance for DeleteLiveTimeShiftRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTimeShiftRuleRequest`
@@ -1401,7 +1401,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTimeShiftTemplate(self, request):
-        """删除直播时移模板。
+        r"""删除直播时移模板。
 
         :param request: Request instance for DeleteLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTimeShiftTemplateRequest`
@@ -1424,7 +1424,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeRule(self, request):
-        """删除转码规则。
+        r"""删除转码规则。
         DomainName+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配。其中TemplateId必填，其余参数为空时也需要传空字符串进行强匹配。
 
         :param request: Request instance for DeleteLiveTranscodeRule.
@@ -1448,7 +1448,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeTemplate(self, request):
-        """删除转码模板。
+        r"""删除转码模板。
 
         :param request: Request instance for DeleteLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTranscodeTemplateRequest`
@@ -1471,7 +1471,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveWatermark(self, request):
-        """删除水印。
+        r"""删除水印。
 
         :param request: Request instance for DeleteLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRequest`
@@ -1494,7 +1494,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveWatermarkRule(self, request):
-        """删除水印规则
+        r"""删除水印规则
 
         :param request: Request instance for DeleteLiveWatermarkRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRuleRequest`
@@ -1517,7 +1517,7 @@ class LiveClient(AbstractClient):
 
 
     def DeletePullStreamConfig(self, request):
-        """删除直播拉流配置。该接口已下线,请使用新接口 DeleteLivePullStreamTask。
+        r"""删除直播拉流配置。该接口已下线,请使用新接口 DeleteLivePullStreamTask。
 
         :param request: Request instance for DeletePullStreamConfig.
         :type request: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigRequest`
@@ -1540,7 +1540,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteRecordTask(self, request):
-        """删除录制任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
+        r"""删除录制任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
 
         :param request: Request instance for DeleteRecordTask.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteRecordTaskRequest`
@@ -1563,7 +1563,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteScreenshotTask(self, request):
-        """删除截图任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
+        r"""删除截图任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
 
         :param request: Request instance for DeleteScreenshotTask.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteScreenshotTaskRequest`
@@ -1586,7 +1586,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeAllStreamPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
 
         :param request: Request instance for DescribeAllStreamPlayInfoList.
@@ -1610,7 +1610,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeAreaBillBandwidthAndFluxList(self, request):
-        """海外分区直播播放带宽和流量数据查询。
+        r"""海外分区直播播放带宽和流量数据查询。
 
         :param request: Request instance for DescribeAreaBillBandwidthAndFluxList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeAreaBillBandwidthAndFluxListRequest`
@@ -1633,7 +1633,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeAuditKeywords(self, request):
-        """获取关键词信息。
+        r"""获取关键词信息。
 
         :param request: Request instance for DescribeAuditKeywords.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeAuditKeywordsRequest`
@@ -1656,7 +1656,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeBackupStreamList(self, request):
-        """返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+        r"""返回正在直播中的流列表。适用于推流成功后查询在线流信息。
 
         注意：
         1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
@@ -1683,7 +1683,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeBillBandwidthAndFluxList(self, request):
-        """直播播放带宽和流量数据查询。
+        r"""直播播放带宽和流量数据查询。
 
         :param request: Request instance for DescribeBillBandwidthAndFluxList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
@@ -1706,7 +1706,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCallbackRecordsList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         用于查询回调事件。
 
         :param request: Request instance for DescribeCallbackRecordsList.
@@ -1730,7 +1730,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCaster(self, request):
-        """查询导播台信息接口，用来查询导播台状态、描述、输出长、宽等信息
+        r"""查询导播台信息接口，用来查询导播台状态、描述、输出长、宽等信息
 
         :param request: Request instance for DescribeCaster.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterRequest`
@@ -1753,7 +1753,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterDisplayInfo(self, request):
-        """查询导播台PVW任务和PGM任务的展示信息，包括使用的布局、水印、字幕等信息。
+        r"""查询导播台PVW任务和PGM任务的展示信息，包括使用的布局、水印、字幕等信息。
 
         :param request: Request instance for DescribeCasterDisplayInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterDisplayInfoRequest`
@@ -1776,7 +1776,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterInputInfos(self, request):
-        """该接口用来查询导播台的输入源信息列表。
+        r"""该接口用来查询导播台的输入源信息列表。
 
         :param request: Request instance for DescribeCasterInputInfos.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterInputInfosRequest`
@@ -1799,7 +1799,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterLayoutInfos(self, request):
-        """该接口用来查询某个导播台的布局列表
+        r"""该接口用来查询某个导播台的布局列表
 
         :param request: Request instance for DescribeCasterLayoutInfos.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterLayoutInfosRequest`
@@ -1822,7 +1822,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterList(self, request):
-        """该接口用来查询账号下所有的导播台列表
+        r"""该接口用来查询账号下所有的导播台列表
 
         :param request: Request instance for DescribeCasterList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterListRequest`
@@ -1845,7 +1845,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterMarkPicInfos(self, request):
-        """该接口用来查询某个导播台的水印列表。
+        r"""该接口用来查询某个导播台的水印列表。
 
         :param request: Request instance for DescribeCasterMarkPicInfos.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkPicInfosRequest`
@@ -1868,7 +1868,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterMarkWordInfos(self, request):
-        """该接口用来查询某个导播台的文本列表。
+        r"""该接口用来查询某个导播台的文本列表。
 
         :param request: Request instance for DescribeCasterMarkWordInfos.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkWordInfosRequest`
@@ -1891,7 +1891,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterOutputInfos(self, request):
-        """该接口用来查询某个导播台的推流信息列表。
+        r"""该接口用来查询某个导播台的推流信息列表。
 
         :param request: Request instance for DescribeCasterOutputInfos.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterOutputInfosRequest`
@@ -1914,7 +1914,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterPlayUrl(self, request):
-        """该接口用来获取导播台视频流的播放url，用来在页面上拉流展示。
+        r"""该接口用来获取导播台视频流的播放url，用来在页面上拉流展示。
 
         :param request: Request instance for DescribeCasterPlayUrl.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterPlayUrlRequest`
@@ -1937,7 +1937,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterTransitionTypes(self, request):
-        """该接口用来获取所有的转场名称及其对应的素材url。
+        r"""该接口用来获取所有的转场名称及其对应的素材url。
 
         :param request: Request instance for DescribeCasterTransitionTypes.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterTransitionTypesRequest`
@@ -1960,7 +1960,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCasterUserStatus(self, request):
-        """本接口用来查询当前APPID导播台业务状态
+        r"""本接口用来查询当前APPID导播台业务状态
 
         :param request: Request instance for DescribeCasterUserStatus.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterUserStatusRequest`
@@ -1983,7 +1983,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeConcurrentRecordStreamNum(self, request):
-        """查询并发录制路数，对慢直播和普通直播适用。
+        r"""查询并发录制路数，对慢直播和普通直播适用。
 
         :param request: Request instance for DescribeConcurrentRecordStreamNum.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeConcurrentRecordStreamNumRequest`
@@ -2006,7 +2006,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeDeliverBandwidthList(self, request):
-        """查询直播转推计费带宽，查询时间范围最大支持3个月内的数据，时间跨度最长31天。
+        r"""查询直播转推计费带宽，查询时间范围最大支持3个月内的数据，时间跨度最长31天。
 
         :param request: Request instance for DescribeDeliverBandwidthList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListRequest`
@@ -2029,7 +2029,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeDeliverLogDownList(self, request):
-        """批量获取转推日志的URL。
+        r"""批量获取转推日志的URL。
 
         :param request: Request instance for DescribeDeliverLogDownList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverLogDownListRequest`
@@ -2052,7 +2052,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeGroupProIspPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询按省份和运营商分组的下行播放数据。
 
         :param request: Request instance for DescribeGroupProIspPlayInfoList.
@@ -2076,7 +2076,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeHttpStatusInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询某段时间内5分钟粒度的各播放http状态码的个数。
         备注：数据延迟1小时，如10:00-10:59点的数据12点才能查到。
 
@@ -2101,7 +2101,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackRules(self, request):
-        """获取回调规则列表
+        r"""获取回调规则列表
 
         :param request: Request instance for DescribeLiveCallbackRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackRulesRequest`
@@ -2124,7 +2124,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackTemplate(self, request):
-        """获取单个回调模板。
+        r"""获取单个回调模板。
 
         :param request: Request instance for DescribeLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplateRequest`
@@ -2147,7 +2147,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackTemplates(self, request):
-        """获取回调模板列表
+        r"""获取回调模板列表
 
         :param request: Request instance for DescribeLiveCallbackTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplatesRequest`
@@ -2170,7 +2170,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCert(self, request):
-        """获取证书信息
+        r"""获取证书信息
 
         :param request: Request instance for DescribeLiveCert.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertRequest`
@@ -2193,7 +2193,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCerts(self, request):
-        """获取证书信息列表
+        r"""获取证书信息列表
 
         :param request: Request instance for DescribeLiveCerts.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertsRequest`
@@ -2216,7 +2216,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCloudEffectList(self, request):
-        """使用该接口查询云端特效列表，特效列表中包含一部分官方精品特效，同时包含用户自定义生成的特效。
+        r"""使用该接口查询云端特效列表，特效列表中包含一部分官方精品特效，同时包含用户自定义生成的特效。
 
         :param request: Request instance for DescribeLiveCloudEffectList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCloudEffectListRequest`
@@ -2239,7 +2239,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDelayInfoList(self, request):
-        """获取直播延播列表。
+        r"""获取直播延播列表。
 
         :param request: Request instance for DescribeLiveDelayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDelayInfoListRequest`
@@ -2262,7 +2262,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomain(self, request):
-        """查询直播域名信息。
+        r"""查询直播域名信息。
 
         :param request: Request instance for DescribeLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRequest`
@@ -2285,7 +2285,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainCert(self, request):
-        """获取域名证书信息。
+        r"""获取域名证书信息。
 
         :param request: Request instance for DescribeLiveDomainCert.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertRequest`
@@ -2308,7 +2308,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainCertBindings(self, request):
-        """查询绑定证书的域名列表。
+        r"""查询绑定证书的域名列表。
 
         :param request: Request instance for DescribeLiveDomainCertBindings.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsRequest`
@@ -2331,7 +2331,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询实时的域名维度下行播放数据，由于数据处理有耗时，接口默认查询4分钟前的准实时数据。
 
         :param request: Request instance for DescribeLiveDomainPlayInfoList.
@@ -2355,7 +2355,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainReferer(self, request):
-        """查询直播域名 Referer 黑白名单配置。
+        r"""查询直播域名 Referer 黑白名单配置。
         由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 WebRTC 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
 
         :param request: Request instance for DescribeLiveDomainReferer.
@@ -2379,7 +2379,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomains(self, request):
-        """根据域名状态、类型等信息查询用户的域名信息。
+        r"""根据域名状态、类型等信息查询用户的域名信息。
 
         :param request: Request instance for DescribeLiveDomains.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsRequest`
@@ -2402,7 +2402,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveEnhanceInfoList(self, request):
-        """查询直播增强用量明细信息。
+        r"""查询直播增强用量明细信息。
 
         :param request: Request instance for DescribeLiveEnhanceInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveEnhanceInfoListRequest`
@@ -2425,7 +2425,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveForbidStreamList(self, request):
-        """获取禁推流列表。
+        r"""获取禁推流列表。
 
         注意：该接口仅作为直播辅助查询接口，重要业务场景不可强依赖该接口。
 
@@ -2450,7 +2450,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePackageInfo(self, request):
-        """查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
+        r"""查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
 
         :param request: Request instance for DescribeLivePackageInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePackageInfoRequest`
@@ -2473,7 +2473,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePadRules(self, request):
-        """获取直播垫片规则列表。
+        r"""获取直播垫片规则列表。
 
         :param request: Request instance for DescribeLivePadRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadRulesRequest`
@@ -2496,7 +2496,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePadStreamList(self, request):
-        """使用该接口查询垫片流列表。垫片流状态更新存在一定延迟，可间隔30秒以上查询，避免频繁查询该接口。
+        r"""使用该接口查询垫片流列表。垫片流状态更新存在一定延迟，可间隔30秒以上查询，避免频繁查询该接口。
 
         :param request: Request instance for DescribeLivePadStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadStreamListRequest`
@@ -2519,7 +2519,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePadTemplate(self, request):
-        """获取单个直播垫片模板
+        r"""获取单个直播垫片模板
 
         :param request: Request instance for DescribeLivePadTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplateRequest`
@@ -2542,7 +2542,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePadTemplates(self, request):
-        """获取直播垫片模板。
+        r"""获取直播垫片模板。
 
         :param request: Request instance for DescribeLivePadTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplatesRequest`
@@ -2565,7 +2565,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePlayAuthKey(self, request):
-        """查询播放鉴权key。
+        r"""查询播放鉴权key。
 
         :param request: Request instance for DescribeLivePlayAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePlayAuthKeyRequest`
@@ -2588,7 +2588,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePullStreamTaskStatus(self, request):
-        """查询直播拉流任务状态信息。
+        r"""查询直播拉流任务状态信息。
 
         :param request: Request instance for DescribeLivePullStreamTaskStatus.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTaskStatusRequest`
@@ -2611,7 +2611,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePullStreamTasks(self, request):
-        """查询使用 CreateLivePullStreamTask 接口创建的直播拉流任务。
+        r"""查询使用 CreateLivePullStreamTask 接口创建的直播拉流任务。
         排序方式：默认按更新时间 倒序排列。
 
         :param request: Request instance for DescribeLivePullStreamTasks.
@@ -2635,7 +2635,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePushAuthKey(self, request):
-        """查询直播推流鉴权key
+        r"""查询直播推流鉴权key
 
         :param request: Request instance for DescribeLivePushAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePushAuthKeyRequest`
@@ -2658,7 +2658,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordRules(self, request):
-        """获取录制规则列表
+        r"""获取录制规则列表
 
         :param request: Request instance for DescribeLiveRecordRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordRulesRequest`
@@ -2681,7 +2681,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplate(self, request):
-        """获取单个录制模板。
+        r"""获取单个录制模板。
 
         :param request: Request instance for DescribeLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplateRequest`
@@ -2704,7 +2704,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """获取录制模板列表。
+        r"""获取录制模板列表。
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplatesRequest`
@@ -2727,7 +2727,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotRules(self, request):
-        """获取截图规则列表
+        r"""获取截图规则列表
 
         :param request: Request instance for DescribeLiveSnapshotRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotRulesRequest`
@@ -2750,7 +2750,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplate(self, request):
-        """获取单个截图模板。
+        r"""获取单个截图模板。
 
         :param request: Request instance for DescribeLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplateRequest`
@@ -2773,7 +2773,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplates(self, request):
-        """获取截图模板列表。
+        r"""获取截图模板列表。
 
         :param request: Request instance for DescribeLiveSnapshotTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplatesRequest`
@@ -2796,7 +2796,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamEventList(self, request):
-        """用于查询推断流事件。<br>
+        r"""用于查询推断流事件。<br>
 
         注意：
         1. 该接口提供离线推断流记录查询功能，不可作为重要业务场景强依赖接口。
@@ -2823,7 +2823,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamMonitor(self, request):
-        """该接口用来查询某个特定监播任务的配置。
+        r"""该接口用来查询某个特定监播任务的配置。
 
         :param request: Request instance for DescribeLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorRequest`
@@ -2846,7 +2846,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamMonitorList(self, request):
-        """该接口用来查询直播流监播任务配置的列表信息。
+        r"""该接口用来查询直播流监播任务配置的列表信息。
 
         :param request: Request instance for DescribeLiveStreamMonitorList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorListRequest`
@@ -2869,7 +2869,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+        r"""返回正在直播中的流列表。适用于推流成功后查询在线流信息。
 
         注意：
         1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
@@ -2896,7 +2896,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPublishedList(self, request):
-        """返回已经推过流的流列表。<br>
+        r"""返回已经推过流的流列表。<br>
         注意：分页最多支持查询1万条记录，可通过调整查询时间范围来获取更多数据。
 
         :param request: Request instance for DescribeLiveStreamPublishedList.
@@ -2920,7 +2920,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPushInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
 
         :param request: Request instance for DescribeLiveStreamPushInfoList.
@@ -2944,7 +2944,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamState(self, request):
-        """返回直播中、无推流或者禁播等状态。
+        r"""返回直播中、无推流或者禁播等状态。
 
         使用建议：
         该接口提供实时流状态查询功能，鉴于网络抖动等一些不可抗因素，使用该接口作为判断主播是否开播等重要业务场景时，请参考以下使用建议。
@@ -2976,7 +2976,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftBillInfoList(self, request):
-        """提供给客户对账，按天统计，维度：推流域名、时移文件时长（累加）、配置天数（不累加）、时移总时长（累加）。
+        r"""提供给客户对账，按天统计，维度：推流域名、时移文件时长（累加）、配置天数（不累加）、时移总时长（累加）。
 
         :param request: Request instance for DescribeLiveTimeShiftBillInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftBillInfoListRequest`
@@ -2999,7 +2999,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftRules(self, request):
-        """获取直播时移规则列表。
+        r"""获取直播时移规则列表。
 
         :param request: Request instance for DescribeLiveTimeShiftRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftRulesRequest`
@@ -3022,7 +3022,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftTemplates(self, request):
-        """获取直播时移模板。
+        r"""获取直播时移模板。
 
         :param request: Request instance for DescribeLiveTimeShiftTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftTemplatesRequest`
@@ -3045,7 +3045,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftWriteSizeInfoList(self, request):
-        """支持直播时移写入量数据查询。
+        r"""支持直播时移写入量数据查询。
 
         :param request: Request instance for DescribeLiveTimeShiftWriteSizeInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftWriteSizeInfoListRequest`
@@ -3068,7 +3068,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeDetailInfo(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         支持查询某天或某段时间的转码详细信息。由于转码数据量较大，如果查询时间跨度太长可能会拉不到数据，可以尝试将查询时间范围缩小些再重试。
 
         :param request: Request instance for DescribeLiveTranscodeDetailInfo.
@@ -3092,7 +3092,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeRules(self, request):
-        """获取转码规则列表
+        r"""获取转码规则列表
 
         :param request: Request instance for DescribeLiveTranscodeRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeRulesRequest`
@@ -3115,7 +3115,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplate(self, request):
-        """获取单个转码模板。
+        r"""获取单个转码模板。
 
         :param request: Request instance for DescribeLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplateRequest`
@@ -3138,7 +3138,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplates(self, request):
-        """获取转码模板列表。
+        r"""获取转码模板列表。
 
         :param request: Request instance for DescribeLiveTranscodeTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplatesRequest`
@@ -3161,7 +3161,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTotalInfo(self, request):
-        """查询转码总量数据，可查询近三个月内的数据。
+        r"""查询转码总量数据，可查询近三个月内的数据。
         注意：
         如果是查询某一天内，则返回5分钟粒度数据；
         如果是查询跨天或指定域名， 则返回1小时粒度数据。
@@ -3187,7 +3187,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermark(self, request):
-        """获取单个水印信息。
+        r"""获取单个水印信息。
 
         :param request: Request instance for DescribeLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRequest`
@@ -3210,7 +3210,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarkRules(self, request):
-        """获取水印规则列表。
+        r"""获取水印规则列表。
 
         :param request: Request instance for DescribeLiveWatermarkRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRulesRequest`
@@ -3233,7 +3233,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarks(self, request):
-        """查询水印列表。
+        r"""查询水印列表。
 
         :param request: Request instance for DescribeLiveWatermarks.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksRequest`
@@ -3256,7 +3256,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveXP2PDetailInfoList(self, request):
-        """P2P流数据查询接口，用来获取流量、卡播和起播信息。
+        r"""P2P流数据查询接口，用来获取流量、卡播和起播信息。
 
         :param request: Request instance for DescribeLiveXP2PDetailInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveXP2PDetailInfoListRequest`
@@ -3279,7 +3279,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLogDownloadList(self, request):
-        """批量获取日志URL。
+        r"""批量获取日志URL。
 
         :param request: Request instance for DescribeLogDownloadList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLogDownloadListRequest`
@@ -3302,7 +3302,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeMonitorReport(self, request):
-        """用来查询监播场次7天内的智能识别、断流、低帧率等信息的汇总报告。
+        r"""用来查询监播场次7天内的智能识别、断流、低帧率等信息的汇总报告。
 
         :param request: Request instance for DescribeMonitorReport.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeMonitorReportRequest`
@@ -3325,7 +3325,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeDetailInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
 
         :param request: Request instance for DescribePlayErrorCodeDetailInfoList.
@@ -3349,7 +3349,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeSumInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询下行播放错误码信息。
 
         :param request: Request instance for DescribePlayErrorCodeSumInfoList.
@@ -3373,7 +3373,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProIspPlaySumInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询某段时间内每个国家地区每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
 
         :param request: Request instance for DescribeProIspPlaySumInfoList.
@@ -3397,7 +3397,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProvinceIspPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
 
         :param request: Request instance for DescribeProvinceIspPlayInfoList.
@@ -3421,7 +3421,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePullStreamConfigs(self, request):
-        """查询直播拉流配置。该接口已下线,请使用新接口 DescribeLivePullStreamTasks。
+        r"""查询直播拉流配置。该接口已下线,请使用新接口 DescribeLivePullStreamTasks。
 
         :param request: Request instance for DescribePullStreamConfigs.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsRequest`
@@ -3444,7 +3444,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePullTransformPushInfo(self, request):
-        """查询拉流转推任务的时长信息。
+        r"""查询拉流转推任务的时长信息。
 
         :param request: Request instance for DescribePullTransformPushInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePullTransformPushInfoRequest`
@@ -3467,7 +3467,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePushBandwidthAndFluxList(self, request):
-        """直播推流带宽和流量数据查询。
+        r"""直播推流带宽和流量数据查询。
         推流计费会先取全球推流用量和全球播放用量进行比较，满足计费条件后再按各地区用量出账。详情参见[计费文档](https://cloud.tencent.com/document/product/267/34175)。
 
         :param request: Request instance for DescribePushBandwidthAndFluxList.
@@ -3491,7 +3491,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeRecordTask(self, request):
-        """查询指定时间段范围内启动和结束的录制任务列表。
+        r"""查询指定时间段范围内启动和结束的录制任务列表。
         - 使用前提
         1. 仅用于查询由 CreateRecordTask 接口创建的录制任务。
         2. 不能查询被 DeleteRecordTask 接口删除以及已过期（平台侧保留3个月）的录制任务。
@@ -3517,7 +3517,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeScreenShotSheetNumList(self, request):
-        """接口用来查询直播增值业务--截图的张数
+        r"""接口用来查询直播增值业务--截图的张数
 
         :param request: Request instance for DescribeScreenShotSheetNumList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListRequest`
@@ -3540,7 +3540,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeScreenshotTask(self, request):
-        """查询指定时间段范围内启动和结束的截图任务列表。
+        r"""查询指定时间段范围内启动和结束的截图任务列表。
         - 使用前提
         1. 仅用于查询由 CreateScreenshotTask接口创建的截图任务。
         2. 不能查询被 DeleteScreenshotTask接口删除以及已过期（平台侧保留3个月）的截图任务。
@@ -3566,7 +3566,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamDayPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询天维度每条流的播放数据，包括总流量等。
 
         :param request: Request instance for DescribeStreamDayPlayInfoList.
@@ -3590,7 +3590,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPlayInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
 
         :param request: Request instance for DescribeStreamPlayInfoList.
@@ -3614,7 +3614,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPushInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
 
         :param request: Request instance for DescribeStreamPushInfoList.
@@ -3638,7 +3638,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTimeShiftRecordDetail(self, request):
-        """前提调用 DescribeTimeShiftStreamList 获得请求必要参数。查询指定范围内的时移流录制详情，最大支持24小时范围查询。
+        r"""前提调用 DescribeTimeShiftStreamList 获得请求必要参数。查询指定范围内的时移流录制详情，最大支持24小时范围查询。
 
         :param request: Request instance for DescribeTimeShiftRecordDetail.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftRecordDetailRequest`
@@ -3661,7 +3661,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTimeShiftStreamList(self, request):
-        """查询某个时间范围内所有时移流列表。最大支持查询24小时内的数据。
+        r"""查询某个时间范围内所有时移流列表。最大支持查询24小时内的数据。
 
         :param request: Request instance for DescribeTimeShiftStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftStreamListRequest`
@@ -3684,7 +3684,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTopClientIpSumInfoList(self, request):
-        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询某段时间top n客户端ip汇总信息（暂支持top 1000）
 
         :param request: Request instance for DescribeTopClientIpSumInfoList.
@@ -3708,7 +3708,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTranscodeTaskNum(self, request):
-        """查询转码任务数。
+        r"""查询转码任务数。
 
         :param request: Request instance for DescribeTranscodeTaskNum.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTranscodeTaskNumRequest`
@@ -3731,7 +3731,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeUploadStreamNums(self, request):
-        """直播上行路数查询。
+        r"""直播上行路数查询。
 
         :param request: Request instance for DescribeUploadStreamNums.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsRequest`
@@ -3754,7 +3754,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeVisitTopSumInfoList(self, request):
-        """查询某时间段top n的域名或流id信息（暂支持top 1000）。
+        r"""查询某时间段top n的域名或流id信息（暂支持top 1000）。
 
         :param request: Request instance for DescribeVisitTopSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListRequest`
@@ -3777,7 +3777,7 @@ class LiveClient(AbstractClient):
 
 
     def DropLiveStream(self, request):
-        """断开推流连接，但可以重新推流。
+        r"""断开推流连接，但可以重新推流。
         注：对已经不活跃的流，调用该断流接口时，接口返回成功。
 
         :param request: Request instance for DropLiveStream.
@@ -3801,7 +3801,7 @@ class LiveClient(AbstractClient):
 
 
     def EnableLiveDomain(self, request):
-        """启用状态为停用的直播域名。
+        r"""启用状态为停用的直播域名。
 
         :param request: Request instance for EnableLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainRequest`
@@ -3824,7 +3824,7 @@ class LiveClient(AbstractClient):
 
 
     def EnableOptimalSwitching(self, request):
-        """启用择优调度。
+        r"""启用择优调度。
         注意：流维度的择优调度，当主备流结束后自动失效。
 
         :param request: Request instance for EnableOptimalSwitching.
@@ -3848,7 +3848,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveDomain(self, request):
-        """停止使用某个直播域名。
+        r"""停止使用某个直播域名。
 
         :param request: Request instance for ForbidLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`
@@ -3871,7 +3871,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveStream(self, request):
-        """禁止某条流的推送，可以预设某个时刻将流恢复。
+        r"""禁止某条流的推送，可以预设某个时刻将流恢复。
         注意：
         1. 默认只要流名称正确，禁推就会生效。
         2. 如需要推流域名+推流路径+流名称 强匹配生效禁推，需提单联系售后开启配置。
@@ -3898,7 +3898,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCaster(self, request):
-        """该接口用来设置导播台的描述、名称、录制模板id等参数。
+        r"""该接口用来设置导播台的描述、名称、录制模板id等参数。
 
         :param request: Request instance for ModifyCaster.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterRequest`
@@ -3921,7 +3921,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCasterInputInfo(self, request):
-        """该接口用来修改已经设置过的输入源信息，如源地址，源类型等。
+        r"""该接口用来修改已经设置过的输入源信息，如源地址，源类型等。
         设置前，需保证待修改的输入源已经存在。若不存在，需使用AddCasterInputInfo接口。
 
         :param request: Request instance for ModifyCasterInputInfo.
@@ -3945,7 +3945,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCasterLayoutInfo(self, request):
-        """该接口用来修改布局参数
+        r"""该接口用来修改布局参数
 
         :param request: Request instance for ModifyCasterLayoutInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterLayoutInfoRequest`
@@ -3968,7 +3968,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCasterMarkPicInfo(self, request):
-        """该接口用来修改导播台水印信息。
+        r"""该接口用来修改导播台水印信息。
         注意，修改的Index对应的水印需已存在
 
         :param request: Request instance for ModifyCasterMarkPicInfo.
@@ -3992,7 +3992,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCasterMarkWordInfo(self, request):
-        """该接口用来修改导播台文本配置。
+        r"""该接口用来修改导播台文本配置。
 
         :param request: Request instance for ModifyCasterMarkWordInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterMarkWordInfoRequest`
@@ -4015,7 +4015,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyCasterOutputInfo(self, request):
-        """该接口用来修改导播台的推流信息。
+        r"""该接口用来修改导播台的推流信息。
         注：只有在主监启动前设置才生效，主监启动后设置，下次推流生效。
 
         :param request: Request instance for ModifyCasterOutputInfo.
@@ -4039,7 +4039,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveCallbackTemplate(self, request):
-        """修改回调模板。
+        r"""修改回调模板。
 
         :param request: Request instance for ModifyLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCallbackTemplateRequest`
@@ -4062,7 +4062,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveDomainCertBindings(self, request):
-        """批量绑定证书对应的播放域名，并更新启用状态。
+        r"""批量绑定证书对应的播放域名，并更新启用状态。
         新建自有证书将自动上传至腾讯云ssl。
 
         :param request: Request instance for ModifyLiveDomainCertBindings.
@@ -4086,7 +4086,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveDomainReferer(self, request):
-        """设置直播域名 Referer 黑白名单。
+        r"""设置直播域名 Referer 黑白名单。
         由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 WebRTC 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
 
         :param request: Request instance for ModifyLiveDomainReferer.
@@ -4110,7 +4110,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePadTemplate(self, request):
-        """修改直播垫片模板。
+        r"""修改直播垫片模板。
 
         :param request: Request instance for ModifyLivePadTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePadTemplateRequest`
@@ -4133,7 +4133,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePlayAuthKey(self, request):
-        """修改播放鉴权key
+        r"""修改播放鉴权key
 
         :param request: Request instance for ModifyLivePlayAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayAuthKeyRequest`
@@ -4156,7 +4156,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePlayDomain(self, request):
-        """修改播放域名信息。
+        r"""修改播放域名信息。
 
         :param request: Request instance for ModifyLivePlayDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainRequest`
@@ -4179,7 +4179,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePullStreamTask(self, request):
-        """更新直播拉流任务。
+        r"""更新直播拉流任务。
         1. 不支持修改拉流源类型，如需更换，请创建新任务。
 
         :param request: Request instance for ModifyLivePullStreamTask.
@@ -4203,7 +4203,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePushAuthKey(self, request):
-        """修改直播推流鉴权key
+        r"""修改直播推流鉴权key
 
         :param request: Request instance for ModifyLivePushAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePushAuthKeyRequest`
@@ -4226,7 +4226,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        """修改录制模板配置。
+        r"""修改录制模板配置。
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveRecordTemplateRequest`
@@ -4249,7 +4249,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveSnapshotTemplate(self, request):
-        """修改截图模板配置。
+        r"""修改截图模板配置。
 
         :param request: Request instance for ModifyLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveSnapshotTemplateRequest`
@@ -4272,7 +4272,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveStreamMonitor(self, request):
-        """该接口用来修改直播流监播任务的配置。
+        r"""该接口用来修改直播流监播任务的配置。
 
         :param request: Request instance for ModifyLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveStreamMonitorRequest`
@@ -4295,7 +4295,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTimeShiftTemplate(self, request):
-        """修改直播时移模板。
+        r"""修改直播时移模板。
 
         :param request: Request instance for ModifyLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTimeShiftTemplateRequest`
@@ -4318,7 +4318,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTranscodeTemplate(self, request):
-        """修改转码模板配置。
+        r"""修改转码模板配置。
 
         :param request: Request instance for ModifyLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTranscodeTemplateRequest`
@@ -4341,7 +4341,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyPullStreamConfig(self, request):
-        """更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。
+        r"""更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。
 
         :param request: Request instance for ModifyPullStreamConfig.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigRequest`
@@ -4364,7 +4364,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyPullStreamStatus(self, request):
-        """修改直播拉流配置的状态。该接口已下线,请使用新接口 ModifyLivePullStreamTask。
+        r"""修改直播拉流配置的状态。该接口已下线,请使用新接口 ModifyLivePullStreamTask。
 
         :param request: Request instance for ModifyPullStreamStatus.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusRequest`
@@ -4387,7 +4387,7 @@ class LiveClient(AbstractClient):
 
 
     def ReleaseCaster(self, request):
-        """调用该接口，释放导播台实例，但保留所有的配置。
+        r"""调用该接口，释放导播台实例，但保留所有的配置。
         执行该接口，预监与主监画面停止，第三方推流停止。
         点播文件与直播地址将停止展示，客户自行推到导播台的流需要手动停止。
 
@@ -4412,7 +4412,7 @@ class LiveClient(AbstractClient):
 
 
     def RestartLivePullStreamTask(self, request):
-        """将正在运行的拉流转推任务进行重启。
+        r"""将正在运行的拉流转推任务进行重启。
         注意：
         1. 重启任务会造成推流中断。
         2. 点播源任务的重启，会根据VodRefreshType决定是续播还是从头开始播。
@@ -4438,7 +4438,7 @@ class LiveClient(AbstractClient):
 
 
     def ResumeDelayLiveStream(self, request):
-        """取消直播流设置的延时配置，恢复实时直播画面。
+        r"""取消直播流设置的延时配置，恢复实时直播画面。
 
         :param request: Request instance for ResumeDelayLiveStream.
         :type request: :class:`tencentcloud.live.v20180801.models.ResumeDelayLiveStreamRequest`
@@ -4461,7 +4461,7 @@ class LiveClient(AbstractClient):
 
 
     def ResumeLiveStream(self, request):
-        """恢复某条流的推流。
+        r"""恢复某条流的推流。
 
         :param request: Request instance for ResumeLiveStream.
         :type request: :class:`tencentcloud.live.v20180801.models.ResumeLiveStreamRequest`
@@ -4484,7 +4484,7 @@ class LiveClient(AbstractClient):
 
 
     def SendLiveCloudEffect(self, request):
-        """使用该接口发送云端特效到线上正活跃的直播流，观众可在播放端看到特效从直播流画面中展示。
+        r"""使用该接口发送云端特效到线上正活跃的直播流，观众可在播放端看到特效从直播流画面中展示。
 
         :param request: Request instance for SendLiveCloudEffect.
         :type request: :class:`tencentcloud.live.v20180801.models.SendLiveCloudEffectRequest`
@@ -4507,7 +4507,7 @@ class LiveClient(AbstractClient):
 
 
     def StartLivePadStream(self, request):
-        """使用该接口将直播流开始切入垫片。
+        r"""使用该接口将直播流开始切入垫片。
 
         :param request: Request instance for StartLivePadStream.
         :type request: :class:`tencentcloud.live.v20180801.models.StartLivePadStreamRequest`
@@ -4530,7 +4530,7 @@ class LiveClient(AbstractClient):
 
 
     def StartLiveStreamMonitor(self, request):
-        """该接口用来启动直播流监播任务。
+        r"""该接口用来启动直播流监播任务。
 
         :param request: Request instance for StartLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.StartLiveStreamMonitorRequest`
@@ -4553,7 +4553,7 @@ class LiveClient(AbstractClient):
 
 
     def StopCasterPgm(self, request):
-        """该接口用来停止导播台的主监输出。
+        r"""该接口用来停止导播台的主监输出。
         停止主监后，对应的推流到腾讯云直播源站和推流到其他第三方平台均将会停止。
 
         :param request: Request instance for StopCasterPgm.
@@ -4577,7 +4577,7 @@ class LiveClient(AbstractClient):
 
 
     def StopCasterPvw(self, request):
-        """该接口用来停止导播台的预监任务。
+        r"""该接口用来停止导播台的预监任务。
 
         :param request: Request instance for StopCasterPvw.
         :type request: :class:`tencentcloud.live.v20180801.models.StopCasterPvwRequest`
@@ -4600,7 +4600,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLivePadStream(self, request):
-        """使用该接口将直播流停止切入垫片。
+        r"""使用该接口将直播流停止切入垫片。
 
         :param request: Request instance for StopLivePadStream.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamRequest`
@@ -4623,7 +4623,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLiveRecord(self, request):
-        """说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
+        r"""说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
 
         :param request: Request instance for StopLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLiveRecordRequest`
@@ -4646,7 +4646,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLiveStreamMonitor(self, request):
-        """该接口用来停止直播流监播任务。
+        r"""该接口用来停止直播流监播任务。
 
         :param request: Request instance for StopLiveStreamMonitor.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLiveStreamMonitorRequest`
@@ -4669,7 +4669,7 @@ class LiveClient(AbstractClient):
 
 
     def StopRecordTask(self, request):
-        """提前结束录制，中止运行中的录制任务并生成录制文件。任务被成功终止后，本次任务将不再启动。
+        r"""提前结束录制，中止运行中的录制任务并生成录制文件。任务被成功终止后，本次任务将不再启动。
 
         :param request: Request instance for StopRecordTask.
         :type request: :class:`tencentcloud.live.v20180801.models.StopRecordTaskRequest`
@@ -4692,7 +4692,7 @@ class LiveClient(AbstractClient):
 
 
     def StopScreenshotTask(self, request):
-        """提前结束截图，中止运行中的截图任务。任务被成功终止后，本次任务将不再启动。
+        r"""提前结束截图，中止运行中的截图任务。任务被成功终止后，本次任务将不再启动。
 
         :param request: Request instance for StopScreenshotTask.
         :type request: :class:`tencentcloud.live.v20180801.models.StopScreenshotTaskRequest`
@@ -4715,7 +4715,7 @@ class LiveClient(AbstractClient):
 
 
     def SwitchBackupStream(self, request):
-        """调用该接口实现切换当前播放所使用的主备流。
+        r"""调用该接口实现切换当前播放所使用的主备流。
 
         :param request: Request instance for SwitchBackupStream.
         :type request: :class:`tencentcloud.live.v20180801.models.SwitchBackupStreamRequest`
@@ -4738,7 +4738,7 @@ class LiveClient(AbstractClient):
 
 
     def UnBindLiveDomainCert(self, request):
-        """解绑域名证书
+        r"""解绑域名证书
 
         :param request: Request instance for UnBindLiveDomainCert.
         :type request: :class:`tencentcloud.live.v20180801.models.UnBindLiveDomainCertRequest`
@@ -4761,7 +4761,7 @@ class LiveClient(AbstractClient):
 
 
     def UpdateLiveWatermark(self, request):
-        """更新水印。
+        r"""更新水印。
 
         :param request: Request instance for UpdateLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkRequest`

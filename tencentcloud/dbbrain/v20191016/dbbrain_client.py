@@ -27,7 +27,7 @@ class DbbrainClient(AbstractClient):
 
 
     def AddUserContact(self, request):
-        """添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。Region统一选择广州。
+        r"""添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。Region统一选择广州。
 
         :param request: Request instance for AddUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactRequest`
@@ -50,7 +50,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportTask(self, request):
-        """创建健康报告，并可以选择是否发送邮件。
+        r"""创建健康报告，并可以选择是否发送邮件。
 
         :param request: Request instance for CreateDBDiagReportTask.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskRequest`
@@ -73,7 +73,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportUrl(self, request):
-        """创建健康报告的浏览地址。
+        r"""创建健康报告的浏览地址。
 
         :param request: Request instance for CreateDBDiagReportUrl.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportUrlRequest`
@@ -96,7 +96,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateMailProfile(self, request):
-        """创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
+        r"""创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
 
         :param request: Request instance for CreateMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
@@ -119,7 +119,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateSchedulerMailProfile(self, request):
-        """该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
+        r"""该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
 
         :param request: Request instance for CreateSchedulerMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileRequest`
@@ -142,7 +142,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateSecurityAuditLogExportTask(self, request):
-        """创建安全审计日志导出任务。
+        r"""创建安全审计日志导出任务。
 
         :param request: Request instance for CreateSecurityAuditLogExportTask.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSecurityAuditLogExportTaskRequest`
@@ -165,7 +165,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DeleteSecurityAuditLogExportTasks(self, request):
-        """删除安全审计日志导出任务。
+        r"""删除安全审计日志导出任务。
 
         :param request: Request instance for DeleteSecurityAuditLogExportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DeleteSecurityAuditLogExportTasksRequest`
@@ -188,7 +188,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserContact(self, request):
-        """获取邮件发送中联系人的相关信息。
+        r"""获取邮件发送中联系人的相关信息。
 
         :param request: Request instance for DescribeAllUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactRequest`
@@ -211,7 +211,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserGroup(self, request):
-        """获取邮件发送联系组的相关信息。
+        r"""获取邮件发送联系组的相关信息。
 
         :param request: Request instance for DescribeAllUserGroup.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupRequest`
@@ -234,7 +234,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagEvent(self, request):
-        """获取实例异常诊断事件的详情信息。
+        r"""获取实例异常诊断事件的详情信息。
 
         :param request: Request instance for DescribeDBDiagEvent.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventRequest`
@@ -257,7 +257,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagHistory(self, request):
-        """获取实例诊断事件的列表。
+        r"""获取实例诊断事件的列表。
 
         :param request: Request instance for DescribeDBDiagHistory.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryRequest`
@@ -280,7 +280,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagReportTasks(self, request):
-        """查询健康报告生成任务列表。
+        r"""查询健康报告生成任务列表。
 
         :param request: Request instance for DescribeDBDiagReportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagReportTasksRequest`
@@ -303,7 +303,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBSpaceStatus(self, request):
-        """获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
+        r"""获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
 
         :param request: Request instance for DescribeDBSpaceStatus.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBSpaceStatusRequest`
@@ -326,7 +326,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDiagDBInstances(self, request):
-        """获取实例信息列表。Region统一选择广州。
+        r"""获取实例信息列表。Region统一选择广州。
 
         :param request: Request instance for DescribeDiagDBInstances.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesRequest`
@@ -349,7 +349,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeHealthScore(self, request):
-        """根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
+        r"""根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
 
         :param request: Request instance for DescribeHealthScore.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreRequest`
@@ -372,7 +372,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMailProfile(self, request):
-        """获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。Region统一选择广州。
+        r"""获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。Region统一选择广州。
 
         :param request: Request instance for DescribeMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileRequest`
@@ -395,7 +395,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMySqlProcessList(self, request):
-        """查询关系型数据库的实时线程列表。
+        r"""查询关系型数据库的实时线程列表。
 
         :param request: Request instance for DescribeMySqlProcessList.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMySqlProcessListRequest`
@@ -418,7 +418,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSecurityAuditLogDownloadUrls(self, request):
-        """查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
+        r"""查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
 
         :param request: Request instance for DescribeSecurityAuditLogDownloadUrls.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogDownloadUrlsRequest`
@@ -441,7 +441,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSecurityAuditLogExportTasks(self, request):
-        """查询安全审计日志导出任务列表。
+        r"""查询安全审计日志导出任务列表。
 
         :param request: Request instance for DescribeSecurityAuditLogExportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogExportTasksRequest`
@@ -464,7 +464,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTimeSeriesStats(self, request):
-        """获取慢日志统计柱状图。
+        r"""获取慢日志统计柱状图。
 
         :param request: Request instance for DescribeSlowLogTimeSeriesStats.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsRequest`
@@ -487,7 +487,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTopSqls(self, request):
-        """按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+        r"""按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
 
         :param request: Request instance for DescribeSlowLogTopSqls.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsRequest`
@@ -510,7 +510,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogUserHostStats(self, request):
-        """获取慢日志来源地址统计分布图。
+        r"""获取慢日志来源地址统计分布图。
 
         :param request: Request instance for DescribeSlowLogUserHostStats.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogUserHostStatsRequest`
@@ -533,7 +533,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemaTimeSeries(self, request):
-        """获取实例占用空间最大的前几个库在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+        r"""获取实例占用空间最大的前几个库在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
 
         :param request: Request instance for DescribeTopSpaceSchemaTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemaTimeSeriesRequest`
@@ -556,7 +556,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemas(self, request):
-        """获取实例Top库的实时空间统计信息，默认返回按大小排序。
+        r"""获取实例Top库的实时空间统计信息，默认返回按大小排序。
 
         :param request: Request instance for DescribeTopSpaceSchemas.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemasRequest`
@@ -579,7 +579,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTableTimeSeries(self, request):
-        """获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+        r"""获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
 
         :param request: Request instance for DescribeTopSpaceTableTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTableTimeSeriesRequest`
@@ -602,7 +602,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTables(self, request):
-        """获取实例Top表的实时空间统计信息，默认返回按大小排序。
+        r"""获取实例Top表的实时空间统计信息，默认返回按大小排序。
 
         :param request: Request instance for DescribeTopSpaceTables.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTablesRequest`
@@ -625,7 +625,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeUserSqlAdvice(self, request):
-        """获取SQL优化建议。
+        r"""获取SQL优化建议。
 
         :param request: Request instance for DescribeUserSqlAdvice.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceRequest`
@@ -648,7 +648,7 @@ class DbbrainClient(AbstractClient):
 
 
     def ModifyDiagDBInstanceConf(self, request):
-        """修改实例巡检开关。
+        r"""修改实例巡检开关。
 
         :param request: Request instance for ModifyDiagDBInstanceConf.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfRequest`

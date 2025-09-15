@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AggregateResourceInfo(AbstractModel):
-    """资源列列表信息
+    r"""资源列列表信息
 
     """
 
@@ -65,7 +65,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -76,7 +76,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._ResourceName
@@ -87,7 +87,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -98,7 +98,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -109,7 +109,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """资源状态
+        r"""资源状态
         :rtype: str
         """
         return self._ResourceStatus
@@ -120,7 +120,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceDelete(self):
-        """是否删除 1:已删除 0:未删除
+        r"""是否删除 1:已删除 0:未删除
         :rtype: int
         """
         return self._ResourceDelete
@@ -131,7 +131,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源创建时间
+        r"""资源创建时间
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -142,7 +142,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of Tag
         """
         return self._Tags
@@ -153,7 +153,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceZone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._ResourceZone
@@ -164,7 +164,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """合规状态
+        r"""合规状态
         :rtype: str
         """
         return self._ComplianceResult
@@ -175,7 +175,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceOwnerId(self):
-        """资源所属用户ID
+        r"""资源所属用户ID
         :rtype: int
         """
         return self._ResourceOwnerId
@@ -186,7 +186,7 @@ class AggregateResourceInfo(AbstractModel):
 
     @property
     def ResourceOwnerName(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._ResourceOwnerName
@@ -225,7 +225,7 @@ class AggregateResourceInfo(AbstractModel):
 
 
 class Annotation(AbstractModel):
-    """合规详情
+    r"""合规详情
 
     """
 
@@ -247,7 +247,7 @@ class Annotation(AbstractModel):
 
     @property
     def Configuration(self):
-        """资源当前实际配置。长度为0~256位字符，即资源不合规配置
+        r"""资源当前实际配置。长度为0~256位字符，即资源不合规配置
         :rtype: str
         """
         return self._Configuration
@@ -258,7 +258,7 @@ class Annotation(AbstractModel):
 
     @property
     def DesiredValue(self):
-        """资源期望配置。长度为0~256位字符，即资源合规配置
+        r"""资源期望配置。长度为0~256位字符，即资源合规配置
         :rtype: str
         """
         return self._DesiredValue
@@ -269,7 +269,7 @@ class Annotation(AbstractModel):
 
     @property
     def Operator(self):
-        """资源当前配置和期望配置之间的比较运算符。长度为0~16位字符，自定义规则上报评估结果此字段可能为空
+        r"""资源当前配置和期望配置之间的比较运算符。长度为0~16位字符，自定义规则上报评估结果此字段可能为空
         :rtype: str
         """
         return self._Operator
@@ -280,7 +280,7 @@ class Annotation(AbstractModel):
 
     @property
     def Property(self):
-        """当前配置在资源属性结构体中的JSON路径。长度为0~256位字符，自定义规则上报评估结果此字段可能为空
+        r"""当前配置在资源属性结构体中的JSON路径。长度为0~256位字符，自定义规则上报评估结果此字段可能为空
         :rtype: str
         """
         return self._Property
@@ -306,7 +306,7 @@ class Annotation(AbstractModel):
 
 
 class ConfigRule(AbstractModel):
-    """规则详情
+    r"""规则详情
 
     """
 
@@ -411,7 +411,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Identifier(self):
-        """规则标识
+        r"""规则标识
         :rtype: str
         """
         return self._Identifier
@@ -422,7 +422,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RuleName(self):
-        """规则名
+        r"""规则名
         :rtype: str
         """
         return self._RuleName
@@ -433,7 +433,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def InputParameter(self):
-        """规则参数
+        r"""规则参数
         :rtype: list of InputParameter
         """
         return self._InputParameter
@@ -444,7 +444,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def SourceCondition(self):
-        """规则触发条件
+        r"""规则触发条件
         :rtype: list of SourceConditionForManage
         """
         return self._SourceCondition
@@ -455,7 +455,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ResourceType(self):
-        """规则支持的资源类型，规则仅对指定资源类型的资源生效。
+        r"""规则支持的资源类型，规则仅对指定资源类型的资源生效。
         :rtype: list of str
         """
         return self._ResourceType
@@ -466,7 +466,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Labels(self):
-        """规则所属标签
+        r"""规则所属标签
         :rtype: list of str
         """
         return self._Labels
@@ -477,7 +477,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RiskLevel(self):
-        """规则风险等级
+        r"""规则风险等级
 1:低风险
 2:中风险
 3:高风险
@@ -491,7 +491,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ServiceFunction(self):
-        """规则对应的函数
+        r"""规则对应的函数
         :rtype: str
         """
         return self._ServiceFunction
@@ -502,7 +502,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 格式：YYYY-MM-DD h:i:s
         :rtype: str
         """
@@ -514,7 +514,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Description(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._Description
@@ -525,7 +525,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Status(self):
-        """ACTIVE：启用
+        r"""ACTIVE：启用
 NO_ACTIVE：停止
         :rtype: str
         """
@@ -537,7 +537,7 @@ NO_ACTIVE：停止
 
     @property
     def ComplianceResult(self):
-        """合规： 'COMPLIANT'
+        r"""合规： 'COMPLIANT'
 不合规： 'NON_COMPLIANT'
 无法应用规则： 'NOT_APPLICABLE'
         :rtype: str
@@ -550,7 +550,7 @@ NO_ACTIVE：停止
 
     @property
     def Annotation(self):
-        """["",""]
+        r"""["",""]
         :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
         """
         return self._Annotation
@@ -561,7 +561,7 @@ NO_ACTIVE：停止
 
     @property
     def ConfigRuleInvokedTime(self):
-        """规则评估时间
+        r"""规则评估时间
 格式：YYYY-MM-DD h:i:s
 
         :rtype: str
@@ -574,7 +574,7 @@ NO_ACTIVE：停止
 
     @property
     def ConfigRuleId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._ConfigRuleId
@@ -585,7 +585,7 @@ NO_ACTIVE：停止
 
     @property
     def IdentifierType(self):
-        """CUSTOMIZE：自定义规则、
+        r"""CUSTOMIZE：自定义规则、
 SYSTEM：托管规则
         :rtype: str
         """
@@ -597,7 +597,7 @@ SYSTEM：托管规则
 
     @property
     def CompliancePackId(self):
-        """合规包ID
+        r"""合规包ID
         :rtype: str
         """
         return self._CompliancePackId
@@ -608,7 +608,7 @@ SYSTEM：托管规则
 
     @property
     def TriggerType(self):
-        """触发类型
+        r"""触发类型
 ScheduledNotification：周期触发、
 ConfigurationItemChangeNotification：变更触发
         :rtype: list of TriggerType
@@ -621,7 +621,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ManageInputParameter(self):
-        """参数详情
+        r"""参数详情
         :rtype: list of InputParameterForManage
         """
         return self._ManageInputParameter
@@ -632,7 +632,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CompliancePackName(self):
-        """合规包名称
+        r"""合规包名称
         :rtype: str
         """
         return self._CompliancePackName
@@ -643,7 +643,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RegionsScope(self):
-        """关联地域
+        r"""关联地域
         :rtype: list of str
         """
         return self._RegionsScope
@@ -654,7 +654,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def TagsScope(self):
-        """关联标签
+        r"""关联标签
         :rtype: list of Tag
         """
         return self._TagsScope
@@ -665,7 +665,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ExcludeResourceIdsScope(self):
-        """ 规则对指定资源ID无效，即不对该资源执行评估。
+        r""" 规则对指定资源ID无效，即不对该资源执行评估。
         :rtype: list of str
         """
         return self._ExcludeResourceIdsScope
@@ -676,7 +676,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -687,7 +687,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def AccountGroupName(self):
-        """账号组名称
+        r"""账号组名称
         :rtype: str
         """
         return self._AccountGroupName
@@ -698,7 +698,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RuleOwnerId(self):
-        """规则所属用户ID
+        r"""规则所属用户ID
         :rtype: int
         """
         return self._RuleOwnerId
@@ -709,7 +709,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ManageTriggerType(self):
-        """预设规则支持的触发方式
+        r"""预设规则支持的触发方式
 ScheduledNotification：周期触发
 ConfigurationItemChangeNotification：变更触发
         :rtype: list of str
@@ -787,7 +787,7 @@ ConfigurationItemChangeNotification：变更触发
 
 
 class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
-    """DescribeAggregateDiscoveredResource请求参数结构体
+    r"""DescribeAggregateDiscoveredResource请求参数结构体
 
     """
 
@@ -812,7 +812,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -823,7 +823,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -834,7 +834,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -845,7 +845,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -856,7 +856,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceOwnerId(self):
-        """资源所属用户ID
+        r"""资源所属用户ID
         :rtype: int
         """
         return self._ResourceOwnerId
@@ -883,7 +883,7 @@ class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
 
 
 class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
-    """DescribeAggregateDiscoveredResource返回参数结构体
+    r"""DescribeAggregateDiscoveredResource返回参数结构体
 
     """
 
@@ -923,7 +923,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -934,7 +934,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -945,7 +945,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名
+        r"""资源名
         :rtype: str
         """
         return self._ResourceName
@@ -956,7 +956,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -967,7 +967,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceZone(self):
-        """资源可用区
+        r"""资源可用区
         :rtype: str
         """
         return self._ResourceZone
@@ -978,7 +978,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def Configuration(self):
-        """资源配置
+        r"""资源配置
         :rtype: str
         """
         return self._Configuration
@@ -989,7 +989,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源创建时间
+        r"""资源创建时间
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -1000,7 +1000,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of Tag
         """
         return self._Tags
@@ -1011,7 +1011,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """资源更新时间
+        r"""资源更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -1022,7 +1022,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1051,7 +1051,7 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
 
 
 class DescribeDiscoveredResourceRequest(AbstractModel):
-    """DescribeDiscoveredResource请求参数结构体
+    r"""DescribeDiscoveredResource请求参数结构体
 
     """
 
@@ -1070,7 +1070,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -1081,7 +1081,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -1092,7 +1092,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -1117,7 +1117,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
 
 class DescribeDiscoveredResourceResponse(AbstractModel):
-    """DescribeDiscoveredResource返回参数结构体
+    r"""DescribeDiscoveredResource返回参数结构体
 
     """
 
@@ -1157,7 +1157,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -1168,7 +1168,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -1179,7 +1179,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名
+        r"""资源名
         :rtype: str
         """
         return self._ResourceName
@@ -1190,7 +1190,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -1201,7 +1201,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceZone(self):
-        """资源可用区
+        r"""资源可用区
         :rtype: str
         """
         return self._ResourceZone
@@ -1212,7 +1212,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def Configuration(self):
-        """资源配置
+        r"""资源配置
         :rtype: str
         """
         return self._Configuration
@@ -1223,7 +1223,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源创建时间
+        r"""资源创建时间
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -1234,7 +1234,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of Tag
         """
         return self._Tags
@@ -1245,7 +1245,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """资源更新时间
+        r"""资源更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -1256,7 +1256,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1285,7 +1285,7 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
 
 
 class Evaluation(AbstractModel):
-    """自定义规则评估结果
+    r"""自定义规则评估结果
 
     """
 
@@ -1315,7 +1315,7 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceResourceId(self):
-        """已评估资源ID。长度为0~256个字符
+        r"""已评估资源ID。长度为0~256个字符
         :rtype: str
         """
         return self._ComplianceResourceId
@@ -1326,7 +1326,7 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceResourceType(self):
-        """已评估资源类型。
+        r"""已评估资源类型。
 支持:
 QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::VPC::SecurityGroup、 QCS::CAM::User、QCS::CAM::Group、QCS::CAM::Policy、QCS::CAM::Role、QCS::COS::Bucket
         :rtype: str
@@ -1339,7 +1339,7 @@ QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::V
 
     @property
     def ComplianceRegion(self):
-        """已评估资源地域。
+        r"""已评估资源地域。
 长度为0~32个字符
         :rtype: str
         """
@@ -1351,7 +1351,7 @@ QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::V
 
     @property
     def ComplianceType(self):
-        """合规类型。取值：
+        r"""合规类型。取值：
 COMPLIANT：合规、
 NON_COMPLIANT：不合规
         :rtype: str
@@ -1364,7 +1364,7 @@ NON_COMPLIANT：不合规
 
     @property
     def Annotation(self):
-        """不合规资源的补充信息。
+        r"""不合规资源的补充信息。
         :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
         """
         return self._Annotation
@@ -1393,7 +1393,7 @@ NON_COMPLIANT：不合规
 
 
 class Filter(AbstractModel):
-    """资源列表筛选
+    r"""资源列表筛选
 
     """
 
@@ -1409,7 +1409,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """查询字段名称 资源名称：resourceName  资源ID：resourceId 资源类型：resourceType 资源地域：resourceRegion    删除状态：resourceDelete 0未删除，1已删除  resourceRegionAndZone地域/可用区
+        r"""查询字段名称 资源名称：resourceName  资源ID：resourceId 资源类型：resourceType 资源地域：resourceRegion    删除状态：resourceDelete 0未删除，1已删除  resourceRegionAndZone地域/可用区
         :rtype: str
         """
         return self._Name
@@ -1420,7 +1420,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """查询字段值
+        r"""查询字段值
         :rtype: list of str
         """
         return self._Values
@@ -1444,7 +1444,7 @@ class Filter(AbstractModel):
 
 
 class InputParameter(AbstractModel):
-    """参数值
+    r"""参数值
 
     """
 
@@ -1463,7 +1463,7 @@ class InputParameter(AbstractModel):
 
     @property
     def ParameterKey(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._ParameterKey
@@ -1474,7 +1474,7 @@ class InputParameter(AbstractModel):
 
     @property
     def Type(self):
-        """参数类型。必填类型：Require，可选类型：Optional。
+        r"""参数类型。必填类型：Require，可选类型：Optional。
         :rtype: str
         """
         return self._Type
@@ -1485,7 +1485,7 @@ class InputParameter(AbstractModel):
 
     @property
     def Value(self):
-        """参数值
+        r"""参数值
         :rtype: str
         """
         return self._Value
@@ -1510,7 +1510,7 @@ class InputParameter(AbstractModel):
 
 
 class InputParameterForManage(AbstractModel):
-    """规则入参
+    r"""规则入参
 
     """
 
@@ -1535,7 +1535,7 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def ValueType(self):
-        """值类型。数值：Integer， 字符串：String
+        r"""值类型。数值：Integer， 字符串：String
         :rtype: str
         """
         return self._ValueType
@@ -1546,7 +1546,7 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def ParameterKey(self):
-        """参数Key
+        r"""参数Key
         :rtype: str
         """
         return self._ParameterKey
@@ -1557,7 +1557,7 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def Type(self):
-        """参数类型。必填类型：Require，可选类型：Optional。
+        r"""参数类型。必填类型：Require，可选类型：Optional。
         :rtype: str
         """
         return self._Type
@@ -1568,7 +1568,7 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """默认值
+        r"""默认值
         :rtype: str
         """
         return self._DefaultValue
@@ -1579,7 +1579,7 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -1606,7 +1606,7 @@ class InputParameterForManage(AbstractModel):
 
 
 class ListAggregateConfigRulesRequest(AbstractModel):
-    """ListAggregateConfigRules请求参数结构体
+    r"""ListAggregateConfigRules请求参数结构体
 
     """
 
@@ -1646,7 +1646,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页限制
+        r"""每页限制
         :rtype: int
         """
         return self._Limit
@@ -1657,7 +1657,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -1668,7 +1668,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -1679,7 +1679,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型, 倒序：desc，顺序：asc
+        r"""排序类型, 倒序：desc，顺序：asc
         :rtype: str
         """
         return self._OrderType
@@ -1690,7 +1690,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
 1：高风险。
 2：中风险。
 3：低风险。
@@ -1704,7 +1704,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
-        """规则状态
+        r"""规则状态
         :rtype: str
         """
         return self._State
@@ -1715,7 +1715,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """评估结果
+        r"""评估结果
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -1726,7 +1726,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """规则名
+        r"""规则名
         :rtype: str
         """
         return self._RuleName
@@ -1737,7 +1737,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleOwnerId(self):
-        """规则所属账号ID
+        r"""规则所属账号ID
         :rtype: int
         """
         return self._RuleOwnerId
@@ -1768,7 +1768,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
 
 class ListAggregateConfigRulesResponse(AbstractModel):
-    """ListAggregateConfigRules返回参数结构体
+    r"""ListAggregateConfigRules返回参数结构体
 
     """
 
@@ -1787,7 +1787,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1798,7 +1798,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """详情
+        r"""详情
         :rtype: list of ConfigRule
         """
         return self._Items
@@ -1809,7 +1809,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1831,7 +1831,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
 
 class ListAggregateDiscoveredResourcesRequest(AbstractModel):
-    """ListAggregateDiscoveredResources请求参数结构体
+    r"""ListAggregateDiscoveredResources请求参数结构体
 
     """
 
@@ -1859,7 +1859,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """每页显示数量
+        r"""每页显示数量
         :rtype: int
         """
         return self._MaxResults
@@ -1870,7 +1870,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组ID
+        r"""账号组ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -1881,7 +1881,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """resourceName：资源名  resourceId ：资源ID resourceType：资源类型
+        r"""resourceName：资源名  resourceId ：资源ID resourceType：资源类型
         :rtype: list of Filter
         """
         return self._Filters
@@ -1892,7 +1892,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tags
@@ -1903,7 +1903,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """下一页token
+        r"""下一页token
         :rtype: str
         """
         return self._NextToken
@@ -1914,7 +1914,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式 asc、desc
+        r"""排序方式 asc、desc
         :rtype: str
         """
         return self._OrderType
@@ -1952,7 +1952,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
 
 class ListAggregateDiscoveredResourcesResponse(AbstractModel):
-    """ListAggregateDiscoveredResources返回参数结构体
+    r"""ListAggregateDiscoveredResources返回参数结构体
 
     """
 
@@ -1972,7 +1972,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """详情
+        r"""详情
         :rtype: list of AggregateResourceInfo
         """
         return self._Items
@@ -1983,7 +1983,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """下一页
+        r"""下一页
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1995,7 +1995,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2017,7 +2017,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
 
 class ListConfigRulesRequest(AbstractModel):
-    """ListConfigRules请求参数结构体
+    r"""ListConfigRules请求参数结构体
 
     """
 
@@ -2060,7 +2060,7 @@ NON_COMPLIANT：不合规
 
     @property
     def Limit(self):
-        """每页数量。
+        r"""每页数量。
 取值范围：1~200
         :rtype: int
         """
@@ -2072,7 +2072,7 @@ NON_COMPLIANT：不合规
 
     @property
     def Offset(self):
-        """偏移量。
+        r"""偏移量。
 取值范围：最小值为0
         :rtype: int
         """
@@ -2084,7 +2084,7 @@ NON_COMPLIANT：不合规
 
     @property
     def OrderType(self):
-        """排序类型(规则名称)。
+        r"""排序类型(规则名称)。
 倒序：desc，
 顺序：asc
         :rtype: str
@@ -2097,7 +2097,7 @@ NON_COMPLIANT：不合规
 
     @property
     def RiskLevel(self):
-        """风险等级。
+        r"""风险等级。
 1：高风险，
 2：中风险，
 3：低风险。
@@ -2111,7 +2111,7 @@ NON_COMPLIANT：不合规
 
     @property
     def State(self):
-        """规则状态。
+        r"""规则状态。
 ACTIVE：启用
 UN_ACTIVE：停用
 
@@ -2125,7 +2125,7 @@ UN_ACTIVE：停用
 
     @property
     def ComplianceResult(self):
-        """评估结果。
+        r"""评估结果。
 COMPLIANT：合规
 NON_COMPLIANT：不合规
         :rtype: list of str
@@ -2138,7 +2138,7 @@ NON_COMPLIANT：不合规
 
     @property
     def RuleName(self):
-        """规则名
+        r"""规则名
         :rtype: str
         """
         return self._RuleName
@@ -2167,7 +2167,7 @@ NON_COMPLIANT：不合规
 
 
 class ListConfigRulesResponse(AbstractModel):
-    """ListConfigRules返回参数结构体
+    r"""ListConfigRules返回参数结构体
 
     """
 
@@ -2186,7 +2186,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -2197,7 +2197,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """详情
+        r"""详情
         :rtype: list of ConfigRule
         """
         return self._Items
@@ -2208,7 +2208,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2230,7 +2230,7 @@ class ListConfigRulesResponse(AbstractModel):
 
 
 class ListDiscoveredResourcesRequest(AbstractModel):
-    """ListDiscoveredResources请求参数结构体
+    r"""ListDiscoveredResources请求参数结构体
 
     """
 
@@ -2255,7 +2255,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """每页显示数量
+        r"""每页显示数量
         :rtype: int
         """
         return self._MaxResults
@@ -2266,7 +2266,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """resourceName：资源名  resourceId ：资源ID
+        r"""resourceName：资源名  resourceId ：资源ID
         :rtype: list of Filter
         """
         return self._Filters
@@ -2277,7 +2277,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tags
@@ -2288,7 +2288,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """下一页token
+        r"""下一页token
         :rtype: str
         """
         return self._NextToken
@@ -2299,7 +2299,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式 asc、desc
+        r"""排序方式 asc、desc
         :rtype: str
         """
         return self._OrderType
@@ -2336,7 +2336,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
 
 class ListDiscoveredResourcesResponse(AbstractModel):
-    """ListDiscoveredResources返回参数结构体
+    r"""ListDiscoveredResources返回参数结构体
 
     """
 
@@ -2356,7 +2356,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """详情
+        r"""详情
         :rtype: list of ResourceListInfo
         """
         return self._Items
@@ -2367,7 +2367,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """下一页
+        r"""下一页
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2379,7 +2379,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2401,7 +2401,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
 
 class PutEvaluationsRequest(AbstractModel):
-    """PutEvaluations请求参数结构体
+    r"""PutEvaluations请求参数结构体
 
     """
 
@@ -2418,7 +2418,7 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def ResultToken(self):
-        """回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
+        r"""回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
 <a href="https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E" target="_blank">云函数入参说明</a>
         :rtype: str
         """
@@ -2430,7 +2430,7 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def Evaluations(self):
-        """自定义规则评估结果信息。
+        r"""自定义规则评估结果信息。
         :rtype: list of Evaluation
         """
         return self._Evaluations
@@ -2459,7 +2459,7 @@ class PutEvaluationsRequest(AbstractModel):
 
 
 class PutEvaluationsResponse(AbstractModel):
-    """PutEvaluations返回参数结构体
+    r"""PutEvaluations返回参数结构体
 
     """
 
@@ -2472,7 +2472,7 @@ class PutEvaluationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2487,7 +2487,7 @@ class PutEvaluationsResponse(AbstractModel):
 
 
 class ResourceListInfo(AbstractModel):
-    """资源列列表信息
+    r"""资源列列表信息
 
     """
 
@@ -2527,7 +2527,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -2538,7 +2538,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._ResourceName
@@ -2549,7 +2549,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -2560,7 +2560,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -2571,7 +2571,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """资源状态
+        r"""资源状态
         :rtype: str
         """
         return self._ResourceStatus
@@ -2582,7 +2582,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceDelete(self):
-        """1 :已删除 2：未删除
+        r"""1 :已删除 2：未删除
         :rtype: int
         """
         return self._ResourceDelete
@@ -2593,7 +2593,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
-        """资源创建时间
+        r"""资源创建时间
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -2604,7 +2604,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """标签信息
+        r"""标签信息
         :rtype: list of Tag
         """
         return self._Tags
@@ -2615,7 +2615,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ResourceZone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._ResourceZone
@@ -2626,7 +2626,7 @@ class ResourceListInfo(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """合规状态
+        r"""合规状态
         :rtype: str
         """
         return self._ComplianceResult
@@ -2663,7 +2663,7 @@ class ResourceListInfo(AbstractModel):
 
 
 class SourceConditionForManage(AbstractModel):
-    """管理端规则条件
+    r"""管理端规则条件
 
     """
 
@@ -2688,7 +2688,7 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def EmptyAs(self):
-        """条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
+        r"""条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
         :rtype: str
         """
         return self._EmptyAs
@@ -2699,7 +2699,7 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def SelectPath(self):
-        """配置路径
+        r"""配置路径
         :rtype: str
         """
         return self._SelectPath
@@ -2710,7 +2710,7 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def Operator(self):
-        """操作运算符
+        r"""操作运算符
         :rtype: str
         """
         return self._Operator
@@ -2721,7 +2721,7 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def Required(self):
-        """是否必须
+        r"""是否必须
         :rtype: bool
         """
         return self._Required
@@ -2732,7 +2732,7 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def DesiredValue(self):
-        """期望值
+        r"""期望值
         :rtype: str
         """
         return self._DesiredValue
@@ -2759,7 +2759,7 @@ class SourceConditionForManage(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -2775,7 +2775,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签key
+        r"""标签key
         :rtype: str
         """
         return self._TagKey
@@ -2786,7 +2786,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签value
+        r"""标签value
         :rtype: str
         """
         return self._TagValue
@@ -2810,7 +2810,7 @@ class Tag(AbstractModel):
 
 
 class TriggerType(AbstractModel):
-    """规则支持触发类型
+    r"""规则支持触发类型
 
     """
 
@@ -2826,7 +2826,7 @@ class TriggerType(AbstractModel):
 
     @property
     def MessageType(self):
-        """触发类型
+        r"""触发类型
         :rtype: str
         """
         return self._MessageType
@@ -2837,7 +2837,7 @@ class TriggerType(AbstractModel):
 
     @property
     def MaximumExecutionFrequency(self):
-        """触发时间周期
+        r"""触发时间周期
         :rtype: str
         """
         return self._MaximumExecutionFrequency

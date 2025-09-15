@@ -27,7 +27,7 @@ class TkeClient(AbstractClient):
 
 
     def AcquireClusterAdminRole(self, request):
-        """通过此接口，可以获取集群的tke:admin的ClusterRole，即管理员角色，可以用于CAM侧高权限的用户，通过CAM策略给予子账户此接口权限，进而可以通过此接口直接获取到kubernetes集群内的管理员角色。
+        r"""通过此接口，可以获取集群的tke:admin的ClusterRole，即管理员角色，可以用于CAM侧高权限的用户，通过CAM策略给予子账户此接口权限，进而可以通过此接口直接获取到kubernetes集群内的管理员角色。
 
         :param request: Request instance for AcquireClusterAdminRole.
         :type request: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleRequest`
@@ -50,7 +50,7 @@ class TkeClient(AbstractClient):
 
 
     def AddClusterCIDR(self, request):
-        """给GR集群增加可用的ClusterCIDR（开白才能使用此功能，如需要请联系我们）
+        r"""给GR集群增加可用的ClusterCIDR（开白才能使用此功能，如需要请联系我们）
 
         :param request: Request instance for AddClusterCIDR.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddClusterCIDRRequest`
@@ -73,7 +73,7 @@ class TkeClient(AbstractClient):
 
 
     def AddExistedInstances(self, request):
-        """添加已经存在的实例到集群
+        r"""添加已经存在的实例到集群
 
         :param request: Request instance for AddExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesRequest`
@@ -96,7 +96,7 @@ class TkeClient(AbstractClient):
 
 
     def AddNodeToNodePool(self, request):
-        """将集群内节点移入节点池
+        r"""将集群内节点移入节点池
 
         :param request: Request instance for AddNodeToNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddNodeToNodePoolRequest`
@@ -119,7 +119,7 @@ class TkeClient(AbstractClient):
 
 
     def AddVpcCniSubnets(self, request):
-        """针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
+        r"""针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
 
         :param request: Request instance for AddVpcCniSubnets.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddVpcCniSubnetsRequest`
@@ -142,7 +142,7 @@ class TkeClient(AbstractClient):
 
 
     def CancelClusterRelease(self, request):
-        """在应用市场中取消安装失败的应用
+        r"""在应用市场中取消安装失败的应用
 
         :param request: Request instance for CancelClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.CancelClusterReleaseRequest`
@@ -165,7 +165,7 @@ class TkeClient(AbstractClient):
 
 
     def CheckEdgeClusterCIDR(self, request):
-        """检查边缘计算集群的CIDR是否冲突
+        r"""检查边缘计算集群的CIDR是否冲突
 
         :param request: Request instance for CheckEdgeClusterCIDR.
         :type request: :class:`tencentcloud.tke.v20180525.models.CheckEdgeClusterCIDRRequest`
@@ -188,7 +188,7 @@ class TkeClient(AbstractClient):
 
 
     def CheckInstancesUpgradeAble(self, request):
-        """检查给定节点列表中哪些是可升级的
+        r"""检查给定节点列表中哪些是可升级的
 
         :param request: Request instance for CheckInstancesUpgradeAble.
         :type request: :class:`tencentcloud.tke.v20180525.models.CheckInstancesUpgradeAbleRequest`
@@ -211,7 +211,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateBackupStorageLocation(self, request):
-        """创建备份仓库，指定了存储仓库类型（如COS）、COS桶地区、名称等信息，当前最多允许创建100个仓库， 注意此接口当前是全局接口，多个地域的TKE集群如果要备份到相同的备份仓库中，不需要重复创建备份仓库
+        r"""创建备份仓库，指定了存储仓库类型（如COS）、COS桶地区、名称等信息，当前最多允许创建100个仓库， 注意此接口当前是全局接口，多个地域的TKE集群如果要备份到相同的备份仓库中，不需要重复创建备份仓库
 
         :param request: Request instance for CreateBackupStorageLocation.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationRequest`
@@ -234,7 +234,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateCLSLogConfig(self, request):
-        """创建日志采集配置
+        r"""创建日志采集配置
 
         :param request: Request instance for CreateCLSLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigRequest`
@@ -257,7 +257,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """创建集群
+        r"""创建集群
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRequest`
@@ -280,7 +280,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpoint(self, request):
-        """创建集群访问端口
+        r"""创建集群访问端口
 
         :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
@@ -303,7 +303,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpointVip(self, request):
-        """创建托管集群外网访问端口（不再维护，准备下线）请使用新接口：CreateClusterEndpoint
+        r"""创建托管集群外网访问端口（不再维护，准备下线）请使用新接口：CreateClusterEndpoint
 
         :param request: Request instance for CreateClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
@@ -326,7 +326,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterInstances(self, request):
-        """扩展(新建)集群节点
+        r"""扩展(新建)集群节点
 
         :param request: Request instance for CreateClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesRequest`
@@ -349,7 +349,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterNodePool(self, request):
-        """创建节点池
+        r"""创建节点池
 
         :param request: Request instance for CreateClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolRequest`
@@ -372,7 +372,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterRelease(self, request):
-        """集群创建应用
+        r"""集群创建应用
 
         :param request: Request instance for CreateClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterReleaseRequest`
@@ -395,7 +395,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterRoute(self, request):
-        """创建集群路由
+        r"""创建集群路由
 
         :param request: Request instance for CreateClusterRoute.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteRequest`
@@ -418,7 +418,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterRouteTable(self, request):
-        """创建集群路由表
+        r"""创建集群路由表
 
         :param request: Request instance for CreateClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableRequest`
@@ -441,7 +441,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNode(self, request):
-        """创建按量计费超级节点
+        r"""创建按量计费超级节点
 
         :param request: Request instance for CreateClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodeRequest`
@@ -464,7 +464,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNodePool(self, request):
-        """创建超级节点池
+        r"""创建超级节点池
 
         :param request: Request instance for CreateClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodePoolRequest`
@@ -487,7 +487,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateECMInstances(self, request):
-        """创建边缘计算ECM机器
+        r"""创建边缘计算ECM机器
 
         :param request: Request instance for CreateECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateECMInstancesRequest`
@@ -510,7 +510,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEKSCluster(self, request):
-        """创建弹性集群
+        r"""创建弹性集群
 
         :param request: Request instance for CreateEKSCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEKSClusterRequest`
@@ -533,7 +533,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEKSContainerInstances(self, request):
-        """创建容器实例
+        r"""创建容器实例
 
         :param request: Request instance for CreateEKSContainerInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEKSContainerInstancesRequest`
@@ -556,7 +556,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEdgeCVMInstances(self, request):
-        """创建边缘容器CVM机器
+        r"""创建边缘容器CVM机器
 
         :param request: Request instance for CreateEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesRequest`
@@ -579,7 +579,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEdgeLogConfig(self, request):
-        """创建边缘集群日志采集配置
+        r"""创建边缘集群日志采集配置
 
         :param request: Request instance for CreateEdgeLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigRequest`
@@ -602,7 +602,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEksLogConfig(self, request):
-        """为弹性集群创建日志采集配置
+        r"""为弹性集群创建日志采集配置
 
         :param request: Request instance for CreateEksLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigRequest`
@@ -625,7 +625,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateImageCache(self, request):
-        """创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
+        r"""创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
 
         :param request: Request instance for CreateImageCache.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateImageCacheRequest`
@@ -648,7 +648,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusAlertPolicy(self, request):
-        """创建告警策略
+        r"""创建告警策略
 
         :param request: Request instance for CreatePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusAlertPolicyRequest`
@@ -671,7 +671,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusAlertRule(self, request):
-        """创建告警规则
+        r"""创建告警规则
 
         :param request: Request instance for CreatePrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusAlertRuleRequest`
@@ -694,7 +694,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusClusterAgent(self, request):
-        """与云监控融合的2.0实例关联集群
+        r"""与云监控融合的2.0实例关联集群
 
         :param request: Request instance for CreatePrometheusClusterAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusClusterAgentRequest`
@@ -717,7 +717,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusConfig(self, request):
-        """创建集群采集配置
+        r"""创建集群采集配置
 
         :param request: Request instance for CreatePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusConfigRequest`
@@ -740,7 +740,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusDashboard(self, request):
-        """创建grafana监控面板
+        r"""创建grafana监控面板
 
         :param request: Request instance for CreatePrometheusDashboard.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusDashboardRequest`
@@ -763,7 +763,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusGlobalNotification(self, request):
-        """创建全局告警通知渠道
+        r"""创建全局告警通知渠道
 
         :param request: Request instance for CreatePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusGlobalNotificationRequest`
@@ -786,7 +786,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusRecordRuleYaml(self, request):
-        """创建聚合规则yaml方式
+        r"""创建聚合规则yaml方式
 
         :param request: Request instance for CreatePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusRecordRuleYamlRequest`
@@ -809,7 +809,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusTemp(self, request):
-        """创建一个云原生Prometheus模板
+        r"""创建一个云原生Prometheus模板
 
         :param request: Request instance for CreatePrometheusTemp.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusTempRequest`
@@ -832,7 +832,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusTemplate(self, request):
-        """创建一个云原生Prometheus模板实例
+        r"""创建一个云原生Prometheus模板实例
 
         :param request: Request instance for CreatePrometheusTemplate.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusTemplateRequest`
@@ -855,7 +855,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateReservedInstances(self, request):
-        """预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
+        r"""预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
 
         :param request: Request instance for CreateReservedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateReservedInstancesRequest`
@@ -878,7 +878,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateTKEEdgeCluster(self, request):
-        """创建边缘计算集群
+        r"""创建边缘计算集群
 
         :param request: Request instance for CreateTKEEdgeCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateTKEEdgeClusterRequest`
@@ -901,7 +901,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteAddon(self, request):
-        """删除一个addon
+        r"""删除一个addon
 
         :param request: Request instance for DeleteAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteAddonRequest`
@@ -924,7 +924,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteBackupStorageLocation(self, request):
-        """删除备份仓库
+        r"""删除备份仓库
 
         :param request: Request instance for DeleteBackupStorageLocation.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationRequest`
@@ -947,7 +947,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """删除集群(YUNAPI V3版本)
+        r"""删除集群(YUNAPI V3版本)
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRequest`
@@ -970,7 +970,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterAsGroups(self, request):
-        """删除集群伸缩组
+        r"""删除集群伸缩组
 
         :param request: Request instance for DeleteClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsRequest`
@@ -993,7 +993,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpoint(self, request):
-        """删除集群访问端口
+        r"""删除集群访问端口
 
         :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
@@ -1016,7 +1016,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpointVip(self, request):
-        """删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+        r"""删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
 
         :param request: Request instance for DeleteClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipRequest`
@@ -1039,7 +1039,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterInstances(self, request):
-        """删除集群中的实例
+        r"""删除集群中的实例
 
         :param request: Request instance for DeleteClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesRequest`
@@ -1062,7 +1062,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterNodePool(self, request):
-        """删除节点池
+        r"""删除节点池
 
         :param request: Request instance for DeleteClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterNodePoolRequest`
@@ -1085,7 +1085,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterRoute(self, request):
-        """删除集群路由
+        r"""删除集群路由
 
         :param request: Request instance for DeleteClusterRoute.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteRequest`
@@ -1108,7 +1108,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterRouteTable(self, request):
-        """删除集群路由表
+        r"""删除集群路由表
 
         :param request: Request instance for DeleteClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableRequest`
@@ -1131,7 +1131,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNode(self, request):
-        """删除超级节点
+        r"""删除超级节点
 
         :param request: Request instance for DeleteClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodeRequest`
@@ -1154,7 +1154,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNodePool(self, request):
-        """删除超级节点池
+        r"""删除超级节点池
 
         :param request: Request instance for DeleteClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodePoolRequest`
@@ -1177,7 +1177,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteECMInstances(self, request):
-        """删除ECM实例
+        r"""删除ECM实例
 
         :param request: Request instance for DeleteECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteECMInstancesRequest`
@@ -1200,7 +1200,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEKSCluster(self, request):
-        """删除弹性集群(yunapiv3)
+        r"""删除弹性集群(yunapiv3)
 
         :param request: Request instance for DeleteEKSCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEKSClusterRequest`
@@ -1223,7 +1223,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEKSContainerInstances(self, request):
-        """删除容器实例，可批量删除
+        r"""删除容器实例，可批量删除
 
         :param request: Request instance for DeleteEKSContainerInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEKSContainerInstancesRequest`
@@ -1246,7 +1246,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEdgeCVMInstances(self, request):
-        """删除边缘容器CVM实例
+        r"""删除边缘容器CVM实例
 
         :param request: Request instance for DeleteEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeCVMInstancesRequest`
@@ -1269,7 +1269,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEdgeClusterInstances(self, request):
-        """删除边缘计算实例
+        r"""删除边缘计算实例
 
         :param request: Request instance for DeleteEdgeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeClusterInstancesRequest`
@@ -1292,7 +1292,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteImageCaches(self, request):
-        """批量删除镜像缓存
+        r"""批量删除镜像缓存
 
         :param request: Request instance for DeleteImageCaches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteImageCachesRequest`
@@ -1315,7 +1315,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteLogConfigs(self, request):
-        """删除集群内采集规则
+        r"""删除集群内采集规则
 
         :param request: Request instance for DeleteLogConfigs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsRequest`
@@ -1338,7 +1338,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusAlertPolicy(self, request):
-        """删除2.0实例告警策略
+        r"""删除2.0实例告警策略
 
         :param request: Request instance for DeletePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusAlertPolicyRequest`
@@ -1361,7 +1361,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusAlertRule(self, request):
-        """删除告警规则
+        r"""删除告警规则
 
         :param request: Request instance for DeletePrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusAlertRuleRequest`
@@ -1384,7 +1384,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusClusterAgent(self, request):
-        """解除TMP实例的集群关联
+        r"""解除TMP实例的集群关联
 
         :param request: Request instance for DeletePrometheusClusterAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusClusterAgentRequest`
@@ -1407,7 +1407,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusConfig(self, request):
-        """删除集群采集配置
+        r"""删除集群采集配置
 
         :param request: Request instance for DeletePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusConfigRequest`
@@ -1430,7 +1430,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusRecordRuleYaml(self, request):
-        """删除聚合规则
+        r"""删除聚合规则
 
         :param request: Request instance for DeletePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusRecordRuleYamlRequest`
@@ -1453,7 +1453,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusTemp(self, request):
-        """删除一个云原生Prometheus配置模板
+        r"""删除一个云原生Prometheus配置模板
 
         :param request: Request instance for DeletePrometheusTemp.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTempRequest`
@@ -1476,7 +1476,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusTempSync(self, request):
-        """解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
+        r"""解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
 
         :param request: Request instance for DeletePrometheusTempSync.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTempSyncRequest`
@@ -1499,7 +1499,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusTemplate(self, request):
-        """删除一个云原生Prometheus配置模板
+        r"""删除一个云原生Prometheus配置模板
 
         :param request: Request instance for DeletePrometheusTemplate.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateRequest`
@@ -1522,7 +1522,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusTemplateSync(self, request):
-        """取消模板同步，这将会删除目标中该模板所生产的配置
+        r"""取消模板同步，这将会删除目标中该模板所生产的配置
 
         :param request: Request instance for DeletePrometheusTemplateSync.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateSyncRequest`
@@ -1545,7 +1545,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteReservedInstances(self, request):
-        """预留券实例如符合退还规则，可通过本接口主动退还。
+        r"""预留券实例如符合退还规则，可通过本接口主动退还。
 
         :param request: Request instance for DeleteReservedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteReservedInstancesRequest`
@@ -1568,7 +1568,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteTKEEdgeCluster(self, request):
-        """删除边缘计算集群
+        r"""删除边缘计算集群
 
         :param request: Request instance for DeleteTKEEdgeCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteTKEEdgeClusterRequest`
@@ -1591,7 +1591,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAddon(self, request):
-        """获取addon列表
+        r"""获取addon列表
 
         :param request: Request instance for DescribeAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonRequest`
@@ -1614,7 +1614,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAddonValues(self, request):
-        """获取一个addon的参数
+        r"""获取一个addon的参数
 
         :param request: Request instance for DescribeAddonValues.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonValuesRequest`
@@ -1637,7 +1637,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableClusterVersion(self, request):
-        """获取集群可以升级的所有版本
+        r"""获取集群可以升级的所有版本
 
         :param request: Request instance for DescribeAvailableClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableClusterVersionRequest`
@@ -1660,7 +1660,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableTKEEdgeVersion(self, request):
-        """边缘计算支持版本和k8s版本
+        r"""边缘计算支持版本和k8s版本
 
         :param request: Request instance for DescribeAvailableTKEEdgeVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`
@@ -1683,7 +1683,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeBackupStorageLocations(self, request):
-        """查询备份仓库信息
+        r"""查询备份仓库信息
 
         :param request: Request instance for DescribeBackupStorageLocations.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsRequest`
@@ -1706,7 +1706,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeBatchModifyTagsStatus(self, request):
-        """查询批量修改标签状态
+        r"""查询批量修改标签状态
 
         :param request: Request instance for DescribeBatchModifyTagsStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusRequest`
@@ -1729,7 +1729,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAsGroupOption(self, request):
-        """集群弹性伸缩配置
+        r"""集群弹性伸缩配置
 
         :param request: Request instance for DescribeClusterAsGroupOption.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionRequest`
@@ -1752,7 +1752,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAsGroups(self, request):
-        """集群关联的伸缩组列表
+        r"""集群关联的伸缩组列表
 
         :param request: Request instance for DescribeClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsRequest`
@@ -1775,7 +1775,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAuthenticationOptions(self, request):
-        """查看集群认证配置
+        r"""查看集群认证配置
 
         :param request: Request instance for DescribeClusterAuthenticationOptions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAuthenticationOptionsRequest`
@@ -1798,7 +1798,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterCommonNames(self, request):
-        """获取指定子账户在RBAC授权模式中对应kube-apiserver客户端证书的CommonName字段，如果没有客户端证书，将会签发一个，此接口有最大传入子账户数量上限，当前为50
+        r"""获取指定子账户在RBAC授权模式中对应kube-apiserver客户端证书的CommonName字段，如果没有客户端证书，将会签发一个，此接口有最大传入子账户数量上限，当前为50
 
         :param request: Request instance for DescribeClusterCommonNames.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesRequest`
@@ -1821,7 +1821,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterControllers(self, request):
-        """用于查询Kubernetes的各个原生控制器是否开启
+        r"""用于查询Kubernetes的各个原生控制器是否开启
 
         :param request: Request instance for DescribeClusterControllers.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterControllersRequest`
@@ -1844,7 +1844,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointStatus(self, request):
-        """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        r"""查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 
         :param request: Request instance for DescribeClusterEndpointStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusRequest`
@@ -1867,7 +1867,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointVipStatus(self, request):
-        """查询集群开启端口流程状态(仅支持托管集群外网端口)
+        r"""查询集群开启端口流程状态(仅支持托管集群外网端口)
 
         :param request: Request instance for DescribeClusterEndpointVipStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusRequest`
@@ -1890,7 +1890,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpoints(self, request):
-        """获取集群的访问地址，包括内网地址，外网地址，外网域名，外网访问安全策略
+        r"""获取集群的访问地址，包括内网地址，外网地址，外网域名，外网访问安全策略
 
         :param request: Request instance for DescribeClusterEndpoints.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsRequest`
@@ -1913,7 +1913,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterExtraArgs(self, request):
-        """查询集群自定义参数
+        r"""查询集群自定义参数
 
         :param request: Request instance for DescribeClusterExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsRequest`
@@ -1936,7 +1936,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInspectionResultsOverview(self, request):
-        """查询用户单个Region下的所有集群巡检结果概览信息
+        r"""查询用户单个Region下的所有集群巡检结果概览信息
 
         :param request: Request instance for DescribeClusterInspectionResultsOverview.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInspectionResultsOverviewRequest`
@@ -1959,7 +1959,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """查询集群下节点实例信息
+        r"""查询集群下节点实例信息
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesRequest`
@@ -1982,7 +1982,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterKubeconfig(self, request):
-        """获取集群的kubeconfig文件，不同子账户获取自己的kubeconfig文件，该文件中有每个子账户自己的kube-apiserver的客户端证书，默认首次调此接口时候创建客户端证书，时效20年，未授予任何权限，如果是集群所有者或者主账户，则默认是cluster-admin权限。
+        r"""获取集群的kubeconfig文件，不同子账户获取自己的kubeconfig文件，该文件中有每个子账户自己的kube-apiserver的客户端证书，默认首次调此接口时候创建客户端证书，时效20年，未授予任何权限，如果是集群所有者或者主账户，则默认是cluster-admin权限。
 
         :param request: Request instance for DescribeClusterKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigRequest`
@@ -2005,7 +2005,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterLevelAttribute(self, request):
-        """获取集群规模
+        r"""获取集群规模
 
         :param request: Request instance for DescribeClusterLevelAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelAttributeRequest`
@@ -2028,7 +2028,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterLevelChangeRecords(self, request):
-        """查询集群变配记录
+        r"""查询集群变配记录
 
         :param request: Request instance for DescribeClusterLevelChangeRecords.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelChangeRecordsRequest`
@@ -2051,7 +2051,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterNodePoolDetail(self, request):
-        """查询节点池详情
+        r"""查询节点池详情
 
         :param request: Request instance for DescribeClusterNodePoolDetail.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolDetailRequest`
@@ -2074,7 +2074,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterNodePools(self, request):
-        """查询节点池列表
+        r"""查询节点池列表
 
         :param request: Request instance for DescribeClusterNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolsRequest`
@@ -2097,7 +2097,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterPendingReleases(self, request):
-        """在应用市场中查询正在安装中的应用列表
+        r"""在应用市场中查询正在安装中的应用列表
 
         :param request: Request instance for DescribeClusterPendingReleases.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterPendingReleasesRequest`
@@ -2120,7 +2120,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterReleaseDetails(self, request):
-        """查询通过应用市场安装的某个应用详情
+        r"""查询通过应用市场安装的某个应用详情
 
         :param request: Request instance for DescribeClusterReleaseDetails.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseDetailsRequest`
@@ -2143,7 +2143,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterReleaseHistory(self, request):
-        """查询集群在应用市场中某个已安装应用的版本历史
+        r"""查询集群在应用市场中某个已安装应用的版本历史
 
         :param request: Request instance for DescribeClusterReleaseHistory.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseHistoryRequest`
@@ -2166,7 +2166,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterReleases(self, request):
-        """查询集群在应用市场中已安装应用列表
+        r"""查询集群在应用市场中已安装应用列表
 
         :param request: Request instance for DescribeClusterReleases.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleasesRequest`
@@ -2189,7 +2189,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterRouteTables(self, request):
-        """查询集群路由表
+        r"""查询集群路由表
 
         :param request: Request instance for DescribeClusterRouteTables.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesRequest`
@@ -2212,7 +2212,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterRoutes(self, request):
-        """查询集群路由
+        r"""查询集群路由
 
         :param request: Request instance for DescribeClusterRoutes.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesRequest`
@@ -2235,7 +2235,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterSecurity(self, request):
-        """集群的密钥信息
+        r"""集群的密钥信息
 
         :param request: Request instance for DescribeClusterSecurity.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityRequest`
@@ -2258,7 +2258,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterStatus(self, request):
-        """查看集群状态列表
+        r"""查看集群状态列表
 
         :param request: Request instance for DescribeClusterStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusRequest`
@@ -2281,7 +2281,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNode(self, request):
-        """查看超级节点列表
+        r"""查看超级节点列表
 
         :param request: Request instance for DescribeClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodeRequest`
@@ -2304,7 +2304,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNodePools(self, request):
-        """查看超级节点池列表
+        r"""查看超级节点池列表
 
         :param request: Request instance for DescribeClusterVirtualNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodePoolsRequest`
@@ -2327,7 +2327,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """查询集群列表
+        r"""查询集群列表
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClustersRequest`
@@ -2350,7 +2350,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeECMInstances(self, request):
-        """获取ECM实例相关信息
+        r"""获取ECM实例相关信息
 
         :param request: Request instance for DescribeECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeECMInstancesRequest`
@@ -2373,7 +2373,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEKSClusterCredential(self, request):
-        """获取弹性容器集群的接入认证信息
+        r"""获取弹性容器集群的接入认证信息
 
         :param request: Request instance for DescribeEKSClusterCredential.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClusterCredentialRequest`
@@ -2396,7 +2396,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEKSClusters(self, request):
-        """查询弹性集群列表
+        r"""查询弹性集群列表
 
         :param request: Request instance for DescribeEKSClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClustersRequest`
@@ -2419,7 +2419,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEKSContainerInstanceEvent(self, request):
-        """查询容器实例的事件
+        r"""查询容器实例的事件
 
         :param request: Request instance for DescribeEKSContainerInstanceEvent.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceEventRequest`
@@ -2442,7 +2442,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEKSContainerInstanceRegions(self, request):
-        """查询容器实例支持的地域
+        r"""查询容器实例支持的地域
 
         :param request: Request instance for DescribeEKSContainerInstanceRegions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceRegionsRequest`
@@ -2465,7 +2465,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEKSContainerInstances(self, request):
-        """查询容器实例
+        r"""查询容器实例
 
         :param request: Request instance for DescribeEKSContainerInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstancesRequest`
@@ -2488,7 +2488,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeAvailableExtraArgs(self, request):
-        """查询边缘容器集群可用的自定义参数
+        r"""查询边缘容器集群可用的自定义参数
 
         :param request: Request instance for DescribeEdgeAvailableExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeAvailableExtraArgsRequest`
@@ -2511,7 +2511,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeCVMInstances(self, request):
-        """获取边缘容器CVM实例相关信息
+        r"""获取边缘容器CVM实例相关信息
 
         :param request: Request instance for DescribeEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeCVMInstancesRequest`
@@ -2534,7 +2534,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterExtraArgs(self, request):
-        """查询边缘集群自定义参数
+        r"""查询边缘集群自定义参数
 
         :param request: Request instance for DescribeEdgeClusterExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterExtraArgsRequest`
@@ -2557,7 +2557,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterInstances(self, request):
-        """查询边缘计算集群的节点信息
+        r"""查询边缘计算集群的节点信息
 
         :param request: Request instance for DescribeEdgeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterInstancesRequest`
@@ -2580,7 +2580,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterUpgradeInfo(self, request):
-        """可以查询边缘集群升级信息，包含可以升级的组件，当前升级状态和升级错误信息
+        r"""可以查询边缘集群升级信息，包含可以升级的组件，当前升级状态和升级错误信息
 
         :param request: Request instance for DescribeEdgeClusterUpgradeInfo.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoRequest`
@@ -2603,7 +2603,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeLogSwitches(self, request):
-        """获取事件、审计和日志的状态
+        r"""获取事件、审计和日志的状态
 
         :param request: Request instance for DescribeEdgeLogSwitches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeLogSwitchesRequest`
@@ -2626,7 +2626,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEksContainerInstanceLog(self, request):
-        """查询容器实例中容器日志
+        r"""查询容器实例中容器日志
 
         :param request: Request instance for DescribeEksContainerInstanceLog.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEksContainerInstanceLogRequest`
@@ -2649,7 +2649,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEnableVpcCniProgress(self, request):
-        """本接口用于查询开启vpc-cni模式的任务进度
+        r"""本接口用于查询开启vpc-cni模式的任务进度
 
         :param request: Request instance for DescribeEnableVpcCniProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressRequest`
@@ -2672,7 +2672,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEncryptionStatus(self, request):
-        """查询etcd数据是否进行加密
+        r"""查询etcd数据是否进行加密
 
         :param request: Request instance for DescribeEncryptionStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusRequest`
@@ -2695,7 +2695,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExistedInstances(self, request):
-        """查询已经存在的节点，判断是否可以加入集群
+        r"""查询已经存在的节点，判断是否可以加入集群
 
         :param request: Request instance for DescribeExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesRequest`
@@ -2718,7 +2718,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNodeSupportConfig(self, request):
-        """查看开启第三方节点池配置信息
+        r"""查看开启第三方节点池配置信息
 
         :param request: Request instance for DescribeExternalNodeSupportConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigRequest`
@@ -2741,7 +2741,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeIPAMD(self, request):
-        """获取eniipamd组件信息
+        r"""获取eniipamd组件信息
 
         :param request: Request instance for DescribeIPAMD.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDRequest`
@@ -2764,7 +2764,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeImageCaches(self, request):
-        """查询镜像缓存信息接口
+        r"""查询镜像缓存信息接口
 
         :param request: Request instance for DescribeImageCaches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImageCachesRequest`
@@ -2787,7 +2787,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """获取镜像信息
+        r"""获取镜像信息
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImagesRequest`
@@ -2810,7 +2810,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeLogConfigs(self, request):
-        """查询日志采集规则
+        r"""查询日志采集规则
 
         :param request: Request instance for DescribeLogConfigs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsRequest`
@@ -2833,7 +2833,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeLogSwitches(self, request):
-        """查询集群日志（审计、事件、普通日志）开关列表
+        r"""查询集群日志（审计、事件、普通日志）开关列表
 
         :param request: Request instance for DescribeLogSwitches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesRequest`
@@ -2856,7 +2856,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeMasterComponent(self, request):
-        """进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
+        r"""进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
 
         :param request: Request instance for DescribeMasterComponent.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeMasterComponentRequest`
@@ -2879,7 +2879,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeOSImages(self, request):
-        """获取OS聚合信息
+        r"""获取OS聚合信息
 
         :param request: Request instance for DescribeOSImages.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeOSImagesRequest`
@@ -2902,7 +2902,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeOpenPolicyList(self, request):
-        """查询opa策略列表
+        r"""查询opa策略列表
 
         :param request: Request instance for DescribeOpenPolicyList.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeOpenPolicyListRequest`
@@ -2925,7 +2925,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePodChargeInfo(self, request):
-        """查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
+        r"""查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
 
         :param request: Request instance for DescribePodChargeInfo.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoRequest`
@@ -2948,7 +2948,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePodDeductionRate(self, request):
-        """查询各个规格的 Pod 的抵扣率
+        r"""查询各个规格的 Pod 的抵扣率
 
         :param request: Request instance for DescribePodDeductionRate.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodDeductionRateRequest`
@@ -2971,7 +2971,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePodsBySpec(self, request):
-        """查询可以用预留券抵扣的 Pod 信息。
+        r"""查询可以用预留券抵扣的 Pod 信息。
 
         :param request: Request instance for DescribePodsBySpec.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodsBySpecRequest`
@@ -2994,7 +2994,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePostNodeResources(self, request):
-        """包括 Pod 资源统计和绑定的预留券资源统计。
+        r"""包括 Pod 资源统计和绑定的预留券资源统计。
 
         :param request: Request instance for DescribePostNodeResources.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePostNodeResourcesRequest`
@@ -3017,7 +3017,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusAgentInstances(self, request):
-        """获取关联目标集群的实例列表
+        r"""获取关联目标集群的实例列表
 
         :param request: Request instance for DescribePrometheusAgentInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentInstancesRequest`
@@ -3040,7 +3040,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusAgents(self, request):
-        """获取被关联集群列表
+        r"""获取被关联集群列表
 
         :param request: Request instance for DescribePrometheusAgents.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentsRequest`
@@ -3063,7 +3063,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusAlertHistory(self, request):
-        """获取告警历史
+        r"""获取告警历史
 
         :param request: Request instance for DescribePrometheusAlertHistory.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertHistoryRequest`
@@ -3086,7 +3086,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusAlertPolicy(self, request):
-        """获取2.0实例告警策略列表
+        r"""获取2.0实例告警策略列表
 
         :param request: Request instance for DescribePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertPolicyRequest`
@@ -3109,7 +3109,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusAlertRule(self, request):
-        """获取告警规则列表
+        r"""获取告警规则列表
 
         :param request: Request instance for DescribePrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertRuleRequest`
@@ -3132,7 +3132,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusClusterAgents(self, request):
-        """获取TMP实例关联集群列表
+        r"""获取TMP实例关联集群列表
 
         :param request: Request instance for DescribePrometheusClusterAgents.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusClusterAgentsRequest`
@@ -3155,7 +3155,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusConfig(self, request):
-        """获取集群采集配置
+        r"""获取集群采集配置
 
         :param request: Request instance for DescribePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusConfigRequest`
@@ -3178,7 +3178,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusGlobalConfig(self, request):
-        """获得实例级别抓取配置
+        r"""获得实例级别抓取配置
 
         :param request: Request instance for DescribePrometheusGlobalConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusGlobalConfigRequest`
@@ -3201,7 +3201,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusGlobalNotification(self, request):
-        """查询全局告警通知渠道
+        r"""查询全局告警通知渠道
 
         :param request: Request instance for DescribePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusGlobalNotificationRequest`
@@ -3224,7 +3224,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusInstance(self, request):
-        """获取实例详细信息
+        r"""获取实例详细信息
 
         :param request: Request instance for DescribePrometheusInstance.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstanceRequest`
@@ -3247,7 +3247,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusInstanceInitStatus(self, request):
-        """获取2.0实例初始化任务状态
+        r"""获取2.0实例初始化任务状态
 
         :param request: Request instance for DescribePrometheusInstanceInitStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstanceInitStatusRequest`
@@ -3270,7 +3270,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusInstancesOverview(self, request):
-        """获取与云监控融合实例列表
+        r"""获取与云监控融合实例列表
 
         :param request: Request instance for DescribePrometheusInstancesOverview.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstancesOverviewRequest`
@@ -3293,7 +3293,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusOverviews(self, request):
-        """获取实例列表
+        r"""获取实例列表
 
         :param request: Request instance for DescribePrometheusOverviews.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusOverviewsRequest`
@@ -3316,7 +3316,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusRecordRules(self, request):
-        """获取聚合规则列表，包含关联集群内crd资源创建的record rule
+        r"""获取聚合规则列表，包含关联集群内crd资源创建的record rule
 
         :param request: Request instance for DescribePrometheusRecordRules.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusRecordRulesRequest`
@@ -3339,7 +3339,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusTargets(self, request):
-        """获取targets信息
+        r"""获取targets信息
 
         :param request: Request instance for DescribePrometheusTargets.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTargetsRequest`
@@ -3362,7 +3362,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusTemp(self, request):
-        """拉取模板列表，默认模板将总是在最前面
+        r"""拉取模板列表，默认模板将总是在最前面
 
         :param request: Request instance for DescribePrometheusTemp.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTempRequest`
@@ -3385,7 +3385,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusTempSync(self, request):
-        """获取模板关联实例信息，针对V2版本实例
+        r"""获取模板关联实例信息，针对V2版本实例
 
         :param request: Request instance for DescribePrometheusTempSync.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTempSyncRequest`
@@ -3408,7 +3408,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusTemplateSync(self, request):
-        """获取模板同步信息
+        r"""获取模板同步信息
 
         :param request: Request instance for DescribePrometheusTemplateSync.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplateSyncRequest`
@@ -3431,7 +3431,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusTemplates(self, request):
-        """拉取模板列表，默认模板将总是在最前面
+        r"""拉取模板列表，默认模板将总是在最前面
 
         :param request: Request instance for DescribePrometheusTemplates.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplatesRequest`
@@ -3454,7 +3454,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeRIUtilizationDetail(self, request):
-        """预留实例用量查询
+        r"""预留实例用量查询
 
         :param request: Request instance for DescribeRIUtilizationDetail.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRIUtilizationDetailRequest`
@@ -3477,7 +3477,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """获取容器服务支持的所有地域
+        r"""获取容器服务支持的所有地域
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsRequest`
@@ -3500,7 +3500,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeReservedInstanceUtilizationRate(self, request):
-        """查询各种规格类型的预留券使用率
+        r"""查询各种规格类型的预留券使用率
 
         :param request: Request instance for DescribeReservedInstanceUtilizationRate.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateRequest`
@@ -3523,7 +3523,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeReservedInstances(self, request):
-        """查询预留实例列表
+        r"""查询预留实例列表
 
         :param request: Request instance for DescribeReservedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstancesRequest`
@@ -3546,7 +3546,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeResourceUsage(self, request):
-        """获取集群资源使用量
+        r"""获取集群资源使用量
 
         :param request: Request instance for DescribeResourceUsage.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeResourceUsageRequest`
@@ -3569,7 +3569,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeRouteTableConflicts(self, request):
-        """查询路由表冲突列表
+        r"""查询路由表冲突列表
 
         :param request: Request instance for DescribeRouteTableConflicts.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsRequest`
@@ -3592,7 +3592,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeSupportedRuntime(self, request):
-        """根据K8S版本获取可选运行时版本
+        r"""根据K8S版本获取可选运行时版本
 
         :param request: Request instance for DescribeSupportedRuntime.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeRequest`
@@ -3615,7 +3615,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusterCredential(self, request):
-        """获取边缘计算集群的认证信息
+        r"""获取边缘计算集群的认证信息
 
         :param request: Request instance for DescribeTKEEdgeClusterCredential.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterCredentialRequest`
@@ -3638,7 +3638,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusterStatus(self, request):
-        """获取边缘计算集群的当前状态以及过程信息
+        r"""获取边缘计算集群的当前状态以及过程信息
 
         :param request: Request instance for DescribeTKEEdgeClusterStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterStatusRequest`
@@ -3661,7 +3661,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusters(self, request):
-        """查询边缘集群列表
+        r"""查询边缘集群列表
 
         :param request: Request instance for DescribeTKEEdgeClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClustersRequest`
@@ -3684,7 +3684,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeExternalKubeconfig(self, request):
-        """获取边缘计算外部访问的kubeconfig
+        r"""获取边缘计算外部访问的kubeconfig
 
         :param request: Request instance for DescribeTKEEdgeExternalKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeExternalKubeconfigRequest`
@@ -3707,7 +3707,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeScript(self, request):
-        """获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
+        r"""获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 
         :param request: Request instance for DescribeTKEEdgeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
@@ -3730,7 +3730,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeVersions(self, request):
-        """获取集群版本信息
+        r"""获取集群版本信息
 
         :param request: Request instance for DescribeVersions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsRequest`
@@ -3753,7 +3753,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeVpcCniPodLimits(self, request):
-        """本接口查询当前用户和地域在指定可用区下的机型可支持的最大 TKE VPC-CNI 网络模式的 Pod 数量
+        r"""本接口查询当前用户和地域在指定可用区下的机型可支持的最大 TKE VPC-CNI 网络模式的 Pod 数量
 
         :param request: Request instance for DescribeVpcCniPodLimits.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVpcCniPodLimitsRequest`
@@ -3776,7 +3776,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableClusterAudit(self, request):
-        """关闭集群审计
+        r"""关闭集群审计
 
         :param request: Request instance for DisableClusterAudit.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableClusterAuditRequest`
@@ -3799,7 +3799,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableClusterDeletionProtection(self, request):
-        """关闭集群删除保护
+        r"""关闭集群删除保护
 
         :param request: Request instance for DisableClusterDeletionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionRequest`
@@ -3822,7 +3822,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableEncryptionProtection(self, request):
-        """关闭加密信息保护
+        r"""关闭加密信息保护
 
         :param request: Request instance for DisableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionRequest`
@@ -3845,7 +3845,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableEventPersistence(self, request):
-        """关闭事件持久化功能
+        r"""关闭事件持久化功能
 
         :param request: Request instance for DisableEventPersistence.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableEventPersistenceRequest`
@@ -3868,7 +3868,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableVpcCniNetworkType(self, request):
-        """提供给附加了VPC-CNI能力的Global-Route集群关闭VPC-CNI
+        r"""提供给附加了VPC-CNI能力的Global-Route集群关闭VPC-CNI
 
         :param request: Request instance for DisableVpcCniNetworkType.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableVpcCniNetworkTypeRequest`
@@ -3891,7 +3891,7 @@ class TkeClient(AbstractClient):
 
 
     def DrainClusterVirtualNode(self, request):
-        """驱逐超级节点
+        r"""驱逐超级节点
 
         :param request: Request instance for DrainClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DrainClusterVirtualNodeRequest`
@@ -3914,7 +3914,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableClusterAudit(self, request):
-        """开启集群审计
+        r"""开启集群审计
 
         :param request: Request instance for EnableClusterAudit.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableClusterAuditRequest`
@@ -3937,7 +3937,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableClusterDeletionProtection(self, request):
-        """启用集群删除保护
+        r"""启用集群删除保护
 
         :param request: Request instance for EnableClusterDeletionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionRequest`
@@ -3960,7 +3960,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableEncryptionProtection(self, request):
-        """开启加密数据保护，需要先开启KMS能力，完成KMS授权
+        r"""开启加密数据保护，需要先开启KMS能力，完成KMS授权
 
         :param request: Request instance for EnableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
@@ -3983,7 +3983,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableEventPersistence(self, request):
-        """开启事件持久化功能
+        r"""开启事件持久化功能
 
         :param request: Request instance for EnableEventPersistence.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableEventPersistenceRequest`
@@ -4006,7 +4006,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableVpcCniNetworkType(self, request):
-        """GR集群可以通过本接口附加vpc-cni容器网络插件，开启vpc-cni容器网络能力
+        r"""GR集群可以通过本接口附加vpc-cni容器网络插件，开启vpc-cni容器网络能力
 
         :param request: Request instance for EnableVpcCniNetworkType.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeRequest`
@@ -4029,7 +4029,7 @@ class TkeClient(AbstractClient):
 
 
     def ForwardTKEEdgeApplicationRequestV3(self, request):
-        """操作TKEEdge集群的addon
+        r"""操作TKEEdge集群的addon
 
         :param request: Request instance for ForwardTKEEdgeApplicationRequestV3.
         :type request: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Request`
@@ -4052,7 +4052,7 @@ class TkeClient(AbstractClient):
 
 
     def GetClusterLevelPrice(self, request):
-        """获取集群规模价格
+        r"""获取集群规模价格
 
         :param request: Request instance for GetClusterLevelPrice.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetClusterLevelPriceRequest`
@@ -4075,7 +4075,7 @@ class TkeClient(AbstractClient):
 
 
     def GetMostSuitableImageCache(self, request):
-        """根据镜像列表，查询匹配的镜像缓存
+        r"""根据镜像列表，查询匹配的镜像缓存
 
         :param request: Request instance for GetMostSuitableImageCache.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetMostSuitableImageCacheRequest`
@@ -4098,7 +4098,7 @@ class TkeClient(AbstractClient):
 
 
     def GetTkeAppChartList(self, request):
-        """获取TKE支持的App列表
+        r"""获取TKE支持的App列表
 
         :param request: Request instance for GetTkeAppChartList.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListRequest`
@@ -4121,7 +4121,7 @@ class TkeClient(AbstractClient):
 
 
     def GetUpgradeInstanceProgress(self, request):
-        """获得节点升级当前的进度，若集群未处于节点升级状态，则接口会报错：任务未找到。
+        r"""获得节点升级当前的进度，若集群未处于节点升级状态，则接口会报错：任务未找到。
 
         :param request: Request instance for GetUpgradeInstanceProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetUpgradeInstanceProgressRequest`
@@ -4144,7 +4144,7 @@ class TkeClient(AbstractClient):
 
 
     def InstallAddon(self, request):
-        """为目标集群安装一个addon
+        r"""为目标集群安装一个addon
 
         :param request: Request instance for InstallAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.InstallAddonRequest`
@@ -4167,7 +4167,7 @@ class TkeClient(AbstractClient):
 
 
     def InstallEdgeLogAgent(self, request):
-        """在tke@edge集群的边缘节点上安装日志采集组件
+        r"""在tke@edge集群的边缘节点上安装日志采集组件
 
         :param request: Request instance for InstallEdgeLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentRequest`
@@ -4190,7 +4190,7 @@ class TkeClient(AbstractClient):
 
 
     def InstallLogAgent(self, request):
-        """在TKE集群中安装CLS日志采集组件
+        r"""在TKE集群中安装CLS日志采集组件
 
         :param request: Request instance for InstallLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.InstallLogAgentRequest`
@@ -4213,7 +4213,7 @@ class TkeClient(AbstractClient):
 
 
     def ListClusterInspectionResults(self, request):
-        """查询指定集群的巡检结果信息
+        r"""查询指定集群的巡检结果信息
 
         :param request: Request instance for ListClusterInspectionResults.
         :type request: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsRequest`
@@ -4236,7 +4236,7 @@ class TkeClient(AbstractClient):
 
 
     def ListClusterInspectionResultsItems(self, request):
-        """查询集群巡检结果历史列表
+        r"""查询集群巡检结果历史列表
 
         :param request: Request instance for ListClusterInspectionResultsItems.
         :type request: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsItemsRequest`
@@ -4259,7 +4259,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAsGroupAttribute(self, request):
-        """修改集群伸缩组属性
+        r"""修改集群伸缩组属性
 
         :param request: Request instance for ModifyClusterAsGroupAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeRequest`
@@ -4282,7 +4282,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAsGroupOptionAttribute(self, request):
-        """修改集群弹性伸缩属性
+        r"""修改集群弹性伸缩属性
 
         :param request: Request instance for ModifyClusterAsGroupOptionAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupOptionAttributeRequest`
@@ -4305,7 +4305,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAttribute(self, request):
-        """修改集群属性
+        r"""修改集群属性
 
         :param request: Request instance for ModifyClusterAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeRequest`
@@ -4328,7 +4328,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAuthenticationOptions(self, request):
-        """修改集群认证配置
+        r"""修改集群认证配置
 
         :param request: Request instance for ModifyClusterAuthenticationOptions.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAuthenticationOptionsRequest`
@@ -4351,7 +4351,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterEndpointSP(self, request):
-        """修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
+        r"""修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
 
         :param request: Request instance for ModifyClusterEndpointSP.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPRequest`
@@ -4374,7 +4374,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterImage(self, request):
-        """修改集群镜像
+        r"""修改集群镜像
 
         :param request: Request instance for ModifyClusterImage.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageRequest`
@@ -4397,7 +4397,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterNodePool(self, request):
-        """编辑节点池
+        r"""编辑节点池
 
         :param request: Request instance for ModifyClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterNodePoolRequest`
@@ -4420,7 +4420,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterRuntimeConfig(self, request):
-        """修改集群及节点池纬度运行时配置
+        r"""修改集群及节点池纬度运行时配置
 
         :param request: Request instance for ModifyClusterRuntimeConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigRequest`
@@ -4443,7 +4443,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterTags(self, request):
-        """修改集群标签
+        r"""修改集群标签
 
         :param request: Request instance for ModifyClusterTags.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsRequest`
@@ -4466,7 +4466,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterVirtualNodePool(self, request):
-        """修改超级节点池
+        r"""修改超级节点池
 
         :param request: Request instance for ModifyClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterVirtualNodePoolRequest`
@@ -4489,7 +4489,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyMasterComponent(self, request):
-        """修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
+        r"""修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
 
         :param request: Request instance for ModifyMasterComponent.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyMasterComponentRequest`
@@ -4512,7 +4512,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyNodePoolDesiredCapacityAboutAsg(self, request):
-        """修改节点池关联伸缩组的期望实例数
+        r"""修改节点池关联伸缩组的期望实例数
 
         :param request: Request instance for ModifyNodePoolDesiredCapacityAboutAsg.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolDesiredCapacityAboutAsgRequest`
@@ -4535,7 +4535,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyNodePoolInstanceTypes(self, request):
-        """修改节点池的机型配置
+        r"""修改节点池的机型配置
 
         :param request: Request instance for ModifyNodePoolInstanceTypes.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolInstanceTypesRequest`
@@ -4558,7 +4558,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyOpenPolicyList(self, request):
-        """批量修改opa策略
+        r"""批量修改opa策略
 
         :param request: Request instance for ModifyOpenPolicyList.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyOpenPolicyListRequest`
@@ -4581,7 +4581,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusAgentExternalLabels(self, request):
-        """修改被关联集群的external labels
+        r"""修改被关联集群的external labels
 
         :param request: Request instance for ModifyPrometheusAgentExternalLabels.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAgentExternalLabelsRequest`
@@ -4604,7 +4604,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusAlertPolicy(self, request):
-        """修改2.0实例告警策略
+        r"""修改2.0实例告警策略
 
         :param request: Request instance for ModifyPrometheusAlertPolicy.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertPolicyRequest`
@@ -4627,7 +4627,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusAlertRule(self, request):
-        """修改告警规则
+        r"""修改告警规则
 
         :param request: Request instance for ModifyPrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertRuleRequest`
@@ -4650,7 +4650,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusConfig(self, request):
-        """修改集群采集配置
+        r"""修改集群采集配置
 
         :param request: Request instance for ModifyPrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusConfigRequest`
@@ -4673,7 +4673,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusGlobalNotification(self, request):
-        """修改全局告警通知渠道
+        r"""修改全局告警通知渠道
 
         :param request: Request instance for ModifyPrometheusGlobalNotification.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusGlobalNotificationRequest`
@@ -4696,7 +4696,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusRecordRuleYaml(self, request):
-        """修改聚合规则yaml方式
+        r"""修改聚合规则yaml方式
 
         :param request: Request instance for ModifyPrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusRecordRuleYamlRequest`
@@ -4719,7 +4719,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusTemp(self, request):
-        """修改模板内容
+        r"""修改模板内容
 
         :param request: Request instance for ModifyPrometheusTemp.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTempRequest`
@@ -4742,7 +4742,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusTemplate(self, request):
-        """修改模板内容
+        r"""修改模板内容
 
         :param request: Request instance for ModifyPrometheusTemplate.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTemplateRequest`
@@ -4765,7 +4765,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyReservedInstanceScope(self, request):
-        """修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
+        r"""修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
 
         :param request: Request instance for ModifyReservedInstanceScope.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyReservedInstanceScopeRequest`
@@ -4788,7 +4788,7 @@ class TkeClient(AbstractClient):
 
 
     def RemoveNodeFromNodePool(self, request):
-        """移出节点池节点，但保留在集群内
+        r"""移出节点池节点，但保留在集群内
 
         :param request: Request instance for RemoveNodeFromNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.RemoveNodeFromNodePoolRequest`
@@ -4811,7 +4811,7 @@ class TkeClient(AbstractClient):
 
 
     def RenewReservedInstances(self, request):
-        """续费时请确保账户余额充足。
+        r"""续费时请确保账户余额充足。
 
         :param request: Request instance for RenewReservedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.RenewReservedInstancesRequest`
@@ -4834,7 +4834,7 @@ class TkeClient(AbstractClient):
 
 
     def RestartEKSContainerInstances(self, request):
-        """重启弹性容器实例，支持批量操作
+        r"""重启弹性容器实例，支持批量操作
 
         :param request: Request instance for RestartEKSContainerInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.RestartEKSContainerInstancesRequest`
@@ -4857,7 +4857,7 @@ class TkeClient(AbstractClient):
 
 
     def RollbackClusterRelease(self, request):
-        """在应用市场中集群回滚应用至某个历史版本
+        r"""在应用市场中集群回滚应用至某个历史版本
 
         :param request: Request instance for RollbackClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.RollbackClusterReleaseRequest`
@@ -4880,7 +4880,7 @@ class TkeClient(AbstractClient):
 
 
     def RunPrometheusInstance(self, request):
-        """初始化TMP实例，开启集成中心时调用
+        r"""初始化TMP实例，开启集成中心时调用
 
         :param request: Request instance for RunPrometheusInstance.
         :type request: :class:`tencentcloud.tke.v20180525.models.RunPrometheusInstanceRequest`
@@ -4903,7 +4903,7 @@ class TkeClient(AbstractClient):
 
 
     def ScaleInClusterMaster(self, request):
-        """缩容独立集群master节点，本功能为内测能力，使用之前请先提单联系我们。
+        r"""缩容独立集群master节点，本功能为内测能力，使用之前请先提单联系我们。
 
         :param request: Request instance for ScaleInClusterMaster.
         :type request: :class:`tencentcloud.tke.v20180525.models.ScaleInClusterMasterRequest`
@@ -4926,7 +4926,7 @@ class TkeClient(AbstractClient):
 
 
     def ScaleOutClusterMaster(self, request):
-        """扩容独立集群master节点
+        r"""扩容独立集群master节点
 
         :param request: Request instance for ScaleOutClusterMaster.
         :type request: :class:`tencentcloud.tke.v20180525.models.ScaleOutClusterMasterRequest`
@@ -4949,7 +4949,7 @@ class TkeClient(AbstractClient):
 
 
     def SetNodePoolNodeProtection(self, request):
-        """仅能设置节点池中处于伸缩组的节点
+        r"""仅能设置节点池中处于伸缩组的节点
 
         :param request: Request instance for SetNodePoolNodeProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.SetNodePoolNodeProtectionRequest`
@@ -4972,7 +4972,7 @@ class TkeClient(AbstractClient):
 
 
     def SyncPrometheusTemp(self, request):
-        """同步模板到实例或者集群，针对V2版本实例
+        r"""同步模板到实例或者集群，针对V2版本实例
 
         :param request: Request instance for SyncPrometheusTemp.
         :type request: :class:`tencentcloud.tke.v20180525.models.SyncPrometheusTempRequest`
@@ -4995,7 +4995,7 @@ class TkeClient(AbstractClient):
 
 
     def SyncPrometheusTemplate(self, request):
-        """同步模板到实例或者集群
+        r"""同步模板到实例或者集群
 
         :param request: Request instance for SyncPrometheusTemplate.
         :type request: :class:`tencentcloud.tke.v20180525.models.SyncPrometheusTemplateRequest`
@@ -5018,7 +5018,7 @@ class TkeClient(AbstractClient):
 
 
     def UninstallClusterRelease(self, request):
-        """在应用市场中集群删除某个应用
+        r"""在应用市场中集群删除某个应用
 
         :param request: Request instance for UninstallClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.UninstallClusterReleaseRequest`
@@ -5041,7 +5041,7 @@ class TkeClient(AbstractClient):
 
 
     def UninstallEdgeLogAgent(self, request):
-        """从tke@edge集群边缘节点上卸载日志采集组件
+        r"""从tke@edge集群边缘节点上卸载日志采集组件
 
         :param request: Request instance for UninstallEdgeLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentRequest`
@@ -5064,7 +5064,7 @@ class TkeClient(AbstractClient):
 
 
     def UninstallLogAgent(self, request):
-        """从TKE集群中卸载CLS日志采集组件
+        r"""从TKE集群中卸载CLS日志采集组件
 
         :param request: Request instance for UninstallLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.UninstallLogAgentRequest`
@@ -5087,7 +5087,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateAddon(self, request):
-        """更新一个addon的参数和版本
+        r"""更新一个addon的参数和版本
 
         :param request: Request instance for UpdateAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateAddonRequest`
@@ -5110,7 +5110,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateClusterKubeconfig(self, request):
-        """对集群的Kubeconfig信息进行更新
+        r"""对集群的Kubeconfig信息进行更新
 
         :param request: Request instance for UpdateClusterKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigRequest`
@@ -5133,7 +5133,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateClusterVersion(self, request):
-        """升级集群 Master 组件到指定版本
+        r"""升级集群 Master 组件到指定版本
 
         :param request: Request instance for UpdateClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterVersionRequest`
@@ -5156,7 +5156,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateEKSCluster(self, request):
-        """修改弹性集群名称等属性
+        r"""修改弹性集群名称等属性
 
         :param request: Request instance for UpdateEKSCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEKSClusterRequest`
@@ -5179,7 +5179,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateEKSContainerInstance(self, request):
-        """更新容器实例
+        r"""更新容器实例
 
         :param request: Request instance for UpdateEKSContainerInstance.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEKSContainerInstanceRequest`
@@ -5202,7 +5202,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateEdgeClusterVersion(self, request):
-        """升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
+        r"""升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
 
         :param request: Request instance for UpdateEdgeClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionRequest`
@@ -5225,7 +5225,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateImageCache(self, request):
-        """更新镜像缓存接口
+        r"""更新镜像缓存接口
 
         :param request: Request instance for UpdateImageCache.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateImageCacheRequest`
@@ -5248,7 +5248,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateTKEEdgeCluster(self, request):
-        """修改边缘计算集群名称等属性
+        r"""修改边缘计算集群名称等属性
 
         :param request: Request instance for UpdateTKEEdgeCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateTKEEdgeClusterRequest`
@@ -5271,7 +5271,7 @@ class TkeClient(AbstractClient):
 
 
     def UpgradeClusterInstances(self, request):
-        """给集群的一批work节点进行升级
+        r"""给集群的一批work节点进行升级
 
         :param request: Request instance for UpgradeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterInstancesRequest`
@@ -5294,7 +5294,7 @@ class TkeClient(AbstractClient):
 
 
     def UpgradeClusterRelease(self, request):
-        """升级集群中已安装的应用
+        r"""升级集群中已安装的应用
 
         :param request: Request instance for UpgradeClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterReleaseRequest`

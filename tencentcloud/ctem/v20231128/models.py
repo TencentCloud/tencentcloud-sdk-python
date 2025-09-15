@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateCustomerRequest(AbstractModel):
-    """CreateCustomer请求参数结构体
+    r"""CreateCustomer请求参数结构体
 
     """
 
@@ -80,7 +80,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -91,7 +91,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        """资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
         :rtype: str
         """
         return self._ScanType
@@ -102,7 +102,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Percent(self):
-        """百分比取值范围为30-100
+        r"""百分比取值范围为30-100
         :rtype: int
         """
         return self._Percent
@@ -113,7 +113,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanCron(self):
-        """周期测绘时间
+        r"""周期测绘时间
         :rtype: str
         """
         return self._ScanCron
@@ -124,7 +124,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def IsScanNow(self):
-        """是否立即启动
+        r"""是否立即启动
         :rtype: bool
         """
         return self._IsScanNow
@@ -135,7 +135,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableCron(self):
-        """是否启用周期测绘
+        r"""是否启用周期测绘
         :rtype: bool
         """
         return self._EnableCron
@@ -146,7 +146,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        """是否扫描子公司
+        r"""是否扫描子公司
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -157,7 +157,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableAuth(self):
-        """是否授权
+        r"""是否授权
         :rtype: bool
         """
         return self._EnableAuth
@@ -168,7 +168,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        """授权开始时间
+        r"""授权开始时间
         :rtype: str
         """
         return self._AuthStartAt
@@ -179,7 +179,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        """授权结束时间
+        r"""授权结束时间
         :rtype: str
         """
         return self._AuthEndAt
@@ -190,7 +190,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthFile(self):
-        """授权文件id
+        r"""授权文件id
         :rtype: str
         """
         return self._AuthFile
@@ -201,7 +201,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        """测绘时间配置项，采用json字符串格式
+        r"""测绘时间配置项，采用json字符串格式
         :rtype: str
         """
         return self._ScanTime
@@ -212,7 +212,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        """企业相关的关键字
+        r"""企业相关的关键字
         :rtype: str
         """
         return self._Keywords
@@ -223,7 +223,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Icon(self):
-        """图标
+        r"""图标
         :rtype: str
         """
         return self._Icon
@@ -234,7 +234,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Qps(self):
-        """并发设置
+        r"""并发设置
         :rtype: int
         """
         return self._Qps
@@ -245,7 +245,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        """限制子公司层级，-1表示不限制
+        r"""限制子公司层级，-1表示不限制
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -256,7 +256,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        """是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
+        r"""是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -295,7 +295,7 @@ class CreateCustomerRequest(AbstractModel):
 
 
 class CreateCustomerResponse(AbstractModel):
-    """CreateCustomer返回参数结构体
+    r"""CreateCustomer返回参数结构体
 
     """
 
@@ -308,7 +308,7 @@ class CreateCustomerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -323,7 +323,7 @@ class CreateCustomerResponse(AbstractModel):
 
 
 class CreateJobRecordRequest(AbstractModel):
-    """CreateJobRecord请求参数结构体
+    r"""CreateJobRecord请求参数结构体
 
     """
 
@@ -348,7 +348,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -359,7 +359,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型：即时任务
+        r"""任务类型：即时任务
         :rtype: str
         """
         return self._TaskType
@@ -370,7 +370,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        """资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
         :rtype: str
         """
         return self._ScanType
@@ -381,7 +381,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def Qps(self):
-        """qps设置
+        r"""qps设置
         :rtype: int
         """
         return self._Qps
@@ -392,7 +392,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        """是否包含完整扫描
+        r"""是否包含完整扫描
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -419,7 +419,7 @@ class CreateJobRecordRequest(AbstractModel):
 
 
 class CreateJobRecordResponse(AbstractModel):
-    """CreateJobRecord返回参数结构体
+    r"""CreateJobRecord返回参数结构体
 
     """
 
@@ -435,7 +435,7 @@ class CreateJobRecordResponse(AbstractModel):
 
     @property
     def Id(self):
-        """任务Id
+        r"""任务Id
         :rtype: int
         """
         return self._Id
@@ -446,7 +446,7 @@ class CreateJobRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -462,7 +462,7 @@ class CreateJobRecordResponse(AbstractModel):
 
 
 class Customer(AbstractModel):
-    """企业详情
+    r"""企业详情
 
     """
 
@@ -542,7 +542,7 @@ class Customer(AbstractModel):
 
     @property
     def Id(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._Id
@@ -553,7 +553,7 @@ class Customer(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -564,7 +564,7 @@ class Customer(AbstractModel):
 
     @property
     def Percent(self):
-        """股权占比
+        r"""股权占比
         :rtype: int
         """
         return self._Percent
@@ -575,7 +575,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanType(self):
-        """资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
         :rtype: str
         """
         return self._ScanType
@@ -586,7 +586,7 @@ class Customer(AbstractModel):
 
     @property
     def Creator(self):
-        """创建账号
+        r"""创建账号
         :rtype: str
         """
         return self._Creator
@@ -597,7 +597,7 @@ class Customer(AbstractModel):
 
     @property
     def AppId(self):
-        """腾讯云客户AppId
+        r"""腾讯云客户AppId
         :rtype: int
         """
         return self._AppId
@@ -608,7 +608,7 @@ class Customer(AbstractModel):
 
     @property
     def Uin(self):
-        """腾讯云客户Uin
+        r"""腾讯云客户Uin
         :rtype: str
         """
         return self._Uin
@@ -619,7 +619,7 @@ class Customer(AbstractModel):
 
     @property
     def CreateAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateAt
@@ -630,7 +630,7 @@ class Customer(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateAt
@@ -641,7 +641,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanCron(self):
-        """周期测绘时间
+        r"""周期测绘时间
         :rtype: str
         """
         return self._ScanCron
@@ -652,7 +652,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableCron(self):
-        """是否启用周期测绘
+        r"""是否启用周期测绘
         :rtype: bool
         """
         return self._EnableCron
@@ -663,7 +663,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        """是否扫描子公司
+        r"""是否扫描子公司
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -674,7 +674,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableAuth(self):
-        """是否授权
+        r"""是否授权
         :rtype: bool
         """
         return self._EnableAuth
@@ -685,7 +685,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        """授权开始时间
+        r"""授权开始时间
         :rtype: str
         """
         return self._AuthStartAt
@@ -696,7 +696,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        """授权结束时间
+        r"""授权结束时间
         :rtype: str
         """
         return self._AuthEndAt
@@ -707,7 +707,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthFile(self):
-        """授权文件id
+        r"""授权文件id
         :rtype: str
         """
         return self._AuthFile
@@ -718,7 +718,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanTime(self):
-        """测绘时间配置项
+        r"""测绘时间配置项
         :rtype: str
         """
         return self._ScanTime
@@ -729,7 +729,7 @@ class Customer(AbstractModel):
 
     @property
     def Icon(self):
-        """图标
+        r"""图标
         :rtype: str
         """
         return self._Icon
@@ -740,7 +740,7 @@ class Customer(AbstractModel):
 
     @property
     def Keywords(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keywords
@@ -751,7 +751,7 @@ class Customer(AbstractModel):
 
     @property
     def Qps(self):
-        """Qps设置，10-500，默认100
+        r"""Qps设置，10-500，默认100
         :rtype: int
         """
         return self._Qps
@@ -762,7 +762,7 @@ class Customer(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        """子公司拓展层次
+        r"""子公司拓展层次
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -773,7 +773,7 @@ class Customer(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        """是否包含完整扫描
+        r"""是否包含完整扫描
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -785,7 +785,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableGroupMemberDiscovered(self):
-        """是否识别集团成员
+        r"""是否识别集团成员
         :rtype: bool
         """
         return self._EnableGroupMemberDiscovered
@@ -830,7 +830,7 @@ class Customer(AbstractModel):
 
 
 class DescribeAppsRequest(AbstractModel):
-    """DescribeApps请求参数结构体
+    r"""DescribeApps请求参数结构体
 
     """
 
@@ -879,7 +879,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -890,7 +890,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -901,7 +901,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -912,7 +912,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -923,7 +923,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -934,7 +934,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -945,7 +945,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -956,7 +956,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -967,7 +967,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -978,7 +978,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -989,7 +989,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -1000,7 +1000,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -1011,7 +1011,7 @@ class DescribeAppsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -1051,7 +1051,7 @@ class DescribeAppsRequest(AbstractModel):
 
 
 class DescribeAppsResponse(AbstractModel):
-    """DescribeApps返回参数结构体
+    r"""DescribeApps返回参数结构体
 
     """
 
@@ -1070,7 +1070,7 @@ class DescribeAppsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1081,7 +1081,7 @@ class DescribeAppsResponse(AbstractModel):
 
     @property
     def List(self):
-        """移动资产数组
+        r"""移动资产数组
         :rtype: list of DisplayApp
         """
         return self._List
@@ -1092,7 +1092,7 @@ class DescribeAppsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1114,7 +1114,7 @@ class DescribeAppsResponse(AbstractModel):
 
 
 class DescribeAssetsRequest(AbstractModel):
-    """DescribeAssets请求参数结构体
+    r"""DescribeAssets请求参数结构体
 
     """
 
@@ -1163,7 +1163,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -1174,7 +1174,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -1185,7 +1185,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -1196,7 +1196,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -1207,7 +1207,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -1218,7 +1218,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -1229,7 +1229,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -1240,7 +1240,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -1251,7 +1251,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -1262,7 +1262,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -1273,7 +1273,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -1284,7 +1284,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -1295,7 +1295,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -1335,7 +1335,7 @@ class DescribeAssetsRequest(AbstractModel):
 
 
 class DescribeAssetsResponse(AbstractModel):
-    """DescribeAssets返回参数结构体
+    r"""DescribeAssets返回参数结构体
 
     """
 
@@ -1354,7 +1354,7 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1365,7 +1365,7 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def List(self):
-        """主机资产数组
+        r"""主机资产数组
         :rtype: list of DisplayAsset
         """
         return self._List
@@ -1376,7 +1376,7 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1398,7 +1398,7 @@ class DescribeAssetsResponse(AbstractModel):
 
 
 class DescribeConfigsRequest(AbstractModel):
-    """DescribeConfigs请求参数结构体
+    r"""DescribeConfigs请求参数结构体
 
     """
 
@@ -1453,7 +1453,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -1464,7 +1464,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -1475,7 +1475,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -1486,7 +1486,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -1497,7 +1497,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -1508,7 +1508,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -1519,7 +1519,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -1530,7 +1530,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -1541,7 +1541,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -1552,7 +1552,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -1563,7 +1563,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -1574,7 +1574,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -1585,7 +1585,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -1596,7 +1596,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -1607,7 +1607,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
+        r"""支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
         :rtype: str
         """
         return self._OrderBy
@@ -1649,7 +1649,7 @@ class DescribeConfigsRequest(AbstractModel):
 
 
 class DescribeConfigsResponse(AbstractModel):
-    """DescribeConfigs返回参数结构体
+    r"""DescribeConfigs返回参数结构体
 
     """
 
@@ -1674,7 +1674,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1685,7 +1685,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayConfig
         """
         return self._List
@@ -1696,7 +1696,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def AllConfigNum(self):
-        """全部路径数量
+        r"""全部路径数量
         :rtype: int
         """
         return self._AllConfigNum
@@ -1707,7 +1707,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def HighRiskConfigNum(self):
-        """高风险路径数量
+        r"""高风险路径数量
         :rtype: int
         """
         return self._HighRiskConfigNum
@@ -1718,7 +1718,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1742,7 +1742,7 @@ class DescribeConfigsResponse(AbstractModel):
 
 
 class DescribeCustomersRequest(AbstractModel):
-    """DescribeCustomers请求参数结构体
+    r"""DescribeCustomers请求参数结构体
 
     """
 
@@ -1764,7 +1764,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -1775,7 +1775,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -1786,7 +1786,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -1797,7 +1797,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """企业名称模糊搜索
+        r"""企业名称模糊搜索
         :rtype: str
         """
         return self._Keyword
@@ -1828,7 +1828,7 @@ class DescribeCustomersRequest(AbstractModel):
 
 
 class DescribeCustomersResponse(AbstractModel):
-    """DescribeCustomers返回参数结构体
+    r"""DescribeCustomers返回参数结构体
 
     """
 
@@ -1847,7 +1847,7 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1858,7 +1858,7 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def List(self):
-        """企业列表
+        r"""企业列表
         :rtype: list of Customer
         """
         return self._List
@@ -1869,7 +1869,7 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1891,7 +1891,7 @@ class DescribeCustomersResponse(AbstractModel):
 
 
 class DescribeDarkWebsRequest(AbstractModel):
-    """DescribeDarkWebs请求参数结构体
+    r"""DescribeDarkWebs请求参数结构体
 
     """
 
@@ -1940,7 +1940,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -1951,7 +1951,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -1962,7 +1962,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -1973,7 +1973,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -1984,7 +1984,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -1995,7 +1995,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -2006,7 +2006,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -2017,7 +2017,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -2028,7 +2028,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -2039,7 +2039,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -2050,7 +2050,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -2061,7 +2061,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -2072,7 +2072,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -2112,7 +2112,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
 
 class DescribeDarkWebsResponse(AbstractModel):
-    """DescribeDarkWebs返回参数结构体
+    r"""DescribeDarkWebs返回参数结构体
 
     """
 
@@ -2131,7 +2131,7 @@ class DescribeDarkWebsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -2142,7 +2142,7 @@ class DescribeDarkWebsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayDarkWeb
         """
         return self._List
@@ -2153,7 +2153,7 @@ class DescribeDarkWebsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2175,7 +2175,7 @@ class DescribeDarkWebsResponse(AbstractModel):
 
 
 class DescribeDomainsRequest(AbstractModel):
-    """DescribeDomains请求参数结构体
+    r"""DescribeDomains请求参数结构体
 
     """
 
@@ -2224,7 +2224,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -2235,7 +2235,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -2246,7 +2246,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -2257,7 +2257,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -2268,7 +2268,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -2279,7 +2279,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -2290,7 +2290,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -2301,7 +2301,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -2312,7 +2312,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -2323,7 +2323,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -2334,7 +2334,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -2345,7 +2345,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -2356,7 +2356,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -2396,7 +2396,7 @@ class DescribeDomainsRequest(AbstractModel):
 
 
 class DescribeDomainsResponse(AbstractModel):
-    """DescribeDomains返回参数结构体
+    r"""DescribeDomains返回参数结构体
 
     """
 
@@ -2415,7 +2415,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -2426,7 +2426,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayDomain
         """
         return self._List
@@ -2437,7 +2437,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2459,7 +2459,7 @@ class DescribeDomainsResponse(AbstractModel):
 
 
 class DescribeEnterprisesRequest(AbstractModel):
-    """DescribeEnterprises请求参数结构体
+    r"""DescribeEnterprises请求参数结构体
 
     """
 
@@ -2511,7 +2511,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -2522,7 +2522,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -2533,7 +2533,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -2544,7 +2544,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -2555,7 +2555,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -2566,7 +2566,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -2577,7 +2577,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -2588,7 +2588,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -2599,7 +2599,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -2610,7 +2610,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -2621,7 +2621,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -2632,7 +2632,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -2643,7 +2643,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -2654,7 +2654,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     @property
     def IsShowStatistics(self):
-        """是否展示统计数据
+        r"""是否展示统计数据
         :rtype: bool
         """
         return self._IsShowStatistics
@@ -2695,7 +2695,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
 
 class DescribeEnterprisesResponse(AbstractModel):
-    """DescribeEnterprises返回参数结构体
+    r"""DescribeEnterprises返回参数结构体
 
     """
 
@@ -2714,7 +2714,7 @@ class DescribeEnterprisesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -2725,7 +2725,7 @@ class DescribeEnterprisesResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayEnterprise
         """
         return self._List
@@ -2736,7 +2736,7 @@ class DescribeEnterprisesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2758,7 +2758,7 @@ class DescribeEnterprisesResponse(AbstractModel):
 
 
 class DescribeFakeAppsRequest(AbstractModel):
-    """DescribeFakeApps请求参数结构体
+    r"""DescribeFakeApps请求参数结构体
 
     """
 
@@ -2807,7 +2807,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -2818,7 +2818,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -2829,7 +2829,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -2840,7 +2840,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -2851,7 +2851,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -2862,7 +2862,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -2873,7 +2873,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -2884,7 +2884,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -2895,7 +2895,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -2906,7 +2906,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -2917,7 +2917,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -2928,7 +2928,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -2939,7 +2939,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -2979,7 +2979,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
 
 class DescribeFakeAppsResponse(AbstractModel):
-    """DescribeFakeApps返回参数结构体
+    r"""DescribeFakeApps返回参数结构体
 
     """
 
@@ -2999,7 +2999,7 @@ class DescribeFakeAppsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3010,7 +3010,7 @@ class DescribeFakeAppsResponse(AbstractModel):
 
     @property
     def List(self):
-        """仿冒应用
+        r"""仿冒应用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayFakeApp
         """
@@ -3022,7 +3022,7 @@ class DescribeFakeAppsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3044,7 +3044,7 @@ class DescribeFakeAppsResponse(AbstractModel):
 
 
 class DescribeFakeMiniProgramsRequest(AbstractModel):
-    """DescribeFakeMiniPrograms请求参数结构体
+    r"""DescribeFakeMiniPrograms请求参数结构体
 
     """
 
@@ -3093,7 +3093,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -3104,7 +3104,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -3115,7 +3115,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -3126,7 +3126,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -3137,7 +3137,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -3148,7 +3148,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -3159,7 +3159,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -3170,7 +3170,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -3181,7 +3181,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -3192,7 +3192,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -3203,7 +3203,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -3214,7 +3214,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -3225,7 +3225,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -3265,7 +3265,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
 
 class DescribeFakeMiniProgramsResponse(AbstractModel):
-    """DescribeFakeMiniPrograms返回参数结构体
+    r"""DescribeFakeMiniPrograms返回参数结构体
 
     """
 
@@ -3285,7 +3285,7 @@ class DescribeFakeMiniProgramsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3296,7 +3296,7 @@ class DescribeFakeMiniProgramsResponse(AbstractModel):
 
     @property
     def List(self):
-        """仿冒小程序
+        r"""仿冒小程序
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayFakeMiniProgram
         """
@@ -3308,7 +3308,7 @@ class DescribeFakeMiniProgramsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3330,7 +3330,7 @@ class DescribeFakeMiniProgramsResponse(AbstractModel):
 
 
 class DescribeFakeWebsitesRequest(AbstractModel):
-    """DescribeFakeWebsites请求参数结构体
+    r"""DescribeFakeWebsites请求参数结构体
 
     """
 
@@ -3379,7 +3379,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -3390,7 +3390,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -3401,7 +3401,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -3412,7 +3412,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -3423,7 +3423,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -3434,7 +3434,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -3445,7 +3445,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -3456,7 +3456,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -3467,7 +3467,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -3478,7 +3478,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -3489,7 +3489,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -3500,7 +3500,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -3511,7 +3511,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -3551,7 +3551,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
 
 class DescribeFakeWebsitesResponse(AbstractModel):
-    """DescribeFakeWebsites返回参数结构体
+    r"""DescribeFakeWebsites返回参数结构体
 
     """
 
@@ -3571,7 +3571,7 @@ class DescribeFakeWebsitesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3582,7 +3582,7 @@ class DescribeFakeWebsitesResponse(AbstractModel):
 
     @property
     def List(self):
-        """仿冒网站
+        r"""仿冒网站
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayFakeWebsite
         """
@@ -3594,7 +3594,7 @@ class DescribeFakeWebsitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3616,7 +3616,7 @@ class DescribeFakeWebsitesResponse(AbstractModel):
 
 
 class DescribeFakeWechatOfficialsRequest(AbstractModel):
-    """DescribeFakeWechatOfficials请求参数结构体
+    r"""DescribeFakeWechatOfficials请求参数结构体
 
     """
 
@@ -3665,7 +3665,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -3676,7 +3676,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -3687,7 +3687,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -3698,7 +3698,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -3709,7 +3709,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -3720,7 +3720,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -3731,7 +3731,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -3742,7 +3742,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -3753,7 +3753,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -3764,7 +3764,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -3775,7 +3775,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -3786,7 +3786,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -3797,7 +3797,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -3837,7 +3837,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
 
 class DescribeFakeWechatOfficialsResponse(AbstractModel):
-    """DescribeFakeWechatOfficials返回参数结构体
+    r"""DescribeFakeWechatOfficials返回参数结构体
 
     """
 
@@ -3857,7 +3857,7 @@ class DescribeFakeWechatOfficialsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -3868,7 +3868,7 @@ class DescribeFakeWechatOfficialsResponse(AbstractModel):
 
     @property
     def List(self):
-        """仿冒公众号
+        r"""仿冒公众号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayFakeWechatOfficial
         """
@@ -3880,7 +3880,7 @@ class DescribeFakeWechatOfficialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3902,7 +3902,7 @@ class DescribeFakeWechatOfficialsResponse(AbstractModel):
 
 
 class DescribeGithubsRequest(AbstractModel):
-    """DescribeGithubs请求参数结构体
+    r"""DescribeGithubs请求参数结构体
 
     """
 
@@ -3948,7 +3948,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -3959,7 +3959,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -3970,7 +3970,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -3981,7 +3981,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -3992,7 +3992,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -4003,7 +4003,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -4014,7 +4014,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -4025,7 +4025,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -4036,7 +4036,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -4047,7 +4047,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -4058,7 +4058,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -4069,7 +4069,7 @@ class DescribeGithubsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -4108,7 +4108,7 @@ class DescribeGithubsRequest(AbstractModel):
 
 
 class DescribeGithubsResponse(AbstractModel):
-    """DescribeGithubs返回参数结构体
+    r"""DescribeGithubs返回参数结构体
 
     """
 
@@ -4127,7 +4127,7 @@ class DescribeGithubsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4138,7 +4138,7 @@ class DescribeGithubsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayGithub
         """
         return self._List
@@ -4149,7 +4149,7 @@ class DescribeGithubsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4171,7 +4171,7 @@ class DescribeGithubsResponse(AbstractModel):
 
 
 class DescribeHttpsRequest(AbstractModel):
-    """DescribeHttps请求参数结构体
+    r"""DescribeHttps请求参数结构体
 
     """
 
@@ -4229,7 +4229,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -4240,7 +4240,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -4251,7 +4251,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -4262,7 +4262,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -4273,7 +4273,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -4284,7 +4284,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -4295,7 +4295,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -4306,7 +4306,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -4317,7 +4317,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -4328,7 +4328,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -4339,7 +4339,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -4350,7 +4350,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -4361,7 +4361,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -4372,7 +4372,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -4383,7 +4383,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def IsShowChange(self):
-        """是否显示变更
+        r"""是否显示变更
         :rtype: bool
         """
         return self._IsShowChange
@@ -4394,7 +4394,7 @@ class DescribeHttpsRequest(AbstractModel):
 
     @property
     def HasExpirationRisk(self):
-        """是否仅显示过期风险资产
+        r"""是否仅显示过期风险资产
         :rtype: bool
         """
         return self._HasExpirationRisk
@@ -4437,7 +4437,7 @@ class DescribeHttpsRequest(AbstractModel):
 
 
 class DescribeHttpsResponse(AbstractModel):
-    """DescribeHttps返回参数结构体
+    r"""DescribeHttps返回参数结构体
 
     """
 
@@ -4456,7 +4456,7 @@ class DescribeHttpsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4467,7 +4467,7 @@ class DescribeHttpsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayHttp
         """
         return self._List
@@ -4478,7 +4478,7 @@ class DescribeHttpsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4500,7 +4500,7 @@ class DescribeHttpsResponse(AbstractModel):
 
 
 class DescribeJobRecordDetailsRequest(AbstractModel):
-    """DescribeJobRecordDetails请求参数结构体
+    r"""DescribeJobRecordDetails请求参数结构体
 
     """
 
@@ -4519,7 +4519,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def Module(self):
-        """数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)
+        r"""数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)
         :rtype: str
         """
         return self._Module
@@ -4530,7 +4530,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def Id(self):
-        """结果id
+        r"""结果id
         :rtype: int
         """
         return self._Id
@@ -4541,7 +4541,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def JobRecordId(self):
-        """任务id
+        r"""任务id
         :rtype: int
         """
         return self._JobRecordId
@@ -4566,7 +4566,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
 
 class DescribeJobRecordDetailsResponse(AbstractModel):
-    """DescribeJobRecordDetails返回参数结构体
+    r"""DescribeJobRecordDetails返回参数结构体
 
     """
 
@@ -4585,7 +4585,7 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4596,7 +4596,7 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayJobRecordDetail
         """
         return self._List
@@ -4607,7 +4607,7 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4629,7 +4629,7 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
 
 class DescribeJobRecordsRequest(AbstractModel):
-    """DescribeJobRecords请求参数结构体
+    r"""DescribeJobRecords请求参数结构体
 
     """
 
@@ -4648,7 +4648,7 @@ class DescribeJobRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -4659,7 +4659,7 @@ class DescribeJobRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -4670,7 +4670,7 @@ class DescribeJobRecordsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -4700,7 +4700,7 @@ class DescribeJobRecordsRequest(AbstractModel):
 
 
 class DescribeJobRecordsResponse(AbstractModel):
-    """DescribeJobRecords返回参数结构体
+    r"""DescribeJobRecords返回参数结构体
 
     """
 
@@ -4719,7 +4719,7 @@ class DescribeJobRecordsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -4730,7 +4730,7 @@ class DescribeJobRecordsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayJobRecord
         """
         return self._List
@@ -4741,7 +4741,7 @@ class DescribeJobRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4763,7 +4763,7 @@ class DescribeJobRecordsResponse(AbstractModel):
 
 
 class DescribeLeakageCodesRequest(AbstractModel):
-    """DescribeLeakageCodes请求参数结构体
+    r"""DescribeLeakageCodes请求参数结构体
 
     """
 
@@ -4815,7 +4815,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -4826,7 +4826,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -4837,7 +4837,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -4848,7 +4848,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -4859,7 +4859,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -4870,7 +4870,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -4881,7 +4881,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -4892,7 +4892,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -4903,7 +4903,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -4914,7 +4914,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -4925,7 +4925,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -4936,7 +4936,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -4947,7 +4947,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -4958,7 +4958,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -4999,7 +4999,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
 
 class DescribeLeakageCodesResponse(AbstractModel):
-    """DescribeLeakageCodes返回参数结构体
+    r"""DescribeLeakageCodes返回参数结构体
 
     """
 
@@ -5019,7 +5019,7 @@ class DescribeLeakageCodesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -5030,7 +5030,7 @@ class DescribeLeakageCodesResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayLeakageCode
         """
@@ -5042,7 +5042,7 @@ class DescribeLeakageCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5064,7 +5064,7 @@ class DescribeLeakageCodesResponse(AbstractModel):
 
 
 class DescribeLeakageDatasRequest(AbstractModel):
-    """DescribeLeakageDatas请求参数结构体
+    r"""DescribeLeakageDatas请求参数结构体
 
     """
 
@@ -5116,7 +5116,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -5127,7 +5127,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -5138,7 +5138,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -5149,7 +5149,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -5160,7 +5160,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -5171,7 +5171,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -5182,7 +5182,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -5193,7 +5193,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -5204,7 +5204,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -5215,7 +5215,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -5226,7 +5226,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -5237,7 +5237,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -5248,7 +5248,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -5259,7 +5259,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -5300,7 +5300,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
 
 class DescribeLeakageDatasResponse(AbstractModel):
-    """DescribeLeakageDatas返回参数结构体
+    r"""DescribeLeakageDatas返回参数结构体
 
     """
 
@@ -5320,7 +5320,7 @@ class DescribeLeakageDatasResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -5331,7 +5331,7 @@ class DescribeLeakageDatasResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayLeakageData
         """
@@ -5343,7 +5343,7 @@ class DescribeLeakageDatasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5365,7 +5365,7 @@ class DescribeLeakageDatasResponse(AbstractModel):
 
 
 class DescribeLeakageEmailsRequest(AbstractModel):
-    """DescribeLeakageEmails请求参数结构体
+    r"""DescribeLeakageEmails请求参数结构体
 
     """
 
@@ -5417,7 +5417,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -5428,7 +5428,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -5439,7 +5439,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -5450,7 +5450,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -5461,7 +5461,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -5472,7 +5472,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -5483,7 +5483,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -5494,7 +5494,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -5505,7 +5505,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -5516,7 +5516,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -5527,7 +5527,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -5538,7 +5538,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -5549,7 +5549,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -5560,7 +5560,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -5601,7 +5601,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
 
 class DescribeLeakageEmailsResponse(AbstractModel):
-    """DescribeLeakageEmails返回参数结构体
+    r"""DescribeLeakageEmails返回参数结构体
 
     """
 
@@ -5621,7 +5621,7 @@ class DescribeLeakageEmailsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -5632,7 +5632,7 @@ class DescribeLeakageEmailsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DisplayLeakageEmail
         """
@@ -5644,7 +5644,7 @@ class DescribeLeakageEmailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5666,7 +5666,7 @@ class DescribeLeakageEmailsResponse(AbstractModel):
 
 
 class DescribeManagesRequest(AbstractModel):
-    """DescribeManages请求参数结构体
+    r"""DescribeManages请求参数结构体
 
     """
 
@@ -5718,7 +5718,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -5729,7 +5729,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -5740,7 +5740,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -5751,7 +5751,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -5762,7 +5762,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -5773,7 +5773,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -5784,7 +5784,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -5795,7 +5795,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -5806,7 +5806,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -5817,7 +5817,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -5828,7 +5828,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -5839,7 +5839,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -5850,7 +5850,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -5861,7 +5861,7 @@ class DescribeManagesRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -5902,7 +5902,7 @@ class DescribeManagesRequest(AbstractModel):
 
 
 class DescribeManagesResponse(AbstractModel):
-    """DescribeManages返回参数结构体
+    r"""DescribeManages返回参数结构体
 
     """
 
@@ -5921,7 +5921,7 @@ class DescribeManagesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -5932,7 +5932,7 @@ class DescribeManagesResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayManage
         """
         return self._List
@@ -5943,7 +5943,7 @@ class DescribeManagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5965,7 +5965,7 @@ class DescribeManagesResponse(AbstractModel):
 
 
 class DescribeNetDisksRequest(AbstractModel):
-    """DescribeNetDisks请求参数结构体
+    r"""DescribeNetDisks请求参数结构体
 
     """
 
@@ -6014,7 +6014,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -6025,7 +6025,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -6036,7 +6036,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -6047,7 +6047,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -6058,7 +6058,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -6069,7 +6069,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -6080,7 +6080,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -6091,7 +6091,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -6102,7 +6102,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -6113,7 +6113,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -6124,7 +6124,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -6135,7 +6135,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -6146,7 +6146,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -6186,7 +6186,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
 
 class DescribeNetDisksResponse(AbstractModel):
-    """DescribeNetDisks返回参数结构体
+    r"""DescribeNetDisks返回参数结构体
 
     """
 
@@ -6205,7 +6205,7 @@ class DescribeNetDisksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -6216,7 +6216,7 @@ class DescribeNetDisksResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayNetDisk
         """
         return self._List
@@ -6227,7 +6227,7 @@ class DescribeNetDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6249,7 +6249,7 @@ class DescribeNetDisksResponse(AbstractModel):
 
 
 class DescribePortsRequest(AbstractModel):
-    """DescribePorts请求参数结构体
+    r"""DescribePorts请求参数结构体
 
     """
 
@@ -6301,7 +6301,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -6312,7 +6312,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -6323,7 +6323,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -6334,7 +6334,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -6345,7 +6345,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -6356,7 +6356,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -6367,7 +6367,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -6378,7 +6378,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -6389,7 +6389,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -6400,7 +6400,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -6411,7 +6411,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -6422,7 +6422,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -6433,7 +6433,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -6444,7 +6444,7 @@ class DescribePortsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -6485,7 +6485,7 @@ class DescribePortsRequest(AbstractModel):
 
 
 class DescribePortsResponse(AbstractModel):
-    """DescribePorts返回参数结构体
+    r"""DescribePorts返回参数结构体
 
     """
 
@@ -6504,7 +6504,7 @@ class DescribePortsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -6515,7 +6515,7 @@ class DescribePortsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayPort
         """
         return self._List
@@ -6526,7 +6526,7 @@ class DescribePortsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6548,7 +6548,7 @@ class DescribePortsResponse(AbstractModel):
 
 
 class DescribeSensitiveInfosRequest(AbstractModel):
-    """DescribeSensitiveInfos请求参数结构体
+    r"""DescribeSensitiveInfos请求参数结构体
 
     """
 
@@ -6600,7 +6600,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -6611,7 +6611,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -6622,7 +6622,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -6633,7 +6633,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -6644,7 +6644,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -6655,7 +6655,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -6666,7 +6666,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -6677,7 +6677,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -6688,7 +6688,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -6699,7 +6699,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -6710,7 +6710,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -6721,7 +6721,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -6732,7 +6732,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -6743,7 +6743,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -6784,7 +6784,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
 
 class DescribeSensitiveInfosResponse(AbstractModel):
-    """DescribeSensitiveInfos返回参数结构体
+    r"""DescribeSensitiveInfos返回参数结构体
 
     """
 
@@ -6803,7 +6803,7 @@ class DescribeSensitiveInfosResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -6814,7 +6814,7 @@ class DescribeSensitiveInfosResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplaySensitiveInfo
         """
         return self._List
@@ -6825,7 +6825,7 @@ class DescribeSensitiveInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6847,7 +6847,7 @@ class DescribeSensitiveInfosResponse(AbstractModel):
 
 
 class DescribeSubDomainsRequest(AbstractModel):
-    """DescribeSubDomains请求参数结构体
+    r"""DescribeSubDomains请求参数结构体
 
     """
 
@@ -6899,7 +6899,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -6910,7 +6910,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -6921,7 +6921,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -6932,7 +6932,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -6943,7 +6943,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -6954,7 +6954,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -6965,7 +6965,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -6976,7 +6976,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -6987,7 +6987,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -6998,7 +6998,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -7009,7 +7009,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -7020,7 +7020,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -7031,7 +7031,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -7042,7 +7042,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -7083,7 +7083,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
 
 class DescribeSubDomainsResponse(AbstractModel):
-    """DescribeSubDomains返回参数结构体
+    r"""DescribeSubDomains返回参数结构体
 
     """
 
@@ -7102,7 +7102,7 @@ class DescribeSubDomainsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7113,7 +7113,7 @@ class DescribeSubDomainsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplaySubDomain
         """
         return self._List
@@ -7124,7 +7124,7 @@ class DescribeSubDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7146,7 +7146,7 @@ class DescribeSubDomainsResponse(AbstractModel):
 
 
 class DescribeSuspiciousAssetsRequest(AbstractModel):
-    """DescribeSuspiciousAssets请求参数结构体
+    r"""DescribeSuspiciousAssets请求参数结构体
 
     """
 
@@ -7198,7 +7198,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -7209,7 +7209,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -7220,7 +7220,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -7231,7 +7231,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -7242,7 +7242,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -7253,7 +7253,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -7264,7 +7264,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -7275,7 +7275,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -7286,7 +7286,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -7297,7 +7297,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -7308,7 +7308,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -7319,7 +7319,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -7330,7 +7330,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -7341,7 +7341,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -7382,7 +7382,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
 
 class DescribeSuspiciousAssetsResponse(AbstractModel):
-    """DescribeSuspiciousAssets返回参数结构体
+    r"""DescribeSuspiciousAssets返回参数结构体
 
     """
 
@@ -7401,7 +7401,7 @@ class DescribeSuspiciousAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7412,7 +7412,7 @@ class DescribeSuspiciousAssetsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplaySuspiciousAsset
         """
         return self._List
@@ -7423,7 +7423,7 @@ class DescribeSuspiciousAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7445,7 +7445,7 @@ class DescribeSuspiciousAssetsResponse(AbstractModel):
 
 
 class DescribeVulsRequest(AbstractModel):
-    """DescribeVuls请求参数结构体
+    r"""DescribeVuls请求参数结构体
 
     """
 
@@ -7494,7 +7494,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -7505,7 +7505,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -7516,7 +7516,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -7527,7 +7527,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -7538,7 +7538,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -7549,7 +7549,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -7560,7 +7560,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -7571,7 +7571,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -7582,7 +7582,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -7593,7 +7593,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -7604,7 +7604,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -7615,7 +7615,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -7626,7 +7626,7 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -7666,7 +7666,7 @@ class DescribeVulsRequest(AbstractModel):
 
 
 class DescribeVulsResponse(AbstractModel):
-    """DescribeVuls返回参数结构体
+    r"""DescribeVuls返回参数结构体
 
     """
 
@@ -7685,7 +7685,7 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7696,7 +7696,7 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayVul
         """
         return self._List
@@ -7707,7 +7707,7 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7729,7 +7729,7 @@ class DescribeVulsResponse(AbstractModel):
 
 
 class DescribeWeakPasswordsRequest(AbstractModel):
-    """DescribeWeakPasswords请求参数结构体
+    r"""DescribeWeakPasswords请求参数结构体
 
     """
 
@@ -7778,7 +7778,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -7789,7 +7789,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -7800,7 +7800,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -7811,7 +7811,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -7822,7 +7822,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -7833,7 +7833,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -7844,7 +7844,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -7855,7 +7855,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -7866,7 +7866,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -7877,7 +7877,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -7888,7 +7888,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -7899,7 +7899,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -7910,7 +7910,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -7950,7 +7950,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
 
 class DescribeWeakPasswordsResponse(AbstractModel):
-    """DescribeWeakPasswords返回参数结构体
+    r"""DescribeWeakPasswords返回参数结构体
 
     """
 
@@ -7969,7 +7969,7 @@ class DescribeWeakPasswordsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7980,7 +7980,7 @@ class DescribeWeakPasswordsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayWeakPassword
         """
         return self._List
@@ -7991,7 +7991,7 @@ class DescribeWeakPasswordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8013,7 +8013,7 @@ class DescribeWeakPasswordsResponse(AbstractModel):
 
 
 class DescribeWechatAppletsRequest(AbstractModel):
-    """DescribeWechatApplets请求参数结构体
+    r"""DescribeWechatApplets请求参数结构体
 
     """
 
@@ -8062,7 +8062,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -8073,7 +8073,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -8084,7 +8084,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -8095,7 +8095,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -8106,7 +8106,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -8117,7 +8117,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -8128,7 +8128,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -8139,7 +8139,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -8150,7 +8150,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -8161,7 +8161,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -8172,7 +8172,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -8183,7 +8183,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -8194,7 +8194,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -8234,7 +8234,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
 
 class DescribeWechatAppletsResponse(AbstractModel):
-    """DescribeWechatApplets返回参数结构体
+    r"""DescribeWechatApplets返回参数结构体
 
     """
 
@@ -8253,7 +8253,7 @@ class DescribeWechatAppletsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -8264,7 +8264,7 @@ class DescribeWechatAppletsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayWechatApplet
         """
         return self._List
@@ -8275,7 +8275,7 @@ class DescribeWechatAppletsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8297,7 +8297,7 @@ class DescribeWechatAppletsResponse(AbstractModel):
 
 
 class DescribeWechatOfficialAccountsRequest(AbstractModel):
-    """DescribeWechatOfficialAccounts请求参数结构体
+    r"""DescribeWechatOfficialAccounts请求参数结构体
 
     """
 
@@ -8346,7 +8346,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -8357,7 +8357,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否新增数据
+        r"""是否新增数据
         :rtype: bool
         """
         return self._IsNew
@@ -8368,7 +8368,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -8379,7 +8379,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -8390,7 +8390,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -8401,7 +8401,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def EnterpriseUidList(self):
-        """子公司ID列表
+        r"""子公司ID列表
         :rtype: list of str
         """
         return self._EnterpriseUidList
@@ -8412,7 +8412,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def Format(self):
-        """数据输出格式：json、file，默认不填为json
+        r"""数据输出格式：json、file，默认不填为json
         :rtype: str
         """
         return self._Format
@@ -8423,7 +8423,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def CreateAtStart(self):
-        """创建时间-开始
+        r"""创建时间-开始
         :rtype: str
         """
         return self._CreateAtStart
@@ -8434,7 +8434,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def CreateAtEnd(self):
-        """创建时间-结束
+        r"""创建时间-结束
         :rtype: str
         """
         return self._CreateAtEnd
@@ -8445,7 +8445,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def UpdateAtStart(self):
-        """更新时间-开始
+        r"""更新时间-开始
         :rtype: str
         """
         return self._UpdateAtStart
@@ -8456,7 +8456,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def UpdateAtEnd(self):
-        """更新时间-结束
+        r"""更新时间-结束
         :rtype: str
         """
         return self._UpdateAtEnd
@@ -8467,7 +8467,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询数组
+        r"""查询数组
         :rtype: list of Filter
         """
         return self._Filters
@@ -8478,7 +8478,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否显示被忽略的数据
+        r"""是否显示被忽略的数据
         :rtype: bool
         """
         return self._Ignored
@@ -8518,7 +8518,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
 
 class DescribeWechatOfficialAccountsResponse(AbstractModel):
-    """DescribeWechatOfficialAccounts返回参数结构体
+    r"""DescribeWechatOfficialAccounts返回参数结构体
 
     """
 
@@ -8537,7 +8537,7 @@ class DescribeWechatOfficialAccountsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -8548,7 +8548,7 @@ class DescribeWechatOfficialAccountsResponse(AbstractModel):
 
     @property
     def List(self):
-        """数组
+        r"""数组
         :rtype: list of DisplayWechatOfficialAccount
         """
         return self._List
@@ -8559,7 +8559,7 @@ class DescribeWechatOfficialAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8581,7 +8581,7 @@ class DescribeWechatOfficialAccountsResponse(AbstractModel):
 
 
 class DisplayApp(AbstractModel):
-    """移动资产详情
+    r"""移动资产详情
 
     """
 
@@ -8624,7 +8624,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -8635,7 +8635,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -8646,7 +8646,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Name(self):
-        """APP名称
+        r"""APP名称
         :rtype: str
         """
         return self._Name
@@ -8657,7 +8657,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -8668,7 +8668,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Developer(self):
-        """开发者
+        r"""开发者
         :rtype: str
         """
         return self._Developer
@@ -8679,7 +8679,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """下载地址
+        r"""下载地址
         :rtype: str
         """
         return self._DownloadUrl
@@ -8690,7 +8690,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Logo(self):
-        """图片
+        r"""图片
         :rtype: str
         """
         return self._Logo
@@ -8701,7 +8701,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def PackageName(self):
-        """包名
+        r"""包名
         :rtype: str
         """
         return self._PackageName
@@ -8712,7 +8712,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def Platform(self):
-        """平台
+        r"""平台
         :rtype: str
         """
         return self._Platform
@@ -8723,7 +8723,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def ServerUrl(self):
-        """服务端地址
+        r"""服务端地址
         :rtype: str
         """
         return self._ServerUrl
@@ -8734,7 +8734,7 @@ class DisplayApp(AbstractModel):
 
     @property
     def AppVersion(self):
-        """app版本
+        r"""app版本
         :rtype: str
         """
         return self._AppVersion
@@ -8769,7 +8769,7 @@ class DisplayApp(AbstractModel):
 
 
 class DisplayAsset(AbstractModel):
-    """主机资产详情
+    r"""主机资产详情
 
     """
 
@@ -8791,6 +8791,14 @@ class DisplayAsset(AbstractModel):
         :type Isp: str
         :param _DisplayToolCommon: 公共字段
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Ports: 端口数据
+        :type Ports: str
+        :param _Services: 服务数据
+        :type Services: str
+        :param _Domains: 域名数据
+        :type Domains: str
+        :param _LastModify: 端口和服务最近更新时间
+        :type LastModify: str
         """
         self._Id = None
         self._Os = None
@@ -8800,10 +8808,14 @@ class DisplayAsset(AbstractModel):
         self._City = None
         self._Isp = None
         self._DisplayToolCommon = None
+        self._Ports = None
+        self._Services = None
+        self._Domains = None
+        self._LastModify = None
 
     @property
     def Id(self):
-        """主机资产Id
+        r"""主机资产Id
         :rtype: int
         """
         return self._Id
@@ -8814,7 +8826,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def Os(self):
-        """操作系统类型
+        r"""操作系统类型
         :rtype: str
         """
         return self._Os
@@ -8825,7 +8837,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def Ip(self):
-        """主机地址
+        r"""主机地址
         :rtype: str
         """
         return self._Ip
@@ -8836,7 +8848,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def Country(self):
-        """国家
+        r"""国家
         :rtype: str
         """
         return self._Country
@@ -8847,7 +8859,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -8858,7 +8870,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def City(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._City
@@ -8869,7 +8881,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def Isp(self):
-        """运营商
+        r"""运营商
         :rtype: str
         """
         return self._Isp
@@ -8880,7 +8892,7 @@ class DisplayAsset(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -8888,6 +8900,50 @@ class DisplayAsset(AbstractModel):
     @DisplayToolCommon.setter
     def DisplayToolCommon(self, DisplayToolCommon):
         self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def Ports(self):
+        r"""端口数据
+        :rtype: str
+        """
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def Services(self):
+        r"""服务数据
+        :rtype: str
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def Domains(self):
+        r"""域名数据
+        :rtype: str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def LastModify(self):
+        r"""端口和服务最近更新时间
+        :rtype: str
+        """
+        return self._LastModify
+
+    @LastModify.setter
+    def LastModify(self, LastModify):
+        self._LastModify = LastModify
 
 
     def _deserialize(self, params):
@@ -8901,6 +8957,10 @@ class DisplayAsset(AbstractModel):
         if params.get("DisplayToolCommon") is not None:
             self._DisplayToolCommon = DisplayToolCommon()
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Ports = params.get("Ports")
+        self._Services = params.get("Services")
+        self._Domains = params.get("Domains")
+        self._LastModify = params.get("LastModify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8912,7 +8972,7 @@ class DisplayAsset(AbstractModel):
 
 
 class DisplayConfig(AbstractModel):
-    """目录爆破详情
+    r"""目录爆破详情
 
     """
 
@@ -8955,7 +9015,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Id(self):
-        """主键Id
+        r"""主键Id
         :rtype: int
         """
         return self._Id
@@ -8966,7 +9026,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Url(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Url
@@ -8977,7 +9037,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Title(self):
-        """站点标题
+        r"""站点标题
         :rtype: str
         """
         return self._Title
@@ -8988,7 +9048,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Code(self):
-        """状态码
+        r"""状态码
         :rtype: int
         """
         return self._Code
@@ -8999,7 +9059,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def ContentLength(self):
-        """响应长度
+        r"""响应长度
         :rtype: int
         """
         return self._ContentLength
@@ -9010,7 +9070,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9021,7 +9081,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Ip(self):
-        """Ip数据
+        r"""Ip数据
         :rtype: str
         """
         return self._Ip
@@ -9032,7 +9092,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def AIRating(self):
-        """AI评分
+        r"""AI评分
         :rtype: int
         """
         return self._AIRating
@@ -9043,7 +9103,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def AIAnalysis(self):
-        """AI分析
+        r"""AI分析
         :rtype: str
         """
         return self._AIAnalysis
@@ -9054,7 +9114,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报
+        r"""风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报
         :rtype: int
         """
         return self._RiskLevel
@@ -9065,7 +9125,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议
+        r"""建议
         :rtype: str
         """
         return self._Suggestion
@@ -9100,7 +9160,7 @@ class DisplayConfig(AbstractModel):
 
 
 class DisplayDarkWeb(AbstractModel):
-    """暗网详情
+    r"""暗网详情
 
     """
 
@@ -9128,7 +9188,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -9139,7 +9199,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -9150,7 +9210,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def MatchedKeywords(self):
-        """命中关键字
+        r"""命中关键字
         :rtype: str
         """
         return self._MatchedKeywords
@@ -9161,7 +9221,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def Url(self):
-        """APP地址
+        r"""APP地址
         :rtype: str
         """
         return self._Url
@@ -9172,7 +9232,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9183,7 +9243,7 @@ class DisplayDarkWeb(AbstractModel):
 
     @property
     def Status(self):
-        """状态：unrepaired:未修复，repaired:已修复，ignore:已忽略
+        r"""状态：unrepaired:未修复，repaired:已修复，ignore:已忽略
         :rtype: str
         """
         return self._Status
@@ -9213,7 +9273,7 @@ class DisplayDarkWeb(AbstractModel):
 
 
 class DisplayDomain(AbstractModel):
-    """主域名详情
+    r"""主域名详情
 
     """
 
@@ -9244,7 +9304,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -9255,7 +9315,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Domain(self):
-        """主域名
+        r"""主域名
         :rtype: str
         """
         return self._Domain
@@ -9266,7 +9326,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def ICP(self):
-        """ICP
+        r"""ICP
         :rtype: str
         """
         return self._ICP
@@ -9277,7 +9337,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def RegisteredTime(self):
-        """注册时间
+        r"""注册时间
         :rtype: str
         """
         return self._RegisteredTime
@@ -9288,7 +9348,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: str
         """
         return self._ExpiredTime
@@ -9299,7 +9359,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Company(self):
-        """公司
+        r"""公司
         :rtype: str
         """
         return self._Company
@@ -9310,7 +9370,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9341,7 +9401,7 @@ class DisplayDomain(AbstractModel):
 
 
 class DisplayEnterprise(AbstractModel):
-    """企业架构详情
+    r"""企业架构详情
 
     """
 
@@ -9402,7 +9462,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Id(self):
-        """主键Id
+        r"""主键Id
         :rtype: int
         """
         return self._Id
@@ -9413,7 +9473,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9424,7 +9484,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def ParentEnterpriseUid(self):
-        """子公司上级
+        r"""子公司上级
         :rtype: str
         """
         return self._ParentEnterpriseUid
@@ -9435,7 +9495,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -9446,7 +9506,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Abbreviation(self):
-        """公司简称
+        r"""公司简称
         :rtype: str
         """
         return self._Abbreviation
@@ -9457,7 +9517,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def CreditCode(self):
-        """统一社会信用代码
+        r"""统一社会信用代码
         :rtype: str
         """
         return self._CreditCode
@@ -9468,7 +9528,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Status(self):
-        """企业状态
+        r"""企业状态
         :rtype: str
         """
         return self._Status
@@ -9479,7 +9539,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def RegisteredCapital(self):
-        """注册资本
+        r"""注册资本
         :rtype: str
         """
         return self._RegisteredCapital
@@ -9490,7 +9550,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def ShareholdingRatio(self):
-        """持股比例
+        r"""持股比例
         :rtype: str
         """
         return self._ShareholdingRatio
@@ -9501,7 +9561,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def LegalPerson(self):
-        """法人代表
+        r"""法人代表
         :rtype: str
         """
         return self._LegalPerson
@@ -9512,7 +9572,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -9523,7 +9583,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def Industry(self):
-        """行业类型
+        r"""行业类型
         :rtype: str
         """
         return self._Industry
@@ -9534,7 +9594,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def EnterpriseUid(self):
-        """子公司唯一uid
+        r"""子公司唯一uid
         :rtype: str
         """
         return self._EnterpriseUid
@@ -9545,7 +9605,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def DomainCount(self):
-        """主域名数量
+        r"""主域名数量
         :rtype: int
         """
         return self._DomainCount
@@ -9556,7 +9616,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def SubDomainCount(self):
-        """子域名数量
+        r"""子域名数量
         :rtype: int
         """
         return self._SubDomainCount
@@ -9567,7 +9627,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def HttpCount(self):
-        """网站数量
+        r"""网站数量
         :rtype: int
         """
         return self._HttpCount
@@ -9578,7 +9638,7 @@ class DisplayEnterprise(AbstractModel):
 
     @property
     def VulCount(self):
-        """漏洞数量
+        r"""漏洞数量
         :rtype: int
         """
         return self._VulCount
@@ -9619,7 +9679,7 @@ class DisplayEnterprise(AbstractModel):
 
 
 class DisplayFakeApp(AbstractModel):
-    """仿冒应用详情
+    r"""仿冒应用详情
 
     """
 
@@ -9653,7 +9713,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -9664,7 +9724,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9675,7 +9735,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def AppName(self):
-        """仿冒应用名称
+        r"""仿冒应用名称
         :rtype: str
         """
         return self._AppName
@@ -9686,7 +9746,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def PackageName(self):
-        """仿冒应用包名称
+        r"""仿冒应用包名称
         :rtype: str
         """
         return self._PackageName
@@ -9697,7 +9757,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """下载链接
+        r"""下载链接
         :rtype: str
         """
         return self._DownloadUrl
@@ -9708,7 +9768,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def HandlingStatus(self):
-        """处置状态：0-待处理 1-处理中 2-已处理
+        r"""处置状态：0-待处理 1-处理中 2-已处理
         :rtype: int
         """
         return self._HandlingStatus
@@ -9719,7 +9779,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def ShutdownStatus(self):
-        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        r"""关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
         :rtype: int
         """
         return self._ShutdownStatus
@@ -9730,7 +9790,7 @@ class DisplayFakeApp(AbstractModel):
 
     @property
     def ShutdownTime(self):
-        """关停时间
+        r"""关停时间
         :rtype: str
         """
         return self._ShutdownTime
@@ -9762,7 +9822,7 @@ class DisplayFakeApp(AbstractModel):
 
 
 class DisplayFakeMiniProgram(AbstractModel):
-    """仿冒小程序详情
+    r"""仿冒小程序详情
 
     """
 
@@ -9799,7 +9859,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -9810,7 +9870,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9821,7 +9881,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def ProgramName(self):
-        """仿冒小程序名称
+        r"""仿冒小程序名称
         :rtype: str
         """
         return self._ProgramName
@@ -9832,7 +9892,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def ProgramId(self):
-        """小程序ID
+        r"""小程序ID
         :rtype: str
         """
         return self._ProgramId
@@ -9843,7 +9903,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def Category(self):
-        """类别
+        r"""类别
         :rtype: str
         """
         return self._Category
@@ -9854,7 +9914,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def QrCode(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._QrCode
@@ -9865,7 +9925,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def HandlingStatus(self):
-        """处置状态：0-待处理 1-处理中 2-已处理
+        r"""处置状态：0-待处理 1-处理中 2-已处理
         :rtype: int
         """
         return self._HandlingStatus
@@ -9876,7 +9936,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def ShutdownStatus(self):
-        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        r"""关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
         :rtype: int
         """
         return self._ShutdownStatus
@@ -9887,7 +9947,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
     @property
     def ShutdownTime(self):
-        """关停时间
+        r"""关停时间
         :rtype: str
         """
         return self._ShutdownTime
@@ -9920,7 +9980,7 @@ class DisplayFakeMiniProgram(AbstractModel):
 
 
 class DisplayFakeWebsite(AbstractModel):
-    """仿冒网站详情
+    r"""仿冒网站详情
 
     """
 
@@ -9954,7 +10014,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -9965,7 +10025,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -9976,7 +10036,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def Website(self):
-        """仿冒网站
+        r"""仿冒网站
         :rtype: str
         """
         return self._Website
@@ -9987,7 +10047,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def IPLocation(self):
-        """ip位置
+        r"""ip位置
         :rtype: str
         """
         return self._IPLocation
@@ -9998,7 +10058,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def Screenshot(self):
-        """截图
+        r"""截图
         :rtype: str
         """
         return self._Screenshot
@@ -10009,7 +10069,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def HandlingStatus(self):
-        """处置状态：0-待处理 1-处理中 2-已处理
+        r"""处置状态：0-待处理 1-处理中 2-已处理
         :rtype: int
         """
         return self._HandlingStatus
@@ -10020,7 +10080,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def ShutdownStatus(self):
-        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        r"""关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
         :rtype: int
         """
         return self._ShutdownStatus
@@ -10031,7 +10091,7 @@ class DisplayFakeWebsite(AbstractModel):
 
     @property
     def ShutdownTime(self):
-        """关停时间
+        r"""关停时间
         :rtype: str
         """
         return self._ShutdownTime
@@ -10063,7 +10123,7 @@ class DisplayFakeWebsite(AbstractModel):
 
 
 class DisplayFakeWechatOfficial(AbstractModel):
-    """仿冒公众号详情
+    r"""仿冒公众号详情
 
     """
 
@@ -10100,7 +10160,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -10111,7 +10171,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -10122,7 +10182,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def AccountName(self):
-        """仿冒公众号名称
+        r"""仿冒公众号名称
         :rtype: str
         """
         return self._AccountName
@@ -10133,7 +10193,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def WechatId(self):
-        """公众号ID
+        r"""公众号ID
         :rtype: str
         """
         return self._WechatId
@@ -10144,7 +10204,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def Avatar(self):
-        """头像
+        r"""头像
         :rtype: str
         """
         return self._Avatar
@@ -10155,7 +10215,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def QrCode(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._QrCode
@@ -10166,7 +10226,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def HandlingStatus(self):
-        """处置状态：0-待处理 1-处理中 2-已处理
+        r"""处置状态：0-待处理 1-处理中 2-已处理
         :rtype: int
         """
         return self._HandlingStatus
@@ -10177,7 +10237,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def ShutdownStatus(self):
-        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        r"""关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
         :rtype: int
         """
         return self._ShutdownStatus
@@ -10188,7 +10248,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
     @property
     def ShutdownTime(self):
-        """关停时间
+        r"""关停时间
         :rtype: str
         """
         return self._ShutdownTime
@@ -10221,7 +10281,7 @@ class DisplayFakeWechatOfficial(AbstractModel):
 
 
 class DisplayGithub(AbstractModel):
-    """Github泄露详情
+    r"""Github泄露详情
 
     """
 
@@ -10249,7 +10309,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -10260,7 +10320,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -10271,7 +10331,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def MatchedKeywords(self):
-        """命中关键字
+        r"""命中关键字
         :rtype: str
         """
         return self._MatchedKeywords
@@ -10282,7 +10342,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def Url(self):
-        """泄露地址
+        r"""泄露地址
         :rtype: str
         """
         return self._Url
@@ -10293,7 +10353,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -10304,7 +10364,7 @@ class DisplayGithub(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -10334,7 +10394,7 @@ class DisplayGithub(AbstractModel):
 
 
 class DisplayHttp(AbstractModel):
-    """Http详情
+    r"""Http详情
 
     """
 
@@ -10387,7 +10447,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -10398,7 +10458,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -10409,7 +10469,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Url(self):
-        """Url
+        r"""Url
         :rtype: str
         """
         return self._Url
@@ -10420,7 +10480,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -10431,7 +10491,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ContentLength(self):
-        """报文长度
+        r"""报文长度
         :rtype: int
         """
         return self._ContentLength
@@ -10442,7 +10502,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Content(self):
-        """报文内容
+        r"""报文内容
         :rtype: str
         """
         return self._Content
@@ -10453,7 +10513,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ScreenshotThumbUrl(self):
-        """截图缩略图URL
+        r"""截图缩略图URL
         :rtype: str
         """
         return self._ScreenshotThumbUrl
@@ -10464,7 +10524,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ScreenshotUrl(self):
-        """截图URL
+        r"""截图URL
         :rtype: str
         """
         return self._ScreenshotUrl
@@ -10475,7 +10535,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Code(self):
-        """状态码
+        r"""状态码
         :rtype: int
         """
         return self._Code
@@ -10486,7 +10546,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Api(self):
-        """Api地址
+        r"""Api地址
         :rtype: str
         """
         return self._Api
@@ -10497,7 +10557,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Ip(self):
-        """解析的IP
+        r"""解析的IP
         :rtype: str
         """
         return self._Ip
@@ -10508,7 +10568,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Ssl(self):
-        """证书信息
+        r"""证书信息
         :rtype: str
         """
         return self._Ssl
@@ -10519,7 +10579,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def SslExpiredTime(self):
-        """ssl证书过期时间
+        r"""ssl证书过期时间
         :rtype: str
         """
         return self._SslExpiredTime
@@ -10530,7 +10590,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def IsChange(self):
-        """资产是否发生变动
+        r"""资产是否发生变动
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10569,7 +10629,7 @@ class DisplayHttp(AbstractModel):
 
 
 class DisplayJobRecord(AbstractModel):
-    """任务详情
+    r"""任务详情
 
     """
 
@@ -10622,7 +10682,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Id(self):
-        """任务Id
+        r"""任务Id
         :rtype: int
         """
         return self._Id
@@ -10633,7 +10693,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -10644,7 +10704,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def CustomerName(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._CustomerName
@@ -10655,7 +10715,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Crontab(self):
-        """周期任务详情
+        r"""周期任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10667,7 +10727,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Status(self):
-        """状态：2-错误/已停止，3-进行中，1-已完成, 4-停止
+        r"""状态：2-错误/已停止，3-进行中，1-已完成, 4-停止
         :rtype: int
         """
         return self._Status
@@ -10678,7 +10738,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def NewCount(self):
-        """新增数据
+        r"""新增数据
         :rtype: int
         """
         return self._NewCount
@@ -10689,7 +10749,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def CreateAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateAt
@@ -10700,7 +10760,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateAt
@@ -10711,7 +10771,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Progress(self):
-        """子任务进度
+        r"""子任务进度
         :rtype: :class:`tencentcloud.ctem.v20231128.models.JobRecordProgress`
         """
         return self._Progress
@@ -10722,7 +10782,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Qps(self):
-        """并发设置
+        r"""并发设置
         :rtype: int
         """
         return self._Qps
@@ -10733,7 +10793,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型
+        r"""任务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10745,7 +10805,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def Uin(self):
-        """客户Uin
+        r"""客户Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10757,7 +10817,7 @@ class DisplayJobRecord(AbstractModel):
 
     @property
     def AppId(self):
-        """客户appid
+        r"""客户appid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10795,7 +10855,7 @@ class DisplayJobRecord(AbstractModel):
 
 
 class DisplayJobRecordDetail(AbstractModel):
-    """链路详情
+    r"""链路详情
 
     """
 
@@ -10825,7 +10885,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
     @property
     def TimeAt(self):
-        """发现时间
+        r"""发现时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10837,7 +10897,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
     @property
     def Module(self):
-        """模块
+        r"""模块
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10849,7 +10909,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
     @property
     def ModuleName(self):
-        """模块名称
+        r"""模块名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10861,7 +10921,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
     @property
     def JobRecordId(self):
-        """任务id
+        r"""任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10873,7 +10933,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
     @property
     def Data(self):
-        """目标
+        r"""目标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IdndValue
         """
@@ -10906,7 +10966,7 @@ class DisplayJobRecordDetail(AbstractModel):
 
 
 class DisplayLeakageCode(AbstractModel):
-    """代码泄露详情
+    r"""代码泄露详情
 
     """
 
@@ -10922,7 +10982,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -10933,7 +10993,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Url(self):
-        """链接
+        r"""链接
         :rtype: str
         """
         return self._Url
@@ -10957,7 +11017,7 @@ class DisplayLeakageCode(AbstractModel):
 
 
 class DisplayLeakageData(AbstractModel):
-    """数据泄露详情
+    r"""数据泄露详情
 
     """
 
@@ -10973,7 +11033,7 @@ class DisplayLeakageData(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -10984,7 +11044,7 @@ class DisplayLeakageData(AbstractModel):
 
     @property
     def Url(self):
-        """链接
+        r"""链接
         :rtype: str
         """
         return self._Url
@@ -11008,7 +11068,7 @@ class DisplayLeakageData(AbstractModel):
 
 
 class DisplayLeakageEmail(AbstractModel):
-    """邮箱泄露详情
+    r"""邮箱泄露详情
 
     """
 
@@ -11024,7 +11084,7 @@ class DisplayLeakageEmail(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11035,7 +11095,7 @@ class DisplayLeakageEmail(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -11059,7 +11119,7 @@ class DisplayLeakageEmail(AbstractModel):
 
 
 class DisplayManage(AbstractModel):
-    """后台详情
+    r"""后台详情
 
     """
 
@@ -11097,7 +11157,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11108,7 +11168,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11119,7 +11179,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Url(self):
-        """Url
+        r"""Url
         :rtype: str
         """
         return self._Url
@@ -11130,7 +11190,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -11141,7 +11201,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Icon(self):
-        """Icon
+        r"""Icon
         :rtype: str
         """
         return self._Icon
@@ -11152,7 +11212,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Screenshot(self):
-        """缩略图
+        r"""缩略图
         :rtype: str
         """
         return self._Screenshot
@@ -11163,7 +11223,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Code(self):
-        """状态码
+        r"""状态码
         :rtype: int
         """
         return self._Code
@@ -11174,7 +11234,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Host(self):
-        """后台Host
+        r"""后台Host
         :rtype: str
         """
         return self._Host
@@ -11185,7 +11245,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Status(self):
-        """状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
+        r"""状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
 
         :rtype: str
         """
@@ -11219,7 +11279,7 @@ class DisplayManage(AbstractModel):
 
 
 class DisplayNetDisk(AbstractModel):
-    """网盘泄露详情
+    r"""网盘泄露详情
 
     """
 
@@ -11250,7 +11310,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11261,7 +11321,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -11272,7 +11332,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def MatchedKeywords(self):
-        """命中关键字
+        r"""命中关键字
         :rtype: str
         """
         return self._MatchedKeywords
@@ -11283,7 +11343,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def Url(self):
-        """泄露地址
+        r"""泄露地址
         :rtype: str
         """
         return self._Url
@@ -11294,7 +11354,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -11305,7 +11365,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11316,7 +11376,7 @@ class DisplayNetDisk(AbstractModel):
 
     @property
     def Platform(self):
-        """泄露平台
+        r"""泄露平台
         :rtype: str
         """
         return self._Platform
@@ -11347,7 +11407,7 @@ class DisplayNetDisk(AbstractModel):
 
 
 class DisplayPort(AbstractModel):
-    """端口详情
+    r"""端口详情
 
     """
 
@@ -11390,7 +11450,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11401,7 +11461,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11412,7 +11472,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Asset(self):
-        """IP或域名地址
+        r"""IP或域名地址
         :rtype: str
         """
         return self._Asset
@@ -11423,7 +11483,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Ip(self):
-        """解析的IP
+        r"""解析的IP
         :rtype: str
         """
         return self._Ip
@@ -11434,7 +11494,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -11445,7 +11505,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def IsHighRisk(self):
-        """是否高危
+        r"""是否高危
         :rtype: bool
         """
         return self._IsHighRisk
@@ -11456,7 +11516,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def App(self):
-        """组件名称
+        r"""组件名称
         :rtype: str
         """
         return self._App
@@ -11467,7 +11527,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Service(self):
-        """服务名称
+        r"""服务名称
         :rtype: str
         """
         return self._Service
@@ -11478,7 +11538,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Banner(self):
-        """端口响应详情
+        r"""端口响应详情
         :rtype: str
         """
         return self._Banner
@@ -11489,7 +11549,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def LastCheckTime(self):
-        """上次检测时间
+        r"""上次检测时间
         :rtype: str
         """
         return self._LastCheckTime
@@ -11500,7 +11560,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Status(self):
-        """状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
+        r"""状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
         :rtype: str
         """
         return self._Status
@@ -11535,7 +11595,7 @@ class DisplayPort(AbstractModel):
 
 
 class DisplaySensitiveInfo(AbstractModel):
-    """敏感信息泄露数据
+    r"""敏感信息泄露数据
 
     """
 
@@ -11560,7 +11620,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Id(self):
-        """主键Id
+        r"""主键Id
         :rtype: int
         """
         return self._Id
@@ -11571,7 +11631,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -11582,7 +11642,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Source(self):
-        """来源
+        r"""来源
         :rtype: str
         """
         return self._Source
@@ -11593,7 +11653,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -11604,7 +11664,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11633,7 +11693,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
 
 class DisplaySubDomain(AbstractModel):
-    """子域名详情
+    r"""子域名详情
 
     """
 
@@ -11667,7 +11727,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11678,7 +11738,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子域名
+        r"""子域名
         :rtype: str
         """
         return self._SubDomain
@@ -11689,7 +11749,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Ip(self):
-        """Ip
+        r"""Ip
         :rtype: str
         """
         return self._Ip
@@ -11700,7 +11760,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Country(self):
-        """国家
+        r"""国家
         :rtype: str
         """
         return self._Country
@@ -11711,7 +11771,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -11722,7 +11782,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -11733,7 +11793,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Isp(self):
-        """互联网服务提供商
+        r"""互联网服务提供商
         :rtype: str
         """
         return self._Isp
@@ -11744,7 +11804,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11776,7 +11836,7 @@ class DisplaySubDomain(AbstractModel):
 
 
 class DisplaySuspiciousAsset(AbstractModel):
-    """影子资产详情
+    r"""影子资产详情
 
     """
 
@@ -11840,7 +11900,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -11851,7 +11911,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -11862,7 +11922,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Url(self):
-        """Url
+        r"""Url
         :rtype: str
         """
         return self._Url
@@ -11873,7 +11933,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -11884,7 +11944,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ContentLength(self):
-        """报文长度
+        r"""报文长度
         :rtype: int
         """
         return self._ContentLength
@@ -11895,7 +11955,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Content(self):
-        """报文内容
+        r"""报文内容
         :rtype: str
         """
         return self._Content
@@ -11906,7 +11966,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ScreenshotThumbUrl(self):
-        """截图缩略图URL
+        r"""截图缩略图URL
         :rtype: str
         """
         return self._ScreenshotThumbUrl
@@ -11917,7 +11977,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ScreenshotUrl(self):
-        """截图URL
+        r"""截图URL
         :rtype: str
         """
         return self._ScreenshotUrl
@@ -11928,7 +11988,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Code(self):
-        """状态码
+        r"""状态码
         :rtype: int
         """
         return self._Code
@@ -11939,7 +11999,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Api(self):
-        """Api
+        r"""Api
         :rtype: str
         """
         return self._Api
@@ -11950,7 +12010,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Ip(self):
-        """解析的IP
+        r"""解析的IP
         :rtype: str
         """
         return self._Ip
@@ -11961,7 +12021,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Ssl(self):
-        """证书信息
+        r"""证书信息
         :rtype: str
         """
         return self._Ssl
@@ -11972,7 +12032,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SslExpiredTime(self):
-        """ssl证书过期时间
+        r"""ssl证书过期时间
         :rtype: str
         """
         return self._SslExpiredTime
@@ -11983,7 +12043,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SourceType(self):
-        """来源类型
+        r"""来源类型
         :rtype: str
         """
         return self._SourceType
@@ -11994,7 +12054,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SourceValue(self):
-        """来源值
+        r"""来源值
         :rtype: str
         """
         return self._SourceValue
@@ -12005,7 +12065,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Trusted(self):
-        """是否信任
+        r"""是否信任
         :rtype: bool
         """
         return self._Trusted
@@ -12016,7 +12076,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Owner(self):
-        """所属者
+        r"""所属者
         :rtype: str
         """
         return self._Owner
@@ -12027,7 +12087,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def RootDomain(self):
-        """根域名
+        r"""根域名
         :rtype: str
         """
         return self._RootDomain
@@ -12069,7 +12129,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
 
 class DisplayToolCommon(AbstractModel):
-    """数据管理公共字段
+    r"""数据管理公共字段
 
     """
 
@@ -12118,7 +12178,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def EnterpriseUid(self):
-        """子公司ID
+        r"""子公司ID
         :rtype: str
         """
         return self._EnterpriseUid
@@ -12129,7 +12189,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def EnterpriseName(self):
-        """子公司名称
+        r"""子公司名称
         :rtype: str
         """
         return self._EnterpriseName
@@ -12140,7 +12200,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobId(self):
-        """主任务ID
+        r"""主任务ID
         :rtype: int
         """
         return self._JobId
@@ -12151,7 +12211,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobStageId(self):
-        """单任务ID
+        r"""单任务ID
         :rtype: int
         """
         return self._JobStageId
@@ -12162,7 +12222,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Ignored(self):
-        """是否忽略
+        r"""是否忽略
         :rtype: bool
         """
         return self._Ignored
@@ -12173,7 +12233,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobRecordId(self):
-        """子任务ID
+        r"""子任务ID
         :rtype: int
         """
         return self._JobRecordId
@@ -12184,7 +12244,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -12195,7 +12255,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CustomerName(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._CustomerName
@@ -12206,7 +12266,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Detail(self):
-        """详情
+        r"""详情
         :rtype: str
         """
         return self._Detail
@@ -12217,7 +12277,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Md5(self):
-        """Md5值
+        r"""Md5值
         :rtype: str
         """
         return self._Md5
@@ -12228,7 +12288,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CreateAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateAt
@@ -12239,7 +12299,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateAt
@@ -12250,7 +12310,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Labels(self):
-        """标签列表，json格式：{\"tag1\":[\"责任人xxx\"],\"tag2\":[\"测试站\"]}
+        r"""标签列表，json格式：{\"tag1\":[\"责任人xxx\"],\"tag2\":[\"测试站\"]}
         :rtype: str
         """
         return self._Labels
@@ -12285,7 +12345,7 @@ class DisplayToolCommon(AbstractModel):
 
 
 class DisplayVul(AbstractModel):
-    """漏洞详情
+    r"""漏洞详情
 
     """
 
@@ -12334,7 +12394,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -12345,7 +12405,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -12356,7 +12416,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Ip(self):
-        """解析的IP
+        r"""解析的IP
         :rtype: str
         """
         return self._Ip
@@ -12367,7 +12427,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -12378,7 +12438,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Url(self):
-        """Url地址
+        r"""Url地址
         :rtype: str
         """
         return self._Url
@@ -12389,7 +12449,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级：1：提示, 2:低危, 3:中危, 4:高危, 5: 严重
+        r"""风险等级：1：提示, 2:低危, 3:中危, 4:高危, 5: 严重
         :rtype: int
         """
         return self._Level
@@ -12400,7 +12460,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Name(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._Name
@@ -12411,7 +12471,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def RepairStatus(self):
-        """是否修复，0:未修复，1:已修复
+        r"""是否修复，0:未修复，1:已修复
         :rtype: int
         """
         return self._RepairStatus
@@ -12422,7 +12482,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议
+        r"""建议
         :rtype: str
         """
         return self._Suggestion
@@ -12433,7 +12493,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def DiscoverTime(self):
-        """发现时间
+        r"""发现时间
         :rtype: str
         """
         return self._DiscoverTime
@@ -12444,7 +12504,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def AiJudge(self):
-        """AI研判
+        r"""AI研判
         :rtype: str
         """
         return self._AiJudge
@@ -12455,7 +12515,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def Status(self):
-        """状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略
+        r"""状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略
         :rtype: str
         """
         return self._Status
@@ -12466,7 +12526,7 @@ class DisplayVul(AbstractModel):
 
     @property
     def LastCheckTime(self):
-        """上次复测时间
+        r"""上次复测时间
         :rtype: str
         """
         return self._LastCheckTime
@@ -12503,7 +12563,7 @@ class DisplayVul(AbstractModel):
 
 
 class DisplayWeakPassword(AbstractModel):
-    """弱口令详情
+    r"""弱口令详情
 
     """
 
@@ -12549,7 +12609,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -12560,7 +12620,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -12571,7 +12631,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Ip(self):
-        """解析的IP
+        r"""解析的IP
         :rtype: str
         """
         return self._Ip
@@ -12582,7 +12642,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -12593,7 +12653,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Url(self):
-        """Url地址
+        r"""Url地址
         :rtype: str
         """
         return self._Url
@@ -12604,7 +12664,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Type(self):
-        """弱口令类型
+        r"""弱口令类型
         :rtype: str
         """
         return self._Type
@@ -12615,7 +12675,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Account(self):
-        """弱口令账号
+        r"""弱口令账号
         :rtype: str
         """
         return self._Account
@@ -12626,7 +12686,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Password(self):
-        """弱口令密码
+        r"""弱口令密码
         :rtype: str
         """
         return self._Password
@@ -12637,7 +12697,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def IsHoneypot(self):
-        """是否蜜罐
+        r"""是否蜜罐
         :rtype: bool
         """
         return self._IsHoneypot
@@ -12648,7 +12708,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def ScreenshotUrl(self):
-        """截图
+        r"""截图
         :rtype: str
         """
         return self._ScreenshotUrl
@@ -12659,7 +12719,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def Status(self):
-        """状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略, checking:复测中
+        r"""状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略, checking:复测中
         :rtype: str
         """
         return self._Status
@@ -12670,7 +12730,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def LastCheckTime(self):
-        """上次复测时间
+        r"""上次复测时间
         :rtype: str
         """
         return self._LastCheckTime
@@ -12706,7 +12766,7 @@ class DisplayWeakPassword(AbstractModel):
 
 
 class DisplayWechatApplet(AbstractModel):
-    """微信小程序详情
+    r"""微信小程序详情
 
     """
 
@@ -12737,7 +12797,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -12748,7 +12808,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -12759,7 +12819,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -12770,7 +12830,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def Logo(self):
-        """图片地址
+        r"""图片地址
         :rtype: str
         """
         return self._Logo
@@ -12781,7 +12841,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号
+        r"""账号
         :rtype: str
         """
         return self._AccountId
@@ -12792,7 +12852,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def QrCode(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._QrCode
@@ -12803,7 +12863,7 @@ class DisplayWechatApplet(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -12834,7 +12894,7 @@ class DisplayWechatApplet(AbstractModel):
 
 
 class DisplayWechatOfficialAccount(AbstractModel):
-    """微信公众号详情
+    r"""微信公众号详情
 
     """
 
@@ -12865,7 +12925,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def Id(self):
-        """主键ID
+        r"""主键ID
         :rtype: int
         """
         return self._Id
@@ -12876,7 +12936,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        """公共字段
+        r"""公共字段
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -12887,7 +12947,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -12898,7 +12958,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def Logo(self):
-        """图片地址
+        r"""图片地址
         :rtype: str
         """
         return self._Logo
@@ -12909,7 +12969,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号
+        r"""账号
         :rtype: str
         """
         return self._AccountId
@@ -12920,7 +12980,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def QrCode(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._QrCode
@@ -12931,7 +12991,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -12962,7 +13022,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """支持按照各字段过滤
+    r"""支持按照各字段过滤
 
     """
 
@@ -12978,7 +13038,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """要搜索的字段
+        r"""要搜索的字段
         :rtype: str
         """
         return self._Name
@@ -12989,7 +13049,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """目标值列表
+        r"""目标值列表
         :rtype: list of str
         """
         return self._Values
@@ -13013,7 +13073,7 @@ class Filter(AbstractModel):
 
 
 class IdndValue(AbstractModel):
-    """链路详情扫描目标和ID
+    r"""链路详情扫描目标和ID
 
     """
 
@@ -13031,7 +13091,7 @@ class IdndValue(AbstractModel):
 
     @property
     def Id(self):
-        """详情ID
+        r"""详情ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13043,7 +13103,7 @@ class IdndValue(AbstractModel):
 
     @property
     def Value(self):
-        """目标
+        r"""目标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13068,7 +13128,7 @@ class IdndValue(AbstractModel):
 
 
 class JobRecordProgress(AbstractModel):
-    """子任务进度
+    r"""子任务进度
 
     """
 
@@ -13096,7 +13156,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Doing(self):
-        """正在执行的任务数
+        r"""正在执行的任务数
         :rtype: int
         """
         return self._Doing
@@ -13107,7 +13167,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Done(self):
-        """已完成的任务数
+        r"""已完成的任务数
         :rtype: int
         """
         return self._Done
@@ -13118,7 +13178,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Error(self):
-        """发生错误的任务数
+        r"""发生错误的任务数
         :rtype: int
         """
         return self._Error
@@ -13129,7 +13189,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Timeout(self):
-        """超时
+        r"""超时
         :rtype: int
         """
         return self._Timeout
@@ -13140,7 +13200,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Stop(self):
-        """停止
+        r"""停止
         :rtype: int
         """
         return self._Stop
@@ -13151,7 +13211,7 @@ class JobRecordProgress(AbstractModel):
 
     @property
     def Todo(self):
-        """暂停
+        r"""暂停
         :rtype: int
         """
         return self._Todo
@@ -13179,7 +13239,7 @@ class JobRecordProgress(AbstractModel):
 
 
 class ModifyCustomerRequest(AbstractModel):
-    """ModifyCustomer请求参数结构体
+    r"""ModifyCustomer请求参数结构体
 
     """
 
@@ -13240,7 +13300,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -13251,7 +13311,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Percent(self):
-        """百分比取值范围为30-100
+        r"""百分比取值范围为30-100
         :rtype: int
         """
         return self._Percent
@@ -13262,7 +13322,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        """资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
         :rtype: str
         """
         return self._ScanType
@@ -13273,7 +13333,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Id(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._Id
@@ -13284,7 +13344,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanCron(self):
-        """周期测绘时间
+        r"""周期测绘时间
         :rtype: str
         """
         return self._ScanCron
@@ -13295,7 +13355,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def IsScanNow(self):
-        """是否立即启动
+        r"""是否立即启动
         :rtype: bool
         """
         return self._IsScanNow
@@ -13306,7 +13366,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableCron(self):
-        """是否启用周期测绘
+        r"""是否启用周期测绘
         :rtype: bool
         """
         return self._EnableCron
@@ -13317,7 +13377,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        """是否扫描子公司
+        r"""是否扫描子公司
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -13328,7 +13388,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableAuth(self):
-        """是否授权
+        r"""是否授权
         :rtype: bool
         """
         return self._EnableAuth
@@ -13339,7 +13399,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        """授权开始时间
+        r"""授权开始时间
         :rtype: str
         """
         return self._AuthStartAt
@@ -13350,7 +13410,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        """授权结束时间
+        r"""授权结束时间
         :rtype: str
         """
         return self._AuthEndAt
@@ -13361,7 +13421,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthFile(self):
-        """授权文件id
+        r"""授权文件id
         :rtype: str
         """
         return self._AuthFile
@@ -13372,7 +13432,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        """测绘时间配置项，采用json字符串格式
+        r"""测绘时间配置项，采用json字符串格式
         :rtype: str
         """
         return self._ScanTime
@@ -13383,7 +13443,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Icon(self):
-        """企业图标
+        r"""企业图标
         :rtype: str
         """
         return self._Icon
@@ -13394,7 +13454,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Qps(self):
-        """并发
+        r"""并发
         :rtype: int
         """
         return self._Qps
@@ -13405,7 +13465,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        """子公司拓展层次
+        r"""子公司拓展层次
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -13416,7 +13476,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        """是否包含完整的扫描
+        r"""是否包含完整的扫描
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -13455,7 +13515,7 @@ class ModifyCustomerRequest(AbstractModel):
 
 
 class ModifyCustomerResponse(AbstractModel):
-    """ModifyCustomer返回参数结构体
+    r"""ModifyCustomer返回参数结构体
 
     """
 
@@ -13471,7 +13531,7 @@ class ModifyCustomerResponse(AbstractModel):
 
     @property
     def Id(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._Id
@@ -13482,7 +13542,7 @@ class ModifyCustomerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13498,7 +13558,7 @@ class ModifyCustomerResponse(AbstractModel):
 
 
 class ModifyLabelRequest(AbstractModel):
-    """ModifyLabel请求参数结构体
+    r"""ModifyLabel请求参数结构体
 
     """
 
@@ -13529,7 +13589,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+        r"""模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
         :rtype: str
         """
         return self._Module
@@ -13540,7 +13600,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def CustomerIdList(self):
-        """企业ID列表，可多选
+        r"""企业ID列表，可多选
         :rtype: list of int
         """
         return self._CustomerIdList
@@ -13551,7 +13611,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """资产或风险主键ID
+        r"""资产或风险主键ID
         :rtype: int
         """
         return self._Id
@@ -13562,7 +13622,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID，在企业管理页面查看
+        r"""企业ID，在企业管理页面查看
         :rtype: int
         """
         return self._CustomerId
@@ -13573,7 +13633,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def IsAggregation(self):
-        """是否聚合数据
+        r"""是否聚合数据
         :rtype: bool
         """
         return self._IsAggregation
@@ -13584,7 +13644,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """标签详情
+        r"""标签详情
         :rtype: str
         """
         return self._Labels
@@ -13595,7 +13655,7 @@ class ModifyLabelRequest(AbstractModel):
 
     @property
     def Ids(self):
-        """资产或风险主键ID列表
+        r"""资产或风险主键ID列表
         :rtype: list of int
         """
         return self._Ids
@@ -13624,7 +13684,7 @@ class ModifyLabelRequest(AbstractModel):
 
 
 class ModifyLabelResponse(AbstractModel):
-    """ModifyLabel返回参数结构体
+    r"""ModifyLabel返回参数结构体
 
     """
 
@@ -13637,7 +13697,7 @@ class ModifyLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13652,7 +13712,7 @@ class ModifyLabelResponse(AbstractModel):
 
 
 class StopJobRecordRequest(AbstractModel):
-    """StopJobRecord请求参数结构体
+    r"""StopJobRecord请求参数结构体
 
     """
 
@@ -13668,7 +13728,7 @@ class StopJobRecordRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CustomerId
@@ -13679,7 +13739,7 @@ class StopJobRecordRequest(AbstractModel):
 
     @property
     def JobRecordId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._JobRecordId
@@ -13703,7 +13763,7 @@ class StopJobRecordRequest(AbstractModel):
 
 
 class StopJobRecordResponse(AbstractModel):
-    """StopJobRecord返回参数结构体
+    r"""StopJobRecord返回参数结构体
 
     """
 
@@ -13716,7 +13776,7 @@ class StopJobRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

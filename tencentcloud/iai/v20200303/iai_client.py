@@ -27,7 +27,7 @@ class IaiClient(AbstractClient):
 
 
     def AnalyzeDenseLandmarks(self, request):
-        """对请求图片进行五官定位（也称人脸关键点定位），获得人脸的精准信息，返回多达888点关键信息，对五官和脸部轮廓进行精确定位。
+        r"""对请求图片进行五官定位（也称人脸关键点定位），获得人脸的精准信息，返回多达888点关键信息，对五官和脸部轮廓进行精确定位。
 
         :param request: Request instance for AnalyzeDenseLandmarks.
         :type request: :class:`tencentcloud.iai.v20200303.models.AnalyzeDenseLandmarksRequest`
@@ -50,7 +50,7 @@ class IaiClient(AbstractClient):
 
 
     def AnalyzeFace(self, request):
-        """对请求图片进行五官定位（也称人脸关键点定位），计算构成人脸轮廓的 90 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）、眼珠[或瞳孔]（2点）。
+        r"""对请求图片进行五官定位（也称人脸关键点定位），计算构成人脸轮廓的 90 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）、眼珠[或瞳孔]（2点）。
 
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -76,7 +76,7 @@ class IaiClient(AbstractClient):
 
 
     def CompareFace(self, request):
-        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+        r"""对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
         若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://cloud.tencent.com/document/product/867/44983)或[人员验证](https://cloud.tencent.com/document/product/867/44982)接口。
 
@@ -104,7 +104,7 @@ class IaiClient(AbstractClient):
 
 
     def CompareMaskFace(self, request):
-        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+        r"""对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
         防疫场景人脸比对接口可在人脸戴口罩情况下使用，口罩遮挡程度最高可以遮挡鼻尖。
 
@@ -131,7 +131,7 @@ class IaiClient(AbstractClient):
 
 
     def CopyPerson(self, request):
-        """将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
+        r"""将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
         >
         - 注：若该人员创建时算法模型版本为2.0，复制到非2.0算法模型版本的Group中时，复制操作将会失败。
 
@@ -156,7 +156,7 @@ class IaiClient(AbstractClient):
 
 
     def CreateFace(self, request):
-        """将一组人脸图片添加到一个人员中。一个人员最多允许包含 5 张图片。若该人员存在多个人员库中，所有人员库中该人员图片均会增加。
+        r"""将一组人脸图片添加到一个人员中。一个人员最多允许包含 5 张图片。若该人员存在多个人员库中，所有人员库中该人员图片均会增加。
 
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -182,7 +182,7 @@ class IaiClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """用于创建一个空的人员库，如果人员库已存在返回错误。
+        r"""用于创建一个空的人员库，如果人员库已存在返回错误。
         可根据需要创建自定义描述字段，用于辅助描述该人员库下的人员信息。
 
         1个APPID下最多创建10万个人员库（Group）、最多包含5000万张人脸（Face）。
@@ -210,7 +210,7 @@ class IaiClient(AbstractClient):
 
 
     def CreatePerson(self, request):
-        """创建人员，添加人脸、姓名、性别及其他相关信息。
+        r"""创建人员，添加人脸、姓名、性别及其他相关信息。
 
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -236,7 +236,7 @@ class IaiClient(AbstractClient):
 
 
     def DeleteFace(self, request):
-        """删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
+        r"""删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
 
         :param request: Request instance for DeleteFace.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeleteFaceRequest`
@@ -259,7 +259,7 @@ class IaiClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除该人员库及包含的所有的人员。同时，人员对应的所有人脸信息将被删除。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除，属于其他人员库的自定义描述字段信息不受影响。
+        r"""删除该人员库及包含的所有的人员。同时，人员对应的所有人脸信息将被删除。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除，属于其他人员库的自定义描述字段信息不受影响。
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeleteGroupRequest`
@@ -282,7 +282,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePerson(self, request):
-        """删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
+        r"""删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
 
         :param request: Request instance for DeletePerson.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeletePersonRequest`
@@ -305,7 +305,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePersonFromGroup(self, request):
-        """从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
+        r"""从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
 
         :param request: Request instance for DeletePersonFromGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeletePersonFromGroupRequest`
@@ -328,7 +328,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFace(self, request):
-        """检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)，人脸质量信息包括整体质量分（score）、模糊分（sharpness）、光照分（brightness）和五官遮挡分（completeness）。
+        r"""检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)，人脸质量信息包括整体质量分（score）、模糊分（sharpness）、光照分（brightness）和五官遮挡分（completeness）。
 
 
         其中，人脸质量信息主要用于评价输入的人脸图片的质量。在使用人脸识别服务时，建议您对输入的人脸图片进行质量检测，提升后续业务处理的效果。该功能的应用场景包括：
@@ -365,7 +365,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFaceAttributes(self, request):
-        """检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)。
+        r"""检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)。
 
 
         其中，人脸质量信息主要用于评价输入的人脸图片的质量。在使用人脸识别服务时，建议您对输入的人脸图片进行质量检测，提升后续业务处理的效果。该功能的应用场景包括：
@@ -408,7 +408,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFaceSimilarity(self, request):
-        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+        r"""对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
         若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://www.tencentcloud.com/document/product/1059/36972)或[人员验证](https://www.tencentcloud.com/document/product/1059/36971)接口。
 
@@ -436,7 +436,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectLiveFace(self, request):
-        """用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
+        r"""用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
 
         静态活体检测适用于手机自拍的场景，或对防攻击要求不高的场景。如果对活体检测有更高安全性要求，请使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/faceid)产品。
 
@@ -470,7 +470,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectLiveFaceAccurate(self, request):
-        """人脸静态活体检测（高精度版）可用于对用户上传的静态图片进行防翻拍活体检测，以判断是否是翻拍图片。
+        r"""人脸静态活体检测（高精度版）可用于对用户上传的静态图片进行防翻拍活体检测，以判断是否是翻拍图片。
 
         相比现有静态活体检测服务，高精度版在维持高真人通过率的前提下，增强了对高清屏幕、裁剪纸片、3D面具等攻击的防御能力，攻击拦截率约为业内同类型产品形态4-5倍。同时支持多场景人脸核验，满足移动端、PC端各类型场景的图片活体检验需求，适用于各个行业不同的活体检验应用。
 
@@ -497,7 +497,7 @@ class IaiClient(AbstractClient):
 
 
     def GetGroupInfo(self, request):
-        """获取人员库信息。
+        r"""获取人员库信息。
 
         :param request: Request instance for GetGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetGroupInfoRequest`
@@ -520,7 +520,7 @@ class IaiClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """获取人员库列表。
+        r"""获取人员库列表。
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetGroupListRequest`
@@ -543,7 +543,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonBaseInfo(self, request):
-        """获取指定人员的信息，包括姓名、性别、人脸等。
+        r"""获取指定人员的信息，包括姓名、性别、人脸等。
 
         :param request: Request instance for GetPersonBaseInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonBaseInfoRequest`
@@ -566,7 +566,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonGroupInfo(self, request):
-        """获取指定人员的信息，包括加入的人员库、描述内容等。
+        r"""获取指定人员的信息，包括加入的人员库、描述内容等。
 
         :param request: Request instance for GetPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonGroupInfoRequest`
@@ -589,7 +589,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonList(self, request):
-        """获取指定人员库中的人员列表。
+        r"""获取指定人员库中的人员列表。
 
         :param request: Request instance for GetPersonList.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonListRequest`
@@ -612,7 +612,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonListNum(self, request):
-        """获取指定人员库中人员数量。
+        r"""获取指定人员库中人员数量。
 
         :param request: Request instance for GetPersonListNum.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonListNumRequest`
@@ -635,7 +635,7 @@ class IaiClient(AbstractClient):
 
 
     def GetUpgradeGroupFaceModelVersionJobList(self, request):
-        """避免官网歧义
+        r"""避免官网歧义
 
         获取人员库升级任务列表
 
@@ -660,7 +660,7 @@ class IaiClient(AbstractClient):
 
 
     def GetUpgradeGroupFaceModelVersionResult(self, request):
-        """避免官网歧义
+        r"""避免官网歧义
 
         人员库升级结果查询
 
@@ -685,7 +685,7 @@ class IaiClient(AbstractClient):
 
 
     def ModifyGroup(self, request):
-        """修改人员库名称、备注、自定义描述字段名称。
+        r"""修改人员库名称、备注、自定义描述字段名称。
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.ModifyGroupRequest`
@@ -708,7 +708,7 @@ class IaiClient(AbstractClient):
 
 
     def ModifyPersonBaseInfo(self, request):
-        """修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
+        r"""修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
 
         :param request: Request instance for ModifyPersonBaseInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.ModifyPersonBaseInfoRequest`
@@ -731,7 +731,7 @@ class IaiClient(AbstractClient):
 
 
     def ModifyPersonGroupInfo(self, request):
-        """修改指定人员库人员描述内容。
+        r"""修改指定人员库人员描述内容。
 
         :param request: Request instance for ModifyPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.ModifyPersonGroupInfoRequest`
@@ -754,7 +754,7 @@ class IaiClient(AbstractClient):
 
 
     def RevertGroupFaceModelVersion(self, request):
-        """同理
+        r"""同理
 
         本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
 
@@ -781,7 +781,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchFaces(self, request):
-        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，识别结果按照相似度从大到小排序。
+        r"""用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，识别结果按照相似度从大到小排序。
 
         支持一次性识别图片中的最多 10 张人脸，支持一次性跨 100 个人员库（Group）搜索。
 
@@ -819,7 +819,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchFacesReturnsByGroup(self, request):
-        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
+        r"""用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
 
         支持一次性识别图片中的最多 10 张人脸，支持跨人员库（Group）搜索。
 
@@ -856,7 +856,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchPersons(self, request):
-        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照相似度从大到小排列。
+        r"""用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照相似度从大到小排列。
 
         支持一次性识别图片中的最多 10 张人脸，支持一次性跨 100 个人员库（Group）搜索。
 
@@ -889,7 +889,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchPersonsReturnsByGroup(self, request):
-        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
+        r"""用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
 
         支持一次性识别图片中的最多 10 张人脸，支持跨人员库（Group）搜索。
 
@@ -921,7 +921,7 @@ class IaiClient(AbstractClient):
 
 
     def UpgradeGroupFaceModelVersion(self, request):
-        """避免官网歧义
+        r"""避免官网歧义
 
         升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
         单个人员库有且仅支持一次回滚操作。
@@ -951,7 +951,7 @@ class IaiClient(AbstractClient):
 
 
     def VerifyFace(self, request):
-        """给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。
+        r"""给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。
 
         与[人脸比对](https://cloud.tencent.com/document/product/867/44987)接口不同的是，人脸验证用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而[人脸比对](https://cloud.tencent.com/document/product/867/44987)用于判断两张人脸的相似度。
 
@@ -981,7 +981,7 @@ class IaiClient(AbstractClient):
 
 
     def VerifyPerson(self, request):
-        """给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。
+        r"""给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。
         本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
 
          和人脸比对相关接口不同的是，人脸验证相关接口用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而人脸比对相关接口用于判断两张人脸的相似度。

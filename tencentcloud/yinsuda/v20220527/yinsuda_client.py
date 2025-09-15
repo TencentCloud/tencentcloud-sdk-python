@@ -27,7 +27,7 @@ class YinsudaClient(AbstractClient):
 
 
     def ApplyChorus(self, request):
-        """申请合唱相关信息，用于标记用户的演唱是在合唱场景下。
+        r"""申请合唱相关信息，用于标记用户的演唱是在合唱场景下。
 
         :param request: Request instance for ApplyChorus.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.ApplyChorusRequest`
@@ -50,7 +50,7 @@ class YinsudaClient(AbstractClient):
 
 
     def BatchDescribeKTVMusicDetails(self, request):
-        """批量获取歌曲详细信息，包括：歌词下载链接、播放凭证、音高数据下载链接信息等。
+        r"""批量获取歌曲详细信息，包括：歌词下载链接、播放凭证、音高数据下载链接信息等。
 
         :param request: Request instance for BatchDescribeKTVMusicDetails.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.BatchDescribeKTVMusicDetailsRequest`
@@ -73,7 +73,7 @@ class YinsudaClient(AbstractClient):
 
 
     def CreateKTVRobot(self, request):
-        """创建机器人，支持进入 RTC 房间，播放曲库歌曲。
+        r"""创建机器人，支持进入 RTC 房间，播放曲库歌曲。
 
         :param request: Request instance for CreateKTVRobot.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.CreateKTVRobotRequest`
@@ -96,7 +96,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVMatchMusics(self, request):
-        """根据输入的规则匹配曲库中的歌曲。
+        r"""根据输入的规则匹配曲库中的歌曲。
 
         :param request: Request instance for DescribeKTVMatchMusics.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMatchMusicsRequest`
@@ -119,7 +119,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVMusicAccompanySegmentUrl(self, request):
-        """获取歌曲伴奏片段链接，可用于抢唱
+        r"""获取歌曲伴奏片段链接，可用于抢唱
 
         :param request: Request instance for DescribeKTVMusicAccompanySegmentUrl.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlRequest`
@@ -142,7 +142,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVMusicAccompanySegmentUrlVip(self, request):
-        """获取歌曲伴奏高潮的开始、结束时间，可用于抢唱
+        r"""获取歌曲伴奏高潮的开始、结束时间，可用于抢唱
 
         :param request: Request instance for DescribeKTVMusicAccompanySegmentUrlVip.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlVipRequest`
@@ -165,7 +165,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVMusicsByTag(self, request):
-        """通过标签过滤歌曲列表。
+        r"""通过标签过滤歌曲列表。
 
         :param request: Request instance for DescribeKTVMusicsByTag.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicsByTagRequest`
@@ -188,7 +188,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVPlaylistDetail(self, request):
-        """根据歌单 Id 获取歌单详情。
+        r"""根据歌单 Id 获取歌单详情。
 
         :param request: Request instance for DescribeKTVPlaylistDetail.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVPlaylistDetailRequest`
@@ -211,7 +211,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVPlaylists(self, request):
-        """获取歌单列表。
+        r"""获取歌单列表。
 
         :param request: Request instance for DescribeKTVPlaylists.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVPlaylistsRequest`
@@ -234,7 +234,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVRobots(self, request):
-        """获取机器人列表，支持 Id、状态等过滤条件。
+        r"""获取机器人列表，支持 Id、状态等过滤条件。
 
         :param request: Request instance for DescribeKTVRobots.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVRobotsRequest`
@@ -257,7 +257,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVSuggestions(self, request):
-        """根据关键词获取联想词列表。
+        r"""根据关键词获取联想词列表。
 
         :param request: Request instance for DescribeKTVSuggestions.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVSuggestionsRequest`
@@ -280,7 +280,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVTags(self, request):
-        """获取标签分组及分组下的标签列表信息。
+        r"""获取标签分组及分组下的标签列表信息。
 
         :param request: Request instance for DescribeKTVTags.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVTagsRequest`
@@ -303,7 +303,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeLiveVipTradeInfos(self, request):
-        """批量获取直播会员充值流水详细信息，包括：流水号，订单状态，下订单时间等
+        r"""批量获取直播会员充值流水详细信息，包括：流水号，订单状态，下订单时间等
 
         :param request: Request instance for DescribeLiveVipTradeInfos.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeLiveVipTradeInfosRequest`
@@ -326,7 +326,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """获取用户信息，包括是否为直播会员，及直播会员信息等
+        r"""获取用户信息，包括是否为直播会员，及直播会员信息等
 
         :param request: Request instance for DescribeUserInfo.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeUserInfoRequest`
@@ -349,7 +349,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeVipUserInfo(self, request):
-        """获取会员信息：获取用户是否开通会员
+        r"""获取会员信息：获取用户是否开通会员
 
         :param request: Request instance for DescribeVipUserInfo.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeVipUserInfoRequest`
@@ -372,7 +372,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DestroyKTVRobot(self, request):
-        """销毁机器人，机器人退出 RTC 房间。
+        r"""销毁机器人，机器人退出 RTC 房间。
 
         :param request: Request instance for DestroyKTVRobot.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DestroyKTVRobotRequest`
@@ -395,7 +395,7 @@ class YinsudaClient(AbstractClient):
 
 
     def RechargeLiveVip(self, request):
-        """充值直播会员，使该用户可以在直播场景使用
+        r"""充值直播会员，使该用户可以在直播场景使用
 
         :param request: Request instance for RechargeLiveVip.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.RechargeLiveVipRequest`
@@ -418,7 +418,7 @@ class YinsudaClient(AbstractClient):
 
 
     def RechargeVip(self, request):
-        """充值会员
+        r"""充值会员
 
         :param request: Request instance for RechargeVip.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.RechargeVipRequest`
@@ -441,7 +441,7 @@ class YinsudaClient(AbstractClient):
 
 
     def SearchKTVMusics(self, request):
-        """根据关键词搜索歌曲，返回相关歌曲列表。
+        r"""根据关键词搜索歌曲，返回相关歌曲列表。
 
         :param request: Request instance for SearchKTVMusics.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.SearchKTVMusicsRequest`
@@ -464,7 +464,7 @@ class YinsudaClient(AbstractClient):
 
 
     def SyncKTVRobotCommand(self, request):
-        """下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+        r"""下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
 
         :param request: Request instance for SyncKTVRobotCommand.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.SyncKTVRobotCommandRequest`

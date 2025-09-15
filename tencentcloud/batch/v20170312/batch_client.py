@@ -27,7 +27,7 @@ class BatchClient(AbstractClient):
 
 
     def AttachInstances(self, request):
-        """此接口可将已存在实例添加到计算环境中。
+        r"""此接口可将已存在实例添加到计算环境中。
         实例需要满足如下条件：<br/>
         1.实例不在批量计算系统中。<br/>
         2.实例状态要求处于运行中。<br/>
@@ -56,7 +56,7 @@ class BatchClient(AbstractClient):
 
 
     def CreateComputeEnv(self, request):
-        """用于创建计算环境
+        r"""用于创建计算环境
 
         :param request: Request instance for CreateComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.CreateComputeEnvRequest`
@@ -79,7 +79,7 @@ class BatchClient(AbstractClient):
 
 
     def CreateTaskTemplate(self, request):
-        """用于创建任务模板
+        r"""用于创建任务模板
 
         :param request: Request instance for CreateTaskTemplate.
         :type request: :class:`tencentcloud.batch.v20170312.models.CreateTaskTemplateRequest`
@@ -102,7 +102,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteComputeEnv(self, request):
-        """用于删除计算环境
+        r"""用于删除计算环境
 
         :param request: Request instance for DeleteComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.DeleteComputeEnvRequest`
@@ -125,7 +125,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteJob(self, request):
-        """用于删除作业记录。
+        r"""用于删除作业记录。
         删除作业的效果相当于删除作业相关的所有信息。删除成功后，作业相关的所有信息都无法查询。
         待删除的作业必须处于完结状态，且其内部包含的所有任务实例也必须处于完结状态，否则会禁止操作。完结状态，是指处于 SUCCEED 或 FAILED 状态。
 
@@ -150,7 +150,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteTaskTemplates(self, request):
-        """用于删除任务模板信息
+        r"""用于删除任务模板信息
 
         :param request: Request instance for DeleteTaskTemplates.
         :type request: :class:`tencentcloud.batch.v20170312.models.DeleteTaskTemplatesRequest`
@@ -173,7 +173,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeAvailableCvmInstanceTypes(self, request):
-        """查看可用的CVM机型配置信息
+        r"""查看可用的CVM机型配置信息
 
         :param request: Request instance for DescribeAvailableCvmInstanceTypes.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeAvailableCvmInstanceTypesRequest`
@@ -196,7 +196,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnv(self, request):
-        """用于查询计算环境的详细信息
+        r"""用于查询计算环境的详细信息
 
         :param request: Request instance for DescribeComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvRequest`
@@ -219,7 +219,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvActivities(self, request):
-        """用于查询计算环境的活动信息
+        r"""用于查询计算环境的活动信息
 
         :param request: Request instance for DescribeComputeEnvActivities.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvActivitiesRequest`
@@ -242,7 +242,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvCreateInfo(self, request):
-        """查看计算环境的创建信息。
+        r"""查看计算环境的创建信息。
 
         :param request: Request instance for DescribeComputeEnvCreateInfo.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvCreateInfoRequest`
@@ -265,7 +265,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvCreateInfos(self, request):
-        """用于查看计算环境创建信息列表，包括名称、描述、类型、环境参数、通知及期望节点数等。
+        r"""用于查看计算环境创建信息列表，包括名称、描述、类型、环境参数、通知及期望节点数等。
 
         :param request: Request instance for DescribeComputeEnvCreateInfos.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvCreateInfosRequest`
@@ -288,7 +288,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvs(self, request):
-        """用于查看计算环境列表
+        r"""用于查看计算环境列表
 
         :param request: Request instance for DescribeComputeEnvs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvsRequest`
@@ -311,7 +311,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeCvmZoneInstanceConfigInfos(self, request):
-        """获取批量计算可用区机型配置信息
+        r"""获取批量计算可用区机型配置信息
 
         :param request: Request instance for DescribeCvmZoneInstanceConfigInfos.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeCvmZoneInstanceConfigInfosRequest`
@@ -334,7 +334,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeInstanceCategories(self, request):
-        """目前对CVM现有实例族分类，每一类包含若干实例族。该接口用于查询实例分类信息。
+        r"""目前对CVM现有实例族分类，每一类包含若干实例族。该接口用于查询实例分类信息。
 
         :param request: Request instance for DescribeInstanceCategories.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeInstanceCategoriesRequest`
@@ -357,7 +357,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJob(self, request):
-        """用于查看一个作业的详细信息，包括内部任务（Task）和依赖（Dependence）信息。
+        r"""用于查看一个作业的详细信息，包括内部任务（Task）和依赖（Dependence）信息。
 
         :param request: Request instance for DescribeJob.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobRequest`
@@ -380,7 +380,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJobMonitorData(self, request):
-        """查询作业任务实例的资源使用监控信息。当前只支持查询弹性节点任务并且Job未删除；暂不支持计算环境类任务；该接口只支持查询作业实例时间范围之内的资源使用情况。
+        r"""查询作业任务实例的资源使用监控信息。当前只支持查询弹性节点任务并且Job未删除；暂不支持计算环境类任务；该接口只支持查询作业实例时间范围之内的资源使用情况。
 
         :param request: Request instance for DescribeJobMonitorData.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobMonitorDataRequest`
@@ -403,7 +403,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJobSubmitInfo(self, request):
-        """用于查询指定作业的提交信息，其返回内容包括 JobId 和 SubmitJob 接口中作为输入参数的作业提交信息
+        r"""用于查询指定作业的提交信息，其返回内容包括 JobId 和 SubmitJob 接口中作为输入参数的作业提交信息
 
         :param request: Request instance for DescribeJobSubmitInfo.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobSubmitInfoRequest`
@@ -426,7 +426,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """用于查询若干个作业的概览信息
+        r"""用于查询若干个作业的概览信息
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobsRequest`
@@ -449,7 +449,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """用于查询指定任务的详细信息，包括任务内部的任务实例信息。
+        r"""用于查询指定任务的详细信息，包括任务内部的任务实例信息。
 
         :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskRequest`
@@ -472,7 +472,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTaskLogs(self, request):
-        """用于获取任务多个实例标准输出和标准错误日志。
+        r"""用于获取任务多个实例标准输出和标准错误日志。
 
         :param request: Request instance for DescribeTaskLogs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskLogsRequest`
@@ -495,7 +495,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTaskTemplates(self, request):
-        """用于查询任务模板信息
+        r"""用于查询任务模板信息
 
         :param request: Request instance for DescribeTaskTemplates.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskTemplatesRequest`
@@ -518,7 +518,7 @@ class BatchClient(AbstractClient):
 
 
     def DetachInstances(self, request):
-        """将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。
+        r"""将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。
 
         :param request: Request instance for DetachInstances.
         :type request: :class:`tencentcloud.batch.v20170312.models.DetachInstancesRequest`
@@ -541,7 +541,7 @@ class BatchClient(AbstractClient):
 
 
     def ModifyComputeEnv(self, request):
-        """用于修改计算环境属性
+        r"""用于修改计算环境属性
 
         :param request: Request instance for ModifyComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.ModifyComputeEnvRequest`
@@ -564,7 +564,7 @@ class BatchClient(AbstractClient):
 
 
     def ModifyTaskTemplate(self, request):
-        """用于修改任务模板
+        r"""用于修改任务模板
 
         :param request: Request instance for ModifyTaskTemplate.
         :type request: :class:`tencentcloud.batch.v20170312.models.ModifyTaskTemplateRequest`
@@ -587,7 +587,7 @@ class BatchClient(AbstractClient):
 
 
     def RetryJobs(self, request):
-        """用于重试作业中失败的任务实例。
+        r"""用于重试作业中失败的任务实例。
         仅当作业处于“FAILED”状态，支持重试操作。重试操作成功后，作业会按照有向无环图中指定的任务依赖关系，依次重试各个任务中失败的任务实例。任务实例的历史信息将被重置，如同首次运行一样，参与后续的调度和执行。
 
         :param request: Request instance for RetryJobs.
@@ -611,7 +611,7 @@ class BatchClient(AbstractClient):
 
 
     def SubmitJob(self, request):
-        """用于提交一个作业
+        r"""用于提交一个作业
 
         :param request: Request instance for SubmitJob.
         :type request: :class:`tencentcloud.batch.v20170312.models.SubmitJobRequest`
@@ -634,7 +634,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateComputeNode(self, request):
-        """用于销毁计算节点。
+        r"""用于销毁计算节点。
         对于状态为CREATED、CREATION_FAILED、RUNNING和ABNORMAL的节点，允许销毁处理。
 
         :param request: Request instance for TerminateComputeNode.
@@ -658,7 +658,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateComputeNodes(self, request):
-        """用于批量销毁计算节点，不允许重复销毁同一个节点。
+        r"""用于批量销毁计算节点，不允许重复销毁同一个节点。
 
         :param request: Request instance for TerminateComputeNodes.
         :type request: :class:`tencentcloud.batch.v20170312.models.TerminateComputeNodesRequest`
@@ -681,7 +681,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateJob(self, request):
-        """用于终止作业。
+        r"""用于终止作业。
         当作业处于“SUBMITTED”状态时，禁止终止操作；当作业处于“SUCCEED”状态时，终止操作不会生效。
         终止作业是一个异步过程。整个终止过程的耗时和任务总数成正比。终止的效果相当于所含的所有任务实例进行[TerminateTaskInstance](https://cloud.tencent.com/document/product/599/15908)操作。具体效果和用法可参考[TerminateTaskInstance](https://cloud.tencent.com/document/product/599/15908)。
 
@@ -706,7 +706,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateTaskInstance(self, request):
-        """用于终止任务实例。
+        r"""用于终止任务实例。
         对于状态已经为“SUCCEED”和“FAILED”的任务实例，不做处理。
         对于状态为“SUBMITTED”、“PENDING”、“RUNNABLE”的任务实例，状态将置为“FAILED”状态。
         对于状态为“STARTING”、“RUNNING”、“FAILED_INTERRUPTED”的任务实例，区分两种情况：如果未显示指定计算环境，会先销毁CVM服务器，然后将状态置为“FAILED”，具有一定耗时；如果指定了计算环境EnvId，任务实例状态置为“FAILED”，并重启执行该任务的CVM服务器，具有一定的耗时。

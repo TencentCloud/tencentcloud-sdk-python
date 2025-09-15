@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AbstractRuntimeMC(AbstractModel):
-    """运行时精简信息
+    r"""运行时精简信息
 
     """
 
@@ -64,7 +64,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def RuntimeId(self):
-        """环境id
+        r"""环境id
         :rtype: int
         """
         return self._RuntimeId
@@ -75,7 +75,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def DisplayName(self):
-        """环境名称，用户输入，同一uin内唯一
+        r"""环境名称，用户输入，同一uin内唯一
         :rtype: str
         """
         return self._DisplayName
@@ -86,7 +86,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Type(self):
-        """环境类型：0: sandbox, 1:shared, 2:private
+        r"""环境类型：0: sandbox, 1:shared, 2:private
         :rtype: int
         """
         return self._Type
@@ -97,7 +97,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Zone(self):
-        """环境所在地域，tianjin，beijiing，guangzhou等
+        r"""环境所在地域，tianjin，beijiing，guangzhou等
         :rtype: str
         """
         return self._Zone
@@ -108,7 +108,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Area(self):
-        """环境所在地域，tianjin，beijiing，guangzhou等（同Zone）
+        r"""环境所在地域，tianjin，beijiing，guangzhou等（同Zone）
         :rtype: str
         """
         return self._Area
@@ -119,7 +119,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Addr(self):
-        """环境应用listener地址后缀
+        r"""环境应用listener地址后缀
         :rtype: str
         """
         return self._Addr
@@ -130,7 +130,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Status(self):
-        """环境状态
+        r"""环境状态
         :rtype: int
         """
         return self._Status
@@ -141,7 +141,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def ExpiredAt(self):
-        """环境过期时间
+        r"""环境过期时间
         :rtype: int
         """
         return self._ExpiredAt
@@ -152,7 +152,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """环境运行类型：0:运行时类型、1:api类型
+        r"""环境运行类型：0:运行时类型、1:api类型
         :rtype: int
         """
         return self._RuntimeClass
@@ -163,7 +163,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def Deployed(self):
-        """是否已在当前环境发布
+        r"""是否已在当前环境发布
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -175,7 +175,7 @@ class AbstractRuntimeMC(AbstractModel):
 
     @property
     def MatchExtensions(self):
-        """环境扩展组件是否满足应用要求：0=true, 1=false 表示该应用需要扩展组件0(cdc)以及1(java)，但是独立环境有cdc无java，不满足发布要求
+        r"""环境扩展组件是否满足应用要求：0=true, 1=false 表示该应用需要扩展组件0(cdc)以及1(java)，但是独立环境有cdc无java，不满足发布要求
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -209,7 +209,7 @@ class AbstractRuntimeMC(AbstractModel):
 
 
 class GetRuntimeMCRequest(AbstractModel):
-    """GetRuntimeMC请求参数结构体
+    r"""GetRuntimeMC请求参数结构体
 
     """
 
@@ -228,7 +228,7 @@ class GetRuntimeMCRequest(AbstractModel):
 
     @property
     def RuntimeId(self):
-        """环境id
+        r"""环境id
         :rtype: int
         """
         return self._RuntimeId
@@ -239,7 +239,7 @@ class GetRuntimeMCRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """环境地域
+        r"""环境地域
         :rtype: str
         """
         return self._Zone
@@ -250,7 +250,7 @@ class GetRuntimeMCRequest(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """环境运行类型：0:运行时类型、1:api类型
+        r"""环境运行类型：0:运行时类型、1:api类型
         :rtype: int
         """
         return self._RuntimeClass
@@ -275,7 +275,7 @@ class GetRuntimeMCRequest(AbstractModel):
 
 
 class GetRuntimeMCResponse(AbstractModel):
-    """GetRuntimeMC返回参数结构体
+    r"""GetRuntimeMC返回参数结构体
 
     """
 
@@ -291,7 +291,7 @@ class GetRuntimeMCResponse(AbstractModel):
 
     @property
     def Runtime(self):
-        """运行时详情
+        r"""运行时详情
         :rtype: :class:`tencentcloud.eis.v20210601.models.RuntimeMC`
         """
         return self._Runtime
@@ -302,7 +302,7 @@ class GetRuntimeMCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -320,7 +320,7 @@ class GetRuntimeMCResponse(AbstractModel):
 
 
 class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
-    """GetRuntimeResourceMonitorMetricMC请求参数结构体
+    r"""GetRuntimeResourceMonitorMetricMC请求参数结构体
 
     """
 
@@ -354,7 +354,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def RuntimeId(self):
-        """运行时id
+        r"""运行时id
         :rtype: int
         """
         return self._RuntimeId
@@ -365,7 +365,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间
+        r"""起始时间
         :rtype: int
         """
         return self._StartTime
@@ -376,7 +376,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -387,7 +387,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def MetricType(self):
-        """指标类型：0:CPU, 1:MemUsageBytes, 2:K8sWorkloadNetworkReceiveBytesBw, 3:K8sWorkloadNetworkTransmitBytesBw
+        r"""指标类型：0:CPU, 1:MemUsageBytes, 2:K8sWorkloadNetworkReceiveBytesBw, 3:K8sWorkloadNetworkTransmitBytesBw
         :rtype: int
         """
         return self._MetricType
@@ -398,7 +398,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def RateType(self):
-        """是否返回百分比数值，仅支持CPU，Memory
+        r"""是否返回百分比数值，仅支持CPU，Memory
         :rtype: bool
         """
         return self._RateType
@@ -409,7 +409,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """采样粒度：60(s), 300(s), 3600(s), 86400(s)
+        r"""采样粒度：60(s), 300(s), 3600(s), 86400(s)
         :rtype: int
         """
         return self._Interval
@@ -420,7 +420,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """环境运行类型：0:运行时类型、1:api类型
+        r"""环境运行类型：0:运行时类型、1:api类型
         :rtype: int
         """
         return self._RuntimeClass
@@ -431,7 +431,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
     @property
     def AggregationType(self):
-        """资源指标聚合类型：0: 环境维度 1:执行引擎维度 2:datatwaypy维度 3.datawayjava维度
+        r"""资源指标聚合类型：0: 环境维度 1:执行引擎维度 2:datatwaypy维度 3.datawayjava维度
         :rtype: int
         """
         return self._AggregationType
@@ -461,7 +461,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
 
 
 class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
-    """GetRuntimeResourceMonitorMetricMC返回参数结构体
+    r"""GetRuntimeResourceMonitorMetricMC返回参数结构体
 
     """
 
@@ -480,7 +480,7 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
 
     @property
     def MetricType(self):
-        """指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
+        r"""指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
         :rtype: str
         """
         return self._MetricType
@@ -491,7 +491,7 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
 
     @property
     def Values(self):
-        """metric数值列表
+        r"""metric数值列表
         :rtype: list of MetricValueMC
         """
         return self._Values
@@ -502,7 +502,7 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -524,7 +524,7 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
 
 
 class ListDeployableRuntimesMCRequest(AbstractModel):
-    """ListDeployableRuntimesMC请求参数结构体
+    r"""ListDeployableRuntimesMC请求参数结构体
 
     """
 
@@ -546,7 +546,7 @@ class ListDeployableRuntimesMCRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """应用id
+        r"""应用id
         :rtype: int
         """
         return self._ProjectId
@@ -557,7 +557,7 @@ class ListDeployableRuntimesMCRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: int
         """
         return self._InstanceId
@@ -568,7 +568,7 @@ class ListDeployableRuntimesMCRequest(AbstractModel):
 
     @property
     def PlanType(self):
-        """版本类型 0-pro 1-lite
+        r"""版本类型 0-pro 1-lite
         :rtype: int
         """
         return self._PlanType
@@ -579,7 +579,7 @@ class ListDeployableRuntimesMCRequest(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """0：应用集成，1：API，2：ETL
+        r"""0：应用集成，1：API，2：ETL
         :rtype: int
         """
         return self._RuntimeClass
@@ -605,7 +605,7 @@ class ListDeployableRuntimesMCRequest(AbstractModel):
 
 
 class ListDeployableRuntimesMCResponse(AbstractModel):
-    """ListDeployableRuntimesMC返回参数结构体
+    r"""ListDeployableRuntimesMC返回参数结构体
 
     """
 
@@ -621,7 +621,7 @@ class ListDeployableRuntimesMCResponse(AbstractModel):
 
     @property
     def Runtimes(self):
-        """运行时列表
+        r"""运行时列表
         :rtype: list of AbstractRuntimeMC
         """
         return self._Runtimes
@@ -632,7 +632,7 @@ class ListDeployableRuntimesMCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -653,7 +653,7 @@ class ListDeployableRuntimesMCResponse(AbstractModel):
 
 
 class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
-    """ListRuntimeDeployedInstancesMC请求参数结构体
+    r"""ListRuntimeDeployedInstancesMC请求参数结构体
 
     """
 
@@ -698,7 +698,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def RuntimeId(self):
-        """运行时id
+        r"""运行时id
         :rtype: int
         """
         return self._RuntimeId
@@ -709,7 +709,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大请求数量
+        r"""最大请求数量
         :rtype: int
         """
         return self._Limit
@@ -720,7 +720,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """请求偏移量
+        r"""请求偏移量
         :rtype: int
         """
         return self._Offset
@@ -731,7 +731,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def SortType(self):
-        """排序类型：1:创建时间排序, 2:更新时间排序（默认）
+        r"""排序类型：1:创建时间排序, 2:更新时间排序（默认）
         :rtype: int
         """
         return self._SortType
@@ -742,7 +742,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序方式：asc，desc（默认）
+        r"""排序方式：asc，desc（默认）
         :rtype: str
         """
         return self._Sort
@@ -753,7 +753,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """运行时地域
+        r"""运行时地域
         :rtype: str
         """
         return self._Zone
@@ -764,7 +764,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def ApiVersion(self):
-        """1:3.0版本新控制台传1；否则传0
+        r"""1:3.0版本新控制台传1；否则传0
         :rtype: int
         """
         return self._ApiVersion
@@ -775,7 +775,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """-1:不按项目筛选，获取所有
+        r"""-1:不按项目筛选，获取所有
 >=0: 按项目id筛选
         :rtype: int
         """
@@ -787,7 +787,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def Status(self):
-        """-2: 不按状态筛选，获取所有
+        r"""-2: 不按状态筛选，获取所有
 0: 运行中
 2: 已停止
         :rtype: int
@@ -800,7 +800,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """0: 应用集成
+        r"""0: 应用集成
 1: API管理
 2: ETL
         :rtype: int
@@ -834,7 +834,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 
 
 class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
-    """ListRuntimeDeployedInstancesMC返回参数结构体
+    r"""ListRuntimeDeployedInstancesMC返回参数结构体
 
     """
 
@@ -853,7 +853,7 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """运行时所部属的应用实例列表
+        r"""运行时所部属的应用实例列表
         :rtype: list of RuntimeDeployedInstanceMC
         """
         return self._Instances
@@ -864,7 +864,7 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """满足条件的记录总数，用于分页器
+        r"""满足条件的记录总数，用于分页器
         :rtype: int
         """
         return self._TotalCount
@@ -875,7 +875,7 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -897,7 +897,7 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
 
 
 class ListRuntimesMCRequest(AbstractModel):
-    """ListRuntimesMC请求参数结构体
+    r"""ListRuntimesMC请求参数结构体
 
     """
 
@@ -913,7 +913,7 @@ class ListRuntimesMCRequest(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """环境运行类型：0:运行时类型、1:api类型
+        r"""环境运行类型：0:运行时类型、1:api类型
         :rtype: int
         """
         return self._RuntimeClass
@@ -924,7 +924,7 @@ class ListRuntimesMCRequest(AbstractModel):
 
     @property
     def PlanType(self):
-        """计划类型：0-pro 1-lite
+        r"""计划类型：0-pro 1-lite
         :rtype: int
         """
         return self._PlanType
@@ -948,7 +948,7 @@ class ListRuntimesMCRequest(AbstractModel):
 
 
 class ListRuntimesMCResponse(AbstractModel):
-    """ListRuntimesMC返回参数结构体
+    r"""ListRuntimesMC返回参数结构体
 
     """
 
@@ -964,7 +964,7 @@ class ListRuntimesMCResponse(AbstractModel):
 
     @property
     def Runtimes(self):
-        """运行时列表
+        r"""运行时列表
         :rtype: list of RuntimeMC
         """
         return self._Runtimes
@@ -975,7 +975,7 @@ class ListRuntimesMCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -996,7 +996,7 @@ class ListRuntimesMCResponse(AbstractModel):
 
 
 class MetricValueMC(AbstractModel):
-    """GetMonitorMetricResponse
+    r"""GetMonitorMetricResponse
 
     """
 
@@ -1014,7 +1014,7 @@ class MetricValueMC(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1026,7 +1026,7 @@ class MetricValueMC(AbstractModel):
 
     @property
     def Val(self):
-        """对应的value值
+        r"""对应的value值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1051,7 +1051,7 @@ class MetricValueMC(AbstractModel):
 
 
 class RuntimeDeployedInstanceMC(AbstractModel):
-    """运行时部署的应用实例详情
+    r"""运行时部署的应用实例详情
 
     """
 
@@ -1097,7 +1097,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def GroupId(self):
-        """项目id
+        r"""项目id
         :rtype: int
         """
         return self._GroupId
@@ -1108,7 +1108,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def GroupName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._GroupName
@@ -1119,7 +1119,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def ProjectId(self):
-        """应用id
+        r"""应用id
         :rtype: int
         """
         return self._ProjectId
@@ -1130,7 +1130,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def ProjectName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._ProjectName
@@ -1141,7 +1141,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def InstanceId(self):
-        """应用实例id
+        r"""应用实例id
         :rtype: int
         """
         return self._InstanceId
@@ -1152,7 +1152,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        """应用实例版本
+        r"""应用实例版本
         :rtype: int
         """
         return self._InstanceVersion
@@ -1163,7 +1163,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def InstanceCreatedAt(self):
-        """应用实例创建时间
+        r"""应用实例创建时间
         :rtype: int
         """
         return self._InstanceCreatedAt
@@ -1174,7 +1174,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def Status(self):
-        """应用实例部署状态. 0:running, 1:deleting
+        r"""应用实例部署状态. 0:running, 1:deleting
         :rtype: int
         """
         return self._Status
@@ -1185,7 +1185,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """应用实例部署创建时间
+        r"""应用实例部署创建时间
         :rtype: int
         """
         return self._CreatedAt
@@ -1196,7 +1196,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """应用实例部署更新时间
+        r"""应用实例部署更新时间
         :rtype: int
         """
         return self._UpdatedAt
@@ -1207,7 +1207,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def ProjectType(self):
-        """应用类型：0:NormalApp普通应用 1:TemplateApp模板应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
+        r"""应用类型：0:NormalApp普通应用 1:TemplateApp模板应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
         :rtype: int
         """
         return self._ProjectType
@@ -1218,7 +1218,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
     @property
     def ProjectVersion(self):
-        """应用版本：0:旧版 1:3.0新控制台
+        r"""应用版本：0:旧版 1:3.0新控制台
         :rtype: int
         """
         return self._ProjectVersion
@@ -1252,7 +1252,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
 
 
 class RuntimeExtensionMC(AbstractModel):
-    """运行环境扩展组件
+    r"""运行环境扩展组件
 
     """
 
@@ -1283,7 +1283,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def Type(self):
-        """扩展组件类型：0:cdc 1:dataway-java
+        r"""扩展组件类型：0:cdc 1:dataway-java
         :rtype: int
         """
         return self._Type
@@ -1294,7 +1294,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def Size(self):
-        """部署规格vcore数
+        r"""部署规格vcore数
         :rtype: float
         """
         return self._Size
@@ -1305,7 +1305,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def Replica(self):
-        """副本数
+        r"""副本数
         :rtype: int
         """
         return self._Replica
@@ -1316,7 +1316,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def Name(self):
-        """扩展组件名称
+        r"""扩展组件名称
         :rtype: str
         """
         return self._Name
@@ -1327,7 +1327,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def Status(self):
-        """状态 1:未启用 2:已启用
+        r"""状态 1:未启用 2:已启用
         :rtype: int
         """
         return self._Status
@@ -1338,7 +1338,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreatedAt
@@ -1349,7 +1349,7 @@ class RuntimeExtensionMC(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """修改时间
+        r"""修改时间
         :rtype: int
         """
         return self._UpdatedAt
@@ -1378,7 +1378,7 @@ class RuntimeExtensionMC(AbstractModel):
 
 
 class RuntimeMC(AbstractModel):
-    """运行时详细信息
+    r"""运行时详细信息
 
     """
 
@@ -1469,7 +1469,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def RuntimeId(self):
-        """环境id
+        r"""环境id
         :rtype: int
         """
         return self._RuntimeId
@@ -1480,7 +1480,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def Uin(self):
-        """主账号uin
+        r"""主账号uin
         :rtype: str
         """
         return self._Uin
@@ -1491,7 +1491,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def DisplayName(self):
-        """环境名称，用户输入，同一uin内唯一
+        r"""环境名称，用户输入，同一uin内唯一
         :rtype: str
         """
         return self._DisplayName
@@ -1502,7 +1502,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def Zone(self):
-        """环境所在地域，tianjin，beijiing，guangzhou等
+        r"""环境所在地域，tianjin，beijiing，guangzhou等
         :rtype: str
         """
         return self._Zone
@@ -1513,7 +1513,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def Type(self):
-        """环境类型：0: sandbox, 1:shared, 2:private 3: trial
+        r"""环境类型：0: sandbox, 1:shared, 2:private 3: trial
         :rtype: int
         """
         return self._Type
@@ -1524,7 +1524,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def Status(self):
-        """运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored
+        r"""运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored
         :rtype: int
         """
         return self._Status
@@ -1535,7 +1535,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """环境创建时间
+        r"""环境创建时间
         :rtype: int
         """
         return self._CreatedAt
@@ -1546,7 +1546,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """环境更新时间
+        r"""环境更新时间
         :rtype: int
         """
         return self._UpdatedAt
@@ -1557,7 +1557,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def WorkerSize(self):
-        """环境资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
+        r"""环境资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
         :rtype: int
         """
         return self._WorkerSize
@@ -1568,7 +1568,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def WorkerReplica(self):
-        """环境资源配置，worker副本数
+        r"""环境资源配置，worker副本数
         :rtype: int
         """
         return self._WorkerReplica
@@ -1579,7 +1579,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def RunningInstanceCount(self):
-        """正在运行的应用实例数量
+        r"""正在运行的应用实例数量
         :rtype: int
         """
         return self._RunningInstanceCount
@@ -1590,7 +1590,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def CpuUsed(self):
-        """已使用cpu核数
+        r"""已使用cpu核数
         :rtype: float
         """
         return self._CpuUsed
@@ -1601,7 +1601,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def CpuLimit(self):
-        """cpu核数上限
+        r"""cpu核数上限
         :rtype: float
         """
         return self._CpuLimit
@@ -1612,7 +1612,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def MemoryUsed(self):
-        """已使用内存 MB
+        r"""已使用内存 MB
         :rtype: float
         """
         return self._MemoryUsed
@@ -1623,7 +1623,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def MemoryLimit(self):
-        """内存上限 MB
+        r"""内存上限 MB
         :rtype: float
         """
         return self._MemoryLimit
@@ -1634,7 +1634,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def ExpiredAt(self):
-        """环境过期时间
+        r"""环境过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1646,7 +1646,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def ChargeType(self):
-        """收费类型：0:缺省，1:自助下单页购买(支持续费/升配等操作)，2:代销下单页购买
+        r"""收费类型：0:缺省，1:自助下单页购买(支持续费/升配等操作)，2:代销下单页购买
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1658,7 +1658,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def ResourceLimitType(self):
-        """资源限制类型：0:无限制，1:有限制
+        r"""资源限制类型：0:无限制，1:有限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1670,7 +1670,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def AutoRenewal(self):
-        """是否开启自动续费
+        r"""是否开启自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1682,7 +1682,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def WorkerExtensions(self):
-        """扩展组件列表
+        r"""扩展组件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuntimeExtensionMC
         """
@@ -1694,7 +1694,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def RuntimeType(self):
-        """环境类型：0: sandbox, 1:shared, 2:private 3: trial
+        r"""环境类型：0: sandbox, 1:shared, 2:private 3: trial
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1706,7 +1706,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def RuntimeClass(self):
-        """环境运行类型：0:运行时类型、1:api类型、2:etl环境
+        r"""环境运行类型：0:运行时类型、1:api类型、2:etl环境
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1718,7 +1718,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def BandwidthOutUsed(self):
-        """已使用出带宽 Mbps
+        r"""已使用出带宽 Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1730,7 +1730,7 @@ class RuntimeMC(AbstractModel):
 
     @property
     def BandwidthOutLimit(self):
-        """出带宽上限 Mbps
+        r"""出带宽上限 Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AdvertiseOCRRequest(AbstractModel):
-    """AdvertiseOCR请求参数结构体
+    r"""AdvertiseOCR请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AdvertiseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -46,7 +46,7 @@ class AdvertiseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -70,7 +70,7 @@ class AdvertiseOCRRequest(AbstractModel):
 
 
 class AdvertiseOCRResponse(AbstractModel):
-    """AdvertiseOCR返回参数结构体
+    r"""AdvertiseOCR返回参数结构体
 
     """
 
@@ -89,7 +89,7 @@ class AdvertiseOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+        r"""检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :rtype: list of AdvertiseTextDetection
         """
         return self._TextDetections
@@ -100,7 +100,7 @@ class AdvertiseOCRResponse(AbstractModel):
 
     @property
     def ImageSize(self):
-        """图片分辨率信息，单位 px
+        r"""图片分辨率信息，单位 px
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ImageSize`
         """
         return self._ImageSize
@@ -111,7 +111,7 @@ class AdvertiseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -135,7 +135,7 @@ class AdvertiseOCRResponse(AbstractModel):
 
 
 class AdvertiseTextDetection(AbstractModel):
-    """广告文字识别结果
+    r"""广告文字识别结果
 
     """
 
@@ -158,7 +158,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -169,7 +169,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Confidence(self):
-        """置信度 0 ~100
+        r"""置信度 0 ~100
         :rtype: int
         """
         return self._Confidence
@@ -180,7 +180,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Polygon(self):
-        """文本行坐标，以四个顶点坐标表示
+        r"""文本行坐标，以四个顶点坐标表示
         :rtype: list of Coord
         """
         return self._Polygon
@@ -191,7 +191,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段。
+        r"""此字段为扩展字段。
 GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         :rtype: str
         """
@@ -223,7 +223,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
 
 class AirTicketInfo(AbstractModel):
-    """航空运输电子客票行程单信息
+    r"""航空运输电子客票行程单信息
 
     """
 
@@ -308,7 +308,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def PassengerName(self):
-        """旅客姓名
+        r"""旅客姓名
         :rtype: str
         """
         return self._PassengerName
@@ -319,7 +319,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def ValidIdNumber(self):
-        """有效身份证件号码
+        r"""有效身份证件号码
         :rtype: str
         """
         return self._ValidIdNumber
@@ -330,7 +330,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def Endorsement(self):
-        """签注
+        r"""签注
         :rtype: str
         """
         return self._Endorsement
@@ -341,7 +341,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def NumberOfGPOrder(self):
-        """GP单号
+        r"""GP单号
         :rtype: str
         """
         return self._NumberOfGPOrder
@@ -352,7 +352,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def ElectronicInvoiceAirTransportReceiptNumber(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._ElectronicInvoiceAirTransportReceiptNumber
@@ -363,7 +363,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def DetailInformationOfAirTicketTuple(self):
-        """机票详细信息元组
+        r"""机票详细信息元组
         :rtype: list of DetailInformationOfAirTicketTupleList
         """
         return self._DetailInformationOfAirTicketTuple
@@ -374,7 +374,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def Fare(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Fare
@@ -385,7 +385,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def FuelSurcharge(self):
-        """燃油附加费
+        r"""燃油附加费
         :rtype: str
         """
         return self._FuelSurcharge
@@ -396,7 +396,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def VatRate(self):
-        """增值税税率
+        r"""增值税税率
         :rtype: str
         """
         return self._VatRate
@@ -407,7 +407,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def VatTaxAmount(self):
-        """增值税税额
+        r"""增值税税额
         :rtype: str
         """
         return self._VatTaxAmount
@@ -418,7 +418,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def CivilAviationDevelopmentFund(self):
-        """民航发展基金
+        r"""民航发展基金
         :rtype: str
         """
         return self._CivilAviationDevelopmentFund
@@ -429,7 +429,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def OtherTaxes(self):
-        """其他税费
+        r"""其他税费
         :rtype: str
         """
         return self._OtherTaxes
@@ -440,7 +440,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def TotalAmount(self):
-        """合计
+        r"""合计
         :rtype: str
         """
         return self._TotalAmount
@@ -451,7 +451,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def ElectronicTicketNum(self):
-        """电子客票号码
+        r"""电子客票号码
         :rtype: str
         """
         return self._ElectronicTicketNum
@@ -462,7 +462,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def VerificationCode(self):
-        """验证码
+        r"""验证码
         :rtype: str
         """
         return self._VerificationCode
@@ -473,7 +473,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def PromptInformation(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._PromptInformation
@@ -484,7 +484,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def Insurance(self):
-        """保险费
+        r"""保险费
         :rtype: str
         """
         return self._Insurance
@@ -495,7 +495,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def AgentCode(self):
-        """销售网点代号
+        r"""销售网点代号
         :rtype: str
         """
         return self._AgentCode
@@ -506,7 +506,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def IssueParty(self):
-        """填开单位
+        r"""填开单位
         :rtype: str
         """
         return self._IssueParty
@@ -517,7 +517,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def IssueDate(self):
-        """填开时间
+        r"""填开时间
         :rtype: str
         """
         return self._IssueDate
@@ -528,7 +528,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def IssuingStatus(self):
-        """开具状态
+        r"""开具状态
         :rtype: str
         """
         return self._IssuingStatus
@@ -539,7 +539,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def MarkingOfDomesticOrInternational(self):
-        """国内国际标识
+        r"""国内国际标识
         :rtype: str
         """
         return self._MarkingOfDomesticOrInternational
@@ -550,7 +550,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def NameOfPurchaser(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._NameOfPurchaser
@@ -561,7 +561,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def NameOfSeller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._NameOfSeller
@@ -572,7 +572,7 @@ class AirTicketInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCodeOfPurchaser(self):
-        """统一社会信用代码
+        r"""统一社会信用代码
         :rtype: str
         """
         return self._UnifiedSocialCreditCodeOfPurchaser
@@ -624,7 +624,7 @@ class AirTicketInfo(AbstractModel):
 
 
 class AirTransport(AbstractModel):
-    """机票行程单
+    r"""机票行程单
 
     """
 
@@ -727,7 +727,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -738,7 +738,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Number(self):
-        """电子客票号码
+        r"""电子客票号码
         :rtype: str
         """
         return self._Number
@@ -749,7 +749,7 @@ class AirTransport(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -760,7 +760,7 @@ class AirTransport(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """印刷序号
+        r"""印刷序号
         :rtype: str
         """
         return self._SerialNumber
@@ -771,7 +771,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -782,7 +782,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCode(self):
-        """销售单位代号
+        r"""销售单位代号
         :rtype: str
         """
         return self._AgentCode
@@ -793,7 +793,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCodeFirst(self):
-        """销售单位代号第一行
+        r"""销售单位代号第一行
         :rtype: str
         """
         return self._AgentCodeFirst
@@ -804,7 +804,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCodeSecond(self):
-        """销售单位代号第二行
+        r"""销售单位代号第二行
         :rtype: str
         """
         return self._AgentCodeSecond
@@ -815,7 +815,7 @@ class AirTransport(AbstractModel):
 
     @property
     def UserName(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._UserName
@@ -826,7 +826,7 @@ class AirTransport(AbstractModel):
 
     @property
     def UserID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._UserID
@@ -837,7 +837,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Issuer(self):
-        """填开单位
+        r"""填开单位
         :rtype: str
         """
         return self._Issuer
@@ -848,7 +848,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Fare(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Fare
@@ -859,7 +859,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
         :rtype: str
         """
         return self._Tax
@@ -870,7 +870,7 @@ class AirTransport(AbstractModel):
 
     @property
     def FuelSurcharge(self):
-        """燃油附加费
+        r"""燃油附加费
         :rtype: str
         """
         return self._FuelSurcharge
@@ -881,7 +881,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AirDevelopmentFund(self):
-        """民航发展基金
+        r"""民航发展基金
         :rtype: str
         """
         return self._AirDevelopmentFund
@@ -892,7 +892,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Insurance(self):
-        """保险费
+        r"""保险费
         :rtype: str
         """
         return self._Insurance
@@ -903,7 +903,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Total(self):
-        """合计金额（小写）
+        r"""合计金额（小写）
         :rtype: str
         """
         return self._Total
@@ -914,7 +914,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -925,7 +925,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DomesticInternationalTag(self):
-        """国内国际标签
+        r"""国内国际标签
         :rtype: str
         """
         return self._DomesticInternationalTag
@@ -936,7 +936,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DateStart(self):
-        """客票生效日期
+        r"""客票生效日期
         :rtype: str
         """
         return self._DateStart
@@ -947,7 +947,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DateEnd(self):
-        """有效截止日期
+        r"""有效截止日期
         :rtype: str
         """
         return self._DateEnd
@@ -958,7 +958,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Endorsement(self):
-        """签注
+        r"""签注
         :rtype: str
         """
         return self._Endorsement
@@ -969,7 +969,7 @@ class AirTransport(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -980,7 +980,7 @@ class AirTransport(AbstractModel):
 
     @property
     def FlightItems(self):
-        """条目
+        r"""条目
         :rtype: list of FlightItem
         """
         return self._FlightItems
@@ -991,7 +991,7 @@ class AirTransport(AbstractModel):
 
     @property
     def PromptInformation(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._PromptInformation
@@ -1002,7 +1002,7 @@ class AirTransport(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """统一社会信用代码/纳税人识别号
+        r"""统一社会信用代码/纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -1013,7 +1013,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -1024,7 +1024,7 @@ class AirTransport(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._ReceiptNumber
@@ -1035,7 +1035,7 @@ class AirTransport(AbstractModel):
 
     @property
     def InvoiceStatus(self):
-        """开票状态
+        r"""开票状态
         :rtype: str
         """
         return self._InvoiceStatus
@@ -1046,7 +1046,7 @@ class AirTransport(AbstractModel):
 
     @property
     def TaxRate(self):
-        """增值税税率
+        r"""增值税税率
         :rtype: str
         """
         return self._TaxRate
@@ -1057,7 +1057,7 @@ class AirTransport(AbstractModel):
 
     @property
     def TaxAmount(self):
-        """增值税税额
+        r"""增值税税额
         :rtype: str
         """
         return self._TaxAmount
@@ -1115,7 +1115,7 @@ class AirTransport(AbstractModel):
 
 
 class ArithmeticOCRRequest(AbstractModel):
-    """ArithmeticOCR请求参数结构体
+    r"""ArithmeticOCR请求参数结构体
 
     """
 
@@ -1156,7 +1156,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -1170,7 +1170,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -1185,7 +1185,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def SupportHorizontalImage(self):
-        """用于选择是否支持横屏拍摄。打开则支持横屏拍摄图片角度判断，角度信息在返回参数的angle中，默认值为true
+        r"""用于选择是否支持横屏拍摄。打开则支持横屏拍摄图片角度判断，角度信息在返回参数的angle中，默认值为true
         :rtype: bool
         """
         return self._SupportHorizontalImage
@@ -1196,7 +1196,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def RejectNonArithmeticPic(self):
-        """是否拒绝非速算图，打开则拒绝非速算图(注：非速算图是指风景人物等明显不是速算图片的图片)，默认值为false
+        r"""是否拒绝非速算图，打开则拒绝非速算图(注：非速算图是指风景人物等明显不是速算图片的图片)，默认值为false
         :rtype: bool
         """
         return self._RejectNonArithmeticPic
@@ -1207,7 +1207,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def EnableDispRelatedVertical(self):
-        """是否展开耦合算式中的竖式计算，默认值为false
+        r"""是否展开耦合算式中的竖式计算，默认值为false
         :rtype: bool
         """
         return self._EnableDispRelatedVertical
@@ -1218,7 +1218,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def EnableDispMidResult(self):
-        """是否展示竖式算式的中间结果和格式控制字符，默认值为false
+        r"""是否展示竖式算式的中间结果和格式控制字符，默认值为false
         :rtype: bool
         """
         return self._EnableDispMidResult
@@ -1229,7 +1229,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def EnablePdfRecognize(self):
-        """是否开启pdf识别，默认值为true
+        r"""是否开启pdf识别，默认值为true
         :rtype: bool
         """
         return self._EnablePdfRecognize
@@ -1240,7 +1240,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
     @property
     def PdfPageIndex(self):
-        """pdf页码，从0开始，默认为0
+        r"""pdf页码，从0开始，默认为0
         :rtype: int
         """
         return self._PdfPageIndex
@@ -1270,7 +1270,7 @@ class ArithmeticOCRRequest(AbstractModel):
 
 
 class ArithmeticOCRResponse(AbstractModel):
-    """ArithmeticOCR返回参数结构体
+    r"""ArithmeticOCR返回参数结构体
 
     """
 
@@ -1289,7 +1289,7 @@ class ArithmeticOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextArithmetic
         """
         return self._TextDetections
@@ -1300,7 +1300,7 @@ class ArithmeticOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片横屏的角度(90度或270度)
+        r"""图片横屏的角度(90度或270度)
         :rtype: float
         """
         return self._Angle
@@ -1311,7 +1311,7 @@ class ArithmeticOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1333,7 +1333,7 @@ class ArithmeticOCRResponse(AbstractModel):
 
 
 class BankCardOCRRequest(AbstractModel):
-    """BankCardOCR请求参数结构体
+    r"""BankCardOCR请求参数结构体
 
     """
 
@@ -1367,7 +1367,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -1378,7 +1378,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -1389,7 +1389,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def RetBorderCutImage(self):
-        """是否返回预处理（精确剪裁对齐）后的银行卡图片数据，默认false。
+        r"""是否返回预处理（精确剪裁对齐）后的银行卡图片数据，默认false。
         :rtype: bool
         """
         return self._RetBorderCutImage
@@ -1400,7 +1400,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def RetCardNoImage(self):
-        """是否返回卡号的切图图片数据，默认false。
+        r"""是否返回卡号的切图图片数据，默认false。
         :rtype: bool
         """
         return self._RetCardNoImage
@@ -1411,7 +1411,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def EnableCopyCheck(self):
-        """复印件检测开关，如果输入的图片是银行卡复印件图片则返回告警，默认false。
+        r"""复印件检测开关，如果输入的图片是银行卡复印件图片则返回告警，默认false。
         :rtype: bool
         """
         return self._EnableCopyCheck
@@ -1422,7 +1422,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def EnableReshootCheck(self):
-        """翻拍检测开关，如果输入的图片是银行卡翻拍图片则返回告警，默认false。
+        r"""翻拍检测开关，如果输入的图片是银行卡翻拍图片则返回告警，默认false。
         :rtype: bool
         """
         return self._EnableReshootCheck
@@ -1433,7 +1433,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def EnableBorderCheck(self):
-        """边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
+        r"""边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
         :rtype: bool
         """
         return self._EnableBorderCheck
@@ -1444,7 +1444,7 @@ class BankCardOCRRequest(AbstractModel):
 
     @property
     def EnableQualityValue(self):
-        """是否返回图片质量分数（图片质量分数是评价一个图片的模糊程度的标准），默认false。
+        r"""是否返回图片质量分数（图片质量分数是评价一个图片的模糊程度的标准），默认false。
         :rtype: bool
         """
         return self._EnableQualityValue
@@ -1474,7 +1474,7 @@ class BankCardOCRRequest(AbstractModel):
 
 
 class BankCardOCRResponse(AbstractModel):
-    """BankCardOCR返回参数结构体
+    r"""BankCardOCR返回参数结构体
 
     """
 
@@ -1527,7 +1527,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def CardNo(self):
-        """卡号
+        r"""卡号
         :rtype: str
         """
         return self._CardNo
@@ -1538,7 +1538,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def BankInfo(self):
-        """银行信息
+        r"""银行信息
         :rtype: str
         """
         return self._BankInfo
@@ -1549,7 +1549,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期，格式如：07/2023
+        r"""有效期，格式如：07/2023
         :rtype: str
         """
         return self._ValidDate
@@ -1560,7 +1560,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def CardType(self):
-        """卡类型
+        r"""卡类型
         :rtype: str
         """
         return self._CardType
@@ -1571,7 +1571,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def CardName(self):
-        """卡名字
+        r"""卡名字
         :rtype: str
         """
         return self._CardName
@@ -1582,7 +1582,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def BorderCutImage(self):
-        """切片图片数据
+        r"""切片图片数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1594,7 +1594,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def CardNoImage(self):
-        """卡号图片数据
+        r"""卡号图片数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1606,7 +1606,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def WarningCode(self):
-        """WarningCode 告警码列表和释义：
+        r"""WarningCode 告警码列表和释义：
 -9110:银行卡日期无效; 
 -9111:银行卡边框不完整; 
 -9112:银行卡图片反光;
@@ -1624,7 +1624,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def QualityValue(self):
-        """图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+        r"""图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1636,7 +1636,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def CardCategory(self):
-        """卡类别， 如： 标准实体银行卡、电子银行卡信息截图
+        r"""卡类别， 如： 标准实体银行卡、电子银行卡信息截图
         :rtype: str
         """
         return self._CardCategory
@@ -1647,7 +1647,7 @@ class BankCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1672,7 +1672,7 @@ class BankCardOCRResponse(AbstractModel):
 
 
 class BankSlip(AbstractModel):
-    """银行回单
+    r"""银行回单
 
     """
 
@@ -1689,7 +1689,7 @@ class BankSlip(AbstractModel):
 
     @property
     def BankSlipInfos(self):
-        """银行回单信息
+        r"""银行回单信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BankSlipInfo
         """
@@ -1701,7 +1701,7 @@ class BankSlip(AbstractModel):
 
     @property
     def CommonBankSlipInfos(self):
-        """银行回单信息常用字段
+        r"""银行回单信息常用字段
         :rtype: list of BankSlipInfo
         """
         return self._CommonBankSlipInfos
@@ -1735,7 +1735,7 @@ class BankSlip(AbstractModel):
 
 
 class BankSlipInfo(AbstractModel):
-    """银行回单识别出的字段
+    r"""银行回单识别出的字段
 
     """
 
@@ -1755,7 +1755,7 @@ class BankSlipInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
         :rtype: str
         """
@@ -1767,7 +1767,7 @@ class BankSlipInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -1778,7 +1778,7 @@ class BankSlipInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -1805,7 +1805,7 @@ class BankSlipInfo(AbstractModel):
 
 
 class BankSlipOCRRequest(AbstractModel):
-    """BankSlipOCR请求参数结构体
+    r"""BankSlipOCR请求参数结构体
 
     """
 
@@ -1829,7 +1829,7 @@ class BankSlipOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
@@ -1841,7 +1841,7 @@ class BankSlipOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
@@ -1853,7 +1853,7 @@ class BankSlipOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -1864,7 +1864,7 @@ class BankSlipOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -1890,7 +1890,7 @@ class BankSlipOCRRequest(AbstractModel):
 
 
 class BankSlipOCRResponse(AbstractModel):
-    """BankSlipOCR返回参数结构体
+    r"""BankSlipOCR返回参数结构体
 
     """
 
@@ -1909,7 +1909,7 @@ class BankSlipOCRResponse(AbstractModel):
 
     @property
     def BankSlipInfos(self):
-        """银行回单识别结果，具体内容请点击左侧链接。
+        r"""银行回单识别结果，具体内容请点击左侧链接。
         :rtype: list of BankSlipInfo
         """
         return self._BankSlipInfos
@@ -1920,7 +1920,7 @@ class BankSlipOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -1931,7 +1931,7 @@ class BankSlipOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1953,7 +1953,7 @@ class BankSlipOCRResponse(AbstractModel):
 
 
 class BizLicenseOCRRequest(AbstractModel):
-    """BizLicenseOCR请求参数结构体
+    r"""BizLicenseOCR请求参数结构体
 
     """
 
@@ -1985,7 +1985,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -1999,7 +1999,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -2014,7 +2014,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnableCopyWarn(self):
-        """是否返回告警码，默认为false
+        r"""是否返回告警码，默认为false
         :rtype: bool
         """
         return self._EnableCopyWarn
@@ -2025,7 +2025,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnablePeriodComplete(self):
-        """是否返回自动拼接的有效期，默认为true
+        r"""是否返回自动拼接的有效期，默认为true
         :rtype: bool
         """
         return self._EnablePeriodComplete
@@ -2036,7 +2036,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnableBusinessCertificate(self):
-        """是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+        r"""是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
         :rtype: bool
         """
         return self._EnableBusinessCertificate
@@ -2063,7 +2063,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
 
 class BizLicenseOCRResponse(AbstractModel):
-    """BizLicenseOCR返回参数结构体
+    r"""BizLicenseOCR返回参数结构体
 
     """
 
@@ -2154,7 +2154,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegNum(self):
-        """统一社会信用代码（三合一之前为注册号）
+        r"""统一社会信用代码（三合一之前为注册号）
         :rtype: str
         """
         return self._RegNum
@@ -2165,7 +2165,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Name(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._Name
@@ -2176,7 +2176,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Capital(self):
-        """注册资本
+        r"""注册资本
         :rtype: str
         """
         return self._Capital
@@ -2187,7 +2187,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Person(self):
-        """法定代表人
+        r"""法定代表人
         :rtype: str
         """
         return self._Person
@@ -2198,7 +2198,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -2209,7 +2209,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Business(self):
-        """经营范围
+        r"""经营范围
         :rtype: str
         """
         return self._Business
@@ -2220,7 +2220,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Type(self):
-        """主体类型
+        r"""主体类型
         :rtype: str
         """
         return self._Type
@@ -2231,7 +2231,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Period(self):
-        """营业期限
+        r"""营业期限
         :rtype: str
         """
         return self._Period
@@ -2242,7 +2242,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def ComposingForm(self):
-        """组成形式
+        r"""组成形式
         :rtype: str
         """
         return self._ComposingForm
@@ -2253,7 +2253,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def SetDate(self):
-        """成立日期
+        r"""成立日期
         :rtype: str
         """
         return self._SetDate
@@ -2264,7 +2264,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RecognizeWarnCode(self):
-        """Code 告警码列表和释义：
+        r"""Code 告警码列表和释义：
 -9102 黑白复印件告警
 -9104 翻拍件告警
         :rtype: list of int
@@ -2277,7 +2277,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RecognizeWarnMsg(self):
-        """告警码说明：
+        r"""告警码说明：
 WARN_COPY_CARD 黑白复印件告警
 WARN_RESHOOT_CARD翻拍件告警
         :rtype: list of str
@@ -2290,7 +2290,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def IsDuplication(self):
-        """是否为副本。1为是，-1为不是。
+        r"""是否为副本。1为是，-1为不是。
         :rtype: int
         """
         return self._IsDuplication
@@ -2301,7 +2301,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegistrationDate(self):
-        """登记日期
+        r"""登记日期
         :rtype: str
         """
         return self._RegistrationDate
@@ -2312,7 +2312,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Angle(self):
-        """ 图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
+        r""" 图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
 
 
         :rtype: float
@@ -2325,7 +2325,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def NationalEmblem(self):
-        """是否有国徽。false为没有，true为有。
+        r"""是否有国徽。false为没有，true为有。
         :rtype: bool
         """
         return self._NationalEmblem
@@ -2336,7 +2336,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def QRCode(self):
-        """是否有二维码。false为没有，true为有。
+        r"""是否有二维码。false为没有，true为有。
         :rtype: bool
         """
         return self._QRCode
@@ -2347,7 +2347,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Seal(self):
-        """是否有印章。false为没有，true为有。
+        r"""是否有印章。false为没有，true为有。
         :rtype: bool
         """
         return self._Seal
@@ -2358,7 +2358,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -2369,7 +2369,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def SerialNumber(self):
-        """编号
+        r"""编号
         :rtype: str
         """
         return self._SerialNumber
@@ -2380,7 +2380,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegistrationAuthority(self):
-        """登记机关
+        r"""登记机关
         :rtype: str
         """
         return self._RegistrationAuthority
@@ -2391,7 +2391,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Electronic(self):
-        """是否是电子营业执照。false为没有，true为有。
+        r"""是否是电子营业执照。false为没有，true为有。
         :rtype: bool
         """
         return self._Electronic
@@ -2402,7 +2402,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def BusinessCertificate(self):
-        """非营业执照的营业类证件识别结果，将以结构化形式呈现。
+        r"""非营业执照的营业类证件识别结果，将以结构化形式呈现。
         :rtype: list of BusinessCertificateInfo
         """
         return self._BusinessCertificate
@@ -2413,7 +2413,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Important(self):
-        """重要提示字段
+        r"""重要提示字段
         :rtype: str
         """
         return self._Important
@@ -2424,7 +2424,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2468,7 +2468,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
 
 class BusInvoice(AbstractModel):
-    """汽车票
+    r"""汽车票
 
     """
 
@@ -2541,7 +2541,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -2552,7 +2552,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -2563,7 +2563,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -2574,7 +2574,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -2585,7 +2585,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -2596,7 +2596,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """乘车时间
+        r"""乘车时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -2607,7 +2607,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘车日期
+        r"""乘车日期
         :rtype: str
         """
         return self._DateGetOn
@@ -2618,7 +2618,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """出发车站
+        r"""出发车站
         :rtype: str
         """
         return self._StationGetOn
@@ -2629,7 +2629,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达车站
+        r"""到达车站
         :rtype: str
         """
         return self._StationGetOff
@@ -2640,7 +2640,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Total
@@ -2651,7 +2651,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def UserName(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._UserName
@@ -2662,7 +2662,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """消费类型
+        r"""消费类型
         :rtype: str
         """
         return self._Kind
@@ -2673,7 +2673,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def UserID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._UserID
@@ -2684,7 +2684,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -2695,7 +2695,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -2706,7 +2706,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def PlaceGetOn(self):
-        """乘车地点
+        r"""乘车地点
         :rtype: str
         """
         return self._PlaceGetOn
@@ -2717,7 +2717,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def GateNumber(self):
-        """检票口
+        r"""检票口
         :rtype: str
         """
         return self._GateNumber
@@ -2728,7 +2728,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TicketType(self):
-        """客票类型
+        r"""客票类型
         :rtype: str
         """
         return self._TicketType
@@ -2739,7 +2739,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """车型
+        r"""车型
         :rtype: str
         """
         return self._VehicleType
@@ -2750,7 +2750,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def SeatNumber(self):
-        """座位号
+        r"""座位号
         :rtype: str
         """
         return self._SeatNumber
@@ -2761,7 +2761,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """车次
+        r"""车次
         :rtype: str
         """
         return self._TrainNumber
@@ -2804,7 +2804,7 @@ class BusInvoice(AbstractModel):
 
 
 class BusInvoiceInfo(AbstractModel):
-    """汽车票字段信息
+    r"""汽车票字段信息
 
     """
 
@@ -2824,7 +2824,7 @@ class BusInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次。
         :rtype: str
         """
@@ -2836,7 +2836,7 @@ class BusInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -2847,7 +2847,7 @@ class BusInvoiceInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -2874,7 +2874,7 @@ class BusInvoiceInfo(AbstractModel):
 
 
 class BusInvoiceOCRRequest(AbstractModel):
-    """BusInvoiceOCR请求参数结构体
+    r"""BusInvoiceOCR请求参数结构体
 
     """
 
@@ -2896,7 +2896,7 @@ class BusInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -2907,7 +2907,7 @@ class BusInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -2918,7 +2918,7 @@ class BusInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -2929,7 +2929,7 @@ class BusInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -2955,7 +2955,7 @@ class BusInvoiceOCRRequest(AbstractModel):
 
 
 class BusInvoiceOCRResponse(AbstractModel):
-    """BusInvoiceOCR返回参数结构体
+    r"""BusInvoiceOCR返回参数结构体
 
     """
 
@@ -2974,7 +2974,7 @@ class BusInvoiceOCRResponse(AbstractModel):
 
     @property
     def BusInvoiceInfos(self):
-        """汽车票识别结果，具体内容请点击左侧链接。
+        r"""汽车票识别结果，具体内容请点击左侧链接。
         :rtype: list of BusInvoiceInfo
         """
         return self._BusInvoiceInfos
@@ -2985,7 +2985,7 @@ class BusInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -2996,7 +2996,7 @@ class BusInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3018,7 +3018,7 @@ class BusInvoiceOCRResponse(AbstractModel):
 
 
 class BusinessCardInfo(AbstractModel):
-    """名片识别结果
+    r"""名片识别结果
 
     """
 
@@ -3038,7 +3038,7 @@ class BusinessCardInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
+        r"""识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交帐号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
         :rtype: str
         """
@@ -3050,7 +3050,7 @@ class BusinessCardInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -3061,7 +3061,7 @@ class BusinessCardInfo(AbstractModel):
 
     @property
     def ItemCoord(self):
-        """文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemCoord
@@ -3088,7 +3088,7 @@ class BusinessCardInfo(AbstractModel):
 
 
 class BusinessCardOCRRequest(AbstractModel):
-    """BusinessCardOCR请求参数结构体
+    r"""BusinessCardOCR请求参数结构体
 
     """
 
@@ -3122,7 +3122,7 @@ Config = {"RetImageType":"PROPROCESS"}
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -3136,7 +3136,7 @@ Config = {"RetImageType":"PROPROCESS"}
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -3151,7 +3151,7 @@ Config = {"RetImageType":"PROPROCESS"}
 
     @property
     def Config(self):
-        """可选字段，根据需要选择是否请求对应字段。
+        r"""可选字段，根据需要选择是否请求对应字段。
 目前支持的字段为：
 RetImageType-“PROPROCESS” 图像预处理，string 类型。
 图像预处理功能为，检测图片倾斜的角度，将原本倾斜的图片围绕中心点转正，最终输出一张正的名片抠图。
@@ -3184,7 +3184,7 @@ Config = {"RetImageType":"PROPROCESS"}
 
 
 class BusinessCardOCRResponse(AbstractModel):
-    """BusinessCardOCR返回参数结构体
+    r"""BusinessCardOCR返回参数结构体
 
     """
 
@@ -3206,7 +3206,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
     @property
     def BusinessCardInfos(self):
-        """名片识别结果，具体内容请点击左侧链接。
+        r"""名片识别结果，具体内容请点击左侧链接。
         :rtype: list of BusinessCardInfo
         """
         return self._BusinessCardInfos
@@ -3217,7 +3217,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
     @property
     def RetImageBase64(self):
-        """返回图像预处理后的图片，图像预处理未开启时返回内容为空。
+        r"""返回图像预处理后的图片，图像预处理未开启时返回内容为空。
         :rtype: str
         """
         return self._RetImageBase64
@@ -3228,7 +3228,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -3239,7 +3239,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3262,7 +3262,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
 
 class BusinessCertificateInfo(AbstractModel):
-    """非营业执照的营业类证件识别结果，将以结构化形式呈现。
+    r"""非营业执照的营业类证件识别结果，将以结构化形式呈现。
 
     """
 
@@ -3281,7 +3281,7 @@ class BusinessCertificateInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的名称
+        r"""识别出的名称
         :rtype: str
         """
         return self._Name
@@ -3292,7 +3292,7 @@ class BusinessCertificateInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值
+        r"""识别出的字段名称对应的值
         :rtype: str
         """
         return self._Value
@@ -3303,7 +3303,7 @@ class BusinessCertificateInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """坐标
+        r"""坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -3330,7 +3330,7 @@ class BusinessCertificateInfo(AbstractModel):
 
 
 class CandWord(AbstractModel):
-    """候选字符集(包含候选字Character以及置信度Confidence)
+    r"""候选字符集(包含候选字Character以及置信度Confidence)
 
     """
 
@@ -3343,7 +3343,7 @@ class CandWord(AbstractModel):
 
     @property
     def CandWords(self):
-        """候选字符集的单词信息（包括单词Character和单词置信度confidence）
+        r"""候选字符集的单词信息（包括单词Character和单词置信度confidence）
         :rtype: list of Words
         """
         return self._CandWords
@@ -3371,7 +3371,7 @@ class CandWord(AbstractModel):
 
 
 class CarInvoiceInfo(AbstractModel):
-    """购车发票识别结果
+    r"""购车发票识别结果
 
     """
 
@@ -3396,7 +3396,7 @@ class CarInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
         :rtype: str
         """
@@ -3408,7 +3408,7 @@ class CarInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -3419,7 +3419,7 @@ class CarInvoiceInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """字段在旋转纠正之后的图像中的像素坐标。
+        r"""字段在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -3430,7 +3430,7 @@ class CarInvoiceInfo(AbstractModel):
 
     @property
     def Polygon(self):
-        """字段在原图中的四点坐标。
+        r"""字段在原图中的四点坐标。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
@@ -3462,7 +3462,7 @@ class CarInvoiceInfo(AbstractModel):
 
 
 class CarInvoiceOCRRequest(AbstractModel):
-    """CarInvoiceOCR请求参数结构体
+    r"""CarInvoiceOCR请求参数结构体
 
     """
 
@@ -3484,7 +3484,7 @@ class CarInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -3495,7 +3495,7 @@ class CarInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -3506,7 +3506,7 @@ class CarInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -3517,7 +3517,7 @@ class CarInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -3543,7 +3543,7 @@ class CarInvoiceOCRRequest(AbstractModel):
 
 
 class CarInvoiceOCRResponse(AbstractModel):
-    """CarInvoiceOCR返回参数结构体
+    r"""CarInvoiceOCR返回参数结构体
 
     """
 
@@ -3559,7 +3559,7 @@ class CarInvoiceOCRResponse(AbstractModel):
 
     @property
     def CarInvoiceInfos(self):
-        """购车发票识别结果，具体内容请点击左侧链接。
+        r"""购车发票识别结果，具体内容请点击左侧链接。
         :rtype: list of CarInvoiceInfo
         """
         return self._CarInvoiceInfos
@@ -3570,7 +3570,7 @@ class CarInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3591,7 +3591,7 @@ class CarInvoiceOCRResponse(AbstractModel):
 
 
 class CardWarnInfo(AbstractModel):
-    """卡证告警信息返回
+    r"""卡证告警信息返回
 
     """
 
@@ -3639,7 +3639,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def BorderCheck(self):
-        """证件边缘是否完整
+        r"""证件边缘是否完整
 0：正常
 1：边缘不完整
         :rtype: int
@@ -3652,7 +3652,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def OcclusionCheck(self):
-        """证件是否被遮挡
+        r"""证件是否被遮挡
 0：正常
 1：有遮挡
         :rtype: int
@@ -3665,7 +3665,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def CopyCheck(self):
-        """是否复印
+        r"""是否复印
 0:正常
 1:复印件
         :rtype: int
@@ -3678,7 +3678,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def ReshootCheck(self):
-        """是否屏幕翻拍
+        r"""是否屏幕翻拍
 0:正常
 1:翻拍
         :rtype: int
@@ -3691,7 +3691,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def PSCheck(self):
-        """证件是否有PS
+        r"""证件是否有PS
 0：正常
 1：有PS
         :rtype: int
@@ -3704,7 +3704,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def BlurCheck(self):
-        """是否模糊：
+        r"""是否模糊：
 0:正常
 1:模糊
         :rtype: int
@@ -3717,7 +3717,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def BlurScore(self):
-        """模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+        r"""模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
         :rtype: float
         """
         return self._BlurScore
@@ -3728,7 +3728,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def ElectronCheck(self):
-        """是否电子身份证
+        r"""是否电子身份证
 0：否
 1：是电子身份证
         :rtype: int
@@ -3760,7 +3760,7 @@ class CardWarnInfo(AbstractModel):
 
 
 class CellContent(AbstractModel):
-    """单元格识别结果
+    r"""单元格识别结果
 
     """
 
@@ -3778,7 +3778,7 @@ class CellContent(AbstractModel):
 
     @property
     def ParagNo(self):
-        """段落编号
+        r"""段落编号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3790,7 +3790,7 @@ class CellContent(AbstractModel):
 
     @property
     def WordSize(self):
-        """字体大小
+        r"""字体大小
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3815,7 +3815,7 @@ class CellContent(AbstractModel):
 
 
 class ClassifyDetectInfo(AbstractModel):
-    """卡证智能分类结果
+    r"""卡证智能分类结果
 
     """
 
@@ -3835,7 +3835,7 @@ class ClassifyDetectInfo(AbstractModel):
 
     @property
     def Name(self):
-        """分类名称，包括：身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照
+        r"""分类名称，包括：身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照
         :rtype: str
         """
         return self._Name
@@ -3846,7 +3846,7 @@ class ClassifyDetectInfo(AbstractModel):
 
     @property
     def Type(self):
-        """分类类型
+        r"""分类类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3858,7 +3858,7 @@ class ClassifyDetectInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """位置坐标
+        r"""位置坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -3885,7 +3885,7 @@ class ClassifyDetectInfo(AbstractModel):
 
 
 class ClassifyDetectOCRRequest(AbstractModel):
-    """ClassifyDetectOCR请求参数结构体
+    r"""ClassifyDetectOCR请求参数结构体
 
     """
 
@@ -3924,7 +3924,7 @@ ForeignPermanentResidentBack: 外国人永居证背面识别
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -3935,7 +3935,7 @@ ForeignPermanentResidentBack: 外国人永居证背面识别
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -3946,7 +3946,7 @@ ForeignPermanentResidentBack: 外国人永居证背面识别
 
     @property
     def DiscernType(self):
-        """可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。
+        r"""可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。
 
 以下是当前支持的类型：
 IDCardFront: 身份证正面识别
@@ -3991,7 +3991,7 @@ ForeignPermanentResidentBack: 外国人永居证背面识别
 
 
 class ClassifyDetectOCRResponse(AbstractModel):
-    """ClassifyDetectOCR返回参数结构体
+    r"""ClassifyDetectOCR返回参数结构体
 
     """
 
@@ -4007,7 +4007,7 @@ class ClassifyDetectOCRResponse(AbstractModel):
 
     @property
     def ClassifyDetectInfos(self):
-        """智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
+        r"""智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
         :rtype: list of ClassifyDetectInfo
         """
         return self._ClassifyDetectInfos
@@ -4018,7 +4018,7 @@ class ClassifyDetectOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4039,7 +4039,7 @@ class ClassifyDetectOCRResponse(AbstractModel):
 
 
 class ClassifyStoreNameRequest(AbstractModel):
-    """ClassifyStoreName请求参数结构体
+    r"""ClassifyStoreName请求参数结构体
 
     """
 
@@ -4055,7 +4055,7 @@ class ClassifyStoreNameRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -4066,7 +4066,7 @@ class ClassifyStoreNameRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -4090,7 +4090,7 @@ class ClassifyStoreNameRequest(AbstractModel):
 
 
 class ClassifyStoreNameResponse(AbstractModel):
-    """ClassifyStoreName返回参数结构体
+    r"""ClassifyStoreName返回参数结构体
 
     """
 
@@ -4106,7 +4106,7 @@ class ClassifyStoreNameResponse(AbstractModel):
 
     @property
     def StoreLabel(self):
-        """门头照标签
+        r"""门头照标签
         :rtype: list of str
         """
         return self._StoreLabel
@@ -4117,7 +4117,7 @@ class ClassifyStoreNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4133,7 +4133,7 @@ class ClassifyStoreNameResponse(AbstractModel):
 
 
 class ConfigAdvanced(AbstractModel):
-    """支持模版的单个属性配置
+    r"""支持模版的单个属性配置
 
     """
 
@@ -4146,7 +4146,7 @@ class ConfigAdvanced(AbstractModel):
 
     @property
     def Scene(self):
-        """模版的单个属性配置
+        r"""模版的单个属性配置
         :rtype: str
         """
         return self._Scene
@@ -4169,7 +4169,7 @@ class ConfigAdvanced(AbstractModel):
 
 
 class ContentInfo(AbstractModel):
-    """卡证字段信息返回值
+    r"""卡证字段信息返回值
 
     """
 
@@ -4205,7 +4205,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def Content(self):
-        """字段内容
+        r"""字段内容
         :rtype: str
         """
         return self._Content
@@ -4216,7 +4216,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        """结果置信度
+        r"""结果置信度
         :rtype: int
         """
         return self._Confidence
@@ -4227,7 +4227,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsInComplete(self):
-        """字段是否不完整（value内容）
+        r"""字段是否不完整（value内容）
 0 字段正常
 1 字段不完整
         :rtype: int
@@ -4240,7 +4240,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsReflect(self):
-        """字段反光（value内容）
+        r"""字段反光（value内容）
 0 字段正常
 1 字段有反光
         :rtype: int
@@ -4253,7 +4253,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsKeyInComplete(self):
-        """字段是否不完整（key内容）
+        r"""字段是否不完整（key内容）
 0 字段正常
 1 字段不完整
         :rtype: int
@@ -4266,7 +4266,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsKeyReflect(self):
-        """字段反光（key内容）
+        r"""字段反光（key内容）
 0 字段正常
 1 字段有反光
         :rtype: int
@@ -4296,7 +4296,7 @@ class ContentInfo(AbstractModel):
 
 
 class Coord(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -4312,7 +4312,7 @@ class Coord(AbstractModel):
 
     @property
     def X(self):
-        """横坐标
+        r"""横坐标
         :rtype: int
         """
         return self._X
@@ -4323,7 +4323,7 @@ class Coord(AbstractModel):
 
     @property
     def Y(self):
-        """纵坐标
+        r"""纵坐标
         :rtype: int
         """
         return self._Y
@@ -4347,7 +4347,7 @@ class Coord(AbstractModel):
 
 
 class CustomsDeclaration(AbstractModel):
-    """海关进/出口货物报关单
+    r"""海关进/出口货物报关单
 
     """
 
@@ -4363,7 +4363,7 @@ class CustomsDeclaration(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -4374,7 +4374,7 @@ class CustomsDeclaration(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)
+        r"""识别出的字段名称(关键字)
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -4403,7 +4403,7 @@ class CustomsDeclaration(AbstractModel):
 
 
 class CustomsPaymentReceipt(AbstractModel):
-    """海关缴款书
+    r"""海关缴款书
 
     """
 
@@ -4422,7 +4422,7 @@ class CustomsPaymentReceipt(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -4433,7 +4433,7 @@ class CustomsPaymentReceipt(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
+        r"""识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -4444,7 +4444,7 @@ class CustomsPaymentReceipt(AbstractModel):
 
     @property
     def CommonContent(self):
-        """海关缴款书常用字段
+        r"""海关缴款书常用字段
         :rtype: list of OtherInvoiceItem
         """
         return self._CommonContent
@@ -4478,8 +4478,167 @@ class CustomsPaymentReceipt(AbstractModel):
         
 
 
+class DescribeExtractDocAgentJobRequest(AbstractModel):
+    r"""DescribeExtractDocAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务唯一ID。由服务端生成。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务唯一ID。由服务端生成。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtractDocAgentJobResponse(AbstractModel):
+    r"""DescribeExtractDocAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :type Angle: float
+        :param _StructuralList: 配置结构化文本信息。
+        :type StructuralList: list of GroupInfo
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type JobStatus: str
+        :param _ThoughtContent: 思考过程
+        :type ThoughtContent: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._StructuralList = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._JobStatus = None
+        self._ThoughtContent = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StructuralList(self):
+        r"""配置结构化文本信息。
+        :rtype: list of GroupInfo
+        """
+        return self._StructuralList
+
+    @StructuralList.setter
+    def StructuralList(self, StructuralList):
+        self._StructuralList = StructuralList
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def JobStatus(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def ThoughtContent(self):
+        r"""思考过程
+        :rtype: str
+        """
+        return self._ThoughtContent
+
+    @ThoughtContent.setter
+    def ThoughtContent(self, ThoughtContent):
+        self._ThoughtContent = ThoughtContent
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self._StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._StructuralList.append(obj)
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._JobStatus = params.get("JobStatus")
+        self._ThoughtContent = params.get("ThoughtContent")
+        self._RequestId = params.get("RequestId")
+
+
 class DetailInformationOfAirTicketTupleList(AbstractModel):
-    """机票详细信息元组
+    r"""机票详细信息元组
 
     """
 
@@ -4525,7 +4684,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def DepartureStation(self):
-        """出发站（自）
+        r"""出发站（自）
         :rtype: str
         """
         return self._DepartureStation
@@ -4536,7 +4695,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def DestinationStation(self):
-        """目的地（至）
+        r"""目的地（至）
         :rtype: str
         """
         return self._DestinationStation
@@ -4547,7 +4706,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def FlightSegment(self):
-        """航班
+        r"""航班
         :rtype: str
         """
         return self._FlightSegment
@@ -4558,7 +4717,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def Carrier(self):
-        """航班
+        r"""航班
         :rtype: str
         """
         return self._Carrier
@@ -4569,7 +4728,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def Flight(self):
-        """航班号
+        r"""航班号
         :rtype: str
         """
         return self._Flight
@@ -4580,7 +4739,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def SeatClass(self):
-        """座位等级
+        r"""座位等级
         :rtype: str
         """
         return self._SeatClass
@@ -4591,7 +4750,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def CarrierDate(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._CarrierDate
@@ -4602,7 +4761,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def DepartureTime(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._DepartureTime
@@ -4613,7 +4772,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def FareBasis(self):
-        """客票级别/客票类别
+        r"""客票级别/客票类别
         :rtype: str
         """
         return self._FareBasis
@@ -4624,7 +4783,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def EffectiveDate(self):
-        """客票生效日期
+        r"""客票生效日期
         :rtype: str
         """
         return self._EffectiveDate
@@ -4635,7 +4794,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """有效截止日期
+        r"""有效截止日期
         :rtype: str
         """
         return self._ExpirationDate
@@ -4646,7 +4805,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
     @property
     def FreeBaggageAllowance(self):
-        """免费行李
+        r"""免费行李
         :rtype: str
         """
         return self._FreeBaggageAllowance
@@ -4680,7 +4839,7 @@ class DetailInformationOfAirTicketTupleList(AbstractModel):
 
 
 class DetectedWordCoordPoint(AbstractModel):
-    """单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+    r"""单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
 
     """
 
@@ -4693,7 +4852,7 @@ class DetectedWordCoordPoint(AbstractModel):
 
     @property
     def WordCoordinate(self):
-        """单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+        r"""单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
         :rtype: list of Coord
         """
         return self._WordCoordinate
@@ -4721,7 +4880,7 @@ class DetectedWordCoordPoint(AbstractModel):
 
 
 class DetectedWords(AbstractModel):
-    """识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）
+    r"""识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）
 
     """
 
@@ -4737,7 +4896,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 ~100
+        r"""置信度 0 ~100
         :rtype: int
         """
         return self._Confidence
@@ -4748,7 +4907,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Character(self):
-        """候选字Character
+        r"""候选字Character
         :rtype: str
         """
         return self._Character
@@ -4772,7 +4931,7 @@ class DetectedWords(AbstractModel):
 
 
 class DriverLicenseOCRRequest(AbstractModel):
-    """DriverLicenseOCR请求参数结构体
+    r"""DriverLicenseOCR请求参数结构体
 
     """
 
@@ -4794,7 +4953,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -4805,7 +4964,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -4816,7 +4975,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def CardSide(self):
-        """FRONT 为驾驶证主页正面（有红色印章的一面），
+        r"""FRONT 为驾驶证主页正面（有红色印章的一面），
 BACK 为驾驶证副页正面（有档案编号的一面）。
 DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 默认值为：FRONT。
@@ -4844,7 +5003,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
 
 class DriverLicenseOCRResponse(AbstractModel):
-    """DriverLicenseOCR返回参数结构体
+    r"""DriverLicenseOCR返回参数结构体
 
     """
 
@@ -4938,7 +5097,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Name(self):
-        """驾驶证正页姓名
+        r"""驾驶证正页姓名
         :rtype: str
         """
         return self._Name
@@ -4949,7 +5108,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -4960,7 +5119,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Nationality(self):
-        """国籍
+        r"""国籍
         :rtype: str
         """
         return self._Nationality
@@ -4971,7 +5130,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Address(self):
-        """住址
+        r"""住址
         :rtype: str
         """
         return self._Address
@@ -4982,7 +5141,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DateOfBirth(self):
-        """出生日期（YYYY-MM-DD）
+        r"""出生日期（YYYY-MM-DD）
         :rtype: str
         """
         return self._DateOfBirth
@@ -4993,7 +5152,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DateOfFirstIssue(self):
-        """初次领证日期（YYYY-MM-DD）
+        r"""初次领证日期（YYYY-MM-DD）
         :rtype: str
         """
         return self._DateOfFirstIssue
@@ -5004,7 +5163,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Class(self):
-        """准驾车型
+        r"""准驾车型
         :rtype: str
         """
         return self._Class
@@ -5015,7 +5174,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def StartDate(self):
-        """有效期开始时间（YYYY-MM-DD）
+        r"""有效期开始时间（YYYY-MM-DD）
         :rtype: str
         """
         return self._StartDate
@@ -5026,7 +5185,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def EndDate(self):
-        """有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
+        r"""有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
 老版驾驶证返回有效期限 X年）
         :rtype: str
         """
@@ -5038,7 +5197,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CardCode(self):
-        """驾驶证正页证号
+        r"""驾驶证正页证号
         :rtype: str
         """
         return self._CardCode
@@ -5049,7 +5208,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def ArchivesCode(self):
-        """档案编号
+        r"""档案编号
         :rtype: str
         """
         return self._ArchivesCode
@@ -5060,7 +5219,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Record(self):
-        """记录
+        r"""记录
         :rtype: str
         """
         return self._Record
@@ -5071,7 +5230,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnCode(self):
-        """Code 告警码列表和释义：
+        r"""Code 告警码列表和释义：
 -9102  复印件告警
 -9103  翻拍件告警
 -9104  反光告警
@@ -5088,7 +5247,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnMsg(self):
-        """告警码说明：
+        r"""告警码说明：
 WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 WARN_DRIVER_LICENSE_REFLECTION 反光告警
@@ -5105,7 +5264,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def IssuingAuthority(self):
-        """发证单位
+        r"""发证单位
         :rtype: str
         """
         return self._IssuingAuthority
@@ -5116,7 +5275,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def State(self):
-        """状态（仅电子驾驶证支持返回该字段）
+        r"""状态（仅电子驾驶证支持返回该字段）
         :rtype: str
         """
         return self._State
@@ -5127,7 +5286,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CumulativeScore(self):
-        """累积记分（仅电子驾驶证支持返回该字段）
+        r"""累积记分（仅电子驾驶证支持返回该字段）
         :rtype: str
         """
         return self._CumulativeScore
@@ -5138,7 +5297,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CurrentTime(self):
-        """当前时间（仅电子驾驶证支持返回该字段）
+        r"""当前时间（仅电子驾驶证支持返回该字段）
         :rtype: str
         """
         return self._CurrentTime
@@ -5149,7 +5308,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def GenerateTime(self):
-        """生成时间（仅电子驾驶证支持返回该字段）
+        r"""生成时间（仅电子驾驶证支持返回该字段）
         :rtype: str
         """
         return self._GenerateTime
@@ -5160,7 +5319,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def BackPageName(self):
-        """驾驶证副页姓名
+        r"""驾驶证副页姓名
         :rtype: str
         """
         return self._BackPageName
@@ -5171,7 +5330,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def BackPageCardCode(self):
-        """驾驶证副页证号
+        r"""驾驶证副页证号
         :rtype: str
         """
         return self._BackPageCardCode
@@ -5182,7 +5341,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DriverLicenseType(self):
-        """驾驶证类型
+        r"""驾驶证类型
 电子驾驶证：Electronic
 普通驾驶证：Normal
         :rtype: str
@@ -5195,7 +5354,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5232,7 +5391,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
 
 class DutyPaidProofInfo(AbstractModel):
-    """识别出的字段
+    r"""识别出的字段
 
     """
 
@@ -5252,7 +5411,7 @@ class DutyPaidProofInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
         :rtype: str
         """
@@ -5264,7 +5423,7 @@ class DutyPaidProofInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -5275,7 +5434,7 @@ class DutyPaidProofInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -5302,7 +5461,7 @@ class DutyPaidProofInfo(AbstractModel):
 
 
 class DutyPaidProofOCRRequest(AbstractModel):
-    """DutyPaidProofOCR请求参数结构体
+    r"""DutyPaidProofOCR请求参数结构体
 
     """
 
@@ -5324,7 +5483,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -5335,7 +5494,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -5346,7 +5505,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -5357,7 +5516,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -5383,7 +5542,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
 
 
 class DutyPaidProofOCRResponse(AbstractModel):
-    """DutyPaidProofOCR返回参数结构体
+    r"""DutyPaidProofOCR返回参数结构体
 
     """
 
@@ -5402,7 +5561,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
 
     @property
     def DutyPaidProofInfos(self):
-        """完税证明识别结果，具体内容请点击左侧链接。
+        r"""完税证明识别结果，具体内容请点击左侧链接。
         :rtype: list of DutyPaidProofInfo
         """
         return self._DutyPaidProofInfos
@@ -5413,7 +5572,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -5424,7 +5583,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5446,7 +5605,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
 
 
 class EduPaperOCRRequest(AbstractModel):
-    """EduPaperOCR请求参数结构体
+    r"""EduPaperOCR请求参数结构体
 
     """
 
@@ -5478,7 +5637,7 @@ class EduPaperOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -5492,7 +5651,7 @@ class EduPaperOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -5507,7 +5666,7 @@ class EduPaperOCRRequest(AbstractModel):
 
     @property
     def Config(self):
-        """扩展配置信息。
+        r"""扩展配置信息。
 配置格式：{"option1":value1,"option2":value2}
 1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
 2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
@@ -5538,7 +5697,7 @@ class EduPaperOCRRequest(AbstractModel):
 
 
 class EduPaperOCRResponse(AbstractModel):
-    """EduPaperOCR返回参数结构体
+    r"""EduPaperOCR返回参数结构体
 
     """
 
@@ -5560,7 +5719,7 @@ class EduPaperOCRResponse(AbstractModel):
 
     @property
     def EduPaperInfos(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextEduPaper
         """
         return self._EduPaperInfos
@@ -5571,7 +5730,7 @@ class EduPaperOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
         :rtype: int
         """
         return self._Angle
@@ -5582,7 +5741,7 @@ class EduPaperOCRResponse(AbstractModel):
 
     @property
     def QuestionBlockInfos(self):
-        """结构化方式输出，具体内容请点击左侧链接。
+        r"""结构化方式输出，具体内容请点击左侧链接。
         :rtype: list of QuestionBlockObj
         """
         return self._QuestionBlockInfos
@@ -5593,7 +5752,7 @@ class EduPaperOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5621,7 +5780,7 @@ class EduPaperOCRResponse(AbstractModel):
 
 
 class ElectronicAirTransport(AbstractModel):
-    """全电发票（航空运输电子客票行程单）
+    r"""全电发票（航空运输电子客票行程单）
 
     """
 
@@ -5697,7 +5856,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5709,7 +5868,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5721,7 +5880,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5733,7 +5892,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Amount(self):
-        """金额
+        r"""金额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5745,7 +5904,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5757,7 +5916,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计
+        r"""价税合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5769,7 +5928,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def DeductionMark(self):
-        """抵扣标志
+        r"""抵扣标志
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5781,7 +5940,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def StateCode(self):
-        """发票状态代码，0正常 1 未更新  2作废 3已红冲
+        r"""发票状态代码，0正常 1 未更新  2作废 3已红冲
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5793,7 +5952,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def BuyerTaxCode(self):
-        """购方识别号
+        r"""购方识别号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5805,7 +5964,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def BuyerName(self):
-        """购方名称
+        r"""购方名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5817,7 +5976,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5829,7 +5988,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def DomesticInternationalMark(self):
-        """国内国际标识
+        r"""国内国际标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5841,7 +6000,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def PassengerName(self):
-        """旅客姓名
+        r"""旅客姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5853,7 +6012,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def PassengerNo(self):
-        """有效身份证件号码
+        r"""有效身份证件号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5865,7 +6024,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def ElectronicNumber(self):
-        """电子客票号码
+        r"""电子客票号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5877,7 +6036,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def ElectronicAirTransportDetails(self):
-        """全电发票（航空运输电子客票行程单）详细信息
+        r"""全电发票（航空运输电子客票行程单）详细信息
 
 
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5923,7 +6082,7 @@ class ElectronicAirTransport(AbstractModel):
 
 
 class ElectronicAirTransportDetail(AbstractModel):
-    """全电发票（航空运输电子客票行程单）详细信息
+    r"""全电发票（航空运输电子客票行程单）详细信息
 
     """
 
@@ -5969,7 +6128,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightSegment(self):
-        """航段序号
+        r"""航段序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5981,7 +6140,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """始发站
+        r"""始发站
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5993,7 +6152,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """目的站
+        r"""目的站
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6005,7 +6164,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def Carrier(self):
-        """承运人
+        r"""承运人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6017,7 +6176,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightNumber(self):
-        """航班号
+        r"""航班号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6029,7 +6188,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def SeatLevel(self):
-        """座位等级
+        r"""座位等级
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6041,7 +6200,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightDate(self):
-        """承运日期
+        r"""承运日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6053,7 +6212,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def DepartureTime(self):
-        """起飞时间
+        r"""起飞时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6065,7 +6224,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FareBasis(self):
-        """客票级别/客票类别
+        r"""客票级别/客票类别
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6097,7 +6256,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
 
 class ElectronicFlightTicketFull(AbstractModel):
-    """电子发票（机票行程单）
+    r"""电子发票（机票行程单）
 
     """
 
@@ -6179,7 +6338,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def UserName(self):
-        """旅客姓名
+        r"""旅客姓名
         :rtype: str
         """
         return self._UserName
@@ -6190,7 +6349,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def UserID(self):
-        """有效身份证件号码
+        r"""有效身份证件号码
         :rtype: str
         """
         return self._UserID
@@ -6201,7 +6360,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Endorsement(self):
-        """签注
+        r"""签注
         :rtype: str
         """
         return self._Endorsement
@@ -6212,7 +6371,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def GPOrder(self):
-        """GP单号
+        r"""GP单号
         :rtype: str
         """
         return self._GPOrder
@@ -6223,7 +6382,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -6234,7 +6393,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Fare(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Fare
@@ -6245,7 +6404,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def FuelSurcharge(self):
-        """燃油附加费
+        r"""燃油附加费
         :rtype: str
         """
         return self._FuelSurcharge
@@ -6256,7 +6415,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def TaxRate(self):
-        """增值税税率
+        r"""增值税税率
         :rtype: str
         """
         return self._TaxRate
@@ -6267,7 +6426,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Tax(self):
-        """增值税税额
+        r"""增值税税额
         :rtype: str
         """
         return self._Tax
@@ -6278,7 +6437,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def DevelopmentFund(self):
-        """民航发展基金
+        r"""民航发展基金
         :rtype: str
         """
         return self._DevelopmentFund
@@ -6289,7 +6448,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def OtherTax(self):
-        """其他税费
+        r"""其他税费
         :rtype: str
         """
         return self._OtherTax
@@ -6300,7 +6459,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Total(self):
-        """合计
+        r"""合计
         :rtype: str
         """
         return self._Total
@@ -6311,7 +6470,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def ElectronicTicketNum(self):
-        """电子客票号码
+        r"""电子客票号码
         :rtype: str
         """
         return self._ElectronicTicketNum
@@ -6322,7 +6481,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def VerificationCode(self):
-        """验证码
+        r"""验证码
         :rtype: str
         """
         return self._VerificationCode
@@ -6333,7 +6492,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def PromptInformation(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._PromptInformation
@@ -6344,7 +6503,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Insurance(self):
-        """保险费
+        r"""保险费
         :rtype: str
         """
         return self._Insurance
@@ -6355,7 +6514,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Issuer(self):
-        """填开单位
+        r"""填开单位
         :rtype: str
         """
         return self._Issuer
@@ -6366,7 +6525,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Date(self):
-        """填开时间
+        r"""填开时间
         :rtype: str
         """
         return self._Date
@@ -6377,7 +6536,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def DomesticInternationalTag(self):
-        """国内国际标识
+        r"""国内国际标识
         :rtype: str
         """
         return self._DomesticInternationalTag
@@ -6388,7 +6547,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -6399,7 +6558,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -6410,7 +6569,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """统一社会信用代码
+        r"""统一社会信用代码
         :rtype: str
         """
         return self._BuyerTaxID
@@ -6421,7 +6580,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def FlightItems(self):
-        """机票详细信息元组
+        r"""机票详细信息元组
         :rtype: list of FlightItemInfo
         """
         return self._FlightItems
@@ -6432,7 +6591,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
     @property
     def InvoiceStatus(self):
-        """机票开具状态
+        r"""机票开具状态
         :rtype: str
         """
         return self._InvoiceStatus
@@ -6483,7 +6642,7 @@ class ElectronicFlightTicketFull(AbstractModel):
 
 
 class ElectronicTrainTicket(AbstractModel):
-    """全电发票（铁路电子客票）
+    r"""全电发票（铁路电子客票）
 
     """
 
@@ -6589,7 +6748,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def BuyerName(self):
-        """购方名称
+        r"""购方名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6601,7 +6760,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def BuyerTaxCode(self):
-        """购方识别号
+        r"""购方识别号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6613,7 +6772,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6625,7 +6784,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6637,7 +6796,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TotalCN(self):
-        """价税合计（中文大写）
+        r"""价税合计（中文大写）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6649,7 +6808,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Tax(self):
-        """税额
+        r"""税额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6661,7 +6820,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，0：退票，1:售票
+        r"""业务类型，0：退票，1:售票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6673,7 +6832,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """出发时间
+        r"""出发时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6685,7 +6844,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """车次
+        r"""车次
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6697,7 +6856,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6709,7 +6868,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def SeatType(self):
-        """席别
+        r"""席别
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6721,7 +6880,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘车日期
+        r"""乘车日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6733,7 +6892,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TrainCabin(self):
-        """车厢
+        r"""车厢
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6745,7 +6904,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """出发站
+        r"""出发站
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6757,7 +6916,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def ElectronicNumber(self):
-        """电子客票号
+        r"""电子客票号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6769,7 +6928,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def PassengerName(self):
-        """姓名
+        r"""姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6781,7 +6940,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def PassengerNo(self):
-        """证件号
+        r"""证件号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6793,7 +6952,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Amount(self):
-        """金额
+        r"""金额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6805,7 +6964,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达站
+        r"""到达站
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6817,7 +6976,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6829,7 +6988,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Seat(self):
-        """席位
+        r"""席位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6841,7 +7000,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计
+        r"""价税合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6853,7 +7012,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6865,7 +7024,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StateCode(self):
-        """发票状态代码，0正常 1 未更新  2作废 3已红冲
+        r"""发票状态代码，0正常 1 未更新  2作废 3已红冲
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6912,7 +7071,7 @@ class ElectronicTrainTicket(AbstractModel):
 
 
 class ElectronicTrainTicketFull(AbstractModel):
-    """电子发票（火车票）
+    r"""电子发票（火车票）
 
     """
 
@@ -6985,7 +7144,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def TypeOfVoucher(self):
-        """电子发票类型
+        r"""电子发票类型
         :rtype: str
         """
         return self._TypeOfVoucher
@@ -6996,7 +7155,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def ElectronicTicketNum(self):
-        """电子客票号
+        r"""电子客票号
         :rtype: str
         """
         return self._ElectronicTicketNum
@@ -7007,7 +7166,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -7018,7 +7177,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """始发站
+        r"""始发站
         :rtype: str
         """
         return self._StationGetOn
@@ -7029,7 +7188,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达站
+        r"""到达站
         :rtype: str
         """
         return self._StationGetOff
@@ -7040,7 +7199,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """火车号
+        r"""火车号
         :rtype: str
         """
         return self._TrainNumber
@@ -7051,7 +7210,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘车日期
+        r"""乘车日期
         :rtype: str
         """
         return self._DateGetOn
@@ -7062,7 +7221,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """始发时间
+        r"""始发时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -7073,7 +7232,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Seat(self):
-        """座位类型
+        r"""座位类型
         :rtype: str
         """
         return self._Seat
@@ -7084,7 +7243,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def SeatNumber(self):
-        """座位号
+        r"""座位号
         :rtype: str
         """
         return self._SeatNumber
@@ -7095,7 +7254,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Fare(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Fare
@@ -7106,7 +7265,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -7117,7 +7276,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def UserID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._UserID
@@ -7128,7 +7287,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def UserName(self):
-        """乘车人姓名
+        r"""乘车人姓名
         :rtype: str
         """
         return self._UserName
@@ -7139,7 +7298,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -7150,7 +7309,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -7161,7 +7320,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Tax(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._Tax
@@ -7172,7 +7331,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -7183,7 +7342,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """统一社会信用代码
+        r"""统一社会信用代码
         :rtype: str
         """
         return self._BuyerTaxID
@@ -7194,7 +7353,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def OriginalNumber(self):
-        """原发票号码
+        r"""原发票号码
         :rtype: str
         """
         return self._OriginalNumber
@@ -7205,7 +7364,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
     @property
     def IDInfo(self):
-        """标识信息
+        r"""标识信息
         :rtype: str
         """
         return self._IDInfo
@@ -7248,7 +7407,7 @@ class ElectronicTrainTicketFull(AbstractModel):
 
 
 class Element(AbstractModel):
-    """试题识别结果-元素内容
+    r"""试题识别结果-元素内容
 
     """
 
@@ -7274,7 +7433,7 @@ class Element(AbstractModel):
 
     @property
     def Text(self):
-        """元素内容，当type为figure时该字段内容为图片的位置
+        r"""元素内容，当type为figure时该字段内容为图片的位置
         :rtype: str
         """
         return self._Text
@@ -7285,7 +7444,7 @@ class Element(AbstractModel):
 
     @property
     def Coord(self):
-        """元素坐标
+        r"""元素坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord
@@ -7296,7 +7455,7 @@ class Element(AbstractModel):
 
     @property
     def GroupType(self):
-        """元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)
+        r"""元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)
         :rtype: str
         """
         return self._GroupType
@@ -7307,7 +7466,7 @@ class Element(AbstractModel):
 
     @property
     def ResultList(self):
-        """结果列表
+        r"""结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultList
         """
@@ -7319,7 +7478,7 @@ class Element(AbstractModel):
 
     @property
     def Index(self):
-        """元素索引
+        r"""元素索引
         :rtype: int
         """
         return self._Index
@@ -7353,7 +7512,7 @@ class Element(AbstractModel):
 
 
 class Encryption(AbstractModel):
-    """敏感数据加密
+    r"""敏感数据加密
 
     """
 
@@ -7383,7 +7542,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        """有加密需求的用户，接入传入kms的CiphertextBlob（Base64编码），关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
+        r"""有加密需求的用户，接入传入kms的CiphertextBlob（Base64编码），关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7395,7 +7554,7 @@ class Encryption(AbstractModel):
 
     @property
     def Iv(self):
-        """有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符，Base64编码）。
+        r"""有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符，Base64编码）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7407,7 +7566,7 @@ class Encryption(AbstractModel):
 
     @property
     def Algorithm(self):
-        """加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+        r"""加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7419,7 +7578,7 @@ class Encryption(AbstractModel):
 
     @property
     def TagList(self):
-        """SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+        r"""SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7431,7 +7590,7 @@ class Encryption(AbstractModel):
 
     @property
     def EncryptList(self):
-        """在使用加密服务时，指定要被加密的字段。本接口默认为EncryptedBody
+        r"""在使用加密服务时，指定要被加密的字段。本接口默认为EncryptedBody
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7459,7 +7618,7 @@ class Encryption(AbstractModel):
 
 
 class EnglishOCRRequest(AbstractModel):
-    """EnglishOCR请求参数结构体
+    r"""EnglishOCR请求参数结构体
 
     """
 
@@ -7494,7 +7653,7 @@ class EnglishOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。像素须介于20-10000px之间。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -7509,7 +7668,7 @@ class EnglishOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。像素须介于20-10000px之间。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -7524,7 +7683,7 @@ class EnglishOCRRequest(AbstractModel):
 
     @property
     def EnableCoordPoint(self):
-        """单词四点坐标开关，开启可返回图片中单词的四点坐标。
+        r"""单词四点坐标开关，开启可返回图片中单词的四点坐标。
 该参数默认值为false。
         :rtype: bool
         """
@@ -7536,7 +7695,7 @@ class EnglishOCRRequest(AbstractModel):
 
     @property
     def EnableCandWord(self):
-        """候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
+        r"""候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
 该参数默认值为false。
         :rtype: bool
         """
@@ -7548,7 +7707,7 @@ class EnglishOCRRequest(AbstractModel):
 
     @property
     def Preprocess(self):
-        """预处理开关，功能是检测图片倾斜的角度，将原本倾斜的图片矫正。该参数默认值为true。
+        r"""预处理开关，功能是检测图片倾斜的角度，将原本倾斜的图片矫正。该参数默认值为true。
         :rtype: bool
         """
         return self._Preprocess
@@ -7575,7 +7734,7 @@ class EnglishOCRRequest(AbstractModel):
 
 
 class EnglishOCRResponse(AbstractModel):
-    """EnglishOCR返回参数结构体
+    r"""EnglishOCR返回参数结构体
 
     """
 
@@ -7594,7 +7753,7 @@ class EnglishOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextDetectionEn
         """
         return self._TextDetections
@@ -7605,7 +7764,7 @@ class EnglishOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angel
@@ -7616,7 +7775,7 @@ class EnglishOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7638,7 +7797,7 @@ class EnglishOCRResponse(AbstractModel):
 
 
 class EnterpriseLicenseInfo(AbstractModel):
-    """企业证照单个字段的内容
+    r"""企业证照单个字段的内容
 
     """
 
@@ -7655,7 +7814,7 @@ class EnterpriseLicenseInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
+        r"""识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业类型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
         :rtype: str
         """
@@ -7667,7 +7826,7 @@ class EnterpriseLicenseInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -7691,7 +7850,7 @@ class EnterpriseLicenseInfo(AbstractModel):
 
 
 class EnterpriseLicenseOCRRequest(AbstractModel):
-    """EnterpriseLicenseOCR请求参数结构体
+    r"""EnterpriseLicenseOCR请求参数结构体
 
     """
 
@@ -7714,7 +7873,7 @@ class EnterpriseLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -7728,7 +7887,7 @@ class EnterpriseLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -7756,7 +7915,7 @@ class EnterpriseLicenseOCRRequest(AbstractModel):
 
 
 class EnterpriseLicenseOCRResponse(AbstractModel):
-    """EnterpriseLicenseOCR返回参数结构体
+    r"""EnterpriseLicenseOCR返回参数结构体
 
     """
 
@@ -7775,7 +7934,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
 
     @property
     def EnterpriseLicenseInfos(self):
-        """企业证照识别结果，具体内容请点击左侧链接。
+        r"""企业证照识别结果，具体内容请点击左侧链接。
         :rtype: list of EnterpriseLicenseInfo
         """
         return self._EnterpriseLicenseInfos
@@ -7786,7 +7945,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -7797,7 +7956,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7819,7 +7978,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
 
 
 class EstateCertOCRRequest(AbstractModel):
-    """EstateCertOCR请求参数结构体
+    r"""EstateCertOCR请求参数结构体
 
     """
 
@@ -7835,7 +7994,7 @@ class EstateCertOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -7846,7 +8005,7 @@ class EstateCertOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -7870,7 +8029,7 @@ class EstateCertOCRRequest(AbstractModel):
 
 
 class EstateCertOCRResponse(AbstractModel):
-    """EstateCertOCR返回参数结构体
+    r"""EstateCertOCR返回参数结构体
 
     """
 
@@ -7919,7 +8078,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Obligee(self):
-        """权利人
+        r"""权利人
         :rtype: str
         """
         return self._Obligee
@@ -7930,7 +8089,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Ownership(self):
-        """共有情况
+        r"""共有情况
         :rtype: str
         """
         return self._Ownership
@@ -7941,7 +8100,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """坐落
+        r"""坐落
         :rtype: str
         """
         return self._Location
@@ -7952,7 +8111,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Unit(self):
-        """不动产单元号
+        r"""不动产单元号
         :rtype: str
         """
         return self._Unit
@@ -7963,7 +8122,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """权利类型
+        r"""权利类型
         :rtype: str
         """
         return self._Type
@@ -7974,7 +8133,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Property(self):
-        """权利性质
+        r"""权利性质
         :rtype: str
         """
         return self._Property
@@ -7985,7 +8144,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """用途
+        r"""用途
         :rtype: str
         """
         return self._Usage
@@ -7996,7 +8155,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Area(self):
-        """面积
+        r"""面积
         :rtype: str
         """
         return self._Area
@@ -8007,7 +8166,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Term(self):
-        """使用期限
+        r"""使用期限
         :rtype: str
         """
         return self._Term
@@ -8018,7 +8177,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Other(self):
-        """权利其他状况，多行会用换行符\n连接。
+        r"""权利其他状况，多行会用换行符\n连接。
         :rtype: str
         """
         return self._Other
@@ -8029,7 +8188,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度
+        r"""图片旋转角度
         :rtype: float
         """
         return self._Angle
@@ -8040,7 +8199,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """不动产权号
+        r"""不动产权号
         :rtype: str
         """
         return self._Number
@@ -8051,7 +8210,7 @@ class EstateCertOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8078,7 +8237,7 @@ class EstateCertOCRResponse(AbstractModel):
 
 
 class ExtractDocBasicRequest(AbstractModel):
-    """ExtractDocBasic请求参数结构体
+    r"""ExtractDocBasic请求参数结构体
 
     """
 
@@ -8128,7 +8287,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -8139,7 +8298,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -8150,7 +8309,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -8161,7 +8320,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -8172,7 +8331,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def ItemNames(self):
-        """自定义结构化功能需返回的字段名称，例：
+        r"""自定义结构化功能需返回的字段名称，例：
 若客户只想返回姓名、性别两个字段的识别结果，则输入
 ItemNames=["姓名","性别"]
         :rtype: list of str
@@ -8185,7 +8344,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ReturnFullText(self):
-        """是否开启全文字段识别
+        r"""是否开启全文字段识别
         :rtype: bool
         """
         return self._ReturnFullText
@@ -8196,7 +8355,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ConfigId(self):
-        """配置id支持：
+        r"""配置id支持：
 General -- 通用场景
 OnlineTaxiItinerary -- 网约车行程单
 RideHailingDriverLicense -- 网约车驾驶证
@@ -8221,7 +8380,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
     @property
     def EnableSealRecognize(self):
-        """是否打开印章识别
+        r"""是否打开印章识别
         :rtype: bool
         """
         return self._EnableSealRecognize
@@ -8251,7 +8410,7 @@ MultiRealEstateCertificate -- 房产证、不动产证、产权证等材料合�
 
 
 class ExtractDocBasicResponse(AbstractModel):
-    """ExtractDocBasic返回参数结构体
+    r"""ExtractDocBasic返回参数结构体
 
     """
 
@@ -8274,7 +8433,7 @@ class ExtractDocBasicResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向
+        r"""图片旋转角度(角度制)，文本的水平方向
 为 0；顺时针为正，逆时针为负
         :rtype: float
         """
@@ -8286,7 +8445,7 @@ class ExtractDocBasicResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        """配置结构化文本信息
+        r"""配置结构化文本信息
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -8297,7 +8456,7 @@ class ExtractDocBasicResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """还原文本信息
+        r"""还原文本信息
         :rtype: list of WordItem
         """
         return self._WordList
@@ -8308,7 +8467,7 @@ class ExtractDocBasicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8336,7 +8495,7 @@ class ExtractDocBasicResponse(AbstractModel):
 
 
 class ExtractDocMultiProRequest(AbstractModel):
-    """ExtractDocMultiPro请求参数结构体
+    r"""ExtractDocMultiPro请求参数结构体
 
     """
 
@@ -8381,7 +8540,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -8392,7 +8551,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -8403,7 +8562,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -8414,7 +8573,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ItemNames(self):
-        """自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+        r"""自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
         :rtype: list of str
         """
         return self._ItemNames
@@ -8425,7 +8584,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ItemNamesShowMode(self):
-        """true：仅输出自定义字段
+        r"""true：仅输出自定义字段
 flase：输出默认字段+自定义字段
 默认true
         :rtype: bool
@@ -8438,7 +8597,7 @@ flase：输出默认字段+自定义字段
 
     @property
     def ReturnFullText(self):
-        """是否开启全文字段识别
+        r"""是否开启全文字段识别
         :rtype: bool
         """
         return self._ReturnFullText
@@ -8449,7 +8608,7 @@ flase：输出默认字段+自定义字段
 
     @property
     def ConfigId(self):
-        """配置id支持：
+        r"""配置id支持：
 DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
 默认：DispatchWeightNote
@@ -8463,7 +8622,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def EnableCoord(self):
-        """是否开启全文字段坐标值的识别
+        r"""是否开启全文字段坐标值的识别
         :rtype: bool
         """
         return self._EnableCoord
@@ -8474,7 +8633,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def OutputParentKey(self):
-        """是否开启父子key识别，默认是
+        r"""是否开启父子key识别，默认是
         :rtype: bool
         """
         return self._OutputParentKey
@@ -8485,7 +8644,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ConfigAdvanced(self):
-        """模板的单个属性配置
+        r"""模板的单个属性配置
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -8519,7 +8678,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
 
 class ExtractDocMultiProResponse(AbstractModel):
-    """ExtractDocMultiPro返回参数结构体
+    r"""ExtractDocMultiPro返回参数结构体
 
     """
 
@@ -8544,7 +8703,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angle
@@ -8555,7 +8714,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        """配置结构化文本信息
+        r"""配置结构化文本信息
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -8566,7 +8725,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """还原文本信息
+        r"""还原文本信息
         :rtype: list of WordItem
         """
         return self._WordList
@@ -8577,7 +8736,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
     @property
     def TokenNum(self):
-        """样本识别字段数
+        r"""样本识别字段数
         :rtype: int
         """
         return self._TokenNum
@@ -8588,7 +8747,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8617,7 +8776,7 @@ class ExtractDocMultiProResponse(AbstractModel):
 
 
 class ExtractDocMultiRequest(AbstractModel):
-    """ExtractDocMulti请求参数结构体
+    r"""ExtractDocMulti请求参数结构体
 
     """
 
@@ -8686,7 +8845,7 @@ en时，添加的key为英语
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -8697,7 +8856,7 @@ en时，添加的key为英语
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -8708,7 +8867,7 @@ en时，添加的key为英语
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -8719,7 +8878,7 @@ en时，添加的key为英语
 
     @property
     def ItemNames(self):
-        """自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+        r"""自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
         :rtype: list of str
         """
         return self._ItemNames
@@ -8730,7 +8889,7 @@ en时，添加的key为英语
 
     @property
     def ItemNamesShowMode(self):
-        """true：仅输出自定义字段
+        r"""true：仅输出自定义字段
 flase：输出默认字段+自定义字段
 默认true
         :rtype: bool
@@ -8743,7 +8902,7 @@ flase：输出默认字段+自定义字段
 
     @property
     def ReturnFullText(self):
-        """是否开启全文字段识别
+        r"""是否开启全文字段识别
         :rtype: bool
         """
         return self._ReturnFullText
@@ -8754,7 +8913,7 @@ flase：输出默认字段+自定义字段
 
     @property
     def ConfigId(self):
-        """配置id支持：
+        r"""配置id支持：
 General -- 通用场景 
 InvoiceEng -- 国际invoice模板 
 WayBillEng --海运订单模板
@@ -8788,7 +8947,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def EnableCoord(self):
-        """是否开启全文字段坐标值的识别
+        r"""是否开启全文字段坐标值的识别
         :rtype: bool
         """
         return self._EnableCoord
@@ -8799,7 +8958,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def OutputParentKey(self):
-        """是否开启父子key识别，默认是
+        r"""是否开启父子key识别，默认是
         :rtype: bool
         """
         return self._OutputParentKey
@@ -8810,7 +8969,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def ConfigAdvanced(self):
-        """模板的单个属性配置
+        r"""模板的单个属性配置
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -8821,7 +8980,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def OutputLanguage(self):
-        """cn时，添加的key为中文  
+        r"""cn时，添加的key为中文  
 en时，添加的key为英语
         :rtype: str
         """
@@ -8857,7 +9016,7 @@ en时，添加的key为英语
 
 
 class ExtractDocMultiResponse(AbstractModel):
-    """ExtractDocMulti返回参数结构体
+    r"""ExtractDocMulti返回参数结构体
 
     """
 
@@ -8882,7 +9041,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angle
@@ -8893,7 +9052,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        """配置结构化文本信息
+        r"""配置结构化文本信息
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -8904,7 +9063,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """还原文本信息
+        r"""还原文本信息
         :rtype: list of WordItem
         """
         return self._WordList
@@ -8915,7 +9074,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def TokenNum(self):
-        """样本识别字段数
+        r"""样本识别字段数
         :rtype: int
         """
         return self._TokenNum
@@ -8926,7 +9085,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8955,7 +9114,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
 
 class FinanBillInfo(AbstractModel):
-    """金融票据整单识别单个字段的内容
+    r"""金融票据整单识别单个字段的内容
 
     """
 
@@ -8977,7 +9136,7 @@ class FinanBillInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 【进账单】
 日期、出票全称、出票账号、出票开户行、收款人全称、收款人账号、收款开户行、大写金额、小写金额、票据种类、票据张数、票据号码；
 【支票】
@@ -8994,7 +9153,7 @@ class FinanBillInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -9018,7 +9177,7 @@ class FinanBillInfo(AbstractModel):
 
 
 class FinanBillOCRRequest(AbstractModel):
-    """FinanBillOCR请求参数结构体
+    r"""FinanBillOCR请求参数结构体
 
     """
 
@@ -9034,7 +9193,7 @@ class FinanBillOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -9045,7 +9204,7 @@ class FinanBillOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -9069,7 +9228,7 @@ class FinanBillOCRRequest(AbstractModel):
 
 
 class FinanBillOCRResponse(AbstractModel):
-    """FinanBillOCR返回参数结构体
+    r"""FinanBillOCR返回参数结构体
 
     """
 
@@ -9085,7 +9244,7 @@ class FinanBillOCRResponse(AbstractModel):
 
     @property
     def FinanBillInfos(self):
-        """金融票据整单识别结果，具体内容请点击左侧链接。
+        r"""金融票据整单识别结果，具体内容请点击左侧链接。
         :rtype: list of FinanBillInfo
         """
         return self._FinanBillInfos
@@ -9096,7 +9255,7 @@ class FinanBillOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9117,7 +9276,7 @@ class FinanBillOCRResponse(AbstractModel):
 
 
 class FinanBillSliceInfo(AbstractModel):
-    """金融票据切片识别单个字段的内容
+    r"""金融票据切片识别单个字段的内容
 
     """
 
@@ -9134,7 +9293,7 @@ class FinanBillSliceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 大写金额、小写金额、账号、票号1、票号2、收款人、大写日期、同城交换号、地址-省份、地址-城市、付款行全称、支票密码、支票用途。
         :rtype: str
         """
@@ -9146,7 +9305,7 @@ class FinanBillSliceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -9170,7 +9329,7 @@ class FinanBillSliceInfo(AbstractModel):
 
 
 class FinanBillSliceOCRRequest(AbstractModel):
-    """FinanBillSliceOCR请求参数结构体
+    r"""FinanBillSliceOCR请求参数结构体
 
     """
 
@@ -9186,7 +9345,7 @@ class FinanBillSliceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -9197,7 +9356,7 @@ class FinanBillSliceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -9221,7 +9380,7 @@ class FinanBillSliceOCRRequest(AbstractModel):
 
 
 class FinanBillSliceOCRResponse(AbstractModel):
-    """FinanBillSliceOCR返回参数结构体
+    r"""FinanBillSliceOCR返回参数结构体
 
     """
 
@@ -9237,7 +9396,7 @@ class FinanBillSliceOCRResponse(AbstractModel):
 
     @property
     def FinanBillSliceInfos(self):
-        """金融票据切片识别结果，具体内容请点击左侧链接。
+        r"""金融票据切片识别结果，具体内容请点击左侧链接。
         :rtype: list of FinanBillSliceInfo
         """
         return self._FinanBillSliceInfos
@@ -9248,7 +9407,7 @@ class FinanBillSliceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9269,7 +9428,7 @@ class FinanBillSliceOCRResponse(AbstractModel):
 
 
 class FinancialBill(AbstractModel):
-    """财务票据查验返回结果
+    r"""财务票据查验返回结果
 
     """
 
@@ -9351,7 +9510,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Code(self):
-        """票据代码
+        r"""票据代码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9363,7 +9522,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Number(self):
-        """票据号码
+        r"""票据号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9375,7 +9534,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """缴款人纳税识别号
+        r"""缴款人纳税识别号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9387,7 +9546,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9399,7 +9558,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Buyer(self):
-        """缴款人
+        r"""缴款人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9411,7 +9570,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9423,7 +9582,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def SellerCompany(self):
-        """收款单位
+        r"""收款单位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9435,7 +9594,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Reviewer(self):
-        """复核人
+        r"""复核人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9447,7 +9606,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Seller(self):
-        """收款人
+        r"""收款人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9459,7 +9618,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Title(self):
-        """票据名称
+        r"""票据名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9471,7 +9630,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def Total(self):
-        """金额合计
+        r"""金额合计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9483,7 +9642,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def TotalCn(self):
-        """金额合计中文大写
+        r"""金额合计中文大写
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9495,7 +9654,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def RushRedStateCode(self):
-        """冲红
+        r"""冲红
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9507,7 +9666,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def RushRedDate(self):
-        """冲红日期
+        r"""冲红日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9519,7 +9678,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def RushRedTime(self):
-        """冲红时间
+        r"""冲红时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9531,7 +9690,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def RushRedReason(self):
-        """冲红原因
+        r"""冲红原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9543,7 +9702,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def FinancialBillItems(self):
-        """项目明细
+        r"""项目明细
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FinancialBillItem
         """
@@ -9555,7 +9714,7 @@ class FinancialBill(AbstractModel):
 
     @property
     def FinancialBillItemDetails(self):
-        """项目清单
+        r"""项目清单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FinancialBillItemDetails
         """
@@ -9606,7 +9765,7 @@ class FinancialBill(AbstractModel):
 
 
 class FinancialBillItem(AbstractModel):
-    """财务票据查验返回结果-项目明细
+    r"""财务票据查验返回结果-项目明细
 
     """
 
@@ -9648,7 +9807,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def ItemID(self):
-        """项目编号
+        r"""项目编号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9660,7 +9819,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9672,7 +9831,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9684,7 +9843,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9696,7 +9855,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Standard(self):
-        """规格标准
+        r"""规格标准
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9708,7 +9867,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9720,7 +9879,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """项目序号
+        r"""项目序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9732,7 +9891,7 @@ class FinancialBillItem(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9763,7 +9922,7 @@ class FinancialBillItem(AbstractModel):
 
 
 class FinancialBillItemDetails(AbstractModel):
-    """财务票据查验返回结果-项目清单
+    r"""财务票据查验返回结果-项目清单
 
     """
 
@@ -9805,7 +9964,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def ItemID(self):
-        """项目编号
+        r"""项目编号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9817,7 +9976,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9829,7 +9988,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9841,7 +10000,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9853,7 +10012,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Standard(self):
-        """规格标准
+        r"""规格标准
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9865,7 +10024,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9877,7 +10036,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """项目序号
+        r"""项目序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9889,7 +10048,7 @@ class FinancialBillItemDetails(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9920,7 +10079,7 @@ class FinancialBillItemDetails(AbstractModel):
 
 
 class FlightInvoiceInfo(AbstractModel):
-    """机票行程单识别结果
+    r"""机票行程单识别结果
 
     """
 
@@ -9940,7 +10099,7 @@ class FlightInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
         :rtype: str
         """
@@ -9952,7 +10111,7 @@ class FlightInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -9963,7 +10122,7 @@ class FlightInvoiceInfo(AbstractModel):
 
     @property
     def Row(self):
-        """多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
+        r"""多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
         :rtype: int
         """
         return self._Row
@@ -9988,7 +10147,7 @@ class FlightInvoiceInfo(AbstractModel):
 
 
 class FlightInvoiceOCRRequest(AbstractModel):
-    """FlightInvoiceOCR请求参数结构体
+    r"""FlightInvoiceOCR请求参数结构体
 
     """
 
@@ -10010,7 +10169,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -10021,7 +10180,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -10032,7 +10191,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -10043,7 +10202,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -10069,7 +10228,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
 
 
 class FlightInvoiceOCRResponse(AbstractModel):
-    """FlightInvoiceOCR返回参数结构体
+    r"""FlightInvoiceOCR返回参数结构体
 
     """
 
@@ -10085,7 +10244,7 @@ class FlightInvoiceOCRResponse(AbstractModel):
 
     @property
     def FlightInvoiceInfos(self):
-        """机票行程单识别结果，具体内容请点击左侧链接。
+        r"""机票行程单识别结果，具体内容请点击左侧链接。
         :rtype: list of FlightInvoiceInfo
         """
         return self._FlightInvoiceInfos
@@ -10096,7 +10255,7 @@ class FlightInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10117,7 +10276,7 @@ class FlightInvoiceOCRResponse(AbstractModel):
 
 
 class FlightItem(AbstractModel):
-    """机票行程卡条目
+    r"""机票行程卡条目
 
     """
 
@@ -10160,7 +10319,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TerminalGetOn(self):
-        """出发航站楼
+        r"""出发航站楼
         :rtype: str
         """
         return self._TerminalGetOn
@@ -10171,7 +10330,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TerminalGetOff(self):
-        """到达航站楼
+        r"""到达航站楼
         :rtype: str
         """
         return self._TerminalGetOff
@@ -10182,7 +10341,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Carrier(self):
-        """承运人
+        r"""承运人
         :rtype: str
         """
         return self._Carrier
@@ -10193,7 +10352,7 @@ class FlightItem(AbstractModel):
 
     @property
     def FlightNumber(self):
-        """航班号
+        r"""航班号
         :rtype: str
         """
         return self._FlightNumber
@@ -10204,7 +10363,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Seat(self):
-        """座位等级
+        r"""座位等级
         :rtype: str
         """
         return self._Seat
@@ -10215,7 +10374,7 @@ class FlightItem(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘机日期
+        r"""乘机日期
         :rtype: str
         """
         return self._DateGetOn
@@ -10226,7 +10385,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """乘机时间
+        r"""乘机时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -10237,7 +10396,7 @@ class FlightItem(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """出发站
+        r"""出发站
         :rtype: str
         """
         return self._StationGetOn
@@ -10248,7 +10407,7 @@ class FlightItem(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达站
+        r"""到达站
         :rtype: str
         """
         return self._StationGetOff
@@ -10259,7 +10418,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Allow(self):
-        """免费行李
+        r"""免费行李
         :rtype: str
         """
         return self._Allow
@@ -10270,7 +10429,7 @@ class FlightItem(AbstractModel):
 
     @property
     def FareBasis(self):
-        """客票级别/客票类别
+        r"""客票级别/客票类别
         :rtype: str
         """
         return self._FareBasis
@@ -10303,7 +10462,7 @@ class FlightItem(AbstractModel):
 
 
 class FlightItemInfo(AbstractModel):
-    """机票详细信息元组
+    r"""机票详细信息元组
 
     """
 
@@ -10346,7 +10505,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def TerminalGetOn(self):
-        """出发站
+        r"""出发站
         :rtype: str
         """
         return self._TerminalGetOn
@@ -10357,7 +10516,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def TerminalGetOff(self):
-        """到达站
+        r"""到达站
         :rtype: str
         """
         return self._TerminalGetOff
@@ -10368,7 +10527,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def Carrier(self):
-        """承运人
+        r"""承运人
         :rtype: str
         """
         return self._Carrier
@@ -10379,7 +10538,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def FlightNumber(self):
-        """航班号
+        r"""航班号
         :rtype: str
         """
         return self._FlightNumber
@@ -10390,7 +10549,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def Seat(self):
-        """座位等级
+        r"""座位等级
         :rtype: str
         """
         return self._Seat
@@ -10401,7 +10560,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘机日期
+        r"""乘机日期
         :rtype: str
         """
         return self._DateGetOn
@@ -10412,7 +10571,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """乘机时间
+        r"""乘机时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -10423,7 +10582,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def FareBasis(self):
-        """客票级别/客票类别
+        r"""客票级别/客票类别
         :rtype: str
         """
         return self._FareBasis
@@ -10434,7 +10593,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def Allow(self):
-        """免费行李额
+        r"""免费行李额
         :rtype: str
         """
         return self._Allow
@@ -10445,7 +10604,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def DateStart(self):
-        """客票生效日期
+        r"""客票生效日期
         :rtype: str
         """
         return self._DateStart
@@ -10456,7 +10615,7 @@ class FlightItemInfo(AbstractModel):
 
     @property
     def DateEnd(self):
-        """有效截止日期
+        r"""有效截止日期
         :rtype: str
         """
         return self._DateEnd
@@ -10489,7 +10648,7 @@ class FlightItemInfo(AbstractModel):
 
 
 class FormulaOCRRequest(AbstractModel):
-    """FormulaOCR请求参数结构体
+    r"""FormulaOCR请求参数结构体
 
     """
 
@@ -10505,7 +10664,7 @@ class FormulaOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -10516,7 +10675,7 @@ class FormulaOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -10540,7 +10699,7 @@ class FormulaOCRRequest(AbstractModel):
 
 
 class FormulaOCRResponse(AbstractModel):
-    """FormulaOCR返回参数结构体
+    r"""FormulaOCR返回参数结构体
 
     """
 
@@ -10559,7 +10718,7 @@ class FormulaOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
         :rtype: int
         """
         return self._Angle
@@ -10570,7 +10729,7 @@ class FormulaOCRResponse(AbstractModel):
 
     @property
     def FormulaInfos(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextFormula
         """
         return self._FormulaInfos
@@ -10581,7 +10740,7 @@ class FormulaOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10603,7 +10762,7 @@ class FormulaOCRResponse(AbstractModel):
 
 
 class GeneralAccurateOCRRequest(AbstractModel):
-    """GeneralAccurateOCR请求参数结构体
+    r"""GeneralAccurateOCR请求参数结构体
 
     """
 
@@ -10637,7 +10796,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -10648,7 +10807,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -10659,7 +10818,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def IsWords(self):
-        """是否返回单字信息，默认关
+        r"""是否返回单字信息，默认关
         :rtype: bool
         """
         return self._IsWords
@@ -10670,7 +10829,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def EnableDetectSplit(self):
-        """是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
+        r"""是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
         :rtype: bool
         """
         return self._EnableDetectSplit
@@ -10681,7 +10840,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -10692,7 +10851,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -10703,7 +10862,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def EnableDetectText(self):
-        """文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+        r"""文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
         :rtype: bool
         """
         return self._EnableDetectText
@@ -10714,7 +10873,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ConfigID(self):
-        """配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
+        r"""配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
         :rtype: str
         """
         return self._ConfigID
@@ -10744,7 +10903,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
 
 class GeneralAccurateOCRResponse(AbstractModel):
-    """GeneralAccurateOCR返回参数结构体
+    r"""GeneralAccurateOCR返回参数结构体
 
     """
 
@@ -10766,7 +10925,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+        r"""检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -10779,7 +10938,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
     def Angel(self):
         warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
 
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angel
@@ -10792,7 +10951,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -10803,7 +10962,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10826,7 +10985,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
 
 class GeneralBasicOCRRequest(AbstractModel):
-    """GeneralBasicOCR请求参数结构体
+    r"""GeneralBasicOCR请求参数结构体
 
     """
 
@@ -10882,7 +11041,7 @@ ara：阿拉伯语
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -10893,7 +11052,7 @@ ara：阿拉伯语
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -10904,7 +11063,7 @@ ara：阿拉伯语
 
     @property
     def Scene(self):
-        """保留字段。
+        r"""保留字段。
         :rtype: str
         """
         return self._Scene
@@ -10915,7 +11074,7 @@ ara：阿拉伯语
 
     @property
     def LanguageType(self):
-        """识别语言类型。
+        r"""识别语言类型。
 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)，各种语言均支持与英文混合的文字识别。
 可选值：
 zh：中英混合
@@ -10951,7 +11110,7 @@ ara：阿拉伯语
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -10962,7 +11121,7 @@ ara：阿拉伯语
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -10973,7 +11132,7 @@ ara：阿拉伯语
 
     @property
     def IsWords(self):
-        """是否返回单字信息，默认关
+        r"""是否返回单字信息，默认关
         :rtype: bool
         """
         return self._IsWords
@@ -11002,7 +11161,7 @@ ara：阿拉伯语
 
 
 class GeneralBasicOCRResponse(AbstractModel):
-    """GeneralBasicOCR返回参数结构体
+    r"""GeneralBasicOCR返回参数结构体
 
     """
 
@@ -11030,7 +11189,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+        r"""检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -11041,7 +11200,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def Language(self):
-        """检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
+        r"""检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
         :rtype: str
         """
         return self._Language
@@ -11054,7 +11213,7 @@ class GeneralBasicOCRResponse(AbstractModel):
     def Angel(self):
         warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
 
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angel
@@ -11067,7 +11226,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """图片为PDF时，返回PDF的总页数，默认为0
+        r"""图片为PDF时，返回PDF的总页数，默认为0
         :rtype: int
         """
         return self._PdfPageSize
@@ -11078,7 +11237,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -11089,7 +11248,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11114,7 +11273,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
 
 class GeneralCardWarnInfo(AbstractModel):
-    """通用卡证鉴伪告警信息
+    r"""通用卡证鉴伪告警信息
 
     """
 
@@ -11133,7 +11292,7 @@ class GeneralCardWarnInfo(AbstractModel):
 
     @property
     def IsWarn(self):
-        """是否存在该告警
+        r"""是否存在该告警
         :rtype: bool
         """
         return self._IsWarn
@@ -11144,7 +11303,7 @@ class GeneralCardWarnInfo(AbstractModel):
 
     @property
     def RiskConfidence(self):
-        """风险程度
+        r"""风险程度
         :rtype: float
         """
         return self._RiskConfidence
@@ -11155,7 +11314,7 @@ class GeneralCardWarnInfo(AbstractModel):
 
     @property
     def Polygon(self):
-        """告警位置四点坐标
+        r"""告警位置四点坐标
         :rtype: list of Polygon
         """
         return self._Polygon
@@ -11185,7 +11344,7 @@ class GeneralCardWarnInfo(AbstractModel):
 
 
 class GeneralEfficientOCRRequest(AbstractModel):
-    """GeneralEfficientOCR请求参数结构体
+    r"""GeneralEfficientOCR请求参数结构体
 
     """
 
@@ -11205,7 +11364,7 @@ class GeneralEfficientOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
@@ -11218,7 +11377,7 @@ class GeneralEfficientOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
@@ -11244,7 +11403,7 @@ class GeneralEfficientOCRRequest(AbstractModel):
 
 
 class GeneralEfficientOCRResponse(AbstractModel):
-    """GeneralEfficientOCR返回参数结构体
+    r"""GeneralEfficientOCR返回参数结构体
 
     """
 
@@ -11266,7 +11425,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+        r"""检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -11279,7 +11438,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
     def Angel(self):
         warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
 
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angel
@@ -11292,7 +11451,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -11303,7 +11462,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11326,7 +11485,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
 
 class GeneralFastOCRRequest(AbstractModel):
-    """GeneralFastOCR请求参数结构体
+    r"""GeneralFastOCR请求参数结构体
 
     """
 
@@ -11355,7 +11514,7 @@ class GeneralFastOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -11369,7 +11528,7 @@ class GeneralFastOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -11384,7 +11543,7 @@ class GeneralFastOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -11395,7 +11554,7 @@ class GeneralFastOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -11421,7 +11580,7 @@ class GeneralFastOCRRequest(AbstractModel):
 
 
 class GeneralFastOCRResponse(AbstractModel):
-    """GeneralFastOCR返回参数结构体
+    r"""GeneralFastOCR返回参数结构体
 
     """
 
@@ -11447,7 +11606,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -11458,7 +11617,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
     @property
     def Language(self):
-        """检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
+        r"""检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
 返回结果含义为：zh - 中英混合，jap - 日文，kor - 韩文。
         :rtype: str
         """
@@ -11470,7 +11629,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angel
@@ -11481,7 +11640,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """图片为PDF时，返回PDF的总页数，默认为0
+        r"""图片为PDF时，返回PDF的总页数，默认为0
         :rtype: int
         """
         return self._PdfPageSize
@@ -11492,7 +11651,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11516,7 +11675,7 @@ class GeneralFastOCRResponse(AbstractModel):
 
 
 class GeneralHandwritingOCRRequest(AbstractModel):
-    """GeneralHandwritingOCR请求参数结构体
+    r"""GeneralHandwritingOCR请求参数结构体
 
     """
 
@@ -11543,7 +11702,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -11554,7 +11713,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -11565,7 +11724,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """场景字段，默认不用填写。
+        r"""场景字段，默认不用填写。
 可选值:only_hw  表示只输出手写体识别结果，过滤印刷体。
         :rtype: str
         """
@@ -11577,7 +11736,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
     @property
     def EnableWordPolygon(self):
-        """是否开启单字的四点定位坐标输出，默认值为false。
+        r"""是否开启单字的四点定位坐标输出，默认值为false。
         :rtype: bool
         """
         return self._EnableWordPolygon
@@ -11588,7 +11747,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
     @property
     def EnableDetectText(self):
-        """文本检测开关，默认值为true。
+        r"""文本检测开关，默认值为true。
 设置为false表示直接进行单行识别，可适用于识别单行手写体签名场景。
         :rtype: bool
         """
@@ -11616,7 +11775,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 
 
 class GeneralHandwritingOCRResponse(AbstractModel):
-    """GeneralHandwritingOCR返回参数结构体
+    r"""GeneralHandwritingOCR返回参数结构体
 
     """
 
@@ -11638,7 +11797,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextGeneralHandwriting
         """
         return self._TextDetections
@@ -11651,7 +11810,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
     def Angel(self):
         warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
 
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angel
@@ -11664,7 +11823,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -11675,7 +11834,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11698,7 +11857,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
 
 class GeneralMachineItem(AbstractModel):
-    """通用机打发票条目
+    r"""通用机打发票条目
 
     """
 
@@ -11732,7 +11891,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -11743,7 +11902,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Specification(self):
-        """规格型号
+        r"""规格型号
         :rtype: str
         """
         return self._Specification
@@ -11754,7 +11913,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -11765,7 +11924,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -11776,7 +11935,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Price(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._Price
@@ -11787,7 +11946,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -11798,7 +11957,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -11809,7 +11968,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Tax(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._Tax
@@ -11839,7 +11998,7 @@ class GeneralMachineItem(AbstractModel):
 
 
 class GeneralWarnInfo(AbstractModel):
-    """通用告警详情
+    r"""通用告警详情
 
     """
 
@@ -11860,7 +12019,7 @@ Finger：由手指导致的不完整，仅在不完整告警中返回
 
     @property
     def IsWarn(self):
-        """是否存在该告警
+        r"""是否存在该告警
         :rtype: bool
         """
         return self._IsWarn
@@ -11871,7 +12030,7 @@ Finger：由手指导致的不完整，仅在不完整告警中返回
 
     @property
     def Polygon(self):
-        """告警位置四点坐标
+        r"""告警位置四点坐标
         :rtype: list of Polygon
         """
         return self._Polygon
@@ -11882,7 +12041,7 @@ Finger：由手指导致的不完整，仅在不完整告警中返回
 
     @property
     def SpecificMatter(self):
-        """特殊判定，支持包括
+        r"""特殊判定，支持包括
 
 Finger：由手指导致的不完整，仅在不完整告警中返回
         :rtype: str
@@ -11914,7 +12073,7 @@ Finger：由手指导致的不完整，仅在不完整告警中返回
 
 
 class GetOCRResultRequest(AbstractModel):
-    """GetOCRResult请求参数结构体
+    r"""GetOCRResult请求参数结构体
 
     """
 
@@ -11927,7 +12086,7 @@ class GetOCRResultRequest(AbstractModel):
 
     @property
     def OCRToken(self):
-        """token值
+        r"""token值
         :rtype: str
         """
         return self._OCRToken
@@ -11950,7 +12109,7 @@ class GetOCRResultRequest(AbstractModel):
 
 
 class GetOCRResultResponse(AbstractModel):
-    """GetOCRResult返回参数结构体
+    r"""GetOCRResult返回参数结构体
 
     """
 
@@ -11972,7 +12131,7 @@ class GetOCRResultResponse(AbstractModel):
 
     @property
     def Type(self):
-        """ocr业务类型
+        r"""ocr业务类型
         :rtype: str
         """
         return self._Type
@@ -11983,7 +12142,7 @@ class GetOCRResultResponse(AbstractModel):
 
     @property
     def OCRResult(self):
-        """ocr结果
+        r"""ocr结果
         :rtype: :class:`tencentcloud.ocr.v20181119.models.OCRResult`
         """
         return self._OCRResult
@@ -11994,7 +12153,7 @@ class GetOCRResultResponse(AbstractModel):
 
     @property
     def RequestIdInfos(self):
-        """requestid 信息
+        r"""requestid 信息
         :rtype: list of RequestIdInfo
         """
         return self._RequestIdInfos
@@ -12005,7 +12164,7 @@ class GetOCRResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12030,7 +12189,7 @@ class GetOCRResultResponse(AbstractModel):
 
 
 class GetOCRTokenRequest(AbstractModel):
-    """GetOCRToken请求参数结构体
+    r"""GetOCRToken请求参数结构体
 
     """
 
@@ -12046,7 +12205,7 @@ class GetOCRTokenRequest(AbstractModel):
 
     @property
     def Type(self):
-        """业务类型，如身份证识别为IDCardOCR
+        r"""业务类型，如身份证识别为IDCardOCR
         :rtype: str
         """
         return self._Type
@@ -12057,7 +12216,7 @@ class GetOCRTokenRequest(AbstractModel):
 
     @property
     def IDCardConfig(self):
-        """身份证配置信息
+        r"""身份证配置信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardConfig`
         """
         return self._IDCardConfig
@@ -12083,7 +12242,7 @@ class GetOCRTokenRequest(AbstractModel):
 
 
 class GetOCRTokenResponse(AbstractModel):
-    """GetOCRToken返回参数结构体
+    r"""GetOCRToken返回参数结构体
 
     """
 
@@ -12099,7 +12258,7 @@ class GetOCRTokenResponse(AbstractModel):
 
     @property
     def OCRToken(self):
-        """token值
+        r"""token值
         :rtype: str
         """
         return self._OCRToken
@@ -12110,7 +12269,7 @@ class GetOCRTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12126,7 +12285,7 @@ class GetOCRTokenResponse(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """组在图中的序号
+    r"""组在图中的序号
 
     """
 
@@ -12139,7 +12298,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Groups(self):
-        """每一行的元素
+        r"""每一行的元素
         :rtype: list of LineInfo
         """
         return self._Groups
@@ -12167,7 +12326,7 @@ class GroupInfo(AbstractModel):
 
 
 class HKIDCardOCRRequest(AbstractModel):
-    """HKIDCardOCR请求参数结构体
+    r"""HKIDCardOCR请求参数结构体
 
     """
 
@@ -12189,7 +12348,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """是否返回人像照片。
+        r"""是否返回人像照片。
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -12202,7 +12361,7 @@ class HKIDCardOCRRequest(AbstractModel):
     def DetectFake(self):
         warnings.warn("parameter `DetectFake` is deprecated", DeprecationWarning) 
 
-        """是否鉴伪。
+        r"""是否鉴伪。
         :rtype: bool
         """
         return self._DetectFake
@@ -12215,7 +12374,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :rtype: str
         """
         return self._ImageBase64
@@ -12226,7 +12385,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -12252,7 +12411,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
 
 class HKIDCardOCRResponse(AbstractModel):
-    """HKIDCardOCR返回参数结构体
+    r"""HKIDCardOCR返回参数结构体
 
     """
 
@@ -12330,7 +12489,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def CnName(self):
-        """中文姓名
+        r"""中文姓名
         :rtype: str
         """
         return self._CnName
@@ -12341,7 +12500,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def EnName(self):
-        """英文姓名
+        r"""英文姓名
         :rtype: str
         """
         return self._EnName
@@ -12352,7 +12511,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def TelexCode(self):
-        """中文姓名对应电码
+        r"""中文姓名对应电码
         :rtype: str
         """
         return self._TelexCode
@@ -12363,7 +12522,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别 ：“男M”或“女F”
+        r"""性别 ：“男M”或“女F”
         :rtype: str
         """
         return self._Sex
@@ -12374,7 +12533,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._Birthday
@@ -12385,7 +12544,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def Permanent(self):
-        """永久性居民身份证。
+        r"""永久性居民身份证。
 0：非永久；
 1：永久；
 -1：未知。
@@ -12399,7 +12558,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def IdNum(self):
-        """身份证号码
+        r"""身份证号码
         :rtype: str
         """
         return self._IdNum
@@ -12410,7 +12569,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def Symbol(self):
-        """证件符号，出生日期下的符号，例如"***AZ"
+        r"""证件符号，出生日期下的符号，例如"***AZ"
         :rtype: str
         """
         return self._Symbol
@@ -12421,7 +12580,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def FirstIssueDate(self):
-        """首次签发日期
+        r"""首次签发日期
         :rtype: str
         """
         return self._FirstIssueDate
@@ -12432,7 +12591,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def CurrentIssueDate(self):
-        """最近领用日期
+        r"""最近领用日期
         :rtype: str
         """
         return self._CurrentIssueDate
@@ -12445,7 +12604,7 @@ class HKIDCardOCRResponse(AbstractModel):
     def FakeDetectResult(self):
         warnings.warn("parameter `FakeDetectResult` is deprecated", DeprecationWarning) 
 
-        """真假判断。
+        r"""真假判断。
 0：无法判断（图像模糊、不完整、反光、过暗等导致无法判断）；
 1：假；
 2：真。
@@ -12462,7 +12621,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def HeadImage(self):
-        """Base64编码的证件左侧人像大图
+        r"""Base64编码的证件左侧人像大图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12474,7 +12633,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def SmallHeadImage(self):
-        """Base64编码的证件右侧人像小图
+        r"""Base64编码的证件右侧人像小图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12488,7 +12647,7 @@ class HKIDCardOCRResponse(AbstractModel):
     def WarningCode(self):
         warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回空数组，不建议使用。
+        r"""该字段已废弃， 将固定返回空数组，不建议使用。
 
         :rtype: list of int
         """
@@ -12502,7 +12661,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """告警码
+        r"""告警码
 -9101 证件边框不完整告警
 -9102 证件复印件告警
 -9103 证件翻拍告警
@@ -12520,7 +12679,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def WindowEmbeddedText(self):
-        """证件透明视窗内的文本信息
+        r"""证件透明视窗内的文本信息
         :rtype: str
         """
         return self._WindowEmbeddedText
@@ -12531,7 +12690,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12562,7 +12721,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
 
 class HandwritingEssayOCRRequest(AbstractModel):
-    """HandwritingEssayOCR请求参数结构体
+    r"""HandwritingEssayOCR请求参数结构体
 
     """
 
@@ -12589,7 +12748,7 @@ ArticleRecognize -- 手写作文模板
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -12600,7 +12759,7 @@ ArticleRecognize -- 手写作文模板
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -12611,7 +12770,7 @@ ArticleRecognize -- 手写作文模板
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -12622,7 +12781,7 @@ ArticleRecognize -- 手写作文模板
 
     @property
     def ConfigId(self):
-        """配置id支持：
+        r"""配置id支持：
 ArticleRecognize -- 手写作文模板
 默认：ArticleRecognize
         :rtype: str
@@ -12635,7 +12794,7 @@ ArticleRecognize -- 手写作文模板
 
     @property
     def Scene(self):
-        """模板的单个属性配置
+        r"""模板的单个属性配置
         :rtype: str
         """
         return self._Scene
@@ -12662,7 +12821,7 @@ ArticleRecognize -- 手写作文模板
 
 
 class HandwritingEssayOCRResponse(AbstractModel):
-    """HandwritingEssayOCR返回参数结构体
+    r"""HandwritingEssayOCR返回参数结构体
 
     """
 
@@ -12681,7 +12840,7 @@ class HandwritingEssayOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angle
@@ -12692,7 +12851,7 @@ class HandwritingEssayOCRResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """还原文本信息
+        r"""还原文本信息
         :rtype: list of WordItem
         """
         return self._WordList
@@ -12703,7 +12862,7 @@ class HandwritingEssayOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12725,7 +12884,7 @@ class HandwritingEssayOCRResponse(AbstractModel):
 
 
 class HmtResidentPermitOCRRequest(AbstractModel):
-    """HmtResidentPermitOCR请求参数结构体
+    r"""HmtResidentPermitOCR请求参数结构体
 
     """
 
@@ -12756,7 +12915,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -12770,7 +12929,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -12785,7 +12944,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def CardSide(self):
-        """FRONT：有照片的一面（人像面），
+        r"""FRONT：有照片的一面（人像面），
 BACK：无照片的一面（国徽面），
 该参数如果不填或填错，将为您自动判断正反面。
         :rtype: str
@@ -12798,7 +12957,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def CropPortrait(self):
-        """是否返回头像和位置坐标
+        r"""是否返回头像和位置坐标
         :rtype: bool
         """
         return self._CropPortrait
@@ -12824,7 +12983,7 @@ BACK：无照片的一面（国徽面），
 
 
 class HmtResidentPermitOCRResponse(AbstractModel):
-    """HmtResidentPermitOCR返回参数结构体
+    r"""HmtResidentPermitOCR返回参数结构体
 
     """
 
@@ -12871,7 +13030,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """证件姓名
+        r"""证件姓名
         :rtype: str
         """
         return self._Name
@@ -12882,7 +13041,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -12893,7 +13052,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._Birth
@@ -12904,7 +13063,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -12915,7 +13074,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def IdCardNo(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._IdCardNo
@@ -12926,7 +13085,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def CardType(self):
-        """0-正面
+        r"""0-正面
 1-反面
         :rtype: int
         """
@@ -12938,7 +13097,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期限
+        r"""证件有效期限
         :rtype: str
         """
         return self._ValidDate
@@ -12949,7 +13108,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Authority(self):
-        """签发机关
+        r"""签发机关
         :rtype: str
         """
         return self._Authority
@@ -12960,7 +13119,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def VisaNum(self):
-        """签发次数
+        r"""签发次数
         :rtype: str
         """
         return self._VisaNum
@@ -12971,7 +13130,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def PassNo(self):
-        """通行证号码
+        r"""通行证号码
         :rtype: str
         """
         return self._PassNo
@@ -12982,7 +13141,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def PortraitImageInfo(self):
-        """头像和坐标信息
+        r"""头像和坐标信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
         """
         return self._PortraitImageInfo
@@ -12993,7 +13152,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13021,7 +13180,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
 
 class IDCardConfig(AbstractModel):
-    """身份证配置信息
+    r"""身份证配置信息
 
     """
 
@@ -13055,7 +13214,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def CopyWarn(self):
-        """复印件告警，默认为false
+        r"""复印件告警，默认为false
         :rtype: bool
         """
         return self._CopyWarn
@@ -13066,7 +13225,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def BorderCheckWarn(self):
-        """边框和框内遮挡告警，默认为false
+        r"""边框和框内遮挡告警，默认为false
         :rtype: bool
         """
         return self._BorderCheckWarn
@@ -13077,7 +13236,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def ReshootWarn(self):
-        """翻拍告警，默认为false
+        r"""翻拍告警，默认为false
         :rtype: bool
         """
         return self._ReshootWarn
@@ -13088,7 +13247,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def DetectPsWarn(self):
-        """疑似存在PS痕迹告警，默认为false
+        r"""疑似存在PS痕迹告警，默认为false
         :rtype: bool
         """
         return self._DetectPsWarn
@@ -13099,7 +13258,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def TempIdWarn(self):
-        """临时身份证告警，默认为false
+        r"""临时身份证告警，默认为false
         :rtype: bool
         """
         return self._TempIdWarn
@@ -13110,7 +13269,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def InvalidDateWarn(self):
-        """身份证有效日期不合法告警，默认为false
+        r"""身份证有效日期不合法告警，默认为false
         :rtype: bool
         """
         return self._InvalidDateWarn
@@ -13121,7 +13280,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def ReflectWarn(self):
-        """是否开启反光检测，默认为false
+        r"""是否开启反光检测，默认为false
         :rtype: bool
         """
         return self._ReflectWarn
@@ -13132,7 +13291,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """是否开启头像剪切
+        r"""是否开启头像剪切
         :rtype: bool
         """
         return self._CropPortrait
@@ -13162,7 +13321,7 @@ class IDCardConfig(AbstractModel):
 
 
 class IDCardInfo(AbstractModel):
-    """身份证信息返回
+    r"""身份证信息返回
 
     """
 
@@ -13205,7 +13364,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Name
@@ -13216,7 +13375,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Sex
@@ -13227,7 +13386,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Nation
@@ -13238,7 +13397,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Birth
@@ -13249,7 +13408,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Address
@@ -13260,7 +13419,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def IdNum(self):
-        """公民身份号码（人像面）
+        r"""公民身份号码（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._IdNum
@@ -13271,7 +13430,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Authority
@@ -13282,7 +13441,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._ValidDate
@@ -13293,7 +13452,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def WarnInfos(self):
-        """WarnInfos，告警信息
+        r"""WarnInfos，告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CardWarnInfo`
         """
         return self._WarnInfos
@@ -13304,7 +13463,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def CardImage(self):
-        """IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+        r"""IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._CardImage
@@ -13315,7 +13474,7 @@ class IDCardInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+        r"""Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._PortraitImage
@@ -13370,7 +13529,7 @@ class IDCardInfo(AbstractModel):
 
 
 class IDCardInfoResult(AbstractModel):
-    """身份证ocr信息结果
+    r"""身份证ocr信息结果
 
     """
 
@@ -13437,7 +13596,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def WarnCodes(self):
-        """警告代码
+        r"""警告代码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -13449,7 +13608,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13461,7 +13620,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13473,7 +13632,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13485,7 +13644,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def IdNum(self):
-        """身份证号（人像面）
+        r"""身份证号（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13497,7 +13656,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Name(self):
-        """名字（人像面）
+        r"""名字（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13509,7 +13668,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13521,7 +13680,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13533,7 +13692,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13545,7 +13704,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def RequestId(self):
-        """请求的id
+        r"""请求的id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13557,7 +13716,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """错误码
+        r"""错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13569,7 +13728,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息
+        r"""错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13581,7 +13740,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """原图地址
+        r"""原图地址
         :rtype: str
         """
         return self._ImageUrl
@@ -13592,7 +13751,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def PortraitUrl(self):
-        """身份证头像照片的地址（人像面）
+        r"""身份证头像照片的地址（人像面）
         :rtype: str
         """
         return self._PortraitUrl
@@ -13603,7 +13762,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def IntErrorCode(self):
-        """整型错误码
+        r"""整型错误码
         :rtype: int
         """
         return self._IntErrorCode
@@ -13640,7 +13799,7 @@ class IDCardInfoResult(AbstractModel):
 
 
 class IDCardOCRRequest(AbstractModel):
-    """IDCardOCR请求参数结构体
+    r"""IDCardOCR请求参数结构体
 
     """
 
@@ -13694,7 +13853,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -13705,7 +13864,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -13716,7 +13875,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def CardSide(self):
-        """FRONT：身份证有照片的一面（人像面），
+        r"""FRONT：身份证有照片的一面（人像面），
 BACK：身份证有国徽的一面（国徽面），
 该参数如果不填，将为您自动判断身份证正反面。
         :rtype: str
@@ -13729,7 +13888,7 @@ BACK：身份证有国徽的一面（国徽面），
 
     @property
     def Config(self):
-        """以下可选字段均为bool 类型，默认false：
+        r"""以下可选字段均为bool 类型，默认false：
 CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
 CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
 CopyWarn，复印件告警
@@ -13756,7 +13915,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EnableRecognitionRectify(self):
-        """默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+        r"""默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
         :rtype: bool
         """
         return self._EnableRecognitionRectify
@@ -13767,7 +13926,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EnableReflectDetail(self):
-        """默认值为false。
+        r"""默认值为false。
 
 此开关需要在反光检测开关开启下才会生效（即此开关生效的前提是config入参里的"ReflectWarn":true），若EnableReflectDetail设置为true，则会返回反光点覆盖区域详情。反光点覆盖区域详情分为四部分：人像照片位置、国徽位置、识别字段位置、其他位置。一个反光点允许覆盖多个区域，且一张图片可能存在多个反光点。
         :rtype: bool
@@ -13782,7 +13941,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
     def EnableDateVerify(self):
         warnings.warn("parameter `EnableDateVerify` is deprecated", DeprecationWarning) 
 
-        """用于控制是否开启日期校验，默认值为true，打开会进行日期校验。
+        r"""用于控制是否开启日期校验，默认值为true，打开会进行日期校验。
         :rtype: bool
         """
         return self._EnableDateVerify
@@ -13795,7 +13954,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def CardWarnType(self):
-        """Basic：使用基础卡证告警能力；   Advanced：开启通用卡证鉴伪能力（需要在控制台开启“通用卡证鉴伪”后计费功能或购买“通用卡证鉴伪”资源包后才能使用），默认值为 Basic
+        r"""Basic：使用基础卡证告警能力；   Advanced：开启通用卡证鉴伪能力（需要在控制台开启“通用卡证鉴伪”后计费功能或购买“通用卡证鉴伪”资源包后才能使用），默认值为 Basic
         :rtype: str
         """
         return self._CardWarnType
@@ -13825,7 +13984,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
 
 class IDCardOCRResponse(AbstractModel):
-    """IDCardOCR返回参数结构体
+    r"""IDCardOCR返回参数结构体
 
     """
 
@@ -13885,7 +14044,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: str
         """
         return self._Name
@@ -13896,7 +14055,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: str
         """
         return self._Sex
@@ -13907,7 +14066,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: str
         """
         return self._Nation
@@ -13918,7 +14077,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: str
         """
         return self._Birth
@@ -13929,7 +14088,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: str
         """
         return self._Address
@@ -13940,7 +14099,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def IdNum(self):
-        """身份证号（人像面）
+        r"""身份证号（人像面）
         :rtype: str
         """
         return self._IdNum
@@ -13951,7 +14110,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: str
         """
         return self._Authority
@@ -13962,7 +14121,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: str
         """
         return self._ValidDate
@@ -13973,7 +14132,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def AdvancedInfo(self):
-        """扩展信息，不请求则不返回，具体输入参考示例3和示例4。
+        r"""扩展信息，不请求则不返回，具体输入参考示例3和示例4。
 IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
 Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
 
@@ -14001,7 +14160,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def ReflectDetailInfos(self):
-        """反光点覆盖区域详情结果，具体内容请点击左侧链接
+        r"""反光点覆盖区域详情结果，具体内容请点击左侧链接
         :rtype: list of ReflectDetailInfo
         """
         return self._ReflectDetailInfos
@@ -14012,7 +14171,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14042,7 +14201,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
 
 class IDCardResult(AbstractModel):
-    """IDCardResult
+    r"""IDCardResult
 
     """
 
@@ -14060,7 +14219,7 @@ class IDCardResult(AbstractModel):
 
     @property
     def Front(self):
-        """正面结果
+        r"""正面结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
         """
@@ -14072,7 +14231,7 @@ class IDCardResult(AbstractModel):
 
     @property
     def Back(self):
-        """反面结果
+        r"""反面结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
         """
@@ -14101,7 +14260,7 @@ class IDCardResult(AbstractModel):
 
 
 class ImageCoordinates(AbstractModel):
-    """头像位置坐标
+    r"""头像位置坐标
 
     """
 
@@ -14127,7 +14286,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def X(self):
-        """头像左上角横坐标
+        r"""头像左上角横坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14139,7 +14298,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Y(self):
-        """头像左上角纵坐标
+        r"""头像左上角纵坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14151,7 +14310,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Width(self):
-        """头像框宽度
+        r"""头像框宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14163,7 +14322,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Height(self):
-        """头像框高度
+        r"""头像框高度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14190,7 +14349,7 @@ class ImageCoordinates(AbstractModel):
 
 
 class ImageEnhancementRequest(AbstractModel):
-    """ImageEnhancement请求参数结构体
+    r"""ImageEnhancement请求参数结构体
 
     """
 
@@ -14227,7 +14386,7 @@ class ImageEnhancementRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -14238,7 +14397,7 @@ class ImageEnhancementRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -14249,7 +14408,7 @@ class ImageEnhancementRequest(AbstractModel):
 
     @property
     def ReturnImage(self):
-        """默认为空，ReturnImage的取值以及含义如下：
+        r"""默认为空，ReturnImage的取值以及含义如下：
 “preprocess”: 返回预处理后的图片数据
 “origin”：返回原图片数据
 " ":不返回图片数据
@@ -14263,7 +14422,7 @@ class ImageEnhancementRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """默认值为1，指定图像增强方法：
+        r"""默认值为1，指定图像增强方法：
 1：切边增强
 2：弯曲矫正
 202：黑白模式
@@ -14301,7 +14460,7 @@ class ImageEnhancementRequest(AbstractModel):
 
 
 class ImageEnhancementResponse(AbstractModel):
-    """ImageEnhancement返回参数结构体
+    r"""ImageEnhancement返回参数结构体
 
     """
 
@@ -14322,7 +14481,7 @@ class ImageEnhancementResponse(AbstractModel):
 
     @property
     def ImageTag(self):
-        """图片数据标识：
+        r"""图片数据标识：
 “origin”：原图
 “preprocess”:预处理后的图
         :rtype: str
@@ -14335,7 +14494,7 @@ class ImageEnhancementResponse(AbstractModel):
 
     @property
     def Image(self):
-        """图片数据，返回预处理后图像或原图像base64字符
+        r"""图片数据，返回预处理后图像或原图像base64字符
         :rtype: str
         """
         return self._Image
@@ -14346,7 +14505,7 @@ class ImageEnhancementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14363,7 +14522,7 @@ class ImageEnhancementResponse(AbstractModel):
 
 
 class ImageSize(AbstractModel):
-    """图片分辨率信息
+    r"""图片分辨率信息
 
     """
 
@@ -14381,7 +14540,7 @@ class ImageSize(AbstractModel):
 
     @property
     def Width(self):
-        """图片的宽，单位像素
+        r"""图片的宽，单位像素
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14393,7 +14552,7 @@ class ImageSize(AbstractModel):
 
     @property
     def Height(self):
-        """图片的高，单位像素
+        r"""图片的高，单位像素
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14418,7 +14577,7 @@ class ImageSize(AbstractModel):
 
 
 class InstitutionOCRRequest(AbstractModel):
-    """InstitutionOCR请求参数结构体
+    r"""InstitutionOCR请求参数结构体
 
     """
 
@@ -14434,7 +14593,7 @@ class InstitutionOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -14445,7 +14604,7 @@ class InstitutionOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -14469,7 +14628,7 @@ class InstitutionOCRRequest(AbstractModel):
 
 
 class InstitutionOCRResponse(AbstractModel):
-    """InstitutionOCR返回参数结构体
+    r"""InstitutionOCR返回参数结构体
 
     """
 
@@ -14497,7 +14656,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def RegId(self):
-        """注册号
+        r"""注册号
         :rtype: str
         """
         return self._RegId
@@ -14508,7 +14667,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ValidDate
@@ -14519,7 +14678,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """住所
+        r"""住所
         :rtype: str
         """
         return self._Location
@@ -14530,7 +14689,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -14541,7 +14700,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def LegalPerson(self):
-        """法定代表人
+        r"""法定代表人
         :rtype: str
         """
         return self._LegalPerson
@@ -14552,7 +14711,7 @@ class InstitutionOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14572,7 +14731,7 @@ class InstitutionOCRResponse(AbstractModel):
 
 
 class InsuranceBillInfo(AbstractModel):
-    """保险单据信息
+    r"""保险单据信息
 
     """
 
@@ -14596,7 +14755,7 @@ class InsuranceBillInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 【病案首页】
 姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
 【费用清单】
@@ -14615,7 +14774,7 @@ class InsuranceBillInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -14639,7 +14798,7 @@ class InsuranceBillInfo(AbstractModel):
 
 
 class InsuranceBillOCRRequest(AbstractModel):
-    """InsuranceBillOCR请求参数结构体
+    r"""InsuranceBillOCR请求参数结构体
 
     """
 
@@ -14655,7 +14814,7 @@ class InsuranceBillOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -14666,7 +14825,7 @@ class InsuranceBillOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -14690,7 +14849,7 @@ class InsuranceBillOCRRequest(AbstractModel):
 
 
 class InsuranceBillOCRResponse(AbstractModel):
-    """InsuranceBillOCR返回参数结构体
+    r"""InsuranceBillOCR返回参数结构体
 
     """
 
@@ -14706,7 +14865,7 @@ class InsuranceBillOCRResponse(AbstractModel):
 
     @property
     def InsuranceBillInfos(self):
-        """保险单据识别结果，具体内容请点击左侧链接。
+        r"""保险单据识别结果，具体内容请点击左侧链接。
         :rtype: list of InsuranceBillInfo
         """
         return self._InsuranceBillInfos
@@ -14717,7 +14876,7 @@ class InsuranceBillOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14738,7 +14897,7 @@ class InsuranceBillOCRResponse(AbstractModel):
 
 
 class InvoiceDetectInfo(AbstractModel):
-    """票据检测结果
+    r"""票据检测结果
 
     """
 
@@ -14777,7 +14936,7 @@ class InvoiceDetectInfo(AbstractModel):
 
     @property
     def Angle(self):
-        """识别出的图片在混贴票据图片中的旋转角度。
+        r"""识别出的图片在混贴票据图片中的旋转角度。
         :rtype: float
         """
         return self._Angle
@@ -14788,7 +14947,7 @@ class InvoiceDetectInfo(AbstractModel):
 
     @property
     def Type(self):
-        """识别出的图片所属的票据类型。
+        r"""识别出的图片所属的票据类型。
 -1：未知类型
 0：出租车发票
 1：定额发票
@@ -14815,7 +14974,7 @@ class InvoiceDetectInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
+        r"""识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -14826,7 +14985,7 @@ class InvoiceDetectInfo(AbstractModel):
 
     @property
     def Image(self):
-        """入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
+        r"""入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14855,7 +15014,7 @@ class InvoiceDetectInfo(AbstractModel):
 
 
 class InvoiceGeneralInfo(AbstractModel):
-    """通用机打发票信息
+    r"""通用机打发票信息
 
     """
 
@@ -14875,7 +15034,7 @@ class InvoiceGeneralInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段识别（注：下划线表示一个字段）：
+        r"""识别出的字段名称(关键字)，支持以下字段识别（注：下划线表示一个字段）：
 发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、<span style="text-decoration:underline">购买方地址、电话</span>、<span style="text-decoration:underline">销售方地址、电话</span>、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、<span style="text-decoration:underline">货物或应税劳务、服务名称</span>、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类
         :rtype: str
         """
@@ -14887,7 +15046,7 @@ class InvoiceGeneralInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -14898,7 +15057,7 @@ class InvoiceGeneralInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -14925,7 +15084,7 @@ class InvoiceGeneralInfo(AbstractModel):
 
 
 class InvoiceGeneralOCRRequest(AbstractModel):
-    """InvoiceGeneralOCR请求参数结构体
+    r"""InvoiceGeneralOCR请求参数结构体
 
     """
 
@@ -14947,7 +15106,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -14958,7 +15117,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -14969,7 +15128,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -14980,7 +15139,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -15006,7 +15165,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
 
 
 class InvoiceGeneralOCRResponse(AbstractModel):
-    """InvoiceGeneralOCR返回参数结构体
+    r"""InvoiceGeneralOCR返回参数结构体
 
     """
 
@@ -15025,7 +15184,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
 
     @property
     def InvoiceGeneralInfos(self):
-        """通用机打发票识别结果，具体内容请点击左侧链接。
+        r"""通用机打发票识别结果，具体内容请点击左侧链接。
         :rtype: list of InvoiceGeneralInfo
         """
         return self._InvoiceGeneralInfos
@@ -15036,7 +15195,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -15047,7 +15206,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15069,7 +15228,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
 
 
 class InvoiceItem(AbstractModel):
-    """混贴票据单张发票识别信息
+    r"""混贴票据单张发票识别信息
 
     """
 
@@ -15139,7 +15298,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Code(self):
-        """识别结果。
+        r"""识别结果。
 OK：表示识别成功；FailedOperation.UnsupportedInvoice：表示不支持识别；
 FailedOperation.UnKnowError：表示识别失败；
 其它错误码见各个票据接口的定义。
@@ -15153,7 +15312,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Type(self):
-        """识别出的图片所属的票据类型。
+        r"""识别出的图片所属的票据类型。
 -1：未知类型
 0：出租车发票
 1：定额发票
@@ -15182,7 +15341,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Polygon(self):
-        """该发票在原图片中的四点坐标。
+        r"""该发票在原图片中的四点坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Polygon
@@ -15193,7 +15352,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Angle(self):
-        """识别出切图后各图片的旋转角度。
+        r"""识别出切图后各图片的旋转角度。
         :rtype: float
         """
         return self._Angle
@@ -15204,7 +15363,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def SingleInvoiceInfos(self):
-        """识别到的内容。
+        r"""识别到的内容。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.SingleInvoiceItem`
         """
         return self._SingleInvoiceInfos
@@ -15215,7 +15374,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Page(self):
-        """发票处于识别图片或PDF文件中的页码，默认从1开始。
+        r"""发票处于识别图片或PDF文件中的页码，默认从1开始。
         :rtype: int
         """
         return self._Page
@@ -15226,7 +15385,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def SubType(self):
-        """发票详细类型，详见票据识别（高级版）接口文档说明中 SubType 返回值说明
+        r"""发票详细类型，详见票据识别（高级版）接口文档说明中 SubType 返回值说明
         :rtype: str
         """
         return self._SubType
@@ -15237,7 +15396,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def TypeDescription(self):
-        """发票类型描述，详见票据识别（高级版）接口文档说明中 TypeDescription  返回值说明
+        r"""发票类型描述，详见票据识别（高级版）接口文档说明中 TypeDescription  返回值说明
         :rtype: str
         """
         return self._TypeDescription
@@ -15248,7 +15407,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def CutImage(self):
-        """切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
+        r"""切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
         :rtype: str
         """
         return self._CutImage
@@ -15259,7 +15418,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def SubTypeDescription(self):
-        """发票详细类型描述，详见上方 SubType 返回值说明
+        r"""发票详细类型描述，详见上方 SubType 返回值说明
         :rtype: str
         """
         return self._SubTypeDescription
@@ -15270,7 +15429,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def ItemPolygon(self):
-        """该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
+        r"""该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
         :rtype: list of ItemPolygonInfo
         """
         return self._ItemPolygon
@@ -15281,7 +15440,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def QRCode(self):
-        """二维码数据。
+        r"""二维码数据。
         :rtype: str
         """
         return self._QRCode
@@ -15292,7 +15451,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def InvoiceSealInfo(self):
-        """印章信息
+        r"""印章信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.InvoiceSealInfo`
         """
         return self._InvoiceSealInfo
@@ -15338,7 +15497,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
 
 class InvoiceSealInfo(AbstractModel):
-    """印章信息
+    r"""印章信息
 
     """
 
@@ -15360,7 +15519,7 @@ class InvoiceSealInfo(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: str
         """
         return self._CompanySealMark
@@ -15371,7 +15530,7 @@ class InvoiceSealInfo(AbstractModel):
 
     @property
     def SupervisionSealMark(self):
-        """是否有监制印章（0：没有，1：有）
+        r"""是否有监制印章（0：没有，1：有）
         :rtype: str
         """
         return self._SupervisionSealMark
@@ -15382,7 +15541,7 @@ class InvoiceSealInfo(AbstractModel):
 
     @property
     def CompanySealMarkInfo(self):
-        """公司印章信息
+        r"""公司印章信息
         :rtype: list of str
         """
         return self._CompanySealMarkInfo
@@ -15393,7 +15552,7 @@ class InvoiceSealInfo(AbstractModel):
 
     @property
     def SupervisionSealMarkInfo(self):
-        """监制印章信息
+        r"""监制印章信息
         :rtype: list of str
         """
         return self._SupervisionSealMarkInfo
@@ -15419,7 +15578,7 @@ class InvoiceSealInfo(AbstractModel):
 
 
 class ItemCoord(AbstractModel):
-    """文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+    r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
 
     """
 
@@ -15441,7 +15600,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def X(self):
-        """左上角x
+        r"""左上角x
         :rtype: int
         """
         return self._X
@@ -15452,7 +15611,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Y(self):
-        """左上角y
+        r"""左上角y
         :rtype: int
         """
         return self._Y
@@ -15463,7 +15622,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Width(self):
-        """宽width
+        r"""宽width
         :rtype: int
         """
         return self._Width
@@ -15474,7 +15633,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Height(self):
-        """高height
+        r"""高height
         :rtype: int
         """
         return self._Height
@@ -15500,7 +15659,7 @@ class ItemCoord(AbstractModel):
 
 
 class ItemInfo(AbstractModel):
-    """智能结构化元素组
+    r"""智能结构化元素组
 
     """
 
@@ -15518,7 +15677,7 @@ class ItemInfo(AbstractModel):
 
     @property
     def Key(self):
-        """key信息组
+        r"""key信息组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Key`
         """
@@ -15530,7 +15689,7 @@ class ItemInfo(AbstractModel):
 
     @property
     def Value(self):
-        """Value信息组
+        r"""Value信息组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Value`
         """
@@ -15558,8 +15717,78 @@ class ItemInfo(AbstractModel):
         
 
 
+class ItemNames(AbstractModel):
+    r"""自定义抽取需要的字段名称、字段类型、字段提示词。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyName: 自定义抽取功能需返回的字段名称。
+        :type KeyName: str
+        :param _KeyType: 默认 0；0表示kv对  1表示 表格字段。
+
+        :type KeyType: int
+        :param _KeyPrompt: 抽取字段的描述内容。
+
+        :type KeyPrompt: str
+        """
+        self._KeyName = None
+        self._KeyType = None
+        self._KeyPrompt = None
+
+    @property
+    def KeyName(self):
+        r"""自定义抽取功能需返回的字段名称。
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def KeyType(self):
+        r"""默认 0；0表示kv对  1表示 表格字段。
+
+        :rtype: int
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyPrompt(self):
+        r"""抽取字段的描述内容。
+
+        :rtype: str
+        """
+        return self._KeyPrompt
+
+    @KeyPrompt.setter
+    def KeyPrompt(self, KeyPrompt):
+        self._KeyPrompt = KeyPrompt
+
+
+    def _deserialize(self, params):
+        self._KeyName = params.get("KeyName")
+        self._KeyType = params.get("KeyType")
+        self._KeyPrompt = params.get("KeyPrompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ItemPolygonInfo(AbstractModel):
-    """发票字段坐标信息。包括字段英文名称、字段值所在位置的四点坐标、字段所属行号，具体内容请点击左侧链接。
+    r"""发票字段坐标信息。包括字段英文名称、字段值所在位置的四点坐标、字段所属行号，具体内容请点击左侧链接。
 
     """
 
@@ -15578,7 +15807,7 @@ class ItemPolygonInfo(AbstractModel):
 
     @property
     def Key(self):
-        """发票的英文字段名称（如Title）
+        r"""发票的英文字段名称（如Title）
         :rtype: str
         """
         return self._Key
@@ -15589,7 +15818,7 @@ class ItemPolygonInfo(AbstractModel):
 
     @property
     def Polygon(self):
-        """字段值所在位置的四点坐标
+        r"""字段值所在位置的四点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Polygon
@@ -15600,7 +15829,7 @@ class ItemPolygonInfo(AbstractModel):
 
     @property
     def Row(self):
-        """字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
+        r"""字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
         :rtype: int
         """
         return self._Row
@@ -15627,7 +15856,7 @@ class ItemPolygonInfo(AbstractModel):
 
 
 class Key(AbstractModel):
-    """key信息组
+    r"""key信息组
 
     """
 
@@ -15644,7 +15873,7 @@ class Key(AbstractModel):
 
     @property
     def AutoName(self):
-        """自动识别的字段名称
+        r"""自动识别的字段名称
         :rtype: str
         """
         return self._AutoName
@@ -15655,7 +15884,7 @@ class Key(AbstractModel):
 
     @property
     def ConfigName(self):
-        """定义的字段名称（传key的名称）
+        r"""定义的字段名称（传key的名称）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15680,7 +15909,7 @@ class Key(AbstractModel):
 
 
 class LicensePlateInfo(AbstractModel):
-    """全部车牌信息
+    r"""全部车牌信息
 
     """
 
@@ -15702,7 +15931,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Number(self):
-        """识别出的车牌号码。
+        r"""识别出的车牌号码。
         :rtype: str
         """
         return self._Number
@@ -15713,7 +15942,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，0 - 100 之间。
+        r"""置信度，0 - 100 之间。
         :rtype: int
         """
         return self._Confidence
@@ -15724,7 +15953,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在原图片中的像素坐标框。
+        r"""文本行在原图片中的像素坐标框。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -15735,7 +15964,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Color(self):
-        """识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :rtype: str
         """
         return self._Color
@@ -15763,7 +15992,7 @@ class LicensePlateInfo(AbstractModel):
 
 
 class LicensePlateOCRRequest(AbstractModel):
-    """LicensePlateOCR请求参数结构体
+    r"""LicensePlateOCR请求参数结构体
 
     """
 
@@ -15779,7 +16008,7 @@ class LicensePlateOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -15790,7 +16019,7 @@ class LicensePlateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -15814,7 +16043,7 @@ class LicensePlateOCRRequest(AbstractModel):
 
 
 class LicensePlateOCRResponse(AbstractModel):
-    """LicensePlateOCR返回参数结构体
+    r"""LicensePlateOCR返回参数结构体
 
     """
 
@@ -15842,7 +16071,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """识别出的车牌号码。
+        r"""识别出的车牌号码。
         :rtype: str
         """
         return self._Number
@@ -15853,7 +16082,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，0 - 100 之间。
+        r"""置信度，0 - 100 之间。
         :rtype: int
         """
         return self._Confidence
@@ -15864,7 +16093,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在原图片中的像素坐标框。
+        r"""文本行在原图片中的像素坐标框。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -15875,7 +16104,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        """识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :rtype: str
         """
         return self._Color
@@ -15886,7 +16115,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def LicensePlateInfos(self):
-        """全部车牌信息。
+        r"""全部车牌信息。
         :rtype: list of LicensePlateInfo
         """
         return self._LicensePlateInfos
@@ -15897,7 +16126,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15924,7 +16153,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
 
 class LineInfo(AbstractModel):
-    """按行输出，行序号
+    r"""按行输出，行序号
 
     """
 
@@ -15937,7 +16166,7 @@ class LineInfo(AbstractModel):
 
     @property
     def Lines(self):
-        """每行的一个元素
+        r"""每行的一个元素
         :rtype: list of ItemInfo
         """
         return self._Lines
@@ -15965,7 +16194,7 @@ class LineInfo(AbstractModel):
 
 
 class MLIDCardOCRRequest(AbstractModel):
-    """MLIDCardOCR请求参数结构体
+    r"""MLIDCardOCR请求参数结构体
 
     """
 
@@ -15990,7 +16219,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :rtype: str
         """
         return self._ImageBase64
@@ -16001,7 +16230,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._BackImageBase64
@@ -16012,7 +16241,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -16023,7 +16252,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._BackImageUrl
@@ -16034,7 +16263,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def RetImage(self):
-        """是否返回图片，默认false
+        r"""是否返回图片，默认false
         :rtype: bool
         """
         return self._RetImage
@@ -16061,7 +16290,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
 
 class MLIDCardOCRResponse(AbstractModel):
-    """MLIDCardOCR返回参数结构体
+    r"""MLIDCardOCR返回参数结构体
 
     """
 
@@ -16121,7 +16350,7 @@ MyKid 儿童卡
 
     @property
     def ID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._ID
@@ -16132,7 +16361,7 @@ MyKid 儿童卡
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -16143,7 +16372,7 @@ MyKid 儿童卡
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -16154,7 +16383,7 @@ MyKid 儿童卡
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -16167,7 +16396,7 @@ MyKid 儿童卡
     def Warn(self):
         warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回空数组，不建议使用。
+        r"""该字段已废弃， 将固定返回空数组，不建议使用。
         :rtype: list of int
         """
         return self._Warn
@@ -16180,7 +16409,7 @@ MyKid 儿童卡
 
     @property
     def Image(self):
-        """证件图片
+        r"""证件图片
         :rtype: str
         """
         return self._Image
@@ -16193,7 +16422,7 @@ MyKid 儿童卡
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回"1"，不建议使用。
+        r"""该字段已废弃， 将固定返回"1"，不建议使用。
         :rtype: str
         """
         return self._AdvancedInfo
@@ -16206,7 +16435,7 @@ MyKid 儿童卡
 
     @property
     def Type(self):
-        """证件类型
+        r"""证件类型
 MyKad  身份证
 MyPR    永居证
 MyTentera   军官证
@@ -16224,7 +16453,7 @@ MyKid 儿童卡
 
     @property
     def Birthday(self):
-        """出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
+        r"""出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
         :rtype: str
         """
         return self._Birthday
@@ -16235,7 +16464,7 @@ MyKid 儿童卡
 
     @property
     def MyKadNumber(self):
-        """马来身份证背面号码
+        r"""马来身份证背面号码
         :rtype: str
         """
         return self._MyKadNumber
@@ -16246,7 +16475,7 @@ MyKid 儿童卡
 
     @property
     def WarnCardInfos(self):
-        """告警码
+        r"""告警码
 -9101 证件边框不完整告警
 -9102 证件复印件告警
 -9103 证件翻拍告警
@@ -16264,7 +16493,7 @@ MyKid 儿童卡
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16290,7 +16519,7 @@ MyKid 儿童卡
 
 
 class MLIDPassportOCRRequest(AbstractModel):
-    """MLIDPassportOCR请求参数结构体
+    r"""MLIDPassportOCR请求参数结构体
 
     """
 
@@ -16309,7 +16538,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
         :rtype: str
         """
         return self._ImageBase64
@@ -16320,7 +16549,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def RetImage(self):
-        """是否返回图片，默认false
+        r"""是否返回图片，默认false
         :rtype: bool
         """
         return self._RetImage
@@ -16331,7 +16560,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -16356,7 +16585,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
 
 class MLIDPassportOCRResponse(AbstractModel):
-    """MLIDPassportOCR返回参数结构体
+    r"""MLIDPassportOCR返回参数结构体
 
     """
 
@@ -16434,7 +16663,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """护照ID（机读码区的解析结果）
+        r"""护照ID（机读码区的解析结果）
         :rtype: str
         """
         return self._ID
@@ -16445,7 +16674,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（机读码区的解析结果）
+        r"""姓名（机读码区的解析结果）
         :rtype: str
         """
         return self._Name
@@ -16456,7 +16685,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """出生日期（机读码区的解析结果）
+        r"""出生日期（机读码区的解析结果）
         :rtype: str
         """
         return self._DateOfBirth
@@ -16467,7 +16696,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（F女，M男）（机读码区的解析结果）
+        r"""性别（F女，M男）（机读码区的解析结果）
         :rtype: str
         """
         return self._Sex
@@ -16478,7 +16707,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        """有效期（机读码区的解析结果）
+        r"""有效期（机读码区的解析结果）
         :rtype: str
         """
         return self._DateOfExpiration
@@ -16489,7 +16718,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        """发行国（机读码区的解析结果）
+        r"""发行国（机读码区的解析结果）
         :rtype: str
         """
         return self._IssuingCountry
@@ -16500,7 +16729,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """国家地区代码（机读码区的解析结果）
+        r"""国家地区代码（机读码区的解析结果）
         :rtype: str
         """
         return self._Nationality
@@ -16513,7 +16742,7 @@ class MLIDPassportOCRResponse(AbstractModel):
     def Warn(self):
         warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回空数组，不建议使用。
+        r"""该字段已废弃， 将固定返回空数组，不建议使用。
 
         :rtype: list of int
         """
@@ -16527,7 +16756,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Image(self):
-        """证件中的人像图片base64
+        r"""证件中的人像图片base64
         :rtype: str
         """
         return self._Image
@@ -16540,7 +16769,7 @@ class MLIDPassportOCRResponse(AbstractModel):
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回"1"，不建议使用。
+        r"""该字段已废弃， 将固定返回"1"，不建议使用。
 
         :rtype: str
         """
@@ -16554,7 +16783,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def CodeSet(self):
-        """最下方第一行 MRZ Code 序列
+        r"""最下方第一行 MRZ Code 序列
         :rtype: str
         """
         return self._CodeSet
@@ -16565,7 +16794,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def CodeCrc(self):
-        """最下方第二行 MRZ Code 序列
+        r"""最下方第二行 MRZ Code 序列
         :rtype: str
         """
         return self._CodeCrc
@@ -16576,7 +16805,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Surname(self):
-        """姓（机读码区的解析结果）
+        r"""姓（机读码区的解析结果）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16588,7 +16817,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def GivenName(self):
-        """名（机读码区的解析结果）
+        r"""名（机读码区的解析结果）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16600,7 +16829,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """类型（机读码区的解析结果）
+        r"""类型（机读码区的解析结果）
         :rtype: str
         """
         return self._Type
@@ -16611,7 +16840,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def PassportRecognizeInfos(self):
-        """信息区证件内容
+        r"""信息区证件内容
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
         """
         return self._PassportRecognizeInfos
@@ -16622,7 +16851,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """告警码
+        r"""告警码
 -9101 证件边框不完整告警
 -9102 证件复印件告警
 -9103 证件翻拍告警
@@ -16640,7 +16869,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def CardCount(self):
-        """输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
+        r"""输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
         :rtype: int
         """
         return self._CardCount
@@ -16651,7 +16880,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16686,7 +16915,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 
 
 class MachinePrintedInvoice(AbstractModel):
-    """通用机打发票
+    r"""通用机打发票
 
     """
 
@@ -16804,7 +17033,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -16815,7 +17044,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -16826,7 +17055,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -16837,7 +17066,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -16848,7 +17077,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -16859,7 +17088,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -16870,7 +17099,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -16881,7 +17110,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Ciphertext(self):
-        """密码区
+        r"""密码区
         :rtype: str
         """
         return self._Ciphertext
@@ -16892,7 +17121,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Category(self):
-        """种类
+        r"""种类
         :rtype: str
         """
         return self._Category
@@ -16903,7 +17132,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """税前金额
+        r"""税前金额
         :rtype: str
         """
         return self._PretaxAmount
@@ -16914,7 +17143,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -16925,7 +17154,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -16936,7 +17165,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
         :rtype: str
         """
         return self._Tax
@@ -16947,7 +17176,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def IndustryClass(self):
-        """行业分类
+        r"""行业分类
         :rtype: str
         """
         return self._IndustryClass
@@ -16958,7 +17187,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -16969,7 +17198,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方纳税人识别号
+        r"""销售方纳税人识别号
         :rtype: str
         """
         return self._SellerTaxID
@@ -16980,7 +17209,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerAddrTel(self):
-        """销售方地址电话
+        r"""销售方地址电话
         :rtype: str
         """
         return self._SellerAddrTel
@@ -16991,7 +17220,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """销售方银行账号
+        r"""销售方银行账号
         :rtype: str
         """
         return self._SellerBankAccount
@@ -17002,7 +17231,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -17013,7 +17242,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """购买方纳税人识别号
+        r"""购买方纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -17024,7 +17253,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerAddrTel(self):
-        """购买方地址电话
+        r"""购买方地址电话
         :rtype: str
         """
         return self._BuyerAddrTel
@@ -17035,7 +17264,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerBankAccount(self):
-        """购买方银行账号
+        r"""购买方银行账号
         :rtype: str
         """
         return self._BuyerBankAccount
@@ -17046,7 +17275,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -17057,7 +17286,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -17068,7 +17297,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -17079,7 +17308,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -17090,7 +17319,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def ElectronicMark(self):
-        """是否为浙江/广东通用机打发票（0：没有，1：有）
+        r"""是否为浙江/广东通用机打发票（0：没有，1：有）
         :rtype: int
         """
         return self._ElectronicMark
@@ -17101,7 +17330,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Issuer(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._Issuer
@@ -17112,7 +17341,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Receiptor(self):
-        """收款人
+        r"""收款人
         :rtype: str
         """
         return self._Receiptor
@@ -17123,7 +17352,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Reviewer(self):
-        """复核人
+        r"""复核人
         :rtype: str
         """
         return self._Reviewer
@@ -17134,7 +17363,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -17145,7 +17374,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def PaymentInfo(self):
-        """经办人支付信息
+        r"""经办人支付信息
         :rtype: str
         """
         return self._PaymentInfo
@@ -17156,7 +17385,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def TicketPickupUser(self):
-        """经办人取票用户
+        r"""经办人取票用户
         :rtype: str
         """
         return self._TicketPickupUser
@@ -17167,7 +17396,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def MerchantNumber(self):
-        """经办人商户号
+        r"""经办人商户号
         :rtype: str
         """
         return self._MerchantNumber
@@ -17178,7 +17407,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def OrderNumber(self):
-        """经办人订单号
+        r"""经办人订单号
         :rtype: str
         """
         return self._OrderNumber
@@ -17189,7 +17418,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def GeneralMachineItems(self):
-        """条目
+        r"""条目
         :rtype: list of GeneralMachineItem
         """
         return self._GeneralMachineItems
@@ -17252,7 +17481,7 @@ class MachinePrintedInvoice(AbstractModel):
 
 
 class MainlandPermitOCRRequest(AbstractModel):
-    """MainlandPermitOCR请求参数结构体
+    r"""MainlandPermitOCR请求参数结构体
 
     """
 
@@ -17277,7 +17506,7 @@ BACK：反面
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -17288,7 +17517,7 @@ BACK：反面
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -17299,7 +17528,7 @@ BACK：反面
 
     @property
     def RetProfile(self):
-        """是否返回头像。默认不返回。
+        r"""是否返回头像。默认不返回。
         :rtype: bool
         """
         return self._RetProfile
@@ -17310,7 +17539,7 @@ BACK：反面
 
     @property
     def CardSide(self):
-        """图片正反面
+        r"""图片正反面
 FRONT：正面
 BACK：反面
 默认为FRONT
@@ -17339,7 +17568,7 @@ BACK：反面
 
 
 class MainlandPermitOCRResponse(AbstractModel):
-    """MainlandPermitOCR返回参数结构体
+    r"""MainlandPermitOCR返回参数结构体
 
     """
 
@@ -17391,7 +17620,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """中文姓名
+        r"""中文姓名
         :rtype: str
         """
         return self._Name
@@ -17402,7 +17631,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        """英文姓名
+        r"""英文姓名
         :rtype: str
         """
         return self._EnglishName
@@ -17413,7 +17642,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -17424,7 +17653,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._Birthday
@@ -17435,7 +17664,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAuthority(self):
-        """签发机关
+        r"""签发机关
         :rtype: str
         """
         return self._IssueAuthority
@@ -17446,7 +17675,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期限
+        r"""有效期限
         :rtype: str
         """
         return self._ValidDate
@@ -17457,7 +17686,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """证件号
+        r"""证件号
         :rtype: str
         """
         return self._Number
@@ -17468,7 +17697,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        """签发地点
+        r"""签发地点
         :rtype: str
         """
         return self._IssueAddress
@@ -17479,7 +17708,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueNumber(self):
-        """签发次数
+        r"""签发次数
         :rtype: str
         """
         return self._IssueNumber
@@ -17490,7 +17719,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
+        r"""证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
         :rtype: str
         """
         return self._Type
@@ -17501,7 +17730,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Profile(self):
-        """RetProfile为True时返回头像字段， Base64编码
+        r"""RetProfile为True时返回头像字段， Base64编码
         :rtype: str
         """
         return self._Profile
@@ -17512,7 +17741,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍
+        r"""国籍
         :rtype: str
         """
         return self._Nationality
@@ -17523,7 +17752,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def MainlandTravelPermitBackInfos(self):
-        """背面字段信息
+        r"""背面字段信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         """
         return self._MainlandTravelPermitBackInfos
@@ -17534,7 +17763,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17564,7 +17793,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
 
 class MainlandTravelPermitBackInfos(AbstractModel):
-    """港澳台来往内地通行证背面字段信息
+    r"""港澳台来往内地通行证背面字段信息
 
     """
 
@@ -17590,7 +17819,7 @@ class MainlandTravelPermitBackInfos(AbstractModel):
 
     @property
     def Type(self):
-        """String	证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+        r"""String	证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17602,7 +17831,7 @@ class MainlandTravelPermitBackInfos(AbstractModel):
 
     @property
     def Name(self):
-        """卡证背面的中文姓名	
+        r"""卡证背面的中文姓名	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17614,7 +17843,7 @@ class MainlandTravelPermitBackInfos(AbstractModel):
 
     @property
     def IDNumber(self):
-        """卡证背面的身份证号码	
+        r"""卡证背面的身份证号码	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17626,7 +17855,7 @@ class MainlandTravelPermitBackInfos(AbstractModel):
 
     @property
     def HistoryNumber(self):
-        """历史通行证号码	
+        r"""历史通行证号码	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17653,7 +17882,7 @@ class MainlandTravelPermitBackInfos(AbstractModel):
 
 
 class MedicalInvoice(AbstractModel):
-    """医疗票据信息
+    r"""医疗票据信息
 
     """
 
@@ -17690,7 +17919,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -17701,7 +17930,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -17712,7 +17941,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -17723,7 +17952,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -17734,7 +17963,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -17745,7 +17974,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -17756,7 +17985,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -17767,7 +17996,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Place(self):
-        """发票属地
+        r"""发票属地
         :rtype: str
         """
         return self._Place
@@ -17778,7 +18007,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Reviewer(self):
-        """复核人
+        r"""复核人
         :rtype: str
         """
         return self._Reviewer
@@ -17809,7 +18038,7 @@ class MedicalInvoice(AbstractModel):
 
 
 class MedicalInvoiceInfo(AbstractModel):
-    """医疗发票识别结果
+    r"""医疗发票识别结果
 
     """
 
@@ -17822,7 +18051,7 @@ class MedicalInvoiceInfo(AbstractModel):
 
     @property
     def MedicalInvoiceItems(self):
-        """医疗发票识别结果条目
+        r"""医疗发票识别结果条目
         :rtype: list of MedicalInvoiceItem
         """
         return self._MedicalInvoiceItems
@@ -17850,7 +18079,7 @@ class MedicalInvoiceInfo(AbstractModel):
 
 
 class MedicalInvoiceItem(AbstractModel):
-    """医疗发票识别结果
+    r"""医疗发票识别结果
 
     """
 
@@ -17875,7 +18104,7 @@ class MedicalInvoiceItem(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称
+        r"""识别出的字段名称
 <table><tr><td>分类</td><td>name</td></tr><tr><td>票据基本信息</td><td>发票名称</td></tr><tr><td></td><td>票据代码</td></tr><tr><td></td><td>票据号码</td></tr><tr><td></td><td>电子票据代码</td></tr><tr><td></td><td>电子票据号码</td></tr><tr><td></td><td>交款人统一社会信用代码</td></tr><tr><td></td><td>校验码</td></tr><tr><td></td><td>交款人</td></tr><tr><td></td><td>开票日期</td></tr><tr><td></td><td>收款单位</td></tr><tr><td></td><td>复核人</td></tr><tr><td></td><td>收款人</td></tr><tr><td></td><td>业务流水号</td></tr><tr><td></td><td>门诊号</td></tr><tr><td></td><td>就诊日期</td></tr><tr><td></td><td>医疗机构类型</td></tr><tr><td></td><td>医保类型</td></tr><tr><td></td><td>医保编号</td></tr><tr><td></td><td>性别</td></tr><tr><td></td><td>医保统筹基金支付</td></tr><tr><td></td><td>其他支付</td></tr><tr><td></td><td>个人账户支付</td></tr><tr><td></td><td>个人现金支付</td></tr><tr><td></td><td>个人自付</td></tr><tr><td></td><td>个人自费</td></tr><tr><td></td><td>病历号</td></tr><tr><td></td><td>住院号</td></tr><tr><td></td><td>住院科别</td></tr><tr><td></td><td>住院时间</td></tr><tr><td></td><td>预缴金额</td></tr><tr><td></td><td>补缴金额</td></tr><tr><td></td><td>退费金额</td></tr><tr><td></td><td>发票属地</td></tr><tr><td></td><td>发票类型</td></tr><tr><td>总金额</td><td>总金额大写</td></tr><tr><td></td><td>总金额小写</td></tr><tr><td>收费大项</td><td>大项名称</td></tr><tr><td></td><td>大项金额</td></tr><tr><td>收费细项</td><td>项目名称</td></tr><tr><td></td><td>数量</td></tr><tr><td></td><td>单位</td></tr><tr><td></td><td>金额</td></tr><tr><td></td><td>备注</td></tr><tr><td>票据其他信息</td><td>入院时间</td></tr><tr><td></td><td>出院时间</td></tr><tr><td></td><td>住院天数</td></tr><tr><td></td><td>自付二</td></tr><tr><td></td><td>自付一</td></tr><tr><td></td><td>起付金额</td></tr><tr><td></td><td>超封顶金额</td></tr><tr><td></td><td>自费</td></tr><tr><td></td><td>本次医保范围内金额</td></tr><tr><td></td><td>累计医保内范围金额</td></tr><tr><td></td><td>门诊大额支付</td></tr><tr><td></td><td>残军补助支付</td></tr><tr><td></td><td>年度门诊大额累计支付</td></tr><tr><td></td><td>单位补充险[原公疗]支付</td></tr><tr><td></td><td>社会保障卡号</td></tr><tr><td></td><td>姓名</td></tr><tr><td></td><td>交易流水号</td></tr><tr><td></td><td>本次支付后个人账户余额</td></tr><tr><td></td><td>基金支付</td></tr><tr><td></td><td>现金支付</td></tr><tr><td></td><td>复核</td></tr><tr><td></td><td>自负</td></tr><tr><td></td><td>结算方式</td></tr><tr><td></td><td>医保统筹/公医记账</td></tr><tr><td></td><td>其他</td></tr><tr><td></td><td>个人支付金额</td></tr><tr><td></td><td>欠费</td></tr><tr><td></td><td>退休补充支付</td></tr><tr><td></td><td>医院类型</td></tr><tr><td></td><td>退款</td></tr><tr><td></td><td>补收</td></tr><tr><td></td><td>附加支付</td></tr><tr><td></td><td>分类自负</td></tr><tr><td></td><td>其它</td></tr><tr><td></td><td>预交款</td></tr><tr><td></td><td>个人缴费</td></tr></table>
         :rtype: str
         """
@@ -17887,7 +18116,7 @@ class MedicalInvoiceItem(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果
         :rtype: str
         """
         return self._Content
@@ -17898,7 +18127,7 @@ class MedicalInvoiceItem(AbstractModel):
 
     @property
     def Vertex(self):
-        """识别出的文本行四点坐标
+        r"""识别出的文本行四点坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
@@ -17910,7 +18139,7 @@ class MedicalInvoiceItem(AbstractModel):
 
     @property
     def Coord(self):
-        """识别出的文本行在旋转纠正之后的图像中的像素坐标
+        r"""识别出的文本行在旋转纠正之后的图像中的像素坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
@@ -17941,7 +18170,7 @@ class MedicalInvoiceItem(AbstractModel):
 
 
 class MixedInvoiceDetectRequest(AbstractModel):
-    """MixedInvoiceDetect请求参数结构体
+    r"""MixedInvoiceDetect请求参数结构体
 
     """
 
@@ -17966,7 +18195,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
     @property
     def ReturnImage(self):
-        """是否需要返回裁剪后的图片。
+        r"""是否需要返回裁剪后的图片。
         :rtype: bool
         """
         return self._ReturnImage
@@ -17977,7 +18206,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -17988,7 +18217,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -17999,7 +18228,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -18010,7 +18239,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -18037,7 +18266,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
 
 
 class MixedInvoiceDetectResponse(AbstractModel):
-    """MixedInvoiceDetect返回参数结构体
+    r"""MixedInvoiceDetect返回参数结构体
 
     """
 
@@ -18053,7 +18282,7 @@ class MixedInvoiceDetectResponse(AbstractModel):
 
     @property
     def InvoiceDetectInfos(self):
-        """检测出的票据类型列表，具体内容请点击左侧链接。
+        r"""检测出的票据类型列表，具体内容请点击左侧链接。
         :rtype: list of InvoiceDetectInfo
         """
         return self._InvoiceDetectInfos
@@ -18064,7 +18293,7 @@ class MixedInvoiceDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18085,7 +18314,7 @@ class MixedInvoiceDetectResponse(AbstractModel):
 
 
 class MixedInvoiceItem(AbstractModel):
-    """混贴票据单张发票识别信息
+    r"""混贴票据单张发票识别信息
 
     """
 
@@ -18130,7 +18359,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Code(self):
-        """识别结果。
+        r"""识别结果。
 OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
 FailedOperation.UnKnowError：表示识别失败；
 其它错误码见各个票据接口的定义。
@@ -18144,7 +18373,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Type(self):
-        """识别出的图片所属的票据类型。
+        r"""识别出的图片所属的票据类型。
 -1：未知类型
 0：出租车发票
 1：定额发票
@@ -18169,7 +18398,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Rect(self):
-        """识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
+        r"""识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -18180,7 +18409,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Angle(self):
-        """识别出的图片在混贴票据图片中的旋转角度。
+        r"""识别出的图片在混贴票据图片中的旋转角度。
         :rtype: float
         """
         return self._Angle
@@ -18191,7 +18420,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def SingleInvoiceInfos(self):
-        """识别到的内容。
+        r"""识别到的内容。
         :rtype: list of SingleInvoiceInfo
         """
         return self._SingleInvoiceInfos
@@ -18202,7 +18431,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Page(self):
-        """发票处于识别图片或PDF文件中的页教，默认从1开始。
+        r"""发票处于识别图片或PDF文件中的页教，默认从1开始。
         :rtype: int
         """
         return self._Page
@@ -18237,7 +18466,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
 
 class MixedInvoiceOCRRequest(AbstractModel):
-    """MixedInvoiceOCR请求参数结构体
+    r"""MixedInvoiceOCR请求参数结构体
 
     """
 
@@ -18285,7 +18514,7 @@ No：不识别其他类型发票
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -18296,7 +18525,7 @@ No：不识别其他类型发票
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -18307,7 +18536,7 @@ No：不识别其他类型发票
 
     @property
     def Types(self):
-        """需要识别的票据类型列表，为空或不填表示识别全部类型。
+        r"""需要识别的票据类型列表，为空或不填表示识别全部类型。
 0：出租车发票
 1：定额发票
 2：火车票
@@ -18333,7 +18562,7 @@ No：不识别其他类型发票
 
     @property
     def ReturnOther(self):
-        """是否识别其他类型发票，默认为Yes
+        r"""是否识别其他类型发票，默认为Yes
 Yes：识别其他类型发票
 No：不识别其他类型发票
         :rtype: str
@@ -18346,7 +18575,7 @@ No：不识别其他类型发票
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -18357,7 +18586,7 @@ No：不识别其他类型发票
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -18368,7 +18597,7 @@ No：不识别其他类型发票
 
     @property
     def ReturnMultiplePage(self):
-        """是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后IsPDF和PdfPageNumber入参不进行控制。
+        r"""是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后IsPDF和PdfPageNumber入参不进行控制。
         :rtype: bool
         """
         return self._ReturnMultiplePage
@@ -18397,7 +18626,7 @@ No：不识别其他类型发票
 
 
 class MixedInvoiceOCRResponse(AbstractModel):
-    """MixedInvoiceOCR返回参数结构体
+    r"""MixedInvoiceOCR返回参数结构体
 
     """
 
@@ -18413,7 +18642,7 @@ class MixedInvoiceOCRResponse(AbstractModel):
 
     @property
     def MixedInvoiceItems(self):
-        """混贴票据识别结果，具体内容请点击左侧链接。
+        r"""混贴票据识别结果，具体内容请点击左侧链接。
         :rtype: list of MixedInvoiceItem
         """
         return self._MixedInvoiceItems
@@ -18424,7 +18653,7 @@ class MixedInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18445,7 +18674,7 @@ class MixedInvoiceOCRResponse(AbstractModel):
 
 
 class MotorVehicleSaleInvoice(AbstractModel):
-    """机动车销售统一发票
+    r"""机动车销售统一发票
 
     """
 
@@ -18587,7 +18816,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -18598,7 +18827,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -18609,7 +18838,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -18620,7 +18849,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -18631,7 +18860,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """税前金额
+        r"""税前金额
         :rtype: str
         """
         return self._PretaxAmount
@@ -18642,7 +18871,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -18653,7 +18882,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -18664,7 +18893,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -18675,7 +18904,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方单位代码
+        r"""销售方单位代码
         :rtype: str
         """
         return self._SellerTaxID
@@ -18686,7 +18915,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerTel(self):
-        """销售方电话
+        r"""销售方电话
         :rtype: str
         """
         return self._SellerTel
@@ -18697,7 +18926,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """销售方地址
+        r"""销售方地址
         :rtype: str
         """
         return self._SellerAddress
@@ -18708,7 +18937,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerBank(self):
-        """销售方开户行
+        r"""销售方开户行
         :rtype: str
         """
         return self._SellerBank
@@ -18719,7 +18948,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """销售方银行账号
+        r"""销售方银行账号
         :rtype: str
         """
         return self._SellerBankAccount
@@ -18730,7 +18959,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -18741,7 +18970,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """购买方纳税人识别号
+        r"""购买方纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -18752,7 +18981,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def BuyerID(self):
-        """购买方身份证号码/组织机构代码
+        r"""购买方身份证号码/组织机构代码
         :rtype: str
         """
         return self._BuyerID
@@ -18763,7 +18992,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxAuthorities(self):
-        """主管税务机关
+        r"""主管税务机关
         :rtype: str
         """
         return self._TaxAuthorities
@@ -18774,7 +19003,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxAuthoritiesCode(self):
-        """主管税务机关代码
+        r"""主管税务机关代码
         :rtype: str
         """
         return self._TaxAuthoritiesCode
@@ -18785,7 +19014,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VIN(self):
-        """车辆识别代码
+        r"""车辆识别代码
         :rtype: str
         """
         return self._VIN
@@ -18796,7 +19025,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleModel(self):
-        """厂牌型号
+        r"""厂牌型号
         :rtype: str
         """
         return self._VehicleModel
@@ -18807,7 +19036,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleEngineCode(self):
-        """发动机号码
+        r"""发动机号码
         :rtype: str
         """
         return self._VehicleEngineCode
@@ -18818,7 +19047,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def CertificateNumber(self):
-        """合格证号
+        r"""合格证号
         :rtype: str
         """
         return self._CertificateNumber
@@ -18829,7 +19058,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def InspectionNumber(self):
-        """商检单号
+        r"""商检单号
         :rtype: str
         """
         return self._InspectionNumber
@@ -18840,7 +19069,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineID(self):
-        """机器编号
+        r"""机器编号
         :rtype: str
         """
         return self._MachineID
@@ -18851,7 +19080,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """车辆类型
+        r"""车辆类型
         :rtype: str
         """
         return self._VehicleType
@@ -18862,7 +19091,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -18873,7 +19102,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -18884,7 +19113,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -18895,7 +19124,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
         :rtype: str
         """
         return self._Tax
@@ -18906,7 +19135,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -18917,7 +19146,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -18928,7 +19157,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Tonnage(self):
-        """吨位
+        r"""吨位
         :rtype: str
         """
         return self._Tonnage
@@ -18939,7 +19168,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -18950,7 +19179,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def FormType(self):
-        """发票联次
+        r"""发票联次
         :rtype: str
         """
         return self._FormType
@@ -18961,7 +19190,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def FormName(self):
-        """发票联名
+        r"""发票联名
         :rtype: str
         """
         return self._FormName
@@ -18972,7 +19201,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Issuer(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._Issuer
@@ -18983,7 +19212,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxNum(self):
-        """进口证明书号
+        r"""进口证明书号
         :rtype: str
         """
         return self._TaxNum
@@ -18994,7 +19223,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxPayNum(self):
-        """完税凭证号码
+        r"""完税凭证号码
         :rtype: str
         """
         return self._TaxPayNum
@@ -19005,7 +19234,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxCode(self):
-        """税控码
+        r"""税控码
         :rtype: str
         """
         return self._TaxCode
@@ -19016,7 +19245,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MaxPeopleNum(self):
-        """限乘人数
+        r"""限乘人数
         :rtype: str
         """
         return self._MaxPeopleNum
@@ -19027,7 +19256,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Origin(self):
-        """产地
+        r"""产地
         :rtype: str
         """
         return self._Origin
@@ -19038,7 +19267,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineCode(self):
-        """机打发票代码
+        r"""机打发票代码
         :rtype: str
         """
         return self._MachineCode
@@ -19049,7 +19278,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineNumber(self):
-        """机打发票号码
+        r"""机打发票号码
         :rtype: str
         """
         return self._MachineNumber
@@ -19060,7 +19289,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -19126,7 +19355,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
 
 class NonTaxIncomeBill(AbstractModel):
-    """非税收入
+    r"""非税收入
 
     """
 
@@ -19211,7 +19440,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -19222,7 +19451,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -19233,7 +19462,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -19244,7 +19473,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -19255,7 +19484,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -19266,7 +19495,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -19277,7 +19506,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -19288,7 +19517,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Buyer(self):
-        """交款人名称
+        r"""交款人名称
         :rtype: str
         """
         return self._Buyer
@@ -19299,7 +19528,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """交款人纳税人识别号
+        r"""交款人纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -19310,7 +19539,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Seller(self):
-        """收款人名称
+        r"""收款人名称
         :rtype: str
         """
         return self._Seller
@@ -19321,7 +19550,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def SellerCompany(self):
-        """收款单位名称
+        r"""收款单位名称
         :rtype: str
         """
         return self._SellerCompany
@@ -19332,7 +19561,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -19343,7 +19572,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CurrencyCode(self):
-        """币种
+        r"""币种
         :rtype: str
         """
         return self._CurrencyCode
@@ -19354,7 +19583,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Reviewer(self):
-        """复核人
+        r"""复核人
         :rtype: str
         """
         return self._Reviewer
@@ -19365,7 +19594,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -19376,7 +19605,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def OtherInfo(self):
-        """其他信息
+        r"""其他信息
         :rtype: str
         """
         return self._OtherInfo
@@ -19387,7 +19616,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PaymentCode(self):
-        """缴款码
+        r"""缴款码
         :rtype: str
         """
         return self._PaymentCode
@@ -19398,7 +19627,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiveUnitCode(self):
-        """执收单位编码
+        r"""执收单位编码
         :rtype: str
         """
         return self._ReceiveUnitCode
@@ -19409,7 +19638,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Receiver(self):
-        """执收单位名称
+        r"""执收单位名称
         :rtype: str
         """
         return self._Receiver
@@ -19420,7 +19649,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Operator(self):
-        """经办人
+        r"""经办人
         :rtype: str
         """
         return self._Operator
@@ -19431,7 +19660,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerAccount(self):
-        """付款人账号
+        r"""付款人账号
         :rtype: str
         """
         return self._PayerAccount
@@ -19442,7 +19671,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerBank(self):
-        """付款人开户银行
+        r"""付款人开户银行
         :rtype: str
         """
         return self._PayerBank
@@ -19453,7 +19682,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverAccount(self):
-        """收款人账号
+        r"""收款人账号
         :rtype: str
         """
         return self._ReceiverAccount
@@ -19464,7 +19693,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverBank(self):
-        """收款人开户银行
+        r"""收款人开户银行
         :rtype: str
         """
         return self._ReceiverBank
@@ -19475,7 +19704,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def NonTaxItems(self):
-        """条目
+        r"""条目
         :rtype: list of NonTaxItem
         """
         return self._NonTaxItems
@@ -19527,7 +19756,7 @@ class NonTaxIncomeBill(AbstractModel):
 
 
 class NonTaxItem(AbstractModel):
-    """非税收入条目
+    r"""非税收入条目
 
     """
 
@@ -19555,7 +19784,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def ItemID(self):
-        """项目编码
+        r"""项目编码
         :rtype: str
         """
         return self._ItemID
@@ -19566,7 +19795,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -19577,7 +19806,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -19588,7 +19817,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -19599,7 +19828,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Standard(self):
-        """标准
+        r"""标准
         :rtype: str
         """
         return self._Standard
@@ -19610,7 +19839,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -19638,7 +19867,7 @@ class NonTaxItem(AbstractModel):
 
 
 class OCRResult(AbstractModel):
-    """ocr结果信息
+    r"""ocr结果信息
 
     """
 
@@ -19652,7 +19881,7 @@ class OCRResult(AbstractModel):
 
     @property
     def IDCardResult(self):
-        """身份证结果
+        r"""身份证结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardResult`
         """
@@ -19678,7 +19907,7 @@ class OCRResult(AbstractModel):
 
 
 class OnlineTaxiItinerary(AbstractModel):
-    """网约车行程单
+    r"""网约车行程单
 
     """
 
@@ -19694,7 +19923,7 @@ class OnlineTaxiItinerary(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -19705,7 +19934,7 @@ class OnlineTaxiItinerary(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)
+        r"""识别出的字段名称(关键字)
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -19734,7 +19963,7 @@ class OnlineTaxiItinerary(AbstractModel):
 
 
 class OnlineTaxiItineraryInfo(AbstractModel):
-    """网约车行程单识别结果
+    r"""网约车行程单识别结果
 
     """
 
@@ -19754,7 +19983,7 @@ class OnlineTaxiItineraryInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
         :rtype: str
         """
@@ -19766,7 +19995,7 @@ class OnlineTaxiItineraryInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -19777,7 +20006,7 @@ class OnlineTaxiItineraryInfo(AbstractModel):
 
     @property
     def Row(self):
-        """字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
+        r"""字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
         :rtype: int
         """
         return self._Row
@@ -19802,7 +20031,7 @@ class OnlineTaxiItineraryInfo(AbstractModel):
 
 
 class OrgCodeCertOCRRequest(AbstractModel):
-    """OrgCodeCertOCR请求参数结构体
+    r"""OrgCodeCertOCR请求参数结构体
 
     """
 
@@ -19818,7 +20047,7 @@ class OrgCodeCertOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -19829,7 +20058,7 @@ class OrgCodeCertOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -19853,7 +20082,7 @@ class OrgCodeCertOCRRequest(AbstractModel):
 
 
 class OrgCodeCertOCRResponse(AbstractModel):
-    """OrgCodeCertOCR返回参数结构体
+    r"""OrgCodeCertOCR返回参数结构体
 
     """
 
@@ -19878,7 +20107,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
     @property
     def OrgCode(self):
-        """代码
+        r"""代码
         :rtype: str
         """
         return self._OrgCode
@@ -19889,7 +20118,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """机构名称
+        r"""机构名称
         :rtype: str
         """
         return self._Name
@@ -19900,7 +20129,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -19911,7 +20140,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ValidDate
@@ -19922,7 +20151,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19941,7 +20170,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
 
 
 class OtherInvoice(AbstractModel):
-    """其他发票
+    r"""其他发票
 
     """
 
@@ -19966,7 +20195,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -19977,7 +20206,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -19988,7 +20217,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def OtherInvoiceListItems(self):
-        """列表
+        r"""列表
         :rtype: list of OtherInvoiceItem
         """
         return self._OtherInvoiceListItems
@@ -19999,7 +20228,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def OtherInvoiceTableItems(self):
-        """表格
+        r"""表格
         :rtype: list of OtherInvoiceList
         """
         return self._OtherInvoiceTableItems
@@ -20010,7 +20239,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """发票日期
+        r"""发票日期
         :rtype: str
         """
         return self._Date
@@ -20047,7 +20276,7 @@ class OtherInvoice(AbstractModel):
 
 
 class OtherInvoiceItem(AbstractModel):
-    """OtherInvoiceItem
+    r"""OtherInvoiceItem
 
     """
 
@@ -20063,7 +20292,7 @@ class OtherInvoiceItem(AbstractModel):
 
     @property
     def Name(self):
-        """票面key值
+        r"""票面key值
         :rtype: str
         """
         return self._Name
@@ -20074,7 +20303,7 @@ class OtherInvoiceItem(AbstractModel):
 
     @property
     def Value(self):
-        """票面value值
+        r"""票面value值
         :rtype: str
         """
         return self._Value
@@ -20098,7 +20327,7 @@ class OtherInvoiceItem(AbstractModel):
 
 
 class OtherInvoiceList(AbstractModel):
-    """其他票Table
+    r"""其他票Table
 
     """
 
@@ -20111,7 +20340,7 @@ class OtherInvoiceList(AbstractModel):
 
     @property
     def OtherInvoiceItemList(self):
-        """列表
+        r"""列表
         :rtype: list of OtherInvoiceItem
         """
         return self._OtherInvoiceItemList
@@ -20139,7 +20368,7 @@ class OtherInvoiceList(AbstractModel):
 
 
 class OverseasInvoice(AbstractModel):
-    """海外发票
+    r"""海外发票
 
     """
 
@@ -20155,7 +20384,7 @@ class OverseasInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -20166,7 +20395,7 @@ class OverseasInvoice(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)
+        r"""识别出的字段名称(关键字)
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -20195,7 +20424,7 @@ class OverseasInvoice(AbstractModel):
 
 
 class PassInvoiceInfo(AbstractModel):
-    """通行费发票信息
+    r"""通行费发票信息
 
     """
 
@@ -20220,7 +20449,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def NumberPlate(self):
-        """通行费车牌号
+        r"""通行费车牌号
         :rtype: str
         """
         return self._NumberPlate
@@ -20231,7 +20460,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def Type(self):
-        """通行费类型
+        r"""通行费类型
         :rtype: str
         """
         return self._Type
@@ -20242,7 +20471,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def PassDateBegin(self):
-        """通行日期起
+        r"""通行日期起
         :rtype: str
         """
         return self._PassDateBegin
@@ -20253,7 +20482,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def PassDateEnd(self):
-        """通行日期止
+        r"""通行日期止
         :rtype: str
         """
         return self._PassDateEnd
@@ -20264,7 +20493,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def TaxClassifyCode(self):
-        """税收分类编码
+        r"""税收分类编码
         :rtype: str
         """
         return self._TaxClassifyCode
@@ -20291,7 +20520,7 @@ class PassInvoiceInfo(AbstractModel):
 
 
 class PassportOCRRequest(AbstractModel):
-    """PassportOCR请求参数结构体
+    r"""PassportOCR请求参数结构体
 
     """
 
@@ -20314,7 +20543,7 @@ class PassportOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -20325,7 +20554,7 @@ class PassportOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -20336,7 +20565,7 @@ class PassportOCRRequest(AbstractModel):
 
     @property
     def Type(self):
-        """默认填写CN
+        r"""默认填写CN
 支持中国大陆地区护照。
         :rtype: str
         """
@@ -20348,7 +20577,7 @@ class PassportOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """是否返回头像和位置坐标
+        r"""是否返回头像和位置坐标
         :rtype: bool
         """
         return self._CropPortrait
@@ -20374,7 +20603,7 @@ class PassportOCRRequest(AbstractModel):
 
 
 class PassportOCRResponse(AbstractModel):
-    """PassportOCR返回参数结构体
+    r"""PassportOCR返回参数结构体
 
     """
 
@@ -20435,7 +20664,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def Country(self):
-        """国家码
+        r"""国家码
         :rtype: str
         """
         return self._Country
@@ -20446,7 +20675,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def PassportNo(self):
-        """护照号
+        r"""护照号
         :rtype: str
         """
         return self._PassportNo
@@ -20457,7 +20686,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -20468,7 +20697,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍
+        r"""国籍
         :rtype: str
         """
         return self._Nationality
@@ -20479,7 +20708,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def BirthDate(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._BirthDate
@@ -20490,7 +20719,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生地点
+        r"""出生地点
         :rtype: str
         """
         return self._BirthPlace
@@ -20501,7 +20730,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """签发日期
+        r"""签发日期
         :rtype: str
         """
         return self._IssueDate
@@ -20512,7 +20741,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def IssuePlace(self):
-        """签发地点
+        r"""签发地点
         :rtype: str
         """
         return self._IssuePlace
@@ -20523,7 +20752,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def ExpiryDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ExpiryDate
@@ -20534,7 +20763,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def Signature(self):
-        """持证人签名
+        r"""持证人签名
         :rtype: str
         """
         return self._Signature
@@ -20545,7 +20774,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def CodeSet(self):
-        """最下方第一行 MRZ Code 序列
+        r"""最下方第一行 MRZ Code 序列
         :rtype: str
         """
         return self._CodeSet
@@ -20556,7 +20785,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def CodeCrc(self):
-        """最下方第二行 MRZ Code 序列
+        r"""最下方第二行 MRZ Code 序列
         :rtype: str
         """
         return self._CodeCrc
@@ -20567,7 +20796,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -20578,7 +20807,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def FamilyName(self):
-        """姓
+        r"""姓
         :rtype: str
         """
         return self._FamilyName
@@ -20589,7 +20818,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def FirstName(self):
-        """名
+        r"""名
         :rtype: str
         """
         return self._FirstName
@@ -20600,7 +20829,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def PortraitImageInfo(self):
-        """头像和坐标信息
+        r"""头像和坐标信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
         """
         return self._PortraitImageInfo
@@ -20611,7 +20840,7 @@ class PassportOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20644,7 +20873,7 @@ class PassportOCRResponse(AbstractModel):
 
 
 class PassportRecognizeInfos(AbstractModel):
-    """信息区证件内容
+    r"""信息区证件内容
 
     """
 
@@ -20702,7 +20931,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Type(self):
-        """证件类型（护照信息页识别结果）
+        r"""证件类型（护照信息页识别结果）
         :rtype: str
         """
         return self._Type
@@ -20713,7 +20942,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        """发行国家（护照信息页识别结果）
+        r"""发行国家（护照信息页识别结果）
         :rtype: str
         """
         return self._IssuingCountry
@@ -20724,7 +20953,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def PassportID(self):
-        """护照号码（护照信息页识别结果）
+        r"""护照号码（护照信息页识别结果）
         :rtype: str
         """
         return self._PassportID
@@ -20735,7 +20964,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Surname(self):
-        """姓（护照信息页识别结果）
+        r"""姓（护照信息页识别结果）
         :rtype: str
         """
         return self._Surname
@@ -20746,7 +20975,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def GivenName(self):
-        """名（护照信息页识别结果）
+        r"""名（护照信息页识别结果）
         :rtype: str
         """
         return self._GivenName
@@ -20757,7 +20986,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（护照信息页识别结果）
+        r"""姓名（护照信息页识别结果）
         :rtype: str
         """
         return self._Name
@@ -20768,7 +20997,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍信息（护照信息页识别结果）
+        r"""国籍信息（护照信息页识别结果）
         :rtype: str
         """
         return self._Nationality
@@ -20779,7 +21008,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """出生日期（护照信息页识别结果）
+        r"""出生日期（护照信息页识别结果）
         :rtype: str
         """
         return self._DateOfBirth
@@ -20790,7 +21019,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（护照信息页识别结果）
+        r"""性别（护照信息页识别结果）
         :rtype: str
         """
         return self._Sex
@@ -20801,7 +21030,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfIssuance(self):
-        """发行日期（护照信息页识别结果）
+        r"""发行日期（护照信息页识别结果）
         :rtype: str
         """
         return self._DateOfIssuance
@@ -20812,7 +21041,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        """截止日期（护照信息页识别结果）
+        r"""截止日期（护照信息页识别结果）
         :rtype: str
         """
         return self._DateOfExpiration
@@ -20823,7 +21052,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Signature(self):
-        """持证人签名（护照信息页识别结果）
+        r"""持证人签名（护照信息页识别结果）
 
 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
         :rtype: str
@@ -20836,7 +21065,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuePlace(self):
-        """签发地点（护照信息页识别结果）
+        r"""签发地点（护照信息页识别结果）
 
 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
         :rtype: str
@@ -20849,7 +21078,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingAuthority(self):
-        """签发机关（护照信息页识别结果）
+        r"""签发机关（护照信息页识别结果）
 
 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
         :rtype: str
@@ -20887,7 +21116,7 @@ class PassportRecognizeInfos(AbstractModel):
 
 
 class PermanentResidencePermitInfo(AbstractModel):
-    """外国人永久居留证信息返回
+    r"""外国人永久居留证信息返回
 
     """
 
@@ -20936,7 +21165,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Name
@@ -20947,7 +21176,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Sex
@@ -20958,7 +21187,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Nation
@@ -20969,7 +21198,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Birth
@@ -20980,7 +21209,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Address
@@ -20991,7 +21220,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def IdNum(self):
-        """公民身份号码（人像面）
+        r"""公民身份号码（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._IdNum
@@ -21002,7 +21231,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Authority
@@ -21013,7 +21242,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._ValidDate
@@ -21024,7 +21253,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def WarnInfos(self):
-        """WarnInfos，告警信息
+        r"""WarnInfos，告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CardWarnInfo`
         """
         return self._WarnInfos
@@ -21035,7 +21264,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def CardImage(self):
-        """IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+        r"""IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._CardImage
@@ -21046,7 +21275,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+        r"""Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._PortraitImage
@@ -21057,7 +21286,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def HolderNum(self):
-        """持证人持有号码，外国人永久居留证 返回该字段
+        r"""持证人持有号码，外国人永久居留证 返回该字段
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._HolderNum
@@ -21068,7 +21297,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍，外国人永久居留证 返回该字段
+        r"""国籍，外国人永久居留证 返回该字段
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Nationality
@@ -21129,7 +21358,7 @@ class PermanentResidencePermitInfo(AbstractModel):
 
 
 class PermitOCRRequest(AbstractModel):
-    """PermitOCR请求参数结构体
+    r"""PermitOCR请求参数结构体
 
     """
 
@@ -21155,7 +21384,7 @@ class PermitOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -21169,7 +21398,7 @@ class PermitOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -21184,7 +21413,7 @@ class PermitOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """是否返回头像照片，默认为 false
+        r"""是否返回头像照片，默认为 false
         :rtype: bool
         """
         return self._CropPortrait
@@ -21209,7 +21438,7 @@ class PermitOCRRequest(AbstractModel):
 
 
 class PermitOCRResponse(AbstractModel):
-    """PermitOCR返回参数结构体
+    r"""PermitOCR返回参数结构体
 
     """
 
@@ -21252,7 +21481,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -21263,7 +21492,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        """英文姓名
+        r"""英文姓名
         :rtype: str
         """
         return self._EnglishName
@@ -21274,7 +21503,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """证件号
+        r"""证件号
         :rtype: str
         """
         return self._Number
@@ -21285,7 +21514,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -21296,7 +21525,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期限
+        r"""有效期限
         :rtype: str
         """
         return self._ValidDate
@@ -21307,7 +21536,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def IssueAuthority(self):
-        """签发机关
+        r"""签发机关
         :rtype: str
         """
         return self._IssueAuthority
@@ -21318,7 +21547,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        """签发地点
+        r"""签发地点
         :rtype: str
         """
         return self._IssueAddress
@@ -21329,7 +21558,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._Birthday
@@ -21340,7 +21569,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """头像照片的base64
+        r"""头像照片的base64
         :rtype: str
         """
         return self._PortraitImage
@@ -21351,7 +21580,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """返回类型
+        r"""返回类型
         :rtype: str
         """
         return self._Type
@@ -21362,7 +21591,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21387,7 +21616,7 @@ class PermitOCRResponse(AbstractModel):
 
 
 class Polygon(AbstractModel):
-    """文本的坐标，以四个顶点坐标表示
+    r"""文本的坐标，以四个顶点坐标表示
     注意：此字段可能返回 null，表示取不到有效值
 
     """
@@ -21410,7 +21639,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftTop(self):
-        """左上顶点坐标
+        r"""左上顶点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftTop
@@ -21421,7 +21650,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightTop(self):
-        """右上顶点坐标
+        r"""右上顶点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightTop
@@ -21432,7 +21661,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightBottom(self):
-        """右下顶点坐标
+        r"""右下顶点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightBottom
@@ -21443,7 +21672,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftBottom(self):
-        """左下顶点坐标
+        r"""左下顶点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftBottom
@@ -21477,7 +21706,7 @@ class Polygon(AbstractModel):
 
 
 class PortraitImageInfo(AbstractModel):
-    """头像照片和坐标
+    r"""头像照片和坐标
 
     """
 
@@ -21495,7 +21724,7 @@ class PortraitImageInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """头像
+        r"""头像
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21507,7 +21736,7 @@ class PortraitImageInfo(AbstractModel):
 
     @property
     def ImageCoordinates(self):
-        """头像坐标
+        r"""头像坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ImageCoordinates`
         """
@@ -21534,7 +21763,7 @@ class PortraitImageInfo(AbstractModel):
 
 
 class PropOwnerCertOCRRequest(AbstractModel):
-    """PropOwnerCertOCR请求参数结构体
+    r"""PropOwnerCertOCR请求参数结构体
 
     """
 
@@ -21550,7 +21779,7 @@ class PropOwnerCertOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -21561,7 +21790,7 @@ class PropOwnerCertOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -21585,7 +21814,7 @@ class PropOwnerCertOCRRequest(AbstractModel):
 
 
 class PropOwnerCertOCRResponse(AbstractModel):
-    """PropOwnerCertOCR返回参数结构体
+    r"""PropOwnerCertOCR返回参数结构体
 
     """
 
@@ -21616,7 +21845,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def Owner(self):
-        """房地产权利人
+        r"""房地产权利人
         :rtype: str
         """
         return self._Owner
@@ -21627,7 +21856,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def Possession(self):
-        """共有情况
+        r"""共有情况
         :rtype: str
         """
         return self._Possession
@@ -21638,7 +21867,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def RegisterTime(self):
-        """登记时间
+        r"""登记时间
         :rtype: str
         """
         return self._RegisterTime
@@ -21649,7 +21878,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def Purpose(self):
-        """规划用途
+        r"""规划用途
         :rtype: str
         """
         return self._Purpose
@@ -21660,7 +21889,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def Nature(self):
-        """房屋性质
+        r"""房屋性质
         :rtype: str
         """
         return self._Nature
@@ -21671,7 +21900,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """房地坐落
+        r"""房地坐落
         :rtype: str
         """
         return self._Location
@@ -21682,7 +21911,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21703,7 +21932,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
 
 
 class QrcodeImgSize(AbstractModel):
-    """图片大小
+    r"""图片大小
 
     """
 
@@ -21719,7 +21948,7 @@ class QrcodeImgSize(AbstractModel):
 
     @property
     def Wide(self):
-        """宽
+        r"""宽
         :rtype: int
         """
         return self._Wide
@@ -21730,7 +21959,7 @@ class QrcodeImgSize(AbstractModel):
 
     @property
     def High(self):
-        """高
+        r"""高
         :rtype: int
         """
         return self._High
@@ -21754,7 +21983,7 @@ class QrcodeImgSize(AbstractModel):
 
 
 class QrcodeOCRRequest(AbstractModel):
-    """QrcodeOCR请求参数结构体
+    r"""QrcodeOCR请求参数结构体
 
     """
 
@@ -21770,7 +21999,7 @@ class QrcodeOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -21781,7 +22010,7 @@ class QrcodeOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -21805,7 +22034,7 @@ class QrcodeOCRRequest(AbstractModel):
 
 
 class QrcodeOCRResponse(AbstractModel):
-    """QrcodeOCR返回参数结构体
+    r"""QrcodeOCR返回参数结构体
 
     """
 
@@ -21824,7 +22053,7 @@ class QrcodeOCRResponse(AbstractModel):
 
     @property
     def CodeResults(self):
-        """二维码/条形码识别结果信息，具体内容请点击左侧链接。
+        r"""二维码/条形码识别结果信息，具体内容请点击左侧链接。
         :rtype: list of QrcodeResultsInfo
         """
         return self._CodeResults
@@ -21835,7 +22064,7 @@ class QrcodeOCRResponse(AbstractModel):
 
     @property
     def ImgSize(self):
-        """图片大小，具体内容请点击左侧链接。
+        r"""图片大小，具体内容请点击左侧链接。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.QrcodeImgSize`
         """
         return self._ImgSize
@@ -21846,7 +22075,7 @@ class QrcodeOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21870,7 +22099,7 @@ class QrcodeOCRResponse(AbstractModel):
 
 
 class QrcodePositionObj(AbstractModel):
-    """二维码/条形码坐标信息
+    r"""二维码/条形码坐标信息
 
     """
 
@@ -21892,7 +22121,7 @@ class QrcodePositionObj(AbstractModel):
 
     @property
     def LeftTop(self):
-        """左上顶点坐标（如果是条形码，X和Y都为-1）
+        r"""左上顶点坐标（如果是条形码，X和Y都为-1）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftTop
@@ -21903,7 +22132,7 @@ class QrcodePositionObj(AbstractModel):
 
     @property
     def RightTop(self):
-        """右上顶点坐标（如果是条形码，X和Y都为-1）
+        r"""右上顶点坐标（如果是条形码，X和Y都为-1）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightTop
@@ -21914,7 +22143,7 @@ class QrcodePositionObj(AbstractModel):
 
     @property
     def RightBottom(self):
-        """右下顶点坐标（如果是条形码，X和Y都为-1）
+        r"""右下顶点坐标（如果是条形码，X和Y都为-1）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightBottom
@@ -21925,7 +22154,7 @@ class QrcodePositionObj(AbstractModel):
 
     @property
     def LeftBottom(self):
-        """左下顶点坐标（如果是条形码，X和Y都为-1）
+        r"""左下顶点坐标（如果是条形码，X和Y都为-1）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftBottom
@@ -21959,7 +22188,7 @@ class QrcodePositionObj(AbstractModel):
 
 
 class QrcodeResultsInfo(AbstractModel):
-    """二维码/条形码识别结果信息
+    r"""二维码/条形码识别结果信息
 
     """
 
@@ -21983,7 +22212,7 @@ DataMatrix：DATA_MATRIX
 
     @property
     def TypeName(self):
-        """类型包括
+        r"""类型包括
 二维码：QR_CODE
 一维码：EAN-13、EAN-8、EAN-2、UPC-A、UPC-E、CODE-39、CODE-93、CODE-128 
 PDF：PDF_417
@@ -21999,7 +22228,7 @@ DataMatrix：DATA_MATRIX
 
     @property
     def Url(self):
-        """二维码/条形码包含的地址
+        r"""二维码/条形码包含的地址
         :rtype: str
         """
         return self._Url
@@ -22010,7 +22239,7 @@ DataMatrix：DATA_MATRIX
 
     @property
     def Position(self):
-        """二维码/条形码坐标
+        r"""二维码/条形码坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.QrcodePositionObj`
         """
         return self._Position
@@ -22037,7 +22266,7 @@ DataMatrix：DATA_MATRIX
 
 
 class QuestionBlockObj(AbstractModel):
-    """数学试题识别结构化对象
+    r"""数学试题识别结构化对象
 
     """
 
@@ -22053,7 +22282,7 @@ class QuestionBlockObj(AbstractModel):
 
     @property
     def QuestionArr(self):
-        """数学试题识别结构化信息数组
+        r"""数学试题识别结构化信息数组
         :rtype: list of QuestionObj
         """
         return self._QuestionArr
@@ -22064,7 +22293,7 @@ class QuestionBlockObj(AbstractModel):
 
     @property
     def QuestionBboxCoord(self):
-        """题目主体区域检测框在图片中的像素坐标
+        r"""题目主体区域检测框在图片中的像素坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._QuestionBboxCoord
@@ -22095,7 +22324,7 @@ class QuestionBlockObj(AbstractModel):
 
 
 class QuestionInfo(AbstractModel):
-    """试题识别结果
+    r"""试题识别结果
 
     """
 
@@ -22127,7 +22356,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Angle(self):
-        """旋转角度
+        r"""旋转角度
         :rtype: float
         """
         return self._Angle
@@ -22138,7 +22367,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Height(self):
-        """预处理后图片高度
+        r"""预处理后图片高度
         :rtype: int
         """
         return self._Height
@@ -22149,7 +22378,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Width(self):
-        """预处理后图片宽度
+        r"""预处理后图片宽度
         :rtype: int
         """
         return self._Width
@@ -22160,7 +22389,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ResultList(self):
-        """文档元素
+        r"""文档元素
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultList
         """
@@ -22172,7 +22401,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def OrgHeight(self):
-        """输入图片高度
+        r"""输入图片高度
         :rtype: int
         """
         return self._OrgHeight
@@ -22183,7 +22412,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def OrgWidth(self):
-        """输入图片宽度
+        r"""输入图片宽度
         :rtype: int
         """
         return self._OrgWidth
@@ -22194,7 +22423,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """预处理后的图片base64编码
+        r"""预处理后的图片base64编码
         :rtype: str
         """
         return self._ImageBase64
@@ -22228,7 +22457,7 @@ class QuestionInfo(AbstractModel):
 
 
 class QuestionOCRRequest(AbstractModel):
-    """QuestionOCR请求参数结构体
+    r"""QuestionOCR请求参数结构体
 
     """
 
@@ -22253,7 +22482,7 @@ class QuestionOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -22264,7 +22493,7 @@ class QuestionOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -22275,7 +22504,7 @@ class QuestionOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -22286,7 +22515,7 @@ class QuestionOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -22297,7 +22526,7 @@ class QuestionOCRRequest(AbstractModel):
 
     @property
     def EnableImageCrop(self):
-        """是否开启切边增强和弯曲矫正,默认为false不开启
+        r"""是否开启切边增强和弯曲矫正,默认为false不开启
         :rtype: bool
         """
         return self._EnableImageCrop
@@ -22324,7 +22553,7 @@ class QuestionOCRRequest(AbstractModel):
 
 
 class QuestionOCRResponse(AbstractModel):
-    """QuestionOCR返回参数结构体
+    r"""QuestionOCR返回参数结构体
 
     """
 
@@ -22340,7 +22569,7 @@ class QuestionOCRResponse(AbstractModel):
 
     @property
     def QuestionInfo(self):
-        """检测到的文本信息
+        r"""检测到的文本信息
         :rtype: list of QuestionInfo
         """
         return self._QuestionInfo
@@ -22351,7 +22580,7 @@ class QuestionOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22372,7 +22601,7 @@ class QuestionOCRResponse(AbstractModel):
 
 
 class QuestionObj(AbstractModel):
-    """试题识别结构化信息
+    r"""试题识别结构化信息
 
     """
 
@@ -22403,7 +22632,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionTextNo(self):
-        """题号
+        r"""题号
         :rtype: str
         """
         return self._QuestionTextNo
@@ -22414,7 +22643,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionTextType(self):
-        """题型：
+        r"""题型：
 1: "选择题"
 2: "填空题"
 3: "解答题"
@@ -22428,7 +22657,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionText(self):
-        """题干
+        r"""题干
         :rtype: str
         """
         return self._QuestionText
@@ -22439,7 +22668,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionOptions(self):
-        """选择题选项，包含1个或多个option
+        r"""选择题选项，包含1个或多个option
         :rtype: str
         """
         return self._QuestionOptions
@@ -22450,7 +22679,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionSubquestion(self):
-        """所有子题的question属性
+        r"""所有子题的question属性
         :rtype: str
         """
         return self._QuestionSubquestion
@@ -22461,7 +22690,7 @@ class QuestionObj(AbstractModel):
 
     @property
     def QuestionImageCoords(self):
-        """示意图检测框在的图片中的像素坐标
+        r"""示意图检测框在的图片中的像素坐标
         :rtype: list of Rect
         """
         return self._QuestionImageCoords
@@ -22494,7 +22723,7 @@ class QuestionObj(AbstractModel):
 
 
 class QuestionSplitOCRRequest(AbstractModel):
-    """QuestionSplitOCR请求参数结构体
+    r"""QuestionSplitOCR请求参数结构体
 
     """
 
@@ -22525,7 +22754,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -22536,7 +22765,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -22547,7 +22776,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -22558,7 +22787,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -22569,7 +22798,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def EnableImageCrop(self):
-        """是否开启切边增强和弯曲矫正,默认为false不开启
+        r"""是否开启切边增强和弯曲矫正,默认为false不开启
         :rtype: bool
         """
         return self._EnableImageCrop
@@ -22580,7 +22809,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def EnableOnlyDetectBorder(self):
-        """是否只返回检测框，默认false
+        r"""是否只返回检测框，默认false
         :rtype: bool
         """
         return self._EnableOnlyDetectBorder
@@ -22591,7 +22820,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
     @property
     def UseNewModel(self):
-        """false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+        r"""false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
         :rtype: bool
         """
         return self._UseNewModel
@@ -22620,7 +22849,7 @@ class QuestionSplitOCRRequest(AbstractModel):
 
 
 class QuestionSplitOCRResponse(AbstractModel):
-    """QuestionSplitOCR返回参数结构体
+    r"""QuestionSplitOCR返回参数结构体
 
     """
 
@@ -22636,7 +22865,7 @@ class QuestionSplitOCRResponse(AbstractModel):
 
     @property
     def QuestionInfo(self):
-        """检测到的文本信息
+        r"""检测到的文本信息
         :rtype: list of QuestionInfo
         """
         return self._QuestionInfo
@@ -22647,7 +22876,7 @@ class QuestionSplitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22668,7 +22897,7 @@ class QuestionSplitOCRResponse(AbstractModel):
 
 
 class QuotaInvoice(AbstractModel):
-    """定额发票
+    r"""定额发票
 
     """
 
@@ -22708,7 +22937,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -22719,7 +22948,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -22730,7 +22959,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -22741,7 +22970,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -22752,7 +22981,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -22763,7 +22992,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -22774,7 +23003,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -22785,7 +23014,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -22796,7 +23025,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -22807,7 +23036,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -22839,7 +23068,7 @@ class QuotaInvoice(AbstractModel):
 
 
 class QuotaInvoiceOCRRequest(AbstractModel):
-    """QuotaInvoiceOCR请求参数结构体
+    r"""QuotaInvoiceOCR请求参数结构体
 
     """
 
@@ -22861,7 +23090,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -22872,7 +23101,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -22883,7 +23112,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -22894,7 +23123,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -22920,7 +23149,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
 
 
 class QuotaInvoiceOCRResponse(AbstractModel):
-    """QuotaInvoiceOCR返回参数结构体
+    r"""QuotaInvoiceOCR返回参数结构体
 
     """
 
@@ -22960,7 +23189,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceNum(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._InvoiceNum
@@ -22971,7 +23200,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceCode(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._InvoiceCode
@@ -22982,7 +23211,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def Rate(self):
-        """大写金额
+        r"""大写金额
         :rtype: str
         """
         return self._Rate
@@ -22993,7 +23222,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def RateNum(self):
-        """小写金额
+        r"""小写金额
         :rtype: str
         """
         return self._RateNum
@@ -23004,7 +23233,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceType(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._InvoiceType
@@ -23015,7 +23244,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23027,7 +23256,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23039,7 +23268,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def HasStamp(self):
-        """是否有公司印章（1有 0无 空为识别不出）
+        r"""是否有公司印章（1有 0无 空为识别不出）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23051,7 +23280,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23074,7 +23303,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
 
 
 class RailwayTicketInfo(AbstractModel):
-    """铁路电子客票信息
+    r"""铁路电子客票信息
 
     """
 
@@ -23159,7 +23388,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TypeOfVoucher(self):
-        """电子发票类型
+        r"""电子发票类型
         :rtype: str
         """
         return self._TypeOfVoucher
@@ -23170,7 +23399,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def ElectronicTicketNum(self):
-        """电子客票号
+        r"""电子客票号
         :rtype: str
         """
         return self._ElectronicTicketNum
@@ -23181,7 +23410,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def DateOfIssue(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._DateOfIssue
@@ -23192,7 +23421,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TypeOfBusiness(self):
-        """售票或退票类型
+        r"""售票或退票类型
         :rtype: str
         """
         return self._TypeOfBusiness
@@ -23203,7 +23432,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def DepartureStation(self):
-        """始发站
+        r"""始发站
         :rtype: str
         """
         return self._DepartureStation
@@ -23214,7 +23443,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def PhonicsOfDepartureStation(self):
-        """始发站英文
+        r"""始发站英文
         :rtype: str
         """
         return self._PhonicsOfDepartureStation
@@ -23225,7 +23454,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def DestinationStation(self):
-        """到达站
+        r"""到达站
         :rtype: str
         """
         return self._DestinationStation
@@ -23236,7 +23465,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def PhonicsOfDestinationStation(self):
-        """到达站英文
+        r"""到达站英文
         :rtype: str
         """
         return self._PhonicsOfDestinationStation
@@ -23247,7 +23476,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """火车号
+        r"""火车号
         :rtype: str
         """
         return self._TrainNumber
@@ -23258,7 +23487,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TravelDate(self):
-        """火车出发日期
+        r"""火车出发日期
         :rtype: str
         """
         return self._TravelDate
@@ -23269,7 +23498,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def DepartureTime(self):
-        """始发时间
+        r"""始发时间
         :rtype: str
         """
         return self._DepartureTime
@@ -23280,7 +23509,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def AirConditioningCharacteristics(self):
-        """空调特点
+        r"""空调特点
         :rtype: str
         """
         return self._AirConditioningCharacteristics
@@ -23291,7 +23520,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def SeatLevel(self):
-        """座位类型
+        r"""座位类型
         :rtype: str
         """
         return self._SeatLevel
@@ -23302,7 +23531,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def Carriage(self):
-        """火车第几车
+        r"""火车第几车
         :rtype: str
         """
         return self._Carriage
@@ -23313,7 +23542,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def Seat(self):
-        """座位号
+        r"""座位号
         :rtype: str
         """
         return self._Seat
@@ -23324,7 +23553,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def Fare(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Fare
@@ -23335,7 +23564,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def ElectronicInvoiceRailwayETicketNumber(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._ElectronicInvoiceRailwayETicketNumber
@@ -23346,7 +23575,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def IdNumber(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._IdNumber
@@ -23357,7 +23586,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -23368,7 +23597,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TotalAmountExcludingTax(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._TotalAmountExcludingTax
@@ -23379,7 +23608,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -23390,7 +23619,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def TaxAmount(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._TaxAmount
@@ -23401,7 +23630,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def NameOfPurchaser(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._NameOfPurchaser
@@ -23412,7 +23641,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCodeOfPurchaser(self):
-        """统一社会信用代码
+        r"""统一社会信用代码
         :rtype: str
         """
         return self._UnifiedSocialCreditCodeOfPurchaser
@@ -23423,7 +23652,7 @@ class RailwayTicketInfo(AbstractModel):
 
     @property
     def NumberOfOriginalInvoice(self):
-        """原发票号码
+        r"""原发票号码
         :rtype: str
         """
         return self._NumberOfOriginalInvoice
@@ -23470,7 +23699,7 @@ class RailwayTicketInfo(AbstractModel):
 
 
 class RecognizeContainerOCRRequest(AbstractModel):
-    """RecognizeContainerOCR请求参数结构体
+    r"""RecognizeContainerOCR请求参数结构体
 
     """
 
@@ -23486,7 +23715,7 @@ class RecognizeContainerOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -23497,7 +23726,7 @@ class RecognizeContainerOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -23521,7 +23750,7 @@ class RecognizeContainerOCRRequest(AbstractModel):
 
 
 class RecognizeContainerOCRResponse(AbstractModel):
-    """RecognizeContainerOCR返回参数结构体
+    r"""RecognizeContainerOCR返回参数结构体
 
     """
 
@@ -23569,7 +23798,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def ContainerId(self):
-        """集装箱箱号
+        r"""集装箱箱号
         :rtype: str
         """
         return self._ContainerId
@@ -23580,7 +23809,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def ContainerType(self):
-        """集装箱类型
+        r"""集装箱类型
         :rtype: str
         """
         return self._ContainerType
@@ -23591,7 +23820,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def GrossKG(self):
-        """集装箱总重量，单位：千克（KG）
+        r"""集装箱总重量，单位：千克（KG）
         :rtype: str
         """
         return self._GrossKG
@@ -23602,7 +23831,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def GrossLB(self):
-        """集装箱总重量，单位：磅（LB）
+        r"""集装箱总重量，单位：磅（LB）
         :rtype: str
         """
         return self._GrossLB
@@ -23613,7 +23842,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def PayloadKG(self):
-        """集装箱有效承重，单位：千克（KG）
+        r"""集装箱有效承重，单位：千克（KG）
         :rtype: str
         """
         return self._PayloadKG
@@ -23624,7 +23853,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def PayloadLB(self):
-        """集装箱有效承重，单位：磅（LB）
+        r"""集装箱有效承重，单位：磅（LB）
         :rtype: str
         """
         return self._PayloadLB
@@ -23635,7 +23864,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def CapacityM3(self):
-        """集装箱容量，单位：立方米
+        r"""集装箱容量，单位：立方米
         :rtype: str
         """
         return self._CapacityM3
@@ -23646,7 +23875,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def CapacityFT3(self):
-        """集装箱容量，单位：立英尺
+        r"""集装箱容量，单位：立英尺
         :rtype: str
         """
         return self._CapacityFT3
@@ -23657,7 +23886,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def Warn(self):
-        """告警码
+        r"""告警码
 -9926	集装箱箱号不完整或者不清晰
 -9927	集装箱类型不完整或者不清晰
         :rtype: list of int
@@ -23670,7 +23899,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def TareKG(self):
-        """集装箱自身重量，单位：千克（KG）
+        r"""集装箱自身重量，单位：千克（KG）
         :rtype: str
         """
         return self._TareKG
@@ -23681,7 +23910,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def TareLB(self):
-        """集装箱自身重量，单位：磅（LB）
+        r"""集装箱自身重量，单位：磅（LB）
         :rtype: str
         """
         return self._TareLB
@@ -23692,7 +23921,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23718,7 +23947,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
 
 
 class RecognizeEncryptedIDCardOCRRequest(AbstractModel):
-    """RecognizeEncryptedIDCardOCR请求参数结构体
+    r"""RecognizeEncryptedIDCardOCR请求参数结构体
 
     """
 
@@ -23772,7 +24001,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EncryptedBody(self):
-        """请求体被加密后的密文（Base64编码），本接口只支持加密传输
+        r"""请求体被加密后的密文（Base64编码），本接口只支持加密传输
         :rtype: str
         """
         return self._EncryptedBody
@@ -23783,7 +24012,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def Encryption(self):
-        """敏感数据加密信息。对传入信息有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""敏感数据加密信息。对传入信息有加密需求的用户可使用此参数，详情请点击左侧链接。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Encryption`
         """
         return self._Encryption
@@ -23794,7 +24023,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -23805,7 +24034,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -23816,7 +24045,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def CardSide(self):
-        """FRONT：身份证有照片的一面（人像面），
+        r"""FRONT：身份证有照片的一面（人像面），
 BACK：身份证有国徽的一面（国徽面），
 该参数如果不填，将为您自动判断身份证正反面。
         :rtype: str
@@ -23829,7 +24058,7 @@ BACK：身份证有国徽的一面（国徽面），
 
     @property
     def Config(self):
-        """以下可选字段均为bool 类型，默认false：
+        r"""以下可选字段均为bool 类型，默认false：
 CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
 CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
 CopyWarn，复印件告警
@@ -23856,7 +24085,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EnableRecognitionRectify(self):
-        """默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+        r"""默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
         :rtype: bool
         """
         return self._EnableRecognitionRectify
@@ -23867,7 +24096,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EnableReflectDetail(self):
-        """默认值为false。
+        r"""默认值为false。
 
 此开关需要在反光检测开关开启下才会生效（即此开关生效的前提是config入参里的"ReflectWarn":true），若EnableReflectDetail设置为true，则会返回反光点覆盖区域详情。反光点覆盖区域详情分为四部分：人像照片位置、国徽位置、识别字段位置、其他位置。一个反光点允许覆盖多个区域，且一张图片可能存在多个反光点。
         :rtype: bool
@@ -23901,7 +24130,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
 
 class RecognizeEncryptedIDCardOCRResponse(AbstractModel):
-    """RecognizeEncryptedIDCardOCR返回参数结构体
+    r"""RecognizeEncryptedIDCardOCR返回参数结构体
 
     """
 
@@ -23968,7 +24197,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: str
         """
         return self._Name
@@ -23979,7 +24208,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: str
         """
         return self._Sex
@@ -23990,7 +24219,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: str
         """
         return self._Nation
@@ -24001,7 +24230,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: str
         """
         return self._Birth
@@ -24012,7 +24241,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: str
         """
         return self._Address
@@ -24023,7 +24252,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def IdNum(self):
-        """身份证号（人像面）
+        r"""身份证号（人像面）
         :rtype: str
         """
         return self._IdNum
@@ -24034,7 +24263,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: str
         """
         return self._Authority
@@ -24045,7 +24274,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: str
         """
         return self._ValidDate
@@ -24056,7 +24285,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def AdvancedInfo(self):
-        """扩展信息，不请求则不返回，具体输入参考示例3和示例4。
+        r"""扩展信息，不请求则不返回，具体输入参考示例3和示例4。
 IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
 Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
 
@@ -24085,7 +24314,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def ReflectDetailInfos(self):
-        """反光点覆盖区域详情结果，具体内容请点击左侧链接
+        r"""反光点覆盖区域详情结果，具体内容请点击左侧链接
         :rtype: list of ReflectDetailInfo
         """
         return self._ReflectDetailInfos
@@ -24096,7 +24325,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def EncryptedBody(self):
-        """加密后的数据（Base64编码）
+        r"""加密后的数据（Base64编码）
         :rtype: str
         """
         return self._EncryptedBody
@@ -24107,7 +24336,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def Encryption(self):
-        """敏感数据加密信息
+        r"""敏感数据加密信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Encryption`
         """
         return self._Encryption
@@ -24118,7 +24347,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24152,7 +24381,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
 
 class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
-    """RecognizeForeignPermanentResidentIdCard请求参数结构体
+    r"""RecognizeForeignPermanentResidentIdCard请求参数结构体
 
     """
 
@@ -24178,7 +24407,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume
         :rtype: str
         """
         return self._ImageUrl
@@ -24189,7 +24418,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -24200,7 +24429,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
     @property
     def EnablePdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._EnablePdf
@@ -24211,7 +24440,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
 示例值：1
         :rtype: int
         """
@@ -24223,7 +24452,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """是否返回头像和位置坐标
+        r"""是否返回头像和位置坐标
         :rtype: bool
         """
         return self._CropPortrait
@@ -24250,7 +24479,7 @@ class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
 
 
 class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
-    """RecognizeForeignPermanentResidentIdCard返回参数结构体
+    r"""RecognizeForeignPermanentResidentIdCard返回参数结构体
 
     """
 
@@ -24293,7 +24522,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def CnName(self):
-        """中文姓名。
+        r"""中文姓名。
         :rtype: str
         """
         return self._CnName
@@ -24304,7 +24533,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def EnName(self):
-        """英文名。
+        r"""英文名。
         :rtype: str
         """
         return self._EnName
@@ -24315,7 +24544,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别。
+        r"""性别。
         :rtype: str
         """
         return self._Sex
@@ -24326,7 +24555,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """出生日期。规范格式为 XXXX年XX月XX日。
+        r"""出生日期。规范格式为 XXXX年XX月XX日。
         :rtype: str
         """
         return self._DateOfBirth
@@ -24337,7 +24566,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍。
+        r"""国籍。
         :rtype: str
         """
         return self._Nationality
@@ -24348,7 +24577,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def PeriodOfValidity(self):
-        """有效期限。
+        r"""有效期限。
         :rtype: str
         """
         return self._PeriodOfValidity
@@ -24359,7 +24588,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def No(self):
-        """证件号码。
+        r"""证件号码。
         :rtype: str
         """
         return self._No
@@ -24370,7 +24599,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def PreviousNumber(self):
-        """曾持证件号码。
+        r"""曾持证件号码。
         :rtype: str
         """
         return self._PreviousNumber
@@ -24381,7 +24610,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def IssuedAuthority(self):
-        """签发机关。
+        r"""签发机关。
         :rtype: str
         """
         return self._IssuedAuthority
@@ -24392,7 +24621,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def PortraitImageInfo(self):
-        """头像和坐标信息。
+        r"""头像和坐标信息。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
         """
         return self._PortraitImageInfo
@@ -24403,7 +24632,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24430,7 +24659,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
 
 
 class RecognizeFormulaOCRRequest(AbstractModel):
-    """RecognizeFormulaOCR请求参数结构体
+    r"""RecognizeFormulaOCR请求参数结构体
 
     """
 
@@ -24452,7 +24681,7 @@ class RecognizeFormulaOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -24463,7 +24692,7 @@ class RecognizeFormulaOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -24474,7 +24703,7 @@ class RecognizeFormulaOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -24485,7 +24714,7 @@ class RecognizeFormulaOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -24511,7 +24740,7 @@ class RecognizeFormulaOCRRequest(AbstractModel):
 
 
 class RecognizeFormulaOCRResponse(AbstractModel):
-    """RecognizeFormulaOCR返回参数结构体
+    r"""RecognizeFormulaOCR返回参数结构体
 
     """
 
@@ -24530,7 +24759,7 @@ class RecognizeFormulaOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angle
@@ -24541,7 +24770,7 @@ class RecognizeFormulaOCRResponse(AbstractModel):
 
     @property
     def FormulaInfoList(self):
-        """检测到的文本信息
+        r"""检测到的文本信息
         :rtype: list of TextFormulaInfo
         """
         return self._FormulaInfoList
@@ -24552,7 +24781,7 @@ class RecognizeFormulaOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24574,7 +24803,7 @@ class RecognizeFormulaOCRResponse(AbstractModel):
 
 
 class RecognizeGeneralCardWarnRequest(AbstractModel):
-    """RecognizeGeneralCardWarn请求参数结构体
+    r"""RecognizeGeneralCardWarn请求参数结构体
 
     """
 
@@ -24610,7 +24839,7 @@ SocialSecurityCard：社保卡
 
     @property
     def ImageUrl(self):
-        """图片链接
+        r"""图片链接
         :rtype: str
         """
         return self._ImageUrl
@@ -24621,7 +24850,7 @@ SocialSecurityCard：社保卡
 
     @property
     def ImageBase64(self):
-        """图片base64
+        r"""图片base64
         :rtype: str
         """
         return self._ImageBase64
@@ -24632,7 +24861,7 @@ SocialSecurityCard：社保卡
 
     @property
     def CardType(self):
-        """卡证类型参数，包含以下范围：  
+        r"""卡证类型参数，包含以下范围：  
 General：通用卡证
 IDCard：身份证 
 Passport：护照 
@@ -24654,7 +24883,7 @@ SocialSecurityCard：社保卡
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -24665,7 +24894,7 @@ SocialSecurityCard：社保卡
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -24692,7 +24921,7 @@ SocialSecurityCard：社保卡
 
 
 class RecognizeGeneralCardWarnResponse(AbstractModel):
-    """RecognizeGeneralCardWarn返回参数结构体
+    r"""RecognizeGeneralCardWarn返回参数结构体
 
     """
 
@@ -24749,7 +24978,7 @@ SocialSecurityCard：社保卡
 
     @property
     def CardType(self):
-        """卡证类型参数，包含以下范围： 
+        r"""卡证类型参数，包含以下范围： 
 General：通用卡证
 IDCard：身份证 
 Passport：护照 
@@ -24771,7 +25000,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Blur(self):
-        """模糊信息
+        r"""模糊信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Blur
@@ -24782,7 +25011,7 @@ SocialSecurityCard：社保卡
 
     @property
     def BorderIncomplete(self):
-        """边框不完整信息
+        r"""边框不完整信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._BorderIncomplete
@@ -24793,7 +25022,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Copy(self):
-        """复印件信息
+        r"""复印件信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Copy
@@ -24804,7 +25033,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Ps(self):
-        """ps篡改信息
+        r"""ps篡改信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Ps
@@ -24815,7 +25044,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Reflection(self):
-        """反光信息
+        r"""反光信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Reflection
@@ -24826,7 +25055,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Reprint(self):
-        """翻拍件信息
+        r"""翻拍件信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Reprint
@@ -24837,7 +25066,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Screenshot(self):
-        """是否截图
+        r"""是否截图
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Screenshot
@@ -24848,7 +25077,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Cover(self):
-        """是否遮挡
+        r"""是否遮挡
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Cover
@@ -24859,7 +25088,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Overlap(self):
-        """是否重叠
+        r"""是否重叠
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Overlap
@@ -24870,7 +25099,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Watermark(self):
-        """是否水印
+        r"""是否水印
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Watermark
@@ -24881,7 +25110,7 @@ SocialSecurityCard：社保卡
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24927,7 +25156,7 @@ SocialSecurityCard：社保卡
 
 
 class RecognizeGeneralInvoiceRequest(AbstractModel):
-    """RecognizeGeneralInvoice请求参数结构体
+    r"""RecognizeGeneralInvoice请求参数结构体
 
     """
 
@@ -24994,7 +25223,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：单边介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：单边介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -25005,7 +25234,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：单边介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：单边介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -25016,7 +25245,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def Types(self):
-        """需要识别的票据类型列表，为空或不填表示识别全部类型。当传入单个类型时，图片均采用该票类型进行处理。
+        r"""需要识别的票据类型列表，为空或不填表示识别全部类型。当传入单个类型时，图片均采用该票类型进行处理。
 暂不支持多个参数进行局部控制。
 0：出租车发票
 1：定额发票
@@ -25051,7 +25280,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableOther(self):
-        """是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
+        r"""是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
         :rtype: bool
         """
         return self._EnableOther
@@ -25062,7 +25291,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnablePdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._EnablePdf
@@ -25073,7 +25302,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -25084,7 +25313,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableMultiplePage(self):
-        """是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后EnablePdf和PdfPageNumber入参不进行控制。
+        r"""是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后EnablePdf和PdfPageNumber入参不进行控制。
         :rtype: bool
         """
         return self._EnableMultiplePage
@@ -25095,7 +25324,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableCutImage(self):
-        """是否返回切割图片base64，默认值为false。
+        r"""是否返回切割图片base64，默认值为false。
         :rtype: bool
         """
         return self._EnableCutImage
@@ -25106,7 +25335,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableItemPolygon(self):
-        """是否打开字段坐标返回。默认为false。
+        r"""是否打开字段坐标返回。默认为false。
         :rtype: bool
         """
         return self._EnableItemPolygon
@@ -25117,7 +25346,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableQRCode(self):
-        """是否开启二维码识别。
+        r"""是否开启二维码识别。
         :rtype: bool
         """
         return self._EnableQRCode
@@ -25128,7 +25357,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
     @property
     def EnableSeal(self):
-        """是否开启印章识别，默认为false
+        r"""是否开启印章识别，默认为false
         :rtype: bool
         """
         return self._EnableSeal
@@ -25161,7 +25390,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 
 
 class RecognizeGeneralInvoiceResponse(AbstractModel):
-    """RecognizeGeneralInvoice返回参数结构体
+    r"""RecognizeGeneralInvoice返回参数结构体
 
     """
 
@@ -25180,7 +25409,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def MixedInvoiceItems(self):
-        """混贴票据识别结果，具体内容请点击左侧链接。
+        r"""混贴票据识别结果，具体内容请点击左侧链接。
         :rtype: list of InvoiceItem
         """
         return self._MixedInvoiceItems
@@ -25191,7 +25420,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def TotalPDFCount(self):
-        """PDF文件总页码
+        r"""PDF文件总页码
         :rtype: int
         """
         return self._TotalPDFCount
@@ -25202,7 +25431,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25224,7 +25453,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
 
 class RecognizeGeneralTextImageWarnRequest(AbstractModel):
-    """RecognizeGeneralTextImageWarn请求参数结构体
+    r"""RecognizeGeneralTextImageWarn请求参数结构体
 
     """
 
@@ -25251,7 +25480,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -25262,7 +25491,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -25273,7 +25502,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
     @property
     def EnablePdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。 示例值：false
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。 示例值：false
         :rtype: bool
         """
         return self._EnablePdf
@@ -25284,7 +25513,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。 示例值：1
+        r"""需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。 示例值：1
         :rtype: int
         """
         return self._PdfPageNumber
@@ -25295,7 +25524,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
     @property
     def Type(self):
-        """支持的模板类型
+        r"""支持的模板类型
 - General 通用告警（支持所有类型告警）
 - LicensePlate 车牌告警（支持翻拍告警）
         :rtype: str
@@ -25324,7 +25553,7 @@ class RecognizeGeneralTextImageWarnRequest(AbstractModel):
 
 
 class RecognizeGeneralTextImageWarnResponse(AbstractModel):
-    """RecognizeGeneralTextImageWarn返回参数结构体
+    r"""RecognizeGeneralTextImageWarn返回参数结构体
 
     """
 
@@ -25352,7 +25581,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def Copy(self):
-        """复印告警信息
+        r"""复印告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
         """
         return self._Copy
@@ -25363,7 +25592,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def Reprint(self):
-        """翻拍告警信息
+        r"""翻拍告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
         """
         return self._Reprint
@@ -25374,7 +25603,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def Blur(self):
-        """模糊告警信息
+        r"""模糊告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
         """
         return self._Blur
@@ -25385,7 +25614,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def Reflection(self):
-        """反光告警信息
+        r"""反光告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
         """
         return self._Reflection
@@ -25396,7 +25625,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def BorderIncomplete(self):
-        """边框不完整告警信息
+        r"""边框不完整告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
         """
         return self._BorderIncomplete
@@ -25407,7 +25636,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25437,7 +25666,7 @@ class RecognizeGeneralTextImageWarnResponse(AbstractModel):
 
 
 class RecognizeHealthCodeOCRRequest(AbstractModel):
-    """RecognizeHealthCodeOCR请求参数结构体
+    r"""RecognizeHealthCodeOCR请求参数结构体
 
     """
 
@@ -25457,7 +25686,7 @@ class RecognizeHealthCodeOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -25468,7 +25697,7 @@ class RecognizeHealthCodeOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -25479,7 +25708,7 @@ class RecognizeHealthCodeOCRRequest(AbstractModel):
 
     @property
     def Type(self):
-        """需要识别的健康码类型列表，为空或不填表示默认为自动识别。
+        r"""需要识别的健康码类型列表，为空或不填表示默认为自动识别。
 0:自动识别
         :rtype: int
         """
@@ -25505,7 +25734,7 @@ class RecognizeHealthCodeOCRRequest(AbstractModel):
 
 
 class RecognizeHealthCodeOCRResponse(AbstractModel):
-    """RecognizeHealthCodeOCR返回参数结构体
+    r"""RecognizeHealthCodeOCR返回参数结构体
 
     """
 
@@ -25548,7 +25777,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """持码人姓名，如：王*（允许返回空值）
+        r"""持码人姓名，如：王*（允许返回空值）
         :rtype: str
         """
         return self._Name
@@ -25559,7 +25788,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def IDNumber(self):
-        """持码人身份证号，如：11**************01（允许返回空值）
+        r"""持码人身份证号，如：11**************01（允许返回空值）
         :rtype: str
         """
         return self._IDNumber
@@ -25570,7 +25799,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def Time(self):
-        """健康码更新时间（允许返回空值）
+        r"""健康码更新时间（允许返回空值）
         :rtype: str
         """
         return self._Time
@@ -25581,7 +25810,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        """健康码颜色：绿色、黄色、红色（允许返回空值）
+        r"""健康码颜色：绿色、黄色、红色（允许返回空值）
         :rtype: str
         """
         return self._Color
@@ -25592,7 +25821,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def TestingInterval(self):
-        """核酸检测间隔时长（允许返回空值）
+        r"""核酸检测间隔时长（允许返回空值）
         :rtype: str
         """
         return self._TestingInterval
@@ -25603,7 +25832,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def TestingResult(self):
-        """核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
+        r"""核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
         :rtype: str
         """
         return self._TestingResult
@@ -25614,7 +25843,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def TestingTime(self):
-        """核酸检测时间（允许返回空值）
+        r"""核酸检测时间（允许返回空值）
         :rtype: str
         """
         return self._TestingTime
@@ -25625,7 +25854,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def Vaccination(self):
-        """疫苗接种信息，返回接种针数或接种情况（允许返回空值）
+        r"""疫苗接种信息，返回接种针数或接种情况（允许返回空值）
         :rtype: str
         """
         return self._Vaccination
@@ -25636,7 +25865,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def SpotName(self):
-        """场所名称（允许返回空值）
+        r"""场所名称（允许返回空值）
         :rtype: str
         """
         return self._SpotName
@@ -25647,7 +25876,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def VaccinationTime(self):
-        """疫苗接种时间
+        r"""疫苗接种时间
         :rtype: str
         """
         return self._VaccinationTime
@@ -25658,7 +25887,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25683,7 +25912,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
 
 class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
-    """RecognizeMedicalInvoiceOCR请求参数结构体
+    r"""RecognizeMedicalInvoiceOCR请求参数结构体
 
     """
 
@@ -25711,7 +25940,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的Base64 值。支持的文件格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载文件经Base64编码后不超过 10M。文件下载时间不超过 3 秒。输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的Base64 值。支持的文件格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载文件经Base64编码后不超过 10M。文件下载时间不超过 3 秒。输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -25722,7 +25951,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的Url 地址。支持的文件格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载文件经 Base64 编码后不超过 10M。文件下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的Url 地址。支持的文件格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载文件经 Base64 编码后不超过 10M。文件下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -25733,7 +25962,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def ReturnVertex(self):
-        """是否需要返回识别出的文本行在原图上的四点坐标，默认不返回
+        r"""是否需要返回识别出的文本行在原图上的四点坐标，默认不返回
         :rtype: bool
         """
         return self._ReturnVertex
@@ -25744,7 +25973,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def ReturnCoord(self):
-        """是否需要返回识别出的文本行在旋转纠正之后的图像中的四点坐标，默认不返回
+        r"""是否需要返回识别出的文本行在旋转纠正之后的图像中的四点坐标，默认不返回
         :rtype: bool
         """
         return self._ReturnCoord
@@ -25755,7 +25984,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -25766,7 +25995,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -25794,7 +26023,7 @@ class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
 
 
 class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
-    """RecognizeMedicalInvoiceOCR返回参数结构体
+    r"""RecognizeMedicalInvoiceOCR返回参数结构体
 
     """
 
@@ -25813,7 +26042,7 @@ class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
 
     @property
     def MedicalInvoiceInfos(self):
-        """识别出的字段信息
+        r"""识别出的字段信息
         :rtype: list of MedicalInvoiceInfo
         """
         return self._MedicalInvoiceInfos
@@ -25824,7 +26053,7 @@ class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -25835,7 +26064,7 @@ class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25857,7 +26086,7 @@ class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
 
 
 class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
-    """RecognizeOnlineTaxiItineraryOCR请求参数结构体
+    r"""RecognizeOnlineTaxiItineraryOCR请求参数结构体
 
     """
 
@@ -25879,7 +26108,7 @@ class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -25890,7 +26119,7 @@ class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -25901,7 +26130,7 @@ class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -25912,7 +26141,7 @@ class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -25938,7 +26167,7 @@ class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
 
 
 class RecognizeOnlineTaxiItineraryOCRResponse(AbstractModel):
-    """RecognizeOnlineTaxiItineraryOCR返回参数结构体
+    r"""RecognizeOnlineTaxiItineraryOCR返回参数结构体
 
     """
 
@@ -25954,7 +26183,7 @@ class RecognizeOnlineTaxiItineraryOCRResponse(AbstractModel):
 
     @property
     def OnlineTaxiItineraryInfos(self):
-        """网约车行程单识别结果，具体内容请点击左侧链接。
+        r"""网约车行程单识别结果，具体内容请点击左侧链接。
         :rtype: list of OnlineTaxiItineraryInfo
         """
         return self._OnlineTaxiItineraryInfos
@@ -25965,7 +26194,7 @@ class RecognizeOnlineTaxiItineraryOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25986,7 +26215,7 @@ class RecognizeOnlineTaxiItineraryOCRResponse(AbstractModel):
 
 
 class RecognizeStoreNameRequest(AbstractModel):
-    """RecognizeStoreName请求参数结构体
+    r"""RecognizeStoreName请求参数结构体
 
     """
 
@@ -26002,7 +26231,7 @@ class RecognizeStoreNameRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -26013,7 +26242,7 @@ class RecognizeStoreNameRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -26037,7 +26266,7 @@ class RecognizeStoreNameRequest(AbstractModel):
 
 
 class RecognizeStoreNameResponse(AbstractModel):
-    """RecognizeStoreName返回参数结构体
+    r"""RecognizeStoreName返回参数结构体
 
     """
 
@@ -26059,7 +26288,7 @@ class RecognizeStoreNameResponse(AbstractModel):
 
     @property
     def StoreInfo(self):
-        """门头照名称
+        r"""门头照名称
         :rtype: list of StoreInfo
         """
         return self._StoreInfo
@@ -26070,7 +26299,7 @@ class RecognizeStoreNameResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负
         :rtype: float
         """
         return self._Angle
@@ -26081,7 +26310,7 @@ class RecognizeStoreNameResponse(AbstractModel):
 
     @property
     def StoreLabel(self):
-        """门头照标签
+        r"""门头照标签
         :rtype: list of str
         """
         return self._StoreLabel
@@ -26092,7 +26321,7 @@ class RecognizeStoreNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26115,7 +26344,7 @@ class RecognizeStoreNameResponse(AbstractModel):
 
 
 class RecognizeTableAccurateOCRRequest(AbstractModel):
-    """RecognizeTableAccurateOCR请求参数结构体
+    r"""RecognizeTableAccurateOCR请求参数结构体
 
     """
 
@@ -26134,7 +26363,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -26145,7 +26374,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -26156,7 +26385,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -26181,7 +26410,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
 
 class RecognizeTableAccurateOCRResponse(AbstractModel):
-    """RecognizeTableAccurateOCR返回参数结构体
+    r"""RecognizeTableAccurateOCR返回参数结构体
 
     """
 
@@ -26209,7 +26438,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def TableDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableInfo
         """
@@ -26221,7 +26450,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Base64 编码后的 Excel 数据。
+        r"""Base64 编码后的 Excel 数据。
         :rtype: str
         """
         return self._Data
@@ -26232,7 +26461,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """图片为PDF时，返回PDF的总页数，默认为0
+        r"""图片为PDF时，返回PDF的总页数，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26244,7 +26473,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -26256,7 +26485,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26280,7 +26509,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
 
 class RecognizeTableMultiOCRRequest(AbstractModel):
-    """RecognizeTableMultiOCR请求参数结构体
+    r"""RecognizeTableMultiOCR请求参数结构体
 
     """
 
@@ -26308,7 +26537,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
+        r"""图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
         :rtype: str
         """
         return self._ImageBase64
@@ -26319,7 +26548,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
+        r"""图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
         :rtype: str
         """
         return self._ImageUrl
@@ -26330,7 +26559,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
     @property
     def PdfStartPageNumber(self):
-        """文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
+        r"""文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
         :rtype: int
         """
         return self._PdfStartPageNumber
@@ -26341,7 +26570,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
     @property
     def PdfEndPageNumber(self):
-        """文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
+        r"""文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
         :rtype: int
         """
         return self._PdfEndPageNumber
@@ -26352,7 +26581,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
     @property
     def DataFormat(self):
-        """配置选项，支持配置输出数据格式。
+        r"""配置选项，支持配置输出数据格式。
 
 * **Mdbase64** 返回 base64 编码的 markdown 格式文本。
 * **Excelbase64** 返回 base64 编码的 excel 文件。
@@ -26382,7 +26611,7 @@ class RecognizeTableMultiOCRRequest(AbstractModel):
 
 
 class RecognizeTableMultiOCRResponse(AbstractModel):
-    """RecognizeTableMultiOCR返回参数结构体
+    r"""RecognizeTableMultiOCR返回参数结构体
 
     """
 
@@ -26399,7 +26628,7 @@ class RecognizeTableMultiOCRResponse(AbstractModel):
 
     @property
     def DataBase64(self):
-        """Base64 编码后的 Excel 数据或 Markdown 数据。  注意：此字段可能返回空，表示取不到有效值。
+        r"""Base64 编码后的 Excel 数据或 Markdown 数据。  注意：此字段可能返回空，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26411,7 +26640,7 @@ class RecognizeTableMultiOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26427,7 +26656,7 @@ class RecognizeTableMultiOCRResponse(AbstractModel):
 
 
 class RecognizeTableOCRRequest(AbstractModel):
-    """RecognizeTableOCR请求参数结构体
+    r"""RecognizeTableOCR请求参数结构体
 
     """
 
@@ -26456,7 +26685,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。
+        r"""图片/PDF的 Base64 值。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
@@ -26469,7 +26698,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。
+        r"""图片/PDF的 Url 地址。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
@@ -26482,7 +26711,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -26493,7 +26722,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -26504,7 +26733,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
     @property
     def TableLanguage(self):
-        """语言，zh：中英文（默认）jap：日文
+        r"""语言，zh：中英文（默认）jap：日文
         :rtype: str
         """
         return self._TableLanguage
@@ -26531,7 +26760,7 @@ class RecognizeTableOCRRequest(AbstractModel):
 
 
 class RecognizeTableOCRResponse(AbstractModel):
-    """RecognizeTableOCR返回参数结构体
+    r"""RecognizeTableOCR返回参数结构体
 
     """
 
@@ -26556,7 +26785,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
     @property
     def TableDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TableDetectInfo
         """
         return self._TableDetections
@@ -26567,7 +26796,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Base64 编码后的 Excel 数据。
+        r"""Base64 编码后的 Excel 数据。
         :rtype: str
         """
         return self._Data
@@ -26578,7 +26807,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """图片为PDF时，返回PDF的总页数，默认为0
+        r"""图片为PDF时，返回PDF的总页数，默认为0
         :rtype: int
         """
         return self._PdfPageSize
@@ -26589,7 +26818,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
         :rtype: float
         """
         return self._Angle
@@ -26600,7 +26829,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26624,7 +26853,7 @@ class RecognizeTableOCRResponse(AbstractModel):
 
 
 class RecognizeThaiIDCardOCRRequest(AbstractModel):
-    """RecognizeThaiIDCardOCR请求参数结构体
+    r"""RecognizeThaiIDCardOCR请求参数结构体
 
     """
 
@@ -26650,7 +26879,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -26661,7 +26890,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._BackImageBase64
@@ -26672,7 +26901,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -26683,7 +26912,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._BackImageUrl
@@ -26694,7 +26923,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
+        r"""图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
         :rtype: bool
         """
@@ -26722,7 +26951,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
 
 class RecognizeThaiIDCardOCRResponse(AbstractModel):
-    """RecognizeThaiIDCardOCR返回参数结构体
+    r"""RecognizeThaiIDCardOCR返回参数结构体
 
     """
 
@@ -26795,7 +27024,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """身份证号码
+        r"""身份证号码
         :rtype: str
         """
         return self._ID
@@ -26806,7 +27035,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ThaiName(self):
-        """泰文姓名
+        r"""泰文姓名
         :rtype: str
         """
         return self._ThaiName
@@ -26817,7 +27046,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnFirstName(self):
-        """英文姓名
+        r"""英文姓名
         :rtype: str
         """
         return self._EnFirstName
@@ -26828,7 +27057,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnLastName(self):
-        """英文姓名
+        r"""英文姓名
         :rtype: str
         """
         return self._EnLastName
@@ -26839,7 +27068,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """泰文签发日期
+        r"""泰文签发日期
         :rtype: str
         """
         return self._IssueDate
@@ -26850,7 +27079,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """泰文到期日期
+        r"""泰文到期日期
         :rtype: str
         """
         return self._ExpirationDate
@@ -26861,7 +27090,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnIssueDate(self):
-        """英文签发日期
+        r"""英文签发日期
         :rtype: str
         """
         return self._EnIssueDate
@@ -26872,7 +27101,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnExpirationDate(self):
-        """英文到期日期
+        r"""英文到期日期
         :rtype: str
         """
         return self._EnExpirationDate
@@ -26883,7 +27112,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """泰文出生日期
+        r"""泰文出生日期
         :rtype: str
         """
         return self._Birthday
@@ -26894,7 +27123,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnBirthday(self):
-        """英文出生日期
+        r"""英文出生日期
         :rtype: str
         """
         return self._EnBirthday
@@ -26905,7 +27134,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Religion(self):
-        """宗教信仰
+        r"""宗教信仰
         :rtype: str
         """
         return self._Religion
@@ -26916,7 +27145,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """序列号
+        r"""序列号
         :rtype: str
         """
         return self._SerialNumber
@@ -26927,7 +27156,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -26938,7 +27167,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def LaserID(self):
-        """背面号码
+        r"""背面号码
         :rtype: str
         """
         return self._LaserID
@@ -26949,7 +27178,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """证件人像照片抠取
+        r"""证件人像照片抠取
         :rtype: str
         """
         return self._PortraitImage
@@ -26960,7 +27189,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """告警码
+        r"""告警码
 -9101 证件边框不完整告警
 -9102 证件复印件告警
 -9103 证件翻拍告警
@@ -26979,7 +27208,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃， 将固定返回"1"，不建议使用。 
+        r"""该字段已废弃， 将固定返回"1"，不建议使用。 
         :rtype: str
         """
         return self._AdvancedInfo
@@ -26992,7 +27221,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def CardCount(self):
-        """卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+        r"""卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
         :rtype: int
         """
         return self._CardCount
@@ -27003,7 +27232,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27036,7 +27265,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeTravelCardOCRRequest(AbstractModel):
-    """RecognizeTravelCardOCR请求参数结构体
+    r"""RecognizeTravelCardOCR请求参数结构体
 
     """
 
@@ -27052,7 +27281,7 @@ class RecognizeTravelCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -27063,7 +27292,7 @@ class RecognizeTravelCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -27087,7 +27316,7 @@ class RecognizeTravelCardOCRRequest(AbstractModel):
 
 
 class RecognizeTravelCardOCRResponse(AbstractModel):
-    """RecognizeTravelCardOCR返回参数结构体
+    r"""RecognizeTravelCardOCR返回参数结构体
 
     """
 
@@ -27115,7 +27344,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def Time(self):
-        """行程卡更新时间，格式为：XXXX.XX.XX XX:XX:XX
+        r"""行程卡更新时间，格式为：XXXX.XX.XX XX:XX:XX
         :rtype: str
         """
         return self._Time
@@ -27126,7 +27355,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        """行程卡颜色：绿色、黄色、红色
+        r"""行程卡颜色：绿色、黄色、红色
         :rtype: str
         """
         return self._Color
@@ -27137,7 +27366,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def ReachedCity(self):
-        """7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
+        r"""7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
         :rtype: list of str
         """
         return self._ReachedCity
@@ -27148,7 +27377,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def RiskArea(self):
-        """7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
+        r"""7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
         :rtype: list of str
         """
         return self._RiskArea
@@ -27159,7 +27388,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def Telephone(self):
-        """电话号码
+        r"""电话号码
         :rtype: str
         """
         return self._Telephone
@@ -27170,7 +27399,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27190,7 +27419,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
 
 
 class RecognizeValidIDCardOCRRequest(AbstractModel):
-    """RecognizeValidIDCardOCR请求参数结构体
+    r"""RecognizeValidIDCardOCR请求参数结构体
 
     """
 
@@ -27252,7 +27481,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -27263,7 +27492,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -27274,7 +27503,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def CardType(self):
-        """0 自动，自动判断输入证件的类型
+        r"""0 自动，自动判断输入证件的类型
 1 身份证人像面，指定输入证件类型为二代身份证人像面
 2 身份证国徽面，指定输入证件类型为二代身份证国徽面
 3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面
@@ -27298,7 +27527,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnablePortrait(self):
-        """默认值为false，打开返回证件头像切图。
+        r"""默认值为false，打开返回证件头像切图。
         :rtype: bool
         """
         return self._EnablePortrait
@@ -27309,7 +27538,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableCropImage(self):
-        """默认值为false，打开返回证件主体切图。
+        r"""默认值为false，打开返回证件主体切图。
         :rtype: bool
         """
         return self._EnableCropImage
@@ -27320,7 +27549,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableBorderCheck(self):
-        """默认值为false，打开返回边缘完整性判断。
+        r"""默认值为false，打开返回边缘完整性判断。
         :rtype: bool
         """
         return self._EnableBorderCheck
@@ -27331,7 +27560,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableOcclusionCheck(self):
-        """默认值为false，打开返回证件是否被遮挡。
+        r"""默认值为false，打开返回证件是否被遮挡。
         :rtype: bool
         """
         return self._EnableOcclusionCheck
@@ -27342,7 +27571,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableCopyCheck(self):
-        """默认值为false，打开返回证件是否存在复印。
+        r"""默认值为false，打开返回证件是否存在复印。
         :rtype: bool
         """
         return self._EnableCopyCheck
@@ -27353,7 +27582,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableReshootCheck(self):
-        """默认值为false，打开返回证件是否存在屏幕翻拍。
+        r"""默认值为false，打开返回证件是否存在屏幕翻拍。
         :rtype: bool
         """
         return self._EnableReshootCheck
@@ -27364,7 +27593,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnablePSCheck(self):
-        """默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
+        r"""默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
         :rtype: bool
         """
         return self._EnablePSCheck
@@ -27375,7 +27604,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableWordCheck(self):
-        """默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
+        r"""默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
         :rtype: bool
         """
         return self._EnableWordCheck
@@ -27386,7 +27615,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableQualityCheck(self):
-        """默认值为false，打开返回证件是否模糊。
+        r"""默认值为false，打开返回证件是否模糊。
         :rtype: bool
         """
         return self._EnableQualityCheck
@@ -27397,7 +27626,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableElectronCheck(self):
-        """默认值为false，打开返回是否存在电子身份证判断。
+        r"""默认值为false，打开返回是否存在电子身份证判断。
         :rtype: bool
         """
         return self._EnableElectronCheck
@@ -27432,7 +27661,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
 
 class RecognizeValidIDCardOCRResponse(AbstractModel):
-    """RecognizeValidIDCardOCR返回参数结构体
+    r"""RecognizeValidIDCardOCR返回参数结构体
 
     """
 
@@ -27475,7 +27704,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """卡证类型
+        r"""卡证类型
 身份证人像面
 身份证国徽面
 
@@ -27497,7 +27726,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def IDCardInfo(self):
-        """身份证信息
+        r"""身份证信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfo`
         """
@@ -27509,7 +27738,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def TemporaryIDCardInfo(self):
-        """临时身份证信息
+        r"""临时身份证信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TemporaryIDCardInfo`
         """
@@ -27521,7 +27750,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def ResidencePermitInfo(self):
-        """港澳台居住证信息
+        r"""港澳台居住证信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ResidencePermitInfo`
         """
@@ -27533,7 +27762,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def PermanentResidencePermitInfo(self):
-        """外国人永久居留证信息
+        r"""外国人永久居留证信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PermanentResidencePermitInfo`
         """
@@ -27545,7 +27774,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27573,7 +27802,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
 
 class Rect(AbstractModel):
-    """矩形坐标
+    r"""矩形坐标
 
     """
 
@@ -27595,7 +27824,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        """左上角x
+        r"""左上角x
         :rtype: int
         """
         return self._X
@@ -27606,7 +27835,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角y
+        r"""左上角y
         :rtype: int
         """
         return self._Y
@@ -27617,7 +27846,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        """宽度
+        r"""宽度
         :rtype: int
         """
         return self._Width
@@ -27628,7 +27857,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        """高度
+        r"""高度
         :rtype: int
         """
         return self._Height
@@ -27654,7 +27883,7 @@ class Rect(AbstractModel):
 
 
 class ReflectDetailInfo(AbstractModel):
-    """反光点覆盖区域详情结果
+    r"""反光点覆盖区域详情结果
 
     """
 
@@ -27670,7 +27899,7 @@ Others 其他位置
 
     @property
     def Position(self):
-        """NationalEmblem 国徽位置
+        r"""NationalEmblem 国徽位置
 Portrait 人像照片位置
 RecognitionField 识别字段位置
 Others 其他位置
@@ -27696,7 +27925,7 @@ Others 其他位置
 
 
 class RequestIdInfo(AbstractModel):
-    """请求 id 信息
+    r"""请求 id 信息
 
     """
 
@@ -27715,7 +27944,7 @@ class RequestIdInfo(AbstractModel):
 
     @property
     def ApiRequestId(self):
-        """请求 api 的 requestid
+        r"""请求 api 的 requestid
         :rtype: str
         """
         return self._ApiRequestId
@@ -27726,7 +27955,7 @@ class RequestIdInfo(AbstractModel):
 
     @property
     def ApiErrorCode(self):
-        """请求 api 的错误码
+        r"""请求 api 的错误码
         :rtype: str
         """
         return self._ApiErrorCode
@@ -27737,7 +27966,7 @@ class RequestIdInfo(AbstractModel):
 
     @property
     def WarnCodes(self):
-        """告警码
+        r"""告警码
         :rtype: list of int
         """
         return self._WarnCodes
@@ -27762,7 +27991,7 @@ class RequestIdInfo(AbstractModel):
 
 
 class ResidenceBookletOCRRequest(AbstractModel):
-    """ResidenceBookletOCR请求参数结构体
+    r"""ResidenceBookletOCR请求参数结构体
 
     """
 
@@ -27778,7 +28007,7 @@ class ResidenceBookletOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -27789,7 +28018,7 @@ class ResidenceBookletOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -27813,7 +28042,7 @@ class ResidenceBookletOCRRequest(AbstractModel):
 
 
 class ResidenceBookletOCRResponse(AbstractModel):
-    """ResidenceBookletOCR返回参数结构体
+    r"""ResidenceBookletOCR返回参数结构体
 
     """
 
@@ -27910,7 +28139,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def HouseholdNumber(self):
-        """户号
+        r"""户号
         :rtype: str
         """
         return self._HouseholdNumber
@@ -27921,7 +28150,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -27932,7 +28161,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -27943,7 +28172,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生地
+        r"""出生地
         :rtype: str
         """
         return self._BirthPlace
@@ -27954,7 +28183,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Nation(self):
-        """民族
+        r"""民族
         :rtype: str
         """
         return self._Nation
@@ -27965,7 +28194,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def NativePlace(self):
-        """籍贯
+        r"""籍贯
         :rtype: str
         """
         return self._NativePlace
@@ -27976,7 +28205,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def BirthDate(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._BirthDate
@@ -27987,7 +28216,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """公民身份证件编号
+        r"""公民身份证件编号
         :rtype: str
         """
         return self._IdCardNumber
@@ -27998,7 +28227,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def EducationDegree(self):
-        """文化程度
+        r"""文化程度
         :rtype: str
         """
         return self._EducationDegree
@@ -28009,7 +28238,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def ServicePlace(self):
-        """服务处所
+        r"""服务处所
         :rtype: str
         """
         return self._ServicePlace
@@ -28020,7 +28249,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Household(self):
-        """户别
+        r"""户别
         :rtype: str
         """
         return self._Household
@@ -28031,7 +28260,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """住址
+        r"""住址
         :rtype: str
         """
         return self._Address
@@ -28042,7 +28271,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Signature(self):
-        """承办人签章文字
+        r"""承办人签章文字
         :rtype: str
         """
         return self._Signature
@@ -28053,7 +28282,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """签发日期
+        r"""签发日期
         :rtype: str
         """
         return self._IssueDate
@@ -28064,7 +28293,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def HomePageNumber(self):
-        """户主页编号
+        r"""户主页编号
         :rtype: str
         """
         return self._HomePageNumber
@@ -28075,7 +28304,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def HouseholderName(self):
-        """户主姓名
+        r"""户主姓名
         :rtype: str
         """
         return self._HouseholderName
@@ -28086,7 +28315,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Relationship(self):
-        """户主或与户主关系
+        r"""户主或与户主关系
         :rtype: str
         """
         return self._Relationship
@@ -28097,7 +28326,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def OtherAddresses(self):
-        """本市（县）其他住址
+        r"""本市（县）其他住址
         :rtype: str
         """
         return self._OtherAddresses
@@ -28108,7 +28337,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def ReligiousBelief(self):
-        """宗教信仰
+        r"""宗教信仰
         :rtype: str
         """
         return self._ReligiousBelief
@@ -28119,7 +28348,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Height(self):
-        """身高
+        r"""身高
         :rtype: str
         """
         return self._Height
@@ -28130,7 +28359,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def BloodType(self):
-        """血型
+        r"""血型
         :rtype: str
         """
         return self._BloodType
@@ -28141,7 +28370,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def MaritalStatus(self):
-        """婚姻状况
+        r"""婚姻状况
         :rtype: str
         """
         return self._MaritalStatus
@@ -28152,7 +28381,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def VeteranStatus(self):
-        """兵役状况
+        r"""兵役状况
         :rtype: str
         """
         return self._VeteranStatus
@@ -28163,7 +28392,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def Profession(self):
-        """职业
+        r"""职业
         :rtype: str
         """
         return self._Profession
@@ -28174,7 +28403,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def MoveToCityInformation(self):
-        """何时由何地迁来本市(县)
+        r"""何时由何地迁来本市(县)
         :rtype: str
         """
         return self._MoveToCityInformation
@@ -28185,7 +28414,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def MoveToSiteInformation(self):
-        """何时由何地迁来本址
+        r"""何时由何地迁来本址
         :rtype: str
         """
         return self._MoveToSiteInformation
@@ -28196,7 +28425,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def RegistrationDate(self):
-        """登记日期
+        r"""登记日期
         :rtype: str
         """
         return self._RegistrationDate
@@ -28207,7 +28436,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def FormerName(self):
-        """曾用名
+        r"""曾用名
         :rtype: str
         """
         return self._FormerName
@@ -28218,7 +28447,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28261,7 +28490,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
 
 
 class ResidencePermitInfo(AbstractModel):
-    """港澳台居住证信息返回
+    r"""港澳台居住证信息返回
 
     """
 
@@ -28310,7 +28539,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Name
@@ -28321,7 +28550,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Sex
@@ -28332,7 +28561,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Nation
@@ -28343,7 +28572,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Birth
@@ -28354,7 +28583,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Address
@@ -28365,7 +28594,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def IdNum(self):
-        """公民身份号码（人像面）
+        r"""公民身份号码（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._IdNum
@@ -28376,7 +28605,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Authority
@@ -28387,7 +28616,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._ValidDate
@@ -28398,7 +28627,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def WarnInfos(self):
-        """WarnInfos，告警信息
+        r"""WarnInfos，告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CardWarnInfo`
         """
         return self._WarnInfos
@@ -28409,7 +28638,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def CardImage(self):
-        """IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+        r"""IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._CardImage
@@ -28420,7 +28649,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+        r"""Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._PortraitImage
@@ -28431,7 +28660,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def PassNum(self):
-        """通行证号码，港澳台居住证国徽面 返回该字段
+        r"""通行证号码，港澳台居住证国徽面 返回该字段
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._PassNum
@@ -28442,7 +28671,7 @@ class ResidencePermitInfo(AbstractModel):
 
     @property
     def IssueNum(self):
-        """签发次数，港澳台居住证国徽面 返回该字段
+        r"""签发次数，港澳台居住证国徽面 返回该字段
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._IssueNum
@@ -28503,7 +28732,7 @@ class ResidencePermitInfo(AbstractModel):
 
 
 class ResultList(AbstractModel):
-    """结果列表
+    r"""结果列表
 
     """
 
@@ -28540,7 +28769,7 @@ class ResultList(AbstractModel):
 
     @property
     def Question(self):
-        """题干
+        r"""题干
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Element
         """
@@ -28552,7 +28781,7 @@ class ResultList(AbstractModel):
 
     @property
     def Option(self):
-        """选项
+        r"""选项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Element
         """
@@ -28564,7 +28793,7 @@ class ResultList(AbstractModel):
 
     @property
     def Figure(self):
-        """插图
+        r"""插图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Element
         """
@@ -28576,7 +28805,7 @@ class ResultList(AbstractModel):
 
     @property
     def Table(self):
-        """表格
+        r"""表格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Element
         """
@@ -28588,7 +28817,7 @@ class ResultList(AbstractModel):
 
     @property
     def Answer(self):
-        """答案
+        r"""答案
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Element
         """
@@ -28600,7 +28829,7 @@ class ResultList(AbstractModel):
 
     @property
     def Parse(self):
-        """解析
+        r"""解析
         :rtype: list of Element
         """
         return self._Parse
@@ -28611,7 +28840,7 @@ class ResultList(AbstractModel):
 
     @property
     def Coord(self):
-        """整题的坐标
+        r"""整题的坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Polygon
         """
@@ -28676,7 +28905,7 @@ class ResultList(AbstractModel):
 
 
 class RideHailingDriverLicenseOCRRequest(AbstractModel):
-    """RideHailingDriverLicenseOCR请求参数结构体
+    r"""RideHailingDriverLicenseOCR请求参数结构体
 
     """
 
@@ -28692,7 +28921,7 @@ class RideHailingDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -28703,7 +28932,7 @@ class RideHailingDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500\*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500\*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -28727,7 +28956,7 @@ class RideHailingDriverLicenseOCRRequest(AbstractModel):
 
 
 class RideHailingDriverLicenseOCRResponse(AbstractModel):
-    """RideHailingDriverLicenseOCR返回参数结构体
+    r"""RideHailingDriverLicenseOCR返回参数结构体
 
     """
 
@@ -28755,7 +28984,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -28766,7 +28995,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def LicenseNumber(self):
-        """证号，对应网约车驾驶证字段：证号/从业资格证号/驾驶员证号/身份证号
+        r"""证号，对应网约车驾驶证字段：证号/从业资格证号/驾驶员证号/身份证号
         :rtype: str
         """
         return self._LicenseNumber
@@ -28777,7 +29006,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def StartDate(self):
-        """有效起始日期
+        r"""有效起始日期
         :rtype: str
         """
         return self._StartDate
@@ -28788,7 +29017,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def EndDate(self):
-        """有效期截止时间，对应网约车驾驶证字段：有效期至/营运期限止
+        r"""有效期截止时间，对应网约车驾驶证字段：有效期至/营运期限止
         :rtype: str
         """
         return self._EndDate
@@ -28799,7 +29028,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def ReleaseDate(self):
-        """初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
+        r"""初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
         :rtype: str
         """
         return self._ReleaseDate
@@ -28810,7 +29039,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28830,7 +29059,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
 
 
 class RideHailingTransportLicenseOCRRequest(AbstractModel):
-    """RideHailingTransportLicenseOCR请求参数结构体
+    r"""RideHailingTransportLicenseOCR请求参数结构体
 
     """
 
@@ -28846,7 +29075,7 @@ class RideHailingTransportLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -28857,7 +29086,7 @@ class RideHailingTransportLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500\*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500\*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -28881,7 +29110,7 @@ class RideHailingTransportLicenseOCRRequest(AbstractModel):
 
 
 class RideHailingTransportLicenseOCRResponse(AbstractModel):
-    """RideHailingTransportLicenseOCR返回参数结构体
+    r"""RideHailingTransportLicenseOCR返回参数结构体
 
     """
 
@@ -28912,7 +29141,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def OperationLicenseNumber(self):
-        """交运管许可字号。
+        r"""交运管许可字号。
         :rtype: str
         """
         return self._OperationLicenseNumber
@@ -28923,7 +29152,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def VehicleOwner(self):
-        """车辆所有人，对应网约车运输证字段：车辆所有人/车主名称/业户名称。
+        r"""车辆所有人，对应网约车运输证字段：车辆所有人/车主名称/业户名称。
         :rtype: str
         """
         return self._VehicleOwner
@@ -28934,7 +29163,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def VehicleNumber(self):
-        """车牌号码，对应网约车运输证字段：车牌号码/车辆号牌。
+        r"""车牌号码，对应网约车运输证字段：车牌号码/车辆号牌。
         :rtype: str
         """
         return self._VehicleNumber
@@ -28945,7 +29174,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def StartDate(self):
-        """有效起始日期。
+        r"""有效起始日期。
         :rtype: str
         """
         return self._StartDate
@@ -28956,7 +29185,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def EndDate(self):
-        """有效期截止时间，对应网约车运输证字段：有效期至/营运期限止。
+        r"""有效期截止时间，对应网约车运输证字段：有效期至/营运期限止。
         :rtype: str
         """
         return self._EndDate
@@ -28967,7 +29196,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def ReleaseDate(self):
-        """初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
+        r"""初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
         :rtype: str
         """
         return self._ReleaseDate
@@ -28978,7 +29207,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28999,7 +29228,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
 
 
 class SaleInventory(AbstractModel):
-    """销货清单
+    r"""销货清单
 
     """
 
@@ -29015,7 +29244,7 @@ class SaleInventory(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -29026,7 +29255,7 @@ class SaleInventory(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)
+        r"""识别出的字段名称(关键字)
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -29055,7 +29284,7 @@ class SaleInventory(AbstractModel):
 
 
 class SealInfo(AbstractModel):
-    """印章信息
+    r"""印章信息
 
     """
 
@@ -29082,7 +29311,7 @@ class SealInfo(AbstractModel):
 
     @property
     def SealBody(self):
-        """印章主体内容
+        r"""印章主体内容
         :rtype: str
         """
         return self._SealBody
@@ -29093,7 +29322,7 @@ class SealInfo(AbstractModel):
 
     @property
     def Location(self):
-        """印章坐标
+        r"""印章坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Location
@@ -29104,7 +29333,7 @@ class SealInfo(AbstractModel):
 
     @property
     def OtherTexts(self):
-        """印章其它文本内容
+        r"""印章其它文本内容
         :rtype: list of str
         """
         return self._OtherTexts
@@ -29115,7 +29344,7 @@ class SealInfo(AbstractModel):
 
     @property
     def SealShape(self):
-        """印章类型，表示为:
+        r"""印章类型，表示为:
 圆形印章：0
 椭圆形印章：1
 方形印章：2
@@ -29148,7 +29377,7 @@ class SealInfo(AbstractModel):
 
 
 class SealOCRRequest(AbstractModel):
-    """SealOCR请求参数结构体
+    r"""SealOCR请求参数结构体
 
     """
 
@@ -29170,7 +29399,7 @@ class SealOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -29181,7 +29410,7 @@ class SealOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -29192,7 +29421,7 @@ class SealOCRRequest(AbstractModel):
 
     @property
     def EnablePdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._EnablePdf
@@ -29203,7 +29432,7 @@ class SealOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -29229,7 +29458,7 @@ class SealOCRRequest(AbstractModel):
 
 
 class SealOCRResponse(AbstractModel):
-    """SealOCR返回参数结构体
+    r"""SealOCR返回参数结构体
 
     """
 
@@ -29262,7 +29491,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealBody(self):
-        """印章内容
+        r"""印章内容
         :rtype: str
         """
         return self._SealBody
@@ -29273,7 +29502,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """印章坐标
+        r"""印章坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Location
@@ -29284,7 +29513,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def OtherTexts(self):
-        """其它文本内容
+        r"""其它文本内容
         :rtype: list of str
         """
         return self._OtherTexts
@@ -29295,7 +29524,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealInfos(self):
-        """全部印章信息
+        r"""全部印章信息
         :rtype: list of SealInfo
         """
         return self._SealInfos
@@ -29306,7 +29535,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealShape(self):
-        """印章类型，表示为：
+        r"""印章类型，表示为：
 圆形印章：0
 椭圆形印章：1
 方形印章：2
@@ -29322,7 +29551,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29349,7 +29578,7 @@ class SealOCRResponse(AbstractModel):
 
 
 class ShipInvoiceInfo(AbstractModel):
-    """轮船票字段信息
+    r"""轮船票字段信息
 
     """
 
@@ -29369,7 +29598,7 @@ class ShipInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种。
         :rtype: str
         """
@@ -29381,7 +29610,7 @@ class ShipInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -29392,7 +29621,7 @@ class ShipInvoiceInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -29419,7 +29648,7 @@ class ShipInvoiceInfo(AbstractModel):
 
 
 class ShipInvoiceOCRRequest(AbstractModel):
-    """ShipInvoiceOCR请求参数结构体
+    r"""ShipInvoiceOCR请求参数结构体
 
     """
 
@@ -29441,7 +29670,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -29452,7 +29681,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -29463,7 +29692,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -29474,7 +29703,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -29500,7 +29729,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
 
 
 class ShipInvoiceOCRResponse(AbstractModel):
-    """ShipInvoiceOCR返回参数结构体
+    r"""ShipInvoiceOCR返回参数结构体
 
     """
 
@@ -29519,7 +29748,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
 
     @property
     def ShipInvoiceInfos(self):
-        """轮船票识别结果，具体内容请点击左侧链接。
+        r"""轮船票识别结果，具体内容请点击左侧链接。
         :rtype: list of ShipInvoiceInfo
         """
         return self._ShipInvoiceInfos
@@ -29530,7 +29759,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -29541,7 +29770,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29563,7 +29792,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
 
 
 class ShippingInvoice(AbstractModel):
-    """轮船票
+    r"""轮船票
 
     """
 
@@ -29615,7 +29844,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -29626,7 +29855,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -29637,7 +29866,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -29648,7 +29877,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -29659,7 +29888,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def UserName(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._UserName
@@ -29670,7 +29899,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -29681,7 +29910,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -29692,7 +29921,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """出发车站
+        r"""出发车站
         :rtype: str
         """
         return self._StationGetOn
@@ -29703,7 +29932,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达车站
+        r"""到达车站
         :rtype: str
         """
         return self._StationGetOff
@@ -29714,7 +29943,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Total
@@ -29725,7 +29954,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -29736,7 +29965,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -29747,7 +29976,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -29758,7 +29987,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def CurrencyCode(self):
-        """币种
+        r"""币种
         :rtype: str
         """
         return self._CurrencyCode
@@ -29794,7 +30023,7 @@ class ShippingInvoice(AbstractModel):
 
 
 class ShoppingReceipt(AbstractModel):
-    """购物小票
+    r"""购物小票
 
     """
 
@@ -29810,7 +30039,7 @@ class ShoppingReceipt(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -29821,7 +30050,7 @@ class ShoppingReceipt(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)
+        r"""识别出的字段名称(关键字)
         :rtype: list of OtherInvoiceItem
         """
         return self._Content
@@ -29850,7 +30079,7 @@ class ShoppingReceipt(AbstractModel):
 
 
 class SingleInvoiceInfo(AbstractModel):
-    """混贴票据中单张发票的内容
+    r"""混贴票据中单张发票的内容
 
     """
 
@@ -29869,7 +30098,7 @@ class SingleInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称
+        r"""识别出的字段名称
         :rtype: str
         """
         return self._Name
@@ -29880,7 +30109,7 @@ class SingleInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -29891,7 +30120,7 @@ class SingleInvoiceInfo(AbstractModel):
 
     @property
     def Row(self):
-        """字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
+        r"""字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
         :rtype: int
         """
         return self._Row
@@ -29916,7 +30145,7 @@ class SingleInvoiceInfo(AbstractModel):
 
 
 class SingleInvoiceItem(AbstractModel):
-    """混贴票据中单张发票的内容
+    r"""混贴票据中单张发票的内容
 
     """
 
@@ -30074,7 +30303,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatSpecialInvoice(self):
-        """增值税专用发票
+        r"""增值税专用发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30086,7 +30315,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatCommonInvoice(self):
-        """增值税普通发票
+        r"""增值税普通发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30098,7 +30327,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicCommonInvoice(self):
-        """增值税电子普通发票
+        r"""增值税电子普通发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30110,7 +30339,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicSpecialInvoice(self):
-        """增值税电子专用发票
+        r"""增值税电子专用发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30122,7 +30351,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicInvoiceBlockchain(self):
-        """区块链电子发票
+        r"""区块链电子发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30134,7 +30363,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicInvoiceToll(self):
-        """增值税电子普通发票(通行费)
+        r"""增值税电子普通发票(通行费)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30146,7 +30375,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicSpecialInvoiceFull(self):
-        """电子发票(专用发票)
+        r"""电子发票(专用发票)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatElectronicInfo`
         """
@@ -30158,7 +30387,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatElectronicInvoiceFull(self):
-        """电子发票(普通发票)
+        r"""电子发票(普通发票)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatElectronicInfo`
         """
@@ -30170,7 +30399,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def MachinePrintedInvoice(self):
-        """通用机打发票
+        r"""通用机打发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MachinePrintedInvoice`
         """
@@ -30182,7 +30411,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def BusInvoice(self):
-        """汽车票
+        r"""汽车票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BusInvoice`
         """
@@ -30194,7 +30423,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def ShippingInvoice(self):
-        """轮船票
+        r"""轮船票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ShippingInvoice`
         """
@@ -30206,7 +30435,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def TollInvoice(self):
-        """过路过桥费发票
+        r"""过路过桥费发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TollInvoice`
         """
@@ -30218,7 +30447,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def OtherInvoice(self):
-        """其他发票
+        r"""其他发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.OtherInvoice`
         """
@@ -30230,7 +30459,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def MotorVehicleSaleInvoice(self):
-        """机动车销售统一发票
+        r"""机动车销售统一发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MotorVehicleSaleInvoice`
         """
@@ -30242,7 +30471,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def UsedCarPurchaseInvoice(self):
-        """二手车销售统一发票
+        r"""二手车销售统一发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
         """
@@ -30254,7 +30483,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatInvoiceRoll(self):
-        """增值税普通发票(卷票)
+        r"""增值税普通发票(卷票)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceRoll`
         """
@@ -30266,7 +30495,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def TaxiTicket(self):
-        """出租车发票
+        r"""出租车发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxiTicket`
         """
@@ -30278,7 +30507,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def QuotaInvoice(self):
-        """定额发票
+        r"""定额发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.QuotaInvoice`
         """
@@ -30290,7 +30519,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def AirTransport(self):
-        """机票行程单
+        r"""机票行程单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AirTransport`
         """
@@ -30302,7 +30531,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def NonTaxIncomeGeneralBill(self):
-        """非税收入通用票据
+        r"""非税收入通用票据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.NonTaxIncomeBill`
         """
@@ -30314,7 +30543,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def NonTaxIncomeElectronicBill(self):
-        """非税收入一般缴款书(电子)
+        r"""非税收入一般缴款书(电子)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.NonTaxIncomeBill`
         """
@@ -30326,7 +30555,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def TrainTicket(self):
-        """火车票
+        r"""火车票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TrainTicket`
         """
@@ -30338,7 +30567,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def MedicalOutpatientInvoice(self):
-        """医疗门诊收费票据（电子）
+        r"""医疗门诊收费票据（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
@@ -30350,7 +30579,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def MedicalHospitalizedInvoice(self):
-        """医疗住院收费票据（电子）
+        r"""医疗住院收费票据（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
@@ -30362,7 +30591,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def VatSalesList(self):
-        """增值税销货清单
+        r"""增值税销货清单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -30374,7 +30603,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def ElectronicTrainTicketFull(self):
-        """电子发票（火车票）
+        r"""电子发票（火车票）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ElectronicTrainTicketFull`
         """
@@ -30386,7 +30615,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def ElectronicFlightTicketFull(self):
-        """电子发票（机票行程单）
+        r"""电子发票（机票行程单）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ElectronicFlightTicketFull`
         """
@@ -30398,7 +30627,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def TaxPayment(self):
-        """完税凭证
+        r"""完税凭证
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxPayment`
         """
@@ -30410,7 +30639,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def CustomsPaymentReceipt(self):
-        """海关缴款
+        r"""海关缴款
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CustomsPaymentReceipt`
         """
@@ -30422,7 +30651,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def BankSlip(self):
-        """银行回单
+        r"""银行回单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BankSlip`
         """
@@ -30434,7 +30663,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def OnlineTaxiItinerary(self):
-        """网约车行程单
+        r"""网约车行程单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.OnlineTaxiItinerary`
         """
@@ -30446,7 +30675,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def CustomsDeclaration(self):
-        """海关进/出口货物报关单
+        r"""海关进/出口货物报关单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CustomsDeclaration`
         """
@@ -30458,7 +30687,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def OverseasInvoice(self):
-        """海外发票
+        r"""海外发票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.OverseasInvoice`
         """
@@ -30470,7 +30699,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def ShoppingReceipt(self):
-        """购物小票
+        r"""购物小票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ShoppingReceipt`
         """
@@ -30482,7 +30711,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def SaleInventory(self):
-        """销货清单
+        r"""销货清单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.SaleInventory`
         """
@@ -30494,7 +30723,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def MotorVehicleSaleInvoiceElectronic(self):
-        """机动车销售统一发票（电子）
+        r"""机动车销售统一发票（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MotorVehicleSaleInvoice`
         """
@@ -30506,7 +30735,7 @@ class SingleInvoiceItem(AbstractModel):
 
     @property
     def UsedCarPurchaseInvoiceElectronic(self):
-        """二手车销售统一发票（电子）
+        r"""二手车销售统一发票（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
         """
@@ -30640,7 +30869,7 @@ class SingleInvoiceItem(AbstractModel):
 
 
 class SmartStructuralOCRRequest(AbstractModel):
-    """SmartStructuralOCR请求参数结构体
+    r"""SmartStructuralOCR请求参数结构体
 
     """
 
@@ -30677,7 +30906,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -30692,7 +30921,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -30706,7 +30935,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ItemNames(self):
-        """自定义结构化功能需返回的字段名称，例：
+        r"""自定义结构化功能需返回的字段名称，例：
 若客户只想返回姓名、性别两个字段的识别结果，则输入
 ItemNames=["姓名","性别"]
         :rtype: list of str
@@ -30719,7 +30948,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -30730,7 +30959,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -30741,7 +30970,7 @@ ItemNames=["姓名","性别"]
 
     @property
     def ReturnFullText(self):
-        """是否开启全文字段识别，默认值为false，开启后可返回全文字段识别结果。
+        r"""是否开启全文字段识别，默认值为false，开启后可返回全文字段识别结果。
         :rtype: bool
         """
         return self._ReturnFullText
@@ -30769,7 +30998,7 @@ ItemNames=["姓名","性别"]
 
 
 class SmartStructuralOCRResponse(AbstractModel):
-    """SmartStructuralOCR返回参数结构体
+    r"""SmartStructuralOCR返回参数结构体
 
     """
 
@@ -30789,7 +31018,7 @@ class SmartStructuralOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度(角度制)，文本的水平方向
+        r"""图片旋转角度(角度制)，文本的水平方向
 为 0；顺时针为正，逆时针为负
         :rtype: float
         """
@@ -30801,7 +31030,7 @@ class SmartStructuralOCRResponse(AbstractModel):
 
     @property
     def StructuralItems(self):
-        """识别信息
+        r"""识别信息
         :rtype: list of StructuralItem
         """
         return self._StructuralItems
@@ -30812,7 +31041,7 @@ class SmartStructuralOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30834,7 +31063,7 @@ class SmartStructuralOCRResponse(AbstractModel):
 
 
 class StoreInfo(AbstractModel):
-    """门头照识别结果
+    r"""门头照识别结果
 
     """
 
@@ -30853,7 +31082,7 @@ class StoreInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，如商店名称
+        r"""识别出的字段名称(关键字)，如商店名称
         :rtype: str
         """
         return self._Name
@@ -30864,7 +31093,7 @@ class StoreInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -30875,7 +31104,7 @@ class StoreInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标
+        r"""文本行在旋转纠正之后的图像中的像素坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -30902,7 +31131,7 @@ class StoreInfo(AbstractModel):
 
 
 class StructuralItem(AbstractModel):
-    """智能结构化识别
+    r"""智能结构化识别
 
     """
 
@@ -30928,7 +31157,7 @@ class StructuralItem(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)。
+        r"""识别出的字段名称(关键字)。
         :rtype: str
         """
         return self._Name
@@ -30939,7 +31168,7 @@ class StructuralItem(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值。
+        r"""识别出的字段名称对应的值。
         :rtype: str
         """
         return self._Value
@@ -30950,7 +31179,7 @@ class StructuralItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 ~100。
+        r"""置信度 0 ~100。
         :rtype: int
         """
         return self._Confidence
@@ -30961,7 +31190,7 @@ class StructuralItem(AbstractModel):
 
     @property
     def ItemCoord(self):
-        """文本行在旋转纠正之后的图像中的像素
+        r"""文本行在旋转纠正之后的图像中的像素
 坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
@@ -30973,7 +31202,7 @@ class StructuralItem(AbstractModel):
 
     @property
     def Row(self):
-        """字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
+        r"""字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
         :rtype: int
         """
         return self._Row
@@ -31001,8 +31230,182 @@ class StructuralItem(AbstractModel):
         
 
 
+class SubmitExtractDocAgentJobRequest(AbstractModel):
+    r"""SubmitExtractDocAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+        :type PdfPageNumber: int
+        :param _ItemNames: 自定义抽取需要的字段名称、字段类型、字段提示词。
+        :type ItemNames: list of ItemNames
+        :param _EnableCoord: 是否需要返回坐标，默认false。
+        :type EnableCoord: bool
+        :param _FileStartPageNumber: 起始页
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 结束页
+        :type FileEndPageNumber: int
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._PdfPageNumber = None
+        self._ItemNames = None
+        self._EnableCoord = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
+
+    @property
+    def ImageBase64(self):
+        r"""图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def PdfPageNumber(self):
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def ItemNames(self):
+        r"""自定义抽取需要的字段名称、字段类型、字段提示词。
+        :rtype: list of ItemNames
+        """
+        return self._ItemNames
+
+    @ItemNames.setter
+    def ItemNames(self, ItemNames):
+        self._ItemNames = ItemNames
+
+    @property
+    def EnableCoord(self):
+        r"""是否需要返回坐标，默认false。
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
+    @property
+    def FileStartPageNumber(self):
+        r"""起始页
+        :rtype: int
+        """
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        r"""结束页
+        :rtype: int
+        """
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        if params.get("ItemNames") is not None:
+            self._ItemNames = []
+            for item in params.get("ItemNames"):
+                obj = ItemNames()
+                obj._deserialize(item)
+                self._ItemNames.append(obj)
+        self._EnableCoord = params.get("EnableCoord")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitExtractDocAgentJobResponse(AbstractModel):
+    r"""SubmitExtractDocAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务唯一ID。由服务端生成。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务唯一ID。由服务端生成。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class TableCell(AbstractModel):
-    """单元格数据
+    r"""单元格数据
 
     """
 
@@ -31043,7 +31446,7 @@ class TableCell(AbstractModel):
 
     @property
     def ColTl(self):
-        """单元格左上角的列索引
+        r"""单元格左上角的列索引
         :rtype: int
         """
         return self._ColTl
@@ -31054,7 +31457,7 @@ class TableCell(AbstractModel):
 
     @property
     def RowTl(self):
-        """单元格左上角的行索引
+        r"""单元格左上角的行索引
         :rtype: int
         """
         return self._RowTl
@@ -31065,7 +31468,7 @@ class TableCell(AbstractModel):
 
     @property
     def ColBr(self):
-        """单元格右下角的列索引
+        r"""单元格右下角的列索引
         :rtype: int
         """
         return self._ColBr
@@ -31076,7 +31479,7 @@ class TableCell(AbstractModel):
 
     @property
     def RowBr(self):
-        """单元格右下角的行索引
+        r"""单元格右下角的行索引
         :rtype: int
         """
         return self._RowBr
@@ -31087,7 +31490,7 @@ class TableCell(AbstractModel):
 
     @property
     def Text(self):
-        """单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+        r"""单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
         :rtype: str
         """
         return self._Text
@@ -31098,7 +31501,7 @@ class TableCell(AbstractModel):
 
     @property
     def Type(self):
-        """单元格类型
+        r"""单元格类型
         :rtype: str
         """
         return self._Type
@@ -31109,7 +31512,7 @@ class TableCell(AbstractModel):
 
     @property
     def Confidence(self):
-        """单元格置信度
+        r"""单元格置信度
         :rtype: float
         """
         return self._Confidence
@@ -31120,7 +31523,7 @@ class TableCell(AbstractModel):
 
     @property
     def Polygon(self):
-        """单元格在图像中的四点坐标
+        r"""单元格在图像中的四点坐标
         :rtype: list of Coord
         """
         return self._Polygon
@@ -31131,7 +31534,7 @@ class TableCell(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段
+        r"""此字段为扩展字段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31143,7 +31546,7 @@ class TableCell(AbstractModel):
 
     @property
     def Contents(self):
-        """单元格文本属性
+        r"""单元格文本属性
         :rtype: list of CellContent
         """
         return self._Contents
@@ -31185,7 +31588,7 @@ class TableCell(AbstractModel):
 
 
 class TableCellInfo(AbstractModel):
-    """单元格数据
+    r"""单元格数据
 
     """
 
@@ -31219,7 +31622,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def ColTl(self):
-        """单元格左上角的列索引
+        r"""单元格左上角的列索引
         :rtype: int
         """
         return self._ColTl
@@ -31230,7 +31633,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def RowTl(self):
-        """单元格左上角的行索引
+        r"""单元格左上角的行索引
         :rtype: int
         """
         return self._RowTl
@@ -31241,7 +31644,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def ColBr(self):
-        """单元格右下角的列索引
+        r"""单元格右下角的列索引
         :rtype: int
         """
         return self._ColBr
@@ -31252,7 +31655,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def RowBr(self):
-        """单元格右下角的行索引
+        r"""单元格右下角的行索引
         :rtype: int
         """
         return self._RowBr
@@ -31263,7 +31666,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Text(self):
-        """单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+        r"""单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
         :rtype: str
         """
         return self._Text
@@ -31274,7 +31677,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Type(self):
-        """单元格类型
+        r"""单元格类型
         :rtype: str
         """
         return self._Type
@@ -31285,7 +31688,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        """单元格置信度
+        r"""单元格置信度
         :rtype: float
         """
         return self._Confidence
@@ -31296,7 +31699,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Polygon(self):
-        """单元格在图像中的四点坐标
+        r"""单元格在图像中的四点坐标
         :rtype: list of Coord
         """
         return self._Polygon
@@ -31331,7 +31734,7 @@ class TableCellInfo(AbstractModel):
 
 
 class TableDetectInfo(AbstractModel):
-    """表格内容检测
+    r"""表格内容检测
 
     """
 
@@ -31360,7 +31763,7 @@ class TableDetectInfo(AbstractModel):
 
     @property
     def Cells(self):
-        """单元格内容
+        r"""单元格内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableCell
         """
@@ -31372,7 +31775,7 @@ class TableDetectInfo(AbstractModel):
 
     @property
     def Titles(self):
-        """表格标题
+        r"""表格标题
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableTitle
         """
@@ -31384,7 +31787,7 @@ class TableDetectInfo(AbstractModel):
 
     @property
     def Type(self):
-        """图像中的文本块类型，0 为非表格文本，
+        r"""图像中的文本块类型，0 为非表格文本，
 1 为有线表格，2 为无线表格
 （接口暂不支持日文无线表格识别，若传入日文无线表格，返回0）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -31398,7 +31801,7 @@ class TableDetectInfo(AbstractModel):
 
     @property
     def TableCoordPoint(self):
-        """表格主体四个顶点坐标（依次为左上角，
+        r"""表格主体四个顶点坐标（依次为左上角，
 右上角，右下角，左下角）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
@@ -31441,7 +31844,7 @@ class TableDetectInfo(AbstractModel):
 
 
 class TableInfo(AbstractModel):
-    """表格内容检测
+    r"""表格内容检测
 
     """
 
@@ -31466,7 +31869,7 @@ class TableInfo(AbstractModel):
 
     @property
     def Cells(self):
-        """单元格内容
+        r"""单元格内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableCellInfo
         """
@@ -31478,7 +31881,7 @@ class TableInfo(AbstractModel):
 
     @property
     def Type(self):
-        """图像中的文本块类型：0为非表格文本、1为有线表格、2为无线表格，
+        r"""图像中的文本块类型：0为非表格文本、1为有线表格、2为无线表格，
 有线表格：在表格内部，有横线/竖线纵跨整个表格的宽/高；
 无线表格：在表格内部，无横线/竖线纵跨整个表格的宽/高。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -31492,7 +31895,7 @@ class TableInfo(AbstractModel):
 
     @property
     def TableCoordPoint(self):
-        """表格主体四个顶点坐标（依次为左上角，
+        r"""表格主体四个顶点坐标（依次为左上角，
 右上角，右下角，左下角）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
@@ -31529,7 +31932,7 @@ class TableInfo(AbstractModel):
 
 
 class TableOCRRequest(AbstractModel):
-    """TableOCR请求参数结构体
+    r"""TableOCR请求参数结构体
 
     """
 
@@ -31552,7 +31955,7 @@ class TableOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -31566,7 +31969,7 @@ class TableOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -31594,7 +31997,7 @@ class TableOCRRequest(AbstractModel):
 
 
 class TableOCRResponse(AbstractModel):
-    """TableOCR返回参数结构体
+    r"""TableOCR返回参数结构体
 
     """
 
@@ -31613,7 +32016,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接
+        r"""检测到的文本信息，具体内容请点击左侧链接
         :rtype: list of TextTable
         """
         return self._TextDetections
@@ -31624,7 +32027,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Base64 编码后的 Excel 数据。
+        r"""Base64 编码后的 Excel 数据。
         :rtype: str
         """
         return self._Data
@@ -31635,7 +32038,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31657,7 +32060,7 @@ class TableOCRResponse(AbstractModel):
 
 
 class TableTitle(AbstractModel):
-    """表格标题
+    r"""表格标题
 
     """
 
@@ -31671,7 +32074,7 @@ class TableTitle(AbstractModel):
 
     @property
     def Text(self):
-        """表格名称
+        r"""表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31695,7 +32098,7 @@ class TableTitle(AbstractModel):
 
 
 class TaxPayment(AbstractModel):
-    """完税凭证
+    r"""完税凭证
 
     """
 
@@ -31716,7 +32119,7 @@ class TaxPayment(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -31727,7 +32130,7 @@ class TaxPayment(AbstractModel):
 
     @property
     def Content(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 示例值：纳税人识别号
         :rtype: list of OtherInvoiceItem
@@ -31740,7 +32143,7 @@ class TaxPayment(AbstractModel):
 
     @property
     def TableItems(self):
-        """表格。
+        r"""表格。
         :rtype: list of OtherInvoiceList
         """
         return self._TableItems
@@ -31775,7 +32178,7 @@ class TaxPayment(AbstractModel):
 
 
 class TaxiInvoiceOCRRequest(AbstractModel):
-    """TaxiInvoiceOCR请求参数结构体
+    r"""TaxiInvoiceOCR请求参数结构体
 
     """
 
@@ -31797,7 +32200,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -31808,7 +32211,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -31819,7 +32222,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -31830,7 +32233,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -31856,7 +32259,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
 
 
 class TaxiInvoiceOCRResponse(AbstractModel):
-    """TaxiInvoiceOCR返回参数结构体
+    r"""TaxiInvoiceOCR返回参数结构体
 
     """
 
@@ -31907,7 +32310,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceNum(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._InvoiceNum
@@ -31918,7 +32321,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceCode(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._InvoiceCode
@@ -31929,7 +32332,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -31940,7 +32343,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def Fare(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Fare
@@ -31951,7 +32354,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def GetOnTime(self):
-        """上车时间
+        r"""上车时间
         :rtype: str
         """
         return self._GetOnTime
@@ -31962,7 +32365,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def GetOffTime(self):
-        """下车时间
+        r"""下车时间
         :rtype: str
         """
         return self._GetOffTime
@@ -31973,7 +32376,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def Distance(self):
-        """里程
+        r"""里程
         :rtype: str
         """
         return self._Distance
@@ -31984,7 +32387,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """发票所在地
+        r"""发票所在地
         :rtype: str
         """
         return self._Location
@@ -31995,7 +32398,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def PlateNumber(self):
-        """车牌号
+        r"""车牌号
         :rtype: str
         """
         return self._PlateNumber
@@ -32006,7 +32409,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceType(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._InvoiceType
@@ -32017,7 +32420,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32029,7 +32432,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32041,7 +32444,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32068,7 +32471,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
 
 
 class TaxiTicket(AbstractModel):
-    """出租车发票
+    r"""出租车发票
 
     """
 
@@ -32132,7 +32535,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -32143,7 +32546,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -32154,7 +32557,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -32165,7 +32568,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -32176,7 +32579,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -32187,7 +32590,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """上车时间
+        r"""上车时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -32198,7 +32601,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def TimeGetOff(self):
-        """下车时间
+        r"""下车时间
         :rtype: str
         """
         return self._TimeGetOff
@@ -32209,7 +32612,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Price(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._Price
@@ -32220,7 +32623,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Mileage(self):
-        """里程
+        r"""里程
         :rtype: str
         """
         return self._Mileage
@@ -32231,7 +32634,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Total(self):
-        """总金额
+        r"""总金额
         :rtype: str
         """
         return self._Total
@@ -32242,7 +32645,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Place(self):
-        """发票所在地
+        r"""发票所在地
         :rtype: str
         """
         return self._Place
@@ -32253,7 +32656,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -32264,7 +32667,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -32275,7 +32678,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -32286,7 +32689,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """车牌号
+        r"""车牌号
         :rtype: str
         """
         return self._LicensePlate
@@ -32297,7 +32700,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def FuelFee(self):
-        """燃油附加费
+        r"""燃油附加费
         :rtype: str
         """
         return self._FuelFee
@@ -32308,7 +32711,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def BookingCallFee(self):
-        """预约叫车服务费
+        r"""预约叫车服务费
         :rtype: str
         """
         return self._BookingCallFee
@@ -32319,7 +32722,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -32359,7 +32762,7 @@ class TaxiTicket(AbstractModel):
 
 
 class TemporaryIDCardInfo(AbstractModel):
-    """临时身份证信息返回
+    r"""临时身份证信息返回
 
     """
 
@@ -32402,7 +32805,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Name(self):
-        """姓名（人像面）
+        r"""姓名（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Name
@@ -32413,7 +32816,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """性别（人像面）
+        r"""性别（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Sex
@@ -32424,7 +32827,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Nation(self):
-        """民族（人像面）
+        r"""民族（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Nation
@@ -32435,7 +32838,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期（人像面）
+        r"""出生日期（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Birth
@@ -32446,7 +32849,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址（人像面）
+        r"""地址（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Address
@@ -32457,7 +32860,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def IdNum(self):
-        """公民身份号码（人像面）
+        r"""公民身份号码（人像面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._IdNum
@@ -32468,7 +32871,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def Authority(self):
-        """发证机关（国徽面）
+        r"""发证机关（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._Authority
@@ -32479,7 +32882,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def ValidDate(self):
-        """证件有效期（国徽面）
+        r"""证件有效期（国徽面）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._ValidDate
@@ -32490,7 +32893,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def WarnInfos(self):
-        """WarnInfos，告警信息
+        r"""WarnInfos，告警信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.CardWarnInfo`
         """
         return self._WarnInfos
@@ -32501,7 +32904,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def CardImage(self):
-        """IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+        r"""IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._CardImage
@@ -32512,7 +32915,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+        r"""Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         return self._PortraitImage
@@ -32567,7 +32970,7 @@ class TemporaryIDCardInfo(AbstractModel):
 
 
 class TextArithmetic(AbstractModel):
-    """算式识别结果
+    r"""算式识别结果
 
     """
 
@@ -32613,7 +33016,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -32624,7 +33027,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def Result(self):
-        """算式运算结果，true-正确   false-错误或非法参数
+        r"""算式运算结果，true-正确   false-错误或非法参数
         :rtype: bool
         """
         return self._Result
@@ -32635,7 +33038,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def Confidence(self):
-        """保留字段，暂不支持
+        r"""保留字段，暂不支持
         :rtype: int
         """
         return self._Confidence
@@ -32646,7 +33049,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def Polygon(self):
-        """原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
+        r"""原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -32658,7 +33061,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """保留字段，暂不支持
+        r"""保留字段，暂不支持
         :rtype: str
         """
         return self._AdvancedInfo
@@ -32669,7 +33072,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def ItemCoord(self):
-        """文本行旋转纠正之后在图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        r"""文本行旋转纠正之后在图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemCoord
@@ -32680,7 +33083,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def ExpressionType(self):
-        """算式题型编号：
+        r"""算式题型编号：
 ‘1’: 加减乘除四则
 ‘2’: 加减乘除已知结果求运算因子
 ‘3’: 判断大小
@@ -32702,7 +33105,7 @@ class TextArithmetic(AbstractModel):
 
     @property
     def Answer(self):
-        """错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如`1<10<7`）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
+        r"""错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如`1<10<7`）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
         :rtype: str
         """
         return self._Answer
@@ -32739,7 +33142,7 @@ class TextArithmetic(AbstractModel):
 
 
 class TextDetectRequest(AbstractModel):
-    """TextDetect请求参数结构体
+    r"""TextDetect请求参数结构体
 
     """
 
@@ -32755,7 +33158,7 @@ class TextDetectRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -32766,7 +33169,7 @@ class TextDetectRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -32790,7 +33193,7 @@ class TextDetectRequest(AbstractModel):
 
 
 class TextDetectResponse(AbstractModel):
-    """TextDetect返回参数结构体
+    r"""TextDetect返回参数结构体
 
     """
 
@@ -32806,7 +33209,7 @@ class TextDetectResponse(AbstractModel):
 
     @property
     def HasText(self):
-        """图片中是否包含文字。
+        r"""图片中是否包含文字。
         :rtype: bool
         """
         return self._HasText
@@ -32817,7 +33220,7 @@ class TextDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32833,7 +33236,7 @@ class TextDetectResponse(AbstractModel):
 
 
 class TextDetection(AbstractModel):
-    """文字识别结果
+    r"""文字识别结果
 
     """
 
@@ -32866,7 +33269,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -32877,7 +33280,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Confidence(self):
-        """置信度 0 ~100
+        r"""置信度 0 ~100
         :rtype: int
         """
         return self._Confidence
@@ -32888,7 +33291,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Polygon(self):
-        """文本行坐标，以四个顶点坐标表示
+        r"""文本行坐标，以四个顶点坐标表示
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -32900,7 +33303,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段。
+        r"""此字段为扩展字段。
 GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         :rtype: str
         """
@@ -32912,7 +33315,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def ItemPolygon(self):
-        """文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemPolygon
@@ -32923,7 +33326,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Words(self):
-        """识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        r"""识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
         :rtype: list of DetectedWords
         """
         return self._Words
@@ -32934,7 +33337,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def WordCoordPoint(self):
-        """单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        r"""单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
         :rtype: list of DetectedWordCoordPoint
         """
         return self._WordCoordPoint
@@ -32980,7 +33383,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
 
 class TextDetectionEn(AbstractModel):
-    """英文识别结果
+    r"""英文识别结果
 
     """
 
@@ -33012,7 +33415,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容。
+        r"""识别出的文本行内容。
         :rtype: str
         """
         return self._DetectedText
@@ -33023,7 +33426,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 ~100。
+        r"""置信度 0 ~100。
         :rtype: int
         """
         return self._Confidence
@@ -33034,7 +33437,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def Polygon(self):
-        """文本行在原图中的四点坐标。
+        r"""文本行在原图中的四点坐标。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -33046,7 +33449,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段。目前EnglishOCR接口返回内容为空。
+        r"""此字段为扩展字段。目前EnglishOCR接口返回内容为空。
         :rtype: str
         """
         return self._AdvancedInfo
@@ -33057,7 +33460,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def WordCoordPoint(self):
-        """英文单词在原图中的四点坐标。
+        r"""英文单词在原图中的四点坐标。
         :rtype: list of WordCoordPoint
         """
         return self._WordCoordPoint
@@ -33068,7 +33471,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def CandWord(self):
-        """候选字符集(包含候选字Character以及置信度Confidence)。
+        r"""候选字符集(包含候选字Character以及置信度Confidence)。
         :rtype: list of CandWord
         """
         return self._CandWord
@@ -33079,7 +33482,7 @@ class TextDetectionEn(AbstractModel):
 
     @property
     def Words(self):
-        """识别出来的单词信息（包括单词Character和单词置信度confidence）
+        r"""识别出来的单词信息（包括单词Character和单词置信度confidence）
         :rtype: list of Words
         """
         return self._Words
@@ -33128,7 +33531,7 @@ class TextDetectionEn(AbstractModel):
 
 
 class TextEduPaper(AbstractModel):
-    """数学试题识别结果
+    r"""数学试题识别结果
 
     """
 
@@ -33147,7 +33550,7 @@ class TextEduPaper(AbstractModel):
 
     @property
     def Item(self):
-        """识别出的字段名称（关键字）
+        r"""识别出的字段名称（关键字）
         :rtype: str
         """
         return self._Item
@@ -33158,7 +33561,7 @@ class TextEduPaper(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的字段名称对应的值，也就是字段Item对应的字符串结果
+        r"""识别出的字段名称对应的值，也就是字段Item对应的字符串结果
         :rtype: str
         """
         return self._DetectedText
@@ -33169,7 +33572,7 @@ class TextEduPaper(AbstractModel):
 
     @property
     def Itemcoord(self):
-        """文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._Itemcoord
@@ -33196,7 +33599,7 @@ class TextEduPaper(AbstractModel):
 
 
 class TextFormula(AbstractModel):
-    """数学公式识别结果
+    r"""数学公式识别结果
 
     """
 
@@ -33209,7 +33612,7 @@ class TextFormula(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -33232,7 +33635,7 @@ class TextFormula(AbstractModel):
 
 
 class TextFormulaInfo(AbstractModel):
-    """公式识别结果
+    r"""公式识别结果
 
     """
 
@@ -33248,7 +33651,7 @@ class TextFormulaInfo(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -33259,7 +33662,7 @@ class TextFormulaInfo(AbstractModel):
 
     @property
     def Coord(self):
-        """识别出的文本行内容坐标
+        r"""识别出的文本行内容坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord
@@ -33285,7 +33688,7 @@ class TextFormulaInfo(AbstractModel):
 
 
 class TextGeneralHandwriting(AbstractModel):
-    """文字识别结果
+    r"""文字识别结果
 
     """
 
@@ -33313,7 +33716,7 @@ class TextGeneralHandwriting(AbstractModel):
 
     @property
     def DetectedText(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._DetectedText
@@ -33324,7 +33727,7 @@ class TextGeneralHandwriting(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 - 100
+        r"""置信度 0 - 100
         :rtype: int
         """
         return self._Confidence
@@ -33335,7 +33738,7 @@ class TextGeneralHandwriting(AbstractModel):
 
     @property
     def Polygon(self):
-        """文本行坐标，以四个顶点坐标表示
+        r"""文本行坐标，以四个顶点坐标表示
         :rtype: list of Coord
         """
         return self._Polygon
@@ -33346,7 +33749,7 @@ class TextGeneralHandwriting(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段。
+        r"""此字段为扩展字段。
 能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
 其中ParagNo为段落行，从1开始。
         :rtype: str
@@ -33359,7 +33762,7 @@ class TextGeneralHandwriting(AbstractModel):
 
     @property
     def WordPolygon(self):
-        """字的坐标数组，以四个顶点坐标表示
+        r"""字的坐标数组，以四个顶点坐标表示
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Polygon
         """
@@ -33397,7 +33800,7 @@ class TextGeneralHandwriting(AbstractModel):
 
 
 class TextTable(AbstractModel):
-    """表格识别结果
+    r"""表格识别结果
 
     """
 
@@ -33434,7 +33837,7 @@ class TextTable(AbstractModel):
 
     @property
     def ColTl(self):
-        """单元格左上角的列索引
+        r"""单元格左上角的列索引
         :rtype: int
         """
         return self._ColTl
@@ -33445,7 +33848,7 @@ class TextTable(AbstractModel):
 
     @property
     def RowTl(self):
-        """单元格左上角的行索引
+        r"""单元格左上角的行索引
         :rtype: int
         """
         return self._RowTl
@@ -33456,7 +33859,7 @@ class TextTable(AbstractModel):
 
     @property
     def ColBr(self):
-        """单元格右下角的列索引
+        r"""单元格右下角的列索引
         :rtype: int
         """
         return self._ColBr
@@ -33467,7 +33870,7 @@ class TextTable(AbstractModel):
 
     @property
     def RowBr(self):
-        """单元格右下角的行索引
+        r"""单元格右下角的行索引
         :rtype: int
         """
         return self._RowBr
@@ -33478,7 +33881,7 @@ class TextTable(AbstractModel):
 
     @property
     def Text(self):
-        """单元格文字
+        r"""单元格文字
         :rtype: str
         """
         return self._Text
@@ -33489,7 +33892,7 @@ class TextTable(AbstractModel):
 
     @property
     def Type(self):
-        """单元格类型，包含body（表格主体）、header（表头）、footer（表尾）三种
+        r"""单元格类型，包含body（表格主体）、header（表头）、footer（表尾）三种
         :rtype: str
         """
         return self._Type
@@ -33500,7 +33903,7 @@ class TextTable(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 ~100
+        r"""置信度 0 ~100
         :rtype: int
         """
         return self._Confidence
@@ -33511,7 +33914,7 @@ class TextTable(AbstractModel):
 
     @property
     def Polygon(self):
-        """文本行坐标，以四个顶点坐标表示
+        r"""文本行坐标，以四个顶点坐标表示
         :rtype: list of Coord
         """
         return self._Polygon
@@ -33522,7 +33925,7 @@ class TextTable(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段
+        r"""此字段为扩展字段
         :rtype: str
         """
         return self._AdvancedInfo
@@ -33558,7 +33961,7 @@ class TextTable(AbstractModel):
 
 
 class TextTractorVehicleBack(AbstractModel):
-    """拖拉机行驶证副页正面的识别结果
+    r"""拖拉机行驶证副页正面的识别结果
 
     """
 
@@ -33604,7 +34007,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def PlateNo(self):
-        """号牌号码
+        r"""号牌号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33616,7 +34019,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def AllowNum(self):
-        """准乘人数
+        r"""准乘人数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33628,7 +34031,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def CombineHarvesterQuality(self):
-        """联合收割机质量
+        r"""联合收割机质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33640,7 +34043,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def TractorMinUsageWeight(self):
-        """拖拉机最小使用质量
+        r"""拖拉机最小使用质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33652,7 +34055,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def TractorMaxAllowLoadCapacity(self):
-        """拖拉机最大允许载质量
+        r"""拖拉机最大允许载质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33664,7 +34067,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def ExternalSize(self):
-        """外廓尺寸
+        r"""外廓尺寸
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33676,7 +34079,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def Record(self):
-        """检验记录
+        r"""检验记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33688,7 +34091,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def VehicleType(self):
-        """类型
+        r"""类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33700,7 +34103,7 @@ class TextTractorVehicleBack(AbstractModel):
 
     @property
     def Address(self):
-        """住址
+        r"""住址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33732,7 +34135,7 @@ class TextTractorVehicleBack(AbstractModel):
 
 
 class TextVatInvoice(AbstractModel):
-    """增值税发票识别结果
+    r"""增值税发票识别结果
 
     """
 
@@ -33754,7 +34157,7 @@ class TextVatInvoice(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称（关键字）。支持以下字段的识别：
+        r"""识别出的字段名称（关键字）。支持以下字段的识别：
 发票代码、 发票号码、 打印发票代码、 打印发票号码、 开票日期、 购买方识别号、 小写金额、 价税合计(大写)、 销售方识别号、 校验码、 购买方名称、 销售方名称、 税额、 复核、 联次名称、 备注、 联次、 密码区、 开票人、 收款人、 （货物或应税劳务、服务名称）、省、 市、 服务类型、 通行费标志、 是否代开、 是否收购、 合计金额、 是否有公司印章、 发票消费类型、 车船税、 机器编号、 成品油标志、 税率、 合计税额、 （购买方地址、电话）、 （销售方地址、电话）、 单价、 金额、 销售方开户行及账号、 购买方开户行及账号、 规格型号、 发票名称、 单位、 数量、 校验码备选、 校验码后六位备选、发票号码备选、车牌号、类型、通行日期起、通行日期止、发票类型。
         :rtype: str
         """
@@ -33766,7 +34169,7 @@ class TextVatInvoice(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -33777,7 +34180,7 @@ class TextVatInvoice(AbstractModel):
 
     @property
     def Polygon(self):
-        """字段在原图中的中的四点坐标。
+        r"""字段在原图中的中的四点坐标。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
@@ -33806,7 +34209,7 @@ class TextVatInvoice(AbstractModel):
 
 
 class TextVehicleBack(AbstractModel):
-    """行驶证副页正面的识别结果
+    r"""行驶证副页正面的识别结果
 
     """
 
@@ -33874,7 +34277,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def PlateNo(self):
-        """号牌号码
+        r"""号牌号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33886,7 +34289,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def FileNo(self):
-        """档案编号
+        r"""档案编号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33898,7 +34301,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def AllowNum(self):
-        """核定人数
+        r"""核定人数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33910,7 +34313,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def TotalMass(self):
-        """总质量
+        r"""总质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33922,7 +34325,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def CurbWeight(self):
-        """整备质量
+        r"""整备质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33934,7 +34337,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def LoadQuality(self):
-        """核定载质量
+        r"""核定载质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33946,7 +34349,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def ExternalSize(self):
-        """外廓尺寸
+        r"""外廓尺寸
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33958,7 +34361,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def Marks(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33970,7 +34373,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def Record(self):
-        """检验记录
+        r"""检验记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33982,7 +34385,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def TotalQuasiMass(self):
-        """准牵引总质量
+        r"""准牵引总质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33994,7 +34397,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def SubPageCode(self):
-        """副页编码
+        r"""副页编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34006,7 +34409,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def FuelType(self):
-        """燃料种类
+        r"""燃料种类
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -34019,7 +34422,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def AddressElectronic(self):
-        """住址
+        r"""住址
         :rtype: str
         """
         return self._AddressElectronic
@@ -34030,7 +34433,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def IssueAuthorityElectronic(self):
-        """发证机关
+        r"""发证机关
         :rtype: str
         """
         return self._IssueAuthorityElectronic
@@ -34041,7 +34444,7 @@ class TextVehicleBack(AbstractModel):
 
     @property
     def CarBodyColor(self):
-        """车身颜色
+        r"""车身颜色
         :rtype: str
         """
         return self._CarBodyColor
@@ -34078,7 +34481,7 @@ class TextVehicleBack(AbstractModel):
 
 
 class TextVehicleFront(AbstractModel):
-    """行驶证主页正面的识别结果
+    r"""行驶证主页正面的识别结果
 
     """
 
@@ -34141,7 +34544,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def PlateNo(self):
-        """号牌号码
+        r"""号牌号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34153,7 +34556,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def VehicleType(self):
-        """车辆类型
+        r"""车辆类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34165,7 +34568,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def Owner(self):
-        """所有人
+        r"""所有人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34177,7 +34580,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def Address(self):
-        """住址
+        r"""住址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34189,7 +34592,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def UseCharacter(self):
-        """使用性质
+        r"""使用性质
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34201,7 +34604,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def Model(self):
-        """品牌型号
+        r"""品牌型号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34213,7 +34616,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def Vin(self):
-        """车辆识别代号
+        r"""车辆识别代号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34225,7 +34628,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def EngineNo(self):
-        """发动机号码
+        r"""发动机号码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34237,7 +34640,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def RegisterDate(self):
-        """注册日期
+        r"""注册日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34249,7 +34652,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def IssueDate(self):
-        """发证日期
+        r"""发证日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34261,7 +34664,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def Seal(self):
-        """印章
+        r"""印章
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34273,7 +34676,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def StateElectronic(self):
-        """状态，该字段仅支持电子行驶证返回
+        r"""状态，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._StateElectronic
@@ -34284,7 +34687,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def InspectionValidityTimeElectronic(self):
-        """检验有效期，该字段仅支持电子行驶证返回
+        r"""检验有效期，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._InspectionValidityTimeElectronic
@@ -34295,7 +34698,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def GenerationTimeElectronic(self):
-        """生成时间，该字段仅支持电子行驶证返回
+        r"""生成时间，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._GenerationTimeElectronic
@@ -34331,7 +34734,7 @@ class TextVehicleFront(AbstractModel):
 
 
 class TextWaybill(AbstractModel):
-    """运单识别结果
+    r"""运单识别结果
 
     """
 
@@ -34362,7 +34765,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def RecName(self):
-        """收件人姓名
+        r"""收件人姓名
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecName
@@ -34373,7 +34776,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def RecNum(self):
-        """收件人手机号
+        r"""收件人手机号
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecNum
@@ -34384,7 +34787,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def RecAddr(self):
-        """收件人地址
+        r"""收件人地址
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecAddr
@@ -34395,7 +34798,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderName(self):
-        """寄件人姓名
+        r"""寄件人姓名
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderName
@@ -34406,7 +34809,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderNum(self):
-        """寄件人手机号
+        r"""寄件人手机号
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderNum
@@ -34417,7 +34820,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderAddr(self):
-        """寄件人地址
+        r"""寄件人地址
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderAddr
@@ -34428,7 +34831,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def WaybillNum(self):
-        """运单号
+        r"""运单号
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._WaybillNum
@@ -34471,7 +34874,7 @@ class TextWaybill(AbstractModel):
 
 
 class TollInvoice(AbstractModel):
-    """过路过桥费发票
+    r"""过路过桥费发票
 
     """
 
@@ -34514,7 +34917,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -34525,7 +34928,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -34536,7 +34939,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -34547,7 +34950,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -34558,7 +34961,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -34569,7 +34972,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
         :rtype: str
         """
         return self._Date
@@ -34580,7 +34983,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -34591,7 +34994,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Entrance(self):
-        """入口
+        r"""入口
         :rtype: str
         """
         return self._Entrance
@@ -34602,7 +35005,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Exit(self):
-        """出口
+        r"""出口
         :rtype: str
         """
         return self._Exit
@@ -34613,7 +35016,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def HighwayMark(self):
-        """高速标志（0：没有，1：有）
+        r"""高速标志（0：没有，1：有）
         :rtype: int
         """
         return self._HighwayMark
@@ -34624,7 +35027,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -34657,7 +35060,7 @@ class TollInvoice(AbstractModel):
 
 
 class TollInvoiceInfo(AbstractModel):
-    """过路过桥费字段信息
+    r"""过路过桥费字段信息
 
     """
 
@@ -34677,7 +35080,7 @@ class TollInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称（关键字）。支持以下字段的识别：
+        r"""识别出的字段名称（关键字）。支持以下字段的识别：
 发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志。
         :rtype: str
         """
@@ -34689,7 +35092,7 @@ class TollInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -34700,7 +35103,7 @@ class TollInvoiceInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -34727,7 +35130,7 @@ class TollInvoiceInfo(AbstractModel):
 
 
 class TollInvoiceOCRRequest(AbstractModel):
-    """TollInvoiceOCR请求参数结构体
+    r"""TollInvoiceOCR请求参数结构体
 
     """
 
@@ -34749,7 +35152,7 @@ class TollInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -34760,7 +35163,7 @@ class TollInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -34771,7 +35174,7 @@ class TollInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -34782,7 +35185,7 @@ class TollInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -34808,7 +35211,7 @@ class TollInvoiceOCRRequest(AbstractModel):
 
 
 class TollInvoiceOCRResponse(AbstractModel):
-    """TollInvoiceOCR返回参数结构体
+    r"""TollInvoiceOCR返回参数结构体
 
     """
 
@@ -34827,7 +35230,7 @@ class TollInvoiceOCRResponse(AbstractModel):
 
     @property
     def TollInvoiceInfos(self):
-        """过路过桥费发票识别结果，具体内容请点击左侧链接。
+        r"""过路过桥费发票识别结果，具体内容请点击左侧链接。
         :rtype: list of TollInvoiceInfo
         """
         return self._TollInvoiceInfos
@@ -34838,7 +35241,7 @@ class TollInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -34849,7 +35252,7 @@ class TollInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34871,7 +35274,7 @@ class TollInvoiceOCRResponse(AbstractModel):
 
 
 class TrainTicket(AbstractModel):
-    """火车票
+    r"""火车票
 
     """
 
@@ -34959,7 +35362,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -34970,7 +35373,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -34981,7 +35384,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """乘车日期
+        r"""乘车日期
         :rtype: str
         """
         return self._DateGetOn
@@ -34992,7 +35395,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """乘车时间
+        r"""乘车时间
         :rtype: str
         """
         return self._TimeGetOn
@@ -35003,7 +35406,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Name(self):
-        """乘车人姓名
+        r"""乘车人姓名
         :rtype: str
         """
         return self._Name
@@ -35014,7 +35417,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """出发车站
+        r"""出发车站
         :rtype: str
         """
         return self._StationGetOn
@@ -35025,7 +35428,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """到达车站
+        r"""到达车站
         :rtype: str
         """
         return self._StationGetOff
@@ -35036,7 +35439,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Seat(self):
-        """座位类型
+        r"""座位类型
         :rtype: str
         """
         return self._Seat
@@ -35047,7 +35450,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Total(self):
-        """总金额
+        r"""总金额
         :rtype: str
         """
         return self._Total
@@ -35058,7 +35461,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -35069,7 +35472,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """序列号
+        r"""序列号
         :rtype: str
         """
         return self._SerialNumber
@@ -35080,7 +35483,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def UserID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._UserID
@@ -35091,7 +35494,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def GateNumber(self):
-        """检票口
+        r"""检票口
         :rtype: str
         """
         return self._GateNumber
@@ -35102,7 +35505,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """车次
+        r"""车次
         :rtype: str
         """
         return self._TrainNumber
@@ -35113,7 +35516,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def HandlingFee(self):
-        """手续费
+        r"""手续费
         :rtype: str
         """
         return self._HandlingFee
@@ -35124,7 +35527,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def OriginalFare(self):
-        """原票价
+        r"""原票价
         :rtype: str
         """
         return self._OriginalFare
@@ -35135,7 +35538,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TotalCn(self):
-        """大写金额
+        r"""大写金额
         :rtype: str
         """
         return self._TotalCn
@@ -35146,7 +35549,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def SeatNumber(self):
-        """座位号
+        r"""座位号
         :rtype: str
         """
         return self._SeatNumber
@@ -35157,7 +35560,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def PickUpAddress(self):
-        """取票地址
+        r"""取票地址
         :rtype: str
         """
         return self._PickUpAddress
@@ -35168,7 +35571,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TicketChange(self):
-        """是否始发改签
+        r"""是否始发改签
         :rtype: str
         """
         return self._TicketChange
@@ -35179,7 +35582,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def AdditionalFare(self):
-        """加收票价
+        r"""加收票价
         :rtype: str
         """
         return self._AdditionalFare
@@ -35190,7 +35593,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """收据号码
+        r"""收据号码
         :rtype: str
         """
         return self._ReceiptNumber
@@ -35201,7 +35604,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -35212,7 +35615,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def ReimburseOnlyMark(self):
-        """是否仅供报销使用（0：没有，1：有）
+        r"""是否仅供报销使用（0：没有，1：有）
         :rtype: int
         """
         return self._ReimburseOnlyMark
@@ -35223,7 +35626,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def RefundMark(self):
-        """是否有退票费标识（0：没有，1：有）
+        r"""是否有退票费标识（0：没有，1：有）
         :rtype: int
         """
         return self._RefundMark
@@ -35234,7 +35637,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TicketChangeMark(self):
-        """是否有改签费标识（0：没有，1：有）
+        r"""是否有改签费标识（0：没有，1：有）
         :rtype: int
         """
         return self._TicketChangeMark
@@ -35282,7 +35685,7 @@ class TrainTicket(AbstractModel):
 
 
 class TrainTicketOCRRequest(AbstractModel):
-    """TrainTicketOCR请求参数结构体
+    r"""TrainTicketOCR请求参数结构体
 
     """
 
@@ -35304,7 +35707,7 @@ class TrainTicketOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -35315,7 +35718,7 @@ class TrainTicketOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -35326,7 +35729,7 @@ class TrainTicketOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -35337,7 +35740,7 @@ class TrainTicketOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -35363,7 +35766,7 @@ class TrainTicketOCRRequest(AbstractModel):
 
 
 class TrainTicketOCRResponse(AbstractModel):
-    """TrainTicketOCR返回参数结构体
+    r"""TrainTicketOCR返回参数结构体
 
     """
 
@@ -35436,7 +35839,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def TicketNum(self):
-        """编号
+        r"""编号
         :rtype: str
         """
         return self._TicketNum
@@ -35447,7 +35850,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def StartStation(self):
-        """出发站
+        r"""出发站
         :rtype: str
         """
         return self._StartStation
@@ -35458,7 +35861,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def DestinationStation(self):
-        """到达站
+        r"""到达站
         :rtype: str
         """
         return self._DestinationStation
@@ -35469,7 +35872,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def Date(self):
-        """出发时间
+        r"""出发时间
         :rtype: str
         """
         return self._Date
@@ -35480,7 +35883,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def TrainNum(self):
-        """车次
+        r"""车次
         :rtype: str
         """
         return self._TrainNum
@@ -35491,7 +35894,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def Seat(self):
-        """座位号
+        r"""座位号
         :rtype: str
         """
         return self._Seat
@@ -35502,7 +35905,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -35513,7 +35916,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def Price(self):
-        """票价
+        r"""票价
         :rtype: str
         """
         return self._Price
@@ -35524,7 +35927,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def SeatCategory(self):
-        """席别
+        r"""席别
         :rtype: str
         """
         return self._SeatCategory
@@ -35535,7 +35938,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """身份证号
+        r"""身份证号
         :rtype: str
         """
         return self._ID
@@ -35546,7 +35949,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def InvoiceType(self):
-        """发票消费类型：交通
+        r"""发票消费类型：交通
         :rtype: str
         """
         return self._InvoiceType
@@ -35557,7 +35960,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """序列号
+        r"""序列号
         :rtype: str
         """
         return self._SerialNumber
@@ -35568,7 +35971,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def AdditionalCost(self):
-        """加收票价
+        r"""加收票价
         :rtype: str
         """
         return self._AdditionalCost
@@ -35579,7 +35982,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def HandlingFee(self):
-        """手续费
+        r"""手续费
         :rtype: str
         """
         return self._HandlingFee
@@ -35590,7 +35993,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def LegalAmount(self):
-        """大写金额（票面有大写金额该字段才有值）
+        r"""大写金额（票面有大写金额该字段才有值）
         :rtype: str
         """
         return self._LegalAmount
@@ -35601,7 +36004,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def TicketStation(self):
-        """售票站
+        r"""售票站
         :rtype: str
         """
         return self._TicketStation
@@ -35612,7 +36015,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """原票价（一般有手续费的才有原始票价字段）
+        r"""原票价（一般有手续费的才有原始票价字段）
         :rtype: str
         """
         return self._OriginalPrice
@@ -35623,7 +36026,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def InvoiceStyle(self):
-        """发票类型：火车票、火车票补票、火车票退票凭证
+        r"""发票类型：火车票、火车票补票、火车票退票凭证
         :rtype: str
         """
         return self._InvoiceStyle
@@ -35634,7 +36037,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """收据号码
+        r"""收据号码
         :rtype: str
         """
         return self._ReceiptNumber
@@ -35645,7 +36048,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def IsReceipt(self):
-        """仅供报销使用：1为是，0为否
+        r"""仅供报销使用：1为是，0为否
         :rtype: str
         """
         return self._IsReceipt
@@ -35656,7 +36059,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -35691,7 +36094,7 @@ class TrainTicketOCRResponse(AbstractModel):
 
 
 class UsedCarPurchaseInvoice(AbstractModel):
-    """二手车销售统一发票
+    r"""二手车销售统一发票
 
     """
 
@@ -35830,7 +36233,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -35841,7 +36244,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（0：没有，1：有）
+        r"""是否存在二维码（0：没有，1：有）
         :rtype: int
         """
         return self._QRCodeMark
@@ -35852,7 +36255,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -35863,7 +36266,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -35874,7 +36277,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -35885,7 +36288,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -35896,7 +36299,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -35907,7 +36310,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """销货单位名称
+        r"""销货单位名称
         :rtype: str
         """
         return self._Seller
@@ -35918,7 +36321,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerTel(self):
-        """销售方电话
+        r"""销售方电话
         :rtype: str
         """
         return self._SellerTel
@@ -35929,7 +36332,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方单位代码/个人身份证号
+        r"""销售方单位代码/个人身份证号
         :rtype: str
         """
         return self._SellerTaxID
@@ -35940,7 +36343,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """销售方地址
+        r"""销售方地址
         :rtype: str
         """
         return self._SellerAddress
@@ -35951,7 +36354,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -35962,7 +36365,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerID(self):
-        """购买方单位代码/个人身份证号
+        r"""购买方单位代码/个人身份证号
         :rtype: str
         """
         return self._BuyerID
@@ -35973,7 +36376,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerAddress(self):
-        """购买方地址
+        r"""购买方地址
         :rtype: str
         """
         return self._BuyerAddress
@@ -35984,7 +36387,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerTel(self):
-        """购买方电话
+        r"""购买方电话
         :rtype: str
         """
         return self._BuyerTel
@@ -35995,7 +36398,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyName(self):
-        """二手车市场
+        r"""二手车市场
         :rtype: str
         """
         return self._CompanyName
@@ -36006,7 +36409,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyTaxID(self):
-        """二手车市场纳税人识别号
+        r"""二手车市场纳税人识别号
         :rtype: str
         """
         return self._CompanyTaxID
@@ -36017,7 +36420,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyBankAccount(self):
-        """二手车市场开户银行和账号
+        r"""二手车市场开户银行和账号
         :rtype: str
         """
         return self._CompanyBankAccount
@@ -36028,7 +36431,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyTel(self):
-        """二手车市场电话
+        r"""二手车市场电话
         :rtype: str
         """
         return self._CompanyTel
@@ -36039,7 +36442,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyAddress(self):
-        """二手车市场地址
+        r"""二手车市场地址
         :rtype: str
         """
         return self._CompanyAddress
@@ -36050,7 +36453,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def TransferAdministrationName(self):
-        """转入地车辆管理所名称
+        r"""转入地车辆管理所名称
         :rtype: str
         """
         return self._TransferAdministrationName
@@ -36061,7 +36464,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """车牌号
+        r"""车牌号
         :rtype: str
         """
         return self._LicensePlate
@@ -36072,7 +36475,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def RegistrationNumber(self):
-        """登记证号
+        r"""登记证号
         :rtype: str
         """
         return self._RegistrationNumber
@@ -36083,7 +36486,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VIN(self):
-        """车辆识别代码
+        r"""车辆识别代码
         :rtype: str
         """
         return self._VIN
@@ -36094,7 +36497,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VehicleModel(self):
-        """厂牌型号
+        r"""厂牌型号
         :rtype: str
         """
         return self._VehicleModel
@@ -36105,7 +36508,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -36116,7 +36519,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -36127,7 +36530,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -36138,7 +36541,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """车辆类型
+        r"""车辆类型
         :rtype: str
         """
         return self._VehicleType
@@ -36149,7 +36552,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -36160,7 +36563,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def FormType(self):
-        """发票联次
+        r"""发票联次
         :rtype: str
         """
         return self._FormType
@@ -36171,7 +36574,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def FormName(self):
-        """发票联名
+        r"""发票联名
         :rtype: str
         """
         return self._FormName
@@ -36182,7 +36585,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -36193,7 +36596,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def AuctionOrgName(self):
-        """经营拍卖单位
+        r"""经营拍卖单位
         :rtype: str
         """
         return self._AuctionOrgName
@@ -36204,7 +36607,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def AuctionOrgAddress(self):
-        """经营拍卖单位地址
+        r"""经营拍卖单位地址
         :rtype: str
         """
         return self._AuctionOrgAddress
@@ -36215,7 +36618,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def AuctionOrgTaxID(self):
-        """经营拍卖单位纳税人识别号
+        r"""经营拍卖单位纳税人识别号
         :rtype: str
         """
         return self._AuctionOrgTaxID
@@ -36226,7 +36629,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def AuctionOrgBankAccount(self):
-        """经营拍卖单位开户银行账号
+        r"""经营拍卖单位开户银行账号
         :rtype: str
         """
         return self._AuctionOrgBankAccount
@@ -36237,7 +36640,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def AuctionOrgPhone(self):
-        """经营拍卖单位电话
+        r"""经营拍卖单位电话
         :rtype: str
         """
         return self._AuctionOrgPhone
@@ -36248,7 +36651,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Issuer(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._Issuer
@@ -36259,7 +36662,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def TaxCode(self):
-        """税控码
+        r"""税控码
         :rtype: str
         """
         return self._TaxCode
@@ -36270,7 +36673,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def MachineSerialNumber(self):
-        """机器编号
+        r"""机器编号
         :rtype: str
         """
         return self._MachineSerialNumber
@@ -36281,7 +36684,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def MachineCode(self):
-        """机打发票代码
+        r"""机打发票代码
         :rtype: str
         """
         return self._MachineCode
@@ -36292,7 +36695,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def MachineNumber(self):
-        """机打发票号码
+        r"""机打发票号码
         :rtype: str
         """
         return self._MachineNumber
@@ -36357,7 +36760,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
 
 class UsedVehicleInvoiceInfo(AbstractModel):
-    """二手车销售统一发票信息
+    r"""二手车销售统一发票信息
 
     """
 
@@ -36439,7 +36842,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def TaxBureau(self):
-        """所属税局
+        r"""所属税局
         :rtype: str
         """
         return self._TaxBureau
@@ -36450,7 +36853,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        """买方单位/个人
+        r"""买方单位/个人
         :rtype: str
         """
         return self._Buyer
@@ -36461,7 +36864,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerNo(self):
-        """买方单位代码/身份证号码
+        r"""买方单位代码/身份证号码
         :rtype: str
         """
         return self._BuyerNo
@@ -36472,7 +36875,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerAddress(self):
-        """买方单位/个人地址
+        r"""买方单位/个人地址
         :rtype: str
         """
         return self._BuyerAddress
@@ -36483,7 +36886,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerTel(self):
-        """买方单位电话
+        r"""买方单位电话
         :rtype: str
         """
         return self._BuyerTel
@@ -36494,7 +36897,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Seller(self):
-        """卖方单位/个人
+        r"""卖方单位/个人
         :rtype: str
         """
         return self._Seller
@@ -36505,7 +36908,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerNo(self):
-        """卖方单位代码/身份证号码
+        r"""卖方单位代码/身份证号码
         :rtype: str
         """
         return self._SellerNo
@@ -36516,7 +36919,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """卖方单位/个人地址
+        r"""卖方单位/个人地址
         :rtype: str
         """
         return self._SellerAddress
@@ -36527,7 +36930,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerTel(self):
-        """卖方单位电话
+        r"""卖方单位电话
         :rtype: str
         """
         return self._SellerTel
@@ -36538,7 +36941,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleLicenseNo(self):
-        """车牌照号
+        r"""车牌照号
         :rtype: str
         """
         return self._VehicleLicenseNo
@@ -36549,7 +36952,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def RegisterNo(self):
-        """登记证号
+        r"""登记证号
         :rtype: str
         """
         return self._RegisterNo
@@ -36560,7 +36963,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleIdentifyNo(self):
-        """车架号/车辆识别代码
+        r"""车架号/车辆识别代码
         :rtype: str
         """
         return self._VehicleIdentifyNo
@@ -36571,7 +36974,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def ManagementOffice(self):
-        """转入地车辆管理所名称
+        r"""转入地车辆管理所名称
         :rtype: str
         """
         return self._ManagementOffice
@@ -36582,7 +36985,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleTotalPrice(self):
-        """车价合计
+        r"""车价合计
         :rtype: str
         """
         return self._VehicleTotalPrice
@@ -36593,7 +36996,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Auctioneer(self):
-        """经营、拍卖单位
+        r"""经营、拍卖单位
         :rtype: str
         """
         return self._Auctioneer
@@ -36604,7 +37007,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerAddress(self):
-        """经营、拍卖单位地址
+        r"""经营、拍卖单位地址
         :rtype: str
         """
         return self._AuctioneerAddress
@@ -36615,7 +37018,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerTaxpayerNum(self):
-        """经营、拍卖单位纳税人识别号
+        r"""经营、拍卖单位纳税人识别号
         :rtype: str
         """
         return self._AuctioneerTaxpayerNum
@@ -36626,7 +37029,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerBankAccount(self):
-        """经营、拍卖单位开户银行、账号
+        r"""经营、拍卖单位开户银行、账号
         :rtype: str
         """
         return self._AuctioneerBankAccount
@@ -36637,7 +37040,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerTel(self):
-        """经营、拍卖单位电话
+        r"""经营、拍卖单位电话
         :rtype: str
         """
         return self._AuctioneerTel
@@ -36648,7 +37051,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Market(self):
-        """二手车市场
+        r"""二手车市场
         :rtype: str
         """
         return self._Market
@@ -36659,7 +37062,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketTaxpayerNum(self):
-        """二手车市场纳税人识别号
+        r"""二手车市场纳税人识别号
         :rtype: str
         """
         return self._MarketTaxpayerNum
@@ -36670,7 +37073,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketAddress(self):
-        """二手车市场地址
+        r"""二手车市场地址
         :rtype: str
         """
         return self._MarketAddress
@@ -36681,7 +37084,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketBankAccount(self):
-        """二手车市场开户银行账号
+        r"""二手车市场开户银行账号
         :rtype: str
         """
         return self._MarketBankAccount
@@ -36692,7 +37095,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketTel(self):
-        """二手车市场电话
+        r"""二手车市场电话
         :rtype: str
         """
         return self._MarketTel
@@ -36738,7 +37141,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
 
 class Value(AbstractModel):
-    """value信息组
+    r"""value信息组
 
     """
 
@@ -36759,7 +37162,7 @@ class Value(AbstractModel):
 
     @property
     def AutoContent(self):
-        """自动识别的字段内容
+        r"""自动识别的字段内容
         :rtype: str
         """
         return self._AutoContent
@@ -36770,7 +37173,7 @@ class Value(AbstractModel):
 
     @property
     def Coord(self):
-        """四点坐标
+        r"""四点坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
@@ -36782,7 +37185,7 @@ class Value(AbstractModel):
 
     @property
     def PageIndex(self):
-        """页数
+        r"""页数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36810,7 +37213,7 @@ class Value(AbstractModel):
 
 
 class VatElectronicInfo(AbstractModel):
-    """电子发票返回值
+    r"""电子发票返回值
 
     """
 
@@ -36889,7 +37292,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -36900,7 +37303,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -36911,7 +37314,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -36922,7 +37325,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """税前金额
+        r"""税前金额
         :rtype: str
         """
         return self._PretaxAmount
@@ -36933,7 +37336,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
         :rtype: str
         """
         return self._Tax
@@ -36944,7 +37347,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -36955,7 +37358,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -36966,7 +37369,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -36977,7 +37380,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方纳税人识别号
+        r"""销售方纳税人识别号
         :rtype: str
         """
         return self._SellerTaxID
@@ -36988,7 +37391,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -36999,7 +37402,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """购买方纳税人识别号
+        r"""购买方纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -37010,7 +37413,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Issuer(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._Issuer
@@ -37021,7 +37424,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -37032,7 +37435,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SubTotal(self):
-        """小计金额
+        r"""小计金额
         :rtype: str
         """
         return self._SubTotal
@@ -37043,7 +37446,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SubTax(self):
-        """小计税额
+        r"""小计税额
         :rtype: str
         """
         return self._SubTax
@@ -37054,7 +37457,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def VatElectronicItems(self):
-        """电子发票详细条目信息
+        r"""电子发票详细条目信息
         :rtype: list of VatElectronicItemInfo
         """
         return self._VatElectronicItems
@@ -37065,7 +37468,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def ServiceTypeLabel(self):
-        """业务类型标志
+        r"""业务类型标志
         :rtype: str
         """
         return self._ServiceTypeLabel
@@ -37076,7 +37479,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def TotalCnMark(self):
-        """价税合计(大写)前符号
+        r"""价税合计(大写)前符号
         :rtype: str
         """
         return self._TotalCnMark
@@ -37087,7 +37490,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def TotalMark(self):
-        """价税合计(小写)前字样
+        r"""价税合计(小写)前字样
         :rtype: str
         """
         return self._TotalMark
@@ -37098,7 +37501,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def PretaxAmountMark(self):
-        """合计金额前字样
+        r"""合计金额前字样
         :rtype: str
         """
         return self._PretaxAmountMark
@@ -37109,7 +37512,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def TaxMark(self):
-        """合计税额前字样
+        r"""合计税额前字样
         :rtype: str
         """
         return self._TaxMark
@@ -37120,7 +37523,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -37131,7 +37534,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def InvoicePageIndex(self):
-        """全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
+        r"""全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
         :rtype: str
         """
         return self._InvoicePageIndex
@@ -37181,7 +37584,7 @@ class VatElectronicInfo(AbstractModel):
 
 
 class VatElectronicItemInfo(AbstractModel):
-    """电子发票详细条目信息
+    r"""电子发票详细条目信息
 
     """
 
@@ -37254,7 +37657,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -37265,7 +37668,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -37276,7 +37679,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """规格型号
+        r"""规格型号
         :rtype: str
         """
         return self._Specification
@@ -37287,7 +37690,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Price(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._Price
@@ -37298,7 +37701,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -37309,7 +37712,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -37320,7 +37723,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._Tax
@@ -37331,7 +37734,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -37342,7 +37745,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleType(self):
-        """运输工具类型
+        r"""运输工具类型
         :rtype: str
         """
         return self._VehicleType
@@ -37353,7 +37756,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleBrand(self):
-        """运输工具牌号
+        r"""运输工具牌号
         :rtype: str
         """
         return self._VehicleBrand
@@ -37364,7 +37767,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def DeparturePlace(self):
-        """起始地
+        r"""起始地
         :rtype: str
         """
         return self._DeparturePlace
@@ -37375,7 +37778,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def ArrivalPlace(self):
-        """到达地
+        r"""到达地
         :rtype: str
         """
         return self._ArrivalPlace
@@ -37386,7 +37789,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TransportItemsName(self):
-        """运输货物名称，仅货物运输服务发票返回
+        r"""运输货物名称，仅货物运输服务发票返回
         :rtype: str
         """
         return self._TransportItemsName
@@ -37397,7 +37800,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def PlaceOfBuildingService(self):
-        """建筑服务发生地，仅建筑发票返回
+        r"""建筑服务发生地，仅建筑发票返回
         :rtype: str
         """
         return self._PlaceOfBuildingService
@@ -37408,7 +37811,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def BuildingName(self):
-        """建筑项目名称，仅建筑发票返回
+        r"""建筑项目名称，仅建筑发票返回
         :rtype: str
         """
         return self._BuildingName
@@ -37419,7 +37822,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def EstateNumber(self):
-        """产权证书/不动产权证号，仅不动产经营租赁服务发票返回
+        r"""产权证书/不动产权证号，仅不动产经营租赁服务发票返回
         :rtype: str
         """
         return self._EstateNumber
@@ -37430,7 +37833,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def AreaUnit(self):
-        """面积单位，仅不动产经营租赁服务发票返回
+        r"""面积单位，仅不动产经营租赁服务发票返回
         :rtype: str
         """
         return self._AreaUnit
@@ -37441,7 +37844,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Traveler(self):
-        """出行人，仅旅客运输服务发票返回
+        r"""出行人，仅旅客运输服务发票返回
         :rtype: str
         """
         return self._Traveler
@@ -37452,7 +37855,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelerID(self):
-        """有效身份证件号，仅旅客运输服务发票返回
+        r"""有效身份证件号，仅旅客运输服务发票返回
         :rtype: str
         """
         return self._TravelerID
@@ -37463,7 +37866,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelDate(self):
-        """出行日期，仅旅客运输服务发票返回
+        r"""出行日期，仅旅客运输服务发票返回
         :rtype: str
         """
         return self._TravelDate
@@ -37474,7 +37877,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelLevel(self):
-        """等级，仅旅客运输服务发票返回
+        r"""等级，仅旅客运输服务发票返回
         :rtype: str
         """
         return self._TravelLevel
@@ -37517,7 +37920,7 @@ class VatElectronicItemInfo(AbstractModel):
 
 
 class VatInvoice(AbstractModel):
-    """增值税发票、购车发票、全电发票的基础要素字段信息。
+    r"""增值税发票、购车发票、全电发票的基础要素字段信息。
 
     """
 
@@ -37641,7 +38044,7 @@ Y: 有清单 N：无清单
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -37652,7 +38055,7 @@ Y: 有清单 N：无清单
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -37663,7 +38066,7 @@ Y: 有清单 N：无清单
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -37674,7 +38077,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerName(self):
-        """购方抬头
+        r"""购方抬头
 通用机打发票类型时不返回
         :rtype: str
         """
@@ -37686,7 +38089,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerTaxCode(self):
-        """购方税号
+        r"""购方税号
 通用机打发票类型时不返回
         :rtype: str
         """
@@ -37698,7 +38101,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerAddressPhone(self):
-        """购方地址电话
+        r"""购方地址电话
 通用机打发票类型做不返回
         :rtype: str
         """
@@ -37710,7 +38113,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerBankAccount(self):
-        """购方银行账号
+        r"""购方银行账号
 通用机打发票类型时不返回
         :rtype: str
         """
@@ -37722,7 +38125,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerName(self):
-        """销方名称
+        r"""销方名称
         :rtype: str
         """
         return self._SellerName
@@ -37733,7 +38136,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerTaxCode(self):
-        """销方税号
+        r"""销方税号
         :rtype: str
         """
         return self._SellerTaxCode
@@ -37744,7 +38147,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAddressPhone(self):
-        """销方地址电话
+        r"""销方地址电话
         :rtype: str
         """
         return self._SellerAddressPhone
@@ -37755,7 +38158,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerBankAccount(self):
-        """销方银行账号
+        r"""销方银行账号
         :rtype: str
         """
         return self._SellerBankAccount
@@ -37766,7 +38169,7 @@ Y: 有清单 N：无清单
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -37777,7 +38180,7 @@ Y: 有清单 N：无清单
 
     @property
     def MachineNo(self):
-        """机器编码
+        r"""机器编码
         :rtype: str
         """
         return self._MachineNo
@@ -37788,7 +38191,7 @@ Y: 有清单 N：无清单
 
     @property
     def Type(self):
-        """票种类型
+        r"""票种类型
 01：增值税专用发票，
 02：货运运输业增值税专用发票，
 03：机动车销售统一发票，
@@ -37814,7 +38217,7 @@ Y: 有清单 N：无清单
 
     @property
     def ElectronicType(self):
-        """具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
+        r"""具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
         :rtype: str
         """
         return self._ElectronicType
@@ -37825,7 +38228,7 @@ Y: 有清单 N：无清单
 
     @property
     def CheckCode(self):
-        """检验码
+        r"""检验码
         :rtype: str
         """
         return self._CheckCode
@@ -37836,7 +38239,7 @@ Y: 有清单 N：无清单
 
     @property
     def IsAbandoned(self):
-        """是否作废（红冲）是否作废（红冲）
+        r"""是否作废（红冲）是否作废（红冲）
 Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红冲
         :rtype: str
         """
@@ -37848,7 +38251,7 @@ Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红�
 
     @property
     def HasSellerList(self):
-        """是否有销货清单 
+        r"""是否有销货清单 
 Y: 有清单 N：无清单 
 卷票无
         :rtype: str
@@ -37861,7 +38264,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerListTitle(self):
-        """销货清单标题
+        r"""销货清单标题
         :rtype: str
         """
         return self._SellerListTitle
@@ -37872,7 +38275,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerListTax(self):
-        """销货清单税额
+        r"""销货清单税额
         :rtype: str
         """
         return self._SellerListTax
@@ -37883,7 +38286,7 @@ Y: 有清单 N：无清单
 
     @property
     def AmountWithoutTax(self):
-        """不含税金额
+        r"""不含税金额
         :rtype: str
         """
         return self._AmountWithoutTax
@@ -37894,7 +38297,7 @@ Y: 有清单 N：无清单
 
     @property
     def TaxAmount(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._TaxAmount
@@ -37905,7 +38308,7 @@ Y: 有清单 N：无清单
 
     @property
     def AmountWithTax(self):
-        """含税金额
+        r"""含税金额
         :rtype: str
         """
         return self._AmountWithTax
@@ -37916,7 +38319,7 @@ Y: 有清单 N：无清单
 
     @property
     def Items(self):
-        """项目明细
+        r"""项目明细
         :rtype: list of VatInvoiceItem
         """
         return self._Items
@@ -37927,7 +38330,7 @@ Y: 有清单 N：无清单
 
     @property
     def TaxBureau(self):
-        """所属税局
+        r"""所属税局
         :rtype: str
         """
         return self._TaxBureau
@@ -37938,7 +38341,7 @@ Y: 有清单 N：无清单
 
     @property
     def TrafficFreeFlag(self):
-        """通行费标志:Y、是;N、否
+        r"""通行费标志:Y、是;N、否
         :rtype: str
         """
         return self._TrafficFreeFlag
@@ -37949,7 +38352,7 @@ Y: 有清单 N：无清单
 
     @property
     def RedLetterInvoiceMark(self):
-        """是否为红票
+        r"""是否为红票
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -37961,7 +38364,7 @@ Y: 有清单 N：无清单
 
     @property
     def IssuingTypeMark(self):
-        """开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
+        r"""开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37973,7 +38376,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAgentName(self):
-        """代开销售方名称
+        r"""代开销售方名称
         :rtype: str
         """
         return self._SellerAgentName
@@ -37984,7 +38387,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAgentTaxID(self):
-        """代开销售方税号
+        r"""代开销售方税号
         :rtype: str
         """
         return self._SellerAgentTaxID
@@ -38041,7 +38444,7 @@ Y: 有清单 N：无清单
 
 
 class VatInvoiceGoodsInfo(AbstractModel):
-    """发票商品
+    r"""发票商品
 
     """
 
@@ -38075,7 +38478,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def Item(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Item
@@ -38086,7 +38489,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """规格型号
+        r"""规格型号
         :rtype: str
         """
         return self._Specification
@@ -38097,7 +38500,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def MeasurementDimension(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._MeasurementDimension
@@ -38108,7 +38511,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def Price(self):
-        """价格
+        r"""价格
         :rtype: str
         """
         return self._Price
@@ -38119,7 +38522,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -38130,7 +38533,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def Amount(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Amount
@@ -38141,7 +38544,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def TaxScheme(self):
-        """税率(如6%、免税)
+        r"""税率(如6%、免税)
         :rtype: str
         """
         return self._TaxScheme
@@ -38152,7 +38555,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
     @property
     def TaxAmount(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._TaxAmount
@@ -38182,7 +38585,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
 
 
 class VatInvoiceInfo(AbstractModel):
-    """增值税发票返回值
+    r"""增值税发票返回值
 
     """
 
@@ -38330,7 +38733,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -38341,7 +38744,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def FormType(self):
-        """发票联次
+        r"""发票联次
         :rtype: str
         """
         return self._FormType
@@ -38352,7 +38755,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TravelTax(self):
-        """车船税
+        r"""车船税
         :rtype: str
         """
         return self._TravelTax
@@ -38363,7 +38766,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerAddrTel(self):
-        """购买方地址电话
+        r"""购买方地址电话
         :rtype: str
         """
         return self._BuyerAddrTel
@@ -38374,7 +38777,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerBankAccount(self):
-        """购买方银行账号
+        r"""购买方银行账号
         :rtype: str
         """
         return self._BuyerBankAccount
@@ -38385,7 +38788,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CompanySealContent(self):
-        """公司印章内容
+        r"""公司印章内容
         :rtype: str
         """
         return self._CompanySealContent
@@ -38396,7 +38799,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TaxSealContent(self):
-        """税务局章内容
+        r"""税务局章内容
         :rtype: str
         """
         return self._TaxSealContent
@@ -38407,7 +38810,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ServiceName(self):
-        """服务类型
+        r"""服务类型
         :rtype: str
         """
         return self._ServiceName
@@ -38418,7 +38821,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -38429,7 +38832,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（0：没有，1：有）
+        r"""是否存在二维码（0：没有，1：有）
         :rtype: int
         """
         return self._QRCodeMark
@@ -38440,7 +38843,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def AgentMark(self):
-        """是否有代开标记（0：没有，1：有）
+        r"""是否有代开标记（0：没有，1：有）
         :rtype: int
         """
         return self._AgentMark
@@ -38451,7 +38854,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TransitMark(self):
-        """是否有通行费标记（0：没有，1：有）
+        r"""是否有通行费标记（0：没有，1：有）
         :rtype: int
         """
         return self._TransitMark
@@ -38462,7 +38865,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def OilMark(self):
-        """是否有成品油标记（0：没有，1：有）
+        r"""是否有成品油标记（0：没有，1：有）
         :rtype: int
         """
         return self._OilMark
@@ -38473,7 +38876,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -38484,7 +38887,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -38495,7 +38898,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -38506,7 +38909,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -38517,7 +38920,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def NumberConfirm(self):
-        """机打发票号码
+        r"""机打发票号码
         :rtype: str
         """
         return self._NumberConfirm
@@ -38528,7 +38931,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -38539,7 +38942,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -38550,7 +38953,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -38561,7 +38964,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """税前金额
+        r"""税前金额
         :rtype: str
         """
         return self._PretaxAmount
@@ -38572,7 +38975,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """合计税额
+        r"""合计税额
         :rtype: str
         """
         return self._Tax
@@ -38583,7 +38986,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def MachineCode(self):
-        """机器编号
+        r"""机器编号
         :rtype: str
         """
         return self._MachineCode
@@ -38594,7 +38997,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Ciphertext(self):
-        """密码区
+        r"""密码区
         :rtype: str
         """
         return self._Ciphertext
@@ -38605,7 +39008,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -38616,7 +39019,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -38627,7 +39030,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方纳税人识别号
+        r"""销售方纳税人识别号
         :rtype: str
         """
         return self._SellerTaxID
@@ -38638,7 +39041,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddrTel(self):
-        """销售方地址电话
+        r"""销售方地址电话
         :rtype: str
         """
         return self._SellerAddrTel
@@ -38649,7 +39052,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """销售方银行账号
+        r"""销售方银行账号
         :rtype: str
         """
         return self._SellerBankAccount
@@ -38660,7 +39063,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -38671,7 +39074,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """购买方纳税人识别号
+        r"""购买方纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -38682,7 +39085,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -38693,7 +39096,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Issuer(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._Issuer
@@ -38704,7 +39107,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Reviewer(self):
-        """复核人
+        r"""复核人
         :rtype: str
         """
         return self._Reviewer
@@ -38715,7 +39118,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -38726,7 +39129,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def VatInvoiceItemInfos(self):
-        """增值税发票项目信息
+        r"""增值税发票项目信息
         :rtype: list of VatInvoiceItemInfo
         """
         return self._VatInvoiceItemInfos
@@ -38737,7 +39140,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CodeConfirm(self):
-        """机打发票代码
+        r"""机打发票代码
         :rtype: str
         """
         return self._CodeConfirm
@@ -38748,7 +39151,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Receiptor(self):
-        """收款人
+        r"""收款人
         :rtype: str
         """
         return self._Receiptor
@@ -38759,7 +39162,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullMark(self):
-        """是否有全电纸质票（0：没有，1：有）
+        r"""是否有全电纸质票（0：没有，1：有）
         :rtype: int
         """
         return self._ElectronicFullMark
@@ -38770,7 +39173,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullNumber(self):
-        """全电号码
+        r"""全电号码
         :rtype: str
         """
         return self._ElectronicFullNumber
@@ -38781,7 +39184,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def FormName(self):
-        """发票联名
+        r"""发票联名
         :rtype: str
         """
         return self._FormName
@@ -38792,7 +39195,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BlockChainMark(self):
-        """是否有区块链标记（0：没有，1：有）	
+        r"""是否有区块链标记（0：没有，1：有）	
         :rtype: int
         """
         return self._BlockChainMark
@@ -38803,7 +39206,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def AcquisitionMark(self):
-        """是否有收购标记（0：没有，1：有）	
+        r"""是否有收购标记（0：没有，1：有）	
         :rtype: int
         """
         return self._AcquisitionMark
@@ -38814,7 +39217,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SubTotal(self):
-        """小计金额
+        r"""小计金额
         :rtype: str
         """
         return self._SubTotal
@@ -38825,7 +39228,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SubTax(self):
-        """小计税额
+        r"""小计税额
         :rtype: str
         """
         return self._SubTax
@@ -38898,7 +39301,7 @@ class VatInvoiceInfo(AbstractModel):
 
 
 class VatInvoiceItem(AbstractModel):
-    """增值税发票项目明细
+    r"""增值税发票项目明细
 
     """
 
@@ -38959,7 +39362,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def LineNo(self):
-        """行号
+        r"""行号
         :rtype: str
         """
         return self._LineNo
@@ -38970,7 +39373,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -38981,7 +39384,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Spec(self):
-        """规格
+        r"""规格
         :rtype: str
         """
         return self._Spec
@@ -38992,7 +39395,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -39003,7 +39406,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -39014,7 +39417,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def UnitPrice(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._UnitPrice
@@ -39025,7 +39428,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def AmountWithoutTax(self):
-        """不含税金额
+        r"""不含税金额
         :rtype: str
         """
         return self._AmountWithoutTax
@@ -39036,7 +39439,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -39047,7 +39450,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxAmount(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._TaxAmount
@@ -39058,7 +39461,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxClassifyCode(self):
-        """税收分类编码
+        r"""税收分类编码
         :rtype: str
         """
         return self._TaxClassifyCode
@@ -39069,7 +39472,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def VehicleType(self):
-        """运输工具类型
+        r"""运输工具类型
         :rtype: str
         """
         return self._VehicleType
@@ -39080,7 +39483,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def VehicleBrand(self):
-        """运输工具牌号
+        r"""运输工具牌号
         :rtype: str
         """
         return self._VehicleBrand
@@ -39091,7 +39494,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def DeparturePlace(self):
-        """起始地
+        r"""起始地
         :rtype: str
         """
         return self._DeparturePlace
@@ -39102,7 +39505,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ArrivalPlace(self):
-        """到达地
+        r"""到达地
         :rtype: str
         """
         return self._ArrivalPlace
@@ -39113,7 +39516,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TransportItemsName(self):
-        """运输货物名称
+        r"""运输货物名称
         :rtype: str
         """
         return self._TransportItemsName
@@ -39124,7 +39527,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ConstructionPlace(self):
-        """建筑服务发生地
+        r"""建筑服务发生地
         :rtype: str
         """
         return self._ConstructionPlace
@@ -39135,7 +39538,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ConstructionName(self):
-        """建筑项目名称
+        r"""建筑项目名称
         :rtype: str
         """
         return self._ConstructionName
@@ -39174,7 +39577,7 @@ class VatInvoiceItem(AbstractModel):
 
 
 class VatInvoiceItemInfo(AbstractModel):
-    """增值税发票项目信息
+    r"""增值税发票项目信息
 
     """
 
@@ -39223,7 +39626,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -39234,7 +39637,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """规格型号
+        r"""规格型号
         :rtype: str
         """
         return self._Specification
@@ -39245,7 +39648,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -39256,7 +39659,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -39267,7 +39670,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Price(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._Price
@@ -39278,7 +39681,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -39289,7 +39692,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._TaxRate
@@ -39300,7 +39703,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._Tax
@@ -39311,7 +39714,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def DateStart(self):
-        """通行日期起
+        r"""通行日期起
         :rtype: str
         """
         return self._DateStart
@@ -39322,7 +39725,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def DateEnd(self):
-        """通行日期止
+        r"""通行日期止
         :rtype: str
         """
         return self._DateEnd
@@ -39333,7 +39736,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """车牌号
+        r"""车牌号
         :rtype: str
         """
         return self._LicensePlate
@@ -39344,7 +39747,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def VehicleType(self):
-        """车辆类型
+        r"""车辆类型
         :rtype: str
         """
         return self._VehicleType
@@ -39355,7 +39758,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """序号
+        r"""序号
         :rtype: str
         """
         return self._SerialNumber
@@ -39390,7 +39793,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
 
 class VatInvoiceOCRRequest(AbstractModel):
-    """VatInvoiceOCR请求参数结构体
+    r"""VatInvoiceOCR请求参数结构体
 
     """
 
@@ -39412,7 +39815,7 @@ class VatInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片/PDF的 Base64 值。支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片/PDF大小：所下载文件经Base64编码后不超过 10M。文件下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片/PDF的 Base64 值。支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片/PDF大小：所下载文件经Base64编码后不超过 10M。文件下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -39423,7 +39826,7 @@ class VatInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片/PDF的 Url 地址。支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 10M。文件下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片/PDF的 Url 地址。支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 10M。文件下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -39434,7 +39837,7 @@ class VatInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -39445,7 +39848,7 @@ class VatInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -39471,7 +39874,7 @@ class VatInvoiceOCRRequest(AbstractModel):
 
 
 class VatInvoiceOCRResponse(AbstractModel):
-    """VatInvoiceOCR返回参数结构体
+    r"""VatInvoiceOCR返回参数结构体
 
     """
 
@@ -39496,7 +39899,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
     @property
     def VatInvoiceInfos(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: list of TextVatInvoice
         """
         return self._VatInvoiceInfos
@@ -39507,7 +39910,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Items(self):
-        """明细条目。VatInvoiceInfos中关于明细项的具体条目。
+        r"""明细条目。VatInvoiceInfos中关于明细项的具体条目。
         :rtype: list of VatInvoiceItem
         """
         return self._Items
@@ -39518,7 +39921,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """默认值为0。如果图片为PDF时，返回PDF的总页数。
+        r"""默认值为0。如果图片为PDF时，返回PDF的总页数。
         :rtype: int
         """
         return self._PdfPageSize
@@ -39529,7 +39932,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
         return self._Angle
@@ -39540,7 +39943,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -39569,7 +39972,7 @@ class VatInvoiceOCRResponse(AbstractModel):
 
 
 class VatInvoiceRoll(AbstractModel):
-    """增值税普通发票(卷票)
+    r"""增值税普通发票(卷票)
 
     """
 
@@ -39645,7 +40048,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Title(self):
-        """发票名称
+        r"""发票名称
         :rtype: str
         """
         return self._Title
@@ -39656,7 +40059,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Code(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._Code
@@ -39667,7 +40070,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Number(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._Number
@@ -39678,7 +40081,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def NumberConfirm(self):
-        """机打发票号码
+        r"""机打发票号码
         :rtype: str
         """
         return self._NumberConfirm
@@ -39689,7 +40092,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Date(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._Date
@@ -39700,7 +40103,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码
+        r"""校验码
         :rtype: str
         """
         return self._CheckCode
@@ -39711,7 +40114,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方名称
+        r"""销售方名称
         :rtype: str
         """
         return self._Seller
@@ -39722,7 +40125,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """销售方纳税人识别号
+        r"""销售方纳税人识别号
         :rtype: str
         """
         return self._SellerTaxID
@@ -39733,7 +40136,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方名称
+        r"""购买方名称
         :rtype: str
         """
         return self._Buyer
@@ -39744,7 +40147,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """购买方纳税人识别号
+        r"""购买方纳税人识别号
         :rtype: str
         """
         return self._BuyerTaxID
@@ -39755,7 +40158,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Category(self):
-        """种类
+        r"""种类
         :rtype: str
         """
         return self._Category
@@ -39766,7 +40169,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Total(self):
-        """价税合计（小写）
+        r"""价税合计（小写）
         :rtype: str
         """
         return self._Total
@@ -39777,7 +40180,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def TotalCn(self):
-        """价税合计（大写）
+        r"""价税合计（大写）
         :rtype: str
         """
         return self._TotalCn
@@ -39788,7 +40191,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Kind(self):
-        """发票消费类型
+        r"""发票消费类型
         :rtype: str
         """
         return self._Kind
@@ -39799,7 +40202,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Province(self):
-        """省
+        r"""省
         :rtype: str
         """
         return self._Province
@@ -39810,7 +40213,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def City(self):
-        """市
+        r"""市
         :rtype: str
         """
         return self._City
@@ -39821,7 +40224,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """是否有公司印章（0：没有，1：有）
+        r"""是否有公司印章（0：没有，1：有）
         :rtype: int
         """
         return self._CompanySealMark
@@ -39832,7 +40235,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """是否存在二维码（1：有，0：无）
+        r"""是否存在二维码（1：有，0：无）
         :rtype: int
         """
         return self._QRCodeMark
@@ -39843,7 +40246,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def ServiceName(self):
-        """服务类型
+        r"""服务类型
         :rtype: str
         """
         return self._ServiceName
@@ -39854,7 +40257,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CompanySealContent(self):
-        """公司印章内容
+        r"""公司印章内容
         :rtype: str
         """
         return self._CompanySealContent
@@ -39865,7 +40268,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def TaxSealContent(self):
-        """税务局章内容
+        r"""税务局章内容
         :rtype: str
         """
         return self._TaxSealContent
@@ -39876,7 +40279,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def VatRollItems(self):
-        """条目
+        r"""条目
         :rtype: list of VatRollItem
         """
         return self._VatRollItems
@@ -39925,7 +40328,7 @@ class VatInvoiceRoll(AbstractModel):
 
 
 class VatInvoiceUserInfo(AbstractModel):
-    """发票人员信息
+    r"""发票人员信息
 
     """
 
@@ -39947,7 +40350,7 @@ class VatInvoiceUserInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -39958,7 +40361,7 @@ class VatInvoiceUserInfo(AbstractModel):
 
     @property
     def TaxId(self):
-        """纳税人识别号
+        r"""纳税人识别号
         :rtype: str
         """
         return self._TaxId
@@ -39969,7 +40372,7 @@ class VatInvoiceUserInfo(AbstractModel):
 
     @property
     def AddrTel(self):
-        """地 址、电 话
+        r"""地 址、电 话
         :rtype: str
         """
         return self._AddrTel
@@ -39980,7 +40383,7 @@ class VatInvoiceUserInfo(AbstractModel):
 
     @property
     def FinancialAccount(self):
-        """开户行及账号
+        r"""开户行及账号
         :rtype: str
         """
         return self._FinancialAccount
@@ -40006,7 +40409,7 @@ class VatInvoiceUserInfo(AbstractModel):
 
 
 class VatInvoiceVerifyNewRequest(AbstractModel):
-    """VatInvoiceVerifyNew请求参数结构体
+    r"""VatInvoiceVerifyNew请求参数结构体
 
     """
 
@@ -40048,7 +40451,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def InvoiceNo(self):
-        """发票号码，8位、20位（全电票）
+        r"""发票号码，8位、20位（全电票）
         :rtype: str
         """
         return self._InvoiceNo
@@ -40059,7 +40462,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def InvoiceDate(self):
-        """开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
+        r"""开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
         :rtype: str
         """
         return self._InvoiceDate
@@ -40070,7 +40473,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def InvoiceCode(self):
-        """发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
+        r"""发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
         :rtype: str
         """
         return self._InvoiceCode
@@ -40081,7 +40484,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def InvoiceKind(self):
-        """票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+        r"""票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
         :rtype: str
         """
         return self._InvoiceKind
@@ -40092,7 +40495,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def CheckCode(self):
-        """校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）、财政票据时必填;
+        r"""校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）、财政票据时必填;
 区块链为 5 位
         :rtype: str
         """
@@ -40104,7 +40507,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def Amount(self):
-        """不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票、财政发票时必填; 全电发票为价税合计(含税金额)
+        r"""不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票、财政发票时必填; 全电发票为价税合计(含税金额)
         :rtype: str
         """
         return self._Amount
@@ -40115,7 +40518,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def RegionCode(self):
-        """地区编码，通用机打电子发票时必填。
+        r"""地区编码，通用机打电子发票时必填。
 广东:4400，浙江:3300
         :rtype: str
         """
@@ -40127,7 +40530,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def SellerTaxCode(self):
-        """销方税号，通用机打电子发票必填，区块链发票时必填
+        r"""销方税号，通用机打电子发票必填，区块链发票时必填
         :rtype: str
         """
         return self._SellerTaxCode
@@ -40138,7 +40541,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def EnableCommonElectronic(self):
-        """是否开启通用机打电子发票，默认为关闭。
+        r"""是否开启通用机打电子发票，默认为关闭。
         :rtype: bool
         """
         return self._EnableCommonElectronic
@@ -40149,7 +40552,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def EnableTodayInvoice(self):
-        """是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
+        r"""是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
         :rtype: bool
         """
         return self._EnableTodayInvoice
@@ -40181,7 +40584,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
 
 class VatInvoiceVerifyNewResponse(AbstractModel):
-    """VatInvoiceVerifyNew返回参数结构体
+    r"""VatInvoiceVerifyNew返回参数结构体
 
     """
 
@@ -40216,7 +40619,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def Invoice(self):
-        """增值税发票、购车发票、全电发票的基础要素字段信息。
+        r"""增值税发票、购车发票、全电发票的基础要素字段信息。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
         """
         return self._Invoice
@@ -40227,7 +40630,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def VehicleInvoiceInfo(self):
-        """机动车销售统一发票详细字段信息。
+        r"""机动车销售统一发票详细字段信息。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
         """
         return self._VehicleInvoiceInfo
@@ -40238,7 +40641,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def UsedVehicleInvoiceInfo(self):
-        """二手车销售统一发票详细字段信息。
+        r"""二手车销售统一发票详细字段信息。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
         """
         return self._UsedVehicleInvoiceInfo
@@ -40249,7 +40652,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def PassInvoiceInfoList(self):
-        """通行费发票详细字段信息。
+        r"""通行费发票详细字段信息。
         :rtype: list of PassInvoiceInfo
         """
         return self._PassInvoiceInfoList
@@ -40260,7 +40663,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def ElectronicTrainTicket(self):
-        """全电发票（铁路电子客票）详细字段信息。
+        r"""全电发票（铁路电子客票）详细字段信息。
 
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ElectronicTrainTicket`
         """
@@ -40272,7 +40675,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def ElectronicAirTransport(self):
-        """全电发票（航空运输电子客票行程单）详细字段信息。
+        r"""全电发票（航空运输电子客票行程单）详细字段信息。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ElectronicAirTransport`
         """
         return self._ElectronicAirTransport
@@ -40283,7 +40686,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def FinancialBill(self):
-        """财政发票详细字段信息
+        r"""财政发票详细字段信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.FinancialBill`
         """
         return self._FinancialBill
@@ -40294,7 +40697,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -40333,7 +40736,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
 
 
 class VatRollInvoiceInfo(AbstractModel):
-    """增值税发票卷票信息
+    r"""增值税发票卷票信息
 
     """
 
@@ -40353,7 +40756,7 @@ class VatRollInvoiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类。
         :rtype: str
         """
@@ -40365,7 +40768,7 @@ class VatRollInvoiceInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -40376,7 +40779,7 @@ class VatRollInvoiceInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """文本行在旋转纠正之后的图像中的像素坐标。
+        r"""文本行在旋转纠正之后的图像中的像素坐标。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -40403,7 +40806,7 @@ class VatRollInvoiceInfo(AbstractModel):
 
 
 class VatRollInvoiceOCRRequest(AbstractModel):
-    """VatRollInvoiceOCR请求参数结构体
+    r"""VatRollInvoiceOCR请求参数结构体
 
     """
 
@@ -40425,7 +40828,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -40436,7 +40839,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -40447,7 +40850,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -40458,7 +40861,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -40484,7 +40887,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
 
 
 class VatRollInvoiceOCRResponse(AbstractModel):
-    """VatRollInvoiceOCR返回参数结构体
+    r"""VatRollInvoiceOCR返回参数结构体
 
     """
 
@@ -40503,7 +40906,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
 
     @property
     def VatRollInvoiceInfos(self):
-        """增值税发票（卷票）识别结果，具体内容请点击左侧链接。
+        r"""增值税发票（卷票）识别结果，具体内容请点击左侧链接。
         :rtype: list of VatRollInvoiceInfo
         """
         return self._VatRollInvoiceInfos
@@ -40514,7 +40917,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        r"""图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :rtype: float
         """
         return self._Angle
@@ -40525,7 +40928,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -40547,7 +40950,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
 
 
 class VatRollItem(AbstractModel):
-    """增值税普通发票（卷票）条目
+    r"""增值税普通发票（卷票）条目
 
     """
 
@@ -40569,7 +40972,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -40580,7 +40983,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """数量
+        r"""数量
         :rtype: str
         """
         return self._Quantity
@@ -40591,7 +40994,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Price(self):
-        """单价
+        r"""单价
         :rtype: str
         """
         return self._Price
@@ -40602,7 +41005,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Total(self):
-        """金额
+        r"""金额
         :rtype: str
         """
         return self._Total
@@ -40628,7 +41031,7 @@ class VatRollItem(AbstractModel):
 
 
 class VehicleInvoiceInfo(AbstractModel):
-    """机动车销售统一发票信息
+    r"""机动车销售统一发票信息
 
     """
 
@@ -40695,7 +41098,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def CarType(self):
-        """车辆类型
+        r"""车辆类型
         :rtype: str
         """
         return self._CarType
@@ -40706,7 +41109,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def PlateModel(self):
-        """厂牌型号
+        r"""厂牌型号
         :rtype: str
         """
         return self._PlateModel
@@ -40717,7 +41120,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def ProduceAddress(self):
-        """产地
+        r"""产地
         :rtype: str
         """
         return self._ProduceAddress
@@ -40728,7 +41131,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def CertificateNo(self):
-        """合格证号
+        r"""合格证号
         :rtype: str
         """
         return self._CertificateNo
@@ -40739,7 +41142,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def ImportNo(self):
-        """进口证明书号
+        r"""进口证明书号
         :rtype: str
         """
         return self._ImportNo
@@ -40750,7 +41153,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def VinNo(self):
-        """LSVCA2NP9HN0xxxxx
+        r"""LSVCA2NP9HN0xxxxx
         :rtype: str
         """
         return self._VinNo
@@ -40761,7 +41164,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def PayTaxesNo(self):
-        """完税证书号
+        r"""完税证书号
         :rtype: str
         """
         return self._PayTaxesNo
@@ -40772,7 +41175,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def Tonnage(self):
-        """吨位
+        r"""吨位
         :rtype: str
         """
         return self._Tonnage
@@ -40783,7 +41186,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def LimitCount(self):
-        """限乘人数
+        r"""限乘人数
         :rtype: str
         """
         return self._LimitCount
@@ -40794,7 +41197,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def EngineNo(self):
-        """发动机号码
+        r"""发动机号码
         :rtype: str
         """
         return self._EngineNo
@@ -40805,7 +41208,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def BizCheckFormNo(self):
-        """商检单号
+        r"""商检单号
         :rtype: str
         """
         return self._BizCheckFormNo
@@ -40816,7 +41219,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def TaxtationOrgCode(self):
-        """主管税务机关代码
+        r"""主管税务机关代码
         :rtype: str
         """
         return self._TaxtationOrgCode
@@ -40827,7 +41230,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def TaxtationOrgName(self):
-        """主管税务机关名称
+        r"""主管税务机关名称
         :rtype: str
         """
         return self._TaxtationOrgName
@@ -40838,7 +41241,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorTaxRate(self):
-        """税率
+        r"""税率
         :rtype: str
         """
         return self._MotorTaxRate
@@ -40849,7 +41252,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorBankName(self):
-        """银行账号
+        r"""银行账号
         :rtype: str
         """
         return self._MotorBankName
@@ -40860,7 +41263,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorBankAccount(self):
-        """开户行
+        r"""开户行
         :rtype: str
         """
         return self._MotorBankAccount
@@ -40871,7 +41274,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """销售地址
+        r"""销售地址
         :rtype: str
         """
         return self._SellerAddress
@@ -40882,7 +41285,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerTel(self):
-        """销售电话
+        r"""销售电话
         :rtype: str
         """
         return self._SellerTel
@@ -40893,7 +41296,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerNo(self):
-        """购方身份证
+        r"""购方身份证
         :rtype: str
         """
         return self._BuyerNo
@@ -40934,7 +41337,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
 
 class VehicleLicenseOCRRequest(AbstractModel):
-    """VehicleLicenseOCR请求参数结构体
+    r"""VehicleLicenseOCR请求参数结构体
 
     """
 
@@ -40961,7 +41364,7 @@ DOUBLE 为行驶证主页正面和副页正面。
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+        r"""图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
@@ -40973,7 +41376,7 @@ DOUBLE 为行驶证主页正面和副页正面。
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+        r"""图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
@@ -40985,7 +41388,7 @@ DOUBLE 为行驶证主页正面和副页正面。
 
     @property
     def CardSide(self):
-        """FRONT 为行驶证主页正面（有红色印章的一面），
+        r"""FRONT 为行驶证主页正面（有红色印章的一面），
 BACK 为行驶证副页正面（有号码号牌的一面），
 DOUBLE 为行驶证主页正面和副页正面。
 默认值为：FRONT。
@@ -40999,7 +41402,7 @@ DOUBLE 为行驶证主页正面和副页正面。
 
     @property
     def TractorCardSide(self):
-        """FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
+        r"""FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
         :rtype: str
         """
         return self._TractorCardSide
@@ -41025,7 +41428,7 @@ DOUBLE 为行驶证主页正面和副页正面。
 
 
 class VehicleLicenseOCRResponse(AbstractModel):
-    """VehicleLicenseOCR返回参数结构体
+    r"""VehicleLicenseOCR返回参数结构体
 
     """
 
@@ -41071,7 +41474,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def FrontInfo(self):
-        """行驶证主页正面的识别结果，CardSide 为 FRONT。
+        r"""行驶证主页正面的识别结果，CardSide 为 FRONT。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextVehicleFront`
         """
@@ -41083,7 +41486,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def BackInfo(self):
-        """行驶证副页正面的识别结果，CardSide 为 BACK。
+        r"""行驶证副页正面的识别结果，CardSide 为 BACK。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextVehicleBack`
         """
@@ -41095,7 +41498,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnCode(self):
-        """Code 告警码列表和释义：
+        r"""Code 告警码列表和释义：
 -9102  复印件告警
 -9103  翻拍件告警
 -9104  反光告警
@@ -41112,7 +41515,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnMsg(self):
-        """告警码说明：
+        r"""告警码说明：
 WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 WARN_DRIVER_LICENSE_REFLECTION 反光告警
@@ -41129,7 +41532,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def VehicleLicenseType(self):
-        """行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
+        r"""行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
         :rtype: str
         """
         return self._VehicleLicenseType
@@ -41140,7 +41543,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def TractorBackInfo(self):
-        """拖拉机行驶证副页正面的识别结果，CardSide 为 BACK。
+        r"""拖拉机行驶证副页正面的识别结果，CardSide 为 BACK。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextTractorVehicleBack`
         """
@@ -41152,7 +41555,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41179,7 +41582,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
 
 class VehicleRegCertInfo(AbstractModel):
-    """机动车登记证书识别结果
+    r"""机动车登记证书识别结果
 
     """
 
@@ -41206,7 +41609,7 @@ class VehicleRegCertInfo(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的字段名称(关键字)，支持以下字段：
+        r"""识别出的字段名称(关键字)，支持以下字段：
 【注册登记页】
 车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、
 机动车所有人1、身份证明名称1、号码1、登记机关1、登记日期1
@@ -41228,7 +41631,7 @@ class VehicleRegCertInfo(AbstractModel):
 
     @property
     def Value(self):
-        """识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        r"""识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :rtype: str
         """
         return self._Value
@@ -41252,7 +41655,7 @@ class VehicleRegCertInfo(AbstractModel):
 
 
 class VehicleRegCertOCRRequest(AbstractModel):
-    """VehicleRegCertOCR请求参数结构体
+    r"""VehicleRegCertOCR请求参数结构体
 
     """
 
@@ -41275,7 +41678,7 @@ class VehicleRegCertOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
+        r"""图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -41289,7 +41692,7 @@ class VehicleRegCertOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
+        r"""图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
@@ -41317,7 +41720,7 @@ class VehicleRegCertOCRRequest(AbstractModel):
 
 
 class VehicleRegCertOCRResponse(AbstractModel):
-    """VehicleRegCertOCR返回参数结构体
+    r"""VehicleRegCertOCR返回参数结构体
 
     """
 
@@ -41333,7 +41736,7 @@ class VehicleRegCertOCRResponse(AbstractModel):
 
     @property
     def VehicleRegCertInfos(self):
-        """机动车登记证书识别结果，具体内容请点击左侧链接。
+        r"""机动车登记证书识别结果，具体内容请点击左侧链接。
         :rtype: list of VehicleRegCertInfo
         """
         return self._VehicleRegCertInfos
@@ -41344,7 +41747,7 @@ class VehicleRegCertOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41365,7 +41768,7 @@ class VehicleRegCertOCRResponse(AbstractModel):
 
 
 class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
-    """VerifyOfdVatInvoiceOCR请求参数结构体
+    r"""VerifyOfdVatInvoiceOCR请求参数结构体
 
     """
 
@@ -41384,7 +41787,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
 
     @property
     def OfdFileUrl(self):
-        """OFD文件的 Url 地址。
+        r"""OFD文件的 Url 地址。
         :rtype: str
         """
         return self._OfdFileUrl
@@ -41395,7 +41798,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
 
     @property
     def OfdFileBase64(self):
-        """OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
+        r"""OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
         :rtype: str
         """
         return self._OfdFileBase64
@@ -41406,7 +41809,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
 
     @property
     def OfdPageNumber(self):
-        """需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
+        r"""需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
         :rtype: int
         """
         return self._OfdPageNumber
@@ -41431,7 +41834,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
 
 
 class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
-    """VerifyOfdVatInvoiceOCR返回参数结构体
+    r"""VerifyOfdVatInvoiceOCR返回参数结构体
 
     """
 
@@ -41510,7 +41913,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """发票类型
+        r"""发票类型
 026:增值税电子普通发票
 028:增值税电子专用发票
 010:电子发票（普通发票）
@@ -41527,7 +41930,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceCode(self):
-        """发票代码
+        r"""发票代码
         :rtype: str
         """
         return self._InvoiceCode
@@ -41538,7 +41941,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceNumber(self):
-        """发票号码
+        r"""发票号码
         :rtype: str
         """
         return self._InvoiceNumber
@@ -41549,7 +41952,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """开票日期
+        r"""开票日期
         :rtype: str
         """
         return self._IssueDate
@@ -41560,7 +41963,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceCheckCode(self):
-        """验证码
+        r"""验证码
         :rtype: str
         """
         return self._InvoiceCheckCode
@@ -41571,7 +41974,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def MachineNumber(self):
-        """机器编号
+        r"""机器编号
         :rtype: str
         """
         return self._MachineNumber
@@ -41582,7 +41985,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def TaxControlCode(self):
-        """密码区
+        r"""密码区
         :rtype: str
         """
         return self._TaxControlCode
@@ -41593,7 +41996,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Buyer(self):
-        """购买方
+        r"""购买方
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceUserInfo`
         """
         return self._Buyer
@@ -41604,7 +42007,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Seller(self):
-        """销售方
+        r"""销售方
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceUserInfo`
         """
         return self._Seller
@@ -41615,7 +42018,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def TaxInclusiveTotalAmount(self):
-        """价税合计
+        r"""价税合计
         :rtype: str
         """
         return self._TaxInclusiveTotalAmount
@@ -41626,7 +42029,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceClerk(self):
-        """开票人
+        r"""开票人
         :rtype: str
         """
         return self._InvoiceClerk
@@ -41637,7 +42040,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Payee(self):
-        """收款人
+        r"""收款人
         :rtype: str
         """
         return self._Payee
@@ -41648,7 +42051,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Checker(self):
-        """复核人
+        r"""复核人
         :rtype: str
         """
         return self._Checker
@@ -41659,7 +42062,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def TaxTotalAmount(self):
-        """税额
+        r"""税额
         :rtype: str
         """
         return self._TaxTotalAmount
@@ -41670,7 +42073,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def TaxExclusiveTotalAmount(self):
-        """不含税金额
+        r"""不含税金额
         :rtype: str
         """
         return self._TaxExclusiveTotalAmount
@@ -41681,7 +42084,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def Note(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Note
@@ -41692,7 +42095,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def GoodsInfos(self):
-        """货物或服务清单
+        r"""货物或服务清单
         :rtype: list of VatInvoiceGoodsInfo
         """
         return self._GoodsInfos
@@ -41703,7 +42106,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def AirTicketInfo(self):
-        """航空运输电子客票行程单信息
+        r"""航空运输电子客票行程单信息
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AirTicketInfo`
         """
         return self._AirTicketInfo
@@ -41714,7 +42117,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def RailwayTicketInfo(self):
-        """铁路电子客票
+        r"""铁路电子客票
         :rtype: :class:`tencentcloud.ocr.v20181119.models.RailwayTicketInfo`
         """
         return self._RailwayTicketInfo
@@ -41725,7 +42128,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def InvoiceTitle(self):
-        """发票标题
+        r"""发票标题
         :rtype: str
         """
         return self._InvoiceTitle
@@ -41736,7 +42139,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41784,7 +42187,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
 
 
 class VinOCRRequest(AbstractModel):
-    """VinOCR请求参数结构体
+    r"""VinOCR请求参数结构体
 
     """
 
@@ -41800,7 +42203,7 @@ class VinOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -41811,7 +42214,7 @@ class VinOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -41835,7 +42238,7 @@ class VinOCRRequest(AbstractModel):
 
 
 class VinOCRResponse(AbstractModel):
-    """VinOCR返回参数结构体
+    r"""VinOCR返回参数结构体
 
     """
 
@@ -41851,7 +42254,7 @@ class VinOCRResponse(AbstractModel):
 
     @property
     def Vin(self):
-        """检测到的车辆 VIN 码。
+        r"""检测到的车辆 VIN 码。
         :rtype: str
         """
         return self._Vin
@@ -41862,7 +42265,7 @@ class VinOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41878,7 +42281,7 @@ class VinOCRResponse(AbstractModel):
 
 
 class WaybillOCRRequest(AbstractModel):
-    """WaybillOCR请求参数结构体
+    r"""WaybillOCR请求参数结构体
 
     """
 
@@ -41903,7 +42306,7 @@ class WaybillOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -41914,7 +42317,7 @@ class WaybillOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -41925,7 +42328,7 @@ class WaybillOCRRequest(AbstractModel):
 
     @property
     def EnablePreDetect(self):
-        """预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
+        r"""预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
         :rtype: bool
         """
         return self._EnablePreDetect
@@ -41936,7 +42339,7 @@ class WaybillOCRRequest(AbstractModel):
 
     @property
     def IsPdf(self):
-        """是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
         :rtype: bool
         """
         return self._IsPdf
@@ -41947,7 +42350,7 @@ class WaybillOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -41974,7 +42377,7 @@ class WaybillOCRRequest(AbstractModel):
 
 
 class WaybillOCRResponse(AbstractModel):
-    """WaybillOCR返回参数结构体
+    r"""WaybillOCR返回参数结构体
 
     """
 
@@ -41990,7 +42393,7 @@ class WaybillOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """检测到的文本信息，具体内容请点击左侧链接。
+        r"""检测到的文本信息，具体内容请点击左侧链接。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextWaybill`
         """
         return self._TextDetections
@@ -42001,7 +42404,7 @@ class WaybillOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42019,7 +42422,7 @@ class WaybillOCRResponse(AbstractModel):
 
 
 class WaybillObj(AbstractModel):
-    """运单识别对象
+    r"""运单识别对象
 
     """
 
@@ -42032,7 +42435,7 @@ class WaybillObj(AbstractModel):
 
     @property
     def Text(self):
-        """识别出的文本行内容
+        r"""识别出的文本行内容
         :rtype: str
         """
         return self._Text
@@ -42055,7 +42458,7 @@ class WaybillObj(AbstractModel):
 
 
 class WordCoordPoint(AbstractModel):
-    """英文OCR识别出的单词在原图中的四点坐标数组
+    r"""英文OCR识别出的单词在原图中的四点坐标数组
 
     """
 
@@ -42068,7 +42471,7 @@ class WordCoordPoint(AbstractModel):
 
     @property
     def WordCoordinate(self):
-        """英文OCR识别出的每个单词在原图中的四点坐标。
+        r"""英文OCR识别出的每个单词在原图中的四点坐标。
         :rtype: list of Coord
         """
         return self._WordCoordinate
@@ -42096,7 +42499,7 @@ class WordCoordPoint(AbstractModel):
 
 
 class WordItem(AbstractModel):
-    """还原文本信息
+    r"""还原文本信息
 
     """
 
@@ -42118,7 +42521,7 @@ class WordItem(AbstractModel):
 
     @property
     def DetectedText(self):
-        """文本块内容
+        r"""文本块内容
         :rtype: str
         """
         return self._DetectedText
@@ -42129,7 +42532,7 @@ class WordItem(AbstractModel):
 
     @property
     def Coord(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord
@@ -42140,7 +42543,7 @@ class WordItem(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """描述性信息
+        r"""描述性信息
         :rtype: str
         """
         return self._AdvancedInfo
@@ -42151,7 +42554,7 @@ class WordItem(AbstractModel):
 
     @property
     def WordCoord(self):
-        """单词的四点坐标
+        r"""单词的四点坐标
         :rtype: list of WordPolygon
         """
         return self._WordCoord
@@ -42184,7 +42587,7 @@ class WordItem(AbstractModel):
 
 
 class WordPolygon(AbstractModel):
-    """单词坐标信息
+    r"""单词坐标信息
 
     """
 
@@ -42200,7 +42603,7 @@ class WordPolygon(AbstractModel):
 
     @property
     def DetectedText(self):
-        """文本块内容
+        r"""文本块内容
         :rtype: str
         """
         return self._DetectedText
@@ -42211,7 +42614,7 @@ class WordPolygon(AbstractModel):
 
     @property
     def Coord(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord
@@ -42237,7 +42640,7 @@ class WordPolygon(AbstractModel):
 
 
 class Words(AbstractModel):
-    """识别出来的单词信息包括单词（包括单词Character和单词置信度confidence）
+    r"""识别出来的单词信息包括单词（包括单词Character和单词置信度confidence）
 
     """
 
@@ -42253,7 +42656,7 @@ class Words(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度 0 ~100
+        r"""置信度 0 ~100
         :rtype: int
         """
         return self._Confidence
@@ -42264,7 +42667,7 @@ class Words(AbstractModel):
 
     @property
     def Character(self):
-        """候选字Character
+        r"""候选字Character
         :rtype: str
         """
         return self._Character

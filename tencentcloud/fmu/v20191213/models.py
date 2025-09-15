@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BeautifyPicRequest(AbstractModel):
-    """BeautifyPic请求参数结构体
+    r"""BeautifyPic请求参数结构体
 
     """
 
@@ -57,7 +57,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M，单边分辨率不超过4000。
+        r"""图片 base64 数据，base64 编码后大小不可超过5M，单边分辨率不超过4000。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 暂不支持带有alpha透明通道的图片。
         :rtype: str
@@ -70,7 +70,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。，单边分辨率不超过4000。
+        r"""图片的 Url 。对应图片 base64 编码后大小不可超过5M。，单边分辨率不超过4000。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -86,7 +86,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Whitening(self):
-        """美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
+        r"""美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
         :rtype: int
         """
         return self._Whitening
@@ -97,7 +97,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Smoothing(self):
-        """磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值10。
+        r"""磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值10。
         :rtype: int
         """
         return self._Smoothing
@@ -108,7 +108,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def FaceLifting(self):
-        """瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
+        r"""瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
         :rtype: int
         """
         return self._FaceLifting
@@ -119,7 +119,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def EyeEnlarging(self):
-        """大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
+        r"""大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
         :rtype: int
         """
         return self._EyeEnlarging
@@ -130,7 +130,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        r"""返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
         :rtype: str
         """
         return self._RspImgType
@@ -159,7 +159,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class BeautifyPicResponse(AbstractModel):
-    """BeautifyPic返回参数结构体
+    r"""BeautifyPic返回参数结构体
 
     """
 
@@ -180,7 +180,7 @@ class BeautifyPicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        r"""RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -192,7 +192,7 @@ class BeautifyPicResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        r"""RspImgType 为 url 时，返回处理后的图片 url 数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -204,7 +204,7 @@ class BeautifyPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -221,7 +221,7 @@ class BeautifyPicResponse(AbstractModel):
 
 
 class CreateModelRequest(AbstractModel):
-    """CreateModel请求参数结构体
+    r"""CreateModel请求参数结构体
 
     """
 
@@ -237,7 +237,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def LUTFile(self):
-        """图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
+        r"""图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
         :rtype: str
         """
         return self._LUTFile
@@ -248,7 +248,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Description(self):
-        """文件描述信息，可用于备注。
+        r"""文件描述信息，可用于备注。
         :rtype: str
         """
         return self._Description
@@ -272,7 +272,7 @@ class CreateModelRequest(AbstractModel):
 
 
 class CreateModelResponse(AbstractModel):
-    """CreateModel返回参数结构体
+    r"""CreateModel返回参数结构体
 
     """
 
@@ -288,7 +288,7 @@ class CreateModelResponse(AbstractModel):
 
     @property
     def ModelId(self):
-        """唇色素材ID。
+        r"""唇色素材ID。
         :rtype: str
         """
         return self._ModelId
@@ -299,7 +299,7 @@ class CreateModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -315,7 +315,7 @@ class CreateModelResponse(AbstractModel):
 
 
 class DeleteModelRequest(AbstractModel):
-    """DeleteModel请求参数结构体
+    r"""DeleteModel请求参数结构体
 
     """
 
@@ -328,7 +328,7 @@ class DeleteModelRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """素材ID。
+        r"""素材ID。
         :rtype: str
         """
         return self._ModelId
@@ -351,7 +351,7 @@ class DeleteModelRequest(AbstractModel):
 
 
 class DeleteModelResponse(AbstractModel):
-    """DeleteModel返回参数结构体
+    r"""DeleteModel返回参数结构体
 
     """
 
@@ -364,7 +364,7 @@ class DeleteModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -379,7 +379,7 @@ class DeleteModelResponse(AbstractModel):
 
 
 class FaceRect(AbstractModel):
-    """人脸框信息
+    r"""人脸框信息
 
     """
 
@@ -401,7 +401,7 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。
+        r"""人脸框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -412,7 +412,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。
+        r"""人脸框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -423,7 +423,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框宽度。
+        r"""人脸框宽度。
         :rtype: int
         """
         return self._Width
@@ -434,7 +434,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框高度。
+        r"""人脸框高度。
         :rtype: int
         """
         return self._Height
@@ -460,7 +460,7 @@ class FaceRect(AbstractModel):
 
 
 class GetModelListRequest(AbstractModel):
-    """GetModelList请求参数结构体
+    r"""GetModelList请求参数结构体
 
     """
 
@@ -476,7 +476,7 @@ class GetModelListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -487,7 +487,7 @@ class GetModelListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为100。
+        r"""返回数量，默认值为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -511,7 +511,7 @@ class GetModelListRequest(AbstractModel):
 
 
 class GetModelListResponse(AbstractModel):
-    """GetModelList返回参数结构体
+    r"""GetModelList返回参数结构体
 
     """
 
@@ -531,7 +531,7 @@ class GetModelListResponse(AbstractModel):
 
     @property
     def ModelIdNum(self):
-        """唇色素材总数量。
+        r"""唇色素材总数量。
         :rtype: int
         """
         return self._ModelIdNum
@@ -542,7 +542,7 @@ class GetModelListResponse(AbstractModel):
 
     @property
     def ModelInfos(self):
-        """素材数据
+        r"""素材数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModelInfo
         """
@@ -554,7 +554,7 @@ class GetModelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -576,7 +576,7 @@ class GetModelListResponse(AbstractModel):
 
 
 class LipColorInfo(AbstractModel):
-    """唇色信息
+    r"""唇色信息
 
     """
 
@@ -600,7 +600,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
 
     @property
     def RGBA(self):
-        """使用RGBA模型试唇色。
+        r"""使用RGBA模型试唇色。
         :rtype: :class:`tencentcloud.fmu.v20191213.models.RGBAInfo`
         """
         return self._RGBA
@@ -611,7 +611,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
 
     @property
     def ModelId(self):
-        """使用已注册的 LUT 文件试唇色。  
+        r"""使用已注册的 LUT 文件试唇色。  
 ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId。
         :rtype: str
         """
@@ -623,7 +623,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
 
     @property
     def FaceRect(self):
-        """人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
+        r"""人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
         :rtype: :class:`tencentcloud.fmu.v20191213.models.FaceRect`
         """
@@ -635,7 +635,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
 
     @property
     def ModelAlpha(self):
-        """涂妆浓淡[0,100]。建议取值50。本参数仅控制ModelId对应的涂妆浓淡。
+        r"""涂妆浓淡[0,100]。建议取值50。本参数仅控制ModelId对应的涂妆浓淡。
         :rtype: int
         """
         return self._ModelAlpha
@@ -665,7 +665,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
 
 
 class ModelInfo(AbstractModel):
-    """LUT素材信息
+    r"""LUT素材信息
 
     """
 
@@ -684,7 +684,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """唇色素材ID
+        r"""唇色素材ID
         :rtype: str
         """
         return self._ModelId
@@ -695,7 +695,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def LUTFileUrl(self):
-        """唇色素材 url 。 LUT 文件 url 5分钟有效。
+        r"""唇色素材 url 。 LUT 文件 url 5分钟有效。
         :rtype: str
         """
         return self._LUTFileUrl
@@ -706,7 +706,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Description(self):
-        """文件描述信息。
+        r"""文件描述信息。
         :rtype: str
         """
         return self._Description
@@ -731,7 +731,7 @@ class ModelInfo(AbstractModel):
 
 
 class RGBAInfo(AbstractModel):
-    """RGBA通道信息
+    r"""RGBA通道信息
 
     """
 
@@ -753,7 +753,7 @@ class RGBAInfo(AbstractModel):
 
     @property
     def R(self):
-        """R通道数值。[0,255]。
+        r"""R通道数值。[0,255]。
         :rtype: int
         """
         return self._R
@@ -764,7 +764,7 @@ class RGBAInfo(AbstractModel):
 
     @property
     def G(self):
-        """G通道数值。[0,255]。
+        r"""G通道数值。[0,255]。
         :rtype: int
         """
         return self._G
@@ -775,7 +775,7 @@ class RGBAInfo(AbstractModel):
 
     @property
     def B(self):
-        """B通道数值。[0,255]。
+        r"""B通道数值。[0,255]。
         :rtype: int
         """
         return self._B
@@ -786,7 +786,7 @@ class RGBAInfo(AbstractModel):
 
     @property
     def A(self):
-        """A通道数值。[0,100]。建议取值50。
+        r"""A通道数值。[0,100]。建议取值50。
         :rtype: int
         """
         return self._A
@@ -812,7 +812,7 @@ class RGBAInfo(AbstractModel):
 
 
 class StyleImageProRequest(AbstractModel):
-    """StyleImagePro请求参数结构体
+    r"""StyleImagePro请求参数结构体
 
     """
 
@@ -845,7 +845,7 @@ class StyleImageProRequest(AbstractModel):
 
     @property
     def FilterType(self):
-        """滤镜类型，取值如下： 
+        r"""滤镜类型，取值如下： 
 1.白茶1；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸1；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后；31.活力；32.朦胧；33.悦动；34.时尚；35.气泡；36.柠檬；37.棉花糖；38.小溪；39.丽人；40.咖啡；41.嫩芽；42.热情；43.渐暖；44.早餐；45.白茶2；46.白嫩；47.圣代；48.森林；49.冲浪；50.奶咖；51.清澈；52.微风；53.日落；54.水光；55.日系；56.星光；57.阳光；58.落叶；59.生机；60.甜心；61.清逸2；62.春意；63.罗马；64.青涩；65.清风；66.暖心；67.海水；68.神秘；69.旧调1；70.旧调2；71.雪顶；72.日光；73.浮云；74.流彩；75.胶片；76.回味；77.奶酪；78.蝴蝶。
         :rtype: int
         """
@@ -857,7 +857,7 @@ class StyleImageProRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。 
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 暂不支持带有alpha透明通道的图片。
         :rtype: str
@@ -870,7 +870,7 @@ class StyleImageProRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+        r"""图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -886,7 +886,7 @@ class StyleImageProRequest(AbstractModel):
 
     @property
     def FilterDegree(self):
-        """滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
+        r"""滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :rtype: int
         """
         return self._FilterDegree
@@ -897,7 +897,7 @@ class StyleImageProRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认为base64。
+        r"""返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认为base64。
         :rtype: str
         """
         return self._RspImgType
@@ -924,7 +924,7 @@ class StyleImageProRequest(AbstractModel):
 
 
 class StyleImageProResponse(AbstractModel):
-    """StyleImagePro返回参数结构体
+    r"""StyleImagePro返回参数结构体
 
     """
 
@@ -945,7 +945,7 @@ class StyleImageProResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        r"""RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -957,7 +957,7 @@ class StyleImageProResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        r"""RspImgType 为 url 时，返回处理后的图片 url 数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -969,7 +969,7 @@ class StyleImageProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -986,7 +986,7 @@ class StyleImageProResponse(AbstractModel):
 
 
 class StyleImageRequest(AbstractModel):
-    """StyleImage请求参数结构体
+    r"""StyleImage请求参数结构体
 
     """
 
@@ -1019,7 +1019,7 @@ class StyleImageRequest(AbstractModel):
 
     @property
     def FilterType(self):
-        """滤镜类型，取值如下： 
+        r"""滤镜类型，取值如下： 
 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后。
         :rtype: int
         """
@@ -1031,7 +1031,7 @@ class StyleImageRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。 
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 暂不支持带有alpha透明通道的图片。
         :rtype: str
@@ -1044,7 +1044,7 @@ class StyleImageRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+        r"""图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -1060,7 +1060,7 @@ class StyleImageRequest(AbstractModel):
 
     @property
     def FilterDegree(self):
-        """滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
+        r"""滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :rtype: int
         """
         return self._FilterDegree
@@ -1071,7 +1071,7 @@ class StyleImageRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
+        r"""返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
         :rtype: str
         """
         return self._RspImgType
@@ -1098,7 +1098,7 @@ class StyleImageRequest(AbstractModel):
 
 
 class StyleImageResponse(AbstractModel):
-    """StyleImage返回参数结构体
+    r"""StyleImage返回参数结构体
 
     """
 
@@ -1119,7 +1119,7 @@ class StyleImageResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        r"""RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1131,7 +1131,7 @@ class StyleImageResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        r"""RspImgType 为 url 时，返回处理后的图片 url 数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1143,7 +1143,7 @@ class StyleImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1160,7 +1160,7 @@ class StyleImageResponse(AbstractModel):
 
 
 class TryLipstickPicRequest(AbstractModel):
-    """TryLipstickPic请求参数结构体
+    r"""TryLipstickPic请求参数结构体
 
     """
 
@@ -1190,7 +1190,7 @@ class TryLipstickPicRequest(AbstractModel):
 
     @property
     def LipColorInfos(self):
-        """唇色信息。 
+        r"""唇色信息。 
 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
         :rtype: list of LipColorInfo
         """
@@ -1202,7 +1202,7 @@ class TryLipstickPicRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过6M。 
+        r"""图片 base64 数据，base64 编码后大小不可超过6M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 暂不支持带有alpha透明通道的图片。
         :rtype: str
@@ -1215,7 +1215,7 @@ class TryLipstickPicRequest(AbstractModel):
 
     @property
     def Url(self):
-        """图片的 Url ，对应图片 base64 编码后大小不可超过6M。 
+        r"""图片的 Url ，对应图片 base64 编码后大小不可超过6M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -1231,7 +1231,7 @@ class TryLipstickPicRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        r"""返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
         :rtype: str
         """
         return self._RspImgType
@@ -1262,7 +1262,7 @@ class TryLipstickPicRequest(AbstractModel):
 
 
 class TryLipstickPicResponse(AbstractModel):
-    """TryLipstickPic返回参数结构体
+    r"""TryLipstickPic返回参数结构体
 
     """
 
@@ -1281,7 +1281,7 @@ class TryLipstickPicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        r"""RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :rtype: str
         """
         return self._ResultImage
@@ -1292,7 +1292,7 @@ class TryLipstickPicResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        r"""RspImgType 为 url 时，返回处理后的图片 url 数据。
         :rtype: str
         """
         return self._ResultUrl
@@ -1303,7 +1303,7 @@ class TryLipstickPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

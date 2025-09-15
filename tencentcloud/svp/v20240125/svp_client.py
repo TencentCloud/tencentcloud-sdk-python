@@ -27,7 +27,7 @@ class SvpClient(AbstractClient):
 
 
     def CreateSavingPlanOrder(self, request):
-        """创建节省计划订单
+        r"""创建节省计划订单
 
         :param request: Request instance for CreateSavingPlanOrder.
         :type request: :class:`tencentcloud.svp.v20240125.models.CreateSavingPlanOrderRequest`
@@ -50,7 +50,7 @@ class SvpClient(AbstractClient):
 
 
     def DescribeSavingPlanCoverage(self, request):
-        """查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+        r"""查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
 
         :param request: Request instance for DescribeSavingPlanCoverage.
         :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanCoverageRequest`
@@ -73,7 +73,7 @@ class SvpClient(AbstractClient):
 
 
     def DescribeSavingPlanDeduct(self, request):
-        """查询节省计划抵扣明细
+        r"""查询节省计划抵扣明细
 
         :param request: Request instance for DescribeSavingPlanDeduct.
         :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanDeductRequest`
@@ -96,7 +96,7 @@ class SvpClient(AbstractClient):
 
 
     def DescribeSavingPlanOverview(self, request):
-        """查用当前用户明细节省计划总览查询时段内的使用情况
+        r"""查用当前用户明细节省计划总览查询时段内的使用情况
 
         :param request: Request instance for DescribeSavingPlanOverview.
         :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanOverviewRequest`
@@ -119,7 +119,7 @@ class SvpClient(AbstractClient):
 
 
     def DescribeSavingPlanUsage(self, request):
-        """查用当前用户明细节省计划查询时段内的使用情况
+        r"""查用当前用户明细节省计划查询时段内的使用情况
 
         :param request: Request instance for DescribeSavingPlanUsage.
         :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanUsageRequest`

@@ -27,7 +27,7 @@ class VmClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """可使用该接口取消审核任务，成功取消后，该接口返回已取消任务的TaskId。<br>
+        r"""可使用该接口取消审核任务，成功取消后，该接口返回已取消任务的TaskId。<br>
 
         默认接口请求频率限制：**20次/秒**。
 
@@ -52,7 +52,7 @@ class VmClient(AbstractClient):
 
 
     def CreateVideoModerationTask(self, request):
-        """本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
+        r"""本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
         ### 功能使用说明：
 
         - 前往“[内容安全控制台-视频内容安全](https://console.cloud.tencent.com/cms)”开启使用视频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含200分钟的处理量（换算1s每帧截图，赠送**12000张图**、**200分钟的音频**处理量），有效期为15天。
@@ -112,7 +112,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。
+        r"""通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.vm.v20201229.models.DescribeTaskDetailRequest`
@@ -135,7 +135,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """通过查看审核任务列表接口，可查询任务队列；您可根据多种业务信息（业务类型、审核结果、任务状态等）筛选审核任务列表。<br>
+        r"""通过查看审核任务列表接口，可查询任务队列；您可根据多种业务信息（业务类型、审核结果、任务状态等）筛选审核任务列表。<br>
 
         默认接口请求频率限制：**20次/秒**。
 

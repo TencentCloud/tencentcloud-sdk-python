@@ -27,7 +27,7 @@ class BpaasClient(AbstractClient):
 
 
     def GetBpaasApproveDetail(self, request):
-        """查看审批详情
+        r"""查看审批详情
 
         :param request: Request instance for GetBpaasApproveDetail.
         :type request: :class:`tencentcloud.bpaas.v20181217.models.GetBpaasApproveDetailRequest`
@@ -50,7 +50,7 @@ class BpaasClient(AbstractClient):
 
 
     def OutApproveBpaasApplication(self, request):
-        """外部审批申请单
+        r"""外部审批申请单
 
         :param request: Request instance for OutApproveBpaasApplication.
         :type request: :class:`tencentcloud.bpaas.v20181217.models.OutApproveBpaasApplicationRequest`

@@ -27,7 +27,7 @@ class CsxgClient(AbstractClient):
 
 
     def Create5GInstance(self, request):
-        """创建5G入云服务接口
+        r"""创建5G入云服务接口
 
         :param request: Request instance for Create5GInstance.
         :type request: :class:`tencentcloud.csxg.v20230303.models.Create5GInstanceRequest`
@@ -50,7 +50,7 @@ class CsxgClient(AbstractClient):
 
 
     def Delete5GInstance(self, request):
-        """删除5G入云服务
+        r"""删除5G入云服务
 
         :param request: Request instance for Delete5GInstance.
         :type request: :class:`tencentcloud.csxg.v20230303.models.Delete5GInstanceRequest`
@@ -73,7 +73,7 @@ class CsxgClient(AbstractClient):
 
 
     def Describe5GAPNs(self, request):
-        """查询APN信息
+        r"""查询APN信息
 
         :param request: Request instance for Describe5GAPNs.
         :type request: :class:`tencentcloud.csxg.v20230303.models.Describe5GAPNsRequest`
@@ -96,7 +96,7 @@ class CsxgClient(AbstractClient):
 
 
     def Describe5GInstances(self, request):
-        """查询5G入云服务
+        r"""查询5G入云服务
 
         :param request: Request instance for Describe5GInstances.
         :type request: :class:`tencentcloud.csxg.v20230303.models.Describe5GInstancesRequest`
@@ -119,7 +119,7 @@ class CsxgClient(AbstractClient):
 
 
     def Modify5GInstanceAttribute(self, request):
-        """修改5G入云服务
+        r"""修改5G入云服务
 
         :param request: Request instance for Modify5GInstanceAttribute.
         :type request: :class:`tencentcloud.csxg.v20230303.models.Modify5GInstanceAttributeRequest`

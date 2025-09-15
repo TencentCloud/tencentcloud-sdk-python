@@ -27,7 +27,7 @@ class VclmClient(AbstractClient):
 
 
     def CheckAnimateImageJob(self, request):
-        """检查图片跳舞输入图
+        r"""检查图片跳舞输入图
 
         :param request: Request instance for CheckAnimateImageJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.CheckAnimateImageJobRequest`
@@ -50,7 +50,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribeImageAnimateJob(self, request):
-        """用于查询图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
+        r"""用于查询图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
 
         :param request: Request instance for DescribeImageAnimateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeImageAnimateJobRequest`
@@ -73,7 +73,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribePortraitSingJob(self, request):
-        """用于查询图片唱演任务。
+        r"""用于查询图片唱演任务。
         支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
 
         :param request: Request instance for DescribePortraitSingJob.
@@ -97,7 +97,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribeTemplateToVideoJob(self, request):
-        """用于查询视频特效任务。
+        r"""用于查询视频特效任务。
 
         :param request: Request instance for DescribeTemplateToVideoJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeTemplateToVideoJobRequest`
@@ -120,7 +120,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribeVideoStylizationJob(self, request):
-        """用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
+        r"""用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
         :param request: Request instance for DescribeVideoStylizationJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoStylizationJobRequest`
@@ -143,7 +143,7 @@ class VclmClient(AbstractClient):
 
 
     def SubmitImageAnimateJob(self, request):
-        """用于提交图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
+        r"""用于提交图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
 
         :param request: Request instance for SubmitImageAnimateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageAnimateJobRequest`
@@ -166,7 +166,7 @@ class VclmClient(AbstractClient):
 
 
     def SubmitPortraitSingJob(self, request):
-        """用于提交图片唱演任务。
+        r"""用于提交图片唱演任务。
         支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
 
         :param request: Request instance for SubmitPortraitSingJob.
@@ -190,7 +190,7 @@ class VclmClient(AbstractClient):
 
 
     def SubmitTemplateToVideoJob(self, request):
-        """提交视频特效任务接口
+        r"""提交视频特效任务接口
 
         :param request: Request instance for SubmitTemplateToVideoJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitTemplateToVideoJobRequest`
@@ -213,7 +213,7 @@ class VclmClient(AbstractClient):
 
 
     def SubmitVideoStylizationJob(self, request):
-        """用于提交视频风格化任务。支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
+        r"""用于提交视频风格化任务。支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
         :param request: Request instance for SubmitVideoStylizationJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoStylizationJobRequest`

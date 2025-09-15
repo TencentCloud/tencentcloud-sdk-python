@@ -27,7 +27,7 @@ class LowcodeClient(AbstractClient):
 
 
     def CheckDeployApp(self, request):
-        """检查应用发布状态
+        r"""检查应用发布状态
 
         :param request: Request instance for CheckDeployApp.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.CheckDeployAppRequest`
@@ -50,7 +50,7 @@ class LowcodeClient(AbstractClient):
 
 
     def CreateKnowledgeSet(self, request):
-        """创建知识库
+        r"""创建知识库
 
         :param request: Request instance for CreateKnowledgeSet.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.CreateKnowledgeSetRequest`
@@ -73,7 +73,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DeleteAppBindWxApp(self, request):
-        """删除应用绑定小程序
+        r"""删除应用绑定小程序
 
         :param request: Request instance for DeleteAppBindWxApp.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DeleteAppBindWxAppRequest`
@@ -96,7 +96,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DeleteKnowledgeDocumentSet(self, request):
-        """删除知识库下文档
+        r"""删除知识库下文档
 
         :param request: Request instance for DeleteKnowledgeDocumentSet.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DeleteKnowledgeDocumentSetRequest`
@@ -119,7 +119,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DeleteKnowledgeSet(self, request):
-        """删除知识库
+        r"""删除知识库
 
         :param request: Request instance for DeleteKnowledgeSet.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DeleteKnowledgeSetRequest`
@@ -142,7 +142,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DeployApp(self, request):
-        """发布应用
+        r"""发布应用
 
         :param request: Request instance for DeployApp.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DeployAppRequest`
@@ -165,7 +165,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DescribeDataSourceList(self, request):
-        """获取数据源详情列表
+        r"""获取数据源详情列表
 
         :param request: Request instance for DescribeDataSourceList.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeDataSourceListRequest`
@@ -188,7 +188,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DescribeKnowledgeDocumentSetDetail(self, request):
-        """获取知识库下文档详情
+        r"""获取知识库下文档详情
 
         :param request: Request instance for DescribeKnowledgeDocumentSetDetail.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeKnowledgeDocumentSetDetailRequest`
@@ -211,7 +211,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DescribeKnowledgeDocumentSetList(self, request):
-        """查询知识库下文件集合
+        r"""查询知识库下文件集合
 
         :param request: Request instance for DescribeKnowledgeDocumentSetList.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeKnowledgeDocumentSetListRequest`
@@ -234,7 +234,7 @@ class LowcodeClient(AbstractClient):
 
 
     def DescribeKnowledgeSetList(self, request):
-        """查询知识库
+        r"""查询知识库
 
         :param request: Request instance for DescribeKnowledgeSetList.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeKnowledgeSetListRequest`
@@ -257,7 +257,7 @@ class LowcodeClient(AbstractClient):
 
 
     def PutWxAppIdToWeApp(self, request):
-        """接口提供应用绑定微信ID功能。
+        r"""接口提供应用绑定微信ID功能。
 
         :param request: Request instance for PutWxAppIdToWeApp.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.PutWxAppIdToWeAppRequest`
@@ -280,7 +280,7 @@ class LowcodeClient(AbstractClient):
 
 
     def SearchDocList(self, request):
-        """知识库文档搜索接口
+        r"""知识库文档搜索接口
 
         :param request: Request instance for SearchDocList.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.SearchDocListRequest`
@@ -303,7 +303,7 @@ class LowcodeClient(AbstractClient):
 
 
     def UpdateKnowledgeSet(self, request):
-        """更新知识库
+        r"""更新知识库
 
         :param request: Request instance for UpdateKnowledgeSet.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.UpdateKnowledgeSetRequest`
@@ -326,7 +326,7 @@ class LowcodeClient(AbstractClient):
 
 
     def UploadKnowledgeDocumentSet(self, request):
-        """更新知识库
+        r"""更新知识库
 
         :param request: Request instance for UploadKnowledgeDocumentSet.
         :type request: :class:`tencentcloud.lowcode.v20210108.models.UploadKnowledgeDocumentSetRequest`

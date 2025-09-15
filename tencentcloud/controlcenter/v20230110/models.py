@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountFactoryItem(AbstractModel):
-    """账号工厂基线项
+    r"""账号工厂基线项
 
     """
 
@@ -59,7 +59,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Identifier(self):
-        """账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -70,7 +70,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Name(self):
-        """基线项名称，功能项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
+        r"""基线项名称，功能项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
         :rtype: str
         """
         return self._Name
@@ -81,7 +81,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def NameEn(self):
-        """基线项英文名称，基线项名字唯一，仅支持英文字母、数字、空格、符号@、＆_[]-的组合，1-64个英文字符。
+        r"""基线项英文名称，基线项名字唯一，仅支持英文字母、数字、空格、符号@、＆_[]-的组合，1-64个英文字符。
         :rtype: str
         """
         return self._NameEn
@@ -92,7 +92,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Weight(self):
-        """基线项权重，数值小权重越高，取值范围大于等于0。
+        r"""基线项权重，数值小权重越高，取值范围大于等于0。
         :rtype: int
         """
         return self._Weight
@@ -103,7 +103,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Required(self):
-        """基线项是否必填，1必填，0非必填
+        r"""基线项是否必填，1必填，0非必填
         :rtype: int
         """
         return self._Required
@@ -114,7 +114,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def DependsOn(self):
-        """基线项依赖项，N的取值范围与该基线项依赖的其它基线项个数有关。
+        r"""基线项依赖项，N的取值范围与该基线项依赖的其它基线项个数有关。
         :rtype: list of DependsOnItem
         """
         return self._DependsOn
@@ -125,7 +125,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Description(self):
-        """基线描述，长度为2~256个英文或中文字符，默认值为空。
+        r"""基线描述，长度为2~256个英文或中文字符，默认值为空。
         :rtype: str
         """
         return self._Description
@@ -136,7 +136,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def DescriptionEn(self):
-        """基线项英文描述，长度为2~1024个英文字符，默认值为空。
+        r"""基线项英文描述，长度为2~1024个英文字符，默认值为空。
         :rtype: str
         """
         return self._DescriptionEn
@@ -147,7 +147,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def Classify(self):
-        """基线分类，长度为2~32个英文或中文字符，不能为空。
+        r"""基线分类，长度为2~32个英文或中文字符，不能为空。
         :rtype: str
         """
         return self._Classify
@@ -158,7 +158,7 @@ class AccountFactoryItem(AbstractModel):
 
     @property
     def ClassifyEn(self):
-        """基线英文分类，长度为2~64个英文字符，不能为空。
+        r"""基线英文分类，长度为2~64个英文字符，不能为空。
         :rtype: str
         """
         return self._ClassifyEn
@@ -195,7 +195,7 @@ class AccountFactoryItem(AbstractModel):
 
 
 class BaselineConfigItem(AbstractModel):
-    """账号工厂基线配置项
+    r"""账号工厂基线配置项
 
     """
 
@@ -211,7 +211,7 @@ class BaselineConfigItem(AbstractModel):
 
     @property
     def Identifier(self):
-        """账号工厂基线项唯一标识,只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""账号工厂基线项唯一标识,只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -222,7 +222,7 @@ class BaselineConfigItem(AbstractModel):
 
     @property
     def Configuration(self):
-        """账号工厂基线项配置，不同基线项配置参数不同。
+        r"""账号工厂基线项配置，不同基线项配置参数不同。
         :rtype: str
         """
         return self._Configuration
@@ -246,7 +246,7 @@ class BaselineConfigItem(AbstractModel):
 
 
 class BaselineInfoItem(AbstractModel):
-    """账号工厂基线信息
+    r"""账号工厂基线信息
 
     """
 
@@ -265,7 +265,7 @@ class BaselineInfoItem(AbstractModel):
 
     @property
     def Identifier(self):
-        """账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -276,7 +276,7 @@ class BaselineInfoItem(AbstractModel):
 
     @property
     def Configuration(self):
-        """账号工厂基线项配置，不同的基线项配置参数不同。
+        r"""账号工厂基线项配置，不同的基线项配置参数不同。
         :rtype: str
         """
         return self._Configuration
@@ -287,7 +287,7 @@ class BaselineInfoItem(AbstractModel):
 
     @property
     def ApplyCount(self):
-        """基线应用的账号数量。
+        r"""基线应用的账号数量。
         :rtype: int
         """
         return self._ApplyCount
@@ -312,7 +312,7 @@ class BaselineInfoItem(AbstractModel):
 
 
 class BaselineStepTaskInfo(AbstractModel):
-    """基线项部署任务信息列表
+    r"""基线项部署任务信息列表
 
     """
 
@@ -349,7 +349,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一Id，只能包含英文字母、数字，是16个字符的随机字符串。
+        r"""任务唯一Id，只能包含英文字母、数字，是16个字符的随机字符串。
         :rtype: str
         """
         return self._TaskId
@@ -360,7 +360,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def Identifier(self):
-        """基线功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""基线功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -371,7 +371,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def MemberUin(self):
-        """被应用基线项的成员账号uin
+        r"""被应用基线项的成员账号uin
         :rtype: int
         """
         return self._MemberUin
@@ -382,7 +382,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        """基线项应用的状态,Running表示基线项应用中,Success表示基线项应用成功,Failed表示基线项应用失败,Pending表示基线项待应用,Skipped表示基线项被跳过
+        r"""基线项应用的状态,Running表示基线项应用中,Success表示基线项应用成功,Failed表示基线项应用失败,Pending表示基线项待应用,Skipped表示基线项被跳过
         :rtype: str
         """
         return self._Status
@@ -393,7 +393,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def ErrCode(self):
-        """错误码
+        r"""错误码
         :rtype: str
         """
         return self._ErrCode
@@ -404,7 +404,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def ErrMessage(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._ErrMessage
@@ -415,7 +415,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def Output(self):
-        """基线项部署输出
+        r"""基线项部署输出
         :rtype: str
         """
         return self._Output
@@ -426,7 +426,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
+        r"""创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
         :rtype: str
         """
         return self._CreateTime
@@ -437,7 +437,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
+        r"""更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
         :rtype: str
         """
         return self._UpdateTime
@@ -468,7 +468,7 @@ class BaselineStepTaskInfo(AbstractModel):
 
 
 class BatchApplyAccountBaselinesRequest(AbstractModel):
-    """BatchApplyAccountBaselines请求参数结构体
+    r"""BatchApplyAccountBaselines请求参数结构体
 
     """
 
@@ -484,7 +484,7 @@ class BatchApplyAccountBaselinesRequest(AbstractModel):
 
     @property
     def MemberUinList(self):
-        """成员账号uin，也是被应用基线的账号uin。
+        r"""成员账号uin，也是被应用基线的账号uin。
         :rtype: list of int
         """
         return self._MemberUinList
@@ -495,7 +495,7 @@ class BatchApplyAccountBaselinesRequest(AbstractModel):
 
     @property
     def BaselineConfigItems(self):
-        """基线项配置信息列表。
+        r"""基线项配置信息列表。
         :rtype: list of BaselineConfigItem
         """
         return self._BaselineConfigItems
@@ -524,7 +524,7 @@ class BatchApplyAccountBaselinesRequest(AbstractModel):
 
 
 class BatchApplyAccountBaselinesResponse(AbstractModel):
-    """BatchApplyAccountBaselines返回参数结构体
+    r"""BatchApplyAccountBaselines返回参数结构体
 
     """
 
@@ -537,7 +537,7 @@ class BatchApplyAccountBaselinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -552,7 +552,7 @@ class BatchApplyAccountBaselinesResponse(AbstractModel):
 
 
 class DependsOnItem(AbstractModel):
-    """依赖项
+    r"""依赖项
 
     """
 
@@ -568,7 +568,7 @@ class DependsOnItem(AbstractModel):
 
     @property
     def Type(self):
-        """依赖项类型，只有LandingZoneSetUp或AccountFactorySetUp。LandingZoneSetUp表示landingZone的依赖项；AccountFactorySetUp表示账号工厂的依赖项
+        r"""依赖项类型，只有LandingZoneSetUp或AccountFactorySetUp。LandingZoneSetUp表示landingZone的依赖项；AccountFactorySetUp表示账号工厂的依赖项
         :rtype: str
         """
         return self._Type
@@ -579,7 +579,7 @@ class DependsOnItem(AbstractModel):
 
     @property
     def Identifier(self):
-        """功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -603,13 +603,13 @@ class DependsOnItem(AbstractModel):
 
 
 class GetAccountFactoryBaselineRequest(AbstractModel):
-    """GetAccountFactoryBaseline请求参数结构体
+    r"""GetAccountFactoryBaseline请求参数结构体
 
     """
 
 
 class GetAccountFactoryBaselineResponse(AbstractModel):
-    """GetAccountFactoryBaseline返回参数结构体
+    r"""GetAccountFactoryBaseline返回参数结构体
 
     """
 
@@ -637,7 +637,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """资源所属主账号uin。
+        r"""资源所属主账号uin。
         :rtype: int
         """
         return self._OwnerUin
@@ -648,7 +648,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def Name(self):
-        """基线项名称，基线项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
+        r"""基线项名称，基线项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
         :rtype: str
         """
         return self._Name
@@ -659,7 +659,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def BaselineConfigItems(self):
-        """基线项配置列表。
+        r"""基线项配置列表。
         :rtype: list of BaselineInfoItem
         """
         return self._BaselineConfigItems
@@ -670,7 +670,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
+        r"""创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
         :rtype: str
         """
         return self._CreateTime
@@ -681,7 +681,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
+        r"""更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
         :rtype: str
         """
         return self._UpdateTime
@@ -692,7 +692,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -717,7 +717,7 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
 
 
 class ListAccountFactoryBaselineItemsRequest(AbstractModel):
-    """ListAccountFactoryBaselineItems请求参数结构体
+    r"""ListAccountFactoryBaselineItems请求参数结构体
 
     """
 
@@ -733,7 +733,7 @@ class ListAccountFactoryBaselineItemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回记录最大数目,取值范围0~200。
+        r"""返回记录最大数目,取值范围0~200。
         :rtype: int
         """
         return self._Limit
@@ -744,7 +744,7 @@ class ListAccountFactoryBaselineItemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，取值范围大于等于0。
+        r"""偏移量，取值范围大于等于0。
         :rtype: int
         """
         return self._Offset
@@ -768,7 +768,7 @@ class ListAccountFactoryBaselineItemsRequest(AbstractModel):
 
 
 class ListAccountFactoryBaselineItemsResponse(AbstractModel):
-    """ListAccountFactoryBaselineItems返回参数结构体
+    r"""ListAccountFactoryBaselineItems返回参数结构体
 
     """
 
@@ -787,7 +787,7 @@ class ListAccountFactoryBaselineItemsResponse(AbstractModel):
 
     @property
     def BaselineItems(self):
-        """账号工厂基线列表。
+        r"""账号工厂基线列表。
         :rtype: list of AccountFactoryItem
         """
         return self._BaselineItems
@@ -798,7 +798,7 @@ class ListAccountFactoryBaselineItemsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数。
+        r"""总数。
         :rtype: int
         """
         return self._Total
@@ -809,7 +809,7 @@ class ListAccountFactoryBaselineItemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -831,7 +831,7 @@ class ListAccountFactoryBaselineItemsResponse(AbstractModel):
 
 
 class ListDeployStepTasksRequest(AbstractModel):
-    """ListDeployStepTasks请求参数结构体
+    r"""ListDeployStepTasks请求参数结构体
 
     """
 
@@ -850,7 +850,7 @@ class ListDeployStepTasksRequest(AbstractModel):
 
     @property
     def Identifier(self):
-        """功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
+        r"""功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
         :rtype: str
         """
         return self._Identifier
@@ -861,7 +861,7 @@ class ListDeployStepTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回记录最大数目,取值范围0~200。
+        r"""返回记录最大数目,取值范围0~200。
         :rtype: int
         """
         return self._Limit
@@ -872,7 +872,7 @@ class ListDeployStepTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，取值范围大于等于0。
+        r"""偏移量，取值范围大于等于0。
         :rtype: int
         """
         return self._Offset
@@ -897,7 +897,7 @@ class ListDeployStepTasksRequest(AbstractModel):
 
 
 class ListDeployStepTasksResponse(AbstractModel):
-    """ListDeployStepTasks返回参数结构体
+    r"""ListDeployStepTasks返回参数结构体
 
     """
 
@@ -916,7 +916,7 @@ class ListDeployStepTasksResponse(AbstractModel):
 
     @property
     def BaselineDeployStepTaskList(self):
-        """账号工厂基线功能项应用信息列表。
+        r"""账号工厂基线功能项应用信息列表。
         :rtype: list of BaselineStepTaskInfo
         """
         return self._BaselineDeployStepTaskList
@@ -927,7 +927,7 @@ class ListDeployStepTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数。
+        r"""总数。
         :rtype: int
         """
         return self._Total
@@ -938,7 +938,7 @@ class ListDeployStepTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -960,7 +960,7 @@ class ListDeployStepTasksResponse(AbstractModel):
 
 
 class UpdateAccountFactoryBaselineRequest(AbstractModel):
-    """UpdateAccountFactoryBaseline请求参数结构体
+    r"""UpdateAccountFactoryBaseline请求参数结构体
 
     """
 
@@ -976,7 +976,7 @@ class UpdateAccountFactoryBaselineRequest(AbstractModel):
 
     @property
     def Name(self):
-        """基线名称，基线名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
+        r"""基线名称，基线名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
         :rtype: str
         """
         return self._Name
@@ -987,7 +987,7 @@ class UpdateAccountFactoryBaselineRequest(AbstractModel):
 
     @property
     def BaselineConfigItems(self):
-        """基线配置，覆盖更新。可以通过controlcenter:GetAccountFactoryBaseline查询现有基线配置。可以通过controlcenter:ListAccountFactoryBaselineItems查询支持的基线列表。
+        r"""基线配置，覆盖更新。可以通过controlcenter:GetAccountFactoryBaseline查询现有基线配置。可以通过controlcenter:ListAccountFactoryBaselineItems查询支持的基线列表。
         :rtype: list of BaselineConfigItem
         """
         return self._BaselineConfigItems
@@ -1016,7 +1016,7 @@ class UpdateAccountFactoryBaselineRequest(AbstractModel):
 
 
 class UpdateAccountFactoryBaselineResponse(AbstractModel):
-    """UpdateAccountFactoryBaseline返回参数结构体
+    r"""UpdateAccountFactoryBaseline返回参数结构体
 
     """
 
@@ -1029,7 +1029,7 @@ class UpdateAccountFactoryBaselineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

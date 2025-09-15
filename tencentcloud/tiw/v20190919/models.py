@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AuthParam(AbstractModel):
-    """鉴权参数
+    r"""鉴权参数
 
     """
 
@@ -38,7 +38,7 @@ class AuthParam(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用SdkAppId
+        r"""应用SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -49,7 +49,7 @@ class AuthParam(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -60,7 +60,7 @@ class AuthParam(AbstractModel):
 
     @property
     def UserSig(self):
-        """用户ID对应的签名
+        r"""用户ID对应的签名
         :rtype: str
         """
         return self._UserSig
@@ -85,7 +85,7 @@ class AuthParam(AbstractModel):
 
 
 class Canvas(AbstractModel):
-    """混流画布参数
+    r"""混流画布参数
 
     """
 
@@ -101,7 +101,7 @@ class Canvas(AbstractModel):
 
     @property
     def LayoutParams(self):
-        """混流画布宽高配置
+        r"""混流画布宽高配置
         :rtype: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
         """
         return self._LayoutParams
@@ -112,7 +112,7 @@ class Canvas(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
+        r"""背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
         :rtype: str
         """
         return self._BackgroundColor
@@ -138,7 +138,7 @@ class Canvas(AbstractModel):
 
 
 class Concat(AbstractModel):
-    """实时录制视频拼接参数
+    r"""实时录制视频拼接参数
 
     """
 
@@ -155,7 +155,7 @@ class Concat(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启拼接功能
+        r"""是否开启拼接功能
 在开启了视频拼接功能的情况下，实时录制服务会把同一个用户因为暂停导致的多段视频拼接成一个视频
         :rtype: bool
         """
@@ -167,7 +167,7 @@ class Concat(AbstractModel):
 
     @property
     def Image(self):
-        """视频拼接时使用的垫片图片下载地址，不填默认用全黑的图片进行视频垫片
+        r"""视频拼接时使用的垫片图片下载地址，不填默认用全黑的图片进行视频垫片
         :rtype: str
         """
         return self._Image
@@ -191,7 +191,7 @@ class Concat(AbstractModel):
 
 
 class CreatePPTCheckTaskRequest(AbstractModel):
-    """CreatePPTCheckTask请求参数结构体
+    r"""CreatePPTCheckTask请求参数结构体
 
     """
 
@@ -262,7 +262,7 @@ false -- 不开启
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -273,7 +273,7 @@ false -- 不开启
 
     @property
     def Url(self):
-        """经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，例如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
+        r"""经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，例如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
         :rtype: str
         """
         return self._Url
@@ -284,7 +284,7 @@ false -- 不开启
 
     @property
     def AutoHandleUnsupportedElement(self):
-        """是否对不支持元素开启自动处理的功能，默认不开启。
+        r"""是否对不支持元素开启自动处理的功能，默认不开启。
 true -- 开启
 false -- 不开启
 
@@ -299,7 +299,7 @@ false -- 不开启
 
     @property
     def AutoHandleUnsupportedElementTypes(self):
-        """此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+        r"""此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
 
 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
 
@@ -370,7 +370,7 @@ false -- 不开启
 
 
 class CreatePPTCheckTaskResponse(AbstractModel):
-    """CreatePPTCheckTask返回参数结构体
+    r"""CreatePPTCheckTask返回参数结构体
 
     """
 
@@ -386,7 +386,7 @@ class CreatePPTCheckTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """检测任务的唯一标识Id，用于查询该任务的进度以及检测结果
+        r"""检测任务的唯一标识Id，用于查询该任务的进度以及检测结果
         :rtype: str
         """
         return self._TaskId
@@ -397,7 +397,7 @@ class CreatePPTCheckTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -413,7 +413,7 @@ class CreatePPTCheckTaskResponse(AbstractModel):
 
 
 class CreateSnapshotTaskRequest(AbstractModel):
-    """CreateSnapshotTask请求参数结构体
+    r"""CreateSnapshotTask请求参数结构体
 
     """
 
@@ -447,7 +447,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def Whiteboard(self):
-        """白板相关参数
+        r"""白板相关参数
         :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotWhiteboard`
         """
         return self._Whiteboard
@@ -458,7 +458,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """白板房间 `SdkAppId`
+        r"""白板房间 `SdkAppId`
         :rtype: int
         """
         return self._SdkAppId
@@ -469,7 +469,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """白板房间号
+        r"""白板房间号
         :rtype: int
         """
         return self._RoomId
@@ -480,7 +480,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """白板板书生成结果通知回调地址
+        r"""白板板书生成结果通知回调地址
         :rtype: str
         """
         return self._CallbackURL
@@ -491,7 +491,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def COS(self):
-        """白板板书文件 `COS` 存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
+        r"""白板板书文件 `COS` 存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
         :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotCOS`
         """
         return self._COS
@@ -502,7 +502,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def SnapshotMode(self):
-        """白板板书生成模式，默认为 `AllMarks`。取值说明如下：
+        r"""白板板书生成模式，默认为 `AllMarks`。取值说明如下：
 
 `AllMarks` - 全量模式，即对于客户端每一次调用 `addSnapshotMark` 接口打上的白板板书生成标志全部都会生成对应的白板板书图片。
 
@@ -540,7 +540,7 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
 
 class CreateSnapshotTaskResponse(AbstractModel):
-    """CreateSnapshotTask返回参数结构体
+    r"""CreateSnapshotTask返回参数结构体
 
     """
 
@@ -556,7 +556,7 @@ class CreateSnapshotTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """白板板书生成任务ID，只有任务创建成功的时候才会返回此字段
+        r"""白板板书生成任务ID，只有任务创建成功的时候才会返回此字段
         :rtype: str
         """
         return self._TaskID
@@ -567,7 +567,7 @@ class CreateSnapshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -583,7 +583,7 @@ class CreateSnapshotTaskResponse(AbstractModel):
 
 
 class CreateTranscodeRequest(AbstractModel):
-    """CreateTranscode请求参数结构体
+    r"""CreateTranscode请求参数结构体
 
     """
 
@@ -695,7 +695,7 @@ false -- 不开启
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -706,7 +706,7 @@ false -- 不开启
 
     @property
     def Url(self):
-        """经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
+        r"""经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
         :rtype: str
         """
         return self._Url
@@ -717,7 +717,7 @@ false -- 不开启
 
     @property
     def IsStaticPPT(self):
-        """是否为静态PPT，默认为False；
+        r"""是否为静态PPT，默认为False；
 如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
         :rtype: bool
         """
@@ -729,7 +729,7 @@ false -- 不开启
 
     @property
     def MinResolution(self):
-        """注意: 该参数已废弃, 请使用最新的 [云API SDK](https://cloud.tencent.com/document/api/1137/40060#SDK) ，使用 MinScaleResolution字段传递分辨率
+        r"""注意: 该参数已废弃, 请使用最新的 [云API SDK](https://cloud.tencent.com/document/api/1137/40060#SDK) ，使用 MinScaleResolution字段传递分辨率
 
 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
 
@@ -744,7 +744,7 @@ false -- 不开启
 
     @property
     def ThumbnailResolution(self):
-        """动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution
+        r"""动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution
         :rtype: str
         """
         return self._ThumbnailResolution
@@ -755,7 +755,7 @@ false -- 不开启
 
     @property
     def CompressFileType(self):
-        """转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：
+        r"""转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：
 
 zip： 生成`.zip`压缩包
 tar.gz： 生成`.tar.gz`压缩包
@@ -769,7 +769,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def ExtraData(self):
-        """内部参数
+        r"""内部参数
         :rtype: str
         """
         return self._ExtraData
@@ -780,7 +780,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def Priority(self):
-        """文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
+        r"""文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
 - low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
 - 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
 <br/>
@@ -795,7 +795,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def MinScaleResolution(self):
-        """转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。
+        r"""转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。
 分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。
 
 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
@@ -809,7 +809,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def AutoHandleUnsupportedElement(self):
-        """此参数仅对动态转码生效。
+        r"""此参数仅对动态转码生效。
 
 是否对不支持元素开启自动处理的功能，默认不开启。
 true -- 开启
@@ -826,7 +826,7 @@ false -- 不开启
 
     @property
     def AutoHandleUnsupportedElementTypes(self):
-        """此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+        r"""此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
 
 指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
 
@@ -882,7 +882,7 @@ false -- 不开启
 
     @property
     def ExcelParam(self):
-        """Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+        r"""Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
         :rtype: :class:`tencentcloud.tiw.v20190919.models.ExcelParam`
         """
         return self._ExcelParam
@@ -918,7 +918,7 @@ false -- 不开启
 
 
 class CreateTranscodeResponse(AbstractModel):
-    """CreateTranscode返回参数结构体
+    r"""CreateTranscode返回参数结构体
 
     """
 
@@ -934,7 +934,7 @@ class CreateTranscodeResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
+        r"""文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
         :rtype: str
         """
         return self._TaskId
@@ -945,7 +945,7 @@ class CreateTranscodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -961,7 +961,7 @@ class CreateTranscodeResponse(AbstractModel):
 
 
 class CreateVideoGenerationTaskRequest(AbstractModel):
-    """CreateVideoGenerationTask请求参数结构体
+    r"""CreateVideoGenerationTask请求参数结构体
 
     """
 
@@ -1000,7 +1000,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def OnlineRecordTaskId(self):
-        """实时录制任务的TaskId
+        r"""实时录制任务的TaskId
         :rtype: str
         """
         return self._OnlineRecordTaskId
@@ -1011,7 +1011,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -1022,7 +1022,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def Whiteboard(self):
-        """视频生成的白板参数，例如白板宽高等。
+        r"""视频生成的白板参数，例如白板宽高等。
 
 此参数与开始录制接口提供的Whiteboard参数互斥，在本接口与开始录制接口都提供了Whiteboard参数时，优先使用本接口指定的Whiteboard参数进行视频生成，否则使用开始录制接口提供的Whiteboard参数进行视频生成。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
@@ -1035,7 +1035,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def Concat(self):
-        """视频拼接参数
+        r"""视频拼接参数
 
 此参数与开始录制接口提供的Concat参数互斥，在本接口与开始录制接口都提供了Concat参数时，优先使用本接口指定的Concat参数进行视频拼接，否则使用开始录制接口提供的Concat参数进行视频拼接。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Concat`
@@ -1048,7 +1048,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def MixStream(self):
-        """视频生成混流参数
+        r"""视频生成混流参数
 
 此参数与开始录制接口提供的MixStream参数互斥，在本接口与开始录制接口都提供了MixStream参数时，优先使用本接口指定的MixStream参数进行视频混流，否则使用开始录制接口提供的MixStream参数进行视频拼混流。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.MixStream`
@@ -1061,7 +1061,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def RecordControl(self):
-        """视频生成控制参数，用于更精细地指定需要生成哪些流，某一路流是否禁用音频，是否只录制小画面等
+        r"""视频生成控制参数，用于更精细地指定需要生成哪些流，某一路流是否禁用音频，是否只录制小画面等
 
 此参数与开始录制接口提供的RecordControl参数互斥，在本接口与开始录制接口都提供了RecordControl参数时，优先使用本接口指定的RecordControl参数进行视频生成控制，否则使用开始录制接口提供的RecordControl参数进行视频拼生成控制。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
@@ -1074,7 +1074,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def ExtraData(self):
-        """内部参数
+        r"""内部参数
         :rtype: str
         """
         return self._ExtraData
@@ -1111,7 +1111,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
 
 
 class CreateVideoGenerationTaskResponse(AbstractModel):
-    """CreateVideoGenerationTask返回参数结构体
+    r"""CreateVideoGenerationTask返回参数结构体
 
     """
 
@@ -1127,7 +1127,7 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """视频生成的任务Id
+        r"""视频生成的任务Id
         :rtype: str
         """
         return self._TaskId
@@ -1138,7 +1138,7 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1154,7 +1154,7 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
 
 
 class CustomLayout(AbstractModel):
-    """自定义混流布局参数
+    r"""自定义混流布局参数
 
     """
 
@@ -1170,7 +1170,7 @@ class CustomLayout(AbstractModel):
 
     @property
     def Canvas(self):
-        """混流画布参数
+        r"""混流画布参数
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Canvas`
         """
         return self._Canvas
@@ -1181,7 +1181,7 @@ class CustomLayout(AbstractModel):
 
     @property
     def InputStreamList(self):
-        """流布局参数，每路流的布局不能超出画布区域
+        r"""流布局参数，每路流的布局不能超出画布区域
         :rtype: list of StreamLayout
         """
         return self._InputStreamList
@@ -1212,7 +1212,7 @@ class CustomLayout(AbstractModel):
 
 
 class DescribeOnlineRecordCallbackRequest(AbstractModel):
-    """DescribeOnlineRecordCallback请求参数结构体
+    r"""DescribeOnlineRecordCallback请求参数结构体
 
     """
 
@@ -1225,7 +1225,7 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -1248,7 +1248,7 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
 
 
 class DescribeOnlineRecordCallbackResponse(AbstractModel):
-    """DescribeOnlineRecordCallback返回参数结构体
+    r"""DescribeOnlineRecordCallback返回参数结构体
 
     """
 
@@ -1267,7 +1267,7 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
+        r"""实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
         :rtype: str
         """
         return self._Callback
@@ -1278,7 +1278,7 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """实时录制回调鉴权密钥
+        r"""实时录制回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -1289,7 +1289,7 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1306,7 +1306,7 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
 
 class DescribeOnlineRecordRequest(AbstractModel):
-    """DescribeOnlineRecord请求参数结构体
+    r"""DescribeOnlineRecord请求参数结构体
 
     """
 
@@ -1322,7 +1322,7 @@ class DescribeOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -1333,7 +1333,7 @@ class DescribeOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """实时录制任务Id
+        r"""实时录制任务Id
         :rtype: str
         """
         return self._TaskId
@@ -1357,7 +1357,7 @@ class DescribeOnlineRecordRequest(AbstractModel):
 
 
 class DescribeOnlineRecordResponse(AbstractModel):
-    """DescribeOnlineRecord返回参数结构体
+    r"""DescribeOnlineRecord返回参数结构体
 
     """
 
@@ -1423,7 +1423,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def FinishReason(self):
-        """录制结束原因，
+        r"""录制结束原因，
 - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止录制
 - USER_CALL: 主动调用了停止录制接口
 - EXCEPTION: 录制异常结束
@@ -1438,7 +1438,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """需要查询结果的录制任务Id
+        r"""需要查询结果的录制任务Id
         :rtype: str
         """
         return self._TaskId
@@ -1449,7 +1449,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def Status(self):
-        """录制任务状态
+        r"""录制任务状态
 - PREPARED: 表示录制正在准备中（进房/启动录制服务等操作）
 - RECORDING: 表示录制已开始
 - PAUSED: 表示录制已暂停
@@ -1465,7 +1465,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间号
+        r"""房间号
         :rtype: int
         """
         return self._RoomId
@@ -1476,7 +1476,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """白板的群组 Id
+        r"""白板的群组 Id
         :rtype: str
         """
         return self._GroupId
@@ -1487,7 +1487,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def RecordUserId(self):
-        """录制用户Id
+        r"""录制用户Id
         :rtype: str
         """
         return self._RecordUserId
@@ -1498,7 +1498,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def RecordStartTime(self):
-        """实际开始录制时间，Unix 时间戳，单位秒
+        r"""实际开始录制时间，Unix 时间戳，单位秒
         :rtype: int
         """
         return self._RecordStartTime
@@ -1509,7 +1509,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def RecordStopTime(self):
-        """实际停止录制时间，Unix 时间戳，单位秒
+        r"""实际停止录制时间，Unix 时间戳，单位秒
         :rtype: int
         """
         return self._RecordStopTime
@@ -1520,7 +1520,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def TotalTime(self):
-        """回放视频总时长（单位：毫秒）
+        r"""回放视频总时长（单位：毫秒）
         :rtype: int
         """
         return self._TotalTime
@@ -1531,7 +1531,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def ExceptionCnt(self):
-        """录制过程中出现异常的次数
+        r"""录制过程中出现异常的次数
         :rtype: int
         """
         return self._ExceptionCnt
@@ -1542,7 +1542,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def OmittedDurations(self):
-        """拼接视频中被忽略的时间段，只有开启视频拼接功能的时候，这个参数才是有效的
+        r"""拼接视频中被忽略的时间段，只有开启视频拼接功能的时候，这个参数才是有效的
         :rtype: list of OmittedDuration
         """
         return self._OmittedDurations
@@ -1553,7 +1553,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def VideoInfos(self):
-        """录制视频列表
+        r"""录制视频列表
         :rtype: list of VideoInfo
         """
         return self._VideoInfos
@@ -1564,7 +1564,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def ReplayUrl(self):
-        """回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
+        r"""回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1576,7 +1576,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def Interrupts(self):
-        """视频流在录制过程中断流次数
+        r"""视频流在录制过程中断流次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Interrupt
         """
@@ -1588,7 +1588,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1632,7 +1632,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
 
 
 class DescribePPTCheckCallbackRequest(AbstractModel):
-    """DescribePPTCheckCallback请求参数结构体
+    r"""DescribePPTCheckCallback请求参数结构体
 
     """
 
@@ -1645,7 +1645,7 @@ class DescribePPTCheckCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -1668,7 +1668,7 @@ class DescribePPTCheckCallbackRequest(AbstractModel):
 
 
 class DescribePPTCheckCallbackResponse(AbstractModel):
-    """DescribePPTCheckCallback返回参数结构体
+    r"""DescribePPTCheckCallback返回参数结构体
 
     """
 
@@ -1687,7 +1687,7 @@ class DescribePPTCheckCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """回调地址
+        r"""回调地址
         :rtype: str
         """
         return self._Callback
@@ -1698,7 +1698,7 @@ class DescribePPTCheckCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调鉴权密钥
+        r"""回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -1709,7 +1709,7 @@ class DescribePPTCheckCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1726,7 +1726,7 @@ class DescribePPTCheckCallbackResponse(AbstractModel):
 
 
 class DescribePPTCheckRequest(AbstractModel):
-    """DescribePPTCheck请求参数结构体
+    r"""DescribePPTCheck请求参数结构体
 
     """
 
@@ -1742,7 +1742,7 @@ class DescribePPTCheckRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -1753,7 +1753,7 @@ class DescribePPTCheckRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务的唯一标识Id
+        r"""任务的唯一标识Id
         :rtype: str
         """
         return self._TaskId
@@ -1777,7 +1777,7 @@ class DescribePPTCheckRequest(AbstractModel):
 
 
 class DescribePPTCheckResponse(AbstractModel):
-    """DescribePPTCheck返回参数结构体
+    r"""DescribePPTCheck返回参数结构体
 
     """
 
@@ -1814,7 +1814,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务的唯一标识Id
+        r"""任务的唯一标识Id
         :rtype: str
         """
         return self._TaskId
@@ -1825,7 +1825,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def IsOK(self):
-        """PPT文件是否正常
+        r"""PPT文件是否正常
         :rtype: bool
         """
         return self._IsOK
@@ -1836,7 +1836,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """修复后的PPT URL，只有创建任务时参数AutoHandleUnsupportedElement=true，才返回此参数
+        r"""修复后的PPT URL，只有创建任务时参数AutoHandleUnsupportedElement=true，才返回此参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1848,7 +1848,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def Slides(self):
-        """错误PPT页面列表
+        r"""错误PPT页面列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PPTErrSlide
         """
@@ -1860,7 +1860,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务的当前状态 - QUEUED: 正在排队等待 - PROCESSING: 执行中 - FINISHED: 执行完成	
+        r"""任务的当前状态 - QUEUED: 正在排队等待 - PROCESSING: 执行中 - FINISHED: 执行完成	
         :rtype: str
         """
         return self._Status
@@ -1871,7 +1871,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """当前进度,取值范围为0~100
+        r"""当前进度,取值范围为0~100
         :rtype: int
         """
         return self._Progress
@@ -1882,7 +1882,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def Errs(self):
-        """错误列表
+        r"""错误列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PPTErr
         """
@@ -1894,7 +1894,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1926,7 +1926,7 @@ class DescribePPTCheckResponse(AbstractModel):
 
 
 class DescribeRunningTasksRequest(AbstractModel):
-    """DescribeRunningTasks请求参数结构体
+    r"""DescribeRunningTasks请求参数结构体
 
     """
 
@@ -1954,7 +1954,7 @@ class DescribeRunningTasksRequest(AbstractModel):
 
     @property
     def SdkAppID(self):
-        """应用的SdkAppID
+        r"""应用的SdkAppID
         :rtype: int
         """
         return self._SdkAppID
@@ -1965,7 +1965,7 @@ class DescribeRunningTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """指定需要获取的任务类型。
+        r"""指定需要获取的任务类型。
 有效取值如下：
 - TranscodeH5: 动态转码任务，文档转HTML5页面
 - TranscodeJPG: 静态转码任务，文档转图片
@@ -1981,7 +1981,7 @@ class DescribeRunningTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页获取时的任务偏移量，默认为0。
+        r"""分页获取时的任务偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1992,7 +1992,7 @@ class DescribeRunningTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次获取任务列表时最大获取任务数，默认值为100。
+        r"""每次获取任务列表时最大获取任务数，默认值为100。
 有效取值范围：[1, 500]
         :rtype: int
         """
@@ -2019,7 +2019,7 @@ class DescribeRunningTasksRequest(AbstractModel):
 
 
 class DescribeRunningTasksResponse(AbstractModel):
-    """DescribeRunningTasks返回参数结构体
+    r"""DescribeRunningTasks返回参数结构体
 
     """
 
@@ -2038,7 +2038,7 @@ class DescribeRunningTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """当前正在执行中的任务总数
+        r"""当前正在执行中的任务总数
         :rtype: int
         """
         return self._Total
@@ -2049,7 +2049,7 @@ class DescribeRunningTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """任务信息列表
+        r"""任务信息列表
         :rtype: list of RunningTaskItem
         """
         return self._Tasks
@@ -2060,7 +2060,7 @@ class DescribeRunningTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2082,7 +2082,7 @@ class DescribeRunningTasksResponse(AbstractModel):
 
 
 class DescribeSnapshotTaskRequest(AbstractModel):
-    """DescribeSnapshotTask请求参数结构体
+    r"""DescribeSnapshotTask请求参数结构体
 
     """
 
@@ -2098,7 +2098,7 @@ class DescribeSnapshotTaskRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """查询任务ID
+        r"""查询任务ID
         :rtype: str
         """
         return self._TaskID
@@ -2109,7 +2109,7 @@ class DescribeSnapshotTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """任务SdkAppId
+        r"""任务SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2133,7 +2133,7 @@ class DescribeSnapshotTaskRequest(AbstractModel):
 
 
 class DescribeSnapshotTaskResponse(AbstractModel):
-    """DescribeSnapshotTask返回参数结构体
+    r"""DescribeSnapshotTask返回参数结构体
 
     """
 
@@ -2168,7 +2168,7 @@ Finished - 任务已结束
 
     @property
     def TaskID(self):
-        """任务ID
+        r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2180,7 +2180,7 @@ Finished - 任务已结束
 
     @property
     def Status(self):
-        """任务状态
+        r"""任务状态
 Running - 任务执行中
 Finished - 任务已结束
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2194,7 +2194,7 @@ Finished - 任务已结束
 
     @property
     def CreateTime(self):
-        """任务创建时间，单位s
+        r"""任务创建时间，单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2206,7 +2206,7 @@ Finished - 任务已结束
 
     @property
     def FinishTime(self):
-        """任务完成时间，单位s
+        r"""任务完成时间，单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2218,7 +2218,7 @@ Finished - 任务已结束
 
     @property
     def Result(self):
-        """任务结果信息
+        r"""任务结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotResult`
         """
@@ -2230,7 +2230,7 @@ Finished - 任务已结束
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2252,7 +2252,7 @@ Finished - 任务已结束
 
 
 class DescribeTranscodeByUrlRequest(AbstractModel):
-    """DescribeTranscodeByUrl请求参数结构体
+    r"""DescribeTranscodeByUrl请求参数结构体
 
     """
 
@@ -2268,7 +2268,7 @@ class DescribeTranscodeByUrlRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2279,7 +2279,7 @@ class DescribeTranscodeByUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。	
+        r"""经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。	
         :rtype: str
         """
         return self._Url
@@ -2303,7 +2303,7 @@ class DescribeTranscodeByUrlRequest(AbstractModel):
 
 
 class DescribeTranscodeByUrlResponse(AbstractModel):
-    """DescribeTranscodeByUrl返回参数结构体
+    r"""DescribeTranscodeByUrl返回参数结构体
 
     """
 
@@ -2329,7 +2329,7 @@ class DescribeTranscodeByUrlResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """转码的当前进度,取值范围为0~100
+        r"""转码的当前进度,取值范围为0~100
         :rtype: int
         """
         return self._Progress
@@ -2340,7 +2340,7 @@ class DescribeTranscodeByUrlResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务的当前状态
+        r"""任务的当前状态
 - QUEUED: 正在排队等待转换
 - PROCESSING: 转换中
 - FINISHED: 转换完成
@@ -2355,7 +2355,7 @@ class DescribeTranscodeByUrlResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """转码任务的唯一标识Id
+        r"""转码任务的唯一标识Id
         :rtype: str
         """
         return self._TaskId
@@ -2366,7 +2366,7 @@ class DescribeTranscodeByUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2384,7 +2384,7 @@ class DescribeTranscodeByUrlResponse(AbstractModel):
 
 
 class DescribeTranscodeCallbackRequest(AbstractModel):
-    """DescribeTranscodeCallback请求参数结构体
+    r"""DescribeTranscodeCallback请求参数结构体
 
     """
 
@@ -2397,7 +2397,7 @@ class DescribeTranscodeCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2420,7 +2420,7 @@ class DescribeTranscodeCallbackRequest(AbstractModel):
 
 
 class DescribeTranscodeCallbackResponse(AbstractModel):
-    """DescribeTranscodeCallback返回参数结构体
+    r"""DescribeTranscodeCallback返回参数结构体
 
     """
 
@@ -2439,7 +2439,7 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """文档转码回调地址
+        r"""文档转码回调地址
         :rtype: str
         """
         return self._Callback
@@ -2450,7 +2450,7 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """文档转码回调鉴权密钥
+        r"""文档转码回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -2461,7 +2461,7 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2478,7 +2478,7 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
 
 class DescribeTranscodeRequest(AbstractModel):
-    """DescribeTranscode请求参数结构体
+    r"""DescribeTranscode请求参数结构体
 
     """
 
@@ -2494,7 +2494,7 @@ class DescribeTranscodeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2505,7 +2505,7 @@ class DescribeTranscodeRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """文档转码任务的唯一标识Id
+        r"""文档转码任务的唯一标识Id
         :rtype: str
         """
         return self._TaskId
@@ -2529,7 +2529,7 @@ class DescribeTranscodeRequest(AbstractModel):
 
 
 class DescribeTranscodeResponse(AbstractModel):
-    """DescribeTranscode返回参数结构体
+    r"""DescribeTranscode返回参数结构体
 
     """
 
@@ -2601,7 +2601,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Pages(self):
-        """文档的总页数
+        r"""文档的总页数
         :rtype: int
         """
         return self._Pages
@@ -2612,7 +2612,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """转码的当前进度,取值范围为0~100
+        r"""转码的当前进度,取值范围为0~100
         :rtype: int
         """
         return self._Progress
@@ -2623,7 +2623,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Resolution(self):
-        """文档的分辨率
+        r"""文档的分辨率
         :rtype: str
         """
         return self._Resolution
@@ -2634,7 +2634,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
-        """转码完成后结果的URL
+        r"""转码完成后结果的URL
 动态转码：PPT转动态H5的链接
 静态转码：文档每一页的图片URL前缀，比如，该URL前缀为`http://example.com/g0jb42ps49vtebjshilb/`，那么文档第1页的图片URL为
 `http://example.com/g0jb42ps49vtebjshilb/1.jpg`，其它页以此类推
@@ -2648,7 +2648,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务的当前状态
+        r"""任务的当前状态
 - QUEUED: 正在排队等待转换
 - PROCESSING: 转换中
 - FINISHED: 转换完成
@@ -2662,7 +2662,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """转码任务的唯一标识Id
+        r"""转码任务的唯一标识Id
         :rtype: str
         """
         return self._TaskId
@@ -2673,7 +2673,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Title(self):
-        """文档的文件名
+        r"""文档的文件名
         :rtype: str
         """
         return self._Title
@@ -2684,7 +2684,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def ThumbnailUrl(self):
-        """缩略图URL前缀，比如，该URL前缀为`http://example.com/g0jb42ps49vtebjshilb/ `，那么动态PPT第1页的缩略图URL为
+        r"""缩略图URL前缀，比如，该URL前缀为`http://example.com/g0jb42ps49vtebjshilb/ `，那么动态PPT第1页的缩略图URL为
 `http://example.com/g0jb42ps49vtebjshilb/1.jpg`，其它页以此类推
 
 如果发起文档转码请求参数中带了ThumbnailResolution参数，并且转码类型为动态转码，该参数不为空，其余情况该参数为空字符串
@@ -2698,7 +2698,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def ThumbnailResolution(self):
-        """动态转码缩略图生成分辨率
+        r"""动态转码缩略图生成分辨率
         :rtype: str
         """
         return self._ThumbnailResolution
@@ -2709,7 +2709,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def CompressFileUrl(self):
-        """转码压缩文件下载的URL，如果发起文档转码请求参数中`CompressFileType`为空或者不是支持的压缩格式，该参数为空字符串
+        r"""转码压缩文件下载的URL，如果发起文档转码请求参数中`CompressFileType`为空或者不是支持的压缩格式，该参数为空字符串
         :rtype: str
         """
         return self._CompressFileUrl
@@ -2720,7 +2720,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def ResourceListUrl(self):
-        """资源清单文件下载URL(内测体验)
+        r"""资源清单文件下载URL(内测体验)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2732,7 +2732,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def Ext(self):
-        """文档制作方式(内测体验)
+        r"""文档制作方式(内测体验)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2744,7 +2744,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """文档转码任务创建时间，单位s
+        r"""文档转码任务创建时间，单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2756,7 +2756,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def AssignTime(self):
-        """文档转码任务分配时间，单位s
+        r"""文档转码任务分配时间，单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2768,7 +2768,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def FinishedTime(self):
-        """文档转码任务完成时间，单位s
+        r"""文档转码任务完成时间，单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2780,7 +2780,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2810,7 +2810,7 @@ class DescribeTranscodeResponse(AbstractModel):
 
 
 class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
-    """DescribeVideoGenerationTaskCallback请求参数结构体
+    r"""DescribeVideoGenerationTaskCallback请求参数结构体
 
     """
 
@@ -2823,7 +2823,7 @@ class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2846,7 +2846,7 @@ class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
 
 
 class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
-    """DescribeVideoGenerationTaskCallback返回参数结构体
+    r"""DescribeVideoGenerationTaskCallback返回参数结构体
 
     """
 
@@ -2865,7 +2865,7 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """录制视频生成回调地址
+        r"""录制视频生成回调地址
         :rtype: str
         """
         return self._Callback
@@ -2876,7 +2876,7 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """录制视频生成回调鉴权密钥
+        r"""录制视频生成回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -2887,7 +2887,7 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2904,7 +2904,7 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
 
 class DescribeVideoGenerationTaskRequest(AbstractModel):
-    """DescribeVideoGenerationTask请求参数结构体
+    r"""DescribeVideoGenerationTask请求参数结构体
 
     """
 
@@ -2920,7 +2920,7 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -2931,7 +2931,7 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """录制视频生成的任务Id
+        r"""录制视频生成的任务Id
         :rtype: str
         """
         return self._TaskId
@@ -2955,7 +2955,7 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
 
 
 class DescribeVideoGenerationTaskResponse(AbstractModel):
-    """DescribeVideoGenerationTask返回参数结构体
+    r"""DescribeVideoGenerationTask返回参数结构体
 
     """
 
@@ -2995,7 +2995,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """任务对应的群组Id
+        r"""任务对应的群组Id
         :rtype: str
         """
         return self._GroupId
@@ -3006,7 +3006,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        """任务对应的房间号
+        r"""任务对应的房间号
         :rtype: int
         """
         return self._RoomId
@@ -3017,7 +3017,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务的Id
+        r"""任务的Id
         :rtype: str
         """
         return self._TaskId
@@ -3028,7 +3028,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """已废弃
+        r"""已废弃
         :rtype: int
         """
         return self._Progress
@@ -3039,7 +3039,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        """录制视频生成任务状态
+        r"""录制视频生成任务状态
 - QUEUED: 正在排队
 - PROCESSING: 正在生成视频
 - FINISHED: 生成视频结束（成功完成或失败结束，可以通过错误码和错误信息进一步判断）
@@ -3053,7 +3053,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TotalTime(self):
-        """回放视频总时长,单位：毫秒
+        r"""回放视频总时长,单位：毫秒
         :rtype: int
         """
         return self._TotalTime
@@ -3064,7 +3064,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def VideoInfos(self):
-        """已废弃，请使用`VideoInfoList`参数
+        r"""已废弃，请使用`VideoInfoList`参数
         :rtype: :class:`tencentcloud.tiw.v20190919.models.VideoInfo`
         """
         return self._VideoInfos
@@ -3075,7 +3075,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def VideoInfoList(self):
-        """录制视频生成视频列表
+        r"""录制视频生成视频列表
         :rtype: list of VideoInfo
         """
         return self._VideoInfoList
@@ -3086,7 +3086,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3116,7 +3116,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
 
 class DescribeWarningCallbackRequest(AbstractModel):
-    """DescribeWarningCallback请求参数结构体
+    r"""DescribeWarningCallback请求参数结构体
 
     """
 
@@ -3129,7 +3129,7 @@ class DescribeWarningCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -3152,7 +3152,7 @@ class DescribeWarningCallbackRequest(AbstractModel):
 
 
 class DescribeWarningCallbackResponse(AbstractModel):
-    """DescribeWarningCallback返回参数结构体
+    r"""DescribeWarningCallback返回参数结构体
 
     """
 
@@ -3171,7 +3171,7 @@ class DescribeWarningCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """告警事件回调地址，如果未设置回调地址，该字段为空字符串
+        r"""告警事件回调地址，如果未设置回调地址，该字段为空字符串
         :rtype: str
         """
         return self._Callback
@@ -3182,7 +3182,7 @@ class DescribeWarningCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """告警回调鉴权密钥
+        r"""告警回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -3193,7 +3193,7 @@ class DescribeWarningCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3210,7 +3210,7 @@ class DescribeWarningCallbackResponse(AbstractModel):
 
 
 class DescribeWhiteboardPushCallbackRequest(AbstractModel):
-    """DescribeWhiteboardPushCallback请求参数结构体
+    r"""DescribeWhiteboardPushCallback请求参数结构体
 
     """
 
@@ -3223,7 +3223,7 @@ class DescribeWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -3246,7 +3246,7 @@ class DescribeWhiteboardPushCallbackRequest(AbstractModel):
 
 
 class DescribeWhiteboardPushCallbackResponse(AbstractModel):
-    """DescribeWhiteboardPushCallback返回参数结构体
+    r"""DescribeWhiteboardPushCallback返回参数结构体
 
     """
 
@@ -3265,7 +3265,7 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
-        """白板推流事件回调地址，如果未设置回调地址，该字段为空字符串
+        r"""白板推流事件回调地址，如果未设置回调地址，该字段为空字符串
         :rtype: str
         """
         return self._Callback
@@ -3276,7 +3276,7 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """白板推流回调鉴权密钥
+        r"""白板推流回调鉴权密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -3287,7 +3287,7 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3304,7 +3304,7 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
 
 class DescribeWhiteboardPushRequest(AbstractModel):
-    """DescribeWhiteboardPush请求参数结构体
+    r"""DescribeWhiteboardPush请求参数结构体
 
     """
 
@@ -3320,7 +3320,7 @@ class DescribeWhiteboardPushRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -3331,7 +3331,7 @@ class DescribeWhiteboardPushRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """白板推流任务Id
+        r"""白板推流任务Id
         :rtype: str
         """
         return self._TaskId
@@ -3355,7 +3355,7 @@ class DescribeWhiteboardPushRequest(AbstractModel):
 
 
 class DescribeWhiteboardPushResponse(AbstractModel):
-    """DescribeWhiteboardPush返回参数结构体
+    r"""DescribeWhiteboardPush返回参数结构体
 
     """
 
@@ -3408,7 +3408,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def FinishReason(self):
-        """推流结束原因，
+        r"""推流结束原因，
 - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止推流
 - USER_CALL: 主动调用了停止推流接口
 - EXCEPTION: 推流异常结束
@@ -3422,7 +3422,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """需要查询结果的白板推流任务Id
+        r"""需要查询结果的白板推流任务Id
         :rtype: str
         """
         return self._TaskId
@@ -3433,7 +3433,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def Status(self):
-        """推流任务状态
+        r"""推流任务状态
 - PREPARED: 表示推流正在准备中（进房/启动推流服务等操作）
 - PUSHING: 表示推流已开始
 - STOPPED: 表示推流已停止
@@ -3447,7 +3447,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间号
+        r"""房间号
         :rtype: int
         """
         return self._RoomId
@@ -3458,7 +3458,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """白板的群组 Id
+        r"""白板的群组 Id
         :rtype: str
         """
         return self._GroupId
@@ -3469,7 +3469,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def PushUserId(self):
-        """推流用户Id
+        r"""推流用户Id
         :rtype: str
         """
         return self._PushUserId
@@ -3480,7 +3480,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def PushStartTime(self):
-        """实际开始推流时间，Unix 时间戳，单位秒
+        r"""实际开始推流时间，Unix 时间戳，单位秒
         :rtype: int
         """
         return self._PushStartTime
@@ -3491,7 +3491,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def PushStopTime(self):
-        """实际停止推流时间，Unix 时间戳，单位秒
+        r"""实际停止推流时间，Unix 时间戳，单位秒
         :rtype: int
         """
         return self._PushStopTime
@@ -3502,7 +3502,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def ExceptionCnt(self):
-        """推流过程中出现异常的次数
+        r"""推流过程中出现异常的次数
         :rtype: int
         """
         return self._ExceptionCnt
@@ -3513,7 +3513,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def IMSyncTime(self):
-        """白板推流首帧对应的IM时间戳，可用于录制回放时IM聊天消息与白板推流视频进行同步对时。
+        r"""白板推流首帧对应的IM时间戳，可用于录制回放时IM聊天消息与白板推流视频进行同步对时。
         :rtype: int
         """
         return self._IMSyncTime
@@ -3524,7 +3524,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def Backup(self):
-        """备份推流任务结果信息
+        r"""备份推流任务结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3536,7 +3536,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3562,7 +3562,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
 
 
 class ExcelParam(AbstractModel):
-    """Excel转码相关参数
+    r"""Excel转码相关参数
 
     """
 
@@ -3585,7 +3585,7 @@ class ExcelParam(AbstractModel):
 
     @property
     def PaperSize(self):
-        """表格转码纸张（画布）大小，默认为0。
+        r"""表格转码纸张（画布）大小，默认为0。
 0 -- A4
 1 -- A2 
 2 -- A0
@@ -3601,7 +3601,7 @@ class ExcelParam(AbstractModel):
 
     @property
     def PaperDirection(self):
-        """表格文件转换纸张方向，默认为0。
+        r"""表格文件转换纸张方向，默认为0。
 0 -- 代表垂直方向
 非0 -- 代表水平方向
         :rtype: int
@@ -3627,7 +3627,7 @@ class ExcelParam(AbstractModel):
 
 
 class Interrupt(AbstractModel):
-    """实时录制中出现的用户视频流断流次数统计
+    r"""实时录制中出现的用户视频流断流次数统计
 
     """
 
@@ -3645,7 +3645,7 @@ class Interrupt(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3657,7 +3657,7 @@ class Interrupt(AbstractModel):
 
     @property
     def Count(self):
-        """视频流断流次数
+        r"""视频流断流次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3682,7 +3682,7 @@ class Interrupt(AbstractModel):
 
 
 class LayoutParams(AbstractModel):
-    """自定义混流配置布局参数
+    r"""自定义混流配置布局参数
 
     """
 
@@ -3708,7 +3708,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
     @property
     def Width(self):
-        """流画面宽，取值范围[2,3000]
+        r"""流画面宽，取值范围[2,3000]
         :rtype: int
         """
         return self._Width
@@ -3719,7 +3719,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
     @property
     def Height(self):
-        """流画面高，取值范围[2,3000]
+        r"""流画面高，取值范围[2,3000]
         :rtype: int
         """
         return self._Height
@@ -3730,7 +3730,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
     @property
     def X(self):
-        """当前画面左上角顶点相对于Canvas左上角顶点的x轴偏移量，默认为0，取值范围[0,3000]
+        r"""当前画面左上角顶点相对于Canvas左上角顶点的x轴偏移量，默认为0，取值范围[0,3000]
         :rtype: int
         """
         return self._X
@@ -3741,7 +3741,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
     @property
     def Y(self):
-        """当前画面左上角顶点相对于Canvas左上角顶点的y轴偏移量，默认为0， 取值范围[0,3000]
+        r"""当前画面左上角顶点相对于Canvas左上角顶点的y轴偏移量，默认为0， 取值范围[0,3000]
         :rtype: int
         """
         return self._Y
@@ -3752,7 +3752,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
     @property
     def ZOrder(self):
-        """画面z轴位置，默认为0
+        r"""画面z轴位置，默认为0
 z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
         :rtype: int
         """
@@ -3780,7 +3780,7 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
 
 
 class MixStream(AbstractModel):
-    """混流配置
+    r"""混流配置
 
     """
 
@@ -3809,7 +3809,7 @@ class MixStream(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启混流
+        r"""是否开启混流
         :rtype: bool
         """
         return self._Enabled
@@ -3820,7 +3820,7 @@ class MixStream(AbstractModel):
 
     @property
     def DisableAudio(self):
-        """是否禁用音频混流
+        r"""是否禁用音频混流
         :rtype: bool
         """
         return self._DisableAudio
@@ -3831,7 +3831,7 @@ class MixStream(AbstractModel):
 
     @property
     def ModelId(self):
-        """内置混流布局模板ID, 取值 [1, 2], 区别见内置混流布局模板样式示例说明
+        r"""内置混流布局模板ID, 取值 [1, 2], 区别见内置混流布局模板样式示例说明
 在没有填Custom字段时候，ModelId是必填的
         :rtype: int
         """
@@ -3843,7 +3843,7 @@ class MixStream(AbstractModel):
 
     @property
     def TeacherId(self):
-        """老师用户ID
+        r"""老师用户ID
 此字段只有在ModelId填了的情况下生效
 填写TeacherId的效果是把指定为TeacherId的用户视频流显示在内置模板的第一个小画面中
         :rtype: str
@@ -3856,7 +3856,7 @@ class MixStream(AbstractModel):
 
     @property
     def Custom(self):
-        """自定义混流布局参数
+        r"""自定义混流布局参数
 当此字段存在时，ModelId 及 TeacherId 字段将被忽略
         :rtype: :class:`tencentcloud.tiw.v20190919.models.CustomLayout`
         """
@@ -3886,7 +3886,7 @@ class MixStream(AbstractModel):
 
 
 class OmittedDuration(AbstractModel):
-    """拼接视频中被忽略的时间段
+    r"""拼接视频中被忽略的时间段
 
     """
 
@@ -3905,7 +3905,7 @@ class OmittedDuration(AbstractModel):
 
     @property
     def VideoTime(self):
-        """录制暂停时间戳对应的视频播放时间(单位: 毫秒)
+        r"""录制暂停时间戳对应的视频播放时间(单位: 毫秒)
         :rtype: int
         """
         return self._VideoTime
@@ -3916,7 +3916,7 @@ class OmittedDuration(AbstractModel):
 
     @property
     def PauseTime(self):
-        """录制暂停时间戳(单位: 毫秒)
+        r"""录制暂停时间戳(单位: 毫秒)
         :rtype: int
         """
         return self._PauseTime
@@ -3927,7 +3927,7 @@ class OmittedDuration(AbstractModel):
 
     @property
     def ResumeTime(self):
-        """录制恢复时间戳(单位: 毫秒)
+        r"""录制恢复时间戳(单位: 毫秒)
         :rtype: int
         """
         return self._ResumeTime
@@ -3952,7 +3952,7 @@ class OmittedDuration(AbstractModel):
 
 
 class PPTErr(AbstractModel):
-    """PPT错误元素
+    r"""PPT错误元素
 
     """
 
@@ -3974,7 +3974,7 @@ class PPTErr(AbstractModel):
 
     @property
     def Name(self):
-        """元素名称
+        r"""元素名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3986,7 +3986,7 @@ class PPTErr(AbstractModel):
 
     @property
     def Type(self):
-        """0: 不支持的墨迹类型，1: 不支持自动翻页，2: 存在已损坏音视频，3: 存在不可访问资源，4: 只读文件
+        r"""0: 不支持的墨迹类型，1: 不支持自动翻页，2: 存在已损坏音视频，3: 存在不可访问资源，4: 只读文件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3998,7 +3998,7 @@ class PPTErr(AbstractModel):
 
     @property
     def Detail(self):
-        """错误详情
+        r"""错误详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4024,7 +4024,7 @@ class PPTErr(AbstractModel):
 
 
 class PPTErrSlide(AbstractModel):
-    """PPT错误页面列表
+    r"""PPT错误页面列表
 
     """
 
@@ -4042,7 +4042,7 @@ class PPTErrSlide(AbstractModel):
 
     @property
     def Page(self):
-        """异常元素存在的页面，由页面类型+页码组成，页码类型包括：幻灯片、幻灯片母版、幻灯片布局等
+        r"""异常元素存在的页面，由页面类型+页码组成，页码类型包括：幻灯片、幻灯片母版、幻灯片布局等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4054,7 +4054,7 @@ class PPTErrSlide(AbstractModel):
 
     @property
     def Errs(self):
-        """错误元素列表
+        r"""错误元素列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PPTErr
         """
@@ -4084,7 +4084,7 @@ class PPTErrSlide(AbstractModel):
 
 
 class PauseOnlineRecordRequest(AbstractModel):
-    """PauseOnlineRecord请求参数结构体
+    r"""PauseOnlineRecord请求参数结构体
 
     """
 
@@ -4100,7 +4100,7 @@ class PauseOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4111,7 +4111,7 @@ class PauseOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """实时录制任务 Id
+        r"""实时录制任务 Id
         :rtype: str
         """
         return self._TaskId
@@ -4135,7 +4135,7 @@ class PauseOnlineRecordRequest(AbstractModel):
 
 
 class PauseOnlineRecordResponse(AbstractModel):
-    """PauseOnlineRecord返回参数结构体
+    r"""PauseOnlineRecord返回参数结构体
 
     """
 
@@ -4148,7 +4148,7 @@ class PauseOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4163,7 +4163,7 @@ class PauseOnlineRecordResponse(AbstractModel):
 
 
 class RecordControl(AbstractModel):
-    """录制控制参数， 用于指定全局录制控制及具体流录制控制参数，比如设置需要对哪些流进行录制，是否只录制小画面等
+    r"""录制控制参数， 用于指定全局录制控制及具体流录制控制参数，比如设置需要对哪些流进行录制，是否只录制小画面等
 
     """
 
@@ -4203,7 +4203,7 @@ false - 所有流都录制大画面，默认为false。
 
     @property
     def Enabled(self):
-        """设置是否开启录制控制参数，只有设置为true的时候，录制控制参数才生效。
+        r"""设置是否开启录制控制参数，只有设置为true的时候，录制控制参数才生效。
         :rtype: bool
         """
         return self._Enabled
@@ -4214,7 +4214,7 @@ false - 所有流都录制大画面，默认为false。
 
     @property
     def DisableRecord(self):
-        """设置是否禁用录制的全局控制参数。一般与`StreamControls`参数配合使用。
+        r"""设置是否禁用录制的全局控制参数。一般与`StreamControls`参数配合使用。
 
 true - 所有流都不录制。
 false - 所有流都录制。默认为false。
@@ -4230,7 +4230,7 @@ false - 所有流都录制。默认为false。
 
     @property
     def DisableAudio(self):
-        """设置是否禁用所有流的音频录制的全局控制参数。一般与`StreamControls`参数配合使用。
+        r"""设置是否禁用所有流的音频录制的全局控制参数。一般与`StreamControls`参数配合使用。
 
 true - 所有流的录制都不对音频进行录制。
 false - 所有流的录制都需要对音频进行录制。默认为false。
@@ -4246,7 +4246,7 @@ false - 所有流的录制都需要对音频进行录制。默认为false。
 
     @property
     def PullSmallVideo(self):
-        """设置是否所有流都只录制小画面的全局控制参数。一般与`StreamControls`参数配合使用。
+        r"""设置是否所有流都只录制小画面的全局控制参数。一般与`StreamControls`参数配合使用。
 
 true - 所有流都只录制小画面。设置为true时，请确保上行端在推流的时候同时上行了小画面，否则录制视频可能是黑屏。
 false - 所有流都录制大画面，默认为false。
@@ -4262,7 +4262,7 @@ false - 所有流都录制大画面，默认为false。
 
     @property
     def StreamControls(self):
-        """针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
+        r"""针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
         :rtype: list of StreamControl
         """
         return self._StreamControls
@@ -4294,7 +4294,7 @@ false - 所有流都录制大画面，默认为false。
 
 
 class ResumeOnlineRecordRequest(AbstractModel):
-    """ResumeOnlineRecord请求参数结构体
+    r"""ResumeOnlineRecord请求参数结构体
 
     """
 
@@ -4310,7 +4310,7 @@ class ResumeOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4321,7 +4321,7 @@ class ResumeOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """恢复录制的实时录制任务 Id
+        r"""恢复录制的实时录制任务 Id
         :rtype: str
         """
         return self._TaskId
@@ -4345,7 +4345,7 @@ class ResumeOnlineRecordRequest(AbstractModel):
 
 
 class ResumeOnlineRecordResponse(AbstractModel):
-    """ResumeOnlineRecord返回参数结构体
+    r"""ResumeOnlineRecord返回参数结构体
 
     """
 
@@ -4358,7 +4358,7 @@ class ResumeOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4373,7 +4373,7 @@ class ResumeOnlineRecordResponse(AbstractModel):
 
 
 class RunningTaskItem(AbstractModel):
-    """正在运行的任务列表项
+    r"""正在运行的任务列表项
 
     """
 
@@ -4423,7 +4423,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def SdkAppID(self):
-        """应用SdkAppID
+        r"""应用SdkAppID
         :rtype: int
         """
         return self._SdkAppID
@@ -4434,7 +4434,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskID
@@ -4445,7 +4445,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型
+        r"""任务类型
 - TranscodeH5: 动态转码任务，文档转HTML5页面
 - TranscodeJPG: 静态转码任务，文档转图片
 - WhiteboardPush: 白板推流任务
@@ -4460,7 +4460,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -4471,7 +4471,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def CancelTime(self):
-        """任务取消时间
+        r"""任务取消时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4483,7 +4483,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        r"""任务状态
 - QUEUED: 任务正在排队等待执行中
 - PROCESSING: 任务正在执行中 
 - FINISHED: 任务已完成
@@ -4497,7 +4497,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def Progress(self):
-        """任务当前进度
+        r"""任务当前进度
         :rtype: int
         """
         return self._Progress
@@ -4508,7 +4508,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def FileURL(self):
-        """转码任务中转码文件的原始URL
+        r"""转码任务中转码文件的原始URL
 此参数只有任务类型为TranscodeH5、TranscodeJPG类型时才会有有效值。其他任务类型为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4521,7 +4521,7 @@ class RunningTaskItem(AbstractModel):
 
     @property
     def RoomID(self):
-        """房间号
+        r"""房间号
 
 当任务类型为TranscodeH5、TranscodeJPG时，房间号为0。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4555,7 +4555,7 @@ class RunningTaskItem(AbstractModel):
 
 
 class SetOnlineRecordCallbackKeyRequest(AbstractModel):
-    """SetOnlineRecordCallbackKey请求参数结构体
+    r"""SetOnlineRecordCallbackKey请求参数结构体
 
     """
 
@@ -4571,7 +4571,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4582,7 +4582,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置实时录制回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置实时录制回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :rtype: str
         """
         return self._CallbackKey
@@ -4606,7 +4606,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
 
 
 class SetOnlineRecordCallbackKeyResponse(AbstractModel):
-    """SetOnlineRecordCallbackKey返回参数结构体
+    r"""SetOnlineRecordCallbackKey返回参数结构体
 
     """
 
@@ -4619,7 +4619,7 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4634,7 +4634,7 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
 
 
 class SetOnlineRecordCallbackRequest(AbstractModel):
-    """SetOnlineRecordCallback请求参数结构体
+    r"""SetOnlineRecordCallback请求参数结构体
 
     """
 
@@ -4650,7 +4650,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4661,7 +4661,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """实时录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
+        r"""实时录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
         :rtype: str
         """
         return self._Callback
@@ -4685,7 +4685,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
 
 class SetOnlineRecordCallbackResponse(AbstractModel):
-    """SetOnlineRecordCallback返回参数结构体
+    r"""SetOnlineRecordCallback返回参数结构体
 
     """
 
@@ -4698,7 +4698,7 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4713,7 +4713,7 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
 
 
 class SetPPTCheckCallbackKeyRequest(AbstractModel):
-    """SetPPTCheckCallbackKey请求参数结构体
+    r"""SetPPTCheckCallbackKey请求参数结构体
 
     """
 
@@ -4729,7 +4729,7 @@ class SetPPTCheckCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4740,7 +4740,7 @@ class SetPPTCheckCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257	
+        r"""设置回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257	
         :rtype: str
         """
         return self._CallbackKey
@@ -4764,7 +4764,7 @@ class SetPPTCheckCallbackKeyRequest(AbstractModel):
 
 
 class SetPPTCheckCallbackKeyResponse(AbstractModel):
-    """SetPPTCheckCallbackKey返回参数结构体
+    r"""SetPPTCheckCallbackKey返回参数结构体
 
     """
 
@@ -4777,7 +4777,7 @@ class SetPPTCheckCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4792,7 +4792,7 @@ class SetPPTCheckCallbackKeyResponse(AbstractModel):
 
 
 class SetPPTCheckCallbackRequest(AbstractModel):
-    """SetPPTCheckCallback请求参数结构体
+    r"""SetPPTCheckCallback请求参数结构体
 
     """
 
@@ -4808,7 +4808,7 @@ class SetPPTCheckCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId	
+        r"""客户的SdkAppId	
         :rtype: int
         """
         return self._SdkAppId
@@ -4819,7 +4819,7 @@ class SetPPTCheckCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260#c9cbe05f-fe1a-4410-b4dc-40cc301c7b81	
+        r"""进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260#c9cbe05f-fe1a-4410-b4dc-40cc301c7b81	
         :rtype: str
         """
         return self._Callback
@@ -4843,7 +4843,7 @@ class SetPPTCheckCallbackRequest(AbstractModel):
 
 
 class SetPPTCheckCallbackResponse(AbstractModel):
-    """SetPPTCheckCallback返回参数结构体
+    r"""SetPPTCheckCallback返回参数结构体
 
     """
 
@@ -4856,7 +4856,7 @@ class SetPPTCheckCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4871,7 +4871,7 @@ class SetPPTCheckCallbackResponse(AbstractModel):
 
 
 class SetTranscodeCallbackKeyRequest(AbstractModel):
-    """SetTranscodeCallbackKey请求参数结构体
+    r"""SetTranscodeCallbackKey请求参数结构体
 
     """
 
@@ -4887,7 +4887,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4898,7 +4898,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置文档转码回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置文档转码回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :rtype: str
         """
         return self._CallbackKey
@@ -4922,7 +4922,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
 
 
 class SetTranscodeCallbackKeyResponse(AbstractModel):
-    """SetTranscodeCallbackKey返回参数结构体
+    r"""SetTranscodeCallbackKey返回参数结构体
 
     """
 
@@ -4935,7 +4935,7 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4950,7 +4950,7 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
 
 
 class SetTranscodeCallbackRequest(AbstractModel):
-    """SetTranscodeCallback请求参数结构体
+    r"""SetTranscodeCallback请求参数结构体
 
     """
 
@@ -4967,7 +4967,7 @@ class SetTranscodeCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4978,7 +4978,7 @@ class SetTranscodeCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """文档转码进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
+        r"""文档转码进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
         :rtype: str
         """
@@ -5003,7 +5003,7 @@ class SetTranscodeCallbackRequest(AbstractModel):
 
 
 class SetTranscodeCallbackResponse(AbstractModel):
-    """SetTranscodeCallback返回参数结构体
+    r"""SetTranscodeCallback返回参数结构体
 
     """
 
@@ -5016,7 +5016,7 @@ class SetTranscodeCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5031,7 +5031,7 @@ class SetTranscodeCallbackResponse(AbstractModel):
 
 
 class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
-    """SetVideoGenerationTaskCallbackKey请求参数结构体
+    r"""SetVideoGenerationTaskCallbackKey请求参数结构体
 
     """
 
@@ -5047,7 +5047,7 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5058,7 +5058,7 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置视频生成回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+        r"""设置视频生成回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
         :rtype: str
         """
         return self._CallbackKey
@@ -5082,7 +5082,7 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
 
 
 class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
-    """SetVideoGenerationTaskCallbackKey返回参数结构体
+    r"""SetVideoGenerationTaskCallbackKey返回参数结构体
 
     """
 
@@ -5095,7 +5095,7 @@ class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5110,7 +5110,7 @@ class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
 
 
 class SetVideoGenerationTaskCallbackRequest(AbstractModel):
-    """SetVideoGenerationTaskCallback请求参数结构体
+    r"""SetVideoGenerationTaskCallback请求参数结构体
 
     """
 
@@ -5126,7 +5126,7 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5137,7 +5137,7 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
+        r"""课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
         :rtype: str
         """
         return self._Callback
@@ -5161,7 +5161,7 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
 
 class SetVideoGenerationTaskCallbackResponse(AbstractModel):
-    """SetVideoGenerationTaskCallback返回参数结构体
+    r"""SetVideoGenerationTaskCallback返回参数结构体
 
     """
 
@@ -5174,7 +5174,7 @@ class SetVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5189,7 +5189,7 @@ class SetVideoGenerationTaskCallbackResponse(AbstractModel):
 
 
 class SetWarningCallbackRequest(AbstractModel):
-    """SetWarningCallback请求参数结构体
+    r"""SetWarningCallback请求参数结构体
 
     """
 
@@ -5209,7 +5209,7 @@ class SetWarningCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5220,7 +5220,7 @@ class SetWarningCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
+        r"""告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/90112
         :rtype: str
         """
@@ -5232,7 +5232,7 @@ class SetWarningCallbackRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :rtype: str
         """
         return self._CallbackKey
@@ -5257,7 +5257,7 @@ class SetWarningCallbackRequest(AbstractModel):
 
 
 class SetWarningCallbackResponse(AbstractModel):
-    """SetWarningCallback返回参数结构体
+    r"""SetWarningCallback返回参数结构体
 
     """
 
@@ -5270,7 +5270,7 @@ class SetWarningCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5285,7 +5285,7 @@ class SetWarningCallbackResponse(AbstractModel):
 
 
 class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
-    """SetWhiteboardPushCallbackKey请求参数结构体
+    r"""SetWhiteboardPushCallbackKey请求参数结构体
 
     """
 
@@ -5301,7 +5301,7 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用的SdkAppId
+        r"""应用的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5312,7 +5312,7 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """设置白板推流回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置白板推流回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :rtype: str
         """
         return self._CallbackKey
@@ -5336,7 +5336,7 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
 
 
 class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
-    """SetWhiteboardPushCallbackKey返回参数结构体
+    r"""SetWhiteboardPushCallbackKey返回参数结构体
 
     """
 
@@ -5349,7 +5349,7 @@ class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5364,7 +5364,7 @@ class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
 
 
 class SetWhiteboardPushCallbackRequest(AbstractModel):
-    """SetWhiteboardPushCallback请求参数结构体
+    r"""SetWhiteboardPushCallback请求参数结构体
 
     """
 
@@ -5380,7 +5380,7 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5391,7 +5391,7 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """白板推流任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""白板推流任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :rtype: str
         """
         return self._Callback
@@ -5415,7 +5415,7 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
 
 
 class SetWhiteboardPushCallbackResponse(AbstractModel):
-    """SetWhiteboardPushCallback返回参数结构体
+    r"""SetWhiteboardPushCallback返回参数结构体
 
     """
 
@@ -5428,7 +5428,7 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5443,7 +5443,7 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
 
 
 class SnapshotCOS(AbstractModel):
-    """板书文件存储cos参数
+    r"""板书文件存储cos参数
 
     """
 
@@ -5468,7 +5468,7 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Uin(self):
-        """cos所在腾讯云账号uin
+        r"""cos所在腾讯云账号uin
         :rtype: int
         """
         return self._Uin
@@ -5479,7 +5479,7 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Region(self):
-        """cos所在地区
+        r"""cos所在地区
         :rtype: str
         """
         return self._Region
@@ -5490,7 +5490,7 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Bucket(self):
-        """cos存储桶名称
+        r"""cos存储桶名称
         :rtype: str
         """
         return self._Bucket
@@ -5501,7 +5501,7 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def TargetDir(self):
-        """板书文件存储根目录
+        r"""板书文件存储根目录
         :rtype: str
         """
         return self._TargetDir
@@ -5512,7 +5512,7 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Domain(self):
-        """CDN加速域名
+        r"""CDN加速域名
         :rtype: str
         """
         return self._Domain
@@ -5539,7 +5539,7 @@ class SnapshotCOS(AbstractModel):
 
 
 class SnapshotResult(AbstractModel):
-    """白板板书结果
+    r"""白板板书结果
 
     """
 
@@ -5565,7 +5565,7 @@ class SnapshotResult(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """任务执行错误码
+        r"""任务执行错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5577,7 +5577,7 @@ class SnapshotResult(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """任务执行错误信息
+        r"""任务执行错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5589,7 +5589,7 @@ class SnapshotResult(AbstractModel):
 
     @property
     def Total(self):
-        """快照生成图片总数
+        r"""快照生成图片总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5601,7 +5601,7 @@ class SnapshotResult(AbstractModel):
 
     @property
     def Snapshots(self):
-        """快照图片链接列表
+        r"""快照图片链接列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5628,7 +5628,7 @@ class SnapshotResult(AbstractModel):
 
 
 class SnapshotWhiteboard(AbstractModel):
-    """生成白板板书时的白板参数，例如白板宽高等
+    r"""生成白板板书时的白板参数，例如白板宽高等
 
     """
 
@@ -5647,7 +5647,7 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def Width(self):
-        """白板宽度大小，默认为1280，有效取值范围[0，2560]
+        r"""白板宽度大小，默认为1280，有效取值范围[0，2560]
         :rtype: int
         """
         return self._Width
@@ -5658,7 +5658,7 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def Height(self):
-        """白板高度大小，默认为720，有效取值范围[0，2560]
+        r"""白板高度大小，默认为720，有效取值范围[0，2560]
         :rtype: int
         """
         return self._Height
@@ -5669,7 +5669,7 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def InitParams(self):
-        """白板初始化参数的JSON转义字符串，透传到白板 SDK
+        r"""白板初始化参数的JSON转义字符串，透传到白板 SDK
         :rtype: str
         """
         return self._InitParams
@@ -5694,7 +5694,7 @@ class SnapshotWhiteboard(AbstractModel):
 
 
 class StartOnlineRecordRequest(AbstractModel):
-    """StartOnlineRecord请求参数结构体
+    r"""StartOnlineRecord请求参数结构体
 
     """
 
@@ -5779,7 +5779,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -5790,7 +5790,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def RoomId(self):
-        """需要录制的白板房间号，取值范围: (1, 4294967295)。
+        r"""需要录制的白板房间号，取值范围: (1, 4294967295)。
 
 1. 在没有指定`GroupId`的情况下，实时录制默认以`RoomId`的字符串表达形式作为同步白板信令的IM群组ID（比如`RoomId`为12358，则IM群组ID为"12358"），并加群进行信令同步，请在开始录制前确保相应IM群组已创建完成，否则会导致录制失败。
 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为TRTC房间号进房拉流进行录制。
@@ -5804,7 +5804,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def RecordUserId(self):
-        """用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
+        r"""用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
         :rtype: str
         """
@@ -5816,7 +5816,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def RecordUserSig(self):
-        """与`RecordUserId`对应的IM签名
+        r"""与`RecordUserId`对应的IM签名
         :rtype: str
         """
         return self._RecordUserSig
@@ -5827,7 +5827,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def GroupId(self):
-        """白板进行信令同步的 IM 群组 ID。
+        r"""白板进行信令同步的 IM 群组 ID。
 在没有指定`GroupId`的情况下，实时录制服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
 在指定了`GroupId`的情况下，实时录制将优先使用`GroupId`作为同步白板信令的群组ID。请在开始录制前确保相应的IM群组已创建完成，否则会导致录制失败。
         :rtype: str
@@ -5840,7 +5840,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def Concat(self):
-        """录制视频拼接参数
+        r"""录制视频拼接参数
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Concat`
         """
         return self._Concat
@@ -5851,7 +5851,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def Whiteboard(self):
-        """录制白板参数，例如白板宽高等
+        r"""录制白板参数，例如白板宽高等
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
         """
         return self._Whiteboard
@@ -5862,7 +5862,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def MixStream(self):
-        """录制混流参数
+        r"""录制混流参数
 特别说明：
 1. 混流功能需要根据额外开通， 请联系腾讯云互动白板客服人员
 2. 使用混流功能，必须提供 Extras 参数，且 Extras 参数中必须包含 "MIX_STREAM"
@@ -5876,7 +5876,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def Extras(self):
-        """使用到的高级功能列表
+        r"""使用到的高级功能列表
 可以选值列表：
 MIX_STREAM - 混流功能
         :rtype: list of str
@@ -5889,7 +5889,7 @@ MIX_STREAM - 混流功能
 
     @property
     def AudioFileNeeded(self):
-        """是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
+        r"""是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
         :rtype: bool
         """
         return self._AudioFileNeeded
@@ -5900,7 +5900,7 @@ MIX_STREAM - 混流功能
 
     @property
     def RecordControl(self):
-        """录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
+        r"""录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
         :rtype: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
         """
         return self._RecordControl
@@ -5911,7 +5911,7 @@ MIX_STREAM - 混流功能
 
     @property
     def RecordMode(self):
-        """录制模式
+        r"""录制模式
 
 REALTIME_MODE - 实时录制模式（默认）
 VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通）
@@ -5925,7 +5925,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def ChatGroupId(self):
-        """聊天群组ID，此字段仅适用于`视频生成模式`
+        r"""聊天群组ID，此字段仅适用于`视频生成模式`
 
 在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
         :rtype: str
@@ -5938,7 +5938,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def AutoStopTimeout(self):
-        """自动停止录制超时时间，单位秒，取值范围[300, 86400], 默认值为300秒。
+        r"""自动停止录制超时时间，单位秒，取值范围[300, 86400], 默认值为300秒。
 
 当超过设定时间房间内没有音视频上行且没有白板操作的时候，录制服务会自动停止当前录制任务。
         :rtype: int
@@ -5951,7 +5951,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def ExtraData(self):
-        """内部参数，可忽略
+        r"""内部参数，可忽略
         :rtype: str
         """
         return self._ExtraData
@@ -5962,7 +5962,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def TRTCRoomId(self):
-        """TRTC数字类型房间号，取值范围: (1, 4294967295)。
+        r"""TRTC数字类型房间号，取值范围: (1, 4294967295)。
 
 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为实时录制拉TRTC流的TRTC房间号。
 
@@ -5977,7 +5977,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
     @property
     def TRTCRoomIdStr(self):
-        """TRTC字符串类型房间号。
+        r"""TRTC字符串类型房间号。
 
 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为实时录制拉TRTC流的TRTC房间号。
         :rtype: str
@@ -6026,7 +6026,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
 
 class StartOnlineRecordResponse(AbstractModel):
-    """StartOnlineRecord返回参数结构体
+    r"""StartOnlineRecord返回参数结构体
 
     """
 
@@ -6042,7 +6042,7 @@ class StartOnlineRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """录制任务Id
+        r"""录制任务Id
         :rtype: str
         """
         return self._TaskId
@@ -6053,7 +6053,7 @@ class StartOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6069,7 +6069,7 @@ class StartOnlineRecordResponse(AbstractModel):
 
 
 class StartWhiteboardPushRequest(AbstractModel):
-    """StartWhiteboardPush请求参数结构体
+    r"""StartWhiteboardPush请求参数结构体
 
     """
 
@@ -6202,7 +6202,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -6213,7 +6213,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def RoomId(self):
-        """需要推流的白板房间号，取值范围: (1, 4294967295)。
+        r"""需要推流的白板房间号，取值范围: (1, 4294967295)。
 
 1. 在没有指定`GroupId`的情况下，白板推流默认以`RoomId`的字符串表达形式作为IM群组ID（比如RoomId为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
 2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为白板流进行推流的TRTC房间号。
@@ -6227,7 +6227,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def PushUserId(self):
-        """用于白板推流服务进入白板房间的用户ID。在没有额外指定`IMAuthParam`和`TRTCAuthParam`的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
+        r"""用于白板推流服务进入白板房间的用户ID。在没有额外指定`IMAuthParam`和`TRTCAuthParam`的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
 用户ID最大长度不能大于60个字节，该用户ID必须是一个单独的未同时在其他地方使用的用户ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该用户ID和其他地方同时在使用的用户ID重复，会导致白板推流服务与其他使用场景账号互踢，影响正常推流。
         :rtype: str
         """
@@ -6239,7 +6239,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def PushUserSig(self):
-        """与`PushUserId`对应的IM签名(usersig)。
+        r"""与`PushUserId`对应的IM签名(usersig)。
         :rtype: str
         """
         return self._PushUserSig
@@ -6250,7 +6250,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def Whiteboard(self):
-        """白板参数，例如白板宽高、背景颜色等
+        r"""白板参数，例如白板宽高、背景颜色等
         :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
         """
         return self._Whiteboard
@@ -6261,7 +6261,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def AutoStopTimeout(self):
-        """自动停止推流超时时间，单位秒，取值范围[300, 259200], 默认值为1800秒。
+        r"""自动停止推流超时时间，单位秒，取值范围[300, 259200], 默认值为1800秒。
 
 当白板超过设定时间没有操作的时候，白板推流服务会自动停止白板推流。
         :rtype: int
@@ -6274,7 +6274,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def AutoManageBackup(self):
-        """对主白板推流任务进行操作时，是否同时同步操作备份任务
+        r"""对主白板推流任务进行操作时，是否同时同步操作备份任务
         :rtype: bool
         """
         return self._AutoManageBackup
@@ -6285,7 +6285,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def Backup(self):
-        """备份白板推流相关参数。
+        r"""备份白板推流相关参数。
 
 指定了备份参数的情况下，白板推流服务会在房间内新增一路白板画面视频流，即同一个房间内会有两路白板画面推流。
         :rtype: :class:`tencentcloud.tiw.v20190919.models.WhiteboardPushBackupParam`
@@ -6298,7 +6298,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def PrivateMapKey(self):
-        """TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
+        r"""TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
         :rtype: str
         """
         return self._PrivateMapKey
@@ -6309,7 +6309,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def VideoFPS(self):
-        """白板推流视频帧率，取值范围[0, 30]，默认20fps
+        r"""白板推流视频帧率，取值范围[0, 30]，默认20fps
         :rtype: int
         """
         return self._VideoFPS
@@ -6320,7 +6320,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def VideoBitrate(self):
-        """白板推流码率， 取值范围[0, 2000]，默认1200kbps。
+        r"""白板推流码率， 取值范围[0, 2000]，默认1200kbps。
 
 这里的码率设置是一个参考值，实际推流的时候使用的是动态码率，所以真实码率不会固定为指定值，会在指定值附近波动。
         :rtype: int
@@ -6333,7 +6333,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def AutoRecord(self):
-        """在实时音视频云端录制模式选择为 `指定用户录制` 模式的时候是否自动录制白板推流。
+        r"""在实时音视频云端录制模式选择为 `指定用户录制` 模式的时候是否自动录制白板推流。
 
 默认在实时音视频的云端录制模式选择为 `指定用户录制` 模式的情况下，不会自动进行白板推流录制，如果希望进行白板推流录制，请将此参数设置为true。
 
@@ -6348,7 +6348,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def UserDefinedRecordId(self):
-        """指定白板推流这路流在音视频云端录制中的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
+        r"""指定白板推流这路流在音视频云端录制中的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
 
 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 
@@ -6370,7 +6370,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def AutoPublish(self):
-        """在实时音视频旁路推流模式选择为`指定用户旁路`模式的时候，是否自动旁路白板推流。
+        r"""在实时音视频旁路推流模式选择为`指定用户旁路`模式的时候，是否自动旁路白板推流。
 
 默认在实时音视频的旁路推流模式选择为 `指定用户旁路` 模式的情况下，不会自动旁路白板推流，如果希望旁路白板推流，请将此参数设置为true。
 
@@ -6385,7 +6385,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def UserDefinedStreamId(self):
-        """指定实时音视频在旁路白板推流这路流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
+        r"""指定实时音视频在旁路白板推流这路流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
 
 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 
@@ -6407,7 +6407,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def ExtraData(self):
-        """内部参数，不需要关注此参数
+        r"""内部参数，不需要关注此参数
         :rtype: str
         """
         return self._ExtraData
@@ -6418,7 +6418,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def TRTCRoomId(self):
-        """TRTC数字类型房间号，取值范围: (1, 4294967295)。
+        r"""TRTC数字类型房间号，取值范围: (1, 4294967295)。
 
 在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为白板流进行推流的TRTC房间号。
 
@@ -6433,7 +6433,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def TRTCRoomIdStr(self):
-        """TRTC字符串类型房间号。
+        r"""TRTC字符串类型房间号。
 
 在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为白板流进行推流的TRTC房间号。
         :rtype: str
@@ -6446,7 +6446,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def IMAuthParam(self):
-        """IM鉴权信息参数，用于IM鉴权。
+        r"""IM鉴权信息参数，用于IM鉴权。
 当白板信令所使用的IM应用与白板应用的SdkAppId不一致时，可以通过此参数提供对应IM应用鉴权信息。
 
 如果提供了此参数，白板推流服务会优先使用此参数指定的SdkAppId作为白板信令的传输通道，否则使用公共参数中的SdkAppId作为白板信令的传输通道。
@@ -6460,7 +6460,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def TRTCAuthParam(self):
-        """TRTC鉴权信息参数，用于TRTC进房推流鉴权。
+        r"""TRTC鉴权信息参数，用于TRTC进房推流鉴权。
 当需要推流到的TRTC房间所对应的TRTC应用与白板应用的SdkAppId不一致时，可以通过此参数提供对应的TRTC应用鉴权信息。
 
 如果提供了此参数，白板推流服务会优先使用此参数指定的SdkAppId作为白板推流的目标TRTC应用，否则使用公共参数中的SdkAppId作为白板推流的目标TRTC应用。
@@ -6474,7 +6474,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
     @property
     def TRTCEnterRoomMode(self):
-        """指定白板推流时推流用户进TRTC房间的进房模式。默认为 TRTCAppSceneVideoCall
+        r"""指定白板推流时推流用户进TRTC房间的进房模式。默认为 TRTCAppSceneVideoCall
 
 TRTCAppSceneVideoCall - 视频通话场景，即绝大多数时间都是两人或两人以上视频通话的场景，内部编码器和网络协议优化侧重流畅性，降低通话延迟和卡顿率。
 TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶尔有多人视频互动的场景，内部编码器和网络协议优化侧重性能和兼容性，性能和清晰度表现更佳。
@@ -6488,7 +6488,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
     @property
     def GroupId(self):
-        """白板进行信令同步的 IM 群组 ID。
+        r"""白板进行信令同步的 IM 群组 ID。
 在没有指定`GroupId`的情况下，白板推流服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
 在指定了`GroupId`的情况下，白板推流将优先`GroupId`作为同步白板信令的群组ID。请在开始推流前确保指定的IM群组已创建完成，否则会导致推流失败。
         :rtype: str
@@ -6542,7 +6542,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
 
 
 class StartWhiteboardPushResponse(AbstractModel):
-    """StartWhiteboardPush返回参数结构体
+    r"""StartWhiteboardPush返回参数结构体
 
     """
 
@@ -6562,7 +6562,7 @@ class StartWhiteboardPushResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """推流任务Id
+        r"""推流任务Id
         :rtype: str
         """
         return self._TaskId
@@ -6573,7 +6573,7 @@ class StartWhiteboardPushResponse(AbstractModel):
 
     @property
     def Backup(self):
-        """备份任务结果参数
+        r"""备份任务结果参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6585,7 +6585,7 @@ class StartWhiteboardPushResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6602,7 +6602,7 @@ class StartWhiteboardPushResponse(AbstractModel):
 
 
 class StopOnlineRecordRequest(AbstractModel):
-    """StopOnlineRecord请求参数结构体
+    r"""StopOnlineRecord请求参数结构体
 
     """
 
@@ -6618,7 +6618,7 @@ class StopOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -6629,7 +6629,7 @@ class StopOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """需要停止录制的任务 Id
+        r"""需要停止录制的任务 Id
         :rtype: str
         """
         return self._TaskId
@@ -6653,7 +6653,7 @@ class StopOnlineRecordRequest(AbstractModel):
 
 
 class StopOnlineRecordResponse(AbstractModel):
-    """StopOnlineRecord返回参数结构体
+    r"""StopOnlineRecord返回参数结构体
 
     """
 
@@ -6666,7 +6666,7 @@ class StopOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6681,7 +6681,7 @@ class StopOnlineRecordResponse(AbstractModel):
 
 
 class StopWhiteboardPushRequest(AbstractModel):
-    """StopWhiteboardPush请求参数结构体
+    r"""StopWhiteboardPush请求参数结构体
 
     """
 
@@ -6697,7 +6697,7 @@ class StopWhiteboardPushRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """客户的SdkAppId
+        r"""客户的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -6708,7 +6708,7 @@ class StopWhiteboardPushRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """需要停止的白板推流任务 Id
+        r"""需要停止的白板推流任务 Id
         :rtype: str
         """
         return self._TaskId
@@ -6732,7 +6732,7 @@ class StopWhiteboardPushRequest(AbstractModel):
 
 
 class StopWhiteboardPushResponse(AbstractModel):
-    """StopWhiteboardPush返回参数结构体
+    r"""StopWhiteboardPush返回参数结构体
 
     """
 
@@ -6749,7 +6749,7 @@ class StopWhiteboardPushResponse(AbstractModel):
 
     @property
     def Backup(self):
-        """备份任务相关参数
+        r"""备份任务相关参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6761,7 +6761,7 @@ class StopWhiteboardPushResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6777,7 +6777,7 @@ class StopWhiteboardPushResponse(AbstractModel):
 
 
 class StreamControl(AbstractModel):
-    """指定流录制的控制参数，比如是否禁用音频、视频是录制大画面还是录制小画面等
+    r"""指定流录制的控制参数，比如是否禁用音频、视频是录制大画面还是录制小画面等
 
     """
 
@@ -6820,7 +6820,7 @@ false - 录制大画面。
 
     @property
     def StreamId(self):
-        """视频流ID
+        r"""视频流ID
 视频流ID的取值含义如下：
 1. tic_record_user - 表示白板视频流
 2. tic_substream - 表示辅路视频流
@@ -6837,7 +6837,7 @@ false - 录制大画面。
 
     @property
     def DisableRecord(self):
-        """设置是否对此路流开启录制。
+        r"""设置是否对此路流开启录制。
 
 true - 表示不对这路流进行录制，录制结果将不包含这路流的视频。
 false - 表示需要对这路流进行录制，录制结果会包含这路流的视频。
@@ -6853,7 +6853,7 @@ false - 表示需要对这路流进行录制，录制结果会包含这路流的
 
     @property
     def DisableAudio(self):
-        """设置是否禁用这路流的音频录制。
+        r"""设置是否禁用这路流的音频录制。
 
 true - 表示不对这路流的音频进行录制，录制结果里这路流的视频将会没有声音。
 false - 录制视频会保留音频，如果设置为true，则录制视频会丢弃这路流的音频。
@@ -6869,7 +6869,7 @@ false - 录制视频会保留音频，如果设置为true，则录制视频会�
 
     @property
     def PullSmallVideo(self):
-        """设置当前流录制视频是否只录制小画面。
+        r"""设置当前流录制视频是否只录制小画面。
 
 true - 录制小画面。设置为true时，请确保上行端同时上行了小画面，否则录制视频可能是黑屏。
 false - 录制大画面。
@@ -6900,7 +6900,7 @@ false - 录制大画面。
 
 
 class StreamLayout(AbstractModel):
-    """流布局参数
+    r"""流布局参数
 
     """
 
@@ -6930,7 +6930,7 @@ class StreamLayout(AbstractModel):
 
     @property
     def LayoutParams(self):
-        """流布局配置参数
+        r"""流布局配置参数
         :rtype: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
         """
         return self._LayoutParams
@@ -6941,7 +6941,7 @@ class StreamLayout(AbstractModel):
 
     @property
     def InputStreamId(self):
-        """视频流ID
+        r"""视频流ID
 流ID的取值含义如下：
 1. tic_record_user - 表示当前画面用于显示白板视频流
 2. tic_substream - 表示当前画面用于显示辅路视频流
@@ -6957,7 +6957,7 @@ class StreamLayout(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
+        r"""背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
         :rtype: str
         """
         return self._BackgroundColor
@@ -6968,7 +6968,7 @@ class StreamLayout(AbstractModel):
 
     @property
     def FillMode(self):
-        """视频画面填充模式。
+        r"""视频画面填充模式。
 
 0 - 自适应模式，对视频画面进行等比例缩放，在指定区域内显示完整的画面。此模式可能存在黑边。
 1 - 全屏模式，对视频画面进行等比例缩放，让画面填充满整个指定区域。此模式不会存在黑边，但会将超出区域的那一部分画面裁剪掉。
@@ -6999,7 +6999,7 @@ class StreamLayout(AbstractModel):
 
 
 class VideoInfo(AbstractModel):
-    """视频信息
+    r"""视频信息
 
     """
 
@@ -7044,7 +7044,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoPlayTime(self):
-        """视频开始播放的时间（单位：毫秒）
+        r"""视频开始播放的时间（单位：毫秒）
         :rtype: int
         """
         return self._VideoPlayTime
@@ -7055,7 +7055,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoSize(self):
-        """视频大小（字节）
+        r"""视频大小（字节）
         :rtype: int
         """
         return self._VideoSize
@@ -7066,7 +7066,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoFormat(self):
-        """视频格式
+        r"""视频格式
         :rtype: str
         """
         return self._VideoFormat
@@ -7077,7 +7077,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoDuration(self):
-        """视频播放时长（单位：毫秒）
+        r"""视频播放时长（单位：毫秒）
         :rtype: int
         """
         return self._VideoDuration
@@ -7088,7 +7088,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """视频文件URL
+        r"""视频文件URL
         :rtype: str
         """
         return self._VideoUrl
@@ -7099,7 +7099,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoId(self):
-        """视频文件Id
+        r"""视频文件Id
         :rtype: str
         """
         return self._VideoId
@@ -7110,7 +7110,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoType(self):
-        """视频流类型 
+        r"""视频流类型 
 - 0：摄像头视频 
 - 1：屏幕分享视频
 - 2：白板视频 
@@ -7126,7 +7126,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型、辅路视频tic_substream_用户Id）
+        r"""摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型、辅路视频tic_substream_用户Id）
         :rtype: str
         """
         return self._UserId
@@ -7137,7 +7137,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def Width(self):
-        """视频分辨率的宽
+        r"""视频分辨率的宽
         :rtype: int
         """
         return self._Width
@@ -7148,7 +7148,7 @@ class VideoInfo(AbstractModel):
 
     @property
     def Height(self):
-        """视频分辨率的高
+        r"""视频分辨率的高
         :rtype: int
         """
         return self._Height
@@ -7180,7 +7180,7 @@ class VideoInfo(AbstractModel):
 
 
 class Whiteboard(AbstractModel):
-    """实时录制白板参数，例如白板宽高等
+    r"""实时录制白板参数，例如白板宽高等
 
     """
 
@@ -7199,7 +7199,7 @@ class Whiteboard(AbstractModel):
 
     @property
     def Width(self):
-        """实时录制结果里白板视频宽，取值必须大于等于2，默认为1280
+        r"""实时录制结果里白板视频宽，取值必须大于等于2，默认为1280
         :rtype: int
         """
         return self._Width
@@ -7210,7 +7210,7 @@ class Whiteboard(AbstractModel):
 
     @property
     def Height(self):
-        """实时录制结果里白板视频高，取值必须大于等于2，默认为960
+        r"""实时录制结果里白板视频高，取值必须大于等于2，默认为960
         :rtype: int
         """
         return self._Height
@@ -7221,7 +7221,7 @@ class Whiteboard(AbstractModel):
 
     @property
     def InitParam(self):
-        """白板初始化参数，透传到白板 SDK
+        r"""白板初始化参数，透传到白板 SDK
         :rtype: str
         """
         return self._InitParam
@@ -7246,7 +7246,7 @@ class Whiteboard(AbstractModel):
 
 
 class WhiteboardPushBackupParam(AbstractModel):
-    """白板推流备份相关请求参数
+    r"""白板推流备份相关请求参数
 
     """
 
@@ -7263,7 +7263,7 @@ class WhiteboardPushBackupParam(AbstractModel):
 
     @property
     def PushUserId(self):
-        """用于白板推流服务进房的用户ID，
+        r"""用于白板推流服务进房的用户ID，
 该ID必须是一个单独的未在SDK中使用的ID，白板推流服务将使用这个用户ID进入房间进行白板推流，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常推流。
         :rtype: str
         """
@@ -7275,7 +7275,7 @@ class WhiteboardPushBackupParam(AbstractModel):
 
     @property
     def PushUserSig(self):
-        """与PushUserId对应的签名
+        r"""与PushUserId对应的签名
         :rtype: str
         """
         return self._PushUserSig

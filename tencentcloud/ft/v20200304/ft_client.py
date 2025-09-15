@@ -27,7 +27,7 @@ class FtClient(AbstractClient):
 
 
     def CancelFaceMorphJob(self, request):
-        """撤销人像渐变任务请求
+        r"""撤销人像渐变任务请求
 
         :param request: Request instance for CancelFaceMorphJob.
         :type request: :class:`tencentcloud.ft.v20200304.models.CancelFaceMorphJobRequest`
@@ -50,7 +50,7 @@ class FtClient(AbstractClient):
 
 
     def ChangeAgePic(self, request):
-        """用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
+        r"""用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
 
         :param request: Request instance for ChangeAgePic.
         :type request: :class:`tencentcloud.ft.v20200304.models.ChangeAgePicRequest`
@@ -73,7 +73,7 @@ class FtClient(AbstractClient):
 
 
     def FaceCartoonPic(self, request):
-        """输入一张人脸照片，生成个性化的二次元动漫形象，可用于打造个性头像、趣味活动、特效类应用等场景，提升社交娱乐的体验。
+        r"""输入一张人脸照片，生成个性化的二次元动漫形象，可用于打造个性头像、趣味活动、特效类应用等场景，提升社交娱乐的体验。
 
         :param request: Request instance for FaceCartoonPic.
         :type request: :class:`tencentcloud.ft.v20200304.models.FaceCartoonPicRequest`
@@ -96,7 +96,7 @@ class FtClient(AbstractClient):
 
 
     def MorphFace(self, request):
-        """输入2-5张人脸照片，生成一段以人脸为焦点的渐变视频或GIF图，支持自定义图片播放速度、视频每秒传输帧数，可用于短视频、表情包、创意H5等应用场景，丰富静态图片的玩法。
+        r"""输入2-5张人脸照片，生成一段以人脸为焦点的渐变视频或GIF图，支持自定义图片播放速度、视频每秒传输帧数，可用于短视频、表情包、创意H5等应用场景，丰富静态图片的玩法。
 
         :param request: Request instance for MorphFace.
         :type request: :class:`tencentcloud.ft.v20200304.models.MorphFaceRequest`
@@ -119,7 +119,7 @@ class FtClient(AbstractClient):
 
 
     def QueryFaceMorphJob(self, request):
-        """查询人像渐变处理进度
+        r"""查询人像渐变处理进度
 
         :param request: Request instance for QueryFaceMorphJob.
         :type request: :class:`tencentcloud.ft.v20200304.models.QueryFaceMorphJobRequest`
@@ -142,7 +142,7 @@ class FtClient(AbstractClient):
 
 
     def SwapGenderPic(self, request):
-        """用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。
+        r"""用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。
 
         :param request: Request instance for SwapGenderPic.
         :type request: :class:`tencentcloud.ft.v20200304.models.SwapGenderPicRequest`

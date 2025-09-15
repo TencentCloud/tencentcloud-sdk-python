@@ -27,7 +27,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyDetail(self, request):
-        """容器网络创建网络策略添加并发布任务
+        r"""容器网络创建网络策略添加并发布任务
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailRequest`
@@ -50,7 +50,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        """容器网络创建Yaml网络策略并发布任务
+        r"""容器网络创建Yaml网络策略并发布任务
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -73,7 +73,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAssetImageRegistryRegistryDetail(self, request):
-        """新增单个镜像仓库详细信息
+        r"""新增单个镜像仓库详细信息
 
         :param request: Request instance for AddAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAssetImageRegistryRegistryDetailRequest`
@@ -96,7 +96,7 @@ class TcssClient(AbstractClient):
 
 
     def AddComplianceAssetPolicySetToWhitelist(self, request):
-        """新增安全合规忽略(资产+检测项列表)列表，不显示指定的检查项包含的资产内容
+        r"""新增安全合规忽略(资产+检测项列表)列表，不显示指定的检查项包含的资产内容
         参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
 
         :param request: Request instance for AddComplianceAssetPolicySetToWhitelist.
@@ -120,7 +120,7 @@ class TcssClient(AbstractClient):
 
 
     def AddCompliancePolicyAssetSetToWhitelist(self, request):
-        """新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+        r"""新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
         参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
 
         :param request: Request instance for AddCompliancePolicyAssetSetToWhitelist.
@@ -144,7 +144,7 @@ class TcssClient(AbstractClient):
 
 
     def AddCompliancePolicyItemToWhitelist(self, request):
-        """将指定的检测项添加到白名单中，不显示未通过结果。
+        r"""将指定的检测项添加到白名单中，不显示未通过结果。
 
         :param request: Request instance for AddCompliancePolicyItemToWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddCompliancePolicyItemToWhitelistRequest`
@@ -167,7 +167,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditAbnormalProcessRule(self, request):
-        """添加编辑运行时异常进程策略
+        r"""添加编辑运行时异常进程策略
 
         :param request: Request instance for AddEditAbnormalProcessRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditAbnormalProcessRuleRequest`
@@ -190,7 +190,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditAccessControlRule(self, request):
-        """添加编辑运行时访问控制策略
+        r"""添加编辑运行时访问控制策略
 
         :param request: Request instance for AddEditAccessControlRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditAccessControlRuleRequest`
@@ -213,7 +213,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditImageAutoAuthorizedRule(self, request):
-        """新增或编辑本地镜像自动授权规则
+        r"""新增或编辑本地镜像自动授权规则
 
         :param request: Request instance for AddEditImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditImageAutoAuthorizedRuleRequest`
@@ -236,7 +236,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditReverseShellWhiteList(self, request):
-        """添加编辑运行时反弹shell白名单
+        r"""添加编辑运行时反弹shell白名单
 
         :param request: Request instance for AddEditReverseShellWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditReverseShellWhiteListRequest`
@@ -259,7 +259,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditRiskSyscallWhiteList(self, request):
-        """添加编辑运行时高危系统调用白名单
+        r"""添加编辑运行时高危系统调用白名单
 
         :param request: Request instance for AddEditRiskSyscallWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditRiskSyscallWhiteListRequest`
@@ -282,7 +282,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditWarningRules(self, request):
-        """添加编辑告警策略
+        r"""添加编辑告警策略
 
         :param request: Request instance for AddEditWarningRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditWarningRulesRequest`
@@ -305,7 +305,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEscapeWhiteList(self, request):
-        """新增逃逸白名单
+        r"""新增逃逸白名单
 
         :param request: Request instance for AddEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEscapeWhiteListRequest`
@@ -328,7 +328,7 @@ class TcssClient(AbstractClient):
 
 
     def AddIgnoreVul(self, request):
-        """新增漏洞扫描忽略漏洞
+        r"""新增漏洞扫描忽略漏洞
 
         :param request: Request instance for AddIgnoreVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddIgnoreVulRequest`
@@ -351,7 +351,7 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyDetail(self, request):
-        """容器网络创建网络策略添加任务
+        r"""容器网络创建网络策略添加任务
 
         :param request: Request instance for AddNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailRequest`
@@ -374,7 +374,7 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyYamlDetail(self, request):
-        """容器网络创建Yaml网络策略添加任务
+        r"""容器网络创建Yaml网络策略添加任务
 
         :param request: Request instance for AddNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailRequest`
@@ -397,7 +397,7 @@ class TcssClient(AbstractClient):
 
 
     def CheckNetworkFirewallPolicyYaml(self, request):
-        """容器网络创建检查Yaml网络策略任务
+        r"""容器网络创建检查Yaml网络策略任务
 
         :param request: Request instance for CheckNetworkFirewallPolicyYaml.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlRequest`
@@ -420,7 +420,7 @@ class TcssClient(AbstractClient):
 
 
     def CheckRepeatAssetImageRegistry(self, request):
-        """检查单个镜像仓库名是否重复
+        r"""检查单个镜像仓库名是否重复
 
         :param request: Request instance for CheckRepeatAssetImageRegistry.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckRepeatAssetImageRegistryRequest`
@@ -443,7 +443,7 @@ class TcssClient(AbstractClient):
 
 
     def ConfirmNetworkFirewallPolicy(self, request):
-        """容器网络创建网络策略确认任务
+        r"""容器网络创建网络策略确认任务
 
         :param request: Request instance for ConfirmNetworkFirewallPolicy.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyRequest`
@@ -466,7 +466,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAbnormalProcessRulesExportJob(self, request):
-        """创建异常进程规则导出任务
+        r"""创建异常进程规则导出任务
 
         :param request: Request instance for CreateAbnormalProcessRulesExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobRequest`
@@ -489,7 +489,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAccessControlsRuleExportJob(self, request):
-        """创建文件篡改规则导出任务
+        r"""创建文件篡改规则导出任务
 
         :param request: Request instance for CreateAccessControlsRuleExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobRequest`
@@ -512,7 +512,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageRegistryScanTask(self, request):
-        """镜像仓库创建镜像扫描任务
+        r"""镜像仓库创建镜像扫描任务
 
         :param request: Request instance for CreateAssetImageRegistryScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageRegistryScanTaskRequest`
@@ -535,7 +535,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageRegistryScanTaskOneKey(self, request):
-        """镜像仓库创建镜像一键扫描任务
+        r"""镜像仓库创建镜像一键扫描任务
 
         :param request: Request instance for CreateAssetImageRegistryScanTaskOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageRegistryScanTaskOneKeyRequest`
@@ -558,7 +558,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageScanSetting(self, request):
-        """添加容器安全镜像扫描设置
+        r"""添加容器安全镜像扫描设置
 
         :param request: Request instance for CreateAssetImageScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageScanSettingRequest`
@@ -581,7 +581,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageScanTask(self, request):
-        """容器安全创建镜像扫描任务
+        r"""容器安全创建镜像扫描任务
 
         :param request: Request instance for CreateAssetImageScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageScanTaskRequest`
@@ -604,7 +604,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageVirusExportJob(self, request):
-        """创建本地镜像木马列表导出任务
+        r"""创建本地镜像木马列表导出任务
 
         :param request: Request instance for CreateAssetImageVirusExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageVirusExportJobRequest`
@@ -627,7 +627,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateCheckComponent(self, request):
-        """安装检查组件，创建防护容器
+        r"""安装检查组件，创建防护容器
 
         :param request: Request instance for CreateCheckComponent.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateCheckComponentRequest`
@@ -650,7 +650,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateClusterCheckTask(self, request):
-        """创建集群检查任务，用户检查用户的集群相关风险项
+        r"""创建集群检查任务，用户检查用户的集群相关风险项
 
         :param request: Request instance for CreateClusterCheckTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateClusterCheckTaskRequest`
@@ -673,7 +673,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateComplianceTask(self, request):
-        """创建合规检查任务，在资产级别触发重新检测时使用。
+        r"""创建合规检查任务，在资产级别触发重新检测时使用。
 
         :param request: Request instance for CreateComplianceTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateComplianceTaskRequest`
@@ -696,7 +696,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateComponentExportJob(self, request):
-        """查询本地镜像组件列表导出
+        r"""查询本地镜像组件列表导出
 
         :param request: Request instance for CreateComponentExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateComponentExportJobRequest`
@@ -719,7 +719,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateDefenceVulExportJob(self, request):
-        """创建支持防御的漏洞导出任务
+        r"""创建支持防御的漏洞导出任务
 
         :param request: Request instance for CreateDefenceVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateDefenceVulExportJobRequest`
@@ -742,7 +742,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEmergencyVulExportJob(self, request):
-        """创建应急漏洞导出任务
+        r"""创建应急漏洞导出任务
 
         :param request: Request instance for CreateEmergencyVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEmergencyVulExportJobRequest`
@@ -765,7 +765,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEscapeEventsExportJob(self, request):
-        """创建逃逸事件导出异步任务
+        r"""创建逃逸事件导出异步任务
 
         :param request: Request instance for CreateEscapeEventsExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeEventsExportJobRequest`
@@ -788,7 +788,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEscapeWhiteListExportJob(self, request):
-        """创建逃逸白名单导出任务
+        r"""创建逃逸白名单导出任务
 
         :param request: Request instance for CreateEscapeWhiteListExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeWhiteListExportJobRequest`
@@ -811,7 +811,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateExportComplianceStatusListJob(self, request):
-        """创建一个导出安全合规信息的任务
+        r"""创建一个导出安全合规信息的任务
 
         :param request: Request instance for CreateExportComplianceStatusListJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateExportComplianceStatusListJobRequest`
@@ -834,7 +834,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateHostExportJob(self, request):
-        """创建主机列表导出任务
+        r"""创建主机列表导出任务
 
         :param request: Request instance for CreateHostExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateHostExportJobRequest`
@@ -857,7 +857,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateImageExportJob(self, request):
-        """创建镜像导出任务
+        r"""创建镜像导出任务
 
         :param request: Request instance for CreateImageExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateImageExportJobRequest`
@@ -880,7 +880,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalEventExportJob(self, request):
-        """创建k8s api异常事件导出任务
+        r"""创建k8s api异常事件导出任务
 
         :param request: Request instance for CreateK8sApiAbnormalEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalEventExportJobRequest`
@@ -903,7 +903,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalRuleExportJob(self, request):
-        """创建k8sApi异常规则导出任务
+        r"""创建k8sApi异常规则导出任务
 
         :param request: Request instance for CreateK8sApiAbnormalRuleExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleExportJobRequest`
@@ -926,7 +926,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalRuleInfo(self, request):
-        """创建k8sapi异常事件规则
+        r"""创建k8sapi异常事件规则
 
         :param request: Request instance for CreateK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleInfoRequest`
@@ -949,7 +949,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallClusterRefresh(self, request):
-        """容器网络集群下发刷新任务
+        r"""容器网络集群下发刷新任务
 
         :param request: Request instance for CreateNetworkFirewallClusterRefresh.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshRequest`
@@ -972,7 +972,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPolicyDiscover(self, request):
-        """容器网络集群网络策略创建自动发现任务
+        r"""容器网络集群网络策略创建自动发现任务
 
         :param request: Request instance for CreateNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverRequest`
@@ -995,7 +995,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPublish(self, request):
-        """容器网络创建网络策略发布任务
+        r"""容器网络创建网络策略发布任务
 
         :param request: Request instance for CreateNetworkFirewallPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishRequest`
@@ -1018,7 +1018,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallUndoPublish(self, request):
-        """容器网络创建网络策略撤销任务
+        r"""容器网络创建网络策略撤销任务
 
         :param request: Request instance for CreateNetworkFirewallUndoPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishRequest`
@@ -1041,7 +1041,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateOrModifyPostPayCores(self, request):
-        """CreateOrModifyPostPayCores  创建或者编辑弹性计费上限
+        r"""CreateOrModifyPostPayCores  创建或者编辑弹性计费上限
 
         :param request: Request instance for CreateOrModifyPostPayCores.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateOrModifyPostPayCoresRequest`
@@ -1064,7 +1064,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateProcessEventsExportJob(self, request):
-        """创建异常进程事件导出异步任务
+        r"""创建异常进程事件导出异步任务
 
         :param request: Request instance for CreateProcessEventsExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateProcessEventsExportJobRequest`
@@ -1087,7 +1087,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateRefreshTask(self, request):
-        """下发刷新任务，会刷新资产信息
+        r"""下发刷新任务，会刷新资产信息
 
         :param request: Request instance for CreateRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateRefreshTaskRequest`
@@ -1110,7 +1110,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateRiskDnsEventExportJob(self, request):
-        """创建恶意请求事件导出任务
+        r"""创建恶意请求事件导出任务
 
         :param request: Request instance for CreateRiskDnsEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateRiskDnsEventExportJobRequest`
@@ -1133,7 +1133,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateSearchTemplate(self, request):
-        """添加检索模板
+        r"""添加检索模板
 
         :param request: Request instance for CreateSearchTemplate.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSearchTemplateRequest`
@@ -1156,7 +1156,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateSystemVulExportJob(self, request):
-        """创建系统漏洞导出任务
+        r"""创建系统漏洞导出任务
 
         :param request: Request instance for CreateSystemVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSystemVulExportJobRequest`
@@ -1179,7 +1179,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVirusScanAgain(self, request):
-        """运行时文件查杀重新检测
+        r"""运行时文件查杀重新检测
 
         :param request: Request instance for CreateVirusScanAgain.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVirusScanAgainRequest`
@@ -1202,7 +1202,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVirusScanTask(self, request):
-        """运行时文件查杀一键扫描
+        r"""运行时文件查杀一键扫描
 
         :param request: Request instance for CreateVirusScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVirusScanTaskRequest`
@@ -1225,7 +1225,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulContainerExportJob(self, request):
-        """创建受漏洞影响的容器导出任务
+        r"""创建受漏洞影响的容器导出任务
 
         :param request: Request instance for CreateVulContainerExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulContainerExportJobRequest`
@@ -1248,7 +1248,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulDefenceEventExportJob(self, request):
-        """创建漏洞防御导出任务
+        r"""创建漏洞防御导出任务
 
         :param request: Request instance for CreateVulDefenceEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceEventExportJobRequest`
@@ -1271,7 +1271,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulDefenceHostExportJob(self, request):
-        """创建漏洞防御主机导出任务
+        r"""创建漏洞防御主机导出任务
 
         :param request: Request instance for CreateVulDefenceHostExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceHostExportJobRequest`
@@ -1294,7 +1294,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulExportJob(self, request):
-        """查询本地镜像漏洞列表导出
+        r"""查询本地镜像漏洞列表导出
 
         :param request: Request instance for CreateVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulExportJobRequest`
@@ -1317,7 +1317,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulImageExportJob(self, request):
-        """创建受漏洞影响的镜像导出任务
+        r"""创建受漏洞影响的镜像导出任务
 
         :param request: Request instance for CreateVulImageExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulImageExportJobRequest`
@@ -1340,7 +1340,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulScanTask(self, request):
-        """创建漏洞扫描任务
+        r"""创建漏洞扫描任务
 
         :param request: Request instance for CreateVulScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulScanTaskRequest`
@@ -1363,7 +1363,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateWebVulExportJob(self, request):
-        """创建web漏洞导出任务
+        r"""创建web漏洞导出任务
 
         :param request: Request instance for CreateWebVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateWebVulExportJobRequest`
@@ -1386,7 +1386,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteAbnormalProcessRules(self, request):
-        """删除运行异常进程策略
+        r"""删除运行异常进程策略
 
         :param request: Request instance for DeleteAbnormalProcessRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteAbnormalProcessRulesRequest`
@@ -1409,7 +1409,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteAccessControlRules(self, request):
-        """删除运行访问控制策略
+        r"""删除运行访问控制策略
 
         :param request: Request instance for DeleteAccessControlRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteAccessControlRulesRequest`
@@ -1432,7 +1432,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteComplianceAssetPolicySetFromWhitelist(self, request):
-        """移除安全合规忽略(资产+检测项)列表，不显示指定的检查项包含的资产内容
+        r"""移除安全合规忽略(资产+检测项)列表，不显示指定的检查项包含的资产内容
         参考的AddCompliancePolicyAssetSetToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
 
         :param request: Request instance for DeleteComplianceAssetPolicySetFromWhitelist.
@@ -1456,7 +1456,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyAssetSetFromWhitelist(self, request):
-        """新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+        r"""新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
 
         :param request: Request instance for DeleteCompliancePolicyAssetSetFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyAssetSetFromWhitelistRequest`
@@ -1479,7 +1479,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyItemFromWhitelist(self, request):
-        """产品重构优化，这几个接口已经没有调用了
+        r"""产品重构优化，这几个接口已经没有调用了
 
         从白名单中删除将指定的检测项。
 
@@ -1504,7 +1504,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteEscapeWhiteList(self, request):
-        """删除逃逸白名单
+        r"""删除逃逸白名单
 
         :param request: Request instance for DeleteEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteEscapeWhiteListRequest`
@@ -1527,7 +1527,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteIgnoreVul(self, request):
-        """取消漏洞扫描忽略漏洞
+        r"""取消漏洞扫描忽略漏洞
 
         :param request: Request instance for DeleteIgnoreVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteIgnoreVulRequest`
@@ -1550,7 +1550,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteK8sApiAbnormalRule(self, request):
-        """删除k8sapi异常事件规则
+        r"""删除k8sapi异常事件规则
 
         :param request: Request instance for DeleteK8sApiAbnormalRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteK8sApiAbnormalRuleRequest`
@@ -1573,7 +1573,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """卸载Agent客户端
+        r"""卸载Agent客户端
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteMachineRequest`
@@ -1596,7 +1596,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteNetworkFirewallPolicyDetail(self, request):
-        """容器网络创建网络策略删除任务
+        r"""容器网络创建网络策略删除任务
 
         :param request: Request instance for DeleteNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailRequest`
@@ -1619,7 +1619,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteRaspRules(self, request):
-        """删除漏洞防御白名单
+        r"""删除漏洞防御白名单
 
         :param request: Request instance for DeleteRaspRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRaspRulesRequest`
@@ -1642,7 +1642,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteReverseShellEvents(self, request):
-        """删除运行时反弹shell事件
+        r"""删除运行时反弹shell事件
 
         :param request: Request instance for DeleteReverseShellEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellEventsRequest`
@@ -1665,7 +1665,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteReverseShellWhiteLists(self, request):
-        """删除运行时反弹shell白名单
+        r"""删除运行时反弹shell白名单
 
         :param request: Request instance for DeleteReverseShellWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellWhiteListsRequest`
@@ -1688,7 +1688,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteRiskSyscallEvents(self, request):
-        """删除运行时高危系统调用事件
+        r"""删除运行时高危系统调用事件
 
         :param request: Request instance for DeleteRiskSyscallEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallEventsRequest`
@@ -1711,7 +1711,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteRiskSyscallWhiteLists(self, request):
-        """删除运行时高危系统调用白名单
+        r"""删除运行时高危系统调用白名单
 
         :param request: Request instance for DeleteRiskSyscallWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallWhiteListsRequest`
@@ -1734,7 +1734,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteSearchTemplate(self, request):
-        """删除检索模板
+        r"""删除检索模板
 
         :param request: Request instance for DeleteSearchTemplate.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteSearchTemplateRequest`
@@ -1757,7 +1757,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeABTestConfig(self, request):
-        """获取用户当前灰度配置
+        r"""获取用户当前灰度配置
 
         :param request: Request instance for DescribeABTestConfig.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeABTestConfigRequest`
@@ -1780,7 +1780,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessDetail(self, request):
-        """查询运行时异常进程事件详细信息
+        r"""查询运行时异常进程事件详细信息
 
         :param request: Request instance for DescribeAbnormalProcessDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessDetailRequest`
@@ -1803,7 +1803,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEventTendency(self, request):
-        """查询待处理异常进程事件趋势
+        r"""查询待处理异常进程事件趋势
 
         :param request: Request instance for DescribeAbnormalProcessEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventTendencyRequest`
@@ -1826,7 +1826,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEvents(self, request):
-        """查询运行时异常进程事件列表信息
+        r"""查询运行时异常进程事件列表信息
 
         :param request: Request instance for DescribeAbnormalProcessEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsRequest`
@@ -1849,7 +1849,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessLevelSummary(self, request):
-        """统计异常进程各威胁等级待处理事件数
+        r"""统计异常进程各威胁等级待处理事件数
 
         :param request: Request instance for DescribeAbnormalProcessLevelSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessLevelSummaryRequest`
@@ -1872,7 +1872,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRuleDetail(self, request):
-        """查询运行时异常策略详细信息
+        r"""查询运行时异常策略详细信息
 
         :param request: Request instance for DescribeAbnormalProcessRuleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRuleDetailRequest`
@@ -1895,7 +1895,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRules(self, request):
-        """查询运行时异常进程策略列表信息
+        r"""查询运行时异常进程策略列表信息
 
         :param request: Request instance for DescribeAbnormalProcessRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesRequest`
@@ -1918,7 +1918,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlDetail(self, request):
-        """查询运行时访问控制事件的详细信息
+        r"""查询运行时访问控制事件的详细信息
 
         :param request: Request instance for DescribeAccessControlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlDetailRequest`
@@ -1941,7 +1941,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlEvents(self, request):
-        """查询运行时访问控制事件列表
+        r"""查询运行时访问控制事件列表
 
         :param request: Request instance for DescribeAccessControlEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlEventsRequest`
@@ -1964,7 +1964,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlEventsExport(self, request):
-        """查询运行时访问控制事件列表导出
+        r"""查询运行时访问控制事件列表导出
 
         :param request: Request instance for DescribeAccessControlEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlEventsExportRequest`
@@ -1987,7 +1987,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRuleDetail(self, request):
-        """查询运行时访问控制策略详细信息
+        r"""查询运行时访问控制策略详细信息
 
         :param request: Request instance for DescribeAccessControlRuleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRuleDetailRequest`
@@ -2010,7 +2010,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRules(self, request):
-        """查询运行访问控制策略列表信息
+        r"""查询运行访问控制策略列表信息
 
         :param request: Request instance for DescribeAccessControlRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesRequest`
@@ -2033,7 +2033,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedClusterCount(self, request):
-        """获取受影响的集群数量，返回数量
+        r"""获取受影响的集群数量，返回数量
 
         :param request: Request instance for DescribeAffectedClusterCount.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedClusterCountRequest`
@@ -2056,7 +2056,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedNodeList(self, request):
-        """查询节点类型的影响范围，返回节点列表
+        r"""查询节点类型的影响范围，返回节点列表
 
         :param request: Request instance for DescribeAffectedNodeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedNodeListRequest`
@@ -2079,7 +2079,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedWorkloadList(self, request):
-        """查询workload类型的影响范围，返回workload列表
+        r"""查询workload类型的影响范围，返回workload列表
 
         :param request: Request instance for DescribeAffectedWorkloadList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedWorkloadListRequest`
@@ -2102,7 +2102,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAgentDaemonSetCmd(self, request):
-        """查询平行容器安装命令
+        r"""查询平行容器安装命令
 
         :param request: Request instance for DescribeAgentDaemonSetCmd.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentDaemonSetCmdRequest`
@@ -2125,7 +2125,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAgentInstallCommand(self, request):
-        """查询agent安装命令
+        r"""查询agent安装命令
 
         :param request: Request instance for DescribeAgentInstallCommand.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentInstallCommandRequest`
@@ -2148,7 +2148,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetAppServiceList(self, request):
-        """容器安全查询app服务列表
+        r"""容器安全查询app服务列表
 
         :param request: Request instance for DescribeAssetAppServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetAppServiceListRequest`
@@ -2171,7 +2171,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetClusterList(self, request):
-        """查询集群列表
+        r"""查询集群列表
 
         :param request: Request instance for DescribeAssetClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetClusterListRequest`
@@ -2194,7 +2194,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetComponentList(self, request):
-        """容器安全搜索查询容器组件列表
+        r"""容器安全搜索查询容器组件列表
 
         :param request: Request instance for DescribeAssetComponentList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetComponentListRequest`
@@ -2217,7 +2217,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetContainerDetail(self, request):
-        """查询容器详细信息
+        r"""查询容器详细信息
 
         :param request: Request instance for DescribeAssetContainerDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetContainerDetailRequest`
@@ -2240,7 +2240,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetContainerList(self, request):
-        """搜索查询容器列表
+        r"""搜索查询容器列表
 
         :param request: Request instance for DescribeAssetContainerList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetContainerListRequest`
@@ -2263,7 +2263,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetDBServiceList(self, request):
-        """容器安全查询db服务列表
+        r"""容器安全查询db服务列表
 
         :param request: Request instance for DescribeAssetDBServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetDBServiceListRequest`
@@ -2286,7 +2286,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetHostDetail(self, request):
-        """查询主机详细信息
+        r"""查询主机详细信息
 
         :param request: Request instance for DescribeAssetHostDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetHostDetailRequest`
@@ -2309,7 +2309,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetHostList(self, request):
-        """容器安全搜索查询主机列表
+        r"""容器安全搜索查询主机列表
 
         :param request: Request instance for DescribeAssetHostList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetHostListRequest`
@@ -2332,7 +2332,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageBindRuleInfo(self, request):
-        """镜像绑定规则列表信息，包含运行时访问控制和异常进程公用
+        r"""镜像绑定规则列表信息，包含运行时访问控制和异常进程公用
 
         :param request: Request instance for DescribeAssetImageBindRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageBindRuleInfoRequest`
@@ -2355,7 +2355,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageDetail(self, request):
-        """查询镜像详细信息
+        r"""查询镜像详细信息
 
         :param request: Request instance for DescribeAssetImageDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageDetailRequest`
@@ -2378,7 +2378,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageHostList(self, request):
-        """容器安全查询镜像关联主机
+        r"""容器安全查询镜像关联主机
 
         :param request: Request instance for DescribeAssetImageHostList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageHostListRequest`
@@ -2401,7 +2401,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageList(self, request):
-        """容器安全搜索查询镜像列表
+        r"""容器安全搜索查询镜像列表
 
         :param request: Request instance for DescribeAssetImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListRequest`
@@ -2424,7 +2424,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryAssetStatus(self, request):
-        """查看镜像仓库资产更新进度状态
+        r"""查看镜像仓库资产更新进度状态
 
         :param request: Request instance for DescribeAssetImageRegistryAssetStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryAssetStatusRequest`
@@ -2447,7 +2447,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryDetail(self, request):
-        """镜像仓库镜像仓库列表详情
+        r"""镜像仓库镜像仓库列表详情
 
         :param request: Request instance for DescribeAssetImageRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryDetailRequest`
@@ -2470,7 +2470,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryList(self, request):
-        """镜像仓库镜像仓库列表
+        r"""镜像仓库镜像仓库列表
 
         :param request: Request instance for DescribeAssetImageRegistryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryListRequest`
@@ -2493,7 +2493,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryListExport(self, request):
-        """镜像仓库镜像列表导出
+        r"""镜像仓库镜像列表导出
 
         :param request: Request instance for DescribeAssetImageRegistryListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryListExportRequest`
@@ -2516,7 +2516,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRegistryDetail(self, request):
-        """查看单个镜像仓库详细信息
+        r"""查看单个镜像仓库详细信息
 
         :param request: Request instance for DescribeAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRegistryDetailRequest`
@@ -2539,7 +2539,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRegistryList(self, request):
-        """镜像仓库仓库列表
+        r"""镜像仓库仓库列表
 
         :param request: Request instance for DescribeAssetImageRegistryRegistryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRegistryListRequest`
@@ -2562,7 +2562,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRiskInfoList(self, request):
-        """镜像仓库查询镜像高危行为列表
+        r"""镜像仓库查询镜像高危行为列表
 
         :param request: Request instance for DescribeAssetImageRegistryRiskInfoList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRiskInfoListRequest`
@@ -2585,7 +2585,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRiskListExport(self, request):
-        """镜像仓库敏感信息列表导出
+        r"""镜像仓库敏感信息列表导出
 
         :param request: Request instance for DescribeAssetImageRegistryRiskListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRiskListExportRequest`
@@ -2608,7 +2608,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryScanStatusOneKey(self, request):
-        """镜像仓库查询一键镜像扫描状态
+        r"""镜像仓库查询一键镜像扫描状态
 
         :param request: Request instance for DescribeAssetImageRegistryScanStatusOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryScanStatusOneKeyRequest`
@@ -2631,7 +2631,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistrySummary(self, request):
-        """镜像仓库查询镜像统计信息
+        r"""镜像仓库查询镜像统计信息
 
         :param request: Request instance for DescribeAssetImageRegistrySummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistrySummaryRequest`
@@ -2654,7 +2654,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVirusList(self, request):
-        """镜像仓库查询木马病毒列表
+        r"""镜像仓库查询木马病毒列表
 
         :param request: Request instance for DescribeAssetImageRegistryVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVirusListRequest`
@@ -2677,7 +2677,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVirusListExport(self, request):
-        """镜像仓库木马信息列表导出
+        r"""镜像仓库木马信息列表导出
 
         :param request: Request instance for DescribeAssetImageRegistryVirusListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVirusListExportRequest`
@@ -2700,7 +2700,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVulList(self, request):
-        """镜像仓库查询镜像漏洞列表
+        r"""镜像仓库查询镜像漏洞列表
 
         :param request: Request instance for DescribeAssetImageRegistryVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVulListRequest`
@@ -2723,7 +2723,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVulListExport(self, request):
-        """镜像仓库漏洞列表导出
+        r"""镜像仓库漏洞列表导出
 
         :param request: Request instance for DescribeAssetImageRegistryVulListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVulListExportRequest`
@@ -2746,7 +2746,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRiskList(self, request):
-        """容器安全查询镜像风险列表
+        r"""容器安全查询镜像风险列表
 
         :param request: Request instance for DescribeAssetImageRiskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRiskListRequest`
@@ -2769,7 +2769,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRiskListExport(self, request):
-        """容器安全搜索查询镜像风险列表导出
+        r"""容器安全搜索查询镜像风险列表导出
 
         :param request: Request instance for DescribeAssetImageRiskListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRiskListExportRequest`
@@ -2792,7 +2792,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanSetting(self, request):
-        """获取镜像扫描设置信息
+        r"""获取镜像扫描设置信息
 
         :param request: Request instance for DescribeAssetImageScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanSettingRequest`
@@ -2815,7 +2815,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanStatus(self, request):
-        """容器安全查询镜像扫描状态
+        r"""容器安全查询镜像扫描状态
 
         :param request: Request instance for DescribeAssetImageScanStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanStatusRequest`
@@ -2838,7 +2838,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanTask(self, request):
-        """查询正在一键扫描的镜像扫描taskid
+        r"""查询正在一键扫描的镜像扫描taskid
 
         :param request: Request instance for DescribeAssetImageScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanTaskRequest`
@@ -2861,7 +2861,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageSimpleList(self, request):
-        """容器安全搜索查询镜像简略信息列表
+        r"""容器安全搜索查询镜像简略信息列表
 
         :param request: Request instance for DescribeAssetImageSimpleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageSimpleListRequest`
@@ -2884,7 +2884,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVirusList(self, request):
-        """容器安全查询镜像病毒列表
+        r"""容器安全查询镜像病毒列表
 
         :param request: Request instance for DescribeAssetImageVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVirusListRequest`
@@ -2907,7 +2907,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVirusListExport(self, request):
-        """容器安全搜索查询镜像木马列表导出
+        r"""容器安全搜索查询镜像木马列表导出
 
         :param request: Request instance for DescribeAssetImageVirusListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVirusListExportRequest`
@@ -2930,7 +2930,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVulList(self, request):
-        """容器安全查询镜像漏洞列表
+        r"""容器安全查询镜像漏洞列表
 
         :param request: Request instance for DescribeAssetImageVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVulListRequest`
@@ -2953,7 +2953,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVulListExport(self, request):
-        """容器安全搜索查询镜像漏洞列表导出
+        r"""容器安全搜索查询镜像漏洞列表导出
 
         :param request: Request instance for DescribeAssetImageVulListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVulListExportRequest`
@@ -2976,7 +2976,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetPortList(self, request):
-        """容器安全搜索查询端口占用列表
+        r"""容器安全搜索查询端口占用列表
 
         :param request: Request instance for DescribeAssetPortList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetPortListRequest`
@@ -2999,7 +2999,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetProcessList(self, request):
-        """容器安全搜索查询进程列表
+        r"""容器安全搜索查询进程列表
 
         :param request: Request instance for DescribeAssetProcessList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetProcessListRequest`
@@ -3022,7 +3022,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSummary(self, request):
-        """查询账户容器、镜像等统计信息
+        r"""查询账户容器、镜像等统计信息
 
         :param request: Request instance for DescribeAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSummaryRequest`
@@ -3045,7 +3045,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSuperNodeList(self, request):
-        """查询超级节点列表
+        r"""查询超级节点列表
 
         :param request: Request instance for DescribeAssetSuperNodeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSuperNodeListRequest`
@@ -3068,7 +3068,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSyncLastTime(self, request):
-        """查询资产同步最近时间
+        r"""查询资产同步最近时间
 
         :param request: Request instance for DescribeAssetSyncLastTime.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSyncLastTimeRequest`
@@ -3091,7 +3091,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetWebServiceList(self, request):
-        """容器安全查询web服务列表
+        r"""容器安全查询web服务列表
 
         :param request: Request instance for DescribeAssetWebServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetWebServiceListRequest`
@@ -3114,7 +3114,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAutoAuthorizedRuleHost(self, request):
-        """查询自动授权规则授权范围主机信息
+        r"""查询自动授权规则授权范围主机信息
 
         :param request: Request instance for DescribeAutoAuthorizedRuleHost.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAutoAuthorizedRuleHostRequest`
@@ -3137,7 +3137,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCheckItemList(self, request):
-        """查询所有检查项接口，返回总数和检查项列表
+        r"""查询所有检查项接口，返回总数和检查项列表
 
         :param request: Request instance for DescribeCheckItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCheckItemListRequest`
@@ -3160,7 +3160,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """查询单个集群的详细信息
+        r"""查询单个集群的详细信息
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterDetailRequest`
@@ -3183,7 +3183,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeClusterNodes(self, request):
-        """查询集群节点信息
+        r"""查询集群节点信息
 
         :param request: Request instance for DescribeClusterNodes.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterNodesRequest`
@@ -3206,7 +3206,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeClusterSummary(self, request):
-        """查询用户集群资产总览
+        r"""查询用户集群资产总览
 
         :param request: Request instance for DescribeClusterSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterSummaryRequest`
@@ -3229,7 +3229,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetDetailInfo(self, request):
-        """查询某个资产的详情
+        r"""查询某个资产的详情
 
         :param request: Request instance for DescribeComplianceAssetDetailInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetDetailInfoRequest`
@@ -3252,7 +3252,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetList(self, request):
-        """查询某类资产的列表
+        r"""查询某类资产的列表
 
         :param request: Request instance for DescribeComplianceAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetListRequest`
@@ -3275,7 +3275,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetPolicyItemList(self, request):
-        """查询某资产下的检测项列表
+        r"""查询某资产下的检测项列表
 
         :param request: Request instance for DescribeComplianceAssetPolicyItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetPolicyItemListRequest`
@@ -3298,7 +3298,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePeriodTaskList(self, request):
-        """查询合规检测的定时任务列表
+        r"""查询合规检测的定时任务列表
 
         :param request: Request instance for DescribeCompliancePeriodTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePeriodTaskListRequest`
@@ -3321,7 +3321,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePolicyItemAffectedAssetList(self, request):
-        """按照 检测项 → 资产 的两级层次展开的第二层级：资产层级。
+        r"""按照 检测项 → 资产 的两级层次展开的第二层级：资产层级。
 
         :param request: Request instance for DescribeCompliancePolicyItemAffectedAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePolicyItemAffectedAssetListRequest`
@@ -3344,7 +3344,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePolicyItemAffectedSummary(self, request):
-        """按照 检测项 → 资产 的两级层次展开的第一层级：检测项层级。
+        r"""按照 检测项 → 资产 的两级层次展开的第一层级：检测项层级。
 
         :param request: Request instance for DescribeCompliancePolicyItemAffectedSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePolicyItemAffectedSummaryRequest`
@@ -3367,7 +3367,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceScanFailedAssetList(self, request):
-        """按照 资产 → 检测项 二层结构展示的信息。这里查询第一层 资产的通过率汇总信息。
+        r"""按照 资产 → 检测项 二层结构展示的信息。这里查询第一层 资产的通过率汇总信息。
 
         :param request: Request instance for DescribeComplianceScanFailedAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceScanFailedAssetListRequest`
@@ -3390,7 +3390,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceTaskAssetSummary(self, request):
-        """查询上次任务的资产通过率汇总信息
+        r"""查询上次任务的资产通过率汇总信息
 
         :param request: Request instance for DescribeComplianceTaskAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceTaskAssetSummaryRequest`
@@ -3413,7 +3413,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceTaskPolicyItemSummaryList(self, request):
-        """查询最近一次任务发现的检测项的汇总信息列表，按照 检测项 → 资产 的两级层次展开。
+        r"""查询最近一次任务发现的检测项的汇总信息列表，按照 检测项 → 资产 的两级层次展开。
 
         :param request: Request instance for DescribeComplianceTaskPolicyItemSummaryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceTaskPolicyItemSummaryListRequest`
@@ -3436,7 +3436,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceWhitelistItemList(self, request):
-        """查询白名单列表
+        r"""查询白名单列表
 
         :param request: Request instance for DescribeComplianceWhitelistItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceWhitelistItemListRequest`
@@ -3459,7 +3459,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeContainerAssetSummary(self, request):
-        """查询容器资产概览信息
+        r"""查询容器资产概览信息
 
         :param request: Request instance for DescribeContainerAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeContainerAssetSummaryRequest`
@@ -3482,7 +3482,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeContainerSecEventSummary(self, request):
-        """查询容器安全未处理事件信息
+        r"""查询容器安全未处理事件信息
 
         :param request: Request instance for DescribeContainerSecEventSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeContainerSecEventSummaryRequest`
@@ -3505,7 +3505,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeESAggregations(self, request):
-        """获取ES字段聚合结果
+        r"""获取ES字段聚合结果
 
         :param request: Request instance for DescribeESAggregations.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESAggregationsRequest`
@@ -3528,7 +3528,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeESHits(self, request):
-        """获取ES查询文档列表
+        r"""获取ES查询文档列表
 
         :param request: Request instance for DescribeESHits.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESHitsRequest`
@@ -3551,7 +3551,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEmergencyVulList(self, request):
-        """查询应急漏洞列表
+        r"""查询应急漏洞列表
 
         :param request: Request instance for DescribeEmergencyVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEmergencyVulListRequest`
@@ -3574,7 +3574,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventDetail(self, request):
-        """DescribeEscapeEventDetail  查询容器逃逸事件详情
+        r"""DescribeEscapeEventDetail  查询容器逃逸事件详情
 
         :param request: Request instance for DescribeEscapeEventDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventDetailRequest`
@@ -3597,7 +3597,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventInfo(self, request):
-        """DescribeEscapeEventInfo 查询容器逃逸事件列表
+        r"""DescribeEscapeEventInfo 查询容器逃逸事件列表
 
         :param request: Request instance for DescribeEscapeEventInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventInfoRequest`
@@ -3620,7 +3620,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventTendency(self, request):
-        """查询待处理逃逸事件趋势
+        r"""查询待处理逃逸事件趋势
 
         :param request: Request instance for DescribeEscapeEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTendencyRequest`
@@ -3643,7 +3643,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventTypeSummary(self, request):
-        """统计容器逃逸各事件类型和待处理事件数
+        r"""统计容器逃逸各事件类型和待处理事件数
 
         :param request: Request instance for DescribeEscapeEventTypeSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTypeSummaryRequest`
@@ -3666,7 +3666,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeRuleInfo(self, request):
-        """DescribeEscapeRuleInfo 查询容器逃逸扫描规则信息
+        r"""DescribeEscapeRuleInfo 查询容器逃逸扫描规则信息
 
         :param request: Request instance for DescribeEscapeRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeRuleInfoRequest`
@@ -3689,7 +3689,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeSafeState(self, request):
-        """DescribeEscapeSafeState 查询容器逃逸安全状态
+        r"""DescribeEscapeSafeState 查询容器逃逸安全状态
 
         :param request: Request instance for DescribeEscapeSafeState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeSafeStateRequest`
@@ -3712,7 +3712,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeWhiteList(self, request):
-        """查询逃逸白名单
+        r"""查询逃逸白名单
 
         :param request: Request instance for DescribeEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeWhiteListRequest`
@@ -3735,7 +3735,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEventEscapeImageList(self, request):
-        """DescribeRiskContainerImageList查询风险容器镜像列表
+        r"""DescribeRiskContainerImageList查询风险容器镜像列表
 
         :param request: Request instance for DescribeEventEscapeImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEventEscapeImageListRequest`
@@ -3758,7 +3758,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobDownloadURL(self, request):
-        """查询导出任务下载URL
+        r"""查询导出任务下载URL
 
         :param request: Request instance for DescribeExportJobDownloadURL.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobDownloadURLRequest`
@@ -3781,7 +3781,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobManageList(self, request):
-        """查询导出任务管理列表
+        r"""查询导出任务管理列表
 
         :param request: Request instance for DescribeExportJobManageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobManageListRequest`
@@ -3804,7 +3804,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobResult(self, request):
-        """查询导出接口进度
+        r"""查询导出接口进度
 
         :param request: Request instance for DescribeExportJobResult.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobResultRequest`
@@ -3827,7 +3827,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAuthorizedInfo(self, request):
-        """DescribeImageAuthorizedInfo  查询镜像授权信息
+        r"""DescribeImageAuthorizedInfo  查询镜像授权信息
 
         :param request: Request instance for DescribeImageAuthorizedInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAuthorizedInfoRequest`
@@ -3850,7 +3850,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedLogList(self, request):
-        """查询镜像自动授权结果列表
+        r"""查询镜像自动授权结果列表
 
         :param request: Request instance for DescribeImageAutoAuthorizedLogList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedLogListRequest`
@@ -3873,7 +3873,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedRule(self, request):
-        """查询本地镜像自动授权规则
+        r"""查询本地镜像自动授权规则
 
         :param request: Request instance for DescribeImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedRuleRequest`
@@ -3896,7 +3896,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedTaskList(self, request):
-        """查询镜像自动授权任务列表
+        r"""查询镜像自动授权任务列表
 
         :param request: Request instance for DescribeImageAutoAuthorizedTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedTaskListRequest`
@@ -3919,7 +3919,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageComponentList(self, request):
-        """查询本地镜像组件列表
+        r"""查询本地镜像组件列表
 
         :param request: Request instance for DescribeImageComponentList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageComponentListRequest`
@@ -3942,7 +3942,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRegistryNamespaceList(self, request):
-        """查询用户镜像仓库下的命令空间列表
+        r"""查询用户镜像仓库下的命令空间列表
 
         :param request: Request instance for DescribeImageRegistryNamespaceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryNamespaceListRequest`
@@ -3965,7 +3965,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRegistryTimingScanTask(self, request):
-        """镜像仓库查看定时任务
+        r"""镜像仓库查看定时任务
 
         :param request: Request instance for DescribeImageRegistryTimingScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryTimingScanTaskRequest`
@@ -3988,7 +3988,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRiskSummary(self, request):
-        """查询本地镜像风险概览
+        r"""查询本地镜像风险概览
 
         :param request: Request instance for DescribeImageRiskSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRiskSummaryRequest`
@@ -4011,7 +4011,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRiskTendency(self, request):
-        """查询容器安全本地镜像风险趋势
+        r"""查询容器安全本地镜像风险趋势
 
         :param request: Request instance for DescribeImageRiskTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRiskTendencyRequest`
@@ -4034,7 +4034,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageSimpleList(self, request):
-        """DescribeImageSimpleList 查询全部镜像列表
+        r"""DescribeImageSimpleList 查询全部镜像列表
 
         :param request: Request instance for DescribeImageSimpleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageSimpleListRequest`
@@ -4057,7 +4057,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """获取索引列表
+        r"""获取索引列表
 
         :param request: Request instance for DescribeIndexList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeIndexListRequest`
@@ -4080,7 +4080,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeInspectionReport(self, request):
-        """查询检查报告
+        r"""查询检查报告
 
         :param request: Request instance for DescribeInspectionReport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeInspectionReportRequest`
@@ -4103,7 +4103,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalEventInfo(self, request):
-        """查询k8s api 异常事件详情
+        r"""查询k8s api 异常事件详情
 
         :param request: Request instance for DescribeK8sApiAbnormalEventInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventInfoRequest`
@@ -4126,7 +4126,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalEventList(self, request):
-        """查询k8s api异常事件列表
+        r"""查询k8s api异常事件列表
 
         :param request: Request instance for DescribeK8sApiAbnormalEventList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventListRequest`
@@ -4149,7 +4149,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleInfo(self, request):
-        """查询k8sapi异常请求规则详情
+        r"""查询k8sapi异常请求规则详情
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleInfoRequest`
@@ -4172,7 +4172,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleList(self, request):
-        """查询k8sapi异常请求规则列表
+        r"""查询k8sapi异常请求规则列表
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleListRequest`
@@ -4195,7 +4195,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleScopeList(self, request):
-        """查询k8sapi 异常规则中范围列表
+        r"""查询k8sapi 异常规则中范围列表
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleScopeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListRequest`
@@ -4218,7 +4218,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalSummary(self, request):
-        """查询k8sapi异常事件统计
+        r"""查询k8sapi异常事件统计
 
         :param request: Request instance for DescribeK8sApiAbnormalSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalSummaryRequest`
@@ -4241,7 +4241,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalTendency(self, request):
-        """查询k8sapi异常事件趋势
+        r"""查询k8sapi异常事件趋势
 
         :param request: Request instance for DescribeK8sApiAbnormalTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalTendencyRequest`
@@ -4264,7 +4264,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeLogStorageStatistic(self, request):
-        """获取日志检索容量使用统计
+        r"""获取日志检索容量使用统计
 
         :param request: Request instance for DescribeLogStorageStatistic.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeLogStorageStatisticRequest`
@@ -4287,7 +4287,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallAuditRecord(self, request):
-        """查询集群策略审计列表
+        r"""查询集群策略审计列表
 
         :param request: Request instance for DescribeNetworkFirewallAuditRecord.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordRequest`
@@ -4310,7 +4310,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterList(self, request):
-        """查询集群策略列表
+        r"""查询集群策略列表
 
         :param request: Request instance for DescribeNetworkFirewallClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListRequest`
@@ -4333,7 +4333,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterRefreshStatus(self, request):
-        """容器网络查询资产任务进度
+        r"""容器网络查询资产任务进度
 
         :param request: Request instance for DescribeNetworkFirewallClusterRefreshStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusRequest`
@@ -4356,7 +4356,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceLabelList(self, request):
-        """查询集群网络空间标签列表
+        r"""查询集群网络空间标签列表
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceLabelList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListRequest`
@@ -4379,7 +4379,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceList(self, request):
-        """查询集群网络空间列表
+        r"""查询集群网络空间列表
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceListRequest`
@@ -4402,7 +4402,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPodLabelsList(self, request):
-        """查询集群网络pod标签
+        r"""查询集群网络pod标签
 
         :param request: Request instance for DescribeNetworkFirewallPodLabelsList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListRequest`
@@ -4425,7 +4425,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDetail(self, request):
-        """容器网络集群查看策略详情
+        r"""容器网络集群查看策略详情
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailRequest`
@@ -4448,7 +4448,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDiscover(self, request):
-        """容器网络查询网络策略自动发现任务进度
+        r"""容器网络查询网络策略自动发现任务进度
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverRequest`
@@ -4471,7 +4471,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyList(self, request):
-        """查询集群网络策略列表
+        r"""查询集群网络策略列表
 
         :param request: Request instance for DescribeNetworkFirewallPolicyList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListRequest`
@@ -4494,7 +4494,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyStatus(self, request):
-        """容器网络查询网络策略策略执行状态
+        r"""容器网络查询网络策略策略执行状态
 
         :param request: Request instance for DescribeNetworkFirewallPolicyStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusRequest`
@@ -4517,7 +4517,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyYamlDetail(self, request):
-        """容器网络集群查看Yaml网络策略详情
+        r"""容器网络集群查看Yaml网络策略详情
 
         :param request: Request instance for DescribeNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailRequest`
@@ -4540,7 +4540,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNewestVul(self, request):
-        """查询最新披露漏洞列表
+        r"""查询最新披露漏洞列表
 
         :param request: Request instance for DescribeNewestVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNewestVulRequest`
@@ -4563,7 +4563,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePostPayDetail(self, request):
-        """DescribePostPayDetail  查询后付费详情
+        r"""DescribePostPayDetail  查询后付费详情
 
         :param request: Request instance for DescribePostPayDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePostPayDetailRequest`
@@ -4586,7 +4586,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeProVersionInfo(self, request):
-        """DescribeProVersionInfo  查询专业版需购买信息
+        r"""DescribeProVersionInfo  查询专业版需购买信息
 
         :param request: Request instance for DescribeProVersionInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeProVersionInfoRequest`
@@ -4609,7 +4609,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePromotionActivity(self, request):
-        """查询促销活动
+        r"""查询促销活动
 
         :param request: Request instance for DescribePromotionActivity.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePromotionActivityRequest`
@@ -4632,7 +4632,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePublicKey(self, request):
-        """获取公钥
+        r"""获取公钥
 
         :param request: Request instance for DescribePublicKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePublicKeyRequest`
@@ -4655,7 +4655,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePurchaseStateInfo(self, request):
-        """DescribePurchaseStateInfo 查询容器安全服务已购买信息
+        r"""DescribePurchaseStateInfo 查询容器安全服务已购买信息
 
         :param request: Request instance for DescribePurchaseStateInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePurchaseStateInfoRequest`
@@ -4678,7 +4678,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRaspRuleVuls(self, request):
-        """获取漏洞防御白名单漏洞列表
+        r"""获取漏洞防御白名单漏洞列表
 
         :param request: Request instance for DescribeRaspRuleVuls.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRuleVulsRequest`
@@ -4701,7 +4701,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRaspRules(self, request):
-        """查询支持防御的漏洞列表
+        r"""查询支持防御的漏洞列表
 
         :param request: Request instance for DescribeRaspRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRulesRequest`
@@ -4724,7 +4724,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRefreshTask(self, request):
-        """查询刷新任务
+        r"""查询刷新任务
 
         :param request: Request instance for DescribeRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRefreshTaskRequest`
@@ -4747,7 +4747,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellDetail(self, request):
-        """查询运行时反弹shell事件详细信息
+        r"""查询运行时反弹shell事件详细信息
 
         :param request: Request instance for DescribeReverseShellDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellDetailRequest`
@@ -4770,7 +4770,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellEvents(self, request):
-        """查询运行时反弹shell事件列表信息
+        r"""查询运行时反弹shell事件列表信息
 
         :param request: Request instance for DescribeReverseShellEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellEventsRequest`
@@ -4793,7 +4793,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellEventsExport(self, request):
-        """查询运行时反弹shell事件列表信息导出
+        r"""查询运行时反弹shell事件列表信息导出
 
         :param request: Request instance for DescribeReverseShellEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellEventsExportRequest`
@@ -4816,7 +4816,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellWhiteListDetail(self, request):
-        """查询运行时反弹shell白名单详细信息
+        r"""查询运行时反弹shell白名单详细信息
 
         :param request: Request instance for DescribeReverseShellWhiteListDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellWhiteListDetailRequest`
@@ -4839,7 +4839,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellWhiteLists(self, request):
-        """查询运行时运行时反弹shell白名单列表信息
+        r"""查询运行时运行时反弹shell白名单列表信息
 
         :param request: Request instance for DescribeReverseShellWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellWhiteListsRequest`
@@ -4862,7 +4862,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskDnsEventDetail(self, request):
-        """查询恶意请求事件详情
+        r"""查询恶意请求事件详情
 
         :param request: Request instance for DescribeRiskDnsEventDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsEventDetailRequest`
@@ -4885,7 +4885,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskDnsList(self, request):
-        """查询恶意请求事件列表
+        r"""查询恶意请求事件列表
 
         :param request: Request instance for DescribeRiskDnsList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsListRequest`
@@ -4908,7 +4908,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskList(self, request):
-        """查询最近一次任务发现的风险项的信息列表，支持根据特殊字段进行过滤
+        r"""查询最近一次任务发现的风险项的信息列表，支持根据特殊字段进行过滤
 
         :param request: Request instance for DescribeRiskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskListRequest`
@@ -4931,7 +4931,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallDetail(self, request):
-        """查询高危系统调用事件详细信息
+        r"""查询高危系统调用事件详细信息
 
         :param request: Request instance for DescribeRiskSyscallDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallDetailRequest`
@@ -4954,7 +4954,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallEvents(self, request):
-        """查询运行时运行时高危系统调用列表信息
+        r"""查询运行时运行时高危系统调用列表信息
 
         :param request: Request instance for DescribeRiskSyscallEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallEventsRequest`
@@ -4977,7 +4977,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallEventsExport(self, request):
-        """运行时高危系统调用列表导出
+        r"""运行时高危系统调用列表导出
 
         :param request: Request instance for DescribeRiskSyscallEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallEventsExportRequest`
@@ -5000,7 +5000,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallNames(self, request):
-        """查询运行时高危系统调用系统名称列表
+        r"""查询运行时高危系统调用系统名称列表
 
         :param request: Request instance for DescribeRiskSyscallNames.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallNamesRequest`
@@ -5023,7 +5023,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallWhiteListDetail(self, request):
-        """查询运行时高危系统调用白名单详细信息
+        r"""查询运行时高危系统调用白名单详细信息
 
         :param request: Request instance for DescribeRiskSyscallWhiteListDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallWhiteListDetailRequest`
@@ -5046,7 +5046,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallWhiteLists(self, request):
-        """查询运行时高危系统调用白名单列表信息
+        r"""查询运行时高危系统调用白名单列表信息
 
         :param request: Request instance for DescribeRiskSyscallWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallWhiteListsRequest`
@@ -5069,7 +5069,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeScanIgnoreVulList(self, request):
-        """查询扫描忽略的漏洞列表
+        r"""查询扫描忽略的漏洞列表
 
         :param request: Request instance for DescribeScanIgnoreVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeScanIgnoreVulListRequest`
@@ -5092,7 +5092,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchExportList(self, request):
-        """导出ES查询文档列表
+        r"""导出ES查询文档列表
 
         :param request: Request instance for DescribeSearchExportList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchExportListRequest`
@@ -5115,7 +5115,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchLogs(self, request):
-        """获取历史搜索记录
+        r"""获取历史搜索记录
 
         :param request: Request instance for DescribeSearchLogs.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchLogsRequest`
@@ -5138,7 +5138,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchTemplates(self, request):
-        """获取快速检索列表
+        r"""获取快速检索列表
 
         :param request: Request instance for DescribeSearchTemplates.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchTemplatesRequest`
@@ -5161,7 +5161,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecEventsTendency(self, request):
-        """查询容器运行时安全事件趋势
+        r"""查询容器运行时安全事件趋势
 
         :param request: Request instance for DescribeSecEventsTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecEventsTendencyRequest`
@@ -5184,7 +5184,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogAlertMsg(self, request):
-        """查询安全日志告警信息
+        r"""查询安全日志告警信息
 
         :param request: Request instance for DescribeSecLogAlertMsg.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogAlertMsgRequest`
@@ -5207,7 +5207,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogCleanSettingInfo(self, request):
-        """查询安全日志清理设置详情
+        r"""查询安全日志清理设置详情
 
         :param request: Request instance for DescribeSecLogCleanSettingInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogCleanSettingInfoRequest`
@@ -5230,7 +5230,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryClsOptions(self, request):
-        """查询安全日志投递cls可选项
+        r"""查询安全日志投递cls可选项
 
         :param request: Request instance for DescribeSecLogDeliveryClsOptions.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsOptionsRequest`
@@ -5253,7 +5253,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryClsSetting(self, request):
-        """查询安全日志投递Cls配置
+        r"""查询安全日志投递Cls配置
 
         :param request: Request instance for DescribeSecLogDeliveryClsSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsSettingRequest`
@@ -5276,7 +5276,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryKafkaOptions(self, request):
-        """查询安全日志投递kafka可选项
+        r"""查询安全日志投递kafka可选项
 
         :param request: Request instance for DescribeSecLogDeliveryKafkaOptions.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaOptionsRequest`
@@ -5299,7 +5299,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryKafkaSetting(self, request):
-        """查询安全日志投递kafka配置
+        r"""查询安全日志投递kafka配置
 
         :param request: Request instance for DescribeSecLogDeliveryKafkaSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaSettingRequest`
@@ -5322,7 +5322,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogJoinObjectList(self, request):
-        """查询安全日志接入对象列表
+        r"""查询安全日志接入对象列表
 
         :param request: Request instance for DescribeSecLogJoinObjectList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinObjectListRequest`
@@ -5345,7 +5345,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogJoinTypeList(self, request):
-        """查询安全日志接入列表
+        r"""查询安全日志接入列表
 
         :param request: Request instance for DescribeSecLogJoinTypeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinTypeListRequest`
@@ -5368,7 +5368,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogKafkaUIN(self, request):
-        """查询安全日志KafkaUIN
+        r"""查询安全日志KafkaUIN
 
         :param request: Request instance for DescribeSecLogKafkaUIN.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogKafkaUINRequest`
@@ -5391,7 +5391,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogVasInfo(self, request):
-        """查询安全日志商品信息
+        r"""查询安全日志商品信息
 
         :param request: Request instance for DescribeSecLogVasInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogVasInfoRequest`
@@ -5414,7 +5414,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSuperNodePodList(self, request):
-        """查询超级节点pod列表
+        r"""查询超级节点pod列表
 
         :param request: Request instance for DescribeSuperNodePodList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSuperNodePodListRequest`
@@ -5437,7 +5437,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSupportDefenceVul(self, request):
-        """查询支持防御的漏洞列表
+        r"""查询支持防御的漏洞列表
 
         :param request: Request instance for DescribeSupportDefenceVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSupportDefenceVulRequest`
@@ -5460,7 +5460,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSystemVulList(self, request):
-        """查询系统漏洞列表
+        r"""查询系统漏洞列表
 
         :param request: Request instance for DescribeSystemVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSystemVulListRequest`
@@ -5483,7 +5483,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeTaskResultSummary(self, request):
-        """查询检查结果总览，返回受影响的节点数量，返回7天的数据，总共7个
+        r"""查询检查结果总览，返回受影响的节点数量，返回7天的数据，总共7个
 
         :param request: Request instance for DescribeTaskResultSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeTaskResultSummaryRequest`
@@ -5506,7 +5506,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeTcssSummary(self, request):
-        """查询容器安全概览信息
+        r"""查询容器安全概览信息
 
         :param request: Request instance for DescribeTcssSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeTcssSummaryRequest`
@@ -5529,7 +5529,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUnauthorizedCoresTendency(self, request):
-        """查询当天未授权核数趋势
+        r"""查询当天未授权核数趋势
 
         :param request: Request instance for DescribeUnauthorizedCoresTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUnauthorizedCoresTendencyRequest`
@@ -5552,7 +5552,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUnfinishRefreshTask(self, request):
-        """查询未完成的刷新资产任务信息
+        r"""查询未完成的刷新资产任务信息
 
         :param request: Request instance for DescribeUnfinishRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUnfinishRefreshTaskRequest`
@@ -5575,7 +5575,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUserCluster(self, request):
-        """安全概览和集群安全页进入调用该接口，查询用户集群相关信息。
+        r"""安全概览和集群安全页进入调用该接口，查询用户集群相关信息。
 
         :param request: Request instance for DescribeUserCluster.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUserClusterRequest`
@@ -5598,7 +5598,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUserPodList(self, request):
-        """获取用户的pod列表
+        r"""获取用户的pod列表
 
         :param request: Request instance for DescribeUserPodList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUserPodListRequest`
@@ -5621,7 +5621,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeValueAddedSrvInfo(self, request):
-        """DescribeValueAddedSrvInfo查询增值服务需购买信息
+        r"""DescribeValueAddedSrvInfo查询增值服务需购买信息
 
         :param request: Request instance for DescribeValueAddedSrvInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeValueAddedSrvInfoRequest`
@@ -5644,7 +5644,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleDetail(self, request):
-        """查询木马自动隔离样本详情
+        r"""查询木马自动隔离样本详情
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDetailRequest`
@@ -5667,7 +5667,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleDownloadURL(self, request):
-        """查询木马自动隔离样本下载链接
+        r"""查询木马自动隔离样本下载链接
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleDownloadURL.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDownloadURLRequest`
@@ -5690,7 +5690,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleList(self, request):
-        """查询木马自动隔离样本列表
+        r"""查询木马自动隔离样本列表
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleListRequest`
@@ -5713,7 +5713,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSetting(self, request):
-        """查询木马自动隔离设置
+        r"""查询木马自动隔离设置
 
         :param request: Request instance for DescribeVirusAutoIsolateSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSettingRequest`
@@ -5736,7 +5736,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusDetail(self, request):
-        """运行时查询木马文件信息
+        r"""运行时查询木马文件信息
 
         :param request: Request instance for DescribeVirusDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusDetailRequest`
@@ -5759,7 +5759,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusEventTendency(self, request):
-        """查询木马事件趋势
+        r"""查询木马事件趋势
 
         :param request: Request instance for DescribeVirusEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusEventTendencyRequest`
@@ -5782,7 +5782,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusList(self, request):
-        """查询运行时文件查杀事件列表
+        r"""查询运行时文件查杀事件列表
 
         :param request: Request instance for DescribeVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusListRequest`
@@ -5805,7 +5805,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusManualScanEstimateTimeout(self, request):
-        """查询木马一键检测预估超时时间
+        r"""查询木马一键检测预估超时时间
 
         :param request: Request instance for DescribeVirusManualScanEstimateTimeout.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusManualScanEstimateTimeoutRequest`
@@ -5828,7 +5828,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusMonitorSetting(self, request):
-        """运行时查询文件查杀实时监控设置
+        r"""运行时查询文件查杀实时监控设置
 
         :param request: Request instance for DescribeVirusMonitorSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorSettingRequest`
@@ -5851,7 +5851,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusSampleDownloadUrl(self, request):
-        """查询木马样本下载url
+        r"""查询木马样本下载url
 
         :param request: Request instance for DescribeVirusSampleDownloadUrl.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSampleDownloadUrlRequest`
@@ -5874,7 +5874,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanSetting(self, request):
-        """运行时查询文件查杀设置
+        r"""运行时查询文件查杀设置
 
         :param request: Request instance for DescribeVirusScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanSettingRequest`
@@ -5897,7 +5897,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanTaskStatus(self, request):
-        """运行时查询文件查杀任务状态
+        r"""运行时查询文件查杀任务状态
 
         :param request: Request instance for DescribeVirusScanTaskStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanTaskStatusRequest`
@@ -5920,7 +5920,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanTimeoutSetting(self, request):
-        """运行时文件扫描超时设置查询
+        r"""运行时文件扫描超时设置查询
 
         :param request: Request instance for DescribeVirusScanTimeoutSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanTimeoutSettingRequest`
@@ -5943,7 +5943,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusSummary(self, request):
-        """运行时查询木马概览信息
+        r"""运行时查询木马概览信息
 
         :param request: Request instance for DescribeVirusSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSummaryRequest`
@@ -5966,7 +5966,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusTaskList(self, request):
-        """运行时查询文件查杀任务列表
+        r"""运行时查询文件查杀任务列表
 
         :param request: Request instance for DescribeVirusTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusTaskListRequest`
@@ -5989,7 +5989,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulContainerList(self, request):
-        """查询受漏洞的容器列表
+        r"""查询受漏洞的容器列表
 
         :param request: Request instance for DescribeVulContainerList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulContainerListRequest`
@@ -6012,7 +6012,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEvent(self, request):
-        """查询漏洞防御事件列表
+        r"""查询漏洞防御事件列表
 
         :param request: Request instance for DescribeVulDefenceEvent.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventRequest`
@@ -6035,7 +6035,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEventDetail(self, request):
-        """查询漏洞防御事件详情
+        r"""查询漏洞防御事件详情
 
         :param request: Request instance for DescribeVulDefenceEventDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventDetailRequest`
@@ -6058,7 +6058,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEventTendency(self, request):
-        """查询漏洞防御攻击事件趋势
+        r"""查询漏洞防御攻击事件趋势
 
         :param request: Request instance for DescribeVulDefenceEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventTendencyRequest`
@@ -6081,7 +6081,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceHost(self, request):
-        """查询漏洞防御的主机列表
+        r"""查询漏洞防御的主机列表
 
         :param request: Request instance for DescribeVulDefenceHost.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceHostRequest`
@@ -6104,7 +6104,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefencePlugin(self, request):
-        """查询漏洞防御插件列表
+        r"""查询漏洞防御插件列表
 
         :param request: Request instance for DescribeVulDefencePlugin.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefencePluginRequest`
@@ -6127,7 +6127,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceSetting(self, request):
-        """查询漏洞防御设置信息
+        r"""查询漏洞防御设置信息
 
         :param request: Request instance for DescribeVulDefenceSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceSettingRequest`
@@ -6150,7 +6150,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDetail(self, request):
-        """查询漏洞详情
+        r"""查询漏洞详情
 
         :param request: Request instance for DescribeVulDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDetailRequest`
@@ -6173,7 +6173,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulIgnoreLocalImageList(self, request):
-        """查询漏洞扫描忽略的本地镜像列表
+        r"""查询漏洞扫描忽略的本地镜像列表
 
         :param request: Request instance for DescribeVulIgnoreLocalImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreLocalImageListRequest`
@@ -6196,7 +6196,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulIgnoreRegistryImageList(self, request):
-        """查询漏洞扫描忽略的仓库镜像列表
+        r"""查询漏洞扫描忽略的仓库镜像列表
 
         :param request: Request instance for DescribeVulIgnoreRegistryImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreRegistryImageListRequest`
@@ -6219,7 +6219,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulImageList(self, request):
-        """查询漏洞影响的镜像列表
+        r"""查询漏洞影响的镜像列表
 
         :param request: Request instance for DescribeVulImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageListRequest`
@@ -6242,7 +6242,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulImageSummary(self, request):
-        """查询漏洞镜像统计
+        r"""查询漏洞镜像统计
 
         :param request: Request instance for DescribeVulImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageSummaryRequest`
@@ -6265,7 +6265,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulLevelImageSummary(self, request):
-        """查询应急漏洞各威胁等级统计镜像数
+        r"""查询应急漏洞各威胁等级统计镜像数
 
         :param request: Request instance for DescribeVulLevelImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelImageSummaryRequest`
@@ -6288,7 +6288,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulLevelSummary(self, request):
-        """查询漏洞各威胁等级统计数
+        r"""查询漏洞各威胁等级统计数
 
         :param request: Request instance for DescribeVulLevelSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelSummaryRequest`
@@ -6311,7 +6311,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulRegistryImageList(self, request):
-        """查询漏洞影响的仓库镜像列表
+        r"""查询漏洞影响的仓库镜像列表
 
         :param request: Request instance for DescribeVulRegistryImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListRequest`
@@ -6334,7 +6334,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanAuthorizedImageSummary(self, request):
-        """统计漏洞扫描页已授权和未扫描镜像数
+        r"""统计漏洞扫描页已授权和未扫描镜像数
 
         :param request: Request instance for DescribeVulScanAuthorizedImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanAuthorizedImageSummaryRequest`
@@ -6357,7 +6357,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanInfo(self, request):
-        """查询漏洞扫描任务信息
+        r"""查询漏洞扫描任务信息
 
         :param request: Request instance for DescribeVulScanInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanInfoRequest`
@@ -6380,7 +6380,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanLocalImageList(self, request):
-        """查询漏洞扫描任务的本地镜像列表
+        r"""查询漏洞扫描任务的本地镜像列表
 
         :param request: Request instance for DescribeVulScanLocalImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanLocalImageListRequest`
@@ -6403,7 +6403,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulSummary(self, request):
-        """查询漏洞风险统计概览
+        r"""查询漏洞风险统计概览
 
         :param request: Request instance for DescribeVulSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulSummaryRequest`
@@ -6426,7 +6426,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulTendency(self, request):
-        """查询本地镜像、仓库镜像中严重&高危的漏洞趋势
+        r"""查询本地镜像、仓库镜像中严重&高危的漏洞趋势
 
         :param request: Request instance for DescribeVulTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTendencyRequest`
@@ -6449,7 +6449,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulTopRanking(self, request):
-        """查询漏洞Top排名列表
+        r"""查询漏洞Top排名列表
 
         :param request: Request instance for DescribeVulTopRanking.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTopRankingRequest`
@@ -6472,7 +6472,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeWarningRules(self, request):
-        """获取告警策略列表
+        r"""获取告警策略列表
 
         :param request: Request instance for DescribeWarningRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeWarningRulesRequest`
@@ -6495,7 +6495,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeWebVulList(self, request):
-        """查询web应用漏洞列表
+        r"""查询web应用漏洞列表
 
         :param request: Request instance for DescribeWebVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeWebVulListRequest`
@@ -6518,7 +6518,7 @@ class TcssClient(AbstractClient):
 
 
     def ExportVirusList(self, request):
-        """运行时文件查杀事件列表导出
+        r"""运行时文件查杀事件列表导出
 
         :param request: Request instance for ExportVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ExportVirusListRequest`
@@ -6541,7 +6541,7 @@ class TcssClient(AbstractClient):
 
 
     def InitializeUserComplianceEnvironment(self, request):
-        """为客户初始化合规基线的使用环境，创建必要的数据和选项。
+        r"""为客户初始化合规基线的使用环境，创建必要的数据和选项。
 
         :param request: Request instance for InitializeUserComplianceEnvironment.
         :type request: :class:`tencentcloud.tcss.v20201101.models.InitializeUserComplianceEnvironmentRequest`
@@ -6564,7 +6564,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAbnormalProcessRuleStatus(self, request):
-        """修改运行时异常进程策略的开启关闭状态
+        r"""修改运行时异常进程策略的开启关闭状态
 
         :param request: Request instance for ModifyAbnormalProcessRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAbnormalProcessRuleStatusRequest`
@@ -6587,7 +6587,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAbnormalProcessStatus(self, request):
-        """修改异常进程事件的状态信息
+        r"""修改异常进程事件的状态信息
 
         :param request: Request instance for ModifyAbnormalProcessStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAbnormalProcessStatusRequest`
@@ -6610,7 +6610,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAccessControlRuleStatus(self, request):
-        """修改运行时访问控制策略的状态，启用或者禁用
+        r"""修改运行时访问控制策略的状态，启用或者禁用
 
         :param request: Request instance for ModifyAccessControlRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAccessControlRuleStatusRequest`
@@ -6633,7 +6633,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAccessControlStatus(self, request):
-        """修改运行时访问控制事件状态信息
+        r"""修改运行时访问控制事件状态信息
 
         :param request: Request instance for ModifyAccessControlStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAccessControlStatusRequest`
@@ -6656,7 +6656,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAsset(self, request):
-        """容器安全主机资产刷新
+        r"""容器安全主机资产刷新
 
         :param request: Request instance for ModifyAsset.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetRequest`
@@ -6679,7 +6679,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageRegistryScanStop(self, request):
-        """镜像仓库停止镜像扫描任务
+        r"""镜像仓库停止镜像扫描任务
 
         :param request: Request instance for ModifyAssetImageRegistryScanStop.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageRegistryScanStopRequest`
@@ -6702,7 +6702,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageRegistryScanStopOneKey(self, request):
-        """镜像仓库停止镜像一键扫描任务
+        r"""镜像仓库停止镜像一键扫描任务
 
         :param request: Request instance for ModifyAssetImageRegistryScanStopOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageRegistryScanStopOneKeyRequest`
@@ -6725,7 +6725,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageScanStop(self, request):
-        """容器安全停止镜像扫描
+        r"""容器安全停止镜像扫描
 
         :param request: Request instance for ModifyAssetImageScanStop.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageScanStopRequest`
@@ -6748,7 +6748,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyCompliancePeriodTask(self, request):
-        """修改定时任务的设置，包括检测周期、开启/禁用合规基准。
+        r"""修改定时任务的设置，包括检测周期、开启/禁用合规基准。
 
         :param request: Request instance for ModifyCompliancePeriodTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyCompliancePeriodTaskRequest`
@@ -6771,7 +6771,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyContainerNetStatus(self, request):
-        """隔离容器网络状态
+        r"""隔离容器网络状态
 
         :param request: Request instance for ModifyContainerNetStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyContainerNetStatusRequest`
@@ -6794,7 +6794,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeEventStatus(self, request):
-        """ModifyEscapeEventStatus  修改容器逃逸扫描事件状态
+        r"""ModifyEscapeEventStatus  修改容器逃逸扫描事件状态
 
         :param request: Request instance for ModifyEscapeEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeEventStatusRequest`
@@ -6817,7 +6817,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeRule(self, request):
-        """ModifyEscapeRule  修改容器逃逸扫描规则信息
+        r"""ModifyEscapeRule  修改容器逃逸扫描规则信息
 
         :param request: Request instance for ModifyEscapeRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeRuleRequest`
@@ -6840,7 +6840,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeWhiteList(self, request):
-        """修改逃逸白名单
+        r"""修改逃逸白名单
 
         :param request: Request instance for ModifyEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeWhiteListRequest`
@@ -6863,7 +6863,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyImageAuthorized(self, request):
-        """批量授权镜像扫描V2.0
+        r"""批量授权镜像扫描V2.0
 
         :param request: Request instance for ModifyImageAuthorized.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyImageAuthorizedRequest`
@@ -6886,7 +6886,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalEventStatus(self, request):
-        """修改k8sapi异常事件状态
+        r"""修改k8sapi异常事件状态
 
         :param request: Request instance for ModifyK8sApiAbnormalEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalEventStatusRequest`
@@ -6909,7 +6909,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalRuleInfo(self, request):
-        """修改k8sapi异常规则信息
+        r"""修改k8sapi异常规则信息
 
         :param request: Request instance for ModifyK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleInfoRequest`
@@ -6932,7 +6932,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalRuleStatus(self, request):
-        """修改k8sapi异常事件规则状态
+        r"""修改k8sapi异常事件规则状态
 
         :param request: Request instance for ModifyK8sApiAbnormalRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleStatusRequest`
@@ -6955,7 +6955,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyRaspRules(self, request):
-        """编辑或者创建java内存马白名单
+        r"""编辑或者创建java内存马白名单
 
         :param request: Request instance for ModifyRaspRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRaspRulesRequest`
@@ -6978,7 +6978,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyReverseShellStatus(self, request):
-        """修改反弹shell事件的状态信息
+        r"""修改反弹shell事件的状态信息
 
         :param request: Request instance for ModifyReverseShellStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyReverseShellStatusRequest`
@@ -7001,7 +7001,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyRiskDnsEventStatus(self, request):
-        """编辑恶意请求事件状态
+        r"""编辑恶意请求事件状态
 
         :param request: Request instance for ModifyRiskDnsEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskDnsEventStatusRequest`
@@ -7024,7 +7024,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyRiskSyscallStatus(self, request):
-        """修改高危系统调用事件的状态信息
+        r"""修改高危系统调用事件的状态信息
 
         :param request: Request instance for ModifyRiskSyscallStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskSyscallStatusRequest`
@@ -7047,7 +7047,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogCleanSettingInfo(self, request):
-        """修改安全日志清理设置信息
+        r"""修改安全日志清理设置信息
 
         :param request: Request instance for ModifySecLogCleanSettingInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogCleanSettingInfoRequest`
@@ -7070,7 +7070,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogDeliveryClsSetting(self, request):
-        """更新安全日志-日志投递cls配置
+        r"""更新安全日志-日志投递cls配置
 
         :param request: Request instance for ModifySecLogDeliveryClsSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryClsSettingRequest`
@@ -7093,7 +7093,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogDeliveryKafkaSetting(self, request):
-        """更新安全日志投递kafka设置
+        r"""更新安全日志投递kafka设置
 
         :param request: Request instance for ModifySecLogDeliveryKafkaSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryKafkaSettingRequest`
@@ -7116,7 +7116,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogJoinObjects(self, request):
-        """修改安全日志接入对象
+        r"""修改安全日志接入对象
 
         :param request: Request instance for ModifySecLogJoinObjects.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinObjectsRequest`
@@ -7139,7 +7139,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogJoinState(self, request):
-        """修改安全日志接入状态
+        r"""修改安全日志接入状态
 
         :param request: Request instance for ModifySecLogJoinState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinStateRequest`
@@ -7162,7 +7162,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogKafkaUIN(self, request):
-        """修改安全日志kafkaUIN
+        r"""修改安全日志kafkaUIN
 
         :param request: Request instance for ModifySecLogKafkaUIN.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogKafkaUINRequest`
@@ -7185,7 +7185,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusAutoIsolateExampleSwitch(self, request):
-        """修改木马自动隔离样本开关
+        r"""修改木马自动隔离样本开关
 
         :param request: Request instance for ModifyVirusAutoIsolateExampleSwitch.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateExampleSwitchRequest`
@@ -7208,7 +7208,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusAutoIsolateSetting(self, request):
-        """修改木马自动隔离设置
+        r"""修改木马自动隔离设置
 
         :param request: Request instance for ModifyVirusAutoIsolateSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateSettingRequest`
@@ -7231,7 +7231,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusFileStatus(self, request):
-        """运行时更新木马文件事件状态
+        r"""运行时更新木马文件事件状态
 
         :param request: Request instance for ModifyVirusFileStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusFileStatusRequest`
@@ -7254,7 +7254,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusMonitorSetting(self, request):
-        """运行时更新文件查杀实时监控设置
+        r"""运行时更新文件查杀实时监控设置
 
         :param request: Request instance for ModifyVirusMonitorSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusMonitorSettingRequest`
@@ -7277,7 +7277,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusScanSetting(self, request):
-        """运行时更新文件查杀设置
+        r"""运行时更新文件查杀设置
 
         :param request: Request instance for ModifyVirusScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusScanSettingRequest`
@@ -7300,7 +7300,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusScanTimeoutSetting(self, request):
-        """运行时文件扫描超时设置
+        r"""运行时文件扫描超时设置
 
         :param request: Request instance for ModifyVirusScanTimeoutSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusScanTimeoutSettingRequest`
@@ -7323,7 +7323,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVulDefenceEventStatus(self, request):
-        """修改漏洞防御事件状态
+        r"""修改漏洞防御事件状态
 
         :param request: Request instance for ModifyVulDefenceEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceEventStatusRequest`
@@ -7346,7 +7346,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVulDefenceSetting(self, request):
-        """编辑漏洞防御设置
+        r"""编辑漏洞防御设置
 
         :param request: Request instance for ModifyVulDefenceSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceSettingRequest`
@@ -7369,7 +7369,7 @@ class TcssClient(AbstractClient):
 
 
     def OpenTcssTrial(self, request):
-        """开通容器安全服务试用
+        r"""开通容器安全服务试用
 
         :param request: Request instance for OpenTcssTrial.
         :type request: :class:`tencentcloud.tcss.v20201101.models.OpenTcssTrialRequest`
@@ -7392,7 +7392,7 @@ class TcssClient(AbstractClient):
 
 
     def RemoveAssetImageRegistryRegistryDetail(self, request):
-        """删除单个镜像仓库详细信息
+        r"""删除单个镜像仓库详细信息
 
         :param request: Request instance for RemoveAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.RemoveAssetImageRegistryRegistryDetailRequest`
@@ -7415,7 +7415,7 @@ class TcssClient(AbstractClient):
 
 
     def RenewImageAuthorizeState(self, request):
-        """RenewImageAuthorizeState   授权镜像扫描
+        r"""RenewImageAuthorizeState   授权镜像扫描
 
         :param request: Request instance for RenewImageAuthorizeState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.RenewImageAuthorizeStateRequest`
@@ -7438,7 +7438,7 @@ class TcssClient(AbstractClient):
 
 
     def ResetSecLogTopicConfig(self, request):
-        """重置安全日志主题设置
+        r"""重置安全日志主题设置
 
         :param request: Request instance for ResetSecLogTopicConfig.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ResetSecLogTopicConfigRequest`
@@ -7461,7 +7461,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceAssets(self, request):
-        """重新检测选定的资产
+        r"""重新检测选定的资产
 
         :param request: Request instance for ScanComplianceAssets.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceAssetsRequest`
@@ -7484,7 +7484,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceAssetsByPolicyItem(self, request):
-        """用指定的检测项重新检测选定的资产，返回创建的合规检查任务的ID。
+        r"""用指定的检测项重新检测选定的资产，返回创建的合规检查任务的ID。
 
         :param request: Request instance for ScanComplianceAssetsByPolicyItem.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceAssetsByPolicyItemRequest`
@@ -7507,7 +7507,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanCompliancePolicyItems(self, request):
-        """重新检测选的检测项下的所有资产，返回创建的合规检查任务的ID。
+        r"""重新检测选的检测项下的所有资产，返回创建的合规检查任务的ID。
 
         :param request: Request instance for ScanCompliancePolicyItems.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanCompliancePolicyItemsRequest`
@@ -7530,7 +7530,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceScanFailedAssets(self, request):
-        """重新检测选定的检测失败的资产下的所有失败的检测项，返回创建的合规检查任务的ID。
+        r"""重新检测选定的检测失败的资产下的所有失败的检测项，返回创建的合规检查任务的ID。
 
         :param request: Request instance for ScanComplianceScanFailedAssets.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceScanFailedAssetsRequest`
@@ -7553,7 +7553,7 @@ class TcssClient(AbstractClient):
 
 
     def SetCheckMode(self, request):
-        """设置检测模式和自动检查
+        r"""设置检测模式和自动检查
 
         :param request: Request instance for SetCheckMode.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SetCheckModeRequest`
@@ -7576,7 +7576,7 @@ class TcssClient(AbstractClient):
 
 
     def StopVirusScanTask(self, request):
-        """运行时停止木马查杀任务
+        r"""运行时停止木马查杀任务
 
         :param request: Request instance for StopVirusScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.StopVirusScanTaskRequest`
@@ -7599,7 +7599,7 @@ class TcssClient(AbstractClient):
 
 
     def StopVulScanTask(self, request):
-        """停止漏洞扫描任务
+        r"""停止漏洞扫描任务
 
         :param request: Request instance for StopVulScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.StopVulScanTaskRequest`
@@ -7622,7 +7622,7 @@ class TcssClient(AbstractClient):
 
 
     def SwitchImageAutoAuthorizedRule(self, request):
-        """编辑本地镜像自动授权开关
+        r"""编辑本地镜像自动授权开关
 
         :param request: Request instance for SwitchImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SwitchImageAutoAuthorizedRuleRequest`
@@ -7645,7 +7645,7 @@ class TcssClient(AbstractClient):
 
 
     def SyncAssetImageRegistryAsset(self, request):
-        """镜像仓库资产刷新
+        r"""镜像仓库资产刷新
 
         :param request: Request instance for SyncAssetImageRegistryAsset.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SyncAssetImageRegistryAssetRequest`
@@ -7668,7 +7668,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
-        """容器网络创建网络策略更新并发布任务
+        r"""容器网络创建网络策略更新并发布任务
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailRequest`
@@ -7691,7 +7691,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        """容器网络更新Yaml网络策略并发布任务
+        r"""容器网络更新Yaml网络策略并发布任务
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -7714,7 +7714,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAssetImageRegistryRegistryDetail(self, request):
-        """更新单个镜像仓库详细信息
+        r"""更新单个镜像仓库详细信息
 
         :param request: Request instance for UpdateAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAssetImageRegistryRegistryDetailRequest`
@@ -7737,7 +7737,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateImageRegistryTimingScanTask(self, request):
-        """镜像仓库更新定时任务
+        r"""镜像仓库更新定时任务
 
         :param request: Request instance for UpdateImageRegistryTimingScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateImageRegistryTimingScanTaskRequest`
@@ -7760,7 +7760,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyDetail(self, request):
-        """容器网络创建网络策略更新任务
+        r"""容器网络创建网络策略更新任务
 
         :param request: Request instance for UpdateNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailRequest`
@@ -7783,7 +7783,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyYamlDetail(self, request):
-        """容器网络更新Yaml网络策略任务
+        r"""容器网络更新Yaml网络策略任务
 
         :param request: Request instance for UpdateNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailRequest`

@@ -27,7 +27,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ActivateTWeCallLicense(self, request):
-        """激活
+        r"""激活
 
         :param request: Request instance for ActivateTWeCallLicense.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateTWeCallLicenseRequest`
@@ -49,8 +49,31 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchUpdateFirmware(self, request):
+        r"""本接口（BatchUpdateFirmware）用于批量更新设备固件
+
+        :param request: Request instance for BatchUpdateFirmware.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchUpdateFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchUpdateFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchUpdateFirmware", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchUpdateFirmwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindCloudStorageUser(self, request):
-        """绑定云存用户
+        r"""绑定云存用户
 
         :param request: Request instance for BindCloudStorageUser.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindCloudStorageUserRequest`
@@ -73,7 +96,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def BindDevices(self, request):
-        """批量绑定子设备
+        r"""批量绑定子设备
 
         :param request: Request instance for BindDevices.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindDevicesRequest`
@@ -96,7 +119,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def BindProducts(self, request):
-        """批量绑定子产品。
+        r"""批量绑定子产品。
 
         :param request: Request instance for BindProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindProductsRequest`
@@ -119,7 +142,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CallDeviceActionAsync(self, request):
-        """提供给用户异步调用设备行为的能力
+        r"""提供给用户异步调用设备行为的能力
 
         :param request: Request instance for CallDeviceActionAsync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionAsyncRequest`
@@ -142,7 +165,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CallDeviceActionSync(self, request):
-        """为用户提供同步调用设备行为的能力。
+        r"""为用户提供同步调用设备行为的能力。
 
         :param request: Request instance for CallDeviceActionSync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionSyncRequest`
@@ -165,7 +188,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CancelAssignTWeCallLicense(self, request):
-        """业务已下线
+        r"""业务已下线
 
         取消分配
 
@@ -190,7 +213,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ChangeP2PRoute(self, request):
-        """p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
+        r"""p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 
         :param request: Request instance for ChangeP2PRoute.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ChangeP2PRouteRequest`
@@ -213,7 +236,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CheckFirmwareUpdate(self, request):
-        """本接口（CheckFirmwareUpdate）用于查询设备可升级固件版本
+        r"""本接口（CheckFirmwareUpdate）用于查询设备可升级固件版本
 
         :param request: Request instance for CheckFirmwareUpdate.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CheckFirmwareUpdateRequest`
@@ -236,7 +259,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ControlDeviceData(self, request):
-        """根据设备产品ID、设备名称，设置控制设备的属性数据。
+        r"""根据设备产品ID、设备名称，设置控制设备的属性数据。
 
         :param request: Request instance for ControlDeviceData.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ControlDeviceDataRequest`
@@ -259,7 +282,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateAISearchTaskAsync(self, request):
-        """创建视频语义异步搜索任务
+        r"""创建视频语义异步搜索任务
 
         :param request: Request instance for CreateAISearchTaskAsync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateAISearchTaskAsyncRequest`
@@ -282,7 +305,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateBatchProduction(self, request):
-        """用于新建批量生产设备
+        r"""用于新建批量生产设备
 
         :param request: Request instance for CreateBatchProduction.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateBatchProductionRequest`
@@ -305,7 +328,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateCloudStorageAIService(self, request):
-        """开通设备云存AI分析服务
+        r"""开通设备云存AI分析服务
 
         :param request: Request instance for CreateCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceRequest`
@@ -328,7 +351,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateCloudStorageAIServiceTask(self, request):
-        """创建设备云存 AI 分析任务
+        r"""创建设备云存 AI 分析任务
 
         :param request: Request instance for CreateCloudStorageAIServiceTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceTaskRequest`
@@ -351,7 +374,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateDevice(self, request):
-        """创建设备
+        r"""创建设备
 
         :param request: Request instance for CreateDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceRequest`
@@ -374,7 +397,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateDeviceChannel(self, request):
-        """创建设备通道
+        r"""创建设备通道
 
         :param request: Request instance for CreateDeviceChannel.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceChannelRequest`
@@ -397,7 +420,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateExternalSourceAIServiceTask(self, request):
-        """创建外部视频 AI 分析任务
+        r"""创建外部视频 AI 分析任务
 
         :param request: Request instance for CreateExternalSourceAIServiceTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateExternalSourceAIServiceTaskRequest`
@@ -420,7 +443,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateFenceBind(self, request):
-        """> 创建围栏绑定信息。
+        r"""> 创建围栏绑定信息。
 
         :param request: Request instance for CreateFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFenceBindRequest`
@@ -443,7 +466,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateFreeCloudStorage(self, request):
-        """开通云存卡服务
+        r"""开通云存卡服务
 
         :param request: Request instance for CreateFreeCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFreeCloudStorageRequest`
@@ -466,7 +489,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateIotVideoCloudStorage(self, request):
-        """开通云存服务
+        r"""开通云存服务
 
         :param request: Request instance for CreateIotVideoCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateIotVideoCloudStorageRequest`
@@ -489,7 +512,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateLoRaFrequency(self, request):
-        """创建 LoRa 自定义频点
+        r"""创建 LoRa 自定义频点
 
         :param request: Request instance for CreateLoRaFrequency.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateLoRaFrequencyRequest`
@@ -512,7 +535,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateLoRaGateway(self, request):
-        """创建新 LoRa 网关设备接口
+        r"""创建新 LoRa 网关设备接口
 
         :param request: Request instance for CreateLoRaGateway.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateLoRaGatewayRequest`
@@ -534,8 +557,31 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOtaModule(self, request):
+        r"""本接口（CreateOtaModule）用于新建OTA模块
+
+        :param request: Request instance for CreateOtaModule.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateOtaModuleRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateOtaModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOtaModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOtaModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePositionFence(self, request):
-        """创建围栏。
+        r"""创建围栏。
 
         :param request: Request instance for CreatePositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionFenceRequest`
@@ -558,7 +604,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreatePositionSpace(self, request):
-        """创建位置空间。
+        r"""创建位置空间。
 
         :param request: Request instance for CreatePositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionSpaceRequest`
@@ -581,7 +627,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """为用户提供新建项目的能力，用于集中管理产品和应用。
+        r"""为用户提供新建项目的能力，用于集中管理产品和应用。
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateProjectRequest`
@@ -604,7 +650,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateStudioProduct(self, request):
-        """为用户提供新建产品的能力，用于管理用户的设备
+        r"""为用户提供新建产品的能力，用于管理用户的设备
 
         :param request: Request instance for CreateStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateStudioProductRequest`
@@ -627,7 +673,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateTRTCSignaturesWithRoomId(self, request):
-        """创建TRTC通话参数
+        r"""创建TRTC通话参数
 
         :param request: Request instance for CreateTRTCSignaturesWithRoomId.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTRTCSignaturesWithRoomIdRequest`
@@ -650,7 +696,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateTWeSeeRecognitionTask(self, request):
-        """创建 TWeSee 语义理解任务
+        r"""创建 TWeSee 语义理解任务
 
         :param request: Request instance for CreateTWeSeeRecognitionTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeRecognitionTaskRequest`
@@ -673,7 +719,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateTWeTalkProductConfig(self, request):
-        """用于配置TWeTalk服务连接产品配置信息。
+        r"""用于配置TWeTalk服务连接产品配置信息。
 
         :param request: Request instance for CreateTWeTalkProductConfig.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeTalkProductConfigRequest`
@@ -696,7 +742,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateTopicPolicy(self, request):
-        """本接口（CreateTopicPolicy）用于创建一个Topic
+        r"""本接口（CreateTopicPolicy）用于创建一个Topic
 
         :param request: Request instance for CreateTopicPolicy.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTopicPolicyRequest`
@@ -719,7 +765,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateTopicRule(self, request):
-        """创建规则
+        r"""创建规则
 
         :param request: Request instance for CreateTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTopicRuleRequest`
@@ -742,7 +788,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteCloudStorageEvent(self, request):
-        """删除云存事件
+        r"""删除云存事件
 
         :param request: Request instance for DeleteCloudStorageEvent.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteCloudStorageEventRequest`
@@ -765,7 +811,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """删除设备
+        r"""删除设备
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDeviceRequest`
@@ -788,7 +834,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteDevices(self, request):
-        """批量删除设备
+        r"""批量删除设备
 
         :param request: Request instance for DeleteDevices.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDevicesRequest`
@@ -811,7 +857,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteFenceBind(self, request):
-        """删除围栏绑定信息。
+        r"""删除围栏绑定信息。
 
         :param request: Request instance for DeleteFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteFenceBindRequest`
@@ -834,7 +880,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteLoRaFrequency(self, request):
-        """提供删除LoRa自定义频点的能力
+        r"""提供删除LoRa自定义频点的能力
 
         :param request: Request instance for DeleteLoRaFrequency.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteLoRaFrequencyRequest`
@@ -857,7 +903,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteLoRaGateway(self, request):
-        """删除  LoRa 网关的接口
+        r"""删除  LoRa 网关的接口
 
         :param request: Request instance for DeleteLoRaGateway.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteLoRaGatewayRequest`
@@ -879,8 +925,31 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteOtaModule(self, request):
+        r"""本接口（DeleteOtaModule）用于删除OTA模块
+
+        :param request: Request instance for DeleteOtaModule.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteOtaModuleRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteOtaModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOtaModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOtaModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePositionFence(self, request):
-        """删除围栏。
+        r"""删除围栏。
 
         :param request: Request instance for DeletePositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionFenceRequest`
@@ -903,7 +972,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeletePositionSpace(self, request):
-        """删除位置空间。
+        r"""删除位置空间。
 
         :param request: Request instance for DeletePositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionSpaceRequest`
@@ -926,7 +995,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """提供删除某个项目的能力。
+        r"""提供删除某个项目的能力。
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteProjectRequest`
@@ -949,7 +1018,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteStudioProduct(self, request):
-        """提供删除某个项目下产品的能力
+        r"""提供删除某个项目下产品的能力
 
         :param request: Request instance for DeleteStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteStudioProductRequest`
@@ -972,7 +1041,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteTopicPolicy(self, request):
-        """本接口（DeleteTopicPolicy）用于删除Topic
+        r"""本接口（DeleteTopicPolicy）用于删除Topic
 
         :param request: Request instance for DeleteTopicPolicy.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTopicPolicyRequest`
@@ -995,7 +1064,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteTopicRule(self, request):
-        """删除规则。
+        r"""删除规则。
 
         :param request: Request instance for DeleteTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTopicRuleRequest`
@@ -1018,7 +1087,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeAISearchTaskAsync(self, request):
-        """获取视频语义异步搜索任务详情
+        r"""获取视频语义异步搜索任务详情
 
         :param request: Request instance for DescribeAISearchTaskAsync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeAISearchTaskAsyncRequest`
@@ -1041,7 +1110,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeActivateDevice(self, request):
-        """获取设备激活详情
+        r"""获取设备激活详情
 
         :param request: Request instance for DescribeActivateDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateDeviceRequest`
@@ -1064,7 +1133,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeActivateLicenseService(self, request):
-        """获取增值服务激活码详情
+        r"""获取增值服务激活码详情
 
         :param request: Request instance for DescribeActivateLicenseService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateLicenseServiceRequest`
@@ -1087,7 +1156,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeBatchProduction(self, request):
-        """获取量产详情信息。
+        r"""获取量产详情信息。
 
         :param request: Request instance for DescribeBatchProduction.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeBatchProductionRequest`
@@ -1110,7 +1179,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeBindedProducts(self, request):
-        """获取网关产品已经绑定的子产品
+        r"""获取网关产品已经绑定的子产品
 
         :param request: Request instance for DescribeBindedProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeBindedProductsRequest`
@@ -1133,7 +1202,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorage(self, request):
-        """获取设备云存服务详情
+        r"""获取设备云存服务详情
 
         :param request: Request instance for DescribeCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageRequest`
@@ -1156,7 +1225,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageAIService(self, request):
-        """查询指定设备的云存 AI 服务开通状态与参数配置
+        r"""查询指定设备的云存 AI 服务开通状态与参数配置
 
         :param request: Request instance for DescribeCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceRequest`
@@ -1179,7 +1248,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageAIServiceCallback(self, request):
-        """查询云存AI分析回调配置
+        r"""查询云存AI分析回调配置
 
         :param request: Request instance for DescribeCloudStorageAIServiceCallback.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceCallbackRequest`
@@ -1202,7 +1271,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageAIServiceTask(self, request):
-        """查询指定的云存 AI 分析任务
+        r"""查询指定的云存 AI 分析任务
 
         :param request: Request instance for DescribeCloudStorageAIServiceTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTaskRequest`
@@ -1225,7 +1294,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageAIServiceTasks(self, request):
-        """查询指定设备的云存 AI 分析任务列表
+        r"""查询指定设备的云存 AI 分析任务列表
 
         :param request: Request instance for DescribeCloudStorageAIServiceTasks.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTasksRequest`
@@ -1248,7 +1317,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageDate(self, request):
-        """获取具有云存的日期
+        r"""获取具有云存的日期
 
         :param request: Request instance for DescribeCloudStorageDate.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageDateRequest`
@@ -1271,7 +1340,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageEvents(self, request):
-        """拉取云存事件列表
+        r"""拉取云存事件列表
 
         :param request: Request instance for DescribeCloudStorageEvents.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsRequest`
@@ -1294,7 +1363,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageEventsWithAITasks(self, request):
-        """拉取云存事件列表
+        r"""拉取云存事件列表
 
         :param request: Request instance for DescribeCloudStorageEventsWithAITasks.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsWithAITasksRequest`
@@ -1317,7 +1386,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageMultiThumbnail(self, request):
-        """拉取多个云存事件缩略图
+        r"""拉取多个云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageMultiThumbnail.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageMultiThumbnailRequest`
@@ -1340,7 +1409,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageOrder(self, request):
-        """查询云存服务详情
+        r"""查询云存服务详情
 
         :param request: Request instance for DescribeCloudStorageOrder.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageOrderRequest`
@@ -1363,7 +1432,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStoragePackageConsumeDetails(self, request):
-        """获取云存套餐包消耗详细记录
+        r"""获取云存套餐包消耗详细记录
 
         :param request: Request instance for DescribeCloudStoragePackageConsumeDetails.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeDetailsRequest`
@@ -1386,7 +1455,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStoragePackageConsumeStats(self, request):
-        """获取云存套餐包消耗统计
+        r"""获取云存套餐包消耗统计
 
         :param request: Request instance for DescribeCloudStoragePackageConsumeStats.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeStatsRequest`
@@ -1409,7 +1478,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageStreamData(self, request):
-        """获取设备图片流数据
+        r"""获取设备图片流数据
 
         :param request: Request instance for DescribeCloudStorageStreamData.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageStreamDataRequest`
@@ -1432,7 +1501,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageThumbnail(self, request):
-        """拉取云存事件缩略图
+        r"""拉取云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageThumbnail.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailRequest`
@@ -1455,7 +1524,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageThumbnailList(self, request):
-        """批量拉取云存事件缩略图
+        r"""批量拉取云存事件缩略图
 
         :param request: Request instance for DescribeCloudStorageThumbnailList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailListRequest`
@@ -1478,7 +1547,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageTime(self, request):
-        """获取某一天云存时间轴
+        r"""获取某一天云存时间轴
 
         :param request: Request instance for DescribeCloudStorageTime.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageTimeRequest`
@@ -1501,7 +1570,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCloudStorageUsers(self, request):
-        """拉取云存用户列表
+        r"""拉取云存用户列表
 
         :param request: Request instance for DescribeCloudStorageUsers.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageUsersRequest`
@@ -1524,7 +1593,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeCsReportCountDataInfo(self, request):
-        """获取云存上报统计信息
+        r"""获取云存上报统计信息
 
         :param request: Request instance for DescribeCsReportCountDataInfo.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCsReportCountDataInfoRequest`
@@ -1547,7 +1616,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDevice(self, request):
-        """用于查看某个设备的详细信息
+        r"""用于查看某个设备的详细信息
 
         :param request: Request instance for DescribeDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceRequest`
@@ -1570,7 +1639,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceBindGateway(self, request):
-        """查询设备绑定的网关设备
+        r"""查询设备绑定的网关设备
 
         :param request: Request instance for DescribeDeviceBindGateway.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceBindGatewayRequest`
@@ -1593,7 +1662,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceData(self, request):
-        """根据设备产品ID、设备名称，获取设备上报的属性数据。
+        r"""根据设备产品ID、设备名称，获取设备上报的属性数据。
 
         :param request: Request instance for DescribeDeviceData.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceDataRequest`
@@ -1616,7 +1685,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceDataHistory(self, request):
-        """获取设备在指定时间范围内上报的历史数据。
+        r"""获取设备在指定时间范围内上报的历史数据。
 
         :param request: Request instance for DescribeDeviceDataHistory.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceDataHistoryRequest`
@@ -1639,7 +1708,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceFirmWare(self, request):
-        """获取设备固件信息
+        r"""获取设备固件信息
 
         :param request: Request instance for DescribeDeviceFirmWare.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceFirmWareRequest`
@@ -1662,7 +1731,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceFirmwares(self, request):
-        """获取设备当前固件信息
+        r"""获取设备当前固件信息
 
         :param request: Request instance for DescribeDeviceFirmwares.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceFirmwaresRequest`
@@ -1685,7 +1754,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDeviceLocationSolve(self, request):
-        """获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
+        r"""获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
 
         获取实时位置解析
 
@@ -1710,7 +1779,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDevicePackages(self, request):
-        """根据设备信息拉取有效套餐列表
+        r"""根据设备信息拉取有效套餐列表
 
         :param request: Request instance for DescribeDevicePackages.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePackagesRequest`
@@ -1733,7 +1802,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeDevicePositionList(self, request):
-        """获取设备位置列表
+        r"""获取设备位置列表
 
         :param request: Request instance for DescribeDevicePositionList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePositionListRequest`
@@ -1756,7 +1825,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFenceBindList(self, request):
-        """获取围栏绑定信息列表。
+        r"""获取围栏绑定信息列表。
 
         :param request: Request instance for DescribeFenceBindList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceBindListRequest`
@@ -1779,7 +1848,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFenceEventList(self, request):
-        """获取围栏告警事件列表。
+        r"""获取围栏告警事件列表。
 
         :param request: Request instance for DescribeFenceEventList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceEventListRequest`
@@ -1802,7 +1871,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFirmware(self, request):
-        """查询固件信息
+        r"""查询固件信息
 
         :param request: Request instance for DescribeFirmware.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareRequest`
@@ -1825,7 +1894,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFirmwareTask(self, request):
-        """查询固件升级任务列表
+        r"""查询固件升级任务列表
 
         :param request: Request instance for DescribeFirmwareTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTaskRequest`
@@ -1847,8 +1916,54 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFirmwareTaskDevices(self, request):
+        r"""查询固件升级任务的设备列表
+
+        :param request: Request instance for DescribeFirmwareTaskDevices.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTaskDevicesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTaskDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFirmwareTaskDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFirmwareTaskDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFirmwareTasks(self, request):
+        r"""搜索固件升级任务列表
+
+        :param request: Request instance for DescribeFirmwareTasks.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTasksRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFirmwareTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFirmwareTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFirmwareUpdateStatus(self, request):
-        """本接口（DescribeFirmwareUpdateStatus）用于查询设备固件升级状态及进度。
+        r"""本接口（DescribeFirmwareUpdateStatus）用于查询设备固件升级状态及进度。
 
         :param request: Request instance for DescribeFirmwareUpdateStatus.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareUpdateStatusRequest`
@@ -1871,7 +1986,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFreeCloudStorageNum(self, request):
-        """查询云存卡套餐信息
+        r"""查询云存卡套餐信息
 
         :param request: Request instance for DescribeFreeCloudStorageNum.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFreeCloudStorageNumRequest`
@@ -1894,7 +2009,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeGatewayBindDevices(self, request):
-        """获取网关绑定的子设备列表
+        r"""获取网关绑定的子设备列表
 
         :param request: Request instance for DescribeGatewayBindDevices.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewayBindDevicesRequest`
@@ -1917,7 +2032,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeGatewaySubDeviceList(self, request):
-        """查询绑定到家庭的网关设备的子设备列表
+        r"""查询绑定到家庭的网关设备的子设备列表
 
         :param request: Request instance for DescribeGatewaySubDeviceList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewaySubDeviceListRequest`
@@ -1940,7 +2055,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeGatewaySubProducts(self, request):
-        """用于获取网关可绑定或解绑的子产品。
+        r"""用于获取网关可绑定或解绑的子产品。
 
         :param request: Request instance for DescribeGatewaySubProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewaySubProductsRequest`
@@ -1963,7 +2078,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+        r"""公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeInstanceRequest`
@@ -1986,7 +2101,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeLoRaFrequency(self, request):
-        """提供查询LoRa自定义频点详情的能力
+        r"""提供查询LoRa自定义频点详情的能力
 
         :param request: Request instance for DescribeLoRaFrequency.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeLoRaFrequencyRequest`
@@ -2009,7 +2124,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeModelDefinition(self, request):
-        """查询产品配置的数据模板信息
+        r"""查询产品配置的数据模板信息
 
         :param request: Request instance for DescribeModelDefinition.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeModelDefinitionRequest`
@@ -2032,7 +2147,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeP2PRoute(self, request):
-        """当前p2p线路
+        r"""当前p2p线路
 
         :param request: Request instance for DescribeP2PRoute.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeP2PRouteRequest`
@@ -2055,7 +2170,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribePackageConsumeTask(self, request):
-        """查询套餐消耗记录详情
+        r"""查询套餐消耗记录详情
 
         :param request: Request instance for DescribePackageConsumeTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTaskRequest`
@@ -2078,7 +2193,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribePackageConsumeTasks(self, request):
-        """查询套餐消耗记录列表
+        r"""查询套餐消耗记录列表
 
         :param request: Request instance for DescribePackageConsumeTasks.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTasksRequest`
@@ -2101,7 +2216,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribePositionFenceList(self, request):
-        """获取围栏列表
+        r"""获取围栏列表
 
         :param request: Request instance for DescribePositionFenceList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePositionFenceListRequest`
@@ -2124,7 +2239,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeProductCloudStorageAIService(self, request):
-        """查询指定产品的云存 AI 服务开通状态
+        r"""查询指定产品的云存 AI 服务开通状态
 
         :param request: Request instance for DescribeProductCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductCloudStorageAIServiceRequest`
@@ -2147,7 +2262,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeProject(self, request):
-        """查询项目详情
+        r"""查询项目详情
 
         :param request: Request instance for DescribeProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProjectRequest`
@@ -2170,7 +2285,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeSpaceFenceEventList(self, request):
-        """获取位置空间中围栏告警事件列表。
+        r"""获取位置空间中围栏告警事件列表。
 
         :param request: Request instance for DescribeSpaceFenceEventList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSpaceFenceEventListRequest`
@@ -2193,7 +2308,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeStudioProduct(self, request):
-        """提供查看产品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
+        r"""提供查看产品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
 
         :param request: Request instance for DescribeStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeStudioProductRequest`
@@ -2216,7 +2331,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeTWeSeeConfig(self, request):
-        """拉取 TWeSee 配置
+        r"""拉取 TWeSee 配置
 
         :param request: Request instance for DescribeTWeSeeConfig.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeConfigRequest`
@@ -2239,7 +2354,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeTWeSeeRecognitionTask(self, request):
-        """查询 TWeSee 语义理解任务
+        r"""查询 TWeSee 语义理解任务
 
         :param request: Request instance for DescribeTWeSeeRecognitionTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeRecognitionTaskRequest`
@@ -2262,7 +2377,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeTWeTalkProductConfig(self, request):
-        """用于获取TWeTalk服务连接产品配置信息。
+        r"""用于获取TWeTalk服务连接产品配置信息。
 
         :param request: Request instance for DescribeTWeTalkProductConfig.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeTalkProductConfigRequest`
@@ -2285,7 +2400,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeTopicPolicy(self, request):
-        """本接口（DescribeTopicPolicy）用于查看Topic详细信息
+        r"""本接口（DescribeTopicPolicy）用于查看Topic详细信息
 
         :param request: Request instance for DescribeTopicPolicy.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTopicPolicyRequest`
@@ -2308,7 +2423,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeTopicRule(self, request):
-        """获取规则信息
+        r"""获取规则信息
 
         :param request: Request instance for DescribeTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTopicRuleRequest`
@@ -2331,7 +2446,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeUnbindedDevices(self, request):
-        """获取未绑定的设备列表
+        r"""获取未绑定的设备列表
 
         :param request: Request instance for DescribeUnbindedDevices.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeUnbindedDevicesRequest`
@@ -2354,7 +2469,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeVideoLicense(self, request):
-        """用于查询视频激活码统计概览
+        r"""用于查询视频激活码统计概览
 
         :param request: Request instance for DescribeVideoLicense.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeVideoLicenseRequest`
@@ -2377,7 +2492,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DirectBindDeviceInFamily(self, request):
-        """直接绑定设备和家庭
+        r"""直接绑定设备和家庭
 
         :param request: Request instance for DirectBindDeviceInFamily.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DirectBindDeviceInFamilyRequest`
@@ -2400,7 +2515,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DisableTopicRule(self, request):
-        """禁用规则
+        r"""禁用规则
 
         :param request: Request instance for DisableTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DisableTopicRuleRequest`
@@ -2423,7 +2538,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DismissRoomByStrRoomIdFromTRTC(self, request):
-        """解散TRTC房间
+        r"""解散TRTC房间
 
         :param request: Request instance for DismissRoomByStrRoomIdFromTRTC.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DismissRoomByStrRoomIdFromTRTCRequest`
@@ -2446,7 +2561,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def EnableTopicRule(self, request):
-        """启用规则
+        r"""启用规则
 
         :param request: Request instance for EnableTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.EnableTopicRuleRequest`
@@ -2469,7 +2584,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GenSingleDeviceSignatureOfPublic(self, request):
-        """无
+        r"""无
 
         :param request: Request instance for GenSingleDeviceSignatureOfPublic.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenSingleDeviceSignatureOfPublicRequest`
@@ -2492,7 +2607,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GenerateCloudStorageAIServiceTaskFileURL(self, request):
-        """获取云存 AI 分析任务输出文件的下载地址
+        r"""获取云存 AI 分析任务输出文件的下载地址
 
         :param request: Request instance for GenerateCloudStorageAIServiceTaskFileURL.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateCloudStorageAIServiceTaskFileURLRequest`
@@ -2515,7 +2630,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GenerateSignedVideoURL(self, request):
-        """获取视频防盗链播放URL
+        r"""获取视频防盗链播放URL
 
         :param request: Request instance for GenerateSignedVideoURL.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateSignedVideoURLRequest`
@@ -2538,7 +2653,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetAuthMiniProgramAppList(self, request):
-        """查询小程序列表
+        r"""查询小程序列表
 
         :param request: Request instance for GetAuthMiniProgramAppList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetAuthMiniProgramAppListRequest`
@@ -2561,7 +2676,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetBatchProductionsList(self, request):
-        """列出量产数据列表信息。
+        r"""列出量产数据列表信息。
 
         :param request: Request instance for GetBatchProductionsList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetBatchProductionsListRequest`
@@ -2584,7 +2699,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetCOSURL(self, request):
-        """本接口（GetCOSURL）用于获取固件COS存储的上传请求URL地址
+        r"""本接口（GetCOSURL）用于获取固件COS存储的上传请求URL地址
 
         :param request: Request instance for GetCOSURL.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetCOSURLRequest`
@@ -2607,7 +2722,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetDeviceList(self, request):
-        """用于查询某个产品下的设备列表
+        r"""用于查询某个产品下的设备列表
 
         :param request: Request instance for GetDeviceList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceListRequest`
@@ -2630,7 +2745,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetDeviceLocationHistory(self, request):
-        """获取设备历史位置
+        r"""获取设备历史位置
 
         :param request: Request instance for GetDeviceLocationHistory.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceLocationHistoryRequest`
@@ -2653,7 +2768,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetDeviceSumStatistics(self, request):
-        """拉取设备统计汇总数据
+        r"""拉取设备统计汇总数据
 
         :param request: Request instance for GetDeviceSumStatistics.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceSumStatisticsRequest`
@@ -2676,7 +2791,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetFamilyDeviceUserList(self, request):
-        """用于获取设备绑定的用户列表
+        r"""用于获取设备绑定的用户列表
 
         :param request: Request instance for GetFamilyDeviceUserList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetFamilyDeviceUserListRequest`
@@ -2699,7 +2814,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetGatewaySubDeviceList(self, request):
-        """获取指定网关设备的子设备列表
+        r"""获取指定网关设备的子设备列表
 
         :param request: Request instance for GetGatewaySubDeviceList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetGatewaySubDeviceListRequest`
@@ -2722,7 +2837,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetLoRaGatewayList(self, request):
-        """获取 LoRa 网关列表接口
+        r"""获取 LoRa 网关列表接口
 
         :param request: Request instance for GetLoRaGatewayList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetLoRaGatewayListRequest`
@@ -2745,7 +2860,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetPositionSpaceList(self, request):
-        """获取位置空间列表
+        r"""获取位置空间列表
 
         :param request: Request instance for GetPositionSpaceList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetPositionSpaceListRequest`
@@ -2768,7 +2883,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetProjectList(self, request):
-        """提供查询用户所创建的项目列表查询功能。
+        r"""提供查询用户所创建的项目列表查询功能。
 
         :param request: Request instance for GetProjectList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetProjectListRequest`
@@ -2791,7 +2906,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetStudioProductList(self, request):
-        """提供查询某个项目下所有产品信息的能力。
+        r"""提供查询某个项目下所有产品信息的能力。
 
         :param request: Request instance for GetStudioProductList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetStudioProductListRequest`
@@ -2814,7 +2929,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetTWeCallActiveStatus(self, request):
-        """查询激活状态
+        r"""查询激活状态
 
         :param request: Request instance for GetTWeCallActiveStatus.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallActiveStatusRequest`
@@ -2837,7 +2952,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetTWeTalkProductConfigList(self, request):
-        """用于获取TWeTalk服务连接产品配置信息列表。
+        r"""用于获取TWeTalk服务连接产品配置信息列表。
 
         :param request: Request instance for GetTWeTalkProductConfigList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkProductConfigListRequest`
@@ -2860,7 +2975,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetTopicRuleList(self, request):
-        """获取规则列表
+        r"""获取规则列表
 
         :param request: Request instance for GetTopicRuleList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTopicRuleListRequest`
@@ -2883,7 +2998,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetWechatDeviceTicket(self, request):
-        """查询微信设备授权票据
+        r"""查询微信设备授权票据
 
         :param request: Request instance for GetWechatDeviceTicket.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetWechatDeviceTicketRequest`
@@ -2906,7 +3021,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InheritCloudStorageUser(self, request):
-        """继承云存用户
+        r"""继承云存用户
 
         :param request: Request instance for InheritCloudStorageUser.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InheritCloudStorageUserRequest`
@@ -2929,7 +3044,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeAISearchService(self, request):
-        """视频语义搜索
+        r"""视频语义搜索
 
         :param request: Request instance for InvokeAISearchService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeAISearchServiceRequest`
@@ -2952,7 +3067,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeCloudStorageAIServiceTask(self, request):
-        """同步执行设备云存 AI 分析任务
+        r"""同步执行设备云存 AI 分析任务
 
         :param request: Request instance for InvokeCloudStorageAIServiceTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeCloudStorageAIServiceTaskRequest`
@@ -2975,7 +3090,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeExternalSourceAIServiceTask(self, request):
-        """创建外部视频 AI 分析任务
+        r"""创建外部视频 AI 分析任务
 
         :param request: Request instance for InvokeExternalSourceAIServiceTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeExternalSourceAIServiceTaskRequest`
@@ -2998,7 +3113,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeTWeSeeRecognitionTask(self, request):
-        """同步执行 TWeSee 语义理解任务
+        r"""同步执行 TWeSee 语义理解任务
 
         :param request: Request instance for InvokeTWeSeeRecognitionTask.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskRequest`
@@ -3021,7 +3136,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeVideosKeywordsAnalyzer(self, request):
-        """获取某个时间段的视频内容关键字
+        r"""获取某个时间段的视频内容关键字
 
         :param request: Request instance for InvokeVideosKeywordsAnalyzer.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeVideosKeywordsAnalyzerRequest`
@@ -3044,7 +3159,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ListEventHistory(self, request):
-        """获取设备的历史事件
+        r"""获取设备的历史事件
 
         :param request: Request instance for ListEventHistory.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListEventHistoryRequest`
@@ -3067,7 +3182,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ListFirmwares(self, request):
-        """本接口（ListFirmwares）用于获取固件列表
+        r"""本接口（ListFirmwares）用于获取固件列表
 
         :param request: Request instance for ListFirmwares.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListFirmwaresRequest`
@@ -3089,8 +3204,54 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListOtaModules(self, request):
+        r"""本接口（ListOtaModules）用于获取OTA模块列表
+
+        :param request: Request instance for ListOtaModules.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListOtaModulesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListOtaModulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOtaModules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOtaModulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListProductOtaModules(self, request):
+        r"""本接口（ListProductOtaModules）用于获取产品OTA模块列表
+
+        :param request: Request instance for ListProductOtaModules.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListProductOtaModulesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListProductOtaModulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListProductOtaModules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListProductOtaModulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTopicPolicy(self, request):
-        """本接口（ListTopicPolicy）用于获取Topic列表
+        r"""本接口（ListTopicPolicy）用于获取Topic列表
 
         :param request: Request instance for ListTopicPolicy.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListTopicPolicyRequest`
@@ -3113,7 +3274,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """更新应用信息
+        r"""更新应用信息
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyApplicationRequest`
@@ -3136,7 +3297,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyCloudStorageAIService(self, request):
-        """修改指定设备的云存 AI 服务参数配置
+        r"""修改指定设备的云存 AI 服务参数配置
 
         :param request: Request instance for ModifyCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceRequest`
@@ -3159,7 +3320,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyCloudStorageAIServiceCallback(self, request):
-        """修改云存AI分析回调配置
+        r"""修改云存AI分析回调配置
 
         :param request: Request instance for ModifyCloudStorageAIServiceCallback.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceCallbackRequest`
@@ -3182,7 +3343,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyFenceBind(self, request):
-        """更新围栏绑定信息。
+        r"""更新围栏绑定信息。
 
         :param request: Request instance for ModifyFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyFenceBindRequest`
@@ -3205,7 +3366,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyLoRaFrequency(self, request):
-        """修改LoRa自定义频点
+        r"""修改LoRa自定义频点
 
         :param request: Request instance for ModifyLoRaFrequency.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyLoRaFrequencyRequest`
@@ -3228,7 +3389,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyLoRaGateway(self, request):
-        """修改 LoRa 网关信息
+        r"""修改 LoRa 网关信息
 
         :param request: Request instance for ModifyLoRaGateway.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyLoRaGatewayRequest`
@@ -3251,7 +3412,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyModelDefinition(self, request):
-        """提供修改产品的数据模板的能力
+        r"""提供修改产品的数据模板的能力
 
         :param request: Request instance for ModifyModelDefinition.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyModelDefinitionRequest`
@@ -3274,7 +3435,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyPositionFence(self, request):
-        """更新围栏。
+        r"""更新围栏。
 
         :param request: Request instance for ModifyPositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionFenceRequest`
@@ -3297,7 +3458,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyPositionSpace(self, request):
-        """更新位置空间。
+        r"""更新位置空间。
 
         :param request: Request instance for ModifyPositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionSpaceRequest`
@@ -3320,7 +3481,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyProductCloudStorageAIService(self, request):
-        """修改指定产品的云存 AI 服务开通状态
+        r"""修改指定产品的云存 AI 服务开通状态
 
         :param request: Request instance for ModifyProductCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProductCloudStorageAIServiceRequest`
@@ -3343,7 +3504,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改项目。
+        r"""修改项目。
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProjectRequest`
@@ -3366,7 +3527,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifySpaceProperty(self, request):
-        """更新位置空间产品属性
+        r"""更新位置空间产品属性
 
         :param request: Request instance for ModifySpaceProperty.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifySpacePropertyRequest`
@@ -3389,7 +3550,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyStudioProduct(self, request):
-        """提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
+        r"""提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
 
         :param request: Request instance for ModifyStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyStudioProductRequest`
@@ -3412,7 +3573,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyTWeSeeConfig(self, request):
-        """修改 TWeSee 配置
+        r"""修改 TWeSee 配置
 
         :param request: Request instance for ModifyTWeSeeConfig.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeSeeConfigRequest`
@@ -3435,7 +3596,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyTWeTalkProductConfig(self, request):
-        """用于修改TWeTalk服务连接产品配置信息。
+        r"""用于修改TWeTalk服务连接产品配置信息。
 
         :param request: Request instance for ModifyTWeTalkProductConfig.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeTalkProductConfigRequest`
@@ -3458,7 +3619,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyTopicPolicy(self, request):
-        """本接口（UpdateTopicPolicy）用于更新Topic信息
+        r"""本接口（UpdateTopicPolicy）用于更新Topic信息
 
         :param request: Request instance for ModifyTopicPolicy.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTopicPolicyRequest`
@@ -3481,7 +3642,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyTopicRule(self, request):
-        """修改规则
+        r"""修改规则
 
         :param request: Request instance for ModifyTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTopicRuleRequest`
@@ -3504,7 +3665,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def PauseTWeCallDevice(self, request):
-        """暂停设备
+        r"""暂停设备
 
         :param request: Request instance for PauseTWeCallDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PauseTWeCallDeviceRequest`
@@ -3527,7 +3688,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishBroadcastMessage(self, request):
-        """发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+        r"""发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
 
         发布广播消息
 
@@ -3552,7 +3713,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishFirmwareUpdateMessage(self, request):
-        """本接口（PublishFirmwareUpdateMessage）用于用户确认升级后，云端向设备发起固件升级请求。
+        r"""本接口（PublishFirmwareUpdateMessage）用于用户确认升级后，云端向设备发起固件升级请求。
 
         :param request: Request instance for PublishFirmwareUpdateMessage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishFirmwareUpdateMessageRequest`
@@ -3575,7 +3736,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishMessage(self, request):
-        """本接口（PublishMessage）用于使用自定义透传协议进行设备远控
+        r"""本接口（PublishMessage）用于使用自定义透传协议进行设备远控
 
         :param request: Request instance for PublishMessage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishMessageRequest`
@@ -3598,7 +3759,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishRRPCMessage(self, request):
-        """发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+        r"""发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
 
         下发RRPC消息
 
@@ -3623,7 +3784,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ReleaseStudioProduct(self, request):
-        """产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
+        r"""产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
 
         :param request: Request instance for ReleaseStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ReleaseStudioProductRequest`
@@ -3646,7 +3807,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def RemoveUserByRoomIdFromTRTC(self, request):
-        """TRTC操作，将用户从房间移出
+        r"""TRTC操作，将用户从房间移出
 
         :param request: Request instance for RemoveUserByRoomIdFromTRTC.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.RemoveUserByRoomIdFromTRTCRequest`
@@ -3669,7 +3830,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ResetCloudStorage(self, request):
-        """重置云存服务
+        r"""重置云存服务
 
         :param request: Request instance for ResetCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageRequest`
@@ -3692,7 +3853,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ResetCloudStorageAIService(self, request):
-        """重置指定设备的云存 AI 服务
+        r"""重置指定设备的云存 AI 服务
 
         :param request: Request instance for ResetCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageAIServiceRequest`
@@ -3715,7 +3876,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ResetCloudStorageEvent(self, request):
-        """重置云存事件
+        r"""重置云存事件
 
         :param request: Request instance for ResetCloudStorageEvent.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageEventRequest`
@@ -3738,7 +3899,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ResetTWeCallDevice(self, request):
-        """重置设备
+        r"""重置设备
 
         :param request: Request instance for ResetTWeCallDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetTWeCallDeviceRequest`
@@ -3761,7 +3922,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ResumeWeCallDevice(self, request):
-        """恢复设备
+        r"""恢复设备
 
         :param request: Request instance for ResumeWeCallDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResumeWeCallDeviceRequest`
@@ -3784,7 +3945,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def SearchPositionSpace(self, request):
-        """搜索位置空间
+        r"""搜索位置空间
 
         :param request: Request instance for SearchPositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.SearchPositionSpaceRequest`
@@ -3807,7 +3968,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def SearchStudioProduct(self, request):
-        """提供根据产品名称查找产品的能力
+        r"""提供根据产品名称查找产品的能力
 
         :param request: Request instance for SearchStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.SearchStudioProductRequest`
@@ -3830,7 +3991,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def SearchTopicRule(self, request):
-        """搜索规则
+        r"""搜索规则
 
         :param request: Request instance for SearchTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.SearchTopicRuleRequest`
@@ -3853,7 +4014,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def TransferCloudStorage(self, request):
-        """转移云存服务
+        r"""转移云存服务
 
         :param request: Request instance for TransferCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.TransferCloudStorageRequest`
@@ -3876,7 +4037,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def TransferTWeCallDevice(self, request):
-        """转移设备
+        r"""转移设备
 
         :param request: Request instance for TransferTWeCallDevice.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.TransferTWeCallDeviceRequest`
@@ -3899,7 +4060,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UnbindDevices(self, request):
-        """批量解绑子设备
+        r"""批量解绑子设备
 
         :param request: Request instance for UnbindDevices.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UnbindDevicesRequest`
@@ -3922,7 +4083,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UnbindProducts(self, request):
-        """批量解绑子产品。
+        r"""批量解绑子产品。
 
         :param request: Request instance for UnbindProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UnbindProductsRequest`
@@ -3945,7 +4106,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UpdateDeviceTWeCallAuthorizeStatus(self, request):
-        """更新用户对设备的TweCall授权状态
+        r"""更新用户对设备的TweCall授权状态
 
         :param request: Request instance for UpdateDeviceTWeCallAuthorizeStatus.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateDeviceTWeCallAuthorizeStatusRequest`
@@ -3968,7 +4129,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UpdateDevicesEnableState(self, request):
-        """批量禁用启用设备
+        r"""批量禁用启用设备
 
         :param request: Request instance for UpdateDevicesEnableState.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateDevicesEnableStateRequest`
@@ -3991,7 +4152,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UpdateFirmware(self, request):
-        """本接口（UpdateFirmware）用于对指定设备发起固件升级请求
+        r"""本接口（UpdateFirmware）用于对指定设备发起固件升级请求
 
         :param request: Request instance for UpdateFirmware.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateFirmwareRequest`
@@ -4013,8 +4174,31 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateOtaModule(self, request):
+        r"""本接口（UpdateOtaModule）用于修改OTA模块
+
+        :param request: Request instance for UpdateOtaModule.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateOtaModuleRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateOtaModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOtaModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOtaModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UploadFirmware(self, request):
-        """本接口（UploadFirmware）用于创建设备固件版本信息，在平台用于固件版本升级、固件资源下发等。
+        r"""本接口（UploadFirmware）用于创建设备固件版本信息，在平台用于固件版本升级、固件资源下发等。
 
         :param request: Request instance for UploadFirmware.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UploadFirmwareRequest`

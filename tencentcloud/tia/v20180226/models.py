@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateJobRequest(AbstractModel):
-    """CreateJob请求参数结构体
+    r"""CreateJob请求参数结构体
 
     """
 
@@ -71,7 +71,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -82,7 +82,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
+        r"""运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
         :rtype: str
         """
         return self._Cluster
@@ -93,7 +93,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        """运行任务的环境，详见 [运行环境](https://cloud.tencent.com/document/product/851/17320)
+        r"""运行任务的环境，详见 [运行环境](https://cloud.tencent.com/document/product/851/17320)
         :rtype: str
         """
         return self._RuntimeVersion
@@ -104,7 +104,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def PackageDir(self):
-        """挂载的路径，支持 NFS，[CFS](https://cloud.tencent.com/product/cfs) 和 [COS](https://cloud.tencent.com/product/cos)，其中 COS 只在 [TI-A 定制环境](https://cloud.tencent.com/document/product/851/17320#ti-a-.E5.AE.9A.E5.88.B6.E7.8E.AF.E5.A2.83) 中支持
+        r"""挂载的路径，支持 NFS，[CFS](https://cloud.tencent.com/product/cfs) 和 [COS](https://cloud.tencent.com/product/cos)，其中 COS 只在 [TI-A 定制环境](https://cloud.tencent.com/document/product/851/17320#ti-a-.E5.AE.9A.E5.88.B6.E7.8E.AF.E5.A2.83) 中支持
         :rtype: list of str
         """
         return self._PackageDir
@@ -115,7 +115,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Command(self):
-        """任务启动命令
+        r"""任务启动命令
         :rtype: list of str
         """
         return self._Command
@@ -126,7 +126,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Args(self):
-        """任务启动参数
+        r"""任务启动参数
         :rtype: list of str
         """
         return self._Args
@@ -137,7 +137,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def ScaleTier(self):
-        """运行任务的配置信息，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""运行任务的配置信息，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: str
         """
         return self._ScaleTier
@@ -148,7 +148,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def MasterType(self):
-        """Master 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""Master 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: str
         """
         return self._MasterType
@@ -159,7 +159,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def WorkerType(self):
-        """Worker 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""Worker 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: str
         """
         return self._WorkerType
@@ -170,7 +170,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def ParameterServerType(self):
-        """Parameter server 机器类型，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""Parameter server 机器类型，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: str
         """
         return self._ParameterServerType
@@ -181,7 +181,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def WorkerCount(self):
-        """Worker 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""Worker 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: int
         """
         return self._WorkerCount
@@ -192,7 +192,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def ParameterServerCount(self):
-        """Parameter server 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        r"""Parameter server 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :rtype: int
         """
         return self._ParameterServerCount
@@ -203,7 +203,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Debug(self):
-        """启动 debug 模式，默认为 false
+        r"""启动 debug 模式，默认为 false
         :rtype: bool
         """
         return self._Debug
@@ -214,7 +214,7 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def RuntimeConf(self):
-        """运行任务的其他配置信息
+        r"""运行任务的其他配置信息
         :rtype: list of str
         """
         return self._RuntimeConf
@@ -250,7 +250,7 @@ class CreateJobRequest(AbstractModel):
 
 
 class CreateJobResponse(AbstractModel):
-    """CreateJob返回参数结构体
+    r"""CreateJob返回参数结构体
 
     """
 
@@ -266,7 +266,7 @@ class CreateJobResponse(AbstractModel):
 
     @property
     def Job(self):
-        """训练任务信息
+        r"""训练任务信息
         :rtype: :class:`tencentcloud.tia.v20180226.models.Job`
         """
         return self._Job
@@ -277,7 +277,7 @@ class CreateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -295,7 +295,7 @@ class CreateJobResponse(AbstractModel):
 
 
 class CreateModelRequest(AbstractModel):
-    """CreateModel请求参数结构体
+    r"""CreateModel请求参数结构体
 
     """
 
@@ -332,7 +332,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._Name
@@ -343,7 +343,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Model(self):
-        """要部署的模型文件路径名
+        r"""要部署的模型文件路径名
         :rtype: str
         """
         return self._Model
@@ -354,7 +354,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Description(self):
-        """关于模型的描述
+        r"""关于模型的描述
         :rtype: str
         """
         return self._Description
@@ -365,7 +365,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """部署目标集群的名称，`集群模式` 必填
+        r"""部署目标集群的名称，`集群模式` 必填
         :rtype: str
         """
         return self._Cluster
@@ -376,7 +376,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        """运行环境镜像的标签，详见 [Serving 环境](https://cloud.tencent.com/document/product/851/17320#serving-.E7.8E.AF.E5.A2.83)
+        r"""运行环境镜像的标签，详见 [Serving 环境](https://cloud.tencent.com/document/product/851/17320#serving-.E7.8E.AF.E5.A2.83)
         :rtype: str
         """
         return self._RuntimeVersion
@@ -387,7 +387,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Replicas(self):
-        """要部署的模型副本数目，`集群模式` 选填
+        r"""要部署的模型副本数目，`集群模式` 选填
         :rtype: int
         """
         return self._Replicas
@@ -398,7 +398,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Expose(self):
-        """暴露外网或内网，默认暴露外网，`集群模式` 选填
+        r"""暴露外网或内网，默认暴露外网，`集群模式` 选填
         :rtype: str
         """
         return self._Expose
@@ -409,7 +409,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def ServType(self):
-        """部署模式，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式` 下服务的运行规模，形如 `2U4G1P`，详见 [自定义的训练规模](https://cloud.tencent.com/document/product/851/17319#.E8.87.AA.E5.AE.9A.E4.B9.89.E7.9A.84.E8.AE.AD.E7.BB.83.E8.A7.84.E6.A8.A1)
+        r"""部署模式，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式` 下服务的运行规模，形如 `2U4G1P`，详见 [自定义的训练规模](https://cloud.tencent.com/document/product/851/17319#.E8.87.AA.E5.AE.9A.E4.B9.89.E7.9A.84.E8.AE.AD.E7.BB.83.E8.A7.84.E6.A8.A1)
         :rtype: str
         """
         return self._ServType
@@ -420,7 +420,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def RuntimeConf(self):
-        """`无服务器模式` 可选的其他配置信息，详见 [利用无服务器函数部署](https://cloud.tencent.com/document/product/851/17049#.E5.88.A9.E7.94.A8.E6.97.A0.E6.9C.8D.E5.8A.A1.E5.99.A8.E5.87.BD.E6.95.B0.E9.83.A8.E7.BD.B2)
+        r"""`无服务器模式` 可选的其他配置信息，详见 [利用无服务器函数部署](https://cloud.tencent.com/document/product/851/17049#.E5.88.A9.E7.94.A8.E6.97.A0.E6.9C.8D.E5.8A.A1.E5.99.A8.E5.87.BD.E6.95.B0.E9.83.A8.E7.BD.B2)
         :rtype: list of str
         """
         return self._RuntimeConf
@@ -451,7 +451,7 @@ class CreateModelRequest(AbstractModel):
 
 
 class CreateModelResponse(AbstractModel):
-    """CreateModel返回参数结构体
+    r"""CreateModel返回参数结构体
 
     """
 
@@ -467,7 +467,7 @@ class CreateModelResponse(AbstractModel):
 
     @property
     def Model(self):
-        """模型的详细信息
+        r"""模型的详细信息
         :rtype: :class:`tencentcloud.tia.v20180226.models.Model`
         """
         return self._Model
@@ -478,7 +478,7 @@ class CreateModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -496,7 +496,7 @@ class CreateModelResponse(AbstractModel):
 
 
 class DeleteJobRequest(AbstractModel):
-    """DeleteJob请求参数结构体
+    r"""DeleteJob请求参数结构体
 
     """
 
@@ -512,7 +512,7 @@ class DeleteJobRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -523,7 +523,7 @@ class DeleteJobRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """运行任务的集群
+        r"""运行任务的集群
         :rtype: str
         """
         return self._Cluster
@@ -547,7 +547,7 @@ class DeleteJobRequest(AbstractModel):
 
 
 class DeleteJobResponse(AbstractModel):
-    """DeleteJob返回参数结构体
+    r"""DeleteJob返回参数结构体
 
     """
 
@@ -560,7 +560,7 @@ class DeleteJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -575,7 +575,7 @@ class DeleteJobResponse(AbstractModel):
 
 
 class DeleteModelRequest(AbstractModel):
-    """DeleteModel请求参数结构体
+    r"""DeleteModel请求参数结构体
 
     """
 
@@ -594,7 +594,7 @@ class DeleteModelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """要删除的模型名称
+        r"""要删除的模型名称
         :rtype: str
         """
         return self._Name
@@ -605,7 +605,7 @@ class DeleteModelRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """要删除的模型所在的集群名称，`集群模式` 必填
+        r"""要删除的模型所在的集群名称，`集群模式` 必填
         :rtype: str
         """
         return self._Cluster
@@ -616,7 +616,7 @@ class DeleteModelRequest(AbstractModel):
 
     @property
     def ServType(self):
-        """模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
+        r"""模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :rtype: str
         """
         return self._ServType
@@ -641,7 +641,7 @@ class DeleteModelRequest(AbstractModel):
 
 
 class DeleteModelResponse(AbstractModel):
-    """DeleteModel返回参数结构体
+    r"""DeleteModel返回参数结构体
 
     """
 
@@ -654,7 +654,7 @@ class DeleteModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -669,7 +669,7 @@ class DeleteModelResponse(AbstractModel):
 
 
 class DescribeJobRequest(AbstractModel):
-    """DescribeJob请求参数结构体
+    r"""DescribeJob请求参数结构体
 
     """
 
@@ -685,7 +685,7 @@ class DescribeJobRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -696,7 +696,7 @@ class DescribeJobRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """运行任务的集群
+        r"""运行任务的集群
         :rtype: str
         """
         return self._Cluster
@@ -720,7 +720,7 @@ class DescribeJobRequest(AbstractModel):
 
 
 class DescribeJobResponse(AbstractModel):
-    """DescribeJob返回参数结构体
+    r"""DescribeJob返回参数结构体
 
     """
 
@@ -736,7 +736,7 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def Job(self):
-        """训练任务信息
+        r"""训练任务信息
         :rtype: :class:`tencentcloud.tia.v20180226.models.Job`
         """
         return self._Job
@@ -747,7 +747,7 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -765,7 +765,7 @@ class DescribeJobResponse(AbstractModel):
 
 
 class DescribeModelRequest(AbstractModel):
-    """DescribeModel请求参数结构体
+    r"""DescribeModel请求参数结构体
 
     """
 
@@ -784,7 +784,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._Name
@@ -795,7 +795,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """模型所在集群名称，`集群模式` 必填
+        r"""模型所在集群名称，`集群模式` 必填
         :rtype: str
         """
         return self._Cluster
@@ -806,7 +806,7 @@ class DescribeModelRequest(AbstractModel):
 
     @property
     def ServType(self):
-        """模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
+        r"""模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :rtype: str
         """
         return self._ServType
@@ -831,7 +831,7 @@ class DescribeModelRequest(AbstractModel):
 
 
 class DescribeModelResponse(AbstractModel):
-    """DescribeModel返回参数结构体
+    r"""DescribeModel返回参数结构体
 
     """
 
@@ -847,7 +847,7 @@ class DescribeModelResponse(AbstractModel):
 
     @property
     def Model(self):
-        """模型信息
+        r"""模型信息
         :rtype: :class:`tencentcloud.tia.v20180226.models.Model`
         """
         return self._Model
@@ -858,7 +858,7 @@ class DescribeModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -876,7 +876,7 @@ class DescribeModelResponse(AbstractModel):
 
 
 class InstallAgentRequest(AbstractModel):
-    """InstallAgent请求参数结构体
+    r"""InstallAgent请求参数结构体
 
     """
 
@@ -895,7 +895,7 @@ class InstallAgentRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._Cluster
@@ -906,7 +906,7 @@ class InstallAgentRequest(AbstractModel):
 
     @property
     def TiaVersion(self):
-        """Agent版本, 用于私有集群的agent安装，默认为“private-training”
+        r"""Agent版本, 用于私有集群的agent安装，默认为“private-training”
         :rtype: str
         """
         return self._TiaVersion
@@ -917,7 +917,7 @@ class InstallAgentRequest(AbstractModel):
 
     @property
     def Update(self):
-        """是否允许更新Agent
+        r"""是否允许更新Agent
         :rtype: bool
         """
         return self._Update
@@ -942,7 +942,7 @@ class InstallAgentRequest(AbstractModel):
 
 
 class InstallAgentResponse(AbstractModel):
-    """InstallAgent返回参数结构体
+    r"""InstallAgent返回参数结构体
 
     """
 
@@ -958,7 +958,7 @@ class InstallAgentResponse(AbstractModel):
 
     @property
     def TiaVersion(self):
-        """Agent版本, 用于私有集群的agent安装
+        r"""Agent版本, 用于私有集群的agent安装
         :rtype: str
         """
         return self._TiaVersion
@@ -969,7 +969,7 @@ class InstallAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -985,7 +985,7 @@ class InstallAgentResponse(AbstractModel):
 
 
 class Job(AbstractModel):
-    """训练任务信息
+    r"""训练任务信息
 
     """
 
@@ -1064,7 +1064,7 @@ class Job(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._Name
@@ -1075,7 +1075,7 @@ class Job(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        r"""任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :rtype: str
         """
         return self._CreateTime
@@ -1086,7 +1086,7 @@ class Job(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        r"""任务开始时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :rtype: str
         """
         return self._StartTime
@@ -1097,7 +1097,7 @@ class Job(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务结束时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        r"""任务结束时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :rtype: str
         """
         return self._EndTime
@@ -1108,7 +1108,7 @@ class Job(AbstractModel):
 
     @property
     def State(self):
-        """任务状态，可能的状态为Created（已创建），Running（运行中），Succeeded（运行完成：成功），Failed（运行完成：失败）
+        r"""任务状态，可能的状态为Created（已创建），Running（运行中），Succeeded（运行完成：成功），Failed（运行完成：失败）
         :rtype: str
         """
         return self._State
@@ -1119,7 +1119,7 @@ class Job(AbstractModel):
 
     @property
     def Message(self):
-        """任务状态信息
+        r"""任务状态信息
         :rtype: str
         """
         return self._Message
@@ -1130,7 +1130,7 @@ class Job(AbstractModel):
 
     @property
     def ScaleTier(self):
-        """运行任务的配置信息
+        r"""运行任务的配置信息
         :rtype: str
         """
         return self._ScaleTier
@@ -1141,7 +1141,7 @@ class Job(AbstractModel):
 
     @property
     def MasterType(self):
-        """（ScaleTier为Custom时）master机器类型
+        r"""（ScaleTier为Custom时）master机器类型
         :rtype: str
         """
         return self._MasterType
@@ -1152,7 +1152,7 @@ class Job(AbstractModel):
 
     @property
     def WorkerType(self):
-        """（ScaleTier为Custom时）worker机器类型
+        r"""（ScaleTier为Custom时）worker机器类型
         :rtype: str
         """
         return self._WorkerType
@@ -1163,7 +1163,7 @@ class Job(AbstractModel):
 
     @property
     def ParameterServerType(self):
-        """（ScaleTier为Custom时）parameter server机器类型
+        r"""（ScaleTier为Custom时）parameter server机器类型
         :rtype: str
         """
         return self._ParameterServerType
@@ -1174,7 +1174,7 @@ class Job(AbstractModel):
 
     @property
     def WorkerCount(self):
-        """（ScaleTier为Custom时）worker机器数量
+        r"""（ScaleTier为Custom时）worker机器数量
         :rtype: int
         """
         return self._WorkerCount
@@ -1185,7 +1185,7 @@ class Job(AbstractModel):
 
     @property
     def ParameterServerCount(self):
-        """（ScaleTier为Custom时）parameter server机器数量
+        r"""（ScaleTier为Custom时）parameter server机器数量
         :rtype: int
         """
         return self._ParameterServerCount
@@ -1196,7 +1196,7 @@ class Job(AbstractModel):
 
     @property
     def PackageDir(self):
-        """挂载的路径
+        r"""挂载的路径
         :rtype: list of str
         """
         return self._PackageDir
@@ -1207,7 +1207,7 @@ class Job(AbstractModel):
 
     @property
     def Command(self):
-        """任务启动命令
+        r"""任务启动命令
         :rtype: list of str
         """
         return self._Command
@@ -1218,7 +1218,7 @@ class Job(AbstractModel):
 
     @property
     def Args(self):
-        """任务启动参数
+        r"""任务启动参数
         :rtype: list of str
         """
         return self._Args
@@ -1229,7 +1229,7 @@ class Job(AbstractModel):
 
     @property
     def Cluster(self):
-        """运行任务的集群
+        r"""运行任务的集群
         :rtype: str
         """
         return self._Cluster
@@ -1240,7 +1240,7 @@ class Job(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        """运行任务的环境
+        r"""运行任务的环境
         :rtype: str
         """
         return self._RuntimeVersion
@@ -1251,7 +1251,7 @@ class Job(AbstractModel):
 
     @property
     def DelTime(self):
-        """任务删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        r"""任务删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :rtype: str
         """
         return self._DelTime
@@ -1262,7 +1262,7 @@ class Job(AbstractModel):
 
     @property
     def AppId(self):
-        """创建任务的AppId
+        r"""创建任务的AppId
         :rtype: int
         """
         return self._AppId
@@ -1273,7 +1273,7 @@ class Job(AbstractModel):
 
     @property
     def Uin(self):
-        """创建任务的Uin
+        r"""创建任务的Uin
         :rtype: str
         """
         return self._Uin
@@ -1284,7 +1284,7 @@ class Job(AbstractModel):
 
     @property
     def Debug(self):
-        """创建任务的Debug模式
+        r"""创建任务的Debug模式
         :rtype: bool
         """
         return self._Debug
@@ -1295,7 +1295,7 @@ class Job(AbstractModel):
 
     @property
     def RuntimeConf(self):
-        """Runtime的额外配置信息
+        r"""Runtime的额外配置信息
         :rtype: list of str
         """
         return self._RuntimeConf
@@ -1306,7 +1306,7 @@ class Job(AbstractModel):
 
     @property
     def Id(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._Id
@@ -1351,7 +1351,7 @@ class Job(AbstractModel):
 
 
 class ListJobsRequest(AbstractModel):
-    """ListJobs请求参数结构体
+    r"""ListJobs请求参数结构体
 
     """
 
@@ -1370,7 +1370,7 @@ class ListJobsRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """运行任务的集群
+        r"""运行任务的集群
         :rtype: str
         """
         return self._Cluster
@@ -1381,7 +1381,7 @@ class ListJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，返回数量
+        r"""分页参数，返回数量
         :rtype: int
         """
         return self._Limit
@@ -1392,7 +1392,7 @@ class ListJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，起始位置
+        r"""分页参数，起始位置
         :rtype: int
         """
         return self._Offset
@@ -1417,7 +1417,7 @@ class ListJobsRequest(AbstractModel):
 
 
 class ListJobsResponse(AbstractModel):
-    """ListJobs返回参数结构体
+    r"""ListJobs返回参数结构体
 
     """
 
@@ -1433,7 +1433,7 @@ class ListJobsResponse(AbstractModel):
 
     @property
     def Jobs(self):
-        """训练任务列表
+        r"""训练任务列表
         :rtype: list of Job
         """
         return self._Jobs
@@ -1444,7 +1444,7 @@ class ListJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1465,7 +1465,7 @@ class ListJobsResponse(AbstractModel):
 
 
 class ListModelsRequest(AbstractModel):
-    """ListModels请求参数结构体
+    r"""ListModels请求参数结构体
 
     """
 
@@ -1487,7 +1487,7 @@ class ListModelsRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """部署模型的集群， `集群模式` 必填
+        r"""部署模型的集群， `集群模式` 必填
         :rtype: str
         """
         return self._Cluster
@@ -1498,7 +1498,7 @@ class ListModelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，返回数量上限
+        r"""分页参数，返回数量上限
         :rtype: int
         """
         return self._Limit
@@ -1509,7 +1509,7 @@ class ListModelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，分页起始位置
+        r"""分页参数，分页起始位置
         :rtype: int
         """
         return self._Offset
@@ -1520,7 +1520,7 @@ class ListModelsRequest(AbstractModel):
 
     @property
     def ServType(self):
-        """部署类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`。
+        r"""部署类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`。
         :rtype: str
         """
         return self._ServType
@@ -1546,7 +1546,7 @@ class ListModelsRequest(AbstractModel):
 
 
 class ListModelsResponse(AbstractModel):
-    """ListModels返回参数结构体
+    r"""ListModels返回参数结构体
 
     """
 
@@ -1562,7 +1562,7 @@ class ListModelsResponse(AbstractModel):
 
     @property
     def Models(self):
-        """Model 数组，用以显示所有模型的信息
+        r"""Model 数组，用以显示所有模型的信息
         :rtype: list of Model
         """
         return self._Models
@@ -1573,7 +1573,7 @@ class ListModelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1594,7 +1594,7 @@ class ListModelsResponse(AbstractModel):
 
 
 class Log(AbstractModel):
-    """日志
+    r"""日志
 
     """
 
@@ -1622,7 +1622,7 @@ class Log(AbstractModel):
 
     @property
     def ContainerName(self):
-        """容器名
+        r"""容器名
         :rtype: str
         """
         return self._ContainerName
@@ -1633,7 +1633,7 @@ class Log(AbstractModel):
 
     @property
     def Log(self):
-        """日志内容
+        r"""日志内容
         :rtype: str
         """
         return self._Log
@@ -1644,7 +1644,7 @@ class Log(AbstractModel):
 
     @property
     def Namespace(self):
-        """空间名
+        r"""空间名
         :rtype: str
         """
         return self._Namespace
@@ -1655,7 +1655,7 @@ class Log(AbstractModel):
 
     @property
     def PodId(self):
-        """Pod Id
+        r"""Pod Id
         :rtype: str
         """
         return self._PodId
@@ -1666,7 +1666,7 @@ class Log(AbstractModel):
 
     @property
     def PodName(self):
-        """Pod名
+        r"""Pod名
         :rtype: str
         """
         return self._PodName
@@ -1677,7 +1677,7 @@ class Log(AbstractModel):
 
     @property
     def Time(self):
-        """日志日期，格式为“2018-07-02T09:10:04.916553368Z”
+        r"""日志日期，格式为“2018-07-02T09:10:04.916553368Z”
         :rtype: str
         """
         return self._Time
@@ -1705,7 +1705,7 @@ class Log(AbstractModel):
 
 
 class Model(AbstractModel):
-    """用于描述模型的详细情况
+    r"""用于描述模型的详细情况
             "Model": {
                 "Name": "test-model",
                 "Description": "test-model",
@@ -1776,7 +1776,7 @@ class Model(AbstractModel):
 
     @property
     def Name(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._Name
@@ -1787,7 +1787,7 @@ class Model(AbstractModel):
 
     @property
     def Description(self):
-        """模型描述
+        r"""模型描述
         :rtype: str
         """
         return self._Description
@@ -1798,7 +1798,7 @@ class Model(AbstractModel):
 
     @property
     def Cluster(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._Cluster
@@ -1809,7 +1809,7 @@ class Model(AbstractModel):
 
     @property
     def Model(self):
-        """模型地址
+        r"""模型地址
         :rtype: str
         """
         return self._Model
@@ -1820,7 +1820,7 @@ class Model(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        """运行环境编号
+        r"""运行环境编号
         :rtype: str
         """
         return self._RuntimeVersion
@@ -1831,7 +1831,7 @@ class Model(AbstractModel):
 
     @property
     def CreateTime(self):
-        """模型创建时间
+        r"""模型创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1842,7 +1842,7 @@ class Model(AbstractModel):
 
     @property
     def State(self):
-        """模型运行状态
+        r"""模型运行状态
         :rtype: str
         """
         return self._State
@@ -1853,7 +1853,7 @@ class Model(AbstractModel):
 
     @property
     def ServingUrl(self):
-        """提供服务的url
+        r"""提供服务的url
         :rtype: str
         """
         return self._ServingUrl
@@ -1864,7 +1864,7 @@ class Model(AbstractModel):
 
     @property
     def Message(self):
-        """相关消息
+        r"""相关消息
         :rtype: str
         """
         return self._Message
@@ -1875,7 +1875,7 @@ class Model(AbstractModel):
 
     @property
     def AppId(self):
-        """编号
+        r"""编号
         :rtype: int
         """
         return self._AppId
@@ -1886,7 +1886,7 @@ class Model(AbstractModel):
 
     @property
     def ServType(self):
-        """机型
+        r"""机型
         :rtype: str
         """
         return self._ServType
@@ -1897,7 +1897,7 @@ class Model(AbstractModel):
 
     @property
     def Expose(self):
-        """模型暴露方式
+        r"""模型暴露方式
         :rtype: str
         """
         return self._Expose
@@ -1908,7 +1908,7 @@ class Model(AbstractModel):
 
     @property
     def Replicas(self):
-        """部署副本数量
+        r"""部署副本数量
         :rtype: int
         """
         return self._Replicas
@@ -1919,7 +1919,7 @@ class Model(AbstractModel):
 
     @property
     def Id(self):
-        """模型Id
+        r"""模型Id
         :rtype: str
         """
         return self._Id
@@ -1930,7 +1930,7 @@ class Model(AbstractModel):
 
     @property
     def Uin(self):
-        """创建任务的Uin
+        r"""创建任务的Uin
         :rtype: str
         """
         return self._Uin
@@ -1941,7 +1941,7 @@ class Model(AbstractModel):
 
     @property
     def DelTime(self):
-        """模型删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        r"""模型删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :rtype: str
         """
         return self._DelTime
@@ -1979,7 +1979,7 @@ class Model(AbstractModel):
 
 
 class QueryLogsRequest(AbstractModel):
-    """QueryLogs请求参数结构体
+    r"""QueryLogs请求参数结构体
 
     """
 
@@ -2007,7 +2007,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """任务的名称
+        r"""任务的名称
         :rtype: str
         """
         return self._JobName
@@ -2018,7 +2018,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        """任务所在集群的名称
+        r"""任务所在集群的名称
         :rtype: str
         """
         return self._Cluster
@@ -2029,7 +2029,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询日志的开始时间，格式：2019-01-01 00:00:00
+        r"""查询日志的开始时间，格式：2019-01-01 00:00:00
         :rtype: str
         """
         return self._StartTime
@@ -2040,7 +2040,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询日志的结束时间，格式：2019-01-01 00:00:00
+        r"""查询日志的结束时间，格式：2019-01-01 00:00:00
         :rtype: str
         """
         return self._EndTime
@@ -2051,7 +2051,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次要返回的日志条数上限
+        r"""单次要返回的日志条数上限
         :rtype: int
         """
         return self._Limit
@@ -2062,7 +2062,7 @@ class QueryLogsRequest(AbstractModel):
 
     @property
     def Context(self):
-        """加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容；使用 Context 翻页最多能获取 10000 条日志
+        r"""加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容；使用 Context 翻页最多能获取 10000 条日志
         :rtype: str
         """
         return self._Context
@@ -2090,7 +2090,7 @@ class QueryLogsRequest(AbstractModel):
 
 
 class QueryLogsResponse(AbstractModel):
-    """QueryLogs返回参数结构体
+    r"""QueryLogs返回参数结构体
 
     """
 
@@ -2112,7 +2112,7 @@ class QueryLogsResponse(AbstractModel):
 
     @property
     def Context(self):
-        """日志查询上下文，用于加载更多日志
+        r"""日志查询上下文，用于加载更多日志
         :rtype: str
         """
         return self._Context
@@ -2123,7 +2123,7 @@ class QueryLogsResponse(AbstractModel):
 
     @property
     def Logs(self):
-        """日志内容列表
+        r"""日志内容列表
         :rtype: list of Log
         """
         return self._Logs
@@ -2134,7 +2134,7 @@ class QueryLogsResponse(AbstractModel):
 
     @property
     def Listover(self):
-        """是否已经返回所有符合条件的日志
+        r"""是否已经返回所有符合条件的日志
         :rtype: bool
         """
         return self._Listover
@@ -2145,7 +2145,7 @@ class QueryLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

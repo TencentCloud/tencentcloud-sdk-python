@@ -27,7 +27,7 @@ class TbaasClient(AbstractClient):
 
 
     def ApplyChainMakerBatchUserCert(self, request):
-        """批量申请长安链用户签名证书
+        r"""批量申请长安链用户签名证书
 
         :param request: Request instance for ApplyChainMakerBatchUserCert.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyChainMakerBatchUserCertRequest`
@@ -50,7 +50,7 @@ class TbaasClient(AbstractClient):
 
 
     def ApplyUserCert(self, request):
-        """申请用户证书
+        r"""申请用户证书
 
         :param request: Request instance for ApplyUserCert.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertRequest`
@@ -73,7 +73,7 @@ class TbaasClient(AbstractClient):
 
 
     def DescribeFabricBlock(self, request):
-        """获取Fabric某区块的详细信息
+        r"""获取Fabric某区块的详细信息
 
         :param request: Request instance for DescribeFabricBlock.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricBlockRequest`
@@ -96,7 +96,7 @@ class TbaasClient(AbstractClient):
 
 
     def DescribeFabricTransaction(self, request):
-        """获取Fabric交易的详细信息
+        r"""获取Fabric交易的详细信息
 
         :param request: Request instance for DescribeFabricTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricTransactionRequest`
@@ -119,7 +119,7 @@ class TbaasClient(AbstractClient):
 
 
     def DownloadUserCert(self, request):
-        """下载用户证书
+        r"""下载用户证书
 
         :param request: Request instance for DownloadUserCert.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertRequest`
@@ -142,7 +142,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetBlockList(self, request):
-        """查看当前网络下的所有区块列表，分页展示
+        r"""查看当前网络下的所有区块列表，分页展示
 
         :param request: Request instance for GetBlockList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListRequest`
@@ -165,7 +165,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetBlockTransactionListForUser(self, request):
-        """获取区块内交易列表
+        r"""获取区块内交易列表
 
         :param request: Request instance for GetBlockTransactionListForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockTransactionListForUserRequest`
@@ -188,7 +188,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetClusterSummary(self, request):
-        """获取区块链网络概要
+        r"""获取区块链网络概要
 
         :param request: Request instance for GetClusterSummary.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryRequest`
@@ -211,7 +211,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetInvokeTx(self, request):
-        """Invoke异步调用结果查询
+        r"""Invoke异步调用结果查询
 
         :param request: Request instance for GetInvokeTx.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxRequest`
@@ -234,7 +234,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetLatestTransactionList(self, request):
-        """获取fabric最新交易列表
+        r"""获取fabric最新交易列表
 
         :param request: Request instance for GetLatestTransactionList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatestTransactionListRequest`
@@ -257,7 +257,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetTransactionDetailForUser(self, request):
-        """获取交易的详情
+        r"""获取交易的详情
 
         :param request: Request instance for GetTransactionDetailForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserRequest`
@@ -280,7 +280,7 @@ class TbaasClient(AbstractClient):
 
 
     def Invoke(self, request):
-        """新增交易
+        r"""新增交易
 
         :param request: Request instance for Invoke.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeRequest`
@@ -303,7 +303,7 @@ class TbaasClient(AbstractClient):
 
 
     def InvokeChainMakerContract(self, request):
-        """调用长安链合约执行交易
+        r"""调用长安链合约执行交易
 
         :param request: Request instance for InvokeChainMakerContract.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeChainMakerContractRequest`
@@ -326,7 +326,7 @@ class TbaasClient(AbstractClient):
 
 
     def InvokeChainMakerDemoContract(self, request):
-        """调用长安链体验网络合约执行交易
+        r"""调用长安链体验网络合约执行交易
 
         :param request: Request instance for InvokeChainMakerDemoContract.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeChainMakerDemoContractRequest`
@@ -349,7 +349,7 @@ class TbaasClient(AbstractClient):
 
 
     def InvokeFabricChaincode(self, request):
-        """调用Fabric用户合约执行交易
+        r"""调用Fabric用户合约执行交易
 
         :param request: Request instance for InvokeFabricChaincode.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeFabricChaincodeRequest`
@@ -372,7 +372,7 @@ class TbaasClient(AbstractClient):
 
 
     def Query(self, request):
-        """查询交易
+        r"""查询交易
 
         :param request: Request instance for Query.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryRequest`
@@ -395,7 +395,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerBlockTransaction(self, request):
-        """查询长安链指定高度区块的交易
+        r"""查询长安链指定高度区块的交易
 
         :param request: Request instance for QueryChainMakerBlockTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerBlockTransactionRequest`
@@ -418,7 +418,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerContract(self, request):
-        """调用长安链合约查询
+        r"""调用长安链合约查询
 
         :param request: Request instance for QueryChainMakerContract.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerContractRequest`
@@ -441,7 +441,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerDemoBlockTransaction(self, request):
-        """查询长安链体验网络指定高度区块的交易
+        r"""查询长安链体验网络指定高度区块的交易
 
         :param request: Request instance for QueryChainMakerDemoBlockTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoBlockTransactionRequest`
@@ -464,7 +464,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerDemoContract(self, request):
-        """调用长安链体验网络合约查询
+        r"""调用长安链体验网络合约查询
 
         :param request: Request instance for QueryChainMakerDemoContract.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoContractRequest`
@@ -487,7 +487,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerDemoTransaction(self, request):
-        """通过交易ID查询长安链体验网络交易
+        r"""通过交易ID查询长安链体验网络交易
 
         :param request: Request instance for QueryChainMakerDemoTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoTransactionRequest`
@@ -510,7 +510,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryChainMakerTransaction(self, request):
-        """通过交易ID查询长安链交易
+        r"""通过交易ID查询长安链交易
 
         :param request: Request instance for QueryChainMakerTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerTransactionRequest`
@@ -533,7 +533,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryFabricChaincode(self, request):
-        """调用Fabric用户合约查询
+        r"""调用Fabric用户合约查询
 
         :param request: Request instance for QueryFabricChaincode.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryFabricChaincodeRequest`
@@ -556,7 +556,7 @@ class TbaasClient(AbstractClient):
 
 
     def SrvInvoke(self, request):
-        """trustsql服务统一接口
+        r"""trustsql服务统一接口
 
         :param request: Request instance for SrvInvoke.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeRequest`

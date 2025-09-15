@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AppInfo(AbstractModel):
-    """应用包名信息
+    r"""应用包名信息
 
     """
 
@@ -67,7 +67,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Id(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._Id
@@ -78,7 +78,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -89,7 +89,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -100,7 +100,7 @@ class AppInfo(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios 包名
+        r"""Ios 包名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -112,7 +112,7 @@ class AppInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        """Andorid 包名
+        r"""Andorid 包名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124,7 +124,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppType(self):
-        """应用详情
+        r"""应用详情
         :rtype: str
         """
         return self._AppType
@@ -135,7 +135,7 @@ class AppInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -146,7 +146,7 @@ class AppInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -157,7 +157,7 @@ class AppInfo(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -169,7 +169,7 @@ class AppInfo(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """windows 进程名
+        r"""windows 进程名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -181,7 +181,7 @@ class AppInfo(AbstractModel):
 
     @property
     def DomainList(self):
-        """允许的web域名列表
+        r"""允许的web域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -215,7 +215,7 @@ class AppInfo(AbstractModel):
 
 
 class ApplicationInfo(AbstractModel):
-    """视立方license用户 应用结构
+    r"""视立方license用户 应用结构
 
     """
 
@@ -280,7 +280,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -291,7 +291,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios应用的唯一标识
+        r"""Ios应用的唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -303,7 +303,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型，formal： 正式应用，test：测试应用
+        r"""应用类型，formal： 正式应用，test：测试应用
         :rtype: str
         """
         return self._AppType
@@ -314,7 +314,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Licenses(self):
-        """license数组
+        r"""license数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of License
         """
@@ -326,7 +326,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def LicenseKey(self):
-        """license 秘钥
+        r"""license 秘钥
         :rtype: str
         """
         return self._LicenseKey
@@ -337,7 +337,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        """安卓应用的唯一标识
+        r"""安卓应用的唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -349,7 +349,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -360,7 +360,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -371,7 +371,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """用户应用Id
+        r"""用户应用Id
         :rtype: int
         """
         return self._ApplicationId
@@ -382,7 +382,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def LicenseUrl(self):
-        """视立方下载license的url
+        r"""视立方下载license的url
         :rtype: str
         """
         return self._LicenseUrl
@@ -393,7 +393,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def XMagics(self):
-        """优图美视信息列表
+        r"""优图美视信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicInfo
         """
@@ -405,7 +405,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac  进程名
+        r"""Mac  进程名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -417,7 +417,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """windows 进程名
+        r"""windows 进程名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -429,7 +429,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def DomainList(self):
-        """web端Domain列表
+        r"""web端Domain列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -441,7 +441,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """账号AppId
+        r"""账号AppId
         :rtype: str
         """
         return self._AppId
@@ -452,7 +452,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def NameLimit(self):
-        """扩展包名数量上限
+        r"""扩展包名数量上限
         :rtype: int
         """
         return self._NameLimit
@@ -500,7 +500,7 @@ class ApplicationInfo(AbstractModel):
 
 
 class CreateActivityLicenseRequest(AbstractModel):
-    """CreateActivityLicense请求参数结构体
+    r"""CreateActivityLicense请求参数结构体
 
     """
 
@@ -513,7 +513,7 @@ class CreateActivityLicenseRequest(AbstractModel):
 
     @property
     def Activity(self):
-        """活动Id
+        r"""活动Id
         :rtype: str
         """
         return self._Activity
@@ -536,7 +536,7 @@ class CreateActivityLicenseRequest(AbstractModel):
 
 
 class CreateActivityLicenseResponse(AbstractModel):
-    """CreateActivityLicense返回参数结构体
+    r"""CreateActivityLicense返回参数结构体
 
     """
 
@@ -582,7 +582,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -593,7 +593,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def AppName(self):
-        """app名称
+        r"""app名称
         :rtype: str
         """
         return self._AppName
@@ -604,7 +604,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def BundleId(self):
-        """ios包名
+        r"""ios包名
         :rtype: str
         """
         return self._BundleId
@@ -615,7 +615,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def PackageName(self):
-        """安卓包名
+        r"""安卓包名
         :rtype: str
         """
         return self._PackageName
@@ -626,7 +626,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def Duration(self):
-        """有效时长
+        r"""有效时长
         :rtype: int
         """
         return self._Duration
@@ -637,7 +637,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -648,7 +648,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -659,7 +659,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def LicenseKey(self):
-        """license秘钥
+        r"""license秘钥
         :rtype: str
         """
         return self._LicenseKey
@@ -670,7 +670,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def LicenseUrl(self):
-        """license 授权文件下载链接
+        r"""license 授权文件下载链接
         :rtype: str
         """
         return self._LicenseUrl
@@ -681,7 +681,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def ResidueDay(self):
-        """license剩余天数，最后一天以及过期显示0
+        r"""license剩余天数，最后一天以及过期显示0
         :rtype: int
         """
         return self._ResidueDay
@@ -692,7 +692,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def Residue(self):
-        """license剩余秒数
+        r"""license剩余秒数
         :rtype: int
         """
         return self._Residue
@@ -703,7 +703,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -729,7 +729,7 @@ class CreateActivityLicenseResponse(AbstractModel):
 
 
 class CreateApplicationAndBindLicenseRequest(AbstractModel):
-    """CreateApplicationAndBindLicense请求参数结构体
+    r"""CreateApplicationAndBindLicense请求参数结构体
 
     """
 
@@ -775,7 +775,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名
+        r"""应用名
         :rtype: str
         """
         return self._AppName
@@ -786,7 +786,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._BundleId
@@ -797,7 +797,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """包名
+        r"""包名
         :rtype: str
         """
         return self._PackageName
@@ -808,7 +808,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源包ID
+        r"""资源包ID
         :rtype: list of str
         """
         return self._ResourceIds
@@ -819,7 +819,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """营业执照
+        r"""营业执照
         :rtype: str
         """
         return self._CompanyPermit
@@ -830,7 +830,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型
+        r"""公司类型
         :rtype: str
         """
         return self._CompanyType
@@ -841,7 +841,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -852,7 +852,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def XMagicResourceIds(self):
-        """优图资源id列表
+        r"""优图资源id列表
         :rtype: list of str
         """
         return self._XMagicResourceIds
@@ -863,7 +863,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -874,7 +874,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -885,7 +885,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """要开通的域名列表
+        r"""要开通的域名列表
         :rtype: list of str
         """
         return self._DomainList
@@ -896,7 +896,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """要开通的端，web/mobile/pc
+        r"""要开通的端，web/mobile/pc
         :rtype: str
         """
         return self._Platform
@@ -930,7 +930,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
 
 class CreateApplicationAndBindLicenseResponse(AbstractModel):
-    """CreateApplicationAndBindLicense返回参数结构体
+    r"""CreateApplicationAndBindLicense返回参数结构体
 
     """
 
@@ -943,7 +943,7 @@ class CreateApplicationAndBindLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -958,7 +958,7 @@ class CreateApplicationAndBindLicenseResponse(AbstractModel):
 
 
 class CreateApplicationAndVideoRequest(AbstractModel):
-    """CreateApplicationAndVideo请求参数结构体
+    r"""CreateApplicationAndVideo请求参数结构体
 
     """
 
@@ -977,7 +977,7 @@ class CreateApplicationAndVideoRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -988,7 +988,7 @@ class CreateApplicationAndVideoRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios 包名
+        r"""Ios 包名
         :rtype: str
         """
         return self._BundleId
@@ -999,7 +999,7 @@ class CreateApplicationAndVideoRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Android 包名
+        r"""Android 包名
         :rtype: str
         """
         return self._PackageName
@@ -1024,7 +1024,7 @@ class CreateApplicationAndVideoRequest(AbstractModel):
 
 
 class CreateApplicationAndVideoResponse(AbstractModel):
-    """CreateApplicationAndVideo返回参数结构体
+    r"""CreateApplicationAndVideo返回参数结构体
 
     """
 
@@ -1037,7 +1037,7 @@ class CreateApplicationAndVideoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1052,7 +1052,7 @@ class CreateApplicationAndVideoResponse(AbstractModel):
 
 
 class CreateApplicationAndWebPlayerLicenseRequest(AbstractModel):
-    """CreateApplicationAndWebPlayerLicense请求参数结构体
+    r"""CreateApplicationAndWebPlayerLicense请求参数结构体
 
     """
 
@@ -1068,7 +1068,7 @@ class CreateApplicationAndWebPlayerLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -1079,7 +1079,7 @@ class CreateApplicationAndWebPlayerLicenseRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """域名列表
+        r"""域名列表
         :rtype: list of str
         """
         return self._DomainList
@@ -1103,7 +1103,7 @@ class CreateApplicationAndWebPlayerLicenseRequest(AbstractModel):
 
 
 class CreateApplicationAndWebPlayerLicenseResponse(AbstractModel):
-    """CreateApplicationAndWebPlayerLicense返回参数结构体
+    r"""CreateApplicationAndWebPlayerLicense返回参数结构体
 
     """
 
@@ -1116,7 +1116,7 @@ class CreateApplicationAndWebPlayerLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1131,7 +1131,7 @@ class CreateApplicationAndWebPlayerLicenseResponse(AbstractModel):
 
 
 class CreateLicenseRequest(AbstractModel):
-    """CreateLicense请求参数结构体
+    r"""CreateLicense请求参数结构体
 
     """
 
@@ -1150,7 +1150,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -1161,7 +1161,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源包ID
+        r"""资源包ID
         :rtype: list of str
         """
         return self._ResourceIds
@@ -1172,7 +1172,7 @@ class CreateLicenseRequest(AbstractModel):
 
     @property
     def Group(self):
-        """url地址分组
+        r"""url地址分组
         :rtype: int
         """
         return self._Group
@@ -1197,7 +1197,7 @@ class CreateLicenseRequest(AbstractModel):
 
 
 class CreateLicenseResponse(AbstractModel):
-    """CreateLicense返回参数结构体
+    r"""CreateLicense返回参数结构体
 
     """
 
@@ -1210,7 +1210,7 @@ class CreateLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1225,7 +1225,7 @@ class CreateLicenseResponse(AbstractModel):
 
 
 class CreateTestXMagicRequest(AbstractModel):
-    """CreateTestXMagic请求参数结构体
+    r"""CreateTestXMagic请求参数结构体
 
     """
 
@@ -1250,7 +1250,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """将腾讯特效创建到哪个应用下
+        r"""将腾讯特效创建到哪个应用下
         :rtype: int
         """
         return self._ApplicationId
@@ -1261,7 +1261,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """营业执照
+        r"""营业执照
         :rtype: str
         """
         return self._CompanyPermit
@@ -1272,7 +1272,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型
+        r"""公司类型
         :rtype: str
         """
         return self._CompanyType
@@ -1283,7 +1283,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -1294,7 +1294,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def PlanList(self):
-        """测试套餐名称
+        r"""测试套餐名称
         :rtype: list of str
         """
         return self._PlanList
@@ -1321,7 +1321,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
 
 class CreateTestXMagicResponse(AbstractModel):
-    """CreateTestXMagic返回参数结构体
+    r"""CreateTestXMagic返回参数结构体
 
     """
 
@@ -1334,7 +1334,7 @@ class CreateTestXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1349,7 +1349,7 @@ class CreateTestXMagicResponse(AbstractModel):
 
 
 class CreateTrialApplicationAndLicenseRequest(AbstractModel):
-    """CreateTrialApplicationAndLicense请求参数结构体
+    r"""CreateTrialApplicationAndLicense请求参数结构体
 
     """
 
@@ -1398,7 +1398,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名
+        r"""应用名
         :rtype: str
         """
         return self._AppName
@@ -1409,7 +1409,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._BundleId
@@ -1420,7 +1420,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """包名
+        r"""包名
         :rtype: str
         """
         return self._PackageName
@@ -1431,7 +1431,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def FeatureIds(self):
-        """功能 id 数组
+        r"""功能 id 数组
         :rtype: list of int
         """
         return self._FeatureIds
@@ -1442,7 +1442,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def XMagic(self):
-        """是否要开通优图功能
+        r"""是否要开通优图功能
         :rtype: bool
         """
         return self._XMagic
@@ -1453,7 +1453,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """营业执照
+        r"""营业执照
         :rtype: str
         """
         return self._CompanyPermit
@@ -1464,7 +1464,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型
+        r"""公司类型
         :rtype: str
         """
         return self._CompanyType
@@ -1475,7 +1475,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -1486,7 +1486,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def PlanList(self):
-        """要开通的测试功能名称，基础套餐只能有一个
+        r"""要开通的测试功能名称，基础套餐只能有一个
         :rtype: list of str
         """
         return self._PlanList
@@ -1497,7 +1497,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -1508,7 +1508,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -1519,7 +1519,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """要创建到哪个平台，web、mobile、pc，默认mobile
+        r"""要创建到哪个平台，web、mobile、pc，默认mobile
         :rtype: str
         """
         return self._Platform
@@ -1530,7 +1530,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """授权域名列表
+        r"""授权域名列表
         :rtype: list of str
         """
         return self._DomainList
@@ -1565,7 +1565,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
 
 class CreateTrialApplicationAndLicenseResponse(AbstractModel):
-    """CreateTrialApplicationAndLicense返回参数结构体
+    r"""CreateTrialApplicationAndLicense返回参数结构体
 
     """
 
@@ -1578,7 +1578,7 @@ class CreateTrialApplicationAndLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1593,7 +1593,7 @@ class CreateTrialApplicationAndLicenseResponse(AbstractModel):
 
 
 class CreateTrialLicenseRequest(AbstractModel):
-    """CreateTrialLicense请求参数结构体
+    r"""CreateTrialLicense请求参数结构体
 
     """
 
@@ -1612,7 +1612,7 @@ class CreateTrialLicenseRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -1623,7 +1623,7 @@ class CreateTrialLicenseRequest(AbstractModel):
 
     @property
     def FeatureIds(self):
-        """功能 ID 数组
+        r"""功能 ID 数组
         :rtype: list of int non-negative
         """
         return self._FeatureIds
@@ -1634,7 +1634,7 @@ class CreateTrialLicenseRequest(AbstractModel):
 
     @property
     def Group(self):
-        """Url分组
+        r"""Url分组
         :rtype: int
         """
         return self._Group
@@ -1659,7 +1659,7 @@ class CreateTrialLicenseRequest(AbstractModel):
 
 
 class CreateTrialLicenseResponse(AbstractModel):
-    """CreateTrialLicense返回参数结构体
+    r"""CreateTrialLicense返回参数结构体
 
     """
 
@@ -1672,7 +1672,7 @@ class CreateTrialLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1687,7 +1687,7 @@ class CreateTrialLicenseResponse(AbstractModel):
 
 
 class CreateXMagicRequest(AbstractModel):
-    """CreateXMagic请求参数结构体
+    r"""CreateXMagic请求参数结构体
 
     """
 
@@ -1712,7 +1712,7 @@ class CreateXMagicRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ApplicationId
+        r"""应用ApplicationId
         :rtype: int
         """
         return self._ApplicationId
@@ -1723,7 +1723,7 @@ class CreateXMagicRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """营业执照
+        r"""营业执照
         :rtype: str
         """
         return self._CompanyPermit
@@ -1734,7 +1734,7 @@ class CreateXMagicRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型
+        r"""公司类型
         :rtype: str
         """
         return self._CompanyType
@@ -1745,7 +1745,7 @@ class CreateXMagicRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -1756,7 +1756,7 @@ class CreateXMagicRequest(AbstractModel):
 
     @property
     def XMagicResourceIds(self):
-        """优图资源id列表
+        r"""优图资源id列表
         :rtype: list of str
         """
         return self._XMagicResourceIds
@@ -1783,7 +1783,7 @@ class CreateXMagicRequest(AbstractModel):
 
 
 class CreateXMagicResponse(AbstractModel):
-    """CreateXMagic返回参数结构体
+    r"""CreateXMagic返回参数结构体
 
     """
 
@@ -1796,7 +1796,7 @@ class CreateXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1811,13 +1811,13 @@ class CreateXMagicResponse(AbstractModel):
 
 
 class DescribeFeatureListRequest(AbstractModel):
-    """DescribeFeatureList请求参数结构体
+    r"""DescribeFeatureList请求参数结构体
 
     """
 
 
 class DescribeFeatureListResponse(AbstractModel):
-    """DescribeFeatureList返回参数结构体
+    r"""DescribeFeatureList返回参数结构体
 
     """
 
@@ -1836,7 +1836,7 @@ class DescribeFeatureListResponse(AbstractModel):
 
     @property
     def FeatureList(self):
-        """功能列表
+        r"""功能列表
         :rtype: list of VideoFeature
         """
         return self._FeatureList
@@ -1847,7 +1847,7 @@ class DescribeFeatureListResponse(AbstractModel):
 
     @property
     def XMagicFeatureList(self):
-        """优图功能列表
+        r"""优图功能列表
         :rtype: list of XMagicFeature
         """
         return self._XMagicFeatureList
@@ -1858,7 +1858,7 @@ class DescribeFeatureListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1885,13 +1885,13 @@ class DescribeFeatureListResponse(AbstractModel):
 
 
 class DescribeLicenseListRequest(AbstractModel):
-    """DescribeLicenseList请求参数结构体
+    r"""DescribeLicenseList请求参数结构体
 
     """
 
 
 class DescribeLicenseListResponse(AbstractModel):
-    """DescribeLicenseList返回参数结构体
+    r"""DescribeLicenseList返回参数结构体
 
     """
 
@@ -1904,7 +1904,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1919,7 +1919,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
 
 class DescribeNewsRequest(AbstractModel):
-    """DescribeNews请求参数结构体
+    r"""DescribeNews请求参数结构体
 
     """
 
@@ -1935,7 +1935,7 @@ class DescribeNewsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码，从0开始
+        r"""页码，从0开始
         :rtype: int
         """
         return self._PageNumber
@@ -1946,7 +1946,7 @@ class DescribeNewsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数据量
+        r"""每页数据量
         :rtype: int
         """
         return self._PageSize
@@ -1970,7 +1970,7 @@ class DescribeNewsRequest(AbstractModel):
 
 
 class DescribeNewsResponse(AbstractModel):
-    """DescribeNews返回参数结构体
+    r"""DescribeNews返回参数结构体
 
     """
 
@@ -1989,7 +1989,7 @@ class DescribeNewsResponse(AbstractModel):
 
     @property
     def NewsList(self):
-        """产品动态详情列表
+        r"""产品动态详情列表
         :rtype: list of NewsInfo
         """
         return self._NewsList
@@ -2000,7 +2000,7 @@ class DescribeNewsResponse(AbstractModel):
 
     @property
     def Count(self):
-        """总数据量
+        r"""总数据量
         :rtype: int
         """
         return self._Count
@@ -2011,7 +2011,7 @@ class DescribeNewsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2033,13 +2033,13 @@ class DescribeNewsResponse(AbstractModel):
 
 
 class DescribeSTSRequest(AbstractModel):
-    """DescribeSTS请求参数结构体
+    r"""DescribeSTS请求参数结构体
 
     """
 
 
 class DescribeSTSResponse(AbstractModel):
-    """DescribeSTS返回参数结构体
+    r"""DescribeSTS返回参数结构体
 
     """
 
@@ -2076,7 +2076,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        """桶名称
+        r"""桶名称
         :rtype: str
         """
         return self._Bucket
@@ -2087,7 +2087,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def Region(self):
-        """地区
+        r"""地区
         :rtype: str
         """
         return self._Region
@@ -2098,7 +2098,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始生效时间
+        r"""开始生效时间
         :rtype: int
         """
         return self._StartTime
@@ -2109,7 +2109,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """临时token过期时间
+        r"""临时token过期时间
         :rtype: int
         """
         return self._ExpiredTime
@@ -2120,7 +2120,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def SessionToken(self):
-        """临时token
+        r"""临时token
         :rtype: str
         """
         return self._SessionToken
@@ -2131,7 +2131,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """临时SecretId
+        r"""临时SecretId
         :rtype: str
         """
         return self._TmpSecretId
@@ -2142,7 +2142,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """临时秘钥
+        r"""临时秘钥
         :rtype: str
         """
         return self._TmpSecretKey
@@ -2153,7 +2153,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def Path(self):
-        """上传的根路径，底下可以多层
+        r"""上传的根路径，底下可以多层
         :rtype: str
         """
         return self._Path
@@ -2164,7 +2164,7 @@ class DescribeSTSResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2187,13 +2187,13 @@ class DescribeSTSResponse(AbstractModel):
 
 
 class DescribeTrialFeatureRequest(AbstractModel):
-    """DescribeTrialFeature请求参数结构体
+    r"""DescribeTrialFeature请求参数结构体
 
     """
 
 
 class DescribeTrialFeatureResponse(AbstractModel):
-    """DescribeTrialFeature返回参数结构体
+    r"""DescribeTrialFeature返回参数结构体
 
     """
 
@@ -2216,7 +2216,7 @@ class DescribeTrialFeatureResponse(AbstractModel):
 
     @property
     def FeatureList(self):
-        """功能列表
+        r"""功能列表
         :rtype: list of Feature
         """
         return self._FeatureList
@@ -2227,7 +2227,7 @@ class DescribeTrialFeatureResponse(AbstractModel):
 
     @property
     def XMagicTrial(self):
-        """可以开通的优图测试功能
+        r"""可以开通的优图测试功能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.XMagicTrial`
         """
@@ -2239,7 +2239,7 @@ class DescribeTrialFeatureResponse(AbstractModel):
 
     @property
     def XMagicTrialList(self):
-        """可以开通的优图测试功能列表
+        r"""可以开通的优图测试功能列表
         :rtype: list of XMagicTrial
         """
         return self._XMagicTrialList
@@ -2250,7 +2250,7 @@ class DescribeTrialFeatureResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2280,13 +2280,13 @@ class DescribeTrialFeatureResponse(AbstractModel):
 
 
 class DescribeUserConfigRequest(AbstractModel):
-    """DescribeUserConfig请求参数结构体
+    r"""DescribeUserConfig请求参数结构体
 
     """
 
 
 class DescribeUserConfigResponse(AbstractModel):
-    """DescribeUserConfig返回参数结构体
+    r"""DescribeUserConfig返回参数结构体
 
     """
 
@@ -2299,7 +2299,7 @@ class DescribeUserConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2314,7 +2314,7 @@ class DescribeUserConfigResponse(AbstractModel):
 
 
 class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
-    """DescribeVcubeApplicationAndLicense请求参数结构体
+    r"""DescribeVcubeApplicationAndLicense请求参数结构体
 
     """
 
@@ -2348,7 +2348,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """查询对应业务方的license，直播:live 点播：vod
+        r"""查询对应业务方的license，直播:live 点播：vod
         :rtype: str
         """
         return self._BizType
@@ -2359,7 +2359,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型测试：test，正式：formal
+        r"""应用类型测试：test，正式：formal
         :rtype: str
         """
         return self._AppType
@@ -2370,7 +2370,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称，模糊查询
+        r"""应用名称，模糊查询
         :rtype: str
         """
         return self._AppName
@@ -2381,7 +2381,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios包名，模糊查询
+        r"""Ios包名，模糊查询
         :rtype: str
         """
         return self._BundleId
@@ -2392,7 +2392,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Android 包名，模糊查询
+        r"""Android 包名，模糊查询
         :rtype: str
         """
         return self._PackageName
@@ -2403,7 +2403,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台信息，pc 或者 mobile
+        r"""平台信息，pc 或者 mobile
         :rtype: str
         """
         return self._Platform
@@ -2414,7 +2414,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -2425,7 +2425,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -2455,7 +2455,7 @@ class DescribeVcubeApplicationAndLicenseRequest(AbstractModel):
 
 
 class DescribeVcubeApplicationAndLicenseResponse(AbstractModel):
-    """DescribeVcubeApplicationAndLicense返回参数结构体
+    r"""DescribeVcubeApplicationAndLicense返回参数结构体
 
     """
 
@@ -2471,7 +2471,7 @@ class DescribeVcubeApplicationAndLicenseResponse(AbstractModel):
 
     @property
     def ApplicationInfoList(self):
-        """应用license列表
+        r"""应用license列表
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationInfoList
@@ -2482,7 +2482,7 @@ class DescribeVcubeApplicationAndLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2503,7 +2503,7 @@ class DescribeVcubeApplicationAndLicenseResponse(AbstractModel):
 
 
 class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
-    """DescribeVcubeApplicationAndPlayList请求参数结构体
+    r"""DescribeVcubeApplicationAndPlayList请求参数结构体
 
     """
 
@@ -2537,7 +2537,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """查询对应业务方的license，直播:live 点播：vod
+        r"""查询对应业务方的license，直播:live 点播：vod
         :rtype: str
         """
         return self._BizType
@@ -2548,7 +2548,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型测试：test，正式：formal
+        r"""应用类型测试：test，正式：formal
         :rtype: str
         """
         return self._AppType
@@ -2559,7 +2559,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称，模糊查询
+        r"""应用名称，模糊查询
         :rtype: str
         """
         return self._AppName
@@ -2570,7 +2570,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios包名，模糊查询
+        r"""Ios包名，模糊查询
         :rtype: str
         """
         return self._BundleId
@@ -2581,7 +2581,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Android 包名，模糊查询
+        r"""Android 包名，模糊查询
         :rtype: str
         """
         return self._PackageName
@@ -2592,7 +2592,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台信息，pc 或者 mobile
+        r"""平台信息，pc 或者 mobile
         :rtype: str
         """
         return self._Platform
@@ -2603,7 +2603,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -2614,7 +2614,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -2644,7 +2644,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
 
 
 class DescribeVcubeApplicationAndPlayListResponse(AbstractModel):
-    """DescribeVcubeApplicationAndPlayList返回参数结构体
+    r"""DescribeVcubeApplicationAndPlayList返回参数结构体
 
     """
 
@@ -2660,7 +2660,7 @@ class DescribeVcubeApplicationAndPlayListResponse(AbstractModel):
 
     @property
     def ApplicationInfoList(self):
-        """应用license列表
+        r"""应用license列表
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationInfoList
@@ -2671,7 +2671,7 @@ class DescribeVcubeApplicationAndPlayListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2692,7 +2692,7 @@ class DescribeVcubeApplicationAndPlayListResponse(AbstractModel):
 
 
 class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
-    """DescribeVcubeApplicationAndXMagicList请求参数结构体
+    r"""DescribeVcubeApplicationAndXMagicList请求参数结构体
 
     """
 
@@ -2726,7 +2726,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """查询对应业务方的license，直播:live 点播：vod
+        r"""查询对应业务方的license，直播:live 点播：vod
         :rtype: str
         """
         return self._BizType
@@ -2737,7 +2737,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型测试：test，正式：formal
+        r"""应用类型测试：test，正式：formal
         :rtype: str
         """
         return self._AppType
@@ -2748,7 +2748,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称，模糊查询
+        r"""应用名称，模糊查询
         :rtype: str
         """
         return self._AppName
@@ -2759,7 +2759,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios包名，模糊查询
+        r"""Ios包名，模糊查询
         :rtype: str
         """
         return self._BundleId
@@ -2770,7 +2770,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Android 包名，模糊查询
+        r"""Android 包名，模糊查询
         :rtype: str
         """
         return self._PackageName
@@ -2781,7 +2781,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台信息，pc 或者 mobile
+        r"""平台信息，pc 或者 mobile
         :rtype: str
         """
         return self._Platform
@@ -2792,7 +2792,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -2803,7 +2803,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -2833,7 +2833,7 @@ class DescribeVcubeApplicationAndXMagicListRequest(AbstractModel):
 
 
 class DescribeVcubeApplicationAndXMagicListResponse(AbstractModel):
-    """DescribeVcubeApplicationAndXMagicList返回参数结构体
+    r"""DescribeVcubeApplicationAndXMagicList返回参数结构体
 
     """
 
@@ -2849,7 +2849,7 @@ class DescribeVcubeApplicationAndXMagicListResponse(AbstractModel):
 
     @property
     def ApplicationInfoList(self):
-        """应用license列表
+        r"""应用license列表
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationInfoList
@@ -2860,7 +2860,7 @@ class DescribeVcubeApplicationAndXMagicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2881,7 +2881,7 @@ class DescribeVcubeApplicationAndXMagicListResponse(AbstractModel):
 
 
 class DescribeVcubeResourcesListRequest(AbstractModel):
-    """DescribeVcubeResourcesList请求参数结构体
+    r"""DescribeVcubeResourcesList请求参数结构体
 
     """
 
@@ -2909,7 +2909,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """查询资源页码
+        r"""查询资源页码
         :rtype: int
         """
         return self._PageNumber
@@ -2920,7 +2920,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页的数据量
+        r"""每页的数据量
         :rtype: int
         """
         return self._PageSize
@@ -2931,7 +2931,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称，模块查询
+        r"""应用名称，模块查询
         :rtype: str
         """
         return self._AppName
@@ -2942,7 +2942,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id，资源包id或者license资源id
+        r"""资源Id，资源包id或者license资源id
         :rtype: str
         """
         return self._ResourceId
@@ -2953,7 +2953,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def Word(self):
-        """资源Id、应用名称、包名
+        r"""资源Id、应用名称、包名
         :rtype: str
         """
         return self._Word
@@ -2964,7 +2964,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """查询资源所属平台，web、mobile
+        r"""查询资源所属平台，web、mobile
         :rtype: str
         """
         return self._Platform
@@ -2992,7 +2992,7 @@ class DescribeVcubeResourcesListRequest(AbstractModel):
 
 
 class DescribeVcubeResourcesListResponse(AbstractModel):
-    """DescribeVcubeResourcesList返回参数结构体
+    r"""DescribeVcubeResourcesList返回参数结构体
 
     """
 
@@ -3011,7 +3011,7 @@ class DescribeVcubeResourcesListResponse(AbstractModel):
 
     @property
     def ResourceList(self):
-        """资源列表
+        r"""资源列表
         :rtype: list of LicenseResourceInfo
         """
         return self._ResourceList
@@ -3022,7 +3022,7 @@ class DescribeVcubeResourcesListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数据量
+        r"""总数据量
         :rtype: int
         """
         return self._TotalCount
@@ -3033,7 +3033,7 @@ class DescribeVcubeResourcesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3055,7 +3055,7 @@ class DescribeVcubeResourcesListResponse(AbstractModel):
 
 
 class DescribeVcubeResourcesRequest(AbstractModel):
-    """DescribeVcubeResources请求参数结构体
+    r"""DescribeVcubeResources请求参数结构体
 
     """
 
@@ -3068,7 +3068,7 @@ class DescribeVcubeResourcesRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """查找那个平台的资源
+        r"""查找那个平台的资源
         :rtype: str
         """
         return self._Platform
@@ -3091,7 +3091,7 @@ class DescribeVcubeResourcesRequest(AbstractModel):
 
 
 class DescribeVcubeResourcesResponse(AbstractModel):
-    """DescribeVcubeResources返回参数结构体
+    r"""DescribeVcubeResources返回参数结构体
 
     """
 
@@ -3107,7 +3107,7 @@ class DescribeVcubeResourcesResponse(AbstractModel):
 
     @property
     def ResourceList(self):
-        """资源列表
+        r"""资源列表
         :rtype: list of LicenseResourceSimpleInfo
         """
         return self._ResourceList
@@ -3118,7 +3118,7 @@ class DescribeVcubeResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3139,7 +3139,7 @@ class DescribeVcubeResourcesResponse(AbstractModel):
 
 
 class DescribeXMagicResourceListRequest(AbstractModel):
-    """DescribeXMagicResourceList请求参数结构体
+    r"""DescribeXMagicResourceList请求参数结构体
 
     """
 
@@ -3170,7 +3170,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页页码 第一页是0
+        r"""分页页码 第一页是0
         :rtype: int
         """
         return self._PageNumber
@@ -3181,7 +3181,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._PageSize
@@ -3192,7 +3192,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """关联的应用名称
+        r"""关联的应用名称
         :rtype: str
         """
         return self._AppName
@@ -3203,7 +3203,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """优图资源Id
+        r"""优图资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -3214,7 +3214,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def Word(self):
-        """查询关键字，资源Id、应用名称、包名
+        r"""查询关键字，资源Id、应用名称、包名
         :rtype: str
         """
         return self._Word
@@ -3225,7 +3225,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台信息，pc 或者 mobile
+        r"""平台信息，pc 或者 mobile
         :rtype: str
         """
         return self._Platform
@@ -3236,7 +3236,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """所属业务，xmagic：优图， avatar：虚拟人，不传查全部
+        r"""所属业务，xmagic：优图， avatar：虚拟人，不传查全部
         :rtype: str
         """
         return self._BizType
@@ -3265,7 +3265,7 @@ class DescribeXMagicResourceListRequest(AbstractModel):
 
 
 class DescribeXMagicResourceListResponse(AbstractModel):
-    """DescribeXMagicResourceList返回参数结构体
+    r"""DescribeXMagicResourceList返回参数结构体
 
     """
 
@@ -3284,7 +3284,7 @@ class DescribeXMagicResourceListResponse(AbstractModel):
 
     @property
     def Resources(self):
-        """优图资源包信息
+        r"""优图资源包信息
         :rtype: list of XMagicResourceSimpleInfo
         """
         return self._Resources
@@ -3295,7 +3295,7 @@ class DescribeXMagicResourceListResponse(AbstractModel):
 
     @property
     def Count(self):
-        """资源数量
+        r"""资源数量
         :rtype: int
         """
         return self._Count
@@ -3306,7 +3306,7 @@ class DescribeXMagicResourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3328,7 +3328,7 @@ class DescribeXMagicResourceListResponse(AbstractModel):
 
 
 class DescribeXMagicResourceRequest(AbstractModel):
-    """DescribeXMagicResource请求参数结构体
+    r"""DescribeXMagicResource请求参数结构体
 
     """
 
@@ -3344,7 +3344,7 @@ class DescribeXMagicResourceRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页页码 第一页是0
+        r"""分页页码 第一页是0
         :rtype: int
         """
         return self._PageNumber
@@ -3355,7 +3355,7 @@ class DescribeXMagicResourceRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._PageSize
@@ -3379,7 +3379,7 @@ class DescribeXMagicResourceRequest(AbstractModel):
 
 
 class DescribeXMagicResourceResponse(AbstractModel):
-    """DescribeXMagicResource返回参数结构体
+    r"""DescribeXMagicResource返回参数结构体
 
     """
 
@@ -3398,7 +3398,7 @@ class DescribeXMagicResourceResponse(AbstractModel):
 
     @property
     def Resources(self):
-        """优图资源包信息
+        r"""优图资源包信息
         :rtype: list of XMagicResource
         """
         return self._Resources
@@ -3409,7 +3409,7 @@ class DescribeXMagicResourceResponse(AbstractModel):
 
     @property
     def Count(self):
-        """资源数量
+        r"""资源数量
         :rtype: int
         """
         return self._Count
@@ -3420,7 +3420,7 @@ class DescribeXMagicResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3442,7 +3442,7 @@ class DescribeXMagicResourceResponse(AbstractModel):
 
 
 class Feature(AbstractModel):
-    """功能描述模型
+    r"""功能描述模型
 
     """
 
@@ -3479,7 +3479,7 @@ class Feature(AbstractModel):
 
     @property
     def Id(self):
-        """索引
+        r"""索引
         :rtype: int
         """
         return self._Id
@@ -3490,7 +3490,7 @@ class Feature(AbstractModel):
 
     @property
     def FeatureId(self):
-        """功能ID
+        r"""功能ID
         :rtype: int
         """
         return self._FeatureId
@@ -3501,7 +3501,7 @@ class Feature(AbstractModel):
 
     @property
     def Name(self):
-        """功能名称
+        r"""功能名称
         :rtype: str
         """
         return self._Name
@@ -3512,7 +3512,7 @@ class Feature(AbstractModel):
 
     @property
     def Type(self):
-        """功能类型
+        r"""功能类型
         :rtype: str
         """
         return self._Type
@@ -3523,7 +3523,7 @@ class Feature(AbstractModel):
 
     @property
     def Trial(self):
-        """是否可以申请试用
+        r"""是否可以申请试用
         :rtype: bool
         """
         return self._Trial
@@ -3534,7 +3534,7 @@ class Feature(AbstractModel):
 
     @property
     def TrialCount(self):
-        """可以试用的次数
+        r"""可以试用的次数
         :rtype: int
         """
         return self._TrialCount
@@ -3545,7 +3545,7 @@ class Feature(AbstractModel):
 
     @property
     def Duration(self):
-        """可以试用的时长，单位天
+        r"""可以试用的时长，单位天
         :rtype: int
         """
         return self._Duration
@@ -3556,7 +3556,7 @@ class Feature(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -3567,7 +3567,7 @@ class Feature(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -3598,7 +3598,7 @@ class Feature(AbstractModel):
 
 
 class License(AbstractModel):
-    """视立方应用license
+    r"""视立方应用license
 
     """
 
@@ -3667,7 +3667,7 @@ class License(AbstractModel):
 
     @property
     def Type(self):
-        """license类型
+        r"""license类型
         :rtype: str
         """
         return self._Type
@@ -3678,7 +3678,7 @@ class License(AbstractModel):
 
     @property
     def Remark(self):
-        """老系统迁移备注
+        r"""老系统迁移备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3690,7 +3690,7 @@ class License(AbstractModel):
 
     @property
     def StartTime(self):
-        """license生效时间
+        r"""license生效时间
         :rtype: str
         """
         return self._StartTime
@@ -3701,7 +3701,7 @@ class License(AbstractModel):
 
     @property
     def EndTime(self):
-        """license失效时间
+        r"""license失效时间
         :rtype: str
         """
         return self._EndTime
@@ -3712,7 +3712,7 @@ class License(AbstractModel):
 
     @property
     def FeatureId(self):
-        """license对应的功能Id
+        r"""license对应的功能Id
         :rtype: int
         """
         return self._FeatureId
@@ -3723,7 +3723,7 @@ class License(AbstractModel):
 
     @property
     def LicenseType(self):
-        """license是测试：test还是正式：formal
+        r"""license是测试：test还是正式：formal
         :rtype: str
         """
         return self._LicenseType
@@ -3734,7 +3734,7 @@ class License(AbstractModel):
 
     @property
     def Renewal(self):
-        """测试license 是否可以续期
+        r"""测试license 是否可以续期
         :rtype: bool
         """
         return self._Renewal
@@ -3745,7 +3745,7 @@ class License(AbstractModel):
 
     @property
     def LicenseId(self):
-        """license索引
+        r"""license索引
         :rtype: int
         """
         return self._LicenseId
@@ -3756,7 +3756,7 @@ class License(AbstractModel):
 
     @property
     def Name(self):
-        """license名称
+        r"""license名称
         :rtype: str
         """
         return self._Name
@@ -3767,7 +3767,7 @@ class License(AbstractModel):
 
     @property
     def Update(self):
-        """测试license 是否升级
+        r"""测试license 是否升级
         :rtype: bool
         """
         return self._Update
@@ -3778,7 +3778,7 @@ class License(AbstractModel):
 
     @property
     def OldLicenseUrl(self):
-        """兼容老的licenseUrl
+        r"""兼容老的licenseUrl
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3790,7 +3790,7 @@ class License(AbstractModel):
 
     @property
     def Group(self):
-        """视立方url分组
+        r"""视立方url分组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3802,7 +3802,7 @@ class License(AbstractModel):
 
     @property
     def Expired(self):
-        """过期：true ，未过期：其它
+        r"""过期：true ，未过期：其它
         :rtype: bool
         """
         return self._Expired
@@ -3813,7 +3813,7 @@ class License(AbstractModel):
 
     @property
     def RestTime(self):
-        """返回还有多少秒过期，过期返回0
+        r"""返回还有多少秒过期，过期返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3825,7 +3825,7 @@ class License(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -3836,7 +3836,7 @@ class License(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -3847,7 +3847,7 @@ class License(AbstractModel):
 
     @property
     def Resource(self):
-        """计费资源相关信息
+        r"""计费资源相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.RenewResource`
         """
@@ -3859,7 +3859,7 @@ class License(AbstractModel):
 
     @property
     def IsVest(self):
-        """是否为马甲包
+        r"""是否为马甲包
         :rtype: bool
         """
         return self._IsVest
@@ -3901,7 +3901,7 @@ class License(AbstractModel):
 
 
 class LicenseResourceInfo(AbstractModel):
-    """license 资源信息
+    r"""license 资源信息
 
     """
 
@@ -3966,7 +3966,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Id(self):
-        """授权功能Id
+        r"""授权功能Id
         :rtype: int
         """
         return self._Id
@@ -3977,7 +3977,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -3988,7 +3988,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """有效期时长
+        r"""有效期时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4000,7 +4000,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def FeatureId(self):
-        """功能Id
+        r"""功能Id
         :rtype: int
         """
         return self._FeatureId
@@ -4011,7 +4011,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """此license资源的开始生效时间
+        r"""此license资源的开始生效时间
         :rtype: str
         """
         return self._StartTime
@@ -4022,7 +4022,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """此license资源的生效结束时间
+        r"""此license资源的生效结束时间
         :rtype: str
         """
         return self._EndTime
@@ -4033,7 +4033,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -4044,7 +4044,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -4055,7 +4055,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def IsUse(self):
-        """此资源是否可用于续期和更新有效期
+        r"""此资源是否可用于续期和更新有效期
         :rtype: bool
         """
         return self._IsUse
@@ -4066,7 +4066,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """此资源的状态
+        r"""此资源的状态
         :rtype: int
         """
         return self._Status
@@ -4077,7 +4077,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def IsolatedTimestamp(self):
-        """销毁时间
+        r"""销毁时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4089,7 +4089,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """功能模块名称
+        r"""功能模块名称
         :rtype: str
         """
         return self._Name
@@ -4100,7 +4100,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Type(self):
-        """功能模块类型
+        r"""功能模块类型
         :rtype: str
         """
         return self._Type
@@ -4111,7 +4111,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Package(self):
-        """资源包信息
+        r"""资源包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.Package`
         """
@@ -4123,7 +4123,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def Application(self):
-        """应用信息
+        r"""应用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.AppInfo`
         """
@@ -4135,7 +4135,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -4146,7 +4146,7 @@ class LicenseResourceInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费状态
+        r"""自动续费状态
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4189,7 +4189,7 @@ class LicenseResourceInfo(AbstractModel):
 
 
 class LicenseResourceSimpleInfo(AbstractModel):
-    """license 资源信息
+    r"""license 资源信息
 
     """
 
@@ -4250,7 +4250,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Id(self):
-        """授权功能Id
+        r"""授权功能Id
         :rtype: int
         """
         return self._Id
@@ -4261,7 +4261,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -4272,7 +4272,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """有效期时长
+        r"""有效期时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4284,7 +4284,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def FeatureId(self):
-        """功能Id
+        r"""功能Id
         :rtype: int
         """
         return self._FeatureId
@@ -4295,7 +4295,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """此license资源的开始生效时间
+        r"""此license资源的开始生效时间
         :rtype: str
         """
         return self._StartTime
@@ -4306,7 +4306,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """此license资源的生效结束时间
+        r"""此license资源的生效结束时间
         :rtype: str
         """
         return self._EndTime
@@ -4317,7 +4317,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -4328,7 +4328,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -4339,7 +4339,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def IsUse(self):
-        """此资源是否可用于续期和更新有效期
+        r"""此资源是否可用于续期和更新有效期
         :rtype: bool
         """
         return self._IsUse
@@ -4350,7 +4350,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Status(self):
-        """此资源的状态
+        r"""此资源的状态
         :rtype: int
         """
         return self._Status
@@ -4361,7 +4361,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def IsolatedTimestamp(self):
-        """销毁时间
+        r"""销毁时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4373,7 +4373,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Name(self):
-        """功能模块名称
+        r"""功能模块名称
         :rtype: str
         """
         return self._Name
@@ -4384,7 +4384,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Type(self):
-        """功能模块类型
+        r"""功能模块类型
         :rtype: str
         """
         return self._Type
@@ -4395,7 +4395,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def Package(self):
-        """资源包信息
+        r"""资源包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.Package`
         """
@@ -4407,7 +4407,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -4418,7 +4418,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费状态
+        r"""自动续费状态
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4458,7 +4458,7 @@ class LicenseResourceSimpleInfo(AbstractModel):
 
 
 class ModifyApplicationRequest(AbstractModel):
-    """ModifyApplication请求参数结构体
+    r"""ModifyApplication请求参数结构体
 
     """
 
@@ -4489,7 +4489,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._ApplicationId
@@ -4500,7 +4500,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名
+        r"""应用名
         :rtype: str
         """
         return self._AppName
@@ -4511,7 +4511,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._BundleId
@@ -4522,7 +4522,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """包名
+        r"""包名
         :rtype: str
         """
         return self._PackageName
@@ -4533,7 +4533,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        """Windows 进程名
+        r"""Windows 进程名
         :rtype: str
         """
         return self._WinProcessName
@@ -4544,7 +4544,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        """Mac 进程名
+        r"""Mac 进程名
         :rtype: str
         """
         return self._MacBundleId
@@ -4555,7 +4555,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """要追加的web域名列表
+        r"""要追加的web域名列表
         :rtype: list of str
         """
         return self._DomainList
@@ -4584,7 +4584,7 @@ class ModifyApplicationRequest(AbstractModel):
 
 
 class ModifyApplicationResponse(AbstractModel):
-    """ModifyApplication返回参数结构体
+    r"""ModifyApplication返回参数结构体
 
     """
 
@@ -4597,7 +4597,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4612,7 +4612,7 @@ class ModifyApplicationResponse(AbstractModel):
 
 
 class ModifyFormalApplicationRequest(AbstractModel):
-    """ModifyFormalApplication请求参数结构体
+    r"""ModifyFormalApplication请求参数结构体
 
     """
 
@@ -4634,7 +4634,7 @@ class ModifyFormalApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._ApplicationId
@@ -4645,7 +4645,7 @@ class ModifyFormalApplicationRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -4656,7 +4656,7 @@ class ModifyFormalApplicationRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """Ios 包名称
+        r"""Ios 包名称
         :rtype: str
         """
         return self._BundleId
@@ -4667,7 +4667,7 @@ class ModifyFormalApplicationRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Android  包名称
+        r"""Android  包名称
         :rtype: str
         """
         return self._PackageName
@@ -4693,7 +4693,7 @@ class ModifyFormalApplicationRequest(AbstractModel):
 
 
 class ModifyFormalApplicationResponse(AbstractModel):
-    """ModifyFormalApplication返回参数结构体
+    r"""ModifyFormalApplication返回参数结构体
 
     """
 
@@ -4706,7 +4706,7 @@ class ModifyFormalApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4721,7 +4721,7 @@ class ModifyFormalApplicationResponse(AbstractModel):
 
 
 class ModifyLicenseRequest(AbstractModel):
-    """ModifyLicense请求参数结构体
+    r"""ModifyLicense请求参数结构体
 
     """
 
@@ -4737,7 +4737,7 @@ class ModifyLicenseRequest(AbstractModel):
 
     @property
     def LicenseId(self):
-        """License 功能模块 Id
+        r"""License 功能模块 Id
         :rtype: str
         """
         return self._LicenseId
@@ -4748,7 +4748,7 @@ class ModifyLicenseRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源包 Id
+        r"""资源包 Id
         :rtype: str
         """
         return self._ResourceId
@@ -4772,7 +4772,7 @@ class ModifyLicenseRequest(AbstractModel):
 
 
 class ModifyLicenseResponse(AbstractModel):
-    """ModifyLicense返回参数结构体
+    r"""ModifyLicense返回参数结构体
 
     """
 
@@ -4785,7 +4785,7 @@ class ModifyLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4800,7 +4800,7 @@ class ModifyLicenseResponse(AbstractModel):
 
 
 class ModifyPresetApplicationRequest(AbstractModel):
-    """ModifyPresetApplication请求参数结构体
+    r"""ModifyPresetApplication请求参数结构体
 
     """
 
@@ -4822,7 +4822,7 @@ class ModifyPresetApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._ApplicationId
@@ -4833,7 +4833,7 @@ class ModifyPresetApplicationRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """您的app名称
+        r"""您的app名称
         :rtype: str
         """
         return self._AppName
@@ -4844,7 +4844,7 @@ class ModifyPresetApplicationRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        """ios包名
+        r"""ios包名
         :rtype: str
         """
         return self._BundleId
@@ -4855,7 +4855,7 @@ class ModifyPresetApplicationRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """安卓包名
+        r"""安卓包名
         :rtype: str
         """
         return self._PackageName
@@ -4881,7 +4881,7 @@ class ModifyPresetApplicationRequest(AbstractModel):
 
 
 class ModifyPresetApplicationResponse(AbstractModel):
-    """ModifyPresetApplication返回参数结构体
+    r"""ModifyPresetApplication返回参数结构体
 
     """
 
@@ -4894,7 +4894,7 @@ class ModifyPresetApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4909,7 +4909,7 @@ class ModifyPresetApplicationResponse(AbstractModel):
 
 
 class ModifyTrialLicenseRequest(AbstractModel):
-    """ModifyTrialLicense请求参数结构体
+    r"""ModifyTrialLicense请求参数结构体
 
     """
 
@@ -4922,7 +4922,7 @@ class ModifyTrialLicenseRequest(AbstractModel):
 
     @property
     def LicenseId(self):
-        """授权ID
+        r"""授权ID
         :rtype: str
         """
         return self._LicenseId
@@ -4945,7 +4945,7 @@ class ModifyTrialLicenseRequest(AbstractModel):
 
 
 class ModifyTrialLicenseResponse(AbstractModel):
-    """ModifyTrialLicense返回参数结构体
+    r"""ModifyTrialLicense返回参数结构体
 
     """
 
@@ -4958,7 +4958,7 @@ class ModifyTrialLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4973,7 +4973,7 @@ class ModifyTrialLicenseResponse(AbstractModel):
 
 
 class ModifyXMagicRequest(AbstractModel):
-    """ModifyXMagic请求参数结构体
+    r"""ModifyXMagic请求参数结构体
 
     """
 
@@ -4989,7 +4989,7 @@ class ModifyXMagicRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -5000,7 +5000,7 @@ class ModifyXMagicRequest(AbstractModel):
 
     @property
     def XMagicId(self):
-        """优图licenseId
+        r"""优图licenseId
         :rtype: str
         """
         return self._XMagicId
@@ -5024,7 +5024,7 @@ class ModifyXMagicRequest(AbstractModel):
 
 
 class ModifyXMagicResponse(AbstractModel):
-    """ModifyXMagic返回参数结构体
+    r"""ModifyXMagic返回参数结构体
 
     """
 
@@ -5037,7 +5037,7 @@ class ModifyXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5052,7 +5052,7 @@ class ModifyXMagicResponse(AbstractModel):
 
 
 class NewsInfo(AbstractModel):
-    """视立方产品概览页新闻动态
+    r"""视立方产品概览页新闻动态
 
     """
 
@@ -5065,7 +5065,7 @@ class NewsInfo(AbstractModel):
 
     @property
     def Id(self):
-        """新闻Id
+        r"""新闻Id
         :rtype: int
         """
         return self._Id
@@ -5088,7 +5088,7 @@ class NewsInfo(AbstractModel):
 
 
 class Package(AbstractModel):
-    """资源包结构
+    r"""资源包结构
 
     """
 
@@ -5123,7 +5123,7 @@ class Package(AbstractModel):
 
     @property
     def Id(self):
-        """资源包Id
+        r"""资源包Id
         :rtype: int
         """
         return self._Id
@@ -5134,7 +5134,7 @@ class Package(AbstractModel):
 
     @property
     def BizResourceId(self):
-        """资源包资源Id
+        r"""资源包资源Id
         :rtype: str
         """
         return self._BizResourceId
@@ -5145,7 +5145,7 @@ class Package(AbstractModel):
 
     @property
     def Site(self):
-        """站点 中国站还是国际站
+        r"""站点 中国站还是国际站
         :rtype: str
         """
         return self._Site
@@ -5156,7 +5156,7 @@ class Package(AbstractModel):
 
     @property
     def StartTime(self):
-        """资源包开始生效时间
+        r"""资源包开始生效时间
         :rtype: str
         """
         return self._StartTime
@@ -5167,7 +5167,7 @@ class Package(AbstractModel):
 
     @property
     def EndTime(self):
-        """资源包过期时间
+        r"""资源包过期时间
         :rtype: str
         """
         return self._EndTime
@@ -5178,7 +5178,7 @@ class Package(AbstractModel):
 
     @property
     def RefundTime(self):
-        """资源包退费时间
+        r"""资源包退费时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5190,7 +5190,7 @@ class Package(AbstractModel):
 
     @property
     def Name(self):
-        """资源包名称
+        r"""资源包名称
         :rtype: str
         """
         return self._Name
@@ -5201,7 +5201,7 @@ class Package(AbstractModel):
 
     @property
     def Type(self):
-        """资源包类型ID,对应点播：PackageId 对应直播：TypeId
+        r"""资源包类型ID,对应点播：PackageId 对应直播：TypeId
         :rtype: str
         """
         return self._Type
@@ -5231,7 +5231,7 @@ class Package(AbstractModel):
 
 
 class RenewLicenseRequest(AbstractModel):
-    """RenewLicense请求参数结构体
+    r"""RenewLicense请求参数结构体
 
     """
 
@@ -5247,7 +5247,7 @@ class RenewLicenseRequest(AbstractModel):
 
     @property
     def LicenseId(self):
-        """License 功能模块 Id
+        r"""License 功能模块 Id
         :rtype: str
         """
         return self._LicenseId
@@ -5258,7 +5258,7 @@ class RenewLicenseRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源包 Id
+        r"""资源包 Id
         :rtype: str
         """
         return self._ResourceId
@@ -5282,7 +5282,7 @@ class RenewLicenseRequest(AbstractModel):
 
 
 class RenewLicenseResponse(AbstractModel):
-    """RenewLicense返回参数结构体
+    r"""RenewLicense返回参数结构体
 
     """
 
@@ -5295,7 +5295,7 @@ class RenewLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5310,7 +5310,7 @@ class RenewLicenseResponse(AbstractModel):
 
 
 class RenewResource(AbstractModel):
-    """自动续期资源info
+    r"""自动续期资源info
 
     """
 
@@ -5340,7 +5340,7 @@ class RenewResource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -5351,7 +5351,7 @@ class RenewResource(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续期标记，0：默认，1：自动续期，2：不续期
+        r"""自动续期标记，0：默认，1：自动续期，2：不续期
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -5362,7 +5362,7 @@ class RenewResource(AbstractModel):
 
     @property
     def IsolatedTimestamp(self):
-        """资源冻结时间
+        r"""资源冻结时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5374,7 +5374,7 @@ class RenewResource(AbstractModel):
 
     @property
     def Refund(self):
-        """资源销毁状态
+        r"""资源销毁状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5386,7 +5386,7 @@ class RenewResource(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """子产品码
+        r"""子产品码
         :rtype: str
         """
         return self._SubProductCode
@@ -5397,7 +5397,7 @@ class RenewResource(AbstractModel):
 
     @property
     def EndTime(self):
-        """资源到期时间
+        r"""资源到期时间
         :rtype: str
         """
         return self._EndTime
@@ -5425,7 +5425,7 @@ class RenewResource(AbstractModel):
 
 
 class RenewTestXMagicRequest(AbstractModel):
-    """RenewTestXMagic请求参数结构体
+    r"""RenewTestXMagic请求参数结构体
 
     """
 
@@ -5438,7 +5438,7 @@ class RenewTestXMagicRequest(AbstractModel):
 
     @property
     def XMagicId(self):
-        """优图美视Id
+        r"""优图美视Id
         :rtype: int
         """
         return self._XMagicId
@@ -5461,7 +5461,7 @@ class RenewTestXMagicRequest(AbstractModel):
 
 
 class RenewTestXMagicResponse(AbstractModel):
-    """RenewTestXMagic返回参数结构体
+    r"""RenewTestXMagic返回参数结构体
 
     """
 
@@ -5474,7 +5474,7 @@ class RenewTestXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5489,7 +5489,7 @@ class RenewTestXMagicResponse(AbstractModel):
 
 
 class RenewVideoRequest(AbstractModel):
-    """RenewVideo请求参数结构体
+    r"""RenewVideo请求参数结构体
 
     """
 
@@ -5502,7 +5502,7 @@ class RenewVideoRequest(AbstractModel):
 
     @property
     def LicenseId(self):
-        """要续期的视频播放license Id
+        r"""要续期的视频播放license Id
         :rtype: int
         """
         return self._LicenseId
@@ -5525,7 +5525,7 @@ class RenewVideoRequest(AbstractModel):
 
 
 class RenewVideoResponse(AbstractModel):
-    """RenewVideo返回参数结构体
+    r"""RenewVideo返回参数结构体
 
     """
 
@@ -5538,7 +5538,7 @@ class RenewVideoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5553,7 +5553,7 @@ class RenewVideoResponse(AbstractModel):
 
 
 class UpdateTestXMagicRequest(AbstractModel):
-    """UpdateTestXMagic请求参数结构体
+    r"""UpdateTestXMagic请求参数结构体
 
     """
 
@@ -5569,7 +5569,7 @@ class UpdateTestXMagicRequest(AbstractModel):
 
     @property
     def XMagicId(self):
-        """优图美视功能Id
+        r"""优图美视功能Id
         :rtype: int
         """
         return self._XMagicId
@@ -5580,7 +5580,7 @@ class UpdateTestXMagicRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """XMagic套餐包Id
+        r"""XMagic套餐包Id
         :rtype: str
         """
         return self._ResourceId
@@ -5604,7 +5604,7 @@ class UpdateTestXMagicRequest(AbstractModel):
 
 
 class UpdateTestXMagicResponse(AbstractModel):
-    """UpdateTestXMagic返回参数结构体
+    r"""UpdateTestXMagic返回参数结构体
 
     """
 
@@ -5617,7 +5617,7 @@ class UpdateTestXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5632,7 +5632,7 @@ class UpdateTestXMagicResponse(AbstractModel):
 
 
 class UpdateTrialLicenseRequest(AbstractModel):
-    """UpdateTrialLicense请求参数结构体
+    r"""UpdateTrialLicense请求参数结构体
 
     """
 
@@ -5648,7 +5648,7 @@ class UpdateTrialLicenseRequest(AbstractModel):
 
     @property
     def LicenseId(self):
-        """执照ID
+        r"""执照ID
         :rtype: str
         """
         return self._LicenseId
@@ -5659,7 +5659,7 @@ class UpdateTrialLicenseRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源包ID
+        r"""资源包ID
         :rtype: str
         """
         return self._ResourceId
@@ -5683,7 +5683,7 @@ class UpdateTrialLicenseRequest(AbstractModel):
 
 
 class UpdateTrialLicenseResponse(AbstractModel):
-    """UpdateTrialLicense返回参数结构体
+    r"""UpdateTrialLicense返回参数结构体
 
     """
 
@@ -5696,7 +5696,7 @@ class UpdateTrialLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5711,7 +5711,7 @@ class UpdateTrialLicenseResponse(AbstractModel):
 
 
 class UpdateXMagicRequest(AbstractModel):
-    """UpdateXMagic请求参数结构体
+    r"""UpdateXMagic请求参数结构体
 
     """
 
@@ -5736,7 +5736,7 @@ class UpdateXMagicRequest(AbstractModel):
 
     @property
     def XMagicId(self):
-        """要修改的XMagic Id
+        r"""要修改的XMagic Id
         :rtype: int
         """
         return self._XMagicId
@@ -5747,7 +5747,7 @@ class UpdateXMagicRequest(AbstractModel):
 
     @property
     def XMagicResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._XMagicResourceId
@@ -5758,7 +5758,7 @@ class UpdateXMagicRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """营业执照地址
+        r"""营业执照地址
         :rtype: str
         """
         return self._CompanyPermit
@@ -5769,7 +5769,7 @@ class UpdateXMagicRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型
+        r"""公司类型
         :rtype: str
         """
         return self._CompanyType
@@ -5780,7 +5780,7 @@ class UpdateXMagicRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -5807,7 +5807,7 @@ class UpdateXMagicRequest(AbstractModel):
 
 
 class UpdateXMagicResponse(AbstractModel):
-    """UpdateXMagic返回参数结构体
+    r"""UpdateXMagic返回参数结构体
 
     """
 
@@ -5820,7 +5820,7 @@ class UpdateXMagicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5835,7 +5835,7 @@ class UpdateXMagicResponse(AbstractModel):
 
 
 class VideoFeature(AbstractModel):
-    """视频功能描述模型
+    r"""视频功能描述模型
 
     """
 
@@ -5880,7 +5880,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Id(self):
-        """索引
+        r"""索引
         :rtype: int
         """
         return self._Id
@@ -5891,7 +5891,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def FeatureId(self):
-        """功能ID
+        r"""功能ID
         :rtype: int
         """
         return self._FeatureId
@@ -5902,7 +5902,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Name(self):
-        """功能名称
+        r"""功能名称
         :rtype: str
         """
         return self._Name
@@ -5913,7 +5913,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Type(self):
-        """功能类型
+        r"""功能类型
         :rtype: str
         """
         return self._Type
@@ -5924,7 +5924,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Trial(self):
-        """是否可以申请试用
+        r"""是否可以申请试用
         :rtype: bool
         """
         return self._Trial
@@ -5935,7 +5935,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def TrialCount(self):
-        """可以试用的次数
+        r"""可以试用的次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5947,7 +5947,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Duration(self):
-        """可以试用的时长，单位天
+        r"""可以试用的时长，单位天
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5959,7 +5959,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -5970,7 +5970,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -5981,7 +5981,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def BizType(self):
-        """功能所属业务方
+        r"""功能所属业务方
         :rtype: str
         """
         return self._BizType
@@ -5992,7 +5992,7 @@ class VideoFeature(AbstractModel):
 
     @property
     def Platform(self):
-        """平台类型
+        r"""平台类型
         :rtype: str
         """
         return self._Platform
@@ -6025,7 +6025,7 @@ class VideoFeature(AbstractModel):
 
 
 class XMagicFeature(AbstractModel):
-    """优图的的功能，Trial 为true的可以开通测试
+    r"""优图的的功能，Trial 为true的可以开通测试
 
     """
 
@@ -6058,7 +6058,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def Name(self):
-        """功能名称
+        r"""功能名称
         :rtype: str
         """
         return self._Name
@@ -6069,7 +6069,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def TrialCount(self):
-        """可以申请的次数
+        r"""可以申请的次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6081,7 +6081,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def Duration(self):
-        """每次申请的时长单位：天
+        r"""每次申请的时长单位：天
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6093,7 +6093,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def Plan(self):
-        """功能类别
+        r"""功能类别
         :rtype: str
         """
         return self._Plan
@@ -6104,7 +6104,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def XMagicType(self):
-        """single: 原子能力,combined:套餐
+        r"""single: 原子能力,combined:套餐
         :rtype: str
         """
         return self._XMagicType
@@ -6115,7 +6115,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def Trial(self):
-        """此功能是否支持开通测试
+        r"""此功能是否支持开通测试
         :rtype: bool
         """
         return self._Trial
@@ -6126,7 +6126,7 @@ class XMagicFeature(AbstractModel):
 
     @property
     def BizType(self):
-        """功能所属业务方
+        r"""功能所属业务方
         :rtype: str
         """
         return self._BizType
@@ -6155,7 +6155,7 @@ class XMagicFeature(AbstractModel):
 
 
 class XMagicInfo(AbstractModel):
-    """查询返回的优图信息
+    r"""查询返回的优图信息
 
     """
 
@@ -6243,7 +6243,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Id(self):
-        """优图Id
+        r"""优图Id
         :rtype: int
         """
         return self._Id
@@ -6254,7 +6254,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def CompanyName(self):
-        """用户公司名称
+        r"""用户公司名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6266,7 +6266,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        """https://cos.xxx
+        r"""https://cos.xxx
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6278,7 +6278,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def CompanyType(self):
-        """用户公司行业类型
+        r"""用户公司行业类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6290,7 +6290,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Plan(self):
-        """优图套餐类型
+        r"""优图套餐类型
         :rtype: str
         """
         return self._Plan
@@ -6301,7 +6301,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def LicenseType(self):
-        """测试版还是正式版 test | formal
+        r"""测试版还是正式版 test | formal
         :rtype: str
         """
         return self._LicenseType
@@ -6312,7 +6312,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Status(self):
-        """0: 预申请，需要补充申请信息
+        r"""0: 预申请，需要补充申请信息
    1: 审批通过，xmagic已签发，正在生效中
     2: 提交完申请资料后待运营审核状态
     3: 申请被驳回，需要重新修改申请资料
@@ -6328,7 +6328,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Update(self):
-        """测试license是否已经升级
+        r"""测试license是否已经升级
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6340,7 +6340,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """优图生效开始时间 Status为1的时候
+        r"""优图生效开始时间 Status为1的时候
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6352,7 +6352,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """优图生效结束时间 Status为1的时候
+        r"""优图生效结束时间 Status为1的时候
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6364,7 +6364,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def RenewalCount(self):
-        """续期次数， LicenseType=test时有此字段
+        r"""续期次数， LicenseType=test时有此字段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6376,7 +6376,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Reply(self):
-        """历次审批的回复
+        r"""历次审批的回复
         :rtype: list of str
         """
         return self._Reply
@@ -6387,7 +6387,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -6398,7 +6398,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -6409,7 +6409,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """用户更新信息的时间
+        r"""用户更新信息的时间
         :rtype: str
         """
         return self._UpdateTime
@@ -6420,7 +6420,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Expired(self):
-        """是否过期
+        r"""是否过期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6432,7 +6432,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def RestTime(self):
-        """返回还剩多少秒过期，过期后返回0
+        r"""返回还剩多少秒过期，过期后返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6444,7 +6444,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def XMagicType(self):
-        """single: 原子能力,combined:套餐
+        r"""single: 原子能力,combined:套餐
         :rtype: str
         """
         return self._XMagicType
@@ -6455,7 +6455,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Name(self):
-        """优图模块名称，自动中英文
+        r"""优图模块名称，自动中英文
         :rtype: str
         """
         return self._Name
@@ -6466,7 +6466,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def Resource(self):
-        """优图资源信息
+        r"""优图资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.RenewResource`
         """
@@ -6478,7 +6478,7 @@ class XMagicInfo(AbstractModel):
 
     @property
     def IsVest(self):
-        """是否是马甲包
+        r"""是否是马甲包
         :rtype: bool
         """
         return self._IsVest
@@ -6523,7 +6523,7 @@ class XMagicInfo(AbstractModel):
 
 
 class XMagicResource(AbstractModel):
-    """优图美视资源包
+    r"""优图美视资源包
 
     """
 
@@ -6579,7 +6579,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def Id(self):
-        """资源Id
+        r"""资源Id
         :rtype: int
         """
         return self._Id
@@ -6590,7 +6590,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -6601,7 +6601,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def Plan(self):
-        """套餐类别
+        r"""套餐类别
         :rtype: str
         """
         return self._Plan
@@ -6612,7 +6612,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def Duration(self):
-        """单位：年
+        r"""单位：年
         :rtype: str
         """
         return self._Duration
@@ -6623,7 +6623,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -6634,7 +6634,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -6645,7 +6645,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def XMagic(self):
-        """资源是否已使用
+        r"""资源是否已使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6657,7 +6657,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def StartTime(self):
-        """资源开始生效时间
+        r"""资源开始生效时间
         :rtype: str
         """
         return self._StartTime
@@ -6668,7 +6668,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def EndTime(self):
-        """资源结束生效时间
+        r"""资源结束生效时间
         :rtype: str
         """
         return self._EndTime
@@ -6679,7 +6679,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def Expired(self):
-        """资源包是否过期
+        r"""资源包是否过期
         :rtype: bool
         """
         return self._Expired
@@ -6690,7 +6690,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def Name(self):
-        """功能模块名称
+        r"""功能模块名称
         :rtype: str
         """
         return self._Name
@@ -6701,7 +6701,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def XMagicType(self):
-        """single: 原子能力,combined:套餐
+        r"""single: 原子能力,combined:套餐
         :rtype: str
         """
         return self._XMagicType
@@ -6712,7 +6712,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def BizType(self):
-        """xmagic:优图， avatar：虚拟人
+        r"""xmagic:优图， avatar：虚拟人
         :rtype: str
         """
         return self._BizType
@@ -6723,7 +6723,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id
+        r"""资源Id
         :rtype: str
         """
         return self._ResourceId
@@ -6734,7 +6734,7 @@ class XMagicResource(AbstractModel):
 
     @property
     def IsUse(self):
-        """资源是否可以使用
+        r"""资源是否可以使用
         :rtype: bool
         """
         return self._IsUse
@@ -6771,7 +6771,7 @@ class XMagicResource(AbstractModel):
 
 
 class XMagicResourceSimpleInfo(AbstractModel):
-    """优图美视资源包
+    r"""优图美视资源包
 
     """
 
@@ -6838,7 +6838,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Id(self):
-        """资源Id
+        r"""资源Id
         :rtype: int
         """
         return self._Id
@@ -6849,7 +6849,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -6860,7 +6860,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Plan(self):
-        """套餐类别
+        r"""套餐类别
         :rtype: str
         """
         return self._Plan
@@ -6871,7 +6871,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """单位：年
+        r"""单位：年
         :rtype: str
         """
         return self._Duration
@@ -6882,7 +6882,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -6893,7 +6893,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedAt
@@ -6904,7 +6904,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """资源开始生效时间
+        r"""资源开始生效时间
         :rtype: str
         """
         return self._StartTime
@@ -6915,7 +6915,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """资源结束生效时间
+        r"""资源结束生效时间
         :rtype: str
         """
         return self._EndTime
@@ -6926,7 +6926,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Application(self):
-        """应用信息
+        r"""应用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.AppInfo`
         """
@@ -6938,7 +6938,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def XMagic(self):
-        """开通的优图功能信息
+        r"""开通的优图功能信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vcube.v20220410.models.XMagicSimpleInfo`
         """
@@ -6950,7 +6950,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Status(self):
-        """优图资源状态
+        r"""优图资源状态
         :rtype: int
         """
         return self._Status
@@ -6961,7 +6961,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Operation(self):
-        """操作日期记录
+        r"""操作日期记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6973,7 +6973,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def IsUse(self):
-        """是否可以使用
+        r"""是否可以使用
         :rtype: bool
         """
         return self._IsUse
@@ -6984,7 +6984,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def XMagicType(self):
-        """single: 原子能力,combined:套餐
+        r"""single: 原子能力,combined:套餐
         :rtype: str
         """
         return self._XMagicType
@@ -6995,7 +6995,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def Name(self):
-        """功能模块名称
+        r"""功能模块名称
         :rtype: str
         """
         return self._Name
@@ -7006,7 +7006,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def BizType(self):
-        """资源所属业务方 xmagic：优图，avatar：虚拟形象 
+        r"""资源所属业务方 xmagic：优图，avatar：虚拟形象 
         :rtype: str
         """
         return self._BizType
@@ -7017,7 +7017,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -7028,7 +7028,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """资源自动续费状态
+        r"""资源自动续费状态
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7072,7 +7072,7 @@ class XMagicResourceSimpleInfo(AbstractModel):
 
 
 class XMagicSimpleInfo(AbstractModel):
-    """优图简单信息
+    r"""优图简单信息
 
     """
 
@@ -7088,7 +7088,7 @@ class XMagicSimpleInfo(AbstractModel):
 
     @property
     def Id(self):
-        """XMagic 的Id
+        r"""XMagic 的Id
         :rtype: int
         """
         return self._Id
@@ -7099,7 +7099,7 @@ class XMagicSimpleInfo(AbstractModel):
 
     @property
     def Status(self):
-        """XMagic 状态
+        r"""XMagic 状态
         :rtype: int
         """
         return self._Status
@@ -7123,7 +7123,7 @@ class XMagicSimpleInfo(AbstractModel):
 
 
 class XMagicTrial(AbstractModel):
-    """可以开通测试的功能
+    r"""可以开通测试的功能
 
     """
 
@@ -7151,7 +7151,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def Name(self):
-        """功能名称
+        r"""功能名称
         :rtype: str
         """
         return self._Name
@@ -7162,7 +7162,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def TrialCount(self):
-        """可以申请的次数
+        r"""可以申请的次数
         :rtype: int
         """
         return self._TrialCount
@@ -7173,7 +7173,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def Duration(self):
-        """每次申请的时长单位：天
+        r"""每次申请的时长单位：天
         :rtype: int
         """
         return self._Duration
@@ -7184,7 +7184,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def Plan(self):
-        """功能类别
+        r"""功能类别
         :rtype: str
         """
         return self._Plan
@@ -7195,7 +7195,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def XMagicType(self):
-        """single: 原子能力,combined:套餐
+        r"""single: 原子能力,combined:套餐
         :rtype: str
         """
         return self._XMagicType
@@ -7206,7 +7206,7 @@ class XMagicTrial(AbstractModel):
 
     @property
     def BizType(self):
-        """vod：点播 live：直播
+        r"""vod：点播 live：直播
         :rtype: str
         """
         return self._BizType

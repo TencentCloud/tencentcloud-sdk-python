@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateIAPUserOIDCConfigRequest(AbstractModel):
-    """CreateIAPUserOIDCConfig请求参数结构体
+    r"""CreateIAPUserOIDCConfig请求参数结构体
 
     """
 
@@ -56,7 +56,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """身份提供商URL。OpenID Connect身份提供商标识。对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+        r"""身份提供商URL。OpenID Connect身份提供商标识。对应企业IdP提供的Openid-configuration中"issuer"字段的值。
         :rtype: str
         """
         return self._IdentityUrl
@@ -67,7 +67,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        r"""客户端ID，在OpenID Connect身份提供商注册的客户端ID。
         :rtype: str
         """
         return self._ClientId
@@ -78,7 +78,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def AuthorizationEndpoint(self):
-        """授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        r"""授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -89,7 +89,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ResponseType(self):
-        """授权请求Response type，固定值id_token
+        r"""授权请求Response type，固定值id_token
         :rtype: str
         """
         return self._ResponseType
@@ -100,7 +100,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ResponseMode(self):
-        """授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        r"""授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
         :rtype: str
         """
         return self._ResponseMode
@@ -111,7 +111,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def MappingFiled(self):
-        """映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        r"""映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
         :rtype: str
         """
         return self._MappingFiled
@@ -122,7 +122,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+        r"""签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
         :rtype: str
         """
         return self._IdentityKey
@@ -133,7 +133,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def Scope(self):
-        """授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        r"""授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :rtype: list of str
         """
         return self._Scope
@@ -144,7 +144,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -175,7 +175,7 @@ class CreateIAPUserOIDCConfigRequest(AbstractModel):
 
 
 class CreateIAPUserOIDCConfigResponse(AbstractModel):
-    """CreateIAPUserOIDCConfig返回参数结构体
+    r"""CreateIAPUserOIDCConfig返回参数结构体
 
     """
 
@@ -188,7 +188,7 @@ class CreateIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -203,13 +203,13 @@ class CreateIAPUserOIDCConfigResponse(AbstractModel):
 
 
 class DescribeIAPLoginSessionDurationRequest(AbstractModel):
-    """DescribeIAPLoginSessionDuration请求参数结构体
+    r"""DescribeIAPLoginSessionDuration请求参数结构体
 
     """
 
 
 class DescribeIAPLoginSessionDurationResponse(AbstractModel):
-    """DescribeIAPLoginSessionDuration返回参数结构体
+    r"""DescribeIAPLoginSessionDuration返回参数结构体
 
     """
 
@@ -225,7 +225,7 @@ class DescribeIAPLoginSessionDurationResponse(AbstractModel):
 
     @property
     def Duration(self):
-        """登录会话时长
+        r"""登录会话时长
         :rtype: int
         """
         return self._Duration
@@ -236,7 +236,7 @@ class DescribeIAPLoginSessionDurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -252,13 +252,13 @@ class DescribeIAPLoginSessionDurationResponse(AbstractModel):
 
 
 class DescribeIAPUserOIDCConfigRequest(AbstractModel):
-    """DescribeIAPUserOIDCConfig请求参数结构体
+    r"""DescribeIAPUserOIDCConfig请求参数结构体
 
     """
 
 
 class DescribeIAPUserOIDCConfigResponse(AbstractModel):
-    """DescribeIAPUserOIDCConfig返回参数结构体
+    r"""DescribeIAPUserOIDCConfig返回参数结构体
 
     """
 
@@ -310,7 +310,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ProviderType(self):
-        """身份提供商类型。 13：IAP用户OIDC身份提供商
+        r"""身份提供商类型。 13：IAP用户OIDC身份提供商
         :rtype: int
         """
         return self._ProviderType
@@ -321,7 +321,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """身份提供商URL
+        r"""身份提供商URL
         :rtype: str
         """
         return self._IdentityUrl
@@ -332,7 +332,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """签名公钥
+        r"""签名公钥
         :rtype: str
         """
         return self._IdentityKey
@@ -343,7 +343,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端id
+        r"""客户端id
         :rtype: str
         """
         return self._ClientId
@@ -354,7 +354,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态：0:未设置，11:已开启，2:已禁用
+        r"""状态：0:未设置，11:已开启，2:已禁用
         :rtype: int
         """
         return self._Status
@@ -365,7 +365,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Fingerprints(self):
-        """HTTPS CA证书的验证指纹，允许英文字母和数字，每个指纹长度为40个字符，最多5个指纹。
+        r"""HTTPS CA证书的验证指纹，允许英文字母和数字，每个指纹长度为40个字符，最多5个指纹。
         :rtype: list of str
         """
         return self._Fingerprints
@@ -376,7 +376,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def EnableAutoPublicKey(self):
-        """是否需要开启自动使用OIDC签名公钥，1:需要，2:不需要，默认不需要
+        r"""是否需要开启自动使用OIDC签名公钥，1:需要，2:不需要，默认不需要
         :rtype: int
         """
         return self._EnableAutoPublicKey
@@ -387,7 +387,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def AuthorizationEndpoint(self):
-        """授权请求Endpoint
+        r"""授权请求Endpoint
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -398,7 +398,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Scope(self):
-        """授权请求Scope
+        r"""授权请求Scope
         :rtype: list of str
         """
         return self._Scope
@@ -409,7 +409,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ResponseType(self):
-        """授权请求Response type
+        r"""授权请求Response type
         :rtype: str
         """
         return self._ResponseType
@@ -420,7 +420,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ResponseMode(self):
-        """授权请求Response mode
+        r"""授权请求Response mode
         :rtype: str
         """
         return self._ResponseMode
@@ -431,7 +431,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def MappingFiled(self):
-        """映射字段名称
+        r"""映射字段名称
         :rtype: str
         """
         return self._MappingFiled
@@ -442,7 +442,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -453,7 +453,7 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -481,13 +481,13 @@ class DescribeIAPUserOIDCConfigResponse(AbstractModel):
 
 
 class DisableIAPUserSSORequest(AbstractModel):
-    """DisableIAPUserSSO请求参数结构体
+    r"""DisableIAPUserSSO请求参数结构体
 
     """
 
 
 class DisableIAPUserSSOResponse(AbstractModel):
-    """DisableIAPUserSSO返回参数结构体
+    r"""DisableIAPUserSSO返回参数结构体
 
     """
 
@@ -500,7 +500,7 @@ class DisableIAPUserSSOResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -515,7 +515,7 @@ class DisableIAPUserSSOResponse(AbstractModel):
 
 
 class ModifyIAPLoginSessionDurationRequest(AbstractModel):
-    """ModifyIAPLoginSessionDuration请求参数结构体
+    r"""ModifyIAPLoginSessionDuration请求参数结构体
 
     """
 
@@ -528,7 +528,7 @@ class ModifyIAPLoginSessionDurationRequest(AbstractModel):
 
     @property
     def Duration(self):
-        """登录会话时长
+        r"""登录会话时长
         :rtype: int
         """
         return self._Duration
@@ -551,7 +551,7 @@ class ModifyIAPLoginSessionDurationRequest(AbstractModel):
 
 
 class ModifyIAPLoginSessionDurationResponse(AbstractModel):
-    """ModifyIAPLoginSessionDuration返回参数结构体
+    r"""ModifyIAPLoginSessionDuration返回参数结构体
 
     """
 
@@ -564,7 +564,7 @@ class ModifyIAPLoginSessionDurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -579,7 +579,7 @@ class ModifyIAPLoginSessionDurationResponse(AbstractModel):
 
 
 class UpdateIAPUserOIDCConfigRequest(AbstractModel):
-    """UpdateIAPUserOIDCConfig请求参数结构体
+    r"""UpdateIAPUserOIDCConfig请求参数结构体
 
     """
 
@@ -616,7 +616,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """身份提供商URL。OpenID Connect身份提供商标识。对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+        r"""身份提供商URL。OpenID Connect身份提供商标识。对应企业IdP提供的Openid-configuration中"issuer"字段的值。
         :rtype: str
         """
         return self._IdentityUrl
@@ -627,7 +627,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        r"""客户端ID，在OpenID Connect身份提供商注册的客户端ID。
         :rtype: str
         """
         return self._ClientId
@@ -638,7 +638,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def AuthorizationEndpoint(self):
-        """授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        r"""授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -649,7 +649,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ResponseType(self):
-        """授权请求Response type，固定值id_token
+        r"""授权请求Response type，固定值id_token
         :rtype: str
         """
         return self._ResponseType
@@ -660,7 +660,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def ResponseMode(self):
-        """授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        r"""授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
         :rtype: str
         """
         return self._ResponseMode
@@ -671,7 +671,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def MappingFiled(self):
-        """映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        r"""映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
         :rtype: str
         """
         return self._MappingFiled
@@ -682,7 +682,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+        r"""RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
         :rtype: str
         """
         return self._IdentityKey
@@ -693,7 +693,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def Scope(self):
-        """授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        r"""授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :rtype: list of str
         """
         return self._Scope
@@ -704,7 +704,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述，长度为1~255个英文或中文字符，默认值为空。
+        r"""描述，长度为1~255个英文或中文字符，默认值为空。
         :rtype: str
         """
         return self._Description
@@ -735,7 +735,7 @@ class UpdateIAPUserOIDCConfigRequest(AbstractModel):
 
 
 class UpdateIAPUserOIDCConfigResponse(AbstractModel):
-    """UpdateIAPUserOIDCConfig返回参数结构体
+    r"""UpdateIAPUserOIDCConfig返回参数结构体
 
     """
 
@@ -748,7 +748,7 @@ class UpdateIAPUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

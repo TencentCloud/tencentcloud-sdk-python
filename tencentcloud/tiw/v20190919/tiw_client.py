@@ -27,7 +27,7 @@ class TiwClient(AbstractClient):
 
 
     def CreatePPTCheckTask(self, request):
-        """检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
+        r"""检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
 
         :param request: Request instance for CreatePPTCheckTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreatePPTCheckTaskRequest`
@@ -50,7 +50,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateSnapshotTask(self, request):
-        """创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
+        r"""创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
 
         :param request: Request instance for CreateSnapshotTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateSnapshotTaskRequest`
@@ -73,7 +73,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateTranscode(self, request):
-        """创建一个文档转码任务
+        r"""创建一个文档转码任务
 
         :param request: Request instance for CreateTranscode.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateTranscodeRequest`
@@ -96,7 +96,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateVideoGenerationTask(self, request):
-        """创建视频生成任务
+        r"""创建视频生成任务
 
         :param request: Request instance for CreateVideoGenerationTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateVideoGenerationTaskRequest`
@@ -119,7 +119,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOnlineRecord(self, request):
-        """查询录制任务状态与结果
+        r"""查询录制任务状态与结果
 
         :param request: Request instance for DescribeOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordRequest`
@@ -142,7 +142,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOnlineRecordCallback(self, request):
-        """查询实时录制回调地址
+        r"""查询实时录制回调地址
 
         :param request: Request instance for DescribeOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordCallbackRequest`
@@ -165,7 +165,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribePPTCheck(self, request):
-        """查询PPT检测任务的执行进度或结果，支持查询最近半年内的任务结果
+        r"""查询PPT检测任务的执行进度或结果，支持查询最近半年内的任务结果
 
         :param request: Request instance for DescribePPTCheck.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckRequest`
@@ -188,7 +188,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribePPTCheckCallback(self, request):
-        """查询PPT检测任务回调地址
+        r"""查询PPT检测任务回调地址
 
         :param request: Request instance for DescribePPTCheckCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckCallbackRequest`
@@ -211,7 +211,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeRunningTasks(self, request):
-        """根据指定的任务类型，获取当前正在执行中的任务列表。只能查询最近3天内创建的任务。
+        r"""根据指定的任务类型，获取当前正在执行中的任务列表。只能查询最近3天内创建的任务。
 
         :param request: Request instance for DescribeRunningTasks.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRunningTasksRequest`
@@ -234,7 +234,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeSnapshotTask(self, request):
-        """获取指定白板板书生成任务信息
+        r"""获取指定白板板书生成任务信息
 
         :param request: Request instance for DescribeSnapshotTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeSnapshotTaskRequest`
@@ -257,7 +257,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscode(self, request):
-        """查询文档转码任务的执行进度与转码结果
+        r"""查询文档转码任务的执行进度与转码结果
 
         :param request: Request instance for DescribeTranscode.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeRequest`
@@ -280,7 +280,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscodeByUrl(self, request):
-        """通过文档URL查询转码任务，返回最近一天内最新的转码任务状态
+        r"""通过文档URL查询转码任务，返回最近一天内最新的转码任务状态
 
         :param request: Request instance for DescribeTranscodeByUrl.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeByUrlRequest`
@@ -303,7 +303,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscodeCallback(self, request):
-        """查询文档转码回调地址
+        r"""查询文档转码回调地址
 
         :param request: Request instance for DescribeTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeCallbackRequest`
@@ -326,7 +326,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeVideoGenerationTask(self, request):
-        """查询录制视频生成任务状态与结果
+        r"""查询录制视频生成任务状态与结果
 
         :param request: Request instance for DescribeVideoGenerationTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskRequest`
@@ -349,7 +349,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeVideoGenerationTaskCallback(self, request):
-        """查询录制视频生成回调地址
+        r"""查询录制视频生成回调地址
 
         :param request: Request instance for DescribeVideoGenerationTaskCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskCallbackRequest`
@@ -372,7 +372,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWarningCallback(self, request):
-        """查询告警回调地址。此功能需要申请白名单使用。
+        r"""查询告警回调地址。此功能需要申请白名单使用。
 
         :param request: Request instance for DescribeWarningCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWarningCallbackRequest`
@@ -395,7 +395,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardPush(self, request):
-        """查询推流任务状态与结果
+        r"""查询推流任务状态与结果
 
         :param request: Request instance for DescribeWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushRequest`
@@ -418,7 +418,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardPushCallback(self, request):
-        """查询白板推流回调地址
+        r"""查询白板推流回调地址
 
         :param request: Request instance for DescribeWhiteboardPushCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushCallbackRequest`
@@ -441,7 +441,7 @@ class TiwClient(AbstractClient):
 
 
     def PauseOnlineRecord(self, request):
-        """暂停实时录制
+        r"""暂停实时录制
 
         :param request: Request instance for PauseOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.PauseOnlineRecordRequest`
@@ -464,7 +464,7 @@ class TiwClient(AbstractClient):
 
 
     def ResumeOnlineRecord(self, request):
-        """恢复实时录制
+        r"""恢复实时录制
 
         :param request: Request instance for ResumeOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ResumeOnlineRecordRequest`
@@ -487,7 +487,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallback(self, request):
-        """设置实时录制回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
+        r"""设置实时录制回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
 
         :param request: Request instance for SetOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackRequest`
@@ -510,7 +510,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallbackKey(self, request):
-        """设置实时录制回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置实时录制回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetOnlineRecordCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
@@ -533,7 +533,7 @@ class TiwClient(AbstractClient):
 
 
     def SetPPTCheckCallback(self, request):
-        """设置PPT检测任务回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260#c9cbe05f-fe1a-4410-b4dc-40cc301c7b81
+        r"""设置PPT检测任务回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260#c9cbe05f-fe1a-4410-b4dc-40cc301c7b81
 
         :param request: Request instance for SetPPTCheckCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackRequest`
@@ -556,7 +556,7 @@ class TiwClient(AbstractClient):
 
 
     def SetPPTCheckCallbackKey(self, request):
-        """设置PPT检测任务回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置PPT检测任务回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetPPTCheckCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackKeyRequest`
@@ -579,7 +579,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallback(self, request):
-        """设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
+        r"""设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
 
         :param request: Request instance for SetTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackRequest`
@@ -602,7 +602,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallbackKey(self, request):
-        """设置文档转码回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置文档转码回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetTranscodeCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`
@@ -625,7 +625,7 @@ class TiwClient(AbstractClient):
 
 
     def SetVideoGenerationTaskCallback(self, request):
-        """设置录制视频生成回调地址
+        r"""设置录制视频生成回调地址
 
         :param request: Request instance for SetVideoGenerationTaskCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackRequest`
@@ -648,7 +648,7 @@ class TiwClient(AbstractClient):
 
 
     def SetVideoGenerationTaskCallbackKey(self, request):
-        """设置视频生成回调鉴权密钥
+        r"""设置视频生成回调鉴权密钥
 
         :param request: Request instance for SetVideoGenerationTaskCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackKeyRequest`
@@ -671,7 +671,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWarningCallback(self, request):
-        """设置告警回调地址。此功能需要申请白名单使用。
+        r"""设置告警回调地址。此功能需要申请白名单使用。
 
         :param request: Request instance for SetWarningCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWarningCallbackRequest`
@@ -694,7 +694,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallback(self, request):
-        """设置白板推流回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置白板推流回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetWhiteboardPushCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackRequest`
@@ -717,7 +717,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallbackKey(self, request):
-        """设置白板推流回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        r"""设置白板推流回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetWhiteboardPushCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackKeyRequest`
@@ -740,7 +740,7 @@ class TiwClient(AbstractClient):
 
 
     def StartOnlineRecord(self, request):
-        """发起一个实时录制任务
+        r"""发起一个实时录制任务
 
         :param request: Request instance for StartOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StartOnlineRecordRequest`
@@ -763,7 +763,7 @@ class TiwClient(AbstractClient):
 
 
     def StartWhiteboardPush(self, request):
-        """发起一个白板推流任务
+        r"""发起一个白板推流任务
 
         :param request: Request instance for StartWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StartWhiteboardPushRequest`
@@ -786,7 +786,7 @@ class TiwClient(AbstractClient):
 
 
     def StopOnlineRecord(self, request):
-        """停止实时录制
+        r"""停止实时录制
 
         :param request: Request instance for StopOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StopOnlineRecordRequest`
@@ -809,7 +809,7 @@ class TiwClient(AbstractClient):
 
 
     def StopWhiteboardPush(self, request):
-        """停止白板推流任务
+        r"""停止白板推流任务
 
         :param request: Request instance for StopWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StopWhiteboardPushRequest`

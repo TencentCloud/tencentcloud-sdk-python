@@ -27,7 +27,7 @@ class TrpClient(AbstractClient):
 
 
     def AuthorizedTransfer(self, request):
-        """接收客户侧的用户已授权的号码。
+        r"""接收客户侧的用户已授权的号码。
 
         :param request: Request instance for AuthorizedTransfer.
         :type request: :class:`tencentcloud.trp.v20210515.models.AuthorizedTransferRequest`
@@ -50,7 +50,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateChainBatch(self, request):
-        """批量上链接口
+        r"""批量上链接口
 
         :param request: Request instance for CreateChainBatch.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateChainBatchRequest`
@@ -73,7 +73,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCodeBatch(self, request):
-        """新增批次
+        r"""新增批次
 
         :param request: Request instance for CreateCodeBatch.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCodeBatchRequest`
@@ -96,7 +96,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCodePack(self, request):
-        """生成普通码包
+        r"""生成普通码包
 
         :param request: Request instance for CreateCodePack.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCodePackRequest`
@@ -119,7 +119,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCorporationOrder(self, request):
-        """以订单方式新建企业信息/配额信息
+        r"""以订单方式新建企业信息/配额信息
 
         :param request: Request instance for CreateCorporationOrder.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCorporationOrderRequest`
@@ -142,7 +142,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCustomPack(self, request):
-        """生成自定义码包
+        r"""生成自定义码包
 
         :param request: Request instance for CreateCustomPack.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCustomPackRequest`
@@ -165,7 +165,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCustomRule(self, request):
-        """新建自定义码规则
+        r"""新建自定义码规则
 
         :param request: Request instance for CreateCustomRule.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCustomRuleRequest`
@@ -188,7 +188,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateMerchant(self, request):
-        """新建商户
+        r"""新建商户
 
         :param request: Request instance for CreateMerchant.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateMerchantRequest`
@@ -211,7 +211,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateProduct(self, request):
-        """新建商品
+        r"""新建商品
 
         :param request: Request instance for CreateProduct.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateProductRequest`
@@ -234,7 +234,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateTraceChain(self, request):
-        """上链溯源信息
+        r"""上链溯源信息
 
         :param request: Request instance for CreateTraceChain.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceChainRequest`
@@ -257,7 +257,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateTraceCodes(self, request):
-        """批量绑定指定批次并激活二维码，只支持平台发的码，且只会激活没有使用过的码
+        r"""批量绑定指定批次并激活二维码，只支持平台发的码，且只会激活没有使用过的码
 
         :param request: Request instance for CreateTraceCodes.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesRequest`
@@ -280,7 +280,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateTraceCodesAsync(self, request):
-        """异步导入激活码包，如果是第三方码包，需要域名跟配置的匹配
+        r"""异步导入激活码包，如果是第三方码包，需要域名跟配置的匹配
 
         :param request: Request instance for CreateTraceCodesAsync.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesAsyncRequest`
@@ -303,7 +303,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateTraceData(self, request):
-        """新增溯源信息
+        r"""新增溯源信息
 
         :param request: Request instance for CreateTraceData.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceDataRequest`
@@ -326,7 +326,7 @@ class TrpClient(AbstractClient):
 
 
     def DeleteCodeBatch(self, request):
-        """删除批次
+        r"""删除批次
 
         :param request: Request instance for DeleteCodeBatch.
         :type request: :class:`tencentcloud.trp.v20210515.models.DeleteCodeBatchRequest`
@@ -349,7 +349,7 @@ class TrpClient(AbstractClient):
 
 
     def DeleteMerchant(self, request):
-        """删除商户
+        r"""删除商户
 
         :param request: Request instance for DeleteMerchant.
         :type request: :class:`tencentcloud.trp.v20210515.models.DeleteMerchantRequest`
@@ -372,7 +372,7 @@ class TrpClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """删除商品，如果商品被使用，则不可删除
+        r"""删除商品，如果商品被使用，则不可删除
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.trp.v20210515.models.DeleteProductRequest`
@@ -395,7 +395,7 @@ class TrpClient(AbstractClient):
 
 
     def DeleteTraceData(self, request):
-        """删除溯源信息，如果已经上链则不可删除
+        r"""删除溯源信息，如果已经上链则不可删除
 
         :param request: Request instance for DeleteTraceData.
         :type request: :class:`tencentcloud.trp.v20210515.models.DeleteTraceDataRequest`
@@ -418,7 +418,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeAgentCorps(self, request):
-        """查询渠道企业列表
+        r"""查询渠道企业列表
 
         :param request: Request instance for DescribeAgentCorps.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeAgentCorpsRequest`
@@ -441,7 +441,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodeBatchById(self, request):
-        """查询批次信息
+        r"""查询批次信息
 
         :param request: Request instance for DescribeCodeBatchById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchByIdRequest`
@@ -464,7 +464,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodeBatches(self, request):
-        """查询批次列表
+        r"""查询批次列表
 
         :param request: Request instance for DescribeCodeBatches.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchesRequest`
@@ -487,7 +487,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodeBatchs(self, request):
-        """查询批次列表
+        r"""查询批次列表
 
         旧版接口已经弃用，新业务请使用新版的接口 DescribeCodeBatches
 
@@ -512,7 +512,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodePackStatus(self, request):
-        """查询码包状态
+        r"""查询码包状态
 
         :param request: Request instance for DescribeCodePackStatus.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackStatusRequest`
@@ -535,7 +535,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodePackUrl(self, request):
-        """查询码包地址
+        r"""查询码包地址
 
         :param request: Request instance for DescribeCodePackUrl.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackUrlRequest`
@@ -558,7 +558,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodePacks(self, request):
-        """查询码包列表
+        r"""查询码包列表
 
         :param request: Request instance for DescribeCodePacks.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePacksRequest`
@@ -581,7 +581,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCodesByPack(self, request):
-        """查询码包的二维码列表，上限 3 万
+        r"""查询码包的二维码列表，上限 3 万
 
         :param request: Request instance for DescribeCodesByPack.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodesByPackRequest`
@@ -604,7 +604,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCorpQuotas(self, request):
-        """查询渠道商下属企业额度使用情况
+        r"""查询渠道商下属企业额度使用情况
 
         :param request: Request instance for DescribeCorpQuotas.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCorpQuotasRequest`
@@ -627,7 +627,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCustomRuleById(self, request):
-        """查自定义码规则
+        r"""查自定义码规则
 
         :param request: Request instance for DescribeCustomRuleById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRuleByIdRequest`
@@ -650,7 +650,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeCustomRules(self, request):
-        """查自定义码规则列表
+        r"""查自定义码规则列表
 
         :param request: Request instance for DescribeCustomRules.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRulesRequest`
@@ -673,7 +673,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeJobFileUrl(self, request):
-        """获取异步任务的输出地址
+        r"""获取异步任务的输出地址
 
         :param request: Request instance for DescribeJobFileUrl.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeJobFileUrlRequest`
@@ -696,7 +696,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeMerchantById(self, request):
-        """查询商户信息
+        r"""查询商户信息
 
         :param request: Request instance for DescribeMerchantById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantByIdRequest`
@@ -719,7 +719,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeMerchants(self, request):
-        """查询商户列表
+        r"""查询商户列表
 
         :param request: Request instance for DescribeMerchants.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantsRequest`
@@ -742,7 +742,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribePlanQRCodeScanRecords(self, request):
-        """查询安心计划二维码扫码记录
+        r"""查询安心计划二维码扫码记录
 
         :param request: Request instance for DescribePlanQRCodeScanRecords.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribePlanQRCodeScanRecordsRequest`
@@ -765,7 +765,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribePlanQRCodes(self, request):
-        """查询安心计划二维码列表
+        r"""查询安心计划二维码列表
 
         :param request: Request instance for DescribePlanQRCodes.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribePlanQRCodesRequest`
@@ -788,7 +788,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeProductById(self, request):
-        """查询商品信息
+        r"""查询商品信息
 
         :param request: Request instance for DescribeProductById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeProductByIdRequest`
@@ -811,7 +811,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """查询商品列表
+        r"""查询商品列表
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeProductsRequest`
@@ -834,7 +834,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeRawScanLogs(self, request):
-        """支持增量查询扫码日志，通常提供给数据同步使用，调用时需要指定从哪一行开始查询数据
+        r"""支持增量查询扫码日志，通常提供给数据同步使用，调用时需要指定从哪一行开始查询数据
 
         :param request: Request instance for DescribeRawScanLogs.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeRawScanLogsRequest`
@@ -857,7 +857,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeScanLogs(self, request):
-        """查询扫码日志明细
+        r"""查询扫码日志明细
 
         :param request: Request instance for DescribeScanLogs.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeScanLogsRequest`
@@ -880,7 +880,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeScanStats(self, request):
-        """查询扫码的统计信息列表，支持按照商户ID，产品ID，批次ID，安心码筛选，筛选条件至少有一个
+        r"""查询扫码的统计信息列表，支持按照商户ID，产品ID，批次ID，安心码筛选，筛选条件至少有一个
         没有被扫过的不会返回
 
         :param request: Request instance for DescribeScanStats.
@@ -904,7 +904,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeTmpToken(self, request):
-        """查询临时Token，主要用于上传接口
+        r"""查询临时Token，主要用于上传接口
 
         :param request: Request instance for DescribeTmpToken.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTmpTokenRequest`
@@ -927,7 +927,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeTraceCodeById(self, request):
-        """查询二维码信息
+        r"""查询二维码信息
 
         :param request: Request instance for DescribeTraceCodeById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodeByIdRequest`
@@ -950,7 +950,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeTraceCodes(self, request):
-        """查询二维码列表
+        r"""查询二维码列表
 
         :param request: Request instance for DescribeTraceCodes.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodesRequest`
@@ -973,7 +973,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeTraceDataById(self, request):
-        """查询溯源ID查溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
+        r"""查询溯源ID查溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
 
         :param request: Request instance for DescribeTraceDataById.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataByIdRequest`
@@ -996,7 +996,7 @@ class TrpClient(AbstractClient):
 
 
     def DescribeTraceDataList(self, request):
-        """查询溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
+        r"""查询溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
 
         :param request: Request instance for DescribeTraceDataList.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataListRequest`
@@ -1019,7 +1019,7 @@ class TrpClient(AbstractClient):
 
 
     def EffectFeedback(self, request):
-        """接收客户反馈的各环节数据
+        r"""接收客户反馈的各环节数据
 
         :param request: Request instance for EffectFeedback.
         :type request: :class:`tencentcloud.trp.v20210515.models.EffectFeedbackRequest`
@@ -1042,7 +1042,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyCodeBatch(self, request):
-        """修改批次
+        r"""修改批次
 
         :param request: Request instance for ModifyCodeBatch.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCodeBatchRequest`
@@ -1065,7 +1065,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyCustomRule(self, request):
-        """修改自定义码规则
+        r"""修改自定义码规则
 
         :param request: Request instance for ModifyCustomRule.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleRequest`
@@ -1088,7 +1088,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyCustomRuleStatus(self, request):
-        """更新自定义码规则状态
+        r"""更新自定义码规则状态
 
         :param request: Request instance for ModifyCustomRuleStatus.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleStatusRequest`
@@ -1111,7 +1111,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyMerchant(self, request):
-        """编辑商户
+        r"""编辑商户
 
         :param request: Request instance for ModifyMerchant.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyMerchantRequest`
@@ -1134,7 +1134,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyProduct(self, request):
-        """编辑商品
+        r"""编辑商品
 
         :param request: Request instance for ModifyProduct.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyProductRequest`
@@ -1157,7 +1157,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyTraceCode(self, request):
-        """冻结或者激活二维码，所属的批次的冻结状态优先级大于单个二维码的状态，即如果批次是冻结的，那么该批次下二维码的状态都是冻结的
+        r"""冻结或者激活二维码，所属的批次的冻结状态优先级大于单个二维码的状态，即如果批次是冻结的，那么该批次下二维码的状态都是冻结的
 
         :param request: Request instance for ModifyTraceCode.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceCodeRequest`
@@ -1180,7 +1180,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyTraceCodeUnlink(self, request):
-        """解绑溯源码和批次的关系，让溯源码重置为未关联的状态，以便关联其他批次
+        r"""解绑溯源码和批次的关系，让溯源码重置为未关联的状态，以便关联其他批次
         注意：溯源码必须属于指定的批次才会解绑
 
         :param request: Request instance for ModifyTraceCodeUnlink.
@@ -1204,7 +1204,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyTraceData(self, request):
-        """修改溯源信息
+        r"""修改溯源信息
 
         :param request: Request instance for ModifyTraceData.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataRequest`
@@ -1227,7 +1227,7 @@ class TrpClient(AbstractClient):
 
 
     def ModifyTraceDataRanks(self, request):
-        """修改溯源信息的排序
+        r"""修改溯源信息的排序
 
         :param request: Request instance for ModifyTraceDataRanks.
         :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataRanksRequest`
@@ -1250,7 +1250,7 @@ class TrpClient(AbstractClient):
 
 
     def ReportBatchCallbackStatus(self, request):
-        """接收离线筛选包回执，用于效果统计和分析。
+        r"""接收离线筛选包回执，用于效果统计和分析。
 
         :param request: Request instance for ReportBatchCallbackStatus.
         :type request: :class:`tencentcloud.trp.v20210515.models.ReportBatchCallbackStatusRequest`

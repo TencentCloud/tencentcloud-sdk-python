@@ -27,7 +27,7 @@ class DomainClient(AbstractClient):
 
 
     def BatchModifyDomainInfo(self, request):
-        """本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
+        r"""本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
 
         :param request: Request instance for BatchModifyDomainInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.BatchModifyDomainInfoRequest`
@@ -50,7 +50,7 @@ class DomainClient(AbstractClient):
 
 
     def BidDetailPage(self, request):
-        """该接口用于用户详情页出价请求
+        r"""该接口用于用户详情页出价请求
 
         :param request: Request instance for BidDetailPage.
         :type request: :class:`tencentcloud.domain.v20180808.models.BidDetailPageRequest`
@@ -73,7 +73,7 @@ class DomainClient(AbstractClient):
 
 
     def BidPreDomains(self, request):
-        """用户合作商预释放出价
+        r"""用户合作商预释放出价
 
         :param request: Request instance for BidPreDomains.
         :type request: :class:`tencentcloud.domain.v20180808.models.BidPreDomainsRequest`
@@ -96,7 +96,7 @@ class DomainClient(AbstractClient):
 
 
     def BiddingPreRelease(self, request):
-        """用于出价界面出价请求
+        r"""用于出价界面出价请求
 
         :param request: Request instance for BiddingPreRelease.
         :type request: :class:`tencentcloud.domain.v20180808.models.BiddingPreReleaseRequest`
@@ -119,7 +119,7 @@ class DomainClient(AbstractClient):
 
 
     def CheckBatchStatus(self, request):
-        """本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
+        r"""本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
 
         :param request: Request instance for CheckBatchStatus.
         :type request: :class:`tencentcloud.domain.v20180808.models.CheckBatchStatusRequest`
@@ -142,7 +142,7 @@ class DomainClient(AbstractClient):
 
 
     def CheckDomain(self, request):
-        """检查域名是否可以注册。
+        r"""检查域名是否可以注册。
 
         :param request: Request instance for CheckDomain.
         :type request: :class:`tencentcloud.domain.v20180808.models.CheckDomainRequest`
@@ -165,7 +165,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateCustomDnsHost(self, request):
-        """创建自定义DNS Host
+        r"""创建自定义DNS Host
         域名在“正常状态”下可创建，域名如果“未实名”则无法创建，账户如果未实名则无法创建。
         默认每个域名 自定义DNS Host 数量不超过10个
 
@@ -190,7 +190,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateDomainBatch(self, request):
-        """本接口 ( CreateDomainBatch ) 用于批量域名注册 。
+        r"""本接口 ( CreateDomainBatch ) 用于批量域名注册 。
 
         :param request: Request instance for CreateDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateDomainBatchRequest`
@@ -213,7 +213,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateDomainRedemption(self, request):
-        """创建赎回订单。需要域名状态为：RedemptionPending：赎回期
+        r"""创建赎回订单。需要域名状态为：RedemptionPending：赎回期
 
         :param request: Request instance for CreateDomainRedemption.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateDomainRedemptionRequest`
@@ -236,7 +236,7 @@ class DomainClient(AbstractClient):
 
 
     def CreatePhoneEmail(self, request):
-        """此接口用于创建有效的手机、邮箱
+        r"""此接口用于创建有效的手机、邮箱
 
         :param request: Request instance for CreatePhoneEmail.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreatePhoneEmailRequest`
@@ -259,7 +259,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateTemplate(self, request):
-        """本接口 ( CreateTemplate ) 用于添加域名信息模板 。
+        r"""本接口 ( CreateTemplate ) 用于添加域名信息模板 。
 
         :param request: Request instance for CreateTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateTemplateRequest`
@@ -282,7 +282,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteBidding(self, request):
-        """删除记录。
+        r"""删除记录。
 
         :param request: Request instance for DeleteBidding.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteBiddingRequest`
@@ -305,7 +305,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteCustomDnsHost(self, request):
-        """删除自定义DNS Host
+        r"""删除自定义DNS Host
         仅能删除域名在“正常状态”下，已经创建过的自定义Host，域名如果“未实名”或账户未实名，则无法操作
 
         :param request: Request instance for DeleteCustomDnsHost.
@@ -329,7 +329,7 @@ class DomainClient(AbstractClient):
 
 
     def DeletePhoneEmail(self, request):
-        """此接口用于删除已验证的手机邮箱
+        r"""此接口用于删除已验证的手机邮箱
 
         :param request: Request instance for DeletePhoneEmail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeletePhoneEmailRequest`
@@ -352,7 +352,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteReservedPreDomainInfo(self, request):
-        """用于清除多余的预定域名信息
+        r"""用于清除多余的预定域名信息
 
         :param request: Request instance for DeleteReservedPreDomainInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteReservedPreDomainInfoRequest`
@@ -375,7 +375,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteTemplate(self, request):
-        """本接口 ( DeleteTemplate ) 用于删除信息模板。
+        r"""本接口 ( DeleteTemplate ) 用于删除信息模板。
 
         :param request: Request instance for DeleteTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteTemplateRequest`
@@ -398,7 +398,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeAuctionList(self, request):
-        """用户控制台获取竞价列表
+        r"""用户控制台获取竞价列表
 
         :param request: Request instance for DescribeAuctionList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeAuctionListRequest`
@@ -421,7 +421,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBatchOperationLogDetails(self, request):
-        """本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
+        r"""本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
 
         :param request: Request instance for DescribeBatchOperationLogDetails.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogDetailsRequest`
@@ -444,7 +444,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBatchOperationLogs(self, request):
-        """本接口 ( DescribeBatchOperationLogs ) 用于获取批量操作日志 。
+        r"""本接口 ( DescribeBatchOperationLogs ) 用于获取批量操作日志 。
 
         :param request: Request instance for DescribeBatchOperationLogs.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogsRequest`
@@ -467,7 +467,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingAppointDetail(self, request):
-        """我预约的域名-预约详情。
+        r"""我预约的域名-预约详情。
 
         :param request: Request instance for DescribeBiddingAppointDetail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointDetailRequest`
@@ -490,7 +490,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingAppointList(self, request):
-        """我预定的域名。
+        r"""我预定的域名。
 
         :param request: Request instance for DescribeBiddingAppointList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointListRequest`
@@ -513,7 +513,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingDetail(self, request):
-        """我竞价的域名-竞价详情。
+        r"""我竞价的域名-竞价详情。
 
         :param request: Request instance for DescribeBiddingDetail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingDetailRequest`
@@ -536,7 +536,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingList(self, request):
-        """我竞价的域名。
+        r"""我竞价的域名。
 
         :param request: Request instance for DescribeBiddingList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingListRequest`
@@ -559,7 +559,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingSuccessfulDetail(self, request):
-        """我得标的域名-得标详情。
+        r"""我得标的域名-得标详情。
 
         :param request: Request instance for DescribeBiddingSuccessfulDetail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulDetailRequest`
@@ -582,7 +582,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeBiddingSuccessfulList(self, request):
-        """我得标的域名。
+        r"""我得标的域名。
 
         :param request: Request instance for DescribeBiddingSuccessfulList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulListRequest`
@@ -605,7 +605,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeCustomDnsHostSet(self, request):
-        """查询自定义DNS Host
+        r"""查询自定义DNS Host
         当前域名在任意状态下均可获取(根据域名当前状态，不一定能获取到具体数据)
 
         :param request: Request instance for DescribeCustomDnsHostSet.
@@ -629,7 +629,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeDomainBaseInfo(self, request):
-        """本接口 (  DescribeDomainBaseInfo) 获取域名基本信息。
+        r"""本接口 (  DescribeDomainBaseInfo) 获取域名基本信息。
 
         :param request: Request instance for DescribeDomainBaseInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainBaseInfoRequest`
@@ -652,7 +652,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeDomainNameList(self, request):
-        """本接口 (  DescribeDomainNameList ) 我的域名列表。
+        r"""本接口 (  DescribeDomainNameList ) 我的域名列表。
 
         :param request: Request instance for DescribeDomainNameList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainNameListRequest`
@@ -675,7 +675,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeDomainPriceList(self, request):
-        """按照域名后缀获取对应的价格列表
+        r"""按照域名后缀获取对应的价格列表
 
         :param request: Request instance for DescribeDomainPriceList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainPriceListRequest`
@@ -698,7 +698,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeDomainSimpleInfo(self, request):
-        """获取域名实名信息详情
+        r"""获取域名实名信息详情
 
         :param request: Request instance for DescribeDomainSimpleInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainSimpleInfoRequest`
@@ -721,7 +721,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribePayWaitDetail(self, request):
-        """等待支付详情接口
+        r"""等待支付详情接口
 
         :param request: Request instance for DescribePayWaitDetail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribePayWaitDetailRequest`
@@ -744,7 +744,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribePhoneEmailList(self, request):
-        """本接口用于获取已验证的手机邮箱列表
+        r"""本接口用于获取已验证的手机邮箱列表
 
         :param request: Request instance for DescribePhoneEmailList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribePhoneEmailListRequest`
@@ -767,7 +767,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribePreAuctionList(self, request):
-        """用于预释放竞价列表数据查询
+        r"""用于预释放竞价列表数据查询
 
         :param request: Request instance for DescribePreAuctionList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreAuctionListRequest`
@@ -790,7 +790,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribePreDomainList(self, request):
-        """用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
+        r"""用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
 
         :param request: Request instance for DescribePreDomainList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreDomainListRequest`
@@ -813,7 +813,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribePreReleaseList(self, request):
-        """接口用于预释放页面查询
+        r"""接口用于预释放页面查询
 
         :param request: Request instance for DescribePreReleaseList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreReleaseListRequest`
@@ -836,7 +836,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeReservedBidInfo(self, request):
-        """接口用于获取合作商竞价过程中竞价详情数据
+        r"""接口用于获取合作商竞价过程中竞价详情数据
 
         :param request: Request instance for DescribeReservedBidInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeReservedBidInfoRequest`
@@ -859,7 +859,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeReservedPreDomainInfo(self, request):
-        """合作商用于查询预约预释放状态信息内容
+        r"""合作商用于查询预约预释放状态信息内容
 
         :param request: Request instance for DescribeReservedPreDomainInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeReservedPreDomainInfoRequest`
@@ -882,7 +882,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeTemplate(self, request):
-        """本接口 (DescribeTemplate) 用于获取模板信息。
+        r"""本接口 (DescribeTemplate) 用于获取模板信息。
 
         :param request: Request instance for DescribeTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTemplateRequest`
@@ -905,7 +905,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeTemplateList(self, request):
-        """本接口 (DescribeTemplateList) 用于获取信息模板列表。
+        r"""本接口 (DescribeTemplateList) 用于获取信息模板列表。
 
         :param request: Request instance for DescribeTemplateList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTemplateListRequest`
@@ -928,7 +928,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeTldList(self, request):
-        """用于获取域名注册当前支持注册的后缀
+        r"""用于获取域名注册当前支持注册的后缀
 
         :param request: Request instance for DescribeTldList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTldListRequest`
@@ -951,7 +951,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeUnPreDomainDetail(self, request):
-        """查询预释放未预约域名详情接口
+        r"""查询预释放未预约域名详情接口
 
         :param request: Request instance for DescribeUnPreDomainDetail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeUnPreDomainDetailRequest`
@@ -974,7 +974,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyCustomDnsHost(self, request):
-        """修改自定义DNS Host
+        r"""修改自定义DNS Host
         域名在“正常状态”下可修改已经存在的自定义DNS Host，域名如果“未实名”则无法修改，账户如果未实名则无法修改。 默认每个域名 自定义DNS Host 数量不超过10个
 
         :param request: Request instance for ModifyCustomDnsHost.
@@ -998,7 +998,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyDomainDNSBatch(self, request):
-        """本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
+        r"""本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 
         :param request: Request instance for ModifyDomainDNSBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainDNSBatchRequest`
@@ -1021,7 +1021,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyDomainOwnerBatch(self, request):
-        """本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
+        r"""本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
 
         :param request: Request instance for ModifyDomainOwnerBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerBatchRequest`
@@ -1044,7 +1044,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyIntlCustomDnsHost(self, request):
-        """国际站-修改DNS Host
+        r"""国际站-修改DNS Host
 
         :param request: Request instance for ModifyIntlCustomDnsHost.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyIntlCustomDnsHostRequest`
@@ -1067,7 +1067,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyTemplate(self, request):
-        """修改模板信息,仅能修改模板未通过审核的，即[模板详情](https://cloud.tencent.com/document/product/242/50018)中：AuditStatus不为Approved状态的
+        r"""修改模板信息,仅能修改模板未通过审核的，即[模板详情](https://cloud.tencent.com/document/product/242/50018)中：AuditStatus不为Approved状态的
 
         :param request: Request instance for ModifyTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyTemplateRequest`
@@ -1090,7 +1090,7 @@ class DomainClient(AbstractClient):
 
 
     def RenewDomainBatch(self, request):
-        """本接口 ( RenewDomainBatch ) 用于批量续费域名 。
+        r"""本接口 ( RenewDomainBatch ) 用于批量续费域名 。
 
         :param request: Request instance for RenewDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.RenewDomainBatchRequest`
@@ -1113,7 +1113,7 @@ class DomainClient(AbstractClient):
 
 
     def ReservedPreDomains(self, request):
-        """用于合作商对预释放域名进行预留。
+        r"""用于合作商对预释放域名进行预留。
 
         :param request: Request instance for ReservedPreDomains.
         :type request: :class:`tencentcloud.domain.v20180808.models.ReservedPreDomainsRequest`
@@ -1136,7 +1136,7 @@ class DomainClient(AbstractClient):
 
 
     def SendPhoneEmailCode(self, request):
-        """此接口用于发送手机邮箱验证码。
+        r"""此接口用于发送手机邮箱验证码。
 
         :param request: Request instance for SendPhoneEmailCode.
         :type request: :class:`tencentcloud.domain.v20180808.models.SendPhoneEmailCodeRequest`
@@ -1159,7 +1159,7 @@ class DomainClient(AbstractClient):
 
 
     def SetDomainAutoRenew(self, request):
-        """本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
+        r"""本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
         当前操作暂不受域名状态限制
 
         :param request: Request instance for SetDomainAutoRenew.
@@ -1183,7 +1183,7 @@ class DomainClient(AbstractClient):
 
 
     def SyncCustomDnsHost(self, request):
-        """同步自定义DNS Host，将域名已经设置的host配置数据从注册局同步下来
+        r"""同步自定义DNS Host，将域名已经设置的host配置数据从注册局同步下来
 
         :param request: Request instance for SyncCustomDnsHost.
         :type request: :class:`tencentcloud.domain.v20180808.models.SyncCustomDnsHostRequest`
@@ -1206,7 +1206,7 @@ class DomainClient(AbstractClient):
 
 
     def TransferInDomainBatch(self, request):
-        """本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
+        r"""本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
 
         :param request: Request instance for TransferInDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.TransferInDomainBatchRequest`
@@ -1229,7 +1229,7 @@ class DomainClient(AbstractClient):
 
 
     def TransferProhibitionBatch(self, request):
-        """本接口 ( TransferProhibitionBatch ) 用于批量禁止域名转移 。
+        r"""本接口 ( TransferProhibitionBatch ) 用于批量禁止域名转移 。
 
         :param request: Request instance for TransferProhibitionBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.TransferProhibitionBatchRequest`
@@ -1252,7 +1252,7 @@ class DomainClient(AbstractClient):
 
 
     def UpdateProhibitionBatch(self, request):
-        """本接口 ( UpdateProhibitionBatch ) 用于批量禁止更新锁。
+        r"""本接口 ( UpdateProhibitionBatch ) 用于批量禁止更新锁。
 
         :param request: Request instance for UpdateProhibitionBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.UpdateProhibitionBatchRequest`
@@ -1275,7 +1275,7 @@ class DomainClient(AbstractClient):
 
 
     def UploadImage(self, request):
-        """本接口 ( UploadImage ) 用于证件图片上传 。
+        r"""本接口 ( UploadImage ) 用于证件图片上传 。
 
         :param request: Request instance for UploadImage.
         :type request: :class:`tencentcloud.domain.v20180808.models.UploadImageRequest`

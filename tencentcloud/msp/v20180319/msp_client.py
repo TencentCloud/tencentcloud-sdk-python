@@ -27,7 +27,7 @@ class MspClient(AbstractClient):
 
 
     def DeregisterMigrationTask(self, request):
-        """接口已经废弃不再使用
+        r"""接口已经废弃不再使用
 
         取消注册迁移任务
 
@@ -52,7 +52,7 @@ class MspClient(AbstractClient):
 
 
     def DescribeMigrationTask(self, request):
-        """获取指定迁移任务详情
+        r"""获取指定迁移任务详情
 
         :param request: Request instance for DescribeMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.DescribeMigrationTaskRequest`
@@ -75,7 +75,7 @@ class MspClient(AbstractClient):
 
 
     def ListMigrationProject(self, request):
-        """获取迁移项目名称列表
+        r"""获取迁移项目名称列表
 
         :param request: Request instance for ListMigrationProject.
         :type request: :class:`tencentcloud.msp.v20180319.models.ListMigrationProjectRequest`
@@ -98,7 +98,7 @@ class MspClient(AbstractClient):
 
 
     def ListMigrationTask(self, request):
-        """获取迁移任务列表
+        r"""获取迁移任务列表
 
         :param request: Request instance for ListMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.ListMigrationTaskRequest`
@@ -121,7 +121,7 @@ class MspClient(AbstractClient):
 
 
     def ModifyMigrationTaskBelongToProject(self, request):
-        """更改迁移任务所属项目
+        r"""更改迁移任务所属项目
 
         :param request: Request instance for ModifyMigrationTaskBelongToProject.
         :type request: :class:`tencentcloud.msp.v20180319.models.ModifyMigrationTaskBelongToProjectRequest`
@@ -144,7 +144,7 @@ class MspClient(AbstractClient):
 
 
     def ModifyMigrationTaskStatus(self, request):
-        """更新迁移任务状态
+        r"""更新迁移任务状态
 
         :param request: Request instance for ModifyMigrationTaskStatus.
         :type request: :class:`tencentcloud.msp.v20180319.models.ModifyMigrationTaskStatusRequest`
@@ -167,7 +167,7 @@ class MspClient(AbstractClient):
 
 
     def RegisterMigrationTask(self, request):
-        """注册迁移任务
+        r"""注册迁移任务
 
         :param request: Request instance for RegisterMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.RegisterMigrationTaskRequest`

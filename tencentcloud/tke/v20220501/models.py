@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Annotation(AbstractModel):
-    """k8s中标注，一般以数组的方式存在
+    r"""k8s中标注，一般以数组的方式存在
 
     """
 
@@ -35,7 +35,7 @@ class Annotation(AbstractModel):
 
     @property
     def Name(self):
-        """map表中的Name
+        r"""map表中的Name
         :rtype: str
         """
         return self._Name
@@ -46,7 +46,7 @@ class Annotation(AbstractModel):
 
     @property
     def Value(self):
-        """map表中的Value
+        r"""map表中的Value
         :rtype: str
         """
         return self._Value
@@ -70,7 +70,7 @@ class Annotation(AbstractModel):
 
 
 class AutoUpgradeOptions(AbstractModel):
-    """托管节点池运维窗口设置
+    r"""托管节点池运维窗口设置
 
     """
 
@@ -92,7 +92,7 @@ class AutoUpgradeOptions(AbstractModel):
 
     @property
     def AutoUpgradeStartTime(self):
-        """自动升级开始时间
+        r"""自动升级开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -104,7 +104,7 @@ class AutoUpgradeOptions(AbstractModel):
 
     @property
     def Duration(self):
-        """自动升级持续时间
+        r"""自动升级持续时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -116,7 +116,7 @@ class AutoUpgradeOptions(AbstractModel):
 
     @property
     def WeeklyPeriod(self):
-        """运维日期
+        r"""运维日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -142,7 +142,7 @@ class AutoUpgradeOptions(AbstractModel):
 
 
 class AutoscalingAdded(AbstractModel):
-    """自动扩缩容的节点
+    r"""自动扩缩容的节点
 
     """
 
@@ -164,7 +164,7 @@ class AutoscalingAdded(AbstractModel):
 
     @property
     def Joining(self):
-        """正在加入中的节点数量
+        r"""正在加入中的节点数量
         :rtype: int
         """
         return self._Joining
@@ -175,7 +175,7 @@ class AutoscalingAdded(AbstractModel):
 
     @property
     def Initializing(self):
-        """初始化中的节点数量
+        r"""初始化中的节点数量
         :rtype: int
         """
         return self._Initializing
@@ -186,7 +186,7 @@ class AutoscalingAdded(AbstractModel):
 
     @property
     def Normal(self):
-        """正常的节点数量
+        r"""正常的节点数量
         :rtype: int
         """
         return self._Normal
@@ -197,7 +197,7 @@ class AutoscalingAdded(AbstractModel):
 
     @property
     def Total(self):
-        """节点总数
+        r"""节点总数
         :rtype: int
         """
         return self._Total
@@ -223,7 +223,7 @@ class AutoscalingAdded(AbstractModel):
 
 
 class CreateHealthCheckPolicyRequest(AbstractModel):
-    """CreateHealthCheckPolicy请求参数结构体
+    r"""CreateHealthCheckPolicy请求参数结构体
 
     """
 
@@ -239,7 +239,7 @@ class CreateHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -250,7 +250,7 @@ class CreateHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def HealthCheckPolicy(self):
-        """健康检测策略
+        r"""健康检测策略
         :rtype: :class:`tencentcloud.tke.v20220501.models.HealthCheckPolicy`
         """
         return self._HealthCheckPolicy
@@ -276,7 +276,7 @@ class CreateHealthCheckPolicyRequest(AbstractModel):
 
 
 class CreateHealthCheckPolicyResponse(AbstractModel):
-    """CreateHealthCheckPolicy返回参数结构体
+    r"""CreateHealthCheckPolicy返回参数结构体
 
     """
 
@@ -292,7 +292,7 @@ class CreateHealthCheckPolicyResponse(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        """健康检测策略名称
+        r"""健康检测策略名称
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -303,7 +303,7 @@ class CreateHealthCheckPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -319,7 +319,7 @@ class CreateHealthCheckPolicyResponse(AbstractModel):
 
 
 class CreateNativeNodePoolParam(AbstractModel):
-    """原生节点池创建参数
+    r"""原生节点池创建参数
 
     """
 
@@ -398,7 +398,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Scaling(self):
-        """节点池伸缩配置
+        r"""节点池伸缩配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -409,7 +409,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """子网列表
+        r"""子网列表
         :rtype: list of str
         """
         return self._SubnetIds
@@ -420,7 +420,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        r"""节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
         :rtype: str
         """
         return self._InstanceChargeType
@@ -431,7 +431,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """系统盘配置
+        r"""系统盘配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -442,7 +442,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """机型列表
+        r"""机型列表
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -453,7 +453,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组列表
+        r"""安全组列表
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -464,7 +464,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def UpgradeSettings(self):
-        """自动升级配置
+        r"""自动升级配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -475,7 +475,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def AutoRepair(self):
-        """是否开启自愈能力
+        r"""是否开启自愈能力
         :rtype: bool
         """
         return self._AutoRepair
@@ -486,7 +486,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """包年包月机型计费配置
+        r"""包年包月机型计费配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -497,7 +497,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Management(self):
-        """节点池 Management 参数设置
+        r"""节点池 Management 参数设置
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -508,7 +508,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        """故障自愈规则名称
+        r"""故障自愈规则名称
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -519,7 +519,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def HostNamePattern(self):
-        """原生节点池hostName模式串
+        r"""原生节点池hostName模式串
         :rtype: str
         """
         return self._HostNamePattern
@@ -530,7 +530,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def KubeletArgs(self):
-        """kubelet 自定义参数
+        r"""kubelet 自定义参数
         :rtype: list of str
         """
         return self._KubeletArgs
@@ -541,7 +541,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """预定义脚本
+        r"""预定义脚本
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -552,7 +552,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        """运行时根目录
+        r"""运行时根目录
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -563,7 +563,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def EnableAutoscaling(self):
-        """是否开启弹性伸缩
+        r"""是否开启弹性伸缩
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -574,7 +574,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Replicas(self):
-        """期望节点数
+        r"""期望节点数
         :rtype: int
         """
         return self._Replicas
@@ -585,7 +585,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽设置
+        r"""公网带宽设置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -596,7 +596,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def DataDisks(self):
-        """原生节点池数据盘列表
+        r"""原生节点池数据盘列表
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -607,7 +607,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def QGPUEnable(self):
-        """qgpu开关
+        r"""qgpu开关
         :rtype: bool
         """
         return self._QGPUEnable
@@ -618,7 +618,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def KeyIds(self):
-        """节点池ssh公钥id数组
+        r"""节点池ssh公钥id数组
         :rtype: list of str
         """
         return self._KeyIds
@@ -629,7 +629,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def MachineType(self):
-        """节点池类型
+        r"""节点池类型
         :rtype: str
         """
         return self._MachineType
@@ -640,7 +640,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def AutomationService(self):
-        """原生节点池安装节点自动化助手开关
+        r"""原生节点池安装节点自动化助手开关
         :rtype: bool
         """
         return self._AutomationService
@@ -704,7 +704,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
 
 class CreateNodePoolRequest(AbstractModel):
-    """CreateNodePool请求参数结构体
+    r"""CreateNodePool请求参数结构体
 
     """
 
@@ -744,7 +744,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -755,7 +755,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        """节点池名称
+        r"""节点池名称
         :rtype: str
         """
         return self._Name
@@ -766,7 +766,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Type(self):
-        """节点池类型
+        r"""节点池类型
         :rtype: str
         """
         return self._Type
@@ -777,7 +777,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """节点  Labels
+        r"""节点  Labels
         :rtype: list of Label
         """
         return self._Labels
@@ -788,7 +788,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        """节点污点
+        r"""节点污点
         :rtype: list of Taint
         """
         return self._Taints
@@ -799,7 +799,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """节点标签
+        r"""节点标签
         :rtype: list of TagSpecification
         """
         return self._Tags
@@ -810,7 +810,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        """是否开启删除保护
+        r"""是否开启删除保护
         :rtype: bool
         """
         return self._DeletionProtection
@@ -821,7 +821,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Unschedulable(self):
-        """节点是否默认不可调度
+        r"""节点是否默认不可调度
         :rtype: bool
         """
         return self._Unschedulable
@@ -832,7 +832,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Native(self):
-        """原生节点池创建参数（Type字段设置为Native时需填写）
+        r"""原生节点池创建参数（Type字段设置为Native时需填写）
         :rtype: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
         """
         return self._Native
@@ -843,7 +843,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Annotations(self):
-        """节点 Annotation 列表
+        r"""节点 Annotation 列表
         :rtype: list of Annotation
         """
         return self._Annotations
@@ -897,7 +897,7 @@ class CreateNodePoolRequest(AbstractModel):
 
 
 class CreateNodePoolResponse(AbstractModel):
-    """CreateNodePool返回参数结构体
+    r"""CreateNodePool返回参数结构体
 
     """
 
@@ -913,7 +913,7 @@ class CreateNodePoolResponse(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池 ID
+        r"""节点池 ID
         :rtype: str
         """
         return self._NodePoolId
@@ -924,7 +924,7 @@ class CreateNodePoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -940,7 +940,7 @@ class CreateNodePoolResponse(AbstractModel):
 
 
 class DataDisk(AbstractModel):
-    """描述了k8s节点数据盘相关配置与信息。
+    r"""描述了k8s节点数据盘相关配置与信息。
 
     """
 
@@ -990,7 +990,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """云盘类型
+        r"""云盘类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1002,7 +1002,7 @@ class DataDisk(AbstractModel):
 
     @property
     def FileSystem(self):
-        """文件系统(ext3/ext4/xfs)
+        r"""文件系统(ext3/ext4/xfs)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1014,7 +1014,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云盘大小(G）
+        r"""云盘大小(G）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1026,7 +1026,7 @@ class DataDisk(AbstractModel):
 
     @property
     def AutoFormatAndMount(self):
-        """是否自动化格式盘并挂载
+        r"""是否自动化格式盘并挂载
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1038,7 +1038,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskPartition(self):
-        """挂载设备名或分区名
+        r"""挂载设备名或分区名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1050,7 +1050,7 @@ class DataDisk(AbstractModel):
 
     @property
     def MountTarget(self):
-        """挂载目录
+        r"""挂载目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1062,7 +1062,7 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
-        """传入该参数用于创建加密云盘，取值固定为ENCRYPT
+        r"""传入该参数用于创建加密云盘，取值固定为ENCRYPT
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1074,7 +1074,7 @@ class DataDisk(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        """购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
+        r"""购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1086,7 +1086,7 @@ class DataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
+        r"""快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1098,7 +1098,7 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
+        r"""云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1131,7 +1131,7 @@ class DataDisk(AbstractModel):
 
 
 class DeleteClusterMachinesRequest(AbstractModel):
-    """DeleteClusterMachines请求参数结构体
+    r"""DeleteClusterMachines请求参数结构体
 
     """
 
@@ -1153,7 +1153,7 @@ class DeleteClusterMachinesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1164,7 +1164,7 @@ class DeleteClusterMachinesRequest(AbstractModel):
 
     @property
     def MachineNames(self):
-        """节点名列表
+        r"""节点名列表
         :rtype: list of str
         """
         return self._MachineNames
@@ -1175,7 +1175,7 @@ class DeleteClusterMachinesRequest(AbstractModel):
 
     @property
     def EnableScaleDown(self):
-        """删除节点时是否缩容节点池，true为缩容
+        r"""删除节点时是否缩容节点池，true为缩容
         :rtype: bool
         """
         return self._EnableScaleDown
@@ -1186,7 +1186,7 @@ class DeleteClusterMachinesRequest(AbstractModel):
 
     @property
     def InstanceDeleteMode(self):
-        """集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
+        r"""集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
         :rtype: str
         """
         return self._InstanceDeleteMode
@@ -1212,7 +1212,7 @@ class DeleteClusterMachinesRequest(AbstractModel):
 
 
 class DeleteClusterMachinesResponse(AbstractModel):
-    """DeleteClusterMachines返回参数结构体
+    r"""DeleteClusterMachines返回参数结构体
 
     """
 
@@ -1225,7 +1225,7 @@ class DeleteClusterMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1240,7 +1240,7 @@ class DeleteClusterMachinesResponse(AbstractModel):
 
 
 class DeleteHealthCheckPolicyRequest(AbstractModel):
-    """DeleteHealthCheckPolicy请求参数结构体
+    r"""DeleteHealthCheckPolicy请求参数结构体
 
     """
 
@@ -1256,7 +1256,7 @@ class DeleteHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1267,7 +1267,7 @@ class DeleteHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        """健康检测策略名称
+        r"""健康检测策略名称
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -1291,7 +1291,7 @@ class DeleteHealthCheckPolicyRequest(AbstractModel):
 
 
 class DeleteHealthCheckPolicyResponse(AbstractModel):
-    """DeleteHealthCheckPolicy返回参数结构体
+    r"""DeleteHealthCheckPolicy返回参数结构体
 
     """
 
@@ -1304,7 +1304,7 @@ class DeleteHealthCheckPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1319,7 +1319,7 @@ class DeleteHealthCheckPolicyResponse(AbstractModel):
 
 
 class DeleteNodePoolRequest(AbstractModel):
-    """DeleteNodePool请求参数结构体
+    r"""DeleteNodePool请求参数结构体
 
     """
 
@@ -1335,7 +1335,7 @@ class DeleteNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1346,7 +1346,7 @@ class DeleteNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池 ID
+        r"""节点池 ID
         :rtype: str
         """
         return self._NodePoolId
@@ -1370,7 +1370,7 @@ class DeleteNodePoolRequest(AbstractModel):
 
 
 class DeleteNodePoolResponse(AbstractModel):
-    """DeleteNodePool返回参数结构体
+    r"""DeleteNodePool返回参数结构体
 
     """
 
@@ -1383,7 +1383,7 @@ class DeleteNodePoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1398,7 +1398,7 @@ class DeleteNodePoolResponse(AbstractModel):
 
 
 class DescribeClusterInstancesRequest(AbstractModel):
-    """DescribeClusterInstances请求参数结构体
+    r"""DescribeClusterInstances请求参数结构体
 
     """
 
@@ -1424,7 +1424,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -1435,7 +1435,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
     @property
     def Offset(self):
-        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -1446,7 +1446,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -1457,7 +1457,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
     @property
     def Filters(self):
-        """过滤条件列表:
+        r"""过滤条件列表:
 InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，External),VagueIpAddress(模糊匹配IP),Labels(k8s节点label),NodePoolNames(节点池名称),VagueInstanceName(模糊匹配节点名),InstanceStates(节点状态),Unschedulable(是否封锁),NodePoolIds(节点池ID)
         :rtype: list of Filter
         """
@@ -1469,7 +1469,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
     @property
     def SortBy(self):
-        """排序信息
+        r"""排序信息
         :rtype: :class:`tencentcloud.tke.v20220501.models.SortBy`
         """
         return self._SortBy
@@ -1503,7 +1503,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
 
 
 class DescribeClusterInstancesResponse(AbstractModel):
-    """DescribeClusterInstances返回参数结构体
+    r"""DescribeClusterInstances返回参数结构体
 
     """
 
@@ -1525,7 +1525,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群中实例总数
+        r"""集群中实例总数
         :rtype: int
         """
         return self._TotalCount
@@ -1536,7 +1536,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """集群中实例列表
+        r"""集群中实例列表
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -1547,7 +1547,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def Errors(self):
-        """错误信息集合
+        r"""错误信息集合
         :rtype: list of str
         """
         return self._Errors
@@ -1558,7 +1558,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1581,7 +1581,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
 
 class DescribeHealthCheckPoliciesRequest(AbstractModel):
-    """DescribeHealthCheckPolicies请求参数结构体
+    r"""DescribeHealthCheckPolicies请求参数结构体
 
     """
 
@@ -1606,7 +1606,7 @@ class DescribeHealthCheckPoliciesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1617,7 +1617,7 @@ class DescribeHealthCheckPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """·  HealthCheckPolicyName
+        r"""·  HealthCheckPolicyName
     按照【健康检测策略名称】进行过滤。
     类型：String
     必选：否
@@ -1631,7 +1631,7 @@ class DescribeHealthCheckPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大输出条数，默认20，最大为100
+        r"""最大输出条数，默认20，最大为100
         :rtype: int
         """
         return self._Limit
@@ -1642,7 +1642,7 @@ class DescribeHealthCheckPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -1673,7 +1673,7 @@ class DescribeHealthCheckPoliciesRequest(AbstractModel):
 
 
 class DescribeHealthCheckPoliciesResponse(AbstractModel):
-    """DescribeHealthCheckPolicies返回参数结构体
+    r"""DescribeHealthCheckPolicies返回参数结构体
 
     """
 
@@ -1693,7 +1693,7 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
 
     @property
     def HealthCheckPolicies(self):
-        """健康检测策略数组
+        r"""健康检测策略数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HealthCheckPolicy
         """
@@ -1705,7 +1705,7 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数组总数目
+        r"""数组总数目
         :rtype: int
         """
         return self._TotalCount
@@ -1716,7 +1716,7 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1738,7 +1738,7 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
 
 
 class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
-    """DescribeHealthCheckPolicyBindings请求参数结构体
+    r"""DescribeHealthCheckPolicyBindings请求参数结构体
 
     """
 
@@ -1763,7 +1763,7 @@ class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1774,7 +1774,7 @@ class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """·  HealthCheckPolicyName
+        r"""·  HealthCheckPolicyName
     按照【健康检测规则名称】进行过滤。
     类型：String
     必选：否
@@ -1788,7 +1788,7 @@ class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大输出条数，默认20，最大为100
+        r"""最大输出条数，默认20，最大为100
         :rtype: int
         """
         return self._Limit
@@ -1799,7 +1799,7 @@ class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -1830,7 +1830,7 @@ class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
 
 
 class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
-    """DescribeHealthCheckPolicyBindings返回参数结构体
+    r"""DescribeHealthCheckPolicyBindings返回参数结构体
 
     """
 
@@ -1850,7 +1850,7 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
 
     @property
     def HealthCheckPolicyBindings(self):
-        """健康检测规则数组
+        r"""健康检测规则数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HealthCheckPolicyBinding
         """
@@ -1862,7 +1862,7 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """健康检测规则数量
+        r"""健康检测规则数量
         :rtype: int
         """
         return self._TotalCount
@@ -1873,7 +1873,7 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1895,13 +1895,13 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
 
 
 class DescribeHealthCheckTemplateRequest(AbstractModel):
-    """DescribeHealthCheckTemplate请求参数结构体
+    r"""DescribeHealthCheckTemplate请求参数结构体
 
     """
 
 
 class DescribeHealthCheckTemplateResponse(AbstractModel):
-    """DescribeHealthCheckTemplate返回参数结构体
+    r"""DescribeHealthCheckTemplate返回参数结构体
 
     """
 
@@ -1917,7 +1917,7 @@ class DescribeHealthCheckTemplateResponse(AbstractModel):
 
     @property
     def HealthCheckTemplate(self):
-        """健康检测策略模板
+        r"""健康检测策略模板
         :rtype: :class:`tencentcloud.tke.v20220501.models.HealthCheckTemplate`
         """
         return self._HealthCheckTemplate
@@ -1928,7 +1928,7 @@ class DescribeHealthCheckTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1946,7 +1946,7 @@ class DescribeHealthCheckTemplateResponse(AbstractModel):
 
 
 class DescribeNodePoolsRequest(AbstractModel):
-    """DescribeNodePools请求参数结构体
+    r"""DescribeNodePools请求参数结构体
 
     """
 
@@ -1987,7 +1987,7 @@ class DescribeNodePoolsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -1998,7 +1998,7 @@ class DescribeNodePoolsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询过滤条件：
+        r"""查询过滤条件：
 ·  NodePoolsName
     按照【节点池名】进行过滤。
     类型：String
@@ -2028,7 +2028,7 @@ class DescribeNodePoolsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -2039,7 +2039,7 @@ class DescribeNodePoolsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大输出条数，默认20，最大为100
+        r"""最大输出条数，默认20，最大为100
         :rtype: int
         """
         return self._Limit
@@ -2070,7 +2070,7 @@ class DescribeNodePoolsRequest(AbstractModel):
 
 
 class DescribeNodePoolsResponse(AbstractModel):
-    """DescribeNodePools返回参数结构体
+    r"""DescribeNodePools返回参数结构体
 
     """
 
@@ -2089,7 +2089,7 @@ class DescribeNodePoolsResponse(AbstractModel):
 
     @property
     def NodePools(self):
-        """节点池列表
+        r"""节点池列表
         :rtype: list of NodePool
         """
         return self._NodePools
@@ -2100,7 +2100,7 @@ class DescribeNodePoolsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资源总数
+        r"""资源总数
         :rtype: int
         """
         return self._TotalCount
@@ -2111,7 +2111,7 @@ class DescribeNodePoolsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2133,7 +2133,7 @@ class DescribeNodePoolsResponse(AbstractModel):
 
 
 class Disk(AbstractModel):
-    """节点系统盘和数据盘配置
+    r"""节点系统盘和数据盘配置
 
     """
 
@@ -2162,7 +2162,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskType(self):
-        """云盘类型
+        r"""云盘类型
         :rtype: str
         """
         return self._DiskType
@@ -2173,7 +2173,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云盘大小(G）
+        r"""云盘大小(G）
         :rtype: int
         """
         return self._DiskSize
@@ -2184,7 +2184,7 @@ class Disk(AbstractModel):
 
     @property
     def AutoFormatAndMount(self):
-        """是否自动化格式盘并挂载
+        r"""是否自动化格式盘并挂载
         :rtype: bool
         """
         return self._AutoFormatAndMount
@@ -2195,7 +2195,7 @@ class Disk(AbstractModel):
 
     @property
     def FileSystem(self):
-        """文件系统
+        r"""文件系统
         :rtype: str
         """
         return self._FileSystem
@@ -2206,7 +2206,7 @@ class Disk(AbstractModel):
 
     @property
     def MountTarget(self):
-        """挂载目录
+        r"""挂载目录
         :rtype: str
         """
         return self._MountTarget
@@ -2217,7 +2217,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskId(self):
-        """云盘ID
+        r"""云盘ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2246,7 +2246,7 @@ class Disk(AbstractModel):
 
 
 class ExternalNodeInfo(AbstractModel):
-    """第三方节点
+    r"""第三方节点
 
     """
 
@@ -2271,7 +2271,7 @@ class ExternalNodeInfo(AbstractModel):
 
     @property
     def Name(self):
-        """第三方节点名称
+        r"""第三方节点名称
         :rtype: str
         """
         return self._Name
@@ -2282,7 +2282,7 @@ class ExternalNodeInfo(AbstractModel):
 
     @property
     def CPU(self):
-        """CPU核数，单位：核
+        r"""CPU核数，单位：核
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2294,7 +2294,7 @@ class ExternalNodeInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """节点内存容量，单位：`GB`
+        r"""节点内存容量，单位：`GB`
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2306,7 +2306,7 @@ class ExternalNodeInfo(AbstractModel):
 
     @property
     def K8SVersion(self):
-        """第三方节点kubelet版本信息
+        r"""第三方节点kubelet版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2333,7 +2333,7 @@ class ExternalNodeInfo(AbstractModel):
 
 
 class ExternalNodePoolInfo(AbstractModel):
-    """第三方节点池信息
+    r"""第三方节点池信息
 
     """
 
@@ -2349,7 +2349,7 @@ class ExternalNodePoolInfo(AbstractModel):
 
     @property
     def RuntimeConfig(self):
-        """第三方节点Runtime配置
+        r"""第三方节点Runtime配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.RuntimeConfig`
         """
         return self._RuntimeConfig
@@ -2360,7 +2360,7 @@ class ExternalNodePoolInfo(AbstractModel):
 
     @property
     def NodesNum(self):
-        """节点数
+        r"""节点数
         :rtype: int
         """
         return self._NodesNum
@@ -2386,7 +2386,7 @@ class ExternalNodePoolInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤器
+    r"""过滤器
 
     """
 
@@ -2402,7 +2402,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        r"""属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
         :rtype: str
         """
         return self._Name
@@ -2413,7 +2413,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
         :rtype: list of str
         """
         return self._Values
@@ -2437,7 +2437,7 @@ class Filter(AbstractModel):
 
 
 class GPUConfig(AbstractModel):
-    """机型名称与GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等相关配置信息
+    r"""机型名称与GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等相关配置信息
 
     """
 
@@ -2455,7 +2455,7 @@ class GPUConfig(AbstractModel):
 
     @property
     def InstanceType(self):
-        """机型名称
+        r"""机型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2467,7 +2467,7 @@ class GPUConfig(AbstractModel):
 
     @property
     def GPUParams(self):
-        """GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等
+        r"""GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.GPUParams`
         """
@@ -2494,7 +2494,7 @@ class GPUConfig(AbstractModel):
 
 
 class GPUParams(AbstractModel):
-    """GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric
+    r"""GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric
 
     """
 
@@ -2528,7 +2528,7 @@ class GPUParams(AbstractModel):
 
     @property
     def Driver(self):
-        """GPU驱动版本
+        r"""GPU驱动版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2540,7 +2540,7 @@ class GPUParams(AbstractModel):
 
     @property
     def CUDA(self):
-        """CUDA版本
+        r"""CUDA版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2552,7 +2552,7 @@ class GPUParams(AbstractModel):
 
     @property
     def CUDNN(self):
-        """CUDNN版本
+        r"""CUDNN版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2564,7 +2564,7 @@ class GPUParams(AbstractModel):
 
     @property
     def MIGEnable(self):
-        """是否启用MIG特性
+        r"""是否启用MIG特性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2576,7 +2576,7 @@ class GPUParams(AbstractModel):
 
     @property
     def Fabric(self):
-        """是否启用Fabric特性
+        r"""是否启用Fabric特性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2588,7 +2588,7 @@ class GPUParams(AbstractModel):
 
     @property
     def CustomGPUDriver(self):
-        """自定义驱动下载地址
+        r"""自定义驱动下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2617,7 +2617,7 @@ class GPUParams(AbstractModel):
 
 
 class HealthCheckPolicy(AbstractModel):
-    """健康检测规则
+    r"""健康检测规则
 
     """
 
@@ -2633,7 +2633,7 @@ class HealthCheckPolicy(AbstractModel):
 
     @property
     def Name(self):
-        """健康检测策略名称
+        r"""健康检测策略名称
         :rtype: str
         """
         return self._Name
@@ -2644,7 +2644,7 @@ class HealthCheckPolicy(AbstractModel):
 
     @property
     def Rules(self):
-        """健康检测策略规则列表
+        r"""健康检测策略规则列表
         :rtype: list of HealthCheckPolicyRule
         """
         return self._Rules
@@ -2673,7 +2673,7 @@ class HealthCheckPolicy(AbstractModel):
 
 
 class HealthCheckPolicyBinding(AbstractModel):
-    """健康检测策略和节点池的绑定关系
+    r"""健康检测策略和节点池的绑定关系
 
     """
 
@@ -2692,7 +2692,7 @@ class HealthCheckPolicyBinding(AbstractModel):
 
     @property
     def Name(self):
-        """健康检测策略名称
+        r"""健康检测策略名称
         :rtype: str
         """
         return self._Name
@@ -2703,7 +2703,7 @@ class HealthCheckPolicyBinding(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """规则创建时间
+        r"""规则创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -2714,7 +2714,7 @@ class HealthCheckPolicyBinding(AbstractModel):
 
     @property
     def NodePools(self):
-        """关联节点池数组
+        r"""关联节点池数组
         :rtype: list of str
         """
         return self._NodePools
@@ -2739,7 +2739,7 @@ class HealthCheckPolicyBinding(AbstractModel):
 
 
 class HealthCheckPolicyRule(AbstractModel):
-    """健康检测规则
+    r"""健康检测规则
 
     """
 
@@ -2758,7 +2758,7 @@ class HealthCheckPolicyRule(AbstractModel):
 
     @property
     def Name(self):
-        """健康检测规则
+        r"""健康检测规则
         :rtype: str
         """
         return self._Name
@@ -2769,7 +2769,7 @@ class HealthCheckPolicyRule(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否检测此项目
+        r"""是否检测此项目
         :rtype: bool
         """
         return self._Enabled
@@ -2780,7 +2780,7 @@ class HealthCheckPolicyRule(AbstractModel):
 
     @property
     def AutoRepairEnabled(self):
-        """是否启用修复
+        r"""是否启用修复
         :rtype: bool
         """
         return self._AutoRepairEnabled
@@ -2805,7 +2805,7 @@ class HealthCheckPolicyRule(AbstractModel):
 
 
 class HealthCheckTemplate(AbstractModel):
-    """健康检测模板
+    r"""健康检测模板
 
     """
 
@@ -2818,7 +2818,7 @@ class HealthCheckTemplate(AbstractModel):
 
     @property
     def Rules(self):
-        """健康检测项
+        r"""健康检测项
         :rtype: list of HealthCheckTemplateRule
         """
         return self._Rules
@@ -2846,7 +2846,7 @@ class HealthCheckTemplate(AbstractModel):
 
 
 class HealthCheckTemplateRule(AbstractModel):
-    """健康检测模板规则
+    r"""健康检测模板规则
 
     """
 
@@ -2877,7 +2877,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def Name(self):
-        """健康检测项目名称
+        r"""健康检测项目名称
         :rtype: str
         """
         return self._Name
@@ -2888,7 +2888,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def Description(self):
-        """健康检测规则描述
+        r"""健康检测规则描述
         :rtype: str
         """
         return self._Description
@@ -2899,7 +2899,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def RepairAction(self):
-        """修复动作
+        r"""修复动作
         :rtype: str
         """
         return self._RepairAction
@@ -2910,7 +2910,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def RepairEffect(self):
-        """修复影响
+        r"""修复影响
         :rtype: str
         """
         return self._RepairEffect
@@ -2921,7 +2921,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def ShouldEnable(self):
-        """是否建议开启检测
+        r"""是否建议开启检测
         :rtype: bool
         """
         return self._ShouldEnable
@@ -2932,7 +2932,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def ShouldRepair(self):
-        """是否建议修复
+        r"""是否建议修复
         :rtype: bool
         """
         return self._ShouldRepair
@@ -2943,7 +2943,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
     @property
     def Severity(self):
-        """问题严重程度
+        r"""问题严重程度
         :rtype: str
         """
         return self._Severity
@@ -2972,7 +2972,7 @@ class HealthCheckTemplateRule(AbstractModel):
 
 
 class Instance(AbstractModel):
-    """集群的实例信息
+    r"""集群的实例信息
 
     """
 
@@ -3033,7 +3033,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -3044,7 +3044,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceRole(self):
-        """节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER
+        r"""节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER
         :rtype: str
         """
         return self._InstanceRole
@@ -3055,7 +3055,7 @@ class Instance(AbstractModel):
 
     @property
     def FailedReason(self):
-        """实例异常(或者处于初始化中)的原因
+        r"""实例异常(或者处于初始化中)的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3067,7 +3067,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceState(self):
-        """实例的状态
+        r"""实例的状态
 - initializing创建中
 - running 运行中
 - failed 异常
@@ -3081,7 +3081,7 @@ class Instance(AbstractModel):
 
     @property
     def Unschedulable(self):
-        """是否不可调度
+        r"""是否不可调度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3093,7 +3093,7 @@ class Instance(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """添加时间
+        r"""添加时间
         :rtype: str
         """
         return self._CreatedTime
@@ -3104,7 +3104,7 @@ class Instance(AbstractModel):
 
     @property
     def LanIP(self):
-        """节点内网IP
+        r"""节点内网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3116,7 +3116,7 @@ class Instance(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """资源池ID
+        r"""资源池ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3128,7 +3128,7 @@ class Instance(AbstractModel):
 
     @property
     def Native(self):
-        """原生节点参数
+        r"""原生节点参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.NativeNodeInfo`
         """
@@ -3140,7 +3140,7 @@ class Instance(AbstractModel):
 
     @property
     def Regular(self):
-        """普通节点参数
+        r"""普通节点参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.RegularNodeInfo`
         """
@@ -3152,7 +3152,7 @@ class Instance(AbstractModel):
 
     @property
     def Super(self):
-        """超级节点参数
+        r"""超级节点参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.SuperNodeInfo`
         """
@@ -3164,7 +3164,7 @@ class Instance(AbstractModel):
 
     @property
     def External(self):
-        """第三方节点参数
+        r"""第三方节点参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.ExternalNodeInfo`
         """
@@ -3176,7 +3176,7 @@ class Instance(AbstractModel):
 
     @property
     def NodeType(self):
-        """节点类型
+        r"""节点类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3220,7 +3220,7 @@ class Instance(AbstractModel):
 
 
 class InstanceAdvancedSettings(AbstractModel):
-    """描述了k8s集群相关配置与信息。
+    r"""描述了k8s集群相关配置与信息。
 
     """
 
@@ -3250,7 +3250,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def DesiredPodNumber(self):
-        """该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+        r"""该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3262,7 +3262,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def PreStartUserScript(self):
-        """base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+        r"""base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3274,7 +3274,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def RuntimeConfig(self):
-        """运行时描述
+        r"""运行时描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.RuntimeConfig`
         """
@@ -3286,7 +3286,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def UserScript(self):
-        """base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+        r"""base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3298,7 +3298,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def ExtraArgs(self):
-        """节点相关的自定义参数信息
+        r"""节点相关的自定义参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceExtraArgs`
         """
@@ -3330,7 +3330,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
 
 class InstanceChargePrepaid(AbstractModel):
-    """包年包月配置
+    r"""包年包月配置
 
     """
 
@@ -3351,7 +3351,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        """后付费计费周期，单位（月）：
+        r"""后付费计费周期，单位（月）：
 1，2，3，4，5，，6，7， 8，9，10，11，12，24，36，48，60
         :rtype: int
         """
@@ -3363,7 +3363,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """预付费续费方式：
+        r"""预付费续费方式：
 - NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 (默认）
 - NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不自动续费
 - DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知用户过期，也不自动续费
@@ -3391,7 +3391,7 @@ class InstanceChargePrepaid(AbstractModel):
 
 
 class InstanceExtraArgs(AbstractModel):
-    """节点自定义参数
+    r"""节点自定义参数
 
     """
 
@@ -3405,7 +3405,7 @@ class InstanceExtraArgs(AbstractModel):
 
     @property
     def Kubelet(self):
-        """kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
+        r"""kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3429,7 +3429,7 @@ class InstanceExtraArgs(AbstractModel):
 
 
 class IntOrString(AbstractModel):
-    """数值结构
+    r"""数值结构
 
     """
 
@@ -3451,7 +3451,7 @@ class IntOrString(AbstractModel):
 
     @property
     def Type(self):
-        """数值类型，0是int,  1是字符串
+        r"""数值类型，0是int,  1是字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3463,7 +3463,7 @@ class IntOrString(AbstractModel):
 
     @property
     def IntVal(self):
-        """整数
+        r"""整数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3475,7 +3475,7 @@ class IntOrString(AbstractModel):
 
     @property
     def StrVal(self):
-        """字符串
+        r"""字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3501,7 +3501,7 @@ class IntOrString(AbstractModel):
 
 
 class InternetAccessible(AbstractModel):
-    """公网带宽
+    r"""公网带宽
 
     """
 
@@ -3520,7 +3520,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def MaxBandwidthOut(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._MaxBandwidthOut
@@ -3531,7 +3531,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def ChargeType(self):
-        """网络计费方式
+        r"""网络计费方式
         :rtype: str
         """
         return self._ChargeType
@@ -3542,7 +3542,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """带宽包 ID
+        r"""带宽包 ID
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -3567,7 +3567,7 @@ class InternetAccessible(AbstractModel):
 
 
 class Label(AbstractModel):
-    """k8s中标签，一般以数组的方式存在
+    r"""k8s中标签，一般以数组的方式存在
 
     """
 
@@ -3583,7 +3583,7 @@ class Label(AbstractModel):
 
     @property
     def Name(self):
-        """map表中的Name
+        r"""map表中的Name
         :rtype: str
         """
         return self._Name
@@ -3594,7 +3594,7 @@ class Label(AbstractModel):
 
     @property
     def Value(self):
-        """map表中的Value
+        r"""map表中的Value
         :rtype: str
         """
         return self._Value
@@ -3618,7 +3618,7 @@ class Label(AbstractModel):
 
 
 class LifecycleConfig(AbstractModel):
-    """节点池自定义脚本
+    r"""节点池自定义脚本
 
     """
 
@@ -3636,7 +3636,7 @@ class LifecycleConfig(AbstractModel):
 
     @property
     def PreInit(self):
-        """节点初始化前自定义脚本
+        r"""节点初始化前自定义脚本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3648,7 +3648,7 @@ class LifecycleConfig(AbstractModel):
 
     @property
     def PostInit(self):
-        """节点初始化后自定义脚本
+        r"""节点初始化后自定义脚本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3673,7 +3673,7 @@ class LifecycleConfig(AbstractModel):
 
 
 class MachineSetScaling(AbstractModel):
-    """节点池弹性伸缩配置
+    r"""节点池弹性伸缩配置
 
     """
 
@@ -3693,7 +3693,7 @@ class MachineSetScaling(AbstractModel):
 
     @property
     def MinReplicas(self):
-        """节点池最小副本数
+        r"""节点池最小副本数
         :rtype: int
         """
         return self._MinReplicas
@@ -3704,7 +3704,7 @@ class MachineSetScaling(AbstractModel):
 
     @property
     def MaxReplicas(self):
-        """节点池最大副本数
+        r"""节点池最大副本数
         :rtype: int
         """
         return self._MaxReplicas
@@ -3715,7 +3715,7 @@ class MachineSetScaling(AbstractModel):
 
     @property
     def CreatePolicy(self):
-        """节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
+        r"""节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3741,7 +3741,7 @@ class MachineSetScaling(AbstractModel):
 
 
 class MachineUpgradeSettings(AbstractModel):
-    """托管节点池自动升级配置
+    r"""托管节点池自动升级配置
 
     """
 
@@ -3764,7 +3764,7 @@ class MachineUpgradeSettings(AbstractModel):
 
     @property
     def AutoUpgrade(self):
-        """是否开启自动升级
+        r"""是否开启自动升级
         :rtype: bool
         """
         return self._AutoUpgrade
@@ -3775,7 +3775,7 @@ class MachineUpgradeSettings(AbstractModel):
 
     @property
     def UpgradeOptions(self):
-        """运维窗口
+        r"""运维窗口
         :rtype: :class:`tencentcloud.tke.v20220501.models.AutoUpgradeOptions`
         """
         return self._UpgradeOptions
@@ -3786,7 +3786,7 @@ class MachineUpgradeSettings(AbstractModel):
 
     @property
     def Components(self):
-        """升级项
+        r"""升级项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3798,7 +3798,7 @@ class MachineUpgradeSettings(AbstractModel):
 
     @property
     def MaxUnavailable(self):
-        """升级时，最大不可升级的节点数
+        r"""升级时，最大不可升级的节点数
         :rtype: :class:`tencentcloud.tke.v20220501.models.IntOrString`
         """
         return self._MaxUnavailable
@@ -3828,7 +3828,7 @@ class MachineUpgradeSettings(AbstractModel):
 
 
 class ManagementConfig(AbstractModel):
-    """托管节点池Management配置
+    r"""托管节点池Management配置
 
     """
 
@@ -3850,7 +3850,7 @@ class ManagementConfig(AbstractModel):
 
     @property
     def Nameservers(self):
-        """dns 配置
+        r"""dns 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3862,7 +3862,7 @@ class ManagementConfig(AbstractModel):
 
     @property
     def Hosts(self):
-        """hosts 配置
+        r"""hosts 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3874,7 +3874,7 @@ class ManagementConfig(AbstractModel):
 
     @property
     def KernelArgs(self):
-        """内核参数配置
+        r"""内核参数配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3900,7 +3900,7 @@ class ManagementConfig(AbstractModel):
 
 
 class ManuallyAdded(AbstractModel):
-    """手动加入的节点
+    r"""手动加入的节点
 
     """
 
@@ -3922,7 +3922,7 @@ class ManuallyAdded(AbstractModel):
 
     @property
     def Joining(self):
-        """加入中的节点数量
+        r"""加入中的节点数量
         :rtype: int
         """
         return self._Joining
@@ -3933,7 +3933,7 @@ class ManuallyAdded(AbstractModel):
 
     @property
     def Initializing(self):
-        """初始化中的节点数量
+        r"""初始化中的节点数量
         :rtype: int
         """
         return self._Initializing
@@ -3944,7 +3944,7 @@ class ManuallyAdded(AbstractModel):
 
     @property
     def Normal(self):
-        """正常的节点数量
+        r"""正常的节点数量
         :rtype: int
         """
         return self._Normal
@@ -3955,7 +3955,7 @@ class ManuallyAdded(AbstractModel):
 
     @property
     def Total(self):
-        """节点总数
+        r"""节点总数
         :rtype: int
         """
         return self._Total
@@ -3981,7 +3981,7 @@ class ManuallyAdded(AbstractModel):
 
 
 class ModifyHealthCheckPolicyRequest(AbstractModel):
-    """ModifyHealthCheckPolicy请求参数结构体
+    r"""ModifyHealthCheckPolicy请求参数结构体
 
     """
 
@@ -3997,7 +3997,7 @@ class ModifyHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -4008,7 +4008,7 @@ class ModifyHealthCheckPolicyRequest(AbstractModel):
 
     @property
     def HealthCheckPolicy(self):
-        """健康检测策略
+        r"""健康检测策略
         :rtype: :class:`tencentcloud.tke.v20220501.models.HealthCheckPolicy`
         """
         return self._HealthCheckPolicy
@@ -4034,7 +4034,7 @@ class ModifyHealthCheckPolicyRequest(AbstractModel):
 
 
 class ModifyHealthCheckPolicyResponse(AbstractModel):
-    """ModifyHealthCheckPolicy返回参数结构体
+    r"""ModifyHealthCheckPolicy返回参数结构体
 
     """
 
@@ -4047,7 +4047,7 @@ class ModifyHealthCheckPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4062,7 +4062,7 @@ class ModifyHealthCheckPolicyResponse(AbstractModel):
 
 
 class ModifyNodePoolRequest(AbstractModel):
-    """ModifyNodePool请求参数结构体
+    r"""ModifyNodePool请求参数结构体
 
     """
 
@@ -4102,7 +4102,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -4113,7 +4113,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池 ID
+        r"""节点池 ID
         :rtype: str
         """
         return self._NodePoolId
@@ -4124,7 +4124,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        """节点池名称
+        r"""节点池名称
         :rtype: str
         """
         return self._Name
@@ -4135,7 +4135,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """节点  Labels
+        r"""节点  Labels
         :rtype: list of Label
         """
         return self._Labels
@@ -4146,7 +4146,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        """节点污点
+        r"""节点污点
         :rtype: list of Taint
         """
         return self._Taints
@@ -4157,7 +4157,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """节点标签
+        r"""节点标签
         :rtype: list of TagSpecification
         """
         return self._Tags
@@ -4168,7 +4168,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        """是否开启删除保护
+        r"""是否开启删除保护
         :rtype: bool
         """
         return self._DeletionProtection
@@ -4179,7 +4179,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Unschedulable(self):
-        """节点是否不可调度
+        r"""节点是否不可调度
         :rtype: bool
         """
         return self._Unschedulable
@@ -4190,7 +4190,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Native(self):
-        """原生节点池更新参数
+        r"""原生节点池更新参数
         :rtype: :class:`tencentcloud.tke.v20220501.models.UpdateNativeNodePoolParam`
         """
         return self._Native
@@ -4201,7 +4201,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
     @property
     def Annotations(self):
-        """节点 Annotation 列表
+        r"""节点 Annotation 列表
         :rtype: list of Annotation
         """
         return self._Annotations
@@ -4255,7 +4255,7 @@ class ModifyNodePoolRequest(AbstractModel):
 
 
 class ModifyNodePoolResponse(AbstractModel):
-    """ModifyNodePool返回参数结构体
+    r"""ModifyNodePool返回参数结构体
 
     """
 
@@ -4268,7 +4268,7 @@ class ModifyNodePoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4283,7 +4283,7 @@ class ModifyNodePoolResponse(AbstractModel):
 
 
 class NativeNodeInfo(AbstractModel):
-    """节点信息
+    r"""节点信息
 
     """
 
@@ -4398,7 +4398,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineName(self):
-        """节点名称
+        r"""节点名称
         :rtype: str
         """
         return self._MachineName
@@ -4409,7 +4409,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineState(self):
-        """Machine 状态
+        r"""Machine 状态
         :rtype: str
         """
         return self._MachineState
@@ -4420,7 +4420,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """Machine 所在可用区
+        r"""Machine 所在可用区
         :rtype: str
         """
         return self._Zone
@@ -4431,7 +4431,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        r"""节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
         :rtype: str
         """
         return self._InstanceChargeType
@@ -4442,7 +4442,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -4453,7 +4453,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def LoginStatus(self):
-        """Machine 登录状态
+        r"""Machine 登录状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4465,7 +4465,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def IsProtectedFromScaleIn(self):
-        """是否开启缩容保护
+        r"""是否开启缩容保护
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4477,7 +4477,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Machine 名字
+        r"""Machine 名字
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4489,7 +4489,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def CPU(self):
-        """CPU核数，单位：核
+        r"""CPU核数，单位：核
         :rtype: int
         """
         return self._CPU
@@ -4500,7 +4500,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def GPU(self):
-        """GPU核数，单位：核
+        r"""GPU核数，单位：核
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4512,7 +4512,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识
+        r"""自动续费标识
         :rtype: str
         """
         return self._RenewFlag
@@ -4523,7 +4523,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """节点计费模式
+        r"""节点计费模式
         :rtype: str
         """
         return self._PayMode
@@ -4534,7 +4534,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """节点内存容量，单位：`GB`
+        r"""节点内存容量，单位：`GB`
         :rtype: int
         """
         return self._Memory
@@ -4545,7 +4545,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """节点系统盘配置信息
+        r"""节点系统盘配置信息
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -4556,7 +4556,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽相关信息设置
+        r"""公网带宽相关信息设置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4567,7 +4567,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        """机型所属机型族
+        r"""机型所属机型族
         :rtype: str
         """
         return self._InstanceFamily
@@ -4578,7 +4578,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def LanIp(self):
-        """节点内网 IP
+        r"""节点内网 IP
         :rtype: str
         """
         return self._LanIp
@@ -4589,7 +4589,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """机型
+        r"""机型
         :rtype: str
         """
         return self._InstanceType
@@ -4600,7 +4600,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """包年包月节点计费过期时间
+        r"""包年包月节点计费过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4612,7 +4612,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def WanIp(self):
-        """节点外网 IP
+        r"""节点外网 IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4624,7 +4624,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def KeyIds(self):
-        """节点密钥 ID 列表
+        r"""节点密钥 ID 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4636,7 +4636,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def GPUParams(self):
-        """节点GPU相关配置
+        r"""节点GPU相关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.GPUParams`
         """
@@ -4648,7 +4648,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def DataDisks(self):
-        """数据盘列表
+        r"""数据盘列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -4660,7 +4660,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SecurityGroupIDs(self):
-        """安全组列表
+        r"""安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4672,7 +4672,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC 唯一 ID
+        r"""VPC 唯一 ID
         :rtype: str
         """
         return self._VpcId
@@ -4683,7 +4683,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网唯一 ID
+        r"""子网唯一 ID
         :rtype: str
         """
         return self._SubnetId
@@ -4694,7 +4694,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def OsImage(self):
-        """OS的名称
+        r"""OS的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4706,7 +4706,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        """**原生节点的 Machine 类型**
+        r"""**原生节点的 Machine 类型**
 
 - Native 表示 CXM 类型的原生节点
 - NativeCVM 表示 CVM 类型的原生节点
@@ -4720,7 +4720,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """**原生节点对应的实例 ID**
+        r"""**原生节点对应的实例 ID**
 
 - ins-q47ofw6 表示这个实例是一个 CVM 的实例
 - eks-f8mvyaep 表示这个实例是一个 CXM 的实例
@@ -4786,7 +4786,7 @@ class NativeNodeInfo(AbstractModel):
 
 
 class NativeNodePoolInfo(AbstractModel):
-    """原生节点池信息
+    r"""原生节点池信息
 
     """
 
@@ -4869,7 +4869,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Scaling(self):
-        """伸缩配置
+        r"""伸缩配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -4880,7 +4880,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """子网列表
+        r"""子网列表
         :rtype: list of str
         """
         return self._SubnetIds
@@ -4891,7 +4891,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组列表
+        r"""安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4903,7 +4903,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def UpgradeSettings(self):
-        """自动升级配置
+        r"""自动升级配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -4914,7 +4914,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def AutoRepair(self):
-        """是否开启自愈能力
+        r"""是否开启自愈能力
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4926,7 +4926,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点计费类型
+        r"""节点计费类型
         :rtype: str
         """
         return self._InstanceChargeType
@@ -4937,7 +4937,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """包年包月机型计费配置
+        r"""包年包月机型计费配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -4948,7 +4948,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """系统盘配置
+        r"""系统盘配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -4959,7 +4959,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def KeyIds(self):
-        """密钥 ID 列表
+        r"""密钥 ID 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4971,7 +4971,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Management(self):
-        """Machine 系统配置
+        r"""Machine 系统配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -4982,7 +4982,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        """故障自愈规则名称
+        r"""故障自愈规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4994,7 +4994,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def HostNamePattern(self):
-        """原生节点池hostName模式串
+        r"""原生节点池hostName模式串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5006,7 +5006,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def KubeletArgs(self):
-        """kubelet 自定义参数
+        r"""kubelet 自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5018,7 +5018,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """预定义脚本
+        r"""预定义脚本
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -5029,7 +5029,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        """运行时根目录
+        r"""运行时根目录
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -5040,7 +5040,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def EnableAutoscaling(self):
-        """是否开启弹性伸缩
+        r"""是否开启弹性伸缩
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -5051,7 +5051,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """机型列表
+        r"""机型列表
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -5062,7 +5062,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Replicas(self):
-        """期望节点数
+        r"""期望节点数
         :rtype: int
         """
         return self._Replicas
@@ -5073,7 +5073,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def ReadyReplicas(self):
-        """就绪 Machine 个数
+        r"""就绪 Machine 个数
         :rtype: int
         """
         return self._ReadyReplicas
@@ -5084,7 +5084,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """公网带宽设置
+        r"""公网带宽设置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -5095,7 +5095,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def DataDisks(self):
-        """原生节点池数据盘
+        r"""原生节点池数据盘
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -5107,7 +5107,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        """原生节点机型 Native, NativeCVM
+        r"""原生节点机型 Native, NativeCVM
         :rtype: str
         """
         return self._MachineType
@@ -5170,7 +5170,7 @@ class NativeNodePoolInfo(AbstractModel):
 
 
 class NodeCountSummary(AbstractModel):
-    """节点统计列表
+    r"""节点统计列表
 
     """
 
@@ -5188,7 +5188,7 @@ class NodeCountSummary(AbstractModel):
 
     @property
     def ManuallyAdded(self):
-        """手动管理的节点
+        r"""手动管理的节点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManuallyAdded`
         """
@@ -5200,7 +5200,7 @@ class NodeCountSummary(AbstractModel):
 
     @property
     def AutoscalingAdded(self):
-        """自动管理的节点
+        r"""自动管理的节点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.AutoscalingAdded`
         """
@@ -5229,7 +5229,7 @@ class NodeCountSummary(AbstractModel):
 
 
 class NodePool(AbstractModel):
-    """节点池信息
+    r"""节点池信息
 
     """
 
@@ -5297,7 +5297,7 @@ class NodePool(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -5308,7 +5308,7 @@ class NodePool(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池 ID
+        r"""节点池 ID
         :rtype: str
         """
         return self._NodePoolId
@@ -5319,7 +5319,7 @@ class NodePool(AbstractModel):
 
     @property
     def Tags(self):
-        """节点标签
+        r"""节点标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagSpecification
         """
@@ -5331,7 +5331,7 @@ class NodePool(AbstractModel):
 
     @property
     def Taints(self):
-        """节点污点
+        r"""节点污点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Taint
         """
@@ -5343,7 +5343,7 @@ class NodePool(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        """是否开启删除保护
+        r"""是否开启删除保护
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5355,7 +5355,7 @@ class NodePool(AbstractModel):
 
     @property
     def Unschedulable(self):
-        """节点是否不可调度
+        r"""节点是否不可调度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5367,7 +5367,7 @@ class NodePool(AbstractModel):
 
     @property
     def Type(self):
-        """节点池类型
+        r"""节点池类型
         :rtype: str
         """
         return self._Type
@@ -5378,7 +5378,7 @@ class NodePool(AbstractModel):
 
     @property
     def Labels(self):
-        """节点  Labels
+        r"""节点  Labels
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
@@ -5390,7 +5390,7 @@ class NodePool(AbstractModel):
 
     @property
     def LifeState(self):
-        """节点池状态
+        r"""节点池状态
         :rtype: str
         """
         return self._LifeState
@@ -5401,7 +5401,7 @@ class NodePool(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -5412,7 +5412,7 @@ class NodePool(AbstractModel):
 
     @property
     def Name(self):
-        """节点池名称
+        r"""节点池名称
         :rtype: str
         """
         return self._Name
@@ -5423,7 +5423,7 @@ class NodePool(AbstractModel):
 
     @property
     def Native(self):
-        """原生节点池参数
+        r"""原生节点池参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.NativeNodePoolInfo`
         """
@@ -5435,7 +5435,7 @@ class NodePool(AbstractModel):
 
     @property
     def Annotations(self):
-        """节点 Annotation 列表
+        r"""节点 Annotation 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Annotation
         """
@@ -5447,7 +5447,7 @@ class NodePool(AbstractModel):
 
     @property
     def Super(self):
-        """超级节点池参数，在Type等于Super该字段才有值
+        r"""超级节点池参数，在Type等于Super该字段才有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.SuperNodePoolInfo`
         """
@@ -5459,7 +5459,7 @@ class NodePool(AbstractModel):
 
     @property
     def Regular(self):
-        """普通节点池参数，在Type等于Regular该字段才有值
+        r"""普通节点池参数，在Type等于Regular该字段才有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.RegularNodePoolInfo`
         """
@@ -5471,7 +5471,7 @@ class NodePool(AbstractModel):
 
     @property
     def External(self):
-        """第三方节点池参数，在Type等于External该字段才有值
+        r"""第三方节点池参数，在Type等于External该字段才有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.ExternalNodePoolInfo`
         """
@@ -5538,7 +5538,7 @@ class NodePool(AbstractModel):
 
 
 class RebootMachinesRequest(AbstractModel):
-    """RebootMachines请求参数结构体
+    r"""RebootMachines请求参数结构体
 
     """
 
@@ -5560,7 +5560,7 @@ soft：仅软关机默认取值：soft。
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -5571,7 +5571,7 @@ soft：仅软关机默认取值：soft。
 
     @property
     def MachineNames(self):
-        """节点名字列表，一次请求，传入节点数量上限为100个
+        r"""节点名字列表，一次请求，传入节点数量上限为100个
         :rtype: list of str
         """
         return self._MachineNames
@@ -5582,7 +5582,7 @@ soft：仅软关机默认取值：soft。
 
     @property
     def StopType(self):
-        """实例的关闭模式。取值范围：
+        r"""实例的关闭模式。取值范围：
 soft_first：表示在正常关闭失败后进行强制关闭
 hard：直接强制关闭
 soft：仅软关机默认取值：soft。
@@ -5610,7 +5610,7 @@ soft：仅软关机默认取值：soft。
 
 
 class RebootMachinesResponse(AbstractModel):
-    """RebootMachines返回参数结构体
+    r"""RebootMachines返回参数结构体
 
     """
 
@@ -5623,7 +5623,7 @@ class RebootMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5638,7 +5638,7 @@ class RebootMachinesResponse(AbstractModel):
 
 
 class RegularNodeInfo(AbstractModel):
-    """普通节点信息
+    r"""普通节点信息
 
     """
 
@@ -5656,7 +5656,7 @@ class RegularNodeInfo(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        """节点配置
+        r"""节点配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceAdvancedSettings`
         """
@@ -5668,7 +5668,7 @@ class RegularNodeInfo(AbstractModel):
 
     @property
     def AutoscalingGroupId(self):
-        """自动伸缩组ID
+        r"""自动伸缩组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5695,7 +5695,7 @@ class RegularNodeInfo(AbstractModel):
 
 
 class RegularNodePoolInfo(AbstractModel):
-    """普通节点池信息
+    r"""普通节点池信息
 
     """
 
@@ -5738,7 +5738,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
-        """LaunchConfigurationId 配置
+        r"""LaunchConfigurationId 配置
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -5749,7 +5749,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def AutoscalingGroupId(self):
-        """AutoscalingGroupId 分组id
+        r"""AutoscalingGroupId 分组id
         :rtype: str
         """
         return self._AutoscalingGroupId
@@ -5760,7 +5760,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def NodeCountSummary(self):
-        """NodeCountSummary 节点列表
+        r"""NodeCountSummary 节点列表
         :rtype: :class:`tencentcloud.tke.v20220501.models.NodeCountSummary`
         """
         return self._NodeCountSummary
@@ -5771,7 +5771,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def AutoscalingGroupStatus(self):
-        """状态信息
+        r"""状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5783,7 +5783,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def MaxNodesNum(self):
-        """最大节点数量
+        r"""最大节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5795,7 +5795,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def MinNodesNum(self):
-        """最小节点数量
+        r"""最小节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5807,7 +5807,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def DesiredNodesNum(self):
-        """期望的节点数量
+        r"""期望的节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5819,7 +5819,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def NodePoolOs(self):
-        """节点池osName
+        r"""节点池osName
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5831,7 +5831,7 @@ class RegularNodePoolInfo(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        """节点配置
+        r"""节点配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceAdvancedSettings`
         """
@@ -5867,7 +5867,7 @@ class RegularNodePoolInfo(AbstractModel):
 
 
 class RuntimeConfig(AbstractModel):
-    """运行时配置
+    r"""运行时配置
 
     """
 
@@ -5889,7 +5889,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeType(self):
-        """运行时类型
+        r"""运行时类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5901,7 +5901,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        """运行时版本
+        r"""运行时版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5913,7 +5913,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        """运行时根目录
+        r"""运行时根目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5939,7 +5939,7 @@ class RuntimeConfig(AbstractModel):
 
 
 class SetMachineLoginRequest(AbstractModel):
-    """SetMachineLogin请求参数结构体
+    r"""SetMachineLogin请求参数结构体
 
     """
 
@@ -5958,7 +5958,7 @@ class SetMachineLoginRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -5969,7 +5969,7 @@ class SetMachineLoginRequest(AbstractModel):
 
     @property
     def MachineName(self):
-        """节点名称
+        r"""节点名称
         :rtype: str
         """
         return self._MachineName
@@ -5980,7 +5980,7 @@ class SetMachineLoginRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """密钥 ID 列表
+        r"""密钥 ID 列表
         :rtype: list of str
         """
         return self._KeyIds
@@ -6005,7 +6005,7 @@ class SetMachineLoginRequest(AbstractModel):
 
 
 class SetMachineLoginResponse(AbstractModel):
-    """SetMachineLogin返回参数结构体
+    r"""SetMachineLogin返回参数结构体
 
     """
 
@@ -6018,7 +6018,7 @@ class SetMachineLoginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6033,7 +6033,7 @@ class SetMachineLoginResponse(AbstractModel):
 
 
 class SortBy(AbstractModel):
-    """排序信息
+    r"""排序信息
 
     """
 
@@ -6049,7 +6049,7 @@ class SortBy(AbstractModel):
 
     @property
     def FieldName(self):
-        """排序指标
+        r"""排序指标
         :rtype: str
         """
         return self._FieldName
@@ -6060,7 +6060,7 @@ class SortBy(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式
+        r"""排序方式
         :rtype: str
         """
         return self._OrderType
@@ -6084,7 +6084,7 @@ class SortBy(AbstractModel):
 
 
 class StartMachinesRequest(AbstractModel):
-    """StartMachines请求参数结构体
+    r"""StartMachines请求参数结构体
 
     """
 
@@ -6100,7 +6100,7 @@ class StartMachinesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -6111,7 +6111,7 @@ class StartMachinesRequest(AbstractModel):
 
     @property
     def MachineNames(self):
-        """节点名字列表，一次请求，传入节点数量上限为100个
+        r"""节点名字列表，一次请求，传入节点数量上限为100个
         :rtype: list of str
         """
         return self._MachineNames
@@ -6135,7 +6135,7 @@ class StartMachinesRequest(AbstractModel):
 
 
 class StartMachinesResponse(AbstractModel):
-    """StartMachines返回参数结构体
+    r"""StartMachines返回参数结构体
 
     """
 
@@ -6148,7 +6148,7 @@ class StartMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6163,7 +6163,7 @@ class StartMachinesResponse(AbstractModel):
 
 
 class StopMachinesRequest(AbstractModel):
-    """StopMachines请求参数结构体
+    r"""StopMachines请求参数结构体
 
     """
 
@@ -6185,7 +6185,7 @@ soft：仅软关机
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -6196,7 +6196,7 @@ soft：仅软关机
 
     @property
     def MachineNames(self):
-        """节点名字列表，一次请求，传入节点数量上限为100个
+        r"""节点名字列表，一次请求，传入节点数量上限为100个
         :rtype: list of str
         """
         return self._MachineNames
@@ -6207,7 +6207,7 @@ soft：仅软关机
 
     @property
     def StopType(self):
-        """实例的关闭模式。取值范围：
+        r"""实例的关闭模式。取值范围：
 soft_first：表示在正常关闭失败后进行强制关闭
 hard：直接强制关闭
 soft：仅软关机
@@ -6235,7 +6235,7 @@ soft：仅软关机
 
 
 class StopMachinesResponse(AbstractModel):
-    """StopMachines返回参数结构体
+    r"""StopMachines返回参数结构体
 
     """
 
@@ -6248,7 +6248,7 @@ class StopMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6263,7 +6263,7 @@ class StopMachinesResponse(AbstractModel):
 
 
 class SuperNodeInfo(AbstractModel):
-    """超级节点信息
+    r"""超级节点信息
 
     """
 
@@ -6329,7 +6329,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def Name(self):
-        """实例名称
+        r"""实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6341,7 +6341,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费标识
+        r"""自动续费标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6353,7 +6353,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6365,7 +6365,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def CPU(self):
-        """节点的 CPU 规格，单位：核。
+        r"""节点的 CPU 规格，单位：核。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6377,7 +6377,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def UsedCPU(self):
-        """节点上 Pod 的 CPU总和，单位：核。
+        r"""节点上 Pod 的 CPU总和，单位：核。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6389,7 +6389,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """节点的内存规格，单位：Gi。
+        r"""节点的内存规格，单位：Gi。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6401,7 +6401,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def UsedMemory(self):
-        """节点上 Pod 的内存总和，单位：Gi。
+        r"""节点上 Pod 的内存总和，单位：Gi。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6413,7 +6413,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6425,7 +6425,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC 唯一 ID
+        r"""VPC 唯一 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6437,7 +6437,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网唯一 ID
+        r"""子网唯一 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6449,7 +6449,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def ActiveAt(self):
-        """生效时间
+        r"""生效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6461,7 +6461,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def ExpireAt(self):
-        """过期时间
+        r"""过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6473,7 +6473,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def MaxCPUScheduledPod(self):
-        """可调度的单 Pod 最大 CPU 规格
+        r"""可调度的单 Pod 最大 CPU 规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6485,7 +6485,7 @@ class SuperNodeInfo(AbstractModel):
 
     @property
     def InstanceAttribute(self):
-        """实例属性
+        r"""实例属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6522,7 +6522,7 @@ class SuperNodeInfo(AbstractModel):
 
 
 class SuperNodePoolInfo(AbstractModel):
-    """虚拟节点池信息
+    r"""虚拟节点池信息
 
     """
 
@@ -6540,7 +6540,7 @@ class SuperNodePoolInfo(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """子网列表
+        r"""子网列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6552,7 +6552,7 @@ class SuperNodePoolInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组列表
+        r"""安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6577,7 +6577,7 @@ class SuperNodePoolInfo(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签绑定的资源类型，当前支持类型："cluster"
+    r"""标签绑定的资源类型，当前支持类型："cluster"
 
     """
 
@@ -6593,7 +6593,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -6604,7 +6604,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -6628,7 +6628,7 @@ class Tag(AbstractModel):
 
 
 class TagSpecification(AbstractModel):
-    """标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
+    r"""标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 
     """
 
@@ -6648,7 +6648,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
-        """标签绑定的资源类型，当前支持类型：
+        r"""标签绑定的资源类型，当前支持类型：
 1.cluster：集群相关接口，TagSpecification 的 ResourceType 传参为 cluster
 2.machine：节点池相关接口，如：CreateNodePool, DescribeNodePools 等，TagSpecification 的 ResourceType 传参为 machine
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6662,7 +6662,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def Tags(self):
-        """标签对列表
+        r"""标签对列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -6692,7 +6692,7 @@ class TagSpecification(AbstractModel):
 
 
 class Taint(AbstractModel):
-    """kubernetes Taint
+    r"""kubernetes Taint
 
     """
 
@@ -6711,7 +6711,7 @@ class Taint(AbstractModel):
 
     @property
     def Key(self):
-        """Taint的Key
+        r"""Taint的Key
         :rtype: str
         """
         return self._Key
@@ -6722,7 +6722,7 @@ class Taint(AbstractModel):
 
     @property
     def Value(self):
-        """Taint的Value
+        r"""Taint的Value
         :rtype: str
         """
         return self._Value
@@ -6733,7 +6733,7 @@ class Taint(AbstractModel):
 
     @property
     def Effect(self):
-        """Taint的Effect
+        r"""Taint的Effect
         :rtype: str
         """
         return self._Effect
@@ -6758,7 +6758,7 @@ class Taint(AbstractModel):
 
 
 class UpdateNativeNodePoolParam(AbstractModel):
-    """修改原生节点池参数
+    r"""修改原生节点池参数
 
     """
 
@@ -6831,7 +6831,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def Scaling(self):
-        """伸缩配置
+        r"""伸缩配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -6842,7 +6842,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """子网列表
+        r"""子网列表
         :rtype: list of str
         """
         return self._SubnetIds
@@ -6853,7 +6853,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组列表
+        r"""安全组列表
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -6864,7 +6864,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def UpgradeSettings(self):
-        """自动升级配置
+        r"""自动升级配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -6875,7 +6875,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def AutoRepair(self):
-        """是否开启自愈能力
+        r"""是否开启自愈能力
         :rtype: bool
         """
         return self._AutoRepair
@@ -6886,7 +6886,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点计费类型变更
+        r"""节点计费类型变更
 当前仅支持按量计费转包年包月：
 - PREPAID
 
@@ -6900,7 +6900,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """包年包月机型计费配置
+        r"""包年包月机型计费配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -6911,7 +6911,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """系统盘配置
+        r"""系统盘配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -6922,7 +6922,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def Management(self):
-        """Machine 系统配置
+        r"""Machine 系统配置
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -6933,7 +6933,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        """故障自愈规则名称
+        r"""故障自愈规则名称
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -6944,7 +6944,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def HostNamePattern(self):
-        """原生节点池hostName模式串
+        r"""原生节点池hostName模式串
         :rtype: str
         """
         return self._HostNamePattern
@@ -6955,7 +6955,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def KubeletArgs(self):
-        """kubelet 自定义参数
+        r"""kubelet 自定义参数
         :rtype: list of str
         """
         return self._KubeletArgs
@@ -6966,7 +6966,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """预定义脚本
+        r"""预定义脚本
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -6977,7 +6977,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        """运行时根目录
+        r"""运行时根目录
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -6988,7 +6988,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def EnableAutoscaling(self):
-        """是否开启弹性伸缩
+        r"""是否开启弹性伸缩
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -6999,7 +6999,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """机型列表
+        r"""机型列表
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -7010,7 +7010,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def Replicas(self):
-        """期望节点数
+        r"""期望节点数
         :rtype: int
         """
         return self._Replicas
@@ -7021,7 +7021,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def DataDisks(self):
-        """数据盘列表
+        r"""数据盘列表
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -7032,7 +7032,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def KeyIds(self):
-        """ssh公钥id数组
+        r"""ssh公钥id数组
         :rtype: list of str
         """
         return self._KeyIds
@@ -7043,7 +7043,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def GPUConfigs(self):
-        """节点池 GPU 配置
+        r"""节点池 GPU 配置
         :rtype: list of GPUConfig
         """
         return self._GPUConfigs

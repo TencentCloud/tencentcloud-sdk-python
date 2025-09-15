@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateImageModerationAsyncTaskRequest(AbstractModel):
-    """CreateImageModerationAsyncTask请求参数结构体
+    r"""CreateImageModerationAsyncTask请求参数结构体
 
     """
 
@@ -56,7 +56,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """接收审核信息回调地址，审核过程中产生的所有结果发送至此地址。
+        r"""接收审核信息回调地址，审核过程中产生的所有结果发送至此地址。
         :rtype: str
         """
         return self._CallbackUrl
@@ -67,7 +67,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        r"""该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :rtype: str
         """
         return self._BizType
@@ -78,7 +78,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        r"""该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :rtype: str
         """
         return self._DataId
@@ -89,7 +89,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        """该字段表示待检测图片文件内容的Base64编码，图片**大小不超过10MB**，建议**分辨率不低于256x256**，否则可能会影响识别效果。<br>备注： **该字段与FileUrl必须选择输入其中一个**。
+        r"""该字段表示待检测图片文件内容的Base64编码，图片**大小不超过10MB**，建议**分辨率不低于256x256**，否则可能会影响识别效果。<br>备注： **该字段与FileUrl必须选择输入其中一个**。
         :rtype: str
         """
         return self._FileContent
@@ -100,7 +100,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """该字段表示待检测图片文件的访问链接，图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式，**大小不超过100MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时；由于网络安全策略，**送审带重定向的链接，可能引起下载失败**，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError。<br>备注：**该字段与FileContent必须选择输入其中一个**。
+        r"""该字段表示待检测图片文件的访问链接，图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式，**大小不超过100MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时；由于网络安全策略，**送审带重定向的链接，可能引起下载失败**，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError。<br>备注：**该字段与FileContent必须选择输入其中一个**。
         :rtype: str
         """
         return self._FileUrl
@@ -111,7 +111,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """**GIF/长图检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测），长图则按照长边：短边取整计算要切割的总图数；默认值为0，此时只会检测GIF的第一帧或对长图不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+        r"""**GIF/长图检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测），长图则按照长边：短边取整计算要切割的总图数；默认值为0，此时只会检测GIF的第一帧或对长图不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
         :rtype: int
         """
         return self._Interval
@@ -122,7 +122,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def MaxFrames(self):
-        """**GIF/长图检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧或对长图不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+        r"""**GIF/长图检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧或对长图不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
         :rtype: int
         """
         return self._MaxFrames
@@ -133,7 +133,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def User(self):
-        """该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+        r"""该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
         :rtype: :class:`tencentcloud.ims.v20201229.models.User`
         """
         return self._User
@@ -144,7 +144,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
     @property
     def Device(self):
-        """该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+        r"""该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
         :rtype: :class:`tencentcloud.ims.v20201229.models.Device`
         """
         return self._Device
@@ -179,7 +179,7 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
 
 
 class CreateImageModerationAsyncTaskResponse(AbstractModel):
-    """CreateImageModerationAsyncTask返回参数结构体
+    r"""CreateImageModerationAsyncTask返回参数结构体
 
     """
 
@@ -195,7 +195,7 @@ class CreateImageModerationAsyncTaskResponse(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段用于返回检测对象对应请求参数中的DataId。
+        r"""该字段用于返回检测对象对应请求参数中的DataId。
         :rtype: str
         """
         return self._DataId
@@ -206,7 +206,7 @@ class CreateImageModerationAsyncTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -222,7 +222,7 @@ class CreateImageModerationAsyncTaskResponse(AbstractModel):
 
 
 class Device(AbstractModel):
-    """用于表示业务用户对应的设备信息
+    r"""用于表示业务用户对应的设备信息
 
     """
 
@@ -257,7 +257,7 @@ class Device(AbstractModel):
 
     @property
     def Ip(self):
-        """该字段表示业务用户对应设备的IP地址，同时**支持IPv4和IPv6**地址的记录；需要与IpType参数配合使用。
+        r"""该字段表示业务用户对应设备的IP地址，同时**支持IPv4和IPv6**地址的记录；需要与IpType参数配合使用。
         :rtype: str
         """
         return self._Ip
@@ -268,7 +268,7 @@ class Device(AbstractModel):
 
     @property
     def Mac(self):
-        """该字段表示业务用户对应的MAC地址，以方便设备识别与管理；其格式与取值与标准MAC地址一致。
+        r"""该字段表示业务用户对应的MAC地址，以方便设备识别与管理；其格式与取值与标准MAC地址一致。
         :rtype: str
         """
         return self._Mac
@@ -279,7 +279,7 @@ class Device(AbstractModel):
 
     @property
     def TokenId(self):
-        """*内测中，敬请期待。*
+        r"""*内测中，敬请期待。*
         :rtype: str
         """
         return self._TokenId
@@ -290,7 +290,7 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
-        """*内测中，敬请期待。*
+        r"""*内测中，敬请期待。*
         :rtype: str
         """
         return self._DeviceId
@@ -301,7 +301,7 @@ class Device(AbstractModel):
 
     @property
     def IMEI(self):
-        """该字段表示业务用户对应设备的**IMEI码**（国际移动设备识别码），该识别码可用于识别每一部独立的手机等移动通信设备，方便设备识别与管理。<br>备注：格式为**15-17位纯数字**。
+        r"""该字段表示业务用户对应设备的**IMEI码**（国际移动设备识别码），该识别码可用于识别每一部独立的手机等移动通信设备，方便设备识别与管理。<br>备注：格式为**15-17位纯数字**。
         :rtype: str
         """
         return self._IMEI
@@ -312,7 +312,7 @@ class Device(AbstractModel):
 
     @property
     def IDFA(self):
-        """**iOS设备专用**，该字段表示业务用户对应的**IDFA**(广告标识符),这是由苹果公司提供的用于标识用户的广告标识符，由一串16进制的32位数字和字母组成。<br>
+        r"""**iOS设备专用**，该字段表示业务用户对应的**IDFA**(广告标识符),这是由苹果公司提供的用于标识用户的广告标识符，由一串16进制的32位数字和字母组成。<br>
 备注：苹果公司自2021年iOS14更新后允许用户手动关闭或者开启IDFA，故此字符串标记有效性可能有所降低。
         :rtype: str
         """
@@ -324,7 +324,7 @@ class Device(AbstractModel):
 
     @property
     def IDFV(self):
-        """**iOS设备专用**，该字段表示业务用户对应的**IDFV**(应用开发商标识符),这是由苹果公司提供的用于标注应用开发商的标识符，由一串16进制的32位数字和字母组成，可被用于唯一标识设备。
+        r"""**iOS设备专用**，该字段表示业务用户对应的**IDFV**(应用开发商标识符),这是由苹果公司提供的用于标注应用开发商的标识符，由一串16进制的32位数字和字母组成，可被用于唯一标识设备。
         :rtype: str
         """
         return self._IDFV
@@ -335,7 +335,7 @@ class Device(AbstractModel):
 
     @property
     def IpType(self):
-        """该字段表示记录的IP地址的类型，取值：**0**（代表IPv4地址）、**1**（代表IPv6地址）；需要与IpType参数配合使用。
+        r"""该字段表示记录的IP地址的类型，取值：**0**（代表IPv4地址）、**1**（代表IPv6地址）；需要与IpType参数配合使用。
         :rtype: int
         """
         return self._IpType
@@ -365,7 +365,7 @@ class Device(AbstractModel):
 
 
 class ImageModerationRequest(AbstractModel):
-    """ImageModeration请求参数结构体
+    r"""ImageModeration请求参数结构体
 
     """
 
@@ -403,7 +403,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
+        r"""该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :rtype: str
         """
@@ -415,7 +415,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        r"""该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :rtype: str
         """
         return self._DataId
@@ -426,7 +426,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        """该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的**Base64编码内容大小不得超过10MB**。<br/>备注：**该字段与FileUrl必须选择输入其中一个**。
+        r"""该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的**Base64编码内容大小不得超过10MB**。<br/>备注：**该字段与FileUrl必须选择输入其中一个**。
         :rtype: str
         """
         return self._FileContent
@@ -437,7 +437,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """该字段表示待检测图片文件的访问链接，URL源图**大小不超过30MB**。<br />备注：该字段与FileContent必须选择输入其中一个。
+        r"""该字段表示待检测图片文件的访问链接，URL源图**大小不超过30MB**。<br />备注：该字段与FileContent必须选择输入其中一个。
         :rtype: str
         """
         return self._FileUrl
@@ -448,7 +448,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """**GIF检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+        r"""**GIF检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
         :rtype: int
         """
         return self._Interval
@@ -459,7 +459,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def MaxFrames(self):
-        """**GIF检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+        r"""**GIF检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
         :rtype: int
         """
         return self._MaxFrames
@@ -470,7 +470,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        """该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+        r"""该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
         :rtype: :class:`tencentcloud.ims.v20201229.models.User`
         """
         return self._User
@@ -481,7 +481,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        """该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+        r"""该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
         :rtype: :class:`tencentcloud.ims.v20201229.models.Device`
         """
         return self._Device
@@ -492,7 +492,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
+        r"""该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
         :rtype: str
         """
         return self._Type
@@ -527,7 +527,7 @@ class ImageModerationRequest(AbstractModel):
 
 
 class ImageModerationResponse(AbstractModel):
-    """ImageModeration返回参数结构体
+    r"""ImageModeration返回参数结构体
 
     """
 
@@ -583,7 +583,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -594,7 +594,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值标签示例：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或[提交工单](https://console.cloud.tencent.com/workorder/category)进行咨询）。
+        r"""该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值标签示例：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或[提交工单](https://console.cloud.tencent.com/workorder/category)进行咨询）。
         :rtype: str
         """
         return self._Label
@@ -605,7 +605,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：*色情--性行为*；若未命中任何子标签则返回空字符串。
+        r"""该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：*色情--性行为*；若未命中任何子标签则返回空字符串。
         :rtype: str
         """
         return self._SubLabel
@@ -616,7 +616,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
+        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -627,7 +627,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def LabelResults(self):
-        """该字段用于返回分类检测模型的详细检测结果；表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。详细返回值信息可参阅对应的数据结构（LabelResults）描述。
+        r"""该字段用于返回分类检测模型的详细检测结果；表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。详细返回值信息可参阅对应的数据结构（LabelResults）描述。
 
 返回值标签示例：Normal:正常，Porn:色情，Abuse:谩骂，Ad:广告（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或[提交工单](https://console.cloud.tencent.com/workorder/category)进行咨询）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -641,7 +641,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def ObjectResults(self):
-        """该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。
+        r"""该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。
         :rtype: list of ObjectResult
         """
         return self._ObjectResults
@@ -652,7 +652,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def OcrResults(self):
-        """该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。
+        r"""该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。
         :rtype: list of OcrResult
         """
         return self._OcrResults
@@ -663,7 +663,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def LibResults(self):
-        """该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前**暂不支持自定义库**。
+        r"""该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前**暂不支持自定义库**。
         :rtype: list of LibResult
         """
         return self._LibResults
@@ -674,7 +674,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段用于返回检测对象对应请求参数中的DataId。
+        r"""该字段用于返回检测对象对应请求参数中的DataId。
         :rtype: str
         """
         return self._DataId
@@ -685,7 +685,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于返回检测对象对应请求参数中的BizType。
+        r"""该字段用于返回检测对象对应请求参数中的BizType。
         :rtype: str
         """
         return self._BizType
@@ -696,7 +696,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
-        """该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        r"""该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -708,7 +708,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def FileMD5(self):
-        """该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
+        r"""该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
         :rtype: str
         """
         return self._FileMD5
@@ -719,7 +719,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def RecognitionResults(self):
-        """该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+        r"""该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -730,7 +730,7 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -783,7 +783,7 @@ class ImageModerationResponse(AbstractModel):
 
 
 class LabelDetailItem(AbstractModel):
-    """用于返回分类模型命中子标签的详细结果
+    r"""用于返回分类模型命中子标签的详细结果
 
     """
 
@@ -802,7 +802,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Id(self):
-        """该字段用于返回识别对象的ID以方便识别和区分。
+        r"""该字段用于返回识别对象的ID以方便识别和区分。
         :rtype: int
         """
         return self._Id
@@ -813,7 +813,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Name(self):
-        """该字段用于返回时命中的子标签名称。
+        r"""该字段用于返回时命中的子标签名称。
         :rtype: str
         """
         return self._Name
@@ -824,7 +824,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回对应子标签命中的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
+        r"""该字段用于返回对应子标签命中的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
         :rtype: int
         """
         return self._Score
@@ -849,7 +849,7 @@ class LabelDetailItem(AbstractModel):
 
 
 class LabelResult(AbstractModel):
-    """分类模型命中结果
+    r"""分类模型命中结果
 
     """
 
@@ -877,7 +877,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Scene(self):
-        """该字段用于返回模型识别出的场景结果，如广告、色情、有害内容等场景。
+        r"""该字段用于返回模型识别出的场景结果，如广告、色情、有害内容等场景。
         :rtype: str
         """
         return self._Scene
@@ -888,7 +888,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -899,7 +899,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -910,7 +910,7 @@ class LabelResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回对应恶意标签下的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
+        r"""该字段用于返回对应恶意标签下的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
         :rtype: str
         """
         return self._SubLabel
@@ -921,7 +921,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
+        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -932,7 +932,7 @@ class LabelResult(AbstractModel):
 
     @property
     def Details(self):
-        """该字段用于返回分类模型命中子标签的详细信息，如：序号、命中标签名称、分数等信息。
+        r"""该字段用于返回分类模型命中子标签的详细信息，如：序号、命中标签名称、分数等信息。
         :rtype: list of LabelDetailItem
         """
         return self._Details
@@ -965,7 +965,7 @@ class LabelResult(AbstractModel):
 
 
 class LibDetail(AbstractModel):
-    """用于返回自定义库/黑白库的明细信息
+    r"""用于返回自定义库/黑白库的明细信息
 
     """
 
@@ -996,7 +996,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Id(self):
-        """该字段用于返回识别对象的ID以方便识别和区分。
+        r"""该字段用于返回识别对象的ID以方便识别和区分。
         :rtype: int
         """
         return self._Id
@@ -1007,7 +1007,7 @@ class LibDetail(AbstractModel):
 
     @property
     def LibId(self):
-        """该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+        r"""该字段用于返回自定义库的ID，以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibId
@@ -1018,7 +1018,7 @@ class LibDetail(AbstractModel):
 
     @property
     def LibName(self):
-        """该字段用于返回自定义库的名称,以方便自定义库管理和配置。
+        r"""该字段用于返回自定义库的名称,以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibName
@@ -1029,7 +1029,7 @@ class LibDetail(AbstractModel):
 
     @property
     def ImageId(self):
-        """该字段用于返回识别图像对象的ID以方便文件管理。
+        r"""该字段用于返回识别图像对象的ID以方便文件管理。
         :rtype: str
         """
         return self._ImageId
@@ -1040,7 +1040,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -1051,7 +1051,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Tag(self):
-        """该字段用于返回其他自定义标签以满足您的定制化场景需求，若无需求则可略过。
+        r"""该字段用于返回其他自定义标签以满足您的定制化场景需求，若无需求则可略过。
         :rtype: str
         """
         return self._Tag
@@ -1062,7 +1062,7 @@ class LibDetail(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回对应模型命中的分值，取值为**0-100**，如：*Porn 99* 则代表相应识别内容命中色情标签的分值为99。
+        r"""该字段用于返回对应模型命中的分值，取值为**0-100**，如：*Porn 99* 则代表相应识别内容命中色情标签的分值为99。
         :rtype: int
         """
         return self._Score
@@ -1091,7 +1091,7 @@ class LibDetail(AbstractModel):
 
 
 class LibResult(AbstractModel):
-    """用于返回黑白库比对结果的详细信息
+    r"""用于返回黑白库比对结果的详细信息
 
     """
 
@@ -1120,7 +1120,7 @@ class LibResult(AbstractModel):
 
     @property
     def Scene(self):
-        """该字段表示模型的场景识别结果，默认取值为Similar。
+        r"""该字段表示模型的场景识别结果，默认取值为Similar。
         :rtype: str
         """
         return self._Scene
@@ -1131,7 +1131,7 @@ class LibResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -1142,7 +1142,7 @@ class LibResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -1153,7 +1153,7 @@ class LibResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
+        r"""该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1165,7 +1165,7 @@ class LibResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回图片检索模型识别的分值，取值为**0-100**，表示该审核图片**与库中样本的相似分值**，得分越高，代表当前内容越有可能命中相似图库内的样本。
+        r"""该字段用于返回图片检索模型识别的分值，取值为**0-100**，表示该审核图片**与库中样本的相似分值**，得分越高，代表当前内容越有可能命中相似图库内的样本。
         :rtype: int
         """
         return self._Score
@@ -1176,7 +1176,7 @@ class LibResult(AbstractModel):
 
     @property
     def Details(self):
-        """该字段用于返回黑白库比对结果的详细信息，如：序号、库名称、恶意标签等信息；详细返回信息敬请参考对应数据结构（[LibDetail](https://cloud.tencent.com/document/product/1125/53274#LibDetail)）的描述文档
+        r"""该字段用于返回黑白库比对结果的详细信息，如：序号、库名称、恶意标签等信息；详细返回信息敬请参考对应数据结构（[LibDetail](https://cloud.tencent.com/document/product/1125/53274#LibDetail)）的描述文档
         :rtype: list of LibDetail
         """
         return self._Details
@@ -1209,7 +1209,7 @@ class LibResult(AbstractModel):
 
 
 class Location(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -1234,7 +1234,7 @@ class Location(AbstractModel):
 
     @property
     def X(self):
-        """该参数用于返回检测框**左上角位置的横坐标**（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
+        r"""该参数用于返回检测框**左上角位置的横坐标**（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
         :rtype: float
         """
         return self._X
@@ -1245,7 +1245,7 @@ class Location(AbstractModel):
 
     @property
     def Y(self):
-        """该参数用于返回检测框**左上角位置的纵坐标**（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
+        r"""该参数用于返回检测框**左上角位置的纵坐标**（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
         :rtype: float
         """
         return self._Y
@@ -1256,7 +1256,7 @@ class Location(AbstractModel):
 
     @property
     def Width(self):
-        """该参数用于返回**检测框的宽度**（由左上角出发在x轴向右延伸的长度），结合剩余参数可唯一确定检测框的大小和位置。
+        r"""该参数用于返回**检测框的宽度**（由左上角出发在x轴向右延伸的长度），结合剩余参数可唯一确定检测框的大小和位置。
         :rtype: float
         """
         return self._Width
@@ -1267,7 +1267,7 @@ class Location(AbstractModel):
 
     @property
     def Height(self):
-        """该参数用于返回**检测框的高度**（由左上角出发在y轴向下延伸的长度），结合剩余参数可唯一确定检测框的大小和位置。
+        r"""该参数用于返回**检测框的高度**（由左上角出发在y轴向下延伸的长度），结合剩余参数可唯一确定检测框的大小和位置。
         :rtype: float
         """
         return self._Height
@@ -1278,7 +1278,7 @@ class Location(AbstractModel):
 
     @property
     def Rotate(self):
-        """该参数用于返回**检测框的旋转角度**，该参数结合X和Y两个坐标参数可唯一确定检测框的具体位置；取值：**0-360**（**角度制**），方向为**逆时针旋转**。
+        r"""该参数用于返回**检测框的旋转角度**，该参数结合X和Y两个坐标参数可唯一确定检测框的具体位置；取值：**0-360**（**角度制**），方向为**逆时针旋转**。
         :rtype: float
         """
         return self._Rotate
@@ -1305,7 +1305,7 @@ class Location(AbstractModel):
 
 
 class ObjectDetail(AbstractModel):
-    """实体检测结果明细，当检测场景为实体、广告台标、二维码时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
+    r"""实体检测结果明细，当检测场景为实体、广告台标、二维码时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
 
     """
 
@@ -1336,7 +1336,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Id(self):
-        """该参数用于返回识别对象的ID以方便识别和区分。
+        r"""该参数用于返回识别对象的ID以方便识别和区分。
         :rtype: int
         """
         return self._Id
@@ -1347,7 +1347,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Name(self):
-        """该参数用于返回命中的实体标签。
+        r"""该参数用于返回命中的实体标签。
         :rtype: str
         """
         return self._Name
@@ -1358,7 +1358,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Value(self):
-        """该参数用于返回对应实体标签所对应的值或内容。如：当标签为*二维码(QrCode)*时，该字段为识别出的二维码对应的URL地址。
+        r"""该参数用于返回对应实体标签所对应的值或内容。如：当标签为*二维码(QrCode)*时，该字段为识别出的二维码对应的URL地址。
         :rtype: str
         """
         return self._Value
@@ -1369,7 +1369,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Score(self):
-        """该参数用于返回对应实体标签命中的分值，取值为**0-100**，如：*QrCode 99* 则代表相应识别内容命中二维码场景标签的概率非常高。
+        r"""该参数用于返回对应实体标签命中的分值，取值为**0-100**，如：*QrCode 99* 则代表相应识别内容命中二维码场景标签的概率非常高。
         :rtype: int
         """
         return self._Score
@@ -1380,7 +1380,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Location(self):
-        """该字段用于返回实体检测框的坐标位置（左上角xy坐标、长宽、旋转角度）以方便快速定位实体的相关信息。
+        r"""该字段用于返回实体检测框的坐标位置（左上角xy坐标、长宽、旋转角度）以方便快速定位实体的相关信息。
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location
@@ -1391,7 +1391,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该参数用于返回命中的实体二级标签。
+        r"""该参数用于返回命中的实体二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -1402,7 +1402,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def ObjectId(self):
-        """该参数用于返回命中的人脸id
+        r"""该参数用于返回命中的人脸id
         :rtype: str
         """
         return self._ObjectId
@@ -1433,7 +1433,7 @@ class ObjectDetail(AbstractModel):
 
 
 class ObjectResult(AbstractModel):
-    """用于返回实体检测结果详情
+    r"""用于返回实体检测结果详情
 
     """
 
@@ -1465,7 +1465,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Scene(self):
-        """该字段用于返回实体识别出的实体场景结果，如二维码、logo、图片OCR等场景。
+        r"""该字段用于返回实体识别出的实体场景结果，如二维码、logo、图片OCR等场景。
         :rtype: str
         """
         return self._Scene
@@ -1476,7 +1476,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -1487,7 +1487,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -1498,7 +1498,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior* 等子标签。
+        r"""该字段用于返回当前恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior* 等子标签。
         :rtype: str
         """
         return self._SubLabel
@@ -1509,7 +1509,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回命中当前恶意标签下子标签的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
+        r"""该字段用于返回命中当前恶意标签下子标签的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
         :rtype: int
         """
         return self._Score
@@ -1520,7 +1520,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Names(self):
-        """该标签用于返回所识别出的实体名称。
+        r"""该标签用于返回所识别出的实体名称。
         :rtype: list of str
         """
         return self._Names
@@ -1531,7 +1531,7 @@ class ObjectResult(AbstractModel):
 
     @property
     def Details(self):
-        """该标签用于返回所识别出实体的详细信息，如：序号、命中标签名称、位置坐标等信息，详细返回内容敬请参考相应数据结构（[ObjectDetail
+        r"""该标签用于返回所识别出实体的详细信息，如：序号、命中标签名称、位置坐标等信息，详细返回内容敬请参考相应数据结构（[ObjectDetail
 ](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)）。
         :rtype: list of ObjectDetail
         """
@@ -1566,7 +1566,7 @@ class ObjectResult(AbstractModel):
 
 
 class OcrHitInfo(AbstractModel):
-    """ocr关键词命中位置信息
+    r"""ocr关键词命中位置信息
 
     """
 
@@ -1588,7 +1588,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def Type(self):
-        """标识模型命中还是关键词命中
+        r"""标识模型命中还是关键词命中
         :rtype: str
         """
         return self._Type
@@ -1599,7 +1599,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def Keyword(self):
-        """命中关键词
+        r"""命中关键词
         :rtype: str
         """
         return self._Keyword
@@ -1610,7 +1610,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def LibName(self):
-        """自定义词库名称
+        r"""自定义词库名称
         :rtype: str
         """
         return self._LibName
@@ -1621,7 +1621,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def Positions(self):
-        """位置信息
+        r"""位置信息
         :rtype: list of Positions
         """
         return self._Positions
@@ -1652,7 +1652,7 @@ class OcrHitInfo(AbstractModel):
 
 
 class OcrResult(AbstractModel):
-    """用于返回OCR结果检测详情
+    r"""用于返回OCR结果检测详情
 
     """
 
@@ -1683,7 +1683,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Scene(self):
-        """该字段表示识别场景，取值默认为OCR（图片OCR识别）。
+        r"""该字段表示识别场景，取值默认为OCR（图片OCR识别）。
         :rtype: str
         """
         return self._Scene
@@ -1694,7 +1694,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回优先级最高的恶意标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回优先级最高的恶意标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -1705,7 +1705,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回OCR检测结果所对应的优先级最高的恶意标签，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回OCR检测结果所对应的优先级最高的恶意标签，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -1716,7 +1716,7 @@ class OcrResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Label）下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
+        r"""该字段用于返回当前标签（Label）下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
         :rtype: str
         """
         return self._SubLabel
@@ -1727,7 +1727,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -1738,7 +1738,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Details(self):
-        """该字段用于返回OCR识别出的结果的详细内容，如：文本内容、对应标签、识别框位置等信息。
+        r"""该字段用于返回OCR识别出的结果的详细内容，如：文本内容、对应标签、识别框位置等信息。
         :rtype: list of OcrTextDetail
         """
         return self._Details
@@ -1749,7 +1749,7 @@ class OcrResult(AbstractModel):
 
     @property
     def Text(self):
-        """该字段用于返回OCR识别出的文字信息。
+        r"""该字段用于返回OCR识别出的文字信息。
         :rtype: str
         """
         return self._Text
@@ -1783,7 +1783,7 @@ class OcrResult(AbstractModel):
 
 
 class OcrTextDetail(AbstractModel):
-    """用于返回OCR文本结果详情，图片中的文本越多，可能导致接口返回时间增加。
+    r"""用于返回OCR文本结果详情，图片中的文本越多，可能导致接口返回时间增加。
 
     """
 
@@ -1823,7 +1823,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Text(self):
-        """该字段用于返回OCR识别出的文本内容。<br>备注：OCR文本识别上限在**5000字节内**。
+        r"""该字段用于返回OCR识别出的文本内容。<br>备注：OCR文本识别上限在**5000字节内**。
         :rtype: str
         """
         return self._Text
@@ -1834,7 +1834,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -1845,7 +1845,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibId(self):
-        """该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+        r"""该字段用于返回自定义库的ID，以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibId
@@ -1856,7 +1856,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibName(self):
-        """该字段用于返回自定义库的名称，以方便自定义库管理和配置。
+        r"""该字段用于返回自定义库的名称，以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibName
@@ -1867,7 +1867,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Keywords(self):
-        """该参数用于返回在当前label下命中的关键词。
+        r"""该参数用于返回在当前label下命中的关键词。
         :rtype: list of str
         """
         return self._Keywords
@@ -1878,7 +1878,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Score(self):
-        """该参数用于返回在当前恶意标签下模型命中的分值，取值为**0-100**；分数越高，代表当前场景越符合该恶意标签所对应的场景。
+        r"""该参数用于返回在当前恶意标签下模型命中的分值，取值为**0-100**；分数越高，代表当前场景越符合该恶意标签所对应的场景。
         :rtype: int
         """
         return self._Score
@@ -1889,7 +1889,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Location(self):
-        """该参数用于返回OCR检测框在图片中的位置（左上角xy坐标、长宽、旋转角度），以方便快速定位识别文字的相关信息。
+        r"""该参数用于返回OCR检测框在图片中的位置（左上角xy坐标、长宽、旋转角度），以方便快速定位识别文字的相关信息。
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location
@@ -1900,7 +1900,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Rate(self):
-        """该参数用于返回OCR文本识别结果的置信度，取值在**0**（**置信度最低**）-**100**（**置信度最高**），越高代表对应图像越有可能是识别出的文字；如：*你好 99*，则表明OCR识别框内的文字大概率是”你好“。
+        r"""该参数用于返回OCR文本识别结果的置信度，取值在**0**（**置信度最低**）-**100**（**置信度最高**），越高代表对应图像越有可能是识别出的文字；如：*你好 99*，则表明OCR识别框内的文字大概率是”你好“。
         :rtype: int
         """
         return self._Rate
@@ -1911,7 +1911,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回检测结果所对应的恶意二级标签。
+        r"""该字段用于返回检测结果所对应的恶意二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -1922,7 +1922,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def HitInfos(self):
-        """关键词命中位置信息
+        r"""关键词命中位置信息
         :rtype: list of OcrHitInfo
         """
         return self._HitInfos
@@ -1961,7 +1961,7 @@ class OcrTextDetail(AbstractModel):
 
 
 class Positions(AbstractModel):
-    """标识命中的违规关键词位置信息
+    r"""标识命中的违规关键词位置信息
 
     """
 
@@ -1977,7 +1977,7 @@ class Positions(AbstractModel):
 
     @property
     def Start(self):
-        """关键词起始位置
+        r"""关键词起始位置
         :rtype: int
         """
         return self._Start
@@ -1988,7 +1988,7 @@ class Positions(AbstractModel):
 
     @property
     def End(self):
-        """关键词结束位置
+        r"""关键词结束位置
         :rtype: int
         """
         return self._End
@@ -2012,7 +2012,7 @@ class Positions(AbstractModel):
 
 
 class RecognitionResult(AbstractModel):
-    """识别类型标签结果信息
+    r"""识别类型标签结果信息
 
     """
 
@@ -2028,7 +2028,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Label(self):
-        """当前可能的取值：Scene（图片场景模型）
+        r"""当前可能的取值：Scene（图片场景模型）
         :rtype: str
         """
         return self._Label
@@ -2039,7 +2039,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Tags(self):
-        """Label对应模型下的识别标签信息
+        r"""Label对应模型下的识别标签信息
         :rtype: list of RecognitionTag
         """
         return self._Tags
@@ -2068,7 +2068,7 @@ class RecognitionResult(AbstractModel):
 
 
 class RecognitionTag(AbstractModel):
-    """识别类型标签信息
+    r"""识别类型标签信息
 
     """
 
@@ -2087,7 +2087,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Name
@@ -2098,7 +2098,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Score(self):
-        """置信分：0～100，数值越大表示置信度越高
+        r"""置信分：0～100，数值越大表示置信度越高
         :rtype: int
         """
         return self._Score
@@ -2109,7 +2109,7 @@ class RecognitionTag(AbstractModel):
 
     @property
     def Location(self):
-        """标签位置信息，若模型无位置信息，则可能为零值
+        r"""标签位置信息，若模型无位置信息，则可能为零值
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location
@@ -2136,7 +2136,7 @@ class RecognitionTag(AbstractModel):
 
 
 class User(AbstractModel):
-    """用于表示业务用户的账号相关信息
+    r"""用于表示业务用户的账号相关信息
 
     """
 
@@ -2179,7 +2179,7 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
-        """该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
+        r"""该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
 备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
         :rtype: str
         """
@@ -2191,7 +2191,7 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
-        """该字段表示业务用户对应的账号昵称信息。
+        r"""该字段表示业务用户对应的账号昵称信息。
         :rtype: str
         """
         return self._Nickname
@@ -2202,7 +2202,7 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
-        """该字段表示业务用户ID对应的账号类型，取值：**1**-微信uin，**2**-QQ号，**3**-微信群uin，**4**-qq群号，**5**-微信openid，**6**-QQopenid，**7**-其它string。<br>
+        r"""该字段表示业务用户ID对应的账号类型，取值：**1**-微信uin，**2**-QQ号，**3**-微信群uin，**4**-qq群号，**5**-微信openid，**6**-QQopenid，**7**-其它string。<br>
 该字段与账号ID参数（UserId）配合使用可确定唯一账号。
         :rtype: str
         """
@@ -2214,7 +2214,7 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
-        """该字段表示业务用户对应账号的性别信息。<br>
+        r"""该字段表示业务用户对应账号的性别信息。<br>
 取值：**0**（默认值，代表性别未知）、**1**（男性）、**2**（女性）。
         :rtype: int
         """
@@ -2226,7 +2226,7 @@ class User(AbstractModel):
 
     @property
     def Age(self):
-        """该字段表示业务用户对应账号的年龄信息。<br>
+        r"""该字段表示业务用户对应账号的年龄信息。<br>
 取值：**0**（默认值，代表年龄未知）-（**自定义年龄上限**）之间的整数。
         :rtype: int
         """
@@ -2238,7 +2238,7 @@ class User(AbstractModel):
 
     @property
     def Level(self):
-        """该字段表示业务用户对应账号的等级信息。<br>
+        r"""该字段表示业务用户对应账号的等级信息。<br>
 取值：**0**（默认值，代表等级未知）、**1**（等级较低）、**2**（等级中等）、**3**（等级较高），目前**暂不支持自定义等级**。
         :rtype: int
         """
@@ -2250,7 +2250,7 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
-        """该字段表示业务用户对应账号的手机号信息，支持全球各地区手机号的记录。<br>
+        r"""该字段表示业务用户对应账号的手机号信息，支持全球各地区手机号的记录。<br>
 备注：请保持手机号格式的统一，如区号格式（086/+86）等。
         :rtype: str
         """
@@ -2262,7 +2262,7 @@ class User(AbstractModel):
 
     @property
     def Desc(self):
-        """该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，**长度不超过5000个汉字字符**。
+        r"""该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，**长度不超过5000个汉字字符**。
         :rtype: str
         """
         return self._Desc
@@ -2273,7 +2273,7 @@ class User(AbstractModel):
 
     @property
     def HeadUrl(self):
-        """该字段表示业务用户头像图片的访问链接(URL)，支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。<br>备注：头像图片**大小不超过5MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时。
+        r"""该字段表示业务用户头像图片的访问链接(URL)，支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。<br>备注：头像图片**大小不超过5MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时。
         :rtype: str
         """
         return self._HeadUrl

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AssociateSecurityGroupsRequest(AbstractModel):
-    """AssociateSecurityGroups请求参数结构体
+    r"""AssociateSecurityGroups请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """要绑定的安全组 ID，类似sg-efil7***。
+        r"""要绑定的安全组 ID，类似sg-efil7***。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -46,7 +46,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID，格式如：vdb-c1nl9***，支持指定多个实例
+        r"""实例 ID，格式如：vdb-c1nl9***，支持指定多个实例
         :rtype: list of str
         """
         return self._InstanceIds
@@ -70,7 +70,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
 
 class AssociateSecurityGroupsResponse(AbstractModel):
-    """AssociateSecurityGroups返回参数结构体
+    r"""AssociateSecurityGroups返回参数结构体
 
     """
 
@@ -83,7 +83,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -98,7 +98,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
 
 class CreateInstanceRequest(AbstractModel):
-    """CreateInstance请求参数结构体
+    r"""CreateInstance请求参数结构体
 
     """
 
@@ -216,7 +216,7 @@ VPC或TCS
 
     @property
     def VpcId(self):
-        """私有网络 ID。
+        r"""私有网络 ID。
         :rtype: str
         """
         return self._VpcId
@@ -227,7 +227,7 @@ VPC或TCS
 
     @property
     def SubnetId(self):
-        """私有网络 VPC 的子网 ID。
+        r"""私有网络 VPC 的子网 ID。
         :rtype: str
         """
         return self._SubnetId
@@ -238,7 +238,7 @@ VPC或TCS
 
     @property
     def PayMode(self):
-        """指定实例计费方式。
+        r"""指定实例计费方式。
 - 0：按量付费。
 - 1：包年包月。
         :rtype: int
@@ -251,7 +251,7 @@ VPC或TCS
 
     @property
     def InstanceName(self):
-        """设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
+        r"""设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
         :rtype: str
         """
         return self._InstanceName
@@ -262,7 +262,7 @@ VPC或TCS
 
     @property
     def SecurityGroupIds(self):
-        """安全组 ID。
+        r"""安全组 ID。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -273,7 +273,7 @@ VPC或TCS
 
     @property
     def PayPeriod(self):
-        """若计费方式为包年包月，指定包年包月续费的时长。
+        r"""若计费方式为包年包月，指定包年包月续费的时长。
 - 单位：月。
 - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
         :rtype: int
@@ -286,7 +286,7 @@ VPC或TCS
 
     @property
     def AutoRenew(self):
-        """若为包年包月计费，需指定是否开启自动续费。
+        r"""若为包年包月计费，需指定是否开启自动续费。
 - 0：不开启自动续费。
 - 1：开启自动续费。
         :rtype: int
@@ -299,7 +299,7 @@ VPC或TCS
 
     @property
     def Params(self):
-        """实例额外参数，通过json提交。
+        r"""实例额外参数，通过json提交。
         :rtype: str
         """
         return self._Params
@@ -310,7 +310,7 @@ VPC或TCS
 
     @property
     def ResourceTags(self):
-        """以数组形式列出标签信息。
+        r"""以数组形式列出标签信息。
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -323,7 +323,7 @@ VPC或TCS
     def Project(self):
         warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
 
-        """指定实例所属项目 ID。
+        r"""指定实例所属项目 ID。
         :rtype: str
         """
         return self._Project
@@ -336,7 +336,7 @@ VPC或TCS
 
     @property
     def ProductType(self):
-        """产品版本，0-标准版，1-容量增强版
+        r"""产品版本，0-标准版，1-容量增强版
         :rtype: int
         """
         return self._ProductType
@@ -347,7 +347,7 @@ VPC或TCS
 
     @property
     def InstanceType(self):
-        """实例类型。
+        r"""实例类型。
 - base：免费测试版。
 - single：单机版。
 - cluster：高可用版。
@@ -361,7 +361,7 @@ VPC或TCS
 
     @property
     def Mode(self):
-        """实例类型为高可用版，需指定可用区选项。
+        r"""实例类型为高可用版，需指定可用区选项。
 - two：两可用区。
 - three：三可用区。
         :rtype: str
@@ -374,7 +374,7 @@ VPC或TCS
 
     @property
     def GoodsNum(self):
-        """购买实例数量。
+        r"""购买实例数量。
         :rtype: int
         """
         return self._GoodsNum
@@ -387,7 +387,7 @@ VPC或TCS
     def NetworkType(self):
         warnings.warn("parameter `NetworkType` is deprecated", DeprecationWarning) 
 
-        """网络类型。
+        r"""网络类型。
 VPC或TCS
         :rtype: str
         """
@@ -403,7 +403,7 @@ VPC或TCS
     def TemplateId(self):
         warnings.warn("parameter `TemplateId` is deprecated", DeprecationWarning) 
 
-        """实例所应用的参数模板 ID。
+        r"""实例所应用的参数模板 ID。
         :rtype: str
         """
         return self._TemplateId
@@ -418,7 +418,7 @@ VPC或TCS
     def Components(self):
         warnings.warn("parameter `Components` is deprecated", DeprecationWarning) 
 
-        """组件具体设置列表。
+        r"""组件具体设置列表。
         :rtype: list of CreateInstancesComponent
         """
         return self._Components
@@ -433,7 +433,7 @@ VPC或TCS
     def Zone(self):
         warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
 
-        """实例类型为高可用版，通过该参数指定主可用区。
+        r"""实例类型为高可用版，通过该参数指定主可用区。
         :rtype: str
         """
         return self._Zone
@@ -448,7 +448,7 @@ VPC或TCS
     def SlaveZones(self):
         warnings.warn("parameter `SlaveZones` is deprecated", DeprecationWarning) 
 
-        """实例类型为高可用版，通过该参数指定备可用区。
+        r"""实例类型为高可用版，通过该参数指定备可用区。
         :rtype: list of str
         """
         return self._SlaveZones
@@ -463,7 +463,7 @@ VPC或TCS
     def IsNoExpired(self):
         warnings.warn("parameter `IsNoExpired` is deprecated", DeprecationWarning) 
 
-        """是否长期有效
+        r"""是否长期有效
         :rtype: bool
         """
         return self._IsNoExpired
@@ -478,7 +478,7 @@ VPC或TCS
     def EngineName(self):
         warnings.warn("parameter `EngineName` is deprecated", DeprecationWarning) 
 
-        """引擎名称，业务自定义。
+        r"""引擎名称，业务自定义。
         :rtype: str
         """
         return self._EngineName
@@ -493,7 +493,7 @@ VPC或TCS
     def EngineVersion(self):
         warnings.warn("parameter `EngineVersion` is deprecated", DeprecationWarning) 
 
-        """引擎版本，业务自定义。
+        r"""引擎版本，业务自定义。
         :rtype: str
         """
         return self._EngineVersion
@@ -508,7 +508,7 @@ VPC或TCS
     def Brief(self):
         warnings.warn("parameter `Brief` is deprecated", DeprecationWarning) 
 
-        """实例描述。
+        r"""实例描述。
         :rtype: str
         """
         return self._Brief
@@ -523,7 +523,7 @@ VPC或TCS
     def Chief(self):
         warnings.warn("parameter `Chief` is deprecated", DeprecationWarning) 
 
-        """负责人信息。
+        r"""负责人信息。
         :rtype: str
         """
         return self._Chief
@@ -538,7 +538,7 @@ VPC或TCS
     def DBA(self):
         warnings.warn("parameter `DBA` is deprecated", DeprecationWarning) 
 
-        """DBA人员信息
+        r"""DBA人员信息
         :rtype: str
         """
         return self._DBA
@@ -553,7 +553,7 @@ VPC或TCS
     def NodeType(self):
         warnings.warn("parameter `NodeType` is deprecated", DeprecationWarning) 
 
-        """指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
 - compute：计费型。
 - normal：标准型。
 - store：存储型。
@@ -569,7 +569,7 @@ VPC或TCS
 
     @property
     def Cpu(self):
-        """指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+        r"""指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
 - 计算型： 1、2、4、8、16、24、32。
 - 标准型： 1、2、4、8、12、16。
 - 存储型： 1、2、4、6、8。
@@ -583,7 +583,7 @@ VPC或TCS
 
     @property
     def Memory(self):
-        """指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
         :rtype: int
         """
         return self._Memory
@@ -594,7 +594,7 @@ VPC或TCS
 
     @property
     def DiskSize(self):
-        """指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
         :rtype: int
         """
         return self._DiskSize
@@ -605,7 +605,7 @@ VPC或TCS
 
     @property
     def WorkerNodeNum(self):
-        """指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
         :rtype: int
         """
         return self._WorkerNodeNum
@@ -667,7 +667,7 @@ VPC或TCS
 
 
 class CreateInstanceResponse(AbstractModel):
-    """CreateInstance返回参数结构体
+    r"""CreateInstance返回参数结构体
 
     """
 
@@ -683,7 +683,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID。
+        r"""实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -694,7 +694,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -710,7 +710,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
 class CreateInstancesComponent(AbstractModel):
-    """组件设置列表
+    r"""组件设置列表
 
     """
 
@@ -744,7 +744,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def Component(self):
-        """底层组件名，需要和产品模型中的保持一致
+        r"""底层组件名，需要和产品模型中的保持一致
         :rtype: str
         """
         return self._Component
@@ -755,7 +755,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def Cpu(self):
-        """组件cpu大小
+        r"""组件cpu大小
         :rtype: float
         """
         return self._Cpu
@@ -766,7 +766,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def Memory(self):
-        """组件内存大小
+        r"""组件内存大小
         :rtype: float
         """
         return self._Memory
@@ -777,7 +777,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        """业务节点数
+        r"""业务节点数
         :rtype: int
         """
         return self._ReplicaNum
@@ -788,7 +788,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def Name(self):
-        """自定义组件名
+        r"""自定义组件名
         :rtype: str
         """
         return self._Name
@@ -799,7 +799,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def StorageSize(self):
-        """组件磁盘大小
+        r"""组件磁盘大小
         :rtype: int
         """
         return self._StorageSize
@@ -810,7 +810,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def StorageType(self):
-        """磁盘类型
+        r"""磁盘类型
         :rtype: str
         """
         return self._StorageType
@@ -821,7 +821,7 @@ class CreateInstancesComponent(AbstractModel):
 
     @property
     def Params(self):
-        """组件额外参数，通过JSON提交
+        r"""组件额外参数，通过JSON提交
         :rtype: str
         """
         return self._Params
@@ -851,7 +851,7 @@ class CreateInstancesComponent(AbstractModel):
 
 
 class DescribeDBSecurityGroupsRequest(AbstractModel):
-    """DescribeDBSecurityGroups请求参数结构体
+    r"""DescribeDBSecurityGroups请求参数结构体
 
     """
 
@@ -864,7 +864,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：vdb-c1nl9***。
+        r"""实例ID，格式如：vdb-c1nl9***。
         :rtype: str
         """
         return self._InstanceId
@@ -887,7 +887,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
 
 class DescribeDBSecurityGroupsResponse(AbstractModel):
-    """DescribeDBSecurityGroups返回参数结构体
+    r"""DescribeDBSecurityGroups返回参数结构体
 
     """
 
@@ -904,7 +904,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
-        """安全组规则。
+        r"""安全组规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityGroup
         """
@@ -916,7 +916,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -937,7 +937,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
 
 class DescribeInstanceMaintenanceWindowRequest(AbstractModel):
-    """DescribeInstanceMaintenanceWindow请求参数结构体
+    r"""DescribeInstanceMaintenanceWindow请求参数结构体
 
     """
 
@@ -950,7 +950,7 @@ class DescribeInstanceMaintenanceWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定查询维护时间窗的具体实例 ID。
+        r"""指定查询维护时间窗的具体实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -973,7 +973,7 @@ class DescribeInstanceMaintenanceWindowRequest(AbstractModel):
 
 
 class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
-    """DescribeInstanceMaintenanceWindow返回参数结构体
+    r"""DescribeInstanceMaintenanceWindow返回参数结构体
 
     """
 
@@ -998,7 +998,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        r"""实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1009,7 +1009,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """维护时间窗开始时间。
+        r"""维护时间窗开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -1020,7 +1020,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """维护时间窗结束时间。
+        r"""维护时间窗结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -1031,7 +1031,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """维护时间窗时长。单位：小时。
+        r"""维护时间窗时长。单位：小时。
         :rtype: float
         """
         return self._TimeSpan
@@ -1042,7 +1042,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1061,7 +1061,7 @@ class DescribeInstanceMaintenanceWindowResponse(AbstractModel):
 
 
 class DescribeInstanceNodesRequest(AbstractModel):
-    """DescribeInstanceNodes请求参数结构体
+    r"""DescribeInstanceNodes请求参数结构体
 
     """
 
@@ -1083,7 +1083,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1094,7 +1094,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """limit
+        r"""limit
         :rtype: int
         """
         return self._Limit
@@ -1105,7 +1105,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """offset
+        r"""offset
         :rtype: int
         """
         return self._Offset
@@ -1116,7 +1116,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Component(self):
-        """component
+        r"""component
         :rtype: str
         """
         return self._Component
@@ -1142,7 +1142,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
 
 class DescribeInstanceNodesResponse(AbstractModel):
-    """DescribeInstanceNodes返回参数结构体
+    r"""DescribeInstanceNodes返回参数结构体
 
     """
 
@@ -1161,7 +1161,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """实例pod列表。
+        r"""实例pod列表。
         :rtype: list of NodeInfo
         """
         return self._Items
@@ -1172,7 +1172,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询结果总数量。
+        r"""查询结果总数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1183,7 +1183,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1205,7 +1205,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
 
 class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances请求参数结构体
+    r"""DescribeInstances请求参数结构体
 
     """
 
@@ -1263,7 +1263,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID数组。
+        r"""实例ID数组。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1274,7 +1274,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        """实例名称，支持模糊搜索。
+        r"""实例名称，支持模糊搜索。
         :rtype: list of str
         """
         return self._InstanceNames
@@ -1285,7 +1285,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceKeys(self):
-        """实例模糊搜索字段。
+        r"""实例模糊搜索字段。
         :rtype: list of str
         """
         return self._InstanceKeys
@@ -1296,7 +1296,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """根据状态获取实例， 为空则获取全部非隔离和非下线的实例。
+        r"""根据状态获取实例， 为空则获取全部非隔离和非下线的实例。
         :rtype: list of str
         """
         return self._Status
@@ -1309,7 +1309,7 @@ class DescribeInstancesRequest(AbstractModel):
     def EngineNames(self):
         warnings.warn("parameter `EngineNames` is deprecated", DeprecationWarning) 
 
-        """按照引擎筛选实例。
+        r"""按照引擎筛选实例。
         :rtype: list of str
         """
         return self._EngineNames
@@ -1322,7 +1322,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def EngineVersions(self):
-        """按照版本筛选实例。
+        r"""按照版本筛选实例。
         :rtype: list of str
         """
         return self._EngineVersions
@@ -1333,7 +1333,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ApiVersions(self):
-        """按照api版本筛选实例
+        r"""按照api版本筛选实例
         :rtype: list of str
         """
         return self._ApiVersions
@@ -1344,7 +1344,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def CreateAt(self):
-        """按照创建时间筛选实例。
+        r"""按照创建时间筛选实例。
         :rtype: str
         """
         return self._CreateAt
@@ -1357,7 +1357,7 @@ class DescribeInstancesRequest(AbstractModel):
     def Zones(self):
         warnings.warn("parameter `Zones` is deprecated", DeprecationWarning) 
 
-        """按照可用区筛选实例。
+        r"""按照可用区筛选实例。
         :rtype: list of str
         """
         return self._Zones
@@ -1370,7 +1370,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段。
+        r"""排序字段。
         :rtype: str
         """
         return self._OrderBy
@@ -1381,7 +1381,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        """排序方式。
+        r"""排序方式。
         :rtype: str
         """
         return self._OrderDirection
@@ -1392,7 +1392,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询开始位置。
+        r"""查询开始位置。
         :rtype: int
         """
         return self._Offset
@@ -1403,7 +1403,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """列表查询数量。
+        r"""列表查询数量。
         :rtype: int
         """
         return self._Limit
@@ -1414,7 +1414,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """按照标签筛选实例
+        r"""按照标签筛选实例
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -1425,7 +1425,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        r"""任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
         :rtype: list of int
         """
         return self._TaskStatus
@@ -1436,7 +1436,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Networks(self):
-        """根据实例vip搜索实例
+        r"""根据实例vip搜索实例
         :rtype: list of str
         """
         return self._Networks
@@ -1479,7 +1479,7 @@ class DescribeInstancesRequest(AbstractModel):
 
 
 class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances返回参数结构体
+    r"""DescribeInstances返回参数结构体
 
     """
 
@@ -1498,7 +1498,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """实例列表。
+        r"""实例列表。
         :rtype: list of InstanceInfo
         """
         return self._Items
@@ -1509,7 +1509,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -1520,7 +1520,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1542,7 +1542,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 
 class DestroyInstancesRequest(AbstractModel):
-    """DestroyInstances请求参数结构体
+    r"""DestroyInstances请求参数结构体
 
     """
 
@@ -1555,7 +1555,7 @@ class DestroyInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """以数组形式指定待销毁下线的实例 ID。
+        r"""以数组形式指定待销毁下线的实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1578,7 +1578,7 @@ class DestroyInstancesRequest(AbstractModel):
 
 
 class DestroyInstancesResponse(AbstractModel):
-    """DestroyInstances返回参数结构体
+    r"""DestroyInstances返回参数结构体
 
     """
 
@@ -1591,7 +1591,7 @@ class DestroyInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1606,7 +1606,7 @@ class DestroyInstancesResponse(AbstractModel):
 
 
 class DisassociateSecurityGroupsRequest(AbstractModel):
-    """DisassociateSecurityGroups请求参数结构体
+    r"""DisassociateSecurityGroups请求参数结构体
 
     """
 
@@ -1622,7 +1622,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """要绑定的安全组 ID，类似sg-efil****。
+        r"""要绑定的安全组 ID，类似sg-efil****。
         :rtype: str
         """
         return self._SecurityGroupIds
@@ -1633,7 +1633,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID，格式如：vdb-c1nl****，支持指定多个实例。
+        r"""实例 ID，格式如：vdb-c1nl****，支持指定多个实例。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1657,7 +1657,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
 
 class DisassociateSecurityGroupsResponse(AbstractModel):
-    """DisassociateSecurityGroups返回参数结构体
+    r"""DisassociateSecurityGroups返回参数结构体
 
     """
 
@@ -1670,7 +1670,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1685,7 +1685,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
 
 class Inbound(AbstractModel):
-    """安全组入站规则
+    r"""安全组入站规则
 
     """
 
@@ -1719,7 +1719,7 @@ class Inbound(AbstractModel):
 
     @property
     def Action(self):
-        """策略，ACCEPT或者DROP。
+        r"""策略，ACCEPT或者DROP。
         :rtype: str
         """
         return self._Action
@@ -1730,7 +1730,7 @@ class Inbound(AbstractModel):
 
     @property
     def AddressModule(self):
-        """地址组id代表的地址集合。
+        r"""地址组id代表的地址集合。
         :rtype: str
         """
         return self._AddressModule
@@ -1741,7 +1741,7 @@ class Inbound(AbstractModel):
 
     @property
     def CidrIp(self):
-        """来源Ip或Ip段，例如192.168.0.0/16。
+        r"""来源Ip或Ip段，例如192.168.0.0/16。
         :rtype: str
         """
         return self._CidrIp
@@ -1752,7 +1752,7 @@ class Inbound(AbstractModel):
 
     @property
     def Desc(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Desc
@@ -1763,7 +1763,7 @@ class Inbound(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """网络协议，支持udp、tcp等。
+        r"""网络协议，支持udp、tcp等。
         :rtype: str
         """
         return self._IpProtocol
@@ -1774,7 +1774,7 @@ class Inbound(AbstractModel):
 
     @property
     def PortRange(self):
-        """端口。
+        r"""端口。
         :rtype: str
         """
         return self._PortRange
@@ -1785,7 +1785,7 @@ class Inbound(AbstractModel):
 
     @property
     def ServiceModule(self):
-        """服务组id代表的协议和端口集合。
+        r"""服务组id代表的协议和端口集合。
         :rtype: str
         """
         return self._ServiceModule
@@ -1796,7 +1796,7 @@ class Inbound(AbstractModel):
 
     @property
     def Id(self):
-        """安全组id代表的地址集合。
+        r"""安全组id代表的地址集合。
         :rtype: str
         """
         return self._Id
@@ -1826,7 +1826,7 @@ class Inbound(AbstractModel):
 
 
 class InstanceInfo(AbstractModel):
-    """实例信息，用于实例列表
+    r"""实例信息，用于实例列表
 
     """
 
@@ -1938,7 +1938,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1949,7 +1949,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """实例自定义名称。
+        r"""实例自定义名称。
         :rtype: str
         """
         return self._Name
@@ -1960,7 +1960,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户APPID。
+        r"""用户APPID。
         :rtype: int
         """
         return self._AppId
@@ -1971,7 +1971,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域。
+        r"""地域。
         :rtype: str
         """
         return self._Region
@@ -1982,7 +1982,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区。
+        r"""可用区。
         :rtype: str
         """
         return self._Zone
@@ -1993,7 +1993,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Product(self):
-        """产品。
+        r"""产品。
         :rtype: str
         """
         return self._Product
@@ -2004,7 +2004,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Networks(self):
-        """网络信息。
+        r"""网络信息。
         :rtype: list of Network
         """
         return self._Networks
@@ -2015,7 +2015,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ShardNum(self):
-        """分片信息。
+        r"""分片信息。
         :rtype: int
         """
         return self._ShardNum
@@ -2026,7 +2026,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        """副本数。
+        r"""副本数。
         :rtype: int
         """
         return self._ReplicaNum
@@ -2037,7 +2037,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        """CPU.
+        r"""CPU.
         :rtype: float
         """
         return self._Cpu
@@ -2048,7 +2048,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """内存。
+        r"""内存。
         :rtype: float
         """
         return self._Memory
@@ -2059,7 +2059,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Disk(self):
-        """磁盘。
+        r"""磁盘。
         :rtype: int
         """
         return self._Disk
@@ -2072,7 +2072,7 @@ class InstanceInfo(AbstractModel):
     def HealthScore(self):
         warnings.warn("parameter `HealthScore` is deprecated", DeprecationWarning) 
 
-        """健康得分。
+        r"""健康得分。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2088,7 +2088,7 @@ class InstanceInfo(AbstractModel):
     def Warning(self):
         warnings.warn("parameter `Warning` is deprecated", DeprecationWarning) 
 
-        """异常告警。
+        r"""异常告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2104,7 +2104,7 @@ class InstanceInfo(AbstractModel):
     def Project(self):
         warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
 
-        """所属项目。
+        r"""所属项目。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2118,7 +2118,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """所属标签。
+        r"""所属标签。
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -2129,7 +2129,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreatedAt
@@ -2140,7 +2140,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """资源状态。
+        r"""资源状态。
         :rtype: str
         """
         return self._Status
@@ -2151,7 +2151,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineName(self):
-        """引擎名称。
+        r"""引擎名称。
         :rtype: str
         """
         return self._EngineName
@@ -2162,7 +2162,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """引擎版本。
+        r"""引擎版本。
         :rtype: str
         """
         return self._EngineVersion
@@ -2173,7 +2173,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ApiVersion(self):
-        """api版本
+        r"""api版本
         :rtype: str
         """
         return self._ApiVersion
@@ -2184,7 +2184,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式。
+        r"""计费模式。
         :rtype: int
         """
         return self._PayMode
@@ -2195,7 +2195,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Extend(self):
-        """差异化扩展信息, json格式。
+        r"""差异化扩展信息, json格式。
         :rtype: str
         """
         return self._Extend
@@ -2206,7 +2206,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ExpiredAt(self):
-        """过期时间。
+        r"""过期时间。
         :rtype: str
         """
         return self._ExpiredAt
@@ -2217,7 +2217,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsNoExpired(self):
-        """是否不过期(永久)。
+        r"""是否不过期(永久)。
         :rtype: bool
         """
         return self._IsNoExpired
@@ -2228,7 +2228,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        """产品版本，0-标准版，1-容量增强版
+        r"""产品版本，0-标准版，1-容量增强版
         :rtype: int
         """
         return self._ProductType
@@ -2239,7 +2239,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -2250,7 +2250,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        """节点类型
+        r"""节点类型
         :rtype: str
         """
         return self._NodeType
@@ -2261,7 +2261,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanAddress(self):
-        """外网地址。
+        r"""外网地址。
         :rtype: str
         """
         return self._WanAddress
@@ -2272,7 +2272,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsolateAt(self):
-        """隔离时间
+        r"""隔离时间
         :rtype: str
         """
         return self._IsolateAt
@@ -2283,7 +2283,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+        r"""是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
         :rtype: int
         """
         return self._AutoRenew
@@ -2294,7 +2294,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        r"""任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
         :rtype: int
         """
         return self._TaskStatus
@@ -2305,7 +2305,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """绑定的安全组id
+        r"""绑定的安全组id
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2370,7 +2370,7 @@ class InstanceInfo(AbstractModel):
 
 
 class IsolateInstanceRequest(AbstractModel):
-    """IsolateInstance请求参数结构体
+    r"""IsolateInstance请求参数结构体
 
     """
 
@@ -2383,7 +2383,7 @@ class IsolateInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定需隔离的实例 ID。
+        r"""指定需隔离的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2406,7 +2406,7 @@ class IsolateInstanceRequest(AbstractModel):
 
 
 class IsolateInstanceResponse(AbstractModel):
-    """IsolateInstance返回参数结构体
+    r"""IsolateInstance返回参数结构体
 
     """
 
@@ -2419,7 +2419,7 @@ class IsolateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2434,7 +2434,7 @@ class IsolateInstanceResponse(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
-    """ModifyDBInstanceSecurityGroups请求参数结构体
+    r"""ModifyDBInstanceSecurityGroups请求参数结构体
 
     """
 
@@ -2451,7 +2451,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """要修改的安全组ID列表，一个或者多个安全组 ID 组成的数组。
+        r"""要修改的安全组ID列表，一个或者多个安全组 ID 组成的数组。
 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """
@@ -2463,7 +2463,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID，格式如：vdb-c9s3****。
+        r"""实例ID，格式如：vdb-c9s3****。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2487,7 +2487,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
-    """ModifyDBInstanceSecurityGroups返回参数结构体
+    r"""ModifyDBInstanceSecurityGroups返回参数结构体
 
     """
 
@@ -2500,7 +2500,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2515,7 +2515,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class ModifyInstanceMaintenanceWindowRequest(AbstractModel):
-    """ModifyInstanceMaintenanceWindow请求参数结构体
+    r"""ModifyInstanceMaintenanceWindow请求参数结构体
 
     """
 
@@ -2536,7 +2536,7 @@ class ModifyInstanceMaintenanceWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定需修改维护时间窗的实例 ID。
+        r"""指定需修改维护时间窗的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2547,7 +2547,7 @@ class ModifyInstanceMaintenanceWindowRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点，如01:00。
+        r"""维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点，如01:00。
         :rtype: str
         """
         return self._StartTime
@@ -2558,7 +2558,7 @@ class ModifyInstanceMaintenanceWindowRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """设置维护时间窗的时长。根据指定的维护时间窗开始时间与时长可确定维护时间窗的范围。
+        r"""设置维护时间窗的时长。根据指定的维护时间窗开始时间与时长可确定维护时间窗的范围。
 - 单位：小时。
 - 取值范围：3、6、8、10、12。
         :rtype: int
@@ -2585,7 +2585,7 @@ class ModifyInstanceMaintenanceWindowRequest(AbstractModel):
 
 
 class ModifyInstanceMaintenanceWindowResponse(AbstractModel):
-    """ModifyInstanceMaintenanceWindow返回参数结构体
+    r"""ModifyInstanceMaintenanceWindow返回参数结构体
 
     """
 
@@ -2598,7 +2598,7 @@ class ModifyInstanceMaintenanceWindowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2613,7 +2613,7 @@ class ModifyInstanceMaintenanceWindowResponse(AbstractModel):
 
 
 class Network(AbstractModel):
-    """网络信息
+    r"""网络信息
 
     """
 
@@ -2641,7 +2641,7 @@ class Network(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcId(VPC网络下有效)
+        r"""VpcId(VPC网络下有效)
         :rtype: str
         """
         return self._VpcId
@@ -2652,7 +2652,7 @@ class Network(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网Id(VPC网络下有效)。
+        r"""子网Id(VPC网络下有效)。
         :rtype: str
         """
         return self._SubnetId
@@ -2663,7 +2663,7 @@ class Network(AbstractModel):
 
     @property
     def Vip(self):
-        """内网访问IP。
+        r"""内网访问IP。
         :rtype: str
         """
         return self._Vip
@@ -2674,7 +2674,7 @@ class Network(AbstractModel):
 
     @property
     def Port(self):
-        """内网访问Port。
+        r"""内网访问Port。
         :rtype: int
         """
         return self._Port
@@ -2685,7 +2685,7 @@ class Network(AbstractModel):
 
     @property
     def PreserveDuration(self):
-        """旧 ip 保留时长，单位天
+        r"""旧 ip 保留时长，单位天
         :rtype: int
         """
         return self._PreserveDuration
@@ -2696,7 +2696,7 @@ class Network(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """旧 ip 到期时间
+        r"""旧 ip 到期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -2724,7 +2724,7 @@ class Network(AbstractModel):
 
 
 class NodeInfo(AbstractModel):
-    """实例pod信息， pod 名称
+    r"""实例pod信息， pod 名称
 
     """
 
@@ -2740,7 +2740,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Pod名称。
+        r"""Pod名称。
         :rtype: str
         """
         return self._Name
@@ -2751,7 +2751,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        """pod状态
+        r"""pod状态
         :rtype: str
         """
         return self._Status
@@ -2775,7 +2775,7 @@ class NodeInfo(AbstractModel):
 
 
 class Outbound(AbstractModel):
-    """安全组出站规则
+    r"""安全组出站规则
 
     """
 
@@ -2809,7 +2809,7 @@ class Outbound(AbstractModel):
 
     @property
     def Action(self):
-        """策略，ACCEPT或者DROP。
+        r"""策略，ACCEPT或者DROP。
         :rtype: str
         """
         return self._Action
@@ -2820,7 +2820,7 @@ class Outbound(AbstractModel):
 
     @property
     def AddressModule(self):
-        """地址组id代表的地址集合。
+        r"""地址组id代表的地址集合。
         :rtype: str
         """
         return self._AddressModule
@@ -2831,7 +2831,7 @@ class Outbound(AbstractModel):
 
     @property
     def CidrIp(self):
-        """来源Ip或Ip段，例如192.168.0.0/16。
+        r"""来源Ip或Ip段，例如192.168.0.0/16。
         :rtype: str
         """
         return self._CidrIp
@@ -2842,7 +2842,7 @@ class Outbound(AbstractModel):
 
     @property
     def Desc(self):
-        """描述。
+        r"""描述。
         :rtype: str
         """
         return self._Desc
@@ -2853,7 +2853,7 @@ class Outbound(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """网络协议，支持udp、tcp等。
+        r"""网络协议，支持udp、tcp等。
         :rtype: str
         """
         return self._IpProtocol
@@ -2864,7 +2864,7 @@ class Outbound(AbstractModel):
 
     @property
     def PortRange(self):
-        """端口。
+        r"""端口。
         :rtype: str
         """
         return self._PortRange
@@ -2875,7 +2875,7 @@ class Outbound(AbstractModel):
 
     @property
     def ServiceModule(self):
-        """服务组id代表的协议和端口集合。
+        r"""服务组id代表的协议和端口集合。
         :rtype: str
         """
         return self._ServiceModule
@@ -2886,7 +2886,7 @@ class Outbound(AbstractModel):
 
     @property
     def Id(self):
-        """安全组id代表的地址集合。
+        r"""安全组id代表的地址集合。
         :rtype: str
         """
         return self._Id
@@ -2916,7 +2916,7 @@ class Outbound(AbstractModel):
 
 
 class RecoverInstanceRequest(AbstractModel):
-    """RecoverInstance请求参数结构体
+    r"""RecoverInstance请求参数结构体
 
     """
 
@@ -2934,7 +2934,7 @@ class RecoverInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定待恢复的实例 ID。
+        r"""指定待恢复的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2945,7 +2945,7 @@ class RecoverInstanceRequest(AbstractModel):
 
     @property
     def PayPeriod(self):
-        """若实例为包年包月计费，需通过该参数指定续费的时长。
+        r"""若实例为包年包月计费，需通过该参数指定续费的时长。
 - 单位：月。
 - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
         :rtype: int
@@ -2971,7 +2971,7 @@ class RecoverInstanceRequest(AbstractModel):
 
 
 class RecoverInstanceResponse(AbstractModel):
-    """RecoverInstance返回参数结构体
+    r"""RecoverInstance返回参数结构体
 
     """
 
@@ -2984,7 +2984,7 @@ class RecoverInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2999,7 +2999,7 @@ class RecoverInstanceResponse(AbstractModel):
 
 
 class ScaleOutInstanceRequest(AbstractModel):
-    """ScaleOutInstance请求参数结构体
+    r"""ScaleOutInstance请求参数结构体
 
     """
 
@@ -3020,7 +3020,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定需扩容节点数量的实例 ID。
+        r"""指定需扩容节点数量的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3031,7 +3031,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        """指定扩容后的节点数量。选项范围起始于当前实例已有的节点数，上限为30个节点。
+        r"""指定扩容后的节点数量。选项范围起始于当前实例已有的节点数，上限为30个节点。
         :rtype: int
         """
         return self._ReplicaNum
@@ -3042,7 +3042,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     @property
     def RunNow(self):
-        """指定水平扩容增加节点数量的时间。
+        r"""指定水平扩容增加节点数量的时间。
 - false：默认值，指在下一个维护时间段内执行增加节点数的任务。实例列表中“状态”列将显示“待执行配置变更”，等到维护时间窗内启动扩容任务。维护时间的更多信息，请参维护时间窗。
 - true：立即执行增加节点数的任务，请确保此时没有重大业务操作。
         :rtype: bool
@@ -3069,7 +3069,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 
 
 class ScaleOutInstanceResponse(AbstractModel):
-    """ScaleOutInstance返回参数结构体
+    r"""ScaleOutInstance返回参数结构体
 
     """
 
@@ -3082,7 +3082,7 @@ class ScaleOutInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3097,7 +3097,7 @@ class ScaleOutInstanceResponse(AbstractModel):
 
 
 class ScaleUpInstanceRequest(AbstractModel):
-    """ScaleUpInstance请求参数结构体
+    r"""ScaleUpInstance请求参数结构体
 
     """
 
@@ -3132,7 +3132,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定需升级配置的实例 ID。
+        r"""指定需升级配置的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3143,7 +3143,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """指定升级配置后的 CPU 核数。
+        r"""指定升级配置后的 CPU 核数。
 - 节点规格可选项（CPU & 内存）必须 >= 当前配置。
 - 可选择的规格信息，请参见[选择节点规格与数量](https://cloud.tencent.com/document/product/1709/113399)。
         :rtype: float
@@ -3156,7 +3156,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """指定升级配置后的内存大小，单位为：GB。
+        r"""指定升级配置后的内存大小，单位为：GB。
 - 节点规格可选项（CPU & 内存）必须 >= 当前配置。
 - 不同实例类型对 CPU 与内存资源的配置比例有不同的要求。例如，计算型实例，CPU 与内存的分配比例要求为 1:2。CPU 被指定为 4 核，那么内存则应被指定为 8GB。节点规格的详细信息，请参见[选择节点规格与数量](https://cloud.tencent.com/document/product/1709/113399)。
 
@@ -3170,7 +3170,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def StorageSize(self):
-        """指定升级配置后的磁盘容量。
+        r"""指定升级配置后的磁盘容量。
 - 单位：GB。
 - 取值范围为：[10,1000]。
 - 取值必须为10的倍数。
@@ -3184,7 +3184,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def RunNow(self):
-        """指定垂直扩容升级节点配置的时间。
+        r"""指定垂直扩容升级节点配置的时间。
 - false：默认值，指在下一个维护时间段内执行升配节点规格的任务。实例列表中“状态”列将显示“待执行配置变更”，等到维护时间窗内启动任务。维护时间的更多信息，请参见维护时间窗。
 - true：立即执行升级配置的任务，请确保此时没有重大业务操作。
         :rtype: bool
@@ -3213,7 +3213,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
 
 class ScaleUpInstanceResponse(AbstractModel):
-    """ScaleUpInstance返回参数结构体
+    r"""ScaleUpInstance返回参数结构体
 
     """
 
@@ -3226,7 +3226,7 @@ class ScaleUpInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3241,7 +3241,7 @@ class ScaleUpInstanceResponse(AbstractModel):
 
 
 class SecurityGroup(AbstractModel):
-    """安全组规则
+    r"""安全组规则
 
     """
 
@@ -3275,7 +3275,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，时间格式：yyyy-mm-dd hh:mm:ss。
+        r"""创建时间，时间格式：yyyy-mm-dd hh:mm:ss。
         :rtype: str
         """
         return self._CreateTime
@@ -3286,7 +3286,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: str
         """
         return self._ProjectId
@@ -3297,7 +3297,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组ID。
+        r"""安全组ID。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -3308,7 +3308,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        """安全组名称。
+        r"""安全组名称。
         :rtype: str
         """
         return self._SecurityGroupName
@@ -3319,7 +3319,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
-        """安全组备注。
+        r"""安全组备注。
         :rtype: str
         """
         return self._SecurityGroupRemark
@@ -3330,7 +3330,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Outbound(self):
-        """出站规则。
+        r"""出站规则。
         :rtype: list of Outbound
         """
         return self._Outbound
@@ -3341,7 +3341,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Inbound(self):
-        """入站规则。
+        r"""入站规则。
         :rtype: list of Inbound
         """
         return self._Inbound
@@ -3352,7 +3352,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间，时间格式：yyyy-mm-dd hh:mm:ss。
+        r"""修改时间，时间格式：yyyy-mm-dd hh:mm:ss。
         :rtype: str
         """
         return self._UpdateTime
@@ -3392,7 +3392,7 @@ class SecurityGroup(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签键值对
+    r"""标签键值对
 
     """
 
@@ -3408,7 +3408,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -3419,7 +3419,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue

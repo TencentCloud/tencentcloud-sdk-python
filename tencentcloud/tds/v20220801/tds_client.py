@@ -27,7 +27,7 @@ class TdsClient(AbstractClient):
 
 
     def DescribeFinanceFraudUltimate(self, request):
-        """查询设备标识及风险（金融旗舰版）
+        r"""查询设备标识及风险（金融旗舰版）
 
         :param request: Request instance for DescribeFinanceFraudUltimate.
         :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFinanceFraudUltimateRequest`
@@ -50,7 +50,7 @@ class TdsClient(AbstractClient):
 
 
     def DescribeFraudBase(self, request):
-        """查询设备风险
+        r"""查询设备风险
 
         :param request: Request instance for DescribeFraudBase.
         :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFraudBaseRequest`
@@ -73,7 +73,7 @@ class TdsClient(AbstractClient):
 
 
     def DescribeFraudPremium(self, request):
-        """查询设备标识及风险
+        r"""查询设备标识及风险
 
         :param request: Request instance for DescribeFraudPremium.
         :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFraudPremiumRequest`
@@ -96,7 +96,7 @@ class TdsClient(AbstractClient):
 
 
     def DescribeFraudUltimate(self, request):
-        """查询设备标识及风险（旗舰版）
+        r"""查询设备标识及风险（旗舰版）
 
         :param request: Request instance for DescribeFraudUltimate.
         :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFraudUltimateRequest`
@@ -119,7 +119,7 @@ class TdsClient(AbstractClient):
 
 
     def DescribeTrustedID(self, request):
-        """查询设备标识
+        r"""查询设备标识
 
         :param request: Request instance for DescribeTrustedID.
         :type request: :class:`tencentcloud.tds.v20220801.models.DescribeTrustedIDRequest`

@@ -27,7 +27,7 @@ class TafClient(AbstractClient):
 
 
     def ManagePortraitRisk(self, request):
-        """虚假流量识别
+        r"""虚假流量识别
 
         :param request: Request instance for ManagePortraitRisk.
         :type request: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskRequest`

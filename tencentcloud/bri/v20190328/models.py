@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BRIRequest(AbstractModel):
-    """BRI请求
+    r"""BRI请求
 
     """
 
@@ -74,7 +74,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Service(self):
-        """业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
+        r"""业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
         :rtype: str
         """
         return self._Service
@@ -85,7 +85,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def QQ(self):
-        """QQ号 (业务名为bri_social时必填, 除非已填Wechat)
+        r"""QQ号 (业务名为bri_social时必填, 除非已填Wechat)
         :rtype: str
         """
         return self._QQ
@@ -96,7 +96,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def QQTag(self):
-        """QQ号的可疑标签
+        r"""QQ号的可疑标签
         :rtype: str
         """
         return self._QQTag
@@ -107,7 +107,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Url(self):
-        """网址 (业务名为bri_url时必填)
+        r"""网址 (业务名为bri_url时必填)
         :rtype: str
         """
         return self._Url
@@ -118,7 +118,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def CertMd5(self):
-        """Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
+        r"""Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
         :rtype: str
         """
         return self._CertMd5
@@ -129,7 +129,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
+        r"""Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
         :rtype: str
         """
         return self._PackageName
@@ -140,7 +140,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def FileMd5(self):
-        """Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
+        r"""Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
         :rtype: str
         """
         return self._FileMd5
@@ -151,7 +151,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """业务场景 (1-注册, 2-登录, 3-发消息)
+        r"""业务场景 (1-注册, 2-登录, 3-发消息)
         :rtype: str
         """
         return self._Scene
@@ -162,7 +162,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """电话号码 (业务名为bri_num时必填)
+        r"""电话号码 (业务名为bri_num时必填)
         :rtype: str
         """
         return self._PhoneNumber
@@ -173,7 +173,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def FileSize(self):
-        """Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
+        r"""Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
         :rtype: int
         """
         return self._FileSize
@@ -184,7 +184,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """点分格式的IP (业务名为bri_ip时必填)
+        r"""点分格式的IP (业务名为bri_ip时必填)
         :rtype: str
         """
         return self._Ip
@@ -195,7 +195,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """安卓设备的Imei (业务名为bri_dev时必填)
+        r"""安卓设备的Imei (业务名为bri_dev时必填)
         :rtype: str
         """
         return self._Imei
@@ -206,7 +206,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def Wechat(self):
-        """微信号 (业务名为bri_social时必填, 除非已填QQ)
+        r"""微信号 (业务名为bri_social时必填, 除非已填QQ)
         :rtype: str
         """
         return self._Wechat
@@ -217,7 +217,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def WechatTag(self):
-        """微信号的可疑标签
+        r"""微信号的可疑标签
         :rtype: str
         """
         return self._WechatTag
@@ -228,7 +228,7 @@ class BRIRequest(AbstractModel):
 
     @property
     def SubAppid(self):
-        """子客户ID
+        r"""子客户ID
         :rtype: str
         """
         return self._SubAppid
@@ -265,7 +265,7 @@ class BRIRequest(AbstractModel):
 
 
 class BRIResponse(AbstractModel):
-    """响应
+    r"""响应
 
     """
 
@@ -305,7 +305,7 @@ class BRIResponse(AbstractModel):
 
     @property
     def Score(self):
-        """风险分值，取值[0,100], 分值越高风险越高
+        r"""风险分值，取值[0,100], 分值越高风险越高
         :rtype: float
         """
         return self._Score
@@ -316,7 +316,7 @@ class BRIResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """当Service为bri_num时,返回的风险标签有:
+        r"""当Service为bri_num时,返回的风险标签有:
 1) 疑似垃圾流量     说明: 结合号码的历史数据表现，判断该号码历史用互联网业务作恶行为，其产生的互联网行为对于其他业务来说属于作弊或垃圾流量。 
 2) 疑似新客户       说明: 通过号码互联网行为（社交，浏览等）是否异常判断为小号或接码平台帐号。 
 
@@ -364,7 +364,7 @@ class BRIResponse(AbstractModel):
 
 
 class DescribeBRIRequest(AbstractModel):
-    """DescribeBRI请求参数结构体
+    r"""DescribeBRI请求参数结构体
 
     """
 
@@ -380,7 +380,7 @@ class DescribeBRIRequest(AbstractModel):
 
     @property
     def RequestData(self):
-        """业务风险情报请求体
+        r"""业务风险情报请求体
         :rtype: :class:`tencentcloud.bri.v20190328.models.BRIRequest`
         """
         return self._RequestData
@@ -391,7 +391,7 @@ class DescribeBRIRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """客户用于计费的资源ID
+        r"""客户用于计费的资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -417,7 +417,7 @@ class DescribeBRIRequest(AbstractModel):
 
 
 class DescribeBRIResponse(AbstractModel):
-    """DescribeBRI返回参数结构体
+    r"""DescribeBRI返回参数结构体
 
     """
 
@@ -433,7 +433,7 @@ class DescribeBRIResponse(AbstractModel):
 
     @property
     def ResponseData(self):
-        """业务风险情报响应体
+        r"""业务风险情报响应体
         :rtype: :class:`tencentcloud.bri.v20190328.models.BRIResponse`
         """
         return self._ResponseData
@@ -444,7 +444,7 @@ class DescribeBRIResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddGroupMemberRequest(AbstractModel):
-    """AddGroupMember请求参数结构体
+    r"""AddGroupMember请求参数结构体
 
     """
 
@@ -38,7 +38,7 @@ class AddGroupMemberRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID
+        r"""群组ID
         :rtype: str
         """
         return self._GroupId
@@ -49,7 +49,7 @@ class AddGroupMemberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -60,7 +60,7 @@ class AddGroupMemberRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """成员列表，最大值200
+        r"""成员列表，最大值200
         :rtype: list of str
         """
         return self._MemberIds
@@ -85,7 +85,7 @@ class AddGroupMemberRequest(AbstractModel):
 
 
 class AddGroupMemberResponse(AbstractModel):
-    """AddGroupMember返回参数结构体
+    r"""AddGroupMember返回参数结构体
 
     """
 
@@ -98,7 +98,7 @@ class AddGroupMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -113,7 +113,7 @@ class AddGroupMemberResponse(AbstractModel):
 
 
 class AnswerInfo(AbstractModel):
-    """房间问答答案详情
+    r"""房间问答答案详情
 
     """
 
@@ -138,7 +138,7 @@ class AnswerInfo(AbstractModel):
 
     @property
     def Name(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Name
@@ -149,7 +149,7 @@ class AnswerInfo(AbstractModel):
 
     @property
     def Answer(self):
-        """答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        r"""答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
         :rtype: int
         """
         return self._Answer
@@ -160,7 +160,7 @@ class AnswerInfo(AbstractModel):
 
     @property
     def CostTime(self):
-        """答题用时
+        r"""答题用时
         :rtype: int
         """
         return self._CostTime
@@ -171,7 +171,7 @@ class AnswerInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -182,7 +182,7 @@ class AnswerInfo(AbstractModel):
 
     @property
     def IsCorrect(self):
-        """答案是否正确（1正确0错误）
+        r"""答案是否正确（1正确0错误）
         :rtype: int
         """
         return self._IsCorrect
@@ -209,7 +209,7 @@ class AnswerInfo(AbstractModel):
 
 
 class AnswerStat(AbstractModel):
-    """每个选项答题人数统计
+    r"""每个选项答题人数统计
 
     """
 
@@ -225,7 +225,7 @@ class AnswerStat(AbstractModel):
 
     @property
     def Answer(self):
-        """选项（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        r"""选项（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
         :rtype: int
         """
         return self._Answer
@@ -236,7 +236,7 @@ class AnswerStat(AbstractModel):
 
     @property
     def Count(self):
-        """答题人数
+        r"""答题人数
         :rtype: int
         """
         return self._Count
@@ -260,7 +260,7 @@ class AnswerStat(AbstractModel):
 
 
 class AppConfig(AbstractModel):
-    """应用配置信息
+    r"""应用配置信息
 
     """
 
@@ -291,7 +291,7 @@ class AppConfig(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -302,7 +302,7 @@ class AppConfig(AbstractModel):
 
     @property
     def AppName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._AppName
@@ -313,7 +313,7 @@ class AppConfig(AbstractModel):
 
     @property
     def State(self):
-        """应用状态 1正常 2停用
+        r"""应用状态 1正常 2停用
         :rtype: int
         """
         return self._State
@@ -324,7 +324,7 @@ class AppConfig(AbstractModel):
 
     @property
     def AppVersion(self):
-        """1试用 2轻量版 3标准版 4旗舰版
+        r"""1试用 2轻量版 3标准版 4旗舰版
         :rtype: int
         """
         return self._AppVersion
@@ -335,7 +335,7 @@ class AppConfig(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedAt
@@ -346,7 +346,7 @@ class AppConfig(AbstractModel):
 
     @property
     def Callback(self):
-        """回调
+        r"""回调
         :rtype: str
         """
         return self._Callback
@@ -357,7 +357,7 @@ class AppConfig(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调Key
+        r"""回调Key
         :rtype: str
         """
         return self._CallbackKey
@@ -386,7 +386,7 @@ class AppConfig(AbstractModel):
 
 
 class AppCustomContent(AbstractModel):
-    """应用自定义内容
+    r"""应用自定义内容
 
     """
 
@@ -411,7 +411,7 @@ class AppCustomContent(AbstractModel):
 
     @property
     def Scene(self):
-        """场景参数，一个应用下可以设置多个不同场景。
+        r"""场景参数，一个应用下可以设置多个不同场景。
         :rtype: str
         """
         return self._Scene
@@ -422,7 +422,7 @@ class AppCustomContent(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """logo地址，用于上课时展示的课堂或平台图标，支持开发商自定义业务品牌展示。
+        r"""logo地址，用于上课时展示的课堂或平台图标，支持开发商自定义业务品牌展示。
         :rtype: str
         """
         return self._LogoUrl
@@ -433,7 +433,7 @@ class AppCustomContent(AbstractModel):
 
     @property
     def HomeUrl(self):
-        """HomeUrl：主页地址，用于上课结束后课堂跳转，支持跳转到自己的业务系统。如果配置为空则下课后关闭课堂页面。
+        r"""HomeUrl：主页地址，用于上课结束后课堂跳转，支持跳转到自己的业务系统。如果配置为空则下课后关闭课堂页面。
         :rtype: str
         """
         return self._HomeUrl
@@ -444,7 +444,7 @@ class AppCustomContent(AbstractModel):
 
     @property
     def JsUrl(self):
-        """JsUrl ：自定义js。针对应用用于开发上自定义课堂界面、模块功能、监控操作，支持数据请求与响应处理。
+        r"""JsUrl ：自定义js。针对应用用于开发上自定义课堂界面、模块功能、监控操作，支持数据请求与响应处理。
         :rtype: str
         """
         return self._JsUrl
@@ -455,7 +455,7 @@ class AppCustomContent(AbstractModel):
 
     @property
     def CssUrl(self):
-        """Css : 自定义的css。针对应用用于支持课堂界面的、模块的UI渲染修改、皮肤配色修改、功能模块的隐藏和展示。
+        r"""Css : 自定义的css。针对应用用于支持课堂界面的、模块的UI渲染修改、皮肤配色修改、功能模块的隐藏和展示。
         :rtype: str
         """
         return self._CssUrl
@@ -482,7 +482,7 @@ class AppCustomContent(AbstractModel):
 
 
 class BackgroundPictureConfig(AbstractModel):
-    """背景图片配置
+    r"""背景图片配置
 
     """
 
@@ -495,7 +495,7 @@ class BackgroundPictureConfig(AbstractModel):
 
     @property
     def Url(self):
-        """背景图片的url
+        r"""背景图片的url
         :rtype: str
         """
         return self._Url
@@ -518,7 +518,7 @@ class BackgroundPictureConfig(AbstractModel):
 
 
 class BatchAddGroupMemberRequest(AbstractModel):
-    """BatchAddGroupMember请求参数结构体
+    r"""BatchAddGroupMember请求参数结构体
 
     """
 
@@ -537,7 +537,7 @@ class BatchAddGroupMemberRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """待添加群组ID列表，最大值100
+        r"""待添加群组ID列表，最大值100
         :rtype: list of str
         """
         return self._GroupIds
@@ -548,7 +548,7 @@ class BatchAddGroupMemberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -559,7 +559,7 @@ class BatchAddGroupMemberRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """待添加成员列表，最大值200
+        r"""待添加成员列表，最大值200
         :rtype: list of str
         """
         return self._MemberIds
@@ -584,7 +584,7 @@ class BatchAddGroupMemberRequest(AbstractModel):
 
 
 class BatchAddGroupMemberResponse(AbstractModel):
-    """BatchAddGroupMember返回参数结构体
+    r"""BatchAddGroupMember返回参数结构体
 
     """
 
@@ -597,7 +597,7 @@ class BatchAddGroupMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -612,7 +612,7 @@ class BatchAddGroupMemberResponse(AbstractModel):
 
 
 class BatchCreateGroupWithMembersRequest(AbstractModel):
-    """BatchCreateGroupWithMembers请求参数结构体
+    r"""BatchCreateGroupWithMembers请求参数结构体
 
     """
 
@@ -631,7 +631,7 @@ class BatchCreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -642,7 +642,7 @@ class BatchCreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def GroupBaseInfos(self):
-        """批量创建群组基础信息，最大长度限制256
+        r"""批量创建群组基础信息，最大长度限制256
         :rtype: list of GroupBaseInfo
         """
         return self._GroupBaseInfos
@@ -653,7 +653,7 @@ class BatchCreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """群组绑定的成员列表，一次性最多200个
+        r"""群组绑定的成员列表，一次性最多200个
         :rtype: list of str
         """
         return self._MemberIds
@@ -683,7 +683,7 @@ class BatchCreateGroupWithMembersRequest(AbstractModel):
 
 
 class BatchCreateGroupWithMembersResponse(AbstractModel):
-    """BatchCreateGroupWithMembers返回参数结构体
+    r"""BatchCreateGroupWithMembers返回参数结构体
 
     """
 
@@ -699,7 +699,7 @@ class BatchCreateGroupWithMembersResponse(AbstractModel):
 
     @property
     def GroupIds(self):
-        """新创建群组ID列表，与输入创建参数顺序一致
+        r"""新创建群组ID列表，与输入创建参数顺序一致
         :rtype: list of str
         """
         return self._GroupIds
@@ -710,7 +710,7 @@ class BatchCreateGroupWithMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -726,7 +726,7 @@ class BatchCreateGroupWithMembersResponse(AbstractModel):
 
 
 class BatchCreateRoomRequest(AbstractModel):
-    """BatchCreateRoom请求参数结构体
+    r"""BatchCreateRoom请求参数结构体
 
     """
 
@@ -742,7 +742,7 @@ class BatchCreateRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台的SdkAppId。
+        r"""低代码平台的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -753,7 +753,7 @@ class BatchCreateRoomRequest(AbstractModel):
 
     @property
     def RoomInfos(self):
-        """创建课堂ID列表
+        r"""创建课堂ID列表
         :rtype: list of RoomInfo
         """
         return self._RoomInfos
@@ -782,7 +782,7 @@ class BatchCreateRoomRequest(AbstractModel):
 
 
 class BatchCreateRoomResponse(AbstractModel):
-    """BatchCreateRoom返回参数结构体
+    r"""BatchCreateRoom返回参数结构体
 
     """
 
@@ -798,7 +798,7 @@ class BatchCreateRoomResponse(AbstractModel):
 
     @property
     def RoomIds(self):
-        """创建成功课堂ID，与传入课堂信息顺序一致
+        r"""创建成功课堂ID，与传入课堂信息顺序一致
         :rtype: list of int non-negative
         """
         return self._RoomIds
@@ -809,7 +809,7 @@ class BatchCreateRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -825,7 +825,7 @@ class BatchCreateRoomResponse(AbstractModel):
 
 
 class BatchDeleteGroupMemberRequest(AbstractModel):
-    """BatchDeleteGroupMember请求参数结构体
+    r"""BatchDeleteGroupMember请求参数结构体
 
     """
 
@@ -844,7 +844,7 @@ class BatchDeleteGroupMemberRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """待添加群组ID列表，最大值100
+        r"""待添加群组ID列表，最大值100
         :rtype: list of str
         """
         return self._GroupIds
@@ -855,7 +855,7 @@ class BatchDeleteGroupMemberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -866,7 +866,7 @@ class BatchDeleteGroupMemberRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """待添加成员列表，最大值256
+        r"""待添加成员列表，最大值256
         :rtype: list of str
         """
         return self._MemberIds
@@ -891,7 +891,7 @@ class BatchDeleteGroupMemberRequest(AbstractModel):
 
 
 class BatchDeleteGroupMemberResponse(AbstractModel):
-    """BatchDeleteGroupMember返回参数结构体
+    r"""BatchDeleteGroupMember返回参数结构体
 
     """
 
@@ -904,7 +904,7 @@ class BatchDeleteGroupMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -919,7 +919,7 @@ class BatchDeleteGroupMemberResponse(AbstractModel):
 
 
 class BatchDeleteRecordRequest(AbstractModel):
-    """BatchDeleteRecord请求参数结构体
+    r"""BatchDeleteRecord请求参数结构体
 
     """
 
@@ -935,7 +935,7 @@ class BatchDeleteRecordRequest(AbstractModel):
 
     @property
     def RoomIds(self):
-        """房间ID列表
+        r"""房间ID列表
         :rtype: list of int
         """
         return self._RoomIds
@@ -946,7 +946,7 @@ class BatchDeleteRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -970,7 +970,7 @@ class BatchDeleteRecordRequest(AbstractModel):
 
 
 class BatchDeleteRecordResponse(AbstractModel):
-    """BatchDeleteRecord返回参数结构体
+    r"""BatchDeleteRecord返回参数结构体
 
     """
 
@@ -987,7 +987,7 @@ class BatchDeleteRecordResponse(AbstractModel):
 
     @property
     def RoomIds(self):
-        """本次操作删除成功的房间ID列表。如果入参列表中某个房间ID的录制文件已经删除，则出参列表中无对应的房间ID。
+        r"""本次操作删除成功的房间ID列表。如果入参列表中某个房间ID的录制文件已经删除，则出参列表中无对应的房间ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -999,7 +999,7 @@ class BatchDeleteRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1015,7 +1015,7 @@ class BatchDeleteRecordResponse(AbstractModel):
 
 
 class BatchDescribeDocumentRequest(AbstractModel):
-    """BatchDescribeDocument请求参数结构体
+    r"""BatchDescribeDocument请求参数结构体
 
     """
 
@@ -1046,7 +1046,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -1057,7 +1057,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增
+        r"""分页查询当前页数，从1开始递增
         :rtype: int
         """
         return self._Page
@@ -1068,7 +1068,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大200
+        r"""每页数据量，最大200
         :rtype: int
         """
         return self._Limit
@@ -1079,7 +1079,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def Permission(self):
-        """课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+        r"""课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
         :rtype: list of int non-negative
         """
         return self._Permission
@@ -1090,7 +1090,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """课件所有者的user_id，不填默认获取SdkAppId下所有课件
+        r"""课件所有者的user_id，不填默认获取SdkAppId下所有课件
         :rtype: str
         """
         return self._Owner
@@ -1101,7 +1101,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """课件名称搜索词
+        r"""课件名称搜索词
         :rtype: str
         """
         return self._Keyword
@@ -1112,7 +1112,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """课件id列表，从列表中查询，忽略错误的id
+        r"""课件id列表，从列表中查询，忽略错误的id
         :rtype: list of str
         """
         return self._DocumentId
@@ -1141,7 +1141,7 @@ class BatchDescribeDocumentRequest(AbstractModel):
 
 
 class BatchDescribeDocumentResponse(AbstractModel):
-    """BatchDescribeDocument返回参数结构体
+    r"""BatchDescribeDocument返回参数结构体
 
     """
 
@@ -1161,7 +1161,7 @@ class BatchDescribeDocumentResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件文档总数
+        r"""符合查询条件文档总数
         :rtype: int
         """
         return self._Total
@@ -1172,7 +1172,7 @@ class BatchDescribeDocumentResponse(AbstractModel):
 
     @property
     def Documents(self):
-        """文档信息列表
+        r"""文档信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DocumentInfo
         """
@@ -1184,7 +1184,7 @@ class BatchDescribeDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1206,7 +1206,7 @@ class BatchDescribeDocumentResponse(AbstractModel):
 
 
 class BatchRegisterRequest(AbstractModel):
-    """BatchRegister请求参数结构体
+    r"""BatchRegister请求参数结构体
 
     """
 
@@ -1219,7 +1219,7 @@ class BatchRegisterRequest(AbstractModel):
 
     @property
     def Users(self):
-        """批量注册用户信息列表
+        r"""批量注册用户信息列表
         :rtype: list of BatchUserRequest
         """
         return self._Users
@@ -1247,7 +1247,7 @@ class BatchRegisterRequest(AbstractModel):
 
 
 class BatchRegisterResponse(AbstractModel):
-    """BatchRegister返回参数结构体
+    r"""BatchRegister返回参数结构体
 
     """
 
@@ -1263,7 +1263,7 @@ class BatchRegisterResponse(AbstractModel):
 
     @property
     def Users(self):
-        """注册成功的用户列表
+        r"""注册成功的用户列表
         :rtype: list of BatchUserInfo
         """
         return self._Users
@@ -1274,7 +1274,7 @@ class BatchRegisterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1295,7 +1295,7 @@ class BatchRegisterResponse(AbstractModel):
 
 
 class BatchUserInfo(AbstractModel):
-    """批量注册用户信息
+    r"""批量注册用户信息
 
     """
 
@@ -1315,7 +1315,7 @@ class BatchUserInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -1327,7 +1327,7 @@ class BatchUserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID。
+        r"""用户ID。
         :rtype: str
         """
         return self._UserId
@@ -1338,7 +1338,7 @@ class BatchUserInfo(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
+        r"""用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
         :rtype: str
         """
         return self._OriginId
@@ -1363,7 +1363,7 @@ class BatchUserInfo(AbstractModel):
 
 
 class BatchUserRequest(AbstractModel):
-    """用户注册请求信息
+    r"""用户注册请求信息
 
     """
 
@@ -1389,7 +1389,7 @@ class BatchUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -1401,7 +1401,7 @@ class BatchUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """用户名称。
+        r"""用户名称。
 
         :rtype: str
         """
@@ -1413,7 +1413,7 @@ class BatchUserRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId
+        r"""用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId
 。
         :rtype: str
         """
@@ -1425,7 +1425,7 @@ class BatchUserRequest(AbstractModel):
 
     @property
     def Avatar(self):
-        """用户头像。
+        r"""用户头像。
 
         :rtype: str
         """
@@ -1452,7 +1452,7 @@ class BatchUserRequest(AbstractModel):
 
 
 class BindDocumentToRoomRequest(AbstractModel):
-    """BindDocumentToRoom请求参数结构体
+    r"""BindDocumentToRoom请求参数结构体
 
     """
 
@@ -1473,7 +1473,7 @@ class BindDocumentToRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -1484,7 +1484,7 @@ class BindDocumentToRoomRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档ID。
+        r"""文档ID。
         :rtype: str
         """
         return self._DocumentId
@@ -1495,7 +1495,7 @@ class BindDocumentToRoomRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """绑定类型。后台可透传到客户端，默认为0。除以下例值外支持自定义该字段，并在前端实现相应业务逻辑，示例参考：
+        r"""绑定类型。后台可透传到客户端，默认为0。除以下例值外支持自定义该字段，并在前端实现相应业务逻辑，示例参考：
 示例值：0，仅绑定课件到房间
 示例值：1，绑定课件到房间后，默认展示课件
         :rtype: int
@@ -1522,7 +1522,7 @@ class BindDocumentToRoomRequest(AbstractModel):
 
 
 class BindDocumentToRoomResponse(AbstractModel):
-    """BindDocumentToRoom返回参数结构体
+    r"""BindDocumentToRoom返回参数结构体
 
     """
 
@@ -1535,7 +1535,7 @@ class BindDocumentToRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1550,7 +1550,7 @@ class BindDocumentToRoomResponse(AbstractModel):
 
 
 class ClassScoreItem(AbstractModel):
-    """课堂评分字段
+    r"""课堂评分字段
 
     """
 
@@ -1575,7 +1575,7 @@ class ClassScoreItem(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂iD
+        r"""课堂iD
         :rtype: int
         """
         return self._RoomId
@@ -1586,7 +1586,7 @@ class ClassScoreItem(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -1597,7 +1597,7 @@ class ClassScoreItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """评分时间
+        r"""评分时间
         :rtype: int
         """
         return self._CreateTime
@@ -1608,7 +1608,7 @@ class ClassScoreItem(AbstractModel):
 
     @property
     def Score(self):
-        """课堂评分
+        r"""课堂评分
         :rtype: int
         """
         return self._Score
@@ -1619,7 +1619,7 @@ class ClassScoreItem(AbstractModel):
 
     @property
     def ScoreMsg(self):
-        """课堂评价
+        r"""课堂评价
         :rtype: str
         """
         return self._ScoreMsg
@@ -1646,7 +1646,7 @@ class ClassScoreItem(AbstractModel):
 
 
 class CreateDocumentRequest(AbstractModel):
-    """CreateDocument请求参数结构体
+    r"""CreateDocument请求参数结构体
 
     """
 
@@ -1701,7 +1701,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -1712,7 +1712,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def DocumentUrl(self):
-        """文档地址。
+        r"""文档地址。
         :rtype: str
         """
         return self._DocumentUrl
@@ -1723,7 +1723,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def DocumentName(self):
-        """文档名称。
+        r"""文档名称。
         :rtype: str
         """
         return self._DocumentName
@@ -1734,7 +1734,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """文档所有者的Id
+        r"""文档所有者的Id
         :rtype: str
         """
         return self._Owner
@@ -1745,7 +1745,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def TranscodeType(self):
-        """转码类型，可以有如下取值：
+        r"""转码类型，可以有如下取值：
 0 无需转码（默认），bmp，jpg，jpeg，png，gif
 1 需要转码的文档，ppt，pptx，pdf，doc，docx，xls，xlsx
 2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
@@ -1764,7 +1764,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def Permission(self):
-        """权限，可以有如下取值：
+        r"""权限，可以有如下取值：
 0 私有文档（默认）
 1 公共文档
         :rtype: int
@@ -1777,7 +1777,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def DocumentType(self):
-        """文档后缀名。
+        r"""文档后缀名。
         :rtype: str
         """
         return self._DocumentType
@@ -1788,7 +1788,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def DocumentSize(self):
-        """文档大小，单位 字节
+        r"""文档大小，单位 字节
         :rtype: int
         """
         return self._DocumentSize
@@ -1799,7 +1799,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def AutoHandleUnsupportedElement(self):
-        """是否对不支持元素开启自动处理的功能。默认关闭。
+        r"""是否对不支持元素开启自动处理的功能。默认关闭。
 自动处理的元素如下：
 1. 墨迹：移除不支持的墨迹（例如WPS墨迹）
 2. 自动翻页：移除PPT上所有自动翻页设置，并设置为单击鼠标翻页
@@ -1814,7 +1814,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def MinScaleResolution(self):
-        """转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。该参数仅对TranscodeType=1的课件生效。示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        r"""转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。该参数仅对TranscodeType=1的课件生效。示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 示例值：1280x720
         :rtype: str
         """
@@ -1847,7 +1847,7 @@ class CreateDocumentRequest(AbstractModel):
 
 
 class CreateDocumentResponse(AbstractModel):
-    """CreateDocument返回参数结构体
+    r"""CreateDocument返回参数结构体
 
     """
 
@@ -1863,7 +1863,7 @@ class CreateDocumentResponse(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档ID。
+        r"""文档ID。
         :rtype: str
         """
         return self._DocumentId
@@ -1874,7 +1874,7 @@ class CreateDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1890,7 +1890,7 @@ class CreateDocumentResponse(AbstractModel):
 
 
 class CreateGroupWithMembersRequest(AbstractModel):
-    """CreateGroupWithMembers请求参数结构体
+    r"""CreateGroupWithMembers请求参数结构体
 
     """
 
@@ -1912,7 +1912,7 @@ class CreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """待创建群组名称
+        r"""待创建群组名称
         :rtype: str
         """
         return self._GroupName
@@ -1923,7 +1923,7 @@ class CreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -1934,7 +1934,7 @@ class CreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        """默认绑定主讲老师ID
+        r"""默认绑定主讲老师ID
         :rtype: str
         """
         return self._TeacherId
@@ -1945,7 +1945,7 @@ class CreateGroupWithMembersRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """群组成员列表,一次性最多200个
+        r"""群组成员列表,一次性最多200个
         :rtype: list of str
         """
         return self._MemberIds
@@ -1971,7 +1971,7 @@ class CreateGroupWithMembersRequest(AbstractModel):
 
 
 class CreateGroupWithMembersResponse(AbstractModel):
-    """CreateGroupWithMembers返回参数结构体
+    r"""CreateGroupWithMembers返回参数结构体
 
     """
 
@@ -1987,7 +1987,7 @@ class CreateGroupWithMembersResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """创建成功群组ID
+        r"""创建成功群组ID
         :rtype: str
         """
         return self._GroupId
@@ -1998,7 +1998,7 @@ class CreateGroupWithMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2014,7 +2014,7 @@ class CreateGroupWithMembersResponse(AbstractModel):
 
 
 class CreateGroupWithSubGroupRequest(AbstractModel):
-    """CreateGroupWithSubGroup请求参数结构体
+    r"""CreateGroupWithSubGroup请求参数结构体
 
     """
 
@@ -2036,7 +2036,7 @@ class CreateGroupWithSubGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """待创建的新群组名
+        r"""待创建的新群组名
         :rtype: str
         """
         return self._GroupName
@@ -2047,7 +2047,7 @@ class CreateGroupWithSubGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -2058,7 +2058,7 @@ class CreateGroupWithSubGroupRequest(AbstractModel):
 
     @property
     def SubGroupIds(self):
-        """子群组ID列表，子群组ID不能重复，最多40个
+        r"""子群组ID列表，子群组ID不能重复，最多40个
         :rtype: list of str
         """
         return self._SubGroupIds
@@ -2069,7 +2069,7 @@ class CreateGroupWithSubGroupRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        """群组默认主讲老师ID
+        r"""群组默认主讲老师ID
         :rtype: str
         """
         return self._TeacherId
@@ -2095,7 +2095,7 @@ class CreateGroupWithSubGroupRequest(AbstractModel):
 
 
 class CreateGroupWithSubGroupResponse(AbstractModel):
-    """CreateGroupWithSubGroup返回参数结构体
+    r"""CreateGroupWithSubGroup返回参数结构体
 
     """
 
@@ -2111,7 +2111,7 @@ class CreateGroupWithSubGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """新创建群组ID
+        r"""新创建群组ID
         :rtype: str
         """
         return self._GroupId
@@ -2122,7 +2122,7 @@ class CreateGroupWithSubGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2138,7 +2138,7 @@ class CreateGroupWithSubGroupResponse(AbstractModel):
 
 
 class CreateRoomRequest(AbstractModel):
-    """CreateRoom请求参数结构体
+    r"""CreateRoom请求参数结构体
 
     """
 
@@ -2266,7 +2266,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Name(self):
-        """课堂名称。
+        r"""课堂名称。
         :rtype: str
         """
         return self._Name
@@ -2277,7 +2277,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """预定的课堂开始时间，unix时间戳（秒）。
+        r"""预定的课堂开始时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._StartTime
@@ -2288,7 +2288,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """预定的课堂结束时间，unix时间戳（秒）。
+        r"""预定的课堂结束时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._EndTime
@@ -2299,7 +2299,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -2310,7 +2310,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
+        r"""头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -2325,7 +2325,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def MaxMicNumber(self):
-        """设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+        r"""设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -2336,7 +2336,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SubType(self):
-        """课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
+        r"""课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :rtype: str
         """
         return self._SubType
@@ -2347,7 +2347,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        """老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
+        r"""老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
         :rtype: str
         """
         return self._TeacherId
@@ -2358,7 +2358,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AutoMic(self):
-        """进入课堂时是否自动连麦。可以有以下取值：
+        r"""进入课堂时是否自动连麦。可以有以下取值：
 0 不自动连麦（需要手动申请上麦，默认值）
 1 自动连麦
         :rtype: int
@@ -2371,7 +2371,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def TurnOffMic(self):
-        """释放音视频权限后是否自动取消连麦。可以有以下取值：
+        r"""释放音视频权限后是否自动取消连麦。可以有以下取值：
 0 自动取消连麦（默认值）
 1 保持连麦状态
         :rtype: int
@@ -2384,7 +2384,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AudioQuality(self):
-        """声音音质。可以有以下取值：
+        r"""声音音质。可以有以下取值：
 0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
         :rtype: int
@@ -2397,7 +2397,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def DisableRecord(self):
-        """录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
+        r"""录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
         :rtype: int
         """
         return self._DisableRecord
@@ -2408,7 +2408,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Assistants(self):
-        """助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
+        r"""助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
         :rtype: list of str
         """
         return self._Assistants
@@ -2421,7 +2421,7 @@ class CreateRoomRequest(AbstractModel):
     def RTCAudienceNumber(self):
         warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
 
-        """rtc人数。
+        r"""rtc人数。
         :rtype: int
         """
         return self._RTCAudienceNumber
@@ -2434,7 +2434,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AudienceType(self):
-        """观看类型。互动观看 （默认）
+        r"""观看类型。互动观看 （默认）
         :rtype: int
         """
         return self._AudienceType
@@ -2445,7 +2445,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordLayout(self):
-        """录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        r"""录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :rtype: int
         """
         return self._RecordLayout
@@ -2456,7 +2456,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """课堂绑定的群组ID,非空时限制组成员进入
+        r"""课堂绑定的群组ID,非空时限制组成员进入
         :rtype: str
         """
         return self._GroupId
@@ -2467,7 +2467,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EnableDirectControl(self):
-        """是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
+        r"""是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
 0 不允许直接控制（需同意，默认值）
 1 允许直接控制（无需同意）
         :rtype: int
@@ -2480,7 +2480,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def InteractionMode(self):
-        """开启专注模式。
+        r"""开启专注模式。
 0 收看全部角色音视频(默认)
 1 只看老师和助教
         :rtype: int
@@ -2493,7 +2493,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def VideoOrientation(self):
-        """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :rtype: int
         """
         return self._VideoOrientation
@@ -2504,7 +2504,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def IsGradingRequiredPostClass(self):
-        """开启课后评分。 0：不开启(默认)  1：开启
+        r"""开启课后评分。 0：不开启(默认)  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -2515,7 +2515,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RoomType(self):
-        """课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+        r"""课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
         return self._RoomType
@@ -2526,7 +2526,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Guests(self):
-        """嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        r"""嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :rtype: list of str
         """
         return self._Guests
@@ -2537,7 +2537,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EndDelayTime(self):
-        """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :rtype: int
         """
         return self._EndDelayTime
@@ -2548,7 +2548,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def LiveType(self):
-        """直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+        r"""直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
         :rtype: int
         """
         return self._LiveType
@@ -2559,7 +2559,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordLiveUrl(self):
-        """伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
+        r"""伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -2570,7 +2570,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EnableAutoStart(self):
-        """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
+        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
         :rtype: int
         """
         return self._EnableAutoStart
@@ -2581,7 +2581,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordBackground(self):
-        """录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        r"""录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :rtype: str
         """
         return self._RecordBackground
@@ -2592,7 +2592,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordScene(self):
-        """录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+        r"""录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 
 自定义场景参数的含义。如下：
      scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。 
@@ -2610,7 +2610,7 @@ class CreateRoomRequest(AbstractModel):
     def RecordLang(self):
         warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
 
-        """录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
         :rtype: str
         """
         return self._RecordLang
@@ -2623,7 +2623,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordStream(self):
-        """录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        r"""录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
         :rtype: int
         """
         return self._RecordStream
@@ -2634,7 +2634,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -2645,7 +2645,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        """字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关：0关闭，1开启，默认关闭
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -2700,7 +2700,7 @@ class CreateRoomRequest(AbstractModel):
 
 
 class CreateRoomResponse(AbstractModel):
-    """CreateRoom返回参数结构体
+    r"""CreateRoom返回参数结构体
 
     """
 
@@ -2716,7 +2716,7 @@ class CreateRoomResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -2727,7 +2727,7 @@ class CreateRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2743,7 +2743,7 @@ class CreateRoomResponse(AbstractModel):
 
 
 class CreateSupervisorRequest(AbstractModel):
-    """CreateSupervisor请求参数结构体
+    r"""CreateSupervisor请求参数结构体
 
     """
 
@@ -2759,7 +2759,7 @@ class CreateSupervisorRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: int
         """
         return self._SdkAppId
@@ -2770,7 +2770,7 @@ class CreateSupervisorRequest(AbstractModel):
 
     @property
     def Users(self):
-        """用户ID列表。
+        r"""用户ID列表。
         :rtype: list of str
         """
         return self._Users
@@ -2794,7 +2794,7 @@ class CreateSupervisorRequest(AbstractModel):
 
 
 class CreateSupervisorResponse(AbstractModel):
-    """CreateSupervisor返回参数结构体
+    r"""CreateSupervisor返回参数结构体
 
     """
 
@@ -2807,7 +2807,7 @@ class CreateSupervisorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2822,7 +2822,7 @@ class CreateSupervisorResponse(AbstractModel):
 
 
 class CustomMsgContent(AbstractModel):
-    """自定义消息
+    r"""自定义消息
 
     """
 
@@ -2841,7 +2841,7 @@ class CustomMsgContent(AbstractModel):
 
     @property
     def Data(self):
-        """自定义消息数据。
+        r"""自定义消息数据。
         :rtype: str
         """
         return self._Data
@@ -2852,7 +2852,7 @@ class CustomMsgContent(AbstractModel):
 
     @property
     def Desc(self):
-        """自定义消息描述信息。
+        r"""自定义消息描述信息。
         :rtype: str
         """
         return self._Desc
@@ -2863,7 +2863,7 @@ class CustomMsgContent(AbstractModel):
 
     @property
     def Ext(self):
-        """扩展字段。
+        r"""扩展字段。
         :rtype: str
         """
         return self._Ext
@@ -2888,7 +2888,7 @@ class CustomMsgContent(AbstractModel):
 
 
 class CustomRecordInfo(AbstractModel):
-    """自定义录制信息
+    r"""自定义录制信息
 
     """
 
@@ -2922,7 +2922,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -2933,7 +2933,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def StopTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._StopTime
@@ -2944,7 +2944,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """总时长
+        r"""总时长
         :rtype: int
         """
         return self._Duration
@@ -2955,7 +2955,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def FileFormat(self):
-        """文件格式
+        r"""文件格式
         :rtype: str
         """
         return self._FileFormat
@@ -2966,7 +2966,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def RecordUrl(self):
-        """流url
+        r"""流url
         :rtype: str
         """
         return self._RecordUrl
@@ -2977,7 +2977,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def RecordSize(self):
-        """流大小
+        r"""流大小
         :rtype: int
         """
         return self._RecordSize
@@ -2988,7 +2988,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def VideoId(self):
-        """流ID
+        r"""流ID
         :rtype: str
         """
         return self._VideoId
@@ -2999,7 +2999,7 @@ class CustomRecordInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -3029,7 +3029,7 @@ class CustomRecordInfo(AbstractModel):
 
 
 class DeleteAppCustomContentRequest(AbstractModel):
-    """DeleteAppCustomContent请求参数结构体
+    r"""DeleteAppCustomContent请求参数结构体
 
     """
 
@@ -3045,7 +3045,7 @@ class DeleteAppCustomContentRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: int
         """
         return self._SdkAppId
@@ -3056,7 +3056,7 @@ class DeleteAppCustomContentRequest(AbstractModel):
 
     @property
     def Scenes(self):
-        """指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
+        r"""指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
         :rtype: list of str
         """
         return self._Scenes
@@ -3080,7 +3080,7 @@ class DeleteAppCustomContentRequest(AbstractModel):
 
 
 class DeleteAppCustomContentResponse(AbstractModel):
-    """DeleteAppCustomContent返回参数结构体
+    r"""DeleteAppCustomContent返回参数结构体
 
     """
 
@@ -3093,7 +3093,7 @@ class DeleteAppCustomContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3108,7 +3108,7 @@ class DeleteAppCustomContentResponse(AbstractModel):
 
 
 class DeleteDocumentRequest(AbstractModel):
-    """DeleteDocument请求参数结构体
+    r"""DeleteDocument请求参数结构体
 
     """
 
@@ -3121,7 +3121,7 @@ class DeleteDocumentRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档ID。
+        r"""文档ID。
         :rtype: str
         """
         return self._DocumentId
@@ -3144,7 +3144,7 @@ class DeleteDocumentRequest(AbstractModel):
 
 
 class DeleteDocumentResponse(AbstractModel):
-    """DeleteDocument返回参数结构体
+    r"""DeleteDocument返回参数结构体
 
     """
 
@@ -3157,7 +3157,7 @@ class DeleteDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3172,7 +3172,7 @@ class DeleteDocumentResponse(AbstractModel):
 
 
 class DeleteGroupMemberRequest(AbstractModel):
-    """DeleteGroupMember请求参数结构体
+    r"""DeleteGroupMember请求参数结构体
 
     """
 
@@ -3191,7 +3191,7 @@ class DeleteGroupMemberRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID，联合群组无法删除群组成员
+        r"""群组ID，联合群组无法删除群组成员
         :rtype: str
         """
         return self._GroupId
@@ -3202,7 +3202,7 @@ class DeleteGroupMemberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -3213,7 +3213,7 @@ class DeleteGroupMemberRequest(AbstractModel):
 
     @property
     def MemberIds(self):
-        """成员列表，最大值200
+        r"""成员列表，最大值200
         :rtype: list of str
         """
         return self._MemberIds
@@ -3238,7 +3238,7 @@ class DeleteGroupMemberRequest(AbstractModel):
 
 
 class DeleteGroupMemberResponse(AbstractModel):
-    """DeleteGroupMember返回参数结构体
+    r"""DeleteGroupMember返回参数结构体
 
     """
 
@@ -3251,7 +3251,7 @@ class DeleteGroupMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3266,7 +3266,7 @@ class DeleteGroupMemberResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup请求参数结构体
+    r"""DeleteGroup请求参数结构体
 
     """
 
@@ -3282,7 +3282,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """待删除群组ID列表
+        r"""待删除群组ID列表
         :rtype: list of str
         """
         return self._GroupIds
@@ -3293,7 +3293,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -3317,7 +3317,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup返回参数结构体
+    r"""DeleteGroup返回参数结构体
 
     """
 
@@ -3330,7 +3330,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3345,7 +3345,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeleteRecordRequest(AbstractModel):
-    """DeleteRecord请求参数结构体
+    r"""DeleteRecord请求参数结构体
 
     """
 
@@ -3362,7 +3362,7 @@ class DeleteRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        r"""房间Id。
         :rtype: int
         """
         return self._RoomId
@@ -3373,7 +3373,7 @@ class DeleteRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -3398,7 +3398,7 @@ class DeleteRecordRequest(AbstractModel):
 
 
 class DeleteRecordResponse(AbstractModel):
-    """DeleteRecord返回参数结构体
+    r"""DeleteRecord返回参数结构体
 
     """
 
@@ -3411,7 +3411,7 @@ class DeleteRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3426,7 +3426,7 @@ class DeleteRecordResponse(AbstractModel):
 
 
 class DeleteRoomRequest(AbstractModel):
-    """DeleteRoom请求参数结构体
+    r"""DeleteRoom请求参数结构体
 
     """
 
@@ -3439,7 +3439,7 @@ class DeleteRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID。
+        r"""课堂ID。
         :rtype: int
         """
         return self._RoomId
@@ -3462,7 +3462,7 @@ class DeleteRoomRequest(AbstractModel):
 
 
 class DeleteRoomResponse(AbstractModel):
-    """DeleteRoom返回参数结构体
+    r"""DeleteRoom返回参数结构体
 
     """
 
@@ -3475,7 +3475,7 @@ class DeleteRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3490,7 +3490,7 @@ class DeleteRoomResponse(AbstractModel):
 
 
 class DeleteSupervisorRequest(AbstractModel):
-    """DeleteSupervisor请求参数结构体
+    r"""DeleteSupervisor请求参数结构体
 
     """
 
@@ -3506,7 +3506,7 @@ class DeleteSupervisorRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -3517,7 +3517,7 @@ class DeleteSupervisorRequest(AbstractModel):
 
     @property
     def Users(self):
-        """用户ID列表
+        r"""用户ID列表
         :rtype: list of str
         """
         return self._Users
@@ -3541,7 +3541,7 @@ class DeleteSupervisorRequest(AbstractModel):
 
 
 class DeleteSupervisorResponse(AbstractModel):
-    """DeleteSupervisor返回参数结构体
+    r"""DeleteSupervisor返回参数结构体
 
     """
 
@@ -3554,7 +3554,7 @@ class DeleteSupervisorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3569,7 +3569,7 @@ class DeleteSupervisorResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser请求参数结构体
+    r"""DeleteUser请求参数结构体
 
     """
 
@@ -3582,7 +3582,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """待删除用户的ID
+        r"""待删除用户的ID
         :rtype: str
         """
         return self._UserId
@@ -3605,7 +3605,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser返回参数结构体
+    r"""DeleteUser返回参数结构体
 
     """
 
@@ -3618,7 +3618,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3633,7 +3633,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DeleteWhiteBoardSnapshotRequest(AbstractModel):
-    """DeleteWhiteBoardSnapshot请求参数结构体
+    r"""DeleteWhiteBoardSnapshot请求参数结构体
 
     """
 
@@ -3646,7 +3646,7 @@ class DeleteWhiteBoardSnapshotRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -3669,7 +3669,7 @@ class DeleteWhiteBoardSnapshotRequest(AbstractModel):
 
 
 class DeleteWhiteBoardSnapshotResponse(AbstractModel):
-    """DeleteWhiteBoardSnapshot返回参数结构体
+    r"""DeleteWhiteBoardSnapshot返回参数结构体
 
     """
 
@@ -3682,7 +3682,7 @@ class DeleteWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3697,7 +3697,7 @@ class DeleteWhiteBoardSnapshotResponse(AbstractModel):
 
 
 class DescribeAnswerListRequest(AbstractModel):
-    """DescribeAnswerList请求参数结构体
+    r"""DescribeAnswerList请求参数结构体
 
     """
 
@@ -3716,7 +3716,7 @@ class DescribeAnswerListRequest(AbstractModel):
 
     @property
     def QuestionId(self):
-        """问题ID
+        r"""问题ID
         :rtype: str
         """
         return self._QuestionId
@@ -3727,7 +3727,7 @@ class DescribeAnswerListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """1
+        r"""1
         :rtype: int
         """
         return self._Page
@@ -3738,7 +3738,7 @@ class DescribeAnswerListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """100
+        r"""100
         :rtype: int
         """
         return self._Limit
@@ -3763,7 +3763,7 @@ class DescribeAnswerListRequest(AbstractModel):
 
 
 class DescribeAnswerListResponse(AbstractModel):
-    """DescribeAnswerList返回参数结构体
+    r"""DescribeAnswerList返回参数结构体
 
     """
 
@@ -3783,7 +3783,7 @@ class DescribeAnswerListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件的房间答案总数
+        r"""符合查询条件的房间答案总数
         :rtype: int
         """
         return self._Total
@@ -3794,7 +3794,7 @@ class DescribeAnswerListResponse(AbstractModel):
 
     @property
     def AnswerInfo(self):
-        """房间提问答案列表
+        r"""房间提问答案列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AnswerInfo
         """
@@ -3806,7 +3806,7 @@ class DescribeAnswerListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3828,7 +3828,7 @@ class DescribeAnswerListResponse(AbstractModel):
 
 
 class DescribeAppDetailRequest(AbstractModel):
-    """DescribeAppDetail请求参数结构体
+    r"""DescribeAppDetail请求参数结构体
 
     """
 
@@ -3845,7 +3845,7 @@ class DescribeAppDetailRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID。低代码互动课堂的SdkAppId。
+        r"""应用ID。低代码互动课堂的SdkAppId。
 
         :rtype: str
         """
@@ -3857,7 +3857,7 @@ class DescribeAppDetailRequest(AbstractModel):
 
     @property
     def DeveloperId(self):
-        """开发商ID
+        r"""开发商ID
         :rtype: str
         """
         return self._DeveloperId
@@ -3881,7 +3881,7 @@ class DescribeAppDetailRequest(AbstractModel):
 
 
 class DescribeAppDetailResponse(AbstractModel):
-    """DescribeAppDetail返回参数结构体
+    r"""DescribeAppDetail返回参数结构体
 
     """
 
@@ -3906,7 +3906,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """SDK 对应的AppId 
+        r"""SDK 对应的AppId 
         :rtype: str
         """
         return self._SdkAppId
@@ -3917,7 +3917,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     @property
     def AppConfig(self):
-        """应用配置
+        r"""应用配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.AppConfig`
         """
         return self._AppConfig
@@ -3928,7 +3928,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     @property
     def SceneConfig(self):
-        """场景配置
+        r"""场景配置
         :rtype: list of SceneItem
         """
         return self._SceneConfig
@@ -3939,7 +3939,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     @property
     def TransferConfig(self):
-        """转存配置
+        r"""转存配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.TransferItem`
         """
         return self._TransferConfig
@@ -3950,7 +3950,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3978,7 +3978,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
 
 class DescribeCurrentMemberListRequest(AbstractModel):
-    """DescribeCurrentMemberList请求参数结构体
+    r"""DescribeCurrentMemberList请求参数结构体
 
     """
 
@@ -3997,7 +3997,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -4008,7 +4008,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增。
+        r"""分页查询当前页数，从1开始递增。
         :rtype: int
         """
         return self._Page
@@ -4019,7 +4019,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大1000。
+        r"""每页数据量，最大1000。
         :rtype: int
         """
         return self._Limit
@@ -4044,7 +4044,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
 
 class DescribeCurrentMemberListResponse(AbstractModel):
-    """DescribeCurrentMemberList返回参数结构体
+    r"""DescribeCurrentMemberList返回参数结构体
 
     """
 
@@ -4063,7 +4063,7 @@ class DescribeCurrentMemberListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录总数。当前房间的总人数。
+        r"""记录总数。当前房间的总人数。
         :rtype: int
         """
         return self._Total
@@ -4074,7 +4074,7 @@ class DescribeCurrentMemberListResponse(AbstractModel):
 
     @property
     def MemberRecords(self):
-        """成员记录列表。
+        r"""成员记录列表。
         :rtype: list of MemberRecord
         """
         return self._MemberRecords
@@ -4085,7 +4085,7 @@ class DescribeCurrentMemberListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4107,13 +4107,13 @@ class DescribeCurrentMemberListResponse(AbstractModel):
 
 
 class DescribeDeveloperRequest(AbstractModel):
-    """DescribeDeveloper请求参数结构体
+    r"""DescribeDeveloper请求参数结构体
 
     """
 
 
 class DescribeDeveloperResponse(AbstractModel):
-    """DescribeDeveloper返回参数结构体
+    r"""DescribeDeveloper返回参数结构体
 
     """
 
@@ -4129,7 +4129,7 @@ class DescribeDeveloperResponse(AbstractModel):
 
     @property
     def DeveloperId(self):
-        """开发商ID
+        r"""开发商ID
         :rtype: str
         """
         return self._DeveloperId
@@ -4140,7 +4140,7 @@ class DescribeDeveloperResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4156,7 +4156,7 @@ class DescribeDeveloperResponse(AbstractModel):
 
 
 class DescribeDocumentRequest(AbstractModel):
-    """DescribeDocument请求参数结构体
+    r"""DescribeDocument请求参数结构体
 
     """
 
@@ -4169,7 +4169,7 @@ class DescribeDocumentRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档Id（唯一id）
+        r"""文档Id（唯一id）
         :rtype: str
         """
         return self._DocumentId
@@ -4192,7 +4192,7 @@ class DescribeDocumentRequest(AbstractModel):
 
 
 class DescribeDocumentResponse(AbstractModel):
-    """DescribeDocument返回参数结构体
+    r"""DescribeDocument返回参数结构体
 
     """
 
@@ -4259,7 +4259,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档Id
+        r"""文档Id
         :rtype: str
         """
         return self._DocumentId
@@ -4270,7 +4270,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def DocumentUrl(self):
-        """文档原址url
+        r"""文档原址url
         :rtype: str
         """
         return self._DocumentUrl
@@ -4281,7 +4281,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def DocumentName(self):
-        """文档名称
+        r"""文档名称
         :rtype: str
         """
         return self._DocumentName
@@ -4292,7 +4292,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def Owner(self):
-        """文档所有者UserId
+        r"""文档所有者UserId
         :rtype: str
         """
         return self._Owner
@@ -4303,7 +4303,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._SdkAppId
@@ -4314,7 +4314,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def Permission(self):
-        """文档权限
+        r"""文档权限
         :rtype: int
         """
         return self._Permission
@@ -4325,7 +4325,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def TranscodeResult(self):
-        """转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
+        r"""转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
         :rtype: str
         """
         return self._TranscodeResult
@@ -4336,7 +4336,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def TranscodeType(self):
-        """转码类型
+        r"""转码类型
         :rtype: int
         """
         return self._TranscodeType
@@ -4347,7 +4347,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def TranscodeProgress(self):
-        """转码进度， 0 - 100 表示（0% - 100%）
+        r"""转码进度， 0 - 100 表示（0% - 100%）
         :rtype: int
         """
         return self._TranscodeProgress
@@ -4358,7 +4358,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def TranscodeState(self):
-        """转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
+        r"""转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
         :rtype: int
         """
         return self._TranscodeState
@@ -4369,7 +4369,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def TranscodeInfo(self):
-        """转码失败后的错误信息
+        r"""转码失败后的错误信息
         :rtype: str
         """
         return self._TranscodeInfo
@@ -4380,7 +4380,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def DocumentType(self):
-        """文档类型
+        r"""文档类型
         :rtype: str
         """
         return self._DocumentType
@@ -4391,7 +4391,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def DocumentSize(self):
-        """文档大小，单位：字节
+        r"""文档大小，单位：字节
         :rtype: int
         """
         return self._DocumentSize
@@ -4402,7 +4402,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新的UNIX时间戳
+        r"""更新的UNIX时间戳
         :rtype: int
         """
         return self._UpdateTime
@@ -4413,7 +4413,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def Pages(self):
-        """课件页数
+        r"""课件页数
         :rtype: int
         """
         return self._Pages
@@ -4424,7 +4424,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def Preview(self):
-        """课件预览地址
+        r"""课件预览地址
         :rtype: str
         """
         return self._Preview
@@ -4435,7 +4435,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def Resolution(self):
-        """文档的分辨率
+        r"""文档的分辨率
         :rtype: str
         """
         return self._Resolution
@@ -4446,7 +4446,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def MinScaleResolution(self):
-        """转码后文档的最小分辨率，和创建文档时传入的参数一致。
+        r"""转码后文档的最小分辨率，和创建文档时传入的参数一致。
         :rtype: str
         """
         return self._MinScaleResolution
@@ -4457,7 +4457,7 @@ class DescribeDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4490,7 +4490,7 @@ class DescribeDocumentResponse(AbstractModel):
 
 
 class DescribeDocumentsByRoomRequest(AbstractModel):
-    """DescribeDocumentsByRoom请求参数结构体
+    r"""DescribeDocumentsByRoom请求参数结构体
 
     """
 
@@ -4523,7 +4523,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -4534,7 +4534,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId
+        r"""低代码互动课堂的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -4545,7 +4545,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增，默认值为1
+        r"""分页查询当前页数，从1开始递增，默认值为1
         :rtype: int
         """
         return self._Page
@@ -4556,7 +4556,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大1000，默认值为100
+        r"""每页数据量，最大1000，默认值为100
         :rtype: int
         """
         return self._Limit
@@ -4567,7 +4567,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def Permission(self):
-        """课件权限。
+        r"""课件权限。
 [0]：获取owner的私有课件；
 [1]：获取owner的公开课件;
 [0,1]：则获取owner的私有课件和公开课件；
@@ -4583,7 +4583,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """文档所有者的user_id，不填默认获取SdkAppId下所有课件
+        r"""文档所有者的user_id，不填默认获取SdkAppId下所有课件
         :rtype: str
         """
         return self._Owner
@@ -4611,7 +4611,7 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
 
 
 class DescribeDocumentsByRoomResponse(AbstractModel):
-    """DescribeDocumentsByRoom返回参数结构体
+    r"""DescribeDocumentsByRoom返回参数结构体
 
     """
 
@@ -4631,7 +4631,7 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
     @property
     def Documents(self):
-        """文档信息列表
+        r"""文档信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DocumentInfo
         """
@@ -4643,7 +4643,7 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件文档总数
+        r"""符合查询条件文档总数
         :rtype: int
         """
         return self._Total
@@ -4654,7 +4654,7 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4676,7 +4676,7 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
 
 class DescribeDocumentsRequest(AbstractModel):
-    """DescribeDocuments请求参数结构体
+    r"""DescribeDocuments请求参数结构体
 
     """
 
@@ -4707,7 +4707,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def SchoolId(self):
-        """学校id
+        r"""学校id
         :rtype: int
         """
         return self._SchoolId
@@ -4718,7 +4718,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增
+        r"""分页查询当前页数，从1开始递增
         :rtype: int
         """
         return self._Page
@@ -4729,7 +4729,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大1000
+        r"""每页数据量，最大1000
         :rtype: int
         """
         return self._Limit
@@ -4740,7 +4740,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def Permission(self):
-        """课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+        r"""课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
         :rtype: list of int non-negative
         """
         return self._Permission
@@ -4751,7 +4751,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """课件所有者的user_id，不填默认获取school_id下所有课件
+        r"""课件所有者的user_id，不填默认获取school_id下所有课件
         :rtype: str
         """
         return self._Owner
@@ -4762,7 +4762,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """课件名称搜索词
+        r"""课件名称搜索词
         :rtype: str
         """
         return self._Keyword
@@ -4773,7 +4773,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """课件id列表，从列表中查询，忽略错误的id
+        r"""课件id列表，从列表中查询，忽略错误的id
         :rtype: list of str
         """
         return self._DocumentId
@@ -4802,7 +4802,7 @@ class DescribeDocumentsRequest(AbstractModel):
 
 
 class DescribeDocumentsResponse(AbstractModel):
-    """DescribeDocuments返回参数结构体
+    r"""DescribeDocuments返回参数结构体
 
     """
 
@@ -4822,7 +4822,7 @@ class DescribeDocumentsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件文档总数
+        r"""符合查询条件文档总数
         :rtype: int
         """
         return self._Total
@@ -4833,7 +4833,7 @@ class DescribeDocumentsResponse(AbstractModel):
 
     @property
     def Documents(self):
-        """文档信息列表
+        r"""文档信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DocumentInfo
         """
@@ -4845,7 +4845,7 @@ class DescribeDocumentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4867,7 +4867,7 @@ class DescribeDocumentsResponse(AbstractModel):
 
 
 class DescribeGroupListRequest(AbstractModel):
-    """DescribeGroupList请求参数结构体
+    r"""DescribeGroupList请求参数结构体
 
     """
 
@@ -4892,7 +4892,7 @@ class DescribeGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -4903,7 +4903,7 @@ class DescribeGroupListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，默认从1开始递增。
+        r"""分页查询当前页数，默认从1开始递增。
         :rtype: int
         """
         return self._Page
@@ -4914,7 +4914,7 @@ class DescribeGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，默认20，最大1000。
+        r"""每页数据量，默认20，最大1000。
         :rtype: int
         """
         return self._Limit
@@ -4925,7 +4925,7 @@ class DescribeGroupListRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        """主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
+        r"""主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
         :rtype: str
         """
         return self._TeacherId
@@ -4936,7 +4936,7 @@ class DescribeGroupListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """成员ID刷选群组，与TeacherId有且只有一个
+        r"""成员ID刷选群组，与TeacherId有且只有一个
         :rtype: str
         """
         return self._MemberId
@@ -4963,7 +4963,7 @@ class DescribeGroupListRequest(AbstractModel):
 
 
 class DescribeGroupListResponse(AbstractModel):
-    """DescribeGroupList返回参数结构体
+    r"""DescribeGroupList返回参数结构体
 
     """
 
@@ -4983,7 +4983,7 @@ class DescribeGroupListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录总数。当前匹配群组总数。
+        r"""记录总数。当前匹配群组总数。
         :rtype: int
         """
         return self._Total
@@ -4994,7 +4994,7 @@ class DescribeGroupListResponse(AbstractModel):
 
     @property
     def GroupInfos(self):
-        """群组信息列表。
+        r"""群组信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfo
         """
@@ -5006,7 +5006,7 @@ class DescribeGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5028,7 +5028,7 @@ class DescribeGroupListResponse(AbstractModel):
 
 
 class DescribeGroupMemberListRequest(AbstractModel):
-    """DescribeGroupMemberList请求参数结构体
+    r"""DescribeGroupMemberList请求参数结构体
 
     """
 
@@ -5050,7 +5050,7 @@ class DescribeGroupMemberListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID
+        r"""群组ID
         :rtype: str
         """
         return self._GroupId
@@ -5061,7 +5061,7 @@ class DescribeGroupMemberListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -5072,7 +5072,7 @@ class DescribeGroupMemberListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页值，默认1
+        r"""分页值，默认1
         :rtype: int
         """
         return self._Page
@@ -5083,7 +5083,7 @@ class DescribeGroupMemberListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，默认20，最大1000
+        r"""每页数据量，默认20，最大1000
         :rtype: int
         """
         return self._Limit
@@ -5109,7 +5109,7 @@ class DescribeGroupMemberListRequest(AbstractModel):
 
 
 class DescribeGroupMemberListResponse(AbstractModel):
-    """DescribeGroupMemberList返回参数结构体
+    r"""DescribeGroupMemberList返回参数结构体
 
     """
 
@@ -5129,7 +5129,7 @@ class DescribeGroupMemberListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件总条数
+        r"""符合查询条件总条数
         :rtype: int
         """
         return self._Total
@@ -5140,7 +5140,7 @@ class DescribeGroupMemberListResponse(AbstractModel):
 
     @property
     def MemberIds(self):
-        """查询成员列表
+        r"""查询成员列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5152,7 +5152,7 @@ class DescribeGroupMemberListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5169,7 +5169,7 @@ class DescribeGroupMemberListResponse(AbstractModel):
 
 
 class DescribeGroupRequest(AbstractModel):
-    """DescribeGroup请求参数结构体
+    r"""DescribeGroup请求参数结构体
 
     """
 
@@ -5185,7 +5185,7 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID
+        r"""群组ID
         :rtype: str
         """
         return self._GroupId
@@ -5196,7 +5196,7 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -5220,7 +5220,7 @@ class DescribeGroupRequest(AbstractModel):
 
 
 class DescribeGroupResponse(AbstractModel):
-    """DescribeGroup返回参数结构体
+    r"""DescribeGroup返回参数结构体
 
     """
 
@@ -5252,7 +5252,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID
+        r"""群组ID
         :rtype: str
         """
         return self._GroupId
@@ -5263,7 +5263,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def GroupName(self):
-        """群组名称
+        r"""群组名称
         :rtype: str
         """
         return self._GroupName
@@ -5274,7 +5274,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def TeacherId(self):
-        """群主主讲人ID
+        r"""群主主讲人ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5286,7 +5286,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def GroupType(self):
-        """群组类型
+        r"""群组类型
 0-基础群组
 1-组合群组，若为1时会返回子群组ID
         :rtype: int
@@ -5299,7 +5299,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def SubGroupIds(self):
-        """子群组ID列表
+        r"""子群组ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5311,7 +5311,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5331,7 +5331,7 @@ class DescribeGroupResponse(AbstractModel):
 
 
 class DescribeMarqueeRequest(AbstractModel):
-    """DescribeMarquee请求参数结构体
+    r"""DescribeMarquee请求参数结构体
 
     """
 
@@ -5347,7 +5347,7 @@ class DescribeMarqueeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -5358,7 +5358,7 @@ class DescribeMarqueeRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间号
+        r"""房间号
         :rtype: int
         """
         return self._RoomId
@@ -5382,7 +5382,7 @@ class DescribeMarqueeRequest(AbstractModel):
 
 
 class DescribeMarqueeResponse(AbstractModel):
-    """DescribeMarquee返回参数结构体
+    r"""DescribeMarquee返回参数结构体
 
     """
 
@@ -5428,7 +5428,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def MarqueeType(self):
-        """ 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        r""" 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
         :rtype: int
         """
         return self._MarqueeType
@@ -5439,7 +5439,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def Content(self):
-        """固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        r"""固定值内容（当MarqueeType=1或5，则展示固定值内容）
         :rtype: str
         """
         return self._Content
@@ -5450,7 +5450,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def FontSize(self):
-        """字体大小（数字，像素单位，范围：10到24）
+        r"""字体大小（数字，像素单位，范围：10到24）
         :rtype: int
         """
         return self._FontSize
@@ -5461,7 +5461,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def FontWeight(self):
-        """字体粗细：1为粗体，0为细体
+        r"""字体粗细：1为粗体，0为细体
         :rtype: int
         """
         return self._FontWeight
@@ -5472,7 +5472,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def FontColor(self):
-        """字体颜色（十六进制颜色值）
+        r"""字体颜色（十六进制颜色值）
         :rtype: str
         """
         return self._FontColor
@@ -5483,7 +5483,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def FontOpacity(self):
-        """字体透明度（数字，范围 0.0 到 1.0）
+        r"""字体透明度（数字，范围 0.0 到 1.0）
         :rtype: float
         """
         return self._FontOpacity
@@ -5494,7 +5494,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """背景颜色（十六进制颜色值）
+        r"""背景颜色（十六进制颜色值）
         :rtype: str
         """
         return self._BackgroundColor
@@ -5505,7 +5505,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def BackgroundOpacity(self):
-        """背景透明度（数字，范围 0.0 到 1.0）
+        r"""背景透明度（数字，范围 0.0 到 1.0）
         :rtype: float
         """
         return self._BackgroundOpacity
@@ -5516,7 +5516,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def DisplayMode(self):
-        """显示方式：1为滚动，2为闪烁
+        r"""显示方式：1为滚动，2为闪烁
         :rtype: int
         """
         return self._DisplayMode
@@ -5527,7 +5527,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def Duration(self):
-        """停留时长（秒，整数，范围 1～10）
+        r"""停留时长（秒，整数，范围 1～10）
         :rtype: int
         """
         return self._Duration
@@ -5538,7 +5538,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def MarqueeCount(self):
-        """跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        r"""跑马灯个数：目前仅支持1或2, 对应显示单排或双排
         :rtype: int
         """
         return self._MarqueeCount
@@ -5549,7 +5549,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5575,7 +5575,7 @@ class DescribeMarqueeResponse(AbstractModel):
 
 
 class DescribeQuestionListRequest(AbstractModel):
-    """DescribeQuestionList请求参数结构体
+    r"""DescribeQuestionList请求参数结构体
 
     """
 
@@ -5594,7 +5594,7 @@ class DescribeQuestionListRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -5605,7 +5605,7 @@ class DescribeQuestionListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增，默认值为1
+        r"""分页查询当前页数，从1开始递增，默认值为1
         :rtype: int
         """
         return self._Page
@@ -5616,7 +5616,7 @@ class DescribeQuestionListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询当前页数，从1开始递增，默认值为1
+        r"""分页查询当前页数，从1开始递增，默认值为1
         :rtype: int
         """
         return self._Limit
@@ -5641,7 +5641,7 @@ class DescribeQuestionListRequest(AbstractModel):
 
 
 class DescribeQuestionListResponse(AbstractModel):
-    """DescribeQuestionList返回参数结构体
+    r"""DescribeQuestionList返回参数结构体
 
     """
 
@@ -5661,7 +5661,7 @@ class DescribeQuestionListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合查询条件的房间问答问题总数
+        r"""符合查询条件的房间问答问题总数
         :rtype: int
         """
         return self._Total
@@ -5672,7 +5672,7 @@ class DescribeQuestionListResponse(AbstractModel):
 
     @property
     def QuestionInfo(self):
-        """房间问答问题列表
+        r"""房间问答问题列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QuestionInfo
         """
@@ -5684,7 +5684,7 @@ class DescribeQuestionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5706,7 +5706,7 @@ class DescribeQuestionListResponse(AbstractModel):
 
 
 class DescribeRecordRequest(AbstractModel):
-    """DescribeRecord请求参数结构体
+    r"""DescribeRecord请求参数结构体
 
     """
 
@@ -5722,7 +5722,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -5733,7 +5733,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -5757,7 +5757,7 @@ class DescribeRecordRequest(AbstractModel):
 
 
 class DescribeRecordResponse(AbstractModel):
-    """DescribeRecord返回参数结构体
+    r"""DescribeRecord返回参数结构体
 
     """
 
@@ -5779,7 +5779,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def SchoolId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SchoolId
@@ -5790,7 +5790,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def ClassId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._ClassId
@@ -5801,7 +5801,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RecordInfo(self):
-        """录制信息
+        r"""录制信息
         :rtype: list of CustomRecordInfo
         """
         return self._RecordInfo
@@ -5812,7 +5812,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5835,7 +5835,7 @@ class DescribeRecordResponse(AbstractModel):
 
 
 class DescribeRecordStreamRequest(AbstractModel):
-    """DescribeRecordStream请求参数结构体
+    r"""DescribeRecordStream请求参数结构体
 
     """
 
@@ -5851,7 +5851,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -5862,7 +5862,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -5886,7 +5886,7 @@ class DescribeRecordStreamRequest(AbstractModel):
 
 
 class DescribeRecordStreamResponse(AbstractModel):
-    """DescribeRecordStream返回参数结构体
+    r"""DescribeRecordStream返回参数结构体
 
     """
 
@@ -5911,7 +5911,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def SchoolId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SchoolId
@@ -5922,7 +5922,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def ClassId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._ClassId
@@ -5933,7 +5933,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def ClassType(self):
-        """课堂类型
+        r"""课堂类型
         :rtype: int
         """
         return self._ClassType
@@ -5944,7 +5944,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def StreamInfo(self):
-        """用户流信息
+        r"""用户流信息
         :rtype: list of SingleStreamInfo
         """
         return self._StreamInfo
@@ -5955,7 +5955,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5979,7 +5979,7 @@ class DescribeRecordStreamResponse(AbstractModel):
 
 
 class DescribeRecordTaskRequest(AbstractModel):
-    """DescribeRecordTask请求参数结构体
+    r"""DescribeRecordTask请求参数结构体
 
     """
 
@@ -5995,7 +5995,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -6006,7 +6006,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -6030,7 +6030,7 @@ class DescribeRecordTaskRequest(AbstractModel):
 
 
 class DescribeRecordTaskResponse(AbstractModel):
-    """DescribeRecordTask返回参数结构体
+    r"""DescribeRecordTask返回参数结构体
 
     """
 
@@ -6046,7 +6046,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -6057,7 +6057,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6073,7 +6073,7 @@ class DescribeRecordTaskResponse(AbstractModel):
 
 
 class DescribeRoomForbiddenUserRequest(AbstractModel):
-    """DescribeRoomForbiddenUser请求参数结构体
+    r"""DescribeRoomForbiddenUser请求参数结构体
 
     """
 
@@ -6089,7 +6089,7 @@ class DescribeRoomForbiddenUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -6100,7 +6100,7 @@ class DescribeRoomForbiddenUserRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -6124,7 +6124,7 @@ class DescribeRoomForbiddenUserRequest(AbstractModel):
 
 
 class DescribeRoomForbiddenUserResponse(AbstractModel):
-    """DescribeRoomForbiddenUser返回参数结构体
+    r"""DescribeRoomForbiddenUser返回参数结构体
 
     """
 
@@ -6140,7 +6140,7 @@ class DescribeRoomForbiddenUserResponse(AbstractModel):
 
     @property
     def MutedAccountList(self):
-        """禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
+        r"""禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
         :rtype: list of MutedAccountList
         """
         return self._MutedAccountList
@@ -6151,7 +6151,7 @@ class DescribeRoomForbiddenUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6172,7 +6172,7 @@ class DescribeRoomForbiddenUserResponse(AbstractModel):
 
 
 class DescribeRoomRequest(AbstractModel):
-    """DescribeRoom请求参数结构体
+    r"""DescribeRoom请求参数结构体
 
     """
 
@@ -6188,7 +6188,7 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -6199,7 +6199,7 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def RTMPStreamingURL(self):
-        """请求RTMP推流链接，0：否，1：是，默认为0。
+        r"""请求RTMP推流链接，0：否，1：是，默认为0。
         :rtype: int
         """
         return self._RTMPStreamingURL
@@ -6223,7 +6223,7 @@ class DescribeRoomRequest(AbstractModel):
 
 
 class DescribeRoomResponse(AbstractModel):
-    """DescribeRoom返回参数结构体
+    r"""DescribeRoom返回参数结构体
 
     """
 
@@ -6353,7 +6353,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Name(self):
-        """课堂名称。
+        r"""课堂名称。
         :rtype: str
         """
         return self._Name
@@ -6364,7 +6364,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """预定的课堂开始时间，unix时间戳（秒）。
+        r"""预定的课堂开始时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._StartTime
@@ -6375,7 +6375,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """预定的课堂结束时间，unix时间戳（秒）。
+        r"""预定的课堂结束时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._EndTime
@@ -6386,7 +6386,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def TeacherId(self):
-        """老师的UserId。
+        r"""老师的UserId。
         :rtype: str
         """
         return self._TeacherId
@@ -6397,7 +6397,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -6408,7 +6408,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def AudienceType(self):
-        """观看类型。互动观看 （默认）	
+        r"""观看类型。互动观看 （默认）	
         :rtype: int
         """
         return self._AudienceType
@@ -6419,7 +6419,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Resolution(self):
-        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
+        r"""头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -6433,7 +6433,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def MaxMicNumber(self):
-        """设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        r"""设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -6444,7 +6444,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def AutoMic(self):
-        """进入课堂时是否自动连麦。可以有以下取值：
+        r"""进入课堂时是否自动连麦。可以有以下取值：
 0 不自动连麦（需要手动申请上麦，默认值）
 1 自动连麦
         :rtype: int
@@ -6457,7 +6457,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def AudioQuality(self):
-        """高音质模式。可以有以下取值：
+        r"""高音质模式。可以有以下取值：
 0 不开启高音质（默认值）
 1 开启高音质
         :rtype: int
@@ -6470,7 +6470,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def SubType(self):
-        """课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
+        r"""课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :rtype: str
         """
         return self._SubType
@@ -6481,7 +6481,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def DisableRecord(self):
-        """上课后是否禁止自动录制。可以有以下取值：
+        r"""上课后是否禁止自动录制。可以有以下取值：
 0 不禁止录制（自动开启录制，默认值）
 1 禁止录制
 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
@@ -6495,7 +6495,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Assistants(self):
-        """助教UserId列表。
+        r"""助教UserId列表。
         :rtype: list of str
         """
         return self._Assistants
@@ -6506,7 +6506,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordUrl(self):
-        """录制地址（协议为https)。仅在房间结束后存在。
+        r"""录制地址（协议为https)。仅在房间结束后存在。
         :rtype: str
         """
         return self._RecordUrl
@@ -6517,7 +6517,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Status(self):
-        """课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
+        r"""课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
         :rtype: int
         """
         return self._Status
@@ -6528,7 +6528,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """课堂绑定的群组ID
+        r"""课堂绑定的群组ID
         :rtype: str
         """
         return self._GroupId
@@ -6539,7 +6539,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def EnableDirectControl(self):
-        """打开学生麦克风/摄像头的授权开关
+        r"""打开学生麦克风/摄像头的授权开关
         :rtype: int
         """
         return self._EnableDirectControl
@@ -6550,7 +6550,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def InteractionMode(self):
-        """开启专注模式。
+        r"""开启专注模式。
 0 收看全部角色音视频(默认)
 1 只看老师和助教
         :rtype: int
@@ -6563,7 +6563,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def VideoOrientation(self):
-        """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :rtype: int
         """
         return self._VideoOrientation
@@ -6574,7 +6574,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def IsGradingRequiredPostClass(self):
-        """该课堂是否开启了课后评分功能。0：未开启  1：开启
+        r"""该课堂是否开启了课后评分功能。0：未开启  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -6585,7 +6585,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RoomType(self):
-        """课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+        r"""课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
         return self._RoomType
@@ -6596,7 +6596,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def VideoDuration(self):
-        """录制时长
+        r"""录制时长
         :rtype: int
         """
         return self._VideoDuration
@@ -6607,7 +6607,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def EndDelayTime(self):
-        """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :rtype: int
         """
         return self._EndDelayTime
@@ -6618,7 +6618,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def LiveType(self):
-        """直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+        r"""直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
         :rtype: int
         """
         return self._LiveType
@@ -6629,7 +6629,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordLiveUrl(self):
-        """伪直播链接
+        r"""伪直播链接
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -6640,7 +6640,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def EnableAutoStart(self):
-        """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :rtype: int
         """
         return self._EnableAutoStart
@@ -6651,7 +6651,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordBackground(self):
-        """录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        r"""录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :rtype: str
         """
         return self._RecordBackground
@@ -6662,7 +6662,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RTMPStreamingURL(self):
-        """RTMP推流链接
+        r"""RTMP推流链接
         :rtype: str
         """
         return self._RTMPStreamingURL
@@ -6673,7 +6673,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordScene(self):
-        """录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
+        r"""录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
         :rtype: str
         """
         return self._RecordScene
@@ -6684,7 +6684,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordLang(self):
-        """录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
         :rtype: str
         """
         return self._RecordLang
@@ -6695,7 +6695,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordStream(self):
-        """录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        r"""录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
         :rtype: int
         """
         return self._RecordStream
@@ -6706,7 +6706,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RecordLayout(self):
-        """录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        r"""录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :rtype: int
         """
         return self._RecordLayout
@@ -6717,7 +6717,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -6728,7 +6728,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        """字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关：0关闭，1开启，默认关闭
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -6739,7 +6739,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Guests(self):
-        """嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        r"""嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :rtype: list of str
         """
         return self._Guests
@@ -6750,7 +6750,7 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6800,7 +6800,7 @@ class DescribeRoomResponse(AbstractModel):
 
 
 class DescribeRoomStatisticsRequest(AbstractModel):
-    """DescribeRoomStatistics请求参数结构体
+    r"""DescribeRoomStatistics请求参数结构体
 
     """
 
@@ -6819,7 +6819,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -6830,7 +6830,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增。
+        r"""分页查询当前页数，从1开始递增。
         :rtype: int
         """
         return self._Page
@@ -6841,7 +6841,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大1000。
+        r"""每页数据量，最大1000。
         :rtype: int
         """
         return self._Limit
@@ -6866,7 +6866,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
 
 class DescribeRoomStatisticsResponse(AbstractModel):
-    """DescribeRoomStatistics返回参数结构体
+    r"""DescribeRoomStatistics返回参数结构体
 
     """
 
@@ -6903,7 +6903,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def PeakMemberNumber(self):
-        """峰值在线成员人数。
+        r"""峰值在线成员人数。
         :rtype: int
         """
         return self._PeakMemberNumber
@@ -6914,7 +6914,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MemberNumber(self):
-        """累计在线人数。
+        r"""累计在线人数。
         :rtype: int
         """
         return self._MemberNumber
@@ -6925,7 +6925,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录总数。包含进入房间或者应到未到的。
+        r"""记录总数。包含进入房间或者应到未到的。
         :rtype: int
         """
         return self._Total
@@ -6936,7 +6936,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MemberRecords(self):
-        """成员记录列表。
+        r"""成员记录列表。
         :rtype: list of MemberRecord
         """
         return self._MemberRecords
@@ -6947,7 +6947,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def RealStartTime(self):
-        """秒级unix时间戳，实际房间开始时间。
+        r"""秒级unix时间戳，实际房间开始时间。
         :rtype: int
         """
         return self._RealStartTime
@@ -6958,7 +6958,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def RealEndTime(self):
-        """秒级unix时间戳，实际房间结束时间。
+        r"""秒级unix时间戳，实际房间结束时间。
         :rtype: int
         """
         return self._RealEndTime
@@ -6969,7 +6969,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MessageCount(self):
-        """课堂消息总数。
+        r"""课堂消息总数。
         :rtype: int
         """
         return self._MessageCount
@@ -6980,7 +6980,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MicCount(self):
-        """课堂连麦总数。
+        r"""课堂连麦总数。
         :rtype: int
         """
         return self._MicCount
@@ -6991,7 +6991,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7019,7 +7019,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
 
 class DescribeScoreListRequest(AbstractModel):
-    """DescribeScoreList请求参数结构体
+    r"""DescribeScoreList请求参数结构体
 
     """
 
@@ -7038,7 +7038,7 @@ class DescribeScoreListRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -7049,7 +7049,7 @@ class DescribeScoreListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增
+        r"""分页查询当前页数，从1开始递增
         :rtype: int
         """
         return self._Page
@@ -7060,7 +7060,7 @@ class DescribeScoreListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """默认是10条
+        r"""默认是10条
         :rtype: int
         """
         return self._Limit
@@ -7085,7 +7085,7 @@ class DescribeScoreListRequest(AbstractModel):
 
 
 class DescribeScoreListResponse(AbstractModel):
-    """DescribeScoreList返回参数结构体
+    r"""DescribeScoreList返回参数结构体
 
     """
 
@@ -7104,7 +7104,7 @@ class DescribeScoreListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7115,7 +7115,7 @@ class DescribeScoreListResponse(AbstractModel):
 
     @property
     def Scores(self):
-        """课堂评分列表
+        r"""课堂评分列表
         :rtype: list of ClassScoreItem
         """
         return self._Scores
@@ -7126,7 +7126,7 @@ class DescribeScoreListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7148,7 +7148,7 @@ class DescribeScoreListResponse(AbstractModel):
 
 
 class DescribeSdkAppIdUsersRequest(AbstractModel):
-    """DescribeSdkAppIdUsers请求参数结构体
+    r"""DescribeSdkAppIdUsers请求参数结构体
 
     """
 
@@ -7167,7 +7167,7 @@ class DescribeSdkAppIdUsersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -7178,7 +7178,7 @@ class DescribeSdkAppIdUsersRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页，默认值为1
+        r"""分页，默认值为1
         :rtype: int
         """
         return self._Page
@@ -7189,7 +7189,7 @@ class DescribeSdkAppIdUsersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页数据限制，默认值为20
+        r"""分页数据限制，默认值为20
         :rtype: int
         """
         return self._Limit
@@ -7214,7 +7214,7 @@ class DescribeSdkAppIdUsersRequest(AbstractModel):
 
 
 class DescribeSdkAppIdUsersResponse(AbstractModel):
-    """DescribeSdkAppIdUsers返回参数结构体
+    r"""DescribeSdkAppIdUsers返回参数结构体
 
     """
 
@@ -7233,7 +7233,7 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
 
     @property
     def Total(self):
-        """用户总数
+        r"""用户总数
         :rtype: int
         """
         return self._Total
@@ -7244,7 +7244,7 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
 
     @property
     def Users(self):
-        """当前获取用户信息数组列表
+        r"""当前获取用户信息数组列表
         :rtype: list of UserInfo
         """
         return self._Users
@@ -7255,7 +7255,7 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7277,7 +7277,7 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
 
 
 class DescribeSupervisorsRequest(AbstractModel):
-    """DescribeSupervisors请求参数结构体
+    r"""DescribeSupervisors请求参数结构体
 
     """
 
@@ -7297,7 +7297,7 @@ class DescribeSupervisorsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -7309,7 +7309,7 @@ class DescribeSupervisorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数据量，最大100。 不填默认20.
+        r"""每页数据量，最大100。 不填默认20.
         :rtype: int
         """
         return self._Limit
@@ -7320,7 +7320,7 @@ class DescribeSupervisorsRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增，不填默认为1。
+        r"""分页查询当前页数，从1开始递增，不填默认为1。
         :rtype: int
         """
         return self._Page
@@ -7345,7 +7345,7 @@ class DescribeSupervisorsRequest(AbstractModel):
 
 
 class DescribeSupervisorsResponse(AbstractModel):
-    """DescribeSupervisors返回参数结构体
+    r"""DescribeSupervisors返回参数结构体
 
     """
 
@@ -7370,7 +7370,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """数据总量
+        r"""数据总量
         :rtype: int
         """
         return self._Total
@@ -7381,7 +7381,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数
+        r"""分页查询当前页数
         :rtype: int
         """
         return self._Page
@@ -7392,7 +7392,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """当前页数据量
+        r"""当前页数据量
         :rtype: int
         """
         return self._Limit
@@ -7403,7 +7403,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
     @property
     def UserIds(self):
-        """巡课列表
+        r"""巡课列表
         :rtype: list of str
         """
         return self._UserIds
@@ -7414,7 +7414,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7433,7 +7433,7 @@ class DescribeSupervisorsResponse(AbstractModel):
 
 
 class DescribeUserDetailRequest(AbstractModel):
-    """DescribeUserDetail请求参数结构体
+    r"""DescribeUserDetail请求参数结构体
 
     """
 
@@ -7449,7 +7449,7 @@ class DescribeUserDetailRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+        r"""用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
         :rtype: str
         """
         return self._UserId
@@ -7460,7 +7460,7 @@ class DescribeUserDetailRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+        r"""用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
         :rtype: str
         """
         return self._OriginId
@@ -7484,7 +7484,7 @@ class DescribeUserDetailRequest(AbstractModel):
 
 
 class DescribeUserDetailResponse(AbstractModel):
-    """DescribeUserDetail返回参数结构体
+    r"""DescribeUserDetail返回参数结构体
 
     """
 
@@ -7500,7 +7500,7 @@ class DescribeUserDetailResponse(AbstractModel):
 
     @property
     def Users(self):
-        """当前获取用户信息数组列表
+        r"""当前获取用户信息数组列表
         :rtype: list of UserInfo
         """
         return self._Users
@@ -7511,7 +7511,7 @@ class DescribeUserDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7532,7 +7532,7 @@ class DescribeUserDetailResponse(AbstractModel):
 
 
 class DescribeUserRequest(AbstractModel):
-    """DescribeUser请求参数结构体
+    r"""DescribeUser请求参数结构体
 
     """
 
@@ -7548,7 +7548,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+        r"""用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
         :rtype: str
         """
         return self._UserId
@@ -7559,7 +7559,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+        r"""用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
         :rtype: str
         """
         return self._OriginId
@@ -7583,7 +7583,7 @@ class DescribeUserRequest(AbstractModel):
 
 
 class DescribeUserResponse(AbstractModel):
-    """DescribeUser返回参数结构体
+    r"""DescribeUser返回参数结构体
 
     """
 
@@ -7611,7 +7611,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用Id。
+        r"""应用Id。
         :rtype: int
         """
         return self._SdkAppId
@@ -7622,7 +7622,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        r"""用户Id。
         :rtype: str
         """
         return self._UserId
@@ -7633,7 +7633,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Name(self):
-        """用户昵称。
+        r"""用户昵称。
         :rtype: str
         """
         return self._Name
@@ -7644,7 +7644,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Avatar(self):
-        """用户头像Url。
+        r"""用户头像Url。
         :rtype: str
         """
         return self._Avatar
@@ -7655,7 +7655,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id
+        r"""用户在客户系统的Id
         :rtype: str
         """
         return self._OriginId
@@ -7666,7 +7666,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7686,7 +7686,7 @@ class DescribeUserResponse(AbstractModel):
 
 
 class DescribeWhiteBoardSnapshotRequest(AbstractModel):
-    """DescribeWhiteBoardSnapshot请求参数结构体
+    r"""DescribeWhiteBoardSnapshot请求参数结构体
 
     """
 
@@ -7699,7 +7699,7 @@ class DescribeWhiteBoardSnapshotRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -7722,7 +7722,7 @@ class DescribeWhiteBoardSnapshotRequest(AbstractModel):
 
 
 class DescribeWhiteBoardSnapshotResponse(AbstractModel):
-    """DescribeWhiteBoardSnapshot返回参数结构体
+    r"""DescribeWhiteBoardSnapshot返回参数结构体
 
     """
 
@@ -7747,7 +7747,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -7758,7 +7758,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def Status(self):
-        """板书任务状态，0：未开始，1：进行中，2：失败，3：成功，4：已删除
+        r"""板书任务状态，0：未开始，1：进行中，2：失败，3：成功，4：已删除
         :rtype: int
         """
         return self._Status
@@ -7769,7 +7769,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def Result(self):
-        """板书截图链接
+        r"""板书截图链接
         :rtype: list of str
         """
         return self._Result
@@ -7780,7 +7780,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -7791,7 +7791,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7810,7 +7810,7 @@ class DescribeWhiteBoardSnapshotResponse(AbstractModel):
 
 
 class DocumentInfo(AbstractModel):
-    """文档信息
+    r"""文档信息
 
     """
 
@@ -7883,7 +7883,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档Id
+        r"""文档Id
         :rtype: str
         """
         return self._DocumentId
@@ -7894,7 +7894,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def DocumentUrl(self):
-        """文档原址url
+        r"""文档原址url
         :rtype: str
         """
         return self._DocumentUrl
@@ -7905,7 +7905,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def DocumentName(self):
-        """文档名称
+        r"""文档名称
         :rtype: str
         """
         return self._DocumentName
@@ -7916,7 +7916,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Owner(self):
-        """文档所有者UserId
+        r"""文档所有者UserId
         :rtype: str
         """
         return self._Owner
@@ -7927,7 +7927,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用Id
+        r"""应用Id
         :rtype: int
         """
         return self._SdkAppId
@@ -7938,7 +7938,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Permission(self):
-        """文档权限，0：私有课件 1：公共课件
+        r"""文档权限，0：私有课件 1：公共课件
         :rtype: int
         """
         return self._Permission
@@ -7949,7 +7949,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def TranscodeResult(self):
-        """转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
+        r"""转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
         :rtype: str
         """
         return self._TranscodeResult
@@ -7960,7 +7960,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def TranscodeType(self):
-        """转码类型
+        r"""转码类型
         :rtype: int
         """
         return self._TranscodeType
@@ -7971,7 +7971,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def TranscodeProgress(self):
-        """转码进度， 0 - 100 表示（0% - 100%）
+        r"""转码进度， 0 - 100 表示（0% - 100%）
         :rtype: int
         """
         return self._TranscodeProgress
@@ -7982,7 +7982,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def TranscodeState(self):
-        """转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
+        r"""转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
         :rtype: int
         """
         return self._TranscodeState
@@ -7993,7 +7993,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def TranscodeInfo(self):
-        """转码失败后的错误信息
+        r"""转码失败后的错误信息
         :rtype: str
         """
         return self._TranscodeInfo
@@ -8004,7 +8004,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def DocumentType(self):
-        """文档类型
+        r"""文档类型
         :rtype: str
         """
         return self._DocumentType
@@ -8015,7 +8015,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def DocumentSize(self):
-        """文档大小，单位：字节
+        r"""文档大小，单位：字节
         :rtype: int
         """
         return self._DocumentSize
@@ -8026,7 +8026,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新的UNIX时间戳
+        r"""更新的UNIX时间戳
         :rtype: int
         """
         return self._UpdateTime
@@ -8037,7 +8037,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Pages(self):
-        """课件页数
+        r"""课件页数
         :rtype: int
         """
         return self._Pages
@@ -8048,7 +8048,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Width(self):
-        """宽，仅在静态转码的课件有效
+        r"""宽，仅在静态转码的课件有效
         :rtype: int
         """
         return self._Width
@@ -8059,7 +8059,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Height(self):
-        """高，仅在静态转码的课件有效
+        r"""高，仅在静态转码的课件有效
         :rtype: int
         """
         return self._Height
@@ -8070,7 +8070,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Cover(self):
-        """封面，仅转码的课件会生成封面
+        r"""封面，仅转码的课件会生成封面
         :rtype: str
         """
         return self._Cover
@@ -8081,7 +8081,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Preview(self):
-        """课件预览地址
+        r"""课件预览地址
         :rtype: str
         """
         return self._Preview
@@ -8092,7 +8092,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def Resolution(self):
-        """文档的分辨率
+        r"""文档的分辨率
         :rtype: str
         """
         return self._Resolution
@@ -8103,7 +8103,7 @@ class DocumentInfo(AbstractModel):
 
     @property
     def MinScaleResolution(self):
-        """转码后文档的最小分辨率，和创建文档时传入的参数一致。
+        r"""转码后文档的最小分辨率，和创建文档时传入的参数一致。
         :rtype: str
         """
         return self._MinScaleResolution
@@ -8146,7 +8146,7 @@ class DocumentInfo(AbstractModel):
 
 
 class EndRoomRequest(AbstractModel):
-    """EndRoom请求参数结构体
+    r"""EndRoom请求参数结构体
 
     """
 
@@ -8159,7 +8159,7 @@ class EndRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -8182,7 +8182,7 @@ class EndRoomRequest(AbstractModel):
 
 
 class EndRoomResponse(AbstractModel):
-    """EndRoom返回参数结构体
+    r"""EndRoom返回参数结构体
 
     """
 
@@ -8195,7 +8195,7 @@ class EndRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8210,7 +8210,7 @@ class EndRoomResponse(AbstractModel):
 
 
 class EventDataInfo(AbstractModel):
-    """房间事件对应的信息。
+    r"""房间事件对应的信息。
 
     """
 
@@ -8238,7 +8238,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def RoomId(self):
-        """事件发生的房间号。
+        r"""事件发生的房间号。
         :rtype: int
         """
         return self._RoomId
@@ -8249,7 +8249,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """事件发生的用户。
+        r"""事件发生的用户。
         :rtype: str
         """
         return self._UserId
@@ -8260,7 +8260,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def Device(self):
-        """用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
+        r"""用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
         :rtype: int
         """
         return self._Device
@@ -8271,7 +8271,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """录制时长。单位：秒
+        r"""录制时长。单位：秒
         :rtype: int
         """
         return self._Duration
@@ -8282,7 +8282,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def RecordSize(self):
-        """录制文件大小
+        r"""录制文件大小
         :rtype: int
         """
         return self._RecordSize
@@ -8293,7 +8293,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def RecordUrl(self):
-        """录制url
+        r"""录制url
         :rtype: str
         """
         return self._RecordUrl
@@ -8321,7 +8321,7 @@ class EventDataInfo(AbstractModel):
 
 
 class EventInfo(AbstractModel):
-    """房间事件信息。
+    r"""房间事件信息。
 
     """
 
@@ -8349,7 +8349,7 @@ VisibleOff: 页面不可见
 
     @property
     def Timestamp(self):
-        """事件发生的秒级unix时间戳。
+        r"""事件发生的秒级unix时间戳。
         :rtype: int
         """
         return self._Timestamp
@@ -8360,7 +8360,7 @@ VisibleOff: 页面不可见
 
     @property
     def EventType(self):
-        """事件类型,有以下值:
+        r"""事件类型,有以下值:
 RoomStart:房间开始 RoomEnd:房间结束 MemberJoin:成员加入 MemberQuit:成员退出 RecordFinish:录制结束
 CameraOn: 摄像头打开
 CameraOff: 摄像头关闭
@@ -8380,7 +8380,7 @@ VisibleOff: 页面不可见
 
     @property
     def EventData(self):
-        """事件详细内容，包含房间号,成员类型事件包含用户Id。
+        r"""事件详细内容，包含房间号,成员类型事件包含用户Id。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.EventDataInfo`
         """
         return self._EventData
@@ -8407,7 +8407,7 @@ VisibleOff: 页面不可见
 
 
 class FaceMsgContent(AbstractModel):
-    """表情消息
+    r"""表情消息
 
     """
 
@@ -8423,7 +8423,7 @@ class FaceMsgContent(AbstractModel):
 
     @property
     def Index(self):
-        """表情索引，用户自定义。
+        r"""表情索引，用户自定义。
         :rtype: int
         """
         return self._Index
@@ -8434,7 +8434,7 @@ class FaceMsgContent(AbstractModel):
 
     @property
     def Data(self):
-        """额外数据。
+        r"""额外数据。
         :rtype: str
         """
         return self._Data
@@ -8458,7 +8458,7 @@ class FaceMsgContent(AbstractModel):
 
 
 class ForbidSendMsgRequest(AbstractModel):
-    """ForbidSendMsg请求参数结构体
+    r"""ForbidSendMsg请求参数结构体
 
     """
 
@@ -8480,7 +8480,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -8491,7 +8491,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -8502,7 +8502,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
     @property
     def MembersAccount(self):
-        """需要禁言的用户账号，最多支持500个账号
+        r"""需要禁言的用户账号，最多支持500个账号
         :rtype: list of str
         """
         return self._MembersAccount
@@ -8513,7 +8513,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
     @property
     def MuteTime(self):
-        """需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+        r"""需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
         :rtype: int
         """
         return self._MuteTime
@@ -8539,7 +8539,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
 
 class ForbidSendMsgResponse(AbstractModel):
-    """ForbidSendMsg返回参数结构体
+    r"""ForbidSendMsg返回参数结构体
 
     """
 
@@ -8552,7 +8552,7 @@ class ForbidSendMsgResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8567,7 +8567,7 @@ class ForbidSendMsgResponse(AbstractModel):
 
 
 class GetRoomEventRequest(AbstractModel):
-    """GetRoomEvent请求参数结构体
+    r"""GetRoomEvent请求参数结构体
 
     """
 
@@ -8605,7 +8605,7 @@ VisibleOff: 页面不可见
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -8616,7 +8616,7 @@ VisibleOff: 页面不可见
 
     @property
     def SdkAppId(self):
-        """应用Id。
+        r"""应用Id。
         :rtype: int
         """
         return self._SdkAppId
@@ -8627,7 +8627,7 @@ VisibleOff: 页面不可见
 
     @property
     def Page(self):
-        """起始页，1开始。keyword为空时有效。
+        r"""起始页，1开始。keyword为空时有效。
         :rtype: int
         """
         return self._Page
@@ -8638,7 +8638,7 @@ VisibleOff: 页面不可见
 
     @property
     def Limit(self):
-        """每页个数。keyword为空时有效。一次性最多100条。
+        r"""每页个数。keyword为空时有效。一次性最多100条。
         :rtype: int
         """
         return self._Limit
@@ -8649,7 +8649,7 @@ VisibleOff: 页面不可见
 
     @property
     def Keyword(self):
-        """搜索事件类型。有以下事件类型:
+        r"""搜索事件类型。有以下事件类型:
 RoomStart:房间开始
 RoomEnd:房间结束
 MemberJoin:成员加入
@@ -8689,7 +8689,7 @@ VisibleOff: 页面不可见
 
 
 class GetRoomEventResponse(AbstractModel):
-    """GetRoomEvent返回参数结构体
+    r"""GetRoomEvent返回参数结构体
 
     """
 
@@ -8708,7 +8708,7 @@ class GetRoomEventResponse(AbstractModel):
 
     @property
     def Total(self):
-        """该课堂的事件总数，keyword搜索不影响该值。
+        r"""该课堂的事件总数，keyword搜索不影响该值。
         :rtype: int
         """
         return self._Total
@@ -8719,7 +8719,7 @@ class GetRoomEventResponse(AbstractModel):
 
     @property
     def Events(self):
-        """详细事件内容。包含相应的类型、发生的时间戳。
+        r"""详细事件内容。包含相应的类型、发生的时间戳。
         :rtype: list of EventInfo
         """
         return self._Events
@@ -8730,7 +8730,7 @@ class GetRoomEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8752,7 +8752,7 @@ class GetRoomEventResponse(AbstractModel):
 
 
 class GetRoomMessageRequest(AbstractModel):
-    """GetRoomMessage请求参数结构体
+    r"""GetRoomMessage请求参数结构体
 
     """
 
@@ -8777,7 +8777,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -8788,7 +8788,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。	
+        r"""课堂Id。	
         :rtype: int
         """
         return self._RoomId
@@ -8799,7 +8799,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def Seq(self):
-        """消息序列。获取该序列以前的消息(不包含该seq消息)
+        r"""消息序列。获取该序列以前的消息(不包含该seq消息)
         :rtype: int
         """
         return self._Seq
@@ -8810,7 +8810,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """消息拉取的条数。最大数量不能超过套餐包限制。
+        r"""消息拉取的条数。最大数量不能超过套餐包限制。
         :rtype: int
         """
         return self._Limit
@@ -8821,7 +8821,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """请求消息的userId
+        r"""请求消息的userId
         :rtype: str
         """
         return self._UserId
@@ -8848,7 +8848,7 @@ class GetRoomMessageRequest(AbstractModel):
 
 
 class GetRoomMessageResponse(AbstractModel):
-    """GetRoomMessage返回参数结构体
+    r"""GetRoomMessage返回参数结构体
 
     """
 
@@ -8864,7 +8864,7 @@ class GetRoomMessageResponse(AbstractModel):
 
     @property
     def Messages(self):
-        """消息列表
+        r"""消息列表
         :rtype: list of MessageList
         """
         return self._Messages
@@ -8875,7 +8875,7 @@ class GetRoomMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8896,7 +8896,7 @@ class GetRoomMessageResponse(AbstractModel):
 
 
 class GetRoomsRequest(AbstractModel):
-    """GetRooms请求参数结构体
+    r"""GetRooms请求参数结构体
 
     """
 
@@ -8925,7 +8925,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台的SdkAppId。
+        r"""低代码平台的SdkAppId。
 
         :rtype: int
         """
@@ -8937,7 +8937,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。默认以当前时间减去半小时作为开始时间。
+        r"""开始时间。默认以当前时间减去半小时作为开始时间。
         :rtype: int
         """
         return self._StartTime
@@ -8948,7 +8948,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。默认以当前时间加上半小时作为结束时间。
+        r"""结束时间。默认以当前时间加上半小时作为结束时间。
         :rtype: int
         """
         return self._EndTime
@@ -8959,7 +8959,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def Page(self):
-        """分页查询当前页数，从1开始递增
+        r"""分页查询当前页数，从1开始递增
         :rtype: int
         """
         return self._Page
@@ -8970,7 +8970,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """默认10条，最大上限为100条
+        r"""默认10条，最大上限为100条
         :rtype: int
         """
         return self._Limit
@@ -8981,7 +8981,7 @@ class GetRoomsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
+        r"""课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
         :rtype: list of int non-negative
         """
         return self._Status
@@ -9009,7 +9009,7 @@ class GetRoomsRequest(AbstractModel):
 
 
 class GetRoomsResponse(AbstractModel):
-    """GetRooms返回参数结构体
+    r"""GetRooms返回参数结构体
 
     """
 
@@ -9028,7 +9028,7 @@ class GetRoomsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -9039,7 +9039,7 @@ class GetRoomsResponse(AbstractModel):
 
     @property
     def Rooms(self):
-        """课堂列表
+        r"""课堂列表
         :rtype: list of RoomItem
         """
         return self._Rooms
@@ -9050,7 +9050,7 @@ class GetRoomsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9072,7 +9072,7 @@ class GetRoomsResponse(AbstractModel):
 
 
 class GetWatermarkRequest(AbstractModel):
-    """GetWatermark请求参数结构体
+    r"""GetWatermark请求参数结构体
 
     """
 
@@ -9086,7 +9086,7 @@ class GetWatermarkRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -9110,7 +9110,7 @@ class GetWatermarkRequest(AbstractModel):
 
 
 class GetWatermarkResponse(AbstractModel):
-    """GetWatermark返回参数结构体
+    r"""GetWatermark返回参数结构体
 
     """
 
@@ -9135,7 +9135,7 @@ class GetWatermarkResponse(AbstractModel):
 
     @property
     def TeacherLogo(self):
-        """老师视频区域的水印参数配置
+        r"""老师视频区域的水印参数配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         """
         return self._TeacherLogo
@@ -9146,7 +9146,7 @@ class GetWatermarkResponse(AbstractModel):
 
     @property
     def BoardLogo(self):
-        """白板区域的水印参数配置
+        r"""白板区域的水印参数配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         """
         return self._BoardLogo
@@ -9157,7 +9157,7 @@ class GetWatermarkResponse(AbstractModel):
 
     @property
     def BackgroundPicture(self):
-        """背景图片配置
+        r"""背景图片配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.BackgroundPictureConfig`
         """
         return self._BackgroundPicture
@@ -9168,7 +9168,7 @@ class GetWatermarkResponse(AbstractModel):
 
     @property
     def Text(self):
-        """文字水印配置
+        r"""文字水印配置
         :rtype: :class:`tencentcloud.lcic.v20220817.models.TextMarkConfig`
         """
         return self._Text
@@ -9179,7 +9179,7 @@ class GetWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9206,7 +9206,7 @@ class GetWatermarkResponse(AbstractModel):
 
 
 class GroupBaseInfo(AbstractModel):
-    """批量创建群组基础信息
+    r"""批量创建群组基础信息
 
     """
 
@@ -9222,7 +9222,7 @@ class GroupBaseInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """待创建群组名
+        r"""待创建群组名
         :rtype: str
         """
         return self._GroupName
@@ -9233,7 +9233,7 @@ class GroupBaseInfo(AbstractModel):
 
     @property
     def TeacherId(self):
-        """群组主讲人ID
+        r"""群组主讲人ID
         :rtype: str
         """
         return self._TeacherId
@@ -9257,7 +9257,7 @@ class GroupBaseInfo(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """获取群组列表返回的群组信息
+    r"""获取群组列表返回的群组信息
 
     """
 
@@ -9285,7 +9285,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """群组ID
+        r"""群组ID
         :rtype: str
         """
         return self._GroupId
@@ -9296,7 +9296,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """群组名称
+        r"""群组名称
         :rtype: str
         """
         return self._GroupName
@@ -9307,7 +9307,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def TeacherId(self):
-        """群组主讲人ID
+        r"""群组主讲人ID
         :rtype: str
         """
         return self._TeacherId
@@ -9318,7 +9318,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        """群组类型 
+        r"""群组类型 
 0-基础群组 
 1-组合群组，若为1时会返回子群组ID列表
         :rtype: int
@@ -9331,7 +9331,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def SubGroupIds(self):
-        """子群组ID列表，如有。
+        r"""子群组ID列表，如有。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9359,7 +9359,7 @@ class GroupInfo(AbstractModel):
 
 
 class ImageInfo(AbstractModel):
-    """单张图片信息
+    r"""单张图片信息
 
     """
 
@@ -9388,7 +9388,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Type(self):
-        """图片类型：
+        r"""图片类型：
 1-原图
 2-大图
 3-缩略图
@@ -9403,7 +9403,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Size(self):
-        """图片数据大小，单位：字节。
+        r"""图片数据大小，单位：字节。
         :rtype: int
         """
         return self._Size
@@ -9414,7 +9414,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Width(self):
-        """图片宽度，单位为像素。
+        r"""图片宽度，单位为像素。
         :rtype: int
         """
         return self._Width
@@ -9425,7 +9425,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Height(self):
-        """图片高度，单位为像素。
+        r"""图片高度，单位为像素。
         :rtype: int
         """
         return self._Height
@@ -9436,7 +9436,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def URL(self):
-        """图片下载地址。
+        r"""图片下载地址。
         :rtype: str
         """
         return self._URL
@@ -9463,7 +9463,7 @@ class ImageInfo(AbstractModel):
 
 
 class ImageMsgContent(AbstractModel):
-    """图片消息
+    r"""图片消息
 
     """
 
@@ -9488,7 +9488,7 @@ BMP = 4
 
     @property
     def UUID(self):
-        """图片的唯一标识，客户端用于索引图片的键值。
+        r"""图片的唯一标识，客户端用于索引图片的键值。
         :rtype: str
         """
         return self._UUID
@@ -9499,7 +9499,7 @@ BMP = 4
 
     @property
     def ImageFormat(self):
-        """图片格式。
+        r"""图片格式。
 JPG = 1
 GIF = 2
 PNG = 3
@@ -9516,7 +9516,7 @@ BMP = 4
 
     @property
     def ImageInfoList(self):
-        """图片信息
+        r"""图片信息
         :rtype: list of ImageInfo
         """
         return self._ImageInfoList
@@ -9546,7 +9546,7 @@ BMP = 4
 
 
 class KickUserFromRoomRequest(AbstractModel):
-    """KickUserFromRoom请求参数结构体
+    r"""KickUserFromRoom请求参数结构体
 
     """
 
@@ -9573,7 +9573,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -9584,7 +9584,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台的SdkAppId。
+        r"""低代码平台的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -9595,7 +9595,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """需要踢出成员Id
+        r"""需要踢出成员Id
         :rtype: str
         """
         return self._UserId
@@ -9606,7 +9606,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def KickType(self):
-        """踢出类型：
+        r"""踢出类型：
 1：临时踢出，可以使用Duration参数指定污点时间，污点时间间隔内用户无法进入房间。
 2：永久踢出
         :rtype: int
@@ -9619,7 +9619,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def Duration(self):
-        """污点时间(单位秒)，KickType = 1时生效，默认为0
+        r"""污点时间(单位秒)，KickType = 1时生效，默认为0
         :rtype: int
         """
         return self._Duration
@@ -9646,7 +9646,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
 
 class KickUserFromRoomResponse(AbstractModel):
-    """KickUserFromRoom返回参数结构体
+    r"""KickUserFromRoom返回参数结构体
 
     """
 
@@ -9659,7 +9659,7 @@ class KickUserFromRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9674,7 +9674,7 @@ class KickUserFromRoomResponse(AbstractModel):
 
 
 class LoginOriginIdRequest(AbstractModel):
-    """LoginOriginId请求参数结构体
+    r"""LoginOriginId请求参数结构体
 
     """
 
@@ -9690,7 +9690,7 @@ class LoginOriginIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -9701,7 +9701,7 @@ class LoginOriginIdRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id，需要在同一应用下唯一。
+        r"""用户在客户系统的Id，需要在同一应用下唯一。
         :rtype: str
         """
         return self._OriginId
@@ -9725,7 +9725,7 @@ class LoginOriginIdRequest(AbstractModel):
 
 
 class LoginOriginIdResponse(AbstractModel):
-    """LoginOriginId返回参数结构体
+    r"""LoginOriginId返回参数结构体
 
     """
 
@@ -9744,7 +9744,7 @@ class LoginOriginIdResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        r"""用户Id。
         :rtype: str
         """
         return self._UserId
@@ -9755,7 +9755,7 @@ class LoginOriginIdResponse(AbstractModel):
 
     @property
     def Token(self):
-        """登录/注册成功后返回登录态token。有效期7天。
+        r"""登录/注册成功后返回登录态token。有效期7天。
         :rtype: str
         """
         return self._Token
@@ -9766,7 +9766,7 @@ class LoginOriginIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9783,7 +9783,7 @@ class LoginOriginIdResponse(AbstractModel):
 
 
 class LoginUserRequest(AbstractModel):
-    """LoginUser请求参数结构体
+    r"""LoginUser请求参数结构体
 
     """
 
@@ -9796,7 +9796,7 @@ class LoginUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """注册获取的用户id。
+        r"""注册获取的用户id。
         :rtype: str
         """
         return self._UserId
@@ -9819,7 +9819,7 @@ class LoginUserRequest(AbstractModel):
 
 
 class LoginUserResponse(AbstractModel):
-    """LoginUser返回参数结构体
+    r"""LoginUser返回参数结构体
 
     """
 
@@ -9838,7 +9838,7 @@ class LoginUserResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        r"""用户Id。
         :rtype: str
         """
         return self._UserId
@@ -9849,7 +9849,7 @@ class LoginUserResponse(AbstractModel):
 
     @property
     def Token(self):
-        """注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。
+        r"""注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。
         :rtype: str
         """
         return self._Token
@@ -9860,7 +9860,7 @@ class LoginUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9877,7 +9877,7 @@ class LoginUserResponse(AbstractModel):
 
 
 class MemberRecord(AbstractModel):
-    """成员记录信息。
+    r"""成员记录信息。
 
     """
 
@@ -9952,7 +9952,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID。
+        r"""用户ID。
         :rtype: str
         """
         return self._UserId
@@ -9963,7 +9963,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称。
+        r"""用户名称。
         :rtype: str
         """
         return self._UserName
@@ -9974,7 +9974,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def PresentTime(self):
-        """在线时长，单位秒。
+        r"""在线时长，单位秒。
         :rtype: int
         """
         return self._PresentTime
@@ -9985,7 +9985,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Camera(self):
-        """是否开启摄像头。
+        r"""是否开启摄像头。
         :rtype: int
         """
         return self._Camera
@@ -9996,7 +9996,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Mic(self):
-        """是否开启麦克风。
+        r"""是否开启麦克风。
         :rtype: int
         """
         return self._Mic
@@ -10007,7 +10007,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Silence(self):
-        """是否禁言。
+        r"""是否禁言。
         :rtype: int
         """
         return self._Silence
@@ -10018,7 +10018,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def AnswerQuestions(self):
-        """回答问题数量。
+        r"""回答问题数量。
         :rtype: int
         """
         return self._AnswerQuestions
@@ -10029,7 +10029,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def HandUps(self):
-        """举手数量。
+        r"""举手数量。
         :rtype: int
         """
         return self._HandUps
@@ -10040,7 +10040,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def FirstJoinTimestamp(self):
-        """首次进入房间的unix时间戳。
+        r"""首次进入房间的unix时间戳。
         :rtype: int
         """
         return self._FirstJoinTimestamp
@@ -10051,7 +10051,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def LastQuitTimestamp(self):
-        """最后一次退出房间的unix时间戳。
+        r"""最后一次退出房间的unix时间戳。
         :rtype: int
         """
         return self._LastQuitTimestamp
@@ -10062,7 +10062,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Rewords(self):
-        """奖励次数。
+        r"""奖励次数。
         :rtype: int
         """
         return self._Rewords
@@ -10073,7 +10073,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def IPAddress(self):
-        """用户IP。
+        r"""用户IP。
         :rtype: str
         """
         return self._IPAddress
@@ -10084,7 +10084,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Location(self):
-        """用户位置信息。
+        r"""用户位置信息。
         :rtype: str
         """
         return self._Location
@@ -10095,7 +10095,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Device(self):
-        """用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
+        r"""用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
         :rtype: int
         """
         return self._Device
@@ -10106,7 +10106,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def PerMemberMicCount(self):
-        """每个成员上麦次数。
+        r"""每个成员上麦次数。
         :rtype: int
         """
         return self._PerMemberMicCount
@@ -10117,7 +10117,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def PerMemberMessageCount(self):
-        """每个成员发送消息数量。
+        r"""每个成员发送消息数量。
 
         :rtype: int
         """
@@ -10129,7 +10129,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Role(self):
-        """用户角色。0代表学生；1代表老师； 2助教；3巡课。
+        r"""用户角色。0代表学生；1代表老师； 2助教；3巡课。
         :rtype: int
         """
         return self._Role
@@ -10140,7 +10140,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def GroupId(self):
-        """上课班号
+        r"""上课班号
         :rtype: str
         """
         return self._GroupId
@@ -10151,7 +10151,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def SubGroupId(self):
-        """子上课班号
+        r"""子上课班号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10163,7 +10163,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def Stage(self):
-        """用户的上台状态
+        r"""用户的上台状态
         :rtype: int
         """
         return self._Stage
@@ -10174,7 +10174,7 @@ class MemberRecord(AbstractModel):
 
     @property
     def CurrentState(self):
-        """用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
+        r"""用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
         :rtype: int
         """
         return self._CurrentState
@@ -10217,7 +10217,7 @@ class MemberRecord(AbstractModel):
 
 
 class MessageItem(AbstractModel):
-    """单条消息体内容
+    r"""单条消息体内容
 
     """
 
@@ -10239,7 +10239,7 @@ class MessageItem(AbstractModel):
 
     @property
     def MessageType(self):
-        """消息类型。0表示文本消息，1表示图片消息
+        r"""消息类型。0表示文本消息，1表示图片消息
         :rtype: int
         """
         return self._MessageType
@@ -10250,7 +10250,7 @@ class MessageItem(AbstractModel):
 
     @property
     def TextMessage(self):
-        """文本消息内容。message type为0时有效。
+        r"""文本消息内容。message type为0时有效。
         :rtype: str
         """
         return self._TextMessage
@@ -10261,7 +10261,7 @@ class MessageItem(AbstractModel):
 
     @property
     def ImageMessage(self):
-        """图片消息URL。 message type为1时有效。
+        r"""图片消息URL。 message type为1时有效。
         :rtype: str
         """
         return self._ImageMessage
@@ -10272,7 +10272,7 @@ class MessageItem(AbstractModel):
 
     @property
     def CustomMessage(self):
-        """自定义消息内容。message type为2时有效。
+        r"""自定义消息内容。message type为2时有效。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         return self._CustomMessage
@@ -10300,7 +10300,7 @@ class MessageItem(AbstractModel):
 
 
 class MessageList(AbstractModel):
-    """历史消息列表
+    r"""历史消息列表
 
     """
 
@@ -10322,7 +10322,7 @@ class MessageList(AbstractModel):
 
     @property
     def Timestamp(self):
-        """消息时间戳
+        r"""消息时间戳
         :rtype: int
         """
         return self._Timestamp
@@ -10333,7 +10333,7 @@ class MessageList(AbstractModel):
 
     @property
     def FromAccount(self):
-        """消息发送者
+        r"""消息发送者
         :rtype: str
         """
         return self._FromAccount
@@ -10344,7 +10344,7 @@ class MessageList(AbstractModel):
 
     @property
     def Seq(self):
-        """消息序列号，当前课堂内唯一且单调递增
+        r"""消息序列号，当前课堂内唯一且单调递增
         :rtype: int
         """
         return self._Seq
@@ -10355,7 +10355,7 @@ class MessageList(AbstractModel):
 
     @property
     def MessageBody(self):
-        """历史消息列表
+        r"""历史消息列表
         :rtype: list of MessageItem
         """
         return self._MessageBody
@@ -10386,7 +10386,7 @@ class MessageList(AbstractModel):
 
 
 class ModifyAppRequest(AbstractModel):
-    """ModifyApp请求参数结构体
+    r"""ModifyApp请求参数结构体
 
     """
 
@@ -10411,7 +10411,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -10422,7 +10422,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def Callback(self):
-        """回调地址。
+        r"""回调地址。
         :rtype: str
         """
         return self._Callback
@@ -10433,7 +10433,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
-        """回调key。
+        r"""回调key。
         :rtype: str
         """
         return self._CallbackKey
@@ -10444,7 +10444,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def TransferId(self):
-        """转存id
+        r"""转存id
         :rtype: str
         """
         return self._TransferId
@@ -10455,7 +10455,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def TransferUrl(self):
-        """转存地址
+        r"""转存地址
         :rtype: str
         """
         return self._TransferUrl
@@ -10482,7 +10482,7 @@ class ModifyAppRequest(AbstractModel):
 
 
 class ModifyAppResponse(AbstractModel):
-    """ModifyApp返回参数结构体
+    r"""ModifyApp返回参数结构体
 
     """
 
@@ -10495,7 +10495,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10510,7 +10510,7 @@ class ModifyAppResponse(AbstractModel):
 
 
 class ModifyGroupRequest(AbstractModel):
-    """ModifyGroup请求参数结构体
+    r"""ModifyGroup请求参数结构体
 
     """
 
@@ -10532,7 +10532,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """需要修改的群组ID
+        r"""需要修改的群组ID
         :rtype: str
         """
         return self._GroupId
@@ -10543,7 +10543,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台应用ID
+        r"""低代码平台应用ID
         :rtype: int
         """
         return self._SdkAppId
@@ -10554,7 +10554,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        """默认绑定主讲老师ID
+        r"""默认绑定主讲老师ID
         :rtype: str
         """
         return self._TeacherId
@@ -10565,7 +10565,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """待修改的群组名称
+        r"""待修改的群组名称
         :rtype: str
         """
         return self._GroupName
@@ -10591,7 +10591,7 @@ class ModifyGroupRequest(AbstractModel):
 
 
 class ModifyGroupResponse(AbstractModel):
-    """ModifyGroup返回参数结构体
+    r"""ModifyGroup返回参数结构体
 
     """
 
@@ -10604,7 +10604,7 @@ class ModifyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10619,7 +10619,7 @@ class ModifyGroupResponse(AbstractModel):
 
 
 class ModifyRoomRequest(AbstractModel):
-    """ModifyRoom请求参数结构体
+    r"""ModifyRoom请求参数结构体
 
     """
 
@@ -10732,7 +10732,7 @@ video 纯视频
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -10743,7 +10743,7 @@ video 纯视频
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId
+        r"""低代码互动课堂的SdkAppId
         :rtype: int
         """
         return self._SdkAppId
@@ -10754,7 +10754,7 @@ video 纯视频
 
     @property
     def StartTime(self):
-        """预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
+        r"""预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
         :rtype: int
         """
         return self._StartTime
@@ -10765,7 +10765,7 @@ video 纯视频
 
     @property
     def EndTime(self):
-        """预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
+        r"""预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
         :rtype: int
         """
         return self._EndTime
@@ -10776,7 +10776,7 @@ video 纯视频
 
     @property
     def TeacherId(self):
-        """老师ID。直播开始后不允许修改。
+        r"""老师ID。直播开始后不允许修改。
         :rtype: str
         """
         return self._TeacherId
@@ -10787,7 +10787,7 @@ video 纯视频
 
     @property
     def Name(self):
-        """房间名称。
+        r"""房间名称。
         :rtype: str
         """
         return self._Name
@@ -10798,7 +10798,7 @@ video 纯视频
 
     @property
     def Resolution(self):
-        """分辨率。可以有如下取值：
+        r"""分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -10813,7 +10813,7 @@ video 纯视频
 
     @property
     def MaxMicNumber(self):
-        """设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        r"""设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -10824,7 +10824,7 @@ video 纯视频
 
     @property
     def AutoMic(self):
-        """进入房间时是否自动连麦。可以有以下取值：
+        r"""进入房间时是否自动连麦。可以有以下取值：
 0 不自动连麦（默认值）
 1 自动连麦
 直播开始后不允许修改。
@@ -10838,7 +10838,7 @@ video 纯视频
 
     @property
     def AudioQuality(self):
-        """高音质模式。可以有以下取值：
+        r"""高音质模式。可以有以下取值：
 0 不开启高音质（默认值）
 1 开启高音质
 直播开始后不允许修改。
@@ -10852,7 +10852,7 @@ video 纯视频
 
     @property
     def SubType(self):
-        """房间子类型，可以有以下取值：
+        r"""房间子类型，可以有以下取值：
 videodoc 文档+视频
 video 纯视频
 直播开始后不允许修改。
@@ -10866,7 +10866,7 @@ video 纯视频
 
     @property
     def DisableRecord(self):
-        """禁止录制。可以有以下取值：
+        r"""禁止录制。可以有以下取值：
 0 不禁止录制（默认值）
 1 禁止录制
 直播开始后不允许修改。
@@ -10880,7 +10880,7 @@ video 纯视频
 
     @property
     def Assistants(self):
-        """助教Id列表。直播开始后不允许修改。
+        r"""助教Id列表。直播开始后不允许修改。
         :rtype: list of str
         """
         return self._Assistants
@@ -10891,7 +10891,7 @@ video 纯视频
 
     @property
     def GroupId(self):
-        """房间绑定的群组ID。直播开始后不允许修改。
+        r"""房间绑定的群组ID。直播开始后不允许修改。
         :rtype: str
         """
         return self._GroupId
@@ -10902,7 +10902,7 @@ video 纯视频
 
     @property
     def EnableDirectControl(self):
-        """打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
+        r"""打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
         :rtype: int
         """
         return self._EnableDirectControl
@@ -10913,7 +10913,7 @@ video 纯视频
 
     @property
     def InteractionMode(self):
-        """开启专注模式。
+        r"""开启专注模式。
 0 收看全部角色音视频(默认)
 1 只看老师和助教
         :rtype: int
@@ -10926,7 +10926,7 @@ video 纯视频
 
     @property
     def VideoOrientation(self):
-        """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :rtype: int
         """
         return self._VideoOrientation
@@ -10937,7 +10937,7 @@ video 纯视频
 
     @property
     def IsGradingRequiredPostClass(self):
-        """开启课后评分。 0：不开启(默认)  1：开启
+        r"""开启课后评分。 0：不开启(默认)  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -10948,7 +10948,7 @@ video 纯视频
 
     @property
     def RoomType(self):
-        """房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
+        r"""房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
 注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
@@ -10960,7 +10960,7 @@ video 纯视频
 
     @property
     def RecordLayout(self):
-        """录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        r"""录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :rtype: int
         """
         return self._RecordLayout
@@ -10971,7 +10971,7 @@ video 纯视频
 
     @property
     def EndDelayTime(self):
-        """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :rtype: int
         """
         return self._EndDelayTime
@@ -10982,7 +10982,7 @@ video 纯视频
 
     @property
     def LiveType(self):
-        """直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）
+        r"""直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）
         :rtype: int
         """
         return self._LiveType
@@ -10993,7 +10993,7 @@ video 纯视频
 
     @property
     def RecordLiveUrl(self):
-        """伪直播链接
+        r"""伪直播链接
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -11004,7 +11004,7 @@ video 纯视频
 
     @property
     def EnableAutoStart(self):
-        """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :rtype: int
         """
         return self._EnableAutoStart
@@ -11015,7 +11015,7 @@ video 纯视频
 
     @property
     def RecordScene(self):
-        """录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+        r"""录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
         :rtype: str
         """
         return self._RecordScene
@@ -11028,7 +11028,7 @@ video 纯视频
     def RecordLang(self):
         warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
 
-        """录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
         :rtype: str
         """
         return self._RecordLang
@@ -11041,7 +11041,7 @@ video 纯视频
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -11052,7 +11052,7 @@ video 纯视频
 
     @property
     def SubtitlesTranscription(self):
-        """字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关：0关闭，1开启，默认关闭
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -11102,7 +11102,7 @@ video 纯视频
 
 
 class ModifyRoomResponse(AbstractModel):
-    """ModifyRoom返回参数结构体
+    r"""ModifyRoom返回参数结构体
 
     """
 
@@ -11115,7 +11115,7 @@ class ModifyRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11130,7 +11130,7 @@ class ModifyRoomResponse(AbstractModel):
 
 
 class ModifyUserProfileRequest(AbstractModel):
-    """ModifyUserProfile请求参数结构体
+    r"""ModifyUserProfile请求参数结构体
 
     """
 
@@ -11149,7 +11149,7 @@ class ModifyUserProfileRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """待修改用户ID
+        r"""待修改用户ID
         :rtype: str
         """
         return self._UserId
@@ -11160,7 +11160,7 @@ class ModifyUserProfileRequest(AbstractModel):
 
     @property
     def Nickname(self):
-        """待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
+        r"""待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
         :rtype: str
         """
         return self._Nickname
@@ -11171,7 +11171,7 @@ class ModifyUserProfileRequest(AbstractModel):
 
     @property
     def Avatar(self):
-        """待修改头像url
+        r"""待修改头像url
         :rtype: str
         """
         return self._Avatar
@@ -11196,7 +11196,7 @@ class ModifyUserProfileRequest(AbstractModel):
 
 
 class ModifyUserProfileResponse(AbstractModel):
-    """ModifyUserProfile返回参数结构体
+    r"""ModifyUserProfile返回参数结构体
 
     """
 
@@ -11209,7 +11209,7 @@ class ModifyUserProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11224,7 +11224,7 @@ class ModifyUserProfileResponse(AbstractModel):
 
 
 class MsgBody(AbstractModel):
-    """自定义消息结构
+    r"""自定义消息结构
 
     """
 
@@ -11253,7 +11253,7 @@ TIMCustomElem（自定义消息）
 
     @property
     def MsgType(self):
-        """TIM 消息对象类型，目前支持的消息对象包括：
+        r"""TIM 消息对象类型，目前支持的消息对象包括：
 TIMTextElem（文本消息）
 TIMFaceElem（表情消息）
 TIMImageElem（图像消息）
@@ -11268,7 +11268,7 @@ TIMCustomElem（自定义消息）
 
     @property
     def TextMsgContent(self):
-        """文本消息，当MsgType 为TIMTextElem（文本消息）必选。
+        r"""文本消息，当MsgType 为TIMTextElem（文本消息）必选。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.TextMsgContent`
         """
         return self._TextMsgContent
@@ -11279,7 +11279,7 @@ TIMCustomElem（自定义消息）
 
     @property
     def FaceMsgContent(self):
-        """表情消息，当MsgType 为TIMFaceElem（表情消息）必选。
+        r"""表情消息，当MsgType 为TIMFaceElem（表情消息）必选。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.FaceMsgContent`
         """
         return self._FaceMsgContent
@@ -11290,7 +11290,7 @@ TIMCustomElem（自定义消息）
 
     @property
     def ImageMsgContent(self):
-        """图像消息，当MsgType为TIMImageElem（图像消息）必选。
+        r"""图像消息，当MsgType为TIMImageElem（图像消息）必选。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.ImageMsgContent`
         """
         return self._ImageMsgContent
@@ -11301,7 +11301,7 @@ TIMCustomElem（自定义消息）
 
     @property
     def CustomMsgContent(self):
-        """自定义消息，TIMCustomElem（自定义消息）必选。
+        r"""自定义消息，TIMCustomElem（自定义消息）必选。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         return self._CustomMsgContent
@@ -11336,7 +11336,7 @@ TIMCustomElem（自定义消息）
 
 
 class MutedAccountList(AbstractModel):
-    """禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
+    r"""禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
 
     """
 
@@ -11352,7 +11352,7 @@ class MutedAccountList(AbstractModel):
 
     @property
     def MemberAccount(self):
-        """用户 ID
+        r"""用户 ID
         :rtype: str
         """
         return self._MemberAccount
@@ -11363,7 +11363,7 @@ class MutedAccountList(AbstractModel):
 
     @property
     def MutedUntil(self):
-        """禁言到的时间（使用 UTC 时间，即世界协调时间）
+        r"""禁言到的时间（使用 UTC 时间，即世界协调时间）
         :rtype: int
         """
         return self._MutedUntil
@@ -11387,7 +11387,7 @@ class MutedAccountList(AbstractModel):
 
 
 class QuestionInfo(AbstractModel):
-    """房间问答问题详情
+    r"""房间问答问题详情
 
     """
 
@@ -11412,7 +11412,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def QuestionId(self):
-        """问题ID
+        r"""问题ID
         :rtype: str
         """
         return self._QuestionId
@@ -11423,7 +11423,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def QuestionContent(self):
-        """问题内容
+        r"""问题内容
         :rtype: str
         """
         return self._QuestionContent
@@ -11434,7 +11434,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """倒计时答题设置的秒数（0 表示不计时）
+        r"""倒计时答题设置的秒数（0 表示不计时）
         :rtype: int
         """
         return self._Duration
@@ -11445,7 +11445,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def CorrectAnswer(self):
-        """正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        r"""正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
         :rtype: int
         """
         return self._CorrectAnswer
@@ -11456,7 +11456,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def AnswerStats(self):
-        """每个选项答题人数统计
+        r"""每个选项答题人数统计
         :rtype: list of AnswerStat
         """
         return self._AnswerStats
@@ -11488,7 +11488,7 @@ class QuestionInfo(AbstractModel):
 
 
 class RegisterUserRequest(AbstractModel):
-    """RegisterUser请求参数结构体
+    r"""RegisterUser请求参数结构体
 
     """
 
@@ -11510,7 +11510,7 @@ class RegisterUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -11521,7 +11521,7 @@ class RegisterUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """对应用户昵称。对应修改用户信息下“nickname“字段，在修改用户信息时，可以对该字段进行调整，从而更改用户的昵称。
+        r"""对应用户昵称。对应修改用户信息下“nickname“字段，在修改用户信息时，可以对该字段进行调整，从而更改用户的昵称。
         :rtype: str
         """
         return self._Name
@@ -11532,7 +11532,7 @@ class RegisterUserRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId。
+        r"""用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId。
         :rtype: str
         """
         return self._OriginId
@@ -11543,7 +11543,7 @@ class RegisterUserRequest(AbstractModel):
 
     @property
     def Avatar(self):
-        """用户头像。
+        r"""用户头像。
         :rtype: str
         """
         return self._Avatar
@@ -11569,7 +11569,7 @@ class RegisterUserRequest(AbstractModel):
 
 
 class RegisterUserResponse(AbstractModel):
-    """RegisterUser返回参数结构体
+    r"""RegisterUser返回参数结构体
 
     """
 
@@ -11588,7 +11588,7 @@ class RegisterUserResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        r"""用户Id。
         :rtype: str
         """
         return self._UserId
@@ -11599,7 +11599,7 @@ class RegisterUserResponse(AbstractModel):
 
     @property
     def Token(self):
-        """登录/注册成功后返回登录态token。有效期7天。
+        r"""登录/注册成功后返回登录态token。有效期7天。
         :rtype: str
         """
         return self._Token
@@ -11610,7 +11610,7 @@ class RegisterUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11627,7 +11627,7 @@ class RegisterUserResponse(AbstractModel):
 
 
 class RoomInfo(AbstractModel):
-    """批量创建房间的房间信息
+    r"""批量创建房间的房间信息
 
     """
 
@@ -11736,7 +11736,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def Name(self):
-        """房间名称。
+        r"""房间名称。
         :rtype: str
         """
         return self._Name
@@ -11747,7 +11747,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """预定的房间开始时间，unix时间戳。
+        r"""预定的房间开始时间，unix时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -11758,7 +11758,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """预定的房间结束时间，unix时间戳。
+        r"""预定的房间结束时间，unix时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -11769,7 +11769,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def Resolution(self):
-        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
+        r"""头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -11783,7 +11783,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def MaxMicNumber(self):
-        """设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        r"""设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -11794,7 +11794,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def SubType(self):
-        """房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
+        r"""房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
         :rtype: str
         """
         return self._SubType
@@ -11805,7 +11805,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def TeacherId(self):
-        """老师ID。通过[注册用户]接口获取的UserId。
+        r"""老师ID。通过[注册用户]接口获取的UserId。
         :rtype: str
         """
         return self._TeacherId
@@ -11816,7 +11816,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def AutoMic(self):
-        """进入课堂时是否自动连麦。可以有以下取值： 0 不自动连麦（需要手动申请上麦，默认值） 1 自动连麦
+        r"""进入课堂时是否自动连麦。可以有以下取值： 0 不自动连麦（需要手动申请上麦，默认值） 1 自动连麦
         :rtype: int
         """
         return self._AutoMic
@@ -11827,7 +11827,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def TurnOffMic(self):
-        """释放音视频权限后是否自动取消连麦。可以有以下取值： 0 自动取消连麦（默认值） 1 保持连麦状态
+        r"""释放音视频权限后是否自动取消连麦。可以有以下取值： 0 自动取消连麦（默认值） 1 保持连麦状态
         :rtype: int
         """
         return self._TurnOffMic
@@ -11838,7 +11838,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def AudioQuality(self):
-        """高音质模式。可以有以下取值： 0 不开启高音质（默认值） 1 开启高音质
+        r"""高音质模式。可以有以下取值： 0 不开启高音质（默认值） 1 开启高音质
         :rtype: int
         """
         return self._AudioQuality
@@ -11849,7 +11849,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def DisableRecord(self):
-        """上课后是否禁止自动录制。可以有以下取值： 0 不禁止录制（自动开启录制，默认值） 1 禁止录制 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
+        r"""上课后是否禁止自动录制。可以有以下取值： 0 不禁止录制（自动开启录制，默认值） 1 禁止录制 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :rtype: int
         """
         return self._DisableRecord
@@ -11860,7 +11860,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def Assistants(self):
-        """助教Id列表。通过[注册用户]接口获取的UserId。
+        r"""助教Id列表。通过[注册用户]接口获取的UserId。
         :rtype: list of str
         """
         return self._Assistants
@@ -11873,7 +11873,7 @@ class RoomInfo(AbstractModel):
     def RTCAudienceNumber(self):
         warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
 
-        """rtc人数。
+        r"""rtc人数。
         :rtype: int
         """
         return self._RTCAudienceNumber
@@ -11886,7 +11886,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def AudienceType(self):
-        """观看类型。
+        r"""观看类型。
         :rtype: int
         """
         return self._AudienceType
@@ -11897,7 +11897,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordLayout(self):
-        """录制布局。
+        r"""录制布局。
         :rtype: int
         """
         return self._RecordLayout
@@ -11908,7 +11908,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """房间绑定的群组ID
+        r"""房间绑定的群组ID
         :rtype: str
         """
         return self._GroupId
@@ -11919,7 +11919,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def EnableDirectControl(self):
-        """打开学生麦克风/摄像头的授权开关
+        r"""打开学生麦克风/摄像头的授权开关
         :rtype: int
         """
         return self._EnableDirectControl
@@ -11930,7 +11930,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def InteractionMode(self):
-        """开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+        r"""开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
         :rtype: int
         """
         return self._InteractionMode
@@ -11941,7 +11941,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def VideoOrientation(self):
-        """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :rtype: int
         """
         return self._VideoOrientation
@@ -11952,7 +11952,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def IsGradingRequiredPostClass(self):
-        """开启课后评分。 0：不开启(默认)  1：开启
+        r"""开启课后评分。 0：不开启(默认)  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -11963,7 +11963,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RoomType(self):
-        """课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+        r"""课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
         return self._RoomType
@@ -11974,7 +11974,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def EndDelayTime(self):
-        """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :rtype: int
         """
         return self._EndDelayTime
@@ -11985,7 +11985,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def LiveType(self):
-        """直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+        r"""直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
         :rtype: int
         """
         return self._LiveType
@@ -11996,7 +11996,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordLiveUrl(self):
-        """伪直播回放链接
+        r"""伪直播回放链接
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -12007,7 +12007,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def EnableAutoStart(self):
-        """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
+        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
         :rtype: int
         """
         return self._EnableAutoStart
@@ -12018,7 +12018,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordBackground(self):
-        """录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        r"""录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :rtype: str
         """
         return self._RecordBackground
@@ -12029,7 +12029,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordScene(self):
-        """录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
+        r"""录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
         :rtype: str
         """
         return self._RecordScene
@@ -12042,7 +12042,7 @@ class RoomInfo(AbstractModel):
     def RecordLang(self):
         warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
 
-        """录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
         :rtype: str
         """
         return self._RecordLang
@@ -12055,7 +12055,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordStream(self):
-        """录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        r"""录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
         :rtype: int
         """
         return self._RecordStream
@@ -12066,7 +12066,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -12077,7 +12077,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        """字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关：0关闭，1开启，默认关闭
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -12088,7 +12088,7 @@ class RoomInfo(AbstractModel):
 
     @property
     def Guests(self):
-        """嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        r"""嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :rtype: list of str
         """
         return self._Guests
@@ -12142,7 +12142,7 @@ class RoomInfo(AbstractModel):
 
 
 class RoomItem(AbstractModel):
-    """房间列表
+    r"""房间列表
 
     """
 
@@ -12234,7 +12234,7 @@ class RoomItem(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -12245,7 +12245,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -12256,7 +12256,7 @@ class RoomItem(AbstractModel):
 
     @property
     def Status(self):
-        """房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
+        r"""房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
         :rtype: int
         """
         return self._Status
@@ -12267,7 +12267,7 @@ class RoomItem(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -12278,7 +12278,7 @@ class RoomItem(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -12289,7 +12289,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RealStartTime(self):
-        """实际开始时间
+        r"""实际开始时间
         :rtype: int
         """
         return self._RealStartTime
@@ -12300,7 +12300,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RealEndTime(self):
-        """实际结束时间
+        r"""实际结束时间
         :rtype: int
         """
         return self._RealEndTime
@@ -12311,7 +12311,7 @@ class RoomItem(AbstractModel):
 
     @property
     def Resolution(self):
-        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
+        r"""头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -12325,7 +12325,7 @@ class RoomItem(AbstractModel):
 
     @property
     def MaxRTCMember(self):
-        """最大允许连麦人数。已废弃，使用字段 MaxMicNumber
+        r"""最大允许连麦人数。已废弃，使用字段 MaxMicNumber
         :rtype: int
         """
         return self._MaxRTCMember
@@ -12336,7 +12336,7 @@ class RoomItem(AbstractModel):
 
     @property
     def ReplayUrl(self):
-        """房间录制地址。已废弃，使用新字段 RecordUrl
+        r"""房间录制地址。已废弃，使用新字段 RecordUrl
         :rtype: str
         """
         return self._ReplayUrl
@@ -12347,7 +12347,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RecordUrl(self):
-        """录制地址（协议为https)。仅在房间结束后存在。
+        r"""录制地址（协议为https)。仅在房间结束后存在。
         :rtype: str
         """
         return self._RecordUrl
@@ -12358,7 +12358,7 @@ class RoomItem(AbstractModel):
 
     @property
     def MaxMicNumber(self):
-        """课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        r"""课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -12369,7 +12369,7 @@ class RoomItem(AbstractModel):
 
     @property
     def EnableDirectControl(self):
-        """打开学生麦克风/摄像头的授权开关 
+        r"""打开学生麦克风/摄像头的授权开关 
         :rtype: int
         """
         return self._EnableDirectControl
@@ -12380,7 +12380,7 @@ class RoomItem(AbstractModel):
 
     @property
     def InteractionMode(self):
-        """开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+        r"""开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
         :rtype: int
         """
         return self._InteractionMode
@@ -12391,7 +12391,7 @@ class RoomItem(AbstractModel):
 
     @property
     def VideoOrientation(self):
-        """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :rtype: int
         """
         return self._VideoOrientation
@@ -12402,7 +12402,7 @@ class RoomItem(AbstractModel):
 
     @property
     def IsGradingRequiredPostClass(self):
-        """开启课后评分。 0：不开启(默认)  1：开启
+        r"""开启课后评分。 0：不开启(默认)  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -12413,7 +12413,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RoomType(self):
-        """房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
+        r"""房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
@@ -12425,7 +12425,7 @@ class RoomItem(AbstractModel):
 
     @property
     def EndDelayTime(self):
-        """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :rtype: int
         """
         return self._EndDelayTime
@@ -12436,7 +12436,7 @@ class RoomItem(AbstractModel):
 
     @property
     def LiveType(self):
-        """直播类型：0 常规（默认）1 伪直播
+        r"""直播类型：0 常规（默认）1 伪直播
         :rtype: int
         """
         return self._LiveType
@@ -12447,7 +12447,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RecordLiveUrl(self):
-        """伪直播回放链接	
+        r"""伪直播回放链接	
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -12458,7 +12458,7 @@ class RoomItem(AbstractModel):
 
     @property
     def EnableAutoStart(self):
-        """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
+        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
         :rtype: int
         """
         return self._EnableAutoStart
@@ -12469,7 +12469,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RecordBackground(self):
-        """录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        r"""录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :rtype: str
         """
         return self._RecordBackground
@@ -12480,7 +12480,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RecordScene(self):
-        """录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+        r"""录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
         :rtype: str
         """
         return self._RecordScene
@@ -12491,7 +12491,7 @@ class RoomItem(AbstractModel):
 
     @property
     def RecordLang(self):
-        """录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
         :rtype: str
         """
         return self._RecordLang
@@ -12502,7 +12502,7 @@ class RoomItem(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        r"""板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -12513,7 +12513,7 @@ class RoomItem(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        """字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关：0关闭，1开启，默认关闭
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -12561,7 +12561,7 @@ class RoomItem(AbstractModel):
 
 
 class SceneItem(AbstractModel):
-    """场景配置
+    r"""场景配置
 
     """
 
@@ -12586,7 +12586,7 @@ class SceneItem(AbstractModel):
 
     @property
     def Scene(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._Scene
@@ -12597,7 +12597,7 @@ class SceneItem(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """logo地址
+        r"""logo地址
         :rtype: str
         """
         return self._LogoUrl
@@ -12608,7 +12608,7 @@ class SceneItem(AbstractModel):
 
     @property
     def HomeUrl(self):
-        """主页地址
+        r"""主页地址
         :rtype: str
         """
         return self._HomeUrl
@@ -12619,7 +12619,7 @@ class SceneItem(AbstractModel):
 
     @property
     def JSUrl(self):
-        """自定义的js
+        r"""自定义的js
         :rtype: str
         """
         return self._JSUrl
@@ -12630,7 +12630,7 @@ class SceneItem(AbstractModel):
 
     @property
     def CSSUrl(self):
-        """自定义的css
+        r"""自定义的css
         :rtype: str
         """
         return self._CSSUrl
@@ -12657,7 +12657,7 @@ class SceneItem(AbstractModel):
 
 
 class SendRoomNormalMessageRequest(AbstractModel):
-    """SendRoomNormalMessage请求参数结构体
+    r"""SendRoomNormalMessage请求参数结构体
 
     """
 
@@ -12689,7 +12689,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -12700,7 +12700,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -12711,7 +12711,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def FromAccount(self):
-        """管理员指定消息发送方账号（若需设置 FromAccount 信息，则该参数取值不能为空）
+        r"""管理员指定消息发送方账号（若需设置 FromAccount 信息，则该参数取值不能为空）
         :rtype: str
         """
         return self._FromAccount
@@ -12722,7 +12722,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def MsgBody(self):
-        """自定义消息
+        r"""自定义消息
         :rtype: list of MsgBody
         """
         return self._MsgBody
@@ -12733,7 +12733,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def CloudCustomData(self):
-        """消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
+        r"""消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
         :rtype: str
         """
         return self._CloudCustomData
@@ -12744,7 +12744,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def NickName(self):
-        """昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
+        r"""昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
         :rtype: str
         """
         return self._NickName
@@ -12755,7 +12755,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """消息的优先级，默认优先级 Normal。
+        r"""消息的优先级，默认优先级 Normal。
 可以指定3种优先级，从高到低依次为 High、Normal 和 Low，区分大小写。
         :rtype: str
         """
@@ -12790,7 +12790,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
 
 
 class SendRoomNormalMessageResponse(AbstractModel):
-    """SendRoomNormalMessage返回参数结构体
+    r"""SendRoomNormalMessage返回参数结构体
 
     """
 
@@ -12803,7 +12803,7 @@ class SendRoomNormalMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12818,7 +12818,7 @@ class SendRoomNormalMessageResponse(AbstractModel):
 
 
 class SendRoomNotificationMessageRequest(AbstractModel):
-    """SendRoomNotificationMessage请求参数结构体
+    r"""SendRoomNotificationMessage请求参数结构体
 
     """
 
@@ -12838,7 +12838,7 @@ class SendRoomNotificationMessageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -12849,7 +12849,7 @@ class SendRoomNotificationMessageRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
 
         :rtype: int
         """
@@ -12861,7 +12861,7 @@ class SendRoomNotificationMessageRequest(AbstractModel):
 
     @property
     def MsgContent(self):
-        """消息。
+        r"""消息。
         :rtype: str
         """
         return self._MsgContent
@@ -12886,7 +12886,7 @@ class SendRoomNotificationMessageRequest(AbstractModel):
 
 
 class SendRoomNotificationMessageResponse(AbstractModel):
-    """SendRoomNotificationMessage返回参数结构体
+    r"""SendRoomNotificationMessage返回参数结构体
 
     """
 
@@ -12899,7 +12899,7 @@ class SendRoomNotificationMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12914,7 +12914,7 @@ class SendRoomNotificationMessageResponse(AbstractModel):
 
 
 class SetAppCustomContentRequest(AbstractModel):
-    """SetAppCustomContent请求参数结构体
+    r"""SetAppCustomContent请求参数结构体
 
     """
 
@@ -12930,7 +12930,7 @@ class SetAppCustomContentRequest(AbstractModel):
 
     @property
     def CustomContent(self):
-        """自定义内容。
+        r"""自定义内容。
         :rtype: list of AppCustomContent
         """
         return self._CustomContent
@@ -12941,7 +12941,7 @@ class SetAppCustomContentRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用ID。
+        r"""应用ID。
         :rtype: int
         """
         return self._SdkAppId
@@ -12970,7 +12970,7 @@ class SetAppCustomContentRequest(AbstractModel):
 
 
 class SetAppCustomContentResponse(AbstractModel):
-    """SetAppCustomContent返回参数结构体
+    r"""SetAppCustomContent返回参数结构体
 
     """
 
@@ -12983,7 +12983,7 @@ class SetAppCustomContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12998,7 +12998,7 @@ class SetAppCustomContentResponse(AbstractModel):
 
 
 class SetMarqueeRequest(AbstractModel):
-    """SetMarquee请求参数结构体
+    r"""SetMarquee请求参数结构体
 
     """
 
@@ -13047,7 +13047,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -13058,7 +13058,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间号
+        r"""房间号
         :rtype: int
         """
         return self._RoomId
@@ -13069,7 +13069,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def MarqueeType(self):
-        """ 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        r""" 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
         :rtype: int
         """
         return self._MarqueeType
@@ -13080,7 +13080,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def DisplayMode(self):
-        """显示方式：1为滚动，2为闪烁
+        r"""显示方式：1为滚动，2为闪烁
         :rtype: int
         """
         return self._DisplayMode
@@ -13091,7 +13091,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def Content(self):
-        """固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        r"""固定值内容（当MarqueeType=1或5，则展示固定值内容）
         :rtype: str
         """
         return self._Content
@@ -13102,7 +13102,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def FontSize(self):
-        """字体大小（数字，像素单位，范围：10到24）。
+        r"""字体大小（数字，像素单位，范围：10到24）。
         :rtype: int
         """
         return self._FontSize
@@ -13113,7 +13113,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def FontWeight(self):
-        """字体粗细：1为粗体，0为细体
+        r"""字体粗细：1为粗体，0为细体
         :rtype: int
         """
         return self._FontWeight
@@ -13124,7 +13124,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def FontColor(self):
-        """字体颜色（十六进制颜色值，例如：#00FF00（绿色））
+        r"""字体颜色（十六进制颜色值，例如：#00FF00（绿色））
         :rtype: str
         """
         return self._FontColor
@@ -13135,7 +13135,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def FontOpacity(self):
-        """字体透明度（数字，范围 0.0 到 1.0）
+        r"""字体透明度（数字，范围 0.0 到 1.0）
         :rtype: float
         """
         return self._FontOpacity
@@ -13146,7 +13146,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
+        r"""背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
         :rtype: str
         """
         return self._BackgroundColor
@@ -13157,7 +13157,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def BackgroundOpacity(self):
-        """背景透明度（数字，范围 0.0 到 1.0）
+        r"""背景透明度（数字，范围 0.0 到 1.0）
         :rtype: float
         """
         return self._BackgroundOpacity
@@ -13168,7 +13168,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def Duration(self):
-        """跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
+        r"""跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
         :rtype: int
         """
         return self._Duration
@@ -13179,7 +13179,7 @@ class SetMarqueeRequest(AbstractModel):
 
     @property
     def MarqueeCount(self):
-        """跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        r"""跑马灯个数：目前仅支持1或2, 对应显示单排或双排
         :rtype: int
         """
         return self._MarqueeCount
@@ -13214,7 +13214,7 @@ class SetMarqueeRequest(AbstractModel):
 
 
 class SetMarqueeResponse(AbstractModel):
-    """SetMarquee返回参数结构体
+    r"""SetMarquee返回参数结构体
 
     """
 
@@ -13227,7 +13227,7 @@ class SetMarqueeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13242,7 +13242,7 @@ class SetMarqueeResponse(AbstractModel):
 
 
 class SetWatermarkRequest(AbstractModel):
-    """SetWatermark请求参数结构体
+    r"""SetWatermark请求参数结构体
 
     """
 
@@ -13295,7 +13295,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码互动课堂的SdkAppId。
+        r"""低代码互动课堂的SdkAppId。
 
         :rtype: int
         """
@@ -13307,7 +13307,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TeacherUrl(self):
-        """老师视频区域的水印参数地址，设置为空字符串表示删除
+        r"""老师视频区域的水印参数地址，设置为空字符串表示删除
         :rtype: str
         """
         return self._TeacherUrl
@@ -13318,7 +13318,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def BoardUrl(self):
-        """白板视频区域的水印参数地址，设置为空字符串表示删除
+        r"""白板视频区域的水印参数地址，设置为空字符串表示删除
         :rtype: str
         """
         return self._BoardUrl
@@ -13329,7 +13329,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """视频默认图片（在没有视频流的时候显示），设置为空字符串表示删除
+        r"""视频默认图片（在没有视频流的时候显示），设置为空字符串表示删除
         :rtype: str
         """
         return self._VideoUrl
@@ -13340,7 +13340,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def BoardW(self):
-        """白板区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
+        r"""白板区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
         :rtype: float
         """
         return self._BoardW
@@ -13351,7 +13351,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def BoardH(self):
-        """白板区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
+        r"""白板区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
         :rtype: float
         """
         return self._BoardH
@@ -13362,7 +13362,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def BoardX(self):
-        """白板区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
+        r"""白板区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
         :rtype: float
         """
         return self._BoardX
@@ -13373,7 +13373,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def BoardY(self):
-        """白板区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
+        r"""白板区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
         :rtype: float
         """
         return self._BoardY
@@ -13384,7 +13384,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TeacherW(self):
-        """老师视频区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
+        r"""老师视频区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
         :rtype: float
         """
         return self._TeacherW
@@ -13395,7 +13395,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TeacherH(self):
-        """老师视频区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
+        r"""老师视频区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
         :rtype: float
         """
         return self._TeacherH
@@ -13406,7 +13406,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TeacherX(self):
-        """老师视频区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
+        r"""老师视频区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
         :rtype: float
         """
         return self._TeacherX
@@ -13417,7 +13417,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TeacherY(self):
-        """老师视频区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
+        r"""老师视频区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
         :rtype: float
         """
         return self._TeacherY
@@ -13428,7 +13428,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def Text(self):
-        """文字水印内容，设置为空字符串表示删除
+        r"""文字水印内容，设置为空字符串表示删除
         :rtype: str
         """
         return self._Text
@@ -13439,7 +13439,7 @@ class SetWatermarkRequest(AbstractModel):
 
     @property
     def TextColor(self):
-        """文字水印颜色
+        r"""文字水印颜色
         :rtype: str
         """
         return self._TextColor
@@ -13475,7 +13475,7 @@ class SetWatermarkRequest(AbstractModel):
 
 
 class SetWatermarkResponse(AbstractModel):
-    """SetWatermark返回参数结构体
+    r"""SetWatermark返回参数结构体
 
     """
 
@@ -13488,7 +13488,7 @@ class SetWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13503,7 +13503,7 @@ class SetWatermarkResponse(AbstractModel):
 
 
 class SingleStreamInfo(AbstractModel):
-    """录制流信息
+    r"""录制流信息
 
     """
 
@@ -13540,7 +13540,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -13551,7 +13551,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -13562,7 +13562,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def StopTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._StopTime
@@ -13573,7 +13573,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """总时长
+        r"""总时长
         :rtype: int
         """
         return self._Duration
@@ -13584,7 +13584,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def FileFormat(self):
-        """文件格式
+        r"""文件格式
         :rtype: str
         """
         return self._FileFormat
@@ -13595,7 +13595,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def RecordUrl(self):
-        """流url
+        r"""流url
         :rtype: str
         """
         return self._RecordUrl
@@ -13606,7 +13606,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def RecordSize(self):
-        """流大小
+        r"""流大小
         :rtype: int
         """
         return self._RecordSize
@@ -13617,7 +13617,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def VideoId(self):
-        """流ID
+        r"""流ID
         :rtype: str
         """
         return self._VideoId
@@ -13628,7 +13628,7 @@ class SingleStreamInfo(AbstractModel):
 
     @property
     def Role(self):
-        """流类型
+        r"""流类型
         :rtype: str
         """
         return self._Role
@@ -13659,7 +13659,7 @@ class SingleStreamInfo(AbstractModel):
 
 
 class StartRecordRequest(AbstractModel):
-    """StartRecord请求参数结构体
+    r"""StartRecord请求参数结构体
 
     """
 
@@ -13675,7 +13675,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -13686,7 +13686,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        r"""房间ID
         :rtype: int
         """
         return self._RoomId
@@ -13710,7 +13710,7 @@ class StartRecordRequest(AbstractModel):
 
 
 class StartRecordResponse(AbstractModel):
-    """StartRecord返回参数结构体
+    r"""StartRecord返回参数结构体
 
     """
 
@@ -13726,7 +13726,7 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -13737,7 +13737,7 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13753,7 +13753,7 @@ class StartRecordResponse(AbstractModel):
 
 
 class StartRoomRequest(AbstractModel):
-    """StartRoom请求参数结构体
+    r"""StartRoom请求参数结构体
 
     """
 
@@ -13766,7 +13766,7 @@ class StartRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -13789,7 +13789,7 @@ class StartRoomRequest(AbstractModel):
 
 
 class StartRoomResponse(AbstractModel):
-    """StartRoom返回参数结构体
+    r"""StartRoom返回参数结构体
 
     """
 
@@ -13802,7 +13802,7 @@ class StartRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13817,7 +13817,7 @@ class StartRoomResponse(AbstractModel):
 
 
 class StopRecordRequest(AbstractModel):
-    """StopRecord请求参数结构体
+    r"""StopRecord请求参数结构体
 
     """
 
@@ -13836,7 +13836,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """学校ID
+        r"""学校ID
         :rtype: int
         """
         return self._SdkAppId
@@ -13847,7 +13847,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂ID
+        r"""课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -13858,7 +13858,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -13883,7 +13883,7 @@ class StopRecordRequest(AbstractModel):
 
 
 class StopRecordResponse(AbstractModel):
-    """StopRecord返回参数结构体
+    r"""StopRecord返回参数结构体
 
     """
 
@@ -13896,7 +13896,7 @@ class StopRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13911,7 +13911,7 @@ class StopRecordResponse(AbstractModel):
 
 
 class TextMarkConfig(AbstractModel):
-    """文字水印配置
+    r"""文字水印配置
 
     """
 
@@ -13927,7 +13927,7 @@ class TextMarkConfig(AbstractModel):
 
     @property
     def Text(self):
-        """文字水印内容
+        r"""文字水印内容
         :rtype: str
         """
         return self._Text
@@ -13938,7 +13938,7 @@ class TextMarkConfig(AbstractModel):
 
     @property
     def Color(self):
-        """文字水印颜色
+        r"""文字水印颜色
         :rtype: str
         """
         return self._Color
@@ -13962,7 +13962,7 @@ class TextMarkConfig(AbstractModel):
 
 
 class TextMsgContent(AbstractModel):
-    """文本消息
+    r"""文本消息
 
     """
 
@@ -13975,7 +13975,7 @@ class TextMsgContent(AbstractModel):
 
     @property
     def Text(self):
-        """文本消息。
+        r"""文本消息。
         :rtype: str
         """
         return self._Text
@@ -13998,7 +13998,7 @@ class TextMsgContent(AbstractModel):
 
 
 class TransferItem(AbstractModel):
-    """转存配置
+    r"""转存配置
 
     """
 
@@ -14012,7 +14012,7 @@ class TransferItem(AbstractModel):
 
     @property
     def State(self):
-        """转存状态， 1正常 2停用
+        r"""转存状态， 1正常 2停用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14036,7 +14036,7 @@ class TransferItem(AbstractModel):
 
 
 class UnbindDocumentFromRoomRequest(AbstractModel):
-    """UnbindDocumentFromRoom请求参数结构体
+    r"""UnbindDocumentFromRoom请求参数结构体
 
     """
 
@@ -14052,7 +14052,7 @@ class UnbindDocumentFromRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        r"""房间ID。
         :rtype: int
         """
         return self._RoomId
@@ -14063,7 +14063,7 @@ class UnbindDocumentFromRoomRequest(AbstractModel):
 
     @property
     def DocumentId(self):
-        """文档ID。
+        r"""文档ID。
         :rtype: str
         """
         return self._DocumentId
@@ -14087,7 +14087,7 @@ class UnbindDocumentFromRoomRequest(AbstractModel):
 
 
 class UnbindDocumentFromRoomResponse(AbstractModel):
-    """UnbindDocumentFromRoom返回参数结构体
+    r"""UnbindDocumentFromRoom返回参数结构体
 
     """
 
@@ -14100,7 +14100,7 @@ class UnbindDocumentFromRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14115,7 +14115,7 @@ class UnbindDocumentFromRoomResponse(AbstractModel):
 
 
 class UnblockKickedUserRequest(AbstractModel):
-    """UnblockKickedUser请求参数结构体
+    r"""UnblockKickedUser请求参数结构体
 
     """
 
@@ -14134,7 +14134,7 @@ class UnblockKickedUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """低代码平台的SdkAppId。
+        r"""低代码平台的SdkAppId。
         :rtype: int
         """
         return self._SdkAppId
@@ -14145,7 +14145,7 @@ class UnblockKickedUserRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """课堂Id。
+        r"""课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -14156,7 +14156,7 @@ class UnblockKickedUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """需要解禁踢出的成员Id。
+        r"""需要解禁踢出的成员Id。
         :rtype: str
         """
         return self._UserId
@@ -14181,7 +14181,7 @@ class UnblockKickedUserRequest(AbstractModel):
 
 
 class UnblockKickedUserResponse(AbstractModel):
-    """UnblockKickedUser返回参数结构体
+    r"""UnblockKickedUser返回参数结构体
 
     """
 
@@ -14194,7 +14194,7 @@ class UnblockKickedUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14209,7 +14209,7 @@ class UnblockKickedUserResponse(AbstractModel):
 
 
 class UserInfo(AbstractModel):
-    """用户信息结构体
+    r"""用户信息结构体
 
     """
 
@@ -14234,7 +14234,7 @@ class UserInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """应用Id。
+        r"""应用Id。
         :rtype: int
         """
         return self._SdkAppId
@@ -14245,7 +14245,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        r"""用户Id。
         :rtype: str
         """
         return self._UserId
@@ -14256,7 +14256,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Name(self):
-        """用户昵称。
+        r"""用户昵称。
         :rtype: str
         """
         return self._Name
@@ -14267,7 +14267,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Avatar(self):
-        """用户头像Url。
+        r"""用户头像Url。
         :rtype: str
         """
         return self._Avatar
@@ -14278,7 +14278,7 @@ class UserInfo(AbstractModel):
 
     @property
     def OriginId(self):
-        """用户在客户系统的Id
+        r"""用户在客户系统的Id
         :rtype: str
         """
         return self._OriginId
@@ -14305,7 +14305,7 @@ class UserInfo(AbstractModel):
 
 
 class WatermarkConfig(AbstractModel):
-    """水印配置
+    r"""水印配置
 
     """
 
@@ -14330,7 +14330,7 @@ class WatermarkConfig(AbstractModel):
 
     @property
     def Url(self):
-        """水印图片的url
+        r"""水印图片的url
         :rtype: str
         """
         return self._Url
@@ -14341,7 +14341,7 @@ class WatermarkConfig(AbstractModel):
 
     @property
     def Width(self):
-        """水印宽。为比例值
+        r"""水印宽。为比例值
         :rtype: float
         """
         return self._Width
@@ -14352,7 +14352,7 @@ class WatermarkConfig(AbstractModel):
 
     @property
     def Height(self):
-        """水印高。为比例值
+        r"""水印高。为比例值
         :rtype: float
         """
         return self._Height
@@ -14363,7 +14363,7 @@ class WatermarkConfig(AbstractModel):
 
     @property
     def LocationX(self):
-        """水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
+        r"""水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
         :rtype: float
         """
         return self._LocationX
@@ -14374,7 +14374,7 @@ class WatermarkConfig(AbstractModel):
 
     @property
     def LocationY(self):
-        """水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
+        r"""水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
         :rtype: float
         """
         return self._LocationY

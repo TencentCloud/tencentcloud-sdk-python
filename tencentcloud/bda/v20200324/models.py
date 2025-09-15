@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Age(AbstractModel):
-    """人体年龄信息。
+    r"""人体年龄信息。
     AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 
     """
@@ -36,7 +36,7 @@ class Age(AbstractModel):
 
     @property
     def Type(self):
-        """人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
+        r"""人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
         :rtype: str
         """
         return self._Type
@@ -47,7 +47,7 @@ class Age(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -71,7 +71,7 @@ class Age(AbstractModel):
 
 
 class AttributesOptions(AbstractModel):
-    """返回人体属性选项，此值不填则为不需要返回，可以选择的值为以下六个。
+    r"""返回人体属性选项，此值不填则为不需要返回，可以选择的值为以下六个。
     Age、Bag、Gender、Orientation、UpperBodyCloth、LowerBodyCloth，详细的解释请看对象描述
     需注意本接口最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的人体属性不具备参考意义。
 
@@ -101,7 +101,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def Age(self):
-        """返回年龄信息
+        r"""返回年龄信息
         :rtype: bool
         """
         return self._Age
@@ -112,7 +112,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def Bag(self):
-        """返回随身挎包信息
+        r"""返回随身挎包信息
         :rtype: bool
         """
         return self._Bag
@@ -123,7 +123,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def Gender(self):
-        """返回性别信息
+        r"""返回性别信息
         :rtype: bool
         """
         return self._Gender
@@ -134,7 +134,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def Orientation(self):
-        """返回朝向信息
+        r"""返回朝向信息
         :rtype: bool
         """
         return self._Orientation
@@ -145,7 +145,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def UpperBodyCloth(self):
-        """返回上装信息
+        r"""返回上装信息
         :rtype: bool
         """
         return self._UpperBodyCloth
@@ -156,7 +156,7 @@ class AttributesOptions(AbstractModel):
 
     @property
     def LowerBodyCloth(self):
-        """返回下装信息
+        r"""返回下装信息
         :rtype: bool
         """
         return self._LowerBodyCloth
@@ -184,7 +184,7 @@ class AttributesOptions(AbstractModel):
 
 
 class Bag(AbstractModel):
-    """人体是否挎包。
+    r"""人体是否挎包。
     AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 
     """
@@ -201,7 +201,7 @@ class Bag(AbstractModel):
 
     @property
     def Type(self):
-        """挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
+        r"""挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
         :rtype: str
         """
         return self._Type
@@ -212,7 +212,7 @@ class Bag(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -236,7 +236,7 @@ class Bag(AbstractModel):
 
 
 class BodyAttributeInfo(AbstractModel):
-    """图中检测出的人体属性信息。
+    r"""图中检测出的人体属性信息。
 
     """
 
@@ -276,7 +276,7 @@ AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数�
 
     @property
     def Age(self):
-        """人体年龄信息。 
+        r"""人体年龄信息。 
 AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Age`
@@ -289,7 +289,7 @@ AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，
 
     @property
     def Bag(self):
-        """人体是否挎包。 
+        r"""人体是否挎包。 
 AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Bag`
@@ -302,7 +302,7 @@ AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，
 
     @property
     def Gender(self):
-        """人体性别信息。 
+        r"""人体性别信息。 
 AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Gender`
@@ -315,7 +315,7 @@ AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回
 
     @property
     def Orientation(self):
-        """人体朝向信息。   
+        r"""人体朝向信息。   
 AttributesType 不含 UpperBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Orientation`
@@ -328,7 +328,7 @@ AttributesType 不含 UpperBodyCloth 或检测超过 5 个人体时，此参数�
 
     @property
     def UpperBodyCloth(self):
-        """人体上衣属性信息。
+        r"""人体上衣属性信息。
 AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.UpperBodyCloth`
@@ -341,7 +341,7 @@ AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍�
 
     @property
     def LowerBodyCloth(self):
-        """人体下衣属性信息。  
+        r"""人体下衣属性信息。  
 AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.LowerBodyCloth`
@@ -383,7 +383,7 @@ AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数�
 
 
 class BodyDetectResult(AbstractModel):
-    """图中检测出来的人体框。
+    r"""图中检测出来的人体框。
 
     """
 
@@ -404,7 +404,7 @@ class BodyDetectResult(AbstractModel):
 
     @property
     def Confidence(self):
-        """检测出的人体置信度。 
+        r"""检测出的人体置信度。 
 误识率百分之十对应的阈值是0.14；误识率百分之五对应的阈值是0.32；误识率百分之二对应的阈值是0.62；误识率百分之一对应的阈值是0.81。 
 通常情况建议使用阈值0.32，可适用大多数情况。
         :rtype: float
@@ -417,7 +417,7 @@ class BodyDetectResult(AbstractModel):
 
     @property
     def BodyRect(self):
-        """图中检测出来的人体框
+        r"""图中检测出来的人体框
         :rtype: :class:`tencentcloud.bda.v20200324.models.BodyRect`
         """
         return self._BodyRect
@@ -428,7 +428,7 @@ class BodyDetectResult(AbstractModel):
 
     @property
     def BodyAttributeInfo(self):
-        """图中检测出的人体属性信息。
+        r"""图中检测出的人体属性信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.BodyAttributeInfo`
         """
         return self._BodyAttributeInfo
@@ -457,7 +457,7 @@ class BodyDetectResult(AbstractModel):
 
 
 class BodyJointsResult(AbstractModel):
-    """人体框和人体关键点信息。
+    r"""人体框和人体关键点信息。
 
     """
 
@@ -476,7 +476,7 @@ class BodyJointsResult(AbstractModel):
 
     @property
     def BoundBox(self):
-        """图中检测出来的人体框。
+        r"""图中检测出来的人体框。
         :rtype: :class:`tencentcloud.bda.v20200324.models.BoundRect`
         """
         return self._BoundBox
@@ -487,7 +487,7 @@ class BodyJointsResult(AbstractModel):
 
     @property
     def BodyJoints(self):
-        """14个人体关键点的坐标，人体关键点详见KeyPointInfo。
+        r"""14个人体关键点的坐标，人体关键点详见KeyPointInfo。
         :rtype: list of KeyPointInfo
         """
         return self._BodyJoints
@@ -498,7 +498,7 @@ class BodyJointsResult(AbstractModel):
 
     @property
     def Confidence(self):
-        """检测出的人体置信度，0-1之间，数值越高越准确。
+        r"""检测出的人体置信度，0-1之间，数值越高越准确。
         :rtype: float
         """
         return self._Confidence
@@ -530,7 +530,7 @@ class BodyJointsResult(AbstractModel):
 
 
 class BodyRect(AbstractModel):
-    """人体框
+    r"""人体框
 
     """
 
@@ -552,7 +552,7 @@ class BodyRect(AbstractModel):
 
     @property
     def X(self):
-        """人体框左上角横坐标。
+        r"""人体框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -563,7 +563,7 @@ class BodyRect(AbstractModel):
 
     @property
     def Y(self):
-        """人体框左上角纵坐标。
+        r"""人体框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -574,7 +574,7 @@ class BodyRect(AbstractModel):
 
     @property
     def Width(self):
-        """人体宽度。
+        r"""人体宽度。
         :rtype: int
         """
         return self._Width
@@ -585,7 +585,7 @@ class BodyRect(AbstractModel):
 
     @property
     def Height(self):
-        """人体高度。
+        r"""人体高度。
         :rtype: int
         """
         return self._Height
@@ -611,7 +611,7 @@ class BodyRect(AbstractModel):
 
 
 class BoundRect(AbstractModel):
-    """人体框
+    r"""人体框
 
     """
 
@@ -633,7 +633,7 @@ class BoundRect(AbstractModel):
 
     @property
     def X(self):
-        """人体框左上角横坐标。
+        r"""人体框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -644,7 +644,7 @@ class BoundRect(AbstractModel):
 
     @property
     def Y(self):
-        """人体框左上角纵坐标。
+        r"""人体框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -655,7 +655,7 @@ class BoundRect(AbstractModel):
 
     @property
     def Width(self):
-        """人体宽度。
+        r"""人体宽度。
         :rtype: int
         """
         return self._Width
@@ -666,7 +666,7 @@ class BoundRect(AbstractModel):
 
     @property
     def Height(self):
-        """人体高度。
+        r"""人体高度。
         :rtype: int
         """
         return self._Height
@@ -692,7 +692,7 @@ class BoundRect(AbstractModel):
 
 
 class Candidate(AbstractModel):
-    """识别出的最相似候选人。
+    r"""识别出的最相似候选人。
 
     """
 
@@ -716,7 +716,7 @@ class Candidate(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -727,7 +727,7 @@ class Candidate(AbstractModel):
 
     @property
     def TraceId(self):
-        """人体动作轨迹ID。
+        r"""人体动作轨迹ID。
         :rtype: str
         """
         return self._TraceId
@@ -738,7 +738,7 @@ class Candidate(AbstractModel):
 
     @property
     def Score(self):
-        """候选者的匹配得分。 
+        r"""候选者的匹配得分。 
 十万人体库下，误识率百分之五对应的分数为70分；误识率百分之二对应的分数为80分；误识率百分之一对应的分数为90分。
  
 二十万人体库下，误识率百分之五对应的分数为80分；误识率百分之二对应的分数为90分；误识率百分之一对应的分数为95分。
@@ -768,7 +768,7 @@ class Candidate(AbstractModel):
 
 
 class CreateGroupRequest(AbstractModel):
-    """CreateGroup请求参数结构体
+    r"""CreateGroup请求参数结构体
 
     """
 
@@ -792,7 +792,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """人体库名称，[1,60]个字符，可修改，不可重复。
+        r"""人体库名称，[1,60]个字符，可修改，不可重复。
         :rtype: str
         """
         return self._GroupName
@@ -803,7 +803,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人体库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
+        r"""人体库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
         :rtype: str
         """
         return self._GroupId
@@ -814,7 +814,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """人体库信息备注，[0，40]个字符。
+        r"""人体库信息备注，[0，40]个字符。
         :rtype: str
         """
         return self._Tag
@@ -825,7 +825,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。 
+        r"""人体识别所用的算法模型版本。 
 目前入参仅支持 “1.0”1个输入。 默认为"1.0"。  
 不同算法模型版本对应的人体识别算法不同，新版本的整体效果会优于旧版本，后续我们将推出更新版本。
         :rtype: str
@@ -853,7 +853,7 @@ class CreateGroupRequest(AbstractModel):
 
 
 class CreateGroupResponse(AbstractModel):
-    """CreateGroup返回参数结构体
+    r"""CreateGroup返回参数结构体
 
     """
 
@@ -866,7 +866,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -881,7 +881,7 @@ class CreateGroupResponse(AbstractModel):
 
 
 class CreatePersonRequest(AbstractModel):
-    """CreatePerson请求参数结构体
+    r"""CreatePerson请求参数结构体
 
     """
 
@@ -904,7 +904,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """待加入的人员库ID。
+        r"""待加入的人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -915,7 +915,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。[1，60]个字符，可修改，可重复。
+        r"""人员名称。[1，60]个字符，可修改，可重复。
         :rtype: str
         """
         return self._PersonName
@@ -926,7 +926,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，单个腾讯云账号下不可修改，不可重复。 
+        r"""人员ID，单个腾讯云账号下不可修改，不可重复。 
 支持英文、数字、-%@#&_，，长度限制64B。
         :rtype: str
         """
@@ -938,7 +938,7 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Trace(self):
-        """人体动作轨迹信息。
+        r"""人体动作轨迹信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Trace`
         """
         return self._Trace
@@ -966,7 +966,7 @@ class CreatePersonRequest(AbstractModel):
 
 
 class CreatePersonResponse(AbstractModel):
-    """CreatePerson返回参数结构体
+    r"""CreatePerson返回参数结构体
 
     """
 
@@ -995,7 +995,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
     @property
     def TraceId(self):
-        """人员动作轨迹唯一标识。
+        r"""人员动作轨迹唯一标识。
         :rtype: str
         """
         return self._TraceId
@@ -1006,7 +1006,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -1017,7 +1017,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
     @property
     def InputRetCode(self):
-        """输入的人体动作轨迹图片中的合法性校验结果。
+        r"""输入的人体动作轨迹图片中的合法性校验结果。
 只有为0时结果才有意义。
 -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
         :rtype: int
@@ -1030,7 +1030,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
     @property
     def InputRetCodeDetails(self):
-        """输入的人体动作轨迹图片中的合法性校验结果详情。 
+        r"""输入的人体动作轨迹图片中的合法性校验结果详情。 
 -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
 RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
         :rtype: list of int
@@ -1043,7 +1043,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1062,7 +1062,7 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 
 
 class CreateSegmentationTaskRequest(AbstractModel):
-    """CreateSegmentationTask请求参数结构体
+    r"""CreateSegmentationTask请求参数结构体
 
     """
 
@@ -1083,7 +1083,7 @@ class CreateSegmentationTaskRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """需要分割的视频URL，可外网访问。
+        r"""需要分割的视频URL，可外网访问。
         :rtype: str
         """
         return self._VideoUrl
@@ -1094,7 +1094,7 @@ class CreateSegmentationTaskRequest(AbstractModel):
 
     @property
     def BackgroundImageUrl(self):
-        """背景图片URL。 
+        r"""背景图片URL。 
 可以将视频背景替换为输入的图片。 
 如果不输入背景图片，则输出人像区域mask。
         :rtype: str
@@ -1107,7 +1107,7 @@ class CreateSegmentationTaskRequest(AbstractModel):
 
     @property
     def Config(self):
-        """预留字段，后期用于展示更多识别信息。
+        r"""预留字段，后期用于展示更多识别信息。
         :rtype: str
         """
         return self._Config
@@ -1132,7 +1132,7 @@ class CreateSegmentationTaskRequest(AbstractModel):
 
 
 class CreateSegmentationTaskResponse(AbstractModel):
-    """CreateSegmentationTask返回参数结构体
+    r"""CreateSegmentationTask返回参数结构体
 
     """
 
@@ -1151,7 +1151,7 @@ class CreateSegmentationTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """任务标识ID,可以用与追溯任务状态，查看任务结果
+        r"""任务标识ID,可以用与追溯任务状态，查看任务结果
         :rtype: str
         """
         return self._TaskID
@@ -1162,7 +1162,7 @@ class CreateSegmentationTaskResponse(AbstractModel):
 
     @property
     def EstimatedProcessingTime(self):
-        """预估处理时间，单位为秒
+        r"""预估处理时间，单位为秒
         :rtype: float
         """
         return self._EstimatedProcessingTime
@@ -1173,7 +1173,7 @@ class CreateSegmentationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1190,7 +1190,7 @@ class CreateSegmentationTaskResponse(AbstractModel):
 
 
 class CreateTraceRequest(AbstractModel):
-    """CreateTrace请求参数结构体
+    r"""CreateTrace请求参数结构体
 
     """
 
@@ -1206,7 +1206,7 @@ class CreateTraceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -1217,7 +1217,7 @@ class CreateTraceRequest(AbstractModel):
 
     @property
     def Trace(self):
-        """人体动作轨迹信息。
+        r"""人体动作轨迹信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Trace`
         """
         return self._Trace
@@ -1243,7 +1243,7 @@ class CreateTraceRequest(AbstractModel):
 
 
 class CreateTraceResponse(AbstractModel):
-    """CreateTrace返回参数结构体
+    r"""CreateTrace返回参数结构体
 
     """
 
@@ -1271,7 +1271,7 @@ class CreateTraceResponse(AbstractModel):
 
     @property
     def TraceId(self):
-        """人员动作轨迹唯一标识。
+        r"""人员动作轨迹唯一标识。
         :rtype: str
         """
         return self._TraceId
@@ -1282,7 +1282,7 @@ class CreateTraceResponse(AbstractModel):
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -1293,7 +1293,7 @@ class CreateTraceResponse(AbstractModel):
 
     @property
     def InputRetCode(self):
-        """输入的人体动作轨迹图片中的合法性校验结果。
+        r"""输入的人体动作轨迹图片中的合法性校验结果。
 只有为0时结果才有意义。
 -1001: 输入图片不合法。-1002: 输入图片不能构成轨迹。
         :rtype: int
@@ -1306,7 +1306,7 @@ class CreateTraceResponse(AbstractModel):
 
     @property
     def InputRetCodeDetails(self):
-        """输入的人体动作轨迹图片中的合法性校验结果详情。 
+        r"""输入的人体动作轨迹图片中的合法性校验结果详情。 
 -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
         :rtype: list of int
         """
@@ -1318,7 +1318,7 @@ class CreateTraceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1337,7 +1337,7 @@ class CreateTraceResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup请求参数结构体
+    r"""DeleteGroup请求参数结构体
 
     """
 
@@ -1350,7 +1350,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人体库ID。
+        r"""人体库ID。
         :rtype: str
         """
         return self._GroupId
@@ -1373,7 +1373,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup返回参数结构体
+    r"""DeleteGroup返回参数结构体
 
     """
 
@@ -1386,7 +1386,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1401,7 +1401,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeletePersonRequest(AbstractModel):
-    """DeletePerson请求参数结构体
+    r"""DeletePerson请求参数结构体
 
     """
 
@@ -1414,7 +1414,7 @@ class DeletePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -1437,7 +1437,7 @@ class DeletePersonRequest(AbstractModel):
 
 
 class DeletePersonResponse(AbstractModel):
-    """DeletePerson返回参数结构体
+    r"""DeletePerson返回参数结构体
 
     """
 
@@ -1450,7 +1450,7 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1465,7 +1465,7 @@ class DeletePersonResponse(AbstractModel):
 
 
 class DescribeSegmentationTaskRequest(AbstractModel):
-    """DescribeSegmentationTask请求参数结构体
+    r"""DescribeSegmentationTask请求参数结构体
 
     """
 
@@ -1478,7 +1478,7 @@ class DescribeSegmentationTaskRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """在提交分割任务成功时返回的任务标识ID。
+        r"""在提交分割任务成功时返回的任务标识ID。
         :rtype: str
         """
         return self._TaskID
@@ -1501,7 +1501,7 @@ class DescribeSegmentationTaskRequest(AbstractModel):
 
 
 class DescribeSegmentationTaskResponse(AbstractModel):
-    """DescribeSegmentationTask返回参数结构体
+    r"""DescribeSegmentationTask返回参数结构体
 
     """
 
@@ -1536,7 +1536,7 @@ FINISHED 处理完成
 
     @property
     def TaskStatus(self):
-        """当前任务状态：
+        r"""当前任务状态：
 QUEUING 排队中
 PROCESSING 处理中
 FINISHED 处理完成
@@ -1550,7 +1550,7 @@ FINISHED 处理完成
 
     @property
     def ResultVideoUrl(self):
-        """分割后视频URL, 存储于腾讯云COS
+        r"""分割后视频URL, 存储于腾讯云COS
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1562,7 +1562,7 @@ FINISHED 处理完成
 
     @property
     def ResultVideoMD5(self):
-        """分割后视频MD5，用于校验
+        r"""分割后视频MD5，用于校验
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1574,7 +1574,7 @@ FINISHED 处理完成
 
     @property
     def VideoBasicInformation(self):
-        """视频基本信息
+        r"""视频基本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bda.v20200324.models.VideoBasicInformation`
         """
@@ -1586,7 +1586,7 @@ FINISHED 处理完成
 
     @property
     def ErrorMsg(self):
-        """分割任务错误信息
+        r"""分割任务错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1598,7 +1598,7 @@ FINISHED 处理完成
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1620,7 +1620,7 @@ FINISHED 处理完成
 
 
 class DetectBodyJointsRequest(AbstractModel):
-    """DetectBodyJoints请求参数结构体
+    r"""DetectBodyJoints请求参数结构体
 
     """
 
@@ -1646,7 +1646,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。  
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。  
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
@@ -1658,7 +1658,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+        r"""图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -1673,7 +1673,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def LocalBodySwitch(self):
-        """人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
+        r"""人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
 
 注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
         :rtype: bool
@@ -1700,7 +1700,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class DetectBodyJointsResponse(AbstractModel):
-    """DetectBodyJoints返回参数结构体
+    r"""DetectBodyJoints返回参数结构体
 
     """
 
@@ -1716,7 +1716,7 @@ class DetectBodyJointsResponse(AbstractModel):
 
     @property
     def BodyJointsResults(self):
-        """图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
+        r"""图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
         :rtype: list of BodyJointsResult
         """
         return self._BodyJointsResults
@@ -1727,7 +1727,7 @@ class DetectBodyJointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1748,7 +1748,7 @@ class DetectBodyJointsResponse(AbstractModel):
 
 
 class DetectBodyRequest(AbstractModel):
-    """DetectBody请求参数结构体
+    r"""DetectBody请求参数结构体
 
     """
 
@@ -1784,7 +1784,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """人体图片 Base64 数据。
+        r"""人体图片 Base64 数据。
 图片 base64 编码后大小不可超过5M。
 图片分辨率不得超过 1920 * 1080 。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1798,7 +1798,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def MaxBodyNum(self):
-        """最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
+        r"""最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
         :rtype: int
         """
         return self._MaxBodyNum
@@ -1809,7 +1809,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Url(self):
-        """人体图片 Url 。
+        r"""人体图片 Url 。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片 base64 编码后大小不可超过5M。 
 图片分辨率不得超过 1920 * 1080 。
@@ -1826,7 +1826,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def AttributesOptions(self):
-        """是否返回年龄、性别、朝向等属性。 
+        r"""是否返回年龄、性别、朝向等属性。 
 可选项有 Age、Bag、Gender、UpperBodyCloth、LowerBodyCloth、Orientation。  
 如果此参数为空则为不需要返回。 
 需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
@@ -1859,7 +1859,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class DetectBodyResponse(AbstractModel):
-    """DetectBody返回参数结构体
+    r"""DetectBody返回参数结构体
 
     """
 
@@ -1878,7 +1878,7 @@ class DetectBodyResponse(AbstractModel):
 
     @property
     def BodyDetectResults(self):
-        """图中检测出来的人体框。
+        r"""图中检测出来的人体框。
         :rtype: list of BodyDetectResult
         """
         return self._BodyDetectResults
@@ -1889,7 +1889,7 @@ class DetectBodyResponse(AbstractModel):
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -1900,7 +1900,7 @@ class DetectBodyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1922,7 +1922,7 @@ class DetectBodyResponse(AbstractModel):
 
 
 class Gender(AbstractModel):
-    """人体性别信息。
+    r"""人体性别信息。
     AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 
     """
@@ -1939,7 +1939,7 @@ class Gender(AbstractModel):
 
     @property
     def Type(self):
-        """性别信息，返回值为以下集合中的一个 {男性, 女性}
+        r"""性别信息，返回值为以下集合中的一个 {男性, 女性}
         :rtype: str
         """
         return self._Type
@@ -1950,7 +1950,7 @@ class Gender(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -1974,7 +1974,7 @@ class Gender(AbstractModel):
 
 
 class GetGroupListRequest(AbstractModel):
-    """GetGroupList请求参数结构体
+    r"""GetGroupList请求参数结构体
 
     """
 
@@ -1990,7 +1990,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -2001,7 +2001,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000。
+        r"""返回数量，默认值为10，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -2025,7 +2025,7 @@ class GetGroupListRequest(AbstractModel):
 
 
 class GetGroupListResponse(AbstractModel):
-    """GetGroupList返回参数结构体
+    r"""GetGroupList返回参数结构体
 
     """
 
@@ -2044,7 +2044,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def GroupInfos(self):
-        """返回的人体库信息。
+        r"""返回的人体库信息。
         :rtype: list of GroupInfo
         """
         return self._GroupInfos
@@ -2055,7 +2055,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def GroupNum(self):
-        """人体库总数量。
+        r"""人体库总数量。
         :rtype: int
         """
         return self._GroupNum
@@ -2066,7 +2066,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2088,7 +2088,7 @@ class GetGroupListResponse(AbstractModel):
 
 
 class GetPersonListRequest(AbstractModel):
-    """GetPersonList请求参数结构体
+    r"""GetPersonList请求参数结构体
 
     """
 
@@ -2107,7 +2107,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人体库ID。
+        r"""人体库ID。
         :rtype: str
         """
         return self._GroupId
@@ -2118,7 +2118,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -2129,7 +2129,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000。
+        r"""返回数量，默认值为10，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -2154,7 +2154,7 @@ class GetPersonListRequest(AbstractModel):
 
 
 class GetPersonListResponse(AbstractModel):
-    """GetPersonList返回参数结构体
+    r"""GetPersonList返回参数结构体
 
     """
 
@@ -2176,7 +2176,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonInfos(self):
-        """返回的人员信息。
+        r"""返回的人员信息。
         :rtype: list of PersonInfo
         """
         return self._PersonInfos
@@ -2187,7 +2187,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """该人体库的人员数量。
+        r"""该人体库的人员数量。
         :rtype: int
         """
         return self._PersonNum
@@ -2198,7 +2198,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -2209,7 +2209,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2232,13 +2232,13 @@ class GetPersonListResponse(AbstractModel):
 
 
 class GetSummaryInfoRequest(AbstractModel):
-    """GetSummaryInfo请求参数结构体
+    r"""GetSummaryInfo请求参数结构体
 
     """
 
 
 class GetSummaryInfoResponse(AbstractModel):
-    """GetSummaryInfo返回参数结构体
+    r"""GetSummaryInfo返回参数结构体
 
     """
 
@@ -2260,7 +2260,7 @@ class GetSummaryInfoResponse(AbstractModel):
 
     @property
     def GroupCount(self):
-        """人体库总数量。
+        r"""人体库总数量。
         :rtype: int
         """
         return self._GroupCount
@@ -2271,7 +2271,7 @@ class GetSummaryInfoResponse(AbstractModel):
 
     @property
     def PersonCount(self):
-        """人员总数量
+        r"""人员总数量
         :rtype: int
         """
         return self._PersonCount
@@ -2282,7 +2282,7 @@ class GetSummaryInfoResponse(AbstractModel):
 
     @property
     def TraceCount(self):
-        """人员轨迹总数量
+        r"""人员轨迹总数量
         :rtype: int
         """
         return self._TraceCount
@@ -2293,7 +2293,7 @@ class GetSummaryInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2311,7 +2311,7 @@ class GetSummaryInfoResponse(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """返回的人员库信息。
+    r"""返回的人员库信息。
 
     """
 
@@ -2337,7 +2337,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
     @property
     def GroupName(self):
-        """人体库名称。
+        r"""人体库名称。
         :rtype: str
         """
         return self._GroupName
@@ -2348,7 +2348,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
     @property
     def GroupId(self):
-        """人体库ID。
+        r"""人体库ID。
         :rtype: str
         """
         return self._GroupId
@@ -2359,7 +2359,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
     @property
     def Tag(self):
-        """人体库信息备注。
+        r"""人体库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -2370,7 +2370,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -2381,7 +2381,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
     @property
     def CreationTimestamp(self):
-        """Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。  
+        r"""Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。  
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
         :rtype: int
         """
@@ -2409,7 +2409,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 
 
 class ImageRect(AbstractModel):
-    """图像坐标信息。
+    r"""图像坐标信息。
 
     """
 
@@ -2434,7 +2434,7 @@ class ImageRect(AbstractModel):
 
     @property
     def X(self):
-        """左上角横坐标。
+        r"""左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -2445,7 +2445,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角纵坐标。
+        r"""左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -2456,7 +2456,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Width(self):
-        """人体宽度。
+        r"""人体宽度。
         :rtype: int
         """
         return self._Width
@@ -2467,7 +2467,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Height(self):
-        """人体高度。
+        r"""人体高度。
         :rtype: int
         """
         return self._Height
@@ -2478,7 +2478,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Label(self):
-        """分割选项名称。
+        r"""分割选项名称。
         :rtype: str
         """
         return self._Label
@@ -2505,7 +2505,7 @@ class ImageRect(AbstractModel):
 
 
 class KeyPointInfo(AbstractModel):
-    """人体关键点信息
+    r"""人体关键点信息
 
     """
 
@@ -2527,7 +2527,7 @@ class KeyPointInfo(AbstractModel):
 
     @property
     def KeyPointType(self):
-        """代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
+        r"""代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
         :rtype: str
         """
         return self._KeyPointType
@@ -2538,7 +2538,7 @@ class KeyPointInfo(AbstractModel):
 
     @property
     def X(self):
-        """人体关键点横坐标
+        r"""人体关键点横坐标
         :rtype: float
         """
         return self._X
@@ -2549,7 +2549,7 @@ class KeyPointInfo(AbstractModel):
 
     @property
     def Y(self):
-        """人体关键点纵坐标
+        r"""人体关键点纵坐标
         :rtype: float
         """
         return self._Y
@@ -2560,7 +2560,7 @@ class KeyPointInfo(AbstractModel):
 
     @property
     def BodyScore(self):
-        """关键点坐标置信度，分数取值在0-1之间，阈值建议为0.25，小于0.25认为在图中无人体关键点。
+        r"""关键点坐标置信度，分数取值在0-1之间，阈值建议为0.25，小于0.25认为在图中无人体关键点。
         :rtype: float
         """
         return self._BodyScore
@@ -2586,7 +2586,7 @@ class KeyPointInfo(AbstractModel):
 
 
 class LowerBodyCloth(AbstractModel):
-    """下衣属性信息
+    r"""下衣属性信息
 
     """
 
@@ -2605,7 +2605,7 @@ class LowerBodyCloth(AbstractModel):
 
     @property
     def Color(self):
-        """下衣颜色信息。
+        r"""下衣颜色信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothColor`
         """
         return self._Color
@@ -2616,7 +2616,7 @@ class LowerBodyCloth(AbstractModel):
 
     @property
     def Length(self):
-        """下衣长度信息 。
+        r"""下衣长度信息 。
         :rtype: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothLength`
         """
         return self._Length
@@ -2627,7 +2627,7 @@ class LowerBodyCloth(AbstractModel):
 
     @property
     def Type(self):
-        """下衣类型信息。
+        r"""下衣类型信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothType`
         """
         return self._Type
@@ -2658,7 +2658,7 @@ class LowerBodyCloth(AbstractModel):
 
 
 class LowerBodyClothColor(AbstractModel):
-    """下衣颜色信息
+    r"""下衣颜色信息
 
     """
 
@@ -2674,7 +2674,7 @@ class LowerBodyClothColor(AbstractModel):
 
     @property
     def Type(self):
-        """下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
+        r"""下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
         :rtype: str
         """
         return self._Type
@@ -2685,7 +2685,7 @@ class LowerBodyClothColor(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -2709,7 +2709,7 @@ class LowerBodyClothColor(AbstractModel):
 
 
 class LowerBodyClothLength(AbstractModel):
-    """下衣长度信息
+    r"""下衣长度信息
 
     """
 
@@ -2725,7 +2725,7 @@ class LowerBodyClothLength(AbstractModel):
 
     @property
     def Type(self):
-        """下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
+        r"""下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
         :rtype: str
         """
         return self._Type
@@ -2736,7 +2736,7 @@ class LowerBodyClothLength(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -2760,7 +2760,7 @@ class LowerBodyClothLength(AbstractModel):
 
 
 class LowerBodyClothType(AbstractModel):
-    """下衣类型信息
+    r"""下衣类型信息
 
     """
 
@@ -2776,7 +2776,7 @@ class LowerBodyClothType(AbstractModel):
 
     @property
     def Type(self):
-        """下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
+        r"""下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
         :rtype: str
         """
         return self._Type
@@ -2787,7 +2787,7 @@ class LowerBodyClothType(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -2811,7 +2811,7 @@ class LowerBodyClothType(AbstractModel):
 
 
 class ModifyGroupRequest(AbstractModel):
-    """ModifyGroup请求参数结构体
+    r"""ModifyGroup请求参数结构体
 
     """
 
@@ -2830,7 +2830,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人体库ID。
+        r"""人体库ID。
         :rtype: str
         """
         return self._GroupId
@@ -2841,7 +2841,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """人体库名称。
+        r"""人体库名称。
         :rtype: str
         """
         return self._GroupName
@@ -2852,7 +2852,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """人体库信息备注。
+        r"""人体库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -2877,7 +2877,7 @@ class ModifyGroupRequest(AbstractModel):
 
 
 class ModifyGroupResponse(AbstractModel):
-    """ModifyGroup返回参数结构体
+    r"""ModifyGroup返回参数结构体
 
     """
 
@@ -2890,7 +2890,7 @@ class ModifyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2905,7 +2905,7 @@ class ModifyGroupResponse(AbstractModel):
 
 
 class ModifyPersonInfoRequest(AbstractModel):
-    """ModifyPersonInfo请求参数结构体
+    r"""ModifyPersonInfo请求参数结构体
 
     """
 
@@ -2921,7 +2921,7 @@ class ModifyPersonInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -2932,7 +2932,7 @@ class ModifyPersonInfoRequest(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。
+        r"""人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -2956,7 +2956,7 @@ class ModifyPersonInfoRequest(AbstractModel):
 
 
 class ModifyPersonInfoResponse(AbstractModel):
-    """ModifyPersonInfo返回参数结构体
+    r"""ModifyPersonInfo返回参数结构体
 
     """
 
@@ -2969,7 +2969,7 @@ class ModifyPersonInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2984,7 +2984,7 @@ class ModifyPersonInfoResponse(AbstractModel):
 
 
 class Orientation(AbstractModel):
-    """人体朝向信息。
+    r"""人体朝向信息。
     AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 
     """
@@ -3001,7 +3001,7 @@ class Orientation(AbstractModel):
 
     @property
     def Type(self):
-        """人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
+        r"""人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
         :rtype: str
         """
         return self._Type
@@ -3012,7 +3012,7 @@ class Orientation(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -3036,7 +3036,7 @@ class Orientation(AbstractModel):
 
 
 class PersonInfo(AbstractModel):
-    """人员信息。
+    r"""人员信息。
 
     """
 
@@ -3055,7 +3055,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称。
+        r"""人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -3066,7 +3066,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID。
+        r"""人员ID。
         :rtype: str
         """
         return self._PersonId
@@ -3077,7 +3077,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def TraceInfos(self):
-        """包含的人体动作轨迹图片信息列表。
+        r"""包含的人体动作轨迹图片信息列表。
         :rtype: list of TraceInfo
         """
         return self._TraceInfos
@@ -3107,7 +3107,7 @@ class PersonInfo(AbstractModel):
 
 
 class SearchTraceRequest(AbstractModel):
-    """SearchTrace请求参数结构体
+    r"""SearchTrace请求参数结构体
 
     """
 
@@ -3132,7 +3132,7 @@ class SearchTraceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """希望搜索的人体库ID。
+        r"""希望搜索的人体库ID。
         :rtype: str
         """
         return self._GroupId
@@ -3143,7 +3143,7 @@ class SearchTraceRequest(AbstractModel):
 
     @property
     def Trace(self):
-        """人体动作轨迹信息。
+        r"""人体动作轨迹信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.Trace`
         """
         return self._Trace
@@ -3154,7 +3154,7 @@ class SearchTraceRequest(AbstractModel):
 
     @property
     def MaxPersonNum(self):
-        """单张被识别的人体动作轨迹返回的最相似人员数量。
+        r"""单张被识别的人体动作轨迹返回的最相似人员数量。
 默认值为5，最大值为100。
  例，设MaxPersonNum为8，则返回Top8相似的人员信息。 值越大，需要处理的时间越长。建议不要超过10。
         :rtype: int
@@ -3167,7 +3167,7 @@ class SearchTraceRequest(AbstractModel):
 
     @property
     def TraceMatchThreshold(self):
-        """出参Score中，只有超过TraceMatchThreshold值的结果才会返回。
+        r"""出参Score中，只有超过TraceMatchThreshold值的结果才会返回。
 默认为0。范围[0, 100.0]。
         :rtype: float
         """
@@ -3196,7 +3196,7 @@ class SearchTraceRequest(AbstractModel):
 
 
 class SearchTraceResponse(AbstractModel):
-    """SearchTrace返回参数结构体
+    r"""SearchTrace返回参数结构体
 
     """
 
@@ -3224,7 +3224,7 @@ class SearchTraceResponse(AbstractModel):
 
     @property
     def Candidates(self):
-        """识别出的最相似候选人。
+        r"""识别出的最相似候选人。
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -3235,7 +3235,7 @@ class SearchTraceResponse(AbstractModel):
 
     @property
     def InputRetCode(self):
-        """输入的人体动作轨迹图片中的合法性校验结果。
+        r"""输入的人体动作轨迹图片中的合法性校验结果。
 只有为0时结果才有意义。
 -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
         :rtype: int
@@ -3248,7 +3248,7 @@ class SearchTraceResponse(AbstractModel):
 
     @property
     def InputRetCodeDetails(self):
-        """输入的人体动作轨迹图片中的合法性校验结果详情。 
+        r"""输入的人体动作轨迹图片中的合法性校验结果详情。 
 -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
         :rtype: list of int
         """
@@ -3260,7 +3260,7 @@ class SearchTraceResponse(AbstractModel):
 
     @property
     def BodyModelVersion(self):
-        """人体识别所用的算法模型版本。
+        r"""人体识别所用的算法模型版本。
         :rtype: str
         """
         return self._BodyModelVersion
@@ -3271,7 +3271,7 @@ class SearchTraceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3295,7 +3295,7 @@ class SearchTraceResponse(AbstractModel):
 
 
 class SegmentCustomizedPortraitPicRequest(AbstractModel):
-    """SegmentCustomizedPortraitPic请求参数结构体
+    r"""SegmentCustomizedPortraitPic请求参数结构体
 
     """
 
@@ -3321,7 +3321,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def SegmentationOptions(self):
-        """此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
+        r"""此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
         :rtype: :class:`tencentcloud.bda.v20200324.models.SegmentationOptions`
         """
         return self._SegmentationOptions
@@ -3332,7 +3332,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。
 图片分辨率须小于2000*2000。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
@@ -3345,7 +3345,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片分辨率须小于2000*2000 ，图片 base64 编码后大小不可超过5M。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
@@ -3377,7 +3377,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class SegmentCustomizedPortraitPicResponse(AbstractModel):
-    """SegmentCustomizedPortraitPic返回参数结构体
+    r"""SegmentCustomizedPortraitPic返回参数结构体
 
     """
 
@@ -3400,7 +3400,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """根据指定标签分割输出的透明背景人像图片的 base64 数据。
+        r"""根据指定标签分割输出的透明背景人像图片的 base64 数据。
         :rtype: str
         """
         return self._PortraitImage
@@ -3411,7 +3411,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
 
     @property
     def MaskImage(self):
-        """指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
+        r"""指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
         :rtype: str
         """
         return self._MaskImage
@@ -3422,7 +3422,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
 
     @property
     def ImageRects(self):
-        """坐标信息。
+        r"""坐标信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageRect
         """
@@ -3434,7 +3434,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3457,7 +3457,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
 
 
 class SegmentPortraitPicRequest(AbstractModel):
-    """SegmentPortraitPic请求参数结构体
+    r"""SegmentPortraitPic请求参数结构体
 
     """
 
@@ -3489,7 +3489,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。
 图片分辨率须小于2000*2000。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
@@ -3502,7 +3502,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Url(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片分辨率须小于2000*2000 ，图片 base64 编码后大小不可超过5M。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
@@ -3518,7 +3518,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
+        r"""返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
         :rtype: str
         """
         return self._RspImgType
@@ -3529,7 +3529,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Scene(self):
-        """适用场景类型。
+        r"""适用场景类型。
 
 取值：GEN/GS。GEN为通用场景模式；GS为绿幕场景模式，针对绿幕场景下的人像分割效果更好。
 两种模式选择一种传入，默认为GEN。
@@ -3558,7 +3558,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
 
 class SegmentPortraitPicResponse(AbstractModel):
-    """SegmentPortraitPic返回参数结构体
+    r"""SegmentPortraitPic返回参数结构体
 
     """
 
@@ -3591,7 +3591,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """处理后的图片 base64 数据，透明背景图。
+        r"""处理后的图片 base64 数据，透明背景图。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3603,7 +3603,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def ResultMask(self):
-        """一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）。
+        r"""一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3615,7 +3615,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def HasForeground(self):
-        """图片是否存在前景。
+        r"""图片是否存在前景。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3627,7 +3627,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def ResultImageUrl(self):
-        """支持将处理过的图片 base64 数据，透明背景图以Url的形式返回值，Url有效期为30分钟。
+        r"""支持将处理过的图片 base64 数据，透明背景图以Url的形式返回值，Url有效期为30分钟。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3639,7 +3639,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def ResultMaskUrl(self):
-        """一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以Url形式的返回值；Url有效期为30分钟。
+        r"""一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以Url形式的返回值；Url有效期为30分钟。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3651,7 +3651,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3671,7 +3671,7 @@ class SegmentPortraitPicResponse(AbstractModel):
 
 
 class SegmentationOptions(AbstractModel):
-    """此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
+    r"""此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
 
     """
 
@@ -3744,7 +3744,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Background(self):
-        """分割选项-背景
+        r"""分割选项-背景
         :rtype: bool
         """
         return self._Background
@@ -3755,7 +3755,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Hair(self):
-        """分割选项-头发
+        r"""分割选项-头发
         :rtype: bool
         """
         return self._Hair
@@ -3766,7 +3766,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def LeftEyebrow(self):
-        """分割选项-左眉
+        r"""分割选项-左眉
         :rtype: bool
         """
         return self._LeftEyebrow
@@ -3777,7 +3777,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def RightEyebrow(self):
-        """分割选项-右眉
+        r"""分割选项-右眉
         :rtype: bool
         """
         return self._RightEyebrow
@@ -3788,7 +3788,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def LeftEye(self):
-        """分割选项-左眼
+        r"""分割选项-左眼
         :rtype: bool
         """
         return self._LeftEye
@@ -3799,7 +3799,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def RightEye(self):
-        """分割选项-右眼
+        r"""分割选项-右眼
         :rtype: bool
         """
         return self._RightEye
@@ -3810,7 +3810,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Nose(self):
-        """分割选项-鼻子
+        r"""分割选项-鼻子
         :rtype: bool
         """
         return self._Nose
@@ -3821,7 +3821,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def UpperLip(self):
-        """分割选项-上唇
+        r"""分割选项-上唇
         :rtype: bool
         """
         return self._UpperLip
@@ -3832,7 +3832,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def LowerLip(self):
-        """分割选项-下唇
+        r"""分割选项-下唇
         :rtype: bool
         """
         return self._LowerLip
@@ -3843,7 +3843,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Tooth(self):
-        """分割选项-牙齿
+        r"""分割选项-牙齿
         :rtype: bool
         """
         return self._Tooth
@@ -3854,7 +3854,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Mouth(self):
-        """分割选项-口腔（不包含牙齿）
+        r"""分割选项-口腔（不包含牙齿）
         :rtype: bool
         """
         return self._Mouth
@@ -3865,7 +3865,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def LeftEar(self):
-        """分割选项-左耳
+        r"""分割选项-左耳
         :rtype: bool
         """
         return self._LeftEar
@@ -3876,7 +3876,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def RightEar(self):
-        """分割选项-右耳
+        r"""分割选项-右耳
         :rtype: bool
         """
         return self._RightEar
@@ -3887,7 +3887,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Face(self):
-        """分割选项-面部(不包含眼、耳、口、鼻等五官及头发。)
+        r"""分割选项-面部(不包含眼、耳、口、鼻等五官及头发。)
         :rtype: bool
         """
         return self._Face
@@ -3898,7 +3898,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Head(self):
-        """复合分割选项-头部(包含所有的头部元素，相关装饰除外)
+        r"""复合分割选项-头部(包含所有的头部元素，相关装饰除外)
         :rtype: bool
         """
         return self._Head
@@ -3909,7 +3909,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Body(self):
-        """分割选项-身体（包含脖子）
+        r"""分割选项-身体（包含脖子）
         :rtype: bool
         """
         return self._Body
@@ -3920,7 +3920,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Hat(self):
-        """分割选项-帽子
+        r"""分割选项-帽子
         :rtype: bool
         """
         return self._Hat
@@ -3931,7 +3931,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Headdress(self):
-        """分割选项-头饰
+        r"""分割选项-头饰
         :rtype: bool
         """
         return self._Headdress
@@ -3942,7 +3942,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Earrings(self):
-        """分割选项-耳环
+        r"""分割选项-耳环
         :rtype: bool
         """
         return self._Earrings
@@ -3953,7 +3953,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Necklace(self):
-        """分割选项-项链
+        r"""分割选项-项链
         :rtype: bool
         """
         return self._Necklace
@@ -3964,7 +3964,7 @@ class SegmentationOptions(AbstractModel):
 
     @property
     def Belongings(self):
-        """分割选项-随身物品（ 例如伞、包、手机等。 ）
+        r"""分割选项-随身物品（ 例如伞、包、手机等。 ）
         :rtype: bool
         """
         return self._Belongings
@@ -4007,7 +4007,7 @@ class SegmentationOptions(AbstractModel):
 
 
 class TerminateSegmentationTaskRequest(AbstractModel):
-    """TerminateSegmentationTask请求参数结构体
+    r"""TerminateSegmentationTask请求参数结构体
 
     """
 
@@ -4020,7 +4020,7 @@ class TerminateSegmentationTaskRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """在提交分割任务成功时返回的任务标识ID。
+        r"""在提交分割任务成功时返回的任务标识ID。
         :rtype: str
         """
         return self._TaskID
@@ -4043,7 +4043,7 @@ class TerminateSegmentationTaskRequest(AbstractModel):
 
 
 class TerminateSegmentationTaskResponse(AbstractModel):
-    """TerminateSegmentationTask返回参数结构体
+    r"""TerminateSegmentationTask返回参数结构体
 
     """
 
@@ -4056,7 +4056,7 @@ class TerminateSegmentationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4071,7 +4071,7 @@ class TerminateSegmentationTaskResponse(AbstractModel):
 
 
 class Trace(AbstractModel):
-    """人体动作轨迹信息
+    r"""人体动作轨迹信息
 
     """
 
@@ -4102,7 +4102,7 @@ Urls、Images必须提供一个，如果都提供，只使用 Urls。
 
     @property
     def Images(self):
-        """人体动作轨迹图片 Base64 数组。 
+        r"""人体动作轨迹图片 Base64 数组。 
 数组长度最小为1最大为5。 
 单个图片 base64 编码后大小不可超过2M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -4116,7 +4116,7 @@ Urls、Images必须提供一个，如果都提供，只使用 Urls。
 
     @property
     def Urls(self):
-        """人体动作轨迹图片 Url 数组。 
+        r"""人体动作轨迹图片 Url 数组。 
 数组长度最小为1最大为5。 
 单个图片 base64 编码后大小不可超过2M。 
 Urls、Images必须提供一个，如果都提供，只使用 Urls。 
@@ -4133,7 +4133,7 @@ Urls、Images必须提供一个，如果都提供，只使用 Urls。
 
     @property
     def BodyRects(self):
-        """若输入的Images 和 Urls 是已经裁剪后的人体小图，则可以忽略本参数。 
+        r"""若输入的Images 和 Urls 是已经裁剪后的人体小图，则可以忽略本参数。 
 若否，或图片中包含多个人体，则需要通过本参数来指定图片中的人体框。 
 顺序对应 Images 或 Urls 中的顺序。  
 当不输入本参数时，我们将认为输入图片已是经过裁剪后的人体小图，不会进行人体检测而直接进行特征提取处理。
@@ -4166,7 +4166,7 @@ Urls、Images必须提供一个，如果都提供，只使用 Urls。
 
 
 class TraceInfo(AbstractModel):
-    """人体动作轨迹信息。
+    r"""人体动作轨迹信息。
 
     """
 
@@ -4182,7 +4182,7 @@ class TraceInfo(AbstractModel):
 
     @property
     def TraceId(self):
-        """人体动作轨迹ID。
+        r"""人体动作轨迹ID。
         :rtype: str
         """
         return self._TraceId
@@ -4193,7 +4193,7 @@ class TraceInfo(AbstractModel):
 
     @property
     def BodyIds(self):
-        """包含的人体动作轨迹图片Id列表。
+        r"""包含的人体动作轨迹图片Id列表。
         :rtype: list of str
         """
         return self._BodyIds
@@ -4217,7 +4217,7 @@ class TraceInfo(AbstractModel):
 
 
 class UpperBodyCloth(AbstractModel):
-    """上衣属性信息
+    r"""上衣属性信息
 
     """
 
@@ -4236,7 +4236,7 @@ class UpperBodyCloth(AbstractModel):
 
     @property
     def Texture(self):
-        """上衣纹理信息。
+        r"""上衣纹理信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothTexture`
         """
         return self._Texture
@@ -4247,7 +4247,7 @@ class UpperBodyCloth(AbstractModel):
 
     @property
     def Color(self):
-        """上衣颜色信息。
+        r"""上衣颜色信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothColor`
         """
         return self._Color
@@ -4258,7 +4258,7 @@ class UpperBodyCloth(AbstractModel):
 
     @property
     def Sleeve(self):
-        """上衣衣袖信息。
+        r"""上衣衣袖信息。
         :rtype: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothSleeve`
         """
         return self._Sleeve
@@ -4289,7 +4289,7 @@ class UpperBodyCloth(AbstractModel):
 
 
 class UpperBodyClothColor(AbstractModel):
-    """上衣颜色信息。
+    r"""上衣颜色信息。
 
     """
 
@@ -4305,7 +4305,7 @@ class UpperBodyClothColor(AbstractModel):
 
     @property
     def Type(self):
-        """上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
+        r"""上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
         :rtype: str
         """
         return self._Type
@@ -4316,7 +4316,7 @@ class UpperBodyClothColor(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -4340,7 +4340,7 @@ class UpperBodyClothColor(AbstractModel):
 
 
 class UpperBodyClothSleeve(AbstractModel):
-    """上衣衣袖信息。
+    r"""上衣衣袖信息。
 
     """
 
@@ -4356,7 +4356,7 @@ class UpperBodyClothSleeve(AbstractModel):
 
     @property
     def Type(self):
-        """上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
+        r"""上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
         :rtype: str
         """
         return self._Type
@@ -4367,7 +4367,7 @@ class UpperBodyClothSleeve(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -4391,7 +4391,7 @@ class UpperBodyClothSleeve(AbstractModel):
 
 
 class UpperBodyClothTexture(AbstractModel):
-    """上衣纹理信息。
+    r"""上衣纹理信息。
 
     """
 
@@ -4407,7 +4407,7 @@ class UpperBodyClothTexture(AbstractModel):
 
     @property
     def Type(self):
-        """上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
+        r"""上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
         :rtype: str
         """
         return self._Type
@@ -4418,7 +4418,7 @@ class UpperBodyClothTexture(AbstractModel):
 
     @property
     def Probability(self):
-        """Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        r"""Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
         :rtype: float
         """
         return self._Probability
@@ -4442,7 +4442,7 @@ class UpperBodyClothTexture(AbstractModel):
 
 
 class VideoBasicInformation(AbstractModel):
-    """视频基础信息
+    r"""视频基础信息
 
     """
 
@@ -4467,7 +4467,7 @@ class VideoBasicInformation(AbstractModel):
 
     @property
     def FrameWidth(self):
-        """视频宽度
+        r"""视频宽度
         :rtype: int
         """
         return self._FrameWidth
@@ -4478,7 +4478,7 @@ class VideoBasicInformation(AbstractModel):
 
     @property
     def FrameHeight(self):
-        """视频高度
+        r"""视频高度
         :rtype: int
         """
         return self._FrameHeight
@@ -4489,7 +4489,7 @@ class VideoBasicInformation(AbstractModel):
 
     @property
     def FramesPerSecond(self):
-        """视频帧速率(FPS)
+        r"""视频帧速率(FPS)
         :rtype: int
         """
         return self._FramesPerSecond
@@ -4500,7 +4500,7 @@ class VideoBasicInformation(AbstractModel):
 
     @property
     def Duration(self):
-        """视频时长
+        r"""视频时长
         :rtype: float
         """
         return self._Duration
@@ -4511,7 +4511,7 @@ class VideoBasicInformation(AbstractModel):
 
     @property
     def TotalFrames(self):
-        """视频帧数
+        r"""视频帧数
         :rtype: int
         """
         return self._TotalFrames

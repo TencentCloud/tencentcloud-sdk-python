@@ -27,7 +27,7 @@ class CtemClient(AbstractClient):
 
 
     def CreateCustomer(self, request):
-        """创建企业
+        r"""创建企业
 
         :param request: Request instance for CreateCustomer.
         :type request: :class:`tencentcloud.ctem.v20231128.models.CreateCustomerRequest`
@@ -50,7 +50,7 @@ class CtemClient(AbstractClient):
 
 
     def CreateJobRecord(self, request):
-        """启动测绘
+        r"""启动测绘
 
         :param request: Request instance for CreateJobRecord.
         :type request: :class:`tencentcloud.ctem.v20231128.models.CreateJobRecordRequest`
@@ -73,7 +73,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeApps(self, request):
-        """查看移动端资产
+        r"""查看移动端资产
 
         :param request: Request instance for DescribeApps.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeAppsRequest`
@@ -96,7 +96,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeAssets(self, request):
-        """查看主机资产
+        r"""查看主机资产
 
         :param request: Request instance for DescribeAssets.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeAssetsRequest`
@@ -119,7 +119,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeConfigs(self, request):
-        """查看目录爆破数据
+        r"""查看目录爆破数据
 
         :param request: Request instance for DescribeConfigs.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeConfigsRequest`
@@ -142,7 +142,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeCustomers(self, request):
-        """查看企业列表
+        r"""查看企业列表
 
         :param request: Request instance for DescribeCustomers.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeCustomersRequest`
@@ -165,7 +165,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeDarkWebs(self, request):
-        """查看暗网数据
+        r"""查看暗网数据
 
         :param request: Request instance for DescribeDarkWebs.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeDarkWebsRequest`
@@ -188,7 +188,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """查看主域名数据
+        r"""查看主域名数据
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeDomainsRequest`
@@ -211,7 +211,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeEnterprises(self, request):
-        """查看企业架构数据
+        r"""查看企业架构数据
 
         :param request: Request instance for DescribeEnterprises.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeEnterprisesRequest`
@@ -234,7 +234,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeFakeApps(self, request):
-        """查询仿冒应用
+        r"""查询仿冒应用
 
         :param request: Request instance for DescribeFakeApps.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeAppsRequest`
@@ -257,7 +257,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeFakeMiniPrograms(self, request):
-        """查询仿冒小程序
+        r"""查询仿冒小程序
 
         :param request: Request instance for DescribeFakeMiniPrograms.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeMiniProgramsRequest`
@@ -280,7 +280,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeFakeWebsites(self, request):
-        """查询仿冒网站
+        r"""查询仿冒网站
 
         :param request: Request instance for DescribeFakeWebsites.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWebsitesRequest`
@@ -303,7 +303,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeFakeWechatOfficials(self, request):
-        """查询仿冒公众号
+        r"""查询仿冒公众号
 
         :param request: Request instance for DescribeFakeWechatOfficials.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWechatOfficialsRequest`
@@ -326,7 +326,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeGithubs(self, request):
-        """查看Github泄露数据
+        r"""查看Github泄露数据
 
         :param request: Request instance for DescribeGithubs.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeGithubsRequest`
@@ -349,7 +349,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeHttps(self, request):
-        """查看http数据
+        r"""查看http数据
 
         :param request: Request instance for DescribeHttps.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeHttpsRequest`
@@ -372,7 +372,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeJobRecordDetails(self, request):
-        """查看链路详情
+        r"""查看链路详情
 
         :param request: Request instance for DescribeJobRecordDetails.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeJobRecordDetailsRequest`
@@ -395,7 +395,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeJobRecords(self, request):
-        """查看任务运行记录列表
+        r"""查看任务运行记录列表
 
         :param request: Request instance for DescribeJobRecords.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeJobRecordsRequest`
@@ -418,7 +418,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeLeakageCodes(self, request):
-        """获取代码泄露数据
+        r"""获取代码泄露数据
 
         :param request: Request instance for DescribeLeakageCodes.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeLeakageCodesRequest`
@@ -441,7 +441,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeLeakageDatas(self, request):
-        """获取数据泄露事件
+        r"""获取数据泄露事件
 
         :param request: Request instance for DescribeLeakageDatas.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeLeakageDatasRequest`
@@ -464,7 +464,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeLeakageEmails(self, request):
-        """获取邮箱泄露数据
+        r"""获取邮箱泄露数据
 
         :param request: Request instance for DescribeLeakageEmails.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeLeakageEmailsRequest`
@@ -487,7 +487,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeManages(self, request):
-        """查看后台管理数据
+        r"""查看后台管理数据
 
         :param request: Request instance for DescribeManages.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeManagesRequest`
@@ -510,7 +510,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeNetDisks(self, request):
-        """查看网盘泄露数据
+        r"""查看网盘泄露数据
 
         :param request: Request instance for DescribeNetDisks.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeNetDisksRequest`
@@ -533,7 +533,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribePorts(self, request):
-        """查看端口数据
+        r"""查看端口数据
 
         :param request: Request instance for DescribePorts.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribePortsRequest`
@@ -556,7 +556,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeSensitiveInfos(self, request):
-        """查看敏感信息泄露数据
+        r"""查看敏感信息泄露数据
 
         :param request: Request instance for DescribeSensitiveInfos.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeSensitiveInfosRequest`
@@ -579,7 +579,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeSubDomains(self, request):
-        """查看子域名数据
+        r"""查看子域名数据
 
         :param request: Request instance for DescribeSubDomains.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeSubDomainsRequest`
@@ -602,7 +602,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeSuspiciousAssets(self, request):
-        """查看影子资产
+        r"""查看影子资产
 
         :param request: Request instance for DescribeSuspiciousAssets.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeSuspiciousAssetsRequest`
@@ -625,7 +625,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeVuls(self, request):
-        """查看漏洞数据
+        r"""查看漏洞数据
 
         :param request: Request instance for DescribeVuls.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeVulsRequest`
@@ -648,7 +648,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeWeakPasswords(self, request):
-        """查看弱口令数据
+        r"""查看弱口令数据
 
         :param request: Request instance for DescribeWeakPasswords.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeWeakPasswordsRequest`
@@ -671,7 +671,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeWechatApplets(self, request):
-        """查看微信小程序
+        r"""查看微信小程序
 
         :param request: Request instance for DescribeWechatApplets.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeWechatAppletsRequest`
@@ -694,7 +694,7 @@ class CtemClient(AbstractClient):
 
 
     def DescribeWechatOfficialAccounts(self, request):
-        """查看公众号数据
+        r"""查看公众号数据
 
         :param request: Request instance for DescribeWechatOfficialAccounts.
         :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeWechatOfficialAccountsRequest`
@@ -717,7 +717,7 @@ class CtemClient(AbstractClient):
 
 
     def ModifyCustomer(self, request):
-        """编辑企业
+        r"""编辑企业
 
         :param request: Request instance for ModifyCustomer.
         :type request: :class:`tencentcloud.ctem.v20231128.models.ModifyCustomerRequest`
@@ -740,7 +740,7 @@ class CtemClient(AbstractClient):
 
 
     def ModifyLabel(self, request):
-        """修改标签
+        r"""修改标签
 
         :param request: Request instance for ModifyLabel.
         :type request: :class:`tencentcloud.ctem.v20231128.models.ModifyLabelRequest`
@@ -763,7 +763,7 @@ class CtemClient(AbstractClient):
 
 
     def StopJobRecord(self, request):
-        """停止扫描
+        r"""停止扫描
 
         :param request: Request instance for StopJobRecord.
         :type request: :class:`tencentcloud.ctem.v20231128.models.StopJobRecordRequest`

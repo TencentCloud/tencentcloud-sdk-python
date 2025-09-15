@@ -27,7 +27,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateDedicatedCluster(self, request):
-        """创建专用集群
+        r"""创建专用集群
 
         :param request: Request instance for CreateDedicatedCluster.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterRequest`
@@ -50,7 +50,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateDedicatedClusterImageCache(self, request):
-        """创建云上镜像缓存到本地专用集群中
+        r"""创建云上镜像缓存到本地专用集群中
 
         :param request: Request instance for CreateDedicatedClusterImageCache.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterImageCacheRequest`
@@ -73,7 +73,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateDedicatedClusterOrder(self, request):
-        """创建专用集群订单
+        r"""创建专用集群订单
 
         :param request: Request instance for CreateDedicatedClusterOrder.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterOrderRequest`
@@ -96,7 +96,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateSite(self, request):
-        """创建站点
+        r"""创建站点
 
         :param request: Request instance for CreateSite.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateSiteRequest`
@@ -119,7 +119,7 @@ class CdcClient(AbstractClient):
 
 
     def DeleteDedicatedClusterImageCache(self, request):
-        """删除本地专用集群的云上镜像缓存
+        r"""删除本地专用集群的云上镜像缓存
 
         :param request: Request instance for DeleteDedicatedClusterImageCache.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClusterImageCacheRequest`
@@ -142,7 +142,7 @@ class CdcClient(AbstractClient):
 
 
     def DeleteDedicatedClusters(self, request):
-        """删除专用集群
+        r"""删除专用集群
 
         :param request: Request instance for DeleteDedicatedClusters.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClustersRequest`
@@ -165,7 +165,7 @@ class CdcClient(AbstractClient):
 
 
     def DeleteSites(self, request):
-        """删除站点
+        r"""删除站点
 
         :param request: Request instance for DeleteSites.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteSitesRequest`
@@ -188,7 +188,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterCbsStatistics(self, request):
-        """查询本地专用集群云硬盘仓库信息
+        r"""查询本地专用集群云硬盘仓库信息
 
         :param request: Request instance for DescribeDedicatedClusterCbsStatistics.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCbsStatisticsRequest`
@@ -211,7 +211,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterCosCapacity(self, request):
-        """查询专用集群内cos的容量信息
+        r"""查询专用集群内cos的容量信息
 
         :param request: Request instance for DescribeDedicatedClusterCosCapacity.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCosCapacityRequest`
@@ -234,7 +234,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterHostStatistics(self, request):
-        """查询专用集群内宿主机的统计信息
+        r"""查询专用集群内宿主机的统计信息
 
         :param request: Request instance for DescribeDedicatedClusterHostStatistics.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostStatisticsRequest`
@@ -257,7 +257,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterHosts(self, request):
-        """查询专用集群宿主机信息
+        r"""查询专用集群宿主机信息
 
         :param request: Request instance for DescribeDedicatedClusterHosts.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostsRequest`
@@ -280,7 +280,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterInstanceTypes(self, request):
-        """查询专用集群支持的实例规格列表
+        r"""查询专用集群支持的实例规格列表
 
         :param request: Request instance for DescribeDedicatedClusterInstanceTypes.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterInstanceTypesRequest`
@@ -303,7 +303,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterOrders(self, request):
-        """查询专用集群订单列表
+        r"""查询专用集群订单列表
 
         :param request: Request instance for DescribeDedicatedClusterOrders.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOrdersRequest`
@@ -326,7 +326,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterOverview(self, request):
-        """查询专用集群概览信息
+        r"""查询专用集群概览信息
 
         :param request: Request instance for DescribeDedicatedClusterOverview.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOverviewRequest`
@@ -349,7 +349,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterTypes(self, request):
-        """查询专有集群配置列表
+        r"""查询专有集群配置列表
 
         :param request: Request instance for DescribeDedicatedClusterTypes.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterTypesRequest`
@@ -372,7 +372,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusters(self, request):
-        """查询专用集群列表
+        r"""查询专用集群列表
 
         :param request: Request instance for DescribeDedicatedClusters.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClustersRequest`
@@ -395,7 +395,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedSupportedZones(self, request):
-        """查询专用集群支持的可用区列表
+        r"""查询专用集群支持的可用区列表
 
         :param request: Request instance for DescribeDedicatedSupportedZones.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedSupportedZonesRequest`
@@ -418,7 +418,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeSites(self, request):
-        """查询站点列表
+        r"""查询站点列表
 
         :param request: Request instance for DescribeSites.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesRequest`
@@ -441,7 +441,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeSitesDetail(self, request):
-        """查询站点详情
+        r"""查询站点详情
 
         :param request: Request instance for DescribeSitesDetail.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesDetailRequest`
@@ -464,7 +464,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifyDedicatedClusterInfo(self, request):
-        """修改本地专用集群信息
+        r"""修改本地专用集群信息
 
         :param request: Request instance for ModifyDedicatedClusterInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyDedicatedClusterInfoRequest`
@@ -487,7 +487,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifyOrderStatus(self, request):
-        """修改大订单、小订单的状态
+        r"""修改大订单、小订单的状态
 
         :param request: Request instance for ModifyOrderStatus.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyOrderStatusRequest`
@@ -510,7 +510,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifySiteDeviceInfo(self, request):
-        """修改机房设备信息
+        r"""修改机房设备信息
 
         :param request: Request instance for ModifySiteDeviceInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteDeviceInfoRequest`
@@ -533,7 +533,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifySiteInfo(self, request):
-        """修改机房信息
+        r"""修改机房信息
 
         :param request: Request instance for ModifySiteInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteInfoRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BoundingBox(AbstractModel):
-    """段落文本框位置：x，y代表左上顶点，width和height代表宽高
+    r"""段落文本框位置：x，y代表左上顶点，width和height代表宽高
 
     """
 
@@ -41,7 +41,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def X(self):
-        """左上顶点x坐标
+        r"""左上顶点x坐标
         :rtype: int
         """
         return self._X
@@ -52,7 +52,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Y(self):
-        """左上顶点y坐标
+        r"""左上顶点y坐标
         :rtype: int
         """
         return self._Y
@@ -63,7 +63,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Width(self):
-        """宽
+        r"""宽
         :rtype: int
         """
         return self._Width
@@ -74,7 +74,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Height(self):
-        """高
+        r"""高
         :rtype: int
         """
         return self._Height
@@ -100,7 +100,7 @@ class BoundingBox(AbstractModel):
 
 
 class FileTranslateRequest(AbstractModel):
-    """FileTranslate请求参数结构体
+    r"""FileTranslate请求参数结构体
 
     """
 
@@ -168,7 +168,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def Source(self):
-        """源语言，支持
+        r"""源语言，支持
 zh：简体中文
 zh-HK：繁体中文
 zh-TW：繁体中文
@@ -196,7 +196,7 @@ th：泰语
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下
+        r"""目标语言，各源语言的目标语言支持列表如下
 zh（简体中文）：en（英语）、ar（阿拉伯语）、de（德语）、es（西班牙语）、fr（法语）、it（意大利语）、ja（日语）、pt（葡萄牙语）、ru（俄语）、ko（韩语）、tr（土耳其语）、vi（越南语）、th（泰语）
 zh-HK（繁体中文）：en（英语）、ar（阿拉伯语）、de（德语）、es（西班牙语）、fr（法语）、it（意大利语）、ja（日语）、pt（葡萄牙语）、ru（俄语）、ko（韩语）、tr（土耳其语）、vi（越南语）、th（泰语）
 zh-TW（繁体中文）：en（英语）、ar（阿拉伯语）、de（德语）、es（西班牙语）、fr（法语）、it（意大利语）、ja（日语）、pt（葡萄牙语）、ru（俄语）、ko（韩语）、tr（土耳其语）、vi（越南语）、th（泰语）
@@ -224,7 +224,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def DocumentType(self):
-        """文档类型：可支持以下几种(pdf,docx,pptx,xlsx,txt,xml,html,markdown,properties)
+        r"""文档类型：可支持以下几种(pdf,docx,pptx,xlsx,txt,xml,html,markdown,properties)
         :rtype: str
         """
         return self._DocumentType
@@ -235,7 +235,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def SourceType(self):
-        """数据来源，0：url，1：直接传文件编码后数据
+        r"""数据来源，0：url，1：直接传文件编码后数据
         :rtype: int
         """
         return self._SourceType
@@ -246,7 +246,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def Url(self):
-        """需要翻译文件url，URL长度不能超过1000字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
+        r"""需要翻译文件url，URL长度不能超过1000字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
         :rtype: str
         """
         return self._Url
@@ -257,7 +257,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def BasicDocumentType(self):
-        """原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
+        r"""原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
         :rtype: str
         """
         return self._BasicDocumentType
@@ -268,7 +268,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def CallbackUrl(self):
-        """回调url，URL长度不能超过256字符。文件大于10MB或字符较多时，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
+        r"""回调url，URL长度不能超过256字符。文件大于10MB或字符较多时，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
         :rtype: str
         """
         return self._CallbackUrl
@@ -279,7 +279,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
     @property
     def Data(self):
-        """文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
+        r"""文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
         :rtype: str
         """
         return self._Data
@@ -309,7 +309,7 @@ th（泰语）：zh（简体中文）、zh-HK（繁体中文）、zh-TW（繁体
 
 
 class FileTranslateResponse(AbstractModel):
-    """FileTranslate返回参数结构体
+    r"""FileTranslate返回参数结构体
 
     """
 
@@ -325,7 +325,7 @@ class FileTranslateResponse(AbstractModel):
 
     @property
     def Data(self):
-        """文件翻译的请求返回结果，包含结果查询需要的TaskId
+        r"""文件翻译的请求返回结果，包含结果查询需要的TaskId
         :rtype: :class:`tencentcloud.tmt.v20180321.models.Task`
         """
         return self._Data
@@ -336,7 +336,7 @@ class FileTranslateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -354,7 +354,7 @@ class FileTranslateResponse(AbstractModel):
 
 
 class GetFileTranslateData(AbstractModel):
-    """文件翻译任务结果
+    r"""文件翻译任务结果
 
     """
 
@@ -389,7 +389,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -400,7 +400,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        r"""任务状态
 
 - init：任务已初始化
 - wait：任务等待执行
@@ -416,7 +416,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def FileData(self):
-        """文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
+        r"""文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -428,7 +428,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def Message(self):
-        """错误提示
+        r"""错误提示
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -440,7 +440,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def Progress(self):
-        """任务进度
+        r"""任务进度
         :rtype: int
         """
         return self._Progress
@@ -451,7 +451,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """本次翻译消耗的字符数	
+        r"""本次翻译消耗的字符数	
         :rtype: int
         """
         return self._UsedAmount
@@ -479,7 +479,7 @@ class GetFileTranslateData(AbstractModel):
 
 
 class GetFileTranslateRequest(AbstractModel):
-    """GetFileTranslate请求参数结构体
+    r"""GetFileTranslate请求参数结构体
 
     """
 
@@ -492,7 +492,7 @@ class GetFileTranslateRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -515,7 +515,7 @@ class GetFileTranslateRequest(AbstractModel):
 
 
 class GetFileTranslateResponse(AbstractModel):
-    """GetFileTranslate返回参数结构体
+    r"""GetFileTranslate返回参数结构体
 
     """
 
@@ -531,7 +531,7 @@ class GetFileTranslateResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务id
+        r"""任务id
         :rtype: :class:`tencentcloud.tmt.v20180321.models.GetFileTranslateData`
         """
         return self._Data
@@ -542,7 +542,7 @@ class GetFileTranslateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -560,7 +560,7 @@ class GetFileTranslateResponse(AbstractModel):
 
 
 class ImageRecord(AbstractModel):
-    """图片翻译结果
+    r"""图片翻译结果
 
     """
 
@@ -573,7 +573,7 @@ class ImageRecord(AbstractModel):
 
     @property
     def Value(self):
-        """图片翻译结果
+        r"""图片翻译结果
         :rtype: list of ItemValue
         """
         return self._Value
@@ -601,7 +601,7 @@ class ImageRecord(AbstractModel):
 
 
 class ImageTranslateLLMRequest(AbstractModel):
-    """ImageTranslateLLM请求参数结构体
+    r"""ImageTranslateLLM请求参数结构体
 
     """
 
@@ -641,7 +641,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Data(self):
-        """图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
+        r"""图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
         :rtype: str
         """
         return self._Data
@@ -652,7 +652,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言，支持语言列表：
+        r"""目标语言，支持语言列表：
 
 - 中文：zh
 - 繁体（台湾）：zh-TW
@@ -683,7 +683,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Url(self):
-        """输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
+        r"""输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
 
         :rtype: str
         """
@@ -709,7 +709,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
 
 class ImageTranslateLLMResponse(AbstractModel):
-    """ImageTranslateLLM返回参数结构体
+    r"""ImageTranslateLLM返回参数结构体
 
     """
 
@@ -744,7 +744,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Data(self):
-        """图片数据的Base64字符串，输出格式为JPG。
+        r"""图片数据的Base64字符串，输出格式为JPG。
 
         :rtype: str
         """
@@ -756,7 +756,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Source(self):
-        """原文本主要源语言。
+        r"""原文本主要源语言。
         :rtype: str
         """
         return self._Source
@@ -767,7 +767,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Target(self):
-        """目标翻译语言。
+        r"""目标翻译语言。
         :rtype: str
         """
         return self._Target
@@ -778,7 +778,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def SourceText(self):
-        """图片中的全部原文本。
+        r"""图片中的全部原文本。
         :rtype: str
         """
         return self._SourceText
@@ -789,7 +789,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def TargetText(self):
-        """图片中全部译文。
+        r"""图片中全部译文。
         :rtype: str
         """
         return self._TargetText
@@ -800,7 +800,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """逆时针图片角度，取值范围为0-359
+        r"""逆时针图片角度，取值范围为0-359
         :rtype: float
         """
         return self._Angle
@@ -811,7 +811,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def TransDetails(self):
-        """翻译详情信息
+        r"""翻译详情信息
         :rtype: list of TransDetail
         """
         return self._TransDetails
@@ -822,7 +822,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -849,7 +849,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
 
 class ImageTranslateRequest(AbstractModel):
-    """ImageTranslate请求参数结构体
+    r"""ImageTranslate请求参数结构体
 
     """
 
@@ -891,7 +891,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def SessionUuid(self):
-        """唯一id，返回时原样返回
+        r"""唯一id，返回时原样返回
         :rtype: str
         """
         return self._SessionUuid
@@ -902,7 +902,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """doc:文档扫描
+        r"""doc:文档扫描
         :rtype: str
         """
         return self._Scene
@@ -913,7 +913,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def Data(self):
-        """图片数据的Base64字符串，经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片中包含文字需要少于6000字符。
+        r"""图片数据的Base64字符串，经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片中包含文字需要少于6000字符。
         :rtype: str
         """
         return self._Data
@@ -924,7 +924,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def Source(self):
-        """源语言，支持语言列表：<li> auto：自动识别（识别为一种语言）</li> <li>zh：简体中文</li> <li>zh-TW：繁体中文</li> <li>en：英语</li> <li>ja：日语</li> <li>ko：韩语</li> <li>ru：俄语</li> <li>fr：法语</li> <li>de：德语</li> <li>it：意大利语</li> <li>es：西班牙语</li> <li>pt：葡萄牙语</li> <li>ms：马来西亚语</li> <li>th：泰语</li><li>vi：越南语</li>
+        r"""源语言，支持语言列表：<li> auto：自动识别（识别为一种语言）</li> <li>zh：简体中文</li> <li>zh-TW：繁体中文</li> <li>en：英语</li> <li>ja：日语</li> <li>ko：韩语</li> <li>ru：俄语</li> <li>fr：法语</li> <li>de：德语</li> <li>it：意大利语</li> <li>es：西班牙语</li> <li>pt：葡萄牙语</li> <li>ms：马来西亚语</li> <li>th：泰语</li><li>vi：越南语</li>
         :rtype: str
         """
         return self._Source
@@ -935,7 +935,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下：
+        r"""目标语言，各源语言的目标语言支持列表如下：
 <li>zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、ru（俄语）、fr（法语）、de（德语）、it（意大利语）、es（西班牙语）、pt（葡萄牙语）、ms（马来语）、th（泰语）、vi（越南语）</li>
 <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、ru（俄语）、fr（法语）、de（德语）、it（意大利语）、es（西班牙语）、pt（葡萄牙语）、ms（马来语）、th（泰语）、vi（越南语）</li>
 <li>en（英语）：zh（中文）、ja（日语）、ko（韩语）、ru（俄语）、fr（法语）、de（德语）、it（意大利语）、es（西班牙语）、pt（葡萄牙语）、ms（马来语）、th（泰语）、vi（越南语）</li>
@@ -960,7 +960,7 @@ class ImageTranslateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+        r"""项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :rtype: int
         """
         return self._ProjectId
@@ -988,7 +988,7 @@ class ImageTranslateRequest(AbstractModel):
 
 
 class ImageTranslateResponse(AbstractModel):
-    """ImageTranslate返回参数结构体
+    r"""ImageTranslate返回参数结构体
 
     """
 
@@ -1013,7 +1013,7 @@ class ImageTranslateResponse(AbstractModel):
 
     @property
     def SessionUuid(self):
-        """请求的SessionUuid返回
+        r"""请求的SessionUuid返回
         :rtype: str
         """
         return self._SessionUuid
@@ -1024,7 +1024,7 @@ class ImageTranslateResponse(AbstractModel):
 
     @property
     def Source(self):
-        """源语言
+        r"""源语言
         :rtype: str
         """
         return self._Source
@@ -1035,7 +1035,7 @@ class ImageTranslateResponse(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言
+        r"""目标语言
         :rtype: str
         """
         return self._Target
@@ -1046,7 +1046,7 @@ class ImageTranslateResponse(AbstractModel):
 
     @property
     def ImageRecord(self):
-        """图片翻译结果，翻译结果按识别的文本每一行独立翻译，后续会推出按段落划分并翻译的版本
+        r"""图片翻译结果，翻译结果按识别的文本每一行独立翻译，后续会推出按段落划分并翻译的版本
         :rtype: :class:`tencentcloud.tmt.v20180321.models.ImageRecord`
         """
         return self._ImageRecord
@@ -1057,7 +1057,7 @@ class ImageTranslateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1078,7 +1078,7 @@ class ImageTranslateResponse(AbstractModel):
 
 
 class ItemValue(AbstractModel):
-    """翻译结果
+    r"""翻译结果
 
     """
 
@@ -1106,7 +1106,7 @@ class ItemValue(AbstractModel):
 
     @property
     def SourceText(self):
-        """识别出的源文
+        r"""识别出的源文
         :rtype: str
         """
         return self._SourceText
@@ -1117,7 +1117,7 @@ class ItemValue(AbstractModel):
 
     @property
     def TargetText(self):
-        """翻译后的译文
+        r"""翻译后的译文
         :rtype: str
         """
         return self._TargetText
@@ -1128,7 +1128,7 @@ class ItemValue(AbstractModel):
 
     @property
     def X(self):
-        """X坐标
+        r"""X坐标
         :rtype: int
         """
         return self._X
@@ -1139,7 +1139,7 @@ class ItemValue(AbstractModel):
 
     @property
     def Y(self):
-        """Y坐标
+        r"""Y坐标
         :rtype: int
         """
         return self._Y
@@ -1150,7 +1150,7 @@ class ItemValue(AbstractModel):
 
     @property
     def W(self):
-        """宽度
+        r"""宽度
         :rtype: int
         """
         return self._W
@@ -1161,7 +1161,7 @@ class ItemValue(AbstractModel):
 
     @property
     def H(self):
-        """高度
+        r"""高度
         :rtype: int
         """
         return self._H
@@ -1189,7 +1189,7 @@ class ItemValue(AbstractModel):
 
 
 class LanguageDetectRequest(AbstractModel):
-    """LanguageDetect请求参数结构体
+    r"""LanguageDetect请求参数结构体
 
     """
 
@@ -1205,7 +1205,7 @@ class LanguageDetectRequest(AbstractModel):
 
     @property
     def Text(self):
-        """待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
+        r"""待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
         :rtype: str
         """
         return self._Text
@@ -1216,7 +1216,7 @@ class LanguageDetectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+        r"""项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :rtype: int
         """
         return self._ProjectId
@@ -1240,7 +1240,7 @@ class LanguageDetectRequest(AbstractModel):
 
 
 class LanguageDetectResponse(AbstractModel):
-    """LanguageDetect返回参数结构体
+    r"""LanguageDetect返回参数结构体
 
     """
 
@@ -1257,7 +1257,7 @@ class LanguageDetectResponse(AbstractModel):
 
     @property
     def Lang(self):
-        """识别出的语言种类，参考语言列表
+        r"""识别出的语言种类，参考语言列表
 <li> zh : 中文 </li> <li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li>
         :rtype: str
         """
@@ -1269,7 +1269,7 @@ class LanguageDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1285,7 +1285,7 @@ class LanguageDetectResponse(AbstractModel):
 
 
 class SpeechTranslateRequest(AbstractModel):
-    """SpeechTranslate请求参数结构体
+    r"""SpeechTranslate请求参数结构体
 
     """
 
@@ -1325,7 +1325,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def SessionUuid(self):
-        """一段完整的语音对应一个SessionUuid
+        r"""一段完整的语音对应一个SessionUuid
         :rtype: str
         """
         return self._SessionUuid
@@ -1336,7 +1336,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def Source(self):
-        """音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+        r"""音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :rtype: str
         """
         return self._Source
@@ -1347,7 +1347,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def Target(self):
-        """翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+        r"""翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :rtype: str
         """
         return self._Target
@@ -1358,7 +1358,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def AudioFormat(self):
-        """pcm : 146   speex : 16779154   mp3 : 83886080
+        r"""pcm : 146   speex : 16779154   mp3 : 83886080
         :rtype: int
         """
         return self._AudioFormat
@@ -1369,7 +1369,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def Seq(self):
-        """语音分片的序号，从0开始
+        r"""语音分片的序号，从0开始
         :rtype: int
         """
         return self._Seq
@@ -1380,7 +1380,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def IsEnd(self):
-        """是否最后一片语音分片，0-否，1-是
+        r"""是否最后一片语音分片，0-否，1-是
         :rtype: int
         """
         return self._IsEnd
@@ -1391,7 +1391,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def Data(self):
-        """语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
+        r"""语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
         :rtype: str
         """
         return self._Data
@@ -1402,7 +1402,7 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+        r"""项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :rtype: int
         """
         return self._ProjectId
@@ -1415,7 +1415,7 @@ class SpeechTranslateRequest(AbstractModel):
     def Mode(self):
         warnings.warn("parameter `Mode` is deprecated", DeprecationWarning) 
 
-        """识别模式，该参数已废弃
+        r"""识别模式，该参数已废弃
         :rtype: str
         """
         return self._Mode
@@ -1430,7 +1430,7 @@ class SpeechTranslateRequest(AbstractModel):
     def TransType(self):
         warnings.warn("parameter `TransType` is deprecated", DeprecationWarning) 
 
-        """该参数已废弃
+        r"""该参数已废弃
         :rtype: int
         """
         return self._TransType
@@ -1464,7 +1464,7 @@ class SpeechTranslateRequest(AbstractModel):
 
 
 class SpeechTranslateResponse(AbstractModel):
-    """SpeechTranslate返回参数结构体
+    r"""SpeechTranslate返回参数结构体
 
     """
 
@@ -1501,7 +1501,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def SessionUuid(self):
-        """请求的SessionUuid直接返回
+        r"""请求的SessionUuid直接返回
         :rtype: str
         """
         return self._SessionUuid
@@ -1512,7 +1512,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def RecognizeStatus(self):
-        """语音识别状态 1-进行中 0-完成
+        r"""语音识别状态 1-进行中 0-完成
         :rtype: int
         """
         return self._RecognizeStatus
@@ -1523,7 +1523,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def SourceText(self):
-        """识别出的原文
+        r"""识别出的原文
         :rtype: str
         """
         return self._SourceText
@@ -1534,7 +1534,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def TargetText(self):
-        """翻译出的译文
+        r"""翻译出的译文
         :rtype: str
         """
         return self._TargetText
@@ -1545,7 +1545,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def Seq(self):
-        """第几个语音分片
+        r"""第几个语音分片
         :rtype: int
         """
         return self._Seq
@@ -1556,7 +1556,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def Source(self):
-        """原语言
+        r"""原语言
         :rtype: str
         """
         return self._Source
@@ -1567,7 +1567,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言
+        r"""目标语言
         :rtype: str
         """
         return self._Target
@@ -1578,7 +1578,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def VadSeq(self):
-        """当请求的Mode参数填写bvad是，启动VadSeq。此时Seq会被设置为后台vad（静音检测）后的新序号，而VadSeq代表客户端原始Seq值
+        r"""当请求的Mode参数填写bvad是，启动VadSeq。此时Seq会被设置为后台vad（静音检测）后的新序号，而VadSeq代表客户端原始Seq值
         :rtype: int
         """
         return self._VadSeq
@@ -1589,7 +1589,7 @@ class SpeechTranslateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1612,7 +1612,7 @@ class SpeechTranslateResponse(AbstractModel):
 
 
 class Task(AbstractModel):
-    """文件翻译请求的返回数据
+    r"""文件翻译请求的返回数据
 
     """
 
@@ -1625,7 +1625,7 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可通过此ID在轮询接口获取识别状态与结果。注意：TaskId数据类型为字符串类型
+        r"""任务ID，可通过此ID在轮询接口获取识别状态与结果。注意：TaskId数据类型为字符串类型
         :rtype: str
         """
         return self._TaskId
@@ -1648,7 +1648,7 @@ class Task(AbstractModel):
 
 
 class TextTranslateBatchRequest(AbstractModel):
-    """TextTranslateBatch请求参数结构体
+    r"""TextTranslateBatch请求参数结构体
 
     """
 
@@ -1714,7 +1714,7 @@ hi：印地语
 
     @property
     def Source(self):
-        """源语言，支持： 
+        r"""源语言，支持： 
 auto：自动识别（识别为一种语言）
 zh：简体中文
 zh-TW：繁体中文
@@ -1744,7 +1744,7 @@ hi：印地语
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下
+        r"""目标语言，各源语言的目标语言支持列表如下
 
 <li> zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
@@ -1774,7 +1774,7 @@ hi：印地语
 
     @property
     def ProjectId(self):
-        """项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+        r"""项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :rtype: int
         """
         return self._ProjectId
@@ -1785,7 +1785,7 @@ hi：印地语
 
     @property
     def SourceTextList(self):
-        """待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
+        r"""待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
         :rtype: list of str
         """
         return self._SourceTextList
@@ -1796,7 +1796,7 @@ hi：印地语
 
     @property
     def TermRepoIDList(self):
-        """需要使用的术语库列表，通过 [术语库操作指南](https://cloud.tencent.com/document/product/551/107926) 自行创建术语库获取。
+        r"""需要使用的术语库列表，通过 [术语库操作指南](https://cloud.tencent.com/document/product/551/107926) 自行创建术语库获取。
         :rtype: list of str
         """
         return self._TermRepoIDList
@@ -1807,7 +1807,7 @@ hi：印地语
 
     @property
     def SentRepoIDList(self):
-        """需要使用的例句库列表，通过 [例句库操作指南](https://cloud.tencent.com/document/product/551/107927) 自行创建例句库获取。
+        r"""需要使用的例句库列表，通过 [例句库操作指南](https://cloud.tencent.com/document/product/551/107927) 自行创建例句库获取。
         :rtype: list of str
         """
         return self._SentRepoIDList
@@ -1835,7 +1835,7 @@ hi：印地语
 
 
 class TextTranslateBatchResponse(AbstractModel):
-    """TextTranslateBatch返回参数结构体
+    r"""TextTranslateBatch返回参数结构体
 
     """
 
@@ -1860,7 +1860,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     @property
     def Source(self):
-        """源语言，详见入参Source
+        r"""源语言，详见入参Source
         :rtype: str
         """
         return self._Source
@@ -1871,7 +1871,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言，详见入参Target
+        r"""目标语言，详见入参Target
         :rtype: str
         """
         return self._Target
@@ -1882,7 +1882,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     @property
     def TargetTextList(self):
-        """翻译后的文本列表
+        r"""翻译后的文本列表
         :rtype: list of str
         """
         return self._TargetTextList
@@ -1893,7 +1893,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """本次翻译消耗的字符数
+        r"""本次翻译消耗的字符数
         :rtype: int
         """
         return self._UsedAmount
@@ -1904,7 +1904,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1923,7 +1923,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
 
 class TextTranslateRequest(AbstractModel):
-    """TextTranslate请求参数结构体
+    r"""TextTranslate请求参数结构体
 
     """
 
@@ -1992,7 +1992,7 @@ hi：印地语
 
     @property
     def SourceText(self):
-        """待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于6000字符。
+        r"""待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于6000字符。
         :rtype: str
         """
         return self._SourceText
@@ -2003,7 +2003,7 @@ hi：印地语
 
     @property
     def Source(self):
-        """源语言，支持：
+        r"""源语言，支持：
 auto：自动识别（识别为一种语言）
 zh：简体中文
 zh-TW：繁体中文
@@ -2033,7 +2033,7 @@ hi：印地语
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下
+        r"""目标语言，各源语言的目标语言支持列表如下
 
 <li> zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 <li>zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
@@ -2063,7 +2063,7 @@ hi：印地语
 
     @property
     def ProjectId(self):
-        """项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+        r"""项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :rtype: int
         """
         return self._ProjectId
@@ -2074,7 +2074,7 @@ hi：印地语
 
     @property
     def UntranslatedText(self):
-        """用来标记不希望被翻译的文本内容，如句子中的特殊符号、人名、地名等；每次请求只支持配置一个不被翻译的单词；仅支持配置人名、地名等名词，不要配置动词或短语，否则会影响翻译结果。
+        r"""用来标记不希望被翻译的文本内容，如句子中的特殊符号、人名、地名等；每次请求只支持配置一个不被翻译的单词；仅支持配置人名、地名等名词，不要配置动词或短语，否则会影响翻译结果。
         :rtype: str
         """
         return self._UntranslatedText
@@ -2085,7 +2085,7 @@ hi：印地语
 
     @property
     def TermRepoIDList(self):
-        """需要使用的术语库列表，通过 [术语库操作指南](https://cloud.tencent.com/document/product/551/107926) 自行创建术语库获取。
+        r"""需要使用的术语库列表，通过 [术语库操作指南](https://cloud.tencent.com/document/product/551/107926) 自行创建术语库获取。
         :rtype: list of str
         """
         return self._TermRepoIDList
@@ -2096,7 +2096,7 @@ hi：印地语
 
     @property
     def SentRepoIDList(self):
-        """需要使用的例句库列表，通过 [例句库操作指南](https://cloud.tencent.com/document/product/551/107927) 自行创建例句库获取。
+        r"""需要使用的例句库列表，通过 [例句库操作指南](https://cloud.tencent.com/document/product/551/107927) 自行创建例句库获取。
         :rtype: list of str
         """
         return self._SentRepoIDList
@@ -2125,7 +2125,7 @@ hi：印地语
 
 
 class TextTranslateResponse(AbstractModel):
-    """TextTranslate返回参数结构体
+    r"""TextTranslate返回参数结构体
 
     """
 
@@ -2150,7 +2150,7 @@ class TextTranslateResponse(AbstractModel):
 
     @property
     def TargetText(self):
-        """翻译后的文本
+        r"""翻译后的文本
         :rtype: str
         """
         return self._TargetText
@@ -2161,7 +2161,7 @@ class TextTranslateResponse(AbstractModel):
 
     @property
     def Source(self):
-        """源语言，详见入参Source
+        r"""源语言，详见入参Source
         :rtype: str
         """
         return self._Source
@@ -2172,7 +2172,7 @@ class TextTranslateResponse(AbstractModel):
 
     @property
     def Target(self):
-        """目标语言，详见入参Target
+        r"""目标语言，详见入参Target
         :rtype: str
         """
         return self._Target
@@ -2183,7 +2183,7 @@ class TextTranslateResponse(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """本次翻译消耗的字符数
+        r"""本次翻译消耗的字符数
         :rtype: int
         """
         return self._UsedAmount
@@ -2194,7 +2194,7 @@ class TextTranslateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2213,7 +2213,7 @@ class TextTranslateResponse(AbstractModel):
 
 
 class TransDetail(AbstractModel):
-    """大模型图片翻译详情信息
+    r"""大模型图片翻译详情信息
 
     """
 
@@ -2241,7 +2241,7 @@ class TransDetail(AbstractModel):
 
     @property
     def SourceLineText(self):
-        """当前行的原文本
+        r"""当前行的原文本
         :rtype: str
         """
         return self._SourceLineText
@@ -2252,7 +2252,7 @@ class TransDetail(AbstractModel):
 
     @property
     def TargetLineText(self):
-        """当前行的译文
+        r"""当前行的译文
         :rtype: str
         """
         return self._TargetLineText
@@ -2263,7 +2263,7 @@ class TransDetail(AbstractModel):
 
     @property
     def BoundingBox(self):
-        """段落文本框位置
+        r"""段落文本框位置
         :rtype: :class:`tencentcloud.tmt.v20180321.models.BoundingBox`
         """
         return self._BoundingBox
@@ -2274,7 +2274,7 @@ class TransDetail(AbstractModel):
 
     @property
     def LinesCount(self):
-        """行数
+        r"""行数
         :rtype: int
         """
         return self._LinesCount
@@ -2285,7 +2285,7 @@ class TransDetail(AbstractModel):
 
     @property
     def LineHeight(self):
-        """行高
+        r"""行高
         :rtype: int
         """
         return self._LineHeight
@@ -2296,7 +2296,7 @@ class TransDetail(AbstractModel):
 
     @property
     def SpamCode(self):
-        """正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+        r"""正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
         :rtype: int
         """
         return self._SpamCode

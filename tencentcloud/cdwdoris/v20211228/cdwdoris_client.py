@@ -27,7 +27,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ActionAlterUser(self, request):
-        """新增和修改用户接口
+        r"""新增和修改用户接口
 
         :param request: Request instance for ActionAlterUser.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserRequest`
@@ -50,7 +50,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CancelBackupJob(self, request):
-        """取消对应的备份实例任务
+        r"""取消对应的备份实例任务
 
         :param request: Request instance for CancelBackupJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CancelBackupJobRequest`
@@ -73,7 +73,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CheckCoolDownWorkingVariableConfigCorrect(self, request):
-        """查询冷热分层生效变量和配置是否正确
+        r"""查询冷热分层生效变量和配置是否正确
 
         :param request: Request instance for CheckCoolDownWorkingVariableConfigCorrect.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectRequest`
@@ -96,7 +96,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateBackUpSchedule(self, request):
-        """创建或者修改备份策略
+        r"""创建或者修改备份策略
 
         :param request: Request instance for CreateBackUpSchedule.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateBackUpScheduleRequest`
@@ -119,7 +119,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateCoolDownPolicy(self, request):
-        """创建冷热分层策略
+        r"""创建冷热分层策略
 
         :param request: Request instance for CreateCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyRequest`
@@ -142,7 +142,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateInstanceNew(self, request):
-        """通过API创建集群
+        r"""通过API创建集群
 
         :param request: Request instance for CreateInstanceNew.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceNewRequest`
@@ -165,7 +165,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateWorkloadGroup(self, request):
-        """创建资源组
+        r"""创建资源组
 
         :param request: Request instance for CreateWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateWorkloadGroupRequest`
@@ -188,7 +188,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DeleteBackUpData(self, request):
-        """删除备份数据
+        r"""删除备份数据
 
         :param request: Request instance for DeleteBackUpData.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DeleteBackUpDataRequest`
@@ -211,7 +211,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DeleteWorkloadGroup(self, request):
-        """删除资源组
+        r"""删除资源组
 
         :param request: Request instance for DeleteWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DeleteWorkloadGroupRequest`
@@ -234,7 +234,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeAreaRegion(self, request):
-        """集群列表页上显示地域信息及各个地域的集群总数
+        r"""集群列表页上显示地域信息及各个地域的集群总数
 
         :param request: Request instance for DescribeAreaRegion.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeAreaRegionRequest`
@@ -257,7 +257,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpJob(self, request):
-        """查询备份实例列表
+        r"""查询备份实例列表
 
         :param request: Request instance for DescribeBackUpJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpJobRequest`
@@ -280,7 +280,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpJobDetail(self, request):
-        """查询备份任务详情
+        r"""查询备份任务详情
 
         :param request: Request instance for DescribeBackUpJobDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpJobDetailRequest`
@@ -303,7 +303,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpSchedules(self, request):
-        """获取备份、迁移的调度任务信息
+        r"""获取备份、迁移的调度任务信息
 
         :param request: Request instance for DescribeBackUpSchedules.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpSchedulesRequest`
@@ -326,7 +326,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpTables(self, request):
-        """获取可备份表信息
+        r"""获取可备份表信息
 
         :param request: Request instance for DescribeBackUpTables.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpTablesRequest`
@@ -349,7 +349,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpTaskDetail(self, request):
-        """查询备份任务进度详情
+        r"""查询备份任务进度详情
 
         :param request: Request instance for DescribeBackUpTaskDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpTaskDetailRequest`
@@ -372,7 +372,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeClusterConfigs(self, request):
-        """获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+        r"""获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 
         :param request: Request instance for DescribeClusterConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeClusterConfigsRequest`
@@ -395,7 +395,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeClusterConfigsHistory(self, request):
-        """获取集群配置文件修改历史
+        r"""获取集群配置文件修改历史
 
         :param request: Request instance for DescribeClusterConfigsHistory.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeClusterConfigsHistoryRequest`
@@ -418,7 +418,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownBackends(self, request):
-        """查询冷热分层backend节点信息列表
+        r"""查询冷热分层backend节点信息列表
 
         :param request: Request instance for DescribeCoolDownBackends.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsRequest`
@@ -441,7 +441,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownPolicies(self, request):
-        """查询冷热分层策略列表
+        r"""查询冷热分层策略列表
 
         :param request: Request instance for DescribeCoolDownPolicies.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesRequest`
@@ -464,7 +464,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownTableData(self, request):
-        """查询冷热分层Table数据
+        r"""查询冷热分层Table数据
 
         :param request: Request instance for DescribeCoolDownTableData.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataRequest`
@@ -487,7 +487,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeDatabaseAuditDownload(self, request):
-        """下载数据库审计日志
+        r"""下载数据库审计日志
 
         :param request: Request instance for DescribeDatabaseAuditDownload.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditDownloadRequest`
@@ -510,7 +510,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeDatabaseAuditRecords(self, request):
-        """获取数据库审计记录
+        r"""获取数据库审计记录
 
         :param request: Request instance for DescribeDatabaseAuditRecords.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditRecordsRequest`
@@ -533,7 +533,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """根据集群ID查询某个集群的具体信息
+        r"""根据集群ID查询某个集群的具体信息
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceRequest`
@@ -556,7 +556,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """获取集群节点信息列表
+        r"""获取集群节点信息列表
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesRequest`
@@ -579,7 +579,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodesInfo(self, request):
-        """获取BE/FE节点角色
+        r"""获取BE/FE节点角色
 
         :param request: Request instance for DescribeInstanceNodesInfo.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesInfoRequest`
@@ -602,7 +602,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodesRole(self, request):
-        """获取集群节点角色
+        r"""获取集群节点角色
 
         :param request: Request instance for DescribeInstanceNodesRole.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesRoleRequest`
@@ -625,7 +625,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        """在集群详情页面，拉取该集群的操作
+        r"""在集群详情页面，拉取该集群的操作
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceOperationsRequest`
@@ -648,7 +648,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceState(self, request):
-        """集群详情页中显示集群状态、流程进度等
+        r"""集群详情页中显示集群状态、流程进度等
 
         :param request: Request instance for DescribeInstanceState.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceStateRequest`
@@ -671,7 +671,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceUsedSubnets(self, request):
-        """获取集群已使用子网信息
+        r"""获取集群已使用子网信息
 
         :param request: Request instance for DescribeInstanceUsedSubnets.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceUsedSubnetsRequest`
@@ -694,7 +694,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """获取集群列表
+        r"""获取集群列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstancesRequest`
@@ -717,7 +717,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstancesHealthState(self, request):
-        """集群健康检查
+        r"""集群健康检查
 
         :param request: Request instance for DescribeInstancesHealthState.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstancesHealthStateRequest`
@@ -740,7 +740,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeRestoreTaskDetail(self, request):
-        """查询恢复任务进度详情
+        r"""查询恢复任务进度详情
 
         :param request: Request instance for DescribeRestoreTaskDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeRestoreTaskDetailRequest`
@@ -763,7 +763,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSlowQueryRecords(self, request):
-        """获取慢查询列表
+        r"""获取慢查询列表
 
         :param request: Request instance for DescribeSlowQueryRecords.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSlowQueryRecordsRequest`
@@ -786,7 +786,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSlowQueryRecordsDownload(self, request):
-        """下载慢查询文件
+        r"""下载慢查询文件
 
         :param request: Request instance for DescribeSlowQueryRecordsDownload.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSlowQueryRecordsDownloadRequest`
@@ -809,7 +809,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSpec(self, request):
-        """拉取集群节点规格列表
+        r"""拉取集群节点规格列表
 
         :param request: Request instance for DescribeSpec.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSpecRequest`
@@ -832,7 +832,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSqlApis(self, request):
-        """针对驱动sql命令查询集群接口
+        r"""针对驱动sql命令查询集群接口
 
         :param request: Request instance for DescribeSqlApis.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSqlApisRequest`
@@ -855,7 +855,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeTableList(self, request):
-        """获取指定数据源和库下的表列表
+        r"""获取指定数据源和库下的表列表
 
         :param request: Request instance for DescribeTableList.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeTableListRequest`
@@ -878,7 +878,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeUserBindWorkloadGroup(self, request):
-        """获取当前集群各用户绑定的资源信息
+        r"""获取当前集群各用户绑定的资源信息
 
         :param request: Request instance for DescribeUserBindWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeUserBindWorkloadGroupRequest`
@@ -901,7 +901,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeWorkloadGroup(self, request):
-        """获取资源组信息
+        r"""获取资源组信息
 
         :param request: Request instance for DescribeWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeWorkloadGroupRequest`
@@ -924,7 +924,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DestroyInstance(self, request):
-        """销毁集群
+        r"""销毁集群
 
         :param request: Request instance for DestroyInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DestroyInstanceRequest`
@@ -947,7 +947,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyClusterConfigs(self, request):
-        """在集群配置页面修改集群配置文件接口，xml模式
+        r"""在集群配置页面修改集群配置文件接口，xml模式
 
         :param request: Request instance for ModifyClusterConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsRequest`
@@ -970,7 +970,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyCoolDownPolicy(self, request):
-        """修改冷热分层策略
+        r"""修改冷热分层策略
 
         :param request: Request instance for ModifyCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyRequest`
@@ -993,7 +993,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改集群名称
+        r"""修改集群名称
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyInstanceRequest`
@@ -1016,7 +1016,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyInstanceKeyValConfigs(self, request):
-        """KV模式修改配置接口
+        r"""KV模式修改配置接口
 
         :param request: Request instance for ModifyInstanceKeyValConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyInstanceKeyValConfigsRequest`
@@ -1039,7 +1039,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyNodeStatus(self, request):
-        """修改节点状态
+        r"""修改节点状态
 
         :param request: Request instance for ModifyNodeStatus.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyNodeStatusRequest`
@@ -1062,7 +1062,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifySecurityGroups(self, request):
-        """更改安全组
+        r"""更改安全组
 
         :param request: Request instance for ModifySecurityGroups.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifySecurityGroupsRequest`
@@ -1085,7 +1085,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyUserBindWorkloadGroup(self, request):
-        """修改用户绑定的资源组
+        r"""修改用户绑定的资源组
 
         :param request: Request instance for ModifyUserBindWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyUserBindWorkloadGroupRequest`
@@ -1108,7 +1108,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyUserPrivilegesV3(self, request):
-        """修改用户权限,支持catalog，全部db，部分db表三种权限设置类别
+        r"""修改用户权限,支持catalog，全部db，部分db表三种权限设置类别
 
         :param request: Request instance for ModifyUserPrivilegesV3.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyUserPrivilegesV3Request`
@@ -1131,7 +1131,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyWorkloadGroup(self, request):
-        """修改资源组信息
+        r"""修改资源组信息
 
         :param request: Request instance for ModifyWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyWorkloadGroupRequest`
@@ -1154,7 +1154,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyWorkloadGroupStatus(self, request):
-        """开启或关闭资源组
+        r"""开启或关闭资源组
 
         :param request: Request instance for ModifyWorkloadGroupStatus.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyWorkloadGroupStatusRequest`
@@ -1177,7 +1177,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def OpenCoolDown(self, request):
-        """开始启用冷热分层
+        r"""开始启用冷热分层
 
         :param request: Request instance for OpenCoolDown.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownRequest`
@@ -1200,7 +1200,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def OpenCoolDownPolicy(self, request):
-        """开通、描述降冷策略接口
+        r"""开通、描述降冷策略接口
 
         :param request: Request instance for OpenCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyRequest`
@@ -1223,7 +1223,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RecoverBackUpJob(self, request):
-        """备份恢复
+        r"""备份恢复
 
         :param request: Request instance for RecoverBackUpJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RecoverBackUpJobRequest`
@@ -1246,7 +1246,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ReduceInstance(self, request):
-        """集群缩容
+        r"""集群缩容
 
         :param request: Request instance for ReduceInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ReduceInstanceRequest`
@@ -1269,7 +1269,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ResizeDisk(self, request):
-        """扩容云盘
+        r"""扩容云盘
 
         :param request: Request instance for ResizeDisk.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ResizeDiskRequest`
@@ -1292,7 +1292,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RestartClusterForConfigs(self, request):
-        """重启集群让配置文件生效
+        r"""重启集群让配置文件生效
 
         :param request: Request instance for RestartClusterForConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RestartClusterForConfigsRequest`
@@ -1315,7 +1315,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RestartClusterForNode(self, request):
-        """集群滚动重启
+        r"""集群滚动重启
 
         :param request: Request instance for RestartClusterForNode.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RestartClusterForNodeRequest`
@@ -1338,7 +1338,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """水平扩容节点
+        r"""水平扩容节点
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ScaleOutInstanceRequest`
@@ -1361,7 +1361,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """计算资源垂直变配
+        r"""计算资源垂直变配
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ScaleUpInstanceRequest`
@@ -1384,7 +1384,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def UpdateCoolDown(self, request):
-        """更新集群冷热分层信息
+        r"""更新集群冷热分层信息
 
         :param request: Request instance for UpdateCoolDown.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownRequest`

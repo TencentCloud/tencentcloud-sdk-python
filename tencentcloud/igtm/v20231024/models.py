@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Address(AbstractModel):
-    """添加地址池地址
+    r"""添加地址池地址
 
     """
 
@@ -55,7 +55,7 @@ class Address(AbstractModel):
 
     @property
     def Addr(self):
-        """地址值：只支持ipv4、ipv6和域名格式；
+        r"""地址值：只支持ipv4、ipv6和域名格式；
 不支持回环地址、保留地址、内网地址与腾讯保留网段
         :rtype: str
         """
@@ -67,7 +67,7 @@ class Address(AbstractModel):
 
     @property
     def IsEnable(self):
-        """是否启用:DISABLED不启用；ENABLED启用
+        r"""是否启用:DISABLED不启用；ENABLED启用
         :rtype: str
         """
         return self._IsEnable
@@ -78,7 +78,7 @@ class Address(AbstractModel):
 
     @property
     def AddressId(self):
-        """地址id
+        r"""地址id
         :rtype: int
         """
         return self._AddressId
@@ -89,7 +89,7 @@ class Address(AbstractModel):
 
     @property
     def Location(self):
-        """地址名称
+        r"""地址名称
         :rtype: str
         """
         return self._Location
@@ -100,7 +100,7 @@ class Address(AbstractModel):
 
     @property
     def Status(self):
-        """OK正常，DOWN故障，WARN风险，UNKNOWN探测中，UNMONITORED未知
+        r"""OK正常，DOWN故障，WARN风险，UNKNOWN探测中，UNMONITORED未知
         :rtype: str
         """
         return self._Status
@@ -111,7 +111,7 @@ class Address(AbstractModel):
 
     @property
     def Weight(self):
-        """权重，流量策略为WEIGHT时，必填；范围1-100
+        r"""权重，流量策略为WEIGHT时，必填；范围1-100
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -123,7 +123,7 @@ class Address(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -134,7 +134,7 @@ class Address(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -164,7 +164,7 @@ class Address(AbstractModel):
 
 
 class AddressLocation(AbstractModel):
-    """地址所属地域
+    r"""地址所属地域
 
     """
 
@@ -180,7 +180,7 @@ class AddressLocation(AbstractModel):
 
     @property
     def Addr(self):
-        """ip地址
+        r"""ip地址
         :rtype: str
         """
         return self._Addr
@@ -191,7 +191,7 @@ class AddressLocation(AbstractModel):
 
     @property
     def Location(self):
-        """所属地域
+        r"""所属地域
         :rtype: str
         """
         return self._Location
@@ -215,7 +215,7 @@ class AddressLocation(AbstractModel):
 
 
 class AddressPool(AbstractModel):
-    """地址池
+    r"""地址池
 
     """
 
@@ -267,7 +267,7 @@ class AddressPool(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池 id
+        r"""地址池 id
         :rtype: int
         """
         return self._PoolId
@@ -278,7 +278,7 @@ class AddressPool(AbstractModel):
 
     @property
     def PoolName(self):
-        """地址池名
+        r"""地址池名
         :rtype: str
         """
         return self._PoolName
@@ -289,7 +289,7 @@ class AddressPool(AbstractModel):
 
     @property
     def AddrType(self):
-        """地址池地址类型：IPV4、IPV6、DOMAIN
+        r"""地址池地址类型：IPV4、IPV6、DOMAIN
         :rtype: str
         """
         return self._AddrType
@@ -300,7 +300,7 @@ class AddressPool(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略: WEIGHT负载均衡，ALL解析全部
+        r"""流量策略: WEIGHT负载均衡，ALL解析全部
         :rtype: str
         """
         return self._TrafficStrategy
@@ -311,7 +311,7 @@ class AddressPool(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -323,7 +323,7 @@ class AddressPool(AbstractModel):
 
     @property
     def Status(self):
-        """OK正常，DOWN故障，WARN风险，UNKNOWN未知
+        r"""OK正常，DOWN故障，WARN风险，UNKNOWN未知
         :rtype: str
         """
         return self._Status
@@ -334,7 +334,7 @@ class AddressPool(AbstractModel):
 
     @property
     def AddressNum(self):
-        """地址数
+        r"""地址数
         :rtype: int
         """
         return self._AddressNum
@@ -345,7 +345,7 @@ class AddressPool(AbstractModel):
 
     @property
     def MonitorGroupNum(self):
-        """探点数
+        r"""探点数
         :rtype: int
         """
         return self._MonitorGroupNum
@@ -356,7 +356,7 @@ class AddressPool(AbstractModel):
 
     @property
     def MonitorTaskNum(self):
-        """探测任务数
+        r"""探测任务数
         :rtype: int
         """
         return self._MonitorTaskNum
@@ -367,7 +367,7 @@ class AddressPool(AbstractModel):
 
     @property
     def InstanceInfo(self):
-        """实例相关信息
+        r"""实例相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceInfo
         """
@@ -379,7 +379,7 @@ class AddressPool(AbstractModel):
 
     @property
     def AddressSet(self):
-        """地址池地址信息
+        r"""地址池地址信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Address
         """
@@ -391,7 +391,7 @@ class AddressPool(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -402,7 +402,7 @@ class AddressPool(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -447,7 +447,7 @@ class AddressPool(AbstractModel):
 
 
 class AddressPoolDetail(AbstractModel):
-    """地址池详情
+    r"""地址池详情
 
     """
 
@@ -479,7 +479,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池 id
+        r"""地址池 id
         :rtype: int
         """
         return self._PoolId
@@ -490,7 +490,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def PoolName(self):
-        """地址池名
+        r"""地址池名
         :rtype: str
         """
         return self._PoolName
@@ -501,7 +501,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def AddrType(self):
-        """地址池地址类型：IPV4、IPV6、DOMAIN
+        r"""地址池地址类型：IPV4、IPV6、DOMAIN
         :rtype: str
         """
         return self._AddrType
@@ -512,7 +512,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略: WEIGHT负载均衡，ALL解析全部
+        r"""流量策略: WEIGHT负载均衡，ALL解析全部
         :rtype: str
         """
         return self._TrafficStrategy
@@ -523,7 +523,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -535,7 +535,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -546,7 +546,7 @@ class AddressPoolDetail(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -575,7 +575,7 @@ class AddressPoolDetail(AbstractModel):
 
 
 class CostItem(AbstractModel):
-    """计费项
+    r"""计费项
 
     """
 
@@ -591,7 +591,7 @@ class CostItem(AbstractModel):
 
     @property
     def CostName(self):
-        """计费项名称
+        r"""计费项名称
         :rtype: str
         """
         return self._CostName
@@ -602,7 +602,7 @@ class CostItem(AbstractModel):
 
     @property
     def CostValue(self):
-        """计费项值
+        r"""计费项值
         :rtype: int
         """
         return self._CostValue
@@ -626,7 +626,7 @@ class CostItem(AbstractModel):
 
 
 class CreateAddressPoolRequest(AbstractModel):
-    """CreateAddressPool请求参数结构体
+    r"""CreateAddressPool请求参数结构体
 
     """
 
@@ -648,7 +648,7 @@ class CreateAddressPoolRequest(AbstractModel):
 
     @property
     def PoolName(self):
-        """地址池名称，不允许重复
+        r"""地址池名称，不允许重复
         :rtype: str
         """
         return self._PoolName
@@ -659,7 +659,7 @@ class CreateAddressPoolRequest(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略：WEIGHT负载均衡，ALL解析所有健康地址
+        r"""流量策略：WEIGHT负载均衡，ALL解析所有健康地址
         :rtype: str
         """
         return self._TrafficStrategy
@@ -670,7 +670,7 @@ class CreateAddressPoolRequest(AbstractModel):
 
     @property
     def AddressSet(self):
-        """地址列表
+        r"""地址列表
         :rtype: list of Address
         """
         return self._AddressSet
@@ -681,7 +681,7 @@ class CreateAddressPoolRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -712,7 +712,7 @@ class CreateAddressPoolRequest(AbstractModel):
 
 
 class CreateAddressPoolResponse(AbstractModel):
-    """CreateAddressPool返回参数结构体
+    r"""CreateAddressPool返回参数结构体
 
     """
 
@@ -728,7 +728,7 @@ class CreateAddressPoolResponse(AbstractModel):
 
     @property
     def AddressPoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._AddressPoolId
@@ -739,7 +739,7 @@ class CreateAddressPoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -755,7 +755,7 @@ class CreateAddressPoolResponse(AbstractModel):
 
 
 class CreateInstanceRequest(AbstractModel):
-    """CreateInstance请求参数结构体
+    r"""CreateInstance请求参数结构体
 
     """
 
@@ -796,7 +796,7 @@ ULTIMATE：旗舰版
 
     @property
     def Domain(self):
-        """业务域名
+        r"""业务域名
         :rtype: str
         """
         return self._Domain
@@ -807,7 +807,7 @@ ULTIMATE：旗舰版
 
     @property
     def AccessType(self):
-        """CUSTOM: 自定义接入域名
+        r"""CUSTOM: 自定义接入域名
 SYSTEM: 系统接入域名
         :rtype: str
         """
@@ -819,7 +819,7 @@ SYSTEM: 系统接入域名
 
     @property
     def GlobalTtl(self):
-        """解析生效时间	
+        r"""解析生效时间	
         :rtype: int
         """
         return self._GlobalTtl
@@ -830,7 +830,7 @@ SYSTEM: 系统接入域名
 
     @property
     def PackageType(self):
-        """套餐类型
+        r"""套餐类型
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
@@ -844,7 +844,7 @@ ULTIMATE：旗舰版
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -855,7 +855,7 @@ ULTIMATE：旗舰版
 
     @property
     def AccessDomain(self):
-        """接入主域名
+        r"""接入主域名
         :rtype: str
         """
         return self._AccessDomain
@@ -866,7 +866,7 @@ ULTIMATE：旗舰版
 
     @property
     def AccessSubDomain(self):
-        """接入子域名
+        r"""接入子域名
         :rtype: str
         """
         return self._AccessSubDomain
@@ -877,7 +877,7 @@ ULTIMATE：旗舰版
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -888,7 +888,7 @@ ULTIMATE：旗舰版
 
     @property
     def ResourceId(self):
-        """套餐资源id
+        r"""套餐资源id
         :rtype: str
         """
         return self._ResourceId
@@ -919,7 +919,7 @@ ULTIMATE：旗舰版
 
 
 class CreateInstanceResponse(AbstractModel):
-    """CreateInstance返回参数结构体
+    r"""CreateInstance返回参数结构体
 
     """
 
@@ -932,7 +932,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -947,7 +947,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
 class CreateMonitorRequest(AbstractModel):
-    """CreateMonitor请求参数结构体
+    r"""CreateMonitor请求参数结构体
 
     """
 
@@ -1008,7 +1008,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def MonitorName(self):
-        """监控器名称
+        r"""监控器名称
         :rtype: str
         """
         return self._MonitorName
@@ -1019,7 +1019,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def CheckProtocol(self):
-        """探测协议，可选值 PING TCP HTTP HTTPS
+        r"""探测协议，可选值 PING TCP HTTP HTTPS
         :rtype: str
         """
         return self._CheckProtocol
@@ -1030,7 +1030,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def CheckInterval(self):
-        """检查间隔（秒），可选值有15 60 120 300
+        r"""检查间隔（秒），可选值有15 60 120 300
         :rtype: int
         """
         return self._CheckInterval
@@ -1041,7 +1041,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """超时时间，单位秒，可选值为2 3 5 10
+        r"""超时时间，单位秒，可选值为2 3 5 10
         :rtype: int
         """
         return self._Timeout
@@ -1052,7 +1052,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def FailTimes(self):
-        """重试次数，可选值为 0，1，2
+        r"""重试次数，可选值为 0，1，2
         :rtype: int
         """
         return self._FailTimes
@@ -1063,7 +1063,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def FailRate(self):
-        """失败比例，取值为 20 30 40 50 60 70 80 100，默认值50
+        r"""失败比例，取值为 20 30 40 50 60 70 80 100，默认值50
         :rtype: int
         """
         return self._FailRate
@@ -1074,7 +1074,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def DetectorStyle(self):
-        """监控节点类型，可选值有AUTO INTERNAL OVERSEAS IPV6 ALL
+        r"""监控节点类型，可选值有AUTO INTERNAL OVERSEAS IPV6 ALL
         :rtype: str
         """
         return self._DetectorStyle
@@ -1085,7 +1085,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def DetectorGroupIds(self):
-        """探测器组id列表以,分隔
+        r"""探测器组id列表以,分隔
         :rtype: list of int non-negative
         """
         return self._DetectorGroupIds
@@ -1096,7 +1096,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def PingNum(self):
-        """PING 包数目，当CheckProtocol=ping时必填，可选值有20 50 100
+        r"""PING 包数目，当CheckProtocol=ping时必填，可选值有20 50 100
         :rtype: int
         """
         return self._PingNum
@@ -1107,7 +1107,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def TcpPort(self):
-        """检查端口，可选值在1-65535之间
+        r"""检查端口，可选值在1-65535之间
         :rtype: int
         """
         return self._TcpPort
@@ -1118,7 +1118,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def Host(self):
-        """Host 设置，默认为业务域名
+        r"""Host 设置，默认为业务域名
         :rtype: str
         """
         return self._Host
@@ -1129,7 +1129,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def Path(self):
-        """URL 路径，默认为“/”
+        r"""URL 路径，默认为“/”
         :rtype: str
         """
         return self._Path
@@ -1140,7 +1140,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def ReturnCodeThreshold(self):
-        """返回错误码阈值, 可选值为 400 和 500, 默认值500
+        r"""返回错误码阈值, 可选值为 400 和 500, 默认值500
         :rtype: int
         """
         return self._ReturnCodeThreshold
@@ -1151,7 +1151,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def EnableRedirect(self):
-        """跟随 3XX 重定向 ，不开启为 DISABLED， 开启为 ENABLED，默认不开启
+        r"""跟随 3XX 重定向 ，不开启为 DISABLED， 开启为 ENABLED，默认不开启
         :rtype: str
         """
         return self._EnableRedirect
@@ -1162,7 +1162,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def EnableSni(self):
-        """启用 SNI，不开启为 DISABLED， 开启为 ENABLED，默认不开启
+        r"""启用 SNI，不开启为 DISABLED， 开启为 ENABLED，默认不开启
         :rtype: str
         """
         return self._EnableSni
@@ -1173,7 +1173,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def PacketLossRate(self):
-        """丢包率告警阈值，当CheckProtocol=ping时必填取值为10 30 50 80 90 100
+        r"""丢包率告警阈值，当CheckProtocol=ping时必填取值为10 30 50 80 90 100
         :rtype: int
         """
         return self._PacketLossRate
@@ -1184,7 +1184,7 @@ class CreateMonitorRequest(AbstractModel):
 
     @property
     def ContinuePeriod(self):
-        """持续周期数，可选值1-5
+        r"""持续周期数，可选值1-5
         :rtype: int
         """
         return self._ContinuePeriod
@@ -1223,7 +1223,7 @@ class CreateMonitorRequest(AbstractModel):
 
 
 class CreateMonitorResponse(AbstractModel):
-    """CreateMonitor返回参数结构体
+    r"""CreateMonitor返回参数结构体
 
     """
 
@@ -1239,7 +1239,7 @@ class CreateMonitorResponse(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -1250,7 +1250,7 @@ class CreateMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1266,7 +1266,7 @@ class CreateMonitorResponse(AbstractModel):
 
 
 class CreateStrategyRequest(AbstractModel):
-    """CreateStrategy请求参数结构体
+    r"""CreateStrategy请求参数结构体
 
     """
 
@@ -1297,7 +1297,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -1308,7 +1308,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称，不允许重复
+        r"""策略名称，不允许重复
         :rtype: str
         """
         return self._StrategyName
@@ -1319,7 +1319,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def Source(self):
-        """解析线路
+        r"""解析线路
         :rtype: list of Source
         """
         return self._Source
@@ -1330,7 +1330,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def MainAddressPoolSet(self):
-        """主力地址池集合，最多允许配置四级
+        r"""主力地址池集合，最多允许配置四级
         :rtype: list of MainAddressPool
         """
         return self._MainAddressPoolSet
@@ -1341,7 +1341,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def FallbackAddressPoolSet(self):
-        """兜底地址池集合，只允许配置一级，且地址池数量为1
+        r"""兜底地址池集合，只允许配置一级，且地址池数量为1
         :rtype: list of MainAddressPool
         """
         return self._FallbackAddressPoolSet
@@ -1352,7 +1352,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def KeepDomainRecords(self):
-        """是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+        r"""是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -1363,7 +1363,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def SwitchPoolType(self):
-        """策略调度模式：AUTO默认切换；STOP仅暂停不切换
+        r"""策略调度模式：AUTO默认切换；STOP仅暂停不切换
         :rtype: str
         """
         return self._SwitchPoolType
@@ -1407,7 +1407,7 @@ class CreateStrategyRequest(AbstractModel):
 
 
 class CreateStrategyResponse(AbstractModel):
-    """CreateStrategy返回参数结构体
+    r"""CreateStrategy返回参数结构体
 
     """
 
@@ -1423,7 +1423,7 @@ class CreateStrategyResponse(AbstractModel):
 
     @property
     def StrategyId(self):
-        """新增策略id
+        r"""新增策略id
         :rtype: int
         """
         return self._StrategyId
@@ -1434,7 +1434,7 @@ class CreateStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1450,7 +1450,7 @@ class CreateStrategyResponse(AbstractModel):
 
 
 class DeleteAddressPoolRequest(AbstractModel):
-    """DeleteAddressPool请求参数结构体
+    r"""DeleteAddressPool请求参数结构体
 
     """
 
@@ -1463,7 +1463,7 @@ class DeleteAddressPoolRequest(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._PoolId
@@ -1486,7 +1486,7 @@ class DeleteAddressPoolRequest(AbstractModel):
 
 
 class DeleteAddressPoolResponse(AbstractModel):
-    """DeleteAddressPool返回参数结构体
+    r"""DeleteAddressPool返回参数结构体
 
     """
 
@@ -1502,7 +1502,7 @@ class DeleteAddressPoolResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """是否成功
+        r"""是否成功
         :rtype: str
         """
         return self._Msg
@@ -1513,7 +1513,7 @@ class DeleteAddressPoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1529,7 +1529,7 @@ class DeleteAddressPoolResponse(AbstractModel):
 
 
 class DeleteMonitorRequest(AbstractModel):
-    """DeleteMonitor请求参数结构体
+    r"""DeleteMonitor请求参数结构体
 
     """
 
@@ -1542,7 +1542,7 @@ class DeleteMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -1565,7 +1565,7 @@ class DeleteMonitorRequest(AbstractModel):
 
 
 class DeleteMonitorResponse(AbstractModel):
-    """DeleteMonitor返回参数结构体
+    r"""DeleteMonitor返回参数结构体
 
     """
 
@@ -1581,7 +1581,7 @@ class DeleteMonitorResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """成功返回
+        r"""成功返回
         :rtype: str
         """
         return self._Msg
@@ -1592,7 +1592,7 @@ class DeleteMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1608,7 +1608,7 @@ class DeleteMonitorResponse(AbstractModel):
 
 
 class DeleteStrategyRequest(AbstractModel):
-    """DeleteStrategy请求参数结构体
+    r"""DeleteStrategy请求参数结构体
 
     """
 
@@ -1624,7 +1624,7 @@ class DeleteStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略id
+        r"""策略id
         :rtype: int
         """
         return self._StrategyId
@@ -1635,7 +1635,7 @@ class DeleteStrategyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -1659,7 +1659,7 @@ class DeleteStrategyRequest(AbstractModel):
 
 
 class DeleteStrategyResponse(AbstractModel):
-    """DeleteStrategy返回参数结构体
+    r"""DeleteStrategy返回参数结构体
 
     """
 
@@ -1675,7 +1675,7 @@ class DeleteStrategyResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """是否成功
+        r"""是否成功
         :rtype: str
         """
         return self._Msg
@@ -1686,7 +1686,7 @@ class DeleteStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1702,7 +1702,7 @@ class DeleteStrategyResponse(AbstractModel):
 
 
 class DescribeAddressLocationRequest(AbstractModel):
-    """DescribeAddressLocation请求参数结构体
+    r"""DescribeAddressLocation请求参数结构体
 
     """
 
@@ -1715,7 +1715,7 @@ class DescribeAddressLocationRequest(AbstractModel):
 
     @property
     def Address(self):
-        """地址数组
+        r"""地址数组
         :rtype: list of str
         """
         return self._Address
@@ -1738,7 +1738,7 @@ class DescribeAddressLocationRequest(AbstractModel):
 
 
 class DescribeAddressLocationResponse(AbstractModel):
-    """DescribeAddressLocation返回参数结构体
+    r"""DescribeAddressLocation返回参数结构体
 
     """
 
@@ -1754,7 +1754,7 @@ class DescribeAddressLocationResponse(AbstractModel):
 
     @property
     def AddressLocation(self):
-        """所属地域
+        r"""所属地域
         :rtype: list of AddressLocation
         """
         return self._AddressLocation
@@ -1765,7 +1765,7 @@ class DescribeAddressLocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1786,7 +1786,7 @@ class DescribeAddressLocationResponse(AbstractModel):
 
 
 class DescribeAddressPoolDetailRequest(AbstractModel):
-    """DescribeAddressPoolDetail请求参数结构体
+    r"""DescribeAddressPoolDetail请求参数结构体
 
     """
 
@@ -1799,7 +1799,7 @@ class DescribeAddressPoolDetailRequest(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._PoolId
@@ -1822,7 +1822,7 @@ class DescribeAddressPoolDetailRequest(AbstractModel):
 
 
 class DescribeAddressPoolDetailResponse(AbstractModel):
-    """DescribeAddressPoolDetail返回参数结构体
+    r"""DescribeAddressPoolDetail返回参数结构体
 
     """
 
@@ -1841,7 +1841,7 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
 
     @property
     def AddressPool(self):
-        """资源组详情描述
+        r"""资源组详情描述
         :rtype: :class:`tencentcloud.igtm.v20231024.models.AddressPoolDetail`
         """
         return self._AddressPool
@@ -1852,7 +1852,7 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
 
     @property
     def AddressSet(self):
-        """资源组中的资源列表
+        r"""资源组中的资源列表
         :rtype: list of Address
         """
         return self._AddressSet
@@ -1863,7 +1863,7 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1887,7 +1887,7 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
 
 
 class DescribeAddressPoolListRequest(AbstractModel):
-    """DescribeAddressPoolList请求参数结构体
+    r"""DescribeAddressPoolList请求参数结构体
 
     """
 
@@ -1906,7 +1906,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
+        r"""告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -1917,7 +1917,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._Offset
@@ -1928,7 +1928,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数
+        r"""每页数
         :rtype: int
         """
         return self._Limit
@@ -1958,7 +1958,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
 
 class DescribeAddressPoolListResponse(AbstractModel):
-    """DescribeAddressPoolList返回参数结构体
+    r"""DescribeAddressPoolList返回参数结构体
 
     """
 
@@ -1977,7 +1977,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     @property
     def AddressPoolSet(self):
-        """资源组列表
+        r"""资源组列表
         :rtype: list of AddressPool
         """
         return self._AddressPoolSet
@@ -1988,7 +1988,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -1999,7 +1999,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2021,7 +2021,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
 
 class DescribeDetectPackageDetailRequest(AbstractModel):
-    """DescribeDetectPackageDetail请求参数结构体
+    r"""DescribeDetectPackageDetail请求参数结构体
 
     """
 
@@ -2034,7 +2034,7 @@ class DescribeDetectPackageDetailRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -2057,7 +2057,7 @@ class DescribeDetectPackageDetailRequest(AbstractModel):
 
 
 class DescribeDetectPackageDetailResponse(AbstractModel):
-    """DescribeDetectPackageDetail返回参数结构体
+    r"""DescribeDetectPackageDetail返回参数结构体
 
     """
 
@@ -2103,7 +2103,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -2114,7 +2114,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型 TASK 探测任务
+        r"""资源类型 TASK 探测任务
         :rtype: str
         """
         return self._ResourceType
@@ -2125,7 +2125,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def Quota(self):
-        """额度
+        r"""额度
         :rtype: int
         """
         return self._Quota
@@ -2136,7 +2136,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def CurrentDeadline(self):
-        """过期时间
+        r"""过期时间
         :rtype: str
         """
         return self._CurrentDeadline
@@ -2147,7 +2147,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2158,7 +2158,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def IsExpire(self):
-        """是否过期
+        r"""是否过期
         :rtype: int
         """
         return self._IsExpire
@@ -2169,7 +2169,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
+        r"""状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
         :rtype: str
         """
         return self._Status
@@ -2180,7 +2180,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费：0否1是
+        r"""是否自动续费：0否1是
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2191,7 +2191,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2202,7 +2202,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def CostItemList(self):
-        """计费项
+        r"""计费项
         :rtype: list of CostItem
         """
         return self._CostItemList
@@ -2213,7 +2213,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def UsedNum(self):
-        """使用数量
+        r"""使用数量
         :rtype: int
         """
         return self._UsedNum
@@ -2224,7 +2224,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2255,7 +2255,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
 
 class DescribeDetectTaskPackageListRequest(AbstractModel):
-    """DescribeDetectTaskPackageList请求参数结构体
+    r"""DescribeDetectTaskPackageList请求参数结构体
 
     """
 
@@ -2271,7 +2271,7 @@ class DescribeDetectTaskPackageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._Limit
@@ -2282,7 +2282,7 @@ class DescribeDetectTaskPackageListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
+        r"""探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -2311,7 +2311,7 @@ class DescribeDetectTaskPackageListRequest(AbstractModel):
 
 
 class DescribeDetectTaskPackageListResponse(AbstractModel):
-    """DescribeDetectTaskPackageList返回参数结构体
+    r"""DescribeDetectTaskPackageList返回参数结构体
 
     """
 
@@ -2330,7 +2330,7 @@ class DescribeDetectTaskPackageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -2341,7 +2341,7 @@ class DescribeDetectTaskPackageListResponse(AbstractModel):
 
     @property
     def TaskPackageSet(self):
-        """探测任务套餐列表
+        r"""探测任务套餐列表
         :rtype: list of DetectTaskPackage
         """
         return self._TaskPackageSet
@@ -2352,7 +2352,7 @@ class DescribeDetectTaskPackageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2374,13 +2374,13 @@ class DescribeDetectTaskPackageListResponse(AbstractModel):
 
 
 class DescribeDetectorsRequest(AbstractModel):
-    """DescribeDetectors请求参数结构体
+    r"""DescribeDetectors请求参数结构体
 
     """
 
 
 class DescribeDetectorsResponse(AbstractModel):
-    """DescribeDetectors返回参数结构体
+    r"""DescribeDetectors返回参数结构体
 
     """
 
@@ -2396,7 +2396,7 @@ class DescribeDetectorsResponse(AbstractModel):
 
     @property
     def DetectorGroupSet(self):
-        """探测器组列表
+        r"""探测器组列表
         :rtype: list of DetectorGroup
         """
         return self._DetectorGroupSet
@@ -2407,7 +2407,7 @@ class DescribeDetectorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2428,7 +2428,7 @@ class DescribeDetectorsResponse(AbstractModel):
 
 
 class DescribeDnsLineListRequest(AbstractModel):
-    """DescribeDnsLineList请求参数结构体
+    r"""DescribeDnsLineList请求参数结构体
 
     """
 
@@ -2441,7 +2441,7 @@ class DescribeDnsLineListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -2464,7 +2464,7 @@ class DescribeDnsLineListRequest(AbstractModel):
 
 
 class DescribeDnsLineListResponse(AbstractModel):
-    """DescribeDnsLineList返回参数结构体
+    r"""DescribeDnsLineList返回参数结构体
 
     """
 
@@ -2480,7 +2480,7 @@ class DescribeDnsLineListResponse(AbstractModel):
 
     @property
     def DnsLineSet(self):
-        """地址池列表
+        r"""地址池列表
         :rtype: list of GroupLine
         """
         return self._DnsLineSet
@@ -2491,7 +2491,7 @@ class DescribeDnsLineListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2512,13 +2512,13 @@ class DescribeDnsLineListResponse(AbstractModel):
 
 
 class DescribeInstanceDetailRequest(AbstractModel):
-    """DescribeInstanceDetail请求参数结构体
+    r"""DescribeInstanceDetail请求参数结构体
 
     """
 
 
 class DescribeInstanceDetailResponse(AbstractModel):
-    """DescribeInstanceDetail返回参数结构体
+    r"""DescribeInstanceDetail返回参数结构体
 
     """
 
@@ -2534,7 +2534,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def Instance(self):
-        """实例详情
+        r"""实例详情
         :rtype: :class:`tencentcloud.igtm.v20231024.models.InstanceDetail`
         """
         return self._Instance
@@ -2545,7 +2545,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2563,7 +2563,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
 
 class DescribeInstanceListRequest(AbstractModel):
-    """DescribeInstanceList请求参数结构体
+    r"""DescribeInstanceList请求参数结构体
 
     """
 
@@ -2582,7 +2582,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -2593,7 +2593,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页数
+        r"""分页数
         :rtype: int
         """
         return self._Limit
@@ -2604,7 +2604,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Name: "实例名称" 模糊查询Domain: "域名" 模糊查询MonitorId: "监控器 id" PoolId: "地址池id", AccessDomain接入主域名
+        r"""Name: "实例名称" 模糊查询Domain: "域名" 模糊查询MonitorId: "监控器 id" PoolId: "地址池id", AccessDomain接入主域名
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -2634,7 +2634,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
 
 class DescribeInstanceListResponse(AbstractModel):
-    """DescribeInstanceList返回参数结构体
+    r"""DescribeInstanceList返回参数结构体
 
     """
 
@@ -2656,7 +2656,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -2667,7 +2667,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """列表总数
+        r"""列表总数
         :rtype: int
         """
         return self._TotalCount
@@ -2678,7 +2678,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def SystemAccessEnabled(self):
-        """是否支持系统域名接入：true支持；false不支持
+        r"""是否支持系统域名接入：true支持；false不支持
         :rtype: bool
         """
         return self._SystemAccessEnabled
@@ -2689,7 +2689,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2712,7 +2712,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
 
 class DescribeInstancePackageListRequest(AbstractModel):
-    """DescribeInstancePackageList请求参数结构体
+    r"""DescribeInstancePackageList请求参数结构体
 
     """
 
@@ -2731,7 +2731,7 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._Limit
@@ -2742,7 +2742,7 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
+        r"""InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -2753,7 +2753,7 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
     @property
     def IsUsed(self):
-        """是否使用：0未使用1已使用
+        r"""是否使用：0未使用1已使用
         :rtype: int
         """
         return self._IsUsed
@@ -2783,7 +2783,7 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
 
 class DescribeInstancePackageListResponse(AbstractModel):
-    """DescribeInstancePackageList返回参数结构体
+    r"""DescribeInstancePackageList返回参数结构体
 
     """
 
@@ -2802,7 +2802,7 @@ class DescribeInstancePackageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -2813,7 +2813,7 @@ class DescribeInstancePackageListResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """实例套餐列表
+        r"""实例套餐列表
         :rtype: list of InstancePackage
         """
         return self._InstanceSet
@@ -2824,7 +2824,7 @@ class DescribeInstancePackageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2846,7 +2846,7 @@ class DescribeInstancePackageListResponse(AbstractModel):
 
 
 class DescribeMonitorDetailRequest(AbstractModel):
-    """DescribeMonitorDetail请求参数结构体
+    r"""DescribeMonitorDetail请求参数结构体
 
     """
 
@@ -2859,7 +2859,7 @@ class DescribeMonitorDetailRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -2882,7 +2882,7 @@ class DescribeMonitorDetailRequest(AbstractModel):
 
 
 class DescribeMonitorDetailResponse(AbstractModel):
-    """DescribeMonitorDetail返回参数结构体
+    r"""DescribeMonitorDetail返回参数结构体
 
     """
 
@@ -2898,7 +2898,7 @@ class DescribeMonitorDetailResponse(AbstractModel):
 
     @property
     def MonitorDetail(self):
-        """探测规则
+        r"""探测规则
         :rtype: :class:`tencentcloud.igtm.v20231024.models.MonitorDetail`
         """
         return self._MonitorDetail
@@ -2909,7 +2909,7 @@ class DescribeMonitorDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2927,7 +2927,7 @@ class DescribeMonitorDetailResponse(AbstractModel):
 
 
 class DescribeMonitorsRequest(AbstractModel):
-    """DescribeMonitors请求参数结构体
+    r"""DescribeMonitors请求参数结构体
 
     """
 
@@ -2946,7 +2946,7 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页，偏移值
+        r"""分页，偏移值
         :rtype: int
         """
         return self._Offset
@@ -2957,7 +2957,7 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页，当前分页记录数
+        r"""分页，当前分页记录数
         :rtype: int
         """
         return self._Limit
@@ -2968,7 +2968,7 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def IsDetectNum(self):
-        """是否查探测次数0否1是
+        r"""是否查探测次数0否1是
         :rtype: int
         """
         return self._IsDetectNum
@@ -2993,7 +2993,7 @@ class DescribeMonitorsRequest(AbstractModel):
 
 
 class DescribeMonitorsResponse(AbstractModel):
-    """DescribeMonitors返回参数结构体
+    r"""DescribeMonitors返回参数结构体
 
     """
 
@@ -3012,7 +3012,7 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def MonitorDataSet(self):
-        """监控器列表
+        r"""监控器列表
         :rtype: list of MonitorDetail
         """
         return self._MonitorDataSet
@@ -3023,7 +3023,7 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -3034,7 +3034,7 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3056,7 +3056,7 @@ class DescribeMonitorsResponse(AbstractModel):
 
 
 class DescribeQuotasRequest(AbstractModel):
-    """DescribeQuotas请求参数结构体
+    r"""DescribeQuotas请求参数结构体
 
     """
 
@@ -3069,7 +3069,7 @@ class DescribeQuotasRequest(AbstractModel):
 
     @property
     def AccessDomain(self):
-        """接入域名
+        r"""接入域名
         :rtype: str
         """
         return self._AccessDomain
@@ -3092,7 +3092,7 @@ class DescribeQuotasRequest(AbstractModel):
 
 
 class DescribeQuotasResponse(AbstractModel):
-    """DescribeQuotas返回参数结构体
+    r"""DescribeQuotas返回参数结构体
 
     """
 
@@ -3108,7 +3108,7 @@ class DescribeQuotasResponse(AbstractModel):
 
     @property
     def Quotas(self):
-        """配额id
+        r"""配额id
         :rtype: :class:`tencentcloud.igtm.v20231024.models.Quota`
         """
         return self._Quotas
@@ -3119,7 +3119,7 @@ class DescribeQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3137,7 +3137,7 @@ class DescribeQuotasResponse(AbstractModel):
 
 
 class DescribeStrategyDetailRequest(AbstractModel):
-    """DescribeStrategyDetail请求参数结构体
+    r"""DescribeStrategyDetail请求参数结构体
 
     """
 
@@ -3153,7 +3153,7 @@ class DescribeStrategyDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -3164,7 +3164,7 @@ class DescribeStrategyDetailRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略 id
+        r"""策略 id
         :rtype: int
         """
         return self._StrategyId
@@ -3188,7 +3188,7 @@ class DescribeStrategyDetailRequest(AbstractModel):
 
 
 class DescribeStrategyDetailResponse(AbstractModel):
-    """DescribeStrategyDetail返回参数结构体
+    r"""DescribeStrategyDetail返回参数结构体
 
     """
 
@@ -3204,7 +3204,7 @@ class DescribeStrategyDetailResponse(AbstractModel):
 
     @property
     def StrategyDetail(self):
-        """策略详情
+        r"""策略详情
         :rtype: :class:`tencentcloud.igtm.v20231024.models.StrategyDetail`
         """
         return self._StrategyDetail
@@ -3215,7 +3215,7 @@ class DescribeStrategyDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3233,7 +3233,7 @@ class DescribeStrategyDetailResponse(AbstractModel):
 
 
 class DescribeStrategyListRequest(AbstractModel):
-    """DescribeStrategyList请求参数结构体
+    r"""DescribeStrategyList请求参数结构体
 
     """
 
@@ -3255,7 +3255,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 id
+        r"""实例 id
         :rtype: str
         """
         return self._InstanceId
@@ -3266,7 +3266,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -3277,7 +3277,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._Limit
@@ -3288,7 +3288,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """策略过滤条件：StrategyName：策略名称
+        r"""策略过滤条件：StrategyName：策略名称
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -3319,7 +3319,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
 
 class DescribeStrategyListResponse(AbstractModel):
-    """DescribeStrategyList返回参数结构体
+    r"""DescribeStrategyList返回参数结构体
 
     """
 
@@ -3338,7 +3338,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
     @property
     def StrategySet(self):
-        """策略列表
+        r"""策略列表
         :rtype: list of Strategy
         """
         return self._StrategySet
@@ -3349,7 +3349,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -3360,7 +3360,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3382,7 +3382,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
 
 class DetectTaskPackage(AbstractModel):
-    """探测任务套餐
+    r"""探测任务套餐
 
     """
 
@@ -3431,7 +3431,7 @@ REFUNDED：已退款
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
         :rtype: str
         """
         return self._ResourceId
@@ -3442,7 +3442,7 @@ REFUNDED：已退款
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
 TASK 探测任务
         :rtype: str
         """
@@ -3454,7 +3454,7 @@ TASK 探测任务
 
     @property
     def Quota(self):
-        """额度
+        r"""额度
         :rtype: int
         """
         return self._Quota
@@ -3465,7 +3465,7 @@ TASK 探测任务
 
     @property
     def CurrentDeadline(self):
-        """套餐过期时间
+        r"""套餐过期时间
         :rtype: str
         """
         return self._CurrentDeadline
@@ -3476,7 +3476,7 @@ TASK 探测任务
 
     @property
     def CreateTime(self):
-        """套餐创建时间
+        r"""套餐创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3487,7 +3487,7 @@ TASK 探测任务
 
     @property
     def IsExpire(self):
-        """是否过期0否1是
+        r"""是否过期0否1是
         :rtype: int
         """
         return self._IsExpire
@@ -3498,7 +3498,7 @@ TASK 探测任务
 
     @property
     def Status(self):
-        """状态
+        r"""状态
 ENABLED: 正常
 ISOLATED: 隔离
 DESTROYED：销毁
@@ -3513,7 +3513,7 @@ REFUNDED：已退款
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费0不1是
+        r"""是否自动续费0不1是
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3524,7 +3524,7 @@ REFUNDED：已退款
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3535,7 +3535,7 @@ REFUNDED：已退款
 
     @property
     def CostItemList(self):
-        """计费项
+        r"""计费项
         :rtype: list of CostItem
         """
         return self._CostItemList
@@ -3546,7 +3546,7 @@ REFUNDED：已退款
 
     @property
     def Group(self):
-        """探测任务类型：100系统设定；200计费；300管理系统；110D监控迁移的免费任务；120容灾切换任务
+        r"""探测任务类型：100系统设定；200计费；300管理系统；110D监控迁移的免费任务；120容灾切换任务
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3585,7 +3585,7 @@ REFUNDED：已退款
 
 
 class DetectorGroup(AbstractModel):
-    """探测组
+    r"""探测组
 
     """
 
@@ -3611,7 +3611,7 @@ class DetectorGroup(AbstractModel):
 
     @property
     def Gid(self):
-        """线路组id GroupLineId
+        r"""线路组id GroupLineId
         :rtype: int
         """
         return self._Gid
@@ -3622,7 +3622,7 @@ class DetectorGroup(AbstractModel):
 
     @property
     def GroupType(self):
-        """bgp, international, isp
+        r"""bgp, international, isp
         :rtype: str
         """
         return self._GroupType
@@ -3633,7 +3633,7 @@ class DetectorGroup(AbstractModel):
 
     @property
     def GroupName(self):
-        """组名
+        r"""组名
         :rtype: str
         """
         return self._GroupName
@@ -3644,7 +3644,7 @@ class DetectorGroup(AbstractModel):
 
     @property
     def InternetFamily(self):
-        """ipv4, ipv6
+        r"""ipv4, ipv6
         :rtype: str
         """
         return self._InternetFamily
@@ -3655,7 +3655,7 @@ class DetectorGroup(AbstractModel):
 
     @property
     def PackageSet(self):
-        """支持的套餐类型
+        r"""支持的套餐类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3683,7 +3683,7 @@ class DetectorGroup(AbstractModel):
 
 
 class GroupLine(AbstractModel):
-    """线路列表
+    r"""线路列表
 
     """
 
@@ -3717,7 +3717,7 @@ class GroupLine(AbstractModel):
 
     @property
     def DnsLineId(self):
-        """分组线路id
+        r"""分组线路id
         :rtype: int
         """
         return self._DnsLineId
@@ -3728,7 +3728,7 @@ class GroupLine(AbstractModel):
 
     @property
     def Parent(self):
-        """父节点 0为根节点
+        r"""父节点 0为根节点
         :rtype: int
         """
         return self._Parent
@@ -3739,7 +3739,7 @@ class GroupLine(AbstractModel):
 
     @property
     def LineName(self):
-        """线路名
+        r"""线路名
         :rtype: str
         """
         return self._LineName
@@ -3750,7 +3750,7 @@ class GroupLine(AbstractModel):
 
     @property
     def LineId(self):
-        """10=9 DNSPod 线路 id
+        r"""10=9 DNSPod 线路 id
         :rtype: str
         """
         return self._LineId
@@ -3761,7 +3761,7 @@ class GroupLine(AbstractModel):
 
     @property
     def Useful(self):
-        """是否已使用过
+        r"""是否已使用过
         :rtype: bool
         """
         return self._Useful
@@ -3772,7 +3772,7 @@ class GroupLine(AbstractModel):
 
     @property
     def SubGroup(self):
-        """0为未使用
+        r"""0为未使用
         :rtype: int
         """
         return self._SubGroup
@@ -3783,7 +3783,7 @@ class GroupLine(AbstractModel):
 
     @property
     def LinePackage(self):
-        """权限标识
+        r"""权限标识
         :rtype: int
         """
         return self._LinePackage
@@ -3794,7 +3794,7 @@ class GroupLine(AbstractModel):
 
     @property
     def Weight(self):
-        """1
+        r"""1
         :rtype: int
         """
         return self._Weight
@@ -3824,7 +3824,7 @@ class GroupLine(AbstractModel):
 
 
 class Instance(AbstractModel):
-    """返回实例
+    r"""返回实例
 
     """
 
@@ -3903,7 +3903,7 @@ UNKNOWN: 未知
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -3914,7 +3914,7 @@ UNKNOWN: 未知
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -3925,7 +3925,7 @@ UNKNOWN: 未知
 
     @property
     def ResourceId(self):
-        """资源 id
+        r"""资源 id
         :rtype: str
         """
         return self._ResourceId
@@ -3936,7 +3936,7 @@ UNKNOWN: 未知
 
     @property
     def Domain(self):
-        """业务域名
+        r"""业务域名
         :rtype: str
         """
         return self._Domain
@@ -3947,7 +3947,7 @@ UNKNOWN: 未知
 
     @property
     def AccessType(self):
-        """Cname域名接入方式
+        r"""Cname域名接入方式
 CUSTOM: 自定义接入域名
 SYSTEM: 系统接入域名
         :rtype: str
@@ -3960,7 +3960,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessDomain(self):
-        """接入域名
+        r"""接入域名
         :rtype: str
         """
         return self._AccessDomain
@@ -3971,7 +3971,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessSubDomain(self):
-        """接入子域名
+        r"""接入子域名
         :rtype: str
         """
         return self._AccessSubDomain
@@ -3982,7 +3982,7 @@ SYSTEM: 系统接入域名
 
     @property
     def GlobalTtl(self):
-        """全局记录过期时间
+        r"""全局记录过期时间
         :rtype: int
         """
         return self._GlobalTtl
@@ -3993,7 +3993,7 @@ SYSTEM: 系统接入域名
 
     @property
     def PackageType(self):
-        """套餐类型
+        r"""套餐类型
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
@@ -4007,7 +4007,7 @@ ULTIMATE：旗舰版
 
     @property
     def WorkingStatus(self):
-        """实例运行状态
+        r"""实例运行状态
 NORMAL: 健康
 FAULTY: 有风险
 DOWN: 宕机
@@ -4022,7 +4022,7 @@ UNKNOWN: 未知
 
     @property
     def Status(self):
-        """实例状态，ENABLED: 正常，DISABLED: 禁用
+        r"""实例状态，ENABLED: 正常，DISABLED: 禁用
         :rtype: str
         """
         return self._Status
@@ -4033,7 +4033,7 @@ UNKNOWN: 未知
 
     @property
     def IsCnameConfigured(self):
-        """是否cname接入：true已接入；false未接入
+        r"""是否cname接入：true已接入；false未接入
         :rtype: bool
         """
         return self._IsCnameConfigured
@@ -4044,7 +4044,7 @@ UNKNOWN: 未知
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4055,7 +4055,7 @@ UNKNOWN: 未知
 
     @property
     def StrategyNum(self):
-        """策略数量
+        r"""策略数量
         :rtype: int
         """
         return self._StrategyNum
@@ -4066,7 +4066,7 @@ UNKNOWN: 未知
 
     @property
     def AddressPoolNum(self):
-        """绑定地址池个数
+        r"""绑定地址池个数
         :rtype: int
         """
         return self._AddressPoolNum
@@ -4077,7 +4077,7 @@ UNKNOWN: 未知
 
     @property
     def MonitorNum(self):
-        """绑定监控器数量
+        r"""绑定监控器数量
         :rtype: int
         """
         return self._MonitorNum
@@ -4088,7 +4088,7 @@ UNKNOWN: 未知
 
     @property
     def PoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._PoolId
@@ -4099,7 +4099,7 @@ UNKNOWN: 未知
 
     @property
     def PoolName(self):
-        """地址池名称
+        r"""地址池名称
         :rtype: str
         """
         return self._PoolName
@@ -4110,7 +4110,7 @@ UNKNOWN: 未知
 
     @property
     def CreatedOn(self):
-        """实例创建时间
+        r"""实例创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -4121,7 +4121,7 @@ UNKNOWN: 未知
 
     @property
     def UpdatedOn(self):
-        """实例更新时间
+        r"""实例更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -4163,7 +4163,7 @@ UNKNOWN: 未知
 
 
 class InstanceConfig(AbstractModel):
-    """实例配置详情
+    r"""实例配置详情
 
     """
 
@@ -4194,7 +4194,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -4205,7 +4205,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def Domain(self):
-        """业务域名
+        r"""业务域名
         :rtype: str
         """
         return self._Domain
@@ -4216,7 +4216,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def AccessType(self):
-        """CUSTOM: 自定义接入域名，SYSTEM: 系统接入域名
+        r"""CUSTOM: 自定义接入域名，SYSTEM: 系统接入域名
         :rtype: str
         """
         return self._AccessType
@@ -4227,7 +4227,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4238,7 +4238,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def GlobalTtl(self):
-        """全局记录过期时间	
+        r"""全局记录过期时间	
         :rtype: int
         """
         return self._GlobalTtl
@@ -4249,7 +4249,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def AccessDomain(self):
-        """接入主域名
+        r"""接入主域名
         :rtype: str
         """
         return self._AccessDomain
@@ -4260,7 +4260,7 @@ class InstanceConfig(AbstractModel):
 
     @property
     def AccessSubDomain(self):
-        """接入子域名
+        r"""接入子域名
         :rtype: str
         """
         return self._AccessSubDomain
@@ -4289,7 +4289,7 @@ class InstanceConfig(AbstractModel):
 
 
 class InstanceDetail(AbstractModel):
-    """返回实例
+    r"""返回实例
 
     """
 
@@ -4365,7 +4365,7 @@ UNKNOWN: 未知
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4376,7 +4376,7 @@ UNKNOWN: 未知
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -4387,7 +4387,7 @@ UNKNOWN: 未知
 
     @property
     def Domain(self):
-        """业务域名
+        r"""业务域名
         :rtype: str
         """
         return self._Domain
@@ -4398,7 +4398,7 @@ UNKNOWN: 未知
 
     @property
     def AccessType(self):
-        """Cname域名接入方式
+        r"""Cname域名接入方式
 CUSTOM: 自定义接入域名
 SYSTEM: 系统接入域名
         :rtype: str
@@ -4411,7 +4411,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessSubDomain(self):
-        """接入子域名	
+        r"""接入子域名	
         :rtype: str
         """
         return self._AccessSubDomain
@@ -4422,7 +4422,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessDomain(self):
-        """接入域名	
+        r"""接入域名	
         :rtype: str
         """
         return self._AccessDomain
@@ -4433,7 +4433,7 @@ SYSTEM: 系统接入域名
 
     @property
     def GlobalTtl(self):
-        """解析生效时间
+        r"""解析生效时间
         :rtype: int
         """
         return self._GlobalTtl
@@ -4444,7 +4444,7 @@ SYSTEM: 系统接入域名
 
     @property
     def PackageType(self):
-        """套餐类型
+        r"""套餐类型
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
@@ -4458,7 +4458,7 @@ ULTIMATE：旗舰版
 
     @property
     def WorkingStatus(self):
-        """实例运行状态
+        r"""实例运行状态
 NORMAL: 健康
 FAULTY: 有风险
 DOWN: 宕机
@@ -4473,7 +4473,7 @@ UNKNOWN: 未知
 
     @property
     def Status(self):
-        """实例状态，ENABLED: 正常；DISABLED: 禁用
+        r"""实例状态，ENABLED: 正常；DISABLED: 禁用
         :rtype: str
         """
         return self._Status
@@ -4484,7 +4484,7 @@ UNKNOWN: 未知
 
     @property
     def IsCnameConfigured(self):
-        """cname是否接入：true已接入；false未接入
+        r"""cname是否接入：true已接入；false未接入
         :rtype: bool
         """
         return self._IsCnameConfigured
@@ -4495,7 +4495,7 @@ UNKNOWN: 未知
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4506,7 +4506,7 @@ UNKNOWN: 未知
 
     @property
     def StrategyNum(self):
-        """策略数量
+        r"""策略数量
         :rtype: int
         """
         return self._StrategyNum
@@ -4517,7 +4517,7 @@ UNKNOWN: 未知
 
     @property
     def AddressPoolNum(self):
-        """绑定地址池个数
+        r"""绑定地址池个数
         :rtype: int
         """
         return self._AddressPoolNum
@@ -4528,7 +4528,7 @@ UNKNOWN: 未知
 
     @property
     def MonitorNum(self):
-        """绑定监控器数量
+        r"""绑定监控器数量
         :rtype: int
         """
         return self._MonitorNum
@@ -4539,7 +4539,7 @@ UNKNOWN: 未知
 
     @property
     def ResourceId(self):
-        """实例绑定套餐资源id
+        r"""实例绑定套餐资源id
         :rtype: str
         """
         return self._ResourceId
@@ -4550,7 +4550,7 @@ UNKNOWN: 未知
 
     @property
     def NotifyEventSet(self):
-        """订阅事件列表
+        r"""订阅事件列表
         :rtype: list of str
         """
         return self._NotifyEventSet
@@ -4561,7 +4561,7 @@ UNKNOWN: 未知
 
     @property
     def CreatedOn(self):
-        """实例创建时间
+        r"""实例创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -4572,7 +4572,7 @@ UNKNOWN: 未知
 
     @property
     def UpdatedOn(self):
-        """实例更新时间
+        r"""实例更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -4613,7 +4613,7 @@ UNKNOWN: 未知
 
 
 class InstanceInfo(AbstractModel):
-    """实例相关信息
+    r"""实例相关信息
 
     """
 
@@ -4629,7 +4629,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4640,7 +4640,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -4664,7 +4664,7 @@ class InstanceInfo(AbstractModel):
 
 
 class InstancePackage(AbstractModel):
-    """实例套餐
+    r"""实例套餐
 
     """
 
@@ -4725,7 +4725,7 @@ DISABLED: 禁用
 
     @property
     def ResourceId(self):
-        """实例套餐资源id
+        r"""实例套餐资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4737,7 +4737,7 @@ DISABLED: 禁用
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4748,7 +4748,7 @@ DISABLED: 禁用
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -4759,7 +4759,7 @@ DISABLED: 禁用
 
     @property
     def PackageType(self):
-        """套餐类型
+        r"""套餐类型
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
@@ -4773,7 +4773,7 @@ ULTIMATE：旗舰版
 
     @property
     def CurrentDeadline(self):
-        """套餐过期时间
+        r"""套餐过期时间
         :rtype: str
         """
         return self._CurrentDeadline
@@ -4784,7 +4784,7 @@ ULTIMATE：旗舰版
 
     @property
     def CreateTime(self):
-        """套餐创建时间
+        r"""套餐创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -4795,7 +4795,7 @@ ULTIMATE：旗舰版
 
     @property
     def IsExpire(self):
-        """是否过期0否1是
+        r"""是否过期0否1是
         :rtype: int
         """
         return self._IsExpire
@@ -4806,7 +4806,7 @@ ULTIMATE：旗舰版
 
     @property
     def Status(self):
-        """实例状态
+        r"""实例状态
 ENABLED: 正常
 DISABLED: 禁用
         :rtype: str
@@ -4819,7 +4819,7 @@ DISABLED: 禁用
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费0不1是
+        r"""是否自动续费0不1是
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4830,7 +4830,7 @@ DISABLED: 禁用
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -4841,7 +4841,7 @@ DISABLED: 禁用
 
     @property
     def CostItemList(self):
-        """计费项
+        r"""计费项
         :rtype: list of CostItem
         """
         return self._CostItemList
@@ -4852,7 +4852,7 @@ DISABLED: 禁用
 
     @property
     def MinCheckInterval(self):
-        """最小检查间隔时间s
+        r"""最小检查间隔时间s
         :rtype: int
         """
         return self._MinCheckInterval
@@ -4863,7 +4863,7 @@ DISABLED: 禁用
 
     @property
     def MinGlobalTtl(self):
-        """最小TTL s
+        r"""最小TTL s
         :rtype: int
         """
         return self._MinGlobalTtl
@@ -4874,7 +4874,7 @@ DISABLED: 禁用
 
     @property
     def TrafficStrategy(self):
-        """流量策略类型：ALL返回全部，WEIGHT权重
+        r"""流量策略类型：ALL返回全部，WEIGHT权重
         :rtype: list of str
         """
         return self._TrafficStrategy
@@ -4885,7 +4885,7 @@ DISABLED: 禁用
 
     @property
     def ScheduleStrategy(self):
-        """策略类型：LOCATION按地理位置调度，DELAY按延迟调度
+        r"""策略类型：LOCATION按地理位置调度，DELAY按延迟调度
         :rtype: list of str
         """
         return self._ScheduleStrategy
@@ -4927,7 +4927,7 @@ DISABLED: 禁用
 
 
 class MainAddressPool(AbstractModel):
-    """主力地址池
+    r"""主力地址池
 
     """
 
@@ -4950,7 +4950,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def AddressPools(self):
-        """集合中的地址池id与权重，数组
+        r"""集合中的地址池id与权重，数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MainPoolWeight
         """
@@ -4962,7 +4962,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def MainAddressPoolId(self):
-        """地址池集合id
+        r"""地址池集合id
         :rtype: int
         """
         return self._MainAddressPoolId
@@ -4973,7 +4973,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def MinSurviveNum(self):
-        """切换阀值，不能大于主力集合内地址总数
+        r"""切换阀值，不能大于主力集合内地址总数
         :rtype: int
         """
         return self._MinSurviveNum
@@ -4984,7 +4984,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
+        r"""切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5015,7 +5015,7 @@ class MainAddressPool(AbstractModel):
 
 
 class MainPoolWeight(AbstractModel):
-    """主力地址池id与权重
+    r"""主力地址池id与权重
 
     """
 
@@ -5032,7 +5032,7 @@ class MainPoolWeight(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._PoolId
@@ -5043,7 +5043,7 @@ class MainPoolWeight(AbstractModel):
 
     @property
     def Weight(self):
-        """权重
+        r"""权重
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5068,7 +5068,7 @@ class MainPoolWeight(AbstractModel):
 
 
 class ModifyAddressPoolRequest(AbstractModel):
-    """ModifyAddressPool请求参数结构体
+    r"""ModifyAddressPool请求参数结构体
 
     """
 
@@ -5093,7 +5093,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def PoolId(self):
-        """地址池id
+        r"""地址池id
         :rtype: int
         """
         return self._PoolId
@@ -5104,7 +5104,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def PoolName(self):
-        """地址池名称，不允许重复
+        r"""地址池名称，不允许重复
         :rtype: str
         """
         return self._PoolName
@@ -5115,7 +5115,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略: WEIGHT负载均衡，ALL解析全部
+        r"""流量策略: WEIGHT负载均衡，ALL解析全部
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5126,7 +5126,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -5137,7 +5137,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def AddressSet(self):
-        """地址列表
+        r"""地址列表
         :rtype: list of Address
         """
         return self._AddressSet
@@ -5169,7 +5169,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
 
 class ModifyAddressPoolResponse(AbstractModel):
-    """ModifyAddressPool返回参数结构体
+    r"""ModifyAddressPool返回参数结构体
 
     """
 
@@ -5185,7 +5185,7 @@ class ModifyAddressPoolResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """是否修改成功
+        r"""是否修改成功
         :rtype: str
         """
         return self._Msg
@@ -5196,7 +5196,7 @@ class ModifyAddressPoolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5212,7 +5212,7 @@ class ModifyAddressPoolResponse(AbstractModel):
 
 
 class ModifyInstanceConfigRequest(AbstractModel):
-    """ModifyInstanceConfig请求参数结构体
+    r"""ModifyInstanceConfig请求参数结构体
 
     """
 
@@ -5225,7 +5225,7 @@ class ModifyInstanceConfigRequest(AbstractModel):
 
     @property
     def InstanceConfig(self):
-        """实例配置详情
+        r"""实例配置详情
         :rtype: :class:`tencentcloud.igtm.v20231024.models.InstanceConfig`
         """
         return self._InstanceConfig
@@ -5250,7 +5250,7 @@ class ModifyInstanceConfigRequest(AbstractModel):
 
 
 class ModifyInstanceConfigResponse(AbstractModel):
-    """ModifyInstanceConfig返回参数结构体
+    r"""ModifyInstanceConfig返回参数结构体
 
     """
 
@@ -5266,7 +5266,7 @@ class ModifyInstanceConfigResponse(AbstractModel):
 
     @property
     def Instance(self):
-        """实例详情
+        r"""实例详情
         :rtype: :class:`tencentcloud.igtm.v20231024.models.InstanceDetail`
         """
         return self._Instance
@@ -5277,7 +5277,7 @@ class ModifyInstanceConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5295,7 +5295,7 @@ class ModifyInstanceConfigResponse(AbstractModel):
 
 
 class ModifyMonitorRequest(AbstractModel):
-    """ModifyMonitor请求参数结构体
+    r"""ModifyMonitor请求参数结构体
 
     """
 
@@ -5359,7 +5359,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        """监控器id
+        r"""监控器id
         :rtype: int
         """
         return self._MonitorId
@@ -5370,7 +5370,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def MonitorName(self):
-        """监控器名称
+        r"""监控器名称
         :rtype: str
         """
         return self._MonitorName
@@ -5381,7 +5381,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def CheckProtocol(self):
-        """检查协议，可选值 PING TCP HTTP HTTPS
+        r"""检查协议，可选值 PING TCP HTTP HTTPS
         :rtype: str
         """
         return self._CheckProtocol
@@ -5392,7 +5392,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def CheckInterval(self):
-        """检查间隔（秒），可选值 15 60 120 300
+        r"""检查间隔（秒），可选值 15 60 120 300
         :rtype: int
         """
         return self._CheckInterval
@@ -5403,7 +5403,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """超时时间，单位:秒，可选值 2  3  5  10
+        r"""超时时间，单位:秒，可选值 2  3  5  10
         :rtype: int
         """
         return self._Timeout
@@ -5414,7 +5414,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def FailTimes(self):
-        """重试次数，可选值为 0，1，2
+        r"""重试次数，可选值为 0，1，2
         :rtype: int
         """
         return self._FailTimes
@@ -5425,7 +5425,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def FailRate(self):
-        """失败比例，可选值为 20 30 40 50 60 70 80 100，默认值为50
+        r"""失败比例，可选值为 20 30 40 50 60 70 80 100，默认值为50
         :rtype: int
         """
         return self._FailRate
@@ -5436,7 +5436,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def DetectorStyle(self):
-        """监控节点类型，可选值有AUTO INTERNAL OVERSEAS IPV6 ALL
+        r"""监控节点类型，可选值有AUTO INTERNAL OVERSEAS IPV6 ALL
         :rtype: str
         """
         return self._DetectorStyle
@@ -5447,7 +5447,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def DetectorGroupIds(self):
-        """探测器组id列表
+        r"""探测器组id列表
         :rtype: list of int non-negative
         """
         return self._DetectorGroupIds
@@ -5458,7 +5458,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def PingNum(self):
-        """PING 包数目， 当CheckProtocol=ping时必填，可选值 20 50 100
+        r"""PING 包数目， 当CheckProtocol=ping时必填，可选值 20 50 100
         :rtype: int
         """
         return self._PingNum
@@ -5469,7 +5469,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def TcpPort(self):
-        """检查端口，可选值为1-65535之间的整数
+        r"""检查端口，可选值为1-65535之间的整数
         :rtype: int
         """
         return self._TcpPort
@@ -5480,7 +5480,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def Host(self):
-        """Host 设置，默认为业务域名
+        r"""Host 设置，默认为业务域名
         :rtype: str
         """
         return self._Host
@@ -5491,7 +5491,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def Path(self):
-        """URL 路径，默认为“/”
+        r"""URL 路径，默认为“/”
         :rtype: str
         """
         return self._Path
@@ -5502,7 +5502,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def ReturnCodeThreshold(self):
-        """返回错误码阈值, 可选值为 400 和 500, 默认值500
+        r"""返回错误码阈值, 可选值为 400 和 500, 默认值500
         :rtype: int
         """
         return self._ReturnCodeThreshold
@@ -5513,7 +5513,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def EnableRedirect(self):
-        """跟随 3XX 重定向 ，不开启为 DISABLED， 开启为 ENABLED，默认不开启
+        r"""跟随 3XX 重定向 ，不开启为 DISABLED， 开启为 ENABLED，默认不开启
         :rtype: str
         """
         return self._EnableRedirect
@@ -5524,7 +5524,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def EnableSni(self):
-        """启用 SNI，不开启为 DISABLED， 开启为 ENABLED，默认不开启
+        r"""启用 SNI，不开启为 DISABLED， 开启为 ENABLED，默认不开启
         :rtype: str
         """
         return self._EnableSni
@@ -5535,7 +5535,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def PacketLossRate(self):
-        """丢包率告警阈值，当CheckProtocol=ping时必填，取值在10 30 50 80 90 100
+        r"""丢包率告警阈值，当CheckProtocol=ping时必填，取值在10 30 50 80 90 100
         :rtype: int
         """
         return self._PacketLossRate
@@ -5546,7 +5546,7 @@ class ModifyMonitorRequest(AbstractModel):
 
     @property
     def ContinuePeriod(self):
-        """持续周期数，可选值1-5
+        r"""持续周期数，可选值1-5
         :rtype: int
         """
         return self._ContinuePeriod
@@ -5586,7 +5586,7 @@ class ModifyMonitorRequest(AbstractModel):
 
 
 class ModifyMonitorResponse(AbstractModel):
-    """ModifyMonitor返回参数结构体
+    r"""ModifyMonitor返回参数结构体
 
     """
 
@@ -5602,7 +5602,7 @@ class ModifyMonitorResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """success 为修改成功
+        r"""success 为修改成功
         :rtype: str
         """
         return self._Msg
@@ -5613,7 +5613,7 @@ class ModifyMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5629,7 +5629,7 @@ class ModifyMonitorResponse(AbstractModel):
 
 
 class ModifyStrategyRequest(AbstractModel):
-    """ModifyStrategy请求参数结构体
+    r"""ModifyStrategy请求参数结构体
 
     """
 
@@ -5666,7 +5666,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -5677,7 +5677,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略id
+        r"""策略id
         :rtype: int
         """
         return self._StrategyId
@@ -5688,7 +5688,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def Source(self):
-        """解析线路，需要全量传参
+        r"""解析线路，需要全量传参
         :rtype: list of Source
         """
         return self._Source
@@ -5699,7 +5699,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def MainAddressPoolSet(self):
-        """主力地址池集合，需要全量传参
+        r"""主力地址池集合，需要全量传参
         :rtype: list of MainAddressPool
         """
         return self._MainAddressPoolSet
@@ -5710,7 +5710,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def FallbackAddressPoolSet(self):
-        """兜底地址池集合，需要全量传参
+        r"""兜底地址池集合，需要全量传参
         :rtype: list of MainAddressPool
         """
         return self._FallbackAddressPoolSet
@@ -5721,7 +5721,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称，不允许重复
+        r"""策略名称，不允许重复
         :rtype: str
         """
         return self._StrategyName
@@ -5732,7 +5732,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def IsEnabled(self):
-        """策略开启状态：ENABLED开启；DISABLED关闭
+        r"""策略开启状态：ENABLED开启；DISABLED关闭
         :rtype: str
         """
         return self._IsEnabled
@@ -5743,7 +5743,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def KeepDomainRecords(self):
-        """是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+        r"""是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -5754,7 +5754,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def SwitchPoolType(self):
-        """调度模式：AUTO默认；STOP仅暂停不切换
+        r"""调度模式：AUTO默认；STOP仅暂停不切换
         :rtype: str
         """
         return self._SwitchPoolType
@@ -5800,7 +5800,7 @@ class ModifyStrategyRequest(AbstractModel):
 
 
 class ModifyStrategyResponse(AbstractModel):
-    """ModifyStrategy返回参数结构体
+    r"""ModifyStrategy返回参数结构体
 
     """
 
@@ -5816,7 +5816,7 @@ class ModifyStrategyResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """是否成功
+        r"""是否成功
         :rtype: str
         """
         return self._Msg
@@ -5827,7 +5827,7 @@ class ModifyStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5843,7 +5843,7 @@ class ModifyStrategyResponse(AbstractModel):
 
 
 class MonitorDetail(AbstractModel):
-    """监控器详情
+    r"""监控器详情
 
     """
 
@@ -5921,7 +5921,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def MonitorId(self):
-        """探测规则id
+        r"""探测规则id
         :rtype: int
         """
         return self._MonitorId
@@ -5932,7 +5932,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def MonitorName(self):
-        """监控器名称
+        r"""监控器名称
         :rtype: str
         """
         return self._MonitorName
@@ -5943,7 +5943,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def Uin(self):
-        """所属用户
+        r"""所属用户
         :rtype: str
         """
         return self._Uin
@@ -5954,7 +5954,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def DetectorGroupIds(self):
-        """监控节点id组
+        r"""监控节点id组
         :rtype: list of int non-negative
         """
         return self._DetectorGroupIds
@@ -5965,7 +5965,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def CheckProtocol(self):
-        """探测协议 PING TCP HTTP HTTPS
+        r"""探测协议 PING TCP HTTP HTTPS
         :rtype: str
         """
         return self._CheckProtocol
@@ -5976,7 +5976,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def CheckInterval(self):
-        """探测周期
+        r"""探测周期
         :rtype: int
         """
         return self._CheckInterval
@@ -5987,7 +5987,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def PingNum(self):
-        """发包数量
+        r"""发包数量
         :rtype: int
         """
         return self._PingNum
@@ -5998,7 +5998,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def TcpPort(self):
-        """tcp端口
+        r"""tcp端口
         :rtype: int
         """
         return self._TcpPort
@@ -6009,7 +6009,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def Host(self):
-        """探测 host
+        r"""探测 host
         :rtype: str
         """
         return self._Host
@@ -6020,7 +6020,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def Path(self):
-        """探测路径
+        r"""探测路径
         :rtype: str
         """
         return self._Path
@@ -6031,7 +6031,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def ReturnCodeThreshold(self):
-        """返回值阈值
+        r"""返回值阈值
         :rtype: int
         """
         return self._ReturnCodeThreshold
@@ -6042,7 +6042,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def EnableRedirect(self):
-        """是否开启3xx重定向跟随 ENABLED DISABLED
+        r"""是否开启3xx重定向跟随 ENABLED DISABLED
         :rtype: str
         """
         return self._EnableRedirect
@@ -6053,7 +6053,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def EnableSni(self):
-        """是否启用 sni
+        r"""是否启用 sni
 ENABLED DISABLED
         :rtype: str
         """
@@ -6065,7 +6065,7 @@ ENABLED DISABLED
 
     @property
     def PacketLossRate(self):
-        """丢包率上限
+        r"""丢包率上限
         :rtype: int
         """
         return self._PacketLossRate
@@ -6076,7 +6076,7 @@ ENABLED DISABLED
 
     @property
     def Timeout(self):
-        """探测超时
+        r"""探测超时
         :rtype: int
         """
         return self._Timeout
@@ -6087,7 +6087,7 @@ ENABLED DISABLED
 
     @property
     def FailTimes(self):
-        """失败次数
+        r"""失败次数
         :rtype: int
         """
         return self._FailTimes
@@ -6098,7 +6098,7 @@ ENABLED DISABLED
 
     @property
     def FailRate(self):
-        """失败率上限100
+        r"""失败率上限100
         :rtype: int
         """
         return self._FailRate
@@ -6109,7 +6109,7 @@ ENABLED DISABLED
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -6120,7 +6120,7 @@ ENABLED DISABLED
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -6131,7 +6131,7 @@ ENABLED DISABLED
 
     @property
     def DetectorStyle(self):
-        """监控节点类型
+        r"""监控节点类型
 AUTO INTERNAL OVERSEAS IPV6 ALL
         :rtype: str
         """
@@ -6143,7 +6143,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def DetectNum(self):
-        """探测次数
+        r"""探测次数
         :rtype: int
         """
         return self._DetectNum
@@ -6154,7 +6154,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
     @property
     def ContinuePeriod(self):
-        """持续周期数
+        r"""持续周期数
         :rtype: int
         """
         return self._ContinuePeriod
@@ -6198,7 +6198,7 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
 
 
 class Quota(AbstractModel):
-    """配额
+    r"""配额
 
     """
 
@@ -6241,7 +6241,7 @@ class Quota(AbstractModel):
 
     @property
     def TaskQuota(self):
-        """探测任务配额
+        r"""探测任务配额
         :rtype: int
         """
         return self._TaskQuota
@@ -6252,7 +6252,7 @@ class Quota(AbstractModel):
 
     @property
     def PoolQuota(self):
-        """地址池配额
+        r"""地址池配额
         :rtype: int
         """
         return self._PoolQuota
@@ -6263,7 +6263,7 @@ class Quota(AbstractModel):
 
     @property
     def AddressQuota(self):
-        """地址配额
+        r"""地址配额
         :rtype: int
         """
         return self._AddressQuota
@@ -6274,7 +6274,7 @@ class Quota(AbstractModel):
 
     @property
     def MonitorQuota(self):
-        """探点资源数
+        r"""探点资源数
         :rtype: int
         """
         return self._MonitorQuota
@@ -6285,7 +6285,7 @@ class Quota(AbstractModel):
 
     @property
     def MessageQuota(self):
-        """消息资源数
+        r"""消息资源数
         :rtype: int
         """
         return self._MessageQuota
@@ -6296,7 +6296,7 @@ class Quota(AbstractModel):
 
     @property
     def UsedTaskQuota(self):
-        """已使用探测任务数
+        r"""已使用探测任务数
         :rtype: int
         """
         return self._UsedTaskQuota
@@ -6307,7 +6307,7 @@ class Quota(AbstractModel):
 
     @property
     def UsedFreeInstanceNum(self):
-        """已使用体验实例数
+        r"""已使用体验实例数
         :rtype: int
         """
         return self._UsedFreeInstanceNum
@@ -6318,7 +6318,7 @@ class Quota(AbstractModel):
 
     @property
     def UsedBillInstanceNum(self):
-        """已使用付费实例
+        r"""已使用付费实例
         :rtype: int
         """
         return self._UsedBillInstanceNum
@@ -6329,7 +6329,7 @@ class Quota(AbstractModel):
 
     @property
     def FreePackageNum(self):
-        """体验套餐总数
+        r"""体验套餐总数
         :rtype: int
         """
         return self._FreePackageNum
@@ -6340,7 +6340,7 @@ class Quota(AbstractModel):
 
     @property
     def UsedBillPackageNum(self):
-        """已使用付费套餐数
+        r"""已使用付费套餐数
         :rtype: int
         """
         return self._UsedBillPackageNum
@@ -6351,7 +6351,7 @@ class Quota(AbstractModel):
 
     @property
     def BillPackageNum(self):
-        """付费套餐总数
+        r"""付费套餐总数
         :rtype: int
         """
         return self._BillPackageNum
@@ -6384,7 +6384,7 @@ class Quota(AbstractModel):
 
 
 class ResourceFilter(AbstractModel):
-    """查询时过滤条件。
+    r"""查询时过滤条件。
 
     """
 
@@ -6407,7 +6407,7 @@ class ResourceFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤字段名，支持的列表如下：
+        r"""过滤字段名，支持的列表如下：
 - type：主资源类型，CDN。
 - instanceId：IGTM实例ID。此为必传参数，未传将导致接口查询失败。
         :rtype: str
@@ -6420,7 +6420,7 @@ class ResourceFilter(AbstractModel):
 
     @property
     def Value(self):
-        """过滤字段值。
+        r"""过滤字段值。
 
         :rtype: list of str
         """
@@ -6432,7 +6432,7 @@ class ResourceFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """是否启用模糊查询，仅支持过滤字段名为domain。
+        r"""是否启用模糊查询，仅支持过滤字段名为domain。
 模糊查询时，Value长度最大为1，否则Value长度最大为5。(预留字段，暂未使用)
         :rtype: bool
         """
@@ -6458,7 +6458,7 @@ class ResourceFilter(AbstractModel):
 
 
 class Source(AbstractModel):
-    """解析线路
+    r"""解析线路
 
     """
 
@@ -6474,7 +6474,7 @@ class Source(AbstractModel):
 
     @property
     def DnsLineId(self):
-        """解析请求来源线路id
+        r"""解析请求来源线路id
         :rtype: int
         """
         return self._DnsLineId
@@ -6485,7 +6485,7 @@ class Source(AbstractModel):
 
     @property
     def Name(self):
-        """解析请求来源线路名
+        r"""解析请求来源线路名
         :rtype: str
         """
         return self._Name
@@ -6509,7 +6509,7 @@ class Source(AbstractModel):
 
 
 class Strategy(AbstractModel):
-    """地址池
+    r"""地址池
 
     """
 
@@ -6567,7 +6567,7 @@ class Strategy(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -6578,7 +6578,7 @@ class Strategy(AbstractModel):
 
     @property
     def Name(self):
-        """策略名
+        r"""策略名
         :rtype: str
         """
         return self._Name
@@ -6589,7 +6589,7 @@ class Strategy(AbstractModel):
 
     @property
     def Source(self):
-        """地址来源
+        r"""地址来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Source
         """
@@ -6601,7 +6601,7 @@ class Strategy(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略id
+        r"""策略id
         :rtype: int
         """
         return self._StrategyId
@@ -6612,7 +6612,7 @@ class Strategy(AbstractModel):
 
     @property
     def Status(self):
-        """健康状态：ok健康、warn风险、down故障
+        r"""健康状态：ok健康、warn风险、down故障
         :rtype: str
         """
         return self._Status
@@ -6623,7 +6623,7 @@ class Strategy(AbstractModel):
 
     @property
     def ActivateMainPoolId(self):
-        """生效的主力池id，null则为未知
+        r"""生效的主力池id，null则为未知
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6635,7 +6635,7 @@ class Strategy(AbstractModel):
 
     @property
     def ActivateLevel(self):
-        """当前生效地址池所在级数，为0则代表兜底生效，null则为未知
+        r"""当前生效地址池所在级数，为0则代表兜底生效，null则为未知
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6647,7 +6647,7 @@ class Strategy(AbstractModel):
 
     @property
     def ActivePoolType(self):
-        """当前生效地址池集合类型：main主力；fallback兜底
+        r"""当前生效地址池集合类型：main主力；fallback兜底
         :rtype: str
         """
         return self._ActivePoolType
@@ -6658,7 +6658,7 @@ class Strategy(AbstractModel):
 
     @property
     def ActiveTrafficStrategy(self):
-        """当前生效地址池流量策略：all解析所有；weight负载均衡
+        r"""当前生效地址池流量策略：all解析所有；weight负载均衡
         :rtype: str
         """
         return self._ActiveTrafficStrategy
@@ -6669,7 +6669,7 @@ class Strategy(AbstractModel):
 
     @property
     def MonitorNum(self):
-        """监控器数量
+        r"""监控器数量
         :rtype: int
         """
         return self._MonitorNum
@@ -6680,7 +6680,7 @@ class Strategy(AbstractModel):
 
     @property
     def IsEnabled(self):
-        """是否开启：ENABLED开启；DISABLED关闭
+        r"""是否开启：ENABLED开启；DISABLED关闭
         :rtype: str
         """
         return self._IsEnabled
@@ -6691,7 +6691,7 @@ class Strategy(AbstractModel):
 
     @property
     def KeepDomainRecords(self):
-        """是否保留线路：enabled保留，disabled不保留，只保留默认线路
+        r"""是否保留线路：enabled保留，disabled不保留，只保留默认线路
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -6702,7 +6702,7 @@ class Strategy(AbstractModel):
 
     @property
     def SwitchPoolType(self):
-        """调度模式：AUTO默认；PAUSE仅暂停不切换
+        r"""调度模式：AUTO默认；PAUSE仅暂停不切换
         :rtype: str
         """
         return self._SwitchPoolType
@@ -6713,7 +6713,7 @@ class Strategy(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -6724,7 +6724,7 @@ class Strategy(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -6766,7 +6766,7 @@ class Strategy(AbstractModel):
 
 
 class StrategyDetail(AbstractModel):
-    """策略详情
+    r"""策略详情
 
     """
 
@@ -6813,7 +6813,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -6824,7 +6824,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略id
+        r"""策略id
         :rtype: int
         """
         return self._StrategyId
@@ -6835,7 +6835,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def Name(self):
-        """策略名
+        r"""策略名
         :rtype: str
         """
         return self._Name
@@ -6846,7 +6846,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def Source(self):
-        """线路
+        r"""线路
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Source
         """
@@ -6858,7 +6858,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def MainAddressPoolSet(self):
-        """主力地址池集合
+        r"""主力地址池集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MainAddressPool
         """
@@ -6870,7 +6870,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def FallbackAddressPoolSet(self):
-        """兜底地址池id
+        r"""兜底地址池id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MainAddressPool
         """
@@ -6882,7 +6882,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def KeepDomainRecords(self):
-        """是否保留线路：enabled保留，disabled不保留，只保留默认线路
+        r"""是否保留线路：enabled保留，disabled不保留，只保留默认线路
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -6893,7 +6893,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def ActivateMainPoolId(self):
-        """生效主力地址池id
+        r"""生效主力地址池id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6905,7 +6905,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedOn
@@ -6916,7 +6916,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdatedOn
@@ -6927,7 +6927,7 @@ class StrategyDetail(AbstractModel):
 
     @property
     def SwitchPoolType(self):
-        """调度模式：AUTO默认；PAUSE仅暂停不切换
+        r"""调度模式：AUTO默认；PAUSE仅暂停不切换
         :rtype: str
         """
         return self._SwitchPoolType

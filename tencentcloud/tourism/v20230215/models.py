@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeDrawResourceListRequest(AbstractModel):
-    """DescribeDrawResourceList请求参数结构体
+    r"""DescribeDrawResourceList请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class DescribeDrawResourceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """PageNumber
+        r"""PageNumber
         :rtype: int
         """
         return self._PageNumber
@@ -46,7 +46,7 @@ class DescribeDrawResourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """PageSize
+        r"""PageSize
         :rtype: int
         """
         return self._PageSize
@@ -70,7 +70,7 @@ class DescribeDrawResourceListRequest(AbstractModel):
 
 
 class DescribeDrawResourceListResponse(AbstractModel):
-    """DescribeDrawResourceList返回参数结构体
+    r"""DescribeDrawResourceList返回参数结构体
 
     """
 
@@ -89,7 +89,7 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回数据条数
+        r"""返回数据条数
         :rtype: int
         """
         return self._TotalCount
@@ -100,7 +100,7 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def ResourceDrawList(self):
-        """返回数据数组
+        r"""返回数据数组
         :rtype: list of ResourceDrawListType
         """
         return self._ResourceDrawList
@@ -111,7 +111,7 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -133,7 +133,7 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
 
 class ResourceDrawListType(AbstractModel):
-    """输出用户的资源数据
+    r"""输出用户的资源数据
 
     """
 
@@ -191,7 +191,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Id(self):
-        """记录id
+        r"""记录id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -203,7 +203,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def FlowId(self):
-        """资源记录id
+        r"""资源记录id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -215,7 +215,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id
+        r"""资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -227,7 +227,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def IndexId(self):
-        """本订单资源序列号
+        r"""本订单资源序列号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -239,7 +239,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Uin(self):
-        """客户的uin
+        r"""客户的uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -251,7 +251,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def BigDealId(self):
-        """大订单号
+        r"""大订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -263,7 +263,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def SmallOrderId(self):
-        """小订单号
+        r"""小订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -275,7 +275,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceNewStartTime(self):
-        """资源创建时间
+        r"""资源创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -287,7 +287,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceNewEndTime(self):
-        """资源到期时间
+        r"""资源到期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -299,7 +299,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """资源状态
+        r"""资源状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -311,7 +311,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Status(self):
-        """本记录状态
+        r"""本记录状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -323,7 +323,7 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceType(self):
-        """项目类型
+        r"""项目类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

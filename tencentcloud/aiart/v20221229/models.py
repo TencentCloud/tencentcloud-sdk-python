@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ChangeClothesRequest(AbstractModel):
-    """ChangeClothes请求参数结构体
+    r"""ChangeClothes请求参数结构体
 
     """
 
@@ -66,7 +66,7 @@ Dress：连衣裙
 
     @property
     def ModelUrl(self):
-        """模特图片 Url。
+        r"""模特图片 Url。
 图片限制：单边分辨率小于3000，且大于512，转成 Base64 字符串后小于 8MB。
 输入要求：
 1、建议上传正面模特图片，至少完整露出应穿着输入指定服装的身体部位（全身、上半身或下半身），无大角度身体偏转或异常姿势。
@@ -83,7 +83,7 @@ Dress：连衣裙
 
     @property
     def ClothesUrl(self):
-        """服装图片 Url。
+        r"""服装图片 Url。
 图片限制：单边分辨率小于3000，大于512，转成 Base64 字符串后小于 8MB。
 输入要求：
 建议上传服装完整的正面平铺图片，仅包含1个服装主体，服装类型支持上衣、下装、连衣裙，三选一。算法将根据输入的图片，结合服装图片给模特换装。
@@ -97,7 +97,7 @@ Dress：连衣裙
 
     @property
     def ClothesType(self):
-        """服装类型，需要和服装图片保持一致。
+        r"""服装类型，需要和服装图片保持一致。
 取值：
 Upper-body：上衣
 Lower-body：下装
@@ -112,7 +112,7 @@ Dress：连衣裙
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -127,7 +127,7 @@ Dress：连衣裙
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -139,7 +139,7 @@ Dress：连衣裙
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
         :rtype: str
         """
@@ -170,7 +170,7 @@ Dress：连衣裙
 
 
 class ChangeClothesResponse(AbstractModel):
-    """ChangeClothes返回参数结构体
+    r"""ChangeClothes返回参数结构体
 
     """
 
@@ -188,7 +188,7 @@ class ChangeClothesResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -201,7 +201,7 @@ class ChangeClothesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -217,7 +217,7 @@ class ChangeClothesResponse(AbstractModel):
 
 
 class FaceInfo(AbstractModel):
-    """融合信息
+    r"""融合信息
 
     """
 
@@ -233,7 +233,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def ImageUrls(self):
-        """用户图 URL 列表
+        r"""用户图 URL 列表
         :rtype: list of str
         """
         return self._ImageUrls
@@ -244,7 +244,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def TemplateFaceRect(self):
-        """模版图人脸坐标。
+        r"""模版图人脸坐标。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.Rect`
         """
         return self._TemplateFaceRect
@@ -270,7 +270,7 @@ class FaceInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """训练图像质量过滤开关配置。
+    r"""训练图像质量过滤开关配置。
     支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡、脸部角度的过滤，默认开启以上过滤。
     如果训练图像内包含多人脸或无人脸、和 Base 人像不为同一人也将被过滤，不可关闭该过滤条件。
     建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部清晰、无遮挡、无夸张表情、脸部区域占比较大的图像进行训练。
@@ -302,7 +302,7 @@ class Filter(AbstractModel):
 
     @property
     def Resolution(self):
-        """过滤不满足分辨率下限的训练图像，默认开启过滤
+        r"""过滤不满足分辨率下限的训练图像，默认开启过滤
 开启后将过滤横边<512或竖边<720的图片，横、竖边上限均为2000，不支持调整
 
 1：开启过滤
@@ -317,7 +317,7 @@ class Filter(AbstractModel):
 
     @property
     def Size(self):
-        """过滤脸部区域过小的训练图像，默认开启过滤
+        r"""过滤脸部区域过小的训练图像，默认开启过滤
 
 1：开启过滤
 0：关闭过滤
@@ -331,7 +331,7 @@ class Filter(AbstractModel):
 
     @property
     def Occlusion(self):
-        """过滤脸部存在明显遮挡、偏转角度过大等质量较差的训练图像，默认开启过滤
+        r"""过滤脸部存在明显遮挡、偏转角度过大等质量较差的训练图像，默认开启过滤
 
 1：开启过滤
 0：关闭过滤
@@ -359,7 +359,7 @@ class Filter(AbstractModel):
 
 
 class GenerateAvatarRequest(AbstractModel):
-    """GenerateAvatar请求参数结构体
+    r"""GenerateAvatar请求参数结构体
 
     """
 
@@ -411,7 +411,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Type(self):
-        """图像类型，默认为人像。
+        r"""图像类型，默认为人像。
 human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
 pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
         :rtype: str
@@ -424,7 +424,7 @@ pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物�
 
     @property
     def Style(self):
-        """头像风格，仅在人像模式下生效。
+        r"""头像风格，仅在人像模式下生效。
 若使用人像模式，请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
 若使用萌宠贴纸模式，无需选择风格，该参数不生效。
         :rtype: str
@@ -437,7 +437,7 @@ pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物�
 
     @property
     def InputImage(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -450,7 +450,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """输入图 Url。
+        r"""输入图 Url。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -463,7 +463,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Filter(self):
-        """输入人像图的质量检测开关，默认开启，仅在人像模式下生效。
+        r"""输入人像图的质量检测开关，默认开启，仅在人像模式下生效。
 1：开启
 0：关闭
 建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
@@ -479,7 +479,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -494,7 +494,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -506,7 +506,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -538,7 +538,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
 
 class GenerateAvatarResponse(AbstractModel):
-    """GenerateAvatar返回参数结构体
+    r"""GenerateAvatar返回参数结构体
 
     """
 
@@ -556,7 +556,7 @@ class GenerateAvatarResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -569,7 +569,7 @@ class GenerateAvatarResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -585,7 +585,7 @@ class GenerateAvatarResponse(AbstractModel):
 
 
 class Image(AbstractModel):
-    """图片
+    r"""图片
 
     """
 
@@ -601,7 +601,7 @@ class Image(AbstractModel):
 
     @property
     def Base64(self):
-        """图片Base64
+        r"""图片Base64
         :rtype: str
         """
         return self._Base64
@@ -612,7 +612,7 @@ class Image(AbstractModel):
 
     @property
     def Url(self):
-        """图片Url
+        r"""图片Url
         :rtype: str
         """
         return self._Url
@@ -636,7 +636,7 @@ class Image(AbstractModel):
 
 
 class ImageInpaintingRemovalRequest(AbstractModel):
-    """ImageInpaintingRemoval请求参数结构体
+    r"""ImageInpaintingRemoval请求参数结构体
 
     """
 
@@ -682,7 +682,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputImage(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -695,7 +695,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """输入图 Url。
+        r"""输入图 Url。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -708,7 +708,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Mask(self):
-        """消除区域 Mask 图 Base64 数据。
+        r"""消除区域 Mask 图 Base64 数据。
 Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
 Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
@@ -722,7 +722,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def MaskUrl(self):
-        """消除区域 Mask 图 Url。
+        r"""消除区域 Mask 图 Url。
 Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
 Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
@@ -736,7 +736,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -747,7 +747,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -762,7 +762,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -794,7 +794,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
 
 class ImageInpaintingRemovalResponse(AbstractModel):
-    """ImageInpaintingRemoval返回参数结构体
+    r"""ImageInpaintingRemoval返回参数结构体
 
     """
 
@@ -810,7 +810,7 @@ class ImageInpaintingRemovalResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。 如果传入 base64 则返回生成图 Base64 编码。 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。 如果传入 base64 则返回生成图 Base64 编码。 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
         """
         return self._ResultImage
@@ -821,7 +821,7 @@ class ImageInpaintingRemovalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -837,7 +837,7 @@ class ImageInpaintingRemovalResponse(AbstractModel):
 
 
 class ImageOutpaintingRequest(AbstractModel):
-    """ImageOutpainting请求参数结构体
+    r"""ImageOutpainting请求参数结构体
 
     """
 
@@ -875,7 +875,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Ratio(self):
-        """扩展后的比例（宽:高），需要不等于原图比例。
+        r"""扩展后的比例（宽:高），需要不等于原图比例。
 支持：1:1、4:3、3:4、16:9、9:16
         :rtype: str
         """
@@ -887,7 +887,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputImage(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -900,7 +900,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """输入图 Url。
+        r"""输入图 Url。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -913,7 +913,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -924,7 +924,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -939,7 +939,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -970,7 +970,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
 
 class ImageOutpaintingResponse(AbstractModel):
-    """ImageOutpainting返回参数结构体
+    r"""ImageOutpainting返回参数结构体
 
     """
 
@@ -988,7 +988,7 @@ class ImageOutpaintingResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -1001,7 +1001,7 @@ class ImageOutpaintingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1017,7 +1017,7 @@ class ImageOutpaintingResponse(AbstractModel):
 
 
 class ImageToImageRequest(AbstractModel):
-    """ImageToImage请求参数结构体
+    r"""ImageToImage请求参数结构体
 
     """
 
@@ -1088,7 +1088,7 @@ Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传�
 
     @property
     def InputImage(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
@@ -1102,7 +1102,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """输入图 Url。
+        r"""输入图 Url。
 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
@@ -1116,7 +1116,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Prompt(self):
-        """文本描述。
+        r"""文本描述。
 用于在输入图的基础上引导生成图效果，增加生成结果中出现描述内容的可能。
 推荐使用中文。最多支持256个 utf-8 字符。
         :rtype: str
@@ -1129,7 +1129,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def NegativePrompt(self):
-        """反向文本描述。
+        r"""反向文本描述。
 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 推荐使用中文。最多可传256个 utf-8 字符。
         :rtype: str
@@ -1142,7 +1142,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Styles(self):
-        """绘画风格。
+        r"""绘画风格。
 请在  [图像风格化风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
         :rtype: list of str
@@ -1155,7 +1155,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def ResultConfig(self):
-        """生成图结果的配置，包括输出图片分辨率和尺寸等。
+        r"""生成图结果的配置，包括输出图片分辨率和尺寸等。
 支持生成以下分辨率的图片：origin（与输入图分辨率一致，长边最高为2000，超出将做等比例缩小）、768:768（1:1）、768:1024（3:4）、1024:768（4:3）。
 不传默认使用origin。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.ResultConfig`
@@ -1168,7 +1168,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -1183,7 +1183,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -1195,7 +1195,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Strength(self):
-        """生成自由度。
+        r"""生成自由度。
 Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传使用模型内置的默认值。
 推荐的取值范围为0.6 - 0.8。
         :rtype: float
@@ -1208,7 +1208,7 @@ Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传�
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -1219,7 +1219,7 @@ Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传�
 
     @property
     def EnhanceImage(self):
-        """画质增强开关，默认关闭。
+        r"""画质增强开关，默认关闭。
 1：开启
 0：关闭
 开启后将增强图像的画质清晰度，生成耗时有所增加。
@@ -1233,7 +1233,7 @@ Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传�
 
     @property
     def RestoreFace(self):
-        """细节优化的面部数量上限，支持0 ~ 6，默认为0。
+        r"""细节优化的面部数量上限，支持0 ~ 6，默认为0。
 若上传大于0的值，将以此为上限对每张图片中面积占比较小的面部进行细节修复，生成耗时根据实际优化的面部个数有所增加。
         :rtype: int
         """
@@ -1272,7 +1272,7 @@ Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传�
 
 
 class ImageToImageResponse(AbstractModel):
-    """ImageToImage返回参数结构体
+    r"""ImageToImage返回参数结构体
 
     """
 
@@ -1290,7 +1290,7 @@ class ImageToImageResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -1303,7 +1303,7 @@ class ImageToImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1319,7 +1319,7 @@ class ImageToImageResponse(AbstractModel):
 
 
 class LogoParam(AbstractModel):
-    """logo参数
+    r"""logo参数
 
     """
 
@@ -1341,7 +1341,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """水印 Url
+        r"""水印 Url
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1353,7 +1353,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoImage(self):
-        """水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+        r"""水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1365,7 +1365,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
-        """水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+        r"""水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoRect`
         """
@@ -1393,7 +1393,7 @@ class LogoParam(AbstractModel):
 
 
 class LogoRect(AbstractModel):
-    """输入框
+    r"""输入框
 
     """
 
@@ -1419,7 +1419,7 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
-        """左上角X坐标
+        r"""左上角X坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1431,7 +1431,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角Y坐标
+        r"""左上角Y坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1443,7 +1443,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
-        """方框宽度
+        r"""方框宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1455,7 +1455,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
-        """方框高度
+        r"""方框高度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1482,7 +1482,7 @@ class LogoRect(AbstractModel):
 
 
 class QueryDrawPortraitJobRequest(AbstractModel):
-    """QueryDrawPortraitJob请求参数结构体
+    r"""QueryDrawPortraitJob请求参数结构体
 
     """
 
@@ -1495,7 +1495,7 @@ class QueryDrawPortraitJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """查询生成写真图片任务 ID。
+        r"""查询生成写真图片任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -1518,7 +1518,7 @@ class QueryDrawPortraitJobRequest(AbstractModel):
 
 
 class QueryDrawPortraitJobResponse(AbstractModel):
-    """QueryDrawPortraitJob返回参数结构体
+    r"""QueryDrawPortraitJob返回参数结构体
 
     """
 
@@ -1551,7 +1551,7 @@ URL 有效期1小时，请及时保存。
 
     @property
     def JobStatusCode(self):
-        """任务状态码。
+        r"""任务状态码。
 INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DONE：处理完成。
         :rtype: str
         """
@@ -1563,7 +1563,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobStatusMsg(self):
-        """任务状态信息。
+        r"""任务状态信息。
         :rtype: str
         """
         return self._JobStatusMsg
@@ -1574,7 +1574,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobErrorCode(self):
-        """任务错误码。
+        r"""任务错误码。
         :rtype: str
         """
         return self._JobErrorCode
@@ -1585,7 +1585,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobErrorMsg(self):
-        """任务错误信息。
+        r"""任务错误信息。
         :rtype: str
         """
         return self._JobErrorMsg
@@ -1596,7 +1596,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def ResultUrls(self):
-        """结果 URL 数组。
+        r"""结果 URL 数组。
 URL 有效期1小时，请及时保存。
         :rtype: list of str
         """
@@ -1608,7 +1608,7 @@ URL 有效期1小时，请及时保存。
 
     @property
     def ResultDetails(self):
-        """结果描述数组。
+        r"""结果描述数组。
         :rtype: list of str
         """
         return self._ResultDetails
@@ -1619,7 +1619,7 @@ URL 有效期1小时，请及时保存。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1640,7 +1640,7 @@ URL 有效期1小时，请及时保存。
 
 
 class QueryGlamPicJobRequest(AbstractModel):
-    """QueryGlamPicJob请求参数结构体
+    r"""QueryGlamPicJob请求参数结构体
 
     """
 
@@ -1653,7 +1653,7 @@ class QueryGlamPicJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -1676,7 +1676,7 @@ class QueryGlamPicJobRequest(AbstractModel):
 
 
 class QueryGlamPicJobResponse(AbstractModel):
-    """QueryGlamPicJob返回参数结构体
+    r"""QueryGlamPicJob返回参数结构体
 
     """
 
@@ -1713,7 +1713,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
-        """当前任务状态码：
+        r"""当前任务状态码：
 1：等待中、2：运行中、4：处理失败、5：处理完成。
         :rtype: str
         """
@@ -1725,7 +1725,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
-        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
 
         :rtype: str
         """
@@ -1737,7 +1737,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务处理失败错误码。
+        r"""任务处理失败错误码。
 
         :rtype: str
         """
@@ -1749,7 +1749,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务处理失败错误信息。
+        r"""任务处理失败错误信息。
 
         :rtype: str
         """
@@ -1761,7 +1761,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """生成图 URL 列表，有效期1小时，请及时保存。
+        r"""生成图 URL 列表，有效期1小时，请及时保存。
 
         :rtype: list of str
         """
@@ -1773,7 +1773,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
-        """结果 detail 数组，Success 代表成功。
+        r"""结果 detail 数组，Success 代表成功。
 
         :rtype: list of str
         """
@@ -1785,7 +1785,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1806,7 +1806,7 @@ class QueryGlamPicJobResponse(AbstractModel):
 
 
 class QueryMemeJobRequest(AbstractModel):
-    """QueryMemeJob请求参数结构体
+    r"""QueryMemeJob请求参数结构体
 
     """
 
@@ -1819,7 +1819,7 @@ class QueryMemeJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """查询表情动图生成任务 ID。
+        r"""查询表情动图生成任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -1842,7 +1842,7 @@ class QueryMemeJobRequest(AbstractModel):
 
 
 class QueryMemeJobResponse(AbstractModel):
-    """QueryMemeJob返回参数结构体
+    r"""QueryMemeJob返回参数结构体
 
     """
 
@@ -1873,7 +1873,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
-        """当前任务状态码：
+        r"""当前任务状态码：
 1：等待中、2：运行中、4：处理失败、5：处理完成。
         :rtype: str
         """
@@ -1885,7 +1885,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
-        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
         :rtype: str
         """
         return self._JobStatusMsg
@@ -1896,7 +1896,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务处理失败错误码。
+        r"""任务处理失败错误码。
 
         :rtype: str
         """
@@ -1908,7 +1908,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务处理失败错误信息。
+        r"""任务处理失败错误信息。
 
         :rtype: str
         """
@@ -1920,7 +1920,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """生成图 URL，有效期1小时，请及时保存。
+        r"""生成图 URL，有效期1小时，请及时保存。
         :rtype: str
         """
         return self._ResultImage
@@ -1931,7 +1931,7 @@ class QueryMemeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1951,7 +1951,7 @@ class QueryMemeJobResponse(AbstractModel):
 
 
 class QueryTextToImageProJobRequest(AbstractModel):
-    """QueryTextToImageProJob请求参数结构体
+    r"""QueryTextToImageProJob请求参数结构体
 
     """
 
@@ -1964,7 +1964,7 @@ class QueryTextToImageProJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -1987,7 +1987,7 @@ class QueryTextToImageProJobRequest(AbstractModel):
 
 
 class QueryTextToImageProJobResponse(AbstractModel):
-    """QueryTextToImageProJob返回参数结构体
+    r"""QueryTextToImageProJob返回参数结构体
 
     """
 
@@ -2027,7 +2027,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
-        """当前任务状态码：
+        r"""当前任务状态码：
 1：等待中、2：运行中、4：处理失败、5：处理完成。
         :rtype: str
         """
@@ -2039,7 +2039,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
-        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
 
         :rtype: str
         """
@@ -2051,7 +2051,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务处理失败错误码。
+        r"""任务处理失败错误码。
 
         :rtype: str
         """
@@ -2063,7 +2063,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务处理失败错误信息。
+        r"""任务处理失败错误信息。
 
         :rtype: str
         """
@@ -2075,7 +2075,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """生成图 URL 列表，有效期1小时，请及时保存。
+        r"""生成图 URL 列表，有效期1小时，请及时保存。
 
         :rtype: list of str
         """
@@ -2087,7 +2087,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
-        """结果 detail 数组，Success 代表成功。
+        r"""结果 detail 数组，Success 代表成功。
 
         :rtype: list of str
         """
@@ -2099,7 +2099,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def RevisedPrompt(self):
-        """对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        r"""对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
         :rtype: list of str
         """
         return self._RevisedPrompt
@@ -2110,7 +2110,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2132,7 +2132,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
 
 
 class QueryTrainPortraitModelJobRequest(AbstractModel):
-    """QueryTrainPortraitModelJob请求参数结构体
+    r"""QueryTrainPortraitModelJob请求参数结构体
 
     """
 
@@ -2146,7 +2146,7 @@ class QueryTrainPortraitModelJobRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """写真模型 ID。
+        r"""写真模型 ID。
 
         :rtype: str
         """
@@ -2170,7 +2170,7 @@ class QueryTrainPortraitModelJobRequest(AbstractModel):
 
 
 class QueryTrainPortraitModelJobResponse(AbstractModel):
-    """QueryTrainPortraitModelJob返回参数结构体
+    r"""QueryTrainPortraitModelJob返回参数结构体
 
     """
 
@@ -2196,7 +2196,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobStatusCode(self):
-        """任务状态码。
+        r"""任务状态码。
 INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DONE：处理完成。
         :rtype: str
         """
@@ -2208,7 +2208,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobStatusMsg(self):
-        """任务状态信息。
+        r"""任务状态信息。
         :rtype: str
         """
         return self._JobStatusMsg
@@ -2219,7 +2219,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobErrorCode(self):
-        """任务错误码。
+        r"""任务错误码。
         :rtype: str
         """
         return self._JobErrorCode
@@ -2230,7 +2230,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def JobErrorMsg(self):
-        """任务错误信息。
+        r"""任务错误信息。
         :rtype: str
         """
         return self._JobErrorMsg
@@ -2241,7 +2241,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2260,7 +2260,7 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
 
 
 class Rect(AbstractModel):
-    """人脸框坐标
+    r"""人脸框坐标
 
     """
 
@@ -2282,7 +2282,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。
+        r"""人脸框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -2293,7 +2293,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。
+        r"""人脸框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -2304,7 +2304,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框宽度。
+        r"""人脸框宽度。
         :rtype: int
         """
         return self._Width
@@ -2315,7 +2315,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框高度。
+        r"""人脸框高度。
         :rtype: int
         """
         return self._Height
@@ -2341,7 +2341,7 @@ class Rect(AbstractModel):
 
 
 class RefineImageRequest(AbstractModel):
-    """RefineImage请求参数结构体
+    r"""RefineImage请求参数结构体
 
     """
 
@@ -2364,7 +2364,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """输入图 Url。
+        r"""输入图 Url。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -2377,7 +2377,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputImage(self):
-        """输入图 Base64 数据。
+        r"""输入图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -2390,7 +2390,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
         :rtype: str
         """
         return self._RspImgType
@@ -2415,7 +2415,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
 
 class RefineImageResponse(AbstractModel):
-    """RefineImage返回参数结构体
+    r"""RefineImage返回参数结构体
 
     """
 
@@ -2433,7 +2433,7 @@ class RefineImageResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -2446,7 +2446,7 @@ class RefineImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2462,7 +2462,7 @@ class RefineImageResponse(AbstractModel):
 
 
 class ReplaceBackgroundRequest(AbstractModel):
-    """ReplaceBackground请求参数结构体
+    r"""ReplaceBackground请求参数结构体
 
     """
 
@@ -2520,7 +2520,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def ProductUrl(self):
-        """商品原图 Url。
+        r"""商品原图 Url。
 图片限制：单边分辨率小于4000，长宽比在2:5 ~ 5:2之间，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
         """
@@ -2532,7 +2532,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """对新背景的文本描述。
+        r"""对新背景的文本描述。
 最多支持256个 utf-8 字符，支持中、英文。
 如果 Prompt = "BackgroundTemplate" 代表启用背景模板，需要在参数 BackgroundTemplate 中指定一个背景名称。
         :rtype: str
@@ -2545,7 +2545,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        """反向提示词。
+        r"""反向提示词。
 最多支持256个 utf-8 字符，支持中、英文。
         :rtype: str
         """
@@ -2557,7 +2557,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def Product(self):
-        """商品图中的商品主体名称。
+        r"""商品图中的商品主体名称。
 最多支持50个 utf-8 字符，支持中、英文。
 建议说明商品主体，否则影响生成效果。
         :rtype: str
@@ -2570,7 +2570,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def BackgroundTemplate(self):
-        """背景模板。
+        r"""背景模板。
 仅当 Prompt = "BackgroundTemplate" 时生效，可支持的模板详见 [商品背景模板列表](https://cloud.tencent.com/document/product/1668/115391) ，请传入字段“背景名称”中的值。
         :rtype: str
         """
@@ -2582,7 +2582,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def MaskUrl(self):
-        """商品 Mask 图 Url，要求背景透明，保留商品主体。
+        r"""商品 Mask 图 Url，要求背景透明，保留商品主体。
 如果不传，将自动使用内置的商品分割算法得到 Mask。
 支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
 图片限制：Mask 图必须和商品原图分辨率一致，转成 Base64 字符串后小于 6MB，格式仅支持 png。
@@ -2596,7 +2596,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """替换背景后生成的商品图分辨率。
+        r"""替换背景后生成的商品图分辨率。
 支持生成单边分辨率大于500且小于4000、长宽比在2:5 ~ 5:2之间的图片，不传默认生成1280:1280。
 建议图片比例为1:1、9:16、16:9，生成效果更佳，使用其他比例的生成效果可能不如建议比例。
         :rtype: str
@@ -2609,7 +2609,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -2624,7 +2624,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -2636,7 +2636,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
         :rtype: str
         """
@@ -2671,7 +2671,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 
 
 class ReplaceBackgroundResponse(AbstractModel):
-    """ReplaceBackground返回参数结构体
+    r"""ReplaceBackground返回参数结构体
 
     """
 
@@ -2692,7 +2692,7 @@ class ReplaceBackgroundResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -2705,7 +2705,7 @@ class ReplaceBackgroundResponse(AbstractModel):
 
     @property
     def MaskImage(self):
-        """如果 MaskUrl 未传，则返回使用内置商品分割算法得到的 Mask 结果。
+        r"""如果 MaskUrl 未传，则返回使用内置商品分割算法得到的 Mask 结果。
         :rtype: str
         """
         return self._MaskImage
@@ -2716,7 +2716,7 @@ class ReplaceBackgroundResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2733,7 +2733,7 @@ class ReplaceBackgroundResponse(AbstractModel):
 
 
 class ResultConfig(AbstractModel):
-    """返回结果配置
+    r"""返回结果配置
 
     """
 
@@ -2749,7 +2749,7 @@ class ResultConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        """生成图分辨率
+        r"""生成图分辨率
 
 图像风格化（图生图）支持生成以下分辨率的图片：origin（与输入图分辨率一致，长边最高为2000，超出将做等比例缩小）、768:768（1:1）、768:1024（3:4）、1024:768（4:3），不传默认使用origin，如果指定生成的长宽比与输入图长宽比差异过大可能导致图片内容被裁剪。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2775,7 +2775,7 @@ class ResultConfig(AbstractModel):
 
 
 class SketchToImageRequest(AbstractModel):
-    """SketchToImage请求参数结构体
+    r"""SketchToImage请求参数结构体
 
     """
 
@@ -2814,7 +2814,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def Prompt(self):
-        """用于线稿生图的文本描述。
+        r"""用于线稿生图的文本描述。
 最多支持200个 utf-8 字符。
 建议格式：线稿中的主体对象+画面场景+配色/材质/元素/风格等
         :rtype: str
@@ -2827,7 +2827,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def InputImage(self):
-        """线稿图 Base64 数据。
+        r"""线稿图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 图片限制：黑白线稿图片，单边分辨率小于5000且大于128（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -2840,7 +2840,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def InputUrl(self):
-        """线稿图 Url。
+        r"""线稿图 Url。
 Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 图片限制：黑白线稿图片，单边分辨率小于5000且大于128（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -2853,7 +2853,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -2868,7 +2868,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -2880,7 +2880,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
         :rtype: str
         """
         return self._RspImgType
@@ -2910,7 +2910,7 @@ Base64 和 Url 必须提供一个，如果都提供以Url 为准。
 
 
 class SketchToImageResponse(AbstractModel):
-    """SketchToImage返回参数结构体
+    r"""SketchToImage返回参数结构体
 
     """
 
@@ -2928,7 +2928,7 @@ class SketchToImageResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -2941,7 +2941,7 @@ class SketchToImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2957,7 +2957,7 @@ class SketchToImageResponse(AbstractModel):
 
 
 class SubmitDrawPortraitJobRequest(AbstractModel):
-    """SubmitDrawPortraitJob请求参数结构体
+    r"""SubmitDrawPortraitJob请求参数结构体
 
     """
 
@@ -2998,7 +2998,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def ModelId(self):
-        """写真模型 ID。
+        r"""写真模型 ID。
 
         :rtype: str
         """
@@ -3010,7 +3010,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def StyleId(self):
-        """写真风格模板。
+        r"""写真风格模板。
 请在[ AI 写真风格列表](https://cloud.tencent.com/document/product/1668/105740) 中选择期望的风格，传入风格编号。
         :rtype: str
         """
@@ -3022,7 +3022,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def ImageNum(self):
-        """本次生成的图片数量，取值范围[1,4]
+        r"""本次生成的图片数量，取值范围[1,4]
         :rtype: int
         """
         return self._ImageNum
@@ -3033,7 +3033,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。 
+        r"""为生成结果图添加标识的开关，默认为1。 
 1：添加标识。
  0：不添加标识。 
 其他数值：默认按1处理。 
@@ -3048,7 +3048,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def LogoParam(self):
-        """标识内容设置。 
+        r"""标识内容设置。 
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -3060,7 +3060,7 @@ uhd：超清版，分辨率2048:2560
 
     @property
     def Definition(self):
-        """清晰度，支持以下选项：
+        r"""清晰度，支持以下选项：
 sd：基础版，分辨率512:640
 hd：高清畅享版，分辨率1024:1280
 hdpro：高清优享版，分辨率1024:1280（推荐）
@@ -3096,7 +3096,7 @@ uhd：超清版，分辨率2048:2560
 
 
 class SubmitDrawPortraitJobResponse(AbstractModel):
-    """SubmitDrawPortraitJob返回参数结构体
+    r"""SubmitDrawPortraitJob返回参数结构体
 
     """
 
@@ -3113,7 +3113,7 @@ class SubmitDrawPortraitJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """提交生成写真图片任务 ID。
+        r"""提交生成写真图片任务 ID。
 
         :rtype: str
         """
@@ -3125,7 +3125,7 @@ class SubmitDrawPortraitJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3141,7 +3141,7 @@ class SubmitDrawPortraitJobResponse(AbstractModel):
 
 
 class SubmitGlamPicJobRequest(AbstractModel):
-    """SubmitGlamPicJob请求参数结构体
+    r"""SubmitGlamPicJob请求参数结构体
 
     """
 
@@ -3191,7 +3191,7 @@ x4：4倍超分
 
     @property
     def TemplateUrl(self):
-        """美照模板图 URL。
+        r"""美照模板图 URL。
 图片限制：模板图中最多出现5张人脸，单边分辨率大于300，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
         """
@@ -3203,7 +3203,7 @@ x4：4倍超分
 
     @property
     def FaceInfos(self):
-        """用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
+        r"""用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，仅支持单人照。
 模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
 图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
@@ -3217,7 +3217,7 @@ x4：4倍超分
 
     @property
     def Num(self):
-        """美照生成数量。
+        r"""美照生成数量。
 支持1 ~ 4张，默认生成4张。
         :rtype: int
         """
@@ -3229,7 +3229,7 @@ x4：4倍超分
 
     @property
     def Style(self):
-        """美照生成风格。
+        r"""美照生成风格。
 仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
 多人美照只支持 balanced 一种风格，该参数不生效。
 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>textured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
@@ -3243,7 +3243,7 @@ x4：4倍超分
 
     @property
     def Similarity(self):
-        """相似度系数，越高越像用户图。
+        r"""相似度系数，越高越像用户图。
 取值范围[0, 1]，默认为0.6。
         :rtype: float
         """
@@ -3255,7 +3255,7 @@ x4：4倍超分
 
     @property
     def Clarity(self):
-        """超分选项，默认不做超分，可选开启。
+        r"""超分选项，默认不做超分，可选开启。
 x2：2倍超分
 x4：4倍超分
         :rtype: str
@@ -3268,7 +3268,7 @@ x4：4倍超分
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -3283,7 +3283,7 @@ x4：4倍超分
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -3321,7 +3321,7 @@ x4：4倍超分
 
 
 class SubmitGlamPicJobResponse(AbstractModel):
-    """SubmitGlamPicJob返回参数结构体
+    r"""SubmitGlamPicJob返回参数结构体
 
     """
 
@@ -3337,7 +3337,7 @@ class SubmitGlamPicJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -3348,7 +3348,7 @@ class SubmitGlamPicJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3364,7 +3364,7 @@ class SubmitGlamPicJobResponse(AbstractModel):
 
 
 class SubmitMemeJobRequest(AbstractModel):
-    """SubmitMemeJob请求参数结构体
+    r"""SubmitMemeJob请求参数结构体
 
     """
 
@@ -3416,7 +3416,7 @@ false：不裁剪过长的头发。
 
     @property
     def Pose(self):
-        """表情模板。
+        r"""表情模板。
 请在 [表情动图模板列表](https://cloud.tencent.com/document/product/1668/115327)  中选择期望的模板，传入 Pose 名称。
         :rtype: str
         """
@@ -3428,7 +3428,7 @@ false：不裁剪过长的头发。
 
     @property
     def InputImage(self):
-        """人像参考图 Base64 数据。
+        r"""人像参考图 Base64 数据。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -3441,7 +3441,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def InputUrl(self):
-        """人像参考图 Url。
+        r"""人像参考图 Url。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :rtype: str
@@ -3454,7 +3454,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Resolution(self):
-        """生成分辨率。
+        r"""生成分辨率。
 真人类型支持256、512，默认为256，
 卡通类型仅支持512。
         :rtype: int
@@ -3467,7 +3467,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Text(self):
-        """自定义文案。
+        r"""自定义文案。
 仅对真人类型的 Pose 生效，将在生成的表情动图中显示指定的文字。如果传入的字符串长度大于10，只截取前10个显示。
 如果不传，默认使用自带的文案。
 如果 text = "" 空字符串，代表不在表情动图中添加文案。
@@ -3481,7 +3481,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def Haircut(self):
-        """头发遮罩开关。
+        r"""头发遮罩开关。
 true：裁剪过长的头发。
 false：不裁剪过长的头发。
 仅对卡通类型的 Pose 生效，默认为 false。
@@ -3495,7 +3495,7 @@ false：不裁剪过长的头发。
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -3510,7 +3510,7 @@ false：不裁剪过长的头发。
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -3543,7 +3543,7 @@ false：不裁剪过长的头发。
 
 
 class SubmitMemeJobResponse(AbstractModel):
-    """SubmitMemeJob返回参数结构体
+    r"""SubmitMemeJob返回参数结构体
 
     """
 
@@ -3559,7 +3559,7 @@ class SubmitMemeJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._JobId
@@ -3570,7 +3570,7 @@ class SubmitMemeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3586,7 +3586,7 @@ class SubmitMemeJobResponse(AbstractModel):
 
 
 class SubmitTextToImageProJobRequest(AbstractModel):
-    """SubmitTextToImageProJob请求参数结构体
+    r"""SubmitTextToImageProJob请求参数结构体
 
     """
 
@@ -3629,7 +3629,7 @@ engine2
 
     @property
     def Prompt(self):
-        """文本描述。 
+        r"""文本描述。 
 算法将根据输入的文本智能生成与之相关的图像。 
 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
         :rtype: str
@@ -3642,7 +3642,7 @@ engine2
 
     @property
     def Style(self):
-        """绘画风格。
+        r"""绘画风格。
 请在 [文生图（高级版）风格列表](https://cloud.tencent.com/document/product/1668/104567) 中选择期望的风格，传入风格编号。
 不传默认不指定风格。
         :rtype: str
@@ -3655,7 +3655,7 @@ engine2
 
     @property
     def Resolution(self):
-        """生成图分辨率。
+        r"""生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
         :rtype: str
         """
@@ -3667,7 +3667,7 @@ engine2
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加显式水印标识的开关，默认为1。  
+        r"""为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
 其他数值：默认按1处理。  
@@ -3682,7 +3682,7 @@ engine2
 
     @property
     def Engine(self):
-        """文生图模型，默认使用engine1。
+        r"""文生图模型，默认使用engine1。
 取值：
 engine1
 engine2
@@ -3696,7 +3696,7 @@ engine2
 
     @property
     def Revise(self):
-        """prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+        r"""prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
@@ -3727,7 +3727,7 @@ engine2
 
 
 class SubmitTextToImageProJobResponse(AbstractModel):
-    """SubmitTextToImageProJob返回参数结构体
+    r"""SubmitTextToImageProJob返回参数结构体
 
     """
 
@@ -3743,7 +3743,7 @@ class SubmitTextToImageProJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务 ID。
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -3754,7 +3754,7 @@ class SubmitTextToImageProJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3770,7 +3770,7 @@ class SubmitTextToImageProJobResponse(AbstractModel):
 
 
 class SubmitTrainPortraitModelJobRequest(AbstractModel):
-    """SubmitTrainPortraitModelJob请求参数结构体
+    r"""SubmitTrainPortraitModelJob请求参数结构体
 
     """
 
@@ -3785,7 +3785,7 @@ class SubmitTrainPortraitModelJobRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """在上传写真训练图片时指定的写真模型 ID。 
+        r"""在上传写真训练图片时指定的写真模型 ID。 
 每个 AI 写真模型自训练完成起1年内有效，有效期内可使用模型生成图片，期满后需要重新训练模型。
 
         :rtype: str
@@ -3810,7 +3810,7 @@ class SubmitTrainPortraitModelJobRequest(AbstractModel):
 
 
 class SubmitTrainPortraitModelJobResponse(AbstractModel):
-    """SubmitTrainPortraitModelJob返回参数结构体
+    r"""SubmitTrainPortraitModelJob返回参数结构体
 
     """
 
@@ -3823,7 +3823,7 @@ class SubmitTrainPortraitModelJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3838,7 +3838,7 @@ class SubmitTrainPortraitModelJobResponse(AbstractModel):
 
 
 class TextToImageLiteRequest(AbstractModel):
-    """TextToImageLite请求参数结构体
+    r"""TextToImageLite请求参数结构体
 
     """
 
@@ -3882,7 +3882,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """文本描述。将根据输入的文本智能生成与之相关的图像。
+        r"""文本描述。将根据输入的文本智能生成与之相关的图像。
 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
         :rtype: str
         """
@@ -3894,7 +3894,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        """反向提示词。 减少生成结果中出现描述内容。
+        r"""反向提示词。 减少生成结果中出现描述内容。
 推荐使用中文。最多可传1024个 utf-8 字符。
         :rtype: str
         """
@@ -3906,7 +3906,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """生成图分辨率，默认1024:1024。
+        r"""生成图分辨率，默认1024:1024。
 支持的图像宽高比例: 1:1，3:4，4:3，9:16，16:9。
 支持的长边分辨率: 160，200，225，258，512，520，608，768，1024，1080，1280，1600，1620，1920，2048，2400，2560，2592，3440，3840，4096。
         :rtype: str
@@ -3919,7 +3919,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Seed(self):
-        """随机种子，默认随机。
+        r"""随机种子，默认随机。
 0：随机种子生成。
 不传：随机种子生成。
 正数：固定种子生成。
@@ -3934,7 +3934,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -3949,7 +3949,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -3961,7 +3961,7 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -3992,7 +3992,7 @@ class TextToImageLiteRequest(AbstractModel):
 
 
 class TextToImageLiteResponse(AbstractModel):
-    """TextToImageLite返回参数结构体
+    r"""TextToImageLite返回参数结构体
 
     """
 
@@ -4013,7 +4013,7 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -4026,7 +4026,7 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def Seed(self):
-        """Seed
+        r"""Seed
         :rtype: int
         """
         return self._Seed
@@ -4037,7 +4037,7 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4054,7 +4054,7 @@ class TextToImageLiteResponse(AbstractModel):
 
 
 class TextToImageRapidRequest(AbstractModel):
-    """TextToImageRapid请求参数结构体
+    r"""TextToImageRapid请求参数结构体
 
     """
 
@@ -4136,7 +4136,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        """文本描述。
+        r"""文本描述。
 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
         :rtype: str
@@ -4149,7 +4149,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """生成图分辨率，默认1024:1024。
+        r"""生成图分辨率，默认1024:1024。
 支持的图像宽高比例: 1:1，3:4，4:3，9:16，16:9。
 支持的长边分辨率: 160，200，225，258，512，520，608，768，1024，1080，1280，1600，1620，1920，2048，2400，2560，2592，3440，3840，4096。
         :rtype: str
@@ -4162,7 +4162,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def Seed(self):
-        """随机种子，默认随机。
+        r"""随机种子，默认随机。
 0：随机种子生成。
 不传：随机种子生成。
 正数：固定种子生成。
@@ -4177,7 +4177,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def Image(self):
-        """参考图。
+        r"""参考图。
 
 - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 - 当传入Image参数时，Style和Resolution参数不生效，输出图分辨率将保持Image传入图分辨率。
@@ -4192,7 +4192,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def Style(self):
-        """生成的图片风格，参考值：
+        r"""生成的图片风格，参考值：
 
 1：宫崎骏风格；
 2：新海诚风格；
@@ -4234,7 +4234,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成结果图添加标识的开关，默认为1。
+        r"""为生成结果图添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -4249,7 +4249,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
@@ -4261,7 +4261,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -4295,7 +4295,7 @@ class TextToImageRapidRequest(AbstractModel):
 
 
 class TextToImageRapidResponse(AbstractModel):
-    """TextToImageRapid返回参数结构体
+    r"""TextToImageRapid返回参数结构体
 
     """
 
@@ -4316,7 +4316,7 @@ class TextToImageRapidResponse(AbstractModel):
 
     @property
     def ResultImage(self):
-        """根据入参 RspImgType 填入不同，返回不同的内容。
+        r"""根据入参 RspImgType 填入不同，返回不同的内容。
 如果传入 base64 则返回生成图 Base64 编码。
 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :rtype: str
@@ -4329,7 +4329,7 @@ class TextToImageRapidResponse(AbstractModel):
 
     @property
     def Seed(self):
-        """Seed
+        r"""Seed
         :rtype: int
         """
         return self._Seed
@@ -4340,7 +4340,7 @@ class TextToImageRapidResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4357,7 +4357,7 @@ class TextToImageRapidResponse(AbstractModel):
 
 
 class UploadTrainPortraitImagesRequest(AbstractModel):
-    """UploadTrainPortraitImages请求参数结构体
+    r"""UploadTrainPortraitImages请求参数结构体
 
     """
 
@@ -4397,7 +4397,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """写真模型 ID。由英文大小写字母、数字及下划线组成。
+        r"""写真模型 ID。由英文大小写字母、数字及下划线组成。
 用于唯一标识一个写真模型，一个写真模型只能用于一个人物的写真图片生成。
         :rtype: str
         """
@@ -4409,7 +4409,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
     @property
     def BaseUrl(self):
-        """写真模型训练用的基础图像 URL，用于固定写真模型可生成的人物。
+        r"""写真模型训练用的基础图像 URL，用于固定写真模型可生成的人物。
 图片数量：1张。
 图片内容：单人，脸部清晰。
 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
@@ -4424,7 +4424,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
     @property
     def Urls(self):
-        """写真模型训练用的图像 URL 列表，仅常规训练模式需要上传。
+        r"""写真模型训练用的图像 URL 列表，仅常规训练模式需要上传。
 图片数量：19 - 24 张。
 图片内容：单人，脸部清晰，和基础图像中的人物为同一人。
 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
@@ -4438,7 +4438,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """训练图像质量过滤开关配置。
+        r"""训练图像质量过滤开关配置。
 支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡的过滤，默认开启以上过滤。
 如果训练图像内包含多人脸或无人脸、和 Base 人像不为同一人也将被过滤，不可关闭该过滤条件。
 建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图像进行训练。
@@ -4452,7 +4452,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
     @property
     def TrainMode(self):
-        """训练模式。
+        r"""训练模式。
 默认使用常规训练模式。如果使用快速训练模式和免训练模式，只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。
 0：常规训练模式，上传多张图片用于模型训练，完成训练后可生成写真图片。
 1：快速训练模式，仅需上传1张图片用于模型训练，训练速度更快，完成训练后可生成写真图片。
@@ -4485,7 +4485,7 @@ class UploadTrainPortraitImagesRequest(AbstractModel):
 
 
 class UploadTrainPortraitImagesResponse(AbstractModel):
-    """UploadTrainPortraitImages返回参数结构体
+    r"""UploadTrainPortraitImages返回参数结构体
 
     """
 
@@ -4501,7 +4501,7 @@ class UploadTrainPortraitImagesResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
-        """用于提示对应上传的Urls训练图片是否符合要求，如果未通过需要重新上传。如果基础图像不符合要求会直接通过ErrorCode提示。如果您选择了快速模式，该参数返回为空数组。
+        r"""用于提示对应上传的Urls训练图片是否符合要求，如果未通过需要重新上传。如果基础图像不符合要求会直接通过ErrorCode提示。如果您选择了快速模式，该参数返回为空数组。
         :rtype: list of str
         """
         return self._ResultDetails
@@ -4512,7 +4512,7 @@ class UploadTrainPortraitImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

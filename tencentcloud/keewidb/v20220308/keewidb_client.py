@@ -27,7 +27,7 @@ class KeewidbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+        r"""本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.AssociateSecurityGroupsRequest`
@@ -50,7 +50,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ChangeInstanceMaster(self, request):
-        """本接口（ChangeInstanceMaster）用于将副本节点提升为主节点。
+        r"""本接口（ChangeInstanceMaster）用于将副本节点提升为主节点。
 
         :param request: Request instance for ChangeInstanceMaster.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ChangeInstanceMasterRequest`
@@ -73,7 +73,7 @@ class KeewidbClient(AbstractClient):
 
 
     def CleanUpInstance(self, request):
-        """本接口（CleanUpInstance）用于立即下线回收站已隔离的实例。
+        r"""本接口（CleanUpInstance）用于立即下线回收站已隔离的实例。
 
         :param request: Request instance for CleanUpInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.CleanUpInstanceRequest`
@@ -96,7 +96,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ClearInstance(self, request):
-        """本接口（ClearInstance）用于清空实例数据。
+        r"""本接口（ClearInstance）用于清空实例数据。
         > **说明**：在清空数据流程中，系统将自动进行数据备份，耗时较长，请您耐心等待并提前做好时间规划。
 
         :param request: Request instance for ClearInstance.
@@ -120,7 +120,7 @@ class KeewidbClient(AbstractClient):
 
 
     def CreateBackupManually(self, request):
-        """手动发起备份
+        r"""手动发起备份
 
         :param request: Request instance for CreateBackupManually.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.CreateBackupManuallyRequest`
@@ -143,7 +143,7 @@ class KeewidbClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """创建数据库实例
+        r"""创建数据库实例
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.CreateInstancesRequest`
@@ -166,7 +166,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeAutoBackupConfig(self, request):
-        """本接口（DescribeAutoBackupConfig）用于获取自动备份配置。
+        r"""本接口（DescribeAutoBackupConfig）用于获取自动备份配置。
 
         :param request: Request instance for DescribeAutoBackupConfig.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeAutoBackupConfigRequest`
@@ -189,7 +189,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeConnectionConfig(self, request):
-        """本接口（DescribeConnectionConfig）用于查询实例连接配置，包括出流量和入流量带宽、最大连接数限制。
+        r"""本接口（DescribeConnectionConfig）用于查询实例连接配置，包括出流量和入流量带宽、最大连接数限制。
 
         :param request: Request instance for DescribeConnectionConfig.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeConnectionConfigRequest`
@@ -212,7 +212,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+        r"""本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeDBSecurityGroupsRequest`
@@ -235,7 +235,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceBackups(self, request):
-        """本接口（DescribeInstanceBackups）用于查询实例全量备份列表。
+        r"""本接口（DescribeInstanceBackups）用于查询实例全量备份列表。
 
         :param request: Request instance for DescribeInstanceBackups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceBackupsRequest`
@@ -258,7 +258,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceBinlogs(self, request):
-        """本接口（DescribeInstanceBinlogs）用于查询增量备份列表。
+        r"""本接口（DescribeInstanceBinlogs）用于查询增量备份列表。
 
         :param request: Request instance for DescribeInstanceBinlogs.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceBinlogsRequest`
@@ -281,7 +281,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceDealDetail(self, request):
-        """本接口（DescribeInstanceDealDetail）用于查询预付费订单信息。
+        r"""本接口（DescribeInstanceDealDetail）用于查询预付费订单信息。
 
         :param request: Request instance for DescribeInstanceDealDetail.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceDealDetailRequest`
@@ -304,7 +304,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceNodeInfo(self, request):
-        """本接口（DescribeInstanceNodeInfo）查询实例节点信息。
+        r"""本接口（DescribeInstanceNodeInfo）查询实例节点信息。
 
         :param request: Request instance for DescribeInstanceNodeInfo.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceNodeInfoRequest`
@@ -327,7 +327,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """本接口（DescribeInstanceParamRecords）查询参数配置修改历史列表。
+        r"""本接口（DescribeInstanceParamRecords）查询参数配置修改历史列表。
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceParamRecordsRequest`
@@ -350,7 +350,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """本接口（DescribeInstanceParams）用于查询实例的参数列表。
+        r"""本接口（DescribeInstanceParams）用于查询实例的参数列表。
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceParamsRequest`
@@ -373,7 +373,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstanceReplicas(self, request):
-        """本接口（DescribeInstanceReplicas）用于获取实例副本节点信息。
+        r"""本接口（DescribeInstanceReplicas）用于获取实例副本节点信息。
 
         :param request: Request instance for DescribeInstanceReplicas.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceReplicasRequest`
@@ -396,7 +396,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """本接口（DescribeInstances）可以根据地域、网络、实例id、标签、计费方式等条件，搜索查询实例列表。
+        r"""本接口（DescribeInstances）可以根据地域、网络、实例id、标签、计费方式等条件，搜索查询实例列表。
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstancesRequest`
@@ -419,7 +419,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeMaintenanceWindow(self, request):
-        """本接口（DescribeMaintenanceWindow）用于查询实例维护时间窗。
+        r"""本接口（DescribeMaintenanceWindow）用于查询实例维护时间窗。
 
         :param request: Request instance for DescribeMaintenanceWindow.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeMaintenanceWindowRequest`
@@ -442,7 +442,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeProductInfo(self, request):
-        """本接口查询指定可用区和实例类型下keewidb 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
+        r"""本接口查询指定可用区和实例类型下keewidb 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
 
         :param request: Request instance for DescribeProductInfo.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeProductInfoRequest`
@@ -465,7 +465,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+        r"""本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeProjectSecurityGroupsRequest`
@@ -488,7 +488,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeProxySlowLog(self, request):
-        """本接口（DescribeProxySlowLog）用于查询代理（Proxy）慢日志。
+        r"""本接口（DescribeProxySlowLog）用于查询代理（Proxy）慢日志。
 
         :param request: Request instance for DescribeProxySlowLog.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeProxySlowLogRequest`
@@ -511,7 +511,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeTaskInfo(self, request):
-        """本接口（DescribeTaskInfo）用于查询异步任务结果。
+        r"""本接口（DescribeTaskInfo）用于查询异步任务结果。
 
         :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeTaskInfoRequest`
@@ -534,7 +534,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeTaskList(self, request):
-        """本接口（DescribeTaskList）用于查询任务列表信息。
+        r"""本接口（DescribeTaskList）用于查询任务列表信息。
 
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeTaskListRequest`
@@ -557,7 +557,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DescribeTendisSlowLog(self, request):
-        """本接口（DescribeTendisSlowLog）用于查询实例慢日志。
+        r"""本接口（DescribeTendisSlowLog）用于查询实例慢日志。
 
         :param request: Request instance for DescribeTendisSlowLog.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeTendisSlowLogRequest`
@@ -580,7 +580,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DestroyPostpaidInstance(self, request):
-        """本接口（DestroyPostpaidInstance）用于退还按量计费实例。
+        r"""本接口（DestroyPostpaidInstance）用于退还按量计费实例。
 
         :param request: Request instance for DestroyPostpaidInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DestroyPostpaidInstanceRequest`
@@ -603,7 +603,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DestroyPrepaidInstance(self, request):
-        """本接口（DestroyPrepaidInstance）用于退还包年包月计费实例。
+        r"""本接口（DestroyPrepaidInstance）用于退还包年包月计费实例。
 
         :param request: Request instance for DestroyPrepaidInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DestroyPrepaidInstanceRequest`
@@ -626,7 +626,7 @@ class KeewidbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+        r"""本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.DisassociateSecurityGroupsRequest`
@@ -649,7 +649,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyAutoBackupConfig(self, request):
-        """本接口（ModifyAutoBackupConfig）用于修改自动备份配置。
+        r"""本接口（ModifyAutoBackupConfig）用于修改自动备份配置。
 
         :param request: Request instance for ModifyAutoBackupConfig.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyAutoBackupConfigRequest`
@@ -672,7 +672,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyConnectionConfig(self, request):
-        """本接口（ModifyConnectionConfig）用于修改实例的连接配置，包括带宽和最大连接数。
+        r"""本接口（ModifyConnectionConfig）用于修改实例的连接配置，包括带宽和最大连接数。
 
         :param request: Request instance for ModifyConnectionConfig.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyConnectionConfigRequest`
@@ -695,7 +695,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+        r"""本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -718,7 +718,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """本接口（ModifyInstance）用于修改实例相关信息。
+        r"""本接口（ModifyInstance）用于修改实例相关信息。
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyInstanceRequest`
@@ -741,7 +741,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyInstanceParams(self, request):
-        """本接口（ModifyInstanceParams）用于修改实例参数配置。
+        r"""本接口（ModifyInstanceParams）用于修改实例参数配置。
 
         :param request: Request instance for ModifyInstanceParams.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyInstanceParamsRequest`
@@ -764,7 +764,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyMaintenanceWindow(self, request):
-        """本接口（ModifyMaintenanceWindow）修改实例维护时间窗时间。
+        r"""本接口（ModifyMaintenanceWindow）修改实例维护时间窗时间。
 
         :param request: Request instance for ModifyMaintenanceWindow.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyMaintenanceWindowRequest`
@@ -787,7 +787,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ModifyNetworkConfig(self, request):
-        """本接口（ModifyNetworkConfig）用于修改实例网络配置。
+        r"""本接口（ModifyNetworkConfig）用于修改实例网络配置。
 
         :param request: Request instance for ModifyNetworkConfig.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ModifyNetworkConfigRequest`
@@ -810,7 +810,7 @@ class KeewidbClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """本接口（RenewInstance）用于为包年包月计费实例续费。
+        r"""本接口（RenewInstance）用于为包年包月计费实例续费。
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.RenewInstanceRequest`
@@ -833,7 +833,7 @@ class KeewidbClient(AbstractClient):
 
 
     def ResetPassword(self, request):
-        """本接口（ResetPassword）用于重置数据库访问密码。
+        r"""本接口（ResetPassword）用于重置数据库访问密码。
 
         :param request: Request instance for ResetPassword.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.ResetPasswordRequest`
@@ -856,7 +856,7 @@ class KeewidbClient(AbstractClient):
 
 
     def StartUpInstance(self, request):
-        """本接口（StartUpInstance）用于按量计费实例解隔离
+        r"""本接口（StartUpInstance）用于按量计费实例解隔离
 
         :param request: Request instance for StartUpInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.StartUpInstanceRequest`
@@ -879,7 +879,7 @@ class KeewidbClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """本接口（UpgradeInstance）用于对实例进行配置变更。
+        r"""本接口（UpgradeInstance）用于对实例进行配置变更。
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.keewidb.v20220308.models.UpgradeInstanceRequest`

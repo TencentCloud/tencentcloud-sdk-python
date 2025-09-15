@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DisplayInfo(AbstractModel):
-    """同传结果数据
+    r"""同传结果数据
 
     """
 
@@ -53,7 +53,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def SeId(self):
-        """句子 ID
+        r"""句子 ID
         :rtype: str
         """
         return self._SeId
@@ -64,7 +64,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def SeVer(self):
-        """句子版本号
+        r"""句子版本号
         :rtype: int
         """
         return self._SeVer
@@ -75,7 +75,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def SourceText(self):
-        """识别结果
+        r"""识别结果
         :rtype: str
         """
         return self._SourceText
@@ -86,7 +86,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def TargetText(self):
-        """ 翻译结果
+        r""" 翻译结果
         :rtype: str
         """
         return self._TargetText
@@ -97,7 +97,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """句子开始时间
+        r"""句子开始时间
         :rtype: int
         """
         return self._StartTime
@@ -108,7 +108,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """句子结束时间
+        r"""句子结束时间
         :rtype: int
         """
         return self._EndTime
@@ -119,7 +119,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def IsEnd(self):
-        """ 当前句子是否已结束
+        r""" 当前句子是否已结束
         :rtype: bool
         """
         return self._IsEnd
@@ -130,7 +130,7 @@ class DisplayInfo(AbstractModel):
 
     @property
     def Audio(self):
-        """base64编码的wav/mp3音频数据
+        r"""base64编码的wav/mp3音频数据
         :rtype: str
         """
         return self._Audio
@@ -160,7 +160,7 @@ class DisplayInfo(AbstractModel):
 
 
 class TTS(AbstractModel):
-    """同传TTS请求参数
+    r"""同传TTS请求参数
 
     """
 
@@ -199,7 +199,7 @@ class TTS(AbstractModel):
 
     @property
     def Codec(self):
-        """返回音频格式，可取值：wav，mp3，pcm
+        r"""返回音频格式，可取值：wav，mp3，pcm
         :rtype: str
         """
         return self._Codec
@@ -210,7 +210,7 @@ class TTS(AbstractModel):
 
     @property
     def VoiceType(self):
-        """音色 ID，只包括标准音色（注，日文只有一个固定音色）。
+        r"""音色 ID，只包括标准音色（注，日文只有一个固定音色）。
 完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
         :rtype: int
         """
@@ -222,7 +222,7 @@ class TTS(AbstractModel):
 
     @property
     def Volume(self):
-        """音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        r"""音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
         :rtype: float
         """
         return self._Volume
@@ -233,7 +233,7 @@ class TTS(AbstractModel):
 
     @property
     def Speed(self):
-        """语速，范围：[-2，6]，分别对应不同语速：
+        r"""语速，范围：[-2，6]，分别对应不同语速：
 
 - -2代表0.6倍
 - -1代表0.8倍
@@ -254,7 +254,7 @@ class TTS(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频采样率：
+        r"""音频采样率：
 
 - 16000：16k（默认）
 - 8000：8k
@@ -284,7 +284,7 @@ class TTS(AbstractModel):
 
 
 class TongChuanDisplayRequest(AbstractModel):
-    """TongChuanDisplay请求参数结构体
+    r"""TongChuanDisplay请求参数结构体
 
     """
 
@@ -303,7 +303,7 @@ class TongChuanDisplayRequest(AbstractModel):
 
     @property
     def SessionUuid(self):
-        """一段完整的语音对应一个SessionUuid
+        r"""一段完整的语音对应一个SessionUuid
         :rtype: str
         """
         return self._SessionUuid
@@ -314,7 +314,7 @@ class TongChuanDisplayRequest(AbstractModel):
 
     @property
     def IsNew(self):
-        """句子排序方式，1-由新到旧
+        r"""句子排序方式，1-由新到旧
         :rtype: int
         """
         return self._IsNew
@@ -325,7 +325,7 @@ class TongChuanDisplayRequest(AbstractModel):
 
     @property
     def SeMax(self):
-        """最多返回几句，目前只支持 5 条数据
+        r"""最多返回几句，目前只支持 5 条数据
         :rtype: int
         """
         return self._SeMax
@@ -350,7 +350,7 @@ class TongChuanDisplayRequest(AbstractModel):
 
 
 class TongChuanDisplayResponse(AbstractModel):
-    """TongChuanDisplay返回参数结构体
+    r"""TongChuanDisplay返回参数结构体
 
     """
 
@@ -366,7 +366,7 @@ class TongChuanDisplayResponse(AbstractModel):
 
     @property
     def List(self):
-        """同传结果数组
+        r"""同传结果数组
         :rtype: list of DisplayInfo
         """
         return self._List
@@ -377,7 +377,7 @@ class TongChuanDisplayResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -398,7 +398,7 @@ class TongChuanDisplayResponse(AbstractModel):
 
 
 class TongChuanRecognizeRequest(AbstractModel):
-    """TongChuanRecognize请求参数结构体
+    r"""TongChuanRecognize请求参数结构体
 
     """
 
@@ -448,7 +448,7 @@ yue：粤语
 
     @property
     def SessionUuid(self):
-        """一段完整的语音对应一个SessionUuid
+        r"""一段完整的语音对应一个SessionUuid
         :rtype: str
         """
         return self._SessionUuid
@@ -459,7 +459,7 @@ yue：粤语
 
     @property
     def Source(self):
-        """源语言，支持：
+        r"""源语言，支持：
 zh：中文
 en：英语
 ja：日语
@@ -475,7 +475,7 @@ yue：粤语
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下
+        r"""目标语言，各源语言的目标语言支持列表如下
 <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
 <li>en（英语）：zh（中文）</li>
 <li>ja（日语）：zh（中文）</li>
@@ -491,7 +491,7 @@ yue：粤语
 
     @property
     def AudioFormat(self):
-        """语音编码类型，1-pcm
+        r"""语音编码类型，1-pcm
         :rtype: int
         """
         return self._AudioFormat
@@ -502,7 +502,7 @@ yue：粤语
 
     @property
     def Seq(self):
-        """语音分片的序号，从0开始
+        r"""语音分片的序号，从0开始
         :rtype: int
         """
         return self._Seq
@@ -513,7 +513,7 @@ yue：粤语
 
     @property
     def Utc(self):
-        """语音开始的时间戳
+        r"""语音开始的时间戳
         :rtype: int
         """
         return self._Utc
@@ -524,7 +524,7 @@ yue：粤语
 
     @property
     def IsEnd(self):
-        """是否最后一片语音分片，0-否，1-是
+        r"""是否最后一片语音分片，0-否，1-是
         :rtype: int
         """
         return self._IsEnd
@@ -535,7 +535,7 @@ yue：粤语
 
     @property
     def TranslateTime(self):
-        """翻译时机，0-不翻译 2-句子实时翻译
+        r"""翻译时机，0-不翻译 2-句子实时翻译
         :rtype: int
         """
         return self._TranslateTime
@@ -546,7 +546,7 @@ yue：粤语
 
     @property
     def Data(self):
-        """语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
+        r"""语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
         :rtype: str
         """
         return self._Data
@@ -557,7 +557,7 @@ yue：粤语
 
     @property
     def TTS(self):
-        """TTS播报控制参数	
+        r"""TTS播报控制参数	
         :rtype: :class:`tencentcloud.tsi.v20210325.models.TTS`
         """
         return self._TTS
@@ -591,7 +591,7 @@ yue：粤语
 
 
 class TongChuanRecognizeResponse(AbstractModel):
-    """TongChuanRecognize返回参数结构体
+    r"""TongChuanRecognize返回参数结构体
 
     """
 
@@ -604,7 +604,7 @@ class TongChuanRecognizeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -619,7 +619,7 @@ class TongChuanRecognizeResponse(AbstractModel):
 
 
 class TongChuanSyncRequest(AbstractModel):
-    """TongChuanSync请求参数结构体
+    r"""TongChuanSync请求参数结构体
 
     """
 
@@ -669,7 +669,7 @@ yue：粤语
 
     @property
     def SessionUuid(self):
-        """一段完整的语音对应一个SessionUuid
+        r"""一段完整的语音对应一个SessionUuid
         :rtype: str
         """
         return self._SessionUuid
@@ -680,7 +680,7 @@ yue：粤语
 
     @property
     def Source(self):
-        """源语言，支持：
+        r"""源语言，支持：
 zh：中文
 en：英语
 ja：日语
@@ -696,7 +696,7 @@ yue：粤语
 
     @property
     def Target(self):
-        """目标语言，各源语言的目标语言支持列表如下
+        r"""目标语言，各源语言的目标语言支持列表如下
 <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
 <li>en（英语）：zh（中文）</li>
 <li>ja（日语）：zh（中文）</li>
@@ -712,7 +712,7 @@ yue：粤语
 
     @property
     def AudioFormat(self):
-        """语音编码类型，1-pcm
+        r"""语音编码类型，1-pcm
         :rtype: int
         """
         return self._AudioFormat
@@ -723,7 +723,7 @@ yue：粤语
 
     @property
     def Seq(self):
-        """语音分片的序号，从0开始
+        r"""语音分片的序号，从0开始
         :rtype: int
         """
         return self._Seq
@@ -734,7 +734,7 @@ yue：粤语
 
     @property
     def Utc(self):
-        """语音开始的时间戳
+        r"""语音开始的时间戳
         :rtype: int
         """
         return self._Utc
@@ -745,7 +745,7 @@ yue：粤语
 
     @property
     def IsEnd(self):
-        """是否最后一片语音分片，0-否，1-是
+        r"""是否最后一片语音分片，0-否，1-是
         :rtype: int
         """
         return self._IsEnd
@@ -756,7 +756,7 @@ yue：粤语
 
     @property
     def TranslateTime(self):
-        """翻译时机，0-不翻译 2-句子实时翻译
+        r"""翻译时机，0-不翻译 2-句子实时翻译
         :rtype: int
         """
         return self._TranslateTime
@@ -767,7 +767,7 @@ yue：粤语
 
     @property
     def Data(self):
-        """语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
+        r"""语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
         :rtype: str
         """
         return self._Data
@@ -778,7 +778,7 @@ yue：粤语
 
     @property
     def TTS(self):
-        """TTS播报控制参数
+        r"""TTS播报控制参数
         :rtype: :class:`tencentcloud.tsi.v20210325.models.TTS`
         """
         return self._TTS
@@ -812,7 +812,7 @@ yue：粤语
 
 
 class TongChuanSyncResponse(AbstractModel):
-    """TongChuanSync返回参数结构体
+    r"""TongChuanSync返回参数结构体
 
     """
 
@@ -828,7 +828,7 @@ class TongChuanSyncResponse(AbstractModel):
 
     @property
     def List(self):
-        """同传结果数组
+        r"""同传结果数组
         :rtype: list of DisplayInfo
         """
         return self._List
@@ -839,7 +839,7 @@ class TongChuanSyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

@@ -27,7 +27,7 @@ class TourismClient(AbstractClient):
 
 
     def DescribeDrawResourceList(self, request):
-        """依据客户的Uin查询开通的资源列表
+        r"""依据客户的Uin查询开通的资源列表
 
         :param request: Request instance for DescribeDrawResourceList.
         :type request: :class:`tencentcloud.tourism.v20230215.models.DescribeDrawResourceListRequest`

@@ -27,7 +27,7 @@ class AcaClient(AbstractClient):
 
 
     def GetDrugIndications(self, request):
-        """药品适应症接口
+        r"""药品适应症接口
 
         :param request: Request instance for GetDrugIndications.
         :type request: :class:`tencentcloud.aca.v20210323.models.GetDrugIndicationsRequest`
@@ -50,7 +50,7 @@ class AcaClient(AbstractClient):
 
 
     def LoginHisTool(self, request):
-        """登录获取token
+        r"""登录获取token
 
         :param request: Request instance for LoginHisTool.
         :type request: :class:`tencentcloud.aca.v20210323.models.LoginHisToolRequest`
@@ -73,7 +73,7 @@ class AcaClient(AbstractClient):
 
 
     def LoginOutHisTool(self, request):
-        """登出
+        r"""登出
 
         :param request: Request instance for LoginOutHisTool.
         :type request: :class:`tencentcloud.aca.v20210323.models.LoginOutHisToolRequest`
@@ -96,7 +96,7 @@ class AcaClient(AbstractClient):
 
 
     def SmartDrugInfo(self, request):
-        """智能用药接口
+        r"""智能用药接口
 
         :param request: Request instance for SmartDrugInfo.
         :type request: :class:`tencentcloud.aca.v20210323.models.SmartDrugInfoRequest`
@@ -119,7 +119,7 @@ class AcaClient(AbstractClient):
 
 
     def SmartPredict(self, request):
-        """辅诊智能预测接口
+        r"""辅诊智能预测接口
 
         :param request: Request instance for SmartPredict.
         :type request: :class:`tencentcloud.aca.v20210323.models.SmartPredictRequest`
@@ -142,7 +142,7 @@ class AcaClient(AbstractClient):
 
 
     def SyncDepartment(self, request):
-        """用于院方科室管理，获取科室列表和状态、新增或修改科室信息、删除科室。
+        r"""用于院方科室管理，获取科室列表和状态、新增或修改科室信息、删除科室。
 
         :param request: Request instance for SyncDepartment.
         :type request: :class:`tencentcloud.aca.v20210323.models.SyncDepartmentRequest`
@@ -165,7 +165,7 @@ class AcaClient(AbstractClient):
 
 
     def SyncStandardDict(self, request):
-        """同步标准字典，如给药频次、给药途径、科室、诊断等
+        r"""同步标准字典，如给药频次、给药途径、科室、诊断等
 
         :param request: Request instance for SyncStandardDict.
         :type request: :class:`tencentcloud.aca.v20210323.models.SyncStandardDictRequest`
@@ -188,7 +188,7 @@ class AcaClient(AbstractClient):
 
 
     def UploadDrugs(self, request):
-        """药品同步，一次同步数据不要超过500个
+        r"""药品同步，一次同步数据不要超过500个
 
         :param request: Request instance for UploadDrugs.
         :type request: :class:`tencentcloud.aca.v20210323.models.UploadDrugsRequest`

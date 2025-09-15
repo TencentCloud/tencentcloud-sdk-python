@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
-    """DescribeAlarmNotifyHistories请求参数结构体
+    r"""DescribeAlarmNotifyHistories请求参数结构体
 
     """
 
@@ -50,7 +50,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        """监控类型
+        r"""监控类型
         :rtype: str
         """
         return self._MonitorType
@@ -61,7 +61,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def QueryBaseTime(self):
-        """起始时间点，unix秒级时间戳
+        r"""起始时间点，unix秒级时间戳
         :rtype: int
         """
         return self._QueryBaseTime
@@ -72,7 +72,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def QueryBeforeSeconds(self):
-        """从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
+        r"""从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
         :rtype: int
         """
         return self._QueryBeforeSeconds
@@ -83,7 +83,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def PageParams(self):
-        """分页参数
+        r"""分页参数
         :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNoParams`
         """
         return self._PageParams
@@ -94,7 +94,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """当监控类型为 MT_QCE 时候需要填写，归属的命名空间
+        r"""当监控类型为 MT_QCE 时候需要填写，归属的命名空间
         :rtype: str
         """
         return self._Namespace
@@ -105,7 +105,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """当监控类型为 MT_QCE 时候需要填写， 告警策略类型
+        r"""当监控类型为 MT_QCE 时候需要填写， 告警策略类型
         :rtype: str
         """
         return self._ModelName
@@ -116,7 +116,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """查询某个策略的通知历史
+        r"""查询某个策略的通知历史
         :rtype: str
         """
         return self._PolicyId
@@ -147,7 +147,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
 
 class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
-    """DescribeAlarmNotifyHistories返回参数结构体
+    r"""DescribeAlarmNotifyHistories返回参数结构体
 
     """
 
@@ -160,7 +160,7 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -175,7 +175,7 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
 
 class PageByNoParams(AbstractModel):
-    """分页请求参数
+    r"""分页请求参数
 
     """
 
@@ -193,7 +193,7 @@ class PageByNoParams(AbstractModel):
 
     @property
     def PerPage(self):
-        """每个分页的数量是多少
+        r"""每个分页的数量是多少
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -205,7 +205,7 @@ class PageByNoParams(AbstractModel):
 
     @property
     def PageNo(self):
-        """第几个分页，从1开始
+        r"""第几个分页，从1开始
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AttrItem(AbstractModel):
-    """通用属性
+    r"""通用属性
 
     Type 的枚举值
     text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
@@ -68,7 +68,7 @@ mp:小程序类型
 
     @property
     def Name(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._Name
@@ -79,7 +79,7 @@ mp:小程序类型
 
     @property
     def Value(self):
-        """字段值
+        r"""字段值
         :rtype: str
         """
         return self._Value
@@ -90,7 +90,7 @@ mp:小程序类型
 
     @property
     def Type(self):
-        """字段类型
+        r"""字段类型
 text:文本类型, 
 longtext:长文本类型, banner:单图片类型, image:多图片类型,
 video:视频类型,
@@ -105,7 +105,7 @@ mp:小程序类型
 
     @property
     def ReadOnly(self):
-        """只读
+        r"""只读
         :rtype: bool
         """
         return self._ReadOnly
@@ -116,7 +116,7 @@ mp:小程序类型
 
     @property
     def Hidden(self):
-        """扫码展示
+        r"""扫码展示
         :rtype: bool
         """
         return self._Hidden
@@ -127,7 +127,7 @@ mp:小程序类型
 
     @property
     def Values(self):
-        """多个值
+        r"""多个值
         :rtype: list of str
         """
         return self._Values
@@ -138,7 +138,7 @@ mp:小程序类型
 
     @property
     def Key(self):
-        """类型标识
+        r"""类型标识
         :rtype: str
         """
         return self._Key
@@ -149,7 +149,7 @@ mp:小程序类型
 
     @property
     def Ext(self):
-        """扩展字段
+        r"""扩展字段
         :rtype: str
         """
         return self._Ext
@@ -179,7 +179,7 @@ mp:小程序类型
 
 
 class AuthorizedTransferRequest(AbstractModel):
-    """AuthorizedTransfer请求参数结构体
+    r"""AuthorizedTransfer请求参数结构体
 
     """
 
@@ -192,7 +192,7 @@ class AuthorizedTransferRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
-        """业务加密入参。
+        r"""业务加密入参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
         return self._BusinessSecurityData
@@ -217,7 +217,7 @@ class AuthorizedTransferRequest(AbstractModel):
 
 
 class AuthorizedTransferResponse(AbstractModel):
-    """AuthorizedTransfer返回参数结构体
+    r"""AuthorizedTransfer返回参数结构体
 
     """
 
@@ -233,7 +233,7 @@ class AuthorizedTransferResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务出参。
+        r"""业务出参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
         """
         return self._Data
@@ -244,7 +244,7 @@ class AuthorizedTransferResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -262,7 +262,7 @@ class AuthorizedTransferResponse(AbstractModel):
 
 
 class Chain(AbstractModel):
-    """上链数据
+    r"""上链数据
 
     """
 
@@ -278,7 +278,7 @@ class Chain(AbstractModel):
 
     @property
     def Code(self):
-        """码url
+        r"""码url
         :rtype: str
         """
         return self._Code
@@ -289,7 +289,7 @@ class Chain(AbstractModel):
 
     @property
     def Data(self):
-        """上链数据
+        r"""上链数据
         :rtype: list of ChainValue
         """
         return self._Data
@@ -318,7 +318,7 @@ class Chain(AbstractModel):
 
 
 class ChainData(AbstractModel):
-    """上链数据
+    r"""上链数据
 
     """
 
@@ -337,7 +337,7 @@ class ChainData(AbstractModel):
 
     @property
     def BlockHash(self):
-        """区块hash
+        r"""区块hash
         :rtype: str
         """
         return self._BlockHash
@@ -348,7 +348,7 @@ class ChainData(AbstractModel):
 
     @property
     def BlockHeight(self):
-        """区块高度
+        r"""区块高度
         :rtype: str
         """
         return self._BlockHeight
@@ -359,7 +359,7 @@ class ChainData(AbstractModel):
 
     @property
     def BlockTime(self):
-        """区块时间
+        r"""区块时间
         :rtype: str
         """
         return self._BlockTime
@@ -384,7 +384,7 @@ class ChainData(AbstractModel):
 
 
 class ChainValue(AbstractModel):
-    """上链数据 key-value
+    r"""上链数据 key-value
 
     """
 
@@ -403,7 +403,7 @@ class ChainValue(AbstractModel):
 
     @property
     def Label(self):
-        """标题名字
+        r"""标题名字
         :rtype: str
         """
         return self._Label
@@ -414,7 +414,7 @@ class ChainValue(AbstractModel):
 
     @property
     def Type(self):
-        """类型，文字："text"，图片："image"
+        r"""类型，文字："text"，图片："image"
         :rtype: str
         """
         return self._Type
@@ -425,7 +425,7 @@ class ChainValue(AbstractModel):
 
     @property
     def Value(self):
-        """值，文字类型："abc"，图片类型：""/images/img.png"
+        r"""值，文字类型："abc"，图片类型：""/images/img.png"
         :rtype: str
         """
         return self._Value
@@ -450,7 +450,7 @@ class ChainValue(AbstractModel):
 
 
 class CodeBatch(AbstractModel):
-    """批次
+    r"""批次
 
     """
 
@@ -524,7 +524,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次号
+        r"""批次号
         :rtype: str
         """
         return self._BatchId
@@ -535,7 +535,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -546,7 +546,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def BatchCode(self):
-        """批次编码(未使用)
+        r"""批次编码(未使用)
         :rtype: str
         """
         return self._BatchCode
@@ -557,7 +557,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def CodeCnt(self):
-        """码数量
+        r"""码数量
         :rtype: int
         """
         return self._CodeCnt
@@ -568,7 +568,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def MerchantId(self):
-        """所属商户ID
+        r"""所属商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -579,7 +579,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -590,7 +590,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def BatchType(self):
-        """批次类型
+        r"""批次类型
         :rtype: int
         """
         return self._BatchType
@@ -601,7 +601,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -612,7 +612,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def MpTpl(self):
-        """微信模板
+        r"""微信模板
         :rtype: str
         """
         return self._MpTpl
@@ -623,7 +623,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def Status(self):
-        """批次状态 0: 未激活 1: 已激活 -1: 已冻结
+        r"""批次状态 0: 未激活 1: 已激活 -1: 已冻结
         :rtype: int
         """
         return self._Status
@@ -634,7 +634,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -645,7 +645,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -656,7 +656,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def MerchantName(self):
-        """所属商户名称
+        r"""所属商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -667,7 +667,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -680,7 +680,7 @@ class CodeBatch(AbstractModel):
     def Ext(self):
         warnings.warn("parameter `Ext` is deprecated", DeprecationWarning) 
 
-        """未使用
+        r"""未使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
@@ -694,7 +694,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def TplName(self):
-        """模板名称
+        r"""模板名称
         :rtype: str
         """
         return self._TplName
@@ -705,7 +705,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def Job(self):
-        """调度任务
+        r"""调度任务
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.Job`
         """
@@ -717,7 +717,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def ProductionDate(self):
-        """生产日期
+        r"""生产日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -729,7 +729,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期
+        r"""有效期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -741,7 +741,7 @@ class CodeBatch(AbstractModel):
 
     @property
     def Attrs(self):
-        """扩展属性
+        r"""扩展属性
         :rtype: list of AttrItem
         """
         return self._Attrs
@@ -792,7 +792,7 @@ class CodeBatch(AbstractModel):
 
 
 class CodeItem(AbstractModel):
-    """码类型
+    r"""码类型
 
     """
 
@@ -805,7 +805,7 @@ class CodeItem(AbstractModel):
 
     @property
     def Code(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._Code
@@ -828,7 +828,7 @@ class CodeItem(AbstractModel):
 
 
 class CodePack(AbstractModel):
-    """码包类型
+    r"""码包类型
 
     """
 
@@ -926,7 +926,7 @@ class CodePack(AbstractModel):
 
     @property
     def PackId(self):
-        """码id
+        r"""码id
         :rtype: str
         """
         return self._PackId
@@ -937,7 +937,7 @@ class CodePack(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业id
+        r"""企业id
         :rtype: int
         """
         return self._CorpId
@@ -948,7 +948,7 @@ class CodePack(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户id
+        r"""商户id
         :rtype: str
         """
         return self._MerchantId
@@ -959,7 +959,7 @@ class CodePack(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -970,7 +970,7 @@ class CodePack(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -981,7 +981,7 @@ class CodePack(AbstractModel):
 
     @property
     def Status(self):
-        """制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+        r"""制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
         :rtype: str
         """
         return self._Status
@@ -992,7 +992,7 @@ class CodePack(AbstractModel):
 
     @property
     def Log(self):
-        """执行日志
+        r"""执行日志
         :rtype: str
         """
         return self._Log
@@ -1003,7 +1003,7 @@ class CodePack(AbstractModel):
 
     @property
     def CreateUser(self):
-        """创建人
+        r"""创建人
         :rtype: str
         """
         return self._CreateUser
@@ -1014,7 +1014,7 @@ class CodePack(AbstractModel):
 
     @property
     def Amount(self):
-        """码数
+        r"""码数
         :rtype: int
         """
         return self._Amount
@@ -1025,7 +1025,7 @@ class CodePack(AbstractModel):
 
     @property
     def CodeLength(self):
-        """防伪码长度
+        r"""防伪码长度
         :rtype: int
         """
         return self._CodeLength
@@ -1036,7 +1036,7 @@ class CodePack(AbstractModel):
 
     @property
     def CodeType(self):
-        """码类型
+        r"""码类型
         :rtype: str
         """
         return self._CodeType
@@ -1047,7 +1047,7 @@ class CodePack(AbstractModel):
 
     @property
     def Cipher(self):
-        """是否暗码
+        r"""是否暗码
         :rtype: int
         """
         return self._Cipher
@@ -1058,7 +1058,7 @@ class CodePack(AbstractModel):
 
     @property
     def TextUrl(self):
-        """[弃用] 文字码地址，通过另一个接口查
+        r"""[弃用] 文字码地址，通过另一个接口查
         :rtype: str
         """
         return self._TextUrl
@@ -1069,7 +1069,7 @@ class CodePack(AbstractModel):
 
     @property
     def PackUrl(self):
-        """[弃用] 二维码地址，通过另一个接口查
+        r"""[弃用] 二维码地址，通过另一个接口查
         :rtype: str
         """
         return self._PackUrl
@@ -1080,7 +1080,7 @@ class CodePack(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名
+        r"""商户名
         :rtype: str
         """
         return self._MerchantName
@@ -1091,7 +1091,7 @@ class CodePack(AbstractModel):
 
     @property
     def RuleType(self):
-        """码规则类型 0: 默认, 1: 自定义
+        r"""码规则类型 0: 默认, 1: 自定义
         :rtype: int
         """
         return self._RuleType
@@ -1102,7 +1102,7 @@ class CodePack(AbstractModel):
 
     @property
     def CustomId(self):
-        """自定义码规则ID
+        r"""自定义码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -1113,7 +1113,7 @@ class CodePack(AbstractModel):
 
     @property
     def PackType(self):
-        """码包类型 0: 普通码包 1: 层级码包
+        r"""码包类型 0: 普通码包 1: 层级码包
         :rtype: int
         """
         return self._PackType
@@ -1124,7 +1124,7 @@ class CodePack(AbstractModel):
 
     @property
     def PackLevel(self):
-        """生码层级
+        r"""生码层级
         :rtype: int
         """
         return self._PackLevel
@@ -1135,7 +1135,7 @@ class CodePack(AbstractModel):
 
     @property
     def PackSpec(self):
-        """层级码配置
+        r"""层级码配置
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -1146,7 +1146,7 @@ class CodePack(AbstractModel):
 
     @property
     def ProductName(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._ProductName
@@ -1157,7 +1157,7 @@ class CodePack(AbstractModel):
 
     @property
     def ProductSpecification(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._ProductSpecification
@@ -1168,7 +1168,7 @@ class CodePack(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -1179,7 +1179,7 @@ class CodePack(AbstractModel):
 
     @property
     def RelateType(self):
-        """码关系是否预关联
+        r"""码关系是否预关联
 0:否, 1:是
         :rtype: int
         """
@@ -1191,7 +1191,7 @@ class CodePack(AbstractModel):
 
     @property
     def SceneCode(self):
-        """场景码
+        r"""场景码
         :rtype: int
         """
         return self._SceneCode
@@ -1202,7 +1202,7 @@ class CodePack(AbstractModel):
 
     @property
     def CodeRule(self):
-        """码规则
+        r"""码规则
         :rtype: str
         """
         return self._CodeRule
@@ -1213,7 +1213,7 @@ class CodePack(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """已使用码数
+        r"""已使用码数
         :rtype: int
         """
         return self._UsedAmount
@@ -1224,7 +1224,7 @@ class CodePack(AbstractModel):
 
     @property
     def SerialStart(self):
-        """开始流水号
+        r"""开始流水号
         :rtype: int
         """
         return self._SerialStart
@@ -1235,7 +1235,7 @@ class CodePack(AbstractModel):
 
     @property
     def SerialEnd(self):
-        """结束流水号
+        r"""结束流水号
         :rtype: int
         """
         return self._SerialEnd
@@ -1291,7 +1291,7 @@ class CodePack(AbstractModel):
 
 
 class CodePart(AbstractModel):
-    """码段配置
+    r"""码段配置
 
     """
 
@@ -1316,7 +1316,7 @@ class CodePart(AbstractModel):
 
     @property
     def Name(self):
-        """码段名称
+        r"""码段名称
         :rtype: str
         """
         return self._Name
@@ -1327,7 +1327,7 @@ class CodePart(AbstractModel):
 
     @property
     def Type(self):
-        """码段类型
+        r"""码段类型
         :rtype: str
         """
         return self._Type
@@ -1338,7 +1338,7 @@ class CodePart(AbstractModel):
 
     @property
     def Value(self):
-        """码段内容
+        r"""码段内容
         :rtype: str
         """
         return self._Value
@@ -1349,7 +1349,7 @@ class CodePart(AbstractModel):
 
     @property
     def Length(self):
-        """码段长度
+        r"""码段长度
         :rtype: int
         """
         return self._Length
@@ -1360,7 +1360,7 @@ class CodePart(AbstractModel):
 
     @property
     def Ext(self):
-        """扩展字段
+        r"""扩展字段
         :rtype: str
         """
         return self._Ext
@@ -1387,7 +1387,7 @@ class CodePart(AbstractModel):
 
 
 class CorpQuota(AbstractModel):
-    """渠道商的子企业额度使用情况
+    r"""渠道商的子企业额度使用情况
 
     """
 
@@ -1409,7 +1409,7 @@ class CorpQuota(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -1420,7 +1420,7 @@ class CorpQuota(AbstractModel):
 
     @property
     def CorpName(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._CorpName
@@ -1431,7 +1431,7 @@ class CorpQuota(AbstractModel):
 
     @property
     def Quota(self):
-        """额度
+        r"""额度
         :rtype: :class:`tencentcloud.trp.v20210515.models.Quota`
         """
         return self._Quota
@@ -1442,7 +1442,7 @@ class CorpQuota(AbstractModel):
 
     @property
     def UsageQuota(self):
-        """额度使用量
+        r"""额度使用量
         :rtype: :class:`tencentcloud.trp.v20210515.models.UsageQuota`
         """
         return self._UsageQuota
@@ -1472,7 +1472,7 @@ class CorpQuota(AbstractModel):
 
 
 class CreateChainBatchRequest(AbstractModel):
-    """CreateChainBatch请求参数结构体
+    r"""CreateChainBatch请求参数结构体
 
     """
 
@@ -1488,7 +1488,7 @@ class CreateChainBatchRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -1499,7 +1499,7 @@ class CreateChainBatchRequest(AbstractModel):
 
     @property
     def ChainList(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: list of Chain
         """
         return self._ChainList
@@ -1528,7 +1528,7 @@ class CreateChainBatchRequest(AbstractModel):
 
 
 class CreateChainBatchResponse(AbstractModel):
-    """CreateChainBatch返回参数结构体
+    r"""CreateChainBatch返回参数结构体
 
     """
 
@@ -1541,7 +1541,7 @@ class CreateChainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1556,7 +1556,7 @@ class CreateChainBatchResponse(AbstractModel):
 
 
 class CreateCodeBatchRequest(AbstractModel):
-    """CreateCodeBatch请求参数结构体
+    r"""CreateCodeBatch请求参数结构体
 
     """
 
@@ -1599,7 +1599,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -1610,7 +1610,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -1621,7 +1621,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -1632,7 +1632,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def BatchType(self):
-        """批次类型 0:溯源 1:营销
+        r"""批次类型 0:溯源 1:营销
         :rtype: int
         """
         return self._BatchType
@@ -1643,7 +1643,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID，留空时系统自动生成
+        r"""批次ID，留空时系统自动生成
         :rtype: str
         """
         return self._BatchId
@@ -1654,7 +1654,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1665,7 +1665,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def MpTpl(self):
-        """模板ID，或者活动ID
+        r"""模板ID，或者活动ID
         :rtype: str
         """
         return self._MpTpl
@@ -1676,7 +1676,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def CloneId(self):
-        """克隆批次ID，同时会复制溯源信息
+        r"""克隆批次ID，同时会复制溯源信息
         :rtype: str
         """
         return self._CloneId
@@ -1687,7 +1687,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def BatchCode(self):
-        """批次编号，业务字段不判断唯一性
+        r"""批次编号，业务字段不判断唯一性
         :rtype: str
         """
         return self._BatchCode
@@ -1698,7 +1698,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ValidDate
@@ -1709,7 +1709,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
     @property
     def ProductionDate(self):
-        """生产日期
+        r"""生产日期
         :rtype: str
         """
         return self._ProductionDate
@@ -1742,7 +1742,7 @@ class CreateCodeBatchRequest(AbstractModel):
 
 
 class CreateCodeBatchResponse(AbstractModel):
-    """CreateCodeBatch返回参数结构体
+    r"""CreateCodeBatch返回参数结构体
 
     """
 
@@ -1758,7 +1758,7 @@ class CreateCodeBatchResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -1769,7 +1769,7 @@ class CreateCodeBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1785,7 +1785,7 @@ class CreateCodeBatchResponse(AbstractModel):
 
 
 class CreateCodePackRequest(AbstractModel):
-    """CreateCodePack请求参数结构体
+    r"""CreateCodePack请求参数结构体
 
     """
 
@@ -1834,7 +1834,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -1845,7 +1845,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def CodeLength(self):
-        """码长度
+        r"""码长度
         :rtype: int
         """
         return self._CodeLength
@@ -1856,7 +1856,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def CodeType(self):
-        """码类型 alphabet 字母, number 数字, mixin 混合
+        r"""码类型 alphabet 字母, number 数字, mixin 混合
         :rtype: str
         """
         return self._CodeType
@@ -1867,7 +1867,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def Amount(self):
-        """生码数量 普通码包时必填
+        r"""生码数量 普通码包时必填
         :rtype: int
         """
         return self._Amount
@@ -1878,7 +1878,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -1889,7 +1889,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def PackType(self):
-        """码包类型 0: 普通码包 1: 层级码包
+        r"""码包类型 0: 普通码包 1: 层级码包
         :rtype: int
         """
         return self._PackType
@@ -1900,7 +1900,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def PackLevel(self):
-        """码包层级
+        r"""码包层级
         :rtype: int
         """
         return self._PackLevel
@@ -1911,7 +1911,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def PackSpec(self):
-        """码包规格
+        r"""码包规格
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -1922,7 +1922,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID，如果传了生码后会同时绑定批次，并激活码
+        r"""批次ID，如果传了生码后会同时绑定批次，并激活码
         :rtype: str
         """
         return self._BatchId
@@ -1933,7 +1933,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def SerialType(self):
-        """是否有流水码 0:无 1:有
+        r"""是否有流水码 0:无 1:有
         :rtype: int
         """
         return self._SerialType
@@ -1944,7 +1944,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """关联产品ID
+        r"""关联产品ID
         :rtype: str
         """
         return self._ProductId
@@ -1955,7 +1955,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def RelateType(self):
-        """层级码时是否提前生成关联关系，默认为 1
+        r"""层级码时是否提前生成关联关系，默认为 1
         :rtype: int
         """
         return self._RelateType
@@ -1966,7 +1966,7 @@ class CreateCodePackRequest(AbstractModel):
 
     @property
     def SceneCode(self):
-        """场景值
+        r"""场景值
         :rtype: int
         """
         return self._SceneCode
@@ -2006,7 +2006,7 @@ class CreateCodePackRequest(AbstractModel):
 
 
 class CreateCodePackResponse(AbstractModel):
-    """CreateCodePack返回参数结构体
+    r"""CreateCodePack返回参数结构体
 
     """
 
@@ -2022,7 +2022,7 @@ class CreateCodePackResponse(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -2033,7 +2033,7 @@ class CreateCodePackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2049,7 +2049,7 @@ class CreateCodePackResponse(AbstractModel):
 
 
 class CreateCorporationOrderRequest(AbstractModel):
-    """CreateCorporationOrder请求参数结构体
+    r"""CreateCorporationOrder请求参数结构体
 
     """
 
@@ -2086,7 +2086,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def CorpName(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._CorpName
@@ -2097,7 +2097,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """所有者ID
+        r"""所有者ID
         :rtype: str
         """
         return self._Owner
@@ -2108,7 +2108,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def CodeQuota(self):
-        """溯源码额度
+        r"""溯源码额度
         :rtype: int
         """
         return self._CodeQuota
@@ -2119,7 +2119,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """额度过期时间
+        r"""额度过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -2130,7 +2130,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def Amount(self):
-        """金额
+        r"""金额
         :rtype: int
         """
         return self._Amount
@@ -2141,7 +2141,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2152,7 +2152,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def ContactPerson(self):
-        """联系人
+        r"""联系人
         :rtype: str
         """
         return self._ContactPerson
@@ -2163,7 +2163,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def ContactNumber(self):
-        """联系电话
+        r"""联系电话
         :rtype: str
         """
         return self._ContactNumber
@@ -2174,7 +2174,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2205,7 +2205,7 @@ class CreateCorporationOrderRequest(AbstractModel):
 
 
 class CreateCorporationOrderResponse(AbstractModel):
-    """CreateCorporationOrder返回参数结构体
+    r"""CreateCorporationOrder返回参数结构体
 
     """
 
@@ -2221,7 +2221,7 @@ class CreateCorporationOrderResponse(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2232,7 +2232,7 @@ class CreateCorporationOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2248,7 +2248,7 @@ class CreateCorporationOrderResponse(AbstractModel):
 
 
 class CreateCustomPackRequest(AbstractModel):
-    """CreateCustomPack请求参数结构体
+    r"""CreateCustomPack请求参数结构体
 
     """
 
@@ -2299,7 +2299,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -2310,7 +2310,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def Amount(self):
-        """生码数量, 普通码包时必填
+        r"""生码数量, 普通码包时必填
         :rtype: int
         """
         return self._Amount
@@ -2321,7 +2321,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2332,7 +2332,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def PackType(self):
-        """码包类型 0: 普通码包 1: 层级码包
+        r"""码包类型 0: 普通码包 1: 层级码包
         :rtype: int
         """
         return self._PackType
@@ -2343,7 +2343,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def PackLevel(self):
-        """码包层级
+        r"""码包层级
         :rtype: int
         """
         return self._PackLevel
@@ -2354,7 +2354,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def PackSpec(self):
-        """层级码包规则
+        r"""层级码包规则
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -2365,7 +2365,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID,  和CodeParts二选一必填
+        r"""码规则ID,  和CodeParts二选一必填
         :rtype: str
         """
         return self._CustomId
@@ -2376,7 +2376,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def CodeParts(self):
-        """码段配置，和CustomId二选一必填
+        r"""码段配置，和CustomId二选一必填
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -2387,7 +2387,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID，如果传了生码后会同时绑定批次，并激活码
+        r"""批次ID，如果传了生码后会同时绑定批次，并激活码
         :rtype: str
         """
         return self._BatchId
@@ -2398,7 +2398,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def SerialType(self):
-        """是否有流水码 0:无 1:有
+        r"""是否有流水码 0:无 1:有
         :rtype: int
         """
         return self._SerialType
@@ -2409,7 +2409,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -2420,7 +2420,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def RelateType(self):
-        """是否预生成码关系
+        r"""是否预生成码关系
 0: 否, 1:是
 默认为1，仅对层级码有效
         :rtype: int
@@ -2433,7 +2433,7 @@ class CreateCustomPackRequest(AbstractModel):
 
     @property
     def SceneCode(self):
-        """场景值
+        r"""场景值
         :rtype: int
         """
         return self._SceneCode
@@ -2478,7 +2478,7 @@ class CreateCustomPackRequest(AbstractModel):
 
 
 class CreateCustomPackResponse(AbstractModel):
-    """CreateCustomPack返回参数结构体
+    r"""CreateCustomPack返回参数结构体
 
     """
 
@@ -2494,7 +2494,7 @@ class CreateCustomPackResponse(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -2505,7 +2505,7 @@ class CreateCustomPackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2521,7 +2521,7 @@ class CreateCustomPackResponse(AbstractModel):
 
 
 class CreateCustomRuleRequest(AbstractModel):
-    """CreateCustomRule请求参数结构体
+    r"""CreateCustomRule请求参数结构体
 
     """
 
@@ -2546,7 +2546,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -2557,7 +2557,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -2568,7 +2568,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
     @property
     def CodeLength(self):
-        """码长度
+        r"""码长度
         :rtype: int
         """
         return self._CodeLength
@@ -2579,7 +2579,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
     @property
     def CodeParts(self):
-        """码段配置
+        r"""码段配置
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -2590,7 +2590,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2622,7 +2622,7 @@ class CreateCustomRuleRequest(AbstractModel):
 
 
 class CreateCustomRuleResponse(AbstractModel):
-    """CreateCustomRule返回参数结构体
+    r"""CreateCustomRule返回参数结构体
 
     """
 
@@ -2638,7 +2638,7 @@ class CreateCustomRuleResponse(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -2649,7 +2649,7 @@ class CreateCustomRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2665,7 +2665,7 @@ class CreateCustomRuleResponse(AbstractModel):
 
 
 class CreateMerchantRequest(AbstractModel):
-    """CreateMerchant请求参数结构体
+    r"""CreateMerchant请求参数结构体
 
     """
 
@@ -2690,7 +2690,7 @@ class CreateMerchantRequest(AbstractModel):
 
     @property
     def Name(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._Name
@@ -2701,7 +2701,7 @@ class CreateMerchantRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2712,7 +2712,7 @@ class CreateMerchantRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2723,7 +2723,7 @@ class CreateMerchantRequest(AbstractModel):
 
     @property
     def CodeType(self):
-        """码包来源 0:自建, 1:第三方
+        r"""码包来源 0:自建, 1:第三方
         :rtype: int
         """
         return self._CodeType
@@ -2734,7 +2734,7 @@ class CreateMerchantRequest(AbstractModel):
 
     @property
     def CodeUrl(self):
-        """码包前缀地址 第三方码包时必填
+        r"""码包前缀地址 第三方码包时必填
         :rtype: str
         """
         return self._CodeUrl
@@ -2761,7 +2761,7 @@ class CreateMerchantRequest(AbstractModel):
 
 
 class CreateMerchantResponse(AbstractModel):
-    """CreateMerchant返回参数结构体
+    r"""CreateMerchant返回参数结构体
 
     """
 
@@ -2777,7 +2777,7 @@ class CreateMerchantResponse(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -2788,7 +2788,7 @@ class CreateMerchantResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2804,7 +2804,7 @@ class CreateMerchantResponse(AbstractModel):
 
 
 class CreateProductRequest(AbstractModel):
-    """CreateProduct请求参数结构体
+    r"""CreateProduct请求参数结构体
 
     """
 
@@ -2838,7 +2838,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Name(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._Name
@@ -2849,7 +2849,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -2860,7 +2860,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2871,7 +2871,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -2882,7 +2882,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Specification(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._Specification
@@ -2893,7 +2893,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Logo(self):
-        """商品图片
+        r"""商品图片
         :rtype: list of str
         """
         return self._Logo
@@ -2904,7 +2904,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -2915,7 +2915,7 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Ext(self):
-        """预留字段
+        r"""预留字段
         :rtype: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
         return self._Ext
@@ -2947,7 +2947,7 @@ class CreateProductRequest(AbstractModel):
 
 
 class CreateProductResponse(AbstractModel):
-    """CreateProduct返回参数结构体
+    r"""CreateProduct返回参数结构体
 
     """
 
@@ -2963,7 +2963,7 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -2974,7 +2974,7 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2990,7 +2990,7 @@ class CreateProductResponse(AbstractModel):
 
 
 class CreateTraceChainRequest(AbstractModel):
-    """CreateTraceChain请求参数结构体
+    r"""CreateTraceChain请求参数结构体
 
     """
 
@@ -3006,7 +3006,7 @@ class CreateTraceChainRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3017,7 +3017,7 @@ class CreateTraceChainRequest(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -3041,7 +3041,7 @@ class CreateTraceChainRequest(AbstractModel):
 
 
 class CreateTraceChainResponse(AbstractModel):
-    """CreateTraceChain返回参数结构体
+    r"""CreateTraceChain返回参数结构体
 
     """
 
@@ -3057,7 +3057,7 @@ class CreateTraceChainResponse(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -3068,7 +3068,7 @@ class CreateTraceChainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3084,7 +3084,7 @@ class CreateTraceChainResponse(AbstractModel):
 
 
 class CreateTraceCodesAsyncRequest(AbstractModel):
-    """CreateTraceCodesAsync请求参数结构体
+    r"""CreateTraceCodesAsync请求参数结构体
 
     """
 
@@ -3103,7 +3103,7 @@ class CreateTraceCodesAsyncRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3114,7 +3114,7 @@ class CreateTraceCodesAsyncRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3125,7 +3125,7 @@ class CreateTraceCodesAsyncRequest(AbstractModel):
 
     @property
     def FileKey(self):
-        """上传文件Key，仅支持 csv 或者 zip 类型
+        r"""上传文件Key，仅支持 csv 或者 zip 类型
         :rtype: str
         """
         return self._FileKey
@@ -3150,7 +3150,7 @@ class CreateTraceCodesAsyncRequest(AbstractModel):
 
 
 class CreateTraceCodesAsyncResponse(AbstractModel):
-    """CreateTraceCodesAsync返回参数结构体
+    r"""CreateTraceCodesAsync返回参数结构体
 
     """
 
@@ -3166,7 +3166,7 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3177,7 +3177,7 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3193,7 +3193,7 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
 
 
 class CreateTraceCodesRequest(AbstractModel):
-    """CreateTraceCodes请求参数结构体
+    r"""CreateTraceCodes请求参数结构体
 
     """
 
@@ -3222,7 +3222,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3233,7 +3233,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3244,7 +3244,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
     @property
     def Codes(self):
-        """码
+        r"""码
         :rtype: list of CodeItem
         """
         return self._Codes
@@ -3255,7 +3255,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
     @property
     def CodeType(self):
-        """码绑定激活策略，默认  0
+        r"""码绑定激活策略，默认  0
 0: 传什么码就激活什么码
 1: 层级码 + 层级子码
         :rtype: int
@@ -3268,7 +3268,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
     @property
     def CheckType(self):
-        """错误检查类型，默认 0
+        r"""错误检查类型，默认 0
 0: 没有新导入码时正常返回
 1: 没有新导入码时报错，并返回没有导入成功的原因
         :rtype: int
@@ -3302,7 +3302,7 @@ class CreateTraceCodesRequest(AbstractModel):
 
 
 class CreateTraceCodesResponse(AbstractModel):
-    """CreateTraceCodes返回参数结构体
+    r"""CreateTraceCodes返回参数结构体
 
     """
 
@@ -3324,7 +3324,7 @@ class CreateTraceCodesResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3335,7 +3335,7 @@ class CreateTraceCodesResponse(AbstractModel):
 
     @property
     def ActiveCnt(self):
-        """导入成功码数量
+        r"""导入成功码数量
         :rtype: int
         """
         return self._ActiveCnt
@@ -3346,7 +3346,7 @@ class CreateTraceCodesResponse(AbstractModel):
 
     @property
     def CodeCnt(self):
-        """批次码数量
+        r"""批次码数量
         :rtype: int
         """
         return self._CodeCnt
@@ -3357,7 +3357,7 @@ class CreateTraceCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3375,7 +3375,7 @@ class CreateTraceCodesResponse(AbstractModel):
 
 
 class CreateTraceDataRequest(AbstractModel):
-    """CreateTraceData请求参数结构体
+    r"""CreateTraceData请求参数结构体
 
     """
 
@@ -3418,7 +3418,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3429,7 +3429,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3440,7 +3440,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -3451,7 +3451,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def Phase(self):
-        """溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        r"""溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :rtype: int
         """
         return self._Phase
@@ -3462,7 +3462,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def PhaseName(self):
-        """溯源阶段名称
+        r"""溯源阶段名称
         :rtype: str
         """
         return self._PhaseName
@@ -3473,7 +3473,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def ChainStatus(self):
-        """[无效] 上链状态
+        r"""[无效] 上链状态
         :rtype: int
         """
         return self._ChainStatus
@@ -3484,7 +3484,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """[无效] 码类型 0: 批次, 1: 码, 2: 生产任务, 3: 物流信息
+        r"""[无效] 码类型 0: 批次, 1: 码, 2: 生产任务, 3: 物流信息
         :rtype: int
         """
         return self._Type
@@ -3495,7 +3495,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def TraceId(self):
-        """[无效] 溯源ID
+        r"""[无效] 溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -3506,7 +3506,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def TraceItems(self):
-        """溯源信息
+        r"""溯源信息
         :rtype: list of TraceItem
         """
         return self._TraceItems
@@ -3517,7 +3517,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def Status(self):
-        """溯源状态 0: 无效, 1: 有效
+        r"""溯源状态 0: 无效, 1: 有效
         :rtype: int
         """
         return self._Status
@@ -3528,7 +3528,7 @@ class CreateTraceDataRequest(AbstractModel):
 
     @property
     def PhaseData(self):
-        """环节数据
+        r"""环节数据
         :rtype: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         return self._PhaseData
@@ -3568,7 +3568,7 @@ class CreateTraceDataRequest(AbstractModel):
 
 
 class CreateTraceDataResponse(AbstractModel):
-    """CreateTraceData返回参数结构体
+    r"""CreateTraceData返回参数结构体
 
     """
 
@@ -3584,7 +3584,7 @@ class CreateTraceDataResponse(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -3595,7 +3595,7 @@ class CreateTraceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3611,7 +3611,7 @@ class CreateTraceDataResponse(AbstractModel):
 
 
 class CustomRule(AbstractModel):
-    """码规则
+    r"""码规则
 
     """
 
@@ -3648,7 +3648,7 @@ class CustomRule(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -3659,7 +3659,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Name(self):
-        """码规则名
+        r"""码规则名
         :rtype: str
         """
         return self._Name
@@ -3670,7 +3670,7 @@ class CustomRule(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3681,7 +3681,7 @@ class CustomRule(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -3692,7 +3692,7 @@ class CustomRule(AbstractModel):
 
     @property
     def CodeLength(self):
-        """码ID长度
+        r"""码ID长度
         :rtype: int
         """
         return self._CodeLength
@@ -3703,7 +3703,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态
+        r"""规则状态
         :rtype: int
         """
         return self._Status
@@ -3714,7 +3714,7 @@ class CustomRule(AbstractModel):
 
     @property
     def CodeParts(self):
-        """码段配置
+        r"""码段配置
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -3725,7 +3725,7 @@ class CustomRule(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3736,7 +3736,7 @@ class CustomRule(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -3772,7 +3772,7 @@ class CustomRule(AbstractModel):
 
 
 class DeleteCodeBatchRequest(AbstractModel):
-    """DeleteCodeBatch请求参数结构体
+    r"""DeleteCodeBatch请求参数结构体
 
     """
 
@@ -3788,7 +3788,7 @@ class DeleteCodeBatchRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3799,7 +3799,7 @@ class DeleteCodeBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3823,7 +3823,7 @@ class DeleteCodeBatchRequest(AbstractModel):
 
 
 class DeleteCodeBatchResponse(AbstractModel):
-    """DeleteCodeBatch返回参数结构体
+    r"""DeleteCodeBatch返回参数结构体
 
     """
 
@@ -3839,7 +3839,7 @@ class DeleteCodeBatchResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -3850,7 +3850,7 @@ class DeleteCodeBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3866,7 +3866,7 @@ class DeleteCodeBatchResponse(AbstractModel):
 
 
 class DeleteMerchantRequest(AbstractModel):
-    """DeleteMerchant请求参数结构体
+    r"""DeleteMerchant请求参数结构体
 
     """
 
@@ -3882,7 +3882,7 @@ class DeleteMerchantRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -3893,7 +3893,7 @@ class DeleteMerchantRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -3917,7 +3917,7 @@ class DeleteMerchantRequest(AbstractModel):
 
 
 class DeleteMerchantResponse(AbstractModel):
-    """DeleteMerchant返回参数结构体
+    r"""DeleteMerchant返回参数结构体
 
     """
 
@@ -3933,7 +3933,7 @@ class DeleteMerchantResponse(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -3944,7 +3944,7 @@ class DeleteMerchantResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3960,7 +3960,7 @@ class DeleteMerchantResponse(AbstractModel):
 
 
 class DeleteProductRequest(AbstractModel):
-    """DeleteProduct请求参数结构体
+    r"""DeleteProduct请求参数结构体
 
     """
 
@@ -3976,7 +3976,7 @@ class DeleteProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -3987,7 +3987,7 @@ class DeleteProductRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4011,7 +4011,7 @@ class DeleteProductRequest(AbstractModel):
 
 
 class DeleteProductResponse(AbstractModel):
-    """DeleteProduct返回参数结构体
+    r"""DeleteProduct返回参数结构体
 
     """
 
@@ -4027,7 +4027,7 @@ class DeleteProductResponse(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -4038,7 +4038,7 @@ class DeleteProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4054,7 +4054,7 @@ class DeleteProductResponse(AbstractModel):
 
 
 class DeleteTraceDataRequest(AbstractModel):
-    """DeleteTraceData请求参数结构体
+    r"""DeleteTraceData请求参数结构体
 
     """
 
@@ -4070,7 +4070,7 @@ class DeleteTraceDataRequest(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -4081,7 +4081,7 @@ class DeleteTraceDataRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4105,7 +4105,7 @@ class DeleteTraceDataRequest(AbstractModel):
 
 
 class DeleteTraceDataResponse(AbstractModel):
-    """DeleteTraceData返回参数结构体
+    r"""DeleteTraceData返回参数结构体
 
     """
 
@@ -4121,7 +4121,7 @@ class DeleteTraceDataResponse(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源id
+        r"""溯源id
         :rtype: str
         """
         return self._TraceId
@@ -4132,7 +4132,7 @@ class DeleteTraceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4148,7 +4148,7 @@ class DeleteTraceDataResponse(AbstractModel):
 
 
 class DescribeAgentCorpsRequest(AbstractModel):
-    """DescribeAgentCorps请求参数结构体
+    r"""DescribeAgentCorps请求参数结构体
 
     """
 
@@ -4170,7 +4170,7 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._PageSize
@@ -4181,7 +4181,7 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -4192,7 +4192,7 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """渠道ID
+        r"""渠道ID
         :rtype: int
         """
         return self._AgentId
@@ -4203,7 +4203,7 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4229,7 +4229,7 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
 
 class DescribeAgentCorpsResponse(AbstractModel):
-    """DescribeAgentCorps返回参数结构体
+    r"""DescribeAgentCorps返回参数结构体
 
     """
 
@@ -4242,7 +4242,7 @@ class DescribeAgentCorpsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4257,7 +4257,7 @@ class DescribeAgentCorpsResponse(AbstractModel):
 
 
 class DescribeCodeBatchByIdRequest(AbstractModel):
-    """DescribeCodeBatchById请求参数结构体
+    r"""DescribeCodeBatchById请求参数结构体
 
     """
 
@@ -4273,7 +4273,7 @@ class DescribeCodeBatchByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4284,7 +4284,7 @@ class DescribeCodeBatchByIdRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -4308,7 +4308,7 @@ class DescribeCodeBatchByIdRequest(AbstractModel):
 
 
 class DescribeCodeBatchByIdResponse(AbstractModel):
-    """DescribeCodeBatchById返回参数结构体
+    r"""DescribeCodeBatchById返回参数结构体
 
     """
 
@@ -4324,7 +4324,7 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
 
     @property
     def CodeBatch(self):
-        """批次
+        r"""批次
         :rtype: :class:`tencentcloud.trp.v20210515.models.CodeBatch`
         """
         return self._CodeBatch
@@ -4335,7 +4335,7 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4353,7 +4353,7 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
 
 
 class DescribeCodeBatchesRequest(AbstractModel):
-    """DescribeCodeBatches请求参数结构体
+    r"""DescribeCodeBatches请求参数结构体
 
     """
 
@@ -4387,7 +4387,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """查询商户ID
+        r"""查询商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -4398,7 +4398,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """查询商品ID
+        r"""查询商品ID
         :rtype: str
         """
         return self._ProductId
@@ -4409,7 +4409,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键字
+        r"""查询关键字
         :rtype: str
         """
         return self._Keyword
@@ -4420,7 +4420,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageSize
@@ -4431,7 +4431,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -4442,7 +4442,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def BatchType(self):
-        """批次类型 0:溯源 1:营销
+        r"""批次类型 0:溯源 1:营销
         :rtype: str
         """
         return self._BatchType
@@ -4453,7 +4453,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4464,7 +4464,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """批次状态 0: 未激活 1: 已激活 -1: 已冻结
+        r"""批次状态 0: 未激活 1: 已激活 -1: 已冻结
         :rtype: int
         """
         return self._Status
@@ -4494,7 +4494,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
 
 
 class DescribeCodeBatchesResponse(AbstractModel):
-    """DescribeCodeBatches返回参数结构体
+    r"""DescribeCodeBatches返回参数结构体
 
     """
 
@@ -4513,7 +4513,7 @@ class DescribeCodeBatchesResponse(AbstractModel):
 
     @property
     def CodeBatches(self):
-        """批次列表
+        r"""批次列表
         :rtype: list of CodeBatch
         """
         return self._CodeBatches
@@ -4524,7 +4524,7 @@ class DescribeCodeBatchesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -4535,7 +4535,7 @@ class DescribeCodeBatchesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4557,7 +4557,7 @@ class DescribeCodeBatchesResponse(AbstractModel):
 
 
 class DescribeCodeBatchsRequest(AbstractModel):
-    """DescribeCodeBatchs请求参数结构体
+    r"""DescribeCodeBatchs请求参数结构体
 
     """
 
@@ -4591,7 +4591,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """查询商户ID
+        r"""查询商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -4602,7 +4602,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """查询商品ID
+        r"""查询商品ID
         :rtype: str
         """
         return self._ProductId
@@ -4613,7 +4613,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键字
+        r"""查询关键字
         :rtype: str
         """
         return self._Keyword
@@ -4624,7 +4624,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageSize
@@ -4635,7 +4635,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -4646,7 +4646,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def BatchType(self):
-        """批次类型 0:溯源 1:营销
+        r"""批次类型 0:溯源 1:营销
         :rtype: str
         """
         return self._BatchType
@@ -4657,7 +4657,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4668,7 +4668,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """批次状态
+        r"""批次状态
         :rtype: int
         """
         return self._Status
@@ -4698,7 +4698,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
 
 class DescribeCodeBatchsResponse(AbstractModel):
-    """DescribeCodeBatchs返回参数结构体
+    r"""DescribeCodeBatchs返回参数结构体
 
     """
 
@@ -4717,7 +4717,7 @@ class DescribeCodeBatchsResponse(AbstractModel):
 
     @property
     def CodeBatchs(self):
-        """批次列表
+        r"""批次列表
         :rtype: list of CodeBatch
         """
         return self._CodeBatchs
@@ -4728,7 +4728,7 @@ class DescribeCodeBatchsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -4739,7 +4739,7 @@ class DescribeCodeBatchsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4761,7 +4761,7 @@ class DescribeCodeBatchsResponse(AbstractModel):
 
 
 class DescribeCodePackStatusRequest(AbstractModel):
-    """DescribeCodePackStatus请求参数结构体
+    r"""DescribeCodePackStatus请求参数结构体
 
     """
 
@@ -4777,7 +4777,7 @@ class DescribeCodePackStatusRequest(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -4788,7 +4788,7 @@ class DescribeCodePackStatusRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4812,7 +4812,7 @@ class DescribeCodePackStatusRequest(AbstractModel):
 
 
 class DescribeCodePackStatusResponse(AbstractModel):
-    """DescribeCodePackStatus返回参数结构体
+    r"""DescribeCodePackStatus返回参数结构体
 
     """
 
@@ -4828,7 +4828,7 @@ class DescribeCodePackStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+        r"""码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
         :rtype: str
         """
         return self._Status
@@ -4839,7 +4839,7 @@ class DescribeCodePackStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4855,7 +4855,7 @@ class DescribeCodePackStatusResponse(AbstractModel):
 
 
 class DescribeCodePackUrlRequest(AbstractModel):
-    """DescribeCodePackUrl请求参数结构体
+    r"""DescribeCodePackUrl请求参数结构体
 
     """
 
@@ -4871,7 +4871,7 @@ class DescribeCodePackUrlRequest(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -4882,7 +4882,7 @@ class DescribeCodePackUrlRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -4906,7 +4906,7 @@ class DescribeCodePackUrlRequest(AbstractModel):
 
 
 class DescribeCodePackUrlResponse(AbstractModel):
-    """DescribeCodePackUrl返回参数结构体
+    r"""DescribeCodePackUrl返回参数结构体
 
     """
 
@@ -4928,7 +4928,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """文字码包地址
+        r"""文字码包地址
         :rtype: str
         """
         return self._Url
@@ -4939,7 +4939,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
     @property
     def ImgUrl(self):
-        """图片码包地址，可能为空
+        r"""图片码包地址，可能为空
         :rtype: str
         """
         return self._ImgUrl
@@ -4950,7 +4950,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
     @property
     def FileKey(self):
-        """文字码包Key，用于上传导入
+        r"""文字码包Key，用于上传导入
         :rtype: str
         """
         return self._FileKey
@@ -4961,7 +4961,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4979,7 +4979,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
 
 class DescribeCodePacksRequest(AbstractModel):
-    """DescribeCodePacks请求参数结构体
+    r"""DescribeCodePacks请求参数结构体
 
     """
 
@@ -5016,7 +5016,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._PageSize
@@ -5027,7 +5027,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -5038,7 +5038,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键字
+        r"""查询关键字
         :rtype: str
         """
         return self._Keyword
@@ -5049,7 +5049,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5060,7 +5060,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def SerialType(self):
-        """是否有流水码 0:无 1:有
+        r"""是否有流水码 0:无 1:有
         :rtype: int
         """
         return self._SerialType
@@ -5071,7 +5071,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def ResType(self):
-        """资源类型 batch:批次, order_in 入库, order_out: 出入
+        r"""资源类型 batch:批次, order_in 入库, order_out: 出入
         :rtype: str
         """
         return self._ResType
@@ -5082,7 +5082,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def ResId(self):
-        """资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
+        r"""资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
         :rtype: str
         """
         return self._ResId
@@ -5093,7 +5093,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def SceneCode(self):
-        """应用场景
+        r"""应用场景
         :rtype: int
         """
         return self._SceneCode
@@ -5104,7 +5104,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """码包状态
+        r"""码包状态
         :rtype: str
         """
         return self._Status
@@ -5135,7 +5135,7 @@ class DescribeCodePacksRequest(AbstractModel):
 
 
 class DescribeCodePacksResponse(AbstractModel):
-    """DescribeCodePacks返回参数结构体
+    r"""DescribeCodePacks返回参数结构体
 
     """
 
@@ -5154,7 +5154,7 @@ class DescribeCodePacksResponse(AbstractModel):
 
     @property
     def CodePacks(self):
-        """码列表
+        r"""码列表
         :rtype: list of CodePack
         """
         return self._CodePacks
@@ -5165,7 +5165,7 @@ class DescribeCodePacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -5176,7 +5176,7 @@ class DescribeCodePacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5198,7 +5198,7 @@ class DescribeCodePacksResponse(AbstractModel):
 
 
 class DescribeCodesByPackRequest(AbstractModel):
-    """DescribeCodesByPack请求参数结构体
+    r"""DescribeCodesByPack请求参数结构体
 
     """
 
@@ -5214,7 +5214,7 @@ class DescribeCodesByPackRequest(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -5225,7 +5225,7 @@ class DescribeCodesByPackRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5249,7 +5249,7 @@ class DescribeCodesByPackRequest(AbstractModel):
 
 
 class DescribeCodesByPackResponse(AbstractModel):
-    """DescribeCodesByPack返回参数结构体
+    r"""DescribeCodesByPack返回参数结构体
 
     """
 
@@ -5265,7 +5265,7 @@ class DescribeCodesByPackResponse(AbstractModel):
 
     @property
     def Codes(self):
-        """码列表
+        r"""码列表
         :rtype: list of CodeItem
         """
         return self._Codes
@@ -5276,7 +5276,7 @@ class DescribeCodesByPackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5297,7 +5297,7 @@ class DescribeCodesByPackResponse(AbstractModel):
 
 
 class DescribeCorpQuotasRequest(AbstractModel):
-    """DescribeCorpQuotas请求参数结构体
+    r"""DescribeCorpQuotas请求参数结构体
 
     """
 
@@ -5319,7 +5319,7 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """渠道商ID，不要传
+        r"""渠道商ID，不要传
         :rtype: int
         """
         return self._AgentId
@@ -5330,7 +5330,7 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -5341,7 +5341,7 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._PageSize
@@ -5352,7 +5352,7 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索企业ID
+        r"""搜索企业ID
         :rtype: str
         """
         return self._Keyword
@@ -5378,7 +5378,7 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
 
 class DescribeCorpQuotasResponse(AbstractModel):
-    """DescribeCorpQuotas返回参数结构体
+    r"""DescribeCorpQuotas返回参数结构体
 
     """
 
@@ -5397,7 +5397,7 @@ class DescribeCorpQuotasResponse(AbstractModel):
 
     @property
     def CorpQuotas(self):
-        """子企业额度使用情况
+        r"""子企业额度使用情况
         :rtype: list of CorpQuota
         """
         return self._CorpQuotas
@@ -5408,7 +5408,7 @@ class DescribeCorpQuotasResponse(AbstractModel):
 
     @property
     def Total(self):
-        """记录总数量
+        r"""记录总数量
         :rtype: int
         """
         return self._Total
@@ -5419,7 +5419,7 @@ class DescribeCorpQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5441,7 +5441,7 @@ class DescribeCorpQuotasResponse(AbstractModel):
 
 
 class DescribeCustomRuleByIdRequest(AbstractModel):
-    """DescribeCustomRuleById请求参数结构体
+    r"""DescribeCustomRuleById请求参数结构体
 
     """
 
@@ -5457,7 +5457,7 @@ class DescribeCustomRuleByIdRequest(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -5468,7 +5468,7 @@ class DescribeCustomRuleByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5492,7 +5492,7 @@ class DescribeCustomRuleByIdRequest(AbstractModel):
 
 
 class DescribeCustomRuleByIdResponse(AbstractModel):
-    """DescribeCustomRuleById返回参数结构体
+    r"""DescribeCustomRuleById返回参数结构体
 
     """
 
@@ -5508,7 +5508,7 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
 
     @property
     def CustomRule(self):
-        """码规则信息
+        r"""码规则信息
         :rtype: :class:`tencentcloud.trp.v20210515.models.CustomRule`
         """
         return self._CustomRule
@@ -5519,7 +5519,7 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5537,7 +5537,7 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
 
 
 class DescribeCustomRulesRequest(AbstractModel):
-    """DescribeCustomRules请求参数结构体
+    r"""DescribeCustomRules请求参数结构体
 
     """
 
@@ -5565,7 +5565,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索关键字
+        r"""搜索关键字
         :rtype: str
         """
         return self._Keyword
@@ -5576,7 +5576,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageSize
@@ -5587,7 +5587,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -5598,7 +5598,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5609,7 +5609,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """码规则状态 0:未生效 1:已生效 -1:已失效
+        r"""码规则状态 0:未生效 1:已生效 -1:已失效
         :rtype: int
         """
         return self._Status
@@ -5620,7 +5620,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -5648,7 +5648,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
 
 class DescribeCustomRulesResponse(AbstractModel):
-    """DescribeCustomRules返回参数结构体
+    r"""DescribeCustomRules返回参数结构体
 
     """
 
@@ -5667,7 +5667,7 @@ class DescribeCustomRulesResponse(AbstractModel):
 
     @property
     def CustomRules(self):
-        """码规则列表
+        r"""码规则列表
         :rtype: list of CustomRule
         """
         return self._CustomRules
@@ -5678,7 +5678,7 @@ class DescribeCustomRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -5689,7 +5689,7 @@ class DescribeCustomRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5711,7 +5711,7 @@ class DescribeCustomRulesResponse(AbstractModel):
 
 
 class DescribeJobFileUrlRequest(AbstractModel):
-    """DescribeJobFileUrl请求参数结构体
+    r"""DescribeJobFileUrl请求参数结构体
 
     """
 
@@ -5727,7 +5727,7 @@ class DescribeJobFileUrlRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """调度ID
+        r"""调度ID
         :rtype: int
         """
         return self._JobId
@@ -5738,7 +5738,7 @@ class DescribeJobFileUrlRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5762,7 +5762,7 @@ class DescribeJobFileUrlRequest(AbstractModel):
 
 
 class DescribeJobFileUrlResponse(AbstractModel):
-    """DescribeJobFileUrl返回参数结构体
+    r"""DescribeJobFileUrl返回参数结构体
 
     """
 
@@ -5778,7 +5778,7 @@ class DescribeJobFileUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """码包地址
+        r"""码包地址
         :rtype: str
         """
         return self._Url
@@ -5789,7 +5789,7 @@ class DescribeJobFileUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5805,7 +5805,7 @@ class DescribeJobFileUrlResponse(AbstractModel):
 
 
 class DescribeMerchantByIdRequest(AbstractModel):
-    """DescribeMerchantById请求参数结构体
+    r"""DescribeMerchantById请求参数结构体
 
     """
 
@@ -5821,7 +5821,7 @@ class DescribeMerchantByIdRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -5832,7 +5832,7 @@ class DescribeMerchantByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5856,7 +5856,7 @@ class DescribeMerchantByIdRequest(AbstractModel):
 
 
 class DescribeMerchantByIdResponse(AbstractModel):
-    """DescribeMerchantById返回参数结构体
+    r"""DescribeMerchantById返回参数结构体
 
     """
 
@@ -5872,7 +5872,7 @@ class DescribeMerchantByIdResponse(AbstractModel):
 
     @property
     def Merchant(self):
-        """商户信息
+        r"""商户信息
         :rtype: :class:`tencentcloud.trp.v20210515.models.Merchant`
         """
         return self._Merchant
@@ -5883,7 +5883,7 @@ class DescribeMerchantByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5901,7 +5901,7 @@ class DescribeMerchantByIdResponse(AbstractModel):
 
 
 class DescribeMerchantsRequest(AbstractModel):
-    """DescribeMerchants请求参数结构体
+    r"""DescribeMerchants请求参数结构体
 
     """
 
@@ -5926,7 +5926,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """搜索商户名称
+        r"""搜索商户名称
         :rtype: str
         """
         return self._Name
@@ -5937,7 +5937,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageSize
@@ -5948,7 +5948,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -5959,7 +5959,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -5970,7 +5970,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
     @property
     def CodeType(self):
-        """码来源类型 0:自建, 1:第三方
+        r"""码来源类型 0:自建, 1:第三方
         :rtype: int
         """
         return self._CodeType
@@ -5997,7 +5997,7 @@ class DescribeMerchantsRequest(AbstractModel):
 
 
 class DescribeMerchantsResponse(AbstractModel):
-    """DescribeMerchants返回参数结构体
+    r"""DescribeMerchants返回参数结构体
 
     """
 
@@ -6016,7 +6016,7 @@ class DescribeMerchantsResponse(AbstractModel):
 
     @property
     def Merchants(self):
-        """商户列表
+        r"""商户列表
         :rtype: list of Merchant
         """
         return self._Merchants
@@ -6027,7 +6027,7 @@ class DescribeMerchantsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -6038,7 +6038,7 @@ class DescribeMerchantsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6060,7 +6060,7 @@ class DescribeMerchantsResponse(AbstractModel):
 
 
 class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
-    """DescribePlanQRCodeScanRecords请求参数结构体
+    r"""DescribePlanQRCodeScanRecords请求参数结构体
 
     """
 
@@ -6082,7 +6082,7 @@ class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -6093,7 +6093,7 @@ class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -6104,7 +6104,7 @@ class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNo
@@ -6115,7 +6115,7 @@ class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页大小
+        r"""页大小
         :rtype: int
         """
         return self._PageSize
@@ -6141,7 +6141,7 @@ class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
 
 
 class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
-    """DescribePlanQRCodeScanRecords返回参数结构体
+    r"""DescribePlanQRCodeScanRecords返回参数结构体
 
     """
 
@@ -6163,7 +6163,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
 
     @property
     def Ret(self):
-        """返回码
+        r"""返回码
         :rtype: int
         """
         return self._Ret
@@ -6174,7 +6174,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -6185,7 +6185,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: list of PlanQRCodeRecord
         """
         return self._Data
@@ -6196,7 +6196,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6219,7 +6219,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
 
 
 class DescribePlanQRCodesRequest(AbstractModel):
-    """DescribePlanQRCodes请求参数结构体
+    r"""DescribePlanQRCodes请求参数结构体
 
     """
 
@@ -6244,7 +6244,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """计划ID
+        r"""计划ID
         :rtype: int
         """
         return self._PlanId
@@ -6255,7 +6255,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -6266,7 +6266,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -6277,7 +6277,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNo
@@ -6288,7 +6288,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页大小
+        r"""页大小
         :rtype: int
         """
         return self._PageSize
@@ -6315,7 +6315,7 @@ class DescribePlanQRCodesRequest(AbstractModel):
 
 
 class DescribePlanQRCodesResponse(AbstractModel):
-    """DescribePlanQRCodes返回参数结构体
+    r"""DescribePlanQRCodes返回参数结构体
 
     """
 
@@ -6337,7 +6337,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
 
     @property
     def Ret(self):
-        """返回码
+        r"""返回码
         :rtype: int
         """
         return self._Ret
@@ -6348,7 +6348,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -6359,7 +6359,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: list of PlanQRCode
         """
         return self._Data
@@ -6370,7 +6370,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6393,7 +6393,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
 
 
 class DescribeProductByIdRequest(AbstractModel):
-    """DescribeProductById请求参数结构体
+    r"""DescribeProductById请求参数结构体
 
     """
 
@@ -6409,7 +6409,7 @@ class DescribeProductByIdRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -6420,7 +6420,7 @@ class DescribeProductByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -6444,7 +6444,7 @@ class DescribeProductByIdRequest(AbstractModel):
 
 
 class DescribeProductByIdResponse(AbstractModel):
-    """DescribeProductById返回参数结构体
+    r"""DescribeProductById返回参数结构体
 
     """
 
@@ -6460,7 +6460,7 @@ class DescribeProductByIdResponse(AbstractModel):
 
     @property
     def Product(self):
-        """商品信息
+        r"""商品信息
         :rtype: :class:`tencentcloud.trp.v20210515.models.Product`
         """
         return self._Product
@@ -6471,7 +6471,7 @@ class DescribeProductByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6489,7 +6489,7 @@ class DescribeProductByIdResponse(AbstractModel):
 
 
 class DescribeProductsRequest(AbstractModel):
-    """DescribeProducts请求参数结构体
+    r"""DescribeProducts请求参数结构体
 
     """
 
@@ -6517,7 +6517,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._Name
@@ -6528,7 +6528,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageSize
@@ -6539,7 +6539,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -6550,7 +6550,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._MerchantId
@@ -6561,7 +6561,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -6572,7 +6572,7 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def CertState(self):
-        """认证状态
+        r"""认证状态
         :rtype: int
         """
         return self._CertState
@@ -6600,7 +6600,7 @@ class DescribeProductsRequest(AbstractModel):
 
 
 class DescribeProductsResponse(AbstractModel):
-    """DescribeProducts返回参数结构体
+    r"""DescribeProducts返回参数结构体
 
     """
 
@@ -6619,7 +6619,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def Products(self):
-        """商品列表
+        r"""商品列表
         :rtype: list of Product
         """
         return self._Products
@@ -6630,7 +6630,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -6641,7 +6641,7 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6663,7 +6663,7 @@ class DescribeProductsResponse(AbstractModel):
 
 
 class DescribeRawScanLogsRequest(AbstractModel):
-    """DescribeRawScanLogs请求参数结构体
+    r"""DescribeRawScanLogs请求参数结构体
 
     """
 
@@ -6693,7 +6693,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID, 默认为当前企业
+        r"""企业ID, 默认为当前企业
 如果有渠道权限，可以传 0 会查渠道下所有的企业
         :rtype: int
         """
@@ -6705,7 +6705,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页数量，默认为 20，最大为 1000
+        r"""分页数量，默认为 20，最大为 1000
         :rtype: int
         """
         return self._PageSize
@@ -6716,7 +6716,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前分页，默认为 1
+        r"""当前分页，默认为 1
         :rtype: int
         """
         return self._PageNumber
@@ -6727,7 +6727,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def AfterLogId(self):
-        """从哪个日志后查询
+        r"""从哪个日志后查询
 即: LogId > $AfterLogId
         :rtype: int
         """
@@ -6739,7 +6739,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间 >= StartTime
+        r"""开始时间 >= StartTime
         :rtype: str
         """
         return self._StartTime
@@ -6750,7 +6750,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间 < EndTime
+        r"""结束时间 < EndTime
         :rtype: str
         """
         return self._EndTime
@@ -6778,7 +6778,7 @@ class DescribeRawScanLogsRequest(AbstractModel):
 
 
 class DescribeRawScanLogsResponse(AbstractModel):
-    """DescribeRawScanLogs返回参数结构体
+    r"""DescribeRawScanLogs返回参数结构体
 
     """
 
@@ -6794,7 +6794,7 @@ class DescribeRawScanLogsResponse(AbstractModel):
 
     @property
     def ScanLogs(self):
-        """原始扫码日志
+        r"""原始扫码日志
         :rtype: list of RawScanLog
         """
         return self._ScanLogs
@@ -6805,7 +6805,7 @@ class DescribeRawScanLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6826,7 +6826,7 @@ class DescribeRawScanLogsResponse(AbstractModel):
 
 
 class DescribeScanLogsRequest(AbstractModel):
-    """DescribeScanLogs请求参数结构体
+    r"""DescribeScanLogs请求参数结构体
 
     """
 
@@ -6851,7 +6851,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -6862,7 +6862,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页数量
+        r"""分页数量
         :rtype: int
         """
         return self._PageSize
@@ -6873,7 +6873,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前分页
+        r"""当前分页
         :rtype: int
         """
         return self._PageNumber
@@ -6884,7 +6884,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
     @property
     def Code(self):
-        """安心码
+        r"""安心码
         :rtype: str
         """
         return self._Code
@@ -6895,7 +6895,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
     @property
     def Openid(self):
-        """小程序用户ID
+        r"""小程序用户ID
         :rtype: str
         """
         return self._Openid
@@ -6922,7 +6922,7 @@ class DescribeScanLogsRequest(AbstractModel):
 
 
 class DescribeScanLogsResponse(AbstractModel):
-    """DescribeScanLogs返回参数结构体
+    r"""DescribeScanLogs返回参数结构体
 
     """
 
@@ -6946,7 +6946,7 @@ class DescribeScanLogsResponse(AbstractModel):
     def Products(self):
         warnings.warn("parameter `Products` is deprecated", DeprecationWarning) 
 
-        """【弃用】
+        r"""【弃用】
         :rtype: list of ScanLog
         """
         return self._Products
@@ -6959,7 +6959,7 @@ class DescribeScanLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._TotalCount
@@ -6970,7 +6970,7 @@ class DescribeScanLogsResponse(AbstractModel):
 
     @property
     def ScanLogs(self):
-        """扫描记录
+        r"""扫描记录
         :rtype: list of ScanLog
         """
         return self._ScanLogs
@@ -6981,7 +6981,7 @@ class DescribeScanLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7009,7 +7009,7 @@ class DescribeScanLogsResponse(AbstractModel):
 
 
 class DescribeScanStatsRequest(AbstractModel):
-    """DescribeScanStats请求参数结构体
+    r"""DescribeScanStats请求参数结构体
 
     """
 
@@ -7040,7 +7040,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7051,7 +7051,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页数量
+        r"""分页数量
         :rtype: int
         """
         return self._PageSize
@@ -7062,7 +7062,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """当前分页
+        r"""当前分页
         :rtype: int
         """
         return self._PageNumber
@@ -7073,7 +7073,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -7084,7 +7084,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -7095,7 +7095,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -7106,7 +7106,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
     @property
     def Code(self):
-        """安心码
+        r"""安心码
         :rtype: str
         """
         return self._Code
@@ -7135,7 +7135,7 @@ class DescribeScanStatsRequest(AbstractModel):
 
 
 class DescribeScanStatsResponse(AbstractModel):
-    """DescribeScanStats返回参数结构体
+    r"""DescribeScanStats返回参数结构体
 
     """
 
@@ -7151,7 +7151,7 @@ class DescribeScanStatsResponse(AbstractModel):
 
     @property
     def ScanStats(self):
-        """统计记录
+        r"""统计记录
         :rtype: list of ScanStat
         """
         return self._ScanStats
@@ -7162,7 +7162,7 @@ class DescribeScanStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7183,7 +7183,7 @@ class DescribeScanStatsResponse(AbstractModel):
 
 
 class DescribeTmpTokenRequest(AbstractModel):
-    """DescribeTmpToken请求参数结构体
+    r"""DescribeTmpToken请求参数结构体
 
     """
 
@@ -7196,7 +7196,7 @@ class DescribeTmpTokenRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7219,7 +7219,7 @@ class DescribeTmpTokenRequest(AbstractModel):
 
 
 class DescribeTmpTokenResponse(AbstractModel):
-    """DescribeTmpToken返回参数结构体
+    r"""DescribeTmpToken返回参数结构体
 
     """
 
@@ -7235,7 +7235,7 @@ class DescribeTmpTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """临时token
+        r"""临时token
         :rtype: str
         """
         return self._Token
@@ -7246,7 +7246,7 @@ class DescribeTmpTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7262,7 +7262,7 @@ class DescribeTmpTokenResponse(AbstractModel):
 
 
 class DescribeTraceCodeByIdRequest(AbstractModel):
-    """DescribeTraceCodeById请求参数结构体
+    r"""DescribeTraceCodeById请求参数结构体
 
     """
 
@@ -7278,7 +7278,7 @@ class DescribeTraceCodeByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7289,7 +7289,7 @@ class DescribeTraceCodeByIdRequest(AbstractModel):
 
     @property
     def Code(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._Code
@@ -7313,7 +7313,7 @@ class DescribeTraceCodeByIdRequest(AbstractModel):
 
 
 class DescribeTraceCodeByIdResponse(AbstractModel):
-    """DescribeTraceCodeById返回参数结构体
+    r"""DescribeTraceCodeById返回参数结构体
 
     """
 
@@ -7332,7 +7332,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
 
     @property
     def TraceCode(self):
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.trp.v20210515.models.TraceCode`
         """
         return self._TraceCode
@@ -7343,7 +7343,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
 
     @property
     def CodePath(self):
-        """码路径，如level是2，则为 [1级, 2级]
+        r"""码路径，如level是2，则为 [1级, 2级]
         :rtype: list of str
         """
         return self._CodePath
@@ -7354,7 +7354,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7373,7 +7373,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
 
 
 class DescribeTraceCodesRequest(AbstractModel):
-    """DescribeTraceCodes请求参数结构体
+    r"""DescribeTraceCodes请求参数结构体
 
     """
 
@@ -7398,7 +7398,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """搜索关键字 码标识，或者批次ID
+        r"""搜索关键字 码标识，或者批次ID
         :rtype: str
         """
         return self._Keyword
@@ -7409,7 +7409,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._PageNumber
@@ -7420,7 +7420,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageSize
@@ -7431,7 +7431,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID，弃用
+        r"""批次ID，弃用
         :rtype: str
         """
         return self._BatchId
@@ -7442,7 +7442,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7469,7 +7469,7 @@ class DescribeTraceCodesRequest(AbstractModel):
 
 
 class DescribeTraceCodesResponse(AbstractModel):
-    """DescribeTraceCodes返回参数结构体
+    r"""DescribeTraceCodes返回参数结构体
 
     """
 
@@ -7488,7 +7488,7 @@ class DescribeTraceCodesResponse(AbstractModel):
 
     @property
     def TraceCodes(self):
-        """标识列表
+        r"""标识列表
         :rtype: list of TraceCode
         """
         return self._TraceCodes
@@ -7499,7 +7499,7 @@ class DescribeTraceCodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """条数
+        r"""条数
         :rtype: int
         """
         return self._TotalCount
@@ -7510,7 +7510,7 @@ class DescribeTraceCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7532,7 +7532,7 @@ class DescribeTraceCodesResponse(AbstractModel):
 
 
 class DescribeTraceDataByIdRequest(AbstractModel):
-    """DescribeTraceDataById请求参数结构体
+    r"""DescribeTraceDataById请求参数结构体
 
     """
 
@@ -7548,7 +7548,7 @@ class DescribeTraceDataByIdRequest(AbstractModel):
 
     @property
     def Id(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._Id
@@ -7559,7 +7559,7 @@ class DescribeTraceDataByIdRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7583,7 +7583,7 @@ class DescribeTraceDataByIdRequest(AbstractModel):
 
 
 class DescribeTraceDataByIdResponse(AbstractModel):
-    """DescribeTraceDataById返回参数结构体
+    r"""DescribeTraceDataById返回参数结构体
 
     """
 
@@ -7599,7 +7599,7 @@ class DescribeTraceDataByIdResponse(AbstractModel):
 
     @property
     def TraceData(self):
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.trp.v20210515.models.TraceData`
         """
         return self._TraceData
@@ -7610,7 +7610,7 @@ class DescribeTraceDataByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7628,7 +7628,7 @@ class DescribeTraceDataByIdResponse(AbstractModel):
 
 
 class DescribeTraceDataListRequest(AbstractModel):
-    """DescribeTraceDataList请求参数结构体
+    r"""DescribeTraceDataList请求参数结构体
 
     """
 
@@ -7659,7 +7659,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -7670,7 +7670,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -7681,7 +7681,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID 用于外部溯源
+        r"""任务ID 用于外部溯源
         :rtype: str
         """
         return self._TaskId
@@ -7692,7 +7692,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页数
+        r"""页数
         :rtype: int
         """
         return self._PageNumber
@@ -7703,7 +7703,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def Code(self):
-        """溯源码
+        r"""溯源码
         :rtype: str
         """
         return self._Code
@@ -7714,7 +7714,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def Phase(self):
-        """溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+        r"""溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
         :rtype: int
         """
         return self._Phase
@@ -7725,7 +7725,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._PageSize
@@ -7754,7 +7754,7 @@ class DescribeTraceDataListRequest(AbstractModel):
 
 
 class DescribeTraceDataListResponse(AbstractModel):
-    """DescribeTraceDataList返回参数结构体
+    r"""DescribeTraceDataList返回参数结构体
 
     """
 
@@ -7773,7 +7773,7 @@ class DescribeTraceDataListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """溯源阶段数量
+        r"""溯源阶段数量
         :rtype: int
         """
         return self._TotalCount
@@ -7784,7 +7784,7 @@ class DescribeTraceDataListResponse(AbstractModel):
 
     @property
     def TraceDataList(self):
-        """溯源明细
+        r"""溯源明细
         :rtype: list of TraceData
         """
         return self._TraceDataList
@@ -7795,7 +7795,7 @@ class DescribeTraceDataListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7817,7 +7817,7 @@ class DescribeTraceDataListResponse(AbstractModel):
 
 
 class EffectFeedbackRequest(AbstractModel):
-    """EffectFeedback请求参数结构体
+    r"""EffectFeedback请求参数结构体
 
     """
 
@@ -7830,7 +7830,7 @@ class EffectFeedbackRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
-        """业务加密入参。
+        r"""业务加密入参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
         return self._BusinessSecurityData
@@ -7855,7 +7855,7 @@ class EffectFeedbackRequest(AbstractModel):
 
 
 class EffectFeedbackResponse(AbstractModel):
-    """EffectFeedback返回参数结构体
+    r"""EffectFeedback返回参数结构体
 
     """
 
@@ -7871,7 +7871,7 @@ class EffectFeedbackResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务出参。
+        r"""业务出参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
         """
         return self._Data
@@ -7882,7 +7882,7 @@ class EffectFeedbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7900,7 +7900,7 @@ class EffectFeedbackResponse(AbstractModel):
 
 
 class Ext(AbstractModel):
-    """预留字段
+    r"""预留字段
 
     """
 
@@ -7916,7 +7916,7 @@ class Ext(AbstractModel):
     def Value(self):
         warnings.warn("parameter `Value` is deprecated", DeprecationWarning) 
 
-        """字符串
+        r"""字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7942,7 +7942,7 @@ class Ext(AbstractModel):
 
 
 class InputEncryptData(AbstractModel):
-    """业务加密入参
+    r"""业务加密入参
 
     """
 
@@ -7970,7 +7970,7 @@ PKCS7Padding。
 
     @property
     def EncryptMethod(self):
-        """加密方式，0：AES加密；
+        r"""加密方式，0：AES加密；
 
         :rtype: int
         """
@@ -7982,7 +7982,7 @@ PKCS7Padding。
 
     @property
     def EncryptMode(self):
-        """加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
+        r"""加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
         :rtype: int
         """
         return self._EncryptMode
@@ -7993,7 +7993,7 @@ PKCS7Padding。
 
     @property
     def PaddingType(self):
-        """填充模式，0：ZeroPadding；1：PKCS5Padding；2：
+        r"""填充模式，0：ZeroPadding；1：PKCS5Padding；2：
 PKCS7Padding。
         :rtype: int
         """
@@ -8005,7 +8005,7 @@ PKCS7Padding。
 
     @property
     def EncryptData(self):
-        """加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
+        r"""加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
         :rtype: str
         """
         return self._EncryptData
@@ -8016,7 +8016,7 @@ PKCS7Padding。
 
     @property
     def IsAuthorized(self):
-        """用户是否授权，本接口取值：1，已授权。
+        r"""用户是否授权，本接口取值：1，已授权。
 
         :rtype: int
         """
@@ -8044,7 +8044,7 @@ PKCS7Padding。
 
 
 class Job(AbstractModel):
-    """通用调度任务
+    r"""通用调度任务
 
     """
 
@@ -8063,7 +8063,7 @@ class Job(AbstractModel):
 
     @property
     def JobId(self):
-        """调度ID
+        r"""调度ID
         :rtype: int
         """
         return self._JobId
@@ -8074,7 +8074,7 @@ class Job(AbstractModel):
 
     @property
     def Status(self):
-        """执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
+        r"""执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
         :rtype: str
         """
         return self._Status
@@ -8085,7 +8085,7 @@ class Job(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """任务错误信息
+        r"""任务错误信息
         :rtype: str
         """
         return self._ErrorMessage
@@ -8110,7 +8110,7 @@ class Job(AbstractModel):
 
 
 class Merchant(AbstractModel):
-    """商户信息
+    r"""商户信息
 
     """
 
@@ -8147,7 +8147,7 @@ class Merchant(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -8158,7 +8158,7 @@ class Merchant(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业id
+        r"""企业id
         :rtype: int
         """
         return self._CorpId
@@ -8169,7 +8169,7 @@ class Merchant(AbstractModel):
 
     @property
     def Name(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._Name
@@ -8180,7 +8180,7 @@ class Merchant(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -8191,7 +8191,7 @@ class Merchant(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -8202,7 +8202,7 @@ class Merchant(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -8213,7 +8213,7 @@ class Merchant(AbstractModel):
 
     @property
     def CodeRule(self):
-        """商户码规则
+        r"""商户码规则
         :rtype: str
         """
         return self._CodeRule
@@ -8224,7 +8224,7 @@ class Merchant(AbstractModel):
 
     @property
     def CodeType(self):
-        """码来源类型 0: 安心平台 1: 第三方码
+        r"""码来源类型 0: 安心平台 1: 第三方码
         :rtype: int
         """
         return self._CodeType
@@ -8235,7 +8235,7 @@ class Merchant(AbstractModel):
 
     @property
     def CodeUrl(self):
-        """第三方码域名前缀
+        r"""第三方码域名前缀
         :rtype: str
         """
         return self._CodeUrl
@@ -8266,7 +8266,7 @@ class Merchant(AbstractModel):
 
 
 class ModifyCodeBatchRequest(AbstractModel):
-    """ModifyCodeBatch请求参数结构体
+    r"""ModifyCodeBatch请求参数结构体
 
     """
 
@@ -8306,7 +8306,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -8317,7 +8317,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -8328,7 +8328,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态 0: 未激活 1: 已激活 -1: 已冻结
+        r"""状态 0: 未激活 1: 已激活 -1: 已冻结
         :rtype: int
         """
         return self._Status
@@ -8339,7 +8339,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def MpTpl(self):
-        """模板ID，或者活动ID
+        r"""模板ID，或者活动ID
         :rtype: str
         """
         return self._MpTpl
@@ -8350,7 +8350,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -8361,7 +8361,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -8372,7 +8372,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -8383,7 +8383,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def BatchCode(self):
-        """批次编码，业务字段不判断唯一性
+        r"""批次编码，业务字段不判断唯一性
         :rtype: str
         """
         return self._BatchCode
@@ -8394,7 +8394,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def ValidDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ValidDate
@@ -8405,7 +8405,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     @property
     def ProductionDate(self):
-        """生产日期
+        r"""生产日期
         :rtype: str
         """
         return self._ProductionDate
@@ -8437,7 +8437,7 @@ class ModifyCodeBatchRequest(AbstractModel):
 
 
 class ModifyCodeBatchResponse(AbstractModel):
-    """ModifyCodeBatch返回参数结构体
+    r"""ModifyCodeBatch返回参数结构体
 
     """
 
@@ -8453,7 +8453,7 @@ class ModifyCodeBatchResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -8464,7 +8464,7 @@ class ModifyCodeBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8480,7 +8480,7 @@ class ModifyCodeBatchResponse(AbstractModel):
 
 
 class ModifyCustomRuleRequest(AbstractModel):
-    """ModifyCustomRule请求参数结构体
+    r"""ModifyCustomRule请求参数结构体
 
     """
 
@@ -8505,7 +8505,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -8516,7 +8516,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._Name
@@ -8527,7 +8527,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def CodeLength(self):
-        """码长度
+        r"""码长度
         :rtype: int
         """
         return self._CodeLength
@@ -8538,7 +8538,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def CodeParts(self):
-        """码段配置
+        r"""码段配置
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -8549,7 +8549,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -8581,7 +8581,7 @@ class ModifyCustomRuleRequest(AbstractModel):
 
 
 class ModifyCustomRuleResponse(AbstractModel):
-    """ModifyCustomRule返回参数结构体
+    r"""ModifyCustomRule返回参数结构体
 
     """
 
@@ -8597,7 +8597,7 @@ class ModifyCustomRuleResponse(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -8608,7 +8608,7 @@ class ModifyCustomRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8624,7 +8624,7 @@ class ModifyCustomRuleResponse(AbstractModel):
 
 
 class ModifyCustomRuleStatusRequest(AbstractModel):
-    """ModifyCustomRuleStatus请求参数结构体
+    r"""ModifyCustomRuleStatus请求参数结构体
 
     """
 
@@ -8643,7 +8643,7 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -8654,7 +8654,7 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """码规则状态 0:未生效 1:已生效 -1:已失效
+        r"""码规则状态 0:未生效 1:已生效 -1:已失效
         :rtype: int
         """
         return self._Status
@@ -8665,7 +8665,7 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -8690,7 +8690,7 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
 
 class ModifyCustomRuleStatusResponse(AbstractModel):
-    """ModifyCustomRuleStatus返回参数结构体
+    r"""ModifyCustomRuleStatus返回参数结构体
 
     """
 
@@ -8706,7 +8706,7 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -8717,7 +8717,7 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8733,7 +8733,7 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
 
 
 class ModifyMerchantRequest(AbstractModel):
-    """ModifyMerchant请求参数结构体
+    r"""ModifyMerchant请求参数结构体
 
     """
 
@@ -8761,7 +8761,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def Name(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._Name
@@ -8772,7 +8772,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -8783,7 +8783,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -8794,7 +8794,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -8805,7 +8805,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def CodeType(self):
-        """码包来源 0:自建, 1:第三方码包，暂不支持修改
+        r"""码包来源 0:自建, 1:第三方码包，暂不支持修改
         :rtype: int
         """
         return self._CodeType
@@ -8816,7 +8816,7 @@ class ModifyMerchantRequest(AbstractModel):
 
     @property
     def CodeUrl(self):
-        """码包前缀地址 第三方码包时必填
+        r"""码包前缀地址 第三方码包时必填
         :rtype: str
         """
         return self._CodeUrl
@@ -8844,7 +8844,7 @@ class ModifyMerchantRequest(AbstractModel):
 
 
 class ModifyMerchantResponse(AbstractModel):
-    """ModifyMerchant返回参数结构体
+    r"""ModifyMerchant返回参数结构体
 
     """
 
@@ -8860,7 +8860,7 @@ class ModifyMerchantResponse(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -8871,7 +8871,7 @@ class ModifyMerchantResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8887,7 +8887,7 @@ class ModifyMerchantResponse(AbstractModel):
 
 
 class ModifyProductRequest(AbstractModel):
-    """ModifyProduct请求参数结构体
+    r"""ModifyProduct请求参数结构体
 
     """
 
@@ -8918,7 +8918,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def Name(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._Name
@@ -8929,7 +8929,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -8940,7 +8940,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -8951,7 +8951,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def Specification(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._Specification
@@ -8962,7 +8962,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def Logo(self):
-        """商品图片
+        r"""商品图片
         :rtype: list of str
         """
         return self._Logo
@@ -8973,7 +8973,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -8984,7 +8984,7 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def Ext(self):
-        """预留字段
+        r"""预留字段
         :rtype: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
         return self._Ext
@@ -9015,7 +9015,7 @@ class ModifyProductRequest(AbstractModel):
 
 
 class ModifyProductResponse(AbstractModel):
-    """ModifyProduct返回参数结构体
+    r"""ModifyProduct返回参数结构体
 
     """
 
@@ -9031,7 +9031,7 @@ class ModifyProductResponse(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -9042,7 +9042,7 @@ class ModifyProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9058,7 +9058,7 @@ class ModifyProductResponse(AbstractModel):
 
 
 class ModifyTraceCodeRequest(AbstractModel):
-    """ModifyTraceCode请求参数结构体
+    r"""ModifyTraceCode请求参数结构体
 
     """
 
@@ -9077,7 +9077,7 @@ class ModifyTraceCodeRequest(AbstractModel):
 
     @property
     def Code(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._Code
@@ -9088,7 +9088,7 @@ class ModifyTraceCodeRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -9099,7 +9099,7 @@ class ModifyTraceCodeRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态 0: 冻结 1: 激活
+        r"""状态 0: 冻结 1: 激活
         :rtype: int
         """
         return self._Status
@@ -9124,7 +9124,7 @@ class ModifyTraceCodeRequest(AbstractModel):
 
 
 class ModifyTraceCodeResponse(AbstractModel):
-    """ModifyTraceCode返回参数结构体
+    r"""ModifyTraceCode返回参数结构体
 
     """
 
@@ -9137,7 +9137,7 @@ class ModifyTraceCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9152,7 +9152,7 @@ class ModifyTraceCodeResponse(AbstractModel):
 
 
 class ModifyTraceCodeUnlinkRequest(AbstractModel):
-    """ModifyTraceCodeUnlink请求参数结构体
+    r"""ModifyTraceCodeUnlink请求参数结构体
 
     """
 
@@ -9171,7 +9171,7 @@ class ModifyTraceCodeUnlinkRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -9182,7 +9182,7 @@ class ModifyTraceCodeUnlinkRequest(AbstractModel):
 
     @property
     def Codes(self):
-        """溯源码列表
+        r"""溯源码列表
         :rtype: list of str
         """
         return self._Codes
@@ -9193,7 +9193,7 @@ class ModifyTraceCodeUnlinkRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -9218,7 +9218,7 @@ class ModifyTraceCodeUnlinkRequest(AbstractModel):
 
 
 class ModifyTraceCodeUnlinkResponse(AbstractModel):
-    """ModifyTraceCodeUnlink返回参数结构体
+    r"""ModifyTraceCodeUnlink返回参数结构体
 
     """
 
@@ -9240,7 +9240,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
     @property
     def UnlinkCnt(self):
-        """成功解绑溯源码的数量
+        r"""成功解绑溯源码的数量
         :rtype: int
         """
         return self._UnlinkCnt
@@ -9251,7 +9251,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
     @property
     def CodeCnt(self):
-        """当前批次的码数量
+        r"""当前批次的码数量
         :rtype: int
         """
         return self._CodeCnt
@@ -9262,7 +9262,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -9273,7 +9273,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9291,7 +9291,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
 
 class ModifyTraceDataRanksRequest(AbstractModel):
-    """ModifyTraceDataRanks请求参数结构体
+    r"""ModifyTraceDataRanks请求参数结构体
 
     """
 
@@ -9313,7 +9313,7 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -9324,7 +9324,7 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -9335,7 +9335,7 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """生产任务ID
+        r"""生产任务ID
         :rtype: str
         """
         return self._TaskId
@@ -9346,7 +9346,7 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
     @property
     def TraceIds(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: list of str
         """
         return self._TraceIds
@@ -9372,7 +9372,7 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
 
 class ModifyTraceDataRanksResponse(AbstractModel):
-    """ModifyTraceDataRanks返回参数结构体
+    r"""ModifyTraceDataRanks返回参数结构体
 
     """
 
@@ -9388,7 +9388,7 @@ class ModifyTraceDataRanksResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -9399,7 +9399,7 @@ class ModifyTraceDataRanksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9415,7 +9415,7 @@ class ModifyTraceDataRanksResponse(AbstractModel):
 
 
 class ModifyTraceDataRequest(AbstractModel):
-    """ModifyTraceData请求参数结构体
+    r"""ModifyTraceData请求参数结构体
 
     """
 
@@ -9476,7 +9476,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -9487,7 +9487,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -9498,7 +9498,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """生产溯源任务ID
+        r"""生产溯源任务ID
         :rtype: str
         """
         return self._TaskId
@@ -9509,7 +9509,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def TraceItems(self):
-        """溯源信息
+        r"""溯源信息
         :rtype: list of TraceItem
         """
         return self._TraceItems
@@ -9520,7 +9520,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def PhaseName(self):
-        """溯源阶段名称
+        r"""溯源阶段名称
         :rtype: str
         """
         return self._PhaseName
@@ -9531,7 +9531,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def PhaseData(self):
-        """环节数据
+        r"""环节数据
         :rtype: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         return self._PhaseData
@@ -9542,7 +9542,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def Status(self):
-        """溯源状态 0: 无效, 1: 有效
+        r"""溯源状态 0: 无效, 1: 有效
         :rtype: int
         """
         return self._Status
@@ -9553,7 +9553,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def Rank(self):
-        """排序
+        r"""排序
         :rtype: int
         """
         return self._Rank
@@ -9564,7 +9564,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def Type(self):
-        """[无效] 类型
+        r"""[无效] 类型
         :rtype: int
         """
         return self._Type
@@ -9575,7 +9575,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def Code(self):
-        """[无效] 溯源码
+        r"""[无效] 溯源码
         :rtype: str
         """
         return self._Code
@@ -9586,7 +9586,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def Phase(self):
-        """[无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        r"""[无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :rtype: int
         """
         return self._Phase
@@ -9597,7 +9597,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def TraceTime(self):
-        """[无效] 溯源时间
+        r"""[无效] 溯源时间
         :rtype: str
         """
         return self._TraceTime
@@ -9608,7 +9608,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        """[无效] 创建时间
+        r"""[无效] 创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -9619,7 +9619,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def ChainStatus(self):
-        """[无效] 上链状态
+        r"""[无效] 上链状态
         :rtype: int
         """
         return self._ChainStatus
@@ -9630,7 +9630,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def ChainTime(self):
-        """[无效] 上链时间
+        r"""[无效] 上链时间
         :rtype: str
         """
         return self._ChainTime
@@ -9641,7 +9641,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def ChainData(self):
-        """[无效] 上链数据
+        r"""[无效] 上链数据
         :rtype: :class:`tencentcloud.trp.v20210515.models.ChainData`
         """
         return self._ChainData
@@ -9652,7 +9652,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -9700,7 +9700,7 @@ class ModifyTraceDataRequest(AbstractModel):
 
 
 class ModifyTraceDataResponse(AbstractModel):
-    """ModifyTraceData返回参数结构体
+    r"""ModifyTraceData返回参数结构体
 
     """
 
@@ -9716,7 +9716,7 @@ class ModifyTraceDataResponse(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -9727,7 +9727,7 @@ class ModifyTraceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9743,7 +9743,7 @@ class ModifyTraceDataResponse(AbstractModel):
 
 
 class OutputAuthorizedTransfer(AbstractModel):
-    """业务出参
+    r"""业务出参
 
     """
 
@@ -9762,7 +9762,7 @@ class OutputAuthorizedTransfer(AbstractModel):
 
     @property
     def Code(self):
-        """推送状态，0表示成功。
+        r"""推送状态，0表示成功。
         :rtype: int
         """
         return self._Code
@@ -9773,7 +9773,7 @@ class OutputAuthorizedTransfer(AbstractModel):
 
     @property
     def Message(self):
-        """错误码。
+        r"""错误码。
         :rtype: str
         """
         return self._Message
@@ -9784,7 +9784,7 @@ class OutputAuthorizedTransfer(AbstractModel):
 
     @property
     def Value(self):
-        """错误信息描述。
+        r"""错误信息描述。
         :rtype: str
         """
         return self._Value
@@ -9809,7 +9809,7 @@ class OutputAuthorizedTransfer(AbstractModel):
 
 
 class PackSpec(AbstractModel):
-    """层级码配置
+    r"""层级码配置
 
     """
 
@@ -9840,7 +9840,7 @@ class PackSpec(AbstractModel):
 
     @property
     def Level(self):
-        """层级
+        r"""层级
         :rtype: int
         """
         return self._Level
@@ -9851,7 +9851,7 @@ class PackSpec(AbstractModel):
 
     @property
     def Rate(self):
-        """比例
+        r"""比例
         :rtype: int
         """
         return self._Rate
@@ -9862,7 +9862,7 @@ class PackSpec(AbstractModel):
 
     @property
     def Amount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Amount
@@ -9873,7 +9873,7 @@ class PackSpec(AbstractModel):
 
     @property
     def CustomId(self):
-        """码规则ID
+        r"""码规则ID
         :rtype: str
         """
         return self._CustomId
@@ -9884,7 +9884,7 @@ class PackSpec(AbstractModel):
 
     @property
     def CodeParts(self):
-        """码段配置
+        r"""码段配置
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -9895,7 +9895,7 @@ class PackSpec(AbstractModel):
 
     @property
     def Unit(self):
-        """包装单位
+        r"""包装单位
         :rtype: str
         """
         return self._Unit
@@ -9906,7 +9906,7 @@ class PackSpec(AbstractModel):
 
     @property
     def SceneCode(self):
-        """场景值
+        r"""场景值
         :rtype: int
         """
         return self._SceneCode
@@ -9940,7 +9940,7 @@ class PackSpec(AbstractModel):
 
 
 class PhaseData(AbstractModel):
-    """环节数据
+    r"""环节数据
 
     """
 
@@ -9968,7 +9968,7 @@ class PhaseData(AbstractModel):
 
     @property
     def HeadEnabled(self):
-        """启用头
+        r"""启用头
         :rtype: bool
         """
         return self._HeadEnabled
@@ -9979,7 +9979,7 @@ class PhaseData(AbstractModel):
 
     @property
     def HeadTitle(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._HeadTitle
@@ -9990,7 +9990,7 @@ class PhaseData(AbstractModel):
 
     @property
     def Key(self):
-        """标识符
+        r"""标识符
         :rtype: str
         """
         return self._Key
@@ -10001,7 +10001,7 @@ class PhaseData(AbstractModel):
 
     @property
     def AppId(self):
-        """小程序AppId
+        r"""小程序AppId
         :rtype: str
         """
         return self._AppId
@@ -10012,7 +10012,7 @@ class PhaseData(AbstractModel):
 
     @property
     def AppPath(self):
-        """小程序AppPath
+        r"""小程序AppPath
         :rtype: str
         """
         return self._AppPath
@@ -10023,7 +10023,7 @@ class PhaseData(AbstractModel):
 
     @property
     def AppName(self):
-        """小程序名称AppName
+        r"""小程序名称AppName
         :rtype: str
         """
         return self._AppName
@@ -10051,7 +10051,7 @@ class PhaseData(AbstractModel):
 
 
 class PlanQRCode(AbstractModel):
-    """安心计划二维码
+    r"""安心计划二维码
 
     """
 
@@ -10067,7 +10067,7 @@ class PlanQRCode(AbstractModel):
 
     @property
     def Url(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._Url
@@ -10078,7 +10078,7 @@ class PlanQRCode(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0:未激活 1:已激活 2:已冻结
+        r"""状态，0:未激活 1:已激活 2:已冻结
         :rtype: int
         """
         return self._Status
@@ -10102,7 +10102,7 @@ class PlanQRCode(AbstractModel):
 
 
 class PlanQRCodeRecord(AbstractModel):
-    """安心计划二维码扫码记录
+    r"""安心计划二维码扫码记录
 
     """
 
@@ -10133,7 +10133,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def Url(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._Url
@@ -10144,7 +10144,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def OpenId(self):
-        """OpenID
+        r"""OpenID
         :rtype: str
         """
         return self._OpenId
@@ -10155,7 +10155,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def ScanTime(self):
-        """扫码时间
+        r"""扫码时间
         :rtype: str
         """
         return self._ScanTime
@@ -10166,7 +10166,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def Ip(self):
-        """IP 地址
+        r"""IP 地址
         :rtype: str
         """
         return self._Ip
@@ -10177,7 +10177,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def Country(self):
-        """国家
+        r"""国家
         :rtype: str
         """
         return self._Country
@@ -10188,7 +10188,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -10199,7 +10199,7 @@ class PlanQRCodeRecord(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -10228,7 +10228,7 @@ class PlanQRCodeRecord(AbstractModel):
 
 
 class Product(AbstractModel):
-    """商品信息
+    r"""商品信息
 
     """
 
@@ -10277,7 +10277,7 @@ class Product(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户标识码
+        r"""商户标识码
         :rtype: str
         """
         return self._MerchantId
@@ -10288,7 +10288,7 @@ class Product(AbstractModel):
 
     @property
     def Name(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._Name
@@ -10299,7 +10299,7 @@ class Product(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品id
+        r"""商品id
         :rtype: str
         """
         return self._ProductId
@@ -10310,7 +10310,7 @@ class Product(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业id
+        r"""企业id
         :rtype: int
         """
         return self._CorpId
@@ -10321,7 +10321,7 @@ class Product(AbstractModel):
 
     @property
     def ProductCode(self):
-        """商品编号
+        r"""商品编号
         :rtype: str
         """
         return self._ProductCode
@@ -10332,7 +10332,7 @@ class Product(AbstractModel):
 
     @property
     def Specification(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._Specification
@@ -10343,7 +10343,7 @@ class Product(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -10354,7 +10354,7 @@ class Product(AbstractModel):
 
     @property
     def Logo(self):
-        """商品图片
+        r"""商品图片
         :rtype: list of str
         """
         return self._Logo
@@ -10365,7 +10365,7 @@ class Product(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -10376,7 +10376,7 @@ class Product(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -10387,7 +10387,7 @@ class Product(AbstractModel):
 
     @property
     def Ext(self):
-        """预留字段
+        r"""预留字段
         :rtype: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
         return self._Ext
@@ -10398,7 +10398,7 @@ class Product(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -10409,7 +10409,7 @@ class Product(AbstractModel):
 
     @property
     def CertState(self):
-        """认证状态
+        r"""认证状态
         :rtype: int
         """
         return self._CertState
@@ -10446,7 +10446,7 @@ class Product(AbstractModel):
 
 
 class Quota(AbstractModel):
-    """企业配额信息
+    r"""企业配额信息
 
     """
 
@@ -10504,7 +10504,7 @@ class Quota(AbstractModel):
 
     @property
     def StartTime(self):
-        """服务开始时间
+        r"""服务开始时间
         :rtype: str
         """
         return self._StartTime
@@ -10515,7 +10515,7 @@ class Quota(AbstractModel):
 
     @property
     def EndTime(self):
-        """服务结束时间
+        r"""服务结束时间
         :rtype: str
         """
         return self._EndTime
@@ -10526,7 +10526,7 @@ class Quota(AbstractModel):
 
     @property
     def QuotaId(self):
-        """配额ID
+        r"""配额ID
         :rtype: int
         """
         return self._QuotaId
@@ -10537,7 +10537,7 @@ class Quota(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -10548,7 +10548,7 @@ class Quota(AbstractModel):
 
     @property
     def Services(self):
-        """开通服务
+        r"""开通服务
         :rtype: list of str
         """
         return self._Services
@@ -10559,7 +10559,7 @@ class Quota(AbstractModel):
 
     @property
     def FactoryQuota(self):
-        """商户配额
+        r"""商户配额
         :rtype: int
         """
         return self._FactoryQuota
@@ -10570,7 +10570,7 @@ class Quota(AbstractModel):
 
     @property
     def ItemQuota(self):
-        """商品配额
+        r"""商品配额
         :rtype: int
         """
         return self._ItemQuota
@@ -10581,7 +10581,7 @@ class Quota(AbstractModel):
 
     @property
     def TrackQuota(self):
-        """溯源码配额
+        r"""溯源码配额
         :rtype: int
         """
         return self._TrackQuota
@@ -10592,7 +10592,7 @@ class Quota(AbstractModel):
 
     @property
     def SaleQuota(self):
-        """销售码配额
+        r"""销售码配额
         :rtype: int
         """
         return self._SaleQuota
@@ -10603,7 +10603,7 @@ class Quota(AbstractModel):
 
     @property
     def ChainQuota(self):
-        """上链配额
+        r"""上链配额
         :rtype: int
         """
         return self._ChainQuota
@@ -10614,7 +10614,7 @@ class Quota(AbstractModel):
 
     @property
     def RiskQuota(self):
-        """风控配额
+        r"""风控配额
         :rtype: int
         """
         return self._RiskQuota
@@ -10625,7 +10625,7 @@ class Quota(AbstractModel):
 
     @property
     def AigcTextQuota(self):
-        """AI文字数量
+        r"""AI文字数量
         :rtype: int
         """
         return self._AigcTextQuota
@@ -10636,7 +10636,7 @@ class Quota(AbstractModel):
 
     @property
     def AigcImageQuota(self):
-        """AI图片数量
+        r"""AI图片数量
         :rtype: int
         """
         return self._AigcImageQuota
@@ -10647,7 +10647,7 @@ class Quota(AbstractModel):
 
     @property
     def TrackType(self):
-        """溯源类型
+        r"""溯源类型
         :rtype: int
         """
         return self._TrackType
@@ -10658,7 +10658,7 @@ class Quota(AbstractModel):
 
     @property
     def Version(self):
-        """开通版本 lite:轻量版, basic:基础版, standard:标准版
+        r"""开通版本 lite:轻量版, basic:基础版, standard:标准版
         :rtype: str
         """
         return self._Version
@@ -10669,7 +10669,7 @@ class Quota(AbstractModel):
 
     @property
     def ProductCertify(self):
-        """是否开启企业认证
+        r"""是否开启企业认证
         :rtype: int
         """
         return self._ProductCertify
@@ -10707,7 +10707,7 @@ class Quota(AbstractModel):
 
 
 class RawScanLog(AbstractModel):
-    """原始扫码日志
+    r"""原始扫码日志
 
     """
 
@@ -10750,7 +10750,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def LogId(self):
-        """日志ID
+        r"""日志ID
         :rtype: int
         """
         return self._LogId
@@ -10761,7 +10761,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def Openid(self):
-        """微信小程序openid
+        r"""微信小程序openid
         :rtype: str
         """
         return self._Openid
@@ -10772,7 +10772,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def CreateTime(self):
-        """扫码时间
+        r"""扫码时间
         :rtype: str
         """
         return self._CreateTime
@@ -10783,7 +10783,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def Code(self):
-        """溯源码
+        r"""溯源码
         :rtype: str
         """
         return self._Code
@@ -10794,7 +10794,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -10805,7 +10805,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -10816,7 +10816,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -10827,7 +10827,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -10838,7 +10838,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -10849,7 +10849,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def City(self):
-        """地市
+        r"""地市
         :rtype: str
         """
         return self._City
@@ -10860,7 +10860,7 @@ class RawScanLog(AbstractModel):
 
     @property
     def District(self):
-        """区/县
+        r"""区/县
         :rtype: str
         """
         return self._District
@@ -10893,7 +10893,7 @@ class RawScanLog(AbstractModel):
 
 
 class ReportBatchCallbackStatusRequest(AbstractModel):
-    """ReportBatchCallbackStatus请求参数结构体
+    r"""ReportBatchCallbackStatus请求参数结构体
 
     """
 
@@ -10906,7 +10906,7 @@ class ReportBatchCallbackStatusRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
-        """业务加密入参。
+        r"""业务加密入参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
         return self._BusinessSecurityData
@@ -10931,7 +10931,7 @@ class ReportBatchCallbackStatusRequest(AbstractModel):
 
 
 class ReportBatchCallbackStatusResponse(AbstractModel):
-    """ReportBatchCallbackStatus返回参数结构体
+    r"""ReportBatchCallbackStatus返回参数结构体
 
     """
 
@@ -10947,7 +10947,7 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务出参。
+        r"""业务出参。
         :rtype: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
         """
         return self._Data
@@ -10958,7 +10958,7 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10976,7 +10976,7 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
 
 
 class ScanLog(AbstractModel):
-    """扫码明细
+    r"""扫码明细
 
     """
 
@@ -11054,7 +11054,7 @@ class ScanLog(AbstractModel):
 
     @property
     def LogId(self):
-        """行ID
+        r"""行ID
         :rtype: int
         """
         return self._LogId
@@ -11065,7 +11065,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Openid(self):
-        """微信openid
+        r"""微信openid
         :rtype: str
         """
         return self._Openid
@@ -11076,7 +11076,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Nickname(self):
-        """微信昵称
+        r"""微信昵称
         :rtype: str
         """
         return self._Nickname
@@ -11087,7 +11087,7 @@ class ScanLog(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11098,7 +11098,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Code(self):
-        """码
+        r"""码
         :rtype: str
         """
         return self._Code
@@ -11109,7 +11109,7 @@ class ScanLog(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -11120,7 +11120,7 @@ class ScanLog(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -11131,7 +11131,7 @@ class ScanLog(AbstractModel):
 
     @property
     def ProductId(self):
-        """商品ID
+        r"""商品ID
         :rtype: str
         """
         return self._ProductId
@@ -11142,7 +11142,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Ip(self):
-        """ip地址
+        r"""ip地址
         :rtype: str
         """
         return self._Ip
@@ -11153,7 +11153,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Country(self):
-        """国家
+        r"""国家
         :rtype: str
         """
         return self._Country
@@ -11164,7 +11164,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -11175,7 +11175,7 @@ class ScanLog(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -11186,7 +11186,7 @@ class ScanLog(AbstractModel):
 
     @property
     def District(self):
-        """县/区
+        r"""县/区
         :rtype: str
         """
         return self._District
@@ -11197,7 +11197,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Unionid(self):
-        """微信 unionid
+        r"""微信 unionid
         :rtype: str
         """
         return self._Unionid
@@ -11208,7 +11208,7 @@ class ScanLog(AbstractModel):
 
     @property
     def First(self):
-        """首次扫码 0:否, 1:是
+        r"""首次扫码 0:否, 1:是
         :rtype: int
         """
         return self._First
@@ -11219,7 +11219,7 @@ class ScanLog(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -11230,7 +11230,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Type(self):
-        """扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
+        r"""扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
         :rtype: int
         """
         return self._Type
@@ -11241,7 +11241,7 @@ class ScanLog(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -11252,7 +11252,7 @@ class ScanLog(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -11263,7 +11263,7 @@ class ScanLog(AbstractModel):
 
     @property
     def ProductLogo(self):
-        """产品Logo
+        r"""产品Logo
         :rtype: str
         """
         return self._ProductLogo
@@ -11274,7 +11274,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Status(self):
-        """风险状态
+        r"""风险状态
 0: 未知, 1:通过, 2:失败/风险, 3:存疑
         :rtype: int
         """
@@ -11286,7 +11286,7 @@ class ScanLog(AbstractModel):
 
     @property
     def Verify(self):
-        """是否开启验证
+        r"""是否开启验证
 0:否, 1:是
         :rtype: int
         """
@@ -11331,7 +11331,7 @@ class ScanLog(AbstractModel):
 
 
 class ScanStat(AbstractModel):
-    """扫码统计
+    r"""扫码统计
 
     """
 
@@ -11374,7 +11374,7 @@ class ScanStat(AbstractModel):
 
     @property
     def Code(self):
-        """安心码
+        r"""安心码
         :rtype: str
         """
         return self._Code
@@ -11385,7 +11385,7 @@ class ScanStat(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -11396,7 +11396,7 @@ class ScanStat(AbstractModel):
 
     @property
     def MerchantId(self):
-        """商户ID
+        r"""商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -11407,7 +11407,7 @@ class ScanStat(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -11418,7 +11418,7 @@ class ScanStat(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -11429,7 +11429,7 @@ class ScanStat(AbstractModel):
 
     @property
     def Pv(self):
-        """扫码次数
+        r"""扫码次数
         :rtype: int
         """
         return self._Pv
@@ -11440,7 +11440,7 @@ class ScanStat(AbstractModel):
 
     @property
     def Uv(self):
-        """扫码人数
+        r"""扫码人数
         :rtype: int
         """
         return self._Uv
@@ -11451,7 +11451,7 @@ class ScanStat(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11462,7 +11462,7 @@ class ScanStat(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11473,7 +11473,7 @@ class ScanStat(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -11484,7 +11484,7 @@ class ScanStat(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -11517,7 +11517,7 @@ class ScanStat(AbstractModel):
 
 
 class TraceCode(AbstractModel):
-    """溯源码
+    r"""溯源码
 
     """
 
@@ -11575,7 +11575,7 @@ class TraceCode(AbstractModel):
 
     @property
     def Code(self):
-        """二维码
+        r"""二维码
         :rtype: str
         """
         return self._Code
@@ -11586,7 +11586,7 @@ class TraceCode(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -11597,7 +11597,7 @@ class TraceCode(AbstractModel):
 
     @property
     def PackId(self):
-        """码包ID
+        r"""码包ID
         :rtype: str
         """
         return self._PackId
@@ -11608,7 +11608,7 @@ class TraceCode(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        r"""批次ID
         :rtype: str
         """
         return self._BatchId
@@ -11619,7 +11619,7 @@ class TraceCode(AbstractModel):
 
     @property
     def MerchantId(self):
-        """所属商户ID
+        r"""所属商户ID
         :rtype: str
         """
         return self._MerchantId
@@ -11630,7 +11630,7 @@ class TraceCode(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品ID
+        r"""产品ID
         :rtype: str
         """
         return self._ProductId
@@ -11641,7 +11641,7 @@ class TraceCode(AbstractModel):
 
     @property
     def Status(self):
-        """码状态 0: 冻结 1: 激活
+        r"""码状态 0: 冻结 1: 激活
         :rtype: int
         """
         return self._Status
@@ -11652,7 +11652,7 @@ class TraceCode(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11663,7 +11663,7 @@ class TraceCode(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11674,7 +11674,7 @@ class TraceCode(AbstractModel):
 
     @property
     def MerchantName(self):
-        """商户名称
+        r"""商户名称
         :rtype: str
         """
         return self._MerchantName
@@ -11685,7 +11685,7 @@ class TraceCode(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -11696,7 +11696,7 @@ class TraceCode(AbstractModel):
 
     @property
     def AgentId(self):
-        """渠道商ID
+        r"""渠道商ID
         :rtype: int
         """
         return self._AgentId
@@ -11707,7 +11707,7 @@ class TraceCode(AbstractModel):
 
     @property
     def Level(self):
-        """码层级 0: 最小级, 1: 一级, 2: 二级
+        r"""码层级 0: 最小级, 1: 一级, 2: 二级
         :rtype: int
         """
         return self._Level
@@ -11718,7 +11718,7 @@ class TraceCode(AbstractModel):
 
     @property
     def PackSpec(self):
-        """码层级详情
+        r"""码层级详情
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -11729,7 +11729,7 @@ class TraceCode(AbstractModel):
 
     @property
     def SceneCode(self):
-        """场景码
+        r"""场景码
         :rtype: int
         """
         return self._SceneCode
@@ -11740,7 +11740,7 @@ class TraceCode(AbstractModel):
 
     @property
     def SerialCode(self):
-        """流水码
+        r"""流水码
         :rtype: int
         """
         return self._SerialCode
@@ -11783,7 +11783,7 @@ class TraceCode(AbstractModel):
 
 
 class TraceData(AbstractModel):
-    """溯源数据
+    r"""溯源数据
 
     """
 
@@ -11838,7 +11838,7 @@ class TraceData(AbstractModel):
 
     @property
     def TraceId(self):
-        """溯源ID
+        r"""溯源ID
         :rtype: str
         """
         return self._TraceId
@@ -11849,7 +11849,7 @@ class TraceData(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -11860,7 +11860,7 @@ class TraceData(AbstractModel):
 
     @property
     def Type(self):
-        """码类型 0: 批次, 1: 码, 2: 生产任务
+        r"""码类型 0: 批次, 1: 码, 2: 生产任务
         :rtype: int
         """
         return self._Type
@@ -11871,7 +11871,7 @@ class TraceData(AbstractModel):
 
     @property
     def Code(self):
-        """码值，跟码类型一一对应
+        r"""码值，跟码类型一一对应
         :rtype: str
         """
         return self._Code
@@ -11882,7 +11882,7 @@ class TraceData(AbstractModel):
 
     @property
     def Rank(self):
-        """排序，在Phase相同情况下，值越小排名靠前
+        r"""排序，在Phase相同情况下，值越小排名靠前
         :rtype: int
         """
         return self._Rank
@@ -11893,7 +11893,7 @@ class TraceData(AbstractModel):
 
     @property
     def Phase(self):
-        """溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        r"""溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :rtype: int
         """
         return self._Phase
@@ -11904,7 +11904,7 @@ class TraceData(AbstractModel):
 
     @property
     def PhaseName(self):
-        """溯源环节名称
+        r"""溯源环节名称
         :rtype: str
         """
         return self._PhaseName
@@ -11915,7 +11915,7 @@ class TraceData(AbstractModel):
 
     @property
     def TraceTime(self):
-        """溯源时间
+        r"""溯源时间
         :rtype: str
         """
         return self._TraceTime
@@ -11926,7 +11926,7 @@ class TraceData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11937,7 +11937,7 @@ class TraceData(AbstractModel):
 
     @property
     def ChainStatus(self):
-        """上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
+        r"""上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
         :rtype: int
         """
         return self._ChainStatus
@@ -11948,7 +11948,7 @@ class TraceData(AbstractModel):
 
     @property
     def ChainTime(self):
-        """上链时间
+        r"""上链时间
         :rtype: str
         """
         return self._ChainTime
@@ -11959,7 +11959,7 @@ class TraceData(AbstractModel):
 
     @property
     def ChainData(self):
-        """上链数据
+        r"""上链数据
         :rtype: :class:`tencentcloud.trp.v20210515.models.ChainData`
         """
         return self._ChainData
@@ -11970,7 +11970,7 @@ class TraceData(AbstractModel):
 
     @property
     def PhaseData(self):
-        """溯源阶段配置
+        r"""溯源阶段配置
         :rtype: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         return self._PhaseData
@@ -11981,7 +11981,7 @@ class TraceData(AbstractModel):
 
     @property
     def Status(self):
-        """溯源阶段状态 0: 无效, 1: 有效
+        r"""溯源阶段状态 0: 无效, 1: 有效
         :rtype: int
         """
         return self._Status
@@ -11992,7 +11992,7 @@ class TraceData(AbstractModel):
 
     @property
     def TraceItems(self):
-        """无
+        r"""无
         :rtype: list of TraceItem
         """
         return self._TraceItems
@@ -12038,7 +12038,7 @@ class TraceData(AbstractModel):
 
 
 class TraceItem(AbstractModel):
-    """溯源数据项 Type 的枚举值
+    r"""溯源数据项 Type 的枚举值
 
     text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
 
@@ -12092,7 +12092,7 @@ mp:小程序类型
 
     @property
     def Name(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._Name
@@ -12103,7 +12103,7 @@ mp:小程序类型
 
     @property
     def Value(self):
-        """字段值
+        r"""字段值
         :rtype: str
         """
         return self._Value
@@ -12114,7 +12114,7 @@ mp:小程序类型
 
     @property
     def Type(self):
-        """字段类型
+        r"""字段类型
 text:文本类型, 
 longtext:长文本类型, banner:单图片类型, image:多图片类型,
 video:视频类型,
@@ -12129,7 +12129,7 @@ mp:小程序类型
 
     @property
     def Values(self):
-        """多个值
+        r"""多个值
         :rtype: list of str
         """
         return self._Values
@@ -12140,7 +12140,7 @@ mp:小程序类型
 
     @property
     def ReadOnly(self):
-        """只读
+        r"""只读
         :rtype: bool
         """
         return self._ReadOnly
@@ -12151,7 +12151,7 @@ mp:小程序类型
 
     @property
     def Hidden(self):
-        """扫码展示
+        r"""扫码展示
         :rtype: bool
         """
         return self._Hidden
@@ -12162,7 +12162,7 @@ mp:小程序类型
 
     @property
     def Key(self):
-        """类型标识
+        r"""类型标识
         :rtype: str
         """
         return self._Key
@@ -12173,7 +12173,7 @@ mp:小程序类型
 
     @property
     def Ext(self):
-        """扩展字段
+        r"""扩展字段
         :rtype: str
         """
         return self._Ext
@@ -12184,7 +12184,7 @@ mp:小程序类型
 
     @property
     def Attrs(self):
-        """额外属性
+        r"""额外属性
         :rtype: list of TraceItem
         """
         return self._Attrs
@@ -12195,7 +12195,7 @@ mp:小程序类型
 
     @property
     def List(self):
-        """子页面，只读
+        r"""子页面，只读
         :rtype: list of TraceData
         """
         return self._List
@@ -12237,7 +12237,7 @@ mp:小程序类型
 
 
 class UsageQuota(AbstractModel):
-    """付费信息使用量
+    r"""付费信息使用量
 
     """
 
@@ -12272,7 +12272,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def CorpId(self):
-        """企业ID
+        r"""企业ID
         :rtype: int
         """
         return self._CorpId
@@ -12283,7 +12283,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def FactoryCnt(self):
-        """商户配额
+        r"""商户配额
         :rtype: int
         """
         return self._FactoryCnt
@@ -12294,7 +12294,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def ItemCnt(self):
-        """商品数量
+        r"""商品数量
         :rtype: int
         """
         return self._ItemCnt
@@ -12305,7 +12305,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def TrackCnt(self):
-        """溯源码量
+        r"""溯源码量
         :rtype: int
         """
         return self._TrackCnt
@@ -12316,7 +12316,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def SaleCnt(self):
-        """营销码额度
+        r"""营销码额度
         :rtype: int
         """
         return self._SaleCnt
@@ -12327,7 +12327,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def ChainCnt(self):
-        """区块链上链次数
+        r"""区块链上链次数
         :rtype: int
         """
         return self._ChainCnt
@@ -12340,7 +12340,7 @@ class UsageQuota(AbstractModel):
     def RiskCnt(self):
         warnings.warn("parameter `RiskCnt` is deprecated", DeprecationWarning) 
 
-        """风险检测次数
+        r"""风险检测次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12354,7 +12354,7 @@ class UsageQuota(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._UpdateTime

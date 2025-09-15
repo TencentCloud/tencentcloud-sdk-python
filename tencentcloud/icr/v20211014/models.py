@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class GetIndustryV1HomeMembersReqPayload(AbstractModel):
-    """获取成员列表入参payload
+    r"""获取成员列表入参payload
 
     """
 
@@ -32,7 +32,7 @@ class GetIndustryV1HomeMembersReqPayload(AbstractModel):
 
     @property
     def ID(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._ID
@@ -55,7 +55,7 @@ class GetIndustryV1HomeMembersReqPayload(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRequest(AbstractModel):
-    """GetIndustryV1HomeMembers请求参数结构体
+    r"""GetIndustryV1HomeMembers请求参数结构体
 
     """
 
@@ -71,7 +71,7 @@ class GetIndustryV1HomeMembersRequest(AbstractModel):
 
     @property
     def Payload(self):
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersReqPayload`
         """
         return self._Payload
@@ -82,7 +82,7 @@ class GetIndustryV1HomeMembersRequest(AbstractModel):
 
     @property
     def Metadata(self):
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.icr.v20211014.models.ReqMetadata`
         """
         return self._Metadata
@@ -110,7 +110,7 @@ class GetIndustryV1HomeMembersRequest(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespData(AbstractModel):
-    """获取成员列表回包DataList
+    r"""获取成员列表回包DataList
 
     """
 
@@ -160,7 +160,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def EditTime(self):
-        """修改时间
+        r"""修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -172,7 +172,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def FeatureList(self):
-        """功能列表
+        r"""功能列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersRespFeature`
         """
@@ -184,7 +184,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def ID(self):
-        """用户ID
+        r"""用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -196,7 +196,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def IndustryType(self):
-        """用户行业分类
+        r"""用户行业分类
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -208,7 +208,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def MemberNum(self):
-        """子用户数量
+        r"""子用户数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -220,7 +220,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def ProductList(self):
-        """机器人列表
+        r"""机器人列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersRespProduct`
         """
@@ -232,7 +232,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -244,7 +244,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def Status(self):
-        """是否有效
+        r"""是否有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -256,7 +256,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def TypeList(self):
-        """功能列表
+        r"""功能列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersRespType`
         """
@@ -268,7 +268,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
     @property
     def UserAccount(self):
-        """用户账号
+        r"""用户账号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -307,7 +307,7 @@ class GetIndustryV1HomeMembersRespData(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespFeature(AbstractModel):
-    """获取成员列表接口回包Feature
+    r"""获取成员列表接口回包Feature
 
     """
 
@@ -325,7 +325,7 @@ class GetIndustryV1HomeMembersRespFeature(AbstractModel):
 
     @property
     def FeatureName(self):
-        """功能名称
+        r"""功能名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -337,7 +337,7 @@ class GetIndustryV1HomeMembersRespFeature(AbstractModel):
 
     @property
     def ID(self):
-        """功能ID
+        r"""功能ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -362,7 +362,7 @@ class GetIndustryV1HomeMembersRespFeature(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespIndustry(AbstractModel):
-    """获取成员列表回包Industry
+    r"""获取成员列表回包Industry
 
     """
 
@@ -380,7 +380,7 @@ class GetIndustryV1HomeMembersRespIndustry(AbstractModel):
 
     @property
     def ID(self):
-        """行业ID
+        r"""行业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -392,7 +392,7 @@ class GetIndustryV1HomeMembersRespIndustry(AbstractModel):
 
     @property
     def IndustryName(self):
-        """行业名称
+        r"""行业名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -417,7 +417,7 @@ class GetIndustryV1HomeMembersRespIndustry(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespPayload(AbstractModel):
-    """获取成员列表回包Payload
+    r"""获取成员列表回包Payload
 
     """
 
@@ -447,7 +447,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
     @property
     def AccountLevel(self):
-        """用户级别
+        r"""用户级别
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -459,7 +459,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
     @property
     def DataList(self):
-        """用户列表
+        r"""用户列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GetIndustryV1HomeMembersRespData
         """
@@ -471,7 +471,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量
+        r"""每页数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -483,7 +483,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始
+        r"""分页偏移量，从0开始
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -495,7 +495,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
     @property
     def Total(self):
-        """用户总数
+        r"""用户总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -528,7 +528,7 @@ class GetIndustryV1HomeMembersRespPayload(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespProduct(AbstractModel):
-    """获取成员列表接口回包ProductList
+    r"""获取成员列表接口回包ProductList
 
     """
 
@@ -574,7 +574,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -586,7 +586,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def EditTime(self):
-        """编辑时间
+        r"""编辑时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -598,7 +598,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def AppKey(self):
-        """机器人ID（AppKey信息）
+        r"""机器人ID（AppKey信息）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -610,7 +610,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def Image(self):
-        """机器人图标
+        r"""机器人图标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -622,7 +622,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def Industry(self):
-        """行业信息
+        r"""行业信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GetIndustryV1HomeMembersRespIndustry
         """
@@ -634,7 +634,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def OperatorList(self):
-        """操作员列表
+        r"""操作员列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -646,7 +646,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def ProductName(self):
-        """机器人名字
+        r"""机器人名字
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -658,7 +658,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -670,7 +670,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
     @property
     def TemplateList(self):
-        """模板列表
+        r"""模板列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -707,7 +707,7 @@ class GetIndustryV1HomeMembersRespProduct(AbstractModel):
 
 
 class GetIndustryV1HomeMembersRespType(AbstractModel):
-    """获取成员列表接口回包TypeList
+    r"""获取成员列表接口回包TypeList
 
     """
 
@@ -725,7 +725,7 @@ class GetIndustryV1HomeMembersRespType(AbstractModel):
 
     @property
     def Type(self):
-        """类型ID
+        r"""类型ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -737,7 +737,7 @@ class GetIndustryV1HomeMembersRespType(AbstractModel):
 
     @property
     def TypeName(self):
-        """类型名称
+        r"""类型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -762,7 +762,7 @@ class GetIndustryV1HomeMembersRespType(AbstractModel):
 
 
 class GetIndustryV1HomeMembersResponse(AbstractModel):
-    """GetIndustryV1HomeMembers返回参数结构体
+    r"""GetIndustryV1HomeMembers返回参数结构体
 
     """
 
@@ -783,7 +783,7 @@ class GetIndustryV1HomeMembersResponse(AbstractModel):
 
     @property
     def Metadata(self):
-        """无
+        r"""无
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.icr.v20211014.models.RspMetadata`
         """
@@ -795,7 +795,7 @@ class GetIndustryV1HomeMembersResponse(AbstractModel):
 
     @property
     def Payload(self):
-        """无
+        r"""无
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersRespPayload`
         """
@@ -807,7 +807,7 @@ class GetIndustryV1HomeMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -828,7 +828,7 @@ class GetIndustryV1HomeMembersResponse(AbstractModel):
 
 
 class ReqMetadata(AbstractModel):
-    """请求的Metadata
+    r"""请求的Metadata
 
     """
 
@@ -856,7 +856,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def ChannelID(self):
-        """渠道
+        r"""渠道
         :rtype: str
         """
         return self._ChannelID
@@ -867,7 +867,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def BusinessName(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._BusinessName
@@ -878,7 +878,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def GUID(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._GUID
@@ -889,7 +889,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def AppKey(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._AppKey
@@ -900,7 +900,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def LBS(self):
-        """位置定位服务
+        r"""位置定位服务
         :rtype: :class:`tencentcloud.icr.v20211014.models.ReqMetadataLBS`
         """
         return self._LBS
@@ -911,7 +911,7 @@ class ReqMetadata(AbstractModel):
 
     @property
     def Vagrants(self):
-        """透传字段
+        r"""透传字段
         :rtype: list of ReqMetadataVagrant
         """
         return self._Vagrants
@@ -946,7 +946,7 @@ class ReqMetadata(AbstractModel):
 
 
 class ReqMetadataLBS(AbstractModel):
-    """请求参数的lbs
+    r"""请求参数的lbs
 
     """
 
@@ -962,7 +962,7 @@ class ReqMetadataLBS(AbstractModel):
 
     @property
     def Latitude(self):
-        """纬度
+        r"""纬度
         :rtype: float
         """
         return self._Latitude
@@ -973,7 +973,7 @@ class ReqMetadataLBS(AbstractModel):
 
     @property
     def Longitude(self):
-        """经度
+        r"""经度
         :rtype: float
         """
         return self._Longitude
@@ -997,7 +997,7 @@ class ReqMetadataLBS(AbstractModel):
 
 
 class ReqMetadataVagrant(AbstractModel):
-    """请求参数Vagrant
+    r"""请求参数Vagrant
 
     """
 
@@ -1013,7 +1013,7 @@ class ReqMetadataVagrant(AbstractModel):
 
     @property
     def Key(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._Key
@@ -1024,7 +1024,7 @@ class ReqMetadataVagrant(AbstractModel):
 
     @property
     def Value(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._Value
@@ -1048,7 +1048,7 @@ class ReqMetadataVagrant(AbstractModel):
 
 
 class RspMetadata(AbstractModel):
-    """回包的meta data
+    r"""回包的meta data
 
     """
 
@@ -1070,7 +1070,7 @@ class RspMetadata(AbstractModel):
 
     @property
     def Code(self):
-        """无
+        r"""无
         :rtype: int
         """
         return self._Code
@@ -1081,7 +1081,7 @@ class RspMetadata(AbstractModel):
 
     @property
     def Message(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._Message
@@ -1092,7 +1092,7 @@ class RspMetadata(AbstractModel):
 
     @property
     def SessionID(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._SessionID
@@ -1103,7 +1103,7 @@ class RspMetadata(AbstractModel):
 
     @property
     def SessionDelta(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._SessionDelta

@@ -27,7 +27,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateApiImportUserJob(self, request):
-        """新建接口导入用户任务
+        r"""新建接口导入用户任务
 
         :param request: Request instance for CreateApiImportUserJob.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateApiImportUserJobRequest`
@@ -50,7 +50,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateFileExportUserJob(self, request):
-        """新建文件导出用户任务
+        r"""新建文件导出用户任务
 
         :param request: Request instance for CreateFileExportUserJob.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateFileExportUserJobRequest`
@@ -73,7 +73,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """创建用户
+        r"""创建用户
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserRequest`
@@ -96,7 +96,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateUserGroup(self, request):
-        """创建用户组
+        r"""创建用户组
 
         :param request: Request instance for CreateUserGroup.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserGroupRequest`
@@ -119,7 +119,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateUserStore(self, request):
-        """创建用户目录
+        r"""创建用户目录
 
         :param request: Request instance for CreateUserStore.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserStoreRequest`
@@ -142,7 +142,7 @@ class CiamClient(AbstractClient):
 
 
     def DeleteUserGroups(self, request):
-        """批量删除用户组
+        r"""批量删除用户组
 
         :param request: Request instance for DeleteUserGroups.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUserGroupsRequest`
@@ -165,7 +165,7 @@ class CiamClient(AbstractClient):
 
 
     def DeleteUserStore(self, request):
-        """删除用户目录
+        r"""删除用户目录
 
         :param request: Request instance for DeleteUserStore.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUserStoreRequest`
@@ -188,7 +188,7 @@ class CiamClient(AbstractClient):
 
 
     def DeleteUsers(self, request):
-        """批量删除用户
+        r"""批量删除用户
 
         :param request: Request instance for DeleteUsers.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUsersRequest`
@@ -211,7 +211,7 @@ class CiamClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """多条件查询用户信息
+        r"""多条件查询用户信息
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DescribeUserRequest`
@@ -234,7 +234,7 @@ class CiamClient(AbstractClient):
 
 
     def DescribeUserById(self, request):
-        """根据ID查询用户信息
+        r"""根据ID查询用户信息
 
         :param request: Request instance for DescribeUserById.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DescribeUserByIdRequest`
@@ -257,7 +257,7 @@ class CiamClient(AbstractClient):
 
 
     def LinkAccount(self, request):
-        """账号融合
+        r"""账号融合
 
         :param request: Request instance for LinkAccount.
         :type request: :class:`tencentcloud.ciam.v20220331.models.LinkAccountRequest`
@@ -280,7 +280,7 @@ class CiamClient(AbstractClient):
 
 
     def ListJobs(self, request):
-        """查询任务详情
+        r"""查询任务详情
 
         :param request: Request instance for ListJobs.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListJobsRequest`
@@ -303,7 +303,7 @@ class CiamClient(AbstractClient):
 
 
     def ListLogMessageByCondition(self, request):
-        """查询日志信息
+        r"""查询日志信息
 
         :param request: Request instance for ListLogMessageByCondition.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListLogMessageByConditionRequest`
@@ -326,7 +326,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUser(self, request):
-        """查询用户列表
+        r"""查询用户列表
 
         :param request: Request instance for ListUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserRequest`
@@ -349,7 +349,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUserByProperty(self, request):
-        """根据属性查询用户列表
+        r"""根据属性查询用户列表
 
         :param request: Request instance for ListUserByProperty.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserByPropertyRequest`
@@ -372,7 +372,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUserGroups(self, request):
-        """查询用户组列表
+        r"""查询用户组列表
 
         :param request: Request instance for ListUserGroups.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserGroupsRequest`
@@ -395,7 +395,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUserStore(self, request):
-        """查询用户目录列表
+        r"""查询用户目录列表
 
         :param request: Request instance for ListUserStore.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserStoreRequest`
@@ -418,7 +418,7 @@ class CiamClient(AbstractClient):
 
 
     def ResetPassword(self, request):
-        """重置用户密码
+        r"""重置用户密码
 
         :param request: Request instance for ResetPassword.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ResetPasswordRequest`
@@ -441,7 +441,7 @@ class CiamClient(AbstractClient):
 
 
     def SetPassword(self, request):
-        """设置用户密码
+        r"""设置用户密码
 
         :param request: Request instance for SetPassword.
         :type request: :class:`tencentcloud.ciam.v20220331.models.SetPasswordRequest`
@@ -464,7 +464,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUser(self, request):
-        """更新用户
+        r"""更新用户
 
         :param request: Request instance for UpdateUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserRequest`
@@ -487,7 +487,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUserGroup(self, request):
-        """更新用户组
+        r"""更新用户组
 
         :param request: Request instance for UpdateUserGroup.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserGroupRequest`
@@ -510,7 +510,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUserStatus(self, request):
-        """更新用户状态
+        r"""更新用户状态
 
         :param request: Request instance for UpdateUserStatus.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserStatusRequest`
@@ -533,7 +533,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUserStore(self, request):
-        """更新用户目录
+        r"""更新用户目录
 
         :param request: Request instance for UpdateUserStore.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserStoreRequest`

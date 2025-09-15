@@ -27,7 +27,7 @@ class SecuritylakeClient(AbstractClient):
 
 
     def DescribeSecurityAlarmTableList(self, request):
-        """查询告警列表
+        r"""查询告警列表
 
         :param request: Request instance for DescribeSecurityAlarmTableList.
         :type request: :class:`tencentcloud.securitylake.v20240117.models.DescribeSecurityAlarmTableListRequest`

@@ -27,7 +27,7 @@ class AcpClient(AbstractClient):
 
 
     def CreateAppScanTask(self, request):
-        """创建应用合规隐私诊断任务
+        r"""创建应用合规隐私诊断任务
 
         :param request: Request instance for CreateAppScanTask.
         :type request: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskRequest`
@@ -50,7 +50,7 @@ class AcpClient(AbstractClient):
 
 
     def CreateAppScanTaskRepeat(self, request):
-        """App应用合规隐私诊断重试任务
+        r"""App应用合规隐私诊断重试任务
 
         :param request: Request instance for CreateAppScanTaskRepeat.
         :type request: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskRepeatRequest`
@@ -73,7 +73,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeChannelTaskReportUrl(self, request):
-        """获取子渠道的App合规诊断任务报告url
+        r"""获取子渠道的App合规诊断任务报告url
 
         :param request: Request instance for DescribeChannelTaskReportUrl.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeChannelTaskReportUrlRequest`
@@ -96,7 +96,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeFileTicket(self, request):
-        """获取应用合规文件上传凭证，用于上传诊断文件
+        r"""获取应用合规文件上传凭证，用于上传诊断文件
 
         :param request: Request instance for DescribeFileTicket.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeFileTicketRequest`
@@ -119,7 +119,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeResourceUsageInfo(self, request):
-        """查询应用合规平台用户资源的使用情况
+        r"""查询应用合规平台用户资源的使用情况
 
         :param request: Request instance for DescribeResourceUsageInfo.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeResourceUsageInfoRequest`
@@ -142,7 +142,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeScanTaskList(self, request):
-        """获取App隐私合规诊断任务列表
+        r"""获取App隐私合规诊断任务列表
 
         :param request: Request instance for DescribeScanTaskList.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskListRequest`
@@ -165,7 +165,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeScanTaskReportUrl(self, request):
-        """获取App合规诊断任务报告url
+        r"""获取App合规诊断任务报告url
 
         :param request: Request instance for DescribeScanTaskReportUrl.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskReportUrlRequest`
@@ -188,7 +188,7 @@ class AcpClient(AbstractClient):
 
 
     def DescribeScanTaskStatus(self, request):
-        """查询App隐私合规诊断任务状态
+        r"""查询App隐私合规诊断任务状态
 
         :param request: Request instance for DescribeScanTaskStatus.
         :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskStatusRequest`

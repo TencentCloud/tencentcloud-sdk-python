@@ -27,7 +27,7 @@ class AswClient(AbstractClient):
 
 
     def CreateFlowService(self, request):
-        """该接口用于生成状态机服务
+        r"""该接口用于生成状态机服务
 
         :param request: Request instance for CreateFlowService.
         :type request: :class:`tencentcloud.asw.v20200722.models.CreateFlowServiceRequest`
@@ -50,7 +50,7 @@ class AswClient(AbstractClient):
 
 
     def DescribeExecution(self, request):
-        """查询执行详细信息
+        r"""查询执行详细信息
 
         :param request: Request instance for DescribeExecution.
         :type request: :class:`tencentcloud.asw.v20200722.models.DescribeExecutionRequest`
@@ -73,7 +73,7 @@ class AswClient(AbstractClient):
 
 
     def DescribeExecutionHistory(self, request):
-        """一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
+        r"""一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
 
         :param request: Request instance for DescribeExecutionHistory.
         :type request: :class:`tencentcloud.asw.v20200722.models.DescribeExecutionHistoryRequest`
@@ -96,7 +96,7 @@ class AswClient(AbstractClient):
 
 
     def DescribeExecutions(self, request):
-        """对状态机的执行历史进行描述.
+        r"""对状态机的执行历史进行描述.
 
         :param request: Request instance for DescribeExecutions.
         :type request: :class:`tencentcloud.asw.v20200722.models.DescribeExecutionsRequest`
@@ -119,7 +119,7 @@ class AswClient(AbstractClient):
 
 
     def DescribeFlowServiceDetail(self, request):
-        """查询该用户指定状态机下的详情数据。
+        r"""查询该用户指定状态机下的详情数据。
 
         :param request: Request instance for DescribeFlowServiceDetail.
         :type request: :class:`tencentcloud.asw.v20200722.models.DescribeFlowServiceDetailRequest`
@@ -142,7 +142,7 @@ class AswClient(AbstractClient):
 
 
     def DescribeFlowServices(self, request):
-        """查询指定用户下所有状态机，以列表形式返回
+        r"""查询指定用户下所有状态机，以列表形式返回
 
         :param request: Request instance for DescribeFlowServices.
         :type request: :class:`tencentcloud.asw.v20200722.models.DescribeFlowServicesRequest`
@@ -165,7 +165,7 @@ class AswClient(AbstractClient):
 
 
     def ModifyFlowService(self, request):
-        """该接口用于修改状态机
+        r"""该接口用于修改状态机
 
         :param request: Request instance for ModifyFlowService.
         :type request: :class:`tencentcloud.asw.v20200722.models.ModifyFlowServiceRequest`
@@ -188,7 +188,7 @@ class AswClient(AbstractClient):
 
 
     def StartExecution(self, request):
-        """为指定的状态机启动一次执行
+        r"""为指定的状态机启动一次执行
 
         :param request: Request instance for StartExecution.
         :type request: :class:`tencentcloud.asw.v20200722.models.StartExecutionRequest`
@@ -211,7 +211,7 @@ class AswClient(AbstractClient):
 
 
     def StopExecution(self, request):
-        """终止某个状态机
+        r"""终止某个状态机
 
         :param request: Request instance for StopExecution.
         :type request: :class:`tencentcloud.asw.v20200722.models.StopExecutionRequest`

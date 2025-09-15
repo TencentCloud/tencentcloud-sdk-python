@@ -27,7 +27,7 @@ class EsClient(AbstractClient):
 
 
     def CheckMigrateIndexMetaData(self, request):
-        """检查cos迁移索引元数据
+        r"""检查cos迁移索引元数据
 
         :param request: Request instance for CheckMigrateIndexMetaData.
         :type request: :class:`tencentcloud.es.v20180416.models.CheckMigrateIndexMetaDataRequest`
@@ -50,7 +50,7 @@ class EsClient(AbstractClient):
 
 
     def CreateClusterSnapshot(self, request):
-        """集群快照手动创建
+        r"""集群快照手动创建
 
         :param request: Request instance for CreateClusterSnapshot.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateClusterSnapshotRequest`
@@ -73,7 +73,7 @@ class EsClient(AbstractClient):
 
 
     def CreateCosMigrateToServerlessInstance(self, request):
-        """cos迁移流程
+        r"""cos迁移流程
 
         :param request: Request instance for CreateCosMigrateToServerlessInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateCosMigrateToServerlessInstanceRequest`
@@ -96,7 +96,7 @@ class EsClient(AbstractClient):
 
 
     def CreateIndex(self, request):
-        """创建索引
+        r"""创建索引
 
         :param request: Request instance for CreateIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateIndexRequest`
@@ -119,7 +119,7 @@ class EsClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建指定规格的ES集群实例
+        r"""创建指定规格的ES集群实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateInstanceRequest`
@@ -142,7 +142,7 @@ class EsClient(AbstractClient):
 
 
     def CreateLogstashInstance(self, request):
-        """用于创建Logstash实例
+        r"""用于创建Logstash实例
 
         :param request: Request instance for CreateLogstashInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateLogstashInstanceRequest`
@@ -165,7 +165,7 @@ class EsClient(AbstractClient):
 
 
     def CreateServerlessInstance(self, request):
-        """创建Serverless索引
+        r"""创建Serverless索引
 
         :param request: Request instance for CreateServerlessInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateServerlessInstanceRequest`
@@ -188,7 +188,7 @@ class EsClient(AbstractClient):
 
 
     def CreateServerlessSpaceV2(self, request):
-        """创建Serverless索引空间
+        r"""创建Serverless索引空间
 
         :param request: Request instance for CreateServerlessSpaceV2.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateServerlessSpaceV2Request`
@@ -211,7 +211,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteClusterSnapshot(self, request):
-        """删除快照仓库里备份的快照
+        r"""删除快照仓库里备份的快照
 
         :param request: Request instance for DeleteClusterSnapshot.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteClusterSnapshotRequest`
@@ -234,7 +234,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """删除索引
+        r"""删除索引
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteIndexRequest`
@@ -257,7 +257,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """销毁集群实例
+        r"""销毁集群实例
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteInstanceRequest`
@@ -280,7 +280,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteLogstashInstance(self, request):
-        """用于删除Logstash实例
+        r"""用于删除Logstash实例
 
         :param request: Request instance for DeleteLogstashInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteLogstashInstanceRequest`
@@ -303,7 +303,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteLogstashPipelines(self, request):
-        """用于批量删除Logstash管道
+        r"""用于批量删除Logstash管道
 
         :param request: Request instance for DeleteLogstashPipelines.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteLogstashPipelinesRequest`
@@ -326,7 +326,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteServerlessInstance(self, request):
-        """删除Serverless索引
+        r"""删除Serverless索引
 
         :param request: Request instance for DeleteServerlessInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteServerlessInstanceRequest`
@@ -349,7 +349,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteServerlessSpaceUser(self, request):
-        """删除Serverless空间子用户
+        r"""删除Serverless空间子用户
 
         :param request: Request instance for DeleteServerlessSpaceUser.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteServerlessSpaceUserRequest`
@@ -372,7 +372,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeClusterSnapshot(self, request):
-        """获取快照备份列表
+        r"""获取快照备份列表
 
         :param request: Request instance for DescribeClusterSnapshot.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeClusterSnapshotRequest`
@@ -395,7 +395,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeDiagnose(self, request):
-        """查询智能运维诊断结果报告
+        r"""查询智能运维诊断结果报告
 
         :param request: Request instance for DescribeDiagnose.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeDiagnoseRequest`
@@ -418,7 +418,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """获取索引列表
+        r"""获取索引列表
 
         :param request: Request instance for DescribeIndexList.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeIndexListRequest`
@@ -441,7 +441,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeIndexMeta(self, request):
-        """获取索引元数据
+        r"""获取索引元数据
 
         :param request: Request instance for DescribeIndexMeta.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeIndexMetaRequest`
@@ -464,7 +464,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstanceLogs(self, request):
-        """查询用户该地域下符合条件的ES集群的日志
+        r"""查询用户该地域下符合条件的ES集群的日志
 
         :param request: Request instance for DescribeInstanceLogs.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsRequest`
@@ -487,7 +487,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        """查询实例指定条件下的操作记录
+        r"""查询实例指定条件下的操作记录
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsRequest`
@@ -510,7 +510,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstancePluginList(self, request):
-        """查询实例插件列表
+        r"""查询实例插件列表
 
         :param request: Request instance for DescribeInstancePluginList.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancePluginListRequest`
@@ -533,7 +533,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询用户该地域下符合条件的所有实例
+        r"""查询用户该地域下符合条件的所有实例
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancesRequest`
@@ -556,7 +556,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeLogstashInstanceLogs(self, request):
-        """查询用户该地域下符合条件的Logstash实例的日志
+        r"""查询用户该地域下符合条件的Logstash实例的日志
 
         :param request: Request instance for DescribeLogstashInstanceLogs.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceLogsRequest`
@@ -579,7 +579,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeLogstashInstanceOperations(self, request):
-        """查询实例指定条件下的操作记录
+        r"""查询实例指定条件下的操作记录
 
         :param request: Request instance for DescribeLogstashInstanceOperations.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceOperationsRequest`
@@ -602,7 +602,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeLogstashInstances(self, request):
-        """查询用户该地域下符合条件的所有Logstash实例
+        r"""查询用户该地域下符合条件的所有Logstash实例
 
         :param request: Request instance for DescribeLogstashInstances.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstancesRequest`
@@ -625,7 +625,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeLogstashPipelines(self, request):
-        """用于获取Logstash实例管道列表
+        r"""用于获取Logstash实例管道列表
 
         :param request: Request instance for DescribeLogstashPipelines.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashPipelinesRequest`
@@ -648,7 +648,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeServerlessInstances(self, request):
-        """Serverless获取索引列表
+        r"""Serverless获取索引列表
 
         :param request: Request instance for DescribeServerlessInstances.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessInstancesRequest`
@@ -671,7 +671,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeServerlessMetrics(self, request):
-        """获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
+        r"""获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
         获取一段时间时间范围内的指标数据
 
         :param request: Request instance for DescribeServerlessMetrics.
@@ -695,7 +695,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeServerlessSpaceUser(self, request):
-        """查看Serverless空间子用户
+        r"""查看Serverless空间子用户
 
         :param request: Request instance for DescribeServerlessSpaceUser.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpaceUserRequest`
@@ -718,7 +718,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeServerlessSpaces(self, request):
-        """获取Serverless索引空间列表
+        r"""获取Serverless索引空间列表
 
         :param request: Request instance for DescribeServerlessSpaces.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpacesRequest`
@@ -741,7 +741,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeSpaceKibanaTools(self, request):
-        """space维度的kibana获取登录token
+        r"""space维度的kibana获取登录token
 
         :param request: Request instance for DescribeSpaceKibanaTools.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeSpaceKibanaToolsRequest`
@@ -764,7 +764,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeUserCosSnapshotList(self, request):
-        """查询快照信息接口
+        r"""查询快照信息接口
 
         :param request: Request instance for DescribeUserCosSnapshotList.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeUserCosSnapshotListRequest`
@@ -787,7 +787,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeViews(self, request):
-        """查询集群各视图数据，包括集群维度、节点维度、Kibana维度
+        r"""查询集群各视图数据，包括集群维度、节点维度、Kibana维度
 
         :param request: Request instance for DescribeViews.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeViewsRequest`
@@ -810,7 +810,7 @@ class EsClient(AbstractClient):
 
 
     def DiagnoseInstance(self, request):
-        """智能运维诊断集群
+        r"""智能运维诊断集群
 
         :param request: Request instance for DiagnoseInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DiagnoseInstanceRequest`
@@ -833,7 +833,7 @@ class EsClient(AbstractClient):
 
 
     def GetDiagnoseSettings(self, request):
-        """查看智能运维配置
+        r"""查看智能运维配置
 
         :param request: Request instance for GetDiagnoseSettings.
         :type request: :class:`tencentcloud.es.v20180416.models.GetDiagnoseSettingsRequest`
@@ -856,7 +856,7 @@ class EsClient(AbstractClient):
 
 
     def GetRequestTargetNodeTypes(self, request):
-        """获取接收客户端请求的节点类型
+        r"""获取接收客户端请求的节点类型
 
         :param request: Request instance for GetRequestTargetNodeTypes.
         :type request: :class:`tencentcloud.es.v20180416.models.GetRequestTargetNodeTypesRequest`
@@ -879,7 +879,7 @@ class EsClient(AbstractClient):
 
 
     def InquirePriceRenewInstance(self, request):
-        """集群续费询价接口，续费前通过调用该接口，可获取集群续费的价格。
+        r"""集群续费询价接口，续费前通过调用该接口，可获取集群续费的价格。
 
         :param request: Request instance for InquirePriceRenewInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.InquirePriceRenewInstanceRequest`
@@ -902,7 +902,7 @@ class EsClient(AbstractClient):
 
 
     def InstallInstanceModel(self, request):
-        """ES集群安装模型接口
+        r"""ES集群安装模型接口
 
         :param request: Request instance for InstallInstanceModel.
         :type request: :class:`tencentcloud.es.v20180416.models.InstallInstanceModelRequest`
@@ -925,7 +925,7 @@ class EsClient(AbstractClient):
 
 
     def ModifyEsVipSecurityGroup(self, request):
-        """修改绑定VIP的安全组，传安全组id列表
+        r"""修改绑定VIP的安全组，传安全组id列表
 
         :param request: Request instance for ModifyEsVipSecurityGroup.
         :type request: :class:`tencentcloud.es.v20180416.models.ModifyEsVipSecurityGroupRequest`
@@ -948,7 +948,7 @@ class EsClient(AbstractClient):
 
 
     def RestartInstance(self, request):
-        """重启ES集群实例(用于系统版本更新等操作)
+        r"""重启ES集群实例(用于系统版本更新等操作)
 
         :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartInstanceRequest`
@@ -971,7 +971,7 @@ class EsClient(AbstractClient):
 
 
     def RestartKibana(self, request):
-        """重启Kibana
+        r"""重启Kibana
 
         :param request: Request instance for RestartKibana.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartKibanaRequest`
@@ -994,7 +994,7 @@ class EsClient(AbstractClient):
 
 
     def RestartLogstashInstance(self, request):
-        """用于重启Logstash实例
+        r"""用于重启Logstash实例
 
         :param request: Request instance for RestartLogstashInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartLogstashInstanceRequest`
@@ -1017,7 +1017,7 @@ class EsClient(AbstractClient):
 
 
     def RestartNodes(self, request):
-        """用于重启集群节点
+        r"""用于重启集群节点
 
         :param request: Request instance for RestartNodes.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartNodesRequest`
@@ -1040,7 +1040,7 @@ class EsClient(AbstractClient):
 
 
     def RestoreClusterSnapshot(self, request):
-        """快照备份恢复，从仓库中恢复快照到集群中
+        r"""快照备份恢复，从仓库中恢复快照到集群中
 
         :param request: Request instance for RestoreClusterSnapshot.
         :type request: :class:`tencentcloud.es.v20180416.models.RestoreClusterSnapshotRequest`
@@ -1063,7 +1063,7 @@ class EsClient(AbstractClient):
 
 
     def SaveAndDeployLogstashPipeline(self, request):
-        """用于下发并且部署管道
+        r"""用于下发并且部署管道
 
         :param request: Request instance for SaveAndDeployLogstashPipeline.
         :type request: :class:`tencentcloud.es.v20180416.models.SaveAndDeployLogstashPipelineRequest`
@@ -1086,7 +1086,7 @@ class EsClient(AbstractClient):
 
 
     def StartLogstashPipelines(self, request):
-        """用于启动Logstash管道
+        r"""用于启动Logstash管道
 
         :param request: Request instance for StartLogstashPipelines.
         :type request: :class:`tencentcloud.es.v20180416.models.StartLogstashPipelinesRequest`
@@ -1109,7 +1109,7 @@ class EsClient(AbstractClient):
 
 
     def StopLogstashPipelines(self, request):
-        """用于批量停止Logstash管道
+        r"""用于批量停止Logstash管道
 
         :param request: Request instance for StopLogstashPipelines.
         :type request: :class:`tencentcloud.es.v20180416.models.StopLogstashPipelinesRequest`
@@ -1132,7 +1132,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateDiagnoseSettings(self, request):
-        """更新智能运维配置
+        r"""更新智能运维配置
 
         :param request: Request instance for UpdateDiagnoseSettings.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateDiagnoseSettingsRequest`
@@ -1155,7 +1155,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateDictionaries(self, request):
-        """更新ES集群词典
+        r"""更新ES集群词典
 
         :param request: Request instance for UpdateDictionaries.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateDictionariesRequest`
@@ -1178,7 +1178,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateIndex(self, request):
-        """更新索引
+        r"""更新索引
 
         :param request: Request instance for UpdateIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateIndexRequest`
@@ -1201,7 +1201,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateInstance(self, request):
-        """对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
+        r"""对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
         - InstanceName：修改实例名称(仅用于标识实例)
         - NodeInfoList: 修改节点配置（节点横向扩缩容，纵向扩缩容，增加主节点，增加冷节点等）
         - EsConfig：修改集群配置
@@ -1231,7 +1231,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateJdk(self, request):
-        """更新实例Jdk配置
+        r"""更新实例Jdk配置
 
         :param request: Request instance for UpdateJdk.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateJdkRequest`
@@ -1254,7 +1254,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateLogstashInstance(self, request):
-        """对集群进行节点规格变更，修改实例名称，修改配置，等操作。参数中InstanceId为必传参数，参数传递组合及含义如下：
+        r"""对集群进行节点规格变更，修改实例名称，修改配置，等操作。参数中InstanceId为必传参数，参数传递组合及含义如下：
         - InstanceName：修改实例名称(仅用于标识实例)
         - NodeNum: 修改实例节点数量（节点横向扩缩容，纵向扩缩容等）
         - YMLConfig: 修改实例YML配置
@@ -1282,7 +1282,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateLogstashPipelineDesc(self, request):
-        """用于更新管道描述信息
+        r"""用于更新管道描述信息
 
         :param request: Request instance for UpdateLogstashPipelineDesc.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateLogstashPipelineDescRequest`
@@ -1305,7 +1305,7 @@ class EsClient(AbstractClient):
 
 
     def UpdatePlugins(self, request):
-        """变更插件列表
+        r"""变更插件列表
 
         :param request: Request instance for UpdatePlugins.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdatePluginsRequest`
@@ -1328,7 +1328,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateRequestTargetNodeTypes(self, request):
-        """更新接收客户端请求的节点类型
+        r"""更新接收客户端请求的节点类型
 
         :param request: Request instance for UpdateRequestTargetNodeTypes.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateRequestTargetNodeTypesRequest`
@@ -1351,7 +1351,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateServerlessInstance(self, request):
-        """更新Serverless索引
+        r"""更新Serverless索引
 
         :param request: Request instance for UpdateServerlessInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateServerlessInstanceRequest`
@@ -1374,7 +1374,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateServerlessSpace(self, request):
-        """更新Serverless索引空间
+        r"""更新Serverless索引空间
 
         :param request: Request instance for UpdateServerlessSpace.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateServerlessSpaceRequest`
@@ -1397,7 +1397,7 @@ class EsClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """升级ES集群版本
+        r"""升级ES集群版本
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceRequest`
@@ -1420,7 +1420,7 @@ class EsClient(AbstractClient):
 
 
     def UpgradeLicense(self, request):
-        """升级ES商业特性
+        r"""升级ES商业特性
 
         :param request: Request instance for UpgradeLicense.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseRequest`

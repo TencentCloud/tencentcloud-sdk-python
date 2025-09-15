@@ -27,7 +27,7 @@ class CwpClient(AbstractClient):
 
 
     def AddLoginWhiteLists(self, request):
-        """批量添加异地登录白名单
+        r"""批量添加异地登录白名单
 
         :param request: Request instance for AddLoginWhiteLists.
         :type request: :class:`tencentcloud.cwp.v20180228.models.AddLoginWhiteListsRequest`
@@ -50,7 +50,7 @@ class CwpClient(AbstractClient):
 
 
     def CancelIgnoreVul(self, request):
-        """产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+        r"""产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
 
         取消漏洞忽略
 
@@ -75,7 +75,7 @@ class CwpClient(AbstractClient):
 
 
     def ChangeRuleEventsIgnoreStatus(self, request):
-        """根据检测项id或事件id批量忽略事件或取消忽略
+        r"""根据检测项id或事件id批量忽略事件或取消忽略
 
         :param request: Request instance for ChangeRuleEventsIgnoreStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ChangeRuleEventsIgnoreStatusRequest`
@@ -98,7 +98,7 @@ class CwpClient(AbstractClient):
 
 
     def ChangeStrategyEnableStatus(self, request):
-        """根据策略id修改策略可用状态
+        r"""根据策略id修改策略可用状态
 
         :param request: Request instance for ChangeStrategyEnableStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ChangeStrategyEnableStatusRequest`
@@ -121,7 +121,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckBashPolicyParams(self, request):
-        """校验高危命令用户规则新增和编辑时的参数。
+        r"""校验高危命令用户规则新增和编辑时的参数。
 
         :param request: Request instance for CheckBashPolicyParams.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckBashPolicyParamsRequest`
@@ -144,7 +144,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckBashRuleParams(self, request):
-        """校验高危命令用户规则新增和编辑时的参数。
+        r"""校验高危命令用户规则新增和编辑时的参数。
 
         :param request: Request instance for CheckBashRuleParams.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckBashRuleParamsRequest`
@@ -167,7 +167,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckFileTamperRule(self, request):
-        """检验核心文件监控前端新增和编辑时的规则参数。
+        r"""检验核心文件监控前端新增和编辑时的规则参数。
 
         :param request: Request instance for CheckFileTamperRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckFileTamperRuleRequest`
@@ -190,7 +190,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckFirstScanBaseline(self, request):
-        """查询基线是否第一次检测
+        r"""查询基线是否第一次检测
 
         :param request: Request instance for CheckFirstScanBaseline.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckFirstScanBaselineRequest`
@@ -213,7 +213,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckLogKafkaConnectionState(self, request):
-        """检查日志投递kafka连通性
+        r"""检查日志投递kafka连通性
 
         :param request: Request instance for CheckLogKafkaConnectionState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckLogKafkaConnectionStateRequest`
@@ -236,7 +236,7 @@ class CwpClient(AbstractClient):
 
 
     def ClearLocalStorage(self, request):
-        """清理本地存储数据
+        r"""清理本地存储数据
 
         :param request: Request instance for ClearLocalStorage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ClearLocalStorageRequest`
@@ -259,7 +259,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBanWhiteList(self, request):
-        """添加阻断白名单列表
+        r"""添加阻断白名单列表
 
         :param request: Request instance for CreateBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBanWhiteListRequest`
@@ -282,7 +282,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBaselineStrategy(self, request):
-        """根据策略信息创建基线策略
+        r"""根据策略信息创建基线策略
 
         :param request: Request instance for CreateBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBaselineStrategyRequest`
@@ -305,7 +305,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBuyBindTask(self, request):
-        """新购授权自动绑定任务
+        r"""新购授权自动绑定任务
 
         :param request: Request instance for CreateBuyBindTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBuyBindTaskRequest`
@@ -328,7 +328,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateEmergencyVulScan(self, request):
-        """创建应急漏洞扫描任务
+        r"""创建应急漏洞扫描任务
 
         :param request: Request instance for CreateEmergencyVulScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateEmergencyVulScanRequest`
@@ -351,7 +351,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateIncidentBacktracking(self, request):
-        """对旗舰版机器单次触发事件调查及告警回溯
+        r"""对旗舰版机器单次触发事件调查及告警回溯
 
         :param request: Request instance for CreateIncidentBacktracking.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateIncidentBacktrackingRequest`
@@ -374,7 +374,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateLicenseOrder(self, request):
-        """CreateLicenseOrder 该接口可以创建专业版/旗舰版订单
+        r"""CreateLicenseOrder 该接口可以创建专业版/旗舰版订单
         支持预付费后付费创建
         后付费订单直接创建成功
         预付费订单仅下单不支付,需要调用计费支付接口进行支付
@@ -400,7 +400,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateLogExport(self, request):
-        """创建日志下载任务
+        r"""创建日志下载任务
 
         :param request: Request instance for CreateLogExport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateLogExportRequest`
@@ -423,7 +423,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateMaliciousRequestWhiteList(self, request):
-        """添加恶意请求白名单
+        r"""添加恶意请求白名单
 
         :param request: Request instance for CreateMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateMaliciousRequestWhiteListRequest`
@@ -446,7 +446,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateMalwareWhiteList(self, request):
-        """创建木马白名单
+        r"""创建木马白名单
 
         :param request: Request instance for CreateMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateMalwareWhiteListRequest`
@@ -469,7 +469,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateNetAttackWhiteList(self, request):
-        """创建网络攻击白名单
+        r"""创建网络攻击白名单
 
         :param request: Request instance for CreateNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateNetAttackWhiteListRequest`
@@ -492,7 +492,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateProtectServer(self, request):
-        """添加网站防护服务器
+        r"""添加网站防护服务器
 
         :param request: Request instance for CreateProtectServer.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateProtectServerRequest`
@@ -515,7 +515,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateRansomDefenseStrategy(self, request):
-        """创建或修改防勒索策略
+        r"""创建或修改防勒索策略
 
         :param request: Request instance for CreateRansomDefenseStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateRansomDefenseStrategyRequest`
@@ -538,7 +538,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateScanMalwareSetting(self, request):
-        """该接口可以对入侵检测-文件查杀扫描检测
+        r"""该接口可以对入侵检测-文件查杀扫描检测
 
         :param request: Request instance for CreateScanMalwareSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateScanMalwareSettingRequest`
@@ -561,7 +561,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateSearchLog(self, request):
-        """添加历史搜索记录
+        r"""添加历史搜索记录
 
         :param request: Request instance for CreateSearchLog.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateSearchLogRequest`
@@ -584,7 +584,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateSearchTemplate(self, request):
-        """添加检索模板
+        r"""添加检索模板
 
         :param request: Request instance for CreateSearchTemplate.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateSearchTemplateRequest`
@@ -607,7 +607,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateVulFix(self, request):
-        """提交漏洞修护
+        r"""提交漏洞修护
 
         :param request: Request instance for CreateVulFix.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateVulFixRequest`
@@ -630,7 +630,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateWhiteListOrder(self, request):
-        """该接口可以创建白名单订单
+        r"""该接口可以创建白名单订单
 
         :param request: Request instance for CreateWhiteListOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateWhiteListOrderRequest`
@@ -653,7 +653,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteAllJavaMemShells(self, request):
-        """删除全部java内存马事件
+        r"""删除全部java内存马事件
 
         :param request: Request instance for DeleteAllJavaMemShells.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteAllJavaMemShellsRequest`
@@ -676,7 +676,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBanWhiteList(self, request):
-        """删除阻断白名单列表
+        r"""删除阻断白名单列表
 
         :param request: Request instance for DeleteBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBanWhiteListRequest`
@@ -699,7 +699,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselinePolicy(self, request):
-        """删除基线策略配置
+        r"""删除基线策略配置
 
         :param request: Request instance for DeleteBaselinePolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselinePolicyRequest`
@@ -722,7 +722,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselineRule(self, request):
-        """删除基线规则
+        r"""删除基线规则
 
         :param request: Request instance for DeleteBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselineRuleRequest`
@@ -745,7 +745,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselineRuleIgnore(self, request):
-        """删除基线忽略规则
+        r"""删除基线忽略规则
 
         :param request: Request instance for DeleteBaselineRuleIgnore.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselineRuleIgnoreRequest`
@@ -768,7 +768,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselineStrategy(self, request):
-        """根据基线策略id删除策略
+        r"""根据基线策略id删除策略
 
         :param request: Request instance for DeleteBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselineStrategyRequest`
@@ -791,7 +791,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselineWeakPassword(self, request):
-        """删除基线弱口令
+        r"""删除基线弱口令
 
         :param request: Request instance for DeleteBaselineWeakPassword.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselineWeakPasswordRequest`
@@ -814,7 +814,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashEvents(self, request):
-        """根据Ids删除高危命令事件
+        r"""根据Ids删除高危命令事件
 
         :param request: Request instance for DeleteBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashEventsRequest`
@@ -837,7 +837,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashPolicies(self, request):
-        """删除高危命令策略
+        r"""删除高危命令策略
 
         :param request: Request instance for DeleteBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashPoliciesRequest`
@@ -860,7 +860,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashRules(self, request):
-        """删除高危命令规则
+        r"""删除高危命令规则
 
         :param request: Request instance for DeleteBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashRulesRequest`
@@ -883,7 +883,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBruteAttacks(self, request):
-        """本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
+        r"""本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
 
         :param request: Request instance for DeleteBruteAttacks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBruteAttacksRequest`
@@ -906,7 +906,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLicenseRecord(self, request):
-        """对授权管理-订单列表内已过期的订单进行删除.(删除后的订单不在统计范畴内)
+        r"""对授权管理-订单列表内已过期的订单进行删除.(删除后的订单不在统计范畴内)
 
         :param request: Request instance for DeleteLicenseRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLicenseRecordRequest`
@@ -929,7 +929,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLicenseRecordAll(self, request):
-        """删除授权全部记录
+        r"""删除授权全部记录
 
         :param request: Request instance for DeleteLicenseRecordAll.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLicenseRecordAllRequest`
@@ -952,7 +952,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLogExport(self, request):
-        """删除日志下载任务
+        r"""删除日志下载任务
 
         :param request: Request instance for DeleteLogExport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLogExportRequest`
@@ -975,7 +975,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLoginWhiteList(self, request):
-        """本接口用于删除异地登录白名单规则。
+        r"""本接口用于删除异地登录白名单规则。
 
         :param request: Request instance for DeleteLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLoginWhiteListRequest`
@@ -998,7 +998,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """本接口（DeleteMachine）用于卸载主机安全客户端。
+        r"""本接口（DeleteMachine）用于卸载主机安全客户端。
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineRequest`
@@ -1021,7 +1021,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachineClearHistory(self, request):
-        """删除机器清理记录
+        r"""删除机器清理记录
 
         :param request: Request instance for DeleteMachineClearHistory.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineClearHistoryRequest`
@@ -1044,7 +1044,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachineTag(self, request):
-        """删除服务器关联的标签
+        r"""删除服务器关联的标签
 
         :param request: Request instance for DeleteMachineTag.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineTagRequest`
@@ -1067,7 +1067,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMaliciousRequestWhiteList(self, request):
-        """删除恶意请求白名单
+        r"""删除恶意请求白名单
 
         :param request: Request instance for DeleteMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestWhiteListRequest`
@@ -1090,7 +1090,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMaliciousRequests(self, request):
-        """本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
+        r"""本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
 
         :param request: Request instance for DeleteMaliciousRequests.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestsRequest`
@@ -1113,7 +1113,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwareScanTask(self, request):
-        """入侵管理-终止扫描任务
+        r"""入侵管理-终止扫描任务
 
         :param request: Request instance for DeleteMalwareScanTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwareScanTaskRequest`
@@ -1136,7 +1136,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwareWhiteList(self, request):
-        """删除木马白名单
+        r"""删除木马白名单
 
         :param request: Request instance for DeleteMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwareWhiteListRequest`
@@ -1159,7 +1159,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwares(self, request):
-        """本接口 (DeleteMalwares) 用于删除木马记录。
+        r"""本接口 (DeleteMalwares) 用于删除木马记录。
 
         :param request: Request instance for DeleteMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwaresRequest`
@@ -1182,7 +1182,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteNetAttackWhiteList(self, request):
-        """删除网络攻击白名单
+        r"""删除网络攻击白名单
 
         :param request: Request instance for DeleteNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteNetAttackWhiteListRequest`
@@ -1205,7 +1205,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteNonlocalLoginPlaces(self, request):
-        """本接口 (DeleteNonlocalLoginPlaces) 用于删除异地登录记录。
+        r"""本接口 (DeleteNonlocalLoginPlaces) 用于删除异地登录记录。
 
         :param request: Request instance for DeleteNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteNonlocalLoginPlacesRequest`
@@ -1228,7 +1228,7 @@ class CwpClient(AbstractClient):
 
 
     def DeletePrivilegeEvents(self, request):
-        """根据Ids删除本地提权
+        r"""根据Ids删除本地提权
 
         :param request: Request instance for DeletePrivilegeEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeEventsRequest`
@@ -1251,7 +1251,7 @@ class CwpClient(AbstractClient):
 
 
     def DeletePrivilegeRules(self, request):
-        """删除本地提权规则
+        r"""删除本地提权规则
 
         :param request: Request instance for DeletePrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeRulesRequest`
@@ -1274,7 +1274,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteProtectDir(self, request):
-        """删除防护网站
+        r"""删除防护网站
 
         :param request: Request instance for DeleteProtectDir.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteProtectDirRequest`
@@ -1297,7 +1297,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteRaspRules(self, request):
-        """删除漏洞防御白名单
+        r"""删除漏洞防御白名单
 
         :param request: Request instance for DeleteRaspRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRaspRulesRequest`
@@ -1320,7 +1320,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteReverseShellEvents(self, request):
-        """根据Ids删除反弹Shell事件
+        r"""根据Ids删除反弹Shell事件
 
         :param request: Request instance for DeleteReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellEventsRequest`
@@ -1343,7 +1343,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteReverseShellRules(self, request):
-        """删除反弹Shell规则
+        r"""删除反弹Shell规则
 
         :param request: Request instance for DeleteReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellRulesRequest`
@@ -1366,7 +1366,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteRiskDnsEvent(self, request):
-        """删除恶意请求事件
+        r"""删除恶意请求事件
 
         :param request: Request instance for DeleteRiskDnsEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRiskDnsEventRequest`
@@ -1389,7 +1389,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteRiskDnsPolicy(self, request):
-        """删除恶意请求策略
+        r"""删除恶意请求策略
 
         :param request: Request instance for DeleteRiskDnsPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRiskDnsPolicyRequest`
@@ -1412,7 +1412,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteScanTask(self, request):
-        """DeleteScanTask 该接口可以对指定类型的扫描任务进行停止扫描;
+        r"""DeleteScanTask 该接口可以对指定类型的扫描任务进行停止扫描;
 
         :param request: Request instance for DeleteScanTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteScanTaskRequest`
@@ -1435,7 +1435,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteSearchTemplate(self, request):
-        """删除检索模板
+        r"""删除检索模板
 
         :param request: Request instance for DeleteSearchTemplate.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteSearchTemplateRequest`
@@ -1458,7 +1458,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """删除标签
+        r"""删除标签
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteTagsRequest`
@@ -1481,7 +1481,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookPolicy(self, request):
-        """删除告警策略
+        r"""删除告警策略
 
         :param request: Request instance for DeleteWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookPolicyRequest`
@@ -1504,7 +1504,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookReceiver(self, request):
-        """删除告警接收人
+        r"""删除告警接收人
 
         :param request: Request instance for DeleteWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookReceiverRequest`
@@ -1527,7 +1527,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookRule(self, request):
-        """删除企微机器人规则
+        r"""删除企微机器人规则
 
         :param request: Request instance for DeleteWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookRuleRequest`
@@ -1550,7 +1550,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebPageEventLog(self, request):
-        """网站防篡改-删除事件记录
+        r"""网站防篡改-删除事件记录
 
         :param request: Request instance for DeleteWebPageEventLog.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebPageEventLogRequest`
@@ -1573,7 +1573,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeABTestConfig(self, request):
-        """获取用户当前灰度配置
+        r"""获取用户当前灰度配置
 
         :param request: Request instance for DescribeABTestConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeABTestConfigRequest`
@@ -1596,7 +1596,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAESKey(self, request):
-        """获取配置的aeskey和aesiv
+        r"""获取配置的aeskey和aesiv
 
         :param request: Request instance for DescribeAESKey.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAESKeyRequest`
@@ -1619,7 +1619,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAccountStatistics(self, request):
-        """本接口 (DescribeAccountStatistics) 用于获取账号统计列表数据。
+        r"""本接口 (DescribeAccountStatistics) 用于获取账号统计列表数据。
 
         :param request: Request instance for DescribeAccountStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountStatisticsRequest`
@@ -1642,7 +1642,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAgentInstallCommand(self, request):
-        """获取agent安装命令
+        r"""获取agent安装命令
 
         :param request: Request instance for DescribeAgentInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallCommandRequest`
@@ -1665,7 +1665,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAgentInstallationToken(self, request):
-        """混合云安装agent token获取
+        r"""混合云安装agent token获取
 
         :param request: Request instance for DescribeAgentInstallationToken.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallationTokenRequest`
@@ -1688,7 +1688,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAlarmIncidentNodes(self, request):
-        """获取告警点所在事件的所有节点信息
+        r"""获取告警点所在事件的所有节点信息
 
         :param request: Request instance for DescribeAlarmIncidentNodes.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmIncidentNodesRequest`
@@ -1711,7 +1711,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAlarmVertexId(self, request):
-        """查询告警点id列表
+        r"""查询告警点id列表
 
         :param request: Request instance for DescribeAlarmVertexId.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmVertexIdRequest`
@@ -1734,7 +1734,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppCount(self, request):
-        """获取所有软件应用数量
+        r"""获取所有软件应用数量
 
         :param request: Request instance for DescribeAssetAppCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppCountRequest`
@@ -1757,7 +1757,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppList(self, request):
-        """查询应用列表
+        r"""查询应用列表
 
         :param request: Request instance for DescribeAssetAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppListRequest`
@@ -1780,7 +1780,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppProcessList(self, request):
-        """获取软件关联进程列表
+        r"""获取软件关联进程列表
 
         :param request: Request instance for DescribeAssetAppProcessList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppProcessListRequest`
@@ -1803,7 +1803,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetCoreModuleInfo(self, request):
-        """获取内核模块详情
+        r"""获取内核模块详情
 
         :param request: Request instance for DescribeAssetCoreModuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleInfoRequest`
@@ -1826,7 +1826,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetCoreModuleList(self, request):
-        """查询资产管理内核模块列表
+        r"""查询资产管理内核模块列表
 
         :param request: Request instance for DescribeAssetCoreModuleList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleListRequest`
@@ -1849,7 +1849,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseCount(self, request):
-        """获取所有数据库数量
+        r"""获取所有数据库数量
 
         :param request: Request instance for DescribeAssetDatabaseCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseCountRequest`
@@ -1872,7 +1872,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseInfo(self, request):
-        """获取资产管理数据库详情
+        r"""获取资产管理数据库详情
 
         :param request: Request instance for DescribeAssetDatabaseInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseInfoRequest`
@@ -1895,7 +1895,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseList(self, request):
-        """查询资产管理数据库列表
+        r"""查询资产管理数据库列表
 
         :param request: Request instance for DescribeAssetDatabaseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseListRequest`
@@ -1918,7 +1918,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDiskList(self, request):
-        """获取主机磁盘分区列表
+        r"""获取主机磁盘分区列表
 
         :param request: Request instance for DescribeAssetDiskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDiskListRequest`
@@ -1941,7 +1941,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetEnvList(self, request):
-        """查询资产管理环境变量列表
+        r"""查询资产管理环境变量列表
 
         :param request: Request instance for DescribeAssetEnvList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetEnvListRequest`
@@ -1964,7 +1964,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetHostTotalCount(self, request):
-        """获取主机所有资源数量
+        r"""获取主机所有资源数量
 
         :param request: Request instance for DescribeAssetHostTotalCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetHostTotalCountRequest`
@@ -1987,7 +1987,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetInfo(self, request):
-        """获取资产数量： 主机数、账号数、端口数、进程数、软件数、数据库数、Web应用数、Web框架数、Web服务数、Web站点数
+        r"""获取资产数量： 主机数、账号数、端口数、进程数、软件数、数据库数、Web应用数、Web框架数、Web服务数、Web站点数
 
         :param request: Request instance for DescribeAssetInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInfoRequest`
@@ -2010,7 +2010,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetInitServiceList(self, request):
-        """查询资产管理启动服务列表
+        r"""查询资产管理启动服务列表
 
         :param request: Request instance for DescribeAssetInitServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInitServiceListRequest`
@@ -2033,7 +2033,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetJarInfo(self, request):
-        """获取Jar包详情
+        r"""获取Jar包详情
 
         :param request: Request instance for DescribeAssetJarInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarInfoRequest`
@@ -2056,7 +2056,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetJarList(self, request):
-        """查询Jar包列表
+        r"""查询Jar包列表
 
         :param request: Request instance for DescribeAssetJarList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarListRequest`
@@ -2079,7 +2079,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetLoadInfo(self, request):
-        """获取系统负载、内存使用率、硬盘使用率情况
+        r"""获取系统负载、内存使用率、硬盘使用率情况
 
         :param request: Request instance for DescribeAssetLoadInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetLoadInfoRequest`
@@ -2102,7 +2102,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineDetail(self, request):
-        """获取资产管理主机资源详细信息
+        r"""获取资产管理主机资源详细信息
 
         :param request: Request instance for DescribeAssetMachineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineDetailRequest`
@@ -2125,7 +2125,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineList(self, request):
-        """获取资产指纹页面的资源监控列表
+        r"""获取资产指纹页面的资源监控列表
 
         :param request: Request instance for DescribeAssetMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineListRequest`
@@ -2148,7 +2148,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineTagTop(self, request):
-        """获取主机标签Top5
+        r"""获取主机标签Top5
 
         :param request: Request instance for DescribeAssetMachineTagTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineTagTopRequest`
@@ -2171,7 +2171,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPlanTaskList(self, request):
-        """查询资产管理计划任务列表
+        r"""查询资产管理计划任务列表
 
         :param request: Request instance for DescribeAssetPlanTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPlanTaskListRequest`
@@ -2194,7 +2194,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPortCount(self, request):
-        """获取所有端口数量
+        r"""获取所有端口数量
 
         :param request: Request instance for DescribeAssetPortCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortCountRequest`
@@ -2217,7 +2217,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPortInfoList(self, request):
-        """获取资产管理端口列表
+        r"""获取资产管理端口列表
 
         :param request: Request instance for DescribeAssetPortInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortInfoListRequest`
@@ -2240,7 +2240,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetProcessCount(self, request):
-        """获取所有进程数量
+        r"""获取所有进程数量
 
         :param request: Request instance for DescribeAssetProcessCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessCountRequest`
@@ -2263,7 +2263,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetProcessInfoList(self, request):
-        """获取资产管理进程列表
+        r"""获取资产管理进程列表
 
         :param request: Request instance for DescribeAssetProcessInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessInfoListRequest`
@@ -2286,7 +2286,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetRecentMachineInfo(self, request):
-        """获取主机最近趋势情况
+        r"""获取主机最近趋势情况
 
         :param request: Request instance for DescribeAssetRecentMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetRecentMachineInfoRequest`
@@ -2309,7 +2309,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetSystemPackageList(self, request):
-        """获取资产管理系统安装包列表
+        r"""获取资产管理系统安装包列表
 
         :param request: Request instance for DescribeAssetSystemPackageList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetSystemPackageListRequest`
@@ -2332,7 +2332,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTotalCount(self, request):
-        """获取所有资源数量：主机、账号、端口、进程、软件、数据库、Web应用、Web框架、Web服务、Web站点
+        r"""获取所有资源数量：主机、账号、端口、进程、软件、数据库、Web应用、Web框架、Web服务、Web站点
 
         :param request: Request instance for DescribeAssetTotalCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTotalCountRequest`
@@ -2355,7 +2355,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTypeTop(self, request):
-        """获取各种类型资源Top5
+        r"""获取各种类型资源Top5
 
         :param request: Request instance for DescribeAssetTypeTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTypeTopRequest`
@@ -2378,7 +2378,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTypes(self, request):
-        """获取资产指纹类型列表
+        r"""获取资产指纹类型列表
 
         :param request: Request instance for DescribeAssetTypes.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTypesRequest`
@@ -2401,7 +2401,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserCount(self, request):
-        """获取所有账号数量
+        r"""获取所有账号数量
 
         :param request: Request instance for DescribeAssetUserCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserCountRequest`
@@ -2424,7 +2424,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserInfo(self, request):
-        """获取主机账号详情
+        r"""获取主机账号详情
 
         :param request: Request instance for DescribeAssetUserInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserInfoRequest`
@@ -2447,7 +2447,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserKeyList(self, request):
-        """获取主机账号Key列表
+        r"""获取主机账号Key列表
 
         :param request: Request instance for DescribeAssetUserKeyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserKeyListRequest`
@@ -2470,7 +2470,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserList(self, request):
-        """获取账号列表
+        r"""获取账号列表
 
         :param request: Request instance for DescribeAssetUserList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserListRequest`
@@ -2493,7 +2493,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppCount(self, request):
-        """获取所有Web应用数量
+        r"""获取所有Web应用数量
 
         :param request: Request instance for DescribeAssetWebAppCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppCountRequest`
@@ -2516,7 +2516,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppList(self, request):
-        """获取资产管理Web应用列表
+        r"""获取资产管理Web应用列表
 
         :param request: Request instance for DescribeAssetWebAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppListRequest`
@@ -2539,7 +2539,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppPluginList(self, request):
-        """获取资产管理Web应用插件列表
+        r"""获取资产管理Web应用插件列表
 
         :param request: Request instance for DescribeAssetWebAppPluginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppPluginListRequest`
@@ -2562,7 +2562,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebFrameCount(self, request):
-        """获取所有Web框架数量
+        r"""获取所有Web框架数量
 
         :param request: Request instance for DescribeAssetWebFrameCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameCountRequest`
@@ -2585,7 +2585,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebFrameList(self, request):
-        """获取资产管理Web框架列表
+        r"""获取资产管理Web框架列表
 
         :param request: Request instance for DescribeAssetWebFrameList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameListRequest`
@@ -2608,7 +2608,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationCount(self, request):
-        """获取所有Web站点数量
+        r"""获取所有Web站点数量
 
         :param request: Request instance for DescribeAssetWebLocationCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationCountRequest`
@@ -2631,7 +2631,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationInfo(self, request):
-        """获取Web站点详情
+        r"""获取Web站点详情
 
         :param request: Request instance for DescribeAssetWebLocationInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationInfoRequest`
@@ -2654,7 +2654,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationList(self, request):
-        """获取Web站点列表
+        r"""获取Web站点列表
 
         :param request: Request instance for DescribeAssetWebLocationList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationListRequest`
@@ -2677,7 +2677,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationPathList(self, request):
-        """获取Web站点虚拟目录列表
+        r"""获取Web站点虚拟目录列表
 
         :param request: Request instance for DescribeAssetWebLocationPathList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationPathListRequest`
@@ -2700,7 +2700,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceCount(self, request):
-        """获取所有Web服务数量
+        r"""获取所有Web服务数量
 
         :param request: Request instance for DescribeAssetWebServiceCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceCountRequest`
@@ -2723,7 +2723,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceInfoList(self, request):
-        """查询资产管理Web服务列表
+        r"""查询资产管理Web服务列表
 
         :param request: Request instance for DescribeAssetWebServiceInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceInfoListRequest`
@@ -2746,7 +2746,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceProcessList(self, request):
-        """获取Web服务关联进程列表
+        r"""获取Web服务关联进程列表
 
         :param request: Request instance for DescribeAssetWebServiceProcessList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceProcessListRequest`
@@ -2769,7 +2769,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackEventInfo(self, request):
-        """网络攻击事件详情
+        r"""网络攻击事件详情
 
         :param request: Request instance for DescribeAttackEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackEventInfoRequest`
@@ -2792,7 +2792,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackEvents(self, request):
-        """按分页形式展示网络攻击检测事件列表
+        r"""按分页形式展示网络攻击检测事件列表
 
         :param request: Request instance for DescribeAttackEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackEventsRequest`
@@ -2815,7 +2815,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackStatistics(self, request):
-        """网络攻击数据统计
+        r"""网络攻击数据统计
 
         :param request: Request instance for DescribeAttackStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackStatisticsRequest`
@@ -2838,7 +2838,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackTop(self, request):
-        """网络攻击top5数据列表
+        r"""网络攻击top5数据列表
 
         :param request: Request instance for DescribeAttackTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTopRequest`
@@ -2861,7 +2861,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackTrends(self, request):
-        """网络攻击趋势数据
+        r"""网络攻击趋势数据
 
         :param request: Request instance for DescribeAttackTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTrendsRequest`
@@ -2884,7 +2884,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackVulTypeList(self, request):
-        """获取网络攻击威胁类型列表
+        r"""获取网络攻击威胁类型列表
 
         :param request: Request instance for DescribeAttackVulTypeList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackVulTypeListRequest`
@@ -2907,7 +2907,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAvailableExpertServiceDetail(self, request):
-        """专家服务-可用订单详情
+        r"""专家服务-可用订单详情
 
         :param request: Request instance for DescribeAvailableExpertServiceDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailRequest`
@@ -2930,7 +2930,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanMode(self, request):
-        """获取爆破阻断模式
+        r"""获取爆破阻断模式
 
         :param request: Request instance for DescribeBanMode.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanModeRequest`
@@ -2953,7 +2953,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanRegions(self, request):
-        """获取阻断地域
+        r"""获取阻断地域
 
         :param request: Request instance for DescribeBanRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanRegionsRequest`
@@ -2976,7 +2976,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanStatus(self, request):
-        """获取阻断按钮状态
+        r"""获取阻断按钮状态
 
         :param request: Request instance for DescribeBanStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanStatusRequest`
@@ -2999,7 +2999,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanWhiteList(self, request):
-        """获取阻断白名单列表
+        r"""获取阻断白名单列表
 
         :param request: Request instance for DescribeBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanWhiteListRequest`
@@ -3022,7 +3022,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineAnalysisData(self, request):
-        """根据基线策略id查询基线策略数据概览统计
+        r"""根据基线策略id查询基线策略数据概览统计
 
         :param request: Request instance for DescribeBaselineAnalysisData.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineAnalysisDataRequest`
@@ -3045,7 +3045,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineBasicInfo(self, request):
-        """查询基线基础信息列表
+        r"""查询基线基础信息列表
 
         :param request: Request instance for DescribeBaselineBasicInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineBasicInfoRequest`
@@ -3068,7 +3068,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDefaultStrategyList(self, request):
-        """查询基线默认策略列表信息
+        r"""查询基线默认策略列表信息
 
         :param request: Request instance for DescribeBaselineDefaultStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDefaultStrategyListRequest`
@@ -3091,7 +3091,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDetail(self, request):
-        """根据基线id查询基线详情接口
+        r"""根据基线id查询基线详情接口
 
         :param request: Request instance for DescribeBaselineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDetailRequest`
@@ -3114,7 +3114,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDetectList(self, request):
-        """获取基线检测详情记录
+        r"""获取基线检测详情记录
 
         :param request: Request instance for DescribeBaselineDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDetectListRequest`
@@ -3137,7 +3137,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDetectOverview(self, request):
-        """获取基线检测概览
+        r"""获取基线检测概览
 
         :param request: Request instance for DescribeBaselineDetectOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDetectOverviewRequest`
@@ -3160,7 +3160,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDownloadList(self, request):
-        """获取基线下载列表
+        r"""获取基线下载列表
 
         :param request: Request instance for DescribeBaselineDownloadList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDownloadListRequest`
@@ -3183,7 +3183,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineEffectHostList(self, request):
-        """根据基线id查询基线影响主机列表
+        r"""根据基线id查询基线影响主机列表
 
         :param request: Request instance for DescribeBaselineEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineEffectHostListRequest`
@@ -3206,7 +3206,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineFixList(self, request):
-        """获取基线修复列表
+        r"""获取基线修复列表
 
         :param request: Request instance for DescribeBaselineFixList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineFixListRequest`
@@ -3229,7 +3229,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostDetectList(self, request):
-        """获取基线检测主机列表
+        r"""获取基线检测主机列表
 
         :param request: Request instance for DescribeBaselineHostDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostDetectListRequest`
@@ -3252,7 +3252,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostIgnoreList(self, request):
-        """获取忽略规则主机列表
+        r"""获取忽略规则主机列表
 
         :param request: Request instance for DescribeBaselineHostIgnoreList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostIgnoreListRequest`
@@ -3275,7 +3275,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostRiskTop(self, request):
-        """获取基线服务器风险TOP5
+        r"""获取基线服务器风险TOP5
 
         :param request: Request instance for DescribeBaselineHostRiskTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostRiskTopRequest`
@@ -3298,7 +3298,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostTop(self, request):
-        """接口返回TopN的风险服务器
+        r"""接口返回TopN的风险服务器
 
         :param request: Request instance for DescribeBaselineHostTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostTopRequest`
@@ -3321,7 +3321,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemDetectList(self, request):
-        """获取基线检测项的列表
+        r"""获取基线检测项的列表
 
         :param request: Request instance for DescribeBaselineItemDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemDetectListRequest`
@@ -3344,7 +3344,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemIgnoreList(self, request):
-        """获取忽略规则项列表
+        r"""获取忽略规则项列表
 
         :param request: Request instance for DescribeBaselineItemIgnoreList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemIgnoreListRequest`
@@ -3367,7 +3367,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemInfo(self, request):
-        """获取基线检测项信息
+        r"""获取基线检测项信息
 
         :param request: Request instance for DescribeBaselineItemInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemInfoRequest`
@@ -3390,7 +3390,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemList(self, request):
-        """获取基线项检测结果列表
+        r"""获取基线项检测结果列表
 
         :param request: Request instance for DescribeBaselineItemList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemListRequest`
@@ -3413,7 +3413,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemRiskTop(self, request):
-        """获取基线检测项TOP5
+        r"""获取基线检测项TOP5
 
         :param request: Request instance for DescribeBaselineItemRiskTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemRiskTopRequest`
@@ -3436,7 +3436,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineList(self, request):
-        """查询基线列表信息
+        r"""查询基线列表信息
 
         :param request: Request instance for DescribeBaselineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineListRequest`
@@ -3459,7 +3459,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselinePolicyList(self, request):
-        """获取基线策略列表
+        r"""获取基线策略列表
 
         :param request: Request instance for DescribeBaselinePolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselinePolicyListRequest`
@@ -3482,7 +3482,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRule(self, request):
-        """根据基线id查询下属检测项信息
+        r"""根据基线id查询下属检测项信息
 
         :param request: Request instance for DescribeBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleRequest`
@@ -3505,7 +3505,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRuleCategoryList(self, request):
-        """获取基线分类列表
+        r"""获取基线分类列表
 
         :param request: Request instance for DescribeBaselineRuleCategoryList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleCategoryListRequest`
@@ -3528,7 +3528,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRuleDetectList(self, request):
-        """获取基线规则检测列表
+        r"""获取基线规则检测列表
 
         :param request: Request instance for DescribeBaselineRuleDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleDetectListRequest`
@@ -3551,7 +3551,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRuleIgnoreList(self, request):
-        """获取基线忽略规则列表
+        r"""获取基线忽略规则列表
 
         :param request: Request instance for DescribeBaselineRuleIgnoreList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleIgnoreListRequest`
@@ -3574,7 +3574,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRuleList(self, request):
-        """获取基线规则列表
+        r"""获取基线规则列表
 
         :param request: Request instance for DescribeBaselineRuleList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleListRequest`
@@ -3597,7 +3597,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineScanSchedule(self, request):
-        """根据任务id查询基线检测进度
+        r"""根据任务id查询基线检测进度
 
         :param request: Request instance for DescribeBaselineScanSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineScanScheduleRequest`
@@ -3620,7 +3620,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineStrategyDetail(self, request):
-        """根据基线策略id查询策略详情
+        r"""根据基线策略id查询策略详情
 
         :param request: Request instance for DescribeBaselineStrategyDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyDetailRequest`
@@ -3643,7 +3643,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineStrategyList(self, request):
-        """查询一个用户下的基线策略信息
+        r"""查询一个用户下的基线策略信息
 
         :param request: Request instance for DescribeBaselineStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyListRequest`
@@ -3666,7 +3666,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineTop(self, request):
-        """根据策略id查询基线检测项TOP
+        r"""根据策略id查询基线检测项TOP
 
         :param request: Request instance for DescribeBaselineTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineTopRequest`
@@ -3689,7 +3689,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineWeakPasswordList(self, request):
-        """获取基线弱口令列表
+        r"""获取基线弱口令列表
 
         :param request: Request instance for DescribeBaselineWeakPasswordList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineWeakPasswordListRequest`
@@ -3712,7 +3712,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEvents(self, request):
-        """获取高危命令列表
+        r"""获取高危命令列表
 
         :param request: Request instance for DescribeBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsRequest`
@@ -3735,7 +3735,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsInfo(self, request):
-        """查询高危命令事件详情
+        r"""查询高危命令事件详情
 
         :param request: Request instance for DescribeBashEventsInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsInfoRequest`
@@ -3758,7 +3758,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsInfoNew(self, request):
-        """查询高危命令事件详情(新)
+        r"""查询高危命令事件详情(新)
 
         :param request: Request instance for DescribeBashEventsInfoNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsInfoNewRequest`
@@ -3781,7 +3781,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsNew(self, request):
-        """获取高危命令列表(新)
+        r"""获取高危命令列表(新)
 
         :param request: Request instance for DescribeBashEventsNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsNewRequest`
@@ -3804,7 +3804,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashPolicies(self, request):
-        """获取高危命令策略列表
+        r"""获取高危命令策略列表
 
         :param request: Request instance for DescribeBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashPoliciesRequest`
@@ -3827,7 +3827,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashRules(self, request):
-        """获取高危命令规则列表
+        r"""获取高危命令规则列表
 
         :param request: Request instance for DescribeBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashRulesRequest`
@@ -3850,7 +3850,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBruteAttackList(self, request):
-        """获取密码破解列表
+        r"""获取密码破解列表
 
         :param request: Request instance for DescribeBruteAttackList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackListRequest`
@@ -3873,7 +3873,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBruteAttackRules(self, request):
-        """获取爆破破解规则
+        r"""获取爆破破解规则
 
         :param request: Request instance for DescribeBruteAttackRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackRulesRequest`
@@ -3896,7 +3896,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeCanFixVulMachine(self, request):
-        """漏洞修护-查询可修护主机信息
+        r"""漏洞修护-查询可修护主机信息
 
         :param request: Request instance for DescribeCanFixVulMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCanFixVulMachineRequest`
@@ -3919,7 +3919,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeCanNotSeparateMachine(self, request):
-        """获取木马不可隔离的主机
+        r"""获取木马不可隔离的主机
 
         :param request: Request instance for DescribeCanNotSeparateMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCanNotSeparateMachineRequest`
@@ -3942,7 +3942,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeClientException(self, request):
-        """获取客户端异常事件
+        r"""获取客户端异常事件
 
         :param request: Request instance for DescribeClientException.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeClientExceptionRequest`
@@ -3965,7 +3965,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeDefenceEventDetail(self, request):
-        """获取漏洞防御事件详情
+        r"""获取漏洞防御事件详情
 
         :param request: Request instance for DescribeDefenceEventDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeDefenceEventDetailRequest`
@@ -3988,7 +3988,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeDirectConnectInstallCommand(self, request):
-        """获取专线agent安装命令，包含token
+        r"""获取专线agent安装命令，包含token
 
         :param request: Request instance for DescribeDirectConnectInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeDirectConnectInstallCommandRequest`
@@ -4011,7 +4011,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeESAggregations(self, request):
-        """获取ES字段聚合结果
+        r"""获取ES字段聚合结果
 
         :param request: Request instance for DescribeESAggregations.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeESAggregationsRequest`
@@ -4034,7 +4034,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEmergencyResponseList(self, request):
-        """专家服务-应急响应列表
+        r"""专家服务-应急响应列表
 
         :param request: Request instance for DescribeEmergencyResponseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListRequest`
@@ -4057,7 +4057,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEmergencyVulList(self, request):
-        """获取应急漏洞列表
+        r"""获取应急漏洞列表
 
         :param request: Request instance for DescribeEmergencyVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyVulListRequest`
@@ -4080,7 +4080,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEventByTable(self, request):
-        """根据事件表名和id查询告警事件详情
+        r"""根据事件表名和id查询告警事件详情
 
         :param request: Request instance for DescribeEventByTable.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEventByTableRequest`
@@ -4103,7 +4103,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExpertServiceList(self, request):
-        """专家服务-安全管家列表
+        r"""专家服务-安全管家列表
 
         :param request: Request instance for DescribeExpertServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListRequest`
@@ -4126,7 +4126,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExpertServiceOrderList(self, request):
-        """专家服务-专家服务订单列表
+        r"""专家服务-专家服务订单列表
 
         :param request: Request instance for DescribeExpertServiceOrderList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListRequest`
@@ -4149,7 +4149,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExportMachines(self, request):
-        """本接口 (DescribeExportMachines) 用于导出区域主机列表。
+        r"""本接口 (DescribeExportMachines) 用于导出区域主机列表。
 
         :param request: Request instance for DescribeExportMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExportMachinesRequest`
@@ -4172,7 +4172,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFastAnalysis(self, request):
-        """日志快速分析统计
+        r"""日志快速分析统计
 
         :param request: Request instance for DescribeFastAnalysis.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFastAnalysisRequest`
@@ -4195,7 +4195,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperEventRuleInfo(self, request):
-        """查看产生事件时规则详情接口
+        r"""查看产生事件时规则详情接口
 
         :param request: Request instance for DescribeFileTamperEventRuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventRuleInfoRequest`
@@ -4218,7 +4218,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperEvents(self, request):
-        """核心文件监控事件列表
+        r"""核心文件监控事件列表
 
         :param request: Request instance for DescribeFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventsRequest`
@@ -4241,7 +4241,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRuleCount(self, request):
-        """查询主机关联文件监控规则数量
+        r"""查询主机关联文件监控规则数量
 
         :param request: Request instance for DescribeFileTamperRuleCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRuleCountRequest`
@@ -4264,7 +4264,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRuleInfo(self, request):
-        """查询某个监控规则的详情
+        r"""查询某个监控规则的详情
 
         :param request: Request instance for DescribeFileTamperRuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRuleInfoRequest`
@@ -4287,7 +4287,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRules(self, request):
-        """核心文件监控规则列表
+        r"""核心文件监控规则列表
 
         :param request: Request instance for DescribeFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRulesRequest`
@@ -4310,7 +4310,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeGeneralStat(self, request):
-        """获取主机相关统计
+        r"""获取主机相关统计
 
         :param request: Request instance for DescribeGeneralStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeGeneralStatRequest`
@@ -4333,7 +4333,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHistoryAccounts(self, request):
-        """本接口 (DescribeHistoryAccounts) 用于获取账号变更历史列表数据。
+        r"""本接口 (DescribeHistoryAccounts) 用于获取账号变更历史列表数据。
 
         :param request: Request instance for DescribeHistoryAccounts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryAccountsRequest`
@@ -4356,7 +4356,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHistoryService(self, request):
-        """查询日志检索服务信息
+        r"""查询日志检索服务信息
 
         :param request: Request instance for DescribeHistoryService.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryServiceRequest`
@@ -4379,7 +4379,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostInfo(self, request):
-        """主机信息与标签信息查询
+        r"""主机信息与标签信息查询
 
         :param request: Request instance for DescribeHostInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostInfoRequest`
@@ -4402,7 +4402,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostLoginList(self, request):
-        """获取异常登录列表
+        r"""获取异常登录列表
 
         :param request: Request instance for DescribeHostLoginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostLoginListRequest`
@@ -4425,7 +4425,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHotVulTop(self, request):
-        """获取全网热点漏洞
+        r"""获取全网热点漏洞
 
         :param request: Request instance for DescribeHotVulTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHotVulTopRequest`
@@ -4448,7 +4448,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreBaselineRule(self, request):
-        """查询已经忽略的检测项信息
+        r"""查询已经忽略的检测项信息
 
         :param request: Request instance for DescribeIgnoreBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreBaselineRuleRequest`
@@ -4471,7 +4471,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreHostAndItemConfig(self, request):
-        """获取一键忽略受影响的检测项和主机信息
+        r"""获取一键忽略受影响的检测项和主机信息
 
         :param request: Request instance for DescribeIgnoreHostAndItemConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreHostAndItemConfigRequest`
@@ -4494,7 +4494,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreRuleEffectHostList(self, request):
-        """根据检测项id与筛选条件查询忽略检测项影响主机列表信息
+        r"""根据检测项id与筛选条件查询忽略检测项影响主机列表信息
 
         :param request: Request instance for DescribeIgnoreRuleEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreRuleEffectHostListRequest`
@@ -4517,7 +4517,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeImportMachineInfo(self, request):
-        """查询批量导入机器信息
+        r"""查询批量导入机器信息
 
         :param request: Request instance for DescribeImportMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeImportMachineInfoRequest`
@@ -4540,7 +4540,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellInfo(self, request):
-        """查询java内存马事件详细信息
+        r"""查询java内存马事件详细信息
 
         :param request: Request instance for DescribeJavaMemShellInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellInfoRequest`
@@ -4563,7 +4563,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellList(self, request):
-        """查询java内存马事件列表
+        r"""查询java内存马事件列表
 
         :param request: Request instance for DescribeJavaMemShellList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellListRequest`
@@ -4586,7 +4586,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellPluginInfo(self, request):
-        """查询给定主机java内存马插件信息
+        r"""查询给定主机java内存马插件信息
 
         :param request: Request instance for DescribeJavaMemShellPluginInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellPluginInfoRequest`
@@ -4609,7 +4609,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellPluginList(self, request):
-        """查询java内存马插件列表
+        r"""查询java内存马插件列表
 
         :param request: Request instance for DescribeJavaMemShellPluginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellPluginListRequest`
@@ -4632,7 +4632,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicense(self, request):
-        """查询授权信息
+        r"""查询授权信息
 
         :param request: Request instance for DescribeLicense.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseRequest`
@@ -4655,7 +4655,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseBindList(self, request):
-        """该接口可以获取设置中心-授权管理,某个授权下已绑定的授权机器列表
+        r"""该接口可以获取设置中心-授权管理,某个授权下已绑定的授权机器列表
 
         :param request: Request instance for DescribeLicenseBindList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseBindListRequest`
@@ -4678,7 +4678,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseBindSchedule(self, request):
-        """查询授权绑定任务的进度
+        r"""查询授权绑定任务的进度
 
         :param request: Request instance for DescribeLicenseBindSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseBindScheduleRequest`
@@ -4701,7 +4701,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseGeneral(self, request):
-        """授权管理-授权概览信息
+        r"""授权管理-授权概览信息
 
         :param request: Request instance for DescribeLicenseGeneral.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseGeneralRequest`
@@ -4724,7 +4724,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseList(self, request):
-        """获取用户所有授权订单信息
+        r"""获取用户所有授权订单信息
 
         :param request: Request instance for DescribeLicenseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseListRequest`
@@ -4747,7 +4747,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseWhiteConfig(self, request):
-        """查询授权白名单的可用配置
+        r"""查询授权白名单的可用配置
 
         :param request: Request instance for DescribeLicenseWhiteConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseWhiteConfigRequest`
@@ -4770,7 +4770,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogDeliveryKafkaOptions(self, request):
-        """查询日志投递kafka可选项列表
+        r"""查询日志投递kafka可选项列表
 
         :param request: Request instance for DescribeLogDeliveryKafkaOptions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogDeliveryKafkaOptionsRequest`
@@ -4793,7 +4793,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogExports(self, request):
-        """获取日志下载任务列表
+        r"""获取日志下载任务列表
 
         :param request: Request instance for DescribeLogExports.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogExportsRequest`
@@ -4816,7 +4816,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """获取日志直方图信息
+        r"""获取日志直方图信息
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogHistogramRequest`
@@ -4839,7 +4839,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogIndex(self, request):
-        """查询索引
+        r"""查询索引
 
         :param request: Request instance for DescribeLogIndex.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogIndexRequest`
@@ -4862,7 +4862,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogKafkaDeliverInfo(self, request):
-        """获取kafka投递信息
+        r"""获取kafka投递信息
 
         :param request: Request instance for DescribeLogKafkaDeliverInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogKafkaDeliverInfoRequest`
@@ -4885,7 +4885,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageConfig(self, request):
-        """获取日志存储配置
+        r"""获取日志存储配置
 
         :param request: Request instance for DescribeLogStorageConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageConfigRequest`
@@ -4908,7 +4908,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageRecord(self, request):
-        """获取日志存储量记录
+        r"""获取日志存储量记录
 
         :param request: Request instance for DescribeLogStorageRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageRecordRequest`
@@ -4931,7 +4931,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageStatistic(self, request):
-        """获取日志检索容量使用统计
+        r"""获取日志检索容量使用统计
 
         :param request: Request instance for DescribeLogStorageStatistic.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageStatisticRequest`
@@ -4954,7 +4954,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogType(self, request):
-        """日志分析功能-获取日志类型，使用该接口返回的结果暂时可过滤的日志类型
+        r"""日志分析功能-获取日志类型，使用该接口返回的结果暂时可过滤的日志类型
 
         :param request: Request instance for DescribeLogType.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogTypeRequest`
@@ -4977,7 +4977,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteCombinedList(self, request):
-        """获取异地登录白名单合并后列表
+        r"""获取异地登录白名单合并后列表
 
         :param request: Request instance for DescribeLoginWhiteCombinedList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteCombinedListRequest`
@@ -5000,7 +5000,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteHostList(self, request):
-        """查询合并后白名单机器列表
+        r"""查询合并后白名单机器列表
 
         :param request: Request instance for DescribeLoginWhiteHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteHostListRequest`
@@ -5023,7 +5023,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteList(self, request):
-        """获取异地登录白名单列表
+        r"""获取异地登录白名单列表
 
         :param request: Request instance for DescribeLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteListRequest`
@@ -5046,7 +5046,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineClearHistory(self, request):
-        """查询机器清理历史记录
+        r"""查询机器清理历史记录
 
         :param request: Request instance for DescribeMachineClearHistory.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineClearHistoryRequest`
@@ -5069,7 +5069,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineDefenseCnt(self, request):
-        """查询主机高级防御事件数统计
+        r"""查询主机高级防御事件数统计
 
         :param request: Request instance for DescribeMachineDefenseCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineDefenseCntRequest`
@@ -5092,7 +5092,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineFileTamperRules(self, request):
-        """查询主机相关核心文件监控规则列表
+        r"""查询主机相关核心文件监控规则列表
 
         :param request: Request instance for DescribeMachineFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineFileTamperRulesRequest`
@@ -5115,7 +5115,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineGeneral(self, request):
-        """查询主机概览信息
+        r"""查询主机概览信息
 
         :param request: Request instance for DescribeMachineGeneral.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineGeneralRequest`
@@ -5138,7 +5138,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineInfo(self, request):
-        """本接口（DescribeMachineInfo）用于获取机器详细信息。
+        r"""本接口（DescribeMachineInfo）用于获取机器详细信息。
 
         :param request: Request instance for DescribeMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineInfoRequest`
@@ -5161,7 +5161,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineLicenseDetail(self, request):
-        """本接口 (DescribeMachineLicenseDetail)查询机器授权信息
+        r"""本接口 (DescribeMachineLicenseDetail)查询机器授权信息
 
         :param request: Request instance for DescribeMachineLicenseDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineLicenseDetailRequest`
@@ -5184,7 +5184,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineList(self, request):
-        """用于网页防篡改获取区域主机列表。
+        r"""用于网页防篡改获取区域主机列表。
 
         :param request: Request instance for DescribeMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineListRequest`
@@ -5207,7 +5207,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineOsList(self, request):
-        """查询可筛选操作系统列表.
+        r"""查询可筛选操作系统列表.
 
         :param request: Request instance for DescribeMachineOsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineOsListRequest`
@@ -5230,7 +5230,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRegionList(self, request):
-        """查询主机地域列表
+        r"""查询主机地域列表
 
         :param request: Request instance for DescribeMachineRegionList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionListRequest`
@@ -5253,7 +5253,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRegions(self, request):
-        """获取机器地域列表
+        r"""获取机器地域列表
 
         :param request: Request instance for DescribeMachineRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionsRequest`
@@ -5276,7 +5276,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRiskCnt(self, request):
-        """查询主机入侵检测事件统计
+        r"""查询主机入侵检测事件统计
 
         :param request: Request instance for DescribeMachineRiskCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRiskCntRequest`
@@ -5299,7 +5299,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineSnapshot(self, request):
-        """漏洞修护-查询主机创建的快照
+        r"""漏洞修护-查询主机创建的快照
 
         :param request: Request instance for DescribeMachineSnapshot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineSnapshotRequest`
@@ -5322,7 +5322,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """本接口 (DescribeMachines) 用于获取区域主机列表。
+        r"""本接口 (DescribeMachines) 用于获取区域主机列表。
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesRequest`
@@ -5345,7 +5345,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachinesSimple(self, request):
-        """本接口 (DescribeMachinesSimple) 用于获取主机列表。
+        r"""本接口 (DescribeMachinesSimple) 用于获取主机列表。
 
         :param request: Request instance for DescribeMachinesSimple.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesSimpleRequest`
@@ -5368,7 +5368,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalWareList(self, request):
-        """入侵检测获取木马列表
+        r"""入侵检测获取木马列表
 
         :param request: Request instance for DescribeMalWareList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalWareListRequest`
@@ -5391,7 +5391,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMaliciousRequestWhiteList(self, request):
-        """查询恶意请求白名单列表
+        r"""查询恶意请求白名单列表
 
         :param request: Request instance for DescribeMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestWhiteListRequest`
@@ -5414,7 +5414,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareFile(self, request):
-        """获取木马文件下载地址
+        r"""获取木马文件下载地址
 
         :param request: Request instance for DescribeMalwareFile.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareFileRequest`
@@ -5437,7 +5437,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareInfo(self, request):
-        """查看恶意文件详情
+        r"""查看恶意文件详情
 
         :param request: Request instance for DescribeMalwareInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareInfoRequest`
@@ -5460,7 +5460,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareRiskOverview(self, request):
-        """获取文件查杀概览信息
+        r"""获取文件查杀概览信息
 
         :param request: Request instance for DescribeMalwareRiskOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareRiskOverviewRequest`
@@ -5483,7 +5483,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareRiskWarning(self, request):
-        """打开入侵检测-恶意文件检测,弹出风险预警内容
+        r"""打开入侵检测-恶意文件检测,弹出风险预警内容
 
         :param request: Request instance for DescribeMalwareRiskWarning.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareRiskWarningRequest`
@@ -5506,7 +5506,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareTimingScanSetting(self, request):
-        """查询定时扫描配置
+        r"""查询定时扫描配置
 
         :param request: Request instance for DescribeMalwareTimingScanSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareTimingScanSettingRequest`
@@ -5529,7 +5529,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareWhiteList(self, request):
-        """获取木马白名单列表
+        r"""获取木马白名单列表
 
         :param request: Request instance for DescribeMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareWhiteListRequest`
@@ -5552,7 +5552,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareWhiteListAffectList(self, request):
-        """获取木马白名单受影响列表
+        r"""获取木马白名单受影响列表
 
         :param request: Request instance for DescribeMalwareWhiteListAffectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareWhiteListAffectListRequest`
@@ -5575,7 +5575,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMonthInspectionReport(self, request):
-        """专家服务-安全管家月巡检报告下载
+        r"""专家服务-安全管家月巡检报告下载
 
         :param request: Request instance for DescribeMonthInspectionReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportRequest`
@@ -5598,7 +5598,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeNetAttackSetting(self, request):
-        """查询网络攻击设置
+        r"""查询网络攻击设置
 
         :param request: Request instance for DescribeNetAttackSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeNetAttackSettingRequest`
@@ -5621,7 +5621,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeNetAttackWhiteList(self, request):
-        """获取网络攻击白名单列表
+        r"""获取网络攻击白名单列表
 
         :param request: Request instance for DescribeNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeNetAttackWhiteListRequest`
@@ -5644,7 +5644,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeOpenPortStatistics(self, request):
-        """本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
+        r"""本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
 
         :param request: Request instance for DescribeOpenPortStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortStatisticsRequest`
@@ -5667,7 +5667,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeOverviewStatistics(self, request):
-        """获取概览统计数据。
+        r"""获取概览统计数据。
 
         :param request: Request instance for DescribeOverviewStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOverviewStatisticsRequest`
@@ -5690,7 +5690,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePrivilegeEventInfo(self, request):
-        """本地提权信息详情
+        r"""本地提权信息详情
 
         :param request: Request instance for DescribePrivilegeEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventInfoRequest`
@@ -5713,7 +5713,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePrivilegeEvents(self, request):
-        """获取本地提权事件列表
+        r"""获取本地提权事件列表
 
         :param request: Request instance for DescribePrivilegeEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventsRequest`
@@ -5736,7 +5736,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePrivilegeRules(self, request):
-        """获取本地提权规则列表
+        r"""获取本地提权规则列表
 
         :param request: Request instance for DescribePrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeRulesRequest`
@@ -5759,7 +5759,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProVersionInfo(self, request):
-        """用于获取专业版概览信息。
+        r"""用于获取专业版概览信息。
 
         :param request: Request instance for DescribeProVersionInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionInfoRequest`
@@ -5782,7 +5782,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProVersionStatus(self, request):
-        """用于获取单台主机或所有主机是否开通专业版状态。
+        r"""用于获取单台主机或所有主机是否开通专业版状态。
 
         :param request: Request instance for DescribeProVersionStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionStatusRequest`
@@ -5805,7 +5805,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProcessStatistics(self, request):
-        """本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
+        r"""本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
 
         :param request: Request instance for DescribeProcessStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessStatisticsRequest`
@@ -5828,7 +5828,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProductStatus(self, request):
-        """产品试用状态查询接口
+        r"""产品试用状态查询接口
 
         :param request: Request instance for DescribeProductStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProductStatusRequest`
@@ -5851,7 +5851,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProtectDirList(self, request):
-        """网页防篡改防护目录列表
+        r"""网页防篡改防护目录列表
 
         :param request: Request instance for DescribeProtectDirList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectDirListRequest`
@@ -5874,7 +5874,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProtectDirRelatedServer(self, request):
-        """查询防护目录关联服务器列表信息
+        r"""查询防护目录关联服务器列表信息
 
         :param request: Request instance for DescribeProtectDirRelatedServer.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectDirRelatedServerRequest`
@@ -5897,7 +5897,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProtectNetList(self, request):
-        """专家服务-旗舰重保列表
+        r"""专家服务-旗舰重保列表
 
         :param request: Request instance for DescribeProtectNetList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListRequest`
@@ -5920,7 +5920,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePublicProxyInstallCommand(self, request):
-        """获取公网接入代理安装命令
+        r"""获取公网接入代理安装命令
 
         :param request: Request instance for DescribePublicProxyInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePublicProxyInstallCommandRequest`
@@ -5943,7 +5943,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseBackupList(self, request):
-        """查询主机快照备份列表
+        r"""查询主机快照备份列表
 
         :param request: Request instance for DescribeRansomDefenseBackupList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseBackupListRequest`
@@ -5966,7 +5966,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseEventsList(self, request):
-        """查询防勒索事件列表
+        r"""查询防勒索事件列表
 
         :param request: Request instance for DescribeRansomDefenseEventsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseEventsListRequest`
@@ -5989,7 +5989,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseMachineList(self, request):
-        """查询备份详情列表
+        r"""查询备份详情列表
 
         :param request: Request instance for DescribeRansomDefenseMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseMachineListRequest`
@@ -6012,7 +6012,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseMachineStrategyInfo(self, request):
-        """获取主机绑定策略列表
+        r"""获取主机绑定策略列表
 
         :param request: Request instance for DescribeRansomDefenseMachineStrategyInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseMachineStrategyInfoRequest`
@@ -6035,7 +6035,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseRollBackTaskList(self, request):
-        """查询回滚任务列表
+        r"""查询回滚任务列表
 
         :param request: Request instance for DescribeRansomDefenseRollBackTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseRollBackTaskListRequest`
@@ -6058,7 +6058,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseState(self, request):
-        """获取用户防勒索趋势
+        r"""获取用户防勒索趋势
 
         :param request: Request instance for DescribeRansomDefenseState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStateRequest`
@@ -6081,7 +6081,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyDetail(self, request):
-        """获取策略详情
+        r"""获取策略详情
 
         :param request: Request instance for DescribeRansomDefenseStrategyDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyDetailRequest`
@@ -6104,7 +6104,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyList(self, request):
-        """查询防勒索策略列表
+        r"""查询防勒索策略列表
 
         :param request: Request instance for DescribeRansomDefenseStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyListRequest`
@@ -6127,7 +6127,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyMachines(self, request):
-        """查询防勒索策略绑定机器列表
+        r"""查询防勒索策略绑定机器列表
 
         :param request: Request instance for DescribeRansomDefenseStrategyMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyMachinesRequest`
@@ -6150,7 +6150,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseTrend(self, request):
-        """获取全网勒索态势
+        r"""获取全网勒索态势
 
         :param request: Request instance for DescribeRansomDefenseTrend.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseTrendRequest`
@@ -6173,7 +6173,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRaspMaxCpu(self, request):
-        """查看漏洞防御最大cpu限制
+        r"""查看漏洞防御最大cpu限制
 
         :param request: Request instance for DescribeRaspMaxCpu.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMaxCpuRequest`
@@ -6196,7 +6196,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRaspRuleVuls(self, request):
-        """获取漏洞防御白名单漏洞列表
+        r"""获取漏洞防御白名单漏洞列表
 
         :param request: Request instance for DescribeRaspRuleVuls.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRuleVulsRequest`
@@ -6219,7 +6219,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRaspRules(self, request):
-        """查询漏洞防御白名单
+        r"""查询漏洞防御白名单
 
         :param request: Request instance for DescribeRaspRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRulesRequest`
@@ -6242,7 +6242,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRecommendedProtectCpu(self, request):
-        """查询推荐购买防护核数
+        r"""查询推荐购买防护核数
 
         :param request: Request instance for DescribeRecommendedProtectCpu.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRecommendedProtectCpuRequest`
@@ -6265,7 +6265,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellEventInfo(self, request):
-        """反弹shell信息详情
+        r"""反弹shell信息详情
 
         :param request: Request instance for DescribeReverseShellEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventInfoRequest`
@@ -6288,7 +6288,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellEvents(self, request):
-        """获取反弹Shell列表
+        r"""获取反弹Shell列表
 
         :param request: Request instance for DescribeReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventsRequest`
@@ -6311,7 +6311,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellRules(self, request):
-        """获取反弹Shell规则列表
+        r"""获取反弹Shell规则列表
 
         :param request: Request instance for DescribeReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesRequest`
@@ -6334,7 +6334,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskBatchStatus(self, request):
-        """查询入侵检测事件更新状态任务是否完成
+        r"""查询入侵检测事件更新状态任务是否完成
 
         :param request: Request instance for DescribeRiskBatchStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskBatchStatusRequest`
@@ -6357,7 +6357,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsEventInfo(self, request):
-        """查询恶意请求事件详情
+        r"""查询恶意请求事件详情
 
         :param request: Request instance for DescribeRiskDnsEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventInfoRequest`
@@ -6380,7 +6380,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsEventList(self, request):
-        """获取恶意请求事件列表
+        r"""获取恶意请求事件列表
 
         :param request: Request instance for DescribeRiskDnsEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventListRequest`
@@ -6403,7 +6403,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsInfo(self, request):
-        """查询恶意请求详情
+        r"""查询恶意请求详情
 
         :param request: Request instance for DescribeRiskDnsInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsInfoRequest`
@@ -6426,7 +6426,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsList(self, request):
-        """入侵检测，获取恶意请求列表
+        r"""入侵检测，获取恶意请求列表
 
         :param request: Request instance for DescribeRiskDnsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsListRequest`
@@ -6449,7 +6449,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsPolicyList(self, request):
-        """获取恶意请求策略列表
+        r"""获取恶意请求策略列表
 
         :param request: Request instance for DescribeRiskDnsPolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsPolicyListRequest`
@@ -6472,7 +6472,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskProcessEvents(self, request):
-        """获取异常进程列表
+        r"""获取异常进程列表
 
         :param request: Request instance for DescribeRiskProcessEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskProcessEventsRequest`
@@ -6495,7 +6495,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSafeInfo(self, request):
-        """查询安全通知信息
+        r"""查询安全通知信息
 
         :param request: Request instance for DescribeSafeInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSafeInfoRequest`
@@ -6518,7 +6518,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanMalwareSchedule(self, request):
-        """查询木马扫描进度
+        r"""查询木马扫描进度
 
         :param request: Request instance for DescribeScanMalwareSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanMalwareScheduleRequest`
@@ -6541,7 +6541,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanSchedule(self, request):
-        """根据taskid查询检测进度
+        r"""根据taskid查询检测进度
 
         :param request: Request instance for DescribeScanSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanScheduleRequest`
@@ -6564,7 +6564,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanState(self, request):
-        """DescribeScanState 该接口能查询对应模块正在进行的扫描任务状态
+        r"""DescribeScanState 该接口能查询对应模块正在进行的扫描任务状态
 
         :param request: Request instance for DescribeScanState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanStateRequest`
@@ -6587,7 +6587,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanTaskDetails(self, request):
-        """DescribeScanTaskDetails 查询扫描任务详情 , 可以查询扫描进度信息/异常;
+        r"""DescribeScanTaskDetails 查询扫描任务详情 , 可以查询扫描进度信息/异常;
 
         :param request: Request instance for DescribeScanTaskDetails.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskDetailsRequest`
@@ -6610,7 +6610,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanTaskStatus(self, request):
-        """DescribeScanTaskStatus 查询机器扫描状态列表用于过滤筛选
+        r"""DescribeScanTaskStatus 查询机器扫描状态列表用于过滤筛选
 
         :param request: Request instance for DescribeScanTaskStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskStatusRequest`
@@ -6633,7 +6633,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanVulSetting(self, request):
-        """查询定期检测的配置
+        r"""查询定期检测的配置
 
         :param request: Request instance for DescribeScanVulSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanVulSettingRequest`
@@ -6656,7 +6656,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenAttackHotspot(self, request):
-        """大屏可视化获取全网攻击热点
+        r"""大屏可视化获取全网攻击热点
 
         :param request: Request instance for DescribeScreenAttackHotspot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenAttackHotspotRequest`
@@ -6679,7 +6679,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenBroadcasts(self, request):
-        """大屏可视化安全播报
+        r"""大屏可视化安全播报
 
         :param request: Request instance for DescribeScreenBroadcasts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenBroadcastsRequest`
@@ -6702,7 +6702,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenDefenseTrends(self, request):
-        """大屏可视化防趋势接口
+        r"""大屏可视化防趋势接口
 
         :param request: Request instance for DescribeScreenDefenseTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenDefenseTrendsRequest`
@@ -6725,7 +6725,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenEmergentMsg(self, request):
-        """大屏可视化紧急通知
+        r"""大屏可视化紧急通知
 
         :param request: Request instance for DescribeScreenEmergentMsg.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenEmergentMsgRequest`
@@ -6748,7 +6748,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenEventsCnt(self, request):
-        """大屏可视化获取安全概览相关事件统计数据接口
+        r"""大屏可视化获取安全概览相关事件统计数据接口
 
         :param request: Request instance for DescribeScreenEventsCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenEventsCntRequest`
@@ -6771,7 +6771,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenGeneralStat(self, request):
-        """大屏可视化获取主机相关统计
+        r"""大屏可视化获取主机相关统计
 
         :param request: Request instance for DescribeScreenGeneralStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenGeneralStatRequest`
@@ -6794,7 +6794,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenHostInvasion(self, request):
-        """大屏可视化主机入侵详情
+        r"""大屏可视化主机入侵详情
 
         :param request: Request instance for DescribeScreenHostInvasion.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenHostInvasionRequest`
@@ -6817,7 +6817,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenMachineRegions(self, request):
-        """大屏可视化主机区域选项列表
+        r"""大屏可视化主机区域选项列表
 
         :param request: Request instance for DescribeScreenMachineRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenMachineRegionsRequest`
@@ -6840,7 +6840,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenMachines(self, request):
-        """大屏可视化主机区域列表
+        r"""大屏可视化主机区域列表
 
         :param request: Request instance for DescribeScreenMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenMachinesRequest`
@@ -6863,7 +6863,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenProtectionCnt(self, request):
-        """大屏可视化主机安全防护引擎介绍
+        r"""大屏可视化主机安全防护引擎介绍
 
         :param request: Request instance for DescribeScreenProtectionCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenProtectionCntRequest`
@@ -6886,7 +6886,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenProtectionStat(self, request):
-        """大屏获取安全防护状态
+        r"""大屏获取安全防护状态
 
         :param request: Request instance for DescribeScreenProtectionStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenProtectionStatRequest`
@@ -6909,7 +6909,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenRiskAssetsTop(self, request):
-        """大屏可视化风险资产top5（今日），统计今日风险资产
+        r"""大屏可视化风险资产top5（今日），统计今日风险资产
 
         :param request: Request instance for DescribeScreenRiskAssetsTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenRiskAssetsTopRequest`
@@ -6932,7 +6932,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSearchLogs(self, request):
-        """获取历史搜索记录
+        r"""获取历史搜索记录
 
         :param request: Request instance for DescribeSearchLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchLogsRequest`
@@ -6955,7 +6955,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSearchTemplates(self, request):
-        """获取快速检索列表
+        r"""获取快速检索列表
 
         :param request: Request instance for DescribeSearchTemplates.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchTemplatesRequest`
@@ -6978,7 +6978,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityBroadcastInfo(self, request):
-        """查询安全播报文章信息
+        r"""查询安全播报文章信息
 
         :param request: Request instance for DescribeSecurityBroadcastInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityBroadcastInfoRequest`
@@ -7001,7 +7001,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityBroadcasts(self, request):
-        """安全播报列表页
+        r"""安全播报列表页
 
         :param request: Request instance for DescribeSecurityBroadcasts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityBroadcastsRequest`
@@ -7024,7 +7024,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityDynamics(self, request):
-        """本接口 (DescribeSecurityDynamics) 用于获取安全事件动态消息数据。
+        r"""本接口 (DescribeSecurityDynamics) 用于获取安全事件动态消息数据。
 
         :param request: Request instance for DescribeSecurityDynamics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityDynamicsRequest`
@@ -7047,7 +7047,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityEventStat(self, request):
-        """获取安全事件统计
+        r"""获取安全事件统计
 
         :param request: Request instance for DescribeSecurityEventStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventStatRequest`
@@ -7070,7 +7070,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityEventsCnt(self, request):
-        """获取安全概览相关事件统计数据接口
+        r"""获取安全概览相关事件统计数据接口
 
         :param request: Request instance for DescribeSecurityEventsCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventsCntRequest`
@@ -7093,7 +7093,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityTrends(self, request):
-        """本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
+        r"""本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
 
         :param request: Request instance for DescribeSecurityTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityTrendsRequest`
@@ -7116,7 +7116,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeServerRelatedDirInfo(self, request):
-        """查询服务区关联目录详情
+        r"""查询服务区关联目录详情
 
         :param request: Request instance for DescribeServerRelatedDirInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeServerRelatedDirInfoRequest`
@@ -7139,7 +7139,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeServersAndRiskAndFirstInfo(self, request):
-        """获取待处理风险文件数+影响服务器数+是否试用检测+最近检测时间
+        r"""获取待处理风险文件数+影响服务器数+是否试用检测+最近检测时间
 
         :param request: Request instance for DescribeServersAndRiskAndFirstInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeServersAndRiskAndFirstInfoRequest`
@@ -7162,7 +7162,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeStrategyExist(self, request):
-        """根据策略名查询策略是否存在
+        r"""根据策略名查询策略是否存在
 
         :param request: Request instance for DescribeStrategyExist.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeStrategyExistRequest`
@@ -7185,7 +7185,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTagMachines(self, request):
-        """获取指定标签关联的服务器信息
+        r"""获取指定标签关联的服务器信息
 
         :param request: Request instance for DescribeTagMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagMachinesRequest`
@@ -7208,7 +7208,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """获取所有主机标签
+        r"""获取所有主机标签
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagsRequest`
@@ -7231,7 +7231,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTrialReport(self, request):
-        """查询主机安全授权试用报告(仅限控制台申领的)
+        r"""查询主机安全授权试用报告(仅限控制台申领的)
 
         :param request: Request instance for DescribeTrialReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTrialReportRequest`
@@ -7254,7 +7254,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUndoVulCounts(self, request):
-        """获取漏洞管理模块指定类型的待处理漏洞数、主机数和非专业版主机数量
+        r"""获取漏洞管理模块指定类型的待处理漏洞数、主机数和非专业版主机数量
 
         :param request: Request instance for DescribeUndoVulCounts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUndoVulCountsRequest`
@@ -7277,7 +7277,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUsersConfig(self, request):
-        """用于查询用户自定义配置
+        r"""用于查询用户自定义配置
 
         :param request: Request instance for DescribeUsersConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUsersConfigRequest`
@@ -7300,7 +7300,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUsualLoginPlaces(self, request):
-        """此接口（DescribeUsualLoginPlaces）用于查询常用登录地。
+        r"""此接口（DescribeUsualLoginPlaces）用于查询常用登录地。
 
         :param request: Request instance for DescribeUsualLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUsualLoginPlacesRequest`
@@ -7323,7 +7323,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVdbAndPocInfo(self, request):
-        """获取病毒库及POC的更新信息
+        r"""获取病毒库及POC的更新信息
 
         :param request: Request instance for DescribeVdbAndPocInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVdbAndPocInfoRequest`
@@ -7346,7 +7346,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVersionCompareChart(self, request):
-        """获取版本对比信息
+        r"""获取版本对比信息
 
         :param request: Request instance for DescribeVersionCompareChart.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVersionCompareChartRequest`
@@ -7369,7 +7369,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVersionStatistics(self, request):
-        """用于统计专业版和基础版机器数。
+        r"""用于统计专业版和基础版机器数。
 
         :param request: Request instance for DescribeVersionStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVersionStatisticsRequest`
@@ -7392,7 +7392,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVertexDetail(self, request):
-        """获取指定点属性信息
+        r"""获取指定点属性信息
 
         :param request: Request instance for DescribeVertexDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVertexDetailRequest`
@@ -7415,7 +7415,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulCountByDates(self, request):
-        """漏洞管理模块，获取近日指定类型的漏洞数量和主机数量
+        r"""漏洞管理模块，获取近日指定类型的漏洞数量和主机数量
 
         :param request: Request instance for DescribeVulCountByDates.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulCountByDatesRequest`
@@ -7438,7 +7438,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulCveIdInfo(self, request):
-        """CveId查询漏洞详情
+        r"""CveId查询漏洞详情
 
         :param request: Request instance for DescribeVulCveIdInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulCveIdInfoRequest`
@@ -7461,7 +7461,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceEvent(self, request):
-        """获取漏洞防御事件列表
+        r"""获取漏洞防御事件列表
 
         :param request: Request instance for DescribeVulDefenceEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceEventRequest`
@@ -7484,7 +7484,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceList(self, request):
-        """查询漏洞防御列表
+        r"""查询漏洞防御列表
 
         :param request: Request instance for DescribeVulDefenceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceListRequest`
@@ -7507,7 +7507,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceOverview(self, request):
-        """获取漏洞防御概览信息，包括事件趋势及插件开启情况
+        r"""获取漏洞防御概览信息，包括事件趋势及插件开启情况
 
         :param request: Request instance for DescribeVulDefenceOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceOverviewRequest`
@@ -7530,7 +7530,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginDetail(self, request):
-        """获取单台主机漏洞防御插件信息
+        r"""获取单台主机漏洞防御插件信息
 
         :param request: Request instance for DescribeVulDefencePluginDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginDetailRequest`
@@ -7553,7 +7553,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginExceptionCount(self, request):
-        """获取当前异常插件数
+        r"""获取当前异常插件数
 
         :param request: Request instance for DescribeVulDefencePluginExceptionCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginExceptionCountRequest`
@@ -7576,7 +7576,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginStatus(self, request):
-        """获取各主机漏洞防御插件状态
+        r"""获取各主机漏洞防御插件状态
 
         :param request: Request instance for DescribeVulDefencePluginStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginStatusRequest`
@@ -7599,7 +7599,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceSetting(self, request):
-        """获取当前漏洞防御插件设置
+        r"""获取当前漏洞防御插件设置
 
         :param request: Request instance for DescribeVulDefenceSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceSettingRequest`
@@ -7622,7 +7622,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEffectHostList(self, request):
-        """漏洞影响主机列表
+        r"""漏洞影响主机列表
 
         :param request: Request instance for DescribeVulEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectHostListRequest`
@@ -7645,7 +7645,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEffectModules(self, request):
-        """漏洞影响组件列表
+        r"""漏洞影响组件列表
 
         :param request: Request instance for DescribeVulEffectModules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectModulesRequest`
@@ -7668,7 +7668,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEmergentMsg(self, request):
-        """获取漏洞紧急通知
+        r"""获取漏洞紧急通知
 
         :param request: Request instance for DescribeVulEmergentMsg.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEmergentMsgRequest`
@@ -7691,7 +7691,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulFixStatus(self, request):
-        """漏洞修护-查找主机漏洞修护进度
+        r"""漏洞修护-查找主机漏洞修护进度
 
         :param request: Request instance for DescribeVulFixStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulFixStatusRequest`
@@ -7714,7 +7714,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulHostCountScanTime(self, request):
-        """获取待处理漏洞数+影响主机数
+        r"""获取待处理漏洞数+影响主机数
 
         :param request: Request instance for DescribeVulHostCountScanTime.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostCountScanTimeRequest`
@@ -7737,7 +7737,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulHostTop(self, request):
-        """获取服务器风险top列表
+        r"""获取服务器风险top列表
 
         :param request: Request instance for DescribeVulHostTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostTopRequest`
@@ -7760,7 +7760,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulInfoCvss(self, request):
-        """漏洞详情，带CVSS版本
+        r"""漏洞详情，带CVSS版本
 
         :param request: Request instance for DescribeVulInfoCvss.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulInfoCvssRequest`
@@ -7783,7 +7783,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulLabels(self, request):
-        """获取用户漏洞所有标签列表
+        r"""获取用户漏洞所有标签列表
 
         :param request: Request instance for DescribeVulLabels.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulLabelsRequest`
@@ -7806,7 +7806,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulLevelCount(self, request):
-        """漏洞数量等级分布统计
+        r"""漏洞数量等级分布统计
 
         :param request: Request instance for DescribeVulLevelCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulLevelCountRequest`
@@ -7829,7 +7829,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulList(self, request):
-        """获取漏洞列表数据
+        r"""获取漏洞列表数据
 
         :param request: Request instance for DescribeVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulListRequest`
@@ -7852,7 +7852,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulOverview(self, request):
-        """获取漏洞概览数据
+        r"""获取漏洞概览数据
 
         :param request: Request instance for DescribeVulOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulOverviewRequest`
@@ -7875,7 +7875,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulStoreList(self, request):
-        """获取漏洞库列表
+        r"""获取漏洞库列表
 
         :param request: Request instance for DescribeVulStoreList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulStoreListRequest`
@@ -7898,7 +7898,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulTop(self, request):
-        """漏洞top统计
+        r"""漏洞top统计
 
         :param request: Request instance for DescribeVulTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulTopRequest`
@@ -7921,7 +7921,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulTrend(self, request):
-        """获取漏洞态势信息
+        r"""获取漏洞态势信息
 
         :param request: Request instance for DescribeVulTrend.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulTrendRequest`
@@ -7944,7 +7944,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWarningHostConfig(self, request):
-        """查询告警机器范围配置
+        r"""查询告警机器范围配置
 
         :param request: Request instance for DescribeWarningHostConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWarningHostConfigRequest`
@@ -7967,7 +7967,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWarningList(self, request):
-        """获取当前用户告警列表
+        r"""获取当前用户告警列表
 
         :param request: Request instance for DescribeWarningList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWarningListRequest`
@@ -7990,7 +7990,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookPolicy(self, request):
-        """查询告警策略
+        r"""查询告警策略
 
         :param request: Request instance for DescribeWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookPolicyRequest`
@@ -8013,7 +8013,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookReceiver(self, request):
-        """查询告警接收人列表
+        r"""查询告警接收人列表
 
         :param request: Request instance for DescribeWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookReceiverRequest`
@@ -8036,7 +8036,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookReceiverUsage(self, request):
-        """查询指定告警接收人的关联策略使用信息
+        r"""查询指定告警接收人的关联策略使用信息
 
         :param request: Request instance for DescribeWebHookReceiverUsage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookReceiverUsageRequest`
@@ -8059,7 +8059,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookRule(self, request):
-        """获取企微机器人规则详情
+        r"""获取企微机器人规则详情
 
         :param request: Request instance for DescribeWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookRuleRequest`
@@ -8082,7 +8082,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookRules(self, request):
-        """获取企微机器人规则列表
+        r"""获取企微机器人规则列表
 
         :param request: Request instance for DescribeWebHookRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookRulesRequest`
@@ -8105,7 +8105,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebPageEventList(self, request):
-        """查询篡改事件列表
+        r"""查询篡改事件列表
 
         :param request: Request instance for DescribeWebPageEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageEventListRequest`
@@ -8128,7 +8128,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebPageGeneralize(self, request):
-        """查询网站防篡改概览信息
+        r"""查询网站防篡改概览信息
 
         :param request: Request instance for DescribeWebPageGeneralize.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageGeneralizeRequest`
@@ -8151,7 +8151,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebPageProtectStat(self, request):
-        """网站防篡改-查询动态防护信息
+        r"""网站防篡改-查询动态防护信息
 
         :param request: Request instance for DescribeWebPageProtectStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageProtectStatRequest`
@@ -8174,7 +8174,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebPageServiceInfo(self, request):
-        """网站防篡改-查询网页防篡改服务器购买信息及服务器信息
+        r"""网站防篡改-查询网页防篡改服务器购买信息及服务器信息
 
         :param request: Request instance for DescribeWebPageServiceInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageServiceInfoRequest`
@@ -8197,7 +8197,7 @@ class CwpClient(AbstractClient):
 
 
     def DestroyOrder(self, request):
-        """DestroyOrder  该接口可以对资源销毁.
+        r"""DestroyOrder  该接口可以对资源销毁.
 
         :param request: Request instance for DestroyOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DestroyOrderRequest`
@@ -8220,7 +8220,7 @@ class CwpClient(AbstractClient):
 
 
     def EditBashRules(self, request):
-        """新增或修改高危命令规则
+        r"""新增或修改高危命令规则
 
         :param request: Request instance for EditBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditBashRulesRequest`
@@ -8243,7 +8243,7 @@ class CwpClient(AbstractClient):
 
 
     def EditPrivilegeRules(self, request):
-        """新增或修改本地提权规则（支持多服务器选择）
+        r"""新增或修改本地提权规则（支持多服务器选择）
 
         :param request: Request instance for EditPrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditPrivilegeRulesRequest`
@@ -8266,7 +8266,7 @@ class CwpClient(AbstractClient):
 
 
     def EditReverseShellRules(self, request):
-        """编辑反弹Shell规则（支持多服务器选择）
+        r"""编辑反弹Shell规则（支持多服务器选择）
 
         :param request: Request instance for EditReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditReverseShellRulesRequest`
@@ -8289,7 +8289,7 @@ class CwpClient(AbstractClient):
 
 
     def EditTags(self, request):
-        """新增或编辑标签
+        r"""新增或编辑标签
 
         :param request: Request instance for EditTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditTagsRequest`
@@ -8312,7 +8312,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetAppList(self, request):
-        """导出资产管理应用列表
+        r"""导出资产管理应用列表
 
         :param request: Request instance for ExportAssetAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetAppListRequest`
@@ -8335,7 +8335,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetCoreModuleList(self, request):
-        """导出资产管理内核模块列表
+        r"""导出资产管理内核模块列表
 
         :param request: Request instance for ExportAssetCoreModuleList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetCoreModuleListRequest`
@@ -8358,7 +8358,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetDatabaseList(self, request):
-        """导出资产管理数据库列表
+        r"""导出资产管理数据库列表
 
         :param request: Request instance for ExportAssetDatabaseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetDatabaseListRequest`
@@ -8381,7 +8381,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetEnvList(self, request):
-        """导出资产管理环境变量列表
+        r"""导出资产管理环境变量列表
 
         :param request: Request instance for ExportAssetEnvList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetEnvListRequest`
@@ -8404,7 +8404,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetInitServiceList(self, request):
-        """导出资产管理启动服务列表
+        r"""导出资产管理启动服务列表
 
         :param request: Request instance for ExportAssetInitServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetInitServiceListRequest`
@@ -8427,7 +8427,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetJarList(self, request):
-        """导出Jar包列表
+        r"""导出Jar包列表
 
         :param request: Request instance for ExportAssetJarList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetJarListRequest`
@@ -8450,7 +8450,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetMachineDetail(self, request):
-        """导出资产管理主机资源详细信息
+        r"""导出资产管理主机资源详细信息
 
         :param request: Request instance for ExportAssetMachineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetMachineDetailRequest`
@@ -8473,7 +8473,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetMachineList(self, request):
-        """导出资源监控列表
+        r"""导出资源监控列表
 
         :param request: Request instance for ExportAssetMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetMachineListRequest`
@@ -8496,7 +8496,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetPlanTaskList(self, request):
-        """导出资产管理计划任务列表
+        r"""导出资产管理计划任务列表
 
         :param request: Request instance for ExportAssetPlanTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetPlanTaskListRequest`
@@ -8519,7 +8519,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetPortInfoList(self, request):
-        """导出资产管理端口列表
+        r"""导出资产管理端口列表
 
         :param request: Request instance for ExportAssetPortInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetPortInfoListRequest`
@@ -8542,7 +8542,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetProcessInfoList(self, request):
-        """导出资产管理进程列表
+        r"""导出资产管理进程列表
 
         :param request: Request instance for ExportAssetProcessInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetProcessInfoListRequest`
@@ -8565,7 +8565,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetRecentMachineInfo(self, request):
-        """导出主机最近趋势情况（最长最近90天）
+        r"""导出主机最近趋势情况（最长最近90天）
 
         :param request: Request instance for ExportAssetRecentMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetRecentMachineInfoRequest`
@@ -8588,7 +8588,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetSystemPackageList(self, request):
-        """导出资产管理系统安装包列表
+        r"""导出资产管理系统安装包列表
 
         :param request: Request instance for ExportAssetSystemPackageList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetSystemPackageListRequest`
@@ -8611,7 +8611,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetUserList(self, request):
-        """导出账号列表
+        r"""导出账号列表
 
         :param request: Request instance for ExportAssetUserList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetUserListRequest`
@@ -8634,7 +8634,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebAppList(self, request):
-        """导出资产管理Web应用列表
+        r"""导出资产管理Web应用列表
 
         :param request: Request instance for ExportAssetWebAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebAppListRequest`
@@ -8657,7 +8657,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebFrameList(self, request):
-        """导出资产管理Web框架列表
+        r"""导出资产管理Web框架列表
 
         :param request: Request instance for ExportAssetWebFrameList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebFrameListRequest`
@@ -8680,7 +8680,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebLocationList(self, request):
-        """导出Web站点列表
+        r"""导出Web站点列表
 
         :param request: Request instance for ExportAssetWebLocationList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebLocationListRequest`
@@ -8703,7 +8703,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebServiceInfoList(self, request):
-        """导出资产管理Web服务列表
+        r"""导出资产管理Web服务列表
 
         :param request: Request instance for ExportAssetWebServiceInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebServiceInfoListRequest`
@@ -8726,7 +8726,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAttackEvents(self, request):
-        """导出网络攻击事件
+        r"""导出网络攻击事件
 
         :param request: Request instance for ExportAttackEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAttackEventsRequest`
@@ -8749,7 +8749,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineEffectHostList(self, request):
-        """导出基线影响主机列表
+        r"""导出基线影响主机列表
 
         :param request: Request instance for ExportBaselineEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineEffectHostListRequest`
@@ -8772,7 +8772,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineFixList(self, request):
-        """导出修复列表
+        r"""导出修复列表
 
         :param request: Request instance for ExportBaselineFixList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineFixListRequest`
@@ -8795,7 +8795,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineHostDetectList(self, request):
-        """导出基线主机检测
+        r"""导出基线主机检测
 
         :param request: Request instance for ExportBaselineHostDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineHostDetectListRequest`
@@ -8818,7 +8818,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineItemDetectList(self, request):
-        """导出基线检测项
+        r"""导出基线检测项
 
         :param request: Request instance for ExportBaselineItemDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineItemDetectListRequest`
@@ -8841,7 +8841,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineItemList(self, request):
-        """导出检测项结果列表
+        r"""导出检测项结果列表
 
         :param request: Request instance for ExportBaselineItemList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineItemListRequest`
@@ -8864,7 +8864,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineList(self, request):
-        """导出基线列表
+        r"""导出基线列表
 
         :param request: Request instance for ExportBaselineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineListRequest`
@@ -8887,7 +8887,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineRuleDetectList(self, request):
-        """导出基线检测规则
+        r"""导出基线检测规则
 
         :param request: Request instance for ExportBaselineRuleDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineRuleDetectListRequest`
@@ -8910,7 +8910,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineWeakPasswordList(self, request):
-        """导出弱口令配置列表
+        r"""导出弱口令配置列表
 
         :param request: Request instance for ExportBaselineWeakPasswordList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineWeakPasswordListRequest`
@@ -8933,7 +8933,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashEvents(self, request):
-        """导出高危命令事件
+        r"""导出高危命令事件
 
         :param request: Request instance for ExportBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsRequest`
@@ -8956,7 +8956,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashEventsNew(self, request):
-        """导出高危命令事件(新)
+        r"""导出高危命令事件(新)
 
         :param request: Request instance for ExportBashEventsNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsNewRequest`
@@ -8979,7 +8979,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashPolicies(self, request):
-        """导出高危命令策略
+        r"""导出高危命令策略
 
         :param request: Request instance for ExportBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashPoliciesRequest`
@@ -9002,7 +9002,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBruteAttacks(self, request):
-        """本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
+        r"""本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
 
         :param request: Request instance for ExportBruteAttacks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBruteAttacksRequest`
@@ -9025,7 +9025,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportFileTamperEvents(self, request):
-        """导出核心文件事件
+        r"""导出核心文件事件
 
         :param request: Request instance for ExportFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportFileTamperEventsRequest`
@@ -9048,7 +9048,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportFileTamperRules(self, request):
-        """导出核心文件监控规则
+        r"""导出核心文件监控规则
 
         :param request: Request instance for ExportFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportFileTamperRulesRequest`
@@ -9071,7 +9071,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportIgnoreBaselineRule(self, request):
-        """导出已忽略基线检测项信息
+        r"""导出已忽略基线检测项信息
 
         :param request: Request instance for ExportIgnoreBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportIgnoreBaselineRuleRequest`
@@ -9094,7 +9094,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportIgnoreRuleEffectHostList(self, request):
-        """根据检测项id导出忽略检测项影响主机列表
+        r"""根据检测项id导出忽略检测项影响主机列表
 
         :param request: Request instance for ExportIgnoreRuleEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportIgnoreRuleEffectHostListRequest`
@@ -9117,7 +9117,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportJavaMemShellPlugins(self, request):
-        """导出java内存马插件信息
+        r"""导出java内存马插件信息
 
         :param request: Request instance for ExportJavaMemShellPlugins.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportJavaMemShellPluginsRequest`
@@ -9140,7 +9140,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportJavaMemShells(self, request):
-        """导出java内存马事件列表
+        r"""导出java内存马事件列表
 
         :param request: Request instance for ExportJavaMemShells.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportJavaMemShellsRequest`
@@ -9163,7 +9163,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportLicenseDetail(self, request):
-        """导出授权列表对应的绑定信息
+        r"""导出授权列表对应的绑定信息
 
         :param request: Request instance for ExportLicenseDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportLicenseDetailRequest`
@@ -9186,7 +9186,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportMaliciousRequests(self, request):
-        """本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
+        r"""本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
 
         :param request: Request instance for ExportMaliciousRequests.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMaliciousRequestsRequest`
@@ -9209,7 +9209,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportMalwares(self, request):
-        """本接口 (ExportMalwares) 用于导出木马记录CSV文件。
+        r"""本接口 (ExportMalwares) 用于导出木马记录CSV文件。
 
         :param request: Request instance for ExportMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMalwaresRequest`
@@ -9232,7 +9232,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportNonlocalLoginPlaces(self, request):
-        """本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
+        r"""本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
 
         :param request: Request instance for ExportNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportNonlocalLoginPlacesRequest`
@@ -9255,7 +9255,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportPrivilegeEvents(self, request):
-        """导出本地提权事件
+        r"""导出本地提权事件
 
         :param request: Request instance for ExportPrivilegeEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportPrivilegeEventsRequest`
@@ -9278,7 +9278,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportProtectDirList(self, request):
-        """导出网页防篡改防护目录列表
+        r"""导出网页防篡改防护目录列表
 
         :param request: Request instance for ExportProtectDirList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportProtectDirListRequest`
@@ -9301,7 +9301,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseBackupList(self, request):
-        """导出主机快照备份列表
+        r"""导出主机快照备份列表
 
         :param request: Request instance for ExportRansomDefenseBackupList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseBackupListRequest`
@@ -9324,7 +9324,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseEventsList(self, request):
-        """导出防勒索事件列表
+        r"""导出防勒索事件列表
 
         :param request: Request instance for ExportRansomDefenseEventsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseEventsListRequest`
@@ -9347,7 +9347,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseMachineList(self, request):
-        """导出备份详情列表
+        r"""导出备份详情列表
 
         :param request: Request instance for ExportRansomDefenseMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseMachineListRequest`
@@ -9370,7 +9370,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseStrategyList(self, request):
-        """导出防勒索策略列表
+        r"""导出防勒索策略列表
 
         :param request: Request instance for ExportRansomDefenseStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseStrategyListRequest`
@@ -9393,7 +9393,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseStrategyMachines(self, request):
-        """导出勒索防御策略绑定机器列表
+        r"""导出勒索防御策略绑定机器列表
 
         :param request: Request instance for ExportRansomDefenseStrategyMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseStrategyMachinesRequest`
@@ -9416,7 +9416,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportReverseShellEvents(self, request):
-        """导出反弹Shell事件
+        r"""导出反弹Shell事件
 
         :param request: Request instance for ExportReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportReverseShellEventsRequest`
@@ -9439,7 +9439,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskDnsEventList(self, request):
-        """导出恶意请求事件列表
+        r"""导出恶意请求事件列表
 
         :param request: Request instance for ExportRiskDnsEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskDnsEventListRequest`
@@ -9462,7 +9462,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskDnsPolicyList(self, request):
-        """导出恶意请求策略列表
+        r"""导出恶意请求策略列表
 
         :param request: Request instance for ExportRiskDnsPolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskDnsPolicyListRequest`
@@ -9485,7 +9485,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskProcessEvents(self, request):
-        """导出异常进程事件
+        r"""导出异常进程事件
 
         :param request: Request instance for ExportRiskProcessEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskProcessEventsRequest`
@@ -9508,7 +9508,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportScanTaskDetails(self, request):
-        """根据任务id导出指定扫描任务详情
+        r"""根据任务id导出指定扫描任务详情
 
         :param request: Request instance for ExportScanTaskDetails.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportScanTaskDetailsRequest`
@@ -9531,7 +9531,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportSecurityTrends(self, request):
-        """导出风险趋势
+        r"""导出风险趋势
 
         :param request: Request instance for ExportSecurityTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportSecurityTrendsRequest`
@@ -9554,7 +9554,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportTasks(self, request):
-        """用于异步导出数据量大的日志文件
+        r"""用于异步导出数据量大的日志文件
 
         :param request: Request instance for ExportTasks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportTasksRequest`
@@ -9577,7 +9577,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefenceEvent(self, request):
-        """导出漏洞防御事件
+        r"""导出漏洞防御事件
 
         :param request: Request instance for ExportVulDefenceEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefenceEventRequest`
@@ -9600,7 +9600,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefenceList(self, request):
-        """导出漏洞防御列表
+        r"""导出漏洞防御列表
 
         :param request: Request instance for ExportVulDefenceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefenceListRequest`
@@ -9623,7 +9623,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefencePluginEvent(self, request):
-        """导出漏洞防御插件事件
+        r"""导出漏洞防御插件事件
 
         :param request: Request instance for ExportVulDefencePluginEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefencePluginEventRequest`
@@ -9646,7 +9646,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDetectionExcel(self, request):
-        """导出本次漏洞检测Excel
+        r"""导出本次漏洞检测Excel
 
         :param request: Request instance for ExportVulDetectionExcel.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionExcelRequest`
@@ -9669,7 +9669,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDetectionReport(self, request):
-        """导出漏洞检测报告。
+        r"""导出漏洞检测报告。
 
         :param request: Request instance for ExportVulDetectionReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionReportRequest`
@@ -9692,7 +9692,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulEffectHostList(self, request):
-        """导出漏洞影响主机列表
+        r"""导出漏洞影响主机列表
 
         :param request: Request instance for ExportVulEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulEffectHostListRequest`
@@ -9715,7 +9715,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulInfo(self, request):
-        """导出漏洞信息，包括影响主机列表，组件信息
+        r"""导出漏洞信息，包括影响主机列表，组件信息
 
         :param request: Request instance for ExportVulInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulInfoRequest`
@@ -9738,7 +9738,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulList(self, request):
-        """漏洞管理-导出漏洞列表
+        r"""漏洞管理-导出漏洞列表
 
         :param request: Request instance for ExportVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulListRequest`
@@ -9761,7 +9761,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportWebPageEventList(self, request):
-        """导出篡改事件列表
+        r"""导出篡改事件列表
 
         :param request: Request instance for ExportWebPageEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportWebPageEventListRequest`
@@ -9784,7 +9784,7 @@ class CwpClient(AbstractClient):
 
 
     def FixBaselineDetect(self, request):
-        """修复基线检测
+        r"""修复基线检测
 
         :param request: Request instance for FixBaselineDetect.
         :type request: :class:`tencentcloud.cwp.v20180228.models.FixBaselineDetectRequest`
@@ -9807,7 +9807,7 @@ class CwpClient(AbstractClient):
 
 
     def GetLocalStorageItem(self, request):
-        """获取本地存储数据
+        r"""获取本地存储数据
 
         :param request: Request instance for GetLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.GetLocalStorageItemRequest`
@@ -9830,7 +9830,7 @@ class CwpClient(AbstractClient):
 
 
     def IgnoreImpactedHosts(self, request):
-        """产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+        r"""产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
 
         本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 
@@ -9855,7 +9855,7 @@ class CwpClient(AbstractClient):
 
 
     def KeysLocalStorage(self, request):
-        """获取本地存储键值列表
+        r"""获取本地存储键值列表
 
         :param request: Request instance for KeysLocalStorage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.KeysLocalStorageRequest`
@@ -9878,7 +9878,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyAutoOpenProVersionConfig(self, request):
-        """用于设置新增主机自动开通专业防护配置。
+        r"""用于设置新增主机自动开通专业防护配置。
 
         :param request: Request instance for ModifyAutoOpenProVersionConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyAutoOpenProVersionConfigRequest`
@@ -9901,7 +9901,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanMode(self, request):
-        """修改爆破阻断模式
+        r"""修改爆破阻断模式
 
         :param request: Request instance for ModifyBanMode.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanModeRequest`
@@ -9924,7 +9924,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanStatus(self, request):
-        """设置阻断开关状态
+        r"""设置阻断开关状态
 
         :param request: Request instance for ModifyBanStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanStatusRequest`
@@ -9947,7 +9947,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanWhiteList(self, request):
-        """修改阻断白名单列表
+        r"""修改阻断白名单列表
 
         :param request: Request instance for ModifyBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanWhiteListRequest`
@@ -9970,7 +9970,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselinePolicy(self, request):
-        """更改基线策略设置
+        r"""更改基线策略设置
 
         :param request: Request instance for ModifyBaselinePolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselinePolicyRequest`
@@ -9993,7 +9993,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselinePolicyState(self, request):
-        """更改基线策略状态
+        r"""更改基线策略状态
 
         :param request: Request instance for ModifyBaselinePolicyState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselinePolicyStateRequest`
@@ -10016,7 +10016,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselineRule(self, request):
-        """更改基线检测规则
+        r"""更改基线检测规则
 
         :param request: Request instance for ModifyBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselineRuleRequest`
@@ -10039,7 +10039,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselineRuleIgnore(self, request):
-        """更改基线忽略规则
+        r"""更改基线忽略规则
 
         :param request: Request instance for ModifyBaselineRuleIgnore.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselineRuleIgnoreRequest`
@@ -10062,7 +10062,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselineWeakPassword(self, request):
-        """更改或新增弱口令
+        r"""更改或新增弱口令
 
         :param request: Request instance for ModifyBaselineWeakPassword.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselineWeakPasswordRequest`
@@ -10085,7 +10085,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBashPolicy(self, request):
-        """新增或修改高危命令策略
+        r"""新增或修改高危命令策略
 
         :param request: Request instance for ModifyBashPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBashPolicyRequest`
@@ -10108,7 +10108,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBashPolicyStatus(self, request):
-        """切换高危命令策略状态
+        r"""切换高危命令策略状态
 
         :param request: Request instance for ModifyBashPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBashPolicyStatusRequest`
@@ -10131,7 +10131,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBruteAttackRules(self, request):
-        """修改暴力破解规则
+        r"""修改暴力破解规则
 
         :param request: Request instance for ModifyBruteAttackRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBruteAttackRulesRequest`
@@ -10154,7 +10154,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyEventAttackStatus(self, request):
-        """修改网络攻击事件状态
+        r"""修改网络攻击事件状态
 
         :param request: Request instance for ModifyEventAttackStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyEventAttackStatusRequest`
@@ -10177,7 +10177,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperEvents(self, request):
-        """核心文件事件更新
+        r"""核心文件事件更新
 
         :param request: Request instance for ModifyFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperEventsRequest`
@@ -10200,7 +10200,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperRule(self, request):
-        """编辑、新增核心文件监控规则
+        r"""编辑、新增核心文件监控规则
 
         :param request: Request instance for ModifyFileTamperRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperRuleRequest`
@@ -10223,7 +10223,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperRuleStatus(self, request):
-        """核心文件规则状态更新，支持批量删除 关闭
+        r"""核心文件规则状态更新，支持批量删除 关闭
 
         :param request: Request instance for ModifyFileTamperRuleStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperRuleStatusRequest`
@@ -10246,7 +10246,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyJavaMemShellPluginSwitch(self, request):
-        """开关java内存马插件
+        r"""开关java内存马插件
 
         :param request: Request instance for ModifyJavaMemShellPluginSwitch.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyJavaMemShellPluginSwitchRequest`
@@ -10269,7 +10269,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyJavaMemShellsStatus(self, request):
-        """修改java内存马事件状态
+        r"""修改java内存马事件状态
 
         :param request: Request instance for ModifyJavaMemShellsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyJavaMemShellsStatusRequest`
@@ -10292,7 +10292,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLicenseBinds(self, request):
-        """设置中心-授权管理 对某个授权批量绑定机器
+        r"""设置中心-授权管理 对某个授权批量绑定机器
 
         :param request: Request instance for ModifyLicenseBinds.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLicenseBindsRequest`
@@ -10315,7 +10315,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLicenseOrder(self, request):
-        """编辑《主机安全-按量计费》授权订单
+        r"""编辑《主机安全-按量计费》授权订单
 
         :param request: Request instance for ModifyLicenseOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLicenseOrderRequest`
@@ -10338,7 +10338,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLicenseUnBinds(self, request):
-        """设置中心-授权管理 对某个授权批量解绑机器
+        r"""设置中心-授权管理 对某个授权批量解绑机器
 
         :param request: Request instance for ModifyLicenseUnBinds.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLicenseUnBindsRequest`
@@ -10361,7 +10361,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaAccess(self, request):
-        """新增或修改日志投递kafka接入配置
+        r"""新增或修改日志投递kafka接入配置
 
         :param request: Request instance for ModifyLogKafkaAccess.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaAccessRequest`
@@ -10384,7 +10384,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaDeliverType(self, request):
-        """修改指定日志类别投递配置、开关
+        r"""修改指定日志类别投递配置、开关
 
         :param request: Request instance for ModifyLogKafkaDeliverType.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaDeliverTypeRequest`
@@ -10407,7 +10407,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaState(self, request):
-        """修改日志投递状态信息
+        r"""修改日志投递状态信息
 
         :param request: Request instance for ModifyLogKafkaState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaStateRequest`
@@ -10430,7 +10430,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogStorageConfig(self, request):
-        """修改日志存储配置
+        r"""修改日志存储配置
 
         :param request: Request instance for ModifyLogStorageConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogStorageConfigRequest`
@@ -10453,7 +10453,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLoginWhiteInfo(self, request):
-        """更新登录审计白名单信息
+        r"""更新登录审计白名单信息
 
         :param request: Request instance for ModifyLoginWhiteInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteInfoRequest`
@@ -10476,7 +10476,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLoginWhiteRecord(self, request):
-        """更新合并后登录审计白名单信息（服务器列表数目应小于1000）
+        r"""更新合并后登录审计白名单信息（服务器列表数目应小于1000）
 
         :param request: Request instance for ModifyLoginWhiteRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteRecordRequest`
@@ -10499,7 +10499,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMachineAutoClearConfig(self, request):
-        """修改机器清理配置
+        r"""修改机器清理配置
 
         :param request: Request instance for ModifyMachineAutoClearConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMachineAutoClearConfigRequest`
@@ -10522,7 +10522,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMachineRemark(self, request):
-        """修改主机备注信息
+        r"""修改主机备注信息
 
         :param request: Request instance for ModifyMachineRemark.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMachineRemarkRequest`
@@ -10545,7 +10545,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMaliciousRequestWhiteList(self, request):
-        """更新恶意请求白名单
+        r"""更新恶意请求白名单
 
         :param request: Request instance for ModifyMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMaliciousRequestWhiteListRequest`
@@ -10568,7 +10568,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMalwareTimingScanSettings(self, request):
-        """定时扫描设置
+        r"""定时扫描设置
 
         :param request: Request instance for ModifyMalwareTimingScanSettings.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareTimingScanSettingsRequest`
@@ -10591,7 +10591,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMalwareWhiteList(self, request):
-        """编辑木马白名单
+        r"""编辑木马白名单
 
         :param request: Request instance for ModifyMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareWhiteListRequest`
@@ -10614,7 +10614,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyNetAttackSetting(self, request):
-        """修改网络攻击设置
+        r"""修改网络攻击设置
 
         :param request: Request instance for ModifyNetAttackSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyNetAttackSettingRequest`
@@ -10637,7 +10637,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyNetAttackWhiteList(self, request):
-        """编辑网络攻击白名单
+        r"""编辑网络攻击白名单
 
         :param request: Request instance for ModifyNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyNetAttackWhiteListRequest`
@@ -10660,7 +10660,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyOrderAttribute(self, request):
-        """对订单属性编辑
+        r"""对订单属性编辑
 
         :param request: Request instance for ModifyOrderAttribute.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyOrderAttributeRequest`
@@ -10683,7 +10683,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRansomDefenseEventsStatus(self, request):
-        """修改防勒索事件状态
+        r"""修改防勒索事件状态
 
         :param request: Request instance for ModifyRansomDefenseEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRansomDefenseEventsStatusRequest`
@@ -10706,7 +10706,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRansomDefenseStrategyStatus(self, request):
-        """批量修改防勒索策略状态
+        r"""批量修改防勒索策略状态
 
         :param request: Request instance for ModifyRansomDefenseStrategyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRansomDefenseStrategyStatusRequest`
@@ -10729,7 +10729,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRaspMaxCpu(self, request):
-        """编辑漏洞防御最大cpu配置
+        r"""编辑漏洞防御最大cpu配置
 
         :param request: Request instance for ModifyRaspMaxCpu.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspMaxCpuRequest`
@@ -10752,7 +10752,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRaspRules(self, request):
-        """添加漏洞防御白名单
+        r"""添加漏洞防御白名单
 
         :param request: Request instance for ModifyRaspRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspRulesRequest`
@@ -10775,7 +10775,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyReverseShellRulesAggregation(self, request):
-        """编辑反弹Shell规则（支持多服务器选择）
+        r"""编辑反弹Shell规则（支持多服务器选择）
 
         :param request: Request instance for ModifyReverseShellRulesAggregation.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyReverseShellRulesAggregationRequest`
@@ -10798,7 +10798,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskDnsPolicy(self, request):
-        """更改恶意请求策略
+        r"""更改恶意请求策略
 
         :param request: Request instance for ModifyRiskDnsPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskDnsPolicyRequest`
@@ -10821,7 +10821,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskDnsPolicyStatus(self, request):
-        """更改恶意请求策略状态
+        r"""更改恶意请求策略状态
 
         :param request: Request instance for ModifyRiskDnsPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskDnsPolicyStatusRequest`
@@ -10844,7 +10844,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskEventsStatus(self, request):
-        """入侵检测所有事件的状态，包括：文件查杀，异常登录，密码破解，高危命令，反弹shell，本地提取
+        r"""入侵检测所有事件的状态，包括：文件查杀，异常登录，密码破解，高危命令，反弹shell，本地提取
 
         :param request: Request instance for ModifyRiskEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskEventsStatusRequest`
@@ -10867,7 +10867,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyUsersConfig(self, request):
-        """用于创建/修改用户自定义配置
+        r"""用于创建/修改用户自定义配置
 
         :param request: Request instance for ModifyUsersConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyUsersConfigRequest`
@@ -10890,7 +10890,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyVulDefenceEventStatus(self, request):
-        """修改漏洞防御事件状态（修复漏洞通过其他接口实现）
+        r"""修改漏洞防御事件状态（修复漏洞通过其他接口实现）
 
         :param request: Request instance for ModifyVulDefenceEventStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyVulDefenceEventStatusRequest`
@@ -10913,7 +10913,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyVulDefenceSetting(self, request):
-        """修改漏洞防御插件设置
+        r"""修改漏洞防御插件设置
         1）新增主机自动加入，scope为1，quuids为空
         2）全量旗舰版不自动加入，scope为0，quuids为当前quuid列表，
         3）给定quuid列表，scope为0，quuids为用户选择quuid
@@ -10939,7 +10939,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWarningHostConfig(self, request):
-        """修改告警机器范围配置
+        r"""修改告警机器范围配置
 
         :param request: Request instance for ModifyWarningHostConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningHostConfigRequest`
@@ -10962,7 +10962,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWarningSetting(self, request):
-        """修改告警设置
+        r"""修改告警设置
 
         :param request: Request instance for ModifyWarningSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningSettingRequest`
@@ -10985,7 +10985,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookPolicy(self, request):
-        """新增或修改告警策略
+        r"""新增或修改告警策略
 
         :param request: Request instance for ModifyWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookPolicyRequest`
@@ -11008,7 +11008,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookPolicyStatus(self, request):
-        """修改告警策略开关
+        r"""修改告警策略开关
 
         :param request: Request instance for ModifyWebHookPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookPolicyStatusRequest`
@@ -11031,7 +11031,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookReceiver(self, request):
-        """新增或更新告警接收人
+        r"""新增或更新告警接收人
 
         :param request: Request instance for ModifyWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookReceiverRequest`
@@ -11054,7 +11054,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookRule(self, request):
-        """新增或修改企微机器人规则
+        r"""新增或修改企微机器人规则
 
         :param request: Request instance for ModifyWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookRuleRequest`
@@ -11077,7 +11077,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookRuleStatus(self, request):
-        """修改企微机器人规则状态
+        r"""修改企微机器人规则状态
 
         :param request: Request instance for ModifyWebHookRuleStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookRuleStatusRequest`
@@ -11100,7 +11100,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebPageProtectDir(self, request):
-        """创建/修改网站防护目录
+        r"""创建/修改网站防护目录
 
         :param request: Request instance for ModifyWebPageProtectDir.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectDirRequest`
@@ -11123,7 +11123,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebPageProtectSetting(self, request):
-        """修改网站防护设置
+        r"""修改网站防护设置
 
         :param request: Request instance for ModifyWebPageProtectSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectSettingRequest`
@@ -11146,7 +11146,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebPageProtectSwitch(self, request):
-        """网站防篡改防护设置开关
+        r"""网站防篡改防护设置开关
 
         :param request: Request instance for ModifyWebPageProtectSwitch.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectSwitchRequest`
@@ -11169,7 +11169,7 @@ class CwpClient(AbstractClient):
 
 
     def RansomDefenseRollback(self, request):
-        """防勒索快照回滚
+        r"""防勒索快照回滚
 
         :param request: Request instance for RansomDefenseRollback.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RansomDefenseRollbackRequest`
@@ -11192,7 +11192,7 @@ class CwpClient(AbstractClient):
 
 
     def RecoverMalwares(self, request):
-        """本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
+        r"""本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
 
         :param request: Request instance for RecoverMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RecoverMalwaresRequest`
@@ -11215,7 +11215,7 @@ class CwpClient(AbstractClient):
 
 
     def RemoveLocalStorageItem(self, request):
-        """删除本地存储数据
+        r"""删除本地存储数据
 
         :param request: Request instance for RemoveLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RemoveLocalStorageItemRequest`
@@ -11238,7 +11238,7 @@ class CwpClient(AbstractClient):
 
 
     def RemoveMachine(self, request):
-        """删除主机所有记录，目前只支持非腾讯云主机，且需要主机在离线状态
+        r"""删除主机所有记录，目前只支持非腾讯云主机，且需要主机在离线状态
 
         :param request: Request instance for RemoveMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RemoveMachineRequest`
@@ -11261,7 +11261,7 @@ class CwpClient(AbstractClient):
 
 
     def RetryCreateSnapshot(self, request):
-        """快照创建失败时可以重试创建快照并且自动进行漏洞修复
+        r"""快照创建失败时可以重试创建快照并且自动进行漏洞修复
 
         :param request: Request instance for RetryCreateSnapshot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RetryCreateSnapshotRequest`
@@ -11284,7 +11284,7 @@ class CwpClient(AbstractClient):
 
 
     def RetryVulFix(self, request):
-        """修复失败时单独对某一个主机修复漏洞
+        r"""修复失败时单独对某一个主机修复漏洞
 
         :param request: Request instance for RetryVulFix.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RetryVulFixRequest`
@@ -11307,7 +11307,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanAsset(self, request):
-        """资产指纹启动扫描
+        r"""资产指纹启动扫描
 
         :param request: Request instance for ScanAsset.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanAssetRequest`
@@ -11330,7 +11330,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanBaseline(self, request):
-        """基线检测与基线重新检测接口
+        r"""基线检测与基线重新检测接口
 
         :param request: Request instance for ScanBaseline.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanBaselineRequest`
@@ -11353,7 +11353,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanTaskAgain(self, request):
-        """ScanTaskAgain  重新开始扫描任务，可以指定机器
+        r"""ScanTaskAgain  重新开始扫描任务，可以指定机器
 
         :param request: Request instance for ScanTaskAgain.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanTaskAgainRequest`
@@ -11376,7 +11376,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVul(self, request):
-        """漏洞一键检测
+        r"""漏洞一键检测
 
         :param request: Request instance for ScanVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulRequest`
@@ -11399,7 +11399,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVulAgain(self, request):
-        """漏洞管理-重新检测接口
+        r"""漏洞管理-重新检测接口
 
         :param request: Request instance for ScanVulAgain.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulAgainRequest`
@@ -11422,7 +11422,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVulSetting(self, request):
-        """定期扫描漏洞设置
+        r"""定期扫描漏洞设置
 
         :param request: Request instance for ScanVulSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulSettingRequest`
@@ -11445,7 +11445,7 @@ class CwpClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """查询日志
+        r"""查询日志
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SearchLogRequest`
@@ -11468,7 +11468,7 @@ class CwpClient(AbstractClient):
 
 
     def SeparateMalwares(self, request):
-        """本接口（SeparateMalwares）用于隔离木马。
+        r"""本接口（SeparateMalwares）用于隔离木马。
 
         :param request: Request instance for SeparateMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SeparateMalwaresRequest`
@@ -11491,7 +11491,7 @@ class CwpClient(AbstractClient):
 
 
     def SetBashEventsStatus(self, request):
-        """设置高危命令事件状态
+        r"""设置高危命令事件状态
 
         :param request: Request instance for SetBashEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetBashEventsStatusRequest`
@@ -11514,7 +11514,7 @@ class CwpClient(AbstractClient):
 
 
     def SetLocalStorageExpire(self, request):
-        """设置本地存储过期时间
+        r"""设置本地存储过期时间
 
         :param request: Request instance for SetLocalStorageExpire.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetLocalStorageExpireRequest`
@@ -11537,7 +11537,7 @@ class CwpClient(AbstractClient):
 
 
     def SetLocalStorageItem(self, request):
-        """设置本地存储数据
+        r"""设置本地存储数据
 
         :param request: Request instance for SetLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetLocalStorageItemRequest`
@@ -11560,7 +11560,7 @@ class CwpClient(AbstractClient):
 
 
     def StartBaselineDetect(self, request):
-        """检测基线
+        r"""检测基线
 
         :param request: Request instance for StartBaselineDetect.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StartBaselineDetectRequest`
@@ -11583,7 +11583,7 @@ class CwpClient(AbstractClient):
 
 
     def StopAssetScan(self, request):
-        """停止资产扫描任务
+        r"""停止资产扫描任务
 
         :param request: Request instance for StopAssetScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopAssetScanRequest`
@@ -11606,7 +11606,7 @@ class CwpClient(AbstractClient):
 
 
     def StopBaselineDetect(self, request):
-        """停止基线检测
+        r"""停止基线检测
 
         :param request: Request instance for StopBaselineDetect.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopBaselineDetectRequest`
@@ -11629,7 +11629,7 @@ class CwpClient(AbstractClient):
 
 
     def StopNoticeBanTips(self, request):
-        """不再提醒爆破阻断提示弹窗
+        r"""不再提醒爆破阻断提示弹窗
 
         :param request: Request instance for StopNoticeBanTips.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopNoticeBanTipsRequest`
@@ -11652,7 +11652,7 @@ class CwpClient(AbstractClient):
 
 
     def SwitchBashRules(self, request):
-        """切换高危命令规则状态
+        r"""切换高危命令规则状态
 
         :param request: Request instance for SwitchBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SwitchBashRulesRequest`
@@ -11675,7 +11675,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncAssetScan(self, request):
-        """同步资产扫描信息
+        r"""同步资产扫描信息
 
         :param request: Request instance for SyncAssetScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncAssetScanRequest`
@@ -11698,7 +11698,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncBaselineDetectSummary(self, request):
-        """同步基线检测进度概要
+        r"""同步基线检测进度概要
 
         :param request: Request instance for SyncBaselineDetectSummary.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncBaselineDetectSummaryRequest`
@@ -11721,7 +11721,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncMachines(self, request):
-        """同步机器信息
+        r"""同步机器信息
 
         :param request: Request instance for SyncMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncMachinesRequest`
@@ -11744,7 +11744,7 @@ class CwpClient(AbstractClient):
 
 
     def TestWebHookRule(self, request):
-        """测试企微机器人规则
+        r"""测试企微机器人规则
 
         :param request: Request instance for TestWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.TestWebHookRuleRequest`
@@ -11767,7 +11767,7 @@ class CwpClient(AbstractClient):
 
 
     def TrustMalwares(self, request):
-        """本接口(TrustMalwares)将被识别木马文件设为信任。
+        r"""本接口(TrustMalwares)将被识别木马文件设为信任。
 
         :param request: Request instance for TrustMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.TrustMalwaresRequest`
@@ -11790,7 +11790,7 @@ class CwpClient(AbstractClient):
 
 
     def UntrustMalwares(self, request):
-        """本接口（UntrustMalwares）用于取消信任木马文件。
+        r"""本接口（UntrustMalwares）用于取消信任木马文件。
 
         :param request: Request instance for UntrustMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UntrustMalwaresRequest`
@@ -11813,7 +11813,7 @@ class CwpClient(AbstractClient):
 
 
     def UpdateBaselineStrategy(self, request):
-        """根据基线策略id更新策略信息
+        r"""根据基线策略id更新策略信息
 
         :param request: Request instance for UpdateBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UpdateBaselineStrategyRequest`
@@ -11836,7 +11836,7 @@ class CwpClient(AbstractClient):
 
 
     def UpdateMachineTags(self, request):
-        """关联机器标签列表
+        r"""关联机器标签列表
 
         :param request: Request instance for UpdateMachineTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UpdateMachineTagsRequest`

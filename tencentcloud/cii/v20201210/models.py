@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CompareMetricsData(AbstractModel):
-    """结构化对比指标（准确率/召回率）数据
+    r"""结构化对比指标（准确率/召回率）数据
 
     """
 
@@ -47,7 +47,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def ShortStructAccuracy(self):
-        """短文准确率
+        r"""短文准确率
         :rtype: str
         """
         return self._ShortStructAccuracy
@@ -58,7 +58,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def ShortStructRecall(self):
-        """短文召回率
+        r"""短文召回率
         :rtype: str
         """
         return self._ShortStructRecall
@@ -69,7 +69,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongStructAccuracy(self):
-        """长文结构化准确率
+        r"""长文结构化准确率
         :rtype: str
         """
         return self._LongStructAccuracy
@@ -80,7 +80,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongStructRecall(self):
-        """长文结构化召回率
+        r"""长文结构化召回率
         :rtype: str
         """
         return self._LongStructRecall
@@ -91,7 +91,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongContentAccuracy(self):
-        """长文提取准确率
+        r"""长文提取准确率
         :rtype: str
         """
         return self._LongContentAccuracy
@@ -102,7 +102,7 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongContentRecall(self):
-        """长文提取召回率
+        r"""长文提取召回率
         :rtype: str
         """
         return self._LongContentRecall
@@ -130,7 +130,7 @@ class CompareMetricsData(AbstractModel):
 
 
 class CreateStructureTaskRequest(AbstractModel):
-    """CreateStructureTask请求参数结构体
+    r"""CreateStructureTask请求参数结构体
 
     """
 
@@ -167,7 +167,7 @@ AccidentInsurance：意外险
 
     @property
     def PolicyId(self):
-        """保单号
+        r"""保单号
         :rtype: str
         """
         return self._PolicyId
@@ -178,7 +178,7 @@ AccidentInsurance：意外险
 
     @property
     def CustomerId(self):
-        """客户号
+        r"""客户号
         :rtype: str
         """
         return self._CustomerId
@@ -189,7 +189,7 @@ AccidentInsurance：意外险
 
     @property
     def CustomerName(self):
-        """客户姓名
+        r"""客户姓名
         :rtype: str
         """
         return self._CustomerName
@@ -200,7 +200,7 @@ AccidentInsurance：意外险
 
     @property
     def TaskType(self):
-        """文件类型，目前只支持体检报告类型，对应的值为：HealthReport
+        r"""文件类型，目前只支持体检报告类型，对应的值为：HealthReport
         :rtype: str
         """
         return self._TaskType
@@ -211,7 +211,7 @@ AccidentInsurance：意外险
 
     @property
     def Year(self):
-        """报告年份
+        r"""报告年份
         :rtype: str
         """
         return self._Year
@@ -222,7 +222,7 @@ AccidentInsurance：意外险
 
     @property
     def FileList(self):
-        """报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+        r"""报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
         :rtype: list of str
         """
         return self._FileList
@@ -233,7 +233,7 @@ AccidentInsurance：意外险
 
     @property
     def InsuranceTypes(self):
-        """险种，如果是体检报告类型，此参数是必填，类型说明如下：
+        r"""险种，如果是体检报告类型，此参数是必填，类型说明如下：
 CriticalDiseaseInsurance:重疾险
 LifeInsurance：寿险
 AccidentInsurance：意外险
@@ -247,7 +247,7 @@ AccidentInsurance：意外险
 
     @property
     def ImageList(self):
-        """报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+        r"""报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
         :rtype: list of str
         """
         return self._ImageList
@@ -277,7 +277,7 @@ AccidentInsurance：意外险
 
 
 class CreateStructureTaskResponse(AbstractModel):
-    """CreateStructureTask返回参数结构体
+    r"""CreateStructureTask返回参数结构体
 
     """
 
@@ -293,7 +293,7 @@ class CreateStructureTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """本次结构化任务的ID
+        r"""本次结构化任务的ID
         :rtype: str
         """
         return self._TaskId
@@ -304,7 +304,7 @@ class CreateStructureTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -320,7 +320,7 @@ class CreateStructureTaskResponse(AbstractModel):
 
 
 class DescribeStructCompareDataRequest(AbstractModel):
-    """DescribeStructCompareData请求参数结构体
+    r"""DescribeStructCompareData请求参数结构体
 
     """
 
@@ -333,7 +333,7 @@ class DescribeStructCompareDataRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """结构化任务ID
+        r"""结构化任务ID
         :rtype: str
         """
         return self._TaskId
@@ -356,7 +356,7 @@ class DescribeStructCompareDataRequest(AbstractModel):
 
 
 class DescribeStructCompareDataResponse(AbstractModel):
-    """DescribeStructCompareData返回参数结构体
+    r"""DescribeStructCompareData返回参数结构体
 
     """
 
@@ -399,7 +399,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """保单号
+        r"""保单号
         :rtype: str
         """
         return self._PolicyId
@@ -410,7 +410,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """结构化任务ID
+        r"""结构化任务ID
         :rtype: str
         """
         return self._TaskId
@@ -421,7 +421,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def CustomerId(self):
-        """客户号
+        r"""客户号
         :rtype: str
         """
         return self._CustomerId
@@ -432,7 +432,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def CustomerName(self):
-        """客户姓名
+        r"""客户姓名
         :rtype: str
         """
         return self._CustomerName
@@ -443,7 +443,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ReviewTime(self):
-        """复核时间
+        r"""复核时间
         :rtype: str
         """
         return self._ReviewTime
@@ -454,7 +454,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def MachineResult(self):
-        """算法识别结果
+        r"""算法识别结果
         :rtype: str
         """
         return self._MachineResult
@@ -465,7 +465,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ManualResult(self):
-        """人工复核结果
+        r"""人工复核结果
         :rtype: str
         """
         return self._ManualResult
@@ -476,7 +476,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def Metrics(self):
-        """结构化对比指标数据
+        r"""结构化对比指标数据
         :rtype: :class:`tencentcloud.cii.v20201210.models.CompareMetricsData`
         """
         return self._Metrics
@@ -487,7 +487,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def NewItems(self):
-        """新增项
+        r"""新增项
         :rtype: str
         """
         return self._NewItems
@@ -498,7 +498,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ModifyItems(self):
-        """修改项
+        r"""修改项
         :rtype: str
         """
         return self._ModifyItems
@@ -509,7 +509,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -536,7 +536,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
 
 class DescribeStructureTaskResultRequest(AbstractModel):
-    """DescribeStructureTaskResult请求参数结构体
+    r"""DescribeStructureTaskResult请求参数结构体
 
     """
 
@@ -549,7 +549,7 @@ class DescribeStructureTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """结构化任务ID
+        r"""结构化任务ID
         :rtype: str
         """
         return self._TaskId
@@ -572,7 +572,7 @@ class DescribeStructureTaskResultRequest(AbstractModel):
 
 
 class DescribeStructureTaskResultResponse(AbstractModel):
-    """DescribeStructureTaskResult返回参数结构体
+    r"""DescribeStructureTaskResult返回参数结构体
 
     """
 
@@ -595,7 +595,7 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """结果状态：
+        r"""结果状态：
 0：返回成功
 1：结果未生成
 2：结果生成失败
@@ -609,7 +609,7 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def Results(self):
-        """结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
+        r"""结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultObject
         """
@@ -621,7 +621,7 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -643,7 +643,7 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
 
 class ResultObject(AbstractModel):
-    """用于返回结构化任务结果
+    r"""用于返回结构化任务结果
 
     """
 
@@ -659,7 +659,7 @@ class ResultObject(AbstractModel):
 
     @property
     def Quality(self):
-        """图片质量分
+        r"""图片质量分
         :rtype: float
         """
         return self._Quality
@@ -670,7 +670,7 @@ class ResultObject(AbstractModel):
 
     @property
     def StructureResult(self):
-        """由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
+        r"""由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
         :rtype: str
         """
         return self._StructureResult

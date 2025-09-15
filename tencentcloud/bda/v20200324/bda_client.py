@@ -27,7 +27,7 @@ class BdaClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """用于创建一个空的人体库，如果人体库已存在返回错误。
+        r"""用于创建一个空的人体库，如果人体库已存在返回错误。
 
         1个APPID下最多有2000W个人体动作轨迹（Trace），最多1W个人体库（Group）。
 
@@ -56,7 +56,7 @@ class BdaClient(AbstractClient):
 
 
     def CreatePerson(self, request):
-        """创建人员，添加对应人员的人体动作轨迹信息。
+        r"""创建人员，添加对应人员的人体动作轨迹信息。
 
         请注意：
         - 我们希望您的输入为 严格符合动作轨迹图片 要求的图片。如果您输入的图片不符合动作轨迹图片要求，会对最终效果产生较大负面影响。请您尽量保证一个Trace中的图片人体清晰、无遮挡、连贯；
@@ -86,7 +86,7 @@ class BdaClient(AbstractClient):
 
 
     def CreateSegmentationTask(self, request):
-        """本接口为人像分割在线处理接口组中的提交任务接口，可以对提交的资源进行处理视频流/图片流识别视频作品中的人像区域，进行一键抠像、背景替换、人像虚化等后期处理。
+        r"""本接口为人像分割在线处理接口组中的提交任务接口，可以对提交的资源进行处理视频流/图片流识别视频作品中的人像区域，进行一键抠像、背景替换、人像虚化等后期处理。
 
         :param request: Request instance for CreateSegmentationTask.
         :type request: :class:`tencentcloud.bda.v20200324.models.CreateSegmentationTaskRequest`
@@ -109,7 +109,7 @@ class BdaClient(AbstractClient):
 
 
     def CreateTrace(self, request):
-        """将一个人体动作轨迹添加到一个人员中。一个人员最多允许包含 5 个人体动作轨迹。同一人的人体动作轨迹越多，搜索识别效果越好。
+        r"""将一个人体动作轨迹添加到一个人员中。一个人员最多允许包含 5 个人体动作轨迹。同一人的人体动作轨迹越多，搜索识别效果越好。
 
         >请注意：
         - 我们希望您的输入为 严格符合动作轨迹图片 要求的图片。如果您输入的图片不符合动作轨迹图片要求，会对最终效果产生较大负面影响。请您尽量保证一个Trace中的图片人体清晰、无遮挡、连贯。
@@ -139,7 +139,7 @@ class BdaClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除该人体库及包含的所有的人员。
+        r"""删除该人体库及包含的所有的人员。
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.bda.v20200324.models.DeleteGroupRequest`
@@ -162,7 +162,7 @@ class BdaClient(AbstractClient):
 
 
     def DeletePerson(self, request):
-        """删除人员。
+        r"""删除人员。
 
         :param request: Request instance for DeletePerson.
         :type request: :class:`tencentcloud.bda.v20200324.models.DeletePersonRequest`
@@ -185,7 +185,7 @@ class BdaClient(AbstractClient):
 
 
     def DescribeSegmentationTask(self, request):
-        """可以查看单条任务的处理情况，包括处理状态，处理结果。
+        r"""可以查看单条任务的处理情况，包括处理状态，处理结果。
 
         :param request: Request instance for DescribeSegmentationTask.
         :type request: :class:`tencentcloud.bda.v20200324.models.DescribeSegmentationTaskRequest`
@@ -208,7 +208,7 @@ class BdaClient(AbstractClient):
 
 
     def DetectBody(self, request):
-        """检测给定图片中的人体（Body）的位置信息及属性信息。
+        r"""检测给定图片中的人体（Body）的位置信息及属性信息。
 
         :param request: Request instance for DetectBody.
         :type request: :class:`tencentcloud.bda.v20200324.models.DetectBodyRequest`
@@ -231,7 +231,7 @@ class BdaClient(AbstractClient):
 
 
     def DetectBodyJoints(self, request):
-        """检测图片中人体的14个关键点。建议用于人体图像清晰、无遮挡的场景。支持一张图片中存在多个人体的识别。
+        r"""检测图片中人体的14个关键点。建议用于人体图像清晰、无遮挡的场景。支持一张图片中存在多个人体的识别。
 
         :param request: Request instance for DetectBodyJoints.
         :type request: :class:`tencentcloud.bda.v20200324.models.DetectBodyJointsRequest`
@@ -254,7 +254,7 @@ class BdaClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """获取人体库列表。
+        r"""获取人体库列表。
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.bda.v20200324.models.GetGroupListRequest`
@@ -277,7 +277,7 @@ class BdaClient(AbstractClient):
 
 
     def GetPersonList(self, request):
-        """获取指定人体库中的人员列表。
+        r"""获取指定人体库中的人员列表。
 
         :param request: Request instance for GetPersonList.
         :type request: :class:`tencentcloud.bda.v20200324.models.GetPersonListRequest`
@@ -300,7 +300,7 @@ class BdaClient(AbstractClient):
 
 
     def GetSummaryInfo(self, request):
-        """获取人体库汇总信息。
+        r"""获取人体库汇总信息。
 
         :param request: Request instance for GetSummaryInfo.
         :type request: :class:`tencentcloud.bda.v20200324.models.GetSummaryInfoRequest`
@@ -323,7 +323,7 @@ class BdaClient(AbstractClient):
 
 
     def ModifyGroup(self, request):
-        """修改人体库名称、备注。
+        r"""修改人体库名称、备注。
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.bda.v20200324.models.ModifyGroupRequest`
@@ -346,7 +346,7 @@ class BdaClient(AbstractClient):
 
 
     def ModifyPersonInfo(self, request):
-        """修改人员信息。
+        r"""修改人员信息。
 
         :param request: Request instance for ModifyPersonInfo.
         :type request: :class:`tencentcloud.bda.v20200324.models.ModifyPersonInfoRequest`
@@ -369,7 +369,7 @@ class BdaClient(AbstractClient):
 
 
     def SearchTrace(self, request):
-        """本接口用于对一组待识别的人体动作轨迹（Trace）图片，在人体库中识别出最相似的 TopK 人体，按照相似度从大到小排列。
+        r"""本接口用于对一组待识别的人体动作轨迹（Trace）图片，在人体库中识别出最相似的 TopK 人体，按照相似度从大到小排列。
 
         人体动作轨迹（Trace）图片要求：图片中当且仅包含一个人体。人体完整、无遮挡。
 
@@ -399,7 +399,7 @@ class BdaClient(AbstractClient):
 
 
     def SegmentCustomizedPortraitPic(self, request):
-        """在前后景分割的基础上优化多分类分割，支持对头发、五官等的分割，既作为换发型、挂件等底层技术，也可用于抠人头、抠人脸等玩法
+        r"""在前后景分割的基础上优化多分类分割，支持对头发、五官等的分割，既作为换发型、挂件等底层技术，也可用于抠人头、抠人脸等玩法
 
         :param request: Request instance for SegmentCustomizedPortraitPic.
         :type request: :class:`tencentcloud.bda.v20200324.models.SegmentCustomizedPortraitPicRequest`
@@ -422,7 +422,7 @@ class BdaClient(AbstractClient):
 
 
     def SegmentPortraitPic(self, request):
-        """即二分类人像分割，识别传入图片中人体的完整轮廓，进行抠像。
+        r"""即二分类人像分割，识别传入图片中人体的完整轮廓，进行抠像。
 
         :param request: Request instance for SegmentPortraitPic.
         :type request: :class:`tencentcloud.bda.v20200324.models.SegmentPortraitPicRequest`
@@ -445,7 +445,7 @@ class BdaClient(AbstractClient):
 
 
     def TerminateSegmentationTask(self, request):
-        """终止指定视频人像分割处理任务
+        r"""终止指定视频人像分割处理任务
 
         :param request: Request instance for TerminateSegmentationTask.
         :type request: :class:`tencentcloud.bda.v20200324.models.TerminateSegmentationTaskRequest`

@@ -27,7 +27,7 @@ class VmsClient(AbstractClient):
 
 
     def SendCodeVoice(self, request):
-        """给用户发语音验证码（仅支持数字）。
+        r"""给用户发语音验证码（仅支持数字）。
 
         :param request: Request instance for SendCodeVoice.
         :type request: :class:`tencentcloud.vms.v20200902.models.SendCodeVoiceRequest`
@@ -50,7 +50,7 @@ class VmsClient(AbstractClient):
 
 
     def SendTtsVoice(self, request):
-        """给用户发送指定模板的语音通知。
+        r"""给用户发送指定模板的语音通知。
 
         :param request: Request instance for SendTtsVoice.
         :type request: :class:`tencentcloud.vms.v20200902.models.SendTtsVoiceRequest`

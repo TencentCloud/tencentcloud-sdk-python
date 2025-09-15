@@ -27,7 +27,7 @@ class CfgClient(AbstractClient):
 
 
     def CreateTaskFromAction(self, request):
-        """从动作创建演练
+        r"""从动作创建演练
 
         :param request: Request instance for CreateTaskFromAction.
         :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromActionRequest`
@@ -50,7 +50,7 @@ class CfgClient(AbstractClient):
 
 
     def CreateTaskFromMultiAction(self, request):
-        """以多个动作创建演练
+        r"""以多个动作创建演练
 
         :param request: Request instance for CreateTaskFromMultiAction.
         :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromMultiActionRequest`
@@ -73,7 +73,7 @@ class CfgClient(AbstractClient):
 
 
     def CreateTaskFromTemplate(self, request):
-        """从经验库创建演练
+        r"""从经验库创建演练
 
         :param request: Request instance for CreateTaskFromTemplate.
         :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromTemplateRequest`
@@ -96,7 +96,7 @@ class CfgClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """删除任务
+        r"""删除任务
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DeleteTaskRequest`
@@ -119,7 +119,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeActionFieldConfigList(self, request):
-        """根据动作ID获取动作栏位动态配置参数信息，里面包含动作自有和通用两部分参数。
+        r"""根据动作ID获取动作栏位动态配置参数信息，里面包含动作自有和通用两部分参数。
 
         :param request: Request instance for DescribeActionFieldConfigList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionFieldConfigListRequest`
@@ -142,7 +142,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeActionLibraryList(self, request):
-        """获取混沌演练平台的动作库列表
+        r"""获取混沌演练平台的动作库列表
 
         :param request: Request instance for DescribeActionLibraryList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionLibraryListRequest`
@@ -165,7 +165,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeObjectTypeList(self, request):
-        """查询对象类型列表
+        r"""查询对象类型列表
 
         :param request: Request instance for DescribeObjectTypeList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeObjectTypeListRequest`
@@ -188,7 +188,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """查询任务
+        r"""查询任务
 
         :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskRequest`
@@ -211,7 +211,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskExecuteLogs(self, request):
-        """获取演练过程中的所有日志
+        r"""获取演练过程中的所有日志
 
         :param request: Request instance for DescribeTaskExecuteLogs.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskExecuteLogsRequest`
@@ -234,7 +234,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskList(self, request):
-        """查询任务列表
+        r"""查询任务列表
 
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskListRequest`
@@ -257,7 +257,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskPolicyTriggerLog(self, request):
-        """获取护栏触发日志
+        r"""获取护栏触发日志
 
         :param request: Request instance for DescribeTaskPolicyTriggerLog.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskPolicyTriggerLogRequest`
@@ -280,7 +280,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTemplate(self, request):
-        """查询经验库
+        r"""查询经验库
 
         :param request: Request instance for DescribeTemplate.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTemplateRequest`
@@ -303,7 +303,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTemplateList(self, request):
-        """查询经验库列表
+        r"""查询经验库列表
 
         :param request: Request instance for DescribeTemplateList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTemplateListRequest`
@@ -326,7 +326,7 @@ class CfgClient(AbstractClient):
 
 
     def ExecuteTask(self, request):
-        """执行任务
+        r"""执行任务
 
         :param request: Request instance for ExecuteTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ExecuteTaskRequest`
@@ -349,7 +349,7 @@ class CfgClient(AbstractClient):
 
 
     def ExecuteTaskInstance(self, request):
-        """触发混沌演练任务的动作，对于实例进行演练操作
+        r"""触发混沌演练任务的动作，对于实例进行演练操作
 
         :param request: Request instance for ExecuteTaskInstance.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ExecuteTaskInstanceRequest`
@@ -372,7 +372,7 @@ class CfgClient(AbstractClient):
 
 
     def ModifyTaskRunStatus(self, request):
-        """修改任务运行状态
+        r"""修改任务运行状态
 
         :param request: Request instance for ModifyTaskRunStatus.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ModifyTaskRunStatusRequest`
@@ -395,7 +395,7 @@ class CfgClient(AbstractClient):
 
 
     def TriggerPolicy(self, request):
-        """用于触发混沌演练护栏（类型为触发和恢复2种）
+        r"""用于触发混沌演练护栏（类型为触发和恢复2种）
 
         :param request: Request instance for TriggerPolicy.
         :type request: :class:`tencentcloud.cfg.v20210820.models.TriggerPolicyRequest`

@@ -27,7 +27,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBComponent(self, request):
-        """本接口(DescribeKBComponent)用于在知识库中查询开源组件信息。本接口根据用户输入的PURL在知识库中寻找对应的开源组件，其中Name为必填字段。
+        r"""本接口(DescribeKBComponent)用于在知识库中查询开源组件信息。本接口根据用户输入的PURL在知识库中寻找对应的开源组件，其中Name为必填字段。
 
         :param request: Request instance for DescribeKBComponent.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentRequest`
@@ -50,7 +50,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBComponentVersionList(self, request):
-        """查询特定组件的版本列表
+        r"""查询特定组件的版本列表
 
         :param request: Request instance for DescribeKBComponentVersionList.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVersionListRequest`
@@ -73,7 +73,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBComponentVulnerability(self, request):
-        """本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
+        r"""本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
 
         :param request: Request instance for DescribeKBComponentVulnerability.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVulnerabilityRequest`
@@ -96,7 +96,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBLicense(self, request):
-        """本接口(DescribeKBLicense)用于在知识库中查询许可证信息。
+        r"""本接口(DescribeKBLicense)用于在知识库中查询许可证信息。
 
         :param request: Request instance for DescribeKBLicense.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBLicenseRequest`
@@ -119,7 +119,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBVulnerability(self, request):
-        """本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE、Vul ID、CNVD ID、CNNVD ID查询。
+        r"""本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE、Vul ID、CNVD ID、CNNVD ID查询。
 
         :param request: Request instance for DescribeKBVulnerability.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBVulnerabilityRequest`
@@ -142,7 +142,7 @@ class BscaClient(AbstractClient):
 
 
     def MatchKBPURLList(self, request):
-        """本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
+        r"""本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
 
         :param request: Request instance for MatchKBPURLList.
         :type request: :class:`tencentcloud.bsca.v20210811.models.MatchKBPURLListRequest`
@@ -165,7 +165,7 @@ class BscaClient(AbstractClient):
 
 
     def SearchKBComponent(self, request):
-        """根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
+        r"""根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
 
         :param request: Request instance for SearchKBComponent.
         :type request: :class:`tencentcloud.bsca.v20210811.models.SearchKBComponentRequest`

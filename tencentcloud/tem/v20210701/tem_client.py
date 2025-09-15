@@ -27,7 +27,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """创建应用
+        r"""创建应用
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationRequest`
@@ -50,7 +50,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplicationAutoscaler(self, request):
-        """创建弹性伸缩策略组合
+        r"""创建弹性伸缩策略组合
 
         :param request: Request instance for CreateApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationAutoscalerRequest`
@@ -73,7 +73,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplicationService(self, request):
-        """新增访问方式
+        r"""新增访问方式
 
         :param request: Request instance for CreateApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceRequest`
@@ -96,7 +96,7 @@ class TemClient(AbstractClient):
 
 
     def CreateConfigData(self, request):
-        """创建配置
+        r"""创建配置
 
         :param request: Request instance for CreateConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateConfigDataRequest`
@@ -119,7 +119,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosToken(self, request):
-        """生成Cos临时密钥
+        r"""生成Cos临时密钥
 
         :param request: Request instance for CreateCosToken.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateCosTokenRequest`
@@ -142,7 +142,7 @@ class TemClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """创建环境
+        r"""创建环境
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateEnvironmentRequest`
@@ -165,7 +165,7 @@ class TemClient(AbstractClient):
 
 
     def CreateLogConfig(self, request):
-        """创建日志收集配置
+        r"""创建日志收集配置
 
         :param request: Request instance for CreateLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateLogConfigRequest`
@@ -188,7 +188,7 @@ class TemClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """绑定云资源
+        r"""绑定云资源
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateResourceRequest`
@@ -211,7 +211,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        """服务删除
+        r"""服务删除
           - 停止当前运行服务
           - 删除服务相关资源
           - 删除服务
@@ -237,7 +237,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplicationAutoscaler(self, request):
-        """删除应用弹性策略组合
+        r"""删除应用弹性策略组合
 
         :param request: Request instance for DeleteApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationAutoscalerRequest`
@@ -260,7 +260,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplicationService(self, request):
-        """删除一条访问方式
+        r"""删除一条访问方式
 
         :param request: Request instance for DeleteApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceRequest`
@@ -283,7 +283,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteIngress(self, request):
-        """删除 Ingress 规则
+        r"""删除 Ingress 规则
 
         :param request: Request instance for DeleteIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteIngressRequest`
@@ -306,7 +306,7 @@ class TemClient(AbstractClient):
 
 
     def DeployApplication(self, request):
-        """应用部署
+        r"""应用部署
 
         :param request: Request instance for DeployApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeployApplicationRequest`
@@ -329,7 +329,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationAutoscalerList(self, request):
-        """获取应用弹性策略组合
+        r"""获取应用弹性策略组合
 
         :param request: Request instance for DescribeApplicationAutoscalerList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationAutoscalerListRequest`
@@ -352,7 +352,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationInfo(self, request):
-        """服务基本信息查看
+        r"""服务基本信息查看
 
         :param request: Request instance for DescribeApplicationInfo.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoRequest`
@@ -375,7 +375,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationPods(self, request):
-        """获取应用实例列表
+        r"""获取应用实例列表
 
         :param request: Request instance for DescribeApplicationPods.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationPodsRequest`
@@ -398,7 +398,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationServiceList(self, request):
-        """查询应用访问方式列表
+        r"""查询应用访问方式列表
 
         :param request: Request instance for DescribeApplicationServiceList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListRequest`
@@ -421,7 +421,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplications(self, request):
-        """获取运行服务列表
+        r"""获取运行服务列表
 
         :param request: Request instance for DescribeApplications.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsRequest`
@@ -444,7 +444,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationsStatus(self, request):
-        """单环境下所有应用状态查看
+        r"""单环境下所有应用状态查看
 
         :param request: Request instance for DescribeApplicationsStatus.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsStatusRequest`
@@ -467,7 +467,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeConfigData(self, request):
-        """查询配置详情
+        r"""查询配置详情
 
         :param request: Request instance for DescribeConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataRequest`
@@ -490,7 +490,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeConfigDataList(self, request):
-        """查询配置列表
+        r"""查询配置列表
 
         :param request: Request instance for DescribeConfigDataList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListRequest`
@@ -513,7 +513,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeDeployApplicationDetail(self, request):
-        """获取分批发布详情
+        r"""获取分批发布详情
 
         :param request: Request instance for DescribeDeployApplicationDetail.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeDeployApplicationDetailRequest`
@@ -536,7 +536,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironment(self, request):
-        """获取环境基础信息
+        r"""获取环境基础信息
 
         :param request: Request instance for DescribeEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentRequest`
@@ -559,7 +559,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironmentStatus(self, request):
-        """获取环境状态
+        r"""获取环境状态
 
         :param request: Request instance for DescribeEnvironmentStatus.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusRequest`
@@ -582,7 +582,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """获取环境列表
+        r"""获取环境列表
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentsRequest`
@@ -605,7 +605,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngress(self, request):
-        """查询 Ingress 规则
+        r"""查询 Ingress 规则
 
         :param request: Request instance for DescribeIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeIngressRequest`
@@ -628,7 +628,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngresses(self, request):
-        """查询 Ingress 规则列表
+        r"""查询 Ingress 规则列表
 
         :param request: Request instance for DescribeIngresses.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeIngressesRequest`
@@ -651,7 +651,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeLogConfig(self, request):
-        """查询日志收集配置详情
+        r"""查询日志收集配置详情
 
         :param request: Request instance for DescribeLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeLogConfigRequest`
@@ -674,7 +674,7 @@ class TemClient(AbstractClient):
 
 
     def DescribePagedLogConfigList(self, request):
-        """查询分页的日志收集配置列表
+        r"""查询分页的日志收集配置列表
 
         :param request: Request instance for DescribePagedLogConfigList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribePagedLogConfigListRequest`
@@ -697,7 +697,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeRelatedIngresses(self, request):
-        """查询应用关联的 Ingress 规则列表
+        r"""查询应用关联的 Ingress 规则列表
 
         :param request: Request instance for DescribeRelatedIngresses.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeRelatedIngressesRequest`
@@ -720,7 +720,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyConfigData(self, request):
-        """销毁配置
+        r"""销毁配置
 
         :param request: Request instance for DestroyConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyConfigDataRequest`
@@ -743,7 +743,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyEnvironment(self, request):
-        """销毁环境
+        r"""销毁环境
 
         :param request: Request instance for DestroyEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentRequest`
@@ -766,7 +766,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyLogConfig(self, request):
-        """销毁日志收集配置
+        r"""销毁日志收集配置
 
         :param request: Request instance for DestroyLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyLogConfigRequest`
@@ -789,7 +789,7 @@ class TemClient(AbstractClient):
 
 
     def DisableApplicationAutoscaler(self, request):
-        """关闭应用弹性策略组合
+        r"""关闭应用弹性策略组合
 
         :param request: Request instance for DisableApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerRequest`
@@ -812,7 +812,7 @@ class TemClient(AbstractClient):
 
 
     def EnableApplicationAutoscaler(self, request):
-        """启用应用弹性策略组合
+        r"""启用应用弹性策略组合
 
         :param request: Request instance for EnableApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerRequest`
@@ -835,7 +835,7 @@ class TemClient(AbstractClient):
 
 
     def GenerateApplicationPackageDownloadUrl(self, request):
-        """生成应用程序包预签名下载链接
+        r"""生成应用程序包预签名下载链接
 
         :param request: Request instance for GenerateApplicationPackageDownloadUrl.
         :type request: :class:`tencentcloud.tem.v20210701.models.GenerateApplicationPackageDownloadUrlRequest`
@@ -858,7 +858,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationAutoscaler(self, request):
-        """修改弹性伸缩策略组合
+        r"""修改弹性伸缩策略组合
 
         :param request: Request instance for ModifyApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationAutoscalerRequest`
@@ -881,7 +881,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationInfo(self, request):
-        """修改应用基本信息
+        r"""修改应用基本信息
 
         :param request: Request instance for ModifyApplicationInfo.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationInfoRequest`
@@ -904,7 +904,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationReplicas(self, request):
-        """修改应用实例数量
+        r"""修改应用实例数量
 
         :param request: Request instance for ModifyApplicationReplicas.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationReplicasRequest`
@@ -927,7 +927,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationService(self, request):
-        """修改服务访问方式列表
+        r"""修改服务访问方式列表
 
         :param request: Request instance for ModifyApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceRequest`
@@ -950,7 +950,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyConfigData(self, request):
-        """编辑配置
+        r"""编辑配置
 
         :param request: Request instance for ModifyConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyConfigDataRequest`
@@ -973,7 +973,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyEnvironment(self, request):
-        """编辑环境
+        r"""编辑环境
 
         :param request: Request instance for ModifyEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyEnvironmentRequest`
@@ -996,7 +996,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyGatewayIngress(self, request):
-        """修改网关的转发配置
+        r"""修改网关的转发配置
 
         :param request: Request instance for ModifyGatewayIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyGatewayIngressRequest`
@@ -1019,7 +1019,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyIngress(self, request):
-        """此接口没有被使用了
+        r"""此接口没有被使用了
 
         创建或者更新 Ingress 规则
 
@@ -1044,7 +1044,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyLogConfig(self, request):
-        """编辑日志收集配置
+        r"""编辑日志收集配置
 
         :param request: Request instance for ModifyLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyLogConfigRequest`
@@ -1067,7 +1067,7 @@ class TemClient(AbstractClient):
 
 
     def RestartApplication(self, request):
-        """服务重启
+        r"""服务重启
 
         :param request: Request instance for RestartApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationRequest`
@@ -1090,7 +1090,7 @@ class TemClient(AbstractClient):
 
 
     def RestartApplicationPod(self, request):
-        """重启应用实例
+        r"""重启应用实例
 
         :param request: Request instance for RestartApplicationPod.
         :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationPodRequest`
@@ -1113,7 +1113,7 @@ class TemClient(AbstractClient):
 
 
     def ResumeDeployApplication(self, request):
-        """开始下一批次发布
+        r"""开始下一批次发布
 
         :param request: Request instance for ResumeDeployApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.ResumeDeployApplicationRequest`
@@ -1136,7 +1136,7 @@ class TemClient(AbstractClient):
 
 
     def RevertDeployApplication(self, request):
-        """回滚分批发布
+        r"""回滚分批发布
 
         :param request: Request instance for RevertDeployApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.RevertDeployApplicationRequest`
@@ -1159,7 +1159,7 @@ class TemClient(AbstractClient):
 
 
     def RollingUpdateApplicationByVersion(self, request):
-        """更新应用部署版本
+        r"""更新应用部署版本
 
         :param request: Request instance for RollingUpdateApplicationByVersion.
         :type request: :class:`tencentcloud.tem.v20210701.models.RollingUpdateApplicationByVersionRequest`
@@ -1182,7 +1182,7 @@ class TemClient(AbstractClient):
 
 
     def StopApplication(self, request):
-        """服务停止
+        r"""服务停止
 
         :param request: Request instance for StopApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.StopApplicationRequest`

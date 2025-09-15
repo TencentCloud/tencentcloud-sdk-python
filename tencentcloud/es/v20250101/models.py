@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ChatCompletionsRequest(AbstractModel):
-    """ChatCompletions请求参数结构体
+    r"""ChatCompletions请求参数结构体
 
     """
 
@@ -50,7 +50,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
+        r"""会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
         :rtype: list of Message
         """
         return self._Messages
@@ -61,7 +61,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
+        r"""模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
         :rtype: str
         """
         return self._ModelName
@@ -72,7 +72,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """是否以流式接口的形式返回数据，默认true。
+        r"""是否以流式接口的形式返回数据，默认true。
         :rtype: bool
         """
         return self._Stream
@@ -83,7 +83,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopP(self):
-        """取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        r"""取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :rtype: float
         """
         return self._TopP
@@ -94,7 +94,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        r"""取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :rtype: float
         """
         return self._Temperature
@@ -105,7 +105,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def OnlineSearch(self):
-        """是否开启联网搜索。默认为 false。
+        r"""是否开启联网搜索。默认为 false。
         :rtype: bool
         """
         return self._OnlineSearch
@@ -116,7 +116,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def OnlineSearchOptions(self):
-        """当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
+        r"""当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
         :rtype: :class:`tencentcloud.es.v20250101.models.OnlineSearchOptions`
         """
         return self._OnlineSearchOptions
@@ -152,7 +152,7 @@ class ChatCompletionsRequest(AbstractModel):
 
 
 class ChatCompletionsResponse(AbstractModel):
-    """ChatCompletions返回参数结构体
+    r"""ChatCompletions返回参数结构体
 
     """
 
@@ -178,7 +178,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
-        """此次请求的id
+        r"""此次请求的id
         :rtype: str
         """
         return self._Id
@@ -189,7 +189,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        """回复内容
+        r"""回复内容
         :rtype: list of Choice
         """
         return self._Choices
@@ -200,7 +200,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """token使用量
+        r"""token使用量
         :rtype: :class:`tencentcloud.es.v20250101.models.TokenUsage`
         """
         return self._Usage
@@ -211,7 +211,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def OnlineSearchContent(self):
-        """联网搜索结果。
+        r"""联网搜索结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebContent
         """
@@ -223,7 +223,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -254,7 +254,7 @@ class ChatCompletionsResponse(AbstractModel):
 
 
 class Choice(AbstractModel):
-    """返回的回复, 支持多个。
+    r"""返回的回复, 支持多个。
 
     """
 
@@ -267,7 +267,7 @@ class Choice(AbstractModel):
 
     @property
     def Message(self):
-        """返回的回复。
+        r"""返回的回复。
         :rtype: :class:`tencentcloud.es.v20250101.models.OutputMessage`
         """
         return self._Message
@@ -292,7 +292,7 @@ class Choice(AbstractModel):
 
 
 class Chunk(AbstractModel):
-    """切片对象信息
+    r"""切片对象信息
 
     """
 
@@ -308,7 +308,7 @@ class Chunk(AbstractModel):
 
     @property
     def Index(self):
-        """chunk索引。切片顺序 id。
+        r"""chunk索引。切片顺序 id。
         :rtype: int
         """
         return self._Index
@@ -319,7 +319,7 @@ class Chunk(AbstractModel):
 
     @property
     def Content(self):
-        """chunk内容。
+        r"""chunk内容。
         :rtype: str
         """
         return self._Content
@@ -343,7 +343,7 @@ class Chunk(AbstractModel):
 
 
 class ChunkConfig(AbstractModel):
-    """文档分片配置
+    r"""文档分片配置
 
     """
 
@@ -362,7 +362,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        """最大分片长度
+        r"""最大分片长度
         :rtype: int
         """
         return self._MaxChunkSize
@@ -373,7 +373,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def Delimiters(self):
-        """分隔符列表
+        r"""分隔符列表
         :rtype: list of str
         """
         return self._Delimiters
@@ -384,7 +384,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def ChunkOverlap(self):
-        """相邻切片重合字符数，需要小于分片长度
+        r"""相邻切片重合字符数，需要小于分片长度
         :rtype: int
         """
         return self._ChunkOverlap
@@ -409,7 +409,7 @@ class ChunkConfig(AbstractModel):
 
 
 class ChunkConfigAsync(AbstractModel):
-    """文档切片异步任务
+    r"""文档切片异步任务
 
     """
 
@@ -422,7 +422,7 @@ class ChunkConfigAsync(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        """最大分片长度
+        r"""最大分片长度
         :rtype: int
         """
         return self._MaxChunkSize
@@ -445,7 +445,7 @@ class ChunkConfigAsync(AbstractModel):
 
 
 class ChunkDocument(AbstractModel):
-    """切片文档信息
+    r"""切片文档信息
 
     """
 
@@ -461,7 +461,7 @@ class ChunkDocument(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型，支持 MD，TXT 格式。
+        r"""文件类型，支持 MD，TXT 格式。
         :rtype: str
         """
         return self._FileType
@@ -472,7 +472,7 @@ class ChunkDocument(AbstractModel):
 
     @property
     def FileContent(self):
-        """文本原文，使用字符串格式输入。
+        r"""文本原文，使用字符串格式输入。
         :rtype: str
         """
         return self._FileContent
@@ -496,7 +496,7 @@ class ChunkDocument(AbstractModel):
 
 
 class ChunkDocumentAsyncRequest(AbstractModel):
-    """ChunkDocumentAsync请求参数结构体
+    r"""ChunkDocumentAsync请求参数结构体
 
     """
 
@@ -515,7 +515,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件信息。
+        r"""文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.Document`
         """
         return self._Document
@@ -526,7 +526,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：doc-tree-chunk。
+        r"""模型名称，可选模型列表：doc-tree-chunk。
         :rtype: str
         """
         return self._ModelName
@@ -537,7 +537,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def Config(self):
-        """文件切片配置。
+        r"""文件切片配置。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkConfigAsync`
         """
         return self._Config
@@ -566,7 +566,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
 
 class ChunkDocumentAsyncResponse(AbstractModel):
-    """ChunkDocumentAsync返回参数结构体
+    r"""ChunkDocumentAsync返回参数结构体
 
     """
 
@@ -582,7 +582,7 @@ class ChunkDocumentAsyncResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 ID
+        r"""任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -593,7 +593,7 @@ class ChunkDocumentAsyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -609,7 +609,7 @@ class ChunkDocumentAsyncResponse(AbstractModel):
 
 
 class ChunkDocumentRequest(AbstractModel):
-    """ChunkDocument请求参数结构体
+    r"""ChunkDocument请求参数结构体
 
     """
 
@@ -628,7 +628,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def Document(self):
-        """切片文件信息。
+        r"""切片文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkDocument`
         """
         return self._Document
@@ -639,7 +639,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：doc-chunk。
+        r"""模型名称，可选模型列表：doc-chunk。
         :rtype: str
         """
         return self._ModelName
@@ -650,7 +650,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def Config(self):
-        """文件切片配置。
+        r"""文件切片配置。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkConfig`
         """
         return self._Config
@@ -679,7 +679,7 @@ class ChunkDocumentRequest(AbstractModel):
 
 
 class ChunkDocumentResponse(AbstractModel):
-    """ChunkDocument返回参数结构体
+    r"""ChunkDocument返回参数结构体
 
     """
 
@@ -698,7 +698,7 @@ class ChunkDocumentResponse(AbstractModel):
 
     @property
     def Chunks(self):
-        """无
+        r"""无
         :rtype: list of Chunk
         """
         return self._Chunks
@@ -709,7 +709,7 @@ class ChunkDocumentResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """token消耗量
+        r"""token消耗量
         :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
         """
         return self._Usage
@@ -720,7 +720,7 @@ class ChunkDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -744,18 +744,26 @@ class ChunkDocumentResponse(AbstractModel):
 
 
 class Document(AbstractModel):
-    """文档信息
+    r"""文档信息
 
     """
 
     def __init__(self):
         r"""
-        :param _FileType: 文件类型。
-支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-支持的文件大小：
-- PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT、XLS、XLSX、CSV 支持10M
-- 其他支持20M
+        :param _FileType: 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+
+文档解析支持的文件大小：
+-PDF、DOC、DOCX、PPT、PPTX支持100M
+-MD、TXT、XLS、XLSX、CSV支特10M
+-其他支持20M
+
+文本切片支持的文件大小：
+-PDF最大300M
+-D0CX、D0C、PPT、PPTX最大200M
+-TXT、MD最大10M
+-其他最大20M
         :type FileType: str
         :param _FileUrl: 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
         :type FileUrl: str
@@ -779,12 +787,20 @@ class Document(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。
-支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-支持的文件大小：
-- PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT、XLS、XLSX、CSV 支持10M
-- 其他支持20M
+        r"""支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+
+文档解析支持的文件大小：
+-PDF、DOC、DOCX、PPT、PPTX支持100M
+-MD、TXT、XLS、XLSX、CSV支特10M
+-其他支持20M
+
+文本切片支持的文件大小：
+-PDF最大300M
+-D0CX、D0C、PPT、PPTX最大200M
+-TXT、MD最大10M
+-其他最大20M
         :rtype: str
         """
         return self._FileType
@@ -795,7 +811,7 @@ class Document(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
+        r"""文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
         :rtype: str
         """
         return self._FileUrl
@@ -806,7 +822,7 @@ class Document(AbstractModel):
 
     @property
     def FileContent(self):
-        """文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
+        r"""文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 支持的图片像素：单边介于20-10000px之间。
         :rtype: str
@@ -819,7 +835,7 @@ class Document(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名称，当使用 base64上传的时候使用。
+        r"""文件名称，当使用 base64上传的时候使用。
         :rtype: str
         """
         return self._FileName
@@ -830,7 +846,7 @@ class Document(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """文档的起始页码
+        r"""文档的起始页码
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -841,7 +857,7 @@ class Document(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """文档的结束页码
+        r"""文档的结束页码
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -869,7 +885,7 @@ class Document(AbstractModel):
 
 
 class DocumentChunkUsage(AbstractModel):
-    """文档切片用量
+    r"""文档切片用量
 
     """
 
@@ -885,7 +901,7 @@ class DocumentChunkUsage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """ 解析页面数量
+        r""" 解析页面数量
         :rtype: int
         """
         return self._PageNumber
@@ -896,7 +912,7 @@ class DocumentChunkUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """消耗 token数量
+        r"""消耗 token数量
         :rtype: int
         """
         return self._TotalTokens
@@ -920,7 +936,7 @@ class DocumentChunkUsage(AbstractModel):
 
 
 class DocumentParseConfig(AbstractModel):
-    """文档解析配置
+    r"""文档解析配置
 
     """
 
@@ -934,7 +950,7 @@ class DocumentParseConfig(AbstractModel):
 
     @property
     def ImageResponseType(self):
-        """0:图片以链接形式返回
+        r"""0:图片以链接形式返回
 1:返回图片中提取的文本内容
         :rtype: int
         """
@@ -958,7 +974,7 @@ class DocumentParseConfig(AbstractModel):
 
 
 class EmbeddingData(AbstractModel):
-    """向量内容
+    r"""向量内容
 
     """
 
@@ -976,7 +992,7 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Embedding(self):
-        """embedding 内容
+        r"""embedding 内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -988,7 +1004,7 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Index(self):
-        """索引序号
+        r"""索引序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1013,7 +1029,7 @@ class EmbeddingData(AbstractModel):
 
 
 class GetDocumentChunkResultRequest(AbstractModel):
-    """GetDocumentChunkResult请求参数结构体
+    r"""GetDocumentChunkResult请求参数结构体
 
     """
 
@@ -1026,7 +1042,7 @@ class GetDocumentChunkResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """ 任务 ID
+        r""" 任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -1049,7 +1065,7 @@ class GetDocumentChunkResultRequest(AbstractModel):
 
 
 class GetDocumentChunkResultResponse(AbstractModel):
-    """GetDocumentChunkResult返回参数结构体
+    r"""GetDocumentChunkResult返回参数结构体
 
     """
 
@@ -1071,7 +1087,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态，-1：失败，0：运行中，1：成功。
+        r"""任务状态，-1：失败，0：运行中，1：成功。
         :rtype: int
         """
         return self._Status
@@ -1082,7 +1098,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def DocumentChunkResultUrl(self):
-        """切片结果文件。
+        r"""切片结果文件。
         :rtype: str
         """
         return self._DocumentChunkResultUrl
@@ -1093,7 +1109,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Token用量。
+        r"""Token用量。
         :rtype: :class:`tencentcloud.es.v20250101.models.DocumentChunkUsage`
         """
         return self._Usage
@@ -1104,7 +1120,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1124,7 +1140,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
 
 class GetDocumentParseResultRequest(AbstractModel):
-    """GetDocumentParseResult请求参数结构体
+    r"""GetDocumentParseResult请求参数结构体
 
     """
 
@@ -1137,7 +1153,7 @@ class GetDocumentParseResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 Id
+        r"""任务 Id
         :rtype: str
         """
         return self._TaskId
@@ -1160,7 +1176,7 @@ class GetDocumentParseResultRequest(AbstractModel):
 
 
 class GetDocumentParseResultResponse(AbstractModel):
-    """GetDocumentParseResult返回参数结构体
+    r"""GetDocumentParseResult返回参数结构体
 
     """
 
@@ -1186,7 +1202,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态，-1：失败，0：运行中，1：成功。
+        r"""任务状态，-1：失败，0：运行中，1：成功。
         :rtype: int
         """
         return self._Status
@@ -1197,7 +1213,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def DocumentParseResultUrl(self):
-        """结果文件。
+        r"""结果文件。
         :rtype: str
         """
         return self._DocumentParseResultUrl
@@ -1208,7 +1224,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """失败的页码。
+        r"""失败的页码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -1220,7 +1236,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗页数
+        r"""消耗页数
         :rtype: :class:`tencentcloud.es.v20250101.models.PageUsage`
         """
         return self._Usage
@@ -1231,7 +1247,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1252,7 +1268,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
 
 class GetTextEmbeddingRequest(AbstractModel):
-    """GetTextEmbedding请求参数结构体
+    r"""GetTextEmbedding请求参数结构体
 
     """
 
@@ -1268,7 +1284,7 @@ class GetTextEmbeddingRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
+        r"""模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
         :rtype: str
         """
         return self._ModelName
@@ -1279,7 +1295,7 @@ class GetTextEmbeddingRequest(AbstractModel):
 
     @property
     def Texts(self):
-        """需进行向量化的文本集。
+        r"""需进行向量化的文本集。
         :rtype: list of str
         """
         return self._Texts
@@ -1303,7 +1319,7 @@ class GetTextEmbeddingRequest(AbstractModel):
 
 
 class GetTextEmbeddingResponse(AbstractModel):
-    """GetTextEmbedding返回参数结构体
+    r"""GetTextEmbedding返回参数结构体
 
     """
 
@@ -1322,7 +1338,7 @@ class GetTextEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
-        """结果集
+        r"""结果集
         :rtype: list of EmbeddingData
         """
         return self._Data
@@ -1333,7 +1349,7 @@ class GetTextEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """向量化消耗的token数量。
+        r"""向量化消耗的token数量。
         :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
         """
         return self._Usage
@@ -1344,7 +1360,7 @@ class GetTextEmbeddingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1368,23 +1384,29 @@ class GetTextEmbeddingResponse(AbstractModel):
 
 
 class Message(AbstractModel):
-    """会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
+    r"""会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
 
     """
 
     def __init__(self):
         r"""
-        :param _Role: 角色, ‘system', ‘user'，'assistant'或者'tool', 在message中, 除了system，其他必须是user与assistant交替(一问一答) 
+        :param _Role: 角色，可选值包括 system、user、assistant、 tool。
         :type Role: str
         :param _Content: 具体文本内容
         :type Content: str
+        :param _ToolCallId: 当role为tool时传入，标识具体的函数调用
+        :type ToolCallId: str
+        :param _ToolCalls: 模型生成的工具调用
+        :type ToolCalls: list of ToolCall
         """
         self._Role = None
         self._Content = None
+        self._ToolCallId = None
+        self._ToolCalls = None
 
     @property
     def Role(self):
-        """角色, ‘system', ‘user'，'assistant'或者'tool', 在message中, 除了system，其他必须是user与assistant交替(一问一答) 
+        r"""角色，可选值包括 system、user、assistant、 tool。
         :rtype: str
         """
         return self._Role
@@ -1395,7 +1417,7 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
-        """具体文本内容
+        r"""具体文本内容
         :rtype: str
         """
         return self._Content
@@ -1404,10 +1426,39 @@ class Message(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def ToolCallId(self):
+        r"""当role为tool时传入，标识具体的函数调用
+        :rtype: str
+        """
+        return self._ToolCallId
+
+    @ToolCallId.setter
+    def ToolCallId(self, ToolCallId):
+        self._ToolCallId = ToolCallId
+
+    @property
+    def ToolCalls(self):
+        r"""模型生成的工具调用
+        :rtype: list of ToolCall
+        """
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        self._ToolCallId = params.get("ToolCallId")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1419,7 +1470,7 @@ class Message(AbstractModel):
 
 
 class OnlineSearchOptions(AbstractModel):
-    """联网搜索选项。
+    r"""联网搜索选项。
 
     """
 
@@ -1432,7 +1483,7 @@ class OnlineSearchOptions(AbstractModel):
 
     @property
     def Engine(self):
-        """搜索引擎。支持 bing 和 sogou。
+        r"""搜索引擎。支持 bing 和 sogou。
         :rtype: str
         """
         return self._Engine
@@ -1455,7 +1506,7 @@ class OnlineSearchOptions(AbstractModel):
 
 
 class OutputMessage(AbstractModel):
-    """会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
+    r"""会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
 
     """
 
@@ -1467,14 +1518,17 @@ class OutputMessage(AbstractModel):
         :type Content: str
         :param _ReasoningContent: 推理内容	
         :type ReasoningContent: str
+        :param _ToolCalls: 模型生成的工具调用
+        :type ToolCalls: list of ToolCall
         """
         self._Role = None
         self._Content = None
         self._ReasoningContent = None
+        self._ToolCalls = None
 
     @property
     def Role(self):
-        """角色
+        r"""角色
         :rtype: str
         """
         return self._Role
@@ -1485,7 +1539,7 @@ class OutputMessage(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容	
+        r"""文本内容	
         :rtype: str
         """
         return self._Content
@@ -1496,7 +1550,7 @@ class OutputMessage(AbstractModel):
 
     @property
     def ReasoningContent(self):
-        """推理内容	
+        r"""推理内容	
         :rtype: str
         """
         return self._ReasoningContent
@@ -1505,11 +1559,28 @@ class OutputMessage(AbstractModel):
     def ReasoningContent(self, ReasoningContent):
         self._ReasoningContent = ReasoningContent
 
+    @property
+    def ToolCalls(self):
+        r"""模型生成的工具调用
+        :rtype: list of ToolCall
+        """
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
         self._ReasoningContent = params.get("ReasoningContent")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1521,7 +1592,7 @@ class OutputMessage(AbstractModel):
 
 
 class PageUsage(AbstractModel):
-    """消耗页数
+    r"""消耗页数
 
     """
 
@@ -1534,7 +1605,7 @@ class PageUsage(AbstractModel):
 
     @property
     def TotalPages(self):
-        """消耗总页数
+        r"""消耗总页数
         :rtype: int
         """
         return self._TotalPages
@@ -1557,24 +1628,33 @@ class PageUsage(AbstractModel):
 
 
 class ParseDocument(AbstractModel):
-    """文档信息
+    r"""文档信息
 
     """
 
     def __init__(self):
         r"""
-        :param _FileType: 文件类型。
-支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-支持的文件大小：
-- PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT、XLS、XLSX、CSV 支持10M
-- 其他支持20M
+        :param _FileType: 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+
+文档解析支持的文件大小：
+-PDF、DOC、DOCX、PPT、PPTX支持100M
+-MD、TXT、XLS、XLSX、CSV支特10M
+-其他支持20M
+
+文本切片支持的文件大小：
+-PDF最大300M
+-D0CX、D0C、PPT、PPTX最大200M
+-TXT、MD最大10M
+-其他最大20M
         :type FileType: str
         :param _FileUrl: 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
         :type FileUrl: str
         :param _FileContent: 文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 支持的图片像素：单边介于20-10000px之间。
+文件的 FileUrl、FileContent必须提供一个，如果都提供只使用 FileUrl。
         :type FileContent: str
         :param _DocumentParseConfig: 文档解析配置
         :type DocumentParseConfig: :class:`tencentcloud.es.v20250101.models.DocumentParseConfig`
@@ -1592,12 +1672,20 @@ class ParseDocument(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。
-支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-支持的文件大小：
-- PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT、XLS、XLSX、CSV 支持10M
-- 其他支持20M
+        r"""支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+
+文档解析支持的文件大小：
+-PDF、DOC、DOCX、PPT、PPTX支持100M
+-MD、TXT、XLS、XLSX、CSV支特10M
+-其他支持20M
+
+文本切片支持的文件大小：
+-PDF最大300M
+-D0CX、D0C、PPT、PPTX最大200M
+-TXT、MD最大10M
+-其他最大20M
         :rtype: str
         """
         return self._FileType
@@ -1608,7 +1696,7 @@ class ParseDocument(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
+        r"""文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
         :rtype: str
         """
         return self._FileUrl
@@ -1619,9 +1707,10 @@ class ParseDocument(AbstractModel):
 
     @property
     def FileContent(self):
-        """文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
+        r"""文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 支持的图片像素：单边介于20-10000px之间。
+文件的 FileUrl、FileContent必须提供一个，如果都提供只使用 FileUrl。
         :rtype: str
         """
         return self._FileContent
@@ -1632,7 +1721,7 @@ class ParseDocument(AbstractModel):
 
     @property
     def DocumentParseConfig(self):
-        """文档解析配置
+        r"""文档解析配置
         :rtype: :class:`tencentcloud.es.v20250101.models.DocumentParseConfig`
         """
         return self._DocumentParseConfig
@@ -1643,7 +1732,7 @@ class ParseDocument(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """文档的起始页码
+        r"""文档的起始页码
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -1654,7 +1743,7 @@ class ParseDocument(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """文档的结束页码
+        r"""文档的结束页码
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -1684,7 +1773,7 @@ class ParseDocument(AbstractModel):
 
 
 class ParseDocumentAsyncRequest(AbstractModel):
-    """ParseDocumentAsync请求参数结构体
+    r"""ParseDocumentAsync请求参数结构体
 
     """
 
@@ -1700,7 +1789,7 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件信息。
+        r"""文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.Document`
         """
         return self._Document
@@ -1711,7 +1800,7 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：doc-llm。
+        r"""模型名称，可选模型列表：doc-llm。
         :rtype: str
         """
         return self._ModelName
@@ -1737,7 +1826,7 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
 
 class ParseDocumentAsyncResponse(AbstractModel):
-    """ParseDocumentAsync返回参数结构体
+    r"""ParseDocumentAsync返回参数结构体
 
     """
 
@@ -1753,7 +1842,7 @@ class ParseDocumentAsyncResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务 id
+        r"""任务 id
         :rtype: str
         """
         return self._TaskId
@@ -1764,7 +1853,7 @@ class ParseDocumentAsyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1780,7 +1869,7 @@ class ParseDocumentAsyncResponse(AbstractModel):
 
 
 class ParseDocumentRequest(AbstractModel):
-    """ParseDocument请求参数结构体
+    r"""ParseDocument请求参数结构体
 
     """
 
@@ -1796,7 +1885,7 @@ class ParseDocumentRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件信息
+        r"""文件信息
         :rtype: :class:`tencentcloud.es.v20250101.models.ParseDocument`
         """
         return self._Document
@@ -1807,7 +1896,7 @@ class ParseDocumentRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，doc-llm。
+        r"""模型名称，doc-llm。
         :rtype: str
         """
         return self._ModelName
@@ -1833,7 +1922,7 @@ class ParseDocumentRequest(AbstractModel):
 
 
 class ParseDocumentResponse(AbstractModel):
-    """ParseDocument返回参数结构体
+    r"""ParseDocument返回参数结构体
 
     """
 
@@ -1858,7 +1947,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """进度：0-100。
+        r"""进度：0-100。
         :rtype: str
         """
         return self._Progress
@@ -1869,7 +1958,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def DocumentParseResultUrl(self):
-        """ 解析文件结果。
+        r""" 解析文件结果。
         :rtype: str
         """
         return self._DocumentParseResultUrl
@@ -1880,7 +1969,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """失败页码。
+        r"""失败页码。
         :rtype: list of int
         """
         return self._FailedPages
@@ -1891,7 +1980,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗页数
+        r"""消耗页数
         :rtype: :class:`tencentcloud.es.v20250101.models.PageUsage`
         """
         return self._Usage
@@ -1902,7 +1991,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
         """
         return self._RequestId
@@ -1923,7 +2012,7 @@ class ParseDocumentResponse(AbstractModel):
 
 
 class RerankResult(AbstractModel):
-    """输出结果
+    r"""输出结果
 
     """
 
@@ -1945,7 +2034,7 @@ class RerankResult(AbstractModel):
 
     @property
     def Index(self):
-        """对应的doc在输入候选doc数组中的位置索引值
+        r"""对应的doc在输入候选doc数组中的位置索引值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1957,7 +2046,7 @@ class RerankResult(AbstractModel):
 
     @property
     def RelevanceScore(self):
-        """相似度分数
+        r"""相似度分数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1969,7 +2058,7 @@ class RerankResult(AbstractModel):
 
     @property
     def Document(self):
-        """doc原文内容
+        r"""doc原文内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1995,7 +2084,7 @@ class RerankResult(AbstractModel):
 
 
 class RunRerankRequest(AbstractModel):
-    """RunRerank请求参数结构体
+    r"""RunRerank请求参数结构体
 
     """
 
@@ -2020,7 +2109,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
+        r"""模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
         :rtype: str
         """
         return self._ModelName
@@ -2031,7 +2120,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """查询文本。
+        r"""查询文本。
         :rtype: str
         """
         return self._Query
@@ -2042,7 +2131,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Documents(self):
-        """待排序的候选doc列表。
+        r"""待排序的候选doc列表。
         :rtype: list of str
         """
         return self._Documents
@@ -2053,7 +2142,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def TopN(self):
-        """排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
+        r"""排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
         :rtype: int
         """
         return self._TopN
@@ -2064,7 +2153,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def ReturnDocuments(self):
-        """返回的排序结果列表里面是否返回每一条document原文，默认值False。
+        r"""返回的排序结果列表里面是否返回每一条document原文，默认值False。
         :rtype: bool
         """
         return self._ReturnDocuments
@@ -2091,7 +2180,7 @@ class RunRerankRequest(AbstractModel):
 
 
 class RunRerankResponse(AbstractModel):
-    """RunRerank返回参数结构体
+    r"""RunRerank返回参数结构体
 
     """
 
@@ -2110,7 +2199,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Data(self):
-        """输出结果集。
+        r"""输出结果集。
         :rtype: list of RerankResult
         """
         return self._Data
@@ -2121,7 +2210,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗token数量。
+        r"""消耗token数量。
         :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
         """
         return self._Usage
@@ -2132,7 +2221,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2156,7 +2245,7 @@ class RunRerankResponse(AbstractModel):
 
 
 class TokenUsage(AbstractModel):
-    """token使用量
+    r"""token使用量
 
     """
 
@@ -2175,7 +2264,7 @@ class TokenUsage(AbstractModel):
 
     @property
     def PromptTokens(self):
-        """表示prompt的tokens数，多次返回中保持不变
+        r"""表示prompt的tokens数，多次返回中保持不变
         :rtype: int
         """
         return self._PromptTokens
@@ -2186,7 +2275,7 @@ class TokenUsage(AbstractModel):
 
     @property
     def CompletionTokens(self):
-        """回答的token总数，在流式返回中，表示到目前为止所有completion的tokens总数，多次返回中持续累加        
+        r"""回答的token总数，在流式返回中，表示到目前为止所有completion的tokens总数，多次返回中持续累加        
         :rtype: int
         """
         return self._CompletionTokens
@@ -2197,7 +2286,7 @@ class TokenUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """表示prompt_tokens和completion_tokens之和 
+        r"""表示prompt_tokens和completion_tokens之和 
         :rtype: int
         """
         return self._TotalTokens
@@ -2221,8 +2310,142 @@ class TokenUsage(AbstractModel):
         
 
 
+class ToolCall(AbstractModel):
+    r"""模型生成的工具调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 工具调用id
+        :type Id: str
+        :param _Type: 工具调用类型，当前只支持function
+        :type Type: str
+        :param _Function: 具体的function调用
+        :type Function: :class:`tencentcloud.es.v20250101.models.ToolCallFunction`
+        :param _Index: 索引值
+        :type Index: int
+        """
+        self._Id = None
+        self._Type = None
+        self._Function = None
+        self._Index = None
+
+    @property
+    def Id(self):
+        r"""工具调用id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""工具调用类型，当前只支持function
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Function(self):
+        r"""具体的function调用
+        :rtype: :class:`tencentcloud.es.v20250101.models.ToolCallFunction`
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Index(self):
+        r"""索引值
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        if params.get("Function") is not None:
+            self._Function = ToolCallFunction()
+            self._Function._deserialize(params.get("Function"))
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCallFunction(AbstractModel):
+    r"""具体的function调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: function名称
+        :type Name: str
+        :param _Arguments: function参数，一般为json字符串
+        :type Arguments: str
+        """
+        self._Name = None
+        self._Arguments = None
+
+    @property
+    def Name(self):
+        r"""function名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Arguments(self):
+        r"""function参数，一般为json字符串
+        :rtype: str
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Arguments = params.get("Arguments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Usage(AbstractModel):
-    """token消耗总数
+    r"""token消耗总数
 
     """
 
@@ -2236,7 +2459,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """tokens总数
+        r"""tokens总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2260,7 +2483,7 @@ class Usage(AbstractModel):
 
 
 class WebContent(AbstractModel):
-    """搜索结果网页信息。
+    r"""搜索结果网页信息。
 
     """
 
@@ -2291,7 +2514,7 @@ class WebContent(AbstractModel):
 
     @property
     def Query(self):
-        """搜素问题	
+        r"""搜素问题	
         :rtype: str
         """
         return self._Query
@@ -2302,7 +2525,7 @@ class WebContent(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -2313,7 +2536,7 @@ class WebContent(AbstractModel):
 
     @property
     def Url(self):
-        """链接
+        r"""链接
         :rtype: str
         """
         return self._Url
@@ -2324,7 +2547,7 @@ class WebContent(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -2335,7 +2558,7 @@ class WebContent(AbstractModel):
 
     @property
     def Content(self):
-        """网页内容	
+        r"""网页内容	
         :rtype: str
         """
         return self._Content
@@ -2346,7 +2569,7 @@ class WebContent(AbstractModel):
 
     @property
     def ChunkIndex(self):
-        """切片索引
+        r"""切片索引
         :rtype: str
         """
         return self._ChunkIndex
@@ -2357,7 +2580,7 @@ class WebContent(AbstractModel):
 
     @property
     def Score(self):
-        """分数
+        r"""分数
         :rtype: str
         """
         return self._Score

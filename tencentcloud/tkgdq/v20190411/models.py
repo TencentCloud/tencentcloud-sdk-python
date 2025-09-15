@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeEntityRequest(AbstractModel):
-    """DescribeEntity请求参数结构体
+    r"""DescribeEntity请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class DescribeEntityRequest(AbstractModel):
 
     @property
     def EntityName(self):
-        """实体名称
+        r"""实体名称
         :rtype: str
         """
         return self._EntityName
@@ -55,7 +55,7 @@ class DescribeEntityRequest(AbstractModel):
 
 
 class DescribeEntityResponse(AbstractModel):
-    """DescribeEntity返回参数结构体
+    r"""DescribeEntity返回参数结构体
 
     """
 
@@ -71,7 +71,7 @@ class DescribeEntityResponse(AbstractModel):
 
     @property
     def Content(self):
-        """返回查询实体相关信息
+        r"""返回查询实体相关信息
         :rtype: str
         """
         return self._Content
@@ -82,7 +82,7 @@ class DescribeEntityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -98,7 +98,7 @@ class DescribeEntityResponse(AbstractModel):
 
 
 class DescribeRelationRequest(AbstractModel):
-    """DescribeRelation请求参数结构体
+    r"""DescribeRelation请求参数结构体
 
     """
 
@@ -114,7 +114,7 @@ class DescribeRelationRequest(AbstractModel):
 
     @property
     def LeftEntityName(self):
-        """输入第一个实体
+        r"""输入第一个实体
         :rtype: str
         """
         return self._LeftEntityName
@@ -125,7 +125,7 @@ class DescribeRelationRequest(AbstractModel):
 
     @property
     def RightEntityName(self):
-        """输入第二个实体
+        r"""输入第二个实体
         :rtype: str
         """
         return self._RightEntityName
@@ -149,7 +149,7 @@ class DescribeRelationRequest(AbstractModel):
 
 
 class DescribeRelationResponse(AbstractModel):
-    """DescribeRelation返回参数结构体
+    r"""DescribeRelation返回参数结构体
 
     """
 
@@ -165,7 +165,7 @@ class DescribeRelationResponse(AbstractModel):
 
     @property
     def Content(self):
-        """返回查询实体间的关系
+        r"""返回查询实体间的关系
         :rtype: list of EntityRelationContent
         """
         return self._Content
@@ -176,7 +176,7 @@ class DescribeRelationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -197,7 +197,7 @@ class DescribeRelationResponse(AbstractModel):
 
 
 class DescribeTripleRequest(AbstractModel):
-    """DescribeTriple请求参数结构体
+    r"""DescribeTriple请求参数结构体
 
     """
 
@@ -210,7 +210,7 @@ class DescribeTripleRequest(AbstractModel):
 
     @property
     def TripleCondition(self):
-        """三元组查询条件
+        r"""三元组查询条件
         :rtype: str
         """
         return self._TripleCondition
@@ -233,7 +233,7 @@ class DescribeTripleRequest(AbstractModel):
 
 
 class DescribeTripleResponse(AbstractModel):
-    """DescribeTriple返回参数结构体
+    r"""DescribeTriple返回参数结构体
 
     """
 
@@ -249,7 +249,7 @@ class DescribeTripleResponse(AbstractModel):
 
     @property
     def Content(self):
-        """返回三元组信息
+        r"""返回三元组信息
         :rtype: list of TripleContent
         """
         return self._Content
@@ -260,7 +260,7 @@ class DescribeTripleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -281,7 +281,7 @@ class DescribeTripleResponse(AbstractModel):
 
 
 class EntityRelationContent(AbstractModel):
-    """返回的实体关系查询结果详细内容
+    r"""返回的实体关系查询结果详细内容
 
     """
 
@@ -300,7 +300,7 @@ class EntityRelationContent(AbstractModel):
 
     @property
     def Object(self):
-        """实体关系查询返回关系的object
+        r"""实体关系查询返回关系的object
         :rtype: list of EntityRelationObject
         """
         return self._Object
@@ -311,7 +311,7 @@ class EntityRelationContent(AbstractModel):
 
     @property
     def Subject(self):
-        """实体关系查询返回关系的subject
+        r"""实体关系查询返回关系的subject
         :rtype: list of EntityRelationSubject
         """
         return self._Subject
@@ -322,7 +322,7 @@ class EntityRelationContent(AbstractModel):
 
     @property
     def Relation(self):
-        """实体关系查询返回的关系名称
+        r"""实体关系查询返回的关系名称
         :rtype: str
         """
         return self._Relation
@@ -357,7 +357,7 @@ class EntityRelationContent(AbstractModel):
 
 
 class EntityRelationObject(AbstractModel):
-    """实体关系查询返回的Object类型
+    r"""实体关系查询返回的Object类型
 
     """
 
@@ -376,7 +376,7 @@ class EntityRelationObject(AbstractModel):
 
     @property
     def Id(self):
-        """object对应id
+        r"""object对应id
         :rtype: list of str
         """
         return self._Id
@@ -387,7 +387,7 @@ class EntityRelationObject(AbstractModel):
 
     @property
     def Name(self):
-        """object对应name
+        r"""object对应name
         :rtype: list of str
         """
         return self._Name
@@ -398,7 +398,7 @@ class EntityRelationObject(AbstractModel):
 
     @property
     def Popular(self):
-        """object对应popular值
+        r"""object对应popular值
         :rtype: list of int
         """
         return self._Popular
@@ -423,7 +423,7 @@ class EntityRelationObject(AbstractModel):
 
 
 class EntityRelationSubject(AbstractModel):
-    """实体关系查询返回Subject
+    r"""实体关系查询返回Subject
 
     """
 
@@ -442,7 +442,7 @@ class EntityRelationSubject(AbstractModel):
 
     @property
     def Id(self):
-        """Subject对应id
+        r"""Subject对应id
         :rtype: list of str
         """
         return self._Id
@@ -453,7 +453,7 @@ class EntityRelationSubject(AbstractModel):
 
     @property
     def Name(self):
-        """Subject对应name
+        r"""Subject对应name
         :rtype: list of str
         """
         return self._Name
@@ -464,7 +464,7 @@ class EntityRelationSubject(AbstractModel):
 
     @property
     def Popular(self):
-        """Subject对应popular
+        r"""Subject对应popular
         :rtype: list of int
         """
         return self._Popular
@@ -489,7 +489,7 @@ class EntityRelationSubject(AbstractModel):
 
 
 class TripleContent(AbstractModel):
-    """三元组查询返回的元记录
+    r"""三元组查询返回的元记录
 
     """
 
@@ -511,7 +511,7 @@ class TripleContent(AbstractModel):
 
     @property
     def Id(self):
-        """实体id
+        r"""实体id
         :rtype: str
         """
         return self._Id
@@ -522,7 +522,7 @@ class TripleContent(AbstractModel):
 
     @property
     def Name(self):
-        """实体名称
+        r"""实体名称
         :rtype: str
         """
         return self._Name
@@ -533,7 +533,7 @@ class TripleContent(AbstractModel):
 
     @property
     def Order(self):
-        """实体order
+        r"""实体order
         :rtype: int
         """
         return self._Order
@@ -544,7 +544,7 @@ class TripleContent(AbstractModel):
 
     @property
     def Popular(self):
-        """实体流行度
+        r"""实体流行度
         :rtype: int
         """
         return self._Popular

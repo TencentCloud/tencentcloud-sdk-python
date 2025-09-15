@@ -27,7 +27,7 @@ class IapClient(AbstractClient):
 
 
     def CreateIAPUserOIDCConfig(self, request):
-        """创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
+        r"""创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
 
         :param request: Request instance for CreateIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.CreateIAPUserOIDCConfigRequest`
@@ -50,7 +50,7 @@ class IapClient(AbstractClient):
 
 
     def DescribeIAPLoginSessionDuration(self, request):
-        """查询登录会话时长
+        r"""查询登录会话时长
 
         :param request: Request instance for DescribeIAPLoginSessionDuration.
         :type request: :class:`tencentcloud.iap.v20240713.models.DescribeIAPLoginSessionDurationRequest`
@@ -73,7 +73,7 @@ class IapClient(AbstractClient):
 
 
     def DescribeIAPUserOIDCConfig(self, request):
-        """查询用户OIDC配置
+        r"""查询用户OIDC配置
 
         :param request: Request instance for DescribeIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.DescribeIAPUserOIDCConfigRequest`
@@ -96,7 +96,7 @@ class IapClient(AbstractClient):
 
 
     def DisableIAPUserSSO(self, request):
-        """禁用用户SSO
+        r"""禁用用户SSO
 
         :param request: Request instance for DisableIAPUserSSO.
         :type request: :class:`tencentcloud.iap.v20240713.models.DisableIAPUserSSORequest`
@@ -119,7 +119,7 @@ class IapClient(AbstractClient):
 
 
     def ModifyIAPLoginSessionDuration(self, request):
-        """修改登录会话时长
+        r"""修改登录会话时长
 
         :param request: Request instance for ModifyIAPLoginSessionDuration.
         :type request: :class:`tencentcloud.iap.v20240713.models.ModifyIAPLoginSessionDurationRequest`
@@ -142,7 +142,7 @@ class IapClient(AbstractClient):
 
 
     def UpdateIAPUserOIDCConfig(self, request):
-        """修改用户OIDC配置
+        r"""修改用户OIDC配置
 
         :param request: Request instance for UpdateIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.UpdateIAPUserOIDCConfigRequest`

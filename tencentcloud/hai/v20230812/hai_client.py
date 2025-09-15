@@ -27,7 +27,7 @@ class HaiClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """本接口（CreateApplication）用于对HAI实例制作自定义应用。
+        r"""本接口（CreateApplication）用于对HAI实例制作自定义应用。
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.hai.v20230812.models.CreateApplicationRequest`
@@ -50,7 +50,7 @@ class HaiClient(AbstractClient):
 
 
     def CreateMuskPrompt(self, request):
-        """创建musk prompt 任务
+        r"""创建musk prompt 任务
 
         :param request: Request instance for CreateMuskPrompt.
         :type request: :class:`tencentcloud.hai.v20230812.models.CreateMuskPromptRequest`
@@ -73,7 +73,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeApplications(self, request):
-        """本接口（DescribeApplications）用于查询应用
+        r"""本接口（DescribeApplications）用于查询应用
 
         :param request: Request instance for DescribeApplications.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeApplicationsRequest`
@@ -96,7 +96,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeInstanceNetworkStatus(self, request):
-        """本接口（DescribeInstanceNetworkStatus）用于查询实例的网络配置及消耗情况
+        r"""本接口（DescribeInstanceNetworkStatus）用于查询实例的网络配置及消耗情况
 
         :param request: Request instance for DescribeInstanceNetworkStatus.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeInstanceNetworkStatusRequest`
@@ -119,7 +119,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """本接口（DescribeInstances）用户查询实例
+        r"""本接口（DescribeInstances）用户查询实例
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeInstancesRequest`
@@ -142,7 +142,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeMuskPrompts(self, request):
-        """获取prompt任务列表
+        r"""获取prompt任务列表
 
         :param request: Request instance for DescribeMuskPrompts.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeMuskPromptsRequest`
@@ -165,7 +165,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """本接口（DescribeRegions）用于查询地域列表
+        r"""本接口（DescribeRegions）用于查询地域列表
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeRegionsRequest`
@@ -188,7 +188,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeScenes(self, request):
-        """本接口（DescribeScenes）用于查询场景
+        r"""本接口（DescribeScenes）用于查询场景
 
         :param request: Request instance for DescribeScenes.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeScenesRequest`
@@ -211,7 +211,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeServiceLoginSettings(self, request):
-        """本接口（DescribeServiceLoginSettings）用于查询服务登录配置
+        r"""本接口（DescribeServiceLoginSettings）用于查询服务登录配置
 
         :param request: Request instance for DescribeServiceLoginSettings.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeServiceLoginSettingsRequest`
@@ -234,7 +234,7 @@ class HaiClient(AbstractClient):
 
 
     def InquirePriceRunInstances(self, request):
-        """本接口 (InquirePriceRunInstances) 用于实例询价。
+        r"""本接口 (InquirePriceRunInstances) 用于实例询价。
 
         :param request: Request instance for InquirePriceRunInstances.
         :type request: :class:`tencentcloud.hai.v20230812.models.InquirePriceRunInstancesRequest`
@@ -257,7 +257,7 @@ class HaiClient(AbstractClient):
 
 
     def ResetInstancesPassword(self, request):
-        """本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
+        r"""本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
 
         :param request: Request instance for ResetInstancesPassword.
         :type request: :class:`tencentcloud.hai.v20230812.models.ResetInstancesPasswordRequest`
@@ -280,7 +280,7 @@ class HaiClient(AbstractClient):
 
 
     def ResizeInstanceDisk(self, request):
-        """本接口（ResizeInstanceDisk）用于对指定HAI实例进行扩容云硬盘操作。
+        r"""本接口（ResizeInstanceDisk）用于对指定HAI实例进行扩容云硬盘操作。
 
         :param request: Request instance for ResizeInstanceDisk.
         :type request: :class:`tencentcloud.hai.v20230812.models.ResizeInstanceDiskRequest`
@@ -303,7 +303,7 @@ class HaiClient(AbstractClient):
 
 
     def RunInstances(self, request):
-        """本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
+        r"""本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
 
         :param request: Request instance for RunInstances.
         :type request: :class:`tencentcloud.hai.v20230812.models.RunInstancesRequest`
@@ -326,7 +326,7 @@ class HaiClient(AbstractClient):
 
 
     def StartInstance(self, request):
-        """本接口 (StartInstance) 用于主动启动实例。
+        r"""本接口 (StartInstance) 用于主动启动实例。
         ‘运行中’、‘预付费’的实例不支持启动实例
 
         :param request: Request instance for StartInstance.
@@ -350,7 +350,7 @@ class HaiClient(AbstractClient):
 
 
     def StopInstance(self, request):
-        """本接口 (StopInstance) 用于主动关闭实例。
+        r"""本接口 (StopInstance) 用于主动关闭实例。
         ‘已关机’、‘预付费’的实例不支持关机
 
         :param request: Request instance for StopInstance.
@@ -374,7 +374,7 @@ class HaiClient(AbstractClient):
 
 
     def TerminateInstances(self, request):
-        """本接口 (TerminateInstances) 用于主动退还实例。
+        r"""本接口 (TerminateInstances) 用于主动退还实例。
 
         :param request: Request instance for TerminateInstances.
         :type request: :class:`tencentcloud.hai.v20230812.models.TerminateInstancesRequest`

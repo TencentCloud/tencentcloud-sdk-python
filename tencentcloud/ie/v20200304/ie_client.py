@@ -27,7 +27,7 @@ class IeClient(AbstractClient):
 
 
     def CreateEditingTask(self, request):
-        """创建编辑理解任务，可以同时选择视频标签识别、分类识别、智能拆条、智能集锦、智能封面和片头片尾识别中的一项或者多项能力。
+        r"""创建编辑理解任务，可以同时选择视频标签识别、分类识别、智能拆条、智能集锦、智能封面和片头片尾识别中的一项或者多项能力。
 
         :param request: Request instance for CreateEditingTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.CreateEditingTaskRequest`
@@ -50,7 +50,7 @@ class IeClient(AbstractClient):
 
 
     def CreateMediaProcessTask(self, request):
-        """用于创建编辑处理任务，如媒体截取、媒体编辑、媒体拼接、媒体字幕。
+        r"""用于创建编辑处理任务，如媒体截取、媒体编辑、媒体拼接、媒体字幕。
 
         :param request: Request instance for CreateMediaProcessTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.CreateMediaProcessTaskRequest`
@@ -73,7 +73,7 @@ class IeClient(AbstractClient):
 
 
     def CreateMediaQualityRestorationTask(self, request):
-        """创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
+        r"""创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
 
         :param request: Request instance for CreateMediaQualityRestorationTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.CreateMediaQualityRestorationTaskRequest`
@@ -96,7 +96,7 @@ class IeClient(AbstractClient):
 
 
     def CreateQualityControlTask(self, request):
-        """通过接口可以智能检测视频画面中抖动重影、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等在内的多个场景，还可以自动检测视频无音频异常、无声音片段。
+        r"""通过接口可以智能检测视频画面中抖动重影、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等在内的多个场景，还可以自动检测视频无音频异常、无声音片段。
 
         :param request: Request instance for CreateQualityControlTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.CreateQualityControlTaskRequest`
@@ -119,7 +119,7 @@ class IeClient(AbstractClient):
 
 
     def DescribeEditingTaskResult(self, request):
-        """获取编辑理解任务结果。
+        r"""获取编辑理解任务结果。
 
         :param request: Request instance for DescribeEditingTaskResult.
         :type request: :class:`tencentcloud.ie.v20200304.models.DescribeEditingTaskResultRequest`
@@ -142,7 +142,7 @@ class IeClient(AbstractClient):
 
 
     def DescribeMediaProcessTaskResult(self, request):
-        """用于获取编辑处理任务的结果。
+        r"""用于获取编辑处理任务的结果。
 
         :param request: Request instance for DescribeMediaProcessTaskResult.
         :type request: :class:`tencentcloud.ie.v20200304.models.DescribeMediaProcessTaskResultRequest`
@@ -165,7 +165,7 @@ class IeClient(AbstractClient):
 
 
     def DescribeMediaQualityRestorationTaskRusult(self, request):
-        """获取画质重生任务结果，查看结束后的文件信息
+        r"""获取画质重生任务结果，查看结束后的文件信息
 
         :param request: Request instance for DescribeMediaQualityRestorationTaskRusult.
         :type request: :class:`tencentcloud.ie.v20200304.models.DescribeMediaQualityRestorationTaskRusultRequest`
@@ -188,7 +188,7 @@ class IeClient(AbstractClient):
 
 
     def DescribeQualityControlTaskResult(self, request):
-        """获取媒体质检任务结果
+        r"""获取媒体质检任务结果
 
         :param request: Request instance for DescribeQualityControlTaskResult.
         :type request: :class:`tencentcloud.ie.v20200304.models.DescribeQualityControlTaskResultRequest`
@@ -211,7 +211,7 @@ class IeClient(AbstractClient):
 
 
     def StopMediaProcessTask(self, request):
-        """用于停止正在进行中的编辑处理任务。
+        r"""用于停止正在进行中的编辑处理任务。
 
         :param request: Request instance for StopMediaProcessTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.StopMediaProcessTaskRequest`
@@ -234,7 +234,7 @@ class IeClient(AbstractClient):
 
 
     def StopMediaQualityRestorationTask(self, request):
-        """删除正在进行的画质重生任务
+        r"""删除正在进行的画质重生任务
 
         :param request: Request instance for StopMediaQualityRestorationTask.
         :type request: :class:`tencentcloud.ie.v20200304.models.StopMediaQualityRestorationTaskRequest`

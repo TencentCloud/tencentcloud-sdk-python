@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AdmissionConditionBlock(AbstractModel):
-    """入院情况
+    r"""入院情况
 
     """
 
@@ -39,7 +39,7 @@ class AdmissionConditionBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -50,7 +50,7 @@ class AdmissionConditionBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
 
         :rtype: str
         """
@@ -62,7 +62,7 @@ class AdmissionConditionBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -87,7 +87,7 @@ class AdmissionConditionBlock(AbstractModel):
 
 
 class AdmissionDiagnosisBlock(AbstractModel):
-    """入院诊断
+    r"""入院诊断
 
     """
 
@@ -109,7 +109,7 @@ class AdmissionDiagnosisBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -120,7 +120,7 @@ class AdmissionDiagnosisBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -131,7 +131,7 @@ class AdmissionDiagnosisBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -142,7 +142,7 @@ class AdmissionDiagnosisBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -168,7 +168,7 @@ class AdmissionDiagnosisBlock(AbstractModel):
 
 
 class Advice(AbstractModel):
-    """建议
+    r"""建议
 
     """
 
@@ -181,7 +181,7 @@ class Advice(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -204,7 +204,7 @@ class Advice(AbstractModel):
 
 
 class AspectRatio(AbstractModel):
-    """纵横比
+    r"""纵横比
 
     """
 
@@ -229,7 +229,7 @@ class AspectRatio(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -240,7 +240,7 @@ class AspectRatio(AbstractModel):
 
     @property
     def Number(self):
-        """数值
+        r"""数值
         :rtype: str
         """
         return self._Number
@@ -251,7 +251,7 @@ class AspectRatio(AbstractModel):
 
     @property
     def Relation(self):
-        """关系
+        r"""关系
         :rtype: str
         """
         return self._Relation
@@ -262,7 +262,7 @@ class AspectRatio(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -273,7 +273,7 @@ class AspectRatio(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -300,7 +300,7 @@ class AspectRatio(AbstractModel):
 
 
 class BaseInfo(AbstractModel):
-    """标准信息类
+    r"""标准信息类
 
     """
 
@@ -325,7 +325,7 @@ class BaseInfo(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -336,7 +336,7 @@ class BaseInfo(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -347,7 +347,7 @@ class BaseInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -358,7 +358,7 @@ class BaseInfo(AbstractModel):
 
     @property
     def Value(self):
-        """标准值
+        r"""标准值
         :rtype: str
         """
         return self._Value
@@ -369,7 +369,7 @@ class BaseInfo(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -401,7 +401,7 @@ class BaseInfo(AbstractModel):
 
 
 class BaseItem(AbstractModel):
-    """基础类型
+    r"""基础类型
 
     """
 
@@ -426,7 +426,7 @@ class BaseItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型名称
+        r"""类型名称
         :rtype: str
         """
         return self._Name
@@ -437,7 +437,7 @@ class BaseItem(AbstractModel):
 
     @property
     def Src(self):
-        """原始文本
+        r"""原始文本
         :rtype: str
         """
         return self._Src
@@ -448,7 +448,7 @@ class BaseItem(AbstractModel):
 
     @property
     def Value(self):
-        """归一化后值
+        r"""归一化后值
         :rtype: str
         """
         return self._Value
@@ -459,7 +459,7 @@ class BaseItem(AbstractModel):
 
     @property
     def Alias(self):
-        """别名
+        r"""别名
         :rtype: str
         """
         return self._Alias
@@ -470,7 +470,7 @@ class BaseItem(AbstractModel):
 
     @property
     def Coords(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -502,7 +502,7 @@ class BaseItem(AbstractModel):
 
 
 class BaseItem2(AbstractModel):
-    """基础类型
+    r"""基础类型
 
     """
 
@@ -524,7 +524,7 @@ class BaseItem2(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -535,7 +535,7 @@ class BaseItem2(AbstractModel):
 
     @property
     def Src(self):
-        """原始文本
+        r"""原始文本
         :rtype: str
         """
         return self._Src
@@ -546,7 +546,7 @@ class BaseItem2(AbstractModel):
 
     @property
     def Value(self):
-        """归一化后值
+        r"""归一化后值
         :rtype: str
         """
         return self._Value
@@ -557,7 +557,7 @@ class BaseItem2(AbstractModel):
 
     @property
     def Coords(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -588,7 +588,7 @@ class BaseItem2(AbstractModel):
 
 
 class BaseItem3(AbstractModel):
-    """基础类型
+    r"""基础类型
 
     """
 
@@ -613,7 +613,7 @@ class BaseItem3(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -624,7 +624,7 @@ class BaseItem3(AbstractModel):
 
     @property
     def Src(self):
-        """原始文本
+        r"""原始文本
         :rtype: str
         """
         return self._Src
@@ -635,7 +635,7 @@ class BaseItem3(AbstractModel):
 
     @property
     def Value(self):
-        """归一化后值
+        r"""归一化后值
         :rtype: str
         """
         return self._Value
@@ -646,7 +646,7 @@ class BaseItem3(AbstractModel):
 
     @property
     def Coords(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -657,7 +657,7 @@ class BaseItem3(AbstractModel):
 
     @property
     def Order(self):
-        """第几次
+        r"""第几次
         :rtype: int
         """
         return self._Order
@@ -689,7 +689,7 @@ class BaseItem3(AbstractModel):
 
 
 class BiologicalProductInfo(AbstractModel):
-    """预防用生物制品说明书
+    r"""预防用生物制品说明书
 
     """
 
@@ -744,7 +744,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Name(self):
-        """药品名称，包括通用名和商品名
+        r"""药品名称，包括通用名和商品名
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoName`
         """
         return self._Name
@@ -755,7 +755,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def IngredientAndAppearance(self):
-        """成份和性状
+        r"""成份和性状
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIngredientAndAppearance`
         """
         return self._IngredientAndAppearance
@@ -766,7 +766,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def VaccinationTarget(self):
-        """接种对象
+        r"""接种对象
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoVaccinationTarget`
         """
         return self._VaccinationTarget
@@ -777,7 +777,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Indications(self):
-        """作用与用途
+        r"""作用与用途
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIndications`
         """
         return self._Indications
@@ -788,7 +788,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Brochure(self):
-        """规格
+        r"""规格
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoBrochure`
         """
         return self._Brochure
@@ -799,7 +799,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Dosage(self):
-        """免疫程序和剂量
+        r"""免疫程序和剂量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoDosage`
         """
         return self._Dosage
@@ -810,7 +810,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def AdverseReaction(self):
-        """不良反应
+        r"""不良反应
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoAdverseReaction`
         """
         return self._AdverseReaction
@@ -821,7 +821,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Contraindications(self):
-        """禁忌情况
+        r"""禁忌情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoContraindications`
         """
         return self._Contraindications
@@ -832,7 +832,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Precautions(self):
-        """注意事项
+        r"""注意事项
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPrecautions`
         """
         return self._Precautions
@@ -843,7 +843,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Storage(self):
-        """储存条件
+        r"""储存条件
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoStorage`
         """
         return self._Storage
@@ -854,7 +854,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Packaging(self):
-        """包装信息
+        r"""包装信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPackaging`
         """
         return self._Packaging
@@ -865,7 +865,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def ValidityPeriod(self):
-        """有效期
+        r"""有效期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoValidityPeriod`
         """
         return self._ValidityPeriod
@@ -876,7 +876,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def ExecutiveStandards(self):
-        """执行标准
+        r"""执行标准
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoExecutiveStandards`
         """
         return self._ExecutiveStandards
@@ -887,7 +887,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Approval(self):
-        """批准文号
+        r"""批准文号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoApproval`
         """
         return self._Approval
@@ -898,7 +898,7 @@ class BiologicalProductInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产企业名称和地址
+        r"""生产企业名称和地址
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoManufacturer`
         """
         return self._Manufacturer
@@ -965,7 +965,7 @@ class BiologicalProductInfo(AbstractModel):
 
 
 class BiologicalProductInfoAdverseReaction(AbstractModel):
-    """不良反应
+    r"""不良反应
 
     """
 
@@ -978,7 +978,7 @@ class BiologicalProductInfoAdverseReaction(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1001,7 +1001,7 @@ class BiologicalProductInfoAdverseReaction(AbstractModel):
 
 
 class BiologicalProductInfoApproval(AbstractModel):
-    """批准文号
+    r"""批准文号
 
     """
 
@@ -1014,7 +1014,7 @@ class BiologicalProductInfoApproval(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1037,7 +1037,7 @@ class BiologicalProductInfoApproval(AbstractModel):
 
 
 class BiologicalProductInfoBrochure(AbstractModel):
-    """规格
+    r"""规格
 
     """
 
@@ -1050,7 +1050,7 @@ class BiologicalProductInfoBrochure(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1073,7 +1073,7 @@ class BiologicalProductInfoBrochure(AbstractModel):
 
 
 class BiologicalProductInfoContraindications(AbstractModel):
-    """禁忌情况
+    r"""禁忌情况
 
     """
 
@@ -1086,7 +1086,7 @@ class BiologicalProductInfoContraindications(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1109,7 +1109,7 @@ class BiologicalProductInfoContraindications(AbstractModel):
 
 
 class BiologicalProductInfoDosage(AbstractModel):
-    """免疫程序和剂量
+    r"""免疫程序和剂量
 
     """
 
@@ -1122,7 +1122,7 @@ class BiologicalProductInfoDosage(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1145,7 +1145,7 @@ class BiologicalProductInfoDosage(AbstractModel):
 
 
 class BiologicalProductInfoExecutiveStandards(AbstractModel):
-    """执行标准
+    r"""执行标准
 
     """
 
@@ -1158,7 +1158,7 @@ class BiologicalProductInfoExecutiveStandards(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1181,7 +1181,7 @@ class BiologicalProductInfoExecutiveStandards(AbstractModel):
 
 
 class BiologicalProductInfoIndications(AbstractModel):
-    """作用与用途
+    r"""作用与用途
 
     """
 
@@ -1194,7 +1194,7 @@ class BiologicalProductInfoIndications(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1217,7 +1217,7 @@ class BiologicalProductInfoIndications(AbstractModel):
 
 
 class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
-    """成份和性状
+    r"""成份和性状
 
     """
 
@@ -1230,7 +1230,7 @@ class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -1253,7 +1253,7 @@ class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
 
 
 class BiologicalProductInfoManufacturer(AbstractModel):
-    """生产企业名称和地址
+    r"""生产企业名称和地址
 
     """
 
@@ -1266,7 +1266,7 @@ class BiologicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1289,7 +1289,7 @@ class BiologicalProductInfoManufacturer(AbstractModel):
 
 
 class BiologicalProductInfoName(AbstractModel):
-    """药品名称，包括通用名和商品名
+    r"""药品名称，包括通用名和商品名
 
     """
 
@@ -1315,7 +1315,7 @@ class BiologicalProductInfoName(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1326,7 +1326,7 @@ class BiologicalProductInfoName(AbstractModel):
 
     @property
     def GenericName(self):
-        """通用名
+        r"""通用名
         :rtype: str
         """
         return self._GenericName
@@ -1339,7 +1339,7 @@ class BiologicalProductInfoName(AbstractModel):
     def BarndName(self):
         warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
 
-        """品牌名
+        r"""品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1353,7 +1353,7 @@ class BiologicalProductInfoName(AbstractModel):
 
     @property
     def EnName(self):
-        """英文名
+        r"""英文名
         :rtype: str
         """
         return self._EnName
@@ -1364,7 +1364,7 @@ class BiologicalProductInfoName(AbstractModel):
 
     @property
     def Pinyin(self):
-        """拼音
+        r"""拼音
         :rtype: str
         """
         return self._Pinyin
@@ -1391,7 +1391,7 @@ class BiologicalProductInfoName(AbstractModel):
 
 
 class BiologicalProductInfoPackaging(AbstractModel):
-    """包装信息
+    r"""包装信息
 
     """
 
@@ -1404,7 +1404,7 @@ class BiologicalProductInfoPackaging(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1427,7 +1427,7 @@ class BiologicalProductInfoPackaging(AbstractModel):
 
 
 class BiologicalProductInfoPrecautions(AbstractModel):
-    """注意事项
+    r"""注意事项
 
     """
 
@@ -1440,7 +1440,7 @@ class BiologicalProductInfoPrecautions(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1463,7 +1463,7 @@ class BiologicalProductInfoPrecautions(AbstractModel):
 
 
 class BiologicalProductInfoStorage(AbstractModel):
-    """储存条件
+    r"""储存条件
 
     """
 
@@ -1476,7 +1476,7 @@ class BiologicalProductInfoStorage(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1499,7 +1499,7 @@ class BiologicalProductInfoStorage(AbstractModel):
 
 
 class BiologicalProductInfoVaccinationTarget(AbstractModel):
-    """接种对象
+    r"""接种对象
 
     """
 
@@ -1512,7 +1512,7 @@ class BiologicalProductInfoVaccinationTarget(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1535,7 +1535,7 @@ class BiologicalProductInfoVaccinationTarget(AbstractModel):
 
 
 class BiologicalProductInfoValidityPeriod(AbstractModel):
-    """有效期
+    r"""有效期
 
     """
 
@@ -1548,7 +1548,7 @@ class BiologicalProductInfoValidityPeriod(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -1571,7 +1571,7 @@ class BiologicalProductInfoValidityPeriod(AbstractModel):
 
 
 class BiopsyPart(AbstractModel):
-    """活检部位
+    r"""活检部位
 
     """
 
@@ -1590,7 +1590,7 @@ class BiopsyPart(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -1601,7 +1601,7 @@ class BiopsyPart(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -1612,7 +1612,7 @@ class BiopsyPart(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -1642,7 +1642,7 @@ class BiopsyPart(AbstractModel):
 
 
 class BirthCert(AbstractModel):
-    """出生证明结构化信息
+    r"""出生证明结构化信息
 
     """
 
@@ -1667,7 +1667,7 @@ class BirthCert(AbstractModel):
 
     @property
     def NeonatalInfo(self):
-        """新生儿信息
+        r"""新生儿信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NeonatalInfo`
         """
         return self._NeonatalInfo
@@ -1678,7 +1678,7 @@ class BirthCert(AbstractModel):
 
     @property
     def MotherInfo(self):
-        """母亲信息
+        r"""母亲信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         """
         return self._MotherInfo
@@ -1689,7 +1689,7 @@ class BirthCert(AbstractModel):
 
     @property
     def FatherInfo(self):
-        """父亲信息
+        r"""父亲信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         """
         return self._FatherInfo
@@ -1700,7 +1700,7 @@ class BirthCert(AbstractModel):
 
     @property
     def IssueInfo(self):
-        """签发信息
+        r"""签发信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.IssueInfo`
         """
         return self._IssueInfo
@@ -1711,7 +1711,7 @@ class BirthCert(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -1746,7 +1746,7 @@ class BirthCert(AbstractModel):
 
 
 class BirthPlaceBlock(AbstractModel):
-    """出生地
+    r"""出生地
 
     """
 
@@ -1765,7 +1765,7 @@ class BirthPlaceBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -1776,7 +1776,7 @@ class BirthPlaceBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -1787,7 +1787,7 @@ class BirthPlaceBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -1812,7 +1812,7 @@ class BirthPlaceBlock(AbstractModel):
 
 
 class Block(AbstractModel):
-    """结构化信息
+    r"""结构化信息
 
     """
 
@@ -1900,7 +1900,7 @@ class Block(AbstractModel):
 
     @property
     def Check(self):
-        """诊断信息
+        r"""诊断信息
         :rtype: list of Check
         """
         return self._Check
@@ -1911,7 +1911,7 @@ class Block(AbstractModel):
 
     @property
     def Pathology(self):
-        """病理报告
+        r"""病理报告
         :rtype: list of PathologyReport
         """
         return self._Pathology
@@ -1922,7 +1922,7 @@ class Block(AbstractModel):
 
     @property
     def MedDoc(self):
-        """医学资料
+        r"""医学资料
         :rtype: list of MedDoc
         """
         return self._MedDoc
@@ -1933,7 +1933,7 @@ class Block(AbstractModel):
 
     @property
     def DiagCert(self):
-        """诊断证明
+        r"""诊断证明
         :rtype: list of DiagCert
         """
         return self._DiagCert
@@ -1944,7 +1944,7 @@ class Block(AbstractModel):
 
     @property
     def FirstPage(self):
-        """病案首页
+        r"""病案首页
         :rtype: list of FirstPage
         """
         return self._FirstPage
@@ -1955,7 +1955,7 @@ class Block(AbstractModel):
 
     @property
     def Indicator(self):
-        """检验报告
+        r"""检验报告
         :rtype: list of Indicator
         """
         return self._Indicator
@@ -1966,7 +1966,7 @@ class Block(AbstractModel):
 
     @property
     def MedicalRecordInfo(self):
-        """门诊病历信息
+        r"""门诊病历信息
         :rtype: list of MedicalRecordInfo
         """
         return self._MedicalRecordInfo
@@ -1977,7 +1977,7 @@ class Block(AbstractModel):
 
     @property
     def Hospitalization(self):
-        """出入院信息
+        r"""出入院信息
         :rtype: list of Hospitalization
         """
         return self._Hospitalization
@@ -1988,7 +1988,7 @@ class Block(AbstractModel):
 
     @property
     def Surgery(self):
-        """手术记录
+        r"""手术记录
         :rtype: list of Surgery
         """
         return self._Surgery
@@ -1999,7 +1999,7 @@ class Block(AbstractModel):
 
     @property
     def Prescription(self):
-        """处方单
+        r"""处方单
         :rtype: list of Prescription
         """
         return self._Prescription
@@ -2010,7 +2010,7 @@ class Block(AbstractModel):
 
     @property
     def VaccineCertificate(self):
-        """免疫接种证明
+        r"""免疫接种证明
         :rtype: list of VaccineCertificate
         """
         return self._VaccineCertificate
@@ -2021,7 +2021,7 @@ class Block(AbstractModel):
 
     @property
     def Electrocardiogram(self):
-        """心电图
+        r"""心电图
         :rtype: list of Electrocardiogram
         """
         return self._Electrocardiogram
@@ -2032,7 +2032,7 @@ class Block(AbstractModel):
 
     @property
     def PathologyV2(self):
-        """病理报告v2
+        r"""病理报告v2
         :rtype: list of PathologyV2
         """
         return self._PathologyV2
@@ -2043,7 +2043,7 @@ class Block(AbstractModel):
 
     @property
     def Endoscopy(self):
-        """内窥镜报告
+        r"""内窥镜报告
         :rtype: list of Endoscopy
         """
         return self._Endoscopy
@@ -2054,7 +2054,7 @@ class Block(AbstractModel):
 
     @property
     def C14(self):
-        """C14检验报告
+        r"""C14检验报告
         :rtype: list of Indicator
         """
         return self._C14
@@ -2065,7 +2065,7 @@ class Block(AbstractModel):
 
     @property
     def Exame(self):
-        """体检结论
+        r"""体检结论
         :rtype: list of Exame
         """
         return self._Exame
@@ -2076,7 +2076,7 @@ class Block(AbstractModel):
 
     @property
     def MedDocV2(self):
-        """出入院结构体
+        r"""出入院结构体
         :rtype: list of DischargeInfoBlock
         """
         return self._MedDocV2
@@ -2087,7 +2087,7 @@ class Block(AbstractModel):
 
     @property
     def IndicatorV3(self):
-        """检验报告v3
+        r"""检验报告v3
         :rtype: list of IndicatorV3
         """
         return self._IndicatorV3
@@ -2098,7 +2098,7 @@ class Block(AbstractModel):
 
     @property
     def Maternity(self):
-        """孕产报告
+        r"""孕产报告
         :rtype: list of Maternity
         """
         return self._Maternity
@@ -2109,7 +2109,7 @@ class Block(AbstractModel):
 
     @property
     def Timeline(self):
-        """时间轴
+        r"""时间轴
         :rtype: list of TimelineInformation
         """
         return self._Timeline
@@ -2120,7 +2120,7 @@ class Block(AbstractModel):
 
     @property
     def Covid(self):
-        """核酸报告结论
+        r"""核酸报告结论
         :rtype: list of CovidItemsInfo
         """
         return self._Covid
@@ -2131,7 +2131,7 @@ class Block(AbstractModel):
 
     @property
     def Eye(self):
-        """眼科报告结构体
+        r"""眼科报告结构体
         :rtype: list of EyeItemsInfo
         """
         return self._Eye
@@ -2142,7 +2142,7 @@ class Block(AbstractModel):
 
     @property
     def BirthCert(self):
-        """出生证明结构化信息
+        r"""出生证明结构化信息
         :rtype: list of BirthCert
         """
         return self._BirthCert
@@ -2153,7 +2153,7 @@ class Block(AbstractModel):
 
     @property
     def TextTypeListBlocks(self):
-        """文本类型列表
+        r"""文本类型列表
         :rtype: list of TextTypeListBlock
         """
         return self._TextTypeListBlocks
@@ -2164,7 +2164,7 @@ class Block(AbstractModel):
 
     @property
     def PhysicalExamination(self):
-        """体检报告信息
+        r"""体检报告信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalExaminationV1`
         """
         return self._PhysicalExamination
@@ -2175,7 +2175,7 @@ class Block(AbstractModel):
 
     @property
     def EndoscopyV2(self):
-        """内窥镜报告V2
+        r"""内窥镜报告V2
         :rtype: list of Check
         """
         return self._EndoscopyV2
@@ -2350,7 +2350,7 @@ class Block(AbstractModel):
 
 
 class BlockInfo(AbstractModel):
-    """块信息
+    r"""块信息
 
     """
 
@@ -2381,7 +2381,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -2392,7 +2392,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Positive(self):
-        """阳性
+        r"""阳性
         :rtype: str
         """
         return self._Positive
@@ -2403,7 +2403,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -2414,7 +2414,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -2425,7 +2425,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -2436,7 +2436,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -2447,7 +2447,7 @@ class BlockInfo(AbstractModel):
 
     @property
     def Size(self):
-        """大小
+        r"""大小
         :rtype: list of Size
         """
         return self._Size
@@ -2481,7 +2481,7 @@ class BlockInfo(AbstractModel):
 
 
 class BlockInfoV2(AbstractModel):
-    """块信息
+    r"""块信息
 
     """
 
@@ -2506,7 +2506,7 @@ class BlockInfoV2(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -2517,7 +2517,7 @@ class BlockInfoV2(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -2528,7 +2528,7 @@ class BlockInfoV2(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -2539,7 +2539,7 @@ class BlockInfoV2(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -2550,7 +2550,7 @@ class BlockInfoV2(AbstractModel):
 
     @property
     def Code(self):
-        """疾病编码
+        r"""疾病编码
         :rtype: str
         """
         return self._Code
@@ -2577,7 +2577,7 @@ class BlockInfoV2(AbstractModel):
 
 
 class BlockTitle(AbstractModel):
-    """块标题
+    r"""块标题
 
     """
 
@@ -2596,7 +2596,7 @@ class BlockTitle(AbstractModel):
 
     @property
     def Name(self):
-        """name
+        r"""name
         :rtype: str
         """
         return self._Name
@@ -2607,7 +2607,7 @@ class BlockTitle(AbstractModel):
 
     @property
     def Src(self):
-        """src
+        r"""src
         :rtype: str
         """
         return self._Src
@@ -2618,7 +2618,7 @@ class BlockTitle(AbstractModel):
 
     @property
     def Value(self):
-        """value
+        r"""value
         :rtype: str
         """
         return self._Value
@@ -2643,7 +2643,7 @@ class BlockTitle(AbstractModel):
 
 
 class BloodPressureBlock(AbstractModel):
-    """血压
+    r"""血压
 
     """
 
@@ -2674,7 +2674,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -2685,7 +2685,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -2696,7 +2696,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -2707,7 +2707,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -2718,7 +2718,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -2729,7 +2729,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def NormDiastolic(self):
-        """舒张压
+        r"""舒张压
         :rtype: str
         """
         return self._NormDiastolic
@@ -2740,7 +2740,7 @@ class BloodPressureBlock(AbstractModel):
 
     @property
     def NormSystolic(self):
-        """收缩压
+        r"""收缩压
         :rtype: str
         """
         return self._NormSystolic
@@ -2769,7 +2769,7 @@ class BloodPressureBlock(AbstractModel):
 
 
 class BloodPressureItem(AbstractModel):
-    """体检报告血压检测信息
+    r"""体检报告血压检测信息
 
     """
 
@@ -2800,7 +2800,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -2811,7 +2811,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Item(self):
-        """项目原文
+        r"""项目原文
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -2822,7 +2822,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Result(self):
-        """数值
+        r"""数值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -2833,7 +2833,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -2844,7 +2844,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Times(self):
-        """第几次
+        r"""第几次
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Times
@@ -2855,7 +2855,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Location(self):
-        """左右手臂
+        r"""左右手臂
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Location
@@ -2866,7 +2866,7 @@ class BloodPressureItem(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -2905,7 +2905,7 @@ class BloodPressureItem(AbstractModel):
 
 
 class BodyExaminationBlock(AbstractModel):
-    """查体
+    r"""查体
 
     """
 
@@ -2927,7 +2927,7 @@ class BodyExaminationBlock(AbstractModel):
 
     @property
     def BodyTemperature(self):
-        """体温
+        r"""体温
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._BodyTemperature
@@ -2938,7 +2938,7 @@ class BodyExaminationBlock(AbstractModel):
 
     @property
     def Pulse(self):
-        """脉搏
+        r"""脉搏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._Pulse
@@ -2949,7 +2949,7 @@ class BodyExaminationBlock(AbstractModel):
 
     @property
     def Breathe(self):
-        """呼吸
+        r"""呼吸
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._Breathe
@@ -2960,7 +2960,7 @@ class BodyExaminationBlock(AbstractModel):
 
     @property
     def BloodPressure(self):
-        """血压
+        r"""血压
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BloodPressureBlock`
         """
         return self._BloodPressure
@@ -2994,7 +2994,7 @@ class BodyExaminationBlock(AbstractModel):
 
 
 class BodyTemperatureBlock(AbstractModel):
-    """体温名称
+    r"""体温名称
 
     """
 
@@ -3019,7 +3019,7 @@ class BodyTemperatureBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -3030,7 +3030,7 @@ class BodyTemperatureBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -3041,7 +3041,7 @@ class BodyTemperatureBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -3052,7 +3052,7 @@ class BodyTemperatureBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -3063,7 +3063,7 @@ class BodyTemperatureBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -3090,7 +3090,7 @@ class BodyTemperatureBlock(AbstractModel):
 
 
 class Check(AbstractModel):
-    """检查报告单
+    r"""检查报告单
 
     """
 
@@ -3112,7 +3112,7 @@ class Check(AbstractModel):
 
     @property
     def Desc(self):
-        """描述
+        r"""描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Desc`
         """
         return self._Desc
@@ -3123,7 +3123,7 @@ class Check(AbstractModel):
 
     @property
     def Summary(self):
-        """结论
+        r"""结论
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Summary`
         """
         return self._Summary
@@ -3134,7 +3134,7 @@ class Check(AbstractModel):
 
     @property
     def BlockTitle(self):
-        """检查报告块标题
+        r"""检查报告块标题
         :rtype: list of BlockTitle
         """
         return self._BlockTitle
@@ -3145,7 +3145,7 @@ class Check(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -3180,7 +3180,7 @@ class Check(AbstractModel):
 
 
 class ChemicalProductInfo(AbstractModel):
-    """药品说明书消息定义
+    r"""药品说明书消息定义
 
     """
 
@@ -3259,7 +3259,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Name(self):
-        """药品名称，包括通用名和商品名
+        r"""药品名称，包括通用名和商品名
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoName`
         """
         return self._Name
@@ -3270,7 +3270,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def ActiveIngredient(self):
-        """活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
+        r"""活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoActiveIngredient`
         """
         return self._ActiveIngredient
@@ -3281,7 +3281,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Appearance(self):
-        """性状
+        r"""性状
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAppearance`
         """
         return self._Appearance
@@ -3292,7 +3292,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Indications(self):
-        """适应症描述
+        r"""适应症描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoIndications`
         """
         return self._Indications
@@ -3303,7 +3303,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Brochure(self):
-        """规格
+        r"""规格
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoBrochure`
         """
         return self._Brochure
@@ -3314,7 +3314,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Dosage(self):
-        """用法用量
+        r"""用法用量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoDosage`
         """
         return self._Dosage
@@ -3325,7 +3325,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def AdverseReaction(self):
-        """不良反应
+        r"""不良反应
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAdverseReaction`
         """
         return self._AdverseReaction
@@ -3336,7 +3336,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Contraindications(self):
-        """禁忌情况
+        r"""禁忌情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoContraindications`
         """
         return self._Contraindications
@@ -3347,7 +3347,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Precautions(self):
-        """注意事项
+        r"""注意事项
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPrecautions`
         """
         return self._Precautions
@@ -3358,7 +3358,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def PregnancyLactationUse(self):
-        """孕妇及哺乳期妇女用药
+        r"""孕妇及哺乳期妇女用药
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPregnancyLactationUse`
         """
         return self._PregnancyLactationUse
@@ -3369,7 +3369,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def PediatricUse(self):
-        """儿童用药
+        r"""儿童用药
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPediatricUse`
         """
         return self._PediatricUse
@@ -3380,7 +3380,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def GeriatricUse(self):
-        """老年用药
+        r"""老年用药
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoGeriatricUse`
         """
         return self._GeriatricUse
@@ -3391,7 +3391,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Interactions(self):
-        """药品的药物相互作用
+        r"""药品的药物相互作用
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoInteractions`
         """
         return self._Interactions
@@ -3402,7 +3402,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Overdose(self):
-        """药物过量
+        r"""药物过量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoOverdose`
         """
         return self._Overdose
@@ -3413,7 +3413,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def ClinicalTrial(self):
-        """临床试验
+        r"""临床试验
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoClinicalTrial`
         """
         return self._ClinicalTrial
@@ -3424,7 +3424,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def PharmacologyToxicology(self):
-        """药理毒理
+        r"""药理毒理
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacologyToxicology`
         """
         return self._PharmacologyToxicology
@@ -3435,7 +3435,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Pharmacokinetics(self):
-        """药代动力学
+        r"""药代动力学
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacokinetics`
         """
         return self._Pharmacokinetics
@@ -3446,7 +3446,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Storage(self):
-        """储存条件
+        r"""储存条件
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoStorage`
         """
         return self._Storage
@@ -3457,7 +3457,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Packaging(self):
-        """包装信息
+        r"""包装信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPackaging`
         """
         return self._Packaging
@@ -3468,7 +3468,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def ValidityPeriod(self):
-        """有效期
+        r"""有效期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoValidityPeriod`
         """
         return self._ValidityPeriod
@@ -3479,7 +3479,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def ExecutiveStandards(self):
-        """执行标准
+        r"""执行标准
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoExecutiveStandards`
         """
         return self._ExecutiveStandards
@@ -3490,7 +3490,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Approval(self):
-        """批准文号
+        r"""批准文号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoApproval`
         """
         return self._Approval
@@ -3501,7 +3501,7 @@ class ChemicalProductInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产企业名称和地址
+        r"""生产企业名称和地址
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoManufacturer`
         """
         return self._Manufacturer
@@ -3592,7 +3592,7 @@ class ChemicalProductInfo(AbstractModel):
 
 
 class ChemicalProductInfoActiveIngredient(AbstractModel):
-    """活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
+    r"""活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
 
     """
 
@@ -3617,7 +3617,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -3628,7 +3628,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
     @property
     def ChemicalName(self):
-        """活性成份的化学名称
+        r"""活性成份的化学名称
         :rtype: str
         """
         return self._ChemicalName
@@ -3639,7 +3639,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
     @property
     def ChemicalFormula(self):
-        """活性成份的化学结构式
+        r"""活性成份的化学结构式
         :rtype: str
         """
         return self._ChemicalFormula
@@ -3650,7 +3650,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
     @property
     def MolecularFormula(self):
-        """活性成份的分子式
+        r"""活性成份的分子式
         :rtype: str
         """
         return self._MolecularFormula
@@ -3661,7 +3661,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
     @property
     def MolecularWeight(self):
-        """活性成份的分子量
+        r"""活性成份的分子量
         :rtype: str
         """
         return self._MolecularWeight
@@ -3688,7 +3688,7 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
 
 
 class ChemicalProductInfoAdverseReaction(AbstractModel):
-    """不良反应
+    r"""不良反应
 
     """
 
@@ -3701,7 +3701,7 @@ class ChemicalProductInfoAdverseReaction(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3724,7 +3724,7 @@ class ChemicalProductInfoAdverseReaction(AbstractModel):
 
 
 class ChemicalProductInfoAppearance(AbstractModel):
-    """性状
+    r"""性状
 
     """
 
@@ -3737,7 +3737,7 @@ class ChemicalProductInfoAppearance(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3760,7 +3760,7 @@ class ChemicalProductInfoAppearance(AbstractModel):
 
 
 class ChemicalProductInfoApproval(AbstractModel):
-    """批准文号
+    r"""批准文号
 
     """
 
@@ -3773,7 +3773,7 @@ class ChemicalProductInfoApproval(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3796,7 +3796,7 @@ class ChemicalProductInfoApproval(AbstractModel):
 
 
 class ChemicalProductInfoBrochure(AbstractModel):
-    """规格
+    r"""规格
 
     """
 
@@ -3809,7 +3809,7 @@ class ChemicalProductInfoBrochure(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3832,7 +3832,7 @@ class ChemicalProductInfoBrochure(AbstractModel):
 
 
 class ChemicalProductInfoClinicalTrial(AbstractModel):
-    """临床试验
+    r"""临床试验
 
     """
 
@@ -3845,7 +3845,7 @@ class ChemicalProductInfoClinicalTrial(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3868,7 +3868,7 @@ class ChemicalProductInfoClinicalTrial(AbstractModel):
 
 
 class ChemicalProductInfoContraindications(AbstractModel):
-    """禁忌情况
+    r"""禁忌情况
 
     """
 
@@ -3881,7 +3881,7 @@ class ChemicalProductInfoContraindications(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3904,7 +3904,7 @@ class ChemicalProductInfoContraindications(AbstractModel):
 
 
 class ChemicalProductInfoDosage(AbstractModel):
-    """用法用量
+    r"""用法用量
 
     """
 
@@ -3917,7 +3917,7 @@ class ChemicalProductInfoDosage(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3940,7 +3940,7 @@ class ChemicalProductInfoDosage(AbstractModel):
 
 
 class ChemicalProductInfoExecutiveStandards(AbstractModel):
-    """执行标准
+    r"""执行标准
 
     """
 
@@ -3953,7 +3953,7 @@ class ChemicalProductInfoExecutiveStandards(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -3976,7 +3976,7 @@ class ChemicalProductInfoExecutiveStandards(AbstractModel):
 
 
 class ChemicalProductInfoGeriatricUse(AbstractModel):
-    """老年用药
+    r"""老年用药
 
     """
 
@@ -3989,7 +3989,7 @@ class ChemicalProductInfoGeriatricUse(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4012,7 +4012,7 @@ class ChemicalProductInfoGeriatricUse(AbstractModel):
 
 
 class ChemicalProductInfoIndications(AbstractModel):
-    """适应症描述
+    r"""适应症描述
 
     """
 
@@ -4025,7 +4025,7 @@ class ChemicalProductInfoIndications(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4048,7 +4048,7 @@ class ChemicalProductInfoIndications(AbstractModel):
 
 
 class ChemicalProductInfoInteractions(AbstractModel):
-    """药品的药物相互作用
+    r"""药品的药物相互作用
 
     """
 
@@ -4061,7 +4061,7 @@ class ChemicalProductInfoInteractions(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4084,7 +4084,7 @@ class ChemicalProductInfoInteractions(AbstractModel):
 
 
 class ChemicalProductInfoManufacturer(AbstractModel):
-    """生产企业名称和地址
+    r"""生产企业名称和地址
 
     """
 
@@ -4115,7 +4115,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4126,7 +4126,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -4137,7 +4137,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Address(self):
-        """生产地址
+        r"""生产地址
         :rtype: str
         """
         return self._Address
@@ -4148,7 +4148,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def PostalCode(self):
-        """邮政编码
+        r"""邮政编码
         :rtype: str
         """
         return self._PostalCode
@@ -4159,7 +4159,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Phone(self):
-        """电话，包含区号
+        r"""电话，包含区号
         :rtype: str
         """
         return self._Phone
@@ -4170,7 +4170,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Fax(self):
-        """传真，包含区号
+        r"""传真，包含区号
         :rtype: str
         """
         return self._Fax
@@ -4181,7 +4181,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
     @property
     def Website(self):
-        """网址，如无则不填写
+        r"""网址，如无则不填写
         :rtype: str
         """
         return self._Website
@@ -4210,7 +4210,7 @@ class ChemicalProductInfoManufacturer(AbstractModel):
 
 
 class ChemicalProductInfoName(AbstractModel):
-    """药品名称，包括通用名和商品名
+    r"""药品名称，包括通用名和商品名
 
     """
 
@@ -4239,7 +4239,7 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def Text(self):
-        """文本内容
+        r"""文本内容
         :rtype: str
         """
         return self._Text
@@ -4250,7 +4250,7 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def GenericName(self):
-        """通用名
+        r"""通用名
         :rtype: str
         """
         return self._GenericName
@@ -4263,7 +4263,7 @@ class ChemicalProductInfoName(AbstractModel):
     def BarndName(self):
         warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
 
-        """品牌名
+        r"""品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4277,7 +4277,7 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def EnName(self):
-        """英文名
+        r"""英文名
         :rtype: str
         """
         return self._EnName
@@ -4288,7 +4288,7 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def Pinyin(self):
-        """拼音
+        r"""拼音
         :rtype: str
         """
         return self._Pinyin
@@ -4299,7 +4299,7 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def BrandName(self):
-        """品牌名
+        r"""品牌名
         :rtype: str
         """
         return self._BrandName
@@ -4327,7 +4327,7 @@ class ChemicalProductInfoName(AbstractModel):
 
 
 class ChemicalProductInfoOverdose(AbstractModel):
-    """药物过量
+    r"""药物过量
 
     """
 
@@ -4340,7 +4340,7 @@ class ChemicalProductInfoOverdose(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4363,7 +4363,7 @@ class ChemicalProductInfoOverdose(AbstractModel):
 
 
 class ChemicalProductInfoPackaging(AbstractModel):
-    """包装信息
+    r"""包装信息
 
     """
 
@@ -4376,7 +4376,7 @@ class ChemicalProductInfoPackaging(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4399,7 +4399,7 @@ class ChemicalProductInfoPackaging(AbstractModel):
 
 
 class ChemicalProductInfoPediatricUse(AbstractModel):
-    """儿童用药
+    r"""儿童用药
 
     """
 
@@ -4412,7 +4412,7 @@ class ChemicalProductInfoPediatricUse(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4435,7 +4435,7 @@ class ChemicalProductInfoPediatricUse(AbstractModel):
 
 
 class ChemicalProductInfoPharmacokinetics(AbstractModel):
-    """药代动力学
+    r"""药代动力学
 
     """
 
@@ -4448,7 +4448,7 @@ class ChemicalProductInfoPharmacokinetics(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4471,7 +4471,7 @@ class ChemicalProductInfoPharmacokinetics(AbstractModel):
 
 
 class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
-    """药理毒理
+    r"""药理毒理
 
     """
 
@@ -4484,7 +4484,7 @@ class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4507,7 +4507,7 @@ class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
 
 
 class ChemicalProductInfoPrecautions(AbstractModel):
-    """注意事项
+    r"""注意事项
 
     """
 
@@ -4520,7 +4520,7 @@ class ChemicalProductInfoPrecautions(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4543,7 +4543,7 @@ class ChemicalProductInfoPrecautions(AbstractModel):
 
 
 class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
-    """孕妇及哺乳期妇女用药
+    r"""孕妇及哺乳期妇女用药
 
     """
 
@@ -4556,7 +4556,7 @@ class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4579,7 +4579,7 @@ class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
 
 
 class ChemicalProductInfoStorage(AbstractModel):
-    """储存条件
+    r"""储存条件
 
     """
 
@@ -4592,7 +4592,7 @@ class ChemicalProductInfoStorage(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4615,7 +4615,7 @@ class ChemicalProductInfoStorage(AbstractModel):
 
 
 class ChemicalProductInfoValidityPeriod(AbstractModel):
-    """有效期
+    r"""有效期
 
     """
 
@@ -4628,7 +4628,7 @@ class ChemicalProductInfoValidityPeriod(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -4651,7 +4651,7 @@ class ChemicalProductInfoValidityPeriod(AbstractModel):
 
 
 class ChestCircumferenceItem(AbstractModel):
-    """体检报告-胸围信息
+    r"""体检报告-胸围信息
 
     """
 
@@ -4676,7 +4676,7 @@ class ChestCircumferenceItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -4687,7 +4687,7 @@ class ChestCircumferenceItem(AbstractModel):
 
     @property
     def Item(self):
-        """项目原文
+        r"""项目原文
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -4698,7 +4698,7 @@ class ChestCircumferenceItem(AbstractModel):
 
     @property
     def Result(self):
-        """数值
+        r"""数值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -4709,7 +4709,7 @@ class ChestCircumferenceItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -4720,7 +4720,7 @@ class ChestCircumferenceItem(AbstractModel):
 
     @property
     def State(self):
-        """呼吸状态
+        r"""呼吸状态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._State
@@ -4755,7 +4755,7 @@ class ChestCircumferenceItem(AbstractModel):
 
 
 class ChiefComplaintBlock(AbstractModel):
-    """主诉
+    r"""主诉
 
     """
 
@@ -4777,7 +4777,7 @@ class ChiefComplaintBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -4788,7 +4788,7 @@ class ChiefComplaintBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -4799,7 +4799,7 @@ class ChiefComplaintBlock(AbstractModel):
 
     @property
     def Value(self):
-        """单位输出值
+        r"""单位输出值
         :rtype: str
         """
         return self._Value
@@ -4810,7 +4810,7 @@ class ChiefComplaintBlock(AbstractModel):
 
     @property
     def Detail(self):
-        """主诉详情
+        r"""主诉详情
         :rtype: list of ChiefComplaintDetailBlock
         """
         return self._Detail
@@ -4841,7 +4841,7 @@ class ChiefComplaintBlock(AbstractModel):
 
 
 class ChiefComplaintDetailBlock(AbstractModel):
-    """主诉详情
+    r"""主诉详情
 
     """
 
@@ -4863,7 +4863,7 @@ class ChiefComplaintDetailBlock(AbstractModel):
 
     @property
     def DiseaseName(self):
-        """疾病名称
+        r"""疾病名称
         :rtype: str
         """
         return self._DiseaseName
@@ -4874,7 +4874,7 @@ class ChiefComplaintDetailBlock(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: str
         """
         return self._Part
@@ -4885,7 +4885,7 @@ class ChiefComplaintDetailBlock(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -4896,7 +4896,7 @@ class ChiefComplaintDetailBlock(AbstractModel):
 
     @property
     def TimeType(self):
-        """时间类型
+        r"""时间类型
         :rtype: str
         """
         return self._TimeType
@@ -4922,7 +4922,7 @@ class ChiefComplaintDetailBlock(AbstractModel):
 
 
 class ClinicalStaging(AbstractModel):
-    """临床分期
+    r"""临床分期
 
     """
 
@@ -4941,7 +4941,7 @@ class ClinicalStaging(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -4952,7 +4952,7 @@ class ClinicalStaging(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -4963,7 +4963,7 @@ class ClinicalStaging(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -4988,7 +4988,7 @@ class ClinicalStaging(AbstractModel):
 
 
 class Coord(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -5001,7 +5001,7 @@ class Coord(AbstractModel):
 
     @property
     def Points(self):
-        """坐标
+        r"""坐标
         :rtype: list of Point
         """
         return self._Points
@@ -5029,7 +5029,7 @@ class Coord(AbstractModel):
 
 
 class Coordinate(AbstractModel):
-    """坐标
+    r"""坐标
 
     """
 
@@ -5051,7 +5051,7 @@ class Coordinate(AbstractModel):
 
     @property
     def X(self):
-        """左上角x坐标
+        r"""左上角x坐标
         :rtype: int
         """
         return self._X
@@ -5062,7 +5062,7 @@ class Coordinate(AbstractModel):
 
     @property
     def Y(self):
-        """左上角y坐标
+        r"""左上角y坐标
         :rtype: int
         """
         return self._Y
@@ -5073,7 +5073,7 @@ class Coordinate(AbstractModel):
 
     @property
     def Width(self):
-        """宽度，单位像素
+        r"""宽度，单位像素
         :rtype: int
         """
         return self._Width
@@ -5084,7 +5084,7 @@ class Coordinate(AbstractModel):
 
     @property
     def Height(self):
-        """高度，单位像素
+        r"""高度，单位像素
         :rtype: int
         """
         return self._Height
@@ -5110,7 +5110,7 @@ class Coordinate(AbstractModel):
 
 
 class CovidItem(AbstractModel):
-    """核酸报告结论结构
+    r"""核酸报告结论结构
 
     """
 
@@ -5135,7 +5135,7 @@ class CovidItem(AbstractModel):
 
     @property
     def SampleTime(self):
-        """采样时间
+        r"""采样时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._SampleTime
@@ -5146,7 +5146,7 @@ class CovidItem(AbstractModel):
 
     @property
     def TestTime(self):
-        """检测时间
+        r"""检测时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestTime
@@ -5157,7 +5157,7 @@ class CovidItem(AbstractModel):
 
     @property
     def TestOrganization(self):
-        """检测机构
+        r"""检测机构
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestOrganization
@@ -5168,7 +5168,7 @@ class CovidItem(AbstractModel):
 
     @property
     def TestResult(self):
-        """检测结果
+        r"""检测结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestResult
@@ -5179,7 +5179,7 @@ class CovidItem(AbstractModel):
 
     @property
     def CodeColor(self):
-        """健康码颜色
+        r"""健康码颜色
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._CodeColor
@@ -5216,7 +5216,7 @@ class CovidItem(AbstractModel):
 
 
 class CovidItemsInfo(AbstractModel):
-    """核酸报告结论
+    r"""核酸报告结论
 
     """
 
@@ -5235,7 +5235,7 @@ class CovidItemsInfo(AbstractModel):
 
     @property
     def CovidItems(self):
-        """核酸报告结论
+        r"""核酸报告结论
         :rtype: list of CovidItem
         """
         return self._CovidItems
@@ -5246,7 +5246,7 @@ class CovidItemsInfo(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -5257,7 +5257,7 @@ class CovidItemsInfo(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -5287,7 +5287,7 @@ class CovidItemsInfo(AbstractModel):
 
 
 class DeathDateBlock(AbstractModel):
-    """死亡时间
+    r"""死亡时间
 
     """
 
@@ -5318,7 +5318,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -5329,7 +5329,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -5340,7 +5340,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -5351,7 +5351,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -5362,7 +5362,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -5373,7 +5373,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -5384,7 +5384,7 @@ class DeathDateBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -5413,7 +5413,7 @@ class DeathDateBlock(AbstractModel):
 
 
 class Desc(AbstractModel):
-    """描述
+    r"""描述
 
     """
 
@@ -5435,7 +5435,7 @@ class Desc(AbstractModel):
 
     @property
     def Text(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Text
@@ -5446,7 +5446,7 @@ class Desc(AbstractModel):
 
     @property
     def Organ(self):
-        """器官
+        r"""器官
         :rtype: list of Organ
         """
         return self._Organ
@@ -5457,7 +5457,7 @@ class Desc(AbstractModel):
 
     @property
     def Tuber(self):
-        """结节
+        r"""结节
         :rtype: list of TuberInfo
         """
         return self._Tuber
@@ -5468,7 +5468,7 @@ class Desc(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -5509,7 +5509,7 @@ class Desc(AbstractModel):
 
 
 class DescInfo(AbstractModel):
-    """描述段落
+    r"""描述段落
 
     """
 
@@ -5525,7 +5525,7 @@ class DescInfo(AbstractModel):
 
     @property
     def Text(self):
-        """描述段落文本
+        r"""描述段落文本
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -5536,7 +5536,7 @@ class DescInfo(AbstractModel):
 
     @property
     def Infos(self):
-        """描述段落详情
+        r"""描述段落详情
         :rtype: list of DetailInformation
         """
         return self._Infos
@@ -5567,7 +5567,7 @@ class DescInfo(AbstractModel):
 
 
 class DetailInformation(AbstractModel):
-    """详情
+    r"""详情
 
     """
 
@@ -5619,7 +5619,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -5630,7 +5630,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def TissueSizes(self):
-        """组织大小
+        r"""组织大小
         :rtype: list of Size
         """
         return self._TissueSizes
@@ -5641,7 +5641,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def TuberSizes(self):
-        """结节大小
+        r"""结节大小
         :rtype: list of Size
         """
         return self._TuberSizes
@@ -5652,7 +5652,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def CancerSizes(self):
-        """肿瘤大小
+        r"""肿瘤大小
         :rtype: list of Size
         """
         return self._CancerSizes
@@ -5663,7 +5663,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def HistologyLevel(self):
-        """组织学等级
+        r"""组织学等级
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._HistologyLevel
@@ -5674,7 +5674,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def HistologyType(self):
-        """组织学类型
+        r"""组织学类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyTypeV2`
         """
         return self._HistologyType
@@ -5685,7 +5685,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Invasive(self):
-        """侵犯
+        r"""侵犯
         :rtype: list of InvasiveV2
         """
         return self._Invasive
@@ -5696,7 +5696,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def PTNM(self):
-        """pTNM
+        r"""pTNM
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PTNM`
         """
         return self._PTNM
@@ -5707,7 +5707,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def InfiltrationDepth(self):
-        """浸润深度
+        r"""浸润深度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._InfiltrationDepth
@@ -5718,7 +5718,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def TuberNum(self):
-        """结节数量
+        r"""结节数量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._TuberNum
@@ -5729,7 +5729,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Calcification(self):
-        """钙化
+        r"""钙化
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Calcification
@@ -5740,7 +5740,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Necrosis(self):
-        """坏死
+        r"""坏死
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Necrosis
@@ -5751,7 +5751,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Abnormity(self):
-        """异形
+        r"""异形
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Abnormity
@@ -5762,7 +5762,7 @@ class DetailInformation(AbstractModel):
 
     @property
     def Breaked(self):
-        """断链
+        r"""断链
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Breaked
@@ -5838,7 +5838,7 @@ class DetailInformation(AbstractModel):
 
 
 class DiagCert(AbstractModel):
-    """诊断证明
+    r"""诊断证明
 
     """
 
@@ -5857,7 +5857,7 @@ class DiagCert(AbstractModel):
 
     @property
     def Advice(self):
-        """建议
+        r"""建议
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Advice`
         """
         return self._Advice
@@ -5868,7 +5868,7 @@ class DiagCert(AbstractModel):
 
     @property
     def Diagnosis(self):
-        """诊断
+        r"""诊断
         :rtype: list of DiagCertItem
         """
         return self._Diagnosis
@@ -5879,7 +5879,7 @@ class DiagCert(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -5911,7 +5911,7 @@ class DiagCert(AbstractModel):
 
 
 class DiagCertItem(AbstractModel):
-    """诊断证明项
+    r"""诊断证明项
 
     """
 
@@ -5930,7 +5930,7 @@ class DiagCertItem(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -5941,7 +5941,7 @@ class DiagCertItem(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -5952,7 +5952,7 @@ class DiagCertItem(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: list of str
         """
         return self._Value
@@ -5977,7 +5977,7 @@ class DiagCertItem(AbstractModel):
 
 
 class DischargeConditionBlock(AbstractModel):
-    """出院情况
+    r"""出院情况
 
     """
 
@@ -5999,7 +5999,7 @@ class DischargeConditionBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -6010,7 +6010,7 @@ class DischargeConditionBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -6021,7 +6021,7 @@ class DischargeConditionBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -6032,7 +6032,7 @@ class DischargeConditionBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -6058,7 +6058,7 @@ class DischargeConditionBlock(AbstractModel):
 
 
 class DischargeDiagnosis(AbstractModel):
-    """出入院诊断
+    r"""出入院诊断
 
     """
 
@@ -6083,7 +6083,7 @@ class DischargeDiagnosis(AbstractModel):
 
     @property
     def TableIndex(self):
-        """表格位置
+        r"""表格位置
         :rtype: int
         """
         return self._TableIndex
@@ -6094,7 +6094,7 @@ class DischargeDiagnosis(AbstractModel):
 
     @property
     def OutDiagnosis(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._OutDiagnosis
@@ -6105,7 +6105,7 @@ class DischargeDiagnosis(AbstractModel):
 
     @property
     def DiseaseCode(self):
-        """疾病编码
+        r"""疾病编码
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._DiseaseCode
@@ -6116,7 +6116,7 @@ class DischargeDiagnosis(AbstractModel):
 
     @property
     def InStatus(self):
-        """入院情况
+        r"""入院情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InStatus
@@ -6127,7 +6127,7 @@ class DischargeDiagnosis(AbstractModel):
 
     @property
     def OutStatus(self):
-        """出院情况
+        r"""出院情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._OutStatus
@@ -6162,7 +6162,7 @@ class DischargeDiagnosis(AbstractModel):
 
 
 class DischargeDiagnosisBlock(AbstractModel):
-    """出院诊断
+    r"""出院诊断
 
     """
 
@@ -6184,7 +6184,7 @@ class DischargeDiagnosisBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -6195,7 +6195,7 @@ class DischargeDiagnosisBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -6206,7 +6206,7 @@ class DischargeDiagnosisBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -6217,7 +6217,7 @@ class DischargeDiagnosisBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -6243,7 +6243,7 @@ class DischargeDiagnosisBlock(AbstractModel):
 
 
 class DischargeInfoBlock(AbstractModel):
-    """出入院结构体
+    r"""出入院结构体
 
     """
 
@@ -6271,7 +6271,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def DiseaseHistory(self):
-        """疾病史
+        r"""疾病史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseaseHistoryBlock`
         """
         return self._DiseaseHistory
@@ -6282,7 +6282,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def PersonalHistory(self):
-        """个人史
+        r"""个人史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PersonalHistoryBlock`
         """
         return self._PersonalHistory
@@ -6293,7 +6293,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def DrugHistory(self):
-        """药物史
+        r"""药物史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DrugHistoryBlock`
         """
         return self._DrugHistory
@@ -6304,7 +6304,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def TreatmentRecord(self):
-        """治疗相关
+        r"""治疗相关
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecordBlock`
         """
         return self._TreatmentRecord
@@ -6315,7 +6315,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def ParagraphBlock(self):
-        """文本段落
+        r"""文本段落
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParagraphBlock`
         """
         return self._ParagraphBlock
@@ -6326,7 +6326,7 @@ class DischargeInfoBlock(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -6364,7 +6364,7 @@ class DischargeInfoBlock(AbstractModel):
 
 
 class DiseaseHistoryBlock(AbstractModel):
-    """疾病史
+    r"""疾病史
 
     """
 
@@ -6389,7 +6389,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
     @property
     def MainDiseaseHistory(self):
-        """主要病史
+        r"""主要病史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._MainDiseaseHistory
@@ -6400,7 +6400,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
     @property
     def AllergyHistory(self):
-        """过敏史
+        r"""过敏史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._AllergyHistory
@@ -6411,7 +6411,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
     @property
     def InfectHistory(self):
-        """注射史
+        r"""注射史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._InfectHistory
@@ -6422,7 +6422,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
     @property
     def SurgeryHistory(self):
-        """手术史
+        r"""手术史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistoryBlock`
         """
         return self._SurgeryHistory
@@ -6433,7 +6433,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
     @property
     def TransfusionHistory(self):
-        """输血史
+        r"""输血史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TransfusionHistoryBlock`
         """
         return self._TransfusionHistory
@@ -6470,7 +6470,7 @@ class DiseaseHistoryBlock(AbstractModel):
 
 
 class DiseaseMedicalHistory(AbstractModel):
-    """疾病史
+    r"""疾病史
 
     """
 
@@ -6498,7 +6498,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def MainDiseaseHistory(self):
-        """主病史
+        r"""主病史
         :rtype: str
         """
         return self._MainDiseaseHistory
@@ -6509,7 +6509,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def AllergyHistory(self):
-        """过敏史
+        r"""过敏史
         :rtype: str
         """
         return self._AllergyHistory
@@ -6520,7 +6520,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def InfectHistory(self):
-        """传染疾病史
+        r"""传染疾病史
         :rtype: str
         """
         return self._InfectHistory
@@ -6531,7 +6531,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def OperationHistory(self):
-        """手术史
+        r"""手术史
         :rtype: str
         """
         return self._OperationHistory
@@ -6542,7 +6542,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def TransfusionHistory(self):
-        """输血史
+        r"""输血史
         :rtype: str
         """
         return self._TransfusionHistory
@@ -6553,7 +6553,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
     @property
     def DiseasePresent(self):
-        """现病史
+        r"""现病史
         :rtype: str
         """
         return self._DiseasePresent
@@ -6581,7 +6581,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
 
 class DiseasePresentBlock(AbstractModel):
-    """现病史
+    r"""现病史
 
     """
 
@@ -6603,7 +6603,7 @@ class DiseasePresentBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -6614,7 +6614,7 @@ class DiseasePresentBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -6625,7 +6625,7 @@ class DiseasePresentBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -6636,7 +6636,7 @@ class DiseasePresentBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化
+        r"""归一化
         :rtype: str
         """
         return self._Norm
@@ -6662,7 +6662,7 @@ class DiseasePresentBlock(AbstractModel):
 
 
 class DosageBlock(AbstractModel):
-    """药物用法用量
+    r"""药物用法用量
 
     """
 
@@ -6684,7 +6684,7 @@ class DosageBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -6695,7 +6695,7 @@ class DosageBlock(AbstractModel):
 
     @property
     def SingleMeasurement(self):
-        """单次计量
+        r"""单次计量
         :rtype: str
         """
         return self._SingleMeasurement
@@ -6706,7 +6706,7 @@ class DosageBlock(AbstractModel):
 
     @property
     def Frequency(self):
-        """频次
+        r"""频次
         :rtype: str
         """
         return self._Frequency
@@ -6717,7 +6717,7 @@ class DosageBlock(AbstractModel):
 
     @property
     def DrugDeliveryRoute(self):
-        """给药途径
+        r"""给药途径
         :rtype: str
         """
         return self._DrugDeliveryRoute
@@ -6743,7 +6743,7 @@ class DosageBlock(AbstractModel):
 
 
 class DrugHistoryBlock(AbstractModel):
-    """药物史
+    r"""药物史
 
     """
 
@@ -6765,7 +6765,7 @@ class DrugHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._Name
@@ -6776,7 +6776,7 @@ class DrugHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -6787,7 +6787,7 @@ class DrugHistoryBlock(AbstractModel):
 
     @property
     def DrugList(self):
-        """药物列表
+        r"""药物列表
         :rtype: list of DrugListBlock
         """
         return self._DrugList
@@ -6798,7 +6798,7 @@ class DrugHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Value
@@ -6829,7 +6829,7 @@ class DrugHistoryBlock(AbstractModel):
 
 
 class DrugInstructionObjectRequest(AbstractModel):
-    """DrugInstructionObject请求参数结构体
+    r"""DrugInstructionObject请求参数结构体
 
     """
 
@@ -6842,7 +6842,7 @@ class DrugInstructionObjectRequest(AbstractModel):
 
     @property
     def PdfInfo(self):
-        """药品说明书PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64).
+        r"""药品说明书PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64).
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
         """
         return self._PdfInfo
@@ -6867,7 +6867,7 @@ class DrugInstructionObjectRequest(AbstractModel):
 
 
 class DrugInstructionObjectResponse(AbstractModel):
-    """DrugInstructionObject返回参数结构体
+    r"""DrugInstructionObject返回参数结构体
 
     """
 
@@ -6886,7 +6886,7 @@ class DrugInstructionObjectResponse(AbstractModel):
 
     @property
     def ChemicalProductInfo(self):
-        """药品说明书消息定义
+        r"""药品说明书消息定义
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfo`
         """
         return self._ChemicalProductInfo
@@ -6897,7 +6897,7 @@ class DrugInstructionObjectResponse(AbstractModel):
 
     @property
     def BiologicalProductInfo(self):
-        """预防用生物制品说明书
+        r"""预防用生物制品说明书
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfo`
         """
         return self._BiologicalProductInfo
@@ -6908,7 +6908,7 @@ class DrugInstructionObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6929,7 +6929,7 @@ class DrugInstructionObjectResponse(AbstractModel):
 
 
 class DrugListBlock(AbstractModel):
-    """药物史
+    r"""药物史
 
     """
 
@@ -6951,7 +6951,7 @@ class DrugListBlock(AbstractModel):
 
     @property
     def CommonName(self):
-        """通用名称
+        r"""通用名称
         :rtype: str
         """
         return self._CommonName
@@ -6962,7 +6962,7 @@ class DrugListBlock(AbstractModel):
 
     @property
     def TradeName(self):
-        """商品名称
+        r"""商品名称
         :rtype: str
         """
         return self._TradeName
@@ -6973,7 +6973,7 @@ class DrugListBlock(AbstractModel):
 
     @property
     def Dosage(self):
-        """用法用量
+        r"""用法用量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DosageBlock`
         """
         return self._Dosage
@@ -6984,7 +6984,7 @@ class DrugListBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -7012,7 +7012,7 @@ class DrugListBlock(AbstractModel):
 
 
 class EcgDescription(AbstractModel):
-    """心电图详情
+    r"""心电图详情
 
     """
 
@@ -7082,7 +7082,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def HeartRate(self):
-        """心率
+        r"""心率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._HeartRate
@@ -7093,7 +7093,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def AuricularRate(self):
-        """心房率
+        r"""心房率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._AuricularRate
@@ -7104,7 +7104,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def VentricularRate(self):
-        """心室率
+        r"""心室率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._VentricularRate
@@ -7115,7 +7115,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def Rhythm(self):
-        """节律
+        r"""节律
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rhythm
@@ -7126,7 +7126,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PDuration(self):
-        """P波时间
+        r"""P波时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PDuration
@@ -7137,7 +7137,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def QrsDuration(self):
-        """QRS时间
+        r"""QRS时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QrsDuration
@@ -7148,7 +7148,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def QrsAxis(self):
-        """QRS电轴
+        r"""QRS电轴
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QrsAxis
@@ -7159,7 +7159,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PRInterval(self):
-        """P-R间期
+        r"""P-R间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PRInterval
@@ -7170,7 +7170,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PPInterval(self):
-        """P-P间期
+        r"""P-P间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PPInterval
@@ -7181,7 +7181,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def RRInterval(self):
-        """R-R间期
+        r"""R-R间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._RRInterval
@@ -7192,7 +7192,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PJInterval(self):
-        """P-J间期
+        r"""P-J间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PJInterval
@@ -7203,7 +7203,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def QTInterval(self):
-        """Q-T间期
+        r"""Q-T间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QTInterval
@@ -7214,7 +7214,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def QTCInterval(self):
-        """qt/qtc间期
+        r"""qt/qtc间期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QTCInterval
@@ -7225,7 +7225,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def Rv5SV1Amplitude(self):
-        """RV5/SV1振幅
+        r"""RV5/SV1振幅
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5SV1Amplitude
@@ -7236,7 +7236,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def Rv5AddSV1Amplitude(self):
-        """RV5+SV1振幅
+        r"""RV5+SV1振幅
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5AddSV1Amplitude
@@ -7247,7 +7247,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PRTAxis(self):
-        """PRT电轴
+        r"""PRT电轴
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PRTAxis
@@ -7258,7 +7258,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def Rv5Amplitude(self):
-        """RV5振幅
+        r"""RV5振幅
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5Amplitude
@@ -7269,7 +7269,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def SV1Amplitude(self):
-        """SV1振幅
+        r"""SV1振幅
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._SV1Amplitude
@@ -7280,7 +7280,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def RV6SV2(self):
-        """RV6/SV2
+        r"""RV6/SV2
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._RV6SV2
@@ -7291,7 +7291,7 @@ class EcgDescription(AbstractModel):
 
     @property
     def PQRSTAxis(self):
-        """P/QRS/T电轴
+        r"""P/QRS/T电轴
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PQRSTAxis
@@ -7373,7 +7373,7 @@ class EcgDescription(AbstractModel):
 
 
 class EcgDiagnosis(AbstractModel):
-    """心电图诊断
+    r"""心电图诊断
 
     """
 
@@ -7389,7 +7389,7 @@ class EcgDiagnosis(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -7400,7 +7400,7 @@ class EcgDiagnosis(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: list of str
         """
         return self._Value
@@ -7424,7 +7424,7 @@ class EcgDiagnosis(AbstractModel):
 
 
 class EcgItem(AbstractModel):
-    """心电图指标项
+    r"""心电图指标项
 
     """
 
@@ -7446,7 +7446,7 @@ class EcgItem(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -7457,7 +7457,7 @@ class EcgItem(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -7468,7 +7468,7 @@ class EcgItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -7479,7 +7479,7 @@ class EcgItem(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -7505,7 +7505,7 @@ class EcgItem(AbstractModel):
 
 
 class Elastic(AbstractModel):
-    """弹性质地
+    r"""弹性质地
 
     """
 
@@ -7530,7 +7530,7 @@ class Elastic(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -7541,7 +7541,7 @@ class Elastic(AbstractModel):
 
     @property
     def Score(self):
-        """分数
+        r"""分数
         :rtype: str
         """
         return self._Score
@@ -7552,7 +7552,7 @@ class Elastic(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -7563,7 +7563,7 @@ class Elastic(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -7574,7 +7574,7 @@ class Elastic(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -7601,7 +7601,7 @@ class Elastic(AbstractModel):
 
 
 class Electrocardiogram(AbstractModel):
-    """心电图
+    r"""心电图
 
     """
 
@@ -7620,7 +7620,7 @@ class Electrocardiogram(AbstractModel):
 
     @property
     def EcgDescription(self):
-        """心电图详情
+        r"""心电图详情
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgDescription`
         """
         return self._EcgDescription
@@ -7631,7 +7631,7 @@ class Electrocardiogram(AbstractModel):
 
     @property
     def EcgDiagnosis(self):
-        """心电图诊断
+        r"""心电图诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgDiagnosis`
         """
         return self._EcgDiagnosis
@@ -7642,7 +7642,7 @@ class Electrocardiogram(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -7671,7 +7671,7 @@ class Electrocardiogram(AbstractModel):
 
 
 class Endoscopy(AbstractModel):
-    """内窥镜报告
+    r"""内窥镜报告
 
     """
 
@@ -7693,7 +7693,7 @@ class Endoscopy(AbstractModel):
 
     @property
     def BiopsyPart(self):
-        """活检部位
+        r"""活检部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiopsyPart`
         """
         return self._BiopsyPart
@@ -7704,7 +7704,7 @@ class Endoscopy(AbstractModel):
 
     @property
     def Desc(self):
-        """可见描述
+        r"""可见描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EndoscopyDesc`
         """
         return self._Desc
@@ -7715,7 +7715,7 @@ class Endoscopy(AbstractModel):
 
     @property
     def Summary(self):
-        """结论
+        r"""结论
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Summary`
         """
         return self._Summary
@@ -7726,7 +7726,7 @@ class Endoscopy(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -7758,7 +7758,7 @@ class Endoscopy(AbstractModel):
 
 
 class EndoscopyDesc(AbstractModel):
-    """内窥镜描述
+    r"""内窥镜描述
 
     """
 
@@ -7777,7 +7777,7 @@ class EndoscopyDesc(AbstractModel):
 
     @property
     def Text(self):
-        """描述内容
+        r"""描述内容
         :rtype: str
         """
         return self._Text
@@ -7788,7 +7788,7 @@ class EndoscopyDesc(AbstractModel):
 
     @property
     def Organ(self):
-        """器官
+        r"""器官
         :rtype: list of EndoscopyOrgan
         """
         return self._Organ
@@ -7799,7 +7799,7 @@ class EndoscopyDesc(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -7834,7 +7834,7 @@ class EndoscopyDesc(AbstractModel):
 
 
 class EndoscopyOrgan(AbstractModel):
-    """内窥部位
+    r"""内窥部位
 
     """
 
@@ -7862,7 +7862,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -7873,7 +7873,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -7884,7 +7884,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -7895,7 +7895,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def PartAlias(self):
-        """部位别名
+        r"""部位别名
         :rtype: str
         """
         return self._PartAlias
@@ -7906,7 +7906,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def SymDescList(self):
-        """症状描述
+        r"""症状描述
         :rtype: list of BlockInfo
         """
         return self._SymDescList
@@ -7917,7 +7917,7 @@ class EndoscopyOrgan(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -7957,7 +7957,7 @@ class EndoscopyOrgan(AbstractModel):
 
 
 class Exame(AbstractModel):
-    """体检结论
+    r"""体检结论
 
     """
 
@@ -7973,7 +7973,7 @@ class Exame(AbstractModel):
 
     @property
     def OverView(self):
-        """结论段落
+        r"""结论段落
         :rtype: list of ResultInfo
         """
         return self._OverView
@@ -7984,7 +7984,7 @@ class Exame(AbstractModel):
 
     @property
     def Abnormality(self):
-        """异常与建议段落
+        r"""异常与建议段落
         :rtype: list of ResultInfo
         """
         return self._Abnormality
@@ -8018,7 +8018,7 @@ class Exame(AbstractModel):
 
 
 class EyeChildItem(AbstractModel):
-    """眼科子结构
+    r"""眼科子结构
 
     """
 
@@ -8040,7 +8040,7 @@ class EyeChildItem(AbstractModel):
 
     @property
     def Sph(self):
-        """球镜
+        r"""球镜
         :rtype: list of BaseItem3
         """
         return self._Sph
@@ -8051,7 +8051,7 @@ class EyeChildItem(AbstractModel):
 
     @property
     def Cyl(self):
-        """柱镜
+        r"""柱镜
         :rtype: list of BaseItem3
         """
         return self._Cyl
@@ -8062,7 +8062,7 @@ class EyeChildItem(AbstractModel):
 
     @property
     def Ax(self):
-        """轴位
+        r"""轴位
         :rtype: list of BaseItem3
         """
         return self._Ax
@@ -8073,7 +8073,7 @@ class EyeChildItem(AbstractModel):
 
     @property
     def Se(self):
-        """等效球镜
+        r"""等效球镜
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         return self._Se
@@ -8116,7 +8116,7 @@ class EyeChildItem(AbstractModel):
 
 
 class EyeItem(AbstractModel):
-    """眼科结构体
+    r"""眼科结构体
 
     """
 
@@ -8135,7 +8135,7 @@ class EyeItem(AbstractModel):
 
     @property
     def Left(self):
-        """左眼
+        r"""左眼
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Left
@@ -8146,7 +8146,7 @@ class EyeItem(AbstractModel):
 
     @property
     def Right(self):
-        """右眼
+        r"""右眼
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Right
@@ -8157,7 +8157,7 @@ class EyeItem(AbstractModel):
 
     @property
     def Pd(self):
-        """瞳距
+        r"""瞳距
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         return self._Pd
@@ -8188,7 +8188,7 @@ class EyeItem(AbstractModel):
 
 
 class EyeItemsInfo(AbstractModel):
-    """眼科报告结构体
+    r"""眼科报告结构体
 
     """
 
@@ -8207,7 +8207,7 @@ class EyeItemsInfo(AbstractModel):
 
     @property
     def EyeItems(self):
-        """眼科报告
+        r"""眼科报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeItem`
         """
         return self._EyeItems
@@ -8218,7 +8218,7 @@ class EyeItemsInfo(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -8229,7 +8229,7 @@ class EyeItemsInfo(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -8256,7 +8256,7 @@ class EyeItemsInfo(AbstractModel):
 
 
 class FamilyHistoryBlock(AbstractModel):
-    """家族史
+    r"""家族史
 
     """
 
@@ -8275,7 +8275,7 @@ class FamilyHistoryBlock(AbstractModel):
 
     @property
     def RelativeHistory(self):
-        """家庭成员
+        r"""家庭成员
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelativeHistoryBlock`
         """
         return self._RelativeHistory
@@ -8286,7 +8286,7 @@ class FamilyHistoryBlock(AbstractModel):
 
     @property
     def RelativeCancerHistory(self):
-        """家族肿瘤史
+        r"""家族肿瘤史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelativeCancerHistoryBlock`
         """
         return self._RelativeCancerHistory
@@ -8297,7 +8297,7 @@ class FamilyHistoryBlock(AbstractModel):
 
     @property
     def GeneticHistory(self):
-        """家族遗传史
+        r"""家族遗传史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneticHistoryBlock`
         """
         return self._GeneticHistory
@@ -8328,7 +8328,7 @@ class FamilyHistoryBlock(AbstractModel):
 
 
 class FamilyMedicalHistory(AbstractModel):
-    """家族疾病史
+    r"""家族疾病史
 
     """
 
@@ -8347,7 +8347,7 @@ class FamilyMedicalHistory(AbstractModel):
 
     @property
     def RelativeHistory(self):
-        """家族成员史
+        r"""家族成员史
         :rtype: str
         """
         return self._RelativeHistory
@@ -8358,7 +8358,7 @@ class FamilyMedicalHistory(AbstractModel):
 
     @property
     def RelativeCancerHistory(self):
-        """家族肿瘤史
+        r"""家族肿瘤史
         :rtype: str
         """
         return self._RelativeCancerHistory
@@ -8369,7 +8369,7 @@ class FamilyMedicalHistory(AbstractModel):
 
     @property
     def GeneticHistory(self):
-        """家族遗传史
+        r"""家族遗传史
         :rtype: str
         """
         return self._GeneticHistory
@@ -8394,7 +8394,7 @@ class FamilyMedicalHistory(AbstractModel):
 
 
 class FertilityHistoryBlock(AbstractModel):
-    """婚育史
+    r"""婚育史
 
     """
 
@@ -8425,7 +8425,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -8436,7 +8436,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -8447,7 +8447,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._State
@@ -8458,7 +8458,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -8469,7 +8469,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -8480,7 +8480,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def PregCount(self):
-        """妊娠次数
+        r"""妊娠次数
         :rtype: str
         """
         return self._PregCount
@@ -8491,7 +8491,7 @@ class FertilityHistoryBlock(AbstractModel):
 
     @property
     def ProduCount(self):
-        """生产次数
+        r"""生产次数
         :rtype: str
         """
         return self._ProduCount
@@ -8520,7 +8520,7 @@ class FertilityHistoryBlock(AbstractModel):
 
 
 class Fetus(AbstractModel):
-    """胎儿数据结构
+    r"""胎儿数据结构
 
     """
 
@@ -8611,7 +8611,7 @@ class Fetus(AbstractModel):
 
     @property
     def BPD(self):
-        """双顶径
+        r"""双顶径
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._BPD
@@ -8622,7 +8622,7 @@ class Fetus(AbstractModel):
 
     @property
     def APTD(self):
-        """腹前后径
+        r"""腹前后径
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._APTD
@@ -8633,7 +8633,7 @@ class Fetus(AbstractModel):
 
     @property
     def TTD(self):
-        """腹左右径
+        r"""腹左右径
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._TTD
@@ -8644,7 +8644,7 @@ class Fetus(AbstractModel):
 
     @property
     def CRL(self):
-        """头臀径
+        r"""头臀径
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._CRL
@@ -8655,7 +8655,7 @@ class Fetus(AbstractModel):
 
     @property
     def HC(self):
-        """头围
+        r"""头围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._HC
@@ -8666,7 +8666,7 @@ class Fetus(AbstractModel):
 
     @property
     def AC(self):
-        """腹围
+        r"""腹围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AC
@@ -8677,7 +8677,7 @@ class Fetus(AbstractModel):
 
     @property
     def FL(self):
-        """股骨长
+        r"""股骨长
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FL
@@ -8688,7 +8688,7 @@ class Fetus(AbstractModel):
 
     @property
     def HL(self):
-        """肱骨长
+        r"""肱骨长
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._HL
@@ -8699,7 +8699,7 @@ class Fetus(AbstractModel):
 
     @property
     def Weight(self):
-        """胎儿重量
+        r"""胎儿重量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Weight
@@ -8710,7 +8710,7 @@ class Fetus(AbstractModel):
 
     @property
     def NT(self):
-        """颈项透明层
+        r"""颈项透明层
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._NT
@@ -8721,7 +8721,7 @@ class Fetus(AbstractModel):
 
     @property
     def UmbilicalCord(self):
-        """脐动脉血流
+        r"""脐动脉血流
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._UmbilicalCord
@@ -8732,7 +8732,7 @@ class Fetus(AbstractModel):
 
     @property
     def WaterDeep(self):
-        """羊水最大深度
+        r"""羊水最大深度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._WaterDeep
@@ -8743,7 +8743,7 @@ class Fetus(AbstractModel):
 
     @property
     def WaterQuad(self):
-        """羊水四象限测量
+        r"""羊水四象限测量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._WaterQuad
@@ -8754,7 +8754,7 @@ class Fetus(AbstractModel):
 
     @property
     def AFI(self):
-        """羊水指数
+        r"""羊水指数
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AFI
@@ -8765,7 +8765,7 @@ class Fetus(AbstractModel):
 
     @property
     def FHR(self):
-        """胎心
+        r"""胎心
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FHR
@@ -8776,7 +8776,7 @@ class Fetus(AbstractModel):
 
     @property
     def Movement(self):
-        """胎动
+        r"""胎动
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Movement
@@ -8787,7 +8787,7 @@ class Fetus(AbstractModel):
 
     @property
     def Num(self):
-        """胎数
+        r"""胎数
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Num
@@ -8798,7 +8798,7 @@ class Fetus(AbstractModel):
 
     @property
     def Position(self):
-        """胎位
+        r"""胎位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Position
@@ -8809,7 +8809,7 @@ class Fetus(AbstractModel):
 
     @property
     def Alive(self):
-        """是否活胎
+        r"""是否活胎
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Alive
@@ -8820,7 +8820,7 @@ class Fetus(AbstractModel):
 
     @property
     def PlacentaLocation(self):
-        """胎盘位置
+        r"""胎盘位置
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaLocation
@@ -8831,7 +8831,7 @@ class Fetus(AbstractModel):
 
     @property
     def PlacentaThickness(self):
-        """胎盘厚度
+        r"""胎盘厚度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaThickness
@@ -8842,7 +8842,7 @@ class Fetus(AbstractModel):
 
     @property
     def PlacentaGrade(self):
-        """胎盘成熟度
+        r"""胎盘成熟度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaGrade
@@ -8853,7 +8853,7 @@ class Fetus(AbstractModel):
 
     @property
     def GestationTime(self):
-        """妊娠时间
+        r"""妊娠时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._GestationTime
@@ -8864,7 +8864,7 @@ class Fetus(AbstractModel):
 
     @property
     def GestationPeriod(self):
-        """妊娠周期
+        r"""妊娠周期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._GestationPeriod
@@ -8875,7 +8875,7 @@ class Fetus(AbstractModel):
 
     @property
     def AroundNeck(self):
-        """绕颈
+        r"""绕颈
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AroundNeck
@@ -8886,7 +8886,7 @@ class Fetus(AbstractModel):
 
     @property
     def Sym(self):
-        """病变
+        r"""病变
         :rtype: list of FieldInfo
         """
         return self._Sym
@@ -8897,7 +8897,7 @@ class Fetus(AbstractModel):
 
     @property
     def Src(self):
-        """原文内容
+        r"""原文内容
         :rtype: str
         """
         return self._Src
@@ -9001,7 +9001,7 @@ class Fetus(AbstractModel):
 
 
 class FieldInfo(AbstractModel):
-    """通用块信息
+    r"""通用块信息
 
     """
 
@@ -9023,7 +9023,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -9034,7 +9034,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -9045,7 +9045,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def Nums(self):
-        """数值
+        r"""数值
         :rtype: list of NumValue
         """
         return self._Nums
@@ -9056,7 +9056,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -9087,7 +9087,7 @@ class FieldInfo(AbstractModel):
 
 
 class FirstPage(AbstractModel):
-    """病案首页
+    r"""病案首页
 
     """
 
@@ -9115,7 +9115,7 @@ class FirstPage(AbstractModel):
 
     @property
     def DischargeDiagnosis(self):
-        """出入院诊断
+        r"""出入院诊断
         :rtype: list of DischargeDiagnosis
         """
         return self._DischargeDiagnosis
@@ -9126,7 +9126,7 @@ class FirstPage(AbstractModel):
 
     @property
     def PathologicalDiagnosis(self):
-        """病理诊断
+        r"""病理诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PathologicalDiagnosis
@@ -9137,7 +9137,7 @@ class FirstPage(AbstractModel):
 
     @property
     def ClinicalDiagnosis(self):
-        """临床诊断
+        r"""临床诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ClinicalDiagnosis
@@ -9148,7 +9148,7 @@ class FirstPage(AbstractModel):
 
     @property
     def DamagePoi(self):
-        """受伤中毒的外部原因
+        r"""受伤中毒的外部原因
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfoV2`
         """
         return self._DamagePoi
@@ -9159,7 +9159,7 @@ class FirstPage(AbstractModel):
 
     @property
     def Fp2NdItems(self):
-        """病案首页第二页
+        r"""病案首页第二页
         :rtype: list of Fp2NdItem
         """
         return self._Fp2NdItems
@@ -9170,7 +9170,7 @@ class FirstPage(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -9214,7 +9214,7 @@ class FirstPage(AbstractModel):
 
 
 class Fp2NdItem(AbstractModel):
-    """病案首页第二页
+    r"""病案首页第二页
 
     """
 
@@ -9248,7 +9248,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def Code(self):
-        """手术编码
+        r"""手术编码
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Code
@@ -9259,7 +9259,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def Name(self):
-        """手术名称
+        r"""手术名称
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Name
@@ -9270,7 +9270,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def StartTime(self):
-        """手术开始时间
+        r"""手术开始时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._StartTime
@@ -9281,7 +9281,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def EndTime(self):
-        """手术结束时间
+        r"""手术结束时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._EndTime
@@ -9292,7 +9292,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def Level(self):
-        """手术等级
+        r"""手术等级
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Level
@@ -9303,7 +9303,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def Type(self):
-        """手术类型
+        r"""手术类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Type
@@ -9314,7 +9314,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def IncisionHealingGrade(self):
-        """醉愈合方式
+        r"""醉愈合方式
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._IncisionHealingGrade
@@ -9325,7 +9325,7 @@ class Fp2NdItem(AbstractModel):
 
     @property
     def AnesthesiaMethod(self):
-        """麻醉方法
+        r"""麻醉方法
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._AnesthesiaMethod
@@ -9371,7 +9371,7 @@ class Fp2NdItem(AbstractModel):
 
 
 class GeneralExaminationBaseItem(AbstractModel):
-    """体检报告-一般检测信息
+    r"""体检报告-一般检测信息
 
     """
 
@@ -9390,7 +9390,7 @@ class GeneralExaminationBaseItem(AbstractModel):
 
     @property
     def VitalSign(self):
-        """生命体征
+        r"""生命体征
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSign`
         """
         return self._VitalSign
@@ -9401,7 +9401,7 @@ class GeneralExaminationBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """其他
+        r"""其他
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationOthers`
         """
         return self._Others
@@ -9412,7 +9412,7 @@ class GeneralExaminationBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """小结
+        r"""小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBriefSummary`
         """
         return self._BriefSummary
@@ -9443,7 +9443,7 @@ class GeneralExaminationBaseItem(AbstractModel):
 
 
 class GeneralExaminationBriefSummary(AbstractModel):
-    """体检报告-小结
+    r"""体检报告-小结
 
     """
 
@@ -9456,7 +9456,7 @@ class GeneralExaminationBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """一般检查小结
+        r"""一般检查小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -9481,7 +9481,7 @@ class GeneralExaminationBriefSummary(AbstractModel):
 
 
 class GeneralExaminationOthers(AbstractModel):
-    """体检报告-其他项
+    r"""体检报告-其他项
 
     """
 
@@ -9521,7 +9521,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def Countenance(self):
-        """面容与表情
+        r"""面容与表情
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Countenance
@@ -9532,7 +9532,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def MentalStatus(self):
-        """精神状态
+        r"""精神状态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._MentalStatus
@@ -9543,7 +9543,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def DevelopmentCondition(self):
-        """发育及营养状况
+        r"""发育及营养状况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._DevelopmentCondition
@@ -9554,7 +9554,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def Memory(self):
-        """记忆力
+        r"""记忆力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Memory
@@ -9565,7 +9565,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def Hipline(self):
-        """臀围
+        r"""臀围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Hipline
@@ -9576,7 +9576,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def WaistHipRatio(self):
-        """腰臀比
+        r"""腰臀比
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._WaistHipRatio
@@ -9587,7 +9587,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def Addiction(self):
-        """生活嗜好
+        r"""生活嗜好
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Addiction
@@ -9598,7 +9598,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def AbilityOfLifeADL(self):
-        """生活能力评定
+        r"""生活能力评定
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._AbilityOfLifeADL
@@ -9609,7 +9609,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def Others(self):
-        """一般检查其他
+        r"""一般检查其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -9620,7 +9620,7 @@ class GeneralExaminationOthers(AbstractModel):
 
     @property
     def ChestCircumference(self):
-        """胸围
+        r"""胸围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChestCircumferenceItem`
         """
         return self._ChestCircumference
@@ -9675,7 +9675,7 @@ class GeneralExaminationOthers(AbstractModel):
 
 
 class GeneralExaminationVitalSign(AbstractModel):
-    """生命体征
+    r"""生命体征
 
     """
 
@@ -9715,7 +9715,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def Text(self):
-        """生命体征总体描述
+        r"""生命体征总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Text
@@ -9726,7 +9726,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BodyTemperature(self):
-        """体温
+        r"""体温
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyTemperature
@@ -9737,7 +9737,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def Pulse(self):
-        """脉率
+        r"""脉率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Pulse
@@ -9748,7 +9748,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def HeartRate(self):
-        """心率
+        r"""心率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._HeartRate
@@ -9759,7 +9759,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BreathingRate(self):
-        """呼吸频率
+        r"""呼吸频率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BreathingRate
@@ -9770,7 +9770,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BodyHeight(self):
-        """身高
+        r"""身高
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyHeight
@@ -9781,7 +9781,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BodyWeight(self):
-        """体重
+        r"""体重
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyWeight
@@ -9792,7 +9792,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BodyMassIndex(self):
-        """体质指数
+        r"""体质指数
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyMassIndex
@@ -9803,7 +9803,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def Waistline(self):
-        """腰围
+        r"""腰围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Waistline
@@ -9814,7 +9814,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
     @property
     def BloodPressure(self):
-        """血压
+        r"""血压
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSignBloodPressure`
         """
         return self._BloodPressure
@@ -9866,7 +9866,7 @@ class GeneralExaminationVitalSign(AbstractModel):
 
 
 class GeneralExaminationVitalSignBloodPressure(AbstractModel):
-    """血压
+    r"""血压
 
     """
 
@@ -9888,7 +9888,7 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
 
     @property
     def Text(self):
-        """血压
+        r"""血压
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BloodPressureItem`
         """
         return self._Text
@@ -9899,7 +9899,7 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
 
     @property
     def SystolicDiastolicPressure(self):
-        """收缩压/舒张压
+        r"""收缩压/舒张压
         :rtype: list of BloodPressureItem
         """
         return self._SystolicDiastolicPressure
@@ -9910,7 +9910,7 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
 
     @property
     def SystolicPressure(self):
-        """收缩压
+        r"""收缩压
         :rtype: list of BloodPressureItem
         """
         return self._SystolicPressure
@@ -9921,7 +9921,7 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
 
     @property
     def DiastolicPressure(self):
-        """舒张压
+        r"""舒张压
         :rtype: list of BloodPressureItem
         """
         return self._DiastolicPressure
@@ -9964,7 +9964,7 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
 
 
 class GeneticHistoryBlock(AbstractModel):
-    """家族遗传史
+    r"""家族遗传史
 
     """
 
@@ -9986,7 +9986,7 @@ class GeneticHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -9997,7 +9997,7 @@ class GeneticHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -10008,7 +10008,7 @@ class GeneticHistoryBlock(AbstractModel):
 
     @property
     def GeneticList(self):
-        """遗传列表
+        r"""遗传列表
         :rtype: str
         """
         return self._GeneticList
@@ -10019,7 +10019,7 @@ class GeneticHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -10045,7 +10045,7 @@ class GeneticHistoryBlock(AbstractModel):
 
 
 class GynaecologyAdnexal(AbstractModel):
-    """体检报告-妇科-子宫附件
+    r"""体检报告-妇科-子宫附件
 
     """
 
@@ -10058,7 +10058,7 @@ class GynaecologyAdnexal(AbstractModel):
 
     @property
     def Text(self):
-        """子宫附件总体描述
+        r"""子宫附件总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10083,7 +10083,7 @@ class GynaecologyAdnexal(AbstractModel):
 
 
 class GynaecologyBaseItem(AbstractModel):
-    """体检报告-妇科
+    r"""体检报告-妇科
 
     """
 
@@ -10120,7 +10120,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Vulva(self):
-        """外阴
+        r"""外阴
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVulva`
         """
         return self._Vulva
@@ -10131,7 +10131,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Vagina(self):
-        """阴道
+        r"""阴道
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVagina`
         """
         return self._Vagina
@@ -10142,7 +10142,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Cervix(self):
-        """子宫颈
+        r"""子宫颈
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyCervix`
         """
         return self._Cervix
@@ -10153,7 +10153,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Uterus(self):
-        """子宫
+        r"""子宫
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyUterus`
         """
         return self._Uterus
@@ -10164,7 +10164,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Adnexal(self):
-        """子宫附件
+        r"""子宫附件
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyAdnexal`
         """
         return self._Adnexal
@@ -10175,7 +10175,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def PelvicCavity(self):
-        """盆腔
+        r"""盆腔
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyPelvicCavity`
         """
         return self._PelvicCavity
@@ -10186,7 +10186,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """妇科其他
+        r"""妇科其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -10197,7 +10197,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def MenstrualHistory(self):
-        """月经史
+        r"""月经史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyMenstrualHistory`
         """
         return self._MenstrualHistory
@@ -10208,7 +10208,7 @@ class GynaecologyBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """小结
+        r"""小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBriefSummary`
         """
         return self._BriefSummary
@@ -10260,7 +10260,7 @@ class GynaecologyBaseItem(AbstractModel):
 
 
 class GynaecologyBriefSummary(AbstractModel):
-    """体检报告-妇科-小结
+    r"""体检报告-妇科-小结
 
     """
 
@@ -10273,7 +10273,7 @@ class GynaecologyBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """小结
+        r"""小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10298,7 +10298,7 @@ class GynaecologyBriefSummary(AbstractModel):
 
 
 class GynaecologyCervix(AbstractModel):
-    """体检报告-妇科-子宫颈
+    r"""体检报告-妇科-子宫颈
 
     """
 
@@ -10311,7 +10311,7 @@ class GynaecologyCervix(AbstractModel):
 
     @property
     def Text(self):
-        """子宫颈总体描述
+        r"""子宫颈总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10336,7 +10336,7 @@ class GynaecologyCervix(AbstractModel):
 
 
 class GynaecologyMenstrualHistory(AbstractModel):
-    """体检报告-妇科-月经史
+    r"""体检报告-妇科-月经史
 
     """
 
@@ -10349,7 +10349,7 @@ class GynaecologyMenstrualHistory(AbstractModel):
 
     @property
     def Text(self):
-        """妇科月经史总体描述
+        r"""妇科月经史总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10374,7 +10374,7 @@ class GynaecologyMenstrualHistory(AbstractModel):
 
 
 class GynaecologyPelvicCavity(AbstractModel):
-    """体检报告-妇科-盆腔
+    r"""体检报告-妇科-盆腔
 
     """
 
@@ -10387,7 +10387,7 @@ class GynaecologyPelvicCavity(AbstractModel):
 
     @property
     def Text(self):
-        """盆腔总体描述
+        r"""盆腔总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10412,7 +10412,7 @@ class GynaecologyPelvicCavity(AbstractModel):
 
 
 class GynaecologyUterus(AbstractModel):
-    """体检报告-妇科-子宫
+    r"""体检报告-妇科-子宫
 
     """
 
@@ -10425,7 +10425,7 @@ class GynaecologyUterus(AbstractModel):
 
     @property
     def Text(self):
-        """子宫总体描述
+        r"""子宫总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10450,7 +10450,7 @@ class GynaecologyUterus(AbstractModel):
 
 
 class GynaecologyVagina(AbstractModel):
-    """体检报告-妇科-阴道
+    r"""体检报告-妇科-阴道
 
     """
 
@@ -10463,7 +10463,7 @@ class GynaecologyVagina(AbstractModel):
 
     @property
     def Text(self):
-        """阴道总体描述
+        r"""阴道总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10488,7 +10488,7 @@ class GynaecologyVagina(AbstractModel):
 
 
 class GynaecologyVulva(AbstractModel):
-    """体检报告-妇科-外阴
+    r"""体检报告-妇科-外阴
 
     """
 
@@ -10501,7 +10501,7 @@ class GynaecologyVulva(AbstractModel):
 
     @property
     def Text(self):
-        """外阴总体描述
+        r"""外阴总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10526,7 +10526,7 @@ class GynaecologyVulva(AbstractModel):
 
 
 class HandleParam(AbstractModel):
-    """图片处理参数
+    r"""图片处理参数
 
     """
 
@@ -10560,7 +10560,7 @@ class HandleParam(AbstractModel):
 
     @property
     def OcrEngineType(self):
-        """ocr引擎
+        r"""ocr引擎
         :rtype: int
         """
         return self._OcrEngineType
@@ -10571,7 +10571,7 @@ class HandleParam(AbstractModel):
 
     @property
     def IsReturnText(self):
-        """是否返回分行文本内容
+        r"""是否返回分行文本内容
         :rtype: bool
         """
         return self._IsReturnText
@@ -10582,7 +10582,7 @@ class HandleParam(AbstractModel):
 
     @property
     def RotateTheAngle(self):
-        """顺时针旋转角度
+        r"""顺时针旋转角度
         :rtype: float
         """
         return self._RotateTheAngle
@@ -10593,7 +10593,7 @@ class HandleParam(AbstractModel):
 
     @property
     def AutoFitDirection(self):
-        """自动适配方向,仅支持优图引擎
+        r"""自动适配方向,仅支持优图引擎
         :rtype: bool
         """
         return self._AutoFitDirection
@@ -10604,7 +10604,7 @@ class HandleParam(AbstractModel):
 
     @property
     def AutoOptimizeCoordinate(self):
-        """坐标优化
+        r"""坐标优化
         :rtype: bool
         """
         return self._AutoOptimizeCoordinate
@@ -10615,7 +10615,7 @@ class HandleParam(AbstractModel):
 
     @property
     def IsScale(self):
-        """是否开启图片压缩，开启时imageOriginalSize必须正确填写
+        r"""是否开启图片压缩，开启时imageOriginalSize必须正确填写
         :rtype: bool
         """
         return self._IsScale
@@ -10626,7 +10626,7 @@ class HandleParam(AbstractModel):
 
     @property
     def ImageOriginalSize(self):
-        """原始图片大小(单位byes),用来判断该图片是否需要压缩
+        r"""原始图片大小(单位byes),用来判断该图片是否需要压缩
         :rtype: int
         """
         return self._ImageOriginalSize
@@ -10637,7 +10637,7 @@ class HandleParam(AbstractModel):
 
     @property
     def ScaleTargetSize(self):
-        """采用后台默认值(2048Kb)
+        r"""采用后台默认值(2048Kb)
         :rtype: int
         """
         return self._ScaleTargetSize
@@ -10667,7 +10667,7 @@ class HandleParam(AbstractModel):
 
 
 class HearingItem(AbstractModel):
-    """听力信息
+    r"""听力信息
 
     """
 
@@ -10689,7 +10689,7 @@ class HearingItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -10700,7 +10700,7 @@ class HearingItem(AbstractModel):
 
     @property
     def Item(self):
-        """项目原文
+        r"""项目原文
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -10711,7 +10711,7 @@ class HearingItem(AbstractModel):
 
     @property
     def Location(self):
-        """方位
+        r"""方位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Location
@@ -10722,7 +10722,7 @@ class HearingItem(AbstractModel):
 
     @property
     def Result(self):
-        """描述
+        r"""描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -10754,7 +10754,7 @@ class HearingItem(AbstractModel):
 
 
 class HistologyClass(AbstractModel):
-    """组织学类
+    r"""组织学类
 
     """
 
@@ -10779,7 +10779,7 @@ class HistologyClass(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -10790,7 +10790,7 @@ class HistologyClass(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -10801,7 +10801,7 @@ class HistologyClass(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -10812,7 +10812,7 @@ class HistologyClass(AbstractModel):
 
     @property
     def Value(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Value
@@ -10823,7 +10823,7 @@ class HistologyClass(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -10855,7 +10855,7 @@ class HistologyClass(AbstractModel):
 
 
 class HistologyLevel(AbstractModel):
-    """组织学等级
+    r"""组织学等级
 
     """
 
@@ -10874,7 +10874,7 @@ class HistologyLevel(AbstractModel):
 
     @property
     def Grade(self):
-        """等级
+        r"""等级
         :rtype: str
         """
         return self._Grade
@@ -10885,7 +10885,7 @@ class HistologyLevel(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -10896,7 +10896,7 @@ class HistologyLevel(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -10921,7 +10921,7 @@ class HistologyLevel(AbstractModel):
 
 
 class HistologyType(AbstractModel):
-    """组织学类型
+    r"""组织学类型
 
     """
 
@@ -10943,7 +10943,7 @@ class HistologyType(AbstractModel):
 
     @property
     def Infiltration(self):
-        """浸润
+        r"""浸润
         :rtype: str
         """
         return self._Infiltration
@@ -10954,7 +10954,7 @@ class HistologyType(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -10965,7 +10965,7 @@ class HistologyType(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -10976,7 +10976,7 @@ class HistologyType(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -11002,7 +11002,7 @@ class HistologyType(AbstractModel):
 
 
 class HistologyTypeV2(AbstractModel):
-    """组织学类型
+    r"""组织学类型
 
     """
 
@@ -11030,7 +11030,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Infiltration(self):
-        """浸润
+        r"""浸润
         :rtype: str
         """
         return self._Infiltration
@@ -11041,7 +11041,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -11052,7 +11052,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -11063,7 +11063,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Type(self):
-        """归一化后的组织学类型
+        r"""归一化后的组织学类型
         :rtype: str
         """
         return self._Type
@@ -11074,7 +11074,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -11085,7 +11085,7 @@ class HistologyTypeV2(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -11118,7 +11118,7 @@ class HistologyTypeV2(AbstractModel):
 
 
 class Hospitalization(AbstractModel):
-    """出入院信息
+    r"""出入院信息
 
     """
 
@@ -11159,7 +11159,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def AdmissionTime(self):
-        """入院时间
+        r"""入院时间
         :rtype: str
         """
         return self._AdmissionTime
@@ -11170,7 +11170,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def DischargeTime(self):
-        """出院时间
+        r"""出院时间
         :rtype: str
         """
         return self._DischargeTime
@@ -11181,7 +11181,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def AdmissionDays(self):
-        """住院天数
+        r"""住院天数
         :rtype: str
         """
         return self._AdmissionDays
@@ -11194,7 +11194,7 @@ class Hospitalization(AbstractModel):
     def AdmissionDignosis(self):
         warnings.warn("parameter `AdmissionDignosis` is deprecated", DeprecationWarning) 
 
-        """入院诊断
+        r"""入院诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11208,7 +11208,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def AdmissionCondition(self):
-        """入院情况
+        r"""入院情况
         :rtype: str
         """
         return self._AdmissionCondition
@@ -11219,7 +11219,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def DiagnosisTreatment(self):
-        """诊疗经过
+        r"""诊疗经过
         :rtype: str
         """
         return self._DiagnosisTreatment
@@ -11230,7 +11230,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def DischargeDiagnosis(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: str
         """
         return self._DischargeDiagnosis
@@ -11241,7 +11241,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def DischargeInstruction(self):
-        """出院医嘱
+        r"""出院医嘱
         :rtype: str
         """
         return self._DischargeInstruction
@@ -11252,7 +11252,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def AdmissionDiagnosis(self):
-        """入院诊断
+        r"""入院诊断
         :rtype: str
         """
         return self._AdmissionDiagnosis
@@ -11263,7 +11263,7 @@ class Hospitalization(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -11295,7 +11295,7 @@ class Hospitalization(AbstractModel):
 
 
 class IHCBlock(AbstractModel):
-    """IHC块
+    r"""IHC块
 
     """
 
@@ -11320,7 +11320,7 @@ class IHCBlock(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -11331,7 +11331,7 @@ class IHCBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -11342,7 +11342,7 @@ class IHCBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -11353,7 +11353,7 @@ class IHCBlock(AbstractModel):
 
     @property
     def Value(self):
-        """具体值
+        r"""具体值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueBlock`
         """
         return self._Value
@@ -11364,7 +11364,7 @@ class IHCBlock(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -11398,7 +11398,7 @@ class IHCBlock(AbstractModel):
 
 
 class IHCInfo(AbstractModel):
-    """Ihc信息
+    r"""Ihc信息
 
     """
 
@@ -11420,7 +11420,7 @@ class IHCInfo(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -11431,7 +11431,7 @@ class IHCInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -11442,7 +11442,7 @@ class IHCInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -11453,7 +11453,7 @@ class IHCInfo(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Value`
         """
         return self._Value
@@ -11481,7 +11481,7 @@ class IHCInfo(AbstractModel):
 
 
 class IHCV2(AbstractModel):
-    """IHC
+    r"""IHC
 
     """
 
@@ -11506,7 +11506,7 @@ class IHCV2(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -11517,7 +11517,7 @@ class IHCV2(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -11528,7 +11528,7 @@ class IHCV2(AbstractModel):
 
     @property
     def Name(self):
-        """ihc归一化
+        r"""ihc归一化
         :rtype: str
         """
         return self._Name
@@ -11539,7 +11539,7 @@ class IHCV2(AbstractModel):
 
     @property
     def Value(self):
-        """ihc详情
+        r"""ihc详情
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Value`
         """
         return self._Value
@@ -11550,7 +11550,7 @@ class IHCV2(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -11584,7 +11584,7 @@ class IHCV2(AbstractModel):
 
 
 class ImageInfo(AbstractModel):
-    """图片信息
+    r"""图片信息
 
     """
 
@@ -11603,7 +11603,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Id(self):
-        """图片id
+        r"""图片id
         :rtype: int
         """
         return self._Id
@@ -11614,7 +11614,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Url(self):
-        """图片url(暂不支持传图片Url信息,请使用Base64字段传递图片的Base64编码)
+        r"""图片url(暂不支持传图片Url信息,请使用Base64字段传递图片的Base64编码)
         :rtype: str
         """
         return self._Url
@@ -11625,7 +11625,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Base64(self):
-        """图片base64编码
+        r"""图片base64编码
         :rtype: str
         """
         return self._Base64
@@ -11650,7 +11650,7 @@ class ImageInfo(AbstractModel):
 
 
 class ImageMaskAsyncGetResultRequest(AbstractModel):
-    """ImageMaskAsyncGetResult请求参数结构体
+    r"""ImageMaskAsyncGetResult请求参数结构体
 
     """
 
@@ -11665,7 +11665,7 @@ class ImageMaskAsyncGetResultRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """异步任务ID
+        r"""异步任务ID
 1.因上传图片TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
 2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :rtype: str
@@ -11690,7 +11690,7 @@ class ImageMaskAsyncGetResultRequest(AbstractModel):
 
 
 class ImageMaskAsyncGetResultResponse(AbstractModel):
-    """ImageMaskAsyncGetResult返回参数结构体
+    r"""ImageMaskAsyncGetResult返回参数结构体
 
     """
 
@@ -11706,7 +11706,7 @@ class ImageMaskAsyncGetResultResponse(AbstractModel):
 
     @property
     def MaskedImage(self):
-        """脱敏后图片的base64编码
+        r"""脱敏后图片的base64编码
         :rtype: str
         """
         return self._MaskedImage
@@ -11717,7 +11717,7 @@ class ImageMaskAsyncGetResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11733,7 +11733,7 @@ class ImageMaskAsyncGetResultResponse(AbstractModel):
 
 
 class ImageMaskAsyncRequest(AbstractModel):
-    """ImageMaskAsync请求参数结构体
+    r"""ImageMaskAsync请求参数结构体
 
     """
 
@@ -11752,7 +11752,7 @@ class ImageMaskAsyncRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片信息,目前只支持传图片base64
+        r"""图片信息,目前只支持传图片base64
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
         """
         return self._Image
@@ -11763,7 +11763,7 @@ class ImageMaskAsyncRequest(AbstractModel):
 
     @property
     def MaskFlag(self):
-        """图片脱敏选项, 不传默认都脱敏
+        r"""图片脱敏选项, 不传默认都脱敏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
         """
         return self._MaskFlag
@@ -11774,7 +11774,7 @@ class ImageMaskAsyncRequest(AbstractModel):
 
     @property
     def AutoFixImageDirection(self):
-        """是否自动矫正图片方向
+        r"""是否自动矫正图片方向
         :rtype: bool
         """
         return self._AutoFixImageDirection
@@ -11803,7 +11803,7 @@ class ImageMaskAsyncRequest(AbstractModel):
 
 
 class ImageMaskAsyncResponse(AbstractModel):
-    """ImageMaskAsync返回参数结构体
+    r"""ImageMaskAsync返回参数结构体
 
     """
 
@@ -11821,7 +11821,7 @@ class ImageMaskAsyncResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """加密任务ID
+        r"""加密任务ID
 1.因此TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
 2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :rtype: str
@@ -11834,7 +11834,7 @@ class ImageMaskAsyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11850,7 +11850,7 @@ class ImageMaskAsyncResponse(AbstractModel):
 
 
 class ImageMaskFlags(AbstractModel):
-    """图片脱敏选项
+    r"""图片脱敏选项
     不填默认敏感信息都脱敏
 
     """
@@ -11873,7 +11873,7 @@ class ImageMaskFlags(AbstractModel):
 
     @property
     def HospitalFlag(self):
-        """是否对医院信息进行脱敏
+        r"""是否对医院信息进行脱敏
         :rtype: bool
         """
         return self._HospitalFlag
@@ -11884,7 +11884,7 @@ class ImageMaskFlags(AbstractModel):
 
     @property
     def DoctorFlag(self):
-        """是否对医生信息进行脱敏
+        r"""是否对医生信息进行脱敏
         :rtype: bool
         """
         return self._DoctorFlag
@@ -11895,7 +11895,7 @@ class ImageMaskFlags(AbstractModel):
 
     @property
     def PatientFlag(self):
-        """是否对患者信息进行脱敏
+        r"""是否对患者信息进行脱敏
         :rtype: bool
         """
         return self._PatientFlag
@@ -11906,7 +11906,7 @@ class ImageMaskFlags(AbstractModel):
 
     @property
     def BarFlag(self):
-        """是否对二维码信息进行脱敏
+        r"""是否对二维码信息进行脱敏
         :rtype: bool
         """
         return self._BarFlag
@@ -11932,7 +11932,7 @@ class ImageMaskFlags(AbstractModel):
 
 
 class ImageMaskRequest(AbstractModel):
-    """ImageMask请求参数结构体
+    r"""ImageMask请求参数结构体
 
     """
 
@@ -11951,7 +11951,7 @@ class ImageMaskRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片信息,目前只支持传图片base64
+        r"""图片信息,目前只支持传图片base64
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
         """
         return self._Image
@@ -11962,7 +11962,7 @@ class ImageMaskRequest(AbstractModel):
 
     @property
     def MaskFlag(self):
-        """图片脱敏选项, 不传默认都脱敏
+        r"""图片脱敏选项, 不传默认都脱敏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
         """
         return self._MaskFlag
@@ -11973,7 +11973,7 @@ class ImageMaskRequest(AbstractModel):
 
     @property
     def AutoFixImageDirection(self):
-        """是否自动矫正图片方向
+        r"""是否自动矫正图片方向
         :rtype: bool
         """
         return self._AutoFixImageDirection
@@ -12002,7 +12002,7 @@ class ImageMaskRequest(AbstractModel):
 
 
 class ImageMaskResponse(AbstractModel):
-    """ImageMask返回参数结构体
+    r"""ImageMask返回参数结构体
 
     """
 
@@ -12018,7 +12018,7 @@ class ImageMaskResponse(AbstractModel):
 
     @property
     def MaskedImage(self):
-        """脱敏后图片的Base64信息
+        r"""脱敏后图片的Base64信息
         :rtype: str
         """
         return self._MaskedImage
@@ -12029,7 +12029,7 @@ class ImageMaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12045,7 +12045,7 @@ class ImageMaskResponse(AbstractModel):
 
 
 class ImageToClassRequest(AbstractModel):
-    """ImageToClass请求参数结构体
+    r"""ImageToClass请求参数结构体
 
     """
 
@@ -12067,7 +12067,7 @@ class ImageToClassRequest(AbstractModel):
 
     @property
     def ImageInfoList(self):
-        """图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
+        r"""图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
         :rtype: list of ImageInfo
         """
         return self._ImageInfoList
@@ -12078,7 +12078,7 @@ class ImageToClassRequest(AbstractModel):
 
     @property
     def HandleParam(self):
-        """图片处理参数
+        r"""图片处理参数
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
         """
         return self._HandleParam
@@ -12089,7 +12089,7 @@ class ImageToClassRequest(AbstractModel):
 
     @property
     def Type(self):
-        """不填，默认为0
+        r"""不填，默认为0
         :rtype: int
         """
         return self._Type
@@ -12100,7 +12100,7 @@ class ImageToClassRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
+        r"""后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
         :rtype: int
         """
         return self._UserType
@@ -12133,7 +12133,7 @@ class ImageToClassRequest(AbstractModel):
 
 
 class ImageToClassResponse(AbstractModel):
-    """ImageToClass返回参数结构体
+    r"""ImageToClass返回参数结构体
 
     """
 
@@ -12149,7 +12149,7 @@ class ImageToClassResponse(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """分类结果
+        r"""分类结果
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -12160,7 +12160,7 @@ class ImageToClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12181,7 +12181,7 @@ class ImageToClassResponse(AbstractModel):
 
 
 class ImageToObjectRequest(AbstractModel):
-    """ImageToObject请求参数结构体
+    r"""ImageToObject请求参数结构体
 
     """
 
@@ -12216,7 +12216,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        r"""报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :rtype: int
         """
         return self._Type
@@ -12227,7 +12227,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def IsUsedClassify(self):
-        """是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
+        r"""是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :rtype: bool
         """
@@ -12239,7 +12239,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def HandleParam(self):
-        """图片处理参数
+        r"""图片处理参数
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
         """
         return self._HandleParam
@@ -12250,7 +12250,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def ImageInfoList(self):
-        """图片列表，目前只支持传入一张图片，需要是图片base64编码，图片url暂不支持
+        r"""图片列表，目前只支持传入一张图片，需要是图片base64编码，图片url暂不支持
         :rtype: list of ImageInfo
         """
         return self._ImageInfoList
@@ -12261,7 +12261,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
+        r"""后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
         :rtype: int
         """
         return self._UserType
@@ -12272,7 +12272,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def ReportTypeVersion(self):
-        """可选。用于指定不同报告使用的结构化引擎版本，不同版本返回的JSON 数据结果不兼容。若不指定版本号，就默认用旧的版本号。
+        r"""可选。用于指定不同报告使用的结构化引擎版本，不同版本返回的JSON 数据结果不兼容。若不指定版本号，就默认用旧的版本号。
 （1）检验报告 11，默认使用 V2，最高支持 V3。
 （2）病理报告 15，默认使用 V1，最高支持 V2。
 （3）入院记录29、出院记录 28、病历记录 216、病程记录 217、门诊记录 210，默认使用 V1，最高支持 V2。
@@ -12286,7 +12286,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def OcrInfoList(self):
-        """可选。 图片OCR信息列表，每一个元素是一张图片的OCR结果。适用于不想将医疗报告图片传入腾讯云的客户，客户可对图片OCR信息中的敏感信息去除之后再传入。与 ImageInfoList 二选一，同时存在则使用OcrInfoList
+        r"""可选。 图片OCR信息列表，每一个元素是一张图片的OCR结果。适用于不想将医疗报告图片传入腾讯云的客户，客户可对图片OCR信息中的敏感信息去除之后再传入。与 ImageInfoList 二选一，同时存在则使用OcrInfoList
         :rtype: list of OcrInfo
         """
         return self._OcrInfoList
@@ -12332,7 +12332,7 @@ class ImageToObjectRequest(AbstractModel):
 
 
 class ImageToObjectResponse(AbstractModel):
-    """ImageToObject返回参数结构体
+    r"""ImageToObject返回参数结构体
 
     """
 
@@ -12351,7 +12351,7 @@ class ImageToObjectResponse(AbstractModel):
 
     @property
     def Template(self):
-        """报告结构化结果
+        r"""报告结构化结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Template`
         """
         return self._Template
@@ -12362,7 +12362,7 @@ class ImageToObjectResponse(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """多级分类结果
+        r"""多级分类结果
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -12373,7 +12373,7 @@ class ImageToObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12397,7 +12397,7 @@ class ImageToObjectResponse(AbstractModel):
 
 
 class ImmunohistochemistryBlock(AbstractModel):
-    """免疫组化
+    r"""免疫组化
 
     """
 
@@ -12416,7 +12416,7 @@ class ImmunohistochemistryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -12427,7 +12427,7 @@ class ImmunohistochemistryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -12438,7 +12438,7 @@ class ImmunohistochemistryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """免疫组化详情
+        r"""免疫组化详情
         :rtype: list of IHCBlock
         """
         return self._Value
@@ -12468,7 +12468,7 @@ class ImmunohistochemistryBlock(AbstractModel):
 
 
 class Indicator(AbstractModel):
-    """检验报告
+    r"""检验报告
 
     """
 
@@ -12487,7 +12487,7 @@ class Indicator(AbstractModel):
 
     @property
     def Indicators(self):
-        """检验指标项
+        r"""检验指标项
         :rtype: list of IndicatorItem
         """
         return self._Indicators
@@ -12498,7 +12498,7 @@ class Indicator(AbstractModel):
 
     @property
     def BlockTitle(self):
-        """检验报告块标题
+        r"""检验报告块标题
         :rtype: list of BlockTitle
         """
         return self._BlockTitle
@@ -12509,7 +12509,7 @@ class Indicator(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -12544,7 +12544,7 @@ class Indicator(AbstractModel):
 
 
 class IndicatorItem(AbstractModel):
-    """检验指标项
+    r"""检验指标项
 
     """
 
@@ -12599,7 +12599,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Code(self):
-        """英文缩写
+        r"""英文缩写
         :rtype: str
         """
         return self._Code
@@ -12610,7 +12610,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Scode(self):
-        """标准缩写
+        r"""标准缩写
         :rtype: str
         """
         return self._Scode
@@ -12621,7 +12621,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -12632,7 +12632,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Sname(self):
-        """标准名
+        r"""标准名
         :rtype: str
         """
         return self._Sname
@@ -12643,7 +12643,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Result(self):
-        """结果
+        r"""结果
         :rtype: str
         """
         return self._Result
@@ -12654,7 +12654,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -12665,7 +12665,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Range(self):
-        """参考范围
+        r"""参考范围
         :rtype: str
         """
         return self._Range
@@ -12676,7 +12676,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Arrow(self):
-        """上下箭头
+        r"""上下箭头
         :rtype: str
         """
         return self._Arrow
@@ -12687,7 +12687,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Normal(self):
-        """是否正常
+        r"""是否正常
         :rtype: bool
         """
         return self._Normal
@@ -12698,7 +12698,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def ItemString(self):
-        """项目原文
+        r"""项目原文
         :rtype: str
         """
         return self._ItemString
@@ -12709,7 +12709,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Id(self):
-        """指标项ID
+        r"""指标项ID
         :rtype: int
         """
         return self._Id
@@ -12720,7 +12720,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Coords(self):
-        """指标项坐标位置
+        r"""指标项坐标位置
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         """
         return self._Coords
@@ -12731,7 +12731,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def InferNormal(self):
-        """推测结果是否异常
+        r"""推测结果是否异常
         :rtype: str
         """
         return self._InferNormal
@@ -12742,7 +12742,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Sample(self):
-        """标本
+        r"""标本
         :rtype: str
         """
         return self._Sample
@@ -12753,7 +12753,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Method(self):
-        """检测方法
+        r"""检测方法
         :rtype: str
         """
         return self._Method
@@ -12792,7 +12792,7 @@ class IndicatorItem(AbstractModel):
 
 
 class IndicatorItemV2(AbstractModel):
-    """检验指标项结构v2
+    r"""检验指标项结构v2
 
     """
 
@@ -12835,7 +12835,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Item(self):
-        """项目名称
+        r"""项目名称
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Item
@@ -12846,7 +12846,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Code(self):
-        """英文编码
+        r"""英文编码
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Code
@@ -12857,7 +12857,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Result(self):
-        """结果
+        r"""结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Result
@@ -12868,7 +12868,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Unit
@@ -12879,7 +12879,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Range(self):
-        """参考范围
+        r"""参考范围
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Range
@@ -12890,7 +12890,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Arrow(self):
-        """上下箭头
+        r"""上下箭头
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Arrow
@@ -12901,7 +12901,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Method(self):
-        """检测方法
+        r"""检测方法
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Method
@@ -12912,7 +12912,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Normal(self):
-        """结果是否异常
+        r"""结果是否异常
         :rtype: bool
         """
         return self._Normal
@@ -12923,7 +12923,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Id(self):
-        """ID
+        r"""ID
         :rtype: int
         """
         return self._Id
@@ -12934,7 +12934,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def Order(self):
-        """序号
+        r"""序号
         :rtype: int
         """
         return self._Order
@@ -12945,7 +12945,7 @@ class IndicatorItemV2(AbstractModel):
 
     @property
     def InferNormal(self):
-        """推测结果是否异常
+        r"""推测结果是否异常
         :rtype: str
         """
         return self._InferNormal
@@ -12992,7 +12992,7 @@ class IndicatorItemV2(AbstractModel):
 
 
 class IndicatorV3(AbstractModel):
-    """检验报告v3
+    r"""检验报告v3
 
     """
 
@@ -13017,7 +13017,7 @@ class IndicatorV3(AbstractModel):
     def TableIndictors(self):
         warnings.warn("parameter `TableIndictors` is deprecated", DeprecationWarning) 
 
-        """检验报告V3结论
+        r"""检验报告V3结论
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableIndicators
         """
@@ -13031,7 +13031,7 @@ class IndicatorV3(AbstractModel):
 
     @property
     def Version(self):
-        """版本号
+        r"""版本号
         :rtype: str
         """
         return self._Version
@@ -13042,7 +13042,7 @@ class IndicatorV3(AbstractModel):
 
     @property
     def TableIndicators(self):
-        """检验报告V3结论
+        r"""检验报告V3结论
         :rtype: list of TableIndicators
         """
         return self._TableIndicators
@@ -13053,7 +13053,7 @@ class IndicatorV3(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -13089,7 +13089,7 @@ class IndicatorV3(AbstractModel):
 
 
 class InternalMedicineAbdomen(AbstractModel):
-    """体检报告-内科-腹部
+    r"""体检报告-内科-腹部
 
     """
 
@@ -13120,7 +13120,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Text(self):
-        """内科腹部小结
+        r"""内科腹部小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -13131,7 +13131,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Liver(self):
-        """肝脏
+        r"""肝脏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenLiver`
         """
         return self._Liver
@@ -13142,7 +13142,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def GallBladder(self):
-        """胆囊
+        r"""胆囊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenGallBladder`
         """
         return self._GallBladder
@@ -13153,7 +13153,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Pancreas(self):
-        """胰腺
+        r"""胰腺
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenPancreas`
         """
         return self._Pancreas
@@ -13164,7 +13164,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Spleen(self):
-        """脾脏
+        r"""脾脏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenSpleen`
         """
         return self._Spleen
@@ -13175,7 +13175,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Kidney(self):
-        """肾脏
+        r"""肾脏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenKidney`
         """
         return self._Kidney
@@ -13186,7 +13186,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
     @property
     def Others(self):
-        """腹部其他
+        r"""腹部其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -13232,7 +13232,7 @@ class InternalMedicineAbdomen(AbstractModel):
 
 
 class InternalMedicineAbdomenGallBladder(AbstractModel):
-    """体检报告-内科-腹部-胆囊
+    r"""体检报告-内科-腹部-胆囊
 
     """
 
@@ -13260,7 +13260,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Src(self):
-        """胆囊总体描述
+        r"""胆囊总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -13271,7 +13271,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Size(self):
-        """胆囊大小
+        r"""胆囊大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -13282,7 +13282,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Palpation(self):
-        """胆囊触诊
+        r"""胆囊触诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -13293,7 +13293,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Percussion(self):
-        """胆囊叩诊
+        r"""胆囊叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -13304,7 +13304,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Tenderness(self):
-        """胆囊压痛
+        r"""胆囊压痛
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -13315,7 +13315,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
     @property
     def Consistency(self):
-        """胆囊质地
+        r"""胆囊质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -13355,7 +13355,7 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
 
 
 class InternalMedicineAbdomenKidney(AbstractModel):
-    """体检报告-内科-腹部-肾脏
+    r"""体检报告-内科-腹部-肾脏
 
     """
 
@@ -13383,7 +13383,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Src(self):
-        """肾脏总体描述
+        r"""肾脏总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -13394,7 +13394,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Size(self):
-        """肾脏大小
+        r"""肾脏大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -13405,7 +13405,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Palpation(self):
-        """肾脏触诊
+        r"""肾脏触诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -13416,7 +13416,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Percussion(self):
-        """肾脏叩诊
+        r"""肾脏叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -13427,7 +13427,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Tenderness(self):
-        """肾脏压痛
+        r"""肾脏压痛
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -13438,7 +13438,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
     @property
     def Consistency(self):
-        """肾脏质地
+        r"""肾脏质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -13478,7 +13478,7 @@ class InternalMedicineAbdomenKidney(AbstractModel):
 
 
 class InternalMedicineAbdomenLiver(AbstractModel):
-    """体检报告-内科-腹部-肝脏
+    r"""体检报告-内科-腹部-肝脏
 
     """
 
@@ -13506,7 +13506,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Src(self):
-        """肝脏总体描述
+        r"""肝脏总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -13517,7 +13517,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Size(self):
-        """肝脏大小
+        r"""肝脏大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -13528,7 +13528,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Palpation(self):
-        """肝脏触诊
+        r"""肝脏触诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -13539,7 +13539,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Percussion(self):
-        """肝脏叩诊
+        r"""肝脏叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -13550,7 +13550,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Tenderness(self):
-        """肝脏压痛
+        r"""肝脏压痛
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -13561,7 +13561,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
     @property
     def Consistency(self):
-        """肝脏质地
+        r"""肝脏质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -13601,7 +13601,7 @@ class InternalMedicineAbdomenLiver(AbstractModel):
 
 
 class InternalMedicineAbdomenPancreas(AbstractModel):
-    """体检报告-内科-腹部-胰腺
+    r"""体检报告-内科-腹部-胰腺
 
     """
 
@@ -13629,7 +13629,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Src(self):
-        """胰腺总体描述
+        r"""胰腺总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -13640,7 +13640,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Size(self):
-        """胰腺大小
+        r"""胰腺大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -13651,7 +13651,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Palpation(self):
-        """胰腺触诊
+        r"""胰腺触诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -13662,7 +13662,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Percussion(self):
-        """胰腺叩诊
+        r"""胰腺叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -13673,7 +13673,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Tenderness(self):
-        """肝脏压痛
+        r"""肝脏压痛
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -13684,7 +13684,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
     @property
     def Consistency(self):
-        """胰腺质地
+        r"""胰腺质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -13724,7 +13724,7 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
 
 
 class InternalMedicineAbdomenSpleen(AbstractModel):
-    """体检报告-内科-腹部-脾脏
+    r"""体检报告-内科-腹部-脾脏
 
     """
 
@@ -13752,7 +13752,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Src(self):
-        """脾脏总体描述
+        r"""脾脏总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -13763,7 +13763,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Size(self):
-        """脾脏大小
+        r"""脾脏大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -13774,7 +13774,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Palpation(self):
-        """脾脏触诊
+        r"""脾脏触诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -13785,7 +13785,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Percussion(self):
-        """脾脏叩诊
+        r"""脾脏叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -13796,7 +13796,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Tenderness(self):
-        """脾脏压痛
+        r"""脾脏压痛
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -13807,7 +13807,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
     @property
     def Consistency(self):
-        """脾脏质地
+        r"""脾脏质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -13847,7 +13847,7 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
 
 
 class InternalMedicineBaseItem(AbstractModel):
-    """体检报告-内科
+    r"""体检报告-内科
 
     """
 
@@ -13875,7 +13875,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def Abdomen(self):
-        """体检报告-内科-腹部
+        r"""体检报告-内科-腹部
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomen`
         """
         return self._Abdomen
@@ -13886,7 +13886,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def Heart(self):
-        """体检报告-内科-心脏
+        r"""体检报告-内科-心脏
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineHeart`
         """
         return self._Heart
@@ -13897,7 +13897,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def Vessel(self):
-        """体检报告-内科-血管
+        r"""体检报告-内科-血管
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineVessel`
         """
         return self._Vessel
@@ -13908,7 +13908,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def RespiratorySystem(self):
-        """体检报告-内科-呼吸系统
+        r"""体检报告-内科-呼吸系统
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineRespiratorySystem`
         """
         return self._RespiratorySystem
@@ -13919,7 +13919,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """体检报告-内科-内科其他
+        r"""体检报告-内科-内科其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -13930,7 +13930,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """体检报告-内科-小结
+        r"""体检报告-内科-小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBriefSummary`
         """
         return self._BriefSummary
@@ -13973,7 +13973,7 @@ class InternalMedicineBaseItem(AbstractModel):
 
 
 class InternalMedicineBriefSummary(AbstractModel):
-    """体检报告-内科-内科小结
+    r"""体检报告-内科-内科小结
 
     """
 
@@ -13986,7 +13986,7 @@ class InternalMedicineBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """内科小结
+        r"""内科小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -14011,7 +14011,7 @@ class InternalMedicineBriefSummary(AbstractModel):
 
 
 class InternalMedicineHeart(AbstractModel):
-    """体检报告-内科-心脏
+    r"""体检报告-内科-心脏
 
     """
 
@@ -14033,7 +14033,7 @@ class InternalMedicineHeart(AbstractModel):
 
     @property
     def Text(self):
-        """心脏总体描述
+        r"""心脏总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -14044,7 +14044,7 @@ class InternalMedicineHeart(AbstractModel):
 
     @property
     def HeartRhythm(self):
-        """心律
+        r"""心律
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._HeartRhythm
@@ -14055,7 +14055,7 @@ class InternalMedicineHeart(AbstractModel):
 
     @property
     def HeartRate(self):
-        """心率
+        r"""心率
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._HeartRate
@@ -14066,7 +14066,7 @@ class InternalMedicineHeart(AbstractModel):
 
     @property
     def HeartAuscultation(self):
-        """心脏听诊
+        r"""心脏听诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._HeartAuscultation
@@ -14100,7 +14100,7 @@ class InternalMedicineHeart(AbstractModel):
 
 
 class InternalMedicineRespiratorySystem(AbstractModel):
-    """体检报告-内科-呼吸系统
+    r"""体检报告-内科-呼吸系统
 
     """
 
@@ -14125,7 +14125,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
     @property
     def Text(self):
-        """呼吸系统总体描述
+        r"""呼吸系统总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -14136,7 +14136,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
     @property
     def Thoracic(self):
-        """胸廓
+        r"""胸廓
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Thoracic
@@ -14147,7 +14147,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
     @property
     def Sputum(self):
-        """痰量
+        r"""痰量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Sputum
@@ -14158,7 +14158,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
     @property
     def LungPercussion(self):
-        """肺部叩诊
+        r"""肺部叩诊
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LungPercussion
@@ -14169,7 +14169,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
     @property
     def LungAuscultation(self):
-        """肺部听诊其他
+        r"""肺部听诊其他
         :rtype: list of KeyValueItem
         """
         return self._LungAuscultation
@@ -14209,7 +14209,7 @@ class InternalMedicineRespiratorySystem(AbstractModel):
 
 
 class InternalMedicineVessel(AbstractModel):
-    """体检报告-内科-血管
+    r"""体检报告-内科-血管
 
     """
 
@@ -14228,7 +14228,7 @@ class InternalMedicineVessel(AbstractModel):
 
     @property
     def Text(self):
-        """血管总体描述
+        r"""血管总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -14239,7 +14239,7 @@ class InternalMedicineVessel(AbstractModel):
 
     @property
     def VascularMurmur(self):
-        """血管杂音
+        r"""血管杂音
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._VascularMurmur
@@ -14250,7 +14250,7 @@ class InternalMedicineVessel(AbstractModel):
 
     @property
     def PeripheralVessel(self):
-        """外周血管
+        r"""外周血管
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._PeripheralVessel
@@ -14281,7 +14281,7 @@ class InternalMedicineVessel(AbstractModel):
 
 
 class Invas(AbstractModel):
-    """侵犯扩散
+    r"""侵犯扩散
 
     """
 
@@ -14303,7 +14303,7 @@ class Invas(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -14314,7 +14314,7 @@ class Invas(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -14325,7 +14325,7 @@ class Invas(AbstractModel):
 
     @property
     def Positive(self):
-        """阳性
+        r"""阳性
         :rtype: str
         """
         return self._Positive
@@ -14336,7 +14336,7 @@ class Invas(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -14364,7 +14364,7 @@ class Invas(AbstractModel):
 
 
 class InvasiveV2(AbstractModel):
-    """侵犯
+    r"""侵犯
 
     """
 
@@ -14389,7 +14389,7 @@ class InvasiveV2(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -14400,7 +14400,7 @@ class InvasiveV2(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -14411,7 +14411,7 @@ class InvasiveV2(AbstractModel):
 
     @property
     def Positive(self):
-        """阴性或阳性
+        r"""阴性或阳性
         :rtype: str
         """
         return self._Positive
@@ -14422,7 +14422,7 @@ class InvasiveV2(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -14433,7 +14433,7 @@ class InvasiveV2(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -14467,7 +14467,7 @@ class InvasiveV2(AbstractModel):
 
 
 class IssueInfo(AbstractModel):
-    """签发信息
+    r"""签发信息
 
     """
 
@@ -14486,7 +14486,7 @@ class IssueInfo(AbstractModel):
 
     @property
     def CertNumber(self):
-        """编号
+        r"""编号
         :rtype: str
         """
         return self._CertNumber
@@ -14497,7 +14497,7 @@ class IssueInfo(AbstractModel):
 
     @property
     def IssuedAuthority(self):
-        """签发机构
+        r"""签发机构
         :rtype: str
         """
         return self._IssuedAuthority
@@ -14508,7 +14508,7 @@ class IssueInfo(AbstractModel):
 
     @property
     def IssuedDate(self):
-        """签发日期
+        r"""签发日期
         :rtype: str
         """
         return self._IssuedDate
@@ -14533,7 +14533,7 @@ class IssueInfo(AbstractModel):
 
 
 class KeyValueItem(AbstractModel):
-    """体检报告信息
+    r"""体检报告信息
 
     """
 
@@ -14555,7 +14555,7 @@ class KeyValueItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -14566,7 +14566,7 @@ class KeyValueItem(AbstractModel):
 
     @property
     def Item(self):
-        """项目原文
+        r"""项目原文
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -14577,7 +14577,7 @@ class KeyValueItem(AbstractModel):
 
     @property
     def Result(self):
-        """结果
+        r"""结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -14588,7 +14588,7 @@ class KeyValueItem(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -14618,7 +14618,7 @@ class KeyValueItem(AbstractModel):
 
 
 class LastMenstrualPeriodBlock(AbstractModel):
-    """末次月经
+    r"""末次月经
 
     """
 
@@ -14649,7 +14649,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -14660,7 +14660,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -14671,7 +14671,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -14682,7 +14682,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -14693,7 +14693,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -14704,7 +14704,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -14715,7 +14715,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -14744,7 +14744,7 @@ class LastMenstrualPeriodBlock(AbstractModel):
 
 
 class Lymph(AbstractModel):
-    """淋巴
+    r"""淋巴
 
     """
 
@@ -14769,7 +14769,7 @@ class Lymph(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -14780,7 +14780,7 @@ class Lymph(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -14791,7 +14791,7 @@ class Lymph(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -14802,7 +14802,7 @@ class Lymph(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -14813,7 +14813,7 @@ class Lymph(AbstractModel):
 
     @property
     def TransferNum(self):
-        """转移数
+        r"""转移数
         :rtype: int
         """
         return self._TransferNum
@@ -14842,7 +14842,7 @@ class Lymph(AbstractModel):
 
 
 class LymphNode(AbstractModel):
-    """单淋巴结转移信息
+    r"""单淋巴结转移信息
 
     """
 
@@ -14876,7 +14876,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -14887,7 +14887,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -14898,7 +14898,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -14909,7 +14909,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -14920,7 +14920,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Total(self):
-        """总数量
+        r"""总数量
         :rtype: int
         """
         return self._Total
@@ -14931,7 +14931,7 @@ class LymphNode(AbstractModel):
 
     @property
     def TransferNum(self):
-        """转移数量
+        r"""转移数量
         :rtype: int
         """
         return self._TransferNum
@@ -14942,7 +14942,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Sizes(self):
-        """淋巴结大小
+        r"""淋巴结大小
         :rtype: list of int
         """
         return self._Sizes
@@ -14953,7 +14953,7 @@ class LymphNode(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -14990,7 +14990,7 @@ class LymphNode(AbstractModel):
 
 
 class LymphTotal(AbstractModel):
-    """淋巴结总计转移信息
+    r"""淋巴结总计转移信息
 
     """
 
@@ -15018,7 +15018,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -15029,7 +15029,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def TransferNum(self):
-        """转移数量
+        r"""转移数量
         :rtype: int
         """
         return self._TransferNum
@@ -15040,7 +15040,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def Total(self):
-        """总数量
+        r"""总数量
         :rtype: int
         """
         return self._Total
@@ -15051,7 +15051,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -15062,7 +15062,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -15073,7 +15073,7 @@ class LymphTotal(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -15106,7 +15106,7 @@ class LymphTotal(AbstractModel):
 
 
 class MainDiseaseHistoryBlock(AbstractModel):
-    """既往史
+    r"""既往史
 
     """
 
@@ -15134,7 +15134,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -15145,7 +15145,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -15156,7 +15156,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
         :rtype: bool
         """
         return self._State
@@ -15167,7 +15167,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -15178,7 +15178,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def Neglist(self):
-        """否定列表
+        r"""否定列表
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NeglistBlock`
         """
         return self._Neglist
@@ -15189,7 +15189,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
     @property
     def Poslist(self):
-        """肯定列表
+        r"""肯定列表
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PoslistBlock`
         """
         return self._Poslist
@@ -15221,7 +15221,7 @@ class MainDiseaseHistoryBlock(AbstractModel):
 
 
 class Maternity(AbstractModel):
-    """孕产报告
+    r"""孕产报告
 
     """
 
@@ -15243,7 +15243,7 @@ class Maternity(AbstractModel):
 
     @property
     def Desc(self):
-        """描述部分
+        r"""描述部分
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MaternityDesc`
         """
         return self._Desc
@@ -15254,7 +15254,7 @@ class Maternity(AbstractModel):
 
     @property
     def Summary(self):
-        """结论部分
+        r"""结论部分
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MaternitySummary`
         """
         return self._Summary
@@ -15265,7 +15265,7 @@ class Maternity(AbstractModel):
 
     @property
     def OcrText(self):
-        """报告原文
+        r"""报告原文
         :rtype: str
         """
         return self._OcrText
@@ -15276,7 +15276,7 @@ class Maternity(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -15306,7 +15306,7 @@ class Maternity(AbstractModel):
 
 
 class MaternityDesc(AbstractModel):
-    """孕产描述部分
+    r"""孕产描述部分
 
     """
 
@@ -15328,7 +15328,7 @@ class MaternityDesc(AbstractModel):
 
     @property
     def Fetus(self):
-        """胎儿数据结构
+        r"""胎儿数据结构
         :rtype: list of Fetus
         """
         return self._Fetus
@@ -15339,7 +15339,7 @@ class MaternityDesc(AbstractModel):
 
     @property
     def FetusNum(self):
-        """胎儿数量
+        r"""胎儿数量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FetusNum
@@ -15350,7 +15350,7 @@ class MaternityDesc(AbstractModel):
 
     @property
     def Text(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Text
@@ -15361,7 +15361,7 @@ class MaternityDesc(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -15399,7 +15399,7 @@ class MaternityDesc(AbstractModel):
 
 
 class MaternitySummary(AbstractModel):
-    """孕产结论部分
+    r"""孕产结论部分
 
     """
 
@@ -15424,7 +15424,7 @@ class MaternitySummary(AbstractModel):
 
     @property
     def Fetus(self):
-        """胎儿数据结构
+        r"""胎儿数据结构
         :rtype: list of Fetus
         """
         return self._Fetus
@@ -15435,7 +15435,7 @@ class MaternitySummary(AbstractModel):
 
     @property
     def FetusNum(self):
-        """胎儿数量
+        r"""胎儿数量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FetusNum
@@ -15446,7 +15446,7 @@ class MaternitySummary(AbstractModel):
 
     @property
     def Sym(self):
-        """病变
+        r"""病变
         :rtype: list of FieldInfo
         """
         return self._Sym
@@ -15457,7 +15457,7 @@ class MaternitySummary(AbstractModel):
 
     @property
     def Text(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Text
@@ -15468,7 +15468,7 @@ class MaternitySummary(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -15512,7 +15512,7 @@ class MaternitySummary(AbstractModel):
 
 
 class MedDoc(AbstractModel):
-    """医学资料
+    r"""医学资料
 
     """
 
@@ -15549,7 +15549,7 @@ class MedDoc(AbstractModel):
 
     @property
     def Advice(self):
-        """建议
+        r"""建议
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Advice`
         """
         return self._Advice
@@ -15560,7 +15560,7 @@ class MedDoc(AbstractModel):
 
     @property
     def Diagnosis(self):
-        """诊断结果
+        r"""诊断结果
         :rtype: list of DiagCertItem
         """
         return self._Diagnosis
@@ -15571,7 +15571,7 @@ class MedDoc(AbstractModel):
 
     @property
     def DiseaseMedicalHistory(self):
-        """疾病史
+        r"""疾病史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseaseMedicalHistory`
         """
         return self._DiseaseMedicalHistory
@@ -15582,7 +15582,7 @@ class MedDoc(AbstractModel):
 
     @property
     def PersonalMedicalHistory(self):
-        """个人史
+        r"""个人史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PersonalMedicalHistory`
         """
         return self._PersonalMedicalHistory
@@ -15593,7 +15593,7 @@ class MedDoc(AbstractModel):
 
     @property
     def ObstericalMedicalHistory(self):
-        """婚孕史
+        r"""婚孕史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ObstericalMedicalHistory`
         """
         return self._ObstericalMedicalHistory
@@ -15604,7 +15604,7 @@ class MedDoc(AbstractModel):
 
     @property
     def FamilyMedicalHistory(self):
-        """家族史
+        r"""家族史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FamilyMedicalHistory`
         """
         return self._FamilyMedicalHistory
@@ -15615,7 +15615,7 @@ class MedDoc(AbstractModel):
 
     @property
     def MenstrualMedicalHistory(self):
-        """月经史
+        r"""月经史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualMedicalHistory`
         """
         return self._MenstrualMedicalHistory
@@ -15626,7 +15626,7 @@ class MedDoc(AbstractModel):
 
     @property
     def TreatmentRecord(self):
-        """诊疗记录
+        r"""诊疗记录
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecord`
         """
         return self._TreatmentRecord
@@ -15637,7 +15637,7 @@ class MedDoc(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -15687,7 +15687,7 @@ class MedDoc(AbstractModel):
 
 
 class MedicalRecordInfo(AbstractModel):
-    """门诊病历信息
+    r"""门诊病历信息
 
     """
 
@@ -15724,7 +15724,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def DiagnosisTime(self):
-        """就诊日期
+        r"""就诊日期
         :rtype: str
         """
         return self._DiagnosisTime
@@ -15735,7 +15735,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def DiagnosisDepartmentName(self):
-        """就诊科室
+        r"""就诊科室
         :rtype: str
         """
         return self._DiagnosisDepartmentName
@@ -15746,7 +15746,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def DiagnosisDoctorName(self):
-        """就诊医生
+        r"""就诊医生
         :rtype: str
         """
         return self._DiagnosisDoctorName
@@ -15757,7 +15757,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def ClinicalDiagnosis(self):
-        """临床诊断
+        r"""临床诊断
         :rtype: str
         """
         return self._ClinicalDiagnosis
@@ -15768,7 +15768,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def MainNarration(self):
-        """主述
+        r"""主述
         :rtype: str
         """
         return self._MainNarration
@@ -15779,7 +15779,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def PhysicalExamination(self):
-        """体格检查
+        r"""体格检查
         :rtype: str
         """
         return self._PhysicalExamination
@@ -15790,7 +15790,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def InspectionFindings(self):
-        """检查结论
+        r"""检查结论
         :rtype: str
         """
         return self._InspectionFindings
@@ -15801,7 +15801,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def TreatmentOpinion(self):
-        """治疗意见
+        r"""治疗意见
         :rtype: str
         """
         return self._TreatmentOpinion
@@ -15812,7 +15812,7 @@ class MedicalRecordInfo(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -15843,7 +15843,7 @@ class MedicalRecordInfo(AbstractModel):
 
 
 class Medicine(AbstractModel):
-    """药品
+    r"""药品
 
     """
 
@@ -15877,7 +15877,7 @@ class Medicine(AbstractModel):
 
     @property
     def Name(self):
-        """药品名
+        r"""药品名
         :rtype: str
         """
         return self._Name
@@ -15888,7 +15888,7 @@ class Medicine(AbstractModel):
 
     @property
     def TradeName(self):
-        """商品名
+        r"""商品名
         :rtype: str
         """
         return self._TradeName
@@ -15899,7 +15899,7 @@ class Medicine(AbstractModel):
 
     @property
     def Firm(self):
-        """厂商
+        r"""厂商
         :rtype: str
         """
         return self._Firm
@@ -15910,7 +15910,7 @@ class Medicine(AbstractModel):
 
     @property
     def Category(self):
-        """医保类型
+        r"""医保类型
         :rtype: str
         """
         return self._Category
@@ -15921,7 +15921,7 @@ class Medicine(AbstractModel):
 
     @property
     def Specification(self):
-        """规格
+        r"""规格
         :rtype: str
         """
         return self._Specification
@@ -15932,7 +15932,7 @@ class Medicine(AbstractModel):
 
     @property
     def MinQuantity(self):
-        """最小包装数量
+        r"""最小包装数量
         :rtype: str
         """
         return self._MinQuantity
@@ -15943,7 +15943,7 @@ class Medicine(AbstractModel):
 
     @property
     def DosageUnit(self):
-        """最小制剂单位
+        r"""最小制剂单位
         :rtype: str
         """
         return self._DosageUnit
@@ -15954,7 +15954,7 @@ class Medicine(AbstractModel):
 
     @property
     def PackingUnit(self):
-        """最小包装单位
+        r"""最小包装单位
         :rtype: str
         """
         return self._PackingUnit
@@ -15984,7 +15984,7 @@ class Medicine(AbstractModel):
 
 
 class MenstrualFlowBlock(AbstractModel):
-    """月经量
+    r"""月经量
 
     """
 
@@ -16003,7 +16003,7 @@ class MenstrualFlowBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16014,7 +16014,7 @@ class MenstrualFlowBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16025,7 +16025,7 @@ class MenstrualFlowBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -16050,7 +16050,7 @@ class MenstrualFlowBlock(AbstractModel):
 
 
 class MenstrualHistoryBlock(AbstractModel):
-    """月经史
+    r"""月经史
 
     """
 
@@ -16078,7 +16078,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def LastMenstrualPeriod(self):
-        """末次月经
+        r"""末次月经
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._LastMenstrualPeriod
@@ -16089,7 +16089,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def MenstrualFlow(self):
-        """月经量
+        r"""月经量
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualFlowBlock`
         """
         return self._MenstrualFlow
@@ -16100,7 +16100,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def MenarcheAge(self):
-        """初潮时间
+        r"""初潮时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._MenarcheAge
@@ -16111,7 +16111,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def MenstruationOrNot(self):
-        """是否绝经
+        r"""是否绝经
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstruationOrNotBlock`
         """
         return self._MenstruationOrNot
@@ -16122,7 +16122,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def MenstrualCycles(self):
-        """月经周期
+        r"""月经周期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._MenstrualCycles
@@ -16133,7 +16133,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
     @property
     def MenstrualPeriod(self):
-        """月经经期
+        r"""月经经期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualPeriodBlock`
         """
         return self._MenstrualPeriod
@@ -16173,7 +16173,7 @@ class MenstrualHistoryBlock(AbstractModel):
 
 
 class MenstrualHistoryDetailBlock(AbstractModel):
-    """月经史
+    r"""月经史
 
     """
 
@@ -16207,7 +16207,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16218,7 +16218,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16229,7 +16229,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._State
@@ -16240,7 +16240,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -16251,7 +16251,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def TimeType(self):
-        """时间类型
+        r"""时间类型
         :rtype: str
         """
         return self._TimeType
@@ -16262,7 +16262,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -16273,7 +16273,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -16284,7 +16284,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -16314,7 +16314,7 @@ class MenstrualHistoryDetailBlock(AbstractModel):
 
 
 class MenstrualMedicalHistory(AbstractModel):
-    """月经史
+    r"""月经史
 
     """
 
@@ -16342,7 +16342,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def LastMenstrualPeriod(self):
-        """末次月经时间
+        r"""末次月经时间
         :rtype: str
         """
         return self._LastMenstrualPeriod
@@ -16353,7 +16353,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def MenstrualFlow(self):
-        """经量
+        r"""经量
         :rtype: str
         """
         return self._MenstrualFlow
@@ -16364,7 +16364,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def MenarcheAge(self):
-        """月经初潮年龄
+        r"""月经初潮年龄
         :rtype: str
         """
         return self._MenarcheAge
@@ -16375,7 +16375,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def MenstruationOrNot(self):
-        """是否来月经
+        r"""是否来月经
         :rtype: str
         """
         return self._MenstruationOrNot
@@ -16386,7 +16386,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def MenstrualCycles(self):
-        """月经周期
+        r"""月经周期
         :rtype: str
         """
         return self._MenstrualCycles
@@ -16397,7 +16397,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
     @property
     def MenstrualPeriod(self):
-        """月经持续天数
+        r"""月经持续天数
         :rtype: str
         """
         return self._MenstrualPeriod
@@ -16425,7 +16425,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
 
 class MenstrualPeriodBlock(AbstractModel):
-    """月经经期
+    r"""月经经期
 
     """
 
@@ -16456,7 +16456,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16467,7 +16467,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16478,7 +16478,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -16489,7 +16489,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -16500,7 +16500,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -16511,7 +16511,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -16522,7 +16522,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -16551,7 +16551,7 @@ class MenstrualPeriodBlock(AbstractModel):
 
 
 class MenstruationOrNotBlock(AbstractModel):
-    """是否绝经
+    r"""是否绝经
 
     """
 
@@ -16579,7 +16579,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16590,7 +16590,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16601,7 +16601,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -16612,7 +16612,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def TimeType(self):
-        """时间类型
+        r"""时间类型
         :rtype: str
         """
         return self._TimeType
@@ -16623,7 +16623,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -16634,7 +16634,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -16662,7 +16662,7 @@ class MenstruationOrNotBlock(AbstractModel):
 
 
 class Molecular(AbstractModel):
-    """分子病理
+    r"""分子病理
 
     """
 
@@ -16687,7 +16687,7 @@ class Molecular(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -16698,7 +16698,7 @@ class Molecular(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16709,7 +16709,7 @@ class Molecular(AbstractModel):
 
     @property
     def Name(self):
-        """基因名称标注化
+        r"""基因名称标注化
         :rtype: str
         """
         return self._Name
@@ -16720,7 +16720,7 @@ class Molecular(AbstractModel):
 
     @property
     def Value(self):
-        """分子病理详细信息
+        r"""分子病理详细信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MolecularValue`
         """
         return self._Value
@@ -16731,7 +16731,7 @@ class Molecular(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -16765,7 +16765,7 @@ class Molecular(AbstractModel):
 
 
 class MolecularValue(AbstractModel):
-    """分子病理详细信息
+    r"""分子病理详细信息
 
     """
 
@@ -16790,7 +16790,7 @@ class MolecularValue(AbstractModel):
 
     @property
     def Exon(self):
-        """外显子
+        r"""外显子
         :rtype: str
         """
         return self._Exon
@@ -16801,7 +16801,7 @@ class MolecularValue(AbstractModel):
 
     @property
     def Position(self):
-        """点位
+        r"""点位
         :rtype: str
         """
         return self._Position
@@ -16812,7 +16812,7 @@ class MolecularValue(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -16823,7 +16823,7 @@ class MolecularValue(AbstractModel):
 
     @property
     def Positive(self):
-        """阳性或阴性
+        r"""阳性或阴性
         :rtype: str
         """
         return self._Positive
@@ -16834,7 +16834,7 @@ class MolecularValue(AbstractModel):
 
     @property
     def Src(self):
-        """基因名称原文
+        r"""基因名称原文
         :rtype: str
         """
         return self._Src
@@ -16861,7 +16861,7 @@ class MolecularValue(AbstractModel):
 
 
 class Multiple(AbstractModel):
-    """多发
+    r"""多发
 
     """
 
@@ -16886,7 +16886,7 @@ class Multiple(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -16897,7 +16897,7 @@ class Multiple(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -16908,7 +16908,7 @@ class Multiple(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -16919,7 +16919,7 @@ class Multiple(AbstractModel):
 
     @property
     def Count(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Count
@@ -16930,7 +16930,7 @@ class Multiple(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16957,7 +16957,7 @@ class Multiple(AbstractModel):
 
 
 class NeglistBlock(AbstractModel):
-    """否定列表
+    r"""否定列表
 
     """
 
@@ -16973,7 +16973,7 @@ class NeglistBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -16984,7 +16984,7 @@ class NeglistBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -17008,7 +17008,7 @@ class NeglistBlock(AbstractModel):
 
 
 class NeonatalInfo(AbstractModel):
-    """新生儿信息
+    r"""新生儿信息
 
     """
 
@@ -17042,7 +17042,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def NeonatalName(self):
-        """新生儿名字
+        r"""新生儿名字
         :rtype: str
         """
         return self._NeonatalName
@@ -17053,7 +17053,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def NeonatalGender(self):
-        """新生儿性别
+        r"""新生儿性别
         :rtype: str
         """
         return self._NeonatalGender
@@ -17064,7 +17064,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def BirthLength(self):
-        """出生身长
+        r"""出生身长
         :rtype: str
         """
         return self._BirthLength
@@ -17075,7 +17075,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def BirthWeight(self):
-        """出生体重
+        r"""出生体重
         :rtype: str
         """
         return self._BirthWeight
@@ -17086,7 +17086,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def GestationalAge(self):
-        """出生孕周
+        r"""出生孕周
         :rtype: str
         """
         return self._GestationalAge
@@ -17097,7 +17097,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def BirthTime(self):
-        """出生时间
+        r"""出生时间
         :rtype: str
         """
         return self._BirthTime
@@ -17108,7 +17108,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生地点
+        r"""出生地点
         :rtype: str
         """
         return self._BirthPlace
@@ -17119,7 +17119,7 @@ class NeonatalInfo(AbstractModel):
 
     @property
     def MedicalInstitutions(self):
-        """医疗机构
+        r"""医疗机构
         :rtype: str
         """
         return self._MedicalInstitutions
@@ -17149,7 +17149,7 @@ class NeonatalInfo(AbstractModel):
 
 
 class NormPart(AbstractModel):
-    """标准部位
+    r"""标准部位
 
     """
 
@@ -17181,7 +17181,7 @@ class NormPart(AbstractModel):
 
     @property
     def Part(self):
-        """部位值
+        r"""部位值
         :rtype: str
         """
         return self._Part
@@ -17192,7 +17192,7 @@ class NormPart(AbstractModel):
 
     @property
     def PartDirection(self):
-        """部位方向
+        r"""部位方向
         :rtype: str
         """
         return self._PartDirection
@@ -17203,7 +17203,7 @@ class NormPart(AbstractModel):
 
     @property
     def Tissue(self):
-        """组织值
+        r"""组织值
         :rtype: str
         """
         return self._Tissue
@@ -17214,7 +17214,7 @@ class NormPart(AbstractModel):
 
     @property
     def TissueDirection(self):
-        """组织方向
+        r"""组织方向
         :rtype: str
         """
         return self._TissueDirection
@@ -17225,7 +17225,7 @@ class NormPart(AbstractModel):
 
     @property
     def Upper(self):
-        """上级部位
+        r"""上级部位
         :rtype: str
         """
         return self._Upper
@@ -17238,7 +17238,7 @@ class NormPart(AbstractModel):
     def PartDetail(self):
         warnings.warn("parameter `PartDetail` is deprecated", DeprecationWarning) 
 
-        """部位详情
+        r"""部位详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PartDesc`
         """
@@ -17252,7 +17252,7 @@ class NormPart(AbstractModel):
 
     @property
     def PartDetailList(self):
-        """部位详情
+        r"""部位详情
         :rtype: list of PartDesc
         """
         return self._PartDetailList
@@ -17288,7 +17288,7 @@ class NormPart(AbstractModel):
 
 
 class NormSize(AbstractModel):
-    """大小
+    r"""大小
 
     """
 
@@ -17310,7 +17310,7 @@ class NormSize(AbstractModel):
 
     @property
     def Number(self):
-        """数量
+        r"""数量
         :rtype: list of str
         """
         return self._Number
@@ -17321,7 +17321,7 @@ class NormSize(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -17332,7 +17332,7 @@ class NormSize(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -17343,7 +17343,7 @@ class NormSize(AbstractModel):
 
     @property
     def Impl(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Impl
@@ -17369,7 +17369,7 @@ class NormSize(AbstractModel):
 
 
 class NumValue(AbstractModel):
-    """数值结构体
+    r"""数值结构体
 
     """
 
@@ -17385,7 +17385,7 @@ class NumValue(AbstractModel):
 
     @property
     def Num(self):
-        """数值
+        r"""数值
         :rtype: str
         """
         return self._Num
@@ -17396,7 +17396,7 @@ class NumValue(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -17420,7 +17420,7 @@ class NumValue(AbstractModel):
 
 
 class ObstericalMedicalHistory(AbstractModel):
-    """孕产史
+    r"""孕产史
 
     """
 
@@ -17436,7 +17436,7 @@ class ObstericalMedicalHistory(AbstractModel):
 
     @property
     def MarriageHistory(self):
-        """婚史
+        r"""婚史
         :rtype: str
         """
         return self._MarriageHistory
@@ -17447,7 +17447,7 @@ class ObstericalMedicalHistory(AbstractModel):
 
     @property
     def FertilityHistory(self):
-        """孕史
+        r"""孕史
         :rtype: str
         """
         return self._FertilityHistory
@@ -17471,7 +17471,7 @@ class ObstericalMedicalHistory(AbstractModel):
 
 
 class ObstetricalHistoryBlock(AbstractModel):
-    """婚姻-生育史
+    r"""婚姻-生育史
 
     """
 
@@ -17487,7 +17487,7 @@ class ObstetricalHistoryBlock(AbstractModel):
 
     @property
     def MarriageHistory(self):
-        """婚姻史
+        r"""婚姻史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryDetailBlock`
         """
         return self._MarriageHistory
@@ -17498,7 +17498,7 @@ class ObstetricalHistoryBlock(AbstractModel):
 
     @property
     def FertilityHistory(self):
-        """婚育史
+        r"""婚育史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FertilityHistoryBlock`
         """
         return self._FertilityHistory
@@ -17526,7 +17526,7 @@ class ObstetricalHistoryBlock(AbstractModel):
 
 
 class OcrInfo(AbstractModel):
-    """图片完整的OCR信息
+    r"""图片完整的OCR信息
 
     """
 
@@ -17542,7 +17542,7 @@ class OcrInfo(AbstractModel):
 
     @property
     def Items(self):
-        """图片进行OCR之后得到的所有包含字块的OCR信息
+        r"""图片进行OCR之后得到的所有包含字块的OCR信息
         :rtype: list of OcrItem
         """
         return self._Items
@@ -17553,7 +17553,7 @@ class OcrInfo(AbstractModel):
 
     @property
     def Text(self):
-        """图片进行OCR之后得到的所有字符
+        r"""图片进行OCR之后得到的所有字符
         :rtype: str
         """
         return self._Text
@@ -17582,7 +17582,7 @@ class OcrInfo(AbstractModel):
 
 
 class OcrItem(AbstractModel):
-    """图片进行OCR之后,包含字符块的信息，包含字符与坐标，一个图片进行OCR之后可能分为多个这样的块
+    r"""图片进行OCR之后,包含字符块的信息，包含字符与坐标，一个图片进行OCR之后可能分为多个这样的块
 
     """
 
@@ -17601,7 +17601,7 @@ class OcrItem(AbstractModel):
 
     @property
     def Words(self):
-        """图片中文字的字符串
+        r"""图片中文字的字符串
         :rtype: str
         """
         return self._Words
@@ -17612,7 +17612,7 @@ class OcrItem(AbstractModel):
 
     @property
     def Coords(self):
-        """Words 中每个文字的坐标数组，顺序与Words中的字符顺序一致
+        r"""Words 中每个文字的坐标数组，顺序与Words中的字符顺序一致
         :rtype: list of Coordinate
         """
         return self._Coords
@@ -17623,7 +17623,7 @@ class OcrItem(AbstractModel):
 
     @property
     def WordCoords(self):
-        """整个字符块的坐标信息
+        r"""整个字符块的坐标信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         """
         return self._WordCoords
@@ -17655,7 +17655,7 @@ class OcrItem(AbstractModel):
 
 
 class OphthalmologyBareEyeSight(AbstractModel):
-    """体检报告-眼科-裸眼视力
+    r"""体检报告-眼科-裸眼视力
 
     """
 
@@ -17674,7 +17674,7 @@ class OphthalmologyBareEyeSight(AbstractModel):
 
     @property
     def LeftEyeVisual(self):
-        """左眼视力
+        r"""左眼视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LeftEyeVisual
@@ -17685,7 +17685,7 @@ class OphthalmologyBareEyeSight(AbstractModel):
 
     @property
     def Text(self):
-        """裸眼视力
+        r"""裸眼视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -17696,7 +17696,7 @@ class OphthalmologyBareEyeSight(AbstractModel):
 
     @property
     def RightEyeVisual(self):
-        """右眼视力
+        r"""右眼视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._RightEyeVisual
@@ -17727,7 +17727,7 @@ class OphthalmologyBareEyeSight(AbstractModel):
 
 
 class OphthalmologyBaseItem(AbstractModel):
-    """体检报告-眼科
+    r"""体检报告-眼科
 
     """
 
@@ -17755,7 +17755,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def BareEyeSight(self):
-        """裸眼视力
+        r"""裸眼视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBareEyeSight`
         """
         return self._BareEyeSight
@@ -17766,7 +17766,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def CorrectedVisualAcuity(self):
-        """矫正视力
+        r"""矫正视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyCorrectedVisualAcuity`
         """
         return self._CorrectedVisualAcuity
@@ -17777,7 +17777,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def ColourVision(self):
-        """色觉
+        r"""色觉
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyColourVision`
         """
         return self._ColourVision
@@ -17788,7 +17788,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def Fundoscopy(self):
-        """眼底
+        r"""眼底
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyFundoscopy`
         """
         return self._Fundoscopy
@@ -17799,7 +17799,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """眼科其他
+        r"""眼科其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -17810,7 +17810,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """眼科小结
+        r"""眼科小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBriefSummary`
         """
         return self._BriefSummary
@@ -17853,7 +17853,7 @@ class OphthalmologyBaseItem(AbstractModel):
 
 
 class OphthalmologyBriefSummary(AbstractModel):
-    """体检报告-眼科-小结
+    r"""体检报告-眼科-小结
 
     """
 
@@ -17866,7 +17866,7 @@ class OphthalmologyBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """眼科小结
+        r"""眼科小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -17891,7 +17891,7 @@ class OphthalmologyBriefSummary(AbstractModel):
 
 
 class OphthalmologyColourVision(AbstractModel):
-    """体检报告-眼科-色觉
+    r"""体检报告-眼科-色觉
 
     """
 
@@ -17904,7 +17904,7 @@ class OphthalmologyColourVision(AbstractModel):
 
     @property
     def Text(self):
-        """色觉总体描述
+        r"""色觉总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -17929,7 +17929,7 @@ class OphthalmologyColourVision(AbstractModel):
 
 
 class OphthalmologyCorrectedVisualAcuity(AbstractModel):
-    """体检报告-眼科-矫正视力
+    r"""体检报告-眼科-矫正视力
 
     """
 
@@ -17948,7 +17948,7 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
 
     @property
     def LeftEyeVisual(self):
-        """左眼矫正视力
+        r"""左眼矫正视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LeftEyeVisual
@@ -17959,7 +17959,7 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
 
     @property
     def Text(self):
-        """矫正视力
+        r"""矫正视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -17970,7 +17970,7 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
 
     @property
     def RightEyeVisual(self):
-        """右眼矫正视力
+        r"""右眼矫正视力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._RightEyeVisual
@@ -18001,7 +18001,7 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
 
 
 class OphthalmologyFundoscopy(AbstractModel):
-    """体检报告-眼科-眼底
+    r"""体检报告-眼科-眼底
 
     """
 
@@ -18014,7 +18014,7 @@ class OphthalmologyFundoscopy(AbstractModel):
 
     @property
     def Text(self):
-        """眼底检查总体描述
+        r"""眼底检查总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -18039,7 +18039,7 @@ class OphthalmologyFundoscopy(AbstractModel):
 
 
 class Organ(AbstractModel):
-    """器官
+    r"""器官
 
     """
 
@@ -18164,7 +18164,7 @@ class Organ(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -18175,7 +18175,7 @@ class Organ(AbstractModel):
 
     @property
     def Size(self):
-        """大小
+        r"""大小
         :rtype: list of Size
         """
         return self._Size
@@ -18186,7 +18186,7 @@ class Organ(AbstractModel):
 
     @property
     def Envelope(self):
-        """包膜
+        r"""包膜
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Envelope
@@ -18197,7 +18197,7 @@ class Organ(AbstractModel):
 
     @property
     def Edge(self):
-        """边缘
+        r"""边缘
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Edge
@@ -18208,7 +18208,7 @@ class Organ(AbstractModel):
 
     @property
     def InnerEcho(self):
-        """内部回声
+        r"""内部回声
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEcho
@@ -18219,7 +18219,7 @@ class Organ(AbstractModel):
 
     @property
     def Gland(self):
-        """腺体
+        r"""腺体
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Gland
@@ -18230,7 +18230,7 @@ class Organ(AbstractModel):
 
     @property
     def Shape(self):
-        """形状
+        r"""形状
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Shape
@@ -18241,7 +18241,7 @@ class Organ(AbstractModel):
 
     @property
     def Thickness(self):
-        """厚度
+        r"""厚度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Thickness
@@ -18252,7 +18252,7 @@ class Organ(AbstractModel):
 
     @property
     def ShapeAttr(self):
-        """形态
+        r"""形态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ShapeAttr
@@ -18263,7 +18263,7 @@ class Organ(AbstractModel):
 
     @property
     def CDFI(self):
-        """血液cdfi
+        r"""血液cdfi
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CDFI
@@ -18274,7 +18274,7 @@ class Organ(AbstractModel):
 
     @property
     def SymDesc(self):
-        """描述信息
+        r"""描述信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SymDesc
@@ -18285,7 +18285,7 @@ class Organ(AbstractModel):
 
     @property
     def SizeStatus(self):
-        """大小状态
+        r"""大小状态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SizeStatus
@@ -18296,7 +18296,7 @@ class Organ(AbstractModel):
 
     @property
     def Outline(self):
-        """轮廓
+        r"""轮廓
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Outline
@@ -18307,7 +18307,7 @@ class Organ(AbstractModel):
 
     @property
     def Structure(self):
-        """结构
+        r"""结构
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Structure
@@ -18318,7 +18318,7 @@ class Organ(AbstractModel):
 
     @property
     def Density(self):
-        """密度
+        r"""密度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Density
@@ -18329,7 +18329,7 @@ class Organ(AbstractModel):
 
     @property
     def Vas(self):
-        """血管
+        r"""血管
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Vas
@@ -18340,7 +18340,7 @@ class Organ(AbstractModel):
 
     @property
     def Cysticwall(self):
-        """囊壁
+        r"""囊壁
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Cysticwall
@@ -18351,7 +18351,7 @@ class Organ(AbstractModel):
 
     @property
     def Capsule(self):
-        """被膜
+        r"""被膜
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Capsule
@@ -18364,7 +18364,7 @@ class Organ(AbstractModel):
     def IsthmusThicknese(self):
         warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
 
-        """峡部厚度
+        r"""峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
@@ -18378,7 +18378,7 @@ class Organ(AbstractModel):
 
     @property
     def InnerEchoDistribution(self):
-        """内部回声分布
+        r"""内部回声分布
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEchoDistribution
@@ -18389,7 +18389,7 @@ class Organ(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -18400,7 +18400,7 @@ class Organ(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -18411,7 +18411,7 @@ class Organ(AbstractModel):
 
     @property
     def Transparent(self):
-        """透声度
+        r"""透声度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Transparent
@@ -18422,7 +18422,7 @@ class Organ(AbstractModel):
 
     @property
     def MriAdc(self):
-        """MRI ADC
+        r"""MRI ADC
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriAdc
@@ -18433,7 +18433,7 @@ class Organ(AbstractModel):
 
     @property
     def MriDwi(self):
-        """MRI DWI
+        r"""MRI DWI
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriDwi
@@ -18444,7 +18444,7 @@ class Organ(AbstractModel):
 
     @property
     def MriT1(self):
-        """MRI T1信号
+        r"""MRI T1信号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT1
@@ -18455,7 +18455,7 @@ class Organ(AbstractModel):
 
     @property
     def MriT2(self):
-        """MRI T2信号
+        r"""MRI T2信号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT2
@@ -18466,7 +18466,7 @@ class Organ(AbstractModel):
 
     @property
     def CtHu(self):
-        """CT HU值
+        r"""CT HU值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CtHu
@@ -18477,7 +18477,7 @@ class Organ(AbstractModel):
 
     @property
     def Suvmax(self):
-        """SUmax值
+        r"""SUmax值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Suvmax
@@ -18488,7 +18488,7 @@ class Organ(AbstractModel):
 
     @property
     def Metabolism(self):
-        """代谢情况
+        r"""代谢情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Metabolism
@@ -18499,7 +18499,7 @@ class Organ(AbstractModel):
 
     @property
     def RadioactiveUptake(self):
-        """放射性摄取
+        r"""放射性摄取
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RadioactiveUptake
@@ -18510,7 +18510,7 @@ class Organ(AbstractModel):
 
     @property
     def LymphEnlargement(self):
-        """淋巴结情况
+        r"""淋巴结情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphEnlargement
@@ -18521,7 +18521,7 @@ class Organ(AbstractModel):
 
     @property
     def ImageFeature(self):
-        """影像特征
+        r"""影像特征
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ImageFeature
@@ -18532,7 +18532,7 @@ class Organ(AbstractModel):
 
     @property
     def Duct(self):
-        """导管
+        r"""导管
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Duct
@@ -18543,7 +18543,7 @@ class Organ(AbstractModel):
 
     @property
     def Trend(self):
-        """趋势
+        r"""趋势
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Trend
@@ -18554,7 +18554,7 @@ class Organ(AbstractModel):
 
     @property
     def Operation(self):
-        """手术情况
+        r"""手术情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Operation
@@ -18565,7 +18565,7 @@ class Organ(AbstractModel):
 
     @property
     def Coords(self):
-        """器官在报告图片中的坐标
+        r"""器官在报告图片中的坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -18576,7 +18576,7 @@ class Organ(AbstractModel):
 
     @property
     def IsthmusThickness(self):
-        """峡部厚度
+        r"""峡部厚度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         return self._IsthmusThickness
@@ -18714,7 +18714,7 @@ class Organ(AbstractModel):
 
 
 class OtherInfo(AbstractModel):
-    """其他信息
+    r"""其他信息
 
     """
 
@@ -18742,7 +18742,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def Anesthesia(self):
-        """麻醉方法
+        r"""麻醉方法
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._Anesthesia
@@ -18753,7 +18753,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def BloodLoss(self):
-        """术中出血
+        r"""术中出血
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._BloodLoss
@@ -18764,7 +18764,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def BloodTransfusion(self):
-        """输血
+        r"""输血
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._BloodTransfusion
@@ -18775,7 +18775,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """手术用时
+        r"""手术用时
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._Duration
@@ -18786,7 +18786,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """手术开始时间
+        r"""手术开始时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._EndTime
@@ -18797,7 +18797,7 @@ class OtherInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """手术结束时间
+        r"""手术结束时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._StartTime
@@ -18837,7 +18837,7 @@ class OtherInfo(AbstractModel):
 
 
 class OtolaryngologyBaseItem(AbstractModel):
-    """体检报告-耳鼻喉科
+    r"""体检报告-耳鼻喉科
 
     """
 
@@ -18862,7 +18862,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
     @property
     def Ear(self):
-        """耳朵
+        r"""耳朵
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyEar`
         """
         return self._Ear
@@ -18873,7 +18873,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
     @property
     def Nose(self):
-        """鼻
+        r"""鼻
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyNose`
         """
         return self._Nose
@@ -18884,7 +18884,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
     @property
     def Larynx(self):
-        """喉
+        r"""喉
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyLarynx`
         """
         return self._Larynx
@@ -18895,7 +18895,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """耳鼻喉其他
+        r"""耳鼻喉其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -18906,7 +18906,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """小结
+        r"""小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBriefSummary`
         """
         return self._BriefSummary
@@ -18946,7 +18946,7 @@ class OtolaryngologyBaseItem(AbstractModel):
 
 
 class OtolaryngologyBriefSummary(AbstractModel):
-    """体检报告-耳鼻喉科-小结
+    r"""体检报告-耳鼻喉科-小结
 
     """
 
@@ -18959,7 +18959,7 @@ class OtolaryngologyBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """耳鼻喉小结
+        r"""耳鼻喉小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -18984,7 +18984,7 @@ class OtolaryngologyBriefSummary(AbstractModel):
 
 
 class OtolaryngologyEar(AbstractModel):
-    """体检报告-耳鼻喉科-耳朵
+    r"""体检报告-耳鼻喉科-耳朵
 
     """
 
@@ -19000,7 +19000,7 @@ class OtolaryngologyEar(AbstractModel):
 
     @property
     def Text(self):
-        """耳总体描述
+        r"""耳总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19011,7 +19011,7 @@ class OtolaryngologyEar(AbstractModel):
 
     @property
     def Hearing(self):
-        """听力
+        r"""听力
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HearingItem`
         """
         return self._Hearing
@@ -19039,7 +19039,7 @@ class OtolaryngologyEar(AbstractModel):
 
 
 class OtolaryngologyLarynx(AbstractModel):
-    """体检报告-耳鼻喉科-喉
+    r"""体检报告-耳鼻喉科-喉
 
     """
 
@@ -19052,7 +19052,7 @@ class OtolaryngologyLarynx(AbstractModel):
 
     @property
     def Text(self):
-        """喉总体描述
+        r"""喉总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19077,7 +19077,7 @@ class OtolaryngologyLarynx(AbstractModel):
 
 
 class OtolaryngologyNose(AbstractModel):
-    """体检报告-耳鼻喉科-鼻
+    r"""体检报告-耳鼻喉科-鼻
 
     """
 
@@ -19090,7 +19090,7 @@ class OtolaryngologyNose(AbstractModel):
 
     @property
     def Text(self):
-        """鼻总体描述
+        r"""鼻总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19115,7 +19115,7 @@ class OtolaryngologyNose(AbstractModel):
 
 
 class PTNM(AbstractModel):
-    """pTNM
+    r"""pTNM
 
     """
 
@@ -19149,7 +19149,7 @@ class PTNM(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -19160,7 +19160,7 @@ class PTNM(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -19171,7 +19171,7 @@ class PTNM(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -19182,7 +19182,7 @@ class PTNM(AbstractModel):
 
     @property
     def Value(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Value
@@ -19193,7 +19193,7 @@ class PTNM(AbstractModel):
 
     @property
     def PT(self):
-        """pT
+        r"""pT
         :rtype: str
         """
         return self._PT
@@ -19204,7 +19204,7 @@ class PTNM(AbstractModel):
 
     @property
     def PN(self):
-        """pN
+        r"""pN
         :rtype: str
         """
         return self._PN
@@ -19215,7 +19215,7 @@ class PTNM(AbstractModel):
 
     @property
     def PM(self):
-        """pM
+        r"""pM
         :rtype: str
         """
         return self._PM
@@ -19226,7 +19226,7 @@ class PTNM(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -19261,7 +19261,7 @@ class PTNM(AbstractModel):
 
 
 class PTNMBlock(AbstractModel):
-    """PTNM分期
+    r"""PTNM分期
 
     """
 
@@ -19286,7 +19286,7 @@ class PTNMBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -19297,7 +19297,7 @@ class PTNMBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -19308,7 +19308,7 @@ class PTNMBlock(AbstractModel):
 
     @property
     def PTNMM(self):
-        """PTNM分期
+        r"""PTNM分期
         :rtype: str
         """
         return self._PTNMM
@@ -19319,7 +19319,7 @@ class PTNMBlock(AbstractModel):
 
     @property
     def PTNMN(self):
-        """PTNM分期
+        r"""PTNM分期
         :rtype: str
         """
         return self._PTNMN
@@ -19330,7 +19330,7 @@ class PTNMBlock(AbstractModel):
 
     @property
     def PTNMT(self):
-        """PTNM分期
+        r"""PTNM分期
         :rtype: str
         """
         return self._PTNMT
@@ -19357,7 +19357,7 @@ class PTNMBlock(AbstractModel):
 
 
 class ParagraphBlock(AbstractModel):
-    """文本块
+    r"""文本块
 
     """
 
@@ -19453,7 +19453,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def IncisionHealingText(self):
-        """切口愈合情况
+        r"""切口愈合情况
         :rtype: str
         """
         return self._IncisionHealingText
@@ -19464,7 +19464,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def AuxiliaryExaminationText(self):
-        """辅助检查
+        r"""辅助检查
         :rtype: str
         """
         return self._AuxiliaryExaminationText
@@ -19475,7 +19475,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def SpecialExamText(self):
-        """特殊检查
+        r"""特殊检查
         :rtype: str
         """
         return self._SpecialExamText
@@ -19486,7 +19486,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def OutpatientDiagnosisText(self):
-        """门诊诊断
+        r"""门诊诊断
         :rtype: str
         """
         return self._OutpatientDiagnosisText
@@ -19497,7 +19497,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def AdmissionConditionText(self):
-        """入院情况
+        r"""入院情况
         :rtype: str
         """
         return self._AdmissionConditionText
@@ -19508,7 +19508,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def CheckAndTreatmentProcessText(self):
-        """诊疗经过
+        r"""诊疗经过
         :rtype: str
         """
         return self._CheckAndTreatmentProcessText
@@ -19519,7 +19519,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def SymptomsAndSignsText(self):
-        """体征
+        r"""体征
         :rtype: str
         """
         return self._SymptomsAndSignsText
@@ -19530,7 +19530,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def DischargeInstructionsText(self):
-        """出院医嘱
+        r"""出院医嘱
         :rtype: str
         """
         return self._DischargeInstructionsText
@@ -19541,7 +19541,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def AdmissionDiagnosisText(self):
-        """入院诊断
+        r"""入院诊断
         :rtype: str
         """
         return self._AdmissionDiagnosisText
@@ -19552,7 +19552,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def SurgeryConditionText(self):
-        """手术情况
+        r"""手术情况
         :rtype: str
         """
         return self._SurgeryConditionText
@@ -19563,7 +19563,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def PathologicalDiagnosisText(self):
-        """病理诊断
+        r"""病理诊断
         :rtype: str
         """
         return self._PathologicalDiagnosisText
@@ -19574,7 +19574,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def DischargeConditionText(self):
-        """出院情况
+        r"""出院情况
         :rtype: str
         """
         return self._DischargeConditionText
@@ -19585,7 +19585,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def CheckRecordText(self):
-        """检查记录
+        r"""检查记录
 
         :rtype: str
         """
@@ -19597,7 +19597,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def ChiefComplaintText(self):
-        """主诉
+        r"""主诉
         :rtype: str
         """
         return self._ChiefComplaintText
@@ -19608,7 +19608,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def DischargeDiagnosisText(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: str
         """
         return self._DischargeDiagnosisText
@@ -19619,7 +19619,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def MainDiseaseHistoryText(self):
-        """既往史
+        r"""既往史
         :rtype: str
         """
         return self._MainDiseaseHistoryText
@@ -19630,7 +19630,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def DiseasePresentText(self):
-        """现病史
+        r"""现病史
         :rtype: str
         """
         return self._DiseasePresentText
@@ -19641,7 +19641,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def PersonalHistoryText(self):
-        """个人史
+        r"""个人史
         :rtype: str
         """
         return self._PersonalHistoryText
@@ -19654,7 +19654,7 @@ class ParagraphBlock(AbstractModel):
     def MenstruallHistoryText(self):
         warnings.warn("parameter `MenstruallHistoryText` is deprecated", DeprecationWarning) 
 
-        """月经史
+        r"""月经史
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19668,7 +19668,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def ObstericalHistoryText(self):
-        """婚育史
+        r"""婚育史
         :rtype: str
         """
         return self._ObstericalHistoryText
@@ -19679,7 +19679,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def FamilyHistoryText(self):
-        """家族史
+        r"""家族史
         :rtype: str
         """
         return self._FamilyHistoryText
@@ -19690,7 +19690,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def AllergyHistoryText(self):
-        """过敏史
+        r"""过敏史
         :rtype: str
         """
         return self._AllergyHistoryText
@@ -19701,7 +19701,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def DiseaseHistoryText(self):
-        """病史信息
+        r"""病史信息
         :rtype: str
         """
         return self._DiseaseHistoryText
@@ -19712,7 +19712,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def OtherDiagnosisText(self):
-        """其它诊断
+        r"""其它诊断
         :rtype: str
         """
         return self._OtherDiagnosisText
@@ -19723,7 +19723,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def BodyExaminationText(self):
-        """体格检查
+        r"""体格检查
         :rtype: str
         """
         return self._BodyExaminationText
@@ -19734,7 +19734,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def SpecialistExaminationText(self):
-        """专科检查
+        r"""专科检查
         :rtype: str
         """
         return self._SpecialistExaminationText
@@ -19745,7 +19745,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def TreatmentResultText(self):
-        """治疗结果
+        r"""治疗结果
         :rtype: str
         """
         return self._TreatmentResultText
@@ -19756,7 +19756,7 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def MenstrualHistoryText(self):
-        """月经史
+        r"""月经史
         :rtype: str
         """
         return self._MenstrualHistoryText
@@ -19806,7 +19806,7 @@ class ParagraphBlock(AbstractModel):
 
 
 class ParentInfo(AbstractModel):
-    """母亲或父亲信息
+    r"""母亲或父亲信息
 
     """
 
@@ -19834,7 +19834,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名字
+        r"""名字
         :rtype: str
         """
         return self._Name
@@ -19845,7 +19845,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def Age(self):
-        """年龄
+        r"""年龄
         :rtype: str
         """
         return self._Age
@@ -19856,7 +19856,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def IdCard(self):
-        """证件号
+        r"""证件号
         :rtype: str
         """
         return self._IdCard
@@ -19867,7 +19867,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def Ethnicity(self):
-        """民族
+        r"""民族
         :rtype: str
         """
         return self._Ethnicity
@@ -19878,7 +19878,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍
+        r"""国籍
         :rtype: str
         """
         return self._Nationality
@@ -19889,7 +19889,7 @@ class ParentInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -19917,7 +19917,7 @@ class ParentInfo(AbstractModel):
 
 
 class Part(AbstractModel):
-    """部位信息
+    r"""部位信息
 
     """
 
@@ -19945,7 +19945,7 @@ class Part(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -19956,7 +19956,7 @@ class Part(AbstractModel):
 
     @property
     def NormPart(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NormPart`
         """
         return self._NormPart
@@ -19967,7 +19967,7 @@ class Part(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -19978,7 +19978,7 @@ class Part(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -19989,7 +19989,7 @@ class Part(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -20000,7 +20000,7 @@ class Part(AbstractModel):
 
     @property
     def ValueBrief(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._ValueBrief
@@ -20030,7 +20030,7 @@ class Part(AbstractModel):
 
 
 class PartDesc(AbstractModel):
-    """部位描述
+    r"""部位描述
 
     """
 
@@ -20052,7 +20052,7 @@ class PartDesc(AbstractModel):
 
     @property
     def MainDir(self):
-        """主要部位
+        r"""主要部位
         :rtype: str
         """
         return self._MainDir
@@ -20063,7 +20063,7 @@ class PartDesc(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: str
         """
         return self._Part
@@ -20074,7 +20074,7 @@ class PartDesc(AbstractModel):
 
     @property
     def SecondaryDir(self):
-        """次要部位
+        r"""次要部位
         :rtype: str
         """
         return self._SecondaryDir
@@ -20085,7 +20085,7 @@ class PartDesc(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -20111,7 +20111,7 @@ class PartDesc(AbstractModel):
 
 
 class PathologicalDiagnosisBlock(AbstractModel):
-    """病理诊断
+    r"""病理诊断
 
     """
 
@@ -20133,7 +20133,7 @@ class PathologicalDiagnosisBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -20144,7 +20144,7 @@ class PathologicalDiagnosisBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -20155,7 +20155,7 @@ class PathologicalDiagnosisBlock(AbstractModel):
 
     @property
     def Detail(self):
-        """病理详细
+        r"""病理详细
         :rtype: list of PathologicalDiagnosisDetailBlock
         """
         return self._Detail
@@ -20166,7 +20166,7 @@ class PathologicalDiagnosisBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -20197,7 +20197,7 @@ class PathologicalDiagnosisBlock(AbstractModel):
 
 
 class PathologicalDiagnosisDetailBlock(AbstractModel):
-    """病理详细
+    r"""病理详细
 
     """
 
@@ -20216,7 +20216,7 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: str
         """
         return self._Part
@@ -20227,7 +20227,7 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
 
     @property
     def HistologicalType(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._HistologicalType
@@ -20238,7 +20238,7 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
 
     @property
     def HistologicalGrade(self):
-        """等级
+        r"""等级
         :rtype: str
         """
         return self._HistologicalGrade
@@ -20263,7 +20263,7 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
 
 
 class PathologyReport(AbstractModel):
-    """病理报告
+    r"""病理报告
 
     """
 
@@ -20315,7 +20315,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def CancerPart(self):
-        """癌症部位
+        r"""癌症部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._CancerPart
@@ -20326,7 +20326,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def CancerSize(self):
-        """癌症部位大小
+        r"""癌症部位大小
         :rtype: list of Size
         """
         return self._CancerSize
@@ -20337,7 +20337,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def DescText(self):
-        """描述文本
+        r"""描述文本
         :rtype: str
         """
         return self._DescText
@@ -20348,7 +20348,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def HistologyLevel(self):
-        """组织学等级
+        r"""组织学等级
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyLevel`
         """
         return self._HistologyLevel
@@ -20359,7 +20359,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def HistologyType(self):
-        """组织学类型
+        r"""组织学类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyType`
         """
         return self._HistologyType
@@ -20370,7 +20370,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def IHC(self):
-        """IHC信息
+        r"""IHC信息
         :rtype: list of IHCInfo
         """
         return self._IHC
@@ -20381,7 +20381,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def InfiltrationDepth(self):
-        """浸润深度
+        r"""浸润深度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InfiltrationDepth
@@ -20392,7 +20392,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def Invasive(self):
-        """肿瘤扩散
+        r"""肿瘤扩散
         :rtype: list of Invas
         """
         return self._Invasive
@@ -20403,7 +20403,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def LymphNodes(self):
-        """淋巴结
+        r"""淋巴结
         :rtype: list of Lymph
         """
         return self._LymphNodes
@@ -20414,7 +20414,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def PTNM(self):
-        """PTNM信息
+        r"""PTNM信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PTNM
@@ -20425,7 +20425,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def PathologicalReportType(self):
-        """病理报告类型
+        r"""病理报告类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PathologicalReportType
@@ -20436,7 +20436,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def ReportText(self):
-        """报告原文
+        r"""报告原文
         :rtype: str
         """
         return self._ReportText
@@ -20447,7 +20447,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def SampleType(self):
-        """标本类型
+        r"""标本类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SampleType
@@ -20458,7 +20458,7 @@ class PathologyReport(AbstractModel):
 
     @property
     def SummaryText(self):
-        """结论文本
+        r"""结论文本
         :rtype: str
         """
         return self._SummaryText
@@ -20528,7 +20528,7 @@ class PathologyReport(AbstractModel):
 
 
 class PathologyV2(AbstractModel):
-    """病理报告v2
+    r"""病理报告v2
 
     """
 
@@ -20583,7 +20583,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def PathologicalReportType(self):
-        """报告类型
+        r"""报告类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Report`
         """
         return self._PathologicalReportType
@@ -20594,7 +20594,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Desc(self):
-        """描述段落
+        r"""描述段落
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DescInfo`
         """
         return self._Desc
@@ -20605,7 +20605,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Summary(self):
-        """诊断结论
+        r"""诊断结论
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SummaryInfo`
         """
         return self._Summary
@@ -20616,7 +20616,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def ReportText(self):
-        """报告全文
+        r"""报告全文
         :rtype: str
         """
         return self._ReportText
@@ -20627,7 +20627,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def LymphTotal(self):
-        """淋巴结总计转移信息
+        r"""淋巴结总计转移信息
         :rtype: list of LymphTotal
         """
         return self._LymphTotal
@@ -20638,7 +20638,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def LymphNodes(self):
-        """单淋巴结转移信息
+        r"""单淋巴结转移信息
         :rtype: list of LymphNode
         """
         return self._LymphNodes
@@ -20649,7 +20649,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Ihc(self):
-        """ihc信息
+        r"""ihc信息
         :rtype: list of IHCV2
         """
         return self._Ihc
@@ -20660,7 +20660,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Clinical(self):
-        """临床诊断
+        r"""临床诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Clinical
@@ -20671,7 +20671,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Precancer(self):
-        """是否癌前病变
+        r"""是否癌前病变
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Precancer
@@ -20682,7 +20682,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Malignant(self):
-        """是否恶性肿瘤
+        r"""是否恶性肿瘤
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Malignant
@@ -20693,7 +20693,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Benigntumor(self):
-        """是否良性肿瘤
+        r"""是否良性肿瘤
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Benigntumor
@@ -20704,7 +20704,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def SampleType(self):
-        """送检材料
+        r"""送检材料
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._SampleType
@@ -20715,7 +20715,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def LymphSize(self):
-        """淋巴结大小
+        r"""淋巴结大小
         :rtype: list of Size
         """
         return self._LymphSize
@@ -20726,7 +20726,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Molecular(self):
-        """分子病理
+        r"""分子病理
         :rtype: list of Molecular
         """
         return self._Molecular
@@ -20737,7 +20737,7 @@ class PathologyV2(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -20815,7 +20815,7 @@ class PathologyV2(AbstractModel):
 
 
 class PatientInfo(AbstractModel):
-    """患者信息
+    r"""患者信息
 
     """
 
@@ -20892,7 +20892,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Name(self):
-        """患者姓名
+        r"""患者姓名
         :rtype: str
         """
         return self._Name
@@ -20903,7 +20903,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """患者性别
+        r"""患者性别
         :rtype: str
         """
         return self._Sex
@@ -20914,7 +20914,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Age(self):
-        """患者年龄
+        r"""患者年龄
         :rtype: str
         """
         return self._Age
@@ -20925,7 +20925,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Phone(self):
-        """患者手机号码
+        r"""患者手机号码
         :rtype: str
         """
         return self._Phone
@@ -20936,7 +20936,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Address(self):
-        """患者地址
+        r"""患者地址
         :rtype: str
         """
         return self._Address
@@ -20947,7 +20947,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def IdCard(self):
-        """患者身份证
+        r"""患者身份证
         :rtype: str
         """
         return self._IdCard
@@ -20958,7 +20958,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def HealthCardNo(self):
-        """健康卡号
+        r"""健康卡号
         :rtype: str
         """
         return self._HealthCardNo
@@ -20969,7 +20969,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def SocialSecurityCardNo(self):
-        """社保卡号
+        r"""社保卡号
         :rtype: str
         """
         return self._SocialSecurityCardNo
@@ -20980,7 +20980,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Birthday(self):
-        """出生日期
+        r"""出生日期
         :rtype: str
         """
         return self._Birthday
@@ -20991,7 +20991,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Ethnicity(self):
-        """民族
+        r"""民族
         :rtype: str
         """
         return self._Ethnicity
@@ -21002,7 +21002,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Married(self):
-        """婚姻状况
+        r"""婚姻状况
         :rtype: str
         """
         return self._Married
@@ -21013,7 +21013,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Profession(self):
-        """职业
+        r"""职业
         :rtype: str
         """
         return self._Profession
@@ -21024,7 +21024,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def EducationBackground(self):
-        """教育程度
+        r"""教育程度
         :rtype: str
         """
         return self._EducationBackground
@@ -21035,7 +21035,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def Nationality(self):
-        """国籍
+        r"""国籍
         :rtype: str
         """
         return self._Nationality
@@ -21046,7 +21046,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """籍贯
+        r"""籍贯
         :rtype: str
         """
         return self._BirthPlace
@@ -21057,7 +21057,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def MedicalInsuranceType(self):
-        """医保类型
+        r"""医保类型
         :rtype: str
         """
         return self._MedicalInsuranceType
@@ -21068,7 +21068,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def AgeNorm(self):
-        """标准化年龄
+        r"""标准化年龄
         :rtype: str
         """
         return self._AgeNorm
@@ -21081,7 +21081,7 @@ class PatientInfo(AbstractModel):
     def Nation(self):
         warnings.warn("parameter `Nation` is deprecated", DeprecationWarning) 
 
-        """民族。该字段已不再使用，请从Ethnicity取值
+        r"""民族。该字段已不再使用，请从Ethnicity取值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21095,7 +21095,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def MarriedCode(self):
-        """婚姻代码
+        r"""婚姻代码
         :rtype: str
         """
         return self._MarriedCode
@@ -21106,7 +21106,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def ProfessionCode(self):
-        """职业代码
+        r"""职业代码
         :rtype: str
         """
         return self._ProfessionCode
@@ -21117,7 +21117,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def MedicalInsuranceTypeCode(self):
-        """居民医保代码
+        r"""居民医保代码
         :rtype: str
         """
         return self._MedicalInsuranceTypeCode
@@ -21128,7 +21128,7 @@ class PatientInfo(AbstractModel):
 
     @property
     def BedNo(self):
-        """床号
+        r"""床号
         :rtype: str
         """
         return self._BedNo
@@ -21172,7 +21172,7 @@ class PatientInfo(AbstractModel):
 
 
 class PdfInfo(AbstractModel):
-    """体检报告PDF信息
+    r"""体检报告PDF信息
 
     """
 
@@ -21188,7 +21188,7 @@ class PdfInfo(AbstractModel):
 
     @property
     def Url(self):
-        """pdf文件url链接(暂不支持)
+        r"""pdf文件url链接(暂不支持)
         :rtype: str
         """
         return self._Url
@@ -21199,7 +21199,7 @@ class PdfInfo(AbstractModel):
 
     @property
     def Base64(self):
-        """pdf文件base64编码字符串
+        r"""pdf文件base64编码字符串
         :rtype: str
         """
         return self._Base64
@@ -21223,7 +21223,7 @@ class PdfInfo(AbstractModel):
 
 
 class PersonalHistoryBlock(AbstractModel):
-    """个人史
+    r"""个人史
 
     """
 
@@ -21257,7 +21257,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生地
+        r"""出生地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._BirthPlace
@@ -21268,7 +21268,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def LivePlace(self):
-        """居住地
+        r"""居住地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._LivePlace
@@ -21279,7 +21279,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def Job(self):
-        """职业
+        r"""职业
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._Job
@@ -21290,7 +21290,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def SmokeHistory(self):
-        """吸烟
+        r"""吸烟
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         """
         return self._SmokeHistory
@@ -21301,7 +21301,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def AlcoholicHistory(self):
-        """喝酒
+        r"""喝酒
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         """
         return self._AlcoholicHistory
@@ -21312,7 +21312,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def MenstrualHistory(self):
-        """月经史
+        r"""月经史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryBlock`
         """
         return self._MenstrualHistory
@@ -21323,7 +21323,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def ObstericalHistory(self):
-        """婚姻-生育史
+        r"""婚姻-生育史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ObstetricalHistoryBlock`
         """
         return self._ObstericalHistory
@@ -21334,7 +21334,7 @@ class PersonalHistoryBlock(AbstractModel):
 
     @property
     def FamilyHistory(self):
-        """家族史
+        r"""家族史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FamilyHistoryBlock`
         """
         return self._FamilyHistory
@@ -21380,7 +21380,7 @@ class PersonalHistoryBlock(AbstractModel):
 
 
 class PersonalMedicalHistory(AbstractModel):
-    """个人史
+    r"""个人史
 
     """
 
@@ -21405,7 +21405,7 @@ class PersonalMedicalHistory(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生史
+        r"""出生史
         :rtype: str
         """
         return self._BirthPlace
@@ -21416,7 +21416,7 @@ class PersonalMedicalHistory(AbstractModel):
 
     @property
     def LivePlace(self):
-        """居住史
+        r"""居住史
         :rtype: str
         """
         return self._LivePlace
@@ -21427,7 +21427,7 @@ class PersonalMedicalHistory(AbstractModel):
 
     @property
     def Job(self):
-        """工作史
+        r"""工作史
         :rtype: str
         """
         return self._Job
@@ -21438,7 +21438,7 @@ class PersonalMedicalHistory(AbstractModel):
 
     @property
     def SmokeHistory(self):
-        """吸烟史
+        r"""吸烟史
         :rtype: str
         """
         return self._SmokeHistory
@@ -21449,7 +21449,7 @@ class PersonalMedicalHistory(AbstractModel):
 
     @property
     def AlcoholicHistory(self):
-        """饮酒史
+        r"""饮酒史
         :rtype: str
         """
         return self._AlcoholicHistory
@@ -21476,7 +21476,7 @@ class PersonalMedicalHistory(AbstractModel):
 
 
 class PhysicalBaseItem(AbstractModel):
-    """体检报告基础信息
+    r"""体检报告基础信息
 
     """
 
@@ -21498,7 +21498,7 @@ class PhysicalBaseItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -21509,7 +21509,7 @@ class PhysicalBaseItem(AbstractModel):
 
     @property
     def Src(self):
-        """原始文本
+        r"""原始文本
         :rtype: str
         """
         return self._Src
@@ -21520,7 +21520,7 @@ class PhysicalBaseItem(AbstractModel):
 
     @property
     def Value(self):
-        """归一化后值
+        r"""归一化后值
         :rtype: str
         """
         return self._Value
@@ -21531,7 +21531,7 @@ class PhysicalBaseItem(AbstractModel):
 
     @property
     def Coords(self):
-        """四点坐标
+        r"""四点坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -21562,7 +21562,7 @@ class PhysicalBaseItem(AbstractModel):
 
 
 class PhysicalExamination(AbstractModel):
-    """体检报告综合信息
+    r"""体检报告综合信息
 
     """
 
@@ -21596,7 +21596,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def GeneralExamination(self):
-        """一般检查
+        r"""一般检查
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBaseItem`
         """
         return self._GeneralExamination
@@ -21607,7 +21607,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def InternalMedicine(self):
-        """内科
+        r"""内科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBaseItem`
         """
         return self._InternalMedicine
@@ -21618,7 +21618,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Surgery(self):
-        """外科
+        r"""外科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBaseItem`
         """
         return self._Surgery
@@ -21629,7 +21629,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Stomatology(self):
-        """口腔科
+        r"""口腔科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyBaseItem`
         """
         return self._Stomatology
@@ -21640,7 +21640,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Ophthalmology(self):
-        """眼科
+        r"""眼科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBaseItem`
         """
         return self._Ophthalmology
@@ -21651,7 +21651,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Otolaryngology(self):
-        """耳鼻喉科
+        r"""耳鼻喉科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBaseItem`
         """
         return self._Otolaryngology
@@ -21662,7 +21662,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Gynaecology(self):
-        """妇科
+        r"""妇科
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBaseItem`
         """
         return self._Gynaecology
@@ -21673,7 +21673,7 @@ class PhysicalExamination(AbstractModel):
 
     @property
     def Unclassified(self):
-        """未标准化
+        r"""未标准化
         :rtype: list of KeyValueItem
         """
         return self._Unclassified
@@ -21722,7 +21722,7 @@ class PhysicalExamination(AbstractModel):
 
 
 class PhysicalExaminationV1(AbstractModel):
-    """体检报告V1版本
+    r"""体检报告V1版本
 
     """
 
@@ -21738,7 +21738,7 @@ class PhysicalExaminationV1(AbstractModel):
 
     @property
     def PhysicalExaminationMulti(self):
-        """体检报告信息
+        r"""体检报告信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalExamination`
         """
         return self._PhysicalExaminationMulti
@@ -21749,7 +21749,7 @@ class PhysicalExaminationV1(AbstractModel):
 
     @property
     def Version(self):
-        """版本
+        r"""版本
         :rtype: str
         """
         return self._Version
@@ -21775,7 +21775,7 @@ class PhysicalExaminationV1(AbstractModel):
 
 
 class Point(AbstractModel):
-    """点坐标
+    r"""点坐标
 
     """
 
@@ -21791,7 +21791,7 @@ class Point(AbstractModel):
 
     @property
     def X(self):
-        """x坐标
+        r"""x坐标
         :rtype: int
         """
         return self._X
@@ -21802,7 +21802,7 @@ class Point(AbstractModel):
 
     @property
     def Y(self):
-        """y坐标
+        r"""y坐标
         :rtype: int
         """
         return self._Y
@@ -21826,7 +21826,7 @@ class Point(AbstractModel):
 
 
 class PoslistBlock(AbstractModel):
-    """肯定列表
+    r"""肯定列表
 
     """
 
@@ -21842,7 +21842,7 @@ class PoslistBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -21853,7 +21853,7 @@ class PoslistBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -21877,7 +21877,7 @@ class PoslistBlock(AbstractModel):
 
 
 class Prescription(AbstractModel):
-    """处方单
+    r"""处方单
 
     """
 
@@ -21893,7 +21893,7 @@ class Prescription(AbstractModel):
 
     @property
     def MedicineList(self):
-        """药品列表
+        r"""药品列表
         :rtype: list of Medicine
         """
         return self._MedicineList
@@ -21904,7 +21904,7 @@ class Prescription(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -21933,7 +21933,7 @@ class Prescription(AbstractModel):
 
 
 class Rectangle(AbstractModel):
-    """位置坐标
+    r"""位置坐标
 
     """
 
@@ -21955,7 +21955,7 @@ class Rectangle(AbstractModel):
 
     @property
     def X(self):
-        """x坐标
+        r"""x坐标
         :rtype: int
         """
         return self._X
@@ -21966,7 +21966,7 @@ class Rectangle(AbstractModel):
 
     @property
     def Y(self):
-        """y坐标
+        r"""y坐标
         :rtype: int
         """
         return self._Y
@@ -21977,7 +21977,7 @@ class Rectangle(AbstractModel):
 
     @property
     def W(self):
-        """宽
+        r"""宽
         :rtype: int
         """
         return self._W
@@ -21988,7 +21988,7 @@ class Rectangle(AbstractModel):
 
     @property
     def H(self):
-        """高
+        r"""高
         :rtype: int
         """
         return self._H
@@ -22014,7 +22014,7 @@ class Rectangle(AbstractModel):
 
 
 class RelapseDateBlock(AbstractModel):
-    """复发时间
+    r"""复发时间
 
     """
 
@@ -22048,7 +22048,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -22059,7 +22059,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -22070,7 +22070,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def DiseaseName(self):
-        """疾病名称
+        r"""疾病名称
         :rtype: str
         """
         return self._DiseaseName
@@ -22081,7 +22081,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -22092,7 +22092,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Norm(self):
-        """归一化值
+        r"""归一化值
         :rtype: str
         """
         return self._Norm
@@ -22103,7 +22103,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -22114,7 +22114,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳
+        r"""时间戳
         :rtype: str
         """
         return self._Timestamp
@@ -22125,7 +22125,7 @@ class RelapseDateBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -22155,7 +22155,7 @@ class RelapseDateBlock(AbstractModel):
 
 
 class RelativeCancerHistoryBlock(AbstractModel):
-    """家族肿瘤史
+    r"""家族肿瘤史
 
     """
 
@@ -22177,7 +22177,7 @@ class RelativeCancerHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -22188,7 +22188,7 @@ class RelativeCancerHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -22199,7 +22199,7 @@ class RelativeCancerHistoryBlock(AbstractModel):
 
     @property
     def RelativeCancerList(self):
-        """肿瘤史列表
+        r"""肿瘤史列表
         :rtype: str
         """
         return self._RelativeCancerList
@@ -22210,7 +22210,7 @@ class RelativeCancerHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -22236,7 +22236,7 @@ class RelativeCancerHistoryBlock(AbstractModel):
 
 
 class RelativeHistoryBlock(AbstractModel):
-    """家庭成员
+    r"""家庭成员
 
     """
 
@@ -22258,7 +22258,7 @@ class RelativeHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -22269,7 +22269,7 @@ class RelativeHistoryBlock(AbstractModel):
 
     @property
     def Detail(self):
-        """成员列表
+        r"""成员列表
         :rtype: list of RelativeHistoryDetailBlock
         """
         return self._Detail
@@ -22280,7 +22280,7 @@ class RelativeHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -22291,7 +22291,7 @@ class RelativeHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -22322,7 +22322,7 @@ class RelativeHistoryBlock(AbstractModel):
 
 
 class RelativeHistoryDetailBlock(AbstractModel):
-    """家庭成员详情
+    r"""家庭成员详情
 
     """
 
@@ -22344,7 +22344,7 @@ class RelativeHistoryDetailBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -22355,7 +22355,7 @@ class RelativeHistoryDetailBlock(AbstractModel):
 
     @property
     def Relation(self):
-        """关系
+        r"""关系
         :rtype: str
         """
         return self._Relation
@@ -22366,7 +22366,7 @@ class RelativeHistoryDetailBlock(AbstractModel):
 
     @property
     def TimeOfDeath(self):
-        """死亡时间
+        r"""死亡时间
         :rtype: str
         """
         return self._TimeOfDeath
@@ -22377,7 +22377,7 @@ class RelativeHistoryDetailBlock(AbstractModel):
 
     @property
     def TimeType(self):
-        """时间类型
+        r"""时间类型
         :rtype: str
         """
         return self._TimeType
@@ -22403,7 +22403,7 @@ class RelativeHistoryDetailBlock(AbstractModel):
 
 
 class Report(AbstractModel):
-    """报告类型
+    r"""报告类型
 
     """
 
@@ -22428,7 +22428,7 @@ class Report(AbstractModel):
 
     @property
     def Name(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._Name
@@ -22439,7 +22439,7 @@ class Report(AbstractModel):
 
     @property
     def Index(self):
-        """索引
+        r"""索引
         :rtype: list of int
         """
         return self._Index
@@ -22450,7 +22450,7 @@ class Report(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -22461,7 +22461,7 @@ class Report(AbstractModel):
 
     @property
     def Value(self):
-        """报告类型
+        r"""报告类型
         :rtype: str
         """
         return self._Value
@@ -22472,7 +22472,7 @@ class Report(AbstractModel):
 
     @property
     def Coords(self):
-        """原文对应坐标
+        r"""原文对应坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -22504,7 +22504,7 @@ class Report(AbstractModel):
 
 
 class ReportInfo(AbstractModel):
-    """报告基本信息
+    r"""报告基本信息
 
     """
 
@@ -22592,7 +22592,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def Hospital(self):
-        """医院名称
+        r"""医院名称
         :rtype: str
         """
         return self._Hospital
@@ -22603,7 +22603,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def DepartmentName(self):
-        """科室名称
+        r"""科室名称
         :rtype: str
         """
         return self._DepartmentName
@@ -22614,7 +22614,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def BillingTime(self):
-        """申请时间
+        r"""申请时间
         :rtype: str
         """
         return self._BillingTime
@@ -22625,7 +22625,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportTime(self):
-        """报告时间
+        r"""报告时间
         :rtype: str
         """
         return self._ReportTime
@@ -22636,7 +22636,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def InspectTime(self):
-        """检查时间
+        r"""检查时间
         :rtype: str
         """
         return self._InspectTime
@@ -22647,7 +22647,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def CheckNum(self):
-        """检查号
+        r"""检查号
         :rtype: str
         """
         return self._CheckNum
@@ -22658,7 +22658,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ImageNum(self):
-        """影像号
+        r"""影像号
         :rtype: str
         """
         return self._ImageNum
@@ -22669,7 +22669,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def RadiationNum(self):
-        """放射号
+        r"""放射号
         :rtype: str
         """
         return self._RadiationNum
@@ -22680,7 +22680,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def TestNum(self):
-        """检验号
+        r"""检验号
         :rtype: str
         """
         return self._TestNum
@@ -22691,7 +22691,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def OutpatientNum(self):
-        """门诊号
+        r"""门诊号
         :rtype: str
         """
         return self._OutpatientNum
@@ -22702,7 +22702,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def PathologyNum(self):
-        """病理号
+        r"""病理号
         :rtype: str
         """
         return self._PathologyNum
@@ -22713,7 +22713,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def InHospitalNum(self):
-        """住院号
+        r"""住院号
         :rtype: str
         """
         return self._InHospitalNum
@@ -22724,7 +22724,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def SampleNum(self):
-        """样本号
+        r"""样本号
         :rtype: str
         """
         return self._SampleNum
@@ -22735,7 +22735,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def SampleType(self):
-        """标本种类
+        r"""标本种类
         :rtype: str
         """
         return self._SampleType
@@ -22746,7 +22746,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def MedicalRecordNum(self):
-        """病历号
+        r"""病历号
         :rtype: str
         """
         return self._MedicalRecordNum
@@ -22757,7 +22757,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportName(self):
-        """报告名称
+        r"""报告名称
         :rtype: str
         """
         return self._ReportName
@@ -22768,7 +22768,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def UltraNum(self):
-        """超声号
+        r"""超声号
         :rtype: str
         """
         return self._UltraNum
@@ -22779,7 +22779,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def Diagnose(self):
-        """临床诊断
+        r"""临床诊断
         :rtype: str
         """
         return self._Diagnose
@@ -22790,7 +22790,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def CheckItem(self):
-        """检查项目
+        r"""检查项目
         :rtype: str
         """
         return self._CheckItem
@@ -22801,7 +22801,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def CheckMethod(self):
-        """检查方法
+        r"""检查方法
         :rtype: str
         """
         return self._CheckMethod
@@ -22812,7 +22812,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def DiagnoseTime(self):
-        """诊断时间
+        r"""诊断时间
         :rtype: str
         """
         return self._DiagnoseTime
@@ -22823,7 +22823,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def HealthCheckupNum(self):
-        """体检号
+        r"""体检号
         :rtype: str
         """
         return self._HealthCheckupNum
@@ -22834,7 +22834,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def OtherTime(self):
-        """其它时间
+        r"""其它时间
         :rtype: str
         """
         return self._OtherTime
@@ -22845,7 +22845,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def PrintTime(self):
-        """打印时间
+        r"""打印时间
         :rtype: str
         """
         return self._PrintTime
@@ -22856,7 +22856,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def Times(self):
-        """未归类时间
+        r"""未归类时间
         :rtype: list of Time
         """
         return self._Times
@@ -22867,7 +22867,7 @@ class ReportInfo(AbstractModel):
 
     @property
     def BedNo(self):
-        """床号
+        r"""床号
         :rtype: str
         """
         return self._BedNo
@@ -22920,7 +22920,7 @@ class ReportInfo(AbstractModel):
 
 
 class ReportTypeVersion(AbstractModel):
-    """指定报告类型选用其结构化版本
+    r"""指定报告类型选用其结构化版本
 
     """
 
@@ -22936,7 +22936,7 @@ class ReportTypeVersion(AbstractModel):
 
     @property
     def ReportType(self):
-        """检验报告
+        r"""检验报告
         :rtype: int
         """
         return self._ReportType
@@ -22947,7 +22947,7 @@ class ReportTypeVersion(AbstractModel):
 
     @property
     def Version(self):
-        """版本2
+        r"""版本2
         :rtype: int
         """
         return self._Version
@@ -22971,7 +22971,7 @@ class ReportTypeVersion(AbstractModel):
 
 
 class ResultInfo(AbstractModel):
-    """结论信息
+    r"""结论信息
 
     """
 
@@ -22990,7 +22990,7 @@ class ResultInfo(AbstractModel):
 
     @property
     def Text(self):
-        """段落文本
+        r"""段落文本
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -23001,7 +23001,7 @@ class ResultInfo(AbstractModel):
 
     @property
     def Items(self):
-        """结论详情
+        r"""结论详情
         :rtype: list of BaseInfo
         """
         return self._Items
@@ -23012,7 +23012,7 @@ class ResultInfo(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -23044,7 +23044,7 @@ class ResultInfo(AbstractModel):
 
 
 class Size(AbstractModel):
-    """大小
+    r"""大小
 
     """
 
@@ -23069,7 +23069,7 @@ class Size(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -23080,7 +23080,7 @@ class Size(AbstractModel):
 
     @property
     def NormSize(self):
-        """标准大小
+        r"""标准大小
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NormSize`
         """
         return self._NormSize
@@ -23091,7 +23091,7 @@ class Size(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -23102,7 +23102,7 @@ class Size(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -23113,7 +23113,7 @@ class Size(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -23142,7 +23142,7 @@ class Size(AbstractModel):
 
 
 class SmokeHistoryBlock(AbstractModel):
-    """吸烟史
+    r"""吸烟史
 
     """
 
@@ -23176,7 +23176,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -23187,7 +23187,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -23198,7 +23198,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """时间单位
+        r"""时间单位
         :rtype: str
         """
         return self._TimeUnit
@@ -23209,7 +23209,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def TimeNorm(self):
-        """时间归一化
+        r"""时间归一化
         :rtype: str
         """
         return self._TimeNorm
@@ -23220,7 +23220,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def Amount(self):
-        """吸烟量
+        r"""吸烟量
         :rtype: str
         """
         return self._Amount
@@ -23231,7 +23231,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def QuitState(self):
-        """戒烟状态
+        r"""戒烟状态
         :rtype: bool
         """
         return self._QuitState
@@ -23242,7 +23242,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def State(self):
-        """是否吸烟
+        r"""是否吸烟
         :rtype: bool
         """
         return self._State
@@ -23253,7 +23253,7 @@ class SmokeHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
         :rtype: str
         """
         return self._Value
@@ -23283,7 +23283,7 @@ class SmokeHistoryBlock(AbstractModel):
 
 
 class StomatologyBaseItem(AbstractModel):
-    """体检报告-口腔科
+    r"""体检报告-口腔科
 
     """
 
@@ -23308,7 +23308,7 @@ class StomatologyBaseItem(AbstractModel):
 
     @property
     def ToothDecay(self):
-        """龋齿
+        r"""龋齿
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyToothDecay`
         """
         return self._ToothDecay
@@ -23319,7 +23319,7 @@ class StomatologyBaseItem(AbstractModel):
 
     @property
     def Gingiva(self):
-        """牙龈
+        r"""牙龈
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyGingiva`
         """
         return self._Gingiva
@@ -23330,7 +23330,7 @@ class StomatologyBaseItem(AbstractModel):
 
     @property
     def Periodontics(self):
-        """牙周
+        r"""牙周
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyPeriodontics`
         """
         return self._Periodontics
@@ -23341,7 +23341,7 @@ class StomatologyBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """口腔其他
+        r"""口腔其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -23352,7 +23352,7 @@ class StomatologyBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """小结
+        r"""小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyBriefSummary`
         """
         return self._BriefSummary
@@ -23392,7 +23392,7 @@ class StomatologyBaseItem(AbstractModel):
 
 
 class StomatologyBriefSummary(AbstractModel):
-    """体检报告-口腔科-小结
+    r"""体检报告-口腔科-小结
 
     """
 
@@ -23405,7 +23405,7 @@ class StomatologyBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """口腔小结
+        r"""口腔小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -23430,7 +23430,7 @@ class StomatologyBriefSummary(AbstractModel):
 
 
 class StomatologyGingiva(AbstractModel):
-    """体检报告-口腔科-牙龈
+    r"""体检报告-口腔科-牙龈
 
     """
 
@@ -23443,7 +23443,7 @@ class StomatologyGingiva(AbstractModel):
 
     @property
     def Text(self):
-        """牙龈总体描述
+        r"""牙龈总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -23468,7 +23468,7 @@ class StomatologyGingiva(AbstractModel):
 
 
 class StomatologyPeriodontics(AbstractModel):
-    """体检报告-口腔科-牙周
+    r"""体检报告-口腔科-牙周
 
     """
 
@@ -23481,7 +23481,7 @@ class StomatologyPeriodontics(AbstractModel):
 
     @property
     def Text(self):
-        """牙周总体描述
+        r"""牙周总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -23506,7 +23506,7 @@ class StomatologyPeriodontics(AbstractModel):
 
 
 class StomatologyToothDecay(AbstractModel):
-    """体检报告-口腔科-龋齿
+    r"""体检报告-口腔科-龋齿
 
     """
 
@@ -23519,7 +23519,7 @@ class StomatologyToothDecay(AbstractModel):
 
     @property
     def Text(self):
-        """龋齿总体描述
+        r"""龋齿总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -23544,7 +23544,7 @@ class StomatologyToothDecay(AbstractModel):
 
 
 class Summary(AbstractModel):
-    """结论
+    r"""结论
 
     """
 
@@ -23563,7 +23563,7 @@ class Summary(AbstractModel):
 
     @property
     def Symptom(self):
-        """症状
+        r"""症状
         :rtype: list of SymptomInfo
         """
         return self._Symptom
@@ -23574,7 +23574,7 @@ class Summary(AbstractModel):
 
     @property
     def Text(self):
-        """文本
+        r"""文本
         :rtype: str
         """
         return self._Text
@@ -23585,7 +23585,7 @@ class Summary(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -23620,7 +23620,7 @@ class Summary(AbstractModel):
 
 
 class SummaryInfo(AbstractModel):
-    """诊断结论
+    r"""诊断结论
 
     """
 
@@ -23636,7 +23636,7 @@ class SummaryInfo(AbstractModel):
 
     @property
     def Text(self):
-        """诊断结论文本
+        r"""诊断结论文本
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -23647,7 +23647,7 @@ class SummaryInfo(AbstractModel):
 
     @property
     def Infos(self):
-        """诊断结论详情
+        r"""诊断结论详情
         :rtype: list of DetailInformation
         """
         return self._Infos
@@ -23678,7 +23678,7 @@ class SummaryInfo(AbstractModel):
 
 
 class Surgery(AbstractModel):
-    """手术记录
+    r"""手术记录
 
     """
 
@@ -23697,7 +23697,7 @@ class Surgery(AbstractModel):
 
     @property
     def SurgeryHistory(self):
-        """手术史
+        r"""手术史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistory`
         """
         return self._SurgeryHistory
@@ -23708,7 +23708,7 @@ class Surgery(AbstractModel):
 
     @property
     def OtherInfo(self):
-        """其他信息
+        r"""其他信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtherInfo`
         """
         return self._OtherInfo
@@ -23719,7 +23719,7 @@ class Surgery(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -23748,7 +23748,7 @@ class Surgery(AbstractModel):
 
 
 class SurgeryAnorectal(AbstractModel):
-    """体检报告-外科-肛门直肠
+    r"""体检报告-外科-肛门直肠
 
     """
 
@@ -23767,7 +23767,7 @@ class SurgeryAnorectal(AbstractModel):
 
     @property
     def Text(self):
-        """肛门直肠总体描述
+        r"""肛门直肠总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -23778,7 +23778,7 @@ class SurgeryAnorectal(AbstractModel):
 
     @property
     def DigitalRectalExamination(self):
-        """直肠指检
+        r"""直肠指检
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._DigitalRectalExamination
@@ -23789,7 +23789,7 @@ class SurgeryAnorectal(AbstractModel):
 
     @property
     def Hemorrhoid(self):
-        """痔疮
+        r"""痔疮
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Hemorrhoid
@@ -23820,7 +23820,7 @@ class SurgeryAnorectal(AbstractModel):
 
 
 class SurgeryAttr(AbstractModel):
-    """手术记录属性
+    r"""手术记录属性
 
     """
 
@@ -23836,7 +23836,7 @@ class SurgeryAttr(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -23847,7 +23847,7 @@ class SurgeryAttr(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -23871,7 +23871,7 @@ class SurgeryAttr(AbstractModel):
 
 
 class SurgeryBaseItem(AbstractModel):
-    """体检报告-外科
+    r"""体检报告-外科
 
     """
 
@@ -23911,7 +23911,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def HeadNeck(self):
-        """体检报告-外科-头颈部
+        r"""体检报告-外科-头颈部
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHeadNeck`
         """
         return self._HeadNeck
@@ -23922,7 +23922,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def Thyroid(self):
-        """体检报告-外科-甲状腺
+        r"""体检报告-外科-甲状腺
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryThyroid`
         """
         return self._Thyroid
@@ -23933,7 +23933,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def Breast(self):
-        """体检报告-外科-乳房
+        r"""体检报告-外科-乳房
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBreast`
         """
         return self._Breast
@@ -23944,7 +23944,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def LymphNode(self):
-        """体检报告-外科-浅表淋巴结
+        r"""体检报告-外科-浅表淋巴结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryLymphNode`
         """
         return self._LymphNode
@@ -23955,7 +23955,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def SpinalExtremities(self):
-        """体检报告-外科-脊柱
+        r"""体检报告-外科-脊柱
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgerySpinalExtremities`
         """
         return self._SpinalExtremities
@@ -23966,7 +23966,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def Skin(self):
-        """体检报告-外科-皮肤
+        r"""体检报告-外科-皮肤
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgerySkin`
         """
         return self._Skin
@@ -23977,7 +23977,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def Anorectal(self):
-        """体检报告-外科-肛门直肠
+        r"""体检报告-外科-肛门直肠
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAnorectal`
         """
         return self._Anorectal
@@ -23988,7 +23988,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def UrogenitalSystem(self):
-        """体检报告-外科-泌尿生殖系统
+        r"""体检报告-外科-泌尿生殖系统
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryUrogenitalSystem`
         """
         return self._UrogenitalSystem
@@ -23999,7 +23999,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def Others(self):
-        """体检报告-外科-外科其他
+        r"""体检报告-外科-外科其他
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -24010,7 +24010,7 @@ class SurgeryBaseItem(AbstractModel):
 
     @property
     def BriefSummary(self):
-        """体检报告-外科-小结
+        r"""体检报告-外科-小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBriefSummary`
         """
         return self._BriefSummary
@@ -24065,7 +24065,7 @@ class SurgeryBaseItem(AbstractModel):
 
 
 class SurgeryBreast(AbstractModel):
-    """体检报告-外科-乳房
+    r"""体检报告-外科-乳房
 
     """
 
@@ -24078,7 +24078,7 @@ class SurgeryBreast(AbstractModel):
 
     @property
     def Text(self):
-        """乳房总体描述
+        r"""乳房总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24103,7 +24103,7 @@ class SurgeryBreast(AbstractModel):
 
 
 class SurgeryBriefSummary(AbstractModel):
-    """体检报告-外科-小结
+    r"""体检报告-外科-小结
 
     """
 
@@ -24116,7 +24116,7 @@ class SurgeryBriefSummary(AbstractModel):
 
     @property
     def Text(self):
-        """外科小结
+        r"""外科小结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24141,7 +24141,7 @@ class SurgeryBriefSummary(AbstractModel):
 
 
 class SurgeryConditionBlock(AbstractModel):
-    """手术经过
+    r"""手术经过
 
     """
 
@@ -24164,7 +24164,7 @@ class SurgeryConditionBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -24175,7 +24175,7 @@ class SurgeryConditionBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -24186,7 +24186,7 @@ class SurgeryConditionBlock(AbstractModel):
 
     @property
     def SurgeryList(self):
-        """手术历史
+        r"""手术历史
         :rtype: list of SurgeryListBlock
         """
         return self._SurgeryList
@@ -24197,7 +24197,7 @@ class SurgeryConditionBlock(AbstractModel):
 
     @property
     def Value(self):
-        """对外输出值
+        r"""对外输出值
 
         :rtype: str
         """
@@ -24229,7 +24229,7 @@ class SurgeryConditionBlock(AbstractModel):
 
 
 class SurgeryHeadNeck(AbstractModel):
-    """体检报告-外科-头颈部
+    r"""体检报告-外科-头颈部
 
     """
 
@@ -24242,7 +24242,7 @@ class SurgeryHeadNeck(AbstractModel):
 
     @property
     def Text(self):
-        """头颈部总体描述
+        r"""头颈部总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24267,7 +24267,7 @@ class SurgeryHeadNeck(AbstractModel):
 
 
 class SurgeryHistory(AbstractModel):
-    """手术史
+    r"""手术史
 
     """
 
@@ -24295,7 +24295,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def SurgeryName(self):
-        """手术名称
+        r"""手术名称
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._SurgeryName
@@ -24306,7 +24306,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def SurgeryDate(self):
-        """手术日期
+        r"""手术日期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._SurgeryDate
@@ -24317,7 +24317,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def PreoperativePathology(self):
-        """术前诊断
+        r"""术前诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._PreoperativePathology
@@ -24328,7 +24328,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def IntraoperativePathology(self):
-        """术中诊断
+        r"""术中诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._IntraoperativePathology
@@ -24339,7 +24339,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def PostoperativePathology(self):
-        """术后诊断
+        r"""术后诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._PostoperativePathology
@@ -24350,7 +24350,7 @@ class SurgeryHistory(AbstractModel):
 
     @property
     def DischargeDiagnosis(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._DischargeDiagnosis
@@ -24390,7 +24390,7 @@ class SurgeryHistory(AbstractModel):
 
 
 class SurgeryHistoryBlock(AbstractModel):
-    """手术史
+    r"""手术史
 
     """
 
@@ -24412,7 +24412,7 @@ class SurgeryHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -24423,7 +24423,7 @@ class SurgeryHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -24434,7 +24434,7 @@ class SurgeryHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -24445,7 +24445,7 @@ class SurgeryHistoryBlock(AbstractModel):
 
     @property
     def Surgerylist(self):
-        """手术列表
+        r"""手术列表
         :rtype: list of SurgeryListBlock
         """
         return self._Surgerylist
@@ -24476,7 +24476,7 @@ class SurgeryHistoryBlock(AbstractModel):
 
 
 class SurgeryListBlock(AbstractModel):
-    """手术列表
+    r"""手术列表
 
     """
 
@@ -24498,7 +24498,7 @@ class SurgeryListBlock(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -24509,7 +24509,7 @@ class SurgeryListBlock(AbstractModel):
 
     @property
     def TimeType(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._TimeType
@@ -24520,7 +24520,7 @@ class SurgeryListBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: list of str
         """
         return self._Name
@@ -24531,7 +24531,7 @@ class SurgeryListBlock(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: str
         """
         return self._Part
@@ -24557,7 +24557,7 @@ class SurgeryListBlock(AbstractModel):
 
 
 class SurgeryLymphNode(AbstractModel):
-    """体检报告-外科-浅表淋巴结
+    r"""体检报告-外科-浅表淋巴结
 
     """
 
@@ -24570,7 +24570,7 @@ class SurgeryLymphNode(AbstractModel):
 
     @property
     def Text(self):
-        """浅表淋巴结总体描述
+        r"""浅表淋巴结总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24595,7 +24595,7 @@ class SurgeryLymphNode(AbstractModel):
 
 
 class SurgerySkin(AbstractModel):
-    """体检报告-外科-皮肤
+    r"""体检报告-外科-皮肤
 
     """
 
@@ -24608,7 +24608,7 @@ class SurgerySkin(AbstractModel):
 
     @property
     def Text(self):
-        """皮肤总体描述
+        r"""皮肤总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24633,7 +24633,7 @@ class SurgerySkin(AbstractModel):
 
 
 class SurgerySpinalExtremities(AbstractModel):
-    """体检报告-外科-脊柱
+    r"""体检报告-外科-脊柱
 
     """
 
@@ -24664,7 +24664,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def Text(self):
-        """脊柱四肢总体描述
+        r"""脊柱四肢总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24675,7 +24675,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def SpinalColumn(self):
-        """脊柱
+        r"""脊柱
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._SpinalColumn
@@ -24686,7 +24686,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def LimbJoint(self):
-        """四肢和关节
+        r"""四肢和关节
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LimbJoint
@@ -24697,7 +24697,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def Foot(self):
-        """平跛足
+        r"""平跛足
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Foot
@@ -24708,7 +24708,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def Bone(self):
-        """骨骼
+        r"""骨骼
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Bone
@@ -24719,7 +24719,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def Gait(self):
-        """步态
+        r"""步态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Gait
@@ -24730,7 +24730,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
     @property
     def Deformity(self):
-        """残疾或畸形
+        r"""残疾或畸形
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Deformity
@@ -24773,7 +24773,7 @@ class SurgerySpinalExtremities(AbstractModel):
 
 
 class SurgeryThyroid(AbstractModel):
-    """体检报告-外科-甲状腺
+    r"""体检报告-外科-甲状腺
 
     """
 
@@ -24786,7 +24786,7 @@ class SurgeryThyroid(AbstractModel):
 
     @property
     def Text(self):
-        """甲状腺总体描述
+        r"""甲状腺总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24811,7 +24811,7 @@ class SurgeryThyroid(AbstractModel):
 
 
 class SurgeryUrogenitalSystem(AbstractModel):
-    """体检报告-外科-泌尿生殖系统
+    r"""体检报告-外科-泌尿生殖系统
 
     """
 
@@ -24830,7 +24830,7 @@ class SurgeryUrogenitalSystem(AbstractModel):
 
     @property
     def Text(self):
-        """泌尿生殖系统总体描述
+        r"""泌尿生殖系统总体描述
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -24841,7 +24841,7 @@ class SurgeryUrogenitalSystem(AbstractModel):
 
     @property
     def Prostate(self):
-        """前列腺
+        r"""前列腺
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Prostate
@@ -24852,7 +24852,7 @@ class SurgeryUrogenitalSystem(AbstractModel):
 
     @property
     def ExternalReproductiveOrgans(self):
-        """外生殖器（男性）
+        r"""外生殖器（男性）
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._ExternalReproductiveOrgans
@@ -24883,7 +24883,7 @@ class SurgeryUrogenitalSystem(AbstractModel):
 
 
 class SymptomInfo(AbstractModel):
-    """病症描述信息
+    r"""病症描述信息
 
     """
 
@@ -24914,7 +24914,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Grade(self):
-        """等级
+        r"""等级
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Grade
@@ -24925,7 +24925,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -24936,7 +24936,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -24947,7 +24947,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Symptom(self):
-        """病变
+        r"""病变
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Symptom
@@ -24958,7 +24958,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Attrs(self):
-        """属性
+        r"""属性
         :rtype: list of BlockInfo
         """
         return self._Attrs
@@ -24969,7 +24969,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -24980,7 +24980,7 @@ class SymptomInfo(AbstractModel):
 
     @property
     def Coords(self):
-        """坐标
+        r"""坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -25025,7 +25025,7 @@ class SymptomInfo(AbstractModel):
 
 
 class TableIndicators(AbstractModel):
-    """检验报告结构
+    r"""检验报告结构
 
     """
 
@@ -25041,7 +25041,7 @@ class TableIndicators(AbstractModel):
 
     @property
     def Indicators(self):
-        """项目列表
+        r"""项目列表
         :rtype: list of IndicatorItemV2
         """
         return self._Indicators
@@ -25052,7 +25052,7 @@ class TableIndicators(AbstractModel):
 
     @property
     def Sample(self):
-        """采样标本
+        r"""采样标本
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Sample
@@ -25083,7 +25083,7 @@ class TableIndicators(AbstractModel):
 
 
 class Template(AbstractModel):
-    """报告模板
+    r"""报告模板
 
     """
 
@@ -25183,7 +25183,7 @@ class Template(AbstractModel):
 
     @property
     def PatientInfo(self):
-        """患者信息
+        r"""患者信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PatientInfo`
         """
         return self._PatientInfo
@@ -25194,7 +25194,7 @@ class Template(AbstractModel):
 
     @property
     def ReportInfo(self):
-        """报告信息
+        r"""报告信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ReportInfo`
         """
         return self._ReportInfo
@@ -25205,7 +25205,7 @@ class Template(AbstractModel):
 
     @property
     def Check(self):
-        """检查报告
+        r"""检查报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Check`
         """
         return self._Check
@@ -25216,7 +25216,7 @@ class Template(AbstractModel):
 
     @property
     def Pathology(self):
-        """病理报告
+        r"""病理报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologyReport`
         """
         return self._Pathology
@@ -25227,7 +25227,7 @@ class Template(AbstractModel):
 
     @property
     def MedDoc(self):
-        """出院报告，入院报告，门诊病历
+        r"""出院报告，入院报告，门诊病历
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MedDoc`
         """
         return self._MedDoc
@@ -25238,7 +25238,7 @@ class Template(AbstractModel):
 
     @property
     def DiagCert(self):
-        """诊断证明
+        r"""诊断证明
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiagCert`
         """
         return self._DiagCert
@@ -25249,7 +25249,7 @@ class Template(AbstractModel):
 
     @property
     def FirstPage(self):
-        """病案首页
+        r"""病案首页
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FirstPage`
         """
         return self._FirstPage
@@ -25260,7 +25260,7 @@ class Template(AbstractModel):
 
     @property
     def Indicator(self):
-        """检验报告
+        r"""检验报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         """
         return self._Indicator
@@ -25271,7 +25271,7 @@ class Template(AbstractModel):
 
     @property
     def ReportType(self):
-        """报告类型
+        r"""报告类型
         :rtype: str
         """
         return self._ReportType
@@ -25282,7 +25282,7 @@ class Template(AbstractModel):
 
     @property
     def MedicalRecordInfo(self):
-        """门诊病历信息
+        r"""门诊病历信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MedicalRecordInfo`
         """
         return self._MedicalRecordInfo
@@ -25293,7 +25293,7 @@ class Template(AbstractModel):
 
     @property
     def Hospitalization(self):
-        """出入院信息
+        r"""出入院信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Hospitalization`
         """
         return self._Hospitalization
@@ -25304,7 +25304,7 @@ class Template(AbstractModel):
 
     @property
     def Surgery(self):
-        """手术记录
+        r"""手术记录
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Surgery`
         """
         return self._Surgery
@@ -25315,7 +25315,7 @@ class Template(AbstractModel):
 
     @property
     def Electrocardiogram(self):
-        """心电图报告
+        r"""心电图报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Electrocardiogram`
         """
         return self._Electrocardiogram
@@ -25326,7 +25326,7 @@ class Template(AbstractModel):
 
     @property
     def Endoscopy(self):
-        """内窥镜报告
+        r"""内窥镜报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Endoscopy`
         """
         return self._Endoscopy
@@ -25337,7 +25337,7 @@ class Template(AbstractModel):
 
     @property
     def Prescription(self):
-        """处方单
+        r"""处方单
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Prescription`
         """
         return self._Prescription
@@ -25348,7 +25348,7 @@ class Template(AbstractModel):
 
     @property
     def VaccineCertificate(self):
-        """疫苗接种凭证
+        r"""疫苗接种凭证
         :rtype: :class:`tencentcloud.mrs.v20200910.models.VaccineCertificate`
         """
         return self._VaccineCertificate
@@ -25359,7 +25359,7 @@ class Template(AbstractModel):
 
     @property
     def OcrText(self):
-        """OCR文本
+        r"""OCR文本
         :rtype: str
         """
         return self._OcrText
@@ -25370,7 +25370,7 @@ class Template(AbstractModel):
 
     @property
     def OcrResult(self):
-        """OCR拼接后文本
+        r"""OCR拼接后文本
         :rtype: str
         """
         return self._OcrResult
@@ -25381,7 +25381,7 @@ class Template(AbstractModel):
 
     @property
     def ReportTypeDesc(self):
-        """报告类型
+        r"""报告类型
         :rtype: str
         """
         return self._ReportTypeDesc
@@ -25392,7 +25392,7 @@ class Template(AbstractModel):
 
     @property
     def PathologyV2(self):
-        """病理报告v2
+        r"""病理报告v2
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologyV2`
         """
         return self._PathologyV2
@@ -25403,7 +25403,7 @@ class Template(AbstractModel):
 
     @property
     def C14(self):
-        """碳14尿素呼气试验
+        r"""碳14尿素呼气试验
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         """
         return self._C14
@@ -25414,7 +25414,7 @@ class Template(AbstractModel):
 
     @property
     def Exame(self):
-        """体检结论
+        r"""体检结论
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Exame`
         """
         return self._Exame
@@ -25425,7 +25425,7 @@ class Template(AbstractModel):
 
     @property
     def MedDocV2(self):
-        """出院报告v2，入院报告v2，门诊病历v2
+        r"""出院报告v2，入院报告v2，门诊病历v2
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeInfoBlock`
         """
         return self._MedDocV2
@@ -25436,7 +25436,7 @@ class Template(AbstractModel):
 
     @property
     def IndicatorV3(self):
-        """检验报告v3
+        r"""检验报告v3
         :rtype: :class:`tencentcloud.mrs.v20200910.models.IndicatorV3`
         """
         return self._IndicatorV3
@@ -25447,7 +25447,7 @@ class Template(AbstractModel):
 
     @property
     def Covid(self):
-        """核酸报告
+        r"""核酸报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.CovidItemsInfo`
         """
         return self._Covid
@@ -25458,7 +25458,7 @@ class Template(AbstractModel):
 
     @property
     def Maternity(self):
-        """孕产报告
+        r"""孕产报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Maternity`
         """
         return self._Maternity
@@ -25469,7 +25469,7 @@ class Template(AbstractModel):
 
     @property
     def Eye(self):
-        """眼科报告
+        r"""眼科报告
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeItemsInfo`
         """
         return self._Eye
@@ -25480,7 +25480,7 @@ class Template(AbstractModel):
 
     @property
     def BirthCert(self):
-        """出生证明
+        r"""出生证明
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthCert`
         """
         return self._BirthCert
@@ -25491,7 +25491,7 @@ class Template(AbstractModel):
 
     @property
     def Timeline(self):
-        """时间轴
+        r"""时间轴
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TimelineInformation`
         """
         return self._Timeline
@@ -25502,7 +25502,7 @@ class Template(AbstractModel):
 
     @property
     def EndoscopyV2(self):
-        """内窥镜报告V2
+        r"""内窥镜报告V2
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Check`
         """
         return self._EndoscopyV2
@@ -25606,7 +25606,7 @@ class Template(AbstractModel):
 
 
 class TextToClassRequest(AbstractModel):
-    """TextToClass请求参数结构体
+    r"""TextToClass请求参数结构体
 
     """
 
@@ -25622,7 +25622,7 @@ class TextToClassRequest(AbstractModel):
 
     @property
     def Text(self):
-        """报告文本
+        r"""报告文本
         :rtype: str
         """
         return self._Text
@@ -25633,7 +25633,7 @@ class TextToClassRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
+        r"""后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
         :rtype: int
         """
         return self._UserType
@@ -25657,7 +25657,7 @@ class TextToClassRequest(AbstractModel):
 
 
 class TextToClassResponse(AbstractModel):
-    """TextToClass返回参数结构体
+    r"""TextToClass返回参数结构体
 
     """
 
@@ -25673,7 +25673,7 @@ class TextToClassResponse(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """分类结果
+        r"""分类结果
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -25684,7 +25684,7 @@ class TextToClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25705,7 +25705,7 @@ class TextToClassResponse(AbstractModel):
 
 
 class TextToObjectRequest(AbstractModel):
-    """TextToObject请求参数结构体
+    r"""TextToObject请求参数结构体
 
     """
 
@@ -25734,7 +25734,7 @@ class TextToObjectRequest(AbstractModel):
 
     @property
     def Text(self):
-        """报告文本
+        r"""报告文本
         :rtype: str
         """
         return self._Text
@@ -25745,7 +25745,7 @@ class TextToObjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        r"""报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :rtype: int
         """
         return self._Type
@@ -25756,7 +25756,7 @@ class TextToObjectRequest(AbstractModel):
 
     @property
     def IsUsedClassify(self):
-        """是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
+        r"""是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :rtype: bool
         """
@@ -25768,7 +25768,7 @@ class TextToObjectRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
+        r"""后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
         :rtype: int
         """
         return self._UserType
@@ -25779,7 +25779,7 @@ class TextToObjectRequest(AbstractModel):
 
     @property
     def ReportTypeVersion(self):
-        """可选。用于指定不同报告使用的结构化引擎版本，不同版本返回的JSON 数据结果不兼容。若不指定版本号，就默认用旧的版本号。
+        r"""可选。用于指定不同报告使用的结构化引擎版本，不同版本返回的JSON 数据结果不兼容。若不指定版本号，就默认用旧的版本号。
 （1）检验报告 11，默认使用 V2，最高支持 V3。
 （2）病理报告 15，默认使用 V1，最高支持 V2。
 （3）入院记录29、出院记录 28、病历记录 216、病程记录 217、门诊记录 210，默认使用 V1，最高支持 V2。
@@ -25814,7 +25814,7 @@ class TextToObjectRequest(AbstractModel):
 
 
 class TextToObjectResponse(AbstractModel):
-    """TextToObject返回参数结构体
+    r"""TextToObject返回参数结构体
 
     """
 
@@ -25830,7 +25830,7 @@ class TextToObjectResponse(AbstractModel):
 
     @property
     def Template(self):
-        """报告结构化结果
+        r"""报告结构化结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Template`
         """
         return self._Template
@@ -25841,7 +25841,7 @@ class TextToObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25859,7 +25859,7 @@ class TextToObjectResponse(AbstractModel):
 
 
 class TextType(AbstractModel):
-    """文本类型
+    r"""文本类型
 
     """
 
@@ -25878,7 +25878,7 @@ class TextType(AbstractModel):
 
     @property
     def Id(self):
-        """类别Id
+        r"""类别Id
         :rtype: int
         """
         return self._Id
@@ -25889,7 +25889,7 @@ class TextType(AbstractModel):
 
     @property
     def Level(self):
-        """类别层级
+        r"""类别层级
         :rtype: int
         """
         return self._Level
@@ -25900,7 +25900,7 @@ class TextType(AbstractModel):
 
     @property
     def Name(self):
-        """类别名
+        r"""类别名
         :rtype: str
         """
         return self._Name
@@ -25925,7 +25925,7 @@ class TextType(AbstractModel):
 
 
 class TextTypeListBlock(AbstractModel):
-    """文本类型列表块
+    r"""文本类型列表块
 
     """
 
@@ -25941,7 +25941,7 @@ class TextTypeListBlock(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """文本类型列表
+        r"""文本类型列表
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -25952,7 +25952,7 @@ class TextTypeListBlock(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -25981,7 +25981,7 @@ class TextTypeListBlock(AbstractModel):
 
 
 class Time(AbstractModel):
-    """时间
+    r"""时间
 
     """
 
@@ -25997,7 +25997,7 @@ class Time(AbstractModel):
 
     @property
     def Name(self):
-        """具体时间类型
+        r"""具体时间类型
         :rtype: str
         """
         return self._Name
@@ -26008,7 +26008,7 @@ class Time(AbstractModel):
 
     @property
     def Value(self):
-        """时间值
+        r"""时间值
         :rtype: str
         """
         return self._Value
@@ -26032,7 +26032,7 @@ class Time(AbstractModel):
 
 
 class TimelineEvent(AbstractModel):
-    """时间轴事件
+    r"""时间轴事件
 
     """
 
@@ -26066,7 +26066,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Type(self):
-        """事件类型
+        r"""事件类型
         :rtype: str
         """
         return self._Type
@@ -26077,7 +26077,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Src(self):
-        """原文本
+        r"""原文本
         :rtype: str
         """
         return self._Src
@@ -26088,7 +26088,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def SubType(self):
-        """事件子类型
+        r"""事件子类型
         :rtype: str
         """
         return self._SubType
@@ -26099,7 +26099,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Time(self):
-        """事件发生时间
+        r"""事件发生时间
         :rtype: str
         """
         return self._Time
@@ -26110,7 +26110,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Value(self):
-        """事件值
+        r"""事件值
         :rtype: str
         """
         return self._Value
@@ -26121,7 +26121,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Rectangle(self):
-        """位置坐标
+        r"""位置坐标
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Rectangle`
         """
         return self._Rectangle
@@ -26132,7 +26132,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def Place(self):
-        """事件发生地点
+        r"""事件发生地点
         :rtype: str
         """
         return self._Place
@@ -26143,7 +26143,7 @@ class TimelineEvent(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -26175,7 +26175,7 @@ class TimelineEvent(AbstractModel):
 
 
 class TimelineInformation(AbstractModel):
-    """时间轴
+    r"""时间轴
 
     """
 
@@ -26191,7 +26191,7 @@ class TimelineInformation(AbstractModel):
 
     @property
     def Timeline(self):
-        """时间轴
+        r"""时间轴
         :rtype: list of TimelineEvent
         """
         return self._Timeline
@@ -26202,7 +26202,7 @@ class TimelineInformation(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -26231,7 +26231,7 @@ class TimelineInformation(AbstractModel):
 
 
 class TransfusionHistoryBlock(AbstractModel):
-    """输血史
+    r"""输血史
 
     """
 
@@ -26253,7 +26253,7 @@ class TransfusionHistoryBlock(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -26264,7 +26264,7 @@ class TransfusionHistoryBlock(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -26275,7 +26275,7 @@ class TransfusionHistoryBlock(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
         :rtype: bool
         """
         return self._State
@@ -26286,7 +26286,7 @@ class TransfusionHistoryBlock(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -26312,7 +26312,7 @@ class TransfusionHistoryBlock(AbstractModel):
 
 
 class TreatmentRecord(AbstractModel):
-    """病历
+    r"""病历
 
     """
 
@@ -26409,7 +26409,7 @@ class TreatmentRecord(AbstractModel):
     def DmissionCondition(self):
         warnings.warn("parameter `DmissionCondition` is deprecated", DeprecationWarning) 
 
-        """入院
+        r"""入院
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26423,7 +26423,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def ChiefComplaint(self):
-        """主诉
+        r"""主诉
         :rtype: str
         """
         return self._ChiefComplaint
@@ -26436,7 +26436,7 @@ class TreatmentRecord(AbstractModel):
     def DiseasePresent(self):
         warnings.warn("parameter `DiseasePresent` is deprecated", DeprecationWarning) 
 
-        """现病史
+        r"""现病史
         :rtype: str
         """
         return self._DiseasePresent
@@ -26449,7 +26449,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def SymptomsAndSigns(self):
-        """主要症状体征
+        r"""主要症状体征
         :rtype: str
         """
         return self._SymptomsAndSigns
@@ -26460,7 +26460,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def AuxiliaryExamination(self):
-        """辅助检查
+        r"""辅助检查
         :rtype: str
         """
         return self._AuxiliaryExamination
@@ -26471,7 +26471,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def BodyExamination(self):
-        """体格检查
+        r"""体格检查
         :rtype: str
         """
         return self._BodyExamination
@@ -26482,7 +26482,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def SpecialistExamination(self):
-        """专科检查
+        r"""专科检查
         :rtype: str
         """
         return self._SpecialistExamination
@@ -26493,7 +26493,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def MentalExamination(self):
-        """精神检查
+        r"""精神检查
         :rtype: str
         """
         return self._MentalExamination
@@ -26504,7 +26504,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def CheckRecord(self):
-        """检查记录
+        r"""检查记录
         :rtype: str
         """
         return self._CheckRecord
@@ -26515,7 +26515,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def InspectResult(self):
-        """化验结果
+        r"""化验结果
         :rtype: str
         """
         return self._InspectResult
@@ -26526,7 +26526,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def IncisionHealing(self):
-        """切口愈合情况
+        r"""切口愈合情况
         :rtype: str
         """
         return self._IncisionHealing
@@ -26537,7 +26537,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def TreatmentSuggestion(self):
-        """处理意见
+        r"""处理意见
         :rtype: str
         """
         return self._TreatmentSuggestion
@@ -26548,7 +26548,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def FollowUpRequirements(self):
-        """门诊随访要求
+        r"""门诊随访要求
         :rtype: str
         """
         return self._FollowUpRequirements
@@ -26559,7 +26559,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def CheckAndTreatmentProcess(self):
-        """诊疗经过
+        r"""诊疗经过
         :rtype: str
         """
         return self._CheckAndTreatmentProcess
@@ -26570,7 +26570,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def SurgeryCondition(self):
-        """手术经过
+        r"""手术经过
         :rtype: str
         """
         return self._SurgeryCondition
@@ -26581,7 +26581,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def ConditionChanges(self):
-        """入院情况
+        r"""入院情况
         :rtype: str
         """
         return self._ConditionChanges
@@ -26592,7 +26592,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def DischargeCondition(self):
-        """出院情况
+        r"""出院情况
         :rtype: str
         """
         return self._DischargeCondition
@@ -26603,7 +26603,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def PTNM(self):
-        """pTNM信息
+        r"""pTNM信息
         :rtype: str
         """
         return self._PTNM
@@ -26614,7 +26614,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def PTNMM(self):
-        """pTNMM信息
+        r"""pTNMM信息
         :rtype: str
         """
         return self._PTNMM
@@ -26625,7 +26625,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def PTNMN(self):
-        """pTNMN信息
+        r"""pTNMN信息
         :rtype: str
         """
         return self._PTNMN
@@ -26636,7 +26636,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def PTNMT(self):
-        """pTNMT信息
+        r"""pTNMT信息
         :rtype: str
         """
         return self._PTNMT
@@ -26647,7 +26647,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def ECOG(self):
-        """ECOG信息
+        r"""ECOG信息
         :rtype: str
         """
         return self._ECOG
@@ -26658,7 +26658,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def NRS(self):
-        """NRS信息
+        r"""NRS信息
         :rtype: str
         """
         return self._NRS
@@ -26669,7 +26669,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def KPS(self):
-        """KPS信息
+        r"""KPS信息
         :rtype: str
         """
         return self._KPS
@@ -26680,7 +26680,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def DeathDate(self):
-        """死亡日期
+        r"""死亡日期
         :rtype: str
         """
         return self._DeathDate
@@ -26691,7 +26691,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def RelapseDate(self):
-        """复发日期
+        r"""复发日期
         :rtype: str
         """
         return self._RelapseDate
@@ -26702,7 +26702,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def ObservationDays(self):
-        """观测天数
+        r"""观测天数
         :rtype: str
         """
         return self._ObservationDays
@@ -26713,7 +26713,7 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def AdmissionCondition(self):
-        """入院
+        r"""入院
         :rtype: str
         """
         return self._AdmissionCondition
@@ -26763,7 +26763,7 @@ class TreatmentRecord(AbstractModel):
 
 
 class TreatmentRecordBlock(AbstractModel):
-    """治疗记录
+    r"""治疗记录
 
     """
 
@@ -26926,7 +26926,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def Immunohistochemistry(self):
-        """免疫组化
+        r"""免疫组化
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImmunohistochemistryBlock`
         """
         return self._Immunohistochemistry
@@ -26937,7 +26937,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def ChiefComplaint(self):
-        """主诉
+        r"""主诉
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChiefComplaintBlock`
         """
         return self._ChiefComplaint
@@ -26948,7 +26948,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionCondition(self):
-        """入院情况
+        r"""入院情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionConditionBlock`
         """
         return self._AdmissionCondition
@@ -26959,7 +26959,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def BodyExamination(self):
-        """查体
+        r"""查体
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyExaminationBlock`
         """
         return self._BodyExamination
@@ -26970,7 +26970,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionDiagnosis(self):
-        """入院诊断
+        r"""入院诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionDiagnosis
@@ -26981,7 +26981,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionTraditionalDiagnosis(self):
-        """入院中医诊断
+        r"""入院中医诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionTraditionalDiagnosis
@@ -26992,7 +26992,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionModernDiagnosis(self):
-        """入院西医诊断
+        r"""入院西医诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionModernDiagnosis
@@ -27003,7 +27003,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def PathologicalDiagnosis(self):
-        """病理诊断
+        r"""病理诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologicalDiagnosisBlock`
         """
         return self._PathologicalDiagnosis
@@ -27014,7 +27014,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DiseasePresent(self):
-        """现病史
+        r"""现病史
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DiseasePresent
@@ -27025,7 +27025,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SymptomsAndSigns(self):
-        """体征
+        r"""体征
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._SymptomsAndSigns
@@ -27036,7 +27036,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AuxiliaryExamination(self):
-        """辅助检查
+        r"""辅助检查
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._AuxiliaryExamination
@@ -27047,7 +27047,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SpecialistExamination(self):
-        """特殊检查
+        r"""特殊检查
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._SpecialistExamination
@@ -27058,7 +27058,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def MentalExamination(self):
-        """精神检查
+        r"""精神检查
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._MentalExamination
@@ -27069,7 +27069,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def CheckRecord(self):
-        """检查记录
+        r"""检查记录
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._CheckRecord
@@ -27080,7 +27080,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def InspectResult(self):
-        """检查结果
+        r"""检查结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._InspectResult
@@ -27091,7 +27091,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def CheckAndTreatmentProcess(self):
-        """治疗经过
+        r"""治疗经过
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._CheckAndTreatmentProcess
@@ -27102,7 +27102,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SurgeryCondition(self):
-        """手术经过
+        r"""手术经过
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryConditionBlock`
         """
         return self._SurgeryCondition
@@ -27113,7 +27113,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def IncisionHealing(self):
-        """切口愈合
+        r"""切口愈合
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._IncisionHealing
@@ -27124,7 +27124,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeDiagnosis(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         """
         return self._DischargeDiagnosis
@@ -27135,7 +27135,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeTraditionalDiagnosis(self):
-        """出院中医诊断
+        r"""出院中医诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DischargeTraditionalDiagnosis
@@ -27146,7 +27146,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeModernDiagnosis(self):
-        """出院西医诊断
+        r"""出院西医诊断
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         """
         return self._DischargeModernDiagnosis
@@ -27157,7 +27157,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeCondition(self):
-        """出院情况
+        r"""出院情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeConditionBlock`
         """
         return self._DischargeCondition
@@ -27168,7 +27168,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeInstructions(self):
-        """出院医嘱
+        r"""出院医嘱
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DischargeInstructions
@@ -27179,7 +27179,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def TreatmentSuggestion(self):
-        """治疗建议
+        r"""治疗建议
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._TreatmentSuggestion
@@ -27190,7 +27190,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def FollowUpRequirements(self):
-        """随访
+        r"""随访
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._FollowUpRequirements
@@ -27201,7 +27201,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def ConditionChanges(self):
-        """治疗情况变化
+        r"""治疗情况变化
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._ConditionChanges
@@ -27212,7 +27212,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def PulmonaryArterySystolicPressure(self):
-        """收缩压
+        r"""收缩压
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._PulmonaryArterySystolicPressure
@@ -27223,7 +27223,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def BCLC(self):
-        """bclc分期
+        r"""bclc分期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._BCLC
@@ -27234,7 +27234,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def PTNM(self):
-        """PTNM分期
+        r"""PTNM分期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PTNMBlock`
         """
         return self._PTNM
@@ -27245,7 +27245,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def ECOG(self):
-        """ECOG评分
+        r"""ECOG评分
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._ECOG
@@ -27256,7 +27256,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def NRS(self):
-        """NRS评分
+        r"""NRS评分
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._NRS
@@ -27267,7 +27267,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def KPS(self):
-        """kps评分
+        r"""kps评分
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._KPS
@@ -27278,7 +27278,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def Cancerstaging(self):
-        """癌症分期
+        r"""癌症分期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ClinicalStaging`
         """
         return self._Cancerstaging
@@ -27289,7 +27289,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DeathDate(self):
-        """死亡时间
+        r"""死亡时间
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         """
         return self._DeathDate
@@ -27300,7 +27300,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def RelapseDate(self):
-        """复发日期
+        r"""复发日期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelapseDateBlock`
         """
         return self._RelapseDate
@@ -27311,7 +27311,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def ObservationDays(self):
-        """观察日期
+        r"""观察日期
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         """
         return self._ObservationDays
@@ -27322,7 +27322,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def IncisionHealingText(self):
-        """切口愈合情况
+        r"""切口愈合情况
         :rtype: str
         """
         return self._IncisionHealingText
@@ -27333,7 +27333,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AuxiliaryExaminationText(self):
-        """辅助检查
+        r"""辅助检查
         :rtype: str
         """
         return self._AuxiliaryExaminationText
@@ -27344,7 +27344,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SpecialExamText(self):
-        """特殊检查
+        r"""特殊检查
         :rtype: str
         """
         return self._SpecialExamText
@@ -27355,7 +27355,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def OutpatientDiagnosisText(self):
-        """门诊诊断
+        r"""门诊诊断
         :rtype: str
         """
         return self._OutpatientDiagnosisText
@@ -27366,7 +27366,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionConditionText(self):
-        """入院情况
+        r"""入院情况
         :rtype: str
         """
         return self._AdmissionConditionText
@@ -27377,7 +27377,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def CheckAndTreatmentProcessText(self):
-        """诊疗经过
+        r"""诊疗经过
         :rtype: str
         """
         return self._CheckAndTreatmentProcessText
@@ -27388,7 +27388,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SymptomsAndSignsText(self):
-        """体征
+        r"""体征
         :rtype: str
         """
         return self._SymptomsAndSignsText
@@ -27399,7 +27399,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeInstructionsText(self):
-        """出院医嘱
+        r"""出院医嘱
         :rtype: str
         """
         return self._DischargeInstructionsText
@@ -27410,7 +27410,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def AdmissionDiagnosisText(self):
-        """入院诊断
+        r"""入院诊断
         :rtype: str
         """
         return self._AdmissionDiagnosisText
@@ -27421,7 +27421,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def SurgeryConditionText(self):
-        """手术情况
+        r"""手术情况
         :rtype: str
         """
         return self._SurgeryConditionText
@@ -27432,7 +27432,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def PathologicalDiagnosisText(self):
-        """病理诊断
+        r"""病理诊断
         :rtype: str
         """
         return self._PathologicalDiagnosisText
@@ -27443,7 +27443,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeConditionText(self):
-        """出院情况
+        r"""出院情况
         :rtype: str
         """
         return self._DischargeConditionText
@@ -27454,7 +27454,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def CheckRecordText(self):
-        """检查记录
+        r"""检查记录
         :rtype: str
         """
         return self._CheckRecordText
@@ -27465,7 +27465,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def ChiefComplaintText(self):
-        """主诉
+        r"""主诉
         :rtype: str
         """
         return self._ChiefComplaintText
@@ -27476,7 +27476,7 @@ class TreatmentRecordBlock(AbstractModel):
 
     @property
     def DischargeDiagnosisText(self):
-        """出院诊断
+        r"""出院诊断
         :rtype: str
         """
         return self._DischargeDiagnosisText
@@ -27621,7 +27621,7 @@ class TreatmentRecordBlock(AbstractModel):
 
 
 class TuberInfo(AbstractModel):
-    """结节
+    r"""结节
 
     """
 
@@ -27770,7 +27770,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Type
@@ -27781,7 +27781,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Part(self):
-        """部位
+        r"""部位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -27792,7 +27792,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Size(self):
-        """大小
+        r"""大小
         :rtype: list of Size
         """
         return self._Size
@@ -27803,7 +27803,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Multiple(self):
-        """多发
+        r"""多发
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Multiple`
         """
         return self._Multiple
@@ -27814,7 +27814,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def AspectRatio(self):
-        """纵横比
+        r"""纵横比
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AspectRatio`
         """
         return self._AspectRatio
@@ -27825,7 +27825,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Edge(self):
-        """边缘
+        r"""边缘
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Edge
@@ -27836,7 +27836,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def InnerEcho(self):
-        """内部回声
+        r"""内部回声
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEcho
@@ -27847,7 +27847,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def RearEcho(self):
-        """外部回声
+        r"""外部回声
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RearEcho
@@ -27858,7 +27858,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Elastic(self):
-        """弹性质地
+        r"""弹性质地
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Elastic`
         """
         return self._Elastic
@@ -27869,7 +27869,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Shape(self):
-        """形状
+        r"""形状
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Shape
@@ -27880,7 +27880,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def ShapeAttr(self):
-        """形态
+        r"""形态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ShapeAttr
@@ -27891,7 +27891,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def SkinMedulla(self):
-        """皮髓质信息
+        r"""皮髓质信息
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SkinMedulla
@@ -27902,7 +27902,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Trend(self):
-        """变化趋势
+        r"""变化趋势
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Trend
@@ -27913,7 +27913,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Calcification(self):
-        """钙化
+        r"""钙化
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Calcification
@@ -27924,7 +27924,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Envelope(self):
-        """包膜
+        r"""包膜
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Envelope
@@ -27935,7 +27935,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Enhancement(self):
-        """强化
+        r"""强化
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Enhancement
@@ -27946,7 +27946,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def LymphEnlargement(self):
-        """淋巴结
+        r"""淋巴结
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphEnlargement
@@ -27957,7 +27957,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def LymphDoor(self):
-        """淋巴门
+        r"""淋巴门
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphDoor
@@ -27968,7 +27968,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Activity(self):
-        """活动度
+        r"""活动度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Activity
@@ -27979,7 +27979,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Operation(self):
-        """手术情况
+        r"""手术情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Operation
@@ -27990,7 +27990,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def CDFI(self):
-        """血液cdfi
+        r"""血液cdfi
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CDFI
@@ -28001,7 +28001,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Index(self):
-        """原文位置
+        r"""原文位置
         :rtype: list of int
         """
         return self._Index
@@ -28012,7 +28012,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def SizeStatus(self):
-        """大小状态
+        r"""大小状态
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SizeStatus
@@ -28023,7 +28023,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def InnerEchoDistribution(self):
-        """内部回声分布
+        r"""内部回声分布
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEchoDistribution
@@ -28034,7 +28034,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def InnerEchoType(self):
-        """内部回声类型
+        r"""内部回声类型
         :rtype: list of BlockInfo
         """
         return self._InnerEchoType
@@ -28045,7 +28045,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Outline(self):
-        """轮廓
+        r"""轮廓
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Outline
@@ -28056,7 +28056,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Structure(self):
-        """结构
+        r"""结构
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Structure
@@ -28067,7 +28067,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Density(self):
-        """密度
+        r"""密度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Density
@@ -28078,7 +28078,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Vas(self):
-        """血管
+        r"""血管
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Vas
@@ -28089,7 +28089,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Cysticwall(self):
-        """囊壁
+        r"""囊壁
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Cysticwall
@@ -28100,7 +28100,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Capsule(self):
-        """被膜
+        r"""被膜
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Capsule
@@ -28113,7 +28113,7 @@ class TuberInfo(AbstractModel):
     def IsthmusThicknese(self):
         warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
 
-        """峡部厚度
+        r"""峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
@@ -28127,7 +28127,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Src(self):
-        """原文
+        r"""原文
         :rtype: str
         """
         return self._Src
@@ -28138,7 +28138,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Transparent(self):
-        """透声度
+        r"""透声度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Transparent
@@ -28149,7 +28149,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def MriAdc(self):
-        """MRI ADC
+        r"""MRI ADC
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriAdc
@@ -28160,7 +28160,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def MriDwi(self):
-        """MRI DWI
+        r"""MRI DWI
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriDwi
@@ -28171,7 +28171,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def MriT1(self):
-        """MRI T1信号
+        r"""MRI T1信号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT1
@@ -28182,7 +28182,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def MriT2(self):
-        """MRI T2信号
+        r"""MRI T2信号
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT2
@@ -28193,7 +28193,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def CtHu(self):
-        """CT HU值
+        r"""CT HU值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CtHu
@@ -28204,7 +28204,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Suvmax(self):
-        """SUmax值
+        r"""SUmax值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Suvmax
@@ -28215,7 +28215,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Metabolism(self):
-        """代谢情况
+        r"""代谢情况
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Metabolism
@@ -28226,7 +28226,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def RadioactiveUptake(self):
-        """放射性摄取
+        r"""放射性摄取
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RadioactiveUptake
@@ -28237,7 +28237,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def SymDesc(self):
-        """病变
+        r"""病变
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SymDesc
@@ -28248,7 +28248,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def ImageFeature(self):
-        """影像特征
+        r"""影像特征
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ImageFeature
@@ -28259,7 +28259,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def Coords(self):
-        """在报告图片中的坐标
+        r"""在报告图片中的坐标
         :rtype: list of Coord
         """
         return self._Coords
@@ -28270,7 +28270,7 @@ class TuberInfo(AbstractModel):
 
     @property
     def IsthmusThickness(self):
-        """峡部厚度
+        r"""峡部厚度
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         return self._IsthmusThickness
@@ -28435,7 +28435,7 @@ class TuberInfo(AbstractModel):
 
 
 class TurnPDFToObjectAsyncGetResultRequest(AbstractModel):
-    """TurnPDFToObjectAsyncGetResult请求参数结构体
+    r"""TurnPDFToObjectAsyncGetResult请求参数结构体
 
     """
 
@@ -28451,7 +28451,7 @@ class TurnPDFToObjectAsyncGetResultRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """加密任务ID。在上一步通过TurnPDFToObjectAsync 接口返回的TaskID。
+        r"""加密任务ID。在上一步通过TurnPDFToObjectAsync 接口返回的TaskID。
 1、建议在上一步调用TurnPDFToObjectAsync接口传入PDF之后，等5-10分钟再调用此接口获取 json 结果。如果任务还没完成，可以等待几分钟之后再重新调用此接口获取 json 结果。
 2、临时加密存储的 json 结果会 24 小时后定时自动删除，因此TaskID 仅 24 小时内有效。
 3、TaskID 与腾讯云的账号绑定，通过 TurnPDFToObjectAsync 传入 PDF 文件和通过 TurnPDFToObjectAsyncGetResult 获取 json 结果，必须是同一个腾讯云账号，否则无法获取到 json 结果。
@@ -28477,7 +28477,7 @@ class TurnPDFToObjectAsyncGetResultRequest(AbstractModel):
 
 
 class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
-    """TurnPDFToObjectAsyncGetResult返回参数结构体
+    r"""TurnPDFToObjectAsyncGetResult返回参数结构体
 
     """
 
@@ -28502,7 +28502,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
     @property
     def Template(self):
-        """报告结构化结果
+        r"""报告结构化结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Template`
         """
         return self._Template
@@ -28513,7 +28513,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """多级分类结果
+        r"""多级分类结果
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -28524,7 +28524,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
     @property
     def Block(self):
-        """报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
+        r"""报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Block`
         """
         return self._Block
@@ -28535,7 +28535,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
     @property
     def IsBlock(self):
-        """是否使用Block字段
+        r"""是否使用Block字段
         :rtype: bool
         """
         return self._IsBlock
@@ -28546,7 +28546,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28574,7 +28574,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
 
 
 class TurnPDFToObjectAsyncRequest(AbstractModel):
-    """TurnPDFToObjectAsync请求参数结构体
+    r"""TurnPDFToObjectAsync请求参数结构体
 
     """
 
@@ -28592,7 +28592,7 @@ class TurnPDFToObjectAsyncRequest(AbstractModel):
 
     @property
     def PdfInfo(self):
-        """体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+        r"""体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
         """
         return self._PdfInfo
@@ -28603,7 +28603,7 @@ class TurnPDFToObjectAsyncRequest(AbstractModel):
 
     @property
     def TextBasedPdfFlag(self):
-        """PDF文件中的文字是否为文本内容.
+        r"""PDF文件中的文字是否为文本内容.
 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
 如果该字段为false, 那么始终采用 OCR 方式
         :rtype: bool
@@ -28631,7 +28631,7 @@ class TurnPDFToObjectAsyncRequest(AbstractModel):
 
 
 class TurnPDFToObjectAsyncResponse(AbstractModel):
-    """TurnPDFToObjectAsync返回参数结构体
+    r"""TurnPDFToObjectAsync返回参数结构体
 
     """
 
@@ -28652,7 +28652,7 @@ class TurnPDFToObjectAsyncResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """加密任务ID。 
+        r"""加密任务ID。 
 1、此 ID 是经过加密生成，是用于获取 PDF 返回 json 的凭证，需要由客户存储该 TaskID。
 2、建议在获取到TaskID 后，5-10分钟后再调用 TurnPDFToObjectAsyncGetResult 接口获取 json 结果。
 3、使用此接口，腾讯不会存储传入的 PDF 文件，但是会临时加密存储对应的 json 结果。如果不希望腾讯临时加密存储 json 结果，请使用 TurnPDFToObject 接口。
@@ -28668,7 +28668,7 @@ class TurnPDFToObjectAsyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28684,7 +28684,7 @@ class TurnPDFToObjectAsyncResponse(AbstractModel):
 
 
 class TurnPDFToObjectRequest(AbstractModel):
-    """TurnPDFToObject请求参数结构体
+    r"""TurnPDFToObject请求参数结构体
 
     """
 
@@ -28702,7 +28702,7 @@ class TurnPDFToObjectRequest(AbstractModel):
 
     @property
     def PdfInfo(self):
-        """体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+        r"""体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
         """
         return self._PdfInfo
@@ -28713,7 +28713,7 @@ class TurnPDFToObjectRequest(AbstractModel):
 
     @property
     def TextBasedPdfFlag(self):
-        """PDF文件中的文字是否为文本内容.
+        r"""PDF文件中的文字是否为文本内容.
 如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
 如果该字段为false, 那么始终采用 OCR 方式
         :rtype: bool
@@ -28741,7 +28741,7 @@ class TurnPDFToObjectRequest(AbstractModel):
 
 
 class TurnPDFToObjectResponse(AbstractModel):
-    """TurnPDFToObject返回参数结构体
+    r"""TurnPDFToObject返回参数结构体
 
     """
 
@@ -28766,7 +28766,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
     @property
     def Template(self):
-        """报告结构化结果
+        r"""报告结构化结果
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Template`
         """
         return self._Template
@@ -28777,7 +28777,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
     @property
     def TextTypeList(self):
-        """多级分类结果
+        r"""多级分类结果
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -28788,7 +28788,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
     @property
     def Block(self):
-        """报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
+        r"""报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Block`
         """
         return self._Block
@@ -28799,7 +28799,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
     @property
     def IsBlock(self):
-        """是否使用Block字段
+        r"""是否使用Block字段
         :rtype: bool
         """
         return self._IsBlock
@@ -28810,7 +28810,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28838,7 +28838,7 @@ class TurnPDFToObjectResponse(AbstractModel):
 
 
 class Vaccination(AbstractModel):
-    """免疫接种记录
+    r"""免疫接种记录
 
     """
 
@@ -28878,7 +28878,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Id(self):
-        """序号
+        r"""序号
         :rtype: str
         """
         return self._Id
@@ -28889,7 +28889,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Vaccine(self):
-        """疫苗名称
+        r"""疫苗名称
         :rtype: str
         """
         return self._Vaccine
@@ -28900,7 +28900,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Dose(self):
-        """剂次
+        r"""剂次
         :rtype: str
         """
         return self._Dose
@@ -28911,7 +28911,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Date(self):
-        """接种日期
+        r"""接种日期
         :rtype: str
         """
         return self._Date
@@ -28922,7 +28922,7 @@ class Vaccination(AbstractModel):
 
     @property
     def LotNumber(self):
-        """疫苗批号
+        r"""疫苗批号
         :rtype: str
         """
         return self._LotNumber
@@ -28933,7 +28933,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产企业
+        r"""生产企业
         :rtype: str
         """
         return self._Manufacturer
@@ -28944,7 +28944,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Clinic(self):
-        """接种单位
+        r"""接种单位
         :rtype: str
         """
         return self._Clinic
@@ -28955,7 +28955,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Site(self):
-        """接种部位
+        r"""接种部位
         :rtype: str
         """
         return self._Site
@@ -28966,7 +28966,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Provider(self):
-        """接种者
+        r"""接种者
         :rtype: str
         """
         return self._Provider
@@ -28977,7 +28977,7 @@ class Vaccination(AbstractModel):
 
     @property
     def Lot(self):
-        """疫苗批号
+        r"""疫苗批号
         :rtype: str
         """
         return self._Lot
@@ -29009,7 +29009,7 @@ class Vaccination(AbstractModel):
 
 
 class VaccineCertificate(AbstractModel):
-    """免疫接种证明
+    r"""免疫接种证明
 
     """
 
@@ -29025,7 +29025,7 @@ class VaccineCertificate(AbstractModel):
 
     @property
     def VaccineList(self):
-        """免疫接种列表
+        r"""免疫接种列表
         :rtype: list of Vaccination
         """
         return self._VaccineList
@@ -29036,7 +29036,7 @@ class VaccineCertificate(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page
@@ -29065,7 +29065,7 @@ class VaccineCertificate(AbstractModel):
 
 
 class Value(AbstractModel):
-    """值
+    r"""值
 
     """
 
@@ -29084,7 +29084,7 @@ class Value(AbstractModel):
 
     @property
     def Grade(self):
-        """等级
+        r"""等级
         :rtype: str
         """
         return self._Grade
@@ -29095,7 +29095,7 @@ class Value(AbstractModel):
 
     @property
     def Percent(self):
-        """百分比
+        r"""百分比
         :rtype: list of float
         """
         return self._Percent
@@ -29106,7 +29106,7 @@ class Value(AbstractModel):
 
     @property
     def Positive(self):
-        """阳性
+        r"""阳性
         :rtype: str
         """
         return self._Positive
@@ -29131,7 +29131,7 @@ class Value(AbstractModel):
 
 
 class ValueBlock(AbstractModel):
-    """值块
+    r"""值块
 
     """
 
@@ -29150,7 +29150,7 @@ class ValueBlock(AbstractModel):
 
     @property
     def Grade(self):
-        """等级
+        r"""等级
         :rtype: str
         """
         return self._Grade
@@ -29161,7 +29161,7 @@ class ValueBlock(AbstractModel):
 
     @property
     def Percent(self):
-        """百分比
+        r"""百分比
         :rtype: list of float
         """
         return self._Percent
@@ -29172,7 +29172,7 @@ class ValueBlock(AbstractModel):
 
     @property
     def Positive(self):
-        """阳性阴性
+        r"""阳性阴性
         :rtype: str
         """
         return self._Positive
@@ -29197,7 +29197,7 @@ class ValueBlock(AbstractModel):
 
 
 class ValueUnitItem(AbstractModel):
-    """体检报告信息-包含单位
+    r"""体检报告信息-包含单位
 
     """
 
@@ -29222,7 +29222,7 @@ class ValueUnitItem(AbstractModel):
 
     @property
     def Name(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Name
@@ -29233,7 +29233,7 @@ class ValueUnitItem(AbstractModel):
 
     @property
     def Item(self):
-        """项目原文
+        r"""项目原文
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -29244,7 +29244,7 @@ class ValueUnitItem(AbstractModel):
 
     @property
     def Result(self):
-        """数值
+        r"""数值
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -29255,7 +29255,7 @@ class ValueUnitItem(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -29266,7 +29266,7 @@ class ValueUnitItem(AbstractModel):
 
     @property
     def Page(self):
-        """数据在原PDF文件中的第几页
+        r"""数据在原PDF文件中的第几页
         :rtype: int
         """
         return self._Page

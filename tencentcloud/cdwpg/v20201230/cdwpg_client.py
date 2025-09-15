@@ -27,7 +27,7 @@ class CdwpgClient(AbstractClient):
 
 
     def CreateInstanceByApi(self, request):
-        """创建集群
+        r"""创建集群
 
         :param request: Request instance for CreateInstanceByApi.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.CreateInstanceByApiRequest`
@@ -50,7 +50,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """获取云原生实例对应的账号列表
+        r"""获取云原生实例对应的账号列表
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeAccountsRequest`
@@ -73,7 +73,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeDBConfigHistory(self, request):
-        """DescribeDBConfigHistory1
+        r"""DescribeDBConfigHistory1
 
         :param request: Request instance for DescribeDBConfigHistory.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBConfigHistoryRequest`
@@ -96,7 +96,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeDBParams(self, request):
-        """配置描述
+        r"""配置描述
 
         :param request: Request instance for DescribeDBParams.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBParamsRequest`
@@ -119,7 +119,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeErrorLog(self, request):
-        """查询错误日志
+        r"""查询错误日志
 
         :param request: Request instance for DescribeErrorLog.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeErrorLogRequest`
@@ -142,7 +142,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """根据实例ID查询某个实例的具体信息
+        r"""根据实例ID查询某个实例的具体信息
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceRequest`
@@ -165,7 +165,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceInfo(self, request):
-        """获取集群信息
+        r"""获取集群信息
 
         :param request: Request instance for DescribeInstanceInfo.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceInfoRequest`
@@ -188,7 +188,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """节点list
+        r"""节点list
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceNodesRequest`
@@ -211,7 +211,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        """在集群详情页面，拉取该集群的操作
+        r"""在集群详情页面，拉取该集群的操作
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceOperationsRequest`
@@ -234,7 +234,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceState(self, request):
-        """集群详情页中显示集群状态、流程进度等
+        r"""集群详情页中显示集群状态、流程进度等
 
         :param request: Request instance for DescribeInstanceState.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceStateRequest`
@@ -257,7 +257,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """获取云原生实例列表
+        r"""获取云原生实例列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstancesRequest`
@@ -280,7 +280,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeSimpleInstances(self, request):
-        """获取集群实例列表
+        r"""获取集群实例列表
 
         :param request: Request instance for DescribeSimpleInstances.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSimpleInstancesRequest`
@@ -303,7 +303,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeSlowLog(self, request):
-        """查询慢SQL日志
+        r"""查询慢SQL日志
 
         :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSlowLogRequest`
@@ -326,7 +326,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeUpgradeList(self, request):
-        """升级记录
+        r"""升级记录
 
         :param request: Request instance for DescribeUpgradeList.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUpgradeListRequest`
@@ -349,7 +349,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeUserHbaConfig(self, request):
-        """user_hba
+        r"""user_hba
 
         :param request: Request instance for DescribeUserHbaConfig.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUserHbaConfigRequest`
@@ -372,7 +372,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DestroyInstanceByApi(self, request):
-        """销毁集群
+        r"""销毁集群
 
         :param request: Request instance for DestroyInstanceByApi.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DestroyInstanceByApiRequest`
@@ -395,7 +395,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyDBParameters(self, request):
-        """集群配置下发
+        r"""集群配置下发
 
         :param request: Request instance for ModifyDBParameters.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyDBParametersRequest`
@@ -418,7 +418,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例信息，目前为实例名称
+        r"""修改实例信息，目前为实例名称
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyInstanceRequest`
@@ -441,7 +441,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyUserHba(self, request):
-        """修改用户Hba配置
+        r"""修改用户Hba配置
 
         :param request: Request instance for ModifyUserHba.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyUserHbaRequest`
@@ -464,7 +464,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """修改账号密码
+        r"""修改账号密码
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ResetAccountPasswordRequest`
@@ -487,7 +487,7 @@ class CdwpgClient(AbstractClient):
 
 
     def RestartInstance(self, request):
-        """用户在控制台主动发起重启实例
+        r"""用户在控制台主动发起重启实例
 
         :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.RestartInstanceRequest`
@@ -510,7 +510,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """水平扩容
+        r"""水平扩容
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleOutInstanceRequest`
@@ -533,7 +533,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """控制台垂直变配集群
+        r"""控制台垂直变配集群
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleUpInstanceRequest`
@@ -556,7 +556,7 @@ class CdwpgClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """在线升级
+        r"""在线升级
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.UpgradeInstanceRequest`

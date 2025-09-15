@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Abnormals(AbstractModel):
-    """异常提醒
+    r"""异常提醒
 
     """
 
@@ -38,7 +38,7 @@ class Abnormals(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -49,7 +49,7 @@ class Abnormals(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -60,7 +60,7 @@ class Abnormals(AbstractModel):
 
     @property
     def AbnormalReason(self):
-        """异常原因 PatientInfo 病人信息缺失；OrderInfo 医嘱信息缺失； PrescriptionError 处方异常提醒
+        r"""异常原因 PatientInfo 病人信息缺失；OrderInfo 医嘱信息缺失； PrescriptionError 处方异常提醒
         :rtype: str
         """
         return self._AbnormalReason
@@ -85,7 +85,7 @@ class Abnormals(AbstractModel):
 
 
 class CommonHeader(AbstractModel):
-    """业务接口请求头
+    r"""业务接口请求头
 
     """
 
@@ -101,7 +101,7 @@ class CommonHeader(AbstractModel):
 
     @property
     def HospitalId(self):
-        """机构ID
+        r"""机构ID
         :rtype: str
         """
         return self._HospitalId
@@ -112,7 +112,7 @@ class CommonHeader(AbstractModel):
 
     @property
     def Token(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._Token
@@ -136,7 +136,7 @@ class CommonHeader(AbstractModel):
 
 
 class CriticalInfo(AbstractModel):
-    """危疾重症
+    r"""危疾重症
 
     """
 
@@ -152,7 +152,7 @@ class CriticalInfo(AbstractModel):
 
     @property
     def Type(self):
-        """危急重症类型 0:文字描述类 1:数值检查类
+        r"""危急重症类型 0:文字描述类 1:数值检查类
         :rtype: int
         """
         return self._Type
@@ -163,7 +163,7 @@ class CriticalInfo(AbstractModel):
 
     @property
     def Tips(self):
-        """提示
+        r"""提示
         :rtype: str
         """
         return self._Tips
@@ -187,7 +187,7 @@ class CriticalInfo(AbstractModel):
 
 
 class CurrentDiagnosis(AbstractModel):
-    """当前诊断
+    r"""当前诊断
 
     """
 
@@ -206,7 +206,7 @@ class CurrentDiagnosis(AbstractModel):
 
     @property
     def DiagnoseDisease(self):
-        """诊断疾病
+        r"""诊断疾病
         :rtype: str
         """
         return self._DiagnoseDisease
@@ -217,7 +217,7 @@ class CurrentDiagnosis(AbstractModel):
 
     @property
     def DiseaseGuideInfo(self):
-        """疾病指南信息
+        r"""疾病指南信息
         :rtype: str
         """
         return self._DiseaseGuideInfo
@@ -228,7 +228,7 @@ class CurrentDiagnosis(AbstractModel):
 
     @property
     def StandardName(self):
-        """标准名称
+        r"""标准名称
         :rtype: str
         """
         return self._StandardName
@@ -253,7 +253,7 @@ class CurrentDiagnosis(AbstractModel):
 
 
 class Department(AbstractModel):
-    """科室信息
+    r"""科室信息
 
     """
 
@@ -278,7 +278,7 @@ class Department(AbstractModel):
 
     @property
     def Id(self):
-        """科室ID
+        r"""科室ID
         :rtype: str
         """
         return self._Id
@@ -289,7 +289,7 @@ class Department(AbstractModel):
 
     @property
     def Name(self):
-        """科室名称
+        r"""科室名称
         :rtype: str
         """
         return self._Name
@@ -300,7 +300,7 @@ class Department(AbstractModel):
 
     @property
     def Scope(self):
-        """科室类型 0:门诊  1:住院  2:门诊+住院
+        r"""科室类型 0:门诊  1:住院  2:门诊+住院
         :rtype: int
         """
         return self._Scope
@@ -311,7 +311,7 @@ class Department(AbstractModel):
 
     @property
     def OutpatientOn(self):
-        """门诊区开关 true:此科室对应的门诊区开启智能审方功能, false:此科室对应的门诊区关闭智能审方功能; 仅对scope为0/2的科室生效
+        r"""门诊区开关 true:此科室对应的门诊区开启智能审方功能, false:此科室对应的门诊区关闭智能审方功能; 仅对scope为0/2的科室生效
         :rtype: bool
         """
         return self._OutpatientOn
@@ -322,7 +322,7 @@ class Department(AbstractModel):
 
     @property
     def InHospitalOn(self):
-        """住院区开关 true:此科室对应的住院区开启智能审方功能, false:此科室对应的住院区关闭智能审方功能; 仅对scope为1/2的科室生效
+        r"""住院区开关 true:此科室对应的住院区开启智能审方功能, false:此科室对应的住院区关闭智能审方功能; 仅对scope为1/2的科室生效
         :rtype: bool
         """
         return self._InHospitalOn
@@ -349,7 +349,7 @@ class Department(AbstractModel):
 
 
 class DiagnosisInfo(AbstractModel):
-    """诊断、辅助内容
+    r"""诊断、辅助内容
 
     """
 
@@ -395,7 +395,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def IntentType(self):
-        """默认0，0:初诊-常规诊疗 1:复诊 2:检验检查/取药/咨询/疫苗 3:信息缺失 4:信息错误
+        r"""默认0，0:初诊-常规诊疗 1:复诊 2:检验检查/取药/咨询/疫苗 3:信息缺失 4:信息错误
         :rtype: int
         """
         return self._IntentType
@@ -406,7 +406,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def RiskInfo(self):
-        """诊断风险
+        r"""诊断风险
         :rtype: str
         """
         return self._RiskInfo
@@ -417,7 +417,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def SuspectedDiagnosis(self):
-        """疑似诊断列表
+        r"""疑似诊断列表
         :rtype: list of SuspectedDiagnosis
         """
         return self._SuspectedDiagnosis
@@ -428,7 +428,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def ReferralInfo(self):
-        """转诊提醒
+        r"""转诊提醒
         :rtype: :class:`tencentcloud.aca.v20210323.models.ReferralInfo`
         """
         return self._ReferralInfo
@@ -439,7 +439,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def CriticalInfo(self):
-        """危急重症
+        r"""危急重症
         :rtype: list of CriticalInfo
         """
         return self._CriticalInfo
@@ -450,7 +450,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def VitalSignsInfo(self):
-        """生命体征风险
+        r"""生命体征风险
         :rtype: :class:`tencentcloud.aca.v20210323.models.VitalSignsInfo`
         """
         return self._VitalSignsInfo
@@ -461,7 +461,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def DifferDiagnosis(self):
-        """鉴别诊断
+        r"""鉴别诊断
         :rtype: list of DifferDiagnosis
         """
         return self._DifferDiagnosis
@@ -472,7 +472,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def RecordQuality(self):
-        """病历质控
+        r"""病历质控
         :rtype: :class:`tencentcloud.aca.v20210323.models.RecordQuality`
         """
         return self._RecordQuality
@@ -483,7 +483,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def CurrentDiagnosis(self):
-        """当前诊断
+        r"""当前诊断
         :rtype: list of CurrentDiagnosis
         """
         return self._CurrentDiagnosis
@@ -494,7 +494,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def TreatmentGuide(self):
-        """治疗方案
+        r"""治疗方案
         :rtype: list of TreatmentGuide
         """
         return self._TreatmentGuide
@@ -505,7 +505,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def EmrQuality(self):
-        """病历质控
+        r"""病历质控
         :rtype: :class:`tencentcloud.aca.v20210323.models.EmrQuality`
         """
         return self._EmrQuality
@@ -516,7 +516,7 @@ class DiagnosisInfo(AbstractModel):
 
     @property
     def HealthPrescriptions(self):
-        """健康处方
+        r"""健康处方
         :rtype: list of HealthPrescriptions
         """
         return self._HealthPrescriptions
@@ -588,7 +588,7 @@ class DiagnosisInfo(AbstractModel):
 
 
 class Dict(AbstractModel):
-    """字典信息
+    r"""字典信息
 
     """
 
@@ -637,7 +637,7 @@ class Dict(AbstractModel):
 
     @property
     def FreqCode(self):
-        """给药频次编码
+        r"""给药频次编码
         :rtype: str
         """
         return self._FreqCode
@@ -648,7 +648,7 @@ class Dict(AbstractModel):
 
     @property
     def FreqName(self):
-        """给药频次名称
+        r"""给药频次名称
         :rtype: str
         """
         return self._FreqName
@@ -659,7 +659,7 @@ class Dict(AbstractModel):
 
     @property
     def Disable(self):
-        """是否禁用 0-启用 1-禁用
+        r"""是否禁用 0-启用 1-禁用
         :rtype: int
         """
         return self._Disable
@@ -670,7 +670,7 @@ class Dict(AbstractModel):
 
     @property
     def UsageCode(self):
-        """给药途径编码
+        r"""给药途径编码
         :rtype: str
         """
         return self._UsageCode
@@ -681,7 +681,7 @@ class Dict(AbstractModel):
 
     @property
     def UsageName(self):
-        """给药途径名称
+        r"""给药途径名称
         :rtype: str
         """
         return self._UsageName
@@ -692,7 +692,7 @@ class Dict(AbstractModel):
 
     @property
     def DeptId(self):
-        """科室ID
+        r"""科室ID
         :rtype: str
         """
         return self._DeptId
@@ -703,7 +703,7 @@ class Dict(AbstractModel):
 
     @property
     def DeptName(self):
-        """科室名称
+        r"""科室名称
         :rtype: str
         """
         return self._DeptName
@@ -714,7 +714,7 @@ class Dict(AbstractModel):
 
     @property
     def Scope(self):
-        """科室区域类型 0:门诊  1:住院  2:门诊+住院
+        r"""科室区域类型 0:门诊  1:住院  2:门诊+住院
         :rtype: int
         """
         return self._Scope
@@ -725,7 +725,7 @@ class Dict(AbstractModel):
 
     @property
     def OutpatientOn(self):
-        """门诊开关
+        r"""门诊开关
         :rtype: bool
         """
         return self._OutpatientOn
@@ -736,7 +736,7 @@ class Dict(AbstractModel):
 
     @property
     def InHospitalOn(self):
-        """住院
+        r"""住院
         :rtype: bool
         """
         return self._InHospitalOn
@@ -747,7 +747,7 @@ class Dict(AbstractModel):
 
     @property
     def DiagCode(self):
-        """诊断编码
+        r"""诊断编码
         :rtype: str
         """
         return self._DiagCode
@@ -758,7 +758,7 @@ class Dict(AbstractModel):
 
     @property
     def DiagName(self):
-        """诊断名称
+        r"""诊断名称
         :rtype: str
         """
         return self._DiagName
@@ -769,7 +769,7 @@ class Dict(AbstractModel):
 
     @property
     def IcdCode(self):
-        """ICD代码
+        r"""ICD代码
         :rtype: str
         """
         return self._IcdCode
@@ -804,7 +804,7 @@ class Dict(AbstractModel):
 
 
 class DifferDiagnosis(AbstractModel):
-    """鉴别诊断
+    r"""鉴别诊断
 
     """
 
@@ -823,7 +823,7 @@ class DifferDiagnosis(AbstractModel):
 
     @property
     def DifferName(self):
-        """鉴别名称
+        r"""鉴别名称
         :rtype: str
         """
         return self._DifferName
@@ -834,7 +834,7 @@ class DifferDiagnosis(AbstractModel):
 
     @property
     def DifferTips(self):
-        """鉴别提示
+        r"""鉴别提示
         :rtype: str
         """
         return self._DifferTips
@@ -845,7 +845,7 @@ class DifferDiagnosis(AbstractModel):
 
     @property
     def DiseaseGuideInfo(self):
-        """疾病指南信息
+        r"""疾病指南信息
         :rtype: str
         """
         return self._DiseaseGuideInfo
@@ -870,7 +870,7 @@ class DifferDiagnosis(AbstractModel):
 
 
 class DocInfo(AbstractModel):
-    """药品文档信息
+    r"""药品文档信息
 
     """
 
@@ -889,7 +889,7 @@ class DocInfo(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -900,7 +900,7 @@ class DocInfo(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -911,7 +911,7 @@ class DocInfo(AbstractModel):
 
     @property
     def DocUrl(self):
-        """说明书地址
+        r"""说明书地址
         :rtype: str
         """
         return self._DocUrl
@@ -936,7 +936,7 @@ class DocInfo(AbstractModel):
 
 
 class DoctorInfo(AbstractModel):
-    """医生信息
+    r"""医生信息
 
     """
 
@@ -955,7 +955,7 @@ class DoctorInfo(AbstractModel):
 
     @property
     def DoctorId(self):
-        """医生ID
+        r"""医生ID
         :rtype: str
         """
         return self._DoctorId
@@ -966,7 +966,7 @@ class DoctorInfo(AbstractModel):
 
     @property
     def DoctorName(self):
-        """医生姓名
+        r"""医生姓名
         :rtype: str
         """
         return self._DoctorName
@@ -977,7 +977,7 @@ class DoctorInfo(AbstractModel):
 
     @property
     def DoctorPhone(self):
-        """医生电话
+        r"""医生电话
         :rtype: str
         """
         return self._DoctorPhone
@@ -1002,7 +1002,7 @@ class DoctorInfo(AbstractModel):
 
 
 class Drug(AbstractModel):
-    """药品信息
+    r"""药品信息
 
     """
 
@@ -1054,7 +1054,7 @@ class Drug(AbstractModel):
 
     @property
     def DrugOrgId(self):
-        """医院药品id
+        r"""医院药品id
         :rtype: str
         """
         return self._DrugOrgId
@@ -1065,7 +1065,7 @@ class Drug(AbstractModel):
 
     @property
     def DrugName(self):
-        """医院药品通用名
+        r"""医院药品通用名
         :rtype: str
         """
         return self._DrugName
@@ -1076,7 +1076,7 @@ class Drug(AbstractModel):
 
     @property
     def DrugCommodityName(self):
-        """医院药品商品名
+        r"""医院药品商品名
         :rtype: str
         """
         return self._DrugCommodityName
@@ -1087,7 +1087,7 @@ class Drug(AbstractModel):
 
     @property
     def Specifications(self):
-        """医院药品规格
+        r"""医院药品规格
         :rtype: str
         """
         return self._Specifications
@@ -1098,7 +1098,7 @@ class Drug(AbstractModel):
 
     @property
     def ApprovalNumber(self):
-        """医院药品批准文号
+        r"""医院药品批准文号
         :rtype: str
         """
         return self._ApprovalNumber
@@ -1109,7 +1109,7 @@ class Drug(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产厂商
+        r"""生产厂商
         :rtype: str
         """
         return self._Manufacturer
@@ -1120,7 +1120,7 @@ class Drug(AbstractModel):
 
     @property
     def DosageForm(self):
-        """剂型
+        r"""剂型
         :rtype: str
         """
         return self._DosageForm
@@ -1131,7 +1131,7 @@ class Drug(AbstractModel):
 
     @property
     def Unuse(self):
-        """使用状态 0:启用 1:停用
+        r"""使用状态 0:启用 1:停用
         :rtype: int
         """
         return self._Unuse
@@ -1142,7 +1142,7 @@ class Drug(AbstractModel):
 
     @property
     def DosageFormCode(self):
-        """剂型编码
+        r"""剂型编码
         :rtype: str
         """
         return self._DosageFormCode
@@ -1153,7 +1153,7 @@ class Drug(AbstractModel):
 
     @property
     def DefinedDailyDose(self):
-        """抗菌药DDD值
+        r"""抗菌药DDD值
         :rtype: str
         """
         return self._DefinedDailyDose
@@ -1164,7 +1164,7 @@ class Drug(AbstractModel):
 
     @property
     def Amount(self):
-        """药品单价
+        r"""药品单价
         :rtype: str
         """
         return self._Amount
@@ -1175,7 +1175,7 @@ class Drug(AbstractModel):
 
     @property
     def YbCode(self):
-        """国家医保编码
+        r"""国家医保编码
         :rtype: str
         """
         return self._YbCode
@@ -1186,7 +1186,7 @@ class Drug(AbstractModel):
 
     @property
     def DrugBasicCode(self):
-        """药品本位码
+        r"""药品本位码
         :rtype: str
         """
         return self._DrugBasicCode
@@ -1197,7 +1197,7 @@ class Drug(AbstractModel):
 
     @property
     def PropertyInfo(self):
-        """药品属性
+        r"""药品属性
         :rtype: :class:`tencentcloud.aca.v20210323.models.DurgPropertyInfo`
         """
         return self._PropertyInfo
@@ -1235,7 +1235,7 @@ class Drug(AbstractModel):
 
 
 class DrugList(AbstractModel):
-    """药品列表
+    r"""药品列表
 
     """
 
@@ -1257,7 +1257,7 @@ class DrugList(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -1268,7 +1268,7 @@ class DrugList(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -1279,7 +1279,7 @@ class DrugList(AbstractModel):
 
     @property
     def DocUrl(self):
-        """文档地址
+        r"""文档地址
         :rtype: str
         """
         return self._DocUrl
@@ -1290,7 +1290,7 @@ class DrugList(AbstractModel):
 
     @property
     def NotFound(self):
-        """是否找到
+        r"""是否找到
         :rtype: bool
         """
         return self._NotFound
@@ -1316,7 +1316,7 @@ class DrugList(AbstractModel):
 
 
 class DrugUsage(AbstractModel):
-    """处方药品信息
+    r"""处方药品信息
 
     """
 
@@ -1383,7 +1383,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -1394,7 +1394,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -1405,7 +1405,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def TimePerDay(self):
-        """日服药频次
+        r"""日服药频次
         :rtype: str
         """
         return self._TimePerDay
@@ -1416,7 +1416,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Usage(self):
-        """给药途径
+        r"""给药途径
         :rtype: str
         """
         return self._Usage
@@ -1427,7 +1427,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def PrescriptionId(self):
-        """处方ID，药品不同分组是传不同的处方ID
+        r"""处方ID，药品不同分组是传不同的处方ID
         :rtype: str
         """
         return self._PrescriptionId
@@ -1438,7 +1438,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def DosagePerTime(self):
-        """每次剂量
+        r"""每次剂量
         :rtype: str
         """
         return self._DosagePerTime
@@ -1449,7 +1449,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def DosagePerTimeUnit(self):
-        """每次剂量单位
+        r"""每次剂量单位
         :rtype: str
         """
         return self._DosagePerTimeUnit
@@ -1460,7 +1460,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Time(self):
-        """单次服药时间
+        r"""单次服药时间
         :rtype: str
         """
         return self._Time
@@ -1471,7 +1471,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Cycle(self):
-        """给药周期
+        r"""给药周期
         :rtype: str
         """
         return self._Cycle
@@ -1482,7 +1482,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def DosagePerDay(self):
-        """单日剂量
+        r"""单日剂量
         :rtype: str
         """
         return self._DosagePerDay
@@ -1493,7 +1493,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Course(self):
-        """疗程
+        r"""疗程
         :rtype: str
         """
         return self._Course
@@ -1504,7 +1504,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Speed(self):
-        """给药速度
+        r"""给药速度
         :rtype: str
         """
         return self._Speed
@@ -1515,7 +1515,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def BeginTime(self):
-        """处方生效时间戳，住院医嘱必须传(caseType =1)
+        r"""处方生效时间戳，住院医嘱必须传(caseType =1)
         :rtype: int
         """
         return self._BeginTime
@@ -1526,7 +1526,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def EndTime(self):
-        """处方失效时间戳，住院医嘱必须传(caseType =1)
+        r"""处方失效时间戳，住院医嘱必须传(caseType =1)
         :rtype: int
         """
         return self._EndTime
@@ -1537,7 +1537,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def Package(self):
-        """开具数量
+        r"""开具数量
         :rtype: str
         """
         return self._Package
@@ -1548,7 +1548,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def PackageUnit(self):
-        """开具数量单位
+        r"""开具数量单位
         :rtype: str
         """
         return self._PackageUnit
@@ -1559,7 +1559,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def GroupInj(self):
-        """相同标志液体间进行配伍禁忌审核，不同标志间液体不进行配伍禁忌审核
+        r"""相同标志液体间进行配伍禁忌审核，不同标志间液体不进行配伍禁忌审核
         :rtype: str
         """
         return self._GroupInj
@@ -1570,7 +1570,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def PrescriptionCharge(self):
-        """处方金额
+        r"""处方金额
         :rtype: str
         """
         return self._PrescriptionCharge
@@ -1581,7 +1581,7 @@ class DrugUsage(AbstractModel):
 
     @property
     def MedicationDays(self):
-        """用药天数
+        r"""用药天数
         :rtype: str
         """
         return self._MedicationDays
@@ -1622,7 +1622,7 @@ class DrugUsage(AbstractModel):
 
 
 class DurgPropertyInfo(AbstractModel):
-    """药品属性
+    r"""药品属性
 
     """
 
@@ -1650,7 +1650,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def DrugType(self):
-        """药品类型 1:西药,2:中成药,3:中药,4:化学药品,5:生物制药
+        r"""药品类型 1:西药,2:中成药,3:中药,4:化学药品,5:生物制药
         :rtype: int
         """
         return self._DrugType
@@ -1661,7 +1661,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def AntibacterialType(self):
-        """抗菌药分类 1:抗真菌药物, 2:抗细菌药物, 3:抗结核药物, 4:其他抗菌药, 0:普通药品
+        r"""抗菌药分类 1:抗真菌药物, 2:抗细菌药物, 3:抗结核药物, 4:其他抗菌药, 0:普通药品
         :rtype: int
         """
         return self._AntibacterialType
@@ -1672,7 +1672,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def AntibacterialClass(self):
-        """抗菌药级别 1:非限制级, 2:限制级, 3:特殊使用级 
+        r"""抗菌药级别 1:非限制级, 2:限制级, 3:特殊使用级 
         :rtype: int
         """
         return self._AntibacterialClass
@@ -1683,7 +1683,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def SpeciallyDrugType(self):
-        """特殊药品类型 1:毒性药品, 2:麻醉药品, 3:放射药品, 4:精神一类药品, 5:精神二类药品, 6:其他特管药品， 7:贵重药品
+        r"""特殊药品类型 1:毒性药品, 2:麻醉药品, 3:放射药品, 4:精神一类药品, 5:精神二类药品, 6:其他特管药品， 7:贵重药品
         :rtype: int
         """
         return self._SpeciallyDrugType
@@ -1694,7 +1694,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def IsBasicDrug(self):
-        """是否为基本药物 1:是, 2:否, 0:未知
+        r"""是否为基本药物 1:是, 2:否, 0:未知
         :rtype: int
         """
         return self._IsBasicDrug
@@ -1705,7 +1705,7 @@ class DurgPropertyInfo(AbstractModel):
 
     @property
     def ChargeType(self):
-        """社保药品 1:甲类药品, 2:乙类药品, 3:双跨药品, 4:自费药品, 0:未知
+        r"""社保药品 1:甲类药品, 2:乙类药品, 3:双跨药品, 4:自费药品, 0:未知
         :rtype: int
         """
         return self._ChargeType
@@ -1733,7 +1733,7 @@ class DurgPropertyInfo(AbstractModel):
 
 
 class EmrDiagnosises(AbstractModel):
-    """诊断列表
+    r"""诊断列表
 
     """
 
@@ -1749,7 +1749,7 @@ class EmrDiagnosises(AbstractModel):
 
     @property
     def DiagnosisName(self):
-        """诊断名称
+        r"""诊断名称
         :rtype: str
         """
         return self._DiagnosisName
@@ -1760,7 +1760,7 @@ class EmrDiagnosises(AbstractModel):
 
     @property
     def IcdCode(self):
-        """ICD代码
+        r"""ICD代码
         :rtype: str
         """
         return self._IcdCode
@@ -1784,7 +1784,7 @@ class EmrDiagnosises(AbstractModel):
 
 
 class EmrQuality(AbstractModel):
-    """病历质控
+    r"""病历质控
 
     """
 
@@ -1797,7 +1797,7 @@ class EmrQuality(AbstractModel):
 
     @property
     def MissPhysicalExamination(self):
-        """缺失体格检查项目
+        r"""缺失体格检查项目
         :rtype: list of str
         """
         return self._MissPhysicalExamination
@@ -1820,7 +1820,7 @@ class EmrQuality(AbstractModel):
 
 
 class GetDrugIndicationsReqData(AbstractModel):
-    """获取适应症请求
+    r"""获取适应症请求
 
     """
 
@@ -1833,7 +1833,7 @@ class GetDrugIndicationsReqData(AbstractModel):
 
     @property
     def Drugs(self):
-        """查询药品列表
+        r"""查询药品列表
         :rtype: list of IndicationsDrug
         """
         return self._Drugs
@@ -1861,7 +1861,7 @@ class GetDrugIndicationsReqData(AbstractModel):
 
 
 class GetDrugIndicationsRequest(AbstractModel):
-    """GetDrugIndications请求参数结构体
+    r"""GetDrugIndications请求参数结构体
 
     """
 
@@ -1877,7 +1877,7 @@ class GetDrugIndicationsRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -1888,7 +1888,7 @@ class GetDrugIndicationsRequest(AbstractModel):
 
     @property
     def Data(self):
-        """获取适应症请求
+        r"""获取适应症请求
         :rtype: :class:`tencentcloud.aca.v20210323.models.GetDrugIndicationsReqData`
         """
         return self._Data
@@ -1916,7 +1916,7 @@ class GetDrugIndicationsRequest(AbstractModel):
 
 
 class GetDrugIndicationsResp(AbstractModel):
-    """药品适应症响应
+    r"""药品适应症响应
 
     """
 
@@ -1932,7 +1932,7 @@ class GetDrugIndicationsResp(AbstractModel):
 
     @property
     def Indications(self):
-        """适应症
+        r"""适应症
         :rtype: list of str
         """
         return self._Indications
@@ -1943,7 +1943,7 @@ class GetDrugIndicationsResp(AbstractModel):
 
     @property
     def DocInfos(self):
-        """药品说明
+        r"""药品说明
         :rtype: list of DocInfo
         """
         return self._DocInfos
@@ -1972,7 +1972,7 @@ class GetDrugIndicationsResp(AbstractModel):
 
 
 class GetDrugIndicationsResponse(AbstractModel):
-    """GetDrugIndications返回参数结构体
+    r"""GetDrugIndications返回参数结构体
 
     """
 
@@ -1994,7 +1994,7 @@ class GetDrugIndicationsResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -2005,7 +2005,7 @@ class GetDrugIndicationsResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -2016,7 +2016,7 @@ class GetDrugIndicationsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """适应症响应
+        r"""适应症响应
         :rtype: :class:`tencentcloud.aca.v20210323.models.GetDrugIndicationsResp`
         """
         return self._Data
@@ -2027,7 +2027,7 @@ class GetDrugIndicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2047,7 +2047,7 @@ class GetDrugIndicationsResponse(AbstractModel):
 
 
 class HealthPrescriptions(AbstractModel):
-    """健康处方
+    r"""健康处方
 
     """
 
@@ -2066,7 +2066,7 @@ class HealthPrescriptions(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -2077,7 +2077,7 @@ class HealthPrescriptions(AbstractModel):
 
     @property
     def Url(self):
-        """健康处方链接
+        r"""健康处方链接
         :rtype: str
         """
         return self._Url
@@ -2088,7 +2088,7 @@ class HealthPrescriptions(AbstractModel):
 
     @property
     def KeyInformation(self):
-        """关键信息
+        r"""关键信息
         :rtype: str
         """
         return self._KeyInformation
@@ -2113,7 +2113,7 @@ class HealthPrescriptions(AbstractModel):
 
 
 class IndicationsDrug(AbstractModel):
-    """适应症药品请求
+    r"""适应症药品请求
 
     """
 
@@ -2144,7 +2144,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -2155,7 +2155,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def Specifications(self):
-        """规格
+        r"""规格
         :rtype: str
         """
         return self._Specifications
@@ -2166,7 +2166,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def ApprovalNumber(self):
-        """批准文号
+        r"""批准文号
         :rtype: str
         """
         return self._ApprovalNumber
@@ -2177,7 +2177,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产厂家
+        r"""生产厂家
         :rtype: str
         """
         return self._Manufacturer
@@ -2188,7 +2188,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -2199,7 +2199,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def TradeName(self):
-        """商品名
+        r"""商品名
         :rtype: str
         """
         return self._TradeName
@@ -2210,7 +2210,7 @@ class IndicationsDrug(AbstractModel):
 
     @property
     def Type(self):
-        """类型 默认0 0-西药 2-中药
+        r"""类型 默认0 0-西药 2-中药
         :rtype: int
         """
         return self._Type
@@ -2239,7 +2239,7 @@ class IndicationsDrug(AbstractModel):
 
 
 class LoginData(AbstractModel):
-    """登录请求对象
+    r"""登录请求对象
 
     """
 
@@ -2264,7 +2264,7 @@ class LoginData(AbstractModel):
 
     @property
     def DoctorId(self):
-        """医生ID
+        r"""医生ID
         :rtype: str
         """
         return self._DoctorId
@@ -2275,7 +2275,7 @@ class LoginData(AbstractModel):
 
     @property
     def DoctorName(self):
-        """医生名称
+        r"""医生名称
         :rtype: str
         """
         return self._DoctorName
@@ -2286,7 +2286,7 @@ class LoginData(AbstractModel):
 
     @property
     def DoctorLevel(self):
-        """医生职级 主治医师、副主任医师、主任医师
+        r"""医生职级 主治医师、副主任医师、主任医师
         :rtype: str
         """
         return self._DoctorLevel
@@ -2297,7 +2297,7 @@ class LoginData(AbstractModel):
 
     @property
     def DoctorDepartment(self):
-        """医生科室 当前登录科室
+        r"""医生科室 当前登录科室
         :rtype: str
         """
         return self._DoctorDepartment
@@ -2308,7 +2308,7 @@ class LoginData(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """科室ID
+        r"""科室ID
         :rtype: str
         """
         return self._DepartmentId
@@ -2335,7 +2335,7 @@ class LoginData(AbstractModel):
 
 
 class LoginDataResp(AbstractModel):
-    """登录返回数据
+    r"""登录返回数据
 
     """
 
@@ -2354,7 +2354,7 @@ class LoginDataResp(AbstractModel):
 
     @property
     def Token(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._Token
@@ -2365,7 +2365,7 @@ class LoginDataResp(AbstractModel):
 
     @property
     def ExpiresIn(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._ExpiresIn
@@ -2376,7 +2376,7 @@ class LoginDataResp(AbstractModel):
 
     @property
     def Timestamp(self):
-        """服务端时间戳，时间戳校验失败时返回
+        r"""服务端时间戳，时间戳校验失败时返回
         :rtype: int
         """
         return self._Timestamp
@@ -2401,7 +2401,7 @@ class LoginDataResp(AbstractModel):
 
 
 class LoginHeader(AbstractModel):
-    """登录接口请求头
+    r"""登录接口请求头
 
     """
 
@@ -2426,7 +2426,7 @@ class LoginHeader(AbstractModel):
 
     @property
     def HospitalId(self):
-        """机构ID
+        r"""机构ID
         :rtype: str
         """
         return self._HospitalId
@@ -2437,7 +2437,7 @@ class LoginHeader(AbstractModel):
 
     @property
     def PartnerId(self):
-        """合作方ID
+        r"""合作方ID
         :rtype: str
         """
         return self._PartnerId
@@ -2448,7 +2448,7 @@ class LoginHeader(AbstractModel):
 
     @property
     def Timestamp(self):
-        """加密时间戳毫秒
+        r"""加密时间戳毫秒
         :rtype: int
         """
         return self._Timestamp
@@ -2459,7 +2459,7 @@ class LoginHeader(AbstractModel):
 
     @property
     def Signature(self):
-        """签名数据
+        r"""签名数据
         :rtype: str
         """
         return self._Signature
@@ -2470,7 +2470,7 @@ class LoginHeader(AbstractModel):
 
     @property
     def PlatformId(self):
-        """平台ID，平台版登录时传入
+        r"""平台ID，平台版登录时传入
         :rtype: str
         """
         return self._PlatformId
@@ -2497,7 +2497,7 @@ class LoginHeader(AbstractModel):
 
 
 class LoginHisToolRequest(AbstractModel):
-    """LoginHisTool请求参数结构体
+    r"""LoginHisTool请求参数结构体
 
     """
 
@@ -2513,7 +2513,7 @@ class LoginHisToolRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginHeader`
         """
         return self._Header
@@ -2524,7 +2524,7 @@ class LoginHisToolRequest(AbstractModel):
 
     @property
     def Data(self):
-        """请求体
+        r"""请求体
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginData`
         """
         return self._Data
@@ -2552,7 +2552,7 @@ class LoginHisToolRequest(AbstractModel):
 
 
 class LoginHisToolResponse(AbstractModel):
-    """LoginHisTool返回参数结构体
+    r"""LoginHisTool返回参数结构体
 
     """
 
@@ -2574,7 +2574,7 @@ class LoginHisToolResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -2585,7 +2585,7 @@ class LoginHisToolResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -2596,7 +2596,7 @@ class LoginHisToolResponse(AbstractModel):
 
     @property
     def Data(self):
-        """登录返回token信息
+        r"""登录返回token信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginDataResp`
         """
         return self._Data
@@ -2607,7 +2607,7 @@ class LoginHisToolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2627,7 +2627,7 @@ class LoginHisToolResponse(AbstractModel):
 
 
 class LoginOutData(AbstractModel):
-    """登出
+    r"""登出
 
     """
 
@@ -2640,7 +2640,7 @@ class LoginOutData(AbstractModel):
 
     @property
     def Token(self):
-        """登录获取的token
+        r"""登录获取的token
         :rtype: str
         """
         return self._Token
@@ -2663,7 +2663,7 @@ class LoginOutData(AbstractModel):
 
 
 class LoginOutHeader(AbstractModel):
-    """登出header对象
+    r"""登出header对象
 
     """
 
@@ -2688,7 +2688,7 @@ class LoginOutHeader(AbstractModel):
 
     @property
     def PartnerId(self):
-        """合作方ID
+        r"""合作方ID
         :rtype: str
         """
         return self._PartnerId
@@ -2699,7 +2699,7 @@ class LoginOutHeader(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间戳毫秒数
+        r"""时间戳毫秒数
         :rtype: int
         """
         return self._Timestamp
@@ -2710,7 +2710,7 @@ class LoginOutHeader(AbstractModel):
 
     @property
     def Signature(self):
-        """签名值
+        r"""签名值
         :rtype: str
         """
         return self._Signature
@@ -2721,7 +2721,7 @@ class LoginOutHeader(AbstractModel):
 
     @property
     def HospitalId(self):
-        """医院ID 单院版传这个
+        r"""医院ID 单院版传这个
         :rtype: str
         """
         return self._HospitalId
@@ -2732,7 +2732,7 @@ class LoginOutHeader(AbstractModel):
 
     @property
     def PlatformId(self):
-        """平台ID 平台版传这个
+        r"""平台ID 平台版传这个
         :rtype: str
         """
         return self._PlatformId
@@ -2759,7 +2759,7 @@ class LoginOutHeader(AbstractModel):
 
 
 class LoginOutHisToolRequest(AbstractModel):
-    """LoginOutHisTool请求参数结构体
+    r"""LoginOutHisTool请求参数结构体
 
     """
 
@@ -2775,7 +2775,7 @@ class LoginOutHisToolRequest(AbstractModel):
 
     @property
     def Header(self):
-        """登出请求header
+        r"""登出请求header
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginOutHeader`
         """
         return self._Header
@@ -2786,7 +2786,7 @@ class LoginOutHisToolRequest(AbstractModel):
 
     @property
     def Data(self):
-        """登出请求数据
+        r"""登出请求数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginOutData`
         """
         return self._Data
@@ -2814,7 +2814,7 @@ class LoginOutHisToolRequest(AbstractModel):
 
 
 class LoginOutHisToolResponse(AbstractModel):
-    """LoginOutHisTool返回参数结构体
+    r"""LoginOutHisTool返回参数结构体
 
     """
 
@@ -2836,7 +2836,7 @@ class LoginOutHisToolResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -2847,7 +2847,7 @@ class LoginOutHisToolResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -2858,7 +2858,7 @@ class LoginOutHisToolResponse(AbstractModel):
 
     @property
     def Data(self):
-        """响应数据
+        r"""响应数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.LoginOutResponseData`
         """
         return self._Data
@@ -2869,7 +2869,7 @@ class LoginOutHisToolResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2889,7 +2889,7 @@ class LoginOutHisToolResponse(AbstractModel):
 
 
 class LoginOutResponseData(AbstractModel):
-    """登出数据
+    r"""登出数据
 
     """
 
@@ -2902,7 +2902,7 @@ class LoginOutResponseData(AbstractModel):
 
     @property
     def Timestamp(self):
-        """服务器时间戳毫秒
+        r"""服务器时间戳毫秒
         :rtype: int
         """
         return self._Timestamp
@@ -2925,7 +2925,7 @@ class LoginOutResponseData(AbstractModel):
 
 
 class OperateResp(AbstractModel):
-    """操作结果
+    r"""操作结果
 
     """
 
@@ -2938,7 +2938,7 @@ class OperateResp(AbstractModel):
 
     @property
     def Dummy(self):
-        """操作结果
+        r"""操作结果
         :rtype: bool
         """
         return self._Dummy
@@ -2961,7 +2961,7 @@ class OperateResp(AbstractModel):
 
 
 class PatientBaseInfo(AbstractModel):
-    """患者信息
+    r"""患者信息
 
     """
 
@@ -2998,7 +2998,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        r"""性别
         :rtype: str
         """
         return self._Sex
@@ -3009,7 +3009,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def Height(self):
-        """身高 单位cm
+        r"""身高 单位cm
         :rtype: str
         """
         return self._Height
@@ -3020,7 +3020,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def Weight(self):
-        """体重 单位kg
+        r"""体重 单位kg
         :rtype: str
         """
         return self._Weight
@@ -3031,7 +3031,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def PatientId(self):
-        """患者ID
+        r"""患者ID
         :rtype: str
         """
         return self._PatientId
@@ -3042,7 +3042,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -3053,7 +3053,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def Age(self):
-        """年龄
+        r"""年龄
         :rtype: str
         """
         return self._Age
@@ -3064,7 +3064,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def BirthPlace(self):
-        """出生地
+        r"""出生地
         :rtype: str
         """
         return self._BirthPlace
@@ -3075,7 +3075,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def LivePlace(self):
-        """居住地
+        r"""居住地
         :rtype: str
         """
         return self._LivePlace
@@ -3086,7 +3086,7 @@ class PatientBaseInfo(AbstractModel):
 
     @property
     def BirthDay(self):
-        """出生日期和年龄必须传一个
+        r"""出生日期和年龄必须传一个
         :rtype: str
         """
         return self._BirthDay
@@ -3117,7 +3117,7 @@ class PatientBaseInfo(AbstractModel):
 
 
 class PatientFamilyHistory(AbstractModel):
-    """患者家族病史
+    r"""患者家族病史
 
     """
 
@@ -3136,7 +3136,7 @@ class PatientFamilyHistory(AbstractModel):
 
     @property
     def FamilyDiseaseHistory(self):
-        """家族病史 如家族病史不能分开，可传入此字段
+        r"""家族病史 如家族病史不能分开，可传入此字段
         :rtype: str
         """
         return self._FamilyDiseaseHistory
@@ -3147,7 +3147,7 @@ class PatientFamilyHistory(AbstractModel):
 
     @property
     def Relation(self):
-        """关系
+        r"""关系
         :rtype: str
         """
         return self._Relation
@@ -3158,7 +3158,7 @@ class PatientFamilyHistory(AbstractModel):
 
     @property
     def CurrentSituation(self):
-        """当前情况
+        r"""当前情况
         :rtype: str
         """
         return self._CurrentSituation
@@ -3183,7 +3183,7 @@ class PatientFamilyHistory(AbstractModel):
 
 
 class PatientHistory(AbstractModel):
-    """患者过往病史
+    r"""患者过往病史
 
     """
 
@@ -3199,7 +3199,7 @@ class PatientHistory(AbstractModel):
 
     @property
     def DiseaseHistory(self):
-        """病史
+        r"""病史
         :rtype: str
         """
         return self._DiseaseHistory
@@ -3210,7 +3210,7 @@ class PatientHistory(AbstractModel):
 
     @property
     def TreatmentHistory(self):
-        """治疗史
+        r"""治疗史
         :rtype: str
         """
         return self._TreatmentHistory
@@ -3234,7 +3234,7 @@ class PatientHistory(AbstractModel):
 
 
 class PhysicalExam(AbstractModel):
-    """体格检查
+    r"""体格检查
 
     """
 
@@ -3262,7 +3262,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def Pulse(self):
-        """脉搏，单位：次/分
+        r"""脉搏，单位：次/分
         :rtype: str
         """
         return self._Pulse
@@ -3273,7 +3273,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def Breathe(self):
-        """呼吸，单位：次/分
+        r"""呼吸，单位：次/分
         :rtype: str
         """
         return self._Breathe
@@ -3284,7 +3284,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def Weight(self):
-        """体重，单位KG
+        r"""体重，单位KG
         :rtype: str
         """
         return self._Weight
@@ -3295,7 +3295,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def BodyTemperature(self):
-        """体温，单位：℃ 
+        r"""体温，单位：℃ 
         :rtype: str
         """
         return self._BodyTemperature
@@ -3306,7 +3306,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def DiastolicPressure(self):
-        """舒张压， 单位：mmHg
+        r"""舒张压， 单位：mmHg
         :rtype: str
         """
         return self._DiastolicPressure
@@ -3317,7 +3317,7 @@ class PhysicalExam(AbstractModel):
 
     @property
     def SystolicPressure(self):
-        """收缩压， 单位：mmHg
+        r"""收缩压， 单位：mmHg
         :rtype: str
         """
         return self._SystolicPressure
@@ -3345,7 +3345,7 @@ class PhysicalExam(AbstractModel):
 
 
 class RationalDrugInfo(AbstractModel):
-    """合理用药信息
+    r"""合理用药信息
 
     """
 
@@ -3391,7 +3391,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def Hit(self):
-        """是否有风险
+        r"""是否有风险
         :rtype: bool
         """
         return self._Hit
@@ -3402,7 +3402,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugUsages(self):
-        """药品用量风险
+        r"""药品用量风险
         :rtype: list of RiskInfo
         """
         return self._DrugUsages
@@ -3413,7 +3413,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugRepeats(self):
-        """重复用药风险
+        r"""重复用药风险
         :rtype: list of RiskInfo
         """
         return self._DrugRepeats
@@ -3424,7 +3424,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugRoutes(self):
-        """用药途径风险
+        r"""用药途径风险
         :rtype: list of RiskInfo
         """
         return self._DrugRoutes
@@ -3435,7 +3435,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def SpecialPopulations(self):
-        """特殊人群风险
+        r"""特殊人群风险
         :rtype: list of RiskInfo
         """
         return self._SpecialPopulations
@@ -3446,7 +3446,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugTaboos(self):
-        """禁忌症风险
+        r"""禁忌症风险
         :rtype: list of RiskInfo
         """
         return self._DrugTaboos
@@ -3457,7 +3457,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugInteractions(self):
-        """相互作用风险
+        r"""相互作用风险
         :rtype: list of RiskInfo
         """
         return self._DrugInteractions
@@ -3468,7 +3468,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugIncompatibility(self):
-        """配伍禁忌风险
+        r"""配伍禁忌风险
         :rtype: list of RiskInfo
         """
         return self._DrugIncompatibility
@@ -3479,7 +3479,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugAllergys(self):
-        """过敏风险
+        r"""过敏风险
         :rtype: list of RiskInfo
         """
         return self._DrugAllergys
@@ -3490,7 +3490,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugIndications(self):
-        """适应症风险
+        r"""适应症风险
         :rtype: list of RiskInfo
         """
         return self._DrugIndications
@@ -3501,7 +3501,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def Abnormals(self):
-        """异常提醒
+        r"""异常提醒
         :rtype: list of Abnormals
         """
         return self._Abnormals
@@ -3512,7 +3512,7 @@ class RationalDrugInfo(AbstractModel):
 
     @property
     def DrugList(self):
-        """药品列表
+        r"""药品列表
         :rtype: list of DrugList
         """
         return self._DrugList
@@ -3601,7 +3601,7 @@ class RationalDrugInfo(AbstractModel):
 
 
 class RecommendedUsage(AbstractModel):
-    """推荐用法
+    r"""推荐用法
 
     """
 
@@ -3620,7 +3620,7 @@ class RecommendedUsage(AbstractModel):
 
     @property
     def UsageRoute(self):
-        """给药途径
+        r"""给药途径
         :rtype: str
         """
         return self._UsageRoute
@@ -3631,7 +3631,7 @@ class RecommendedUsage(AbstractModel):
 
     @property
     def Frequency(self):
-        """给药频率 格式为“最小频次,最大频次,频次单位,频次周期”，如"1,2,次,2"， 表示2天内最少给药1次，最大给药2次。
+        r"""给药频率 格式为“最小频次,最大频次,频次单位,频次周期”，如"1,2,次,2"， 表示2天内最少给药1次，最大给药2次。
         :rtype: str
         """
         return self._Frequency
@@ -3642,7 +3642,7 @@ class RecommendedUsage(AbstractModel):
 
     @property
     def SingleDose(self):
-        """给药剂量 格式为"最小剂量,最大剂量,剂量单位"，如"10,10,ml"，<br>表示每次最大给药量为10ml，最小给药量为10ml。
+        r"""给药剂量 格式为"最小剂量,最大剂量,剂量单位"，如"10,10,ml"，<br>表示每次最大给药量为10ml，最小给药量为10ml。
         :rtype: str
         """
         return self._SingleDose
@@ -3667,7 +3667,7 @@ class RecommendedUsage(AbstractModel):
 
 
 class RecordQuality(AbstractModel):
-    """病历质控
+    r"""病历质控
 
     """
 
@@ -3689,7 +3689,7 @@ class RecordQuality(AbstractModel):
 
     @property
     def Hit(self):
-        """病历是否有问题
+        r"""病历是否有问题
         :rtype: bool
         """
         return self._Hit
@@ -3700,7 +3700,7 @@ class RecordQuality(AbstractModel):
 
     @property
     def Completeness(self):
-        """完整性问题
+        r"""完整性问题
         :rtype: str
         """
         return self._Completeness
@@ -3711,7 +3711,7 @@ class RecordQuality(AbstractModel):
 
     @property
     def Timeliness(self):
-        """及时性问题
+        r"""及时性问题
         :rtype: str
         """
         return self._Timeliness
@@ -3722,7 +3722,7 @@ class RecordQuality(AbstractModel):
 
     @property
     def Logical(self):
-        """逻辑性问题
+        r"""逻辑性问题
         :rtype: str
         """
         return self._Logical
@@ -3748,7 +3748,7 @@ class RecordQuality(AbstractModel):
 
 
 class ReferralInfo(AbstractModel):
-    """转诊提醒
+    r"""转诊提醒
 
     """
 
@@ -3764,7 +3764,7 @@ class ReferralInfo(AbstractModel):
 
     @property
     def Hit(self):
-        """命中
+        r"""命中
         :rtype: bool
         """
         return self._Hit
@@ -3775,7 +3775,7 @@ class ReferralInfo(AbstractModel):
 
     @property
     def Tips(self):
-        """提示
+        r"""提示
         :rtype: str
         """
         return self._Tips
@@ -3799,7 +3799,7 @@ class ReferralInfo(AbstractModel):
 
 
 class RequestCase(AbstractModel):
-    """预测数据
+    r"""预测数据
 
     """
 
@@ -3856,7 +3856,7 @@ class RequestCase(AbstractModel):
 
     @property
     def CaseType(self):
-        """处方类型 0:门诊处方；1:住院医嘱；2:急诊处方 
+        r"""处方类型 0:门诊处方；1:住院医嘱；2:急诊处方 
         :rtype: int
         """
         return self._CaseType
@@ -3867,7 +3867,7 @@ class RequestCase(AbstractModel):
 
     @property
     def ChiefComplaint(self):
-        """主诉
+        r"""主诉
         :rtype: str
         """
         return self._ChiefComplaint
@@ -3878,7 +3878,7 @@ class RequestCase(AbstractModel):
 
     @property
     def Department(self):
-        """科室
+        r"""科室
         :rtype: str
         """
         return self._Department
@@ -3889,7 +3889,7 @@ class RequestCase(AbstractModel):
 
     @property
     def CaseId(self):
-        """病历文书ID
+        r"""病历文书ID
 医生每次书写病历文书的ID，文书内容包含主诉，病史，当前诊断等内容<br />门诊场景：门诊病历文书（带有主诉、病史、诊断及药品的）只有一份，这个编号只有一个。<br/>住院场景：假设住院3天，医生每天都会写一份病历文书（带有主诉、病史、诊断及医嘱药品的文书），那么有对应三个病历文书编号，每次调用预测接口都要传入不同的病历文书编号。注意：如两次调用预测接口，传相同的caseid，则在药师端管理平台的上一次审方记录中的诊断会被本次接口传入的诊断更新。
         :rtype: str
         """
@@ -3901,7 +3901,7 @@ class RequestCase(AbstractModel):
 
     @property
     def CaseTime(self):
-        """病历更新时间
+        r"""病历更新时间
         :rtype: str
         """
         return self._CaseTime
@@ -3912,7 +3912,7 @@ class RequestCase(AbstractModel):
 
     @property
     def VisitId(self):
-        """就诊ID
+        r"""就诊ID
 门诊处方传门诊号，住院医嘱传住院号；备注：门诊场景：用户挂一次号，看一个医生，这时候会有一个代表变成就诊的编号，下一次挂号就诊，这个编号会变。<br/>住院场景：用户本次办理入院，会有一个住院编号，仅代表本次住院，如果下次再住院，这个编号会变。
         :rtype: str
         """
@@ -3924,7 +3924,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PatientBaseinfo(self):
-        """患者信息
+        r"""患者信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.PatientBaseInfo`
         """
         return self._PatientBaseinfo
@@ -3935,7 +3935,7 @@ class RequestCase(AbstractModel):
 
     @property
     def DoctorInfo(self):
-        """医生信息
+        r"""医生信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.DoctorInfo`
         """
         return self._DoctorInfo
@@ -3946,7 +3946,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PresentIllness(self):
-        """现病史
+        r"""现病史
         :rtype: str
         """
         return self._PresentIllness
@@ -3957,7 +3957,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PatientOther(self):
-        """患者其他信息，包含过敏史等
+        r"""患者其他信息，包含过敏史等
         :rtype: str
         """
         return self._PatientOther
@@ -3968,7 +3968,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PatientHistory(self):
-        """患者过往病史
+        r"""患者过往病史
         :rtype: :class:`tencentcloud.aca.v20210323.models.PatientHistory`
         """
         return self._PatientHistory
@@ -3979,7 +3979,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PatientFamilyHistory(self):
-        """患者家族病史
+        r"""患者家族病史
         :rtype: :class:`tencentcloud.aca.v20210323.models.PatientFamilyHistory`
         """
         return self._PatientFamilyHistory
@@ -3990,7 +3990,7 @@ class RequestCase(AbstractModel):
 
     @property
     def PhysicalExam(self):
-        """体格检查
+        r"""体格检查
         :rtype: :class:`tencentcloud.aca.v20210323.models.PhysicalExam`
         """
         return self._PhysicalExam
@@ -4001,7 +4001,7 @@ class RequestCase(AbstractModel):
 
     @property
     def EmrDiagnosises(self):
-        """诊断列表，第一个为首要诊断
+        r"""诊断列表，第一个为首要诊断
         :rtype: list of EmrDiagnosises
         """
         return self._EmrDiagnosises
@@ -4012,7 +4012,7 @@ class RequestCase(AbstractModel):
 
     @property
     def Prescriptions(self):
-        """处方列表
+        r"""处方列表
         :rtype: list of DrugUsage
         """
         return self._Prescriptions
@@ -4069,7 +4069,7 @@ class RequestCase(AbstractModel):
 
 
 class RiskInfo(AbstractModel):
-    """风险信息
+    r"""风险信息
 
     """
 
@@ -4100,7 +4100,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -4111,7 +4111,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -4122,7 +4122,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级：低级风险、中级风险、高级风险
+        r"""风险等级：低级风险、中级风险、高级风险
         :rtype: str
         """
         return self._RiskLevel
@@ -4133,7 +4133,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def RiskTips(self):
-        """风险提示
+        r"""风险提示
         :rtype: str
         """
         return self._RiskTips
@@ -4144,7 +4144,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def FdaLevel(self):
-        """FDA分级
+        r"""FDA分级
         :rtype: str
         """
         return self._FdaLevel
@@ -4155,7 +4155,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def RelatedDrugName(self):
-        """关联药品名称
+        r"""关联药品名称
         :rtype: str
         """
         return self._RelatedDrugName
@@ -4166,7 +4166,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def RelatedPrescriptionId(self):
-        """关联处方ID
+        r"""关联处方ID
         :rtype: str
         """
         return self._RelatedPrescriptionId
@@ -4195,7 +4195,7 @@ class RiskInfo(AbstractModel):
 
 
 class SmartDrugInfoData(AbstractModel):
-    """智能用药请求数据
+    r"""智能用药请求数据
 
     """
 
@@ -4226,7 +4226,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -4237,7 +4237,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def Specifications(self):
-        """规格
+        r"""规格
         :rtype: str
         """
         return self._Specifications
@@ -4248,7 +4248,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def ApprovalNumber(self):
-        """批准文号
+        r"""批准文号
         :rtype: str
         """
         return self._ApprovalNumber
@@ -4259,7 +4259,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产厂家
+        r"""生产厂家
         :rtype: str
         """
         return self._Manufacturer
@@ -4270,7 +4270,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -4281,7 +4281,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def Diagnosis(self):
-        """诊断
+        r"""诊断
         :rtype: str
         """
         return self._Diagnosis
@@ -4292,7 +4292,7 @@ class SmartDrugInfoData(AbstractModel):
 
     @property
     def Age(self):
-        """年龄
+        r"""年龄
         :rtype: float
         """
         return self._Age
@@ -4321,7 +4321,7 @@ class SmartDrugInfoData(AbstractModel):
 
 
 class SmartDrugInfoRequest(AbstractModel):
-    """SmartDrugInfo请求参数结构体
+    r"""SmartDrugInfo请求参数结构体
 
     """
 
@@ -4337,7 +4337,7 @@ class SmartDrugInfoRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -4348,7 +4348,7 @@ class SmartDrugInfoRequest(AbstractModel):
 
     @property
     def Data(self):
-        """药品信息
+        r"""药品信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.SmartDrugInfoData`
         """
         return self._Data
@@ -4376,7 +4376,7 @@ class SmartDrugInfoRequest(AbstractModel):
 
 
 class SmartDrugInfoResp(AbstractModel):
-    """智能用药响应
+    r"""智能用药响应
 
     """
 
@@ -4524,7 +4524,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugId(self):
-        """药品ID
+        r"""药品ID
         :rtype: str
         """
         return self._DrugId
@@ -4535,7 +4535,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def SequenceId(self):
-        """序列ID
+        r"""序列ID
         :rtype: int
         """
         return self._SequenceId
@@ -4546,7 +4546,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugHashId(self):
-        """药品哈希ID
+        r"""药品哈希ID
         :rtype: str
         """
         return self._DrugHashId
@@ -4557,7 +4557,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ImgUrl(self):
-        """图片URL
+        r"""图片URL
         :rtype: str
         """
         return self._ImgUrl
@@ -4568,7 +4568,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugName(self):
-        """药品名称
+        r"""药品名称
         :rtype: str
         """
         return self._DrugName
@@ -4579,7 +4579,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def TradeName(self):
-        """商品名
+        r"""商品名
         :rtype: str
         """
         return self._TradeName
@@ -4590,7 +4590,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def EnglishName(self):
-        """英文名称
+        r"""英文名称
         :rtype: str
         """
         return self._EnglishName
@@ -4601,7 +4601,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def EnglishTradeName(self):
-        """英文商品名
+        r"""英文商品名
         :rtype: str
         """
         return self._EnglishTradeName
@@ -4612,7 +4612,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Pinyin(self):
-        """拼音
+        r"""拼音
         :rtype: str
         """
         return self._Pinyin
@@ -4623,7 +4623,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def OtherNames(self):
-        """其他名称
+        r"""其他名称
         :rtype: str
         """
         return self._OtherNames
@@ -4634,7 +4634,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ChemicalName(self):
-        """化学名称
+        r"""化学名称
         :rtype: str
         """
         return self._ChemicalName
@@ -4645,7 +4645,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def EnglishChemicalName(self):
-        """英文化学名称
+        r"""英文化学名称
         :rtype: str
         """
         return self._EnglishChemicalName
@@ -4656,7 +4656,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ApprovalNumber(self):
-        """批准文号
+        r"""批准文号
         :rtype: str
         """
         return self._ApprovalNumber
@@ -4667,7 +4667,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Property(self):
-        """药品属性标签 多个标签时 | 分隔，如抗菌药|抗生素|贵重药品
+        r"""药品属性标签 多个标签时 | 分隔，如抗菌药|抗生素|贵重药品
         :rtype: str
         """
         return self._Property
@@ -4678,7 +4678,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Ingredients(self):
-        """药品成分
+        r"""药品成分
         :rtype: str
         """
         return self._Ingredients
@@ -4689,7 +4689,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def PhenotypicTrait(self):
-        """药品性状
+        r"""药品性状
         :rtype: str
         """
         return self._PhenotypicTrait
@@ -4700,7 +4700,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Indications(self):
-        """适应症
+        r"""适应症
         :rtype: str
         """
         return self._Indications
@@ -4711,7 +4711,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Specifications(self):
-        """规格
+        r"""规格
         :rtype: str
         """
         return self._Specifications
@@ -4722,7 +4722,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def UsageAndDosage(self):
-        """用法用量
+        r"""用法用量
         :rtype: str
         """
         return self._UsageAndDosage
@@ -4733,7 +4733,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def RecommendedUsage(self):
-        """推荐用法
+        r"""推荐用法
         :rtype: :class:`tencentcloud.aca.v20210323.models.RecommendedUsage`
         """
         return self._RecommendedUsage
@@ -4744,7 +4744,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def AdverseReaction(self):
-        """不良反应
+        r"""不良反应
         :rtype: str
         """
         return self._AdverseReaction
@@ -4755,7 +4755,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Contraindication(self):
-        """禁忌
+        r"""禁忌
         :rtype: str
         """
         return self._Contraindication
@@ -4766,7 +4766,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Attentions(self):
-        """注意事项
+        r"""注意事项
         :rtype: str
         """
         return self._Attentions
@@ -4777,7 +4777,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Overdose(self):
-        """药物过量
+        r"""药物过量
         :rtype: str
         """
         return self._Overdose
@@ -4788,7 +4788,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def PregnantAndLactatingWomen(self):
-        """孕妇及哺乳期妇女用药
+        r"""孕妇及哺乳期妇女用药
         :rtype: str
         """
         return self._PregnantAndLactatingWomen
@@ -4799,7 +4799,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ElderlyPatients(self):
-        """老年患者用药
+        r"""老年患者用药
         :rtype: str
         """
         return self._ElderlyPatients
@@ -4810,7 +4810,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def PediatricDrugs(self):
-        """儿童用药
+        r"""儿童用药
         :rtype: str
         """
         return self._PediatricDrugs
@@ -4821,7 +4821,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Interactions(self):
-        """药物相互作用
+        r"""药物相互作用
         :rtype: str
         """
         return self._Interactions
@@ -4832,7 +4832,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ClinicalResearch(self):
-        """临床研究
+        r"""临床研究
         :rtype: str
         """
         return self._ClinicalResearch
@@ -4843,7 +4843,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def PharmacologyToxicology(self):
-        """药理毒理
+        r"""药理毒理
         :rtype: str
         """
         return self._PharmacologyToxicology
@@ -4854,7 +4854,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Pharmacokinetics(self):
-        """药代动力学
+        r"""药代动力学
         :rtype: str
         """
         return self._Pharmacokinetics
@@ -4865,7 +4865,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Warning(self):
-        """警告
+        r"""警告
         :rtype: str
         """
         return self._Warning
@@ -4876,7 +4876,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ExpireDate
@@ -4887,7 +4887,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Storage(self):
-        """贮藏
+        r"""贮藏
         :rtype: str
         """
         return self._Storage
@@ -4898,7 +4898,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Pack(self):
-        """包装
+        r"""包装
         :rtype: str
         """
         return self._Pack
@@ -4909,7 +4909,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产企业
+        r"""生产企业
         :rtype: str
         """
         return self._Manufacturer
@@ -4920,7 +4920,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ManufacturerAddress(self):
-        """生产企业地址
+        r"""生产企业地址
         :rtype: str
         """
         return self._ManufacturerAddress
@@ -4931,7 +4931,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ManufacturerPhone(self):
-        """生产企业电话
+        r"""生产企业电话
         :rtype: str
         """
         return self._ManufacturerPhone
@@ -4942,7 +4942,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ManufacturerEmail(self):
-        """生产企业邮箱
+        r"""生产企业邮箱
         :rtype: str
         """
         return self._ManufacturerEmail
@@ -4953,7 +4953,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def ManufacturerWebsite(self):
-        """生产企业网站
+        r"""生产企业网站
         :rtype: str
         """
         return self._ManufacturerWebsite
@@ -4964,7 +4964,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DocRevisionTime(self):
-        """说明书制定和修订时间
+        r"""说明书制定和修订时间
         :rtype: str
         """
         return self._DocRevisionTime
@@ -4975,7 +4975,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def References(self):
-        """参考文献
+        r"""参考文献
         :rtype: str
         """
         return self._References
@@ -4986,7 +4986,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugDosageForm(self):
-        """剂型
+        r"""剂型
         :rtype: str
         """
         return self._DrugDosageForm
@@ -4997,7 +4997,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugRoute(self):
-        """给药途径
+        r"""给药途径
         :rtype: str
         """
         return self._DrugRoute
@@ -5008,7 +5008,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def DrugBasicCode(self):
-        """药品本位码
+        r"""药品本位码
         :rtype: str
         """
         return self._DrugBasicCode
@@ -5019,7 +5019,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def OctTag(self):
-        """OTC标签
+        r"""OTC标签
         :rtype: str
         """
         return self._OctTag
@@ -5089,7 +5089,7 @@ class SmartDrugInfoResp(AbstractModel):
 
 
 class SmartDrugInfoResponse(AbstractModel):
-    """SmartDrugInfo返回参数结构体
+    r"""SmartDrugInfo返回参数结构体
 
     """
 
@@ -5111,7 +5111,7 @@ class SmartDrugInfoResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -5122,7 +5122,7 @@ class SmartDrugInfoResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -5133,7 +5133,7 @@ class SmartDrugInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """智能用药信息
+        r"""智能用药信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.SmartDrugInfoResp`
         """
         return self._Data
@@ -5144,7 +5144,7 @@ class SmartDrugInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5164,7 +5164,7 @@ class SmartDrugInfoResponse(AbstractModel):
 
 
 class SmartPredictReqData(AbstractModel):
-    """智能预测接口请求对象
+    r"""智能预测接口请求对象
 
     """
 
@@ -5180,7 +5180,7 @@ class SmartPredictReqData(AbstractModel):
 
     @property
     def RequestCase(self):
-        """病历和处方信息
+        r"""病历和处方信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.RequestCase`
         """
         return self._RequestCase
@@ -5191,7 +5191,7 @@ class SmartPredictReqData(AbstractModel):
 
     @property
     def RequestType(self):
-        """0--默认值，同时返回**疾病预测**和**用药审查**结果<br>1--仅返回**疾病预测**结果<br>2--仅返回**用药审查**结果<br>已同时激活两个模块时，可按需使用 
+        r"""0--默认值，同时返回**疾病预测**和**用药审查**结果<br>1--仅返回**疾病预测**结果<br>2--仅返回**用药审查**结果<br>已同时激活两个模块时，可按需使用 
         :rtype: int
         """
         return self._RequestType
@@ -5217,7 +5217,7 @@ class SmartPredictReqData(AbstractModel):
 
 
 class SmartPredictRequest(AbstractModel):
-    """SmartPredict请求参数结构体
+    r"""SmartPredict请求参数结构体
 
     """
 
@@ -5233,7 +5233,7 @@ class SmartPredictRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -5244,7 +5244,7 @@ class SmartPredictRequest(AbstractModel):
 
     @property
     def Data(self):
-        """请求体
+        r"""请求体
         :rtype: :class:`tencentcloud.aca.v20210323.models.SmartPredictReqData`
         """
         return self._Data
@@ -5272,7 +5272,7 @@ class SmartPredictRequest(AbstractModel):
 
 
 class SmartPredictRespData(AbstractModel):
-    """智能问诊响应数据
+    r"""智能问诊响应数据
 
     """
 
@@ -5288,7 +5288,7 @@ class SmartPredictRespData(AbstractModel):
 
     @property
     def DiagnosisInfo(self):
-        """诊断辅助内容
+        r"""诊断辅助内容
         :rtype: :class:`tencentcloud.aca.v20210323.models.DiagnosisInfo`
         """
         return self._DiagnosisInfo
@@ -5299,7 +5299,7 @@ class SmartPredictRespData(AbstractModel):
 
     @property
     def RationalDrugInfo(self):
-        """用药风险信息
+        r"""用药风险信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.RationalDrugInfo`
         """
         return self._RationalDrugInfo
@@ -5327,7 +5327,7 @@ class SmartPredictRespData(AbstractModel):
 
 
 class SmartPredictResponse(AbstractModel):
-    """SmartPredict返回参数结构体
+    r"""SmartPredict返回参数结构体
 
     """
 
@@ -5349,7 +5349,7 @@ class SmartPredictResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -5360,7 +5360,7 @@ class SmartPredictResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -5371,7 +5371,7 @@ class SmartPredictResponse(AbstractModel):
 
     @property
     def Data(self):
-        """智能预测内容
+        r"""智能预测内容
         :rtype: :class:`tencentcloud.aca.v20210323.models.SmartPredictRespData`
         """
         return self._Data
@@ -5382,7 +5382,7 @@ class SmartPredictResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5402,7 +5402,7 @@ class SmartPredictResponse(AbstractModel):
 
 
 class SuspectedDiagnosis(AbstractModel):
-    """疑似诊断
+    r"""疑似诊断
 
     """
 
@@ -5433,7 +5433,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def DiseaseName(self):
-        """疾病名称
+        r"""疾病名称
         :rtype: str
         """
         return self._DiseaseName
@@ -5444,7 +5444,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def IcdCode(self):
-        """ICD代码
+        r"""ICD代码
         :rtype: str
         """
         return self._IcdCode
@@ -5455,7 +5455,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def Symptom(self):
-        """症状
+        r"""症状
         :rtype: str
         """
         return self._Symptom
@@ -5466,7 +5466,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def Physi(self):
-        """体征
+        r"""体征
         :rtype: str
         """
         return self._Physi
@@ -5477,7 +5477,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def Inspection(self):
-        """检查
+        r"""检查
         :rtype: str
         """
         return self._Inspection
@@ -5488,7 +5488,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def DiseaseGuideInfo(self):
-        """疾病指南信息
+        r"""疾病指南信息
         :rtype: str
         """
         return self._DiseaseGuideInfo
@@ -5499,7 +5499,7 @@ class SuspectedDiagnosis(AbstractModel):
 
     @property
     def Probability(self):
-        """置信度
+        r"""置信度
         :rtype: float
         """
         return self._Probability
@@ -5528,7 +5528,7 @@ class SuspectedDiagnosis(AbstractModel):
 
 
 class SyncDepartmentData(AbstractModel):
-    """同步科室信息
+    r"""同步科室信息
 
     """
 
@@ -5544,7 +5544,7 @@ class SyncDepartmentData(AbstractModel):
 
     @property
     def Cmd(self):
-        """操作类型 1:获取科室列表  2:同步科室信息（增、改） 3:删除科室
+        r"""操作类型 1:获取科室列表  2:同步科室信息（增、改） 3:删除科室
         :rtype: int
         """
         return self._Cmd
@@ -5555,7 +5555,7 @@ class SyncDepartmentData(AbstractModel):
 
     @property
     def List(self):
-        """科室列表
+        r"""科室列表
         :rtype: list of Department
         """
         return self._List
@@ -5584,7 +5584,7 @@ class SyncDepartmentData(AbstractModel):
 
 
 class SyncDepartmentRequest(AbstractModel):
-    """SyncDepartment请求参数结构体
+    r"""SyncDepartment请求参数结构体
 
     """
 
@@ -5600,7 +5600,7 @@ class SyncDepartmentRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -5611,7 +5611,7 @@ class SyncDepartmentRequest(AbstractModel):
 
     @property
     def Data(self):
-        """同步数据
+        r"""同步数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.SyncDepartmentData`
         """
         return self._Data
@@ -5639,7 +5639,7 @@ class SyncDepartmentRequest(AbstractModel):
 
 
 class SyncDepartmentRespData(AbstractModel):
-    """同步科室信息返回
+    r"""同步科室信息返回
 
     """
 
@@ -5652,7 +5652,7 @@ class SyncDepartmentRespData(AbstractModel):
 
     @property
     def List(self):
-        """科室列表
+        r"""科室列表
         :rtype: list of Department
         """
         return self._List
@@ -5680,7 +5680,7 @@ class SyncDepartmentRespData(AbstractModel):
 
 
 class SyncDepartmentResponse(AbstractModel):
-    """SyncDepartment返回参数结构体
+    r"""SyncDepartment返回参数结构体
 
     """
 
@@ -5702,7 +5702,7 @@ class SyncDepartmentResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -5713,7 +5713,7 @@ class SyncDepartmentResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -5724,7 +5724,7 @@ class SyncDepartmentResponse(AbstractModel):
 
     @property
     def Data(self):
-        """响应数据
+        r"""响应数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.SyncDepartmentRespData`
         """
         return self._Data
@@ -5735,7 +5735,7 @@ class SyncDepartmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5755,7 +5755,7 @@ class SyncDepartmentResponse(AbstractModel):
 
 
 class SyncDictData(AbstractModel):
-    """同步字典数据
+    r"""同步字典数据
 
     """
 
@@ -5774,7 +5774,7 @@ class SyncDictData(AbstractModel):
 
     @property
     def HospitalId(self):
-        """医院ID
+        r"""医院ID
         :rtype: str
         """
         return self._HospitalId
@@ -5785,7 +5785,7 @@ class SyncDictData(AbstractModel):
 
     @property
     def DictType(self):
-        """字典类型 1-给药频次 2-给药途径 3-科室 4-诊断
+        r"""字典类型 1-给药频次 2-给药途径 3-科室 4-诊断
         :rtype: int
         """
         return self._DictType
@@ -5796,7 +5796,7 @@ class SyncDictData(AbstractModel):
 
     @property
     def Dicts(self):
-        """字典数据
+        r"""字典数据
         :rtype: list of Dict
         """
         return self._Dicts
@@ -5826,7 +5826,7 @@ class SyncDictData(AbstractModel):
 
 
 class SyncStandardDictRequest(AbstractModel):
-    """SyncStandardDict请求参数结构体
+    r"""SyncStandardDict请求参数结构体
 
     """
 
@@ -5842,7 +5842,7 @@ class SyncStandardDictRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头
+        r"""请求头
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -5853,7 +5853,7 @@ class SyncStandardDictRequest(AbstractModel):
 
     @property
     def Data(self):
-        """字典数据
+        r"""字典数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.SyncDictData`
         """
         return self._Data
@@ -5881,7 +5881,7 @@ class SyncStandardDictRequest(AbstractModel):
 
 
 class SyncStandardDictResponse(AbstractModel):
-    """SyncStandardDict返回参数结构体
+    r"""SyncStandardDict返回参数结构体
 
     """
 
@@ -5900,7 +5900,7 @@ class SyncStandardDictResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -5911,7 +5911,7 @@ class SyncStandardDictResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -5922,7 +5922,7 @@ class SyncStandardDictResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5939,7 +5939,7 @@ class SyncStandardDictResponse(AbstractModel):
 
 
 class TreatmentGuide(AbstractModel):
-    """治疗方案
+    r"""治疗方案
 
     """
 
@@ -5964,7 +5964,7 @@ class TreatmentGuide(AbstractModel):
 
     @property
     def DoctorDiagnosis(self):
-        """医生诊断
+        r"""医生诊断
         :rtype: str
         """
         return self._DoctorDiagnosis
@@ -5975,7 +5975,7 @@ class TreatmentGuide(AbstractModel):
 
     @property
     def DiseaseName(self):
-        """疾病名称
+        r"""疾病名称
         :rtype: str
         """
         return self._DiseaseName
@@ -5986,7 +5986,7 @@ class TreatmentGuide(AbstractModel):
 
     @property
     def TreatDetailUrl(self):
-        """治疗详情链接
+        r"""治疗详情链接
         :rtype: str
         """
         return self._TreatDetailUrl
@@ -5997,7 +5997,7 @@ class TreatmentGuide(AbstractModel):
 
     @property
     def TreatPlan(self):
-        """治疗方案
+        r"""治疗方案
         :rtype: str
         """
         return self._TreatPlan
@@ -6008,7 +6008,7 @@ class TreatmentGuide(AbstractModel):
 
     @property
     def TreatPrinciple(self):
-        """治疗原则
+        r"""治疗原则
         :rtype: str
         """
         return self._TreatPrinciple
@@ -6035,7 +6035,7 @@ class TreatmentGuide(AbstractModel):
 
 
 class UploadDrugData(AbstractModel):
-    """上传药品数据
+    r"""上传药品数据
 
     """
 
@@ -6048,7 +6048,7 @@ class UploadDrugData(AbstractModel):
 
     @property
     def Drugs(self):
-        """药品列表
+        r"""药品列表
         :rtype: list of Drug
         """
         return self._Drugs
@@ -6076,7 +6076,7 @@ class UploadDrugData(AbstractModel):
 
 
 class UploadDrugsRequest(AbstractModel):
-    """UploadDrugs请求参数结构体
+    r"""UploadDrugs请求参数结构体
 
     """
 
@@ -6092,7 +6092,7 @@ class UploadDrugsRequest(AbstractModel):
 
     @property
     def Header(self):
-        """请求头数据
+        r"""请求头数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.CommonHeader`
         """
         return self._Header
@@ -6103,7 +6103,7 @@ class UploadDrugsRequest(AbstractModel):
 
     @property
     def Data(self):
-        """药品上传数据
+        r"""药品上传数据
         :rtype: :class:`tencentcloud.aca.v20210323.models.UploadDrugData`
         """
         return self._Data
@@ -6131,7 +6131,7 @@ class UploadDrugsRequest(AbstractModel):
 
 
 class UploadDrugsResponse(AbstractModel):
-    """UploadDrugs返回参数结构体
+    r"""UploadDrugs返回参数结构体
 
     """
 
@@ -6153,7 +6153,7 @@ class UploadDrugsResponse(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: int
         """
         return self._Code
@@ -6164,7 +6164,7 @@ class UploadDrugsResponse(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -6175,7 +6175,7 @@ class UploadDrugsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """操作信息
+        r"""操作信息
         :rtype: :class:`tencentcloud.aca.v20210323.models.OperateResp`
         """
         return self._Data
@@ -6186,7 +6186,7 @@ class UploadDrugsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6206,7 +6206,7 @@ class UploadDrugsResponse(AbstractModel):
 
 
 class VitalSignsInfo(AbstractModel):
-    """生命体征风险
+    r"""生命体征风险
 
     """
 
@@ -6222,7 +6222,7 @@ class VitalSignsInfo(AbstractModel):
 
     @property
     def Hit(self):
-        """是否包含风险
+        r"""是否包含风险
         :rtype: bool
         """
         return self._Hit
@@ -6233,7 +6233,7 @@ class VitalSignsInfo(AbstractModel):
 
     @property
     def Tips(self):
-        """提示
+        r"""提示
         :rtype: str
         """
         return self._Tips

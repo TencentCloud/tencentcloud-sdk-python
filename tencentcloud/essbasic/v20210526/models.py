@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Agent(AbstractModel):
-    """应用相关信息, 整体应用的层级图如下
+    r"""应用相关信息, 整体应用的层级图如下
 
     注:
       1. `不同的业务系统可以采用不同的应用，不同应用下的数据是隔离的,  应用A中的某个企业已经实名, 在应用B中此企业还需要重新认证`
@@ -49,7 +49,7 @@ class Agent(AbstractModel):
 
     @property
     def AppId(self):
-        """应用的唯一标识(由电子签平台自动生成)。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。位置如下:
+        r"""应用的唯一标识(由电子签平台自动生成)。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。位置如下:
 
 ![image](https://qcloudimg.tencent-cloud.cn/raw/fac77e0d3f28aaec56669f67e65c8db8.png)
         :rtype: str
@@ -62,7 +62,7 @@ class Agent(AbstractModel):
 
     @property
     def ProxyOrganizationOpenId(self):
-        """第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
+        r"""第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
         :rtype: str
         """
         return self._ProxyOrganizationOpenId
@@ -73,7 +73,7 @@ class Agent(AbstractModel):
 
     @property
     def ProxyOperator(self):
-        """第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
+        r"""第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._ProxyOperator
@@ -84,7 +84,7 @@ class Agent(AbstractModel):
 
     @property
     def ProxyAppId(self):
-        """**不用填写**，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
+        r"""**不用填写**，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
         :rtype: str
         """
         return self._ProxyAppId
@@ -97,7 +97,7 @@ class Agent(AbstractModel):
     def ProxyOrganizationId(self):
         warnings.warn("parameter `ProxyOrganizationId` is deprecated", DeprecationWarning) 
 
-        """内部参数，暂未开放使用
+        r"""内部参数，暂未开放使用
         :rtype: str
         """
         return self._ProxyOrganizationId
@@ -128,7 +128,7 @@ class Agent(AbstractModel):
 
 
 class ApproverComponentLimitType(AbstractModel):
-    """指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+    r"""指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
 
     """
 
@@ -152,7 +152,7 @@ class ApproverComponentLimitType(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+        r"""签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
         :rtype: str
         """
         return self._RecipientId
@@ -163,7 +163,7 @@ class ApproverComponentLimitType(AbstractModel):
 
     @property
     def Values(self):
-        """签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+        r"""签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
 
 签名方式：
 <ul>
@@ -195,7 +195,7 @@ class ApproverComponentLimitType(AbstractModel):
 
 
 class ApproverItem(AbstractModel):
-    """签署方信息，发起合同后可获取到对应的签署方信息，如角色ID，角色名称
+    r"""签署方信息，发起合同后可获取到对应的签署方信息，如角色ID，角色名称
 
     """
 
@@ -218,7 +218,7 @@ class ApproverItem(AbstractModel):
 
     @property
     def SignId(self):
-        """签署方唯一编号
+        r"""签署方唯一编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
         :rtype: str
@@ -231,7 +231,7 @@ class ApproverItem(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方角色编号
+        r"""签署方角色编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
         :rtype: str
@@ -244,7 +244,7 @@ class ApproverItem(AbstractModel):
 
     @property
     def ApproverRoleName(self):
-        """签署方角色名称
+        r"""签署方角色名称
         :rtype: str
         """
         return self._ApproverRoleName
@@ -269,7 +269,7 @@ class ApproverItem(AbstractModel):
 
 
 class ApproverOption(AbstractModel):
-    """签署人个性化能力信息
+    r"""签署人个性化能力信息
 
     """
 
@@ -317,7 +317,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoRefuse(self):
-        """是否可以拒签 默认false-可以拒签 true-不可以拒签
+        r"""是否可以拒签 默认false-可以拒签 true-不可以拒签
         :rtype: bool
         """
         return self._NoRefuse
@@ -328,7 +328,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoTransfer(self):
-        """是否可以转发 默认false-可以转发 true-不可以转发
+        r"""是否可以转发 默认false-可以转发 true-不可以转发
         :rtype: bool
         """
         return self._NoTransfer
@@ -339,7 +339,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def HideOneKeySign(self):
-        """当签署方有多个签署区时候，是否隐藏一键所有的签署区
+        r"""当签署方有多个签署区时候，是否隐藏一键所有的签署区
 
 false：（默认）不隐藏
 true：隐藏，每个签署区要单独选择印章或者签名
@@ -353,7 +353,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def FillType(self):
-        """签署人信息补充类型，默认无需补充。
+        r"""签署人信息补充类型，默认无需补充。
 
 <ul><li> **1** :  动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li></ul>
 
@@ -369,7 +369,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def FlowReadLimit(self):
-        """签署人阅读合同限制参数
+        r"""签署人阅读合同限制参数
  <br/>取值：
 <ul>
 <li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
@@ -387,7 +387,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def ForbidAddSignDate(self):
-        """禁止在签署过程中添加签署日期控件
+        r"""禁止在签署过程中添加签署日期控件
  <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
 <ul>
 <li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
@@ -420,7 +420,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
 
 class ApproverRestriction(AbstractModel):
-    """指定签署人限制项
+    r"""指定签署人限制项
 
     """
 
@@ -442,7 +442,7 @@ class ApproverRestriction(AbstractModel):
 
     @property
     def Name(self):
-        """指定签署人姓名
+        r"""指定签署人姓名
         :rtype: str
         """
         return self._Name
@@ -453,7 +453,7 @@ class ApproverRestriction(AbstractModel):
 
     @property
     def Mobile(self):
-        """指定签署人手机号，11位数字
+        r"""指定签署人手机号，11位数字
         :rtype: str
         """
         return self._Mobile
@@ -464,7 +464,7 @@ class ApproverRestriction(AbstractModel):
 
     @property
     def IdCardType(self):
-        """指定签署人证件类型，ID_CARD-身份证，HONGKONG_AND_MACAO-港澳居民来往内地通行证，HONGKONG_MACAO_AND_TAIWAN-港澳台居民居住证
+        r"""指定签署人证件类型，ID_CARD-身份证，HONGKONG_AND_MACAO-港澳居民来往内地通行证，HONGKONG_MACAO_AND_TAIWAN-港澳台居民居住证
         :rtype: str
         """
         return self._IdCardType
@@ -475,7 +475,7 @@ class ApproverRestriction(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """指定签署人证件号码，其中字母大写
+        r"""指定签署人证件号码，其中字母大写
         :rtype: str
         """
         return self._IdCardNumber
@@ -501,7 +501,7 @@ class ApproverRestriction(AbstractModel):
 
 
 class ArchiveDynamicFlowRequest(AbstractModel):
-    """ArchiveDynamicFlow请求参数结构体
+    r"""ArchiveDynamicFlow请求参数结构体
 
     """
 
@@ -525,7 +525,7 @@ class ArchiveDynamicFlowRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -544,7 +544,7 @@ class ArchiveDynamicFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID
+        r"""合同流程ID
         :rtype: str
         """
         return self._FlowId
@@ -570,7 +570,7 @@ class ArchiveDynamicFlowRequest(AbstractModel):
 
 
 class ArchiveDynamicFlowResponse(AbstractModel):
-    """ArchiveDynamicFlow返回参数结构体
+    r"""ArchiveDynamicFlow返回参数结构体
 
     """
 
@@ -589,7 +589,7 @@ class ArchiveDynamicFlowResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID
+        r"""合同流程ID
         :rtype: str
         """
         return self._FlowId
@@ -600,7 +600,7 @@ class ArchiveDynamicFlowResponse(AbstractModel):
 
     @property
     def Approvers(self):
-        """动态签署人的参与人信息
+        r"""动态签署人的参与人信息
         :rtype: list of ChannelArchiveDynamicApproverData
         """
         return self._Approvers
@@ -611,7 +611,7 @@ class ArchiveDynamicFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -633,7 +633,7 @@ class ArchiveDynamicFlowResponse(AbstractModel):
 
 
 class AuthFailMessage(AbstractModel):
-    """授权出错信息
+    r"""授权出错信息
 
     """
 
@@ -651,7 +651,7 @@ class AuthFailMessage(AbstractModel):
 
     @property
     def ProxyOrganizationOpenId(self):
-        """第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
+        r"""第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
 
 一个第三方平台子客企业主体与子客企业 ProxyOrganizationOpenId 是一一对应的，不可更改，不可重复使用。例如，可以使用企业名称的哈希值，或者社会统一信用代码的哈希值，或者随机哈希值。
         :rtype: str
@@ -664,7 +664,7 @@ class AuthFailMessage(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -688,7 +688,7 @@ class AuthFailMessage(AbstractModel):
 
 
 class AuthInfoDetail(AbstractModel):
-    """企业扩展服务授权列表详情
+    r"""企业扩展服务授权列表详情
 
     """
 
@@ -716,7 +716,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def Type(self):
-        """扩展服务类型，和入参一致	
+        r"""扩展服务类型，和入参一致	
         :rtype: str
         """
         return self._Type
@@ -727,7 +727,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def Name(self):
-        """扩展服务名称	
+        r"""扩展服务名称	
         :rtype: str
         """
         return self._Name
@@ -738,7 +738,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def HasAuthUserList(self):
-        """授权员工列表	
+        r"""授权员工列表	
         :rtype: list of HasAuthUser
         """
         return self._HasAuthUserList
@@ -749,7 +749,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def HasAuthOrganizationList(self):
-        """授权企业列表（企业自动签时，该字段有值）	
+        r"""授权企业列表（企业自动签时，该字段有值）	
         :rtype: list of HasAuthOrganization
         """
         return self._HasAuthOrganizationList
@@ -760,7 +760,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def AuthUserTotal(self):
-        """授权员工列表总数	
+        r"""授权员工列表总数	
         :rtype: int
         """
         return self._AuthUserTotal
@@ -771,7 +771,7 @@ class AuthInfoDetail(AbstractModel):
 
     @property
     def AuthOrganizationTotal(self):
-        """授权企业列表总数	
+        r"""授权企业列表总数	
         :rtype: int
         """
         return self._AuthOrganizationTotal
@@ -809,7 +809,7 @@ class AuthInfoDetail(AbstractModel):
 
 
 class AuthorizedUser(AbstractModel):
-    """授权用户
+    r"""授权用户
 
     """
 
@@ -822,7 +822,7 @@ class AuthorizedUser(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方应用平台的用户openid
+        r"""第三方应用平台的用户openid
         :rtype: str
         """
         return self._OpenId
@@ -845,7 +845,7 @@ class AuthorizedUser(AbstractModel):
 
 
 class AutoSignConfig(AbstractModel):
-    """自动签开启、签署相关配置
+    r"""自动签开启、签署相关配置
 
     """
 
@@ -907,7 +907,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def UserInfo(self):
-        """自动签开通个人用户信息, 包括名字,身份证等
+        r"""自动签开通个人用户信息, 包括名字,身份证等
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -918,7 +918,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def CertInfoCallback(self):
-        """是否回调证书信息:
+        r"""是否回调证书信息:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**:需要</li></ul>
 
@@ -934,7 +934,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def UserDefineSeal(self):
-        """是否支持用户自定义签名印章:
+        r"""是否支持用户自定义签名印章:
 <ul><li>**false**: 不能自己定义(默认)</li>
 <li>**true**: 可以自己定义</li></ul>
         :rtype: bool
@@ -947,7 +947,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def SealImgCallback(self):
-        """回调中是否需要自动签将要使用的印章（签名）图片的 base64:
+        r"""回调中是否需要自动签将要使用的印章（签名）图片的 base64:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**: 需要</li></ul>
         :rtype: bool
@@ -962,7 +962,7 @@ class AutoSignConfig(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
+        r"""该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
         :rtype: str
         """
         return self._CallbackUrl
@@ -975,7 +975,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def VerifyChannels(self):
-        """开通时候的身份验证方式, 取值为：
+        r"""开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
 <li>**INSIGHT** : 慧眼人脸识别</li>
 <li>**TELECOM** : 运营商三要素验证</li></ul>
@@ -992,7 +992,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def LicenseType(self):
-        """设置用户开通自动签时是否绑定个人自动签账号许可。
+        r"""设置用户开通自动签时是否绑定个人自动签账号许可。
 
 <ul><li><b>1</b>: (默认)不绑定自动签账号许可开通，开通后一直有效,   后续使用合同份额进行合同发起</li></ul>
 
@@ -1007,7 +1007,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
+        r"""开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
 
 注：`仅支持H5开通场景`, `跳转链接仅支持 https:// , qianapp:// 开头`
 
@@ -1048,7 +1048,7 @@ class AutoSignConfig(AbstractModel):
 
 
 class BaseFlowInfo(AbstractModel):
-    """基础流程信息
+    r"""基础流程信息
 
     """
 
@@ -1122,7 +1122,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        """合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowName
@@ -1133,7 +1133,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        """合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+        r"""合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
         :rtype: int
         """
         return self._Deadline
@@ -1144,7 +1144,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        """合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+        r"""合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowType
@@ -1155,7 +1155,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
-        """合同流程描述信息(可自定义此描述)，最大长度1000个字符。
+        r"""合同流程描述信息(可自定义此描述)，最大长度1000个字符。
         :rtype: str
         """
         return self._FlowDescription
@@ -1166,7 +1166,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def Unordered(self):
-        """合同流程的签署顺序类型：
+        r"""合同流程的签署顺序类型：
 **false**：(默认)有序签署, 本合同多个参与人需要依次签署
 **true**：无序签署, 本合同多个参与人没有先后签署限制
         :rtype: bool
@@ -1179,7 +1179,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def IntelligentStatus(self):
-        """是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+        r"""是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
         :rtype: str
         """
         return self._IntelligentStatus
@@ -1190,7 +1190,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FormFields(self):
-        """填写控件内容， 填写的控制的ID-填写的内容对列表
+        r"""填写控件内容， 填写的控制的ID-填写的内容对列表
         :rtype: list of FormField
         """
         return self._FormFields
@@ -1201,7 +1201,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        """发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+        r"""发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 <ul><li> **false**：（默认）不需要审批，直接签署。</li>
 <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
@@ -1218,7 +1218,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def UserData(self):
-        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的回调通知模块。
         :rtype: str
@@ -1231,7 +1231,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def CcInfos(self):
-        """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+        r"""合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
 注
 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
@@ -1246,7 +1246,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def NeedCreateReview(self):
-        """发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+        r"""发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
 
 若设置为true，发起审核结果需通过接口 [提交企业签署流程审批结果](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignReview)通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
 
@@ -1261,7 +1261,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def Components(self):
-        """填写控件：文件发起使用
+        r"""填写控件：文件发起使用
         :rtype: list of Component
         """
         return self._Components
@@ -1272,7 +1272,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 
         :rtype: int
         """
@@ -1284,7 +1284,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def FileIds(self):
-        """签署文件资源Id列表，目前仅支持单个文件
+        r"""签署文件资源Id列表，目前仅支持单个文件
         :rtype: list of str
         """
         return self._FileIds
@@ -1295,7 +1295,7 @@ class BaseFlowInfo(AbstractModel):
 
     @property
     def Approvers(self):
-        """合同签署人信息
+        r"""合同签署人信息
         :rtype: list of CommonFlowApprover
         """
         return self._Approvers
@@ -1352,7 +1352,7 @@ class BaseFlowInfo(AbstractModel):
 
 
 class BatchOrganizationRegistrationTasksDetails(AbstractModel):
-    """批量认证企业任务详情信息，其中包括 TaskId，状态信息等
+    r"""批量认证企业任务详情信息，其中包括 TaskId，状态信息等
 
     """
 
@@ -1396,7 +1396,7 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
 
     @property
     def TaskId(self):
-        """生成注册链接的任务Id
+        r"""生成注册链接的任务Id
         :rtype: str
         """
         return self._TaskId
@@ -1407,7 +1407,7 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
 
     @property
     def Status(self):
-        """批量创建企业任务的状态
+        r"""批量创建企业任务的状态
 <ul>
 <li>Processing</li>
 <li>Create</li>
@@ -1443,7 +1443,7 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """如果任务失败,会返回错误信息
+        r"""如果任务失败,会返回错误信息
         :rtype: str
         """
         return self._ErrorMessage
@@ -1468,7 +1468,7 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
 
 
 class CancelFailureFlow(AbstractModel):
-    """撤销失败的流程信息
+    r"""撤销失败的流程信息
 
     """
 
@@ -1484,7 +1484,7 @@ class CancelFailureFlow(AbstractModel):
 
     @property
     def FlowId(self):
-        """签署流程编号，为32位字符串
+        r"""签署流程编号，为32位字符串
         :rtype: str
         """
         return self._FlowId
@@ -1495,7 +1495,7 @@ class CancelFailureFlow(AbstractModel):
 
     @property
     def Reason(self):
-        """撤销失败原因
+        r"""撤销失败原因
         :rtype: str
         """
         return self._Reason
@@ -1519,7 +1519,7 @@ class CancelFailureFlow(AbstractModel):
 
 
 class CcInfo(AbstractModel):
-    """抄送信息
+    r"""抄送信息
 
     """
 
@@ -1547,7 +1547,7 @@ class CcInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        """被抄送方手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+        r"""被抄送方手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 请确认手机号所有方为此业务通知方。
         :rtype: str
         """
@@ -1559,7 +1559,7 @@ class CcInfo(AbstractModel):
 
     @property
     def Name(self):
-        """被抄送方姓名。
+        r"""被抄送方姓名。
 抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -1571,7 +1571,7 @@ class CcInfo(AbstractModel):
 
     @property
     def CcType(self):
-        """被抄送方类型, 可设置以下类型:
+        r"""被抄送方类型, 可设置以下类型:
 <ul><li> **0** :个人抄送方</li>
 <li> **1** :企业员工抄送方</li></ul>
         :rtype: int
@@ -1584,7 +1584,7 @@ class CcInfo(AbstractModel):
 
     @property
     def CcPermission(self):
-        """被抄送方权限, 可设置如下权限:
+        r"""被抄送方权限, 可设置如下权限:
 <ul><li> **0** :可查看合同内容</li>
 <li> **1** :可查看合同内容也可下载原文</li></ul>
         :rtype: int
@@ -1612,7 +1612,7 @@ class CcInfo(AbstractModel):
 
 
 class ChannelArchiveDynamicApproverData(AbstractModel):
-    """动态签署2.0合同参与人信息
+    r"""动态签署2.0合同参与人信息
 
     """
 
@@ -1628,7 +1628,7 @@ class ChannelArchiveDynamicApproverData(AbstractModel):
 
     @property
     def SignId(self):
-        """签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。	
+        r"""签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。	
         :rtype: str
         """
         return self._SignId
@@ -1639,7 +1639,7 @@ class ChannelArchiveDynamicApproverData(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。 填写控件和签署控件都与特定的角色编号关联。	
+        r"""签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。 填写控件和签署控件都与特定的角色编号关联。	
         :rtype: str
         """
         return self._RecipientId
@@ -1663,7 +1663,7 @@ class ChannelArchiveDynamicApproverData(AbstractModel):
 
 
 class ChannelBatchCancelFlowsRequest(AbstractModel):
-    """ChannelBatchCancelFlows请求参数结构体
+    r"""ChannelBatchCancelFlows请求参数结构体
 
     """
 
@@ -1709,7 +1709,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -1728,7 +1728,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """要撤销的合同流程ID列表，最多100个，超过100不处理
+        r"""要撤销的合同流程ID列表，最多100个，超过100不处理
         :rtype: list of str
         """
         return self._FlowIds
@@ -1739,7 +1739,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
 
     @property
     def CancelMessage(self):
-        """撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
 
 备注:`如果不传递撤回原因，那么默认撤回原因是 "自动撤销（通过接口实现）"`
         :rtype: str
@@ -1752,7 +1752,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
 
     @property
     def CancelMessageFormat(self):
-        """撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
+        r"""撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 
 **0** : 默认格式,  合同封面页面会展示为: 发起方-企业名称-撤销的经办人名字以**CancelMessage**的理由撤销当前合同
 **1** :  合同封面页面会展示为:  发起方以**CancelMessage**的理由撤销当前合同
@@ -1776,7 +1776,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -1809,7 +1809,7 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
 
 
 class ChannelBatchCancelFlowsResponse(AbstractModel):
-    """ChannelBatchCancelFlows返回参数结构体
+    r"""ChannelBatchCancelFlows返回参数结构体
 
     """
 
@@ -1831,7 +1831,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
     @property
     def FailMessages(self):
-        """签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+        r"""签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
 
 注:  `如果全部撤销成功, 此数组为空数组`
         :rtype: list of str
@@ -1844,7 +1844,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """批量撤销任务编号，为32位字符串，可用于[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+        r"""批量撤销任务编号，为32位字符串，可用于[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
 
         :rtype: str
         """
@@ -1856,7 +1856,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1873,7 +1873,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
 
 class ChannelBillUsageDetail(AbstractModel):
-    """用户计费使用情况详情
+    r"""用户计费使用情况详情
 
     """
 
@@ -1948,7 +1948,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
         :rtype: str
         """
         return self._FlowId
@@ -1959,7 +1959,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def OperatorName(self):
-        """合同经办人名称
+        r"""合同经办人名称
 如果有多个经办人用分号隔开。
         :rtype: str
         """
@@ -1971,7 +1971,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def CreateOrganizationName(self):
-        """发起方组织机构名称
+        r"""发起方组织机构名称
         :rtype: str
         """
         return self._CreateOrganizationName
@@ -1982,7 +1982,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def FlowName(self):
-        """合同流程的名称。
+        r"""合同流程的名称。
         :rtype: str
         """
         return self._FlowName
@@ -1993,7 +1993,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def FlowStatus(self):
-        """合同流程当前的签署状态, 会存在下列的状态值
+        r"""合同流程当前的签署状态, 会存在下列的状态值
 <ul>
 <li>**INIT**: 合同创建</li>
 <li>**PART**: 合同签署中(至少有一个签署方已经签署)</li>
@@ -2015,7 +2015,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def QuotaType(self):
-        """查询的套餐类型
+        r"""查询的套餐类型
 对应关系如下:
 <ul>
 <li>**CloudEnterprise**: 企业版合同</li>
@@ -2043,7 +2043,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def UseCount(self):
-        """合同使用量
+        r"""合同使用量
 注: `如果消耗类型是撤销返还，此值为负值代表返还的合同数量`
         :rtype: int
         """
@@ -2055,7 +2055,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def CostTime(self):
-        """消耗的时间戳，格式为Unix标准时间戳（秒）。
+        r"""消耗的时间戳，格式为Unix标准时间戳（秒）。
         :rtype: int
         """
         return self._CostTime
@@ -2066,7 +2066,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def QuotaName(self):
-        """消耗的套餐名称
+        r"""消耗的套餐名称
         :rtype: str
         """
         return self._QuotaName
@@ -2077,7 +2077,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def CostType(self):
-        """消耗类型
+        r"""消耗类型
 **1**.扣费 
 **2**.撤销返还
         :rtype: int
@@ -2090,7 +2090,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -2123,7 +2123,7 @@ class ChannelBillUsageDetail(AbstractModel):
 
 
 class ChannelCancelFlowRequest(AbstractModel):
-    """ChannelCancelFlow请求参数结构体
+    r"""ChannelCancelFlow请求参数结构体
 
     """
 
@@ -2165,7 +2165,7 @@ class ChannelCancelFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """要撤销的合同流程ID
+        r"""要撤销的合同流程ID
         :rtype: str
         """
         return self._FlowId
@@ -2176,7 +2176,7 @@ class ChannelCancelFlowRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -2195,7 +2195,7 @@ class ChannelCancelFlowRequest(AbstractModel):
 
     @property
     def CancelMessage(self):
-        """撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""撤回原因，长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._CancelMessage
@@ -2206,7 +2206,7 @@ class ChannelCancelFlowRequest(AbstractModel):
 
     @property
     def CancelMessageFormat(self):
-        """撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
+        r"""撤销理由自定义格式,  会展示在合同预览的界面中,  可以选择下面的组合方式：
 
 **0** : 默认格式,  合同封面页面会展示为: 发起方-企业名称-撤销的经办人名字以**CancelMessage**的理由撤销当前合同
 **1** :  合同封面页面会展示为:  发起方以**CancelMessage**的理由撤销当前合同
@@ -2228,7 +2228,7 @@ class ChannelCancelFlowRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -2261,7 +2261,7 @@ class ChannelCancelFlowRequest(AbstractModel):
 
 
 class ChannelCancelFlowResponse(AbstractModel):
-    """ChannelCancelFlow返回参数结构体
+    r"""ChannelCancelFlow返回参数结构体
 
     """
 
@@ -2274,7 +2274,7 @@ class ChannelCancelFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2289,7 +2289,7 @@ class ChannelCancelFlowResponse(AbstractModel):
 
 
 class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
-    """ChannelCancelMultiFlowSignQRCode请求参数结构体
+    r"""ChannelCancelMultiFlowSignQRCode请求参数结构体
 
     """
 
@@ -2316,7 +2316,7 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -2335,7 +2335,7 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrCodeId(self):
-        """需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
+        r"""需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
         :rtype: str
         """
         return self._QrCodeId
@@ -2348,7 +2348,7 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -2379,7 +2379,7 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
 
 
 class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
-    """ChannelCancelMultiFlowSignQRCode返回参数结构体
+    r"""ChannelCancelMultiFlowSignQRCode返回参数结构体
 
     """
 
@@ -2392,7 +2392,7 @@ class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2407,7 +2407,7 @@ class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
 
 
 class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
-    """ChannelCancelUserAutoSignEnableUrl请求参数结构体
+    r"""ChannelCancelUserAutoSignEnableUrl请求参数结构体
 
     """
 
@@ -2430,7 +2430,7 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """渠道应用相关信息
+        r"""渠道应用相关信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -2441,7 +2441,7 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人信息
+        r"""操作人信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -2452,7 +2452,7 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -2464,7 +2464,7 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        """指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+        r"""指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -2496,7 +2496,7 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
 
 
 class ChannelCancelUserAutoSignEnableUrlResponse(AbstractModel):
-    """ChannelCancelUserAutoSignEnableUrl返回参数结构体
+    r"""ChannelCancelUserAutoSignEnableUrl返回参数结构体
 
     """
 
@@ -2509,7 +2509,7 @@ class ChannelCancelUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2524,7 +2524,7 @@ class ChannelCancelUserAutoSignEnableUrlResponse(AbstractModel):
 
 
 class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
-    """ChannelCreateBatchCancelFlowUrl请求参数结构体
+    r"""ChannelCreateBatchCancelFlowUrl请求参数结构体
 
     """
 
@@ -2551,7 +2551,7 @@ class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -2570,7 +2570,7 @@ class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """要撤销的合同流程ID列表，最多100个，超过100不处理
+        r"""要撤销的合同流程ID列表，最多100个，超过100不处理
         :rtype: list of str
         """
         return self._FlowIds
@@ -2583,7 +2583,7 @@ class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -2614,7 +2614,7 @@ class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
 
 
 class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
-    """ChannelCreateBatchCancelFlowUrl返回参数结构体
+    r"""ChannelCreateBatchCancelFlowUrl返回参数结构体
 
     """
 
@@ -2643,7 +2643,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     @property
     def BatchCancelFlowUrl(self):
-        """批量撤销合同的URL链接, 需要在手机端打开, 有效期24小时
+        r"""批量撤销合同的URL链接, 需要在手机端打开, 有效期24小时
 
 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :rtype: str
@@ -2656,7 +2656,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     @property
     def FailMessages(self):
-        """与入参的FlowIds数组一致,   成功生成到撤销链接中,则为"",   不能撤销合同则为失败原因
+        r"""与入参的FlowIds数组一致,   成功生成到撤销链接中,则为"",   不能撤销合同则为失败原因
         :rtype: list of str
         """
         return self._FailMessages
@@ -2667,7 +2667,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     @property
     def UrlExpireOn(self):
-        """签署撤销链接的过期时间(格式为:年-月-日 时:分:秒), 默认是生成链接的24小时后失效
+        r"""签署撤销链接的过期时间(格式为:年-月-日 时:分:秒), 默认是生成链接的24小时后失效
 
 
         :rtype: str
@@ -2680,7 +2680,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """批量撤销任务编号，为32位字符串，可用于[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+        r"""批量撤销任务编号，为32位字符串，可用于[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
         :rtype: str
         """
         return self._TaskId
@@ -2691,7 +2691,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2710,7 +2710,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
 
 class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
-    """ChannelCreateBatchQuickSignUrl请求参数结构体
+    r"""ChannelCreateBatchQuickSignUrl请求参数结构体
 
     """
 
@@ -2794,7 +2794,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def FlowApproverInfo(self):
-        """批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
+        r"""批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 <ul>
 <li>若为个人参与方：ApproverType:"PERSON"</li>
 <li>若为企业参与方：ApproverType:"ORGANIZATION"。同时若签署方为saas企业员工， OrganizationName 参数需传入参与方企业名称。若签署方为渠道子客企业员工，除了 OrganizationName 还需要传 OpenId、OrganizationOpenId。（如果OrganizationOpenId对应子客企业已经认证激活，则可以省略OrganizationName参数）</li>
@@ -2813,7 +2813,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -2824,7 +2824,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """批量签署的合同流程ID数组。
+        r"""批量签署的合同流程ID数组。
 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
         :rtype: list of str
         """
@@ -2836,7 +2836,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组编号
+        r"""合同组编号
 注：`该参数和合同流程ID数组必须二选一`
         :rtype: str
         """
@@ -2848,7 +2848,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+        r"""签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
         :rtype: str
         """
         return self._JumpUrl
@@ -2859,7 +2859,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def SignatureTypes(self):
-        """指定批量签署合同的签名类型，可传递以下值：
+        r"""指定批量签署合同的签名类型，可传递以下值：
 <ul><li>**0**：手写签名(默认)</li>
 <li>**1**：OCR楷体</li>
 <li>**2**：姓名印章</li>
@@ -2881,7 +2881,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def ApproverSignTypes(self):
-        """指定批量签署合同的认证校验方式，可传递以下值：
+        r"""指定批量签署合同的认证校验方式，可传递以下值：
 <ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
 <li>**2**：密码认证(默认)，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署</li>
 <li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
@@ -2898,7 +2898,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def SignTypeSelector(self):
-        """生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        r"""生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：
@@ -2913,7 +2913,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def FlowBatchUrlInfo(self):
-        """批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+        r"""批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
 
 注: `若签署方为企业员工，暂不支持通过H5端进行动态签署人的补充`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowBatchUrlInfo`
@@ -2926,7 +2926,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def Intention(self):
-        """<b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
+        r"""<b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Intention`
         """
         return self._Intention
@@ -2937,7 +2937,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def CacheApproverInfo(self):
-        """缓存签署人信息。在H5签署链接动态领取场景，首次填写后，选择缓存签署人信息，在下次签署人点击领取链接时，会自动将个人信息（姓名、身份证号、手机号）填入，否则需要每次手动填写。
+        r"""缓存签署人信息。在H5签署链接动态领取场景，首次填写后，选择缓存签署人信息，在下次签署人点击领取链接时，会自动将个人信息（姓名、身份证号、手机号）填入，否则需要每次手动填写。
 
 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
         :rtype: bool
@@ -2950,7 +2950,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def CanBatchReject(self):
-        """是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
         :rtype: bool
         """
         return self._CanBatchReject
@@ -2961,7 +2961,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def PresetApproverInfo(self):
-        """预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+        r"""预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.PresetApproverInfo`
         """
         return self._PresetApproverInfo
@@ -3006,7 +3006,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
 
 class ChannelCreateBatchQuickSignUrlResponse(AbstractModel):
-    """ChannelCreateBatchQuickSignUrl返回参数结构体
+    r"""ChannelCreateBatchQuickSignUrl返回参数结构体
 
     """
 
@@ -3022,7 +3022,7 @@ class ChannelCreateBatchQuickSignUrlResponse(AbstractModel):
 
     @property
     def FlowApproverUrlInfo(self):
-        """签署人签署链接信息
+        r"""签署人签署链接信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowApproverUrlInfo`
         """
         return self._FlowApproverUrlInfo
@@ -3033,7 +3033,7 @@ class ChannelCreateBatchQuickSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3051,7 +3051,7 @@ class ChannelCreateBatchQuickSignUrlResponse(AbstractModel):
 
 
 class ChannelCreateBatchSignUrlRequest(AbstractModel):
-    """ChannelCreateBatchSignUrl请求参数结构体
+    r"""ChannelCreateBatchSignUrl请求参数结构体
 
     """
 
@@ -3185,7 +3185,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -3204,7 +3204,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 
 注：
@@ -3222,7 +3222,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        """手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+        r"""手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 请确认手机号所有方为此业务通知方。
 
 注：
@@ -3240,7 +3240,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -3252,7 +3252,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def IdCardType(self):
-        """证件类型，支持以下类型
+        r"""证件类型，支持以下类型
 <ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li>
 <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
 <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -3270,7 +3270,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码，应符合以下规则
+        r"""证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -3288,7 +3288,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def NotifyType(self):
-        """通知用户方式：
+        r"""通知用户方式：
 <ul>
 <li>**NONE** : 不通知（默认）</li>
 <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
@@ -3303,7 +3303,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
+        r"""批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
         :rtype: list of str
         """
@@ -3315,7 +3315,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。
+        r"""SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。
 
 注：
 <ul>
@@ -3334,7 +3334,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def SignatureTypes(self):
-        """指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+        r"""指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
         :rtype: list of int
         """
         return self._SignatureTypes
@@ -3345,7 +3345,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def JumpToDetail(self):
-        """是否直接跳转至合同内容页面进行签署
+        r"""是否直接跳转至合同内容页面进行签署
 <ul>
 <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
 <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
@@ -3360,7 +3360,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def FlowBatchUrlInfo(self):
-        """批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+        r"""批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowBatchUrlInfo`
         """
         return self._FlowBatchUrlInfo
@@ -3371,7 +3371,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。
+        r"""第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。
 
 注：
 <ul>
@@ -3388,7 +3388,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。
+        r"""第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -3399,7 +3399,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def AutoJumpBack(self):
-        """签署完成后是否自动回跳
+        r"""签署完成后是否自动回跳
 <ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul>
 
 注: 
@@ -3416,7 +3416,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def UrlUseEnv(self):
-        """<font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
+        r"""<font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
 
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :rtype: str
@@ -3429,7 +3429,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def CanBatchReject(self):
-        """是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
+        r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
         :rtype: bool
         """
@@ -3441,7 +3441,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     @property
     def CanSkipReadFlow(self):
-        """是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
+        r"""是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
         :rtype: bool
         """
@@ -3488,7 +3488,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
 
 class ChannelCreateBatchSignUrlResponse(AbstractModel):
-    """ChannelCreateBatchSignUrl返回参数结构体
+    r"""ChannelCreateBatchSignUrl返回参数结构体
 
     """
 
@@ -3518,7 +3518,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 
     @property
     def SignUrl(self):
-        """批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        r"""批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
 
 注: 
 1. 非小程序和APP集成使用
@@ -3533,7 +3533,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :rtype: int
         """
         return self._ExpiredTime
@@ -3544,7 +3544,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        r"""从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 
 注: 
 1. 小程序和APP集成使用
@@ -3559,7 +3559,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3577,7 +3577,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 
 
 class ChannelCreateBoundFlowsRequest(AbstractModel):
-    """ChannelCreateBoundFlows请求参数结构体
+    r"""ChannelCreateBoundFlows请求参数结构体
 
     """
 
@@ -3604,7 +3604,7 @@ class ChannelCreateBoundFlowsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -3623,7 +3623,7 @@ class ChannelCreateBoundFlowsRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """需要领取的合同流程的ID列表
+        r"""需要领取的合同流程的ID列表
         :rtype: list of str
         """
         return self._FlowIds
@@ -3636,7 +3636,7 @@ class ChannelCreateBoundFlowsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -3667,7 +3667,7 @@ class ChannelCreateBoundFlowsRequest(AbstractModel):
 
 
 class ChannelCreateBoundFlowsResponse(AbstractModel):
-    """ChannelCreateBoundFlows返回参数结构体
+    r"""ChannelCreateBoundFlows返回参数结构体
 
     """
 
@@ -3680,7 +3680,7 @@ class ChannelCreateBoundFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3695,7 +3695,7 @@ class ChannelCreateBoundFlowsResponse(AbstractModel):
 
 
 class ChannelCreateConvertTaskApiRequest(AbstractModel):
-    """ChannelCreateConvertTaskApi请求参数结构体
+    r"""ChannelCreateConvertTaskApi请求参数结构体
 
     """
 
@@ -3746,7 +3746,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -3765,7 +3765,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """需要进行转换的资源文件类型
+        r"""需要进行转换的资源文件类型
 支持的文件类型如下：
 <ul><li>doc</li>
 <li>docx</li>
@@ -3787,7 +3787,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
     @property
     def ResourceName(self):
-        """需要进行转换操作的文件资源名称，带资源后缀名。
+        r"""需要进行转换操作的文件资源名称，带资源后缀名。
 
 注:  `资源名称长度限制为256个字符`
         :rtype: str
@@ -3800,7 +3800,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。
+        r"""需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。
 
 注:  `目前，此接口仅支持单个文件进行转换。`
         :rtype: str
@@ -3815,7 +3815,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """调用方用户信息，不用传
+        r"""调用方用户信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -3830,7 +3830,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -3866,7 +3866,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
 
 class ChannelCreateConvertTaskApiResponse(AbstractModel):
-    """ChannelCreateConvertTaskApi返回参数结构体
+    r"""ChannelCreateConvertTaskApi返回参数结构体
 
     """
 
@@ -3882,7 +3882,7 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。
+        r"""接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。
         :rtype: str
         """
         return self._TaskId
@@ -3893,7 +3893,7 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3909,7 +3909,7 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
 
 
 class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
-    """ChannelCreateDynamicFlowApprover请求参数结构体
+    r"""ChannelCreateDynamicFlowApprover请求参数结构体
 
     """
 
@@ -3926,7 +3926,7 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
     @property
     def FillDynamicFlowList(self):
-        """动态合同信息
+        r"""动态合同信息
 
         :rtype: list of DynamicFlowInfo
         """
@@ -3938,7 +3938,7 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -3969,7 +3969,7 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
 
 class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
-    """ChannelCreateDynamicFlowApprover返回参数结构体
+    r"""ChannelCreateDynamicFlowApprover返回参数结构体
 
     """
 
@@ -3985,7 +3985,7 @@ class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
 
     @property
     def DynamicFlowResultList(self):
-        """动态合同补充结果列表
+        r"""动态合同补充结果列表
         :rtype: list of DynamicFlowResult
         """
         return self._DynamicFlowResultList
@@ -3996,7 +3996,7 @@ class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4017,7 +4017,7 @@ class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
 
 
 class ChannelCreateEmbedWebUrlRequest(AbstractModel):
-    """ChannelCreateEmbedWebUrl请求参数结构体
+    r"""ChannelCreateEmbedWebUrl请求参数结构体
 
     """
 
@@ -4090,7 +4090,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -4109,7 +4109,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def EmbedType(self):
-        """要生成WEB嵌入界面的类型, 可以选择的值如下: 
+        r"""要生成WEB嵌入界面的类型, 可以选择的值如下: 
 
 <ul>
 <li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
@@ -4132,7 +4132,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """WEB嵌入的业务资源ID
+        r"""WEB嵌入的业务资源ID
 
 当EmbedType取值
 <ul>
@@ -4155,7 +4155,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def HiddenComponents(self):
-        """是否隐藏控件，只有预览模板时生效
+        r"""是否隐藏控件，只有预览模板时生效
         :rtype: bool
         """
         return self._HiddenComponents
@@ -4168,7 +4168,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """渠道操作者信息
+        r"""渠道操作者信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -4181,7 +4181,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def UserData(self):
-        """用户自定义参数
+        r"""用户自定义参数
 <ul>
 <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
 <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
@@ -4202,7 +4202,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def Option(self):
-        """个性化参数，用于控制页面展示内容
+        r"""个性化参数，用于控制页面展示内容
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.EmbedUrlOption`
         """
         return self._Option
@@ -4237,7 +4237,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
 
 class ChannelCreateEmbedWebUrlResponse(AbstractModel):
-    """ChannelCreateEmbedWebUrl返回参数结构体
+    r"""ChannelCreateEmbedWebUrl返回参数结构体
 
     """
 
@@ -4253,7 +4253,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
 
     @property
     def WebUrl(self):
-        """嵌入的web链接，5分钟有效
+        r"""嵌入的web链接，5分钟有效
         :rtype: str
         """
         return self._WebUrl
@@ -4264,7 +4264,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4280,7 +4280,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
 
 
 class ChannelCreateFlowApproversRequest(AbstractModel):
-    """ChannelCreateFlowApprovers请求参数结构体
+    r"""ChannelCreateFlowApprovers请求参数结构体
 
     """
 
@@ -4325,7 +4325,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -4344,7 +4344,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def Approvers(self):
-        """补充企业签署人信息。
+        r"""补充企业签署人信息。
 
 - 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
 
@@ -4359,7 +4359,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。 
+        r"""合同流程ID，为32位字符串。 
 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同
@@ -4373,7 +4373,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def FillApproverType(self):
-        """签署人信息补充方式
+        r"""签署人信息补充方式
 
 <ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
         :rtype: int
@@ -4386,7 +4386,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """操作人信息
+        r"""操作人信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -4397,7 +4397,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
+        r"""合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
         :rtype: str
         """
         return self._FlowGroupId
@@ -4434,7 +4434,7 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
 
 class ChannelCreateFlowApproversResponse(AbstractModel):
-    """ChannelCreateFlowApprovers返回参数结构体
+    r"""ChannelCreateFlowApprovers返回参数结构体
 
     """
 
@@ -4451,7 +4451,7 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
 
     @property
     def FillError(self):
-        """批量补充签署人时，补充失败的报错说明 
+        r"""批量补充签署人时，补充失败的报错说明 
 注:`目前仅补充动态签署人时会返回补充失败的原因`	
         :rtype: list of FillError
         """
@@ -4463,7 +4463,7 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4484,7 +4484,7 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
 
 
 class ChannelCreateFlowByFilesRequest(AbstractModel):
-    """ChannelCreateFlowByFiles请求参数结构体
+    r"""ChannelCreateFlowByFiles请求参数结构体
 
     """
 
@@ -4635,7 +4635,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def Agent(self):
-        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
 
 此接口下面信息必填。
 <ul>
@@ -4653,7 +4653,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FlowName(self):
-        """合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowName
@@ -4664,7 +4664,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FlowDescription(self):
-        """合同流程描述信息(可自定义此描述)，最大长度1000个字符。
+        r"""合同流程描述信息(可自定义此描述)，最大长度1000个字符。
         :rtype: str
         """
         return self._FlowDescription
@@ -4675,7 +4675,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FlowApprovers(self):
-        """合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。
+        r"""合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。
 
 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
         :rtype: list of FlowApproverInfo
@@ -4688,7 +4688,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FileIds(self):
-        """本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
+        r"""本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
 
 注: `目前，此接口仅支持单个文件发起。`
         :rtype: list of str
@@ -4701,7 +4701,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def Components(self):
-        """模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+        r"""模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 <ul><li>单行文本控件</li>
 <li>多行文本控件</li>
 <li>勾选框控件</li>
@@ -4720,7 +4720,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def Deadline(self):
-        """合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+        r"""合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
         :rtype: int
         """
@@ -4734,7 +4734,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃，请使用【应用号配置】中的回调地址
+        r"""该字段已废弃，请使用【应用号配置】中的回调地址
         :rtype: str
         """
         return self._CallbackUrl
@@ -4747,7 +4747,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def Unordered(self):
-        """合同流程的签署顺序类型：
+        r"""合同流程的签署顺序类型：
 <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
 **注**: `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
@@ -4761,7 +4761,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FlowType(self):
-        """合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
+        r"""合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowType
@@ -4772,7 +4772,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def CustomShowMap(self):
-        """您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+        r"""您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 <ul><li>{合同名称}   </li>
 <li>{发起方企业} </li>
 <li>{发起方姓名} </li>
@@ -4797,7 +4797,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def CustomerData(self):
-        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。
         :rtype: str
@@ -4810,7 +4810,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def NeedSignReview(self):
-        """发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+        r"""发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 <ul><li> **false**：（默认）不需要审批，直接签署。</li>
 <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
 企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
@@ -4827,7 +4827,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def ApproverVerifyType(self):
-        """签署人校验方式
+        r"""签署人校验方式
 VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
@@ -4841,7 +4841,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def SignBeanTag(self):
-        """签署方签署控件（印章/签名等）的生成方式：
+        r"""签署方签署控件（印章/签名等）的生成方式：
 <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
 <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
 
@@ -4858,7 +4858,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def CcInfos(self):
-        """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+        r"""合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
 <b>注</b>
 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
@@ -4873,7 +4873,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def CcNotifyType(self):
-        """可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
+        r"""可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
 <ul><li> **0**：合同发起时通知（默认值）</li>
 <li> **1**：签署完成后通知</li></ul>
         :rtype: int
@@ -4886,7 +4886,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def AutoSignScene(self):
-        """个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+        r"""个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :rtype: str
@@ -4901,7 +4901,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，不用传
+        r"""操作者的信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -4914,7 +4914,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -4925,7 +4925,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def NeedPreview(self):
-        """是否为预览模式，取值如下： <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+        r"""是否为预览模式，取值如下： <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
         :rtype: bool
         """
         return self._NeedPreview
@@ -4936,7 +4936,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def PreviewType(self):
-        """预览模式下产生的预览链接类型 
+        r"""预览模式下产生的预览链接类型 
 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 注: `此参数在NeedPreview 为true时有效`
@@ -4953,7 +4953,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
     def OpenDynamicFlow(self):
         warnings.warn("parameter `OpenDynamicFlow` is deprecated", DeprecationWarning) 
 
-        """是否开启动态合同（动态签署人2.0）
+        r"""是否开启动态合同（动态签署人2.0）
 <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
 <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
 
@@ -4969,7 +4969,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def OpenDynamicSignFlow(self):
-        """是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+        r"""是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
         :rtype: bool
         """
         return self._OpenDynamicSignFlow
@@ -5034,7 +5034,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
 
 class ChannelCreateFlowByFilesResponse(AbstractModel):
-    """ChannelCreateFlowByFiles返回参数结构体
+    r"""ChannelCreateFlowByFiles返回参数结构体
 
     """
 
@@ -5060,7 +5060,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 
 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
@@ -5074,7 +5074,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     @property
     def Approvers(self):
-        """签署方信息，如角色ID、角色名称等
+        r"""签署方信息，如角色ID、角色名称等
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -5085,7 +5085,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """预览链接，有效期5分钟
+        r"""预览链接，有效期5分钟
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
         :rtype: str
         """
@@ -5097,7 +5097,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5120,7 +5120,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
 
 class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
-    """ChannelCreateFlowGroupByFiles请求参数结构体
+    r"""ChannelCreateFlowGroupByFiles请求参数结构体
 
     """
 
@@ -5162,7 +5162,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     @property
     def FlowFileInfos(self):
-        """合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        r"""合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
         :rtype: list of FlowFileInfo
         """
         return self._FlowFileInfos
@@ -5173,7 +5173,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        """合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowGroupName
@@ -5184,7 +5184,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
 
 此接口下面信息必填。
 <ul>
@@ -5204,7 +5204,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     @property
     def ApproverVerifyType(self):
-        """合同组中签署人校验和认证的方式：
+        r"""合同组中签署人校验和认证的方式：
 <ul><li>**VerifyCheck**：人脸识别（默认）</li>
 <li>**MobileCheck**：手机号验证</li></ul>
 注意：
@@ -5220,7 +5220,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     @property
     def FlowGroupOptions(self):
-        """合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+        r"""合同组的签署配置项信息，例如在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowGroupOptions`
         """
         return self._FlowGroupOptions
@@ -5233,7 +5233,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，此参数不用传
+        r"""操作者的信息，此参数不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -5274,7 +5274,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
 
 class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
-    """ChannelCreateFlowGroupByFiles返回参数结构体
+    r"""ChannelCreateFlowGroupByFiles返回参数结构体
 
     """
 
@@ -5300,7 +5300,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组ID，为32位字符串。
+        r"""合同组ID，为32位字符串。
 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
         :rtype: str
         """
@@ -5312,7 +5312,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        """合同组中每个合同流程ID，每个ID均为32位字符串。
+        r"""合同组中每个合同流程ID，每个ID均为32位字符串。
 
 注:
 `此数组的顺序和入参中的FlowGroupInfos顺序一致`
@@ -5326,7 +5326,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
     @property
     def Approvers(self):
-        """合同组签署方信息。
+        r"""合同组签署方信息。
         :rtype: list of FlowGroupApprovers
         """
         return self._Approvers
@@ -5337,7 +5337,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5360,7 +5360,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
 
 class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
-    """ChannelCreateFlowGroupByTemplates请求参数结构体
+    r"""ChannelCreateFlowGroupByTemplates请求参数结构体
 
     """
 
@@ -5388,7 +5388,7 @@ class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
 
 此接口下面信息必填。
 <ul>
@@ -5408,7 +5408,7 @@ class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
 
     @property
     def FlowInfos(self):
-        """合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        r"""合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
         :rtype: list of FlowInfo
         """
         return self._FlowInfos
@@ -5419,7 +5419,7 @@ class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        """合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowGroupName
@@ -5451,7 +5451,7 @@ class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
 
 
 class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
-    """ChannelCreateFlowGroupByTemplates返回参数结构体
+    r"""ChannelCreateFlowGroupByTemplates返回参数结构体
 
     """
 
@@ -5481,7 +5481,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组ID，为32位字符串。
+        r"""合同组ID，为32位字符串。
 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
         :rtype: str
         """
@@ -5493,7 +5493,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        """合同组中每个合同流程ID，每个ID均为32位字符串。
+        r"""合同组中每个合同流程ID，每个ID均为32位字符串。
 
 注:
 `此数组的顺序和入参中的FlowInfos顺序一致`
@@ -5507,7 +5507,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
-        """复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
+        r"""复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
         :rtype: list of TaskInfo
         """
@@ -5519,7 +5519,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
     @property
     def Approvers(self):
-        """合同组签署方信息
+        r"""合同组签署方信息
         :rtype: list of FlowGroupApprovers
         """
         return self._Approvers
@@ -5530,7 +5530,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5559,7 +5559,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
 
 
 class ChannelCreateFlowRemindsRequest(AbstractModel):
-    """ChannelCreateFlowReminds请求参数结构体
+    r"""ChannelCreateFlowReminds请求参数结构体
 
     """
 
@@ -5583,7 +5583,7 @@ class ChannelCreateFlowRemindsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -5602,7 +5602,7 @@ class ChannelCreateFlowRemindsRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """需执行催办的合同流程ID数组，最多支持100个。
+        r"""需执行催办的合同流程ID数组，最多支持100个。
         :rtype: list of str
         """
         return self._FlowIds
@@ -5628,7 +5628,7 @@ class ChannelCreateFlowRemindsRequest(AbstractModel):
 
 
 class ChannelCreateFlowRemindsResponse(AbstractModel):
-    """ChannelCreateFlowReminds返回参数结构体
+    r"""ChannelCreateFlowReminds返回参数结构体
 
     """
 
@@ -5644,7 +5644,7 @@ class ChannelCreateFlowRemindsResponse(AbstractModel):
 
     @property
     def RemindFlowRecords(self):
-        """合同催办结果的详细信息列表。
+        r"""合同催办结果的详细信息列表。
         :rtype: list of RemindFlowRecords
         """
         return self._RemindFlowRecords
@@ -5655,7 +5655,7 @@ class ChannelCreateFlowRemindsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5676,7 +5676,7 @@ class ChannelCreateFlowRemindsResponse(AbstractModel):
 
 
 class ChannelCreateFlowSignReviewRequest(AbstractModel):
-    """ChannelCreateFlowSignReview请求参数结构体
+    r"""ChannelCreateFlowSignReview请求参数结构体
 
     """
 
@@ -5726,7 +5726,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -5745,7 +5745,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
         :rtype: str
         """
         return self._FlowId
@@ -5756,7 +5756,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def ReviewType(self):
-        """企业内部审核结果
+        r"""企业内部审核结果
 <ul><li>PASS: 审核通过（流程可以继续签署或者发起）</li>
 <li>REJECT: 审核拒绝（流程状态不变，可以继续调用审核接口通过审核）</li>
 <li>SIGN_REJECT:拒签(流程终止，流程状态变为拒签状态)</li></ul>
@@ -5770,7 +5770,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def ReviewMessage(self):
-        """审核结果原因
+        r"""审核结果原因
 <ul><li>字符串长度不超过200</li>
 <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
 <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
@@ -5784,7 +5784,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def RecipientId(self):
-        """审核节点的签署人标志，用于指定当前审核的签署方。
+        r"""审核节点的签署人标志，用于指定当前审核的签署方。
 <font color= "red">注意：以下情况必须传递RecipientId</font>
 <ul><li> **发起签署流程时，指定签署人需要审批（即签署人需要审批
 <a href="https://qian.tencent.com/developers/partnerApis/dataTypes#flowapproverinfo" target="_blank">ApproverNeedSignReview</a>为true），则必须指定RecipientId**</li><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
@@ -5798,7 +5798,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        """流程审核操作类型，取值如下：
+        r"""流程审核操作类型，取值如下：
 <ul><li>**SignReview**：（默认）签署审核</li>
 <li>**CreateReview**：发起审核</li>
 <li>注意：`该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程`</li></ul>
@@ -5833,7 +5833,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 
 
 class ChannelCreateFlowSignReviewResponse(AbstractModel):
-    """ChannelCreateFlowSignReview返回参数结构体
+    r"""ChannelCreateFlowSignReview返回参数结构体
 
     """
 
@@ -5846,7 +5846,7 @@ class ChannelCreateFlowSignReviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5861,7 +5861,7 @@ class ChannelCreateFlowSignReviewResponse(AbstractModel):
 
 
 class ChannelCreateFlowSignUrlRequest(AbstractModel):
-    """ChannelCreateFlowSignUrl请求参数结构体
+    r"""ChannelCreateFlowSignUrl请求参数结构体
 
     """
 
@@ -5920,7 +5920,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -5939,7 +5939,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :rtype: str
@@ -5952,7 +5952,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def FlowApproverInfos(self):
-        """流程签署人列表，其中结构体的ApproverType必传。
+        r"""流程签署人列表，其中结构体的ApproverType必传。
 若为个人签署方或saas企业签署方，则Name，Mobile必传。OrganizationName 传对应企业名称。
 若为子客企业签署方则需传OpenId、OrganizationOpenId、OrganizationName， 其他可不传。（如果对应OrganizationOpenId 子客已经认证激活了，则可以省去OrganizationName）
 
@@ -5977,7 +5977,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """用户信息，暂未开放
+        r"""用户信息，暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -5992,7 +5992,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """机构信息，暂未开放
+        r"""机构信息，暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -6005,7 +6005,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
+        r"""签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
 
         :rtype: str
         """
@@ -6017,7 +6017,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def UrlType(self):
-        """链接类型，支持指定以下类型
+        r"""链接类型，支持指定以下类型
 <ul><li>0 : 签署链接 (默认值)</li>
 <li>1 : 预览链接</li></ul>
 注:
@@ -6062,7 +6062,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
 
 class ChannelCreateFlowSignUrlResponse(AbstractModel):
-    """ChannelCreateFlowSignUrl返回参数结构体
+    r"""ChannelCreateFlowSignUrl返回参数结构体
 
     """
 
@@ -6078,7 +6078,7 @@ class ChannelCreateFlowSignUrlResponse(AbstractModel):
 
     @property
     def FlowApproverUrlInfos(self):
-        """签署人签署链接信息
+        r"""签署人签署链接信息
         :rtype: list of FlowApproverUrlInfo
         """
         return self._FlowApproverUrlInfos
@@ -6089,7 +6089,7 @@ class ChannelCreateFlowSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6110,7 +6110,7 @@ class ChannelCreateFlowSignUrlResponse(AbstractModel):
 
 
 class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
-    """ChannelCreateMultiFlowSignQRCode请求参数结构体
+    r"""ChannelCreateMultiFlowSignQRCode请求参数结构体
 
     """
 
@@ -6152,6 +6152,10 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type ForbidPersonalMultipleSign: bool
         :param _FlowNameAppendScannerInfo: 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
         :type FlowNameAppendScannerInfo: bool
+        :param _QrCodeName: 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+        :type QrCodeName: str
+        :param _QrCodeExpiredOn: 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+        :type QrCodeExpiredOn: int
         """
         self._Agent = None
         self._TemplateId = None
@@ -6166,10 +6170,12 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._Operator = None
         self._ForbidPersonalMultipleSign = None
         self._FlowNameAppendScannerInfo = None
+        self._QrCodeName = None
+        self._QrCodeExpiredOn = None
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -6188,7 +6194,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """合同模板ID，为32位字符串。
+        r"""合同模板ID，为32位字符串。
         :rtype: str
         """
         return self._TemplateId
@@ -6199,7 +6205,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowName(self):
-        """合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
+        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
         :rtype: str
         """
         return self._FlowName
@@ -6210,7 +6216,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def MaxFlowNum(self):
-        """通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
+        r"""通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
         :rtype: int
         """
         return self._MaxFlowNum
@@ -6221,7 +6227,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowEffectiveDay(self):
-        """合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
+        r"""合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
         :rtype: int
         """
         return self._FlowEffectiveDay
@@ -6232,18 +6238,22 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrEffectiveDay(self):
-        """二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
+        warnings.warn("parameter `QrEffectiveDay` is deprecated", DeprecationWarning) 
+
+        r"""二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
         :rtype: int
         """
         return self._QrEffectiveDay
 
     @QrEffectiveDay.setter
     def QrEffectiveDay(self, QrEffectiveDay):
+        warnings.warn("parameter `QrEffectiveDay` is deprecated", DeprecationWarning) 
+
         self._QrEffectiveDay = QrEffectiveDay
 
     @property
     def Restrictions(self):
-        """指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
+        r"""指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
         :rtype: list of ApproverRestriction
         """
         return self._Restrictions
@@ -6254,7 +6264,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ApproverComponentLimitTypes(self):
-        """指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+        r"""指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
         :rtype: list of ApproverComponentLimitType
         """
         return self._ApproverComponentLimitTypes
@@ -6267,7 +6277,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
+        r"""已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
 <br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
 <br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
         :rtype: str
@@ -6284,7 +6294,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def ApproverRestrictions(self):
         warnings.warn("parameter `ApproverRestrictions` is deprecated", DeprecationWarning) 
 
-        """限制二维码用户条件（已弃用）
+        r"""限制二维码用户条件（已弃用）
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         """
         return self._ApproverRestrictions
@@ -6299,7 +6309,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -6312,7 +6322,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ForbidPersonalMultipleSign(self):
-        """禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        r"""禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
         :rtype: bool
         """
         return self._ForbidPersonalMultipleSign
@@ -6323,7 +6333,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowNameAppendScannerInfo(self):
-        """合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        r"""合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
         :rtype: bool
         """
         return self._FlowNameAppendScannerInfo
@@ -6331,6 +6341,28 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     @FlowNameAppendScannerInfo.setter
     def FlowNameAppendScannerInfo(self, FlowNameAppendScannerInfo):
         self._FlowNameAppendScannerInfo = FlowNameAppendScannerInfo
+
+    @property
+    def QrCodeName(self):
+        r"""签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+        :rtype: str
+        """
+        return self._QrCodeName
+
+    @QrCodeName.setter
+    def QrCodeName(self, QrCodeName):
+        self._QrCodeName = QrCodeName
+
+    @property
+    def QrCodeExpiredOn(self):
+        r"""签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+        :rtype: int
+        """
+        return self._QrCodeExpiredOn
+
+    @QrCodeExpiredOn.setter
+    def QrCodeExpiredOn(self, QrCodeExpiredOn):
+        self._QrCodeExpiredOn = QrCodeExpiredOn
 
 
     def _deserialize(self, params):
@@ -6363,6 +6395,8 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._ForbidPersonalMultipleSign = params.get("ForbidPersonalMultipleSign")
         self._FlowNameAppendScannerInfo = params.get("FlowNameAppendScannerInfo")
+        self._QrCodeName = params.get("QrCodeName")
+        self._QrCodeExpiredOn = params.get("QrCodeExpiredOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6374,7 +6408,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
 
 class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
-    """ChannelCreateMultiFlowSignQRCode返回参数结构体
+    r"""ChannelCreateMultiFlowSignQRCode返回参数结构体
 
     """
 
@@ -6393,7 +6427,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        """一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
+        r"""一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
         """
         return self._QrCode
@@ -6404,7 +6438,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def SignUrls(self):
-        """一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
+        r"""一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignUrl`
         """
         return self._SignUrls
@@ -6415,7 +6449,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6436,7 +6470,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
 
 class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
-    """ChannelCreateOrganizationBatchSignUrl请求参数结构体
+    r"""ChannelCreateOrganizationBatchSignUrl请求参数结构体
 
     """
 
@@ -6472,7 +6506,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -6483,7 +6517,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
+        r"""请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
         :rtype: list of str
         """
         return self._FlowIds
@@ -6494,7 +6528,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。
+        r"""第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。
 
 <ul>
 <li>1. 若OpenId为空，Name和Mobile 必须提供。</li>
@@ -6510,7 +6544,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 
 注：`请确保和合同中填入的一致`
@@ -6524,7 +6558,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        """员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
+        r"""员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
         :rtype: str
         """
         return self._Mobile
@@ -6535,7 +6569,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组Id，传入此参数则可以不传FlowIds
+        r"""合同组Id，传入此参数则可以不传FlowIds
         :rtype: str
         """
         return self._FlowGroupId
@@ -6565,7 +6599,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
 
 
 class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
-    """ChannelCreateOrganizationBatchSignUrl返回参数结构体
+    r"""ChannelCreateOrganizationBatchSignUrl返回参数结构体
 
     """
 
@@ -6584,7 +6618,7 @@ class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
 
     @property
     def SignUrl(self):
-        """批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。	
+        r"""批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。	
         :rtype: str
         """
         return self._SignUrl
@@ -6595,7 +6629,7 @@ class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :rtype: int
         """
         return self._ExpiredTime
@@ -6606,7 +6640,7 @@ class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6623,7 +6657,7 @@ class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
 
 
 class ChannelCreateOrganizationModifyQrCodeRequest(AbstractModel):
-    """ChannelCreateOrganizationModifyQrCode请求参数结构体
+    r"""ChannelCreateOrganizationModifyQrCode请求参数结构体
 
     """
 
@@ -6643,7 +6677,7 @@ class ChannelCreateOrganizationModifyQrCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 
@@ -6675,7 +6709,7 @@ class ChannelCreateOrganizationModifyQrCodeRequest(AbstractModel):
 
 
 class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
-    """ChannelCreateOrganizationModifyQrCode返回参数结构体
+    r"""ChannelCreateOrganizationModifyQrCode返回参数结构体
 
     """
 
@@ -6694,7 +6728,7 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
 
     @property
     def QrCodeUrl(self):
-        """二维码下载链接
+        r"""二维码下载链接
         :rtype: str
         """
         return self._QrCodeUrl
@@ -6705,7 +6739,7 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """二维码失效时间 UNIX 时间戳 精确到秒
+        r"""二维码失效时间 UNIX 时间戳 精确到秒
         :rtype: int
         """
         return self._ExpiredTime
@@ -6716,7 +6750,7 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6733,7 +6767,7 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
 
 
 class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
-    """ChannelCreatePrepareFlowGroup请求参数结构体
+    r"""ChannelCreatePrepareFlowGroup请求参数结构体
 
     """
 
@@ -6764,7 +6798,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def BaseFlowInfos(self):
-        """合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        r"""合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
         :rtype: list of BaseFlowInfo
         """
         return self._BaseFlowInfos
@@ -6775,7 +6809,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        """合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowGroupName
@@ -6786,7 +6820,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        r"""资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
         :rtype: int
         """
         return self._ResourceType
@@ -6797,7 +6831,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
 
 此接口下面信息必填。
 <ul>
@@ -6839,7 +6873,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
 
 class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
-    """ChannelCreatePrepareFlowGroup返回参数结构体
+    r"""ChannelCreatePrepareFlowGroup返回参数结构体
 
     """
 
@@ -6859,7 +6893,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组ID，为32位字符串。
+        r"""合同组ID，为32位字符串。
 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
         :rtype: str
         """
@@ -6871,7 +6905,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def PrepareUrl(self):
-        """嵌入式发起链接
+        r"""嵌入式发起链接
         :rtype: str
         """
         return self._PrepareUrl
@@ -6882,7 +6916,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6899,7 +6933,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
 
 class ChannelCreatePrepareFlowRequest(AbstractModel):
-    """ChannelCreatePrepareFlow请求参数结构体
+    r"""ChannelCreatePrepareFlow请求参数结构体
 
     """
 
@@ -6961,7 +6995,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型，取值有：
+        r"""资源类型，取值有：
 <ul><li> **1**：模板</li>
 <li> **2**：文件（默认值）</li></ul>
         :rtype: int
@@ -6974,7 +7008,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowInfo(self):
-        """要创建的合同信息
+        r"""要创建的合同信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
         """
         return self._FlowInfo
@@ -6985,7 +7019,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -7004,7 +7038,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源id，与ResourceType相对应，取值范围：
+        r"""资源id，与ResourceType相对应，取值范围：
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 <li>模板Id（通过控制台创建模板后获取模板Id）</li>
@@ -7020,7 +7054,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowOption(self):
-        """合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
+        r"""合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
         """
         return self._FlowOption
@@ -7033,7 +7067,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def FlowApproverList(self):
         warnings.warn("parameter `FlowApproverList` is deprecated", DeprecationWarning) 
 
-        """已废弃，请用FlowInfo.Approvers
+        r"""已废弃，请用FlowInfo.Approvers
         :rtype: list of CommonFlowApprover
         """
         return self._FlowApproverList
@@ -7046,7 +7080,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
+        r"""合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
         :rtype: str
         """
@@ -7060,7 +7094,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def NeedPreview(self):
         warnings.warn("parameter `NeedPreview` is deprecated", DeprecationWarning) 
 
-        """该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        r"""该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
         :rtype: bool
         """
         return self._NeedPreview
@@ -7075,7 +7109,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """企业机构信息，不用传
+        r"""企业机构信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -7090,7 +7124,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人（用户）信息，不用传
+        r"""操作人（用户）信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -7105,7 +7139,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def SignComponentConfig(self):
         warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
 
-        """<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+        r"""<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
 签署控件的配置信息，用在嵌入式发起的页面配置，包括
 
 - 签署控件 是否默认展示日期.
@@ -7160,7 +7194,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
 
 class ChannelCreatePrepareFlowResponse(AbstractModel):
-    """ChannelCreatePrepareFlow返回参数结构体
+    r"""ChannelCreatePrepareFlow返回参数结构体
 
     """
 
@@ -7182,7 +7216,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def PrepareFlowUrl(self):
-        """发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
+        r"""发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
         :rtype: str
         """
         return self._PrepareFlowUrl
@@ -7193,7 +7227,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def PreviewFlowUrl(self):
-        """合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
+        r"""合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
         :rtype: str
         """
         return self._PreviewFlowUrl
@@ -7204,7 +7238,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
+        r"""发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
         :rtype: str
         """
         return self._FlowId
@@ -7215,7 +7249,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7233,7 +7267,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
 
 class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
-    """ChannelCreatePreparedPersonalEsign请求参数结构体
+    r"""ChannelCreatePreparedPersonalEsign请求参数结构体
 
     """
 
@@ -7292,7 +7326,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -7303,7 +7337,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """个人用户姓名
+        r"""个人用户姓名
         :rtype: str
         """
         return self._UserName
@@ -7314,7 +7348,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码, 应符合以下规则
+        r"""证件号码, 应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -7328,7 +7362,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def SealName(self):
-        """电子印章名字，1-50个中文字符
+        r"""电子印章名字，1-50个中文字符
 注:`同一企业下电子印章名字不能相同`
         :rtype: str
         """
@@ -7340,7 +7374,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def SealImage(self):
-        """电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
+        r"""电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
 
 
         :rtype: str
@@ -7353,7 +7387,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -7365,7 +7399,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def IdCardType(self):
-        """证件类型，支持以下类型
+        r"""证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
@@ -7382,7 +7416,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def SealImageCompress(self):
-        """是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        r"""是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
         :rtype: bool
         """
         return self._SealImageCompress
@@ -7393,7 +7427,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        """手机号码；当需要开通自动签时，该参数必传
+        r"""手机号码；当需要开通自动签时，该参数必传
         :rtype: str
         """
         return self._Mobile
@@ -7404,7 +7438,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def EnableAutoSign(self):
-        """该字段已不再使用
+        r"""该字段已不再使用
         :rtype: bool
         """
         return self._EnableAutoSign
@@ -7415,7 +7449,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        r"""设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
         :rtype: int
         """
         return self._LicenseType
@@ -7426,7 +7460,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -7464,7 +7498,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
 
 class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
-    """ChannelCreatePreparedPersonalEsign返回参数结构体
+    r"""ChannelCreatePreparedPersonalEsign返回参数结构体
 
     """
 
@@ -7482,7 +7516,7 @@ class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
 
     @property
     def SealId(self):
-        """电子印章ID，为32位字符串。
+        r"""电子印章ID，为32位字符串。
 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
         :rtype: str
@@ -7495,7 +7529,7 @@ class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7511,7 +7545,7 @@ class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
 
 
 class ChannelCreateReleaseFlowRequest(AbstractModel):
-    """ChannelCreateReleaseFlow请求参数结构体
+    r"""ChannelCreateReleaseFlow请求参数结构体
 
     """
 
@@ -7570,7 +7604,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -7589,7 +7623,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def NeedRelievedFlowId(self):
-        """待解除的签署流程编号(即原签署流程的编号)。
+        r"""待解除的签署流程编号(即原签署流程的编号)。
 
 
 [点击查看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
@@ -7603,7 +7637,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def ReliveInfo(self):
-        """解除协议内容, 包括解除理由等信息。
+        r"""解除协议内容, 包括解除理由等信息。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.RelieveInfo`
         """
         return self._ReliveInfo
@@ -7614,7 +7648,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def ReleasedApprovers(self):
-        """替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
+        r"""替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
 
 注：
@@ -7633,7 +7667,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """签署完回调url，最大长度1000个字符
+        r"""签署完回调url，最大长度1000个字符
         :rtype: str
         """
         return self._CallbackUrl
@@ -7648,7 +7682,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -7663,7 +7697,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -7676,7 +7710,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        """合同流程的签署截止时间，格式为Unix标准时间戳(秒)，如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
+        r"""合同流程的签署截止时间，格式为Unix标准时间戳(秒)，如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
         :rtype: int
         """
@@ -7688,7 +7722,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
     @property
     def UserData(self):
-        """调用方自定义的个性化字段，该字段的值可以是字符串JSON或其他字符串形式，客户可以根据自身需求自定义数据格式并在需要时进行解析。该字段的信息将以Base64编码的形式传输，支持的最大数据大小为20480长度。
+        r"""调用方自定义的个性化字段，该字段的值可以是字符串JSON或其他字符串形式，客户可以根据自身需求自定义数据格式并在需要时进行解析。该字段的信息将以Base64编码的形式传输，支持的最大数据大小为20480长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
 
@@ -7736,7 +7770,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 
 
 class ChannelCreateReleaseFlowResponse(AbstractModel):
-    """ChannelCreateReleaseFlow返回参数结构体
+    r"""ChannelCreateReleaseFlow返回参数结构体
 
     """
 
@@ -7752,7 +7786,7 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """解除协议流程编号
+        r"""解除协议流程编号
         :rtype: str
         """
         return self._FlowId
@@ -7763,7 +7797,7 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7779,7 +7813,7 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
 
 
 class ChannelCreateRoleRequest(AbstractModel):
-    """ChannelCreateRole请求参数结构体
+    r"""ChannelCreateRole请求参数结构体
 
     """
 
@@ -7809,7 +7843,7 @@ class ChannelCreateRoleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        r"""角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._Name
@@ -7820,7 +7854,7 @@ class ChannelCreateRoleRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -7839,7 +7873,7 @@ class ChannelCreateRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """角色描述，最大长度为50个字符
+        r"""角色描述，最大长度为50个字符
         :rtype: str
         """
         return self._Description
@@ -7850,7 +7884,7 @@ class ChannelCreateRoleRequest(AbstractModel):
 
     @property
     def PermissionGroups(self):
-        """权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
+        r"""权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -7883,7 +7917,7 @@ class ChannelCreateRoleRequest(AbstractModel):
 
 
 class ChannelCreateRoleResponse(AbstractModel):
-    """ChannelCreateRole返回参数结构体
+    r"""ChannelCreateRole返回参数结构体
 
     """
 
@@ -7899,7 +7933,7 @@ class ChannelCreateRoleResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色id
+        r"""角色id
         :rtype: str
         """
         return self._RoleId
@@ -7910,7 +7944,7 @@ class ChannelCreateRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7926,7 +7960,7 @@ class ChannelCreateRoleResponse(AbstractModel):
 
 
 class ChannelCreateSealPolicyRequest(AbstractModel):
-    """ChannelCreateSealPolicy请求参数结构体
+    r"""ChannelCreateSealPolicy请求参数结构体
 
     """
 
@@ -7966,7 +8000,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 
@@ -7984,7 +8018,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
 
     @property
     def SealId(self):
-        """电子印章ID，为32位字符串。
+        r"""电子印章ID，为32位字符串。
 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
         :rtype: str
@@ -7997,7 +8031,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """
+        r"""
 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
@@ -8016,7 +8050,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人（用户）信息，不用传
+        r"""操作人（用户）信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -8031,7 +8065,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """企业机构信息，不用传
+        r"""企业机构信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -8066,7 +8100,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
 
 
 class ChannelCreateSealPolicyResponse(AbstractModel):
-    """ChannelCreateSealPolicy返回参数结构体
+    r"""ChannelCreateSealPolicy返回参数结构体
 
     """
 
@@ -8083,7 +8117,7 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
 
     @property
     def UserIds(self):
-        """最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
+        r"""最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
 请求参数填写OpenId时，返回授权成功的 Openid。
         :rtype: list of str
         """
@@ -8095,7 +8129,7 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8111,7 +8145,7 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
 
 
 class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
-    """ChannelCreateUserAutoSignEnableUrl请求参数结构体
+    r"""ChannelCreateUserAutoSignEnableUrl请求参数结构体
 
     """
 
@@ -8152,7 +8186,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -8163,7 +8197,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -8175,7 +8209,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -8187,7 +8221,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def AutoSignConfig(self):
-        """自动签开通配置信息, 包括开通的人员的信息等
+        r"""自动签开通配置信息, 包括开通的人员的信息等
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.AutoSignConfig`
         """
         return self._AutoSignConfig
@@ -8198,7 +8232,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def UrlType(self):
-        """生成的链接类型：
+        r"""生成的链接类型：
 <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
 <li> **H5SIGN** : 生成H5端开通链接</li></ul>
         :rtype: str
@@ -8211,7 +8245,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyType(self):
-        """是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        r"""是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :rtype: str
         """
         return self._NotifyType
@@ -8222,7 +8256,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyAddress(self):
-        """如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
+        r"""如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :rtype: str
         """
         return self._NotifyAddress
@@ -8233,7 +8267,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        r"""链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
         :rtype: int
         """
         return self._ExpiredTime
@@ -8244,7 +8278,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def UserData(self):
-        """调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+        r"""调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
         :rtype: str
         """
         return self._UserData
@@ -8281,7 +8315,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
 
 class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
-    """ChannelCreateUserAutoSignEnableUrl返回参数结构体
+    r"""ChannelCreateUserAutoSignEnableUrl返回参数结构体
 
     """
 
@@ -8322,7 +8356,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        r"""个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
         :rtype: str
         """
         return self._Url
@@ -8333,7 +8367,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
+        r"""腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 
 注: `如果获取的是H5链接, 则不会返回此值`
         :rtype: str
@@ -8346,7 +8380,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def AppOriginalId(self):
-        """腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
+        r"""腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 
 注: `如果获取的是H5链接, 则不会返回此值`
         :rtype: str
@@ -8359,7 +8393,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def Path(self):
-        """腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
+        r"""腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 
 注: `如果获取的是H5链接, 则不会返回此值`
         :rtype: str
@@ -8372,7 +8406,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        """base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+        r"""base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
 
 注: `如果获取的是H5链接, 则不会返回此二维码图片`
         :rtype: str
@@ -8385,7 +8419,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def UrlType(self):
-        """返回的链接类型
+        r"""返回的链接类型
 <ul><li> 空: 默认小程序端链接</li>
 <li> **H5SIGN** : h5端链接</li></ul>
         :rtype: str
@@ -8398,7 +8432,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8419,7 +8453,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
 
 class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
-    """ChannelCreateUserAutoSignSealUrl请求参数结构体
+    r"""ChannelCreateUserAutoSignSealUrl请求参数结构体
 
     """
 
@@ -8446,7 +8480,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """渠道应用相关信息。
+        r"""渠道应用相关信息。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -8457,7 +8491,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -8469,7 +8503,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        """自动签开通个人用户信息，包括名字，身份证等。
+        r"""自动签开通个人用户信息，包括名字，身份证等。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -8480,7 +8514,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -8492,7 +8526,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        r"""链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
         :rtype: int
         """
         return self._ExpiredTime
@@ -8525,7 +8559,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
 
 class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
-    """ChannelCreateUserAutoSignSealUrl返回参数结构体
+    r"""ChannelCreateUserAutoSignSealUrl返回参数结构体
 
     """
 
@@ -8553,7 +8587,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
         :rtype: str
         """
         return self._AppId
@@ -8564,7 +8598,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def AppOriginalId(self):
-        """腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
         :rtype: str
         """
         return self._AppOriginalId
@@ -8575,7 +8609,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        r"""个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
         :rtype: str
         """
         return self._Url
@@ -8586,7 +8620,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def Path(self):
-        """腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
         :rtype: str
         """
         return self._Path
@@ -8597,7 +8631,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        """base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+        r"""base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
         :rtype: str
         """
         return self._QrCode
@@ -8608,7 +8642,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8628,7 +8662,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
 
 class ChannelCreateUserRolesRequest(AbstractModel):
-    """ChannelCreateUserRoles请求参数结构体
+    r"""ChannelCreateUserRoles请求参数结构体
 
     """
 
@@ -8661,7 +8695,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -8680,7 +8714,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        """绑定角色的角色id列表，最多 100 个
+        r"""绑定角色的角色id列表，最多 100 个
         :rtype: list of str
         """
         return self._RoleIds
@@ -8691,7 +8725,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
+        r"""电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
         :rtype: list of str
         """
         return self._UserIds
@@ -8702,7 +8736,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     @property
     def OpenIds(self):
-        """客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
+        r"""客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
         :rtype: list of str
         """
         return self._OpenIds
@@ -8715,7 +8749,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者信息
+        r"""操作者信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -8748,7 +8782,7 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
 
 class ChannelCreateUserRolesResponse(AbstractModel):
-    """ChannelCreateUserRoles返回参数结构体
+    r"""ChannelCreateUserRoles返回参数结构体
 
     """
 
@@ -8764,7 +8798,7 @@ class ChannelCreateUserRolesResponse(AbstractModel):
 
     @property
     def FailedCreateRoleData(self):
-        """绑定失败的用户角色列表
+        r"""绑定失败的用户角色列表
         :rtype: list of FailedCreateRoleData
         """
         return self._FailedCreateRoleData
@@ -8775,7 +8809,7 @@ class ChannelCreateUserRolesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8796,7 +8830,7 @@ class ChannelCreateUserRolesResponse(AbstractModel):
 
 
 class ChannelCreateWebThemeConfigRequest(AbstractModel):
-    """ChannelCreateWebThemeConfig请求参数结构体
+    r"""ChannelCreateWebThemeConfig请求参数结构体
 
     """
 
@@ -8820,7 +8854,7 @@ class ChannelCreateWebThemeConfigRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -8831,7 +8865,7 @@ class ChannelCreateWebThemeConfigRequest(AbstractModel):
 
     @property
     def ThemeType(self):
-        """主题类型<br/>EMBED_WEB_THEME：嵌入式主题
+        r"""主题类型<br/>EMBED_WEB_THEME：嵌入式主题
 <ul>
 <li>EMBED_WEB_THEME，web页面嵌入的主题风格配置</li>
 <li>COMPANY_AUTHENTICATE，子客认证主题配置， 对当前第三方应用号生效，
@@ -8847,7 +8881,7 @@ class ChannelCreateWebThemeConfigRequest(AbstractModel):
 
     @property
     def WebThemeConfig(self):
-        """主题配置
+        r"""主题配置
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.WebThemeConfig`
         """
         return self._WebThemeConfig
@@ -8876,7 +8910,7 @@ class ChannelCreateWebThemeConfigRequest(AbstractModel):
 
 
 class ChannelCreateWebThemeConfigResponse(AbstractModel):
-    """ChannelCreateWebThemeConfig返回参数结构体
+    r"""ChannelCreateWebThemeConfig返回参数结构体
 
     """
 
@@ -8889,7 +8923,7 @@ class ChannelCreateWebThemeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8904,7 +8938,7 @@ class ChannelCreateWebThemeConfigResponse(AbstractModel):
 
 
 class ChannelDeleteRoleRequest(AbstractModel):
-    """ChannelDeleteRole请求参数结构体
+    r"""ChannelDeleteRole请求参数结构体
 
     """
 
@@ -8928,7 +8962,7 @@ class ChannelDeleteRoleRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -8947,7 +8981,7 @@ class ChannelDeleteRoleRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        """角色id，最多20个
+        r"""角色id，最多20个
         :rtype: list of str
         """
         return self._RoleIds
@@ -8973,7 +9007,7 @@ class ChannelDeleteRoleRequest(AbstractModel):
 
 
 class ChannelDeleteRoleResponse(AbstractModel):
-    """ChannelDeleteRole返回参数结构体
+    r"""ChannelDeleteRole返回参数结构体
 
     """
 
@@ -8986,7 +9020,7 @@ class ChannelDeleteRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9001,7 +9035,7 @@ class ChannelDeleteRoleResponse(AbstractModel):
 
 
 class ChannelDeleteRoleUsersRequest(AbstractModel):
-    """ChannelDeleteRoleUsers请求参数结构体
+    r"""ChannelDeleteRoleUsers请求参数结构体
 
     """
 
@@ -9026,7 +9060,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """代理信息此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        r"""代理信息此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -9037,7 +9071,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色Id（非超管或法人角色Id）
+        r"""角色Id（非超管或法人角色Id）
         :rtype: str
         """
         return self._RoleId
@@ -9048,7 +9082,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
+        r"""电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
         :rtype: list of str
         """
         return self._UserIds
@@ -9061,7 +9095,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人信息
+        r"""操作人信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -9074,7 +9108,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
     @property
     def OpenIds(self):
-        """客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
+        r"""客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
         :rtype: list of str
         """
         return self._OpenIds
@@ -9105,7 +9139,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
 
 class ChannelDeleteRoleUsersResponse(AbstractModel):
-    """ChannelDeleteRoleUsers返回参数结构体
+    r"""ChannelDeleteRoleUsers返回参数结构体
 
     """
 
@@ -9121,7 +9155,7 @@ class ChannelDeleteRoleUsersResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色id
+        r"""角色id
         :rtype: str
         """
         return self._RoleId
@@ -9132,7 +9166,7 @@ class ChannelDeleteRoleUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9148,7 +9182,7 @@ class ChannelDeleteRoleUsersResponse(AbstractModel):
 
 
 class ChannelDeleteSealPoliciesRequest(AbstractModel):
-    """ChannelDeleteSealPolicies请求参数结构体
+    r"""ChannelDeleteSealPolicies请求参数结构体
 
     """
 
@@ -9175,7 +9209,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -9186,7 +9220,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
 
     @property
     def SealId(self):
-        """操作的印章ID
+        r"""操作的印章ID
         :rtype: str
         """
         return self._SealId
@@ -9197,7 +9231,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """需要删除授权的用户ID数组，可以传入电子签系统用户ID或OpenId。
+        r"""需要删除授权的用户ID数组，可以传入电子签系统用户ID或OpenId。
 注: 
 1. `填写OpenId时，系统会通过组织+渠道+OpenId查询得到对应的UserId进行授权取消操作`
         :rtype: list of str
@@ -9212,7 +9246,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """组织机构信息，不用传
+        r"""组织机构信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -9227,7 +9261,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人（用户）信息，不用传
+        r"""操作人（用户）信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -9262,7 +9296,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
 
 
 class ChannelDeleteSealPoliciesResponse(AbstractModel):
-    """ChannelDeleteSealPolicies返回参数结构体
+    r"""ChannelDeleteSealPolicies返回参数结构体
 
     """
 
@@ -9275,7 +9309,7 @@ class ChannelDeleteSealPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9290,7 +9324,7 @@ class ChannelDeleteSealPoliciesResponse(AbstractModel):
 
 
 class ChannelDescribeAccountBillDetailRequest(AbstractModel):
-    """ChannelDescribeAccountBillDetail请求参数结构体
+    r"""ChannelDescribeAccountBillDetail请求参数结构体
 
     """
 
@@ -9309,7 +9343,7 @@ class ChannelDescribeAccountBillDetailRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -9340,7 +9374,7 @@ class ChannelDescribeAccountBillDetailRequest(AbstractModel):
 
 
 class ChannelDescribeAccountBillDetailResponse(AbstractModel):
-    """ChannelDescribeAccountBillDetail返回参数结构体
+    r"""ChannelDescribeAccountBillDetail返回参数结构体
 
     """
 
@@ -9368,7 +9402,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def BoundAccountsNumber(self):
-        """当前绑定中账号数量
+        r"""当前绑定中账号数量
         :rtype: int
         """
         return self._BoundAccountsNumber
@@ -9379,7 +9413,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def RemainAvailableAccountsNumber(self):
-        """剩余可绑定账号数量
+        r"""剩余可绑定账号数量
         :rtype: int
         """
         return self._RemainAvailableAccountsNumber
@@ -9390,7 +9424,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def InvalidAccountsNumber(self):
-        """已失效账号数量
+        r"""已失效账号数量
         :rtype: int
         """
         return self._InvalidAccountsNumber
@@ -9401,7 +9435,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def TotalBuyAccountsNumber(self):
-        """购买数量
+        r"""购买数量
         :rtype: int
         """
         return self._TotalBuyAccountsNumber
@@ -9412,7 +9446,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def TotalGiftAccountsNumber(self):
-        """赠送数量
+        r"""赠送数量
         :rtype: int
         """
         return self._TotalGiftAccountsNumber
@@ -9423,7 +9457,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9443,7 +9477,7 @@ class ChannelDescribeAccountBillDetailResponse(AbstractModel):
 
 
 class ChannelDescribeBillUsageDetailRequest(AbstractModel):
-    """ChannelDescribeBillUsageDetail请求参数结构体
+    r"""ChannelDescribeBillUsageDetail请求参数结构体
 
     """
 
@@ -9494,7 +9528,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -9511,7 +9545,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        r"""查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
         :rtype: str
         """
         return self._StartTime
@@ -9522,7 +9556,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        r"""查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
         :rtype: str
         """
         return self._EndTime
@@ -9533,7 +9567,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def QuotaType(self):
-        """查询的套餐类型 （选填 ）不传则查询所有套餐；
+        r"""查询的套餐类型 （选填 ）不传则查询所有套餐；
 目前支持:
 <ul>
 <li>**CloudEnterprise**: 企业版合同</li>
@@ -9561,7 +9595,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        r"""指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
         :rtype: int
         """
         return self._Offset
@@ -9572,7 +9606,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+        r"""指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
         :rtype: int
         """
         return self._Limit
@@ -9602,7 +9636,7 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 
 
 class ChannelDescribeBillUsageDetailResponse(AbstractModel):
-    """ChannelDescribeBillUsageDetail返回参数结构体
+    r"""ChannelDescribeBillUsageDetail返回参数结构体
 
     """
 
@@ -9621,7 +9655,7 @@ class ChannelDescribeBillUsageDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """返回查询记录总数
+        r"""返回查询记录总数
         :rtype: int
         """
         return self._Total
@@ -9632,7 +9666,7 @@ class ChannelDescribeBillUsageDetailResponse(AbstractModel):
 
     @property
     def Details(self):
-        """消耗记录详情
+        r"""消耗记录详情
         :rtype: list of ChannelBillUsageDetail
         """
         return self._Details
@@ -9643,7 +9677,7 @@ class ChannelDescribeBillUsageDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9665,7 +9699,7 @@ class ChannelDescribeBillUsageDetailResponse(AbstractModel):
 
 
 class ChannelDescribeEmployeesRequest(AbstractModel):
-    """ChannelDescribeEmployees请求参数结构体
+    r"""ChannelDescribeEmployees请求参数结构体
 
     """
 
@@ -9706,7 +9740,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -9725,7 +9759,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，单页最大支持 20。
+        r"""指定分页每页返回的数据条数，单页最大支持 20。
         :rtype: int
         """
         return self._Limit
@@ -9736,7 +9770,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询的关键字段，支持Key-Values查询。可选键值如下：
+        r"""查询的关键字段，支持Key-Values查询。可选键值如下：
 <ul>
   <li>Key:**"Status"**，Values: **["IsVerified"]**, 查询已实名的员工</li>
   <li>Key:**"Status"**，Values: **["NotVerified"]**, 查询未实名的员工</li>
@@ -9755,7 +9789,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量:从 0 开始，最大20000。
+        r"""偏移量:从 0 开始，最大20000。
         :rtype: int
         """
         return self._Offset
@@ -9768,7 +9802,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -9806,7 +9840,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
 
 class ChannelDescribeEmployeesResponse(AbstractModel):
-    """ChannelDescribeEmployees返回参数结构体
+    r"""ChannelDescribeEmployees返回参数结构体
 
     """
 
@@ -9831,7 +9865,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def Employees(self):
-        """员工信息列表。
+        r"""员工信息列表。
         :rtype: list of Staff
         """
         return self._Employees
@@ -9842,7 +9876,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
+        r"""偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -9853,7 +9887,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，单页最大支持 20。
+        r"""指定分页每页返回的数据条数，单页最大支持 20。
         :rtype: int
         """
         return self._Limit
@@ -9864,7 +9898,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合条件的员工数量。
+        r"""符合条件的员工数量。
         :rtype: int
         """
         return self._TotalCount
@@ -9875,7 +9909,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9899,7 +9933,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
 
 class ChannelDescribeFlowComponentsRequest(AbstractModel):
-    """ChannelDescribeFlowComponents请求参数结构体
+    r"""ChannelDescribeFlowComponents请求参数结构体
 
     """
 
@@ -9923,7 +9957,7 @@ class ChannelDescribeFlowComponentsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -9942,7 +9976,7 @@ class ChannelDescribeFlowComponentsRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """需要获取填写控件填写内容的合同流程ID
+        r"""需要获取填写控件填写内容的合同流程ID
         :rtype: str
         """
         return self._FlowId
@@ -9968,7 +10002,7 @@ class ChannelDescribeFlowComponentsRequest(AbstractModel):
 
 
 class ChannelDescribeFlowComponentsResponse(AbstractModel):
-    """ChannelDescribeFlowComponents返回参数结构体
+    r"""ChannelDescribeFlowComponents返回参数结构体
 
     """
 
@@ -9984,7 +10018,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
 
     @property
     def RecipientComponentInfos(self):
-        """合同填写控件信息列表，填写控件会按照参与方角色进行分类。
+        r"""合同填写控件信息列表，填写控件会按照参与方角色进行分类。
         :rtype: list of RecipientComponentInfo
         """
         return self._RecipientComponentInfos
@@ -9995,7 +10029,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10016,7 +10050,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
 
 
 class ChannelDescribeOrganizationSealsRequest(AbstractModel):
-    """ChannelDescribeOrganizationSeals请求参数结构体
+    r"""ChannelDescribeOrganizationSeals请求参数结构体
 
     """
 
@@ -10062,7 +10096,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -10081,7 +10115,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，单页最大支持 100。
+        r"""指定分页每页返回的数据条数，单页最大支持 100。
         :rtype: int
         """
         return self._Limit
@@ -10092,7 +10126,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为0，最大为20000
+        r"""分页查询偏移量，默认为0，最大为20000
         :rtype: int
         """
         return self._Offset
@@ -10103,7 +10137,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def InfoType(self):
-        """查询授权用户信息类型，取值如下：
+        r"""查询授权用户信息类型，取值如下：
 
 <ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
         :rtype: int
@@ -10116,7 +10150,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealId(self):
-        """印章id，是否查询特定的印章（没有输入返回所有）
+        r"""印章id，是否查询特定的印章（没有输入返回所有）
 
 注:  `没有输入返回所有记录，最大返回100条。`
         :rtype: str
@@ -10129,7 +10163,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        """电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**LEGAL_PERSON_SEAL**: 法定代表人章;</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `1.为空时查询所有类型的印章。`
+        r"""电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**LEGAL_PERSON_SEAL**: 法定代表人章;</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `1.为空时查询所有类型的印章。`
         :rtype: list of str
         """
         return self._SealTypes
@@ -10140,7 +10174,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealStatuses(self):
-        """
+        r"""
 需查询的印章状态列表。
 
 <ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
@@ -10174,7 +10208,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
 
 class ChannelDescribeOrganizationSealsResponse(AbstractModel):
-    """ChannelDescribeOrganizationSeals返回参数结构体
+    r"""ChannelDescribeOrganizationSeals返回参数结构体
 
     """
 
@@ -10193,7 +10227,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
+        r"""在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
         :rtype: int
         """
         return self._TotalCount
@@ -10204,7 +10238,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     @property
     def Seals(self):
-        """查询到的印章结果数组
+        r"""查询到的印章结果数组
         :rtype: list of OccupiedSeal
         """
         return self._Seals
@@ -10215,7 +10249,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10237,7 +10271,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
 
 class ChannelDescribeRolesRequest(AbstractModel):
-    """ChannelDescribeRoles请求参数结构体
+    r"""ChannelDescribeRoles请求参数结构体
 
     """
 
@@ -10285,7 +10319,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -10304,7 +10338,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
 
     @property
     def Limit(self):
-        """指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
+        r"""指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
 
 注: `因为历史原因, 此字段为字符串类型`
         :rtype: str
@@ -10317,7 +10351,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
 
     @property
     def Filters(self):
-        """查询的关键字段:
+        r"""查询的关键字段:
 Key:"**RoleType**",Values:["**1**"]查询系统角色，
 Key:"**RoleType**",Values:["**2**"]查询自定义角色
 Key:"**RoleStatus**",Values:["**1**"]查询启用角色
@@ -10337,7 +10371,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
 
     @property
     def Offset(self):
-        """查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
 
 注：
 1.`offset从0开始，即第一页为0。`
@@ -10354,7 +10388,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人信息
+        r"""操作人信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -10392,7 +10426,7 @@ Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对�
 
 
 class ChannelDescribeRolesResponse(AbstractModel):
-    """ChannelDescribeRoles返回参数结构体
+    r"""ChannelDescribeRoles返回参数结构体
 
     """
 
@@ -10417,7 +10451,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
         :rtype: int
         """
         return self._Offset
@@ -10428,7 +10462,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
+        r"""指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
         :rtype: int
         """
         return self._Limit
@@ -10439,7 +10473,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询角色的总数量
+        r"""查询角色的总数量
         :rtype: int
         """
         return self._TotalCount
@@ -10450,7 +10484,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     @property
     def ChannelRoles(self):
-        """查询的角色信息列表
+        r"""查询的角色信息列表
         :rtype: list of ChannelRole
         """
         return self._ChannelRoles
@@ -10461,7 +10495,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10485,7 +10519,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
 
 class ChannelDescribeSignFaceVideoRequest(AbstractModel):
-    """ChannelDescribeSignFaceVideo请求参数结构体
+    r"""ChannelDescribeSignFaceVideo请求参数结构体
 
     """
 
@@ -10514,7 +10548,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :rtype: str
@@ -10527,7 +10561,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def SignId(self):
-        """签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        r"""签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
         :rtype: str
         """
         return self._SignId
@@ -10538,7 +10572,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -10573,7 +10607,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
 
 class ChannelDescribeSignFaceVideoResponse(AbstractModel):
-    """ChannelDescribeSignFaceVideo返回参数结构体
+    r"""ChannelDescribeSignFaceVideo返回参数结构体
 
     """
 
@@ -10596,7 +10630,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def VideoData(self):
-        """核身视频结果。
+        r"""核身视频结果。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
         """
         return self._VideoData
@@ -10607,7 +10641,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def IntentionQuestionResult(self):
-        """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+        r"""意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
         """
         return self._IntentionQuestionResult
@@ -10618,7 +10652,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def IntentionActionResult(self):
-        """意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        r"""意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.IntentionActionResult`
         """
@@ -10630,7 +10664,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10654,7 +10688,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
 
 class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
-    """ChannelDescribeUserAutoSignStatus请求参数结构体
+    r"""ChannelDescribeUserAutoSignStatus请求参数结构体
 
     """
 
@@ -10678,7 +10712,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -10689,7 +10723,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -10701,7 +10735,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        """要查询状态的用户信息, 包括名字,身份证等
+        r"""要查询状态的用户信息, 包括名字,身份证等
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -10712,7 +10746,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -10745,7 +10779,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
 
 
 class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
-    """ChannelDescribeUserAutoSignStatus返回参数结构体
+    r"""ChannelDescribeUserAutoSignStatus返回参数结构体
 
     """
 
@@ -10777,7 +10811,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def IsOpen(self):
-        """查询用户是否已开通自动签
+        r"""查询用户是否已开通自动签
         :rtype: bool
         """
         return self._IsOpen
@@ -10788,7 +10822,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseFrom(self):
-        """自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
+        r"""自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
 
 值为unix时间戳,单位为秒。
         :rtype: int
@@ -10801,7 +10835,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseTo(self):
-        """自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+        r"""自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
 
 值为unix时间戳,单位为秒。
         :rtype: int
@@ -10814,7 +10848,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseType(self):
-        """设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li><li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
+        r"""设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li><li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
         :rtype: int
         """
         return self._LicenseType
@@ -10825,7 +10859,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def SealId(self):
-        """用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。
+        r"""用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。
         :rtype: str
         """
         return self._SealId
@@ -10836,7 +10870,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10856,7 +10890,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
 
 class ChannelDisableUserAutoSignRequest(AbstractModel):
-    """ChannelDisableUserAutoSign请求参数结构体
+    r"""ChannelDisableUserAutoSign请求参数结构体
 
     """
 
@@ -10880,7 +10914,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -10891,7 +10925,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -10903,7 +10937,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        """需要关闭自动签的个人的信息，如姓名，证件信息等。
+        r"""需要关闭自动签的个人的信息，如姓名，证件信息等。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -10914,7 +10948,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -10947,7 +10981,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
 
 
 class ChannelDisableUserAutoSignResponse(AbstractModel):
-    """ChannelDisableUserAutoSign返回参数结构体
+    r"""ChannelDisableUserAutoSign返回参数结构体
 
     """
 
@@ -10960,7 +10994,7 @@ class ChannelDisableUserAutoSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10975,7 +11009,7 @@ class ChannelDisableUserAutoSignResponse(AbstractModel):
 
 
 class ChannelGetTaskResultApiRequest(AbstractModel):
-    """ChannelGetTaskResultApi请求参数结构体
+    r"""ChannelGetTaskResultApi请求参数结构体
 
     """
 
@@ -11005,7 +11039,7 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -11024,7 +11058,7 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
+        r"""转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
         :rtype: str
         """
         return self._TaskId
@@ -11037,7 +11071,7 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，不用传
+        r"""操作者的信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -11052,7 +11086,7 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -11086,7 +11120,7 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
 
 
 class ChannelGetTaskResultApiResponse(AbstractModel):
-    """ChannelGetTaskResultApi返回参数结构体
+    r"""ChannelGetTaskResultApi返回参数结构体
 
     """
 
@@ -11127,7 +11161,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -11138,7 +11172,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态，需要关注的状态
+        r"""任务状态，需要关注的状态
 <ul><li>**0**  :NeedTranform   - 任务已提交</li>
 <li>**4**  :Processing     - 文档转换中</li>
 <li>**8**  :TaskEnd        - 任务处理完成</li>
@@ -11155,7 +11189,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
     @property
     def TaskMessage(self):
-        """状态描述，需要关注的状态
+        r"""状态描述，需要关注的状态
 <ul><li> **NeedTranform** : 任务已提交</li>
 <li> **Processing** : 文档转换中</li>
 <li> **TaskEnd** : 任务处理完成</li>
@@ -11172,7 +11206,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)
+        r"""资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)
         :rtype: str
         """
         return self._ResourceId
@@ -11185,7 +11219,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
     def PreviewUrl(self):
         warnings.warn("parameter `PreviewUrl` is deprecated", DeprecationWarning) 
 
-        """预览文件Url，有效期30分钟 
+        r"""预览文件Url，有效期30分钟 
 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
         :rtype: str
         """
@@ -11199,7 +11233,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11219,7 +11253,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
 
 class ChannelModifyRoleRequest(AbstractModel):
-    """ChannelModifyRole请求参数结构体
+    r"""ChannelModifyRole请求参数结构体
 
     """
 
@@ -11244,7 +11278,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """代理企业和员工的信息。
+        r"""代理企业和员工的信息。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -11255,7 +11289,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        r"""角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._Name
@@ -11266,7 +11300,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色Id，可通过接口 ChannelDescribeRoles 查询获取
+        r"""角色Id，可通过接口 ChannelDescribeRoles 查询获取
         :rtype: str
         """
         return self._RoleId
@@ -11277,7 +11311,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """角色描述，最大长度为50个字符
+        r"""角色描述，最大长度为50个字符
         :rtype: str
         """
         return self._Description
@@ -11288,7 +11322,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
     @property
     def PermissionGroups(self):
-        """权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
+        r"""权限树，权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles的输出
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -11322,7 +11356,7 @@ class ChannelModifyRoleRequest(AbstractModel):
 
 
 class ChannelModifyRoleResponse(AbstractModel):
-    """ChannelModifyRole返回参数结构体
+    r"""ChannelModifyRole返回参数结构体
 
     """
 
@@ -11338,7 +11372,7 @@ class ChannelModifyRoleResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色id
+        r"""角色id
         :rtype: str
         """
         return self._RoleId
@@ -11349,7 +11383,7 @@ class ChannelModifyRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11365,7 +11399,7 @@ class ChannelModifyRoleResponse(AbstractModel):
 
 
 class ChannelOrganizationInfo(AbstractModel):
-    """渠道企业信息
+    r"""渠道企业信息
 
     """
 
@@ -11433,7 +11467,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def OrganizationId(self):
-        """电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
+        r"""电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
         :rtype: str
         """
         return self._OrganizationId
@@ -11444,7 +11478,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """第三方平台子客企业的唯一标识
+        r"""第三方平台子客企业的唯一标识
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -11455,7 +11489,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """第三方平台子客企业名称
+        r"""第三方平台子客企业名称
         :rtype: str
         """
         return self._OrganizationName
@@ -11466,7 +11500,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCode(self):
-        """企业的统一社会信用代码
+        r"""企业的统一社会信用代码
         :rtype: str
         """
         return self._UnifiedSocialCreditCode
@@ -11477,7 +11511,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LegalName(self):
-        """企业法定代表人的姓名
+        r"""企业法定代表人的姓名
         :rtype: str
         """
         return self._LegalName
@@ -11488,7 +11522,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LegalOpenId(self):
-        """企业法定代表人作为第三方平台子客企业员工的唯一标识
+        r"""企业法定代表人作为第三方平台子客企业员工的唯一标识
         :rtype: str
         """
         return self._LegalOpenId
@@ -11499,7 +11533,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        """企业超级管理员的姓名
+        r"""企业超级管理员的姓名
         :rtype: str
         """
         return self._AdminName
@@ -11510,7 +11544,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminOpenId(self):
-        """企业超级管理员作为第三方平台子客企业员工的唯一标识
+        r"""企业超级管理员作为第三方平台子客企业员工的唯一标识
         :rtype: str
         """
         return self._AdminOpenId
@@ -11521,7 +11555,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminMobile(self):
-        """企业超级管理员的手机号码
+        r"""企业超级管理员的手机号码
 **注**：`手机号码脱敏（隐藏部分用*替代）`
         :rtype: str
         """
@@ -11533,7 +11567,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AuthorizationStatus(self):
-        """企业认证状态字段。值如下：
+        r"""企业认证状态字段。值如下：
 <ul>
   <li>**"UNVERIFIED"**： 未认证的企业</li>
   <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
@@ -11552,7 +11586,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AuthorizationType(self):
-        """企业认证方式字段。值如下：
+        r"""企业认证方式字段。值如下：
 <ul>
   <li>**"AuthorizationInit"**： 暂未选择授权方式</li>
   <li>**"AuthorizationFile"**： 授权书</li>
@@ -11569,7 +11603,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def ActiveStatus(self):
-        """子企业激活状态。值如下：
+        r"""子企业激活状态。值如下：
 <ul>
   <li>**0**： 未激活</li>
   <li>**1**： 已激活</li>
@@ -11584,7 +11618,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LicenseExpireTime(self):
-        """账号到期时间，时间戳
+        r"""账号到期时间，时间戳
         :rtype: int
         """
         return self._LicenseExpireTime
@@ -11619,7 +11653,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
 
 class ChannelRenewAutoSignLicenseRequest(AbstractModel):
-    """ChannelRenewAutoSignLicense请求参数结构体
+    r"""ChannelRenewAutoSignLicense请求参数结构体
 
     """
 
@@ -11643,7 +11677,7 @@ class ChannelRenewAutoSignLicenseRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -11654,7 +11688,7 @@ class ChannelRenewAutoSignLicenseRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:
+        r"""自动签使用的场景值, 可以选择的场景值如下:
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
@@ -11666,7 +11700,7 @@ class ChannelRenewAutoSignLicenseRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        """要查询状态的用户信息, 包括名字,身份证等
+        r"""要查询状态的用户信息, 包括名字,身份证等
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -11677,7 +11711,7 @@ class ChannelRenewAutoSignLicenseRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
+        r"""执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -11710,7 +11744,7 @@ class ChannelRenewAutoSignLicenseRequest(AbstractModel):
 
 
 class ChannelRenewAutoSignLicenseResponse(AbstractModel):
-    """ChannelRenewAutoSignLicense返回参数结构体
+    r"""ChannelRenewAutoSignLicense返回参数结构体
 
     """
 
@@ -11728,7 +11762,7 @@ class ChannelRenewAutoSignLicenseResponse(AbstractModel):
 
     @property
     def LicenseTo(self):
-        """续期成功后自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+        r"""续期成功后自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
 
 值为unix时间戳,单位为秒。
         :rtype: int
@@ -11741,7 +11775,7 @@ class ChannelRenewAutoSignLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11757,7 +11791,7 @@ class ChannelRenewAutoSignLicenseResponse(AbstractModel):
 
 
 class ChannelRole(AbstractModel):
-    """角色信息
+    r"""角色信息
 
     """
 
@@ -11781,7 +11815,7 @@ class ChannelRole(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色ID,为32位字符串
+        r"""角色ID,为32位字符串
         :rtype: str
         """
         return self._RoleId
@@ -11792,7 +11826,7 @@ class ChannelRole(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色的名称
+        r"""角色的名称
         :rtype: str
         """
         return self._RoleName
@@ -11803,7 +11837,7 @@ class ChannelRole(AbstractModel):
 
     @property
     def RoleStatus(self):
-        """此角色状态
+        r"""此角色状态
 1: 已经启用
 2: 已经禁用
         :rtype: int
@@ -11816,7 +11850,7 @@ class ChannelRole(AbstractModel):
 
     @property
     def PermissionGroups(self):
-        """此角色对应的权限列表
+        r"""此角色对应的权限列表
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -11847,7 +11881,7 @@ class ChannelRole(AbstractModel):
 
 
 class ChannelUpdateSealStatusRequest(AbstractModel):
-    """ChannelUpdateSealStatus请求参数结构体
+    r"""ChannelUpdateSealStatus请求参数结构体
 
     """
 
@@ -11873,7 +11907,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -11884,7 +11918,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """印章状态，目前支持传入以下类型：
+        r"""印章状态，目前支持传入以下类型：
 <ul><li>DISABLE-停用印章</li></ul>
         :rtype: str
         """
@@ -11896,7 +11930,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
     @property
     def SealId(self):
-        """印章ID
+        r"""印章ID
         :rtype: str
         """
         return self._SealId
@@ -11907,7 +11941,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
     @property
     def Reason(self):
-        """更新印章状态原因说明
+        r"""更新印章状态原因说明
         :rtype: str
         """
         return self._Reason
@@ -11920,7 +11954,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息
+        r"""操作者的信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -11953,7 +11987,7 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
 
 class ChannelUpdateSealStatusResponse(AbstractModel):
-    """ChannelUpdateSealStatus返回参数结构体
+    r"""ChannelUpdateSealStatus返回参数结构体
 
     """
 
@@ -11966,7 +12000,7 @@ class ChannelUpdateSealStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11981,7 +12015,7 @@ class ChannelUpdateSealStatusResponse(AbstractModel):
 
 
 class ChannelVerifyPdfRequest(AbstractModel):
-    """ChannelVerifyPdf请求参数结构体
+    r"""ChannelVerifyPdf请求参数结构体
 
     """
 
@@ -12008,7 +12042,7 @@ class ChannelVerifyPdfRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
         :rtype: str
         """
         return self._FlowId
@@ -12019,7 +12053,7 @@ class ChannelVerifyPdfRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -12040,7 +12074,7 @@ class ChannelVerifyPdfRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -12071,7 +12105,7 @@ class ChannelVerifyPdfRequest(AbstractModel):
 
 
 class ChannelVerifyPdfResponse(AbstractModel):
-    """ChannelVerifyPdf返回参数结构体
+    r"""ChannelVerifyPdf返回参数结构体
 
     """
 
@@ -12102,7 +12136,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
     @property
     def VerifyResult(self):
-        """验签结果代码，代码的含义如下：
+        r"""验签结果代码，代码的含义如下：
 
 <ul><li>**1**：文件未被篡改，全部签名在腾讯电子签完成。</li>
 <li>**2**：文件未被篡改，部分签名在腾讯电子签完成。</li>
@@ -12119,7 +12153,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
     @property
     def PdfVerifyResults(self):
-        """验签结果详情，所有签署区(包括签名区, 印章区, 日期签署区,骑缝章等)的签署验签结果
+        r"""验签结果详情，所有签署区(包括签名区, 印章区, 日期签署区,骑缝章等)的签署验签结果
         :rtype: list of PdfVerifyResult
         """
         return self._PdfVerifyResults
@@ -12130,7 +12164,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
     @property
     def VerifySerialNo(self):
-        """验签序列号, 为11为数组组成的字符串
+        r"""验签序列号, 为11为数组组成的字符串
         :rtype: str
         """
         return self._VerifySerialNo
@@ -12141,7 +12175,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
     @property
     def PdfResourceMd5(self):
-        """合同文件MD5哈希值
+        r"""合同文件MD5哈希值
         :rtype: str
         """
         return self._PdfResourceMd5
@@ -12152,7 +12186,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12176,7 +12210,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
 
 class CommonApproverOption(AbstractModel):
-    """签署人配置信息。
+    r"""签署人配置信息。
     此参数对子客和自动签无效，不允许进行修改。
 
     """
@@ -12220,7 +12254,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def CanEditApprover(self):
-        """是否允许修改签署人信息
+        r"""是否允许修改签署人信息
         :rtype: bool
         """
         return self._CanEditApprover
@@ -12231,7 +12265,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoRefuse(self):
-        """是否可以拒签 默认false-可以拒签 true-不可以拒签
+        r"""是否可以拒签 默认false-可以拒签 true-不可以拒签
         :rtype: bool
         """
         return self._NoRefuse
@@ -12242,7 +12276,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoTransfer(self):
-        """是否可以转发 默认false-可以转发 true-不可以转发
+        r"""是否可以转发 默认false-可以转发 true-不可以转发
         :rtype: bool
         """
         return self._NoTransfer
@@ -12253,7 +12287,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def HideOneKeySign(self):
-        """当签署方有多个签署区时候，是否隐藏一键所有的签署区
+        r"""当签署方有多个签署区时候，是否隐藏一键所有的签署区
 
 false：（默认）不隐藏
 true：隐藏，每个签署区要单独选择印章或者签名
@@ -12267,7 +12301,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def FlowReadLimit(self):
-        """签署人阅读合同限制参数
+        r"""签署人阅读合同限制参数
  <br/>取值：
 <ul>
 <li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
@@ -12285,7 +12319,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def ForbidAddSignDate(self):
-        """禁止在签署过程中添加签署日期控件
+        r"""禁止在签署过程中添加签署日期控件
  <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
 <ul>
 <li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
@@ -12318,7 +12352,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
 
 class CommonFlowApprover(AbstractModel):
-    """通用签署人信息
+    r"""通用签署人信息
 
     """
 
@@ -12434,7 +12468,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def NotChannelOrganization(self):
-        """指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
+        r"""指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
 <ul>
 <li>false: 默认值，第三方平台子客企业下员工</li>
 <li>true: SaaS平台企业下的员工</li>
@@ -12450,7 +12484,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverType(self):
-        """在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
+        r"""在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 
  **0** :企业/企业员工（企业签署方或模板发起时的企业静默签）
  **1** :个人/自然人
@@ -12470,7 +12504,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationId(self):
-        """电子签平台给企业生成的企业id
+        r"""电子签平台给企业生成的企业id
         :rtype: str
         """
         return self._OrganizationId
@@ -12481,7 +12515,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
+        r"""企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -12492,7 +12526,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
+        r"""企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
         :rtype: str
         """
         return self._OrganizationName
@@ -12503,7 +12537,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def UserId(self):
-        """电子签平台给企业员工或者自热人生成的用户id
+        r"""电子签平台给企业员工或者自热人生成的用户id
         :rtype: str
         """
         return self._UserId
@@ -12514,7 +12548,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方平台子客企业员工的唯一标识
+        r"""第三方平台子客企业员工的唯一标识
         :rtype: str
         """
         return self._OpenId
@@ -12525,7 +12559,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverName(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -12537,7 +12571,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverMobile(self):
-        """签署人手机号，saas企业签署人，个人签署人必传
+        r"""签署人手机号，saas企业签署人，个人签署人必传
         :rtype: str
         """
         return self._ApproverMobile
@@ -12548,7 +12582,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
@@ -12565,7 +12599,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverIdCardNumber(self):
-        """签署方经办人的证件号码，应符合以下规则
+        r"""签署方经办人的证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。
 </li>
@@ -12580,7 +12614,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
+        r"""签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
 注意：模板发起时该字段必填
         :rtype: str
         """
@@ -12592,7 +12626,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def PreReadTime(self):
-        """签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
+        r"""签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
         :rtype: int
         """
         return self._PreReadTime
@@ -12603,7 +12637,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def IsFullText(self):
-        """签署前置条件：阅读全文限制
+        r"""签署前置条件：阅读全文限制
         :rtype: bool
         """
         return self._IsFullText
@@ -12614,7 +12648,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def NotifyType(self):
-        """通知签署方经办人的方式, 有以下途径:
+        r"""通知签署方经办人的方式, 有以下途径:
 <ul><li> **SMS** :(默认)短信</li>
 <li> **NONE** : 不通知</li></ul>
 
@@ -12629,7 +12663,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverOption(self):
-        """签署人配置，用于控制签署人相关属性
+        r"""签署人配置，用于控制签署人相关属性
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
         """
         return self._ApproverOption
@@ -12640,7 +12674,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def SignComponents(self):
-        """使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+        r"""使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
         :rtype: list of Component
         """
         return self._SignComponents
@@ -12651,7 +12685,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverVerifyTypes(self):
-        """指定个人签署方查看合同的校验方式,可以传值如下:
+        r"""指定个人签署方查看合同的校验方式,可以传值如下:
 <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
 <li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 </li></ul>
@@ -12668,7 +12702,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverSignTypes(self):
-        """签署人签署合同时的认证方式
+        r"""签署人签署合同时的认证方式
 <ul><li> **1** :人脸认证</li>
 <li> **2** :签署密码</li>
 <li> **3** :运营商三要素</li>
@@ -12729,7 +12763,7 @@ class CommonFlowApprover(AbstractModel):
 
 
 class Component(AbstractModel):
-    """此结构体 (Component) 用于描述控件属性。
+    r"""此结构体 (Component) 用于描述控件属性。
 
     在通过文件发起合同时，对应的component有三种定位方式
     1. 绝对定位方式 （可以通过 [PDF坐标计算助手](https://qian.tencent.com/developers/tools/template-editor)计算控件的坐标）
@@ -13058,7 +13092,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentId(self):
-        """控件唯一ID。
+        r"""控件唯一ID。
 
 **在绝对定位方式方式下**，ComponentId为控件的ID，长度不能超过30，只能由中文、字母、数字和下划线组成，可以在后续的操作中使用该名称来引用控件。
 
@@ -13083,7 +13117,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentType(self):
-        """**如果是Component填写控件类型，则可选的字段为**：
+        r"""**如果是Component填写控件类型，则可选的字段为**：
 
 <ul><li> <b>TEXT</b> : 普通文本控件，输入文本字符串；</li>
 <li> <b>MULTI_LINE_TEXT</b> : 多行文本控件，输入文本字符串；</li>
@@ -13131,7 +13165,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentName(self):
-        """**在绝对定位方式方式下**，ComponentName为控件名，长度不能超过20，只能由中文、字母、数字和下划线组成，可以在后续的操作中使用该名称来引用控件。
+        r"""**在绝对定位方式方式下**，ComponentName为控件名，长度不能超过20，只能由中文、字母、数字和下划线组成，可以在后续的操作中使用该名称来引用控件。
 
 **在表单域定位方式下**，ComponentName不仅为控件名，也是表单域名称。
 
@@ -13148,7 +13182,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentRequired(self):
-        """如果是<b>填写控件</b>，ComponentRequired表示在填写页面此控件是否必填
+        r"""如果是<b>填写控件</b>，ComponentRequired表示在填写页面此控件是否必填
 <ul><li>false（默认）：可以不填写</li>
 <li>true ：必须填写此填写控件</li></ul>
 如果是<b>签署控件</b>，签批控件中签署意见等可以不填写， 其他签署控件不受此字段影响
@@ -13162,7 +13196,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentRecipientId(self):
-        """**在通过接口拉取控件信息场景下**，为出参参数，此控件归属的参与方的角色ID角色（即RecipientId），**发起合同时候不要填写此字段留空即可**
+        r"""**在通过接口拉取控件信息场景下**，为出参参数，此控件归属的参与方的角色ID角色（即RecipientId），**发起合同时候不要填写此字段留空即可**
         :rtype: str
         """
         return self._ComponentRecipientId
@@ -13173,7 +13207,7 @@ ChildrenComponent结构体定义:
 
     @property
     def FileIndex(self):
-        """<font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
+        r"""<font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
         :rtype: int
         """
         return self._FileIndex
@@ -13184,7 +13218,7 @@ ChildrenComponent结构体定义:
 
     @property
     def GenerateMode(self):
-        """控件生成的方式：
+        r"""控件生成的方式：
 <ul><li> <b>NORMAL</b> : 绝对定位控件</li>
 <li> <b>FIELD</b> : 表单域</li>
 <li> <b>KEYWORD</b> : 关键字（设置关键字时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找）</li></ul>
@@ -13198,7 +13232,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentWidth(self):
-        """**在绝对定位方式和关键字定位方式下**，指定控件宽度，控件宽度是指控件在PDF文件中的宽度，单位为pt（点）。
+        r"""**在绝对定位方式和关键字定位方式下**，指定控件宽度，控件宽度是指控件在PDF文件中的宽度，单位为pt（点）。
 
         :rtype: float
         """
@@ -13210,7 +13244,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentHeight(self):
-        """**在绝对定位方式和关键字定位方式下**，指定控件的高度， 控件高度是指控件在PDF文件中的高度，单位为pt（点）。
+        r"""**在绝对定位方式和关键字定位方式下**，指定控件的高度， 控件高度是指控件在PDF文件中的高度，单位为pt（点）。
 
         :rtype: float
         """
@@ -13222,7 +13256,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPage(self):
-        """**在绝对定位方式方式下**，指定控件所在PDF文件上的页码
+        r"""**在绝对定位方式方式下**，指定控件所在PDF文件上的页码
 **在使用文件发起的情况下**，绝对定位方式的填写控件和签署控件支持使用负数来指定控件在PDF文件上的页码，使用负数时，页码从最后一页开始。例如：ComponentPage设置为-1，即代表在PDF文件的最后一页，以此类推。
 
 注：
@@ -13238,7 +13272,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosX(self):
-        """**在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+        r"""**在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosX
@@ -13249,7 +13283,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosY(self):
-        """**在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+        r"""**在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosY
@@ -13260,7 +13294,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentExtra(self):
-        """**在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
+        r"""**在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 
 <font color="red">ComponentType为TEXT、MULTI_LINE_TEXT时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
@@ -13401,7 +13435,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentValue(self):
-        """控件填充vaule，ComponentType和传入值类型对应关系：
+        r"""控件填充vaule，ComponentType和传入值类型对应关系：
 <ul><li> <b>TEXT</b> : 文本内容</li>
 <li> <b>MULTI_LINE_TEXT</b> : 文本内容， 可以用  \n 来控制换行位置</li>
 <li> <b>CHECK_BOX</b> : true/false</li>
@@ -13426,7 +13460,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentDateFontSize(self):
-        """<font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
+        r"""<font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
         :rtype: int
         """
         return self._ComponentDateFontSize
@@ -13437,7 +13471,7 @@ ChildrenComponent结构体定义:
 
     @property
     def DocumentId(self):
-        """<font color="red">【暂未使用】</font>控件归属的文档的ID， **发起合同时候不要填写此字段留空即可**
+        r"""<font color="red">【暂未使用】</font>控件归属的文档的ID， **发起合同时候不要填写此字段留空即可**
         :rtype: str
         """
         return self._DocumentId
@@ -13448,7 +13482,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentDescription(self):
-        """<font color="red">【暂未使用】</font>控件描述，用户自定义，不影响合同发起流程
+        r"""<font color="red">【暂未使用】</font>控件描述，用户自定义，不影响合同发起流程
         :rtype: str
         """
         return self._ComponentDescription
@@ -13459,7 +13493,7 @@ ChildrenComponent结构体定义:
 
     @property
     def OffsetX(self):
-        """**如果控件是关键字定位方式**，可以对关键字定位出来的区域进行横坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏左或偏右，可以通过调整横坐标方向的参数来使控件位置更加准确。
+        r"""**如果控件是关键字定位方式**，可以对关键字定位出来的区域进行横坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏左或偏右，可以通过调整横坐标方向的参数来使控件位置更加准确。
 注意： `向左调整设置为负数， 向右调整设置成正数`
         :rtype: float
         """
@@ -13471,7 +13505,7 @@ ChildrenComponent结构体定义:
 
     @property
     def OffsetY(self):
-        """**如果控件是关键字定位方式**，可以对关键字定位出来的区域进行纵坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏上或偏下，可以通过调整纵坐标方向的参数来使控件位置更加准确。
+        r"""**如果控件是关键字定位方式**，可以对关键字定位出来的区域进行纵坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏上或偏下，可以通过调整纵坐标方向的参数来使控件位置更加准确。
 注意： `向上调整设置为负数， 向下调整设置成正数`
         :rtype: float
         """
@@ -13483,7 +13517,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ChannelComponentId(self):
-        """<font color="red">【暂未使用】</font>第三方应用集成平台模板控件 ID 标识
+        r"""<font color="red">【暂未使用】</font>第三方应用集成平台模板控件 ID 标识
         :rtype: str
         """
         return self._ChannelComponentId
@@ -13494,7 +13528,7 @@ ChildrenComponent结构体定义:
 
     @property
     def KeywordOrder(self):
-        """**如果控件是关键字定位方式**，指定关键字排序规则时，可以选择Positive或Reverse两种排序方式。
+        r"""**如果控件是关键字定位方式**，指定关键字排序规则时，可以选择Positive或Reverse两种排序方式。
 <ul><li> <b>Positive</b> :表示正序，即根据关键字在PDF文件内的顺序进行排列</li>
 <li> <b>Reverse</b> :表示倒序，即根据关键字在PDF文件内的反序进行排列</li></ul>
 
@@ -13509,7 +13543,7 @@ ChildrenComponent结构体定义:
 
     @property
     def KeywordPage(self):
-        """**如果控件是关键字定位方式**，在KeywordPage中指定关键字页码时，将只会在该页码中查找关键字，非该页码的关键字将不会查询出来。如果不设置查找所有页面中的关键字。
+        r"""**如果控件是关键字定位方式**，在KeywordPage中指定关键字页码时，将只会在该页码中查找关键字，非该页码的关键字将不会查询出来。如果不设置查找所有页面中的关键字。
         :rtype: int
         """
         return self._KeywordPage
@@ -13520,7 +13554,7 @@ ChildrenComponent结构体定义:
 
     @property
     def RelativeLocation(self):
-        """**如果控件是关键字定位方式**，关键字生成的区域的对齐方式， 可以设置下面的值
+        r"""**如果控件是关键字定位方式**，关键字生成的区域的对齐方式， 可以设置下面的值
 <ul><li> <b>Middle</b> :居中</li>
 <li> <b>Below</b> :正下方</li>
 <li> <b>Right</b> :正右方</li>
@@ -13537,7 +13571,7 @@ ChildrenComponent结构体定义:
 
     @property
     def KeywordIndexes(self):
-        """**如果控件是关键字定位方式**，关键字索引是指在PDF文件中存在多个相同的关键字时，通过索引指定使用哪一个关键字作为最后的结果。可以通过指定多个索引来同时使用多个关键字。例如，[0,2]表示使用PDF文件内第1个和第3个关键字位置作为最后的结果。
+        r"""**如果控件是关键字定位方式**，关键字索引是指在PDF文件中存在多个相同的关键字时，通过索引指定使用哪一个关键字作为最后的结果。可以通过指定多个索引来同时使用多个关键字。例如，[0,2]表示使用PDF文件内第1个和第3个关键字位置作为最后的结果。
 
 注意：关键字索引是从0开始计数的
         :rtype: list of int
@@ -13550,7 +13584,7 @@ ChildrenComponent结构体定义:
 
     @property
     def Placeholder(self):
-        """填写控件在腾讯电子签小程序填写界面展示的提示信息，例如，在身份证号码填写控件中，提示信息可以设置成“请输入18位身份证号码”。
+        r"""填写控件在腾讯电子签小程序填写界面展示的提示信息，例如，在身份证号码填写控件中，提示信息可以设置成“请输入18位身份证号码”。
 注：`签署控件设置此字段无效`
         :rtype: str
         """
@@ -13562,7 +13596,7 @@ ChildrenComponent结构体定义:
 
     @property
     def LockComponentValue(self):
-        """**web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
+        r"""**web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
 <li>true：锁定控件值，在页面无法编辑控件值</li></ul>
         :rtype: bool
@@ -13575,7 +13609,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ForbidMoveAndDelete(self):
-        """**web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
+        r"""**web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 <ul><li> <b>false（默认）</b> :可以移动和删除控件</li>
 <li> <b>true</b> : 禁止移动和删除控件</li></ul>
         :rtype: bool
@@ -13626,7 +13660,7 @@ ChildrenComponent结构体定义:
 
 
 class ComponentLimit(AbstractModel):
-    """签署控件的类型和范围限制条件，用于控制文件发起后签署人拖拽签署区时可使用的控件类型和具体的印章或签名方式。
+    r"""签署控件的类型和范围限制条件，用于控制文件发起后签署人拖拽签署区时可使用的控件类型和具体的印章或签名方式。
 
     """
 
@@ -13667,7 +13701,7 @@ class ComponentLimit(AbstractModel):
 
     @property
     def ComponentType(self):
-        """控件类型，支持以下类型
+        r"""控件类型，支持以下类型
 <ul><li>SIGN_SEAL : 印章控件</li>
 <li>SIGN_PAGING_SEAL : 骑缝章控件</li>
 <li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
@@ -13682,7 +13716,7 @@ class ComponentLimit(AbstractModel):
 
     @property
     def ComponentValue(self):
-        """签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
+        r"""签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
 
 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）或者以下印章类型
 
@@ -13727,7 +13761,7 @@ class ComponentLimit(AbstractModel):
 
 
 class CreateBatchInitOrganizationUrlRequest(AbstractModel):
-    """CreateBatchInitOrganizationUrl请求参数结构体
+    r"""CreateBatchInitOrganizationUrl请求参数结构体
 
     """
 
@@ -13761,7 +13795,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -13772,7 +13806,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def OperateTypes(self):
-        """初始化操作类型
+        r"""初始化操作类型
 <ul>
 <li>CREATE_SEAL : 创建印章</li>
 <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
@@ -13788,7 +13822,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        """批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
+        r"""批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
         :rtype: list of str
         """
         return self._ProxyOrganizationOpenIds
@@ -13799,7 +13833,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def IsAuthorizePlatformApplication(self):
-        """当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
+        r"""当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
 ![image](https://qcloudimg.tencent-cloud.cn/raw/f9aba7c999a6d79ada20b4384520e120.png)
         :rtype: bool
         """
@@ -13811,7 +13845,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def AuthorizedProxyOrganizationOpenId(self):
-        """被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
+        r"""被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
 
 
 
@@ -13843,7 +13877,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
 
 class CreateBatchInitOrganizationUrlResponse(AbstractModel):
-    """CreateBatchInitOrganizationUrl返回参数结构体
+    r"""CreateBatchInitOrganizationUrl返回参数结构体
 
     """
 
@@ -13868,7 +13902,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """小程序路径，有效时间为7天
+        r"""小程序路径，有效时间为7天
         :rtype: str
         """
         return self._MiniAppPath
@@ -13879,7 +13913,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def OperateLongUrl(self):
-        """操作长链，有效时间为7天
+        r"""操作长链，有效时间为7天
         :rtype: str
         """
         return self._OperateLongUrl
@@ -13890,7 +13924,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def OperateShortUrl(self):
-        """操作短链，有效时间为7天
+        r"""操作短链，有效时间为7天
         :rtype: str
         """
         return self._OperateShortUrl
@@ -13901,7 +13935,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def QRCodeUrl(self):
-        """操作二维码，有效时间为7天
+        r"""操作二维码，有效时间为7天
         :rtype: str
         """
         return self._QRCodeUrl
@@ -13912,7 +13946,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13931,7 +13965,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
 
 class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
-    """CreateBatchOrganizationAuthorizationUrl请求参数结构体
+    r"""CreateBatchOrganizationAuthorizationUrl请求参数结构体
 
     """
 
@@ -13966,7 +14000,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -13977,7 +14011,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def AdminName(self):
-        """组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminName 保持一致。
+        r"""组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminName 保持一致。
         :rtype: str
         """
         return self._AdminName
@@ -13988,7 +14022,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def AdminMobile(self):
-        """组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 Admin Mobile保持一致。
+        r"""组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 Admin Mobile保持一致。
         :rtype: str
         """
         return self._AdminMobile
@@ -13999,7 +14033,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def SubTaskIds(self):
-        """企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
+        r"""企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
         :rtype: list of str
         """
         return self._SubTaskIds
@@ -14010,7 +14044,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def AdminIdCardType(self):
-        """组织机构超管证件类型支持以下类型
+        r"""组织机构超管证件类型支持以下类型
 - ID_CARD : 居民身份证 (默认值)
 -  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
 - HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
@@ -14025,7 +14059,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def AdminIdCardNumber(self):
-        """组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
+        r"""组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
         :rtype: str
         """
         return self._AdminIdCardNumber
@@ -14036,7 +14070,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        r"""要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
         :rtype: str
         """
         return self._Endpoint
@@ -14067,7 +14101,7 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
 
 
 class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
-    """CreateBatchOrganizationAuthorizationUrl返回参数结构体
+    r"""CreateBatchOrganizationAuthorizationUrl返回参数结构体
 
     """
 
@@ -14089,7 +14123,7 @@ class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
 
     @property
     def AuthUrl(self):
-        """批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： `1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+        r"""批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： `1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
         :rtype: str
         """
         return self._AuthUrl
@@ -14100,7 +14134,7 @@ class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        """认证流认证失败信息
+        r"""认证流认证失败信息
         :rtype: list of str
         """
         return self._ErrorMessages
@@ -14111,7 +14145,7 @@ class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+        r"""链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
         :rtype: int
         """
         return self._ExpireTime
@@ -14122,7 +14156,7 @@ class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14140,7 +14174,7 @@ class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
 
 
 class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
-    """CreateBatchOrganizationRegistrationTasks请求参数结构体
+    r"""CreateBatchOrganizationRegistrationTasks请求参数结构体
 
     """
 
@@ -14176,7 +14210,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -14193,7 +14227,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def RegistrationOrganizations(self):
-        """当前应用下子企业的组织机构注册信息。最多支持查询10子企业。
+        r"""当前应用下子企业的组织机构注册信息。最多支持查询10子企业。
         :rtype: list of RegistrationOrganizationInfo
         """
         return self._RegistrationOrganizations
@@ -14204,7 +14238,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """生成链接的类型：
+        r"""生成链接的类型：
 <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
 <li>**CHANNEL**：H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
 <li>**SHORT_URL**：H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
@@ -14223,7 +14257,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def BatchAuthMethod(self):
-        """认证链接使用单链接还是多链接模式<ul><li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li><li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li></ul>p.s.请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
+        r"""认证链接使用单链接还是多链接模式<ul><li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li><li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li></ul>p.s.请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
         :rtype: int
         """
         return self._BatchAuthMethod
@@ -14256,7 +14290,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
 
 class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
-    """CreateBatchOrganizationRegistrationTasks返回参数结构体
+    r"""CreateBatchOrganizationRegistrationTasks返回参数结构体
 
     """
 
@@ -14281,7 +14315,7 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """生成注册链接的任务ID，后序根据这个任务ID， 调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls" target="_blank">查询子企业批量认证链接</a>获取生成的链接，发给对应的客户使用。
+        r"""生成注册链接的任务ID，后序根据这个任务ID， 调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls" target="_blank">查询子企业批量认证链接</a>获取生成的链接，发给对应的客户使用。
 
 注：`如果有错误，则不会返回任务ID`
         :rtype: str
@@ -14294,7 +14328,7 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        """批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。
+        r"""批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。
 <ul>
 <li>如果所有企业认证链接都成功生成，将不返回错误信息</li>
 <li>如果存在任何错误，将返回具体的错误描述。（没有错误的企业返回空字符串）</li>
@@ -14309,7 +14343,7 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14326,7 +14360,7 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
 
 class CreateChannelFlowEvidenceReportRequest(AbstractModel):
-    """CreateChannelFlowEvidenceReport请求参数结构体
+    r"""CreateChannelFlowEvidenceReport请求参数结构体
 
     """
 
@@ -14359,7 +14393,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -14378,7 +14412,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
         :rtype: str
         """
@@ -14392,7 +14426,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -14405,7 +14439,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """指定申请的报告类型，可选类型如下：
+        r"""指定申请的报告类型，可选类型如下：
 <ul><li> **0** :合同签署报告（默认）</li>
 <li> **1** :公证处核验报告</li></ul>
         :rtype: int
@@ -14437,7 +14471,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
 
 class CreateChannelFlowEvidenceReportResponse(AbstractModel):
-    """CreateChannelFlowEvidenceReport返回参数结构体
+    r"""CreateChannelFlowEvidenceReport返回参数结构体
 
     """
 
@@ -14463,7 +14497,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportId(self):
-        """出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
+        r"""出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
         :rtype: str
         """
         return self._ReportId
@@ -14474,7 +14508,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        """出证任务执行的状态, 状态含义如下：
+        r"""出证任务执行的状态, 状态含义如下：
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
@@ -14489,7 +14523,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """废除，字段无效
+        r"""废除，字段无效
         :rtype: str
         """
         return self._ReportUrl
@@ -14500,7 +14534,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14518,7 +14552,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
 
 class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
-    """CreateChannelOrganizationInfoChangeUrl请求参数结构体
+    r"""CreateChannelOrganizationInfoChangeUrl请求参数结构体
 
     """
 
@@ -14551,7 +14585,7 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -14570,7 +14604,7 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 
     @property
     def ChangeType(self):
-        """企业信息变更类型，可选类型如下：
+        r"""企业信息变更类型，可选类型如下：
 <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
         :rtype: int
@@ -14583,7 +14617,7 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """变更链接类型：
+        r"""变更链接类型：
 <ul>
 <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
 <li>**APP** : 创建变更小程序链接，可从第三方App或者小程序跳转到微信腾讯电子签小程序进行更换。</li>
@@ -14614,7 +14648,7 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 
 
 class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
-    """CreateChannelOrganizationInfoChangeUrl返回参数结构体
+    r"""CreateChannelOrganizationInfoChangeUrl返回参数结构体
 
     """
 
@@ -14633,7 +14667,7 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """创建的企业信息变更链接。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。
+        r"""创建的企业信息变更链接。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。
         :rtype: str
         """
         return self._Url
@@ -14644,7 +14678,7 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """链接过期时间。链接7天有效。
+        r"""链接过期时间。链接7天有效。
         :rtype: int
         """
         return self._ExpiredTime
@@ -14655,7 +14689,7 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14672,7 +14706,7 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
 
 class CreateChannelSubOrganizationActiveRequest(AbstractModel):
-    """CreateChannelSubOrganizationActive请求参数结构体
+    r"""CreateChannelSubOrganizationActive请求参数结构体
 
     """
 
@@ -14703,7 +14737,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -14722,7 +14756,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     @property
     def SubOrganizationOpenIds(self):
-        """要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+        r"""要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
         :rtype: list of str
         """
         return self._SubOrganizationOpenIds
@@ -14733,7 +14767,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
     @property
     def Renew(self):
-        """操作类型，可以选择如下：
+        r"""操作类型，可以选择如下：
 
 **false**：（默认）激活子客企业
 **true**：续期子客企业
@@ -14764,7 +14798,7 @@ class CreateChannelSubOrganizationActiveRequest(AbstractModel):
 
 
 class CreateChannelSubOrganizationActiveResponse(AbstractModel):
-    """CreateChannelSubOrganizationActive返回参数结构体
+    r"""CreateChannelSubOrganizationActive返回参数结构体
 
     """
 
@@ -14777,7 +14811,7 @@ class CreateChannelSubOrganizationActiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14792,7 +14826,7 @@ class CreateChannelSubOrganizationActiveResponse(AbstractModel):
 
 
 class CreateCloseOrganizationUrlRequest(AbstractModel):
-    """CreateCloseOrganizationUrl请求参数结构体
+    r"""CreateCloseOrganizationUrl请求参数结构体
 
     """
 
@@ -14805,7 +14839,7 @@ class CreateCloseOrganizationUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -14830,7 +14864,7 @@ class CreateCloseOrganizationUrlRequest(AbstractModel):
 
 
 class CreateCloseOrganizationUrlResponse(AbstractModel):
-    """CreateCloseOrganizationUrl返回参数结构体
+    r"""CreateCloseOrganizationUrl返回参数结构体
 
     """
 
@@ -14861,7 +14895,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def ExpiredOn(self):
-        """链接有效期，unix时间戳，精确到秒
+        r"""链接有效期，unix时间戳，精确到秒
         :rtype: int
         """
         return self._ExpiredOn
@@ -14872,7 +14906,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def LongUrl(self):
-        """H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        r"""H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
         :rtype: str
         """
         return self._LongUrl
@@ -14883,7 +14917,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def ShortUrl(self):
-        """H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        r"""H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
         :rtype: str
         """
         return self._ShortUrl
@@ -14894,7 +14928,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        r"""APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
         :rtype: str
         """
         return self._MiniAppPath
@@ -14905,7 +14939,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def QrcodeUrl(self):
-        """二维码链接
+        r"""二维码链接
         :rtype: str
         """
         return self._QrcodeUrl
@@ -14916,7 +14950,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def WeixinQrcodeUrl(self):
-        """直接跳转至电子签小程序的二维码链接，无需通过中转页。您需要自行将其转换为二维码，使用微信扫码后可直接进入。请注意，直接点击链接是无效的。
+        r"""直接跳转至电子签小程序的二维码链接，无需通过中转页。您需要自行将其转换为二维码，使用微信扫码后可直接进入。请注意，直接点击链接是无效的。
         :rtype: str
         """
         return self._WeixinQrcodeUrl
@@ -14927,7 +14961,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14948,7 +14982,7 @@ class CreateCloseOrganizationUrlResponse(AbstractModel):
 
 
 class CreateConsoleLoginUrlRequest(AbstractModel):
-    """CreateConsoleLoginUrl请求参数结构体
+    r"""CreateConsoleLoginUrl请求参数结构体
 
     """
 
@@ -15090,7 +15124,7 @@ p.s.
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
@@ -15110,7 +15144,7 @@ p.s.
 
     @property
     def ProxyOrganizationName(self):
-        """第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
+        r"""第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
 <font color="red">
 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
 企业名称请使用以下名称, 以下名称可以不用走收录。
@@ -15129,7 +15163,7 @@ p.s.
 
     @property
     def UniformSocialCreditCode(self):
-        """子客企业统一社会信用代码，最大长度200个字符
+        r"""子客企业统一社会信用代码，最大长度200个字符
 注意：`如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效`。
         :rtype: str
         """
@@ -15141,7 +15175,7 @@ p.s.
 
     @property
     def ProxyOperatorName(self):
-        """子客企业员工的姓名，最大长度50个字符,  员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+        r"""子客企业员工的姓名，最大长度50个字符,  员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 
 注：`该姓名需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该姓名会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人名字传入将不会生效`
         :rtype: str
@@ -15154,7 +15188,7 @@ p.s.
 
     @property
     def ProxyOperatorMobile(self):
-        """子客企业员工的手机码,  支持国内手机号11位数字(无需加+86前缀或其他字符)。注：`该手机号需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该手机号会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人手机号传入将不会生效`
+        r"""子客企业员工的手机码,  支持国内手机号11位数字(无需加+86前缀或其他字符)。注：`该手机号需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该手机号会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人手机号传入将不会生效`
         :rtype: str
         """
         return self._ProxyOperatorMobile
@@ -15165,7 +15199,7 @@ p.s.
 
     @property
     def Module(self):
-        """Web控制台登录后进入的功能模块,  支持的模块包括：
+        r"""Web控制台登录后进入的功能模块,  支持的模块包括：
 <ul>
 <li> **空值** :(默认)企业中心模块</li>
 <li> **DOCUMENT** :合同管理模块</li>
@@ -15185,7 +15219,7 @@ p.s.
 
     @property
     def ModuleId(self):
-        """该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
+        r"""该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
 
 根据Module参数的不同所代表的含义不同(ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到)。当前支持：
 <table> <thead> <tr> <th>Module传值</th> <th>ModuleId传值</th> <th>进入的目标页面</th> </tr> </thead> <tbody> <tr> <td>SEAL</td> <td>印章ID</td> <td>查看指定印章的详情页面</td> </tr> <tr> <td>TEMPLATE</td> <td>合同模板ID</td> <td>指定模板的详情页面</td> </tr> <tr> <td>DOCUMENT</td> <td>合同ID</td> <td>指定合同的详情页面</td> </tr> </tbody> </table>
@@ -15201,7 +15235,7 @@ p.s.
 
     @property
     def MenuStatus(self):
-        """是否展示左侧菜单栏 
+        r"""是否展示左侧菜单栏 
 <ul><li> **ENABLE** : (默认)进入web控制台展示左侧菜单栏</li>
 <li> **DISABLE** : 进入web控制台不展示左侧菜单栏</li></ul>
 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
@@ -15215,7 +15249,7 @@ p.s.
 
     @property
     def Endpoint(self):
-        """生成链接的类型：
+        r"""生成链接的类型：
 <ul><li>**PC**：(默认)<font color="red">web控制台</font>链接, 需要在PC浏览器中打开</li>
 <li>**CHANNEL**：H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
 <li>**SHORT_URL**：<font color="red">H5</font>跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
@@ -15233,7 +15267,7 @@ p.s.
 
     @property
     def AutoJumpBackEvent(self):
-        """触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+        r"""触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
         :rtype: str
         """
@@ -15245,7 +15279,7 @@ p.s.
 
     @property
     def AuthorizationTypes(self):
-        """可选的此企业允许的授权方式, 可以设置的方式有:
+        r"""可选的此企业允许的授权方式, 可以设置的方式有:
 <ul>
 <li>2：转法定代表人授权</li>
 <li>5：授权书+对公打款</li>
@@ -15260,7 +15294,7 @@ p.s.
 
     @property
     def ProxyOperatorIdCardNumber(self):
-        """子客经办人身份证
+        r"""子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
         :rtype: str
         """
@@ -15272,7 +15306,7 @@ p.s.
 
     @property
     def AutoJumpUrl(self):
-        """认证完成跳转链接。
+        r"""认证完成跳转链接。
 注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
         :rtype: str
         """
@@ -15284,7 +15318,7 @@ p.s.
 
     @property
     def TopNavigationStatus(self):
-        """是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
+        r"""是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
 
 <a href="https://qcloudimg.tencent-cloud.cn/raw/dd54f333140c711cf6a88e3801bcd178.png" target="_blank">点击查看头顶导航栏位置</a>
         :rtype: str
@@ -15297,7 +15331,7 @@ p.s.
 
     @property
     def AutoActive(self):
-        """是否自动激活子客企业，有下面两种选项：
+        r"""是否自动激活子客企业，有下面两种选项：
 
 **false（默认设置）**：不自动激活子客户。您需要通过控制台或调用[激活或者续期子企业](https://qian.tencent.com/developers/partnerApis/accounts/CreateChannelSubOrganizationActive)接口手动完成激活过程。
 
@@ -15315,7 +15349,7 @@ p.s.
 
     @property
     def BusinessLicense(self):
-        """营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
+        r"""营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
         :rtype: str
         """
         return self._BusinessLicense
@@ -15326,7 +15360,7 @@ p.s.
 
     @property
     def ProxyAddress(self):
-        """组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
+        r"""组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
         :rtype: str
         """
         return self._ProxyAddress
@@ -15337,7 +15371,7 @@ p.s.
 
     @property
     def ProxyLegalName(self):
-        """组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
+        r"""组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
         :rtype: str
         """
         return self._ProxyLegalName
@@ -15348,7 +15382,7 @@ p.s.
 
     @property
     def PowerOfAttorneys(self):
-        """授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+        r"""授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
  p.s. 如果上传授权书 ，需遵循以下条件 
 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。 
 2. 认证方式AuthorizationTypes必须只能是上传授权书方式	
@@ -15362,7 +15396,7 @@ p.s.
 
     @property
     def OrganizationAuthorizationOptions(self):
-        """企业认证时个性化能力信息
+        r"""企业认证时个性化能力信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationAuthorizationOptions`
         """
         return self._OrganizationAuthorizationOptions
@@ -15373,7 +15407,7 @@ p.s.
 
     @property
     def BankAccountNumber(self):
-        """组织机构对公打款 账号，账户名跟企业名称一致。
+        r"""组织机构对公打款 账号，账户名跟企业名称一致。
 
 p.s.
 只有认证方式是授权书+对公打款时才生效。
@@ -15389,7 +15423,7 @@ p.s.
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """无
+        r"""无
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -15441,7 +15475,7 @@ p.s.
 
 
 class CreateConsoleLoginUrlResponse(AbstractModel):
-    """CreateConsoleLoginUrl返回参数结构体
+    r"""CreateConsoleLoginUrl返回参数结构体
 
     """
 
@@ -15477,7 +15511,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     @property
     def ConsoleUrl(self):
-        """跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+        r"""跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
 <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5/WEIXIN_QRCODE_URL</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5/WEIXIN_QRCODE_URL</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5/WEIXIN_QRCODE_URL</td> <td>30天</td>  </tr> </tbody> </table>
 
 注： 
@@ -15495,7 +15529,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     @property
     def IsActivated(self):
-        """子客企业是否已开通腾讯电子签，
+        r"""子客企业是否已开通腾讯电子签，
 <ul><li> **true** :已经开通腾讯电子签</li>
 <li> **false** :还未开通腾讯电子签</li></ul>
 
@@ -15510,7 +15544,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     @property
     def ProxyOperatorIsVerified(self):
-        """当前经办人是否已认证并加入功能
+        r"""当前经办人是否已认证并加入功能
 <ul><li> **true** : 已经认证加入公司</li>
 <li> **false** : 还未认证加入公司</li></ul>
 注意：**员工是否实名是根据Agent.ProxyOperator.OpenId判断，非经办人姓名**
@@ -15524,7 +15558,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15542,7 +15576,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
 
 class CreateEmployeeChangeUrlRequest(AbstractModel):
-    """CreateEmployeeChangeUrl请求参数结构体
+    r"""CreateEmployeeChangeUrl请求参数结构体
 
     """
 
@@ -15569,7 +15603,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -15588,7 +15622,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def OpenId(self):
-        """待修改的员工OpenId
+        r"""待修改的员工OpenId
         :rtype: str
         """
         return self._OpenId
@@ -15599,7 +15633,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def NewMobile(self):
-        """待修改的员工手机号，支持海外格式
+        r"""待修改的员工手机号，支持海外格式
         :rtype: str
         """
         return self._NewMobile
@@ -15626,7 +15660,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
 
 class CreateEmployeeChangeUrlResponse(AbstractModel):
-    """CreateEmployeeChangeUrl返回参数结构体
+    r"""CreateEmployeeChangeUrl返回参数结构体
 
     """
 
@@ -15647,7 +15681,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+        r"""修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
         :rtype: str
         """
         return self._MiniAppPath
@@ -15658,7 +15692,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
 
 
         :rtype: int
@@ -15671,7 +15705,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15688,7 +15722,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
 
 class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
-    """CreateEmployeeQualificationSealQrCode请求参数结构体
+    r"""CreateEmployeeQualificationSealQrCode请求参数结构体
 
     """
 
@@ -15706,7 +15740,7 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -15717,7 +15751,7 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
 
     @property
     def HintText(self):
-        """提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
+        r"""提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
 
 ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
         :rtype: str
@@ -15745,7 +15779,7 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
 
 
 class CreateEmployeeQualificationSealQrCodeResponse(AbstractModel):
-    """CreateEmployeeQualificationSealQrCode返回参数结构体
+    r"""CreateEmployeeQualificationSealQrCode返回参数结构体
 
     """
 
@@ -15761,7 +15795,7 @@ class CreateEmployeeQualificationSealQrCodeResponse(AbstractModel):
 
     @property
     def QrcodeBase64(self):
-        """二维码图片的Base64  注:  `此二维码的有效时间为7天，过期后需要重新生成新的二维码图片`
+        r"""二维码图片的Base64  注:  `此二维码的有效时间为7天，过期后需要重新生成新的二维码图片`
         :rtype: str
         """
         return self._QrcodeBase64
@@ -15772,7 +15806,7 @@ class CreateEmployeeQualificationSealQrCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15788,7 +15822,7 @@ class CreateEmployeeQualificationSealQrCodeResponse(AbstractModel):
 
 
 class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
-    """CreateFlowBlockchainEvidenceUrl请求参数结构体
+    r"""CreateFlowBlockchainEvidenceUrl请求参数结构体
 
     """
 
@@ -15808,7 +15842,7 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。  此接口下面信息必填。 <ul> <li>渠道应用标识:  Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul>
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。  此接口下面信息必填。 <ul> <li>渠道应用标识:  Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -15819,7 +15853,7 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。建议开发者妥善保存此流程ID，以便于顺利进行后续操作。可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        r"""合同流程ID，为32位字符串。建议开发者妥善保存此流程ID，以便于顺利进行后续操作。可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :rtype: str
         """
         return self._FlowId
@@ -15830,7 +15864,7 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
 
     @property
     def ExpiredOn(self):
-        """链接/二维码的有效截止时间，格式为unix时间戳。最长不超过 2099年12月31日（4102415999）。
+        r"""链接/二维码的有效截止时间，格式为unix时间戳。最长不超过 2099年12月31日（4102415999）。
 默认值为有效期为当前时间后7天。
         :rtype: int
         """
@@ -15858,7 +15892,7 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
 
 
 class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
-    """CreateFlowBlockchainEvidenceUrl返回参数结构体
+    r"""CreateFlowBlockchainEvidenceUrl返回参数结构体
 
     """
 
@@ -15880,7 +15914,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        """二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
+        r"""二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
         :rtype: str
         """
         return self._QrCode
@@ -15891,7 +15925,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """查看短链，可直接点击短链查看证书。
+        r"""查看短链，可直接点击短链查看证书。
         :rtype: str
         """
         return self._Url
@@ -15902,7 +15936,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
 
     @property
     def ExpiredOn(self):
-        """二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
+        r"""二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
         :rtype: int
         """
         return self._ExpiredOn
@@ -15913,7 +15947,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15931,7 +15965,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
 
 
 class CreateFlowForwardsRequest(AbstractModel):
-    """CreateFlowForwards请求参数结构体
+    r"""CreateFlowForwards请求参数结构体
 
     """
 
@@ -15952,7 +15986,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def TargetOpenId(self):
-        """合同对应参与方需要修改的目标经办人对应的OpenId。
+        r"""合同对应参与方需要修改的目标经办人对应的OpenId。
 
 注意：`需要保证目标经办人已经加入企业且已实名`
         :rtype: str
@@ -15965,7 +15999,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def FlowForwardInfos(self):
-        """企业签署方的合同及对应签署方
+        r"""企业签署方的合同及对应签署方
         :rtype: list of FlowForwardInfo
         """
         return self._FlowForwardInfos
@@ -15976,7 +16010,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -16008,7 +16042,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
 
 class CreateFlowForwardsResponse(AbstractModel):
-    """CreateFlowForwards返回参数结构体
+    r"""CreateFlowForwards返回参数结构体
 
     """
 
@@ -16027,7 +16061,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     @property
     def FailedFlows(self):
-        """失败的合同id以及错误详情
+        r"""失败的合同id以及错误详情
         :rtype: list of FlowForwardResult
         """
         return self._FailedFlows
@@ -16038,7 +16072,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     @property
     def SuccessFlows(self):
-        """成功的合同id
+        r"""成功的合同id
         :rtype: list of str
         """
         return self._SuccessFlows
@@ -16049,7 +16083,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16071,7 +16105,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
 
 class CreateFlowGroupSignReviewRequest(AbstractModel):
-    """CreateFlowGroupSignReview请求参数结构体
+    r"""CreateFlowGroupSignReview请求参数结构体
 
     """
 
@@ -16118,7 +16152,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -16137,7 +16171,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """  合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时返回。
+        r"""  合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时返回。
         :rtype: str
         """
         return self._FlowGroupId
@@ -16148,7 +16182,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
     @property
     def ReviewType(self):
-        """提交的审核结果，审核结果有下面三种情况
+        r"""提交的审核结果，审核结果有下面三种情况
 <ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
 <li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
 <li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
@@ -16162,7 +16196,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
     @property
     def ApproverInfo(self):
-        """需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
+        r"""需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
 
 个人：二选一（选择其中任意信息组合即可）
 <ul><li>姓名+证件类型+证件号</li>
@@ -16181,7 +16215,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
     @property
     def ReviewMessage(self):
-        """审核不通过的原因，该字段的字符串长度不超过200个字符。
+        r"""审核不通过的原因，该字段的字符串长度不超过200个字符。
 
 注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
 
@@ -16215,7 +16249,7 @@ class CreateFlowGroupSignReviewRequest(AbstractModel):
 
 
 class CreateFlowGroupSignReviewResponse(AbstractModel):
-    """CreateFlowGroupSignReview返回参数结构体
+    r"""CreateFlowGroupSignReview返回参数结构体
 
     """
 
@@ -16228,7 +16262,7 @@ class CreateFlowGroupSignReviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16243,7 +16277,7 @@ class CreateFlowGroupSignReviewResponse(AbstractModel):
 
 
 class CreateFlowOption(AbstractModel):
-    """创建合同个性化参数
+    r"""创建合同个性化参数
 
     """
 
@@ -16311,7 +16345,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CanEditFlow(self):
-        """是否允许修改合同信息，
+        r"""是否允许修改合同信息，
 **true**：可以
 **false**：（默认）不可以
         :rtype: bool
@@ -16324,7 +16358,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowName(self):
-        """是否允许发起合同弹窗隐藏合同名称
+        r"""是否允许发起合同弹窗隐藏合同名称
 **true**：允许
 **false**：（默认）不允许
         :rtype: bool
@@ -16337,7 +16371,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowType(self):
-        """是否允许发起合同弹窗隐藏合同类型，
+        r"""是否允许发起合同弹窗隐藏合同类型，
 **true**：允许
 **false**：（默认）不允许
         :rtype: bool
@@ -16350,7 +16384,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowDeadline(self):
-        """是否允许发起合同弹窗隐藏合同到期时间
+        r"""是否允许发起合同弹窗隐藏合同到期时间
 **true**：允许
 **false**：（默认）不允许
         :rtype: bool
@@ -16363,7 +16397,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CanSkipAddApprover(self):
-        """是否允许发起合同步骤跳过指定签署方步骤
+        r"""是否允许发起合同步骤跳过指定签署方步骤
 **true**：允许
 **false**：（默认）不允许
         :rtype: bool
@@ -16376,7 +16410,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditApprover(self):
-        """是否可以编辑签署人包括新增，修改，删除 
+        r"""是否可以编辑签署人包括新增，修改，删除 
 <ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
 
 
@@ -16394,7 +16428,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CustomCreateFlowDescription(self):
-        """定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
+        r"""定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
         :rtype: str
         """
         return self._CustomCreateFlowDescription
@@ -16405,7 +16439,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditFillComponent(self):
-        """禁止编辑填写控件
+        r"""禁止编辑填写控件
 
 **true**：禁止编辑填写控件
 **false**：（默认）允许编辑填写控件
@@ -16419,7 +16453,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SkipUploadFile(self):
-        """跳过上传文件步骤
+        r"""跳过上传文件步骤
 
 **true**：跳过
 **false**：（默认）不跳过，需要传ResourceId
@@ -16433,7 +16467,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SignComponentConfig(self):
-        """签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+        r"""签署控件的配置信息，用在嵌入式发起的页面配置，包括 
  - 签署控件 是否默认展示日期.
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
         """
@@ -16445,7 +16479,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditWatermark(self):
-        """是否禁止编辑（展示）水印控件属性
+        r"""是否禁止编辑（展示）水印控件属性
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :rtype: bool
         """
@@ -16481,7 +16515,7 @@ class CreateFlowOption(AbstractModel):
 
 
 class CreateFlowsByTemplatesRequest(AbstractModel):
-    """CreateFlowsByTemplates请求参数结构体
+    r"""CreateFlowsByTemplates请求参数结构体
 
     """
 
@@ -16524,7 +16558,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
 
 此接口下面信息必填。
 <ul>
@@ -16542,7 +16576,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def FlowInfos(self):
-        """要创建的合同信息列表，最多支持一次创建20个合同
+        r"""要创建的合同信息列表，最多支持一次创建20个合同
         :rtype: list of FlowInfo
         """
         return self._FlowInfos
@@ -16553,7 +16587,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def NeedPreview(self):
-        """是否为预览模式，取值如下：
+        r"""是否为预览模式，取值如下：
 <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
 <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul>
 
@@ -16571,7 +16605,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def PreviewType(self):
-        """预览模式下产生的预览链接类型 
+        r"""预览模式下产生的预览链接类型 
 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 注: `此参数在NeedPreview 为true时有效`
@@ -16588,7 +16622,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，不用传
+        r"""操作者的信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -16626,7 +16660,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
 
 class CreateFlowsByTemplatesResponse(AbstractModel):
-    """CreateFlowsByTemplates返回参数结构体
+    r"""CreateFlowsByTemplates返回参数结构体
 
     """
 
@@ -16666,7 +16700,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        """生成的合同流程ID数组，合同流程ID为32位字符串。
+        r"""生成的合同流程ID数组，合同流程ID为32位字符串。
 建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
 
 [点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
@@ -16680,7 +16714,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def CustomerData(self):
-        """第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
+        r"""第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
         :rtype: list of str
         """
         return self._CustomerData
@@ -16691,7 +16725,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        """创建消息，对应多个合同ID，
+        r"""创建消息，对应多个合同ID，
 成功为“”,创建失败则对应失败消息
         :rtype: list of str
         """
@@ -16703,7 +16737,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def PreviewUrls(self):
-        """合同预览链接URL数组。
+        r"""合同预览链接URL数组。
 
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
 如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过[合同文档合成完成回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取或使用返回的TaskInfo中的TaskId通过[查询转换任务状态
@@ -16718,7 +16752,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
-        """复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
+        r"""复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
         :rtype: list of TaskInfo
         """
@@ -16730,7 +16764,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        """签署方信息，如角色ID、角色名称等
+        r"""签署方信息，如角色ID、角色名称等
         :rtype: list of FlowApproverItem
         """
         return self._FlowApprovers
@@ -16741,7 +16775,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16772,7 +16806,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
 
 class CreateLegalSealQrCodeRequest(AbstractModel):
-    """CreateLegalSealQrCode请求参数结构体
+    r"""CreateLegalSealQrCode请求参数结构体
 
     """
 
@@ -16800,7 +16834,7 @@ class CreateLegalSealQrCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
@@ -16822,7 +16856,7 @@ class CreateLegalSealQrCodeRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作人信息
+        r"""操作人信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -16837,7 +16871,7 @@ class CreateLegalSealQrCodeRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        """企业信息
+        r"""企业信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         return self._Organization
@@ -16870,7 +16904,7 @@ class CreateLegalSealQrCodeRequest(AbstractModel):
 
 
 class CreateLegalSealQrCodeResponse(AbstractModel):
-    """CreateLegalSealQrCode返回参数结构体
+    r"""CreateLegalSealQrCode返回参数结构体
 
     """
 
@@ -16889,7 +16923,7 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
 
     @property
     def QrcodeBase64(self):
-        """二维码图片base64值，二维码有效期7天（604800秒）
+        r"""二维码图片base64值，二维码有效期7天（604800秒）
 
 二维码图片的样式如下图：
 ![image](https://qcloudimg.tencent-cloud.cn/raw/7ec2478761158a35a9c623882839a5df.png)
@@ -16903,7 +16937,7 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16919,7 +16953,7 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
 
 
 class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
-    """CreateModifyAdminAuthorizationUrl请求参数结构体
+    r"""CreateModifyAdminAuthorizationUrl请求参数结构体
 
     """
 
@@ -16944,7 +16978,7 @@ class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -16961,7 +16995,7 @@ class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
 
     @property
     def AuthorizationId(self):
-        """企业认证流Id，可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+        r"""企业认证流Id，可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
         :rtype: str
         """
         return self._AuthorizationId
@@ -16972,7 +17006,7 @@ class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**PC**： 跳转电子签web 端控制台的链接。</li></ul>
+        r"""要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**PC**： 跳转电子签web 端控制台的链接。</li></ul>
         :rtype: str
         """
         return self._Endpoint
@@ -16999,7 +17033,7 @@ class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
 
 
 class CreateModifyAdminAuthorizationUrlResponse(AbstractModel):
-    """CreateModifyAdminAuthorizationUrl返回参数结构体
+    r"""CreateModifyAdminAuthorizationUrl返回参数结构体
 
     """
 
@@ -17015,7 +17049,7 @@ class CreateModifyAdminAuthorizationUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """变更企业超管授权书链接。没有有效期限制。注意：此链接仅能由当时认证企业的认证人使用。
+        r"""变更企业超管授权书链接。没有有效期限制。注意：此链接仅能由当时认证企业的认证人使用。
         :rtype: str
         """
         return self._Url
@@ -17026,7 +17060,7 @@ class CreateModifyAdminAuthorizationUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17042,7 +17076,7 @@ class CreateModifyAdminAuthorizationUrlResponse(AbstractModel):
 
 
 class CreateOrganizationAuthFileRequest(AbstractModel):
-    """CreateOrganizationAuthFile请求参数结构体
+    r"""CreateOrganizationAuthFile请求参数结构体
 
     """
 
@@ -17071,7 +17105,7 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -17090,7 +17124,7 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
 
     @property
     def OrganizationCommonInfo(self):
-        """企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
+        r"""企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationCommonInfo`
         """
         return self._OrganizationCommonInfo
@@ -17101,7 +17135,7 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
 
     @property
     def Type(self):
-        """授权书类型：
+        r"""授权书类型：
 
 <ul><li>0: 企业认证超管授权书</li><li>1: 超管变更授权书</li><li>2: 企业注销授权书</li></ul>
         :rtype: int
@@ -17132,7 +17166,7 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
 
 
 class CreateOrganizationAuthFileResponse(AbstractModel):
-    """CreateOrganizationAuthFile返回参数结构体
+    r"""CreateOrganizationAuthFile返回参数结构体
 
     """
 
@@ -17148,7 +17182,7 @@ class CreateOrganizationAuthFileResponse(AbstractModel):
 
     @property
     def FileUrl(self):
-        """授权书链接，有效期5分钟。
+        r"""授权书链接，有效期5分钟。
         :rtype: str
         """
         return self._FileUrl
@@ -17159,7 +17193,7 @@ class CreateOrganizationAuthFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17175,7 +17209,7 @@ class CreateOrganizationAuthFileResponse(AbstractModel):
 
 
 class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
-    """CreatePartnerAutoSignAuthUrl请求参数结构体
+    r"""CreatePartnerAutoSignAuthUrl请求参数结构体
 
     """
 
@@ -17235,7 +17269,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -17254,7 +17288,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationId(self):
-        """被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+        r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
 
 注：`被授权企业必须和当前企业在同一应用号下`
         :rtype: str
@@ -17267,7 +17301,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationName(self):
-        """被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+        r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
 
 注: 
 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
@@ -17282,7 +17316,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def PlatformAppAuthorization(self):
-        """是否给平台应用授权
+        r"""是否给平台应用授权
 
 <ul>
 <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
@@ -17300,7 +17334,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        """在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
+        r"""在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
 
 <ul>
 <li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
@@ -17318,7 +17352,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthToMe(self):
-        """在处理授权关系时，授权的方向
+        r"""在处理授权关系时，授权的方向
 <ul>
 <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
 <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
@@ -17352,7 +17386,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
 
 class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
-    """CreatePartnerAutoSignAuthUrl返回参数结构体
+    r"""CreatePartnerAutoSignAuthUrl返回参数结构体
 
     """
 
@@ -17375,7 +17409,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        r"""授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
         :rtype: str
         """
         return self._Url
@@ -17386,7 +17420,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        r"""从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 
         :rtype: str
         """
@@ -17398,7 +17432,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :rtype: int
         """
         return self._ExpireTime
@@ -17409,7 +17443,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17427,7 +17461,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
 
 class CreatePersonAuthCertificateImageRequest(AbstractModel):
-    """CreatePersonAuthCertificateImage请求参数结构体
+    r"""CreatePersonAuthCertificateImage请求参数结构体
 
     """
 
@@ -17452,7 +17486,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -17463,7 +17497,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """个人用户名称
+        r"""个人用户名称
         :rtype: str
         """
         return self._UserName
@@ -17474,7 +17508,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def IdCardType(self):
-        """证件类型，支持以下类型<ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li><li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li><li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+        r"""证件类型，支持以下类型<ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li><li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li><li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -17485,7 +17519,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码，应符合以下规则<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        r"""证件号码，应符合以下规则<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -17496,7 +17530,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        """自动签使用的场景值, 可以选择的场景值如下:<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+        r"""自动签使用的场景值, 可以选择的场景值如下:<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
         :rtype: str
         """
         return self._SceneKey
@@ -17525,7 +17559,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
 
 class CreatePersonAuthCertificateImageResponse(AbstractModel):
-    """CreatePersonAuthCertificateImage返回参数结构体
+    r"""CreatePersonAuthCertificateImage返回参数结构体
 
     """
 
@@ -17553,7 +17587,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def AuthCertUrl(self):
-        """个人用户认证证书图片下载URL，`有效期为5分钟`，超过有效期后将无法再下载。
+        r"""个人用户认证证书图片下载URL，`有效期为5分钟`，超过有效期后将无法再下载。
         :rtype: str
         """
         return self._AuthCertUrl
@@ -17564,7 +17598,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def ImageCertId(self):
-        """个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
+        r"""个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
         :rtype: str
         """
         return self._ImageCertId
@@ -17575,7 +17609,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
+        r"""在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
         :rtype: str
         """
         return self._SerialNumber
@@ -17586,7 +17620,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def ValidFrom(self):
-        """CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
+        r"""CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
         :rtype: int
         """
         return self._ValidFrom
@@ -17597,7 +17631,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def ValidTo(self):
-        """CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
+        r"""CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
         :rtype: int
         """
         return self._ValidTo
@@ -17608,7 +17642,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17628,7 +17662,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 
 
 class CreateSealByImageRequest(AbstractModel):
-    """CreateSealByImage请求参数结构体
+    r"""CreateSealByImage请求参数结构体
 
     """
 
@@ -17700,7 +17734,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -17719,7 +17753,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealName(self):
-        """电子印章名字，1-50个中文字符
+        r"""电子印章名字，1-50个中文字符
 注:`同一企业下电子印章名字不能相同`
         :rtype: str
         """
@@ -17731,7 +17765,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealImage(self):
-        """电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
+        r"""电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
 
 注: `通过图片创建的电子印章，需电子签平台人工审核`
 
@@ -17748,7 +17782,7 @@ class CreateSealByImageRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息
+        r"""操作者的信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -17761,7 +17795,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def GenerateSource(self):
-        """电子印章生成方式
+        r"""电子印章生成方式
 <ul>
 <li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
 <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
@@ -17776,7 +17810,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealType(self):
-        """电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
+        r"""电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
         :rtype: str
         """
         return self._SealType
@@ -17787,7 +17821,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealHorizontalText(self):
-        """企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
+        r"""企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
 横向文字的位置如下图中的"印章横向文字在这里"
 
 ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
@@ -17802,7 +17836,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealStyle(self):
-        """印章样式, 可以选择的样式如下: 
+        r"""印章样式, 可以选择的样式如下: 
 <ul><li>**circle**:(默认)圆形印章</li>
 <li>**ellipse**:椭圆印章</li></ul>
         :rtype: str
@@ -17815,7 +17849,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealSize(self):
-        """印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        r"""印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
         :rtype: str
         """
         return self._SealSize
@@ -17826,7 +17860,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def TaxIdentifyCode(self):
-        """企业税号
+        r"""企业税号
 
 注:
 <ul>
@@ -17843,7 +17877,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealDescription(self):
-        """印章描述内容
+        r"""印章描述内容
         :rtype: str
         """
         return self._SealDescription
@@ -17880,7 +17914,7 @@ class CreateSealByImageRequest(AbstractModel):
 
 
 class CreateSealByImageResponse(AbstractModel):
-    """CreateSealByImage返回参数结构体
+    r"""CreateSealByImage返回参数结构体
 
     """
 
@@ -17902,7 +17936,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def SealId(self):
-        """电子印章ID，为32位字符串。
+        r"""电子印章ID，为32位字符串。
 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
         :rtype: str
         """
@@ -17914,7 +17948,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """电子印章预览链接地址，地址默认失效时间为24小时。
+        r"""电子印章预览链接地址，地址默认失效时间为24小时。
 
 注:`图片上传生成的电子印章无预览链接地址`
         :rtype: str
@@ -17927,7 +17961,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17944,7 +17978,7 @@ class CreateSealByImageResponse(AbstractModel):
 
 
 class CreateSignUrlsRequest(AbstractModel):
-    """CreateSignUrls请求参数结构体
+    r"""CreateSignUrls请求参数结构体
 
     """
 
@@ -18076,7 +18110,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -18095,7 +18129,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """合同流程ID数组，最多支持100个。
+        r"""合同流程ID数组，最多支持100个。
 
 注: 
 1. 必须选择提供此参数或合同组编号中的一个。
@@ -18110,7 +18144,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组编号
+        r"""合同组编号
 注：`该参数和合同流程ID数组必须二选一`
         :rtype: str
         """
@@ -18122,7 +18156,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """签署链接类型,可以设置的参数如下
+        r"""签署链接类型,可以设置的参数如下
 <ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li>
 <li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接(<b>GenerateType非ALL时候不能设置成CHANNEL</b>)</li>
 <li> **APP** :第三方App或小程序跳转电子签小程序的path, App或者小程序跳转适合此类型</li>
@@ -18142,7 +18176,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def GenerateType(self):
-        """签署链接生成类型，可以选择的类型如下
+        r"""签署链接生成类型，可以选择的类型如下
 
 <ul><li><strong>ALL</strong>：（默认）为所有签署方生成签署链接，但不包括自动签署（静默签署）的签署方。注意：<strong>此中类型不支持多个合同ID（FlowIds）</strong>。</li>
 <li><strong>CHANNEL</strong>：适用于第三方子企业的员工签署方。</li>
@@ -18160,7 +18194,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """SaaS平台企业员工签署方的企业名称如果名称中包含英文括号()，请使用中文括号（）代替。  注:  `1.GenerateType为"NOT_CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的企业,预设后只能以该企业身份去领取合同并完成签署`
+        r"""SaaS平台企业员工签署方的企业名称如果名称中包含英文括号()，请使用中文括号（）代替。  注:  `1.GenerateType为"NOT_CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的企业,预设后只能以该企业身份去领取合同并完成签署`
         :rtype: str
         """
         return self._OrganizationName
@@ -18171,7 +18205,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """合同流程里边参与方的姓名。
+        r"""合同流程里边参与方的姓名。
 注: 
 1. `GenerateType为"PERSON"(即个人签署方)时必填`。
 2. `在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
@@ -18185,7 +18219,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        """合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+        r"""合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 注:  
 1. `GenerateType为"PERSON"或"FOLLOWER"时必填。`
 2. `在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
@@ -18199,7 +18233,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def IdCardType(self):
-        """证件类型，支持以下类型
+        r"""证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -18215,7 +18249,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码，应符合以下规则
+        r"""证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -18231,7 +18265,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
+        r"""第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -18242,7 +18276,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+        r"""第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 
 注： 
 如果传进来的<font color="red">OpenId已经实名并且加入企业， 则忽略Name，IdCardType，IdCardNumber，Mobile这四个入参</font>（会用此OpenId实名的身份证和登录的手机号覆盖）
@@ -18256,7 +18290,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def AutoJumpBack(self):
-        """签署完成后是否自动回跳
+        r"""签署完成后是否自动回跳
 <ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul>
 
 注: 
@@ -18273,7 +18307,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
+        r"""签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
         :rtype: str
         """
         return self._JumpUrl
@@ -18286,7 +18320,7 @@ class CreateSignUrlsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -18299,7 +18333,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def Hides(self):
-        """生成的签署链接在签署页面隐藏的按钮列表，可设置如下：
+        r"""生成的签署链接在签署页面隐藏的按钮列表，可设置如下：
 
 <ul><li> **0** :合同签署页面更多操作按钮</li>
 <li> **1** :合同签署页面更多操作的拒绝签署按钮</li>
@@ -18317,7 +18351,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def RecipientIds(self):
-        """参与方角色ID，用于生成动态签署人链接完成领取。
+        r"""参与方角色ID，用于生成动态签署人链接完成领取。
 
 注：`使用此参数需要与flow_ids数量一致并且一一对应, 表示在对应同序号的流程中的参与角色ID`，
         :rtype: list of str
@@ -18330,7 +18364,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def FlowGroupUrlInfo(self):
-        """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+        r"""合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowGroupUrlInfo`
         """
         return self._FlowGroupUrlInfo
@@ -18341,7 +18375,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def UrlUseEnv(self):
-        """<font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
+        r"""<font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
 
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :rtype: str
@@ -18390,7 +18424,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
 
 class CreateSignUrlsResponse(AbstractModel):
-    """CreateSignUrls返回参数结构体
+    r"""CreateSignUrls返回参数结构体
 
     """
 
@@ -18409,7 +18443,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
     @property
     def SignUrlInfos(self):
-        """生成的签署参与者的签署链接信息数组。
+        r"""生成的签署参与者的签署链接信息数组。
         :rtype: list of SignUrlInfo
         """
         return self._SignUrlInfos
@@ -18420,7 +18454,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        """生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
+        r"""生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
         :rtype: list of str
         """
         return self._ErrorMessages
@@ -18431,7 +18465,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18453,7 +18487,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
 
 class DeleteOrganizationAuthorizationInfo(AbstractModel):
-    """清理的企业认证流信息
+    r"""清理的企业认证流信息
 
     """
 
@@ -18475,7 +18509,7 @@ class DeleteOrganizationAuthorizationInfo(AbstractModel):
 
     @property
     def AuthorizationId(self):
-        """认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。	
+        r"""认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。	
         :rtype: str
         """
         return self._AuthorizationId
@@ -18486,7 +18520,7 @@ class DeleteOrganizationAuthorizationInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """认证的企业名称	
+        r"""认证的企业名称	
         :rtype: str
         """
         return self._OrganizationName
@@ -18497,7 +18531,7 @@ class DeleteOrganizationAuthorizationInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
+        r"""第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -18508,7 +18542,7 @@ class DeleteOrganizationAuthorizationInfo(AbstractModel):
 
     @property
     def Errormessage(self):
-        """清除认证流产生的错误信息
+        r"""清除认证流产生的错误信息
         :rtype: str
         """
         return self._Errormessage
@@ -18534,7 +18568,7 @@ class DeleteOrganizationAuthorizationInfo(AbstractModel):
 
 
 class DeleteOrganizationAuthorizationsRequest(AbstractModel):
-    """DeleteOrganizationAuthorizations请求参数结构体
+    r"""DeleteOrganizationAuthorizations请求参数结构体
 
     """
 
@@ -18562,7 +18596,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -18579,7 +18613,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 
     @property
     def AuthorizationIds(self):
-        """认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
+        r"""认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
         :rtype: list of str
         """
         return self._AuthorizationIds
@@ -18590,7 +18624,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 
     @property
     def AdminName(self):
-        """认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
+        r"""认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
         :rtype: str
         """
         return self._AdminName
@@ -18601,7 +18635,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 
     @property
     def AdminMobile(self):
-        """认证人手机号，组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。 
+        r"""认证人手机号，组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。 
         :rtype: str
         """
         return self._AdminMobile
@@ -18629,7 +18663,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 
 
 class DeleteOrganizationAuthorizationsResponse(AbstractModel):
-    """DeleteOrganizationAuthorizations返回参数结构体
+    r"""DeleteOrganizationAuthorizations返回参数结构体
 
     """
 
@@ -18648,7 +18682,7 @@ class DeleteOrganizationAuthorizationsResponse(AbstractModel):
 
     @property
     def DeleteOrganizationAuthorizationInfos(self):
-        """清理认证流的详细信息，包括企业名称、认证流唯一 ID 以及清理认证流过程中产生的错误信息。
+        r"""清理认证流的详细信息，包括企业名称、认证流唯一 ID 以及清理认证流过程中产生的错误信息。
         :rtype: list of DeleteOrganizationAuthorizationInfo
         """
         return self._DeleteOrganizationAuthorizationInfos
@@ -18659,7 +18693,7 @@ class DeleteOrganizationAuthorizationsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """批量清理认证流返回的状态值其中包括- 1 全部成功- 2 部分成功- 3 全部失败
+        r"""批量清理认证流返回的状态值其中包括- 1 全部成功- 2 部分成功- 3 全部失败
         :rtype: int
         """
         return self._Status
@@ -18670,7 +18704,7 @@ class DeleteOrganizationAuthorizationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18692,7 +18726,7 @@ class DeleteOrganizationAuthorizationsResponse(AbstractModel):
 
 
 class Department(AbstractModel):
-    """第三方应用集成员工部门信息
+    r"""第三方应用集成员工部门信息
 
     """
 
@@ -18708,7 +18742,7 @@ class Department(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门id
+        r"""部门id
         :rtype: str
         """
         return self._DepartmentId
@@ -18719,7 +18753,7 @@ class Department(AbstractModel):
 
     @property
     def DepartmentName(self):
-        """部门名称
+        r"""部门名称
         :rtype: str
         """
         return self._DepartmentName
@@ -18743,7 +18777,7 @@ class Department(AbstractModel):
 
 
 class DescribeBatchOrganizationRegistrationTasksRequest(AbstractModel):
-    """DescribeBatchOrganizationRegistrationTasks请求参数结构体
+    r"""DescribeBatchOrganizationRegistrationTasks请求参数结构体
 
     """
 
@@ -18765,7 +18799,7 @@ class DescribeBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -18782,7 +18816,7 @@ class DescribeBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        """企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口[查询企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/DescribeBatchOrganizationRegistrationUrls)可以得到。
+        r"""企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口[查询企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/DescribeBatchOrganizationRegistrationUrls)可以得到。
         :rtype: list of str
         """
         return self._TaskIds
@@ -18808,7 +18842,7 @@ class DescribeBatchOrganizationRegistrationTasksRequest(AbstractModel):
 
 
 class DescribeBatchOrganizationRegistrationTasksResponse(AbstractModel):
-    """DescribeBatchOrganizationRegistrationTasks返回参数结构体
+    r"""DescribeBatchOrganizationRegistrationTasks返回参数结构体
 
     """
 
@@ -18824,7 +18858,7 @@ class DescribeBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     @property
     def Details(self):
-        """企业批量任务状态明细
+        r"""企业批量任务状态明细
         :rtype: list of BatchOrganizationRegistrationTasksDetails
         """
         return self._Details
@@ -18835,7 +18869,7 @@ class DescribeBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18856,7 +18890,7 @@ class DescribeBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
 
 class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
-    """DescribeBatchOrganizationRegistrationUrls请求参数结构体
+    r"""DescribeBatchOrganizationRegistrationUrls请求参数结构体
 
     """
 
@@ -18877,7 +18911,7 @@ class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -18893,7 +18927,7 @@ class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """通过接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>调用得到的任务ID。
+        r"""通过接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>调用得到的任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -18919,7 +18953,7 @@ class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
 
 
 class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
-    """DescribeBatchOrganizationRegistrationUrls返回参数结构体
+    r"""DescribeBatchOrganizationRegistrationUrls返回参数结构体
 
     """
 
@@ -18935,7 +18969,7 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
 
     @property
     def OrganizationAuthUrls(self):
-        """子企业注册认证的链接列表
+        r"""子企业注册认证的链接列表
         :rtype: list of OrganizationAuthUrl
         """
         return self._OrganizationAuthUrls
@@ -18946,7 +18980,7 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18967,7 +19001,7 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
 
 
 class DescribeCancelFlowsTaskRequest(AbstractModel):
-    """DescribeCancelFlowsTask请求参数结构体
+    r"""DescribeCancelFlowsTask请求参数结构体
 
     """
 
@@ -18991,7 +19025,7 @@ class DescribeCancelFlowsTaskRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -19010,7 +19044,7 @@ class DescribeCancelFlowsTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """批量撤销任务编号，为32位字符串，通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)获得。
+        r"""批量撤销任务编号，为32位字符串，通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)获得。
         :rtype: str
         """
         return self._TaskId
@@ -19036,7 +19070,7 @@ class DescribeCancelFlowsTaskRequest(AbstractModel):
 
 
 class DescribeCancelFlowsTaskResponse(AbstractModel):
-    """DescribeCancelFlowsTask返回参数结构体
+    r"""DescribeCancelFlowsTask返回参数结构体
 
     """
 
@@ -19061,7 +19095,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """批量撤销任务编号，为32位字符串。
+        r"""批量撤销任务编号，为32位字符串。
         :rtype: str
         """
         return self._TaskId
@@ -19072,7 +19106,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态，需要关注的状态<ul><li>**PROCESSING**  - 任务执行中</li><li>**END** - 任务处理完成</li><li>**TIMEOUT** 任务超时未处理完成，用户未在批量撤销链接有效期内操作</li></ul>
+        r"""任务状态，需要关注的状态<ul><li>**PROCESSING**  - 任务执行中</li><li>**END** - 任务处理完成</li><li>**TIMEOUT** 任务超时未处理完成，用户未在批量撤销链接有效期内操作</li></ul>
         :rtype: str
         """
         return self._TaskStatus
@@ -19083,7 +19117,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
     @property
     def SuccessFlowIds(self):
-        """批量撤销成功的签署流程编号
+        r"""批量撤销成功的签署流程编号
         :rtype: list of str
         """
         return self._SuccessFlowIds
@@ -19094,7 +19128,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
     @property
     def FailureFlows(self):
-        """批量撤销失败的签署流程信息
+        r"""批量撤销失败的签署流程信息
         :rtype: list of CancelFailureFlow
         """
         return self._FailureFlows
@@ -19105,7 +19139,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19129,7 +19163,7 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
 
 
 class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
-    """DescribeChannelFlowEvidenceReport请求参数结构体
+    r"""DescribeChannelFlowEvidenceReport请求参数结构体
 
     """
 
@@ -19161,7 +19195,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -19180,7 +19214,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportId(self):
-        """签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
+        r"""签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
         :rtype: str
         """
         return self._ReportId
@@ -19193,7 +19227,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -19206,7 +19240,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """指定申请的报告类型，可选类型如下：
+        r"""指定申请的报告类型，可选类型如下：
 <ul><li> **0** :合同签署报告（默认）</li>
 <li> **1** :公证处核验报告</li></ul>
         :rtype: int
@@ -19238,7 +19272,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
 
 class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
-    """DescribeChannelFlowEvidenceReport返回参数结构体
+    r"""DescribeChannelFlowEvidenceReport返回参数结构体
 
     """
 
@@ -19261,7 +19295,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        """出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
+        r"""出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
         :rtype: str
         """
         return self._ReportUrl
@@ -19272,7 +19306,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        """出证任务执行的状态, 状态含义如下：
+        r"""出证任务执行的状态, 状态含义如下：
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
@@ -19287,7 +19321,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19304,7 +19338,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
 
 class DescribeChannelOrganizationsRequest(AbstractModel):
-    """DescribeChannelOrganizations请求参数结构体
+    r"""DescribeChannelOrganizations请求参数结构体
 
     """
 
@@ -19345,7 +19379,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 
@@ -19364,7 +19398,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，单页最大支持 200。
+        r"""指定分页每页返回的数据条数，单页最大支持 200。
         :rtype: int
         """
         return self._Limit
@@ -19375,7 +19409,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
+        r"""该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
 
 **注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
         :rtype: str
@@ -19388,7 +19422,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def AuthorizationStatusList(self):
-        """可以按照当前企业的认证状态进行过滤。可值如下：
+        r"""可以按照当前企业的认证状态进行过滤。可值如下：
 <ul><li>**"UNVERIFIED"**： 未认证的企业</li>
   <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
   <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
@@ -19405,7 +19439,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
+        r"""指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
         :rtype: int
         """
         return self._Offset
@@ -19434,7 +19468,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
 
 class DescribeChannelOrganizationsResponse(AbstractModel):
-    """DescribeChannelOrganizations返回参数结构体
+    r"""DescribeChannelOrganizations返回参数结构体
 
     """
 
@@ -19459,7 +19493,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def ChannelOrganizationInfos(self):
-        """满足查询条件的企业信息列表。
+        r"""满足查询条件的企业信息列表。
         :rtype: list of ChannelOrganizationInfo
         """
         return self._ChannelOrganizationInfos
@@ -19470,7 +19504,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        r"""指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
         :rtype: int
         """
         return self._Offset
@@ -19481,7 +19515,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """指定分页每页返回的数据条数，单页最大支持 200。
+        r"""指定分页每页返回的数据条数，单页最大支持 200。
         :rtype: int
         """
         return self._Limit
@@ -19492,7 +19526,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """满足查询条件的企业总数量。
+        r"""满足查询条件的企业总数量。
         :rtype: int
         """
         return self._Total
@@ -19503,7 +19537,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19527,7 +19561,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
 
 class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
-    """DescribeChannelSealPolicyWorkflowUrl请求参数结构体
+    r"""DescribeChannelSealPolicyWorkflowUrl请求参数结构体
 
     """
 
@@ -19557,7 +19591,7 @@ class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 
@@ -19575,7 +19609,7 @@ class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
 
     @property
     def WorkflowInstanceId(self):
-        """用印审批单的ID，可通过用印[申请回调](https://qian.tencent.com/developers/partner/callback_types_seals#%E4%B8%89-%E7%94%A8%E5%8D%B0%E7%94%B3%E8%AF%B7%E5%AE%A1%E6%89%B9%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5)获取。
+        r"""用印审批单的ID，可通过用印[申请回调](https://qian.tencent.com/developers/partner/callback_types_seals#%E4%B8%89-%E7%94%A8%E5%8D%B0%E7%94%B3%E8%AF%B7%E5%AE%A1%E6%89%B9%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5)获取。
         :rtype: str
         """
         return self._WorkflowInstanceId
@@ -19586,7 +19620,7 @@ class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """生成链接的类型：
+        r"""生成链接的类型：
 生成链接的类型
 <ul><li>**LongLink**：(默认)长链接，H5跳转到电子签小程序链接，链接有效期为1年</li>
 <li>**ShortLink**：H5跳转到电子签小程序链接，一般用于发送短信中带的链接，打开后进入腾讯电子签小程序，链接有效期为7天</li>
@@ -19617,7 +19651,7 @@ class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
 
 
 class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
-    """DescribeChannelSealPolicyWorkflowUrl返回参数结构体
+    r"""DescribeChannelSealPolicyWorkflowUrl返回参数结构体
 
     """
 
@@ -19633,7 +19667,7 @@ class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
 
     @property
     def WorkflowUrl(self):
-        """用印审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转方式查看）。
+        r"""用印审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转方式查看）。
         :rtype: str
         """
         return self._WorkflowUrl
@@ -19644,7 +19678,7 @@ class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19660,7 +19694,7 @@ class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
 
 
 class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
-    """DescribeExtendedServiceAuthDetail请求参数结构体
+    r"""DescribeExtendedServiceAuthDetail请求参数结构体
 
     """
 
@@ -19695,7 +19729,7 @@ class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -19714,7 +19748,7 @@ class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
 
     @property
     def ExtendServiceType(self):
-        """要查询的扩展服务类型。
+        r"""要查询的扩展服务类型。
 如下所示：
 <ul><li> AUTO_SIGN：企业静默签署</li>
 <li>BATCH_SIGN：批量签署</li>
@@ -19730,7 +19764,7 @@ class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+        r"""指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
         :rtype: int
         """
         return self._Limit
@@ -19741,7 +19775,7 @@ class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
         :rtype: int
         """
         return self._Offset
@@ -19769,7 +19803,7 @@ class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
 
 
 class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
-    """DescribeExtendedServiceAuthDetail返回参数结构体
+    r"""DescribeExtendedServiceAuthDetail返回参数结构体
 
     """
 
@@ -19785,7 +19819,7 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
 
     @property
     def AuthInfoDetail(self):
-        """服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
+        r"""服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.AuthInfoDetail`
         """
         return self._AuthInfoDetail
@@ -19796,7 +19830,7 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19814,7 +19848,7 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
 
 
 class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
-    """DescribeExtendedServiceAuthInfo请求参数结构体
+    r"""DescribeExtendedServiceAuthInfo请求参数结构体
 
     """
 
@@ -19835,7 +19869,7 @@ class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -19868,7 +19902,7 @@ class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
 
 
 class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
-    """DescribeExtendedServiceAuthInfo返回参数结构体
+    r"""DescribeExtendedServiceAuthInfo返回参数结构体
 
     """
 
@@ -19884,7 +19918,7 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
 
     @property
     def AuthInfo(self):
-        """服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
+        r"""服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
         :rtype: list of ExtentServiceAuthInfo
         """
         return self._AuthInfo
@@ -19895,7 +19929,7 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19916,7 +19950,7 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
 
 
 class DescribeFlowDetailInfoRequest(AbstractModel):
-    """DescribeFlowDetailInfo请求参数结构体
+    r"""DescribeFlowDetailInfo请求参数结构体
 
     """
 
@@ -19949,7 +19983,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -19968,7 +20002,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """需要查询的流程ID列表，最多可传入100个ID。
+        r"""需要查询的流程ID列表，最多可传入100个ID。
 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
         :rtype: list of str
         """
@@ -19980,7 +20014,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。
+        r"""需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。
 
 合同组由<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
         :rtype: str
@@ -19995,7 +20029,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -20027,7 +20061,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
 
 class DescribeFlowDetailInfoResponse(AbstractModel):
-    """DescribeFlowDetailInfo返回参数结构体
+    r"""DescribeFlowDetailInfo返回参数结构体
 
     """
 
@@ -20056,7 +20090,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """合同归属的第三方平台应用号ID
+        r"""合同归属的第三方平台应用号ID
         :rtype: str
         """
         return self._ApplicationId
@@ -20067,7 +20101,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def ProxyOrganizationOpenId(self):
-        """合同归属的第三方平台子客企业OpenId
+        r"""合同归属的第三方平台子客企业OpenId
         :rtype: str
         """
         return self._ProxyOrganizationOpenId
@@ -20078,7 +20112,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def FlowInfo(self):
-        """合同流程的详细信息。
+        r"""合同流程的详细信息。
 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
         :rtype: list of FlowDetailInfo
         """
@@ -20090,7 +20124,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组ID，只有在查询合同组信息时才会返回。
+        r"""合同组ID，只有在查询合同组信息时才会返回。
         :rtype: str
         """
         return self._FlowGroupId
@@ -20101,7 +20135,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        """合同组名称，只有在查询合同组信息时才会返回。
+        r"""合同组名称，只有在查询合同组信息时才会返回。
         :rtype: str
         """
         return self._FlowGroupName
@@ -20112,7 +20146,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20137,7 +20171,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
 
 class DescribeResourceUrlsByFlowsRequest(AbstractModel):
-    """DescribeResourceUrlsByFlows请求参数结构体
+    r"""DescribeResourceUrlsByFlows请求参数结构体
 
     """
 
@@ -20164,7 +20198,7 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -20183,7 +20217,7 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        """需要下载的合同流程的ID,  至少需要1个,  做多50个
+        r"""需要下载的合同流程的ID,  至少需要1个,  做多50个
         :rtype: list of str
         """
         return self._FlowIds
@@ -20196,7 +20230,7 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，不用传
+        r"""操作者的信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -20227,7 +20261,7 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
 
 
 class DescribeResourceUrlsByFlowsResponse(AbstractModel):
-    """DescribeResourceUrlsByFlows返回参数结构体
+    r"""DescribeResourceUrlsByFlows返回参数结构体
 
     """
 
@@ -20247,7 +20281,7 @@ class DescribeResourceUrlsByFlowsResponse(AbstractModel):
 
     @property
     def FlowResourceUrlInfos(self):
-        """合同流程PDF下载链接
+        r"""合同流程PDF下载链接
         :rtype: list of FlowResourceUrlInfo
         """
         return self._FlowResourceUrlInfos
@@ -20258,7 +20292,7 @@ class DescribeResourceUrlsByFlowsResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        """如果某个序号的合同流程生成PDF下载链接成功, 对应序号的值为空
+        r"""如果某个序号的合同流程生成PDF下载链接成功, 对应序号的值为空
 如果某个序号的合同流程生成PDF下载链接失败, 对应序号的值为错误的原因
         :rtype: list of str
         """
@@ -20270,7 +20304,7 @@ class DescribeResourceUrlsByFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20292,7 +20326,7 @@ class DescribeResourceUrlsByFlowsResponse(AbstractModel):
 
 
 class DescribeTemplatesRequest(AbstractModel):
-    """DescribeTemplates请求参数结构体
+    r"""DescribeTemplates请求参数结构体
 
     """
 
@@ -20386,7 +20420,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -20405,7 +20439,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """合同模板ID，为32位字符串。
+        r"""合同模板ID，为32位字符串。
 
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
 
@@ -20420,7 +20454,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        """查询模板的内容
+        r"""查询模板的内容
 
 <ul><li>**0**：（默认）模板列表及详情</li>
 <li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
@@ -20434,7 +20468,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        """合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。
+        r"""合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。
 
 注意: 
 1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
@@ -20454,7 +20488,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定每页返回的数据条数，和Offset参数配合使用。
+        r"""指定每页返回的数据条数，和Offset参数配合使用。
 
 注：`1.默认值为20，单页做大值为100。`
         :rtype: int
@@ -20467,7 +20501,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 
 注：`1.offset从0开始，即第一页为0。`
 `2.默认从第一页返回。`
@@ -20481,7 +20515,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
+        r"""模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
         :rtype: str
         """
         return self._TemplateName
@@ -20492,7 +20526,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def ChannelTemplateId(self):
-        """对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
+        r"""对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
         :rtype: str
         """
         return self._ChannelTemplateId
@@ -20503,7 +20537,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def QueryAllComponents(self):
-        """返回控件的范围, 是只返回发起方自己的还是所有参与方的
+        r"""返回控件的范围, 是只返回发起方自己的还是所有参与方的
 
 <ul><li>**false**：（默认）只返回发起方控件</li>
 <li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
@@ -20517,7 +20551,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def WithPreviewUrl(self):
-        """是否获取模板预览链接。
+        r"""是否获取模板预览链接。
 
 <ul><li>**false**：不获取（默认）</li>
 <li>**true**：获取</li></ul>
@@ -20534,7 +20568,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def WithPdfUrl(self):
-        """是否获取模板的PDF文件链接。
+        r"""是否获取模板的PDF文件链接。
 
 <ul><li>**false**：不获取（默认）</li>
 <li>**true**：获取</li></ul>
@@ -20554,7 +20588,7 @@ class DescribeTemplatesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息
+        r"""操作者的信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -20567,7 +20601,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def UserFlowTypeId(self):
-        """用户合同类型id
+        r"""用户合同类型id
         :rtype: str
         """
         return self._UserFlowTypeId
@@ -20606,7 +20640,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
 
 class DescribeTemplatesResponse(AbstractModel):
-    """DescribeTemplates返回参数结构体
+    r"""DescribeTemplates返回参数结构体
 
     """
 
@@ -20631,7 +20665,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """模板详情列表数据
+        r"""模板详情列表数据
         :rtype: list of TemplateInfo
         """
         return self._Templates
@@ -20642,7 +20676,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的模板总数
+        r"""查询到的模板总数
         :rtype: int
         """
         return self._TotalCount
@@ -20653,7 +20687,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页返回的数据条数
+        r"""每页返回的数据条数
         :rtype: int
         """
         return self._Limit
@@ -20664,7 +20698,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
+        r"""查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
         :rtype: int
         """
         return self._Offset
@@ -20675,7 +20709,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20699,7 +20733,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
 
 class DescribeUsageRequest(AbstractModel):
-    """DescribeUsage请求参数结构体
+    r"""DescribeUsage请求参数结构体
 
     """
 
@@ -20746,7 +20780,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -20762,7 +20796,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
+        r"""查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
 
 注: `查询日期范围区间长度大于90天`。
         :rtype: str
@@ -20775,7 +20809,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
+        r"""查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
 
 注: `查询日期范围区间长度大于90天`。
         :rtype: str
@@ -20788,7 +20822,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def NeedAggregate(self):
-        """是否汇总数据，默认不汇总。
+        r"""是否汇总数据，默认不汇总。
 <ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
 <li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
 
@@ -20802,7 +20836,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """指定每页返回的数据条数，和Offset参数配合使用。
+        r"""指定每页返回的数据条数，和Offset参数配合使用。
 
 注: `默认值为1000，单页做大值为1000`
         :rtype: int
@@ -20815,7 +20849,7 @@ class DescribeUsageRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 
 注：`offset从0开始，即第一页为0。`
         :rtype: int
@@ -20830,7 +20864,7 @@ class DescribeUsageRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -20865,7 +20899,7 @@ class DescribeUsageRequest(AbstractModel):
 
 
 class DescribeUsageResponse(AbstractModel):
-    """DescribeUsage返回参数结构体
+    r"""DescribeUsage返回参数结构体
 
     """
 
@@ -20884,7 +20918,7 @@ class DescribeUsageResponse(AbstractModel):
 
     @property
     def Total(self):
-        """用量明细条数
+        r"""用量明细条数
         :rtype: int
         """
         return self._Total
@@ -20895,7 +20929,7 @@ class DescribeUsageResponse(AbstractModel):
 
     @property
     def Details(self):
-        """用量明细
+        r"""用量明细
         :rtype: list of UsageDetail
         """
         return self._Details
@@ -20906,7 +20940,7 @@ class DescribeUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20928,7 +20962,7 @@ class DescribeUsageResponse(AbstractModel):
 
 
 class DescribeUserFlowTypeRequest(AbstractModel):
-    """DescribeUserFlowType请求参数结构体
+    r"""DescribeUserFlowType请求参数结构体
 
     """
 
@@ -20951,7 +20985,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -20962,7 +20996,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
+        r"""搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
         :rtype: list of Filter
         """
         return self._Filters
@@ -20973,7 +21007,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def QueryBindTemplate(self):
-        """查询绑定了模版的用户合同类型
+        r"""查询绑定了模版的用户合同类型
 <ul>
 <li>false（默认值），查询用户合同类型</li>
 <li>true，查询绑定了模版的用户合同类型</li>
@@ -21009,7 +21043,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
 
 class DescribeUserFlowTypeResponse(AbstractModel):
-    """DescribeUserFlowType返回参数结构体
+    r"""DescribeUserFlowType返回参数结构体
 
     """
 
@@ -21025,7 +21059,7 @@ class DescribeUserFlowTypeResponse(AbstractModel):
 
     @property
     def AllUserFlowTypes(self):
-        """查询到的所有用户合同类型列表
+        r"""查询到的所有用户合同类型列表
         :rtype: list of TemplateUserFlowType
         """
         return self._AllUserFlowTypes
@@ -21036,7 +21070,7 @@ class DescribeUserFlowTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21057,7 +21091,7 @@ class DescribeUserFlowTypeResponse(AbstractModel):
 
 
 class DetectInfoVideoData(AbstractModel):
-    """视频认证结果
+    r"""视频认证结果
 
     """
 
@@ -21072,7 +21106,7 @@ class DetectInfoVideoData(AbstractModel):
 
     @property
     def LiveNessVideo(self):
-        """活体视频的base64编码，mp4格式
+        r"""活体视频的base64编码，mp4格式
 
 注:`需进行base64解码获取活体视频文件`
         :rtype: str
@@ -21097,7 +21131,7 @@ class DetectInfoVideoData(AbstractModel):
 
 
 class DownloadFlowInfo(AbstractModel):
-    """签署流程下载信息
+    r"""签署流程下载信息
 
     """
 
@@ -21113,7 +21147,7 @@ class DownloadFlowInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """文件夹名称
+        r"""文件夹名称
         :rtype: str
         """
         return self._FileName
@@ -21124,7 +21158,7 @@ class DownloadFlowInfo(AbstractModel):
 
     @property
     def FlowIdList(self):
-        """签署流程的标识数组
+        r"""签署流程的标识数组
         :rtype: list of str
         """
         return self._FlowIdList
@@ -21148,7 +21182,7 @@ class DownloadFlowInfo(AbstractModel):
 
 
 class DynamicFlowApproverResult(AbstractModel):
-    """动态合同签署人结果
+    r"""动态合同签署人结果
 
     """
 
@@ -21167,7 +21201,7 @@ class DynamicFlowApproverResult(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；	
+        r"""签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；	
         :rtype: str
         """
         return self._RecipientId
@@ -21178,7 +21212,7 @@ class DynamicFlowApproverResult(AbstractModel):
 
     @property
     def SignId(self):
-        """签署ID - 发起流程时系统自动补充 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息	
+        r"""签署ID - 发起流程时系统自动补充 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息	
         :rtype: str
         """
         return self._SignId
@@ -21189,7 +21223,7 @@ class DynamicFlowApproverResult(AbstractModel):
 
     @property
     def ApproverStatus(self):
-        """签署人状态信息
+        r"""签署人状态信息
         :rtype: int
         """
         return self._ApproverStatus
@@ -21214,7 +21248,7 @@ class DynamicFlowApproverResult(AbstractModel):
 
 
 class DynamicFlowInfo(AbstractModel):
-    """动态合同信息
+    r"""动态合同信息
 
     """
 
@@ -21236,7 +21270,7 @@ class DynamicFlowInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+        r"""合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
         :rtype: str
         """
         return self._FlowId
@@ -21247,7 +21281,7 @@ class DynamicFlowInfo(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        """合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
+        r"""合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
         :rtype: list of FlowApproverInfo
         """
         return self._FlowApprovers
@@ -21258,7 +21292,7 @@ class DynamicFlowInfo(AbstractModel):
 
     @property
     def AutoSignScene(self):
-        """个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传： <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签） </li><li> **OTHER** : 通用场景</li></ul> 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`	
+        r"""个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传： <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签） </li><li> **OTHER** : 通用场景</li></ul> 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`	
         :rtype: str
         """
         return self._AutoSignScene
@@ -21269,7 +21303,7 @@ class DynamicFlowInfo(AbstractModel):
 
     @property
     def ApproverVerifyType(self):
-        """签署人校验方式 VerifyCheck: 人脸识别（默认） MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证） 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。	
+        r"""签署人校验方式 VerifyCheck: 人脸识别（默认） MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证） 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。	
         :rtype: str
         """
         return self._ApproverVerifyType
@@ -21300,7 +21334,7 @@ class DynamicFlowInfo(AbstractModel):
 
 
 class DynamicFlowResult(AbstractModel):
-    """动态合同补充签署人结果
+    r"""动态合同补充签署人结果
 
     """
 
@@ -21316,7 +21350,7 @@ class DynamicFlowResult(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)	
+        r"""合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)	
         :rtype: str
         """
         return self._FlowId
@@ -21327,7 +21361,7 @@ class DynamicFlowResult(AbstractModel):
 
     @property
     def DynamicFlowApproverList(self):
-        """动态合同签署人补充结果信息列表
+        r"""动态合同签署人补充结果信息列表
         :rtype: list of DynamicFlowApproverResult
         """
         return self._DynamicFlowApproverList
@@ -21356,7 +21390,7 @@ class DynamicFlowResult(AbstractModel):
 
 
 class EmbedUrlOption(AbstractModel):
-    """创建嵌入式页面url个性化参数
+    r"""创建嵌入式页面url个性化参数
 
     """
 
@@ -21397,7 +21431,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def ShowFlowDetailComponent(self):
-        """合同详情预览，允许展示控件信息
+        r"""合同详情预览，允许展示控件信息
 <ul>
 <li><b>true</b>：允许在合同详情页展示控件</li>
 <li><b>false</b>：（默认）不允许在合同详情页展示控件</li>
@@ -21412,7 +21446,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def ShowTemplateComponent(self):
-        """模板预览，允许展示模板控件信息
+        r"""模板预览，允许展示模板控件信息
 <ul><li> <b>true</b> :允许在模板预览页展示控件</li>
 <li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
         :rtype: bool
@@ -21425,7 +21459,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def SkipUploadFile(self):
-        """跳过上传文件，默认为false(展示上传文件页）![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
+        r"""跳过上传文件，默认为false(展示上传文件页）![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
 - false: 展示上传文件页
 - true: 不展示上传文件页
  
@@ -21441,7 +21475,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def ForbidEditWatermark(self):
-        """是否禁止编辑（展示）水印控件属性
+        r"""是否禁止编辑（展示）水印控件属性
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :rtype: bool
         """
@@ -21453,7 +21487,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def SealDescription(self):
-        """印章描述
+        r"""印章描述
         :rtype: str
         """
         return self._SealDescription
@@ -21464,7 +21498,7 @@ class EmbedUrlOption(AbstractModel):
 
     @property
     def ForbidEditSealDescription(self):
-        """是否禁止编辑印章描述内容
+        r"""是否禁止编辑印章描述内容
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :rtype: bool
         """
@@ -21493,7 +21527,7 @@ class EmbedUrlOption(AbstractModel):
 
 
 class ExtentServiceAuthInfo(AbstractModel):
-    """扩展服务开通和授权的详细信息
+    r"""扩展服务开通和授权的详细信息
 
     """
 
@@ -21528,7 +21562,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
     @property
     def Type(self):
-        """扩展服务类型
+        r"""扩展服务类型
 <ul>
 <li>AUTO_SIGN             企业自动签（自动签署）</li>
 <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
@@ -21547,7 +21581,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
     @property
     def Name(self):
-        """扩展服务名称 
+        r"""扩展服务名称 
         :rtype: str
         """
         return self._Name
@@ -21558,7 +21592,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
     @property
     def Status(self):
-        """扩展服务的开通状态
+        r"""扩展服务的开通状态
 **ENABLE**：开通 
 **DISABLE**：未开通	
         :rtype: str
@@ -21571,7 +21605,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
     @property
     def OperatorOpenId(self):
-        """操作扩展服务的操作人第三方应用平台的用户openid
+        r"""操作扩展服务的操作人第三方应用平台的用户openid
         :rtype: str
         """
         return self._OperatorOpenId
@@ -21582,7 +21616,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
     @property
     def OperateOn(self):
-        """扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
+        r"""扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
         :rtype: int
         """
         return self._OperateOn
@@ -21609,7 +21643,7 @@ class ExtentServiceAuthInfo(AbstractModel):
 
 
 class FailedCreateRoleData(AbstractModel):
-    """绑定失败的用户角色信息
+    r"""绑定失败的用户角色信息
 
     """
 
@@ -21625,7 +21659,7 @@ class FailedCreateRoleData(AbstractModel):
 
     @property
     def UserId(self):
-        """用户userId
+        r"""用户userId
         :rtype: str
         """
         return self._UserId
@@ -21636,7 +21670,7 @@ class FailedCreateRoleData(AbstractModel):
 
     @property
     def RoleIds(self):
-        """角色RoleId列表
+        r"""角色RoleId列表
         :rtype: list of str
         """
         return self._RoleIds
@@ -21660,7 +21694,7 @@ class FailedCreateRoleData(AbstractModel):
 
 
 class FillApproverInfo(AbstractModel):
-    """指定补充签署人信息
+    r"""指定补充签署人信息
     - RecipientId 必须指定
     - 补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充
 
@@ -21719,7 +21753,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+        r"""签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 
         :rtype: str
         """
@@ -21731,7 +21765,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OpenId(self):
-        """指定企业经办签署人OpenId
+        r"""指定企业经办签署人OpenId
 
 注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
         :rtype: str
@@ -21744,7 +21778,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverName(self):
-        """签署人姓名
+        r"""签署人姓名
         :rtype: str
         """
         return self._ApproverName
@@ -21755,7 +21789,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverMobile(self):
-        """签署人手机号码
+        r"""签署人手机号码
         :rtype: str
         """
         return self._ApproverMobile
@@ -21766,7 +21800,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._OrganizationName
@@ -21777,7 +21811,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """企业OpenId
+        r"""企业OpenId
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -21788,7 +21822,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def NotChannelOrganization(self):
-        """签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传
+        r"""签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传
         :rtype: bool
         """
         return self._NotChannelOrganization
@@ -21799,7 +21833,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD 中国大陆居民身份证</li>
 <li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
@@ -21817,7 +21851,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardNumber(self):
-        """签署方经办人的证件号码，应符合以下规则
+        r"""签署方经办人的证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -21833,7 +21867,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID
+        r"""合同流程ID
 - 补充合同组子合同动态签署人时必传。
 - 补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明
         :rtype: str
@@ -21867,7 +21901,7 @@ class FillApproverInfo(AbstractModel):
 
 
 class FillError(AbstractModel):
-    """批量补充签署人时，补充失败的报错说明
+    r"""批量补充签署人时，补充失败的报错说明
 
     """
 
@@ -21886,7 +21920,7 @@ class FillError(AbstractModel):
 
     @property
     def RecipientId(self):
-        """为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
+        r"""为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
         :rtype: str
         """
         return self._RecipientId
@@ -21897,7 +21931,7 @@ class FillError(AbstractModel):
 
     @property
     def ErrMessage(self):
-        """补充失败错误说明
+        r"""补充失败错误说明
         :rtype: str
         """
         return self._ErrMessage
@@ -21908,7 +21942,7 @@ class FillError(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。	
+        r"""合同流程ID，为32位字符串。	
         :rtype: str
         """
         return self._FlowId
@@ -21933,7 +21967,7 @@ class FillError(AbstractModel):
 
 
 class FilledComponent(AbstractModel):
-    """文档内的填充控件返回结构体，返回控件的基本信息和填写内容值
+    r"""文档内的填充控件返回结构体，返回控件的基本信息和填写内容值
 
     """
 
@@ -21962,7 +21996,7 @@ class FilledComponent(AbstractModel):
 
     @property
     def ComponentId(self):
-        """填写控件ID
+        r"""填写控件ID
         :rtype: str
         """
         return self._ComponentId
@@ -21973,7 +22007,7 @@ class FilledComponent(AbstractModel):
 
     @property
     def ComponentName(self):
-        """控件名称
+        r"""控件名称
         :rtype: str
         """
         return self._ComponentName
@@ -21984,7 +22018,7 @@ class FilledComponent(AbstractModel):
 
     @property
     def ComponentFillStatus(self):
-        """此填写控件的填写状态
+        r"""此填写控件的填写状态
  **0** : 此填写控件**未填写**
 **1** : 此填写控件**已填写**
         :rtype: str
@@ -21997,7 +22031,7 @@ class FilledComponent(AbstractModel):
 
     @property
     def ComponentValue(self):
-        """控件填写内容
+        r"""控件填写内容
         :rtype: str
         """
         return self._ComponentValue
@@ -22008,7 +22042,7 @@ class FilledComponent(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
+        r"""图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
 
 注: `链接不是永久链接,  默认有效期5分钟后, 到期后链接失效`
         :rtype: str
@@ -22037,7 +22071,7 @@ class FilledComponent(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """此结构体 (Filter) 用于描述查询过滤条件。
+    r"""此结构体 (Filter) 用于描述查询过滤条件。
 
     """
 
@@ -22053,7 +22087,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        """查询过滤条件的Key
+        r"""查询过滤条件的Key
         :rtype: str
         """
         return self._Key
@@ -22064,7 +22098,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """查询过滤条件的Value列表
+        r"""查询过滤条件的Value列表
         :rtype: list of str
         """
         return self._Values
@@ -22088,7 +22122,7 @@ class Filter(AbstractModel):
 
 
 class FlowApproverDetail(AbstractModel):
-    """签署人的流程信息明细
+    r"""签署人的流程信息明细
 
     """
 
@@ -22157,7 +22191,7 @@ class FlowApproverDetail(AbstractModel):
     def ReceiptId(self):
         warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
 
-        """模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+        r"""模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :rtype: str
         """
         return self._ReceiptId
@@ -22170,7 +22204,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ProxyOrganizationOpenId(self):
-        """第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
+        r"""第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
         :rtype: str
         """
         return self._ProxyOrganizationOpenId
@@ -22181,7 +22215,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ProxyOperatorOpenId(self):
-        """第三方平台子客企业员工的唯一标识
+        r"""第三方平台子客企业员工的唯一标识
         :rtype: str
         """
         return self._ProxyOperatorOpenId
@@ -22192,7 +22226,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ProxyOrganizationName(self):
-        """第三方平台子客企业名称，与企业营业执照中注册的名称一致。
+        r"""第三方平台子客企业名称，与企业营业执照中注册的名称一致。
         :rtype: str
         """
         return self._ProxyOrganizationName
@@ -22203,7 +22237,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def Mobile(self):
-        """签署人手机号
+        r"""签署人手机号
         :rtype: str
         """
         return self._Mobile
@@ -22214,7 +22248,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def SignOrder(self):
-        """签署顺序，如果是有序签署，签署顺序从小到大
+        r"""签署顺序，如果是有序签署，签署顺序从小到大
         :rtype: int
         """
         return self._SignOrder
@@ -22225,7 +22259,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveName(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -22237,7 +22271,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveStatus(self):
-        """当前签署人的状态, 状态如下
+        r"""当前签署人的状态, 状态如下
 <ul><li> **PENDING** :待签署</li>
 <li> **FILLPENDING** :待填写</li>
 <li> **FILLACCEPT** :填写完成</li>
@@ -22260,7 +22294,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveMessage(self):
-        """签署人拒签等情况的时候填写的原因
+        r"""签署人拒签等情况的时候填写的原因
         :rtype: str
         """
         return self._ApproveMessage
@@ -22271,7 +22305,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveTime(self):
-        """签署人签署时间戳，单位秒
+        r"""签署人签署时间戳，单位秒
         :rtype: int
         """
         return self._ApproveTime
@@ -22282,7 +22316,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveType(self):
-        """参与者类型 
+        r"""参与者类型 
 <ul><li> **ORGANIZATION** :企业签署人</li>
 <li> **PERSON** :个人签署人</li></ul>
         :rtype: str
@@ -22295,7 +22329,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproverRoleName(self):
-        """自定义签署人的角色名, 如: 收款人、开具人、见证人等
+        r"""自定义签署人的角色名, 如: 收款人、开具人、见证人等
         :rtype: str
         """
         return self._ApproverRoleName
@@ -22306,7 +22340,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def SignId(self):
-        """签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
+        r"""签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
         :rtype: str
         """
         return self._SignId
@@ -22317,7 +22351,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def RecipientId(self):
-        """模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+        r"""模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :rtype: str
         """
         return self._RecipientId
@@ -22353,7 +22387,7 @@ class FlowApproverDetail(AbstractModel):
 
 
 class FlowApproverInfo(AbstractModel):
-    """创建签署流程签署人入参。
+    r"""创建签署流程签署人入参。
 
     **各种场景传参说明**:
 
@@ -22578,7 +22612,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def Name(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -22590,7 +22624,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def IdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
@@ -22607,7 +22641,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """签署方经办人的证件号码，应符合以下规则
+        r"""签署方经办人的证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -22621,7 +22655,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        """签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)， 不支持海外手机号。
+        r"""签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)， 不支持海外手机号。
 请确认手机号所有方为此合同签署方。
         :rtype: str
         """
@@ -22633,7 +22667,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """组织机构名称。
+        r"""组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
         :rtype: str
@@ -22646,7 +22680,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def NotChannelOrganization(self):
-        """指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
+        r"""指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
 <ul>
 <li>false: 默认值，第三方平台子客企业下员工</li>
 <li>true: SaaS平台企业下的员工</li>
@@ -22662,7 +22696,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成
+        r"""第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成
 
 当签署方为同一第三方平台下的员工时，该字段若不指定，则发起【待领取】的流程
 
@@ -22678,7 +22712,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """同应用下第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样，签署方为非发起方企业场景下必传，最大长度64个字符
+        r"""同应用下第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样，签署方为非发起方企业场景下必传，最大长度64个字符
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -22689,7 +22723,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        """在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
+        r"""在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 <ul><li> **PERSON** :个人/自然人</li>
 <li> **PERSON_AUTO_SIGN** :个人/自然人自动签署，适用于个人自动签场景</li>
 <li> **ORGANIZATION** :企业/企业员工（企业签署方或模板发起时的企业静默签）</li>
@@ -22711,7 +22745,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
+        r"""签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
         :rtype: str
         """
         return self._RecipientId
@@ -22722,7 +22756,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        """签署人的签署截止时间，格式为Unix标准时间戳（秒）
+        r"""签署人的签署截止时间，格式为Unix标准时间戳（秒）
 
 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
         :rtype: int
@@ -22737,7 +22771,7 @@ class FlowApproverInfo(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """签署完回调url，最大长度1000个字符
+        r"""签署完回调url，最大长度1000个字符
         :rtype: str
         """
         return self._CallbackUrl
@@ -22750,7 +22784,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def SignComponents(self):
-        """使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID:注意：(如果模板里面指定了印章，默认使用模板里面配置的印章，不能进行变更) <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+        r"""使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID:注意：(如果模板里面指定了印章，默认使用模板里面配置的印章，不能进行变更) <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
 
 ![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
         :rtype: list of Component
@@ -22763,7 +22797,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ComponentLimitType(self):
-        """当签署方控件类型为 <b>SIGN_SIGNATURE</b> 时，可以指定签署方签名方式。如果不指定，签署人可以使用所有的签名类型，可指定的签名类型包括：
+        r"""当签署方控件类型为 <b>SIGN_SIGNATURE</b> 时，可以指定签署方签名方式。如果不指定，签署人可以使用所有的签名类型，可指定的签名类型包括：
 
 <ul><li> <b>HANDWRITE</b> :需要实时手写的手写签名。</li>
 <li> <b>HANDWRITTEN_ESIGN</b> :长效手写签名， 是使用保存到个人中心的印章列表的手写签名。(并且包含HANDWRITE)</li>
@@ -22784,7 +22818,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def PreReadTime(self):
-        """签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
+        r"""签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
 
 若未指定阅读时间，则会按照合同页数大小计算阅读时间，计算规则如下：
 <ul>
@@ -22802,7 +22836,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """签署完前端跳转的url，此字段的用法场景请联系客户经理确认
+        r"""签署完前端跳转的url，此字段的用法场景请联系客户经理确认
         :rtype: str
         """
         return self._JumpUrl
@@ -22813,7 +22847,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverOption(self):
-        """可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人、是否为动态补充签署人等。
+        r"""可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人、是否为动态补充签署人等。
 详细操作可以参考开发者中心的ApproverOption结构体。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.ApproverOption`
         """
@@ -22825,7 +22859,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverNeedSignReview(self):
-        """此签署人（员工或者个人）签署前，是否需要发起方企业进行审批，取值如下：
+        r"""此签署人（员工或者个人）签署前，是否需要发起方企业进行审批，取值如下：
 <ul><li>**false**：（默认）不需要审批，直接签署。</li>
 <li>**true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待发起方企业内部审批完成。</li></ul>
 企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
@@ -22845,7 +22879,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverVerifyTypes(self):
-        """指定个人签署方查看合同的校验方式,可以传值如下:
+        r"""指定个人签署方查看合同的校验方式,可以传值如下:
 <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
 <li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 </li></ul>
@@ -22862,7 +22896,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverSignTypes(self):
-        """签署人签署合同时的认证方式
+        r"""签署人签署合同时的认证方式
 <ul><li> **1** :人脸认证</li>
 <li> **2** :签署密码</li>
 <li> **3** :运营商三要素（如果是港澳台客户，建议不要选择这个）</li>
@@ -22887,7 +22921,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def SignId(self):
-        """签署ID
+        r"""签署ID
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :rtype: str
@@ -22900,7 +22934,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def NotifyType(self):
-        """通知签署方经办人的方式, 有以下途径:
+        r"""通知签署方经办人的方式, 有以下途径:
 <ul><li> **SMS** :(默认)短信</li>
 <li> **NONE** : 不通知</li></ul>
 
@@ -22915,7 +22949,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def AddSignComponentsLimits(self):
-        """[通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID,或者印章类型）或签名方式。
+        r"""[通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID,或者印章类型）或签名方式。
 
 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
         :rtype: list of ComponentLimit
@@ -22928,7 +22962,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def ApproverRoleName(self):
-        """可以自定义签署人角色名：收款人、开具人、见证人等，长度不能超过20，只能由中文、字母、数字和下划线组成。
+        r"""可以自定义签署人角色名：收款人、开具人、见证人等，长度不能超过20，只能由中文、字母、数字和下划线组成。
 
 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
         :rtype: str
@@ -22941,7 +22975,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def SignTypeSelector(self):
-        """生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        r"""生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：
@@ -22956,7 +22990,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def Components(self):
-        """签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+        r"""签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 <ul><li>单行文本控件</li>
 <li>多行文本控件</li>
 <li>勾选框控件</li>
@@ -22979,7 +23013,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def Intention(self):
-        """<b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
+        r"""<b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
 
 您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。
 
@@ -22997,7 +23031,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def SignEndpoints(self):
-        """进入签署流程的限制，目前支持以下选项：
+        r"""进入签署流程的限制，目前支持以下选项：
 <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
         :rtype: list of str
         """
@@ -23067,7 +23101,7 @@ class FlowApproverInfo(AbstractModel):
 
 
 class FlowApproverItem(AbstractModel):
-    """签署方信息，如角色ID、角色名称等
+    r"""签署方信息，如角色ID、角色名称等
 
     """
 
@@ -23083,7 +23117,7 @@ class FlowApproverItem(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同编号
+        r"""合同编号
         :rtype: str
         """
         return self._FlowId
@@ -23094,7 +23128,7 @@ class FlowApproverItem(AbstractModel):
 
     @property
     def Approvers(self):
-        """签署方信息，如角色ID、角色名称等
+        r"""签署方信息，如角色ID、角色名称等
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -23123,7 +23157,7 @@ class FlowApproverItem(AbstractModel):
 
 
 class FlowApproverUrlInfo(AbstractModel):
-    """签署人签署链接信息。
+    r"""签署人签署链接信息。
 
     """
 
@@ -23159,7 +23193,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     @property
     def SignUrl(self):
-        """签署短链接。
+        r"""签署短链接。
 
 注意:
 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
@@ -23175,7 +23209,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        """签署人类型。
+        r"""签署人类型。
 - **PERSON**: 个人
         :rtype: str
         """
@@ -23187,7 +23221,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     @property
     def Name(self):
-        """签署人姓名。
+        r"""签署人姓名。
         :rtype: str
         """
         return self._Name
@@ -23198,7 +23232,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        """签署人手机号。
+        r"""签署人手机号。
         :rtype: str
         """
         return self._Mobile
@@ -23209,7 +23243,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     @property
     def LongUrl(self):
-        """签署长链接。
+        r"""签署长链接。
 
 注意:
 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
@@ -23241,7 +23275,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
 
 class FlowBatchApproverInfo(AbstractModel):
-    """批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
+    r"""批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
 
     """
 
@@ -23257,7 +23291,7 @@ class FlowBatchApproverInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID。
+        r"""合同流程ID。
         :rtype: str
         """
         return self._FlowId
@@ -23268,7 +23302,7 @@ class FlowBatchApproverInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+        r"""签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
         :rtype: str
         """
         return self._RecipientId
@@ -23292,7 +23326,7 @@ class FlowBatchApproverInfo(AbstractModel):
 
 
 class FlowBatchUrlInfo(AbstractModel):
-    """批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
+    r"""批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
 
     """
 
@@ -23305,7 +23339,7 @@ class FlowBatchUrlInfo(AbstractModel):
 
     @property
     def FlowBatchApproverInfos(self):
-        """批量签署合同和签署方的信息，用于补充动态签署人。
+        r"""批量签署合同和签署方的信息，用于补充动态签署人。
         :rtype: list of FlowBatchApproverInfo
         """
         return self._FlowBatchApproverInfos
@@ -23333,7 +23367,7 @@ class FlowBatchUrlInfo(AbstractModel):
 
 
 class FlowDetailInfo(AbstractModel):
-    """此结构体(FlowDetailInfo)描述的是合同(流程)的详细信息
+    r"""此结构体(FlowDetailInfo)描述的是合同(流程)的详细信息
 
     """
 
@@ -23397,7 +23431,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
         :rtype: str
         """
         return self._FlowId
@@ -23408,7 +23442,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        """合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowName
@@ -23419,7 +23453,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        """合同流程的类别分类（如销售合同/入职合同等）。
+        r"""合同流程的类别分类（如销售合同/入职合同等）。
 该字段将被废弃，不建议使用。	请使用 UserFlowType
         :rtype: str
         """
@@ -23431,7 +23465,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
-        """合同流程当前的签署状态, 会存在下列的状态值
+        r"""合同流程当前的签署状态, 会存在下列的状态值
 <ul><li> **INIT** :合同创建</li>
 <li> **PART** :合同签署中(至少有一个签署方已经签署)</li>
 <li> **REJECT** :合同拒签</li>
@@ -23450,7 +23484,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowMessage(self):
-        """当合同流程状态为已拒签（即 FlowStatus=REJECT）或已撤销（即 FlowStatus=CANCEL ）时，此字段 FlowMessage 为拒签或撤销原因。
+        r"""当合同流程状态为已拒签（即 FlowStatus=REJECT）或已撤销（即 FlowStatus=CANCEL ）时，此字段 FlowMessage 为拒签或撤销原因。
         :rtype: str
         """
         return self._FlowMessage
@@ -23461,7 +23495,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def CreateOn(self):
-        """合同流程的创建时间戳，格式为Unix标准时间戳（秒）。
+        r"""合同流程的创建时间戳，格式为Unix标准时间戳（秒）。
         :rtype: int
         """
         return self._CreateOn
@@ -23472,7 +23506,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def DeadLine(self):
-        """签署流程的签署截止时间, 值为unix时间戳, 精确到秒。
+        r"""签署流程的签署截止时间, 值为unix时间戳, 精确到秒。
         :rtype: int
         """
         return self._DeadLine
@@ -23483,7 +23517,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def CustomData(self):
-        """调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 1000长度。
+        r"""调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 1000长度。
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
         :rtype: str
         """
@@ -23495,7 +23529,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowApproverInfos(self):
-        """合同流程的签署方数组
+        r"""合同流程的签署方数组
         :rtype: list of FlowApproverDetail
         """
         return self._FlowApproverInfos
@@ -23506,7 +23540,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def CcInfos(self):
-        """合同流程的关注方信息数组
+        r"""合同流程的关注方信息数组
         :rtype: list of FlowApproverDetail
         """
         return self._CcInfos
@@ -23517,7 +23551,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def NeedCreateReview(self):
-        """是否需要发起前审批
+        r"""是否需要发起前审批
 <ul><li>当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程</li>
 <li>当NeedCreateReview为false，不需要发起前审核的合同</li></ul>
         :rtype: bool
@@ -23530,7 +23564,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def UserFlowType(self):
-        """用户合同的自定义分类。
+        r"""用户合同的自定义分类。
 
 自定义合同类型的位置，在下图所示地方:
 ![image](https://qcloudimg.tencent-cloud.cn/raw/37138cc5f3c38e6f788f4b82f695cebf.png)
@@ -23544,7 +23578,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """发起模板时,使用的模板Id
+        r"""发起模板时,使用的模板Id
         :rtype: str
         """
         return self._TemplateId
@@ -23591,7 +23625,7 @@ class FlowDetailInfo(AbstractModel):
 
 
 class FlowFileInfo(AbstractModel):
-    """合同组中每个子合同的发起信息
+    r"""合同组中每个子合同的发起信息
 
     """
 
@@ -23640,7 +23674,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileIds(self):
-        """签署文件资源Id列表，目前仅支持单个文件
+        r"""签署文件资源Id列表，目前仅支持单个文件
         :rtype: list of str
         """
         return self._FileIds
@@ -23651,7 +23685,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        """签署流程名称，长度不超过200个字符
+        r"""签署流程名称，长度不超过200个字符
         :rtype: str
         """
         return self._FlowName
@@ -23662,7 +23696,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        """签署流程签约方列表，最多不超过5个参与方
+        r"""签署流程签约方列表，最多不超过5个参与方
         :rtype: list of FlowApproverInfo
         """
         return self._FlowApprovers
@@ -23673,7 +23707,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        """签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        r"""签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
         :rtype: int
         """
         return self._Deadline
@@ -23684,7 +23718,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
-        """签署流程的描述，长度不超过1000个字符
+        r"""签署流程的描述，长度不超过1000个字符
         :rtype: str
         """
         return self._FlowDescription
@@ -23695,7 +23729,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        """签署流程的类型，长度不超过255个字符
+        r"""签署流程的类型，长度不超过255个字符
         :rtype: str
         """
         return self._FlowType
@@ -23708,7 +23742,7 @@ class FlowFileInfo(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """已废弃，请使用【应用号配置】中的回调地址统一接收消息
+        r"""已废弃，请使用【应用号配置】中的回调地址统一接收消息
         :rtype: str
         """
         return self._CallbackUrl
@@ -23721,7 +23755,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CustomerData(self):
-        """第三方应用的业务信息，最大长度1000个字符。
+        r"""第三方应用的业务信息，最大长度1000个字符。
         :rtype: str
         """
         return self._CustomerData
@@ -23732,7 +23766,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Unordered(self):
-        """合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        r"""合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
         :rtype: bool
         """
         return self._Unordered
@@ -23743,7 +23777,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Components(self):
-        """签署文件中的发起方的填写控件，需要在发起的时候进行填充
+        r"""签署文件中的发起方的填写控件，需要在发起的时候进行填充
         :rtype: list of Component
         """
         return self._Components
@@ -23754,7 +23788,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CustomShowMap(self):
-        """合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        r"""合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :rtype: str
         """
         return self._CustomShowMap
@@ -23765,7 +23799,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        """本企业(发起方企业)是否需要签署审批
+        r"""本企业(发起方企业)是否需要签署审批
         :rtype: bool
         """
         return self._NeedSignReview
@@ -23776,7 +23810,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -23821,7 +23855,7 @@ class FlowFileInfo(AbstractModel):
 
 
 class FlowForwardInfo(AbstractModel):
-    """合同转交相关信息
+    r"""合同转交相关信息
 
     """
 
@@ -23837,7 +23871,7 @@ class FlowForwardInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+        r"""合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
         :rtype: str
         """
         return self._FlowId
@@ -23848,7 +23882,7 @@ class FlowForwardInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方经办人在合同中的参与方ID，为32位字符串。
+        r"""签署方经办人在合同中的参与方ID，为32位字符串。
         :rtype: str
         """
         return self._RecipientId
@@ -23872,7 +23906,7 @@ class FlowForwardInfo(AbstractModel):
 
 
 class FlowForwardResult(AbstractModel):
-    """转交合同结果
+    r"""转交合同结果
 
     """
 
@@ -23888,7 +23922,7 @@ class FlowForwardResult(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+        r"""合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
         :rtype: str
         """
         return self._FlowId
@@ -23899,7 +23933,7 @@ class FlowForwardResult(AbstractModel):
 
     @property
     def ErrorDetail(self):
-        """如果失败，返回的错误细节。
+        r"""如果失败，返回的错误细节。
         :rtype: str
         """
         return self._ErrorDetail
@@ -23923,7 +23957,7 @@ class FlowForwardResult(AbstractModel):
 
 
 class FlowGroupApproverInfo(AbstractModel):
-    """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+    r"""合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
 
     """
 
@@ -23939,7 +23973,7 @@ class FlowGroupApproverInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID。
+        r"""合同流程ID。
         :rtype: str
         """
         return self._FlowId
@@ -23950,7 +23984,7 @@ class FlowGroupApproverInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+        r"""签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
         :rtype: str
         """
         return self._RecipientId
@@ -23974,7 +24008,7 @@ class FlowGroupApproverInfo(AbstractModel):
 
 
 class FlowGroupApprovers(AbstractModel):
-    """合同组签署方信息
+    r"""合同组签署方信息
 
     """
 
@@ -23990,7 +24024,7 @@ class FlowGroupApprovers(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID
+        r"""合同流程ID
         :rtype: str
         """
         return self._FlowId
@@ -24001,7 +24035,7 @@ class FlowGroupApprovers(AbstractModel):
 
     @property
     def Approvers(self):
-        """签署方信息，包含合同ID和角色ID用于定位RecipientId。
+        r"""签署方信息，包含合同ID和角色ID用于定位RecipientId。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -24030,7 +24064,7 @@ class FlowGroupApprovers(AbstractModel):
 
 
 class FlowGroupOptions(AbstractModel):
-    """合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+    r"""合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
 
     """
 
@@ -24050,7 +24084,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def SelfOrganizationApproverSignEach(self):
-        """发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
+        r"""发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
 <ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
 <li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :rtype: bool
@@ -24063,7 +24097,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def OtherApproverSignEach(self):
-        """非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
+        r"""非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
 <ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
 <li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :rtype: bool
@@ -24089,7 +24123,7 @@ class FlowGroupOptions(AbstractModel):
 
 
 class FlowGroupUrlInfo(AbstractModel):
-    """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+    r"""合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
 
     """
 
@@ -24102,7 +24136,7 @@ class FlowGroupUrlInfo(AbstractModel):
 
     @property
     def FlowGroupApproverInfos(self):
-        """合同组子合同和签署方的信息，用于补充动态签署人。	
+        r"""合同组子合同和签署方的信息，用于补充动态签署人。	
         :rtype: list of FlowGroupApproverInfo
         """
         return self._FlowGroupApproverInfos
@@ -24130,7 +24164,7 @@ class FlowGroupUrlInfo(AbstractModel):
 
 
 class FlowInfo(AbstractModel):
-    """此结构体 (FlowInfo) 用于描述签署流程信息。
+    r"""此结构体 (FlowInfo) 用于描述签署流程信息。
 
     """
 
@@ -24234,7 +24268,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        """合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowName
@@ -24245,7 +24279,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        """合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+        r"""合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 示例值：1604912664
         :rtype: int
@@ -24258,7 +24292,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
+        r"""用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
 如果使用模板发起接口，此参数为必填。
 
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在**企业模板**中得到合同模板ID。
@@ -24275,7 +24309,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        """合同流程的参与方列表，最多可支持50个参与方。对应不同签署人的传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)
+        r"""合同流程的参与方列表，最多可支持50个参与方。对应不同签署人的传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)
 
 注:  
 <font color="red" > <b> 在发起流程时，需要保证 FlowApprovers中的顺序与模板定义顺序一致，否则会发起失败。
@@ -24293,7 +24327,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FormFields(self):
-        """发起方角色的填写控件的填充内容。
+        r"""发起方角色的填写控件的填充内容。
 
 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。(<font color="red">白名单功能需要联系对接经理开通，否则模板编辑时无法将填写控件分配给发起方</font>)。
 ![image](https://qcloudimg.tencent-cloud.cn/raw/b1d3978140ee2b44e2c9fdc96e467a5d.png)
@@ -24309,7 +24343,7 @@ class FlowInfo(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        """该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
+        r"""该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
         :rtype: str
         """
         return self._CallbackUrl
@@ -24322,7 +24356,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        """合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+        r"""合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._FlowType
@@ -24333,7 +24367,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
-        """合同流程描述信息(可自定义此描述)，最大长度1000个字符。
+        r"""合同流程描述信息(可自定义此描述)，最大长度1000个字符。
         :rtype: str
         """
         return self._FlowDescription
@@ -24344,7 +24378,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def CustomerData(self):
-        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为1000长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的回调通知模块。
         :rtype: str
@@ -24357,7 +24391,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def CustomShowMap(self):
-        """您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+        r"""您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
 <ul><li>{合同名称}   </li>
 <li>{发起方企业} </li>
 <li>{发起方姓名} </li>
@@ -24383,7 +24417,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def CcInfos(self):
-        """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+        r"""合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
 <b>注</b>
 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
@@ -24398,7 +24432,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        """发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+        r"""发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 <ul><li> **false**：（默认）不需要审批，直接签署。</li>
 <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
@@ -24415,7 +24449,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def CcNotifyType(self):
-        """若在创建签署流程时指定了关注人CcInfos，此参数可设定向关注人发送短信通知的类型：
+        r"""若在创建签署流程时指定了关注人CcInfos，此参数可设定向关注人发送短信通知的类型：
 <ul><li> **0** :合同发起时通知通知对方来查看合同（默认）</li>
 <li> **1** : 签署完成后通知对方来查看合同</li></ul>
         :rtype: int
@@ -24428,7 +24462,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def AutoSignScene(self):
-        """个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+        r"""个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :rtype: str
@@ -24441,7 +24475,7 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -24493,7 +24527,7 @@ class FlowInfo(AbstractModel):
 
 
 class FlowResourceUrlInfo(AbstractModel):
-    """流程对应资源链接信息
+    r"""流程对应资源链接信息
 
     """
 
@@ -24509,7 +24543,7 @@ class FlowResourceUrlInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程的ID
+        r"""合同流程的ID
         :rtype: str
         """
         return self._FlowId
@@ -24520,7 +24554,7 @@ class FlowResourceUrlInfo(AbstractModel):
 
     @property
     def ResourceUrlInfos(self):
-        """对应的合同流程的PDF下载链接
+        r"""对应的合同流程的PDF下载链接
         :rtype: list of ResourceUrlInfo
         """
         return self._ResourceUrlInfos
@@ -24549,7 +24583,7 @@ class FlowResourceUrlInfo(AbstractModel):
 
 
 class FormField(AbstractModel):
-    """电子文档的控件填充信息。按照控件类型进行相应的填充。
+    r"""电子文档的控件填充信息。按照控件类型进行相应的填充。
 
     当控件的 ComponentType='TEXT'时，FormField.ComponentValue填入文本内容
 
@@ -25086,7 +25120,7 @@ CreateFlowsByTemplates 接口不使用此字段。
 
     @property
     def ComponentValue(self):
-        """控件填充值，ComponentType和传入值格式对应关系如下：
+        r"""控件填充值，ComponentType和传入值格式对应关系如下：
 <ul><li> <b>TEXT</b> : 文本内容</li>
 <li> <b>MULTI_LINE_TEXT</b> : 文本内容， 可以用  \n 来控制换行位置</li>
 <li> <b>CHECK_BOX</b> : true/false</li>
@@ -25111,7 +25145,7 @@ CreateFlowsByTemplates 接口不使用此字段。
 
     @property
     def ComponentId(self):
-        """表单域或控件的ID，跟ComponentName二选一，不能全为空；
+        r"""表单域或控件的ID，跟ComponentName二选一，不能全为空；
 CreateFlowsByTemplates 接口不使用此字段。
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件ID的获取方式</a>
@@ -25125,7 +25159,7 @@ CreateFlowsByTemplates 接口不使用此字段。
 
     @property
     def ComponentName(self):
-        """控件的名字，跟ComponentId二选一，不能全为空
+        r"""控件的名字，跟ComponentId二选一，不能全为空
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件名字的获取方式</a>
         :rtype: str
@@ -25138,7 +25172,7 @@ CreateFlowsByTemplates 接口不使用此字段。
 
     @property
     def LockComponentValue(self):
-        """是否锁定模板控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
+        r"""是否锁定模板控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
         :rtype: bool
         """
         return self._LockComponentValue
@@ -25164,7 +25198,7 @@ CreateFlowsByTemplates 接口不使用此字段。
 
 
 class GetDownloadFlowUrlRequest(AbstractModel):
-    """GetDownloadFlowUrl请求参数结构体
+    r"""GetDownloadFlowUrl请求参数结构体
 
     """
 
@@ -25197,7 +25231,7 @@ class GetDownloadFlowUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -25216,7 +25250,7 @@ class GetDownloadFlowUrlRequest(AbstractModel):
 
     @property
     def DownLoadFlows(self):
-        """程合同ID列表,  可将这些流程ID组织成合同组的形式, 下载时候每个文件夹会是一个zip压缩包,  每个文件夹最多20个合同, 所有文件夹最多50个合同
+        r"""程合同ID列表,  可将这些流程ID组织成合同组的形式, 下载时候每个文件夹会是一个zip压缩包,  每个文件夹最多20个合同, 所有文件夹最多50个合同
 如下列组织形式,  控制台下载页面点击下载按钮后, 会生成**2023采购合同.zip**和**2023入职合同.zip** 两个下载任务(注:`部分浏览器需要授权或不支持创建多下载任务`)
 
 **2023采购合同.zip**压缩包会有`yDwivUUckpor6wtoUuogwQHCAB0ES0pQ`和`yDwi8UUckpo5fz9cUqI6nGwcuTvt9YSh`两个合同的文件
@@ -25235,7 +25269,7 @@ class GetDownloadFlowUrlRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息，不用传
+        r"""操作者的信息，不用传
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -25271,7 +25305,7 @@ class GetDownloadFlowUrlRequest(AbstractModel):
 
 
 class GetDownloadFlowUrlResponse(AbstractModel):
-    """GetDownloadFlowUrl返回参数结构体
+    r"""GetDownloadFlowUrl返回参数结构体
 
     """
 
@@ -25288,7 +25322,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
     @property
     def DownLoadUrl(self):
-        """跳转控制台合同下载页面链接 , 5分钟之内有效，且只能访问一次
+        r"""跳转控制台合同下载页面链接 , 5分钟之内有效，且只能访问一次
 
         :rtype: str
         """
@@ -25300,7 +25334,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25316,7 +25350,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
 
 class HasAuthOrganization(AbstractModel):
-    """授权企业列表（目前仅用于“企业自动签 -> 合作企业授权”）
+    r"""授权企业列表（目前仅用于“企业自动签 -> 合作企业授权”）
 
     """
 
@@ -25341,7 +25375,7 @@ class HasAuthOrganization(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """授权企业openid，
+        r"""授权企业openid，
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -25352,7 +25386,7 @@ class HasAuthOrganization(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """授权企业名称	
+        r"""授权企业名称	
         :rtype: str
         """
         return self._OrganizationName
@@ -25363,7 +25397,7 @@ class HasAuthOrganization(AbstractModel):
 
     @property
     def AuthorizedOrganizationOpenId(self):
-        """被授权企业openid，
+        r"""被授权企业openid，
         :rtype: str
         """
         return self._AuthorizedOrganizationOpenId
@@ -25374,7 +25408,7 @@ class HasAuthOrganization(AbstractModel):
 
     @property
     def AuthorizedOrganizationName(self):
-        """被授权企业名称	
+        r"""被授权企业名称	
         :rtype: str
         """
         return self._AuthorizedOrganizationName
@@ -25385,7 +25419,7 @@ class HasAuthOrganization(AbstractModel):
 
     @property
     def AuthorizeTime(self):
-        """授权时间，格式为时间戳，单位s	
+        r"""授权时间，格式为时间戳，单位s	
         :rtype: int
         """
         return self._AuthorizeTime
@@ -25412,7 +25446,7 @@ class HasAuthOrganization(AbstractModel):
 
 
 class HasAuthUser(AbstractModel):
-    """被授权的用户信息
+    r"""被授权的用户信息
 
     """
 
@@ -25427,7 +25461,7 @@ class HasAuthUser(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
+        r"""第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
 
 
         :rtype: str
@@ -25452,7 +25486,7 @@ class HasAuthUser(AbstractModel):
 
 
 class Intention(AbstractModel):
-    """视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+    r"""视频核身意图配置，可指定问答模式或者点头模式的语音文本。
 
     注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
 
@@ -25484,7 +25518,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionType(self):
-        """视频认证类型，支持以下类型
+        r"""视频认证类型，支持以下类型
 <ul><li>1 : 问答模式</li>
 <li>2 : 点头模式</li></ul>
 
@@ -25499,7 +25533,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionQuestions(self):
-        """意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多支持10轮。
+        r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。支持传入1～10轮问答，最多支持10轮。
 
 注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
         :rtype: list of IntentionQuestion
@@ -25512,7 +25546,7 @@ class Intention(AbstractModel):
 
     @property
     def IntentionActions(self):
-        """意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
+        r"""意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。支持传入1～10轮点头确认文本，最多支持10轮。
 
 注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
         :rtype: list of IntentionAction
@@ -25525,7 +25559,7 @@ class Intention(AbstractModel):
 
     @property
     def RuleIdConfig(self):
-        """视频核身相关配置
+        r"""视频核身相关配置
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
         """
         return self._RuleIdConfig
@@ -25563,7 +25597,7 @@ class Intention(AbstractModel):
 
 
 class IntentionAction(AbstractModel):
-    """意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+    r"""意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
 
     """
 
@@ -25576,7 +25610,7 @@ class IntentionAction(AbstractModel):
 
     @property
     def Text(self):
-        """点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+        r"""点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
         :rtype: str
         """
         return self._Text
@@ -25599,7 +25633,7 @@ class IntentionAction(AbstractModel):
 
 
 class IntentionActionResult(AbstractModel):
-    """意愿核身点头确认模式结果
+    r"""意愿核身点头确认模式结果
 
     """
 
@@ -25612,7 +25646,7 @@ class IntentionActionResult(AbstractModel):
 
     @property
     def Details(self):
-        """意愿核身结果详细数据，与每段点头确认过程一一对应
+        r"""意愿核身结果详细数据，与每段点头确认过程一一对应
         :rtype: list of IntentionActionResultDetail
         """
         return self._Details
@@ -25640,7 +25674,7 @@ class IntentionActionResult(AbstractModel):
 
 
 class IntentionActionResultDetail(AbstractModel):
-    """意愿核身点头确认模式结果详细数据
+    r"""意愿核身点头确认模式结果详细数据
 
     """
 
@@ -25653,7 +25687,7 @@ class IntentionActionResultDetail(AbstractModel):
 
     @property
     def Video(self):
-        """视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
+        r"""视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
         :rtype: str
         """
         return self._Video
@@ -25676,7 +25710,7 @@ class IntentionActionResultDetail(AbstractModel):
 
 
 class IntentionQuestion(AbstractModel):
-    """意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+    r"""意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
 
     """
 
@@ -25692,7 +25726,7 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Question(self):
-        """当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        r"""当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
         :rtype: str
         """
         return self._Question
@@ -25703,7 +25737,7 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Answers(self):
-        """ 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
+        r""" 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
         :rtype: list of str
         """
         return self._Answers
@@ -25727,7 +25761,7 @@ class IntentionQuestion(AbstractModel):
 
 
 class IntentionQuestionResult(AbstractModel):
-    """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+    r"""意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
 
     """
 
@@ -25748,7 +25782,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def Video(self):
-        """视频base64（其中包含全程问题和回答音频，mp4格式）
+        r"""视频base64（其中包含全程问题和回答音频，mp4格式）
 
 注：`需进行base64解码获取视频文件`
         :rtype: str
@@ -25761,7 +25795,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def ResultCode(self):
-        """ 和答案匹配结果列表
+        r""" 和答案匹配结果列表
         :rtype: list of str
         """
         return self._ResultCode
@@ -25772,7 +25806,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def AsrResult(self):
-        """回答问题语音识别结果列表
+        r"""回答问题语音识别结果列表
         :rtype: list of str
         """
         return self._AsrResult
@@ -25797,7 +25831,7 @@ class IntentionQuestionResult(AbstractModel):
 
 
 class ModifyExtendedServiceRequest(AbstractModel):
-    """ModifyExtendedService请求参数结构体
+    r"""ModifyExtendedService请求参数结构体
 
     """
 
@@ -25844,7 +25878,7 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -25863,7 +25897,7 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """  扩展服务类型
+        r"""  扩展服务类型
 <ul>
 <li>AUTO_SIGN             企业自动签（自动签署）</li>
 <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
@@ -25882,7 +25916,7 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
     @property
     def Operate(self):
-        """操作类型
+        r"""操作类型
 <ul>
 <li>OPEN : 开通</li>
 <li>CLOSE : 关闭</li>
@@ -25897,7 +25931,7 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        """链接跳转类型，支持以下类型
+        r"""链接跳转类型，支持以下类型
 <ul>
 <li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
 <li>APP : 第三方APP或小程序跳转电子签小程序</li>
@@ -25930,7 +25964,7 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
 
 class ModifyExtendedServiceResponse(AbstractModel):
-    """ModifyExtendedService返回参数结构体
+    r"""ModifyExtendedService返回参数结构体
 
     """
 
@@ -25952,7 +25986,7 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
     @property
     def OperateUrl(self):
-        """操作跳转链接
+        r"""操作跳转链接
 <ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
 <li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
 <li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
@@ -25969,7 +26003,7 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25985,7 +26019,7 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
 
 class ModifyFlowDeadlineRequest(AbstractModel):
-    """ModifyFlowDeadline请求参数结构体
+    r"""ModifyFlowDeadline请求参数结构体
 
     """
 
@@ -26013,7 +26047,7 @@ class ModifyFlowDeadlineRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -26024,7 +26058,7 @@ class ModifyFlowDeadlineRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。
+        r"""合同流程ID，为32位字符串。
 <ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
 <li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
         :rtype: str
@@ -26037,7 +26071,7 @@ class ModifyFlowDeadlineRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        """签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+        r"""签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
 
         :rtype: int
         """
@@ -26049,7 +26083,7 @@ class ModifyFlowDeadlineRequest(AbstractModel):
 
     @property
     def RecipientId(self):
-        """签署方角色编号，为32位字符串
+        r"""签署方角色编号，为32位字符串
 <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
 <li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
 <li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
@@ -26080,7 +26114,7 @@ class ModifyFlowDeadlineRequest(AbstractModel):
 
 
 class ModifyFlowDeadlineResponse(AbstractModel):
-    """ModifyFlowDeadline返回参数结构体
+    r"""ModifyFlowDeadline返回参数结构体
 
     """
 
@@ -26093,7 +26127,7 @@ class ModifyFlowDeadlineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26108,7 +26142,7 @@ class ModifyFlowDeadlineResponse(AbstractModel):
 
 
 class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
-    """ModifyPartnerAutoSignAuthUrl请求参数结构体
+    r"""ModifyPartnerAutoSignAuthUrl请求参数结构体
 
     """
 
@@ -26158,7 +26192,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -26177,7 +26211,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationId(self):
-        """被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+        r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
 
 注：`被授权企业必须和当前企业在同一应用号下`
         :rtype: str
@@ -26190,7 +26224,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationName(self):
-        """被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+        r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
 
 注: 
 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
@@ -26205,7 +26239,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def PlatformAppAuthorization(self):
-        """是否给平台应用授权
+        r"""是否给平台应用授权
 
 <ul>
 <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
@@ -26223,7 +26257,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthToMe(self):
-        """在处理授权关系时，授权的方向
+        r"""在处理授权关系时，授权的方向
 <ul>
 <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
 <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
@@ -26256,7 +26290,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
 
 
 class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
-    """ModifyPartnerAutoSignAuthUrl返回参数结构体
+    r"""ModifyPartnerAutoSignAuthUrl返回参数结构体
 
     """
 
@@ -26279,7 +26313,7 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        r"""授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
         :rtype: str
         """
         return self._Url
@@ -26290,7 +26324,7 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        r"""从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 
         :rtype: str
         """
@@ -26302,7 +26336,7 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :rtype: int
         """
         return self._ExpireTime
@@ -26313,7 +26347,7 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26331,7 +26365,7 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
 
 
 class NeedReviewApproverInfo(AbstractModel):
-    """需要进行签署审核的签署人信息
+    r"""需要进行签署审核的签署人信息
 
     """
 
@@ -26374,7 +26408,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        """签署方经办人的类型，支持以下类型
+        r"""签署方经办人的类型，支持以下类型
 <ul><li> ORGANIZATION 企业（含企业自动签）</li>
 <li>PERSON 个人（含个人自动签）</li></ul>
         :rtype: str
@@ -26387,7 +26421,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def ApproverName(self):
-        """签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+        r"""签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :rtype: str
         """
         return self._ApproverName
@@ -26398,7 +26432,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def ApproverMobile(self):
-        """签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
+        r"""签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
         :rtype: str
         """
         return self._ApproverMobile
@@ -26409,7 +26443,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
@@ -26426,7 +26460,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardNumber(self):
-        """签署方经办人的证件号码，应符合以下规则
+        r"""签署方经办人的证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -26440,7 +26474,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """组织机构名称。
+        r"""组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
@@ -26472,7 +26506,7 @@ class NeedReviewApproverInfo(AbstractModel):
 
 
 class OccupiedSeal(AbstractModel):
-    """持有的电子印章信息
+    r"""持有的电子印章信息
 
     """
 
@@ -26530,7 +26564,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealId(self):
-        """电子印章编号
+        r"""电子印章编号
         :rtype: str
         """
         return self._SealId
@@ -26541,7 +26575,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealName(self):
-        """电子印章名称
+        r"""电子印章名称
         :rtype: str
         """
         return self._SealName
@@ -26552,7 +26586,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def CreateOn(self):
-        """电子印章授权时间戳，单位秒
+        r"""电子印章授权时间戳，单位秒
         :rtype: int
         """
         return self._CreateOn
@@ -26563,7 +26597,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def Creator(self):
-        """电子印章授权人，电子签的UserId
+        r"""电子印章授权人，电子签的UserId
         :rtype: str
         """
         return self._Creator
@@ -26574,7 +26608,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealPolicyId(self):
-        """电子印章策略Id
+        r"""电子印章策略Id
         :rtype: str
         """
         return self._SealPolicyId
@@ -26585,7 +26619,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealStatus(self):
-        """印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+        r"""印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
         :rtype: str
         """
         return self._SealStatus
@@ -26596,7 +26630,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def FailReason(self):
-        """审核失败原因
+        r"""审核失败原因
         :rtype: str
         """
         return self._FailReason
@@ -26607,7 +26641,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def Url(self):
-        """印章图片url，5分钟内有效
+        r"""印章图片url，5分钟内有效
         :rtype: str
         """
         return self._Url
@@ -26618,7 +26652,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealType(self):
-        """电子印章类型 , 可选类型如下: 
+        r"""电子印章类型 , 可选类型如下: 
 <ul><li>**OFFICIAL**: (默认)公章</li>
 <li>**CONTRACT**: 合同专用章;</li>
 <li>**FINANCE**: 财务专用章;</li>
@@ -26635,7 +26669,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def IsAllTime(self):
-        """用印申请是否为永久授权
+        r"""用印申请是否为永久授权
         :rtype: bool
         """
         return self._IsAllTime
@@ -26646,7 +26680,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def AuthorizedUsers(self):
-        """授权人列表
+        r"""授权人列表
         :rtype: list of AuthorizedUser
         """
         return self._AuthorizedUsers
@@ -26657,7 +26691,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def RealWidth(self):
-        """印章的真实宽度，单位毫米	
+        r"""印章的真实宽度，单位毫米	
         :rtype: int
         """
         return self._RealWidth
@@ -26668,7 +26702,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def RealHeight(self):
-        """印章的真实高度，单位毫米	
+        r"""印章的真实高度，单位毫米	
         :rtype: int
         """
         return self._RealHeight
@@ -26679,7 +26713,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealDescription(self):
-        """印章描述
+        r"""印章描述
         :rtype: str
         """
         return self._SealDescription
@@ -26720,7 +26754,7 @@ class OccupiedSeal(AbstractModel):
 
 
 class OperateChannelTemplateRequest(AbstractModel):
-    """OperateChannelTemplate请求参数结构体
+    r"""OperateChannelTemplate请求参数结构体
 
     """
 
@@ -26778,7 +26812,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -26794,7 +26828,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        """操作类型，可取值如下:
+        r"""操作类型，可取值如下:
 <ul>
 <li>SELECT:  查询</li>
 <li>DELETE:  删除</li>
@@ -26810,7 +26844,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """合同模板ID，为32位字符串。
+        r"""合同模板ID，为32位字符串。
 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
         :rtype: str
         """
@@ -26822,7 +26856,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        """第三方平台子客企业的唯一标识，支持批量(用,分割)，
+        r"""第三方平台子客企业的唯一标识，支持批量(用,分割)，
         :rtype: str
         """
         return self._ProxyOrganizationOpenIds
@@ -26833,7 +26867,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def AuthTag(self):
-        """模板可见范围, 可以设置的值如下:
+        r"""模板可见范围, 可以设置的值如下:
 
 **all**: 所有本第三方应用合作企业可见
 **part**: 指定的本第三方应用合作企业
@@ -26851,7 +26885,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def Available(self):
-        """当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
+        r"""当OperateType=UPDATE时，可以通过设置此字段对模板启停用状态进行操作。
 <ul>
 <li>0: 不修改模板可用状态</li>
 <li>1:  启用模板</li>
@@ -26873,7 +26907,7 @@ class OperateChannelTemplateRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -26908,7 +26942,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
 
 class OperateChannelTemplateResponse(AbstractModel):
-    """OperateChannelTemplate返回参数结构体
+    r"""OperateChannelTemplate返回参数结构体
 
     """
 
@@ -26946,7 +26980,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """第三方应用平台的应用ID
+        r"""第三方应用平台的应用ID
         :rtype: str
         """
         return self._AppId
@@ -26957,7 +26991,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """合同模板ID
+        r"""合同模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -26968,7 +27002,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def OperateResult(self):
-        """描述模板可见性更改的结果。
+        r"""描述模板可见性更改的结果。
 <ul>
 <li>all-success: 全部成功</li>
 <li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
@@ -26984,7 +27018,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def AuthTag(self):
-        """模板可见范围:
+        r"""模板可见范围:
 **all**: 所有本第三方应用合作企业可见
 **part**: 指定的本第三方应用合作企业
         :rtype: str
@@ -26997,7 +27031,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        """第三方平台子客企业标识列表
+        r"""第三方平台子客企业标识列表
         :rtype: list of str
         """
         return self._ProxyOrganizationOpenIds
@@ -27008,7 +27042,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def FailMessageList(self):
-        """操作失败信息数组
+        r"""操作失败信息数组
         :rtype: list of AuthFailMessage
         """
         return self._FailMessageList
@@ -27019,7 +27053,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27045,7 +27079,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
 
 class OperateTemplateRequest(AbstractModel):
-    """OperateTemplate请求参数结构体
+    r"""OperateTemplate请求参数结构体
 
     """
 
@@ -27081,7 +27115,7 @@ class OperateTemplateRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -27099,7 +27133,7 @@ class OperateTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID，为32位字符串。
+        r"""模板ID，为32位字符串。
         :rtype: str
         """
         return self._TemplateId
@@ -27110,7 +27144,7 @@ class OperateTemplateRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        """操作类型，可取值如下:
+        r"""操作类型，可取值如下:
 <ul>
 <li>DELETE:  删除</li>
 <li>ENABLE: 启用</li>
@@ -27127,7 +27161,7 @@ class OperateTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称，长度不超过64字符。<br>
+        r"""模板名称，长度不超过64字符。<br>
 模板复制时指定有效，若为空，则复制后模板名称为 **原模板名称_副本**。
         :rtype: str
         """
@@ -27156,7 +27190,7 @@ class OperateTemplateRequest(AbstractModel):
 
 
 class OperateTemplateResponse(AbstractModel):
-    """OperateTemplate返回参数结构体
+    r"""OperateTemplate返回参数结构体
 
     """
 
@@ -27175,7 +27209,7 @@ class OperateTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID，为32位字符串，模板复制新建时返回
+        r"""模板ID，为32位字符串，模板复制新建时返回
         :rtype: str
         """
         return self._TemplateId
@@ -27186,7 +27220,7 @@ class OperateTemplateResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称，模板复制新建时返回
+        r"""模板名称，模板复制新建时返回
         :rtype: str
         """
         return self._TemplateName
@@ -27197,7 +27231,7 @@ class OperateTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27214,7 +27248,7 @@ class OperateTemplateResponse(AbstractModel):
 
 
 class OrganizationAuthUrl(AbstractModel):
-    """企业批量注册链接信息
+    r"""企业批量注册链接信息
 
     """
 
@@ -27241,7 +27275,7 @@ class OrganizationAuthUrl(AbstractModel):
 
     @property
     def AuthUrl(self):
-        """跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+        r"""跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
 <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr> </tbody> </table>
 注： 
 `1.链接仅单次有效，每次登录需要需要重新创建新的链接`
@@ -27257,7 +27291,7 @@ class OrganizationAuthUrl(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """企业批量注册的错误信息，例如：企业三要素不通过
+        r"""企业批量注册的错误信息，例如：企业三要素不通过
         :rtype: str
         """
         return self._ErrorMessage
@@ -27268,7 +27302,7 @@ class OrganizationAuthUrl(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """企业批量注册 传递过来的企业名称，方便客户定位企业	
+        r"""企业批量注册 传递过来的企业名称，方便客户定位企业	
         :rtype: str
         """
         return self._OrganizationName
@@ -27279,7 +27313,7 @@ class OrganizationAuthUrl(AbstractModel):
 
     @property
     def SubTaskId(self):
-        """企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+        r"""企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
         :rtype: str
         """
         return self._SubTaskId
@@ -27305,7 +27339,7 @@ class OrganizationAuthUrl(AbstractModel):
 
 
 class OrganizationAuthorizationOptions(AbstractModel):
-    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致， 对公打款账号是否一致等信息。
+    r"""企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致， 对公打款账号是否一致等信息。
     代表生成链接的时候指定的这些信息不能被用户修改。
 
     p.s. 注意这些选项一旦传递，相关的信息也不会被上传的营业执照里面包含的信息所覆盖。
@@ -27330,7 +27364,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def UniformSocialCreditCodeSame(self):
-        """对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+        r"""对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :rtype: bool
         """
         return self._UniformSocialCreditCodeSame
@@ -27341,7 +27375,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def OrganizationNameSame(self):
-        """对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+        r"""对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
         :rtype: bool
         """
         return self._OrganizationNameSame
@@ -27352,7 +27386,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def LegalNameSame(self):
-        """对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+        r"""对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
         :rtype: bool
         """
         return self._LegalNameSame
@@ -27363,7 +27397,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def BankAccountNumberSame(self):
-        """对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        r"""对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
         :rtype: bool
         """
         return self._BankAccountNumberSame
@@ -27389,7 +27423,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
 
 class OrganizationCommonInfo(AbstractModel):
-    """企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
+    r"""企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
 
     """
 
@@ -27446,7 +27480,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """组织机构名称。
+        r"""组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
         :rtype: str
@@ -27459,7 +27493,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
-        """组织机构企业统一社会信用代码。
+        r"""组织机构企业统一社会信用代码。
 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
         :rtype: str
         """
@@ -27471,7 +27505,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalName(self):
-        """组织机构法人的姓名。
+        r"""组织机构法人的姓名。
 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
         :rtype: str
         """
@@ -27483,7 +27517,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalIdCardType(self):
-        """组织机构法人的证件类型
+        r"""组织机构法人的证件类型
         :rtype: str
         """
         return self._LegalIdCardType
@@ -27494,7 +27528,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalIdCardNumber(self):
-        """组织机构法人的证件号码
+        r"""组织机构法人的证件号码
         :rtype: str
         """
         return self._LegalIdCardNumber
@@ -27505,7 +27539,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        """组织机构超管姓名。
+        r"""组织机构超管姓名。
 
         :rtype: str
         """
@@ -27517,7 +27551,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminMobile(self):
-        """组织机构超管手机号。
+        r"""组织机构超管手机号。
 
         :rtype: str
         """
@@ -27529,7 +27563,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminIdCardType(self):
-        """组织机构超管证件类型
+        r"""组织机构超管证件类型
 
         :rtype: str
         """
@@ -27541,7 +27575,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminIdCardNumber(self):
-        """组织机构超管证件号码
+        r"""组织机构超管证件号码
 
         :rtype: str
         """
@@ -27553,7 +27587,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminName(self):
-        """原超管姓名
+        r"""原超管姓名
         :rtype: str
         """
         return self._OldAdminName
@@ -27564,7 +27598,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminMobile(self):
-        """原超管手机号
+        r"""原超管手机号
         :rtype: str
         """
         return self._OldAdminMobile
@@ -27575,7 +27609,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminIdCardType(self):
-        """原超管证件类型
+        r"""原超管证件类型
         :rtype: str
         """
         return self._OldAdminIdCardType
@@ -27586,7 +27620,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminIdCardNumber(self):
-        """原超管证件号码
+        r"""原超管证件号码
         :rtype: str
         """
         return self._OldAdminIdCardNumber
@@ -27621,7 +27655,7 @@ class OrganizationCommonInfo(AbstractModel):
 
 
 class OrganizationInfo(AbstractModel):
-    """机构信息
+    r"""机构信息
 
     """
 
@@ -27646,7 +27680,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """用户在渠道的机构编号
+        r"""用户在渠道的机构编号
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -27657,7 +27691,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def OrganizationId(self):
-        """机构在平台的编号
+        r"""机构在平台的编号
         :rtype: str
         """
         return self._OrganizationId
@@ -27668,7 +27702,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def Channel(self):
-        """用户渠道
+        r"""用户渠道
         :rtype: str
         """
         return self._Channel
@@ -27681,7 +27715,7 @@ class OrganizationInfo(AbstractModel):
     def ClientIp(self):
         warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
 
-        """用户真实的IP
+        r"""用户真实的IP
         :rtype: str
         """
         return self._ClientIp
@@ -27696,7 +27730,7 @@ class OrganizationInfo(AbstractModel):
     def ProxyIp(self):
         warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
 
-        """机构的代理IP
+        r"""机构的代理IP
         :rtype: str
         """
         return self._ProxyIp
@@ -27725,7 +27759,7 @@ class OrganizationInfo(AbstractModel):
 
 
 class PdfVerifyResult(AbstractModel):
-    """合同验签每个签署区的信息
+    r"""合同验签每个签署区的信息
 
     """
 
@@ -27792,7 +27826,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def VerifyResult(self):
-        """验签结果详情，每个签名域对应的验签结果。状态值如下
+        r"""验签结果详情，每个签名域对应的验签结果。状态值如下
 <ul><li> **1** :验签成功，在电子签签署</li>
 <li> **2** :验签成功，在其他平台签署</li>
 <li> **3** :验签失败</li>
@@ -27808,7 +27842,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignPlatform(self):
-        """签署平台
+        r"""签署平台
 如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
 如果文件不在腾讯电子签平台签署，则为**其他平台**。
         :rtype: str
@@ -27821,7 +27855,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignerName(self):
-        """申请证书的主体的名字
+        r"""申请证书的主体的名字
 
 如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
 **企业**:  ESS@企业名称@平台生成的数字编码
@@ -27838,7 +27872,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignTime(self):
-        """签署时间的Unix时间戳，单位毫秒
+        r"""签署时间的Unix时间戳，单位毫秒
         :rtype: int
         """
         return self._SignTime
@@ -27849,7 +27883,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignAlgorithm(self):
-        """证书签名算法,  如SHA1withRSA等算法
+        r"""证书签名算法,  如SHA1withRSA等算法
         :rtype: str
         """
         return self._SignAlgorithm
@@ -27860,7 +27894,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertSn(self):
-        """在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
+        r"""在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
         :rtype: str
         """
         return self._CertSn
@@ -27871,7 +27905,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertNotBefore(self):
-        """证书起始时间的Unix时间戳，单位毫秒
+        r"""证书起始时间的Unix时间戳，单位毫秒
         :rtype: int
         """
         return self._CertNotBefore
@@ -27882,7 +27916,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertNotAfter(self):
-        """证书过期时间的时间戳，单位毫秒
+        r"""证书过期时间的时间戳，单位毫秒
         :rtype: int
         """
         return self._CertNotAfter
@@ -27893,7 +27927,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignType(self):
-        """签名类型, 保留字段, 现在全部为0
+        r"""签名类型, 保留字段, 现在全部为0
 
 
         :rtype: int
@@ -27906,7 +27940,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPosX(self):
-        """签名域横坐标，单位px
+        r"""签名域横坐标，单位px
         :rtype: float
         """
         return self._ComponentPosX
@@ -27917,7 +27951,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPosY(self):
-        """签名域纵坐标，单位px
+        r"""签名域纵坐标，单位px
         :rtype: float
         """
         return self._ComponentPosY
@@ -27928,7 +27962,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentWidth(self):
-        """签名域宽度，单位px
+        r"""签名域宽度，单位px
         :rtype: float
         """
         return self._ComponentWidth
@@ -27939,7 +27973,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentHeight(self):
-        """签名域高度，单位px
+        r"""签名域高度，单位px
         :rtype: float
         """
         return self._ComponentHeight
@@ -27950,7 +27984,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPage(self):
-        """签名域所在页码，1～N
+        r"""签名域所在页码，1～N
         :rtype: int
         """
         return self._ComponentPage
@@ -27986,7 +28020,7 @@ class PdfVerifyResult(AbstractModel):
 
 
 class Permission(AbstractModel):
-    """权限树节点权限
+    r"""权限树节点权限
 
     """
 
@@ -28029,7 +28063,7 @@ class Permission(AbstractModel):
 
     @property
     def Name(self):
-        """权限名称
+        r"""权限名称
         :rtype: str
         """
         return self._Name
@@ -28040,7 +28074,7 @@ class Permission(AbstractModel):
 
     @property
     def Key(self):
-        """权限key
+        r"""权限key
         :rtype: str
         """
         return self._Key
@@ -28051,7 +28085,7 @@ class Permission(AbstractModel):
 
     @property
     def Type(self):
-        """权限类型 1前端，2后端
+        r"""权限类型 1前端，2后端
         :rtype: int
         """
         return self._Type
@@ -28062,7 +28096,7 @@ class Permission(AbstractModel):
 
     @property
     def Hide(self):
-        """是否隐藏
+        r"""是否隐藏
         :rtype: int
         """
         return self._Hide
@@ -28073,7 +28107,7 @@ class Permission(AbstractModel):
 
     @property
     def DataLabel(self):
-        """数据权限标签 1:表示根节点，2:表示叶子结点
+        r"""数据权限标签 1:表示根节点，2:表示叶子结点
         :rtype: int
         """
         return self._DataLabel
@@ -28084,7 +28118,7 @@ class Permission(AbstractModel):
 
     @property
     def DataType(self):
-        """数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
+        r"""数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
         :rtype: int
         """
         return self._DataType
@@ -28095,7 +28129,7 @@ class Permission(AbstractModel):
 
     @property
     def DataRange(self):
-        """数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
+        r"""数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
         :rtype: int
         """
         return self._DataRange
@@ -28106,7 +28140,7 @@ class Permission(AbstractModel):
 
     @property
     def DataTo(self):
-        """关联权限, 表示这个功能权限要受哪个数据权限管控
+        r"""关联权限, 表示这个功能权限要受哪个数据权限管控
         :rtype: str
         """
         return self._DataTo
@@ -28117,7 +28151,7 @@ class Permission(AbstractModel):
 
     @property
     def ParentKey(self):
-        """父级权限key
+        r"""父级权限key
         :rtype: str
         """
         return self._ParentKey
@@ -28128,7 +28162,7 @@ class Permission(AbstractModel):
 
     @property
     def IsChecked(self):
-        """是否选中
+        r"""是否选中
         :rtype: bool
         """
         return self._IsChecked
@@ -28139,7 +28173,7 @@ class Permission(AbstractModel):
 
     @property
     def Children(self):
-        """子权限集合
+        r"""子权限集合
         :rtype: list of Permission
         """
         return self._Children
@@ -28177,7 +28211,7 @@ class Permission(AbstractModel):
 
 
 class PermissionGroup(AbstractModel):
-    """权限树中的权限组
+    r"""权限树中的权限组
 
     """
 
@@ -28199,7 +28233,7 @@ class PermissionGroup(AbstractModel):
 
     @property
     def GroupName(self):
-        """权限组名称
+        r"""权限组名称
         :rtype: str
         """
         return self._GroupName
@@ -28210,7 +28244,7 @@ class PermissionGroup(AbstractModel):
 
     @property
     def GroupKey(self):
-        """权限组key
+        r"""权限组key
         :rtype: str
         """
         return self._GroupKey
@@ -28221,7 +28255,7 @@ class PermissionGroup(AbstractModel):
 
     @property
     def Hide(self):
-        """是否隐藏分组，0否1是
+        r"""是否隐藏分组，0否1是
         :rtype: int
         """
         return self._Hide
@@ -28232,7 +28266,7 @@ class PermissionGroup(AbstractModel):
 
     @property
     def Permissions(self):
-        """权限集合
+        r"""权限集合
         :rtype: list of Permission
         """
         return self._Permissions
@@ -28263,7 +28297,7 @@ class PermissionGroup(AbstractModel):
 
 
 class PrepareFlowsRequest(AbstractModel):
-    """PrepareFlows请求参数结构体
+    r"""PrepareFlows请求参数结构体
 
     """
 
@@ -28285,7 +28319,7 @@ class PrepareFlowsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        r"""应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -28296,7 +28330,7 @@ class PrepareFlowsRequest(AbstractModel):
 
     @property
     def FlowInfos(self):
-        """多个合同（签署流程）信息，最大支持20个签署流程。
+        r"""多个合同（签署流程）信息，最大支持20个签署流程。
         :rtype: list of FlowInfo
         """
         return self._FlowInfos
@@ -28307,7 +28341,7 @@ class PrepareFlowsRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
-        """操作完成后的跳转地址，最大长度200
+        r"""操作完成后的跳转地址，最大长度200
         :rtype: str
         """
         return self._JumpUrl
@@ -28320,7 +28354,7 @@ class PrepareFlowsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -28357,7 +28391,7 @@ class PrepareFlowsRequest(AbstractModel):
 
 
 class PrepareFlowsResponse(AbstractModel):
-    """PrepareFlows返回参数结构体
+    r"""PrepareFlows返回参数结构体
 
     """
 
@@ -28373,7 +28407,7 @@ class PrepareFlowsResponse(AbstractModel):
 
     @property
     def ConfirmUrl(self):
-        """待发起文件确认页
+        r"""待发起文件确认页
         :rtype: str
         """
         return self._ConfirmUrl
@@ -28384,7 +28418,7 @@ class PrepareFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -28400,7 +28434,7 @@ class PrepareFlowsResponse(AbstractModel):
 
 
 class PresetApproverInfo(AbstractModel):
-    """预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+    r"""预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
 
     """
 
@@ -28428,7 +28462,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def Name(self):
-        """预设参与方姓名。
+        r"""预设参与方姓名。
         :rtype: str
         """
         return self._Name
@@ -28439,7 +28473,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        """预设参与方手机号。
+        r"""预设参与方手机号。
         :rtype: str
         """
         return self._Mobile
@@ -28450,7 +28484,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """预设参与方证件号，需要和IdCardType同时传入。
+        r"""预设参与方证件号，需要和IdCardType同时传入。
 
 证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
@@ -28464,7 +28498,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def IdCardType(self):
-        """预设参与方的证件类型，需要与IdCardNumber同时传入。
+        r"""预设参与方的证件类型，需要与IdCardNumber同时传入。
 
 证件类型，支持以下类型
 <ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
@@ -28493,7 +28527,7 @@ class PresetApproverInfo(AbstractModel):
 
 
 class ProxyOrganizationOperator(AbstractModel):
-    """同步的员工的信息
+    r"""同步的员工的信息
 
     """
 
@@ -28527,7 +28561,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def Id(self):
-        """员工的唯一标识(即OpenId),  定义Agent中的OpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
+        r"""员工的唯一标识(即OpenId),  定义Agent中的OpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
         :rtype: str
         """
         return self._Id
@@ -28538,7 +28572,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def Name(self):
-        """员工的姓名，最大长度50个字符
+        r"""员工的姓名，最大长度50个字符
 员工的姓名将用于身份认证和电子签名，请确保填写的姓名为真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -28550,7 +28584,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def IdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO :  中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN :  中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -28565,7 +28599,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """经办人证件号
+        r"""经办人证件号
         :rtype: str
         """
         return self._IdCardNumber
@@ -28576,7 +28610,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def Mobile(self):
-        """员工的手机号，支持国内手机号11位数字(无需加+86前缀或其他字符)，不支持海外手机号。
+        r"""员工的手机号，支持国内手机号11位数字(无需加+86前缀或其他字符)，不支持海外手机号。
         :rtype: str
         """
         return self._Mobile
@@ -28587,7 +28621,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     @property
     def DefaultRole(self):
-        """预先分配员工的角色, 可以分配的角色如下:
+        r"""预先分配员工的角色, 可以分配的角色如下:
 <table> <thead> <tr> <th>可以分配的角色</th> <th>角色名称</th> <th>角色描述</th> </tr> </thead> <tbody> <tr> <td>admin</td> <td>业务管理员（IT 系统负责人，e.g. CTO）</td> <td>有企业合同模块、印章模块、模板模块等全量功能及数据权限。</td> </tr> <tr> <td>channel-normal-operator</td> <td>经办人（企业法务负责人）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看企业所有合同数据。</td> </tr> <tr> <td>channel-sales-man</td> <td>业务员（一般为销售员、采购员）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看自己相关所有合同数据。</td> </tr> </tbody> </table>
         :rtype: str
         """
@@ -28616,7 +28650,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
 
 class Recipient(AbstractModel):
-    """流程中签署方和填写方(如果有填写控件存证时)的信息
+    r"""流程中签署方和填写方(如果有填写控件存证时)的信息
 
     """
 
@@ -28682,7 +28716,7 @@ false-否
 
     @property
     def RecipientId(self):
-        """合同参与方的角色ID
+        r"""合同参与方的角色ID
         :rtype: str
         """
         return self._RecipientId
@@ -28693,7 +28727,7 @@ false-否
 
     @property
     def RecipientType(self):
-        """参与者类型, 可以选择的类型如下:
+        r"""参与者类型, 可以选择的类型如下:
 <ul><li> **ENTERPRISE** :此角色为企业参与方</li>
 <li> **INDIVIDUAL** :此角色为个人参与方</li>
 <li> **PROMOTER** :此角色是发起方</li></ul>
@@ -28707,7 +28741,7 @@ false-否
 
     @property
     def Description(self):
-        """合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。
+        r"""合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._Description
@@ -28718,7 +28752,7 @@ false-否
 
     @property
     def RoleName(self):
-        """合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。
+        r"""合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。
         :rtype: str
         """
         return self._RoleName
@@ -28729,7 +28763,7 @@ false-否
 
     @property
     def RequireValidation(self):
-        """是否需要校验，
+        r"""是否需要校验，
 true-是，
 false-否
         :rtype: bool
@@ -28742,7 +28776,7 @@ false-否
 
     @property
     def RequireSign(self):
-        """是否必须填写，
+        r"""是否必须填写，
 true-是，
 false-否
         :rtype: bool
@@ -28755,7 +28789,7 @@ false-否
 
     @property
     def SignType(self):
-        """内部字段，签署类型
+        r"""内部字段，签署类型
         :rtype: int
         """
         return self._SignType
@@ -28766,7 +28800,7 @@ false-否
 
     @property
     def RoutingOrder(self):
-        """签署顺序：数字越小优先级越高
+        r"""签署顺序：数字越小优先级越高
         :rtype: int
         """
         return self._RoutingOrder
@@ -28777,7 +28811,7 @@ false-否
 
     @property
     def IsPromoter(self):
-        """是否是发起方，
+        r"""是否是发起方，
 true-是 
 false-否
         :rtype: bool
@@ -28790,7 +28824,7 @@ false-否
 
     @property
     def ApproverVerifyTypes(self):
-        """签署人查看合同校验方式, 支持的类型如下:
+        r"""签署人查看合同校验方式, 支持的类型如下:
 <ul><li> 1 :实名认证查看</li>
 <li> 2 :手机号校验查看</li></ul>
         :rtype: list of int
@@ -28803,7 +28837,7 @@ false-否
 
     @property
     def ApproverSignTypes(self):
-        """签署人进行合同签署时的认证方式，支持的类型如下:
+        r"""签署人进行合同签署时的认证方式，支持的类型如下:
 <ul><li> 1 :人脸认证</li>
 <li> 2 :签署密码</li>
 <li> 3 :运营商三要素认证</li>
@@ -28820,7 +28854,7 @@ false-否
 
     @property
     def NoTransfer(self):
-        """签署方是否可以转他人处理
+        r"""签署方是否可以转他人处理
 
 <ul><li> **false** : ( 默认)可以转他人处理</li>
 <li> **true** :不可以转他人处理</li></ul>
@@ -28857,7 +28891,7 @@ false-否
 
 
 class RecipientComponentInfo(AbstractModel):
-    """参与方填写控件信息
+    r"""参与方填写控件信息
 
     """
 
@@ -28885,7 +28919,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        """参与方的角色ID
+        r"""参与方的角色ID
         :rtype: str
         """
         return self._RecipientId
@@ -28896,7 +28930,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def RecipientFillStatus(self):
-        """参与方填写状态
+        r"""参与方填写状态
 
 <ul><li> **0** : 还没有填写</li>
 <li> **1** : 已经填写</li></ul>
@@ -28910,7 +28944,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def IsPromoter(self):
-        """此角色是否是发起方角色
+        r"""此角色是否是发起方角色
 
 <ul><li> **true** : 是发起方角色</li>
 <li> **false** : 不是发起方角色</li></ul>
@@ -28924,7 +28958,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def Components(self):
-        """此角色的填写控件列表
+        r"""此角色的填写控件列表
         :rtype: list of FilledComponent
         """
         return self._Components
@@ -28955,7 +28989,7 @@ class RecipientComponentInfo(AbstractModel):
 
 
 class RegistrationOrganizationInfo(AbstractModel):
-    """企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
+    r"""企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
 
     """
 
@@ -29035,7 +29069,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def OrganizationName(self):
-        """组织机构名称。
+        r"""组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
         :rtype: str
@@ -29048,7 +29082,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def OrganizationOpenId(self):
-        """机构在贵司业务系统中的唯一标识，用于与腾讯电子签企业账号进行映射，确保在同一应用内不会出现重复。
+        r"""机构在贵司业务系统中的唯一标识，用于与腾讯电子签企业账号进行映射，确保在同一应用内不会出现重复。
 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
         :rtype: str
         """
@@ -29060,7 +29094,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def OpenId(self):
-        """员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一应用内不会出现重复。
+        r"""员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一应用内不会出现重复。
 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
         :rtype: str
         """
@@ -29072,7 +29106,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def UniformSocialCreditCode(self):
-        """组织机构企业统一社会信用代码。
+        r"""组织机构企业统一社会信用代码。
 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
         :rtype: str
         """
@@ -29084,7 +29118,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def LegalName(self):
-        """组织机构法人的姓名。
+        r"""组织机构法人的姓名。
 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
         :rtype: str
         """
@@ -29096,7 +29130,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def Address(self):
-        """组织机构企业注册地址。
+        r"""组织机构企业注册地址。
 请确认该企业注册地址与企业营业执照中注册的地址一致。
         :rtype: str
         """
@@ -29108,7 +29142,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AdminName(self):
-        """组织机构超管姓名。
+        r"""组织机构超管姓名。
 在注册流程中，必须是超管本人进行操作。
 如果法人作为超管管理组织机构,超管姓名就是法人姓名
         :rtype: str
@@ -29121,7 +29155,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AdminMobile(self):
-        """组织机构超管手机号。
+        r"""组织机构超管手机号。
 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
         :rtype: str
         """
@@ -29133,7 +29167,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AuthorizationTypes(self):
-        """可选的此企业允许的授权方式, 可以设置的方式有:
+        r"""可选的此企业允许的授权方式, 可以设置的方式有:
 1：上传授权书
 2：法人授权超管
 5：授权书+对公打款
@@ -29153,7 +29187,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AdminIdCardType(self):
-        """经办人的证件类型，支持以下类型
+        r"""经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -29168,7 +29202,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AdminIdCardNumber(self):
-        """经办人的证件号
+        r"""经办人的证件号
         :rtype: str
         """
         return self._AdminIdCardNumber
@@ -29179,7 +29213,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def BusinessLicense(self):
-        """营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        r"""营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
         :rtype: str
         """
         return self._BusinessLicense
@@ -29190,7 +29224,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def PowerOfAttorneys(self):
-        """授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+        r"""授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
 p.s. 如果上传授权书 ，需遵循以下条件
 1. 超管的信息（超管姓名，超管身份证，超管手机号）必须为必填参数。
 2. 超管的个人身份必须在电子签已经实名。
@@ -29206,7 +29240,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
     @property
     def AutoJumpUrl(self):
-        """认证完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 [跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
+        r"""认证完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 [跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
         :rtype: str
         """
         return self._AutoJumpUrl
@@ -29242,7 +29276,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
 
 class ReleasedApprover(AbstractModel):
-    """解除协议的签署人，如不指定，默认使用待解除流程(原流程)中的签署人。</br>
+    r"""解除协议的签署人，如不指定，默认使用待解除流程(原流程)中的签署人。</br>
     `注意`:
      - 不支持更换C端(个人身份类型)签署人，如果原流程中含有C端签署人，默认使用原流程中的该签署人。
      - 目前不支持替换C端(个人身份类型)签署人，但是可以指定C端签署人的签署方自定义控件别名，具体见参数ApproverSignRole描述。
@@ -29322,7 +29356,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ApproverNumber(self):
-        """签署人在原合同签署人列表中的顺序序号(从0开始，按顺序依次递增)。
+        r"""签署人在原合同签署人列表中的顺序序号(从0开始，按顺序依次递增)。
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人列表。
         :rtype: int
         """
@@ -29334,7 +29368,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ApproverType(self):
-        """指定签署人类型，目前支持
+        r"""指定签署人类型，目前支持
 <ul><li> **ORGANIZATION**：企业(默认值)</li>
 <li> **ENTERPRISESERVER**：企业静默签</li></ul>
         :rtype: str
@@ -29347,7 +29381,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ReleasedApproverRecipientId(self):
-        """签署人在原合同中的RecipientId，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人信息，可参考返回结构体<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverdetail" target="_blank">FlowApproverDetail</a>中的RecipientId。
+        r"""签署人在原合同中的RecipientId，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人信息，可参考返回结构体<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverdetail" target="_blank">FlowApproverDetail</a>中的RecipientId。
 **注意**：当指定了此参数后，ApproverNumber即失效，会以本参数作为原合同参与人的选取。与ApproverNumber二选一。
         :rtype: str
         """
@@ -29359,7 +29393,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def Name(self):
-        """签署人姓名，最大长度50个字。
+        r"""签署人姓名，最大长度50个字。
         :rtype: str
         """
         return self._Name
@@ -29370,7 +29404,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def IdCardType(self):
-        """签署方经办人的证件类型，支持以下类型
+        r"""签署方经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证(默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -29384,7 +29418,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码，应符合以下规则
+        r"""证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。
 </li>
@@ -29399,7 +29433,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def Mobile(self):
-        """签署人手机号。
+        r"""签署人手机号。
         :rtype: str
         """
         return self._Mobile
@@ -29410,7 +29444,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """组织机构名称。
+        r"""组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
@@ -29424,7 +29458,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        """第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>。
+        r"""第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>。
 <font color="red">当为子客企业指定经办人时，此OrganizationOpenId必传。</font>
         :rtype: str
         """
@@ -29436,7 +29470,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成。
+        r"""第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成。
 <font color="red">当签署方为同一第三方平台下的员工时，此OpenId必传。</font>
         :rtype: str
         """
@@ -29448,7 +29482,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ApproverSignComponentType(self):
-        """签署控件类型，支持自定义企业签署方的签署控件类型
+        r"""签署控件类型，支持自定义企业签署方的签署控件类型
 <ul><li> **SIGN_SEAL**：默认为印章控件类型(默认值)</li>
 <li> **SIGN_SIGNATURE**：手写签名控件类型</li></ul>
         :rtype: str
@@ -29461,7 +29495,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ApproverSignRole(self):
-        """参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
+        r"""参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
 
 ![image](https://qcloudimg.tencent-cloud.cn/raw/973a820ab66d1ce57082c160c2b2d44a.png)
@@ -29475,7 +29509,7 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def ApproverSignSealId(self):
-        """印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
+        r"""印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
         :rtype: str
         """
         return self._ApproverSignSealId
@@ -29510,7 +29544,7 @@ class ReleasedApprover(AbstractModel):
 
 
 class RelieveInfo(AbstractModel):
-    """解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。下面各种字段在解除协议中的位置参考：
+    r"""解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。下面各种字段在解除协议中的位置参考：
 
     ![image](https://qcloudimg.tencent-cloud.cn/raw/5087164cfe5a15fa3ced3180842d5da9.png)
 
@@ -29538,7 +29572,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def Reason(self):
-        """解除理由，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        r"""解除理由，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :rtype: str
         """
         return self._Reason
@@ -29549,7 +29583,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def RemainInForceItem(self):
-        """解除后仍然有效的条款，保留条款，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        r"""解除后仍然有效的条款，保留条款，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 
         :rtype: str
         """
@@ -29561,7 +29595,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def OriginalExpenseSettlement(self):
-        """原合同事项处理-费用结算，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        r"""原合同事项处理-费用结算，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :rtype: str
         """
         return self._OriginalExpenseSettlement
@@ -29572,7 +29606,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def OriginalOtherSettlement(self):
-        """原合同事项处理-其他事项，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        r"""原合同事项处理-其他事项，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :rtype: str
         """
         return self._OriginalOtherSettlement
@@ -29583,7 +29617,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def OtherDeals(self):
-        """其他约定（如约定的与解除协议存在冲突的，以【其他约定】为准），最大支持200个字，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        r"""其他约定（如约定的与解除协议存在冲突的，以【其他约定】为准），最大支持200个字，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :rtype: str
         """
         return self._OtherDeals
@@ -29610,7 +29644,7 @@ class RelieveInfo(AbstractModel):
 
 
 class RemindFlowRecords(AbstractModel):
-    """催办接口返回的详细信息。
+    r"""催办接口返回的详细信息。
 
     """
 
@@ -29629,7 +29663,7 @@ class RemindFlowRecords(AbstractModel):
 
     @property
     def CanRemind(self):
-        """合同流程是否可以催办： true - 可以，false - 不可以。 若无法催办，将返回RemindMessage以解释原因。	
+        r"""合同流程是否可以催办： true - 可以，false - 不可以。 若无法催办，将返回RemindMessage以解释原因。	
         :rtype: bool
         """
         return self._CanRemind
@@ -29640,7 +29674,7 @@ class RemindFlowRecords(AbstractModel):
 
     @property
     def FlowId(self):
-        """合同流程ID，为32位字符串。	
+        r"""合同流程ID，为32位字符串。	
         :rtype: str
         """
         return self._FlowId
@@ -29651,7 +29685,7 @@ class RemindFlowRecords(AbstractModel):
 
     @property
     def RemindMessage(self):
-        """在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。	
+        r"""在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。	
         :rtype: str
         """
         return self._RemindMessage
@@ -29676,7 +29710,7 @@ class RemindFlowRecords(AbstractModel):
 
 
 class ResourceUrlInfo(AbstractModel):
-    """资源链接信息
+    r"""资源链接信息
 
     """
 
@@ -29695,7 +29729,7 @@ class ResourceUrlInfo(AbstractModel):
 
     @property
     def Url(self):
-        """资源链接地址，过期时间5分钟
+        r"""资源链接地址，过期时间5分钟
         :rtype: str
         """
         return self._Url
@@ -29706,7 +29740,7 @@ class ResourceUrlInfo(AbstractModel):
 
     @property
     def Name(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._Name
@@ -29717,7 +29751,7 @@ class ResourceUrlInfo(AbstractModel):
 
     @property
     def Type(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._Type
@@ -29742,7 +29776,7 @@ class ResourceUrlInfo(AbstractModel):
 
 
 class RuleIdConfig(AbstractModel):
-    """视频核身相关配置
+    r"""视频核身相关配置
 
     """
 
@@ -29759,7 +29793,7 @@ class RuleIdConfig(AbstractModel):
 
     @property
     def Speed(self):
-        """意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+        r"""意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
 0-智能语速（根据播报文案的长度自动调整语音播报速度）
 1-固定1倍速
 2-固定1.2倍速
@@ -29786,7 +29820,7 @@ class RuleIdConfig(AbstractModel):
 
 
 class SignComponentConfig(AbstractModel):
-    """签署控件的配置信息，用在嵌入式发起的页面配置，包括
+    r"""签署控件的配置信息，用在嵌入式发起的页面配置，包括
 
     - 签署控件 是否默认展示日期.
 
@@ -29805,7 +29839,7 @@ class SignComponentConfig(AbstractModel):
 
     @property
     def HideDate(self):
-        """签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
+        r"""签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
 
 - false 展示签署日期（默认）
 - true 不展示签署日期 
@@ -29832,7 +29866,7 @@ class SignComponentConfig(AbstractModel):
 
 
 class SignQrCode(AbstractModel):
-    """签署二维码的基本信息，用于创建二维码，用户可扫描该二维码进行签署操作。
+    r"""签署二维码的基本信息，用于创建二维码，用户可扫描该二维码进行签署操作。
 
     """
 
@@ -29857,7 +29891,7 @@ class SignQrCode(AbstractModel):
 
     @property
     def QrCodeId(self):
-        """二维码ID，为32位字符串。	
+        r"""二维码ID，为32位字符串。	
 
 注: 需要保留此二维码ID, 用于后序通过<a href="https://qian.tencent.com/developers/partnerApis/templates/ChannelCancelMultiFlowSignQRCode" target="_blank">取消一码多扫二维码</a>关闭这个二维码的签署功能。	
         :rtype: str
@@ -29870,7 +29904,7 @@ class SignQrCode(AbstractModel):
 
     @property
     def QrCodeUrl(self):
-        """二维码URL，可通过转换二维码的工具或代码组件将此URL转化为二维码，以便用户扫描进行流程签署。	
+        r"""二维码URL，可通过转换二维码的工具或代码组件将此URL转化为二维码，以便用户扫描进行流程签署。	
         :rtype: str
         """
         return self._QrCodeUrl
@@ -29881,7 +29915,7 @@ class SignQrCode(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """二维码的有截止时间，格式为Unix标准时间戳（秒），可以通过入参的QrEffectiveDay来设置有效期，默认为7天有效期。 
+        r"""二维码的有截止时间，格式为Unix标准时间戳（秒），可以通过入参的QrEffectiveDay来设置有效期，默认为7天有效期。 
 一旦超过二维码的有效期限，该二维码将自动失效。	
         :rtype: int
         """
@@ -29893,7 +29927,7 @@ class SignQrCode(AbstractModel):
 
     @property
     def WeixinQrCodeUrl(self):
-        """微信小程序二维码
+        r"""微信小程序二维码
         :rtype: str
         """
         return self._WeixinQrCodeUrl
@@ -29919,7 +29953,7 @@ class SignQrCode(AbstractModel):
 
 
 class SignUrl(AbstractModel):
-    """流程签署二维码的签署信息，适用于客户系统整合二维码功能。 通过链接，用户可直接访问电子签名小程序并签署合同。
+    r"""流程签署二维码的签署信息，适用于客户系统整合二维码功能。 通过链接，用户可直接访问电子签名小程序并签署合同。
 
     """
 
@@ -29938,7 +29972,7 @@ class SignUrl(AbstractModel):
 
     @property
     def AppSignUrl(self):
-        """跳转至电子签名小程序签署的链接地址。 适用于客户端APP及小程序直接唤起电子签名小程序。	
+        r"""跳转至电子签名小程序签署的链接地址。 适用于客户端APP及小程序直接唤起电子签名小程序。	
         :rtype: str
         """
         return self._AppSignUrl
@@ -29949,7 +29983,7 @@ class SignUrl(AbstractModel):
 
     @property
     def EffectiveTime(self):
-        """签署链接有效时间，格式类似"2022-08-05 15:55:01"	
+        r"""签署链接有效时间，格式类似"2022-08-05 15:55:01"	
         :rtype: str
         """
         return self._EffectiveTime
@@ -29960,7 +29994,7 @@ class SignUrl(AbstractModel):
 
     @property
     def HttpSignUrl(self):
-        """跳转至电子签名小程序签署的链接地址，格式类似于https://essurl.cn/xxx。 打开此链接将会展示H5中间页面，随后唤起电子签名小程序以进行合同签署。	
+        r"""跳转至电子签名小程序签署的链接地址，格式类似于https://essurl.cn/xxx。 打开此链接将会展示H5中间页面，随后唤起电子签名小程序以进行合同签署。	
         :rtype: str
         """
         return self._HttpSignUrl
@@ -29985,7 +30019,7 @@ class SignUrl(AbstractModel):
 
 
 class SignUrlInfo(AbstractModel):
-    """签署链接内容
+    r"""签署链接内容
 
     """
 
@@ -30044,7 +30078,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def SignUrl(self):
-        """签署链接，过期时间为90天
+        r"""签署链接，过期时间为90天
 
 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :rtype: str
@@ -30057,7 +30091,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        """合同过期时间戳，单位秒
+        r"""合同过期时间戳，单位秒
         :rtype: int
         """
         return self._Deadline
@@ -30068,7 +30102,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def SignOrder(self):
-        """当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选
+        r"""当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选
         :rtype: int
         """
         return self._SignOrder
@@ -30079,7 +30113,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def SignId(self):
-        """签署人编号
+        r"""签署人编号
         :rtype: str
         """
         return self._SignId
@@ -30092,7 +30126,7 @@ class SignUrlInfo(AbstractModel):
     def CustomUserId(self):
         warnings.warn("parameter `CustomUserId` is deprecated", DeprecationWarning) 
 
-        """自定义用户编号
+        r"""自定义用户编号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -30106,7 +30140,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def Name(self):
-        """用户姓名
+        r"""用户姓名
         :rtype: str
         """
         return self._Name
@@ -30117,7 +30151,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        """用户手机号码
+        r"""用户手机号码
         :rtype: str
         """
         return self._Mobile
@@ -30128,7 +30162,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """签署参与者机构名字
+        r"""签署参与者机构名字
         :rtype: str
         """
         return self._OrganizationName
@@ -30139,7 +30173,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        """参与者类型, 类型如下:
+        r"""参与者类型, 类型如下:
 **ORGANIZATION**:企业经办人
 **PERSON**: 自然人
         :rtype: str
@@ -30152,7 +30186,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """经办人身份证号
+        r"""经办人身份证号
         :rtype: str
         """
         return self._IdCardNumber
@@ -30163,7 +30197,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """签署链接对应流程Id
+        r"""签署链接对应流程Id
         :rtype: str
         """
         return self._FlowId
@@ -30174,7 +30208,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def OpenId(self):
-        """企业经办人 用户在渠道的编号
+        r"""企业经办人 用户在渠道的编号
         :rtype: str
         """
         return self._OpenId
@@ -30185,7 +30219,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        """合同组签署链接对应的合同组id
+        r"""合同组签署链接对应的合同组id
         :rtype: str
         """
         return self._FlowGroupId
@@ -30196,7 +30230,7 @@ class SignUrlInfo(AbstractModel):
 
     @property
     def SignQrcodeUrl(self):
-        """二维码，在生成动态签署人跳转封面页链接时返回
+        r"""二维码，在生成动态签署人跳转封面页链接时返回
 
 注：`此二维码下载链接有效期为5分钟，可下载二维码后本地保存，二维码有效期为90天。`
         :rtype: str
@@ -30234,7 +30268,7 @@ class SignUrlInfo(AbstractModel):
 
 
 class Staff(AbstractModel):
-    """企业员工信息
+    r"""企业员工信息
 
     """
 
@@ -30279,7 +30313,7 @@ class Staff(AbstractModel):
 
     @property
     def UserId(self):
-        """员工在电子签平台的用户ID
+        r"""员工在电子签平台的用户ID
         :rtype: str
         """
         return self._UserId
@@ -30290,7 +30324,7 @@ class Staff(AbstractModel):
 
     @property
     def DisplayName(self):
-        """显示的员工名
+        r"""显示的员工名
 注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
         :rtype: str
         """
@@ -30302,7 +30336,7 @@ class Staff(AbstractModel):
 
     @property
     def Mobile(self):
-        """员工手机号
+        r"""员工手机号
 注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
         :rtype: str
         """
@@ -30314,7 +30348,7 @@ class Staff(AbstractModel):
 
     @property
     def Email(self):
-        """员工邮箱
+        r"""员工邮箱
         :rtype: str
         """
         return self._Email
@@ -30325,7 +30359,7 @@ class Staff(AbstractModel):
 
     @property
     def OpenId(self):
-        """员工在第三方应用平台的用户ID
+        r"""员工在第三方应用平台的用户ID
         :rtype: str
         """
         return self._OpenId
@@ -30336,7 +30370,7 @@ class Staff(AbstractModel):
 
     @property
     def Roles(self):
-        """员工角色
+        r"""员工角色
         :rtype: list of StaffRole
         """
         return self._Roles
@@ -30347,7 +30381,7 @@ class Staff(AbstractModel):
 
     @property
     def Department(self):
-        """员工部门
+        r"""员工部门
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Department`
         """
         return self._Department
@@ -30358,7 +30392,7 @@ class Staff(AbstractModel):
 
     @property
     def Verified(self):
-        """员工是否实名
+        r"""员工是否实名
         :rtype: bool
         """
         return self._Verified
@@ -30369,7 +30403,7 @@ class Staff(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """员工创建时间戳，单位秒
+        r"""员工创建时间戳，单位秒
         :rtype: int
         """
         return self._CreatedOn
@@ -30380,7 +30414,7 @@ class Staff(AbstractModel):
 
     @property
     def VerifiedOn(self):
-        """员工实名时间戳，单位秒
+        r"""员工实名时间戳，单位秒
         :rtype: int
         """
         return self._VerifiedOn
@@ -30391,7 +30425,7 @@ class Staff(AbstractModel):
 
     @property
     def QuiteJob(self):
-        """员工是否离职：0-未离职，1-离职
+        r"""员工是否离职：0-未离职，1-离职
         :rtype: int
         """
         return self._QuiteJob
@@ -30431,7 +30465,7 @@ class Staff(AbstractModel):
 
 
 class StaffRole(AbstractModel):
-    """第三方应用集成员工角色信息
+    r"""第三方应用集成员工角色信息
 
     """
 
@@ -30447,7 +30481,7 @@ class StaffRole(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色id
+        r"""角色id
         :rtype: str
         """
         return self._RoleId
@@ -30458,7 +30492,7 @@ class StaffRole(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名称
+        r"""角色名称
         :rtype: str
         """
         return self._RoleName
@@ -30482,7 +30516,7 @@ class StaffRole(AbstractModel):
 
 
 class SyncFailReason(AbstractModel):
-    """同步员工失败原因
+    r"""同步员工失败原因
 
     """
 
@@ -30498,7 +30532,7 @@ class SyncFailReason(AbstractModel):
 
     @property
     def Id(self):
-        """企业员工标识(即OpenId)
+        r"""企业员工标识(即OpenId)
         :rtype: str
         """
         return self._Id
@@ -30509,7 +30543,7 @@ class SyncFailReason(AbstractModel):
 
     @property
     def Message(self):
-        """新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
+        r"""新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
         :rtype: str
         """
         return self._Message
@@ -30533,7 +30567,7 @@ class SyncFailReason(AbstractModel):
 
 
 class SyncProxyOrganizationOperatorsRequest(AbstractModel):
-    """SyncProxyOrganizationOperators请求参数结构体
+    r"""SyncProxyOrganizationOperators请求参数结构体
 
     """
 
@@ -30565,7 +30599,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -30583,7 +30617,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
 
     @property
     def OperatorType(self):
-        """操作类型，对应的操作
+        r"""操作类型，对应的操作
 <ul><li> **CREATE** :新增员工</li>
 <li> **UPDATE** :修改员工（仅支持修改未实名员工的信息，如果已经实名并加入企业的员工基础信息修改需要到小程序中进行）</li>
 <li> **RESIGN** :离职员工</li></ul>
@@ -30597,7 +30631,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
 
     @property
     def ProxyOrganizationOperators(self):
-        """员工信息列表，最多支持200个
+        r"""员工信息列表，最多支持200个
         :rtype: list of ProxyOrganizationOperator
         """
         return self._ProxyOrganizationOperators
@@ -30610,7 +30644,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -30647,7 +30681,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
 
 
 class SyncProxyOrganizationOperatorsResponse(AbstractModel):
-    """SyncProxyOrganizationOperators返回参数结构体
+    r"""SyncProxyOrganizationOperators返回参数结构体
 
     """
 
@@ -30669,7 +30703,7 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """ 同步的状态,  全部同步失败接口是接口会直接报错
+        r""" 同步的状态,  全部同步失败接口是接口会直接报错
 
 <ul><li> **1** :全部成功</li>
 <li> **2** :部分成功</li></ul>
@@ -30683,7 +30717,7 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
     @property
     def FailedList(self):
-        """同步失败员工ID及其失败原因
+        r"""同步失败员工ID及其失败原因
         :rtype: list of SyncFailReason
         """
         return self._FailedList
@@ -30694,7 +30728,7 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30716,7 +30750,7 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
 
 class SyncProxyOrganizationRequest(AbstractModel):
-    """SyncProxyOrganization请求参数结构体
+    r"""SyncProxyOrganization请求参数结构体
 
     """
 
@@ -30766,7 +30800,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -30784,7 +30818,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyOrganizationName(self):
-        """第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
+        r"""第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
         :rtype: str
         """
@@ -30796,7 +30830,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def BusinessLicense(self):
-        """营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        r"""营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
         :rtype: str
         """
         return self._BusinessLicense
@@ -30807,7 +30841,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
-        """第三方平台子客企业统一社会信用代码，最大长度200个字符
+        r"""第三方平台子客企业统一社会信用代码，最大长度200个字符
         :rtype: str
         """
         return self._UniformSocialCreditCode
@@ -30818,7 +30852,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalName(self):
-        """第三方平台子客企业法定代表人的名字
+        r"""第三方平台子客企业法定代表人的名字
         :rtype: str
         """
         return self._ProxyLegalName
@@ -30831,7 +30865,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """暂未开放
+        r"""暂未开放
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -30844,7 +30878,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalIdCardType(self):
-        """第三方平台子客企业法定代表人的证件类型，支持以下类型
+        r"""第三方平台子客企业法定代表人的证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
 注: `现在仅支持ID_CARD中国大陆居民身份证类型`
         :rtype: str
@@ -30857,7 +30891,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalIdCardNumber(self):
-        """第三方平台子客企业法定代表人的证件号码, 应符合以下规则
+        r"""第三方平台子客企业法定代表人的证件号码, 应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
         :rtype: str
         """
@@ -30869,7 +30903,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        """第三方平台子客企业详细住所，最大长度500个字符
+        r"""第三方平台子客企业详细住所，最大长度500个字符
 
 注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
         :rtype: str
@@ -30906,7 +30940,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
 
 class SyncProxyOrganizationResponse(AbstractModel):
-    """SyncProxyOrganization返回参数结构体
+    r"""SyncProxyOrganization返回参数结构体
 
     """
 
@@ -30919,7 +30953,7 @@ class SyncProxyOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30934,7 +30968,7 @@ class SyncProxyOrganizationResponse(AbstractModel):
 
 
 class TaskInfo(AbstractModel):
-    """复杂文档合成任务的任务信息
+    r"""复杂文档合成任务的任务信息
 
     """
 
@@ -30950,7 +30984,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
+        r"""合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
         :rtype: str
         """
         return self._TaskId
@@ -30961,7 +30995,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
+        r"""任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
         :rtype: str
         """
         return self._TaskStatus
@@ -30985,7 +31019,7 @@ class TaskInfo(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """此结构体 (TemplateInfo) 用于描述模板的信息。
+    r"""此结构体 (TemplateInfo) 用于描述模板的信息。
 
     > **模板组成**
     >
@@ -31078,7 +31112,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID，模板的唯一标识
+        r"""模板ID，模板的唯一标识
         :rtype: str
         """
         return self._TemplateId
@@ -31089,7 +31123,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名
+        r"""模板名
         :rtype: str
         """
         return self._TemplateName
@@ -31100,7 +31134,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Description(self):
-        """模板描述信息
+        r"""模板描述信息
         :rtype: str
         """
         return self._Description
@@ -31111,7 +31145,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Components(self):
-        """模板的填充控件列表
+        r"""模板的填充控件列表
 
 [点击查看在模板中配置的填充控件的样子](https://qcloudimg.tencent-cloud.cn/raw/cb2f58529fca8d909258f9d45a56f7f4.png)
         :rtype: list of Component
@@ -31124,7 +31158,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Recipients(self):
-        """此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
+        r"""此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
 
 [点击查看在模板中配置的签署参与方角色列表的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
 
@@ -31139,7 +31173,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def SignComponents(self):
-        """此模板中的签署控件列表
+        r"""此模板中的签署控件列表
 
 [点击查看在模板中配置的签署控件的样子](https://qcloudimg.tencent-cloud.cn/raw/29bc6ed753a5a0fce4a3ab02e2c0d955.png)
         :rtype: list of Component
@@ -31152,7 +31186,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateType(self):
-        """模板类型可以分为以下两种：
+        r"""模板类型可以分为以下两种：
 
 <b>1</b>：带有<b>本企业自动签署</b>的模板，即签署过程无需签署人手动操作，系统自动完成签署。
 <b>3</b>：普通模板，即签署人需要手动进行签署操作。
@@ -31168,7 +31202,7 @@ class TemplateInfo(AbstractModel):
     def IsPromoter(self):
         warnings.warn("parameter `IsPromoter` is deprecated", DeprecationWarning) 
 
-        """是否是发起人 ,已弃用
+        r"""是否是发起人 ,已弃用
         :rtype: bool
         """
         return self._IsPromoter
@@ -31181,7 +31215,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Creator(self):
-        """模板的创建者名字
+        r"""模板的创建者名字
         :rtype: str
         """
         return self._Creator
@@ -31192,7 +31226,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """模板创建的时间戳，格式为Unix标准时间戳（秒）
+        r"""模板创建的时间戳，格式为Unix标准时间戳（秒）
         :rtype: int
         """
         return self._CreatedOn
@@ -31203,7 +31237,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """模板的 H5 预览链接，有效期为 5 分钟。
+        r"""模板的 H5 预览链接，有效期为 5 分钟。
 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
 
 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
@@ -31217,7 +31251,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def PdfUrl(self):
-        """第三方应用集成-模板PDF文件链接，有效期5分钟。
+        r"""第三方应用集成-模板PDF文件链接，有效期5分钟。
 请求参数WithPdfUrl=true时返回
 （此功能开放需要联系客户经理）。
         :rtype: str
@@ -31230,7 +31264,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def ChannelTemplateId(self):
-        """本模板关联的第三方应用平台企业模板ID
+        r"""本模板关联的第三方应用平台企业模板ID
         :rtype: str
         """
         return self._ChannelTemplateId
@@ -31241,7 +31275,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def ChannelTemplateName(self):
-        """本模板关联的三方应用平台平台企业模板名称
+        r"""本模板关联的三方应用平台平台企业模板名称
         :rtype: str
         """
         return self._ChannelTemplateName
@@ -31252,7 +31286,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def ChannelAutoSave(self):
-        """0-需要子客企业手动领取平台企业的模板(默认); 
+        r"""0-需要子客企业手动领取平台企业的模板(默认); 
 1-平台自动设置子客模板
         :rtype: int
         """
@@ -31264,7 +31298,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateVersion(self):
-        """模板版本，由全数字字符组成。
+        r"""模板版本，由全数字字符组成。
 默认为空，模板版本号由日期和序号组成，初始版本为yyyyMMdd001，yyyyMMdd002表示第二个版本，以此类推。
         :rtype: str
         """
@@ -31276,7 +31310,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Available(self):
-        """模板可用状态的取值通常为以下两种：
+        r"""模板可用状态的取值通常为以下两种：
 
 <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
@@ -31290,7 +31324,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def UserFlowType(self):
-        """模板的用户合同类型
+        r"""模板的用户合同类型
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
         """
         return self._UserFlowType
@@ -31347,7 +31381,7 @@ class TemplateInfo(AbstractModel):
 
 
 class TemplateUserFlowType(AbstractModel):
-    """模板对应的合同类型
+    r"""模板对应的合同类型
 
     """
 
@@ -31369,7 +31403,7 @@ class TemplateUserFlowType(AbstractModel):
 
     @property
     def UserFlowTypeId(self):
-        """合同类型id
+        r"""合同类型id
         :rtype: str
         """
         return self._UserFlowTypeId
@@ -31380,7 +31414,7 @@ class TemplateUserFlowType(AbstractModel):
 
     @property
     def Name(self):
-        """用户合同类型名称
+        r"""用户合同类型名称
         :rtype: str
         """
         return self._Name
@@ -31391,7 +31425,7 @@ class TemplateUserFlowType(AbstractModel):
 
     @property
     def TemplateNum(self):
-        """每个合同类型绑定的模板数量	
+        r"""每个合同类型绑定的模板数量	
         :rtype: int
         """
         return self._TemplateNum
@@ -31402,7 +31436,7 @@ class TemplateUserFlowType(AbstractModel):
 
     @property
     def Description(self):
-        """合同类型的具体描述
+        r"""合同类型的具体描述
         :rtype: str
         """
         return self._Description
@@ -31428,7 +31462,7 @@ class TemplateUserFlowType(AbstractModel):
 
 
 class UploadFile(AbstractModel):
-    """此结构体 (UploadFile) 用于描述多文件上传的文件信息。
+    r"""此结构体 (UploadFile) 用于描述多文件上传的文件信息。
 
     """
 
@@ -31446,7 +31480,7 @@ class UploadFile(AbstractModel):
 
     @property
     def FileBody(self):
-        """Base64编码后的文件内容
+        r"""Base64编码后的文件内容
         :rtype: str
         """
         return self._FileBody
@@ -31457,7 +31491,7 @@ class UploadFile(AbstractModel):
 
     @property
     def FileName(self):
-        """文件的名字。
+        r"""文件的名字。
 文件名的最大长度应不超过200个字符，并且文件名的后缀必须反映其文件类型。
 例如，PDF文件应以“.pdf”结尾，如“XXX.pdf”，而Word文件应以“.doc”或“.docx”结尾，如“XXX.doc”或“XXX.docx”。
         :rtype: str
@@ -31483,7 +31517,7 @@ class UploadFile(AbstractModel):
 
 
 class UploadFilesRequest(AbstractModel):
-    """UploadFiles请求参数结构体
+    r"""UploadFiles请求参数结构体
 
     """
 
@@ -31515,7 +31549,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 
 此接口下面信息必填。
 <ul>
@@ -31534,7 +31568,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        """文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
+        r"""文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
         :rtype: str
         """
         return self._BusinessType
@@ -31545,7 +31579,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        """上传文件内容数组，一次最多可上传20个文件。
+        r"""上传文件内容数组，一次最多可上传20个文件。
 
 <b>若上传多个文件，所有文件必须为相同类型</b>，例如全部为PDF或全部为Word文件。不支持混合文件类型的上传。
         :rtype: list of UploadFile
@@ -31560,7 +31594,7 @@ class UploadFilesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        """操作者的信息
+        r"""操作者的信息
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -31597,7 +31631,7 @@ class UploadFilesRequest(AbstractModel):
 
 
 class UploadFilesResponse(AbstractModel):
-    """UploadFiles返回参数结构体
+    r"""UploadFiles返回参数结构体
 
     """
 
@@ -31622,7 +31656,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """上传成功文件数量
+        r"""上传成功文件数量
 注: `如果一个文件上传失败, 则全部文件皆上传失败`
         :rtype: int
         """
@@ -31634,7 +31668,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def FileIds(self):
-        """文件资源ID数组，每个文件资源ID为32位字符串。
+        r"""文件资源ID数组，每个文件资源ID为32位字符串。
 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
 注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
         :rtype: list of str
@@ -31647,7 +31681,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def FileUrls(self):
-        """对应上传文件的下载链接，过期时间5分钟
+        r"""对应上传文件的下载链接，过期时间5分钟
         :rtype: list of str
         """
         return self._FileUrls
@@ -31658,7 +31692,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31676,7 +31710,7 @@ class UploadFilesResponse(AbstractModel):
 
 
 class UsageDetail(AbstractModel):
-    """用量明细
+    r"""用量明细
 
     """
 
@@ -31704,7 +31738,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def ProxyOrganizationOpenId(self):
-        """子客企业标识
+        r"""子客企业标识
         :rtype: str
         """
         return self._ProxyOrganizationOpenId
@@ -31715,7 +31749,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def ProxyOrganizationName(self):
-        """子客企业名
+        r"""子客企业名
         :rtype: str
         """
         return self._ProxyOrganizationName
@@ -31726,7 +31760,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def Date(self):
-        """对应的消耗日期, **如果是汇总数据则为1970-01-01**
+        r"""对应的消耗日期, **如果是汇总数据则为1970-01-01**
         :rtype: str
         """
         return self._Date
@@ -31737,7 +31771,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗合同数量
+        r"""消耗合同数量
         :rtype: int
         """
         return self._Usage
@@ -31748,7 +31782,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def Cancel(self):
-        """撤回合同数量
+        r"""撤回合同数量
         :rtype: int
         """
         return self._Cancel
@@ -31759,7 +31793,7 @@ class UsageDetail(AbstractModel):
 
     @property
     def FlowChannel(self):
-        """消耗渠道
+        r"""消耗渠道
         :rtype: str
         """
         return self._FlowChannel
@@ -31787,7 +31821,7 @@ class UsageDetail(AbstractModel):
 
 
 class UserFlowType(AbstractModel):
-    """用户合同类型信息
+    r"""用户合同类型信息
 
     """
 
@@ -31806,7 +31840,7 @@ class UserFlowType(AbstractModel):
 
     @property
     def UserFlowTypeId(self):
-        """用户合同类型id
+        r"""用户合同类型id
         :rtype: str
         """
         return self._UserFlowTypeId
@@ -31817,7 +31851,7 @@ class UserFlowType(AbstractModel):
 
     @property
     def Name(self):
-        """用户合同类型名称
+        r"""用户合同类型名称
         :rtype: str
         """
         return self._Name
@@ -31828,7 +31862,7 @@ class UserFlowType(AbstractModel):
 
     @property
     def Description(self):
-        """用户合同类型的描述信息
+        r"""用户合同类型的描述信息
         :rtype: str
         """
         return self._Description
@@ -31853,7 +31887,7 @@ class UserFlowType(AbstractModel):
 
 
 class UserInfo(AbstractModel):
-    """接口调用的员工信息
+    r"""接口调用的员工信息
 
     """
 
@@ -31885,7 +31919,7 @@ class UserInfo(AbstractModel):
 
     @property
     def OpenId(self):
-        """第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
+        r"""第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
 
 
 注意:
@@ -31905,7 +31939,7 @@ class UserInfo(AbstractModel):
     def Channel(self):
         warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
 
-        """内部参数，暂未开放使用
+        r"""内部参数，暂未开放使用
         :rtype: str
         """
         return self._Channel
@@ -31920,7 +31954,7 @@ class UserInfo(AbstractModel):
     def CustomUserId(self):
         warnings.warn("parameter `CustomUserId` is deprecated", DeprecationWarning) 
 
-        """内部参数，暂未开放使用
+        r"""内部参数，暂未开放使用
         :rtype: str
         """
         return self._CustomUserId
@@ -31935,7 +31969,7 @@ class UserInfo(AbstractModel):
     def ClientIp(self):
         warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
 
-        """内部参数，暂未开放使用
+        r"""内部参数，暂未开放使用
         :rtype: str
         """
         return self._ClientIp
@@ -31950,7 +31984,7 @@ class UserInfo(AbstractModel):
     def ProxyIp(self):
         warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
 
-        """内部参数，暂未开放使用
+        r"""内部参数，暂未开放使用
         :rtype: str
         """
         return self._ProxyIp
@@ -31979,7 +32013,7 @@ class UserInfo(AbstractModel):
 
 
 class UserThreeFactor(AbstractModel):
-    """用户的三要素：姓名，证件号，证件类型
+    r"""用户的三要素：姓名，证件号，证件类型
 
     """
 
@@ -32005,7 +32039,7 @@ class UserThreeFactor(AbstractModel):
 
     @property
     def Name(self):
-        """签署方经办人的姓名。
+        r"""签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :rtype: str
         """
@@ -32017,7 +32051,7 @@ class UserThreeFactor(AbstractModel):
 
     @property
     def IdCardType(self):
-        """证件类型，支持以下类型
+        r"""证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
@@ -32031,7 +32065,7 @@ class UserThreeFactor(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        """证件号码，应符合以下规则
+        r"""证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
@@ -32059,7 +32093,7 @@ class UserThreeFactor(AbstractModel):
 
 
 class WebThemeConfig(AbstractModel):
-    """主题配置
+    r"""主题配置
 
     """
 
@@ -32093,7 +32127,7 @@ class WebThemeConfig(AbstractModel):
 
     @property
     def DisplaySignBrandLogo(self):
-        """是否显示页面底部电子签logo，取值如下：
+        r"""是否显示页面底部电子签logo，取值如下：
 <ul><li> **true**：页面底部显示电子签logo</li>
 <li> **false**：页面底部不显示电子签logo（默认）</li></ul>
         :rtype: bool
@@ -32106,7 +32140,7 @@ class WebThemeConfig(AbstractModel):
 
     @property
     def WebEmbedThemeColor(self):
-        """主题颜色：
+        r"""主题颜色：
 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
 <br/>
         :rtype: str
@@ -32119,7 +32153,7 @@ class WebThemeConfig(AbstractModel):
 
     @property
     def AuthenticateBackground(self):
-        """企业认证页背景图（base64图片）
+        r"""企业认证页背景图（base64图片）
 
         :rtype: str
         """
@@ -32131,7 +32165,7 @@ class WebThemeConfig(AbstractModel):
 
     @property
     def HideAuthenticateNavigationBar(self):
-        """隐藏企业认证页面导航栏，取值如下：
+        r"""隐藏企业认证页面导航栏，取值如下：
 <ul><li> **true**：隐藏企业认证页面导航栏</li>
 <li> **false**：显示企业认证页面导航栏（默认）</li></ul>
         :rtype: bool
@@ -32144,7 +32178,7 @@ class WebThemeConfig(AbstractModel):
 
     @property
     def HideAuthenticateTopLogo(self):
-        """隐藏企业认证顶部logo，取值如下：
+        r"""隐藏企业认证顶部logo，取值如下：
 <ul><li> **true**：隐藏企业认证顶部logo</li>
 <li> **false**：显示企业认证顶部logo（默认）</li></ul>
         :rtype: bool

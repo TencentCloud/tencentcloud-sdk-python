@@ -27,7 +27,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def AddSpecifyPrivateZoneVpc(self, request):
-        """追加与私有域关联的VPC
+        r"""追加与私有域关联的VPC
 
         :param request: Request instance for AddSpecifyPrivateZoneVpc.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.AddSpecifyPrivateZoneVpcRequest`
@@ -50,7 +50,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateDNSAccount(self, request):
-        """跨账号关联VPC时绑定其他账号
+        r"""跨账号关联VPC时绑定其他账号
 
         :param request: Request instance for CreatePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountRequest`
@@ -73,7 +73,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateZone(self, request):
-        """创建私有域
+        r"""创建私有域
 
         :param request: Request instance for CreatePrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRequest`
@@ -96,7 +96,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateZoneRecord(self, request):
-        """添加私有域解析记录
+        r"""添加私有域解析记录
 
         :param request: Request instance for CreatePrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRecordRequest`
@@ -119,7 +119,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateDNSAccount(self, request):
-        """删除私有域解析账号
+        r"""删除私有域解析账号
 
         :param request: Request instance for DeletePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountRequest`
@@ -142,7 +142,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateZone(self, request):
-        """删除私有域并停止解析
+        r"""删除私有域并停止解析
 
         :param request: Request instance for DeletePrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRequest`
@@ -165,7 +165,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateZoneRecord(self, request):
-        """删除私有域解析记录
+        r"""删除私有域解析记录
 
         :param request: Request instance for DeletePrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordRequest`
@@ -188,7 +188,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeleteSpecifyPrivateZoneVpc(self, request):
-        """删除与私有域关联的VPC
+        r"""删除与私有域关联的VPC
 
         :param request: Request instance for DeleteSpecifyPrivateZoneVpc.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteSpecifyPrivateZoneVpcRequest`
@@ -211,7 +211,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeAccountVpcList(self, request):
-        """获取私有域解析账号的VPC列表
+        r"""获取私有域解析账号的VPC列表
 
         :param request: Request instance for DescribeAccountVpcList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAccountVpcListRequest`
@@ -234,7 +234,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeAuditLog(self, request):
-        """获取操作日志列表
+        r"""获取操作日志列表
 
         :param request: Request instance for DescribeAuditLog.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAuditLogRequest`
@@ -257,7 +257,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeDashboard(self, request):
-        """获取私有域解析概览
+        r"""获取私有域解析概览
 
         :param request: Request instance for DescribeDashboard.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeDashboardRequest`
@@ -280,7 +280,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateDNSAccountList(self, request):
-        """获取私有域解析账号列表
+        r"""获取私有域解析账号列表
 
         :param request: Request instance for DescribePrivateDNSAccountList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateDNSAccountListRequest`
@@ -303,7 +303,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZone(self, request):
-        """获取私有域信息
+        r"""获取私有域信息
 
         :param request: Request instance for DescribePrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRequest`
@@ -326,7 +326,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneList(self, request):
-        """获取私有域列表
+        r"""获取私有域列表
 
         :param request: Request instance for DescribePrivateZoneList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListRequest`
@@ -349,7 +349,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneRecordList(self, request):
-        """获取私有域记录列表
+        r"""获取私有域记录列表
 
         :param request: Request instance for DescribePrivateZoneRecordList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListRequest`
@@ -372,7 +372,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneService(self, request):
-        """查询私有域解析开通状态
+        r"""查询私有域解析开通状态
 
         :param request: Request instance for DescribePrivateZoneService.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneServiceRequest`
@@ -395,7 +395,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeQuotaUsage(self, request):
-        """查询额度使用情况
+        r"""查询额度使用情况
 
         :param request: Request instance for DescribeQuotaUsage.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageRequest`
@@ -418,7 +418,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeRecord(self, request):
-        """获取私有域记录
+        r"""获取私有域记录
 
         :param request: Request instance for DescribeRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeRecordRequest`
@@ -441,7 +441,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeRequestData(self, request):
-        """获取私有域解析请求量
+        r"""获取私有域解析请求量
 
         :param request: Request instance for DescribeRequestData.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeRequestDataRequest`
@@ -464,7 +464,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZone(self, request):
-        """修改私有域信息
+        r"""修改私有域信息
 
         :param request: Request instance for ModifyPrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneRequest`
@@ -487,7 +487,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZoneRecord(self, request):
-        """修改私有域解析记录
+        r"""修改私有域解析记录
 
         :param request: Request instance for ModifyPrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneRecordRequest`
@@ -510,7 +510,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZoneVpc(self, request):
-        """修改私有域关联的VPC
+        r"""修改私有域关联的VPC
 
         :param request: Request instance for ModifyPrivateZoneVpc.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneVpcRequest`
@@ -533,7 +533,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyRecordsStatus(self, request):
-        """修改解析记录状态
+        r"""修改解析记录状态
 
         :param request: Request instance for ModifyRecordsStatus.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyRecordsStatusRequest`
@@ -556,7 +556,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def QueryAsyncBindVpcStatus(self, request):
-        """查询异步绑定vpc操作状态
+        r"""查询异步绑定vpc操作状态
 
         :param request: Request instance for QueryAsyncBindVpcStatus.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.QueryAsyncBindVpcStatusRequest`
@@ -579,7 +579,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def SubscribePrivateZoneService(self, request):
-        """开通私有域解析
+        r"""开通私有域解析
 
         :param request: Request instance for SubscribePrivateZoneService.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.SubscribePrivateZoneServiceRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AKInfo(AbstractModel):
-    """AK简要信息
+    r"""AK简要信息
 
     """
 
@@ -41,7 +41,7 @@ class AKInfo(AbstractModel):
 
     @property
     def ID(self):
-        """ak对应id
+        r"""ak对应id
         :rtype: int
         """
         return self._ID
@@ -52,7 +52,7 @@ class AKInfo(AbstractModel):
 
     @property
     def Name(self):
-        """ak具体值 临时密钥时返回临时密钥
+        r"""ak具体值 临时密钥时返回临时密钥
         :rtype: str
         """
         return self._Name
@@ -63,7 +63,7 @@ class AKInfo(AbstractModel):
 
     @property
     def User(self):
-        """所属账号
+        r"""所属账号
         :rtype: str
         """
         return self._User
@@ -74,7 +74,7 @@ class AKInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -100,7 +100,7 @@ class AKInfo(AbstractModel):
 
 
 class AccessKeyAlarm(AbstractModel):
-    """访问密钥告警记录
+    r"""访问密钥告警记录
 
     """
 
@@ -181,7 +181,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Name(self):
-        """告警名称
+        r"""告警名称
         :rtype: str
         """
         return self._Name
@@ -192,7 +192,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Level(self):
-        """告警等级
+        r"""告警等级
 0-无效 1-提示 2-低危 3-中危 4-高危 5-严重
         :rtype: int
         """
@@ -204,7 +204,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def ID(self):
-        """告警记录ID
+        r"""告警记录ID
         :rtype: int
         """
         return self._ID
@@ -215,7 +215,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AlarmRuleID(self):
-        """告警规则ID
+        r"""告警规则ID
         :rtype: int
         """
         return self._AlarmRuleID
@@ -226,7 +226,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AlarmType(self):
-        """告警类型
+        r"""告警类型
 0 异常调用
 1 泄漏监测
         :rtype: int
@@ -239,7 +239,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥
+        r"""访问密钥
         :rtype: str
         """
         return self._AccessKey
@@ -250,7 +250,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥ID
+        r"""访问密钥ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -261,7 +261,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKeyRemark(self):
-        """访问密钥备注
+        r"""访问密钥备注
         :rtype: str
         """
         return self._AccessKeyRemark
@@ -272,7 +272,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def LastAlarmTime(self):
-        """最后告警时间
+        r"""最后告警时间
         :rtype: str
         """
         return self._LastAlarmTime
@@ -283,7 +283,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Status(self):
-        """告警状态
+        r"""告警状态
 0-未处理 1-已处理 2-已忽略
         :rtype: int
         """
@@ -295,7 +295,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Date(self):
-        """聚合日期
+        r"""聚合日期
         :rtype: str
         """
         return self._Date
@@ -306,7 +306,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Tag(self):
-        """告警标签
+        r"""告警标签
         :rtype: list of str
         """
         return self._Tag
@@ -317,7 +317,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Uin(self):
-        """所属主账号Uin
+        r"""所属主账号Uin
         :rtype: str
         """
         return self._Uin
@@ -328,7 +328,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Nickname(self):
-        """所属主账号昵称
+        r"""所属主账号昵称
         :rtype: str
         """
         return self._Nickname
@@ -339,7 +339,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def SubUin(self):
-        """所属子账号Uin
+        r"""所属子账号Uin
         :rtype: str
         """
         return self._SubUin
@@ -350,7 +350,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def SubNickname(self):
-        """所属子账号昵称
+        r"""所属子账号昵称
         :rtype: str
         """
         return self._SubNickname
@@ -361,7 +361,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Type(self):
-        """账号类型
+        r"""账号类型
 0 主账号AK 1 子账号AK 2 临时密钥
         :rtype: int
         """
@@ -373,7 +373,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AppID(self):
-        """所属appid
+        r"""所属appid
         :rtype: int
         """
         return self._AppID
@@ -384,7 +384,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def LeakEvidence(self):
-        """泄漏证据
+        r"""泄漏证据
         :rtype: list of str
         """
         return self._LeakEvidence
@@ -395,7 +395,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def IsSupportEditWhiteAccount(self):
-        """是否支持编辑信任账号
+        r"""是否支持编辑信任账号
         :rtype: bool
         """
         return self._IsSupportEditWhiteAccount
@@ -406,7 +406,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Evidence(self):
-        """告警证据
+        r"""告警证据
         :rtype: str
         """
         return self._Evidence
@@ -417,7 +417,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def RuleKey(self):
-        """告警规则标识
+        r"""告警规则标识
         :rtype: str
         """
         return self._RuleKey
@@ -461,7 +461,7 @@ class AccessKeyAlarm(AbstractModel):
 
 
 class AccessKeyAlarmCount(AbstractModel):
-    """访问密钥告警数量
+    r"""访问密钥告警数量
 
     """
 
@@ -480,7 +480,7 @@ class AccessKeyAlarmCount(AbstractModel):
 
     @property
     def ID(self):
-        """访问密钥的ID
+        r"""访问密钥的ID
         :rtype: int
         """
         return self._ID
@@ -491,7 +491,7 @@ class AccessKeyAlarmCount(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥
+        r"""访问密钥
         :rtype: str
         """
         return self._AccessKey
@@ -502,7 +502,7 @@ class AccessKeyAlarmCount(AbstractModel):
 
     @property
     def AlarmCount(self):
-        """告警数量
+        r"""告警数量
         :rtype: int
         """
         return self._AlarmCount
@@ -527,7 +527,7 @@ class AccessKeyAlarmCount(AbstractModel):
 
 
 class AccessKeyAlarmInfo(AbstractModel):
-    """访问密钥资产告警信息
+    r"""访问密钥资产告警信息
 
     """
 
@@ -551,7 +551,7 @@ class AccessKeyAlarmInfo(AbstractModel):
 
     @property
     def Type(self):
-        """告警类型/风险类型
+        r"""告警类型/风险类型
 告警类型：
 0异常调用
 1泄漏检测
@@ -570,7 +570,7 @@ class AccessKeyAlarmInfo(AbstractModel):
 
     @property
     def Count(self):
-        """告警数量/风险数量
+        r"""告警数量/风险数量
         :rtype: int
         """
         return self._Count
@@ -594,7 +594,7 @@ class AccessKeyAlarmInfo(AbstractModel):
 
 
 class AccessKeyAsset(AbstractModel):
-    """访问密钥资产信息
+    r"""访问密钥资产信息
 
     """
 
@@ -664,7 +664,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def ID(self):
-        """AK 的id
+        r"""AK 的id
         :rtype: int
         """
         return self._ID
@@ -675,7 +675,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Name(self):
-        """AK名称
+        r"""AK名称
         :rtype: str
         """
         return self._Name
@@ -686,7 +686,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -697,7 +697,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def AppID(self):
-        """账号所属APPID
+        r"""账号所属APPID
         :rtype: int
         """
         return self._AppID
@@ -708,7 +708,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Uin(self):
-        """所属主账号Uin
+        r"""所属主账号Uin
         :rtype: str
         """
         return self._Uin
@@ -719,7 +719,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Nickname(self):
-        """主账号昵称
+        r"""主账号昵称
         :rtype: str
         """
         return self._Nickname
@@ -730,7 +730,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def SubUin(self):
-        """所属子账号Uin
+        r"""所属子账号Uin
         :rtype: str
         """
         return self._SubUin
@@ -741,7 +741,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def SubNickname(self):
-        """所属子账号昵称
+        r"""所属子账号昵称
         :rtype: str
         """
         return self._SubNickname
@@ -752,7 +752,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Type(self):
-        """0 主账号AK
+        r"""0 主账号AK
 1 子账号AK
 2 临时密钥
         :rtype: int
@@ -765,7 +765,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Advice(self):
-        """安全建议 枚举
+        r"""安全建议 枚举
 0 正常
 1 立即处理
 2 建议加固
@@ -779,7 +779,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def AccessKeyAlarmList(self):
-        """告警信息列表
+        r"""告警信息列表
         :rtype: list of AccessKeyAlarmInfo
         """
         return self._AccessKeyAlarmList
@@ -790,7 +790,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def AccessKeyRiskList(self):
-        """风险信息列表
+        r"""风险信息列表
         :rtype: list of AccessKeyAlarmInfo
         """
         return self._AccessKeyRiskList
@@ -801,7 +801,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def IPCount(self):
-        """源IP数量
+        r"""源IP数量
         :rtype: int
         """
         return self._IPCount
@@ -812,7 +812,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -823,7 +823,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最近访问时间
+        r"""最近访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -834,7 +834,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def Status(self):
-        """AK状态 
+        r"""AK状态 
 0:禁用
 1:已启用
 2:已删除(已在cam侧删除，安全中心仍然存留之前的记录)
@@ -848,7 +848,7 @@ class AccessKeyAsset(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """0 表示已检测
+        r"""0 表示已检测
 1 表示检测中
         :rtype: int
         """
@@ -898,7 +898,7 @@ class AccessKeyAsset(AbstractModel):
 
 
 class AccessKeyRisk(AbstractModel):
-    """访问密钥风险记录
+    r"""访问密钥风险记录
 
     """
 
@@ -978,7 +978,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Name(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._Name
@@ -989,7 +989,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级
+        r"""风险等级
 0-无效 1-提示 2-低危 3-中危 4-高危 5-严重
         :rtype: int
         """
@@ -1001,7 +1001,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def ID(self):
-        """风险记录ID
+        r"""风险记录ID
         :rtype: int
         """
         return self._ID
@@ -1012,7 +1012,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def RiskRuleID(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: int
         """
         return self._RiskRuleID
@@ -1023,7 +1023,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
 0-配置风险
         :rtype: int
         """
@@ -1035,7 +1035,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥
+        r"""访问密钥
         :rtype: str
         """
         return self._AccessKey
@@ -1046,7 +1046,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥ID
+        r"""访问密钥ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -1057,7 +1057,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def AccessKeyRemark(self):
-        """访问密钥备注
+        r"""访问密钥备注
         :rtype: str
         """
         return self._AccessKeyRemark
@@ -1068,7 +1068,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def RiskTime(self):
-        """风险检出时间
+        r"""风险检出时间
         :rtype: str
         """
         return self._RiskTime
@@ -1079,7 +1079,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Status(self):
-        """风险状态
+        r"""风险状态
 0-未处理 2-已忽略 3-已收敛
         :rtype: int
         """
@@ -1091,7 +1091,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Tag(self):
-        """风险标签
+        r"""风险标签
         :rtype: list of str
         """
         return self._Tag
@@ -1102,7 +1102,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Evidence(self):
-        """风险证据
+        r"""风险证据
         :rtype: str
         """
         return self._Evidence
@@ -1113,7 +1113,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Description(self):
-        """风险描述
+        r"""风险描述
         :rtype: str
         """
         return self._Description
@@ -1124,7 +1124,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """所属主账号Uin
+        r"""所属主账号Uin
         :rtype: str
         """
         return self._Uin
@@ -1135,7 +1135,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Nickname(self):
-        """所属主账号昵称
+        r"""所属主账号昵称
         :rtype: str
         """
         return self._Nickname
@@ -1146,7 +1146,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def SubUin(self):
-        """所属子账号Uin
+        r"""所属子账号Uin
         :rtype: str
         """
         return self._SubUin
@@ -1157,7 +1157,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def SubNickname(self):
-        """所属子账号昵称
+        r"""所属子账号昵称
         :rtype: str
         """
         return self._SubNickname
@@ -1168,7 +1168,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def Type(self):
-        """账号类型
+        r"""账号类型
 0 主账号AK 1子账号AK
 2 临时密钥
         :rtype: int
@@ -1181,7 +1181,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """检测状态
+        r"""检测状态
 0表示 已检测
 1表示 检测中
         :rtype: int
@@ -1194,7 +1194,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def AppID(self):
-        """所属appid
+        r"""所属appid
         :rtype: int
         """
         return self._AppID
@@ -1205,7 +1205,7 @@ class AccessKeyRisk(AbstractModel):
 
     @property
     def QueryParam(self):
-        """对应风险的查询参数
+        r"""对应风险的查询参数
         :rtype: str
         """
         return self._QueryParam
@@ -1248,7 +1248,7 @@ class AccessKeyRisk(AbstractModel):
 
 
 class AccessKeyUser(AbstractModel):
-    """访问密钥账号信息
+    r"""访问密钥账号信息
 
     """
 
@@ -1321,7 +1321,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def ID(self):
-        """账号ID
+        r"""账号ID
         :rtype: int
         """
         return self._ID
@@ -1332,7 +1332,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def Name(self):
-        """账号名称
+        r"""账号名称
         :rtype: str
         """
         return self._Name
@@ -1343,7 +1343,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def Type(self):
-        """0 主账号 1子账号
+        r"""0 主账号 1子账号
         :rtype: int
         """
         return self._Type
@@ -1354,7 +1354,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def AccessType(self):
-        """访问方式
+        r"""访问方式
 0 API
 1 控制台与API
         :rtype: int
@@ -1367,7 +1367,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def Advice(self):
-        """安全建议 枚举 0 正常 1 立即处理 2 建议加固
+        r"""安全建议 枚举 0 正常 1 立即处理 2 建议加固
         :rtype: int
         """
         return self._Advice
@@ -1378,7 +1378,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def AccessKeyAlarmList(self):
-        """告警信息列表
+        r"""告警信息列表
         :rtype: list of AccessKeyAlarmInfo
         """
         return self._AccessKeyAlarmList
@@ -1389,7 +1389,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def AccessKeyRiskList(self):
-        """风险信息列表
+        r"""风险信息列表
         :rtype: list of AccessKeyAlarmInfo
         """
         return self._AccessKeyRiskList
@@ -1400,7 +1400,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def AppID(self):
-        """账号所属APPID
+        r"""账号所属APPID
         :rtype: int
         """
         return self._AppID
@@ -1411,7 +1411,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def Nickname(self):
-        """主账号昵称
+        r"""主账号昵称
         :rtype: str
         """
         return self._Nickname
@@ -1422,7 +1422,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def SubNickname(self):
-        """子账号昵称
+        r"""子账号昵称
         :rtype: str
         """
         return self._SubNickname
@@ -1433,7 +1433,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def Uin(self):
-        """账号所属主账号Uin
+        r"""账号所属主账号Uin
         :rtype: str
         """
         return self._Uin
@@ -1444,7 +1444,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def SubUin(self):
-        """账号自身uin，主账号时与主账号uin一致
+        r"""账号自身uin，主账号时与主账号uin一致
         :rtype: str
         """
         return self._SubUin
@@ -1455,7 +1455,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def LoginIP(self):
-        """登录IP
+        r"""登录IP
         :rtype: str
         """
         return self._LoginIP
@@ -1466,7 +1466,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def LoginLocation(self):
-        """登录地址
+        r"""登录地址
         :rtype: str
         """
         return self._LoginLocation
@@ -1477,7 +1477,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def LoginTime(self):
-        """登录时间
+        r"""登录时间
         :rtype: str
         """
         return self._LoginTime
@@ -1488,7 +1488,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def ISP(self):
-        """运营商名称
+        r"""运营商名称
         :rtype: str
         """
         return self._ISP
@@ -1499,7 +1499,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def ActionFlag(self):
-        """操作保护是否开启
+        r"""操作保护是否开启
 0 未开启
 1 已开启
         :rtype: int
@@ -1512,7 +1512,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def LoginFlag(self):
-        """登录保护是否开启
+        r"""登录保护是否开启
 0 未开启
 1 已开启
         :rtype: int
@@ -1525,7 +1525,7 @@ class AccessKeyUser(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """0 表示已检测 1 表示检测中
+        r"""0 表示已检测 1 表示检测中
         :rtype: int
         """
         return self._CheckStatus
@@ -1576,13 +1576,13 @@ class AccessKeyUser(AbstractModel):
 
 
 class AddNewBindRoleUserRequest(AbstractModel):
-    """AddNewBindRoleUser请求参数结构体
+    r"""AddNewBindRoleUser请求参数结构体
 
     """
 
 
 class AddNewBindRoleUserResponse(AbstractModel):
-    """AddNewBindRoleUser返回参数结构体
+    r"""AddNewBindRoleUser返回参数结构体
 
     """
 
@@ -1598,7 +1598,7 @@ class AddNewBindRoleUserResponse(AbstractModel):
 
     @property
     def Status(self):
-        """0成功，其他失败
+        r"""0成功，其他失败
         :rtype: int
         """
         return self._Status
@@ -1609,7 +1609,7 @@ class AddNewBindRoleUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1625,7 +1625,7 @@ class AddNewBindRoleUserResponse(AbstractModel):
 
 
 class AlertExtraInfo(AbstractModel):
-    """告警下拉字段
+    r"""告警下拉字段
 
     """
 
@@ -1907,7 +1907,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RelateEvent(self):
-        """相关攻击事件
+        r"""相关攻击事件
         :rtype: :class:`tencentcloud.csip.v20221121.models.RelatedEvent`
         """
         return self._RelateEvent
@@ -1918,7 +1918,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def LeakContent(self):
-        """泄漏内容
+        r"""泄漏内容
         :rtype: str
         """
         return self._LeakContent
@@ -1929,7 +1929,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def LeakAPI(self):
-        """泄漏API
+        r"""泄漏API
         :rtype: str
         """
         return self._LeakAPI
@@ -1940,7 +1940,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def SecretID(self):
-        """secretID
+        r"""secretID
         :rtype: str
         """
         return self._SecretID
@@ -1951,7 +1951,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Rule(self):
-        """命中规则
+        r"""命中规则
         :rtype: str
         """
         return self._Rule
@@ -1962,7 +1962,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RuleDesc(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._RuleDesc
@@ -1973,7 +1973,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProtocolPort(self):
-        """协议端口
+        r"""协议端口
         :rtype: str
         """
         return self._ProtocolPort
@@ -1984,7 +1984,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AttackContent(self):
-        """攻击内容
+        r"""攻击内容
         :rtype: str
         """
         return self._AttackContent
@@ -1995,7 +1995,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AttackIPProfile(self):
-        """攻击IP画像
+        r"""攻击IP画像
         :rtype: str
         """
         return self._AttackIPProfile
@@ -2006,7 +2006,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AttackIPTags(self):
-        """攻击IP标签
+        r"""攻击IP标签
         :rtype: str
         """
         return self._AttackIPTags
@@ -2017,7 +2017,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RequestMethod(self):
-        """请求方式
+        r"""请求方式
         :rtype: str
         """
         return self._RequestMethod
@@ -2028,7 +2028,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def HttpLog(self):
-        """HTTP日志
+        r"""HTTP日志
         :rtype: str
         """
         return self._HttpLog
@@ -2039,7 +2039,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AttackDomain(self):
-        """被攻击域名
+        r"""被攻击域名
         :rtype: str
         """
         return self._AttackDomain
@@ -2050,7 +2050,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FilePath(self):
-        """文件路径
+        r"""文件路径
         :rtype: str
         """
         return self._FilePath
@@ -2061,7 +2061,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def UserAgent(self):
-        """user_agent
+        r"""user_agent
         :rtype: str
         """
         return self._UserAgent
@@ -2072,7 +2072,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RequestHeaders(self):
-        """请求头
+        r"""请求头
         :rtype: str
         """
         return self._RequestHeaders
@@ -2083,7 +2083,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def LoginUserName(self):
-        """登录用户名
+        r"""登录用户名
         :rtype: str
         """
         return self._LoginUserName
@@ -2094,7 +2094,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def VulnerabilityName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VulnerabilityName
@@ -2105,7 +2105,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def CVE(self):
-        """公共漏洞和暴露
+        r"""公共漏洞和暴露
         :rtype: str
         """
         return self._CVE
@@ -2116,7 +2116,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ServiceProcess(self):
-        """服务进程
+        r"""服务进程
         :rtype: str
         """
         return self._ServiceProcess
@@ -2127,7 +2127,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名
+        r"""文件名
         :rtype: str
         """
         return self._FileName
@@ -2138,7 +2138,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小
+        r"""文件大小
         :rtype: str
         """
         return self._FileSize
@@ -2149,7 +2149,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileMD5(self):
-        """文件MD5
+        r"""文件MD5
         :rtype: str
         """
         return self._FileMD5
@@ -2160,7 +2160,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileLastAccessTime(self):
-        """文件最近访问时间
+        r"""文件最近访问时间
         :rtype: str
         """
         return self._FileLastAccessTime
@@ -2171,7 +2171,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileModifyTime(self):
-        """文件修改时间
+        r"""文件修改时间
         :rtype: str
         """
         return self._FileModifyTime
@@ -2182,7 +2182,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RecentAccessTime(self):
-        """最近访问时间
+        r"""最近访问时间
         :rtype: str
         """
         return self._RecentAccessTime
@@ -2193,7 +2193,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RecentModifyTime(self):
-        """最近修改时间
+        r"""最近修改时间
         :rtype: str
         """
         return self._RecentModifyTime
@@ -2204,7 +2204,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def VirusName(self):
-        """病毒名
+        r"""病毒名
         :rtype: str
         """
         return self._VirusName
@@ -2215,7 +2215,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def VirusFileTags(self):
-        """病毒文件标签
+        r"""病毒文件标签
         :rtype: str
         """
         return self._VirusFileTags
@@ -2226,7 +2226,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def BehavioralCharacteristics(self):
-        """行为特征
+        r"""行为特征
         :rtype: str
         """
         return self._BehavioralCharacteristics
@@ -2237,7 +2237,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessNamePID(self):
-        """进程名（PID）
+        r"""进程名（PID）
         :rtype: str
         """
         return self._ProcessNamePID
@@ -2248,7 +2248,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessPath(self):
-        """进程路径
+        r"""进程路径
         :rtype: str
         """
         return self._ProcessPath
@@ -2259,7 +2259,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessCommandLine(self):
-        """进程命令行
+        r"""进程命令行
         :rtype: str
         """
         return self._ProcessCommandLine
@@ -2270,7 +2270,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessPermissions(self):
-        """进程权限
+        r"""进程权限
         :rtype: str
         """
         return self._ProcessPermissions
@@ -2281,7 +2281,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ExecutedCommand(self):
-        """执行命令
+        r"""执行命令
         :rtype: str
         """
         return self._ExecutedCommand
@@ -2292,7 +2292,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AffectedFileName(self):
-        """受影响文件名
+        r"""受影响文件名
         :rtype: str
         """
         return self._AffectedFileName
@@ -2303,7 +2303,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def DecoyPath(self):
-        """诱饵路径
+        r"""诱饵路径
         :rtype: str
         """
         return self._DecoyPath
@@ -2314,7 +2314,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousProcessFileSize(self):
-        """恶意进程文件大小
+        r"""恶意进程文件大小
         :rtype: str
         """
         return self._MaliciousProcessFileSize
@@ -2325,7 +2325,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousProcessFileMD5(self):
-        """恶意进程文件MD5
+        r"""恶意进程文件MD5
         :rtype: str
         """
         return self._MaliciousProcessFileMD5
@@ -2336,7 +2336,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousProcessNamePID(self):
-        """恶意进程名（PID）
+        r"""恶意进程名（PID）
         :rtype: str
         """
         return self._MaliciousProcessNamePID
@@ -2347,7 +2347,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousProcessPath(self):
-        """恶意进程路径
+        r"""恶意进程路径
         :rtype: str
         """
         return self._MaliciousProcessPath
@@ -2358,7 +2358,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousProcessStartTime(self):
-        """恶意进程启动时间
+        r"""恶意进程启动时间
         :rtype: str
         """
         return self._MaliciousProcessStartTime
@@ -2369,7 +2369,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def CommandContent(self):
-        """命令内容
+        r"""命令内容
         :rtype: str
         """
         return self._CommandContent
@@ -2380,7 +2380,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def StartupUser(self):
-        """启动用户
+        r"""启动用户
         :rtype: str
         """
         return self._StartupUser
@@ -2391,7 +2391,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def UserGroup(self):
-        """用户所属组
+        r"""用户所属组
         :rtype: str
         """
         return self._UserGroup
@@ -2402,7 +2402,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def NewPermissions(self):
-        """新增权限
+        r"""新增权限
         :rtype: str
         """
         return self._NewPermissions
@@ -2413,7 +2413,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ParentProcess(self):
-        """父进程
+        r"""父进程
         :rtype: str
         """
         return self._ParentProcess
@@ -2424,7 +2424,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ClassName(self):
-        """类名
+        r"""类名
         :rtype: str
         """
         return self._ClassName
@@ -2435,7 +2435,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ClassLoader(self):
-        """所属类加载器
+        r"""所属类加载器
         :rtype: str
         """
         return self._ClassLoader
@@ -2446,7 +2446,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ClassFileSize(self):
-        """类文件大小
+        r"""类文件大小
         :rtype: str
         """
         return self._ClassFileSize
@@ -2457,7 +2457,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ClassFileMD5(self):
-        """类文件MD5
+        r"""类文件MD5
         :rtype: str
         """
         return self._ClassFileMD5
@@ -2468,7 +2468,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ParentClassName(self):
-        """父类名
+        r"""父类名
         :rtype: str
         """
         return self._ParentClassName
@@ -2479,7 +2479,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def InheritedInterface(self):
-        """继承接口
+        r"""继承接口
         :rtype: str
         """
         return self._InheritedInterface
@@ -2490,7 +2490,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Comment(self):
-        """注释
+        r"""注释
         :rtype: str
         """
         return self._Comment
@@ -2501,7 +2501,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def PayloadContent(self):
-        """载荷内容
+        r"""载荷内容
         :rtype: str
         """
         return self._PayloadContent
@@ -2512,7 +2512,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def CallbackAddressPortrait(self):
-        """回连地址画像
+        r"""回连地址画像
         :rtype: str
         """
         return self._CallbackAddressPortrait
@@ -2523,7 +2523,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def CallbackAddressTag(self):
-        """回连地址标签
+        r"""回连地址标签
         :rtype: str
         """
         return self._CallbackAddressTag
@@ -2534,7 +2534,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessMD5(self):
-        """进程MD5
+        r"""进程MD5
         :rtype: str
         """
         return self._ProcessMD5
@@ -2545,7 +2545,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FilePermission(self):
-        """文件权限
+        r"""文件权限
         :rtype: str
         """
         return self._FilePermission
@@ -2556,7 +2556,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FromLogAnalysisData(self):
-        """来源于日志分析的信息字段
+        r"""来源于日志分析的信息字段
         :rtype: list of KeyValue
         """
         return self._FromLogAnalysisData
@@ -2567,7 +2567,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def HitProbe(self):
-        """命中探针
+        r"""命中探针
         :rtype: str
         """
         return self._HitProbe
@@ -2578,7 +2578,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def HitHoneyPot(self):
-        """命中蜜罐
+        r"""命中蜜罐
 
         :rtype: str
         """
@@ -2590,7 +2590,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def CommandList(self):
-        """命令列表
+        r"""命令列表
         :rtype: str
         """
         return self._CommandList
@@ -2601,7 +2601,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def AttackEventDesc(self):
-        """攻击事件描述
+        r"""攻击事件描述
 
         :rtype: str
         """
@@ -2613,7 +2613,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessInfo(self):
-        """进程信息
+        r"""进程信息
         :rtype: str
         """
         return self._ProcessInfo
@@ -2624,7 +2624,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def UserNameAndPwd(self):
-        """使用用户名&密码
+        r"""使用用户名&密码
         :rtype: str
         """
         return self._UserNameAndPwd
@@ -2635,7 +2635,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def StrategyID(self):
-        """主机防护策略ID
+        r"""主机防护策略ID
         :rtype: str
         """
         return self._StrategyID
@@ -2646,7 +2646,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def StrategyName(self):
-        """主机防护策略名称
+        r"""主机防护策略名称
         :rtype: str
         """
         return self._StrategyName
@@ -2657,7 +2657,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def HitStrategy(self):
-        """主机防护命中策略，是策略ID和策略名称的组合
+        r"""主机防护命中策略，是策略ID和策略名称的组合
         :rtype: str
         """
         return self._HitStrategy
@@ -2668,7 +2668,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ProcessName(self):
-        """进程名
+        r"""进程名
         :rtype: str
         """
         return self._ProcessName
@@ -2679,7 +2679,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def PID(self):
-        """PID
+        r"""PID
         :rtype: str
         """
         return self._PID
@@ -2690,7 +2690,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def PodName(self):
-        """容器Pod名
+        r"""容器Pod名
         :rtype: str
         """
         return self._PodName
@@ -2701,7 +2701,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def PodID(self):
-        """容器PodID
+        r"""容器PodID
         :rtype: str
         """
         return self._PodID
@@ -2712,7 +2712,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Response(self):
-        """Http响应
+        r"""Http响应
         :rtype: str
         """
         return self._Response
@@ -2723,7 +2723,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def SystemCall(self):
-        """系统调用
+        r"""系统调用
         :rtype: str
         """
         return self._SystemCall
@@ -2734,7 +2734,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Verb(self):
-        """操作类型verb
+        r"""操作类型verb
         :rtype: str
         """
         return self._Verb
@@ -2745,7 +2745,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def LogID(self):
-        """日志ID
+        r"""日志ID
         :rtype: str
         """
         return self._LogID
@@ -2756,7 +2756,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Different(self):
-        """变更内容
+        r"""变更内容
         :rtype: str
         """
         return self._Different
@@ -2767,7 +2767,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型
+        r"""事件类型
         :rtype: str
         """
         return self._EventType
@@ -2778,7 +2778,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def Description(self):
-        """事件描述
+        r"""事件描述
         :rtype: str
         """
         return self._Description
@@ -2789,7 +2789,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def TargetAddress(self):
-        """目标地址(容器反弹shell)
+        r"""目标地址(容器反弹shell)
         :rtype: str
         """
         return self._TargetAddress
@@ -2800,7 +2800,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def MaliciousRequestDomain(self):
-        """恶意请求域名(容器恶意外联)
+        r"""恶意请求域名(容器恶意外联)
         :rtype: str
         """
         return self._MaliciousRequestDomain
@@ -2811,7 +2811,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RuleType(self):
-        """规则类型(容器K8sAPI异常请求)
+        r"""规则类型(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._RuleType
@@ -2822,7 +2822,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RequestURI(self):
-        """请求资源(容器K8sAPI异常请求)
+        r"""请求资源(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._RequestURI
@@ -2833,7 +2833,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RequestUser(self):
-        """发起请求用户(容器K8sAPI异常请求)
+        r"""发起请求用户(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._RequestUser
@@ -2844,7 +2844,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def RequestObject(self):
-        """请求对象(容器K8sAPI异常请求)
+        r"""请求对象(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._RequestObject
@@ -2855,7 +2855,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def ResponseObject(self):
-        """响应对象(容器K8sAPI异常请求)
+        r"""响应对象(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._ResponseObject
@@ -2866,7 +2866,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型(容器文件篡改)
+        r"""文件类型(容器文件篡改)
         :rtype: str
         """
         return self._FileType
@@ -2877,7 +2877,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def TIType(self):
-        """标签特征(容器恶意外联)
+        r"""标签特征(容器恶意外联)
         :rtype: str
         """
         return self._TIType
@@ -2888,7 +2888,7 @@ class AlertExtraInfo(AbstractModel):
 
     @property
     def SourceIP(self):
-        """来源IP(容器K8sAPI异常请求)
+        r"""来源IP(容器K8sAPI异常请求)
         :rtype: str
         """
         return self._SourceIP
@@ -3007,7 +3007,7 @@ class AlertExtraInfo(AbstractModel):
 
 
 class AlertInfo(AbstractModel):
-    """告警中心全量告警列表数据
+    r"""告警中心全量告警列表数据
 
     """
 
@@ -3114,7 +3114,7 @@ CSIP:云安全中心
 
     @property
     def ID(self):
-        """告警ID
+        r"""告警ID
         :rtype: str
         """
         return self._ID
@@ -3125,7 +3125,7 @@ CSIP:云安全中心
 
     @property
     def Name(self):
-        """告警名称
+        r"""告警名称
         :rtype: str
         """
         return self._Name
@@ -3136,7 +3136,7 @@ CSIP:云安全中心
 
     @property
     def Source(self):
-        """告警来源
+        r"""告警来源
 CFW:云防火墙
 WAF:Web应用防火墙
 CWP:主机安全
@@ -3151,7 +3151,7 @@ CSIP:云安全中心
 
     @property
     def Level(self):
-        """告警等级
+        r"""告警等级
 1:提示
 2:低危
 3:中危
@@ -3167,7 +3167,7 @@ CSIP:云安全中心
 
     @property
     def Attacker(self):
-        """攻击者
+        r"""攻击者
         :rtype: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
         """
         return self._Attacker
@@ -3178,7 +3178,7 @@ CSIP:云安全中心
 
     @property
     def Victim(self):
-        """受害者
+        r"""受害者
         :rtype: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
         """
         return self._Victim
@@ -3189,7 +3189,7 @@ CSIP:云安全中心
 
     @property
     def EvidenceData(self):
-        """证据数据(例如攻击内容等，base64编码)
+        r"""证据数据(例如攻击内容等，base64编码)
         :rtype: str
         """
         return self._EvidenceData
@@ -3200,7 +3200,7 @@ CSIP:云安全中心
 
     @property
     def EvidenceLocation(self):
-        """证据位置(例如协议端口)
+        r"""证据位置(例如协议端口)
         :rtype: str
         """
         return self._EvidenceLocation
@@ -3211,7 +3211,7 @@ CSIP:云安全中心
 
     @property
     def EvidencePath(self):
-        """证据路径
+        r"""证据路径
         :rtype: str
         """
         return self._EvidencePath
@@ -3222,7 +3222,7 @@ CSIP:云安全中心
 
     @property
     def CreateTime(self):
-        """首次告警时间
+        r"""首次告警时间
         :rtype: str
         """
         return self._CreateTime
@@ -3233,7 +3233,7 @@ CSIP:云安全中心
 
     @property
     def UpdateTime(self):
-        """最近告警时间
+        r"""最近告警时间
         :rtype: str
         """
         return self._UpdateTime
@@ -3244,7 +3244,7 @@ CSIP:云安全中心
 
     @property
     def Count(self):
-        """告警次数
+        r"""告警次数
         :rtype: int
         """
         return self._Count
@@ -3255,7 +3255,7 @@ CSIP:云安全中心
 
     @property
     def UrgentSuggestion(self):
-        """紧急缓解建议
+        r"""紧急缓解建议
         :rtype: str
         """
         return self._UrgentSuggestion
@@ -3266,7 +3266,7 @@ CSIP:云安全中心
 
     @property
     def RemediationSuggestion(self):
-        """根治建议
+        r"""根治建议
         :rtype: str
         """
         return self._RemediationSuggestion
@@ -3277,7 +3277,7 @@ CSIP:云安全中心
 
     @property
     def Status(self):
-        """处理状态
+        r"""处理状态
 0：未处置，1：已忽略，2：已处置
         :rtype: int
         """
@@ -3289,7 +3289,7 @@ CSIP:云安全中心
 
     @property
     def ProcessType(self):
-        """告警处理类型
+        r"""告警处理类型
         :rtype: str
         """
         return self._ProcessType
@@ -3300,7 +3300,7 @@ CSIP:云安全中心
 
     @property
     def Type(self):
-        """告警大类
+        r"""告警大类
         :rtype: str
         """
         return self._Type
@@ -3311,7 +3311,7 @@ CSIP:云安全中心
 
     @property
     def SubType(self):
-        """告警小类
+        r"""告警小类
         :rtype: str
         """
         return self._SubType
@@ -3322,7 +3322,7 @@ CSIP:云安全中心
 
     @property
     def ExtraInfo(self):
-        """下拉字段
+        r"""下拉字段
         :rtype: :class:`tencentcloud.csip.v20221121.models.AlertExtraInfo`
         """
         return self._ExtraInfo
@@ -3333,7 +3333,7 @@ CSIP:云安全中心
 
     @property
     def Key(self):
-        """聚合字段
+        r"""聚合字段
         :rtype: str
         """
         return self._Key
@@ -3344,7 +3344,7 @@ CSIP:云安全中心
 
     @property
     def Date(self):
-        """告警日期
+        r"""告警日期
         :rtype: str
         """
         return self._Date
@@ -3355,7 +3355,7 @@ CSIP:云安全中心
 
     @property
     def AppID(self):
-        """appid
+        r"""appid
         :rtype: str
         """
         return self._AppID
@@ -3366,7 +3366,7 @@ CSIP:云安全中心
 
     @property
     def NickName(self):
-        """账户名称
+        r"""账户名称
         :rtype: str
         """
         return self._NickName
@@ -3377,7 +3377,7 @@ CSIP:云安全中心
 
     @property
     def Uin(self):
-        """账户ID
+        r"""账户ID
         :rtype: str
         """
         return self._Uin
@@ -3388,7 +3388,7 @@ CSIP:云安全中心
 
     @property
     def Action(self):
-        """行为
+        r"""行为
         :rtype: int
         """
         return self._Action
@@ -3399,7 +3399,7 @@ CSIP:云安全中心
 
     @property
     def RiskInvestigation(self):
-        """风险排查
+        r"""风险排查
         :rtype: str
         """
         return self._RiskInvestigation
@@ -3410,7 +3410,7 @@ CSIP:云安全中心
 
     @property
     def RiskTreatment(self):
-        """风险处置
+        r"""风险处置
         :rtype: str
         """
         return self._RiskTreatment
@@ -3421,7 +3421,7 @@ CSIP:云安全中心
 
     @property
     def LogType(self):
-        """日志类型
+        r"""日志类型
         :rtype: str
         """
         return self._LogType
@@ -3432,7 +3432,7 @@ CSIP:云安全中心
 
     @property
     def LogSearch(self):
-        """语句检索
+        r"""语句检索
         :rtype: str
         """
         return self._LogSearch
@@ -3489,7 +3489,7 @@ CSIP:云安全中心
 
 
 class AssetBaseInfoResponse(AbstractModel):
-    """主机资产详情
+    r"""主机资产详情
 
     """
 
@@ -3586,7 +3586,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc-id
+        r"""vpc-id
         :rtype: str
         """
         return self._VpcId
@@ -3597,7 +3597,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc-name
+        r"""vpc-name
         :rtype: str
         """
         return self._VpcName
@@ -3608,7 +3608,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -3619,7 +3619,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def Os(self):
-        """操作系统
+        r"""操作系统
         :rtype: str
         """
         return self._Os
@@ -3630,7 +3630,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -3641,7 +3641,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """内网ip
+        r"""内网ip
         :rtype: str
         """
         return self._PrivateIp
@@ -3652,7 +3652,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -3663,7 +3663,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -3674,7 +3674,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -3685,7 +3685,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def AccountNum(self):
-        """账号数量
+        r"""账号数量
         :rtype: int
         """
         return self._AccountNum
@@ -3696,7 +3696,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def PortNum(self):
-        """端口数量
+        r"""端口数量
         :rtype: int
         """
         return self._PortNum
@@ -3707,7 +3707,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def ProcessNum(self):
-        """进程数量
+        r"""进程数量
         :rtype: int
         """
         return self._ProcessNum
@@ -3718,7 +3718,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def SoftApplicationNum(self):
-        """软件应用数量
+        r"""软件应用数量
         :rtype: int
         """
         return self._SoftApplicationNum
@@ -3729,7 +3729,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def DatabaseNum(self):
-        """数据库数量
+        r"""数据库数量
         :rtype: int
         """
         return self._DatabaseNum
@@ -3740,7 +3740,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def WebApplicationNum(self):
-        """Web应用数量
+        r"""Web应用数量
         :rtype: int
         """
         return self._WebApplicationNum
@@ -3751,7 +3751,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def ServiceNum(self):
-        """服务数量
+        r"""服务数量
         :rtype: int
         """
         return self._ServiceNum
@@ -3762,7 +3762,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def WebFrameworkNum(self):
-        """web框架数量
+        r"""web框架数量
         :rtype: int
         """
         return self._WebFrameworkNum
@@ -3773,7 +3773,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def WebSiteNum(self):
-        """Web站点数量
+        r"""Web站点数量
         :rtype: int
         """
         return self._WebSiteNum
@@ -3784,7 +3784,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def JarPackageNum(self):
-        """Jar包数量
+        r"""Jar包数量
         :rtype: int
         """
         return self._JarPackageNum
@@ -3795,7 +3795,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def StartServiceNum(self):
-        """启动服务数量
+        r"""启动服务数量
         :rtype: int
         """
         return self._StartServiceNum
@@ -3806,7 +3806,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def ScheduledTaskNum(self):
-        """计划任务数量
+        r"""计划任务数量
         :rtype: int
         """
         return self._ScheduledTaskNum
@@ -3817,7 +3817,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def EnvironmentVariableNum(self):
-        """环境变量数量
+        r"""环境变量数量
         :rtype: int
         """
         return self._EnvironmentVariableNum
@@ -3828,7 +3828,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def KernelModuleNum(self):
-        """内核模块数量
+        r"""内核模块数量
         :rtype: int
         """
         return self._KernelModuleNum
@@ -3839,7 +3839,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def SystemInstallationPackageNum(self):
-        """系统安装包数量
+        r"""系统安装包数量
         :rtype: int
         """
         return self._SystemInstallationPackageNum
@@ -3850,7 +3850,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def SurplusProtectDay(self):
-        """剩余防护时长
+        r"""剩余防护时长
         :rtype: int
         """
         return self._SurplusProtectDay
@@ -3861,7 +3861,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def CWPStatus(self):
-        """客户端是否安装  1 已安装 0 未安装
+        r"""客户端是否安装  1 已安装 0 未安装
         :rtype: int
         """
         return self._CWPStatus
@@ -3872,7 +3872,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -3883,7 +3883,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def ProtectLevel(self):
-        """防护等级
+        r"""防护等级
         :rtype: str
         """
         return self._ProtectLevel
@@ -3894,7 +3894,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     @property
     def ProtectedDay(self):
-        """防护时长
+        r"""防护时长
         :rtype: int
         """
         return self._ProtectedDay
@@ -3950,7 +3950,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
 
 class AssetCluster(AbstractModel):
-    """集群列表
+    r"""集群列表
 
     集群防护状态，左边枚举,右边为显示
     集群防护状态
@@ -4061,7 +4061,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def AppId(self):
-        """租户id
+        r"""租户id
         :rtype: int
         """
         return self._AppId
@@ -4072,7 +4072,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def Uin(self):
-        """租户uin
+        r"""租户uin
         :rtype: str
         """
         return self._Uin
@@ -4083,7 +4083,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def Nick(self):
-        """租户昵称
+        r"""租户昵称
         :rtype: str
         """
         return self._Nick
@@ -4094,7 +4094,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -4105,7 +4105,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def AssetId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._AssetId
@@ -4116,7 +4116,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def AssetName(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._AssetName
@@ -4127,7 +4127,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def AssetType(self):
-        """集群类型
+        r"""集群类型
         :rtype: str
         """
         return self._AssetType
@@ -4138,7 +4138,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def InstanceCreateTime(self):
-        """集群创建时间
+        r"""集群创建时间
         :rtype: str
         """
         return self._InstanceCreateTime
@@ -4149,7 +4149,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -4160,7 +4160,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def ProtectStatus(self):
-        """集群防护状态，左边枚举,右边为显示
+        r"""集群防护状态，左边枚举,右边为显示
 集群防护状态 
 0:未接入
 1:未防护 
@@ -4180,7 +4180,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def ProtectInfo(self):
-        """接入信息，不为空表示有接入异常信息
+        r"""接入信息，不为空表示有接入异常信息
         :rtype: str
         """
         return self._ProtectInfo
@@ -4191,7 +4191,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络id
+        r"""私有网络id
         :rtype: str
         """
         return self._VpcId
@@ -4202,7 +4202,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名称
+        r"""私有网络名称
         :rtype: str
         """
         return self._VpcName
@@ -4213,7 +4213,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def KubernetesVersion(self):
-        """kubernetes版本
+        r"""kubernetes版本
         :rtype: str
         """
         return self._KubernetesVersion
@@ -4224,7 +4224,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def Component(self):
-        """运行时组件
+        r"""运行时组件
         :rtype: str
         """
         return self._Component
@@ -4235,7 +4235,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def ComponentVersion(self):
-        """运行时组件版本
+        r"""运行时组件版本
         :rtype: str
         """
         return self._ComponentVersion
@@ -4246,7 +4246,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def ComponentStatus(self):
-        """组件状态
+        r"""组件状态
         :rtype: str
         """
         return self._ComponentStatus
@@ -4257,7 +4257,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def CheckTime(self):
-        """体检时间
+        r"""体检时间
         :rtype: str
         """
         return self._CheckTime
@@ -4268,7 +4268,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def MachineCount(self):
-        """关联主机数
+        r"""关联主机数
         :rtype: int
         """
         return self._MachineCount
@@ -4279,7 +4279,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def PodCount(self):
-        """关联pod数
+        r"""关联pod数
         :rtype: int
         """
         return self._PodCount
@@ -4290,7 +4290,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """关联service数
+        r"""关联service数
         :rtype: int
         """
         return self._ServiceCount
@@ -4301,7 +4301,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def VulRisk(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VulRisk
@@ -4312,7 +4312,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def CFGRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._CFGRisk
@@ -4323,7 +4323,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def CheckCount(self):
-        """体检数
+        r"""体检数
         :rtype: int
         """
         return self._CheckCount
@@ -4334,7 +4334,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心：1:核心，2:非核心
+        r"""是否核心：1:核心，2:非核心
         :rtype: int
         """
         return self._IsCore
@@ -4345,7 +4345,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -4356,7 +4356,7 @@ class AssetCluster(AbstractModel):
 
     @property
     def CloudType(self):
-        """云资产类型：0：腾讯云，1：aws，2：azure
+        r"""云资产类型：0：腾讯云，1：aws，2：azure
         :rtype: int
         """
         return self._CloudType
@@ -4405,7 +4405,7 @@ class AssetCluster(AbstractModel):
 
 
 class AssetClusterPod(AbstractModel):
-    """集群pod列表
+    r"""集群pod列表
 
     """
 
@@ -4475,7 +4475,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def AppId(self):
-        """租户id
+        r"""租户id
         :rtype: int
         """
         return self._AppId
@@ -4486,7 +4486,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def Uin(self):
-        """租户uin
+        r"""租户uin
         :rtype: str
         """
         return self._Uin
@@ -4497,7 +4497,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def Nick(self):
-        """租户昵称
+        r"""租户昵称
         :rtype: str
         """
         return self._Nick
@@ -4508,7 +4508,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -4519,7 +4519,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def AssetId(self):
-        """pod id
+        r"""pod id
         :rtype: str
         """
         return self._AssetId
@@ -4530,7 +4530,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def AssetName(self):
-        """pod名称
+        r"""pod名称
         :rtype: str
         """
         return self._AssetName
@@ -4541,7 +4541,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def InstanceCreateTime(self):
-        """pod创建时间
+        r"""pod创建时间
         :rtype: str
         """
         return self._InstanceCreateTime
@@ -4552,7 +4552,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        r"""命名空间
         :rtype: str
         """
         return self._Namespace
@@ -4563,7 +4563,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -4574,7 +4574,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._ClusterId
@@ -4585,7 +4585,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._ClusterName
@@ -4596,7 +4596,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def MachineId(self):
-        """主机id
+        r"""主机id
         :rtype: str
         """
         return self._MachineId
@@ -4607,7 +4607,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def MachineName(self):
-        """主机名
+        r"""主机名
         :rtype: str
         """
         return self._MachineName
@@ -4618,7 +4618,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def PodIp(self):
-        """pod ip
+        r"""pod ip
         :rtype: str
         """
         return self._PodIp
@@ -4629,7 +4629,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """关联service数
+        r"""关联service数
         :rtype: int
         """
         return self._ServiceCount
@@ -4640,7 +4640,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def ContainerCount(self):
-        """关联容器数
+        r"""关联容器数
         :rtype: int
         """
         return self._ContainerCount
@@ -4651,7 +4651,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -4662,7 +4662,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """内网ip
+        r"""内网ip
         :rtype: str
         """
         return self._PrivateIp
@@ -4673,7 +4673,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心：1:核心，2:非核心
+        r"""是否核心：1:核心，2:非核心
         :rtype: int
         """
         return self._IsCore
@@ -4684,7 +4684,7 @@ class AssetClusterPod(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -4726,7 +4726,7 @@ class AssetClusterPod(AbstractModel):
 
 
 class AssetInfoDetail(AbstractModel):
-    """资产扫描结构细节
+    r"""资产扫描结构细节
 
     """
 
@@ -4766,7 +4766,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def AppID(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppID
@@ -4777,7 +4777,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def CVEId(self):
-        """CVE编号
+        r"""CVE编号
         :rtype: str
         """
         return self._CVEId
@@ -4788,7 +4788,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def IsScan(self):
-        """是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
+        r"""是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
         :rtype: int
         """
         return self._IsScan
@@ -4799,7 +4799,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def InfluenceAsset(self):
-        """影响资产数目
+        r"""影响资产数目
         :rtype: int
         """
         return self._InfluenceAsset
@@ -4810,7 +4810,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def NotRepairAsset(self):
-        """未修复资产数目
+        r"""未修复资产数目
         :rtype: int
         """
         return self._NotRepairAsset
@@ -4821,7 +4821,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def NotProtectAsset(self):
-        """未防护资产数目
+        r"""未防护资产数目
         :rtype: int
         """
         return self._NotProtectAsset
@@ -4832,7 +4832,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -4843,7 +4843,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def TaskPercent(self):
-        """任务百分比
+        r"""任务百分比
         :rtype: int
         """
         return self._TaskPercent
@@ -4854,7 +4854,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def TaskTime(self):
-        """任务时间
+        r"""任务时间
         :rtype: int
         """
         return self._TaskTime
@@ -4865,7 +4865,7 @@ class AssetInfoDetail(AbstractModel):
 
     @property
     def ScanTime(self):
-        """扫描时间
+        r"""扫描时间
         :rtype: str
         """
         return self._ScanTime
@@ -4897,7 +4897,7 @@ class AssetInfoDetail(AbstractModel):
 
 
 class AssetInstanceTypeMap(AbstractModel):
-    """资产类型和实例类型的映射
+    r"""资产类型和实例类型的映射
 
     """
 
@@ -4916,7 +4916,7 @@ class AssetInstanceTypeMap(AbstractModel):
 
     @property
     def Text(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._Text
@@ -4927,7 +4927,7 @@ class AssetInstanceTypeMap(AbstractModel):
 
     @property
     def Value(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._Value
@@ -4938,7 +4938,7 @@ class AssetInstanceTypeMap(AbstractModel):
 
     @property
     def InstanceTypeList(self):
-        """资产类型和实例类型映射关系
+        r"""资产类型和实例类型映射关系
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeList
@@ -4968,7 +4968,7 @@ class AssetInstanceTypeMap(AbstractModel):
 
 
 class AssetProcessItem(AbstractModel):
-    """主机进程内容
+    r"""主机进程内容
 
     """
 
@@ -5011,7 +5011,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def CloudAccountID(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountID
@@ -5022,7 +5022,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -5033,7 +5033,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def AppID(self):
-        """租户ID
+        r"""租户ID
         :rtype: int
         """
         return self._AppID
@@ -5044,7 +5044,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        """云账号名称
+        r"""云账号名称
         :rtype: str
         """
         return self._CloudAccountName
@@ -5055,7 +5055,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def InstanceID(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceID
@@ -5066,7 +5066,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网IP
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -5077,7 +5077,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """内网IP
+        r"""内网IP
         :rtype: str
         """
         return self._PrivateIp
@@ -5088,7 +5088,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def ProcessID(self):
-        """进程ID
+        r"""进程ID
         :rtype: str
         """
         return self._ProcessID
@@ -5099,7 +5099,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def ProcessName(self):
-        """进程名称
+        r"""进程名称
         :rtype: str
         """
         return self._ProcessName
@@ -5110,7 +5110,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def CmdLine(self):
-        """命令行
+        r"""命令行
         :rtype: str
         """
         return self._CmdLine
@@ -5121,7 +5121,7 @@ class AssetProcessItem(AbstractModel):
 
     @property
     def Port(self):
-        """监听端口列表
+        r"""监听端口列表
         :rtype: str
         """
         return self._Port
@@ -5154,7 +5154,7 @@ class AssetProcessItem(AbstractModel):
 
 
 class AssetRiskItem(AbstractModel):
-    """资产视角风险项
+    r"""资产视角风险项
 
     """
 
@@ -5206,7 +5206,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def AppId(self):
-        """租户ID
+        r"""租户ID
         :rtype: int
         """
         return self._AppId
@@ -5217,7 +5217,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -5228,7 +5228,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def ProviderName(self):
-        """云厂商名称
+        r"""云厂商名称
         :rtype: str
         """
         return self._ProviderName
@@ -5239,7 +5239,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        """云账号名称
+        r"""云账号名称
         :rtype: str
         """
         return self._CloudAccountName
@@ -5250,7 +5250,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountId
@@ -5261,7 +5261,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -5272,7 +5272,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -5283,7 +5283,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """首次发现时间
+        r"""首次发现时间
         :rtype: str
         """
         return self._CreateTime
@@ -5294,7 +5294,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -5305,7 +5305,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        """风险状态
+        r"""风险状态
         :rtype: int
         """
         return self._RiskStatus
@@ -5316,7 +5316,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskTitle(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskTitle
@@ -5327,7 +5327,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
         :rtype: str
         """
         return self._CheckType
@@ -5338,7 +5338,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def Severity(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._Severity
@@ -5349,7 +5349,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -5385,7 +5385,7 @@ class AssetRiskItem(AbstractModel):
 
 
 class AssetTag(AbstractModel):
-    """安全中心资产标签
+    r"""安全中心资产标签
 
     """
 
@@ -5401,7 +5401,7 @@ class AssetTag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签的key值,可以是字母、数字、下划线
+        r"""标签的key值,可以是字母、数字、下划线
         :rtype: str
         """
         return self._TagKey
@@ -5412,7 +5412,7 @@ class AssetTag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签的vale值,可以是字母、数字、下划线
+        r"""标签的vale值,可以是字母、数字、下划线
         :rtype: str
         """
         return self._TagValue
@@ -5436,7 +5436,7 @@ class AssetTag(AbstractModel):
 
 
 class AssetViewCFGRisk(AbstractModel):
-    """资产视角配置风险
+    r"""资产视角配置风险
 
     """
 
@@ -5509,7 +5509,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Id(self):
-        """唯一id
+        r"""唯一id
         :rtype: str
         """
         return self._Id
@@ -5520,7 +5520,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CFGName(self):
-        """配置名
+        r"""配置名
         :rtype: str
         """
         return self._CFGName
@@ -5531,7 +5531,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
         :rtype: str
         """
         return self._CheckType
@@ -5542,7 +5542,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -5553,7 +5553,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -5564,7 +5564,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -5575,7 +5575,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -5586,7 +5586,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -5597,7 +5597,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -5608,7 +5608,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -5619,7 +5619,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def From(self):
-        """来源
+        r"""来源
         :rtype: str
         """
         return self._From
@@ -5630,7 +5630,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -5641,7 +5641,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CFGSTD(self):
-        """相关规范
+        r"""相关规范
         :rtype: str
         """
         return self._CFGSTD
@@ -5652,7 +5652,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CFGDescribe(self):
-        """配置详情
+        r"""配置详情
         :rtype: str
         """
         return self._CFGDescribe
@@ -5663,7 +5663,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CFGFix(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._CFGFix
@@ -5674,7 +5674,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def CFGHelpURL(self):
-        """帮助文档链接
+        r"""帮助文档链接
         :rtype: str
         """
         return self._CFGHelpURL
@@ -5685,7 +5685,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端使用索引
+        r"""前端使用索引
         :rtype: str
         """
         return self._Index
@@ -5696,7 +5696,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -5707,7 +5707,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -5718,7 +5718,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -5729,7 +5729,7 @@ class AssetViewCFGRisk(AbstractModel):
 
     @property
     def ClbId(self):
-        """当资产类型为LBL的时候，展示该字段，方便定位具体的LB
+        r"""当资产类型为LBL的时候，展示该字段，方便定位具体的LB
         :rtype: str
         """
         return self._ClbId
@@ -5772,7 +5772,7 @@ class AssetViewCFGRisk(AbstractModel):
 
 
 class AssetViewPortRisk(AbstractModel):
-    """资产视角的端口风险对象
+    r"""资产视角的端口风险对象
 
     """
 
@@ -5845,7 +5845,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -5856,7 +5856,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -5867,7 +5867,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -5878,7 +5878,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -5889,7 +5889,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
         :rtype: str
         """
         return self._Protocol
@@ -5900,7 +5900,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -5911,7 +5911,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Service(self):
-        """服务
+        r"""服务
         :rtype: str
         """
         return self._Service
@@ -5922,7 +5922,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -5933,7 +5933,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -5944,7 +5944,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Suggestion(self):
-        """处置建议,0保持现状、1限制访问、2封禁端口
+        r"""处置建议,0保持现状、1限制访问、2封禁端口
         :rtype: int
         """
         return self._Suggestion
@@ -5955,7 +5955,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略、3云防已防护
+        r"""状态，0未处理、1已处置、2已忽略、3云防已防护
         :rtype: int
         """
         return self._Status
@@ -5966,7 +5966,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Id(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._Id
@@ -5977,7 +5977,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -5988,7 +5988,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -5999,7 +5999,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -6010,7 +6010,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -6021,7 +6021,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -6032,7 +6032,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -6043,7 +6043,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def From(self):
-        """识别来源，详细看枚举返回。
+        r"""识别来源，详细看枚举返回。
         :rtype: str
         """
         return self._From
@@ -6054,7 +6054,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def ServiceJudge(self):
-        """服务判定,high_risk_service 高危服务 web_service web服务 other_service 其他服务
+        r"""服务判定,high_risk_service 高危服务 web_service web服务 other_service 其他服务
         :rtype: str
         """
         return self._ServiceJudge
@@ -6065,7 +6065,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def XspmStatus(self):
-        """状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        r"""状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
         :rtype: int
         """
         return self._XspmStatus
@@ -6108,7 +6108,7 @@ class AssetViewPortRisk(AbstractModel):
 
 
 class AssetViewVULRisk(AbstractModel):
-    """资产视角的漏洞风险对象
+    r"""资产视角的漏洞风险对象
 
     """
 
@@ -6218,7 +6218,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -6229,7 +6229,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 
         :rtype: str
         """
@@ -6241,7 +6241,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -6252,7 +6252,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -6263,7 +6263,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Service(self):
-        """服务
+        r"""服务
         :rtype: str
         """
         return self._Service
@@ -6274,7 +6274,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -6285,7 +6285,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -6296,7 +6296,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略
+        r"""状态，0未处理、1已处置、2已忽略
         :rtype: int
         """
         return self._Status
@@ -6307,7 +6307,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Id(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._Id
@@ -6318,7 +6318,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -6329,7 +6329,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -6340,7 +6340,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -6351,7 +6351,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -6362,7 +6362,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -6373,7 +6373,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -6384,7 +6384,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -6395,7 +6395,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: str
         """
         return self._Port
@@ -6406,7 +6406,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Describe(self):
-        """漏洞描述
+        r"""漏洞描述
         :rtype: str
         """
         return self._Describe
@@ -6417,7 +6417,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def AppName(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._AppName
@@ -6428,7 +6428,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def References(self):
-        """技术参考
+        r"""技术参考
         :rtype: str
         """
         return self._References
@@ -6439,7 +6439,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def AppVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._AppVersion
@@ -6450,7 +6450,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def VULURL(self):
-        """风险点
+        r"""风险点
         :rtype: str
         """
         return self._VULURL
@@ -6461,7 +6461,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VULName
@@ -6472,7 +6472,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def CVE(self):
-        """cve
+        r"""cve
         :rtype: str
         """
         return self._CVE
@@ -6483,7 +6483,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Fix(self):
-        """修复方案
+        r"""修复方案
         :rtype: str
         """
         return self._Fix
@@ -6494,7 +6494,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def POCId(self):
-        """pocid
+        r"""pocid
         :rtype: str
         """
         return self._POCId
@@ -6505,7 +6505,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def From(self):
-        """扫描来源
+        r"""扫描来源
         :rtype: str
         """
         return self._From
@@ -6516,7 +6516,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def CWPVersion(self):
-        """主机版本
+        r"""主机版本
         :rtype: int
         """
         return self._CWPVersion
@@ -6527,7 +6527,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def IsSupportRepair(self):
-        """是否支持修复
+        r"""是否支持修复
         :rtype: bool
         """
         return self._IsSupportRepair
@@ -6538,7 +6538,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def IsSupportDetect(self):
-        """是否支持扫描
+        r"""是否支持扫描
         :rtype: bool
         """
         return self._IsSupportDetect
@@ -6549,7 +6549,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def InstanceUUID(self):
-        """实例uuid
+        r"""实例uuid
         :rtype: str
         """
         return self._InstanceUUID
@@ -6560,7 +6560,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def Payload(self):
-        """攻击载荷
+        r"""攻击载荷
         :rtype: str
         """
         return self._Payload
@@ -6571,7 +6571,7 @@ class AssetViewVULRisk(AbstractModel):
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
         :rtype: int
         """
         return self._EMGCVulType
@@ -6626,7 +6626,7 @@ class AssetViewVULRisk(AbstractModel):
 
 
 class AssetViewVULRiskData(AbstractModel):
-    """资产视角的漏洞风险对象
+    r"""资产视角的漏洞风险对象
 
     """
 
@@ -6759,7 +6759,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -6770,7 +6770,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -6781,7 +6781,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -6792,7 +6792,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -6803,7 +6803,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -6814,7 +6814,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -6825,7 +6825,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1标记已处置、2已忽略，3已处置 ，4 处置中 ，5 检测中 ，6部分已处置
+        r"""状态，0未处理、1标记已处置、2已忽略，3已处置 ，4 处置中 ，5 检测中 ，6部分已处置
         :rtype: int
         """
         return self._Status
@@ -6836,7 +6836,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._RiskId
@@ -6847,7 +6847,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -6858,7 +6858,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -6869,7 +6869,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -6880,7 +6880,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -6891,7 +6891,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -6902,7 +6902,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -6913,7 +6913,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: str
         """
         return self._Port
@@ -6924,7 +6924,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def AppName(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._AppName
@@ -6935,7 +6935,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def AppVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._AppVersion
@@ -6946,7 +6946,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VULURL(self):
-        """风险点
+        r"""风险点
         :rtype: str
         """
         return self._VULURL
@@ -6957,7 +6957,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VULName
@@ -6968,7 +6968,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def CVE(self):
-        """cve
+        r"""cve
         :rtype: str
         """
         return self._CVE
@@ -6979,7 +6979,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def POCId(self):
-        """pocid
+        r"""pocid
         :rtype: str
         """
         return self._POCId
@@ -6990,7 +6990,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def From(self):
-        """扫描来源
+        r"""扫描来源
         :rtype: str
         """
         return self._From
@@ -7001,7 +7001,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def CWPVersion(self):
-        """主机版本
+        r"""主机版本
         :rtype: int
         """
         return self._CWPVersion
@@ -7012,7 +7012,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def InstanceUUID(self):
-        """实例uuid
+        r"""实例uuid
         :rtype: str
         """
         return self._InstanceUUID
@@ -7023,7 +7023,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Payload(self):
-        """攻击载荷
+        r"""攻击载荷
         :rtype: str
         """
         return self._Payload
@@ -7034,7 +7034,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
         :rtype: int
         """
         return self._EMGCVulType
@@ -7045,7 +7045,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def CVSS(self):
-        """CVSS评分
+        r"""CVSS评分
         :rtype: float
         """
         return self._CVSS
@@ -7056,7 +7056,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引id
+        r"""前端索引id
         :rtype: str
         """
         return self._Index
@@ -7067,7 +7067,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def PCMGRId(self):
-        """pcmgrId
+        r"""pcmgrId
         :rtype: str
         """
         return self._PCMGRId
@@ -7078,7 +7078,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def LogId(self):
-        """报告id
+        r"""报告id
         :rtype: str
         """
         return self._LogId
@@ -7089,7 +7089,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -7100,7 +7100,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VulTag(self):
-        """漏洞标签
+        r"""漏洞标签
         :rtype: list of str
         """
         return self._VulTag
@@ -7111,7 +7111,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def DisclosureTime(self):
-        """漏洞披露时间
+        r"""漏洞披露时间
         :rtype: str
         """
         return self._DisclosureTime
@@ -7122,7 +7122,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def AttackHeat(self):
-        """攻击热度
+        r"""攻击热度
         :rtype: int
         """
         return self._AttackHeat
@@ -7133,7 +7133,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def IsSuggest(self):
-        """是否必修漏洞1是，0不是
+        r"""是否必修漏洞1是，0不是
         :rtype: int
         """
         return self._IsSuggest
@@ -7144,7 +7144,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def HandleTaskId(self):
-        """处置任务ID
+        r"""处置任务ID
         :rtype: str
         """
         return self._HandleTaskId
@@ -7155,7 +7155,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def EngineSource(self):
-        """引擎来源
+        r"""引擎来源
         :rtype: str
         """
         return self._EngineSource
@@ -7166,7 +7166,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VulRiskId(self):
-        """新的漏洞风险id(同全网漏洞表的RiskId)
+        r"""新的漏洞风险id(同全网漏洞表的RiskId)
         :rtype: str
         """
         return self._VulRiskId
@@ -7177,7 +7177,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def TvdID(self):
-        """新版漏洞id
+        r"""新版漏洞id
         :rtype: str
         """
         return self._TvdID
@@ -7188,7 +7188,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def IsOneClick(self):
-        """是否可以一键体检，1-可以，0-不可以
+        r"""是否可以一键体检，1-可以，0-不可以
         :rtype: int
         """
         return self._IsOneClick
@@ -7199,7 +7199,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def IsPOC(self):
-        """是否POC扫描，0-非POC，1-POC
+        r"""是否POC扫描，0-非POC，1-POC
         :rtype: int
         """
         return self._IsPOC
@@ -7262,7 +7262,7 @@ class AssetViewVULRiskData(AbstractModel):
 
 
 class AssetViewWeakPassRisk(AbstractModel):
-    """资产视角的弱口令风险
+    r"""资产视角的弱口令风险
 
     """
 
@@ -7338,7 +7338,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -7349,7 +7349,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -7360,7 +7360,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -7371,7 +7371,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -7382,7 +7382,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Service(self):
-        """服务
+        r"""服务
         :rtype: str
         """
         return self._Service
@@ -7393,7 +7393,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -7404,7 +7404,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -7415,7 +7415,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略
+        r"""状态，0未处理、1已处置、2已忽略
         :rtype: int
         """
         return self._Status
@@ -7426,7 +7426,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Id(self):
-        """ID，处理风险使用
+        r"""ID，处理风险使用
         :rtype: str
         """
         return self._Id
@@ -7437,7 +7437,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -7448,7 +7448,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -7459,7 +7459,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -7470,7 +7470,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -7481,7 +7481,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -7492,7 +7492,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -7503,7 +7503,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def PasswordType(self):
-        """弱口令类型
+        r"""弱口令类型
         :rtype: str
         """
         return self._PasswordType
@@ -7514,7 +7514,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def From(self):
-        """来源
+        r"""来源
         :rtype: str
         """
         return self._From
@@ -7525,7 +7525,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -7536,7 +7536,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def VULURL(self):
-        """漏洞url
+        r"""漏洞url
         :rtype: str
         """
         return self._VULURL
@@ -7547,7 +7547,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Fix(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._Fix
@@ -7558,7 +7558,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Payload(self):
-        """证明
+        r"""证明
         :rtype: str
         """
         return self._Payload
@@ -7569,7 +7569,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -7613,7 +7613,7 @@ class AssetViewWeakPassRisk(AbstractModel):
 
 
 class AttributeOptionSet(AbstractModel):
-    """通用的下拉框列表
+    r"""通用的下拉框列表
 
     """
 
@@ -7629,7 +7629,7 @@ class AttributeOptionSet(AbstractModel):
 
     @property
     def Text(self):
-        """cvm实例类型
+        r"""cvm实例类型
         :rtype: str
         """
         return self._Text
@@ -7640,7 +7640,7 @@ class AttributeOptionSet(AbstractModel):
 
     @property
     def Value(self):
-        """cvm实例名称
+        r"""cvm实例名称
         :rtype: str
         """
         return self._Value
@@ -7664,7 +7664,7 @@ class AttributeOptionSet(AbstractModel):
 
 
 class BugInfoDetail(AbstractModel):
-    """漏洞详细信息
+    r"""漏洞详细信息
 
     """
 
@@ -7734,7 +7734,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def Id(self):
-        """漏洞编号
+        r"""漏洞编号
         :rtype: int
         """
         return self._Id
@@ -7745,7 +7745,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def PatchId(self):
-        """漏洞对应pocId
+        r"""漏洞对应pocId
         :rtype: str
         """
         return self._PatchId
@@ -7756,7 +7756,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VULName
@@ -7767,7 +7767,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def Level(self):
-        """漏洞严重性：high,middle，low，info
+        r"""漏洞严重性：high,middle，low，info
         :rtype: str
         """
         return self._Level
@@ -7778,7 +7778,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def CVSSScore(self):
-        """cvss评分
+        r"""cvss评分
         :rtype: str
         """
         return self._CVSSScore
@@ -7789,7 +7789,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def CVEId(self):
-        """cve编号
+        r"""cve编号
         :rtype: str
         """
         return self._CVEId
@@ -7800,7 +7800,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def Tag(self):
-        """漏洞标签
+        r"""漏洞标签
         :rtype: str
         """
         return self._Tag
@@ -7811,7 +7811,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def VULCategory(self):
-        """漏洞种类，1:web应用，2:系统组件漏洞，3:配置风险
+        r"""漏洞种类，1:web应用，2:系统组件漏洞，3:配置风险
         :rtype: int
         """
         return self._VULCategory
@@ -7822,7 +7822,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def ImpactOs(self):
-        """漏洞影响系统
+        r"""漏洞影响系统
         :rtype: str
         """
         return self._ImpactOs
@@ -7833,7 +7833,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def ImpactCOMPENT(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._ImpactCOMPENT
@@ -7844,7 +7844,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def ImpactVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._ImpactVersion
@@ -7855,7 +7855,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def Reference(self):
-        """链接
+        r"""链接
         :rtype: str
         """
         return self._Reference
@@ -7866,7 +7866,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def VULDescribe(self):
-        """漏洞描述
+        r"""漏洞描述
         :rtype: str
         """
         return self._VULDescribe
@@ -7877,7 +7877,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def Fix(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._Fix
@@ -7888,7 +7888,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def ProSupport(self):
-        """产品支持状态，实时返回
+        r"""产品支持状态，实时返回
         :rtype: int
         """
         return self._ProSupport
@@ -7899,7 +7899,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def IsPublish(self):
-        """是否公开，0为未发布，1为发布
+        r"""是否公开，0为未发布，1为发布
         :rtype: int
         """
         return self._IsPublish
@@ -7910,7 +7910,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def ReleaseTime(self):
-        """释放时间
+        r"""释放时间
         :rtype: str
         """
         return self._ReleaseTime
@@ -7921,7 +7921,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7932,7 +7932,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -7943,7 +7943,7 @@ class BugInfoDetail(AbstractModel):
 
     @property
     def SubCategory(self):
-        """漏洞子类别
+        r"""漏洞子类别
         :rtype: str
         """
         return self._SubCategory
@@ -7985,7 +7985,7 @@ class BugInfoDetail(AbstractModel):
 
 
 class CFGViewCFGRisk(AbstractModel):
-    """配置视角的配置风险对象
+    r"""配置视角的配置风险对象
 
     """
 
@@ -8054,7 +8054,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def NoHandleCount(self):
-        """影响资产
+        r"""影响资产
         :rtype: int
         """
         return self._NoHandleCount
@@ -8065,7 +8065,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -8076,7 +8076,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -8087,7 +8087,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -8098,7 +8098,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def AffectAssetCount(self):
-        """状态，0未处理、1已处置、2已忽略
+        r"""状态，0未处理、1已处置、2已忽略
         :rtype: int
         """
         return self._AffectAssetCount
@@ -8109,7 +8109,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def Id(self):
-        """资产唯一id
+        r"""资产唯一id
         :rtype: str
         """
         return self._Id
@@ -8120,7 +8120,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def From(self):
-        """资产子类型
+        r"""资产子类型
         :rtype: str
         """
         return self._From
@@ -8131,7 +8131,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -8142,7 +8142,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -8153,7 +8153,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8165,7 +8165,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8177,7 +8177,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CFGName(self):
-        """配置名
+        r"""配置名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8189,7 +8189,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8201,7 +8201,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CFGSTD(self):
-        """-
+        r"""-
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8213,7 +8213,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CFGDescribe(self):
-        """描述
+        r"""描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8225,7 +8225,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CFGFix(self):
-        """修复建议
+        r"""修复建议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8237,7 +8237,7 @@ class CFGViewCFGRisk(AbstractModel):
 
     @property
     def CFGHelpURL(self):
-        """帮助文档
+        r"""帮助文档
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8277,7 +8277,7 @@ class CFGViewCFGRisk(AbstractModel):
 
 
 class CVMAssetVO(AbstractModel):
-    """主机资产信息
+    r"""主机资产信息
 
     主机防护状态枚举，左边是常量，右边是显示
     0：未安装
@@ -8504,7 +8504,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -8515,7 +8515,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -8526,7 +8526,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -8537,7 +8537,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -8548,7 +8548,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CWPStatus(self):
-        """防护状态
+        r"""防护状态
         :rtype: int
         """
         return self._CWPStatus
@@ -8559,7 +8559,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AssetCreateTime(self):
-        """资产创建时间
+        r"""资产创建时间
         :rtype: str
         """
         return self._AssetCreateTime
@@ -8570,7 +8570,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网IP
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -8581,7 +8581,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """私网IP
+        r"""私网IP
         :rtype: str
         """
         return self._PrivateIp
@@ -8592,7 +8592,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
         :rtype: str
         """
         return self._VpcId
@@ -8603,7 +8603,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc 名
+        r"""vpc 名
         :rtype: str
         """
         return self._VpcName
@@ -8614,7 +8614,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AppId(self):
-        """appid信息
+        r"""appid信息
         :rtype: int
         """
         return self._AppId
@@ -8625,7 +8625,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -8636,7 +8636,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def NickName(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._NickName
@@ -8647,7 +8647,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AvailableArea(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._AvailableArea
@@ -8658,7 +8658,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -8669,7 +8669,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网id
+        r"""子网id
         :rtype: str
         """
         return self._SubnetId
@@ -8680,7 +8680,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def SubnetName(self):
-        """子网名
+        r"""子网名
         :rtype: str
         """
         return self._SubnetName
@@ -8691,7 +8691,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InstanceUuid(self):
-        """主机安全Agent UUID
+        r"""主机安全Agent UUID
         :rtype: str
         """
         return self._InstanceUuid
@@ -8702,7 +8702,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InstanceQUuid(self):
-        """云主机 CVM UUID
+        r"""云主机 CVM UUID
         :rtype: str
         """
         return self._InstanceQUuid
@@ -8713,7 +8713,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def OsName(self):
-        """os名
+        r"""os名
         :rtype: str
         """
         return self._OsName
@@ -8724,7 +8724,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PartitionCount(self):
-        """分区
+        r"""分区
         :rtype: int
         """
         return self._PartitionCount
@@ -8735,7 +8735,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CPUInfo(self):
-        """cpu信息
+        r"""cpu信息
         :rtype: str
         """
         return self._CPUInfo
@@ -8746,7 +8746,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CPUSize(self):
-        """cpu大小
+        r"""cpu大小
         :rtype: int
         """
         return self._CPUSize
@@ -8757,7 +8757,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CPULoad(self):
-        """cpu负载
+        r"""cpu负载
         :rtype: str
         """
         return self._CPULoad
@@ -8768,7 +8768,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def MemorySize(self):
-        """内存大小
+        r"""内存大小
         :rtype: str
         """
         return self._MemorySize
@@ -8779,7 +8779,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def MemoryLoad(self):
-        """内存负载
+        r"""内存负载
         :rtype: str
         """
         return self._MemoryLoad
@@ -8790,7 +8790,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def DiskSize(self):
-        """硬盘大小
+        r"""硬盘大小
         :rtype: str
         """
         return self._DiskSize
@@ -8801,7 +8801,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def DiskLoad(self):
-        """硬盘负载
+        r"""硬盘负载
         :rtype: str
         """
         return self._DiskLoad
@@ -8812,7 +8812,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AccountCount(self):
-        """账号数
+        r"""账号数
         :rtype: str
         """
         return self._AccountCount
@@ -8823,7 +8823,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def ProcessCount(self):
-        """进程数
+        r"""进程数
         :rtype: str
         """
         return self._ProcessCount
@@ -8834,7 +8834,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AppCount(self):
-        """软件应用
+        r"""软件应用
         :rtype: str
         """
         return self._AppCount
@@ -8845,7 +8845,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PortCount(self):
-        """监听端口
+        r"""监听端口
         :rtype: int
         """
         return self._PortCount
@@ -8856,7 +8856,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Attack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._Attack
@@ -8867,7 +8867,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Access(self):
-        """网络访问
+        r"""网络访问
         :rtype: int
         """
         return self._Access
@@ -8878,7 +8878,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Intercept(self):
-        """网络拦截
+        r"""网络拦截
         :rtype: int
         """
         return self._Intercept
@@ -8889,7 +8889,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InBandwidth(self):
-        """入向峰值带宽
+        r"""入向峰值带宽
         :rtype: str
         """
         return self._InBandwidth
@@ -8900,7 +8900,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def OutBandwidth(self):
-        """出向峰值带宽
+        r"""出向峰值带宽
         :rtype: str
         """
         return self._OutBandwidth
@@ -8911,7 +8911,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InFlow(self):
-        """入向累计流量
+        r"""入向累计流量
         :rtype: str
         """
         return self._InFlow
@@ -8922,7 +8922,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def OutFlow(self):
-        """出向累计流量
+        r"""出向累计流量
         :rtype: str
         """
         return self._OutFlow
@@ -8933,7 +8933,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最近扫描时间
+        r"""最近扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -8944,7 +8944,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def NetWorkOut(self):
-        """恶意主动外联
+        r"""恶意主动外联
         :rtype: int
         """
         return self._NetWorkOut
@@ -8955,7 +8955,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PortRisk(self):
-        """端口风险
+        r"""端口风险
         :rtype: int
         """
         return self._PortRisk
@@ -8966,7 +8966,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def VulnerabilityRisk(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VulnerabilityRisk
@@ -8977,7 +8977,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def ConfigurationRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigurationRisk
@@ -8988,7 +8988,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def ScanTask(self):
-        """扫描任务数
+        r"""扫描任务数
         :rtype: int
         """
         return self._ScanTask
@@ -8999,7 +8999,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -9010,7 +9010,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def MemberId(self):
-        """memberId
+        r"""memberId
         :rtype: str
         """
         return self._MemberId
@@ -9021,7 +9021,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def Os(self):
-        """os全称
+        r"""os全称
         :rtype: str
         """
         return self._Os
@@ -9032,7 +9032,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def RiskExposure(self):
-        """风险服务暴露
+        r"""风险服务暴露
         :rtype: int
         """
         return self._RiskExposure
@@ -9043,7 +9043,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def BASAgentStatus(self):
-        """模拟攻击工具状态。0代表未安装，1代表已安装，2代表已离线
+        r"""模拟攻击工具状态。0代表未安装，1代表已安装，2代表已离线
         :rtype: int
         """
         return self._BASAgentStatus
@@ -9054,7 +9054,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """1新资产；0 非新资产
+        r"""1新资产；0 非新资产
         :rtype: int
         """
         return self._IsNewAsset
@@ -9065,7 +9065,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CVMAgentStatus(self):
-        """0 未安装  1安装 2:安装中
+        r"""0 未安装  1安装 2:安装中
         :rtype: int
         """
         return self._CVMAgentStatus
@@ -9076,7 +9076,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CVMStatus(self):
-        """1:开启 0:未开启
+        r"""1:开启 0:未开启
         :rtype: int
         """
         return self._CVMStatus
@@ -9087,7 +9087,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def DefenseModel(self):
-        """1:客户端已安装 0：未安装 2: Agentless
+        r"""1:客户端已安装 0：未安装 2: Agentless
         :rtype: int
         """
         return self._DefenseModel
@@ -9098,7 +9098,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def TatStatus(self):
-        """1:已安装 0:未安装
+        r"""1:已安装 0:未安装
         :rtype: int
         """
         return self._TatStatus
@@ -9109,7 +9109,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CpuTrend(self):
-        """cpu趋势图
+        r"""cpu趋势图
         :rtype: list of Element
         """
         return self._CpuTrend
@@ -9120,7 +9120,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def MemoryTrend(self):
-        """内存趋势图
+        r"""内存趋势图
         :rtype: list of Element
         """
         return self._MemoryTrend
@@ -9131,7 +9131,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AgentStatus(self):
-        """1:agent在线 0:agent离线 2:主机离线
+        r"""1:agent在线 0:agent离线 2:主机离线
         :rtype: int
         """
         return self._AgentStatus
@@ -9142,7 +9142,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CloseDefenseCount(self):
-        """本月防护关闭次数
+        r"""本月防护关闭次数
         :rtype: int
         """
         return self._CloseDefenseCount
@@ -9153,7 +9153,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InstanceState(self):
-        """运行状态
+        r"""运行状态
         :rtype: str
         """
         return self._InstanceState
@@ -9164,7 +9164,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组数据
+        r"""安全组数据
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -9175,7 +9175,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AgentMemRss(self):
-        """物理内存占用KB
+        r"""物理内存占用KB
         :rtype: int
         """
         return self._AgentMemRss
@@ -9186,7 +9186,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def AgentCpuPer(self):
-        """CPU使用率百分比
+        r"""CPU使用率百分比
         :rtype: float
         """
         return self._AgentCpuPer
@@ -9197,7 +9197,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def RealAppid(self):
-        """cvm真正所属的appid
+        r"""cvm真正所属的appid
         :rtype: int
         """
         return self._RealAppid
@@ -9208,7 +9208,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def CloudType(self):
-        """云资产类型：0：腾讯云，1：aws，2：azure
+        r"""云资产类型：0：腾讯云，1：aws，2：azure
         :rtype: int
         """
         return self._CloudType
@@ -9219,7 +9219,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def ProtectStatus(self):
-        """主机防护状态枚举
+        r"""主机防护状态枚举
 0：未安装
 1：基础版防护中
 2：普惠版防护中
@@ -9237,7 +9237,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def OfflineTime(self):
-        """最后离线时间
+        r"""最后离线时间
         :rtype: str
         """
         return self._OfflineTime
@@ -9341,7 +9341,7 @@ class CVMAssetVO(AbstractModel):
 
 
 class CallRecord(AbstractModel):
-    """调用记录详情
+    r"""调用记录详情
 
     """
 
@@ -9433,7 +9433,7 @@ class CallRecord(AbstractModel):
 
     @property
     def CallID(self):
-        """调用记录ID
+        r"""调用记录ID
         :rtype: str
         """
         return self._CallID
@@ -9444,7 +9444,7 @@ class CallRecord(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥
+        r"""访问密钥
         :rtype: str
         """
         return self._AccessKey
@@ -9455,7 +9455,7 @@ class CallRecord(AbstractModel):
 
     @property
     def AccessKeyRemark(self):
-        """访问密钥备注
+        r"""访问密钥备注
         :rtype: str
         """
         return self._AccessKeyRemark
@@ -9466,7 +9466,7 @@ class CallRecord(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥ID
+        r"""访问密钥ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -9477,7 +9477,7 @@ class CallRecord(AbstractModel):
 
     @property
     def SourceIP(self):
-        """调用源IP
+        r"""调用源IP
         :rtype: str
         """
         return self._SourceIP
@@ -9488,7 +9488,7 @@ class CallRecord(AbstractModel):
 
     @property
     def SourceIPRemark(self):
-        """调用源IP备注
+        r"""调用源IP备注
         :rtype: str
         """
         return self._SourceIPRemark
@@ -9499,7 +9499,7 @@ class CallRecord(AbstractModel):
 
     @property
     def Region(self):
-        """调用源IP地域
+        r"""调用源IP地域
         :rtype: str
         """
         return self._Region
@@ -9510,7 +9510,7 @@ class CallRecord(AbstractModel):
 
     @property
     def IPType(self):
-        """IP类型 0:账号内（未备注） 1:账号外（未备注） 2:账号内 (已备注) 3:账号外 (已备注)
+        r"""IP类型 0:账号内（未备注） 1:账号外（未备注） 2:账号内 (已备注) 3:账号外 (已备注)
         :rtype: int
         """
         return self._IPType
@@ -9521,7 +9521,7 @@ class CallRecord(AbstractModel):
 
     @property
     def EventName(self):
-        """调用接口名称
+        r"""调用接口名称
         :rtype: str
         """
         return self._EventName
@@ -9532,7 +9532,7 @@ class CallRecord(AbstractModel):
 
     @property
     def ProductName(self):
-        """调用产品名称
+        r"""调用产品名称
         :rtype: str
         """
         return self._ProductName
@@ -9543,7 +9543,7 @@ class CallRecord(AbstractModel):
 
     @property
     def EventType(self):
-        """调用类型
+        r"""调用类型
 0:控制台调用
 1:API
         :rtype: int
@@ -9556,7 +9556,7 @@ class CallRecord(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型CAMUser/root/AssumedRole
+        r"""用户类型CAMUser/root/AssumedRole
 
         :rtype: str
         """
@@ -9568,7 +9568,7 @@ class CallRecord(AbstractModel):
 
     @property
     def UserName(self):
-        """用户/角色名称
+        r"""用户/角色名称
         :rtype: str
         """
         return self._UserName
@@ -9579,7 +9579,7 @@ class CallRecord(AbstractModel):
 
     @property
     def PolicySet(self):
-        """策略列表
+        r"""策略列表
         :rtype: list of str
         """
         return self._PolicySet
@@ -9590,7 +9590,7 @@ class CallRecord(AbstractModel):
 
     @property
     def CallCount(self):
-        """调用次数
+        r"""调用次数
         :rtype: int
         """
         return self._CallCount
@@ -9601,7 +9601,7 @@ class CallRecord(AbstractModel):
 
     @property
     def Code(self):
-        """调用错误码
+        r"""调用错误码
 0表示成功
         :rtype: int
         """
@@ -9613,7 +9613,7 @@ class CallRecord(AbstractModel):
 
     @property
     def FirstCallTime(self):
-        """首次调用时间
+        r"""首次调用时间
         :rtype: str
         """
         return self._FirstCallTime
@@ -9624,7 +9624,7 @@ class CallRecord(AbstractModel):
 
     @property
     def LastCallTime(self):
-        """最后调用时间
+        r"""最后调用时间
         :rtype: str
         """
         return self._LastCallTime
@@ -9635,7 +9635,7 @@ class CallRecord(AbstractModel):
 
     @property
     def InstanceID(self):
-        """IP关联资产ID，如果为空字符串，表示没有关联
+        r"""IP关联资产ID，如果为空字符串，表示没有关联
         :rtype: str
         """
         return self._InstanceID
@@ -9646,7 +9646,7 @@ class CallRecord(AbstractModel):
 
     @property
     def InstanceName(self):
-        """IP关联资产名称
+        r"""IP关联资产名称
         :rtype: str
         """
         return self._InstanceName
@@ -9657,7 +9657,7 @@ class CallRecord(AbstractModel):
 
     @property
     def Date(self):
-        """聚合日期
+        r"""聚合日期
         :rtype: str
         """
         return self._Date
@@ -9668,7 +9668,7 @@ class CallRecord(AbstractModel):
 
     @property
     def AppID(self):
-        """appid
+        r"""appid
         :rtype: int
         """
         return self._AppID
@@ -9679,7 +9679,7 @@ class CallRecord(AbstractModel):
 
     @property
     def ShowStatus(self):
-        """展示状态
+        r"""展示状态
         :rtype: bool
         """
         return self._ShowStatus
@@ -9690,7 +9690,7 @@ class CallRecord(AbstractModel):
 
     @property
     def ISP(self):
-        """运营商
+        r"""运营商
         :rtype: str
         """
         return self._ISP
@@ -9701,7 +9701,7 @@ class CallRecord(AbstractModel):
 
     @property
     def VpcInfo(self):
-        """账号外vpc信息列表
+        r"""账号外vpc信息列表
         :rtype: list of SourceIPVpcInfo
         """
         return self._VpcInfo
@@ -9712,7 +9712,7 @@ class CallRecord(AbstractModel):
 
     @property
     def ReqClient(self):
-        """调用请求客户端列表
+        r"""调用请求客户端列表
         :rtype: list of str
         """
         return self._ReqClient
@@ -9765,7 +9765,7 @@ class CallRecord(AbstractModel):
 
 
 class CheckViewRiskItem(AbstractModel):
-    """检查项视角风险
+    r"""检查项视角风险
 
     """
 
@@ -9814,7 +9814,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """检查项规则ID
+        r"""检查项规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -9825,7 +9825,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskTitle(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskTitle
@@ -9836,7 +9836,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
         :rtype: str
         """
         return self._CheckType
@@ -9847,7 +9847,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def Severity(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._Severity
@@ -9858,7 +9858,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskDesc(self):
-        """存在1个风险项
+        r"""存在1个风险项
         :rtype: str
         """
         return self._RiskDesc
@@ -9869,7 +9869,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """首次发现时间
+        r"""首次发现时间
         :rtype: str
         """
         return self._CreateTime
@@ -9880,7 +9880,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """风险更新时间
+        r"""风险更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -9891,7 +9891,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -9902,7 +9902,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        """风险状态
+        r"""风险状态
         :rtype: int
         """
         return self._RiskStatus
@@ -9913,7 +9913,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def AssetCount(self):
-        """受影响资产数量
+        r"""受影响资产数量
         :rtype: int
         """
         return self._AssetCount
@@ -9924,7 +9924,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskCount(self):
-        """风险数量
+        r"""风险数量
         :rtype: int
         """
         return self._RiskCount
@@ -9935,7 +9935,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -9946,7 +9946,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型
+        r"""事件类型
         :rtype: str
         """
         return self._EventType
@@ -9981,7 +9981,7 @@ class CheckViewRiskItem(AbstractModel):
 
 
 class ClbListenerListInfo(AbstractModel):
-    """clb实例和监听器信息
+    r"""clb实例和监听器信息
 
     """
 
@@ -10030,7 +10030,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器id
+        r"""监听器id
         :rtype: str
         """
         return self._ListenerId
@@ -10041,7 +10041,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称
+        r"""监听器名称
         :rtype: str
         """
         return self._ListenerName
@@ -10052,7 +10052,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡Id
+        r"""负载均衡Id
         :rtype: str
         """
         return self._LoadBalancerId
@@ -10063,7 +10063,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡名称
+        r"""负载均衡名称
         :rtype: str
         """
         return self._LoadBalancerName
@@ -10074,7 +10074,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
         :rtype: str
         """
         return self._Protocol
@@ -10085,7 +10085,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -10096,7 +10096,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def Vip(self):
-        """负载均衡ip
+        r"""负载均衡ip
         :rtype: str
         """
         return self._Vip
@@ -10107,7 +10107,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def VPort(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._VPort
@@ -10118,7 +10118,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Zone
@@ -10129,7 +10129,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def NumericalVpcId(self):
-        """私有网络id
+        r"""私有网络id
         :rtype: int
         """
         return self._NumericalVpcId
@@ -10140,7 +10140,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        """负载均衡类型
+        r"""负载均衡类型
         :rtype: str
         """
         return self._LoadBalancerType
@@ -10151,7 +10151,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """监听器域名
+        r"""监听器域名
         :rtype: str
         """
         return self._Domain
@@ -10162,7 +10162,7 @@ class ClbListenerListInfo(AbstractModel):
 
     @property
     def LoadBalancerDomain(self):
-        """负载均衡域名
+        r"""负载均衡域名
         :rtype: str
         """
         return self._LoadBalancerDomain
@@ -10197,7 +10197,7 @@ class ClbListenerListInfo(AbstractModel):
 
 
 class CloudCountDesc(AbstractModel):
-    """多云账户统计信息
+    r"""多云账户统计信息
 
     """
 
@@ -10217,7 +10217,7 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudType(self):
-        """0表示腾讯云
+        r"""0表示腾讯云
 1表示AWS
         :rtype: int
         """
@@ -10229,7 +10229,7 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudCount(self):
-        """账户数量
+        r"""账户数量
         :rtype: int
         """
         return self._CloudCount
@@ -10240,7 +10240,7 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudDesc(self):
-        """该云账号类型描述
+        r"""该云账号类型描述
         :rtype: str
         """
         return self._CloudDesc
@@ -10265,7 +10265,7 @@ class CloudCountDesc(AbstractModel):
 
 
 class CreateAccessKeyCheckTaskRequest(AbstractModel):
-    """CreateAccessKeyCheckTask请求参数结构体
+    r"""CreateAccessKeyCheckTask请求参数结构体
 
     """
 
@@ -10290,7 +10290,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -10301,7 +10301,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
     @property
     def RiskIDList(self):
-        """风险列表
+        r"""风险列表
         :rtype: list of int
         """
         return self._RiskIDList
@@ -10312,7 +10312,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
     @property
     def AccessKeyList(self):
-        """访问密钥列表
+        r"""访问密钥列表
         :rtype: list of str
         """
         return self._AccessKeyList
@@ -10323,7 +10323,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
     @property
     def SubUinList(self):
-        """账号uin列表
+        r"""账号uin列表
         :rtype: list of str
         """
         return self._SubUinList
@@ -10334,7 +10334,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
     @property
     def RiskRuleIDList(self):
-        """风险规则id列表
+        r"""风险规则id列表
         :rtype: list of int
         """
         return self._RiskRuleIDList
@@ -10361,7 +10361,7 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
 
 
 class CreateAccessKeyCheckTaskResponse(AbstractModel):
-    """CreateAccessKeyCheckTask返回参数结构体
+    r"""CreateAccessKeyCheckTask返回参数结构体
 
     """
 
@@ -10380,7 +10380,7 @@ class CreateAccessKeyCheckTaskResponse(AbstractModel):
 
     @property
     def Code(self):
-        """0表示成功 1表示失败
+        r"""0表示成功 1表示失败
         :rtype: int
         """
         return self._Code
@@ -10391,7 +10391,7 @@ class CreateAccessKeyCheckTaskResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Msg
@@ -10402,7 +10402,7 @@ class CreateAccessKeyCheckTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10419,7 +10419,7 @@ class CreateAccessKeyCheckTaskResponse(AbstractModel):
 
 
 class CreateAccessKeySyncTaskRequest(AbstractModel):
-    """CreateAccessKeySyncTask请求参数结构体
+    r"""CreateAccessKeySyncTask请求参数结构体
 
     """
 
@@ -10432,7 +10432,7 @@ class CreateAccessKeySyncTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -10455,7 +10455,7 @@ class CreateAccessKeySyncTaskRequest(AbstractModel):
 
 
 class CreateAccessKeySyncTaskResponse(AbstractModel):
-    """CreateAccessKeySyncTask返回参数结构体
+    r"""CreateAccessKeySyncTask返回参数结构体
 
     """
 
@@ -10477,7 +10477,7 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        """发起同步任务
+        r"""发起同步任务
         :rtype: int
         """
         return self._TaskID
@@ -10488,7 +10488,7 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
 
     @property
     def Code(self):
-        """0成功 1失败
+        r"""0成功 1失败
         :rtype: int
         """
         return self._Code
@@ -10499,7 +10499,7 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Msg
@@ -10510,7 +10510,7 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10528,7 +10528,7 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
 
 
 class CreateDomainAndIpRequest(AbstractModel):
-    """CreateDomainAndIp请求参数结构体
+    r"""CreateDomainAndIp请求参数结构体
 
     """
 
@@ -10547,7 +10547,7 @@ class CreateDomainAndIpRequest(AbstractModel):
 
     @property
     def Content(self):
-        """公网IP/域名
+        r"""公网IP/域名
         :rtype: list of str
         """
         return self._Content
@@ -10558,7 +10558,7 @@ class CreateDomainAndIpRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -10569,7 +10569,7 @@ class CreateDomainAndIpRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -10599,7 +10599,7 @@ class CreateDomainAndIpRequest(AbstractModel):
 
 
 class CreateDomainAndIpResponse(AbstractModel):
-    """CreateDomainAndIp返回参数结构体
+    r"""CreateDomainAndIp返回参数结构体
 
     """
 
@@ -10615,7 +10615,7 @@ class CreateDomainAndIpResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回创建成功的数量
+        r"""返回创建成功的数量
         :rtype: int
         """
         return self._Data
@@ -10626,7 +10626,7 @@ class CreateDomainAndIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10642,7 +10642,7 @@ class CreateDomainAndIpResponse(AbstractModel):
 
 
 class CreateRiskCenterScanTaskRequest(AbstractModel):
-    """CreateRiskCenterScanTask请求参数结构体
+    r"""CreateRiskCenterScanTask请求参数结构体
 
     """
 
@@ -10691,7 +10691,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -10702,7 +10702,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanAssetType(self):
-        """0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+        r"""0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
         :rtype: int
         """
         return self._ScanAssetType
@@ -10713,7 +10713,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanItem(self):
-        """扫描项目；port/poc/weakpass/webcontent/configrisk/exposedserver
+        r"""扫描项目；port/poc/weakpass/webcontent/configrisk/exposedserver
         :rtype: list of str
         """
         return self._ScanItem
@@ -10724,7 +10724,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanPlanType(self):
-        """0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+        r"""0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
         :rtype: int
         """
         return self._ScanPlanType
@@ -10735,7 +10735,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -10746,7 +10746,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def Assets(self):
-        """扫描资产信息列表
+        r"""扫描资产信息列表
         :rtype: list of TaskAssetObject
         """
         return self._Assets
@@ -10757,7 +10757,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanPlanContent(self):
-        """扫描计划详情
+        r"""扫描计划详情
         :rtype: str
         """
         return self._ScanPlanContent
@@ -10768,7 +10768,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def SelfDefiningAssets(self):
-        """ip/域名/url数组
+        r"""ip/域名/url数组
         :rtype: list of str
         """
         return self._SelfDefiningAssets
@@ -10779,7 +10779,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanFrom(self):
-        """请求发起源，vss表示漏洞扫描服务，云安全中心的用户请填充csip，默认csip
+        r"""请求发起源，vss表示漏洞扫描服务，云安全中心的用户请填充csip，默认csip
         :rtype: str
         """
         return self._ScanFrom
@@ -10790,7 +10790,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskAdvanceCFG(self):
-        """高级配置
+        r"""高级配置
         :rtype: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
         """
         return self._TaskAdvanceCFG
@@ -10801,7 +10801,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskMode(self):
-        """体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+        r"""体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
         :rtype: int
         """
         return self._TaskMode
@@ -10812,7 +10812,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: :class:`tencentcloud.csip.v20221121.models.AssetTag`
         """
         return self._Tags
@@ -10823,7 +10823,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def FinishWebHook(self):
-        """任务完成回调webhook地址
+        r"""任务完成回调webhook地址
         :rtype: str
         """
         return self._FinishWebHook
@@ -10867,7 +10867,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
 
 
 class CreateRiskCenterScanTaskResponse(AbstractModel):
-    """CreateRiskCenterScanTask返回参数结构体
+    r"""CreateRiskCenterScanTask返回参数结构体
 
     """
 
@@ -10889,7 +10889,7 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -10900,7 +10900,7 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        """0,任务创建成功；小于0失败；-1为存在资产未认证
+        r"""0,任务创建成功；小于0失败；-1为存在资产未认证
         :rtype: int
         """
         return self._Status
@@ -10911,7 +10911,7 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def UnAuthAsset(self):
-        """未认证资产列表
+        r"""未认证资产列表
         :rtype: list of str
         """
         return self._UnAuthAsset
@@ -10922,7 +10922,7 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10940,7 +10940,7 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
 
 class CsipRiskCenterStatistics(AbstractModel):
-    """风险中心风险概览统计数据
+    r"""风险中心风险概览统计数据
 
     """
 
@@ -11003,7 +11003,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def PortTotal(self):
-        """端口风险总数
+        r"""端口风险总数
         :rtype: int
         """
         return self._PortTotal
@@ -11014,7 +11014,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def PortHighLevel(self):
-        """端口风险高危数量
+        r"""端口风险高危数量
         :rtype: int
         """
         return self._PortHighLevel
@@ -11025,7 +11025,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def WeakPasswordTotal(self):
-        """	弱口令风险总数
+        r"""	弱口令风险总数
         :rtype: int
         """
         return self._WeakPasswordTotal
@@ -11036,7 +11036,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def WeakPasswordHighLevel(self):
-        """弱口令风险高危数量
+        r"""弱口令风险高危数量
         :rtype: int
         """
         return self._WeakPasswordHighLevel
@@ -11047,7 +11047,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def WebsiteTotal(self):
-        """网站风险数量
+        r"""网站风险数量
         :rtype: int
         """
         return self._WebsiteTotal
@@ -11058,7 +11058,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def WebsiteHighLevel(self):
-        """网站高危风险数量
+        r"""网站高危风险数量
         :rtype: int
         """
         return self._WebsiteHighLevel
@@ -11069,7 +11069,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最新的扫描时间
+        r"""最新的扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -11080,7 +11080,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def VULTotal(self):
-        """漏洞风险数
+        r"""漏洞风险数
         :rtype: int
         """
         return self._VULTotal
@@ -11091,7 +11091,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def VULHighLevel(self):
-        """高危漏洞风险数
+        r"""高危漏洞风险数
         :rtype: int
         """
         return self._VULHighLevel
@@ -11102,7 +11102,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def CFGTotal(self):
-        """配置项风险数量
+        r"""配置项风险数量
         :rtype: int
         """
         return self._CFGTotal
@@ -11113,7 +11113,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def CFGHighLevel(self):
-        """高危配置项风险数量
+        r"""高危配置项风险数量
         :rtype: int
         """
         return self._CFGHighLevel
@@ -11124,7 +11124,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def ServerTotal(self):
-        """测绘服务风险数量
+        r"""测绘服务风险数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11136,7 +11136,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def ServerHighLevel(self):
-        """测绘服务高危数量
+        r"""测绘服务高危数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11148,7 +11148,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def HostBaseLineRiskTotal(self):
-        """主机基线风险数量
+        r"""主机基线风险数量
         :rtype: int
         """
         return self._HostBaseLineRiskTotal
@@ -11159,7 +11159,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def HostBaseLineRiskHighLevel(self):
-        """主机基线高危风险数量
+        r"""主机基线高危风险数量
         :rtype: int
         """
         return self._HostBaseLineRiskHighLevel
@@ -11170,7 +11170,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def PodBaseLineRiskTotal(self):
-        """容器基线风险数量
+        r"""容器基线风险数量
         :rtype: int
         """
         return self._PodBaseLineRiskTotal
@@ -11181,7 +11181,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
     @property
     def PodBaseLineRiskHighLevel(self):
-        """容器基线高危风险数量
+        r"""容器基线高危风险数量
         :rtype: int
         """
         return self._PodBaseLineRiskHighLevel
@@ -11220,7 +11220,7 @@ class CsipRiskCenterStatistics(AbstractModel):
 
 
 class DBAssetVO(AbstractModel):
-    """db资产输出字段
+    r"""db资产输出字段
 
     """
 
@@ -11299,7 +11299,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -11310,7 +11310,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -11321,7 +11321,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -11332,7 +11332,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpcid
+        r"""vpcid
         :rtype: str
         """
         return self._VpcId
@@ -11343,7 +11343,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc标签
+        r"""vpc标签
         :rtype: str
         """
         return self._VpcName
@@ -11354,7 +11354,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -11365,7 +11365,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -11376,7 +11376,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def AssetCreateTime(self):
-        """资产创建时间
+        r"""资产创建时间
         :rtype: str
         """
         return self._AssetCreateTime
@@ -11387,7 +11387,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最近扫描时间
+        r"""最近扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -11398,7 +11398,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def ConfigurationRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigurationRisk
@@ -11409,7 +11409,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Attack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._Attack
@@ -11420,7 +11420,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Access(self):
-        """网络访问
+        r"""网络访问
         :rtype: int
         """
         return self._Access
@@ -11431,7 +11431,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def ScanTask(self):
-        """扫描任务
+        r"""扫描任务
         :rtype: int
         """
         return self._ScanTask
@@ -11442,7 +11442,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: int
         """
         return self._AppId
@@ -11453,7 +11453,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -11464,7 +11464,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def NickName(self):
-        """昵称别名
+        r"""昵称别名
         :rtype: str
         """
         return self._NickName
@@ -11475,7 +11475,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -11486,7 +11486,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -11497,7 +11497,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """内网ip
+        r"""内网ip
         :rtype: str
         """
         return self._PrivateIp
@@ -11508,7 +11508,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -11519,7 +11519,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -11530,7 +11530,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -11541,7 +11541,7 @@ class DBAssetVO(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产: 1新
+        r"""是否新资产: 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -11591,7 +11591,7 @@ class DBAssetVO(AbstractModel):
 
 
 class DataSearchBug(AbstractModel):
-    """漏洞和资产信息
+    r"""漏洞和资产信息
 
     """
 
@@ -11631,7 +11631,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def StateCode(self):
-        """返回查询状态
+        r"""返回查询状态
         :rtype: str
         """
         return self._StateCode
@@ -11642,7 +11642,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def DataBug(self):
-        """漏洞详情
+        r"""漏洞详情
         :rtype: list of BugInfoDetail
         """
         return self._DataBug
@@ -11653,7 +11653,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def DataAsset(self):
-        """漏洞影响资产详情
+        r"""漏洞影响资产详情
         :rtype: list of AssetInfoDetail
         """
         return self._DataAsset
@@ -11664,7 +11664,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def VSSScan(self):
-        """true支持扫描。false不支持扫描
+        r"""true支持扫描。false不支持扫描
         :rtype: bool
         """
         return self._VSSScan
@@ -11675,7 +11675,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def CWPScan(self):
-        """0不支持，1支持
+        r"""0不支持，1支持
         :rtype: str
         """
         return self._CWPScan
@@ -11686,7 +11686,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def CFWPatch(self):
-        """1支持虚拟补丁，0或空不支持
+        r"""1支持虚拟补丁，0或空不支持
         :rtype: str
         """
         return self._CFWPatch
@@ -11697,7 +11697,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def WafPatch(self):
-        """0不支持，1支持
+        r"""0不支持，1支持
         :rtype: int
         """
         return self._WafPatch
@@ -11708,7 +11708,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def CWPFix(self):
-        """0不支持，1支持
+        r"""0不支持，1支持
         :rtype: int
         """
         return self._CWPFix
@@ -11719,7 +11719,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def DataSupport(self):
-        """产品支持状态
+        r"""产品支持状态
         :rtype: list of ProductSupport
         """
         return self._DataSupport
@@ -11730,7 +11730,7 @@ class DataSearchBug(AbstractModel):
 
     @property
     def CveId(self):
-        """cveId
+        r"""cveId
         :rtype: str
         """
         return self._CveId
@@ -11777,7 +11777,7 @@ class DataSearchBug(AbstractModel):
 
 
 class DbAssetInfo(AbstractModel):
-    """db资产详情
+    r"""db资产详情
 
     """
 
@@ -11820,7 +11820,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def CFWStatus(self):
-        """云防状态
+        r"""云防状态
         :rtype: int
         """
         return self._CFWStatus
@@ -11831,7 +11831,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -11842,7 +11842,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc信息
+        r"""vpc信息
         :rtype: str
         """
         return self._VpcName
@@ -11853,7 +11853,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -11864,7 +11864,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -11875,7 +11875,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """私网ip
+        r"""私网ip
         :rtype: str
         """
         return self._PrivateIp
@@ -11886,7 +11886,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -11897,7 +11897,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc信息
+        r"""vpc信息
         :rtype: str
         """
         return self._VpcId
@@ -11908,7 +11908,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -11919,7 +11919,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def CFWProtectLevel(self):
-        """云防保护版本
+        r"""云防保护版本
         :rtype: int
         """
         return self._CFWProtectLevel
@@ -11930,7 +11930,7 @@ class DbAssetInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """tag信息
+        r"""tag信息
         :rtype: list of Tag
         """
         return self._Tag
@@ -11968,7 +11968,7 @@ class DbAssetInfo(AbstractModel):
 
 
 class DeleteDomainAndIpRequest(AbstractModel):
-    """DeleteDomainAndIp请求参数结构体
+    r"""DeleteDomainAndIp请求参数结构体
 
     """
 
@@ -11996,7 +11996,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12007,7 +12007,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def Content(self):
-        """资产
+        r"""资产
         :rtype: list of PublicIpDomainListKey
         """
         return self._Content
@@ -12018,7 +12018,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def RetainPath(self):
-        """是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
+        r"""是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
         :rtype: int
         """
         return self._RetainPath
@@ -12029,7 +12029,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def IgnoreAsset(self):
-        """以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
+        r"""以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
         :rtype: int
         """
         return self._IgnoreAsset
@@ -12040,7 +12040,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -12051,7 +12051,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     @property
     def Type(self):
-        """删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
+        r"""删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
         :rtype: str
         """
         return self._Type
@@ -12089,7 +12089,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
 
 class DeleteDomainAndIpResponse(AbstractModel):
-    """DeleteDomainAndIp返回参数结构体
+    r"""DeleteDomainAndIp返回参数结构体
 
     """
 
@@ -12105,7 +12105,7 @@ class DeleteDomainAndIpResponse(AbstractModel):
 
     @property
     def Data(self):
-        """删除的资产数量
+        r"""删除的资产数量
         :rtype: int
         """
         return self._Data
@@ -12116,7 +12116,7 @@ class DeleteDomainAndIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12132,7 +12132,7 @@ class DeleteDomainAndIpResponse(AbstractModel):
 
 
 class DeleteRiskScanTaskRequest(AbstractModel):
-    """DeleteRiskScanTask请求参数结构体
+    r"""DeleteRiskScanTask请求参数结构体
 
     """
 
@@ -12148,7 +12148,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
     @property
     def TaskIdList(self):
-        """任务id 和目标AppID列表
+        r"""任务id 和目标AppID列表
         :rtype: list of TaskIdListKey
         """
         return self._TaskIdList
@@ -12159,7 +12159,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12188,7 +12188,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
 
 class DeleteRiskScanTaskResponse(AbstractModel):
-    """DeleteRiskScanTask返回参数结构体
+    r"""DeleteRiskScanTask返回参数结构体
 
     """
 
@@ -12201,7 +12201,7 @@ class DeleteRiskScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12216,7 +12216,7 @@ class DeleteRiskScanTaskResponse(AbstractModel):
 
 
 class DescribeAbnormalCallRecordRequest(AbstractModel):
-    """DescribeAbnormalCallRecord请求参数结构体
+    r"""DescribeAbnormalCallRecord请求参数结构体
 
     """
 
@@ -12241,7 +12241,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
     @property
     def AlarmRuleID(self):
-        """告警规则ID
+        r"""告警规则ID
         :rtype: int
         """
         return self._AlarmRuleID
@@ -12252,7 +12252,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12263,7 +12263,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥
+        r"""访问密钥
         :rtype: str
         """
         return self._AccessKey
@@ -12274,7 +12274,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
     @property
     def SourceIP(self):
-        """调用源IP
+        r"""调用源IP
         :rtype: str
         """
         return self._SourceIP
@@ -12285,7 +12285,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -12314,7 +12314,7 @@ class DescribeAbnormalCallRecordRequest(AbstractModel):
 
 
 class DescribeAbnormalCallRecordResponse(AbstractModel):
-    """DescribeAbnormalCallRecord返回参数结构体
+    r"""DescribeAbnormalCallRecord返回参数结构体
 
     """
 
@@ -12333,7 +12333,7 @@ class DescribeAbnormalCallRecordResponse(AbstractModel):
 
     @property
     def Data(self):
-        """调用记录列表
+        r"""调用记录列表
         :rtype: list of CallRecord
         """
         return self._Data
@@ -12344,7 +12344,7 @@ class DescribeAbnormalCallRecordResponse(AbstractModel):
 
     @property
     def Total(self):
-        """调用记录总数
+        r"""调用记录总数
         :rtype: int
         """
         return self._Total
@@ -12355,7 +12355,7 @@ class DescribeAbnormalCallRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12377,7 +12377,7 @@ class DescribeAbnormalCallRecordResponse(AbstractModel):
 
 
 class DescribeAccessKeyAlarmDetailRequest(AbstractModel):
-    """DescribeAccessKeyAlarmDetail请求参数结构体
+    r"""DescribeAccessKeyAlarmDetail请求参数结构体
 
     """
 
@@ -12393,7 +12393,7 @@ class DescribeAccessKeyAlarmDetailRequest(AbstractModel):
 
     @property
     def ID(self):
-        """告警记录ID
+        r"""告警记录ID
         :rtype: int
         """
         return self._ID
@@ -12404,7 +12404,7 @@ class DescribeAccessKeyAlarmDetailRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12428,7 +12428,7 @@ class DescribeAccessKeyAlarmDetailRequest(AbstractModel):
 
 
 class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
-    """DescribeAccessKeyAlarmDetail返回参数结构体
+    r"""DescribeAccessKeyAlarmDetail返回参数结构体
 
     """
 
@@ -12453,7 +12453,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
     @property
     def AlarmInfo(self):
-        """告警信息
+        r"""告警信息
         :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyAlarm`
         """
         return self._AlarmInfo
@@ -12464,7 +12464,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
     @property
     def CamCount(self):
-        """所属账号CAM策略数量
+        r"""所属账号CAM策略数量
         :rtype: int
         """
         return self._CamCount
@@ -12475,7 +12475,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
     @property
     def RiskCount(self):
-        """AK风险数量
+        r"""AK风险数量
         :rtype: int
         """
         return self._RiskCount
@@ -12486,7 +12486,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
     @property
     def AlarmDesc(self):
-        """告警策略描述
+        r"""告警策略描述
         :rtype: str
         """
         return self._AlarmDesc
@@ -12497,7 +12497,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12518,7 +12518,7 @@ class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
 
 
 class DescribeAccessKeyAlarmRequest(AbstractModel):
-    """DescribeAccessKeyAlarm请求参数结构体
+    r"""DescribeAccessKeyAlarm请求参数结构体
 
     """
 
@@ -12543,7 +12543,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -12554,7 +12554,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12565,7 +12565,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥的ID
+        r"""访问密钥的ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -12576,7 +12576,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
     @property
     def SourceIPID(self):
-        """源IP的ID
+        r"""源IP的ID
         :rtype: int
         """
         return self._SourceIPID
@@ -12587,7 +12587,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """账号uin
+        r"""账号uin
         :rtype: str
         """
         return self._SubUin
@@ -12616,7 +12616,7 @@ class DescribeAccessKeyAlarmRequest(AbstractModel):
 
 
 class DescribeAccessKeyAlarmResponse(AbstractModel):
-    """DescribeAccessKeyAlarm返回参数结构体
+    r"""DescribeAccessKeyAlarm返回参数结构体
 
     """
 
@@ -12635,7 +12635,7 @@ class DescribeAccessKeyAlarmResponse(AbstractModel):
 
     @property
     def Data(self):
-        """告警列表
+        r"""告警列表
         :rtype: list of AccessKeyAlarm
         """
         return self._Data
@@ -12646,7 +12646,7 @@ class DescribeAccessKeyAlarmResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -12657,7 +12657,7 @@ class DescribeAccessKeyAlarmResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12679,7 +12679,7 @@ class DescribeAccessKeyAlarmResponse(AbstractModel):
 
 
 class DescribeAccessKeyAssetRequest(AbstractModel):
-    """DescribeAccessKeyAsset请求参数结构体
+    r"""DescribeAccessKeyAsset请求参数结构体
 
     """
 
@@ -12695,7 +12695,7 @@ class DescribeAccessKeyAssetRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12706,7 +12706,7 @@ class DescribeAccessKeyAssetRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -12732,7 +12732,7 @@ class DescribeAccessKeyAssetRequest(AbstractModel):
 
 
 class DescribeAccessKeyAssetResponse(AbstractModel):
-    """DescribeAccessKeyAsset返回参数结构体
+    r"""DescribeAccessKeyAsset返回参数结构体
 
     """
 
@@ -12751,7 +12751,7 @@ class DescribeAccessKeyAssetResponse(AbstractModel):
 
     @property
     def Data(self):
-        """访问密钥资产列表
+        r"""访问密钥资产列表
         :rtype: list of AccessKeyAsset
         """
         return self._Data
@@ -12762,7 +12762,7 @@ class DescribeAccessKeyAssetResponse(AbstractModel):
 
     @property
     def Total(self):
-        """全部数量
+        r"""全部数量
         :rtype: int
         """
         return self._Total
@@ -12773,7 +12773,7 @@ class DescribeAccessKeyAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12795,7 +12795,7 @@ class DescribeAccessKeyAssetResponse(AbstractModel):
 
 
 class DescribeAccessKeyRiskDetailRequest(AbstractModel):
-    """DescribeAccessKeyRiskDetail请求参数结构体
+    r"""DescribeAccessKeyRiskDetail请求参数结构体
 
     """
 
@@ -12811,7 +12811,7 @@ class DescribeAccessKeyRiskDetailRequest(AbstractModel):
 
     @property
     def ID(self):
-        """风险记录ID
+        r"""风险记录ID
         :rtype: int
         """
         return self._ID
@@ -12822,7 +12822,7 @@ class DescribeAccessKeyRiskDetailRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -12846,7 +12846,7 @@ class DescribeAccessKeyRiskDetailRequest(AbstractModel):
 
 
 class DescribeAccessKeyRiskDetailResponse(AbstractModel):
-    """DescribeAccessKeyRiskDetail返回参数结构体
+    r"""DescribeAccessKeyRiskDetail返回参数结构体
 
     """
 
@@ -12880,7 +12880,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def RiskInfo(self):
-        """风险列表
+        r"""风险列表
         :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyRisk`
         """
         return self._RiskInfo
@@ -12891,7 +12891,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def CamCount(self):
-        """CAM策略总数
+        r"""CAM策略总数
         :rtype: int
         """
         return self._CamCount
@@ -12902,7 +12902,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def AlarmCount(self):
-        """账号关联告警数量
+        r"""账号关联告警数量
         :rtype: int
         """
         return self._AlarmCount
@@ -12913,7 +12913,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def AccessType(self):
-        """访问方式 0 API 1 控制台与API
+        r"""访问方式 0 API 1 控制台与API
         :rtype: int
         """
         return self._AccessType
@@ -12924,7 +12924,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def AccessKeyAlarmCount(self):
-        """访问密钥告警数量列表
+        r"""访问密钥告警数量列表
         :rtype: list of AccessKeyAlarmCount
         """
         return self._AccessKeyAlarmCount
@@ -12935,7 +12935,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def ActionFlag(self):
-        """操作保护是否开启 0 未开启 1 已开启
+        r"""操作保护是否开启 0 未开启 1 已开启
         :rtype: int
         """
         return self._ActionFlag
@@ -12946,7 +12946,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def LoginFlag(self):
-        """登录保护是否开启 0 未开启 1 已开启
+        r"""登录保护是否开启 0 未开启 1 已开启
         :rtype: int
         """
         return self._LoginFlag
@@ -12957,7 +12957,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12986,7 +12986,7 @@ class DescribeAccessKeyRiskDetailResponse(AbstractModel):
 
 
 class DescribeAccessKeyRiskRequest(AbstractModel):
-    """DescribeAccessKeyRisk请求参数结构体
+    r"""DescribeAccessKeyRisk请求参数结构体
 
     """
 
@@ -13008,7 +13008,7 @@ class DescribeAccessKeyRiskRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -13019,7 +13019,7 @@ class DescribeAccessKeyRiskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13030,7 +13030,7 @@ class DescribeAccessKeyRiskRequest(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥的ID
+        r"""访问密钥的ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -13041,7 +13041,7 @@ class DescribeAccessKeyRiskRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """账号uin
+        r"""账号uin
         :rtype: str
         """
         return self._SubUin
@@ -13069,7 +13069,7 @@ class DescribeAccessKeyRiskRequest(AbstractModel):
 
 
 class DescribeAccessKeyRiskResponse(AbstractModel):
-    """DescribeAccessKeyRisk返回参数结构体
+    r"""DescribeAccessKeyRisk返回参数结构体
 
     """
 
@@ -13088,7 +13088,7 @@ class DescribeAccessKeyRiskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """风险列表
+        r"""风险列表
         :rtype: list of AccessKeyRisk
         """
         return self._Data
@@ -13099,7 +13099,7 @@ class DescribeAccessKeyRiskResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -13110,7 +13110,7 @@ class DescribeAccessKeyRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13132,7 +13132,7 @@ class DescribeAccessKeyRiskResponse(AbstractModel):
 
 
 class DescribeAccessKeyUserDetailRequest(AbstractModel):
-    """DescribeAccessKeyUserDetail请求参数结构体
+    r"""DescribeAccessKeyUserDetail请求参数结构体
 
     """
 
@@ -13148,7 +13148,7 @@ class DescribeAccessKeyUserDetailRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """账号自身uin
+        r"""账号自身uin
         :rtype: str
         """
         return self._SubUin
@@ -13159,7 +13159,7 @@ class DescribeAccessKeyUserDetailRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13183,7 +13183,7 @@ class DescribeAccessKeyUserDetailRequest(AbstractModel):
 
 
 class DescribeAccessKeyUserDetailResponse(AbstractModel):
-    """DescribeAccessKeyUserDetail返回参数结构体
+    r"""DescribeAccessKeyUserDetail返回参数结构体
 
     """
 
@@ -13199,7 +13199,7 @@ class DescribeAccessKeyUserDetailResponse(AbstractModel):
 
     @property
     def User(self):
-        """账号详情信息
+        r"""账号详情信息
         :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyUser`
         """
         return self._User
@@ -13210,7 +13210,7 @@ class DescribeAccessKeyUserDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13228,7 +13228,7 @@ class DescribeAccessKeyUserDetailResponse(AbstractModel):
 
 
 class DescribeAccessKeyUserListRequest(AbstractModel):
-    """DescribeAccessKeyUserList请求参数结构体
+    r"""DescribeAccessKeyUserList请求参数结构体
 
     """
 
@@ -13244,7 +13244,7 @@ class DescribeAccessKeyUserListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13255,7 +13255,7 @@ class DescribeAccessKeyUserListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -13281,7 +13281,7 @@ class DescribeAccessKeyUserListRequest(AbstractModel):
 
 
 class DescribeAccessKeyUserListResponse(AbstractModel):
-    """DescribeAccessKeyUserList返回参数结构体
+    r"""DescribeAccessKeyUserList返回参数结构体
 
     """
 
@@ -13300,7 +13300,7 @@ class DescribeAccessKeyUserListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """账号列表
+        r"""账号列表
         :rtype: list of AccessKeyUser
         """
         return self._Data
@@ -13311,7 +13311,7 @@ class DescribeAccessKeyUserListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -13322,7 +13322,7 @@ class DescribeAccessKeyUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13344,7 +13344,7 @@ class DescribeAccessKeyUserListResponse(AbstractModel):
 
 
 class DescribeAlertListRequest(AbstractModel):
-    """DescribeAlertList请求参数结构体
+    r"""DescribeAlertList请求参数结构体
 
     """
 
@@ -13366,7 +13366,7 @@ class DescribeAlertListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """标签搜索筛选
+        r"""标签搜索筛选
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -13377,7 +13377,7 @@ class DescribeAlertListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13388,7 +13388,7 @@ class DescribeAlertListRequest(AbstractModel):
 
     @property
     def OperatedMemberId(self):
-        """被调用的集团账号的成员id
+        r"""被调用的集团账号的成员id
         :rtype: list of str
         """
         return self._OperatedMemberId
@@ -13399,7 +13399,7 @@ class DescribeAlertListRequest(AbstractModel):
 
     @property
     def AssetType(self):
-        """0:默认全部 1:资产ID 2:域名
+        r"""0:默认全部 1:资产ID 2:域名
         :rtype: int
         """
         return self._AssetType
@@ -13427,7 +13427,7 @@ class DescribeAlertListRequest(AbstractModel):
 
 
 class DescribeAlertListResponse(AbstractModel):
-    """DescribeAlertList返回参数结构体
+    r"""DescribeAlertList返回参数结构体
 
     """
 
@@ -13455,7 +13455,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def AlertList(self):
-        """全量告警列表
+        r"""全量告警列表
         :rtype: list of AlertInfo
         """
         return self._AlertList
@@ -13466,7 +13466,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def AlertTypeCount(self):
-        """告警大类数量
+        r"""告警大类数量
         :rtype: list of TagCount
         """
         return self._AlertTypeCount
@@ -13477,7 +13477,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """告警总数
+        r"""告警总数
         :rtype: int
         """
         return self._TotalCount
@@ -13488,7 +13488,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """0：succeed 1：timeout
+        r"""0：succeed 1：timeout
         :rtype: int
         """
         return self._ReturnCode
@@ -13499,7 +13499,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """返回状态信息
+        r"""返回状态信息
         :rtype: str
         """
         return self._ReturnMsg
@@ -13510,7 +13510,7 @@ class DescribeAlertListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13540,7 +13540,7 @@ class DescribeAlertListResponse(AbstractModel):
 
 
 class DescribeAssetProcessListRequest(AbstractModel):
-    """DescribeAssetProcessList请求参数结构体
+    r"""DescribeAssetProcessList请求参数结构体
 
     """
 
@@ -13571,7 +13571,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13582,7 +13582,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -13593,7 +13593,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -13604,7 +13604,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -13615,7 +13615,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -13626,7 +13626,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -13637,7 +13637,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -13671,7 +13671,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
 
 class DescribeAssetProcessListResponse(AbstractModel):
-    """DescribeAssetProcessList返回参数结构体
+    r"""DescribeAssetProcessList返回参数结构体
 
     """
 
@@ -13690,7 +13690,7 @@ class DescribeAssetProcessListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """进程数量
+        r"""进程数量
         :rtype: int
         """
         return self._TotalCount
@@ -13701,7 +13701,7 @@ class DescribeAssetProcessListResponse(AbstractModel):
 
     @property
     def AssetProcessList(self):
-        """进程列表
+        r"""进程列表
         :rtype: list of AssetProcessItem
         """
         return self._AssetProcessList
@@ -13712,7 +13712,7 @@ class DescribeAssetProcessListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13734,7 +13734,7 @@ class DescribeAssetProcessListResponse(AbstractModel):
 
 
 class DescribeAssetRiskListRequest(AbstractModel):
-    """DescribeAssetRiskList请求参数结构体
+    r"""DescribeAssetRiskList请求参数结构体
 
     """
 
@@ -13762,7 +13762,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13773,7 +13773,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -13784,7 +13784,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -13795,7 +13795,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -13806,7 +13806,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -13817,7 +13817,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -13850,7 +13850,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
 
 class DescribeAssetRiskListResponse(AbstractModel):
-    """DescribeAssetRiskList返回参数结构体
+    r"""DescribeAssetRiskList返回参数结构体
 
     """
 
@@ -13869,7 +13869,7 @@ class DescribeAssetRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资产视角下风险数量
+        r"""资产视角下风险数量
         :rtype: int
         """
         return self._TotalCount
@@ -13880,7 +13880,7 @@ class DescribeAssetRiskListResponse(AbstractModel):
 
     @property
     def AssetRiskList(self):
-        """资产视角下风险列表
+        r"""资产视角下风险列表
         :rtype: list of AssetRiskItem
         """
         return self._AssetRiskList
@@ -13891,7 +13891,7 @@ class DescribeAssetRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13913,7 +13913,7 @@ class DescribeAssetRiskListResponse(AbstractModel):
 
 
 class DescribeAssetViewVulRiskListRequest(AbstractModel):
-    """DescribeAssetViewVulRiskList请求参数结构体
+    r"""DescribeAssetViewVulRiskList请求参数结构体
 
     """
 
@@ -13932,7 +13932,7 @@ class DescribeAssetViewVulRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -13943,7 +13943,7 @@ class DescribeAssetViewVulRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -13954,7 +13954,7 @@ class DescribeAssetViewVulRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -13986,7 +13986,7 @@ class DescribeAssetViewVulRiskListRequest(AbstractModel):
 
 
 class DescribeAssetViewVulRiskListResponse(AbstractModel):
-    """DescribeAssetViewVulRiskList返回参数结构体
+    r"""DescribeAssetViewVulRiskList返回参数结构体
 
     """
 
@@ -14023,7 +14023,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -14034,7 +14034,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产视角的漏洞风险列表
+        r"""资产视角的漏洞风险列表
         :rtype: list of AssetViewVULRiskData
         """
         return self._Data
@@ -14045,7 +14045,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -14056,7 +14056,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -14067,7 +14067,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -14078,7 +14078,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型列表
+        r"""漏洞类型列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -14089,7 +14089,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -14100,7 +14100,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """tag枚举
+        r"""tag枚举
         :rtype: list of FilterDataObject
         """
         return self._Tags
@@ -14111,7 +14111,7 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14169,13 +14169,13 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
 
 
 class DescribeCFWAssetStatisticsRequest(AbstractModel):
-    """DescribeCFWAssetStatistics请求参数结构体
+    r"""DescribeCFWAssetStatistics请求参数结构体
 
     """
 
 
 class DescribeCFWAssetStatisticsResponse(AbstractModel):
-    """DescribeCFWAssetStatistics返回参数结构体
+    r"""DescribeCFWAssetStatistics返回参数结构体
 
     """
 
@@ -14221,7 +14221,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def NetworkTotal(self):
-        """网络资产总数
+        r"""网络资产总数
         :rtype: int
         """
         return self._NetworkTotal
@@ -14232,7 +14232,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def ClbTotal(self):
-        """资产clb数量
+        r"""资产clb数量
         :rtype: int
         """
         return self._ClbTotal
@@ -14243,7 +14243,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def NatTotal(self):
-        """nat数量
+        r"""nat数量
         :rtype: int
         """
         return self._NatTotal
@@ -14254,7 +14254,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def PublicAssetTotal(self):
-        """公网ip数量
+        r"""公网ip数量
         :rtype: int
         """
         return self._PublicAssetTotal
@@ -14265,7 +14265,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def CVMAssetTotal(self):
-        """主机数量
+        r"""主机数量
         :rtype: int
         """
         return self._CVMAssetTotal
@@ -14276,7 +14276,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def CFGTotal(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._CFGTotal
@@ -14287,7 +14287,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def PortTotal(self):
-        """端口风险
+        r"""端口风险
         :rtype: int
         """
         return self._PortTotal
@@ -14298,7 +14298,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def WebsiteTotal(self):
-        """内容风险
+        r"""内容风险
         :rtype: int
         """
         return self._WebsiteTotal
@@ -14309,7 +14309,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def ServerTotal(self):
-        """风险服务暴露
+        r"""风险服务暴露
         :rtype: int
         """
         return self._ServerTotal
@@ -14320,7 +14320,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def WeakPasswordTotal(self):
-        """弱口令风险
+        r"""弱口令风险
         :rtype: int
         """
         return self._WeakPasswordTotal
@@ -14331,7 +14331,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def VULTotal(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VULTotal
@@ -14342,7 +14342,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14368,7 +14368,7 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
 
 
 class DescribeCSIPRiskStatisticsRequest(AbstractModel):
-    """DescribeCSIPRiskStatistics请求参数结构体
+    r"""DescribeCSIPRiskStatistics请求参数结构体
 
     """
 
@@ -14384,7 +14384,7 @@ class DescribeCSIPRiskStatisticsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -14395,7 +14395,7 @@ class DescribeCSIPRiskStatisticsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -14421,7 +14421,7 @@ class DescribeCSIPRiskStatisticsRequest(AbstractModel):
 
 
 class DescribeCSIPRiskStatisticsResponse(AbstractModel):
-    """DescribeCSIPRiskStatistics返回参数结构体
+    r"""DescribeCSIPRiskStatistics返回参数结构体
 
     """
 
@@ -14437,7 +14437,7 @@ class DescribeCSIPRiskStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产概况数据
+        r"""资产概况数据
         :rtype: :class:`tencentcloud.csip.v20221121.models.CsipRiskCenterStatistics`
         """
         return self._Data
@@ -14448,7 +14448,7 @@ class DescribeCSIPRiskStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14466,7 +14466,7 @@ class DescribeCSIPRiskStatisticsResponse(AbstractModel):
 
 
 class DescribeCVMAssetInfoRequest(AbstractModel):
-    """DescribeCVMAssetInfo请求参数结构体
+    r"""DescribeCVMAssetInfo请求参数结构体
 
     """
 
@@ -14479,7 +14479,7 @@ class DescribeCVMAssetInfoRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -14502,7 +14502,7 @@ class DescribeCVMAssetInfoRequest(AbstractModel):
 
 
 class DescribeCVMAssetInfoResponse(AbstractModel):
-    """DescribeCVMAssetInfo返回参数结构体
+    r"""DescribeCVMAssetInfo返回参数结构体
 
     """
 
@@ -14518,7 +14518,7 @@ class DescribeCVMAssetInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: :class:`tencentcloud.csip.v20221121.models.AssetBaseInfoResponse`
         """
         return self._Data
@@ -14529,7 +14529,7 @@ class DescribeCVMAssetInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14547,7 +14547,7 @@ class DescribeCVMAssetInfoResponse(AbstractModel):
 
 
 class DescribeCVMAssetsRequest(AbstractModel):
-    """DescribeCVMAssets请求参数结构体
+    r"""DescribeCVMAssets请求参数结构体
 
     """
 
@@ -14563,7 +14563,7 @@ class DescribeCVMAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -14574,7 +14574,7 @@ class DescribeCVMAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器参数
+        r"""过滤器参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -14600,7 +14600,7 @@ class DescribeCVMAssetsRequest(AbstractModel):
 
 
 class DescribeCVMAssetsResponse(AbstractModel):
-    """DescribeCVMAssets返回参数结构体
+    r"""DescribeCVMAssets返回参数结构体
 
     """
 
@@ -14655,7 +14655,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -14666,7 +14666,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """机器列表
+        r"""机器列表
         :rtype: list of CVMAssetVO
         """
         return self._Data
@@ -14677,7 +14677,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -14688,7 +14688,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def DefenseStatusList(self):
-        """防护状态
+        r"""防护状态
         :rtype: list of FilterDataObject
         """
         return self._DefenseStatusList
@@ -14699,7 +14699,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """vpc枚举
+        r"""vpc枚举
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -14710,7 +14710,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型枚举
+        r"""资产类型枚举
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -14721,7 +14721,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def SystemTypeList(self):
-        """操作系统枚举
+        r"""操作系统枚举
         :rtype: list of FilterDataObject
         """
         return self._SystemTypeList
@@ -14732,7 +14732,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def IpTypeList(self):
-        """ip列表
+        r"""ip列表
         :rtype: list of FilterDataObject
         """
         return self._IpTypeList
@@ -14743,7 +14743,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """appid列表
+        r"""appid列表
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -14754,7 +14754,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def ZoneList(self):
-        """可用区列表
+        r"""可用区列表
         :rtype: list of FilterDataObject
         """
         return self._ZoneList
@@ -14765,7 +14765,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def OsList(self):
-        """os列表
+        r"""os列表
         :rtype: list of FilterDataObject
         """
         return self._OsList
@@ -14776,7 +14776,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def AssetMapInstanceTypeList(self):
-        """资产类型和实例类型的对应关系
+        r"""资产类型和实例类型的对应关系
         :rtype: list of AssetInstanceTypeMap
         """
         return self._AssetMapInstanceTypeList
@@ -14787,7 +14787,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def PublicPrivateAttr(self):
-        """公网内网枚举
+        r"""公网内网枚举
         :rtype: list of FilterDataObject
         """
         return self._PublicPrivateAttr
@@ -14798,7 +14798,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def ProtectStatusList(self):
-        """主机防护状态
+        r"""主机防护状态
         :rtype: list of FilterDataObject
         """
         return self._ProtectStatusList
@@ -14809,7 +14809,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14903,7 +14903,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
 
 class DescribeCallRecordRequest(AbstractModel):
-    """DescribeCallRecord请求参数结构体
+    r"""DescribeCallRecord请求参数结构体
 
     """
 
@@ -14928,7 +14928,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -14939,7 +14939,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """访问密钥的ID
+        r"""访问密钥的ID
         :rtype: int
         """
         return self._AccessKeyID
@@ -14950,7 +14950,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
     @property
     def SourceIPID(self):
-        """调用源IP的ID
+        r"""调用源IP的ID
         :rtype: int
         """
         return self._SourceIPID
@@ -14961,7 +14961,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
     @property
     def AccUin(self):
-        """访问账号uin
+        r"""访问账号uin
         :rtype: str
         """
         return self._AccUin
@@ -14972,7 +14972,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -15001,7 +15001,7 @@ class DescribeCallRecordRequest(AbstractModel):
 
 
 class DescribeCallRecordResponse(AbstractModel):
-    """DescribeCallRecord返回参数结构体
+    r"""DescribeCallRecord返回参数结构体
 
     """
 
@@ -15020,7 +15020,7 @@ class DescribeCallRecordResponse(AbstractModel):
 
     @property
     def Data(self):
-        """调用记录列表
+        r"""调用记录列表
         :rtype: list of CallRecord
         """
         return self._Data
@@ -15031,7 +15031,7 @@ class DescribeCallRecordResponse(AbstractModel):
 
     @property
     def Total(self):
-        """调用记录总数
+        r"""调用记录总数
         :rtype: int
         """
         return self._Total
@@ -15042,7 +15042,7 @@ class DescribeCallRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15064,7 +15064,7 @@ class DescribeCallRecordResponse(AbstractModel):
 
 
 class DescribeCheckViewRisksRequest(AbstractModel):
-    """DescribeCheckViewRisks请求参数结构体
+    r"""DescribeCheckViewRisks请求参数结构体
 
     """
 
@@ -15092,7 +15092,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -15103,7 +15103,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -15114,7 +15114,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -15125,7 +15125,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -15136,7 +15136,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -15147,7 +15147,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -15180,7 +15180,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
 
 class DescribeCheckViewRisksResponse(AbstractModel):
-    """DescribeCheckViewRisks返回参数结构体
+    r"""DescribeCheckViewRisks返回参数结构体
 
     """
 
@@ -15199,7 +15199,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """检查视角下风险数量
+        r"""检查视角下风险数量
         :rtype: int
         """
         return self._TotalCount
@@ -15210,7 +15210,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def CheckViewRiskList(self):
-        """检查视角下风险列表
+        r"""检查视角下风险列表
         :rtype: list of CheckViewRiskItem
         """
         return self._CheckViewRiskList
@@ -15221,7 +15221,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15243,7 +15243,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
 
 class DescribeClusterAssetsRequest(AbstractModel):
-    """DescribeClusterAssets请求参数结构体
+    r"""DescribeClusterAssets请求参数结构体
 
     """
 
@@ -15259,7 +15259,7 @@ class DescribeClusterAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -15270,7 +15270,7 @@ class DescribeClusterAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤
+        r"""过滤
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -15296,7 +15296,7 @@ class DescribeClusterAssetsRequest(AbstractModel):
 
 
 class DescribeClusterAssetsResponse(AbstractModel):
-    """DescribeClusterAssets返回参数结构体
+    r"""DescribeClusterAssets返回参数结构体
 
     """
 
@@ -15336,7 +15336,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of AssetCluster
         """
         return self._Data
@@ -15347,7 +15347,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -15358,7 +15358,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def ClusterTypeList(self):
-        """集群类型枚举
+        r"""集群类型枚举
         :rtype: list of FilterDataObject
         """
         return self._ClusterTypeList
@@ -15369,7 +15369,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def ClusterStatusList(self):
-        """集群状态枚举
+        r"""集群状态枚举
         :rtype: list of FilterDataObject
         """
         return self._ClusterStatusList
@@ -15380,7 +15380,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def ComponentStatusList(self):
-        """组件状态枚举
+        r"""组件状态枚举
         :rtype: list of FilterDataObject
         """
         return self._ComponentStatusList
@@ -15391,7 +15391,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """私有网络枚举
+        r"""私有网络枚举
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -15402,7 +15402,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域枚举
+        r"""地域枚举
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -15413,7 +15413,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """租户枚举
+        r"""租户枚举
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -15424,7 +15424,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def ProtectStatusList(self):
-        """集群防护状态枚举
+        r"""集群防护状态枚举
         :rtype: list of FilterDataObject
         """
         return self._ProtectStatusList
@@ -15435,7 +15435,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15499,7 +15499,7 @@ class DescribeClusterAssetsResponse(AbstractModel):
 
 
 class DescribeClusterPodAssetsRequest(AbstractModel):
-    """DescribeClusterPodAssets请求参数结构体
+    r"""DescribeClusterPodAssets请求参数结构体
 
     """
 
@@ -15515,7 +15515,7 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -15526,7 +15526,7 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤
+        r"""过滤
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -15552,7 +15552,7 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
 
 class DescribeClusterPodAssetsResponse(AbstractModel):
-    """DescribeClusterPodAssets返回参数结构体
+    r"""DescribeClusterPodAssets返回参数结构体
 
     """
 
@@ -15583,7 +15583,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of AssetClusterPod
         """
         return self._Data
@@ -15594,7 +15594,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -15605,7 +15605,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def PodStatusList(self):
-        """集群pod状态枚举
+        r"""集群pod状态枚举
         :rtype: list of FilterDataObject
         """
         return self._PodStatusList
@@ -15616,7 +15616,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def NamespaceList(self):
-        """命名空间枚举
+        r"""命名空间枚举
         :rtype: list of FilterDataObject
         """
         return self._NamespaceList
@@ -15627,7 +15627,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域枚举
+        r"""地域枚举
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -15638,7 +15638,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """租户枚举
+        r"""租户枚举
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -15649,7 +15649,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15695,7 +15695,7 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
 
 
 class DescribeConfigCheckRulesRequest(AbstractModel):
-    """DescribeConfigCheckRules请求参数结构体
+    r"""DescribeConfigCheckRules请求参数结构体
 
     """
 
@@ -15723,7 +15723,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -15734,7 +15734,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -15745,7 +15745,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -15756,7 +15756,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -15767,7 +15767,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -15778,7 +15778,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -15811,7 +15811,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
 
 class DescribeConfigCheckRulesResponse(AbstractModel):
-    """DescribeConfigCheckRules返回参数结构体
+    r"""DescribeConfigCheckRules返回参数结构体
 
     """
 
@@ -15842,7 +15842,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """风险规则数量
+        r"""风险规则数量
         :rtype: int
         """
         return self._TotalCount
@@ -15853,7 +15853,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def RuleList(self):
-        """风险规则列表
+        r"""风险规则列表
         :rtype: list of RiskRuleInfo
         """
         return self._RuleList
@@ -15864,7 +15864,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def ProviderList(self):
-        """云厂商类型选项
+        r"""云厂商类型选项
         :rtype: list of AttributeOptionSet
         """
         return self._ProviderList
@@ -15875,7 +15875,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def RiskLevelList(self):
-        """风险等级类型选项
+        r"""风险等级类型选项
         :rtype: list of AttributeOptionSet
         """
         return self._RiskLevelList
@@ -15886,7 +15886,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def DispositionTypeList(self):
-        """处置分类选项
+        r"""处置分类选项
         :rtype: list of AttributeOptionSet
         """
         return self._DispositionTypeList
@@ -15897,7 +15897,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def CheckTypeList(self):
-        """检查类型选项
+        r"""检查类型选项
         :rtype: list of AttributeOptionSet
         """
         return self._CheckTypeList
@@ -15908,7 +15908,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15954,7 +15954,7 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
 
 
 class DescribeDbAssetInfoRequest(AbstractModel):
-    """DescribeDbAssetInfo请求参数结构体
+    r"""DescribeDbAssetInfo请求参数结构体
 
     """
 
@@ -15967,7 +15967,7 @@ class DescribeDbAssetInfoRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -15990,7 +15990,7 @@ class DescribeDbAssetInfoRequest(AbstractModel):
 
 
 class DescribeDbAssetInfoResponse(AbstractModel):
-    """DescribeDbAssetInfo返回参数结构体
+    r"""DescribeDbAssetInfo返回参数结构体
 
     """
 
@@ -16006,7 +16006,7 @@ class DescribeDbAssetInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """db资产详情
+        r"""db资产详情
         :rtype: :class:`tencentcloud.csip.v20221121.models.DbAssetInfo`
         """
         return self._Data
@@ -16017,7 +16017,7 @@ class DescribeDbAssetInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16035,7 +16035,7 @@ class DescribeDbAssetInfoResponse(AbstractModel):
 
 
 class DescribeDbAssetsRequest(AbstractModel):
-    """DescribeDbAssets请求参数结构体
+    r"""DescribeDbAssets请求参数结构体
 
     """
 
@@ -16054,7 +16054,7 @@ class DescribeDbAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16065,7 +16065,7 @@ class DescribeDbAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器参数
+        r"""过滤器参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -16076,7 +16076,7 @@ class DescribeDbAssetsRequest(AbstractModel):
 
     @property
     def AssetTypes(self):
-        """资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
+        r"""资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
         :rtype: list of str
         """
         return self._AssetTypes
@@ -16103,7 +16103,7 @@ class DescribeDbAssetsRequest(AbstractModel):
 
 
 class DescribeDbAssetsResponse(AbstractModel):
-    """DescribeDbAssets返回参数结构体
+    r"""DescribeDbAssets返回参数结构体
 
     """
 
@@ -16137,7 +16137,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -16148,7 +16148,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产总数
+        r"""资产总数
         :rtype: list of DBAssetVO
         """
         return self._Data
@@ -16159,7 +16159,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域枚举
+        r"""地域枚举
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -16170,7 +16170,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型枚举
+        r"""资产类型枚举
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -16181,7 +16181,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """Vpc枚举
+        r"""Vpc枚举
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -16192,7 +16192,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """Appid枚举
+        r"""Appid枚举
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -16203,7 +16203,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def PublicPrivateAttr(self):
-        """公网内网枚举
+        r"""公网内网枚举
         :rtype: list of FilterDataObject
         """
         return self._PublicPrivateAttr
@@ -16214,7 +16214,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16266,7 +16266,7 @@ class DescribeDbAssetsResponse(AbstractModel):
 
 
 class DescribeDomainAssetsRequest(AbstractModel):
-    """DescribeDomainAssets请求参数结构体
+    r"""DescribeDomainAssets请求参数结构体
 
     """
 
@@ -16285,7 +16285,7 @@ class DescribeDomainAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16296,7 +16296,7 @@ class DescribeDomainAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器参数
+        r"""过滤器参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -16307,7 +16307,7 @@ class DescribeDomainAssetsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """安全中心自定义标签
+        r"""安全中心自定义标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -16339,7 +16339,7 @@ class DescribeDomainAssetsRequest(AbstractModel):
 
 
 class DescribeDomainAssetsResponse(AbstractModel):
-    """DescribeDomainAssets返回参数结构体
+    r"""DescribeDomainAssets返回参数结构体
 
     """
 
@@ -16370,7 +16370,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -16381,7 +16381,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """域名列表
+        r"""域名列表
         :rtype: list of DomainAssetVO
         """
         return self._Data
@@ -16392,7 +16392,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def DefenseStatusList(self):
-        """防护状态列表
+        r"""防护状态列表
         :rtype: list of FilterDataObject
         """
         return self._DefenseStatusList
@@ -16403,7 +16403,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def AssetLocationList(self):
-        """资产归属地列表
+        r"""资产归属地列表
         :rtype: list of FilterDataObject
         """
         return self._AssetLocationList
@@ -16414,7 +16414,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def SourceTypeList(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._SourceTypeList
@@ -16425,7 +16425,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -16436,7 +16436,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16482,7 +16482,7 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
 
 class DescribeExposeAssetCategoryRequest(AbstractModel):
-    """DescribeExposeAssetCategory请求参数结构体
+    r"""DescribeExposeAssetCategory请求参数结构体
 
     """
 
@@ -16495,7 +16495,7 @@ class DescribeExposeAssetCategoryRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16518,7 +16518,7 @@ class DescribeExposeAssetCategoryRequest(AbstractModel):
 
 
 class DescribeExposeAssetCategoryResponse(AbstractModel):
-    """DescribeExposeAssetCategory返回参数结构体
+    r"""DescribeExposeAssetCategory返回参数结构体
 
     """
 
@@ -16534,7 +16534,7 @@ class DescribeExposeAssetCategoryResponse(AbstractModel):
 
     @property
     def ExposeAssetTypeList(self):
-        """云边界分析资产分类列表
+        r"""云边界分析资产分类列表
         :rtype: list of ExposeAssetTypeItem
         """
         return self._ExposeAssetTypeList
@@ -16545,7 +16545,7 @@ class DescribeExposeAssetCategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16566,7 +16566,7 @@ class DescribeExposeAssetCategoryResponse(AbstractModel):
 
 
 class DescribeExposePathRequest(AbstractModel):
-    """DescribeExposePath请求参数结构体
+    r"""DescribeExposePath请求参数结构体
 
     """
 
@@ -16591,7 +16591,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16602,7 +16602,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._AssetId
@@ -16613,7 +16613,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """资产IP
+        r"""资产IP
         :rtype: str
         """
         return self._Ip
@@ -16624,7 +16624,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """资产域名
+        r"""资产域名
         :rtype: str
         """
         return self._Domain
@@ -16635,7 +16635,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Port(self):
-        """端口或端口范围
+        r"""端口或端口范围
         :rtype: str
         """
         return self._Port
@@ -16662,7 +16662,7 @@ class DescribeExposePathRequest(AbstractModel):
 
 
 class DescribeExposePathResponse(AbstractModel):
-    """DescribeExposePath返回参数结构体
+    r"""DescribeExposePath返回参数结构体
 
     """
 
@@ -16678,7 +16678,7 @@ class DescribeExposePathResponse(AbstractModel):
 
     @property
     def Content(self):
-        """云边界分析路径节点内容
+        r"""云边界分析路径节点内容
         :rtype: str
         """
         return self._Content
@@ -16689,7 +16689,7 @@ class DescribeExposePathResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16705,7 +16705,7 @@ class DescribeExposePathResponse(AbstractModel):
 
 
 class DescribeExposuresRequest(AbstractModel):
-    """DescribeExposures请求参数结构体
+    r"""DescribeExposures请求参数结构体
 
     """
 
@@ -16733,7 +16733,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16744,7 +16744,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -16755,7 +16755,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -16766,7 +16766,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -16777,7 +16777,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -16788,7 +16788,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -16821,7 +16821,7 @@ class DescribeExposuresRequest(AbstractModel):
 
 
 class DescribeExposuresResponse(AbstractModel):
-    """DescribeExposures返回参数结构体
+    r"""DescribeExposures返回参数结构体
 
     """
 
@@ -16840,7 +16840,7 @@ class DescribeExposuresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """云边界分析资产数量
+        r"""云边界分析资产数量
         :rtype: int
         """
         return self._TotalCount
@@ -16851,7 +16851,7 @@ class DescribeExposuresResponse(AbstractModel):
 
     @property
     def ExposeList(self):
-        """云边界分析资产列表
+        r"""云边界分析资产列表
         :rtype: list of ExposesItem
         """
         return self._ExposeList
@@ -16862,7 +16862,7 @@ class DescribeExposuresResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16884,7 +16884,7 @@ class DescribeExposuresResponse(AbstractModel):
 
 
 class DescribeGatewayAssetsRequest(AbstractModel):
-    """DescribeGatewayAssets请求参数结构体
+    r"""DescribeGatewayAssets请求参数结构体
 
     """
 
@@ -16900,7 +16900,7 @@ class DescribeGatewayAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -16911,7 +16911,7 @@ class DescribeGatewayAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -16937,7 +16937,7 @@ class DescribeGatewayAssetsRequest(AbstractModel):
 
 
 class DescribeGatewayAssetsResponse(AbstractModel):
-    """DescribeGatewayAssets返回参数结构体
+    r"""DescribeGatewayAssets返回参数结构体
 
     """
 
@@ -16968,7 +16968,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of GateWayAsset
         """
         return self._Data
@@ -16979,7 +16979,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -16990,7 +16990,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -17001,7 +17001,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -17012,7 +17012,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """vpc列表
+        r"""vpc列表
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -17023,7 +17023,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """appid列表
+        r"""appid列表
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -17034,7 +17034,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17080,7 +17080,7 @@ class DescribeGatewayAssetsResponse(AbstractModel):
 
 
 class DescribeHighBaseLineRiskListRequest(AbstractModel):
-    """DescribeHighBaseLineRiskList请求参数结构体
+    r"""DescribeHighBaseLineRiskList请求参数结构体
 
     """
 
@@ -17114,7 +17114,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17125,7 +17125,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -17136,7 +17136,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -17147,7 +17147,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -17158,7 +17158,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -17169,7 +17169,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -17180,7 +17180,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def CloudAccountID(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountID
@@ -17191,7 +17191,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -17226,7 +17226,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
 
 class DescribeHighBaseLineRiskListResponse(AbstractModel):
-    """DescribeHighBaseLineRiskList返回参数结构体
+    r"""DescribeHighBaseLineRiskList返回参数结构体
 
     """
 
@@ -17245,7 +17245,7 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """高危基线风险数量
+        r"""高危基线风险数量
         :rtype: int
         """
         return self._TotalCount
@@ -17256,7 +17256,7 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
 
     @property
     def HighBaseLineRiskList(self):
-        """高危基线风险列表
+        r"""高危基线风险列表
         :rtype: list of HighBaseLineRiskItem
         """
         return self._HighBaseLineRiskList
@@ -17267,7 +17267,7 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17289,7 +17289,7 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
 
 
 class DescribeListenerListRequest(AbstractModel):
-    """DescribeListenerList请求参数结构体
+    r"""DescribeListenerList请求参数结构体
 
     """
 
@@ -17305,7 +17305,7 @@ class DescribeListenerListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17316,7 +17316,7 @@ class DescribeListenerListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器参数
+        r"""过滤器参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -17342,7 +17342,7 @@ class DescribeListenerListRequest(AbstractModel):
 
 
 class DescribeListenerListResponse(AbstractModel):
-    """DescribeListenerList返回参数结构体
+    r"""DescribeListenerList返回参数结构体
 
     """
 
@@ -17361,7 +17361,7 @@ class DescribeListenerListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -17372,7 +17372,7 @@ class DescribeListenerListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """监听器列表
+        r"""监听器列表
         :rtype: list of ClbListenerListInfo
         """
         return self._Data
@@ -17383,7 +17383,7 @@ class DescribeListenerListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17405,7 +17405,7 @@ class DescribeListenerListResponse(AbstractModel):
 
 
 class DescribeNICAssetsRequest(AbstractModel):
-    """DescribeNICAssets请求参数结构体
+    r"""DescribeNICAssets请求参数结构体
 
     """
 
@@ -17421,7 +17421,7 @@ class DescribeNICAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17432,7 +17432,7 @@ class DescribeNICAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -17458,7 +17458,7 @@ class DescribeNICAssetsRequest(AbstractModel):
 
 
 class DescribeNICAssetsResponse(AbstractModel):
-    """DescribeNICAssets返回参数结构体
+    r"""DescribeNICAssets返回参数结构体
 
     """
 
@@ -17489,7 +17489,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of NICAsset
         """
         return self._Data
@@ -17500,7 +17500,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -17511,7 +17511,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -17522,7 +17522,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -17533,7 +17533,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """vpc列表
+        r"""vpc列表
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -17544,7 +17544,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """appid列表
+        r"""appid列表
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -17555,7 +17555,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17601,7 +17601,7 @@ class DescribeNICAssetsResponse(AbstractModel):
 
 
 class DescribeOrganizationInfoRequest(AbstractModel):
-    """DescribeOrganizationInfo请求参数结构体
+    r"""DescribeOrganizationInfo请求参数结构体
 
     """
 
@@ -17614,7 +17614,7 @@ class DescribeOrganizationInfoRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17637,7 +17637,7 @@ class DescribeOrganizationInfoRequest(AbstractModel):
 
 
 class DescribeOrganizationInfoResponse(AbstractModel):
-    """DescribeOrganizationInfo返回参数结构体
+    r"""DescribeOrganizationInfo返回参数结构体
 
     """
 
@@ -17656,7 +17656,7 @@ class DescribeOrganizationInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -17667,7 +17667,7 @@ class DescribeOrganizationInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """集团用户列表
+        r"""集团用户列表
         :rtype: list of OrganizationInfo
         """
         return self._Data
@@ -17678,7 +17678,7 @@ class DescribeOrganizationInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17700,7 +17700,7 @@ class DescribeOrganizationInfoResponse(AbstractModel):
 
 
 class DescribeOrganizationUserInfoRequest(AbstractModel):
-    """DescribeOrganizationUserInfo请求参数结构体
+    r"""DescribeOrganizationUserInfo请求参数结构体
 
     """
 
@@ -17719,7 +17719,7 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17730,7 +17730,7 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -17741,7 +17741,7 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
     @property
     def NotSupportCloud(self):
-        """不支持多云
+        r"""不支持多云
         :rtype: bool
         """
         return self._NotSupportCloud
@@ -17768,7 +17768,7 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
 
 class DescribeOrganizationUserInfoResponse(AbstractModel):
-    """DescribeOrganizationUserInfo返回参数结构体
+    r"""DescribeOrganizationUserInfo返回参数结构体
 
     """
 
@@ -17793,7 +17793,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -17804,7 +17804,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """集团用户列表
+        r"""集团用户列表
         :rtype: list of OrganizationUserInfo
         """
         return self._Data
@@ -17815,7 +17815,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
     @property
     def JoinTypeLst(self):
-        """加入方式枚举
+        r"""加入方式枚举
         :rtype: list of FilterDataObject
         """
         return self._JoinTypeLst
@@ -17826,7 +17826,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
     @property
     def CloudTypeLst(self):
-        """云厂商枚举
+        r"""云厂商枚举
         :rtype: list of FilterDataObject
         """
         return self._CloudTypeLst
@@ -17837,7 +17837,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17871,7 +17871,7 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 
 
 class DescribeOtherCloudAssetsRequest(AbstractModel):
-    """DescribeOtherCloudAssets请求参数结构体
+    r"""DescribeOtherCloudAssets请求参数结构体
 
     """
 
@@ -17890,7 +17890,7 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -17901,7 +17901,7 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """-
+        r"""-
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -17912,7 +17912,7 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
     @property
     def AssetTypes(self):
-        """资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
+        r"""资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
         :rtype: list of str
         """
         return self._AssetTypes
@@ -17939,7 +17939,7 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
 
 class DescribeOtherCloudAssetsResponse(AbstractModel):
-    """DescribeOtherCloudAssets返回参数结构体
+    r"""DescribeOtherCloudAssets返回参数结构体
 
     """
 
@@ -17970,7 +17970,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -17981,7 +17981,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产总数
+        r"""资产总数
         :rtype: list of DBAssetVO
         """
         return self._Data
@@ -17992,7 +17992,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域枚举
+        r"""地域枚举
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -18003,7 +18003,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型枚举
+        r"""资产类型枚举
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -18014,7 +18014,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """Vpc枚举
+        r"""Vpc枚举
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -18025,7 +18025,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """Appid枚举
+        r"""Appid枚举
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -18036,7 +18036,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18082,7 +18082,7 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
 
 
 class DescribePublicIpAssetsRequest(AbstractModel):
-    """DescribePublicIpAssets请求参数结构体
+    r"""DescribePublicIpAssets请求参数结构体
 
     """
 
@@ -18101,7 +18101,7 @@ class DescribePublicIpAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -18112,7 +18112,7 @@ class DescribePublicIpAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器参数
+        r"""过滤器参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -18123,7 +18123,7 @@ class DescribePublicIpAssetsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """安全中心自定义标签
+        r"""安全中心自定义标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -18155,7 +18155,7 @@ class DescribePublicIpAssetsRequest(AbstractModel):
 
 
 class DescribePublicIpAssetsResponse(AbstractModel):
-    """DescribePublicIpAssets返回参数结构体
+    r"""DescribePublicIpAssets返回参数结构体
 
     """
 
@@ -18192,7 +18192,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of IpAssetListVO
         """
         return self._Data
@@ -18203,7 +18203,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -18214,7 +18214,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def AssetLocationList(self):
-        """资产归属地
+        r"""资产归属地
         :rtype: list of FilterDataObject
         """
         return self._AssetLocationList
@@ -18225,7 +18225,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def IpTypeList(self):
-        """ip列表枚举
+        r"""ip列表枚举
         :rtype: list of FilterDataObject
         """
         return self._IpTypeList
@@ -18236,7 +18236,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表枚举
+        r"""地域列表枚举
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -18247,7 +18247,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def DefenseStatusList(self):
-        """防护枚举
+        r"""防护枚举
         :rtype: list of FilterDataObject
         """
         return self._DefenseStatusList
@@ -18258,7 +18258,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        """资产类型枚举
+        r"""资产类型枚举
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -18269,7 +18269,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """AppId枚举
+        r"""AppId枚举
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -18280,7 +18280,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18338,7 +18338,7 @@ class DescribePublicIpAssetsResponse(AbstractModel):
 
 
 class DescribeRepositoryImageAssetsRequest(AbstractModel):
-    """DescribeRepositoryImageAssets请求参数结构体
+    r"""DescribeRepositoryImageAssets请求参数结构体
 
     """
 
@@ -18354,7 +18354,7 @@ class DescribeRepositoryImageAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -18365,7 +18365,7 @@ class DescribeRepositoryImageAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """filter过滤条件
+        r"""filter过滤条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -18391,7 +18391,7 @@ class DescribeRepositoryImageAssetsRequest(AbstractModel):
 
 
 class DescribeRepositoryImageAssetsResponse(AbstractModel):
-    """DescribeRepositoryImageAssets返回参数结构体
+    r"""DescribeRepositoryImageAssets返回参数结构体
 
     """
 
@@ -18413,7 +18413,7 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """仓库镜像列表
+        r"""仓库镜像列表
         :rtype: list of RepositoryImageVO
         """
         return self._Data
@@ -18424,7 +18424,7 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -18435,7 +18435,7 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """region列表
+        r"""region列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -18446,7 +18446,7 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18474,7 +18474,7 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
 
 
 class DescribeRiskCallRecordRequest(AbstractModel):
-    """DescribeRiskCallRecord请求参数结构体
+    r"""DescribeRiskCallRecord请求参数结构体
 
     """
 
@@ -18493,7 +18493,7 @@ class DescribeRiskCallRecordRequest(AbstractModel):
 
     @property
     def RiskID(self):
-        """风险记录ID
+        r"""风险记录ID
         :rtype: int
         """
         return self._RiskID
@@ -18504,7 +18504,7 @@ class DescribeRiskCallRecordRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -18515,7 +18515,7 @@ class DescribeRiskCallRecordRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -18542,7 +18542,7 @@ class DescribeRiskCallRecordRequest(AbstractModel):
 
 
 class DescribeRiskCallRecordResponse(AbstractModel):
-    """DescribeRiskCallRecord返回参数结构体
+    r"""DescribeRiskCallRecord返回参数结构体
 
     """
 
@@ -18561,7 +18561,7 @@ class DescribeRiskCallRecordResponse(AbstractModel):
 
     @property
     def Data(self):
-        """风险调用记录列表
+        r"""风险调用记录列表
         :rtype: list of RiskCallRecord
         """
         return self._Data
@@ -18572,7 +18572,7 @@ class DescribeRiskCallRecordResponse(AbstractModel):
 
     @property
     def Total(self):
-        """调用记录总数
+        r"""调用记录总数
         :rtype: int
         """
         return self._Total
@@ -18583,7 +18583,7 @@ class DescribeRiskCallRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18605,7 +18605,7 @@ class DescribeRiskCallRecordResponse(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
-    """DescribeRiskCenterAssetViewCFGRiskList请求参数结构体
+    r"""DescribeRiskCenterAssetViewCFGRiskList请求参数结构体
 
     """
 
@@ -18624,7 +18624,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -18635,7 +18635,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -18646,7 +18646,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -18678,7 +18678,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
-    """DescribeRiskCenterAssetViewCFGRiskList返回参数结构体
+    r"""DescribeRiskCenterAssetViewCFGRiskList返回参数结构体
 
     """
 
@@ -18715,7 +18715,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -18726,7 +18726,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产视角的配置风险列表
+        r"""资产视角的配置风险列表
         :rtype: list of AssetViewCFGRisk
         """
         return self._Data
@@ -18737,7 +18737,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -18748,7 +18748,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -18759,7 +18759,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def CFGNameLists(self):
-        """配置名列表
+        r"""配置名列表
         :rtype: list of FilterDataObject
         """
         return self._CFGNameLists
@@ -18770,7 +18770,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def CheckTypeLists(self):
-        """检查类型列表
+        r"""检查类型列表
         :rtype: list of FilterDataObject
         """
         return self._CheckTypeLists
@@ -18781,7 +18781,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -18792,7 +18792,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -18803,7 +18803,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18861,7 +18861,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
-    """DescribeRiskCenterAssetViewPortRiskList请求参数结构体
+    r"""DescribeRiskCenterAssetViewPortRiskList请求参数结构体
 
     """
 
@@ -18880,7 +18880,7 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -18891,7 +18891,7 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -18902,7 +18902,7 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -18934,7 +18934,7 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
-    """DescribeRiskCenterAssetViewPortRiskList返回参数结构体
+    r"""DescribeRiskCenterAssetViewPortRiskList返回参数结构体
 
     """
 
@@ -18968,7 +18968,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -18979,7 +18979,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产视角的配置风险列表
+        r"""资产视角的配置风险列表
         :rtype: list of AssetViewPortRisk
         """
         return self._Data
@@ -18990,7 +18990,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -19001,7 +19001,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -19012,7 +19012,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def SuggestionLists(self):
-        """建议列表
+        r"""建议列表
         :rtype: list of FilterDataObject
         """
         return self._SuggestionLists
@@ -19023,7 +19023,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -19034,7 +19034,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -19045,7 +19045,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19097,7 +19097,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
-    """DescribeRiskCenterAssetViewVULRiskList请求参数结构体
+    r"""DescribeRiskCenterAssetViewVULRiskList请求参数结构体
 
     """
 
@@ -19116,7 +19116,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -19127,7 +19127,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -19138,7 +19138,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -19170,7 +19170,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
-    """DescribeRiskCenterAssetViewVULRiskList返回参数结构体
+    r"""DescribeRiskCenterAssetViewVULRiskList返回参数结构体
 
     """
 
@@ -19204,7 +19204,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -19215,7 +19215,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产视角的漏洞风险列表
+        r"""资产视角的漏洞风险列表
         :rtype: list of AssetViewVULRisk
         """
         return self._Data
@@ -19226,7 +19226,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -19237,7 +19237,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -19248,7 +19248,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -19259,7 +19259,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型列表
+        r"""漏洞类型列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -19270,7 +19270,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -19281,7 +19281,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19333,7 +19333,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
-    """DescribeRiskCenterAssetViewWeakPasswordRiskList请求参数结构体
+    r"""DescribeRiskCenterAssetViewWeakPasswordRiskList请求参数结构体
 
     """
 
@@ -19352,7 +19352,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -19363,7 +19363,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -19374,7 +19374,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -19406,7 +19406,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
-    """DescribeRiskCenterAssetViewWeakPasswordRiskList返回参数结构体
+    r"""DescribeRiskCenterAssetViewWeakPasswordRiskList返回参数结构体
 
     """
 
@@ -19440,7 +19440,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -19451,7 +19451,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """风险列表
+        r"""风险列表
         :rtype: list of AssetViewWeakPassRisk
         """
         return self._Data
@@ -19462,7 +19462,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -19473,7 +19473,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -19484,7 +19484,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -19495,7 +19495,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -19506,7 +19506,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def PasswordTypeLists(self):
-        """弱口令类型列表
+        r"""弱口令类型列表
         :rtype: list of FilterDataObject
         """
         return self._PasswordTypeLists
@@ -19517,7 +19517,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19569,7 +19569,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
-    """DescribeRiskCenterCFGViewCFGRiskList请求参数结构体
+    r"""DescribeRiskCenterCFGViewCFGRiskList请求参数结构体
 
     """
 
@@ -19585,7 +19585,7 @@ class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -19596,7 +19596,7 @@ class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -19622,7 +19622,7 @@ class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
-    """DescribeRiskCenterCFGViewCFGRiskList返回参数结构体
+    r"""DescribeRiskCenterCFGViewCFGRiskList返回参数结构体
 
     """
 
@@ -19659,7 +19659,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -19670,7 +19670,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """资产视角的配置风险列表
+        r"""资产视角的配置风险列表
         :rtype: list of CFGViewCFGRisk
         """
         return self._Data
@@ -19681,7 +19681,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -19692,7 +19692,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -19703,7 +19703,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def CFGNameLists(self):
-        """配置名列表
+        r"""配置名列表
         :rtype: list of FilterDataObject
         """
         return self._CFGNameLists
@@ -19714,7 +19714,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def CheckTypeLists(self):
-        """检查类型列表
+        r"""检查类型列表
         :rtype: list of FilterDataObject
         """
         return self._CheckTypeLists
@@ -19725,7 +19725,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -19736,7 +19736,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -19747,7 +19747,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19805,7 +19805,7 @@ class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
-    """DescribeRiskCenterPortViewPortRiskList请求参数结构体
+    r"""DescribeRiskCenterPortViewPortRiskList请求参数结构体
 
     """
 
@@ -19824,7 +19824,7 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -19835,7 +19835,7 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -19846,7 +19846,7 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -19878,7 +19878,7 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
-    """DescribeRiskCenterPortViewPortRiskList返回参数结构体
+    r"""DescribeRiskCenterPortViewPortRiskList返回参数结构体
 
     """
 
@@ -19906,7 +19906,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -19917,7 +19917,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """端口视角的端口风险列表
+        r"""端口视角的端口风险列表
         :rtype: list of PortViewPortRisk
         """
         return self._Data
@@ -19928,7 +19928,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -19939,7 +19939,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def SuggestionLists(self):
-        """处置建议列表
+        r"""处置建议列表
         :rtype: list of FilterDataObject
         """
         return self._SuggestionLists
@@ -19950,7 +19950,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -19961,7 +19961,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20001,7 +20001,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterServerRiskListRequest(AbstractModel):
-    """DescribeRiskCenterServerRiskList请求参数结构体
+    r"""DescribeRiskCenterServerRiskList请求参数结构体
 
     """
 
@@ -20020,7 +20020,7 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -20031,7 +20031,7 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -20042,7 +20042,7 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -20074,7 +20074,7 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterServerRiskListResponse(AbstractModel):
-    """DescribeRiskCenterServerRiskList返回参数结构体
+    r"""DescribeRiskCenterServerRiskList返回参数结构体
 
     """
 
@@ -20096,7 +20096,7 @@ class DescribeRiskCenterServerRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -20107,7 +20107,7 @@ class DescribeRiskCenterServerRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """风险服务列表
+        r"""风险服务列表
         :rtype: list of ServerRisk
         """
         return self._Data
@@ -20118,7 +20118,7 @@ class DescribeRiskCenterServerRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型枚举
+        r"""资产类型枚举
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -20129,7 +20129,7 @@ class DescribeRiskCenterServerRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20157,7 +20157,7 @@ class DescribeRiskCenterServerRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
-    """DescribeRiskCenterVULViewVULRiskList请求参数结构体
+    r"""DescribeRiskCenterVULViewVULRiskList请求参数结构体
 
     """
 
@@ -20176,7 +20176,7 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -20187,7 +20187,7 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -20198,7 +20198,7 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -20230,7 +20230,7 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
-    """DescribeRiskCenterVULViewVULRiskList返回参数结构体
+    r"""DescribeRiskCenterVULViewVULRiskList返回参数结构体
 
     """
 
@@ -20258,7 +20258,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -20269,7 +20269,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """漏洞产视角的漏洞风险列表
+        r"""漏洞产视角的漏洞风险列表
         :rtype: list of VULViewVULRisk
         """
         return self._Data
@@ -20280,7 +20280,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -20291,7 +20291,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -20302,7 +20302,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型列表
+        r"""漏洞类型列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -20313,7 +20313,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20353,7 +20353,7 @@ class DescribeRiskCenterVULViewVULRiskListResponse(AbstractModel):
 
 
 class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
-    """DescribeRiskCenterWebsiteRiskList请求参数结构体
+    r"""DescribeRiskCenterWebsiteRiskList请求参数结构体
 
     """
 
@@ -20372,7 +20372,7 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -20383,7 +20383,7 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -20394,7 +20394,7 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -20426,7 +20426,7 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
 
 class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
-    """DescribeRiskCenterWebsiteRiskList返回参数结构体
+    r"""DescribeRiskCenterWebsiteRiskList返回参数结构体
 
     """
 
@@ -20457,7 +20457,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -20468,7 +20468,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """内容风险列表
+        r"""内容风险列表
         :rtype: list of WebsiteRisk
         """
         return self._Data
@@ -20479,7 +20479,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def StatusLists(self):
-        """状态列表
+        r"""状态列表
         :rtype: list of FilterDataObject
         """
         return self._StatusLists
@@ -20490,7 +20490,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -20501,7 +20501,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def InstanceTypeLists(self):
-        """资产类型列表
+        r"""资产类型列表
         :rtype: list of FilterDataObject
         """
         return self._InstanceTypeLists
@@ -20512,7 +20512,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def DetectEngineLists(self):
-        """风险类型列表
+        r"""风险类型列表
         :rtype: list of FilterDataObject
         """
         return self._DetectEngineLists
@@ -20523,7 +20523,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20569,7 +20569,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
 
 
 class DescribeRiskDetailListRequest(AbstractModel):
-    """DescribeRiskDetailList请求参数结构体
+    r"""DescribeRiskDetailList请求参数结构体
 
     """
 
@@ -20603,7 +20603,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -20614,7 +20614,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -20625,7 +20625,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -20636,7 +20636,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -20647,7 +20647,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -20658,7 +20658,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -20669,7 +20669,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -20680,7 +20680,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -20715,7 +20715,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
 
 class DescribeRiskDetailListResponse(AbstractModel):
-    """DescribeRiskDetailList返回参数结构体
+    r"""DescribeRiskDetailList返回参数结构体
 
     """
 
@@ -20734,7 +20734,7 @@ class DescribeRiskDetailListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """资产视角下风险详情数量
+        r"""资产视角下风险详情数量
         :rtype: int
         """
         return self._TotalCount
@@ -20745,7 +20745,7 @@ class DescribeRiskDetailListResponse(AbstractModel):
 
     @property
     def AssetRiskDetailList(self):
-        """资产视角下风险详情列表
+        r"""资产视角下风险详情列表
         :rtype: list of RiskDetailItem
         """
         return self._AssetRiskDetailList
@@ -20756,7 +20756,7 @@ class DescribeRiskDetailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20778,7 +20778,7 @@ class DescribeRiskDetailListResponse(AbstractModel):
 
 
 class DescribeRiskRuleDetailRequest(AbstractModel):
-    """DescribeRiskRuleDetail请求参数结构体
+    r"""DescribeRiskRuleDetail请求参数结构体
 
     """
 
@@ -20791,7 +20791,7 @@ class DescribeRiskRuleDetailRequest(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -20814,7 +20814,7 @@ class DescribeRiskRuleDetailRequest(AbstractModel):
 
 
 class DescribeRiskRuleDetailResponse(AbstractModel):
-    """DescribeRiskRuleDetail返回参数结构体
+    r"""DescribeRiskRuleDetail返回参数结构体
 
     """
 
@@ -20842,7 +20842,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -20853,7 +20853,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -20864,7 +20864,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskName
@@ -20875,7 +20875,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskInfluence(self):
-        """风险危害
+        r"""风险危害
         :rtype: str
         """
         return self._RiskInfluence
@@ -20886,7 +20886,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskFixAdvice(self):
-        """修复指引
+        r"""修复指引
         :rtype: str
         """
         return self._RiskFixAdvice
@@ -20897,7 +20897,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20917,7 +20917,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
 
 class DescribeRiskRulesRequest(AbstractModel):
-    """DescribeRiskRules请求参数结构体
+    r"""DescribeRiskRules请求参数结构体
 
     """
 
@@ -20945,7 +20945,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -20956,7 +20956,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -20967,7 +20967,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -20978,7 +20978,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -20989,7 +20989,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -21000,7 +21000,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -21033,7 +21033,7 @@ class DescribeRiskRulesRequest(AbstractModel):
 
 
 class DescribeRiskRulesResponse(AbstractModel):
-    """DescribeRiskRules返回参数结构体
+    r"""DescribeRiskRules返回参数结构体
 
     """
 
@@ -21055,7 +21055,7 @@ class DescribeRiskRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """风险规则数量
+        r"""风险规则数量
         :rtype: int
         """
         return self._TotalCount
@@ -21066,7 +21066,7 @@ class DescribeRiskRulesResponse(AbstractModel):
 
     @property
     def RiskRuleList(self):
-        """风险规则列表
+        r"""风险规则列表
         :rtype: list of RiskRuleItem
         """
         return self._RiskRuleList
@@ -21077,7 +21077,7 @@ class DescribeRiskRulesResponse(AbstractModel):
 
     @property
     def InstanceTypeList(self):
-        """实例类型选项
+        r"""实例类型选项
         :rtype: list of AttributeOptionSet
         """
         return self._InstanceTypeList
@@ -21088,7 +21088,7 @@ class DescribeRiskRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21116,7 +21116,7 @@ class DescribeRiskRulesResponse(AbstractModel):
 
 
 class DescribeScanReportListRequest(AbstractModel):
-    """DescribeScanReportList请求参数结构体
+    r"""DescribeScanReportList请求参数结构体
 
     """
 
@@ -21132,7 +21132,7 @@ class DescribeScanReportListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -21143,7 +21143,7 @@ class DescribeScanReportListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """列表过滤条件
+        r"""列表过滤条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -21169,7 +21169,7 @@ class DescribeScanReportListRequest(AbstractModel):
 
 
 class DescribeScanReportListResponse(AbstractModel):
-    """DescribeScanReportList返回参数结构体
+    r"""DescribeScanReportList返回参数结构体
 
     """
 
@@ -21191,7 +21191,7 @@ class DescribeScanReportListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -21202,7 +21202,7 @@ class DescribeScanReportListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务日志列表
+        r"""任务日志列表
         :rtype: list of ScanTaskInfo
         """
         return self._Data
@@ -21213,7 +21213,7 @@ class DescribeScanReportListResponse(AbstractModel):
 
     @property
     def UINList(self):
-        """主账户ID列表
+        r"""主账户ID列表
         :rtype: list of str
         """
         return self._UINList
@@ -21224,7 +21224,7 @@ class DescribeScanReportListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21247,7 +21247,7 @@ class DescribeScanReportListResponse(AbstractModel):
 
 
 class DescribeScanStatisticRequest(AbstractModel):
-    """DescribeScanStatistic请求参数结构体
+    r"""DescribeScanStatistic请求参数结构体
 
     """
 
@@ -21263,7 +21263,7 @@ class DescribeScanStatisticRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -21274,7 +21274,7 @@ class DescribeScanStatisticRequest(AbstractModel):
 
     @property
     def TaskLogId(self):
-        """体检任务id
+        r"""体检任务id
         :rtype: str
         """
         return self._TaskLogId
@@ -21298,7 +21298,7 @@ class DescribeScanStatisticRequest(AbstractModel):
 
 
 class DescribeScanStatisticResponse(AbstractModel):
-    """DescribeScanStatistic返回参数结构体
+    r"""DescribeScanStatistic返回参数结构体
 
     """
 
@@ -21335,7 +21335,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def PortServiceCount(self):
-        """端口服务数量
+        r"""端口服务数量
         :rtype: int
         """
         return self._PortServiceCount
@@ -21346,7 +21346,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def WebAppCount(self):
-        """Web服务数量
+        r"""Web服务数量
         :rtype: int
         """
         return self._WebAppCount
@@ -21357,7 +21357,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def WeakPasswordCount(self):
-        """弱口令风险数量
+        r"""弱口令风险数量
         :rtype: int
         """
         return self._WeakPasswordCount
@@ -21368,7 +21368,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def VulCount(self):
-        """漏洞风险数量
+        r"""漏洞风险数量
         :rtype: int
         """
         return self._VulCount
@@ -21379,7 +21379,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def HighRiskPortServiceCount(self):
-        """高危端口服务数量
+        r"""高危端口服务数量
         :rtype: int
         """
         return self._HighRiskPortServiceCount
@@ -21390,7 +21390,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def RiskWebAppCount(self):
-        """风险Web服务数量
+        r"""风险Web服务数量
         :rtype: int
         """
         return self._RiskWebAppCount
@@ -21401,7 +21401,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def PortServiceIncrement(self):
-        """端口服务近7天新增数量
+        r"""端口服务近7天新增数量
         :rtype: int
         """
         return self._PortServiceIncrement
@@ -21412,7 +21412,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def WebAppIncrement(self):
-        """Web服务近7天新增数量
+        r"""Web服务近7天新增数量
         :rtype: int
         """
         return self._WebAppIncrement
@@ -21423,7 +21423,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21446,7 +21446,7 @@ class DescribeScanStatisticResponse(AbstractModel):
 
 
 class DescribeScanTaskListRequest(AbstractModel):
-    """DescribeScanTaskList请求参数结构体
+    r"""DescribeScanTaskList请求参数结构体
 
     """
 
@@ -21465,7 +21465,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -21476,7 +21476,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -21487,7 +21487,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of Tags
         """
         return self._Tags
@@ -21519,7 +21519,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
 
 class DescribeScanTaskListResponse(AbstractModel):
-    """DescribeScanTaskList返回参数结构体
+    r"""DescribeScanTaskList返回参数结构体
 
     """
 
@@ -21544,7 +21544,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -21555,7 +21555,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务日志列表
+        r"""任务日志列表
         :rtype: list of ScanTaskInfoList
         """
         return self._Data
@@ -21566,7 +21566,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def UINList(self):
-        """主账户ID列表
+        r"""主账户ID列表
         :rtype: list of str
         """
         return self._UINList
@@ -21577,7 +21577,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def TaskModeList(self):
-        """体检模式过滤列表
+        r"""体检模式过滤列表
         :rtype: list of FilterDataObject
         """
         return self._TaskModeList
@@ -21588,7 +21588,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21617,7 +21617,7 @@ class DescribeScanTaskListResponse(AbstractModel):
 
 
 class DescribeSearchBugInfoRequest(AbstractModel):
-    """DescribeSearchBugInfo请求参数结构体
+    r"""DescribeSearchBugInfo请求参数结构体
 
     """
 
@@ -21633,7 +21633,7 @@ class DescribeSearchBugInfoRequest(AbstractModel):
 
     @property
     def Id(self):
-        """1的时候返回应急漏洞，2的时候返回应急漏洞列表，3的时候搭配输入CVEId字段展示该漏洞数据
+        r"""1的时候返回应急漏洞，2的时候返回应急漏洞列表，3的时候搭配输入CVEId字段展示该漏洞数据
         :rtype: str
         """
         return self._Id
@@ -21644,7 +21644,7 @@ class DescribeSearchBugInfoRequest(AbstractModel):
 
     @property
     def CVEId(self):
-        """id=3时传入该参数
+        r"""id=3时传入该参数
         :rtype: str
         """
         return self._CVEId
@@ -21668,7 +21668,7 @@ class DescribeSearchBugInfoRequest(AbstractModel):
 
 
 class DescribeSearchBugInfoResponse(AbstractModel):
-    """DescribeSearchBugInfo返回参数结构体
+    r"""DescribeSearchBugInfo返回参数结构体
 
     """
 
@@ -21690,7 +21690,7 @@ class DescribeSearchBugInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """漏洞信息和资产信息
+        r"""漏洞信息和资产信息
         :rtype: :class:`tencentcloud.csip.v20221121.models.DataSearchBug`
         """
         return self._Data
@@ -21701,7 +21701,7 @@ class DescribeSearchBugInfoResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """状态值，0：查询成功，非0：查询失败
+        r"""状态值，0：查询成功，非0：查询失败
         :rtype: int
         """
         return self._ReturnCode
@@ -21712,7 +21712,7 @@ class DescribeSearchBugInfoResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """状态信息，success：查询成功，fail：查询失败
+        r"""状态信息，success：查询成功，fail：查询失败
         :rtype: str
         """
         return self._ReturnMsg
@@ -21723,7 +21723,7 @@ class DescribeSearchBugInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21743,7 +21743,7 @@ class DescribeSearchBugInfoResponse(AbstractModel):
 
 
 class DescribeSourceIPAssetRequest(AbstractModel):
-    """DescribeSourceIPAsset请求参数结构体
+    r"""DescribeSourceIPAsset请求参数结构体
 
     """
 
@@ -21759,7 +21759,7 @@ class DescribeSourceIPAssetRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -21770,7 +21770,7 @@ class DescribeSourceIPAssetRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -21796,7 +21796,7 @@ class DescribeSourceIPAssetRequest(AbstractModel):
 
 
 class DescribeSourceIPAssetResponse(AbstractModel):
-    """DescribeSourceIPAsset返回参数结构体
+    r"""DescribeSourceIPAsset返回参数结构体
 
     """
 
@@ -21815,7 +21815,7 @@ class DescribeSourceIPAssetResponse(AbstractModel):
 
     @property
     def Data(self):
-        """访问密钥资产列表
+        r"""访问密钥资产列表
         :rtype: list of SourceIPAsset
         """
         return self._Data
@@ -21826,7 +21826,7 @@ class DescribeSourceIPAssetResponse(AbstractModel):
 
     @property
     def Total(self):
-        """全部数量
+        r"""全部数量
         :rtype: int
         """
         return self._Total
@@ -21837,7 +21837,7 @@ class DescribeSourceIPAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21859,7 +21859,7 @@ class DescribeSourceIPAssetResponse(AbstractModel):
 
 
 class DescribeSubUserInfoRequest(AbstractModel):
-    """DescribeSubUserInfo请求参数结构体
+    r"""DescribeSubUserInfo请求参数结构体
 
     """
 
@@ -21875,7 +21875,7 @@ class DescribeSubUserInfoRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -21886,7 +21886,7 @@ class DescribeSubUserInfoRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -21912,7 +21912,7 @@ class DescribeSubUserInfoRequest(AbstractModel):
 
 
 class DescribeSubUserInfoResponse(AbstractModel):
-    """DescribeSubUserInfo返回参数结构体
+    r"""DescribeSubUserInfo返回参数结构体
 
     """
 
@@ -21937,7 +21937,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -21948,7 +21948,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """子用户列表
+        r"""子用户列表
         :rtype: list of SubUserInfo
         """
         return self._Data
@@ -21959,7 +21959,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
     @property
     def CloudTypeLst(self):
-        """厂商枚举列表
+        r"""厂商枚举列表
         :rtype: list of FilterDataObject
         """
         return self._CloudTypeLst
@@ -21970,7 +21970,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
     @property
     def OwnerAppIDLst(self):
-        """所属主账号appid枚举
+        r"""所属主账号appid枚举
         :rtype: list of FilterDataObject
         """
         return self._OwnerAppIDLst
@@ -21981,7 +21981,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22015,7 +22015,7 @@ class DescribeSubUserInfoResponse(AbstractModel):
 
 
 class DescribeSubnetAssetsRequest(AbstractModel):
-    """DescribeSubnetAssets请求参数结构体
+    r"""DescribeSubnetAssets请求参数结构体
 
     """
 
@@ -22031,7 +22031,7 @@ class DescribeSubnetAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22042,7 +22042,7 @@ class DescribeSubnetAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -22068,7 +22068,7 @@ class DescribeSubnetAssetsRequest(AbstractModel):
 
 
 class DescribeSubnetAssetsResponse(AbstractModel):
-    """DescribeSubnetAssets返回参数结构体
+    r"""DescribeSubnetAssets返回参数结构体
 
     """
 
@@ -22099,7 +22099,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of SubnetAsset
         """
         return self._Data
@@ -22110,7 +22110,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -22121,7 +22121,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -22132,7 +22132,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """vpc列表
+        r"""vpc列表
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -22143,7 +22143,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """appid列表
+        r"""appid列表
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -22154,7 +22154,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def ZoneList(self):
-        """可用区列表
+        r"""可用区列表
         :rtype: list of FilterDataObject
         """
         return self._ZoneList
@@ -22165,7 +22165,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22211,7 +22211,7 @@ class DescribeSubnetAssetsResponse(AbstractModel):
 
 
 class DescribeTaskLogListRequest(AbstractModel):
-    """DescribeTaskLogList请求参数结构体
+    r"""DescribeTaskLogList请求参数结构体
 
     """
 
@@ -22227,7 +22227,7 @@ class DescribeTaskLogListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22238,7 +22238,7 @@ class DescribeTaskLogListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -22264,7 +22264,7 @@ class DescribeTaskLogListRequest(AbstractModel):
 
 
 class DescribeTaskLogListResponse(AbstractModel):
-    """DescribeTaskLogList返回参数结构体
+    r"""DescribeTaskLogList返回参数结构体
 
     """
 
@@ -22289,7 +22289,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -22300,7 +22300,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """报告列表
+        r"""报告列表
         :rtype: list of TaskLogInfo
         """
         return self._Data
@@ -22311,7 +22311,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
     @property
     def NotViewNumber(self):
-        """待查看数量
+        r"""待查看数量
         :rtype: int
         """
         return self._NotViewNumber
@@ -22322,7 +22322,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
     @property
     def ReportTemplateNumber(self):
-        """报告模板数
+        r"""报告模板数
         :rtype: int
         """
         return self._ReportTemplateNumber
@@ -22333,7 +22333,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22357,7 +22357,7 @@ class DescribeTaskLogListResponse(AbstractModel):
 
 
 class DescribeTaskLogURLRequest(AbstractModel):
-    """DescribeTaskLogURL请求参数结构体
+    r"""DescribeTaskLogURL请求参数结构体
 
     """
 
@@ -22379,7 +22379,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     @property
     def Type(self):
-        """0: 预览， 1: 下载
+        r"""0: 预览， 1: 下载
         :rtype: int
         """
         return self._Type
@@ -22390,7 +22390,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22401,7 +22401,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     @property
     def ReportItemKeyList(self):
-        """任务报告Id 列表
+        r"""任务报告Id 列表
         :rtype: list of ReportItemKey
         """
         return self._ReportItemKeyList
@@ -22412,7 +22412,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     @property
     def ReportTaskIdList(self):
-        """报告中任务id列表
+        r"""报告中任务id列表
         :rtype: list of ReportTaskIdList
         """
         return self._ReportTaskIdList
@@ -22448,7 +22448,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
 
 class DescribeTaskLogURLResponse(AbstractModel):
-    """DescribeTaskLogURL返回参数结构体
+    r"""DescribeTaskLogURL返回参数结构体
 
     """
 
@@ -22464,7 +22464,7 @@ class DescribeTaskLogURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回报告临时下载url
+        r"""返回报告临时下载url
         :rtype: list of TaskLogURL
         """
         return self._Data
@@ -22475,7 +22475,7 @@ class DescribeTaskLogURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22496,7 +22496,7 @@ class DescribeTaskLogURLResponse(AbstractModel):
 
 
 class DescribeTopAttackInfoRequest(AbstractModel):
-    """DescribeTopAttackInfo请求参数结构体
+    r"""DescribeTopAttackInfo请求参数结构体
 
     """
 
@@ -22527,7 +22527,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间
+        r"""起始时间
         :rtype: str
         """
         return self._StartTime
@@ -22538,7 +22538,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -22549,7 +22549,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """1:攻击类型 2:攻击者
+        r"""1:攻击类型 2:攻击者
         :rtype: int
         """
         return self._QueryType
@@ -22560,7 +22560,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22571,7 +22571,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def OperatedMemberId(self):
-        """被调用的集团账号的成员id
+        r"""被调用的集团账号的成员id
         :rtype: list of str
         """
         return self._OperatedMemberId
@@ -22582,7 +22582,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名称
+        r"""资产名称
         :rtype: str
         """
         return self._AssetName
@@ -22593,7 +22593,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     @property
     def AssetType(self):
-        """0: 默认全部 1:资产ID 2:域名
+        r"""0: 默认全部 1:资产ID 2:域名
         :rtype: int
         """
         return self._AssetType
@@ -22622,7 +22622,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
 
 class DescribeTopAttackInfoResponse(AbstractModel):
-    """DescribeTopAttackInfo返回参数结构体
+    r"""DescribeTopAttackInfo返回参数结构体
 
     """
 
@@ -22638,7 +22638,7 @@ class DescribeTopAttackInfoResponse(AbstractModel):
 
     @property
     def TopAttackInfo(self):
-        """Top攻击类型/攻击者次数
+        r"""Top攻击类型/攻击者次数
         :rtype: list of TagCount
         """
         return self._TopAttackInfo
@@ -22649,7 +22649,7 @@ class DescribeTopAttackInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22670,7 +22670,7 @@ class DescribeTopAttackInfoResponse(AbstractModel):
 
 
 class DescribeUebaRuleRequest(AbstractModel):
-    """DescribeUebaRule请求参数结构体
+    r"""DescribeUebaRule请求参数结构体
 
     """
 
@@ -22686,7 +22686,7 @@ class DescribeUebaRuleRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22697,7 +22697,7 @@ class DescribeUebaRuleRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -22723,7 +22723,7 @@ class DescribeUebaRuleRequest(AbstractModel):
 
 
 class DescribeUebaRuleResponse(AbstractModel):
-    """DescribeUebaRule返回参数结构体
+    r"""DescribeUebaRule返回参数结构体
 
     """
 
@@ -22745,7 +22745,7 @@ class DescribeUebaRuleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -22756,7 +22756,7 @@ class DescribeUebaRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        """策略列表
+        r"""策略列表
         :rtype: list of UebaRule
         """
         return self._Data
@@ -22767,7 +22767,7 @@ class DescribeUebaRuleResponse(AbstractModel):
 
     @property
     def AlterType(self):
-        """自定义策略对应的告警类别枚举
+        r"""自定义策略对应的告警类别枚举
         :rtype: list of FilterDataObject
         """
         return self._AlterType
@@ -22778,7 +22778,7 @@ class DescribeUebaRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22806,7 +22806,7 @@ class DescribeUebaRuleResponse(AbstractModel):
 
 
 class DescribeUserCallRecordRequest(AbstractModel):
-    """DescribeUserCallRecord请求参数结构体
+    r"""DescribeUserCallRecord请求参数结构体
 
     """
 
@@ -22825,7 +22825,7 @@ class DescribeUserCallRecordRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """账号uin
+        r"""账号uin
         :rtype: str
         """
         return self._SubUin
@@ -22836,7 +22836,7 @@ class DescribeUserCallRecordRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22847,7 +22847,7 @@ class DescribeUserCallRecordRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤器
+        r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -22874,7 +22874,7 @@ class DescribeUserCallRecordRequest(AbstractModel):
 
 
 class DescribeUserCallRecordResponse(AbstractModel):
-    """DescribeUserCallRecord返回参数结构体
+    r"""DescribeUserCallRecord返回参数结构体
 
     """
 
@@ -22893,7 +22893,7 @@ class DescribeUserCallRecordResponse(AbstractModel):
 
     @property
     def Data(self):
-        """账号调用记录列表
+        r"""账号调用记录列表
         :rtype: list of UserCallRecord
         """
         return self._Data
@@ -22904,7 +22904,7 @@ class DescribeUserCallRecordResponse(AbstractModel):
 
     @property
     def Total(self):
-        """调用记录总数
+        r"""调用记录总数
         :rtype: int
         """
         return self._Total
@@ -22915,7 +22915,7 @@ class DescribeUserCallRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22937,7 +22937,7 @@ class DescribeUserCallRecordResponse(AbstractModel):
 
 
 class DescribeVULListRequest(AbstractModel):
-    """DescribeVULList请求参数结构体
+    r"""DescribeVULList请求参数结构体
 
     """
 
@@ -22953,7 +22953,7 @@ class DescribeVULListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -22964,7 +22964,7 @@ class DescribeVULListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """查询条件
+        r"""查询条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -22990,7 +22990,7 @@ class DescribeVULListRequest(AbstractModel):
 
 
 class DescribeVULListResponse(AbstractModel):
-    """DescribeVULList返回参数结构体
+    r"""DescribeVULList返回参数结构体
 
     """
 
@@ -23027,7 +23027,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -23038,7 +23038,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """漏洞列表
+        r"""漏洞列表
         :rtype: list of VULBaseInfo
         """
         return self._Data
@@ -23049,7 +23049,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型列表
+        r"""漏洞类型列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -23060,7 +23060,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def RiskLevels(self):
-        """风险等级列表
+        r"""风险等级列表
         :rtype: list of FilterDataObject
         """
         return self._RiskLevels
@@ -23071,7 +23071,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of FilterDataObject
         """
         return self._Tags
@@ -23082,7 +23082,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def ProductSupport(self):
-        """产品支持情况
+        r"""产品支持情况
         :rtype: list of FilterDataObject
         """
         return self._ProductSupport
@@ -23093,7 +23093,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """产品支持情况
+        r"""产品支持情况
         :rtype: list of FilterDataObject
         """
         return self._CheckStatus
@@ -23104,7 +23104,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def AttackHeat(self):
-        """攻击热度枚举
+        r"""攻击热度枚举
         :rtype: list of FilterDataObject
         """
         return self._AttackHeat
@@ -23115,7 +23115,7 @@ class DescribeVULListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23173,7 +23173,7 @@ class DescribeVULListResponse(AbstractModel):
 
 
 class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
-    """DescribeVULRiskAdvanceCFGList请求参数结构体
+    r"""DescribeVULRiskAdvanceCFGList请求参数结构体
 
     """
 
@@ -23192,7 +23192,7 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -23203,7 +23203,7 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -23214,7 +23214,7 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -23241,7 +23241,7 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
 
 class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
-    """DescribeVULRiskAdvanceCFGList返回参数结构体
+    r"""DescribeVULRiskAdvanceCFGList返回参数结构体
 
     """
 
@@ -23272,7 +23272,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """配置项列表
+        r"""配置项列表
         :rtype: list of VULRiskAdvanceCFGList
         """
         return self._Data
@@ -23283,7 +23283,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -23294,7 +23294,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def RiskLevelLists(self):
-        """风险等级过滤列表
+        r"""风险等级过滤列表
         :rtype: list of FilterDataObject
         """
         return self._RiskLevelLists
@@ -23305,7 +23305,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型过滤列表
+        r"""漏洞类型过滤列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -23316,7 +23316,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def CheckFromLists(self):
-        """识别来源过滤列表
+        r"""识别来源过滤列表
         :rtype: list of FilterDataObject
         """
         return self._CheckFromLists
@@ -23327,7 +23327,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def VulTagList(self):
-        """漏洞标签列表
+        r"""漏洞标签列表
         :rtype: list of FilterDataObject
         """
         return self._VulTagList
@@ -23338,7 +23338,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23384,7 +23384,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
 
 
 class DescribeVULRiskDetailRequest(AbstractModel):
-    """DescribeVULRiskDetail请求参数结构体
+    r"""DescribeVULRiskDetail请求参数结构体
 
     """
 
@@ -23403,7 +23403,7 @@ class DescribeVULRiskDetailRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -23414,7 +23414,7 @@ class DescribeVULRiskDetailRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险id
+        r"""风险id
         :rtype: str
         """
         return self._RiskId
@@ -23425,7 +23425,7 @@ class DescribeVULRiskDetailRequest(AbstractModel):
 
     @property
     def PCMGRId(self):
-        """pcMgrId
+        r"""pcMgrId
         :rtype: str
         """
         return self._PCMGRId
@@ -23450,7 +23450,7 @@ class DescribeVULRiskDetailRequest(AbstractModel):
 
 
 class DescribeVULRiskDetailResponse(AbstractModel):
-    """DescribeVULRiskDetail返回参数结构体
+    r"""DescribeVULRiskDetail返回参数结构体
 
     """
 
@@ -23478,7 +23478,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def ServiceSupport(self):
-        """安全产品支持情况
+        r"""安全产品支持情况
         :rtype: list of ServiceSupport
         """
         return self._ServiceSupport
@@ -23489,7 +23489,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def VulTrend(self):
-        """漏洞趋势
+        r"""漏洞趋势
         :rtype: list of VulTrend
         """
         return self._VulTrend
@@ -23500,7 +23500,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def VulData(self):
-        """漏洞补充信息
+        r"""漏洞补充信息
         :rtype: :class:`tencentcloud.csip.v20221121.models.VULRiskInfo`
         """
         return self._VulData
@@ -23511,7 +23511,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def QuestionId(self):
-        """小助手问答id
+        r"""小助手问答id
         :rtype: str
         """
         return self._QuestionId
@@ -23522,7 +23522,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """会话id
+        r"""会话id
         :rtype: str
         """
         return self._SessionId
@@ -23533,7 +23533,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23565,7 +23565,7 @@ class DescribeVULRiskDetailResponse(AbstractModel):
 
 
 class DescribeVpcAssetsRequest(AbstractModel):
-    """DescribeVpcAssets请求参数结构体
+    r"""DescribeVpcAssets请求参数结构体
 
     """
 
@@ -23581,7 +23581,7 @@ class DescribeVpcAssetsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -23592,7 +23592,7 @@ class DescribeVpcAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -23618,7 +23618,7 @@ class DescribeVpcAssetsRequest(AbstractModel):
 
 
 class DescribeVpcAssetsResponse(AbstractModel):
-    """DescribeVpcAssets返回参数结构体
+    r"""DescribeVpcAssets返回参数结构体
 
     """
 
@@ -23646,7 +23646,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """列表
+        r"""列表
         :rtype: list of Vpc
         """
         return self._Data
@@ -23657,7 +23657,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -23668,7 +23668,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        """vpc列表
+        r"""vpc列表
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -23679,7 +23679,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def RegionList(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -23690,7 +23690,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def AppIdList(self):
-        """appid列表
+        r"""appid列表
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -23701,7 +23701,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23741,7 +23741,7 @@ class DescribeVpcAssetsResponse(AbstractModel):
 
 
 class DescribeVulRiskListRequest(AbstractModel):
-    """DescribeVulRiskList请求参数结构体
+    r"""DescribeVulRiskList请求参数结构体
 
     """
 
@@ -23775,7 +23775,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -23786,7 +23786,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: list of Filters
         """
         return self._Filters
@@ -23797,7 +23797,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Limit
@@ -23808,7 +23808,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -23819,7 +23819,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序类型
+        r"""排序类型
         :rtype: str
         """
         return self._Order
@@ -23830,7 +23830,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._By
@@ -23841,7 +23841,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def CloudAccountID(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountID
@@ -23852,7 +23852,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -23887,7 +23887,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
 
 class DescribeVulRiskListResponse(AbstractModel):
-    """DescribeVulRiskList返回参数结构体
+    r"""DescribeVulRiskList返回参数结构体
 
     """
 
@@ -23906,7 +23906,7 @@ class DescribeVulRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """漏洞数量
+        r"""漏洞数量
         :rtype: int
         """
         return self._TotalCount
@@ -23917,7 +23917,7 @@ class DescribeVulRiskListResponse(AbstractModel):
 
     @property
     def VulRiskList(self):
-        """漏洞列表
+        r"""漏洞列表
         :rtype: list of VulRiskItem
         """
         return self._VulRiskList
@@ -23928,7 +23928,7 @@ class DescribeVulRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23950,7 +23950,7 @@ class DescribeVulRiskListResponse(AbstractModel):
 
 
 class DescribeVulViewVulRiskListRequest(AbstractModel):
-    """DescribeVulViewVulRiskList请求参数结构体
+    r"""DescribeVulViewVulRiskList请求参数结构体
 
     """
 
@@ -23969,7 +23969,7 @@ class DescribeVulViewVulRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -23980,7 +23980,7 @@ class DescribeVulViewVulRiskListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤内容
+        r"""过滤内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -23991,7 +23991,7 @@ class DescribeVulViewVulRiskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """资产标签
+        r"""资产标签
         :rtype: list of AssetTag
         """
         return self._Tags
@@ -24023,7 +24023,7 @@ class DescribeVulViewVulRiskListRequest(AbstractModel):
 
 
 class DescribeVulViewVulRiskListResponse(AbstractModel):
-    """DescribeVulViewVulRiskList返回参数结构体
+    r"""DescribeVulViewVulRiskList返回参数结构体
 
     """
 
@@ -24054,7 +24054,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -24065,7 +24065,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """漏洞产视角的漏洞风险列表
+        r"""漏洞产视角的漏洞风险列表
         :rtype: list of VULViewVULRiskData
         """
         return self._Data
@@ -24076,7 +24076,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def LevelLists(self):
-        """危险等级列表
+        r"""危险等级列表
         :rtype: list of FilterDataObject
         """
         return self._LevelLists
@@ -24087,7 +24087,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def FromLists(self):
-        """来源列表
+        r"""来源列表
         :rtype: list of FilterDataObject
         """
         return self._FromLists
@@ -24098,7 +24098,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def VULTypeLists(self):
-        """漏洞类型列表
+        r"""漏洞类型列表
         :rtype: list of FilterDataObject
         """
         return self._VULTypeLists
@@ -24109,7 +24109,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """tag枚举
+        r"""tag枚举
         :rtype: list of FilterDataObject
         """
         return self._Tags
@@ -24120,7 +24120,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24166,7 +24166,7 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
 
 
 class DomainAssetVO(AbstractModel):
-    """域名资产
+    r"""域名资产
 
     """
 
@@ -24293,7 +24293,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: list of str
         """
         return self._AssetId
@@ -24304,7 +24304,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: list of str
         """
         return self._AssetName
@@ -24315,7 +24315,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: list of str
         """
         return self._AssetType
@@ -24326,7 +24326,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: list of str
         """
         return self._Region
@@ -24337,7 +24337,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def WAFStatus(self):
-        """Waf状态
+        r"""Waf状态
         :rtype: int
         """
         return self._WAFStatus
@@ -24348,7 +24348,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def AssetCreateTime(self):
-        """资产创建时间
+        r"""资产创建时间
         :rtype: str
         """
         return self._AssetCreateTime
@@ -24359,7 +24359,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def AppId(self):
-        """Appid
+        r"""Appid
         :rtype: int
         """
         return self._AppId
@@ -24370,7 +24370,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Uin(self):
-        """账号id
+        r"""账号id
         :rtype: str
         """
         return self._Uin
@@ -24381,7 +24381,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def NickName(self):
-        """账号名称
+        r"""账号名称
         :rtype: str
         """
         return self._NickName
@@ -24392,7 +24392,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -24403,7 +24403,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def IsCloud(self):
-        """是否云上资产
+        r"""是否云上资产
         :rtype: int
         """
         return self._IsCloud
@@ -24414,7 +24414,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Attack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._Attack
@@ -24425,7 +24425,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Access(self):
-        """网络访问
+        r"""网络访问
         :rtype: int
         """
         return self._Access
@@ -24436,7 +24436,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Intercept(self):
-        """网络拦截
+        r"""网络拦截
         :rtype: int
         """
         return self._Intercept
@@ -24447,7 +24447,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def InBandwidth(self):
-        """入站峰值带宽
+        r"""入站峰值带宽
         :rtype: str
         """
         return self._InBandwidth
@@ -24458,7 +24458,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def OutBandwidth(self):
-        """出站峰值带宽
+        r"""出站峰值带宽
         :rtype: str
         """
         return self._OutBandwidth
@@ -24469,7 +24469,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def InFlow(self):
-        """入站累计流量
+        r"""入站累计流量
         :rtype: str
         """
         return self._InFlow
@@ -24480,7 +24480,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def OutFlow(self):
-        """出站累计流量
+        r"""出站累计流量
         :rtype: str
         """
         return self._OutFlow
@@ -24491,7 +24491,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最近扫描时间
+        r"""最近扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -24502,7 +24502,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def PortRisk(self):
-        """端口风险
+        r"""端口风险
         :rtype: int
         """
         return self._PortRisk
@@ -24513,7 +24513,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def VulnerabilityRisk(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VulnerabilityRisk
@@ -24524,7 +24524,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def ConfigurationRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigurationRisk
@@ -24535,7 +24535,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def ScanTask(self):
-        """扫描任务
+        r"""扫描任务
         :rtype: int
         """
         return self._ScanTask
@@ -24546,7 +24546,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def SubDomain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._SubDomain
@@ -24557,7 +24557,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def SeverIp(self):
-        """解析ip
+        r"""解析ip
         :rtype: list of str
         """
         return self._SeverIp
@@ -24568,7 +24568,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def BotCount(self):
-        """bot攻击数量
+        r"""bot攻击数量
         :rtype: int
         """
         return self._BotCount
@@ -24579,7 +24579,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def WeakPassword(self):
-        """弱口令风险
+        r"""弱口令风险
         :rtype: int
         """
         return self._WeakPassword
@@ -24590,7 +24590,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def WebContentRisk(self):
-        """内容风险
+        r"""内容风险
         :rtype: int
         """
         return self._WebContentRisk
@@ -24601,7 +24601,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def Tag(self):
-        """tag标签
+        r"""tag标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -24612,7 +24612,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def SourceType(self):
-        """关联实例类型
+        r"""关联实例类型
         :rtype: str
         """
         return self._SourceType
@@ -24623,7 +24623,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def MemberId(self):
-        """memberId信息
+        r"""memberId信息
         :rtype: str
         """
         return self._MemberId
@@ -24634,7 +24634,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def CCAttack(self):
-        """cc攻击
+        r"""cc攻击
         :rtype: int
         """
         return self._CCAttack
@@ -24645,7 +24645,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def WebAttack(self):
-        """web攻击
+        r"""web攻击
         :rtype: int
         """
         return self._WebAttack
@@ -24656,7 +24656,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def ServiceRisk(self):
-        """风险服务暴露数量
+        r"""风险服务暴露数量
         :rtype: int
         """
         return self._ServiceRisk
@@ -24667,7 +24667,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -24678,7 +24678,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def VerifyDomain(self):
-        """待确认资产的随机三级域名
+        r"""待确认资产的随机三级域名
         :rtype: str
         """
         return self._VerifyDomain
@@ -24689,7 +24689,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def VerifyTXTRecord(self):
-        """待确认资产的TXT记录内容
+        r"""待确认资产的TXT记录内容
         :rtype: str
         """
         return self._VerifyTXTRecord
@@ -24700,7 +24700,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def VerifyStatus(self):
-        """待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
+        r"""待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
         :rtype: int
         """
         return self._VerifyStatus
@@ -24711,7 +24711,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def BotAccessCount(self):
-        """bot访问数量
+        r"""bot访问数量
         :rtype: int
         """
         return self._BotAccessCount
@@ -24777,7 +24777,7 @@ class DomainAssetVO(AbstractModel):
 
 
 class Element(AbstractModel):
-    """统计条目
+    r"""统计条目
 
     """
 
@@ -24793,7 +24793,7 @@ class Element(AbstractModel):
 
     @property
     def Key(self):
-        """统计类型
+        r"""统计类型
         :rtype: str
         """
         return self._Key
@@ -24804,7 +24804,7 @@ class Element(AbstractModel):
 
     @property
     def Value(self):
-        """统计对象
+        r"""统计对象
         :rtype: str
         """
         return self._Value
@@ -24828,7 +24828,7 @@ class Element(AbstractModel):
 
 
 class ExposeAssetTypeItem(AbstractModel):
-    """暴露资产分类
+    r"""暴露资产分类
 
     """
 
@@ -24850,7 +24850,7 @@ class ExposeAssetTypeItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -24861,7 +24861,7 @@ class ExposeAssetTypeItem(AbstractModel):
 
     @property
     def ProviderName(self):
-        """云厂商名称
+        r"""云厂商名称
         :rtype: str
         """
         return self._ProviderName
@@ -24872,7 +24872,7 @@ class ExposeAssetTypeItem(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -24883,7 +24883,7 @@ class ExposeAssetTypeItem(AbstractModel):
 
     @property
     def AssetTypeName(self):
-        """资产类型名称
+        r"""资产类型名称
         :rtype: str
         """
         return self._AssetTypeName
@@ -24909,7 +24909,7 @@ class ExposeAssetTypeItem(AbstractModel):
 
 
 class ExposesItem(AbstractModel):
-    """暴露资产
+    r"""暴露资产
 
     """
 
@@ -25015,7 +25015,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -25026,7 +25026,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        """云账号名称
+        r"""云账号名称
         :rtype: str
         """
         return self._CloudAccountName
@@ -25037,7 +25037,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        """云账号
+        r"""云账号
         :rtype: str
         """
         return self._CloudAccountId
@@ -25048,7 +25048,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -25059,7 +25059,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Ip(self):
-        """IP
+        r"""IP
         :rtype: str
         """
         return self._Ip
@@ -25070,7 +25070,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Port(self):
-        """端口或者端口范围
+        r"""端口或者端口范围
         :rtype: str
         """
         return self._Port
@@ -25081,7 +25081,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Status(self):
-        """开放
+        r"""开放
         :rtype: str
         """
         return self._Status
@@ -25092,7 +25092,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def RiskType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._RiskType
@@ -25103,7 +25103,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AclType(self):
-        """acl类型
+        r"""acl类型
         :rtype: str
         """
         return self._AclType
@@ -25114,7 +25114,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AclList(self):
-        """acl列表
+        r"""acl列表
         :rtype: str
         """
         return self._AclList
@@ -25125,7 +25125,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._AssetId
@@ -25136,7 +25136,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -25147,7 +25147,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -25158,7 +25158,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortServiceCount(self):
-        """端口服务数量
+        r"""端口服务数量
         :rtype: int
         """
         return self._PortServiceCount
@@ -25169,7 +25169,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def HighRiskPortServiceCount(self):
-        """高危端口数量
+        r"""高危端口数量
         :rtype: int
         """
         return self._HighRiskPortServiceCount
@@ -25180,7 +25180,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def WebAppCount(self):
-        """web应用数量
+        r"""web应用数量
         :rtype: int
         """
         return self._WebAppCount
@@ -25191,7 +25191,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def RiskWebAppCount(self):
-        """有风险web应用数量
+        r"""有风险web应用数量
         :rtype: int
         """
         return self._RiskWebAppCount
@@ -25202,7 +25202,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def WeakPasswordCount(self):
-        """弱口令数量
+        r"""弱口令数量
         :rtype: int
         """
         return self._WeakPasswordCount
@@ -25213,7 +25213,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def VulCount(self):
-        """漏洞数量
+        r"""漏洞数量
         :rtype: int
         """
         return self._VulCount
@@ -25224,7 +25224,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """首次发现时间
+        r"""首次发现时间
         :rtype: str
         """
         return self._CreateTime
@@ -25235,7 +25235,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最近更新时间
+        r"""最近更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -25246,7 +25246,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetTypeName(self):
-        """实例类型名称
+        r"""实例类型名称
         :rtype: str
         """
         return self._AssetTypeName
@@ -25257,7 +25257,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def DisplayStatus(self):
-        """开放状态
+        r"""开放状态
         :rtype: str
         """
         return self._DisplayStatus
@@ -25268,7 +25268,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def DisplayRiskType(self):
-        """端口状态
+        r"""端口状态
         :rtype: str
         """
         return self._DisplayRiskType
@@ -25279,7 +25279,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ScanTaskStatus(self):
-        """扫描任务状态
+        r"""扫描任务状态
         :rtype: str
         """
         return self._ScanTaskStatus
@@ -25290,7 +25290,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Uuid(self):
-        """uuid
+        r"""uuid
         :rtype: str
         """
         return self._Uuid
@@ -25301,7 +25301,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def HasScan(self):
-        """是否进行过安全体检
+        r"""是否进行过安全体检
         :rtype: str
         """
         return self._HasScan
@@ -25312,7 +25312,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AppId(self):
-        """租户ID
+        r"""租户ID
         :rtype: int
         """
         return self._AppId
@@ -25323,7 +25323,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AppIdStr(self):
-        """租户ID字符串
+        r"""租户ID字符串
         :rtype: str
         """
         return self._AppIdStr
@@ -25334,7 +25334,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ExposureID(self):
-        """记录ID
+        r"""记录ID
         :rtype: int
         """
         return self._ExposureID
@@ -25345,7 +25345,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortDetectCount(self):
-        """端口开放数量
+        r"""端口开放数量
         :rtype: int
         """
         return self._PortDetectCount
@@ -25356,7 +25356,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortDetectResult(self):
-        """端口开放结果
+        r"""端口开放结果
         :rtype: str
         """
         return self._PortDetectResult
@@ -25410,7 +25410,7 @@ class ExposesItem(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """列表查询接口采用新filter 接口，直接传给后台供后台查询过滤
+    r"""列表查询接口采用新filter 接口，直接传给后台供后台查询过滤
 
     """
 
@@ -25441,7 +25441,7 @@ class Filter(AbstractModel):
 
     @property
     def Limit(self):
-        """查询数量限制
+        r"""查询数量限制
         :rtype: int
         """
         return self._Limit
@@ -25452,7 +25452,7 @@ class Filter(AbstractModel):
 
     @property
     def Offset(self):
-        """查询偏移位置
+        r"""查询偏移位置
         :rtype: int
         """
         return self._Offset
@@ -25463,7 +25463,7 @@ class Filter(AbstractModel):
 
     @property
     def Order(self):
-        """排序采用升序还是降序 升:asc 降 desc
+        r"""排序采用升序还是降序 升:asc 降 desc
         :rtype: str
         """
         return self._Order
@@ -25474,7 +25474,7 @@ class Filter(AbstractModel):
 
     @property
     def By(self):
-        """需排序的字段
+        r"""需排序的字段
         :rtype: str
         """
         return self._By
@@ -25485,7 +25485,7 @@ class Filter(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤的列及内容
+        r"""过滤的列及内容
         :rtype: list of WhereFilter
         """
         return self._Filters
@@ -25496,7 +25496,7 @@ class Filter(AbstractModel):
 
     @property
     def StartTime(self):
-        """可填无， 日志使用查询时间
+        r"""可填无， 日志使用查询时间
         :rtype: str
         """
         return self._StartTime
@@ -25507,7 +25507,7 @@ class Filter(AbstractModel):
 
     @property
     def EndTime(self):
-        """可填无， 日志使用查询时间
+        r"""可填无， 日志使用查询时间
         :rtype: str
         """
         return self._EndTime
@@ -25541,7 +25541,7 @@ class Filter(AbstractModel):
 
 
 class FilterDataObject(AbstractModel):
-    """过滤数据对象
+    r"""过滤数据对象
 
     """
 
@@ -25557,7 +25557,7 @@ class FilterDataObject(AbstractModel):
 
     @property
     def Value(self):
-        """英文翻译
+        r"""英文翻译
         :rtype: str
         """
         return self._Value
@@ -25568,7 +25568,7 @@ class FilterDataObject(AbstractModel):
 
     @property
     def Text(self):
-        """中文翻译
+        r"""中文翻译
         :rtype: str
         """
         return self._Text
@@ -25592,7 +25592,7 @@ class FilterDataObject(AbstractModel):
 
 
 class Filters(AbstractModel):
-    """filter过滤条件
+    r"""filter过滤条件
 
     """
 
@@ -25614,7 +25614,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        """实例ID
+        r"""实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25626,7 +25626,7 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
-        """实例ID内容
+        r"""实例ID内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -25638,7 +25638,7 @@ class Filters(AbstractModel):
 
     @property
     def ExactMatch(self):
-        """模糊匹配
+        r"""模糊匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25664,7 +25664,7 @@ class Filters(AbstractModel):
 
 
 class GateWayAsset(AbstractModel):
-    """网关资产
+    r"""网关资产
 
     """
 
@@ -25761,7 +25761,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: str
         """
         return self._AppId
@@ -25772,7 +25772,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def Uin(self):
-        """uin
+        r"""uin
         :rtype: str
         """
         return self._Uin
@@ -25783,7 +25783,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._AssetId
@@ -25794,7 +25794,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -25805,7 +25805,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -25816,7 +25816,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """私有ip
+        r"""私有ip
         :rtype: str
         """
         return self._PrivateIp
@@ -25827,7 +25827,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -25838,7 +25838,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def Region(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Region
@@ -25849,7 +25849,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络id
+        r"""私有网络id
         :rtype: str
         """
         return self._VpcId
@@ -25860,7 +25860,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名
+        r"""私有网络名
         :rtype: str
         """
         return self._VpcName
@@ -25871,7 +25871,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -25882,7 +25882,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def OutboundPeakBandwidth(self):
-        """出向峰值带宽
+        r"""出向峰值带宽
         :rtype: str
         """
         return self._OutboundPeakBandwidth
@@ -25893,7 +25893,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def InboundPeakBandwidth(self):
-        """入向峰值带宽
+        r"""入向峰值带宽
         :rtype: str
         """
         return self._InboundPeakBandwidth
@@ -25904,7 +25904,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def OutboundCumulativeFlow(self):
-        """出站累计流量
+        r"""出站累计流量
         :rtype: str
         """
         return self._OutboundCumulativeFlow
@@ -25915,7 +25915,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def InboundCumulativeFlow(self):
-        """入站累计流量
+        r"""入站累计流量
         :rtype: str
         """
         return self._InboundCumulativeFlow
@@ -25926,7 +25926,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def NetworkAttack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._NetworkAttack
@@ -25937,7 +25937,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def ExposedPort(self):
-        """暴露端口
+        r"""暴露端口
         :rtype: int
         """
         return self._ExposedPort
@@ -25948,7 +25948,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def ExposedVUL(self):
-        """暴露漏洞
+        r"""暴露漏洞
         :rtype: int
         """
         return self._ExposedVUL
@@ -25959,7 +25959,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def ConfigureRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigureRisk
@@ -25970,7 +25970,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -25981,7 +25981,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def ScanTask(self):
-        """任务数
+        r"""任务数
         :rtype: int
         """
         return self._ScanTask
@@ -25992,7 +25992,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最后扫描时间
+        r"""最后扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -26003,7 +26003,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def Nick(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nick
@@ -26014,7 +26014,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def AddressIPV6(self):
-        """ipv6地址
+        r"""ipv6地址
         :rtype: str
         """
         return self._AddressIPV6
@@ -26025,7 +26025,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -26036,7 +26036,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def RiskExposure(self):
-        """风险服务暴露
+        r"""风险服务暴露
         :rtype: int
         """
         return self._RiskExposure
@@ -26047,7 +26047,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -26058,7 +26058,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def Status(self):
-        """网关状态
+        r"""网关状态
         :rtype: str
         """
         return self._Status
@@ -26069,7 +26069,7 @@ class GateWayAsset(AbstractModel):
 
     @property
     def EngineRegion(self):
-        """TSE的网关真实地域
+        r"""TSE的网关真实地域
         :rtype: str
         """
         return self._EngineRegion
@@ -26125,7 +26125,7 @@ class GateWayAsset(AbstractModel):
 
 
 class HighBaseLineRiskItem(AbstractModel):
-    """高危基线风险内容
+    r"""高危基线风险内容
 
     """
 
@@ -26183,7 +26183,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def CloudAccountID(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountID
@@ -26194,7 +26194,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def AssetID(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AssetID
@@ -26205,7 +26205,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """实例状态
+        r"""实例状态
         :rtype: str
         """
         return self._InstanceStatus
@@ -26216,7 +26216,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -26227,7 +26227,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskName(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskName
@@ -26238,7 +26238,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskCategory(self):
-        """风险分类
+        r"""风险分类
         :rtype: str
         """
         return self._RiskCategory
@@ -26249,7 +26249,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._RiskLevel
@@ -26260,7 +26260,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskDesc(self):
-        """风险描述
+        r"""风险描述
         :rtype: str
         """
         return self._RiskDesc
@@ -26271,7 +26271,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskResult(self):
-        """风险结果
+        r"""风险结果
         :rtype: str
         """
         return self._RiskResult
@@ -26282,7 +26282,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def FixAdvice(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._FixAdvice
@@ -26293,7 +26293,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskCategoryName(self):
-        """Linux漏洞
+        r"""Linux漏洞
         :rtype: str
         """
         return self._RiskCategoryName
@@ -26304,7 +26304,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def RiskLevelName(self):
-        """风险等级名称
+        r"""风险等级名称
         :rtype: str
         """
         return self._RiskLevelName
@@ -26315,7 +26315,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def InstanceStatusName(self):
-        """实例状态
+        r"""实例状态
         :rtype: str
         """
         return self._InstanceStatusName
@@ -26326,7 +26326,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """首次发现时间
+        r"""首次发现时间
         :rtype: str
         """
         return self._CreateTime
@@ -26337,7 +26337,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最近发现时间
+        r"""最近发现时间
         :rtype: str
         """
         return self._UpdateTime
@@ -26348,7 +26348,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
     @property
     def AppID(self):
-        """租户ID
+        r"""租户ID
         :rtype: int
         """
         return self._AppID
@@ -26386,7 +26386,7 @@ class HighBaseLineRiskItem(AbstractModel):
 
 
 class IpAssetListVO(AbstractModel):
-    """ip列表
+    r"""ip列表
 
     """
 
@@ -26501,7 +26501,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -26512,7 +26512,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产name
+        r"""资产name
         :rtype: str
         """
         return self._AssetName
@@ -26523,7 +26523,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -26534,7 +26534,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -26545,7 +26545,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def CFWStatus(self):
-        """云防状态
+        r"""云防状态
         :rtype: int
         """
         return self._CFWStatus
@@ -26556,7 +26556,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AssetCreateTime(self):
-        """资产创建时间
+        r"""资产创建时间
         :rtype: str
         """
         return self._AssetCreateTime
@@ -26567,7 +26567,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网IP
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -26578,7 +26578,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def PublicIpType(self):
-        """公网ip类型
+        r"""公网ip类型
         :rtype: int
         """
         return self._PublicIpType
@@ -26589,7 +26589,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc
+        r"""vpc
         :rtype: str
         """
         return self._VpcId
@@ -26600,7 +26600,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc名
+        r"""vpc名
         :rtype: str
         """
         return self._VpcName
@@ -26611,7 +26611,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: int
         """
         return self._AppId
@@ -26622,7 +26622,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -26633,7 +26633,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def NickName(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._NickName
@@ -26644,7 +26644,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def IsCore(self):
-        """核心
+        r"""核心
         :rtype: int
         """
         return self._IsCore
@@ -26655,7 +26655,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def IsCloud(self):
-        """云上
+        r"""云上
         :rtype: int
         """
         return self._IsCloud
@@ -26666,7 +26666,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Attack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._Attack
@@ -26677,7 +26677,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Access(self):
-        """网络访问
+        r"""网络访问
         :rtype: int
         """
         return self._Access
@@ -26688,7 +26688,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Intercept(self):
-        """网络拦截
+        r"""网络拦截
         :rtype: int
         """
         return self._Intercept
@@ -26699,7 +26699,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def InBandwidth(self):
-        """入向带宽
+        r"""入向带宽
         :rtype: str
         """
         return self._InBandwidth
@@ -26710,7 +26710,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def OutBandwidth(self):
-        """出向带宽
+        r"""出向带宽
         :rtype: str
         """
         return self._OutBandwidth
@@ -26721,7 +26721,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def InFlow(self):
-        """入向流量
+        r"""入向流量
         :rtype: str
         """
         return self._InFlow
@@ -26732,7 +26732,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def OutFlow(self):
-        """出向流量
+        r"""出向流量
         :rtype: str
         """
         return self._OutFlow
@@ -26743,7 +26743,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最近扫描时间
+        r"""最近扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -26754,7 +26754,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def PortRisk(self):
-        """端口风险
+        r"""端口风险
         :rtype: int
         """
         return self._PortRisk
@@ -26765,7 +26765,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def VulnerabilityRisk(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VulnerabilityRisk
@@ -26776,7 +26776,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def ConfigurationRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigurationRisk
@@ -26787,7 +26787,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def ScanTask(self):
-        """扫描任务
+        r"""扫描任务
         :rtype: int
         """
         return self._ScanTask
@@ -26798,7 +26798,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def WeakPassword(self):
-        """弱口令
+        r"""弱口令
         :rtype: int
         """
         return self._WeakPassword
@@ -26809,7 +26809,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def WebContentRisk(self):
-        """内容风险
+        r"""内容风险
         :rtype: int
         """
         return self._WebContentRisk
@@ -26820,7 +26820,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -26831,7 +26831,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def AddressId(self):
-        """eip主键
+        r"""eip主键
         :rtype: str
         """
         return self._AddressId
@@ -26842,7 +26842,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def MemberId(self):
-        """MemberId信息
+        r"""MemberId信息
         :rtype: str
         """
         return self._MemberId
@@ -26853,7 +26853,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def RiskExposure(self):
-        """风险服务暴露
+        r"""风险服务暴露
         :rtype: int
         """
         return self._RiskExposure
@@ -26864,7 +26864,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -26875,7 +26875,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def VerifyStatus(self):
-        """资产认证状态，0-待认证，1-认证成功，2-认证中，3+-认证失败
+        r"""资产认证状态，0-待认证，1-认证成功，2-认证中，3+-认证失败
         :rtype: int
         """
         return self._VerifyStatus
@@ -26937,7 +26937,7 @@ class IpAssetListVO(AbstractModel):
 
 
 class KeyValue(AbstractModel):
-    """KeyValue对
+    r"""KeyValue对
 
     """
 
@@ -26953,7 +26953,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Key(self):
-        """字段
+        r"""字段
         :rtype: str
         """
         return self._Key
@@ -26964,7 +26964,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Value(self):
-        """值
+        r"""值
         :rtype: str
         """
         return self._Value
@@ -26988,7 +26988,7 @@ class KeyValue(AbstractModel):
 
 
 class ModifyOrganizationAccountStatusRequest(AbstractModel):
-    """ModifyOrganizationAccountStatus请求参数结构体
+    r"""ModifyOrganizationAccountStatus请求参数结构体
 
     """
 
@@ -27004,7 +27004,7 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """修改集团账号状态，1 开启， 2关闭
+        r"""修改集团账号状态，1 开启， 2关闭
         :rtype: int
         """
         return self._Status
@@ -27015,7 +27015,7 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -27039,7 +27039,7 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
 
 
 class ModifyOrganizationAccountStatusResponse(AbstractModel):
-    """ModifyOrganizationAccountStatus返回参数结构体
+    r"""ModifyOrganizationAccountStatus返回参数结构体
 
     """
 
@@ -27055,7 +27055,7 @@ class ModifyOrganizationAccountStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """返回值为0，则修改成功
+        r"""返回值为0，则修改成功
         :rtype: int
         """
         return self._Status
@@ -27066,7 +27066,7 @@ class ModifyOrganizationAccountStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27082,7 +27082,7 @@ class ModifyOrganizationAccountStatusResponse(AbstractModel):
 
 
 class ModifyRiskCenterRiskStatusRequest(AbstractModel):
-    """ModifyRiskCenterRiskStatus请求参数结构体
+    r"""ModifyRiskCenterRiskStatus请求参数结构体
 
     """
 
@@ -27104,7 +27104,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
 
     @property
     def RiskStatusKeys(self):
-        """风险资产相关数据
+        r"""风险资产相关数据
         :rtype: list of RiskCenterStatusKey
         """
         return self._RiskStatusKeys
@@ -27115,7 +27115,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """处置状态，1为已处置、2为已忽略，3为取消已处置，4为取消已忽略
+        r"""处置状态，1为已处置、2为已忽略，3为取消已处置，4为取消已忽略
         :rtype: int
         """
         return self._Status
@@ -27126,7 +27126,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
 
     @property
     def Type(self):
-        """风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
+        r"""风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
         :rtype: int
         """
         return self._Type
@@ -27137,7 +27137,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -27168,7 +27168,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
 
 
 class ModifyRiskCenterRiskStatusResponse(AbstractModel):
-    """ModifyRiskCenterRiskStatus返回参数结构体
+    r"""ModifyRiskCenterRiskStatus返回参数结构体
 
     """
 
@@ -27181,7 +27181,7 @@ class ModifyRiskCenterRiskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27196,7 +27196,7 @@ class ModifyRiskCenterRiskStatusResponse(AbstractModel):
 
 
 class ModifyRiskCenterScanTaskRequest(AbstractModel):
-    """ModifyRiskCenterScanTask请求参数结构体
+    r"""ModifyRiskCenterScanTask请求参数结构体
 
     """
 
@@ -27242,7 +27242,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -27253,7 +27253,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanAssetType(self):
-        """0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+        r"""0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
         :rtype: int
         """
         return self._ScanAssetType
@@ -27264,7 +27264,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanItem(self):
-        """扫描项目；port/poc/weakpass/webcontent/configrisk
+        r"""扫描项目；port/poc/weakpass/webcontent/configrisk
         :rtype: list of str
         """
         return self._ScanItem
@@ -27275,7 +27275,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanPlanType(self):
-        """0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+        r"""0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
         :rtype: int
         """
         return self._ScanPlanType
@@ -27286,7 +27286,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """要修改的任务id
+        r"""要修改的任务id
         :rtype: str
         """
         return self._TaskId
@@ -27297,7 +27297,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -27308,7 +27308,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def Assets(self):
-        """扫描资产信息列表
+        r"""扫描资产信息列表
         :rtype: list of TaskAssetObject
         """
         return self._Assets
@@ -27319,7 +27319,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def ScanPlanContent(self):
-        """扫描计划详情
+        r"""扫描计划详情
         :rtype: str
         """
         return self._ScanPlanContent
@@ -27330,7 +27330,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def SelfDefiningAssets(self):
-        """ip/域名/url数组
+        r"""ip/域名/url数组
         :rtype: list of str
         """
         return self._SelfDefiningAssets
@@ -27341,7 +27341,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskAdvanceCFG(self):
-        """高级配置
+        r"""高级配置
         :rtype: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
         """
         return self._TaskAdvanceCFG
@@ -27352,7 +27352,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def TaskMode(self):
-        """体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+        r"""体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
         :rtype: int
         """
         return self._TaskMode
@@ -27363,7 +27363,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
     @property
     def FinishWebHook(self):
-        """任务完成回调webhook地址
+        r"""任务完成回调webhook地址
         :rtype: str
         """
         return self._FinishWebHook
@@ -27404,7 +27404,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
 
 
 class ModifyRiskCenterScanTaskResponse(AbstractModel):
-    """ModifyRiskCenterScanTask返回参数结构体
+    r"""ModifyRiskCenterScanTask返回参数结构体
 
     """
 
@@ -27426,7 +27426,7 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -27437,7 +27437,7 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        """0，修改成功，其他失败；-1为存在资产未认证
+        r"""0，修改成功，其他失败；-1为存在资产未认证
         :rtype: int
         """
         return self._Status
@@ -27448,7 +27448,7 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def UnAuthAsset(self):
-        """未认证资产列表
+        r"""未认证资产列表
         :rtype: list of str
         """
         return self._UnAuthAsset
@@ -27459,7 +27459,7 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27477,7 +27477,7 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
 
 
 class ModifyUebaRuleSwitchRequest(AbstractModel):
-    """ModifyUebaRuleSwitch请求参数结构体
+    r"""ModifyUebaRuleSwitch请求参数结构体
 
     """
 
@@ -27496,7 +27496,7 @@ class ModifyUebaRuleSwitchRequest(AbstractModel):
 
     @property
     def RuleID(self):
-        """策略ID
+        r"""策略ID
         :rtype: str
         """
         return self._RuleID
@@ -27507,7 +27507,7 @@ class ModifyUebaRuleSwitchRequest(AbstractModel):
 
     @property
     def Status(self):
-        """开关状态
+        r"""开关状态
         :rtype: bool
         """
         return self._Status
@@ -27518,7 +27518,7 @@ class ModifyUebaRuleSwitchRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -27543,7 +27543,7 @@ class ModifyUebaRuleSwitchRequest(AbstractModel):
 
 
 class ModifyUebaRuleSwitchResponse(AbstractModel):
-    """ModifyUebaRuleSwitch返回参数结构体
+    r"""ModifyUebaRuleSwitch返回参数结构体
 
     """
 
@@ -27562,7 +27562,7 @@ class ModifyUebaRuleSwitchResponse(AbstractModel):
 
     @property
     def Code(self):
-        """0成功，1失败
+        r"""0成功，1失败
         :rtype: int
         """
         return self._Code
@@ -27573,7 +27573,7 @@ class ModifyUebaRuleSwitchResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._Msg
@@ -27584,7 +27584,7 @@ class ModifyUebaRuleSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27601,7 +27601,7 @@ class ModifyUebaRuleSwitchResponse(AbstractModel):
 
 
 class NICAsset(AbstractModel):
-    """网卡资产
+    r"""网卡资产
 
     """
 
@@ -27686,7 +27686,7 @@ class NICAsset(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: str
         """
         return self._AppId
@@ -27697,7 +27697,7 @@ class NICAsset(AbstractModel):
 
     @property
     def Uin(self):
-        """uin
+        r"""uin
         :rtype: str
         """
         return self._Uin
@@ -27708,7 +27708,7 @@ class NICAsset(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._AssetId
@@ -27719,7 +27719,7 @@ class NICAsset(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -27730,7 +27730,7 @@ class NICAsset(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._AssetType
@@ -27741,7 +27741,7 @@ class NICAsset(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """私有ip
+        r"""私有ip
         :rtype: str
         """
         return self._PrivateIp
@@ -27752,7 +27752,7 @@ class NICAsset(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        r"""公网ip
         :rtype: str
         """
         return self._PublicIp
@@ -27763,7 +27763,7 @@ class NICAsset(AbstractModel):
 
     @property
     def Region(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Region
@@ -27774,7 +27774,7 @@ class NICAsset(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络id
+        r"""私有网络id
         :rtype: str
         """
         return self._VpcId
@@ -27785,7 +27785,7 @@ class NICAsset(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名
+        r"""私有网络名
         :rtype: str
         """
         return self._VpcName
@@ -27796,7 +27796,7 @@ class NICAsset(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -27807,7 +27807,7 @@ class NICAsset(AbstractModel):
 
     @property
     def OutboundPeakBandwidth(self):
-        """出向峰值带宽
+        r"""出向峰值带宽
         :rtype: str
         """
         return self._OutboundPeakBandwidth
@@ -27818,7 +27818,7 @@ class NICAsset(AbstractModel):
 
     @property
     def InboundPeakBandwidth(self):
-        """入向峰值带宽
+        r"""入向峰值带宽
         :rtype: str
         """
         return self._InboundPeakBandwidth
@@ -27829,7 +27829,7 @@ class NICAsset(AbstractModel):
 
     @property
     def OutboundCumulativeFlow(self):
-        """出站累计流量
+        r"""出站累计流量
         :rtype: str
         """
         return self._OutboundCumulativeFlow
@@ -27840,7 +27840,7 @@ class NICAsset(AbstractModel):
 
     @property
     def InboundCumulativeFlow(self):
-        """入站累计流量
+        r"""入站累计流量
         :rtype: str
         """
         return self._InboundCumulativeFlow
@@ -27851,7 +27851,7 @@ class NICAsset(AbstractModel):
 
     @property
     def NetworkAttack(self):
-        """网络攻击
+        r"""网络攻击
         :rtype: int
         """
         return self._NetworkAttack
@@ -27862,7 +27862,7 @@ class NICAsset(AbstractModel):
 
     @property
     def ExposedPort(self):
-        """暴露端口
+        r"""暴露端口
         :rtype: int
         """
         return self._ExposedPort
@@ -27873,7 +27873,7 @@ class NICAsset(AbstractModel):
 
     @property
     def ExposedVUL(self):
-        """暴露漏洞
+        r"""暴露漏洞
         :rtype: int
         """
         return self._ExposedVUL
@@ -27884,7 +27884,7 @@ class NICAsset(AbstractModel):
 
     @property
     def ConfigureRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigureRisk
@@ -27895,7 +27895,7 @@ class NICAsset(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -27906,7 +27906,7 @@ class NICAsset(AbstractModel):
 
     @property
     def ScanTask(self):
-        """任务数
+        r"""任务数
         :rtype: int
         """
         return self._ScanTask
@@ -27917,7 +27917,7 @@ class NICAsset(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最后扫描时间
+        r"""最后扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -27928,7 +27928,7 @@ class NICAsset(AbstractModel):
 
     @property
     def Nick(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nick
@@ -27939,7 +27939,7 @@ class NICAsset(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -27950,7 +27950,7 @@ class NICAsset(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -28002,7 +28002,7 @@ class NICAsset(AbstractModel):
 
 
 class NewAlertKey(AbstractModel):
-    """该结构体用来传入告警的key，以更新告警的status
+    r"""该结构体用来传入告警的key，以更新告警的status
 
     """
 
@@ -28036,7 +28036,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def AppId(self):
-        """需要更改的用户appid
+        r"""需要更改的用户appid
         :rtype: str
         """
         return self._AppId
@@ -28047,7 +28047,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Type(self):
-        """告警类别
+        r"""告警类别
         :rtype: str
         """
         return self._Type
@@ -28058,7 +28058,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def SubType(self):
-        """告警子类别
+        r"""告警子类别
         :rtype: str
         """
         return self._SubType
@@ -28069,7 +28069,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Source(self):
-        """告警来源
+        r"""告警来源
         :rtype: str
         """
         return self._Source
@@ -28080,7 +28080,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Name(self):
-        """告警名称
+        r"""告警名称
         :rtype: str
         """
         return self._Name
@@ -28091,7 +28091,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Key(self):
-        """告警key
+        r"""告警key
         :rtype: str
         """
         return self._Key
@@ -28102,7 +28102,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Date(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Date
@@ -28113,7 +28113,7 @@ class NewAlertKey(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -28143,7 +28143,7 @@ class NewAlertKey(AbstractModel):
 
 
 class OrganizationInfo(AbstractModel):
-    """集团账号详情
+    r"""集团账号详情
 
     """
 
@@ -28234,7 +28234,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NickName(self):
-        """成员账号名称
+        r"""成员账号名称
         :rtype: str
         """
         return self._NickName
@@ -28245,7 +28245,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        """部门节点名称，账号所属部门
+        r"""部门节点名称，账号所属部门
         :rtype: str
         """
         return self._NodeName
@@ -28256,7 +28256,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def Role(self):
-        """Member/Admin/DelegatedAdmin/EntityAdmin; 成员/管理员/委派管理员/主体管理员
+        r"""Member/Admin/DelegatedAdmin/EntityAdmin; 成员/管理员/委派管理员/主体管理员
         :rtype: str
         """
         return self._Role
@@ -28267,7 +28267,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        """成员账号id
+        r"""成员账号id
         :rtype: str
         """
         return self._MemberId
@@ -28278,7 +28278,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def JoinType(self):
-        """账号加入方式,create/invite
+        r"""账号加入方式,create/invite
         :rtype: str
         """
         return self._JoinType
@@ -28289,7 +28289,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """集团名称
+        r"""集团名称
         :rtype: str
         """
         return self._GroupName
@@ -28300,7 +28300,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        """管理员账号名称
+        r"""管理员账号名称
         :rtype: str
         """
         return self._AdminName
@@ -28311,7 +28311,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminUin(self):
-        """管理员Uin
+        r"""管理员Uin
         :rtype: str
         """
         return self._AdminUin
@@ -28322,7 +28322,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -28333,7 +28333,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NodeCount(self):
-        """部门数
+        r"""部门数
         :rtype: int
         """
         return self._NodeCount
@@ -28344,7 +28344,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberCount(self):
-        """成员数
+        r"""成员数
         :rtype: int
         """
         return self._MemberCount
@@ -28355,7 +28355,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def SubAccountCount(self):
-        """子账号数
+        r"""子账号数
         :rtype: int
         """
         return self._SubAccountCount
@@ -28366,7 +28366,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AbnormalSubUserCount(self):
-        """异常子账号数量
+        r"""异常子账号数量
         :rtype: int
         """
         return self._AbnormalSubUserCount
@@ -28377,7 +28377,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupPermission(self):
-        """集团关系策略权限
+        r"""集团关系策略权限
         :rtype: list of str
         """
         return self._GroupPermission
@@ -28388,7 +28388,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberPermission(self):
-        """成员关系策略权限
+        r"""成员关系策略权限
         :rtype: list of str
         """
         return self._MemberPermission
@@ -28399,7 +28399,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupPayMode(self):
-        """集团付费模式；0/自付费，1/代付费
+        r"""集团付费模式；0/自付费，1/代付费
         :rtype: int
         """
         return self._GroupPayMode
@@ -28410,7 +28410,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberPayMode(self):
-        """个人付费模式；0/自付费，1/代付费
+        r"""个人付费模式；0/自付费，1/代付费
         :rtype: int
         """
         return self._MemberPayMode
@@ -28421,7 +28421,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CFWProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._CFWProtect
@@ -28432,7 +28432,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def WAFProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._WAFProtect
@@ -28443,7 +28443,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CWPProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._CWPProtect
@@ -28454,7 +28454,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def Departments(self):
-        """所有部门的集合数组
+        r"""所有部门的集合数组
         :rtype: list of str
         """
         return self._Departments
@@ -28465,7 +28465,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberCreateTime(self):
-        """成员创建时间
+        r"""成员创建时间
         :rtype: str
         """
         return self._MemberCreateTime
@@ -28476,7 +28476,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CSIPProtect(self):
-        """Advanced/Enterprise/Ultimate 
+        r"""Advanced/Enterprise/Ultimate 
         :rtype: str
         """
         return self._CSIPProtect
@@ -28487,7 +28487,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def QuotaConsumer(self):
-        """1表示配额消耗方
+        r"""1表示配额消耗方
         :rtype: int
         """
         return self._QuotaConsumer
@@ -28498,7 +28498,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def EnableAdminCount(self):
-        """管理员/委派管理员 已开启数量
+        r"""管理员/委派管理员 已开启数量
         :rtype: int
         """
         return self._EnableAdminCount
@@ -28509,7 +28509,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CloudCountDesc(self):
-        """账户多云信息统计，数组形式，具体参考CloudCountDesc描述
+        r"""账户多云信息统计，数组形式，具体参考CloudCountDesc描述
         :rtype: list of CloudCountDesc
         """
         return self._CloudCountDesc
@@ -28520,7 +28520,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminCount(self):
-        """管理员/委派管理员 总数量
+        r"""管理员/委派管理员 总数量
         :rtype: int
         """
         return self._AdminCount
@@ -28574,7 +28574,7 @@ class OrganizationInfo(AbstractModel):
 
 
 class OrganizationUserInfo(AbstractModel):
-    """集团账号成员详情
+    r"""集团账号成员详情
 
     """
 
@@ -28658,7 +28658,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """成员账号Uin
+        r"""成员账号Uin
         :rtype: str
         """
         return self._Uin
@@ -28669,7 +28669,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        """成员账号名称
+        r"""成员账号名称
         :rtype: str
         """
         return self._NickName
@@ -28680,7 +28680,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        """部门节点名称，账号所属部门
+        r"""部门节点名称，账号所属部门
         :rtype: str
         """
         return self._NodeName
@@ -28691,7 +28691,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        """资产数量
+        r"""资产数量
         :rtype: int
         """
         return self._AssetCount
@@ -28702,7 +28702,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def RiskCount(self):
-        """风险数量
+        r"""风险数量
         :rtype: int
         """
         return self._RiskCount
@@ -28713,7 +28713,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AttackCount(self):
-        """攻击数量
+        r"""攻击数量
         :rtype: int
         """
         return self._AttackCount
@@ -28724,7 +28724,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Role(self):
-        """Member/Admin/;成员或者管理员
+        r"""Member/Admin/;成员或者管理员
         :rtype: str
         """
         return self._Role
@@ -28735,7 +28735,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        """成员账号id
+        r"""成员账号id
         :rtype: str
         """
         return self._MemberId
@@ -28746,7 +28746,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """成员账号Appid
+        r"""成员账号Appid
         :rtype: str
         """
         return self._AppId
@@ -28757,7 +28757,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinType(self):
-        """账号加入方式,create/invite
+        r"""账号加入方式,create/invite
         :rtype: str
         """
         return self._JoinType
@@ -28768,7 +28768,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CFWProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._CFWProtect
@@ -28779,7 +28779,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def WAFProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._WAFProtect
@@ -28790,7 +28790,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CWPProtect(self):
-        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
         :rtype: str
         """
         return self._CWPProtect
@@ -28801,7 +28801,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Enable(self):
-        """1启用，0未启用
+        r"""1启用，0未启用
         :rtype: int
         """
         return self._Enable
@@ -28812,7 +28812,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CSIPProtect(self):
-        """"Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+        r""""Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
         :rtype: str
         """
         return self._CSIPProtect
@@ -28823,7 +28823,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def QuotaConsumer(self):
-        """1为配额消耗者
+        r"""1为配额消耗者
         :rtype: int
         """
         return self._QuotaConsumer
@@ -28834,7 +28834,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        """账户类型，0为腾讯云账户，1为AWS账户
+        r"""账户类型，0为腾讯云账户，1为AWS账户
         :rtype: int
         """
         return self._CloudType
@@ -28845,7 +28845,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SyncFrequency(self):
-        """0为缺省值，1为10分钟，2为1小时，3为24小时
+        r"""0为缺省值，1为10分钟，2为1小时，3为24小时
         :rtype: int
         """
         return self._SyncFrequency
@@ -28856,7 +28856,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def IsExpired(self):
-        """多云账户是否过期
+        r"""多云账户是否过期
         :rtype: bool
         """
         return self._IsExpired
@@ -28867,7 +28867,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def PermissionList(self):
-        """多云账户 权限列表
+        r"""多云账户 权限列表
         :rtype: list of str
         """
         return self._PermissionList
@@ -28878,7 +28878,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AuthType(self):
-        """1
+        r"""1
         :rtype: int
         """
         return self._AuthType
@@ -28889,7 +28889,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def TcMemberType(self):
-        """0 腾讯云集团账户
+        r"""0 腾讯云集团账户
 1 腾讯云接入账户
 2 非腾讯云
         :rtype: int
@@ -28902,7 +28902,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SubUserCount(self):
-        """子账号数量
+        r"""子账号数量
         :rtype: int
         """
         return self._SubUserCount
@@ -28913,7 +28913,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinTypeInfo(self):
-        """加入方式详细信息
+        r"""加入方式详细信息
         :rtype: str
         """
         return self._JoinTypeInfo
@@ -28959,7 +28959,7 @@ class OrganizationUserInfo(AbstractModel):
 
 
 class PortRiskAdvanceCFGParamItem(AbstractModel):
-    """端口风险高级配置项
+    r"""端口风险高级配置项
 
     """
 
@@ -28981,7 +28981,7 @@ class PortRiskAdvanceCFGParamItem(AbstractModel):
 
     @property
     def PortSets(self):
-        """端口集合,以逗号分隔
+        r"""端口集合,以逗号分隔
         :rtype: str
         """
         return self._PortSets
@@ -28992,7 +28992,7 @@ class PortRiskAdvanceCFGParamItem(AbstractModel):
 
     @property
     def CheckType(self):
-        """检测项类型，0-系统定义，1-用户自定义
+        r"""检测项类型，0-系统定义，1-用户自定义
         :rtype: int
         """
         return self._CheckType
@@ -29003,7 +29003,7 @@ class PortRiskAdvanceCFGParamItem(AbstractModel):
 
     @property
     def Detail(self):
-        """检测项描述
+        r"""检测项描述
         :rtype: str
         """
         return self._Detail
@@ -29014,7 +29014,7 @@ class PortRiskAdvanceCFGParamItem(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，1-启用，0-禁用
+        r"""是否启用，1-启用，0-禁用
         :rtype: int
         """
         return self._Enable
@@ -29040,7 +29040,7 @@ class PortRiskAdvanceCFGParamItem(AbstractModel):
 
 
 class PortViewPortRisk(AbstractModel):
-    """端口视角的端口风险对象
+    r"""端口视角的端口风险对象
 
     """
 
@@ -29098,7 +29098,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def NoHandleCount(self):
-        """未处理数量
+        r"""未处理数量
         :rtype: int
         """
         return self._NoHandleCount
@@ -29109,7 +29109,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -29120,7 +29120,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
         :rtype: str
         """
         return self._Protocol
@@ -29131,7 +29131,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -29142,7 +29142,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -29153,7 +29153,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -29164,7 +29164,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -29175,7 +29175,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Suggestion(self):
-        """处置建议,0保持现状、1限制访问、2封禁端口
+        r"""处置建议,0保持现状、1限制访问、2封禁端口
         :rtype: int
         """
         return self._Suggestion
@@ -29186,7 +29186,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def AffectAssetCount(self):
-        """影响资产数量
+        r"""影响资产数量
         :rtype: str
         """
         return self._AffectAssetCount
@@ -29197,7 +29197,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Id(self):
-        """ID
+        r"""ID
         :rtype: str
         """
         return self._Id
@@ -29208,7 +29208,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def From(self):
-        """识别来源
+        r"""识别来源
         :rtype: str
         """
         return self._From
@@ -29219,7 +29219,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -29230,7 +29230,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -29241,7 +29241,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -29252,7 +29252,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -29263,7 +29263,7 @@ class PortViewPortRisk(AbstractModel):
 
     @property
     def Service(self):
-        """服务
+        r"""服务
         :rtype: str
         """
         return self._Service
@@ -29301,7 +29301,7 @@ class PortViewPortRisk(AbstractModel):
 
 
 class ProductSupport(AbstractModel):
-    """漏洞信息产品支持状态
+    r"""漏洞信息产品支持状态
 
     """
 
@@ -29329,7 +29329,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def VSSScan(self):
-        """true支持扫描。false不支持扫描
+        r"""true支持扫描。false不支持扫描
         :rtype: bool
         """
         return self._VSSScan
@@ -29340,7 +29340,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def CWPScan(self):
-        """0不支持，1支持
+        r"""0不支持，1支持
         :rtype: str
         """
         return self._CWPScan
@@ -29351,7 +29351,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def CFWPatch(self):
-        """1支持虚拟补丁，0或空不支持
+        r"""1支持虚拟补丁，0或空不支持
         :rtype: str
         """
         return self._CFWPatch
@@ -29362,7 +29362,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def WafPatch(self):
-        """0不支持，1支持	
+        r"""0不支持，1支持	
         :rtype: int
         """
         return self._WafPatch
@@ -29373,7 +29373,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def CWPFix(self):
-        """0不支持，1支持	
+        r"""0不支持，1支持	
         :rtype: int
         """
         return self._CWPFix
@@ -29384,7 +29384,7 @@ class ProductSupport(AbstractModel):
 
     @property
     def CveId(self):
-        """cveid
+        r"""cveid
         :rtype: str
         """
         return self._CveId
@@ -29412,7 +29412,7 @@ class ProductSupport(AbstractModel):
 
 
 class PublicIpDomainListKey(AbstractModel):
-    """公网IP和域名资产列表key
+    r"""公网IP和域名资产列表key
 
     """
 
@@ -29425,7 +29425,7 @@ class PublicIpDomainListKey(AbstractModel):
 
     @property
     def Asset(self):
-        """资产值
+        r"""资产值
         :rtype: str
         """
         return self._Asset
@@ -29448,7 +29448,7 @@ class PublicIpDomainListKey(AbstractModel):
 
 
 class RelatedEvent(AbstractModel):
-    """相关攻击事件结构
+    r"""相关攻击事件结构
 
     """
 
@@ -29467,7 +29467,7 @@ class RelatedEvent(AbstractModel):
 
     @property
     def EventID(self):
-        """事件ID
+        r"""事件ID
         :rtype: str
         """
         return self._EventID
@@ -29478,7 +29478,7 @@ class RelatedEvent(AbstractModel):
 
     @property
     def Description(self):
-        """事件描述
+        r"""事件描述
         :rtype: str
         """
         return self._Description
@@ -29489,7 +29489,7 @@ class RelatedEvent(AbstractModel):
 
     @property
     def RelatedCount(self):
-        """与事件关联的告警数量
+        r"""与事件关联的告警数量
         :rtype: int
         """
         return self._RelatedCount
@@ -29514,7 +29514,7 @@ class RelatedEvent(AbstractModel):
 
 
 class ReportItemKey(AbstractModel):
-    """报告项key
+    r"""报告项key
 
     """
 
@@ -29527,7 +29527,7 @@ class ReportItemKey(AbstractModel):
 
     @property
     def TaskLogList(self):
-        """日志Id列表
+        r"""日志Id列表
         :rtype: list of str
         """
         return self._TaskLogList
@@ -29550,7 +29550,7 @@ class ReportItemKey(AbstractModel):
 
 
 class ReportTaskIdList(AbstractModel):
-    """报告中的task_id list
+    r"""报告中的task_id list
 
     """
 
@@ -29566,7 +29566,7 @@ class ReportTaskIdList(AbstractModel):
 
     @property
     def TaskIdList(self):
-        """任务id列表
+        r"""任务id列表
         :rtype: list of str
         """
         return self._TaskIdList
@@ -29577,7 +29577,7 @@ class ReportTaskIdList(AbstractModel):
 
     @property
     def AppId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._AppId
@@ -29601,7 +29601,7 @@ class ReportTaskIdList(AbstractModel):
 
 
 class RepositoryImageVO(AbstractModel):
-    """仓库镜像列表
+    r"""仓库镜像列表
 
     """
 
@@ -29668,7 +29668,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: int
         """
         return self._AppId
@@ -29679,7 +29679,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -29690,7 +29690,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def NickName(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._NickName
@@ -29701,7 +29701,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceId(self):
-        """镜像id
+        r"""镜像id
         :rtype: str
         """
         return self._InstanceId
@@ -29712,7 +29712,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceName(self):
-        """镜像名称
+        r"""镜像名称
         :rtype: str
         """
         return self._InstanceName
@@ -29723,7 +29723,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceCreateTime(self):
-        """镜像创建时间
+        r"""镜像创建时间
         :rtype: str
         """
         return self._InstanceCreateTime
@@ -29734,7 +29734,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceSize(self):
-        """镜像大小带单位
+        r"""镜像大小带单位
         :rtype: str
         """
         return self._InstanceSize
@@ -29745,7 +29745,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def BuildCount(self):
-        """构建次数
+        r"""构建次数
         :rtype: int
         """
         return self._BuildCount
@@ -29756,7 +29756,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceType(self):
-        """镜像类型
+        r"""镜像类型
         :rtype: str
         """
         return self._InstanceType
@@ -29767,7 +29767,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def AuthStatus(self):
-        """授权状态
+        r"""授权状态
         :rtype: int
         """
         return self._AuthStatus
@@ -29778,7 +29778,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        """镜像版本
+        r"""镜像版本
         :rtype: str
         """
         return self._InstanceVersion
@@ -29789,7 +29789,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -29800,7 +29800,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def RepositoryUrl(self):
-        """仓库地址
+        r"""仓库地址
         :rtype: str
         """
         return self._RepositoryUrl
@@ -29811,7 +29811,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def RepositoryName(self):
-        """仓库名称
+        r"""仓库名称
         :rtype: str
         """
         return self._RepositoryName
@@ -29822,7 +29822,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -29833,7 +29833,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def VulRisk(self):
-        """漏洞风险
+        r"""漏洞风险
         :rtype: int
         """
         return self._VulRisk
@@ -29844,7 +29844,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def CheckCount(self):
-        """检查任务
+        r"""检查任务
         :rtype: int
         """
         return self._CheckCount
@@ -29855,7 +29855,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def CheckTime(self):
-        """体检时间
+        r"""体检时间
         :rtype: str
         """
         return self._CheckTime
@@ -29866,7 +29866,7 @@ class RepositoryImageVO(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -29907,7 +29907,7 @@ class RepositoryImageVO(AbstractModel):
 
 
 class RiskCallRecord(AbstractModel):
-    """风险调用记录详情
+    r"""风险调用记录详情
 
     """
 
@@ -29935,7 +29935,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def EventName(self):
-        """接口名称
+        r"""接口名称
         :rtype: str
         """
         return self._EventName
@@ -29946,7 +29946,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def EventDescCN(self):
-        """接口中文描述
+        r"""接口中文描述
         :rtype: str
         """
         return self._EventDescCN
@@ -29957,7 +29957,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def EventDescEN(self):
-        """接口英文描述
+        r"""接口英文描述
         :rtype: str
         """
         return self._EventDescEN
@@ -29968,7 +29968,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -29979,7 +29979,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def ProductNameCN(self):
-        """产品中文名称
+        r"""产品中文名称
         :rtype: str
         """
         return self._ProductNameCN
@@ -29990,7 +29990,7 @@ class RiskCallRecord(AbstractModel):
 
     @property
     def CallCount(self):
-        """调用次数
+        r"""调用次数
         :rtype: int
         """
         return self._CallCount
@@ -30018,7 +30018,7 @@ class RiskCallRecord(AbstractModel):
 
 
 class RiskCenterStatusKey(AbstractModel):
-    """风险中心状态处理Key
+    r"""风险中心状态处理Key
 
     """
 
@@ -30040,7 +30040,7 @@ class RiskCenterStatusKey(AbstractModel):
 
     @property
     def Id(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._Id
@@ -30051,7 +30051,7 @@ class RiskCenterStatusKey(AbstractModel):
 
     @property
     def PublicIPDomain(self):
-        """公网IP/域名
+        r"""公网IP/域名
         :rtype: str
         """
         return self._PublicIPDomain
@@ -30062,7 +30062,7 @@ class RiskCenterStatusKey(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -30073,7 +30073,7 @@ class RiskCenterStatusKey(AbstractModel):
 
     @property
     def AppId(self):
-        """APP ID
+        r"""APP ID
         :rtype: str
         """
         return self._AppId
@@ -30099,7 +30099,7 @@ class RiskCenterStatusKey(AbstractModel):
 
 
 class RiskDetailItem(AbstractModel):
-    """风险详情
+    r"""风险详情
 
     """
 
@@ -30148,7 +30148,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """首次发现时间
+        r"""首次发现时间
         :rtype: str
         """
         return self._CreateTime
@@ -30159,7 +30159,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -30170,7 +30170,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        """风险状态
+        r"""风险状态
         :rtype: int
         """
         return self._RiskStatus
@@ -30181,7 +30181,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskContent(self):
-        """风险内容
+        r"""风险内容
         :rtype: str
         """
         return self._RiskContent
@@ -30192,7 +30192,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商
+        r"""云厂商
         :rtype: str
         """
         return self._Provider
@@ -30203,7 +30203,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def ProviderName(self):
-        """云厂商名称
+        r"""云厂商名称
         :rtype: str
         """
         return self._ProviderName
@@ -30214,7 +30214,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        """云账号
+        r"""云账号
         :rtype: str
         """
         return self._CloudAccountId
@@ -30225,7 +30225,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        """云账号名称
+        r"""云账号名称
         :rtype: str
         """
         return self._CloudAccountName
@@ -30236,7 +30236,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -30247,7 +30247,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -30258,7 +30258,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: int
         """
         return self._RiskId
@@ -30269,7 +30269,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        """风险规则ID
+        r"""风险规则ID
         :rtype: str
         """
         return self._RiskRuleId
@@ -30280,7 +30280,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CheckStatus(self):
-        """风险验证状态
+        r"""风险验证状态
         :rtype: str
         """
         return self._CheckStatus
@@ -30315,7 +30315,7 @@ class RiskDetailItem(AbstractModel):
 
 
 class RiskRuleInfo(AbstractModel):
-    """风险规则
+    r"""风险规则
 
     """
 
@@ -30352,7 +30352,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def RuleID(self):
-        """风险检查项ID
+        r"""风险检查项ID
         :rtype: str
         """
         return self._RuleID
@@ -30363,7 +30363,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商名称
+        r"""云厂商名称
         :rtype: str
         """
         return self._Provider
@@ -30374,7 +30374,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -30385,7 +30385,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def RiskTitle(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskTitle
@@ -30396,7 +30396,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
         :rtype: str
         """
         return self._CheckType
@@ -30407,7 +30407,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._RiskLevel
@@ -30418,7 +30418,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def RiskInfluence(self):
-        """风险危害
+        r"""风险危害
         :rtype: str
         """
         return self._RiskInfluence
@@ -30429,7 +30429,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def RiskFixAdvance(self):
-        """风险修复指引报告链接
+        r"""风险修复指引报告链接
         :rtype: str
         """
         return self._RiskFixAdvance
@@ -30440,7 +30440,7 @@ class RiskRuleInfo(AbstractModel):
 
     @property
     def DispositionType(self):
-        """边界管控
+        r"""边界管控
         :rtype: str
         """
         return self._DispositionType
@@ -30471,7 +30471,7 @@ class RiskRuleInfo(AbstractModel):
 
 
 class RiskRuleItem(AbstractModel):
-    """风险规则
+    r"""风险规则
 
     """
 
@@ -30505,7 +30505,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def ItemId(self):
-        """风险检查项ID
+        r"""风险检查项ID
         :rtype: str
         """
         return self._ItemId
@@ -30516,7 +30516,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def Provider(self):
-        """云厂商名称
+        r"""云厂商名称
         :rtype: str
         """
         return self._Provider
@@ -30527,7 +30527,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -30538,7 +30538,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例类型名称
+        r"""实例类型名称
         :rtype: str
         """
         return self._InstanceName
@@ -30549,7 +30549,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def RiskTitle(self):
-        """风险名称
+        r"""风险名称
         :rtype: str
         """
         return self._RiskTitle
@@ -30560,7 +30560,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def CheckType(self):
-        """检查类型
+        r"""检查类型
         :rtype: str
         """
         return self._CheckType
@@ -30571,7 +30571,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def Severity(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._Severity
@@ -30582,7 +30582,7 @@ class RiskRuleItem(AbstractModel):
 
     @property
     def RiskInfluence(self):
-        """风险危害
+        r"""风险危害
         :rtype: str
         """
         return self._RiskInfluence
@@ -30612,7 +30612,7 @@ class RiskRuleItem(AbstractModel):
 
 
 class RoleInfo(AbstractModel):
-    """告警数据攻击者或受害者信息
+    r"""告警数据攻击者或受害者信息
 
     """
 
@@ -30691,7 +30691,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def IP(self):
-        """IP
+        r"""IP
         :rtype: str
         """
         return self._IP
@@ -30702,7 +30702,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def HostIP(self):
-        """HostIP
+        r"""HostIP
         :rtype: str
         """
         return self._HostIP
@@ -30713,7 +30713,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def OriginIP(self):
-        """原始IP
+        r"""原始IP
         :rtype: str
         """
         return self._OriginIP
@@ -30724,7 +30724,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -30735,7 +30735,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def InstanceID(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._InstanceID
@@ -30746,7 +30746,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def City(self):
-        """城市
+        r"""城市
         :rtype: str
         """
         return self._City
@@ -30757,7 +30757,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Province(self):
-        """省份
+        r"""省份
         :rtype: str
         """
         return self._Province
@@ -30768,7 +30768,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Country(self):
-        """国家
+        r"""国家
         :rtype: str
         """
         return self._Country
@@ -30779,7 +30779,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -30790,7 +30790,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Latitude(self):
-        """纬度
+        r"""纬度
         :rtype: str
         """
         return self._Latitude
@@ -30801,7 +30801,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Longitude(self):
-        """经度
+        r"""经度
         :rtype: str
         """
         return self._Longitude
@@ -30812,7 +30812,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Info(self):
-        """信息
+        r"""信息
         :rtype: str
         """
         return self._Info
@@ -30823,7 +30823,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -30834,7 +30834,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Name(self):
-        """企业名称
+        r"""企业名称
         :rtype: str
         """
         return self._Name
@@ -30845,7 +30845,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Account(self):
-        """账号
+        r"""账号
         :rtype: str
         """
         return self._Account
@@ -30856,7 +30856,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def Family(self):
-        """家族团伙
+        r"""家族团伙
         :rtype: str
         """
         return self._Family
@@ -30867,7 +30867,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def VirusName(self):
-        """病毒名
+        r"""病毒名
         :rtype: str
         """
         return self._VirusName
@@ -30878,7 +30878,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def MD5(self):
-        """MD5值
+        r"""MD5值
         :rtype: str
         """
         return self._MD5
@@ -30889,7 +30889,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """恶意进程文件名
+        r"""恶意进程文件名
         :rtype: str
         """
         return self._FileName
@@ -30900,7 +30900,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def AssetType(self):
-        """1:主机资产 2:域名资产 3:网络资产
+        r"""1:主机资产 2:域名资产 3:网络资产
         :rtype: int
         """
         return self._AssetType
@@ -30911,7 +30911,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def FromLogAnalysisData(self):
-        """来源日志分析的信息字段
+        r"""来源日志分析的信息字段
         :rtype: list of KeyValue
         """
         return self._FromLogAnalysisData
@@ -30922,7 +30922,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def ContainerName(self):
-        """容器名
+        r"""容器名
         :rtype: str
         """
         return self._ContainerName
@@ -30933,7 +30933,7 @@ class RoleInfo(AbstractModel):
 
     @property
     def ContainerID(self):
-        """容器ID
+        r"""容器ID
         :rtype: str
         """
         return self._ContainerID
@@ -30983,7 +30983,7 @@ class RoleInfo(AbstractModel):
 
 
 class ScanTaskInfo(AbstractModel):
-    """扫描任务详情
+    r"""扫描任务详情
 
     """
 
@@ -31029,7 +31029,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -31040,7 +31040,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -31051,7 +31051,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态码：1等待开始  2正在扫描  3扫描出错 4扫描完成
+        r"""任务状态码：1等待开始  2正在扫描  3扫描出错 4扫描完成
         :rtype: int
         """
         return self._Status
@@ -31062,7 +31062,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def Progress(self):
-        """任务进度
+        r"""任务进度
         :rtype: int
         """
         return self._Progress
@@ -31073,7 +31073,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def TaskTime(self):
-        """任务完成时间
+        r"""任务完成时间
         :rtype: str
         """
         return self._TaskTime
@@ -31084,7 +31084,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def ReportId(self):
-        """报告ID
+        r"""报告ID
         :rtype: str
         """
         return self._ReportId
@@ -31095,7 +31095,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def ReportName(self):
-        """报告名称
+        r"""报告名称
         :rtype: str
         """
         return self._ReportName
@@ -31106,7 +31106,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def ScanPlan(self):
-        """扫描计划，0-周期任务,1-立即扫描,2-定时扫描,3-自定义
+        r"""扫描计划，0-周期任务,1-立即扫描,2-定时扫描,3-自定义
         :rtype: int
         """
         return self._ScanPlan
@@ -31117,7 +31117,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        """关联的资产数
+        r"""关联的资产数
         :rtype: int
         """
         return self._AssetCount
@@ -31128,7 +31128,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """APP ID
+        r"""APP ID
         :rtype: str
         """
         return self._AppId
@@ -31139,7 +31139,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def UIN(self):
-        """用户主账户ID
+        r"""用户主账户ID
         :rtype: str
         """
         return self._UIN
@@ -31150,7 +31150,7 @@ class ScanTaskInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._UserName
@@ -31184,7 +31184,7 @@ class ScanTaskInfo(AbstractModel):
 
 
 class ScanTaskInfoList(AbstractModel):
-    """扫描任务列表展示信息
+    r"""扫描任务列表展示信息
 
     """
 
@@ -31314,7 +31314,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -31325,7 +31325,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间
+        r"""任务开始时间
         :rtype: str
         """
         return self._StartTime
@@ -31336,7 +31336,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务结束时间
+        r"""任务结束时间
         :rtype: str
         """
         return self._EndTime
@@ -31347,7 +31347,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ScanPlanContent(self):
-        """cron格式
+        r"""cron格式
         :rtype: str
         """
         return self._ScanPlanContent
@@ -31358,7 +31358,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def TaskType(self):
-        """0-周期任务,1-立即扫描,2-定时扫描,3-自定义
+        r"""0-周期任务,1-立即扫描,2-定时扫描,3-自定义
         :rtype: int
         """
         return self._TaskType
@@ -31369,7 +31369,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def InsertTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._InsertTime
@@ -31380,7 +31380,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -31391,7 +31391,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def SelfDefiningAssets(self):
-        """自定义指定扫描资产信息
+        r"""自定义指定扫描资产信息
         :rtype: list of str
         """
         return self._SelfDefiningAssets
@@ -31402,7 +31402,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def PredictTime(self):
-        """预估时间
+        r"""预估时间
         :rtype: int
         """
         return self._PredictTime
@@ -31413,7 +31413,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def PredictEndTime(self):
-        """预估完成时间
+        r"""预估完成时间
         :rtype: str
         """
         return self._PredictEndTime
@@ -31424,7 +31424,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ReportNumber(self):
-        """报告数量
+        r"""报告数量
         :rtype: int
         """
         return self._ReportNumber
@@ -31435,7 +31435,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def AssetNumber(self):
-        """资产数量
+        r"""资产数量
         :rtype: int
         """
         return self._AssetNumber
@@ -31446,7 +31446,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ScanStatus(self):
-        """扫描状态, 0-初始值，1-正在扫描，2-扫描完成，3-扫描出错，4-停止扫描
+        r"""扫描状态, 0-初始值，1-正在扫描，2-扫描完成，3-扫描出错，4-停止扫描
         :rtype: int
         """
         return self._ScanStatus
@@ -31457,7 +31457,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def Percent(self):
-        """任务进度
+        r"""任务进度
         :rtype: float
         """
         return self._Percent
@@ -31468,7 +31468,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ScanItem(self):
-        """port/poc/weakpass/webcontent/configrisk
+        r"""port/poc/weakpass/webcontent/configrisk
         :rtype: str
         """
         return self._ScanItem
@@ -31479,7 +31479,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ScanAssetType(self):
-        """0-全扫，1-指定资产扫，2-排除资产扫，3-自定义指定资产扫描
+        r"""0-全扫，1-指定资产扫，2-排除资产扫，3-自定义指定资产扫描
         :rtype: int
         """
         return self._ScanAssetType
@@ -31490,7 +31490,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def VSSTaskId(self):
-        """vss子任务id
+        r"""vss子任务id
         :rtype: str
         """
         return self._VSSTaskId
@@ -31501,7 +31501,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CSPMTaskId(self):
-        """cspm子任务id
+        r"""cspm子任务id
         :rtype: str
         """
         return self._CSPMTaskId
@@ -31512,7 +31512,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CWPPOCId(self):
-        """主机漏扫子任务id
+        r"""主机漏扫子任务id
         :rtype: str
         """
         return self._CWPPOCId
@@ -31523,7 +31523,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CWPBlId(self):
-        """主机基线子任务id
+        r"""主机基线子任务id
         :rtype: str
         """
         return self._CWPBlId
@@ -31534,7 +31534,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def VSSTaskProcess(self):
-        """vss子任务进度
+        r"""vss子任务进度
         :rtype: int
         """
         return self._VSSTaskProcess
@@ -31545,7 +31545,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CSPMTaskProcess(self):
-        """cspm子任务进度
+        r"""cspm子任务进度
         :rtype: int
         """
         return self._CSPMTaskProcess
@@ -31556,7 +31556,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CWPPOCProcess(self):
-        """主机漏扫子任务进度
+        r"""主机漏扫子任务进度
         :rtype: int
         """
         return self._CWPPOCProcess
@@ -31567,7 +31567,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CWPBlProcess(self):
-        """主机基线子任务进度
+        r"""主机基线子任务进度
         :rtype: int
         """
         return self._CWPBlProcess
@@ -31578,7 +31578,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """异常状态码
+        r"""异常状态码
         :rtype: int
         """
         return self._ErrorCode
@@ -31589,7 +31589,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ErrorInfo(self):
-        """异常信息
+        r"""异常信息
         :rtype: str
         """
         return self._ErrorInfo
@@ -31600,7 +31600,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def StartDay(self):
-        """周期任务开始的天数
+        r"""周期任务开始的天数
         :rtype: int
         """
         return self._StartDay
@@ -31611,7 +31611,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def Frequency(self):
-        """扫描频率,单位天,1-每天,7-每周,30-月,0-扫描一次
+        r"""扫描频率,单位天,1-每天,7-每周,30-月,0-扫描一次
         :rtype: int
         """
         return self._Frequency
@@ -31622,7 +31622,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CompleteNumber(self):
-        """完成次数
+        r"""完成次数
         :rtype: int
         """
         return self._CompleteNumber
@@ -31633,7 +31633,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def CompleteAssetNumber(self):
-        """已完成资产个数
+        r"""已完成资产个数
         :rtype: int
         """
         return self._CompleteAssetNumber
@@ -31644,7 +31644,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def RiskCount(self):
-        """风险数
+        r"""风险数
         :rtype: int
         """
         return self._RiskCount
@@ -31655,7 +31655,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def Assets(self):
-        """资产
+        r"""资产
         :rtype: list of TaskAssetObject
         """
         return self._Assets
@@ -31666,7 +31666,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def AppId(self):
-        """用户Appid
+        r"""用户Appid
         :rtype: str
         """
         return self._AppId
@@ -31677,7 +31677,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def UIN(self):
-        """用户主账户ID
+        r"""用户主账户ID
         :rtype: str
         """
         return self._UIN
@@ -31688,7 +31688,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._UserName
@@ -31699,7 +31699,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def TaskMode(self):
-        """体检模式，0-标准模式，1-快速模式，2-高级模式
+        r"""体检模式，0-标准模式，1-快速模式，2-高级模式
         :rtype: int
         """
         return self._TaskMode
@@ -31710,7 +31710,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def ScanFrom(self):
-        """扫描来源
+        r"""扫描来源
         :rtype: str
         """
         return self._ScanFrom
@@ -31721,7 +31721,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def IsFree(self):
-        """是否限免体检0不是，1是
+        r"""是否限免体检0不是，1是
         :rtype: int
         """
         return self._IsFree
@@ -31732,7 +31732,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def IsDelete(self):
-        """是否可以删除，1-可以，0-不可以，对应多账户管理使用
+        r"""是否可以删除，1-可以，0-不可以，对应多账户管理使用
         :rtype: int
         """
         return self._IsDelete
@@ -31743,7 +31743,7 @@ class ScanTaskInfoList(AbstractModel):
 
     @property
     def SourceType(self):
-        """任务源类型，0-默认，1-小助手，2-体检项
+        r"""任务源类型，0-默认，1-小助手，2-体检项
         :rtype: int
         """
         return self._SourceType
@@ -31810,7 +31810,7 @@ class ScanTaskInfoList(AbstractModel):
 
 
 class ServerRisk(AbstractModel):
-    """服务风险
+    r"""服务风险
 
     """
 
@@ -31901,7 +31901,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def ServiceTag(self):
-        """测绘标签
+        r"""测绘标签
         :rtype: str
         """
         return self._ServiceTag
@@ -31912,7 +31912,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -31923,7 +31923,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -31934,7 +31934,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -31945,7 +31945,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -31956,7 +31956,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -31967,7 +31967,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级 low:低危 high:高危 middle:中危 info:提示 extreme:严重
+        r"""风险等级 low:低危 high:高危 middle:中危 info:提示 extreme:严重
         :rtype: str
         """
         return self._Level
@@ -31978,7 +31978,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
         :rtype: str
         """
         return self._Protocol
@@ -31989,7 +31989,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -32000,7 +32000,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Service(self):
-        """服务
+        r"""服务
         :rtype: str
         """
         return self._Service
@@ -32011,7 +32011,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -32022,7 +32022,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -32033,7 +32033,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def RiskDetails(self):
-        """风险详情
+        r"""风险详情
         :rtype: str
         """
         return self._RiskDetails
@@ -32044,7 +32044,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Suggestion(self):
-        """处置建议
+        r"""处置建议
         :rtype: str
         """
         return self._Suggestion
@@ -32055,7 +32055,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略、3云防已防护
+        r"""状态，0未处理、1已处置、2已忽略、3云防已防护
         :rtype: int
         """
         return self._Status
@@ -32066,7 +32066,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Id(self):
-        """资产唯一id
+        r"""资产唯一id
         :rtype: str
         """
         return self._Id
@@ -32077,7 +32077,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -32088,7 +32088,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -32099,7 +32099,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -32110,7 +32110,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def ServiceSnapshot(self):
-        """服务快照
+        r"""服务快照
         :rtype: str
         """
         return self._ServiceSnapshot
@@ -32121,7 +32121,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Url(self):
-        """服务访问的url
+        r"""服务访问的url
         :rtype: str
         """
         return self._Url
@@ -32132,7 +32132,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Index(self):
-        """列表索引值
+        r"""列表索引值
         :rtype: str
         """
         return self._Index
@@ -32143,7 +32143,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def RiskList(self):
-        """风险列表
+        r"""风险列表
         :rtype: list of ServerRiskSuggestion
         """
         return self._RiskList
@@ -32154,7 +32154,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def SuggestionList(self):
-        """建议列表
+        r"""建议列表
         :rtype: list of ServerRiskSuggestion
         """
         return self._SuggestionList
@@ -32165,7 +32165,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def StatusCode(self):
-        """HTTP响应状态码
+        r"""HTTP响应状态码
         :rtype: str
         """
         return self._StatusCode
@@ -32176,7 +32176,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def NewLevel(self):
-        """新风险等级,high_risk 高危 suspect 疑似 Normal 暂无风险
+        r"""新风险等级,high_risk 高危 suspect 疑似 Normal 暂无风险
         :rtype: str
         """
         return self._NewLevel
@@ -32187,7 +32187,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def XspmStatus(self):
-        """状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        r"""状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
         :rtype: int
         """
         return self._XspmStatus
@@ -32246,7 +32246,7 @@ class ServerRisk(AbstractModel):
 
 
 class ServerRiskSuggestion(AbstractModel):
-    """风险详情
+    r"""风险详情
 
     """
 
@@ -32262,7 +32262,7 @@ class ServerRiskSuggestion(AbstractModel):
 
     @property
     def Title(self):
-        """标题
+        r"""标题
         :rtype: str
         """
         return self._Title
@@ -32273,7 +32273,7 @@ class ServerRiskSuggestion(AbstractModel):
 
     @property
     def Body(self):
-        """详情
+        r"""详情
         :rtype: str
         """
         return self._Body
@@ -32297,7 +32297,7 @@ class ServerRiskSuggestion(AbstractModel):
 
 
 class ServiceSupport(AbstractModel):
-    """产品支持情况
+    r"""产品支持情况
 
     """
 
@@ -32320,7 +32320,7 @@ class ServiceSupport(AbstractModel):
 
     @property
     def ServiceName(self):
-        """产品名称:
+        r"""产品名称:
 "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
         :rtype: str
         """
@@ -32332,7 +32332,7 @@ class ServiceSupport(AbstractModel):
 
     @property
     def SupportHandledCount(self):
-        """已处理的资产总数
+        r"""已处理的资产总数
         :rtype: int
         """
         return self._SupportHandledCount
@@ -32343,7 +32343,7 @@ class ServiceSupport(AbstractModel):
 
     @property
     def SupportTotalCount(self):
-        """支持的资产总数
+        r"""支持的资产总数
         :rtype: int
         """
         return self._SupportTotalCount
@@ -32354,7 +32354,7 @@ class ServiceSupport(AbstractModel):
 
     @property
     def IsSupport(self):
-        """是否支持该产品1支持；0不支持
+        r"""是否支持该产品1支持；0不支持
         :rtype: bool
         """
         return self._IsSupport
@@ -32380,7 +32380,7 @@ class ServiceSupport(AbstractModel):
 
 
 class SourceIPAsset(AbstractModel):
-    """访问密钥资产信息（源IP角度）
+    r"""访问密钥资产信息（源IP角度）
 
     """
 
@@ -32447,7 +32447,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def ID(self):
-        """源IP id
+        r"""源IP id
         :rtype: int
         """
         return self._ID
@@ -32458,7 +32458,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def SourceIP(self):
-        """源IP
+        r"""源IP
         :rtype: str
         """
         return self._SourceIP
@@ -32469,7 +32469,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -32480,7 +32480,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def AppID(self):
-        """账号所属APPID
+        r"""账号所属APPID
         :rtype: int
         """
         return self._AppID
@@ -32491,7 +32491,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def Region(self):
-        """IP地域
+        r"""IP地域
         :rtype: str
         """
         return self._Region
@@ -32502,7 +32502,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def EventType(self):
-        """调用方式
+        r"""调用方式
 0:控制台调用
 1:API
         :rtype: int
@@ -32515,7 +32515,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def IPType(self):
-        """IP类型
+        r"""IP类型
 0:账号内（未备注）
 1:账号外（未备注）
 2:账号内   (已备注)
@@ -32530,7 +32530,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def AccessKeyAlarmList(self):
-        """告警信息列表
+        r"""告警信息列表
         :rtype: list of AccessKeyAlarmInfo
         """
         return self._AccessKeyAlarmList
@@ -32541,7 +32541,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def AKInfo(self):
-        """ak信息列表
+        r"""ak信息列表
         :rtype: list of AKInfo
         """
         return self._AKInfo
@@ -32552,7 +32552,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def ActionCount(self):
-        """调用接口数量
+        r"""调用接口数量
         :rtype: int
         """
         return self._ActionCount
@@ -32563,7 +32563,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最近访问时间
+        r"""最近访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -32574,7 +32574,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def InstanceID(self):
-        """IP关联实例ID，如果为空字符串，代表非账号内资产
+        r"""IP关联实例ID，如果为空字符串，代表非账号内资产
         :rtype: str
         """
         return self._InstanceID
@@ -32585,7 +32585,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def InstanceName(self):
-        """IP关联实例名称
+        r"""IP关联实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -32596,7 +32596,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def Uin(self):
-        """账号所属Uin
+        r"""账号所属Uin
         :rtype: str
         """
         return self._Uin
@@ -32607,7 +32607,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def Nickname(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nickname
@@ -32618,7 +32618,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def ShowStatus(self):
-        """展示状态
+        r"""展示状态
         :rtype: bool
         """
         return self._ShowStatus
@@ -32629,7 +32629,7 @@ class SourceIPAsset(AbstractModel):
 
     @property
     def ISP(self):
-        """运营商字段
+        r"""运营商字段
         :rtype: str
         """
         return self._ISP
@@ -32678,7 +32678,7 @@ class SourceIPAsset(AbstractModel):
 
 
 class SourceIPVpcInfo(AbstractModel):
-    """调用源IP 外部账号信息
+    r"""调用源IP 外部账号信息
 
     """
 
@@ -32700,7 +32700,7 @@ class SourceIPVpcInfo(AbstractModel):
 
     @property
     def Name(self):
-        """账号名称
+        r"""账号名称
         :rtype: str
         """
         return self._Name
@@ -32711,7 +32711,7 @@ class SourceIPVpcInfo(AbstractModel):
 
     @property
     def AppID(self):
-        """vpc所属appid
+        r"""vpc所属appid
         :rtype: int
         """
         return self._AppID
@@ -32722,7 +32722,7 @@ class SourceIPVpcInfo(AbstractModel):
 
     @property
     def VpcID(self):
-        """vpc id
+        r"""vpc id
         :rtype: str
         """
         return self._VpcID
@@ -32733,7 +32733,7 @@ class SourceIPVpcInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc 名称
+        r"""vpc 名称
         :rtype: str
         """
         return self._VpcName
@@ -32759,7 +32759,7 @@ class SourceIPVpcInfo(AbstractModel):
 
 
 class StatisticalFilter(AbstractModel):
-    """用户行为分析 统计条件
+    r"""用户行为分析 统计条件
 
     """
 
@@ -32778,7 +32778,7 @@ class StatisticalFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        """0:不基于统计检测
+        r"""0:不基于统计检测
 1:发生次数高于固定值
 2:发生次数高于周期平均值的百分之
 3:发生次数高于用户平均值的百分之
@@ -32792,7 +32792,7 @@ class StatisticalFilter(AbstractModel):
 
     @property
     def Value(self):
-        """统计值
+        r"""统计值
         :rtype: float
         """
         return self._Value
@@ -32816,7 +32816,7 @@ class StatisticalFilter(AbstractModel):
 
 
 class StopRiskCenterTaskRequest(AbstractModel):
-    """StopRiskCenterTask请求参数结构体
+    r"""StopRiskCenterTask请求参数结构体
 
     """
 
@@ -32832,7 +32832,7 @@ class StopRiskCenterTaskRequest(AbstractModel):
 
     @property
     def TaskIdList(self):
-        """任务id 列表
+        r"""任务id 列表
         :rtype: list of TaskIdListKey
         """
         return self._TaskIdList
@@ -32843,7 +32843,7 @@ class StopRiskCenterTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -32872,7 +32872,7 @@ class StopRiskCenterTaskRequest(AbstractModel):
 
 
 class StopRiskCenterTaskResponse(AbstractModel):
-    """StopRiskCenterTask返回参数结构体
+    r"""StopRiskCenterTask返回参数结构体
 
     """
 
@@ -32888,7 +32888,7 @@ class StopRiskCenterTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status为0， 停止成功
+        r"""Status为0， 停止成功
         :rtype: int
         """
         return self._Status
@@ -32899,7 +32899,7 @@ class StopRiskCenterTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -32915,7 +32915,7 @@ class StopRiskCenterTaskResponse(AbstractModel):
 
 
 class SubUserInfo(AbstractModel):
-    """子账号详情
+    r"""子账号详情
 
     """
 
@@ -32979,7 +32979,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ID(self):
-        """主键ID，无业务意义仅作为唯一键
+        r"""主键ID，无业务意义仅作为唯一键
         :rtype: int
         """
         return self._ID
@@ -32990,7 +32990,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AppID(self):
-        """子账号Appid
+        r"""子账号Appid
         :rtype: str
         """
         return self._AppID
@@ -33001,7 +33001,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """子账号UIn
+        r"""子账号UIn
         :rtype: str
         """
         return self._Uin
@@ -33012,7 +33012,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        """子账号名称
+        r"""子账号名称
         :rtype: str
         """
         return self._NickName
@@ -33023,7 +33023,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerAppID(self):
-        """主账号Appid
+        r"""主账号Appid
         :rtype: str
         """
         return self._OwnerAppID
@@ -33034,7 +33034,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """主账号Uin
+        r"""主账号Uin
         :rtype: str
         """
         return self._OwnerUin
@@ -33045,7 +33045,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerNickName(self):
-        """主账号名称
+        r"""主账号名称
         :rtype: str
         """
         return self._OwnerNickName
@@ -33056,7 +33056,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerMemberID(self):
-        """所属主账号memberId信息
+        r"""所属主账号memberId信息
         :rtype: str
         """
         return self._OwnerMemberID
@@ -33067,7 +33067,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        """账户类型，0为腾讯云账户，1为AWS账户
+        r"""账户类型，0为腾讯云账户，1为AWS账户
         :rtype: int
         """
         return self._CloudType
@@ -33078,7 +33078,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """可访问服务数量
+        r"""可访问服务数量
         :rtype: int
         """
         return self._ServiceCount
@@ -33089,7 +33089,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def InterfaceCount(self):
-        """可访问接口数量
+        r"""可访问接口数量
         :rtype: int
         """
         return self._InterfaceCount
@@ -33100,7 +33100,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        """可访问资源数量
+        r"""可访问资源数量
         :rtype: int
         """
         return self._AssetCount
@@ -33111,7 +33111,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def LogCount(self):
-        """访问/行为日志数量
+        r"""访问/行为日志数量
         :rtype: int
         """
         return self._LogCount
@@ -33122,7 +33122,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ConfigRiskCount(self):
-        """权限配置风险
+        r"""权限配置风险
         :rtype: int
         """
         return self._ConfigRiskCount
@@ -33133,7 +33133,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ActionRiskCount(self):
-        """危险行为告警
+        r"""危险行为告警
         :rtype: int
         """
         return self._ActionRiskCount
@@ -33144,7 +33144,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCloudAudit(self):
-        """是否接入操作审计日志
+        r"""是否接入操作审计日志
         :rtype: bool
         """
         return self._IsAccessCloudAudit
@@ -33155,7 +33155,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCheck(self):
-        """是否配置风险的安全体检
+        r"""是否配置风险的安全体检
         :rtype: bool
         """
         return self._IsAccessCheck
@@ -33166,7 +33166,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessUeba(self):
-        """是否配置用户行为管理策略
+        r"""是否配置用户行为管理策略
         :rtype: bool
         """
         return self._IsAccessUeba
@@ -33206,7 +33206,7 @@ class SubUserInfo(AbstractModel):
 
 
 class SubnetAsset(AbstractModel):
-    """子网资产
+    r"""子网资产
 
     """
 
@@ -33273,7 +33273,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: str
         """
         return self._AppId
@@ -33284,7 +33284,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def Uin(self):
-        """uin
+        r"""uin
         :rtype: str
         """
         return self._Uin
@@ -33295,7 +33295,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产ID
+        r"""资产ID
         :rtype: str
         """
         return self._AssetId
@@ -33306,7 +33306,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -33317,7 +33317,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def Region(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Region
@@ -33328,7 +33328,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络id
+        r"""私有网络id
         :rtype: str
         """
         return self._VpcId
@@ -33339,7 +33339,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def VpcName(self):
-        """私有网络名
+        r"""私有网络名
         :rtype: str
         """
         return self._VpcName
@@ -33350,7 +33350,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -33361,7 +33361,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def Nick(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nick
@@ -33372,7 +33372,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def CIDR(self):
-        """cidr
+        r"""cidr
         :rtype: str
         """
         return self._CIDR
@@ -33383,7 +33383,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
         :rtype: str
         """
         return self._Zone
@@ -33394,7 +33394,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def CVM(self):
-        """cvm数
+        r"""cvm数
         :rtype: int
         """
         return self._CVM
@@ -33405,7 +33405,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def AvailableIp(self):
-        """可用ip数
+        r"""可用ip数
         :rtype: int
         """
         return self._AvailableIp
@@ -33416,7 +33416,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -33427,7 +33427,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def ConfigureRisk(self):
-        """配置风险
+        r"""配置风险
         :rtype: int
         """
         return self._ConfigureRisk
@@ -33438,7 +33438,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def ScanTask(self):
-        """任务数
+        r"""任务数
         :rtype: int
         """
         return self._ScanTask
@@ -33449,7 +33449,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def LastScanTime(self):
-        """最后扫描时间
+        r"""最后扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -33460,7 +33460,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心
+        r"""是否核心
         :rtype: int
         """
         return self._IsCore
@@ -33471,7 +33471,7 @@ class SubnetAsset(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -33517,7 +33517,7 @@ class SubnetAsset(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -33533,7 +33533,7 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
-        """标签名称
+        r"""标签名称
         :rtype: str
         """
         return self._Name
@@ -33544,7 +33544,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签内容
+        r"""标签内容
         :rtype: str
         """
         return self._Value
@@ -33568,7 +33568,7 @@ class Tag(AbstractModel):
 
 
 class TagCount(AbstractModel):
-    """产品日志条数
+    r"""产品日志条数
 
     """
 
@@ -33584,7 +33584,7 @@ class TagCount(AbstractModel):
 
     @property
     def Name(self):
-        """产品名
+        r"""产品名
         :rtype: str
         """
         return self._Name
@@ -33595,7 +33595,7 @@ class TagCount(AbstractModel):
 
     @property
     def Count(self):
-        """日志条数
+        r"""日志条数
         :rtype: int
         """
         return self._Count
@@ -33619,7 +33619,7 @@ class TagCount(AbstractModel):
 
 
 class Tags(AbstractModel):
-    """主机标签信息
+    r"""主机标签信息
 
     """
 
@@ -33635,7 +33635,7 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
-        """主机标签key
+        r"""主机标签key
         :rtype: str
         """
         return self._TagKey
@@ -33646,7 +33646,7 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
-        """主机标签value
+        r"""主机标签value
         :rtype: str
         """
         return self._TagValue
@@ -33670,7 +33670,7 @@ class Tags(AbstractModel):
 
 
 class TaskAdvanceCFG(AbstractModel):
-    """任务高级配置
+    r"""任务高级配置
 
     """
 
@@ -33692,7 +33692,7 @@ class TaskAdvanceCFG(AbstractModel):
 
     @property
     def PortRisk(self):
-        """端口风险高级配置
+        r"""端口风险高级配置
         :rtype: list of PortRiskAdvanceCFGParamItem
         """
         return self._PortRisk
@@ -33703,7 +33703,7 @@ class TaskAdvanceCFG(AbstractModel):
 
     @property
     def VulRisk(self):
-        """漏洞风险高级配置
+        r"""漏洞风险高级配置
         :rtype: list of TaskCenterVulRiskInputParam
         """
         return self._VulRisk
@@ -33714,7 +33714,7 @@ class TaskAdvanceCFG(AbstractModel):
 
     @property
     def WeakPwdRisk(self):
-        """弱口令风险高级配置
+        r"""弱口令风险高级配置
         :rtype: list of TaskCenterWeakPwdRiskInputParam
         """
         return self._WeakPwdRisk
@@ -33725,7 +33725,7 @@ class TaskAdvanceCFG(AbstractModel):
 
     @property
     def CFGRisk(self):
-        """配置风险高级配置
+        r"""配置风险高级配置
         :rtype: list of TaskCenterCFGRiskInputParam
         """
         return self._CFGRisk
@@ -33771,7 +33771,7 @@ class TaskAdvanceCFG(AbstractModel):
 
 
 class TaskAssetObject(AbstractModel):
-    """任务资产项
+    r"""任务资产项
 
     """
 
@@ -33799,7 +33799,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名
+        r"""资产名
         :rtype: str
         """
         return self._AssetName
@@ -33810,7 +33810,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def InstanceType(self):
-        """资产类型
+        r"""资产类型
         :rtype: str
         """
         return self._InstanceType
@@ -33821,7 +33821,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def AssetType(self):
-        """资产分类
+        r"""资产分类
         :rtype: str
         """
         return self._AssetType
@@ -33832,7 +33832,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def Asset(self):
-        """ip/域名/资产id，数据库id等
+        r"""ip/域名/资产id，数据库id等
         :rtype: str
         """
         return self._Asset
@@ -33843,7 +33843,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -33854,7 +33854,7 @@ class TaskAssetObject(AbstractModel):
 
     @property
     def Arn(self):
-        """多云资产唯一id
+        r"""多云资产唯一id
         :rtype: str
         """
         return self._Arn
@@ -33882,7 +33882,7 @@ class TaskAssetObject(AbstractModel):
 
 
 class TaskCenterCFGRiskInputParam(AbstractModel):
-    """配置风险高级配置
+    r"""配置风险高级配置
 
     """
 
@@ -33901,7 +33901,7 @@ class TaskCenterCFGRiskInputParam(AbstractModel):
 
     @property
     def ItemId(self):
-        """检测项ID
+        r"""检测项ID
         :rtype: str
         """
         return self._ItemId
@@ -33912,7 +33912,7 @@ class TaskCenterCFGRiskInputParam(AbstractModel):
 
     @property
     def Enable(self):
-        """是否开启，0-不开启，1-开启
+        r"""是否开启，0-不开启，1-开启
         :rtype: int
         """
         return self._Enable
@@ -33923,7 +33923,7 @@ class TaskCenterCFGRiskInputParam(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -33948,7 +33948,7 @@ class TaskCenterCFGRiskInputParam(AbstractModel):
 
 
 class TaskCenterVulRiskInputParam(AbstractModel):
-    """漏洞风险高级配置
+    r"""漏洞风险高级配置
 
     """
 
@@ -33964,7 +33964,7 @@ class TaskCenterVulRiskInputParam(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._RiskId
@@ -33975,7 +33975,7 @@ class TaskCenterVulRiskInputParam(AbstractModel):
 
     @property
     def Enable(self):
-        """是否开启，0-不开启，1-开启
+        r"""是否开启，0-不开启，1-开启
         :rtype: int
         """
         return self._Enable
@@ -33999,7 +33999,7 @@ class TaskCenterVulRiskInputParam(AbstractModel):
 
 
 class TaskCenterWeakPwdRiskInputParam(AbstractModel):
-    """弱口令风险高级配置
+    r"""弱口令风险高级配置
 
     """
 
@@ -34015,7 +34015,7 @@ class TaskCenterWeakPwdRiskInputParam(AbstractModel):
 
     @property
     def CheckItemId(self):
-        """检测项ID
+        r"""检测项ID
         :rtype: int
         """
         return self._CheckItemId
@@ -34026,7 +34026,7 @@ class TaskCenterWeakPwdRiskInputParam(AbstractModel):
 
     @property
     def Enable(self):
-        """是否开启，0-不开启，1-开启
+        r"""是否开启，0-不开启，1-开启
         :rtype: int
         """
         return self._Enable
@@ -34050,7 +34050,7 @@ class TaskCenterWeakPwdRiskInputParam(AbstractModel):
 
 
 class TaskIdListKey(AbstractModel):
-    """任务ID列表Key
+    r"""任务ID列表Key
 
     """
 
@@ -34066,7 +34066,7 @@ class TaskIdListKey(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -34077,7 +34077,7 @@ class TaskIdListKey(AbstractModel):
 
     @property
     def TargetAppId(self):
-        """APP ID
+        r"""APP ID
         :rtype: str
         """
         return self._TargetAppId
@@ -34101,7 +34101,7 @@ class TaskIdListKey(AbstractModel):
 
 
 class TaskLogInfo(AbstractModel):
-    """任务报告信息
+    r"""任务报告信息
 
     """
 
@@ -34153,7 +34153,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def TaskLogName(self):
-        """报告名称
+        r"""报告名称
         :rtype: str
         """
         return self._TaskLogName
@@ -34164,7 +34164,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def TaskLogId(self):
-        """报告ID
+        r"""报告ID
         :rtype: str
         """
         return self._TaskLogId
@@ -34175,7 +34175,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def AssetsNumber(self):
-        """关联资产个数
+        r"""关联资产个数
         :rtype: int
         """
         return self._AssetsNumber
@@ -34186,7 +34186,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def RiskNumber(self):
-        """安全风险数量
+        r"""安全风险数量
         :rtype: int
         """
         return self._RiskNumber
@@ -34197,7 +34197,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def Time(self):
-        """报告生成时间
+        r"""报告生成时间
         :rtype: str
         """
         return self._Time
@@ -34208,7 +34208,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
+        r"""任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
         :rtype: int
         """
         return self._Status
@@ -34219,7 +34219,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        """关联任务名称
+        r"""关联任务名称
         :rtype: str
         """
         return self._TaskName
@@ -34230,7 +34230,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """扫描开始时间
+        r"""扫描开始时间
         :rtype: str
         """
         return self._StartTime
@@ -34241,7 +34241,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def TaskCenterTaskId(self):
-        """任务中心扫描任务ID
+        r"""任务中心扫描任务ID
         :rtype: str
         """
         return self._TaskCenterTaskId
@@ -34252,7 +34252,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._AppId
@@ -34263,7 +34263,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def UIN(self):
-        """主账户ID
+        r"""主账户ID
         :rtype: str
         """
         return self._UIN
@@ -34274,7 +34274,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._UserName
@@ -34285,7 +34285,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def ReportType(self):
-        """报告类型： 1安全体检 2日报 3周报 4月报
+        r"""报告类型： 1安全体检 2日报 3周报 4月报
         :rtype: int
         """
         return self._ReportType
@@ -34296,7 +34296,7 @@ class TaskLogInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """报告模板id
+        r"""报告模板id
         :rtype: int
         """
         return self._TemplateId
@@ -34332,7 +34332,7 @@ class TaskLogInfo(AbstractModel):
 
 
 class TaskLogURL(AbstractModel):
-    """报告pdf下载的临时链接
+    r"""报告pdf下载的临时链接
 
     """
 
@@ -34354,7 +34354,7 @@ class TaskLogURL(AbstractModel):
 
     @property
     def URL(self):
-        """报告下载临时链接
+        r"""报告下载临时链接
         :rtype: str
         """
         return self._URL
@@ -34365,7 +34365,7 @@ class TaskLogURL(AbstractModel):
 
     @property
     def LogId(self):
-        """任务报告id
+        r"""任务报告id
         :rtype: str
         """
         return self._LogId
@@ -34376,7 +34376,7 @@ class TaskLogURL(AbstractModel):
 
     @property
     def TaskLogName(self):
-        """任务报告名称
+        r"""任务报告名称
         :rtype: str
         """
         return self._TaskLogName
@@ -34387,7 +34387,7 @@ class TaskLogURL(AbstractModel):
 
     @property
     def AppId(self):
-        """APP ID
+        r"""APP ID
         :rtype: str
         """
         return self._AppId
@@ -34413,7 +34413,7 @@ class TaskLogURL(AbstractModel):
 
 
 class UebaCustomRule(AbstractModel):
-    """用户行为分析  自定义策略结构体
+    r"""用户行为分析  自定义策略结构体
 
     """
 
@@ -34467,7 +34467,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._RuleName
@@ -34478,7 +34478,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def UserType(self):
-        """1: 云账号
+        r"""1: 云账号
 2: 自定义用户
         :rtype: int
         """
@@ -34490,7 +34490,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def TimeInterval(self):
-        """发生时间
+        r"""发生时间
 1：10分钟
 2：1小时
 3：一天
@@ -34506,7 +34506,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def EventContent(self):
-        """发生事件
+        r"""发生事件
         :rtype: :class:`tencentcloud.csip.v20221121.models.UebaEventContent`
         """
         return self._EventContent
@@ -34517,7 +34517,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def AlertName(self):
-        """告警名称
+        r"""告警名称
         :rtype: str
         """
         return self._AlertName
@@ -34528,7 +34528,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def AlterLevel(self):
-        """告警类型
+        r"""告警类型
 0:  提示
 1:  低危
 2:  中危
@@ -34544,7 +34544,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def Operator(self):
-        """操作者
+        r"""操作者
         :rtype: list of str
         """
         return self._Operator
@@ -34555,7 +34555,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def OperateObject(self):
-        """操作对象
+        r"""操作对象
         :rtype: list of str
         """
         return self._OperateObject
@@ -34566,7 +34566,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def OperateMethod(self):
-        """操作方式
+        r"""操作方式
         :rtype: list of str
         """
         return self._OperateMethod
@@ -34577,7 +34577,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def LogType(self):
-        """日志类型
+        r"""日志类型
         :rtype: str
         """
         return self._LogType
@@ -34588,7 +34588,7 @@ class UebaCustomRule(AbstractModel):
 
     @property
     def LogTypeStr(self):
-        """日志中文名
+        r"""日志中文名
         :rtype: str
         """
         return self._LogTypeStr
@@ -34623,7 +34623,7 @@ class UebaCustomRule(AbstractModel):
 
 
 class UebaEventContent(AbstractModel):
-    """用户行为分析 发生事件结构体
+    r"""用户行为分析 发生事件结构体
 
     """
 
@@ -34648,7 +34648,7 @@ class UebaEventContent(AbstractModel):
 
     @property
     def EventType(self):
-        """发生事件类型
+        r"""发生事件类型
 1:语句检索
 2:过滤检索
         :rtype: int
@@ -34661,7 +34661,7 @@ class UebaEventContent(AbstractModel):
 
     @property
     def Content(self):
-        """语句检索内容
+        r"""语句检索内容
         :rtype: str
         """
         return self._Content
@@ -34672,7 +34672,7 @@ class UebaEventContent(AbstractModel):
 
     @property
     def Filters(self):
-        """检索条件
+        r"""检索条件
 
         :rtype: list of WhereFilter
         """
@@ -34684,7 +34684,7 @@ class UebaEventContent(AbstractModel):
 
     @property
     def StatisticalFilter(self):
-        """统计条件
+        r"""统计条件
         :rtype: :class:`tencentcloud.csip.v20221121.models.StatisticalFilter`
         """
         return self._StatisticalFilter
@@ -34717,7 +34717,7 @@ class UebaEventContent(AbstractModel):
 
 
 class UebaRule(AbstractModel):
-    """用户行为分析策略
+    r"""用户行为分析策略
 
     """
 
@@ -34775,7 +34775,7 @@ aws：1
 
     @property
     def RuleID(self):
-        """策略id
+        r"""策略id
         :rtype: str
         """
         return self._RuleID
@@ -34786,7 +34786,7 @@ aws：1
 
     @property
     def RuleName(self):
-        """规则名称
+        r"""规则名称
         :rtype: str
         """
         return self._RuleName
@@ -34797,7 +34797,7 @@ aws：1
 
     @property
     def RuleType(self):
-        """策略类型
+        r"""策略类型
 0:系统策略
 1:自定义策略
         :rtype: int
@@ -34810,7 +34810,7 @@ aws：1
 
     @property
     def RuleLevel(self):
-        """策略等级
+        r"""策略等级
 0:提示
 1:低危
 2:中危
@@ -34826,7 +34826,7 @@ aws：1
 
     @property
     def RuleContent(self):
-        """策略内容
+        r"""策略内容
         :rtype: str
         """
         return self._RuleContent
@@ -34837,7 +34837,7 @@ aws：1
 
     @property
     def RuleStatus(self):
-        """策略开关
+        r"""策略开关
         :rtype: bool
         """
         return self._RuleStatus
@@ -34848,7 +34848,7 @@ aws：1
 
     @property
     def HitCount(self):
-        """命中次数
+        r"""命中次数
         :rtype: int
         """
         return self._HitCount
@@ -34859,7 +34859,7 @@ aws：1
 
     @property
     def AppID(self):
-        """所属账号Appid
+        r"""所属账号Appid
         :rtype: str
         """
         return self._AppID
@@ -34870,7 +34870,7 @@ aws：1
 
     @property
     def MemberID(self):
-        """多账号，成员ID
+        r"""多账号，成员ID
         :rtype: str
         """
         return self._MemberID
@@ -34881,7 +34881,7 @@ aws：1
 
     @property
     def Uin(self):
-        """Uin
+        r"""Uin
         :rtype: str
         """
         return self._Uin
@@ -34892,7 +34892,7 @@ aws：1
 
     @property
     def Nickname(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nickname
@@ -34903,7 +34903,7 @@ aws：1
 
     @property
     def CustomRuleDetail(self):
-        """自定义规则具体内容
+        r"""自定义规则具体内容
         :rtype: :class:`tencentcloud.csip.v20221121.models.UebaCustomRule`
         """
         return self._CustomRuleDetail
@@ -34914,7 +34914,7 @@ aws：1
 
     @property
     def CloudType(self):
-        """云类型
+        r"""云类型
 腾讯云：0
 aws：1
         :rtype: int
@@ -34953,7 +34953,7 @@ aws：1
 
 
 class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
-    """UpdateAccessKeyAlarmStatus请求参数结构体
+    r"""UpdateAccessKeyAlarmStatus请求参数结构体
 
     """
 
@@ -34975,7 +34975,7 @@ class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态  0:未处理 1:已处理 2:已忽略
+        r"""状态  0:未处理 1:已处理 2:已忽略
         :rtype: int
         """
         return self._Status
@@ -34986,7 +34986,7 @@ class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -34997,7 +34997,7 @@ class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
 
     @property
     def AlarmIDList(self):
-        """告警ID列表
+        r"""告警ID列表
         :rtype: list of int
         """
         return self._AlarmIDList
@@ -35008,7 +35008,7 @@ class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
 
     @property
     def RiskIDList(self):
-        """风险ID列表
+        r"""风险ID列表
         :rtype: list of int
         """
         return self._RiskIDList
@@ -35034,7 +35034,7 @@ class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
 
 
 class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
-    """UpdateAccessKeyAlarmStatus返回参数结构体
+    r"""UpdateAccessKeyAlarmStatus返回参数结构体
 
     """
 
@@ -35053,7 +35053,7 @@ class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
 
     @property
     def Code(self):
-        """0成功，1失败
+        r"""0成功，1失败
         :rtype: int
         """
         return self._Code
@@ -35064,7 +35064,7 @@ class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Msg
@@ -35075,7 +35075,7 @@ class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -35092,7 +35092,7 @@ class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
 
 
 class UpdateAccessKeyRemarkRequest(AbstractModel):
-    """UpdateAccessKeyRemark请求参数结构体
+    r"""UpdateAccessKeyRemark请求参数结构体
 
     """
 
@@ -35120,7 +35120,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -35131,7 +35131,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -35142,7 +35142,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def SourceIPList(self):
-        """源IP 名称
+        r"""源IP 名称
         :rtype: list of str
         """
         return self._SourceIPList
@@ -35153,7 +35153,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def AccessKeyList(self):
-        """ak名称
+        r"""ak名称
         :rtype: list of str
         """
         return self._AccessKeyList
@@ -35164,7 +35164,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def SourceIPIDList(self):
-        """源IP的ID
+        r"""源IP的ID
         :rtype: list of int non-negative
         """
         return self._SourceIPIDList
@@ -35175,7 +35175,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
     @property
     def AccessKeyIDList(self):
-        """AK的ID
+        r"""AK的ID
         :rtype: list of int non-negative
         """
         return self._AccessKeyIDList
@@ -35203,7 +35203,7 @@ class UpdateAccessKeyRemarkRequest(AbstractModel):
 
 
 class UpdateAccessKeyRemarkResponse(AbstractModel):
-    """UpdateAccessKeyRemark返回参数结构体
+    r"""UpdateAccessKeyRemark返回参数结构体
 
     """
 
@@ -35222,7 +35222,7 @@ class UpdateAccessKeyRemarkResponse(AbstractModel):
 
     @property
     def Code(self):
-        """0:成功 1:失败
+        r"""0:成功 1:失败
         :rtype: int
         """
         return self._Code
@@ -35233,7 +35233,7 @@ class UpdateAccessKeyRemarkResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Msg
@@ -35244,7 +35244,7 @@ class UpdateAccessKeyRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -35261,7 +35261,7 @@ class UpdateAccessKeyRemarkResponse(AbstractModel):
 
 
 class UpdateAlertStatusListRequest(AbstractModel):
-    """UpdateAlertStatusList请求参数结构体
+    r"""UpdateAlertStatusList请求参数结构体
 
     """
 
@@ -35288,7 +35288,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
 
     @property
     def ID(self):
-        """告警ID列表
+        r"""告警ID列表
         :rtype: list of NewAlertKey
         """
         return self._ID
@@ -35299,7 +35299,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        """操作类型 
+        r"""操作类型 
 1:撤销处置 
 2:标记为已处置 
 3:标记忽略 
@@ -35315,7 +35315,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        """集团账号的成员id
+        r"""集团账号的成员id
         :rtype: list of str
         """
         return self._MemberId
@@ -35326,7 +35326,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
 
     @property
     def OperatedMemberId(self):
-        """被调用的集团账号的成员id
+        r"""被调用的集团账号的成员id
         :rtype: list of str
         """
         return self._OperatedMemberId
@@ -35357,7 +35357,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
 
 
 class UpdateAlertStatusListResponse(AbstractModel):
-    """UpdateAlertStatusList返回参数结构体
+    r"""UpdateAlertStatusList返回参数结构体
 
     """
 
@@ -35376,7 +35376,7 @@ class UpdateAlertStatusListResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """结果信息
+        r"""结果信息
         :rtype: str
         """
         return self._Msg
@@ -35387,7 +35387,7 @@ class UpdateAlertStatusListResponse(AbstractModel):
 
     @property
     def Code(self):
-        """结果代码
+        r"""结果代码
         :rtype: str
         """
         return self._Code
@@ -35398,7 +35398,7 @@ class UpdateAlertStatusListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -35415,7 +35415,7 @@ class UpdateAlertStatusListResponse(AbstractModel):
 
 
 class UserCallRecord(AbstractModel):
-    """调用记录详情
+    r"""调用记录详情
 
     """
 
@@ -35464,7 +35464,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def SourceIP(self):
-        """调用源IP
+        r"""调用源IP
         :rtype: str
         """
         return self._SourceIP
@@ -35475,7 +35475,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def EventType(self):
-        """调用类型
+        r"""调用类型
 0:控制台调用
 1:API
         :rtype: int
@@ -35488,7 +35488,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def CallCount(self):
-        """调用次数
+        r"""调用次数
         :rtype: int
         """
         return self._CallCount
@@ -35499,7 +35499,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def Code(self):
-        """调用错误码
+        r"""调用错误码
 0表示成功
         :rtype: int
         """
@@ -35511,7 +35511,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def FirstCallTime(self):
-        """首次调用时间
+        r"""首次调用时间
         :rtype: str
         """
         return self._FirstCallTime
@@ -35522,7 +35522,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def LastCallTime(self):
-        """最后调用时间
+        r"""最后调用时间
         :rtype: str
         """
         return self._LastCallTime
@@ -35533,7 +35533,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def SourceIPRemark(self):
-        """调用源IP备注
+        r"""调用源IP备注
         :rtype: str
         """
         return self._SourceIPRemark
@@ -35544,7 +35544,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def Region(self):
-        """调用源IP地域
+        r"""调用源IP地域
         :rtype: str
         """
         return self._Region
@@ -35555,7 +35555,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def UserName(self):
-        """用户/角色名称
+        r"""用户/角色名称
         :rtype: str
         """
         return self._UserName
@@ -35566,7 +35566,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def Date(self):
-        """聚合日期
+        r"""聚合日期
         :rtype: str
         """
         return self._Date
@@ -35577,7 +35577,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def AppID(self):
-        """appid
+        r"""appid
         :rtype: int
         """
         return self._AppID
@@ -35588,7 +35588,7 @@ class UserCallRecord(AbstractModel):
 
     @property
     def ISP(self):
-        """运营商
+        r"""运营商
         :rtype: str
         """
         return self._ISP
@@ -35622,7 +35622,7 @@ class UserCallRecord(AbstractModel):
 
 
 class VULBaseInfo(AbstractModel):
-    """应急漏洞基本数据
+    r"""应急漏洞基本数据
 
     """
 
@@ -35738,7 +35738,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Level(self):
-        """风险等级
+        r"""风险等级
 high 高危/ middle 中危 / low 低危 /info 提示
         :rtype: str
         """
@@ -35750,7 +35750,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -35761,7 +35761,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def PublishTime(self):
-        """漏洞发布时间
+        r"""漏洞发布时间
         :rtype: str
         """
         return self._PublishTime
@@ -35772,7 +35772,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def LastScanTime(self):
-        """最近扫描时间
+        r"""最近扫描时间
         :rtype: str
         """
         return self._LastScanTime
@@ -35783,7 +35783,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def AffectAssetCount(self):
-        """影响资产数量
+        r"""影响资产数量
         :rtype: int
         """
         return self._AffectAssetCount
@@ -35794,7 +35794,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._RiskId
@@ -35805,7 +35805,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -35816,7 +35816,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def VULName(self):
-        """漏洞名
+        r"""漏洞名
         :rtype: str
         """
         return self._VULName
@@ -35827,7 +35827,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def CVE(self):
-        """cve
+        r"""cve
         :rtype: str
         """
         return self._CVE
@@ -35838,7 +35838,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Describe(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Describe
@@ -35849,7 +35849,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Payload(self):
-        """漏洞payload
+        r"""漏洞payload
         :rtype: str
         """
         return self._Payload
@@ -35860,7 +35860,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def AppName(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._AppName
@@ -35871,7 +35871,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def References(self):
-        """技术参考
+        r"""技术参考
         :rtype: str
         """
         return self._References
@@ -35882,7 +35882,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def AppVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._AppVersion
@@ -35893,7 +35893,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def VULURL(self):
-        """风险点
+        r"""风险点
         :rtype: str
         """
         return self._VULURL
@@ -35904,7 +35904,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35916,7 +35916,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -35927,7 +35927,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35939,7 +35939,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Fix(self):
-        """修复建议
+        r"""修复建议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35951,7 +35951,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35963,7 +35963,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def CVSS(self):
-        """CVSS评分
+        r"""CVSS评分
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -35975,7 +35975,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def AttackHeat(self):
-        """攻击热度
+        r"""攻击热度
 0/1/2/3 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -35988,7 +35988,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def ScanStatus(self):
-        """检测状态 0 未扫描 1扫描中 2 扫描完成
+        r"""检测状态 0 未扫描 1扫描中 2 扫描完成
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36000,7 +36000,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def IsSuggest(self):
-        """1/0是否必修
+        r"""1/0是否必修
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36012,7 +36012,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def VulTag(self):
-        """标签
+        r"""标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -36024,7 +36024,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def SupportProduct(self):
-        """支持产品 逗号分隔  "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
+        r"""支持产品 逗号分隔  "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36036,7 +36036,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def TaskId(self):
-        """漏洞检测任务id
+        r"""漏洞检测任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36048,7 +36048,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def Index(self):
-        """主键
+        r"""主键
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36060,7 +36060,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def PcmgrID(self):
-        """漏洞id 旧版
+        r"""漏洞id 旧版
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36072,7 +36072,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
     @property
     def TvdID(self):
-        """漏洞id  新版
+        r"""漏洞id  新版
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36125,7 +36125,7 @@ high 高危/ middle 中危 / low 低危 /info 提示
 
 
 class VULRiskAdvanceCFGList(AbstractModel):
-    """漏洞风险高级配置列表
+    r"""漏洞风险高级配置列表
 
     """
 
@@ -36195,7 +36195,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._RiskId
@@ -36206,7 +36206,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VULName
@@ -36217,7 +36217,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._RiskLevel
@@ -36228,7 +36228,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def CheckFrom(self):
-        """识别来源
+        r"""识别来源
         :rtype: str
         """
         return self._CheckFrom
@@ -36239,7 +36239,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用，1-启用，0-禁用
+        r"""是否启用，1-启用，0-禁用
         :rtype: int
         """
         return self._Enable
@@ -36250,7 +36250,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def VULType(self):
-        """风险类型
+        r"""风险类型
         :rtype: str
         """
         return self._VULType
@@ -36261,7 +36261,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def ImpactVersion(self):
-        """影响版本
+        r"""影响版本
         :rtype: str
         """
         return self._ImpactVersion
@@ -36272,7 +36272,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def CVE(self):
-        """CVE
+        r"""CVE
         :rtype: str
         """
         return self._CVE
@@ -36283,7 +36283,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def VULTag(self):
-        """漏洞标签
+        r"""漏洞标签
         :rtype: list of str
         """
         return self._VULTag
@@ -36294,7 +36294,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def FixMethod(self):
-        """修复方式
+        r"""修复方式
         :rtype: list of str
         """
         return self._FixMethod
@@ -36305,7 +36305,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def ReleaseTime(self):
-        """披露时间
+        r"""披露时间
         :rtype: str
         """
         return self._ReleaseTime
@@ -36316,7 +36316,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
         :rtype: int
         """
         return self._EMGCVulType
@@ -36327,7 +36327,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def VULDescribe(self):
-        """漏洞描述
+        r"""漏洞描述
         :rtype: str
         """
         return self._VULDescribe
@@ -36338,7 +36338,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def ImpactComponent(self):
-        """影响组件
+        r"""影响组件
         :rtype: str
         """
         return self._ImpactComponent
@@ -36349,7 +36349,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def Payload(self):
-        """漏洞Payload
+        r"""漏洞Payload
         :rtype: str
         """
         return self._Payload
@@ -36360,7 +36360,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def References(self):
-        """技术参考
+        r"""技术参考
         :rtype: str
         """
         return self._References
@@ -36371,7 +36371,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def CVSS(self):
-        """cvss评分
+        r"""cvss评分
         :rtype: str
         """
         return self._CVSS
@@ -36382,7 +36382,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def AttackHeat(self):
-        """攻击热度
+        r"""攻击热度
         :rtype: str
         """
         return self._AttackHeat
@@ -36393,7 +36393,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def ServiceSupport(self):
-        """安全产品支持情况
+        r"""安全产品支持情况
         :rtype: list of ServiceSupport
         """
         return self._ServiceSupport
@@ -36404,7 +36404,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     @property
     def RecentScanTime(self):
-        """最新检测时间
+        r"""最新检测时间
         :rtype: str
         """
         return self._RecentScanTime
@@ -36451,7 +36451,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
 
 class VULRiskInfo(AbstractModel):
-    """漏洞风险信息
+    r"""漏洞风险信息
 
     """
 
@@ -36473,7 +36473,7 @@ class VULRiskInfo(AbstractModel):
 
     @property
     def Fix(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._Fix
@@ -36484,7 +36484,7 @@ class VULRiskInfo(AbstractModel):
 
     @property
     def References(self):
-        """技术参考/参考链接
+        r"""技术参考/参考链接
         :rtype: str
         """
         return self._References
@@ -36495,7 +36495,7 @@ class VULRiskInfo(AbstractModel):
 
     @property
     def Describe(self):
-        """漏洞描述
+        r"""漏洞描述
         :rtype: str
         """
         return self._Describe
@@ -36506,7 +36506,7 @@ class VULRiskInfo(AbstractModel):
 
     @property
     def ImpactComponent(self):
-        """受影响组件
+        r"""受影响组件
         :rtype: list of VulImpactComponentInfo
         """
         return self._ImpactComponent
@@ -36537,7 +36537,7 @@ class VULRiskInfo(AbstractModel):
 
 
 class VULViewVULRisk(AbstractModel):
-    """漏洞视角的漏洞风险对象
+    r"""漏洞视角的漏洞风险对象
 
     """
 
@@ -36619,7 +36619,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: str
         """
         return self._Port
@@ -36630,7 +36630,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def NoHandleCount(self):
-        """影响资产
+        r"""影响资产
         :rtype: int
         """
         return self._NoHandleCount
@@ -36641,7 +36641,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -36652,7 +36652,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -36663,7 +36663,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -36674,7 +36674,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -36685,7 +36685,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def AffectAssetCount(self):
-        """影响资产数量
+        r"""影响资产数量
         :rtype: int
         """
         return self._AffectAssetCount
@@ -36696,7 +36696,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Id(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._Id
@@ -36707,7 +36707,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def From(self):
-        """扫描来源，具体看接口返回枚举类型
+        r"""扫描来源，具体看接口返回枚举类型
         :rtype: str
         """
         return self._From
@@ -36718,7 +36718,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -36729,7 +36729,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -36740,7 +36740,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名
+        r"""漏洞名
         :rtype: str
         """
         return self._VULName
@@ -36751,7 +36751,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def CVE(self):
-        """cve
+        r"""cve
         :rtype: str
         """
         return self._CVE
@@ -36762,7 +36762,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Describe(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Describe
@@ -36773,7 +36773,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Payload(self):
-        """漏洞payload
+        r"""漏洞payload
         :rtype: str
         """
         return self._Payload
@@ -36784,7 +36784,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def AppName(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._AppName
@@ -36795,7 +36795,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def References(self):
-        """技术参考
+        r"""技术参考
         :rtype: str
         """
         return self._References
@@ -36806,7 +36806,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def AppVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._AppVersion
@@ -36817,7 +36817,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def VULURL(self):
-        """风险点
+        r"""风险点
         :rtype: str
         """
         return self._VULURL
@@ -36828,7 +36828,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -36839,7 +36839,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -36850,7 +36850,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -36861,7 +36861,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def Fix(self):
-        """修复建议
+        r"""修复建议
         :rtype: str
         """
         return self._Fix
@@ -36872,7 +36872,7 @@ class VULViewVULRisk(AbstractModel):
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
         :rtype: int
         """
         return self._EMGCVulType
@@ -36918,7 +36918,7 @@ class VULViewVULRisk(AbstractModel):
 
 
 class VULViewVULRiskData(AbstractModel):
-    """漏洞视角的漏洞风险对象
+    r"""漏洞视角的漏洞风险对象
 
     """
 
@@ -37024,7 +37024,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: str
         """
         return self._Port
@@ -37035,7 +37035,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def NoHandleCount(self):
-        """影响资产
+        r"""影响资产
         :rtype: int
         """
         return self._NoHandleCount
@@ -37046,7 +37046,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -37057,7 +37057,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Component(self):
-        """组件
+        r"""组件
         :rtype: str
         """
         return self._Component
@@ -37068,7 +37068,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -37079,7 +37079,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -37090,7 +37090,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def AffectAssetCount(self):
-        """影响资产数量
+        r"""影响资产数量
         :rtype: int
         """
         return self._AffectAssetCount
@@ -37101,7 +37101,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def RiskId(self):
-        """风险ID
+        r"""风险ID
         :rtype: str
         """
         return self._RiskId
@@ -37112,7 +37112,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def From(self):
-        """扫描来源，具体看接口返回枚举类型
+        r"""扫描来源，具体看接口返回枚举类型
         :rtype: str
         """
         return self._From
@@ -37123,7 +37123,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -37134,7 +37134,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def VULType(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VULType
@@ -37145,7 +37145,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def VULName(self):
-        """漏洞名
+        r"""漏洞名
         :rtype: str
         """
         return self._VULName
@@ -37156,7 +37156,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def CVE(self):
-        """cve
+        r"""cve
         :rtype: str
         """
         return self._CVE
@@ -37167,7 +37167,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Payload(self):
-        """漏洞payload
+        r"""漏洞payload
         :rtype: str
         """
         return self._Payload
@@ -37178,7 +37178,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def AppName(self):
-        """漏洞影响组件
+        r"""漏洞影响组件
         :rtype: str
         """
         return self._AppName
@@ -37189,7 +37189,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def AppVersion(self):
-        """漏洞影响版本
+        r"""漏洞影响版本
         :rtype: str
         """
         return self._AppVersion
@@ -37200,7 +37200,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def VULURL(self):
-        """风险点
+        r"""风险点
         :rtype: str
         """
         return self._VULURL
@@ -37211,7 +37211,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -37222,7 +37222,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -37233,7 +37233,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -37244,7 +37244,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def EMGCVulType(self):
-        """应急漏洞类型，1-应急漏洞，0-非应急漏洞
+        r"""应急漏洞类型，1-应急漏洞，0-非应急漏洞
         :rtype: int
         """
         return self._EMGCVulType
@@ -37255,7 +37255,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def CVSS(self):
-        """CVSS评分
+        r"""CVSS评分
         :rtype: float
         """
         return self._CVSS
@@ -37266,7 +37266,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def PCMGRId(self):
-        """PCMGRId
+        r"""PCMGRId
         :rtype: str
         """
         return self._PCMGRId
@@ -37277,7 +37277,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def VulTag(self):
-        """漏洞标签。搜索时应急 必修传参VulTag=SuggestRepair/EMGCVul
+        r"""漏洞标签。搜索时应急 必修传参VulTag=SuggestRepair/EMGCVul
         :rtype: list of str
         """
         return self._VulTag
@@ -37288,7 +37288,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def DisclosureTime(self):
-        """漏洞披露时间
+        r"""漏洞披露时间
         :rtype: str
         """
         return self._DisclosureTime
@@ -37299,7 +37299,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def AttackHeat(self):
-        """攻击热度
+        r"""攻击热度
         :rtype: int
         """
         return self._AttackHeat
@@ -37310,7 +37310,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def IsSuggest(self):
-        """是否必修漏洞，1-是，0-不是
+        r"""是否必修漏洞，1-是，0-不是
         :rtype: int
         """
         return self._IsSuggest
@@ -37321,7 +37321,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def HandleTaskId(self):
-        """处置任务id
+        r"""处置任务id
         :rtype: str
         """
         return self._HandleTaskId
@@ -37332,7 +37332,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def EngineSource(self):
-        """引擎来源
+        r"""引擎来源
         :rtype: str
         """
         return self._EngineSource
@@ -37343,7 +37343,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def VulRiskId(self):
-        """新的漏洞风险id
+        r"""新的漏洞风险id
         :rtype: str
         """
         return self._VulRiskId
@@ -37354,7 +37354,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def TvdID(self):
-        """新版漏洞id
+        r"""新版漏洞id
         :rtype: str
         """
         return self._TvdID
@@ -37365,7 +37365,7 @@ class VULViewVULRiskData(AbstractModel):
 
     @property
     def IsOneClick(self):
-        """是否可以一键体检，1-可以，0-不可以
+        r"""是否可以一键体检，1-可以，0-不可以
         :rtype: int
         """
         return self._IsOneClick
@@ -37419,7 +37419,7 @@ class VULViewVULRiskData(AbstractModel):
 
 
 class Vpc(AbstractModel):
-    """vpc列表数据
+    r"""vpc列表数据
 
     """
 
@@ -37474,7 +37474,7 @@ class Vpc(AbstractModel):
 
     @property
     def Subnet(self):
-        """子网(只支持32位)
+        r"""子网(只支持32位)
         :rtype: int
         """
         return self._Subnet
@@ -37485,7 +37485,7 @@ class Vpc(AbstractModel):
 
     @property
     def ConnectedVpc(self):
-        """互通vpc(只支持32位)
+        r"""互通vpc(只支持32位)
         :rtype: int
         """
         return self._ConnectedVpc
@@ -37496,7 +37496,7 @@ class Vpc(AbstractModel):
 
     @property
     def AssetId(self):
-        """资产id
+        r"""资产id
         :rtype: str
         """
         return self._AssetId
@@ -37507,7 +37507,7 @@ class Vpc(AbstractModel):
 
     @property
     def Region(self):
-        """region区域
+        r"""region区域
         :rtype: str
         """
         return self._Region
@@ -37518,7 +37518,7 @@ class Vpc(AbstractModel):
 
     @property
     def CVM(self):
-        """云服务器(只支持32位)
+        r"""云服务器(只支持32位)
         :rtype: int
         """
         return self._CVM
@@ -37529,7 +37529,7 @@ class Vpc(AbstractModel):
 
     @property
     def Tag(self):
-        """标签
+        r"""标签
         :rtype: list of Tag
         """
         return self._Tag
@@ -37540,7 +37540,7 @@ class Vpc(AbstractModel):
 
     @property
     def DNS(self):
-        """dns域名
+        r"""dns域名
         :rtype: list of str
         """
         return self._DNS
@@ -37551,7 +37551,7 @@ class Vpc(AbstractModel):
 
     @property
     def AssetName(self):
-        """资产名称
+        r"""资产名称
         :rtype: str
         """
         return self._AssetName
@@ -37562,7 +37562,7 @@ class Vpc(AbstractModel):
 
     @property
     def CIDR(self):
-        """cidr网段
+        r"""cidr网段
         :rtype: str
         """
         return self._CIDR
@@ -37573,7 +37573,7 @@ class Vpc(AbstractModel):
 
     @property
     def CreateTime(self):
-        """资产创建时间
+        r"""资产创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -37584,7 +37584,7 @@ class Vpc(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: str
         """
         return self._AppId
@@ -37595,7 +37595,7 @@ class Vpc(AbstractModel):
 
     @property
     def Uin(self):
-        """uin
+        r"""uin
         :rtype: str
         """
         return self._Uin
@@ -37606,7 +37606,7 @@ class Vpc(AbstractModel):
 
     @property
     def Nick(self):
-        """昵称
+        r"""昵称
         :rtype: str
         """
         return self._Nick
@@ -37617,7 +37617,7 @@ class Vpc(AbstractModel):
 
     @property
     def IsNewAsset(self):
-        """是否新资产 1新
+        r"""是否新资产 1新
         :rtype: int
         """
         return self._IsNewAsset
@@ -37628,7 +37628,7 @@ class Vpc(AbstractModel):
 
     @property
     def IsCore(self):
-        """是否核心资产1是 2不是
+        r"""是否核心资产1是 2不是
         :rtype: int
         """
         return self._IsCore
@@ -37670,7 +37670,7 @@ class Vpc(AbstractModel):
 
 
 class VulImpactComponentInfo(AbstractModel):
-    """漏洞影响组件信息
+    r"""漏洞影响组件信息
 
     """
 
@@ -37686,7 +37686,7 @@ class VulImpactComponentInfo(AbstractModel):
 
     @property
     def Component(self):
-        """组件名称
+        r"""组件名称
         :rtype: str
         """
         return self._Component
@@ -37697,7 +37697,7 @@ class VulImpactComponentInfo(AbstractModel):
 
     @property
     def Version(self):
-        """版本名称
+        r"""版本名称
         :rtype: str
         """
         return self._Version
@@ -37721,7 +37721,7 @@ class VulImpactComponentInfo(AbstractModel):
 
 
 class VulRiskItem(AbstractModel):
-    """主机漏洞风险内容
+    r"""主机漏洞风险内容
 
     """
 
@@ -37782,7 +37782,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def CloudAccountID(self):
-        """云账号ID
+        r"""云账号ID
         :rtype: str
         """
         return self._CloudAccountID
@@ -37793,7 +37793,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def AssetID(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AssetID
@@ -37804,7 +37804,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """实例状态
+        r"""实例状态
         :rtype: str
         """
         return self._InstanceStatus
@@ -37815,7 +37815,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -37826,7 +37826,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -37837,7 +37837,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -37848,7 +37848,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def VulName(self):
-        """漏洞名称
+        r"""漏洞名称
         :rtype: str
         """
         return self._VulName
@@ -37859,7 +37859,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def VulCategory(self):
-        """漏洞类型
+        r"""漏洞类型
         :rtype: str
         """
         return self._VulCategory
@@ -37870,7 +37870,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def VulLevel(self):
-        """漏洞等级
+        r"""漏洞等级
         :rtype: str
         """
         return self._VulLevel
@@ -37881,7 +37881,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def CveID(self):
-        """CVE编号
+        r"""CVE编号
         :rtype: str
         """
         return self._CveID
@@ -37892,7 +37892,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def Description(self):
-        """漏洞描述
+        r"""漏洞描述
         :rtype: str
         """
         return self._Description
@@ -37903,7 +37903,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def ContainerID(self):
-        """容器ID
+        r"""容器ID
         :rtype: str
         """
         return self._ContainerID
@@ -37914,7 +37914,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def Fix(self):
-        """漏洞风险修复建议
+        r"""漏洞风险修复建议
         :rtype: str
         """
         return self._Fix
@@ -37925,7 +37925,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def VulCategoryName(self):
-        """Linux漏洞
+        r"""Linux漏洞
         :rtype: str
         """
         return self._VulCategoryName
@@ -37936,7 +37936,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def VulLevelName(self):
-        """漏洞等级名称
+        r"""漏洞等级名称
         :rtype: str
         """
         return self._VulLevelName
@@ -37947,7 +37947,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def InstanceStatusName(self):
-        """实例状态中文信息
+        r"""实例状态中文信息
         :rtype: str
         """
         return self._InstanceStatusName
@@ -37958,7 +37958,7 @@ class VulRiskItem(AbstractModel):
 
     @property
     def AppID(self):
-        """租户ID
+        r"""租户ID
         :rtype: int
         """
         return self._AppID
@@ -37997,7 +37997,7 @@ class VulRiskItem(AbstractModel):
 
 
 class VulTrend(AbstractModel):
-    """漏洞趋势-攻击趋势、影响用户、影响资产
+    r"""漏洞趋势-攻击趋势、影响用户、影响资产
 
     """
 
@@ -38019,7 +38019,7 @@ class VulTrend(AbstractModel):
 
     @property
     def AffectAssetCount(self):
-        """影响的资产数
+        r"""影响的资产数
         :rtype: int
         """
         return self._AffectAssetCount
@@ -38030,7 +38030,7 @@ class VulTrend(AbstractModel):
 
     @property
     def AffectUserCount(self):
-        """影响的用户数
+        r"""影响的用户数
         :rtype: int
         """
         return self._AffectUserCount
@@ -38041,7 +38041,7 @@ class VulTrend(AbstractModel):
 
     @property
     def AttackCount(self):
-        """攻击数
+        r"""攻击数
         :rtype: int
         """
         return self._AttackCount
@@ -38052,7 +38052,7 @@ class VulTrend(AbstractModel):
 
     @property
     def Date(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Date
@@ -38078,7 +38078,7 @@ class VulTrend(AbstractModel):
 
 
 class WebsiteRisk(AbstractModel):
-    """网站风险对象
+    r"""网站风险对象
 
     """
 
@@ -38145,7 +38145,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def AffectAsset(self):
-        """影响资产
+        r"""影响资产
         :rtype: str
         """
         return self._AffectAsset
@@ -38156,7 +38156,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        r"""风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :rtype: str
         """
         return self._Level
@@ -38167,7 +38167,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def RecentTime(self):
-        """最近识别时间
+        r"""最近识别时间
         :rtype: str
         """
         return self._RecentTime
@@ -38178,7 +38178,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def FirstTime(self):
-        """首次识别时间
+        r"""首次识别时间
         :rtype: str
         """
         return self._FirstTime
@@ -38189,7 +38189,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略
+        r"""状态，0未处理、1已处置、2已忽略
         :rtype: int
         """
         return self._Status
@@ -38200,7 +38200,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Id(self):
-        """ID,处理风险使用
+        r"""ID,处理风险使用
         :rtype: str
         """
         return self._Id
@@ -38211,7 +38211,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Index(self):
-        """前端索引
+        r"""前端索引
         :rtype: str
         """
         return self._Index
@@ -38222,7 +38222,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -38233,7 +38233,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名
+        r"""实例名
         :rtype: str
         """
         return self._InstanceName
@@ -38244,7 +38244,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -38255,7 +38255,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nick
@@ -38266,7 +38266,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -38277,7 +38277,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def URL(self):
-        """风险链接
+        r"""风险链接
         :rtype: str
         """
         return self._URL
@@ -38288,7 +38288,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def URLPath(self):
-        """风险文件地址
+        r"""风险文件地址
         :rtype: str
         """
         return self._URLPath
@@ -38299,7 +38299,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型
+        r"""实例类型
         :rtype: str
         """
         return self._InstanceType
@@ -38310,7 +38310,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def DetectEngine(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._DetectEngine
@@ -38321,7 +38321,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def ResultDescribe(self):
-        """结果描述
+        r"""结果描述
         :rtype: str
         """
         return self._ResultDescribe
@@ -38332,7 +38332,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def SourceURL(self):
-        """源地址url
+        r"""源地址url
         :rtype: str
         """
         return self._SourceURL
@@ -38343,7 +38343,7 @@ class WebsiteRisk(AbstractModel):
 
     @property
     def SourceURLPath(self):
-        """源文件地址
+        r"""源文件地址
         :rtype: str
         """
         return self._SourceURLPath
@@ -38384,7 +38384,7 @@ class WebsiteRisk(AbstractModel):
 
 
 class WhereFilter(AbstractModel):
-    """过滤条件
+    r"""过滤条件
 
     """
 
@@ -38406,7 +38406,7 @@ class WhereFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤的项
+        r"""过滤的项
         :rtype: str
         """
         return self._Name
@@ -38417,7 +38417,7 @@ class WhereFilter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤的值
+        r"""过滤的值
         :rtype: list of str
         """
         return self._Values
@@ -38428,7 +38428,7 @@ class WhereFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        """中台定义：
+        r"""中台定义：
 1等于 2大于 3小于 4大于等于 5小于等于 6不等于 9模糊匹配 13非模糊匹配 14按位与
 精确匹配填 7 模糊匹配填9 
 

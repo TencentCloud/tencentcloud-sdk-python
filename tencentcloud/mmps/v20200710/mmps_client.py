@@ -27,7 +27,7 @@ class MmpsClient(AbstractClient):
 
 
     def CreateAppScanTask(self, request):
-        """创建小程序隐私合规诊断任务
+        r"""创建小程序隐私合规诊断任务
 
         :param request: Request instance for CreateAppScanTask.
         :type request: :class:`tencentcloud.mmps.v20200710.models.CreateAppScanTaskRequest`
@@ -50,7 +50,7 @@ class MmpsClient(AbstractClient):
 
 
     def CreateAppScanTaskRepeat(self, request):
-        """小程序隐私合规诊断重试任务
+        r"""小程序隐私合规诊断重试任务
 
         :param request: Request instance for CreateAppScanTaskRepeat.
         :type request: :class:`tencentcloud.mmps.v20200710.models.CreateAppScanTaskRepeatRequest`
@@ -73,7 +73,7 @@ class MmpsClient(AbstractClient):
 
 
     def CreateFlySecMiniAppProfessionalScanTask(self, request):
-        """创建小程序安全深度诊断任务
+        r"""创建小程序安全深度诊断任务
 
         :param request: Request instance for CreateFlySecMiniAppProfessionalScanTask.
         :type request: :class:`tencentcloud.mmps.v20200710.models.CreateFlySecMiniAppProfessionalScanTaskRequest`
@@ -96,7 +96,7 @@ class MmpsClient(AbstractClient):
 
 
     def CreateFlySecMiniAppScanTask(self, request):
-        """创建小程序翼扬安全的基础或深度诊断任务
+        r"""创建小程序翼扬安全的基础或深度诊断任务
 
         :param request: Request instance for CreateFlySecMiniAppScanTask.
         :type request: :class:`tencentcloud.mmps.v20200710.models.CreateFlySecMiniAppScanTaskRequest`
@@ -119,7 +119,7 @@ class MmpsClient(AbstractClient):
 
 
     def CreateFlySecMiniAppScanTaskRepeat(self, request):
-        """重新提交基础诊断任务
+        r"""重新提交基础诊断任务
 
         :param request: Request instance for CreateFlySecMiniAppScanTaskRepeat.
         :type request: :class:`tencentcloud.mmps.v20200710.models.CreateFlySecMiniAppScanTaskRepeatRequest`
@@ -142,7 +142,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeBasicDiagnosisResourceUsageInfo(self, request):
-        """查询翼扬安全基础诊断资源使用情况
+        r"""查询翼扬安全基础诊断资源使用情况
 
         :param request: Request instance for DescribeBasicDiagnosisResourceUsageInfo.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeBasicDiagnosisResourceUsageInfoRequest`
@@ -165,7 +165,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeFlySecMiniAppReportUrl(self, request):
-        """获取翼扬诊断任务报告链接地址
+        r"""获取翼扬诊断任务报告链接地址
 
         :param request: Request instance for DescribeFlySecMiniAppReportUrl.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppReportUrlRequest`
@@ -188,7 +188,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeFlySecMiniAppScanReportList(self, request):
-        """查询指定小程序版本的翼扬诊断安全得分
+        r"""查询指定小程序版本的翼扬诊断安全得分
 
         :param request: Request instance for DescribeFlySecMiniAppScanReportList.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanReportListRequest`
@@ -211,7 +211,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeFlySecMiniAppScanTaskList(self, request):
-        """获取翼扬安全诊断任务列表
+        r"""获取翼扬安全诊断任务列表
 
         :param request: Request instance for DescribeFlySecMiniAppScanTaskList.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanTaskListRequest`
@@ -234,7 +234,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeFlySecMiniAppScanTaskParam(self, request):
-        """获取用户提交的基础诊断任务参数信息
+        r"""获取用户提交的基础诊断任务参数信息
 
         :param request: Request instance for DescribeFlySecMiniAppScanTaskParam.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanTaskParamRequest`
@@ -257,7 +257,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeFlySecMiniAppScanTaskStatus(self, request):
-        """查询翼扬安全诊断任务状态
+        r"""查询翼扬安全诊断任务状态
 
         :param request: Request instance for DescribeFlySecMiniAppScanTaskStatus.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanTaskStatusRequest`
@@ -280,7 +280,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeResourceUsageInfo(self, request):
-        """查询翼扬安全资源使用情况
+        r"""查询翼扬安全资源使用情况
 
         :param request: Request instance for DescribeResourceUsageInfo.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeResourceUsageInfoRequest`
@@ -303,7 +303,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeScanTaskList(self, request):
-        """获取小程序隐私合规诊断任务列表
+        r"""获取小程序隐私合规诊断任务列表
 
         :param request: Request instance for DescribeScanTaskList.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeScanTaskListRequest`
@@ -326,7 +326,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeScanTaskReportUrl(self, request):
-        """获取小程序合规诊断任务报告url
+        r"""获取小程序合规诊断任务报告url
 
         :param request: Request instance for DescribeScanTaskReportUrl.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeScanTaskReportUrlRequest`
@@ -349,7 +349,7 @@ class MmpsClient(AbstractClient):
 
 
     def DescribeScanTaskStatus(self, request):
-        """查询小程序隐私合规诊断任务状态
+        r"""查询小程序隐私合规诊断任务状态
 
         :param request: Request instance for DescribeScanTaskStatus.
         :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeScanTaskStatusRequest`

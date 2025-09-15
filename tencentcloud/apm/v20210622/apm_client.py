@@ -27,7 +27,7 @@ class ApmClient(AbstractClient):
 
 
     def CreateApmInstance(self, request):
-        """业务购买 APM 业务系统，调用该接口创建
+        r"""业务购买 APM 业务系统，调用该接口创建
 
         :param request: Request instance for CreateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmInstanceRequest`
@@ -50,7 +50,7 @@ class ApmClient(AbstractClient):
 
 
     def CreateProfileTask(self, request):
-        """创建事件任务
+        r"""创建事件任务
 
         :param request: Request instance for CreateProfileTask.
         :type request: :class:`tencentcloud.apm.v20210622.models.CreateProfileTaskRequest`
@@ -73,7 +73,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmAgent(self, request):
-        """获取 APM 接入点
+        r"""获取 APM 接入点
 
         :param request: Request instance for DescribeApmAgent.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAgentRequest`
@@ -96,7 +96,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmInstances(self, request):
-        """获取 APM 业务系统列表
+        r"""获取 APM 业务系统列表
 
         :param request: Request instance for DescribeApmInstances.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesRequest`
@@ -119,7 +119,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralApmApplicationConfig(self, request):
-        """查询应用配置信息
+        r"""查询应用配置信息
 
         :param request: Request instance for DescribeGeneralApmApplicationConfig.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralApmApplicationConfigRequest`
@@ -142,7 +142,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralMetricData(self, request):
-        """获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
+        r"""获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
         接口调用频率限制为：20次/秒，1200次/分钟。单请求的数据点数限制为1440个。
 
         :param request: Request instance for DescribeGeneralMetricData.
@@ -166,7 +166,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralOTSpanList(self, request):
-        """通用查询 OpenTelemetry 调用链列表
+        r"""通用查询 OpenTelemetry 调用链列表
 
         :param request: Request instance for DescribeGeneralOTSpanList.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralOTSpanListRequest`
@@ -189,7 +189,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralSpanList(self, request):
-        """通用查询调用链列表
+        r"""通用查询调用链列表
 
         :param request: Request instance for DescribeGeneralSpanList.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralSpanListRequest`
@@ -212,7 +212,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeMetricRecords(self, request):
-        """查询指标列表接口，查询指标更推荐使用DescribeGeneralMetricData接口
+        r"""查询指标列表接口，查询指标更推荐使用DescribeGeneralMetricData接口
 
         :param request: Request instance for DescribeMetricRecords.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeMetricRecordsRequest`
@@ -235,7 +235,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeServiceOverview(self, request):
-        """应用概览数据拉取
+        r"""应用概览数据拉取
 
         :param request: Request instance for DescribeServiceOverview.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeServiceOverviewRequest`
@@ -258,7 +258,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeTagValues(self, request):
-        """根据维度名和过滤条件，查询维度数据.
+        r"""根据维度名和过滤条件，查询维度数据.
 
         :param request: Request instance for DescribeTagValues.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeTagValuesRequest`
@@ -281,7 +281,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyApmInstance(self, request):
-        """修改APM业务系统接口
+        r"""修改APM业务系统接口
 
         :param request: Request instance for ModifyApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceRequest`
@@ -304,7 +304,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyGeneralApmApplicationConfig(self, request):
-        """对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
+        r"""对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
 
         :param request: Request instance for ModifyGeneralApmApplicationConfig.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyGeneralApmApplicationConfigRequest`
@@ -327,7 +327,7 @@ class ApmClient(AbstractClient):
 
 
     def TerminateApmInstance(self, request):
-        """销毁 APM 业务系统
+        r"""销毁 APM 业务系统
 
         :param request: Request instance for TerminateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.TerminateApmInstanceRequest`

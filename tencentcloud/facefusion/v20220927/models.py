@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeMaterialListRequest(AbstractModel):
-    """DescribeMaterialList请求参数结构体
+    r"""DescribeMaterialList请求参数结构体
 
     """
 
@@ -42,7 +42,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """活动Id
+        r"""活动Id
         :rtype: str
         """
         return self._ActivityId
@@ -53,7 +53,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
     @property
     def MaterialId(self):
-        """素材Id
+        r"""素材Id
         :rtype: str
         """
         return self._MaterialId
@@ -64,7 +64,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次拉取条数。
+        r"""每次拉取条数。
 每次拉取素材最多可支持拉取20条素材信息，如果需要拉取全部素材信息，可以分多次请求拉取全部素材信息。
         :rtype: int
         """
@@ -76,7 +76,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -102,7 +102,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
 
 class DescribeMaterialListResponse(AbstractModel):
-    """DescribeMaterialList返回参数结构体
+    r"""DescribeMaterialList返回参数结构体
 
     """
 
@@ -121,7 +121,7 @@ class DescribeMaterialListResponse(AbstractModel):
 
     @property
     def MaterialInfos(self):
-        """素材列表数据
+        r"""素材列表数据
         :rtype: list of PublicMaterialInfos
         """
         return self._MaterialInfos
@@ -132,7 +132,7 @@ class DescribeMaterialListResponse(AbstractModel):
 
     @property
     def Count(self):
-        """素材条数
+        r"""素材条数
         :rtype: int
         """
         return self._Count
@@ -143,7 +143,7 @@ class DescribeMaterialListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -165,7 +165,7 @@ class DescribeMaterialListResponse(AbstractModel):
 
 
 class FaceInfo(AbstractModel):
-    """人脸信息
+    r"""人脸信息
 
     """
 
@@ -187,7 +187,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def X(self):
-        """人脸框的横坐标
+        r"""人脸框的横坐标
         :rtype: int
         """
         return self._X
@@ -198,7 +198,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框的纵坐标
+        r"""人脸框的纵坐标
         :rtype: int
         """
         return self._Y
@@ -209,7 +209,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框的宽度
+        r"""人脸框的宽度
         :rtype: int
         """
         return self._Width
@@ -220,7 +220,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框的高度
+        r"""人脸框的高度
         :rtype: int
         """
         return self._Height
@@ -246,7 +246,7 @@ class FaceInfo(AbstractModel):
 
 
 class FaceRect(AbstractModel):
-    """人脸框信息
+    r"""人脸框信息
 
     """
 
@@ -268,7 +268,7 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
-        """人脸框左上角横坐标。
+        r"""人脸框左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -279,7 +279,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
-        """人脸框左上角纵坐标。
+        r"""人脸框左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -290,7 +290,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
-        """人脸框宽度。
+        r"""人脸框宽度。
         :rtype: int
         """
         return self._Width
@@ -301,7 +301,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
-        """人脸框高度。
+        r"""人脸框高度。
         :rtype: int
         """
         return self._Height
@@ -327,7 +327,7 @@ class FaceRect(AbstractModel):
 
 
 class FuseFaceRequest(AbstractModel):
-    """FuseFace请求参数结构体
+    r"""FuseFace请求参数结构体
 
     """
 
@@ -374,7 +374,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """活动 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
+        r"""活动 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :rtype: str
         """
         return self._ProjectId
@@ -385,7 +385,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def ModelId(self):
-        """素材 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
+        r"""素材 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :rtype: str
         """
         return self._ModelId
@@ -396,7 +396,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+        r"""返回图像方式（url 或 base64) ，二选一。url有效期为7天。
         :rtype: str
         """
         return self._RspImgType
@@ -407,7 +407,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def MergeInfos(self):
-        """用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
+        r"""用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
 ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于4096*4096（单边限制）。
 ●图片大小限制：base64 编码后大小不可超过5M， url不超过10M。
 ●支持图片格式：支持jpg或png
@@ -421,7 +421,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def FuseProfileDegree(self):
-        """脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
+        r"""脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
         :rtype: int
         """
@@ -433,7 +433,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def FuseFaceDegree(self):
-        """五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
+        r"""五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
         :rtype: int
         """
@@ -445,7 +445,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为融合结果图添加合成标识的开关，默认为1。
+        r"""为融合结果图添加合成标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -460,7 +460,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
         """
@@ -472,7 +472,7 @@ class FuseFaceRequest(AbstractModel):
 
     @property
     def FuseParam(self):
-        """融合参数。
+        r"""融合参数。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FuseParam`
         """
         return self._FuseParam
@@ -512,7 +512,7 @@ class FuseFaceRequest(AbstractModel):
 
 
 class FuseFaceResponse(AbstractModel):
-    """FuseFace返回参数结构体
+    r"""FuseFace返回参数结构体
 
     """
 
@@ -528,7 +528,7 @@ class FuseFaceResponse(AbstractModel):
 
     @property
     def FusedImage(self):
-        """RspImgType 为 url 时，返回结果的 url（有效期7天）， RspImgType 为 base64 时返回 base64 数据。
+        r"""RspImgType 为 url 时，返回结果的 url（有效期7天）， RspImgType 为 base64 时返回 base64 数据。
         :rtype: str
         """
         return self._FusedImage
@@ -539,7 +539,7 @@ class FuseFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -555,7 +555,7 @@ class FuseFaceResponse(AbstractModel):
 
 
 class FuseFaceUltraRequest(AbstractModel):
-    """FuseFaceUltra请求参数结构体
+    r"""FuseFaceUltra请求参数结构体
 
     """
 
@@ -610,7 +610,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        """返回融合结果图片方式（url 或 base64) ，二选一。url有效期为1天。
+        r"""返回融合结果图片方式（url 或 base64) ，二选一。url有效期为1天。
         :rtype: str
         """
         return self._RspImgType
@@ -621,7 +621,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def MergeInfos(self):
-        """用户人脸图片、素材模板图的人脸位置信息。主要用于素材模版中人脸以及用作融合的用户人脸相关信息，两种人脸都需要提供人脸图片，可选择提供人脸框位置，具体见MergeInfo说明 
+        r"""用户人脸图片、素材模板图的人脸位置信息。主要用于素材模版中人脸以及用作融合的用户人脸相关信息，两种人脸都需要提供人脸图片，可选择提供人脸框位置，具体见MergeInfo说明 
 目前最多支持融合模板图片中的6张人脸。
         :rtype: list of MergeInfo
         """
@@ -633,7 +633,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def ModelUrl(self):
-        """素材模版图片的url地址。
+        r"""素材模版图片的url地址。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。
 ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
@@ -649,7 +649,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def ModelImage(self):
-        """素材模版图片base64数据。
+        r"""素材模版图片base64数据。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。
 ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
@@ -664,7 +664,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def FusionUltraParam(self):
-        """图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
+        r"""图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FusionUltraParam`
         """
         return self._FusionUltraParam
@@ -675,7 +675,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为融合结果图添加合成标识的开关，默认为1。
+        r"""为融合结果图添加合成标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -690,7 +690,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
         """
@@ -702,7 +702,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def SwapModelType(self):
-        """融合模型类型参数：默认为1。
+        r"""融合模型类型参数：默认为1。
 图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用4、5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
 1：默认泛娱乐场景，画面偏锐。
 2：影视级场景，画面偏自然。
@@ -747,7 +747,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
 
 class FuseFaceUltraResponse(AbstractModel):
-    """FuseFaceUltra返回参数结构体
+    r"""FuseFaceUltra返回参数结构体
 
     """
 
@@ -763,7 +763,7 @@ class FuseFaceUltraResponse(AbstractModel):
 
     @property
     def FusedImage(self):
-        """RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。url有效期为1天。
+        r"""RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。url有效期为1天。
         :rtype: str
         """
         return self._FusedImage
@@ -774,7 +774,7 @@ class FuseFaceUltraResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -790,7 +790,7 @@ class FuseFaceUltraResponse(AbstractModel):
 
 
 class FuseParam(AbstractModel):
-    """融合参数
+    r"""融合参数
 
     """
 
@@ -803,7 +803,7 @@ class FuseParam(AbstractModel):
 
     @property
     def ImageCodecParam(self):
-        """图片编码参数
+        r"""图片编码参数
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.ImageCodecParam`
         """
         return self._ImageCodecParam
@@ -828,7 +828,7 @@ class FuseParam(AbstractModel):
 
 
 class FusionUltraParam(AbstractModel):
-    """高精度融合参数
+    r"""高精度融合参数
 
     """
 
@@ -876,7 +876,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def WarpRadio(self):
-        """拉脸强度。主要用于调整生成结果人脸脸型更像素材模板还是用户人脸。取值越大越像用户人脸。
+        r"""拉脸强度。主要用于调整生成结果人脸脸型更像素材模板还是用户人脸。取值越大越像用户人脸。
 取值范围：0-1之间。默认取值0.7。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
@@ -890,7 +890,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def EnhanceRadio(self):
-        """人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
+        r"""人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
 取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
@@ -904,7 +904,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def MpRadio(self):
-        """磨皮强度。当生成脸的图像面部显脏时，可进行设置。
+        r"""磨皮强度。当生成脸的图像面部显脏时，可进行设置。
 取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
@@ -918,7 +918,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def BlurRadio(self):
-        """人脸模糊开关（暂不支持）
+        r"""人脸模糊开关（暂不支持）
 当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
@@ -932,7 +932,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def TeethEnhanceRadio(self):
-        """牙齿增强开关，默认取值为1
+        r"""牙齿增强开关，默认取值为1
 牙齿增强，修复牙齿。当生成牙齿不好（如牙齿裂开）可以打开此开关
 0：牙齿增强关闭
 1：牙齿增强打开
@@ -947,7 +947,7 @@ class FusionUltraParam(AbstractModel):
 
     @property
     def MakeupTransferRadio(self):
-        """妆容迁移开关，默认取值为0。
+        r"""妆容迁移开关，默认取值为0。
 将素材模板的妆容迁移到融合结果上。即：如果希望妆容效果与模板图保持一致，可以打开此开关。
 0：妆容迁移关闭
 1：妆容迁移打开
@@ -979,7 +979,7 @@ class FusionUltraParam(AbstractModel):
 
 
 class ImageCodecParam(AbstractModel):
-    """图片编码参数
+    r"""图片编码参数
 
     """
 
@@ -993,7 +993,7 @@ class ImageCodecParam(AbstractModel):
 
     @property
     def MetaData(self):
-        """元数据是描述媒体文件的附加信息。通过添加自定义的元数据，可以将一些附加信息嵌入到文件中。这些信息可以用于版权、描述、标识等目的，并在后续的媒体处理或管理过程中使用。
+        r"""元数据是描述媒体文件的附加信息。通过添加自定义的元数据，可以将一些附加信息嵌入到文件中。这些信息可以用于版权、描述、标识等目的，并在后续的媒体处理或管理过程中使用。
 个数不能大于1。
         :rtype: list of MetaData
         """
@@ -1022,7 +1022,7 @@ class ImageCodecParam(AbstractModel):
 
 
 class LogoParam(AbstractModel):
-    """logo参数
+    r"""logo参数
 
     """
 
@@ -1051,7 +1051,7 @@ Width、Height <= 2160。
 
     @property
     def LogoRect(self):
-        """标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+        r"""标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配。
 Width、Height <= 2160。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
@@ -1063,7 +1063,7 @@ Width、Height <= 2160。
 
     @property
     def LogoUrl(self):
-        """标识图片Url地址
+        r"""标识图片Url地址
 
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●支持图片格式：支持jpg或png
@@ -1079,7 +1079,7 @@ Width、Height <= 2160。
 
     @property
     def LogoImage(self):
-        """输入图片base64。
+        r"""输入图片base64。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●支持图片格式：支持jpg或png
 专业版：base64 编码后大小不超过10M。
@@ -1110,7 +1110,7 @@ Width、Height <= 2160。
 
 
 class MaterialFaces(AbstractModel):
-    """人脸信息
+    r"""人脸信息
 
     """
 
@@ -1126,7 +1126,7 @@ class MaterialFaces(AbstractModel):
 
     @property
     def FaceId(self):
-        """人脸序号
+        r"""人脸序号
         :rtype: str
         """
         return self._FaceId
@@ -1137,7 +1137,7 @@ class MaterialFaces(AbstractModel):
 
     @property
     def FaceInfo(self):
-        """人脸框信息
+        r"""人脸框信息
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceInfo`
         """
         return self._FaceInfo
@@ -1163,7 +1163,7 @@ class MaterialFaces(AbstractModel):
 
 
 class MergeInfo(AbstractModel):
-    """人脸图片和待被融合的素材模板图的人脸位置信息。
+    r"""人脸图片和待被融合的素材模板图的人脸位置信息。
 
     """
 
@@ -1196,7 +1196,7 @@ Width、Height >= 30。
 
     @property
     def Image(self):
-        """输入图片base64。
+        r"""输入图片base64。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
 ●支持图片格式：支持jpg或png
@@ -1210,7 +1210,7 @@ Width、Height >= 30。
 
     @property
     def Url(self):
-        """输入图片url。
+        r"""输入图片url。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
 ●支持图片格式：支持jpg或png
@@ -1224,7 +1224,7 @@ Width、Height >= 30。
 
     @property
     def InputImageFaceRect(self):
-        """上传的图片人脸位置信息（人脸框）
+        r"""上传的图片人脸位置信息（人脸框）
 Width、Height >= 30。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
@@ -1236,7 +1236,7 @@ Width、Height >= 30。
 
     @property
     def TemplateFaceID(self):
-        """素材人脸ID，不填默认取最大人脸。
+        r"""素材人脸ID，不填默认取最大人脸。
         :rtype: str
         """
         return self._TemplateFaceID
@@ -1247,7 +1247,7 @@ Width、Height >= 30。
 
     @property
     def TemplateFaceRect(self):
-        """模板中人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于图片融合自定义模板素材场景。
+        r"""模板中人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于图片融合自定义模板素材场景。
 Width、Height >= 30。
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
@@ -1279,7 +1279,7 @@ Width、Height >= 30。
 
 
 class MetaData(AbstractModel):
-    """MetaData数据结构，Key/Value格式
+    r"""MetaData数据结构，Key/Value格式
 
     """
 
@@ -1295,7 +1295,7 @@ class MetaData(AbstractModel):
 
     @property
     def MetaKey(self):
-        """MetaData的Key，字符长度不能超过32
+        r"""MetaData的Key，字符长度不能超过32
         :rtype: str
         """
         return self._MetaKey
@@ -1306,7 +1306,7 @@ class MetaData(AbstractModel):
 
     @property
     def MetaValue(self):
-        """MetaData的Value，字符长度不能超过256
+        r"""MetaData的Value，字符长度不能超过256
         :rtype: str
         """
         return self._MetaValue
@@ -1330,7 +1330,7 @@ class MetaData(AbstractModel):
 
 
 class PublicMaterialInfos(AbstractModel):
-    """素材信息
+    r"""素材信息
 
     """
 
@@ -1374,7 +1374,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def MaterialId(self):
-        """素材Id
+        r"""素材Id
         :rtype: str
         """
         return self._MaterialId
@@ -1385,7 +1385,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def MaterialStatus(self):
-        """素材状态
+        r"""素材状态
 
 字段取值: 
 0   审核中
@@ -1409,7 +1409,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1420,7 +1420,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._UpdateTime
@@ -1431,7 +1431,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def MaterialFaceList(self):
-        """人脸信息
+        r"""人脸信息
         :rtype: list of MaterialFaces
         """
         return self._MaterialFaceList
@@ -1442,7 +1442,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def MaterialName(self):
-        """素材名
+        r"""素材名
         :rtype: str
         """
         return self._MaterialName
@@ -1453,7 +1453,7 @@ class PublicMaterialInfos(AbstractModel):
 
     @property
     def AuditResult(self):
-        """审核原因
+        r"""审核原因
         :rtype: str
         """
         return self._AuditResult

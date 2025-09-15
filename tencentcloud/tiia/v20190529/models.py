@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AssessQualityRequest(AbstractModel):
-    """AssessQuality请求参数结构体
+    r"""AssessQuality请求参数结构体
 
     """
 
@@ -43,7 +43,7 @@ class AssessQualityRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -61,7 +61,7 @@ class AssessQualityRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要Base64编码，并且要去掉编码头部。**
         :rtype: str
         """
@@ -86,7 +86,7 @@ class AssessQualityRequest(AbstractModel):
 
 
 class AssessQualityResponse(AbstractModel):
-    """AssessQuality返回参数结构体
+    r"""AssessQuality返回参数结构体
 
     """
 
@@ -120,7 +120,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def LongImage(self):
-        """取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
+        r"""取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
         :rtype: bool
         """
         return self._LongImage
@@ -131,7 +131,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def BlackAndWhite(self):
-        """取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
+        r"""取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
         :rtype: bool
         """
         return self._BlackAndWhite
@@ -142,7 +142,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def SmallImage(self):
-        """取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
+        r"""取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
         :rtype: bool
         """
         return self._SmallImage
@@ -153,7 +153,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def BigImage(self):
-        """取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
+        r"""取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
         :rtype: bool
         """
         return self._BigImage
@@ -164,7 +164,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def PureImage(self):
-        """取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
+        r"""取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
         :rtype: bool
         """
         return self._PureImage
@@ -175,7 +175,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def ClarityScore(self):
-        """综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
+        r"""综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
         :rtype: int
         """
         return self._ClarityScore
@@ -186,7 +186,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def AestheticScore(self):
-        """综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
+        r"""综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
         :rtype: int
         """
         return self._AestheticScore
@@ -197,7 +197,7 @@ class AssessQualityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -219,7 +219,7 @@ class AssessQualityResponse(AbstractModel):
 
 
 class Attribute(AbstractModel):
-    """属性
+    r"""属性
 
     """
 
@@ -235,7 +235,7 @@ class Attribute(AbstractModel):
 
     @property
     def Type(self):
-        """属性
+        r"""属性
         :rtype: str
         """
         return self._Type
@@ -246,7 +246,7 @@ class Attribute(AbstractModel):
 
     @property
     def Details(self):
-        """属性详情
+        r"""属性详情
         :rtype: str
         """
         return self._Details
@@ -270,7 +270,7 @@ class Attribute(AbstractModel):
 
 
 class AttributesForBody(AbstractModel):
-    """属性检测到的人体
+    r"""属性检测到的人体
 
     """
 
@@ -291,7 +291,7 @@ class AttributesForBody(AbstractModel):
 
     @property
     def Rect(self):
-        """人体框。当不开启人体检测时，内部参数默认为0。
+        r"""人体框。当不开启人体检测时，内部参数默认为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         """
@@ -303,7 +303,7 @@ class AttributesForBody(AbstractModel):
 
     @property
     def DetectConfidence(self):
-        """人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
+        r"""人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
         :rtype: float
         """
         return self._DetectConfidence
@@ -314,7 +314,7 @@ class AttributesForBody(AbstractModel):
 
     @property
     def Attributes(self):
-        """属性信息。
+        r"""属性信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BodyAttributes
         """
@@ -347,7 +347,7 @@ class AttributesForBody(AbstractModel):
 
 
 class BodyAttributes(AbstractModel):
-    """属性列表。
+    r"""属性列表。
 
     """
 
@@ -366,7 +366,7 @@ class BodyAttributes(AbstractModel):
 
     @property
     def Label(self):
-        """属性值。
+        r"""属性值。
         :rtype: str
         """
         return self._Label
@@ -377,7 +377,7 @@ class BodyAttributes(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度，取值0-1之间。
+        r"""置信度，取值0-1之间。
         :rtype: float
         """
         return self._Confidence
@@ -388,7 +388,7 @@ class BodyAttributes(AbstractModel):
 
     @property
     def Name(self):
-        """属性名称。
+        r"""属性名称。
         :rtype: str
         """
         return self._Name
@@ -413,7 +413,7 @@ class BodyAttributes(AbstractModel):
 
 
 class Box(AbstractModel):
-    """图像主体区域。
+    r"""图像主体区域。
 
     """
 
@@ -432,7 +432,7 @@ class Box(AbstractModel):
 
     @property
     def Rect(self):
-        """图像主体区域。
+        r"""图像主体区域。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         """
         return self._Rect
@@ -443,7 +443,7 @@ class Box(AbstractModel):
 
     @property
     def Score(self):
-        """置信度。
+        r"""置信度。
         :rtype: float
         """
         return self._Score
@@ -454,7 +454,7 @@ class Box(AbstractModel):
 
     @property
     def CategoryId(self):
-        """主体区域类目ID
+        r"""主体区域类目ID
         :rtype: int
         """
         return self._CategoryId
@@ -481,7 +481,7 @@ class Box(AbstractModel):
 
 
 class CarPlateContent(AbstractModel):
-    """车牌信息
+    r"""车牌信息
 
     """
 
@@ -516,7 +516,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def Plate(self):
-        """车牌信息。
+        r"""车牌信息。
         :rtype: str
         """
         return self._Plate
@@ -527,7 +527,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def Color(self):
-        """车牌颜色。
+        r"""车牌颜色。
         :rtype: str
         """
         return self._Color
@@ -538,7 +538,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def Type(self):
-        """车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
+        r"""车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
 注意：
 此字段可能返回 null，表示取不到有效值。
 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
@@ -552,7 +552,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def PlateLocation(self):
-        """车牌在图片中的坐标信息。
+        r"""车牌在图片中的坐标信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -564,7 +564,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def PlateStatus(self):
-        """判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
+        r"""判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
         :rtype: str
         """
         return self._PlateStatus
@@ -575,7 +575,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def PlateStatusConfidence(self):
-        """车牌遮挡的置信度，0-100。
+        r"""车牌遮挡的置信度，0-100。
         :rtype: int
         """
         return self._PlateStatusConfidence
@@ -586,7 +586,7 @@ class CarPlateContent(AbstractModel):
 
     @property
     def PlateAngle(self):
-        """车牌角度。
+        r"""车牌角度。
         :rtype: float
         """
         return self._PlateAngle
@@ -620,7 +620,7 @@ class CarPlateContent(AbstractModel):
 
 
 class CarTagItem(AbstractModel):
-    """车辆属性识别的结果
+    r"""车辆属性识别的结果
 
     """
 
@@ -670,7 +670,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Serial(self):
-        """车系
+        r"""车系
         :rtype: str
         """
         return self._Serial
@@ -681,7 +681,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Brand(self):
-        """车辆品牌
+        r"""车辆品牌
         :rtype: str
         """
         return self._Brand
@@ -692,7 +692,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Type(self):
-        """车辆类型
+        r"""车辆类型
         :rtype: str
         """
         return self._Type
@@ -703,7 +703,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Color(self):
-        """车辆颜色
+        r"""车辆颜色
         :rtype: str
         """
         return self._Color
@@ -714,7 +714,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """车系置信度，0-100
+        r"""车系置信度，0-100
         :rtype: int
         """
         return self._Confidence
@@ -725,7 +725,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Year(self):
-        """年份，没识别出年份的时候返回0
+        r"""年份，没识别出年份的时候返回0
         :rtype: int
         """
         return self._Year
@@ -736,7 +736,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def CarLocation(self):
-        """车辆在图片中的坐标信息
+        r"""车辆在图片中的坐标信息
         :rtype: list of Coord
         """
         return self._CarLocation
@@ -747,7 +747,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def PlateContent(self):
-        """车牌信息，仅车辆识别（增强版）支持
+        r"""车牌信息，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.CarPlateContent`
         """
@@ -759,7 +759,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def PlateConfidence(self):
-        """车牌信息置信度，0-100，仅车辆识别（增强版）支持
+        r"""车牌信息置信度，0-100，仅车辆识别（增强版）支持
         :rtype: int
         """
         return self._PlateConfidence
@@ -770,7 +770,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def TypeConfidence(self):
-        """车辆类型置信度，0-100，仅车辆识别（增强版）支持
+        r"""车辆类型置信度，0-100，仅车辆识别（增强版）支持
         :rtype: int
         """
         return self._TypeConfidence
@@ -781,7 +781,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def ColorConfidence(self):
-        """车辆颜色置信度，0-100，仅车辆识别（增强版）支持
+        r"""车辆颜色置信度，0-100，仅车辆识别（增强版）支持
         :rtype: int
         """
         return self._ColorConfidence
@@ -792,7 +792,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def Orientation(self):
-        """车辆朝向，仅车辆识别（增强版）支持
+        r"""车辆朝向，仅车辆识别（增强版）支持
         :rtype: str
         """
         return self._Orientation
@@ -803,7 +803,7 @@ class CarTagItem(AbstractModel):
 
     @property
     def OrientationConfidence(self):
-        """车辆朝向置信度，0-100，仅车辆识别（增强版）支持
+        r"""车辆朝向置信度，0-100，仅车辆识别（增强版）支持
         :rtype: int
         """
         return self._OrientationConfidence
@@ -845,7 +845,7 @@ class CarTagItem(AbstractModel):
 
 
 class ColorInfo(AbstractModel):
-    """整张图颜色信息。
+    r"""整张图颜色信息。
 
     """
 
@@ -864,7 +864,7 @@ class ColorInfo(AbstractModel):
 
     @property
     def Color(self):
-        """RGB颜色值（16进制），例如：291A18。
+        r"""RGB颜色值（16进制），例如：291A18。
         :rtype: str
         """
         return self._Color
@@ -875,7 +875,7 @@ class ColorInfo(AbstractModel):
 
     @property
     def Percentage(self):
-        """当前颜色标签所占比例。
+        r"""当前颜色标签所占比例。
         :rtype: float
         """
         return self._Percentage
@@ -886,7 +886,7 @@ class ColorInfo(AbstractModel):
 
     @property
     def Label(self):
-        """颜色标签。蜜柚色，米驼色等。
+        r"""颜色标签。蜜柚色，米驼色等。
         :rtype: str
         """
         return self._Label
@@ -911,7 +911,7 @@ class ColorInfo(AbstractModel):
 
 
 class Coord(AbstractModel):
-    """汽车坐标信息
+    r"""汽车坐标信息
 
     """
 
@@ -927,7 +927,7 @@ class Coord(AbstractModel):
 
     @property
     def X(self):
-        """横坐标x
+        r"""横坐标x
         :rtype: int
         """
         return self._X
@@ -938,7 +938,7 @@ class Coord(AbstractModel):
 
     @property
     def Y(self):
-        """纵坐标y
+        r"""纵坐标y
         :rtype: int
         """
         return self._Y
@@ -962,7 +962,7 @@ class Coord(AbstractModel):
 
 
 class CreateGroupRequest(AbstractModel):
-    """CreateGroup请求参数结构体
+    r"""CreateGroup请求参数结构体
 
     """
 
@@ -1000,7 +1000,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def GroupId(self):
-        """图库ID，不可重复，仅支持字母、数字和下划线。图库数量单个用户上限为30。
+        r"""图库ID，不可重复，仅支持字母、数字和下划线。图库数量单个用户上限为30。
         :rtype: str
         """
         return self._GroupId
@@ -1011,7 +1011,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def GroupName(self):
-        """图库名称描述。
+        r"""图库名称描述。
         :rtype: str
         """
         return self._GroupName
@@ -1022,7 +1022,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def MaxCapacity(self):
-        """图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
+        r"""图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
 单个图片库容量最大可达亿级，达到容量限制后继续创建图片将会报错。
 注意，包月计费下支持绑定的最小库容量为500万。
         :rtype: int
@@ -1035,7 +1035,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def Brief(self):
-        """图库简介。
+        r"""图库简介。
         :rtype: str
         """
         return self._Brief
@@ -1046,7 +1046,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def MaxQps(self):
-        """访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
+        r"""访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
         :rtype: int
         """
         return self._MaxQps
@@ -1057,7 +1057,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
     @property
     def GroupType(self):
-        """图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
+        r"""图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
 GroupType不支持修改，若不确定适用的服务类型，建议先对不同类型分别小规模测试后再开始正式使用。
 参数取值：
 4：通用图像搜索1.0版。
@@ -1093,7 +1093,7 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 
 
 class CreateGroupResponse(AbstractModel):
-    """CreateGroup返回参数结构体
+    r"""CreateGroup返回参数结构体
 
     """
 
@@ -1106,7 +1106,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1121,7 +1121,7 @@ class CreateGroupResponse(AbstractModel):
 
 
 class CreateImageRequest(AbstractModel):
-    """CreateImage请求参数结构体
+    r"""CreateImage请求参数结构体
 
     """
 
@@ -1187,7 +1187,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def GroupId(self):
-        """图库ID。
+        r"""图库ID。
         :rtype: str
         """
         return self._GroupId
@@ -1198,7 +1198,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def EntityId(self):
-        """物品ID，最多支持64个字符。 
+        r"""物品ID，最多支持64个字符。 
 一个物品ID可以包含多张图片，若EntityId已存在，则对其追加图片。同一个EntityId，最大支持10张图。
         :rtype: str
         """
@@ -1210,7 +1210,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def PicName(self):
-        """图片名称，最多支持64个字符， 
+        r"""图片名称，最多支持64个字符， 
 PicName唯一确定一张图片，具有唯一性。
         :rtype: str
         """
@@ -1222,7 +1222,7 @@ PicName唯一确定一张图片，具有唯一性。
 
     @property
     def ImageUrl(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
+        r"""图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1240,7 +1240,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def CustomContent(self):
-        """图片自定义备注内容，最多支持4096个字符，查询时原样带回。
+        r"""图片自定义备注内容，最多支持4096个字符，查询时原样带回。
         :rtype: str
         """
         return self._CustomContent
@@ -1251,7 +1251,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def ImageBase64(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。 
+        r"""图片 base64 数据，base64 编码后大小不可超过5M。 
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
@@ -1266,7 +1266,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def Tags(self):
-        """图片自定义标签，最多不超过10个，格式为JSON。
+        r"""图片自定义标签，最多不超过10个，格式为JSON。
         :rtype: str
         """
         return self._Tags
@@ -1277,7 +1277,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def EnableDetect(self):
-        """是否需要启用主体识别，默认为**TRUE**。
+        r"""是否需要启用主体识别，默认为**TRUE**。
 • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
 • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
@@ -1291,7 +1291,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def CategoryId(self):
-        """图像类目ID。
+        r"""图像类目ID。
 若设置类目ID，提取以下类目的主体创建图片。
 类目取值说明：
 0：上衣。
@@ -1311,7 +1311,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def ImageRect(self):
-        """图像主体区域。
+        r"""图像主体区域。
 若设置主体区域，提取指定的区域创建图片。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.Rect`
         """
@@ -1346,7 +1346,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
 
 class CreateImageResponse(AbstractModel):
-    """CreateImage返回参数结构体
+    r"""CreateImage返回参数结构体
 
     """
 
@@ -1365,7 +1365,7 @@ class CreateImageResponse(AbstractModel):
 
     @property
     def Object(self):
-        """输入图的主体信息。
+        r"""输入图的主体信息。
 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1379,7 +1379,7 @@ class CreateImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1397,7 +1397,7 @@ class CreateImageResponse(AbstractModel):
 
 
 class CropImageRequest(AbstractModel):
-    """CropImage请求参数结构体
+    r"""CropImage请求参数结构体
 
     """
 
@@ -1431,7 +1431,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 
     @property
     def Width(self):
-        """需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例。
+        r"""需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例。
 输入数字请大于0、小于图片宽度的像素值。
         :rtype: int
         """
@@ -1443,7 +1443,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 
     @property
     def Height(self):
-        """需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例。
+        r"""需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例。
 输入数字请大于0、小于图片高度的像素值。
 宽高比例（Width : Height）会简化为最简分数，即如果Width输入10、Height输入20，会简化为1：2。
 Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响效果。
@@ -1457,7 +1457,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1475,7 +1475,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 
     @property
     def ImageBase64(self):
-        """图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要Base64编码，并且要去掉编码头部。
         :rtype: str
         """
@@ -1502,7 +1502,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 
 
 class CropImageResponse(AbstractModel):
-    """CropImage返回参数结构体
+    r"""CropImage返回参数结构体
 
     """
 
@@ -1544,7 +1544,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def X(self):
-        """裁剪区域左上角X坐标值
+        r"""裁剪区域左上角X坐标值
         :rtype: int
         """
         return self._X
@@ -1555,7 +1555,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def Y(self):
-        """裁剪区域左上角Y坐标值
+        r"""裁剪区域左上角Y坐标值
         :rtype: int
         """
         return self._Y
@@ -1566,7 +1566,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def Width(self):
-        """裁剪区域的宽度，单位为像素
+        r"""裁剪区域的宽度，单位为像素
         :rtype: int
         """
         return self._Width
@@ -1577,7 +1577,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def Height(self):
-        """裁剪区域的高度，单位为像素
+        r"""裁剪区域的高度，单位为像素
         :rtype: int
         """
         return self._Height
@@ -1588,7 +1588,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def OriginalWidth(self):
-        """原图宽度，单位为像素
+        r"""原图宽度，单位为像素
         :rtype: int
         """
         return self._OriginalWidth
@@ -1599,7 +1599,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def OriginalHeight(self):
-        """原图高度，单位为像素
+        r"""原图高度，单位为像素
         :rtype: int
         """
         return self._OriginalHeight
@@ -1610,7 +1610,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def CropResult(self):
-        """0：抠图正常；
+        r"""0：抠图正常；
 1：原图过长，指原图的高度是宽度的1.8倍以上；
 2：原图过宽，指原图的宽度是高度的1.8倍以上；
 3：抠图区域过长，指抠图的高度是主体备选框高度的1.6倍以上；
@@ -1629,7 +1629,7 @@ class CropImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1651,7 +1651,7 @@ class CropImageResponse(AbstractModel):
 
 
 class DeleteImagesRequest(AbstractModel):
-    """DeleteImages请求参数结构体
+    r"""DeleteImages请求参数结构体
 
     """
 
@@ -1670,7 +1670,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库名称。
+        r"""图库名称。
         :rtype: str
         """
         return self._GroupId
@@ -1681,7 +1681,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def EntityId(self):
-        """物品ID。
+        r"""物品ID。
         :rtype: str
         """
         return self._EntityId
@@ -1692,7 +1692,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def PicName(self):
-        """图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+        r"""图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
         :rtype: str
         """
         return self._PicName
@@ -1717,7 +1717,7 @@ class DeleteImagesRequest(AbstractModel):
 
 
 class DeleteImagesResponse(AbstractModel):
-    """DeleteImages返回参数结构体
+    r"""DeleteImages返回参数结构体
 
     """
 
@@ -1730,7 +1730,7 @@ class DeleteImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1745,7 +1745,7 @@ class DeleteImagesResponse(AbstractModel):
 
 
 class DescribeGroupsRequest(AbstractModel):
-    """DescribeGroups请求参数结构体
+    r"""DescribeGroups请求参数结构体
 
     """
 
@@ -1764,7 +1764,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0。
+        r"""起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -1775,7 +1775,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为100。
+        r"""返回数量，默认值为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -1786,7 +1786,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库ID，如果不为空，则返回指定库信息。
+        r"""图库ID，如果不为空，则返回指定库信息。
         :rtype: str
         """
         return self._GroupId
@@ -1811,7 +1811,7 @@ class DescribeGroupsRequest(AbstractModel):
 
 
 class DescribeGroupsResponse(AbstractModel):
-    """DescribeGroups返回参数结构体
+    r"""DescribeGroups返回参数结构体
 
     """
 
@@ -1827,7 +1827,7 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
-        """图库信息
+        r"""图库信息
         :rtype: list of GroupInfo
         """
         return self._Groups
@@ -1838,7 +1838,7 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1859,7 +1859,7 @@ class DescribeGroupsResponse(AbstractModel):
 
 
 class DescribeImagesRequest(AbstractModel):
-    """DescribeImages请求参数结构体
+    r"""DescribeImages请求参数结构体
 
     """
 
@@ -1878,7 +1878,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库名称。
+        r"""图库名称。
         :rtype: str
         """
         return self._GroupId
@@ -1889,7 +1889,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def EntityId(self):
-        """物品ID。
+        r"""物品ID。
         :rtype: str
         """
         return self._EntityId
@@ -1900,7 +1900,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def PicName(self):
-        """图片名称。
+        r"""图片名称。
         :rtype: str
         """
         return self._PicName
@@ -1925,7 +1925,7 @@ class DescribeImagesRequest(AbstractModel):
 
 
 class DescribeImagesResponse(AbstractModel):
-    """DescribeImages返回参数结构体
+    r"""DescribeImages返回参数结构体
 
     """
 
@@ -1947,7 +1947,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库名称。
+        r"""图库名称。
         :rtype: str
         """
         return self._GroupId
@@ -1958,7 +1958,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def EntityId(self):
-        """物品ID。
+        r"""物品ID。
         :rtype: str
         """
         return self._EntityId
@@ -1969,7 +1969,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def ImageInfos(self):
-        """图片信息。
+        r"""图片信息。
         :rtype: list of ImageInfo
         """
         return self._ImageInfos
@@ -1980,7 +1980,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2003,7 +2003,7 @@ class DescribeImagesResponse(AbstractModel):
 
 
 class DetectChefDressRequest(AbstractModel):
-    """DetectChefDress请求参数结构体
+    r"""DetectChefDress请求参数结构体
 
     """
 
@@ -2038,7 +2038,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def ImageUrl(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
@@ -2055,7 +2055,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要base64编码，并且要去掉编码头部。
 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
 支持的图片大小：所下载图片经Base64编码后不超过5M。
@@ -2069,7 +2069,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def EnableDetect(self):
-        """人体检测模型开关，“true”为开启，“false”为关闭
+        r"""人体检测模型开关，“true”为开启，“false”为关闭
 默认为开启，开启后可先对图片中的人体进行检测之后再进行属性识别
         :rtype: bool
         """
@@ -2081,7 +2081,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def EnablePreferred(self):
-        """人体优选开关，“true”为开启，“false”为关闭
+        r"""人体优选开关，“true”为开启，“false”为关闭
 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
 人体优选开启时，检测到的人体分辨率不超过1920*1080 pixel
@@ -2110,7 +2110,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
 
 class DetectChefDressResponse(AbstractModel):
-    """DetectChefDress返回参数结构体
+    r"""DetectChefDress返回参数结构体
 
     """
 
@@ -2126,7 +2126,7 @@ class DetectChefDressResponse(AbstractModel):
 
     @property
     def Bodies(self):
-        """识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+        r"""识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
         :rtype: list of AttributesForBody
         """
         return self._Bodies
@@ -2137,7 +2137,7 @@ class DetectChefDressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2158,7 +2158,7 @@ class DetectChefDressResponse(AbstractModel):
 
 
 class DetectDisgustRequest(AbstractModel):
-    """DetectDisgust请求参数结构体
+    r"""DetectDisgust请求参数结构体
 
     """
 
@@ -2182,7 +2182,7 @@ class DetectDisgustRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2200,7 +2200,7 @@ class DetectDisgustRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :rtype: str
         """
@@ -2225,7 +2225,7 @@ class DetectDisgustRequest(AbstractModel):
 
 
 class DetectDisgustResponse(AbstractModel):
-    """DetectDisgust返回参数结构体
+    r"""DetectDisgust返回参数结构体
 
     """
 
@@ -2244,7 +2244,7 @@ class DetectDisgustResponse(AbstractModel):
 
     @property
     def Confidence(self):
-        """对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
+        r"""对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
         :rtype: float
         """
         return self._Confidence
@@ -2255,7 +2255,7 @@ class DetectDisgustResponse(AbstractModel):
 
     @property
     def Type(self):
-        """与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
+        r"""与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
         :rtype: str
         """
         return self._Type
@@ -2266,7 +2266,7 @@ class DetectDisgustResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2283,7 +2283,7 @@ class DetectDisgustResponse(AbstractModel):
 
 
 class DetectEnvelopeRequest(AbstractModel):
-    """DetectEnvelope请求参数结构体
+    r"""DetectEnvelope请求参数结构体
 
     """
 
@@ -2303,7 +2303,7 @@ class DetectEnvelopeRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+        r"""图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 图片大小的限制为4M，图片像素的限制为4k。
         :rtype: str
@@ -2316,7 +2316,7 @@ class DetectEnvelopeRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+        r"""图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
 图片大小的限制为4M，图片像素的限制为4k。
 **注意：图片需要base64编码，并且要去掉编码头部。
         :rtype: str
@@ -2342,7 +2342,7 @@ class DetectEnvelopeRequest(AbstractModel):
 
 
 class DetectEnvelopeResponse(AbstractModel):
-    """DetectEnvelope返回参数结构体
+    r"""DetectEnvelope返回参数结构体
 
     """
 
@@ -2361,7 +2361,7 @@ class DetectEnvelopeResponse(AbstractModel):
 
     @property
     def FirstTags(self):
-        """一级标签结果数组。识别是否文件封。
+        r"""一级标签结果数组。识别是否文件封。
         :rtype: list of ImageTag
         """
         return self._FirstTags
@@ -2372,7 +2372,7 @@ class DetectEnvelopeResponse(AbstractModel):
 
     @property
     def SecondTags(self):
-        """二级标签结果数组。识别文件封正反面。
+        r"""二级标签结果数组。识别文件封正反面。
         :rtype: list of ImageTag
         """
         return self._SecondTags
@@ -2383,7 +2383,7 @@ class DetectEnvelopeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2410,7 +2410,7 @@ class DetectEnvelopeResponse(AbstractModel):
 
 
 class DetectLabelItem(AbstractModel):
-    """图像标签检测结果。
+    r"""图像标签检测结果。
 
     """
 
@@ -2432,7 +2432,7 @@ class DetectLabelItem(AbstractModel):
 
     @property
     def Name(self):
-        """图片中的物体名称。
+        r"""图片中的物体名称。
         :rtype: str
         """
         return self._Name
@@ -2443,7 +2443,7 @@ class DetectLabelItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
+        r"""算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
         :rtype: int
         """
         return self._Confidence
@@ -2454,7 +2454,7 @@ class DetectLabelItem(AbstractModel):
 
     @property
     def FirstCategory(self):
-        """标签的一级分类
+        r"""标签的一级分类
         :rtype: str
         """
         return self._FirstCategory
@@ -2465,7 +2465,7 @@ class DetectLabelItem(AbstractModel):
 
     @property
     def SecondCategory(self):
-        """标签的二级分类
+        r"""标签的二级分类
         :rtype: str
         """
         return self._SecondCategory
@@ -2491,7 +2491,7 @@ class DetectLabelItem(AbstractModel):
 
 
 class DetectLabelProRequest(AbstractModel):
-    """DetectLabelPro请求参数结构体
+    r"""DetectLabelPro请求参数结构体
 
     """
 
@@ -2519,7 +2519,7 @@ class DetectLabelProRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片 URL 地址。 
+        r"""图片 URL 地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG、BMP。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2537,7 +2537,7 @@ class DetectLabelProRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片 Base64 编码数据。
+        r"""图片 Base64 编码数据。
 与ImageUrl同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：PNG、JPG、JPEG、BMP。 
@@ -2566,7 +2566,7 @@ class DetectLabelProRequest(AbstractModel):
 
 
 class DetectLabelProResponse(AbstractModel):
-    """DetectLabelPro返回参数结构体
+    r"""DetectLabelPro返回参数结构体
 
     """
 
@@ -2582,7 +2582,7 @@ class DetectLabelProResponse(AbstractModel):
 
     @property
     def Labels(self):
-        """返回标签数组。
+        r"""返回标签数组。
         :rtype: list of DetectLabelItem
         """
         return self._Labels
@@ -2593,7 +2593,7 @@ class DetectLabelProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2614,7 +2614,7 @@ class DetectLabelProResponse(AbstractModel):
 
 
 class DetectLabelRequest(AbstractModel):
-    """DetectLabel请求参数结构体
+    r"""DetectLabel请求参数结构体
 
     """
 
@@ -2652,7 +2652,7 @@ class DetectLabelRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片 Base64 编码数据。
+        r"""图片 Base64 编码数据。
 与ImageUrl同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：PNG、JPG、JPEG、BMP。 
@@ -2668,7 +2668,7 @@ class DetectLabelRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片 URL 地址。 
+        r"""图片 URL 地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG、BMP。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2686,7 +2686,7 @@ class DetectLabelRequest(AbstractModel):
 
     @property
     def Scenes(self):
-        """本次调用支持的识别场景，可选值如下：
+        r"""本次调用支持的识别场景，可选值如下：
 • WEB，针对网络图片优化;
 • CAMERA，针对手机摄像头拍摄图片优化;
 • ALBUM，针对手机相册、网盘产品优化;
@@ -2718,7 +2718,7 @@ class DetectLabelRequest(AbstractModel):
 
 
 class DetectLabelResponse(AbstractModel):
-    """DetectLabel返回参数结构体
+    r"""DetectLabel返回参数结构体
 
     """
 
@@ -2748,7 +2748,7 @@ class DetectLabelResponse(AbstractModel):
 
     @property
     def Labels(self):
-        """Web网络版标签结果数组。如未选择WEB场景，则为空。
+        r"""Web网络版标签结果数组。如未选择WEB场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetectLabelItem
         """
@@ -2760,7 +2760,7 @@ class DetectLabelResponse(AbstractModel):
 
     @property
     def CameraLabels(self):
-        """Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+        r"""Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetectLabelItem
         """
@@ -2772,7 +2772,7 @@ class DetectLabelResponse(AbstractModel):
 
     @property
     def AlbumLabels(self):
-        """Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+        r"""Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetectLabelItem
         """
@@ -2784,7 +2784,7 @@ class DetectLabelResponse(AbstractModel):
 
     @property
     def NewsLabels(self):
-        """News新闻版标签结果数组。如未选择NEWS场景，则为空。
+        r"""News新闻版标签结果数组。如未选择NEWS场景，则为空。
 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetectLabelItem
@@ -2797,7 +2797,7 @@ class DetectLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2836,7 +2836,7 @@ class DetectLabelResponse(AbstractModel):
 
 
 class DetectMisbehaviorRequest(AbstractModel):
-    """DetectMisbehavior请求参数结构体
+    r"""DetectMisbehavior请求参数结构体
 
     """
 
@@ -2860,7 +2860,7 @@ class DetectMisbehaviorRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2878,7 +2878,7 @@ class DetectMisbehaviorRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :rtype: str
         """
@@ -2903,7 +2903,7 @@ class DetectMisbehaviorRequest(AbstractModel):
 
 
 class DetectMisbehaviorResponse(AbstractModel):
-    """DetectMisbehavior返回参数结构体
+    r"""DetectMisbehavior返回参数结构体
 
     """
 
@@ -2922,7 +2922,7 @@ class DetectMisbehaviorResponse(AbstractModel):
 
     @property
     def Confidence(self):
-        """对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
+        r"""对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
         :rtype: float
         """
         return self._Confidence
@@ -2933,7 +2933,7 @@ class DetectMisbehaviorResponse(AbstractModel):
 
     @property
     def Type(self):
-        """图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
+        r"""图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
         :rtype: str
         """
         return self._Type
@@ -2944,7 +2944,7 @@ class DetectMisbehaviorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2961,7 +2961,7 @@ class DetectMisbehaviorResponse(AbstractModel):
 
 
 class DetectPetRequest(AbstractModel):
-    """DetectPet请求参数结构体
+    r"""DetectPet请求参数结构体
 
     """
 
@@ -2981,7 +2981,7 @@ class DetectPetRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+        r"""图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 图片大小的限制为4M，图片像素的限制为4k。
         :rtype: str
@@ -2994,7 +2994,7 @@ class DetectPetRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+        r"""图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
 图片大小的限制为4M，图片像素的限制为4k。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :rtype: str
@@ -3020,7 +3020,7 @@ class DetectPetRequest(AbstractModel):
 
 
 class DetectPetResponse(AbstractModel):
-    """DetectPet返回参数结构体
+    r"""DetectPet返回参数结构体
 
     """
 
@@ -3036,7 +3036,7 @@ class DetectPetResponse(AbstractModel):
 
     @property
     def Pets(self):
-        """识别出图片中的宠物信息列表。
+        r"""识别出图片中的宠物信息列表。
         :rtype: list of Pet
         """
         return self._Pets
@@ -3047,7 +3047,7 @@ class DetectPetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3068,7 +3068,7 @@ class DetectPetResponse(AbstractModel):
 
 
 class DetectProductRequest(AbstractModel):
-    """DetectProduct请求参数结构体
+    r"""DetectProduct请求参数结构体
 
     """
 
@@ -3092,7 +3092,7 @@ class DetectProductRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -3110,7 +3110,7 @@ class DetectProductRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :rtype: str
         """
@@ -3135,7 +3135,7 @@ class DetectProductRequest(AbstractModel):
 
 
 class DetectProductResponse(AbstractModel):
-    """DetectProduct返回参数结构体
+    r"""DetectProduct返回参数结构体
 
     """
 
@@ -3151,7 +3151,7 @@ class DetectProductResponse(AbstractModel):
 
     @property
     def Products(self):
-        """商品识别结果数组
+        r"""商品识别结果数组
         :rtype: list of Product
         """
         return self._Products
@@ -3162,7 +3162,7 @@ class DetectProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3183,7 +3183,7 @@ class DetectProductResponse(AbstractModel):
 
 
 class DetectSecurityRequest(AbstractModel):
-    """DetectSecurity请求参数结构体
+    r"""DetectSecurity请求参数结构体
 
     """
 
@@ -3219,7 +3219,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def ImageUrl(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
@@ -3236,7 +3236,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。
+        r"""图片经过base64编码的内容。
 最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要base64编码，并且要去掉编码头部。
 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
@@ -3251,7 +3251,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def EnableDetect(self):
-        """人体检测模型开关，“true”为开启，“false”为关闭
+        r"""人体检测模型开关，“true”为开启，“false”为关闭
 开启后可先对图片中的人体进行检测之后再进行属性识别，默认为开启
         :rtype: bool
         """
@@ -3263,7 +3263,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
     @property
     def EnablePreferred(self):
-        """人体优选开关，“true”为开启，“false”为关闭
+        r"""人体优选开关，“true”为开启，“false”为关闭
 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
 如开启人体优选，检测到的人体分辨率需不大于1920*1080 pixel
@@ -3292,7 +3292,7 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 
 
 class DetectSecurityResponse(AbstractModel):
-    """DetectSecurity返回参数结构体
+    r"""DetectSecurity返回参数结构体
 
     """
 
@@ -3308,7 +3308,7 @@ class DetectSecurityResponse(AbstractModel):
 
     @property
     def Bodies(self):
-        """识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+        r"""识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
         :rtype: list of AttributesForBody
         """
         return self._Bodies
@@ -3319,7 +3319,7 @@ class DetectSecurityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3340,7 +3340,7 @@ class DetectSecurityResponse(AbstractModel):
 
 
 class EnhanceImageRequest(AbstractModel):
-    """EnhanceImage请求参数结构体
+    r"""EnhanceImage请求参数结构体
 
     """
 
@@ -3364,7 +3364,7 @@ class EnhanceImageRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -3382,7 +3382,7 @@ class EnhanceImageRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要Base64编码，并且要去掉编码头部。
         :rtype: str
         """
@@ -3407,7 +3407,7 @@ class EnhanceImageRequest(AbstractModel):
 
 
 class EnhanceImageResponse(AbstractModel):
-    """EnhanceImage返回参数结构体
+    r"""EnhanceImage返回参数结构体
 
     """
 
@@ -3423,7 +3423,7 @@ class EnhanceImageResponse(AbstractModel):
 
     @property
     def EnhancedImage(self):
-        """增强后图片的base64编码。
+        r"""增强后图片的base64编码。
         :rtype: str
         """
         return self._EnhancedImage
@@ -3434,7 +3434,7 @@ class EnhanceImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3450,7 +3450,7 @@ class EnhanceImageResponse(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """图库信息。
+    r"""图库信息。
 
     """
 
@@ -3491,7 +3491,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库Id。
+        r"""图库Id。
         :rtype: str
         """
         return self._GroupId
@@ -3502,7 +3502,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """图库名称。
+        r"""图库名称。
         :rtype: str
         """
         return self._GroupName
@@ -3513,7 +3513,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Brief(self):
-        """图库简介。
+        r"""图库简介。
         :rtype: str
         """
         return self._Brief
@@ -3524,7 +3524,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def MaxCapacity(self):
-        """图库容量。
+        r"""图库容量。
         :rtype: int
         """
         return self._MaxCapacity
@@ -3535,7 +3535,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def MaxQps(self):
-        """该库的访问限频 。
+        r"""该库的访问限频 。
         :rtype: int
         """
         return self._MaxQps
@@ -3546,7 +3546,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        """图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
+        r"""图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
 参数值：
 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
@@ -3561,7 +3561,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def PicCount(self):
-        """图库图片数量。
+        r"""图库图片数量。
         :rtype: int
         """
         return self._PicCount
@@ -3572,7 +3572,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """图库创建时间。
+        r"""图库创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -3583,7 +3583,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """图库更新时间。
+        r"""图库更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -3614,7 +3614,7 @@ class GroupInfo(AbstractModel):
 
 
 class ImageInfo(AbstractModel):
-    """图片信息
+    r"""图片信息
 
     """
 
@@ -3639,7 +3639,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def EntityId(self):
-        """图片名称。
+        r"""图片名称。
         :rtype: str
         """
         return self._EntityId
@@ -3650,7 +3650,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def CustomContent(self):
-        """用户自定义的内容。
+        r"""用户自定义的内容。
         :rtype: str
         """
         return self._CustomContent
@@ -3661,7 +3661,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """图片自定义标签，JSON格式。
+        r"""图片自定义标签，JSON格式。
         :rtype: str
         """
         return self._Tags
@@ -3672,7 +3672,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def PicName(self):
-        """图片名称。
+        r"""图片名称。
         :rtype: str
         """
         return self._PicName
@@ -3683,7 +3683,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Score(self):
-        """相似度。
+        r"""相似度。
         :rtype: int
         """
         return self._Score
@@ -3710,7 +3710,7 @@ class ImageInfo(AbstractModel):
 
 
 class ImageRect(AbstractModel):
-    """图像主体区域坐标
+    r"""图像主体区域坐标
 
     """
 
@@ -3732,7 +3732,7 @@ class ImageRect(AbstractModel):
 
     @property
     def X(self):
-        """左上角横坐标。
+        r"""左上角横坐标。
         :rtype: int
         """
         return self._X
@@ -3743,7 +3743,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角纵坐标。
+        r"""左上角纵坐标。
         :rtype: int
         """
         return self._Y
@@ -3754,7 +3754,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Width(self):
-        """宽度。
+        r"""宽度。
         :rtype: int
         """
         return self._Width
@@ -3765,7 +3765,7 @@ class ImageRect(AbstractModel):
 
     @property
     def Height(self):
-        """高度。
+        r"""高度。
         :rtype: int
         """
         return self._Height
@@ -3791,7 +3791,7 @@ class ImageRect(AbstractModel):
 
 
 class ImageTag(AbstractModel):
-    """图片标签。
+    r"""图片标签。
 
     """
 
@@ -3807,7 +3807,7 @@ class ImageTag(AbstractModel):
 
     @property
     def Name(self):
-        """标签内容。
+        r"""标签内容。
         :rtype: str
         """
         return self._Name
@@ -3818,7 +3818,7 @@ class ImageTag(AbstractModel):
 
     @property
     def Confidence(self):
-        """置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        r"""置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
         :rtype: float
         """
         return self._Confidence
@@ -3842,7 +3842,7 @@ class ImageTag(AbstractModel):
 
 
 class ObjectInfo(AbstractModel):
-    """图像的主体信息。
+    r"""图像的主体信息。
 
     """
 
@@ -3868,7 +3868,7 @@ class ObjectInfo(AbstractModel):
 
     @property
     def Box(self):
-        """图像主体区域。
+        r"""图像主体区域。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.Box`
         """
         return self._Box
@@ -3879,7 +3879,7 @@ class ObjectInfo(AbstractModel):
 
     @property
     def CategoryId(self):
-        """主体类别ID。
+        r"""主体类别ID。
         :rtype: int
         """
         return self._CategoryId
@@ -3890,7 +3890,7 @@ class ObjectInfo(AbstractModel):
 
     @property
     def Colors(self):
-        """整张图颜色信息。
+        r"""整张图颜色信息。
         :rtype: list of ColorInfo
         """
         return self._Colors
@@ -3901,7 +3901,7 @@ class ObjectInfo(AbstractModel):
 
     @property
     def Attributes(self):
-        """属性信息。
+        r"""属性信息。
         :rtype: list of Attribute
         """
         return self._Attributes
@@ -3912,7 +3912,7 @@ class ObjectInfo(AbstractModel):
 
     @property
     def AllBox(self):
-        """图像的所有主体区域，置信度，以及主体区域类别ID。
+        r"""图像的所有主体区域，置信度，以及主体区域类别ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Box
         """
@@ -3957,7 +3957,7 @@ class ObjectInfo(AbstractModel):
 
 
 class Pet(AbstractModel):
-    """宠物具体信息
+    r"""宠物具体信息
 
     """
 
@@ -3976,7 +3976,7 @@ class Pet(AbstractModel):
 
     @property
     def Name(self):
-        """识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
+        r"""识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
         :rtype: str
         """
         return self._Name
@@ -3987,7 +3987,7 @@ class Pet(AbstractModel):
 
     @property
     def Score(self):
-        """识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        r"""识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
         :rtype: int
         """
         return self._Score
@@ -3998,7 +3998,7 @@ class Pet(AbstractModel):
 
     @property
     def Location(self):
-        """识别目标在图片中的坐标。
+        r"""识别目标在图片中的坐标。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.Rect`
         """
         return self._Location
@@ -4025,7 +4025,7 @@ class Pet(AbstractModel):
 
 
 class Product(AbstractModel):
-    """检测到的单个商品结构体
+    r"""检测到的单个商品结构体
 
     """
 
@@ -4056,7 +4056,7 @@ class Product(AbstractModel):
 
     @property
     def Name(self):
-        """图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
+        r"""图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
         :rtype: str
         """
         return self._Name
@@ -4067,7 +4067,7 @@ class Product(AbstractModel):
 
     @property
     def Parents(self):
-        """三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
+        r"""三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
         :rtype: str
         """
         return self._Parents
@@ -4078,7 +4078,7 @@ class Product(AbstractModel):
 
     @property
     def Confidence(self):
-        """算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
+        r"""算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
         :rtype: int
         """
         return self._Confidence
@@ -4089,7 +4089,7 @@ class Product(AbstractModel):
 
     @property
     def XMin(self):
-        """商品坐标X轴的最小值
+        r"""商品坐标X轴的最小值
         :rtype: int
         """
         return self._XMin
@@ -4100,7 +4100,7 @@ class Product(AbstractModel):
 
     @property
     def YMin(self):
-        """商品坐标Y轴的最小值
+        r"""商品坐标Y轴的最小值
         :rtype: int
         """
         return self._YMin
@@ -4111,7 +4111,7 @@ class Product(AbstractModel):
 
     @property
     def XMax(self):
-        """商品坐标X轴的最大值
+        r"""商品坐标X轴的最大值
         :rtype: int
         """
         return self._XMax
@@ -4122,7 +4122,7 @@ class Product(AbstractModel):
 
     @property
     def YMax(self):
-        """商品坐标Y轴的最大值
+        r"""商品坐标Y轴的最大值
         :rtype: int
         """
         return self._YMax
@@ -4151,7 +4151,7 @@ class Product(AbstractModel):
 
 
 class RecognizeCarProRequest(AbstractModel):
-    """RecognizeCarPro请求参数结构体
+    r"""RecognizeCarPro请求参数结构体
 
     """
 
@@ -4176,7 +4176,7 @@ class RecognizeCarProRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -4194,7 +4194,7 @@ class RecognizeCarProRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
         :rtype: str
@@ -4220,7 +4220,7 @@ class RecognizeCarProRequest(AbstractModel):
 
 
 class RecognizeCarProResponse(AbstractModel):
-    """RecognizeCarPro返回参数结构体
+    r"""RecognizeCarPro返回参数结构体
 
     """
 
@@ -4240,7 +4240,7 @@ class RecognizeCarProResponse(AbstractModel):
 
     @property
     def CarCoords(self):
-        """汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+        r"""汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :rtype: list of Coord
         """
         return self._CarCoords
@@ -4251,7 +4251,7 @@ class RecognizeCarProResponse(AbstractModel):
 
     @property
     def CarTags(self):
-        """车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+        r"""车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
 注意：置信度是指车牌信息置信度。
         :rtype: list of CarTagItem
         """
@@ -4263,7 +4263,7 @@ class RecognizeCarProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4290,7 +4290,7 @@ class RecognizeCarProResponse(AbstractModel):
 
 
 class RecognizeCarRequest(AbstractModel):
-    """RecognizeCar请求参数结构体
+    r"""RecognizeCar请求参数结构体
 
     """
 
@@ -4315,7 +4315,7 @@ class RecognizeCarRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片URL地址。 
+        r"""图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -4333,7 +4333,7 @@ class RecognizeCarRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        r"""图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
         :rtype: str
@@ -4359,7 +4359,7 @@ class RecognizeCarRequest(AbstractModel):
 
 
 class RecognizeCarResponse(AbstractModel):
-    """RecognizeCar返回参数结构体
+    r"""RecognizeCar返回参数结构体
 
     """
 
@@ -4378,7 +4378,7 @@ class RecognizeCarResponse(AbstractModel):
 
     @property
     def CarCoords(self):
-        """汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+        r"""汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :rtype: list of Coord
         """
         return self._CarCoords
@@ -4389,7 +4389,7 @@ class RecognizeCarResponse(AbstractModel):
 
     @property
     def CarTags(self):
-        """车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+        r"""车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
         :rtype: list of CarTagItem
         """
         return self._CarTags
@@ -4400,7 +4400,7 @@ class RecognizeCarResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4427,7 +4427,7 @@ class RecognizeCarResponse(AbstractModel):
 
 
 class Rect(AbstractModel):
-    """具体坐标，可用来判断边界
+    r"""具体坐标，可用来判断边界
 
     """
 
@@ -4449,7 +4449,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        """x轴坐标
+        r"""x轴坐标
         :rtype: int
         """
         return self._X
@@ -4460,7 +4460,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        """y轴坐标
+        r"""y轴坐标
         :rtype: int
         """
         return self._Y
@@ -4471,7 +4471,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        """(x,y)坐标距离长度
+        r"""(x,y)坐标距离长度
         :rtype: int
         """
         return self._Width
@@ -4482,7 +4482,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        """(x,y)坐标距离高度
+        r"""(x,y)坐标距离高度
         :rtype: int
         """
         return self._Height
@@ -4508,7 +4508,7 @@ class Rect(AbstractModel):
 
 
 class SearchImageRequest(AbstractModel):
-    """SearchImage请求参数结构体
+    r"""SearchImage请求参数结构体
 
     """
 
@@ -4585,7 +4585,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def GroupId(self):
-        """图库名称。
+        r"""图库名称。
         :rtype: str
         """
         return self._GroupId
@@ -4596,7 +4596,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def ImageUrl(self):
-        """图片的 Url 。
+        r"""图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -4614,7 +4614,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def ImageBase64(self):
-        """图片 base64 数据。
+        r"""图片 base64 数据。
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -4630,7 +4630,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def Limit(self):
-        """返回结果的数量，默认值为10，最大值为100。
+        r"""返回结果的数量，默认值为10，最大值为100。
 按照相似度分数由高到低排序。
 **<font color=#1E90FF>服务类型为图案花纹搜索时Limit = 1，最多只能返回1个结果。</font>**
         :rtype: int
@@ -4643,7 +4643,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def Offset(self):
-        """返回结果的起始序号，默认值为0。
+        r"""返回结果的起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -4654,7 +4654,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def MatchThreshold(self):
-        """匹配阈值。
+        r"""匹配阈值。
 只有图片相似度分数超过匹配阈值的结果才会返回。
 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
 • 通用图像搜索1.0版：50。
@@ -4673,7 +4673,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def Filter(self):
-        """标签过滤条件。
+        r"""标签过滤条件。
 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
 最大支持64字符。
         :rtype: str
@@ -4686,7 +4686,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def ImageRect(self):
-        """图像主体区域。
+        r"""图像主体区域。
 若设置主体区域，提取指定的区域进行检索。
         :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         """
@@ -4698,7 +4698,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def EnableDetect(self):
-        """是否需要启用主体识别，默认为**TRUE** 。
+        r"""是否需要启用主体识别，默认为**TRUE** 。
 • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
 • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
@@ -4712,7 +4712,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
     @property
     def CategoryId(self):
-        """图像类目ID。
+        r"""图像类目ID。
 若设置类目ID，提取以下类目的主体进行检索。
 类目取值说明：
 0：上衣。
@@ -4755,7 +4755,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 
 
 class SearchImageResponse(AbstractModel):
-    """SearchImage返回参数结构体
+    r"""SearchImage返回参数结构体
 
     """
 
@@ -4781,7 +4781,7 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def Count(self):
-        """返回结果数量。
+        r"""返回结果数量。
         :rtype: int
         """
         return self._Count
@@ -4792,7 +4792,7 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def ImageInfos(self):
-        """图片信息。
+        r"""图片信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageInfo
         """
@@ -4804,7 +4804,7 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def Object(self):
-        """输入图的主体信息。
+        r"""输入图的主体信息。
 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4818,7 +4818,7 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4843,7 +4843,7 @@ class SearchImageResponse(AbstractModel):
 
 
 class UpdateImageRequest(AbstractModel):
-    """UpdateImage请求参数结构体
+    r"""UpdateImage请求参数结构体
 
     """
 
@@ -4865,7 +4865,7 @@ class UpdateImageRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """图库ID。
+        r"""图库ID。
         :rtype: str
         """
         return self._GroupId
@@ -4876,7 +4876,7 @@ class UpdateImageRequest(AbstractModel):
 
     @property
     def EntityId(self):
-        """物品ID，最多支持64个字符。
+        r"""物品ID，最多支持64个字符。
         :rtype: str
         """
         return self._EntityId
@@ -4887,7 +4887,7 @@ class UpdateImageRequest(AbstractModel):
 
     @property
     def PicName(self):
-        """图片名称，最多支持64个字符。
+        r"""图片名称，最多支持64个字符。
         :rtype: str
         """
         return self._PicName
@@ -4898,7 +4898,7 @@ class UpdateImageRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """新的自定义标签，最多不超过10个，格式为JSON。
+        r"""新的自定义标签，最多不超过10个，格式为JSON。
         :rtype: str
         """
         return self._Tags
@@ -4924,7 +4924,7 @@ class UpdateImageRequest(AbstractModel):
 
 
 class UpdateImageResponse(AbstractModel):
-    """UpdateImage返回参数结构体
+    r"""UpdateImage返回参数结构体
 
     """
 
@@ -4937,7 +4937,7 @@ class UpdateImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

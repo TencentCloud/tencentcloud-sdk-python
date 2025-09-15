@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Conditions(AbstractModel):
-    """评估项警告条件
+    r"""评估项警告条件
 
     """
 
@@ -41,7 +41,7 @@ class Conditions(AbstractModel):
 
     @property
     def ConditionId(self):
-        """警告条件ID
+        r"""警告条件ID
         :rtype: int
         """
         return self._ConditionId
@@ -52,7 +52,7 @@ class Conditions(AbstractModel):
 
     @property
     def Level(self):
-        """警告级别，2:中风险，3:高风险
+        r"""警告级别，2:中风险，3:高风险
         :rtype: int
         """
         return self._Level
@@ -63,7 +63,7 @@ class Conditions(AbstractModel):
 
     @property
     def LevelDesc(self):
-        """警告级别描述
+        r"""警告级别描述
         :rtype: str
         """
         return self._LevelDesc
@@ -74,7 +74,7 @@ class Conditions(AbstractModel):
 
     @property
     def Desc(self):
-        """警告条件描述
+        r"""警告条件描述
         :rtype: str
         """
         return self._Desc
@@ -100,13 +100,13 @@ class Conditions(AbstractModel):
 
 
 class DescribeStrategiesRequest(AbstractModel):
-    """DescribeStrategies请求参数结构体
+    r"""DescribeStrategies请求参数结构体
 
     """
 
 
 class DescribeStrategiesResponse(AbstractModel):
-    """DescribeStrategies返回参数结构体
+    r"""DescribeStrategies返回参数结构体
 
     """
 
@@ -122,7 +122,7 @@ class DescribeStrategiesResponse(AbstractModel):
 
     @property
     def Strategies(self):
-        """评估项列表
+        r"""评估项列表
         :rtype: list of Strategies
         """
         return self._Strategies
@@ -133,7 +133,7 @@ class DescribeStrategiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -154,7 +154,7 @@ class DescribeStrategiesResponse(AbstractModel):
 
 
 class DescribeTaskStrategyRisksRequest(AbstractModel):
-    """DescribeTaskStrategyRisks请求参数结构体
+    r"""DescribeTaskStrategyRisks请求参数结构体
 
     """
 
@@ -179,7 +179,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """评估项ID
+        r"""评估项ID
         :rtype: int
         """
         return self._StrategyId
@@ -190,7 +190,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量,默认值为100,最大值为200
+        r"""返回数量,默认值为100,最大值为200
         :rtype: int
         """
         return self._Limit
@@ -201,7 +201,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量,默认0
+        r"""偏移量,默认0
         :rtype: int
         """
         return self._Offset
@@ -212,7 +212,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
     @property
     def Env(self):
-        """环境
+        r"""环境
         :rtype: str
         """
         return self._Env
@@ -223,7 +223,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型
+        r"""任务类型
         :rtype: str
         """
         return self._TaskType
@@ -250,7 +250,7 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
 
 
 class DescribeTaskStrategyRisksResponse(AbstractModel):
-    """DescribeTaskStrategyRisks返回参数结构体
+    r"""DescribeTaskStrategyRisks返回参数结构体
 
     """
 
@@ -284,7 +284,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def RiskFieldsDesc(self):
-        """根据此配置，匹配风险实例列表（Risks）对应字段，例如:
+        r"""根据此配置，匹配风险实例列表（Risks）对应字段，例如:
 {"Response":{"RequestId":"111","RiskFieldsDesc":[{"Field":"InstanceId","FieldName":"ID","FieldType":"string","FieldDict":{}},{"Field":"InstanceName","FieldName":"名称","FieldType":"string","FieldDict":{}},{"Field":"InstanceState","FieldName":"状态","FieldType":"string","FieldDict":{"LAUNCH_FAILED":"创建失败","PENDING":"创建中","REBOOTING":"重启中","RUNNING":"运行中","SHUTDOWN":"停止待销毁","STARTING":"开机中","STOPPED":"关机","STOPPING":"关机中","TERMINATING":"销毁中"}},{"Field":"Zone","FieldName":"可用区","FieldType":"string","FieldDict":{}},{"Field":"PrivateIPAddresses","FieldName":"IP地址(内)","FieldType":"stringSlice","FieldDict":{}},{"Field":"PublicIPAddresses","FieldName":"IP地址(公)","FieldType":"stringSlice","FieldDict":{}},{"Field":"Region","FieldName":"地域","FieldType":"string","FieldDict":{}},{"Field":"Tags","FieldName":"标签","FieldType":"tags","FieldDict":{}}],"RiskTotalCount":3,"Risks":"[{\"InstanceId\":\"ins-xxx1\",\"InstanceName\":\"xxx1\",\"InstanceState\":\"RUNNING\",\"PrivateIPAddresses\":[\"1.17.64.2\"],\"PublicIPAddresses\":null,\"Region\":\"ap-shanghai\",\"Tags\":null,\"Zone\":\"ap-shanghai-2\"},{\"InstanceId\":\"ins-xxx2\",\"InstanceName\":\"xxx2\",\"InstanceState\":\"RUNNING\",\"PrivateIPAddresses\":[\"1.17.64.11\"],\"PublicIPAddresses\":null,\"Region\":\"ap-shanghai\",\"Tags\":null,\"Zone\":\"ap-shanghai-2\"}]","StrategyId":9}}
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskFieldsDesc
@@ -297,7 +297,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def StrategyId(self):
-        """评估项ID
+        r"""评估项ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -309,7 +309,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def RiskTotalCount(self):
-        """风险实例个数
+        r"""风险实例个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -321,7 +321,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def Risks(self):
-        """风险实例详情列表，需要json decode
+        r"""风险实例详情列表，需要json decode
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -333,7 +333,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def ResourceCount(self):
-        """巡检资源数
+        r"""巡检资源数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -345,7 +345,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -370,7 +370,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
 
 
 class KeyValue(AbstractModel):
-    """键值对
+    r"""键值对
 
     """
 
@@ -386,7 +386,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Key(self):
-        """键名
+        r"""键名
         :rtype: str
         """
         return self._Key
@@ -397,7 +397,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Value(self):
-        """键名对应值
+        r"""键名对应值
         :rtype: str
         """
         return self._Value
@@ -421,7 +421,7 @@ class KeyValue(AbstractModel):
 
 
 class RiskFieldsDesc(AbstractModel):
-    """风险实例字段描述
+    r"""风险实例字段描述
 
     """
 
@@ -448,7 +448,7 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
 
     @property
     def Field(self):
-        """字段ID
+        r"""字段ID
         :rtype: str
         """
         return self._Field
@@ -459,7 +459,7 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
 
     @property
     def FieldName(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._FieldName
@@ -470,7 +470,7 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
 
     @property
     def FieldType(self):
-        """字段类型, 
+        r"""字段类型, 
 string: 字符串类型，例如"aa"
 int: 整形，例如 111
 stringSlice : 字符串数组类型，例如["a", "b"]
@@ -485,7 +485,7 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
 
     @property
     def FieldDict(self):
-        """字段值对应字典
+        r"""字段值对应字典
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValue
         """
@@ -517,7 +517,7 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
 
 
 class Strategies(AbstractModel):
-    """评估项信息
+    r"""评估项信息
 
     """
 
@@ -554,7 +554,7 @@ class Strategies(AbstractModel):
 
     @property
     def StrategyId(self):
-        """评估项ID
+        r"""评估项ID
         :rtype: int
         """
         return self._StrategyId
@@ -565,7 +565,7 @@ class Strategies(AbstractModel):
 
     @property
     def Name(self):
-        """评估项名称
+        r"""评估项名称
         :rtype: str
         """
         return self._Name
@@ -576,7 +576,7 @@ class Strategies(AbstractModel):
 
     @property
     def Desc(self):
-        """评估项描述
+        r"""评估项描述
         :rtype: str
         """
         return self._Desc
@@ -587,7 +587,7 @@ class Strategies(AbstractModel):
 
     @property
     def Product(self):
-        """评估项对应产品ID
+        r"""评估项对应产品ID
         :rtype: str
         """
         return self._Product
@@ -598,7 +598,7 @@ class Strategies(AbstractModel):
 
     @property
     def ProductDesc(self):
-        """评估项对应产品名称
+        r"""评估项对应产品名称
         :rtype: str
         """
         return self._ProductDesc
@@ -609,7 +609,7 @@ class Strategies(AbstractModel):
 
     @property
     def Repair(self):
-        """评估项优化建议
+        r"""评估项优化建议
         :rtype: str
         """
         return self._Repair
@@ -620,7 +620,7 @@ class Strategies(AbstractModel):
 
     @property
     def GroupId(self):
-        """评估项类别ID
+        r"""评估项类别ID
         :rtype: int
         """
         return self._GroupId
@@ -631,7 +631,7 @@ class Strategies(AbstractModel):
 
     @property
     def GroupName(self):
-        """评估项类别名称
+        r"""评估项类别名称
         :rtype: str
         """
         return self._GroupName
@@ -642,7 +642,7 @@ class Strategies(AbstractModel):
 
     @property
     def Conditions(self):
-        """评估项风险列表
+        r"""评估项风险列表
         :rtype: list of Conditions
         """
         return self._Conditions

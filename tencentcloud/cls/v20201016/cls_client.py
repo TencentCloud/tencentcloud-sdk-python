@@ -27,7 +27,7 @@ class ClsClient(AbstractClient):
 
 
     def AddMachineGroupInfo(self, request):
-        """用于添加机器组信息
+        r"""用于添加机器组信息
 
         :param request: Request instance for AddMachineGroupInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.AddMachineGroupInfoRequest`
@@ -50,7 +50,7 @@ class ClsClient(AbstractClient):
 
 
     def ApplyConfigToMachineGroup(self, request):
-        """应用采集配置到指定机器组
+        r"""应用采集配置到指定机器组
 
         :param request: Request instance for ApplyConfigToMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.ApplyConfigToMachineGroupRequest`
@@ -73,7 +73,7 @@ class ClsClient(AbstractClient):
 
 
     def CheckFunction(self, request):
-        """本接口用于数据加工DSL函数的语法校验。
+        r"""本接口用于数据加工DSL函数的语法校验。
 
         :param request: Request instance for CheckFunction.
         :type request: :class:`tencentcloud.cls.v20201016.models.CheckFunctionRequest`
@@ -96,7 +96,7 @@ class ClsClient(AbstractClient):
 
 
     def CheckRechargeKafkaServer(self, request):
-        """本接口用于校验Kafka服务集群是否可以正常访问
+        r"""本接口用于校验Kafka服务集群是否可以正常访问
 
         :param request: Request instance for CheckRechargeKafkaServer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerRequest`
@@ -119,7 +119,7 @@ class ClsClient(AbstractClient):
 
 
     def CloseKafkaConsumer(self, request):
-        """关闭Kafka协议消费
+        r"""关闭Kafka协议消费
 
         :param request: Request instance for CloseKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CloseKafkaConsumerRequest`
@@ -142,7 +142,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarm(self, request):
-        """本接口用于创建告警策略。
+        r"""本接口用于创建告警策略。
 
         :param request: Request instance for CreateAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmRequest`
@@ -165,7 +165,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """该接口用于创建通知渠道组，提供两种配置模式，二选一：
+        r"""该接口用于创建通知渠道组，提供两种配置模式，二选一：
         1，简易模式，提供最基本的通知渠道功能。需填写如下参数：
         - Type
         - NoticeReceivers
@@ -195,7 +195,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmShield(self, request):
-        """该接口用于创建告警屏蔽规则。
+        r"""该接口用于创建告警屏蔽规则。
 
         :param request: Request instance for CreateAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldRequest`
@@ -218,7 +218,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateCloudProductLogCollection(self, request):
-        """内部云产品接入使用相关接口
+        r"""内部云产品接入使用相关接口
 
         :param request: Request instance for CreateCloudProductLogCollection.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateCloudProductLogCollectionRequest`
@@ -241,7 +241,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConfig(self, request):
-        """创建采集规则配置
+        r"""创建采集规则配置
 
         :param request: Request instance for CreateConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigRequest`
@@ -264,7 +264,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConfigExtra(self, request):
-        """本接口用于创建特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
+        r"""本接口用于创建特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for CreateConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraRequest`
@@ -287,7 +287,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConsoleSharing(self, request):
-        """创建控制台分享
+        r"""创建控制台分享
 
         :param request: Request instance for CreateConsoleSharing.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsoleSharingRequest`
@@ -310,7 +310,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """本接口用于创建投递CKafka任务
+        r"""本接口用于创建投递CKafka任务
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsumerRequest`
@@ -333,7 +333,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateCosRecharge(self, request):
-        """本接口用于创建cos导入任务
+        r"""本接口用于创建cos导入任务
 
         :param request: Request instance for CreateCosRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeRequest`
@@ -356,7 +356,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateDashboardSubscribe(self, request):
-        """此接口用于创建仪表盘订阅
+        r"""此接口用于创建仪表盘订阅
 
         :param request: Request instance for CreateDashboardSubscribe.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateDashboardSubscribeRequest`
@@ -379,7 +379,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateDataTransform(self, request):
-        """本接口用于创建数据加工任务。
+        r"""本接口用于创建数据加工任务。
 
         :param request: Request instance for CreateDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformRequest`
@@ -402,7 +402,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateDeliverCloudFunction(self, request):
-        """本接口用于创建投递SCF任务
+        r"""本接口用于创建投递SCF任务
 
         :param request: Request instance for CreateDeliverCloudFunction.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionRequest`
@@ -425,7 +425,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """本接口仅创建下载任务。任务返回的下载地址，请用户调用[DescribeExports](https://cloud.tencent.com/document/product/614/56449)查看任务列表，其中有下载地址CosPath参数。
+        r"""本接口仅创建下载任务。任务返回的下载地址，请用户调用[DescribeExports](https://cloud.tencent.com/document/product/614/56449)查看任务列表，其中有下载地址CosPath参数。
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`
@@ -448,7 +448,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateIndex(self, request):
-        """本接口用于创建索引
+        r"""本接口用于创建索引
 
         :param request: Request instance for CreateIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateIndexRequest`
@@ -471,7 +471,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateKafkaRecharge(self, request):
-        """本接口用于创建Kafka数据订阅任务
+        r"""本接口用于创建Kafka数据订阅任务
 
         :param request: Request instance for CreateKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeRequest`
@@ -494,7 +494,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateLogset(self, request):
-        """本接口用于创建日志集，返回新创建的日志集的 ID。
+        r"""本接口用于创建日志集，返回新创建的日志集的 ID。
 
         :param request: Request instance for CreateLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateLogsetRequest`
@@ -517,7 +517,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateMachineGroup(self, request):
-        """创建机器组
+        r"""创建机器组
 
         :param request: Request instance for CreateMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateMachineGroupRequest`
@@ -540,7 +540,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateNoticeContent(self, request):
-        """该接口用于创建通知内容。
+        r"""该接口用于创建通知内容。
 
         :param request: Request instance for CreateNoticeContent.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateNoticeContentRequest`
@@ -563,7 +563,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateScheduledSql(self, request):
-        """本接口用于创建定时SQL分析任务
+        r"""本接口用于创建定时SQL分析任务
 
         :param request: Request instance for CreateScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateScheduledSqlRequest`
@@ -586,7 +586,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateShipper(self, request):
-        """新建投递到COS的任务，【！！！注意】使用此接口，需要检查是否配置了投递COS的角色和权限。如果没有配置，请参考文档投递权限查看和配置https://cloud.tencent.com/document/product/614/71623。
+        r"""新建投递到COS的任务，【！！！注意】使用此接口，需要检查是否配置了投递COS的角色和权限。如果没有配置，请参考文档投递权限查看和配置https://cloud.tencent.com/document/product/614/71623。
 
         :param request: Request instance for CreateShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
@@ -609,7 +609,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """本接口用于创建日志主题。
+        r"""本接口用于创建日志主题。
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateTopicRequest`
@@ -632,7 +632,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateWebCallback(self, request):
-        """该接口用于创建告警渠道回调配置。
+        r"""该接口用于创建告警渠道回调配置。
 
         :param request: Request instance for CreateWebCallback.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateWebCallbackRequest`
@@ -655,7 +655,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarm(self, request):
-        """本接口用于删除告警策略。
+        r"""本接口用于删除告警策略。
 
         :param request: Request instance for DeleteAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmRequest`
@@ -678,7 +678,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmNotice(self, request):
-        """该接口用于删除通知渠道组
+        r"""该接口用于删除通知渠道组
 
         :param request: Request instance for DeleteAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmNoticeRequest`
@@ -701,7 +701,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmShield(self, request):
-        """该接口用于删除告警屏蔽规则。当告警屏蔽规则在生效中或者是在失效中，无法被删除
+        r"""该接口用于删除告警屏蔽规则。当告警屏蔽规则在生效中或者是在失效中，无法被删除
 
         :param request: Request instance for DeleteAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldRequest`
@@ -724,7 +724,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteCloudProductLogCollection(self, request):
-        """内部云产品接入使用相关接口
+        r"""内部云产品接入使用相关接口
 
         :param request: Request instance for DeleteCloudProductLogCollection.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCloudProductLogCollectionRequest`
@@ -747,7 +747,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfig(self, request):
-        """删除采集规则配置
+        r"""删除采集规则配置
 
         :param request: Request instance for DeleteConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigRequest`
@@ -770,7 +770,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfigExtra(self, request):
-        """本接口用于删除特殊采集规则配置，特殊采集配置应用于自建K8S环境的采集Agent
+        r"""本接口用于删除特殊采集规则配置，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for DeleteConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraRequest`
@@ -793,7 +793,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfigFromMachineGroup(self, request):
-        """删除应用到机器组的采集配置
+        r"""删除应用到机器组的采集配置
 
         :param request: Request instance for DeleteConfigFromMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigFromMachineGroupRequest`
@@ -816,7 +816,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConsoleSharing(self, request):
-        """删除控制台分享
+        r"""删除控制台分享
 
         :param request: Request instance for DeleteConsoleSharing.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsoleSharingRequest`
@@ -839,7 +839,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConsumer(self, request):
-        """删除投递Ckafka任务
+        r"""删除投递Ckafka任务
 
         :param request: Request instance for DeleteConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerRequest`
@@ -862,7 +862,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteCosRecharge(self, request):
-        """本接口用于删除cos导入任务
+        r"""本接口用于删除cos导入任务
 
         :param request: Request instance for DeleteCosRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCosRechargeRequest`
@@ -885,7 +885,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteDashboardSubscribe(self, request):
-        """此接口用于删除仪表盘订阅
+        r"""此接口用于删除仪表盘订阅
 
         :param request: Request instance for DeleteDashboardSubscribe.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDashboardSubscribeRequest`
@@ -908,7 +908,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteDataTransform(self, request):
-        """本接口用于删除数据加工任务
+        r"""本接口用于删除数据加工任务
 
         :param request: Request instance for DeleteDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformRequest`
@@ -931,7 +931,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteExport(self, request):
-        """本接口用于删除日志下载任务
+        r"""本接口用于删除日志下载任务
 
         :param request: Request instance for DeleteExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteExportRequest`
@@ -954,7 +954,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
+        r"""本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteIndexRequest`
@@ -977,7 +977,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteKafkaRecharge(self, request):
-        """本接口用于删除Kafka数据订阅任务
+        r"""本接口用于删除Kafka数据订阅任务
 
         :param request: Request instance for DeleteKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeRequest`
@@ -1000,7 +1000,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteLogset(self, request):
-        """本接口用于删除日志集。
+        r"""本接口用于删除日志集。
 
         :param request: Request instance for DeleteLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteLogsetRequest`
@@ -1023,7 +1023,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteMachineGroup(self, request):
-        """删除机器组
+        r"""删除机器组
 
         :param request: Request instance for DeleteMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupRequest`
@@ -1046,7 +1046,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteMachineGroupInfo(self, request):
-        """用于删除机器组信息
+        r"""用于删除机器组信息
 
         :param request: Request instance for DeleteMachineGroupInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupInfoRequest`
@@ -1069,7 +1069,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteNoticeContent(self, request):
-        """该接口用于删除通知内容配置
+        r"""该接口用于删除通知内容配置
 
         :param request: Request instance for DeleteNoticeContent.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteNoticeContentRequest`
@@ -1092,7 +1092,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteScheduledSql(self, request):
-        """本接口用于删除定时SQL分析任务
+        r"""本接口用于删除定时SQL分析任务
 
         :param request: Request instance for DeleteScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
@@ -1115,7 +1115,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteShipper(self, request):
-        """删除投递COS任务
+        r"""删除投递COS任务
 
         :param request: Request instance for DeleteShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteShipperRequest`
@@ -1138,7 +1138,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """本接口用于删除日志主题。
+        r"""本接口用于删除日志主题。
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteTopicRequest`
@@ -1161,7 +1161,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteWebCallback(self, request):
-        """该接口用于删除告警渠道回调配置。
+        r"""该接口用于删除告警渠道回调配置。
 
         :param request: Request instance for DeleteWebCallback.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteWebCallbackRequest`
@@ -1184,7 +1184,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """该接口用于获取通知渠道组列表
+        r"""该接口用于获取通知渠道组列表
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmNoticesRequest`
@@ -1207,7 +1207,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmShields(self, request):
-        """获取告警屏蔽配置规则
+        r"""获取告警屏蔽配置规则
 
         :param request: Request instance for DescribeAlarmShields.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsRequest`
@@ -1230,7 +1230,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarms(self, request):
-        """本接口用于获取告警策略列表。
+        r"""本接口用于获取告警策略列表。
 
         :param request: Request instance for DescribeAlarms.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmsRequest`
@@ -1253,7 +1253,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlertRecordHistory(self, request):
-        """获取告警历史，例如今天未恢复的告警
+        r"""获取告警历史，例如今天未恢复的告警
 
         :param request: Request instance for DescribeAlertRecordHistory.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlertRecordHistoryRequest`
@@ -1276,7 +1276,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeCloudProductLogTasks(self, request):
-        """云产品接入使用相关接口
+        r"""云产品接入使用相关接口
 
         :param request: Request instance for DescribeCloudProductLogTasks.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCloudProductLogTasksRequest`
@@ -1299,7 +1299,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigExtras(self, request):
-        """本接口用于获取特殊采集配置，特殊采集配置应用于自建K8S环境的采集Agent
+        r"""本接口用于获取特殊采集配置，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for DescribeConfigExtras.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasRequest`
@@ -1322,7 +1322,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigMachineGroups(self, request):
-        """获取采集规则配置所绑定的机器组
+        r"""获取采集规则配置所绑定的机器组
 
         :param request: Request instance for DescribeConfigMachineGroups.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigMachineGroupsRequest`
@@ -1345,7 +1345,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigs(self, request):
-        """获取采集规则配置
+        r"""获取采集规则配置
 
         :param request: Request instance for DescribeConfigs.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigsRequest`
@@ -1368,7 +1368,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConsoleSharingList(self, request):
-        """批量查询控制台分享列表
+        r"""批量查询控制台分享列表
 
         :param request: Request instance for DescribeConsoleSharingList.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsoleSharingListRequest`
@@ -1391,7 +1391,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConsumer(self, request):
-        """本接口用于获取投递配置
+        r"""本接口用于获取投递配置
 
         :param request: Request instance for DescribeConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerRequest`
@@ -1414,7 +1414,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeCosRecharges(self, request):
-        """本接口用于获取cos导入配置
+        r"""本接口用于获取cos导入配置
 
         :param request: Request instance for DescribeCosRecharges.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesRequest`
@@ -1437,7 +1437,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeDashboardSubscribes(self, request):
-        """本接口用于获取仪表盘订阅列表，支持分页
+        r"""本接口用于获取仪表盘订阅列表，支持分页
 
         :param request: Request instance for DescribeDashboardSubscribes.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardSubscribesRequest`
@@ -1460,7 +1460,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeDashboards(self, request):
-        """本接口用于获取仪表盘
+        r"""本接口用于获取仪表盘
 
         :param request: Request instance for DescribeDashboards.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardsRequest`
@@ -1483,7 +1483,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeDataTransformInfo(self, request):
-        """本接口用于获取数据加工任务列表基本信息
+        r"""本接口用于获取数据加工任务列表基本信息
 
         :param request: Request instance for DescribeDataTransformInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoRequest`
@@ -1506,7 +1506,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeExports(self, request):
-        """本接口用于获取日志下载任务列表
+        r"""本接口用于获取日志下载任务列表
 
         :param request: Request instance for DescribeExports.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeExportsRequest`
@@ -1529,7 +1529,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeIndex(self, request):
-        """本接口用于获取索引配置信息
+        r"""本接口用于获取索引配置信息
 
         :param request: Request instance for DescribeIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeIndexRequest`
@@ -1552,7 +1552,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaConsumer(self, request):
-        """获取Kafka协议消费信息
+        r"""获取Kafka协议消费信息
 
         :param request: Request instance for DescribeKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`
@@ -1575,7 +1575,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaRecharges(self, request):
-        """本接口用于获取Kafka数据订阅任务
+        r"""本接口用于获取Kafka数据订阅任务
 
         :param request: Request instance for DescribeKafkaRecharges.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesRequest`
@@ -1598,7 +1598,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogContext(self, request):
-        """本接口用于搜索日志上下文附近的内容，详情参考[上下文检索](https://cloud.tencent.com/document/product/614/53248)。
+        r"""本接口用于搜索日志上下文附近的内容，详情参考[上下文检索](https://cloud.tencent.com/document/product/614/53248)。
         API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
 
         :param request: Request instance for DescribeLogContext.
@@ -1622,7 +1622,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """本接口用于构建日志数量直方图
+        r"""本接口用于构建日志数量直方图
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`
@@ -1645,7 +1645,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogsets(self, request):
-        """本接口用于获取日志集信息列表。
+        r"""本接口用于获取日志集信息列表。
 
         :param request: Request instance for DescribeLogsets.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogsetsRequest`
@@ -1668,7 +1668,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachineGroupConfigs(self, request):
-        """获取机器组绑定的采集规则配置
+        r"""获取机器组绑定的采集规则配置
 
         :param request: Request instance for DescribeMachineGroupConfigs.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupConfigsRequest`
@@ -1691,7 +1691,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachineGroups(self, request):
-        """获取机器组信息列表
+        r"""获取机器组信息列表
 
         :param request: Request instance for DescribeMachineGroups.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupsRequest`
@@ -1714,7 +1714,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """获取指定机器组下的机器状态
+        r"""获取指定机器组下的机器状态
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachinesRequest`
@@ -1737,7 +1737,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeNoticeContents(self, request):
-        """获取通知内容列表
+        r"""获取通知内容列表
 
         :param request: Request instance for DescribeNoticeContents.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeNoticeContentsRequest`
@@ -1760,7 +1760,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribePartitions(self, request):
-        """该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
+        r"""该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 
         :param request: Request instance for DescribePartitions.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribePartitionsRequest`
@@ -1783,7 +1783,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeScheduledSqlInfo(self, request):
-        """本接口用于获取定时SQL分析任务列表
+        r"""本接口用于获取定时SQL分析任务列表
 
         :param request: Request instance for DescribeScheduledSqlInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoRequest`
@@ -1806,7 +1806,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShipperTasks(self, request):
-        """获取投递任务列表
+        r"""获取投递任务列表
 
         :param request: Request instance for DescribeShipperTasks.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShipperTasksRequest`
@@ -1829,7 +1829,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShippers(self, request):
-        """获取投递到COS的任务配置信息
+        r"""获取投递到COS的任务配置信息
 
         :param request: Request instance for DescribeShippers.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShippersRequest`
@@ -1852,7 +1852,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        """本接口用于获取日志主题列表，支持分页
+        r"""本接口用于获取日志主题列表，支持分页
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeTopicsRequest`
@@ -1875,7 +1875,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeWebCallbacks(self, request):
-        """获取告警渠道回调配置列表。
+        r"""获取告警渠道回调配置列表。
 
         :param request: Request instance for DescribeWebCallbacks.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeWebCallbacksRequest`
@@ -1898,7 +1898,7 @@ class ClsClient(AbstractClient):
 
 
     def GetAlarmLog(self, request):
-        """本接口用于获取告警策略执行详情
+        r"""本接口用于获取告警策略执行详情
 
         :param request: Request instance for GetAlarmLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.GetAlarmLogRequest`
@@ -1921,7 +1921,7 @@ class ClsClient(AbstractClient):
 
 
     def MergePartition(self, request):
-        """该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
+        r"""该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 
         :param request: Request instance for MergePartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.MergePartitionRequest`
@@ -1944,7 +1944,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarm(self, request):
-        """本接口用于修改告警策略。需要至少修改一项有效内容。
+        r"""本接口用于修改告警策略。需要至少修改一项有效内容。
 
         :param request: Request instance for ModifyAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmRequest`
@@ -1967,7 +1967,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """该接口用于修改通知渠道组
+        r"""该接口用于修改通知渠道组
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmNoticeRequest`
@@ -1990,7 +1990,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmShield(self, request):
-        """该接口用于修改告警屏蔽规则。当告警屏蔽规则为失效中时，无法对其进行修改
+        r"""该接口用于修改告警屏蔽规则。当告警屏蔽规则为失效中时，无法对其进行修改
 
         :param request: Request instance for ModifyAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldRequest`
@@ -2013,7 +2013,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyCloudProductLogCollection(self, request):
-        """内部云产品接入使用相关接口
+        r"""内部云产品接入使用相关接口
 
         :param request: Request instance for ModifyCloudProductLogCollection.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCloudProductLogCollectionRequest`
@@ -2036,7 +2036,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConfig(self, request):
-        """修改采集规则配置
+        r"""修改采集规则配置
 
         :param request: Request instance for ModifyConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigRequest`
@@ -2059,7 +2059,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConfigExtra(self, request):
-        """本接口用于修改特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
+        r"""本接口用于修改特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for ModifyConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraRequest`
@@ -2082,7 +2082,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConsoleSharing(self, request):
-        """修改控制台分享，目前仅允许修改有效期
+        r"""修改控制台分享，目前仅允许修改有效期
 
         :param request: Request instance for ModifyConsoleSharing.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsoleSharingRequest`
@@ -2105,7 +2105,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConsumer(self, request):
-        """本接口用于修改投递Ckafka任务
+        r"""本接口用于修改投递Ckafka任务
 
         :param request: Request instance for ModifyConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
@@ -2128,7 +2128,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyCosRecharge(self, request):
-        """本接口用于修改cos导入任务
+        r"""本接口用于修改cos导入任务
 
         :param request: Request instance for ModifyCosRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeRequest`
@@ -2151,7 +2151,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyDashboardSubscribe(self, request):
-        """此接口用于修改仪表盘订阅
+        r"""此接口用于修改仪表盘订阅
 
         :param request: Request instance for ModifyDashboardSubscribe.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDashboardSubscribeRequest`
@@ -2174,7 +2174,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyDataTransform(self, request):
-        """本接口用于修改数据加工任务
+        r"""本接口用于修改数据加工任务
 
         :param request: Request instance for ModifyDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformRequest`
@@ -2197,7 +2197,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyIndex(self, request):
-        """本接口用于修改索引配置，该接口除受默认接口请求频率限制外，针对单个日志主题，并发数不能超过1，即同一时间同一个日志主题只能有一个正在执行的索引配置修改操作。
+        r"""本接口用于修改索引配置，该接口除受默认接口请求频率限制外，针对单个日志主题，并发数不能超过1，即同一时间同一个日志主题只能有一个正在执行的索引配置修改操作。
 
         :param request: Request instance for ModifyIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyIndexRequest`
@@ -2220,7 +2220,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyKafkaConsumer(self, request):
-        """修改Kafka协议消费信息
+        r"""修改Kafka协议消费信息
 
         :param request: Request instance for ModifyKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerRequest`
@@ -2243,7 +2243,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyKafkaRecharge(self, request):
-        """本接口用于修改Kafka数据订阅任务
+        r"""本接口用于修改Kafka数据订阅任务
 
         :param request: Request instance for ModifyKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeRequest`
@@ -2266,7 +2266,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyLogset(self, request):
-        """本接口用于修改日志集信息
+        r"""本接口用于修改日志集信息
 
         :param request: Request instance for ModifyLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyLogsetRequest`
@@ -2289,7 +2289,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyMachineGroup(self, request):
-        """修改机器组。
+        r"""修改机器组。
         注意：修改接口直接覆盖历史数据，改为本次合法入参数据，请谨慎调用此接口。
 
         :param request: Request instance for ModifyMachineGroup.
@@ -2313,7 +2313,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyNoticeContent(self, request):
-        """该接口用于修改通知内容配置
+        r"""该接口用于修改通知内容配置
 
         :param request: Request instance for ModifyNoticeContent.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyNoticeContentRequest`
@@ -2336,7 +2336,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyScheduledSql(self, request):
-        """本接口用于修改定时SQL分析任务
+        r"""本接口用于修改定时SQL分析任务
 
         :param request: Request instance for ModifyScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`
@@ -2359,7 +2359,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyShipper(self, request):
-        """修改现有的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
+        r"""修改现有的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
 
         :param request: Request instance for ModifyShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyShipperRequest`
@@ -2382,7 +2382,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        """本接口用于修改日志主题。
+        r"""本接口用于修改日志主题。
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyTopicRequest`
@@ -2405,7 +2405,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyWebCallback(self, request):
-        """该接口用于修改告警渠道回调配置。
+        r"""该接口用于修改告警渠道回调配置。
 
         :param request: Request instance for ModifyWebCallback.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyWebCallbackRequest`
@@ -2428,7 +2428,7 @@ class ClsClient(AbstractClient):
 
 
     def OpenKafkaConsumer(self, request):
-        """打开Kafka协议消费功能
+        r"""打开Kafka协议消费功能
 
         :param request: Request instance for OpenKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.OpenKafkaConsumerRequest`
@@ -2451,7 +2451,7 @@ class ClsClient(AbstractClient):
 
 
     def PreviewKafkaRecharge(self, request):
-        """本接口用于预览Kafka数据订阅任务客户日志信息
+        r"""本接口用于预览Kafka数据订阅任务客户日志信息
 
         :param request: Request instance for PreviewKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeRequest`
@@ -2474,7 +2474,7 @@ class ClsClient(AbstractClient):
 
 
     def QueryMetric(self, request):
-        """查询指定时刻指标的最新值。
+        r"""查询指定时刻指标的最新值。
         如果该时刻向前推5分钟内均无指标数据，则无相应的查询结果。
 
         :param request: Request instance for QueryMetric.
@@ -2498,7 +2498,7 @@ class ClsClient(AbstractClient):
 
 
     def QueryRangeMetric(self, request):
-        """查询指定时间范围内指标的变化趋势
+        r"""查询指定时间范围内指标的变化趋势
 
         :param request: Request instance for QueryRangeMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricRequest`
@@ -2521,7 +2521,7 @@ class ClsClient(AbstractClient):
 
 
     def RetryShipperTask(self, request):
-        """重试失败的投递任务
+        r"""重试失败的投递任务
 
         :param request: Request instance for RetryShipperTask.
         :type request: :class:`tencentcloud.cls.v20201016.models.RetryShipperTaskRequest`
@@ -2544,7 +2544,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchCosRechargeInfo(self, request):
-        """本接口用于预览cos导入信息
+        r"""本接口用于预览cos导入信息
 
         :param request: Request instance for SearchCosRechargeInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoRequest`
@@ -2567,7 +2567,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchDashboardSubscribe(self, request):
-        """此接口用于预览仪表盘订阅
+        r"""此接口用于预览仪表盘订阅
 
         :param request: Request instance for SearchDashboardSubscribe.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchDashboardSubscribeRequest`
@@ -2590,7 +2590,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """本接口用于检索分析日志，使用该接口时请注意如下事项：
+        r"""本接口用于检索分析日志，使用该接口时请注意如下事项：
         1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
         2. 检索语法建议使用日志服务专用检索语法CQL，请使用SyntaxRule参数，将值设置为1，控制台默认也使用该语法规则。
         3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
@@ -2616,7 +2616,7 @@ class ClsClient(AbstractClient):
 
 
     def SplitPartition(self, request):
-        """该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
+        r"""该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 
         :param request: Request instance for SplitPartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.SplitPartitionRequest`
@@ -2639,7 +2639,7 @@ class ClsClient(AbstractClient):
 
 
     def UploadLog(self, request, body):
-        """## 提示
+        r"""## 提示
         为了保障您日志数据的可靠性以及更高效地使用日志服务，建议您使用CLS优化后的接口[上传结构化日志](https://cloud.tencent.com/document/product/614/16873)。
 
         同时我们给此接口专门优化定制了多个语言版本的SDK供您选择，SDK提供统一的异步发送、资源控制、自动重试、优雅关闭、感知上报等功能，使上报日志功能更完善，详情请参考[SDK采集](https://cloud.tencent.com/document/product/614/67157)。

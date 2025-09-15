@@ -27,7 +27,7 @@ class CatClient(AbstractClient):
 
 
     def CreateProbeTasks(self, request):
-        """批量创建拨测任务
+        r"""批量创建拨测任务
 
         :param request: Request instance for CreateProbeTasks.
         :type request: :class:`tencentcloud.cat.v20180409.models.CreateProbeTasksRequest`
@@ -50,7 +50,7 @@ class CatClient(AbstractClient):
 
 
     def DeleteProbeTask(self, request):
-        """删除拨测任务
+        r"""删除拨测任务
 
         :param request: Request instance for DeleteProbeTask.
         :type request: :class:`tencentcloud.cat.v20180409.models.DeleteProbeTaskRequest`
@@ -73,7 +73,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeDetailedSingleProbeData(self, request):
-        """根据时间范围、任务ID、运营商等条件查询单次拨测详情数据
+        r"""根据时间范围、任务ID、运营商等条件查询单次拨测详情数据
 
         :param request: Request instance for DescribeDetailedSingleProbeData.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeDetailedSingleProbeDataRequest`
@@ -96,7 +96,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeInstantTasks(self, request):
-        """获取历史即时拨测任务
+        r"""获取历史即时拨测任务
 
         :param request: Request instance for DescribeInstantTasks.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeInstantTasksRequest`
@@ -119,7 +119,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeNodeGroups(self, request):
-        """获取拨测点组（可用性拨测点组、高级拨测点组、我的拨测点组）
+        r"""获取拨测点组（可用性拨测点组、高级拨测点组、我的拨测点组）
 
         :param request: Request instance for DescribeNodeGroups.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeNodeGroupsRequest`
@@ -142,7 +142,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeNodes(self, request):
-        """获取拨测节点
+        r"""获取拨测节点
 
         :param request: Request instance for DescribeNodes.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeNodesRequest`
@@ -165,7 +165,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeMetricData(self, request):
-        """查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
+        r"""查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
         拨测频率与groupby聚合时间设置关联，如拨测频率为 30 分钟，则 grouby 聚合时间建议设置为大于30分钟，避免出现查询数据为空的情况
 
         :param request: Request instance for DescribeProbeMetricData.
@@ -189,7 +189,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeMetricTagValues(self, request):
-        """查询同个任务类型下的维度标签值，包括查询用户任务信息，具体任务下的多个维度标签信息。（通过为DescribeProbeMetricData接口的Filters参数添加维度筛选条件，可实现多维数据分析）
+        r"""查询同个任务类型下的维度标签值，包括查询用户任务信息，具体任务下的多个维度标签信息。（通过为DescribeProbeMetricData接口的Filters参数添加维度筛选条件，可实现多维数据分析）
 
         :param request: Request instance for DescribeProbeMetricTagValues.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricTagValuesRequest`
@@ -212,7 +212,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeNodes(self, request):
-        """查询拨测节点
+        r"""查询拨测节点
 
         :param request: Request instance for DescribeProbeNodes.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeNodesRequest`
@@ -235,7 +235,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeTasks(self, request):
-        """查询拨测任务列表
+        r"""查询拨测任务列表
 
         :param request: Request instance for DescribeProbeTasks.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeTasksRequest`
@@ -258,7 +258,7 @@ class CatClient(AbstractClient):
 
 
     def ResumeProbeTask(self, request):
-        """恢复拨测任务
+        r"""恢复拨测任务
 
         :param request: Request instance for ResumeProbeTask.
         :type request: :class:`tencentcloud.cat.v20180409.models.ResumeProbeTaskRequest`
@@ -281,7 +281,7 @@ class CatClient(AbstractClient):
 
 
     def SuspendProbeTask(self, request):
-        """暂停任务
+        r"""暂停任务
 
         :param request: Request instance for SuspendProbeTask.
         :type request: :class:`tencentcloud.cat.v20180409.models.SuspendProbeTaskRequest`
@@ -304,7 +304,7 @@ class CatClient(AbstractClient):
 
 
     def UpdateProbeTaskAttributes(self, request):
-        """更新探测任务属性
+        r"""更新探测任务属性
 
         :param request: Request instance for UpdateProbeTaskAttributes.
         :type request: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskAttributesRequest`
@@ -327,7 +327,7 @@ class CatClient(AbstractClient):
 
 
     def UpdateProbeTaskConfigurationList(self, request):
-        """批量更新拨测任务配置
+        r"""批量更新拨测任务配置
 
         :param request: Request instance for UpdateProbeTaskConfigurationList.
         :type request: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskConfigurationListRequest`

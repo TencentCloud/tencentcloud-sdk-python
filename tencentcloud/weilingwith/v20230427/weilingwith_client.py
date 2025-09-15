@@ -27,7 +27,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def AddAlarmProcessRecord(self, request):
-        """添加告警处理记录
+        r"""添加告警处理记录
 
         :param request: Request instance for AddAlarmProcessRecord.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.AddAlarmProcessRecordRequest`
@@ -50,7 +50,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def BatchCreateDevice(self, request):
-        """单个/批量新增设备
+        r"""单个/批量新增设备
 
         :param request: Request instance for BatchCreateDevice.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchCreateDeviceRequest`
@@ -73,7 +73,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def BatchDeleteDevice(self, request):
-        """批量删除设备
+        r"""批量删除设备
 
         :param request: Request instance for BatchDeleteDevice.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchDeleteDeviceRequest`
@@ -96,7 +96,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def BatchKillAlarm(self, request):
-        """批量消警
+        r"""批量消警
 
         :param request: Request instance for BatchKillAlarm.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchKillAlarmRequest`
@@ -119,7 +119,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def BatchReportAppMessage(self, request):
-        """批量上报应用消息
+        r"""批量上报应用消息
 
         :param request: Request instance for BatchReportAppMessage.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchReportAppMessageRequest`
@@ -142,7 +142,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ChangeAlarmStatus(self, request):
-        """变更告警状态
+        r"""变更告警状态
 
         :param request: Request instance for ChangeAlarmStatus.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ChangeAlarmStatusRequest`
@@ -165,7 +165,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ControlCameraPTZ(self, request):
-        """云台控制
+        r"""云台控制
 
         :param request: Request instance for ControlCameraPTZ.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ControlCameraPTZRequest`
@@ -188,7 +188,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ControlDevice(self, request):
-        """设备控制（单个、批量控制）
+        r"""设备控制（单个、批量控制）
 
         :param request: Request instance for ControlDevice.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ControlDeviceRequest`
@@ -211,7 +211,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def CreateApplicationToken(self, request):
-        """调用方应用，创建调用租户API的授权令牌。
+        r"""调用方应用，创建调用租户API的授权令牌。
 
         :param request: Request instance for CreateApplicationToken.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.CreateApplicationTokenRequest`
@@ -234,7 +234,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DeleteDeviceGroup(self, request):
-        """删除设备分组
+        r"""删除设备分组
 
         :param request: Request instance for DeleteDeviceGroup.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DeleteDeviceGroupRequest`
@@ -257,7 +257,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeActionList(self, request):
-        """动作列表查询
+        r"""动作列表查询
 
         :param request: Request instance for DescribeActionList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeActionListRequest`
@@ -280,7 +280,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeAdministrationByTag(self, request):
-        """根据标签获取行政区划列表
+        r"""根据标签获取行政区划列表
 
         :param request: Request instance for DescribeAdministrationByTag.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAdministrationByTagRequest`
@@ -303,7 +303,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeAlarmLevelList(self, request):
-        """告警级别枚举获取
+        r"""告警级别枚举获取
 
         :param request: Request instance for DescribeAlarmLevelList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmLevelListRequest`
@@ -326,7 +326,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeAlarmList(self, request):
-        """告警列表查询
+        r"""告警列表查询
 
         :param request: Request instance for DescribeAlarmList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmListRequest`
@@ -349,7 +349,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeAlarmStatusList(self, request):
-        """用来查询系统中的告警状态列表
+        r"""用来查询系统中的告警状态列表
 
         :param request: Request instance for DescribeAlarmStatusList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmStatusListRequest`
@@ -372,7 +372,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeAlarmTypeList(self, request):
-        """告警类型获取
+        r"""告警类型获取
 
         :param request: Request instance for DescribeAlarmTypeList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmTypeListRequest`
@@ -395,7 +395,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeApplicationList(self, request):
-        """查询指定空间关联的应用列表
+        r"""查询指定空间关联的应用列表
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeApplicationListRequest`
@@ -418,7 +418,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeBuildingList(self, request):
-        """查询建筑列表
+        r"""查询建筑列表
 
         :param request: Request instance for DescribeBuildingList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeBuildingListRequest`
@@ -441,7 +441,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeBuildingModel(self, request):
-        """查询建筑三维模型
+        r"""查询建筑三维模型
 
         :param request: Request instance for DescribeBuildingModel.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeBuildingModelRequest`
@@ -464,7 +464,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeBuildingProfile(self, request):
-        """查询建筑信息
+        r"""查询建筑信息
 
         :param request: Request instance for DescribeBuildingProfile.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeBuildingProfileRequest`
@@ -487,7 +487,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeCameraExtendInfo(self, request):
-        """获取视频扩展信息
+        r"""获取视频扩展信息
 
         :param request: Request instance for DescribeCameraExtendInfo.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCameraExtendInfoRequest`
@@ -510,7 +510,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeCityWorkspaceList(self, request):
-        """老微瓴后续不继续更新
+        r"""老微瓴后续不继续更新
 
         通过城市id查询工作空间列表
 
@@ -535,7 +535,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceGroupList(self, request):
-        """设备分组列表
+        r"""设备分组列表
 
         :param request: Request instance for DescribeDeviceGroupList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceGroupListRequest`
@@ -558,7 +558,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceList(self, request):
-        """设备列表查询/单个查询（支持通过筛选条件查询，设备类型、标签、PID、空间）
+        r"""设备列表查询/单个查询（支持通过筛选条件查询，设备类型、标签、PID、空间）
 
         :param request: Request instance for DescribeDeviceList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceListRequest`
@@ -581,7 +581,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceShadowList(self, request):
-        """获取设备影子数据
+        r"""获取设备影子数据
 
         :param request: Request instance for DescribeDeviceShadowList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceShadowListRequest`
@@ -604,7 +604,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceStatusList(self, request):
-        """设备状态获取
+        r"""设备状态获取
 
         :param request: Request instance for DescribeDeviceStatusList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceStatusListRequest`
@@ -627,7 +627,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceStatusStat(self, request):
-        """设备状态统计
+        r"""设备状态统计
 
         :param request: Request instance for DescribeDeviceStatusStat.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceStatusStatRequest`
@@ -650,7 +650,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceTagList(self, request):
-        """标签列表查询
+        r"""标签列表查询
 
         :param request: Request instance for DescribeDeviceTagList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceTagListRequest`
@@ -673,7 +673,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeDeviceTypeList(self, request):
-        """拉取设备的设备类型列表
+        r"""拉取设备的设备类型列表
 
         :param request: Request instance for DescribeDeviceTypeList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceTypeListRequest`
@@ -696,7 +696,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeEdgeApplicationToken(self, request):
-        """查询边缘应用凭证
+        r"""查询边缘应用凭证
 
         :param request: Request instance for DescribeEdgeApplicationToken.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEdgeApplicationTokenRequest`
@@ -719,7 +719,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeElementProfilePage(self, request):
-        """查询分页构件信息
+        r"""查询分页构件信息
 
         :param request: Request instance for DescribeElementProfilePage.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeElementProfilePageRequest`
@@ -742,7 +742,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeElementProfileTree(self, request):
-        """查询构件树
+        r"""查询构件树
 
         :param request: Request instance for DescribeElementProfileTree.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeElementProfileTreeRequest`
@@ -765,7 +765,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeEventList(self, request):
-        """事件列表查询
+        r"""事件列表查询
 
         :param request: Request instance for DescribeEventList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEventListRequest`
@@ -788,7 +788,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeFileDownloadURL(self, request):
-        """获取文件下载URL
+        r"""获取文件下载URL
 
         :param request: Request instance for DescribeFileDownloadURL.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeFileDownloadURLRequest`
@@ -811,7 +811,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeFileUploadURL(self, request):
-        """文件上传接口
+        r"""文件上传接口
 
         :param request: Request instance for DescribeFileUploadURL.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeFileUploadURLRequest`
@@ -834,7 +834,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeInterfaceList(self, request):
-        """查询接口列表
+        r"""查询接口列表
 
         :param request: Request instance for DescribeInterfaceList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeInterfaceListRequest`
@@ -857,7 +857,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeLinkRuleList(self, request):
-        """联动规则列表查询
+        r"""联动规则列表查询
 
         :param request: Request instance for DescribeLinkRuleList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeLinkRuleListRequest`
@@ -880,7 +880,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeModelList(self, request):
-        """模型列表查询/单个查询（产品模型/标准模型）
+        r"""模型列表查询/单个查询（产品模型/标准模型）
 
         :param request: Request instance for DescribeModelList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeModelListRequest`
@@ -903,7 +903,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeProductList(self, request):
-        """产品列表查询
+        r"""产品列表查询
 
         :param request: Request instance for DescribeProductList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeProductListRequest`
@@ -926,7 +926,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribePropertyList(self, request):
-        """查询构件属性（详情）
+        r"""查询构件属性（详情）
 
         :param request: Request instance for DescribePropertyList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribePropertyListRequest`
@@ -949,7 +949,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeRuleDetail(self, request):
-        """联动规则详情查询
+        r"""联动规则详情查询
 
         :param request: Request instance for DescribeRuleDetail.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeRuleDetailRequest`
@@ -972,7 +972,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSceneList(self, request):
-        """查询场景列表
+        r"""查询场景列表
 
         :param request: Request instance for DescribeSceneList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSceneListRequest`
@@ -995,7 +995,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSpaceDeviceIdList(self, request):
-        """查询指定空间设备编号列表
+        r"""查询指定空间设备编号列表
 
         :param request: Request instance for DescribeSpaceDeviceIdList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSpaceDeviceIdListRequest`
@@ -1018,7 +1018,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSpaceDeviceRelationList(self, request):
-        """查询指定空间下设备与构件绑定关系列表
+        r"""查询指定空间下设备与构件绑定关系列表
 
         :param request: Request instance for DescribeSpaceDeviceRelationList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSpaceDeviceRelationListRequest`
@@ -1041,7 +1041,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSpaceInfoByDeviceId(self, request):
-        """查询设备绑定的空间信息
+        r"""查询设备绑定的空间信息
 
         :param request: Request instance for DescribeSpaceInfoByDeviceId.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSpaceInfoByDeviceIdRequest`
@@ -1064,7 +1064,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSpaceRelationByDeviceId(self, request):
-        """查询设备绑定的空间层级关系
+        r"""查询设备绑定的空间层级关系
 
         :param request: Request instance for DescribeSpaceRelationByDeviceId.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSpaceRelationByDeviceIdRequest`
@@ -1087,7 +1087,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeSpaceTypeList(self, request):
-        """查询空间分类
+        r"""查询空间分类
 
         :param request: Request instance for DescribeSpaceTypeList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeSpaceTypeListRequest`
@@ -1110,7 +1110,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeTenantBuildingCountAndArea(self, request):
-        """查询租户楼栋数量和楼栋建筑面积
+        r"""查询租户楼栋数量和楼栋建筑面积
 
         :param request: Request instance for DescribeTenantBuildingCountAndArea.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeTenantBuildingCountAndAreaRequest`
@@ -1133,7 +1133,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeTenantDepartmentList(self, request):
-        """查询租户组织部门列表
+        r"""查询租户组织部门列表
 
         :param request: Request instance for DescribeTenantDepartmentList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeTenantDepartmentListRequest`
@@ -1156,7 +1156,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeTenantUserList(self, request):
-        """查询租户人员列表
+        r"""查询租户人员列表
 
         :param request: Request instance for DescribeTenantUserList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeTenantUserListRequest`
@@ -1179,7 +1179,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeVideoCloudRecord(self, request):
-        """云录像接口
+        r"""云录像接口
 
         :param request: Request instance for DescribeVideoCloudRecord.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeVideoCloudRecordRequest`
@@ -1202,7 +1202,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeVideoLiveStream(self, request):
-        """实时流接口
+        r"""实时流接口
 
         :param request: Request instance for DescribeVideoLiveStream.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeVideoLiveStreamRequest`
@@ -1225,7 +1225,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeVideoRecordStream(self, request):
-        """历史流接口
+        r"""历史流接口
 
         :param request: Request instance for DescribeVideoRecordStream.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeVideoRecordStreamRequest`
@@ -1248,7 +1248,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeWorkSpaceBuildingCountAndArea(self, request):
-        """查询项目空间楼栋数量与建筑面积
+        r"""查询项目空间楼栋数量与建筑面积
 
         :param request: Request instance for DescribeWorkSpaceBuildingCountAndArea.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkSpaceBuildingCountAndAreaRequest`
@@ -1271,7 +1271,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeWorkspaceList(self, request):
-        """获取租户下的空间列表
+        r"""获取租户下的空间列表
 
         :param request: Request instance for DescribeWorkspaceList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceListRequest`
@@ -1294,7 +1294,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeWorkspaceUserList(self, request):
-        """查询项目空间人员列表
+        r"""查询项目空间人员列表
 
         :param request: Request instance for DescribeWorkspaceUserList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceUserListRequest`
@@ -1317,7 +1317,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ModifyDeviceField(self, request):
-        """批量修改设备自定义字段值
+        r"""批量修改设备自定义字段值
 
         :param request: Request instance for ModifyDeviceField.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceFieldRequest`
@@ -1340,7 +1340,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ModifyDeviceGroup(self, request):
-        """批量修改设备组
+        r"""批量修改设备组
 
         :param request: Request instance for ModifyDeviceGroup.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceGroupRequest`
@@ -1363,7 +1363,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ModifyDeviceName(self, request):
-        """批量修改设备名字
+        r"""批量修改设备名字
 
         :param request: Request instance for ModifyDeviceName.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceNameRequest`
@@ -1386,7 +1386,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ModifyDeviceTag(self, request):
-        """批量修改设备标签
+        r"""批量修改设备标签
 
         :param request: Request instance for ModifyDeviceTag.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceTagRequest`
@@ -1409,7 +1409,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ReportAppMessage(self, request):
-        """上报应用消息
+        r"""上报应用消息
 
         :param request: Request instance for ReportAppMessage.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ReportAppMessageRequest`
@@ -1432,7 +1432,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def SaveDeviceGroup(self, request):
-        """设备分组新增/修改
+        r"""设备分组新增/修改
 
         :param request: Request instance for SaveDeviceGroup.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.SaveDeviceGroupRequest`
@@ -1455,7 +1455,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def StopVideoStreaming(self, request):
-        """断流接口
+        r"""断流接口
 
         :param request: Request instance for StopVideoStreaming.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.StopVideoStreamingRequest`
@@ -1478,7 +1478,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def UpdateWorkspaceParkAttributes(self, request):
-        """修改工作空间园区属性
+        r"""修改工作空间园区属性
 
         :param request: Request instance for UpdateWorkspaceParkAttributes.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.UpdateWorkspaceParkAttributesRequest`

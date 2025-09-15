@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AntiFraudVipCryptoFilter(AbstractModel):
-    """AntiFraudVipCryptoFilter– 业务入参
+    r"""AntiFraudVipCryptoFilter– 业务入参
 
     """
 
@@ -35,7 +35,7 @@ class AntiFraudVipCryptoFilter(AbstractModel):
 
     @property
     def CryptoType(self):
-        """约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
+        r"""约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
         :rtype: str
         """
         return self._CryptoType
@@ -46,7 +46,7 @@ class AntiFraudVipCryptoFilter(AbstractModel):
 
     @property
     def CryptoContent(self):
-        """约定用入参，默认不涉及
+        r"""约定用入参，默认不涉及
         :rtype: str
         """
         return self._CryptoContent
@@ -70,7 +70,7 @@ class AntiFraudVipCryptoFilter(AbstractModel):
 
 
 class AntiFraudVipFilter(AbstractModel):
-    """AntiFraudVipFilter– 业务入参
+    r"""AntiFraudVipFilter– 业务入参
 
     """
 
@@ -201,7 +201,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def CustomerUin(self):
-        """业务方账号 ID
+        r"""业务方账号 ID
         :rtype: str
         """
         return self._CustomerUin
@@ -212,7 +212,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def CustomerAppid(self):
-        """业务方APPID
+        r"""业务方APPID
         :rtype: str
         """
         return self._CustomerAppid
@@ -223,7 +223,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def IdNumber(self):
-        """身份证号
+        r"""身份证号
 注 1：下方 idCryptoType 为指定
 加密方式
 注 2：若 idNumber 加密则必传加
@@ -238,7 +238,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def PhoneNumber(self):
-        """手机号码（注：不需要带国家代码
+        r"""手机号码（注：不需要带国家代码
 例如：13430421011）
 注 1：下方 phoneCryptoType 为
 指定加密方式:
@@ -254,7 +254,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Scene(self):
-        """业务场景 ID
+        r"""业务场景 ID
         :rtype: str
         """
         return self._Scene
@@ -265,7 +265,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def CustomerSubUin(self):
-        """默认不使用，业务方子
+        r"""默认不使用，业务方子
 账号，若接口使用密钥对应是子账
 号则必填
         :rtype: str
@@ -278,7 +278,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Authorization(self):
-        """已获取约定标识则传 1；
+        r"""已获取约定标识则传 1；
 用于基于特定需求而传的标识字段
 注：有约定则是必传，若未传则查
 询接口失败
@@ -292,7 +292,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
 注 ：不支持加密
         :rtype: str
         """
@@ -304,7 +304,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def BankCardNumber(self):
-        """银行卡号
+        r"""银行卡号
         :rtype: str
         """
         return self._BankCardNumber
@@ -315,7 +315,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def UserIp(self):
-        """用户请求来源 IP
+        r"""用户请求来源 IP
         :rtype: str
         """
         return self._UserIp
@@ -326,7 +326,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Imei(self):
-        """国际移动设备识别码
+        r"""国际移动设备识别码
         :rtype: str
         """
         return self._Imei
@@ -337,7 +337,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Idfa(self):
-        """ios 系统广告标示符
+        r"""ios 系统广告标示符
         :rtype: str
         """
         return self._Idfa
@@ -348,7 +348,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def EmailAddress(self):
-        """用户邮箱地址
+        r"""用户邮箱地址
         :rtype: str
         """
         return self._EmailAddress
@@ -359,7 +359,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Address(self):
-        """用户住址
+        r"""用户住址
         :rtype: str
         """
         return self._Address
@@ -370,7 +370,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Mac(self):
-        """MAC 地址
+        r"""MAC 地址
         :rtype: str
         """
         return self._Mac
@@ -381,7 +381,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Imsi(self):
-        """国际移动用户识别码
+        r"""国际移动用户识别码
         :rtype: str
         """
         return self._Imsi
@@ -392,7 +392,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def AccountType(self):
-        """关联的腾讯帐号 QQ：1；
+        r"""关联的腾讯帐号 QQ：1；
 开放帐号微信： 2；
         :rtype: str
         """
@@ -404,7 +404,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def Uid(self):
-        """可选的 QQ 或微信 openid
+        r"""可选的 QQ 或微信 openid
         :rtype: str
         """
         return self._Uid
@@ -415,7 +415,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def AppIdU(self):
-        """qq 或微信分配给网站或应用的
+        r"""qq 或微信分配给网站或应用的
 appid，用来唯一标识网站或应用
         :rtype: str
         """
@@ -427,7 +427,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def WifiMac(self):
-        """ＷＩＦＩＭＡＣ
+        r"""ＷＩＦＩＭＡＣ
         :rtype: str
         """
         return self._WifiMac
@@ -438,7 +438,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def WifiSSID(self):
-        """WIFI 服务集标识
+        r"""WIFI 服务集标识
         :rtype: str
         """
         return self._WifiSSID
@@ -449,7 +449,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def WifiBSSID(self):
-        """WIFI-BSSID
+        r"""WIFI-BSSID
         :rtype: str
         """
         return self._WifiBSSID
@@ -460,7 +460,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def ExtensionId(self):
-        """拓展字段类型 ID
+        r"""拓展字段类型 ID
 注：默认不填写，需要时天御侧将
 提供
         :rtype: str
@@ -473,7 +473,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def ExtensionIn(self):
-        """拓展字段内容
+        r"""拓展字段内容
 注：默认不填，需要时天御侧将提
 供
         :rtype: str
@@ -486,7 +486,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def BusinessId(self):
-        """业务 ID，默认不传
+        r"""业务 ID，默认不传
         :rtype: str
         """
         return self._BusinessId
@@ -497,7 +497,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def IdCryptoType(self):
-        """身份证加密类型
+        r"""身份证加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
@@ -514,7 +514,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def PhoneCryptoType(self):
-        """手机号加密类型
+        r"""手机号加密类型
 0：不加密（默认值）
 1：md5,
 2：sha256
@@ -531,7 +531,7 @@ appid，用来唯一标识网站或应用
 
     @property
     def NameCryptoType(self):
-        """姓名加密类型：——注：已经不支持加
+        r"""姓名加密类型：——注：已经不支持加
 密，该字段存在是为了兼容可能历史客户
 版本；
 0：不加密（默认值）
@@ -585,7 +585,7 @@ appid，用来唯一标识网站或应用
 
 
 class AntiFraudVipRecord(AbstractModel):
-    """反欺诈VIP查询结果
+    r"""反欺诈VIP查询结果
 
     """
 
@@ -642,7 +642,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def Code(self):
-        """公共错误码
+        r"""公共错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -654,7 +654,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def CodeDesc(self):
-        """业务侧错误码。
+        r"""业务侧错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -666,7 +666,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def Message(self):
-        """业务侧错误信息。
+        r"""业务侧错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -678,7 +678,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def Found(self):
-        """表示该条记录能否查到：1 为能查到；-1 为查不到，此时 RiskScore 返回-1；
+        r"""表示该条记录能否查到：1 为能查到；-1 为查不到，此时 RiskScore 返回-1；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -690,7 +690,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def IdFound(self):
-        """表示该条记录中的身份 ID 能否查到
+        r"""表示该条记录中的身份 ID 能否查到
 1 为能查到
 -1 为查不到
 注意：此字段可能返回 null，表示取不到有效值。
@@ -704,7 +704,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def RiskScore(self):
-        """当可查到时，返回 0~100 区间，值越高 欺诈可
+        r"""当可查到时，返回 0~100 区间，值越高 欺诈可
 能性越大。
 当查不到时（即 found=-1），返回-1
 注意：此字段可能返回 null，表示取不到有效值。
@@ -718,7 +718,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def RiskInfo(self):
-        """扩展字段，对风险类型的说明。扩展字段并非必
+        r"""扩展字段，对风险类型的说明。扩展字段并非必
 然出现。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SimpleKindRiskDetail
@@ -731,7 +731,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def OtherModelScores(self):
-        """默认出现，提供模型版本号说明及多模型返回需
+        r"""默认出现，提供模型版本号说明及多模型返回需
 要时用到；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OtherModelScores
@@ -744,7 +744,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def PostTime(self):
-        """表示请求时间，标准 sunix 时间戳，非必然出现
+        r"""表示请求时间，标准 sunix 时间戳，非必然出现
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -756,7 +756,7 @@ class AntiFraudVipRecord(AbstractModel):
 
     @property
     def ExtensionOut(self):
-        """拓展字段，非必然出现，和 ExtensionIn 对应；
+        r"""拓展字段，非必然出现，和 ExtensionIn 对应；
 注：非必然出现，需要返回时天御侧将说明；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -800,7 +800,7 @@ class AntiFraudVipRecord(AbstractModel):
 
 
 class GetAntiFraudVipRequest(AbstractModel):
-    """GetAntiFraudVip请求参数结构体
+    r"""GetAntiFraudVip请求参数结构体
 
     """
 
@@ -821,7 +821,7 @@ BusinessCryptoData)。
 
     @property
     def BusinessSecurityData(self):
-        """默认不传，约定用原始业务
+        r"""默认不传，约定用原始业务
 入参(二选一BusinessSecurityData 或
 BusinessCryptoData)。
         :rtype: :class:`tencentcloud.afc.v20200226.models.AntiFraudVipFilter`
@@ -834,7 +834,7 @@ BusinessCryptoData)。
 
     @property
     def BusinessCryptoData(self):
-        """默认不传，约定用密文业务
+        r"""默认不传，约定用密文业务
 入参(二选一
 BusinessSecurityData 或
 BusinessCryptoData)。
@@ -865,7 +865,7 @@ BusinessCryptoData)。
 
 
 class GetAntiFraudVipResponse(AbstractModel):
-    """GetAntiFraudVip返回参数结构体
+    r"""GetAntiFraudVip返回参数结构体
 
     """
 
@@ -881,7 +881,7 @@ class GetAntiFraudVipResponse(AbstractModel):
 
     @property
     def Data(self):
-        """反欺诈评分接口结果
+        r"""反欺诈评分接口结果
         :rtype: :class:`tencentcloud.afc.v20200226.models.AntiFraudVipRecord`
         """
         return self._Data
@@ -892,7 +892,7 @@ class GetAntiFraudVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -910,7 +910,7 @@ class GetAntiFraudVipResponse(AbstractModel):
 
 
 class OtherModelScores(AbstractModel):
-    """扩展字段，包含多个模型的结果
+    r"""扩展字段，包含多个模型的结果
 
     """
 
@@ -926,7 +926,7 @@ class OtherModelScores(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型类型
+        r"""模型类型
         :rtype: str
         """
         return self._ModelId
@@ -937,7 +937,7 @@ class OtherModelScores(AbstractModel):
 
     @property
     def ModelScore(self):
-        """该模型评分
+        r"""该模型评分
         :rtype: str
         """
         return self._ModelScore
@@ -961,7 +961,7 @@ class OtherModelScores(AbstractModel):
 
 
 class QueryAntiFraudVipRequest(AbstractModel):
-    """QueryAntiFraudVip请求参数结构体
+    r"""QueryAntiFraudVip请求参数结构体
 
     """
 
@@ -1047,7 +1047,7 @@ ID 区分统计数据
 
     @property
     def PhoneNumber(self):
-        """电话号码(五选二)
+        r"""电话号码(五选二)
         :rtype: str
         """
         return self._PhoneNumber
@@ -1058,7 +1058,7 @@ ID 区分统计数据
 
     @property
     def IdNumber(self):
-        """Id号(五选二)
+        r"""Id号(五选二)
         :rtype: str
         """
         return self._IdNumber
@@ -1069,7 +1069,7 @@ ID 区分统计数据
 
     @property
     def BankCardNumber(self):
-        """银行卡号(五选二)
+        r"""银行卡号(五选二)
         :rtype: str
         """
         return self._BankCardNumber
@@ -1080,7 +1080,7 @@ ID 区分统计数据
 
     @property
     def UserIp(self):
-        """用户请求来源 IP(五选二)
+        r"""用户请求来源 IP(五选二)
         :rtype: str
         """
         return self._UserIp
@@ -1091,7 +1091,7 @@ ID 区分统计数据
 
     @property
     def Imei(self):
-        """国际移动设备识别码，和Idfa同时传入时，只看作一个关键入参(五选二)
+        r"""国际移动设备识别码，和Idfa同时传入时，只看作一个关键入参(五选二)
         :rtype: str
         """
         return self._Imei
@@ -1102,7 +1102,7 @@ ID 区分统计数据
 
     @property
     def Idfa(self):
-        """ios 系统广告标示符，和Imei同时传入时，只看作一个关键入参(五选二)
+        r"""ios 系统广告标示符，和Imei同时传入时，只看作一个关键入参(五选二)
         :rtype: str
         """
         return self._Idfa
@@ -1113,7 +1113,7 @@ ID 区分统计数据
 
     @property
     def Scene(self):
-        """业务场景 ID，需要找技术对接
+        r"""业务场景 ID，需要找技术对接
         :rtype: str
         """
         return self._Scene
@@ -1124,7 +1124,7 @@ ID 区分统计数据
 
     @property
     def Name(self):
-        """姓名
+        r"""姓名
         :rtype: str
         """
         return self._Name
@@ -1135,7 +1135,7 @@ ID 区分统计数据
 
     @property
     def EmailAddress(self):
-        """用户邮箱地址
+        r"""用户邮箱地址
         :rtype: str
         """
         return self._EmailAddress
@@ -1146,7 +1146,7 @@ ID 区分统计数据
 
     @property
     def Address(self):
-        """用户住址
+        r"""用户住址
         :rtype: str
         """
         return self._Address
@@ -1157,7 +1157,7 @@ ID 区分统计数据
 
     @property
     def AccountType(self):
-        """关联的腾讯帐号 QQ：1；
+        r"""关联的腾讯帐号 QQ：1；
 开放帐号微信： 2；
         :rtype: str
         """
@@ -1169,7 +1169,7 @@ ID 区分统计数据
 
     @property
     def Uid(self):
-        """可选的 QQ 或微信 openid
+        r"""可选的 QQ 或微信 openid
         :rtype: str
         """
         return self._Uid
@@ -1180,7 +1180,7 @@ ID 区分统计数据
 
     @property
     def AppIdU(self):
-        """qq 或微信分配给网站或应用的 appid，用来
+        r"""qq 或微信分配给网站或应用的 appid，用来
 唯一标识网站或应用
         :rtype: str
         """
@@ -1192,7 +1192,7 @@ ID 区分统计数据
 
     @property
     def WifiMac(self):
-        """WIFI MAC
+        r"""WIFI MAC
         :rtype: str
         """
         return self._WifiMac
@@ -1203,7 +1203,7 @@ ID 区分统计数据
 
     @property
     def WifiSSID(self):
-        """WIFI 服务集标识
+        r"""WIFI 服务集标识
         :rtype: str
         """
         return self._WifiSSID
@@ -1214,7 +1214,7 @@ ID 区分统计数据
 
     @property
     def WifiBSSID(self):
-        """WIFI-BSSID
+        r"""WIFI-BSSID
         :rtype: str
         """
         return self._WifiBSSID
@@ -1225,7 +1225,7 @@ ID 区分统计数据
 
     @property
     def BusinessId(self):
-        """业务 ID，在多个业务中使用此服务，通过此
+        r"""业务 ID，在多个业务中使用此服务，通过此
 ID 区分统计数据
         :rtype: str
         """
@@ -1237,7 +1237,7 @@ ID 区分统计数据
 
     @property
     def IdCryptoType(self):
-        """Id加密类型
+        r"""Id加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
@@ -1252,7 +1252,7 @@ ID 区分统计数据
 
     @property
     def PhoneCryptoType(self):
-        """手机号加密类型
+        r"""手机号加密类型
 0：不加密（默认值）
 1：md5, 2：sha256
 3：SM3
@@ -1266,7 +1266,7 @@ ID 区分统计数据
 
     @property
     def Mac(self):
-        """MAC 地址
+        r"""MAC 地址
         :rtype: str
         """
         return self._Mac
@@ -1277,7 +1277,7 @@ ID 区分统计数据
 
     @property
     def Imsi(self):
-        """国际移动用户识别码
+        r"""国际移动用户识别码
         :rtype: str
         """
         return self._Imsi
@@ -1288,7 +1288,7 @@ ID 区分统计数据
 
     @property
     def NameCryptoType(self):
-        """姓名加密类型0：不加密（默认值）1：md5
+        r"""姓名加密类型0：不加密（默认值）1：md5
         :rtype: str
         """
         return self._NameCryptoType
@@ -1332,7 +1332,7 @@ ID 区分统计数据
 
 
 class QueryAntiFraudVipResponse(AbstractModel):
-    """QueryAntiFraudVip返回参数结构体
+    r"""QueryAntiFraudVip返回参数结构体
 
     """
 
@@ -1362,7 +1362,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def Found(self):
-        """表示该条记录能否查到：1为能查到，-1为查不到
+        r"""表示该条记录能否查到：1为能查到，-1为查不到
         :rtype: int
         """
         return self._Found
@@ -1373,7 +1373,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def IdFound(self):
-        """表示该条Id能否查到：1为能查到，-1为查不到
+        r"""表示该条Id能否查到：1为能查到，-1为查不到
         :rtype: int
         """
         return self._IdFound
@@ -1384,7 +1384,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def RiskScore(self):
-        """0~100;值越高 欺诈可能性越大（注：该字段真实类型为有符号整型）
+        r"""0~100;值越高 欺诈可能性越大（注：该字段真实类型为有符号整型）
         :rtype: int
         """
         return self._RiskScore
@@ -1395,7 +1395,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def RiskInfo(self):
-        """扩展字段，对风险类型的说明
+        r"""扩展字段，对风险类型的说明
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskDetail
         """
@@ -1407,7 +1407,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def CodeDesc(self):
-        """业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
+        r"""业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1419,7 +1419,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1444,7 +1444,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
 
 class RiskDetail(AbstractModel):
-    """扩展字段，对风险类型的说明
+    r"""扩展字段，对风险类型的说明
 
     """
 
@@ -1457,7 +1457,7 @@ class RiskDetail(AbstractModel):
 
     @property
     def RiskCode(self):
-        """风险码
+        r"""风险码
         :rtype: int
         """
         return self._RiskCode
@@ -1480,7 +1480,7 @@ class RiskDetail(AbstractModel):
 
 
 class SimpleKindRiskDetail(AbstractModel):
-    """扩展字段，对风险类型的说明
+    r"""扩展字段，对风险类型的说明
 
     """
 
@@ -1498,7 +1498,7 @@ class SimpleKindRiskDetail(AbstractModel):
 
     @property
     def RiskCode(self):
-        """风险码
+        r"""风险码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1510,7 +1510,7 @@ class SimpleKindRiskDetail(AbstractModel):
 
     @property
     def RiskCodeValue(self):
-        """风险码详情
+        r"""风险码详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1535,7 +1535,7 @@ class SimpleKindRiskDetail(AbstractModel):
 
 
 class TransportGeneralInterfaceInput(AbstractModel):
-    """天御信鸽取数平台接口入参
+    r"""天御信鸽取数平台接口入参
 
     """
 
@@ -1554,7 +1554,7 @@ class TransportGeneralInterfaceInput(AbstractModel):
 
     @property
     def InterfaceName(self):
-        """公证处请求接口名
+        r"""公证处请求接口名
         :rtype: str
         """
         return self._InterfaceName
@@ -1565,7 +1565,7 @@ class TransportGeneralInterfaceInput(AbstractModel):
 
     @property
     def NotarizationInput(self):
-        """公证处业务详情二层入参
+        r"""公证处业务详情二层入参
         :rtype: str
         """
         return self._NotarizationInput
@@ -1576,7 +1576,7 @@ class TransportGeneralInterfaceInput(AbstractModel):
 
     @property
     def NotarizationSign(self):
-        """业务二层详情入参的哈希签名
+        r"""业务二层详情入参的哈希签名
         :rtype: str
         """
         return self._NotarizationSign
@@ -1601,7 +1601,7 @@ class TransportGeneralInterfaceInput(AbstractModel):
 
 
 class TransportGeneralInterfaceOutput(AbstractModel):
-    """天御信鸽取数平台接口出参
+    r"""天御信鸽取数平台接口出参
 
     """
 
@@ -1623,7 +1623,7 @@ class TransportGeneralInterfaceOutput(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1635,7 +1635,7 @@ class TransportGeneralInterfaceOutput(AbstractModel):
 
     @property
     def Message(self):
-        """回包信息
+        r"""回包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1647,7 +1647,7 @@ class TransportGeneralInterfaceOutput(AbstractModel):
 
     @property
     def NotarizationData(self):
-        """公证处业务回包
+        r"""公证处业务回包
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1673,7 +1673,7 @@ class TransportGeneralInterfaceOutput(AbstractModel):
 
 
 class TransportGeneralInterfaceRequest(AbstractModel):
-    """TransportGeneralInterface请求参数结构体
+    r"""TransportGeneralInterface请求参数结构体
 
     """
 
@@ -1686,7 +1686,7 @@ class TransportGeneralInterfaceRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
-        """业务入参
+        r"""业务入参
         :rtype: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceInput`
         """
         return self._BusinessSecurityData
@@ -1711,7 +1711,7 @@ class TransportGeneralInterfaceRequest(AbstractModel):
 
 
 class TransportGeneralInterfaceResponse(AbstractModel):
-    """TransportGeneralInterface返回参数结构体
+    r"""TransportGeneralInterface返回参数结构体
 
     """
 
@@ -1728,7 +1728,7 @@ class TransportGeneralInterfaceResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务出参
+        r"""业务出参
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceOutput`
         """
@@ -1740,7 +1740,7 @@ class TransportGeneralInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

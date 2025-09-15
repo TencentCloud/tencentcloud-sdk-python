@@ -27,7 +27,7 @@ class IgClient(AbstractClient):
 
 
     def DescribeIgOrderList(self, request):
-        """查询智能导诊订单列表
+        r"""查询智能导诊订单列表
 
         :param request: Request instance for DescribeIgOrderList.
         :type request: :class:`tencentcloud.ig.v20210518.models.DescribeIgOrderListRequest`

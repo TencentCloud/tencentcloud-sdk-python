@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CheckAnimateImageJobRequest(AbstractModel):
-    """CheckAnimateImageJob请求参数结构体
+    r"""CheckAnimateImageJob请求参数结构体
 
     """
 
@@ -57,7 +57,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """动作模板ID。
+        r"""动作模板ID。
         :rtype: str
         """
         return self._TemplateId
@@ -68,7 +68,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+        r"""图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
 图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
@@ -82,7 +82,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片base64数据。
+        r"""图片base64数据。
 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
 图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
@@ -97,7 +97,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def EnableBodyJoins(self):
-        """是否对输入图采用加强检测方案。
+        r"""是否对输入图采用加强检测方案。
 
 默认不加强检测（false），仅对输入图做必要的基础检测。
 
@@ -112,7 +112,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def EnableFace(self):
-        """是否开启人脸检测。
+        r"""是否开启人脸检测。
 
 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
         :rtype: bool
@@ -141,7 +141,7 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
 
 class CheckAnimateImageJobResponse(AbstractModel):
-    """CheckAnimateImageJob返回参数结构体
+    r"""CheckAnimateImageJob返回参数结构体
 
     """
 
@@ -157,7 +157,7 @@ class CheckAnimateImageJobResponse(AbstractModel):
 
     @property
     def CheckPass(self):
-        """输入图是否通过校验。
+        r"""输入图是否通过校验。
         :rtype: bool
         """
         return self._CheckPass
@@ -168,7 +168,7 @@ class CheckAnimateImageJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -184,7 +184,7 @@ class CheckAnimateImageJobResponse(AbstractModel):
 
 
 class DescribeImageAnimateJobRequest(AbstractModel):
-    """DescribeImageAnimateJob请求参数结构体
+    r"""DescribeImageAnimateJob请求参数结构体
 
     """
 
@@ -197,7 +197,7 @@ class DescribeImageAnimateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -220,7 +220,7 @@ class DescribeImageAnimateJobRequest(AbstractModel):
 
 
 class DescribeImageAnimateJobResponse(AbstractModel):
-    """DescribeImageAnimateJob返回参数结构体
+    r"""DescribeImageAnimateJob返回参数结构体
 
     """
 
@@ -248,7 +248,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
         :rtype: str
         """
         return self._Status
@@ -259,7 +259,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """错误码。
+        r"""错误码。
         :rtype: str
         """
         return self._ErrorCode
@@ -270,7 +270,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息。
+        r"""错误信息。
         :rtype: str
         """
         return self._ErrorMessage
@@ -281,7 +281,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
-        """结果视频URL。有效期 24 小时。
+        r"""结果视频URL。有效期 24 小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -292,7 +292,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def MaskVideoUrl(self):
-        """掩码视频链接
+        r"""掩码视频链接
         :rtype: str
         """
         return self._MaskVideoUrl
@@ -303,7 +303,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -323,7 +323,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
 
 class DescribePortraitSingJobRequest(AbstractModel):
-    """DescribePortraitSingJob请求参数结构体
+    r"""DescribePortraitSingJob请求参数结构体
 
     """
 
@@ -336,7 +336,7 @@ class DescribePortraitSingJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._JobId
@@ -359,7 +359,7 @@ class DescribePortraitSingJobRequest(AbstractModel):
 
 
 class DescribePortraitSingJobResponse(AbstractModel):
-    """DescribePortraitSingJob返回参数结构体
+    r"""DescribePortraitSingJob返回参数结构体
 
     """
 
@@ -394,7 +394,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._JobId
@@ -405,7 +405,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def StatusCode(self):
-        """任务状态码
+        r"""任务状态码
 —RUN：处理中
 —FAIL：处理失败
 —STOP：处理终止
@@ -420,7 +420,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def StatusMsg(self):
-        """任务状态信息
+        r"""任务状态信息
         :rtype: str
         """
         return self._StatusMsg
@@ -431,7 +431,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """任务执行错误码。当任务状态不为FAIL时，该值为""。
+        r"""任务执行错误码。当任务状态不为FAIL时，该值为""。
         :rtype: str
         """
         return self._ErrorCode
@@ -442,7 +442,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """任务执行错误信息。当任务状态不为FAIL时，该值为""。
+        r"""任务执行错误信息。当任务状态不为FAIL时，该值为""。
         :rtype: str
         """
         return self._ErrorMessage
@@ -453,7 +453,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
-        """生成视频的URL地址。有效期24小时。
+        r"""生成视频的URL地址。有效期24小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -464,7 +464,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -485,7 +485,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
 
 class DescribeTemplateToVideoJobRequest(AbstractModel):
-    """DescribeTemplateToVideoJob请求参数结构体
+    r"""DescribeTemplateToVideoJob请求参数结构体
 
     """
 
@@ -498,7 +498,7 @@ class DescribeTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -521,7 +521,7 @@ class DescribeTemplateToVideoJobRequest(AbstractModel):
 
 
 class DescribeTemplateToVideoJobResponse(AbstractModel):
-    """DescribeTemplateToVideoJob返回参数结构体
+    r"""DescribeTemplateToVideoJob返回参数结构体
 
     """
 
@@ -546,7 +546,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
         :rtype: str
         """
         return self._Status
@@ -557,7 +557,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
         :rtype: str
         """
         return self._ErrorCode
@@ -568,7 +568,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
         :rtype: str
         """
         return self._ErrorMessage
@@ -579,7 +579,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
-        """结果视频 URL。有效期 24 小时。
+        r"""结果视频 URL。有效期 24 小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -590,7 +590,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -609,7 +609,7 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
 
 
 class DescribeVideoStylizationJobRequest(AbstractModel):
-    """DescribeVideoStylizationJob请求参数结构体
+    r"""DescribeVideoStylizationJob请求参数结构体
 
     """
 
@@ -622,7 +622,7 @@ class DescribeVideoStylizationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._JobId
@@ -645,7 +645,7 @@ class DescribeVideoStylizationJobRequest(AbstractModel):
 
 
 class DescribeVideoStylizationJobResponse(AbstractModel):
-    """DescribeVideoStylizationJob返回参数结构体
+    r"""DescribeVideoStylizationJob返回参数结构体
 
     """
 
@@ -680,7 +680,7 @@ JobSuccess: "处理完成"。
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -691,7 +691,7 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusCode(self):
-        """任务状态码。取值说明：
+        r"""任务状态码。取值说明：
 JobInit:  "初始化中"；
 JobModerationFailed: "审核失败"；
 JobRunning: "处理中"；
@@ -707,7 +707,7 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusMsg(self):
-        """任务状态描述。取值说明：
+        r"""任务状态描述。取值说明：
 JobInit:  "初始化中"；
 JobModerationFailed: "审核失败"；
 JobRunning: "处理中"；
@@ -723,7 +723,7 @@ JobSuccess: "处理完成"。
 
     @property
     def ResultVideoUrl(self):
-        """处理结果视频Url。URL有效期为24小时。
+        r"""处理结果视频Url。URL有效期为24小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -734,7 +734,7 @@ JobSuccess: "处理完成"。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -753,7 +753,7 @@ JobSuccess: "处理完成"。
 
 
 class Image(AbstractModel):
-    """图片
+    r"""图片
 
     """
 
@@ -769,7 +769,7 @@ class Image(AbstractModel):
 
     @property
     def Base64(self):
-        """图片Base64
+        r"""图片Base64
         :rtype: str
         """
         return self._Base64
@@ -780,7 +780,7 @@ class Image(AbstractModel):
 
     @property
     def Url(self):
-        """图片Url
+        r"""图片Url
         :rtype: str
         """
         return self._Url
@@ -804,7 +804,7 @@ class Image(AbstractModel):
 
 
 class LogoParam(AbstractModel):
-    """logo参数
+    r"""logo参数
 
     """
 
@@ -823,7 +823,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """水印 Url
+        r"""水印 Url
         :rtype: str
         """
         return self._LogoUrl
@@ -834,7 +834,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoImage(self):
-        """水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+        r"""水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
         :rtype: str
         """
         return self._LogoImage
@@ -845,7 +845,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
-        """水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+        r"""水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
         """
         return self._LogoRect
@@ -872,7 +872,7 @@ class LogoParam(AbstractModel):
 
 
 class LogoRect(AbstractModel):
-    """水印图输入框
+    r"""水印图输入框
 
     """
 
@@ -894,7 +894,7 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
-        """水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
+        r"""水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
         :rtype: int
         """
         return self._X
@@ -905,7 +905,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
-        """水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
+        r"""水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
         :rtype: int
         """
         return self._Y
@@ -916,7 +916,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
-        """水印图框宽度。
+        r"""水印图框宽度。
         :rtype: int
         """
         return self._Width
@@ -927,7 +927,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
-        """水印图框高度。
+        r"""水印图框高度。
         :rtype: int
         """
         return self._Height
@@ -953,7 +953,7 @@ class LogoRect(AbstractModel):
 
 
 class SubmitImageAnimateJobRequest(AbstractModel):
-    """SubmitImageAnimateJob请求参数结构体
+    r"""SubmitImageAnimateJob请求参数结构体
 
     """
 
@@ -1011,7 +1011,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def ImageUrl(self):
-        """图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+        r"""图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
 图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
@@ -1025,7 +1025,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def ImageBase64(self):
-        """图片base64数据。
+        r"""图片base64数据。
 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
 图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
@@ -1040,7 +1040,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def TemplateId(self):
-        """动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
+        r"""动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
 
         :rtype: str
         """
@@ -1052,7 +1052,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def EnableAudio(self):
-        """结果视频是否保留模板音频。默认为true
+        r"""结果视频是否保留模板音频。默认为true
         :rtype: bool
         """
         return self._EnableAudio
@@ -1063,7 +1063,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def EnableBodyJoins(self):
-        """是否对输入图采用加强检测方案。
+        r"""是否对输入图采用加强检测方案。
 
 默认不加强检测（false），仅对输入图做必要的基础检测。
 
@@ -1078,7 +1078,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def EnableSegment(self):
-        """是否对结果视频背景进行分割，默认值为false。
+        r"""是否对结果视频背景进行分割，默认值为false。
 true：分割结果视频，结果视频（ResultVideoUrl）将为去除背景的绿幕视频，并返回掩码视频（MaskVideoUrl）；
 false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的视频，掩码视频（MaskVideoUrl）为空字符串。
         :rtype: bool
@@ -1091,7 +1091,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def LogoAdd(self):
-        """为生成视频添加标识的开关，默认为0。
+        r"""为生成视频添加标识的开关，默认为0。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -1106,7 +1106,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
@@ -1118,7 +1118,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def EnableFace(self):
-        """是否开启人脸检测。
+        r"""是否开启人脸检测。
 
 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
         :rtype: bool
@@ -1153,7 +1153,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
 
 class SubmitImageAnimateJobResponse(AbstractModel):
-    """SubmitImageAnimateJob返回参数结构体
+    r"""SubmitImageAnimateJob返回参数结构体
 
     """
 
@@ -1169,7 +1169,7 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """图片跳舞任务ID。
+        r"""图片跳舞任务ID。
         :rtype: str
         """
         return self._JobId
@@ -1180,7 +1180,7 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1196,7 +1196,7 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
 
 class SubmitPortraitSingJobRequest(AbstractModel):
-    """SubmitPortraitSingJob请求参数结构体
+    r"""SubmitPortraitSingJob请求参数结构体
 
     """
 
@@ -1245,7 +1245,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def AudioUrl(self):
-        """传入音频URL地址，音频要求：
+        r"""传入音频URL地址，音频要求：
 - 音频时长：2秒 - 60秒
 - 音频格式：mp3、wav、m4a
         :rtype: str
@@ -1258,7 +1258,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def ImageUrl(self):
-        """传入图片URL地址，图片要求：
+        r"""传入图片URL地址，图片要求：
 - 图片格式：jpg、jpeg、png、bmp、webp
 - 图片分辨率：192～4096
 - 图片大小：不超过10M
@@ -1274,7 +1274,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def ImageBase64(self):
-        """传入图片Base64编码，编码后请求体大小不超过10M。
+        r"""传入图片Base64编码，编码后请求体大小不超过10M。
 图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
         :rtype: str
         """
@@ -1286,7 +1286,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def Mode(self):
-        """唱演模式，默认使用人像模式。
+        r"""唱演模式，默认使用人像模式。
 Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
 Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
         :rtype: str
@@ -1299,7 +1299,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def Resolution(self):
-        """生成视频尺寸。可选取值："512:512"。
+        r"""生成视频尺寸。可选取值："512:512"。
 
 人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
 
@@ -1314,7 +1314,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def LogoAdd(self):
-        """为生成视频添加标识的开关，默认为1。 
+        r"""为生成视频添加标识的开关，默认为1。 
 1：添加标识；
  0：不添加标识；
 其他数值：默认按1处理。 
@@ -1329,7 +1329,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
     @property
     def LogoParam(self):
-        """标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        r"""标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         return self._LogoParam
@@ -1360,7 +1360,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 
 
 class SubmitPortraitSingJobResponse(AbstractModel):
-    """SubmitPortraitSingJob返回参数结构体
+    r"""SubmitPortraitSingJob返回参数结构体
 
     """
 
@@ -1376,7 +1376,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。任务有效期为48小时。
+        r"""任务ID。任务有效期为48小时。
         :rtype: str
         """
         return self._JobId
@@ -1387,7 +1387,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1403,7 +1403,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
 
 class SubmitTemplateToVideoJobRequest(AbstractModel):
-    """SubmitTemplateToVideoJob请求参数结构体
+    r"""SubmitTemplateToVideoJob请求参数结构体
 
     """
 
@@ -1440,7 +1440,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def Template(self):
-        """特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
+        r"""特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
         :rtype: str
         """
         return self._Template
@@ -1451,7 +1451,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def Images(self):
-        """参考图像，最多输入2张图。
+        r"""参考图像，最多输入2张图。
 - 支持传入图片Base64编码或图片URL（确保可访问）
 - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
 - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
@@ -1466,7 +1466,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        """为生成视频添加标识的开关，默认为1。
+        r"""为生成视频添加标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
@@ -1481,7 +1481,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        """标识内容设置。
+        r"""标识内容设置。
 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
@@ -1493,7 +1493,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        """视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+        r"""视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
         :rtype: str
         """
         return self._Resolution
@@ -1504,7 +1504,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def BGM(self):
-        """是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+        r"""是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
         :rtype: bool
         """
         return self._BGM
@@ -1539,7 +1539,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
 
 class SubmitTemplateToVideoJobResponse(AbstractModel):
-    """SubmitTemplateToVideoJob返回参数结构体
+    r"""SubmitTemplateToVideoJob返回参数结构体
 
     """
 
@@ -1555,7 +1555,7 @@ class SubmitTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: str
         """
         return self._JobId
@@ -1566,7 +1566,7 @@ class SubmitTemplateToVideoJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1582,7 +1582,7 @@ class SubmitTemplateToVideoJobResponse(AbstractModel):
 
 
 class SubmitVideoStylizationJobRequest(AbstractModel):
-    """SubmitVideoStylizationJob请求参数结构体
+    r"""SubmitVideoStylizationJob请求参数结构体
 
     """
 
@@ -1614,7 +1614,7 @@ high：风格化强度强。
 
     @property
     def StyleId(self):
-        """风格ID。取值说明：
+        r"""风格ID。取值说明：
 2d_anime：2D动漫；
 3d_cartoon：3D卡通；
 3d_china：3D国潮；
@@ -1629,7 +1629,7 @@ pixel_art：像素风。
 
     @property
     def VideoUrl(self):
-        """输入视频URL。视频要求：
+        r"""输入视频URL。视频要求：
 - 视频格式：mp4、mov；
 - 视频时长：1～60秒；
 - 视频分辨率：540P~2056P，即长宽像素数均在540px～2056px范围内；
@@ -1645,7 +1645,7 @@ pixel_art：像素风。
 
     @property
     def StyleStrength(self):
-        """风格化强度。取值说明：
+        r"""风格化强度。取值说明：
 low：风格化强度弱；
 medium：风格化强度中等；
 high：风格化强度强。
@@ -1674,7 +1674,7 @@ high：风格化强度强。
 
 
 class SubmitVideoStylizationJobResponse(AbstractModel):
-    """SubmitVideoStylizationJob返回参数结构体
+    r"""SubmitVideoStylizationJob返回参数结构体
 
     """
 
@@ -1690,7 +1690,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。任务有效期为48小时。
+        r"""任务ID。任务有效期为48小时。
         :rtype: str
         """
         return self._JobId
@@ -1701,7 +1701,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

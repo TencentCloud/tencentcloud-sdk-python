@@ -27,7 +27,7 @@ class DnspodClient(AbstractClient):
 
 
     def CheckRecordSnapshotRollback(self, request):
-        """回滚前检查单条记录
+        r"""回滚前检查单条记录
 
         :param request: Request instance for CheckRecordSnapshotRollback.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CheckRecordSnapshotRollbackRequest`
@@ -50,7 +50,7 @@ class DnspodClient(AbstractClient):
 
 
     def CheckSnapshotRollback(self, request):
-        """快照回滚前检查
+        r"""快照回滚前检查
 
         :param request: Request instance for CheckSnapshotRollback.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CheckSnapshotRollbackRequest`
@@ -73,7 +73,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDeal(self, request):
-        """DNSPod商品下单
+        r"""DNSPod商品下单
 
         :param request: Request instance for CreateDeal.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDealRequest`
@@ -96,7 +96,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomain(self, request):
-        """添加域名
+        r"""添加域名
 
         备注：该接口不支持添加子域名。
 
@@ -121,7 +121,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainAlias(self, request):
-        """创建域名别名
+        r"""创建域名别名
 
         :param request: Request instance for CreateDomainAlias.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainAliasRequest`
@@ -144,7 +144,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainBatch(self, request):
-        """批量添加域名
+        r"""批量添加域名
 
         :param request: Request instance for CreateDomainBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainBatchRequest`
@@ -167,7 +167,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainCustomLine(self, request):
-        """创建域名的自定义线路
+        r"""创建域名的自定义线路
 
         :param request: Request instance for CreateDomainCustomLine.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainCustomLineRequest`
@@ -190,7 +190,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainGroup(self, request):
-        """创建域名分组
+        r"""创建域名分组
 
         :param request: Request instance for CreateDomainGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainGroupRequest`
@@ -213,7 +213,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainsAnalyticsFile(self, request):
-        """批量导出域名解析量
+        r"""批量导出域名解析量
 
         :param request: Request instance for CreateDomainsAnalyticsFile.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainsAnalyticsFileRequest`
@@ -236,7 +236,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateLineGroup(self, request):
-        """创建域名的线路分组
+        r"""创建域名的线路分组
 
         :param request: Request instance for CreateLineGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupRequest`
@@ -259,7 +259,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateLineGroupCopy(self, request):
-        """复制域名的线路分组
+        r"""复制域名的线路分组
 
         :param request: Request instance for CreateLineGroupCopy.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupCopyRequest`
@@ -282,7 +282,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecord(self, request):
-        """添加记录
+        r"""添加记录
         备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for CreateRecord.
@@ -306,7 +306,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecordBatch(self, request):
-        """批量添加记录
+        r"""批量添加记录
 
         :param request: Request instance for CreateRecordBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordBatchRequest`
@@ -329,7 +329,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecordGroup(self, request):
-        """添加记录分组
+        r"""添加记录分组
 
         :param request: Request instance for CreateRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordGroupRequest`
@@ -352,7 +352,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateSnapshot(self, request):
-        """创建快照
+        r"""创建快照
 
         :param request: Request instance for CreateSnapshot.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateSnapshotRequest`
@@ -375,7 +375,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateSubDomainsAnalyticsFile(self, request):
-        """批量导出子域名解析量
+        r"""批量导出子域名解析量
 
         :param request: Request instance for CreateSubDomainsAnalyticsFile.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateSubDomainsAnalyticsFileRequest`
@@ -398,7 +398,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateSubdomainValidateTXTValue(self, request):
-        """创建添加子域名 Zone 域解析时所需要的 TXT 记录值
+        r"""创建添加子域名 Zone 域解析时所需要的 TXT 记录值
 
         :param request: Request instance for CreateSubdomainValidateTXTValue.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateSubdomainValidateTXTValueRequest`
@@ -421,7 +421,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateTXTRecord(self, request):
-        """添加TXT记录
+        r"""添加TXT记录
         备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for CreateTXTRecord.
@@ -445,7 +445,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomain(self, request):
-        """删除域名
+        r"""删除域名
 
         :param request: Request instance for DeleteDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainRequest`
@@ -468,7 +468,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomainAlias(self, request):
-        """删除域名别名
+        r"""删除域名别名
 
         :param request: Request instance for DeleteDomainAlias.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainAliasRequest`
@@ -491,7 +491,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomainBatch(self, request):
-        """批量删除域名
+        r"""批量删除域名
 
         :param request: Request instance for DeleteDomainBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainBatchRequest`
@@ -514,7 +514,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomainCustomLine(self, request):
-        """删除域名的自定义线路
+        r"""删除域名的自定义线路
 
         :param request: Request instance for DeleteDomainCustomLine.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainCustomLineRequest`
@@ -537,7 +537,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteLineGroup(self, request):
-        """删除域名的线路分组
+        r"""删除域名的线路分组
 
         :param request: Request instance for DeleteLineGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteLineGroupRequest`
@@ -560,7 +560,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteRecord(self, request):
-        """删除记录
+        r"""删除记录
 
         :param request: Request instance for DeleteRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordRequest`
@@ -583,7 +583,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteRecordBatch(self, request):
-        """批量删除解析记录
+        r"""批量删除解析记录
         备注：因存储限制， 建议一次批量删除最多2000条
 
         :param request: Request instance for DeleteRecordBatch.
@@ -607,7 +607,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteRecordGroup(self, request):
-        """删除记录分组
+        r"""删除记录分组
 
         :param request: Request instance for DeleteRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordGroupRequest`
@@ -630,7 +630,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteShareDomain(self, request):
-        """按账号删除域名共享
+        r"""按账号删除域名共享
 
         :param request: Request instance for DeleteShareDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteShareDomainRequest`
@@ -653,7 +653,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteSnapshot(self, request):
-        """删除快照
+        r"""删除快照
 
         :param request: Request instance for DeleteSnapshot.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteSnapshotRequest`
@@ -676,7 +676,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeBatchTask(self, request):
-        """获取批量操作任务执行详情
+        r"""获取批量操作任务执行详情
 
         :param request: Request instance for DescribeBatchTask.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeBatchTaskRequest`
@@ -699,7 +699,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomain(self, request):
-        """获取域名信息
+        r"""获取域名信息
 
         :param request: Request instance for DescribeDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainRequest`
@@ -722,7 +722,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainAliasList(self, request):
-        """获取域名别名列表
+        r"""获取域名别名列表
 
         :param request: Request instance for DescribeDomainAliasList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAliasListRequest`
@@ -745,7 +745,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainAnalytics(self, request):
-        """统计各个域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况
+        r"""统计各个域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况
 
         :param request: Request instance for DescribeDomainAnalytics.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAnalyticsRequest`
@@ -768,7 +768,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainAndRecordList(self, request):
-        """批量操作中搜索域名
+        r"""批量操作中搜索域名
 
         :param request: Request instance for DescribeDomainAndRecordList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAndRecordListRequest`
@@ -791,7 +791,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainCustomLineList(self, request):
-        """获取域名的自定义线路列表
+        r"""获取域名的自定义线路列表
 
         :param request: Request instance for DescribeDomainCustomLineList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainCustomLineListRequest`
@@ -814,7 +814,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainFilterList(self, request):
-        """获取域名筛选列表
+        r"""获取域名筛选列表
         备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for DescribeDomainFilterList.
@@ -838,7 +838,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainGroupList(self, request):
-        """获取域名分组列表
+        r"""获取域名分组列表
 
         :param request: Request instance for DescribeDomainGroupList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainGroupListRequest`
@@ -861,7 +861,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainList(self, request):
-        """获取域名列表
+        r"""获取域名列表
 
         :param request: Request instance for DescribeDomainList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainListRequest`
@@ -884,7 +884,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainLogList(self, request):
-        """获取域名日志
+        r"""获取域名日志
 
         :param request: Request instance for DescribeDomainLogList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainLogListRequest`
@@ -907,7 +907,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainPreview(self, request):
-        """获取域名概览信息
+        r"""获取域名概览信息
 
         :param request: Request instance for DescribeDomainPreview.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainPreviewRequest`
@@ -930,7 +930,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainPurview(self, request):
-        """获取域名权限
+        r"""获取域名权限
 
         :param request: Request instance for DescribeDomainPurview.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainPurviewRequest`
@@ -953,7 +953,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainShareInfo(self, request):
-        """获取域名共享信息
+        r"""获取域名共享信息
 
         :param request: Request instance for DescribeDomainShareInfo.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainShareInfoRequest`
@@ -976,7 +976,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainShareUserList(self, request):
-        """获取指定域名的已共享列表
+        r"""获取指定域名的已共享列表
 
         :param request: Request instance for DescribeDomainShareUserList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainShareUserListRequest`
@@ -999,7 +999,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainVipList(self, request):
-        """获取套餐列表
+        r"""获取套餐列表
 
         :param request: Request instance for DescribeDomainVipList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainVipListRequest`
@@ -1022,7 +1022,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainWhois(self, request):
-        """获取域名Whois信息
+        r"""获取域名Whois信息
 
         :param request: Request instance for DescribeDomainWhois.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainWhoisRequest`
@@ -1045,7 +1045,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeFileInfoByJobId(self, request):
-        """根据批量任务ID获取生成文件信息
+        r"""根据批量任务ID获取生成文件信息
 
         :param request: Request instance for DescribeFileInfoByJobId.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeFileInfoByJobIdRequest`
@@ -1068,7 +1068,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeLineGroupList(self, request):
-        """获取域名的线路分组列表
+        r"""获取域名的线路分组列表
 
         :param request: Request instance for DescribeLineGroupList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeLineGroupListRequest`
@@ -1091,7 +1091,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribePackageDetail(self, request):
-        """获取各套餐配置详情
+        r"""获取各套餐配置详情
 
         :param request: Request instance for DescribePackageDetail.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribePackageDetailRequest`
@@ -1114,7 +1114,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecord(self, request):
-        """获取记录信息
+        r"""获取记录信息
 
         :param request: Request instance for DescribeRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordRequest`
@@ -1137,7 +1137,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordExistExceptDefaultNS(self, request):
-        """判断是否有除系统默认的@-NS记录之外的记录存在
+        r"""判断是否有除系统默认的@-NS记录之外的记录存在
 
         :param request: Request instance for DescribeRecordExistExceptDefaultNS.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordExistExceptDefaultNSRequest`
@@ -1160,7 +1160,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordFilterList(self, request):
-        """获取某个域名下的解析记录列表
+        r"""获取某个域名下的解析记录列表
         备注：
         1. 新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
         2.  API获取的记录总条数会比控制台多2条，原因是： 为了防止用户误操作导致解析服务不可用，对2021-10-29 14:24:26之后添加的域名，在控制台都不显示这2条NS记录。
@@ -1186,7 +1186,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordGroupList(self, request):
-        """查询解析记录分组列表
+        r"""查询解析记录分组列表
 
         :param request: Request instance for DescribeRecordGroupList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordGroupListRequest`
@@ -1209,7 +1209,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordLineCategoryList(self, request):
-        """按分类返回线路列表
+        r"""按分类返回线路列表
 
         :param request: Request instance for DescribeRecordLineCategoryList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineCategoryListRequest`
@@ -1232,7 +1232,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordLineList(self, request):
-        """获取等级允许的线路
+        r"""获取等级允许的线路
 
         :param request: Request instance for DescribeRecordLineList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineListRequest`
@@ -1255,7 +1255,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordList(self, request):
-        """获取某个域名下的解析记录列表
+        r"""获取某个域名下的解析记录列表
         备注：
         1. 新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
         2.  API获取的记录总条数会比控制台多2条，原因是： 为了防止用户误操作导致解析服务不可用，对2021-10-29 14:24:26之后添加的域名，在控制台都不显示这2条NS记录。
@@ -1281,7 +1281,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordSnapshotRollbackResult(self, request):
-        """查询解析记录重新回滚的结果
+        r"""查询解析记录重新回滚的结果
 
         :param request: Request instance for DescribeRecordSnapshotRollbackResult.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordSnapshotRollbackResultRequest`
@@ -1304,7 +1304,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordType(self, request):
-        """获取等级允许的记录类型
+        r"""获取等级允许的记录类型
 
         :param request: Request instance for DescribeRecordType.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordTypeRequest`
@@ -1327,7 +1327,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeResolveCount(self, request):
-        """查看域名的解析量
+        r"""查看域名的解析量
 
         :param request: Request instance for DescribeResolveCount.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeResolveCountRequest`
@@ -1350,7 +1350,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSnapshotConfig(self, request):
-        """查询解析快照配置
+        r"""查询解析快照配置
 
         :param request: Request instance for DescribeSnapshotConfig.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSnapshotConfigRequest`
@@ -1373,7 +1373,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSnapshotList(self, request):
-        """查询快照列表
+        r"""查询快照列表
 
         :param request: Request instance for DescribeSnapshotList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSnapshotListRequest`
@@ -1396,7 +1396,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSnapshotRollbackResult(self, request):
-        """查询快照回滚结果
+        r"""查询快照回滚结果
 
         :param request: Request instance for DescribeSnapshotRollbackResult.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSnapshotRollbackResultRequest`
@@ -1419,7 +1419,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSnapshotRollbackTask(self, request):
-        """查询最近一次回滚
+        r"""查询最近一次回滚
 
         :param request: Request instance for DescribeSnapshotRollbackTask.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSnapshotRollbackTaskRequest`
@@ -1442,7 +1442,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSubdomainAnalytics(self, request):
-        """统计子域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况。仅付费套餐域名可用。
+        r"""统计子域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况。仅付费套餐域名可用。
 
         :param request: Request instance for DescribeSubdomainAnalytics.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSubdomainAnalyticsRequest`
@@ -1465,7 +1465,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSubdomainValidateStatus(self, request):
-        """查看添加子域名 Zone 域解析 TXT 记录值验证状态
+        r"""查看添加子域名 Zone 域解析 TXT 记录值验证状态
 
         :param request: Request instance for DescribeSubdomainValidateStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSubdomainValidateStatusRequest`
@@ -1488,7 +1488,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeUserDetail(self, request):
-        """获取账户信息
+        r"""获取账户信息
 
         :param request: Request instance for DescribeUserDetail.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeUserDetailRequest`
@@ -1511,7 +1511,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeVASStatistic(self, request):
-        """获取域名增值服务用量
+        r"""获取域名增值服务用量
 
         :param request: Request instance for DescribeVASStatistic.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeVASStatisticRequest`
@@ -1534,7 +1534,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeVasList(self, request):
-        """获取增值服务列表
+        r"""获取增值服务列表
 
         :param request: Request instance for DescribeVasList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeVasListRequest`
@@ -1557,7 +1557,7 @@ class DnspodClient(AbstractClient):
 
 
     def DownloadSnapshot(self, request):
-        """下载快照
+        r"""下载快照
 
         :param request: Request instance for DownloadSnapshot.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DownloadSnapshotRequest`
@@ -1580,7 +1580,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainCustomLine(self, request):
-        """修改域名的自定义线路
+        r"""修改域名的自定义线路
 
         :param request: Request instance for ModifyDomainCustomLine.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainCustomLineRequest`
@@ -1603,7 +1603,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainLock(self, request):
-        """锁定域名
+        r"""锁定域名
 
         :param request: Request instance for ModifyDomainLock.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainLockRequest`
@@ -1626,7 +1626,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainOwner(self, request):
-        """域名过户
+        r"""域名过户
 
         :param request: Request instance for ModifyDomainOwner.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainOwnerRequest`
@@ -1649,7 +1649,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainRemark(self, request):
-        """设置域名备注
+        r"""设置域名备注
 
         :param request: Request instance for ModifyDomainRemark.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainRemarkRequest`
@@ -1672,7 +1672,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainStatus(self, request):
-        """修改域名状态
+        r"""修改域名状态
 
         :param request: Request instance for ModifyDomainStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainStatusRequest`
@@ -1695,7 +1695,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainToGroup(self, request):
-        """修改域名所属分组
+        r"""修改域名所属分组
 
         :param request: Request instance for ModifyDomainToGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainToGroupRequest`
@@ -1718,7 +1718,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainUnlock(self, request):
-        """域名锁定解锁
+        r"""域名锁定解锁
 
         :param request: Request instance for ModifyDomainUnlock.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainUnlockRequest`
@@ -1741,7 +1741,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDynamicDNS(self, request):
-        """更新动态 DNS 记录
+        r"""更新动态 DNS 记录
 
         :param request: Request instance for ModifyDynamicDNS.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDynamicDNSRequest`
@@ -1764,7 +1764,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyLineGroup(self, request):
-        """修改域名的线路分组
+        r"""修改域名的线路分组
 
         :param request: Request instance for ModifyLineGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyLineGroupRequest`
@@ -1787,7 +1787,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyPackageAutoRenew(self, request):
-        """DNS 解析套餐自动续费设置
+        r"""DNS 解析套餐自动续费设置
 
         :param request: Request instance for ModifyPackageAutoRenew.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyPackageAutoRenewRequest`
@@ -1810,7 +1810,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecord(self, request):
-        """修改记录
+        r"""修改记录
 
         :param request: Request instance for ModifyRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordRequest`
@@ -1833,7 +1833,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordBatch(self, request):
-        """批量修改记录
+        r"""批量修改记录
 
         :param request: Request instance for ModifyRecordBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordBatchRequest`
@@ -1856,7 +1856,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordFields(self, request):
-        """修改记录可选字段
+        r"""修改记录可选字段
 
         :param request: Request instance for ModifyRecordFields.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordFieldsRequest`
@@ -1879,7 +1879,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordGroup(self, request):
-        """修改记录分组
+        r"""修改记录分组
 
         :param request: Request instance for ModifyRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordGroupRequest`
@@ -1902,7 +1902,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordRemark(self, request):
-        """设置记录备注
+        r"""设置记录备注
 
         :param request: Request instance for ModifyRecordRemark.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordRemarkRequest`
@@ -1925,7 +1925,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordStatus(self, request):
-        """修改解析记录的状态
+        r"""修改解析记录的状态
 
         :param request: Request instance for ModifyRecordStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordStatusRequest`
@@ -1948,7 +1948,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordToGroup(self, request):
-        """将记录添加到分组
+        r"""将记录添加到分组
 
         :param request: Request instance for ModifyRecordToGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordToGroupRequest`
@@ -1971,7 +1971,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifySnapshotConfig(self, request):
-        """修改快照配置
+        r"""修改快照配置
 
         :param request: Request instance for ModifySnapshotConfig.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifySnapshotConfigRequest`
@@ -1994,7 +1994,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifySubdomainStatus(self, request):
-        """暂停子域名的解析记录
+        r"""暂停子域名的解析记录
 
         :param request: Request instance for ModifySubdomainStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifySubdomainStatusRequest`
@@ -2017,7 +2017,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyTXTRecord(self, request):
-        """修改TXT记录
+        r"""修改TXT记录
 
         :param request: Request instance for ModifyTXTRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyTXTRecordRequest`
@@ -2040,7 +2040,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyVasAutoRenewStatus(self, request):
-        """增值服务自动续费设置
+        r"""增值服务自动续费设置
 
         :param request: Request instance for ModifyVasAutoRenewStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyVasAutoRenewStatusRequest`
@@ -2063,7 +2063,7 @@ class DnspodClient(AbstractClient):
 
 
     def PayOrderWithBalance(self, request):
-        """DNSPod商品余额支付
+        r"""DNSPod商品余额支付
 
         :param request: Request instance for PayOrderWithBalance.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.PayOrderWithBalanceRequest`
@@ -2086,7 +2086,7 @@ class DnspodClient(AbstractClient):
 
 
     def RollbackRecordSnapshot(self, request):
-        """重新回滚指定解析记录快照
+        r"""重新回滚指定解析记录快照
 
         :param request: Request instance for RollbackRecordSnapshot.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.RollbackRecordSnapshotRequest`
@@ -2109,7 +2109,7 @@ class DnspodClient(AbstractClient):
 
 
     def RollbackSnapshot(self, request):
-        """回滚快照
+        r"""回滚快照
 
         :param request: Request instance for RollbackSnapshot.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.RollbackSnapshotRequest`

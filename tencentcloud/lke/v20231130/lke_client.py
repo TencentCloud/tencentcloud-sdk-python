@@ -27,7 +27,7 @@ class LkeClient(AbstractClient):
 
 
     def CheckAttributeLabelExist(self, request):
-        """检查属性下的标签名是否存在
+        r"""检查属性下的标签名是否存在
 
         :param request: Request instance for CheckAttributeLabelExist.
         :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelExistRequest`
@@ -50,7 +50,7 @@ class LkeClient(AbstractClient):
 
 
     def CheckAttributeLabelRefer(self, request):
-        """检查属性标签引用
+        r"""检查属性标签引用
 
         :param request: Request instance for CheckAttributeLabelRefer.
         :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelReferRequest`
@@ -73,7 +73,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateAgent(self, request):
-        """你创建一个Agent
+        r"""你创建一个Agent
 
         :param request: Request instance for CreateAgent.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAgentRequest`
@@ -96,7 +96,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateApp(self, request):
-        """创建知识引擎应用。
+        r"""创建知识引擎应用。
 
         :param request: Request instance for CreateApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAppRequest`
@@ -119,7 +119,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateAttributeLabel(self, request):
-        """创建标签
+        r"""创建标签
 
         :param request: Request instance for CreateAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAttributeLabelRequest`
@@ -142,7 +142,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateDocCate(self, request):
-        """创建Doc分类
+        r"""创建Doc分类
 
         :param request: Request instance for CreateDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateDocCateRequest`
@@ -165,7 +165,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateQA(self, request):
-        """录入问答
+        r"""录入问答
 
         :param request: Request instance for CreateQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateQARequest`
@@ -188,7 +188,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateQACate(self, request):
-        """创建QA分类
+        r"""创建QA分类
 
         :param request: Request instance for CreateQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateQACateRequest`
@@ -211,7 +211,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateRejectedQuestion(self, request):
-        """创建拒答问题
+        r"""创建拒答问题
 
         :param request: Request instance for CreateRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateRejectedQuestionRequest`
@@ -234,7 +234,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateRelease(self, request):
-        """创建发布
+        r"""创建发布
 
         :param request: Request instance for CreateRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateReleaseRequest`
@@ -257,7 +257,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateSharedKnowledge(self, request):
-        """创建共享知识库。
+        r"""创建共享知识库。
 
         :param request: Request instance for CreateSharedKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateSharedKnowledgeRequest`
@@ -280,7 +280,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateVar(self, request):
-        """创建变量
+        r"""创建变量
 
         :param request: Request instance for CreateVar.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateVarRequest`
@@ -303,7 +303,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateWorkflowRun(self, request):
-        """本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+        r"""本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
         注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，并且打开“异步调用”的开关，才能创建成功。
 
         :param request: Request instance for CreateWorkflowRun.
@@ -327,7 +327,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteAgent(self, request):
-        """删除Agent
+        r"""删除Agent
 
         :param request: Request instance for DeleteAgent.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAgentRequest`
@@ -350,7 +350,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteApp(self, request):
-        """删除应用
+        r"""删除应用
 
         :param request: Request instance for DeleteApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAppRequest`
@@ -373,7 +373,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteAttributeLabel(self, request):
-        """删除属性标签
+        r"""删除属性标签
 
         :param request: Request instance for DeleteAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAttributeLabelRequest`
@@ -396,7 +396,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteDoc(self, request):
-        """删除文档
+        r"""删除文档
 
         :param request: Request instance for DeleteDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocRequest`
@@ -419,7 +419,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteDocCate(self, request):
-        """Doc分类删除
+        r"""Doc分类删除
 
         :param request: Request instance for DeleteDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateRequest`
@@ -442,7 +442,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteQA(self, request):
-        """删除问答
+        r"""删除问答
 
         :param request: Request instance for DeleteQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteQARequest`
@@ -465,7 +465,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteQACate(self, request):
-        """分类删除
+        r"""分类删除
 
         :param request: Request instance for DeleteQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteQACateRequest`
@@ -488,7 +488,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteRejectedQuestion(self, request):
-        """删除拒答问题
+        r"""删除拒答问题
 
         :param request: Request instance for DeleteRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteRejectedQuestionRequest`
@@ -511,7 +511,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteSharedKnowledge(self, request):
-        """删除共享知识库。
+        r"""删除共享知识库。
 
         :param request: Request instance for DeleteSharedKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteSharedKnowledgeRequest`
@@ -534,7 +534,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteVar(self, request):
-        """删除变量
+        r"""删除变量
 
         :param request: Request instance for DeleteVar.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteVarRequest`
@@ -557,7 +557,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeApp(self, request):
-        """获取企业下应用详情
+        r"""获取企业下应用详情
 
         :param request: Request instance for DescribeApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAppRequest`
@@ -580,7 +580,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeAppAgentList(self, request):
-        """查询指定应用下的Agent列表
+        r"""查询指定应用下的Agent列表
 
         :param request: Request instance for DescribeAppAgentList.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAppAgentListRequest`
@@ -603,7 +603,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeAttributeLabel(self, request):
-        """查询属性标签详情
+        r"""查询属性标签详情
 
         :param request: Request instance for DescribeAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAttributeLabelRequest`
@@ -626,7 +626,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeCallStatsGraph(self, request):
-        """接口调用折线图
+        r"""接口调用折线图
 
         :param request: Request instance for DescribeCallStatsGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCallStatsGraphRequest`
@@ -649,7 +649,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeConcurrencyUsage(self, request):
-        """并发调用响应
+        r"""并发调用响应
 
         :param request: Request instance for DescribeConcurrencyUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageRequest`
@@ -672,7 +672,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeConcurrencyUsageGraph(self, request):
-        """并发调用折线图
+        r"""并发调用折线图
 
         :param request: Request instance for DescribeConcurrencyUsageGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageGraphRequest`
@@ -695,7 +695,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeDoc(self, request):
-        """文档详情
+        r"""文档详情
 
         :param request: Request instance for DescribeDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeDocRequest`
@@ -718,7 +718,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeKnowledgeUsage(self, request):
-        """查询知识库用量
+        r"""查询知识库用量
 
         :param request: Request instance for DescribeKnowledgeUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsageRequest`
@@ -741,7 +741,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeKnowledgeUsagePieGraph(self, request):
-        """查询企业知识库容量饼图
+        r"""查询企业知识库容量饼图
 
         :param request: Request instance for DescribeKnowledgeUsagePieGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsagePieGraphRequest`
@@ -764,7 +764,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeNodeRun(self, request):
-        """通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
+        r"""通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
 
         :param request: Request instance for DescribeNodeRun.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeNodeRunRequest`
@@ -787,7 +787,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeQA(self, request):
-        """问答详情
+        r"""问答详情
 
         :param request: Request instance for DescribeQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeQARequest`
@@ -810,7 +810,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRefer(self, request):
-        """获取来源详情列表
+        r"""获取来源详情列表
 
         :param request: Request instance for DescribeRefer.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReferRequest`
@@ -833,7 +833,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRelease(self, request):
-        """发布详情
+        r"""发布详情
 
         :param request: Request instance for DescribeRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseRequest`
@@ -856,7 +856,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeReleaseInfo(self, request):
-        """拉取发布按钮状态、最后发布时间
+        r"""拉取发布按钮状态、最后发布时间
 
         :param request: Request instance for DescribeReleaseInfo.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseInfoRequest`
@@ -879,7 +879,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRobotBizIDByAppKey(self, request):
-        """通过appKey获取应用业务ID
+        r"""通过appKey获取应用业务ID
 
         :param request: Request instance for DescribeRobotBizIDByAppKey.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeRobotBizIDByAppKeyRequest`
@@ -902,7 +902,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeSearchStatsGraph(self, request):
-        """查询搜索服务调用折线图
+        r"""查询搜索服务调用折线图
 
         :param request: Request instance for DescribeSearchStatsGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSearchStatsGraphRequest`
@@ -925,7 +925,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeSegments(self, request):
-        """获取片段详情
+        r"""获取片段详情
 
         :param request: Request instance for DescribeSegments.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsRequest`
@@ -948,7 +948,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeSharedKnowledge(self, request):
-        """查询共享知识库。
+        r"""查询共享知识库。
 
         :param request: Request instance for DescribeSharedKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSharedKnowledgeRequest`
@@ -971,7 +971,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeStorageCredential(self, request):
-        """获取文件上传临时密钥
+        r"""获取文件上传临时密钥
 
         :param request: Request instance for DescribeStorageCredential.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeStorageCredentialRequest`
@@ -994,7 +994,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeTokenUsage(self, request):
-        """接口调用token详情
+        r"""接口调用token详情
 
         :param request: Request instance for DescribeTokenUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageRequest`
@@ -1017,7 +1017,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeTokenUsageGraph(self, request):
-        """接口调用token折线图
+        r"""接口调用token折线图
 
         :param request: Request instance for DescribeTokenUsageGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageGraphRequest`
@@ -1040,7 +1040,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeUnsatisfiedReplyContext(self, request):
-        """获取不满意回复上下文
+        r"""获取不满意回复上下文
 
         :param request: Request instance for DescribeUnsatisfiedReplyContext.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeUnsatisfiedReplyContextRequest`
@@ -1063,7 +1063,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeWorkflowRun(self, request):
-        """创建了工作流的异步运行实例后，通过本接口可以查询整体的运行详情。
+        r"""创建了工作流的异步运行实例后，通过本接口可以查询整体的运行详情。
 
         :param request: Request instance for DescribeWorkflowRun.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeWorkflowRunRequest`
@@ -1086,7 +1086,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportAttributeLabel(self, request):
-        """导出属性标签
+        r"""导出属性标签
 
         :param request: Request instance for ExportAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportAttributeLabelRequest`
@@ -1109,7 +1109,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportQAList(self, request):
-        """导出QA列表
+        r"""导出QA列表
 
         :param request: Request instance for ExportQAList.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportQAListRequest`
@@ -1132,7 +1132,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportUnsatisfiedReply(self, request):
-        """导出不满意回复
+        r"""导出不满意回复
 
         :param request: Request instance for ExportUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportUnsatisfiedReplyRequest`
@@ -1155,7 +1155,7 @@ class LkeClient(AbstractClient):
 
 
     def GenerateQA(self, request):
-        """文档生成问答
+        r"""文档生成问答
 
         :param request: Request instance for GenerateQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.GenerateQARequest`
@@ -1178,7 +1178,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAnswerTypeDataCount(self, request):
-        """回答类型数据统计
+        r"""回答类型数据统计
 
         :param request: Request instance for GetAnswerTypeDataCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountRequest`
@@ -1201,7 +1201,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAppKnowledgeCount(self, request):
-        """获取模型列表
+        r"""获取模型列表
 
         :param request: Request instance for GetAppKnowledgeCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAppKnowledgeCountRequest`
@@ -1224,7 +1224,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAppSecret(self, request):
-        """获取应用密钥
+        r"""获取应用密钥
 
         :param request: Request instance for GetAppSecret.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAppSecretRequest`
@@ -1247,7 +1247,7 @@ class LkeClient(AbstractClient):
 
 
     def GetDocPreview(self, request):
-        """获取文档预览信息
+        r"""获取文档预览信息
 
         :param request: Request instance for GetDocPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetDocPreviewRequest`
@@ -1270,7 +1270,7 @@ class LkeClient(AbstractClient):
 
 
     def GetLikeDataCount(self, request):
-        """点赞点踩数据统计
+        r"""点赞点踩数据统计
 
         :param request: Request instance for GetLikeDataCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountRequest`
@@ -1293,7 +1293,7 @@ class LkeClient(AbstractClient):
 
 
     def GetMsgRecord(self, request):
-        """获取聊天历史
+        r"""获取聊天历史
         根据会话session id获取聊天历史（仅保留180天内的历史对话数据）
 
         :param request: Request instance for GetMsgRecord.
@@ -1317,7 +1317,7 @@ class LkeClient(AbstractClient):
 
 
     def GetTaskStatus(self, request):
-        """获取任务状态
+        r"""获取任务状态
 
         :param request: Request instance for GetTaskStatus.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetTaskStatusRequest`
@@ -1340,7 +1340,7 @@ class LkeClient(AbstractClient):
 
 
     def GetVarList(self, request):
-        """查询自定义变量列表
+        r"""查询自定义变量列表
 
         :param request: Request instance for GetVarList.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetVarListRequest`
@@ -1363,7 +1363,7 @@ class LkeClient(AbstractClient):
 
 
     def GetWsToken(self, request):
-        """获取ws token
+        r"""获取ws token
 
         :param request: Request instance for GetWsToken.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetWsTokenRequest`
@@ -1386,7 +1386,7 @@ class LkeClient(AbstractClient):
 
 
     def GroupDoc(self, request):
-        """Doc分组
+        r"""Doc分组
 
         :param request: Request instance for GroupDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.GroupDocRequest`
@@ -1409,7 +1409,7 @@ class LkeClient(AbstractClient):
 
 
     def GroupQA(self, request):
-        """QA分组
+        r"""QA分组
 
         :param request: Request instance for GroupQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.GroupQARequest`
@@ -1432,7 +1432,7 @@ class LkeClient(AbstractClient):
 
 
     def IgnoreUnsatisfiedReply(self, request):
-        """忽略不满意回复
+        r"""忽略不满意回复
 
         :param request: Request instance for IgnoreUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.IgnoreUnsatisfiedReplyRequest`
@@ -1455,7 +1455,7 @@ class LkeClient(AbstractClient):
 
 
     def IsTransferIntent(self, request):
-        """是否意图转人工
+        r"""是否意图转人工
 
         :param request: Request instance for IsTransferIntent.
         :type request: :class:`tencentcloud.lke.v20231130.models.IsTransferIntentRequest`
@@ -1478,7 +1478,7 @@ class LkeClient(AbstractClient):
 
 
     def ListApp(self, request):
-        """获取企业下应用列表
+        r"""获取企业下应用列表
 
         :param request: Request instance for ListApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAppRequest`
@@ -1501,7 +1501,7 @@ class LkeClient(AbstractClient):
 
 
     def ListAppKnowledgeDetail(self, request):
-        """列表查询知识库容量详情
+        r"""列表查询知识库容量详情
 
         :param request: Request instance for ListAppKnowledgeDetail.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailRequest`
@@ -1524,7 +1524,7 @@ class LkeClient(AbstractClient):
 
 
     def ListAttributeLabel(self, request):
-        """查询属性标签列表
+        r"""查询属性标签列表
 
         :param request: Request instance for ListAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAttributeLabelRequest`
@@ -1547,7 +1547,7 @@ class LkeClient(AbstractClient):
 
 
     def ListDoc(self, request):
-        """文档列表
+        r"""文档列表
 
         :param request: Request instance for ListDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListDocRequest`
@@ -1570,7 +1570,7 @@ class LkeClient(AbstractClient):
 
 
     def ListDocCate(self, request):
-        """获取Doc分类
+        r"""获取Doc分类
 
         :param request: Request instance for ListDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListDocCateRequest`
@@ -1593,7 +1593,7 @@ class LkeClient(AbstractClient):
 
 
     def ListModel(self, request):
-        """获取模型列表
+        r"""获取模型列表
 
         :param request: Request instance for ListModel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListModelRequest`
@@ -1616,7 +1616,7 @@ class LkeClient(AbstractClient):
 
 
     def ListQA(self, request):
-        """问答列表
+        r"""问答列表
 
         :param request: Request instance for ListQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListQARequest`
@@ -1639,7 +1639,7 @@ class LkeClient(AbstractClient):
 
 
     def ListQACate(self, request):
-        """获取QA分类
+        r"""获取QA分类
 
         :param request: Request instance for ListQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListQACateRequest`
@@ -1662,7 +1662,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReferShareKnowledge(self, request):
-        """查看应用引用了哪些共享知识库，可以看到共享知识库的基础信息，包括名称，id等
+        r"""查看应用引用了哪些共享知识库，可以看到共享知识库的基础信息，包括名称，id等
 
         :param request: Request instance for ListReferShareKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReferShareKnowledgeRequest`
@@ -1685,7 +1685,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRejectedQuestion(self, request):
-        """获取拒答问题
+        r"""获取拒答问题
 
         :param request: Request instance for ListRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionRequest`
@@ -1708,7 +1708,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRejectedQuestionPreview(self, request):
-        """发布拒答问题预览
+        r"""发布拒答问题预览
 
         :param request: Request instance for ListRejectedQuestionPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionPreviewRequest`
@@ -1731,7 +1731,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRelease(self, request):
-        """发布列表
+        r"""发布列表
 
         :param request: Request instance for ListRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseRequest`
@@ -1754,7 +1754,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseConfigPreview(self, request):
-        """发布配置项预览
+        r"""发布配置项预览
 
         :param request: Request instance for ListReleaseConfigPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseConfigPreviewRequest`
@@ -1777,7 +1777,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseDocPreview(self, request):
-        """发布文档预览
+        r"""发布文档预览
 
         :param request: Request instance for ListReleaseDocPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseDocPreviewRequest`
@@ -1800,7 +1800,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseQAPreview(self, request):
-        """文档列表
+        r"""文档列表
 
         :param request: Request instance for ListReleaseQAPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseQAPreviewRequest`
@@ -1823,7 +1823,7 @@ class LkeClient(AbstractClient):
 
 
     def ListSelectDoc(self, request):
-        """文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
+        r"""文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 
         :param request: Request instance for ListSelectDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListSelectDocRequest`
@@ -1846,7 +1846,7 @@ class LkeClient(AbstractClient):
 
 
     def ListSharedKnowledge(self, request):
-        """列举共享知识库。
+        r"""列举共享知识库。
 
         :param request: Request instance for ListSharedKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListSharedKnowledgeRequest`
@@ -1869,7 +1869,7 @@ class LkeClient(AbstractClient):
 
 
     def ListUnsatisfiedReply(self, request):
-        """查询不满意回复列表
+        r"""查询不满意回复列表
 
         :param request: Request instance for ListUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListUnsatisfiedReplyRequest`
@@ -1892,7 +1892,7 @@ class LkeClient(AbstractClient):
 
 
     def ListUsageCallDetail(self, request):
-        """列表查询单次调用明细
+        r"""列表查询单次调用明细
 
         :param request: Request instance for ListUsageCallDetail.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListUsageCallDetailRequest`
@@ -1915,7 +1915,7 @@ class LkeClient(AbstractClient):
 
 
     def ListWorkflowRuns(self, request):
-        """此接口可查询已创建的所有工作流异步运行实例。
+        r"""此接口可查询已创建的所有工作流异步运行实例。
 
         :param request: Request instance for ListWorkflowRuns.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListWorkflowRunsRequest`
@@ -1938,7 +1938,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyAgent(self, request):
-        """修改Agent信息
+        r"""修改Agent信息
 
         :param request: Request instance for ModifyAgent.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAgentRequest`
@@ -1961,7 +1961,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyApp(self, request):
-        """修改应用请求结构体
+        r"""修改应用请求结构体
 
         :param request: Request instance for ModifyApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAppRequest`
@@ -1984,7 +1984,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyAttributeLabel(self, request):
-        """编辑属性标签
+        r"""编辑属性标签
 
         :param request: Request instance for ModifyAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAttributeLabelRequest`
@@ -2007,7 +2007,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDoc(self, request):
-        """修改文档
+        r"""修改文档
 
         :param request: Request instance for ModifyDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocRequest`
@@ -2030,7 +2030,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDocAttrRange(self, request):
-        """批量修改文档适用范围
+        r"""批量修改文档适用范围
 
         :param request: Request instance for ModifyDocAttrRange.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocAttrRangeRequest`
@@ -2053,7 +2053,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDocCate(self, request):
-        """修改Doc分类
+        r"""修改Doc分类
 
         :param request: Request instance for ModifyDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocCateRequest`
@@ -2076,7 +2076,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQA(self, request):
-        """更新问答
+        r"""更新问答
 
         :param request: Request instance for ModifyQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQARequest`
@@ -2099,7 +2099,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQAAttrRange(self, request):
-        """批量修改问答适用范围
+        r"""批量修改问答适用范围
 
         :param request: Request instance for ModifyQAAttrRange.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQAAttrRangeRequest`
@@ -2122,7 +2122,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQACate(self, request):
-        """更新QA分类
+        r"""更新QA分类
 
         :param request: Request instance for ModifyQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQACateRequest`
@@ -2145,7 +2145,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyRejectedQuestion(self, request):
-        """修改拒答问题
+        r"""修改拒答问题
 
         :param request: Request instance for ModifyRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyRejectedQuestionRequest`
@@ -2168,7 +2168,7 @@ class LkeClient(AbstractClient):
 
 
     def RateMsgRecord(self, request):
-        """点赞点踩消息
+        r"""点赞点踩消息
 
         :param request: Request instance for RateMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.RateMsgRecordRequest`
@@ -2191,7 +2191,7 @@ class LkeClient(AbstractClient):
 
 
     def ReferShareKnowledge(self, request):
-        """应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
+        r"""应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
 
         :param request: Request instance for ReferShareKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.ReferShareKnowledgeRequest`
@@ -2214,7 +2214,7 @@ class LkeClient(AbstractClient):
 
 
     def RenameDoc(self, request):
-        """文档重命名
+        r"""文档重命名
 
         :param request: Request instance for RenameDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.RenameDocRequest`
@@ -2237,7 +2237,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryDocAudit(self, request):
-        """文档解析重试
+        r"""文档解析重试
 
         :param request: Request instance for RetryDocAudit.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryDocAuditRequest`
@@ -2260,7 +2260,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryDocParse(self, request):
-        """文档解析重试
+        r"""文档解析重试
 
         :param request: Request instance for RetryDocParse.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryDocParseRequest`
@@ -2283,7 +2283,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryRelease(self, request):
-        """发布暂停后重试
+        r"""发布暂停后重试
 
         :param request: Request instance for RetryRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryReleaseRequest`
@@ -2306,7 +2306,7 @@ class LkeClient(AbstractClient):
 
 
     def SaveDoc(self, request):
-        """知识库文档问答保存。
+        r"""知识库文档问答保存。
         将文件存储到应用的知识库内需要三步：
         1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。获取临时密钥不同参数组合权限不一样，可参考 [智能体开发平台操作 cos 指南](https://cloud.tencent.com/document/product/1759/116238)
         2.调用腾讯云提供的 cos 存储接口，将文件存储到智能体开发平台 cos 中：具体可参考[ COS SDK 概览](https://cloud.tencent.com/document/product/436/6474), 注意使用的是临时密钥的方式操作 COS
@@ -2334,7 +2334,7 @@ class LkeClient(AbstractClient):
 
 
     def StopDocParse(self, request):
-        """终止文档解析
+        r"""终止文档解析
 
         :param request: Request instance for StopDocParse.
         :type request: :class:`tencentcloud.lke.v20231130.models.StopDocParseRequest`
@@ -2357,7 +2357,7 @@ class LkeClient(AbstractClient):
 
 
     def StopWorkflowRun(self, request):
-        """此接口用来停止正在进行的工作流异步运行实例。
+        r"""此接口用来停止正在进行的工作流异步运行实例。
 
         :param request: Request instance for StopWorkflowRun.
         :type request: :class:`tencentcloud.lke.v20231130.models.StopWorkflowRunRequest`
@@ -2380,7 +2380,7 @@ class LkeClient(AbstractClient):
 
 
     def UpdateSharedKnowledge(self, request):
-        """更新共享知识库。
+        r"""更新共享知识库。
 
         :param request: Request instance for UpdateSharedKnowledge.
         :type request: :class:`tencentcloud.lke.v20231130.models.UpdateSharedKnowledgeRequest`
@@ -2403,7 +2403,7 @@ class LkeClient(AbstractClient):
 
 
     def UpdateVar(self, request):
-        """更新变量
+        r"""更新变量
 
         :param request: Request instance for UpdateVar.
         :type request: :class:`tencentcloud.lke.v20231130.models.UpdateVarRequest`
@@ -2426,7 +2426,7 @@ class LkeClient(AbstractClient):
 
 
     def UploadAttributeLabel(self, request):
-        """上传导入属性标签
+        r"""上传导入属性标签
 
         :param request: Request instance for UploadAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.UploadAttributeLabelRequest`
@@ -2449,7 +2449,7 @@ class LkeClient(AbstractClient):
 
 
     def VerifyQA(self, request):
-        """校验问答
+        r"""校验问答
 
         :param request: Request instance for VerifyQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.VerifyQARequest`

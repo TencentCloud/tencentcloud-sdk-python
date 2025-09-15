@@ -23,11 +23,41 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# FailedOperation.CosOperationFailed
+FAILEDOPERATION_COSOPERATIONFAILED = 'FailedOperation.CosOperationFailed'
+
+# FailedOperation.DbOperationFailed
+FAILEDOPERATION_DBOPERATIONFAILED = 'FailedOperation.DbOperationFailed'
+
+# FailedOperation.GenVoicePrintIdFailed
+FAILEDOPERATION_GENVOICEPRINTIDFAILED = 'FailedOperation.GenVoicePrintIdFailed'
+
 # 登录态过期。
 FAILEDOPERATION_LOGINFAILED = 'FailedOperation.LoginFailed'
 
+# FailedOperation.NotAbility
+FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
+
+# FailedOperation.NotAllowed
+FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
+
+# FailedOperation.TaskExist
+FAILEDOPERATION_TASKEXIST = 'FailedOperation.TaskExist'
+
+# FailedOperation.TaskNotExist
+FAILEDOPERATION_TASKNOTEXIST = 'FailedOperation.TaskNotExist'
+
+# FailedOperation.UpdateVoicePrintIdNotFound
+FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = 'FailedOperation.UpdateVoicePrintIdNotFound'
+
 # 欠费不可操作。
 FAILEDOPERATION_USERFEENEGATIVE = 'FailedOperation.UserFeeNegative'
+
+# FailedOperation.VoicePrintAudioCheckFailed
+FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = 'FailedOperation.VoicePrintAudioCheckFailed'
+
+# FailedOperation.VoicePrintRegistrationLimit
+FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = 'FailedOperation.VoicePrintRegistrationLimit'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -44,11 +74,23 @@ INVALIDPARAMETER_DATEINVALID = 'InvalidParameter.DateInvalid'
 # 输入日期超出60天查询范围。
 INVALIDPARAMETER_DATEOUTOFSIXTYDAYS = 'InvalidParameter.DateOutOfSixtyDays'
 
+# InvalidParameter.InvalidAudioInput
+INVALIDPARAMETER_INVALIDAUDIOINPUT = 'InvalidParameter.InvalidAudioInput'
+
+# InvalidParameter.InvalidVoicePrintIdList
+INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = 'InvalidParameter.InvalidVoicePrintIdList'
+
 # 标签不正确
 INVALIDPARAMETER_TAGKEY = 'InvalidParameter.TagKey'
 
+# InvalidParameter.TaskId
+INVALIDPARAMETER_TASKID = 'InvalidParameter.TaskId'
+
 # 查询时间范围错误。
 INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
+
+# InvalidParameter.UserSig
+INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 
 # BizId 参数错误
 INVALIDPARAMETERVALUE_INVALIDBIZID = 'InvalidParameterValue.InvalidBizId'
@@ -89,6 +131,9 @@ LIMITEXCEEDED_APPLICATION = 'LimitExceeded.Application'
 # 缺少参数。
 MISSINGPARAMETER = 'MissingParameter'
 
+# MissingParameter.MissingVoicePrintUpdateParams
+MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = 'MissingParameter.MissingVoicePrintUpdateParams'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
@@ -97,6 +142,9 @@ RESOURCEINUSE_TASKINUSE = 'ResourceInUse.TaskInUse'
 
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
+# ResourceInsufficient.RequestRejection
+RESOURCEINSUFFICIENT_REQUESTREJECTION = 'ResourceInsufficient.RequestRejection'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'

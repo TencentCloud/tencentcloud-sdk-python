@@ -27,7 +27,7 @@ class TdmqClient(AbstractClient):
 
 
     def AcknowledgeMessage(self, request):
-        """根据提供的 MessageID 确认指定 topic 中的消息
+        r"""根据提供的 MessageID 确认指定 topic 中的消息
 
         :param request: Request instance for AcknowledgeMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.AcknowledgeMessageRequest`
@@ -50,7 +50,7 @@ class TdmqClient(AbstractClient):
 
 
     def ClearCmqQueue(self, request):
-        """清空cmq消息队列中的消息
+        r"""清空cmq消息队列中的消息
 
         :param request: Request instance for ClearCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ClearCmqQueueRequest`
@@ -73,7 +73,7 @@ class TdmqClient(AbstractClient):
 
 
     def ClearCmqSubscriptionFilterTags(self, request):
-        """清空订阅者消息标签
+        r"""清空订阅者消息标签
 
         :param request: Request instance for ClearCmqSubscriptionFilterTags.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ClearCmqSubscriptionFilterTagsRequest`
@@ -96,7 +96,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """创建用户的集群
+        r"""创建用户的集群
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterRequest`
@@ -119,7 +119,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqQueue(self, request):
-        """创建cmq队列接口
+        r"""创建cmq队列接口
 
         :param request: Request instance for CreateCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqQueueRequest`
@@ -142,7 +142,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqSubscribe(self, request):
-        """创建cmq订阅接口
+        r"""创建cmq订阅接口
 
         :param request: Request instance for CreateCmqSubscribe.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqSubscribeRequest`
@@ -165,7 +165,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqTopic(self, request):
-        """创建cmq主题
+        r"""创建cmq主题
 
         :param request: Request instance for CreateCmqTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqTopicRequest`
@@ -188,7 +188,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """用于在用户账户下创建消息队列 Tdmq 命名空间
+        r"""用于在用户账户下创建消息队列 Tdmq 命名空间
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRequest`
@@ -211,7 +211,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateEnvironmentRole(self, request):
-        """创建环境角色授权
+        r"""创建环境角色授权
 
         :param request: Request instance for CreateEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRoleRequest`
@@ -234,7 +234,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateProCluster(self, request):
-        """创建专业集群——预付费，仅通过api调用
+        r"""创建专业集群——预付费，仅通过api调用
 
         :param request: Request instance for CreateProCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateProClusterRequest`
@@ -257,7 +257,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQBinding(self, request):
-        """创建RabbitMQ路由关系
+        r"""创建RabbitMQ路由关系
 
         :param request: Request instance for CreateRabbitMQBinding.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQBindingRequest`
@@ -280,7 +280,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQUser(self, request):
-        """创建RabbitMQ的用户
+        r"""创建RabbitMQ的用户
 
         :param request: Request instance for CreateRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQUserRequest`
@@ -303,7 +303,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQVipInstance(self, request):
-        """创建 RabbitMQ 托管版实例
+        r"""创建 RabbitMQ 托管版实例
 
         :param request: Request instance for CreateRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVipInstanceRequest`
@@ -326,7 +326,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQVirtualHost(self, request):
-        """创建RabbitMQ的vhost
+        r"""创建RabbitMQ的vhost
 
         :param request: Request instance for CreateRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVirtualHostRequest`
@@ -349,7 +349,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQCluster(self, request):
-        """此接口用于创建一个RocketMQ集群
+        r"""此接口用于创建一个RocketMQ集群
 
         :param request: Request instance for CreateRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterRequest`
@@ -372,7 +372,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQEnvironmentRole(self, request):
-        """创建环境角色授权
+        r"""创建环境角色授权
 
         :param request: Request instance for CreateRocketMQEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQEnvironmentRoleRequest`
@@ -395,7 +395,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQGroup(self, request):
-        """创建RocketMQ消费组
+        r"""创建RocketMQ消费组
 
         :param request: Request instance for CreateRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupRequest`
@@ -418,7 +418,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQNamespace(self, request):
-        """创建RocketMQ命名空间
+        r"""创建RocketMQ命名空间
 
         :param request: Request instance for CreateRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceRequest`
@@ -441,7 +441,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQRole(self, request):
-        """创建角色
+        r"""创建角色
 
         :param request: Request instance for CreateRocketMQRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRoleRequest`
@@ -464,7 +464,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQTopic(self, request):
-        """创建RocketMQ主题
+        r"""创建RocketMQ主题
 
         :param request: Request instance for CreateRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicRequest`
@@ -487,7 +487,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQVipInstance(self, request):
-        """创建RocketMQ专享实例
+        r"""创建RocketMQ专享实例
 
         :param request: Request instance for CreateRocketMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQVipInstanceRequest`
@@ -510,7 +510,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRole(self, request):
-        """创建角色
+        r"""创建角色
 
         :param request: Request instance for CreateRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRoleRequest`
@@ -533,7 +533,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateSubscription(self, request):
-        """创建一个主题的订阅关系
+        r"""创建一个主题的订阅关系
 
         :param request: Request instance for CreateSubscription.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateSubscriptionRequest`
@@ -556,7 +556,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """新增指定分区、类型的消息主题
+        r"""新增指定分区、类型的消息主题
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateTopicRequest`
@@ -579,7 +579,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """删除集群
+        r"""删除集群
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteClusterRequest`
@@ -602,7 +602,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqQueue(self, request):
-        """删除cmq队列
+        r"""删除cmq队列
 
         :param request: Request instance for DeleteCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqQueueRequest`
@@ -625,7 +625,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqSubscribe(self, request):
-        """删除cmq订阅
+        r"""删除cmq订阅
 
         :param request: Request instance for DeleteCmqSubscribe.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqSubscribeRequest`
@@ -648,7 +648,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqTopic(self, request):
-        """删除cmq主题
+        r"""删除cmq主题
 
         :param request: Request instance for DeleteCmqTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqTopicRequest`
@@ -671,7 +671,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteEnvironmentRoles(self, request):
-        """删除环境角色授权。
+        r"""删除环境角色授权。
 
         :param request: Request instance for DeleteEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentRolesRequest`
@@ -694,7 +694,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteEnvironments(self, request):
-        """批量删除租户下的命名空间
+        r"""批量删除租户下的命名空间
 
         :param request: Request instance for DeleteEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentsRequest`
@@ -717,7 +717,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteProCluster(self, request):
-        """删除专业集群——预付费，仅通过API 调用
+        r"""删除专业集群——预付费，仅通过API 调用
 
         :param request: Request instance for DeleteProCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteProClusterRequest`
@@ -740,7 +740,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQBinding(self, request):
-        """解绑RabbitMQ路由关系
+        r"""解绑RabbitMQ路由关系
 
         :param request: Request instance for DeleteRabbitMQBinding.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQBindingRequest`
@@ -763,7 +763,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQPermission(self, request):
-        """删除RabbitMQ的权限
+        r"""删除RabbitMQ的权限
 
         :param request: Request instance for DeleteRabbitMQPermission.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQPermissionRequest`
@@ -786,7 +786,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQUser(self, request):
-        """删除RabbitMQ的用户
+        r"""删除RabbitMQ的用户
 
         :param request: Request instance for DeleteRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQUserRequest`
@@ -809,7 +809,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQVipInstance(self, request):
-        """删除 RabbitMQ 托管版实例
+        r"""删除 RabbitMQ 托管版实例
 
         :param request: Request instance for DeleteRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceRequest`
@@ -832,7 +832,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQVirtualHost(self, request):
-        """删除RabbitMQ的vhost
+        r"""删除RabbitMQ的vhost
 
         :param request: Request instance for DeleteRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVirtualHostRequest`
@@ -855,7 +855,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQCluster(self, request):
-        """删除RocketMQ集群
+        r"""删除RocketMQ集群
 
         :param request: Request instance for DeleteRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterRequest`
@@ -878,7 +878,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQEnvironmentRoles(self, request):
-        """删除环境角色授权。
+        r"""删除环境角色授权。
 
         :param request: Request instance for DeleteRocketMQEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQEnvironmentRolesRequest`
@@ -901,7 +901,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQGroup(self, request):
-        """删除RocketMQ消费组
+        r"""删除RocketMQ消费组
 
         :param request: Request instance for DeleteRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupRequest`
@@ -924,7 +924,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQNamespace(self, request):
-        """删除RocketMQ命名空间
+        r"""删除RocketMQ命名空间
 
         :param request: Request instance for DeleteRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceRequest`
@@ -947,7 +947,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQRoles(self, request):
-        """删除角色，支持批量。
+        r"""删除角色，支持批量。
 
         :param request: Request instance for DeleteRocketMQRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQRolesRequest`
@@ -970,7 +970,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQTopic(self, request):
-        """删除RocketMQ主题
+        r"""删除RocketMQ主题
 
         :param request: Request instance for DeleteRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicRequest`
@@ -993,7 +993,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQVipInstance(self, request):
-        """删除RocketMQ专享实例
+        r"""删除RocketMQ专享实例
 
         :param request: Request instance for DeleteRocketMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQVipInstanceRequest`
@@ -1016,7 +1016,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRoles(self, request):
-        """删除角色，支持批量。
+        r"""删除角色，支持批量。
 
         :param request: Request instance for DeleteRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRolesRequest`
@@ -1039,7 +1039,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteSubscriptions(self, request):
-        """删除订阅关系
+        r"""删除订阅关系
 
         :param request: Request instance for DeleteSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteSubscriptionsRequest`
@@ -1062,7 +1062,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteTopics(self, request):
-        """批量删除topics
+        r"""批量删除topics
 
         :param request: Request instance for DeleteTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteTopicsRequest`
@@ -1085,7 +1085,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeAMQPClusters(self, request):
-        """历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是DescribeRabbitMQVipInstances。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+        r"""历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是DescribeRabbitMQVipInstances。不过从调用链上看，线网还有请求流程，所以走预下线流程。
 
         获取amqp集群列表
 
@@ -1110,7 +1110,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeAllTenants(self, request):
-        """获取某个租户的虚拟集群列表
+        r"""获取某个租户的虚拟集群列表
 
         :param request: Request instance for DescribeAllTenants.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAllTenantsRequest`
@@ -1133,7 +1133,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeBindClusters(self, request):
-        """获取用户绑定的专享集群列表
+        r"""获取用户绑定的专享集群列表
 
         :param request: Request instance for DescribeBindClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindClustersRequest`
@@ -1156,7 +1156,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeBindVpcs(self, request):
-        """获取租户VPC绑定关系
+        r"""获取租户VPC绑定关系
 
         :param request: Request instance for DescribeBindVpcs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindVpcsRequest`
@@ -1179,7 +1179,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """获取集群的详细信息
+        r"""获取集群的详细信息
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClusterDetailRequest`
@@ -1202,7 +1202,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """获取集群列表
+        r"""获取集群列表
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClustersRequest`
@@ -1225,7 +1225,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqQueueDetail(self, request):
-        """查询cmq队列详情
+        r"""查询cmq队列详情
 
         :param request: Request instance for DescribeCmqQueueDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqQueueDetailRequest`
@@ -1248,7 +1248,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqQueues(self, request):
-        """查询cmq全量队列
+        r"""查询cmq全量队列
 
         :param request: Request instance for DescribeCmqQueues.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqQueuesRequest`
@@ -1271,7 +1271,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqSubscriptionDetail(self, request):
-        """查询cmq订阅详情
+        r"""查询cmq订阅详情
 
         :param request: Request instance for DescribeCmqSubscriptionDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqSubscriptionDetailRequest`
@@ -1294,7 +1294,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqTopicDetail(self, request):
-        """查询cmq主题详情
+        r"""查询cmq主题详情
 
         :param request: Request instance for DescribeCmqTopicDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqTopicDetailRequest`
@@ -1317,7 +1317,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqTopics(self, request):
-        """枚举cmq全量主题
+        r"""枚举cmq全量主题
 
         :param request: Request instance for DescribeCmqTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqTopicsRequest`
@@ -1340,7 +1340,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentAttributes(self, request):
-        """获取指定命名空间的属性
+        r"""获取指定命名空间的属性
 
         :param request: Request instance for DescribeEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentAttributesRequest`
@@ -1363,7 +1363,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentRoles(self, request):
-        """获取命名空间角色列表
+        r"""获取命名空间角色列表
 
         :param request: Request instance for DescribeEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentRolesRequest`
@@ -1386,7 +1386,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """获取租户下命名空间列表
+        r"""获取租户下命名空间列表
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentsRequest`
@@ -1409,7 +1409,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeMqMsgTrace(self, request):
-        """查询消息轨迹
+        r"""查询消息轨迹
 
         :param request: Request instance for DescribeMqMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeMqMsgTraceRequest`
@@ -1432,7 +1432,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeMsg(self, request):
-        """消息详情
+        r"""消息详情
 
         :param request: Request instance for DescribeMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeMsgRequest`
@@ -1455,7 +1455,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeMsgTrace(self, request):
-        """查询消息轨迹
+        r"""查询消息轨迹
 
         :param request: Request instance for DescribeMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeMsgTraceRequest`
@@ -1478,7 +1478,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeNamespaceBundlesOpt(self, request):
-        """运营端获取命名空间bundle列表
+        r"""运营端获取命名空间bundle列表
 
         :param request: Request instance for DescribeNamespaceBundlesOpt.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeNamespaceBundlesOptRequest`
@@ -1501,7 +1501,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeNodeHealthOpt(self, request):
-        """运营端获节点健康状态
+        r"""运营端获节点健康状态
 
         :param request: Request instance for DescribeNodeHealthOpt.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeNodeHealthOptRequest`
@@ -1524,7 +1524,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePublisherSummary(self, request):
-        """获取消息生产概览信息
+        r"""获取消息生产概览信息
 
         :param request: Request instance for DescribePublisherSummary.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryRequest`
@@ -1547,7 +1547,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePublishers(self, request):
-        """获取生产者信息列表
+        r"""获取生产者信息列表
 
         :param request: Request instance for DescribePublishers.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersRequest`
@@ -1570,7 +1570,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstanceDetail(self, request):
-        """获取Pulsar专业版集群实例信息
+        r"""获取Pulsar专业版集群实例信息
 
         :param request: Request instance for DescribePulsarProInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailRequest`
@@ -1593,7 +1593,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstances(self, request):
-        """查询用户已购的Pulsar专业版实例列表
+        r"""查询用户已购的Pulsar专业版实例列表
 
         :param request: Request instance for DescribePulsarProInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesRequest`
@@ -1616,7 +1616,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQBindings(self, request):
-        """查询RabbitMQ路由关系列表
+        r"""查询RabbitMQ路由关系列表
 
         :param request: Request instance for DescribeRabbitMQBindings.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQBindingsRequest`
@@ -1639,7 +1639,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQExchanges(self, request):
-        """查询RabbitMQ exchange 列表
+        r"""查询RabbitMQ exchange 列表
 
         :param request: Request instance for DescribeRabbitMQExchanges.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQExchangesRequest`
@@ -1662,7 +1662,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQNodeList(self, request):
-        """查询 RabbitMQ 托管版节点列表
+        r"""查询 RabbitMQ 托管版节点列表
 
         :param request: Request instance for DescribeRabbitMQNodeList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQNodeListRequest`
@@ -1685,7 +1685,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQPermission(self, request):
-        """查询RabbitMQ权限列表
+        r"""查询RabbitMQ权限列表
 
         :param request: Request instance for DescribeRabbitMQPermission.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQPermissionRequest`
@@ -1708,7 +1708,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQQueueDetail(self, request):
-        """查询RabbitMQ队列详情
+        r"""查询RabbitMQ队列详情
 
         :param request: Request instance for DescribeRabbitMQQueueDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueueDetailRequest`
@@ -1731,7 +1731,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQQueues(self, request):
-        """查询RabbitMQ队列列表
+        r"""查询RabbitMQ队列列表
 
         :param request: Request instance for DescribeRabbitMQQueues.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueuesRequest`
@@ -1754,7 +1754,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQUser(self, request):
-        """查询RabbitMQ用户列表
+        r"""查询RabbitMQ用户列表
 
         :param request: Request instance for DescribeRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQUserRequest`
@@ -1777,7 +1777,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVipInstance(self, request):
-        """获取单个 RabbitMQ 托管版实例信息
+        r"""获取单个 RabbitMQ 托管版实例信息
 
         :param request: Request instance for DescribeRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstanceRequest`
@@ -1800,7 +1800,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVipInstances(self, request):
-        """查询用户已购的 RabbitMQ 托管版实例列表
+        r"""查询用户已购的 RabbitMQ 托管版实例列表
 
         :param request: Request instance for DescribeRabbitMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstancesRequest`
@@ -1823,7 +1823,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVirtualHost(self, request):
-        """查询RabbitMQ vhost列表
+        r"""查询RabbitMQ vhost列表
 
         :param request: Request instance for DescribeRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostRequest`
@@ -1846,7 +1846,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQCluster(self, request):
-        """获取单个RocketMQ集群信息
+        r"""获取单个RocketMQ集群信息
 
         :param request: Request instance for DescribeRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClusterRequest`
@@ -1869,7 +1869,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQClusters(self, request):
-        """获取RocketMQ集群列表
+        r"""获取RocketMQ集群列表
 
         :param request: Request instance for DescribeRocketMQClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClustersRequest`
@@ -1892,7 +1892,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumeStats(self, request):
-        """获取消费详情列表
+        r"""获取消费详情列表
 
         :param request: Request instance for DescribeRocketMQConsumeStats.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumeStatsRequest`
@@ -1915,7 +1915,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumerConnectionDetail(self, request):
-        """获取在线消费端详情
+        r"""获取在线消费端详情
 
         :param request: Request instance for DescribeRocketMQConsumerConnectionDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionDetailRequest`
@@ -1938,7 +1938,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumerConnections(self, request):
-        """获取指定消费组下当前客户端的连接情况
+        r"""获取指定消费组下当前客户端的连接情况
 
         :param request: Request instance for DescribeRocketMQConsumerConnections.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionsRequest`
@@ -1961,7 +1961,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQEnvironmentRoles(self, request):
-        """获取命名空间角色列表
+        r"""获取命名空间角色列表
 
         :param request: Request instance for DescribeRocketMQEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQEnvironmentRolesRequest`
@@ -1984,7 +1984,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQGroups(self, request):
-        """获取RocketMQ消费组列表
+        r"""获取RocketMQ消费组列表
 
         :param request: Request instance for DescribeRocketMQGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsRequest`
@@ -2007,7 +2007,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMigratingTopicList(self, request):
-        """查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
+        r"""查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
 
         :param request: Request instance for DescribeRocketMQMigratingTopicList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMigratingTopicListRequest`
@@ -2030,7 +2030,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsg(self, request):
-        """rocketmq消息详情
+        r"""rocketmq消息详情
 
         :param request: Request instance for DescribeRocketMQMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgRequest`
@@ -2053,7 +2053,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsgTrace(self, request):
-        """查询消息轨迹
+        r"""查询消息轨迹
 
         :param request: Request instance for DescribeRocketMQMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgTraceRequest`
@@ -2076,7 +2076,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQNamespaces(self, request):
-        """获取RocketMQ命名空间列表
+        r"""获取RocketMQ命名空间列表
 
         :param request: Request instance for DescribeRocketMQNamespaces.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesRequest`
@@ -2099,7 +2099,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQProducers(self, request):
-        """查询 RocketMQ 指定主题下的生产者客户端列表。
+        r"""查询 RocketMQ 指定主题下的生产者客户端列表。
 
         :param request: Request instance for DescribeRocketMQProducers.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQProducersRequest`
@@ -2122,7 +2122,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQPublicAccessMonitorData(self, request):
-        """从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
+        r"""从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
 
         :param request: Request instance for DescribeRocketMQPublicAccessMonitorData.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessMonitorDataRequest`
@@ -2145,7 +2145,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQPublicAccessPoint(self, request):
-        """接口用于查询RocketMQ实例的公网接入信息
+        r"""接口用于查询RocketMQ实例的公网接入信息
 
         :param request: Request instance for DescribeRocketMQPublicAccessPoint.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessPointRequest`
@@ -2168,7 +2168,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQRoles(self, request):
-        """获取角色列表
+        r"""获取角色列表
 
         :param request: Request instance for DescribeRocketMQRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQRolesRequest`
@@ -2191,7 +2191,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSmoothMigrationTask(self, request):
-        """用于获取RocketMQ平滑迁移任务详情
+        r"""用于获取RocketMQ平滑迁移任务详情
 
         :param request: Request instance for DescribeRocketMQSmoothMigrationTask.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSmoothMigrationTaskRequest`
@@ -2214,7 +2214,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSmoothMigrationTaskList(self, request):
-        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
 
         用于查询RocketMQ平滑迁移任务列表
 
@@ -2239,7 +2239,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSourceClusterGroupList(self, request):
-        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
 
         平滑迁移过程获取源集群group列表接口
 
@@ -2264,7 +2264,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSourceClusterTopicList(self, request):
-        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
 
         平滑迁移过程获取源集群topic列表接口
 
@@ -2289,7 +2289,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSubscriptions(self, request):
-        """用于获取RocketMQ消费组订阅关系数据
+        r"""用于获取RocketMQ消费组订阅关系数据
 
         :param request: Request instance for DescribeRocketMQSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSubscriptionsRequest`
@@ -2312,7 +2312,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopUsages(self, request):
-        """用于获取RocketMQ指标排序列表，比如集群实例下占用存储空间最多的主题排序。
+        r"""用于获取RocketMQ指标排序列表，比如集群实例下占用存储空间最多的主题排序。
 
         :param request: Request instance for DescribeRocketMQTopUsages.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopUsagesRequest`
@@ -2335,7 +2335,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicMsgs(self, request):
-        """rocketmq 消息查询
+        r"""rocketmq 消息查询
 
         :param request: Request instance for DescribeRocketMQTopicMsgs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicMsgsRequest`
@@ -2358,7 +2358,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicStats(self, request):
-        """获取Topic生产详情列表
+        r"""获取Topic生产详情列表
 
         :param request: Request instance for DescribeRocketMQTopicStats.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicStatsRequest`
@@ -2381,7 +2381,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopics(self, request):
-        """获取RocketMQ主题列表
+        r"""获取RocketMQ主题列表
 
         :param request: Request instance for DescribeRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsRequest`
@@ -2404,7 +2404,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicsByGroup(self, request):
-        """获取指定消费组下订阅的主题列表
+        r"""获取指定消费组下订阅的主题列表
 
         :param request: Request instance for DescribeRocketMQTopicsByGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsByGroupRequest`
@@ -2427,7 +2427,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstanceDetail(self, request):
-        """获取单个RocketMQ专享集群信息
+        r"""获取单个RocketMQ专享集群信息
 
         :param request: Request instance for DescribeRocketMQVipInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailRequest`
@@ -2450,7 +2450,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstances(self, request):
-        """查询用户已购的RocketMQ专享实例列表
+        r"""查询用户已购的RocketMQ专享实例列表
 
         :param request: Request instance for DescribeRocketMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstancesRequest`
@@ -2473,7 +2473,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRoles(self, request):
-        """获取角色列表
+        r"""获取角色列表
 
         :param request: Request instance for DescribeRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRolesRequest`
@@ -2496,7 +2496,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeSubscriptions(self, request):
-        """查询指定环境和主题下的订阅者列表
+        r"""查询指定环境和主题下的订阅者列表
 
         :param request: Request instance for DescribeSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeSubscriptionsRequest`
@@ -2519,7 +2519,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeTopicMsgs(self, request):
-        """消息查询
+        r"""消息查询
 
         :param request: Request instance for DescribeTopicMsgs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicMsgsRequest`
@@ -2542,7 +2542,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        """获取环境下主题列表
+        r"""获取环境下主题列表
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicsRequest`
@@ -2565,7 +2565,7 @@ class TdmqClient(AbstractClient):
 
 
     def ExecuteDisasterRecovery(self, request):
-        """执行域名异地访问切换，域名的访问指向将切换至备份集群。
+        r"""执行域名异地访问切换，域名的访问指向将切换至备份集群。
 
         :param request: Request instance for ExecuteDisasterRecovery.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ExecuteDisasterRecoveryRequest`
@@ -2588,7 +2588,7 @@ class TdmqClient(AbstractClient):
 
 
     def ExportRocketMQMessageDetail(self, request):
-        """导出RocketMQ消息详情
+        r"""导出RocketMQ消息详情
 
         :param request: Request instance for ExportRocketMQMessageDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ExportRocketMQMessageDetailRequest`
@@ -2611,7 +2611,7 @@ class TdmqClient(AbstractClient):
 
 
     def GetTopicList(self, request):
-        """获取环境下主题列表
+        r"""获取环境下主题列表
 
         :param request: Request instance for GetTopicList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.GetTopicListRequest`
@@ -2634,7 +2634,7 @@ class TdmqClient(AbstractClient):
 
 
     def ImportRocketMQConsumerGroups(self, request):
-        """输入迁移任务id和要导入的Group，导入后台
+        r"""输入迁移任务id和要导入的Group，导入后台
 
         :param request: Request instance for ImportRocketMQConsumerGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ImportRocketMQConsumerGroupsRequest`
@@ -2657,7 +2657,7 @@ class TdmqClient(AbstractClient):
 
 
     def ImportRocketMQTopics(self, request):
-        """导入topic列表
+        r"""导入topic列表
 
         :param request: Request instance for ImportRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ImportRocketMQTopicsRequest`
@@ -2680,7 +2680,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCluster(self, request):
-        """更新集群信息
+        r"""更新集群信息
 
         :param request: Request instance for ModifyCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyClusterRequest`
@@ -2703,7 +2703,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqQueueAttribute(self, request):
-        """修改cmq队列属性
+        r"""修改cmq队列属性
 
         :param request: Request instance for ModifyCmqQueueAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqQueueAttributeRequest`
@@ -2726,7 +2726,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqSubscriptionAttribute(self, request):
-        """修改cmq订阅属性
+        r"""修改cmq订阅属性
 
         :param request: Request instance for ModifyCmqSubscriptionAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqSubscriptionAttributeRequest`
@@ -2749,7 +2749,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqTopicAttribute(self, request):
-        """修改cmq主题属性
+        r"""修改cmq主题属性
 
         :param request: Request instance for ModifyCmqTopicAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqTopicAttributeRequest`
@@ -2772,7 +2772,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyEnvironmentAttributes(self, request):
-        """修改指定命名空间的属性值
+        r"""修改指定命名空间的属性值
 
         :param request: Request instance for ModifyEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentAttributesRequest`
@@ -2795,7 +2795,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyEnvironmentRole(self, request):
-        """修改环境角色授权。
+        r"""修改环境角色授权。
 
         :param request: Request instance for ModifyEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentRoleRequest`
@@ -2818,7 +2818,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyPublicNetworkSecurityPolicy(self, request):
-        """修改pulsar专业版公网安全策略
+        r"""修改pulsar专业版公网安全策略
 
         :param request: Request instance for ModifyPublicNetworkSecurityPolicy.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkSecurityPolicyRequest`
@@ -2841,7 +2841,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQPermission(self, request):
-        """修改RabbitMQ的权限
+        r"""修改RabbitMQ的权限
 
         :param request: Request instance for ModifyRabbitMQPermission.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQPermissionRequest`
@@ -2864,7 +2864,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQUser(self, request):
-        """修改RabbitMQ的用户
+        r"""修改RabbitMQ的用户
 
         :param request: Request instance for ModifyRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQUserRequest`
@@ -2887,7 +2887,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQVipInstance(self, request):
-        """修改RabbitMQ专享版实例
+        r"""修改RabbitMQ专享版实例
 
         :param request: Request instance for ModifyRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVipInstanceRequest`
@@ -2910,7 +2910,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQVirtualHost(self, request):
-        """修改RabbitMQ的vhost
+        r"""修改RabbitMQ的vhost
 
         :param request: Request instance for ModifyRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVirtualHostRequest`
@@ -2933,7 +2933,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQCluster(self, request):
-        """更新RocketMQ集群信息
+        r"""更新RocketMQ集群信息
 
         :param request: Request instance for ModifyRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQClusterRequest`
@@ -2956,7 +2956,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQEnvironmentRole(self, request):
-        """修改环境角色授权。
+        r"""修改环境角色授权。
 
         :param request: Request instance for ModifyRocketMQEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQEnvironmentRoleRequest`
@@ -2979,7 +2979,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQGroup(self, request):
-        """更新RocketMQ消费组信息
+        r"""更新RocketMQ消费组信息
 
         :param request: Request instance for ModifyRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupRequest`
@@ -3002,7 +3002,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQInstance(self, request):
-        """修改RocketMQ专享实例
+        r"""修改RocketMQ专享实例
 
         :param request: Request instance for ModifyRocketMQInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceRequest`
@@ -3025,7 +3025,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQInstanceSpec(self, request):
-        """本API用于修改RocketMQ专享实例配置，可以支持实例规格、节点数和存储的升配和实例规格的降配。本API发起订单并成功支付后进入实例配置变更的流程，可通过DescribeRocketMQVipInstances查询实例是否已变更完成。
+        r"""本API用于修改RocketMQ专享实例配置，可以支持实例规格、节点数和存储的升配和实例规格的降配。本API发起订单并成功支付后进入实例配置变更的流程，可通过DescribeRocketMQVipInstances查询实例是否已变更完成。
 
         :param request: Request instance for ModifyRocketMQInstanceSpec.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecRequest`
@@ -3048,7 +3048,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQNamespace(self, request):
-        """更新RocketMQ命名空间
+        r"""更新RocketMQ命名空间
 
         :param request: Request instance for ModifyRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceRequest`
@@ -3071,7 +3071,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQRole(self, request):
-        """角色修改
+        r"""角色修改
 
         :param request: Request instance for ModifyRocketMQRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQRoleRequest`
@@ -3094,7 +3094,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQTopic(self, request):
-        """更新RocketMQ主题信息
+        r"""更新RocketMQ主题信息
 
         :param request: Request instance for ModifyRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicRequest`
@@ -3117,7 +3117,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRole(self, request):
-        """角色修改
+        r"""角色修改
 
         :param request: Request instance for ModifyRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRoleRequest`
@@ -3140,7 +3140,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        """修改主题备注和分区数
+        r"""修改主题备注和分区数
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyTopicRequest`
@@ -3163,7 +3163,7 @@ class TdmqClient(AbstractClient):
 
 
     def PublishCmqMsg(self, request):
-        """发送cmq主题消息
+        r"""发送cmq主题消息
 
         :param request: Request instance for PublishCmqMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.PublishCmqMsgRequest`
@@ -3186,7 +3186,7 @@ class TdmqClient(AbstractClient):
 
 
     def ReceiveMessage(self, request):
-        """当前 ReceiveMessage 接口只支持 Partitioned 类型的 Topic。该接口用于接收发送到指定 Partitioned Topic 中的消息，当 Partitioned Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
+        r"""当前 ReceiveMessage 接口只支持 Partitioned 类型的 Topic。该接口用于接收发送到指定 Partitioned Topic 中的消息，当 Partitioned Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
 
         如何使用 BatchReceivePolicy：
 
@@ -3228,7 +3228,7 @@ class TdmqClient(AbstractClient):
 
 
     def ResetMsgSubOffsetByTimestamp(self, request):
-        """根据时间戳进行消息回溯，精确到毫秒
+        r"""根据时间戳进行消息回溯，精确到毫秒
 
         :param request: Request instance for ResetMsgSubOffsetByTimestamp.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetMsgSubOffsetByTimestampRequest`
@@ -3251,7 +3251,7 @@ class TdmqClient(AbstractClient):
 
 
     def ResetRocketMQConsumerOffSet(self, request):
-        """重置指定Group的消费位点到指定时间戳
+        r"""重置指定Group的消费位点到指定时间戳
 
         :param request: Request instance for ResetRocketMQConsumerOffSet.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetRocketMQConsumerOffSetRequest`
@@ -3274,7 +3274,7 @@ class TdmqClient(AbstractClient):
 
 
     def RetryRocketMQDlqMessage(self, request):
-        """重发RocketMQ死信消息
+        r"""重发RocketMQ死信消息
 
         :param request: Request instance for RetryRocketMQDlqMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.RetryRocketMQDlqMessageRequest`
@@ -3297,7 +3297,7 @@ class TdmqClient(AbstractClient):
 
 
     def RewindCmqQueue(self, request):
-        """回溯cmq队列
+        r"""回溯cmq队列
 
         :param request: Request instance for RewindCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.RewindCmqQueueRequest`
@@ -3320,7 +3320,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendBatchMessages(self, request):
-        """批量发送消息
+        r"""批量发送消息
 
         注意：TDMQ 批量发送消息的接口是在 TDMQ-HTTP 的服务侧将消息打包为一个 Batch，然后将该 Batch 在服务内部当作一次 TCP 请求发送出去。所以在使用过程中，用户还是按照单条消息发送的逻辑，每一条消息是一个独立的 HTTP 的请求，在 TDMQ-HTTP 的服务内部，会将多个 HTTP 的请求聚合为一个 Batch 发送到服务端。即，批量发送消息在使用上与发送单条消息是一致的，batch 的聚合是在 TDMQ-HTTP 的服务内部完成的。
 
@@ -3345,7 +3345,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendCmqMsg(self, request):
-        """发送cmq消息
+        r"""发送cmq消息
 
         :param request: Request instance for SendCmqMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendCmqMsgRequest`
@@ -3368,7 +3368,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendMessages(self, request):
-        """发送单条消息
+        r"""发送单条消息
         不支持持久topic
 
         :param request: Request instance for SendMessages.
@@ -3392,7 +3392,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendMsg(self, request):
-        """此接口仅用于测试发生消息，不能作为现网正式生产使用
+        r"""此接口仅用于测试发生消息，不能作为现网正式生产使用
 
         :param request: Request instance for SendMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMsgRequest`
@@ -3415,7 +3415,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendRocketMQMessage(self, request):
-        """发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        r"""发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
 
         :param request: Request instance for SendRocketMQMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageRequest`
@@ -3438,7 +3438,7 @@ class TdmqClient(AbstractClient):
 
 
     def SetRocketMQPublicAccessPoint(self, request):
-        """该接口用于开启关闭公网访问、设置安全访问策略
+        r"""该接口用于开启关闭公网访问、设置安全访问策略
 
         :param request: Request instance for SetRocketMQPublicAccessPoint.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SetRocketMQPublicAccessPointRequest`
@@ -3461,7 +3461,7 @@ class TdmqClient(AbstractClient):
 
 
     def UnbindCmqDeadLetter(self, request):
-        """解绑cmq死信队列
+        r"""解绑cmq死信队列
 
         :param request: Request instance for UnbindCmqDeadLetter.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.UnbindCmqDeadLetterRequest`
@@ -3484,7 +3484,7 @@ class TdmqClient(AbstractClient):
 
 
     def VerifyRocketMQConsume(self, request):
-        """Rocketmq消费验证
+        r"""Rocketmq消费验证
 
         :param request: Request instance for VerifyRocketMQConsume.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.VerifyRocketMQConsumeRequest`

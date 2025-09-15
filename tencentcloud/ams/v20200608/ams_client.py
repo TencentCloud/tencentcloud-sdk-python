@@ -27,7 +27,7 @@ class AmsClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """取消任务
+        r"""取消任务
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.ams.v20200608.models.CancelTaskRequest`
@@ -50,7 +50,7 @@ class AmsClient(AbstractClient):
 
 
     def CreateAudioModerationTask(self, request):
-        """本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您登陆控制台开通音频内容安全服务。
+        r"""本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您登陆控制台开通音频内容安全服务。
 
         ### 功能使用说明：
         - 前往“内容安全控制台-音频内容安全”开启使用音频内容安全服务，首次开通可获得20小时免费调用时长
@@ -96,7 +96,7 @@ class AmsClient(AbstractClient):
 
 
     def CreateBizConfig(self, request):
-        """创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
+        r"""创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
 
         在创建业务配置之前，你需要以下步骤：
         1. 开通COS存储桶功能，新建存储桶，例如 cms_segments，用来存储 视频转换过程中生成对音频和图片。
@@ -123,7 +123,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeAmsList(self, request):
-        """音频审核明细列表
+        r"""音频审核明细列表
 
         :param request: Request instance for DescribeAmsList.
         :type request: :class:`tencentcloud.ams.v20200608.models.DescribeAmsListRequest`
@@ -146,7 +146,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeAudioStat(self, request):
-        """控制台识别统计
+        r"""控制台识别统计
 
         :param request: Request instance for DescribeAudioStat.
         :type request: :class:`tencentcloud.ams.v20200608.models.DescribeAudioStatRequest`
@@ -169,7 +169,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeBizConfig(self, request):
-        """查看单个配置
+        r"""查看单个配置
 
         :param request: Request instance for DescribeBizConfig.
         :type request: :class:`tencentcloud.ams.v20200608.models.DescribeBizConfigRequest`
@@ -192,7 +192,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """查看任务详情
+        r"""查看任务详情
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.ams.v20200608.models.DescribeTaskDetailRequest`

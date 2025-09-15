@@ -27,7 +27,7 @@ class PostgresClient(AbstractClient):
 
 
     def AddDBInstanceToReadOnlyGroup(self, request):
-        """本接口（AddDBInstanceToReadOnlyGroup）用于添加只读实例到只读组
+        r"""本接口（AddDBInstanceToReadOnlyGroup）用于添加只读实例到只读组
 
         :param request: Request instance for AddDBInstanceToReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.AddDBInstanceToReadOnlyGroupRequest`
@@ -50,7 +50,7 @@ class PostgresClient(AbstractClient):
 
 
     def CloneDBInstance(self, request):
-        """用于克隆实例，支持指定备份集、指定时间点进行克隆。
+        r"""用于克隆实例，支持指定备份集、指定时间点进行克隆。
 
         :param request: Request instance for CloneDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceRequest`
@@ -73,7 +73,7 @@ class PostgresClient(AbstractClient):
 
 
     def CloseDBExtranetAccess(self, request):
-        """本接口（CloseDBExtranetAccess）用于关闭实例公网地址。
+        r"""本接口（CloseDBExtranetAccess）用于关闭实例公网地址。
 
         :param request: Request instance for CloseDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloseDBExtranetAccessRequest`
@@ -96,7 +96,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
+        r"""此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateAccountRequest`
@@ -119,7 +119,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateBackupPlan(self, request):
-        """此接口用于创建备份策略。
+        r"""此接口用于创建备份策略。
 
         :param request: Request instance for CreateBackupPlan.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateBackupPlanRequest`
@@ -142,7 +142,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateBaseBackup(self, request):
-        """本接口（CreateBaseBackup）用于创建实例的数据备份。
+        r"""本接口（CreateBaseBackup）用于创建实例的数据备份。
 
         :param request: Request instance for CreateBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateBaseBackupRequest`
@@ -165,7 +165,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstanceNetworkAccess(self, request):
-        """本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。单个实例允许创建的网络配置最多为2套，最少为1套。
+        r"""本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。单个实例允许创建的网络配置最多为2套，最少为1套。
 
         :param request: Request instance for CreateDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstanceNetworkAccessRequest`
@@ -188,7 +188,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDatabase(self, request):
-        """此接口用于创建数据库，需指定数据库名及所有者。
+        r"""此接口用于创建数据库，需指定数据库名及所有者。
 
         :param request: Request instance for CreateDatabase.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDatabaseRequest`
@@ -211,7 +211,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
+        r"""本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
         <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。</li>
         <li>预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。</li>
 
@@ -236,7 +236,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateParameterTemplate(self, request):
-        """本接口 (CreateParameterTemplate) 用于创建参数模板。
+        r"""本接口 (CreateParameterTemplate) 用于创建参数模板。
 
         :param request: Request instance for CreateParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateParameterTemplateRequest`
@@ -259,7 +259,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyDBInstance(self, request):
-        """本接口(CreateReadOnlyDBInstance)用于创建只读实例
+        r"""本接口(CreateReadOnlyDBInstance)用于创建只读实例
 
         :param request: Request instance for CreateReadOnlyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyDBInstanceRequest`
@@ -282,7 +282,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroup(self, request):
-        """本接口（CreateReadOnlyGroup）用于创建只读组
+        r"""本接口（CreateReadOnlyGroup）用于创建只读组
 
         :param request: Request instance for CreateReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupRequest`
@@ -305,7 +305,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroupNetworkAccess(self, request):
-        """本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。创建网络的数量最多为2个。
+        r"""本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。创建网络的数量最多为2个。
 
         :param request: Request instance for CreateReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupNetworkAccessRequest`
@@ -328,7 +328,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteAccount(self, request):
-        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。注：该接口可重入，如果账号已经不存在，调用此接口进行删除时不会报错。
+        r"""此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。注：该接口可重入，如果账号已经不存在，调用此接口进行删除时不会报错。
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAccountRequest`
@@ -351,7 +351,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteBackupPlan(self, request):
-        """删除备份策略
+        r"""删除备份策略
 
         :param request: Request instance for DeleteBackupPlan.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteBackupPlanRequest`
@@ -374,7 +374,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteBaseBackup(self, request):
-        """本接口（DeleteBaseBackup）用于删除实例指定数据备份。
+        r"""本接口（DeleteBaseBackup）用于删除实例指定数据备份。
 
         :param request: Request instance for DeleteBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteBaseBackupRequest`
@@ -397,7 +397,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteDBInstanceNetworkAccess(self, request):
-        """可对实例进行网络的删除操作（实例内至少保留一个网络）。
+        r"""可对实例进行网络的删除操作（实例内至少保留一个网络）。
 
         :param request: Request instance for DeleteDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDBInstanceNetworkAccessRequest`
@@ -420,7 +420,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteLogBackup(self, request):
-        """本接口（DeleteLogBackup）用于删除实例指定日志备份。
+        r"""本接口（DeleteLogBackup）用于删除实例指定日志备份。
 
         :param request: Request instance for DeleteLogBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteLogBackupRequest`
@@ -443,7 +443,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteParameterTemplate(self, request):
-        """本接口（DeleteParameterTemplate）主要用于删除某个参数模板。
+        r"""本接口（DeleteParameterTemplate）主要用于删除某个参数模板。
 
         :param request: Request instance for DeleteParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteParameterTemplateRequest`
@@ -466,7 +466,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroup(self, request):
-        """本接口(DeleteReadOnlyGroup)用于删除指定的只读组
+        r"""本接口(DeleteReadOnlyGroup)用于删除指定的只读组
 
         :param request: Request instance for DeleteReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupRequest`
@@ -489,7 +489,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroupNetworkAccess(self, request):
-        """可对RO组进行网络的删除操作（网络数量至少保留1个）。
+        r"""可对RO组进行网络的删除操作（网络数量至少保留1个）。
 
         :param request: Request instance for DeleteReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupNetworkAccessRequest`
@@ -512,7 +512,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        """查询数据库账号对某数据库对象拥有的权限列表。
+        r"""查询数据库账号对某数据库对象拥有的权限列表。
 
         :param request: Request instance for DescribeAccountPrivileges.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAccountPrivilegesRequest`
@@ -535,7 +535,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """本接口（DescribeAccounts）用于查询实例的数据库账号列表。
+        r"""本接口（DescribeAccounts）用于查询实例的数据库账号列表。
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAccountsRequest`
@@ -558,7 +558,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeAvailableRecoveryTime(self, request):
-        """本接口（DescribeAvailableRecoveryTime）用于查询实例可恢复的时间范围。
+        r"""本接口（DescribeAvailableRecoveryTime）用于查询实例可恢复的时间范围。
 
         :param request: Request instance for DescribeAvailableRecoveryTime.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeRequest`
@@ -581,7 +581,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupDownloadRestriction(self, request):
-        """本接口（DescribeBackupDownloadRestriction）用于查询备份文件下载限制。
+        r"""本接口（DescribeBackupDownloadRestriction）用于查询备份文件下载限制。
 
         :param request: Request instance for DescribeBackupDownloadRestriction.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadRestrictionRequest`
@@ -604,7 +604,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupDownloadURL(self, request):
-        """本接口 (DescribeBackupDownloadURL) 用于查询指定备份集的下载地址，可包括全量备份集、增量日志备份集。
+        r"""本接口 (DescribeBackupDownloadURL) 用于查询指定备份集的下载地址，可包括全量备份集、增量日志备份集。
 
         :param request: Request instance for DescribeBackupDownloadURL.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadURLRequest`
@@ -627,7 +627,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupOverview(self, request):
-        """本接口（DescribeBackupOverview）用于查询用户的备份概览信息。返回用户当前备份个数、备份占用容量、免费容量、收费容量等信息（容量单位为字节）。
+        r"""本接口（DescribeBackupOverview）用于查询用户的备份概览信息。返回用户当前备份个数、备份占用容量、免费容量、收费容量等信息（容量单位为字节）。
 
         :param request: Request instance for DescribeBackupOverview.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupOverviewRequest`
@@ -650,7 +650,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupPlans(self, request):
-        """本接口 (DescribeBackupPlans) 用于实例所有的备份计划查询
+        r"""本接口 (DescribeBackupPlans) 用于实例所有的备份计划查询
 
         :param request: Request instance for DescribeBackupPlans.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansRequest`
@@ -673,7 +673,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupSummaries(self, request):
-        """本接口(DescribeBackupSummaries)用于查询实例备份的统计信息，返回以实例为维度的备份个数、占用容量等信息（容量单位为字节）。
+        r"""本接口(DescribeBackupSummaries)用于查询实例备份的统计信息，返回以实例为维度的备份个数、占用容量等信息（容量单位为字节）。
 
         :param request: Request instance for DescribeBackupSummaries.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupSummariesRequest`
@@ -696,7 +696,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBaseBackups(self, request):
-        """本接口（DescribeBaseBackups）用于查询数据备份列表。
+        r"""本接口（DescribeBaseBackups）用于查询数据备份列表。
 
         :param request: Request instance for DescribeBaseBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBaseBackupsRequest`
@@ -719,7 +719,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeClasses(self, request):
-        """本接口（DescribeClasses）用于查询实例售卖规格。
+        r"""本接口（DescribeClasses）用于查询实例售卖规格。
 
         :param request: Request instance for DescribeClasses.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeClassesRequest`
@@ -742,7 +742,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeCloneDBInstanceSpec(self, request):
-        """本接口（DescribeCloneDBInstanceSpec）用于查询克隆实例可选择的最小规格，包括SpecCode和磁盘。
+        r"""本接口（DescribeCloneDBInstanceSpec）用于查询克隆实例可选择的最小规格，包括SpecCode和磁盘。
 
         :param request: Request instance for DescribeCloneDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecRequest`
@@ -765,7 +765,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBBackups(self, request):
-        """本接口（DescribeDBBackups）用于查询实例备份列表。**本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)**替代**。
+        r"""本接口（DescribeDBBackups）用于查询实例备份列表。**本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)**替代**。
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBBackupsRequest`
@@ -788,7 +788,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBErrlogs(self, request):
-        """本接口（DescribeDBErrlogs）用于查询错误日志。
+        r"""本接口（DescribeDBErrlogs）用于查询错误日志。
 
         :param request: Request instance for DescribeDBErrlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBErrlogsRequest`
@@ -811,7 +811,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceAttribute(self, request):
-        """本接口 (DescribeDBInstanceAttribute) 用于查询某个实例的详情信息。
+        r"""本接口 (DescribeDBInstanceAttribute) 用于查询某个实例的详情信息。
 
         :param request: Request instance for DescribeDBInstanceAttribute.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceAttributeRequest`
@@ -834,7 +834,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceHAConfig(self, request):
-        """本接口（DescribeDBInstanceHAConfig）用于查询实例HA配置信息。其中HA配置信息包括：
+        r"""本接口（DescribeDBInstanceHAConfig）用于查询实例HA配置信息。其中HA配置信息包括：
         <li>允许备节点切换为主节点的条件配置
         <li>半同步实例使用同步复制或异步复制的条件配置
 
@@ -859,7 +859,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceParameters(self, request):
-        """本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
+        r"""本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
 
         :param request: Request instance for DescribeDBInstanceParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersRequest`
@@ -882,7 +882,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceSSLConfig(self, request):
-        """本接口用于查询实例SSL状态
+        r"""本接口用于查询实例SSL状态
 
         :param request: Request instance for DescribeDBInstanceSSLConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSSLConfigRequest`
@@ -905,7 +905,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceSecurityGroups(self, request):
-        """本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组。
+        r"""本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组。
 
         :param request: Request instance for DescribeDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSecurityGroupsRequest`
@@ -928,7 +928,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
+        r"""本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesRequest`
@@ -951,7 +951,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBVersions(self, request):
-        """本接口（DescribeDBVersions）用于查询支持的数据库版本。
+        r"""本接口（DescribeDBVersions）用于查询支持的数据库版本。
 
         :param request: Request instance for DescribeDBVersions.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBVersionsRequest`
@@ -974,7 +974,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBXlogs(self, request):
-        """本接口（DescribeDBXlogs）用于获取实例Xlog列表。 **本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)**替代**。
+        r"""本接口（DescribeDBXlogs）用于获取实例Xlog列表。 **本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)**替代**。
 
         :param request: Request instance for DescribeDBXlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBXlogsRequest`
@@ -997,7 +997,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDatabaseObjects(self, request):
-        """本接口用于查询数据库对象列表。例如查询test数据库下的模式列表。
+        r"""本接口用于查询数据库对象列表。例如查询test数据库下的模式列表。
 
         :param request: Request instance for DescribeDatabaseObjects.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabaseObjectsRequest`
@@ -1020,7 +1020,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """接口（DescribeDatabases）用来查询实例的数据库列表。
+        r"""接口（DescribeDatabases）用来查询实例的数据库列表。
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesRequest`
@@ -1043,7 +1043,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDedicatedClusters(self, request):
-        """查询专属集群
+        r"""查询专属集群
 
         :param request: Request instance for DescribeDedicatedClusters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDedicatedClustersRequest`
@@ -1066,7 +1066,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDefaultParameters(self, request):
-        """本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
+        r"""本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
 
         :param request: Request instance for DescribeDefaultParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDefaultParametersRequest`
@@ -1089,7 +1089,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeEncryptionKeys(self, request):
-        """本接口 （DescribeEncryptionKeys） 用于查询实例的密钥信息列表。
+        r"""本接口 （DescribeEncryptionKeys） 用于查询实例的密钥信息列表。
 
         :param request: Request instance for DescribeEncryptionKeys.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysRequest`
@@ -1112,7 +1112,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeLogBackups(self, request):
-        """本接口（DescribeLogBackups）用于查询日志备份列表。
+        r"""本接口（DescribeLogBackups）用于查询日志备份列表。
 
         :param request: Request instance for DescribeLogBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeLogBackupsRequest`
@@ -1135,7 +1135,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeMaintainTimeWindow(self, request):
-        """本接口 (DescribeMaintainTimeWindow) 用于查询实例的维护时间窗口
+        r"""本接口 (DescribeMaintainTimeWindow) 用于查询实例的维护时间窗口
 
         :param request: Request instance for DescribeMaintainTimeWindow.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeMaintainTimeWindowRequest`
@@ -1158,7 +1158,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """本接口（DescribeOrders）用于查询订单信息。
+        r"""本接口（DescribeOrders）用于查询订单信息。
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeOrdersRequest`
@@ -1181,7 +1181,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParameterTemplateAttributes(self, request):
-        """本接口（DescribeParameterTemplateAttributes）用于查询某个参数模板的具体内容，包括基本信息和参数信息。
+        r"""本接口（DescribeParameterTemplateAttributes）用于查询某个参数模板的具体内容，包括基本信息和参数信息。
 
         :param request: Request instance for DescribeParameterTemplateAttributes.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplateAttributesRequest`
@@ -1204,7 +1204,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParameterTemplates(self, request):
-        """本接口 (DescribeParameterTemplates) 用于查询参数模板列表。
+        r"""本接口 (DescribeParameterTemplates) 用于查询参数模板列表。
 
         :param request: Request instance for DescribeParameterTemplates.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplatesRequest`
@@ -1227,7 +1227,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParamsEvent(self, request):
-        """本接口（DescribeParamsEvent）用于查询参数修改事件。
+        r"""本接口（DescribeParamsEvent）用于查询参数修改事件。
 
         :param request: Request instance for DescribeParamsEvent.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventRequest`
@@ -1250,7 +1250,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeProductConfig(self, request):
-        """本接口（DescribeProductConfig）用于查询售卖规格配置。**本接口属于早期接口，已停止功能迭代，推荐使用新接口**[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)**替代**。
+        r"""本接口（DescribeProductConfig）用于查询售卖规格配置。**本接口属于早期接口，已停止功能迭代，推荐使用新接口**[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)**替代**。
 
         :param request: Request instance for DescribeProductConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeProductConfigRequest`
@@ -1273,7 +1273,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeReadOnlyGroups(self, request):
-        """本接口（DescribeReadOnlyGroups）用于查询只读组列表
+        r"""本接口（DescribeReadOnlyGroups）用于查询只读组列表
 
         :param request: Request instance for DescribeReadOnlyGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeReadOnlyGroupsRequest`
@@ -1296,7 +1296,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """本接口 (DescribeRegions) 用于查询售卖地域信息。
+        r"""本接口 (DescribeRegions) 用于查询售卖地域信息。
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeRegionsRequest`
@@ -1319,7 +1319,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryAnalysis(self, request):
-        """此接口（DescribeSlowQueryAnalysis）用于统计指定时间范围内的所有慢查询，根据SQL语句抽象参数后，进行聚合分析，并返回同类SQL列表。
+        r"""此接口（DescribeSlowQueryAnalysis）用于统计指定时间范围内的所有慢查询，根据SQL语句抽象参数后，进行聚合分析，并返回同类SQL列表。
 
         :param request: Request instance for DescribeSlowQueryAnalysis.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryAnalysisRequest`
@@ -1342,7 +1342,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryList(self, request):
-        """此接口（DescribeSlowQueryList）用于查询指定时间范围内的所有慢查询。
+        r"""此接口（DescribeSlowQueryList）用于查询指定时间范围内的所有慢查询。
 
         :param request: Request instance for DescribeSlowQueryList.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryListRequest`
@@ -1365,7 +1365,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """本接口（DescribeTasks）用于查询任务列表，展示异步任务的执行进度。
+        r"""本接口（DescribeTasks）用于查询任务列表，展示异步任务的执行进度。
         注：本接口中展示的步骤为总结性步骤，可能伴随着版本迭代进行调整，不建议作为关键逻辑使用
 
         :param request: Request instance for DescribeTasks.
@@ -1389,7 +1389,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """本接口 (DescribeZones) 用于查询支持的可用区信息。
+        r"""本接口 (DescribeZones) 用于查询支持的可用区信息。
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeZonesRequest`
@@ -1412,7 +1412,7 @@ class PostgresClient(AbstractClient):
 
 
     def DestroyDBInstance(self, request):
-        """本接口 (DestroyDBInstance) 用于彻底销毁指定DBInstanceId对应的实例，销毁后实例数据将彻底删除，无法找回，调用前请仔细确认要操作的实例。只能销毁隔离中的实例。
+        r"""本接口 (DestroyDBInstance) 用于彻底销毁指定DBInstanceId对应的实例，销毁后实例数据将彻底删除，无法找回，调用前请仔细确认要操作的实例。只能销毁隔离中的实例。
 
         :param request: Request instance for DestroyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
@@ -1435,7 +1435,7 @@ class PostgresClient(AbstractClient):
 
 
     def DisIsolateDBInstances(self, request):
-        """本接口（DisIsolateDBInstances）用于解隔离实例
+        r"""本接口（DisIsolateDBInstances）用于解隔离实例
 
         :param request: Request instance for DisIsolateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DisIsolateDBInstancesRequest`
@@ -1458,7 +1458,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceCreateDBInstances(self, request):
-        """本接口 (InquiryPriceCreateDBInstances) 用于查询购买实例的价格信息。
+        r"""本接口 (InquiryPriceCreateDBInstances) 用于查询购买实例的价格信息。
 
         :param request: Request instance for InquiryPriceCreateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceCreateDBInstancesRequest`
@@ -1481,7 +1481,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceRenewDBInstance(self, request):
-        """本接口（InquiryPriceRenewDBInstance）用于查询续费实例的价格。
+        r"""本接口（InquiryPriceRenewDBInstance）用于查询续费实例的价格。
 
         :param request: Request instance for InquiryPriceRenewDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceRenewDBInstanceRequest`
@@ -1504,7 +1504,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。只支持按量计费实例。
+        r"""本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。只支持按量计费实例。
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceUpgradeDBInstanceRequest`
@@ -1527,7 +1527,7 @@ class PostgresClient(AbstractClient):
 
 
     def IsolateDBInstances(self, request):
-        """本接口（IsolateDBInstances）用于隔离实例。
+        r"""本接口（IsolateDBInstances）用于隔离实例。
 
         :param request: Request instance for IsolateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.IsolateDBInstancesRequest`
@@ -1550,7 +1550,7 @@ class PostgresClient(AbstractClient):
 
 
     def LockAccount(self, request):
-        """此接口用于锁定数据库账号，锁定后账号当前连接会断开，并且无法建立新连接。
+        r"""此接口用于锁定数据库账号，锁定后账号当前连接会断开，并且无法建立新连接。
 
         :param request: Request instance for LockAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.LockAccountRequest`
@@ -1573,7 +1573,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """修改某账号对某数据库对象的权限、修改账号类型。
+        r"""修改某账号对某数据库对象的权限、修改账号类型。
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAccountPrivilegesRequest`
@@ -1596,7 +1596,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyAccountRemark(self, request):
-        """本接口（ModifyAccountRemark）用于修改账号备注。
+        r"""本接口（ModifyAccountRemark）用于修改账号备注。
 
         :param request: Request instance for ModifyAccountRemark.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAccountRemarkRequest`
@@ -1619,7 +1619,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBackupDownloadRestriction(self, request):
-        """本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载限制。
+        r"""本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载限制。
 
         :param request: Request instance for ModifyBackupDownloadRestriction.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupDownloadRestrictionRequest`
@@ -1642,7 +1642,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBackupPlan(self, request):
-        """本接口 (ModifyBackupPlan) 用于实例备份计划的修改，默认是在每天的凌晨开始全量备份，备份保留时长是7天。可以根据此接口指定时间进行实例的备份。
+        r"""本接口 (ModifyBackupPlan) 用于实例备份计划的修改，默认是在每天的凌晨开始全量备份，备份保留时长是7天。可以根据此接口指定时间进行实例的备份。
 
         :param request: Request instance for ModifyBackupPlan.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanRequest`
@@ -1665,7 +1665,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBaseBackupExpireTime(self, request):
-        """本接口（ModifyBaseBackupExpireTime）用于修改实例指定数据备份的过期时间。
+        r"""本接口（ModifyBaseBackupExpireTime）用于修改实例指定数据备份的过期时间。
 
         :param request: Request instance for ModifyBaseBackupExpireTime.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBaseBackupExpireTimeRequest`
@@ -1688,7 +1688,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceChargeType(self, request):
-        """支持实例的计费类型转换（目前仅支持按量计费转包年包月）
+        r"""支持实例的计费类型转换（目前仅支持按量计费转包年包月）
 
         :param request: Request instance for ModifyDBInstanceChargeType.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceChargeTypeRequest`
@@ -1711,7 +1711,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceDeployment(self, request):
-        """本接口（ModifyDBInstanceDeployment）用于修改节点可用区部署方式，仅支持主实例。
+        r"""本接口（ModifyDBInstanceDeployment）用于修改节点可用区部署方式，仅支持主实例。
 
         :param request: Request instance for ModifyDBInstanceDeployment.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentRequest`
@@ -1734,7 +1734,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceHAConfig(self, request):
-        """本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
+        r"""本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
         <li>允许备节点切换为主节点的条件配置</li>
         <li>半同步实例使用同步复制或异步复制的条件配置</li>
 
@@ -1759,7 +1759,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """本接口（ModifyDBInstanceName）用于修改postgresql实例名字。
+        r"""本接口（ModifyDBInstanceName）用于修改postgresql实例名字。
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceNameRequest`
@@ -1782,7 +1782,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceParameters(self, request):
-        """本接口 (ModifyDBInstanceParameters) 用于修改实例参数。
+        r"""本接口 (ModifyDBInstanceParameters) 用于修改实例参数。
 
         :param request: Request instance for ModifyDBInstanceParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersRequest`
@@ -1805,7 +1805,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceReadOnlyGroup(self, request):
-        """本接口（ModifyDBInstanceReadOnlyGroup）用于修改实例所属的只读组
+        r"""本接口（ModifyDBInstanceReadOnlyGroup）用于修改实例所属的只读组
 
         :param request: Request instance for ModifyDBInstanceReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceReadOnlyGroupRequest`
@@ -1828,7 +1828,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSSLConfig(self, request):
-        """本接口用于修改实例SSL配置，功能包含开启、关闭、修改SSL证书保护的连接地址。
+        r"""本接口用于修改实例SSL配置，功能包含开启、关闭、修改SSL证书保护的连接地址。
 
         :param request: Request instance for ModifyDBInstanceSSLConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSSLConfigRequest`
@@ -1851,7 +1851,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
+        r"""本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1874,7 +1874,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘、Cpu。
+        r"""本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘、Cpu。
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSpecRequest`
@@ -1897,7 +1897,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstancesProject(self, request):
-        """本接口（ModifyDBInstancesProject）用于修改实例所属项目。
+        r"""本接口（ModifyDBInstancesProject）用于修改实例所属项目。
 
         :param request: Request instance for ModifyDBInstancesProject.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstancesProjectRequest`
@@ -1920,7 +1920,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDatabaseOwner(self, request):
-        """修改数据库所有者
+        r"""修改数据库所有者
 
         :param request: Request instance for ModifyDatabaseOwner.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDatabaseOwnerRequest`
@@ -1943,7 +1943,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyMaintainTimeWindow(self, request):
-        """本接口 (ModifyMaintainTimeWindow) 用于实例维护时间窗口的修改。
+        r"""本接口 (ModifyMaintainTimeWindow) 用于实例维护时间窗口的修改。
 
         :param request: Request instance for ModifyMaintainTimeWindow.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyMaintainTimeWindowRequest`
@@ -1966,7 +1966,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyParameterTemplate(self, request):
-        """本接口（ModifyParameterTemplate）主要用于修改参数模板名称，描述等配置，也可用于管理参数模板中的参数列表。
+        r"""本接口（ModifyParameterTemplate）主要用于修改参数模板名称，描述等配置，也可用于管理参数模板中的参数列表。
 
         :param request: Request instance for ModifyParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyParameterTemplateRequest`
@@ -1989,7 +1989,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyReadOnlyDBInstanceWeight(self, request):
-        """本接口（ModifyReadOnlyDBInstanceWeight）用于修改只读实例权重
+        r"""本接口（ModifyReadOnlyDBInstanceWeight）用于修改只读实例权重
 
         :param request: Request instance for ModifyReadOnlyDBInstanceWeight.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyReadOnlyDBInstanceWeightRequest`
@@ -2012,7 +2012,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyReadOnlyGroupConfig(self, request):
-        """本接口(ModifyReadOnlyGroupConfig)用于更新只读组配置信息
+        r"""本接口(ModifyReadOnlyGroupConfig)用于更新只读组配置信息
 
         :param request: Request instance for ModifyReadOnlyGroupConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyReadOnlyGroupConfigRequest`
@@ -2035,7 +2035,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifySwitchTimePeriod(self, request):
-        """当升级完成后，对处于等待切换状态下的实例，强制实例立即切换。
+        r"""当升级完成后，对处于等待切换状态下的实例，强制实例立即切换。
 
         :param request: Request instance for ModifySwitchTimePeriod.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodRequest`
@@ -2058,7 +2058,7 @@ class PostgresClient(AbstractClient):
 
 
     def OpenDBExtranetAccess(self, request):
-        """本接口（OpenDBExtranetAccess）用于开通实例公网地址。
+        r"""本接口（OpenDBExtranetAccess）用于开通实例公网地址。
 
         :param request: Request instance for OpenDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.OpenDBExtranetAccessRequest`
@@ -2081,7 +2081,7 @@ class PostgresClient(AbstractClient):
 
 
     def RebalanceReadOnlyGroup(self, request):
-        """本接口(RebalanceReadOnlyGroup)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
+        r"""本接口(RebalanceReadOnlyGroup)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
 
         :param request: Request instance for RebalanceReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RebalanceReadOnlyGroupRequest`
@@ -2104,7 +2104,7 @@ class PostgresClient(AbstractClient):
 
 
     def RemoveDBInstanceFromReadOnlyGroup(self, request):
-        """本接口（RemoveDBInstanceFromReadOnlyGroup）用户将只读实例从只读组中移除
+        r"""本接口（RemoveDBInstanceFromReadOnlyGroup）用户将只读实例从只读组中移除
 
         :param request: Request instance for RemoveDBInstanceFromReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RemoveDBInstanceFromReadOnlyGroupRequest`
@@ -2127,7 +2127,7 @@ class PostgresClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """本接口（RenewInstance）用于续费实例。
+        r"""本接口（RenewInstance）用于续费实例。
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RenewInstanceRequest`
@@ -2150,7 +2150,7 @@ class PostgresClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """本接口（ResetAccountPassword）用于重置实例的账户密码。
+        r"""本接口（ResetAccountPassword）用于重置实例的账户密码。
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ResetAccountPasswordRequest`
@@ -2173,7 +2173,7 @@ class PostgresClient(AbstractClient):
 
 
     def RestartDBInstance(self, request):
-        """本接口（RestartDBInstance）用于重启实例。
+        r"""本接口（RestartDBInstance）用于重启实例。
 
         :param request: Request instance for RestartDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RestartDBInstanceRequest`
@@ -2196,7 +2196,7 @@ class PostgresClient(AbstractClient):
 
 
     def RestoreDBInstanceObjects(self, request):
-        """根据备份集或恢复目标时间，在原实例上恢复数据库相关对象，例如数据库、表。
+        r"""根据备份集或恢复目标时间，在原实例上恢复数据库相关对象，例如数据库、表。
 
         :param request: Request instance for RestoreDBInstanceObjects.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RestoreDBInstanceObjectsRequest`
@@ -2219,7 +2219,7 @@ class PostgresClient(AbstractClient):
 
 
     def SetAutoRenewFlag(self, request):
-        """本接口（SetAutoRenewFlag）用于设置自动续费。
+        r"""本接口（SetAutoRenewFlag）用于设置自动续费。
 
         :param request: Request instance for SetAutoRenewFlag.
         :type request: :class:`tencentcloud.postgres.v20170312.models.SetAutoRenewFlagRequest`
@@ -2242,7 +2242,7 @@ class PostgresClient(AbstractClient):
 
 
     def SwitchDBInstancePrimary(self, request):
-        """本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
+        r"""本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
         <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景</li>
         <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换</li>
         <li>只有主实例可以执行该操作</li>
@@ -2268,7 +2268,7 @@ class PostgresClient(AbstractClient):
 
 
     def UnlockAccount(self, request):
-        """解除数据库账号的锁定，解锁后账号可以登录数据库。
+        r"""解除数据库账号的锁定，解锁后账号可以登录数据库。
 
         :param request: Request instance for UnlockAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UnlockAccountRequest`
@@ -2291,7 +2291,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstanceKernelVersion(self, request):
-        """本接口（UpgradeDBInstanceKernelVersion）用于升级实例的内核版本号。
+        r"""本接口（UpgradeDBInstanceKernelVersion）用于升级实例的内核版本号。
 
         :param request: Request instance for UpgradeDBInstanceKernelVersion.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceKernelVersionRequest`
@@ -2314,7 +2314,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstanceMajorVersion(self, request):
-        """本接口（UpgradeDBInstanceMajorVersion）用于升级实例内核大版本，例如从PostgreSQL 12升级到PostgreSQL 15。
+        r"""本接口（UpgradeDBInstanceMajorVersion）用于升级实例内核大版本，例如从PostgreSQL 12升级到PostgreSQL 15。
 
         :param request: Request instance for UpgradeDBInstanceMajorVersion.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionRequest`

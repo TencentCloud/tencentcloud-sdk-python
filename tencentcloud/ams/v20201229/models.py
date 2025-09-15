@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AudioResult(AbstractModel):
-    """音频审核输出参数
+    r"""音频审核输出参数
 
     """
 
@@ -87,7 +87,7 @@ class AudioResult(AbstractModel):
 
     @property
     def HitFlag(self):
-        """该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        r"""该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
         :rtype: int
         """
         return self._HitFlag
@@ -98,7 +98,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -109,7 +109,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
@@ -121,7 +121,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        r"""该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -132,7 +132,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Text(self):
-        """该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        r"""该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
         :rtype: str
         """
         return self._Text
@@ -143,7 +143,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Url(self):
-        """该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        r"""该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
         :rtype: str
         """
         return self._Url
@@ -154,7 +154,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Duration(self):
-        """该字段用于返回音频文件的时长，单位为毫秒。
+        r"""该字段用于返回音频文件的时长，单位为毫秒。
         :rtype: str
         """
         return self._Duration
@@ -165,7 +165,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Extra(self):
-        """该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
+        r"""该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
         :rtype: str
         """
         return self._Extra
@@ -176,7 +176,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TextResults(self):
-        """该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :rtype: list of AudioResultDetailTextResult
         """
         return self._TextResults
@@ -187,7 +187,7 @@ class AudioResult(AbstractModel):
 
     @property
     def MoanResults(self):
-        """该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        r"""该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
         :rtype: list of AudioResultDetailMoanResult
         """
         return self._MoanResults
@@ -198,7 +198,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LanguageResults(self):
-        """该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :rtype: list of AudioResultDetailLanguageResult
         """
         return self._LanguageResults
@@ -209,7 +209,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -220,7 +220,7 @@ class AudioResult(AbstractModel):
 
     @property
     def RecognitionResults(self):
-        """识别类标签结果信息列表
+        r"""识别类标签结果信息列表
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -231,7 +231,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SpeakerResults(self):
-        """说话人结果
+        r"""说话人结果
         :rtype: list of SpeakerResults
         """
         return self._SpeakerResults
@@ -242,7 +242,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LabelResults(self):
-        """歌曲识别结果
+        r"""歌曲识别结果
         :rtype: list of LabelResults
         """
         return self._LabelResults
@@ -253,7 +253,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TravelResults(self):
-        """出行结果
+        r"""出行结果
         :rtype: list of TravelResults
         """
         return self._TravelResults
@@ -264,7 +264,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTag(self):
-        """三级标签
+        r"""三级标签
         :rtype: str
         """
         return self._SubTag
@@ -275,7 +275,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTagCode(self):
-        """三级标签码
+        r"""三级标签码
         :rtype: str
         """
         return self._SubTagCode
@@ -286,7 +286,7 @@ class AudioResult(AbstractModel):
 
     @property
     def HitType(self):
-        """审核检测类型
+        r"""审核检测类型
         :rtype: str
         """
         return self._HitType
@@ -362,7 +362,7 @@ class AudioResult(AbstractModel):
 
 
 class AudioResultDetailLanguageResult(AbstractModel):
-    """音频语言种类检测结果
+    r"""音频语言种类检测结果
 
     """
 
@@ -387,7 +387,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回对应的语言种类信息。
+        r"""该字段用于返回对应的语言种类信息。
         :rtype: str
         """
         return self._Label
@@ -398,7 +398,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     @property
     def Score(self):
-        """该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
+        r"""该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
         :rtype: int
         """
         return self._Score
@@ -409,7 +409,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
+        r"""该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
         :rtype: float
         """
         return self._StartTime
@@ -420,7 +420,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
+        r"""该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
         :rtype: float
         """
         return self._EndTime
@@ -431,7 +431,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     @property
     def SubLabelCode(self):
-        """*内测中，敬请期待*
+        r"""*内测中，敬请期待*
         :rtype: str
         """
         return self._SubLabelCode
@@ -458,7 +458,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
 
 class AudioResultDetailMoanResult(AbstractModel):
-    """音频呻吟审核结果
+    r"""音频呻吟审核结果
 
     """
 
@@ -489,7 +489,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
+        r"""该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
         :rtype: str
         """
         return self._Label
@@ -500,7 +500,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
+        r"""该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
         :rtype: int
         """
         return self._Score
@@ -511,7 +511,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为秒。
+        r"""该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为秒。
         :rtype: float
         """
         return self._StartTime
@@ -522,7 +522,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为秒。
+        r"""该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为秒。
         :rtype: float
         """
         return self._EndTime
@@ -535,7 +535,7 @@ class AudioResultDetailMoanResult(AbstractModel):
     def SubLabelCode(self):
         warnings.warn("parameter `SubLabelCode` is deprecated", DeprecationWarning) 
 
-        """*内测中，敬请期待*
+        r"""*内测中，敬请期待*
         :rtype: str
         """
         return self._SubLabelCode
@@ -548,7 +548,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -559,7 +559,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -588,7 +588,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
 
 class AudioResultDetailSpeakerResult(AbstractModel):
-    """音频说话人声纹识别返回结果
+    r"""音频说话人声纹识别返回结果
 
     """
 
@@ -610,7 +610,7 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果需要检测的内容类型。
+        r"""该字段用于返回检测结果需要检测的内容类型。
         :rtype: str
         """
         return self._Label
@@ -621,7 +621,7 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
+        r"""该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
         :rtype: int
         """
         return self._Score
@@ -632,7 +632,7 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
+        r"""该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
         :rtype: float
         """
         return self._StartTime
@@ -643,7 +643,7 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
+        r"""该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
         :rtype: float
         """
         return self._EndTime
@@ -669,7 +669,7 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
 
 class AudioResultDetailTextResult(AbstractModel):
-    """音频ASR文本审核结果
+    r"""音频ASR文本审核结果
 
     """
 
@@ -707,7 +707,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -718,7 +718,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def Keywords(self):
-        """该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
+        r"""该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
         :rtype: list of str
         """
         return self._Keywords
@@ -729,7 +729,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def LibId(self):
-        """该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
+        r"""该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibId
@@ -740,7 +740,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def LibName(self):
-        """该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
+        r"""该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
         :rtype: str
         """
         return self._LibName
@@ -751,7 +751,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        r"""该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -762,7 +762,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
@@ -774,7 +774,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def LibType(self):
-        """该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+        r"""该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
         :rtype: int
         """
         return self._LibType
@@ -785,7 +785,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -796,7 +796,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
     @property
     def HitInfos(self):
-        """该字段用于命中的关键词信息
+        r"""该字段用于命中的关键词信息
         :rtype: list of HitInfo
         """
         return self._HitInfos
@@ -832,7 +832,7 @@ class AudioResultDetailTextResult(AbstractModel):
 
 
 class AudioSegments(AbstractModel):
-    """表示该段声音的信息
+    r"""表示该段声音的信息
 
     """
 
@@ -851,7 +851,7 @@ class AudioSegments(AbstractModel):
 
     @property
     def OffsetTime(self):
-        """该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
+        r"""该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
         :rtype: str
         """
         return self._OffsetTime
@@ -862,7 +862,7 @@ class AudioSegments(AbstractModel):
 
     @property
     def Result(self):
-        """该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
+        r"""该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
         :rtype: :class:`tencentcloud.ams.v20201229.models.AudioResult`
         """
         return self._Result
@@ -873,7 +873,7 @@ class AudioSegments(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """入库时间
+        r"""入库时间
         :rtype: str
         """
         return self._CreatedAt
@@ -900,7 +900,7 @@ class AudioSegments(AbstractModel):
 
 
 class BucketInfo(AbstractModel):
-    """文件桶信息
+    r"""文件桶信息
     参考腾讯云存储相关说明 https://cloud.tencent.com/document/product/436/44352
 
     """
@@ -920,7 +920,7 @@ class BucketInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
+        r"""该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
         :rtype: str
         """
         return self._Bucket
@@ -931,7 +931,7 @@ class BucketInfo(AbstractModel):
 
     @property
     def Region(self):
-        """该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
+        r"""该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
         :rtype: str
         """
         return self._Region
@@ -942,7 +942,7 @@ class BucketInfo(AbstractModel):
 
     @property
     def Object(self):
-        """该字段用于标识腾讯云对象存储的对象Key,对象作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
+        r"""该字段用于标识腾讯云对象存储的对象Key,对象作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
         :rtype: str
         """
         return self._Object
@@ -967,7 +967,7 @@ class BucketInfo(AbstractModel):
 
 
 class CancelTaskRequest(AbstractModel):
-    """CancelTask请求参数结构体
+    r"""CancelTask请求参数结构体
 
     """
 
@@ -980,7 +980,7 @@ class CancelTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
+        r"""该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
         :rtype: str
         """
         return self._TaskId
@@ -1003,7 +1003,7 @@ class CancelTaskRequest(AbstractModel):
 
 
 class CancelTaskResponse(AbstractModel):
-    """CancelTask返回参数结构体
+    r"""CancelTask返回参数结构体
 
     """
 
@@ -1016,7 +1016,7 @@ class CancelTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1031,7 +1031,7 @@ class CancelTaskResponse(AbstractModel):
 
 
 class CreateAudioModerationSyncTaskRequest(AbstractModel):
-    """CreateAudioModerationSyncTask请求参数结构体
+    r"""CreateAudioModerationSyncTask请求参数结构体
 
     """
 
@@ -1062,7 +1062,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        r"""Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
         :rtype: str
         """
         return self._BizType
@@ -1073,7 +1073,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        r"""数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :rtype: str
         """
         return self._DataId
@@ -1084,7 +1084,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def FileFormat(self):
-        """音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
+        r"""音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
         :rtype: str
         """
         return self._FileFormat
@@ -1095,7 +1095,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        """文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        r"""文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :rtype: str
         """
         return self._Name
@@ -1106,7 +1106,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        """数据Base64编码，短音频同步接口仅传入可音频内容；
+        r"""数据Base64编码，短音频同步接口仅传入可音频内容；
 支持范围：文件大小不能超过5M，时长不可超过60s；
 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。
         :rtype: str
@@ -1119,7 +1119,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """音频资源访问链接，与FileContent参数必须二选一输入；
+        r"""音频资源访问链接，与FileContent参数必须二选一输入；
 支持范围及格式：同FileContent；
         :rtype: str
         """
@@ -1148,7 +1148,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
 
 class CreateAudioModerationSyncTaskResponse(AbstractModel):
-    """CreateAudioModerationSyncTask返回参数结构体
+    r"""CreateAudioModerationSyncTask返回参数结构体
 
     """
 
@@ -1222,7 +1222,7 @@ Block 建议屏蔽；
 
     @property
     def DataId(self):
-        """请求接口时传入的数据标识
+        r"""请求接口时传入的数据标识
         :rtype: str
         """
         return self._DataId
@@ -1233,7 +1233,7 @@ Block 建议屏蔽；
 
     @property
     def Name(self):
-        """文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        r"""文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1245,7 +1245,7 @@ Block 建议屏蔽；
 
     @property
     def BizType(self):
-        """Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        r"""Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
         :rtype: str
         """
         return self._BizType
@@ -1256,7 +1256,7 @@ Block 建议屏蔽；
 
     @property
     def Suggestion(self):
-        """智能审核服务对于内容违规类型的等级，可选值：
+        r"""智能审核服务对于内容违规类型的等级，可选值：
 Pass 建议通过；
 Reveiw 建议复审；
 Block 建议屏蔽；
@@ -1271,7 +1271,7 @@ Block 建议屏蔽；
 
     @property
     def Label(self):
-        """智能审核服务对于内容违规类型的判断，详见返回值列表
+        r"""智能审核服务对于内容违规类型的判断，详见返回值列表
 如：Label：Porn（色情）；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1284,7 +1284,7 @@ Block 建议屏蔽；
 
     @property
     def AsrText(self):
-        """音频文本，备注：这里的文本最大只返回前1000个字符
+        r"""音频文本，备注：这里的文本最大只返回前1000个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1296,7 +1296,7 @@ Block 建议屏蔽；
 
     @property
     def TextResults(self):
-        """音频中对话内容审核结果；
+        r"""音频中对话内容审核结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextResult
         """
@@ -1308,7 +1308,7 @@ Block 建议屏蔽；
 
     @property
     def MoanResults(self):
-        """音频中低俗内容审核结果；
+        r"""音频中低俗内容审核结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MoanResult
         """
@@ -1320,7 +1320,7 @@ Block 建议屏蔽；
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1333,7 +1333,7 @@ Block 建议屏蔽；
 
     @property
     def LanguageResults(self):
-        """该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioResultDetailLanguageResult
         """
@@ -1345,7 +1345,7 @@ Block 建议屏蔽；
 
     @property
     def SpeakerResults(self):
-        """音频中说话人识别返回结果；
+        r"""音频中说话人识别返回结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioResultDetailSpeakerResult
         """
@@ -1357,7 +1357,7 @@ Block 建议屏蔽；
 
     @property
     def RecognitionResults(self):
-        """识别类标签结果信息列表
+        r"""识别类标签结果信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionResult
         """
@@ -1369,7 +1369,7 @@ Block 建议屏蔽；
 
     @property
     def Duration(self):
-        """识别音频时长，单位为毫秒；
+        r"""识别音频时长，单位为毫秒；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1381,7 +1381,7 @@ Block 建议屏蔽；
 
     @property
     def HitFlag(self):
-        """是否命中(0:否, 1: 是)
+        r"""是否命中(0:否, 1: 是)
         :rtype: int
         """
         return self._HitFlag
@@ -1392,7 +1392,7 @@ Block 建议屏蔽；
 
     @property
     def Score(self):
-        """得分
+        r"""得分
         :rtype: int
         """
         return self._Score
@@ -1403,7 +1403,7 @@ Block 建议屏蔽；
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1458,7 +1458,7 @@ Block 建议屏蔽；
 
 
 class CreateAudioModerationTaskRequest(AbstractModel):
-    """CreateAudioModerationTask请求参数结构体
+    r"""CreateAudioModerationTask请求参数结构体
 
     """
 
@@ -1487,7 +1487,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def Tasks(self):
-        """该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
+        r"""该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
         :rtype: list of TaskInput
         """
         return self._Tasks
@@ -1498,7 +1498,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
+        r"""该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :rtype: str
         """
@@ -1510,7 +1510,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def Type(self):
-        """该字段表示输入的音频审核类型，取值含：**AUDIO**（点播音频）、**LIVE_AUDIO**（直播音频）、**AUDIO_AIGC**（AI生成识别）三种，默认值为AUDIO。
+        r"""该字段表示输入的音频审核类型，取值含：**AUDIO**（点播音频）、**LIVE_AUDIO**（直播音频）、**AUDIO_AIGC**（AI生成识别）三种，默认值为AUDIO。
         :rtype: str
         """
         return self._Type
@@ -1521,7 +1521,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def Seed(self):
-        """可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/104000#42dd87d2-580f-46cf-a953-639a787d1eda)。
+        r"""可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/104000#42dd87d2-580f-46cf-a953-639a787d1eda)。
         :rtype: str
         """
         return self._Seed
@@ -1532,7 +1532,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1219/104000)。
+        r"""接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1219/104000)。
         :rtype: str
         """
         return self._CallbackUrl
@@ -1543,7 +1543,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     @property
     def User(self):
-        """该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
+        r"""该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
         :rtype: :class:`tencentcloud.ams.v20201229.models.User`
         """
         return self._User
@@ -1578,7 +1578,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
 
 class CreateAudioModerationTaskResponse(AbstractModel):
-    """CreateAudioModerationTask返回参数结构体
+    r"""CreateAudioModerationTask返回参数结构体
 
     """
 
@@ -1594,7 +1594,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
 
     @property
     def Results(self):
-        """该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
+        r"""该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
         :rtype: list of TaskResult
         """
         return self._Results
@@ -1605,7 +1605,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1626,7 +1626,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
 
 
 class DescribeTaskDetailRequest(AbstractModel):
-    """DescribeTaskDetail请求参数结构体
+    r"""DescribeTaskDetail请求参数结构体
 
     """
 
@@ -1643,7 +1643,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        r"""该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 <br>备注：查询接口单次最大查询量为**20条每次**。
         :rtype: str
         """
@@ -1655,7 +1655,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def ShowAllSegments(self):
-        """该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+        r"""该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
         :rtype: bool
         """
         return self._ShowAllSegments
@@ -1679,7 +1679,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
 
 class DescribeTaskDetailResponse(AbstractModel):
-    """DescribeTaskDetail返回参数结构体
+    r"""DescribeTaskDetail返回参数结构体
 
     """
 
@@ -1744,7 +1744,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        r"""该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
         :rtype: str
         """
         return self._TaskId
@@ -1755,7 +1755,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
+        r"""该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
         :rtype: str
         """
         return self._DataId
@@ -1766,7 +1766,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        r"""该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
         :rtype: str
         """
         return self._BizType
@@ -1777,7 +1777,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        """该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        r"""该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
         :rtype: str
         """
         return self._Name
@@ -1788,7 +1788,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """该字段用于返回所查询内容的任务状态。
+        r"""该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
         :rtype: str
         """
@@ -1800,7 +1800,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        """该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        r"""该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :rtype: str
         """
         return self._Type
@@ -1811,7 +1811,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -1822,7 +1822,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Labels(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -1833,7 +1833,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def InputInfo(self):
-        """该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        r"""该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
         :rtype: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         return self._InputInfo
@@ -1844,7 +1844,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioText(self):
-        """该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        r"""该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
         :rtype: str
         """
         return self._AudioText
@@ -1855,7 +1855,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioSegments(self):
-        """该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
+        r"""该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
         :rtype: list of AudioSegments
         """
         return self._AudioSegments
@@ -1866,7 +1866,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorType(self):
-        """当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
+        r"""当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
         :rtype: str
         """
         return self._ErrorType
@@ -1877,7 +1877,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorDescription(self):
-        """当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        r"""当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
         :rtype: str
         """
         return self._ErrorDescription
@@ -1888,7 +1888,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        r"""该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
         :rtype: str
         """
         return self._CreatedAt
@@ -1899,7 +1899,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        r"""该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
         :rtype: str
         """
         return self._UpdatedAt
@@ -1910,7 +1910,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        r"""该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
         :rtype: str
         """
         return self._Label
@@ -1921,7 +1921,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def MediaInfo(self):
-        """媒体信息
+        r"""媒体信息
         :rtype: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         """
         return self._MediaInfo
@@ -1932,7 +1932,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1978,7 +1978,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
 
 class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks请求参数结构体
+    r"""DescribeTasks请求参数结构体
 
     """
 
@@ -2003,7 +2003,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
+        r"""该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
         :rtype: int
         """
         return self._Limit
@@ -2014,7 +2014,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
+        r"""该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
         :rtype: :class:`tencentcloud.ams.v20201229.models.TaskFilter`
         """
         return self._Filter
@@ -2025,7 +2025,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def PageToken(self):
-        """该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+        r"""该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
         :rtype: str
         """
         return self._PageToken
@@ -2036,7 +2036,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+        r"""该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :rtype: str
         """
         return self._StartTime
@@ -2047,7 +2047,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+        r"""该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :rtype: str
         """
         return self._EndTime
@@ -2076,7 +2076,7 @@ class DescribeTasksRequest(AbstractModel):
 
 
 class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks返回参数结构体
+    r"""DescribeTasks返回参数结构体
 
     """
 
@@ -2098,7 +2098,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """该字段用于返回当前查询的任务总量，格式为int字符串。
+        r"""该字段用于返回当前查询的任务总量，格式为int字符串。
         :rtype: str
         """
         return self._Total
@@ -2109,7 +2109,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        """该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
+        r"""该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
         :rtype: list of TaskData
         """
         return self._Data
@@ -2120,7 +2120,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def PageToken(self):
-        """该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+        r"""该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
         :rtype: str
         """
         return self._PageToken
@@ -2131,7 +2131,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2154,7 +2154,7 @@ class DescribeTasksResponse(AbstractModel):
 
 
 class HitInfo(AbstractModel):
-    """关键词命中位置信息
+    r"""关键词命中位置信息
 
     """
 
@@ -2176,7 +2176,7 @@ class HitInfo(AbstractModel):
 
     @property
     def Type(self):
-        """标识模型命中还是关键词命中
+        r"""标识模型命中还是关键词命中
         :rtype: str
         """
         return self._Type
@@ -2187,7 +2187,7 @@ class HitInfo(AbstractModel):
 
     @property
     def Keyword(self):
-        """命中关键词
+        r"""命中关键词
         :rtype: str
         """
         return self._Keyword
@@ -2198,7 +2198,7 @@ class HitInfo(AbstractModel):
 
     @property
     def LibName(self):
-        """自定义词库名称
+        r"""自定义词库名称
         :rtype: str
         """
         return self._LibName
@@ -2209,7 +2209,7 @@ class HitInfo(AbstractModel):
 
     @property
     def Positions(self):
-        """	位置信息
+        r"""	位置信息
         :rtype: list of Position
         """
         return self._Positions
@@ -2240,7 +2240,7 @@ class HitInfo(AbstractModel):
 
 
 class InputInfo(AbstractModel):
-    """输入信息详情
+    r"""输入信息详情
 
     """
 
@@ -2260,7 +2260,7 @@ class InputInfo(AbstractModel):
 
     @property
     def Type(self):
-        """该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
+        r"""该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
         :rtype: str
         """
         return self._Type
@@ -2271,7 +2271,7 @@ class InputInfo(AbstractModel):
 
     @property
     def Url(self):
-        """该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
+        r"""该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
         :rtype: str
         """
         return self._Url
@@ -2282,7 +2282,7 @@ class InputInfo(AbstractModel):
 
     @property
     def BucketInfo(self):
-        """该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
+        r"""该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
@@ -2310,7 +2310,7 @@ class InputInfo(AbstractModel):
 
 
 class LabelResults(AbstractModel):
-    """歌曲识别结果
+    r"""歌曲识别结果
 
     """
 
@@ -2341,7 +2341,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Scene(self):
-        """场景
+        r"""场景
         :rtype: str
         """
         return self._Scene
@@ -2352,7 +2352,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议值
+        r"""建议值
         :rtype: int
         """
         return self._Suggestion
@@ -2363,7 +2363,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Label(self):
-        """标签
+        r"""标签
         :rtype: str
         """
         return self._Label
@@ -2374,7 +2374,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Name(self):
-        """名称：歌曲名，语种名，说话人名 等
+        r"""名称：歌曲名，语种名，说话人名 等
         :rtype: str
         """
         return self._Name
@@ -2385,7 +2385,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Score(self):
-        """得分
+        r"""得分
         :rtype: int
         """
         return self._Score
@@ -2396,7 +2396,7 @@ class LabelResults(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: float
         """
         return self._StartTime
@@ -2407,7 +2407,7 @@ class LabelResults(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: float
         """
         return self._EndTime
@@ -2436,7 +2436,7 @@ class LabelResults(AbstractModel):
 
 
 class MediaInfo(AbstractModel):
-    """媒体类型
+    r"""媒体类型
 
     """
 
@@ -2461,7 +2461,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Codecs(self):
-        """该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
+        r"""该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
         :rtype: str
         """
         return self._Codecs
@@ -2472,7 +2472,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为毫秒。**默认值为15秒**，支持用户自定义配置。
+        r"""该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为毫秒。**默认值为15秒**，支持用户自定义配置。
         :rtype: int
         """
         return self._Duration
@@ -2483,7 +2483,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Width(self):
-        """*内测中，敬请期待*
+        r"""*内测中，敬请期待*
         :rtype: int
         """
         return self._Width
@@ -2494,7 +2494,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Height(self):
-        """*内测中，敬请期待*
+        r"""*内测中，敬请期待*
         :rtype: int
         """
         return self._Height
@@ -2505,7 +2505,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Thumbnail(self):
-        """*内测中，敬请期待*
+        r"""*内测中，敬请期待*
         :rtype: str
         """
         return self._Thumbnail
@@ -2532,7 +2532,7 @@ class MediaInfo(AbstractModel):
 
 
 class MoanResult(AbstractModel):
-    """呻吟低俗检测结果
+    r"""呻吟低俗检测结果
 
     """
 
@@ -2562,7 +2562,7 @@ class MoanResult(AbstractModel):
 
     @property
     def Label(self):
-        """固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
+        r"""固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
         :rtype: str
         """
         return self._Label
@@ -2573,7 +2573,7 @@ class MoanResult(AbstractModel):
 
     @property
     def Score(self):
-        """机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+        r"""机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Moan 99，则该样本属于呻吟/娇喘的置信度非常高。）
         :rtype: int
         """
@@ -2585,7 +2585,7 @@ class MoanResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -2597,7 +2597,7 @@ class MoanResult(AbstractModel):
 
     @property
     def StartTime(self):
-        """违规事件开始时间，单位为秒（s）；
+        r"""违规事件开始时间，单位为秒（s）；
         :rtype: float
         """
         return self._StartTime
@@ -2608,7 +2608,7 @@ class MoanResult(AbstractModel):
 
     @property
     def EndTime(self):
-        """违规事件结束时间，单位为秒（s）；
+        r"""违规事件结束时间，单位为秒（s）；
         :rtype: float
         """
         return self._EndTime
@@ -2619,7 +2619,7 @@ class MoanResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -2647,7 +2647,7 @@ class MoanResult(AbstractModel):
 
 
 class Position(AbstractModel):
-    """标识命中的违规关键词位置信息
+    r"""标识命中的违规关键词位置信息
 
     """
 
@@ -2663,7 +2663,7 @@ class Position(AbstractModel):
 
     @property
     def Start(self):
-        """关键词起始位置
+        r"""关键词起始位置
         :rtype: int
         """
         return self._Start
@@ -2674,7 +2674,7 @@ class Position(AbstractModel):
 
     @property
     def End(self):
-        """关键词结束位置
+        r"""关键词结束位置
         :rtype: int
         """
         return self._End
@@ -2698,7 +2698,7 @@ class Position(AbstractModel):
 
 
 class RecognitionResult(AbstractModel):
-    """识别类标签结果信息
+    r"""识别类标签结果信息
 
     """
 
@@ -2714,7 +2714,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Label(self):
-        """可能的取值有：Teenager 、Gender
+        r"""可能的取值有：Teenager 、Gender
         :rtype: str
         """
         return self._Label
@@ -2725,7 +2725,7 @@ class RecognitionResult(AbstractModel):
 
     @property
     def Tags(self):
-        """识别标签列表
+        r"""识别标签列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -2754,7 +2754,7 @@ class RecognitionResult(AbstractModel):
 
 
 class SpeakerResults(AbstractModel):
-    """说话人结果
+    r"""说话人结果
 
     """
 
@@ -2776,7 +2776,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def Label(self):
-        """标签
+        r"""标签
         :rtype: str
         """
         return self._Label
@@ -2787,7 +2787,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def Score(self):
-        """得分
+        r"""得分
         :rtype: int
         """
         return self._Score
@@ -2798,7 +2798,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: float
         """
         return self._StartTime
@@ -2809,7 +2809,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -2835,7 +2835,7 @@ class SpeakerResults(AbstractModel):
 
 
 class StorageInfo(AbstractModel):
-    """用于表示数据存储的相关信息
+    r"""用于表示数据存储的相关信息
 
     """
 
@@ -2854,7 +2854,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def Type(self):
-        """该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
+        r"""该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
         :rtype: str
         """
         return self._Type
@@ -2865,7 +2865,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def Url(self):
-        """该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空，该参数与BucketInfo参数须传入其中之一
+        r"""该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空，该参数与BucketInfo参数须传入其中之一
         :rtype: str
         """
         return self._Url
@@ -2876,7 +2876,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def BucketInfo(self):
-        """该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
+        r"""该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
         :rtype: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
         return self._BucketInfo
@@ -2903,7 +2903,7 @@ class StorageInfo(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """音频切片识别标签
+    r"""音频切片识别标签
 
     """
 
@@ -2927,7 +2927,7 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
-        """根据Label字段确定具体名称：
+        r"""根据Label字段确定具体名称：
 当Label 为Teenager 时 Name可能取值有：Teenager 
 当Label 为Gender 时 Name可能取值有：Male 、Female
         :rtype: str
@@ -2940,7 +2940,7 @@ class Tag(AbstractModel):
 
     @property
     def Score(self):
-        """置信分：0～100，数值越大表示置信度越高
+        r"""置信分：0～100，数值越大表示置信度越高
         :rtype: int
         """
         return self._Score
@@ -2951,7 +2951,7 @@ class Tag(AbstractModel):
 
     @property
     def StartTime(self):
-        """识别开始偏移时间，单位：毫秒
+        r"""识别开始偏移时间，单位：毫秒
         :rtype: float
         """
         return self._StartTime
@@ -2962,7 +2962,7 @@ class Tag(AbstractModel):
 
     @property
     def EndTime(self):
-        """识别结束偏移时间，单位：毫秒
+        r"""识别结束偏移时间，单位：毫秒
         :rtype: float
         """
         return self._EndTime
@@ -2988,7 +2988,7 @@ class Tag(AbstractModel):
 
 
 class TaskData(AbstractModel):
-    """任务数据
+    r"""任务数据
 
     """
 
@@ -3035,7 +3035,7 @@ class TaskData(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
+        r"""该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
         :rtype: str
         """
         return self._DataId
@@ -3046,7 +3046,7 @@ class TaskData(AbstractModel):
 
     @property
     def TaskId(self):
-        """该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
+        r"""该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
         :rtype: str
         """
         return self._TaskId
@@ -3057,7 +3057,7 @@ class TaskData(AbstractModel):
 
     @property
     def Status(self):
-        """该字段用于返回所查询内容的任务状态。
+        r"""该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
         :rtype: str
         """
@@ -3069,7 +3069,7 @@ class TaskData(AbstractModel):
 
     @property
     def Name(self):
-        """该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
+        r"""该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
         :rtype: str
         """
         return self._Name
@@ -3080,7 +3080,7 @@ class TaskData(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        r"""该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
         :rtype: str
         """
         return self._BizType
@@ -3091,7 +3091,7 @@ class TaskData(AbstractModel):
 
     @property
     def Type(self):
-        """该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        r"""该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :rtype: str
         """
         return self._Type
@@ -3102,7 +3102,7 @@ class TaskData(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -3113,7 +3113,7 @@ class TaskData(AbstractModel):
 
     @property
     def MediaInfo(self):
-        """输入信息
+        r"""输入信息
         :rtype: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         """
         return self._MediaInfo
@@ -3124,7 +3124,7 @@ class TaskData(AbstractModel):
 
     @property
     def Labels(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -3135,7 +3135,7 @@ class TaskData(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        r"""该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
         :rtype: str
         """
         return self._CreatedAt
@@ -3146,7 +3146,7 @@ class TaskData(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        r"""该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
         :rtype: str
         """
         return self._UpdatedAt
@@ -3157,7 +3157,7 @@ class TaskData(AbstractModel):
 
     @property
     def InputInfo(self):
-        """任务信息
+        r"""任务信息
         :rtype: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         return self._InputInfo
@@ -3200,7 +3200,7 @@ class TaskData(AbstractModel):
 
 
 class TaskFilter(AbstractModel):
-    """任务筛选器
+    r"""任务筛选器
 
     """
 
@@ -3222,7 +3222,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
+        r"""该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
         :rtype: str
         """
         return self._BizType
@@ -3233,7 +3233,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def Type(self):
-        """该字段用于传入音频审核对应的任务类型供筛选器进行筛选，取值为：**VIDEO**（点播视频审核），**AUDIO**（点播音频审核）， **LIVE_VIDEO**（直播视频审核）, **LIVE_AUDIO**（直播音频审核）。<br>备注：在不传入该参数时筛选器默认不筛选任务类型。
+        r"""该字段用于传入音频审核对应的任务类型供筛选器进行筛选，取值为：**VIDEO**（点播视频审核），**AUDIO**（点播音频审核）， **LIVE_VIDEO**（直播视频审核）, **LIVE_AUDIO**（直播音频审核）。<br>备注：在不传入该参数时筛选器默认不筛选任务类型。
         :rtype: str
         """
         return self._Type
@@ -3244,7 +3244,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于传入音频审核对应的建议操作供筛选器进行筛选，取值为：**Block**：建议屏蔽，**Review**：建议人工复审，**Pass**：建议通过。<br>备注：在不传入该参数时筛选器默认不筛选建议操作。
+        r"""该字段用于传入音频审核对应的建议操作供筛选器进行筛选，取值为：**Block**：建议屏蔽，**Review**：建议人工复审，**Pass**：建议通过。<br>备注：在不传入该参数时筛选器默认不筛选建议操作。
         :rtype: str
         """
         return self._Suggestion
@@ -3255,7 +3255,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """该字段用于传入审核任务的任务状态供筛选器进行筛选，取值为：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。<br>备注：在不传入该参数时筛选器默认不筛选任务状态。
+        r"""该字段用于传入审核任务的任务状态供筛选器进行筛选，取值为：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。<br>备注：在不传入该参数时筛选器默认不筛选任务状态。
         :rtype: str
         """
         return self._TaskStatus
@@ -3281,7 +3281,7 @@ class TaskFilter(AbstractModel):
 
 
 class TaskInput(AbstractModel):
-    """音视频任务数据结构
+    r"""音视频任务数据结构
 
     """
 
@@ -3300,7 +3300,7 @@ class TaskInput(AbstractModel):
 
     @property
     def DataId(self):
-        """选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        r"""选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :rtype: str
         """
         return self._DataId
@@ -3311,7 +3311,7 @@ class TaskInput(AbstractModel):
 
     @property
     def Name(self):
-        """选填参数，该字段表示音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
+        r"""选填参数，该字段表示音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
         :rtype: str
         """
         return self._Name
@@ -3322,7 +3322,7 @@ class TaskInput(AbstractModel):
 
     @property
     def Input(self):
-        """必填参数，该字段表示审核文件的访问参数，用于获取审核媒体文件，该参数内包括访问类型和访问地址。
+        r"""必填参数，该字段表示审核文件的访问参数，用于获取审核媒体文件，该参数内包括访问类型和访问地址。
         :rtype: :class:`tencentcloud.ams.v20201229.models.StorageInfo`
         """
         return self._Input
@@ -3349,7 +3349,7 @@ class TaskInput(AbstractModel):
 
 
 class TaskLabel(AbstractModel):
-    """用于返回审核任务输出的标签
+    r"""用于返回审核任务输出的标签
 
     """
 
@@ -3371,7 +3371,7 @@ class TaskLabel(AbstractModel):
 
     @property
     def Label(self):
-        """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
         return self._Label
@@ -3382,7 +3382,7 @@ class TaskLabel(AbstractModel):
 
     @property
     def Suggestion(self):
-        """该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :rtype: str
         """
         return self._Suggestion
@@ -3393,7 +3393,7 @@ class TaskLabel(AbstractModel):
 
     @property
     def Score(self):
-        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
         :rtype: int
         """
         return self._Score
@@ -3404,7 +3404,7 @@ class TaskLabel(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -3430,7 +3430,7 @@ class TaskLabel(AbstractModel):
 
 
 class TaskResult(AbstractModel):
-    """创建任务时的返回结果
+    r"""创建任务时的返回结果
 
     """
 
@@ -3452,7 +3452,7 @@ class TaskResult(AbstractModel):
 
     @property
     def DataId(self):
-        """该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
+        r"""该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
         :rtype: str
         """
         return self._DataId
@@ -3463,7 +3463,7 @@ class TaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
+        r"""该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
         :rtype: str
         """
         return self._TaskId
@@ -3474,7 +3474,7 @@ class TaskResult(AbstractModel):
 
     @property
     def Code(self):
-        """该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
+        r"""该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
         :rtype: str
         """
         return self._Code
@@ -3485,7 +3485,7 @@ class TaskResult(AbstractModel):
 
     @property
     def Message(self):
-        """**仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
+        r"""**仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
         :rtype: str
         """
         return self._Message
@@ -3511,7 +3511,7 @@ class TaskResult(AbstractModel):
 
 
 class TextResult(AbstractModel):
-    """音频文本内容审核结果
+    r"""音频文本内容审核结果
 
     """
 
@@ -3555,7 +3555,7 @@ class TextResult(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告。
 以及其他令人反感、不安全或不适宜的内容类型。
 
 如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
@@ -3569,7 +3569,7 @@ class TextResult(AbstractModel):
 
     @property
     def Keywords(self):
-        """命中的关键词，为空则代表该违规内容出自于模型的判断；
+        r"""命中的关键词，为空则代表该违规内容出自于模型的判断；
         :rtype: list of str
         """
         return self._Keywords
@@ -3580,7 +3580,7 @@ class TextResult(AbstractModel):
 
     @property
     def LibId(self):
-        """命中关键词库的库标识；
+        r"""命中关键词库的库标识；
         :rtype: str
         """
         return self._LibId
@@ -3591,7 +3591,7 @@ class TextResult(AbstractModel):
 
     @property
     def LibName(self):
-        """命中关键词库的名字；
+        r"""命中关键词库的名字；
         :rtype: str
         """
         return self._LibName
@@ -3602,7 +3602,7 @@ class TextResult(AbstractModel):
 
     @property
     def Score(self):
-        """机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+        r"""机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Porn 99，则该样本属于色情的置信度非常高。）
         :rtype: int
         """
@@ -3614,7 +3614,7 @@ class TextResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -3626,7 +3626,7 @@ class TextResult(AbstractModel):
 
     @property
     def LibType(self):
-        """自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
+        r"""自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
 1：自定义黑白库；
 2：公库；
         :rtype: int
@@ -3639,7 +3639,7 @@ class TextResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        """该字段用于返回当前标签（Lable）下的二级标签。
+        r"""该字段用于返回当前标签（Lable）下的二级标签。
         :rtype: str
         """
         return self._SubLabel
@@ -3650,7 +3650,7 @@ class TextResult(AbstractModel):
 
     @property
     def HitInfos(self):
-        """该字段用于返回违规文本命中信息
+        r"""该字段用于返回违规文本命中信息
         :rtype: list of HitInfo
         """
         return self._HitInfos
@@ -3686,7 +3686,7 @@ class TextResult(AbstractModel):
 
 
 class TravelResults(AbstractModel):
-    """出行结果
+    r"""出行结果
 
     """
 
@@ -3717,7 +3717,7 @@ class TravelResults(AbstractModel):
 
     @property
     def Label(self):
-        """一级标签
+        r"""一级标签
         :rtype: str
         """
         return self._Label
@@ -3728,7 +3728,7 @@ class TravelResults(AbstractModel):
 
     @property
     def SubLabel(self):
-        """二级标签
+        r"""二级标签
         :rtype: str
         """
         return self._SubLabel
@@ -3739,7 +3739,7 @@ class TravelResults(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
+        r"""风险等级
         :rtype: str
         """
         return self._RiskLevel
@@ -3750,7 +3750,7 @@ class TravelResults(AbstractModel):
 
     @property
     def AudioRole(self):
-        """出行音频角色
+        r"""出行音频角色
         :rtype: str
         """
         return self._AudioRole
@@ -3761,7 +3761,7 @@ class TravelResults(AbstractModel):
 
     @property
     def AudioText(self):
-        """出行语音文本
+        r"""出行语音文本
         :rtype: str
         """
         return self._AudioText
@@ -3772,7 +3772,7 @@ class TravelResults(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: float
         """
         return self._StartTime
@@ -3783,7 +3783,7 @@ class TravelResults(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: float
         """
         return self._EndTime
@@ -3812,7 +3812,7 @@ class TravelResults(AbstractModel):
 
 
 class User(AbstractModel):
-    """User结果
+    r"""User结果
 
     """
 
@@ -3864,7 +3864,7 @@ class User(AbstractModel):
 
     @property
     def Level(self):
-        """用户等级，默认0 未知 1 低 2 中 3 高
+        r"""用户等级，默认0 未知 1 低 2 中 3 高
         :rtype: int
         """
         return self._Level
@@ -3875,7 +3875,7 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
-        """性别 默认0 未知 1 男性 2 女性
+        r"""性别 默认0 未知 1 男性 2 女性
         :rtype: int
         """
         return self._Gender
@@ -3886,7 +3886,7 @@ class User(AbstractModel):
 
     @property
     def Age(self):
-        """年龄 默认0 未知
+        r"""年龄 默认0 未知
         :rtype: int
         """
         return self._Age
@@ -3897,7 +3897,7 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
-        """业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        r"""业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :rtype: str
         """
         return self._UserId
@@ -3908,7 +3908,7 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
-        """手机号
+        r"""手机号
         :rtype: str
         """
         return self._Phone
@@ -3919,7 +3919,7 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
-        """业务用户ID类型 "1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        r"""业务用户ID类型 "1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
         :rtype: str
         """
         return self._AccountType
@@ -3930,7 +3930,7 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nickname
@@ -3941,7 +3941,7 @@ class User(AbstractModel):
 
     @property
     def HeadUrl(self):
-        """用户头像图片链接
+        r"""用户头像图片链接
         :rtype: str
         """
         return self._HeadUrl
@@ -3952,7 +3952,7 @@ class User(AbstractModel):
 
     @property
     def Desc(self):
-        """用户简介，长度不超过5000字
+        r"""用户简介，长度不超过5000字
         :rtype: str
         """
         return self._Desc
@@ -3963,7 +3963,7 @@ class User(AbstractModel):
 
     @property
     def RoomId(self):
-        """群聊场景房间ID
+        r"""群聊场景房间ID
         :rtype: str
         """
         return self._RoomId
@@ -3974,7 +3974,7 @@ class User(AbstractModel):
 
     @property
     def GroupId(self):
-        """群聊场景群ID
+        r"""群聊场景群ID
         :rtype: str
         """
         return self._GroupId
@@ -3985,7 +3985,7 @@ class User(AbstractModel):
 
     @property
     def GroupSize(self):
-        """群聊场景群用户数
+        r"""群聊场景群用户数
         :rtype: int
         """
         return self._GroupSize
@@ -3996,7 +3996,7 @@ class User(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """消息接收者ID
+        r"""消息接收者ID
         :rtype: str
         """
         return self._ReceiverId
@@ -4007,7 +4007,7 @@ class User(AbstractModel):
 
     @property
     def SendTime(self):
-        """消息生成时间，毫秒
+        r"""消息生成时间，毫秒
         :rtype: str
         """
         return self._SendTime

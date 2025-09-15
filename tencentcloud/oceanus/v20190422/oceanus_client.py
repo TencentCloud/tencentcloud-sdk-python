@@ -27,7 +27,7 @@ class OceanusClient(AbstractClient):
 
 
     def CheckSavepoint(self, request):
-        """检查快照是否可用
+        r"""检查快照是否可用
 
         :param request: Request instance for CheckSavepoint.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CheckSavepointRequest`
@@ -50,7 +50,7 @@ class OceanusClient(AbstractClient):
 
 
     def CopyJobs(self, request):
-        """单条和批量复制作业
+        r"""单条和批量复制作业
 
         :param request: Request instance for CopyJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CopyJobsRequest`
@@ -73,7 +73,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateFolder(self, request):
-        """作业列表页面新建文件夹请求
+        r"""作业列表页面新建文件夹请求
 
         :param request: Request instance for CreateFolder.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateFolderRequest`
@@ -96,7 +96,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateJob(self, request):
-        """新建作业接口，一个 AppId 最多允许创建1000个作业
+        r"""新建作业接口，一个 AppId 最多允许创建1000个作业
 
         :param request: Request instance for CreateJob.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateJobRequest`
@@ -119,7 +119,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateJobConfig(self, request):
-        """创建作业配置，一个作业最多有100个配置版本
+        r"""创建作业配置，一个作业最多有100个配置版本
 
         :param request: Request instance for CreateJobConfig.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateJobConfigRequest`
@@ -142,7 +142,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """创建资源接口
+        r"""创建资源接口
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateResourceRequest`
@@ -165,7 +165,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateResourceConfig(self, request):
-        """创建资源配置接口
+        r"""创建资源配置接口
 
         :param request: Request instance for CreateResourceConfig.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateResourceConfigRequest`
@@ -188,7 +188,7 @@ class OceanusClient(AbstractClient):
 
 
     def CreateWorkSpace(self, request):
-        """创建工作空间
+        r"""创建工作空间
 
         :param request: Request instance for CreateWorkSpace.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateWorkSpaceRequest`
@@ -211,7 +211,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteFolders(self, request):
-        """作业列表删除文件夹
+        r"""作业列表删除文件夹
 
         :param request: Request instance for DeleteFolders.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteFoldersRequest`
@@ -234,7 +234,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteJobConfigs(self, request):
-        """删除作业配置
+        r"""删除作业配置
 
         :param request: Request instance for DeleteJobConfigs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteJobConfigsRequest`
@@ -257,7 +257,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteJobs(self, request):
-        """批量删除作业接口，批量操作数量上限20
+        r"""批量删除作业接口，批量操作数量上限20
 
         :param request: Request instance for DeleteJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteJobsRequest`
@@ -280,7 +280,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteResourceConfigs(self, request):
-        """删除资源版本
+        r"""删除资源版本
 
         :param request: Request instance for DeleteResourceConfigs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourceConfigsRequest`
@@ -303,7 +303,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteResources(self, request):
-        """删除资源接口
+        r"""删除资源接口
 
         :param request: Request instance for DeleteResources.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourcesRequest`
@@ -326,7 +326,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteTableConfig(self, request):
-        """删除作业表配置
+        r"""删除作业表配置
 
         :param request: Request instance for DeleteTableConfig.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteTableConfigRequest`
@@ -349,7 +349,7 @@ class OceanusClient(AbstractClient):
 
 
     def DeleteWorkSpace(self, request):
-        """删除工作空间
+        r"""删除工作空间
 
         :param request: Request instance for DeleteWorkSpace.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteWorkSpaceRequest`
@@ -372,7 +372,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """查询集群
+        r"""查询集群
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeClustersRequest`
@@ -395,7 +395,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeFolder(self, request):
-        """查询指定文件夹及其相应的子文件夹信息
+        r"""查询指定文件夹及其相应的子文件夹信息
 
         :param request: Request instance for DescribeFolder.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeFolderRequest`
@@ -418,7 +418,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobConfigs(self, request):
-        """查询作业配置列表，一次最多查询100个
+        r"""查询作业配置列表，一次最多查询100个
 
         :param request: Request instance for DescribeJobConfigs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobConfigsRequest`
@@ -441,7 +441,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobEvents(self, request):
-        """请求参数不包含 "RunningOrderIds"时，接口获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型;请求参数不包含 "RunningOrderIds"时，接口为查询作业实例ID接口,获取作业实例
+        r"""请求参数不包含 "RunningOrderIds"时，接口获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型;请求参数不包含 "RunningOrderIds"时，接口为查询作业实例ID接口,获取作业实例
 
         :param request: Request instance for DescribeJobEvents.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobEventsRequest`
@@ -464,7 +464,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobRuntimeInfo(self, request):
-        """获取作业运行时的信息
+        r"""获取作业运行时的信息
 
         :param request: Request instance for DescribeJobRuntimeInfo.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobRuntimeInfoRequest`
@@ -487,7 +487,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobSavepoint(self, request):
-        """查找Savepoint列表
+        r"""查找Savepoint列表
 
         :param request: Request instance for DescribeJobSavepoint.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSavepointRequest`
@@ -510,7 +510,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobSubmissionLog(self, request):
-        """查询作业实例启动日志
+        r"""查询作业实例启动日志
 
         :param request: Request instance for DescribeJobSubmissionLog.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSubmissionLogRequest`
@@ -533,7 +533,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """查询作业
+        r"""查询作业
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobsRequest`
@@ -556,7 +556,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeResourceConfigs(self, request):
-        """描述资源配置接口
+        r"""描述资源配置接口
 
         :param request: Request instance for DescribeResourceConfigs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceConfigsRequest`
@@ -579,7 +579,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeResourceRelatedJobs(self, request):
-        """获取资源关联作业信息
+        r"""获取资源关联作业信息
 
         :param request: Request instance for DescribeResourceRelatedJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceRelatedJobsRequest`
@@ -602,7 +602,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeResources(self, request):
-        """描述资源接口
+        r"""描述资源接口
 
         :param request: Request instance for DescribeResources.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourcesRequest`
@@ -625,7 +625,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeSystemResources(self, request):
-        """描述系统资源接口
+        r"""描述系统资源接口
 
         :param request: Request instance for DescribeSystemResources.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeSystemResourcesRequest`
@@ -648,7 +648,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeTreeJobs(self, request):
-        """生成树状作业显示结构
+        r"""生成树状作业显示结构
 
         :param request: Request instance for DescribeTreeJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeTreeJobsRequest`
@@ -671,7 +671,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeTreeResources(self, request):
-        """查询树状结构资源列表
+        r"""查询树状结构资源列表
 
         :param request: Request instance for DescribeTreeResources.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeTreeResourcesRequest`
@@ -694,7 +694,7 @@ class OceanusClient(AbstractClient):
 
 
     def DescribeWorkSpaces(self, request):
-        """授权工作空间列表
+        r"""授权工作空间列表
 
         :param request: Request instance for DescribeWorkSpaces.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeWorkSpacesRequest`
@@ -717,7 +717,7 @@ class OceanusClient(AbstractClient):
 
 
     def FetchSqlGatewayStatementResult(self, request):
-        """查询Sql Gateway的Statement执行结果
+        r"""查询Sql Gateway的Statement执行结果
 
         :param request: Request instance for FetchSqlGatewayStatementResult.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.FetchSqlGatewayStatementResultRequest`
@@ -740,7 +740,7 @@ class OceanusClient(AbstractClient):
 
 
     def GetMetaTable(self, request):
-        """查询元数据表
+        r"""查询元数据表
 
         :param request: Request instance for GetMetaTable.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.GetMetaTableRequest`
@@ -763,7 +763,7 @@ class OceanusClient(AbstractClient):
 
 
     def ModifyFolder(self, request):
-        """自定义树状结构页面拖拽文件夹
+        r"""自定义树状结构页面拖拽文件夹
 
         :param request: Request instance for ModifyFolder.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyFolderRequest`
@@ -786,7 +786,7 @@ class OceanusClient(AbstractClient):
 
 
     def ModifyJob(self, request):
-        """更新作业属性，仅允许以下3种操作，不支持组合操作：
+        r"""更新作业属性，仅允许以下3种操作，不支持组合操作：
         (1)	更新作业名称
         (2)	更新作业备注
         (3)	更新作业最大并行度
@@ -817,7 +817,7 @@ class OceanusClient(AbstractClient):
 
 
     def ModifyWorkSpace(self, request):
-        """修改工作空间
+        r"""修改工作空间
 
         :param request: Request instance for ModifyWorkSpace.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyWorkSpaceRequest`
@@ -840,7 +840,7 @@ class OceanusClient(AbstractClient):
 
 
     def RunJobs(self, request):
-        """批量启动或者恢复作业，批量操作数量上限20
+        r"""批量启动或者恢复作业，批量操作数量上限20
 
         :param request: Request instance for RunJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.RunJobsRequest`
@@ -863,7 +863,7 @@ class OceanusClient(AbstractClient):
 
 
     def RunSqlGatewayStatement(self, request):
-        """通过Sql gateway执行satement
+        r"""通过Sql gateway执行satement
 
         :param request: Request instance for RunSqlGatewayStatement.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.RunSqlGatewayStatementRequest`
@@ -886,7 +886,7 @@ class OceanusClient(AbstractClient):
 
 
     def StopJobs(self, request):
-        """批量停止作业，批量操作数量上限为20
+        r"""批量停止作业，批量操作数量上限为20
 
         :param request: Request instance for StopJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.StopJobsRequest`
@@ -909,7 +909,7 @@ class OceanusClient(AbstractClient):
 
 
     def TriggerJobSavepoint(self, request):
-        """触发Savepoint
+        r"""触发Savepoint
 
         :param request: Request instance for TriggerJobSavepoint.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.TriggerJobSavepointRequest`

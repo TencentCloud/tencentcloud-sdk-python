@@ -27,7 +27,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotifyHistories(self, request):
-        """按需查询告警的通知历史
+        r"""按需查询告警的通知历史
 
         :param request: Request instance for DescribeAlarmNotifyHistories.
         :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeAlarmNotifyHistoriesRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessGroup(AbstractModel):
-    """权限组
+    r"""权限组
 
     """
 
@@ -41,7 +41,7 @@ class AccessGroup(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -52,7 +52,7 @@ class AccessGroup(AbstractModel):
 
     @property
     def AccessGroupName(self):
-        """权限组名称
+        r"""权限组名称
         :rtype: str
         """
         return self._AccessGroupName
@@ -63,7 +63,7 @@ class AccessGroup(AbstractModel):
 
     @property
     def Description(self):
-        """权限组描述
+        r"""权限组描述
         :rtype: str
         """
         return self._Description
@@ -74,7 +74,7 @@ class AccessGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -100,7 +100,7 @@ class AccessGroup(AbstractModel):
 
 
 class AccessRule(AbstractModel):
-    """权限规则
+    r"""权限规则
 
     """
 
@@ -125,7 +125,7 @@ class AccessRule(AbstractModel):
 
     @property
     def AccessRuleId(self):
-        """权限规则ID
+        r"""权限规则ID
         :rtype: int
         """
         return self._AccessRuleId
@@ -136,7 +136,7 @@ class AccessRule(AbstractModel):
 
     @property
     def Address(self):
-        """权限规则地址（网段或IP）
+        r"""权限规则地址（网段或IP）
         :rtype: str
         """
         return self._Address
@@ -147,7 +147,7 @@ class AccessRule(AbstractModel):
 
     @property
     def AccessMode(self):
-        """权限规则访问模式（1：只读；2：读写）
+        r"""权限规则访问模式（1：只读；2：读写）
         :rtype: int
         """
         return self._AccessMode
@@ -158,7 +158,7 @@ class AccessRule(AbstractModel):
 
     @property
     def Priority(self):
-        """优先级（取值范围1~100，值越小优先级越高）
+        r"""优先级（取值范围1~100，值越小优先级越高）
         :rtype: int
         """
         return self._Priority
@@ -169,7 +169,7 @@ class AccessRule(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -196,7 +196,7 @@ class AccessRule(AbstractModel):
 
 
 class CreateAccessGroupRequest(AbstractModel):
-    """CreateAccessGroup请求参数结构体
+    r"""CreateAccessGroup请求参数结构体
 
     """
 
@@ -212,7 +212,7 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupName(self):
-        """权限组名称
+        r"""权限组名称
         :rtype: str
         """
         return self._AccessGroupName
@@ -223,7 +223,7 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """权限组描述
+        r"""权限组描述
         :rtype: str
         """
         return self._Description
@@ -247,7 +247,7 @@ class CreateAccessGroupRequest(AbstractModel):
 
 
 class CreateAccessGroupResponse(AbstractModel):
-    """CreateAccessGroup返回参数结构体
+    r"""CreateAccessGroup返回参数结构体
 
     """
 
@@ -263,7 +263,7 @@ class CreateAccessGroupResponse(AbstractModel):
 
     @property
     def AccessGroup(self):
-        """权限组
+        r"""权限组
         :rtype: :class:`tencentcloud.chdfs.v20190718.models.AccessGroup`
         """
         return self._AccessGroup
@@ -274,7 +274,7 @@ class CreateAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -292,7 +292,7 @@ class CreateAccessGroupResponse(AbstractModel):
 
 
 class CreateAccessRulesRequest(AbstractModel):
-    """CreateAccessRules请求参数结构体
+    r"""CreateAccessRules请求参数结构体
 
     """
 
@@ -308,7 +308,7 @@ class CreateAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRules(self):
-        """多个权限规则，上限为10
+        r"""多个权限规则，上限为10
         :rtype: list of AccessRule
         """
         return self._AccessRules
@@ -319,7 +319,7 @@ class CreateAccessRulesRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -348,7 +348,7 @@ class CreateAccessRulesRequest(AbstractModel):
 
 
 class CreateAccessRulesResponse(AbstractModel):
-    """CreateAccessRules返回参数结构体
+    r"""CreateAccessRules返回参数结构体
 
     """
 
@@ -361,7 +361,7 @@ class CreateAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -376,7 +376,7 @@ class CreateAccessRulesResponse(AbstractModel):
 
 
 class CreateFileSystemRequest(AbstractModel):
-    """CreateFileSystem请求参数结构体
+    r"""CreateFileSystem请求参数结构体
 
     """
 
@@ -395,7 +395,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemName(self):
-        """文件系统名称
+        r"""文件系统名称
         :rtype: str
         """
         return self._FileSystemName
@@ -406,7 +406,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def CapacityQuota(self):
-        """文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+        r"""文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
         :rtype: int
         """
         return self._CapacityQuota
@@ -417,7 +417,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Description(self):
-        """文件系统描述
+        r"""文件系统描述
         :rtype: str
         """
         return self._Description
@@ -442,7 +442,7 @@ class CreateFileSystemRequest(AbstractModel):
 
 
 class CreateFileSystemResponse(AbstractModel):
-    """CreateFileSystem返回参数结构体
+    r"""CreateFileSystem返回参数结构体
 
     """
 
@@ -458,7 +458,7 @@ class CreateFileSystemResponse(AbstractModel):
 
     @property
     def FileSystem(self):
-        """文件系统
+        r"""文件系统
         :rtype: :class:`tencentcloud.chdfs.v20190718.models.FileSystem`
         """
         return self._FileSystem
@@ -469,7 +469,7 @@ class CreateFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -487,7 +487,7 @@ class CreateFileSystemResponse(AbstractModel):
 
 
 class CreateLifeCycleRulesRequest(AbstractModel):
-    """CreateLifeCycleRules请求参数结构体
+    r"""CreateLifeCycleRules请求参数结构体
 
     """
 
@@ -503,7 +503,7 @@ class CreateLifeCycleRulesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -514,7 +514,7 @@ class CreateLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRules(self):
-        """多个生命周期规则，上限为10
+        r"""多个生命周期规则，上限为10
         :rtype: list of LifeCycleRule
         """
         return self._LifeCycleRules
@@ -543,7 +543,7 @@ class CreateLifeCycleRulesRequest(AbstractModel):
 
 
 class CreateLifeCycleRulesResponse(AbstractModel):
-    """CreateLifeCycleRules返回参数结构体
+    r"""CreateLifeCycleRules返回参数结构体
 
     """
 
@@ -556,7 +556,7 @@ class CreateLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -571,7 +571,7 @@ class CreateLifeCycleRulesResponse(AbstractModel):
 
 
 class CreateMountPointRequest(AbstractModel):
-    """CreateMountPoint请求参数结构体
+    r"""CreateMountPoint请求参数结构体
 
     """
 
@@ -599,7 +599,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def MountPointName(self):
-        """挂载点名称
+        r"""挂载点名称
         :rtype: str
         """
         return self._MountPointName
@@ -610,7 +610,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -621,7 +621,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -632,7 +632,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC网络ID
+        r"""VPC网络ID
         :rtype: str
         """
         return self._VpcId
@@ -643,7 +643,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def MountPointStatus(self):
-        """挂载点状态（1：打开；2：关闭）
+        r"""挂载点状态（1：打开；2：关闭）
         :rtype: int
         """
         return self._MountPointStatus
@@ -654,7 +654,7 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def VpcType(self):
-        """VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
+        r"""VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
         :rtype: int
         """
         return self._VpcType
@@ -682,7 +682,7 @@ class CreateMountPointRequest(AbstractModel):
 
 
 class CreateMountPointResponse(AbstractModel):
-    """CreateMountPoint返回参数结构体
+    r"""CreateMountPoint返回参数结构体
 
     """
 
@@ -698,7 +698,7 @@ class CreateMountPointResponse(AbstractModel):
 
     @property
     def MountPoint(self):
-        """挂载点
+        r"""挂载点
         :rtype: :class:`tencentcloud.chdfs.v20190718.models.MountPoint`
         """
         return self._MountPoint
@@ -709,7 +709,7 @@ class CreateMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -727,7 +727,7 @@ class CreateMountPointResponse(AbstractModel):
 
 
 class CreateRestoreTasksRequest(AbstractModel):
-    """CreateRestoreTasks请求参数结构体
+    r"""CreateRestoreTasks请求参数结构体
 
     """
 
@@ -743,7 +743,7 @@ class CreateRestoreTasksRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -754,7 +754,7 @@ class CreateRestoreTasksRequest(AbstractModel):
 
     @property
     def RestoreTasks(self):
-        """多个回热任务，上限为10
+        r"""多个回热任务，上限为10
         :rtype: list of RestoreTask
         """
         return self._RestoreTasks
@@ -783,7 +783,7 @@ class CreateRestoreTasksRequest(AbstractModel):
 
 
 class CreateRestoreTasksResponse(AbstractModel):
-    """CreateRestoreTasks返回参数结构体
+    r"""CreateRestoreTasks返回参数结构体
 
     """
 
@@ -796,7 +796,7 @@ class CreateRestoreTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -811,7 +811,7 @@ class CreateRestoreTasksResponse(AbstractModel):
 
 
 class DeleteAccessGroupRequest(AbstractModel):
-    """DeleteAccessGroup请求参数结构体
+    r"""DeleteAccessGroup请求参数结构体
 
     """
 
@@ -824,7 +824,7 @@ class DeleteAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -847,7 +847,7 @@ class DeleteAccessGroupRequest(AbstractModel):
 
 
 class DeleteAccessGroupResponse(AbstractModel):
-    """DeleteAccessGroup返回参数结构体
+    r"""DeleteAccessGroup返回参数结构体
 
     """
 
@@ -860,7 +860,7 @@ class DeleteAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -875,7 +875,7 @@ class DeleteAccessGroupResponse(AbstractModel):
 
 
 class DeleteAccessRulesRequest(AbstractModel):
-    """DeleteAccessRules请求参数结构体
+    r"""DeleteAccessRules请求参数结构体
 
     """
 
@@ -888,7 +888,7 @@ class DeleteAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRuleIds(self):
-        """多个权限规则ID，上限为10
+        r"""多个权限规则ID，上限为10
         :rtype: list of int non-negative
         """
         return self._AccessRuleIds
@@ -911,7 +911,7 @@ class DeleteAccessRulesRequest(AbstractModel):
 
 
 class DeleteAccessRulesResponse(AbstractModel):
-    """DeleteAccessRules返回参数结构体
+    r"""DeleteAccessRules返回参数结构体
 
     """
 
@@ -924,7 +924,7 @@ class DeleteAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -939,7 +939,7 @@ class DeleteAccessRulesResponse(AbstractModel):
 
 
 class DeleteFileSystemRequest(AbstractModel):
-    """DeleteFileSystem请求参数结构体
+    r"""DeleteFileSystem请求参数结构体
 
     """
 
@@ -952,7 +952,7 @@ class DeleteFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -975,7 +975,7 @@ class DeleteFileSystemRequest(AbstractModel):
 
 
 class DeleteFileSystemResponse(AbstractModel):
-    """DeleteFileSystem返回参数结构体
+    r"""DeleteFileSystem返回参数结构体
 
     """
 
@@ -988,7 +988,7 @@ class DeleteFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1003,7 +1003,7 @@ class DeleteFileSystemResponse(AbstractModel):
 
 
 class DeleteLifeCycleRulesRequest(AbstractModel):
-    """DeleteLifeCycleRules请求参数结构体
+    r"""DeleteLifeCycleRules请求参数结构体
 
     """
 
@@ -1016,7 +1016,7 @@ class DeleteLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRuleIds(self):
-        """多个生命周期规则ID，上限为10
+        r"""多个生命周期规则ID，上限为10
         :rtype: list of int non-negative
         """
         return self._LifeCycleRuleIds
@@ -1039,7 +1039,7 @@ class DeleteLifeCycleRulesRequest(AbstractModel):
 
 
 class DeleteLifeCycleRulesResponse(AbstractModel):
-    """DeleteLifeCycleRules返回参数结构体
+    r"""DeleteLifeCycleRules返回参数结构体
 
     """
 
@@ -1052,7 +1052,7 @@ class DeleteLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1067,7 +1067,7 @@ class DeleteLifeCycleRulesResponse(AbstractModel):
 
 
 class DeleteMountPointRequest(AbstractModel):
-    """DeleteMountPoint请求参数结构体
+    r"""DeleteMountPoint请求参数结构体
 
     """
 
@@ -1080,7 +1080,7 @@ class DeleteMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
-        """挂载点ID
+        r"""挂载点ID
         :rtype: str
         """
         return self._MountPointId
@@ -1103,7 +1103,7 @@ class DeleteMountPointRequest(AbstractModel):
 
 
 class DeleteMountPointResponse(AbstractModel):
-    """DeleteMountPoint返回参数结构体
+    r"""DeleteMountPoint返回参数结构体
 
     """
 
@@ -1116,7 +1116,7 @@ class DeleteMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1131,7 +1131,7 @@ class DeleteMountPointResponse(AbstractModel):
 
 
 class DescribeAccessGroupsRequest(AbstractModel):
-    """DescribeAccessGroups请求参数结构体
+    r"""DescribeAccessGroups请求参数结构体
 
     """
 
@@ -1150,7 +1150,7 @@ class DescribeAccessGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，Name可选“AccessGroupId“和“AccessGroupName”，Values上限为10
+        r"""过滤条件，Name可选“AccessGroupId“和“AccessGroupName”，Values上限为10
         :rtype: list of Filter
         """
         return self._Filters
@@ -1161,7 +1161,7 @@ class DescribeAccessGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -1172,7 +1172,7 @@ class DescribeAccessGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为所有
+        r"""返回数量，默认为所有
         :rtype: int
         """
         return self._Limit
@@ -1202,7 +1202,7 @@ class DescribeAccessGroupsRequest(AbstractModel):
 
 
 class DescribeAccessGroupsResponse(AbstractModel):
-    """DescribeAccessGroups返回参数结构体
+    r"""DescribeAccessGroups返回参数结构体
 
     """
 
@@ -1218,7 +1218,7 @@ class DescribeAccessGroupsResponse(AbstractModel):
 
     @property
     def AccessGroups(self):
-        """权限组列表
+        r"""权限组列表
         :rtype: list of AccessGroup
         """
         return self._AccessGroups
@@ -1229,7 +1229,7 @@ class DescribeAccessGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1250,7 +1250,7 @@ class DescribeAccessGroupsResponse(AbstractModel):
 
 
 class DescribeAccessRulesRequest(AbstractModel):
-    """DescribeAccessRules请求参数结构体
+    r"""DescribeAccessRules请求参数结构体
 
     """
 
@@ -1269,7 +1269,7 @@ class DescribeAccessRulesRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -1280,7 +1280,7 @@ class DescribeAccessRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -1291,7 +1291,7 @@ class DescribeAccessRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为所有
+        r"""返回数量，默认为所有
         :rtype: int
         """
         return self._Limit
@@ -1316,7 +1316,7 @@ class DescribeAccessRulesRequest(AbstractModel):
 
 
 class DescribeAccessRulesResponse(AbstractModel):
-    """DescribeAccessRules返回参数结构体
+    r"""DescribeAccessRules返回参数结构体
 
     """
 
@@ -1332,7 +1332,7 @@ class DescribeAccessRulesResponse(AbstractModel):
 
     @property
     def AccessRules(self):
-        """权限规则列表
+        r"""权限规则列表
         :rtype: list of AccessRule
         """
         return self._AccessRules
@@ -1343,7 +1343,7 @@ class DescribeAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1364,7 +1364,7 @@ class DescribeAccessRulesResponse(AbstractModel):
 
 
 class DescribeFileSystemRequest(AbstractModel):
-    """DescribeFileSystem请求参数结构体
+    r"""DescribeFileSystem请求参数结构体
 
     """
 
@@ -1377,7 +1377,7 @@ class DescribeFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -1400,7 +1400,7 @@ class DescribeFileSystemRequest(AbstractModel):
 
 
 class DescribeFileSystemResponse(AbstractModel):
-    """DescribeFileSystem返回参数结构体
+    r"""DescribeFileSystem返回参数结构体
 
     """
 
@@ -1428,7 +1428,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
     @property
     def FileSystem(self):
-        """文件系统
+        r"""文件系统
         :rtype: :class:`tencentcloud.chdfs.v20190718.models.FileSystem`
         """
         return self._FileSystem
@@ -1439,7 +1439,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemCapacityUsed(self):
-        """文件系统已使用容量（已弃用）
+        r"""文件系统已使用容量（已弃用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1451,7 +1451,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
     @property
     def CapacityUsed(self):
-        """已使用容量（byte），包括标准和归档存储
+        r"""已使用容量（byte），包括标准和归档存储
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1463,7 +1463,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
     @property
     def ArchiveCapacityUsed(self):
-        """已使用归档存储容量（byte）
+        r"""已使用归档存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1475,7 +1475,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1496,7 +1496,7 @@ class DescribeFileSystemResponse(AbstractModel):
 
 
 class DescribeFileSystemsRequest(AbstractModel):
-    """DescribeFileSystems请求参数结构体
+    r"""DescribeFileSystems请求参数结构体
 
     """
 
@@ -1512,7 +1512,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -1523,7 +1523,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为所有
+        r"""返回数量，默认为所有
         :rtype: int
         """
         return self._Limit
@@ -1547,7 +1547,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
 
 class DescribeFileSystemsResponse(AbstractModel):
-    """DescribeFileSystems返回参数结构体
+    r"""DescribeFileSystems返回参数结构体
 
     """
 
@@ -1563,7 +1563,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def FileSystems(self):
-        """文件系统列表
+        r"""文件系统列表
         :rtype: list of FileSystem
         """
         return self._FileSystems
@@ -1574,7 +1574,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1595,7 +1595,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
 
 class DescribeLifeCycleRulesRequest(AbstractModel):
-    """DescribeLifeCycleRules请求参数结构体
+    r"""DescribeLifeCycleRules请求参数结构体
 
     """
 
@@ -1608,7 +1608,7 @@ class DescribeLifeCycleRulesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -1631,7 +1631,7 @@ class DescribeLifeCycleRulesRequest(AbstractModel):
 
 
 class DescribeLifeCycleRulesResponse(AbstractModel):
-    """DescribeLifeCycleRules返回参数结构体
+    r"""DescribeLifeCycleRules返回参数结构体
 
     """
 
@@ -1647,7 +1647,7 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
 
     @property
     def LifeCycleRules(self):
-        """生命周期规则列表
+        r"""生命周期规则列表
         :rtype: list of LifeCycleRule
         """
         return self._LifeCycleRules
@@ -1658,7 +1658,7 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1679,7 +1679,7 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
 
 
 class DescribeMountPointRequest(AbstractModel):
-    """DescribeMountPoint请求参数结构体
+    r"""DescribeMountPoint请求参数结构体
 
     """
 
@@ -1692,7 +1692,7 @@ class DescribeMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
-        """挂载点ID
+        r"""挂载点ID
         :rtype: str
         """
         return self._MountPointId
@@ -1715,7 +1715,7 @@ class DescribeMountPointRequest(AbstractModel):
 
 
 class DescribeMountPointResponse(AbstractModel):
-    """DescribeMountPoint返回参数结构体
+    r"""DescribeMountPoint返回参数结构体
 
     """
 
@@ -1731,7 +1731,7 @@ class DescribeMountPointResponse(AbstractModel):
 
     @property
     def MountPoint(self):
-        """挂载点
+        r"""挂载点
         :rtype: :class:`tencentcloud.chdfs.v20190718.models.MountPoint`
         """
         return self._MountPoint
@@ -1742,7 +1742,7 @@ class DescribeMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1760,7 +1760,7 @@ class DescribeMountPointResponse(AbstractModel):
 
 
 class DescribeMountPointsRequest(AbstractModel):
-    """DescribeMountPoints请求参数结构体
+    r"""DescribeMountPoints请求参数结构体
 
     """
 
@@ -1784,7 +1784,7 @@ class DescribeMountPointsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
 注意：若根据AccessGroupId查看挂载点列表，则无需设置FileSystemId
         :rtype: str
         """
@@ -1796,7 +1796,7 @@ class DescribeMountPointsRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
 注意：若根据FileSystemId查看挂载点列表，则无需设置AccessGroupId
         :rtype: str
         """
@@ -1808,7 +1808,7 @@ class DescribeMountPointsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -1819,7 +1819,7 @@ class DescribeMountPointsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为所有
+        r"""返回数量，默认为所有
         :rtype: int
         """
         return self._Limit
@@ -1845,7 +1845,7 @@ class DescribeMountPointsRequest(AbstractModel):
 
 
 class DescribeMountPointsResponse(AbstractModel):
-    """DescribeMountPoints返回参数结构体
+    r"""DescribeMountPoints返回参数结构体
 
     """
 
@@ -1861,7 +1861,7 @@ class DescribeMountPointsResponse(AbstractModel):
 
     @property
     def MountPoints(self):
-        """挂载点列表
+        r"""挂载点列表
         :rtype: list of MountPoint
         """
         return self._MountPoints
@@ -1872,7 +1872,7 @@ class DescribeMountPointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1893,7 +1893,7 @@ class DescribeMountPointsResponse(AbstractModel):
 
 
 class DescribeResourceTagsRequest(AbstractModel):
-    """DescribeResourceTags请求参数结构体
+    r"""DescribeResourceTags请求参数结构体
 
     """
 
@@ -1906,7 +1906,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -1929,7 +1929,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
 
 class DescribeResourceTagsResponse(AbstractModel):
-    """DescribeResourceTags返回参数结构体
+    r"""DescribeResourceTags返回参数结构体
 
     """
 
@@ -1945,7 +1945,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """资源标签列表
+        r"""资源标签列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -1956,7 +1956,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1977,7 +1977,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
 
 class DescribeRestoreTasksRequest(AbstractModel):
-    """DescribeRestoreTasks请求参数结构体
+    r"""DescribeRestoreTasks请求参数结构体
 
     """
 
@@ -1990,7 +1990,7 @@ class DescribeRestoreTasksRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2013,7 +2013,7 @@ class DescribeRestoreTasksRequest(AbstractModel):
 
 
 class DescribeRestoreTasksResponse(AbstractModel):
-    """DescribeRestoreTasks返回参数结构体
+    r"""DescribeRestoreTasks返回参数结构体
 
     """
 
@@ -2029,7 +2029,7 @@ class DescribeRestoreTasksResponse(AbstractModel):
 
     @property
     def RestoreTasks(self):
-        """回热任务列表
+        r"""回热任务列表
         :rtype: list of RestoreTask
         """
         return self._RestoreTasks
@@ -2040,7 +2040,7 @@ class DescribeRestoreTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2061,7 +2061,7 @@ class DescribeRestoreTasksResponse(AbstractModel):
 
 
 class FileSystem(AbstractModel):
-    """文件系统
+    r"""文件系统
 
     """
 
@@ -2098,7 +2098,7 @@ class FileSystem(AbstractModel):
 
     @property
     def AppId(self):
-        """appid
+        r"""appid
         :rtype: int
         """
         return self._AppId
@@ -2109,7 +2109,7 @@ class FileSystem(AbstractModel):
 
     @property
     def FileSystemName(self):
-        """文件系统名称
+        r"""文件系统名称
         :rtype: str
         """
         return self._FileSystemName
@@ -2120,7 +2120,7 @@ class FileSystem(AbstractModel):
 
     @property
     def Description(self):
-        """文件系统描述
+        r"""文件系统描述
         :rtype: str
         """
         return self._Description
@@ -2131,7 +2131,7 @@ class FileSystem(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -2142,7 +2142,7 @@ class FileSystem(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2153,7 +2153,7 @@ class FileSystem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2164,7 +2164,7 @@ class FileSystem(AbstractModel):
 
     @property
     def BlockSize(self):
-        """文件系统块大小（byte）
+        r"""文件系统块大小（byte）
         :rtype: int
         """
         return self._BlockSize
@@ -2175,7 +2175,7 @@ class FileSystem(AbstractModel):
 
     @property
     def CapacityQuota(self):
-        """文件系统容量（byte）
+        r"""文件系统容量（byte）
         :rtype: int
         """
         return self._CapacityQuota
@@ -2186,7 +2186,7 @@ class FileSystem(AbstractModel):
 
     @property
     def Status(self):
-        """文件系统状态（1：创建中；2：创建成功；3：创建失败）
+        r"""文件系统状态（1：创建中；2：创建成功；3：创建失败）
         :rtype: int
         """
         return self._Status
@@ -2217,7 +2217,7 @@ class FileSystem(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤条件
+    r"""过滤条件
 
     """
 
@@ -2233,7 +2233,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤字段
+        r"""过滤字段
         :rtype: str
         """
         return self._Name
@@ -2244,7 +2244,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤值
+        r"""过滤值
         :rtype: list of str
         """
         return self._Values
@@ -2268,7 +2268,7 @@ class Filter(AbstractModel):
 
 
 class LifeCycleRule(AbstractModel):
-    """生命周期规则
+    r"""生命周期规则
 
     """
 
@@ -2296,7 +2296,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def LifeCycleRuleId(self):
-        """生命周期规则ID
+        r"""生命周期规则ID
         :rtype: int
         """
         return self._LifeCycleRuleId
@@ -2307,7 +2307,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def LifeCycleRuleName(self):
-        """生命周期规则名称
+        r"""生命周期规则名称
         :rtype: str
         """
         return self._LifeCycleRuleName
@@ -2318,7 +2318,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Path(self):
-        """生命周期规则路径（目录或文件）
+        r"""生命周期规则路径（目录或文件）
         :rtype: str
         """
         return self._Path
@@ -2329,7 +2329,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Transitions(self):
-        """生命周期规则转换列表
+        r"""生命周期规则转换列表
         :rtype: list of Transition
         """
         return self._Transitions
@@ -2340,7 +2340,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Status(self):
-        """生命周期规则状态（1：打开；2：关闭）
+        r"""生命周期规则状态（1：打开；2：关闭）
         :rtype: int
         """
         return self._Status
@@ -2351,7 +2351,7 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2384,7 +2384,7 @@ class LifeCycleRule(AbstractModel):
 
 
 class ModifyAccessGroupRequest(AbstractModel):
-    """ModifyAccessGroup请求参数结构体
+    r"""ModifyAccessGroup请求参数结构体
 
     """
 
@@ -2403,7 +2403,7 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -2414,7 +2414,7 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupName(self):
-        """权限组名称
+        r"""权限组名称
         :rtype: str
         """
         return self._AccessGroupName
@@ -2425,7 +2425,7 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """权限组描述
+        r"""权限组描述
         :rtype: str
         """
         return self._Description
@@ -2450,7 +2450,7 @@ class ModifyAccessGroupRequest(AbstractModel):
 
 
 class ModifyAccessGroupResponse(AbstractModel):
-    """ModifyAccessGroup返回参数结构体
+    r"""ModifyAccessGroup返回参数结构体
 
     """
 
@@ -2463,7 +2463,7 @@ class ModifyAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2478,7 +2478,7 @@ class ModifyAccessGroupResponse(AbstractModel):
 
 
 class ModifyAccessRulesRequest(AbstractModel):
-    """ModifyAccessRules请求参数结构体
+    r"""ModifyAccessRules请求参数结构体
 
     """
 
@@ -2491,7 +2491,7 @@ class ModifyAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRules(self):
-        """多个权限规则，上限为10
+        r"""多个权限规则，上限为10
         :rtype: list of AccessRule
         """
         return self._AccessRules
@@ -2519,7 +2519,7 @@ class ModifyAccessRulesRequest(AbstractModel):
 
 
 class ModifyAccessRulesResponse(AbstractModel):
-    """ModifyAccessRules返回参数结构体
+    r"""ModifyAccessRules返回参数结构体
 
     """
 
@@ -2532,7 +2532,7 @@ class ModifyAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2547,7 +2547,7 @@ class ModifyAccessRulesResponse(AbstractModel):
 
 
 class ModifyFileSystemRequest(AbstractModel):
-    """ModifyFileSystem请求参数结构体
+    r"""ModifyFileSystem请求参数结构体
 
     """
 
@@ -2570,7 +2570,7 @@ class ModifyFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2581,7 +2581,7 @@ class ModifyFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemName(self):
-        """文件系统名称
+        r"""文件系统名称
         :rtype: str
         """
         return self._FileSystemName
@@ -2592,7 +2592,7 @@ class ModifyFileSystemRequest(AbstractModel):
 
     @property
     def Description(self):
-        """文件系统描述
+        r"""文件系统描述
         :rtype: str
         """
         return self._Description
@@ -2603,7 +2603,7 @@ class ModifyFileSystemRequest(AbstractModel):
 
     @property
     def CapacityQuota(self):
-        """文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+        r"""文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
 注意：修改的文件系统容量不能小于当前使用量
         :rtype: int
         """
@@ -2630,7 +2630,7 @@ class ModifyFileSystemRequest(AbstractModel):
 
 
 class ModifyFileSystemResponse(AbstractModel):
-    """ModifyFileSystem返回参数结构体
+    r"""ModifyFileSystem返回参数结构体
 
     """
 
@@ -2643,7 +2643,7 @@ class ModifyFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2658,7 +2658,7 @@ class ModifyFileSystemResponse(AbstractModel):
 
 
 class ModifyLifeCycleRulesRequest(AbstractModel):
-    """ModifyLifeCycleRules请求参数结构体
+    r"""ModifyLifeCycleRules请求参数结构体
 
     """
 
@@ -2671,7 +2671,7 @@ class ModifyLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRules(self):
-        """多个生命周期规则，上限为10
+        r"""多个生命周期规则，上限为10
         :rtype: list of LifeCycleRule
         """
         return self._LifeCycleRules
@@ -2699,7 +2699,7 @@ class ModifyLifeCycleRulesRequest(AbstractModel):
 
 
 class ModifyLifeCycleRulesResponse(AbstractModel):
-    """ModifyLifeCycleRules返回参数结构体
+    r"""ModifyLifeCycleRules返回参数结构体
 
     """
 
@@ -2712,7 +2712,7 @@ class ModifyLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2727,7 +2727,7 @@ class ModifyLifeCycleRulesResponse(AbstractModel):
 
 
 class ModifyMountPointRequest(AbstractModel):
-    """ModifyMountPoint请求参数结构体
+    r"""ModifyMountPoint请求参数结构体
 
     """
 
@@ -2749,7 +2749,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
-        """挂载点ID
+        r"""挂载点ID
         :rtype: str
         """
         return self._MountPointId
@@ -2760,7 +2760,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointName(self):
-        """挂载点名称
+        r"""挂载点名称
         :rtype: str
         """
         return self._MountPointName
@@ -2771,7 +2771,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointStatus(self):
-        """挂载点状态
+        r"""挂载点状态
         :rtype: int
         """
         return self._MountPointStatus
@@ -2782,7 +2782,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -2808,7 +2808,7 @@ class ModifyMountPointRequest(AbstractModel):
 
 
 class ModifyMountPointResponse(AbstractModel):
-    """ModifyMountPoint返回参数结构体
+    r"""ModifyMountPoint返回参数结构体
 
     """
 
@@ -2821,7 +2821,7 @@ class ModifyMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2836,7 +2836,7 @@ class ModifyMountPointResponse(AbstractModel):
 
 
 class ModifyResourceTagsRequest(AbstractModel):
-    """ModifyResourceTags请求参数结构体
+    r"""ModifyResourceTags请求参数结构体
 
     """
 
@@ -2852,7 +2852,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2863,7 +2863,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """多个资源标签，可以为空数组
+        r"""多个资源标签，可以为空数组
         :rtype: list of Tag
         """
         return self._Tags
@@ -2892,7 +2892,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
 
 class ModifyResourceTagsResponse(AbstractModel):
-    """ModifyResourceTags返回参数结构体
+    r"""ModifyResourceTags返回参数结构体
 
     """
 
@@ -2905,7 +2905,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2920,7 +2920,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
 
 class MountPoint(AbstractModel):
-    """挂载点
+    r"""挂载点
 
     """
 
@@ -2954,7 +2954,7 @@ class MountPoint(AbstractModel):
 
     @property
     def MountPointId(self):
-        """挂载点ID
+        r"""挂载点ID
         :rtype: str
         """
         return self._MountPointId
@@ -2965,7 +2965,7 @@ class MountPoint(AbstractModel):
 
     @property
     def MountPointName(self):
-        """挂载点名称
+        r"""挂载点名称
         :rtype: str
         """
         return self._MountPointName
@@ -2976,7 +2976,7 @@ class MountPoint(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2987,7 +2987,7 @@ class MountPoint(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组ID
+        r"""权限组ID
         :rtype: str
         """
         return self._AccessGroupId
@@ -2998,7 +2998,7 @@ class MountPoint(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC网络ID
+        r"""VPC网络ID
         :rtype: str
         """
         return self._VpcId
@@ -3009,7 +3009,7 @@ class MountPoint(AbstractModel):
 
     @property
     def Status(self):
-        """挂载点状态（1：打开；2：关闭）
+        r"""挂载点状态（1：打开；2：关闭）
         :rtype: int
         """
         return self._Status
@@ -3020,7 +3020,7 @@ class MountPoint(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3031,7 +3031,7 @@ class MountPoint(AbstractModel):
 
     @property
     def VpcType(self):
-        """VPC网络类型
+        r"""VPC网络类型
         :rtype: int
         """
         return self._VpcType
@@ -3061,7 +3061,7 @@ class MountPoint(AbstractModel):
 
 
 class RestoreTask(AbstractModel):
-    """回热任务
+    r"""回热任务
 
     """
 
@@ -3089,7 +3089,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreTaskId(self):
-        """回热任务ID
+        r"""回热任务ID
         :rtype: int
         """
         return self._RestoreTaskId
@@ -3100,7 +3100,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def FilePath(self):
-        """回热任务文件路径
+        r"""回热任务文件路径
         :rtype: str
         """
         return self._FilePath
@@ -3111,7 +3111,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Type(self):
-        """回热任务类型（1：标准；2：极速；3：批量）
+        r"""回热任务类型（1：标准；2：极速；3：批量）
         :rtype: int
         """
         return self._Type
@@ -3122,7 +3122,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Days(self):
-        """指定恢复出的临时副本的有效时长（单位天）
+        r"""指定恢复出的临时副本的有效时长（单位天）
         :rtype: int
         """
         return self._Days
@@ -3133,7 +3133,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
-        """回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+        r"""回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
         :rtype: int
         """
         return self._Status
@@ -3144,7 +3144,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3172,7 +3172,7 @@ class RestoreTask(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """资源标签。
+    r"""资源标签。
 
     """
 
@@ -3188,7 +3188,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -3199,7 +3199,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -3223,7 +3223,7 @@ class Tag(AbstractModel):
 
 
 class Transition(AbstractModel):
-    """生命周期规则转换属性
+    r"""生命周期规则转换属性
 
     """
 
@@ -3239,7 +3239,7 @@ class Transition(AbstractModel):
 
     @property
     def Days(self):
-        """触发时间（单位天）
+        r"""触发时间（单位天）
         :rtype: int
         """
         return self._Days
@@ -3250,7 +3250,7 @@ class Transition(AbstractModel):
 
     @property
     def Type(self):
-        """转换类型（1：归档；2：删除）
+        r"""转换类型（1：归档；2：删除）
         :rtype: int
         """
         return self._Type

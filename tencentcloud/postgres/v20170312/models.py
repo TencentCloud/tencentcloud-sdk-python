@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountInfo(AbstractModel):
-    """账户信息
+    r"""账户信息
 
     """
 
@@ -50,7 +50,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-lnp6j617
+        r"""实例ID，形如postgres-lnp6j617
         :rtype: str
         """
         return self._DBInstanceId
@@ -61,7 +61,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """账号
+        r"""账号
         :rtype: str
         """
         return self._UserName
@@ -72,7 +72,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """账号备注
+        r"""账号备注
         :rtype: str
         """
         return self._Remark
@@ -83,7 +83,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Status(self):
-        """账号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，5-锁定中，-1-删除中
+        r"""账号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，5-锁定中，-1-删除中
         :rtype: int
         """
         return self._Status
@@ -94,7 +94,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """账号创建时间
+        r"""账号创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -105,7 +105,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """账号最后一次更新时间
+        r"""账号最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -116,7 +116,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def UserType(self):
-        """账号类型
+        r"""账号类型
         :rtype: str
         """
         return self._UserType
@@ -145,7 +145,7 @@ class AccountInfo(AbstractModel):
 
 
 class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
-    """AddDBInstanceToReadOnlyGroup请求参数结构体
+    r"""AddDBInstanceToReadOnlyGroup请求参数结构体
 
     """
 
@@ -161,7 +161,7 @@ class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -172,7 +172,7 @@ class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -196,7 +196,7 @@ class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
 
 
 class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
-    """AddDBInstanceToReadOnlyGroup返回参数结构体
+    r"""AddDBInstanceToReadOnlyGroup返回参数结构体
 
     """
 
@@ -212,7 +212,7 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID
+        r"""流程ID
         :rtype: int
         """
         return self._FlowId
@@ -223,7 +223,7 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -239,7 +239,7 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
 
 class AnalysisItems(AbstractModel):
-    """慢查询分析接口返回的分析详情，按照参数抽象之后进行分类
+    r"""慢查询分析接口返回的分析详情，按照参数抽象之后进行分类
 
     """
 
@@ -288,7 +288,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """慢SQL查询的数据库名
+        r"""慢SQL查询的数据库名
         :rtype: str
         """
         return self._DatabaseName
@@ -299,7 +299,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def UserName(self):
-        """慢SQL执行的用户名
+        r"""慢SQL执行的用户名
         :rtype: str
         """
         return self._UserName
@@ -310,7 +310,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def NormalQuery(self):
-        """抽象参数之后的慢SQL
+        r"""抽象参数之后的慢SQL
         :rtype: str
         """
         return self._NormalQuery
@@ -321,7 +321,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def ClientAddr(self):
-        """慢SQL执行的客户端地址
+        r"""慢SQL执行的客户端地址
         :rtype: str
         """
         return self._ClientAddr
@@ -332,7 +332,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def CallNum(self):
-        """在选定时间范围内慢SQL语句执行的次数
+        r"""在选定时间范围内慢SQL语句执行的次数
         :rtype: int
         """
         return self._CallNum
@@ -343,7 +343,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def CallPercent(self):
-        """在选定时间范围内，慢SQL语句执行的次数占所有慢SQL的百分比。
+        r"""在选定时间范围内，慢SQL语句执行的次数占所有慢SQL的百分比。
         :rtype: float
         """
         return self._CallPercent
@@ -354,7 +354,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def CostTime(self):
-        """在选定时间范围内，慢SQL执行的总时间
+        r"""在选定时间范围内，慢SQL执行的总时间
         :rtype: float
         """
         return self._CostTime
@@ -365,7 +365,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def CostPercent(self):
-        """在选定时间范围内，慢SQL语句执行的总时间占所有慢SQL的比例（小数返回）
+        r"""在选定时间范围内，慢SQL语句执行的总时间占所有慢SQL的比例（小数返回）
         :rtype: float
         """
         return self._CostPercent
@@ -376,7 +376,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def MinCostTime(self):
-        """在选定时间范围内，慢SQL语句执行的耗时最短的时间（单位：ms）
+        r"""在选定时间范围内，慢SQL语句执行的耗时最短的时间（单位：ms）
         :rtype: float
         """
         return self._MinCostTime
@@ -387,7 +387,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def MaxCostTime(self):
-        """在选定时间范围内，慢SQL语句执行的耗时最长的时间（单位：ms）
+        r"""在选定时间范围内，慢SQL语句执行的耗时最长的时间（单位：ms）
         :rtype: float
         """
         return self._MaxCostTime
@@ -398,7 +398,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def AvgCostTime(self):
-        """在选定时间范围内，慢SQL语句执行的耗时平均时间（单位：ms）
+        r"""在选定时间范围内，慢SQL语句执行的耗时平均时间（单位：ms）
         :rtype: float
         """
         return self._AvgCostTime
@@ -409,7 +409,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def FirstTime(self):
-        """在选定时间范围内，慢SQL第一条开始执行的时间
+        r"""在选定时间范围内，慢SQL第一条开始执行的时间
         :rtype: str
         """
         return self._FirstTime
@@ -420,7 +420,7 @@ class AnalysisItems(AbstractModel):
 
     @property
     def LastTime(self):
-        """在选定时间范围内，慢SQL最后一条开始执行的时间
+        r"""在选定时间范围内，慢SQL最后一条开始执行的时间
         :rtype: str
         """
         return self._LastTime
@@ -455,7 +455,7 @@ class AnalysisItems(AbstractModel):
 
 
 class BackupDownloadRestriction(AbstractModel):
-    """备份下载限制信息
+    r"""备份下载限制信息
 
     """
 
@@ -480,7 +480,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def RestrictionType(self):
-        """备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE 时，vpc或ip信息至少填写一项
+        r"""备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE 时，vpc或ip信息至少填写一项
         :rtype: str
         """
         return self._RestrictionType
@@ -491,7 +491,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def VpcRestrictionEffect(self):
-        """vpc限制效力，ALLOW 允许；DENY 拒绝。
+        r"""vpc限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._VpcRestrictionEffect
@@ -502,7 +502,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def VpcIdSet(self):
-        """允许或拒绝下载备份文件的vpcId列表。
+        r"""允许或拒绝下载备份文件的vpcId列表。
         :rtype: list of str
         """
         return self._VpcIdSet
@@ -513,7 +513,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def IpRestrictionEffect(self):
-        """ip限制效力，ALLOW 允许；DENY 拒绝。
+        r"""ip限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._IpRestrictionEffect
@@ -524,7 +524,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def IpSet(self):
-        """允许或拒绝下载备份文件的ip列表。
+        r"""允许或拒绝下载备份文件的ip列表。
         :rtype: list of str
         """
         return self._IpSet
@@ -551,7 +551,7 @@ class BackupDownloadRestriction(AbstractModel):
 
 
 class BackupPlan(AbstractModel):
-    """备份计划
+    r"""备份计划
 
     """
 
@@ -594,7 +594,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BackupPeriod(self):
-        """备份周期
+        r"""备份周期
         :rtype: str
         """
         return self._BackupPeriod
@@ -605,7 +605,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BaseBackupRetentionPeriod(self):
-        """数据备份保留时长。单位：天
+        r"""数据备份保留时长。单位：天
         :rtype: int
         """
         return self._BaseBackupRetentionPeriod
@@ -616,7 +616,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def MinBackupStartTime(self):
-        """开始备份的最早时间
+        r"""开始备份的最早时间
         :rtype: str
         """
         return self._MinBackupStartTime
@@ -627,7 +627,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def MaxBackupStartTime(self):
-        """开始备份的最晚时间
+        r"""开始备份的最晚时间
         :rtype: str
         """
         return self._MaxBackupStartTime
@@ -638,7 +638,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def PlanId(self):
-        """备份计划ID
+        r"""备份计划ID
         :rtype: str
         """
         return self._PlanId
@@ -649,7 +649,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def PlanName(self):
-        """备份计划自定义名称。
+        r"""备份计划自定义名称。
         :rtype: str
         """
         return self._PlanName
@@ -660,7 +660,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def LogBackupRetentionPeriod(self):
-        """日志备份保留时长。单位：天
+        r"""日志备份保留时长。单位：天
         :rtype: int
         """
         return self._LogBackupRetentionPeriod
@@ -671,7 +671,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreatedTime
@@ -682,7 +682,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        """最近一次的修改时间。
+        r"""最近一次的修改时间。
         :rtype: str
         """
         return self._UpdatedTime
@@ -693,7 +693,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def PlanType(self):
-        """备份计划类型。系统默认创建的为default，自定义的为custom。
+        r"""备份计划类型。系统默认创建的为default，自定义的为custom。
         :rtype: str
         """
         return self._PlanType
@@ -704,7 +704,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BackupPeriodType(self):
-        """备份周期类型。当前支持week、month。
+        r"""备份周期类型。当前支持week、month。
         :rtype: str
         """
         return self._BackupPeriodType
@@ -737,7 +737,7 @@ class BackupPlan(AbstractModel):
 
 
 class BackupSummary(AbstractModel):
-    """实例备份统计项
+    r"""实例备份统计项
 
     """
 
@@ -774,7 +774,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -785,7 +785,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        """实例日志备份数量。
+        r"""实例日志备份数量。
         :rtype: int
         """
         return self._LogBackupCount
@@ -796,7 +796,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def LogBackupSize(self):
-        """实例日志备份大小。
+        r"""实例日志备份大小。
         :rtype: int
         """
         return self._LogBackupSize
@@ -807,7 +807,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def ManualBaseBackupCount(self):
-        """手动创建的实例数据备份数量。
+        r"""手动创建的实例数据备份数量。
         :rtype: int
         """
         return self._ManualBaseBackupCount
@@ -818,7 +818,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def ManualBaseBackupSize(self):
-        """手动创建的实例数据备份大小。
+        r"""手动创建的实例数据备份大小。
         :rtype: int
         """
         return self._ManualBaseBackupSize
@@ -829,7 +829,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def AutoBaseBackupCount(self):
-        """自动创建的实例数据备份数量。
+        r"""自动创建的实例数据备份数量。
         :rtype: int
         """
         return self._AutoBaseBackupCount
@@ -840,7 +840,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def AutoBaseBackupSize(self):
-        """自动创建的实例数据备份大小。
+        r"""自动创建的实例数据备份大小。
         :rtype: int
         """
         return self._AutoBaseBackupSize
@@ -851,7 +851,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def TotalBackupCount(self):
-        """总备份数量
+        r"""总备份数量
         :rtype: int
         """
         return self._TotalBackupCount
@@ -862,7 +862,7 @@ class BackupSummary(AbstractModel):
 
     @property
     def TotalBackupSize(self):
-        """总备份大小
+        r"""总备份大小
         :rtype: int
         """
         return self._TotalBackupSize
@@ -893,7 +893,7 @@ class BackupSummary(AbstractModel):
 
 
 class BaseBackup(AbstractModel):
-    """数据库数据备份信息
+    r"""数据库数据备份信息
 
     """
 
@@ -933,7 +933,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -944,7 +944,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def Id(self):
-        """备份文件唯一标识。
+        r"""备份文件唯一标识。
         :rtype: str
         """
         return self._Id
@@ -955,7 +955,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def Name(self):
-        """备份文件名称。
+        r"""备份文件名称。
         :rtype: str
         """
         return self._Name
@@ -966,7 +966,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def BackupMethod(self):
-        """备份方式：physical - 物理备份、logical - 逻辑备份。
+        r"""备份方式：physical - 物理备份、logical - 逻辑备份。
         :rtype: str
         """
         return self._BackupMethod
@@ -977,7 +977,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def BackupMode(self):
-        """备份模式：automatic - 自动备份、manual - 手动备份。
+        r"""备份模式：automatic - 自动备份、manual - 手动备份。
         :rtype: str
         """
         return self._BackupMode
@@ -988,7 +988,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def State(self):
-        """备份任务状态。枚举值：init、running、finished、failed、canceled
+        r"""备份任务状态。枚举值：init、running、finished、failed、canceled
         :rtype: str
         """
         return self._State
@@ -999,7 +999,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def Size(self):
-        """备份集大小，单位bytes。
+        r"""备份集大小，单位bytes。
         :rtype: int
         """
         return self._Size
@@ -1010,7 +1010,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def StartTime(self):
-        """备份的开始时间。
+        r"""备份的开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -1021,7 +1021,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def FinishTime(self):
-        """备份的结束时间。
+        r"""备份的结束时间。
         :rtype: str
         """
         return self._FinishTime
@@ -1032,7 +1032,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """备份的过期时间。
+        r"""备份的过期时间。
         :rtype: str
         """
         return self._ExpireTime
@@ -1064,7 +1064,7 @@ class BaseBackup(AbstractModel):
 
 
 class ClassInfo(AbstractModel):
-    """数据库实例规格
+    r"""数据库实例规格
 
     """
 
@@ -1092,7 +1092,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def SpecCode(self):
-        """规格ID
+        r"""规格ID
         :rtype: str
         """
         return self._SpecCode
@@ -1103,7 +1103,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def CPU(self):
-        """CPU核数
+        r"""CPU核数
         :rtype: int
         """
         return self._CPU
@@ -1114,7 +1114,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """内存大小，单位：MB
+        r"""内存大小，单位：MB
         :rtype: int
         """
         return self._Memory
@@ -1125,7 +1125,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def MaxStorage(self):
-        """该规格所支持最大存储容量，单位：GB
+        r"""该规格所支持最大存储容量，单位：GB
         :rtype: int
         """
         return self._MaxStorage
@@ -1136,7 +1136,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def MinStorage(self):
-        """该规格所支持最小存储容量，单位：GB
+        r"""该规格所支持最小存储容量，单位：GB
         :rtype: int
         """
         return self._MinStorage
@@ -1147,7 +1147,7 @@ class ClassInfo(AbstractModel):
 
     @property
     def QPS(self):
-        """该规格的预估QPS
+        r"""该规格的预估QPS
         :rtype: int
         """
         return self._QPS
@@ -1175,7 +1175,7 @@ class ClassInfo(AbstractModel):
 
 
 class CloneDBInstanceRequest(AbstractModel):
-    """CloneDBInstance请求参数结构体
+    r"""CloneDBInstance请求参数结构体
 
     """
 
@@ -1267,7 +1267,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """克隆的源实例ID。
+        r"""克隆的源实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -1278,7 +1278,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SpecCode(self):
-        """售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+        r"""售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
         :rtype: str
         """
         return self._SpecCode
@@ -1289,7 +1289,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """实例容量大小，单位：GB。
+        r"""实例容量大小，单位：GB。
         :rtype: int
         """
         return self._Storage
@@ -1300,7 +1300,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 
 - 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
 - 后付费：只支持1
@@ -1315,7 +1315,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """续费标记：
+        r"""续费标记：
 
 - 0：手动续费
 - 1：自动续费
@@ -1331,7 +1331,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        r"""私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
         :rtype: str
         """
         return self._VpcId
@@ -1342,7 +1342,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        r"""私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :rtype: str
         """
         return self._SubnetId
@@ -1353,7 +1353,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
+        r"""新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
         :rtype: str
         """
         return self._Name
@@ -1364,7 +1364,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """实例计费类型，目前支持：
+        r"""实例计费类型，目前支持：
 
 - PREPAID：预付费，即包年包月
 - POSTPAID_BY_HOUR：后付费，即按量计费
@@ -1380,7 +1380,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 
         :rtype: list of str
         """
@@ -1392,7 +1392,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: int
         """
         return self._ProjectId
@@ -1403,7 +1403,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+        r"""实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
         :rtype: list of Tag
         """
         return self._TagList
@@ -1414,7 +1414,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DBNodeSet(self):
-        """实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
+        r"""实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: list of DBNode
         """
@@ -1426,7 +1426,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 
 - 0：否
 - 1：是
@@ -1442,7 +1442,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券ID列表。
+        r"""代金券ID列表。
         :rtype: str
         """
         return self._VoucherIds
@@ -1453,7 +1453,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """活动ID。
+        r"""活动ID。
         :rtype: int
         """
         return self._ActivityId
@@ -1464,7 +1464,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        """基础备份集ID。
+        r"""基础备份集ID。
         :rtype: str
         """
         return self._BackupSetId
@@ -1475,7 +1475,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def RecoveryTargetTime(self):
-        """恢复时间点。
+        r"""恢复时间点。
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -1486,7 +1486,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SyncMode(self):
-        """主从同步方式，支持： 
+        r"""主从同步方式，支持： 
 <li>Semi-sync：半同步</li>
 <li>Async：异步</li>
 主实例默认值：Semi-sync
@@ -1541,7 +1541,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
 
 class CloneDBInstanceResponse(AbstractModel):
-    """CloneDBInstance返回参数结构体
+    r"""CloneDBInstance返回参数结构体
 
     """
 
@@ -1563,7 +1563,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """订单号。
+        r"""订单号。
         :rtype: str
         """
         return self._DealName
@@ -1574,7 +1574,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def BillId(self):
-        """订单流水号。
+        r"""订单流水号。
         :rtype: str
         """
         return self._BillId
@@ -1585,7 +1585,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """克隆出的新实例ID，当前只支持后付费返回该值。
+        r"""克隆出的新实例ID，当前只支持后付费返回该值。
         :rtype: str
         """
         return self._DBInstanceId
@@ -1596,7 +1596,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1614,7 +1614,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
 
 class CloseDBExtranetAccessRequest(AbstractModel):
-    """CloseDBExtranetAccess请求参数结构体
+    r"""CloseDBExtranetAccess请求参数结构体
 
     """
 
@@ -1630,7 +1630,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。形如postgres-6r233v55
+        r"""实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。形如postgres-6r233v55
         :rtype: str
         """
         return self._DBInstanceId
@@ -1641,7 +1641,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def IsIpv6(self):
-        """是否关闭Ipv6外网，1：是，0：否。默认值：0。
+        r"""是否关闭Ipv6外网，1：是，0：否。默认值：0。
         :rtype: int
         """
         return self._IsIpv6
@@ -1665,7 +1665,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
-    """CloseDBExtranetAccess返回参数结构体
+    r"""CloseDBExtranetAccess返回参数结构体
 
     """
 
@@ -1681,7 +1681,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """异步任务流程ID
+        r"""异步任务流程ID
         :rtype: int
         """
         return self._FlowId
@@ -1692,7 +1692,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1708,7 +1708,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
 
 class CreateAccountRequest(AbstractModel):
-    """CreateAccount请求参数结构体
+    r"""CreateAccount请求参数结构体
 
     """
 
@@ -1733,7 +1733,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -1744,7 +1744,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """创建的账号名称。
+        r"""创建的账号名称。
         :rtype: str
         """
         return self._UserName
@@ -1755,7 +1755,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """账号对应的密码。
+        r"""账号对应的密码。
         :rtype: str
         """
         return self._Password
@@ -1766,7 +1766,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Type(self):
-        """账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
+        r"""账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
         :rtype: str
         """
         return self._Type
@@ -1777,7 +1777,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """账号备注。
+        r"""账号备注。
         :rtype: str
         """
         return self._Remark
@@ -1804,7 +1804,7 @@ class CreateAccountRequest(AbstractModel):
 
 
 class CreateAccountResponse(AbstractModel):
-    """CreateAccount返回参数结构体
+    r"""CreateAccount返回参数结构体
 
     """
 
@@ -1817,7 +1817,7 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1832,7 +1832,7 @@ class CreateAccountResponse(AbstractModel):
 
 
 class CreateBackupPlanRequest(AbstractModel):
-    """CreateBackupPlan请求参数结构体
+    r"""CreateBackupPlan请求参数结构体
 
     """
 
@@ -1864,7 +1864,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -1875,7 +1875,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def PlanName(self):
-        """备份计划名称。
+        r"""备份计划名称。
         :rtype: str
         """
         return self._PlanName
@@ -1886,7 +1886,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def BackupPeriodType(self):
-        """创建的备份计划类型，当前仅支持month创建。
+        r"""创建的备份计划类型，当前仅支持month创建。
         :rtype: str
         """
         return self._BackupPeriodType
@@ -1897,7 +1897,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def BackupPeriod(self):
-        """备份的日期，示例是每个月的2号开启备份。
+        r"""备份的日期，示例是每个月的2号开启备份。
         :rtype: list of str
         """
         return self._BackupPeriod
@@ -1908,7 +1908,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def MinBackupStartTime(self):
-        """备份开始时间，不传跟随默认备份计划。
+        r"""备份开始时间，不传跟随默认备份计划。
         :rtype: str
         """
         return self._MinBackupStartTime
@@ -1919,7 +1919,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def MaxBackupStartTime(self):
-        """备份结束时间，不传跟随默认计划。
+        r"""备份结束时间，不传跟随默认计划。
         :rtype: str
         """
         return self._MaxBackupStartTime
@@ -1930,7 +1930,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
     @property
     def BaseBackupRetentionPeriod(self):
-        """数据备份保留时长，单位：天。取值范围为：[0,30000)
+        r"""数据备份保留时长，单位：天。取值范围为：[0,30000)
 BackupPeriodType为week时默认是7,为month时默认为31。
         :rtype: int
         """
@@ -1960,7 +1960,7 @@ BackupPeriodType为week时默认是7,为month时默认为31。
 
 
 class CreateBackupPlanResponse(AbstractModel):
-    """CreateBackupPlan返回参数结构体
+    r"""CreateBackupPlan返回参数结构体
 
     """
 
@@ -1976,7 +1976,7 @@ class CreateBackupPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
-        """备份策略的ID.
+        r"""备份策略的ID.
         :rtype: str
         """
         return self._PlanId
@@ -1987,7 +1987,7 @@ class CreateBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2003,7 +2003,7 @@ class CreateBackupPlanResponse(AbstractModel):
 
 
 class CreateBaseBackupRequest(AbstractModel):
-    """CreateBaseBackup请求参数结构体
+    r"""CreateBaseBackup请求参数结构体
 
     """
 
@@ -2016,7 +2016,7 @@ class CreateBaseBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -2039,7 +2039,7 @@ class CreateBaseBackupRequest(AbstractModel):
 
 
 class CreateBaseBackupResponse(AbstractModel):
-    """CreateBaseBackup返回参数结构体
+    r"""CreateBaseBackup返回参数结构体
 
     """
 
@@ -2055,7 +2055,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        """数据备份集ID
+        r"""数据备份集ID
         :rtype: str
         """
         return self._BaseBackupId
@@ -2066,7 +2066,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2082,7 +2082,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
 
 class CreateDBInstanceNetworkAccessRequest(AbstractModel):
-    """CreateDBInstanceNetworkAccess请求参数结构体
+    r"""CreateDBInstanceNetworkAccess请求参数结构体
 
     """
 
@@ -2107,7 +2107,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -2118,7 +2118,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络统一 ID。
+        r"""私有网络统一 ID。
         :rtype: str
         """
         return self._VpcId
@@ -2129,7 +2129,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID。
+        r"""子网ID。
         :rtype: str
         """
         return self._SubnetId
@@ -2140,7 +2140,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def IsAssignVip(self):
-        """是否指定分配vip true-指定分配  false-自动分配。
+        r"""是否指定分配vip true-指定分配  false-自动分配。
         :rtype: bool
         """
         return self._IsAssignVip
@@ -2151,7 +2151,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """目标VIP地址。当不指定该参数，且IsAssignVip为true时，默认自动分配Vip。
+        r"""目标VIP地址。当不指定该参数，且IsAssignVip为true时，默认自动分配Vip。
         :rtype: str
         """
         return self._Vip
@@ -2178,7 +2178,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
 
 class CreateDBInstanceNetworkAccessResponse(AbstractModel):
-    """CreateDBInstanceNetworkAccess返回参数结构体
+    r"""CreateDBInstanceNetworkAccess返回参数结构体
 
     """
 
@@ -2194,7 +2194,7 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID。
+        r"""流程ID。
         :rtype: int
         """
         return self._FlowId
@@ -2205,7 +2205,7 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2221,7 +2221,7 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
 
 class CreateDatabaseRequest(AbstractModel):
-    """CreateDatabase请求参数结构体
+    r"""CreateDatabase请求参数结构体
 
     """
 
@@ -2252,7 +2252,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -2263,7 +2263,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """创建的数据库名。
+        r"""创建的数据库名。
 名称规范：由字母（a-z, A-Z）、数字（0-9）、下划线（_）组成，以字母或（_）开头，最多63个字符。不能使用系统保留关键字，不能为postgres。
         :rtype: str
         """
@@ -2275,7 +2275,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DatabaseOwner(self):
-        """数据库的所有者。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""数据库的所有者。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._DatabaseOwner
@@ -2286,7 +2286,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        """数据库的字符编码。
+        r"""数据库的字符编码。
 支持的常用字符集包括：UTF8、LATIN1、LATIN2、WIN1250、WIN1251、WIN1252、KOI8R、EUC_JP、EUC_KR
 默认值：UTF8
         :rtype: str
@@ -2299,7 +2299,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def Collate(self):
-        """数据库的排序规则
+        r"""数据库的排序规则
         :rtype: str
         """
         return self._Collate
@@ -2310,7 +2310,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def Ctype(self):
-        """数据库的字符分类
+        r"""数据库的字符分类
         :rtype: str
         """
         return self._Ctype
@@ -2338,7 +2338,7 @@ class CreateDatabaseRequest(AbstractModel):
 
 
 class CreateDatabaseResponse(AbstractModel):
-    """CreateDatabase返回参数结构体
+    r"""CreateDatabase返回参数结构体
 
     """
 
@@ -2351,7 +2351,7 @@ class CreateDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2366,7 +2366,7 @@ class CreateDatabaseResponse(AbstractModel):
 
 
 class CreateInstancesRequest(AbstractModel):
-    """CreateInstances请求参数结构体
+    r"""CreateInstances请求参数结构体
 
     """
 
@@ -2521,7 +2521,7 @@ mssql_compatible引擎：
 
     @property
     def Zone(self):
-        """实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；
+        r"""实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: str
         """
@@ -2533,7 +2533,7 @@ mssql_compatible引擎：
 
     @property
     def SpecCode(self):
-        """售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+        r"""售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
         :rtype: str
         """
         return self._SpecCode
@@ -2544,7 +2544,7 @@ mssql_compatible引擎：
 
     @property
     def Storage(self):
-        """实例磁盘容量大小，单位：GB。该参数的设置步长为10。
+        r"""实例磁盘容量大小，单位：GB。该参数的设置步长为10。
         :rtype: int
         """
         return self._Storage
@@ -2555,7 +2555,7 @@ mssql_compatible引擎：
 
     @property
     def InstanceCount(self):
-        """购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
+        r"""购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
         :rtype: int
         """
         return self._InstanceCount
@@ -2566,7 +2566,7 @@ mssql_compatible引擎：
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
 <li>后付费：只支持1</li>
         :rtype: int
@@ -2579,7 +2579,7 @@ mssql_compatible引擎：
 
     @property
     def Charset(self):
-        """实例字符集，目前只支持：
+        r"""实例字符集，目前只支持：
 <li> UTF8</li>
 <li> LATIN1</li>
         :rtype: str
@@ -2592,7 +2592,7 @@ mssql_compatible引擎：
 
     @property
     def AdminName(self):
-        """实例根账号用户名，具体规范如下：
+        r"""实例根账号用户名，具体规范如下：
 <li>用户名需要1-16个字符，只能由字母、数字或下划线组成</li>
 <li>不能为postgres</li>
 <li>不能由数字和pg_开头</li>
@@ -2607,7 +2607,7 @@ mssql_compatible引擎：
 
     @property
     def AdminPassword(self):
-        """实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以" / "开头;
+        r"""实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以" / "开头;
 必须包含以下四项，字符种类:
 <li>小写字母： [a ~ z]</li>
 <li>大写字母：[A ～ Z]</li>
@@ -2623,7 +2623,7 @@ mssql_compatible引擎：
 
     @property
     def DBMajorVersion(self):
-        """PostgreSQL大版本号（该参数当前必传），版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。目前支持10，11，12，13，14，15这几个大版本，详情见[内核版本概述](https://cloud.tencent.com/document/product/409/67018)。
+        r"""PostgreSQL大版本号（该参数当前必传），版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。目前支持10，11，12，13，14，15这几个大版本，详情见[内核版本概述](https://cloud.tencent.com/document/product/409/67018)。
 输入该参数时，会基于此大版本号创建对应的最新小版本的最新内核版本号实例。
         :rtype: str
         """
@@ -2635,7 +2635,7 @@ mssql_compatible引擎：
 
     @property
     def DBVersion(self):
-        """PostgreSQL社区大版本+小版本号。
+        r"""PostgreSQL社区大版本+小版本号。
 一般场景不推荐传入该参数。如需指定，只能传当前大版本号下最新小版本号。
         :rtype: str
         """
@@ -2647,7 +2647,7 @@ mssql_compatible引擎：
 
     @property
     def DBKernelVersion(self):
-        """PostgreSQL内核版本号。
+        r"""PostgreSQL内核版本号。
 一般场景不推荐传入该参数。如需指定，只能传当前大版本号下最新内核版本号。
         :rtype: str
         """
@@ -2659,7 +2659,7 @@ mssql_compatible引擎：
 
     @property
     def InstanceChargeType(self):
-        """实例计费类型，目前支持：
+        r"""实例计费类型，目前支持：
 <li>PREPAID：预付费，即包年包月</li>
 <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 默认值：PREPAID
@@ -2673,7 +2673,7 @@ mssql_compatible引擎：
 
     @property
     def VpcId(self):
-        """私有网络ID，形如vpc-xxxxxxxx（该参数当前必传）。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        r"""私有网络ID，形如vpc-xxxxxxxx（该参数当前必传）。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
         :rtype: str
         """
         return self._VpcId
@@ -2684,7 +2684,7 @@ mssql_compatible引擎：
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如subnet-xxxxxxxx（该参数当前必传）。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        r"""私有网络子网ID，形如subnet-xxxxxxxx（该参数当前必传）。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :rtype: str
         """
         return self._SubnetId
@@ -2695,7 +2695,7 @@ mssql_compatible引擎：
 
     @property
     def DBNodeSet(self):
-        """实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
+        r"""实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: list of DBNode
         """
@@ -2707,7 +2707,7 @@ mssql_compatible引擎：
 
     @property
     def AutoRenewFlag(self):
-        """续费标记：
+        r"""续费标记：
 <li>0：手动续费</li>
 <li>1：自动续费</li>
 默认值：0
@@ -2721,7 +2721,7 @@ mssql_compatible引擎：
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -2735,7 +2735,7 @@ mssql_compatible引擎：
 
     @property
     def VoucherIds(self):
-        """代金券ID列表，目前仅支持指定一张代金券。
+        r"""代金券ID列表，目前仅支持指定一张代金券。
         :rtype: list of str
         """
         return self._VoucherIds
@@ -2746,7 +2746,7 @@ mssql_compatible引擎：
 
     @property
     def ProjectId(self):
-        """项目ID。默认取之为0，表示归属默认项目。
+        r"""项目ID。默认取之为0，表示归属默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -2757,7 +2757,7 @@ mssql_compatible引擎：
 
     @property
     def ActivityId(self):
-        """活动ID。
+        r"""活动ID。
         :rtype: int
         """
         return self._ActivityId
@@ -2768,7 +2768,7 @@ mssql_compatible引擎：
 
     @property
     def Name(self):
-        """实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
+        r"""实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
 
         :rtype: str
         """
@@ -2780,7 +2780,7 @@ mssql_compatible引擎：
 
     @property
     def TagList(self):
-        """实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+        r"""实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
         :rtype: list of Tag
         """
         return self._TagList
@@ -2791,7 +2791,7 @@ mssql_compatible引擎：
 
     @property
     def SecurityGroupIds(self):
-        """实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 
         :rtype: list of str
         """
@@ -2803,7 +2803,7 @@ mssql_compatible引擎：
 
     @property
     def NeedSupportTDE(self):
-        """是否需要支持数据透明加密：
+        r"""是否需要支持数据透明加密：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -2818,7 +2818,7 @@ mssql_compatible引擎：
 
     @property
     def KMSKeyId(self):
-        """自定义密钥的KeyId，若选择自定义密匙加密，则需要传入自定义密匙的KeyId，KeyId是CMK的唯一标识。
+        r"""自定义密钥的KeyId，若选择自定义密匙加密，则需要传入自定义密匙的KeyId，KeyId是CMK的唯一标识。
 KeyId创建获取相关参考[开启透明数据加密](https://cloud.tencent.com/document/product/409/71749)
         :rtype: str
         """
@@ -2830,7 +2830,7 @@ KeyId创建获取相关参考[开启透明数据加密](https://cloud.tencent.co
 
     @property
     def KMSRegion(self):
-        """使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
+        r"""使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
 KMSRegion相关介绍参考[开启透明数据加密](https://cloud.tencent.com/document/product/409/71749)
         :rtype: str
         """
@@ -2842,7 +2842,7 @@ KMSRegion相关介绍参考[开启透明数据加密](https://cloud.tencent.com/
 
     @property
     def KMSClusterId(self):
-        """指定KMS服务的集群，KMSClusterId为空使用默认集群的KMS，若选择指定KMS集群，则需要传入KMSClusterId。 KMSClusterId相关介绍参考开启透明数据加密
+        r"""指定KMS服务的集群，KMSClusterId为空使用默认集群的KMS，若选择指定KMS集群，则需要传入KMSClusterId。 KMSClusterId相关介绍参考开启透明数据加密
         :rtype: str
         """
         return self._KMSClusterId
@@ -2853,7 +2853,7 @@ KMSRegion相关介绍参考[开启透明数据加密](https://cloud.tencent.com/
 
     @property
     def DBEngine(self):
-        """数据库引擎，支持：
+        r"""数据库引擎，支持：
 <li>postgresql：云数据库PostgreSQL</li>
 <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
 默认值：postgresql
@@ -2867,7 +2867,7 @@ KMSRegion相关介绍参考[开启透明数据加密](https://cloud.tencent.com/
 
     @property
     def DBEngineConfig(self):
-        """数据库引擎的配置信息，配置格式如下：
+        r"""数据库引擎的配置信息，配置格式如下：
 {"$key1":"$value1", "$key2":"$value2"}
 各引擎支持如下：
 mssql_compatible引擎：
@@ -2885,7 +2885,7 @@ mssql_compatible引擎：
 
     @property
     def SyncMode(self):
-        """主从同步方式，支持： 
+        r"""主从同步方式，支持： 
 <li>Semi-sync：半同步</li>
 <li>Async：异步</li>
 主实例默认值：Semi-sync
@@ -2900,7 +2900,7 @@ mssql_compatible引擎：
 
     @property
     def NeedSupportIpv6(self):
-        """是否需要支持Ipv6：
+        r"""是否需要支持Ipv6：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -2966,7 +2966,7 @@ mssql_compatible引擎：
 
 
 class CreateInstancesResponse(AbstractModel):
-    """CreateInstances返回参数结构体
+    r"""CreateInstances返回参数结构体
 
     """
 
@@ -2988,7 +2988,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """订单号列表。每个实例对应一个订单号。
+        r"""订单号列表。每个实例对应一个订单号。
         :rtype: list of str
         """
         return self._DealNames
@@ -2999,7 +2999,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def BillId(self):
-        """冻结流水号。
+        r"""冻结流水号。
         :rtype: str
         """
         return self._BillId
@@ -3010,7 +3010,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """创建成功的实例ID集合，只在后付费情景下有返回值。
+        r"""创建成功的实例ID集合，只在后付费情景下有返回值。
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -3021,7 +3021,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3039,7 +3039,7 @@ class CreateInstancesResponse(AbstractModel):
 
 
 class CreateParameterTemplateRequest(AbstractModel):
-    """CreateParameterTemplate请求参数结构体
+    r"""CreateParameterTemplate请求参数结构体
 
     """
 
@@ -3061,7 +3061,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+        r"""模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
         :rtype: str
         """
         return self._TemplateName
@@ -3072,7 +3072,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
+        r"""数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
         :rtype: str
         """
         return self._DBMajorVersion
@@ -3083,7 +3083,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        """数据库引擎，例如：postgresql，mssql_compatible
+        r"""数据库引擎，例如：postgresql，mssql_compatible
         :rtype: str
         """
         return self._DBEngine
@@ -3094,7 +3094,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+        r"""参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
         :rtype: str
         """
         return self._TemplateDescription
@@ -3120,7 +3120,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
 
 class CreateParameterTemplateResponse(AbstractModel):
-    """CreateParameterTemplate返回参数结构体
+    r"""CreateParameterTemplate返回参数结构体
 
     """
 
@@ -3136,7 +3136,7 @@ class CreateParameterTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID，用于唯一确认参数模板
+        r"""参数模板ID，用于唯一确认参数模板
         :rtype: str
         """
         return self._TemplateId
@@ -3147,7 +3147,7 @@ class CreateParameterTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3163,7 +3163,7 @@ class CreateParameterTemplateResponse(AbstractModel):
 
 
 class CreateReadOnlyDBInstanceRequest(AbstractModel):
-    """CreateReadOnlyDBInstance请求参数结构体
+    r"""CreateReadOnlyDBInstance请求参数结构体
 
     """
 
@@ -3252,7 +3252,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """实例所属主可用区， 如：ap-guangzhou-3；
+        r"""实例所属主可用区， 如：ap-guangzhou-3；
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: str
         """
@@ -3264,7 +3264,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def MasterDBInstanceId(self):
-        """只读实例的主实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""只读实例的主实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -3275,7 +3275,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def SpecCode(self):
-        """售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+        r"""售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
         :rtype: str
         """
         return self._SpecCode
@@ -3286,7 +3286,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """实例硬盘容量大小，单位：GB。该参数的设置步长为10。
+        r"""实例硬盘容量大小，单位：GB。该参数的设置步长为10。
         :rtype: int
         """
         return self._Storage
@@ -3297,7 +3297,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
+        r"""购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
         :rtype: int
         """
         return self._InstanceCount
@@ -3308,7 +3308,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
 <li>后付费：只支持1</li>
         :rtype: int
@@ -3321,7 +3321,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID，形如vpc-xxxxxxxx（该参数当前必传）。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        r"""私有网络ID，形如vpc-xxxxxxxx（该参数当前必传）。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
         :rtype: str
         """
         return self._VpcId
@@ -3332,7 +3332,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如subnet-xxxxxxxx（该参数当前必传）。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        r"""私有网络子网ID，形如subnet-xxxxxxxx（该参数当前必传）。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :rtype: str
         """
         return self._SubnetId
@@ -3343,7 +3343,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """实例计费类型，目前支持：
+        r"""实例计费类型，目前支持：
 <li>PREPAID：预付费，即包年包月。</li>
 <li>POSTPAID_BY_HOUR：后付费，即按量计费。</li>
 默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
@@ -3357,7 +3357,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -3371,7 +3371,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券ID列表，目前仅支持指定一张代金券。
+        r"""代金券ID列表，目前仅支持指定一张代金券。
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3382,7 +3382,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """续费标记：
+        r"""续费标记：
 <li>0：手动续费</li>
 <li>1：自动续费</li>
 默认值：0
@@ -3396,7 +3396,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。默认值为0，表示归属默认项目。
+        r"""项目ID。默认值为0，表示归属默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -3407,7 +3407,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """优惠活动ID
+        r"""优惠活动ID
         :rtype: int
         """
         return self._ActivityId
@@ -3418,7 +3418,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。
+        r"""只读组ID。
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3429,7 +3429,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+        r"""实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.Tag`
         """
         return self._TagList
@@ -3440,7 +3440,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 
         :rtype: list of str
         """
@@ -3452,7 +3452,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def NeedSupportIpv6(self):
-        """是否需要支持Ipv6：
+        r"""是否需要支持Ipv6：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -3466,7 +3466,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名。仅支持长度小于60的中文/英文/数字/"_"/"-"
+        r"""实例名。仅支持长度小于60的中文/英文/数字/"_"/"-"
         :rtype: str
         """
         return self._Name
@@ -3479,7 +3479,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     def DBVersion(self):
         warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
 
-        """不再需要指定，内核版本号与主实例保持一致
+        r"""不再需要指定，内核版本号与主实例保持一致
         :rtype: str
         """
         return self._DBVersion
@@ -3492,7 +3492,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """专属集群ID
+        r"""专属集群ID
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3537,7 +3537,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
 
 class CreateReadOnlyDBInstanceResponse(AbstractModel):
-    """CreateReadOnlyDBInstance返回参数结构体
+    r"""CreateReadOnlyDBInstance返回参数结构体
 
     """
 
@@ -3559,7 +3559,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """订单号列表。每个实例对应一个订单号
+        r"""订单号列表。每个实例对应一个订单号
         :rtype: list of str
         """
         return self._DealNames
@@ -3570,7 +3570,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def BillId(self):
-        """冻结流水号
+        r"""冻结流水号
         :rtype: str
         """
         return self._BillId
@@ -3581,7 +3581,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """创建成功的实例ID集合，只在后付费情景下有返回值
+        r"""创建成功的实例ID集合，只在后付费情景下有返回值
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -3592,7 +3592,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3610,7 +3610,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
 
 class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
-    """CreateReadOnlyGroupNetworkAccess请求参数结构体
+    r"""CreateReadOnlyGroupNetworkAccess请求参数结构体
 
     """
 
@@ -3635,7 +3635,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3646,7 +3646,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络统一 ID。
+        r"""私有网络统一 ID。
         :rtype: str
         """
         return self._VpcId
@@ -3657,7 +3657,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID。
+        r"""子网ID。
         :rtype: str
         """
         return self._SubnetId
@@ -3668,7 +3668,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def IsAssignVip(self):
-        """是否指定分配vip true-指定分配  false-自动分配。
+        r"""是否指定分配vip true-指定分配  false-自动分配。
         :rtype: bool
         """
         return self._IsAssignVip
@@ -3679,7 +3679,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """目标VIP地址。当不指定该参数，且IsAssignVip为true时，默认自动分配Vip。
+        r"""目标VIP地址。当不指定该参数，且IsAssignVip为true时，默认自动分配Vip。
         :rtype: str
         """
         return self._Vip
@@ -3706,7 +3706,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
 
 class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
-    """CreateReadOnlyGroupNetworkAccess返回参数结构体
+    r"""CreateReadOnlyGroupNetworkAccess返回参数结构体
 
     """
 
@@ -3722,7 +3722,7 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID。
+        r"""流程ID。
         :rtype: int
         """
         return self._FlowId
@@ -3733,7 +3733,7 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3749,7 +3749,7 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
 
 class CreateReadOnlyGroupRequest(AbstractModel):
-    """CreateReadOnlyGroup请求参数结构体
+    r"""CreateReadOnlyGroup请求参数结构体
 
     """
 
@@ -3792,7 +3792,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def MasterDBInstanceId(self):
-        """主实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""主实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -3803,7 +3803,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """只读组名称。仅支持长度小于60的中文/英文/数字/"_"/"-"。
+        r"""只读组名称。仅支持长度小于60的中文/英文/数字/"_"/"-"。
         :rtype: str
         """
         return self._Name
@@ -3814,7 +3814,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。默认值为0，表示归属于默认项目。
+        r"""项目ID。默认值为0，表示归属于默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -3825,7 +3825,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID。注：默认使用基础网络，当前不支持基础网络，故该参数必填。
+        r"""私有网络ID。注：默认使用基础网络，当前不支持基础网络，故该参数必填。
         :rtype: str
         """
         return self._VpcId
@@ -3836,7 +3836,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID。注：默认使用基础网络，当前不支持基础网络，故该参数必填。
+        r"""子网ID。注：默认使用基础网络，当前不支持基础网络，故该参数必填。
         :rtype: str
         """
         return self._SubnetId
@@ -3847,7 +3847,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReplayLagEliminate(self):
-        """延迟时间大小开关：0关、1开。该参数必填。
+        r"""延迟时间大小开关：0关、1开。该参数必填。
         :rtype: int
         """
         return self._ReplayLagEliminate
@@ -3858,7 +3858,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReplayLatencyEliminate(self):
-        """延迟空间大小开关： 0关、1开。该参数的填写需要与ReplayLagEliminate一致。
+        r"""延迟空间大小开关： 0关、1开。该参数的填写需要与ReplayLagEliminate一致。
         :rtype: int
         """
         return self._ReplayLatencyEliminate
@@ -3869,7 +3869,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def MaxReplayLag(self):
-        """延迟时间大小阈值，取值为正整数，单位s。当ReplayLagEliminate为1时，该参数必填；当ReplayLagEliminate为0时，该参数需填0。
+        r"""延迟时间大小阈值，取值为正整数，单位s。当ReplayLagEliminate为1时，该参数必填；当ReplayLagEliminate为0时，该参数需填0。
         :rtype: int
         """
         return self._MaxReplayLag
@@ -3880,7 +3880,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def MaxReplayLatency(self):
-        """延迟空间大小阈值，取值为正整数，单位MB。当ReplayLatencyEliminate为1时，该参数必填；当ReplayLatencyEliminate为0时，该参数需填0。
+        r"""延迟空间大小阈值，取值为正整数，单位MB。当ReplayLatencyEliminate为1时，该参数必填；当ReplayLatencyEliminate为0时，该参数需填0。
         :rtype: int
         """
         return self._MaxReplayLatency
@@ -3891,7 +3891,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def MinDelayEliminateReserve(self):
-        """延迟剔除最小保留实例数。取值范围[0,100]。当ReplayLatencyEliminate为1时，该参数必填；当ReplayLagEliminate为0时，该参数无效。
+        r"""延迟剔除最小保留实例数。取值范围[0,100]。当ReplayLatencyEliminate为1时，该参数必填；当ReplayLagEliminate为0时，该参数无效。
         :rtype: int
         """
         return self._MinDelayEliminateReserve
@@ -3902,7 +3902,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组id
+        r"""安全组id
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -3935,7 +3935,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
 
 class CreateReadOnlyGroupResponse(AbstractModel):
-    """CreateReadOnlyGroup返回参数结构体
+    r"""CreateReadOnlyGroup返回参数结构体
 
     """
 
@@ -3954,7 +3954,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID
+        r"""只读组ID
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3965,7 +3965,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID
+        r"""流程ID
         :rtype: int
         """
         return self._FlowId
@@ -3976,7 +3976,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3993,7 +3993,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
 
 class DBBackup(AbstractModel):
-    """数据库备份信息
+    r"""数据库备份信息
 
     """
 
@@ -4039,7 +4039,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Id(self):
-        """备份文件唯一标识
+        r"""备份文件唯一标识
         :rtype: int
         """
         return self._Id
@@ -4050,7 +4050,7 @@ class DBBackup(AbstractModel):
 
     @property
     def StartTime(self):
-        """文件生成的开始时间
+        r"""文件生成的开始时间
         :rtype: str
         """
         return self._StartTime
@@ -4061,7 +4061,7 @@ class DBBackup(AbstractModel):
 
     @property
     def EndTime(self):
-        """文件生成的结束时间
+        r"""文件生成的结束时间
         :rtype: str
         """
         return self._EndTime
@@ -4072,7 +4072,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Size(self):
-        """文件大小(K)
+        r"""文件大小(K)
         :rtype: int
         """
         return self._Size
@@ -4083,7 +4083,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Strategy(self):
-        """策略（0-实例备份；1-多库备份）
+        r"""策略（0-实例备份；1-多库备份）
         :rtype: int
         """
         return self._Strategy
@@ -4094,7 +4094,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Way(self):
-        """类型（0-定时）
+        r"""类型（0-定时）
         :rtype: int
         """
         return self._Way
@@ -4105,7 +4105,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Type(self):
-        """备份方式（1-完整）
+        r"""备份方式（1-完整）
         :rtype: int
         """
         return self._Type
@@ -4116,7 +4116,7 @@ class DBBackup(AbstractModel):
 
     @property
     def Status(self):
-        """状态（1-创建中；2-成功；3-失败）
+        r"""状态（1-创建中；2-成功；3-失败）
         :rtype: int
         """
         return self._Status
@@ -4127,7 +4127,7 @@ class DBBackup(AbstractModel):
 
     @property
     def DbList(self):
-        """DB列表
+        r"""DB列表
         :rtype: list of str
         """
         return self._DbList
@@ -4138,7 +4138,7 @@ class DBBackup(AbstractModel):
 
     @property
     def InternalAddr(self):
-        """内网下载地址
+        r"""内网下载地址
         :rtype: str
         """
         return self._InternalAddr
@@ -4149,7 +4149,7 @@ class DBBackup(AbstractModel):
 
     @property
     def ExternalAddr(self):
-        """外网下载地址
+        r"""外网下载地址
         :rtype: str
         """
         return self._ExternalAddr
@@ -4160,7 +4160,7 @@ class DBBackup(AbstractModel):
 
     @property
     def SetId(self):
-        """备份集ID
+        r"""备份集ID
         :rtype: str
         """
         return self._SetId
@@ -4194,7 +4194,7 @@ class DBBackup(AbstractModel):
 
 
 class DBInstance(AbstractModel):
-    """描述实例的详细信息
+    r"""描述实例的详细信息
 
     """
 
@@ -4351,7 +4351,7 @@ mssql_compatible引擎：
 
     @property
     def Region(self):
-        """实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段。
+        r"""实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段。
         :rtype: str
         """
         return self._Region
@@ -4362,7 +4362,7 @@ mssql_compatible引擎：
 
     @property
     def Zone(self):
-        """实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段。
+        r"""实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段。
         :rtype: str
         """
         return self._Zone
@@ -4373,7 +4373,7 @@ mssql_compatible引擎：
 
     @property
     def VpcId(self):
-        """私有网络ID，形如vpc-e6w23k31。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的unVpcId字段获取。
+        r"""私有网络ID，形如vpc-e6w23k31。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的unVpcId字段获取。
         :rtype: str
         """
         return self._VpcId
@@ -4384,7 +4384,7 @@ mssql_compatible引擎：
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如subnet-51lcif9y。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        r"""私有网络子网ID，形如subnet-51lcif9y。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :rtype: str
         """
         return self._SubnetId
@@ -4395,7 +4395,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -4406,7 +4406,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceName(self):
-        """实例名称。
+        r"""实例名称。
         :rtype: str
         """
         return self._DBInstanceName
@@ -4417,7 +4417,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceStatus(self):
-        """实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、disisolating（解隔离中）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）、offlining(下线中)、deployment changing（可用区变更中）、cloning（恢复数据中）、parameter modifying（参数修改中）、log-switching（日志状态变更中）、restoring（恢复中）、expanding（变配中）
+        r"""实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、disisolating（解隔离中）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）、offlining(下线中)、deployment changing（可用区变更中）、cloning（恢复数据中）、parameter modifying（参数修改中）、log-switching（日志状态变更中）、restoring（恢复中）、expanding（变配中）
         :rtype: str
         """
         return self._DBInstanceStatus
@@ -4428,7 +4428,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceMemory(self):
-        """实例分配的内存大小，单位：GB
+        r"""实例分配的内存大小，单位：GB
         :rtype: int
         """
         return self._DBInstanceMemory
@@ -4439,7 +4439,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceStorage(self):
-        """实例分配的存储空间大小，单位：GB
+        r"""实例分配的存储空间大小，单位：GB
         :rtype: int
         """
         return self._DBInstanceStorage
@@ -4450,7 +4450,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceCpu(self):
-        """实例分配的CPU数量，单位：个
+        r"""实例分配的CPU数量，单位：个
         :rtype: int
         """
         return self._DBInstanceCpu
@@ -4461,7 +4461,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceClass(self):
-        """售卖规格ID
+        r"""售卖规格ID
         :rtype: str
         """
         return self._DBInstanceClass
@@ -4472,7 +4472,7 @@ mssql_compatible引擎：
 
     @property
     def DBMajorVersion(self):
-        """PostgreSQL大版本号，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取，目前支持10，11，12，13，14，15这几个大版本。
+        r"""PostgreSQL大版本号，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取，目前支持10，11，12，13，14，15这几个大版本。
         :rtype: str
         """
         return self._DBMajorVersion
@@ -4483,7 +4483,7 @@ mssql_compatible引擎：
 
     @property
     def DBVersion(self):
-        """PostgreSQL社区大版本+小版本号，如12.4，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
+        r"""PostgreSQL社区大版本+小版本号，如12.4，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
         :rtype: str
         """
         return self._DBVersion
@@ -4494,7 +4494,7 @@ mssql_compatible引擎：
 
     @property
     def DBKernelVersion(self):
-        """PostgreSQL内核版本号，如v12.7_r1.8，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
+        r"""PostgreSQL内核版本号，如v12.7_r1.8，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
         :rtype: str
         """
         return self._DBKernelVersion
@@ -4505,7 +4505,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceType(self):
-        """实例类型，类型有：
+        r"""实例类型，类型有：
 <li>primary：主实例</li>
 <li>readonly：只读实例</li>
 <li>guard：灾备实例</li>
@@ -4520,7 +4520,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceVersion(self):
-        """实例版本，目前只支持standard（双机高可用版, 一主一从）。
+        r"""实例版本，目前只支持standard（双机高可用版, 一主一从）。
         :rtype: str
         """
         return self._DBInstanceVersion
@@ -4531,7 +4531,7 @@ mssql_compatible引擎：
 
     @property
     def DBCharset(self):
-        """实例字符集，目前只支持：
+        r"""实例字符集，目前只支持：
 <li> UTF8</li>
 <li> LATIN1</li>
         :rtype: str
@@ -4544,7 +4544,7 @@ mssql_compatible引擎：
 
     @property
     def CreateTime(self):
-        """实例创建时间。
+        r"""实例创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -4555,7 +4555,7 @@ mssql_compatible引擎：
 
     @property
     def UpdateTime(self):
-        """实例执行最后一次更新的时间。
+        r"""实例执行最后一次更新的时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -4566,7 +4566,7 @@ mssql_compatible引擎：
 
     @property
     def ExpireTime(self):
-        """实例到期时间。
+        r"""实例到期时间。
         :rtype: str
         """
         return self._ExpireTime
@@ -4577,7 +4577,7 @@ mssql_compatible引擎：
 
     @property
     def IsolatedTime(self):
-        """实例隔离时间。
+        r"""实例隔离时间。
         :rtype: str
         """
         return self._IsolatedTime
@@ -4588,7 +4588,7 @@ mssql_compatible引擎：
 
     @property
     def PayType(self):
-        """计费模式：
+        r"""计费模式：
 <li>prepaid：包年包月,预付费</li>
 <li>postpaid：按量计费，后付费</li>
         :rtype: str
@@ -4601,7 +4601,7 @@ mssql_compatible引擎：
 
     @property
     def AutoRenew(self):
-        """是否自动续费：
+        r"""是否自动续费：
 <li>0：手动续费</li>
 <li>1：自动续费</li>
 默认值：0
@@ -4615,7 +4615,7 @@ mssql_compatible引擎：
 
     @property
     def DBInstanceNetInfo(self):
-        """实例网络连接信息。
+        r"""实例网络连接信息。
         :rtype: list of DBInstanceNetInfo
         """
         return self._DBInstanceNetInfo
@@ -4626,7 +4626,7 @@ mssql_compatible引擎：
 
     @property
     def Type(self):
-        """机器类型。
+        r"""机器类型。
         :rtype: str
         """
         return self._Type
@@ -4637,7 +4637,7 @@ mssql_compatible引擎：
 
     @property
     def AppId(self):
-        """用户的AppId。
+        r"""用户的AppId。
         :rtype: int
         """
         return self._AppId
@@ -4648,7 +4648,7 @@ mssql_compatible引擎：
 
     @property
     def Uid(self):
-        """实例的Uid。
+        r"""实例的Uid。
         :rtype: int
         """
         return self._Uid
@@ -4659,7 +4659,7 @@ mssql_compatible引擎：
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: int
         """
         return self._ProjectId
@@ -4670,7 +4670,7 @@ mssql_compatible引擎：
 
     @property
     def TagList(self):
-        """实例绑定的标签信息。
+        r"""实例绑定的标签信息。
         :rtype: list of Tag
         """
         return self._TagList
@@ -4681,7 +4681,7 @@ mssql_compatible引擎：
 
     @property
     def MasterDBInstanceId(self):
-        """主实例信息，仅在实例为只读实例时返回。
+        r"""主实例信息，仅在实例为只读实例时返回。
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -4692,7 +4692,7 @@ mssql_compatible引擎：
 
     @property
     def ReadOnlyInstanceNum(self):
-        """只读实例数量。
+        r"""只读实例数量。
         :rtype: int
         """
         return self._ReadOnlyInstanceNum
@@ -4703,7 +4703,7 @@ mssql_compatible引擎：
 
     @property
     def StatusInReadonlyGroup(self):
-        """只读实例在只读组中的状态。
+        r"""只读实例在只读组中的状态。
         :rtype: str
         """
         return self._StatusInReadonlyGroup
@@ -4714,7 +4714,7 @@ mssql_compatible引擎：
 
     @property
     def OfflineTime(self):
-        """下线时间。
+        r"""下线时间。
         :rtype: str
         """
         return self._OfflineTime
@@ -4725,7 +4725,7 @@ mssql_compatible引擎：
 
     @property
     def DBNodeSet(self):
-        """实例的节点信息。
+        r"""实例的节点信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBNode
         """
@@ -4737,7 +4737,7 @@ mssql_compatible引擎：
 
     @property
     def IsSupportTDE(self):
-        """实例是否支持TDE数据加密：
+        r"""实例是否支持TDE数据加密：
 <li>0：不支持</li>
 <li>1：支持</li>
 默认值：0
@@ -4752,7 +4752,7 @@ TDE数据加密可参考[数据透明加密概述](https://cloud.tencent.com/doc
 
     @property
     def DBEngine(self):
-        """数据库引擎，支持：
+        r"""数据库引擎，支持：
 <li>postgresql：云数据库PostgreSQL</li>
 <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
 默认值：postgresql
@@ -4766,7 +4766,7 @@ TDE数据加密可参考[数据透明加密概述](https://cloud.tencent.com/doc
 
     @property
     def DBEngineConfig(self):
-        """数据库引擎的配置信息，配置格式如下：
+        r"""数据库引擎的配置信息，配置格式如下：
 {"$key1":"$value1", "$key2":"$value2"}
 各引擎支持如下：
 mssql_compatible引擎：
@@ -4784,7 +4784,7 @@ mssql_compatible引擎：
 
     @property
     def NetworkAccessList(self):
-        """实例网络信息列表（此字段已废弃）
+        r"""实例网络信息列表（此字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkAccess
         """
@@ -4796,7 +4796,7 @@ mssql_compatible引擎：
 
     @property
     def SupportIpv6(self):
-        """实例是否支持Ipv6：
+        r"""实例是否支持Ipv6：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -4880,7 +4880,7 @@ mssql_compatible引擎：
 
 
 class DBInstanceNetInfo(AbstractModel):
-    """描述实例的网络连接信息。
+    r"""描述实例的网络连接信息。
 
     """
 
@@ -4914,7 +4914,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Address(self):
-        """DNS域名
+        r"""DNS域名
         :rtype: str
         """
         return self._Address
@@ -4925,7 +4925,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Ip(self):
-        """IP地址
+        r"""IP地址
         :rtype: str
         """
         return self._Ip
@@ -4936,7 +4936,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Port(self):
-        """连接Port地址
+        r"""连接Port地址
         :rtype: int
         """
         return self._Port
@@ -4947,7 +4947,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def NetType(self):
-        """网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
+        r"""网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
         :rtype: str
         """
         return self._NetType
@@ -4958,7 +4958,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Status(self):
-        """网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
+        r"""网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
         :rtype: str
         """
         return self._Status
@@ -4969,7 +4969,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID
+        r"""私有网络ID
         :rtype: str
         """
         return self._VpcId
@@ -4980,7 +4980,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -4991,7 +4991,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+        r"""连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
         :rtype: str
         """
         return self._ProtocolType
@@ -5021,7 +5021,7 @@ class DBInstanceNetInfo(AbstractModel):
 
 
 class DBNode(AbstractModel):
-    """描述实例节点信息，包括节点类型、节点所在可用区、节点所在专属集群。
+    r"""描述实例节点信息，包括节点类型、节点所在可用区、节点所在专属集群。
 
     """
 
@@ -5042,7 +5042,7 @@ Standby，代表备节点。
 
     @property
     def Role(self):
-        """节点类型，值可以为：
+        r"""节点类型，值可以为：
 Primary，代表主节点；
 Standby，代表备节点。
         :rtype: str
@@ -5055,7 +5055,7 @@ Standby，代表备节点。
 
     @property
     def Zone(self):
-        """节点所在可用区，例如 ap-guangzhou-1。
+        r"""节点所在可用区，例如 ap-guangzhou-1。
         :rtype: str
         """
         return self._Zone
@@ -5066,7 +5066,7 @@ Standby，代表备节点。
 
     @property
     def DedicatedClusterId(self):
-        """专属集群ID
+        r"""专属集群ID
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -5091,7 +5091,7 @@ Standby，代表备节点。
 
 
 class Database(AbstractModel):
-    """描述数据库详细信息，包括所有者、字符编码等
+    r"""描述数据库详细信息，包括所有者、字符编码等
 
     """
 
@@ -5125,7 +5125,7 @@ class Database(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名
+        r"""数据库名
         :rtype: str
         """
         return self._DatabaseName
@@ -5136,7 +5136,7 @@ class Database(AbstractModel):
 
     @property
     def DatabaseOwner(self):
-        """数据库所有者
+        r"""数据库所有者
         :rtype: str
         """
         return self._DatabaseOwner
@@ -5147,7 +5147,7 @@ class Database(AbstractModel):
 
     @property
     def Encoding(self):
-        """数据库字符编码
+        r"""数据库字符编码
         :rtype: str
         """
         return self._Encoding
@@ -5158,7 +5158,7 @@ class Database(AbstractModel):
 
     @property
     def Collate(self):
-        """数据库排序规则
+        r"""数据库排序规则
         :rtype: str
         """
         return self._Collate
@@ -5169,7 +5169,7 @@ class Database(AbstractModel):
 
     @property
     def Ctype(self):
-        """数据库字符分类
+        r"""数据库字符分类
         :rtype: str
         """
         return self._Ctype
@@ -5180,7 +5180,7 @@ class Database(AbstractModel):
 
     @property
     def AllowConn(self):
-        """数据库是否允许连接
+        r"""数据库是否允许连接
         :rtype: bool
         """
         return self._AllowConn
@@ -5191,7 +5191,7 @@ class Database(AbstractModel):
 
     @property
     def ConnLimit(self):
-        """数据库最大连接数，-1表示无限制
+        r"""数据库最大连接数，-1表示无限制
         :rtype: int
         """
         return self._ConnLimit
@@ -5202,7 +5202,7 @@ class Database(AbstractModel):
 
     @property
     def Privileges(self):
-        """数据库权限列表
+        r"""数据库权限列表
         :rtype: str
         """
         return self._Privileges
@@ -5232,7 +5232,7 @@ class Database(AbstractModel):
 
 
 class DatabaseObject(AbstractModel):
-    """描述数据库中某个对象所属的类型、是在哪个数据库、模式、表中的对象。
+    r"""描述数据库中某个对象所属的类型、是在哪个数据库、模式、表中的对象。
 
     """
 
@@ -5257,7 +5257,7 @@ class DatabaseObject(AbstractModel):
 
     @property
     def ObjectType(self):
-        """支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。
+        r"""支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。
         :rtype: str
         """
         return self._ObjectType
@@ -5268,7 +5268,7 @@ class DatabaseObject(AbstractModel):
 
     @property
     def ObjectName(self):
-        """所描述的数据库对象名称
+        r"""所描述的数据库对象名称
         :rtype: str
         """
         return self._ObjectName
@@ -5279,7 +5279,7 @@ class DatabaseObject(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。
+        r"""所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。
         :rtype: str
         """
         return self._DatabaseName
@@ -5290,7 +5290,7 @@ class DatabaseObject(AbstractModel):
 
     @property
     def SchemaName(self):
-        """所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。
+        r"""所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。
         :rtype: str
         """
         return self._SchemaName
@@ -5301,7 +5301,7 @@ class DatabaseObject(AbstractModel):
 
     @property
     def TableName(self):
-        """所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。
+        r"""所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。
         :rtype: str
         """
         return self._TableName
@@ -5328,7 +5328,7 @@ class DatabaseObject(AbstractModel):
 
 
 class DatabasePrivilege(AbstractModel):
-    """指定账号对数据库对象拥有的权限列表
+    r"""指定账号对数据库对象拥有的权限列表
 
     """
 
@@ -5346,7 +5346,7 @@ class DatabasePrivilege(AbstractModel):
 
     @property
     def Object(self):
-        """数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+        r"""数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
         """
@@ -5358,7 +5358,7 @@ class DatabasePrivilege(AbstractModel):
 
     @property
     def PrivilegeSet(self):
-        """指定账号对数据库对象拥有的权限列表
+        r"""指定账号对数据库对象拥有的权限列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5385,7 +5385,7 @@ class DatabasePrivilege(AbstractModel):
 
 
 class DedicatedCluster(AbstractModel):
-    """专属集群相关信息，用于查询用户的专属集群列表
+    r"""专属集群相关信息，用于查询用户的专属集群列表
 
     """
 
@@ -5428,7 +5428,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """专属集群ID
+        r"""专属集群ID
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -5439,7 +5439,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def Name(self):
-        """专属集群名称
+        r"""专属集群名称
         :rtype: str
         """
         return self._Name
@@ -5450,7 +5450,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def Zone(self):
-        """专属集群所在可用区
+        r"""专属集群所在可用区
         :rtype: str
         """
         return self._Zone
@@ -5461,7 +5461,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def StandbyDedicatedClusterSet(self):
-        """灾备集群
+        r"""灾备集群
         :rtype: list of str
         """
         return self._StandbyDedicatedClusterSet
@@ -5472,7 +5472,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """实例数量
+        r"""实例数量
         :rtype: int
         """
         return self._InstanceCount
@@ -5483,7 +5483,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def CpuTotal(self):
-        """Cpu总数量
+        r"""Cpu总数量
         :rtype: int
         """
         return self._CpuTotal
@@ -5494,7 +5494,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def CpuAvailable(self):
-        """Cpu可用数量
+        r"""Cpu可用数量
         :rtype: int
         """
         return self._CpuAvailable
@@ -5505,7 +5505,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def MemTotal(self):
-        """内存总量，单位GB
+        r"""内存总量，单位GB
         :rtype: int
         """
         return self._MemTotal
@@ -5516,7 +5516,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def MemAvailable(self):
-        """内存可用量，单位GB
+        r"""内存可用量，单位GB
         :rtype: int
         """
         return self._MemAvailable
@@ -5527,7 +5527,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def DiskTotal(self):
-        """磁盘总量，单位GB
+        r"""磁盘总量，单位GB
         :rtype: int
         """
         return self._DiskTotal
@@ -5538,7 +5538,7 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def DiskAvailable(self):
-        """磁盘可用量，单位GB
+        r"""磁盘可用量，单位GB
         :rtype: int
         """
         return self._DiskAvailable
@@ -5571,7 +5571,7 @@ class DedicatedCluster(AbstractModel):
 
 
 class DeleteAccountRequest(AbstractModel):
-    """DeleteAccount请求参数结构体
+    r"""DeleteAccount请求参数结构体
 
     """
 
@@ -5587,7 +5587,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5598,7 +5598,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """删除的账号名称。	可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""删除的账号名称。	可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._UserName
@@ -5622,7 +5622,7 @@ class DeleteAccountRequest(AbstractModel):
 
 
 class DeleteAccountResponse(AbstractModel):
-    """DeleteAccount返回参数结构体
+    r"""DeleteAccount返回参数结构体
 
     """
 
@@ -5635,7 +5635,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5650,7 +5650,7 @@ class DeleteAccountResponse(AbstractModel):
 
 
 class DeleteBackupPlanRequest(AbstractModel):
-    """DeleteBackupPlan请求参数结构体
+    r"""DeleteBackupPlan请求参数结构体
 
     """
 
@@ -5666,7 +5666,7 @@ class DeleteBackupPlanRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5677,7 +5677,7 @@ class DeleteBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
+        r"""备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
         :rtype: str
         """
         return self._PlanId
@@ -5701,7 +5701,7 @@ class DeleteBackupPlanRequest(AbstractModel):
 
 
 class DeleteBackupPlanResponse(AbstractModel):
-    """DeleteBackupPlan返回参数结构体
+    r"""DeleteBackupPlan返回参数结构体
 
     """
 
@@ -5714,7 +5714,7 @@ class DeleteBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5729,7 +5729,7 @@ class DeleteBackupPlanResponse(AbstractModel):
 
 
 class DeleteBaseBackupRequest(AbstractModel):
-    """DeleteBaseBackup请求参数结构体
+    r"""DeleteBaseBackup请求参数结构体
 
     """
 
@@ -5745,7 +5745,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5756,7 +5756,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        """数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
+        r"""数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
         :rtype: str
         """
         return self._BaseBackupId
@@ -5780,7 +5780,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
 
 class DeleteBaseBackupResponse(AbstractModel):
-    """DeleteBaseBackup返回参数结构体
+    r"""DeleteBaseBackup返回参数结构体
 
     """
 
@@ -5793,7 +5793,7 @@ class DeleteBaseBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5808,7 +5808,7 @@ class DeleteBaseBackupResponse(AbstractModel):
 
 
 class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
-    """DeleteDBInstanceNetworkAccess请求参数结构体
+    r"""DeleteDBInstanceNetworkAccess请求参数结构体
 
     """
 
@@ -5830,7 +5830,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5841,7 +5841,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络统一 ID，若是基础网络则传"0"。
+        r"""私有网络统一 ID，若是基础网络则传"0"。
         :rtype: str
         """
         return self._VpcId
@@ -5852,7 +5852,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID，若是基础网络则传"0"。
+        r"""子网ID，若是基础网络则传"0"。
         :rtype: str
         """
         return self._SubnetId
@@ -5863,7 +5863,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """目标VIP地址。
+        r"""目标VIP地址。
         :rtype: str
         """
         return self._Vip
@@ -5889,7 +5889,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
 
 class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
-    """DeleteDBInstanceNetworkAccess返回参数结构体
+    r"""DeleteDBInstanceNetworkAccess返回参数结构体
 
     """
 
@@ -5905,7 +5905,7 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID。
+        r"""流程ID。
         :rtype: int
         """
         return self._FlowId
@@ -5916,7 +5916,7 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5932,7 +5932,7 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
 
 class DeleteLogBackupRequest(AbstractModel):
-    """DeleteLogBackup请求参数结构体
+    r"""DeleteLogBackup请求参数结构体
 
     """
 
@@ -5948,7 +5948,7 @@ class DeleteLogBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5959,7 +5959,7 @@ class DeleteLogBackupRequest(AbstractModel):
 
     @property
     def LogBackupId(self):
-        """日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
+        r"""日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
         :rtype: str
         """
         return self._LogBackupId
@@ -5983,7 +5983,7 @@ class DeleteLogBackupRequest(AbstractModel):
 
 
 class DeleteLogBackupResponse(AbstractModel):
-    """DeleteLogBackup返回参数结构体
+    r"""DeleteLogBackup返回参数结构体
 
     """
 
@@ -5996,7 +5996,7 @@ class DeleteLogBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6011,7 +6011,7 @@ class DeleteLogBackupResponse(AbstractModel):
 
 
 class DeleteParameterTemplateRequest(AbstractModel):
-    """DeleteParameterTemplate请求参数结构体
+    r"""DeleteParameterTemplate请求参数结构体
 
     """
 
@@ -6024,7 +6024,7 @@ class DeleteParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID，用于唯一确认待操作的参数模板。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
+        r"""参数模板ID，用于唯一确认待操作的参数模板。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -6047,7 +6047,7 @@ class DeleteParameterTemplateRequest(AbstractModel):
 
 
 class DeleteParameterTemplateResponse(AbstractModel):
-    """DeleteParameterTemplate返回参数结构体
+    r"""DeleteParameterTemplate返回参数结构体
 
     """
 
@@ -6060,7 +6060,7 @@ class DeleteParameterTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6075,7 +6075,7 @@ class DeleteParameterTemplateResponse(AbstractModel):
 
 
 class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
-    """DeleteReadOnlyGroupNetworkAccess请求参数结构体
+    r"""DeleteReadOnlyGroupNetworkAccess请求参数结构体
 
     """
 
@@ -6097,7 +6097,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -6108,7 +6108,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络统一 ID，若是基础网络则传"0"。
+        r"""私有网络统一 ID，若是基础网络则传"0"。
         :rtype: str
         """
         return self._VpcId
@@ -6119,7 +6119,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID，若是基础网络则传"0"。
+        r"""子网ID，若是基础网络则传"0"。
         :rtype: str
         """
         return self._SubnetId
@@ -6130,7 +6130,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """目标VIP地址。
+        r"""目标VIP地址。
         :rtype: str
         """
         return self._Vip
@@ -6156,7 +6156,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
 
 class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
-    """DeleteReadOnlyGroupNetworkAccess返回参数结构体
+    r"""DeleteReadOnlyGroupNetworkAccess返回参数结构体
 
     """
 
@@ -6172,7 +6172,7 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID。
+        r"""流程ID。
         :rtype: int
         """
         return self._FlowId
@@ -6183,7 +6183,7 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6199,7 +6199,7 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
 
 class DeleteReadOnlyGroupRequest(AbstractModel):
-    """DeleteReadOnlyGroup请求参数结构体
+    r"""DeleteReadOnlyGroup请求参数结构体
 
     """
 
@@ -6212,7 +6212,7 @@ class DeleteReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """待删除只读组ID
+        r"""待删除只读组ID
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -6235,7 +6235,7 @@ class DeleteReadOnlyGroupRequest(AbstractModel):
 
 
 class DeleteReadOnlyGroupResponse(AbstractModel):
-    """DeleteReadOnlyGroup返回参数结构体
+    r"""DeleteReadOnlyGroup返回参数结构体
 
     """
 
@@ -6251,7 +6251,7 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID
+        r"""流程ID
         :rtype: int
         """
         return self._FlowId
@@ -6262,7 +6262,7 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6278,7 +6278,7 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
 
 
 class DescribeAccountPrivilegesRequest(AbstractModel):
-    """DescribeAccountPrivileges请求参数结构体
+    r"""DescribeAccountPrivileges请求参数结构体
 
     """
 
@@ -6297,7 +6297,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6308,7 +6308,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """查询此账号对某数据库对象所拥有的权限信息。账号名可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""查询此账号对某数据库对象所拥有的权限信息。账号名可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._UserName
@@ -6319,7 +6319,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DatabaseObjectSet(self):
-        """要查询的数据库对象信息
+        r"""要查询的数据库对象信息
         :rtype: list of DatabaseObject
         """
         return self._DatabaseObjectSet
@@ -6349,7 +6349,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
 
 class DescribeAccountPrivilegesResponse(AbstractModel):
-    """DescribeAccountPrivileges返回参数结构体
+    r"""DescribeAccountPrivileges返回参数结构体
 
     """
 
@@ -6365,7 +6365,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def PrivilegeSet(self):
-        """用户拥有数据库user_database的CREATE、CONNECT、TEMPORARY权限
+        r"""用户拥有数据库user_database的CREATE、CONNECT、TEMPORARY权限
         :rtype: list of DatabasePrivilege
         """
         return self._PrivilegeSet
@@ -6376,7 +6376,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6397,7 +6397,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
 
 class DescribeAccountsRequest(AbstractModel):
-    """DescribeAccounts请求参数结构体
+    r"""DescribeAccounts请求参数结构体
 
     """
 
@@ -6422,7 +6422,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6fego161
+        r"""实例ID，形如postgres-6fego161
         :rtype: str
         """
         return self._DBInstanceId
@@ -6433,7 +6433,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页返回，每页最大返回数目，默认20，取值范围为1-100
+        r"""分页返回，每页最大返回数目，默认20，取值范围为1-100
         :rtype: int
         """
         return self._Limit
@@ -6444,7 +6444,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -6455,7 +6455,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """返回数据按照创建时间或者用户名排序。取值支持createTime、name、updateTime。createTime-按照创建时间排序；name-按照用户名排序; updateTime-按照更新时间排序。
+        r"""返回数据按照创建时间或者用户名排序。取值支持createTime、name、updateTime。createTime-按照创建时间排序；name-按照用户名排序; updateTime-按照更新时间排序。
         :rtype: str
         """
         return self._OrderBy
@@ -6466,7 +6466,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
+        r"""返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
         :rtype: str
         """
         return self._OrderByType
@@ -6493,7 +6493,7 @@ class DescribeAccountsRequest(AbstractModel):
 
 
 class DescribeAccountsResponse(AbstractModel):
-    """DescribeAccounts返回参数结构体
+    r"""DescribeAccounts返回参数结构体
 
     """
 
@@ -6512,7 +6512,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """本次调用接口共返回了多少条数据。
+        r"""本次调用接口共返回了多少条数据。
         :rtype: int
         """
         return self._TotalCount
@@ -6523,7 +6523,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Details(self):
-        """账号列表详细信息。当CreateTime项为0000-00-00 00:00:00时，意味着对应账号是直连数据库创建的，并非通过CreateAccount接口创建。
+        r"""账号列表详细信息。当CreateTime项为0000-00-00 00:00:00时，意味着对应账号是直连数据库创建的，并非通过CreateAccount接口创建。
         :rtype: list of AccountInfo
         """
         return self._Details
@@ -6534,7 +6534,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6556,7 +6556,7 @@ class DescribeAccountsResponse(AbstractModel):
 
 
 class DescribeAvailableRecoveryTimeRequest(AbstractModel):
-    """DescribeAvailableRecoveryTime请求参数结构体
+    r"""DescribeAvailableRecoveryTime请求参数结构体
 
     """
 
@@ -6569,7 +6569,7 @@ class DescribeAvailableRecoveryTimeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6592,7 +6592,7 @@ class DescribeAvailableRecoveryTimeRequest(AbstractModel):
 
 
 class DescribeAvailableRecoveryTimeResponse(AbstractModel):
-    """DescribeAvailableRecoveryTime返回参数结构体
+    r"""DescribeAvailableRecoveryTime返回参数结构体
 
     """
 
@@ -6611,7 +6611,7 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
 
     @property
     def RecoveryBeginTime(self):
-        """可恢复的最早时间，时区为东八区（UTC+8）。
+        r"""可恢复的最早时间，时区为东八区（UTC+8）。
         :rtype: str
         """
         return self._RecoveryBeginTime
@@ -6622,7 +6622,7 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
 
     @property
     def RecoveryEndTime(self):
-        """可恢复的最晚时间，时区为东八区（UTC+8）。
+        r"""可恢复的最晚时间，时区为东八区（UTC+8）。
         :rtype: str
         """
         return self._RecoveryEndTime
@@ -6633,7 +6633,7 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6650,13 +6650,13 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
 
 
 class DescribeBackupDownloadRestrictionRequest(AbstractModel):
-    """DescribeBackupDownloadRestriction请求参数结构体
+    r"""DescribeBackupDownloadRestriction请求参数结构体
 
     """
 
 
 class DescribeBackupDownloadRestrictionResponse(AbstractModel):
-    """DescribeBackupDownloadRestriction返回参数结构体
+    r"""DescribeBackupDownloadRestriction返回参数结构体
 
     """
 
@@ -6684,7 +6684,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def RestrictionType(self):
-        """备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        r"""备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
         :rtype: str
         """
         return self._RestrictionType
@@ -6695,7 +6695,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def VpcRestrictionEffect(self):
-        """vpc限制效力，ALLOW 允许；DENY 拒绝。
+        r"""vpc限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._VpcRestrictionEffect
@@ -6706,7 +6706,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def VpcIdSet(self):
-        """允许或拒绝下载备份文件的vpcId列表。
+        r"""允许或拒绝下载备份文件的vpcId列表。
         :rtype: list of str
         """
         return self._VpcIdSet
@@ -6717,7 +6717,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def IpRestrictionEffect(self):
-        """ip限制效力，ALLOW 允许；DENY 拒绝。
+        r"""ip限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._IpRestrictionEffect
@@ -6728,7 +6728,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def IpSet(self):
-        """允许或拒绝下载备份文件的ip列表。
+        r"""允许或拒绝下载备份文件的ip列表。
         :rtype: list of str
         """
         return self._IpSet
@@ -6739,7 +6739,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6759,7 +6759,7 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
 
 
 class DescribeBackupDownloadURLRequest(AbstractModel):
-    """DescribeBackupDownloadURL请求参数结构体
+    r"""DescribeBackupDownloadURL请求参数结构体
 
     """
 
@@ -6784,7 +6784,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6795,7 +6795,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        """备份类型，目前支持：LogBackup，BaseBackup。
+        r"""备份类型，目前支持：LogBackup，BaseBackup。
         :rtype: str
         """
         return self._BackupType
@@ -6806,7 +6806,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """备份的唯一ID。
+        r"""备份的唯一ID。
         :rtype: str
         """
         return self._BackupId
@@ -6817,7 +6817,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def URLExpireTime(self):
-        """链接的有效时间，取值为[0,36]，默认为12小时。
+        r"""链接的有效时间，取值为[0,36]，默认为12小时。
         :rtype: int
         """
         return self._URLExpireTime
@@ -6828,7 +6828,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def BackupDownloadRestriction(self):
-        """备份下载限制
+        r"""备份下载限制
         :rtype: :class:`tencentcloud.postgres.v20170312.models.BackupDownloadRestriction`
         """
         return self._BackupDownloadRestriction
@@ -6857,7 +6857,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
 
 class DescribeBackupDownloadURLResponse(AbstractModel):
-    """DescribeBackupDownloadURL返回参数结构体
+    r"""DescribeBackupDownloadURL返回参数结构体
 
     """
 
@@ -6873,7 +6873,7 @@ class DescribeBackupDownloadURLResponse(AbstractModel):
 
     @property
     def BackupDownloadURL(self):
-        """备份的下载地址。
+        r"""备份的下载地址。
         :rtype: str
         """
         return self._BackupDownloadURL
@@ -6884,7 +6884,7 @@ class DescribeBackupDownloadURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6900,13 +6900,13 @@ class DescribeBackupDownloadURLResponse(AbstractModel):
 
 
 class DescribeBackupOverviewRequest(AbstractModel):
-    """DescribeBackupOverview请求参数结构体
+    r"""DescribeBackupOverview请求参数结构体
 
     """
 
 
 class DescribeBackupOverviewResponse(AbstractModel):
-    """DescribeBackupOverview返回参数结构体
+    r"""DescribeBackupOverview返回参数结构体
 
     """
 
@@ -6946,7 +6946,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def TotalFreeSize(self):
-        """总免费空间大小，单位byte。
+        r"""总免费空间大小，单位byte。
         :rtype: int
         """
         return self._TotalFreeSize
@@ -6957,7 +6957,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def UsedFreeSize(self):
-        """已使用免费空间大小，单位byte。
+        r"""已使用免费空间大小，单位byte。
         :rtype: int
         """
         return self._UsedFreeSize
@@ -6968,7 +6968,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def UsedBillingSize(self):
-        """已使用收费空间大小，单位byte。
+        r"""已使用收费空间大小，单位byte。
         :rtype: int
         """
         return self._UsedBillingSize
@@ -6979,7 +6979,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        """日志备份数量。
+        r"""日志备份数量。
         :rtype: int
         """
         return self._LogBackupCount
@@ -6990,7 +6990,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def LogBackupSize(self):
-        """日志备份大小，单位byte。
+        r"""日志备份大小，单位byte。
         :rtype: int
         """
         return self._LogBackupSize
@@ -7001,7 +7001,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def ManualBaseBackupCount(self):
-        """手动创建的基础备份数量。
+        r"""手动创建的基础备份数量。
         :rtype: int
         """
         return self._ManualBaseBackupCount
@@ -7012,7 +7012,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def ManualBaseBackupSize(self):
-        """手动创建的基础备份大小，单位byte。
+        r"""手动创建的基础备份大小，单位byte。
         :rtype: int
         """
         return self._ManualBaseBackupSize
@@ -7023,7 +7023,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def AutoBaseBackupCount(self):
-        """自动创建的基础备份数量。
+        r"""自动创建的基础备份数量。
         :rtype: int
         """
         return self._AutoBaseBackupCount
@@ -7034,7 +7034,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def AutoBaseBackupSize(self):
-        """自动创建的基础备份大小，单位byte。
+        r"""自动创建的基础备份大小，单位byte。
         :rtype: int
         """
         return self._AutoBaseBackupSize
@@ -7045,7 +7045,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7069,7 +7069,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
 
 
 class DescribeBackupPlansRequest(AbstractModel):
-    """DescribeBackupPlans请求参数结构体
+    r"""DescribeBackupPlans请求参数结构体
 
     """
 
@@ -7082,7 +7082,7 @@ class DescribeBackupPlansRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7105,7 +7105,7 @@ class DescribeBackupPlansRequest(AbstractModel):
 
 
 class DescribeBackupPlansResponse(AbstractModel):
-    """DescribeBackupPlans返回参数结构体
+    r"""DescribeBackupPlans返回参数结构体
 
     """
 
@@ -7121,7 +7121,7 @@ class DescribeBackupPlansResponse(AbstractModel):
 
     @property
     def Plans(self):
-        """实例的备份计划集
+        r"""实例的备份计划集
         :rtype: list of BackupPlan
         """
         return self._Plans
@@ -7132,7 +7132,7 @@ class DescribeBackupPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7153,7 +7153,7 @@ class DescribeBackupPlansResponse(AbstractModel):
 
 
 class DescribeBackupSummariesRequest(AbstractModel):
-    """DescribeBackupSummaries请求参数结构体
+    r"""DescribeBackupSummaries请求参数结构体
 
     """
 
@@ -7181,7 +7181,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100，默认为返回10条。
+        r"""每页显示数量，取值范围为1-100，默认为返回10条。
         :rtype: int
         """
         return self._Limit
@@ -7192,7 +7192,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -7203,7 +7203,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
@@ -7217,7 +7217,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
     @property
     def OrderBy(self):
-        """排序字段，支持TotalBackupSize - 备份总大小、LogBackupSize - 备份日志的大小、ManualBaseBackupSize - 手动备份数据大小、AutoBaseBackupSize - 自动备份数据大小。当不传入该参数时，默认不进行排序。
+        r"""排序字段，支持TotalBackupSize - 备份总大小、LogBackupSize - 备份日志的大小、ManualBaseBackupSize - 手动备份数据大小、AutoBaseBackupSize - 自动备份数据大小。当不传入该参数时，默认不进行排序。
         :rtype: str
         """
         return self._OrderBy
@@ -7228,7 +7228,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc。默认值：asc。
+        r"""排序方式，包括升序：asc，降序：desc。默认值：asc。
         :rtype: str
         """
         return self._OrderByType
@@ -7260,7 +7260,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 
 
 class DescribeBackupSummariesResponse(AbstractModel):
-    """DescribeBackupSummaries返回参数结构体
+    r"""DescribeBackupSummaries返回参数结构体
 
     """
 
@@ -7279,7 +7279,7 @@ class DescribeBackupSummariesResponse(AbstractModel):
 
     @property
     def BackupSummarySet(self):
-        """备份统计信息列表。
+        r"""备份统计信息列表。
         :rtype: list of BackupSummary
         """
         return self._BackupSummarySet
@@ -7290,7 +7290,7 @@ class DescribeBackupSummariesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的所有备份信息数量。
+        r"""查询到的所有备份信息数量。
         :rtype: int
         """
         return self._TotalCount
@@ -7301,7 +7301,7 @@ class DescribeBackupSummariesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7323,7 +7323,7 @@ class DescribeBackupSummariesResponse(AbstractModel):
 
 
 class DescribeBaseBackupsRequest(AbstractModel):
-    """DescribeBaseBackups请求参数结构体
+    r"""DescribeBaseBackups请求参数结构体
 
     """
 
@@ -7359,7 +7359,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def MinFinishTime(self):
-        """备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
+        r"""备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
         :rtype: str
         """
         return self._MinFinishTime
@@ -7370,7 +7370,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def MaxFinishTime(self):
-        """备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
+        r"""备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
         :rtype: str
         """
         return self._MaxFinishTime
@@ -7381,7 +7381,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
@@ -7397,7 +7397,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100，默认为返回10条。
+        r"""每页显示数量，取值范围为1-100，默认为返回10条。
         :rtype: int
         """
         return self._Limit
@@ -7408,7 +7408,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -7419,7 +7419,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def OrderBy(self):
-        """排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
+        r"""排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
         :rtype: str
         """
         return self._OrderBy
@@ -7430,7 +7430,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc。默认值：desc。
+        r"""排序方式，包括升序：asc，降序：desc。默认值：desc。
         :rtype: str
         """
         return self._OrderByType
@@ -7464,7 +7464,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
 
 class DescribeBaseBackupsResponse(AbstractModel):
-    """DescribeBaseBackups返回参数结构体
+    r"""DescribeBaseBackups返回参数结构体
 
     """
 
@@ -7483,7 +7483,7 @@ class DescribeBaseBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的数据备份数量。
+        r"""查询到的数据备份数量。
         :rtype: int
         """
         return self._TotalCount
@@ -7494,7 +7494,7 @@ class DescribeBaseBackupsResponse(AbstractModel):
 
     @property
     def BaseBackupSet(self):
-        """数据备份详细信息列表。
+        r"""数据备份详细信息列表。
         :rtype: list of BaseBackup
         """
         return self._BaseBackupSet
@@ -7505,7 +7505,7 @@ class DescribeBaseBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7527,7 +7527,7 @@ class DescribeBaseBackupsResponse(AbstractModel):
 
 
 class DescribeClassesRequest(AbstractModel):
-    """DescribeClasses请求参数结构体
+    r"""DescribeClasses请求参数结构体
 
     """
 
@@ -7548,7 +7548,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
+        r"""可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
         :rtype: str
         """
         return self._Zone
@@ -7559,7 +7559,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        """数据库引擎，支持：
+        r"""数据库引擎，支持：
 1、postgresql（云数据库PostgreSQL）；
 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
         :rtype: str
@@ -7572,7 +7572,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
+        r"""数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
         :rtype: str
         """
         return self._DBMajorVersion
@@ -7597,7 +7597,7 @@ class DescribeClassesRequest(AbstractModel):
 
 
 class DescribeClassesResponse(AbstractModel):
-    """DescribeClasses返回参数结构体
+    r"""DescribeClasses返回参数结构体
 
     """
 
@@ -7613,7 +7613,7 @@ class DescribeClassesResponse(AbstractModel):
 
     @property
     def ClassInfoSet(self):
-        """数据库规格列表
+        r"""数据库规格列表
         :rtype: list of ClassInfo
         """
         return self._ClassInfoSet
@@ -7624,7 +7624,7 @@ class DescribeClassesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7645,7 +7645,7 @@ class DescribeClassesResponse(AbstractModel):
 
 
 class DescribeCloneDBInstanceSpecRequest(AbstractModel):
-    """DescribeCloneDBInstanceSpec请求参数结构体
+    r"""DescribeCloneDBInstanceSpec请求参数结构体
 
     """
 
@@ -7664,7 +7664,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7675,7 +7675,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        """基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        r"""基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
         :rtype: str
         """
         return self._BackupSetId
@@ -7686,7 +7686,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def RecoveryTargetTime(self):
-        """恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+        r"""恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -7711,7 +7711,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
 
 class DescribeCloneDBInstanceSpecResponse(AbstractModel):
-    """DescribeCloneDBInstanceSpec返回参数结构体
+    r"""DescribeCloneDBInstanceSpec返回参数结构体
 
     """
 
@@ -7730,7 +7730,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     @property
     def MinSpecCode(self):
-        """可购买的最小规格码。
+        r"""可购买的最小规格码。
         :rtype: str
         """
         return self._MinSpecCode
@@ -7741,7 +7741,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     @property
     def MinStorage(self):
-        """可购买的最小磁盘容量，单位GB。
+        r"""可购买的最小磁盘容量，单位GB。
         :rtype: int
         """
         return self._MinStorage
@@ -7752,7 +7752,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7769,7 +7769,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
 
 class DescribeDBBackupsRequest(AbstractModel):
-    """DescribeDBBackups请求参数结构体
+    r"""DescribeDBBackups请求参数结构体
 
     """
 
@@ -7797,7 +7797,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-4wdeb0zv。
+        r"""实例ID，形如postgres-4wdeb0zv。
         :rtype: str
         """
         return self._DBInstanceId
@@ -7808,7 +7808,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """备份方式（1-全量）。目前只支持全量，取值为1。
+        r"""备份方式（1-全量）。目前只支持全量，取值为1。
         :rtype: int
         """
         return self._Type
@@ -7819,7 +7819,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
+        r"""查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
         :rtype: str
         """
         return self._StartTime
@@ -7830,7 +7830,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，形如2018-06-10 17:06:38
+        r"""查询结束时间，形如2018-06-10 17:06:38
         :rtype: str
         """
         return self._EndTime
@@ -7841,7 +7841,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）
+        r"""备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）
         :rtype: int
         """
         return self._Limit
@@ -7852,7 +7852,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """返回结果中的第几页，从第0页开始。默认为0。
+        r"""返回结果中的第几页，从第0页开始。默认为0。
         :rtype: int
         """
         return self._Offset
@@ -7880,7 +7880,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
 
 class DescribeDBBackupsResponse(AbstractModel):
-    """DescribeDBBackups返回参数结构体
+    r"""DescribeDBBackups返回参数结构体
 
     """
 
@@ -7899,7 +7899,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回备份列表中备份文件的个数
+        r"""返回备份列表中备份文件的个数
         :rtype: int
         """
         return self._TotalCount
@@ -7910,7 +7910,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     @property
     def BackupList(self):
-        """备份列表
+        r"""备份列表
         :rtype: list of DBBackup
         """
         return self._BackupList
@@ -7921,7 +7921,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7943,7 +7943,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
 
 class DescribeDBErrlogsRequest(AbstractModel):
-    """DescribeDBErrlogs请求参数结构体
+    r"""DescribeDBErrlogs请求参数结构体
 
     """
 
@@ -7974,7 +7974,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7985,7 +7985,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
+        r"""查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
         :rtype: str
         """
         return self._StartTime
@@ -7996,7 +7996,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，形如2018-01-01 00:00:00。	
+        r"""查询结束时间，形如2018-01-01 00:00:00。	
         :rtype: str
         """
         return self._EndTime
@@ -8007,7 +8007,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名字。
+        r"""数据库名字。
         :rtype: str
         """
         return self._DatabaseName
@@ -8018,7 +8018,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def SearchKeys(self):
-        """搜索关键字。
+        r"""搜索关键字。
         :rtype: list of str
         """
         return self._SearchKeys
@@ -8029,7 +8029,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100。默认值为50。	
+        r"""每页显示数量，取值范围为1-100。默认值为50。	
         :rtype: int
         """
         return self._Limit
@@ -8040,7 +8040,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。默认值为0。	
+        r"""数据偏移量，从0开始。默认值为0。	
         :rtype: int
         """
         return self._Offset
@@ -8069,7 +8069,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
 
 class DescribeDBErrlogsResponse(AbstractModel):
-    """DescribeDBErrlogs返回参数结构体
+    r"""DescribeDBErrlogs返回参数结构体
 
     """
 
@@ -8088,7 +8088,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的日志数量，最大值为10000条。
+        r"""查询到的日志数量，最大值为10000条。
         :rtype: int
         """
         return self._TotalCount
@@ -8099,7 +8099,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     @property
     def Details(self):
-        """错误日志详细信息集合。
+        r"""错误日志详细信息集合。
         :rtype: list of ErrLogDetail
         """
         return self._Details
@@ -8110,7 +8110,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8132,7 +8132,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
 
 class DescribeDBInstanceAttributeRequest(AbstractModel):
-    """DescribeDBInstanceAttribute请求参数结构体
+    r"""DescribeDBInstanceAttribute请求参数结构体
 
     """
 
@@ -8145,7 +8145,7 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._DBInstanceId
@@ -8168,7 +8168,7 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
 
 class DescribeDBInstanceAttributeResponse(AbstractModel):
-    """DescribeDBInstanceAttribute返回参数结构体
+    r"""DescribeDBInstanceAttribute返回参数结构体
 
     """
 
@@ -8184,7 +8184,7 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
 
     @property
     def DBInstance(self):
-        """实例详细信息。
+        r"""实例详细信息。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.DBInstance`
         """
         return self._DBInstance
@@ -8195,7 +8195,7 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8213,7 +8213,7 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
 
 
 class DescribeDBInstanceHAConfigRequest(AbstractModel):
-    """DescribeDBInstanceHAConfig请求参数结构体
+    r"""DescribeDBInstanceHAConfig请求参数结构体
 
     """
 
@@ -8226,7 +8226,7 @@ class DescribeDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._DBInstanceId
@@ -8249,7 +8249,7 @@ class DescribeDBInstanceHAConfigRequest(AbstractModel):
 
 
 class DescribeDBInstanceHAConfigResponse(AbstractModel):
-    """DescribeDBInstanceHAConfig返回参数结构体
+    r"""DescribeDBInstanceHAConfig返回参数结构体
 
     """
 
@@ -8291,7 +8291,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def SyncMode(self):
-        """主从同步方式：
+        r"""主从同步方式：
 <li>Semi-sync：半同步
 <li>Async：异步
         :rtype: str
@@ -8304,7 +8304,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def MaxStandbyLatency(self):
-        """高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+        r"""高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
 <li>单位：byte
 <li>参数范围：[1073741824, 322122547200]
         :rtype: int
@@ -8317,7 +8317,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def MaxStandbyLag(self):
-        """高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+        r"""高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
 <li>单位：s
 <li>参数范围：[5, 10]
         :rtype: int
@@ -8330,7 +8330,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def MaxSyncStandbyLatency(self):
-        """同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+        r"""同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
 该参数值针对SyncMode设置为Semi-sync的实例有效。
 异步实例该字段返回null。
 半同步实例禁止退化为异步复制时，该字段返回null。
@@ -8345,7 +8345,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def MaxSyncStandbyLag(self):
-        """同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+        r"""同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
 该参数值针对SyncMode设置为Semi-sync的实例有效。
 异步实例不返回该字段。
 半同步实例禁止退化为异步复制时，不返回该字段。
@@ -8360,7 +8360,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8380,7 +8380,7 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
 
 
 class DescribeDBInstanceParametersRequest(AbstractModel):
-    """DescribeDBInstanceParameters请求参数结构体
+    r"""DescribeDBInstanceParameters请求参数结构体
 
     """
 
@@ -8396,7 +8396,7 @@ class DescribeDBInstanceParametersRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -8407,7 +8407,7 @@ class DescribeDBInstanceParametersRequest(AbstractModel):
 
     @property
     def ParamName(self):
-        """查询指定参数详情。ParamName为空或不传，默认返回全部参数列表
+        r"""查询指定参数详情。ParamName为空或不传，默认返回全部参数列表
         :rtype: str
         """
         return self._ParamName
@@ -8431,7 +8431,7 @@ class DescribeDBInstanceParametersRequest(AbstractModel):
 
 
 class DescribeDBInstanceParametersResponse(AbstractModel):
-    """DescribeDBInstanceParameters返回参数结构体
+    r"""DescribeDBInstanceParameters返回参数结构体
 
     """
 
@@ -8450,7 +8450,7 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """参数列表总数
+        r"""参数列表总数
         :rtype: int
         """
         return self._TotalCount
@@ -8461,7 +8461,7 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """参数列表返回详情
+        r"""参数列表返回详情
         :rtype: list of ParamInfo
         """
         return self._Detail
@@ -8472,7 +8472,7 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8494,7 +8494,7 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
 
 
 class DescribeDBInstanceSSLConfigRequest(AbstractModel):
-    """DescribeDBInstanceSSLConfig请求参数结构体
+    r"""DescribeDBInstanceSSLConfig请求参数结构体
 
     """
 
@@ -8507,7 +8507,7 @@ class DescribeDBInstanceSSLConfigRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -8530,7 +8530,7 @@ class DescribeDBInstanceSSLConfigRequest(AbstractModel):
 
 
 class DescribeDBInstanceSSLConfigResponse(AbstractModel):
-    """DescribeDBInstanceSSLConfig返回参数结构体
+    r"""DescribeDBInstanceSSLConfig返回参数结构体
 
     """
 
@@ -8552,7 +8552,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def SSLEnabled(self):
-        """true 代表开通 ，false 代表未开通
+        r"""true 代表开通 ，false 代表未开通
         :rtype: bool
         """
         return self._SSLEnabled
@@ -8563,7 +8563,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def CAUrl(self):
-        """云端根证书下载链接
+        r"""云端根证书下载链接
         :rtype: str
         """
         return self._CAUrl
@@ -8574,7 +8574,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def ConnectAddress(self):
-        """服务器证书中配置的内网或外网连接地址
+        r"""服务器证书中配置的内网或外网连接地址
         :rtype: str
         """
         return self._ConnectAddress
@@ -8585,7 +8585,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8603,7 +8603,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
 
 class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
-    """DescribeDBInstanceSecurityGroups请求参数结构体
+    r"""DescribeDBInstanceSecurityGroups请求参数结构体
 
     """
 
@@ -8619,7 +8619,7 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
+        r"""实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
         :rtype: str
         """
         return self._DBInstanceId
@@ -8630,7 +8630,7 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要查询只读组关联的安全组，只传ReadOnlyGroupId。
+        r"""只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要查询只读组关联的安全组，只传ReadOnlyGroupId。
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -8654,7 +8654,7 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
 
 class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
-    """DescribeDBInstanceSecurityGroups返回参数结构体
+    r"""DescribeDBInstanceSecurityGroups返回参数结构体
 
     """
 
@@ -8670,7 +8670,7 @@ class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def SecurityGroupSet(self):
-        """安全组信息数组
+        r"""安全组信息数组
         :rtype: list of SecurityGroup
         """
         return self._SecurityGroupSet
@@ -8681,7 +8681,7 @@ class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8702,7 +8702,7 @@ class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class DescribeDBInstancesRequest(AbstractModel):
-    """DescribeDBInstances请求参数结构体
+    r"""DescribeDBInstances请求参数结构体
 
     """
 
@@ -8735,7 +8735,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string
 db-instance-name：按照实例名过滤，类型为string
 db-project-id：按照项目ID过滤，类型为integer
@@ -8754,7 +8754,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100，默认为返回10条。
+        r"""每页显示数量，取值范围为1-100，默认为返回10条。
         :rtype: int
         """
         return self._Limit
@@ -8765,7 +8765,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -8776,7 +8776,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def OrderBy(self):
-        """排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
+        r"""排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
         :rtype: str
         """
         return self._OrderBy
@@ -8787,7 +8787,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc、降序：desc。
+        r"""排序方式，包括升序：asc、降序：desc。
         :rtype: str
         """
         return self._OrderByType
@@ -8819,7 +8819,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
 
 class DescribeDBInstancesResponse(AbstractModel):
-    """DescribeDBInstances返回参数结构体
+    r"""DescribeDBInstances返回参数结构体
 
     """
 
@@ -8838,7 +8838,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的实例数量。
+        r"""查询到的实例数量。
         :rtype: int
         """
         return self._TotalCount
@@ -8849,7 +8849,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def DBInstanceSet(self):
-        """实例详细信息集合。
+        r"""实例详细信息集合。
         :rtype: list of DBInstance
         """
         return self._DBInstanceSet
@@ -8860,7 +8860,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8882,13 +8882,13 @@ class DescribeDBInstancesResponse(AbstractModel):
 
 
 class DescribeDBVersionsRequest(AbstractModel):
-    """DescribeDBVersions请求参数结构体
+    r"""DescribeDBVersions请求参数结构体
 
     """
 
 
 class DescribeDBVersionsResponse(AbstractModel):
-    """DescribeDBVersions返回参数结构体
+    r"""DescribeDBVersions返回参数结构体
 
     """
 
@@ -8904,7 +8904,7 @@ class DescribeDBVersionsResponse(AbstractModel):
 
     @property
     def VersionSet(self):
-        """数据库版本号信息列表
+        r"""数据库版本号信息列表
         :rtype: list of Version
         """
         return self._VersionSet
@@ -8915,7 +8915,7 @@ class DescribeDBVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8936,7 +8936,7 @@ class DescribeDBVersionsResponse(AbstractModel):
 
 
 class DescribeDBXlogsRequest(AbstractModel):
-    """DescribeDBXlogs请求参数结构体
+    r"""DescribeDBXlogs请求参数结构体
 
     """
 
@@ -8961,7 +8961,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-4wdeb0zv。
+        r"""实例ID，形如postgres-4wdeb0zv。
         :rtype: str
         """
         return self._DBInstanceId
@@ -8972,7 +8972,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
+        r"""查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
         :rtype: str
         """
         return self._StartTime
@@ -8983,7 +8983,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，形如2018-06-10 17:06:38
+        r"""查询结束时间，形如2018-06-10 17:06:38
         :rtype: str
         """
         return self._EndTime
@@ -8994,7 +8994,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页返回，表示返回第几页的条目。从第0页开始计数。
+        r"""分页返回，表示返回第几页的条目。从第0页开始计数。
         :rtype: int
         """
         return self._Offset
@@ -9005,7 +9005,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页返回，表示每页有多少条目。取值为1-100。
+        r"""分页返回，表示每页有多少条目。取值为1-100。
         :rtype: int
         """
         return self._Limit
@@ -9032,7 +9032,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
 
 class DescribeDBXlogsResponse(AbstractModel):
-    """DescribeDBXlogs返回参数结构体
+    r"""DescribeDBXlogs返回参数结构体
 
     """
 
@@ -9051,7 +9051,7 @@ class DescribeDBXlogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """表示此次返回结果有多少条数据。
+        r"""表示此次返回结果有多少条数据。
         :rtype: int
         """
         return self._TotalCount
@@ -9062,7 +9062,7 @@ class DescribeDBXlogsResponse(AbstractModel):
 
     @property
     def XlogList(self):
-        """Xlog列表
+        r"""Xlog列表
         :rtype: list of Xlog
         """
         return self._XlogList
@@ -9073,7 +9073,7 @@ class DescribeDBXlogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9095,7 +9095,7 @@ class DescribeDBXlogsResponse(AbstractModel):
 
 
 class DescribeDatabaseObjectsRequest(AbstractModel):
-    """DescribeDatabaseObjects请求参数结构体
+    r"""DescribeDatabaseObjects请求参数结构体
 
     """
 
@@ -9126,7 +9126,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -9137,7 +9137,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def ObjectType(self):
-        """查询的对象类型。支持查询的数据对象有：database,schema,sequence,procedure,type,function,table,view,matview,column。
+        r"""查询的对象类型。支持查询的数据对象有：database,schema,sequence,procedure,type,function,table,view,matview,column。
         :rtype: str
         """
         return self._ObjectType
@@ -9148,7 +9148,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次显示数量，默认20。可选范围为[0,100]。
+        r"""单次显示数量，默认20。可选范围为[0,100]。
         :rtype: int
         """
         return self._Limit
@@ -9159,7 +9159,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。	
+        r"""数据偏移量，从0开始。	
         :rtype: int
         """
         return self._Offset
@@ -9170,7 +9170,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """查询对象所属的数据库。当查询对象类型不为database时，此参数必填。
+        r"""查询对象所属的数据库。当查询对象类型不为database时，此参数必填。
         :rtype: str
         """
         return self._DatabaseName
@@ -9181,7 +9181,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """查询对象所属的模式。当查询对象类型不为database、schema时，此参数必填。
+        r"""查询对象所属的模式。当查询对象类型不为database、schema时，此参数必填。
         :rtype: str
         """
         return self._SchemaName
@@ -9192,7 +9192,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """查询对象所属的表。当查询对象类型为column时，此参数必填。
+        r"""查询对象所属的表。当查询对象类型为column时，此参数必填。
         :rtype: str
         """
         return self._TableName
@@ -9221,7 +9221,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
 
 class DescribeDatabaseObjectsResponse(AbstractModel):
-    """DescribeDatabaseObjects返回参数结构体
+    r"""DescribeDatabaseObjects返回参数结构体
 
     """
 
@@ -9241,7 +9241,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def ObjectSet(self):
-        """查询对象列表。
+        r"""查询对象列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9253,7 +9253,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询对象总数量
+        r"""查询对象总数量
         :rtype: int
         """
         return self._TotalCount
@@ -9264,7 +9264,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9281,7 +9281,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
 
 class DescribeDatabasesRequest(AbstractModel):
-    """DescribeDatabases请求参数结构体
+    r"""DescribeDatabases请求参数结构体
 
     """
 
@@ -9304,7 +9304,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -9315,7 +9315,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：database-name：按照数据库名称过滤，类型为string。此处使用模糊匹配搜索符合条件的数据库。
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：database-name：按照数据库名称过滤，类型为string。此处使用模糊匹配搜索符合条件的数据库。
         :rtype: list of Filter
         """
         return self._Filters
@@ -9326,7 +9326,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。	
+        r"""数据偏移量，从0开始。	
         :rtype: int
         """
         return self._Offset
@@ -9337,7 +9337,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次显示数量。建议最大取值100。
+        r"""单次显示数量。建议最大取值100。
 默认值：20
         :rtype: int
         """
@@ -9369,7 +9369,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
 
 class DescribeDatabasesResponse(AbstractModel):
-    """DescribeDatabases返回参数结构体
+    r"""DescribeDatabases返回参数结构体
 
     """
 
@@ -9391,7 +9391,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """数据库信息
+        r"""数据库信息
         :rtype: list of str
         """
         return self._Items
@@ -9402,7 +9402,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数据库总数
+        r"""数据库总数
         :rtype: int
         """
         return self._TotalCount
@@ -9413,7 +9413,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Databases(self):
-        """数据库详情列表
+        r"""数据库详情列表
         :rtype: list of Database
         """
         return self._Databases
@@ -9424,7 +9424,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9447,7 +9447,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
 
 class DescribeDedicatedClustersRequest(AbstractModel):
-    """DescribeDedicatedClusters请求参数结构体
+    r"""DescribeDedicatedClusters请求参数结构体
 
     """
 
@@ -9461,7 +9461,7 @@ dedicated-cluster-id: 按照专属集群ID筛选，类型为string
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 dedicated-cluster-id: 按照专属集群ID筛选，类型为string
         :rtype: list of Filter
         """
@@ -9490,7 +9490,7 @@ dedicated-cluster-id: 按照专属集群ID筛选，类型为string
 
 
 class DescribeDedicatedClustersResponse(AbstractModel):
-    """DescribeDedicatedClusters返回参数结构体
+    r"""DescribeDedicatedClusters返回参数结构体
 
     """
 
@@ -9506,7 +9506,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def DedicatedClusterSet(self):
-        """专属集群信息
+        r"""专属集群信息
         :rtype: list of DedicatedCluster
         """
         return self._DedicatedClusterSet
@@ -9517,7 +9517,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9538,7 +9538,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
 
 class DescribeDefaultParametersRequest(AbstractModel):
-    """DescribeDefaultParameters请求参数结构体
+    r"""DescribeDefaultParameters请求参数结构体
 
     """
 
@@ -9554,7 +9554,7 @@ class DescribeDefaultParametersRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """数据库版本，大版本号，例如11，12，13。可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
+        r"""数据库版本，大版本号，例如11，12，13。可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
         :rtype: str
         """
         return self._DBMajorVersion
@@ -9565,7 +9565,7 @@ class DescribeDefaultParametersRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        """数据库引擎，例如：postgresql,mssql_compatible
+        r"""数据库引擎，例如：postgresql,mssql_compatible
         :rtype: str
         """
         return self._DBEngine
@@ -9589,7 +9589,7 @@ class DescribeDefaultParametersRequest(AbstractModel):
 
 
 class DescribeDefaultParametersResponse(AbstractModel):
-    """DescribeDefaultParameters返回参数结构体
+    r"""DescribeDefaultParameters返回参数结构体
 
     """
 
@@ -9609,7 +9609,7 @@ class DescribeDefaultParametersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """参数个数
+        r"""参数个数
         :rtype: int
         """
         return self._TotalCount
@@ -9620,7 +9620,7 @@ class DescribeDefaultParametersResponse(AbstractModel):
 
     @property
     def ParamInfoSet(self):
-        """参数信息
+        r"""参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
@@ -9632,7 +9632,7 @@ class DescribeDefaultParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9654,7 +9654,7 @@ class DescribeDefaultParametersResponse(AbstractModel):
 
 
 class DescribeEncryptionKeysRequest(AbstractModel):
-    """DescribeEncryptionKeys请求参数结构体
+    r"""DescribeEncryptionKeys请求参数结构体
 
     """
 
@@ -9667,7 +9667,7 @@ class DescribeEncryptionKeysRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -9690,7 +9690,7 @@ class DescribeEncryptionKeysRequest(AbstractModel):
 
 
 class DescribeEncryptionKeysResponse(AbstractModel):
-    """DescribeEncryptionKeys返回参数结构体
+    r"""DescribeEncryptionKeys返回参数结构体
 
     """
 
@@ -9706,7 +9706,7 @@ class DescribeEncryptionKeysResponse(AbstractModel):
 
     @property
     def EncryptionKeys(self):
-        """实例密钥信息列表。
+        r"""实例密钥信息列表。
         :rtype: list of EncryptionKey
         """
         return self._EncryptionKeys
@@ -9717,7 +9717,7 @@ class DescribeEncryptionKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9738,7 +9738,7 @@ class DescribeEncryptionKeysResponse(AbstractModel):
 
 
 class DescribeLogBackupsRequest(AbstractModel):
-    """DescribeLogBackups请求参数结构体
+    r"""DescribeLogBackups请求参数结构体
 
     """
 
@@ -9773,7 +9773,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def MinFinishTime(self):
-        """备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
+        r"""备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
         :rtype: str
         """
         return self._MinFinishTime
@@ -9784,7 +9784,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def MaxFinishTime(self):
-        """备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
+        r"""备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
         :rtype: str
         """
         return self._MaxFinishTime
@@ -9795,7 +9795,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
@@ -9810,7 +9810,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100，默认为返回10条。
+        r"""每页显示数量，取值范围为1-100，默认为返回10条。
         :rtype: int
         """
         return self._Limit
@@ -9821,7 +9821,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -9832,7 +9832,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def OrderBy(self):
-        """排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
+        r"""排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
         :rtype: str
         """
         return self._OrderBy
@@ -9843,7 +9843,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc。默认值：desc。
+        r"""排序方式，包括升序：asc，降序：desc。默认值：desc。
         :rtype: str
         """
         return self._OrderByType
@@ -9877,7 +9877,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考[DBIn
 
 
 class DescribeLogBackupsResponse(AbstractModel):
-    """DescribeLogBackups返回参数结构体
+    r"""DescribeLogBackups返回参数结构体
 
     """
 
@@ -9896,7 +9896,7 @@ class DescribeLogBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的日志备份数量。
+        r"""查询到的日志备份数量。
         :rtype: int
         """
         return self._TotalCount
@@ -9907,7 +9907,7 @@ class DescribeLogBackupsResponse(AbstractModel):
 
     @property
     def LogBackupSet(self):
-        """日志备份详细信息列表。
+        r"""日志备份详细信息列表。
         :rtype: list of LogBackup
         """
         return self._LogBackupSet
@@ -9918,7 +9918,7 @@ class DescribeLogBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9940,7 +9940,7 @@ class DescribeLogBackupsResponse(AbstractModel):
 
 
 class DescribeMaintainTimeWindowRequest(AbstractModel):
-    """DescribeMaintainTimeWindow请求参数结构体
+    r"""DescribeMaintainTimeWindow请求参数结构体
 
     """
 
@@ -9953,7 +9953,7 @@ class DescribeMaintainTimeWindowRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -9976,7 +9976,7 @@ class DescribeMaintainTimeWindowRequest(AbstractModel):
 
 
 class DescribeMaintainTimeWindowResponse(AbstractModel):
-    """DescribeMaintainTimeWindow返回参数结构体
+    r"""DescribeMaintainTimeWindow返回参数结构体
 
     """
 
@@ -10001,7 +10001,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._DBInstanceId
@@ -10012,7 +10012,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def MaintainStartTime(self):
-        """维护开始时间。时区为东八区（UTC+8）
+        r"""维护开始时间。时区为东八区（UTC+8）
         :rtype: str
         """
         return self._MaintainStartTime
@@ -10023,7 +10023,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def MaintainDuration(self):
-        """维护持续时间。单位：小时
+        r"""维护持续时间。单位：小时
         :rtype: int
         """
         return self._MaintainDuration
@@ -10034,7 +10034,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def MaintainWeekDays(self):
-        """维护周期
+        r"""维护周期
         :rtype: list of str
         """
         return self._MaintainWeekDays
@@ -10045,7 +10045,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10064,7 +10064,7 @@ class DescribeMaintainTimeWindowResponse(AbstractModel):
 
 
 class DescribeOrdersRequest(AbstractModel):
-    """DescribeOrders请求参数结构体
+    r"""DescribeOrders请求参数结构体
 
     """
 
@@ -10077,7 +10077,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def DealNames(self):
-        """订单名集合
+        r"""订单名集合
         :rtype: list of str
         """
         return self._DealNames
@@ -10100,7 +10100,7 @@ class DescribeOrdersRequest(AbstractModel):
 
 
 class DescribeOrdersResponse(AbstractModel):
-    """DescribeOrders返回参数结构体
+    r"""DescribeOrders返回参数结构体
 
     """
 
@@ -10119,7 +10119,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """订单数量
+        r"""订单数量
         :rtype: int
         """
         return self._TotalCount
@@ -10130,7 +10130,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def Deals(self):
-        """订单数组
+        r"""订单数组
         :rtype: list of PgDeal
         """
         return self._Deals
@@ -10141,7 +10141,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10163,7 +10163,7 @@ class DescribeOrdersResponse(AbstractModel):
 
 
 class DescribeParameterTemplateAttributesRequest(AbstractModel):
-    """DescribeParameterTemplateAttributes请求参数结构体
+    r"""DescribeParameterTemplateAttributes请求参数结构体
 
     """
 
@@ -10176,7 +10176,7 @@ class DescribeParameterTemplateAttributesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
+        r"""参数模板ID。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -10199,7 +10199,7 @@ class DescribeParameterTemplateAttributesRequest(AbstractModel):
 
 
 class DescribeParameterTemplateAttributesResponse(AbstractModel):
-    """DescribeParameterTemplateAttributes返回参数结构体
+    r"""DescribeParameterTemplateAttributes返回参数结构体
 
     """
 
@@ -10234,7 +10234,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID
+        r"""参数模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -10245,7 +10245,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """参数模板包含的参数个数
+        r"""参数模板包含的参数个数
         :rtype: int
         """
         return self._TotalCount
@@ -10256,7 +10256,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def ParamInfoSet(self):
-        """参数模板包含的参数信息
+        r"""参数模板包含的参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
@@ -10268,7 +10268,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """参数模板名称
+        r"""参数模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -10279,7 +10279,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """参数模板适用的数据库版本
+        r"""参数模板适用的数据库版本
         :rtype: str
         """
         return self._DBMajorVersion
@@ -10290,7 +10290,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def DBEngine(self):
-        """参数模板适用的数据库引擎
+        r"""参数模板适用的数据库引擎
         :rtype: str
         """
         return self._DBEngine
@@ -10301,7 +10301,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """参数模板描述
+        r"""参数模板描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -10312,7 +10312,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10339,7 +10339,7 @@ class DescribeParameterTemplateAttributesResponse(AbstractModel):
 
 
 class DescribeParameterTemplatesRequest(AbstractModel):
-    """DescribeParameterTemplates请求参数结构体
+    r"""DescribeParameterTemplates请求参数结构体
 
     """
 
@@ -10364,7 +10364,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
+        r"""过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10375,7 +10375,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页显示数量，[0，100]，默认 20
+        r"""每页显示数量，[0，100]，默认 20
         :rtype: int
         """
         return self._Limit
@@ -10386,7 +10386,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量
+        r"""数据偏移量
         :rtype: int
         """
         return self._Offset
@@ -10397,7 +10397,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
+        r"""排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
         :rtype: str
         """
         return self._OrderBy
@@ -10408,7 +10408,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
+        r"""排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
         :rtype: str
         """
         return self._OrderByType
@@ -10440,7 +10440,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
 
 class DescribeParameterTemplatesResponse(AbstractModel):
-    """DescribeParameterTemplates返回参数结构体
+    r"""DescribeParameterTemplates返回参数结构体
 
     """
 
@@ -10459,7 +10459,7 @@ class DescribeParameterTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合查询条件的参数模板总数
+        r"""符合查询条件的参数模板总数
         :rtype: int
         """
         return self._TotalCount
@@ -10470,7 +10470,7 @@ class DescribeParameterTemplatesResponse(AbstractModel):
 
     @property
     def ParameterTemplateSet(self):
-        """参数模板列表
+        r"""参数模板列表
         :rtype: list of ParameterTemplate
         """
         return self._ParameterTemplateSet
@@ -10481,7 +10481,7 @@ class DescribeParameterTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10503,7 +10503,7 @@ class DescribeParameterTemplatesResponse(AbstractModel):
 
 
 class DescribeParamsEventRequest(AbstractModel):
-    """DescribeParamsEvent请求参数结构体
+    r"""DescribeParamsEvent请求参数结构体
 
     """
 
@@ -10516,7 +10516,7 @@ class DescribeParamsEventRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -10539,7 +10539,7 @@ class DescribeParamsEventRequest(AbstractModel):
 
 
 class DescribeParamsEventResponse(AbstractModel):
-    """DescribeParamsEvent返回参数结构体
+    r"""DescribeParamsEvent返回参数结构体
 
     """
 
@@ -10558,7 +10558,7 @@ class DescribeParamsEventResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """参数修改事件总数，以参数为统计粒度
+        r"""参数修改事件总数，以参数为统计粒度
         :rtype: int
         """
         return self._TotalCount
@@ -10569,7 +10569,7 @@ class DescribeParamsEventResponse(AbstractModel):
 
     @property
     def EventItems(self):
-        """实例参数修改事件详情
+        r"""实例参数修改事件详情
         :rtype: list of EventItem
         """
         return self._EventItems
@@ -10580,7 +10580,7 @@ class DescribeParamsEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10602,7 +10602,7 @@ class DescribeParamsEventResponse(AbstractModel):
 
 
 class DescribeProductConfigRequest(AbstractModel):
-    """DescribeProductConfig请求参数结构体
+    r"""DescribeProductConfig请求参数结构体
 
     """
 
@@ -10621,7 +10621,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区名称
+        r"""可用区名称
         :rtype: str
         """
         return self._Zone
@@ -10632,7 +10632,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        """数据库引擎，支持：
+        r"""数据库引擎，支持：
 1、postgresql（云数据库PostgreSQL）；
 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
 如不指定默认使用postgresql。
@@ -10659,7 +10659,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
 
 class DescribeProductConfigResponse(AbstractModel):
-    """DescribeProductConfig返回参数结构体
+    r"""DescribeProductConfig返回参数结构体
 
     """
 
@@ -10675,7 +10675,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        """售卖规格列表。
+        r"""售卖规格列表。
         :rtype: list of SpecInfo
         """
         return self._SpecInfoList
@@ -10686,7 +10686,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10707,7 +10707,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
 
 class DescribeReadOnlyGroupsRequest(AbstractModel):
-    """DescribeReadOnlyGroups请求参数结构体
+    r"""DescribeReadOnlyGroups请求参数结构体
 
     """
 
@@ -10734,7 +10734,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def Filters(self):
-        """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+        r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-master-instance-id：按照主实例过滤，类型为string。
 read-only-group-id：按照只读组ID过滤，类型为string。
         :rtype: list of Filter
@@ -10747,7 +10747,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def PageSize(self):
-        """查询每一页的条数，默认为10
+        r"""查询每一页的条数，默认为10
         :rtype: int
         """
         return self._PageSize
@@ -10758,7 +10758,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def PageNumber(self):
-        """查询的页码，默认为1
+        r"""查询的页码，默认为1
         :rtype: int
         """
         return self._PageNumber
@@ -10769,7 +10769,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def OrderBy(self):
-        """查询排序依据，目前支持:ROGroupId,CreateTime,Name
+        r"""查询排序依据，目前支持:ROGroupId,CreateTime,Name
         :rtype: str
         """
         return self._OrderBy
@@ -10780,7 +10780,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def OrderByType(self):
-        """查询排序依据类型，目前支持:desc,asc
+        r"""查询排序依据类型，目前支持:desc,asc
         :rtype: str
         """
         return self._OrderByType
@@ -10812,7 +10812,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
 
 class DescribeReadOnlyGroupsResponse(AbstractModel):
-    """DescribeReadOnlyGroups返回参数结构体
+    r"""DescribeReadOnlyGroups返回参数结构体
 
     """
 
@@ -10828,7 +10828,7 @@ class DescribeReadOnlyGroupsResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupList(self):
-        """只读组列表
+        r"""只读组列表
         :rtype: list of ReadOnlyGroup
         """
         return self._ReadOnlyGroupList
@@ -10839,7 +10839,7 @@ class DescribeReadOnlyGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10860,13 +10860,13 @@ class DescribeReadOnlyGroupsResponse(AbstractModel):
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions请求参数结构体
+    r"""DescribeRegions请求参数结构体
 
     """
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions返回参数结构体
+    r"""DescribeRegions返回参数结构体
 
     """
 
@@ -10885,7 +10885,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的结果数量。
+        r"""返回的结果数量。
         :rtype: int
         """
         return self._TotalCount
@@ -10896,7 +10896,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """地域信息集合。
+        r"""地域信息集合。
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -10907,7 +10907,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10929,7 +10929,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeSlowQueryAnalysisRequest(AbstractModel):
-    """DescribeSlowQueryAnalysis请求参数结构体
+    r"""DescribeSlowQueryAnalysis请求参数结构体
 
     """
 
@@ -10963,7 +10963,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -10974,7 +10974,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
+        r"""查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
         :rtype: str
         """
         return self._StartTime
@@ -10985,7 +10985,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，形如2018-01-01 00:00:00。
+        r"""查询结束时间，形如2018-01-01 00:00:00。
         :rtype: str
         """
         return self._EndTime
@@ -10996,7 +10996,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名字。	
+        r"""数据库名字。	
         :rtype: str
         """
         return self._DatabaseName
@@ -11007,7 +11007,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，取值范围[CallNum,CostTime,AvgCostTime]。默认值为CallNum。
+        r"""排序字段，取值范围[CallNum,CostTime,AvgCostTime]。默认值为CallNum。
         :rtype: str
         """
         return self._OrderBy
@@ -11018,7 +11018,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc 降序：desc。默认值为desc。
+        r"""排序方式，包括升序：asc 降序：desc。默认值为desc。
         :rtype: str
         """
         return self._OrderByType
@@ -11029,7 +11029,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100。默认值为50。	
+        r"""每页显示数量，取值范围为1-100。默认值为50。	
         :rtype: int
         """
         return self._Limit
@@ -11040,7 +11040,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。默认值为0。
+        r"""数据偏移量，从0开始。默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -11070,7 +11070,7 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
 
 
 class DescribeSlowQueryAnalysisResponse(AbstractModel):
-    """DescribeSlowQueryAnalysis返回参数结构体
+    r"""DescribeSlowQueryAnalysis返回参数结构体
 
     """
 
@@ -11089,7 +11089,7 @@ class DescribeSlowQueryAnalysisResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的总条数，最大值为10000条。
+        r"""查询到的总条数，最大值为10000条。
         :rtype: int
         """
         return self._TotalCount
@@ -11100,7 +11100,7 @@ class DescribeSlowQueryAnalysisResponse(AbstractModel):
 
     @property
     def Detail(self):
-        """查询到的慢SQL统计分析详细信息集合。
+        r"""查询到的慢SQL统计分析详细信息集合。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.Detail`
         """
         return self._Detail
@@ -11111,7 +11111,7 @@ class DescribeSlowQueryAnalysisResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11130,7 +11130,7 @@ class DescribeSlowQueryAnalysisResponse(AbstractModel):
 
 
 class DescribeSlowQueryListRequest(AbstractModel):
-    """DescribeSlowQueryList请求参数结构体
+    r"""DescribeSlowQueryList请求参数结构体
 
     """
 
@@ -11164,7 +11164,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -11175,7 +11175,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
+        r"""查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
         :rtype: str
         """
         return self._StartTime
@@ -11186,7 +11186,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，形如2018-01-01 00:00:00。	
+        r"""查询结束时间，形如2018-01-01 00:00:00。	
         :rtype: str
         """
         return self._EndTime
@@ -11197,7 +11197,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名字。	
+        r"""数据库名字。	
         :rtype: str
         """
         return self._DatabaseName
@@ -11208,7 +11208,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc 降序：desc。默认值为desc。	
+        r"""排序方式，包括升序：asc 降序：desc。默认值为desc。	
         :rtype: str
         """
         return self._OrderByType
@@ -11219,7 +11219,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，取值范围[SessionStartTime,Duration]。默认值为SessionStartTime。
+        r"""排序字段，取值范围[SessionStartTime,Duration]。默认值为SessionStartTime。
         :rtype: str
         """
         return self._OrderBy
@@ -11230,7 +11230,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100。默认值为50。	
+        r"""每页显示数量，取值范围为1-100。默认值为50。	
         :rtype: int
         """
         return self._Limit
@@ -11241,7 +11241,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。默认值为0。	
+        r"""数据偏移量，从0开始。默认值为0。	
         :rtype: int
         """
         return self._Offset
@@ -11271,7 +11271,7 @@ class DescribeSlowQueryListRequest(AbstractModel):
 
 
 class DescribeSlowQueryListResponse(AbstractModel):
-    """DescribeSlowQueryList返回参数结构体
+    r"""DescribeSlowQueryList返回参数结构体
 
     """
 
@@ -11293,7 +11293,7 @@ class DescribeSlowQueryListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的慢日志数量，最大值为10000条。	
+        r"""查询到的慢日志数量，最大值为10000条。	
         :rtype: int
         """
         return self._TotalCount
@@ -11304,7 +11304,7 @@ class DescribeSlowQueryListResponse(AbstractModel):
 
     @property
     def DurationAnalysis(self):
-        """查询到的慢日志耗时分段分析结果。
+        r"""查询到的慢日志耗时分段分析结果。
         :rtype: list of DurationAnalysis
         """
         return self._DurationAnalysis
@@ -11315,7 +11315,7 @@ class DescribeSlowQueryListResponse(AbstractModel):
 
     @property
     def RawSlowQueryList(self):
-        """查询到的慢日志详细信息集合。
+        r"""查询到的慢日志详细信息集合。
         :rtype: list of RawSlowQuery
         """
         return self._RawSlowQueryList
@@ -11326,7 +11326,7 @@ class DescribeSlowQueryListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11354,7 +11354,7 @@ class DescribeSlowQueryListResponse(AbstractModel):
 
 
 class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks请求参数结构体
+    r"""DescribeTasks请求参数结构体
 
     """
 
@@ -11388,7 +11388,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+        r"""按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
         :rtype: int
         """
         return self._TaskId
@@ -11399,7 +11399,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """按照数据库实例ID进行查询。
+        r"""按照数据库实例ID进行查询。
         :rtype: str
         """
         return self._DBInstanceId
@@ -11410,7 +11410,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def MinStartTime(self):
-        """任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+        r"""任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
         :rtype: str
         """
         return self._MinStartTime
@@ -11421,7 +11421,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def MaxStartTime(self):
-        """任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+        r"""任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
         :rtype: str
         """
         return self._MaxStartTime
@@ -11432,7 +11432,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页显示数量，取值范围为1-100，默认为返回20条。
+        r"""每页显示数量，取值范围为1-100，默认为返回20条。
         :rtype: int
         """
         return self._Limit
@@ -11443,7 +11443,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始。
+        r"""数据偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -11454,7 +11454,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，支持StartTime,EndTime，默认为StartTime。
+        r"""排序字段，支持StartTime,EndTime，默认为StartTime。
         :rtype: str
         """
         return self._OrderBy
@@ -11465,7 +11465,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc，默认为desc。
+        r"""排序方式，包括升序：asc，降序：desc，默认为desc。
         :rtype: str
         """
         return self._OrderByType
@@ -11495,7 +11495,7 @@ class DescribeTasksRequest(AbstractModel):
 
 
 class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks返回参数结构体
+    r"""DescribeTasks返回参数结构体
 
     """
 
@@ -11514,7 +11514,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的任务数量
+        r"""查询到的任务数量
         :rtype: int
         """
         return self._TotalCount
@@ -11525,7 +11525,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务信息列表
+        r"""任务信息列表
         :rtype: list of TaskSet
         """
         return self._TaskSet
@@ -11536,7 +11536,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11558,13 +11558,13 @@ class DescribeTasksResponse(AbstractModel):
 
 
 class DescribeZonesRequest(AbstractModel):
-    """DescribeZones请求参数结构体
+    r"""DescribeZones请求参数结构体
 
     """
 
 
 class DescribeZonesResponse(AbstractModel):
-    """DescribeZones返回参数结构体
+    r"""DescribeZones返回参数结构体
 
     """
 
@@ -11583,7 +11583,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """返回的结果数量。
+        r"""返回的结果数量。
         :rtype: int
         """
         return self._TotalCount
@@ -11594,7 +11594,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """可用区信息集合。
+        r"""可用区信息集合。
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet
@@ -11605,7 +11605,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11627,7 +11627,7 @@ class DescribeZonesResponse(AbstractModel):
 
 
 class DestroyDBInstanceRequest(AbstractModel):
-    """DestroyDBInstance请求参数结构体
+    r"""DestroyDBInstance请求参数结构体
 
     """
 
@@ -11640,7 +11640,7 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """待下线实例ID
+        r"""待下线实例ID
         :rtype: str
         """
         return self._DBInstanceId
@@ -11663,7 +11663,7 @@ class DestroyDBInstanceRequest(AbstractModel):
 
 
 class DestroyDBInstanceResponse(AbstractModel):
-    """DestroyDBInstance返回参数结构体
+    r"""DestroyDBInstance返回参数结构体
 
     """
 
@@ -11676,7 +11676,7 @@ class DestroyDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11691,7 +11691,7 @@ class DestroyDBInstanceResponse(AbstractModel):
 
 
 class Detail(AbstractModel):
-    """慢SQL 统计分析接口返回详情
+    r"""慢SQL 统计分析接口返回详情
 
     """
 
@@ -11710,7 +11710,7 @@ class Detail(AbstractModel):
 
     @property
     def TotalTime(self):
-        """输入时间范围内所有慢sql执行的总时间，单位毫秒（ms）
+        r"""输入时间范围内所有慢sql执行的总时间，单位毫秒（ms）
         :rtype: float
         """
         return self._TotalTime
@@ -11721,7 +11721,7 @@ class Detail(AbstractModel):
 
     @property
     def TotalCallNum(self):
-        """输入时间范围内所有慢sql总条数
+        r"""输入时间范围内所有慢sql总条数
         :rtype: int
         """
         return self._TotalCallNum
@@ -11732,7 +11732,7 @@ class Detail(AbstractModel):
 
     @property
     def AnalysisItems(self):
-        """慢SQL统计分析列表
+        r"""慢SQL统计分析列表
         :rtype: list of AnalysisItems
         """
         return self._AnalysisItems
@@ -11762,7 +11762,7 @@ class Detail(AbstractModel):
 
 
 class DisIsolateDBInstancesRequest(AbstractModel):
-    """DisIsolateDBInstances请求参数结构体
+    r"""DisIsolateDBInstances请求参数结构体
 
     """
 
@@ -11789,7 +11789,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
+        r"""实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -11800,7 +11800,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
 <li>后付费：该参数不生效</li>
         :rtype: int
@@ -11813,7 +11813,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否使用代金券：
+        r"""是否使用代金券：
 <li>true：使用</li>
 <li>false：不使用</li>
 默认值：false
@@ -11827,7 +11827,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券id列表。
+        r"""代金券id列表。
         :rtype: list of str
         """
         return self._VoucherIds
@@ -11853,7 +11853,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
 
 class DisIsolateDBInstancesResponse(AbstractModel):
-    """DisIsolateDBInstances返回参数结构体
+    r"""DisIsolateDBInstances返回参数结构体
 
     """
 
@@ -11866,7 +11866,7 @@ class DisIsolateDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11881,7 +11881,7 @@ class DisIsolateDBInstancesResponse(AbstractModel):
 
 
 class DurationAnalysis(AbstractModel):
-    """慢SQL耗时分段分析
+    r"""慢SQL耗时分段分析
 
     """
 
@@ -11897,7 +11897,7 @@ class DurationAnalysis(AbstractModel):
 
     @property
     def TimeSegment(self):
-        """慢SQL耗时，时段
+        r"""慢SQL耗时，时段
         :rtype: str
         """
         return self._TimeSegment
@@ -11908,7 +11908,7 @@ class DurationAnalysis(AbstractModel):
 
     @property
     def Count(self):
-        """对应时段区间慢SQL 条数
+        r"""对应时段区间慢SQL 条数
         :rtype: int
         """
         return self._Count
@@ -11932,7 +11932,7 @@ class DurationAnalysis(AbstractModel):
 
 
 class EncryptionKey(AbstractModel):
-    """KMS密钥信息
+    r"""KMS密钥信息
 
     """
 
@@ -11963,7 +11963,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def KeyId(self):
-        """KMS实例加密的KeyId。
+        r"""KMS实例加密的KeyId。
         :rtype: str
         """
         return self._KeyId
@@ -11974,7 +11974,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def KeyAlias(self):
-        """KMS实例加密Key的别名。
+        r"""KMS实例加密Key的别名。
         :rtype: str
         """
         return self._KeyAlias
@@ -11985,7 +11985,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def DEKCipherTextBlob(self):
-        """实例加密密钥DEK的密文。
+        r"""实例加密密钥DEK的密文。
         :rtype: str
         """
         return self._DEKCipherTextBlob
@@ -11996,7 +11996,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def IsEnabled(self):
-        """密钥是否启用，1-启用， 0-未启用。
+        r"""密钥是否启用，1-启用， 0-未启用。
         :rtype: int
         """
         return self._IsEnabled
@@ -12007,7 +12007,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def KeyRegion(self):
-        """KMS密钥所在地域。
+        r"""KMS密钥所在地域。
         :rtype: str
         """
         return self._KeyRegion
@@ -12018,7 +12018,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def CreateTime(self):
-        """DEK密钥创建时间。
+        r"""DEK密钥创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -12029,7 +12029,7 @@ class EncryptionKey(AbstractModel):
 
     @property
     def KMSClusterId(self):
-        """密钥所在的KMS服务集群Id，为空表示密钥在默认的KMS集群中，不为空表示在指定的KMS服务集群中
+        r"""密钥所在的KMS服务集群Id，为空表示密钥在默认的KMS集群中，不为空表示在指定的KMS服务集群中
         :rtype: str
         """
         return self._KMSClusterId
@@ -12058,7 +12058,7 @@ class EncryptionKey(AbstractModel):
 
 
 class ErrLogDetail(AbstractModel):
-    """错误日志详情
+    r"""错误日志详情
 
     """
 
@@ -12080,7 +12080,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._UserName
@@ -12091,7 +12091,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名字
+        r"""数据库名字
         :rtype: str
         """
         return self._Database
@@ -12102,7 +12102,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def ErrTime(self):
-        """错误发生时间
+        r"""错误发生时间
         :rtype: str
         """
         return self._ErrTime
@@ -12113,7 +12113,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """错误消息
+        r"""错误消息
         :rtype: str
         """
         return self._ErrMsg
@@ -12139,7 +12139,7 @@ class ErrLogDetail(AbstractModel):
 
 
 class EventInfo(AbstractModel):
-    """参数修改事件信息
+    r"""参数修改事件信息
 
     """
 
@@ -12173,7 +12173,7 @@ class EventInfo(AbstractModel):
 
     @property
     def ParamName(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._ParamName
@@ -12184,7 +12184,7 @@ class EventInfo(AbstractModel):
 
     @property
     def OldValue(self):
-        """原参数值
+        r"""原参数值
         :rtype: str
         """
         return self._OldValue
@@ -12195,7 +12195,7 @@ class EventInfo(AbstractModel):
 
     @property
     def NewValue(self):
-        """本次修改期望参数值
+        r"""本次修改期望参数值
         :rtype: str
         """
         return self._NewValue
@@ -12206,7 +12206,7 @@ class EventInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """后台参数修改开始时间
+        r"""后台参数修改开始时间
         :rtype: str
         """
         return self._ModifyTime
@@ -12217,7 +12217,7 @@ class EventInfo(AbstractModel):
 
     @property
     def EffectiveTime(self):
-        """后台参数生效开始时间
+        r"""后台参数生效开始时间
         :rtype: str
         """
         return self._EffectiveTime
@@ -12228,7 +12228,7 @@ class EventInfo(AbstractModel):
 
     @property
     def State(self):
-        """修改状态。枚举值：in progress、success、paused
+        r"""修改状态。枚举值：in progress、success、paused
         :rtype: str
         """
         return self._State
@@ -12239,7 +12239,7 @@ class EventInfo(AbstractModel):
 
     @property
     def Operator(self):
-        """操作者（一般为用户sub UIN）
+        r"""操作者（一般为用户sub UIN）
         :rtype: str
         """
         return self._Operator
@@ -12250,7 +12250,7 @@ class EventInfo(AbstractModel):
 
     @property
     def EventLog(self):
-        """时间日志。
+        r"""时间日志。
         :rtype: str
         """
         return self._EventLog
@@ -12280,7 +12280,7 @@ class EventInfo(AbstractModel):
 
 
 class EventItem(AbstractModel):
-    """修改参数条目，以参数为维度
+    r"""修改参数条目，以参数为维度
 
     """
 
@@ -12299,7 +12299,7 @@ class EventItem(AbstractModel):
 
     @property
     def ParamName(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._ParamName
@@ -12310,7 +12310,7 @@ class EventItem(AbstractModel):
 
     @property
     def EventCount(self):
-        """修改事件数
+        r"""修改事件数
         :rtype: int
         """
         return self._EventCount
@@ -12321,7 +12321,7 @@ class EventItem(AbstractModel):
 
     @property
     def EventDetail(self):
-        """修改时间详情
+        r"""修改时间详情
         :rtype: list of EventInfo
         """
         return self._EventDetail
@@ -12351,7 +12351,7 @@ class EventItem(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
     * 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     * 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 
@@ -12369,7 +12369,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤键的名称。
+        r"""过滤键的名称。
         :rtype: str
         """
         return self._Name
@@ -12380,7 +12380,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """一个或者多个过滤值。
+        r"""一个或者多个过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -12404,7 +12404,7 @@ class Filter(AbstractModel):
 
 
 class InquiryPriceCreateDBInstancesRequest(AbstractModel):
-    """InquiryPriceCreateDBInstances请求参数结构体
+    r"""InquiryPriceCreateDBInstances请求参数结构体
 
     """
 
@@ -12446,7 +12446,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def Zone(self):
-        """可用区名称。该参数可以通过调用[ DescribeZones](https://cloud.tencent.com/document/product/409/16769) 接口的返回值中的Zone字段来获取。
+        r"""可用区名称。该参数可以通过调用[ DescribeZones](https://cloud.tencent.com/document/product/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: str
         """
         return self._Zone
@@ -12457,7 +12457,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def SpecCode(self):
-        """规格ID。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/product/409/89019)接口的返回值中的SpecCode字段来获取。
+        r"""规格ID。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/product/409/89019)接口的返回值中的SpecCode字段来获取。
         :rtype: str
         """
         return self._SpecCode
@@ -12468,7 +12468,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def Storage(self):
-        """存储容量大小，单位：GB。该参数的设置步长为10。
+        r"""存储容量大小，单位：GB。该参数的设置步长为10。
         :rtype: int
         """
         return self._Storage
@@ -12479,7 +12479,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def InstanceCount(self):
-        """实例数量。目前最大数量不超过100，如需一次性创建更多实例，请联系客服支持。
+        r"""实例数量。目前最大数量不超过100，如需一次性创建更多实例，请联系客服支持。
         :rtype: int
         """
         return self._InstanceCount
@@ -12490,7 +12490,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def Period(self):
-        """购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
+        r"""购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
         :rtype: int
         """
         return self._Period
@@ -12501,7 +12501,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def Pid(self):
-        """【弃字段，不再生效】，计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
+        r"""【弃字段，不再生效】，计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
         :rtype: int
         """
         return self._Pid
@@ -12512,7 +12512,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def InstanceChargeType(self):
-        """实例计费类型。目前支持：PREPAID（预付费，即包年包月）和 POSTPAID（按量计费）。
+        r"""实例计费类型。目前支持：PREPAID（预付费，即包年包月）和 POSTPAID（按量计费）。
 默认值：PREPAID
         :rtype: str
         """
@@ -12524,7 +12524,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
     @property
     def InstanceType(self):
-        """实例类型，默认primary，支持如下：
+        r"""实例类型，默认primary，支持如下：
 primary（双机高可用（一主一从））
 readonly（只读实例）
         :rtype: str
@@ -12537,7 +12537,7 @@ readonly（只读实例）
 
     @property
     def DBEngine(self):
-        """DB引擎，默认postgresql，支持如下：
+        r"""DB引擎，默认postgresql，支持如下：
 postgresql（云数据库PostgreSQL）
 mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
         :rtype: str
@@ -12570,7 +12570,7 @@ mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
 
 
 class InquiryPriceCreateDBInstancesResponse(AbstractModel):
-    """InquiryPriceCreateDBInstances返回参数结构体
+    r"""InquiryPriceCreateDBInstances返回参数结构体
 
     """
 
@@ -12592,7 +12592,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """刊例价，单位：分
+        r"""刊例价，单位：分
         :rtype: int
         """
         return self._OriginalPrice
@@ -12603,7 +12603,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        """折后实际付款金额，单位：分
+        r"""折后实际付款金额，单位：分
         :rtype: int
         """
         return self._Price
@@ -12614,7 +12614,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def Currency(self):
-        """币种。例如，CNY：人民币。
+        r"""币种。例如，CNY：人民币。
         :rtype: str
         """
         return self._Currency
@@ -12625,7 +12625,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12643,7 +12643,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
 
 class InquiryPriceRenewDBInstanceRequest(AbstractModel):
-    """InquiryPriceRenewDBInstance请求参数结构体
+    r"""InquiryPriceRenewDBInstance请求参数结构体
 
     """
 
@@ -12660,7 +12660,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)获取。
+        r"""实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)获取。
 （此接口仅支持预付费实例的查询）
         :rtype: str
         """
@@ -12672,7 +12672,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        """续费周期，按月计算
+        r"""续费周期，按月计算
         :rtype: int
         """
         return self._Period
@@ -12696,7 +12696,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
 
 class InquiryPriceRenewDBInstanceResponse(AbstractModel):
-    """InquiryPriceRenewDBInstance返回参数结构体
+    r"""InquiryPriceRenewDBInstance返回参数结构体
 
     """
 
@@ -12718,7 +12718,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """刊例价，单位为分。如24650表示246.5元
+        r"""刊例价，单位为分。如24650表示246.5元
         :rtype: int
         """
         return self._OriginalPrice
@@ -12729,7 +12729,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        """折后实际付款金额，单位为分。如24650表示246.5元
+        r"""折后实际付款金额，单位为分。如24650表示246.5元
         :rtype: int
         """
         return self._Price
@@ -12740,7 +12740,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     @property
     def Currency(self):
-        """币种。例如，CNY：人民币。
+        r"""币种。例如，CNY：人民币。
         :rtype: str
         """
         return self._Currency
@@ -12751,7 +12751,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12769,7 +12769,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
 
 class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
-    """InquiryPriceUpgradeDBInstance请求参数结构体
+    r"""InquiryPriceUpgradeDBInstance请求参数结构体
 
     """
 
@@ -12795,7 +12795,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """实例的磁盘大小，单位GB
+        r"""实例的磁盘大小，单位GB
         :rtype: int
         """
         return self._Storage
@@ -12806,7 +12806,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """实例的内存大小，单位GB
+        r"""实例的内存大小，单位GB
         :rtype: int
         """
         return self._Memory
@@ -12817,7 +12817,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -12830,7 +12830,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
     def InstanceChargeType(self):
         warnings.warn("parameter `InstanceChargeType` is deprecated", DeprecationWarning) 
 
-        """实例计费类型。
+        r"""实例计费类型。
         :rtype: str
         """
         return self._InstanceChargeType
@@ -12843,7 +12843,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """实例的Cpu大小，单位Core。
+        r"""实例的Cpu大小，单位Core。
 不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
         :rtype: int
         """
@@ -12871,7 +12871,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
 
 class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
-    """InquiryPriceUpgradeDBInstance返回参数结构体
+    r"""InquiryPriceUpgradeDBInstance返回参数结构体
 
     """
 
@@ -12893,7 +12893,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """刊例价费用
+        r"""刊例价费用
         :rtype: int
         """
         return self._OriginalPrice
@@ -12904,7 +12904,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        """折后实际付款金额
+        r"""折后实际付款金额
         :rtype: int
         """
         return self._Price
@@ -12915,7 +12915,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Currency(self):
-        """币种。例如，CNY：人民币。
+        r"""币种。例如，CNY：人民币。
         :rtype: str
         """
         return self._Currency
@@ -12926,7 +12926,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12944,7 +12944,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
 
 class IsolateDBInstancesRequest(AbstractModel):
-    """IsolateDBInstances请求参数结构体
+    r"""IsolateDBInstances请求参数结构体
 
     """
 
@@ -12957,7 +12957,7 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
+        r"""实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -12980,7 +12980,7 @@ class IsolateDBInstancesRequest(AbstractModel):
 
 
 class IsolateDBInstancesResponse(AbstractModel):
-    """IsolateDBInstances返回参数结构体
+    r"""IsolateDBInstances返回参数结构体
 
     """
 
@@ -12993,7 +12993,7 @@ class IsolateDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13008,7 +13008,7 @@ class IsolateDBInstancesResponse(AbstractModel):
 
 
 class LockAccountRequest(AbstractModel):
-    """LockAccount请求参数结构体
+    r"""LockAccount请求参数结构体
 
     """
 
@@ -13024,7 +13024,7 @@ class LockAccountRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	
+        r"""实例ID。	
         :rtype: str
         """
         return self._DBInstanceId
@@ -13035,7 +13035,7 @@ class LockAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """账号名称。
+        r"""账号名称。
         :rtype: str
         """
         return self._UserName
@@ -13059,7 +13059,7 @@ class LockAccountRequest(AbstractModel):
 
 
 class LockAccountResponse(AbstractModel):
-    """LockAccount返回参数结构体
+    r"""LockAccount返回参数结构体
 
     """
 
@@ -13072,7 +13072,7 @@ class LockAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13087,7 +13087,7 @@ class LockAccountResponse(AbstractModel):
 
 
 class LogBackup(AbstractModel):
-    """数据库日志备份信息
+    r"""数据库日志备份信息
 
     """
 
@@ -13127,7 +13127,7 @@ class LogBackup(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        r"""实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -13138,7 +13138,7 @@ class LogBackup(AbstractModel):
 
     @property
     def Id(self):
-        """备份文件唯一标识。
+        r"""备份文件唯一标识。
         :rtype: str
         """
         return self._Id
@@ -13149,7 +13149,7 @@ class LogBackup(AbstractModel):
 
     @property
     def Name(self):
-        """备份文件名称。
+        r"""备份文件名称。
         :rtype: str
         """
         return self._Name
@@ -13160,7 +13160,7 @@ class LogBackup(AbstractModel):
 
     @property
     def BackupMethod(self):
-        """备份方式。枚举值，physical - 物理备份；logical - 逻辑备份。
+        r"""备份方式。枚举值，physical - 物理备份；logical - 逻辑备份。
         :rtype: str
         """
         return self._BackupMethod
@@ -13171,7 +13171,7 @@ class LogBackup(AbstractModel):
 
     @property
     def BackupMode(self):
-        """备份模式。枚举值，manual - 手动备份；automatic - 自动备份 。
+        r"""备份模式。枚举值，manual - 手动备份；automatic - 自动备份 。
         :rtype: str
         """
         return self._BackupMode
@@ -13182,7 +13182,7 @@ class LogBackup(AbstractModel):
 
     @property
     def State(self):
-        """备份任务状态。枚举值：init、running、finished、failed、canceled
+        r"""备份任务状态。枚举值：init、running、finished、failed、canceled
         :rtype: str
         """
         return self._State
@@ -13193,7 +13193,7 @@ class LogBackup(AbstractModel):
 
     @property
     def Size(self):
-        """备份集大小，单位bytes。
+        r"""备份集大小，单位bytes。
         :rtype: int
         """
         return self._Size
@@ -13204,7 +13204,7 @@ class LogBackup(AbstractModel):
 
     @property
     def StartTime(self):
-        """备份的开始时间。
+        r"""备份的开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -13215,7 +13215,7 @@ class LogBackup(AbstractModel):
 
     @property
     def FinishTime(self):
-        """备份的结束时间。
+        r"""备份的结束时间。
         :rtype: str
         """
         return self._FinishTime
@@ -13226,7 +13226,7 @@ class LogBackup(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """备份的过期时间。
+        r"""备份的过期时间。
         :rtype: str
         """
         return self._ExpireTime
@@ -13258,7 +13258,7 @@ class LogBackup(AbstractModel):
 
 
 class ModifyAccountPrivilegesRequest(AbstractModel):
-    """ModifyAccountPrivileges请求参数结构体
+    r"""ModifyAccountPrivileges请求参数结构体
 
     """
 
@@ -13277,7 +13277,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -13288,7 +13288,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """修改此账号对某数据库对象的权限。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""修改此账号对某数据库对象的权限。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._UserName
@@ -13299,7 +13299,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def ModifyPrivilegeSet(self):
-        """修改的权限信息，支持批量修改，一次最高修改50条。
+        r"""修改的权限信息，支持批量修改，一次最高修改50条。
         :rtype: list of ModifyPrivilege
         """
         return self._ModifyPrivilegeSet
@@ -13329,7 +13329,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
 
 class ModifyAccountPrivilegesResponse(AbstractModel):
-    """ModifyAccountPrivileges返回参数结构体
+    r"""ModifyAccountPrivileges返回参数结构体
 
     """
 
@@ -13342,7 +13342,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13357,7 +13357,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
 
 class ModifyAccountRemarkRequest(AbstractModel):
-    """ModifyAccountRemark请求参数结构体
+    r"""ModifyAccountRemark请求参数结构体
 
     """
 
@@ -13376,7 +13376,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-4wdeb0zv
+        r"""实例ID，形如postgres-4wdeb0zv
         :rtype: str
         """
         return self._DBInstanceId
@@ -13387,7 +13387,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """实例用户名
+        r"""实例用户名
         :rtype: str
         """
         return self._UserName
@@ -13398,7 +13398,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """用户UserName对应的新备注
+        r"""用户UserName对应的新备注
         :rtype: str
         """
         return self._Remark
@@ -13423,7 +13423,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 
 class ModifyAccountRemarkResponse(AbstractModel):
-    """ModifyAccountRemark返回参数结构体
+    r"""ModifyAccountRemark返回参数结构体
 
     """
 
@@ -13436,7 +13436,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13451,7 +13451,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
 
 class ModifyBackupDownloadRestrictionRequest(AbstractModel):
-    """ModifyBackupDownloadRestriction请求参数结构体
+    r"""ModifyBackupDownloadRestriction请求参数结构体
 
     """
 
@@ -13478,7 +13478,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def RestrictionType(self):
-        """备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
+        r"""备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
         :rtype: str
         """
         return self._RestrictionType
@@ -13489,7 +13489,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def VpcRestrictionEffect(self):
-        """vpc限制效力，ALLOW 允许；DENY 拒绝。
+        r"""vpc限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._VpcRestrictionEffect
@@ -13500,7 +13500,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def VpcIdSet(self):
-        """允许或拒绝下载备份文件的vpcId列表。
+        r"""允许或拒绝下载备份文件的vpcId列表。
 **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """
@@ -13512,7 +13512,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def IpRestrictionEffect(self):
-        """ip限制效力，ALLOW 允许；DENY 拒绝。
+        r"""ip限制效力，ALLOW 允许；DENY 拒绝。
         :rtype: str
         """
         return self._IpRestrictionEffect
@@ -13523,7 +13523,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def IpSet(self):
-        """允许或拒绝下载备份文件的ip列表。
+        r"""允许或拒绝下载备份文件的ip列表。
 **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """
@@ -13551,7 +13551,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
 
 class ModifyBackupDownloadRestrictionResponse(AbstractModel):
-    """ModifyBackupDownloadRestriction返回参数结构体
+    r"""ModifyBackupDownloadRestriction返回参数结构体
 
     """
 
@@ -13564,7 +13564,7 @@ class ModifyBackupDownloadRestrictionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13579,7 +13579,7 @@ class ModifyBackupDownloadRestrictionResponse(AbstractModel):
 
 
 class ModifyBackupPlanRequest(AbstractModel):
-    """ModifyBackupPlan请求参数结构体
+    r"""ModifyBackupPlan请求参数结构体
 
     """
 
@@ -13613,7 +13613,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -13624,7 +13624,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def MinBackupStartTime(self):
-        """实例最早开始备份时间
+        r"""实例最早开始备份时间
         :rtype: str
         """
         return self._MinBackupStartTime
@@ -13635,7 +13635,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def MaxBackupStartTime(self):
-        """实例最晚开始备份时间
+        r"""实例最晚开始备份时间
         :rtype: str
         """
         return self._MaxBackupStartTime
@@ -13646,7 +13646,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def BaseBackupRetentionPeriod(self):
-        """实例备份保留时长，取值范围为7-1830，单位是天
+        r"""实例备份保留时长，取值范围为7-1830，单位是天
         :rtype: int
         """
         return self._BaseBackupRetentionPeriod
@@ -13657,7 +13657,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def BackupPeriod(self):
-        """实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
+        r"""实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
         :rtype: list of str
         """
         return self._BackupPeriod
@@ -13668,7 +13668,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def LogBackupRetentionPeriod(self):
-        """实例日志备份保留时长，取值范围为7-1830，单位是天
+        r"""实例日志备份保留时长，取值范围为7-1830，单位是天
         :rtype: int
         """
         return self._LogBackupRetentionPeriod
@@ -13679,7 +13679,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+        r"""备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
         :rtype: str
         """
         return self._PlanId
@@ -13690,7 +13690,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        """要修改的备份计划名称。
+        r"""要修改的备份计划名称。
         :rtype: str
         """
         return self._PlanName
@@ -13720,7 +13720,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
 
 class ModifyBackupPlanResponse(AbstractModel):
-    """ModifyBackupPlan返回参数结构体
+    r"""ModifyBackupPlan返回参数结构体
 
     """
 
@@ -13733,7 +13733,7 @@ class ModifyBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13748,7 +13748,7 @@ class ModifyBackupPlanResponse(AbstractModel):
 
 
 class ModifyBaseBackupExpireTimeRequest(AbstractModel):
-    """ModifyBaseBackupExpireTime请求参数结构体
+    r"""ModifyBaseBackupExpireTime请求参数结构体
 
     """
 
@@ -13767,7 +13767,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -13778,7 +13778,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        """数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
+        r"""数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :rtype: str
         """
         return self._BaseBackupId
@@ -13789,7 +13789,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def NewExpireTime(self):
-        """新过期时间。
+        r"""新过期时间。
         :rtype: str
         """
         return self._NewExpireTime
@@ -13814,7 +13814,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
 
 class ModifyBaseBackupExpireTimeResponse(AbstractModel):
-    """ModifyBaseBackupExpireTime返回参数结构体
+    r"""ModifyBaseBackupExpireTime返回参数结构体
 
     """
 
@@ -13827,7 +13827,7 @@ class ModifyBaseBackupExpireTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13842,7 +13842,7 @@ class ModifyBaseBackupExpireTimeResponse(AbstractModel):
 
 
 class ModifyDBInstanceChargeTypeRequest(AbstractModel):
-    """ModifyDBInstanceChargeType请求参数结构体
+    r"""ModifyDBInstanceChargeType请求参数结构体
 
     """
 
@@ -13878,7 +13878,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -13889,7 +13889,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """实例计费类型，目前支持：
+        r"""实例计费类型，目前支持：
 <li>PREPAID：预付费，即包年包月</li>
 <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 默认值：PREPAID
@@ -13903,7 +13903,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
 <li>后付费：只支持1</li>
         :rtype: int
@@ -13916,7 +13916,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """续费标记：
+        r"""续费标记：
 <li>0：手动续费</li>
 <li>1：自动续费</li>
 默认值：0
@@ -13930,7 +13930,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -13960,7 +13960,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
 
 class ModifyDBInstanceChargeTypeResponse(AbstractModel):
-    """ModifyDBInstanceChargeType返回参数结构体
+    r"""ModifyDBInstanceChargeType返回参数结构体
 
     """
 
@@ -13976,7 +13976,7 @@ class ModifyDBInstanceChargeTypeResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """订单名
+        r"""订单名
         :rtype: str
         """
         return self._DealName
@@ -13987,7 +13987,7 @@ class ModifyDBInstanceChargeTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14003,7 +14003,7 @@ class ModifyDBInstanceChargeTypeResponse(AbstractModel):
 
 
 class ModifyDBInstanceDeploymentRequest(AbstractModel):
-    """ModifyDBInstanceDeployment请求参数结构体
+    r"""ModifyDBInstanceDeployment请求参数结构体
 
     """
 
@@ -14033,7 +14033,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14044,7 +14044,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
     @property
     def DBNodeSet(self):
-        """实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
+        r"""实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: list of DBNode
         """
@@ -14056,7 +14056,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """指定实例配置完成变更后的切换时间。
+        r"""指定实例配置完成变更后的切换时间。
 <li>0：立即切换 </li>
 <li>1：指定时间切换</li>
 <li>2：维护时间窗口内切换</li>
@@ -14071,7 +14071,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        """切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchStartTime
@@ -14082,7 +14082,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        """切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchEndTime
@@ -14114,7 +14114,7 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
 
 
 class ModifyDBInstanceDeploymentResponse(AbstractModel):
-    """ModifyDBInstanceDeployment返回参数结构体
+    r"""ModifyDBInstanceDeployment返回参数结构体
 
     """
 
@@ -14127,7 +14127,7 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14142,7 +14142,7 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
 
 
 class ModifyDBInstanceHAConfigRequest(AbstractModel):
-    """ModifyDBInstanceHAConfig请求参数结构体
+    r"""ModifyDBInstanceHAConfig请求参数结构体
 
     """
 
@@ -14183,7 +14183,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14194,7 +14194,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def SyncMode(self):
-        """主从同步方式：
+        r"""主从同步方式：
 <li>Semi-sync：半同步</li>
 <li>Async：异步</li>
 
@@ -14208,7 +14208,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def MaxStandbyLatency(self):
-        """高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+        r"""高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
 <li>单位：byte</li>
 <li>参数范围：[1073741824, 322122547200]</li>
         :rtype: int
@@ -14221,7 +14221,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def MaxStandbyLag(self):
-        """高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+        r"""高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
 <li>单位：s</li>
 <li>参数范围：[5, 10]</li>
         :rtype: int
@@ -14234,7 +14234,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def MaxSyncStandbyLatency(self):
-        """同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+        r"""同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
 该参数值针对SyncMode设置为Semi-sync的实例有效。
 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
@@ -14248,7 +14248,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
     @property
     def MaxSyncStandbyLag(self):
-        """同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+        r"""同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
 该参数值针对SyncMode设置为Semi-sync的实例有效。
 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag，
@@ -14279,7 +14279,7 @@ class ModifyDBInstanceHAConfigRequest(AbstractModel):
 
 
 class ModifyDBInstanceHAConfigResponse(AbstractModel):
-    """ModifyDBInstanceHAConfig返回参数结构体
+    r"""ModifyDBInstanceHAConfig返回参数结构体
 
     """
 
@@ -14292,7 +14292,7 @@ class ModifyDBInstanceHAConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14307,7 +14307,7 @@ class ModifyDBInstanceHAConfigResponse(AbstractModel):
 
 
 class ModifyDBInstanceNameRequest(AbstractModel):
-    """ModifyDBInstanceName请求参数结构体
+    r"""ModifyDBInstanceName请求参数结构体
 
     """
 
@@ -14324,7 +14324,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """数据库实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""数据库实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14335,7 +14335,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"。
+        r"""实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"。
 
         :rtype: str
         """
@@ -14360,7 +14360,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
 
 class ModifyDBInstanceNameResponse(AbstractModel):
-    """ModifyDBInstanceName返回参数结构体
+    r"""ModifyDBInstanceName返回参数结构体
 
     """
 
@@ -14373,7 +14373,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14388,7 +14388,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
 
 class ModifyDBInstanceParametersRequest(AbstractModel):
-    """ModifyDBInstanceParameters请求参数结构体
+    r"""ModifyDBInstanceParameters请求参数结构体
 
     """
 
@@ -14404,7 +14404,7 @@ class ModifyDBInstanceParametersRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14415,7 +14415,7 @@ class ModifyDBInstanceParametersRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        """待修改参数及期望值。
+        r"""待修改参数及期望值。
         :rtype: list of ParamEntry
         """
         return self._ParamList
@@ -14444,7 +14444,7 @@ class ModifyDBInstanceParametersRequest(AbstractModel):
 
 
 class ModifyDBInstanceParametersResponse(AbstractModel):
-    """ModifyDBInstanceParameters返回参数结构体
+    r"""ModifyDBInstanceParameters返回参数结构体
 
     """
 
@@ -14457,7 +14457,7 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14472,7 +14472,7 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
 
 class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
-    """ModifyDBInstanceReadOnlyGroup请求参数结构体
+    r"""ModifyDBInstanceReadOnlyGroup请求参数结构体
 
     """
 
@@ -14491,7 +14491,7 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14502,7 +14502,7 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """当前实例所在只读组ID
+        r"""当前实例所在只读组ID
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -14513,7 +14513,7 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def NewReadOnlyGroupId(self):
-        """实例修改的目标只读组ID
+        r"""实例修改的目标只读组ID
         :rtype: str
         """
         return self._NewReadOnlyGroupId
@@ -14538,7 +14538,7 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
 
 
 class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
-    """ModifyDBInstanceReadOnlyGroup返回参数结构体
+    r"""ModifyDBInstanceReadOnlyGroup返回参数结构体
 
     """
 
@@ -14554,7 +14554,7 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID
+        r"""流程ID
         :rtype: int
         """
         return self._FlowId
@@ -14565,7 +14565,7 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14581,7 +14581,7 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
 
 class ModifyDBInstanceSSLConfigRequest(AbstractModel):
-    """ModifyDBInstanceSSLConfig请求参数结构体
+    r"""ModifyDBInstanceSSLConfig请求参数结构体
 
     """
 
@@ -14600,7 +14600,7 @@ class ModifyDBInstanceSSLConfigRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14611,7 +14611,7 @@ class ModifyDBInstanceSSLConfigRequest(AbstractModel):
 
     @property
     def SSLEnabled(self):
-        """开启或关闭SSL。true - 开启 ；false - 关闭。
+        r"""开启或关闭SSL。true - 开启 ；false - 关闭。
         :rtype: bool
         """
         return self._SSLEnabled
@@ -14622,7 +14622,7 @@ class ModifyDBInstanceSSLConfigRequest(AbstractModel):
 
     @property
     def ConnectAddress(self):
-        """SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
+        r"""SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
         :rtype: str
         """
         return self._ConnectAddress
@@ -14647,7 +14647,7 @@ class ModifyDBInstanceSSLConfigRequest(AbstractModel):
 
 
 class ModifyDBInstanceSSLConfigResponse(AbstractModel):
-    """ModifyDBInstanceSSLConfig返回参数结构体
+    r"""ModifyDBInstanceSSLConfig返回参数结构体
 
     """
 
@@ -14663,7 +14663,7 @@ class ModifyDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -14674,7 +14674,7 @@ class ModifyDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14690,7 +14690,7 @@ class ModifyDBInstanceSSLConfigResponse(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
-    """ModifyDBInstanceSecurityGroups请求参数结构体
+    r"""ModifyDBInstanceSecurityGroups请求参数结构体
 
     """
 
@@ -14711,7 +14711,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIdSet(self):
-        """实例或只读组要绑定的安全组列表。
+        r"""实例或只读组要绑定的安全组列表。
 安全组信息可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来查询。
 **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
@@ -14724,7 +14724,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
+        r"""实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
         :rtype: str
         """
         return self._DBInstanceId
@@ -14735,7 +14735,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+        r"""只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -14760,7 +14760,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
-    """ModifyDBInstanceSecurityGroups返回参数结构体
+    r"""ModifyDBInstanceSecurityGroups返回参数结构体
 
     """
 
@@ -14773,7 +14773,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14788,7 +14788,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class ModifyDBInstanceSpecRequest(AbstractModel):
-    """ModifyDBInstanceSpec请求参数结构体
+    r"""ModifyDBInstanceSpec请求参数结构体
 
     """
 
@@ -14835,7 +14835,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14846,7 +14846,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """修改后的实例内存大小，单位GiB。
+        r"""修改后的实例内存大小，单位GiB。
         :rtype: int
         """
         return self._Memory
@@ -14857,7 +14857,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
+        r"""修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
         :rtype: int
         """
         return self._Storage
@@ -14868,7 +14868,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -14882,7 +14882,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券ID列表，目前仅支持指定一张代金券。
+        r"""代金券ID列表，目前仅支持指定一张代金券。
         :rtype: list of str
         """
         return self._VoucherIds
@@ -14893,7 +14893,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """活动ID。
+        r"""活动ID。
         :rtype: int
         """
         return self._ActivityId
@@ -14904,7 +14904,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """指定实例配置完成变更后的切换时间。
+        r"""指定实例配置完成变更后的切换时间。
 <li>0：立即切换 </li>
 <li>1：指定时间切换</li>
 <li>2：维护时间窗口内</li>切换
@@ -14919,7 +14919,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        """切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchStartTime
@@ -14930,7 +14930,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        """切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchEndTime
@@ -14941,7 +14941,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+        r"""修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
         :rtype: int
         """
         return self._Cpu
@@ -14973,7 +14973,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
 
 class ModifyDBInstanceSpecResponse(AbstractModel):
-    """ModifyDBInstanceSpec返回参数结构体
+    r"""ModifyDBInstanceSpec返回参数结构体
 
     """
 
@@ -14992,7 +14992,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """订单号。
+        r"""订单号。
         :rtype: str
         """
         return self._DealName
@@ -15003,7 +15003,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def BillId(self):
-        """冻结流水号。
+        r"""冻结流水号。
         :rtype: str
         """
         return self._BillId
@@ -15014,7 +15014,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15031,7 +15031,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
 
 class ModifyDBInstancesProjectRequest(AbstractModel):
-    """ModifyDBInstancesProject请求参数结构体
+    r"""ModifyDBInstancesProject请求参数结构体
 
     """
 
@@ -15047,7 +15047,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时操作多个实例。
+        r"""实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时操作多个实例。
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -15058,7 +15058,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
+        r"""所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
         :rtype: str
         """
         return self._ProjectId
@@ -15082,7 +15082,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
 
 class ModifyDBInstancesProjectResponse(AbstractModel):
-    """ModifyDBInstancesProject返回参数结构体
+    r"""ModifyDBInstancesProject返回参数结构体
 
     """
 
@@ -15098,7 +15098,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     @property
     def Count(self):
-        """转移项目成功的实例个数
+        r"""转移项目成功的实例个数
         :rtype: int
         """
         return self._Count
@@ -15109,7 +15109,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15125,7 +15125,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
 
 class ModifyDatabaseOwnerRequest(AbstractModel):
-    """ModifyDatabaseOwner请求参数结构体
+    r"""ModifyDatabaseOwner请求参数结构体
 
     """
 
@@ -15144,7 +15144,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -15155,7 +15155,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称。可通过[DescribeDatabases](https://cloud.tencent.com/document/api/409/43353)接口获取
+        r"""数据库名称。可通过[DescribeDatabases](https://cloud.tencent.com/document/api/409/43353)接口获取
         :rtype: str
         """
         return self._DatabaseName
@@ -15166,7 +15166,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
     @property
     def DatabaseOwner(self):
-        """数据库新所有者。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""数据库新所有者。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._DatabaseOwner
@@ -15191,7 +15191,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
 
 class ModifyDatabaseOwnerResponse(AbstractModel):
-    """ModifyDatabaseOwner返回参数结构体
+    r"""ModifyDatabaseOwner返回参数结构体
 
     """
 
@@ -15204,7 +15204,7 @@ class ModifyDatabaseOwnerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15219,7 +15219,7 @@ class ModifyDatabaseOwnerResponse(AbstractModel):
 
 
 class ModifyMaintainTimeWindowRequest(AbstractModel):
-    """ModifyMaintainTimeWindow请求参数结构体
+    r"""ModifyMaintainTimeWindow请求参数结构体
 
     """
 
@@ -15241,7 +15241,7 @@ class ModifyMaintainTimeWindowRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -15252,7 +15252,7 @@ class ModifyMaintainTimeWindowRequest(AbstractModel):
 
     @property
     def MaintainStartTime(self):
-        """维护开始时间。时区为东八区（UTC+8）
+        r"""维护开始时间。时区为东八区（UTC+8）
         :rtype: str
         """
         return self._MaintainStartTime
@@ -15263,7 +15263,7 @@ class ModifyMaintainTimeWindowRequest(AbstractModel):
 
     @property
     def MaintainDuration(self):
-        """维护持续时间。单位：小时。取值范围：[1,4]
+        r"""维护持续时间。单位：小时。取值范围：[1,4]
         :rtype: int
         """
         return self._MaintainDuration
@@ -15274,7 +15274,7 @@ class ModifyMaintainTimeWindowRequest(AbstractModel):
 
     @property
     def MaintainWeekDays(self):
-        """维护周期
+        r"""维护周期
         :rtype: list of str
         """
         return self._MaintainWeekDays
@@ -15300,7 +15300,7 @@ class ModifyMaintainTimeWindowRequest(AbstractModel):
 
 
 class ModifyMaintainTimeWindowResponse(AbstractModel):
-    """ModifyMaintainTimeWindow返回参数结构体
+    r"""ModifyMaintainTimeWindow返回参数结构体
 
     """
 
@@ -15313,7 +15313,7 @@ class ModifyMaintainTimeWindowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15328,7 +15328,7 @@ class ModifyMaintainTimeWindowResponse(AbstractModel):
 
 
 class ModifyParameterTemplateRequest(AbstractModel):
-    """ModifyParameterTemplate请求参数结构体
+    r"""ModifyParameterTemplate请求参数结构体
 
     """
 
@@ -15353,7 +15353,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
+        r"""参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -15364,7 +15364,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
+        r"""参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -15375,7 +15375,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若不传入该参数，则保持原参数模板描述
+        r"""参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若不传入该参数，则保持原参数模板描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -15386,7 +15386,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def ModifyParamEntrySet(self):
-        """需要修改或添加的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+        r"""需要修改或添加的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
         :rtype: list of ParamEntry
         """
         return self._ModifyParamEntrySet
@@ -15397,7 +15397,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def DeleteParamSet(self):
-        """需要从模板中删除的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+        r"""需要从模板中删除的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
         :rtype: list of str
         """
         return self._DeleteParamSet
@@ -15429,7 +15429,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
 
 class ModifyParameterTemplateResponse(AbstractModel):
-    """ModifyParameterTemplate返回参数结构体
+    r"""ModifyParameterTemplate返回参数结构体
 
     """
 
@@ -15442,7 +15442,7 @@ class ModifyParameterTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15457,7 +15457,7 @@ class ModifyParameterTemplateResponse(AbstractModel):
 
 
 class ModifyPrivilege(AbstractModel):
-    """用于修改数据库对象的权限，其中包含了数据库对象描述的数据结构、需要修改的权限列表以及修改的类型等。
+    r"""用于修改数据库对象的权限，其中包含了数据库对象描述的数据结构、需要修改的权限列表以及修改的类型等。
 
     """
 
@@ -15476,7 +15476,7 @@ class ModifyPrivilege(AbstractModel):
 
     @property
     def DatabasePrivilege(self):
-        """要修改的数据库对象及权限列表
+        r"""要修改的数据库对象及权限列表
         :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
         """
         return self._DatabasePrivilege
@@ -15487,7 +15487,7 @@ class ModifyPrivilege(AbstractModel):
 
     @property
     def ModifyType(self):
-        """修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
+        r"""修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
         :rtype: str
         """
         return self._ModifyType
@@ -15498,7 +15498,7 @@ class ModifyPrivilege(AbstractModel):
 
     @property
     def IsCascade(self):
-        """当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
+        r"""当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
         :rtype: bool
         """
         return self._IsCascade
@@ -15525,7 +15525,7 @@ class ModifyPrivilege(AbstractModel):
 
 
 class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
-    """ModifyReadOnlyDBInstanceWeight请求参数结构体
+    r"""ModifyReadOnlyDBInstanceWeight请求参数结构体
 
     """
 
@@ -15544,7 +15544,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -15555,7 +15555,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -15566,7 +15566,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """只读实例在只读组中的流量权重(1-50)
+        r"""只读实例在只读组中的流量权重(1-50)
         :rtype: int
         """
         return self._Weight
@@ -15591,7 +15591,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
 
 class ModifyReadOnlyDBInstanceWeightResponse(AbstractModel):
-    """ModifyReadOnlyDBInstanceWeight返回参数结构体
+    r"""ModifyReadOnlyDBInstanceWeight返回参数结构体
 
     """
 
@@ -15604,7 +15604,7 @@ class ModifyReadOnlyDBInstanceWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15619,7 +15619,7 @@ class ModifyReadOnlyDBInstanceWeightResponse(AbstractModel):
 
 
 class ModifyReadOnlyGroupConfigRequest(AbstractModel):
-    """ModifyReadOnlyGroupConfig请求参数结构体
+    r"""ModifyReadOnlyGroupConfig请求参数结构体
 
     """
 
@@ -15653,7 +15653,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。
+        r"""只读组ID。
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -15664,7 +15664,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """只读组名称。仅支持长度小于60的中文/英文/数字/"_"/"-"
+        r"""只读组名称。仅支持长度小于60的中文/英文/数字/"_"/"-"
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -15675,7 +15675,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def ReplayLagEliminate(self):
-        """延迟时间配置开关：0关、1开
+        r"""延迟时间配置开关：0关、1开
         :rtype: int
         """
         return self._ReplayLagEliminate
@@ -15686,7 +15686,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def ReplayLatencyEliminate(self):
-        """延迟日志大小配置开关：0关、1开
+        r"""延迟日志大小配置开关：0关、1开
         :rtype: int
         """
         return self._ReplayLatencyEliminate
@@ -15697,7 +15697,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def MaxReplayLatency(self):
-        """延迟日志大小阈值，单位MB。当开启延迟日志大小配置，应输入正整数
+        r"""延迟日志大小阈值，单位MB。当开启延迟日志大小配置，应输入正整数
         :rtype: int
         """
         return self._MaxReplayLatency
@@ -15708,7 +15708,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def MaxReplayLag(self):
-        """延迟时间大小阈值，单位s。当开启延迟时间配置时，应输入正整数。
+        r"""延迟时间大小阈值，单位s。当开启延迟时间配置时，应输入正整数。
         :rtype: int
         """
         return self._MaxReplayLag
@@ -15719,7 +15719,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def Rebalance(self):
-        """自动负载均衡开关：0关、1开
+        r"""自动负载均衡开关：0关、1开
         :rtype: int
         """
         return self._Rebalance
@@ -15730,7 +15730,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     @property
     def MinDelayEliminateReserve(self):
-        """延迟剔除最小保留实例数。取值范围[0,100]
+        r"""延迟剔除最小保留实例数。取值范围[0,100]
         :rtype: int
         """
         return self._MinDelayEliminateReserve
@@ -15760,7 +15760,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
 
 class ModifyReadOnlyGroupConfigResponse(AbstractModel):
-    """ModifyReadOnlyGroupConfig返回参数结构体
+    r"""ModifyReadOnlyGroupConfig返回参数结构体
 
     """
 
@@ -15773,7 +15773,7 @@ class ModifyReadOnlyGroupConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15788,7 +15788,7 @@ class ModifyReadOnlyGroupConfigResponse(AbstractModel):
 
 
 class ModifySwitchTimePeriodRequest(AbstractModel):
-    """ModifySwitchTimePeriod请求参数结构体
+    r"""ModifySwitchTimePeriod请求参数结构体
 
     """
 
@@ -15804,7 +15804,7 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -15815,7 +15815,7 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """入参取值为 0 ，代表立即切换。
+        r"""入参取值为 0 ，代表立即切换。
         :rtype: int
         """
         return self._SwitchTag
@@ -15839,7 +15839,7 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
 
 class ModifySwitchTimePeriodResponse(AbstractModel):
-    """ModifySwitchTimePeriod返回参数结构体
+    r"""ModifySwitchTimePeriod返回参数结构体
 
     """
 
@@ -15852,7 +15852,7 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15867,7 +15867,7 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
 
 
 class NetworkAccess(AbstractModel):
-    """网络相关信息。（该数据结构已废弃，网络相关信息使用DBInstanceNetInfo）
+    r"""网络相关信息。（该数据结构已废弃，网络相关信息使用DBInstanceNetInfo）
 
     """
 
@@ -15901,7 +15901,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def ResourceId(self):
-        """网络资源id，实例id或RO组id
+        r"""网络资源id，实例id或RO组id
         :rtype: str
         """
         return self._ResourceId
@@ -15912,7 +15912,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型，1-实例 2-RO组
+        r"""资源类型，1-实例 2-RO组
         :rtype: int
         """
         return self._ResourceType
@@ -15923,7 +15923,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID
+        r"""私有网络ID
         :rtype: str
         """
         return self._VpcId
@@ -15934,7 +15934,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def Vip(self):
-        """IPV4地址
+        r"""IPV4地址
         :rtype: str
         """
         return self._Vip
@@ -15945,7 +15945,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def Vip6(self):
-        """IPV6地址
+        r"""IPV6地址
         :rtype: str
         """
         return self._Vip6
@@ -15956,7 +15956,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def Vport(self):
-        """访问端口
+        r"""访问端口
         :rtype: int
         """
         return self._Vport
@@ -15967,7 +15967,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -15978,7 +15978,7 @@ class NetworkAccess(AbstractModel):
 
     @property
     def VpcStatus(self):
-        """网络状态，1-申请中，2-使用中，3-删除中，4-已删除
+        r"""网络状态，1-申请中，2-使用中，3-删除中，4-已删除
         :rtype: int
         """
         return self._VpcStatus
@@ -16008,7 +16008,7 @@ class NetworkAccess(AbstractModel):
 
 
 class OpenDBExtranetAccessRequest(AbstractModel):
-    """OpenDBExtranetAccess请求参数结构体
+    r"""OpenDBExtranetAccess请求参数结构体
 
     """
 
@@ -16025,7 +16025,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。
+        r"""实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。
         :rtype: str
         """
         return self._DBInstanceId
@@ -16036,7 +16036,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     @property
     def IsIpv6(self):
-        """是否开通Ipv6外网，1：是，0：否
+        r"""是否开通Ipv6外网，1：是，0：否
 默认值：0
         :rtype: int
         """
@@ -16061,7 +16061,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):
-    """OpenDBExtranetAccess返回参数结构体
+    r"""OpenDBExtranetAccess返回参数结构体
 
     """
 
@@ -16077,7 +16077,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """异步任务流程ID
+        r"""异步任务流程ID
         :rtype: int
         """
         return self._FlowId
@@ -16088,7 +16088,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16104,7 +16104,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
 
 class ParamEntry(AbstractModel):
-    """批量修改参数
+    r"""批量修改参数
 
     """
 
@@ -16120,7 +16120,7 @@ class ParamEntry(AbstractModel):
 
     @property
     def Name(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._Name
@@ -16131,7 +16131,7 @@ class ParamEntry(AbstractModel):
 
     @property
     def ExpectedValue(self):
-        """修改参数值。入参均以字符串形式传递，例如：小数”0.1“、整数”1000“、枚举”replica“
+        r"""修改参数值。入参均以字符串形式传递，例如：小数”0.1“、整数”1000“、枚举”replica“
         :rtype: str
         """
         return self._ExpectedValue
@@ -16155,7 +16155,7 @@ class ParamEntry(AbstractModel):
 
 
 class ParamInfo(AbstractModel):
-    """参数详情
+    r"""参数详情
 
     """
 
@@ -16231,7 +16231,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ID(self):
-        """参数ID
+        r"""参数ID
         :rtype: int
         """
         return self._ID
@@ -16242,7 +16242,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def Name(self):
-        """参数名
+        r"""参数名
         :rtype: str
         """
         return self._Name
@@ -16253,7 +16253,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ParamValueType(self):
-        """参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）。
+        r"""参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）。
 当参数类型为integer（整型）、real（浮点型）时，参数的取值范围根据返回值的Max、Min确定； 
 当参数类型为bool（布尔型）时，参数设置值取值范围是true | false； 
 当参数类型为enum（枚举类型）、mutil_enum（多枚举类型）时，参数的取值范围由返回值中的EnumValue确定。
@@ -16267,7 +16267,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """参数值 单位。参数没有单位时，该字段返回空
+        r"""参数值 单位。参数没有单位时，该字段返回空
         :rtype: str
         """
         return self._Unit
@@ -16278,7 +16278,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """参数默认值。以字符串形式返回
+        r"""参数默认值。以字符串形式返回
         :rtype: str
         """
         return self._DefaultValue
@@ -16289,7 +16289,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """参数当前运行值。以字符串形式返回
+        r"""参数当前运行值。以字符串形式返回
         :rtype: str
         """
         return self._CurrentValue
@@ -16300,7 +16300,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def Max(self):
-        """数值类型（integer、real）参数，取值下界
+        r"""数值类型（integer、real）参数，取值下界
         :rtype: float
         """
         return self._Max
@@ -16311,7 +16311,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def EnumValue(self):
-        """枚举类型参数，取值范围
+        r"""枚举类型参数，取值范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -16323,7 +16323,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def Min(self):
-        """数值类型（integer、real）参数，取值上界
+        r"""数值类型（integer、real）参数，取值上界
         :rtype: float
         """
         return self._Min
@@ -16334,7 +16334,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ParamDescriptionCH(self):
-        """参数中文描述
+        r"""参数中文描述
         :rtype: str
         """
         return self._ParamDescriptionCH
@@ -16345,7 +16345,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ParamDescriptionEN(self):
-        """参数英文描述
+        r"""参数英文描述
         :rtype: str
         """
         return self._ParamDescriptionEN
@@ -16356,7 +16356,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def NeedReboot(self):
-        """参数修改，是否重启生效。（true为需要，false为不需要）
+        r"""参数修改，是否重启生效。（true为需要，false为不需要）
         :rtype: bool
         """
         return self._NeedReboot
@@ -16367,7 +16367,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ClassificationCN(self):
-        """参数中文分类
+        r"""参数中文分类
         :rtype: str
         """
         return self._ClassificationCN
@@ -16378,7 +16378,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def ClassificationEN(self):
-        """参数英文分类
+        r"""参数英文分类
         :rtype: str
         """
         return self._ClassificationEN
@@ -16389,7 +16389,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def SpecRelated(self):
-        """是否和规格相关。（true为相关，false为不想关）
+        r"""是否和规格相关。（true为相关，false为不想关）
         :rtype: bool
         """
         return self._SpecRelated
@@ -16400,7 +16400,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def Advanced(self):
-        """是否为重点参数。（true为重点参数，修改是需要重点关注，可能会影响实例性能）
+        r"""是否为重点参数。（true为重点参数，修改是需要重点关注，可能会影响实例性能）
         :rtype: bool
         """
         return self._Advanced
@@ -16411,7 +16411,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def LastModifyTime(self):
-        """参数最后一次修改时间
+        r"""参数最后一次修改时间
         :rtype: str
         """
         return self._LastModifyTime
@@ -16422,7 +16422,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def StandbyRelated(self):
-        """参数主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
+        r"""参数主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
         :rtype: int
         """
         return self._StandbyRelated
@@ -16433,7 +16433,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def VersionRelationSet(self):
-        """参数版本关联信息，内容为相应内核版本下的参数详细信息
+        r"""参数版本关联信息，内容为相应内核版本下的参数详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamVersionRelation
         """
@@ -16445,7 +16445,7 @@ class ParamInfo(AbstractModel):
 
     @property
     def SpecRelationSet(self):
-        """参数规格关联信息，内容为相应规格下的参数详细信息
+        r"""参数规格关联信息，内容为相应规格下的参数详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamSpecRelation
         """
@@ -16498,7 +16498,7 @@ class ParamInfo(AbstractModel):
 
 
 class ParamSpecRelation(AbstractModel):
-    """各规格下的参数信息
+    r"""各规格下的参数信息
 
     """
 
@@ -16530,7 +16530,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Name(self):
-        """参数名称
+        r"""参数名称
         :rtype: str
         """
         return self._Name
@@ -16541,7 +16541,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Memory(self):
-        """参数信息所属规格
+        r"""参数信息所属规格
         :rtype: str
         """
         return self._Memory
@@ -16552,7 +16552,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Value(self):
-        """参数在该规格下的默认值
+        r"""参数在该规格下的默认值
         :rtype: str
         """
         return self._Value
@@ -16563,7 +16563,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Unit(self):
-        """参数值单位。参数没有单位时，该字段返回空
+        r"""参数值单位。参数没有单位时，该字段返回空
         :rtype: str
         """
         return self._Unit
@@ -16574,7 +16574,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Max(self):
-        """数值类型（integer、real）参数，取值上界
+        r"""数值类型（integer、real）参数，取值上界
         :rtype: float
         """
         return self._Max
@@ -16585,7 +16585,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def Min(self):
-        """数值类型（integer、real）参数，取值下界
+        r"""数值类型（integer、real）参数，取值下界
         :rtype: float
         """
         return self._Min
@@ -16596,7 +16596,7 @@ class ParamSpecRelation(AbstractModel):
 
     @property
     def EnumValue(self):
-        """枚举类型参数，取值范围
+        r"""枚举类型参数，取值范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -16626,7 +16626,7 @@ class ParamSpecRelation(AbstractModel):
 
 
 class ParamVersionRelation(AbstractModel):
-    """各版本下的参数信息
+    r"""各版本下的参数信息
 
     """
 
@@ -16658,7 +16658,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def Name(self):
-        """参数名称
+        r"""参数名称
         :rtype: str
         """
         return self._Name
@@ -16669,7 +16669,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def DBKernelVersion(self):
-        """参数信息所属内核版本
+        r"""参数信息所属内核版本
         :rtype: str
         """
         return self._DBKernelVersion
@@ -16680,7 +16680,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def Value(self):
-        """参数在该版本该规格下的默认值
+        r"""参数在该版本该规格下的默认值
         :rtype: str
         """
         return self._Value
@@ -16691,7 +16691,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def Unit(self):
-        """参数值单位。参数没有单位时，该字段返回空
+        r"""参数值单位。参数没有单位时，该字段返回空
         :rtype: str
         """
         return self._Unit
@@ -16702,7 +16702,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def Max(self):
-        """数值类型（integer、real）参数，取值上界
+        r"""数值类型（integer、real）参数，取值上界
         :rtype: float
         """
         return self._Max
@@ -16713,7 +16713,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def Min(self):
-        """数值类型（integer、real）参数，取值下界
+        r"""数值类型（integer、real）参数，取值下界
         :rtype: float
         """
         return self._Min
@@ -16724,7 +16724,7 @@ class ParamVersionRelation(AbstractModel):
 
     @property
     def EnumValue(self):
-        """枚举类型参数，取值范围
+        r"""枚举类型参数，取值范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -16754,7 +16754,7 @@ class ParamVersionRelation(AbstractModel):
 
 
 class ParameterTemplate(AbstractModel):
-    """参数模板的基本信息
+    r"""参数模板的基本信息
 
     """
 
@@ -16779,7 +16779,7 @@ class ParameterTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID
+        r"""参数模板ID
         :rtype: str
         """
         return self._TemplateId
@@ -16790,7 +16790,7 @@ class ParameterTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
-        """参数模板名称
+        r"""参数模板名称
         :rtype: str
         """
         return self._TemplateName
@@ -16801,7 +16801,7 @@ class ParameterTemplate(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """参数模板适用的数据库版本
+        r"""参数模板适用的数据库版本
         :rtype: str
         """
         return self._DBMajorVersion
@@ -16812,7 +16812,7 @@ class ParameterTemplate(AbstractModel):
 
     @property
     def DBEngine(self):
-        """参数模板适用的数据库引擎
+        r"""参数模板适用的数据库引擎
         :rtype: str
         """
         return self._DBEngine
@@ -16823,7 +16823,7 @@ class ParameterTemplate(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """参数模板描述
+        r"""参数模板描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -16850,7 +16850,7 @@ class ParameterTemplate(AbstractModel):
 
 
 class PgDeal(AbstractModel):
-    """订单详情
+    r"""订单详情
 
     """
 
@@ -16878,7 +16878,7 @@ class PgDeal(AbstractModel):
 
     @property
     def DealName(self):
-        """订单名
+        r"""订单名
         :rtype: str
         """
         return self._DealName
@@ -16889,7 +16889,7 @@ class PgDeal(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """所属用户
+        r"""所属用户
         :rtype: str
         """
         return self._OwnerUin
@@ -16900,7 +16900,7 @@ class PgDeal(AbstractModel):
 
     @property
     def Count(self):
-        """订单涉及多少个实例
+        r"""订单涉及多少个实例
         :rtype: int
         """
         return self._Count
@@ -16911,7 +16911,7 @@ class PgDeal(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式。1-预付费；0-后付费
+        r"""付费模式。1-预付费；0-后付费
         :rtype: int
         """
         return self._PayMode
@@ -16922,7 +16922,7 @@ class PgDeal(AbstractModel):
 
     @property
     def FlowId(self):
-        """异步任务流程ID
+        r"""异步任务流程ID
         :rtype: int
         """
         return self._FlowId
@@ -16933,7 +16933,7 @@ class PgDeal(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID数组
+        r"""实例ID数组
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -16961,7 +16961,7 @@ class PgDeal(AbstractModel):
 
 
 class PolicyRule(AbstractModel):
-    """安全组规则信息
+    r"""安全组规则信息
 
     """
 
@@ -16986,7 +16986,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def Action(self):
-        """策略，ACCEPT 或者 DROP
+        r"""策略，ACCEPT 或者 DROP
         :rtype: str
         """
         return self._Action
@@ -16997,7 +16997,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def CidrIp(self):
-        """来源或目的 IP 或 IP 段，例如172.16.0.0/12
+        r"""来源或目的 IP 或 IP 段，例如172.16.0.0/12
         :rtype: str
         """
         return self._CidrIp
@@ -17008,7 +17008,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def PortRange(self):
-        """端口
+        r"""端口
         :rtype: str
         """
         return self._PortRange
@@ -17019,7 +17019,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """网络协议，支持 UDP、TCP 等
+        r"""网络协议，支持 UDP、TCP 等
         :rtype: str
         """
         return self._IpProtocol
@@ -17030,7 +17030,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述
+        r"""规则描述
         :rtype: str
         """
         return self._Description
@@ -17057,7 +17057,7 @@ class PolicyRule(AbstractModel):
 
 
 class RawSlowQuery(AbstractModel):
-    """慢SQL查询接口返回 慢SQL列表详情
+    r"""慢SQL查询接口返回 慢SQL列表详情
 
     """
 
@@ -17085,7 +17085,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def RawQuery(self):
-        """慢SQL 语句
+        r"""慢SQL 语句
         :rtype: str
         """
         return self._RawQuery
@@ -17096,7 +17096,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """慢SQL 查询的数据库
+        r"""慢SQL 查询的数据库
         :rtype: str
         """
         return self._DatabaseName
@@ -17107,7 +17107,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def Duration(self):
-        """慢SQL执行 耗时
+        r"""慢SQL执行 耗时
         :rtype: float
         """
         return self._Duration
@@ -17118,7 +17118,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def ClientAddr(self):
-        """执行慢SQL的客户端
+        r"""执行慢SQL的客户端
         :rtype: str
         """
         return self._ClientAddr
@@ -17129,7 +17129,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def UserName(self):
-        """执行慢SQL的用户名
+        r"""执行慢SQL的用户名
         :rtype: str
         """
         return self._UserName
@@ -17140,7 +17140,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def SessionStartTime(self):
-        """慢SQL执行的开始时间
+        r"""慢SQL执行的开始时间
         :rtype: str
         """
         return self._SessionStartTime
@@ -17168,7 +17168,7 @@ class RawSlowQuery(AbstractModel):
 
 
 class ReadOnlyGroup(AbstractModel):
-    """只读组信息
+    r"""只读组信息
 
     """
 
@@ -17233,7 +17233,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组标识
+        r"""只读组标识
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -17244,7 +17244,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """只读组名字
+        r"""只读组名字
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -17255,7 +17255,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目id
+        r"""项目id
         :rtype: int
         """
         return self._ProjectId
@@ -17266,7 +17266,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MasterDBInstanceId(self):
-        """主实例id
+        r"""主实例id
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -17277,7 +17277,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MinDelayEliminateReserve(self):
-        """最小保留实例数
+        r"""最小保留实例数
         :rtype: int
         """
         return self._MinDelayEliminateReserve
@@ -17288,7 +17288,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MaxReplayLatency(self):
-        """延迟空间大小阈值
+        r"""延迟空间大小阈值
         :rtype: int
         """
         return self._MaxReplayLatency
@@ -17299,7 +17299,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReplayLatencyEliminate(self):
-        """延迟大小开关
+        r"""延迟大小开关
         :rtype: int
         """
         return self._ReplayLatencyEliminate
@@ -17310,7 +17310,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MaxReplayLag(self):
-        """延迟时间大小阈值
+        r"""延迟时间大小阈值
         :rtype: float
         """
         return self._MaxReplayLag
@@ -17321,7 +17321,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReplayLagEliminate(self):
-        """延迟时间开关
+        r"""延迟时间开关
         :rtype: int
         """
         return self._ReplayLagEliminate
@@ -17332,7 +17332,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def VpcId(self):
-        """虚拟网络id
+        r"""虚拟网络id
         :rtype: str
         """
         return self._VpcId
@@ -17343,7 +17343,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网id
+        r"""子网id
         :rtype: str
         """
         return self._SubnetId
@@ -17354,7 +17354,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Region(self):
-        """地域id
+        r"""地域id
         :rtype: str
         """
         return self._Region
@@ -17365,7 +17365,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Zone(self):
-        """地区id
+        r"""地区id
         :rtype: str
         """
         return self._Zone
@@ -17376,7 +17376,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -17387,7 +17387,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyDBInstanceList(self):
-        """实例详细信息
+        r"""实例详细信息
         :rtype: list of DBInstance
         """
         return self._ReadOnlyDBInstanceList
@@ -17398,7 +17398,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Rebalance(self):
-        """自动负载均衡开关
+        r"""自动负载均衡开关
         :rtype: int
         """
         return self._Rebalance
@@ -17409,7 +17409,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def DBInstanceNetInfo(self):
-        """网络信息
+        r"""网络信息
         :rtype: list of DBInstanceNetInfo
         """
         return self._DBInstanceNetInfo
@@ -17420,7 +17420,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def NetworkAccessList(self):
-        """只读组网络信息列表（此字段已废弃）
+        r"""只读组网络信息列表（此字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkAccess
         """
@@ -17476,7 +17476,7 @@ class ReadOnlyGroup(AbstractModel):
 
 
 class RebalanceReadOnlyGroupRequest(AbstractModel):
-    """RebalanceReadOnlyGroup请求参数结构体
+    r"""RebalanceReadOnlyGroup请求参数结构体
 
     """
 
@@ -17489,7 +17489,7 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -17512,7 +17512,7 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
 
 
 class RebalanceReadOnlyGroupResponse(AbstractModel):
-    """RebalanceReadOnlyGroup返回参数结构体
+    r"""RebalanceReadOnlyGroup返回参数结构体
 
     """
 
@@ -17525,7 +17525,7 @@ class RebalanceReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17540,7 +17540,7 @@ class RebalanceReadOnlyGroupResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """描述地域的编码和状态等信息
+    r"""描述地域的编码和状态等信息
 
     """
 
@@ -17565,7 +17565,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """该地域对应的英文名称
+        r"""该地域对应的英文名称
         :rtype: str
         """
         return self._Region
@@ -17576,7 +17576,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """该地域对应的中文名称
+        r"""该地域对应的中文名称
         :rtype: str
         """
         return self._RegionName
@@ -17587,7 +17587,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        """该地域对应的数字编号
+        r"""该地域对应的数字编号
         :rtype: int
         """
         return self._RegionId
@@ -17598,7 +17598,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
-        """可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+        r"""可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
         :rtype: str
         """
         return self._RegionState
@@ -17609,7 +17609,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def SupportInternational(self):
-        """该地域是否支持国际站售卖，0：不支持，1：支持
+        r"""该地域是否支持国际站售卖，0：不支持，1：支持
         :rtype: int
         """
         return self._SupportInternational
@@ -17636,7 +17636,7 @@ class RegionInfo(AbstractModel):
 
 
 class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
-    """RemoveDBInstanceFromReadOnlyGroup请求参数结构体
+    r"""RemoveDBInstanceFromReadOnlyGroup请求参数结构体
 
     """
 
@@ -17652,7 +17652,7 @@ class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -17663,7 +17663,7 @@ class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
+        r"""只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -17687,7 +17687,7 @@ class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
 
 
 class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
-    """RemoveDBInstanceFromReadOnlyGroup返回参数结构体
+    r"""RemoveDBInstanceFromReadOnlyGroup返回参数结构体
 
     """
 
@@ -17703,7 +17703,7 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流程ID
+        r"""流程ID
         :rtype: int
         """
         return self._FlowId
@@ -17714,7 +17714,7 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17730,7 +17730,7 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
 
 class RenewInstanceRequest(AbstractModel):
-    """RenewInstance请求参数结构体
+    r"""RenewInstance请求参数结构体
 
     """
 
@@ -17756,7 +17756,7 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。仅支持预付费（包年包月）实例。
+        r"""实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。仅支持预付费（包年包月）实例。
         :rtype: str
         """
         return self._DBInstanceId
@@ -17767,7 +17767,7 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        """购买时长，单位：月。
+        r"""购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
         :rtype: int
         """
@@ -17779,7 +17779,7 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：
+        r"""是否自动使用代金券：
 <li>0：否</li>
 <li>1：是</li>
 默认值：0
@@ -17793,7 +17793,7 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """代金券ID列表，目前仅支持指定一张代金券
+        r"""代金券ID列表，目前仅支持指定一张代金券
         :rtype: list of str
         """
         return self._VoucherIds
@@ -17819,7 +17819,7 @@ class RenewInstanceRequest(AbstractModel):
 
 
 class RenewInstanceResponse(AbstractModel):
-    """RenewInstance返回参数结构体
+    r"""RenewInstance返回参数结构体
 
     """
 
@@ -17835,7 +17835,7 @@ class RenewInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """订单名
+        r"""订单名
         :rtype: str
         """
         return self._DealName
@@ -17846,7 +17846,7 @@ class RenewInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17862,7 +17862,7 @@ class RenewInstanceResponse(AbstractModel):
 
 
 class ResetAccountPasswordRequest(AbstractModel):
-    """ResetAccountPassword请求参数结构体
+    r"""ResetAccountPassword请求参数结构体
 
     """
 
@@ -17889,7 +17889,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-4wdeb0zv。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-4wdeb0zv。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -17900,7 +17900,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """实例账户名。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
+        r"""实例账户名。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._UserName
@@ -17911,7 +17911,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """UserName账户对应的新密码。
+        r"""UserName账户对应的新密码。
 密码设置规则如下：
 - 长度8~ 32位，推荐使用12位以上的密码
 - 不能以" / "开头
@@ -17944,7 +17944,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
 
 class ResetAccountPasswordResponse(AbstractModel):
-    """ResetAccountPassword返回参数结构体
+    r"""ResetAccountPassword返回参数结构体
 
     """
 
@@ -17957,7 +17957,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17972,7 +17972,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
 
 class RestartDBInstanceRequest(AbstractModel):
-    """RestartDBInstance请求参数结构体
+    r"""RestartDBInstance请求参数结构体
 
     """
 
@@ -17985,7 +17985,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6r233v55。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID，形如postgres-6r233v55。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -18008,7 +18008,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
 
 class RestartDBInstanceResponse(AbstractModel):
-    """RestartDBInstance返回参数结构体
+    r"""RestartDBInstance返回参数结构体
 
     """
 
@@ -18024,7 +18024,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """异步流程ID
+        r"""异步流程ID
         :rtype: int
         """
         return self._FlowId
@@ -18035,7 +18035,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18051,7 +18051,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
 
 class RestoreDBInstanceObjectsRequest(AbstractModel):
-    """RestoreDBInstanceObjects请求参数结构体
+    r"""RestoreDBInstanceObjects请求参数结构体
 
     """
 
@@ -18073,7 +18073,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -18084,7 +18084,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def RestoreObjects(self):
-        """需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
+        r"""需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
         :rtype: list of str
         """
         return self._RestoreObjects
@@ -18095,7 +18095,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        """恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
+        r"""恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :rtype: str
         """
         return self._BackupSetId
@@ -18106,7 +18106,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def RestoreTargetTime(self):
-        """恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
+        r"""恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
         :rtype: str
         """
         return self._RestoreTargetTime
@@ -18132,7 +18132,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
 
 class RestoreDBInstanceObjectsResponse(AbstractModel):
-    """RestoreDBInstanceObjects返回参数结构体
+    r"""RestoreDBInstanceObjects返回参数结构体
 
     """
 
@@ -18145,7 +18145,7 @@ class RestoreDBInstanceObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18160,7 +18160,7 @@ class RestoreDBInstanceObjectsResponse(AbstractModel):
 
 
 class SecurityGroup(AbstractModel):
-    """安全组信息
+    r"""安全组信息
 
     """
 
@@ -18191,7 +18191,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目Id
+        r"""项目Id
         :rtype: int
         """
         return self._ProjectId
@@ -18202,7 +18202,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -18213,7 +18213,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Inbound(self):
-        """入站规则
+        r"""入站规则
         :rtype: list of PolicyRule
         """
         return self._Inbound
@@ -18224,7 +18224,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Outbound(self):
-        """出站规则
+        r"""出站规则
         :rtype: list of PolicyRule
         """
         return self._Outbound
@@ -18235,7 +18235,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组ID
+        r"""安全组ID
         :rtype: str
         """
         return self._SecurityGroupId
@@ -18246,7 +18246,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        """安全组名称
+        r"""安全组名称
         :rtype: str
         """
         return self._SecurityGroupName
@@ -18257,7 +18257,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupDescription(self):
-        """安全组备注
+        r"""安全组备注
         :rtype: str
         """
         return self._SecurityGroupDescription
@@ -18296,7 +18296,7 @@ class SecurityGroup(AbstractModel):
 
 
 class SetAutoRenewFlagRequest(AbstractModel):
-    """SetAutoRenewFlag请求参数结构体
+    r"""SetAutoRenewFlag请求参数结构体
 
     """
 
@@ -18312,7 +18312,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。仅支持预付费（包年包月）的实例。支持同时操作多个实例。
+        r"""实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。仅支持预付费（包年包月）的实例。支持同时操作多个实例。
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -18323,7 +18323,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """续费标记。0-正常续费；1-自动续费；2-到期不续费
+        r"""续费标记。0-正常续费；1-自动续费；2-到期不续费
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -18347,7 +18347,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
 
 class SetAutoRenewFlagResponse(AbstractModel):
-    """SetAutoRenewFlag返回参数结构体
+    r"""SetAutoRenewFlag返回参数结构体
 
     """
 
@@ -18363,7 +18363,7 @@ class SetAutoRenewFlagResponse(AbstractModel):
 
     @property
     def Count(self):
-        """设置成功的实例个数
+        r"""设置成功的实例个数
         :rtype: int
         """
         return self._Count
@@ -18374,7 +18374,7 @@ class SetAutoRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18390,7 +18390,7 @@ class SetAutoRenewFlagResponse(AbstractModel):
 
 
 class SpecInfo(AbstractModel):
-    """描述某个地域下某个可用区的可售卖规格详细信息。
+    r"""描述某个地域下某个可用区的可售卖规格详细信息。
 
     """
 
@@ -18412,7 +18412,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域英文编码，对应RegionSet的Region字段
+        r"""地域英文编码，对应RegionSet的Region字段
         :rtype: str
         """
         return self._Region
@@ -18423,7 +18423,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """区域英文编码，对应ZoneSet的Zone字段
+        r"""区域英文编码，对应ZoneSet的Zone字段
         :rtype: str
         """
         return self._Zone
@@ -18434,7 +18434,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def SpecItemInfoList(self):
-        """规格详细信息列表
+        r"""规格详细信息列表
         :rtype: list of SpecItemInfo
         """
         return self._SpecItemInfoList
@@ -18445,7 +18445,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def SupportKMSRegions(self):
-        """支持KMS的地域
+        r"""支持KMS的地域
         :rtype: list of str
         """
         return self._SupportKMSRegions
@@ -18476,7 +18476,7 @@ class SpecInfo(AbstractModel):
 
 
 class SpecItemInfo(AbstractModel):
-    """描述一种规格的信息
+    r"""描述一种规格的信息
 
     """
 
@@ -18525,7 +18525,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def SpecCode(self):
-        """规格ID
+        r"""规格ID
         :rtype: str
         """
         return self._SpecCode
@@ -18536,7 +18536,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Version(self):
-        """PostgreSQL的版本编号
+        r"""PostgreSQL的版本编号
         :rtype: str
         """
         return self._Version
@@ -18547,7 +18547,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def VersionName(self):
-        """内核编号对应的完整版本名称
+        r"""内核编号对应的完整版本名称
         :rtype: str
         """
         return self._VersionName
@@ -18558,7 +18558,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        """CPU核数
+        r"""CPU核数
         :rtype: int
         """
         return self._Cpu
@@ -18569,7 +18569,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """内存大小，单位：MB
+        r"""内存大小，单位：MB
         :rtype: int
         """
         return self._Memory
@@ -18580,7 +18580,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def MaxStorage(self):
-        """该规格所支持最大存储容量，单位：GB
+        r"""该规格所支持最大存储容量，单位：GB
         :rtype: int
         """
         return self._MaxStorage
@@ -18591,7 +18591,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def MinStorage(self):
-        """该规格所支持最小存储容量，单位：GB
+        r"""该规格所支持最小存储容量，单位：GB
         :rtype: int
         """
         return self._MinStorage
@@ -18602,7 +18602,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Qps(self):
-        """该规格的预估QPS
+        r"""该规格的预估QPS
         :rtype: int
         """
         return self._Qps
@@ -18613,7 +18613,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Pid(self):
-        """【该字段废弃】
+        r"""【该字段废弃】
         :rtype: int
         """
         return self._Pid
@@ -18624,7 +18624,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def Type(self):
-        """机器类型
+        r"""机器类型
         :rtype: str
         """
         return self._Type
@@ -18635,7 +18635,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def MajorVersion(self):
-        """PostgreSQL的主要版本编号
+        r"""PostgreSQL的主要版本编号
         :rtype: str
         """
         return self._MajorVersion
@@ -18646,7 +18646,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def KernelVersion(self):
-        """PostgreSQL的内核版本编号
+        r"""PostgreSQL的内核版本编号
         :rtype: str
         """
         return self._KernelVersion
@@ -18657,7 +18657,7 @@ class SpecItemInfo(AbstractModel):
 
     @property
     def IsSupportTDE(self):
-        """是否支持TDE数据加密功能，0-不支持，1-支持
+        r"""是否支持TDE数据加密功能，0-不支持，1-支持
         :rtype: int
         """
         return self._IsSupportTDE
@@ -18692,7 +18692,7 @@ class SpecItemInfo(AbstractModel):
 
 
 class SwitchDBInstancePrimaryRequest(AbstractModel):
-    """SwitchDBInstancePrimary请求参数结构体
+    r"""SwitchDBInstancePrimary请求参数结构体
 
     """
 
@@ -18722,7 +18722,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -18733,7 +18733,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
     @property
     def Force(self):
-        """是否强制切换。强制切换时只要备节点可访问，无论主备延迟多大都会发起切换。只有SwitchTag为0时，才可使用立即切换。
+        r"""是否强制切换。强制切换时只要备节点可访问，无论主备延迟多大都会发起切换。只有SwitchTag为0时，才可使用立即切换。
 <li>默认：false</li>
         :rtype: bool
         """
@@ -18745,7 +18745,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """指定实例配置完成变更后的切换时间。
+        r"""指定实例配置完成变更后的切换时间。
 <li>0：立即切换 </li>
 <li>1：指定时间切换</li>
 <li>2：维护时间窗口内切换</li>
@@ -18760,7 +18760,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        """切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchStartTime
@@ -18771,7 +18771,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        """切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+        r"""切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
         :rtype: str
         """
         return self._SwitchEndTime
@@ -18798,7 +18798,7 @@ class SwitchDBInstancePrimaryRequest(AbstractModel):
 
 
 class SwitchDBInstancePrimaryResponse(AbstractModel):
-    """SwitchDBInstancePrimary返回参数结构体
+    r"""SwitchDBInstancePrimary返回参数结构体
 
     """
 
@@ -18811,7 +18811,7 @@ class SwitchDBInstancePrimaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18826,7 +18826,7 @@ class SwitchDBInstancePrimaryResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """实例绑定的标签信息，包含标签键TagKey和标签值TagValue
+    r"""实例绑定的标签信息，包含标签键TagKey和标签值TagValue
 
     """
 
@@ -18842,7 +18842,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -18853,7 +18853,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -18877,7 +18877,7 @@ class Tag(AbstractModel):
 
 
 class TaskDetail(AbstractModel):
-    """任务的详情信息
+    r"""任务的详情信息
 
     """
 
@@ -18912,7 +18912,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def CurrentStep(self):
-        """当前执行的子任务步骤名称。
+        r"""当前执行的子任务步骤名称。
         :rtype: str
         """
         return self._CurrentStep
@@ -18923,7 +18923,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def AllSteps(self):
-        """当前任务所拥有的子步骤描述。
+        r"""当前任务所拥有的子步骤描述。
         :rtype: str
         """
         return self._AllSteps
@@ -18934,7 +18934,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def Input(self):
-        """任务的输入参数。
+        r"""任务的输入参数。
         :rtype: str
         """
         return self._Input
@@ -18945,7 +18945,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def Output(self):
-        """任务的输出参数。
+        r"""任务的输出参数。
         :rtype: str
         """
         return self._Output
@@ -18956,7 +18956,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """指定实例配置完成变更后的切换时间，默认值：0
+        r"""指定实例配置完成变更后的切换时间，默认值：0
 0:   此任务不需要切换
 1：立即切换
 2：指定时间切换
@@ -18971,7 +18971,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def SwitchTime(self):
-        """指定的切换时间。
+        r"""指定的切换时间。
         :rtype: str
         """
         return self._SwitchTime
@@ -18982,7 +18982,7 @@ class TaskDetail(AbstractModel):
 
     @property
     def Message(self):
-        """任务的提示信息。
+        r"""任务的提示信息。
         :rtype: str
         """
         return self._Message
@@ -19011,7 +19011,7 @@ class TaskDetail(AbstractModel):
 
 
 class TaskSet(AbstractModel):
-    """任务列表信息
+    r"""任务列表信息
 
     """
 
@@ -19045,7 +19045,7 @@ class TaskSet(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID。
+        r"""任务ID。
         :rtype: int
         """
         return self._TaskId
@@ -19056,7 +19056,7 @@ class TaskSet(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务的类型。
+        r"""任务的类型。
         :rtype: str
         """
         return self._TaskType
@@ -19067,7 +19067,7 @@ class TaskSet(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """任务实例的实例ID。
+        r"""任务实例的实例ID。
         :rtype: str
         """
         return self._DBInstanceId
@@ -19078,7 +19078,7 @@ class TaskSet(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务的开始时间。
+        r"""任务的开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -19089,7 +19089,7 @@ class TaskSet(AbstractModel):
 
     @property
     def EndTime(self):
-        """任务的结束时间。
+        r"""任务的结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -19100,7 +19100,7 @@ class TaskSet(AbstractModel):
 
     @property
     def Status(self):
-        """任务的运行状态，包括Running,Success,WaitSwitch,Fail,Pause。
+        r"""任务的运行状态，包括Running,Success,WaitSwitch,Fail,Pause。
         :rtype: str
         """
         return self._Status
@@ -19111,7 +19111,7 @@ class TaskSet(AbstractModel):
 
     @property
     def Progress(self):
-        """任务的执行进度，取值范围0-100。
+        r"""任务的执行进度，取值范围0-100。
         :rtype: int
         """
         return self._Progress
@@ -19122,7 +19122,7 @@ class TaskSet(AbstractModel):
 
     @property
     def TaskDetail(self):
-        """任务的详情信息
+        r"""任务的详情信息
         :rtype: :class:`tencentcloud.postgres.v20170312.models.TaskDetail`
         """
         return self._TaskDetail
@@ -19154,7 +19154,7 @@ class TaskSet(AbstractModel):
 
 
 class UnlockAccountRequest(AbstractModel):
-    """UnlockAccount请求参数结构体
+    r"""UnlockAccount请求参数结构体
 
     """
 
@@ -19170,7 +19170,7 @@ class UnlockAccountRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	
+        r"""实例ID。	
         :rtype: str
         """
         return self._DBInstanceId
@@ -19181,7 +19181,7 @@ class UnlockAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """账号名称。
+        r"""账号名称。
         :rtype: str
         """
         return self._UserName
@@ -19205,7 +19205,7 @@ class UnlockAccountRequest(AbstractModel):
 
 
 class UnlockAccountResponse(AbstractModel):
-    """UnlockAccount返回参数结构体
+    r"""UnlockAccount返回参数结构体
 
     """
 
@@ -19218,7 +19218,7 @@ class UnlockAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19233,7 +19233,7 @@ class UnlockAccountResponse(AbstractModel):
 
 
 class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
-    """UpgradeDBInstanceKernelVersion请求参数结构体
+    r"""UpgradeDBInstanceKernelVersion请求参数结构体
 
     """
 
@@ -19269,7 +19269,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -19280,7 +19280,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def TargetDBKernelVersion(self):
-        """升级的目标内核版本号。可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)的返回字段AvailableUpgradeTarget获取。
+        r"""升级的目标内核版本号。可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)的返回字段AvailableUpgradeTarget获取。
 
         :rtype: str
         """
@@ -19292,7 +19292,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        """指定实例升级内核版本号完成后的切换时间。可选值:
+        r"""指定实例升级内核版本号完成后的切换时间。可选值:
 <li>0：立即切换</li>
 <li>1：指定时间切换</li>
 <li>2：维护时间窗口内切换</li>
@@ -19307,7 +19307,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        """切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        r"""切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :rtype: str
         """
         return self._SwitchStartTime
@@ -19318,7 +19318,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        """切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+        r"""切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
         :rtype: str
         """
         return self._SwitchEndTime
@@ -19329,7 +19329,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """是否对本次升级实例内核版本号操作执行预检查。
+        r"""是否对本次升级实例内核版本号操作执行预检查。
 <li>true：执行预检查操作，不升级内核版本号。检查项目包含请求参数、内核版本号兼容性、实例参数等。</li>
 <li>false：发送正常请求（默认值），通过检查后直接升级内核版本号。</li>
 默认值：false
@@ -19360,7 +19360,7 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
 
 
 class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
-    """UpgradeDBInstanceKernelVersion返回参数结构体
+    r"""UpgradeDBInstanceKernelVersion返回参数结构体
 
     """
 
@@ -19373,7 +19373,7 @@ class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19388,7 +19388,7 @@ class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
 
 
 class UpgradeDBInstanceMajorVersionRequest(AbstractModel):
-    """UpgradeDBInstanceMajorVersion请求参数结构体
+    r"""UpgradeDBInstanceMajorVersion请求参数结构体
 
     """
 
@@ -19439,7 +19439,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def DBInstanceId(self):
-        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -19450,7 +19450,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def TargetDBKernelVersion(self):
-        """目标内核版本号，可以通过API [DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取可以升级的目标内核版本号。
+        r"""目标内核版本号，可以通过API [DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取可以升级的目标内核版本号。
         :rtype: str
         """
         return self._TargetDBKernelVersion
@@ -19461,7 +19461,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def UpgradeCheck(self):
-        """是否为校验模式，若UpgradeCheck为True，表示仅进行内核版本兼容性检查，不会进行实质性的升级操作，对原实例无影响。检查结果可以通过升级日志查看。
+        r"""是否为校验模式，若UpgradeCheck为True，表示仅进行内核版本兼容性检查，不会进行实质性的升级操作，对原实例无影响。检查结果可以通过升级日志查看。
         :rtype: bool
         """
         return self._UpgradeCheck
@@ -19472,7 +19472,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def BackupBeforeUpgrade(self):
-        """升级前备份选项。True，表示升级前需要创建全量备份，False，表示升级前不需要创建全量备份。当实例已有备份集可以恢复到升级前的状态时，可选择False，否则需要指定为True。UpgradeCheck为True时，此参数无效。
+        r"""升级前备份选项。True，表示升级前需要创建全量备份，False，表示升级前不需要创建全量备份。当实例已有备份集可以恢复到升级前的状态时，可选择False，否则需要指定为True。UpgradeCheck为True时，此参数无效。
         :rtype: bool
         """
         return self._BackupBeforeUpgrade
@@ -19483,7 +19483,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def StatisticsRefreshOption(self):
-        """统计信息收集选项，对主例运行 ANALYZE 以在升级后更新系统统计信息。可选值包括，
+        r"""统计信息收集选项，对主例运行 ANALYZE 以在升级后更新系统统计信息。可选值包括，
 0：不需要收集统计信息；
 1：实例恢复写之前收集统计信息；
 3：实例恢复写之后收集统计信息。
@@ -19498,7 +19498,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def ExtensionUpgradeOption(self):
-        """插件升级选项，pg_upgrade不会升级任何插件，需要在升级完成后在创建过插件的库上执行"ALTER EXTENSION UPDATE"。发起升级实例大版本时可以指定在实例恢复写前/后是否需要升级任务自动升级插件版本。可选值包括：
+        r"""插件升级选项，pg_upgrade不会升级任何插件，需要在升级完成后在创建过插件的库上执行"ALTER EXTENSION UPDATE"。发起升级实例大版本时可以指定在实例恢复写前/后是否需要升级任务自动升级插件版本。可选值包括：
 0：不需要自动升级插件；
 1：恢复写之前升级插件；
 2：恢复写之后升级插件。
@@ -19513,7 +19513,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def UpgradeTimeOption(self):
-        """升级时间选项，升级过程中会有一段时间实例只读，并会有一次秒级闪断，发起升级时需要选择这段影响的时间窗。可选值包括：
+        r"""升级时间选项，升级过程中会有一段时间实例只读，并会有一次秒级闪断，发起升级时需要选择这段影响的时间窗。可选值包括：
 0：自动执行，不需要指定时间窗；
 1：指定本次升级任务的时间窗，通过参数UpgradeTimeBegin和UpgradeTimeEnd设置；
 2：在实例运维时间窗内执行。
@@ -19528,7 +19528,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def UpgradeTimeBegin(self):
-        """升级时间窗开始时间，时间格式：HH:MM:SS，例如：01:00:00。当UpgradeTimeOption为1时，该参数有效。
+        r"""升级时间窗开始时间，时间格式：HH:MM:SS，例如：01:00:00。当UpgradeTimeOption为1时，该参数有效。
 UpgradeCheck为True时，此参数无效。
         :rtype: str
         """
@@ -19540,7 +19540,7 @@ UpgradeCheck为True时，此参数无效。
 
     @property
     def UpgradeTimeEnd(self):
-        """升级时间窗截止时间，时间格式：HH:MM:SS，例如：02:00:00。当UpgradeTimeOption为1时，该参数有效。
+        r"""升级时间窗截止时间，时间格式：HH:MM:SS，例如：02:00:00。当UpgradeTimeOption为1时，该参数有效。
 UpgradeCheck为True时，此参数无效。
         :rtype: str
         """
@@ -19572,7 +19572,7 @@ UpgradeCheck为True时，此参数无效。
 
 
 class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
-    """UpgradeDBInstanceMajorVersion返回参数结构体
+    r"""UpgradeDBInstanceMajorVersion返回参数结构体
 
     """
 
@@ -19585,7 +19585,7 @@ class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19600,7 +19600,7 @@ class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
 
 
 class Version(AbstractModel):
-    """数据库版本号信息
+    r"""数据库版本号信息
 
     """
 
@@ -19637,7 +19637,7 @@ DEPRECATED：已弃用。
 
     @property
     def DBEngine(self):
-        """数据库引擎，支持：
+        r"""数据库引擎，支持：
 1、postgresql（云数据库PostgreSQL）；
 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
         :rtype: str
@@ -19650,7 +19650,7 @@ DEPRECATED：已弃用。
 
     @property
     def DBVersion(self):
-        """数据库版本，例如：12.4
+        r"""数据库版本，例如：12.4
         :rtype: str
         """
         return self._DBVersion
@@ -19661,7 +19661,7 @@ DEPRECATED：已弃用。
 
     @property
     def DBMajorVersion(self):
-        """数据库主要版本，例如：12
+        r"""数据库主要版本，例如：12
         :rtype: str
         """
         return self._DBMajorVersion
@@ -19672,7 +19672,7 @@ DEPRECATED：已弃用。
 
     @property
     def DBKernelVersion(self):
-        """数据库内核版本，例如：v12.4_r1.3
+        r"""数据库内核版本，例如：v12.4_r1.3
         :rtype: str
         """
         return self._DBKernelVersion
@@ -19683,7 +19683,7 @@ DEPRECATED：已弃用。
 
     @property
     def SupportedFeatureNames(self):
-        """数据库内核支持的特性列表。例如，
+        r"""数据库内核支持的特性列表。例如，
 TDE：支持数据加密。
         :rtype: list of str
         """
@@ -19695,7 +19695,7 @@ TDE：支持数据加密。
 
     @property
     def Status(self):
-        """数据库版本状态，包括：
+        r"""数据库版本状态，包括：
 AVAILABLE：可用；
 UPGRADE_ONLY：不可创建，此版本仅可升级至高版本；
 DEPRECATED：已弃用。
@@ -19709,7 +19709,7 @@ DEPRECATED：已弃用。
 
     @property
     def AvailableUpgradeTarget(self):
-        """该数据库版本（DBKernelVersion）可以升级到的版本号列表。其中包含可升级的小版本号和可升级的大版本号（完整内核版本格式示例：v15.1_v1.6）。
+        r"""该数据库版本（DBKernelVersion）可以升级到的版本号列表。其中包含可升级的小版本号和可升级的大版本号（完整内核版本格式示例：v15.1_v1.6）。
         :rtype: list of str
         """
         return self._AvailableUpgradeTarget
@@ -19738,7 +19738,7 @@ DEPRECATED：已弃用。
 
 
 class Xlog(AbstractModel):
-    """数据库Xlog信息
+    r"""数据库Xlog信息
 
     """
 
@@ -19766,7 +19766,7 @@ class Xlog(AbstractModel):
 
     @property
     def Id(self):
-        """备份文件唯一标识
+        r"""备份文件唯一标识
         :rtype: int
         """
         return self._Id
@@ -19777,7 +19777,7 @@ class Xlog(AbstractModel):
 
     @property
     def StartTime(self):
-        """文件生成的开始时间
+        r"""文件生成的开始时间
         :rtype: str
         """
         return self._StartTime
@@ -19788,7 +19788,7 @@ class Xlog(AbstractModel):
 
     @property
     def EndTime(self):
-        """文件生成的结束时间
+        r"""文件生成的结束时间
         :rtype: str
         """
         return self._EndTime
@@ -19799,7 +19799,7 @@ class Xlog(AbstractModel):
 
     @property
     def InternalAddr(self):
-        """内网下载地址
+        r"""内网下载地址
         :rtype: str
         """
         return self._InternalAddr
@@ -19810,7 +19810,7 @@ class Xlog(AbstractModel):
 
     @property
     def ExternalAddr(self):
-        """外网下载地址
+        r"""外网下载地址
         :rtype: str
         """
         return self._ExternalAddr
@@ -19821,7 +19821,7 @@ class Xlog(AbstractModel):
 
     @property
     def Size(self):
-        """备份文件大小
+        r"""备份文件大小
         :rtype: int
         """
         return self._Size
@@ -19849,7 +19849,7 @@ class Xlog(AbstractModel):
 
 
 class ZoneInfo(AbstractModel):
-    """描述可用区的编码和状态信息
+    r"""描述可用区的编码和状态信息
 
     """
 
@@ -19882,7 +19882,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def Zone(self):
-        """该可用区的英文名称
+        r"""该可用区的英文名称
         :rtype: str
         """
         return self._Zone
@@ -19893,7 +19893,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def ZoneName(self):
-        """该可用区的中文名称
+        r"""该可用区的中文名称
         :rtype: str
         """
         return self._ZoneName
@@ -19904,7 +19904,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def ZoneId(self):
-        """该可用区对应的数字编号
+        r"""该可用区对应的数字编号
         :rtype: int
         """
         return self._ZoneId
@@ -19915,7 +19915,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def ZoneState(self):
-        """可用状态包含，
+        r"""可用状态包含，
 UNAVAILABLE：不可用。
 AVAILABLE：可用。
 SELLOUT：售罄。
@@ -19930,7 +19930,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def ZoneSupportIpv6(self):
-        """该可用区是否支持Ipv6
+        r"""该可用区是否支持Ipv6
         :rtype: int
         """
         return self._ZoneSupportIpv6
@@ -19941,7 +19941,7 @@ SUPPORTMODIFYONLY：支持变配。
 
     @property
     def StandbyZoneSet(self):
-        """该可用区对应的备可用区集合
+        r"""该可用区对应的备可用区集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

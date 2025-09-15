@@ -27,7 +27,7 @@ class DcdbClient(AbstractClient):
 
 
     def ActiveHourDCDBInstance(self, request):
-        """解隔离TDSQL按量计费实例
+        r"""解隔离TDSQL按量计费实例
 
         :param request: Request instance for ActiveHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ActiveHourDCDBInstanceRequest`
@@ -50,7 +50,7 @@ class DcdbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定云资源。
+        r"""本接口 (AssociateSecurityGroups) 用于安全组批量绑定云资源。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.AssociateSecurityGroupsRequest`
@@ -73,7 +73,7 @@ class DcdbClient(AbstractClient):
 
 
     def CancelDcnJob(self, request):
-        """本接口（CancelDcnJob）用于取消DCN同步
+        r"""本接口（CancelDcnJob）用于取消DCN同步
 
         :param request: Request instance for CancelDcnJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CancelDcnJobRequest`
@@ -96,7 +96,7 @@ class DcdbClient(AbstractClient):
 
 
     def CancelOnlineDDLJob(self, request):
-        """取消 Online DDL 任务
+        r"""取消 Online DDL 任务
 
         :param request: Request instance for CancelOnlineDDLJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CancelOnlineDDLJobRequest`
@@ -119,7 +119,7 @@ class DcdbClient(AbstractClient):
 
 
     def CloneAccount(self, request):
-        """本接口（CloneAccount）用于克隆实例账户。
+        r"""本接口（CloneAccount）用于克隆实例账户。
 
         :param request: Request instance for CloneAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountRequest`
@@ -142,7 +142,7 @@ class DcdbClient(AbstractClient):
 
 
     def CloseDBExtranetAccess(self, request):
-        """本接口(CloseDBExtranetAccess)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问，查询实例列表接口将不返回对应实例的外网域名和端口信息。
+        r"""本接口(CloseDBExtranetAccess)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问，查询实例列表接口将不返回对应实例的外网域名和端口信息。
 
         :param request: Request instance for CloseDBExtranetAccess.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CloseDBExtranetAccessRequest`
@@ -165,7 +165,7 @@ class DcdbClient(AbstractClient):
 
 
     def CopyAccountPrivileges(self, request):
-        """本接口（CopyAccountPrivileges）用于复制云数据库账号的权限。
+        r"""本接口（CopyAccountPrivileges）用于复制云数据库账号的权限。
         注意：相同用户名，不同Host是不同的账号，Readonly属性相同的账号之间才能复制权限。
 
         :param request: Request instance for CopyAccountPrivileges.
@@ -189,7 +189,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """本接口（CreateAccount）用于创建云数据库账号。一个实例可以创建多个不同的账号，相同的用户名+不同的host是不同的账号。
+        r"""本接口（CreateAccount）用于创建云数据库账号。一个实例可以创建多个不同的账号，相同的用户名+不同的host是不同的账号。
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateAccountRequest`
@@ -212,7 +212,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDCDBInstance(self, request):
-        """本接口（CreateDCDBInstance）用于创建包年包月的TDSQL实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
+        r"""本接口（CreateDCDBInstance）用于创建包年包月的TDSQL实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
 
         :param request: Request instance for CreateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDCDBInstanceRequest`
@@ -235,7 +235,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDedicatedClusterDCDBInstance(self, request):
-        """创建TDSQL独享集群实例
+        r"""创建TDSQL独享集群实例
 
         :param request: Request instance for CreateDedicatedClusterDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceRequest`
@@ -258,7 +258,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateHourDCDBInstance(self, request):
-        """创建TDSQL按量计费实例
+        r"""创建TDSQL按量计费实例
 
         :param request: Request instance for CreateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateHourDCDBInstanceRequest`
@@ -281,7 +281,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateOnlineDDLJob(self, request):
-        """创建在线DDL任务
+        r"""创建在线DDL任务
 
         :param request: Request instance for CreateOnlineDDLJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobRequest`
@@ -304,7 +304,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateTmpDCDBInstance(self, request):
-        """回档TDSQL实例
+        r"""回档TDSQL实例
 
         :param request: Request instance for CreateTmpDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateTmpDCDBInstanceRequest`
@@ -327,7 +327,7 @@ class DcdbClient(AbstractClient):
 
 
     def DeleteAccount(self, request):
-        """本接口（DeleteAccount）用于删除云数据库账号。用户名+host唯一确定一个账号。
+        r"""本接口（DeleteAccount）用于删除云数据库账号。用户名+host唯一确定一个账号。
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DeleteAccountRequest`
@@ -350,7 +350,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        """本接口（DescribeAccountPrivileges）用于查询云数据库账号权限。
+        r"""本接口（DescribeAccountPrivileges）用于查询云数据库账号权限。
         注意：注意：相同用户名，不同Host是不同的账号。
 
         :param request: Request instance for DescribeAccountPrivileges.
@@ -374,7 +374,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """本接口（DescribeAccounts）用于查询指定云数据库实例的账号列表。
+        r"""本接口（DescribeAccounts）用于查询指定云数据库实例的账号列表。
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountsRequest`
@@ -397,7 +397,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeBackupConfigs(self, request):
-        """本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
+        r"""本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
 
         :param request: Request instance for DescribeBackupConfigs.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupConfigsRequest`
@@ -420,7 +420,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """本接口(DescribeBackupFiles)用于查看备份文件列表。
+        r"""本接口(DescribeBackupFiles)用于查看备份文件列表。
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesRequest`
@@ -443,7 +443,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBEncryptAttributes(self, request):
-        """本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
+        r"""本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
 
         :param request: Request instance for DescribeDBEncryptAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesRequest`
@@ -466,7 +466,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBLogFiles(self, request):
-        """本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
+        r"""本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
 
         :param request: Request instance for DescribeDBLogFiles.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBLogFilesRequest`
@@ -489,7 +489,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBParameters(self, request):
-        """本接口(DescribeDBParameters)用于获取数据库的当前参数设置。
+        r"""本接口(DescribeDBParameters)用于获取数据库的当前参数设置。
 
         :param request: Request instance for DescribeDBParameters.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBParametersRequest`
@@ -512,7 +512,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """本接口（DescribeDBSecurityGroups）用于查询实例安全组信息
+        r"""本接口（DescribeDBSecurityGroups）用于查询实例安全组信息
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSecurityGroupsRequest`
@@ -535,7 +535,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSlowLogs(self, request):
-        """本接口(DescribeDBSlowLogs)用于查询慢查询日志列表。
+        r"""本接口(DescribeDBSlowLogs)用于查询慢查询日志列表。
 
         :param request: Request instance for DescribeDBSlowLogs.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsRequest`
@@ -558,7 +558,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSyncMode(self, request):
-        """本接口（DescribeDBSyncMode）用于查询云数据库实例的同步模式。
+        r"""本接口（DescribeDBSyncMode）用于查询云数据库实例的同步模式。
 
         :param request: Request instance for DescribeDBSyncMode.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSyncModeRequest`
@@ -581,7 +581,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBTmpInstances(self, request):
-        """本接口（DescribeDBTmpInstances）用于获取实例回档生成的临时实例
+        r"""本接口（DescribeDBTmpInstances）用于获取实例回档生成的临时实例
 
         :param request: Request instance for DescribeDBTmpInstances.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBTmpInstancesRequest`
@@ -604,7 +604,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBBinlogTime(self, request):
-        """获取实例回档时可选的时间范围
+        r"""获取实例回档时可选的时间范围
 
         :param request: Request instance for DescribeDCDBBinlogTime.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBBinlogTimeRequest`
@@ -627,7 +627,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstanceDetail(self, request):
-        """本接口（DescribeDCDBInstanceDetail）用于获取TDSQL实例详情
+        r"""本接口（DescribeDCDBInstanceDetail）用于获取TDSQL实例详情
 
         :param request: Request instance for DescribeDCDBInstanceDetail.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailRequest`
@@ -650,7 +650,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstanceNodeInfo(self, request):
-        """本接口（DescribeDCDBInstanceNodeInfo）用于获取实例节点信息
+        r"""本接口（DescribeDCDBInstanceNodeInfo）用于获取实例节点信息
 
         :param request: Request instance for DescribeDCDBInstanceNodeInfo.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoRequest`
@@ -673,7 +673,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstances(self, request):
-        """查询云数据库实例列表，支持通过项目ID、实例ID、内网地址、实例名称等来筛选实例。
+        r"""查询云数据库实例列表，支持通过项目ID、实例ID、内网地址、实例名称等来筛选实例。
         如果不指定任何筛选条件，则默认返回10条实例记录，单次请求最多支持返回100条实例记录。
 
         :param request: Request instance for DescribeDCDBInstances.
@@ -697,7 +697,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBPrice(self, request):
-        """本接口（DescribeDCDBPrice）用于在购买实例前，查询实例的价格。
+        r"""本接口（DescribeDCDBPrice）用于在购买实例前，查询实例的价格。
 
         :param request: Request instance for DescribeDCDBPrice.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBPriceRequest`
@@ -720,7 +720,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBRenewalPrice(self, request):
-        """本接口（DescribeDCDBRenewalPrice）用于在续费分布式数据库实例时，查询续费的价格。
+        r"""本接口（DescribeDCDBRenewalPrice）用于在续费分布式数据库实例时，查询续费的价格。
 
         :param request: Request instance for DescribeDCDBRenewalPrice.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBRenewalPriceRequest`
@@ -743,7 +743,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBSaleInfo(self, request):
-        """本接口(DescribeDCDBSaleInfo)用于查询分布式数据库可售卖的地域和可用区信息。
+        r"""本接口(DescribeDCDBSaleInfo)用于查询分布式数据库可售卖的地域和可用区信息。
 
         :param request: Request instance for DescribeDCDBSaleInfo.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBSaleInfoRequest`
@@ -766,7 +766,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBShards(self, request):
-        """本接口（DescribeDCDBShards）用于查询云数据库实例的分片信息。
+        r"""本接口（DescribeDCDBShards）用于查询云数据库实例的分片信息。
 
         :param request: Request instance for DescribeDCDBShards.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBShardsRequest`
@@ -789,7 +789,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBUpgradePrice(self, request):
-        """本接口（DescribeDCDBUpgradePrice）用于查询变配分布式数据库实例价格。
+        r"""本接口（DescribeDCDBUpgradePrice）用于查询变配分布式数据库实例价格。
 
         :param request: Request instance for DescribeDCDBUpgradePrice.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBUpgradePriceRequest`
@@ -812,7 +812,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabaseObjects(self, request):
-        """本接口（DescribeDatabaseObjects）用于查询云数据库实例的数据库中的对象列表，包含表、存储过程、视图和函数。
+        r"""本接口（DescribeDatabaseObjects）用于查询云数据库实例的数据库中的对象列表，包含表、存储过程、视图和函数。
 
         :param request: Request instance for DescribeDatabaseObjects.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseObjectsRequest`
@@ -835,7 +835,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabaseTable(self, request):
-        """本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
+        r"""本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
 
         :param request: Request instance for DescribeDatabaseTable.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseTableRequest`
@@ -858,7 +858,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+        r"""本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabasesRequest`
@@ -881,7 +881,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDcnDetail(self, request):
-        """获取实例灾备详情
+        r"""获取实例灾备详情
 
         :param request: Request instance for DescribeDcnDetail.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDcnDetailRequest`
@@ -904,7 +904,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeFileDownloadUrl(self, request):
-        """本接口(DescribeFileDownloadUrl)用于获取数据库指定备份或日志文件的下载连接。
+        r"""本接口(DescribeFileDownloadUrl)用于获取数据库指定备份或日志文件的下载连接。
 
         :param request: Request instance for DescribeFileDownloadUrl.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFileDownloadUrlRequest`
@@ -927,7 +927,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeFlow(self, request):
-        """本接口（DescribeFlow）用于查询流程状态
+        r"""本接口（DescribeFlow）用于查询流程状态
 
         :param request: Request instance for DescribeFlow.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowRequest`
@@ -950,7 +950,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeInstanceSSLAttributes(self, request):
-        """本接口（DescribeInstanceSSLAttributes）用于拉取实例SSL认证属性
+        r"""本接口（DescribeInstanceSSLAttributes）用于拉取实例SSL认证属性
 
         :param request: Request instance for DescribeInstanceSSLAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeInstanceSSLAttributesRequest`
@@ -973,7 +973,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeLogFileRetentionPeriod(self, request):
-        """本接口(DescribeLogFileRetentionPeriod)用于查看数据库备份日志的备份天数的设置情况。
+        r"""本接口(DescribeLogFileRetentionPeriod)用于查看数据库备份日志的备份天数的设置情况。
 
         :param request: Request instance for DescribeLogFileRetentionPeriod.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeLogFileRetentionPeriodRequest`
@@ -996,7 +996,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeOnlineDDLJob(self, request):
-        """查询Online DDL 任务详情
+        r"""查询Online DDL 任务详情
 
         :param request: Request instance for DescribeOnlineDDLJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeOnlineDDLJobRequest`
@@ -1019,7 +1019,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """本接口（DescribeOrders）用于查询分布式数据库订单信息。传入订单ID来查询订单关联的分布式数据库实例，和对应的任务流程ID。
+        r"""本接口（DescribeOrders）用于查询分布式数据库订单信息。传入订单ID来查询订单关联的分布式数据库实例，和对应的任务流程ID。
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeOrdersRequest`
@@ -1042,7 +1042,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeProcessList(self, request):
-        """本接口 (DescribeProcessList) 用于查询当前正在运行的线程（连接/查询）信息。
+        r"""本接口 (DescribeProcessList) 用于查询当前正在运行的线程（连接/查询）信息。
 
         - 可以根据客户端IP，DB，执行时间等信息来查询实例正在运行的线程信息。过滤信息详细请见过滤器Filter。
         - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的线程信息。
@@ -1068,7 +1068,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """本接口（DescribeProjectSecurityGroups）用于查询项目安全组信息
+        r"""本接口（DescribeProjectSecurityGroups）用于查询项目安全组信息
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectSecurityGroupsRequest`
@@ -1091,7 +1091,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """本接口（DescribeProjects）用于查询项目列表
+        r"""本接口（DescribeProjects）用于查询项目列表
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectsRequest`
@@ -1114,7 +1114,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeShardSpec(self, request):
-        """查询可创建的分布式数据库可售卖的分片规格配置。
+        r"""查询可创建的分布式数据库可售卖的分片规格配置。
 
         :param request: Request instance for DescribeShardSpec.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeShardSpecRequest`
@@ -1137,7 +1137,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeUserTasks(self, request):
-        """本接口（DescribeUserTasks）用于拉取用户任务列表
+        r"""本接口（DescribeUserTasks）用于拉取用户任务列表
 
         :param request: Request instance for DescribeUserTasks.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeUserTasksRequest`
@@ -1160,7 +1160,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyDCDBInstance(self, request):
-        """本接口(DestroyDCDBInstance)用于销毁已隔离的TDSQL包年包月实例。
+        r"""本接口(DestroyDCDBInstance)用于销毁已隔离的TDSQL包年包月实例。
 
         :param request: Request instance for DestroyDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
@@ -1183,7 +1183,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyHourDCDBInstance(self, request):
-        """本接口（DestroyHourDCDBInstance）用于TDSQL销毁按量计费实例。
+        r"""本接口（DestroyHourDCDBInstance）用于TDSQL销毁按量计费实例。
 
         :param request: Request instance for DestroyHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceRequest`
@@ -1206,7 +1206,7 @@ class DcdbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+        r"""本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DisassociateSecurityGroupsRequest`
@@ -1229,7 +1229,7 @@ class DcdbClient(AbstractClient):
 
 
     def FlushBinlog(self, request):
-        """相当于在所有分片的mysqld中执行flush logs，完成切分的binlog将展示在各个分片控制台binlog列表里。
+        r"""相当于在所有分片的mysqld中执行flush logs，完成切分的binlog将展示在各个分片控制台binlog列表里。
 
         :param request: Request instance for FlushBinlog.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.FlushBinlogRequest`
@@ -1252,7 +1252,7 @@ class DcdbClient(AbstractClient):
 
 
     def GrantAccountPrivileges(self, request):
-        """本接口（GrantAccountPrivileges）用于给云数据库账号赋权。
+        r"""本接口（GrantAccountPrivileges）用于给云数据库账号赋权。
         注意：相同用户名，不同Host是不同的账号。
 
         :param request: Request instance for GrantAccountPrivileges.
@@ -1276,7 +1276,7 @@ class DcdbClient(AbstractClient):
 
 
     def InitDCDBInstances(self, request):
-        """本接口(InitDCDBInstances)用于初始化云数据库实例，包括设置默认字符集、表名大小写敏感等。
+        r"""本接口(InitDCDBInstances)用于初始化云数据库实例，包括设置默认字符集、表名大小写敏感等。
 
         :param request: Request instance for InitDCDBInstances.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.InitDCDBInstancesRequest`
@@ -1299,7 +1299,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateDCDBInstance(self, request):
-        """本接口(IsolateDCDBInstance)用于隔离分布式数据库TDSQL实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+        r"""本接口(IsolateDCDBInstance)用于隔离分布式数据库TDSQL实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
 
         :param request: Request instance for IsolateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDCDBInstanceRequest`
@@ -1322,7 +1322,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateDedicatedDBInstance(self, request):
-        """本接口（IsolateDedicatedDBInstance）用于隔离独享云数据库实例。
+        r"""本接口（IsolateDedicatedDBInstance）用于隔离独享云数据库实例。
 
         :param request: Request instance for IsolateDedicatedDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDedicatedDBInstanceRequest`
@@ -1345,7 +1345,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateHourDCDBInstance(self, request):
-        """隔离TDSQL按量计费实例
+        r"""隔离TDSQL按量计费实例
 
         :param request: Request instance for IsolateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateHourDCDBInstanceRequest`
@@ -1368,7 +1368,7 @@ class DcdbClient(AbstractClient):
 
 
     def KillSession(self, request):
-        """本接口（KillSession）用于杀死指定会话。
+        r"""本接口（KillSession）用于杀死指定会话。
 
         :param request: Request instance for KillSession.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.KillSessionRequest`
@@ -1391,7 +1391,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountConfig(self, request):
-        """修改账号的一些配置，比如 max_user_connections
+        r"""修改账号的一些配置，比如 max_user_connections
 
         :param request: Request instance for ModifyAccountConfig.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigRequest`
@@ -1414,7 +1414,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountDescription(self, request):
-        """本接口（ModifyAccountDescription）用于修改云数据库账号备注。
+        r"""本接口（ModifyAccountDescription）用于修改云数据库账号备注。
         注意：相同用户名，不同Host是不同的账号。
 
         :param request: Request instance for ModifyAccountDescription.
@@ -1438,7 +1438,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
+        r"""本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
 
         **注意**
         - 系统保留库："mysql"，只开放["SELECT"]权限
@@ -1466,7 +1466,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyBackupConfigs(self, request):
-        """本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
+        r"""本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
 
         1. 修改数据库超期备份配置，目前按年、按月、按日只支持一种，存在互斥关系，如当前策略按年备份，如果传入按月备份策略将会覆盖当前的按年备份策略，务必注意。
 
@@ -1491,7 +1491,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBEncryptAttributes(self, request):
-        """本接口(ModifyDBEncryptAttributes)用于修改实例数据加密。
+        r"""本接口(ModifyDBEncryptAttributes)用于修改实例数据加密。
 
         :param request: Request instance for ModifyDBEncryptAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBEncryptAttributesRequest`
@@ -1514,7 +1514,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """本接口（ModifyDBInstanceName）用于修改实例名字
+        r"""本接口（ModifyDBInstanceName）用于修改实例名字
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceNameRequest`
@@ -1537,7 +1537,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口（ModifyDBInstanceSecurityGroups）用于修改云数据库安全组
+        r"""本接口（ModifyDBInstanceSecurityGroups）用于修改云数据库安全组
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1560,7 +1560,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstancesProject(self, request):
-        """本接口（ModifyDBInstancesProject）用于修改云数据库实例所属项目。
+        r"""本接口（ModifyDBInstancesProject）用于修改云数据库实例所属项目。
 
         :param request: Request instance for ModifyDBInstancesProject.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstancesProjectRequest`
@@ -1583,7 +1583,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBParameters(self, request):
-        """本接口(ModifyDBParameters)用于修改数据库参数。
+        r"""本接口(ModifyDBParameters)用于修改数据库参数。
 
         :param request: Request instance for ModifyDBParameters.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBParametersRequest`
@@ -1606,7 +1606,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBSyncMode(self, request):
-        """本接口（ModifyDBSyncMode）用于修改云数据库实例的同步模式。
+        r"""本接口（ModifyDBSyncMode）用于修改云数据库实例的同步模式。
 
         :param request: Request instance for ModifyDBSyncMode.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBSyncModeRequest`
@@ -1629,7 +1629,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceNetwork(self, request):
-        """本接口（ModifyInstanceNetwork）用于修改实例所属网络。
+        r"""本接口（ModifyInstanceNetwork）用于修改实例所属网络。
 
         :param request: Request instance for ModifyInstanceNetwork.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceNetworkRequest`
@@ -1652,7 +1652,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceProtectedProperty(self, request):
-        """该接口用于修改实例的保护属性
+        r"""该接口用于修改实例的保护属性
 
         :param request: Request instance for ModifyInstanceProtectedProperty.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceProtectedPropertyRequest`
@@ -1675,7 +1675,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceSSLAttributes(self, request):
-        """本接口  （ModifyInstanceSSLAttributes）用于修改实例SSL认证功能属性
+        r"""本接口  （ModifyInstanceSSLAttributes）用于修改实例SSL认证功能属性
 
         :param request: Request instance for ModifyInstanceSSLAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceSSLAttributesRequest`
@@ -1698,7 +1698,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceVip(self, request):
-        """本接口（ModifyInstanceVip）用于修改实例Vip
+        r"""本接口（ModifyInstanceVip）用于修改实例Vip
 
         :param request: Request instance for ModifyInstanceVip.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVipRequest`
@@ -1721,7 +1721,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceVport(self, request):
-        """本接口（ModifyInstanceVport）用于修改实例VPORT
+        r"""本接口（ModifyInstanceVport）用于修改实例VPORT
 
         :param request: Request instance for ModifyInstanceVport.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVportRequest`
@@ -1744,7 +1744,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyRealServerAccessStrategy(self, request):
-        """本接口(ModifyRealServerAccessStrategy)用于修改云数据库的VPCGW到RS的访问策略。
+        r"""本接口(ModifyRealServerAccessStrategy)用于修改云数据库的VPCGW到RS的访问策略。
 
         **注意**
         - 修改策略后只对新建立的连接生效，老连接不受影响
@@ -1772,7 +1772,7 @@ class DcdbClient(AbstractClient):
 
 
     def OpenDBExtranetAccess(self, request):
-        """本接口（OpenDBExtranetAccess）用于开通云数据库实例的外网访问。开通外网访问后，您可通过外网域名和端口访问实例，可使用查询实例列表接口获取外网域名和端口信息。
+        r"""本接口（OpenDBExtranetAccess）用于开通云数据库实例的外网访问。开通外网访问后，您可通过外网域名和端口访问实例，可使用查询实例列表接口获取外网域名和端口信息。
 
         :param request: Request instance for OpenDBExtranetAccess.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.OpenDBExtranetAccessRequest`
@@ -1795,7 +1795,7 @@ class DcdbClient(AbstractClient):
 
 
     def RenewDCDBInstance(self, request):
-        """本接口（RenewDCDBInstance）用于续费分布式数据库实例。
+        r"""本接口（RenewDCDBInstance）用于续费分布式数据库实例。
 
         :param request: Request instance for RenewDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.RenewDCDBInstanceRequest`
@@ -1818,7 +1818,7 @@ class DcdbClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """本接口（ResetAccountPassword）用于重置云数据库账号的密码。
+        r"""本接口（ResetAccountPassword）用于重置云数据库账号的密码。
         注意：相同用户名，不同Host是不同的账号。
 
         :param request: Request instance for ResetAccountPassword.
@@ -1842,7 +1842,7 @@ class DcdbClient(AbstractClient):
 
 
     def SwitchDBInstanceHA(self, request):
-        """本接口(SwitchDBInstanceHA)用于实例主备切换。
+        r"""本接口(SwitchDBInstanceHA)用于实例主备切换。
 
         :param request: Request instance for SwitchDBInstanceHA.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.SwitchDBInstanceHARequest`
@@ -1865,7 +1865,7 @@ class DcdbClient(AbstractClient):
 
 
     def TerminateDedicatedDBInstance(self, request):
-        """本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
+        r"""本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
 
         :param request: Request instance for TerminateDedicatedDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceRequest`
@@ -1888,7 +1888,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeDCDBInstance(self, request):
-        """本接口（UpgradeDCDBInstance）用于升级分布式数据库实例。本接口完成下单和支付两个动作，如果发生支付失败的错误，调用用户账户相关接口中的支付订单接口（PayDeals）重新支付即可。
+        r"""本接口（UpgradeDCDBInstance）用于升级分布式数据库实例。本接口完成下单和支付两个动作，如果发生支付失败的错误，调用用户账户相关接口中的支付订单接口（PayDeals）重新支付即可。
 
         :param request: Request instance for UpgradeDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDCDBInstanceRequest`
@@ -1911,7 +1911,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeDedicatedDCDBInstance(self, request):
-        """本接口（UpgradeDedicatedDCDBInstance）用于升级TDSQL独享集群实例
+        r"""本接口（UpgradeDedicatedDCDBInstance）用于升级TDSQL独享集群实例
 
         :param request: Request instance for UpgradeDedicatedDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceRequest`
@@ -1934,7 +1934,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeHourDCDBInstance(self, request):
-        """本接口（UpgradeHourDCDBInstance）用于升级分布式数据库TDSQL按量计费实例。
+        r"""本接口（UpgradeHourDCDBInstance）用于升级分布式数据库TDSQL按量计费实例。
 
         :param request: Request instance for UpgradeHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeHourDCDBInstanceRequest`

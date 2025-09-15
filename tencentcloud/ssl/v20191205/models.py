@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApiGatewayInstanceDetail(AbstractModel):
-    """apiGateway实例详情
+    r"""apiGateway实例详情
 
     """
 
@@ -44,7 +44,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def ServiceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._ServiceId
@@ -55,7 +55,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def ServiceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._ServiceName
@@ -66,7 +66,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -77,7 +77,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -88,7 +88,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        """使用协议
+        r"""使用协议
         :rtype: str
         """
         return self._Protocol
@@ -115,7 +115,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
 
 class ApiGatewayInstanceList(AbstractModel):
-    """apigateway实例详情 - 异步关联云资源数据结构
+    r"""apigateway实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -137,7 +137,7 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -148,7 +148,7 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """apigateway实例详情	
+        r"""apigateway实例详情	
         :rtype: list of ApiGatewayInstanceDetail
         """
         return self._InstanceList
@@ -159,7 +159,7 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下apigateway实例总数	
+        r"""该地域下apigateway实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -170,7 +170,7 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
         :rtype: str
         """
         return self._Error
@@ -201,7 +201,7 @@ class ApiGatewayInstanceList(AbstractModel):
 
 
 class ApplyCertificateRequest(AbstractModel):
-    """ApplyCertificate请求参数结构体
+    r"""ApplyCertificate请求参数结构体
 
     """
 
@@ -259,7 +259,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def DvAuthMethod(self):
-        """证书域名验证方式：
+        r"""证书域名验证方式：
 DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
 DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
 FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
@@ -273,7 +273,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def DomainName(self):
-        """证书绑定的域名。
+        r"""证书绑定的域名。
         :rtype: str
         """
         return self._DomainName
@@ -284,7 +284,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ProjectId(self):
-        """证书关联的项目 ID。 默认为0（默认项目）
+        r"""证书关联的项目 ID。 默认为0（默认项目）
         :rtype: int
         """
         return self._ProjectId
@@ -295,7 +295,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def PackageType(self):
-        """证书类型， 可不传，目前仅支持类型83。83 = TrustAsia C1 DV Free。
+        r"""证书类型， 可不传，目前仅支持类型83。83 = TrustAsia C1 DV Free。
         :rtype: str
         """
         return self._PackageType
@@ -306,7 +306,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ContactEmail(self):
-        """证书订单关联邮箱。默认为腾讯云账号邮箱， 不存在则关联固定邮箱
+        r"""证书订单关联邮箱。默认为腾讯云账号邮箱， 不存在则关联固定邮箱
         :rtype: str
         """
         return self._ContactEmail
@@ -317,7 +317,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ContactPhone(self):
-        """证书关联手机号码，  不存在则关联固定手机号码
+        r"""证书关联手机号码，  不存在则关联固定手机号码
         :rtype: str
         """
         return self._ContactPhone
@@ -328,7 +328,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ValidityPeriod(self):
-        """证书有效期，默认3（月），目前仅支持3个月。
+        r"""证书有效期，默认3（月），目前仅支持3个月。
         :rtype: str
         """
         return self._ValidityPeriod
@@ -339,7 +339,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrEncryptAlgo(self):
-        """加密算法，取值为ECC、RSA， 默认为RSA
+        r"""加密算法，取值为ECC、RSA， 默认为RSA
         :rtype: str
         """
         return self._CsrEncryptAlgo
@@ -350,7 +350,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrKeyParameter(self):
-        """密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
+        r"""密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
         :rtype: str
         """
         return self._CsrKeyParameter
@@ -361,7 +361,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrKeyPassword(self):
-        """私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密
+        r"""私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密
         :rtype: str
         """
         return self._CsrKeyPassword
@@ -372,7 +372,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def Alias(self):
-        """证书别名
+        r"""证书别名
         :rtype: str
         """
         return self._Alias
@@ -383,7 +383,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def OldCertificateId(self):
-        """旧证书 ID，用于证书续费（证书有效期在30天内，且未过期），会建立续费关系， 可用于托管； 不传则表示新申请证书
+        r"""旧证书 ID，用于证书续费（证书有效期在30天内，且未过期），会建立续费关系， 可用于托管； 不传则表示新申请证书
         :rtype: str
         """
         return self._OldCertificateId
@@ -394,7 +394,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def PackageId(self):
-        """权益包ID，用于免费证书扩容包使用， 免费证书扩容包已下线
+        r"""权益包ID，用于免费证书扩容包使用， 免费证书扩容包已下线
         :rtype: str
         """
         return self._PackageId
@@ -405,7 +405,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def DeleteDnsAutoRecord(self):
-        """签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
+        r"""签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
         :rtype: bool
         """
         return self._DeleteDnsAutoRecord
@@ -416,7 +416,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def DnsNames(self):
-        """证书绑定的其他域名，待开放。目前不支持此参数
+        r"""证书绑定的其他域名，待开放。目前不支持此参数
         :rtype: list of str
         """
         return self._DnsNames
@@ -453,7 +453,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
 
 class ApplyCertificateResponse(AbstractModel):
-    """ApplyCertificate返回参数结构体
+    r"""ApplyCertificate返回参数结构体
 
     """
 
@@ -469,7 +469,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """新申请成功的证书 ID。
+        r"""新申请成功的证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -480,7 +480,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -496,7 +496,7 @@ class ApplyCertificateResponse(AbstractModel):
 
 
 class BatchDeleteFail(AbstractModel):
-    """批量删除失败的项
+    r"""批量删除失败的项
 
     """
 
@@ -512,7 +512,7 @@ class BatchDeleteFail(AbstractModel):
 
     @property
     def CertId(self):
-        """失败的证书ID
+        r"""失败的证书ID
         :rtype: str
         """
         return self._CertId
@@ -523,7 +523,7 @@ class BatchDeleteFail(AbstractModel):
 
     @property
     def Msg(self):
-        """失败的原因
+        r"""失败的原因
         :rtype: str
         """
         return self._Msg
@@ -547,7 +547,7 @@ class BatchDeleteFail(AbstractModel):
 
 
 class BindResourceRegionResult(AbstractModel):
-    """绑定资源地域结果
+    r"""绑定资源地域结果
 
     """
 
@@ -566,7 +566,7 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -577,7 +577,7 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def TotalCount(self):
-        """关联资源总数
+        r"""关联资源总数
         :rtype: int
         """
         return self._TotalCount
@@ -588,7 +588,7 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
         :rtype: str
         """
         return self._Error
@@ -613,7 +613,7 @@ class BindResourceRegionResult(AbstractModel):
 
 
 class BindResourceResult(AbstractModel):
-    """绑定资源结果
+    r"""绑定资源结果
 
     """
 
@@ -629,7 +629,7 @@ class BindResourceResult(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+        r"""资源类型：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
         :rtype: str
         """
         return self._ResourceType
@@ -640,7 +640,7 @@ class BindResourceResult(AbstractModel):
 
     @property
     def BindResourceRegionResult(self):
-        """绑定资源地域结果
+        r"""绑定资源地域结果
         :rtype: list of BindResourceRegionResult
         """
         return self._BindResourceRegionResult
@@ -669,7 +669,7 @@ class BindResourceResult(AbstractModel):
 
 
 class COSInstanceList(AbstractModel):
-    """cos实例详情 - 异步关联云资源数据结构
+    r"""cos实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -691,7 +691,7 @@ class COSInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -702,7 +702,7 @@ class COSInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """实例详情
+        r"""实例详情
         :rtype: list of CosInstanceDetail
         """
         return self._InstanceList
@@ -713,7 +713,7 @@ class COSInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """地域下总数
+        r"""地域下总数
         :rtype: int
         """
         return self._TotalCount
@@ -724,7 +724,7 @@ class COSInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Error
@@ -755,7 +755,7 @@ class COSInstanceList(AbstractModel):
 
 
 class CancelAuditCertificateRequest(AbstractModel):
-    """CancelAuditCertificate请求参数结构体
+    r"""CancelAuditCertificate请求参数结构体
 
     """
 
@@ -768,7 +768,7 @@ class CancelAuditCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -791,7 +791,7 @@ class CancelAuditCertificateRequest(AbstractModel):
 
 
 class CancelAuditCertificateResponse(AbstractModel):
-    """CancelAuditCertificate返回参数结构体
+    r"""CancelAuditCertificate返回参数结构体
 
     """
 
@@ -807,7 +807,7 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作是否成功
+        r"""操作是否成功
         :rtype: bool
         """
         return self._Result
@@ -818,7 +818,7 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -834,7 +834,7 @@ class CancelAuditCertificateResponse(AbstractModel):
 
 
 class CancelCertificateOrderRequest(AbstractModel):
-    """CancelCertificateOrder请求参数结构体
+    r"""CancelCertificateOrder请求参数结构体
 
     """
 
@@ -847,7 +847,7 @@ class CancelCertificateOrderRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -870,7 +870,7 @@ class CancelCertificateOrderRequest(AbstractModel):
 
 
 class CancelCertificateOrderResponse(AbstractModel):
-    """CancelCertificateOrder返回参数结构体
+    r"""CancelCertificateOrder返回参数结构体
 
     """
 
@@ -886,7 +886,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """取消订单成功的证书 ID。
+        r"""取消订单成功的证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -897,7 +897,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -913,7 +913,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
 
 class CdnInstanceDetail(AbstractModel):
-    """CDN实例详情
+    r"""CDN实例详情
 
     """
 
@@ -935,7 +935,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -946,7 +946,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """已部署证书ID
+        r"""已部署证书ID
         :rtype: str
         """
         return self._CertId
@@ -957,7 +957,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
+        r"""域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
         :rtype: str
         """
         return self._Status
@@ -968,7 +968,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def HttpsBillingSwitch(self):
-        """域名计费状态，on表示开启，off表示关闭。
+        r"""域名计费状态，on表示开启，off表示关闭。
         :rtype: str
         """
         return self._HttpsBillingSwitch
@@ -994,7 +994,7 @@ class CdnInstanceDetail(AbstractModel):
 
 
 class CdnInstanceList(AbstractModel):
-    """cdn实例详情 - 异步关联云资源数据结构
+    r"""cdn实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -1013,7 +1013,7 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下CDN域名总数	
+        r"""该地域下CDN域名总数	
         :rtype: int
         """
         return self._TotalCount
@@ -1024,7 +1024,7 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """cdn域名详情	
+        r"""cdn域名详情	
         :rtype: list of CdnInstanceDetail
         """
         return self._InstanceList
@@ -1035,7 +1035,7 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
         :rtype: str
         """
         return self._Error
@@ -1065,7 +1065,7 @@ class CdnInstanceList(AbstractModel):
 
 
 class CertBasicInfo(AbstractModel):
-    """证书基本信息
+    r"""证书基本信息
 
     """
 
@@ -1090,7 +1090,7 @@ class CertBasicInfo(AbstractModel):
 
     @property
     def Issuer(self):
-        """颁发者
+        r"""颁发者
         :rtype: str
         """
         return self._Issuer
@@ -1101,7 +1101,7 @@ class CertBasicInfo(AbstractModel):
 
     @property
     def Subject(self):
-        """颁发给
+        r"""颁发给
         :rtype: str
         """
         return self._Subject
@@ -1112,7 +1112,7 @@ class CertBasicInfo(AbstractModel):
 
     @property
     def Fingerprint(self):
-        """证书指纹
+        r"""证书指纹
         :rtype: str
         """
         return self._Fingerprint
@@ -1123,7 +1123,7 @@ class CertBasicInfo(AbstractModel):
 
     @property
     def ValidFrom(self):
-        """证书有效期开始时间
+        r"""证书有效期开始时间
         :rtype: str
         """
         return self._ValidFrom
@@ -1134,7 +1134,7 @@ class CertBasicInfo(AbstractModel):
 
     @property
     def ValidTo(self):
-        """证书有效期结束时间
+        r"""证书有效期结束时间
         :rtype: str
         """
         return self._ValidTo
@@ -1161,7 +1161,7 @@ class CertBasicInfo(AbstractModel):
 
 
 class CertTaskId(AbstractModel):
-    """证书异步任务ID
+    r"""证书异步任务ID
 
     """
 
@@ -1177,7 +1177,7 @@ class CertTaskId(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -1188,7 +1188,7 @@ class CertTaskId(AbstractModel):
 
     @property
     def TaskId(self):
-        """异步任务ID
+        r"""异步任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1212,7 +1212,7 @@ class CertTaskId(AbstractModel):
 
 
 class Certificate(AbstractModel):
-    """CLB证书详情
+    r"""CLB证书详情
 
     """
 
@@ -1234,7 +1234,7 @@ class Certificate(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -1245,7 +1245,7 @@ class Certificate(AbstractModel):
 
     @property
     def DnsNames(self):
-        """证书绑定的域名
+        r"""证书绑定的域名
         :rtype: list of str
         """
         return self._DnsNames
@@ -1256,7 +1256,7 @@ class Certificate(AbstractModel):
 
     @property
     def CertCaId(self):
-        """根证书ID
+        r"""根证书ID
         :rtype: str
         """
         return self._CertCaId
@@ -1267,7 +1267,7 @@ class Certificate(AbstractModel):
 
     @property
     def SSLMode(self):
-        """证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+        r"""证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
         :rtype: str
         """
         return self._SSLMode
@@ -1293,7 +1293,7 @@ class Certificate(AbstractModel):
 
 
 class CertificateExtra(AbstractModel):
-    """获取证书列表（DescribeCertificates）返回参数键为 Certificates 数组下，key为CertificateExtra 的内容。
+    r"""获取证书列表（DescribeCertificates）返回参数键为 Certificates 数组下，key为CertificateExtra 的内容。
 
     """
 
@@ -1328,7 +1328,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def DomainNumber(self):
-        """证书可配置域名数量。
+        r"""证书可配置域名数量。
         :rtype: str
         """
         return self._DomainNumber
@@ -1339,7 +1339,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def OriginCertificateId(self):
-        """续费原证书 ID。
+        r"""续费原证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1351,7 +1351,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedBy(self):
-        """重颁发证书原始 ID。
+        r"""重颁发证书原始 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1363,7 +1363,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedFor(self):
-        """重颁发证书ID。
+        r"""重颁发证书ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1375,7 +1375,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def RenewOrder(self):
-        """续费证书 ID。
+        r"""续费证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1387,7 +1387,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def SMCert(self):
-        """是否是国密证书
+        r"""是否是国密证书
         :rtype: int
         """
         return self._SMCert
@@ -1398,7 +1398,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def CompanyType(self):
-        """公司类型，取值：1（个人）；2（公司）
+        r"""公司类型，取值：1（个人）；2（公司）
         :rtype: int
         """
         return self._CompanyType
@@ -1427,7 +1427,7 @@ class CertificateExtra(AbstractModel):
 
 
 class CertificateInfoSubmitRequest(AbstractModel):
-    """CertificateInfoSubmit请求参数结构体
+    r"""CertificateInfoSubmit请求参数结构体
 
     """
 
@@ -1585,7 +1585,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CertId(self):
-        """待提交资料的付费证书 ID。	
+        r"""待提交资料的付费证书 ID。	
         :rtype: str
         """
         return self._CertId
@@ -1596,7 +1596,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def GenCsrType(self):
-        """此字段必传。 CSR 生成方式， 取值为：
+        r"""此字段必传。 CSR 生成方式， 取值为：
 - online：腾讯云提交的填写的参数信息生成CSR和私钥，并由腾讯云加密存储
 - parse：自行生成CSR和私钥，并通过上传CSR申请证书
         :rtype: str
@@ -1609,7 +1609,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CertCommonName(self):
-        """证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
+        r"""证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
         :rtype: str
         """
         return self._CertCommonName
@@ -1620,7 +1620,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CompanyType(self):
-        """组织信息类型， 取值范围：
+        r"""组织信息类型， 取值范围：
 1（个人）：仅DV类型证书可设置为1， 个人类型证书组织信息字段可不传：Org开头，Admin开头，Tech开头
 2（公司）：所有类型证书都可设置为2， 按需传组织信息字段
         :rtype: int
@@ -1633,7 +1633,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CompanyId(self):
-        """公司ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的公司信息， 则本参数传0 ； 若存在满足当前订单的公司信息， 可以根据 [DescribeCompanies](https://cloud.tencent.com/document/product/400/90375) 查看公司ID； 若传了公司ID，则Org开头的参数可不传
+        r"""公司ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的公司信息， 则本参数传0 ； 若存在满足当前订单的公司信息， 可以根据 [DescribeCompanies](https://cloud.tencent.com/document/product/400/90375) 查看公司ID； 若传了公司ID，则Org开头的参数可不传
 
 
         :rtype: str
@@ -1646,7 +1646,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def OrgIdType(self):
-        """公司证件类型，取值范围：
+        r"""公司证件类型，取值范围：
 TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 OTHERS（其他）
         :rtype: str
@@ -1659,7 +1659,7 @@ OTHERS（其他）
 
     @property
     def OrgIdNumber(self):
-        """公司证件号码，取值范围：
+        r"""公司证件号码，取值范围：
 TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
         :rtype: str
@@ -1672,7 +1672,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def AdminIdType(self):
-        """管理人证件类型，取值范围：
+        r"""管理人证件类型，取值范围：
 SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
         :rtype: str
@@ -1685,7 +1685,7 @@ HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书�
 
     @property
     def AdminIdNumber(self):
-        """管理人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段， 取值范围：
+        r"""管理人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段， 取值范围：
 SFZ（身份证）：110000xxxxxxxx1242
 HZ（护照）:EFxxxxxxx
         :rtype: str
@@ -1698,7 +1698,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def TechIdType(self):
-        """联系人证件类型，取值范围：
+        r"""联系人证件类型，取值范围：
 SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
         :rtype: str
@@ -1711,7 +1711,7 @@ HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书�
 
     @property
     def TechIdNumber(self):
-        """联系人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段，取值范围：
+        r"""联系人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段，取值范围：
 SFZ（身份证）：110000xxxxxxxx1242
 HZ（护照）:EFxxxxxxx
         :rtype: str
@@ -1724,7 +1724,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def Csr(self):
-        """上传的 CSR 内容。
+        r"""上传的 CSR 内容。
 若GenCsrType为parse， 则此字段必传。
         :rtype: str
         """
@@ -1736,7 +1736,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def DnsNames(self):
-        """证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
+        r"""证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
         :rtype: list of str
         """
         return self._DnsNames
@@ -1747,7 +1747,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def KeyPass(self):
-        """私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
+        r"""私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
         :rtype: str
         """
         return self._KeyPass
@@ -1758,7 +1758,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgOrganization(self):
-        """公司名称。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司名称。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgOrganization
@@ -1769,7 +1769,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgDivision(self):
-        """部门名称。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""部门名称。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgDivision
@@ -1780,7 +1780,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgAddress(self):
-        """公司详细地址。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司详细地址。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgAddress
@@ -1791,7 +1791,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgCountry(self):
-        """国家名称，如中国：CN 。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""国家名称，如中国：CN 。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgCountry
@@ -1802,7 +1802,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgCity(self):
-        """公司所在城市。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司所在城市。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgCity
@@ -1813,7 +1813,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgRegion(self):
-        """公司所在省份。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司所在省份。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgRegion
@@ -1824,7 +1824,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgPhoneArea(self):
-        """公司所属区号。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司所属区号。若没有传CompanyId或者ManagerId， 则此字段必传
 如：021。  手机号码传 86
         :rtype: str
         """
@@ -1836,7 +1836,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def OrgPhoneNumber(self):
-        """公司所属号码。若没有传CompanyId或者ManagerId， 则此字段必传
+        r"""公司所属号码。若没有传CompanyId或者ManagerId， 则此字段必传
         :rtype: str
         """
         return self._OrgPhoneNumber
@@ -1847,7 +1847,7 @@ HZ（护照）:EFxxxxxxx
 
     @property
     def VerifyType(self):
-        """证书域名验证方式：
+        r"""证书域名验证方式：
 DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
 DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
 FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
@@ -1861,7 +1861,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AdminFirstName(self):
-        """管理人名。若没有传ManagerId， 则此字段必传
+        r"""管理人名。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._AdminFirstName
@@ -1872,7 +1872,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AdminLastName(self):
-        """管理人姓。若没有传ManagerId， 则此字段必传
+        r"""管理人姓。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._AdminLastName
@@ -1883,7 +1883,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AdminPhone(self):
-        """管理人手机号码。若没有传ManagerId， 则此字段必传
+        r"""管理人手机号码。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._AdminPhone
@@ -1894,7 +1894,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AdminEmail(self):
-        """管理人邮箱地址。若没有传ManagerId， 则此字段必传
+        r"""管理人邮箱地址。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._AdminEmail
@@ -1905,7 +1905,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AdminTitle(self):
-        """管理人职位。若没有传ManagerId， 则此字段必传
+        r"""管理人职位。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._AdminTitle
@@ -1916,7 +1916,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def TechFirstName(self):
-        """联系人名。若没有传ManagerId， 则此字段必传
+        r"""联系人名。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._TechFirstName
@@ -1927,7 +1927,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def TechLastName(self):
-        """联系人姓。若没有传ManagerId， 则此字段必传
+        r"""联系人姓。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._TechLastName
@@ -1938,7 +1938,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ContactEmail(self):
-        """联系人邮箱地址。CompanyType为1时， 此字段必传
+        r"""联系人邮箱地址。CompanyType为1时， 此字段必传
         :rtype: str
         """
         return self._ContactEmail
@@ -1949,7 +1949,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def AutoRenewFlag(self):
-        """是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
+        r"""是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -1960,7 +1960,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrKeyParameter(self):
-        """密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。当 CSR 生成方式为online的时候，此参数必填。
+        r"""密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。当 CSR 生成方式为online的时候，此参数必填。
 
         :rtype: str
         """
@@ -1972,7 +1972,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrEncryptAlgo(self):
-        """加密算法，取值为ECC、RSA， 默认为RSA。当 CSR 生成方式为online的时候，此参数必填。
+        r"""加密算法，取值为ECC、RSA， 默认为RSA。当 CSR 生成方式为online的时候，此参数必填。
         :rtype: str
         """
         return self._CsrEncryptAlgo
@@ -1983,7 +1983,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def ManagerId(self):
-        """管理人ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的管理人信息， 则本参数传0 ； 若存在满足当前订单的管理人信息， 可以根据 [DescribeManagers](https://cloud.tencent.com/document/product/400/52672) 查看管理人ID； 若传了管理人ID，则Org开头、Admin开头、Tech开头的参数可不传； 管理人ID会包含公司信息
+        r"""管理人ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的管理人信息， 则本参数传0 ； 若存在满足当前订单的管理人信息， 可以根据 [DescribeManagers](https://cloud.tencent.com/document/product/400/52672) 查看管理人ID； 若传了管理人ID，则Org开头、Admin开头、Tech开头的参数可不传； 管理人ID会包含公司信息
 
         :rtype: str
         """
@@ -1995,7 +1995,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def TechPhone(self):
-        """联系人电话。若没有传ManagerId， 则此字段必传
+        r"""联系人电话。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._TechPhone
@@ -2006,7 +2006,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def TechEmail(self):
-        """联系人邮箱
+        r"""联系人邮箱
         :rtype: str
         """
         return self._TechEmail
@@ -2017,7 +2017,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def TechTitle(self):
-        """联系人职位。若没有传ManagerId， 则此字段必传
+        r"""联系人职位。若没有传ManagerId， 则此字段必传
         :rtype: str
         """
         return self._TechTitle
@@ -2028,7 +2028,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def Type(self):
-        """证书类型
+        r"""证书类型
         :rtype: int
         """
         return self._Type
@@ -2039,7 +2039,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CaType(self):
-        """只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
+        r"""只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
         :rtype: str
         """
         return self._CaType
@@ -2050,7 +2050,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def SignAlgo(self):
-        """签名算法
+        r"""签名算法
         :rtype: str
         """
         return self._SignAlgo
@@ -2113,7 +2113,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
 
 class CertificateInfoSubmitResponse(AbstractModel):
-    """CertificateInfoSubmit返回参数结构体
+    r"""CertificateInfoSubmit返回参数结构体
 
     """
 
@@ -2126,7 +2126,7 @@ class CertificateInfoSubmitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2141,7 +2141,7 @@ class CertificateInfoSubmitResponse(AbstractModel):
 
 
 class CertificateOrderSubmitRequest(AbstractModel):
-    """CertificateOrderSubmit请求参数结构体
+    r"""CertificateOrderSubmit请求参数结构体
 
     """
 
@@ -2163,7 +2163,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CertId(self):
-        """待提交资料的付费证书 ID。	
+        r"""待提交资料的付费证书 ID。	
         :rtype: str
         """
         return self._CertId
@@ -2174,7 +2174,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def DeleteDnsAutoRecord(self):
-        """是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
+        r"""是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
         :rtype: int
         """
         return self._DeleteDnsAutoRecord
@@ -2185,7 +2185,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def VerifyType(self):
-        """证书域名验证方式：
+        r"""证书域名验证方式：
 DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
 DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
 FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单见控制台页面
@@ -2213,7 +2213,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
 
 class CertificateOrderSubmitResponse(AbstractModel):
-    """CertificateOrderSubmit返回参数结构体
+    r"""CertificateOrderSubmit返回参数结构体
 
     """
 
@@ -2235,7 +2235,7 @@ class CertificateOrderSubmitResponse(AbstractModel):
 
     @property
     def OrderId(self):
-        """CA机构侧订单号。
+        r"""CA机构侧订单号。
         :rtype: str
         """
         return self._OrderId
@@ -2246,7 +2246,7 @@ class CertificateOrderSubmitResponse(AbstractModel):
 
     @property
     def Status(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
         :rtype: int
         """
         return self._Status
@@ -2257,7 +2257,7 @@ class CertificateOrderSubmitResponse(AbstractModel):
 
     @property
     def IsAudited(self):
-        """是否预审核
+        r"""是否预审核
         :rtype: bool
         """
         return self._IsAudited
@@ -2268,7 +2268,7 @@ class CertificateOrderSubmitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2286,7 +2286,7 @@ class CertificateOrderSubmitResponse(AbstractModel):
 
 
 class Certificates(AbstractModel):
-    """获取证书列表（DescribeCertificates）返回参数键为 Certificates 的内容。
+    r"""获取证书列表（DescribeCertificates）返回参数键为 Certificates 的内容。
 
     """
 
@@ -2556,7 +2556,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OwnerUin(self):
-        """用户 UIN。
+        r"""用户 UIN。
         :rtype: str
         """
         return self._OwnerUin
@@ -2567,7 +2567,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: str
         """
         return self._ProjectId
@@ -2578,7 +2578,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def From(self):
-        """证书来源：
+        r"""证书来源：
 trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
@@ -2593,7 +2593,7 @@ sheca：上海CA
 
     @property
     def PackageType(self):
-        """证书套餐类型：
+        r"""证书套餐类型：
 null：用户上传证书（没有套餐类型），
 2：TrustAsia TLS RSA CA， 
 3：SecureSite 增强型企业版（EV Pro）， 
@@ -2688,7 +2688,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateType(self):
-        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
         :rtype: str
         """
         return self._CertificateType
@@ -2699,7 +2699,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProductZhName(self):
-        """证书产品名称
+        r"""证书产品名称
         :rtype: str
         """
         return self._ProductZhName
@@ -2710,7 +2710,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Domain(self):
-        """主域名。
+        r"""主域名。
         :rtype: str
         """
         return self._Domain
@@ -2721,7 +2721,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Alias(self):
-        """备注名称。
+        r"""备注名称。
         :rtype: str
         """
         return self._Alias
@@ -2732,7 +2732,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Status(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
         :rtype: int
         """
         return self._Status
@@ -2743,7 +2743,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateExtra(self):
-        """证书扩展信息。
+        r"""证书扩展信息。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -2754,7 +2754,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityStatus(self):
-        """漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+        r"""漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -2765,7 +2765,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusMsg(self):
-        """状态信息。
+        r"""状态信息。
         :rtype: str
         """
         return self._StatusMsg
@@ -2776,7 +2776,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VerifyType(self):
-        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+        r"""验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
         :rtype: str
         """
         return self._VerifyType
@@ -2787,7 +2787,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。时区为GMT+8:00
+        r"""证书生效时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertBeginTime
@@ -2798,7 +2798,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书过期时间。时区为GMT+8:00
+        r"""证书过期时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertEndTime
@@ -2809,7 +2809,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidityPeriod(self):
-        """证书有效期，单位（月）。
+        r"""证书有效期，单位（月）。
         :rtype: str
         """
         return self._ValidityPeriod
@@ -2820,7 +2820,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """创建时间。时区为GMT+8:00
+        r"""创建时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime
@@ -2831,7 +2831,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -2842,7 +2842,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubjectAltName(self):
-        """证书包含的多个域名（包含主域名）。
+        r"""证书包含的多个域名（包含主域名）。
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -2853,7 +2853,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def PackageTypeName(self):
-        """证书类型名称。
+        r"""证书类型名称。
         :rtype: str
         """
         return self._PackageTypeName
@@ -2864,7 +2864,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusName(self):
-        """状态名称。
+        r"""状态名称。
         :rtype: str
         """
         return self._StatusName
@@ -2875,7 +2875,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVip(self):
-        """是否为 VIP 客户。
+        r"""是否为 VIP 客户。
         :rtype: bool
         """
         return self._IsVip
@@ -2886,7 +2886,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDv(self):
-        """是否为 DV 版证书。
+        r"""是否为 DV 版证书。
         :rtype: bool
         """
         return self._IsDv
@@ -2897,7 +2897,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsWildcard(self):
-        """是否为泛域名证书。
+        r"""是否为泛域名证书。
         :rtype: bool
         """
         return self._IsWildcard
@@ -2908,7 +2908,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVulnerability(self):
-        """是否启用了漏洞扫描功能。
+        r"""是否启用了漏洞扫描功能。
         :rtype: bool
         """
         return self._IsVulnerability
@@ -2919,7 +2919,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RenewAble(self):
-        """是否可续费。
+        r"""是否可续费。
         :rtype: bool
         """
         return self._RenewAble
@@ -2930,7 +2930,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectInfo(self):
-        """项目信息。
+        r"""项目信息。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
         """
         return self._ProjectInfo
@@ -2941,7 +2941,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def BoundResource(self):
-        """关联的云资源，暂不可用
+        r"""关联的云资源，暂不可用
         :rtype: list of str
         """
         return self._BoundResource
@@ -2952,7 +2952,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Deployable(self):
-        """是否可部署。
+        r"""是否可部署。
         :rtype: bool
         """
         return self._Deployable
@@ -2963,7 +2963,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tags
         """
         return self._Tags
@@ -2974,7 +2974,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsIgnore(self):
-        """是否已忽略到期通知
+        r"""是否已忽略到期通知
         :rtype: bool
         """
         return self._IsIgnore
@@ -2985,7 +2985,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsSM(self):
-        """是否国密证书
+        r"""是否国密证书
         :rtype: bool
         """
         return self._IsSM
@@ -2996,7 +2996,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptAlgorithm(self):
-        """证书算法
+        r"""证书算法
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -3007,7 +3007,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEncryptAlgorithms(self):
-        """上传CA证书的加密算法
+        r"""上传CA证书的加密算法
         :rtype: list of str
         """
         return self._CAEncryptAlgorithms
@@ -3018,7 +3018,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEndTimes(self):
-        """上传CA证书的过期时间
+        r"""上传CA证书的过期时间
         :rtype: list of str
         """
         return self._CAEndTimes
@@ -3029,7 +3029,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CACommonNames(self):
-        """上传CA证书的通用名称
+        r"""上传CA证书的通用名称
         :rtype: list of str
         """
         return self._CACommonNames
@@ -3040,7 +3040,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def PreAuditInfo(self):
-        """证书预审核信息
+        r"""证书预审核信息
         :rtype: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         """
         return self._PreAuditInfo
@@ -3051,7 +3051,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费
+        r"""是否自动续费
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3062,7 +3062,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HostingStatus(self):
-        """托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
+        r"""托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
         :rtype: int
         """
         return self._HostingStatus
@@ -3073,7 +3073,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HostingCompleteTime(self):
-        """托管完成时间
+        r"""托管完成时间
         :rtype: str
         """
         return self._HostingCompleteTime
@@ -3084,7 +3084,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HostingRenewCertId(self):
-        """托管新证书ID
+        r"""托管新证书ID
         :rtype: str
         """
         return self._HostingRenewCertId
@@ -3095,7 +3095,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HasRenewOrder(self):
-        """存在的续费证书ID
+        r"""存在的续费证书ID
         :rtype: str
         """
         return self._HasRenewOrder
@@ -3106,7 +3106,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ReplaceOriCertIsDelete(self):
-        """重颁发证书原证书是否删除
+        r"""重颁发证书原证书是否删除
         :rtype: bool
         """
         return self._ReplaceOriCertIsDelete
@@ -3117,7 +3117,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsExpiring(self):
-        """是否即将过期， 证书即将到期的30天内为即将过期
+        r"""是否即将过期， 证书即将到期的30天内为即将过期
         :rtype: bool
         """
         return self._IsExpiring
@@ -3128,7 +3128,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DVAuthDeadline(self):
-        """DV证书添加验证截止时间，时区为GMT+8:00
+        r"""DV证书添加验证截止时间，时区为GMT+8:00
         :rtype: str
         """
         return self._DVAuthDeadline
@@ -3139,7 +3139,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidationPassedTime(self):
-        """域名验证通过时间，时区为GMT+8:00
+        r"""域名验证通过时间，时区为GMT+8:00
         :rtype: str
         """
         return self._ValidationPassedTime
@@ -3150,7 +3150,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertSANs(self):
-        """证书关联的多域名
+        r"""证书关联的多域名
         :rtype: list of str
         """
         return self._CertSANs
@@ -3161,7 +3161,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def AwaitingValidationMsg(self):
-        """域名验证驳回信息
+        r"""域名验证驳回信息
         :rtype: str
         """
         return self._AwaitingValidationMsg
@@ -3172,7 +3172,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def AllowDownload(self):
-        """是否允许下载
+        r"""是否允许下载
         :rtype: bool
         """
         return self._AllowDownload
@@ -3183,7 +3183,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDNSPODResolve(self):
-        """证书域名是否全部在DNSPOD托管解析
+        r"""证书域名是否全部在DNSPOD托管解析
         :rtype: bool
         """
         return self._IsDNSPODResolve
@@ -3194,7 +3194,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsPackage(self):
-        """是否是权益点购买的证书
+        r"""是否是权益点购买的证书
         :rtype: bool
         """
         return self._IsPackage
@@ -3205,7 +3205,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def KeyPasswordCustomFlag(self):
-        """是否存在私钥密码
+        r"""是否存在私钥密码
         :rtype: bool
         """
         return self._KeyPasswordCustomFlag
@@ -3216,7 +3216,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SupportDownloadType(self):
-        """支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
+        r"""支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         """
         return self._SupportDownloadType
@@ -3227,7 +3227,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertRevokedTime(self):
-        """证书吊销完成时间，时区为GMT+8:00
+        r"""证书吊销完成时间，时区为GMT+8:00
         :rtype: str
         """
         return self._CertRevokedTime
@@ -3238,7 +3238,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HostingResourceTypes(self):
-        """托管资源类型列表
+        r"""托管资源类型列表
         :rtype: list of str
         """
         return self._HostingResourceTypes
@@ -3249,7 +3249,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def HostingConfig(self):
-        """托管配置信息
+        r"""托管配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
@@ -3261,7 +3261,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsHostingUploadRenewCert(self):
-        """是否是上传托管续费证书
+        r"""是否是上传托管续费证书
         :rtype: bool
         """
         return self._IsHostingUploadRenewCert
@@ -3355,7 +3355,7 @@ null：用户上传证书（没有套餐类型），
 
 
 class CheckCertificateChainRequest(AbstractModel):
-    """CheckCertificateChain请求参数结构体
+    r"""CheckCertificateChain请求参数结构体
 
     """
 
@@ -3368,7 +3368,7 @@ class CheckCertificateChainRequest(AbstractModel):
 
     @property
     def CertificateChain(self):
-        """待检查的证书链
+        r"""待检查的证书链
         :rtype: str
         """
         return self._CertificateChain
@@ -3391,7 +3391,7 @@ class CheckCertificateChainRequest(AbstractModel):
 
 
 class CheckCertificateChainResponse(AbstractModel):
-    """CheckCertificateChain返回参数结构体
+    r"""CheckCertificateChain返回参数结构体
 
     """
 
@@ -3413,7 +3413,7 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def IsValid(self):
-        """true为通过检查，false为未通过检查。
+        r"""true为通过检查，false为未通过检查。
         :rtype: bool
         """
         return self._IsValid
@@ -3424,7 +3424,7 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def IsTrustedCA(self):
-        """true为可信CA，false为不可信CA。
+        r"""true为可信CA，false为不可信CA。
         :rtype: bool
         """
         return self._IsTrustedCA
@@ -3435,7 +3435,7 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def Chains(self):
-        """包含证书链中每一段证书的通用名称。
+        r"""包含证书链中每一段证书的通用名称。
         :rtype: list of str
         """
         return self._Chains
@@ -3446,7 +3446,7 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3464,7 +3464,7 @@ class CheckCertificateChainResponse(AbstractModel):
 
 
 class CheckCertificateDomainVerificationRequest(AbstractModel):
-    """CheckCertificateDomainVerification请求参数结构体
+    r"""CheckCertificateDomainVerification请求参数结构体
 
     """
 
@@ -3477,7 +3477,7 @@ class CheckCertificateDomainVerificationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID。 
+        r"""证书ID。 
         :rtype: str
         """
         return self._CertificateId
@@ -3500,7 +3500,7 @@ class CheckCertificateDomainVerificationRequest(AbstractModel):
 
 
 class CheckCertificateDomainVerificationResponse(AbstractModel):
-    """CheckCertificateDomainVerification返回参数结构体
+    r"""CheckCertificateDomainVerification返回参数结构体
 
     """
 
@@ -3517,7 +3517,7 @@ class CheckCertificateDomainVerificationResponse(AbstractModel):
 
     @property
     def VerificationResults(self):
-        """证书域名验证结果列表， 证书若绑定了多个域名， 则返回数组有多份
+        r"""证书域名验证结果列表， 证书若绑定了多个域名， 则返回数组有多份
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainValidationResult
         """
@@ -3529,7 +3529,7 @@ class CheckCertificateDomainVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3550,7 +3550,7 @@ class CheckCertificateDomainVerificationResponse(AbstractModel):
 
 
 class CheckCertificateExistRequest(AbstractModel):
-    """CheckCertificateExist请求参数结构体
+    r"""CheckCertificateExist请求参数结构体
 
     """
 
@@ -3563,7 +3563,7 @@ class CheckCertificateExistRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        """证书公钥内容， 包含证书链
+        r"""证书公钥内容， 包含证书链
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -3586,7 +3586,7 @@ class CheckCertificateExistRequest(AbstractModel):
 
 
 class CheckCertificateExistResponse(AbstractModel):
-    """CheckCertificateExist返回参数结构体
+    r"""CheckCertificateExist返回参数结构体
 
     """
 
@@ -3602,7 +3602,7 @@ class CheckCertificateExistResponse(AbstractModel):
 
     @property
     def RepeatCertId(self):
-        """重复的证书ID
+        r"""重复的证书ID
         :rtype: str
         """
         return self._RepeatCertId
@@ -3613,7 +3613,7 @@ class CheckCertificateExistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3629,7 +3629,7 @@ class CheckCertificateExistResponse(AbstractModel):
 
 
 class ClbInstanceDetail(AbstractModel):
-    """clb实例详情
+    r"""clb实例详情
 
     """
 
@@ -3651,7 +3651,7 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """CLB实例ID
+        r"""CLB实例ID
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3662,7 +3662,7 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """CLB实例名称
+        r"""CLB实例名称
         :rtype: str
         """
         return self._LoadBalancerName
@@ -3673,7 +3673,7 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def Listeners(self):
-        """CLB监听器列表
+        r"""CLB监听器列表
         :rtype: list of ClbListener
         """
         return self._Listeners
@@ -3684,7 +3684,7 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def Forward(self):
-        """负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        r"""负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
         :rtype: int
         """
         return self._Forward
@@ -3715,7 +3715,7 @@ class ClbInstanceDetail(AbstractModel):
 
 
 class ClbInstanceList(AbstractModel):
-    """clb实例详情 - 异步关联云资源数据结构
+    r"""clb实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -3737,7 +3737,7 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -3748,7 +3748,7 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """clb实例详情
+        r"""clb实例详情
         :rtype: list of ClbInstanceDetail
         """
         return self._InstanceList
@@ -3759,7 +3759,7 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下Clb实例总数
+        r"""该地域下Clb实例总数
         :rtype: int
         """
         return self._TotalCount
@@ -3770,7 +3770,7 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
         :rtype: str
         """
         return self._Error
@@ -3801,7 +3801,7 @@ class ClbInstanceList(AbstractModel):
 
 
 class ClbListener(AbstractModel):
-    """CLB实例监听器
+    r"""CLB实例监听器
 
     """
 
@@ -3832,7 +3832,7 @@ class ClbListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器ID
+        r"""监听器ID
         :rtype: str
         """
         return self._ListenerId
@@ -3843,7 +3843,7 @@ class ClbListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        """监听器名称
+        r"""监听器名称
         :rtype: str
         """
         return self._ListenerName
@@ -3854,7 +3854,7 @@ class ClbListener(AbstractModel):
 
     @property
     def SniSwitch(self):
-        """是否开启SNI，1为开启，0为关闭
+        r"""是否开启SNI，1为开启，0为关闭
         :rtype: int
         """
         return self._SniSwitch
@@ -3865,7 +3865,7 @@ class ClbListener(AbstractModel):
 
     @property
     def Protocol(self):
-        """监听器协议类型， HTTPS|TCP_SSL
+        r"""监听器协议类型， HTTPS|TCP_SSL
         :rtype: str
         """
         return self._Protocol
@@ -3876,7 +3876,7 @@ class ClbListener(AbstractModel):
 
     @property
     def Certificate(self):
-        """监听器绑定的证书数据
+        r"""监听器绑定的证书数据
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -3887,7 +3887,7 @@ class ClbListener(AbstractModel):
 
     @property
     def Rules(self):
-        """监听器规则列表
+        r"""监听器规则列表
         :rtype: list of ClbListenerRule
         """
         return self._Rules
@@ -3898,7 +3898,7 @@ class ClbListener(AbstractModel):
 
     @property
     def NoMatchDomains(self):
-        """不匹配域名列表
+        r"""不匹配域名列表
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -3934,7 +3934,7 @@ class ClbListener(AbstractModel):
 
 
 class ClbListenerRule(AbstractModel):
-    """CLB监听器规则
+    r"""CLB监听器规则
 
     """
 
@@ -3962,7 +3962,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def LocationId(self):
-        """规则ID
+        r"""规则ID
         :rtype: str
         """
         return self._LocationId
@@ -3973,7 +3973,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Domain(self):
-        """规则绑定的域名
+        r"""规则绑定的域名
         :rtype: str
         """
         return self._Domain
@@ -3984,7 +3984,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def IsMatch(self):
-        """规则是否匹配待绑定证书的域名
+        r"""规则是否匹配待绑定证书的域名
         :rtype: bool
         """
         return self._IsMatch
@@ -3995,7 +3995,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Certificate(self):
-        """规则已绑定的证书数据
+        r"""规则已绑定的证书数据
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -4006,7 +4006,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def NoMatchDomains(self):
-        """不匹配域名列表
+        r"""不匹配域名列表
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -4017,7 +4017,7 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Url(self):
-        """规则绑定的路径
+        r"""规则绑定的路径
         :rtype: str
         """
         return self._Url
@@ -4047,7 +4047,7 @@ class ClbListenerRule(AbstractModel):
 
 
 class CommitCertificateInformationRequest(AbstractModel):
-    """CommitCertificateInformation请求参数结构体
+    r"""CommitCertificateInformation请求参数结构体
 
     """
 
@@ -4066,7 +4066,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CertificateId(self):
-        """待提交资料的付费证书 ID。	
+        r"""待提交资料的付费证书 ID。	
         :rtype: str
         """
         return self._CertificateId
@@ -4077,7 +4077,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def VerifyType(self):
-        """证书域名验证方式：
+        r"""证书域名验证方式：
 DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
 DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
 FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
@@ -4104,7 +4104,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
 
 class CommitCertificateInformationResponse(AbstractModel):
-    """CommitCertificateInformation返回参数结构体
+    r"""CommitCertificateInformation返回参数结构体
 
     """
 
@@ -4123,7 +4123,7 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def OrderId(self):
-        """CA机构侧订单号。
+        r"""CA机构侧订单号。
         :rtype: str
         """
         return self._OrderId
@@ -4134,7 +4134,7 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def Status(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
         :rtype: int
         """
         return self._Status
@@ -4145,7 +4145,7 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4162,7 +4162,7 @@ class CommitCertificateInformationResponse(AbstractModel):
 
 
 class CompanyInfo(AbstractModel):
-    """公司信息
+    r"""公司信息
 
     """
 
@@ -4205,7 +4205,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyName(self):
-        """公司名称
+        r"""公司名称
         :rtype: str
         """
         return self._CompanyName
@@ -4216,7 +4216,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyId(self):
-        """公司ID
+        r"""公司ID
         :rtype: int
         """
         return self._CompanyId
@@ -4227,7 +4227,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyCountry(self):
-        """公司所在国家
+        r"""公司所在国家
         :rtype: str
         """
         return self._CompanyCountry
@@ -4238,7 +4238,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyProvince(self):
-        """公司所在省份
+        r"""公司所在省份
         :rtype: str
         """
         return self._CompanyProvince
@@ -4249,7 +4249,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyCity(self):
-        """公司所在城市
+        r"""公司所在城市
         :rtype: str
         """
         return self._CompanyCity
@@ -4260,7 +4260,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyAddress(self):
-        """公司所在详细地址
+        r"""公司所在详细地址
         :rtype: str
         """
         return self._CompanyAddress
@@ -4271,7 +4271,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def CompanyPhone(self):
-        """公司电话
+        r"""公司电话
         :rtype: str
         """
         return self._CompanyPhone
@@ -4282,7 +4282,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def IdType(self):
-        """公司证件类型，取值范围：
+        r"""公司证件类型，取值范围：
 TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 OTHERS（其他）
         :rtype: str
@@ -4295,7 +4295,7 @@ OTHERS（其他）
 
     @property
     def IdNumber(self):
-        """公司证件号码，取值范围：
+        r"""公司证件号码，取值范围：
 TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
         :rtype: str
         """
@@ -4307,7 +4307,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of Tags
         """
         return self._Tags
@@ -4344,7 +4344,7 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 
 
 class CompleteCertificateRequest(AbstractModel):
-    """CompleteCertificate请求参数结构体
+    r"""CompleteCertificate请求参数结构体
 
     """
 
@@ -4357,7 +4357,7 @@ class CompleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -4380,7 +4380,7 @@ class CompleteCertificateRequest(AbstractModel):
 
 
 class CompleteCertificateResponse(AbstractModel):
-    """CompleteCertificate返回参数结构体
+    r"""CompleteCertificate返回参数结构体
 
     """
 
@@ -4396,7 +4396,7 @@ class CompleteCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -4407,7 +4407,7 @@ class CompleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4423,7 +4423,7 @@ class CompleteCertificateResponse(AbstractModel):
 
 
 class CosInstanceDetail(AbstractModel):
-    """COS实例详情
+    r"""COS实例详情
 
     """
 
@@ -4449,7 +4449,7 @@ DISABLED:域名下线状态
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -4460,7 +4460,7 @@ DISABLED:域名下线状态
 
     @property
     def CertId(self):
-        """已绑定的证书ID
+        r"""已绑定的证书ID
         :rtype: str
         """
         return self._CertId
@@ -4471,7 +4471,7 @@ DISABLED:域名下线状态
 
     @property
     def Status(self):
-        """ENABLED: 域名上线状态
+        r"""ENABLED: 域名上线状态
 DISABLED:域名下线状态
         :rtype: str
         """
@@ -4483,7 +4483,7 @@ DISABLED:域名下线状态
 
     @property
     def Bucket(self):
-        """存储桶名称
+        r"""存储桶名称
         :rtype: str
         """
         return self._Bucket
@@ -4494,7 +4494,7 @@ DISABLED:域名下线状态
 
     @property
     def Region(self):
-        """存储桶地域
+        r"""存储桶地域
         :rtype: str
         """
         return self._Region
@@ -4521,7 +4521,7 @@ DISABLED:域名下线状态
 
 
 class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
-    """CreateCertificateBindResourceSyncTask请求参数结构体
+    r"""CreateCertificateBindResourceSyncTask请求参数结构体
 
     """
 
@@ -4537,7 +4537,7 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """证书ID列表，总数不能超过100
+        r"""证书ID列表，总数不能超过100
         :rtype: list of str
         """
         return self._CertificateIds
@@ -4548,7 +4548,7 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
+        r"""是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
         :rtype: int
         """
         return self._IsCache
@@ -4572,7 +4572,7 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
 
 class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
-    """CreateCertificateBindResourceSyncTask返回参数结构体
+    r"""CreateCertificateBindResourceSyncTask返回参数结构体
 
     """
 
@@ -4588,7 +4588,7 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def CertTaskIds(self):
-        """证书关联云资源异步任务ID列表
+        r"""证书关联云资源异步任务ID列表
         :rtype: list of CertTaskId
         """
         return self._CertTaskIds
@@ -4599,7 +4599,7 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4620,7 +4620,7 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
 
 class CreateCertificateByPackageRequest(AbstractModel):
-    """CreateCertificateByPackage请求参数结构体
+    r"""CreateCertificateByPackage请求参数结构体
 
     """
 
@@ -4806,7 +4806,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ProductPid(self):
-        """证书产品PID，以下是对每个PID及其对应的证书文字说明：
+        r"""证书产品PID，以下是对每个PID及其对应的证书文字说明：
 1. 1022451 - CFCA-增强型(EV)SSL证书
 2. 1022449 - CFCA-企业型(OV) SSL证书(通配符)
 3. 1022447 - CFCA-企业型(OV)SSL证书
@@ -4878,7 +4878,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def PackageIds(self):
-        """要消耗的权益包ID。
+        r"""要消耗的权益包ID。
         :rtype: list of str
         """
         return self._PackageIds
@@ -4889,7 +4889,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def DomainCount(self):
-        """证书域名数量。
+        r"""证书域名数量。
         :rtype: str
         """
         return self._DomainCount
@@ -4900,7 +4900,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def Period(self):
-        """多年期证书年限。
+        r"""多年期证书年限。
         :rtype: int
         """
         return self._Period
@@ -4911,7 +4911,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """要续费的原证书ID（续费时填写）。
+        r"""要续费的原证书ID（续费时填写）。
         :rtype: str
         """
         return self._OldCertificateId
@@ -4922,7 +4922,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewGenCsrMethod(self):
-        """续费时CSR生成方式（original、upload、online）。
+        r"""续费时CSR生成方式（original、upload、online）。
         :rtype: str
         """
         return self._RenewGenCsrMethod
@@ -4933,7 +4933,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewCsr(self):
-        """续费时选择上传CSR时填写CSR。
+        r"""续费时选择上传CSR时填写CSR。
         :rtype: str
         """
         return self._RenewCsr
@@ -4944,7 +4944,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewAlgorithmType(self):
-        """续费证书CSR的算法类型：RSA,ECC,SM2
+        r"""续费证书CSR的算法类型：RSA,ECC,SM2
         :rtype: str
         """
         return self._RenewAlgorithmType
@@ -4955,7 +4955,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewAlgorithmParam(self):
-        """续费证书CSR的算法参数:2048,4096,prime256v1
+        r"""续费证书CSR的算法参数:2048,4096,prime256v1
         :rtype: str
         """
         return self._RenewAlgorithmParam
@@ -4966,7 +4966,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID。
+        r"""项目ID。
         :rtype: int
         """
         return self._ProjectId
@@ -4977,7 +4977,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签。
+        r"""标签。
         :rtype: list of Tags
         """
         return self._Tags
@@ -4988,7 +4988,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewKeyPass(self):
-        """续费证书的私钥密码。
+        r"""续费证书的私钥密码。
         :rtype: str
         """
         return self._RenewKeyPass
@@ -4999,7 +4999,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def DomainNames(self):
-        """批量购买证书时预填写的域名。
+        r"""批量购买证书时预填写的域名。
         :rtype: str
         """
         return self._DomainNames
@@ -5010,7 +5010,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def CertificateCount(self):
-        """批量购买证书数量。
+        r"""批量购买证书数量。
         :rtype: int
         """
         return self._CertificateCount
@@ -5021,7 +5021,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """预填写的管理人ID。
+        r"""预填写的管理人ID。
         :rtype: int
         """
         return self._ManagerId
@@ -5032,7 +5032,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def CompanyId(self):
-        """预填写的公司ID。
+        r"""预填写的公司ID。
         :rtype: int
         """
         return self._CompanyId
@@ -5043,7 +5043,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def VerifyType(self):
-        """验证方式
+        r"""验证方式
         :rtype: str
         """
         return self._VerifyType
@@ -5054,7 +5054,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def PriceKey(self):
-        """询价参数，以下是对每个询价参数及其对应的证书文字说明：
+        r"""询价参数，以下是对每个询价参数及其对应的证书文字说明：
 1. sv_ssl_cost_cfca_ca_ev - CFCA-增强型(EV)SSL证书
 2. sv_ssl_cost_cfca_ca_ovwildcard - CFCA-企业型(OV) SSL证书(通配符)
 3. sv_ssl_cost_cfca_ca_ov - CFCA-企业型(OV)SSL证书
@@ -5160,7 +5160,7 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
 
 class CreateCertificateByPackageResponse(AbstractModel):
-    """CreateCertificateByPackage返回参数结构体
+    r"""CreateCertificateByPackage返回参数结构体
 
     """
 
@@ -5179,7 +5179,7 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._CertificateId
@@ -5190,7 +5190,7 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """批量购买证书时返回多个证书ID。
+        r"""批量购买证书时返回多个证书ID。
         :rtype: list of str
         """
         return self._CertificateIds
@@ -5201,7 +5201,7 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5218,7 +5218,7 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
 
 class CreateCertificateRequest(AbstractModel):
-    """CreateCertificate请求参数结构体
+    r"""CreateCertificate请求参数结构体
 
     """
 
@@ -5328,7 +5328,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        """证书套餐类型：
+        r"""证书套餐类型：
 3：SecureSite 增强型企业版（EV Pro）， 
 4：SecureSite 增强型（EV）， 
 5：SecureSite 企业型专业版（OV Pro），
@@ -5424,7 +5424,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def DomainNum(self):
-        """证书包含的域名数量。 多域名或者多泛域名证书类型必须大于1
+        r"""证书包含的域名数量。 多域名或者多泛域名证书类型必须大于1
         :rtype: int
         """
         return self._DomainNum
@@ -5435,7 +5435,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """证书年限。 支持多年期的证书才可以大于1年
+        r"""证书年限。 支持多年期的证书才可以大于1年
         :rtype: int
         """
         return self._TimeSpan
@@ -5446,7 +5446,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """是否自动使用代金券：1是，0否；默认为1
+        r"""是否自动使用代金券：1是，0否；默认为1
         :rtype: int
         """
         return self._AutoVoucher
@@ -5457,7 +5457,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签， 生成证书打标签
+        r"""标签， 生成证书打标签
         :rtype: list of Tags
         """
         return self._Tags
@@ -5489,7 +5489,7 @@ class CreateCertificateRequest(AbstractModel):
 
 
 class CreateCertificateResponse(AbstractModel):
-    """CreateCertificate返回参数结构体
+    r"""CreateCertificate返回参数结构体
 
     """
 
@@ -5508,7 +5508,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """证书ID列表
+        r"""证书ID列表
         :rtype: list of str
         """
         return self._CertificateIds
@@ -5519,7 +5519,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def DealIds(self):
-        """订单号列表
+        r"""订单号列表
         :rtype: list of str
         """
         return self._DealIds
@@ -5530,7 +5530,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5547,7 +5547,7 @@ class CreateCertificateResponse(AbstractModel):
 
 
 class DdosInstanceDetail(AbstractModel):
-    """ddos复杂类型
+    r"""ddos复杂类型
 
     """
 
@@ -5572,7 +5572,7 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -5583,7 +5583,7 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -5594,7 +5594,7 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议类型
+        r"""协议类型
         :rtype: str
         """
         return self._Protocol
@@ -5605,7 +5605,7 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -5616,7 +5616,7 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def VirtualPort(self):
-        """转发端口
+        r"""转发端口
         :rtype: str
         """
         return self._VirtualPort
@@ -5643,7 +5643,7 @@ class DdosInstanceDetail(AbstractModel):
 
 
 class DdosInstanceList(AbstractModel):
-    """ddos实例详情 - 异步关联云资源数据结构
+    r"""ddos实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -5662,7 +5662,7 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下ddos域名总数	
+        r"""该地域下ddos域名总数	
         :rtype: int
         """
         return self._TotalCount
@@ -5673,7 +5673,7 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """ddos实例详情	
+        r"""ddos实例详情	
         :rtype: list of DdosInstanceDetail
         """
         return self._InstanceList
@@ -5684,7 +5684,7 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
         :rtype: str
         """
         return self._Error
@@ -5714,7 +5714,7 @@ class DdosInstanceList(AbstractModel):
 
 
 class DeleteCertificateRequest(AbstractModel):
-    """DeleteCertificate请求参数结构体
+    r"""DeleteCertificate请求参数结构体
 
     """
 
@@ -5730,7 +5730,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -5741,7 +5741,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def IsCheckResource(self):
-        """删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
+        r"""删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
         :rtype: bool
         """
         return self._IsCheckResource
@@ -5765,7 +5765,7 @@ class DeleteCertificateRequest(AbstractModel):
 
 
 class DeleteCertificateResponse(AbstractModel):
-    """DeleteCertificate返回参数结构体
+    r"""DeleteCertificate返回参数结构体
 
     """
 
@@ -5785,7 +5785,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
-        """删除结果（true：删除成功，false：删除失败）
+        r"""删除结果（true：删除成功，false：删除失败）
         :rtype: bool
         """
         return self._DeleteResult
@@ -5796,7 +5796,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """异步删除的任务ID
+        r"""异步删除的任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5808,7 +5808,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5825,7 +5825,7 @@ class DeleteCertificateResponse(AbstractModel):
 
 
 class DeleteCertificatesRequest(AbstractModel):
-    """DeleteCertificates请求参数结构体
+    r"""DeleteCertificates请求参数结构体
 
     """
 
@@ -5841,7 +5841,7 @@ class DeleteCertificatesRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """要删除的证书ID。单次最多100个
+        r"""要删除的证书ID。单次最多100个
         :rtype: list of str
         """
         return self._CertificateIds
@@ -5852,7 +5852,7 @@ class DeleteCertificatesRequest(AbstractModel):
 
     @property
     def IsSync(self):
-        """删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后且该参数传true，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
+        r"""删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后且该参数传true，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
         :rtype: bool
         """
         return self._IsSync
@@ -5876,7 +5876,7 @@ class DeleteCertificatesRequest(AbstractModel):
 
 
 class DeleteCertificatesResponse(AbstractModel):
-    """DeleteCertificates返回参数结构体
+    r"""DeleteCertificates返回参数结构体
 
     """
 
@@ -5898,7 +5898,7 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def Success(self):
-        """成功的ID
+        r"""成功的ID
         :rtype: list of str
         """
         return self._Success
@@ -5909,7 +5909,7 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def Fail(self):
-        """失败的ID和原因
+        r"""失败的ID和原因
         :rtype: list of BatchDeleteFail
         """
         return self._Fail
@@ -5920,7 +5920,7 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def CertTaskIds(self):
-        """证书ID和异步任务的ID
+        r"""证书ID和异步任务的ID
         :rtype: list of CertTaskId
         """
         return self._CertTaskIds
@@ -5931,7 +5931,7 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5959,7 +5959,7 @@ class DeleteCertificatesResponse(AbstractModel):
 
 
 class DeleteManagerRequest(AbstractModel):
-    """DeleteManager请求参数结构体
+    r"""DeleteManager请求参数结构体
 
     """
 
@@ -5972,7 +5972,7 @@ class DeleteManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -5995,7 +5995,7 @@ class DeleteManagerRequest(AbstractModel):
 
 
 class DeleteManagerResponse(AbstractModel):
-    """DeleteManager返回参数结构体
+    r"""DeleteManager返回参数结构体
 
     """
 
@@ -6011,7 +6011,7 @@ class DeleteManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -6022,7 +6022,7 @@ class DeleteManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6038,7 +6038,7 @@ class DeleteManagerResponse(AbstractModel):
 
 
 class DeleteTaskResult(AbstractModel):
-    """批量删除证书异步任务结果
+    r"""批量删除证书异步任务结果
 
     """
 
@@ -6066,7 +6066,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -6077,7 +6077,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -6088,7 +6088,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        """异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
+        r"""异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
         :rtype: int
         """
         return self._Status
@@ -6099,7 +6099,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Error(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Error
@@ -6110,7 +6110,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def CacheTime(self):
-        """当前结果缓存时间
+        r"""当前结果缓存时间
         :rtype: str
         """
         return self._CacheTime
@@ -6121,7 +6121,7 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Domains(self):
-        """包含的域名
+        r"""包含的域名
         :rtype: list of str
         """
         return self._Domains
@@ -6149,7 +6149,7 @@ class DeleteTaskResult(AbstractModel):
 
 
 class DeployCertificateInstanceRequest(AbstractModel):
-    """DeployCertificateInstance请求参数结构体
+    r"""DeployCertificateInstance请求参数结构体
 
     """
 
@@ -6206,7 +6206,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -6217,7 +6217,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        """证书部署的实例列表，不同云资源类型如下
+        r"""证书部署的实例列表，不同云资源类型如下
 - clb：若监听器开启了SNI，则需要指定到域名LoadBalancerId|ListenerId|Domain，例：["lb-bid2fs4g|lbl-a8af11gs|tencent.com"]，若监听器未开启SNI或者为四层监听器，则指定到监听器，例：["lb-bid2fs4g|lbl-1c6rp5eo"]
 - cdn：Domain|计费开关，例：["cdn2.tencent.com|off", "cdn.tencent.com|on"]
 - ddos：InsId|Domain|VirtualPort，例：["bgpip-000001ms|tencent.com|443"]
@@ -6242,7 +6242,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """证书部署云资源支持的云资源类型， 不传则默认部署clb：
+        r"""证书部署云资源支持的云资源类型， 不传则默认部署clb：
 - clb
 - cdn
 - ddos
@@ -6267,7 +6267,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def Status(self):
-        """部署云资源状态：
+        r"""部署云资源状态：
 云直播：
 -1：域名未关联证书。
 1： 域名https已开启。
@@ -6282,7 +6282,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，默认缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，默认缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -6309,7 +6309,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
 
 class DeployCertificateInstanceResponse(AbstractModel):
-    """DeployCertificateInstance返回参数结构体
+    r"""DeployCertificateInstance返回参数结构体
 
     """
 
@@ -6328,7 +6328,7 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """云资源部署任务ID
+        r"""云资源部署任务ID
         :rtype: int
         """
         return self._DeployRecordId
@@ -6339,7 +6339,7 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
-        """部署任务创建状态；1表示创建成功； 0表示当前存在部署中的任务，未创建新的部署任务；返回值DeployRecordId为部署中的任务ID
+        r"""部署任务创建状态；1表示创建成功； 0表示当前存在部署中的任务，未创建新的部署任务；返回值DeployRecordId为部署中的任务ID
         :rtype: int
         """
         return self._DeployStatus
@@ -6350,7 +6350,7 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6367,7 +6367,7 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
 
 class DeployCertificateRecordRetryRequest(AbstractModel):
-    """DeployCertificateRecordRetry请求参数结构体
+    r"""DeployCertificateRecordRetry请求参数结构体
 
     """
 
@@ -6383,7 +6383,7 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID，通过DeployCertificateInstance获得
+        r"""待重试部署记录ID，通过DeployCertificateInstance获得
         :rtype: int
         """
         return self._DeployRecordId
@@ -6394,7 +6394,7 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
+        r"""待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -6418,7 +6418,7 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
 
 class DeployCertificateRecordRetryResponse(AbstractModel):
-    """DeployCertificateRecordRetry返回参数结构体
+    r"""DeployCertificateRecordRetry返回参数结构体
 
     """
 
@@ -6431,7 +6431,7 @@ class DeployCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6446,7 +6446,7 @@ class DeployCertificateRecordRetryResponse(AbstractModel):
 
 
 class DeployCertificateRecordRollbackRequest(AbstractModel):
-    """DeployCertificateRecordRollback请求参数结构体
+    r"""DeployCertificateRecordRollback请求参数结构体
 
     """
 
@@ -6459,7 +6459,7 @@ class DeployCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID, 就是通过DeployCertificateInstance返回的DeployRecordId
+        r"""待重试部署记录ID, 就是通过DeployCertificateInstance返回的DeployRecordId
         :rtype: int
         """
         return self._DeployRecordId
@@ -6482,7 +6482,7 @@ class DeployCertificateRecordRollbackRequest(AbstractModel):
 
 
 class DeployCertificateRecordRollbackResponse(AbstractModel):
-    """DeployCertificateRecordRollback返回参数结构体
+    r"""DeployCertificateRecordRollback返回参数结构体
 
     """
 
@@ -6498,7 +6498,7 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """回滚部署记录ID
+        r"""回滚部署记录ID
         :rtype: int
         """
         return self._DeployRecordId
@@ -6509,7 +6509,7 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6525,7 +6525,7 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
 
 
 class DeployRecord(AbstractModel):
-    """托管记录
+    r"""托管记录
 
     """
 
@@ -6562,7 +6562,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -6573,7 +6573,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
-        """成功总数
+        r"""成功总数
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -6584,7 +6584,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def FailedTotalCount(self):
-        """失败总数
+        r"""失败总数
         :rtype: int
         """
         return self._FailedTotalCount
@@ -6595,7 +6595,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def RunningTotalCount(self):
-        """部署中总数
+        r"""部署中总数
         :rtype: int
         """
         return self._RunningTotalCount
@@ -6606,7 +6606,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def Type(self):
-        """部署记录类型 0 为部署， 1 为回滚
+        r"""部署记录类型 0 为部署， 1 为回滚
         :rtype: int
         """
         return self._Type
@@ -6617,7 +6617,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def RecordDetailList(self):
-        """部署记录详情列表
+        r"""部署记录详情列表
         :rtype: list of DeployRecordList
         """
         return self._RecordDetailList
@@ -6628,7 +6628,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def Status(self):
-        """托管资源部署状态：0 等待部署， 1 部署成功， 2 部署失败 3 部署中， 4 回滚成功， 5 回滚失败
+        r"""托管资源部署状态：0 等待部署， 1 部署成功， 2 部署失败 3 部署中， 4 回滚成功， 5 回滚失败
         :rtype: int
         """
         return self._Status
@@ -6639,7 +6639,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def CreateTime(self):
-        """托管资源创建时间
+        r"""托管资源创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6650,7 +6650,7 @@ class DeployRecord(AbstractModel):
 
     @property
     def PendingTotalCount(self):
-        """待部署总数
+        r"""待部署总数
         :rtype: int
         """
         return self._PendingTotalCount
@@ -6686,7 +6686,7 @@ class DeployRecord(AbstractModel):
 
 
 class DeployRecordDetail(AbstractModel):
-    """部署记录详情
+    r"""部署记录详情
 
     """
 
@@ -6771,7 +6771,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Id(self):
-        """部署记录详情ID
+        r"""部署记录详情ID
         :rtype: int
         """
         return self._Id
@@ -6782,7 +6782,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """部署证书ID
+        r"""部署证书ID
         :rtype: str
         """
         return self._CertId
@@ -6793,7 +6793,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def OldCertId(self):
-        """原绑定证书ID
+        r"""原绑定证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -6804,7 +6804,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """部署实例ID
+        r"""部署实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -6815,7 +6815,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        """部署实例名称
+        r"""部署实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -6826,7 +6826,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ListenerId(self):
-        """部署监听器ID
+        r"""部署监听器ID
         :rtype: str
         """
         return self._ListenerId
@@ -6837,7 +6837,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Domains(self):
-        """部署域名列表
+        r"""部署域名列表
         :rtype: list of str
         """
         return self._Domains
@@ -6848,7 +6848,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        """部署监听器协议
+        r"""部署监听器协议
         :rtype: str
         """
         return self._Protocol
@@ -6859,7 +6859,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态
+        r"""部署状态
         :rtype: int
         """
         return self._Status
@@ -6870,7 +6870,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """部署错误信息
+        r"""部署错误信息
         :rtype: str
         """
         return self._ErrorMsg
@@ -6881,7 +6881,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署记录详情创建时间
+        r"""部署记录详情创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6892,7 +6892,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """部署记录详情最后一次更新时间
+        r"""部署记录详情最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -6903,7 +6903,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ListenerName(self):
-        """部署监听器名称
+        r"""部署监听器名称
         :rtype: str
         """
         return self._ListenerName
@@ -6914,7 +6914,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def SniSwitch(self):
-        """是否开启SNI
+        r"""是否开启SNI
         :rtype: int
         """
         return self._SniSwitch
@@ -6925,7 +6925,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶名称
+        r"""COS存储桶名称
         :rtype: str
         """
         return self._Bucket
@@ -6936,7 +6936,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间名称
+        r"""命名空间名称
         :rtype: str
         """
         return self._Namespace
@@ -6947,7 +6947,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def SecretName(self):
-        """secret名称
+        r"""secret名称
         :rtype: str
         """
         return self._SecretName
@@ -6958,7 +6958,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -6969,7 +6969,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def EnvId(self):
-        """TCB环境ID
+        r"""TCB环境ID
         :rtype: str
         """
         return self._EnvId
@@ -6980,7 +6980,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def TCBType(self):
-        """部署的TCB类型
+        r"""部署的TCB类型
         :rtype: str
         """
         return self._TCBType
@@ -6991,7 +6991,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Region(self):
-        """部署的TCB地域
+        r"""部署的TCB地域
         :rtype: str
         """
         return self._Region
@@ -7002,7 +7002,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Url(self):
-        """部署CLB监听器的Url
+        r"""部署CLB监听器的Url
         :rtype: list of str
         """
         return self._Url
@@ -7013,7 +7013,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Algorithm(self):
-        """当前部署证书加密算法
+        r"""当前部署证书加密算法
         :rtype: str
         """
         return self._Algorithm
@@ -7024,7 +7024,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def OldAlgorithm(self):
-        """原证书加密算法
+        r"""原证书加密算法
         :rtype: str
         """
         return self._OldAlgorithm
@@ -7035,7 +7035,7 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """实例状态，不同云产品状态不一样
+        r"""实例状态，不同云产品状态不一样
         :rtype: str
         """
         return self._InstanceStatus
@@ -7082,7 +7082,7 @@ class DeployRecordDetail(AbstractModel):
 
 
 class DeployRecordInfo(AbstractModel):
-    """部署记录信息
+    r"""部署记录信息
 
     """
 
@@ -7113,7 +7113,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        """部署记录ID
+        r"""部署记录ID
         :rtype: int
         """
         return self._Id
@@ -7124,7 +7124,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def CertId(self):
-        """部署证书ID
+        r"""部署证书ID
         :rtype: str
         """
         return self._CertId
@@ -7135,7 +7135,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署资源类型
+        r"""部署资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -7146,7 +7146,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Region(self):
-        """部署地域
+        r"""部署地域
         :rtype: str
         """
         return self._Region
@@ -7157,7 +7157,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态:0 未开始， 1 成功， 2 失败
+        r"""部署状态:0 未开始， 1 成功， 2 失败
         :rtype: int
         """
         return self._Status
@@ -7168,7 +7168,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署时间
+        r"""部署时间
         :rtype: str
         """
         return self._CreateTime
@@ -7179,7 +7179,7 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最近一次更新时间
+        r"""最近一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -7208,7 +7208,7 @@ class DeployRecordInfo(AbstractModel):
 
 
 class DeployRecordItem(AbstractModel):
-    """部署记录详情
+    r"""部署记录详情
 
     """
 
@@ -7281,7 +7281,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Id(self):
-        """部署记录详情ID
+        r"""部署记录详情ID
         :rtype: int
         """
         return self._Id
@@ -7292,7 +7292,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def OldCertId(self):
-        """原绑定证书ID
+        r"""原绑定证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -7303,7 +7303,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """部署实例ID
+        r"""部署实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -7314,7 +7314,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """部署实例名称
+        r"""部署实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -7325,7 +7325,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def ListenerId(self):
-        """部署监听器ID
+        r"""部署监听器ID
         :rtype: str
         """
         return self._ListenerId
@@ -7336,7 +7336,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Domains(self):
-        """部署域名列表
+        r"""部署域名列表
         :rtype: list of str
         """
         return self._Domains
@@ -7347,7 +7347,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Protocol(self):
-        """部署监听器协议
+        r"""部署监听器协议
         :rtype: str
         """
         return self._Protocol
@@ -7358,7 +7358,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态
+        r"""部署状态
         :rtype: int
         """
         return self._Status
@@ -7369,7 +7369,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """部署错误信息
+        r"""部署错误信息
         :rtype: str
         """
         return self._ErrorMsg
@@ -7380,7 +7380,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署记录详情创建时间
+        r"""部署记录详情创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -7391,7 +7391,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """部署记录详情最后一次更新时间
+        r"""部署记录详情最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -7402,7 +7402,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def ListenerName(self):
-        """部署监听器名称
+        r"""部署监听器名称
         :rtype: str
         """
         return self._ListenerName
@@ -7413,7 +7413,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def SniSwitch(self):
-        """是否开启SNI
+        r"""是否开启SNI
         :rtype: int
         """
         return self._SniSwitch
@@ -7424,7 +7424,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶名称
+        r"""COS存储桶名称
         :rtype: str
         """
         return self._Bucket
@@ -7435,7 +7435,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间名称
+        r"""命名空间名称
         :rtype: str
         """
         return self._Namespace
@@ -7446,7 +7446,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def SecretName(self):
-        """secret名称
+        r"""secret名称
         :rtype: str
         """
         return self._SecretName
@@ -7457,7 +7457,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
         :rtype: int
         """
         return self._Port
@@ -7468,7 +7468,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Region(self):
-        """部署的TCB地域
+        r"""部署的TCB地域
         :rtype: str
         """
         return self._Region
@@ -7479,7 +7479,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def Forward(self):
-        """负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        r"""负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
         :rtype: int
         """
         return self._Forward
@@ -7490,7 +7490,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def SSLMode(self):
-        """证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+        r"""证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
         :rtype: str
         """
         return self._SSLMode
@@ -7501,7 +7501,7 @@ class DeployRecordItem(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署资源类型
+        r"""部署资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -7544,7 +7544,7 @@ class DeployRecordItem(AbstractModel):
 
 
 class DeployRecordList(AbstractModel):
-    """托管记录详情信息
+    r"""托管记录详情信息
 
     """
 
@@ -7564,7 +7564,7 @@ class DeployRecordList(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署资源类型
+        r"""部署资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -7575,7 +7575,7 @@ class DeployRecordList(AbstractModel):
 
     @property
     def List(self):
-        """部署资源详情列表
+        r"""部署资源详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeployRecordItem
         """
@@ -7587,7 +7587,7 @@ class DeployRecordList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该部署资源总数
+        r"""该部署资源总数
         :rtype: int
         """
         return self._TotalCount
@@ -7617,7 +7617,7 @@ class DeployRecordList(AbstractModel):
 
 
 class DeployedResources(AbstractModel):
-    """资源详情
+    r"""资源详情
 
     """
 
@@ -7642,7 +7642,7 @@ class DeployedResources(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -7653,7 +7653,7 @@ class DeployedResources(AbstractModel):
 
     @property
     def Count(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._Count
@@ -7664,7 +7664,7 @@ class DeployedResources(AbstractModel):
 
     @property
     def Type(self):
-        """资源标识:clb,cdn,live,waf,antiddos
+        r"""资源标识:clb,cdn,live,waf,antiddos
         :rtype: str
         """
         return self._Type
@@ -7675,7 +7675,7 @@ class DeployedResources(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """不建议使用。字段返回和Resources相同。本字段后续只返回null
+        r"""不建议使用。字段返回和Resources相同。本字段后续只返回null
         :rtype: list of str
         """
         return self._ResourceIds
@@ -7686,7 +7686,7 @@ class DeployedResources(AbstractModel):
 
     @property
     def Resources(self):
-        """关联资源ID或关联域名。
+        r"""关联资源ID或关联域名。
         :rtype: list of str
         """
         return self._Resources
@@ -7713,7 +7713,7 @@ class DeployedResources(AbstractModel):
 
 
 class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
-    """DescribeCertificateBindResourceTaskDetail请求参数结构体
+    r"""DescribeCertificateBindResourceTaskDetail请求参数结构体
 
     """
 
@@ -7750,7 +7750,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
+        r"""任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
         :rtype: str
         """
         return self._TaskId
@@ -7761,7 +7761,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+        r"""每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
         :rtype: str
         """
         return self._Limit
@@ -7772,7 +7772,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """当前偏移量，默认为0
+        r"""当前偏移量，默认为0
         :rtype: str
         """
         return self._Offset
@@ -7783,7 +7783,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """查询资源类型的结果详情， 不传则查询所有，取值支持：
+        r"""查询资源类型的结果详情， 不传则查询所有，取值支持：
 - clb
 - cdn
 - ddos
@@ -7806,7 +7806,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Regions(self):
-        """查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
+        r"""查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
         :rtype: list of str
         """
         return self._Regions
@@ -7833,7 +7833,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
 
 class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
-    """DescribeCertificateBindResourceTaskDetail返回参数结构体
+    r"""DescribeCertificateBindResourceTaskDetail返回参数结构体
 
     """
 
@@ -7888,7 +7888,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CLB(self):
-        """关联clb资源详情	
+        r"""关联clb资源详情	
         :rtype: list of ClbInstanceList
         """
         return self._CLB
@@ -7899,7 +7899,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CDN(self):
-        """关联cdn资源详情	
+        r"""关联cdn资源详情	
         :rtype: list of CdnInstanceList
         """
         return self._CDN
@@ -7910,7 +7910,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def WAF(self):
-        """关联waf资源详情	
+        r"""关联waf资源详情	
         :rtype: list of WafInstanceList
         """
         return self._WAF
@@ -7921,7 +7921,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def DDOS(self):
-        """关联ddos资源详情	
+        r"""关联ddos资源详情	
         :rtype: list of DdosInstanceList
         """
         return self._DDOS
@@ -7932,7 +7932,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def LIVE(self):
-        """关联live资源详情	
+        r"""关联live资源详情	
         :rtype: list of LiveInstanceList
         """
         return self._LIVE
@@ -7943,7 +7943,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def VOD(self):
-        """关联vod资源详情	
+        r"""关联vod资源详情	
         :rtype: list of VODInstanceList
         """
         return self._VOD
@@ -7954,7 +7954,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TKE(self):
-        """关联tke资源详情	
+        r"""关联tke资源详情	
         :rtype: list of TkeInstanceList
         """
         return self._TKE
@@ -7965,7 +7965,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def APIGATEWAY(self):
-        """关联apigateway资源详情	
+        r"""关联apigateway资源详情	
         :rtype: list of ApiGatewayInstanceList
         """
         return self._APIGATEWAY
@@ -7976,7 +7976,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TCB(self):
-        """关联tcb资源详情	
+        r"""关联tcb资源详情	
         :rtype: list of TCBInstanceList
         """
         return self._TCB
@@ -7987,7 +7987,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TEO(self):
-        """关联teo资源详情	
+        r"""关联teo资源详情	
         :rtype: list of TeoInstanceList
         """
         return self._TEO
@@ -7998,7 +7998,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        r"""关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
         :rtype: int
         """
         return self._Status
@@ -8009,7 +8009,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CacheTime(self):
-        """当前结果缓存时间
+        r"""当前结果缓存时间
         :rtype: str
         """
         return self._CacheTime
@@ -8020,7 +8020,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TSE(self):
-        """关联tse资源详情	
+        r"""关联tse资源详情	
         :rtype: list of TSEInstanceList
         """
         return self._TSE
@@ -8031,7 +8031,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def COS(self):
-        """关联的COS资源详情
+        r"""关联的COS资源详情
         :rtype: list of COSInstanceList
         """
         return self._COS
@@ -8042,7 +8042,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8131,7 +8131,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
 
 class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
-    """DescribeCertificateBindResourceTaskResult请求参数结构体
+    r"""DescribeCertificateBindResourceTaskResult请求参数结构体
 
     """
 
@@ -8144,7 +8144,7 @@ class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        """任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
+        r"""任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
         :rtype: list of str
         """
         return self._TaskIds
@@ -8167,7 +8167,7 @@ class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
 
 
 class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
-    """DescribeCertificateBindResourceTaskResult返回参数结构体
+    r"""DescribeCertificateBindResourceTaskResult返回参数结构体
 
     """
 
@@ -8183,7 +8183,7 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
 
     @property
     def SyncTaskBindResourceResult(self):
-        """异步任务绑定关联云资源结果列表
+        r"""异步任务绑定关联云资源结果列表
         :rtype: list of SyncTaskBindResourceResult
         """
         return self._SyncTaskBindResourceResult
@@ -8194,7 +8194,7 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8215,7 +8215,7 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
 
 
 class DescribeCertificateDetailRequest(AbstractModel):
-    """DescribeCertificateDetail请求参数结构体
+    r"""DescribeCertificateDetail请求参数结构体
 
     """
 
@@ -8228,7 +8228,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -8251,7 +8251,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
 
 class DescribeCertificateDetailResponse(AbstractModel):
-    """DescribeCertificateDetail返回参数结构体
+    r"""DescribeCertificateDetail返回参数结构体
 
     """
 
@@ -8514,7 +8514,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OwnerUin(self):
-        """证书所属用户主账号 UIN。
+        r"""证书所属用户主账号 UIN。
         :rtype: str
         """
         return self._OwnerUin
@@ -8525,7 +8525,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: str
         """
         return self._ProjectId
@@ -8536,7 +8536,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def From(self):
-        """证书来源：
+        r"""证书来源：
 trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
@@ -8551,7 +8551,7 @@ sheca：上海CA
 
     @property
     def CertificateType(self):
-        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
         :rtype: str
         """
         return self._CertificateType
@@ -8562,7 +8562,7 @@ sheca：上海CA
 
     @property
     def PackageType(self):
-        """证书套餐类型：
+        r"""证书套餐类型：
 null：用户上传证书（没有套餐类型），
 2：TrustAsia TLS RSA CA， 
 3：SecureSite 增强型企业版（EV Pro）， 
@@ -8658,7 +8658,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProductZhName(self):
-        """证书产品名称
+        r"""证书产品名称
         :rtype: str
         """
         return self._ProductZhName
@@ -8669,7 +8669,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Domain(self):
-        """证书绑定通用名称域名。
+        r"""证书绑定通用名称域名。
         :rtype: str
         """
         return self._Domain
@@ -8680,7 +8680,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Alias(self):
-        """备注名称。
+        r"""备注名称。
         :rtype: str
         """
         return self._Alias
@@ -8691,7 +8691,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Status(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
         :rtype: int
         """
         return self._Status
@@ -8702,7 +8702,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusMsg(self):
-        """状态信息。 取值范围：
+        r"""状态信息。 取值范围：
 //通用状态信息
 1、PRE-REVIEWING：预审核中
 2、LEGAL-REVIEWING：法务审核中
@@ -8726,7 +8726,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VerifyType(self):
-        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+        r"""验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8738,7 +8738,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityStatus(self):
-        """漏洞扫描状态。
+        r"""漏洞扫描状态。
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -8749,7 +8749,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。时区为GMT+8:00
+        r"""证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8761,7 +8761,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。时区为GMT+8:00
+        r"""证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8773,7 +8773,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidityPeriod(self):
-        """证书有效期：单位（月）。
+        r"""证书有效期：单位（月）。
         :rtype: str
         """
         return self._ValidityPeriod
@@ -8784,7 +8784,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """证书申请时间。时区为GMT+8:00
+        r"""证书申请时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime
@@ -8795,7 +8795,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OrderId(self):
-        """CA订单 ID。
+        r"""CA订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8807,7 +8807,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateExtra(self):
-        """证书扩展信息。
+        r"""证书扩展信息。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -8818,7 +8818,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificatePrivateKey(self):
-        """私钥证书， 国密证书则为签名证书中的私钥证书
+        r"""私钥证书， 国密证书则为签名证书中的私钥证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8830,7 +8830,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificatePublicKey(self):
-        """公钥证书， 国密则为签名证书中的公钥证书
+        r"""公钥证书， 国密则为签名证书中的公钥证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8842,7 +8842,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvAuthDetail(self):
-        """证书域名验证信息。
+        r"""证书域名验证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         """
@@ -8854,7 +8854,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityReport(self):
-        """漏洞扫描评估报告。
+        r"""漏洞扫描评估报告。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8866,7 +8866,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -8877,7 +8877,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def TypeName(self):
-        """证书类型名称。
+        r"""证书类型名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8889,7 +8889,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusName(self):
-        """状态描述。
+        r"""状态描述。
         :rtype: str
         """
         return self._StatusName
@@ -8900,7 +8900,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubjectAltName(self):
-        """证书包含的多个域名（不包含主域名，主域名使用Domain字段）
+        r"""证书包含的多个域名（不包含主域名，主域名使用Domain字段）
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -8911,7 +8911,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVip(self):
-        """是否为付费证书。
+        r"""是否为付费证书。
         :rtype: bool
         """
         return self._IsVip
@@ -8922,7 +8922,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsWildcard(self):
-        """是否为泛域名证书。
+        r"""是否为泛域名证书。
         :rtype: bool
         """
         return self._IsWildcard
@@ -8933,7 +8933,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDv(self):
-        """是否为 DV 版证书。
+        r"""是否为 DV 版证书。
         :rtype: bool
         """
         return self._IsDv
@@ -8944,7 +8944,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVulnerability(self):
-        """是否启用了漏洞扫描功能。
+        r"""是否启用了漏洞扫描功能。
         :rtype: bool
         """
         return self._IsVulnerability
@@ -8955,7 +8955,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubmittedData(self):
-        """付费证书提交的资料信息。
+        r"""付费证书提交的资料信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         """
@@ -8967,7 +8967,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RenewAble(self):
-        """是否可续费。
+        r"""是否可续费。
         :rtype: bool
         """
         return self._RenewAble
@@ -8978,7 +8978,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Deployable(self):
-        """是否可部署。
+        r"""是否可部署。
         :rtype: bool
         """
         return self._Deployable
@@ -8989,7 +8989,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Tags(self):
-        """关联标签列表。
+        r"""关联标签列表。
         :rtype: list of Tags
         """
         return self._Tags
@@ -9000,7 +9000,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RootCert(self):
-        """根证书。
+        r"""根证书。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
         """
         return self._RootCert
@@ -9011,7 +9011,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptCert(self):
-        """国密加密证书公钥， 仅国密证书有值
+        r"""国密加密证书公钥， 仅国密证书有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9023,7 +9023,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptPrivateKey(self):
-        """国密加密私钥证书， 仅国密证书有值
+        r"""国密加密私钥证书， 仅国密证书有值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9035,7 +9035,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertFingerprint(self):
-        """签名证书 SHA1指纹
+        r"""签名证书 SHA1指纹
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9047,7 +9047,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptCertFingerprint(self):
-        """加密证书 SHA1指纹 （国密证书特有）
+        r"""加密证书 SHA1指纹 （国密证书特有）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9059,7 +9059,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptAlgorithm(self):
-        """证书加密算法（国密证书特有）
+        r"""证书加密算法（国密证书特有）
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -9070,7 +9070,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvRevokeAuthDetail(self):
-        """DV证书吊销验证值
+        r"""DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DvAuths
         """
@@ -9082,7 +9082,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertChainInfo(self):
-        """证书链信息
+        r"""证书链信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CertBasicInfo
         """
@@ -9094,7 +9094,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DomainType(self):
-        """证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+        r"""证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
         :rtype: int
         """
         return self._DomainType
@@ -9105,7 +9105,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertType(self):
-        """证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+        r"""证书类型，DV（域名型）；OV（企业型）；EV（增强型）
         :rtype: str
         """
         return self._CertType
@@ -9116,7 +9116,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9198,7 +9198,7 @@ null：用户上传证书（没有套餐类型），
 
 
 class DescribeCertificateOperateLogsRequest(AbstractModel):
-    """DescribeCertificateOperateLogs请求参数结构体
+    r"""DescribeCertificateOperateLogs请求参数结构体
 
     """
 
@@ -9220,7 +9220,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -9231,7 +9231,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """请求日志数量，默认为20, 最大值为1000，如超过1000按照1000处理。
+        r"""请求日志数量，默认为20, 最大值为1000，如超过1000按照1000处理。
         :rtype: int
         """
         return self._Limit
@@ -9242,7 +9242,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，默认15天前。
+        r"""开始时间，默认15天前。
         :rtype: str
         """
         return self._StartTime
@@ -9253,7 +9253,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，默认现在时间。
+        r"""结束时间，默认现在时间。
         :rtype: str
         """
         return self._EndTime
@@ -9279,7 +9279,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
 
 class DescribeCertificateOperateLogsResponse(AbstractModel):
-    """DescribeCertificateOperateLogs返回参数结构体
+    r"""DescribeCertificateOperateLogs返回参数结构体
 
     """
 
@@ -9301,7 +9301,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def AllTotal(self):
-        """当前查询条件日志总数。
+        r"""当前查询条件日志总数。
         :rtype: int
         """
         return self._AllTotal
@@ -9312,7 +9312,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """本次请求返回的日志数量。
+        r"""本次请求返回的日志数量。
         :rtype: int
         """
         return self._TotalCount
@@ -9323,7 +9323,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def OperateLogs(self):
-        """证书操作日志列表。
+        r"""证书操作日志列表。
         :rtype: list of OperationLog
         """
         return self._OperateLogs
@@ -9334,7 +9334,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9357,7 +9357,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
 
 class DescribeCertificateRequest(AbstractModel):
-    """DescribeCertificate请求参数结构体
+    r"""DescribeCertificate请求参数结构体
 
     """
 
@@ -9370,7 +9370,7 @@ class DescribeCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -9393,7 +9393,7 @@ class DescribeCertificateRequest(AbstractModel):
 
 
 class DescribeCertificateResponse(AbstractModel):
-    """DescribeCertificate返回参数结构体
+    r"""DescribeCertificate返回参数结构体
 
     """
 
@@ -9650,7 +9650,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OwnerUin(self):
-        """用户 UIN。
+        r"""用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9662,7 +9662,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9674,7 +9674,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def From(self):
-        """证书来源：
+        r"""证书来源：
 trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
@@ -9690,7 +9690,7 @@ sheca：上海CA
 
     @property
     def CertificateType(self):
-        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9702,7 +9702,7 @@ sheca：上海CA
 
     @property
     def PackageType(self):
-        """证书套餐类型：
+        r"""证书套餐类型：
 null：用户上传证书（没有套餐类型），
 2：TrustAsia TLS RSA CA， 
 3：SecureSite 增强型企业版（EV Pro）， 
@@ -9798,7 +9798,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProductZhName(self):
-        """证书产品名称
+        r"""证书产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9810,7 +9810,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Domain(self):
-        """域名。
+        r"""域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9822,7 +9822,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Alias(self):
-        """备注名称。
+        r"""备注名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9834,7 +9834,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Status(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9846,7 +9846,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusMsg(self):
-        """状态信息。 取值范围：
+        r"""状态信息。 取值范围：
 //通用状态信息
 1、PRE-REVIEWING：预审核中
 2、LEGAL-REVIEWING：法务审核中
@@ -9870,7 +9870,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VerifyType(self):
-        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+        r"""验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9882,7 +9882,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityStatus(self):
-        """漏洞扫描状态。
+        r"""漏洞扫描状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9894,7 +9894,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。时区为GMT+8:00
+        r"""证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9906,7 +9906,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。时区为GMT+8:00
+        r"""证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9918,7 +9918,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidityPeriod(self):
-        """证书有效期：单位(月)。
+        r"""证书有效期：单位(月)。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9930,7 +9930,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """申请时间。时区为GMT+8:00
+        r"""申请时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9942,7 +9942,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OrderId(self):
-        """订单 ID。
+        r"""订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9954,7 +9954,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateExtra(self):
-        """证书扩展信息。
+        r"""证书扩展信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
@@ -9966,7 +9966,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvAuthDetail(self):
-        """DV 认证信息。
+        r"""DV 认证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         """
@@ -9978,7 +9978,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityReport(self):
-        """漏洞扫描评估报告。
+        r"""漏洞扫描评估报告。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9990,7 +9990,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10002,7 +10002,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def PackageTypeName(self):
-        """证书类型名称。
+        r"""证书类型名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10014,7 +10014,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusName(self):
-        """状态描述。
+        r"""状态描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10026,7 +10026,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubjectAltName(self):
-        """证书包含的多个域名（包含主域名）。
+        r"""证书包含的多个域名（包含主域名）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10038,7 +10038,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVip(self):
-        """是否为 VIP 客户。
+        r"""是否为 VIP 客户。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10050,7 +10050,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsWildcard(self):
-        """是否为泛域名证书。
+        r"""是否为泛域名证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10062,7 +10062,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDv(self):
-        """是否为 DV 版证书。
+        r"""是否为 DV 版证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10074,7 +10074,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVulnerability(self):
-        """是否启用了漏洞扫描功能。
+        r"""是否启用了漏洞扫描功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10086,7 +10086,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RenewAble(self):
-        """是否可重颁发证书。
+        r"""是否可重颁发证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10098,7 +10098,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubmittedData(self):
-        """提交的资料信息。
+        r"""提交的资料信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         """
@@ -10110,7 +10110,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Deployable(self):
-        """是否可部署。
+        r"""是否可部署。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10122,7 +10122,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
@@ -10134,7 +10134,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEncryptAlgorithms(self):
-        """CA证书的所有加密方式。仅证书类型CertificateType为CA有效
+        r"""CA证书的所有加密方式。仅证书类型CertificateType为CA有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10146,7 +10146,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CACommonNames(self):
-        """CA证书的所有通用名称。仅证书类型CertificateType为CA有效
+        r"""CA证书的所有通用名称。仅证书类型CertificateType为CA有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10158,7 +10158,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEndTimes(self):
-        """CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
+        r"""CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10170,7 +10170,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvRevokeAuthDetail(self):
-        """DV证书吊销验证值
+        r"""DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DvAuths
         """
@@ -10182,7 +10182,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10249,7 +10249,7 @@ null：用户上传证书（没有套餐类型），
 
 
 class DescribeCertificatesRequest(AbstractModel):
-    """DescribeCertificates请求参数结构体
+    r"""DescribeCertificates请求参数结构体
 
     """
 
@@ -10310,7 +10310,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。 默认为0
+        r"""分页偏移量，从0开始。 默认为0
         :rtype: int
         """
         return self._Offset
@@ -10321,7 +10321,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。最大值1000，如超过1000按1000处理
+        r"""每页数量，默认10。最大值1000，如超过1000按1000处理
         :rtype: int
         """
         return self._Limit
@@ -10332,7 +10332,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """搜索关键词，模糊匹配证书 ID、备注名称、证书域名
+        r"""搜索关键词，模糊匹配证书 ID、备注名称、证书域名
         :rtype: str
         """
         return self._SearchKey
@@ -10343,7 +10343,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateType(self):
-        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
         :rtype: str
         """
         return self._CertificateType
@@ -10354,7 +10354,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -10365,7 +10365,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ExpirationSort(self):
-        """默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
+        r"""默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
         :rtype: str
         """
         return self._ExpirationSort
@@ -10376,7 +10376,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateStatus(self):
-        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
+        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
         :rtype: list of int non-negative
         """
         return self._CertificateStatus
@@ -10387,7 +10387,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Deployable(self):
-        """是否可部署，可选值：1 = 可部署，0 =  不可部署。
+        r"""是否可部署，可选值：1 = 可部署，0 =  不可部署。
         :rtype: int
         """
         return self._Deployable
@@ -10398,7 +10398,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Upload(self):
-        """是否筛选上传托管的 1筛选，0不筛选
+        r"""是否筛选上传托管的 1筛选，0不筛选
         :rtype: int
         """
         return self._Upload
@@ -10409,7 +10409,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Renew(self):
-        """是否筛选可续期证书 1筛选 0不筛选
+        r"""是否筛选可续期证书 1筛选 0不筛选
         :rtype: int
         """
         return self._Renew
@@ -10420,7 +10420,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterSource(self):
-        """筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+        r"""筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
         :rtype: str
         """
         return self._FilterSource
@@ -10431,7 +10431,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsSM(self):
-        """是否筛选国密证书。1:筛选  0:不筛选
+        r"""是否筛选国密证书。1:筛选  0:不筛选
         :rtype: int
         """
         return self._IsSM
@@ -10442,7 +10442,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterExpiring(self):
-        """筛选证书是否即将过期，传1是筛选，0不筛选
+        r"""筛选证书是否即将过期，传1是筛选，0不筛选
         :rtype: int
         """
         return self._FilterExpiring
@@ -10453,7 +10453,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Hostable(self):
-        """是否可托管，可选值：1 = 可托管，0 =  不可托管。
+        r"""是否可托管，可选值：1 = 可托管，0 =  不可托管。
         :rtype: int
         """
         return self._Hostable
@@ -10464,7 +10464,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """筛选指定标签的证书
+        r"""筛选指定标签的证书
         :rtype: list of Tags
         """
         return self._Tags
@@ -10475,7 +10475,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsPendingIssue(self):
-        """是否筛选等待签发的证书，传1是筛选，0和null不筛选
+        r"""是否筛选等待签发的证书，传1是筛选，0和null不筛选
         :rtype: int
         """
         return self._IsPendingIssue
@@ -10486,7 +10486,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertIds(self):
-        """筛选指定证书ID的证书，只支持有权限的证书ID
+        r"""筛选指定证书ID的证书，只支持有权限的证书ID
         :rtype: list of str
         """
         return self._CertIds
@@ -10530,7 +10530,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
 
 class DescribeCertificatesResponse(AbstractModel):
-    """DescribeCertificates返回参数结构体
+    r"""DescribeCertificates返回参数结构体
 
     """
 
@@ -10549,7 +10549,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数量。
+        r"""总数量。
         :rtype: int
         """
         return self._TotalCount
@@ -10560,7 +10560,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def Certificates(self):
-        """列表。
+        r"""列表。
         :rtype: list of Certificates
         """
         return self._Certificates
@@ -10571,7 +10571,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10593,7 +10593,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
 
 class DescribeCompaniesRequest(AbstractModel):
-    """DescribeCompanies请求参数结构体
+    r"""DescribeCompanies请求参数结构体
 
     """
 
@@ -10612,7 +10612,7 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认值为0.
+        r"""分页偏移量，默认值为0.
         :rtype: int
         """
         return self._Offset
@@ -10623,7 +10623,7 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页每页限制数，默认值为0，最大值1000.
+        r"""分页每页限制数，默认值为0，最大值1000.
         :rtype: int
         """
         return self._Limit
@@ -10634,7 +10634,7 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def CompanyId(self):
-        """公司ID
+        r"""公司ID
         :rtype: int
         """
         return self._CompanyId
@@ -10659,7 +10659,7 @@ class DescribeCompaniesRequest(AbstractModel):
 
 
 class DescribeCompaniesResponse(AbstractModel):
-    """DescribeCompanies返回参数结构体
+    r"""DescribeCompanies返回参数结构体
 
     """
 
@@ -10678,7 +10678,7 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def Companies(self):
-        """公司列表
+        r"""公司列表
         :rtype: list of CompanyInfo
         """
         return self._Companies
@@ -10689,7 +10689,7 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """公司总数
+        r"""公司总数
         :rtype: int
         """
         return self._TotalCount
@@ -10700,7 +10700,7 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10722,7 +10722,7 @@ class DescribeCompaniesResponse(AbstractModel):
 
 
 class DescribeDeleteCertificatesTaskResultRequest(AbstractModel):
-    """DescribeDeleteCertificatesTaskResult请求参数结构体
+    r"""DescribeDeleteCertificatesTaskResult请求参数结构体
 
     """
 
@@ -10735,7 +10735,7 @@ class DescribeDeleteCertificatesTaskResultRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        """DeleteCertificates接口返回的任务ID， 最大支持100个
+        r"""DeleteCertificates接口返回的任务ID， 最大支持100个
         :rtype: list of str
         """
         return self._TaskIds
@@ -10758,7 +10758,7 @@ class DescribeDeleteCertificatesTaskResultRequest(AbstractModel):
 
 
 class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
-    """DescribeDeleteCertificatesTaskResult返回参数结构体
+    r"""DescribeDeleteCertificatesTaskResult返回参数结构体
 
     """
 
@@ -10774,7 +10774,7 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
 
     @property
     def DeleteTaskResult(self):
-        """批量删除证书异步任务结果
+        r"""批量删除证书异步任务结果
         :rtype: list of DeleteTaskResult
         """
         return self._DeleteTaskResult
@@ -10785,7 +10785,7 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10806,7 +10806,7 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
 
 
 class DescribeDeployedResourcesRequest(AbstractModel):
-    """DescribeDeployedResources请求参数结构体
+    r"""DescribeDeployedResources请求参数结构体
 
     """
 
@@ -10822,7 +10822,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """证书ID
+        r"""证书ID
         :rtype: list of str
         """
         return self._CertificateIds
@@ -10833,7 +10833,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型:clb,cdn,live,vod,waf,antiddos,teo
+        r"""资源类型:clb,cdn,live,vod,waf,antiddos,teo
         :rtype: str
         """
         return self._ResourceType
@@ -10857,7 +10857,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
 
 class DescribeDeployedResourcesResponse(AbstractModel):
-    """DescribeDeployedResources返回参数结构体
+    r"""DescribeDeployedResources返回参数结构体
 
     """
 
@@ -10873,7 +10873,7 @@ class DescribeDeployedResourcesResponse(AbstractModel):
 
     @property
     def DeployedResources(self):
-        """资源详情
+        r"""资源详情
         :rtype: list of DeployedResources
         """
         return self._DeployedResources
@@ -10884,7 +10884,7 @@ class DescribeDeployedResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10905,7 +10905,7 @@ class DescribeDeployedResourcesResponse(AbstractModel):
 
 
 class DescribeDownloadCertificateUrlRequest(AbstractModel):
-    """DescribeDownloadCertificateUrl请求参数结构体
+    r"""DescribeDownloadCertificateUrl请求参数结构体
 
     """
 
@@ -10921,7 +10921,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -10932,7 +10932,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
+        r"""下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
         :rtype: str
         """
         return self._ServiceType
@@ -10956,7 +10956,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
 
 class DescribeDownloadCertificateUrlResponse(AbstractModel):
-    """DescribeDownloadCertificateUrl返回参数结构体
+    r"""DescribeDownloadCertificateUrl返回参数结构体
 
     """
 
@@ -10975,7 +10975,7 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def DownloadCertificateUrl(self):
-        """下载链接
+        r"""下载链接
         :rtype: str
         """
         return self._DownloadCertificateUrl
@@ -10986,7 +10986,7 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def DownloadFilename(self):
-        """下载文件的名称
+        r"""下载文件的名称
         :rtype: str
         """
         return self._DownloadFilename
@@ -10997,7 +10997,7 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11014,7 +11014,7 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
 
 class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
-    """DescribeHostApiGatewayInstanceList请求参数结构体
+    r"""DescribeHostApiGatewayInstanceList请求参数结构体
 
     """
 
@@ -11045,7 +11045,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -11056,7 +11056,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -11067,7 +11067,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -11080,7 +11080,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型apigateway
+        r"""部署资源类型apigateway
         :rtype: str
         """
         return self._ResourceType
@@ -11093,7 +11093,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -11104,7 +11104,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10，最大值为200。	
+        r"""每页数量，默认10，最大值为200。	
         :rtype: int
         """
         return self._Limit
@@ -11115,7 +11115,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认值为0。
+        r"""分页偏移量，默认值为0。
         :rtype: str
         """
         return self._Offset
@@ -11149,7 +11149,7 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
 
 class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
-    """DescribeHostApiGatewayInstanceList返回参数结构体
+    r"""DescribeHostApiGatewayInstanceList返回参数结构体
 
     """
 
@@ -11168,7 +11168,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """apiGateway实例列表,如取不到值返回空数组
+        r"""apiGateway实例列表,如取不到值返回空数组
         :rtype: list of ApiGatewayInstanceDetail
         """
         return self._InstanceList
@@ -11179,7 +11179,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数，如取不到值返回0
+        r"""总数，如取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -11190,7 +11190,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11212,7 +11212,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
 
 class DescribeHostCdnInstanceListRequest(AbstractModel):
-    """DescribeHostCdnInstanceList请求参数结构体
+    r"""DescribeHostCdnInstanceList请求参数结构体
 
     """
 
@@ -11246,7 +11246,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -11257,7 +11257,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -11268,7 +11268,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -11281,7 +11281,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型cdn
+        r"""部署资源类型cdn
         :rtype: str
         """
         return self._ResourceType
@@ -11294,7 +11294,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -11305,7 +11305,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认值为0。	
+        r"""分页偏移量，默认值为0。	
         :rtype: int
         """
         return self._Offset
@@ -11316,7 +11316,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10，最大值为200。	
+        r"""每页数量，默认10，最大值为200。	
         :rtype: int
         """
         return self._Limit
@@ -11327,7 +11327,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步,0表示否，1表示是，默认为0
+        r"""是否异步,0表示否，1表示是，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -11362,7 +11362,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
 
 class DescribeHostCdnInstanceListResponse(AbstractModel):
-    """DescribeHostCdnInstanceList返回参数结构体
+    r"""DescribeHostCdnInstanceList返回参数结构体
 
     """
 
@@ -11390,7 +11390,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """CDN实例列表，如取不到值返回空数组
+        r"""CDN实例列表，如取不到值返回空数组
         :rtype: list of CdnInstanceDetail
         """
         return self._InstanceList
@@ -11401,7 +11401,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """CDN域名总数，如取不到值返回0
+        r"""CDN域名总数，如取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -11412,7 +11412,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数，如取不到值返回0
+        r"""异步刷新总数，如取不到值返回0
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -11423,7 +11423,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数，如取不到值返回0
+        r"""异步刷新当前执行数，如取不到值返回0
         :rtype: int
         """
         return self._AsyncOffset
@@ -11434,7 +11434,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
-        """当前缓存读取时间
+        r"""当前缓存读取时间
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -11445,7 +11445,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11470,7 +11470,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
 
 class DescribeHostClbInstanceListRequest(AbstractModel):
-    """DescribeHostClbInstanceList请求参数结构体
+    r"""DescribeHostClbInstanceList请求参数结构体
 
     """
 
@@ -11501,7 +11501,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -11512,7 +11512,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。
+        r"""每页数量，默认10。
         :rtype: int
         """
         return self._Limit
@@ -11523,7 +11523,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -11534,7 +11534,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -11545,7 +11545,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -11556,7 +11556,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步缓存,0表示否,1表示是
+        r"""是否异步缓存,0表示否,1表示是
         :rtype: int
         """
         return self._AsyncCache
@@ -11567,7 +11567,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -11601,7 +11601,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
 
 class DescribeHostClbInstanceListResponse(AbstractModel):
-    """DescribeHostClbInstanceList返回参数结构体
+    r"""DescribeHostClbInstanceList返回参数结构体
 
     """
 
@@ -11629,7 +11629,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数，取不到值返回0
+        r"""总数，取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -11640,7 +11640,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """CLB实例监听器列表，取不到值返回空数组
+        r"""CLB实例监听器列表，取不到值返回空数组
         :rtype: list of ClbInstanceDetail
         """
         return self._InstanceList
@@ -11651,7 +11651,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数，取不到值返回0
+        r"""异步刷新总数，取不到值返回0
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -11662,7 +11662,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数，取不到值返回0
+        r"""异步刷新当前执行数，取不到值返回0
         :rtype: int
         """
         return self._AsyncOffset
@@ -11673,7 +11673,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
-        """当前缓存读取时间，去不到值返回空
+        r"""当前缓存读取时间，去不到值返回空
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -11684,7 +11684,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11709,7 +11709,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
 
 class DescribeHostCosInstanceListRequest(AbstractModel):
-    """DescribeHostCosInstanceList请求参数结构体
+    r"""DescribeHostCosInstanceList请求参数结构体
 
     """
 
@@ -11743,7 +11743,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -11754,7 +11754,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -11765,7 +11765,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表
+        r"""过滤参数列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -11776,7 +11776,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署资源类型 cos
+        r"""部署资源类型 cos
         :rtype: str
         """
         return self._ResourceType
@@ -11787,7 +11787,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID	
+        r"""原证书ID	
         :rtype: str
         """
         return self._OldCertificateId
@@ -11798,7 +11798,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -11809,7 +11809,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。	
+        r"""每页数量，默认10。	
         :rtype: int
         """
         return self._Limit
@@ -11820,7 +11820,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步，0表示否，1表示是
+        r"""是否异步，0表示否，1表示是
         :rtype: int
         """
         return self._AsyncCache
@@ -11855,7 +11855,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
 
 class DescribeHostCosInstanceListResponse(AbstractModel):
-    """DescribeHostCosInstanceList返回参数结构体
+    r"""DescribeHostCosInstanceList返回参数结构体
 
     """
 
@@ -11883,7 +11883,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """COS实例列表
+        r"""COS实例列表
         :rtype: list of CosInstanceDetail
         """
         return self._InstanceList
@@ -11894,7 +11894,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -11905,7 +11905,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数
+        r"""异步刷新总数
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -11916,7 +11916,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数
+        r"""异步刷新当前执行数
         :rtype: int
         """
         return self._AsyncOffset
@@ -11927,7 +11927,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
-        """当前缓存读取时间
+        r"""当前缓存读取时间
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -11938,7 +11938,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11963,7 +11963,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
 
 class DescribeHostDdosInstanceListRequest(AbstractModel):
-    """DescribeHostDdosInstanceList请求参数结构体
+    r"""DescribeHostDdosInstanceList请求参数结构体
 
     """
 
@@ -11994,7 +11994,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -12005,7 +12005,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -12016,7 +12016,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -12027,7 +12027,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署资源类型ddos
+        r"""部署资源类型ddos
         :rtype: str
         """
         return self._ResourceType
@@ -12038,7 +12038,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -12049,7 +12049,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。	
+        r"""分页偏移量，从0开始。	
         :rtype: int
         """
         return self._Offset
@@ -12060,7 +12060,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。	
+        r"""每页数量，默认10。	
         :rtype: int
         """
         return self._Limit
@@ -12094,7 +12094,7 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
 
 class DescribeHostDdosInstanceListResponse(AbstractModel):
-    """DescribeHostDdosInstanceList返回参数结构体
+    r"""DescribeHostDdosInstanceList返回参数结构体
 
     """
 
@@ -12113,7 +12113,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """DDOS实例列表,取不到值返回空数组
+        r"""DDOS实例列表,取不到值返回空数组
         :rtype: list of DdosInstanceDetail
         """
         return self._InstanceList
@@ -12124,7 +12124,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -12135,7 +12135,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12157,7 +12157,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
 
 class DescribeHostDeployRecordDetailRequest(AbstractModel):
-    """DescribeHostDeployRecordDetail请求参数结构体
+    r"""DescribeHostDeployRecordDetail请求参数结构体
 
     """
 
@@ -12176,7 +12176,7 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """部署记录ID，通过调用DeployCertificateInstance接口返回的记录ID， 或者通过DeployCertificateRecordRollback回滚接口返回的记录ID
+        r"""部署记录ID，通过调用DeployCertificateInstance接口返回的记录ID， 或者通过DeployCertificateRecordRollback回滚接口返回的记录ID
         :rtype: str
         """
         return self._DeployRecordId
@@ -12187,7 +12187,7 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。默认为0
+        r"""分页偏移量，从0开始。默认为0
         :rtype: int
         """
         return self._Offset
@@ -12198,7 +12198,7 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。最大值为200
+        r"""每页数量，默认10。最大值为200
         :rtype: int
         """
         return self._Limit
@@ -12223,7 +12223,7 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
 
 class DescribeHostDeployRecordDetailResponse(AbstractModel):
-    """DescribeHostDeployRecordDetail返回参数结构体
+    r"""DescribeHostDeployRecordDetail返回参数结构体
 
     """
 
@@ -12254,7 +12254,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """部署记录总数
+        r"""部署记录总数
         :rtype: int
         """
         return self._TotalCount
@@ -12265,7 +12265,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def DeployRecordDetailList(self):
-        """证书部署记录列表
+        r"""证书部署记录列表
         :rtype: list of DeployRecordDetail
         """
         return self._DeployRecordDetailList
@@ -12276,7 +12276,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
-        """成功总数
+        r"""成功总数
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -12287,7 +12287,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def FailedTotalCount(self):
-        """失败总数
+        r"""失败总数
         :rtype: int
         """
         return self._FailedTotalCount
@@ -12298,7 +12298,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def RunningTotalCount(self):
-        """部署中总数
+        r"""部署中总数
         :rtype: int
         """
         return self._RunningTotalCount
@@ -12309,7 +12309,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def PendingTotalCount(self):
-        """待部署总数
+        r"""待部署总数
         :rtype: int
         """
         return self._PendingTotalCount
@@ -12320,7 +12320,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12346,7 +12346,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
 
 class DescribeHostDeployRecordRequest(AbstractModel):
-    """DescribeHostDeployRecord请求参数结构体
+    r"""DescribeHostDeployRecord请求参数结构体
 
     """
 
@@ -12368,7 +12368,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -12379,7 +12379,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -12390,7 +12390,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。
+        r"""每页数量，默认10。
         :rtype: int
         """
         return self._Limit
@@ -12401,7 +12401,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse,live
+        r"""支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse,live
         :rtype: str
         """
         return self._ResourceType
@@ -12427,7 +12427,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
 
 class DescribeHostDeployRecordResponse(AbstractModel):
-    """DescribeHostDeployRecord返回参数结构体
+    r"""DescribeHostDeployRecord返回参数结构体
 
     """
 
@@ -12446,7 +12446,7 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -12457,7 +12457,7 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def DeployRecordList(self):
-        """证书部署记录列表
+        r"""证书部署记录列表
         :rtype: list of DeployRecordInfo
         """
         return self._DeployRecordList
@@ -12468,7 +12468,7 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12490,7 +12490,7 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
 
 class DescribeHostLighthouseInstanceListRequest(AbstractModel):
-    """DescribeHostLighthouseInstanceList请求参数结构体
+    r"""DescribeHostLighthouseInstanceList请求参数结构体
 
     """
 
@@ -12512,7 +12512,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -12523,7 +12523,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -12534,7 +12534,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -12547,7 +12547,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型 lighthouse
+        r"""部署资源类型 lighthouse
         :rtype: str
         """
         return self._ResourceType
@@ -12580,7 +12580,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
 
 class DescribeHostLighthouseInstanceListResponse(AbstractModel):
-    """DescribeHostLighthouseInstanceList返回参数结构体
+    r"""DescribeHostLighthouseInstanceList返回参数结构体
 
     """
 
@@ -12599,7 +12599,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """Lighthouse实例列表,如取不到返回空数组
+        r"""Lighthouse实例列表,如取不到返回空数组
         :rtype: list of LighthouseInstanceDetail
         """
         return self._InstanceList
@@ -12610,7 +12610,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数，如取不到返回0
+        r"""总数，如取不到返回0
         :rtype: int
         """
         return self._TotalCount
@@ -12621,7 +12621,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12643,7 +12643,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
 
 class DescribeHostLiveInstanceListRequest(AbstractModel):
-    """DescribeHostLiveInstanceList请求参数结构体
+    r"""DescribeHostLiveInstanceList请求参数结构体
 
     """
 
@@ -12668,7 +12668,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -12679,7 +12679,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -12690,7 +12690,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -12703,7 +12703,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型
+        r"""部署资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -12716,7 +12716,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -12748,7 +12748,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
 
 class DescribeHostLiveInstanceListResponse(AbstractModel):
-    """DescribeHostLiveInstanceList返回参数结构体
+    r"""DescribeHostLiveInstanceList返回参数结构体
 
     """
 
@@ -12764,7 +12764,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """live实例列表,如取不到值返回空数组
+        r"""live实例列表,如取不到值返回空数组
         :rtype: list of LiveInstanceDetail
         """
         return self._InstanceList
@@ -12775,7 +12775,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12796,7 +12796,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
 
 class DescribeHostTeoInstanceListRequest(AbstractModel):
-    """DescribeHostTeoInstanceList请求参数结构体
+    r"""DescribeHostTeoInstanceList请求参数结构体
 
     """
 
@@ -12830,7 +12830,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -12843,7 +12843,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型
+        r"""部署资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -12856,7 +12856,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -12867,7 +12867,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -12878,7 +12878,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -12889,7 +12889,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，默认值为0.
+        r"""分页偏移量，默认值为0.
         :rtype: int
         """
         return self._Offset
@@ -12900,7 +12900,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10，最大值为200。	
+        r"""每页数量，默认10，最大值为200。	
         :rtype: int
         """
         return self._Limit
@@ -12911,7 +12911,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步，1表示是，0表示否，默认为0
+        r"""是否异步，1表示是，0表示否，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -12946,7 +12946,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
 
 class DescribeHostTeoInstanceListResponse(AbstractModel):
-    """DescribeHostTeoInstanceList返回参数结构体
+    r"""DescribeHostTeoInstanceList返回参数结构体
 
     """
 
@@ -12965,7 +12965,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """teo实例列表，如取不到值返回空数组
+        r"""teo实例列表，如取不到值返回空数组
         :rtype: list of TeoInstanceDetail
         """
         return self._InstanceList
@@ -12976,7 +12976,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -12987,7 +12987,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13009,7 +13009,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
 
 class DescribeHostTkeInstanceListRequest(AbstractModel):
-    """DescribeHostTkeInstanceList请求参数结构体
+    r"""DescribeHostTkeInstanceList请求参数结构体
 
     """
 
@@ -13040,7 +13040,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -13051,7 +13051,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。
+        r"""每页数量，默认10。
         :rtype: int
         """
         return self._Limit
@@ -13062,7 +13062,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -13073,7 +13073,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -13084,7 +13084,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -13095,7 +13095,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步缓存，0表示否，1表示是，默认为0
+        r"""是否异步缓存，0表示否，1表示是，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -13106,7 +13106,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -13140,7 +13140,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
 
 class DescribeHostTkeInstanceListResponse(AbstractModel):
-    """DescribeHostTkeInstanceList返回参数结构体
+    r"""DescribeHostTkeInstanceList返回参数结构体
 
     """
 
@@ -13168,7 +13168,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数，取不到值返回0
+        r"""总数，取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -13179,7 +13179,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """tke实例列表，取不到值返回空数组
+        r"""tke实例列表，取不到值返回空数组
         :rtype: list of TkeInstanceDetail
         """
         return self._InstanceList
@@ -13190,7 +13190,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数，取不到值返回0
+        r"""异步刷新总数，取不到值返回0
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -13201,7 +13201,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数，取不到值返回0
+        r"""异步刷新当前执行数，取不到值返回0
         :rtype: int
         """
         return self._AsyncOffset
@@ -13212,7 +13212,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
-        """当前缓存读取时间	
+        r"""当前缓存读取时间	
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -13223,7 +13223,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13248,7 +13248,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
 
 class DescribeHostUpdateRecordDetailRequest(AbstractModel):
-    """DescribeHostUpdateRecordDetail请求参数结构体
+    r"""DescribeHostUpdateRecordDetail请求参数结构体
 
     """
 
@@ -13267,7 +13267,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """部署记录ID，通过调用UpdateCertificateInstance接口返回的记录ID， 或者通过UpdateCertificateRecordRollback回滚接口返回的记录ID
+        r"""部署记录ID，通过调用UpdateCertificateInstance接口返回的记录ID， 或者通过UpdateCertificateRecordRollback回滚接口返回的记录ID
         :rtype: str
         """
         return self._DeployRecordId
@@ -13278,7 +13278,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。最大值为200
+        r"""每页数量，默认10。最大值为200
         :rtype: str
         """
         return self._Limit
@@ -13289,7 +13289,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。默认为0
+        r"""分页偏移量，从0开始。默认为0
         :rtype: str
         """
         return self._Offset
@@ -13314,7 +13314,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
 
 class DescribeHostUpdateRecordDetailResponse(AbstractModel):
-    """DescribeHostUpdateRecordDetail返回参数结构体
+    r"""DescribeHostUpdateRecordDetail返回参数结构体
 
     """
 
@@ -13345,7 +13345,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数,如果取不到返回0
+        r"""总数,如果取不到返回0
         :rtype: int
         """
         return self._TotalCount
@@ -13356,7 +13356,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RecordDetailList(self):
-        """证书部署记录列表，如果取不到值返回空数组
+        r"""证书部署记录列表，如果取不到值返回空数组
         :rtype: list of UpdateRecordDetails
         """
         return self._RecordDetailList
@@ -13367,7 +13367,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
-        """成功总数,如果取不到返回0
+        r"""成功总数,如果取不到返回0
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -13378,7 +13378,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def FailedTotalCount(self):
-        """失败总数,如果取不到返回0
+        r"""失败总数,如果取不到返回0
         :rtype: int
         """
         return self._FailedTotalCount
@@ -13389,7 +13389,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RunningTotalCount(self):
-        """部署中总数,如果取不到返回0
+        r"""部署中总数,如果取不到返回0
         :rtype: int
         """
         return self._RunningTotalCount
@@ -13400,7 +13400,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def PendingTotalCount(self):
-        """待部署总数
+        r"""待部署总数
         :rtype: int
         """
         return self._PendingTotalCount
@@ -13411,7 +13411,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13437,7 +13437,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
 
 class DescribeHostUpdateRecordRequest(AbstractModel):
-    """DescribeHostUpdateRecord请求参数结构体
+    r"""DescribeHostUpdateRecord请求参数结构体
 
     """
 
@@ -13459,7 +13459,7 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -13470,7 +13470,7 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。
+        r"""每页数量，默认10。
         :rtype: int
         """
         return self._Limit
@@ -13481,7 +13481,7 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """新证书ID
+        r"""新证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -13492,7 +13492,7 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -13518,7 +13518,7 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
 
 class DescribeHostUpdateRecordResponse(AbstractModel):
-    """DescribeHostUpdateRecord返回参数结构体
+    r"""DescribeHostUpdateRecord返回参数结构体
 
     """
 
@@ -13537,7 +13537,7 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -13548,7 +13548,7 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def DeployRecordList(self):
-        """证书部署记录列表
+        r"""证书部署记录列表
         :rtype: list of UpdateRecordInfo
         """
         return self._DeployRecordList
@@ -13559,7 +13559,7 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13581,7 +13581,7 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
 
 class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
-    """DescribeHostUploadUpdateRecordDetail请求参数结构体
+    r"""DescribeHostUploadUpdateRecordDetail请求参数结构体
 
     """
 
@@ -13600,7 +13600,7 @@ class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """托管记录ID
+        r"""托管记录ID
         :rtype: int
         """
         return self._DeployRecordId
@@ -13611,7 +13611,7 @@ class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认为10，最大为200， 超过200则为200
+        r"""每页数量，默认为10，最大为200， 超过200则为200
         :rtype: int
         """
         return self._Limit
@@ -13622,7 +13622,7 @@ class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -13647,7 +13647,7 @@ class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
 
 
 class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
-    """DescribeHostUploadUpdateRecordDetail返回参数结构体
+    r"""DescribeHostUploadUpdateRecordDetail返回参数结构体
 
     """
 
@@ -13663,7 +13663,7 @@ class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def DeployRecordDetail(self):
-        """托管记录详情列表
+        r"""托管记录详情列表
         :rtype: list of DeployRecord
         """
         return self._DeployRecordDetail
@@ -13674,7 +13674,7 @@ class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13695,7 +13695,7 @@ class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
 
 
 class DescribeHostUploadUpdateRecordRequest(AbstractModel):
-    """DescribeHostUploadUpdateRecord请求参数结构体
+    r"""DescribeHostUploadUpdateRecord请求参数结构体
 
     """
 
@@ -13714,7 +13714,7 @@ class DescribeHostUploadUpdateRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，从0开始。
+        r"""分页偏移量，从0开始。
         :rtype: int
         """
         return self._Offset
@@ -13725,7 +13725,7 @@ class DescribeHostUploadUpdateRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。
+        r"""每页数量，默认10。
         :rtype: int
         """
         return self._Limit
@@ -13736,7 +13736,7 @@ class DescribeHostUploadUpdateRecordRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -13761,7 +13761,7 @@ class DescribeHostUploadUpdateRecordRequest(AbstractModel):
 
 
 class DescribeHostUploadUpdateRecordResponse(AbstractModel):
-    """DescribeHostUploadUpdateRecord返回参数结构体
+    r"""DescribeHostUploadUpdateRecord返回参数结构体
 
     """
 
@@ -13780,7 +13780,7 @@ class DescribeHostUploadUpdateRecordResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -13791,7 +13791,7 @@ class DescribeHostUploadUpdateRecordResponse(AbstractModel):
 
     @property
     def DeployRecordList(self):
-        """证书部署记录列表
+        r"""证书部署记录列表
         :rtype: list of UploadUpdateRecordInfo
         """
         return self._DeployRecordList
@@ -13802,7 +13802,7 @@ class DescribeHostUploadUpdateRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13824,7 +13824,7 @@ class DescribeHostUploadUpdateRecordResponse(AbstractModel):
 
 
 class DescribeHostVodInstanceListRequest(AbstractModel):
-    """DescribeHostVodInstanceList请求参数结构体
+    r"""DescribeHostVodInstanceList请求参数结构体
 
     """
 
@@ -13849,7 +13849,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID,必填选项
+        r"""待部署的证书ID,必填选项
         :rtype: str
         """
         return self._CertificateId
@@ -13860,7 +13860,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -13871,7 +13871,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -13884,7 +13884,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型 vod
+        r"""部署资源类型 vod
         :rtype: str
         """
         return self._ResourceType
@@ -13897,7 +13897,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -13929,7 +13929,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
 
 class DescribeHostVodInstanceListResponse(AbstractModel):
-    """DescribeHostVodInstanceList返回参数结构体
+    r"""DescribeHostVodInstanceList返回参数结构体
 
     """
 
@@ -13948,7 +13948,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """Vod实例列表，如果取不到值返回空数组
+        r"""Vod实例列表，如果取不到值返回空数组
         :rtype: list of VodInstanceDetail
         """
         return self._InstanceList
@@ -13959,7 +13959,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数,如果取不到值返回0
+        r"""总数,如果取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -13970,7 +13970,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13992,7 +13992,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
 
 class DescribeHostWafInstanceListRequest(AbstractModel):
-    """DescribeHostWafInstanceList请求参数结构体
+    r"""DescribeHostWafInstanceList请求参数结构体
 
     """
 
@@ -14017,7 +14017,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        r"""待部署的证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -14028,7 +14028,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
-        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        r"""是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :rtype: int
         """
         return self._IsCache
@@ -14039,7 +14039,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        r"""过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -14052,7 +14052,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
     def ResourceType(self):
         warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
 
-        """部署资源类型，如waf
+        r"""部署资源类型，如waf
         :rtype: str
         """
         return self._ResourceType
@@ -14065,7 +14065,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已部署的证书ID
+        r"""已部署的证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -14097,7 +14097,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
 
 class DescribeHostWafInstanceListResponse(AbstractModel):
-    """DescribeHostWafInstanceList返回参数结构体
+    r"""DescribeHostWafInstanceList返回参数结构体
 
     """
 
@@ -14113,7 +14113,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """WAF实例列表，如果没有取到值返回空数组
+        r"""WAF实例列表，如果没有取到值返回空数组
         :rtype: list of WafInstanceDetail
         """
         return self._InstanceList
@@ -14124,7 +14124,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14145,7 +14145,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
 
 class DescribeManagerDetailRequest(AbstractModel):
-    """DescribeManagerDetail请求参数结构体
+    r"""DescribeManagerDetail请求参数结构体
 
     """
 
@@ -14164,7 +14164,7 @@ class DescribeManagerDetailRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID,可以从describeManagers接口获得
+        r"""管理人ID,可以从describeManagers接口获得
         :rtype: int
         """
         return self._ManagerId
@@ -14177,7 +14177,7 @@ class DescribeManagerDetailRequest(AbstractModel):
     def Limit(self):
         warnings.warn("parameter `Limit` is deprecated", DeprecationWarning) 
 
-        """分页每页数量
+        r"""分页每页数量
         :rtype: int
         """
         return self._Limit
@@ -14192,7 +14192,7 @@ class DescribeManagerDetailRequest(AbstractModel):
     def Offset(self):
         warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
 
-        """分页偏移量
+        r"""分页偏移量
         :rtype: int
         """
         return self._Offset
@@ -14219,7 +14219,7 @@ class DescribeManagerDetailRequest(AbstractModel):
 
 
 class DescribeManagerDetailResponse(AbstractModel):
-    """DescribeManagerDetail返回参数结构体
+    r"""DescribeManagerDetail返回参数结构体
 
     """
 
@@ -14305,7 +14305,7 @@ class DescribeManagerDetailResponse(AbstractModel):
     def Status(self):
         warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
 
-        """状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        r"""状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
         :rtype: str
         """
         return self._Status
@@ -14318,7 +14318,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerFirstName(self):
-        """管理人姓名
+        r"""管理人姓名
         :rtype: str
         """
         return self._ManagerFirstName
@@ -14329,7 +14329,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerMail(self):
-        """管理人邮箱
+        r"""管理人邮箱
         :rtype: str
         """
         return self._ManagerMail
@@ -14340,7 +14340,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactFirstName(self):
-        """联系人姓名
+        r"""联系人姓名
         :rtype: str
         """
         return self._ContactFirstName
@@ -14351,7 +14351,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerLastName(self):
-        """管理人姓名
+        r"""管理人姓名
         :rtype: str
         """
         return self._ManagerLastName
@@ -14362,7 +14362,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactPosition(self):
-        """联系人职位
+        r"""联系人职位
         :rtype: str
         """
         return self._ContactPosition
@@ -14373,7 +14373,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerPosition(self):
-        """管理人职位
+        r"""管理人职位
         :rtype: str
         """
         return self._ManagerPosition
@@ -14384,7 +14384,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def VerifyTime(self):
-        """核验通过时间
+        r"""核验通过时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14396,7 +14396,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -14407,7 +14407,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """核验过期时间
+        r"""核验过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14419,7 +14419,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactLastName(self):
-        """联系人姓名
+        r"""联系人姓名
         :rtype: str
         """
         return self._ContactLastName
@@ -14430,7 +14430,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerPhone(self):
-        """管理人电话
+        r"""管理人电话
         :rtype: str
         """
         return self._ManagerPhone
@@ -14441,7 +14441,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactPhone(self):
-        """联系人电话
+        r"""联系人电话
         :rtype: str
         """
         return self._ContactPhone
@@ -14452,7 +14452,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactMail(self):
-        """联系人邮箱
+        r"""联系人邮箱
         :rtype: str
         """
         return self._ContactMail
@@ -14463,7 +14463,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerDepartment(self):
-        """管理人所属部门
+        r"""管理人所属部门
         :rtype: str
         """
         return self._ManagerDepartment
@@ -14474,7 +14474,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CompanyInfo(self):
-        """管理人所属公司信息
+        r"""管理人所属公司信息
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CompanyInfo`
         """
         return self._CompanyInfo
@@ -14485,7 +14485,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CompanyId(self):
-        """管理人公司ID
+        r"""管理人公司ID
         :rtype: int
         """
         return self._CompanyId
@@ -14496,7 +14496,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -14507,7 +14507,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def StatusInfo(self):
-        """审核状态详细信息
+        r"""审核状态详细信息
         :rtype: list of ManagerStatusInfo
         """
         return self._StatusInfo
@@ -14518,7 +14518,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerIdType(self):
-        """管理员证件类型，SFZ代表身份证，HZ代表护照
+        r"""管理员证件类型，SFZ代表身份证，HZ代表护照
         :rtype: str
         """
         return self._ManagerIdType
@@ -14529,7 +14529,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerIdNumber(self):
-        """管理员证件号码
+        r"""管理员证件号码
         :rtype: str
         """
         return self._ManagerIdNumber
@@ -14540,7 +14540,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactIdType(self):
-        """联系人证件类型，SFZ代表身份证，HZ代表护照
+        r"""联系人证件类型，SFZ代表身份证，HZ代表护照
         :rtype: str
         """
         return self._ContactIdType
@@ -14551,7 +14551,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactIdNumber(self):
-        """联系人证件号码
+        r"""联系人证件号码
         :rtype: str
         """
         return self._ContactIdNumber
@@ -14562,7 +14562,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14607,7 +14607,7 @@ class DescribeManagerDetailResponse(AbstractModel):
 
 
 class DescribeManagersRequest(AbstractModel):
-    """DescribeManagers请求参数结构体
+    r"""DescribeManagers请求参数结构体
 
     """
 
@@ -14645,7 +14645,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def CompanyId(self):
-        """公司ID,可以从DescribeCompanies接口获取
+        r"""公司ID,可以从DescribeCompanies接口获取
         :rtype: int
         """
         return self._CompanyId
@@ -14656,7 +14656,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量，如果不传默认值为0
+        r"""分页偏移量，如果不传默认值为0
         :rtype: int
         """
         return self._Offset
@@ -14667,7 +14667,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页每页数量，如果不传默认值为10，最大值为1000
+        r"""分页每页数量，如果不传默认值为10，最大值为1000
         :rtype: int
         """
         return self._Limit
@@ -14678,7 +14678,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def ManagerName(self):
-        """管理人姓名（将废弃），请使用SearchKey
+        r"""管理人姓名（将废弃），请使用SearchKey
         :rtype: str
         """
         return self._ManagerName
@@ -14689,7 +14689,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def ManagerMail(self):
-        """模糊查询管理人邮箱（将废弃），请使用SearchKey
+        r"""模糊查询管理人邮箱（将废弃），请使用SearchKey
         :rtype: str
         """
         return self._ManagerMail
@@ -14700,7 +14700,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Status(self):
-        """根据管理人状态进行筛选，取值有
+        r"""根据管理人状态进行筛选，取值有
 'none' 未提交审核
 'audit', 亚信审核中
 'CAaudit' CA审核中
@@ -14718,7 +14718,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """根据这样的格式:管理人姓|管理人名|邮箱|部门 ,进行精准匹配
+        r"""根据这样的格式:管理人姓|管理人名|邮箱|部门 ,进行精准匹配
         :rtype: str
         """
         return self._SearchKey
@@ -14747,7 +14747,7 @@ class DescribeManagersRequest(AbstractModel):
 
 
 class DescribeManagersResponse(AbstractModel):
-    """DescribeManagers返回参数结构体
+    r"""DescribeManagers返回参数结构体
 
     """
 
@@ -14766,7 +14766,7 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def Managers(self):
-        """公司管理人列表
+        r"""公司管理人列表
         :rtype: list of ManagerInfo
         """
         return self._Managers
@@ -14777,7 +14777,7 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """公司管理人总数
+        r"""公司管理人总数
         :rtype: int
         """
         return self._TotalCount
@@ -14788,7 +14788,7 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14810,7 +14810,7 @@ class DescribeManagersResponse(AbstractModel):
 
 
 class DescribePackagesRequest(AbstractModel):
-    """DescribePackages请求参数结构体
+    r"""DescribePackages请求参数结构体
 
     """
 
@@ -14842,7 +14842,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0。
+        r"""偏移量，默认0。
         :rtype: int
         """
         return self._Offset
@@ -14853,7 +14853,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目，默认20。
+        r"""限制数目，默认20。
         :rtype: int
         """
         return self._Limit
@@ -14864,7 +14864,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """按状态筛选。状态值包括usable(可用)，used(已用)，expired(已过期)，refund(已退款)
+        r"""按状态筛选。状态值包括usable(可用)，used(已用)，expired(已过期)，refund(已退款)
 
         :rtype: str
         """
@@ -14876,7 +14876,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """按过期时间升序或降序排列，可选值为asc(升序)和desc(降序)
+        r"""按过期时间升序或降序排列，可选值为asc(升序)和desc(降序)
         :rtype: str
         """
         return self._ExpireTime
@@ -14887,7 +14887,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def PackageId(self):
-        """按权益包ID搜索。
+        r"""按权益包ID搜索。
         :rtype: str
         """
         return self._PackageId
@@ -14898,7 +14898,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """按权益包类型搜索。类型包括：ssl_100(证书批量权益100点)，ssl_500(证书批量权益500点），ssl_2000(证书批量权益2000点）
+        r"""按权益包类型搜索。类型包括：ssl_100(证书批量权益100点)，ssl_500(证书批量权益500点），ssl_2000(证书批量权益2000点）
         :rtype: str
         """
         return self._Type
@@ -14909,7 +14909,7 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Pid(self):
-        """子产品编号
+        r"""子产品编号
         :rtype: int
         """
         return self._Pid
@@ -14938,7 +14938,7 @@ class DescribePackagesRequest(AbstractModel):
 
 
 class DescribePackagesResponse(AbstractModel):
-    """DescribePackages返回参数结构体
+    r"""DescribePackages返回参数结构体
 
     """
 
@@ -14960,7 +14960,7 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def Packages(self):
-        """权益包列表。
+        r"""权益包列表。
         :rtype: list of PackageInfo
         """
         return self._Packages
@@ -14971,7 +14971,7 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数。
+        r"""总条数。
         :rtype: int
         """
         return self._TotalCount
@@ -14982,7 +14982,7 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def TotalBalance(self):
-        """权益点总余额。
+        r"""权益点总余额。
         :rtype: int
         """
         return self._TotalBalance
@@ -14993,7 +14993,7 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15016,7 +15016,7 @@ class DescribePackagesResponse(AbstractModel):
 
 
 class DomainValidationResult(AbstractModel):
-    """证书域名验证结果
+    r"""证书域名验证结果
 
     """
 
@@ -15051,7 +15051,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Domain(self):
-        """证书绑定的域名。
+        r"""证书绑定的域名。
         :rtype: str
         """
         return self._Domain
@@ -15062,7 +15062,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def VerifyType(self):
-        """域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
+        r"""域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
         :rtype: str
         """
         return self._VerifyType
@@ -15073,7 +15073,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheck(self):
-        """腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
+        r"""腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
 
         :rtype: int
         """
@@ -15085,7 +15085,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def CaCheck(self):
-        """CA检查结果。取值： -1（未检测通过）；2（检测通过）
+        r"""CA检查结果。取值： -1（未检测通过）；2（检测通过）
         :rtype: int
         """
         return self._CaCheck
@@ -15096,7 +15096,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheckFailReason(self):
-        """检查失败原因。状态LocalCheck的具体描述
+        r"""检查失败原因。状态LocalCheck的具体描述
         :rtype: str
         """
         return self._LocalCheckFailReason
@@ -15107,7 +15107,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def CheckValue(self):
-        """检查到的值。
+        r"""检查到的值。
         :rtype: list of str
         """
         return self._CheckValue
@@ -15118,7 +15118,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Frequently(self):
-        """是否被限频拦截， 取值：false（未被限频）；true（被限频）
+        r"""是否被限频拦截， 取值：false（未被限频）；true（被限频）
         :rtype: bool
         """
         return self._Frequently
@@ -15129,7 +15129,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Issued(self):
-        """证书是否已经签发。取值： false（未签发）；true（已签发）
+        r"""证书是否已经签发。取值： false（未签发）；true（已签发）
         :rtype: bool
         """
         return self._Issued
@@ -15159,7 +15159,7 @@ class DomainValidationResult(AbstractModel):
 
 
 class DownloadCertificateRequest(AbstractModel):
-    """DownloadCertificate请求参数结构体
+    r"""DownloadCertificate请求参数结构体
 
     """
 
@@ -15172,7 +15172,7 @@ class DownloadCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -15195,7 +15195,7 @@ class DownloadCertificateRequest(AbstractModel):
 
 
 class DownloadCertificateResponse(AbstractModel):
-    """DownloadCertificate返回参数结构体
+    r"""DownloadCertificate返回参数结构体
 
     """
 
@@ -15214,7 +15214,7 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def Content(self):
-        """ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
+        r"""ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
         :rtype: str
         """
         return self._Content
@@ -15225,7 +15225,7 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def ContentType(self):
-        """MIME 类型：application/zip = ZIP 压缩文件。
+        r"""MIME 类型：application/zip = ZIP 压缩文件。
         :rtype: str
         """
         return self._ContentType
@@ -15236,7 +15236,7 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15253,7 +15253,7 @@ class DownloadCertificateResponse(AbstractModel):
 
 
 class DvAuthDetail(AbstractModel):
-    """获取证书列表（DescribeCertificate）返回参数键为 DvAuthDetail 的内容。
+    r"""获取证书列表（DescribeCertificate）返回参数键为 DvAuthDetail 的内容。
 
     """
 
@@ -15287,7 +15287,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthKey(self):
-        """证书域名验证记录Key
+        r"""证书域名验证记录Key
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15299,7 +15299,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthValue(self):
-        """证书域名验证记录值
+        r"""证书域名验证记录值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15311,7 +15311,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthDomain(self):
-        """证书域名验证域名值
+        r"""证书域名验证域名值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15323,7 +15323,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthPath(self):
-        """证书域名验证文件路径， 仅FILE、FILE_PROXY使用
+        r"""证书域名验证文件路径， 仅FILE、FILE_PROXY使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15335,7 +15335,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthKeySubDomain(self):
-        """证书域名验证子域名
+        r"""证书域名验证子域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15347,7 +15347,7 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuths(self):
-        """证书域名验证信息， 存在多个域名验证使用本字段
+        r"""证书域名验证信息， 存在多个域名验证使用本字段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DvAuths
         """
@@ -15381,7 +15381,7 @@ class DvAuthDetail(AbstractModel):
 
 
 class DvAuths(AbstractModel):
-    """返回参数键为 DvAuths 的内容。
+    r"""返回参数键为 DvAuths 的内容。
 
     """
 
@@ -15412,7 +15412,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthKey(self):
-        """证书域名验证记录Key
+        r"""证书域名验证记录Key
         :rtype: str
         """
         return self._DvAuthKey
@@ -15423,7 +15423,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthValue(self):
-        """证书域名验证记录值
+        r"""证书域名验证记录值
         :rtype: str
         """
         return self._DvAuthValue
@@ -15434,7 +15434,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthDomain(self):
-        """证书域名验证域名值
+        r"""证书域名验证域名值
         :rtype: str
         """
         return self._DvAuthDomain
@@ -15445,7 +15445,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthPath(self):
-        """证书域名验证文件路径， 仅FILE、FILE_PROXY使用
+        r"""证书域名验证文件路径， 仅FILE、FILE_PROXY使用
         :rtype: str
         """
         return self._DvAuthPath
@@ -15456,7 +15456,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthSubDomain(self):
-        """证书域名验证子域名
+        r"""证书域名验证子域名
         :rtype: str
         """
         return self._DvAuthSubDomain
@@ -15467,7 +15467,7 @@ CNAME：DNS域名验证添加CNAME记录
 
     @property
     def DvAuthVerifyType(self):
-        """证书域名验证类型，取值：
+        r"""证书域名验证类型，取值：
 TXT：DNS域名验证添加TXT记录
 FILE：域名文件验证
 CNAME：DNS域名验证添加CNAME记录
@@ -15498,7 +15498,7 @@ CNAME：DNS域名验证添加CNAME记录
 
 
 class Error(AbstractModel):
-    """错误异常
+    r"""错误异常
 
     """
 
@@ -15514,7 +15514,7 @@ class Error(AbstractModel):
 
     @property
     def Code(self):
-        """异常错误码
+        r"""异常错误码
         :rtype: str
         """
         return self._Code
@@ -15525,7 +15525,7 @@ class Error(AbstractModel):
 
     @property
     def Message(self):
-        """异常错误信息
+        r"""异常错误信息
         :rtype: str
         """
         return self._Message
@@ -15549,7 +15549,7 @@ class Error(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤参数列表
+    r"""过滤参数列表
 
     """
 
@@ -15565,7 +15565,7 @@ class Filter(AbstractModel):
 
     @property
     def FilterKey(self):
-        """过滤参数key
+        r"""过滤参数key
         :rtype: str
         """
         return self._FilterKey
@@ -15576,7 +15576,7 @@ class Filter(AbstractModel):
 
     @property
     def FilterValue(self):
-        """过滤参数值
+        r"""过滤参数值
         :rtype: str
         """
         return self._FilterValue
@@ -15600,7 +15600,7 @@ class Filter(AbstractModel):
 
 
 class GatewayCertificate(AbstractModel):
-    """云原生网关证书信息
+    r"""云原生网关证书信息
 
     """
 
@@ -15625,7 +15625,7 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def Id(self):
-        """网关证书ID
+        r"""网关证书ID
         :rtype: str
         """
         return self._Id
@@ -15636,7 +15636,7 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def Name(self):
-        """网关证书名称
+        r"""网关证书名称
         :rtype: str
         """
         return self._Name
@@ -15647,7 +15647,7 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def BindDomains(self):
-        """绑定域名
+        r"""绑定域名
         :rtype: list of str
         """
         return self._BindDomains
@@ -15658,7 +15658,7 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def CertSource(self):
-        """证书来源
+        r"""证书来源
         :rtype: str
         """
         return self._CertSource
@@ -15669,7 +15669,7 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def CertId(self):
-        """当前绑定的SSL证书ID
+        r"""当前绑定的SSL证书ID
         :rtype: str
         """
         return self._CertId
@@ -15696,7 +15696,7 @@ class GatewayCertificate(AbstractModel):
 
 
 class HostingConfig(AbstractModel):
-    """托管配置
+    r"""托管配置
 
     """
 
@@ -15718,7 +15718,7 @@ class HostingConfig(AbstractModel):
 
     @property
     def ReplaceTime(self):
-        """托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
+        r"""托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
         :rtype: int
         """
         return self._ReplaceTime
@@ -15729,7 +15729,7 @@ class HostingConfig(AbstractModel):
 
     @property
     def MessageTypes(self):
-        """托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
+        r"""托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
         :rtype: list of int
         """
         return self._MessageTypes
@@ -15740,7 +15740,7 @@ class HostingConfig(AbstractModel):
 
     @property
     def ReplaceStartTime(self):
-        """资源替换开始时间
+        r"""资源替换开始时间
         :rtype: str
         """
         return self._ReplaceStartTime
@@ -15751,7 +15751,7 @@ class HostingConfig(AbstractModel):
 
     @property
     def ReplaceEndTime(self):
-        """资源替换结束时间
+        r"""资源替换结束时间
         :rtype: str
         """
         return self._ReplaceEndTime
@@ -15777,7 +15777,7 @@ class HostingConfig(AbstractModel):
 
 
 class LighthouseInstanceDetail(AbstractModel):
-    """Lighthouse实例
+    r"""Lighthouse实例
 
     """
 
@@ -15799,7 +15799,7 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -15810,7 +15810,7 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -15821,7 +15821,7 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def IP(self):
-        """IP地址
+        r"""IP地址
         :rtype: list of str
         """
         return self._IP
@@ -15832,7 +15832,7 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """可选择域名
+        r"""可选择域名
         :rtype: list of str
         """
         return self._Domain
@@ -15858,7 +15858,7 @@ class LighthouseInstanceDetail(AbstractModel):
 
 
 class LiveInstanceDetail(AbstractModel):
-    """live实例详情
+    r"""live实例详情
 
     """
 
@@ -15880,7 +15880,7 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -15891,7 +15891,7 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """已绑定的证书ID
+        r"""已绑定的证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15903,7 +15903,7 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """-1：域名未关联证书。
+        r"""-1：域名未关联证书。
 1： 域名https已开启。
 0： 域名https已关闭。
         :rtype: int
@@ -15930,7 +15930,7 @@ class LiveInstanceDetail(AbstractModel):
 
 
 class LiveInstanceList(AbstractModel):
-    """live实例详情 - 异步关联云资源数据结构
+    r"""live实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -15951,7 +15951,7 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下live实例总数	
+        r"""该地域下live实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -15962,7 +15962,7 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """live实例详情	
+        r"""live实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveInstanceDetail
         """
@@ -15974,7 +15974,7 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16005,7 +16005,7 @@ class LiveInstanceList(AbstractModel):
 
 
 class ManagerInfo(AbstractModel):
-    """管理人信息
+    r"""管理人信息
 
     """
 
@@ -16068,7 +16068,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def Status(self):
-        """状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        r"""状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
         :rtype: str
         """
         return self._Status
@@ -16079,7 +16079,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerFirstName(self):
-        """管理人姓名
+        r"""管理人姓名
         :rtype: str
         """
         return self._ManagerFirstName
@@ -16090,7 +16090,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerLastName(self):
-        """管理人姓名
+        r"""管理人姓名
         :rtype: str
         """
         return self._ManagerLastName
@@ -16101,7 +16101,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerPosition(self):
-        """管理人职位
+        r"""管理人职位
         :rtype: str
         """
         return self._ManagerPosition
@@ -16112,7 +16112,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerPhone(self):
-        """管理人电话
+        r"""管理人电话
         :rtype: str
         """
         return self._ManagerPhone
@@ -16123,7 +16123,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerMail(self):
-        """管理人邮箱
+        r"""管理人邮箱
         :rtype: str
         """
         return self._ManagerMail
@@ -16134,7 +16134,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerDepartment(self):
-        """管理人所属部门
+        r"""管理人所属部门
         :rtype: str
         """
         return self._ManagerDepartment
@@ -16145,7 +16145,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16157,7 +16157,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def DomainCount(self):
-        """管理人域名数量
+        r"""管理人域名数量
         :rtype: int
         """
         return self._DomainCount
@@ -16168,7 +16168,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def CertCount(self):
-        """管理人证书数量
+        r"""管理人证书数量
         :rtype: int
         """
         return self._CertCount
@@ -16179,7 +16179,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -16190,7 +16190,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """审核有效到期时间
+        r"""审核有效到期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16202,7 +16202,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def SubmitAuditTime(self):
-        """最近一次提交审核时间
+        r"""最近一次提交审核时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16214,7 +16214,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def VerifyTime(self):
-        """审核通过时间
+        r"""审核通过时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16226,7 +16226,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def StatusInfo(self):
-        """具体审核状态信息
+        r"""具体审核状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ManagerStatusInfo
         """
@@ -16238,7 +16238,7 @@ class ManagerInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of Tags
         """
         return self._Tags
@@ -16286,7 +16286,7 @@ class ManagerInfo(AbstractModel):
 
 
 class ManagerPreAuditDomain(AbstractModel):
-    """管理人预审核的域名列表
+    r"""管理人预审核的域名列表
 
     """
 
@@ -16305,7 +16305,7 @@ class ManagerPreAuditDomain(AbstractModel):
 
     @property
     def Domain(self):
-        """预审核域名信息
+        r"""预审核域名信息
         :rtype: str
         """
         return self._Domain
@@ -16316,7 +16316,7 @@ class ManagerPreAuditDomain(AbstractModel):
 
     @property
     def CreateTime(self):
-        """预审核域名创建时间
+        r"""预审核域名创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -16327,7 +16327,7 @@ class ManagerPreAuditDomain(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """预审核域名过期时间
+        r"""预审核域名过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -16352,7 +16352,7 @@ class ManagerPreAuditDomain(AbstractModel):
 
 
 class ManagerStatusInfo(AbstractModel):
-    """管理人的四种审核状态
+    r"""管理人的四种审核状态
 
     """
 
@@ -16377,7 +16377,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def Type(self):
-        """审核类型，枚举值：ov,ev
+        r"""审核类型，枚举值：ov,ev
         :rtype: str
         """
         return self._Type
@@ -16388,7 +16388,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def Status(self):
-        """审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
+        r"""审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
         :rtype: str
         """
         return self._Status
@@ -16399,7 +16399,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -16410,7 +16410,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -16421,7 +16421,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def ManagerPreAuditDomains(self):
-        """管理人预审核的域名列表
+        r"""管理人预审核的域名列表
         :rtype: list of ManagerPreAuditDomain
         """
         return self._ManagerPreAuditDomains
@@ -16453,7 +16453,7 @@ class ManagerStatusInfo(AbstractModel):
 
 
 class ModifyCertificateAliasRequest(AbstractModel):
-    """ModifyCertificateAlias请求参数结构体
+    r"""ModifyCertificateAlias请求参数结构体
 
     """
 
@@ -16469,7 +16469,7 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -16480,7 +16480,7 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """备注名称。
+        r"""备注名称。
         :rtype: str
         """
         return self._Alias
@@ -16504,7 +16504,7 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
 
 class ModifyCertificateAliasResponse(AbstractModel):
-    """ModifyCertificateAlias返回参数结构体
+    r"""ModifyCertificateAlias返回参数结构体
 
     """
 
@@ -16520,7 +16520,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """修改成功的证书 ID。
+        r"""修改成功的证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -16531,7 +16531,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16547,7 +16547,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
 
 class ModifyCertificateProjectRequest(AbstractModel):
-    """ModifyCertificateProject请求参数结构体
+    r"""ModifyCertificateProject请求参数结构体
 
     """
 
@@ -16563,7 +16563,7 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def CertificateIdList(self):
-        """需要修改所属项目的证书 ID 集合，最多100个证书。
+        r"""需要修改所属项目的证书 ID 集合，最多100个证书。
         :rtype: list of str
         """
         return self._CertificateIdList
@@ -16574,7 +16574,7 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -16598,7 +16598,7 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
 
 class ModifyCertificateProjectResponse(AbstractModel):
-    """ModifyCertificateProject返回参数结构体
+    r"""ModifyCertificateProject返回参数结构体
 
     """
 
@@ -16617,7 +16617,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def SuccessCertificates(self):
-        """修改所属项目成功的证书集合。
+        r"""修改所属项目成功的证书集合。
         :rtype: list of str
         """
         return self._SuccessCertificates
@@ -16628,7 +16628,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def FailCertificates(self):
-        """修改所属项目失败的证书集合。
+        r"""修改所属项目失败的证书集合。
         :rtype: list of str
         """
         return self._FailCertificates
@@ -16639,7 +16639,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16656,7 +16656,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
 
 class ModifyCertificateResubmitRequest(AbstractModel):
-    """ModifyCertificateResubmit请求参数结构体
+    r"""ModifyCertificateResubmit请求参数结构体
 
     """
 
@@ -16669,7 +16669,7 @@ class ModifyCertificateResubmitRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._CertificateId
@@ -16692,7 +16692,7 @@ class ModifyCertificateResubmitRequest(AbstractModel):
 
 
 class ModifyCertificateResubmitResponse(AbstractModel):
-    """ModifyCertificateResubmit返回参数结构体
+    r"""ModifyCertificateResubmit返回参数结构体
 
     """
 
@@ -16708,7 +16708,7 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID。
+        r"""证书ID。
         :rtype: str
         """
         return self._CertificateId
@@ -16719,7 +16719,7 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16735,7 +16735,7 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
 
 class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
-    """ModifyCertificatesExpiringNotificationSwitch请求参数结构体
+    r"""ModifyCertificatesExpiringNotificationSwitch请求参数结构体
 
     """
 
@@ -16751,7 +16751,7 @@ class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """证书ID列表。最多50个
+        r"""证书ID列表。最多50个
         :rtype: list of str
         """
         return self._CertificateIds
@@ -16762,7 +16762,7 @@ class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
 
     @property
     def SwitchStatus(self):
-        """0:不忽略通知。1:忽略通知
+        r"""0:不忽略通知。1:忽略通知
         :rtype: int
         """
         return self._SwitchStatus
@@ -16786,7 +16786,7 @@ class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
 
 
 class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
-    """ModifyCertificatesExpiringNotificationSwitch返回参数结构体
+    r"""ModifyCertificatesExpiringNotificationSwitch返回参数结构体
 
     """
 
@@ -16802,7 +16802,7 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
-        """证书ID列表
+        r"""证书ID列表
         :rtype: list of str
         """
         return self._CertificateIds
@@ -16813,7 +16813,7 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16829,7 +16829,7 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
 
 
 class OperationLog(AbstractModel):
-    """证书操作日志。
+    r"""证书操作日志。
 
     """
 
@@ -16883,7 +16883,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Action(self):
-        """操作证书动作。
+        r"""操作证书动作。
         :rtype: str
         """
         return self._Action
@@ -16894,7 +16894,7 @@ class OperationLog(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """操作时间。
+        r"""操作时间。
         :rtype: str
         """
         return self._CreatedOn
@@ -16905,7 +16905,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Uin(self):
-        """主账号
+        r"""主账号
         :rtype: str
         """
         return self._Uin
@@ -16916,7 +16916,7 @@ class OperationLog(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        """子账号
+        r"""子账号
         :rtype: str
         """
         return self._SubAccountUin
@@ -16927,7 +16927,7 @@ class OperationLog(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -16938,7 +16938,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Type(self):
-        """每个操作类型都对应一个具体的操作描述。以下是对每个操作类型及其描述的文字说明：
+        r"""每个操作类型都对应一个具体的操作描述。以下是对每个操作类型及其描述的文字说明：
 1. apply - 表示申请一个免费的证书。
 2. delete - 表示删除操作。
 3. download - 表示下载操作。
@@ -16992,7 +16992,7 @@ class OperationLog(AbstractModel):
 
 
 class PackageInfo(AbstractModel):
-    """权益包基本信息
+    r"""权益包基本信息
 
     """
 
@@ -17037,7 +17037,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def PackageId(self):
-        """权益包ID。
+        r"""权益包ID。
         :rtype: str
         """
         return self._PackageId
@@ -17048,7 +17048,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def Total(self):
-        """权益包内权益点总量。
+        r"""权益包内权益点总量。
         :rtype: int
         """
         return self._Total
@@ -17059,7 +17059,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def Balance(self):
-        """权益包内权益点余量。
+        r"""权益包内权益点余量。
         :rtype: int
         """
         return self._Balance
@@ -17070,7 +17070,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def Type(self):
-        """权益包名称。
+        r"""权益包名称。
         :rtype: str
         """
         return self._Type
@@ -17081,7 +17081,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def SourceUin(self):
-        """权益点是转入时，来源信息。
+        r"""权益点是转入时，来源信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17093,7 +17093,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def Status(self):
-        """权益点状态。
+        r"""权益点状态。
         :rtype: str
         """
         return self._Status
@@ -17104,7 +17104,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间。
+        r"""过期时间。
         :rtype: str
         """
         return self._ExpireTime
@@ -17115,7 +17115,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间。
+        r"""更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -17126,7 +17126,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """生成时间。
+        r"""生成时间。
         :rtype: str
         """
         return self._CreateTime
@@ -17137,7 +17137,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def SourceType(self):
-        """来源类型。
+        r"""来源类型。
         :rtype: str
         """
         return self._SourceType
@@ -17148,7 +17148,7 @@ class PackageInfo(AbstractModel):
 
     @property
     def TransferOutInfos(self):
-        """转移信息。
+        r"""转移信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PackageTransferOutInfo
         """
@@ -17187,7 +17187,7 @@ class PackageInfo(AbstractModel):
 
 
 class PackageTransferOutInfo(AbstractModel):
-    """权益包转出详情
+    r"""权益包转出详情
 
     """
 
@@ -17227,7 +17227,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def PackageId(self):
-        """权益包ID。
+        r"""权益包ID。
         :rtype: str
         """
         return self._PackageId
@@ -17238,7 +17238,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferCode(self):
-        """转移码。
+        r"""转移码。
         :rtype: str
         """
         return self._TransferCode
@@ -17249,7 +17249,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferCount(self):
-        """本次转移点数。
+        r"""本次转移点数。
         :rtype: int
         """
         return self._TransferCount
@@ -17260,7 +17260,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceivePackageId(self):
-        """转入的PackageID。
+        r"""转入的PackageID。
         :rtype: str
         """
         return self._ReceivePackageId
@@ -17271,7 +17271,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """本次转移过期时间。
+        r"""本次转移过期时间。
         :rtype: str
         """
         return self._ExpireTime
@@ -17282,7 +17282,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """本次转移生成时间。
+        r"""本次转移生成时间。
         :rtype: str
         """
         return self._CreateTime
@@ -17293,7 +17293,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """本次转移更新时间。
+        r"""本次转移更新时间。
         :rtype: str
         """
         return self._UpdateTime
@@ -17304,7 +17304,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferStatus(self):
-        """转移状态。
+        r"""转移状态。
         :rtype: str
         """
         return self._TransferStatus
@@ -17315,7 +17315,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceiverUin(self):
-        """接收者uin。
+        r"""接收者uin。
         :rtype: int
         """
         return self._ReceiverUin
@@ -17326,7 +17326,7 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceiveTime(self):
-        """接收时间。
+        r"""接收时间。
         :rtype: str
         """
         return self._ReceiveTime
@@ -17358,7 +17358,7 @@ class PackageTransferOutInfo(AbstractModel):
 
 
 class PreAuditInfo(AbstractModel):
-    """预审核信息列表
+    r"""预审核信息列表
 
     """
 
@@ -17377,7 +17377,7 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def TotalPeriod(self):
-        """证书总年限
+        r"""证书总年限
         :rtype: int
         """
         return self._TotalPeriod
@@ -17388,7 +17388,7 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def NowPeriod(self):
-        """证书当前年限
+        r"""证书当前年限
         :rtype: int
         """
         return self._NowPeriod
@@ -17399,7 +17399,7 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def ManagerId(self):
-        """证书预审核管理人ID
+        r"""证书预审核管理人ID
         :rtype: str
         """
         return self._ManagerId
@@ -17424,7 +17424,7 @@ class PreAuditInfo(AbstractModel):
 
 
 class ProjectInfo(AbstractModel):
-    """获取证书列表（DescribeCertificates）返回参数键为 Certificates 下，key为 ProjectInfo 的内容。
+    r"""获取证书列表（DescribeCertificates）返回参数键为 Certificates 下，key为 ProjectInfo 的内容。
 
     """
 
@@ -17452,7 +17452,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称。
+        r"""项目名称。
         :rtype: str
         """
         return self._ProjectName
@@ -17463,7 +17463,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectCreatorUin(self):
-        """项目创建用户 UIN。
+        r"""项目创建用户 UIN。
         :rtype: int
         """
         return self._ProjectCreatorUin
@@ -17474,7 +17474,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectCreateTime(self):
-        """项目创建时间。
+        r"""项目创建时间。
         :rtype: str
         """
         return self._ProjectCreateTime
@@ -17485,7 +17485,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectResume(self):
-        """项目信息简述。
+        r"""项目信息简述。
         :rtype: str
         """
         return self._ProjectResume
@@ -17496,7 +17496,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """用户 UIN。
+        r"""用户 UIN。
         :rtype: int
         """
         return self._OwnerUin
@@ -17507,7 +17507,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: str
         """
         return self._ProjectId
@@ -17535,7 +17535,7 @@ class ProjectInfo(AbstractModel):
 
 
 class ReplaceCertificateRequest(AbstractModel):
-    """ReplaceCertificate请求参数结构体
+    r"""ReplaceCertificate请求参数结构体
 
     """
 
@@ -17573,7 +17573,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -17584,7 +17584,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def ValidType(self):
-        """验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        r"""验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
         :rtype: str
         """
         return self._ValidType
@@ -17595,7 +17595,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrType(self):
-        """类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
+        r"""类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
         :rtype: str
         """
         return self._CsrType
@@ -17606,7 +17606,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrContent(self):
-        """CSR 内容，手动上传的时候需要。
+        r"""CSR 内容，手动上传的时候需要。
         :rtype: str
         """
         return self._CsrContent
@@ -17617,7 +17617,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrkeyPassword(self):
-        """KEY 密码。
+        r"""KEY 密码。
         :rtype: str
         """
         return self._CsrkeyPassword
@@ -17628,7 +17628,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def Reason(self):
-        """重颁发原因。
+        r"""重颁发原因。
         :rtype: str
         """
         return self._Reason
@@ -17639,7 +17639,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertCSREncryptAlgo(self):
-        """CSR加密方式，可选：RSA、ECC、SM2
+        r"""CSR加密方式，可选：RSA、ECC、SM2
 （CsrType为Online才可选）， 默认为RSA
         :rtype: str
         """
@@ -17651,7 +17651,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertCSRKeyParameter(self):
-        """CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
+        r"""CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
         :rtype: str
         """
         return self._CertCSRKeyParameter
@@ -17662,7 +17662,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def SignAlgo(self):
-        """签名算法
+        r"""签名算法
         :rtype: str
         """
         return self._SignAlgo
@@ -17693,7 +17693,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
 
 class ReplaceCertificateResponse(AbstractModel):
-    """ReplaceCertificate返回参数结构体
+    r"""ReplaceCertificate返回参数结构体
 
     """
 
@@ -17709,7 +17709,7 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -17720,7 +17720,7 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17736,7 +17736,7 @@ class ReplaceCertificateResponse(AbstractModel):
 
 
 class ResourceTypeRegions(AbstractModel):
-    """云资源地域列表
+    r"""云资源地域列表
 
     """
 
@@ -17752,7 +17752,7 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def ResourceType(self):
-        """云资源类型，支持clb、waf、apigateway、cos、tke、tse、tcb
+        r"""云资源类型，支持clb、waf、apigateway、cos、tke、tse、tcb
         :rtype: str
         """
         return self._ResourceType
@@ -17763,7 +17763,7 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def Regions(self):
-        """地域列表
+        r"""地域列表
         :rtype: list of str
         """
         return self._Regions
@@ -17787,7 +17787,7 @@ class ResourceTypeRegions(AbstractModel):
 
 
 class RevokeCertificateRequest(AbstractModel):
-    """RevokeCertificate请求参数结构体
+    r"""RevokeCertificate请求参数结构体
 
     """
 
@@ -17803,7 +17803,7 @@ class RevokeCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -17814,7 +17814,7 @@ class RevokeCertificateRequest(AbstractModel):
 
     @property
     def Reason(self):
-        """吊销证书原因。
+        r"""吊销证书原因。
         :rtype: str
         """
         return self._Reason
@@ -17838,7 +17838,7 @@ class RevokeCertificateRequest(AbstractModel):
 
 
 class RevokeCertificateResponse(AbstractModel):
-    """RevokeCertificate返回参数结构体
+    r"""RevokeCertificate返回参数结构体
 
     """
 
@@ -17854,7 +17854,7 @@ class RevokeCertificateResponse(AbstractModel):
 
     @property
     def RevokeDomainValidateAuths(self):
-        """吊销证书域名验证信息。
+        r"""吊销证书域名验证信息。
         :rtype: list of RevokeDomainValidateAuths
         """
         return self._RevokeDomainValidateAuths
@@ -17865,7 +17865,7 @@ class RevokeCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17886,7 +17886,7 @@ class RevokeCertificateResponse(AbstractModel):
 
 
 class RevokeDomainValidateAuths(AbstractModel):
-    """吊销证书域名验证信息。
+    r"""吊销证书域名验证信息。
 
     """
 
@@ -17908,7 +17908,7 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthPath(self):
-        """DV 认证值路径。
+        r"""DV 认证值路径。
         :rtype: str
         """
         return self._DomainValidateAuthPath
@@ -17919,7 +17919,7 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthKey(self):
-        """DV 认证 KEY。
+        r"""DV 认证 KEY。
         :rtype: str
         """
         return self._DomainValidateAuthKey
@@ -17930,7 +17930,7 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthValue(self):
-        """DV 认证值。
+        r"""DV 认证值。
         :rtype: str
         """
         return self._DomainValidateAuthValue
@@ -17941,7 +17941,7 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthDomain(self):
-        """DV 认证域名。
+        r"""DV 认证域名。
         :rtype: str
         """
         return self._DomainValidateAuthDomain
@@ -17967,7 +17967,7 @@ class RevokeDomainValidateAuths(AbstractModel):
 
 
 class RootCertificates(AbstractModel):
-    """根证书
+    r"""根证书
 
     """
 
@@ -17989,7 +17989,7 @@ class RootCertificates(AbstractModel):
 
     @property
     def Sign(self):
-        """国密签名证书
+        r"""国密签名证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18001,7 +18001,7 @@ class RootCertificates(AbstractModel):
 
     @property
     def Encrypt(self):
-        """国密加密证书
+        r"""国密加密证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18013,7 +18013,7 @@ class RootCertificates(AbstractModel):
 
     @property
     def Standard(self):
-        """标准证书
+        r"""标准证书
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18039,7 +18039,7 @@ class RootCertificates(AbstractModel):
 
 
 class SubmitAuditManagerRequest(AbstractModel):
-    """SubmitAuditManager请求参数结构体
+    r"""SubmitAuditManager请求参数结构体
 
     """
 
@@ -18052,7 +18052,7 @@ class SubmitAuditManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -18075,7 +18075,7 @@ class SubmitAuditManagerRequest(AbstractModel):
 
 
 class SubmitAuditManagerResponse(AbstractModel):
-    """SubmitAuditManager返回参数结构体
+    r"""SubmitAuditManager返回参数结构体
 
     """
 
@@ -18091,7 +18091,7 @@ class SubmitAuditManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -18102,7 +18102,7 @@ class SubmitAuditManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18118,7 +18118,7 @@ class SubmitAuditManagerResponse(AbstractModel):
 
 
 class SubmitCertificateInformationRequest(AbstractModel):
-    """SubmitCertificateInformation请求参数结构体
+    r"""SubmitCertificateInformation请求参数结构体
 
     """
 
@@ -18212,7 +18212,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def CertificateId(self):
-        """待提交资料的付费证书 ID。
+        r"""待提交资料的付费证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -18223,7 +18223,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def CsrType(self):
-        """此字段必传。 CSR 生成方式， 取值为：
+        r"""此字段必传。 CSR 生成方式， 取值为：
 online：腾讯云提交的填写的参数信息生成CSR和私钥， 并由腾讯云加密存储
 parse：自行生成CSR和私钥， 并通过上传CSR申请证书
         :rtype: str
@@ -18236,7 +18236,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def CsrContent(self):
-        """上传的 CSR 内容。
+        r"""上传的 CSR 内容。
 若CstType为parse， 则此字段必传。
         :rtype: str
         """
@@ -18248,7 +18248,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def CertificateDomain(self):
-        """证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
+        r"""证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
         :rtype: str
         """
         return self._CertificateDomain
@@ -18259,7 +18259,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def DomainList(self):
-        """证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
+        r"""证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
         :rtype: list of str
         """
         return self._DomainList
@@ -18270,7 +18270,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def KeyPassword(self):
-        """私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
+        r"""私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
         :rtype: str
         """
         return self._KeyPassword
@@ -18281,7 +18281,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationName(self):
-        """字段必传， 公司名称。
+        r"""字段必传， 公司名称。
         :rtype: str
         """
         return self._OrganizationName
@@ -18292,7 +18292,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationDivision(self):
-        """字段必传， 部门名称。
+        r"""字段必传， 部门名称。
         :rtype: str
         """
         return self._OrganizationDivision
@@ -18303,7 +18303,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationAddress(self):
-        """字段必传， 公司详细地址。
+        r"""字段必传， 公司详细地址。
         :rtype: str
         """
         return self._OrganizationAddress
@@ -18314,7 +18314,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationCountry(self):
-        """字段必传， 国家名称，传CN即可
+        r"""字段必传， 国家名称，传CN即可
         :rtype: str
         """
         return self._OrganizationCountry
@@ -18325,7 +18325,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationCity(self):
-        """字段必传， 公司所在城市。
+        r"""字段必传， 公司所在城市。
         :rtype: str
         """
         return self._OrganizationCity
@@ -18336,7 +18336,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def OrganizationRegion(self):
-        """字段必传， 公司所在省份。
+        r"""字段必传， 公司所在省份。
         :rtype: str
         """
         return self._OrganizationRegion
@@ -18347,7 +18347,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def PostalCode(self):
-        """公司邮编。
+        r"""公司邮编。
         :rtype: str
         """
         return self._PostalCode
@@ -18358,7 +18358,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def PhoneAreaCode(self):
-        """字段必传， 公司座机区号。
+        r"""字段必传， 公司座机区号。
         :rtype: str
         """
         return self._PhoneAreaCode
@@ -18369,7 +18369,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def PhoneNumber(self):
-        """字段必传， 公司座机号码。
+        r"""字段必传， 公司座机号码。
         :rtype: str
         """
         return self._PhoneNumber
@@ -18380,7 +18380,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def VerifyType(self):
-        """证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        r"""证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
         :rtype: str
         """
         return self._VerifyType
@@ -18391,7 +18391,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def AdminFirstName(self):
-        """字段必传，管理人名。
+        r"""字段必传，管理人名。
         :rtype: str
         """
         return self._AdminFirstName
@@ -18402,7 +18402,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def AdminLastName(self):
-        """字段必传，管理人姓。
+        r"""字段必传，管理人姓。
         :rtype: str
         """
         return self._AdminLastName
@@ -18413,7 +18413,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def AdminPhoneNum(self):
-        """字段必传，管理人手机号码。
+        r"""字段必传，管理人手机号码。
         :rtype: str
         """
         return self._AdminPhoneNum
@@ -18424,7 +18424,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def AdminEmail(self):
-        """字段必传，管理人邮箱地址。
+        r"""字段必传，管理人邮箱地址。
         :rtype: str
         """
         return self._AdminEmail
@@ -18435,7 +18435,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def AdminPosition(self):
-        """字段必传，管理人职位。
+        r"""字段必传，管理人职位。
         :rtype: str
         """
         return self._AdminPosition
@@ -18446,7 +18446,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def ContactFirstName(self):
-        """字段必传，联系人名。
+        r"""字段必传，联系人名。
         :rtype: str
         """
         return self._ContactFirstName
@@ -18457,7 +18457,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def ContactLastName(self):
-        """字段必传，联系人姓。
+        r"""字段必传，联系人姓。
         :rtype: str
         """
         return self._ContactLastName
@@ -18468,7 +18468,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def ContactEmail(self):
-        """字段必传，联系人邮箱地址。
+        r"""字段必传，联系人邮箱地址。
         :rtype: str
         """
         return self._ContactEmail
@@ -18479,7 +18479,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def ContactNumber(self):
-        """字段必传，联系人手机号码。
+        r"""字段必传，联系人手机号码。
         :rtype: str
         """
         return self._ContactNumber
@@ -18490,7 +18490,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def ContactPosition(self):
-        """字段必传，联系人职位。
+        r"""字段必传，联系人职位。
         :rtype: str
         """
         return self._ContactPosition
@@ -18501,7 +18501,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
     @property
     def IsDV(self):
-        """是否DV证书。默认false
+        r"""是否DV证书。默认false
         :rtype: bool
         """
         return self._IsDV
@@ -18550,7 +18550,7 @@ parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 
 
 class SubmitCertificateInformationResponse(AbstractModel):
-    """SubmitCertificateInformation返回参数结构体
+    r"""SubmitCertificateInformation返回参数结构体
 
     """
 
@@ -18566,7 +18566,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -18577,7 +18577,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18593,7 +18593,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
 
 class SubmittedData(AbstractModel):
-    """获取证书列表（DescribeCertificate）返回参数键为 SubmittedData 的内容。
+    r"""获取证书列表（DescribeCertificate）返回参数键为 SubmittedData 的内容。
 
     """
 
@@ -18703,7 +18703,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def CsrType(self):
-        """CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
+        r"""CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18715,7 +18715,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def CsrContent(self):
-        """CSR 内容。
+        r"""CSR 内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18727,7 +18727,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def CertificateDomain(self):
-        """域名信息。
+        r"""域名信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18739,7 +18739,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def DomainList(self):
-        """DNS 信息。
+        r"""DNS 信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -18751,7 +18751,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def KeyPassword(self):
-        """私钥密码。
+        r"""私钥密码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18763,7 +18763,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """企业或单位名称。
+        r"""企业或单位名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18775,7 +18775,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationDivision(self):
-        """部门。
+        r"""部门。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18787,7 +18787,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationAddress(self):
-        """地址。
+        r"""地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18799,7 +18799,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationCountry(self):
-        """国家。
+        r"""国家。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18811,7 +18811,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationCity(self):
-        """市。
+        r"""市。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18823,7 +18823,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationRegion(self):
-        """省。
+        r"""省。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18835,7 +18835,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def PostalCode(self):
-        """邮政编码。
+        r"""邮政编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18847,7 +18847,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def PhoneAreaCode(self):
-        """座机区号。
+        r"""座机区号。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18859,7 +18859,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """座机号码。
+        r"""座机号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18871,7 +18871,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminFirstName(self):
-        """管理员名。
+        r"""管理员名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18883,7 +18883,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminLastName(self):
-        """管理员姓。
+        r"""管理员姓。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18895,7 +18895,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminPhoneNum(self):
-        """管理员电话号码。
+        r"""管理员电话号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18907,7 +18907,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminEmail(self):
-        """管理员邮箱地址。
+        r"""管理员邮箱地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18919,7 +18919,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminPosition(self):
-        """管理员职位。
+        r"""管理员职位。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18931,7 +18931,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactFirstName(self):
-        """联系人名。
+        r"""联系人名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18943,7 +18943,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactLastName(self):
-        """联系人姓。
+        r"""联系人姓。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18955,7 +18955,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactNumber(self):
-        """联系人电话号码。
+        r"""联系人电话号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18967,7 +18967,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactEmail(self):
-        """联系人邮箱地址，
+        r"""联系人邮箱地址，
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18979,7 +18979,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactPosition(self):
-        """联系人职位。
+        r"""联系人职位。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18991,7 +18991,7 @@ class SubmittedData(AbstractModel):
 
     @property
     def VerifyType(self):
-        """验证类型。
+        r"""验证类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19039,7 +19039,7 @@ class SubmittedData(AbstractModel):
 
 
 class SupportDownloadType(AbstractModel):
-    """支持下载的类型
+    r"""支持下载的类型
 
     """
 
@@ -19070,7 +19070,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def NGINX(self):
-        """是否可以下载nginx可用格式
+        r"""是否可以下载nginx可用格式
         :rtype: bool
         """
         return self._NGINX
@@ -19081,7 +19081,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def APACHE(self):
-        """是否可以下载apache可用格式
+        r"""是否可以下载apache可用格式
         :rtype: bool
         """
         return self._APACHE
@@ -19092,7 +19092,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def TOMCAT(self):
-        """是否可以下载tomcat可用格式
+        r"""是否可以下载tomcat可用格式
         :rtype: bool
         """
         return self._TOMCAT
@@ -19103,7 +19103,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def IIS(self):
-        """是否可以下载iis可用格式
+        r"""是否可以下载iis可用格式
         :rtype: bool
         """
         return self._IIS
@@ -19114,7 +19114,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def JKS(self):
-        """是否可以下载JKS可用格式
+        r"""是否可以下载JKS可用格式
         :rtype: bool
         """
         return self._JKS
@@ -19125,7 +19125,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def OTHER(self):
-        """是否可以下载其他格式
+        r"""是否可以下载其他格式
         :rtype: bool
         """
         return self._OTHER
@@ -19136,7 +19136,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def ROOT(self):
-        """是否可以下载根证书
+        r"""是否可以下载根证书
         :rtype: bool
         """
         return self._ROOT
@@ -19165,7 +19165,7 @@ class SupportDownloadType(AbstractModel):
 
 
 class SyncTaskBindResourceResult(AbstractModel):
-    """异步任务证书关联云资源结果
+    r"""异步任务证书关联云资源结果
 
     """
 
@@ -19191,7 +19191,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -19202,7 +19202,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def BindResourceResult(self):
-        """关联云资源结果
+        r"""关联云资源结果
         :rtype: list of BindResourceResult
         """
         return self._BindResourceResult
@@ -19213,7 +19213,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def Status(self):
-        """关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        r"""关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
         :rtype: int
         """
         return self._Status
@@ -19224,7 +19224,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def Error(self):
-        """关联云资源错误信息
+        r"""关联云资源错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Error`
         """
@@ -19236,7 +19236,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def CacheTime(self):
-        """当前结果缓存时间
+        r"""当前结果缓存时间
         :rtype: str
         """
         return self._CacheTime
@@ -19270,7 +19270,7 @@ class SyncTaskBindResourceResult(AbstractModel):
 
 
 class TCBAccessInstance(AbstractModel):
-    """TCB访问服务实例
+    r"""TCB访问服务实例
 
     """
 
@@ -19301,7 +19301,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -19312,7 +19312,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -19323,7 +19323,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def UnionStatus(self):
-        """统一域名状态
+        r"""统一域名状态
 
         :rtype: int
         """
@@ -19335,7 +19335,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def IsPreempted(self):
-        """是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
+        r"""是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
 
         :rtype: bool
         """
@@ -19347,7 +19347,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def ICPStatus(self):
-        """icp黑名单封禁状态，0-未封禁，1-封禁
+        r"""icp黑名单封禁状态，0-未封禁，1-封禁
 
         :rtype: int
         """
@@ -19359,7 +19359,7 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已绑定证书ID
+        r"""已绑定证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -19387,7 +19387,7 @@ class TCBAccessInstance(AbstractModel):
 
 
 class TCBAccessService(AbstractModel):
-    """TCB访问服务列表
+    r"""TCB访问服务列表
 
     """
 
@@ -19403,7 +19403,7 @@ class TCBAccessService(AbstractModel):
 
     @property
     def InstanceList(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of TCBAccessInstance
         """
         return self._InstanceList
@@ -19414,7 +19414,7 @@ class TCBAccessService(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -19443,7 +19443,7 @@ class TCBAccessService(AbstractModel):
 
 
 class TCBEnvironment(AbstractModel):
-    """TCB环境
+    r"""TCB环境
 
     """
 
@@ -19465,7 +19465,7 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def ID(self):
-        """唯一ID
+        r"""唯一ID
         :rtype: str
         """
         return self._ID
@@ -19476,7 +19476,7 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Source(self):
-        """来源
+        r"""来源
         :rtype: str
         """
         return self._Source
@@ -19487,7 +19487,7 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -19498,7 +19498,7 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -19524,7 +19524,7 @@ class TCBEnvironment(AbstractModel):
 
 
 class TCBEnvironments(AbstractModel):
-    """tcb环境实例详情 - 异步关联云资源数据结构
+    r"""tcb环境实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -19546,7 +19546,7 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def Environment(self):
-        """tcb环境	
+        r"""tcb环境	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBEnvironment`
         """
@@ -19558,7 +19558,7 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def AccessService(self):
-        """访问服务	
+        r"""访问服务	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBAccessService`
         """
@@ -19570,7 +19570,7 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def HostService(self):
-        """静态托管	
+        r"""静态托管	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBHostService`
         """
@@ -19602,7 +19602,7 @@ class TCBEnvironments(AbstractModel):
 
 
 class TCBHostInstance(AbstractModel):
-    """TCB静态托管服务实例
+    r"""TCB静态托管服务实例
 
     """
 
@@ -19624,7 +19624,7 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -19635,7 +19635,7 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._Status
@@ -19646,7 +19646,7 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def DNSStatus(self):
-        """解析状态
+        r"""解析状态
         :rtype: str
         """
         return self._DNSStatus
@@ -19657,7 +19657,7 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """已绑定证书ID
+        r"""已绑定证书ID
         :rtype: str
         """
         return self._OldCertificateId
@@ -19683,7 +19683,7 @@ class TCBHostInstance(AbstractModel):
 
 
 class TCBHostService(AbstractModel):
-    """TCB静态托管服务列表
+    r"""TCB静态托管服务列表
 
     """
 
@@ -19699,7 +19699,7 @@ class TCBHostService(AbstractModel):
 
     @property
     def InstanceList(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of TCBHostInstance
         """
         return self._InstanceList
@@ -19710,7 +19710,7 @@ class TCBHostService(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -19739,7 +19739,7 @@ class TCBHostService(AbstractModel):
 
 
 class TCBInstanceList(AbstractModel):
-    """tcb地域实例详情 - 异步关联云资源数据结构
+    r"""tcb地域实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -19760,7 +19760,7 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -19771,7 +19771,7 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Environments(self):
-        """tcb环境实例详情
+        r"""tcb环境实例详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TCBEnvironments
         """
@@ -19783,7 +19783,7 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19814,7 +19814,7 @@ class TCBInstanceList(AbstractModel):
 
 
 class TSEInstanceDetail(AbstractModel):
-    """tse实例详情
+    r"""tse实例详情
 
     """
 
@@ -19833,7 +19833,7 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def GatewayId(self):
-        """网关ID
+        r"""网关ID
         :rtype: str
         """
         return self._GatewayId
@@ -19844,7 +19844,7 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def GatewayName(self):
-        """网关名称
+        r"""网关名称
         :rtype: str
         """
         return self._GatewayName
@@ -19855,7 +19855,7 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def CertificateList(self):
-        """网关证书列表
+        r"""网关证书列表
         :rtype: list of GatewayCertificate
         """
         return self._CertificateList
@@ -19885,7 +19885,7 @@ class TSEInstanceDetail(AbstractModel):
 
 
 class TSEInstanceList(AbstractModel):
-    """TSE实例详情 - 异步关联云资源数据结构
+    r"""TSE实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -19909,7 +19909,7 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """TSE实例详情	
+        r"""TSE实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TSEInstanceDetail
         """
@@ -19921,7 +19921,7 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下TSE实例总数	
+        r"""该地域下TSE实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -19932,7 +19932,7 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域	
+        r"""地域	
         :rtype: str
         """
         return self._Region
@@ -19943,7 +19943,7 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19975,7 +19975,7 @@ class TSEInstanceList(AbstractModel):
 
 
 class Tags(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -19991,7 +19991,7 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -20002,7 +20002,7 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -20026,7 +20026,7 @@ class Tags(AbstractModel):
 
 
 class TeoInstanceDetail(AbstractModel):
-    """teo实例详情
+    r"""teo实例详情
 
     """
 
@@ -20057,7 +20057,7 @@ issued：绑定失败。
 
     @property
     def Host(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Host
@@ -20068,7 +20068,7 @@ issued：绑定失败。
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -20079,7 +20079,7 @@ issued：绑定失败。
 
     @property
     def ZoneId(self):
-        """区域ID
+        r"""区域ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20091,7 +20091,7 @@ issued：绑定失败。
 
     @property
     def Status(self):
-        """域名状态
+        r"""域名状态
 deployed：已部署；
 processing：部署中；
 applying：申请中；
@@ -20107,7 +20107,7 @@ issued：绑定失败。
 
     @property
     def Algorithm(self):
-        """证书加密算法
+        r"""证书加密算法
         :rtype: str
         """
         return self._Algorithm
@@ -20134,7 +20134,7 @@ issued：绑定失败。
 
 
 class TeoInstanceList(AbstractModel):
-    """edgeone实例详情 - 异步关联云资源数据结构
+    r"""edgeone实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -20155,7 +20155,7 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """edgeone实例详情	
+        r"""edgeone实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeoInstanceDetail
         """
@@ -20167,7 +20167,7 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """edgeone实例总数	
+        r"""edgeone实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -20178,7 +20178,7 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20209,7 +20209,7 @@ class TeoInstanceList(AbstractModel):
 
 
 class TkeIngressDetail(AbstractModel):
-    """tke ingress实例详情
+    r"""tke ingress实例详情
 
     """
 
@@ -20228,7 +20228,7 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def IngressName(self):
-        """ingress名称
+        r"""ingress名称
         :rtype: str
         """
         return self._IngressName
@@ -20239,7 +20239,7 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def TlsDomains(self):
-        """tls域名列表
+        r"""tls域名列表
         :rtype: list of str
         """
         return self._TlsDomains
@@ -20250,7 +20250,7 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def Domains(self):
-        """ingress域名列表
+        r"""ingress域名列表
         :rtype: list of str
         """
         return self._Domains
@@ -20275,7 +20275,7 @@ class TkeIngressDetail(AbstractModel):
 
 
 class TkeInstanceDetail(AbstractModel):
-    """tke实例详情
+    r"""tke实例详情
 
     """
 
@@ -20300,7 +20300,7 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -20311,7 +20311,7 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._ClusterName
@@ -20322,7 +20322,7 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def NamespaceList(self):
-        """集群命名空间列表
+        r"""集群命名空间列表
         :rtype: list of TkeNameSpaceDetail
         """
         return self._NamespaceList
@@ -20333,7 +20333,7 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        r"""集群类型
         :rtype: str
         """
         return self._ClusterType
@@ -20344,7 +20344,7 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        """集群版本
+        r"""集群版本
         :rtype: str
         """
         return self._ClusterVersion
@@ -20376,7 +20376,7 @@ class TkeInstanceDetail(AbstractModel):
 
 
 class TkeInstanceList(AbstractModel):
-    """tke实例详情 - 异步关联云资源数据结构
+    r"""tke实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -20400,7 +20400,7 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -20411,7 +20411,7 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """tke实例详情
+        r"""tke实例详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeInstanceDetail
         """
@@ -20423,7 +20423,7 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下tke实例总数	
+        r"""该地域下tke实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -20434,7 +20434,7 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20466,7 +20466,7 @@ class TkeInstanceList(AbstractModel):
 
 
 class TkeNameSpaceDetail(AbstractModel):
-    """tke namespace详情
+    r"""tke namespace详情
 
     """
 
@@ -20482,7 +20482,7 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def Name(self):
-        """namespace名称
+        r"""namespace名称
         :rtype: str
         """
         return self._Name
@@ -20493,7 +20493,7 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def SecretList(self):
-        """secret列表
+        r"""secret列表
         :rtype: list of TkeSecretDetail
         """
         return self._SecretList
@@ -20522,7 +20522,7 @@ class TkeNameSpaceDetail(AbstractModel):
 
 
 class TkeSecretDetail(AbstractModel):
-    """tke secret详情
+    r"""tke secret详情
 
     """
 
@@ -20545,7 +20545,7 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def Name(self):
-        """secret名称
+        r"""secret名称
         :rtype: str
         """
         return self._Name
@@ -20556,7 +20556,7 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -20567,7 +20567,7 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def IngressList(self):
-        """ingress列表
+        r"""ingress列表
         :rtype: list of TkeIngressDetail
         """
         return self._IngressList
@@ -20578,7 +20578,7 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def NoMatchDomains(self):
-        """和新证书不匹配的域名列表
+        r"""和新证书不匹配的域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -20610,7 +20610,7 @@ class TkeSecretDetail(AbstractModel):
 
 
 class UpdateCertificateInstanceRequest(AbstractModel):
-    """UpdateCertificateInstance请求参数结构体
+    r"""UpdateCertificateInstance请求参数结构体
 
     """
 
@@ -20656,7 +20656,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        r"""一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
         :rtype: str
         """
         return self._OldCertificateId
@@ -20667,7 +20667,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+        r"""需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -20678,7 +20678,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
+        r"""一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
         :rtype: str
         """
         return self._CertificateId
@@ -20691,7 +20691,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     def Regions(self):
         warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
 
-        """需要部署的地域列表（废弃）
+        r"""需要部署的地域列表（废弃）
         :rtype: list of str
         """
         return self._Regions
@@ -20704,7 +20704,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        """云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
+        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -20715,7 +20715,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        """公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
+        r"""公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -20726,7 +20726,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        """私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
+        r"""私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -20737,7 +20737,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ExpiringNotificationSwitch(self):
-        """旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+        r"""旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
         :rtype: int
         """
         return self._ExpiringNotificationSwitch
@@ -20748,7 +20748,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Repeatable(self):
-        """相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
+        r"""相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
         :rtype: bool
         """
         return self._Repeatable
@@ -20759,7 +20759,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def AllowDownload(self):
-        """是否允许下载，若选择上传公私钥证书， 则可以配置该参数
+        r"""是否允许下载，若选择上传公私钥证书， 则可以配置该参数
         :rtype: bool
         """
         return self._AllowDownload
@@ -20770,7 +20770,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表，若选择上传公私钥证书， 则可以配置该参数
+        r"""标签列表，若选择上传公私钥证书， 则可以配置该参数
         :rtype: list of Tags
         """
         return self._Tags
@@ -20781,7 +20781,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID，若选择上传公私钥证书， 则可以配置该参数
+        r"""项目 ID，若选择上传公私钥证书， 则可以配置该参数
         :rtype: int
         """
         return self._ProjectId
@@ -20825,7 +20825,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
 
 class UpdateCertificateInstanceResponse(AbstractModel):
-    """UpdateCertificateInstance返回参数结构体
+    r"""UpdateCertificateInstance返回参数结构体
 
     """
 
@@ -20848,7 +20848,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
         :rtype: int
         """
         return self._DeployRecordId
@@ -20859,7 +20859,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
-        """更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        r"""更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
         :rtype: int
         """
         return self._DeployStatus
@@ -20870,7 +20870,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def UpdateSyncProgress(self):
-        """更新异步创建任务进度详情
+        r"""更新异步创建任务进度详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateSyncProgress
         """
@@ -20882,7 +20882,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20905,7 +20905,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
 
 class UpdateCertificateRecordRetryRequest(AbstractModel):
-    """UpdateCertificateRecordRetry请求参数结构体
+    r"""UpdateCertificateRecordRetry请求参数结构体
 
     """
 
@@ -20921,7 +20921,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+        r"""待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
         :rtype: int
         """
         return self._DeployRecordId
@@ -20932,7 +20932,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+        r"""待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -20956,7 +20956,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
 
 class UpdateCertificateRecordRetryResponse(AbstractModel):
-    """UpdateCertificateRecordRetry返回参数结构体
+    r"""UpdateCertificateRecordRetry返回参数结构体
 
     """
 
@@ -20969,7 +20969,7 @@ class UpdateCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20984,7 +20984,7 @@ class UpdateCertificateRecordRetryResponse(AbstractModel):
 
 
 class UpdateCertificateRecordRollbackRequest(AbstractModel):
-    """UpdateCertificateRecordRollback请求参数结构体
+    r"""UpdateCertificateRecordRollback请求参数结构体
 
     """
 
@@ -20997,7 +20997,7 @@ class UpdateCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+        r"""更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
         :rtype: int
         """
         return self._DeployRecordId
@@ -21020,7 +21020,7 @@ class UpdateCertificateRecordRollbackRequest(AbstractModel):
 
 
 class UpdateCertificateRecordRollbackResponse(AbstractModel):
-    """UpdateCertificateRecordRollback返回参数结构体
+    r"""UpdateCertificateRecordRollback返回参数结构体
 
     """
 
@@ -21036,7 +21036,7 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """新生成的回滚部署任务的记录ID
+        r"""新生成的回滚部署任务的记录ID
         :rtype: int
         """
         return self._DeployRecordId
@@ -21047,7 +21047,7 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21063,7 +21063,7 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
 
 class UpdateRecordDetail(AbstractModel):
-    """更新记录详情
+    r"""更新记录详情
 
     """
 
@@ -21180,7 +21180,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Id(self):
-        """更新详情记录id
+        r"""更新详情记录id
         :rtype: int
         """
         return self._Id
@@ -21191,7 +21191,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """新旧证书更新 - 新证书ID
+        r"""新旧证书更新 - 新证书ID
         :rtype: str
         """
         return self._CertId
@@ -21202,7 +21202,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def OldCertId(self):
-        """新旧证书更新 - 旧证书ID
+        r"""新旧证书更新 - 旧证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -21213,7 +21213,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Domains(self):
-        """部署域名列表
+        r"""部署域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -21225,7 +21225,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ResourceType(self):
-        """新旧证书更新云资源的云资源类型：
+        r"""新旧证书更新云资源的云资源类型：
 - clb
 - cdn
 - ddos
@@ -21248,7 +21248,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Region(self):
-        """部署地域
+        r"""部署地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21260,7 +21260,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态， 取值范围：
+        r"""部署状态， 取值范围：
 0：待部署
 1：部署成功
 2：部署失败
@@ -21278,7 +21278,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """部署错误信息
+        r"""部署错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21290,7 +21290,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署时间
+        r"""部署时间
         :rtype: str
         """
         return self._CreateTime
@@ -21301,7 +21301,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最后一次更新时间
+        r"""最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -21312,7 +21312,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """部署实例ID
+        r"""部署实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21324,7 +21324,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        """部署实例名称
+        r"""部署实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21336,7 +21336,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ListenerId(self):
-        """部署监听器ID（CLB专用）
+        r"""部署监听器ID（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21348,7 +21348,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ListenerName(self):
-        """部署监听器名称（CLB专用）
+        r"""部署监听器名称（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21360,7 +21360,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21372,7 +21372,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def SniSwitch(self):
-        """是否开启SNI（CLB专用）
+        r"""是否开启SNI（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21384,7 +21384,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Bucket(self):
-        """bucket名称（COS专用）
+        r"""bucket名称（COS专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21396,7 +21396,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21408,7 +21408,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间（TKE专用）
+        r"""命名空间（TKE专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21420,7 +21420,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def SecretName(self):
-        """secret名称（TKE专用）
+        r"""secret名称（TKE专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21432,7 +21432,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def EnvId(self):
-        """环境ID
+        r"""环境ID
         :rtype: str
         """
         return self._EnvId
@@ -21443,7 +21443,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def TCBType(self):
-        """TCB部署类型
+        r"""TCB部署类型
         :rtype: str
         """
         return self._TCBType
@@ -21454,7 +21454,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Url(self):
-        """监听器Url(clb专属)
+        r"""监听器Url(clb专属)
         :rtype: str
         """
         return self._Url
@@ -21465,7 +21465,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Algorithm(self):
-        """新证书加密算法
+        r"""新证书加密算法
         :rtype: str
         """
         return self._Algorithm
@@ -21476,7 +21476,7 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def OldAlgorithm(self):
-        """旧证书加密算法
+        r"""旧证书加密算法
         :rtype: str
         """
         return self._OldAlgorithm
@@ -21523,7 +21523,7 @@ class UpdateRecordDetail(AbstractModel):
 
 
 class UpdateRecordDetails(AbstractModel):
-    """更新记录详情
+    r"""更新记录详情
 
     """
 
@@ -21554,7 +21554,7 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def ResourceType(self):
-        """新旧证书更新云资源的云资源类型：
+        r"""新旧证书更新云资源的云资源类型：
 - clb
 - cdn
 - ddos
@@ -21577,7 +21577,7 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def List(self):
-        """该云资源更新详情
+        r"""该云资源更新详情
         :rtype: list of UpdateRecordDetail
         """
         return self._List
@@ -21588,7 +21588,7 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该云资源更新资源总数
+        r"""该云资源更新资源总数
         :rtype: int
         """
         return self._TotalCount
@@ -21618,7 +21618,7 @@ class UpdateRecordDetails(AbstractModel):
 
 
 class UpdateRecordInfo(AbstractModel):
-    """部署记录信息
+    r"""部署记录信息
 
     """
 
@@ -21652,7 +21652,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        """记录ID
+        r"""记录ID
         :rtype: int
         """
         return self._Id
@@ -21663,7 +21663,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def CertId(self):
-        """新证书ID
+        r"""新证书ID
         :rtype: str
         """
         return self._CertId
@@ -21674,7 +21674,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def OldCertId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -21685,7 +21685,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """部署资源类型列表
+        r"""部署资源类型列表
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -21696,7 +21696,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Regions(self):
-        """部署地域列表
+        r"""部署地域列表
         :rtype: list of str
         """
         return self._Regions
@@ -21707,7 +21707,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态
+        r"""部署状态
         :rtype: int
         """
         return self._Status
@@ -21718,7 +21718,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署时间
+        r"""部署时间
         :rtype: str
         """
         return self._CreateTime
@@ -21729,7 +21729,7 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最后一次更新时间
+        r"""最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -21759,7 +21759,7 @@ class UpdateRecordInfo(AbstractModel):
 
 
 class UpdateSyncProgress(AbstractModel):
-    """更新异步任务进度
+    r"""更新异步任务进度
 
     """
 
@@ -21781,7 +21781,7 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21793,7 +21793,7 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def UpdateSyncProgressRegions(self):
-        """地域结果列表
+        r"""地域结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateSyncProgressRegion
         """
@@ -21805,7 +21805,7 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def Status(self):
-        """异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+        r"""异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21836,7 +21836,7 @@ class UpdateSyncProgress(AbstractModel):
 
 
 class UpdateSyncProgressRegion(AbstractModel):
-    """更新异步任务进度
+    r"""更新异步任务进度
 
     """
 
@@ -21862,7 +21862,7 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Region(self):
-        """资源类型
+        r"""资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21874,7 +21874,7 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21886,7 +21886,7 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def OffsetCount(self):
-        """执行完成数量
+        r"""执行完成数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21898,7 +21898,7 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Status(self):
-        """异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+        r"""异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21925,7 +21925,7 @@ class UpdateSyncProgressRegion(AbstractModel):
 
 
 class UploadCertificateRequest(AbstractModel):
-    """UploadCertificate请求参数结构体
+    r"""UploadCertificate请求参数结构体
 
     """
 
@@ -21962,7 +21962,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        """证书内容。
+        r"""证书内容。
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -21973,7 +21973,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        """私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
+        r"""私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -21984,7 +21984,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateType(self):
-        """证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
+        r"""证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
         :rtype: str
         """
         return self._CertificateType
@@ -21995,7 +21995,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """备注名称。
+        r"""备注名称。
         :rtype: str
         """
         return self._Alias
@@ -22006,7 +22006,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        r"""项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -22017,7 +22017,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateUse(self):
-        """证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
+        r"""证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
         :rtype: str
         """
         return self._CertificateUse
@@ -22028,7 +22028,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tags
         """
         return self._Tags
@@ -22039,7 +22039,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Repeatable(self):
-        """相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
+        r"""相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
         :rtype: bool
         """
         return self._Repeatable
@@ -22050,7 +22050,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
-        """私钥密码
+        r"""私钥密码
         :rtype: str
         """
         return self._KeyPassword
@@ -22086,7 +22086,7 @@ class UploadCertificateRequest(AbstractModel):
 
 
 class UploadCertificateResponse(AbstractModel):
-    """UploadCertificate返回参数结构体
+    r"""UploadCertificate返回参数结构体
 
     """
 
@@ -22105,7 +22105,7 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -22116,7 +22116,7 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RepeatCertId(self):
-        """当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
+        r"""当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
         :rtype: str
         """
         return self._RepeatCertId
@@ -22127,7 +22127,7 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22144,7 +22144,7 @@ class UploadCertificateResponse(AbstractModel):
 
 
 class UploadConfirmLetterRequest(AbstractModel):
-    """UploadConfirmLetter请求参数结构体
+    r"""UploadConfirmLetter请求参数结构体
 
     """
 
@@ -22160,7 +22160,7 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -22171,7 +22171,7 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def ConfirmLetter(self):
-        """base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        r"""base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
         :rtype: str
         """
         return self._ConfirmLetter
@@ -22195,7 +22195,7 @@ class UploadConfirmLetterRequest(AbstractModel):
 
 
 class UploadConfirmLetterResponse(AbstractModel):
-    """UploadConfirmLetter返回参数结构体
+    r"""UploadConfirmLetter返回参数结构体
 
     """
 
@@ -22214,7 +22214,7 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertificateId
@@ -22225,7 +22225,7 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        """是否成功
+        r"""是否成功
         :rtype: bool
         """
         return self._IsSuccess
@@ -22236,7 +22236,7 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22253,7 +22253,7 @@ class UploadConfirmLetterResponse(AbstractModel):
 
 
 class UploadRevokeLetterRequest(AbstractModel):
-    """UploadRevokeLetter请求参数结构体
+    r"""UploadRevokeLetter请求参数结构体
 
     """
 
@@ -22269,7 +22269,7 @@ class UploadRevokeLetterRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -22280,7 +22280,7 @@ class UploadRevokeLetterRequest(AbstractModel):
 
     @property
     def RevokeLetter(self):
-        """base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        r"""base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
         :rtype: str
         """
         return self._RevokeLetter
@@ -22304,7 +22304,7 @@ class UploadRevokeLetterRequest(AbstractModel):
 
 
 class UploadRevokeLetterResponse(AbstractModel):
-    """UploadRevokeLetter返回参数结构体
+    r"""UploadRevokeLetter返回参数结构体
 
     """
 
@@ -22323,7 +22323,7 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """证书 ID。
+        r"""证书 ID。
         :rtype: str
         """
         return self._CertificateId
@@ -22334,7 +22334,7 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        """是否成功。
+        r"""是否成功。
         :rtype: bool
         """
         return self._IsSuccess
@@ -22345,7 +22345,7 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22362,7 +22362,7 @@ class UploadRevokeLetterResponse(AbstractModel):
 
 
 class UploadUpdateCertificateInstanceRequest(AbstractModel):
-    """UploadUpdateCertificateInstance请求参数结构体
+    r"""UploadUpdateCertificateInstance请求参数结构体
 
     """
 
@@ -22387,7 +22387,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        r"""一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
         :rtype: str
         """
         return self._OldCertificateId
@@ -22398,7 +22398,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """需要部署的资源类型，参数值可选（小写）：clb
+        r"""需要部署的资源类型，参数值可选（小写）：clb
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -22409,7 +22409,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        """公钥证书
+        r"""公钥证书
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -22420,7 +22420,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        """私钥证书
+        r"""私钥证书
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -22431,7 +22431,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        """云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -22463,7 +22463,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
 
 class UploadUpdateCertificateInstanceResponse(AbstractModel):
-    """UploadUpdateCertificateInstance返回参数结构体
+    r"""UploadUpdateCertificateInstance返回参数结构体
 
     """
 
@@ -22486,7 +22486,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
         :rtype: int
         """
         return self._DeployRecordId
@@ -22497,7 +22497,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
-        """更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        r"""更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
         :rtype: int
         """
         return self._DeployStatus
@@ -22508,7 +22508,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def UpdateSyncProgress(self):
-        """更新异步创建任务进度详情
+        r"""更新异步创建任务进度详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateSyncProgress
         """
@@ -22520,7 +22520,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22543,7 +22543,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
 
 class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
-    """UploadUpdateCertificateRecordRetry请求参数结构体
+    r"""UploadUpdateCertificateRecordRetry请求参数结构体
 
     """
 
@@ -22559,7 +22559,7 @@ class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+        r"""待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
         :rtype: int
         """
         return self._DeployRecordId
@@ -22570,7 +22570,7 @@ class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+        r"""待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -22594,7 +22594,7 @@ class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
 
 
 class UploadUpdateCertificateRecordRetryResponse(AbstractModel):
-    """UploadUpdateCertificateRecordRetry返回参数结构体
+    r"""UploadUpdateCertificateRecordRetry返回参数结构体
 
     """
 
@@ -22607,7 +22607,7 @@ class UploadUpdateCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22622,7 +22622,7 @@ class UploadUpdateCertificateRecordRetryResponse(AbstractModel):
 
 
 class UploadUpdateCertificateRecordRollbackRequest(AbstractModel):
-    """UploadUpdateCertificateRecordRollback请求参数结构体
+    r"""UploadUpdateCertificateRecordRollback请求参数结构体
 
     """
 
@@ -22635,7 +22635,7 @@ class UploadUpdateCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+        r"""更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
         :rtype: int
         """
         return self._DeployRecordId
@@ -22658,7 +22658,7 @@ class UploadUpdateCertificateRecordRollbackRequest(AbstractModel):
 
 
 class UploadUpdateCertificateRecordRollbackResponse(AbstractModel):
-    """UploadUpdateCertificateRecordRollback返回参数结构体
+    r"""UploadUpdateCertificateRecordRollback返回参数结构体
 
     """
 
@@ -22671,7 +22671,7 @@ class UploadUpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22686,7 +22686,7 @@ class UploadUpdateCertificateRecordRollbackResponse(AbstractModel):
 
 
 class UploadUpdateRecordInfo(AbstractModel):
-    """部署记录列表信息
+    r"""部署记录列表信息
 
     """
 
@@ -22714,7 +22714,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        """记录ID
+        r"""记录ID
         :rtype: int
         """
         return self._Id
@@ -22725,7 +22725,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def OldCertId(self):
-        """原证书ID
+        r"""原证书ID
         :rtype: str
         """
         return self._OldCertId
@@ -22736,7 +22736,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """部署资源类型列表
+        r"""部署资源类型列表
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -22747,7 +22747,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def Status(self):
-        """部署状态
+        r"""部署状态
         :rtype: int
         """
         return self._Status
@@ -22758,7 +22758,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """部署时间
+        r"""部署时间
         :rtype: str
         """
         return self._CreateTime
@@ -22769,7 +22769,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最后一次更新时间
+        r"""最后一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -22797,7 +22797,7 @@ class UploadUpdateRecordInfo(AbstractModel):
 
 
 class VODInstanceList(AbstractModel):
-    """vod实例详情 - 异步关联云资源数据结构
+    r"""vod实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -22818,7 +22818,7 @@ class VODInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """vod实例详情	
+        r"""vod实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VodInstanceDetail
         """
@@ -22830,7 +22830,7 @@ class VODInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下vod实例总数	
+        r"""该地域下vod实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -22841,7 +22841,7 @@ class VODInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22872,7 +22872,7 @@ class VODInstanceList(AbstractModel):
 
 
 class VerifyManagerRequest(AbstractModel):
-    """VerifyManager请求参数结构体
+    r"""VerifyManager请求参数结构体
 
     """
 
@@ -22885,7 +22885,7 @@ class VerifyManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -22908,7 +22908,7 @@ class VerifyManagerRequest(AbstractModel):
 
 
 class VerifyManagerResponse(AbstractModel):
-    """VerifyManager返回参数结构体
+    r"""VerifyManager返回参数结构体
 
     """
 
@@ -22924,7 +22924,7 @@ class VerifyManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        r"""管理人ID
         :rtype: int
         """
         return self._ManagerId
@@ -22935,7 +22935,7 @@ class VerifyManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22951,7 +22951,7 @@ class VerifyManagerResponse(AbstractModel):
 
 
 class VodInstanceDetail(AbstractModel):
-    """Vod实例
+    r"""Vod实例
 
     """
 
@@ -22967,7 +22967,7 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -22978,7 +22978,7 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._CertId
@@ -23002,7 +23002,7 @@ class VodInstanceDetail(AbstractModel):
 
 
 class WafInstanceDetail(AbstractModel):
-    """waf实例详情
+    r"""waf实例详情
 
     """
 
@@ -23023,7 +23023,7 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -23034,7 +23034,7 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
-        """证书ID
+        r"""证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23046,7 +23046,7 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def Keepalive(self):
-        """是否保持长连接，1是，0 否
+        r"""是否保持长连接，1是，0 否
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23072,7 +23072,7 @@ class WafInstanceDetail(AbstractModel):
 
 
 class WafInstanceList(AbstractModel):
-    """waf实例详情 - 异步关联云资源数据结构
+    r"""waf实例详情 - 异步关联云资源数据结构
 
     """
 
@@ -23096,7 +23096,7 @@ class WafInstanceList(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -23107,7 +23107,7 @@ class WafInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
-        """waf实例详情	
+        r"""waf实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WafInstanceDetail
         """
@@ -23119,7 +23119,7 @@ class WafInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该地域下waf实例总数	
+        r"""该地域下waf实例总数	
         :rtype: int
         """
         return self._TotalCount
@@ -23130,7 +23130,7 @@ class WafInstanceList(AbstractModel):
 
     @property
     def Error(self):
-        """是否查询异常
+        r"""是否查询异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -27,7 +27,7 @@ class AnicloudClient(AbstractClient):
 
 
     def CheckAppidExist(self, request):
-        """查看appid是否存在
+        r"""查看appid是否存在
 
         :param request: Request instance for CheckAppidExist.
         :type request: :class:`tencentcloud.anicloud.v20220923.models.CheckAppidExistRequest`
@@ -50,7 +50,7 @@ class AnicloudClient(AbstractClient):
 
 
     def QueryResource(self, request):
-        """查询购买资源
+        r"""查询购买资源
 
         :param request: Request instance for QueryResource.
         :type request: :class:`tencentcloud.anicloud.v20220923.models.QueryResourceRequest`
@@ -73,7 +73,7 @@ class AnicloudClient(AbstractClient):
 
 
     def QueryResourceInfo(self, request):
-        """查询资源信息
+        r"""查询资源信息
 
         :param request: Request instance for QueryResourceInfo.
         :type request: :class:`tencentcloud.anicloud.v20220923.models.QueryResourceInfoRequest`

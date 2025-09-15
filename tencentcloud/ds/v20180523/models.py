@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CheckVcodeRequest(AbstractModel):
-    """CheckVcode请求参数结构体
+    r"""CheckVcode请求参数结构体
 
     """
 
@@ -44,7 +44,7 @@ class CheckVcodeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名VerifyCode
+        r"""模块名VerifyCode
         :rtype: str
         """
         return self._Module
@@ -55,7 +55,7 @@ class CheckVcodeRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名CheckVcode
+        r"""操作名CheckVcode
         :rtype: str
         """
         return self._Operation
@@ -66,7 +66,7 @@ class CheckVcodeRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐号ID
+        r"""帐号ID
         :rtype: str
         """
         return self._AccountResId
@@ -77,7 +77,7 @@ class CheckVcodeRequest(AbstractModel):
 
     @property
     def ContractResId(self):
-        """合同ID
+        r"""合同ID
         :rtype: str
         """
         return self._ContractResId
@@ -88,7 +88,7 @@ class CheckVcodeRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """验证码
+        r"""验证码
         :rtype: str
         """
         return self._VerifyCode
@@ -115,7 +115,7 @@ class CheckVcodeRequest(AbstractModel):
 
 
 class CheckVcodeResponse(AbstractModel):
-    """CheckVcode返回参数结构体
+    r"""CheckVcode返回参数结构体
 
     """
 
@@ -128,7 +128,7 @@ class CheckVcodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -143,7 +143,7 @@ class CheckVcodeResponse(AbstractModel):
 
 
 class CreateContractByUploadRequest(AbstractModel):
-    """CreateContractByUpload请求参数结构体
+    r"""CreateContractByUpload请求参数结构体
 
     """
 
@@ -177,7 +177,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名ContractMng
+        r"""模块名ContractMng
         :rtype: str
         """
         return self._Module
@@ -188,7 +188,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名CreateContractByUpload
+        r"""操作名CreateContractByUpload
         :rtype: str
         """
         return self._Operation
@@ -199,7 +199,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def SignInfos(self):
-        """签署人信息
+        r"""签署人信息
         :rtype: list of SignInfo
         """
         return self._SignInfos
@@ -210,7 +210,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def ContractFile(self):
-        """合同上传链接地址
+        r"""合同上传链接地址
         :rtype: str
         """
         return self._ContractFile
@@ -221,7 +221,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def ContractName(self):
-        """合同名称
+        r"""合同名称
         :rtype: str
         """
         return self._ContractName
@@ -232,7 +232,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def Remarks(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remarks
@@ -243,7 +243,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def Initiator(self):
-        """合同发起方腾讯云帐号ID（由平台自动填写）
+        r"""合同发起方腾讯云帐号ID（由平台自动填写）
         :rtype: str
         """
         return self._Initiator
@@ -254,7 +254,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """合同长时间未签署的过期时间
+        r"""合同长时间未签署的过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -289,7 +289,7 @@ class CreateContractByUploadRequest(AbstractModel):
 
 
 class CreateContractByUploadResponse(AbstractModel):
-    """CreateContractByUpload返回参数结构体
+    r"""CreateContractByUpload返回参数结构体
 
     """
 
@@ -305,7 +305,7 @@ class CreateContractByUploadResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -316,7 +316,7 @@ class CreateContractByUploadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -332,7 +332,7 @@ class CreateContractByUploadResponse(AbstractModel):
 
 
 class CreateEnterpriseAccountRequest(AbstractModel):
-    """CreateEnterpriseAccount请求参数结构体
+    r"""CreateEnterpriseAccount请求参数结构体
 
     """
 
@@ -375,7 +375,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名AccountMng
+        r"""模块名AccountMng
         :rtype: str
         """
         return self._Module
@@ -386,7 +386,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名CreateEnterpriseAccount
+        r"""操作名CreateEnterpriseAccount
         :rtype: str
         """
         return self._Operation
@@ -397,7 +397,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def Name(self):
-        """企业用户名称
+        r"""企业用户名称
         :rtype: str
         """
         return self._Name
@@ -408,7 +408,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def IdentType(self):
-        """企业用户证件类型，8代表营业执照，详情请见常见问题
+        r"""企业用户证件类型，8代表营业执照，详情请见常见问题
         :rtype: int
         """
         return self._IdentType
@@ -419,7 +419,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def IdentNo(self):
-        """企业用户营业执照号码
+        r"""企业用户营业执照号码
         :rtype: str
         """
         return self._IdentNo
@@ -430,7 +430,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def MobilePhone(self):
-        """企业联系人手机号
+        r"""企业联系人手机号
         :rtype: str
         """
         return self._MobilePhone
@@ -441,7 +441,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def TransactorName(self):
-        """经办人姓名
+        r"""经办人姓名
         :rtype: str
         """
         return self._TransactorName
@@ -452,7 +452,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def TransactorIdentType(self):
-        """经办人证件类型，0代表身份证
+        r"""经办人证件类型，0代表身份证
         :rtype: int
         """
         return self._TransactorIdentType
@@ -463,7 +463,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def TransactorIdentNo(self):
-        """经办人证件号码
+        r"""经办人证件号码
         :rtype: str
         """
         return self._TransactorIdentNo
@@ -474,7 +474,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def TransactorPhone(self):
-        """经办人手机号
+        r"""经办人手机号
         :rtype: str
         """
         return self._TransactorPhone
@@ -485,7 +485,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
     @property
     def Email(self):
-        """企业联系人邮箱
+        r"""企业联系人邮箱
         :rtype: str
         """
         return self._Email
@@ -518,7 +518,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
 
 
 class CreateEnterpriseAccountResponse(AbstractModel):
-    """CreateEnterpriseAccount返回参数结构体
+    r"""CreateEnterpriseAccount返回参数结构体
 
     """
 
@@ -534,7 +534,7 @@ class CreateEnterpriseAccountResponse(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐号ID
+        r"""帐号ID
         :rtype: str
         """
         return self._AccountResId
@@ -545,7 +545,7 @@ class CreateEnterpriseAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -561,7 +561,7 @@ class CreateEnterpriseAccountResponse(AbstractModel):
 
 
 class CreatePersonalAccountRequest(AbstractModel):
-    """CreatePersonalAccount请求参数结构体
+    r"""CreatePersonalAccount请求参数结构体
 
     """
 
@@ -589,7 +589,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名AccountMng
+        r"""模块名AccountMng
         :rtype: str
         """
         return self._Module
@@ -600,7 +600,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名CreatePersonalAccount
+        r"""操作名CreatePersonalAccount
         :rtype: str
         """
         return self._Operation
@@ -611,7 +611,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def Name(self):
-        """个人用户姓名
+        r"""个人用户姓名
         :rtype: str
         """
         return self._Name
@@ -622,7 +622,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def IdentType(self):
-        """个人用户证件类型，0代表身份证，详情请见常见问题
+        r"""个人用户证件类型，0代表身份证，详情请见常见问题
         :rtype: int
         """
         return self._IdentType
@@ -633,7 +633,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def IdentNo(self):
-        """个人用户证件号码
+        r"""个人用户证件号码
         :rtype: str
         """
         return self._IdentNo
@@ -644,7 +644,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
     @property
     def MobilePhone(self):
-        """个人用户手机号
+        r"""个人用户手机号
         :rtype: str
         """
         return self._MobilePhone
@@ -672,7 +672,7 @@ class CreatePersonalAccountRequest(AbstractModel):
 
 
 class CreatePersonalAccountResponse(AbstractModel):
-    """CreatePersonalAccount返回参数结构体
+    r"""CreatePersonalAccount返回参数结构体
 
     """
 
@@ -688,7 +688,7 @@ class CreatePersonalAccountResponse(AbstractModel):
 
     @property
     def AccountResId(self):
-        """账号ID
+        r"""账号ID
         :rtype: str
         """
         return self._AccountResId
@@ -699,7 +699,7 @@ class CreatePersonalAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -715,7 +715,7 @@ class CreatePersonalAccountResponse(AbstractModel):
 
 
 class CreateSealRequest(AbstractModel):
-    """CreateSeal请求参数结构体
+    r"""CreateSeal请求参数结构体
 
     """
 
@@ -740,7 +740,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名SealMng
+        r"""模块名SealMng
         :rtype: str
         """
         return self._Module
@@ -751,7 +751,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名CreateSeal
+        r"""操作名CreateSeal
         :rtype: str
         """
         return self._Operation
@@ -762,7 +762,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐号ID
+        r"""帐号ID
         :rtype: str
         """
         return self._AccountResId
@@ -773,7 +773,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def ImgUrl(self):
-        """签章链接，图片必须为png格式
+        r"""签章链接，图片必须为png格式
         :rtype: str
         """
         return self._ImgUrl
@@ -784,7 +784,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def ImgData(self):
-        """图片数据，base64编码
+        r"""图片数据，base64编码
         :rtype: str
         """
         return self._ImgData
@@ -811,7 +811,7 @@ class CreateSealRequest(AbstractModel):
 
 
 class CreateSealResponse(AbstractModel):
-    """CreateSeal返回参数结构体
+    r"""CreateSeal返回参数结构体
 
     """
 
@@ -827,7 +827,7 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def SealResId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealResId
@@ -838,7 +838,7 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -854,7 +854,7 @@ class CreateSealResponse(AbstractModel):
 
 
 class DeleteAccountRequest(AbstractModel):
-    """DeleteAccount请求参数结构体
+    r"""DeleteAccount请求参数结构体
 
     """
 
@@ -873,7 +873,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名AccountMng
+        r"""模块名AccountMng
         :rtype: str
         """
         return self._Module
@@ -884,7 +884,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名DeleteAccount
+        r"""操作名DeleteAccount
         :rtype: str
         """
         return self._Operation
@@ -895,7 +895,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def AccountList(self):
-        """帐号ID列表
+        r"""帐号ID列表
         :rtype: list of str
         """
         return self._AccountList
@@ -920,7 +920,7 @@ class DeleteAccountRequest(AbstractModel):
 
 
 class DeleteAccountResponse(AbstractModel):
-    """DeleteAccount返回参数结构体
+    r"""DeleteAccount返回参数结构体
 
     """
 
@@ -939,7 +939,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def DelSuccessList(self):
-        """删除成功帐号ID列表
+        r"""删除成功帐号ID列表
         :rtype: list of str
         """
         return self._DelSuccessList
@@ -950,7 +950,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def DelFailedList(self):
-        """删除失败帐号ID列表
+        r"""删除失败帐号ID列表
         :rtype: list of str
         """
         return self._DelFailedList
@@ -961,7 +961,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -978,7 +978,7 @@ class DeleteAccountResponse(AbstractModel):
 
 
 class DeleteSealRequest(AbstractModel):
-    """DeleteSeal请求参数结构体
+    r"""DeleteSeal请求参数结构体
 
     """
 
@@ -1000,7 +1000,7 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名SealMng
+        r"""模块名SealMng
         :rtype: str
         """
         return self._Module
@@ -1011,7 +1011,7 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名DeleteSeal
+        r"""操作名DeleteSeal
         :rtype: str
         """
         return self._Operation
@@ -1022,7 +1022,7 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐号ID
+        r"""帐号ID
         :rtype: str
         """
         return self._AccountResId
@@ -1033,7 +1033,7 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def SealResId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealResId
@@ -1059,7 +1059,7 @@ class DeleteSealRequest(AbstractModel):
 
 
 class DeleteSealResponse(AbstractModel):
-    """DeleteSeal返回参数结构体
+    r"""DeleteSeal返回参数结构体
 
     """
 
@@ -1075,7 +1075,7 @@ class DeleteSealResponse(AbstractModel):
 
     @property
     def SealResId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealResId
@@ -1086,7 +1086,7 @@ class DeleteSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1102,7 +1102,7 @@ class DeleteSealResponse(AbstractModel):
 
 
 class DescribeTaskStatusRequest(AbstractModel):
-    """DescribeTaskStatus请求参数结构体
+    r"""DescribeTaskStatus请求参数结构体
 
     """
 
@@ -1121,7 +1121,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名CommonMng
+        r"""模块名CommonMng
         :rtype: str
         """
         return self._Module
@@ -1132,7 +1132,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名DescribeTaskStatus
+        r"""操作名DescribeTaskStatus
         :rtype: str
         """
         return self._Operation
@@ -1143,7 +1143,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -1168,7 +1168,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
 
 class DescribeTaskStatusResponse(AbstractModel):
-    """DescribeTaskStatus返回参数结构体
+    r"""DescribeTaskStatus返回参数结构体
 
     """
 
@@ -1187,7 +1187,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        """任务结果
+        r"""任务结果
         :rtype: str
         """
         return self._TaskResult
@@ -1198,7 +1198,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型，010代表合同上传结果，020代表合同下载结果
+        r"""任务类型，010代表合同上传结果，020代表合同下载结果
         :rtype: str
         """
         return self._TaskType
@@ -1209,7 +1209,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1226,7 +1226,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
 
 class DownloadContractRequest(AbstractModel):
-    """DownloadContract请求参数结构体
+    r"""DownloadContract请求参数结构体
 
     """
 
@@ -1245,7 +1245,7 @@ class DownloadContractRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名ContractMng
+        r"""模块名ContractMng
         :rtype: str
         """
         return self._Module
@@ -1256,7 +1256,7 @@ class DownloadContractRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名DownloadContract
+        r"""操作名DownloadContract
         :rtype: str
         """
         return self._Operation
@@ -1267,7 +1267,7 @@ class DownloadContractRequest(AbstractModel):
 
     @property
     def ContractResId(self):
-        """合同ID
+        r"""合同ID
         :rtype: str
         """
         return self._ContractResId
@@ -1292,7 +1292,7 @@ class DownloadContractRequest(AbstractModel):
 
 
 class DownloadContractResponse(AbstractModel):
-    """DownloadContract返回参数结构体
+    r"""DownloadContract返回参数结构体
 
     """
 
@@ -1308,7 +1308,7 @@ class DownloadContractResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -1319,7 +1319,7 @@ class DownloadContractResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1335,7 +1335,7 @@ class DownloadContractResponse(AbstractModel):
 
 
 class SendVcodeRequest(AbstractModel):
-    """SendVcode请求参数结构体
+    r"""SendVcode请求参数结构体
 
     """
 
@@ -1357,7 +1357,7 @@ class SendVcodeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名VerifyCode
+        r"""模块名VerifyCode
         :rtype: str
         """
         return self._Module
@@ -1368,7 +1368,7 @@ class SendVcodeRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名SendVcode
+        r"""操作名SendVcode
         :rtype: str
         """
         return self._Operation
@@ -1379,7 +1379,7 @@ class SendVcodeRequest(AbstractModel):
 
     @property
     def ContractResId(self):
-        """合同ID
+        r"""合同ID
         :rtype: str
         """
         return self._ContractResId
@@ -1390,7 +1390,7 @@ class SendVcodeRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐号ID
+        r"""帐号ID
         :rtype: str
         """
         return self._AccountResId
@@ -1416,7 +1416,7 @@ class SendVcodeRequest(AbstractModel):
 
 
 class SendVcodeResponse(AbstractModel):
-    """SendVcode返回参数结构体
+    r"""SendVcode返回参数结构体
 
     """
 
@@ -1429,7 +1429,7 @@ class SendVcodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1444,7 +1444,7 @@ class SendVcodeResponse(AbstractModel):
 
 
 class SignContractByCoordinateRequest(AbstractModel):
-    """SignContractByCoordinate请求参数结构体
+    r"""SignContractByCoordinate请求参数结构体
 
     """
 
@@ -1484,7 +1484,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名ContractMng
+        r"""模块名ContractMng
         :rtype: str
         """
         return self._Module
@@ -1495,7 +1495,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名SignContractByCoordinate
+        r"""操作名SignContractByCoordinate
         :rtype: str
         """
         return self._Operation
@@ -1506,7 +1506,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def ContractResId(self):
-        """合同ID
+        r"""合同ID
         :rtype: str
         """
         return self._ContractResId
@@ -1517,7 +1517,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """帐户ID
+        r"""帐户ID
         :rtype: str
         """
         return self._AccountResId
@@ -1528,7 +1528,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def SignLocations(self):
-        """签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
+        r"""签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
         :rtype: list of SignLocation
         """
         return self._SignLocations
@@ -1539,7 +1539,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def AuthorizationTime(self):
-        """授权时间（由平台自动填充）
+        r"""授权时间（由平台自动填充）
         :rtype: str
         """
         return self._AuthorizationTime
@@ -1550,7 +1550,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def Position(self):
-        """授权IP地址（由平台自动填充）
+        r"""授权IP地址（由平台自动填充）
         :rtype: str
         """
         return self._Position
@@ -1561,7 +1561,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def SealResId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealResId
@@ -1572,7 +1572,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+        r"""选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
         :rtype: int
         """
         return self._CertType
@@ -1583,7 +1583,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
     @property
     def ImageData(self):
-        """签名图片，base64编码
+        r"""签名图片，base64编码
         :rtype: str
         """
         return self._ImageData
@@ -1620,7 +1620,7 @@ class SignContractByCoordinateRequest(AbstractModel):
 
 
 class SignContractByCoordinateResponse(AbstractModel):
-    """SignContractByCoordinate返回参数结构体
+    r"""SignContractByCoordinate返回参数结构体
 
     """
 
@@ -1633,7 +1633,7 @@ class SignContractByCoordinateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1648,7 +1648,7 @@ class SignContractByCoordinateResponse(AbstractModel):
 
 
 class SignContractByKeywordRequest(AbstractModel):
-    """SignContractByKeyword请求参数结构体
+    r"""SignContractByKeyword请求参数结构体
 
     """
 
@@ -1688,7 +1688,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def Module(self):
-        """模块名ContractMng
+        r"""模块名ContractMng
         :rtype: str
         """
         return self._Module
@@ -1699,7 +1699,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作名SignContractByKeyword
+        r"""操作名SignContractByKeyword
         :rtype: str
         """
         return self._Operation
@@ -1710,7 +1710,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def ContractResId(self):
-        """合同ID
+        r"""合同ID
         :rtype: str
         """
         return self._ContractResId
@@ -1721,7 +1721,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def AccountResId(self):
-        """账户ID
+        r"""账户ID
         :rtype: str
         """
         return self._AccountResId
@@ -1732,7 +1732,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def SignKeyword(self):
-        """签署关键字，偏移坐标原点为关键字中心
+        r"""签署关键字，偏移坐标原点为关键字中心
         :rtype: :class:`tencentcloud.ds.v20180523.models.SignKeyword`
         """
         return self._SignKeyword
@@ -1743,7 +1743,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def AuthorizationTime(self):
-        """授权时间（由平台自动填充）
+        r"""授权时间（由平台自动填充）
         :rtype: str
         """
         return self._AuthorizationTime
@@ -1754,7 +1754,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def Position(self):
-        """授权IP地址（由平台自动填充）
+        r"""授权IP地址（由平台自动填充）
         :rtype: str
         """
         return self._Position
@@ -1765,7 +1765,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def SealResId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealResId
@@ -1776,7 +1776,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+        r"""选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
         :rtype: int
         """
         return self._CertType
@@ -1787,7 +1787,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
     @property
     def ImageData(self):
-        """签名图片，base64编码
+        r"""签名图片，base64编码
         :rtype: str
         """
         return self._ImageData
@@ -1821,7 +1821,7 @@ class SignContractByKeywordRequest(AbstractModel):
 
 
 class SignContractByKeywordResponse(AbstractModel):
-    """SignContractByKeyword返回参数结构体
+    r"""SignContractByKeyword返回参数结构体
 
     """
 
@@ -1834,7 +1834,7 @@ class SignContractByKeywordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1849,7 +1849,7 @@ class SignContractByKeywordResponse(AbstractModel):
 
 
 class SignInfo(AbstractModel):
-    """签署人信息
+    r"""签署人信息
 
     """
 
@@ -1880,7 +1880,7 @@ class SignInfo(AbstractModel):
 
     @property
     def AccountResId(self):
-        """账户ID
+        r"""账户ID
         :rtype: str
         """
         return self._AccountResId
@@ -1891,7 +1891,7 @@ class SignInfo(AbstractModel):
 
     @property
     def AuthorizationTime(self):
-        """授权时间（上传合同可不传该参数）
+        r"""授权时间（上传合同可不传该参数）
         :rtype: str
         """
         return self._AuthorizationTime
@@ -1902,7 +1902,7 @@ class SignInfo(AbstractModel):
 
     @property
     def Location(self):
-        """授权IP地址（上传合同可不传该参数）
+        r"""授权IP地址（上传合同可不传该参数）
         :rtype: str
         """
         return self._Location
@@ -1913,7 +1913,7 @@ class SignInfo(AbstractModel):
 
     @property
     def SealId(self):
-        """签章ID
+        r"""签章ID
         :rtype: str
         """
         return self._SealId
@@ -1924,7 +1924,7 @@ class SignInfo(AbstractModel):
 
     @property
     def ImageData(self):
-        """签名图片，优先级比SealId高
+        r"""签名图片，优先级比SealId高
         :rtype: str
         """
         return self._ImageData
@@ -1935,7 +1935,7 @@ class SignInfo(AbstractModel):
 
     @property
     def CertType(self):
-        """默认值：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+        r"""默认值：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
         :rtype: int
         """
         return self._CertType
@@ -1946,7 +1946,7 @@ class SignInfo(AbstractModel):
 
     @property
     def SignLocation(self):
-        """签名域的标签值
+        r"""签名域的标签值
         :rtype: str
         """
         return self._SignLocation
@@ -1975,7 +1975,7 @@ class SignInfo(AbstractModel):
 
 
 class SignKeyword(AbstractModel):
-    """签署关键字信息
+    r"""签署关键字信息
 
     """
 
@@ -2000,7 +2000,7 @@ class SignKeyword(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -2011,7 +2011,7 @@ class SignKeyword(AbstractModel):
 
     @property
     def OffsetCoordX(self):
-        """X轴偏移坐标
+        r"""X轴偏移坐标
         :rtype: str
         """
         return self._OffsetCoordX
@@ -2022,7 +2022,7 @@ class SignKeyword(AbstractModel):
 
     @property
     def OffsetCoordY(self):
-        """Y轴偏移坐标
+        r"""Y轴偏移坐标
         :rtype: str
         """
         return self._OffsetCoordY
@@ -2033,7 +2033,7 @@ class SignKeyword(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """签章图片宽度
+        r"""签章图片宽度
         :rtype: str
         """
         return self._ImageWidth
@@ -2044,7 +2044,7 @@ class SignKeyword(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """签章图片高度
+        r"""签章图片高度
         :rtype: str
         """
         return self._ImageHeight
@@ -2071,7 +2071,7 @@ class SignKeyword(AbstractModel):
 
 
 class SignLocation(AbstractModel):
-    """签署坐标对象
+    r"""签署坐标对象
 
     """
 
@@ -2096,7 +2096,7 @@ class SignLocation(AbstractModel):
 
     @property
     def SignOnPage(self):
-        """签名域页数
+        r"""签名域页数
         :rtype: str
         """
         return self._SignOnPage
@@ -2107,7 +2107,7 @@ class SignLocation(AbstractModel):
 
     @property
     def SignLocationLBX(self):
-        """签名域左下角X轴坐标轴
+        r"""签名域左下角X轴坐标轴
         :rtype: str
         """
         return self._SignLocationLBX
@@ -2118,7 +2118,7 @@ class SignLocation(AbstractModel):
 
     @property
     def SignLocationLBY(self):
-        """签名域左下角Y轴坐标轴
+        r"""签名域左下角Y轴坐标轴
         :rtype: str
         """
         return self._SignLocationLBY
@@ -2129,7 +2129,7 @@ class SignLocation(AbstractModel):
 
     @property
     def SignLocationRUX(self):
-        """签名域右上角X轴坐标轴
+        r"""签名域右上角X轴坐标轴
         :rtype: str
         """
         return self._SignLocationRUX
@@ -2140,7 +2140,7 @@ class SignLocation(AbstractModel):
 
     @property
     def SignLocationRUY(self):
-        """签名域右上角Y轴坐标轴
+        r"""签名域右上角Y轴坐标轴
         :rtype: str
         """
         return self._SignLocationRUY

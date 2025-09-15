@@ -27,7 +27,7 @@ class TrroClient(AbstractClient):
 
 
     def BatchDeleteDevices(self, request):
-        """用于批量删除设备
+        r"""用于批量删除设备
 
         :param request: Request instance for BatchDeleteDevices.
         :type request: :class:`tencentcloud.trro.v20220325.models.BatchDeleteDevicesRequest`
@@ -50,7 +50,7 @@ class TrroClient(AbstractClient):
 
 
     def BatchDeletePolicy(self, request):
-        """用于批量删除修改权限配置
+        r"""用于批量删除修改权限配置
 
         :param request: Request instance for BatchDeletePolicy.
         :type request: :class:`tencentcloud.trro.v20220325.models.BatchDeletePolicyRequest`
@@ -73,7 +73,7 @@ class TrroClient(AbstractClient):
 
 
     def BoundLicenses(self, request):
-        """为推流设备绑定license，优先绑定到期时间最近的，到期时间相同优先绑定月包
+        r"""为推流设备绑定license，优先绑定到期时间最近的，到期时间相同优先绑定月包
 
         :param request: Request instance for BoundLicenses.
         :type request: :class:`tencentcloud.trro.v20220325.models.BoundLicensesRequest`
@@ -96,7 +96,7 @@ class TrroClient(AbstractClient):
 
 
     def CreateCloudRecording(self, request):
-        """启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
+        r"""启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
 
         :param request: Request instance for CreateCloudRecording.
         :type request: :class:`tencentcloud.trro.v20220325.models.CreateCloudRecordingRequest`
@@ -119,7 +119,7 @@ class TrroClient(AbstractClient):
 
 
     def CreateDevice(self, request):
-        """用于创建设备
+        r"""用于创建设备
 
         :param request: Request instance for CreateDevice.
         :type request: :class:`tencentcloud.trro.v20220325.models.CreateDeviceRequest`
@@ -142,7 +142,7 @@ class TrroClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """用于创建项目
+        r"""用于创建项目
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.CreateProjectRequest`
@@ -165,7 +165,7 @@ class TrroClient(AbstractClient):
 
 
     def DeleteCloudRecording(self, request):
-        """成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+        r"""成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 
         :param request: Request instance for DeleteCloudRecording.
         :type request: :class:`tencentcloud.trro.v20220325.models.DeleteCloudRecordingRequest`
@@ -188,7 +188,7 @@ class TrroClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """用于删除项目
+        r"""用于删除项目
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.DeleteProjectRequest`
@@ -211,7 +211,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceInfo(self, request):
-        """用于获取指定设备信息
+        r"""用于获取指定设备信息
 
         :param request: Request instance for DescribeDeviceInfo.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceInfoRequest`
@@ -234,7 +234,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceList(self, request):
-        """用于获取设备信息列表
+        r"""用于获取设备信息列表
 
         :param request: Request instance for DescribeDeviceList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceListRequest`
@@ -257,7 +257,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceSessionDetails(self, request):
-        """获取设备会话数据详单
+        r"""获取设备会话数据详单
 
         :param request: Request instance for DescribeDeviceSessionDetails.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceSessionDetailsRequest`
@@ -280,7 +280,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceSessionList(self, request):
-        """获取设备会话列表
+        r"""获取设备会话列表
 
         :param request: Request instance for DescribeDeviceSessionList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceSessionListRequest`
@@ -303,7 +303,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribePolicy(self, request):
-        """用于查看权限配置
+        r"""用于查看权限配置
 
         :param request: Request instance for DescribePolicy.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribePolicyRequest`
@@ -326,7 +326,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeProjectInfo(self, request):
-        """用于获取项目信息
+        r"""用于获取项目信息
 
         :param request: Request instance for DescribeProjectInfo.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeProjectInfoRequest`
@@ -349,7 +349,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeProjectList(self, request):
-        """用于获取项目列表
+        r"""用于获取项目列表
 
         :param request: Request instance for DescribeProjectList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeProjectListRequest`
@@ -372,7 +372,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeRecentSessionList(self, request):
-        """获取最新设备会话列表
+        r"""获取最新设备会话列表
 
         :param request: Request instance for DescribeRecentSessionList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeRecentSessionListRequest`
@@ -395,7 +395,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeSessionStatistics(self, request):
-        """获取会话统计值
+        r"""获取会话统计值
 
         :param request: Request instance for DescribeSessionStatistics.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeSessionStatisticsRequest`
@@ -418,7 +418,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeSessionStatisticsByInterval(self, request):
-        """获取各时间段的会话统计值
+        r"""获取各时间段的会话统计值
 
         :param request: Request instance for DescribeSessionStatisticsByInterval.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeSessionStatisticsByIntervalRequest`
@@ -441,7 +441,7 @@ class TrroClient(AbstractClient):
 
 
     def GetDeviceLicense(self, request):
-        """获取设备已经绑定的可用授权数量
+        r"""获取设备已经绑定的可用授权数量
 
         :param request: Request instance for GetDeviceLicense.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetDeviceLicenseRequest`
@@ -464,7 +464,7 @@ class TrroClient(AbstractClient):
 
 
     def GetDevices(self, request):
-        """查询用户设备的授权绑定情况
+        r"""查询用户设备的授权绑定情况
 
         :param request: Request instance for GetDevices.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetDevicesRequest`
@@ -487,7 +487,7 @@ class TrroClient(AbstractClient):
 
 
     def GetLicenseStat(self, request):
-        """统计license类型数量
+        r"""统计license类型数量
 
         :param request: Request instance for GetLicenseStat.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetLicenseStatRequest`
@@ -510,7 +510,7 @@ class TrroClient(AbstractClient):
 
 
     def GetLicenses(self, request):
-        """按授权查看license列表
+        r"""按授权查看license列表
 
         :param request: Request instance for GetLicenses.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetLicensesRequest`
@@ -533,7 +533,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyCallbackUrl(self, request):
-        """设置回调URL
+        r"""设置回调URL
         录制回调事件内容参考：https://cloud.tencent.com/document/product/647/81113
         转推回调事件内容参考：https://cloud.tencent.com/document/product/647/88552
 
@@ -558,7 +558,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyDevice(self, request):
-        """用于修改设备信息
+        r"""用于修改设备信息
 
         :param request: Request instance for ModifyDevice.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyDeviceRequest`
@@ -581,7 +581,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyPolicy(self, request):
-        """用于修改权限配置
+        r"""用于修改权限配置
 
         :param request: Request instance for ModifyPolicy.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyPolicyRequest`
@@ -604,7 +604,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """用于修改项目信息
+        r"""用于修改项目信息
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyProjectRequest`
@@ -627,7 +627,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyProjectSecMode(self, request):
-        """使用项目共享密钥可动态生成设备登录密钥，登录前无需对设备进行提前注册，适合希望简化业务流程的客户。由于是公共密钥，请务必注意保护项目共享密钥，并及时更新。建议项目共享密钥保存在服务器侧。由服务器生成设备登录密码下发给设备，避免密钥保存在客户端侧产生的密钥泄露风险。
+        r"""使用项目共享密钥可动态生成设备登录密钥，登录前无需对设备进行提前注册，适合希望简化业务流程的客户。由于是公共密钥，请务必注意保护项目共享密钥，并及时更新。建议项目共享密钥保存在服务器侧。由服务器生成设备登录密码下发给设备，避免密钥保存在客户端侧产生的密钥泄露风险。
 
         开启项目共享密钥后，对于已注册的设备，仍可使用原设备密码登录。若希望仅能通过共享密钥生成密码登录，请通过云 API 将设备密码更新为"USEPROJECTKEYPWD"。
 
@@ -652,7 +652,7 @@ class TrroClient(AbstractClient):
 
 
     def StartPublishLiveStream(self, request):
-        """启动一个混流转推任务，将 TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。
+        r"""启动一个混流转推任务，将 TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。
 
         :param request: Request instance for StartPublishLiveStream.
         :type request: :class:`tencentcloud.trro.v20220325.models.StartPublishLiveStreamRequest`
@@ -675,7 +675,7 @@ class TrroClient(AbstractClient):
 
 
     def StopPublishLiveStream(self, request):
-        """停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开房间超过MaxIdleTime 设置的时间后，任务也会自动停止。
+        r"""停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开房间超过MaxIdleTime 设置的时间后，任务也会自动停止。
 
         :param request: Request instance for StopPublishLiveStream.
         :type request: :class:`tencentcloud.trro.v20220325.models.StopPublishLiveStreamRequest`

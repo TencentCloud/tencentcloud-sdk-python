@@ -27,7 +27,7 @@ class NppClient(AbstractClient):
 
 
     def CreateCallBack(self, request):
-        """回拨呼叫请求
+        r"""回拨呼叫请求
 
         :param request: Request instance for CreateCallBack.
         :type request: :class:`tencentcloud.npp.v20190823.models.CreateCallBackRequest`
@@ -50,7 +50,7 @@ class NppClient(AbstractClient):
 
 
     def DelVirtualNum(self, request):
-        """直拨解绑中间号
+        r"""直拨解绑中间号
 
         :param request: Request instance for DelVirtualNum.
         :type request: :class:`tencentcloud.npp.v20190823.models.DelVirtualNumRequest`
@@ -73,7 +73,7 @@ class NppClient(AbstractClient):
 
 
     def DeleteCallBack(self, request):
-        """回拨呼叫取消
+        r"""回拨呼叫取消
 
         :param request: Request instance for DeleteCallBack.
         :type request: :class:`tencentcloud.npp.v20190823.models.DeleteCallBackRequest`
@@ -96,7 +96,7 @@ class NppClient(AbstractClient):
 
 
     def DescribeCallBackCdr(self, request):
-        """回拨话单获取接口
+        r"""回拨话单获取接口
 
         :param request: Request instance for DescribeCallBackCdr.
         :type request: :class:`tencentcloud.npp.v20190823.models.DescribeCallBackCdrRequest`
@@ -119,7 +119,7 @@ class NppClient(AbstractClient):
 
 
     def DescribeCallBackStatus(self, request):
-        """回拨通话状态获取
+        r"""回拨通话状态获取
 
         :param request: Request instance for DescribeCallBackStatus.
         :type request: :class:`tencentcloud.npp.v20190823.models.DescribeCallBackStatusRequest`
@@ -142,7 +142,7 @@ class NppClient(AbstractClient):
 
 
     def DescribeCallerDisplayList(self, request):
-        """回拨拉取主叫显号号码集合
+        r"""回拨拉取主叫显号号码集合
 
         :param request: Request instance for DescribeCallerDisplayList.
         :type request: :class:`tencentcloud.npp.v20190823.models.DescribeCallerDisplayListRequest`
@@ -165,7 +165,7 @@ class NppClient(AbstractClient):
 
 
     def Get400Cdr(self, request):
-        """直拨话单获取接口
+        r"""直拨话单获取接口
 
         :param request: Request instance for Get400Cdr.
         :type request: :class:`tencentcloud.npp.v20190823.models.Get400CdrRequest`
@@ -188,7 +188,7 @@ class NppClient(AbstractClient):
 
 
     def GetVirtualNum(self, request):
-        """直拨获取中间号（App 使用方发起）
+        r"""直拨获取中间号（App 使用方发起）
 
         :param request: Request instance for GetVirtualNum.
         :type request: :class:`tencentcloud.npp.v20190823.models.GetVirtualNumRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AttributeKeyDetail(AbstractModel):
-    """AttributeKey值详情
+    r"""AttributeKey值详情
 
     """
 
@@ -44,7 +44,7 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def LabelType(self):
-        """输入框类型
+        r"""输入框类型
         :rtype: str
         """
         return self._LabelType
@@ -55,7 +55,7 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Starter(self):
-        """初始化展示
+        r"""初始化展示
         :rtype: str
         """
         return self._Starter
@@ -66,7 +66,7 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Order(self):
-        """展示排序
+        r"""展示排序
         :rtype: int
         """
         return self._Order
@@ -77,7 +77,7 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Value(self):
-        """AttributeKey值
+        r"""AttributeKey值
         :rtype: str
         """
         return self._Value
@@ -88,7 +88,7 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Label(self):
-        """中文标签
+        r"""中文标签
         :rtype: str
         """
         return self._Label
@@ -115,7 +115,7 @@ class AttributeKeyDetail(AbstractModel):
 
 
 class AuditSummary(AbstractModel):
-    """跟踪集概览
+    r"""跟踪集概览
 
     """
 
@@ -137,7 +137,7 @@ class AuditSummary(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """跟踪集状态，1：开启，0：关闭
+        r"""跟踪集状态，1：开启，0：关闭
         :rtype: int
         """
         return self._AuditStatus
@@ -148,7 +148,7 @@ class AuditSummary(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """COS存储桶名称
+        r"""COS存储桶名称
         :rtype: str
         """
         return self._CosBucketName
@@ -159,7 +159,7 @@ class AuditSummary(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._AuditName
@@ -170,7 +170,7 @@ class AuditSummary(AbstractModel):
 
     @property
     def LogFilePrefix(self):
-        """日志前缀
+        r"""日志前缀
         :rtype: str
         """
         return self._LogFilePrefix
@@ -196,7 +196,7 @@ class AuditSummary(AbstractModel):
 
 
 class CmqRegionInfo(AbstractModel):
-    """cmq地域信息
+    r"""cmq地域信息
 
     """
 
@@ -212,7 +212,7 @@ class CmqRegionInfo(AbstractModel):
 
     @property
     def CmqRegionName(self):
-        """地域描述
+        r"""地域描述
         :rtype: str
         """
         return self._CmqRegionName
@@ -223,7 +223,7 @@ class CmqRegionInfo(AbstractModel):
 
     @property
     def CmqRegion(self):
-        """cmq地域
+        r"""cmq地域
         :rtype: str
         """
         return self._CmqRegion
@@ -247,7 +247,7 @@ class CmqRegionInfo(AbstractModel):
 
 
 class CosRegionInfo(AbstractModel):
-    """cos地域信息
+    r"""cos地域信息
 
     """
 
@@ -263,7 +263,7 @@ class CosRegionInfo(AbstractModel):
 
     @property
     def CosRegion(self):
-        """cos地域
+        r"""cos地域
         :rtype: str
         """
         return self._CosRegion
@@ -274,7 +274,7 @@ class CosRegionInfo(AbstractModel):
 
     @property
     def CosRegionName(self):
-        """地域描述
+        r"""地域描述
         :rtype: str
         """
         return self._CosRegionName
@@ -298,7 +298,7 @@ class CosRegionInfo(AbstractModel):
 
 
 class CreateAuditTrackRequest(AbstractModel):
-    """CreateAuditTrack请求参数结构体
+    r"""CreateAuditTrack请求参数结构体
 
     """
 
@@ -332,7 +332,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :rtype: str
         """
         return self._Name
@@ -343,7 +343,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -354,7 +354,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -365,7 +365,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""跟踪事件类型（读：Read；写：Write；全部：*）
         :rtype: str
         """
         return self._ActionType
@@ -376,7 +376,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        r"""跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
         :rtype: str
         """
         return self._ResourceType
@@ -387,7 +387,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
-        """跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        r"""跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
         :rtype: list of str
         """
         return self._EventNames
@@ -398,7 +398,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -409,7 +409,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ExportId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._ExportId
@@ -441,7 +441,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
 
 class CreateAuditTrackResponse(AbstractModel):
-    """CreateAuditTrack返回参数结构体
+    r"""CreateAuditTrack返回参数结构体
 
     """
 
@@ -457,7 +457,7 @@ class CreateAuditTrackResponse(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -468,7 +468,7 @@ class CreateAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -484,7 +484,7 @@ class CreateAuditTrackResponse(AbstractModel):
 
 
 class CreateEventsAuditTrackRequest(AbstractModel):
-    """CreateEventsAuditTrack请求参数结构体
+    r"""CreateEventsAuditTrack请求参数结构体
 
     """
 
@@ -509,7 +509,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :rtype: str
         """
         return self._Name
@@ -520,7 +520,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -531,7 +531,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -542,7 +542,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """数据过滤条件
+        r"""数据过滤条件
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         """
         return self._Filters
@@ -553,7 +553,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -584,7 +584,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
 
 class CreateEventsAuditTrackResponse(AbstractModel):
-    """CreateEventsAuditTrack返回参数结构体
+    r"""CreateEventsAuditTrack返回参数结构体
 
     """
 
@@ -600,7 +600,7 @@ class CreateEventsAuditTrackResponse(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -611,7 +611,7 @@ class CreateEventsAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -627,7 +627,7 @@ class CreateEventsAuditTrackResponse(AbstractModel):
 
 
 class DeleteAuditTrackRequest(AbstractModel):
-    """DeleteAuditTrack请求参数结构体
+    r"""DeleteAuditTrack请求参数结构体
 
     """
 
@@ -640,7 +640,7 @@ class DeleteAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -663,7 +663,7 @@ class DeleteAuditTrackRequest(AbstractModel):
 
 
 class DeleteAuditTrackResponse(AbstractModel):
-    """DeleteAuditTrack返回参数结构体
+    r"""DeleteAuditTrack返回参数结构体
 
     """
 
@@ -676,7 +676,7 @@ class DeleteAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -691,7 +691,7 @@ class DeleteAuditTrackResponse(AbstractModel):
 
 
 class DescribeAuditRequest(AbstractModel):
-    """DescribeAudit请求参数结构体
+    r"""DescribeAudit请求参数结构体
 
     """
 
@@ -704,7 +704,7 @@ class DescribeAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._AuditName
@@ -727,7 +727,7 @@ class DescribeAuditRequest(AbstractModel):
 
 
 class DescribeAuditResponse(AbstractModel):
-    """DescribeAudit返回参数结构体
+    r"""DescribeAudit返回参数结构体
 
     """
 
@@ -779,7 +779,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def IsEnableCmqNotify(self):
-        """是否开启cmq消息通知。1：是，0：否。
+        r"""是否开启cmq消息通知。1：是，0：否。
         :rtype: int
         """
         return self._IsEnableCmqNotify
@@ -790,7 +790,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def ReadWriteAttribute(self):
-        """管理事件读写属性，1：只读，2：只写，3：全部
+        r"""管理事件读写属性，1：只读，2：只写，3：全部
         :rtype: int
         """
         return self._ReadWriteAttribute
@@ -801,7 +801,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KeyId(self):
-        """CMK的全局唯一标识符。
+        r"""CMK的全局唯一标识符。
         :rtype: str
         """
         return self._KeyId
@@ -812,7 +812,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """跟踪集状态，1：开启，0：停止。
+        r"""跟踪集状态，1：开启，0：停止。
         :rtype: int
         """
         return self._AuditStatus
@@ -823,7 +823,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称。
+        r"""跟踪集名称。
         :rtype: str
         """
         return self._AuditName
@@ -834,7 +834,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CosRegion(self):
-        """cos存储桶所在地域。
+        r"""cos存储桶所在地域。
         :rtype: str
         """
         return self._CosRegion
@@ -845,7 +845,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CmqQueueName(self):
-        """队列名称。
+        r"""队列名称。
         :rtype: str
         """
         return self._CmqQueueName
@@ -856,7 +856,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KmsAlias(self):
-        """CMK别名。
+        r"""CMK别名。
         :rtype: str
         """
         return self._KmsAlias
@@ -867,7 +867,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KmsRegion(self):
-        """kms地域。
+        r"""kms地域。
         :rtype: str
         """
         return self._KmsRegion
@@ -878,7 +878,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def IsEnableKmsEncry(self):
-        """是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        r"""是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
         :rtype: int
         """
         return self._IsEnableKmsEncry
@@ -889,7 +889,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """cos存储桶名称。
+        r"""cos存储桶名称。
         :rtype: str
         """
         return self._CosBucketName
@@ -900,7 +900,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CmqRegion(self):
-        """队列所在地域。
+        r"""队列所在地域。
         :rtype: str
         """
         return self._CmqRegion
@@ -911,7 +911,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def LogFilePrefix(self):
-        """日志前缀。
+        r"""日志前缀。
         :rtype: str
         """
         return self._LogFilePrefix
@@ -922,7 +922,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -950,7 +950,7 @@ class DescribeAuditResponse(AbstractModel):
 
 
 class DescribeAuditTrackRequest(AbstractModel):
-    """DescribeAuditTrack请求参数结构体
+    r"""DescribeAuditTrack请求参数结构体
 
     """
 
@@ -963,7 +963,7 @@ class DescribeAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -986,7 +986,7 @@ class DescribeAuditTrackRequest(AbstractModel):
 
 
 class DescribeAuditTrackResponse(AbstractModel):
-    """DescribeAuditTrack返回参数结构体
+    r"""DescribeAuditTrack返回参数结构体
 
     """
 
@@ -1026,7 +1026,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._Name
@@ -1037,7 +1037,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def ActionType(self):
-        """跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""跟踪事件类型（读：Read；写：Write；全部：*）
         :rtype: str
         """
         return self._ActionType
@@ -1048,7 +1048,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def ResourceType(self):
-        """跟踪事件所属产品（如：cos，全部：*）
+        r"""跟踪事件所属产品（如：cos，全部：*）
         :rtype: str
         """
         return self._ResourceType
@@ -1059,7 +1059,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -1070,7 +1070,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def EventNames(self):
-        """跟踪事件接口名列表（全部：[*]）
+        r"""跟踪事件接口名列表（全部：[*]）
         :rtype: list of str
         """
         return self._EventNames
@@ -1081,7 +1081,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -1092,7 +1092,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """跟踪集创建时间
+        r"""跟踪集创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1103,7 +1103,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
+        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -1114,7 +1114,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def Filters(self):
-        """数据投递过滤条件
+        r"""数据投递过滤条件
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         """
         return self._Filters
@@ -1125,7 +1125,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1153,7 +1153,7 @@ class DescribeAuditTrackResponse(AbstractModel):
 
 
 class DescribeAuditTracksRequest(AbstractModel):
-    """DescribeAuditTracks请求参数结构体
+    r"""DescribeAuditTracks请求参数结构体
 
     """
 
@@ -1169,7 +1169,7 @@ class DescribeAuditTracksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -1180,7 +1180,7 @@ class DescribeAuditTracksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页数目
+        r"""每页数目
         :rtype: int
         """
         return self._PageSize
@@ -1204,7 +1204,7 @@ class DescribeAuditTracksRequest(AbstractModel):
 
 
 class DescribeAuditTracksResponse(AbstractModel):
-    """DescribeAuditTracks返回参数结构体
+    r"""DescribeAuditTracks返回参数结构体
 
     """
 
@@ -1223,7 +1223,7 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def Tracks(self):
-        """跟踪集列表
+        r"""跟踪集列表
         :rtype: list of Tracks
         """
         return self._Tracks
@@ -1234,7 +1234,7 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数目
+        r"""总数目
         :rtype: int
         """
         return self._TotalCount
@@ -1245,7 +1245,7 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1267,7 +1267,7 @@ class DescribeAuditTracksResponse(AbstractModel):
 
 
 class DescribeEventsRequest(AbstractModel):
-    """DescribeEvents请求参数结构体
+    r"""DescribeEvents请求参数结构体
 
     """
 
@@ -1295,7 +1295,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间戳（单位秒，不超过当前时间 90 天）
+        r"""起始时间戳（单位秒，不超过当前时间 90 天）
         :rtype: int
         """
         return self._StartTime
@@ -1306,7 +1306,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳（单位秒，查询时间跨度小于 30 天）
+        r"""结束时间戳（单位秒，查询时间跨度小于 30 天）
         :rtype: int
         """
         return self._EndTime
@@ -1317,7 +1317,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """查看更多日志的凭证
+        r"""查看更多日志的凭证
         :rtype: int
         """
         return self._NextToken
@@ -1328,7 +1328,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """返回日志的最大条数（最大 50 条）
+        r"""返回日志的最大条数（最大 50 条）
         :rtype: int
         """
         return self._MaxResults
@@ -1339,7 +1339,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def LookupAttributes(self):
-        """检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+        r"""检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
         :rtype: list of LookupAttribute
         """
         return self._LookupAttributes
@@ -1350,7 +1350,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def IsReturnLocation(self):
-        """是否返回 IP 归属地（1 返回，0 不返回）
+        r"""是否返回 IP 归属地（1 返回，0 不返回）
         :rtype: int
         """
         return self._IsReturnLocation
@@ -1383,7 +1383,7 @@ class DescribeEventsRequest(AbstractModel):
 
 
 class DescribeEventsResponse(AbstractModel):
-    """DescribeEvents返回参数结构体
+    r"""DescribeEvents返回参数结构体
 
     """
 
@@ -1408,7 +1408,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        """日志集合是否结束。true表示结束，无需进行翻页。
+        r"""日志集合是否结束。true表示结束，无需进行翻页。
         :rtype: bool
         """
         return self._ListOver
@@ -1419,7 +1419,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """查看更多日志的凭证
+        r"""查看更多日志的凭证
         :rtype: int
         """
         return self._NextToken
@@ -1430,7 +1430,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        """日志集合
+        r"""日志集合
         :rtype: list of Event
         """
         return self._Events
@@ -1441,7 +1441,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
+        r"""此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
         :rtype: int
         """
         return self._TotalCount
@@ -1452,7 +1452,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1476,7 +1476,7 @@ class DescribeEventsResponse(AbstractModel):
 
 
 class Event(AbstractModel):
-    """日志详情
+    r"""日志详情
 
     """
 
@@ -1537,7 +1537,7 @@ class Event(AbstractModel):
 
     @property
     def EventId(self):
-        """日志ID
+        r"""日志ID
         :rtype: str
         """
         return self._EventId
@@ -1548,7 +1548,7 @@ class Event(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -1559,7 +1559,7 @@ class Event(AbstractModel):
 
     @property
     def EventTime(self):
-        """事件时间
+        r"""事件时间
         :rtype: str
         """
         return self._EventTime
@@ -1570,7 +1570,7 @@ class Event(AbstractModel):
 
     @property
     def CloudAuditEvent(self):
-        """日志详情
+        r"""日志详情
         :rtype: str
         """
         return self._CloudAuditEvent
@@ -1581,7 +1581,7 @@ class Event(AbstractModel):
 
     @property
     def ResourceTypeCn(self):
-        """资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        r"""资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :rtype: str
         """
         return self._ResourceTypeCn
@@ -1592,7 +1592,7 @@ class Event(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """鉴权错误码
+        r"""鉴权错误码
         :rtype: int
         """
         return self._ErrorCode
@@ -1603,7 +1603,7 @@ class Event(AbstractModel):
 
     @property
     def EventName(self):
-        """事件名称
+        r"""事件名称
         :rtype: str
         """
         return self._EventName
@@ -1614,7 +1614,7 @@ class Event(AbstractModel):
 
     @property
     def SecretId(self):
-        """证书ID
+        r"""证书ID
         :rtype: str
         """
         return self._SecretId
@@ -1625,7 +1625,7 @@ class Event(AbstractModel):
 
     @property
     def EventSource(self):
-        """请求来源
+        r"""请求来源
         :rtype: str
         """
         return self._EventSource
@@ -1636,7 +1636,7 @@ class Event(AbstractModel):
 
     @property
     def RequestID(self):
-        """请求ID
+        r"""请求ID
         :rtype: str
         """
         return self._RequestID
@@ -1647,7 +1647,7 @@ class Event(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源地域
+        r"""资源地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -1658,7 +1658,7 @@ class Event(AbstractModel):
 
     @property
     def AccountID(self):
-        """主账号ID
+        r"""主账号ID
         :rtype: int
         """
         return self._AccountID
@@ -1669,7 +1669,7 @@ class Event(AbstractModel):
 
     @property
     def SourceIPAddress(self):
-        """源IP
+        r"""源IP
         :rtype: str
         """
         return self._SourceIPAddress
@@ -1680,7 +1680,7 @@ class Event(AbstractModel):
 
     @property
     def EventNameCn(self):
-        """事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        r"""事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :rtype: str
         """
         return self._EventNameCn
@@ -1691,7 +1691,7 @@ class Event(AbstractModel):
 
     @property
     def Resources(self):
-        """资源对
+        r"""资源对
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
         """
         return self._Resources
@@ -1702,7 +1702,7 @@ class Event(AbstractModel):
 
     @property
     def EventRegion(self):
-        """事件地域
+        r"""事件地域
         :rtype: str
         """
         return self._EventRegion
@@ -1713,7 +1713,7 @@ class Event(AbstractModel):
 
     @property
     def Location(self):
-        """IP 归属地
+        r"""IP 归属地
         :rtype: str
         """
         return self._Location
@@ -1754,7 +1754,7 @@ class Event(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """跟踪集数据投递筛选条件
+    r"""跟踪集数据投递筛选条件
 
     """
 
@@ -1767,7 +1767,7 @@ class Filter(AbstractModel):
 
     @property
     def ResourceFields(self):
-        """资源筛选条件
+        r"""资源筛选条件
         :rtype: list of ResourceField
         """
         return self._ResourceFields
@@ -1795,7 +1795,7 @@ class Filter(AbstractModel):
 
 
 class GetAttributeKeyRequest(AbstractModel):
-    """GetAttributeKey请求参数结构体
+    r"""GetAttributeKey请求参数结构体
 
     """
 
@@ -1808,7 +1808,7 @@ class GetAttributeKeyRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
-        """网站类型，取值范围是zh和en。如果不传值默认zh
+        r"""网站类型，取值范围是zh和en。如果不传值默认zh
         :rtype: str
         """
         return self._WebsiteType
@@ -1831,7 +1831,7 @@ class GetAttributeKeyRequest(AbstractModel):
 
 
 class GetAttributeKeyResponse(AbstractModel):
-    """GetAttributeKey返回参数结构体
+    r"""GetAttributeKey返回参数结构体
 
     """
 
@@ -1847,7 +1847,7 @@ class GetAttributeKeyResponse(AbstractModel):
 
     @property
     def AttributeKeyDetails(self):
-        """AttributeKey的有效取值范围
+        r"""AttributeKey的有效取值范围
         :rtype: list of AttributeKeyDetail
         """
         return self._AttributeKeyDetails
@@ -1858,7 +1858,7 @@ class GetAttributeKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1879,13 +1879,13 @@ class GetAttributeKeyResponse(AbstractModel):
 
 
 class InquireAuditCreditRequest(AbstractModel):
-    """InquireAuditCredit请求参数结构体
+    r"""InquireAuditCredit请求参数结构体
 
     """
 
 
 class InquireAuditCreditResponse(AbstractModel):
-    """InquireAuditCredit返回参数结构体
+    r"""InquireAuditCredit返回参数结构体
 
     """
 
@@ -1901,7 +1901,7 @@ class InquireAuditCreditResponse(AbstractModel):
 
     @property
     def AuditAmount(self):
-        """可创建跟踪集的数量
+        r"""可创建跟踪集的数量
         :rtype: int
         """
         return self._AuditAmount
@@ -1912,7 +1912,7 @@ class InquireAuditCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1928,7 +1928,7 @@ class InquireAuditCreditResponse(AbstractModel):
 
 
 class KeyMetadata(AbstractModel):
-    """CMK属性
+    r"""CMK属性
 
     """
 
@@ -1944,7 +1944,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Alias(self):
-        """作为密钥更容易辨识，更容易被人看懂的别名
+        r"""作为密钥更容易辨识，更容易被人看懂的别名
         :rtype: str
         """
         return self._Alias
@@ -1955,7 +1955,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyId(self):
-        """CMK的全局唯一标识
+        r"""CMK的全局唯一标识
         :rtype: str
         """
         return self._KeyId
@@ -1979,13 +1979,13 @@ class KeyMetadata(AbstractModel):
 
 
 class ListAuditsRequest(AbstractModel):
-    """ListAudits请求参数结构体
+    r"""ListAudits请求参数结构体
 
     """
 
 
 class ListAuditsResponse(AbstractModel):
-    """ListAudits返回参数结构体
+    r"""ListAudits返回参数结构体
 
     """
 
@@ -2001,7 +2001,7 @@ class ListAuditsResponse(AbstractModel):
 
     @property
     def AuditSummarys(self):
-        """查询跟踪集概要集合
+        r"""查询跟踪集概要集合
         :rtype: list of AuditSummary
         """
         return self._AuditSummarys
@@ -2012,7 +2012,7 @@ class ListAuditsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2033,7 +2033,7 @@ class ListAuditsResponse(AbstractModel):
 
 
 class ListCmqEnableRegionRequest(AbstractModel):
-    """ListCmqEnableRegion请求参数结构体
+    r"""ListCmqEnableRegion请求参数结构体
 
     """
 
@@ -2046,7 +2046,7 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
-        """站点类型。zh表示中国区，en表示国际区。默认中国区。
+        r"""站点类型。zh表示中国区，en表示国际区。默认中国区。
         :rtype: str
         """
         return self._WebsiteType
@@ -2069,7 +2069,7 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
 
 class ListCmqEnableRegionResponse(AbstractModel):
-    """ListCmqEnableRegion返回参数结构体
+    r"""ListCmqEnableRegion返回参数结构体
 
     """
 
@@ -2085,7 +2085,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     @property
     def EnableRegions(self):
-        """操作审计支持的cmq的可用区
+        r"""操作审计支持的cmq的可用区
         :rtype: list of CmqRegionInfo
         """
         return self._EnableRegions
@@ -2096,7 +2096,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2117,7 +2117,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
 
 class ListCosEnableRegionRequest(AbstractModel):
-    """ListCosEnableRegion请求参数结构体
+    r"""ListCosEnableRegion请求参数结构体
 
     """
 
@@ -2130,7 +2130,7 @@ class ListCosEnableRegionRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
-        """站点类型。zh表示中国区，en表示国际区。默认中国区。
+        r"""站点类型。zh表示中国区，en表示国际区。默认中国区。
         :rtype: str
         """
         return self._WebsiteType
@@ -2153,7 +2153,7 @@ class ListCosEnableRegionRequest(AbstractModel):
 
 
 class ListCosEnableRegionResponse(AbstractModel):
-    """ListCosEnableRegion返回参数结构体
+    r"""ListCosEnableRegion返回参数结构体
 
     """
 
@@ -2169,7 +2169,7 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     @property
     def EnableRegions(self):
-        """操作审计支持的cos可用区
+        r"""操作审计支持的cos可用区
         :rtype: list of CosRegionInfo
         """
         return self._EnableRegions
@@ -2180,7 +2180,7 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2201,7 +2201,7 @@ class ListCosEnableRegionResponse(AbstractModel):
 
 
 class ListKeyAliasByRegionRequest(AbstractModel):
-    """ListKeyAliasByRegion请求参数结构体
+    r"""ListKeyAliasByRegion请求参数结构体
 
     """
 
@@ -2220,7 +2220,7 @@ class ListKeyAliasByRegionRequest(AbstractModel):
 
     @property
     def KmsRegion(self):
-        """Kms地域
+        r"""Kms地域
         :rtype: str
         """
         return self._KmsRegion
@@ -2231,7 +2231,7 @@ class ListKeyAliasByRegionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+        r"""含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
         :rtype: int
         """
         return self._Limit
@@ -2242,7 +2242,7 @@ class ListKeyAliasByRegionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        r"""含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
         :rtype: int
         """
         return self._Offset
@@ -2267,7 +2267,7 @@ class ListKeyAliasByRegionRequest(AbstractModel):
 
 
 class ListKeyAliasByRegionResponse(AbstractModel):
-    """ListKeyAliasByRegion返回参数结构体
+    r"""ListKeyAliasByRegion返回参数结构体
 
     """
 
@@ -2286,7 +2286,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """CMK的总数量
+        r"""CMK的总数量
         :rtype: int
         """
         return self._TotalCount
@@ -2297,7 +2297,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
     @property
     def KeyMetadatas(self):
-        """密钥别名
+        r"""密钥别名
         :rtype: list of KeyMetadata
         """
         return self._KeyMetadatas
@@ -2308,7 +2308,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2330,7 +2330,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
 
 class LookUpEventsRequest(AbstractModel):
-    """LookUpEvents请求参数结构体
+    r"""LookUpEvents请求参数结构体
 
     """
 
@@ -2358,7 +2358,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -2369,7 +2369,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -2380,7 +2380,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def LookupAttributes(self):
-        """检索条件
+        r"""检索条件
         :rtype: list of LookupAttribute
         """
         return self._LookupAttributes
@@ -2391,7 +2391,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """查看更多日志的凭证
+        r"""查看更多日志的凭证
         :rtype: str
         """
         return self._NextToken
@@ -2402,7 +2402,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """返回日志的最大条数
+        r"""返回日志的最大条数
         :rtype: int
         """
         return self._MaxResults
@@ -2413,7 +2413,7 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """操作审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
+        r"""操作审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
         :rtype: str
         """
         return self._Mode
@@ -2446,7 +2446,7 @@ class LookUpEventsRequest(AbstractModel):
 
 
 class LookUpEventsResponse(AbstractModel):
-    """LookUpEvents返回参数结构体
+    r"""LookUpEvents返回参数结构体
 
     """
 
@@ -2471,7 +2471,7 @@ class LookUpEventsResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """查看更多日志的凭证
+        r"""查看更多日志的凭证
         :rtype: str
         """
         return self._NextToken
@@ -2482,7 +2482,7 @@ class LookUpEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        """日志集合
+        r"""日志集合
         :rtype: list of Event
         """
         return self._Events
@@ -2493,7 +2493,7 @@ class LookUpEventsResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        """日志集合是否结束
+        r"""日志集合是否结束
         :rtype: bool
         """
         return self._ListOver
@@ -2504,7 +2504,7 @@ class LookUpEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        r"""数量
         :rtype: int
         """
         return self._TotalCount
@@ -2515,7 +2515,7 @@ class LookUpEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2539,7 +2539,7 @@ class LookUpEventsResponse(AbstractModel):
 
 
 class LookupAttribute(AbstractModel):
-    """检索条件
+    r"""检索条件
 
     """
 
@@ -2555,7 +2555,7 @@ class LookupAttribute(AbstractModel):
 
     @property
     def AttributeKey(self):
-        """AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+        r"""AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
         :rtype: str
         """
         return self._AttributeKey
@@ -2566,7 +2566,7 @@ class LookupAttribute(AbstractModel):
 
     @property
     def AttributeValue(self):
-        """AttributeValue的值
+        r"""AttributeValue的值
         :rtype: str
         """
         return self._AttributeValue
@@ -2590,7 +2590,7 @@ class LookupAttribute(AbstractModel):
 
 
 class ModifyAuditTrackRequest(AbstractModel):
-    """ModifyAuditTrack请求参数结构体
+    r"""ModifyAuditTrack请求参数结构体
 
     """
 
@@ -2624,7 +2624,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -2635,7 +2635,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :rtype: str
         """
         return self._Name
@@ -2646,7 +2646,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""跟踪事件类型（读：Read；写：Write；全部：*）
         :rtype: str
         """
         return self._ActionType
@@ -2657,7 +2657,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        r"""跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
         :rtype: str
         """
         return self._ResourceType
@@ -2668,7 +2668,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -2679,7 +2679,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
-        """跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        r"""跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
         :rtype: list of str
         """
         return self._EventNames
@@ -2690,7 +2690,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -2701,7 +2701,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -2733,7 +2733,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
 
 class ModifyAuditTrackResponse(AbstractModel):
-    """ModifyAuditTrack返回参数结构体
+    r"""ModifyAuditTrack返回参数结构体
 
     """
 
@@ -2746,7 +2746,7 @@ class ModifyAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2761,7 +2761,7 @@ class ModifyAuditTrackResponse(AbstractModel):
 
 
 class ModifyEventsAuditTrackRequest(AbstractModel):
-    """ModifyEventsAuditTrack请求参数结构体
+    r"""ModifyEventsAuditTrack请求参数结构体
 
     """
 
@@ -2789,7 +2789,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -2800,7 +2800,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :rtype: str
         """
         return self._Name
@@ -2811,7 +2811,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -2822,7 +2822,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -2833,7 +2833,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -2844,7 +2844,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """多产品筛选过滤条件
+        r"""多产品筛选过滤条件
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         """
         return self._Filters
@@ -2876,7 +2876,7 @@ class ModifyEventsAuditTrackRequest(AbstractModel):
 
 
 class ModifyEventsAuditTrackResponse(AbstractModel):
-    """ModifyEventsAuditTrack返回参数结构体
+    r"""ModifyEventsAuditTrack返回参数结构体
 
     """
 
@@ -2889,7 +2889,7 @@ class ModifyEventsAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2904,7 +2904,7 @@ class ModifyEventsAuditTrackResponse(AbstractModel):
 
 
 class Resource(AbstractModel):
-    """资源类型
+    r"""资源类型
 
     """
 
@@ -2920,7 +2920,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -2931,7 +2931,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceName(self):
-        """资源名称
+        r"""资源名称
         :rtype: str
         """
         return self._ResourceName
@@ -2955,7 +2955,7 @@ class Resource(AbstractModel):
 
 
 class ResourceField(AbstractModel):
-    """资源筛选条件
+    r"""资源筛选条件
 
     """
 
@@ -2974,7 +2974,7 @@ class ResourceField(AbstractModel):
 
     @property
     def ResourceType(self):
-        """跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
+        r"""跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
         :rtype: str
         """
         return self._ResourceType
@@ -2985,7 +2985,7 @@ class ResourceField(AbstractModel):
 
     @property
     def ActionType(self):
-        """跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""跟踪事件类型（读：Read；写：Write；全部：*）
         :rtype: str
         """
         return self._ActionType
@@ -2996,7 +2996,7 @@ class ResourceField(AbstractModel):
 
     @property
     def EventNames(self):
-        """跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        r"""跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
         :rtype: list of str
         """
         return self._EventNames
@@ -3021,7 +3021,7 @@ class ResourceField(AbstractModel):
 
 
 class StartLoggingRequest(AbstractModel):
-    """StartLogging请求参数结构体
+    r"""StartLogging请求参数结构体
 
     """
 
@@ -3034,7 +3034,7 @@ class StartLoggingRequest(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._AuditName
@@ -3057,7 +3057,7 @@ class StartLoggingRequest(AbstractModel):
 
 
 class StartLoggingResponse(AbstractModel):
-    """StartLogging返回参数结构体
+    r"""StartLogging返回参数结构体
 
     """
 
@@ -3073,7 +3073,7 @@ class StartLoggingResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        """是否开启成功
+        r"""是否开启成功
         :rtype: int
         """
         return self._IsSuccess
@@ -3084,7 +3084,7 @@ class StartLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3100,7 +3100,7 @@ class StartLoggingResponse(AbstractModel):
 
 
 class StopLoggingRequest(AbstractModel):
-    """StopLogging请求参数结构体
+    r"""StopLogging请求参数结构体
 
     """
 
@@ -3113,7 +3113,7 @@ class StopLoggingRequest(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._AuditName
@@ -3136,7 +3136,7 @@ class StopLoggingRequest(AbstractModel):
 
 
 class StopLoggingResponse(AbstractModel):
-    """StopLogging返回参数结构体
+    r"""StopLogging返回参数结构体
 
     """
 
@@ -3152,7 +3152,7 @@ class StopLoggingResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        """是否关闭成功
+        r"""是否关闭成功
         :rtype: int
         """
         return self._IsSuccess
@@ -3163,7 +3163,7 @@ class StopLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3179,7 +3179,7 @@ class StopLoggingResponse(AbstractModel):
 
 
 class Storage(AbstractModel):
-    """跟踪集存储信息
+    r"""跟踪集存储信息
 
     """
 
@@ -3207,7 +3207,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageType(self):
-        """存储类型（目前支持 cos、cls）
+        r"""存储类型（目前支持 cos、cls）
         :rtype: str
         """
         return self._StorageType
@@ -3218,7 +3218,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageRegion(self):
-        """存储所在地域
+        r"""存储所在地域
         :rtype: str
         """
         return self._StorageRegion
@@ -3229,7 +3229,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageName(self):
-        """存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+        r"""存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
         :rtype: str
         """
         return self._StorageName
@@ -3240,7 +3240,7 @@ class Storage(AbstractModel):
 
     @property
     def StoragePrefix(self):
-        """存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+        r"""存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
         :rtype: str
         """
         return self._StoragePrefix
@@ -3251,7 +3251,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageAccountId(self):
-        """被指定存储用户ID
+        r"""被指定存储用户ID
         :rtype: str
         """
         return self._StorageAccountId
@@ -3262,7 +3262,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageAppId(self):
-        """被指定存储用户appid
+        r"""被指定存储用户appid
         :rtype: str
         """
         return self._StorageAppId
@@ -3290,7 +3290,7 @@ class Storage(AbstractModel):
 
 
 class Tracks(AbstractModel):
-    """跟踪集列表
+    r"""跟踪集列表
 
     """
 
@@ -3324,7 +3324,7 @@ class Tracks(AbstractModel):
 
     @property
     def Name(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._Name
@@ -3335,7 +3335,7 @@ class Tracks(AbstractModel):
 
     @property
     def ActionType(self):
-        """跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""跟踪事件类型（读：Read；写：Write；全部：*）
         :rtype: str
         """
         return self._ActionType
@@ -3346,7 +3346,7 @@ class Tracks(AbstractModel):
 
     @property
     def ResourceType(self):
-        """跟踪事件所属产品（如：cos，全部：*）
+        r"""跟踪事件所属产品（如：cos，全部：*）
         :rtype: str
         """
         return self._ResourceType
@@ -3357,7 +3357,7 @@ class Tracks(AbstractModel):
 
     @property
     def Status(self):
-        """跟踪集状态（未开启：0；开启：1）
+        r"""跟踪集状态（未开启：0；开启：1）
         :rtype: int
         """
         return self._Status
@@ -3368,7 +3368,7 @@ class Tracks(AbstractModel):
 
     @property
     def EventNames(self):
-        """跟踪事件接口名列表（全部：[*]）
+        r"""跟踪事件接口名列表（全部：[*]）
         :rtype: list of str
         """
         return self._EventNames
@@ -3379,7 +3379,7 @@ class Tracks(AbstractModel):
 
     @property
     def Storage(self):
-        """数据投递存储（目前支持 cos、cls）
+        r"""数据投递存储（目前支持 cos、cls）
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -3390,7 +3390,7 @@ class Tracks(AbstractModel):
 
     @property
     def CreateTime(self):
-        """跟踪集创建时间
+        r"""跟踪集创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3401,7 +3401,7 @@ class Tracks(AbstractModel):
 
     @property
     def TrackId(self):
-        """跟踪集 ID
+        r"""跟踪集 ID
         :rtype: int
         """
         return self._TrackId
@@ -3433,7 +3433,7 @@ class Tracks(AbstractModel):
 
 
 class UpdateAuditRequest(AbstractModel):
-    """UpdateAudit请求参数结构体
+    r"""UpdateAudit请求参数结构体
 
     """
 
@@ -3482,7 +3482,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
-        """跟踪集名称
+        r"""跟踪集名称
         :rtype: str
         """
         return self._AuditName
@@ -3493,7 +3493,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsEnableCmqNotify(self):
-        """是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，操作审计会将您的日志内容实时投递到您指定地域的指定队列中。
+        r"""是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，操作审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :rtype: int
         """
         return self._IsEnableCmqNotify
@@ -3504,7 +3504,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def ReadWriteAttribute(self):
-        """管理事件的读写属性。1：只读，2：只写，3：全部。
+        r"""管理事件的读写属性。1：只读，2：只写，3：全部。
         :rtype: int
         """
         return self._ReadWriteAttribute
@@ -3515,7 +3515,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        """CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。操作审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        r"""CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。操作审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
         :rtype: str
         """
         return self._KeyId
@@ -3526,7 +3526,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CosRegion(self):
-        """cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+        r"""cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
         :rtype: str
         """
         return self._CosRegion
@@ -3537,7 +3537,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CmqQueueName(self):
-        """队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，操作审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+        r"""队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，操作审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
         :rtype: str
         """
         return self._CmqQueueName
@@ -3548,7 +3548,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewBucket(self):
-        """是否创建新的cos存储桶。1：是，0：否。
+        r"""是否创建新的cos存储桶。1：是，0：否。
         :rtype: int
         """
         return self._IsCreateNewBucket
@@ -3559,7 +3559,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def KmsRegion(self):
-        """kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        r"""kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
         :rtype: str
         """
         return self._KmsRegion
@@ -3570,7 +3570,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsEnableKmsEncry(self):
-        """是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        r"""是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
         :rtype: int
         """
         return self._IsEnableKmsEncry
@@ -3581,7 +3581,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，操作审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+        r"""cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，操作审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
         :rtype: str
         """
         return self._CosBucketName
@@ -3592,7 +3592,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CmqRegion(self):
-        """队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        r"""队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :rtype: str
         """
         return self._CmqRegion
@@ -3603,7 +3603,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def LogFilePrefix(self):
-        """日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
+        r"""日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
         :rtype: str
         """
         return self._LogFilePrefix
@@ -3614,7 +3614,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewQueue(self):
-        """是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        r"""是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :rtype: int
         """
         return self._IsCreateNewQueue
@@ -3649,7 +3649,7 @@ class UpdateAuditRequest(AbstractModel):
 
 
 class UpdateAuditResponse(AbstractModel):
-    """UpdateAudit返回参数结构体
+    r"""UpdateAudit返回参数结构体
 
     """
 
@@ -3665,7 +3665,7 @@ class UpdateAuditResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        """是否更新成功
+        r"""是否更新成功
         :rtype: int
         """
         return self._IsSuccess
@@ -3676,7 +3676,7 @@ class UpdateAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

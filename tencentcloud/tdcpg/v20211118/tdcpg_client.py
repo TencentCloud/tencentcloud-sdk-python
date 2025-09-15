@@ -27,7 +27,7 @@ class TdcpgClient(AbstractClient):
 
 
     def CloneClusterToPointInTime(self, request):
-        """使用指定时间点的备份克隆一个新的集群
+        r"""使用指定时间点的备份克隆一个新的集群
 
         :param request: Request instance for CloneClusterToPointInTime.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.CloneClusterToPointInTimeRequest`
@@ -50,7 +50,7 @@ class TdcpgClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """创建集群
+        r"""创建集群
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.CreateClusterRequest`
@@ -73,7 +73,7 @@ class TdcpgClient(AbstractClient):
 
 
     def CreateClusterInstances(self, request):
-        """在集群中新建实例
+        r"""在集群中新建实例
 
         :param request: Request instance for CreateClusterInstances.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.CreateClusterInstancesRequest`
@@ -96,7 +96,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """删除集群，集群中的实例和数据都将被删除，且无法恢复。只有当集群状态处于isolated(已隔离)时才生效。
+        r"""删除集群，集群中的实例和数据都将被删除，且无法恢复。只有当集群状态处于isolated(已隔离)时才生效。
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DeleteClusterRequest`
@@ -119,7 +119,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DeleteClusterInstances(self, request):
-        """删除实例。只有当实例状态处于isolated(已隔离)时才生效。
+        r"""删除实例。只有当实例状态处于isolated(已隔离)时才生效。
 
         :param request: Request instance for DeleteClusterInstances.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DeleteClusterInstancesRequest`
@@ -142,7 +142,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """查询数据库账号信息
+        r"""查询数据库账号信息
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeAccountsRequest`
@@ -165,7 +165,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeClusterBackups(self, request):
-        """查询集群的备份集
+        r"""查询集群的备份集
 
         :param request: Request instance for DescribeClusterBackups.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeClusterBackupsRequest`
@@ -188,7 +188,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeClusterEndpoints(self, request):
-        """查询集群接入点信息
+        r"""查询集群接入点信息
 
         :param request: Request instance for DescribeClusterEndpoints.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeClusterEndpointsRequest`
@@ -211,7 +211,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """查询实例
+        r"""查询实例
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeClusterInstancesRequest`
@@ -234,7 +234,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeClusterRecoveryTimeRange(self, request):
-        """查询集群可回档时间范围
+        r"""查询集群可回档时间范围
 
         :param request: Request instance for DescribeClusterRecoveryTimeRange.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeClusterRecoveryTimeRangeRequest`
@@ -257,7 +257,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """查询集群
+        r"""查询集群
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeClustersRequest`
@@ -280,7 +280,7 @@ class TdcpgClient(AbstractClient):
 
 
     def DescribeResourcesByDealName(self, request):
-        """根据订单号获取资源信息
+        r"""根据订单号获取资源信息
 
         :param request: Request instance for DescribeResourcesByDealName.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.DescribeResourcesByDealNameRequest`
@@ -303,7 +303,7 @@ class TdcpgClient(AbstractClient):
 
 
     def IsolateCluster(self, request):
-        """隔离集群，集群的接入点网络将会断掉无法连接使用数据库。只有当集群状态处于running(运行中)时才生效。
+        r"""隔离集群，集群的接入点网络将会断掉无法连接使用数据库。只有当集群状态处于running(运行中)时才生效。
 
         :param request: Request instance for IsolateCluster.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.IsolateClusterRequest`
@@ -326,7 +326,7 @@ class TdcpgClient(AbstractClient):
 
 
     def IsolateClusterInstances(self, request):
-        """隔离实例。此接口只针对状态为running的实例生效，使用场景包括：
+        r"""隔离实例。此接口只针对状态为running的实例生效，使用场景包括：
          - 批量隔离集群内所有的实例
          - 在读写实例为running(运行中)时，单个/批量隔离只读实例
          - 集群内所有只读实例为isolated(已隔离)时，单独隔离读写实例
@@ -352,7 +352,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ModifyAccountDescription(self, request):
-        """修改数据库账号描述
+        r"""修改数据库账号描述
 
         :param request: Request instance for ModifyAccountDescription.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ModifyAccountDescriptionRequest`
@@ -375,7 +375,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ModifyClusterEndpointWanStatus(self, request):
-        """开启或者关闭接入点外网
+        r"""开启或者关闭接入点外网
 
         :param request: Request instance for ModifyClusterEndpointWanStatus.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ModifyClusterEndpointWanStatusRequest`
@@ -398,7 +398,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ModifyClusterInstancesSpec(self, request):
-        """修改实例规格，此接口只针对状态为running(运行中)的实例生效
+        r"""修改实例规格，此接口只针对状态为running(运行中)的实例生效
 
         :param request: Request instance for ModifyClusterInstancesSpec.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ModifyClusterInstancesSpecRequest`
@@ -421,7 +421,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ModifyClusterName(self, request):
-        """修改集群名字
+        r"""修改集群名字
 
         :param request: Request instance for ModifyClusterName.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ModifyClusterNameRequest`
@@ -444,7 +444,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ModifyClustersAutoRenewFlag(self, request):
-        """修改集群自动续费，只对预付费集群生效。
+        r"""修改集群自动续费，只对预付费集群生效。
 
         :param request: Request instance for ModifyClustersAutoRenewFlag.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ModifyClustersAutoRenewFlagRequest`
@@ -467,7 +467,7 @@ class TdcpgClient(AbstractClient):
 
 
     def RecoverCluster(self, request):
-        """恢复集群，恢复集群的接入点网络，恢复后继续连接使用数据库。只有当集群状态处于isolated(已隔离)时才生效。
+        r"""恢复集群，恢复集群的接入点网络，恢复后继续连接使用数据库。只有当集群状态处于isolated(已隔离)时才生效。
 
         :param request: Request instance for RecoverCluster.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.RecoverClusterRequest`
@@ -490,7 +490,7 @@ class TdcpgClient(AbstractClient):
 
 
     def RecoverClusterInstances(self, request):
-        """恢复实例。此接口的使用场景包括：
+        r"""恢复实例。此接口的使用场景包括：
          - 读写实例状态为running(运行中)时，批量恢复状态为isolated(已隔离)的只读实例
          - 读写实例状态为isolated(已隔离)时，恢复读写实例
          - 读写实例状态为isolated(已隔离)时，批量恢复读写实例以及状态为isolated(已隔离)的只读实例
@@ -516,7 +516,7 @@ class TdcpgClient(AbstractClient):
 
 
     def RenewCluster(self, request):
-        """续费集群
+        r"""续费集群
 
         :param request: Request instance for RenewCluster.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.RenewClusterRequest`
@@ -539,7 +539,7 @@ class TdcpgClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """重置数据库账号密码
+        r"""重置数据库账号密码
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.ResetAccountPasswordRequest`
@@ -562,7 +562,7 @@ class TdcpgClient(AbstractClient):
 
 
     def RestartClusterInstances(self, request):
-        """重启实例，此接口只针对状态为running(运行中)的实例生效。
+        r"""重启实例，此接口只针对状态为running(运行中)的实例生效。
 
         :param request: Request instance for RestartClusterInstances.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.RestartClusterInstancesRequest`
@@ -585,7 +585,7 @@ class TdcpgClient(AbstractClient):
 
 
     def TransformClusterPayMode(self, request):
-        """转换集群付费模式，目前只支持从 后付费 转换成 与预付费。
+        r"""转换集群付费模式，目前只支持从 后付费 转换成 与预付费。
 
         :param request: Request instance for TransformClusterPayMode.
         :type request: :class:`tencentcloud.tdcpg.v20211118.models.TransformClusterPayModeRequest`

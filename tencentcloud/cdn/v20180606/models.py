@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessControl(AbstractModel):
-    """请求头部及请求url访问控制
+    r"""请求头部及请求url访问控制
 
     """
 
@@ -42,7 +42,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """启用请求头部及请求url访问控制开关，取值有：
+        r"""启用请求头部及请求url访问控制开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -55,7 +55,7 @@ off：关闭
 
     @property
     def AccessControlRules(self):
-        """请求头部及请求url访问规则
+        r"""请求头部及请求url访问规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccessControlRule
         """
@@ -67,7 +67,7 @@ off：关闭
 
     @property
     def ReturnCode(self):
-        """返回状态码
+        r"""返回状态码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -98,7 +98,7 @@ off：关闭
 
 
 class AccessControlRule(AbstractModel):
-    """访问控制规则
+    r"""访问控制规则
 
     """
 
@@ -126,7 +126,7 @@ off ：字面匹配
 
     @property
     def RuleType(self):
-        """requestHeader ：对请求头部进行访问控制
+        r"""requestHeader ：对请求头部进行访问控制
 url ： 对访问url进行访问控制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -139,7 +139,7 @@ url ： 对访问url进行访问控制
 
     @property
     def RuleContent(self):
-        """封禁内容
+        r"""封禁内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -151,7 +151,7 @@ url ： 对访问url进行访问控制
 
     @property
     def Regex(self):
-        """on ：正则匹配
+        r"""on ：正则匹配
 off ：字面匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -164,7 +164,7 @@ off ：字面匹配
 
     @property
     def RuleHeader(self):
-        """RuleType为requestHeader时必填，否则不需要填
+        r"""RuleType为requestHeader时必填，否则不需要填
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -191,7 +191,7 @@ off ：字面匹配
 
 
 class AddCLSTopicDomainsRequest(AbstractModel):
-    """AddCLSTopicDomains请求参数结构体
+    r"""AddCLSTopicDomains请求参数结构体
 
     """
 
@@ -213,7 +213,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -224,7 +224,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -235,7 +235,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
 
     @property
     def DomainAreaConfigs(self):
-        """域名区域配置
+        r"""域名区域配置
         :rtype: list of DomainAreaConfig
         """
         return self._DomainAreaConfigs
@@ -246,7 +246,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -277,7 +277,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
 
 
 class AddCLSTopicDomainsResponse(AbstractModel):
-    """AddCLSTopicDomains返回参数结构体
+    r"""AddCLSTopicDomains返回参数结构体
 
     """
 
@@ -290,7 +290,7 @@ class AddCLSTopicDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -305,7 +305,7 @@ class AddCLSTopicDomainsResponse(AbstractModel):
 
 
 class AddCdnDomainRequest(AbstractModel):
-    """AddCdnDomain请求参数结构体
+    r"""AddCdnDomain请求参数结构体
 
     """
 
@@ -445,7 +445,7 @@ global：全球加速
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -456,7 +456,7 @@ global：全球加速
 
     @property
     def ServiceType(self):
-        """加速域名业务类型
+        r"""加速域名业务类型
 web：网页小文件
 download：下载大文件
 media：音视频点播
@@ -472,7 +472,7 @@ dynamic:  动态加速
 
     @property
     def Origin(self):
-        """源站配置
+        r"""源站配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
         return self._Origin
@@ -483,7 +483,7 @@ dynamic:  动态加速
 
     @property
     def ProjectId(self):
-        """项目 ID，默认为 0，代表【默认项目】
+        r"""项目 ID，默认为 0，代表【默认项目】
         :rtype: int
         """
         return self._ProjectId
@@ -494,7 +494,7 @@ dynamic:  动态加速
 
     @property
     def IpFilter(self):
-        """IP 黑白名单配置
+        r"""IP 黑白名单配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
         return self._IpFilter
@@ -505,7 +505,7 @@ dynamic:  动态加速
 
     @property
     def IpFreqLimit(self):
-        """IP 限频配置
+        r"""IP 限频配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
         return self._IpFreqLimit
@@ -516,7 +516,7 @@ dynamic:  动态加速
 
     @property
     def StatusCodeCache(self):
-        """状态码缓存配置
+        r"""状态码缓存配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
         return self._StatusCodeCache
@@ -527,7 +527,7 @@ dynamic:  动态加速
 
     @property
     def Compression(self):
-        """智能压缩配置
+        r"""智能压缩配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
         return self._Compression
@@ -538,7 +538,7 @@ dynamic:  动态加速
 
     @property
     def BandwidthAlert(self):
-        """带宽封顶配置
+        r"""带宽封顶配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
         return self._BandwidthAlert
@@ -549,7 +549,7 @@ dynamic:  动态加速
 
     @property
     def RangeOriginPull(self):
-        """Range 回源配置
+        r"""Range 回源配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
         return self._RangeOriginPull
@@ -560,7 +560,7 @@ dynamic:  动态加速
 
     @property
     def FollowRedirect(self):
-        """301/302 回源跟随配置。
+        r"""301/302 回源跟随配置。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
         return self._FollowRedirect
@@ -571,7 +571,7 @@ dynamic:  动态加速
 
     @property
     def ErrorPage(self):
-        """错误码重定向配置（功能灰度中，尚未全量）
+        r"""错误码重定向配置（功能灰度中，尚未全量）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
         return self._ErrorPage
@@ -582,7 +582,7 @@ dynamic:  动态加速
 
     @property
     def RequestHeader(self):
-        """请求头部配置
+        r"""请求头部配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
         return self._RequestHeader
@@ -593,7 +593,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeader(self):
-        """响应头部配置
+        r"""响应头部配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
         return self._ResponseHeader
@@ -604,7 +604,7 @@ dynamic:  动态加速
 
     @property
     def DownstreamCapping(self):
-        """下载速度配置
+        r"""下载速度配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
         return self._DownstreamCapping
@@ -615,7 +615,7 @@ dynamic:  动态加速
 
     @property
     def CacheKey(self):
-        """节点缓存键配置
+        r"""节点缓存键配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
         return self._CacheKey
@@ -626,7 +626,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeaderCache(self):
-        """头部缓存配置
+        r"""头部缓存配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
         return self._ResponseHeaderCache
@@ -637,7 +637,7 @@ dynamic:  动态加速
 
     @property
     def VideoSeek(self):
-        """视频拖拽配置
+        r"""视频拖拽配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
         return self._VideoSeek
@@ -648,7 +648,7 @@ dynamic:  动态加速
 
     @property
     def Cache(self):
-        """缓存过期时间配置
+        r"""缓存过期时间配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
         return self._Cache
@@ -659,7 +659,7 @@ dynamic:  动态加速
 
     @property
     def OriginPullOptimization(self):
-        """跨国链路优化配置
+        r"""跨国链路优化配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
         return self._OriginPullOptimization
@@ -670,7 +670,7 @@ dynamic:  动态加速
 
     @property
     def Https(self):
-        """Https 加速配置
+        r"""Https 加速配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
         return self._Https
@@ -681,7 +681,7 @@ dynamic:  动态加速
 
     @property
     def Authentication(self):
-        """时间戳防盗链配置
+        r"""时间戳防盗链配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
         return self._Authentication
@@ -692,7 +692,7 @@ dynamic:  动态加速
 
     @property
     def Seo(self):
-        """SEO 优化配置
+        r"""SEO 优化配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
         return self._Seo
@@ -703,7 +703,7 @@ dynamic:  动态加速
 
     @property
     def ForceRedirect(self):
-        """访问协议强制跳转配置
+        r"""访问协议强制跳转配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
         return self._ForceRedirect
@@ -714,7 +714,7 @@ dynamic:  动态加速
 
     @property
     def Referer(self):
-        """Referer 防盗链配置
+        r"""Referer 防盗链配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
         return self._Referer
@@ -725,7 +725,7 @@ dynamic:  动态加速
 
     @property
     def MaxAge(self):
-        """浏览器缓存配置（功能灰度中，尚未全量）
+        r"""浏览器缓存配置（功能灰度中，尚未全量）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
         return self._MaxAge
@@ -736,7 +736,7 @@ dynamic:  动态加速
 
     @property
     def Ipv6(self):
-        """Ipv6 配置（功能灰度中，尚未全量）
+        r"""Ipv6 配置（功能灰度中，尚未全量）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
         """
         return self._Ipv6
@@ -747,7 +747,7 @@ dynamic:  动态加速
 
     @property
     def SpecificConfig(self):
-        """地域属性特殊配置
+        r"""地域属性特殊配置
 适用于域名境内加速、境外加速配置不一致场景
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         """
@@ -759,7 +759,7 @@ dynamic:  动态加速
 
     @property
     def Area(self):
-        """域名加速区域
+        r"""域名加速区域
 mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
@@ -774,7 +774,7 @@ global：全球加速
 
     @property
     def OriginPullTimeout(self):
-        """回源超时配置
+        r"""回源超时配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
         return self._OriginPullTimeout
@@ -785,7 +785,7 @@ global：全球加速
 
     @property
     def Tag(self):
-        """标签配置
+        r"""标签配置
         :rtype: list of Tag
         """
         return self._Tag
@@ -796,7 +796,7 @@ global：全球加速
 
     @property
     def Ipv6Access(self):
-        """Ipv6 访问配置
+        r"""Ipv6 访问配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
         return self._Ipv6Access
@@ -807,7 +807,7 @@ global：全球加速
 
     @property
     def OfflineCache(self):
-        """离线缓存
+        r"""离线缓存
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
         return self._OfflineCache
@@ -818,7 +818,7 @@ global：全球加速
 
     @property
     def Quic(self):
-        """Quic访问（收费服务，详见计费说明和产品文档）
+        r"""Quic访问（收费服务，详见计费说明和产品文档）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         return self._Quic
@@ -829,7 +829,7 @@ global：全球加速
 
     @property
     def AwsPrivateAccess(self):
-        """回源S3私有鉴权
+        r"""回源S3私有鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         return self._AwsPrivateAccess
@@ -840,7 +840,7 @@ global：全球加速
 
     @property
     def OssPrivateAccess(self):
-        """回源OSS私有鉴权
+        r"""回源OSS私有鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         return self._OssPrivateAccess
@@ -851,7 +851,7 @@ global：全球加速
 
     @property
     def HwPrivateAccess(self):
-        """华为云对象存储回源鉴权
+        r"""华为云对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
         return self._HwPrivateAccess
@@ -862,7 +862,7 @@ global：全球加速
 
     @property
     def QnPrivateAccess(self):
-        """七牛云对象存储回源鉴权
+        r"""七牛云对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         return self._QnPrivateAccess
@@ -873,7 +873,7 @@ global：全球加速
 
     @property
     def OthersPrivateAccess(self):
-        """其他厂商对象存储回源鉴权
+        r"""其他厂商对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
         return self._OthersPrivateAccess
@@ -884,7 +884,7 @@ global：全球加速
 
     @property
     def HttpsBilling(self):
-        """HTTPS服务，默认开启（收费服务，详见计费说明和产品文档）
+        r"""HTTPS服务，默认开启（收费服务，详见计费说明和产品文档）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         return self._HttpsBilling
@@ -1021,7 +1021,7 @@ global：全球加速
 
 
 class AddCdnDomainResponse(AbstractModel):
-    """AddCdnDomain返回参数结构体
+    r"""AddCdnDomain返回参数结构体
 
     """
 
@@ -1034,7 +1034,7 @@ class AddCdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1049,7 +1049,7 @@ class AddCdnDomainResponse(AbstractModel):
 
 
 class AdvanceCacheRule(AbstractModel):
-    """缓存配置高级版本规则
+    r"""缓存配置高级版本规则
 
     """
 
@@ -1082,7 +1082,7 @@ default 时填充 "no max-age"
 
     @property
     def CacheType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -1099,7 +1099,7 @@ default：源站未返回 max-age 情况下的缓存规则
 
     @property
     def CacheContents(self):
-        """对应类型下的匹配内容：
+        r"""对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -1116,7 +1116,7 @@ default 时填充 "no max-age"
 
     @property
     def CacheTime(self):
-        """缓存过期时间
+        r"""缓存过期时间
 单位为秒，最大可设置为 365 天
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -1143,7 +1143,7 @@ default 时填充 "no max-age"
 
 
 class AdvanceConfig(AbstractModel):
-    """高级配置集合
+    r"""高级配置集合
 
     """
 
@@ -1163,7 +1163,7 @@ off：不支持
 
     @property
     def Name(self):
-        """高级配置名称。
+        r"""高级配置名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1175,7 +1175,7 @@ off：不支持
 
     @property
     def Value(self):
-        """是否支持高级配置，
+        r"""是否支持高级配置，
 on：支持
 off：不支持
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1202,7 +1202,7 @@ off：不支持
 
 
 class AdvanceHttps(AbstractModel):
-    """回源的自定义Https配置
+    r"""回源的自定义Https配置
 
     """
 
@@ -1239,7 +1239,7 @@ twoWay - 双向校验
 
     @property
     def CustomTlsStatus(self):
-        """自定义Tls数据开关
+        r"""自定义Tls数据开关
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1251,7 +1251,7 @@ twoWay - 双向校验
 
     @property
     def TlsVersion(self):
-        """Tls版本列表，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+        r"""Tls版本列表，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1263,7 +1263,7 @@ twoWay - 双向校验
 
     @property
     def Cipher(self):
-        """自定义加密套件
+        r"""自定义加密套件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1275,7 +1275,7 @@ twoWay - 双向校验
 
     @property
     def VerifyOriginType(self):
-        """回源双向校验开启状态
+        r"""回源双向校验开启状态
 off - 关闭校验
 oneWay - 校验源站
 twoWay - 双向校验
@@ -1290,7 +1290,7 @@ twoWay - 双向校验
 
     @property
     def CertInfo(self):
-        """回源层证书配置信息
+        r"""回源层证书配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
         """
@@ -1302,7 +1302,7 @@ twoWay - 双向校验
 
     @property
     def OriginCertInfo(self):
-        """源站证书配置信息
+        r"""源站证书配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
         """
@@ -1335,7 +1335,7 @@ twoWay - 双向校验
 
 
 class AdvancedAuthentication(AbstractModel):
-    """时间戳防盗链高级版配置，白名单功能
+    r"""时间戳防盗链高级版配置，白名单功能
 
     """
 
@@ -1375,7 +1375,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """防盗链配置开关，取值有：
+        r"""防盗链配置开关，取值有：
 on：开启
 off：关闭
 开启时必须且只配置一种模式，其余模式需要设置为 null
@@ -1389,7 +1389,7 @@ off：关闭
 
     @property
     def TypeA(self):
-        """时间戳防盗链高级版模式A配置。
+        r"""时间戳防盗链高级版模式A配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeA`
         """
@@ -1401,7 +1401,7 @@ off：关闭
 
     @property
     def TypeB(self):
-        """时间戳防盗链高级版模式B配置。
+        r"""时间戳防盗链高级版模式B配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeB`
         """
@@ -1413,7 +1413,7 @@ off：关闭
 
     @property
     def TypeC(self):
-        """时间戳防盗链高级版模式C配置。
+        r"""时间戳防盗链高级版模式C配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeC`
         """
@@ -1425,7 +1425,7 @@ off：关闭
 
     @property
     def TypeD(self):
-        """时间戳防盗链高级版模式D配置。
+        r"""时间戳防盗链高级版模式D配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeD`
         """
@@ -1437,7 +1437,7 @@ off：关闭
 
     @property
     def TypeE(self):
-        """时间戳防盗链高级版模式E配置。
+        r"""时间戳防盗链高级版模式E配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeE`
         """
@@ -1449,7 +1449,7 @@ off：关闭
 
     @property
     def TypeF(self):
-        """时间戳防盗链高级版模式F配置。
+        r"""时间戳防盗链高级版模式F配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeF`
         """
@@ -1491,7 +1491,7 @@ off：关闭
 
 
 class AdvancedAuthenticationTypeA(AbstractModel):
-    """时间戳防盗链高级版模式A配置。
+    r"""时间戳防盗链高级版模式A配置。
 
     """
 
@@ -1534,7 +1534,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def SecretKey(self):
-        """用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的密钥，只允许字母和数字，长度6-32字节。
         :rtype: str
         """
         return self._SecretKey
@@ -1545,7 +1545,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def SignParam(self):
-        """uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._SignParam
@@ -1556,7 +1556,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def TimeParam(self):
-        """uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._TimeParam
@@ -1567,7 +1567,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间，单位秒。
+        r"""过期时间，单位秒。
         :rtype: int
         """
         return self._ExpireTime
@@ -1578,7 +1578,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def ExpireTimeRequired(self):
-        """是否必须提供过期时间参数。
+        r"""是否必须提供过期时间参数。
         :rtype: bool
         """
         return self._ExpireTimeRequired
@@ -1589,7 +1589,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def Format(self):
-        """URL 组成格式，如：${private_key}${schema}${host}${full_uri}。
+        r"""URL 组成格式，如：${private_key}${schema}${host}${full_uri}。
         :rtype: str
         """
         return self._Format
@@ -1600,7 +1600,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """时间格式，dec，hex分别表示十进制，十六进制。
+        r"""时间格式，dec，hex分别表示十进制，十六进制。
         :rtype: str
         """
         return self._TimeFormat
@@ -1611,7 +1611,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def FailCode(self):
-        """鉴权失败时返回的状态码。
+        r"""鉴权失败时返回的状态码。
         :rtype: int
         """
         return self._FailCode
@@ -1622,7 +1622,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def ExpireCode(self):
-        """链接过期时返回的状态码。
+        r"""链接过期时返回的状态码。
         :rtype: int
         """
         return self._ExpireCode
@@ -1633,7 +1633,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def RulePaths(self):
-        """需要鉴权的url路径列表。
+        r"""需要鉴权的url路径列表。
         :rtype: list of str
         """
         return self._RulePaths
@@ -1644,7 +1644,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def Transformation(self):
-        """保留字段。
+        r"""保留字段。
         :rtype: int
         """
         return self._Transformation
@@ -1677,7 +1677,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
 
 class AdvancedAuthenticationTypeB(AbstractModel):
-    """时间戳防盗链高级版模式B配置。
+    r"""时间戳防盗链高级版模式B配置。
 
     """
 
@@ -1717,7 +1717,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def KeyAlpha(self):
-        """alpha键名。
+        r"""alpha键名。
         :rtype: str
         """
         return self._KeyAlpha
@@ -1728,7 +1728,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def KeyBeta(self):
-        """beta键名。
+        r"""beta键名。
         :rtype: str
         """
         return self._KeyBeta
@@ -1739,7 +1739,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def KeyGamma(self):
-        """gamma键名。
+        r"""gamma键名。
         :rtype: str
         """
         return self._KeyGamma
@@ -1750,7 +1750,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def SignParam(self):
-        """uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._SignParam
@@ -1761,7 +1761,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def TimeParam(self):
-        """uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._TimeParam
@@ -1772,7 +1772,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间，单位秒。
+        r"""过期时间，单位秒。
         :rtype: int
         """
         return self._ExpireTime
@@ -1783,7 +1783,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """时间格式，dec，hex分别表示十进制，十六进制。
+        r"""时间格式，dec，hex分别表示十进制，十六进制。
         :rtype: str
         """
         return self._TimeFormat
@@ -1794,7 +1794,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def FailCode(self):
-        """鉴权失败时返回的状态码。
+        r"""鉴权失败时返回的状态码。
         :rtype: int
         """
         return self._FailCode
@@ -1805,7 +1805,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def ExpireCode(self):
-        """链接过期时返回的状态码。
+        r"""链接过期时返回的状态码。
         :rtype: int
         """
         return self._ExpireCode
@@ -1816,7 +1816,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     @property
     def RulePaths(self):
-        """需要鉴权的url路径列表。
+        r"""需要鉴权的url路径列表。
         :rtype: list of str
         """
         return self._RulePaths
@@ -1848,7 +1848,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
 
 class AdvancedAuthenticationTypeC(AbstractModel):
-    """时间戳防盗链高级版模式C配置。
+    r"""时间戳防盗链高级版模式C配置。
 
     """
 
@@ -1864,7 +1864,7 @@ class AdvancedAuthenticationTypeC(AbstractModel):
 
     @property
     def AccessKey(self):
-        """访问密钥。
+        r"""访问密钥。
         :rtype: str
         """
         return self._AccessKey
@@ -1875,7 +1875,7 @@ class AdvancedAuthenticationTypeC(AbstractModel):
 
     @property
     def SecretKey(self):
-        """鉴权密钥。
+        r"""鉴权密钥。
         :rtype: str
         """
         return self._SecretKey
@@ -1899,7 +1899,7 @@ class AdvancedAuthenticationTypeC(AbstractModel):
 
 
 class AdvancedAuthenticationTypeD(AbstractModel):
-    """时间戳防盗链高级版模式D配置。
+    r"""时间戳防盗链高级版模式D配置。
 
     """
 
@@ -1927,7 +1927,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def SecretKey(self):
-        """用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的密钥，只允许字母和数字，长度6-32字节。
         :rtype: str
         """
         return self._SecretKey
@@ -1938,7 +1938,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def BackupSecretKey(self):
-        """备份密钥，当使用SecretKey鉴权失败时会使用该密钥重新鉴权。
+        r"""备份密钥，当使用SecretKey鉴权失败时会使用该密钥重新鉴权。
         :rtype: str
         """
         return self._BackupSecretKey
@@ -1949,7 +1949,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def SignParam(self):
-        """uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._SignParam
@@ -1960,7 +1960,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def TimeParam(self):
-        """uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
         :rtype: str
         """
         return self._TimeParam
@@ -1971,7 +1971,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间，单位秒。
+        r"""过期时间，单位秒。
         :rtype: int
         """
         return self._ExpireTime
@@ -1982,7 +1982,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """时间格式，dec，hex分别表示十进制，十六进制。
+        r"""时间格式，dec，hex分别表示十进制，十六进制。
         :rtype: str
         """
         return self._TimeFormat
@@ -2010,7 +2010,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
 
 class AdvancedAuthenticationTypeE(AbstractModel):
-    """时间戳防盗链高级版模式E配置。
+    r"""时间戳防盗链高级版模式E配置。
 
     """
 
@@ -2044,7 +2044,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def SecretKey(self):
-        """用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2056,7 +2056,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def SignParam(self):
-        """uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2068,7 +2068,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def AclSignParam(self):
-        """uri串中Acl签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中Acl签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2080,7 +2080,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def StartTimeParam(self):
-        """uri串中开始时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中开始时间字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2092,7 +2092,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def ExpireTimeParam(self):
-        """uri串中过期时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中过期时间字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2104,7 +2104,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """时间格式，dec
+        r"""时间格式，dec
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2133,7 +2133,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
 
 
 class AdvancedAuthenticationTypeF(AbstractModel):
-    """时间戳防盗链高级鉴权模式TypeF配置
+    r"""时间戳防盗链高级鉴权模式TypeF配置
 
     """
 
@@ -2163,7 +2163,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
     @property
     def SignParam(self):
-        """uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2175,7 +2175,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
     @property
     def TimeParam(self):
-        """uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2187,7 +2187,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
     @property
     def TransactionParam(self):
-        """uri串中Transaction字段名，字母，数字或下划线构成，同时必须以字母开头。
+        r"""uri串中Transaction字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2199,7 +2199,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
     @property
     def SecretKey(self):
-        """用于计算签名的主密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的主密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2211,7 +2211,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
     @property
     def BackupSecretKey(self):
-        """用于计算签名的备选密钥，主密钥校验失败后再次尝试备选密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的备选密钥，主密钥校验失败后再次尝试备选密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2239,7 +2239,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
 
 class AdvancedCache(AbstractModel):
-    """缓存过期配置高级版，注意：此字段已经弃用，请使用RuleCache
+    r"""缓存过期配置高级版，注意：此字段已经弃用，请使用RuleCache
 
     """
 
@@ -2268,7 +2268,7 @@ off：关闭，遵循用户自定义的节点缓存规则
 
     @property
     def CacheRules(self):
-        """缓存过期规则
+        r"""缓存过期规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AdvanceCacheRule
         """
@@ -2280,7 +2280,7 @@ off：关闭，遵循用户自定义的节点缓存规则
 
     @property
     def IgnoreCacheControl(self):
-        """强制缓存配置
+        r"""强制缓存配置
 on：开启
 off：关闭
 开启时，源站返回 no-cache、no-store 头部时，仍按照缓存过期规则进行节点缓存
@@ -2296,7 +2296,7 @@ off：关闭
 
     @property
     def IgnoreSetCookie(self):
-        """当源站返回Set-Cookie头部时，节点是否缓存该头部及body
+        r"""当源站返回Set-Cookie头部时，节点是否缓存该头部及body
 on：开启，不缓存该头部及body
 off：关闭，遵循用户自定义的节点缓存规则
 默认为关闭状态
@@ -2330,7 +2330,7 @@ off：关闭，遵循用户自定义的节点缓存规则
 
 
 class Authentication(AbstractModel):
-    """时间戳防盗链配置
+    r"""时间戳防盗链配置
 
     """
 
@@ -2369,7 +2369,7 @@ sha256：按SHA-256算法取hash值
 
     @property
     def Switch(self):
-        """防盗链配置开关，取值有：
+        r"""防盗链配置开关，取值有：
 on：开启
 off：关闭
 开启时必须且只配置一种模式，其余模式需要设置为 null
@@ -2383,7 +2383,7 @@ off：关闭
 
     @property
     def AuthAlgorithm(self):
-        """鉴权算法，取值有：
+        r"""鉴权算法，取值有：
 md5：按MD5算法取hash值
 sha256：按SHA-256算法取hash值
 默认为 md5
@@ -2398,7 +2398,7 @@ sha256：按SHA-256算法取hash值
 
     @property
     def TypeA(self):
-        """时间戳防盗链模式 A 配置
+        r"""时间戳防盗链模式 A 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`
         """
@@ -2410,7 +2410,7 @@ sha256：按SHA-256算法取hash值
 
     @property
     def TypeB(self):
-        """时间戳防盗链模式 B 配置（模式 B 后台升级中，暂时不支持配置）
+        r"""时间戳防盗链模式 B 配置（模式 B 后台升级中，暂时不支持配置）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeB`
         """
@@ -2422,7 +2422,7 @@ sha256：按SHA-256算法取hash值
 
     @property
     def TypeC(self):
-        """时间戳防盗链模式 C 配置
+        r"""时间戳防盗链模式 C 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeC`
         """
@@ -2434,7 +2434,7 @@ sha256：按SHA-256算法取hash值
 
     @property
     def TypeD(self):
-        """时间戳防盗链模式 D 配置
+        r"""时间戳防盗链模式 D 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`
         """
@@ -2471,7 +2471,7 @@ sha256：按SHA-256算法取hash值
 
 
 class AuthenticationTypeA(AbstractModel):
-    """时间戳防盗链模式 A 配置
+    r"""时间戳防盗链模式 A 配置
     时间戳防盗链模式 A 的访问 URL 格式为：http://DomainName/Filename?sign=timestamp-rand-uid-md5hash
     其中 timestamp 为十进制 UNIX 时间戳；
     rand 为随机字符串，0 ~ 100 位大小写字母与数字组成；
@@ -2512,7 +2512,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def SecretKey(self):
-        """计算签名的密钥
+        r"""计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2525,7 +2525,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def SignParam(self):
-        """签名参数名设置
+        r"""签名参数名设置
 仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
         :rtype: str
         """
@@ -2537,7 +2537,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def ExpireTime(self):
-        """签名过期时间设置
+        r"""签名过期时间设置
 单位为秒，最大可设置为 630720000
         :rtype: int
         """
@@ -2549,7 +2549,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def FileExtensions(self):
-        """鉴权/不做鉴权的文件扩展名列表设置
+        r"""鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
         :rtype: list of str
         """
@@ -2561,7 +2561,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def FilterType(self):
-        """whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+        r"""whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :rtype: str
         """
@@ -2573,7 +2573,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def BackupSecretKey(self):
-        """计算签名的备用密钥
+        r"""计算签名的备用密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2603,7 +2603,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
 
 class AuthenticationTypeB(AbstractModel):
-    """时间戳防盗链模式 B 配置（B 模式正在进行平台升级，暂不支持配置）
+    r"""时间戳防盗链模式 B 配置（B 模式正在进行平台升级，暂不支持配置）
 
     """
 
@@ -2635,7 +2635,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def SecretKey(self):
-        """计算签名的密钥
+        r"""计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2648,7 +2648,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def ExpireTime(self):
-        """签名过期时间设置
+        r"""签名过期时间设置
 单位为秒，最大可设置为 630720000
         :rtype: int
         """
@@ -2660,7 +2660,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def FileExtensions(self):
-        """鉴权/不做鉴权的文件扩展名列表设置
+        r"""鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
         :rtype: list of str
         """
@@ -2672,7 +2672,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def FilterType(self):
-        """whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+        r"""whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :rtype: str
         """
@@ -2684,7 +2684,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def BackupSecretKey(self):
-        """计算签名的备用密钥
+        r"""计算签名的备用密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2713,7 +2713,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
 
 class AuthenticationTypeC(AbstractModel):
-    """时间戳防盗链模式 C 配置
+    r"""时间戳防盗链模式 C 配置
     时间戳防盗链模式 C 的访问 URL 格式为：http://DomainName/md5hash/timestamp/FileName
     其中 timestamp 为十六进制 UNIX 时间戳；
     md5hash：MD5（自定义密钥 + 文件路径 + timestamp）
@@ -2754,7 +2754,7 @@ hex：十六进制
 
     @property
     def SecretKey(self):
-        """计算签名的密钥
+        r"""计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2767,7 +2767,7 @@ hex：十六进制
 
     @property
     def ExpireTime(self):
-        """签名过期时间设置
+        r"""签名过期时间设置
 单位为秒，最大可设置为 630720000
         :rtype: int
         """
@@ -2779,7 +2779,7 @@ hex：十六进制
 
     @property
     def FileExtensions(self):
-        """鉴权/不做鉴权的文件扩展名列表设置
+        r"""鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
         :rtype: list of str
         """
@@ -2791,7 +2791,7 @@ hex：十六进制
 
     @property
     def FilterType(self):
-        """whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+        r"""whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :rtype: str
         """
@@ -2803,7 +2803,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def TimeFormat(self):
-        """时间戳进制设置
+        r"""时间戳进制设置
 dec：十进制
 hex：十六进制
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2817,7 +2817,7 @@ hex：十六进制
 
     @property
     def BackupSecretKey(self):
-        """计算签名的备用密钥
+        r"""计算签名的备用密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2847,7 +2847,7 @@ hex：十六进制
 
 
 class AuthenticationTypeD(AbstractModel):
-    """时间戳防盗链模式 D 配置
+    r"""时间戳防盗链模式 D 配置
     时间戳防盗链模式 D 的访问 URL 格式为：http://DomainName/FileName?sign=md5hash&t=timestamp
     其中 timestamp 为十进制或十六进制 UNIX 时间戳；
     md5hash：MD5（自定义密钥 + 文件路径 + timestamp）
@@ -2895,7 +2895,7 @@ hex：十六进制
 
     @property
     def SecretKey(self):
-        """计算签名的密钥
+        r"""计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2908,7 +2908,7 @@ hex：十六进制
 
     @property
     def ExpireTime(self):
-        """签名过期时间设置
+        r"""签名过期时间设置
 单位为秒，最大可设置为 630720000
         :rtype: int
         """
@@ -2920,7 +2920,7 @@ hex：十六进制
 
     @property
     def FileExtensions(self):
-        """鉴权/不做鉴权的文件扩展名列表设置
+        r"""鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
         :rtype: list of str
         """
@@ -2932,7 +2932,7 @@ hex：十六进制
 
     @property
     def FilterType(self):
-        """whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+        r"""whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :rtype: str
         """
@@ -2944,7 +2944,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def SignParam(self):
-        """签名参数名设置
+        r"""签名参数名设置
 仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
         :rtype: str
         """
@@ -2956,7 +2956,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def TimeParam(self):
-        """时间戳参数名设置
+        r"""时间戳参数名设置
 仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
         :rtype: str
         """
@@ -2968,7 +2968,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 
     @property
     def TimeFormat(self):
-        """时间戳进制设置
+        r"""时间戳进制设置
 dec：十进制
 hex：十六进制
         :rtype: str
@@ -2981,7 +2981,7 @@ hex：十六进制
 
     @property
     def BackupSecretKey(self):
-        """计算签名的备用密钥
+        r"""计算签名的备用密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -3013,7 +3013,7 @@ hex：十六进制
 
 
 class AvifAdapter(AbstractModel):
-    """图片优化-AvifAdapter配置
+    r"""图片优化-AvifAdapter配置
 
     """
 
@@ -3042,7 +3042,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """图片优化AvifAdapter配置项开关，取值有：
+        r"""图片优化AvifAdapter配置项开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3056,7 +3056,7 @@ off：关闭
 
     @property
     def FallbackFormats(self):
-        """当原图是 avif 且客户端 Accept 头包含 image/avif 时，直接返回原图。
+        r"""当原图是 avif 且客户端 Accept 头包含 image/avif 时，直接返回原图。
 当原图是 avif 且客户端 Accept 头不包含 image/avif 时但包含 image/webp，将 avif 转 webp 格式返回。如果 Accept 头不包含 image/webp, 则转 jpeg 返回。
 
 可用的枚举值： 
@@ -3090,7 +3090,7 @@ off：关闭
 
 
 class AwsPrivateAccess(AbstractModel):
-    """s3源站回源鉴权。
+    r"""s3源站回源鉴权。
 
     """
 
@@ -3121,7 +3121,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """s3源站回源鉴权配置项开关，取值有：
+        r"""s3源站回源鉴权配置项开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -3134,7 +3134,7 @@ off：关闭
 
     @property
     def AccessKey(self):
-        """访问ID。
+        r"""访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3146,7 +3146,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥，字段为脱敏返回。
+        r"""密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3158,7 +3158,7 @@ off：关闭
 
     @property
     def Region(self):
-        """地域
+        r"""地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3170,7 +3170,7 @@ off：关闭
 
     @property
     def Bucket(self):
-        """Bucketname
+        r"""Bucketname
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3198,7 +3198,7 @@ off：关闭
 
 
 class BandwidthAlert(AbstractModel):
-    """带宽封顶配置，默认为关闭状态
+    r"""带宽封顶配置，默认为关闭状态
 
     """
 
@@ -3250,7 +3250,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """用量封顶配置开关，取值有：
+        r"""用量封顶配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -3263,7 +3263,7 @@ off：关闭
 
     @property
     def BpsThreshold(self):
-        """用量封顶阈值，带宽单位为bps，流量单位byte
+        r"""用量封顶阈值，带宽单位为bps，流量单位byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3275,7 +3275,7 @@ off：关闭
 
     @property
     def CounterMeasure(self):
-        """达到阈值后的操作
+        r"""达到阈值后的操作
 RETURN_404：全部请求返回 404
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -3288,7 +3288,7 @@ RETURN_404：全部请求返回 404
 
     @property
     def LastTriggerTime(self):
-        """境内区域上次触发用量封顶阈值的时间
+        r"""境内区域上次触发用量封顶阈值的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3300,7 +3300,7 @@ RETURN_404：全部请求返回 404
 
     @property
     def AlertSwitch(self):
-        """用量封顶提醒配置开关，取值有：
+        r"""用量封顶提醒配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3314,7 +3314,7 @@ off：关闭
 
     @property
     def AlertPercentage(self):
-        """用量封顶阈值提醒百分比
+        r"""用量封顶阈值提醒百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3326,7 +3326,7 @@ off：关闭
 
     @property
     def LastTriggerTimeOverseas(self):
-        """海外区域上次触发用量封顶阈值的时间
+        r"""海外区域上次触发用量封顶阈值的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3338,7 +3338,7 @@ off：关闭
 
     @property
     def Metric(self):
-        """用量阈值触发的维度
+        r"""用量阈值触发的维度
 带宽：bandwidth
 流量：flux
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3352,7 +3352,7 @@ off：关闭
 
     @property
     def StatisticItems(self):
-        """累计用量配置
+        r"""累计用量配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatisticItem
         """
@@ -3389,7 +3389,7 @@ off：关闭
 
 
 class BriefDomain(AbstractModel):
-    """域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
+    r"""域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
 
     """
 
@@ -3467,7 +3467,7 @@ global：全球锁定
 
     @property
     def ResourceId(self):
-        """域名 ID
+        r"""域名 ID
         :rtype: str
         """
         return self._ResourceId
@@ -3478,7 +3478,7 @@ global：全球锁定
 
     @property
     def AppId(self):
-        """腾讯云账号 ID
+        r"""腾讯云账号 ID
         :rtype: int
         """
         return self._AppId
@@ -3489,7 +3489,7 @@ global：全球锁定
 
     @property
     def Domain(self):
-        """加速域名
+        r"""加速域名
         :rtype: str
         """
         return self._Domain
@@ -3500,7 +3500,7 @@ global：全球锁定
 
     @property
     def Cname(self):
-        """域名对应的 CNAME 地址
+        r"""域名对应的 CNAME 地址
         :rtype: str
         """
         return self._Cname
@@ -3511,7 +3511,7 @@ global：全球锁定
 
     @property
     def Status(self):
-        """加速服务状态
+        r"""加速服务状态
 rejected：域名审核未通过，域名备案过期/被注销导致
 processing：部署中
 closing：关闭中
@@ -3527,7 +3527,7 @@ offline：已关闭
 
     @property
     def ProjectId(self):
-        """项目 ID，可前往腾讯云项目管理页面查看
+        r"""项目 ID，可前往腾讯云项目管理页面查看
         :rtype: int
         """
         return self._ProjectId
@@ -3538,7 +3538,7 @@ offline：已关闭
 
     @property
     def ServiceType(self):
-        """域名业务类型
+        r"""域名业务类型
 web：静态加速
 download：下载加速
 media：流媒体点播加速
@@ -3552,7 +3552,7 @@ media：流媒体点播加速
 
     @property
     def CreateTime(self):
-        """域名创建时间
+        r"""域名创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3563,7 +3563,7 @@ media：流媒体点播加速
 
     @property
     def UpdateTime(self):
-        """域名更新时间
+        r"""域名更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -3574,7 +3574,7 @@ media：流媒体点播加速
 
     @property
     def Origin(self):
-        """源站配置详情
+        r"""源站配置详情
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
         return self._Origin
@@ -3585,7 +3585,7 @@ media：流媒体点播加速
 
     @property
     def Disable(self):
-        """域名封禁状态
+        r"""域名封禁状态
 normal：正常状态
 overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
 malicious：域名出现恶意行为，强制关闭加速服务
@@ -3604,7 +3604,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Area(self):
-        """加速区域
+        r"""加速区域
 mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
@@ -3618,7 +3618,7 @@ global：全球加速
 
     @property
     def Readonly(self):
-        """域名锁定状态
+        r"""域名锁定状态
 normal：未锁定
 mainland：中国境内锁定
 overseas：中国境外锁定
@@ -3633,7 +3633,7 @@ global：全球锁定
 
     @property
     def Product(self):
-        """域名所属产品，cdn/ecdn
+        r"""域名所属产品，cdn/ecdn
         :rtype: str
         """
         return self._Product
@@ -3644,7 +3644,7 @@ global：全球锁定
 
     @property
     def ParentHost(self):
-        """主域名
+        r"""主域名
         :rtype: str
         """
         return self._ParentHost
@@ -3683,7 +3683,7 @@ global：全球锁定
 
 
 class Cache(AbstractModel):
-    """节点缓存过期时间配置，分为以下两种：
+    r"""节点缓存过期时间配置，分为以下两种：
     + 基础版缓存过期规则配置
     + 高级版缓存过期规则配置
 
@@ -3707,7 +3707,7 @@ class Cache(AbstractModel):
 
     @property
     def SimpleCache(self):
-        """基础缓存过期时间配置
+        r"""基础缓存过期时间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
         """
@@ -3719,7 +3719,7 @@ class Cache(AbstractModel):
 
     @property
     def AdvancedCache(self):
-        """高级缓存过期时间配置（已弃用）
+        r"""高级缓存过期时间配置（已弃用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
         """
@@ -3731,7 +3731,7 @@ class Cache(AbstractModel):
 
     @property
     def RuleCache(self):
-        """高级路径缓存配置
+        r"""高级路径缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleCache
         """
@@ -3766,7 +3766,7 @@ class Cache(AbstractModel):
 
 
 class CacheConfig(AbstractModel):
-    """启发式自定义时间缓存配置
+    r"""启发式自定义时间缓存配置
 
     """
 
@@ -3786,7 +3786,7 @@ off：关闭
 
     @property
     def HeuristicCacheTimeSwitch(self):
-        """启发式自定义时间缓存配置开关，取值有：
+        r"""启发式自定义时间缓存配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3800,7 +3800,7 @@ off：关闭
 
     @property
     def HeuristicCacheTime(self):
-        """单位 秒.
+        r"""单位 秒.
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3825,7 +3825,7 @@ off：关闭
 
 
 class CacheConfigCache(AbstractModel):
-    """路径缓存缓存配置
+    r"""路径缓存缓存配置
 
     """
 
@@ -3874,7 +3874,7 @@ none： 缓存过期回源重新获取文件mtime和长度后，不会校验源�
 
     @property
     def Switch(self):
-        """路径缓存配置开关，取值有：
+        r"""路径缓存配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3888,7 +3888,7 @@ off：关闭
 
     @property
     def CacheTime(self):
-        """缓存过期时间设置
+        r"""缓存过期时间设置
 单位为秒，最大可设置为 365 天
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -3901,7 +3901,7 @@ off：关闭
 
     @property
     def CompareMaxAge(self):
-        """高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
+        r"""高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
 on：开启
 off：关闭
 默认为关闭状态
@@ -3916,7 +3916,7 @@ off：关闭
 
     @property
     def IgnoreCacheControl(self):
-        """强制缓存
+        r"""强制缓存
 on：开启
 off：关闭
 默认为关闭状态，开启后，源站返回的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
@@ -3931,7 +3931,7 @@ off：关闭
 
     @property
     def IgnoreSetCookie(self):
-        """当源站返回Set-Cookie头部时，节点是否缓存该头部及body
+        r"""当源站返回Set-Cookie头部时，节点是否缓存该头部及body
 on：开启，不缓存该头部及body
 off：关闭，遵循用户自定义的节点缓存规则
 默认为关闭状态
@@ -3946,7 +3946,7 @@ off：关闭，遵循用户自定义的节点缓存规则
 
     @property
     def OriginMtimeCheckType(self):
-        """当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
+        r"""当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
 equal：源站响应mtime必须和缓存mtime一致，若mtime值不一致，清除缓存。
 since：若源站响应mtime大于缓存mtime，清除缓存。
 none： 缓存过期回源重新获取文件mtime和长度后，不会校验源站响应mtime，若源站响应携带Content-Length头部，只有文件大小改变时才会更新缓存；若源站响应不携带Content-Length头部，会更新缓存。
@@ -3978,7 +3978,7 @@ none： 缓存过期回源重新获取文件mtime和长度后，不会校验源�
 
 
 class CacheConfigFollowOrigin(AbstractModel):
-    """路径缓存遵循源站配置
+    r"""路径缓存遵循源站配置
 
     """
 
@@ -4004,7 +4004,7 @@ none： 缓存过期回源重新获取文件mtime和长度后，不会校验源�
 
     @property
     def Switch(self):
-        """路径缓存遵循源站配置开关，取值有：
+        r"""路径缓存遵循源站配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -4017,7 +4017,7 @@ off：关闭
 
     @property
     def HeuristicCache(self):
-        """启发式缓存配置
+        r"""启发式缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HeuristicCache`
         """
@@ -4029,7 +4029,7 @@ off：关闭
 
     @property
     def OriginMtimeCheckType(self):
-        """当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
+        r"""当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
 equal：源站响应mtime必须和缓存mtime一致，若mtime值不一致，清除缓存。
 since：若源站响应mtime大于缓存mtime，清除缓存。
 none： 缓存过期回源重新获取文件mtime和长度后，不会校验源站响应mtime，若源站响应携带Content-Length头部，只有文件大小改变时才会更新缓存；若源站响应不携带Content-Length头部，会更新缓存。
@@ -4060,7 +4060,7 @@ none： 缓存过期回源重新获取文件mtime和长度后，不会校验源�
 
 
 class CacheConfigNoCache(AbstractModel):
-    """路径缓存不缓存配置
+    r"""路径缓存不缓存配置
 
     """
 
@@ -4083,7 +4083,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """路径缓存不缓存配置配置开关，取值有：
+        r"""路径缓存不缓存配置配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4097,7 +4097,7 @@ off：关闭
 
     @property
     def Revalidate(self):
-        """总是回源站校验
+        r"""总是回源站校验
 on：开启
 off：关闭
 默认为关闭状态
@@ -4125,7 +4125,7 @@ off：关闭
 
 
 class CacheKey(AbstractModel):
-    """缓存键配置（忽略参数配置）
+    r"""缓存键配置（忽略参数配置）
 
     """
 
@@ -4170,7 +4170,7 @@ off：关闭
 
     @property
     def FullUrlCache(self):
-        """是否开启全路径缓存
+        r"""是否开启全路径缓存
 on：开启全路径缓存（即关闭参数忽略）
 off：关闭全路径缓存（即开启参数忽略）
         :rtype: str
@@ -4183,7 +4183,7 @@ off：关闭全路径缓存（即开启参数忽略）
 
     @property
     def IgnoreCase(self):
-        """是否忽略大小写缓存
+        r"""是否忽略大小写缓存
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4197,7 +4197,7 @@ off：关闭
 
     @property
     def QueryString(self):
-        """CacheKey中包含请求参数
+        r"""CacheKey中包含请求参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`
         """
@@ -4209,7 +4209,7 @@ off：关闭
 
     @property
     def Cookie(self):
-        """CacheKey中包含Cookie
+        r"""CacheKey中包含Cookie
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CookieKey`
         """
@@ -4221,7 +4221,7 @@ off：关闭
 
     @property
     def Header(self):
-        """CacheKey中包含请求头部
+        r"""CacheKey中包含请求头部
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`
         """
@@ -4233,7 +4233,7 @@ off：关闭
 
     @property
     def CacheTag(self):
-        """CacheKey中包含自定义字符串
+        r"""CacheKey中包含自定义字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
         """
@@ -4245,7 +4245,7 @@ off：关闭
 
     @property
     def Scheme(self):
-        """CacheKey中包含请求协议
+        r"""CacheKey中包含请求协议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
         """
@@ -4257,7 +4257,7 @@ off：关闭
 
     @property
     def KeyRules(self):
-        """分路径缓存键配置
+        r"""分路径缓存键配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyRule
         """
@@ -4303,7 +4303,7 @@ off：关闭
 
 
 class CacheOptResult(AbstractModel):
-    """违规资源封禁/解封返回类型
+    r"""违规资源封禁/解封返回类型
 
     """
 
@@ -4321,7 +4321,7 @@ class CacheOptResult(AbstractModel):
 
     @property
     def SuccessUrls(self):
-        """成功的url列表
+        r"""成功的url列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4333,7 +4333,7 @@ class CacheOptResult(AbstractModel):
 
     @property
     def FailUrls(self):
-        """失败的url列表
+        r"""失败的url列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4358,7 +4358,7 @@ class CacheOptResult(AbstractModel):
 
 
 class CacheTagKey(AbstractModel):
-    """组成CacheKey的一部分
+    r"""组成CacheKey的一部分
 
     """
 
@@ -4378,7 +4378,7 @@ off：关闭，不使用CacheTag作为CacheKey的一部分
 
     @property
     def Switch(self):
-        """使用CacheTag作为CacheKey的一部分配置开关，取值有
+        r"""使用CacheTag作为CacheKey的一部分配置开关，取值有
 on：开启，使用CacheTag作为CacheKey的一部分
 off：关闭，不使用CacheTag作为CacheKey的一部分
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4392,7 +4392,7 @@ off：关闭，不使用CacheTag作为CacheKey的一部分
 
     @property
     def Value(self):
-        """自定义CacheTag的值
+        r"""自定义CacheTag的值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4417,7 +4417,7 @@ off：关闭，不使用CacheTag作为CacheKey的一部分
 
 
 class CappingRule(AbstractModel):
-    """下行限速配置规则，最多可配置 100 条
+    r"""下行限速配置规则，最多可配置 100 条
 
     """
 
@@ -4444,7 +4444,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -4459,7 +4459,7 @@ path：指定绝对路径生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容： 
+        r"""RuleType 对应类型下的匹配内容： 
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -4474,7 +4474,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def KBpsThreshold(self):
-        """下行速度值设置，单位为 KB/s
+        r"""下行速度值设置，单位为 KB/s
         :rtype: int
         """
         return self._KBpsThreshold
@@ -4499,7 +4499,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
 
 class CdnData(AbstractModel):
-    """访问明细数据类型
+    r"""访问明细数据类型
 
     """
 
@@ -4528,7 +4528,7 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
 
     @property
     def Metric(self):
-        """查询指定的指标名称：
+        r"""查询指定的指标名称：
 flux：流量，单位为 byte
 bandwidth：带宽，单位为 bps
 request：请求数，单位为 次
@@ -4549,7 +4549,7 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
 
     @property
     def DetailData(self):
-        """明细数据组合
+        r"""明细数据组合
         :rtype: list of TimestampData
         """
         return self._DetailData
@@ -4560,7 +4560,7 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
 
     @property
     def SummarizedData(self):
-        """汇总数据组合
+        r"""汇总数据组合
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SummarizedData`
         """
         return self._SummarizedData
@@ -4592,7 +4592,7 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
 
 
 class CdnIp(AbstractModel):
-    """IP 属性信息
+    r"""IP 属性信息
 
     """
 
@@ -4627,7 +4627,7 @@ unknown：服务地域无法获取
 
     @property
     def Ip(self):
-        """指定查询的 IP
+        r"""指定查询的 IP
         :rtype: str
         """
         return self._Ip
@@ -4638,7 +4638,7 @@ unknown：服务地域无法获取
 
     @property
     def Platform(self):
-        """IP 归属：
+        r"""IP 归属：
 yes：节点归属于腾讯云 CDN
 no：节点不属于腾讯云 CDN
         :rtype: str
@@ -4651,7 +4651,7 @@ no：节点不属于腾讯云 CDN
 
     @property
     def Location(self):
-        """节点所处的省份/国家
+        r"""节点所处的省份/国家
 unknown 表示节点位置未知
         :rtype: str
         """
@@ -4663,7 +4663,7 @@ unknown 表示节点位置未知
 
     @property
     def History(self):
-        """节点上下线历史记录
+        r"""节点上下线历史记录
         :rtype: list of CdnIpHistory
         """
         return self._History
@@ -4674,7 +4674,7 @@ unknown 表示节点位置未知
 
     @property
     def Area(self):
-        """节点的所在区域
+        r"""节点的所在区域
 mainland：中国境内加速节点
 overseas：中国境外加速节点
 unknown：服务地域无法获取
@@ -4688,7 +4688,7 @@ unknown：服务地域无法获取
 
     @property
     def City(self):
-        """节点的所在城市
+        r"""节点的所在城市
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4722,7 +4722,7 @@ unknown：服务地域无法获取
 
 
 class CdnIpHistory(AbstractModel):
-    """CDN 节点上下线历史记录
+    r"""CDN 节点上下线历史记录
 
     """
 
@@ -4742,7 +4742,7 @@ offline：节点下线
 
     @property
     def Status(self):
-        """操作类型
+        r"""操作类型
 online：节点上线
 offline：节点下线
         :rtype: str
@@ -4755,7 +4755,7 @@ offline：节点下线
 
     @property
     def Datetime(self):
-        """操作类型对应的操作时间
+        r"""操作类型对应的操作时间
 当该值为 null 时表示无历史状态变更记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4781,7 +4781,7 @@ offline：节点下线
 
 
 class ClientCert(AbstractModel):
-    """https 客户端证书配置
+    r"""https 客户端证书配置
 
     """
 
@@ -4810,7 +4810,7 @@ PEM 格式，需要进行 Base 64 编码
 
     @property
     def Certificate(self):
-        """客户端证书
+        r"""客户端证书
 PEM 格式，需要进行 Base 64 编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4823,7 +4823,7 @@ PEM 格式，需要进行 Base 64 编码
 
     @property
     def CertName(self):
-        """客户端证书名称
+        r"""客户端证书名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4835,7 +4835,7 @@ PEM 格式，需要进行 Base 64 编码
 
     @property
     def ExpireTime(self):
-        """证书过期时间
+        r"""证书过期时间
 作为入参时无需填充
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4848,7 +4848,7 @@ PEM 格式，需要进行 Base 64 编码
 
     @property
     def DeployTime(self):
-        """证书颁发时间
+        r"""证书颁发时间
 作为入参时无需填充
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4876,7 +4876,7 @@ PEM 格式，需要进行 Base 64 编码
 
 
 class ClientInfo(AbstractModel):
-    """客户端信息
+    r"""客户端信息
 
     """
 
@@ -4902,7 +4902,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def ProvName(self):
-        """省份。
+        r"""省份。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4914,7 +4914,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def Country(self):
-        """国家。
+        r"""国家。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4926,7 +4926,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def IspName(self):
-        """运营商。
+        r"""运营商。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4938,7 +4938,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def Ip(self):
-        """客户端IP
+        r"""客户端IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4965,7 +4965,7 @@ class ClientInfo(AbstractModel):
 
 
 class ClsLogIpData(AbstractModel):
-    """通过Cls日志，计算出来的IP每秒访问数量
+    r"""通过Cls日志，计算出来的IP每秒访问数量
 
     """
 
@@ -4987,7 +4987,7 @@ class ClsLogIpData(AbstractModel):
 
     @property
     def ClientIp(self):
-        """IP
+        r"""IP
         :rtype: str
         """
         return self._ClientIp
@@ -4998,7 +4998,7 @@ class ClsLogIpData(AbstractModel):
 
     @property
     def Request(self):
-        """在给定的时间段中，1秒内的最大请求量
+        r"""在给定的时间段中，1秒内的最大请求量
         :rtype: int
         """
         return self._Request
@@ -5009,7 +5009,7 @@ class ClsLogIpData(AbstractModel):
 
     @property
     def Count(self):
-        """在获取的Top信息中，IP出现的次数
+        r"""在获取的Top信息中，IP出现的次数
         :rtype: int
         """
         return self._Count
@@ -5020,7 +5020,7 @@ class ClsLogIpData(AbstractModel):
 
     @property
     def Time(self):
-        """在给定的时间段中，1秒内的最大请求量对应的时间
+        r"""在给定的时间段中，1秒内的最大请求量对应的时间
         :rtype: str
         """
         return self._Time
@@ -5046,7 +5046,7 @@ class ClsLogIpData(AbstractModel):
 
 
 class ClsLogObject(AbstractModel):
-    """CLS日志搜索对象
+    r"""CLS日志搜索对象
 
     """
 
@@ -5074,7 +5074,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题ID
+        r"""主题ID
         :rtype: str
         """
         return self._TopicId
@@ -5085,7 +5085,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名字
+        r"""主题名字
         :rtype: str
         """
         return self._TopicName
@@ -5096,7 +5096,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def Timestamp(self):
-        """日志时间
+        r"""日志时间
         :rtype: str
         """
         return self._Timestamp
@@ -5107,7 +5107,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def Content(self):
-        """日志内容
+        r"""日志内容
         :rtype: str
         """
         return self._Content
@@ -5118,7 +5118,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def Filename(self):
-        """采集路径
+        r"""采集路径
         :rtype: str
         """
         return self._Filename
@@ -5129,7 +5129,7 @@ class ClsLogObject(AbstractModel):
 
     @property
     def Source(self):
-        """日志来源设备
+        r"""日志来源设备
         :rtype: str
         """
         return self._Source
@@ -5157,7 +5157,7 @@ class ClsLogObject(AbstractModel):
 
 
 class ClsSearchLogs(AbstractModel):
-    """Cls日志搜索结果
+    r"""Cls日志搜索结果
 
     """
 
@@ -5176,7 +5176,7 @@ class ClsSearchLogs(AbstractModel):
 
     @property
     def Context(self):
-        """获取更多检索结果的游标
+        r"""获取更多检索结果的游标
         :rtype: str
         """
         return self._Context
@@ -5187,7 +5187,7 @@ class ClsSearchLogs(AbstractModel):
 
     @property
     def Listover(self):
-        """搜索结果是否已经全部返回
+        r"""搜索结果是否已经全部返回
         :rtype: bool
         """
         return self._Listover
@@ -5198,7 +5198,7 @@ class ClsSearchLogs(AbstractModel):
 
     @property
     def Results(self):
-        """日志内容信息
+        r"""日志内容信息
         :rtype: list of ClsLogObject
         """
         return self._Results
@@ -5228,7 +5228,7 @@ class ClsSearchLogs(AbstractModel):
 
 
 class Compatibility(AbstractModel):
-    """是否兼容旧版配置
+    r"""是否兼容旧版配置
 
     """
 
@@ -5242,7 +5242,7 @@ class Compatibility(AbstractModel):
 
     @property
     def Code(self):
-        """兼容标志状态码。
+        r"""兼容标志状态码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5266,7 +5266,7 @@ class Compatibility(AbstractModel):
 
 
 class Compression(AbstractModel):
-    """智能压缩配置，默认对 js、html、css、xml、json、shtml、htm 后缀且大小为 256 ~ 2097152 字节的文件进行 GZIP 压缩
+    r"""智能压缩配置，默认对 js、html、css、xml、json、shtml、htm 后缀且大小为 256 ~ 2097152 字节的文件进行 GZIP 压缩
 
     """
 
@@ -5285,7 +5285,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """智能压缩配置开关，取值有：
+        r"""智能压缩配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -5298,7 +5298,7 @@ off：关闭
 
     @property
     def CompressionRules(self):
-        """压缩规则数组
+        r"""压缩规则数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompressionRule
         """
@@ -5328,7 +5328,7 @@ off：关闭
 
 
 class CompressionRule(AbstractModel):
-    """智能压缩规则配置
+    r"""智能压缩规则配置
 
     """
 
@@ -5381,7 +5381,7 @@ contentType 时填充 text/html
 
     @property
     def Compress(self):
-        """true：需要设置为 ture，启用压缩
+        r"""true：需要设置为 ture，启用压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5393,7 +5393,7 @@ contentType 时填充 text/html
 
     @property
     def MinLength(self):
-        """触发压缩的文件长度最小值，单位为字节数
+        r"""触发压缩的文件长度最小值，单位为字节数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5405,7 +5405,7 @@ contentType 时填充 text/html
 
     @property
     def MaxLength(self):
-        """触发压缩的文件长度最大值，单位为字节数
+        r"""触发压缩的文件长度最大值，单位为字节数
 最大可设置为 30MB
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -5418,7 +5418,7 @@ contentType 时填充 text/html
 
     @property
     def Algorithms(self):
-        """文件压缩算法
+        r"""文件压缩算法
 gzip：指定 GZIP 压缩
 brotli：指定Brotli压缩
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5432,7 +5432,7 @@ brotli：指定Brotli压缩
 
     @property
     def FileExtensions(self):
-        """根据文件后缀类型压缩
+        r"""根据文件后缀类型压缩
 例如 jpg、txt
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -5445,7 +5445,7 @@ brotli：指定Brotli压缩
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -5463,7 +5463,7 @@ contentType：指定Content-Type头为特定值时生效
 
     @property
     def RulePaths(self):
-        """CacheType 对应类型下的匹配内容：
+        r"""CacheType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
@@ -5498,7 +5498,7 @@ contentType 时填充 text/html
 
 
 class CookieKey(AbstractModel):
-    """组成CacheKey的一部分
+    r"""组成CacheKey的一部分
 
     """
 
@@ -5518,7 +5518,7 @@ off：关闭，不使用Cookie作为Cache的一部分
 
     @property
     def Switch(self):
-        """使用Cookie作为Cache的一部分配置开关，取值有：
+        r"""使用Cookie作为Cache的一部分配置开关，取值有：
 on：开启，使用Cookie作为Cache的一部分
 off：关闭，不使用Cookie作为Cache的一部分
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5532,7 +5532,7 @@ off：关闭，不使用Cookie作为Cache的一部分
 
     @property
     def Value(self):
-        """使用的cookie，';' 分割
+        r"""使用的cookie，';' 分割
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5557,7 +5557,7 @@ off：关闭，不使用Cookie作为Cache的一部分
 
 
 class CreateClsLogTopicRequest(AbstractModel):
-    """CreateClsLogTopic请求参数结构体
+    r"""CreateClsLogTopic请求参数结构体
 
     """
 
@@ -5579,7 +5579,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """日志主题名称
+        r"""日志主题名称
         :rtype: str
         """
         return self._TopicName
@@ -5590,7 +5590,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -5601,7 +5601,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -5612,7 +5612,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
     @property
     def DomainAreaConfigs(self):
-        """域名区域信息
+        r"""域名区域信息
         :rtype: list of DomainAreaConfig
         """
         return self._DomainAreaConfigs
@@ -5643,7 +5643,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
 
 class CreateClsLogTopicResponse(AbstractModel):
-    """CreateClsLogTopic返回参数结构体
+    r"""CreateClsLogTopic返回参数结构体
 
     """
 
@@ -5659,7 +5659,7 @@ class CreateClsLogTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题ID
+        r"""主题ID
         :rtype: str
         """
         return self._TopicId
@@ -5670,7 +5670,7 @@ class CreateClsLogTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5686,7 +5686,7 @@ class CreateClsLogTopicResponse(AbstractModel):
 
 
 class CreateDiagnoseUrlRequest(AbstractModel):
-    """CreateDiagnoseUrl请求参数结构体
+    r"""CreateDiagnoseUrl请求参数结构体
 
     """
 
@@ -5702,7 +5702,7 @@ class CreateDiagnoseUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """需诊断的url，形如：http://www.test.com/test.txt。
+        r"""需诊断的url，形如：http://www.test.com/test.txt。
         :rtype: str
         """
         return self._Url
@@ -5713,7 +5713,7 @@ class CreateDiagnoseUrlRequest(AbstractModel):
 
     @property
     def Origin(self):
-        """请求源带协议头，形如：https://console.cloud.tencent.com
+        r"""请求源带协议头，形如：https://console.cloud.tencent.com
         :rtype: str
         """
         return self._Origin
@@ -5737,7 +5737,7 @@ class CreateDiagnoseUrlRequest(AbstractModel):
 
 
 class CreateDiagnoseUrlResponse(AbstractModel):
-    """CreateDiagnoseUrl返回参数结构体
+    r"""CreateDiagnoseUrl返回参数结构体
 
     """
 
@@ -5753,7 +5753,7 @@ class CreateDiagnoseUrlResponse(AbstractModel):
 
     @property
     def DiagnoseLink(self):
-        """系统生成的诊断链接，一个诊断链接最多可访问10次，有效期为24h。
+        r"""系统生成的诊断链接，一个诊断链接最多可访问10次，有效期为24h。
         :rtype: str
         """
         return self._DiagnoseLink
@@ -5764,7 +5764,7 @@ class CreateDiagnoseUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5780,7 +5780,7 @@ class CreateDiagnoseUrlResponse(AbstractModel):
 
 
 class CreateEdgePackTaskRequest(AbstractModel):
-    """CreateEdgePackTask请求参数结构体
+    r"""CreateEdgePackTask请求参数结构体
 
     """
 
@@ -5802,7 +5802,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
 
     @property
     def CosBucket(self):
-        """apk 所在的 cos 存储桶, 如 edgepack-xxxxxxxx
+        r"""apk 所在的 cos 存储桶, 如 edgepack-xxxxxxxx
         :rtype: str
         """
         return self._CosBucket
@@ -5813,7 +5813,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
 
     @property
     def CosUriFrom(self):
-        """apk 源文件的存储路径, 如 /apk/xxxx.apk
+        r"""apk 源文件的存储路径, 如 /apk/xxxx.apk
         :rtype: str
         """
         return self._CosUriFrom
@@ -5824,7 +5824,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
 
     @property
     def BlockID(self):
-        """BlockID 的值, WALLE为1903654775(0x71777777)，VasDolly为2282837503(0x881155ff),传0或不传时默认为 WALLE 方案
+        r"""BlockID 的值, WALLE为1903654775(0x71777777)，VasDolly为2282837503(0x881155ff),传0或不传时默认为 WALLE 方案
         :rtype: int
         """
         return self._BlockID
@@ -5835,7 +5835,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
 
     @property
     def CosUriTo(self):
-        """拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
+        r"""拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
         :rtype: str
         """
         return self._CosUriTo
@@ -5861,7 +5861,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
 
 
 class CreateEdgePackTaskResponse(AbstractModel):
-    """CreateEdgePackTask返回参数结构体
+    r"""CreateEdgePackTask返回参数结构体
 
     """
 
@@ -5874,7 +5874,7 @@ class CreateEdgePackTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5889,7 +5889,7 @@ class CreateEdgePackTaskResponse(AbstractModel):
 
 
 class CreateVerifyRecordRequest(AbstractModel):
-    """CreateVerifyRecord请求参数结构体
+    r"""CreateVerifyRecord请求参数结构体
 
     """
 
@@ -5902,7 +5902,7 @@ class CreateVerifyRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """要取回的域名
+        r"""要取回的域名
         :rtype: str
         """
         return self._Domain
@@ -5925,7 +5925,7 @@ class CreateVerifyRecordRequest(AbstractModel):
 
 
 class CreateVerifyRecordResponse(AbstractModel):
-    """CreateVerifyRecord返回参数结构体
+    r"""CreateVerifyRecord返回参数结构体
 
     """
 
@@ -5956,7 +5956,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def SubDomain(self):
-        """子解析
+        r"""子解析
         :rtype: str
         """
         return self._SubDomain
@@ -5967,7 +5967,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def Record(self):
-        """解析值
+        r"""解析值
         :rtype: str
         """
         return self._Record
@@ -5978,7 +5978,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def RecordType(self):
-        """解析类型
+        r"""解析类型
         :rtype: str
         """
         return self._RecordType
@@ -5989,7 +5989,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def FileVerifyUrl(self):
-        """文件验证 URL 指引
+        r"""文件验证 URL 指引
         :rtype: str
         """
         return self._FileVerifyUrl
@@ -6000,7 +6000,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def FileVerifyDomains(self):
-        """文件校验域名列表
+        r"""文件校验域名列表
         :rtype: list of str
         """
         return self._FileVerifyDomains
@@ -6011,7 +6011,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def FileVerifyName(self):
-        """文件校验文件名
+        r"""文件校验文件名
         :rtype: str
         """
         return self._FileVerifyName
@@ -6022,7 +6022,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6043,7 +6043,7 @@ class CreateVerifyRecordResponse(AbstractModel):
 
 
 class DeleteCdnDomainRequest(AbstractModel):
-    """DeleteCdnDomain请求参数结构体
+    r"""DeleteCdnDomain请求参数结构体
 
     """
 
@@ -6057,7 +6057,7 @@ class DeleteCdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
 域名状态需要为【已停用】
         :rtype: str
         """
@@ -6081,7 +6081,7 @@ class DeleteCdnDomainRequest(AbstractModel):
 
 
 class DeleteCdnDomainResponse(AbstractModel):
-    """DeleteCdnDomain返回参数结构体
+    r"""DeleteCdnDomain返回参数结构体
 
     """
 
@@ -6094,7 +6094,7 @@ class DeleteCdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6109,7 +6109,7 @@ class DeleteCdnDomainResponse(AbstractModel):
 
 
 class DeleteClsLogTopicRequest(AbstractModel):
-    """DeleteClsLogTopic请求参数结构体
+    r"""DeleteClsLogTopic请求参数结构体
 
     """
 
@@ -6128,7 +6128,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -6139,7 +6139,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -6150,7 +6150,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -6175,7 +6175,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
 
 class DeleteClsLogTopicResponse(AbstractModel):
-    """DeleteClsLogTopic返回参数结构体
+    r"""DeleteClsLogTopic返回参数结构体
 
     """
 
@@ -6188,7 +6188,7 @@ class DeleteClsLogTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6203,7 +6203,7 @@ class DeleteClsLogTopicResponse(AbstractModel):
 
 
 class DescribeBillingDataRequest(AbstractModel):
-    """DescribeBillingData请求参数结构体
+    r"""DescribeBillingData请求参数结构体
 
     """
 
@@ -6262,7 +6262,7 @@ bandwidth：计费带宽
 
     @property
     def StartTime(self):
-        """查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        r"""查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度参数不同，会进行向前取整，如指定起始时间为 2018-09-04 10:40:00 按小时粒度查询，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -6275,7 +6275,7 @@ bandwidth：计费带宽
 
     @property
     def EndTime(self):
-        """查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        r"""查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 根据指定时间粒度参数不同，会进行向前取整，如指定结束时间为  2018-09-04 10:40:00 按小时粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -6288,7 +6288,7 @@ bandwidth：计费带宽
 
     @property
     def Interval(self):
-        """时间粒度，支持模式如下：
+        r"""时间粒度，支持模式如下：
 min：1 分钟粒度，查询区间需要小于等于 24 小时
 5min：5 分钟粒度，查询区间需要小于等于 31 天(计费数据粒度)
 hour：1 小时粒度，查询区间需要小于等于 31 天内
@@ -6305,7 +6305,7 @@ Area 字段为 overseas 时暂不支持1分钟粒度数据查询
 
     @property
     def Domain(self):
-        """指定域名查询计费数据
+        r"""指定域名查询计费数据
         :rtype: str
         """
         return self._Domain
@@ -6316,7 +6316,7 @@ Area 字段为 overseas 时暂不支持1分钟粒度数据查询
 
     @property
     def Project(self):
-        """指定项目 ID 查询，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+        r"""指定项目 ID 查询，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 若 Domain 参数填充了具体域名信息，则返回该域名的计费数据，而非指定项目计费数据
         :rtype: int
         """
@@ -6328,7 +6328,7 @@ Area 字段为 overseas 时暂不支持1分钟粒度数据查询
 
     @property
     def Area(self):
-        """指定加速区域查询计费数据：
+        r"""指定加速区域查询计费数据：
 mainland：中国境内
 overseas：中国境外
 不填充时，默认为 mainland
@@ -6342,7 +6342,7 @@ overseas：中国境外
 
     @property
     def District(self):
-        """Area 为 overseas 时，指定国家/地区查询
+        r"""Area 为 overseas 时，指定国家/地区查询
 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
 不填充时，查询所有国家/地区
         :rtype: int
@@ -6355,7 +6355,7 @@ overseas：中国境外
 
     @property
     def Metric(self):
-        """计费统计类型
+        r"""计费统计类型
 flux：计费流量
 bandwidth：计费带宽
 默认为 bandwidth
@@ -6369,7 +6369,7 @@ bandwidth：计费带宽
 
     @property
     def Product(self):
-        """指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        r"""指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :rtype: str
         """
         return self._Product
@@ -6380,7 +6380,7 @@ bandwidth：计费带宽
 
     @property
     def TimeZone(self):
-        """指定查询时间的时区，默认UTC+08:00
+        r"""指定查询时间的时区，默认UTC+08:00
         :rtype: str
         """
         return self._TimeZone
@@ -6412,7 +6412,7 @@ bandwidth：计费带宽
 
 
 class DescribeBillingDataResponse(AbstractModel):
-    """DescribeBillingData返回参数结构体
+    r"""DescribeBillingData返回参数结构体
 
     """
 
@@ -6435,7 +6435,7 @@ day：天粒度
 
     @property
     def Interval(self):
-        """时间粒度，根据查询时传递参数指定：
+        r"""时间粒度，根据查询时传递参数指定：
 min：1 分钟粒度
 5min：5 分钟粒度
 hour：1 小时粒度
@@ -6450,7 +6450,7 @@ day：天粒度
 
     @property
     def Data(self):
-        """数据明细
+        r"""数据明细
         :rtype: list of ResourceBillingData
         """
         return self._Data
@@ -6461,7 +6461,7 @@ day：天粒度
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6483,7 +6483,7 @@ day：天粒度
 
 
 class DescribeCdnDataRequest(AbstractModel):
-    """DescribeCdnData请求参数结构体
+    r"""DescribeCdnData请求参数结构体
 
     """
 
@@ -6588,7 +6588,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
     @property
     def StartTime(self):
-        """查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        r"""查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -6601,7 +6601,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
     @property
     def EndTime(self):
-        """查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        r"""查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -6614,7 +6614,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
     @property
     def Metric(self):
-        """指定查询指标，支持的类型有：
+        r"""指定查询指标，支持的类型有：
 flux：流量，单位为 byte
 fluxIn：上行流量，单位为 byte，该指标仅ecdn支持查询
 fluxOut：下行流量，单位为 byte，该指标仅ecdn支持查询
@@ -6642,7 +6642,7 @@ statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 �
 
     @property
     def Domains(self):
-        """指定查询域名列表
+        r"""指定查询域名列表
 查询单域名：指定单个域名
 查询多个域名：指定多个域名，最多可一次性查询 30 个
 查询账号下所有域名：不传参，默认查询账号维度
@@ -6656,7 +6656,7 @@ statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 �
 
     @property
     def Project(self):
-        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+        r"""指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :rtype: int
         """
@@ -6668,7 +6668,7 @@ statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 �
 
     @property
     def Interval(self):
-        """时间粒度，支持以下几种模式：
+        r"""时间粒度，支持以下几种模式：
 min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）
 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
@@ -6683,7 +6683,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Detail(self):
-        """多域名查询时，默认（false)返回多个域名的汇总数据
+        r"""多域名查询时，默认（false)返回多个域名的汇总数据
 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
         :rtype: bool
         """
@@ -6695,7 +6695,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Isp(self):
-        """查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
+        r"""查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
 运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 指定运营商查询时，不可同时指定省份、IP协议查询
         :rtype: int
@@ -6708,7 +6708,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def District(self):
-        """查询中国境内CDN数据时，指定省份查询，不填充表示查询所有省份
+        r"""查询中国境内CDN数据时，指定省份查询，不填充表示查询所有省份
 查询中国境外CDN数据时，指定国家/地区查询，不填充表示查询所有国家/地区
 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 指定（中国境内）省份查询时，不可同时指定运营商、IP协议查询
@@ -6722,7 +6722,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Protocol(self):
-        """指定协议查询，不填充表示查询所有协议
+        r"""指定协议查询，不填充表示查询所有协议
 all：所有协议
 http：指定查询 HTTP 对应指标
 https：指定查询 HTTPS 对应指标
@@ -6736,7 +6736,7 @@ https：指定查询 HTTPS 对应指标
 
     @property
     def DataSource(self):
-        """指定数据源查询，白名单功能
+        r"""指定数据源查询，白名单功能
         :rtype: str
         """
         return self._DataSource
@@ -6747,7 +6747,7 @@ https：指定查询 HTTPS 对应指标
 
     @property
     def IpProtocol(self):
-        """指定IP协议查询，不填充表示查询所有协议
+        r"""指定IP协议查询，不填充表示查询所有协议
 all：所有协议
 ipv4：指定查询 ipv4 对应指标
 ipv6：指定查询 ipv6 对应指标
@@ -6763,7 +6763,7 @@ ipv6：指定查询 ipv6 对应指标
 
     @property
     def Area(self):
-        """指定服务地域查询，不填充表示查询中国境内CDN数据
+        r"""指定服务地域查询，不填充表示查询中国境内CDN数据
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据
         :rtype: str
@@ -6776,7 +6776,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def AreaType(self):
-        """查询中国境外CDN数据时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas 时可用）
+        r"""查询中国境外CDN数据时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas 时可用）
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据
         :rtype: str
@@ -6789,7 +6789,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
     @property
     def Product(self):
-        """指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        r"""指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :rtype: str
         """
         return self._Product
@@ -6800,7 +6800,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
     @property
     def TimeZone(self):
-        """指定查询时间的时区，默认UTC+08:00
+        r"""指定查询时间的时区，默认UTC+08:00
         :rtype: str
         """
         return self._TimeZone
@@ -6838,7 +6838,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
 
 
 class DescribeCdnDataResponse(AbstractModel):
-    """DescribeCdnData返回参数结构体
+    r"""DescribeCdnData返回参数结构体
 
     """
 
@@ -6861,7 +6861,7 @@ day：天粒度
 
     @property
     def Interval(self):
-        """返回数据的时间粒度，查询时指定：
+        r"""返回数据的时间粒度，查询时指定：
 min：1 分钟粒度
 5min：5 分钟粒度
 hour：1 小时粒度
@@ -6876,7 +6876,7 @@ day：天粒度
 
     @property
     def Data(self):
-        """指定条件查询得到的数据明细
+        r"""指定条件查询得到的数据明细
         :rtype: list of ResourceData
         """
         return self._Data
@@ -6887,7 +6887,7 @@ day：天粒度
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6909,7 +6909,7 @@ day：天粒度
 
 
 class DescribeCdnDomainLogsRequest(AbstractModel):
-    """DescribeCdnDomainLogs请求参数结构体
+    r"""DescribeCdnDomainLogs请求参数结构体
 
     """
 
@@ -6944,7 +6944,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """指定域名查询
+        r"""指定域名查询
         :rtype: str
         """
         return self._Domain
@@ -6955,7 +6955,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -6966,7 +6966,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -6977,7 +6977,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -6988,7 +6988,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100，最大为 1000
+        r"""分页查询限制数目，默认为 100，最大为 1000
         :rtype: int
         """
         return self._Limit
@@ -6999,7 +6999,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """指定区域下载日志，默认为 mainland，可取值有：
+        r"""指定区域下载日志，默认为 mainland，可取值有：
 <li>mainland：获取境内加速日志包下载链接</li>
 <li>overseas：获取境外加速日志包下载链接</li>
 <li>global：同时获取境内、境外加速日志包下载链接（分开打包）</li>
@@ -7013,7 +7013,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """指定下载日志的类型，可取值有：
+        r"""指定下载日志的类型，可取值有：
 <li>access：访问日志</li>
         :rtype: str
         """
@@ -7043,7 +7043,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
 
 class DescribeCdnDomainLogsResponse(AbstractModel):
-    """DescribeCdnDomainLogs返回参数结构体
+    r"""DescribeCdnDomainLogs返回参数结构体
 
     """
 
@@ -7063,7 +7063,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     @property
     def DomainLogs(self):
-        """日志包下载链接。
+        r"""日志包下载链接。
 下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。链接有效期1天。
         :rtype: list of DomainLog
         """
@@ -7075,7 +7075,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的总条数
+        r"""查询到的总条数
         :rtype: int
         """
         return self._TotalCount
@@ -7086,7 +7086,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7108,7 +7108,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
 
 class DescribeCdnIpRequest(AbstractModel):
-    """DescribeCdnIp请求参数结构体
+    r"""DescribeCdnIp请求参数结构体
 
     """
 
@@ -7121,7 +7121,7 @@ class DescribeCdnIpRequest(AbstractModel):
 
     @property
     def Ips(self):
-        """需要查询的 IP 列表，单次可支持1-20个IP查询。
+        r"""需要查询的 IP 列表，单次可支持1-20个IP查询。
         :rtype: list of str
         """
         return self._Ips
@@ -7144,7 +7144,7 @@ class DescribeCdnIpRequest(AbstractModel):
 
 
 class DescribeCdnIpResponse(AbstractModel):
-    """DescribeCdnIp返回参数结构体
+    r"""DescribeCdnIp返回参数结构体
 
     """
 
@@ -7160,7 +7160,7 @@ class DescribeCdnIpResponse(AbstractModel):
 
     @property
     def Ips(self):
-        """查询的节点归属详情。
+        r"""查询的节点归属详情。
         :rtype: list of CdnIp
         """
         return self._Ips
@@ -7171,7 +7171,7 @@ class DescribeCdnIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7192,13 +7192,13 @@ class DescribeCdnIpResponse(AbstractModel):
 
 
 class DescribeCdnOriginIpRequest(AbstractModel):
-    """DescribeCdnOriginIp请求参数结构体
+    r"""DescribeCdnOriginIp请求参数结构体
 
     """
 
 
 class DescribeCdnOriginIpResponse(AbstractModel):
-    """DescribeCdnOriginIp返回参数结构体
+    r"""DescribeCdnOriginIp返回参数结构体
 
     """
 
@@ -7217,7 +7217,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
 
     @property
     def Ips(self):
-        """回源节点IP详情。
+        r"""回源节点IP详情。
         :rtype: list of OriginIp
         """
         return self._Ips
@@ -7228,7 +7228,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """回源节点IP总个数。
+        r"""回源节点IP总个数。
         :rtype: int
         """
         return self._TotalCount
@@ -7239,7 +7239,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7261,7 +7261,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
 
 
 class DescribeCertDomainsRequest(AbstractModel):
-    """DescribeCertDomains请求参数结构体
+    r"""DescribeCertDomains请求参数结构体
 
     """
 
@@ -7280,7 +7280,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def Cert(self):
-        """PEM格式证书Base64编码后的字符串
+        r"""PEM格式证书Base64编码后的字符串
         :rtype: str
         """
         return self._Cert
@@ -7291,7 +7291,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """托管证书ID，Cert和CertId不能均为空，都填写时以CertId为准。
+        r"""托管证书ID，Cert和CertId不能均为空，都填写时以CertId为准。
         :rtype: str
         """
         return self._CertId
@@ -7302,7 +7302,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def Product(self):
-        """域名所属产品，cdn或ecdn，默认cdn。
+        r"""域名所属产品，cdn或ecdn，默认cdn。
         :rtype: str
         """
         return self._Product
@@ -7327,7 +7327,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
 
 class DescribeCertDomainsResponse(AbstractModel):
-    """DescribeCertDomains返回参数结构体
+    r"""DescribeCertDomains返回参数结构体
 
     """
 
@@ -7346,7 +7346,7 @@ class DescribeCertDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
-        """已接入CDN的域名列表
+        r"""已接入CDN的域名列表
         :rtype: list of str
         """
         return self._Domains
@@ -7357,7 +7357,7 @@ class DescribeCertDomainsResponse(AbstractModel):
 
     @property
     def CertifiedDomains(self):
-        """已配置证书的CDN域名列表
+        r"""已配置证书的CDN域名列表
         :rtype: list of str
         """
         return self._CertifiedDomains
@@ -7368,7 +7368,7 @@ class DescribeCertDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7385,7 +7385,7 @@ class DescribeCertDomainsResponse(AbstractModel):
 
 
 class DescribeDiagnoseReportRequest(AbstractModel):
-    """DescribeDiagnoseReport请求参数结构体
+    r"""DescribeDiagnoseReport请求参数结构体
 
     """
 
@@ -7398,7 +7398,7 @@ class DescribeDiagnoseReportRequest(AbstractModel):
 
     @property
     def ReportId(self):
-        """报告ID
+        r"""报告ID
         :rtype: str
         """
         return self._ReportId
@@ -7421,7 +7421,7 @@ class DescribeDiagnoseReportRequest(AbstractModel):
 
 
 class DescribeDiagnoseReportResponse(AbstractModel):
-    """DescribeDiagnoseReport返回参数结构体
+    r"""DescribeDiagnoseReport返回参数结构体
 
     """
 
@@ -7461,7 +7461,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def BaskInfo(self):
-        """诊断报告基础信息
+        r"""诊断报告基础信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._BaskInfo
@@ -7472,7 +7472,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def CnameInfo(self):
-        """CNAME检测信息
+        r"""CNAME检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._CnameInfo
@@ -7483,7 +7483,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def ClientInfo(self):
-        """客户端检测信息
+        r"""客户端检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._ClientInfo
@@ -7494,7 +7494,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def DnsInfo(self):
-        """DNS检测信息
+        r"""DNS检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._DnsInfo
@@ -7505,7 +7505,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def NetworkInfo(self):
-        """网络检测信息
+        r"""网络检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._NetworkInfo
@@ -7516,7 +7516,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def OcNodeInfo(self):
-        """边缘节点检测信息
+        r"""边缘节点检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._OcNodeInfo
@@ -7527,7 +7527,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def MidNodeInfo(self):
-        """中间源节点检测信息
+        r"""中间源节点检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._MidNodeInfo
@@ -7538,7 +7538,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def OriginInfo(self):
-        """源站检测信息
+        r"""源站检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._OriginInfo
@@ -7549,7 +7549,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def PurgeInfo(self):
-        """刷新检测信息
+        r"""刷新检测信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._PurgeInfo
@@ -7560,7 +7560,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7602,7 +7602,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
 
 
 class DescribeDistrictIspDataRequest(AbstractModel):
-    """DescribeDistrictIspData请求参数结构体
+    r"""DescribeDistrictIspData请求参数结构体
 
     """
 
@@ -7661,7 +7661,7 @@ min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间�
 
     @property
     def Domains(self):
-        """域名列表，最多支持20个域名
+        r"""域名列表，最多支持20个域名
         :rtype: list of str
         """
         return self._Domains
@@ -7672,7 +7672,7 @@ min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间�
 
     @property
     def StartTime(self):
-        """查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        r"""查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 支持近 60 天内的数据查询，每次查询时间区间为 3 小时
         :rtype: str
         """
@@ -7684,7 +7684,7 @@ min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间�
 
     @property
     def EndTime(self):
-        """查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        r"""查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 结束时间与起始时间区间最大为 3 小时
         :rtype: str
         """
@@ -7696,7 +7696,7 @@ min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间�
 
     @property
     def Metric(self):
-        """指定查询指标，支持:
+        r"""指定查询指标，支持:
 bandwidth：带宽，单位为 bps
 flux：流量，单位为 byte
 request：请求数，单位为 次
@@ -7716,7 +7716,7 @@ statusCode：状态码，返回 0、2xx、3xx、4xx、5xx 汇总数据，单位�
 
     @property
     def Districts(self):
-        """指定省份查询，不填充表示查询所有省份
+        r"""指定省份查询，不填充表示查询所有省份
 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
         :rtype: list of int
         """
@@ -7728,7 +7728,7 @@ statusCode：状态码，返回 0、2xx、3xx、4xx、5xx 汇总数据，单位�
 
     @property
     def Isps(self):
-        """指定运营商查询，不填充表示查询所有运营商
+        r"""指定运营商查询，不填充表示查询所有运营商
 运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
         :rtype: list of int
         """
@@ -7740,7 +7740,7 @@ statusCode：状态码，返回 0、2xx、3xx、4xx、5xx 汇总数据，单位�
 
     @property
     def Protocol(self):
-        """指定协议查询，不填充表示查询所有协议
+        r"""指定协议查询，不填充表示查询所有协议
 all：所有协议
 http：指定查询 HTTP 对应指标
 https：指定查询 HTTPS 对应指标
@@ -7754,7 +7754,7 @@ https：指定查询 HTTPS 对应指标
 
     @property
     def IpProtocol(self):
-        """指定IP协议查询，不填充表示查询所有协议
+        r"""指定IP协议查询，不填充表示查询所有协议
 all：所有协议
 ipv4：指定查询 ipv4 对应指标
 ipv6：指定查询 ipv6 对应指标
@@ -7769,7 +7769,7 @@ ipv6：指定查询 ipv6 对应指标
 
     @property
     def Interval(self):
-        """时间粒度，支持以下几种模式（默认5min）：
+        r"""时间粒度，支持以下几种模式（默认5min）：
 min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间区间不超过10分钟，可返回 1 分钟粒度明细数据
 5min：5 分钟粒度，支持近 60 天内的数据查询，每次查询时间区间不超过3 小时，可返回 5 分钟粒度明细数据
         :rtype: str
@@ -7802,7 +7802,7 @@ min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间�
 
 
 class DescribeDistrictIspDataResponse(AbstractModel):
-    """DescribeDistrictIspData返回参数结构体
+    r"""DescribeDistrictIspData返回参数结构体
 
     """
 
@@ -7818,7 +7818,7 @@ class DescribeDistrictIspDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """地区运营商数据明细
+        r"""地区运营商数据明细
         :rtype: list of DistrictIspInfo
         """
         return self._Data
@@ -7829,7 +7829,7 @@ class DescribeDistrictIspDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7850,7 +7850,7 @@ class DescribeDistrictIspDataResponse(AbstractModel):
 
 
 class DescribeDomainsConfigRequest(AbstractModel):
-    """DescribeDomainsConfig请求参数结构体
+    r"""DescribeDomainsConfig请求参数结构体
 
     """
 
@@ -7872,7 +7872,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -7883,7 +7883,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100，最大可设置为 100
+        r"""分页查询限制数目，默认为 100，最大可设置为 100
         :rtype: int
         """
         return self._Limit
@@ -7894,7 +7894,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件过滤器，复杂类型
+        r"""查询条件过滤器，复杂类型
         :rtype: list of DomainFilter
         """
         return self._Filters
@@ -7905,7 +7905,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序规则
+        r"""排序规则
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Sort`
         """
         return self._Sort
@@ -7938,7 +7938,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
 
 class DescribeDomainsConfigResponse(AbstractModel):
-    """DescribeDomainsConfig返回参数结构体
+    r"""DescribeDomainsConfig返回参数结构体
 
     """
 
@@ -7958,7 +7958,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def Domains(self):
-        """域名列表
+        r"""域名列表
         :rtype: list of DetailDomain
         """
         return self._Domains
@@ -7969,7 +7969,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
-        """符合查询条件的域名总数
+        r"""符合查询条件的域名总数
 用于分页查询
         :rtype: int
         """
@@ -7981,7 +7981,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8003,7 +8003,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
 
 class DescribeDomainsRequest(AbstractModel):
-    """DescribeDomains请求参数结构体
+    r"""DescribeDomains请求参数结构体
 
     """
 
@@ -8022,7 +8022,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -8033,7 +8033,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100，最大可设置为 1000
+        r"""分页查询限制数目，默认为 100，最大可设置为 1000
         :rtype: int
         """
         return self._Limit
@@ -8044,7 +8044,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件过滤器，复杂类型
+        r"""查询条件过滤器，复杂类型
         :rtype: list of DomainFilter
         """
         return self._Filters
@@ -8074,7 +8074,7 @@ class DescribeDomainsRequest(AbstractModel):
 
 
 class DescribeDomainsResponse(AbstractModel):
-    """DescribeDomains返回参数结构体
+    r"""DescribeDomains返回参数结构体
 
     """
 
@@ -8094,7 +8094,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
-        """域名列表
+        r"""域名列表
         :rtype: list of BriefDomain
         """
         return self._Domains
@@ -8105,7 +8105,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
-        """符合查询条件的域名总数
+        r"""符合查询条件的域名总数
 用于分页查询
         :rtype: int
         """
@@ -8117,7 +8117,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8139,7 +8139,7 @@ class DescribeDomainsResponse(AbstractModel):
 
 
 class DescribeEdgePackTaskStatusRequest(AbstractModel):
-    """DescribeEdgePackTaskStatus请求参数结构体
+    r"""DescribeEdgePackTaskStatus请求参数结构体
 
     """
 
@@ -8164,7 +8164,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -8175,7 +8175,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -8186,7 +8186,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100，最大可设置为 1000
+        r"""分页查询限制数目，默认为 100，最大可设置为 1000
         :rtype: int
         """
         return self._Limit
@@ -8197,7 +8197,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -8208,7 +8208,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件过滤器
+        r"""查询条件过滤器
         :rtype: list of EdgePackTaskFilter
         """
         return self._Filters
@@ -8240,7 +8240,7 @@ class DescribeEdgePackTaskStatusRequest(AbstractModel):
 
 
 class DescribeEdgePackTaskStatusResponse(AbstractModel):
-    """DescribeEdgePackTaskStatus返回参数结构体
+    r"""DescribeEdgePackTaskStatus返回参数结构体
 
     """
 
@@ -8259,7 +8259,7 @@ class DescribeEdgePackTaskStatusResponse(AbstractModel):
 
     @property
     def EdgePackTaskStatusSet(self):
-        """动态打包任务状态列表
+        r"""动态打包任务状态列表
         :rtype: list of EdgePackTaskStatus
         """
         return self._EdgePackTaskStatusSet
@@ -8270,7 +8270,7 @@ class DescribeEdgePackTaskStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数，用于分页查询
+        r"""总数，用于分页查询
         :rtype: int
         """
         return self._TotalCount
@@ -8281,7 +8281,7 @@ class DescribeEdgePackTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8303,7 +8303,7 @@ class DescribeEdgePackTaskStatusResponse(AbstractModel):
 
 
 class DescribeHttpsPackagesRequest(AbstractModel):
-    """DescribeHttpsPackages请求参数结构体
+    r"""DescribeHttpsPackages请求参数结构体
 
     """
 
@@ -8319,7 +8319,7 @@ class DescribeHttpsPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询起始地址，默认 0
+        r"""分页查询起始地址，默认 0
         :rtype: int
         """
         return self._Offset
@@ -8330,7 +8330,7 @@ class DescribeHttpsPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询记录个数，默认100，最大1000
+        r"""分页查询记录个数，默认100，最大1000
         :rtype: int
         """
         return self._Limit
@@ -8354,7 +8354,7 @@ class DescribeHttpsPackagesRequest(AbstractModel):
 
 
 class DescribeHttpsPackagesResponse(AbstractModel):
-    """DescribeHttpsPackages返回参数结构体
+    r"""DescribeHttpsPackages返回参数结构体
 
     """
 
@@ -8382,7 +8382,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """HTTPS请求包总个数
+        r"""HTTPS请求包总个数
         :rtype: int
         """
         return self._TotalCount
@@ -8393,7 +8393,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def HttpsPackages(self):
-        """HTTPS请求包详情
+        r"""HTTPS请求包详情
         :rtype: list of HttpsPackage
         """
         return self._HttpsPackages
@@ -8404,7 +8404,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def ExpiringCount(self):
-        """即将过期的HTTPS请求包个数（7天内）
+        r"""即将过期的HTTPS请求包个数（7天内）
         :rtype: int
         """
         return self._ExpiringCount
@@ -8415,7 +8415,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def EnabledCount(self):
-        """有效HTTPS请求包个数
+        r"""有效HTTPS请求包个数
         :rtype: int
         """
         return self._EnabledCount
@@ -8426,7 +8426,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def PaidCount(self):
-        """付费HTTPS请求包个数
+        r"""付费HTTPS请求包个数
         :rtype: int
         """
         return self._PaidCount
@@ -8437,7 +8437,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8462,7 +8462,7 @@ class DescribeHttpsPackagesResponse(AbstractModel):
 
 
 class DescribeImageConfigRequest(AbstractModel):
-    """DescribeImageConfig请求参数结构体
+    r"""DescribeImageConfig请求参数结构体
 
     """
 
@@ -8475,7 +8475,7 @@ class DescribeImageConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -8498,7 +8498,7 @@ class DescribeImageConfigRequest(AbstractModel):
 
 
 class DescribeImageConfigResponse(AbstractModel):
-    """DescribeImageConfig返回参数结构体
+    r"""DescribeImageConfig返回参数结构体
 
     """
 
@@ -8523,7 +8523,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
     @property
     def WebpAdapter(self):
-        """WebpAdapter配置
+        r"""WebpAdapter配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
         """
         return self._WebpAdapter
@@ -8534,7 +8534,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
     @property
     def TpgAdapter(self):
-        """TpgAdapter配置
+        r"""TpgAdapter配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         """
         return self._TpgAdapter
@@ -8545,7 +8545,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
     @property
     def GuetzliAdapter(self):
-        """GuetzliAdapter配置
+        r"""GuetzliAdapter配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
         """
         return self._GuetzliAdapter
@@ -8556,7 +8556,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
     @property
     def AvifAdapter(self):
-        """AvifAdapter配置项
+        r"""AvifAdapter配置项
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         return self._AvifAdapter
@@ -8567,7 +8567,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8594,7 +8594,7 @@ class DescribeImageConfigResponse(AbstractModel):
 
 
 class DescribeIpStatusRequest(AbstractModel):
-    """DescribeIpStatus请求参数结构体
+    r"""DescribeIpStatus请求参数结构体
 
     """
 
@@ -8628,7 +8628,7 @@ global: 全球节点
 
     @property
     def Domain(self):
-        """加速域名
+        r"""加速域名
         :rtype: str
         """
         return self._Domain
@@ -8639,7 +8639,7 @@ global: 全球节点
 
     @property
     def Layer(self):
-        """节点类型：
+        r"""节点类型：
 edge：表示边缘节点
 last：表示回源层节点
 不填充情况下，默认返回边缘节点信息
@@ -8653,7 +8653,7 @@ last：表示回源层节点
 
     @property
     def Area(self):
-        """查询区域：
+        r"""查询区域：
 mainland: 国内节点
 overseas: 海外节点
 global: 全球节点
@@ -8667,7 +8667,7 @@ global: 全球节点
 
     @property
     def Segment(self):
-        """是否以IP段的格式返回。
+        r"""是否以IP段的格式返回。
         :rtype: bool
         """
         return self._Segment
@@ -8678,7 +8678,7 @@ global: 全球节点
 
     @property
     def ShowIpv6(self):
-        """是否查询节点 IPV6 信息。
+        r"""是否查询节点 IPV6 信息。
         :rtype: bool
         """
         return self._ShowIpv6
@@ -8689,7 +8689,7 @@ global: 全球节点
 
     @property
     def AbbreviationIpv6(self):
-        """是否对IPV6进行缩写。
+        r"""是否对IPV6进行缩写。
         :rtype: bool
         """
         return self._AbbreviationIpv6
@@ -8717,7 +8717,7 @@ global: 全球节点
 
 
 class DescribeIpStatusResponse(AbstractModel):
-    """DescribeIpStatus返回参数结构体
+    r"""DescribeIpStatus返回参数结构体
 
     """
 
@@ -8736,7 +8736,7 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def Ips(self):
-        """节点列表
+        r"""节点列表
         :rtype: list of IpStatus
         """
         return self._Ips
@@ -8747,7 +8747,7 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """节点总个数
+        r"""节点总个数
         :rtype: int
         """
         return self._TotalCount
@@ -8758,7 +8758,7 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8780,7 +8780,7 @@ class DescribeIpStatusResponse(AbstractModel):
 
 
 class DescribeIpVisitRequest(AbstractModel):
-    """DescribeIpVisit请求参数结构体
+    r"""DescribeIpVisit请求参数结构体
 
     """
 
@@ -8810,7 +8810,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
     @property
     def StartTime(self):
-        """查询起始时间，如：2018-09-04 10:40:10，返回结果大于等于指定时间
+        r"""查询起始时间，如：2018-09-04 10:40:10，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:10 在按 5 分钟的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:40:00
         :rtype: str
         """
@@ -8822,7 +8822,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
     @property
     def EndTime(self):
-        """查询结束时间，如：2018-09-04 10:40:10，返回结果小于等于指定时间
+        r"""查询结束时间，如：2018-09-04 10:40:10，返回结果小于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:10 在按 5 分钟的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:40:00
         :rtype: str
         """
@@ -8834,7 +8834,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
     @property
     def Domains(self):
-        """指定查询域名列表，最多可一次性查询 30 个加速域名明细
+        r"""指定查询域名列表，最多可一次性查询 30 个加速域名明细
         :rtype: list of str
         """
         return self._Domains
@@ -8845,7 +8845,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
     @property
     def Project(self):
-        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+        r"""指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :rtype: int
         """
@@ -8857,7 +8857,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
     @property
     def Interval(self):
-        """时间粒度，支持以下几种模式：
+        r"""时间粒度，支持以下几种模式：
 5min：5 分钟粒度，查询时间区间 24 小时内，默认返回 5 分钟粒度活跃用户数
 day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活跃用户数
         :rtype: str
@@ -8886,7 +8886,7 @@ day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活�
 
 
 class DescribeIpVisitResponse(AbstractModel):
-    """DescribeIpVisit返回参数结构体
+    r"""DescribeIpVisit返回参数结构体
 
     """
 
@@ -8905,7 +8905,7 @@ class DescribeIpVisitResponse(AbstractModel):
 
     @property
     def Interval(self):
-        """数据统计的时间粒度，支持5min,  day，分别表示5分钟，1天的时间粒度。
+        r"""数据统计的时间粒度，支持5min,  day，分别表示5分钟，1天的时间粒度。
         :rtype: str
         """
         return self._Interval
@@ -8916,7 +8916,7 @@ class DescribeIpVisitResponse(AbstractModel):
 
     @property
     def Data(self):
-        """各个资源的回源数据详情。
+        r"""各个资源的回源数据详情。
         :rtype: list of ResourceData
         """
         return self._Data
@@ -8927,7 +8927,7 @@ class DescribeIpVisitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8949,7 +8949,7 @@ class DescribeIpVisitResponse(AbstractModel):
 
 
 class DescribeMapInfoRequest(AbstractModel):
-    """DescribeMapInfo请求参数结构体
+    r"""DescribeMapInfo请求参数结构体
 
     """
 
@@ -8964,7 +8964,7 @@ district：省份（中国境内）、国家/地区（中国境外）映射查�
 
     @property
     def Name(self):
-        """映射查询类别：
+        r"""映射查询类别：
 isp：运营商映射查询
 district：省份（中国境内）、国家/地区（中国境外）映射查询
         :rtype: str
@@ -8989,7 +8989,7 @@ district：省份（中国境内）、国家/地区（中国境外）映射查�
 
 
 class DescribeMapInfoResponse(AbstractModel):
-    """DescribeMapInfo返回参数结构体
+    r"""DescribeMapInfo返回参数结构体
 
     """
 
@@ -9013,7 +9013,7 @@ class DescribeMapInfoResponse(AbstractModel):
 
     @property
     def MapInfoList(self):
-        """映射关系数组。
+        r"""映射关系数组。
         :rtype: list of MapInfo
         """
         return self._MapInfoList
@@ -9024,7 +9024,7 @@ class DescribeMapInfoResponse(AbstractModel):
 
     @property
     def ServerRegionRelation(self):
-        """服务端区域id和子区域id的映射关系。
+        r"""服务端区域id和子区域id的映射关系。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionMapRelation
         """
@@ -9036,7 +9036,7 @@ class DescribeMapInfoResponse(AbstractModel):
 
     @property
     def ClientRegionRelation(self):
-        """客户端区域id和子区域id的映射关系。
+        r"""客户端区域id和子区域id的映射关系。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionMapRelation
         """
@@ -9048,7 +9048,7 @@ class DescribeMapInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9081,7 +9081,7 @@ class DescribeMapInfoResponse(AbstractModel):
 
 
 class DescribeOriginDataRequest(AbstractModel):
-    """DescribeOriginData请求参数结构体
+    r"""DescribeOriginData请求参数结构体
 
     """
 
@@ -9142,7 +9142,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def StartTime(self):
-        """查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        r"""查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -9155,7 +9155,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def EndTime(self):
-        """查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        r"""查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
         :rtype: str
@@ -9168,7 +9168,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def Metric(self):
-        """指定查询指标，支持的类型有：
+        r"""指定查询指标，支持的类型有：
 flux：回源流量，单位为 byte
 bandwidth：回源带宽，单位为 bps
 request：回源请求数，单位为 次
@@ -9190,7 +9190,7 @@ statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单�
 
     @property
     def Domains(self):
-        """指定查询域名列表，最多可一次性查询 30 个加速域名明细
+        r"""指定查询域名列表，最多可一次性查询 30 个加速域名明细
         :rtype: list of str
         """
         return self._Domains
@@ -9201,7 +9201,7 @@ statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单�
 
     @property
     def Project(self):
-        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+        r"""指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，最多可一次性查询 30 个加速域名明细
 若填充了具体域名信息，以域名为主
         :rtype: int
@@ -9214,7 +9214,7 @@ statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单�
 
     @property
     def Interval(self):
-        """时间粒度，支持以下几种模式：
+        r"""时间粒度，支持以下几种模式：
 min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）
 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
@@ -9229,7 +9229,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Detail(self):
-        """Domains 传入多个时，默认(false)返回多个域名的汇总数据
+        r"""Domains 传入多个时，默认(false)返回多个域名的汇总数据
 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
         :rtype: bool
         """
@@ -9241,7 +9241,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Area(self):
-        """指定服务地域查询，不填充表示查询中国境内 CDN 数据
+        r"""指定服务地域查询，不填充表示查询中国境内 CDN 数据
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据
         :rtype: str
@@ -9254,7 +9254,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def TimeZone(self):
-        """指定查询时间的时区，默认UTC+08:00
+        r"""指定查询时间的时区，默认UTC+08:00
         :rtype: str
         """
         return self._TimeZone
@@ -9285,7 +9285,7 @@ overseas：指定查询中国境外 CDN 数据
 
 
 class DescribeOriginDataResponse(AbstractModel):
-    """DescribeOriginData返回参数结构体
+    r"""DescribeOriginData返回参数结构体
 
     """
 
@@ -9304,7 +9304,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
     @property
     def Interval(self):
-        """数据统计的时间粒度，支持min, 5min, hour, day，分别表示1分钟，5分钟，1小时和1天的时间粒度。
+        r"""数据统计的时间粒度，支持min, 5min, hour, day，分别表示1分钟，5分钟，1小时和1天的时间粒度。
         :rtype: str
         """
         return self._Interval
@@ -9315,7 +9315,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """各个资源的回源数据详情。
+        r"""各个资源的回源数据详情。
         :rtype: list of ResourceOriginData
         """
         return self._Data
@@ -9326,7 +9326,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9348,7 +9348,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
 
 class DescribePayTypeRequest(AbstractModel):
-    """DescribePayType请求参数结构体
+    r"""DescribePayType请求参数结构体
 
     """
 
@@ -9374,7 +9374,7 @@ https：HTTPS请求包
 
     @property
     def Area(self):
-        """指定服务地域查询
+        r"""指定服务地域查询
 mainland：境内计费方式查询
 overseas：境外计费方式查询
 global：全球计费方式查询
@@ -9389,7 +9389,7 @@ global：全球计费方式查询
 
     @property
     def Product(self):
-        """指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        r"""指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :rtype: str
         """
         return self._Product
@@ -9400,7 +9400,7 @@ global：全球计费方式查询
 
     @property
     def Type(self):
-        """指定资源包查询
+        r"""指定资源包查询
 flux：流量包
 https：HTTPS请求包
 未填充时，默认为 flux
@@ -9428,7 +9428,7 @@ https：HTTPS请求包
 
 
 class DescribePayTypeResponse(AbstractModel):
-    """DescribePayType返回参数结构体
+    r"""DescribePayType返回参数结构体
 
     """
 
@@ -9477,7 +9477,7 @@ bandwidth_sep：动静分离带宽计费
 
     @property
     def PayType(self):
-        """计费类型
+        r"""计费类型
 flux：流量计费
 bandwidth：带宽计费
 request：请求数计费
@@ -9494,7 +9494,7 @@ bandwidth_sep：动静分离带宽计费
 
     @property
     def BillingCycle(self):
-        """计费周期
+        r"""计费周期
 day：日结计费
 month：月结计费
 hour：小时结计费
@@ -9508,7 +9508,7 @@ hour：小时结计费
 
     @property
     def StatType(self):
-        """统计类型
+        r"""统计类型
 monthMax：日峰值月平均，月结模式
 day95：日 95 带宽，月结模式
 month95：月95带宽，月结模式
@@ -9524,7 +9524,7 @@ max：峰值带宽，日结模式
 
     @property
     def RegionType(self):
-        """计费区域
+        r"""计费区域
 all：全地区统一计费
 multiple：分地区计费
         :rtype: str
@@ -9537,7 +9537,7 @@ multiple：分地区计费
 
     @property
     def CurrentPayType(self):
-        """当前生效计费类型
+        r"""当前生效计费类型
 flux：流量计费
 bandwidth：带宽计费
 request：请求数计费
@@ -9553,7 +9553,7 @@ bandwidth_sep：动静分离带宽计费
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9573,13 +9573,13 @@ bandwidth_sep：动静分离带宽计费
 
 
 class DescribePurgeQuotaRequest(AbstractModel):
-    """DescribePurgeQuota请求参数结构体
+    r"""DescribePurgeQuota请求参数结构体
 
     """
 
 
 class DescribePurgeQuotaResponse(AbstractModel):
-    """DescribePurgeQuota返回参数结构体
+    r"""DescribePurgeQuota返回参数结构体
 
     """
 
@@ -9598,7 +9598,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def UrlPurge(self):
-        """URL刷新用量及配额。
+        r"""URL刷新用量及配额。
         :rtype: list of Quota
         """
         return self._UrlPurge
@@ -9609,7 +9609,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def PathPurge(self):
-        """目录刷新用量及配额。
+        r"""目录刷新用量及配额。
         :rtype: list of Quota
         """
         return self._PathPurge
@@ -9620,7 +9620,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9647,7 +9647,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
 
 class DescribePurgeTasksRequest(AbstractModel):
-    """DescribePurgeTasks请求参数结构体
+    r"""DescribePurgeTasks请求参数结构体
 
     """
 
@@ -9693,7 +9693,7 @@ global：全球
 
     @property
     def PurgeType(self):
-        """指定刷新类型查询
+        r"""指定刷新类型查询
 url：url 刷新记录
 path：目录刷新记录
         :rtype: str
@@ -9706,7 +9706,7 @@ path：目录刷新记录
 
     @property
     def StartTime(self):
-        """根据时间区间查询时，填充开始时间，如 2018-08-08 00:00:00
+        r"""根据时间区间查询时，填充开始时间，如 2018-08-08 00:00:00
         :rtype: str
         """
         return self._StartTime
@@ -9717,7 +9717,7 @@ path：目录刷新记录
 
     @property
     def EndTime(self):
-        """根据时间区间查询时，填充结束时间，如 2018-08-08 23:59:59
+        r"""根据时间区间查询时，填充结束时间，如 2018-08-08 23:59:59
         :rtype: str
         """
         return self._EndTime
@@ -9728,7 +9728,7 @@ path：目录刷新记录
 
     @property
     def TaskId(self):
-        """根据任务 ID 查询时，填充任务 ID
+        r"""根据任务 ID 查询时，填充任务 ID
 查询时任务 ID 与起始时间必须填充一项
         :rtype: str
         """
@@ -9740,7 +9740,7 @@ path：目录刷新记录
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -9751,7 +9751,7 @@ path：目录刷新记录
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 20
+        r"""分页查询限制数目，默认为 20
         :rtype: int
         """
         return self._Limit
@@ -9762,7 +9762,7 @@ path：目录刷新记录
 
     @property
     def Keyword(self):
-        """支持域名过滤，或 http(s):// 开头完整 URL 过滤
+        r"""支持域名过滤，或 http(s):// 开头完整 URL 过滤
         :rtype: str
         """
         return self._Keyword
@@ -9773,7 +9773,7 @@ path：目录刷新记录
 
     @property
     def Status(self):
-        """指定任务状态查询
+        r"""指定任务状态查询
 fail：刷新失败
 done：刷新成功
 process：刷新中
@@ -9787,7 +9787,7 @@ process：刷新中
 
     @property
     def Area(self):
-        """指定刷新地域查询
+        r"""指定刷新地域查询
 mainland：境内
 overseas：境外
 global：全球
@@ -9821,7 +9821,7 @@ global：全球
 
 
 class DescribePurgeTasksResponse(AbstractModel):
-    """DescribePurgeTasks返回参数结构体
+    r"""DescribePurgeTasks返回参数结构体
 
     """
 
@@ -9840,7 +9840,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def PurgeLogs(self):
-        """详细刷新纪录
+        r"""详细刷新纪录
         :rtype: list of PurgeTask
         """
         return self._PurgeLogs
@@ -9851,7 +9851,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """任务总数，用于分页
+        r"""任务总数，用于分页
         :rtype: int
         """
         return self._TotalCount
@@ -9862,7 +9862,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9884,13 +9884,13 @@ class DescribePurgeTasksResponse(AbstractModel):
 
 
 class DescribePushQuotaRequest(AbstractModel):
-    """DescribePushQuota请求参数结构体
+    r"""DescribePushQuota请求参数结构体
 
     """
 
 
 class DescribePushQuotaResponse(AbstractModel):
-    """DescribePushQuota返回参数结构体
+    r"""DescribePushQuota返回参数结构体
 
     """
 
@@ -9906,7 +9906,7 @@ class DescribePushQuotaResponse(AbstractModel):
 
     @property
     def UrlPush(self):
-        """Url预热用量及配额。
+        r"""Url预热用量及配额。
         :rtype: list of Quota
         """
         return self._UrlPush
@@ -9917,7 +9917,7 @@ class DescribePushQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9938,7 +9938,7 @@ class DescribePushQuotaResponse(AbstractModel):
 
 
 class DescribePushTasksRequest(AbstractModel):
-    """DescribePushTasks请求参数结构体
+    r"""DescribePushTasks请求参数结构体
 
     """
 
@@ -9980,7 +9980,7 @@ invalid: 预热无效(源站返回4xx或5xx状态码)
 
     @property
     def StartTime(self):
-        """开始时间，如2018-08-08 00:00:00。
+        r"""开始时间，如2018-08-08 00:00:00。
         :rtype: str
         """
         return self._StartTime
@@ -9991,7 +9991,7 @@ invalid: 预热无效(源站返回4xx或5xx状态码)
 
     @property
     def EndTime(self):
-        """结束时间，如2018-08-08 23:59:59。
+        r"""结束时间，如2018-08-08 23:59:59。
         :rtype: str
         """
         return self._EndTime
@@ -10002,7 +10002,7 @@ invalid: 预热无效(源站返回4xx或5xx状态码)
 
     @property
     def TaskId(self):
-        """指定任务 ID 查询
+        r"""指定任务 ID 查询
 TaskId 和起始时间必须指定一项
         :rtype: str
         """
@@ -10014,7 +10014,7 @@ TaskId 和起始时间必须指定一项
 
     @property
     def Keyword(self):
-        """查询关键字，请输入域名或 http(s):// 开头完整 URL
+        r"""查询关键字，请输入域名或 http(s):// 开头完整 URL
         :rtype: str
         """
         return self._Keyword
@@ -10025,7 +10025,7 @@ TaskId 和起始时间必须指定一项
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -10036,7 +10036,7 @@ TaskId 和起始时间必须指定一项
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 20
+        r"""分页查询限制数目，默认为 20
         :rtype: int
         """
         return self._Limit
@@ -10047,7 +10047,7 @@ TaskId 和起始时间必须指定一项
 
     @property
     def Area(self):
-        """指定地区查询预热记录
+        r"""指定地区查询预热记录
 mainland：境内
 overseas：境外
 global：全球
@@ -10061,7 +10061,7 @@ global：全球
 
     @property
     def Status(self):
-        """指定任务状态查询
+        r"""指定任务状态查询
 fail：预热失败
 done：预热成功
 process：预热中
@@ -10095,7 +10095,7 @@ invalid: 预热无效(源站返回4xx或5xx状态码)
 
 
 class DescribePushTasksResponse(AbstractModel):
-    """DescribePushTasks返回参数结构体
+    r"""DescribePushTasks返回参数结构体
 
     """
 
@@ -10114,7 +10114,7 @@ class DescribePushTasksResponse(AbstractModel):
 
     @property
     def PushLogs(self):
-        """预热历史记录
+        r"""预热历史记录
         :rtype: list of PushTask
         """
         return self._PushLogs
@@ -10125,7 +10125,7 @@ class DescribePushTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """任务总数，用于分页
+        r"""任务总数，用于分页
         :rtype: int
         """
         return self._TotalCount
@@ -10136,7 +10136,7 @@ class DescribePushTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10158,7 +10158,7 @@ class DescribePushTasksResponse(AbstractModel):
 
 
 class DescribeReportDataRequest(AbstractModel):
-    """DescribeReportData请求参数结构体
+    r"""DescribeReportData请求参数结构体
 
     """
 
@@ -10200,7 +10200,7 @@ overseas：中国境外
 
     @property
     def StartTime(self):
-        """查询起始时间：yyyy-MM-dd
+        r"""查询起始时间：yyyy-MM-dd
 当报表类型为daily，起始时间和结束时间必须为同一天
 当报表类型为weekly，起始时间须为周一，结束时间须为同一周的周日
 当报表类型为monthly，起始时间须为自然月第一天，即1号，结束时间须为该自然月最后一天
@@ -10214,7 +10214,7 @@ overseas：中国境外
 
     @property
     def EndTime(self):
-        """查询结束时间：yyyy-MM-dd
+        r"""查询结束时间：yyyy-MM-dd
 当报表类型为daily，起始时间和结束时间必须为同一天
 当报表类型为weekly，起始时间须为周一，结束时间须为同一周的周日
 当报表类型为monthly，起始时间须为自然月第一天，即1号，结束时间须为该自然月最后一天
@@ -10228,7 +10228,7 @@ overseas：中国境外
 
     @property
     def ReportType(self):
-        """报表类型
+        r"""报表类型
 daily：日报表
 weekly：周报表（周一至周日）
 monthly：月报表（自然月）
@@ -10242,7 +10242,7 @@ monthly：月报表（自然月）
 
     @property
     def Area(self):
-        """域名加速区域
+        r"""域名加速区域
 mainland：中国境内
 overseas：中国境外
         :rtype: str
@@ -10255,7 +10255,7 @@ overseas：中国境外
 
     @property
     def Offset(self):
-        """偏移量，默认0。
+        r"""偏移量，默认0。
         :rtype: int
         """
         return self._Offset
@@ -10266,7 +10266,7 @@ overseas：中国境外
 
     @property
     def Limit(self):
-        """数据个数，默认1000。
+        r"""数据个数，默认1000。
         :rtype: int
         """
         return self._Limit
@@ -10277,7 +10277,7 @@ overseas：中国境外
 
     @property
     def Project(self):
-        """按项目ID筛选
+        r"""按项目ID筛选
         :rtype: int
         """
         return self._Project
@@ -10306,7 +10306,7 @@ overseas：中国境外
 
 
 class DescribeReportDataResponse(AbstractModel):
-    """DescribeReportData返回参数结构体
+    r"""DescribeReportData返回参数结构体
 
     """
 
@@ -10325,7 +10325,7 @@ class DescribeReportDataResponse(AbstractModel):
 
     @property
     def DomainReport(self):
-        """域名维度数据详情
+        r"""域名维度数据详情
         :rtype: list of ReportData
         """
         return self._DomainReport
@@ -10336,7 +10336,7 @@ class DescribeReportDataResponse(AbstractModel):
 
     @property
     def ProjectReport(self):
-        """项目维度数据详情
+        r"""项目维度数据详情
         :rtype: list of ReportData
         """
         return self._ProjectReport
@@ -10347,7 +10347,7 @@ class DescribeReportDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10374,7 +10374,7 @@ class DescribeReportDataResponse(AbstractModel):
 
 
 class DescribeTopDataRequest(AbstractModel):
-    """DescribeTopData请求参数结构体
+    r"""DescribeTopData请求参数结构体
 
     """
 
@@ -10422,7 +10422,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def StartTime(self):
-        """查询起始日期：yyyy-MM-dd HH:mm:ss
+        r"""查询起始日期：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
 返回大于等于起始日期当天 00:00:00 点产生的数据，如 StartTime为2018-09-04 10:40:00，返回数据的起始时间为2018-09-04 00:00:00
 仅支持 90 天内数据查询
@@ -10436,7 +10436,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def EndTime(self):
-        """查询结束日期：yyyy-MM-dd HH:mm:ss
+        r"""查询结束日期：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
 返回小于等于结束日期当天 23:59:59 产生的数据，如EndTime为2018-09-05 22:40:00，返回数据的结束时间为2018-09-05 23:59:59
 EndTime 需要大于等于 StartTime
@@ -10450,7 +10450,7 @@ EndTime 需要大于等于 StartTime
 
     @property
     def Metric(self):
-        """排序对象，支持以下几种形式：
+        r"""排序对象，支持以下几种形式：
 ip、ua_device、ua_browser、ua_os、referer
         :rtype: str
         """
@@ -10462,7 +10462,7 @@ ip、ua_device、ua_browser、ua_os、referer
 
     @property
     def Filter(self):
-        """排序使用的指标名称：
+        r"""排序使用的指标名称：
 flux：Metric 为 host 时指代访问流量
 request：Metric 为 host 时指代访问请求数
         :rtype: str
@@ -10475,7 +10475,7 @@ request：Metric 为 host 时指代访问请求数
 
     @property
     def Domains(self):
-        """指定查询域名列表，最多可一次性查询 30 个加速域名明细
+        r"""指定查询域名列表，最多可一次性查询 30 个加速域名明细
         :rtype: list of str
         """
         return self._Domains
@@ -10486,7 +10486,7 @@ request：Metric 为 host 时指代访问请求数
 
     @property
     def Project(self):
-        """未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+        r"""未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :rtype: int
         """
         return self._Project
@@ -10497,7 +10497,7 @@ request：Metric 为 host 时指代访问请求数
 
     @property
     def Detail(self):
-        """是否详细显示每个域名的的具体数值
+        r"""是否详细显示每个域名的的具体数值
         :rtype: bool
         """
         return self._Detail
@@ -10508,7 +10508,7 @@ request：Metric 为 host 时指代访问请求数
 
     @property
     def Area(self):
-        """指定服务地域查询，不填充表示查询中国境内 CDN 数据
+        r"""指定服务地域查询，不填充表示查询中国境内 CDN 数据
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据
         :rtype: str
@@ -10521,7 +10521,7 @@ overseas：指定查询中国境外 CDN 数据
 
     @property
     def Product(self):
-        """指定查询的产品数据，目前仅可使用cdn
+        r"""指定查询的产品数据，目前仅可使用cdn
         :rtype: str
         """
         return self._Product
@@ -10552,7 +10552,7 @@ overseas：指定查询中国境外 CDN 数据
 
 
 class DescribeTopDataResponse(AbstractModel):
-    """DescribeTopData返回参数结构体
+    r"""DescribeTopData返回参数结构体
 
     """
 
@@ -10568,7 +10568,7 @@ class DescribeTopDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """各个资源的Top 访问数据详情。
+        r"""各个资源的Top 访问数据详情。
         :rtype: list of TopDataMore
         """
         return self._Data
@@ -10579,7 +10579,7 @@ class DescribeTopDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10600,7 +10600,7 @@ class DescribeTopDataResponse(AbstractModel):
 
 
 class DescribeTrafficPackagesRequest(AbstractModel):
-    """DescribeTrafficPackages请求参数结构体
+    r"""DescribeTrafficPackages请求参数结构体
 
     """
 
@@ -10625,7 +10625,7 @@ channel：按来源排序，主动购买>自动续订>CDN赠送
 
     @property
     def Offset(self):
-        """分页查询起始地址，默认 0
+        r"""分页查询起始地址，默认 0
         :rtype: int
         """
         return self._Offset
@@ -10636,7 +10636,7 @@ channel：按来源排序，主动购买>自动续订>CDN赠送
 
     @property
     def Limit(self):
-        """分页查询记录个数，默认100，最大1000
+        r"""分页查询记录个数，默认100，最大1000
         :rtype: int
         """
         return self._Limit
@@ -10647,7 +10647,7 @@ channel：按来源排序，主动购买>自动续订>CDN赠送
 
     @property
     def SortBy(self):
-        """流量包排序方式，支持以下值：
+        r"""流量包排序方式，支持以下值：
 expireTimeDesc：默认值，按过期时间倒序
 expireTimeAsc：按过期时间正序
 createTimeDesc：按创建时间倒序
@@ -10678,7 +10678,7 @@ channel：按来源排序，主动购买>自动续订>CDN赠送
 
 
 class DescribeTrafficPackagesResponse(AbstractModel):
-    """DescribeTrafficPackages返回参数结构体
+    r"""DescribeTrafficPackages返回参数结构体
 
     """
 
@@ -10706,7 +10706,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """流量包总个数
+        r"""流量包总个数
         :rtype: int
         """
         return self._TotalCount
@@ -10717,7 +10717,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def TrafficPackages(self):
-        """流量包详情
+        r"""流量包详情
         :rtype: list of TrafficPackage
         """
         return self._TrafficPackages
@@ -10728,7 +10728,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def ExpiringCount(self):
-        """即将过期的流量包个数（7天内）
+        r"""即将过期的流量包个数（7天内）
         :rtype: int
         """
         return self._ExpiringCount
@@ -10739,7 +10739,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def EnabledCount(self):
-        """有效流量包个数
+        r"""有效流量包个数
         :rtype: int
         """
         return self._EnabledCount
@@ -10750,7 +10750,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def PaidCount(self):
-        """付费流量包个数
+        r"""付费流量包个数
         :rtype: int
         """
         return self._PaidCount
@@ -10761,7 +10761,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10786,7 +10786,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
 
 class DescribeUrlViolationsRequest(AbstractModel):
-    """DescribeUrlViolations请求参数结构体
+    r"""DescribeUrlViolations请求参数结构体
 
     """
 
@@ -10805,7 +10805,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -10816,7 +10816,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100
+        r"""分页查询限制数目，默认为 100
         :rtype: int
         """
         return self._Limit
@@ -10827,7 +10827,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """指定的域名查询
+        r"""指定的域名查询
         :rtype: list of str
         """
         return self._Domains
@@ -10852,7 +10852,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
 
 class DescribeUrlViolationsResponse(AbstractModel):
-    """DescribeUrlViolations返回参数结构体
+    r"""DescribeUrlViolations返回参数结构体
 
     """
 
@@ -10872,7 +10872,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
 
     @property
     def UrlRecordList(self):
-        """违规 URL 详情
+        r"""违规 URL 详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ViolationUrl
         """
@@ -10884,7 +10884,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """记录总数，用于分页
+        r"""记录总数，用于分页
         :rtype: int
         """
         return self._TotalCount
@@ -10895,7 +10895,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10917,7 +10917,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
 
 
 class DetailDomain(AbstractModel):
-    """加速域名全量配置信息
+    r"""加速域名全量配置信息
 
     """
 
@@ -11213,7 +11213,7 @@ off：不支持
 
     @property
     def ResourceId(self):
-        """域名 ID
+        r"""域名 ID
         :rtype: str
         """
         return self._ResourceId
@@ -11224,7 +11224,7 @@ off：不支持
 
     @property
     def AppId(self):
-        """腾讯云账号ID
+        r"""腾讯云账号ID
         :rtype: int
         """
         return self._AppId
@@ -11235,7 +11235,7 @@ off：不支持
 
     @property
     def Domain(self):
-        """加速域名
+        r"""加速域名
         :rtype: str
         """
         return self._Domain
@@ -11246,7 +11246,7 @@ off：不支持
 
     @property
     def Cname(self):
-        """域名对应的 CNAME 地址
+        r"""域名对应的 CNAME 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11258,7 +11258,7 @@ off：不支持
 
     @property
     def Status(self):
-        """加速服务状态
+        r"""加速服务状态
 rejected：域名审核未通过，域名备案过期/被注销导致
 processing：部署中
 closing：关闭中
@@ -11274,7 +11274,7 @@ offline：已关闭
 
     @property
     def ProjectId(self):
-        """项目 ID，可前往腾讯云项目管理页面查看
+        r"""项目 ID，可前往腾讯云项目管理页面查看
         :rtype: int
         """
         return self._ProjectId
@@ -11285,7 +11285,7 @@ offline：已关闭
 
     @property
     def ServiceType(self):
-        """加速域名业务类型
+        r"""加速域名业务类型
 web：网页小文件
 download：下载大文件
 media：音视频点播
@@ -11301,7 +11301,7 @@ dynamic:  动态加速
 
     @property
     def CreateTime(self):
-        """域名创建时间
+        r"""域名创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -11312,7 +11312,7 @@ dynamic:  动态加速
 
     @property
     def UpdateTime(self):
-        """域名更新时间
+        r"""域名更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11323,7 +11323,7 @@ dynamic:  动态加速
 
     @property
     def Origin(self):
-        """源站配置
+        r"""源站配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
         return self._Origin
@@ -11334,7 +11334,7 @@ dynamic:  动态加速
 
     @property
     def IpFilter(self):
-        """IP 黑白名单配置
+        r"""IP 黑白名单配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
@@ -11346,7 +11346,7 @@ dynamic:  动态加速
 
     @property
     def IpFreqLimit(self):
-        """IP 访问限频配置
+        r"""IP 访问限频配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
@@ -11358,7 +11358,7 @@ dynamic:  动态加速
 
     @property
     def StatusCodeCache(self):
-        """状态码缓存配置
+        r"""状态码缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
@@ -11370,7 +11370,7 @@ dynamic:  动态加速
 
     @property
     def Compression(self):
-        """智能压缩配置
+        r"""智能压缩配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
@@ -11382,7 +11382,7 @@ dynamic:  动态加速
 
     @property
     def BandwidthAlert(self):
-        """带宽封顶配置
+        r"""带宽封顶配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
@@ -11394,7 +11394,7 @@ dynamic:  动态加速
 
     @property
     def RangeOriginPull(self):
-        """Range 回源配置
+        r"""Range 回源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
@@ -11406,7 +11406,7 @@ dynamic:  动态加速
 
     @property
     def FollowRedirect(self):
-        """301/302 回源自动跟随配置
+        r"""301/302 回源自动跟随配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
@@ -11418,7 +11418,7 @@ dynamic:  动态加速
 
     @property
     def ErrorPage(self):
-        """自定义错误页面配置
+        r"""自定义错误页面配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
@@ -11430,7 +11430,7 @@ dynamic:  动态加速
 
     @property
     def RequestHeader(self):
-        """自定义请求头部配置
+        r"""自定义请求头部配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
@@ -11442,7 +11442,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeader(self):
-        """自定义响应头部配置
+        r"""自定义响应头部配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
@@ -11454,7 +11454,7 @@ dynamic:  动态加速
 
     @property
     def DownstreamCapping(self):
-        """单链接下行限速配置
+        r"""单链接下行限速配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
@@ -11466,7 +11466,7 @@ dynamic:  动态加速
 
     @property
     def CacheKey(self):
-        """带参/不带参缓存配置
+        r"""带参/不带参缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
@@ -11478,7 +11478,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeaderCache(self):
-        """源站头部缓存配置
+        r"""源站头部缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
@@ -11490,7 +11490,7 @@ dynamic:  动态加速
 
     @property
     def VideoSeek(self):
-        """视频拖拽配置
+        r"""视频拖拽配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
@@ -11502,7 +11502,7 @@ dynamic:  动态加速
 
     @property
     def Cache(self):
-        """节点缓存过期规则配置
+        r"""节点缓存过期规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
@@ -11514,7 +11514,7 @@ dynamic:  动态加速
 
     @property
     def OriginPullOptimization(self):
-        """跨国链路优化配置（功能灰度中，敬请期待）
+        r"""跨国链路优化配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
@@ -11526,7 +11526,7 @@ dynamic:  动态加速
 
     @property
     def Https(self):
-        """Https 加速相关配置
+        r"""Https 加速相关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
@@ -11538,7 +11538,7 @@ dynamic:  动态加速
 
     @property
     def Authentication(self):
-        """时间戳防盗链配置
+        r"""时间戳防盗链配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
@@ -11550,7 +11550,7 @@ dynamic:  动态加速
 
     @property
     def Seo(self):
-        """SEO 优化配置
+        r"""SEO 优化配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
@@ -11562,7 +11562,7 @@ dynamic:  动态加速
 
     @property
     def Disable(self):
-        """域名封禁状态
+        r"""域名封禁状态
 normal：正常状态
 overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
 malicious：域名出现恶意行为，强制关闭加速服务
@@ -11582,7 +11582,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def ForceRedirect(self):
-        """访问协议强制跳转配置
+        r"""访问协议强制跳转配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
@@ -11594,7 +11594,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Referer(self):
-        """Referer 防盗链配置
+        r"""Referer 防盗链配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
@@ -11606,7 +11606,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def MaxAge(self):
-        """浏览器缓存过期规则配置（功能灰度中，敬请期待）
+        r"""浏览器缓存过期规则配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
@@ -11618,7 +11618,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Ipv6(self):
-        """Ipv6 回源配置（功能灰度中，敬请期待）
+        r"""Ipv6 回源配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
         """
@@ -11630,7 +11630,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Compatibility(self):
-        """是否兼容旧版本配置（内部兼容性字段）
+        r"""是否兼容旧版本配置（内部兼容性字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
         """
@@ -11642,7 +11642,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def SpecificConfig(self):
-        """区域特殊配置
+        r"""区域特殊配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         """
@@ -11654,7 +11654,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Area(self):
-        """加速区域
+        r"""加速区域
 mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
@@ -11669,7 +11669,7 @@ global：全球加速
 
     @property
     def Readonly(self):
-        """域名锁定状态
+        r"""域名锁定状态
 normal：未锁定
 mainland：中国境内锁定
 overseas：中国境外锁定
@@ -11685,7 +11685,7 @@ global：全球锁定
 
     @property
     def OriginPullTimeout(self):
-        """回源超时配置
+        r"""回源超时配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
@@ -11697,7 +11697,7 @@ global：全球锁定
 
     @property
     def AwsPrivateAccess(self):
-        """回源S3鉴权配置
+        r"""回源S3鉴权配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
@@ -11709,7 +11709,7 @@ global：全球锁定
 
     @property
     def SecurityConfig(self):
-        """Scdn配置
+        r"""Scdn配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
         """
@@ -11721,7 +11721,7 @@ global：全球锁定
 
     @property
     def ImageOptimization(self):
-        """ImageOptimization配置
+        r"""ImageOptimization配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
         """
@@ -11733,7 +11733,7 @@ global：全球锁定
 
     @property
     def UserAgentFilter(self):
-        """UA黑白名单配置
+        r"""UA黑白名单配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
@@ -11745,7 +11745,7 @@ global：全球锁定
 
     @property
     def AccessControl(self):
-        """访问控制
+        r"""访问控制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
         """
@@ -11757,7 +11757,7 @@ global：全球锁定
 
     @property
     def Advance(self):
-        """是否支持高级配置项
+        r"""是否支持高级配置项
 on：支持
 off：不支持
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11771,7 +11771,7 @@ off：不支持
 
     @property
     def UrlRedirect(self):
-        """URL重定向配置
+        r"""URL重定向配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         """
@@ -11783,7 +11783,7 @@ off：不支持
 
     @property
     def AccessPort(self):
-        """访问端口配置
+        r"""访问端口配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -11795,7 +11795,7 @@ off：不支持
 
     @property
     def Tag(self):
-        """标签配置
+        r"""标签配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -11807,7 +11807,7 @@ off：不支持
 
     @property
     def AdvancedAuthentication(self):
-        """时间戳防盗链高级配置，白名单功能
+        r"""时间戳防盗链高级配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
         """
@@ -11819,7 +11819,7 @@ off：不支持
 
     @property
     def OriginAuthentication(self):
-        """回源鉴权高级配置，白名单功能
+        r"""回源鉴权高级配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
@@ -11831,7 +11831,7 @@ off：不支持
 
     @property
     def Ipv6Access(self):
-        """Ipv6访问配置
+        r"""Ipv6访问配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
@@ -11843,7 +11843,7 @@ off：不支持
 
     @property
     def AdvanceSet(self):
-        """高级配置集合
+        r"""高级配置集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AdvanceConfig
         """
@@ -11855,7 +11855,7 @@ off：不支持
 
     @property
     def OfflineCache(self):
-        """离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
+        r"""离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
@@ -11867,7 +11867,7 @@ off：不支持
 
     @property
     def OriginCombine(self):
-        """合并回源（白名单功能）
+        r"""合并回源（白名单功能）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
@@ -11879,7 +11879,7 @@ off：不支持
 
     @property
     def PostMaxSize(self):
-        """POST上传配置项
+        r"""POST上传配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PostSize`
         """
@@ -11891,7 +11891,7 @@ off：不支持
 
     @property
     def Quic(self):
-        """Quic配置
+        r"""Quic配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
@@ -11903,7 +11903,7 @@ off：不支持
 
     @property
     def OssPrivateAccess(self):
-        """回源OSS私有鉴权
+        r"""回源OSS私有鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
@@ -11915,7 +11915,7 @@ off：不支持
 
     @property
     def WebSocket(self):
-        """WebSocket配置
+        r"""WebSocket配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
@@ -11927,7 +11927,7 @@ off：不支持
 
     @property
     def RemoteAuthentication(self):
-        """远程鉴权配置
+        r"""远程鉴权配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         """
@@ -11939,7 +11939,7 @@ off：不支持
 
     @property
     def ShareCname(self):
-        """共享CNAME配置（白名单功能）
+        r"""共享CNAME配置（白名单功能）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
@@ -11951,7 +11951,7 @@ off：不支持
 
     @property
     def RuleEngine(self):
-        """规则引擎
+        r"""规则引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
         """
@@ -11963,7 +11963,7 @@ off：不支持
 
     @property
     def ParentHost(self):
-        """主域名
+        r"""主域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11975,7 +11975,7 @@ off：不支持
 
     @property
     def HwPrivateAccess(self):
-        """华为云对象存储回源鉴权
+        r"""华为云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
@@ -11987,7 +11987,7 @@ off：不支持
 
     @property
     def QnPrivateAccess(self):
-        """七牛云对象存储回源鉴权
+        r"""七牛云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
@@ -11999,7 +11999,7 @@ off：不支持
 
     @property
     def HttpsBilling(self):
-        """HTTPS服务，缺省时默认开启
+        r"""HTTPS服务，缺省时默认开启
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
@@ -12011,7 +12011,7 @@ off：不支持
 
     @property
     def OthersPrivateAccess(self):
-        """其他厂商对象存储回源鉴权
+        r"""其他厂商对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
@@ -12023,7 +12023,7 @@ off：不支持
 
     @property
     def ParamFilter(self):
-        """参数黑名单
+        r"""参数黑名单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
         """
@@ -12223,7 +12223,7 @@ off：不支持
 
 
 class DiagnoseData(AbstractModel):
-    """诊断报告内容数据
+    r"""诊断报告内容数据
 
     """
 
@@ -12244,7 +12244,7 @@ class DiagnoseData(AbstractModel):
 
     @property
     def Data(self):
-        """诊断报告内容
+        r"""诊断报告内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiagnoseUnit
         """
@@ -12256,7 +12256,7 @@ class DiagnoseData(AbstractModel):
 
     @property
     def Status(self):
-        """当前诊断项是否正常。
+        r"""当前诊断项是否正常。
 "ok"：正常
 "error"：异常
 "warning"："警告"
@@ -12289,7 +12289,7 @@ class DiagnoseData(AbstractModel):
 
 
 class DiagnoseInfo(AbstractModel):
-    """诊断信息
+    r"""诊断信息
 
     """
 
@@ -12327,7 +12327,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def DiagnoseUrl(self):
-        """待诊断的URL。
+        r"""待诊断的URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12339,7 +12339,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def DiagnoseLink(self):
-        """由系统生成的诊断链接。
+        r"""由系统生成的诊断链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12351,7 +12351,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """诊断创建时间。
+        r"""诊断创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12363,7 +12363,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """诊断链接过期时间。
+        r"""诊断链接过期时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12375,7 +12375,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def VisitCount(self):
-        """诊断链接当前访问次数，一个诊断链接最多可访问10次。
+        r"""诊断链接当前访问次数，一个诊断链接最多可访问10次。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12387,7 +12387,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def ClientList(self):
-        """访问诊断链接的客户端简易信息
+        r"""访问诊断链接的客户端简易信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiagnoseList
         """
@@ -12399,7 +12399,7 @@ class DiagnoseInfo(AbstractModel):
 
     @property
     def Area(self):
-        """域名加速区域
+        r"""域名加速区域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12434,7 +12434,7 @@ class DiagnoseInfo(AbstractModel):
 
 
 class DiagnoseList(AbstractModel):
-    """客户端访问诊断URL信息列表
+    r"""客户端访问诊断URL信息列表
 
     """
 
@@ -12469,7 +12469,7 @@ class DiagnoseList(AbstractModel):
 
     @property
     def DiagnoseTag(self):
-        """诊断任务标签。
+        r"""诊断任务标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12481,7 +12481,7 @@ class DiagnoseList(AbstractModel):
 
     @property
     def ReportId(self):
-        """报告ID，用于获取详细诊断报告。
+        r"""报告ID，用于获取详细诊断报告。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12493,7 +12493,7 @@ class DiagnoseList(AbstractModel):
 
     @property
     def ClientInfo(self):
-        """客户端信息。
+        r"""客户端信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClientInfo
         """
@@ -12505,7 +12505,7 @@ class DiagnoseList(AbstractModel):
 
     @property
     def FinalDiagnose(self):
-        """最终诊断结果。
+        r"""最终诊断结果。
 -1：已提交
 0  ：检测中
 1  ：检测正常
@@ -12522,7 +12522,7 @@ class DiagnoseList(AbstractModel):
 
     @property
     def CreateTime(self):
-        """诊断任务创建时间。
+        r"""诊断任务创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12555,7 +12555,7 @@ class DiagnoseList(AbstractModel):
 
 
 class DiagnoseUnit(AbstractModel):
-    """诊断报告单元信息
+    r"""诊断报告单元信息
 
     """
 
@@ -12581,7 +12581,7 @@ class DiagnoseUnit(AbstractModel):
 
     @property
     def Key(self):
-        """内容单元英文名称。
+        r"""内容单元英文名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12593,7 +12593,7 @@ class DiagnoseUnit(AbstractModel):
 
     @property
     def KeyText(self):
-        """内容单元中文名称。
+        r"""内容单元中文名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12605,7 +12605,7 @@ class DiagnoseUnit(AbstractModel):
 
     @property
     def Value(self):
-        """报告内容。
+        r"""报告内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12617,7 +12617,7 @@ class DiagnoseUnit(AbstractModel):
 
     @property
     def ValueText(self):
-        """报告内容。
+        r"""报告内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12644,7 +12644,7 @@ class DiagnoseUnit(AbstractModel):
 
 
 class DisableCachesRequest(AbstractModel):
-    """DisableCaches请求参数结构体
+    r"""DisableCaches请求参数结构体
 
     """
 
@@ -12658,7 +12658,7 @@ class DisableCachesRequest(AbstractModel):
 
     @property
     def Urls(self):
-        """禁用的 URL 列表（分协议生效，必须包含http://或https://）
+        r"""禁用的 URL 列表（分协议生效，必须包含http://或https://）
 每次最多可提交 100 条，每日最多可提交 3000 条
         :rtype: list of str
         """
@@ -12682,7 +12682,7 @@ class DisableCachesRequest(AbstractModel):
 
 
 class DisableCachesResponse(AbstractModel):
-    """DisableCaches返回参数结构体
+    r"""DisableCaches返回参数结构体
 
     """
 
@@ -12701,7 +12701,7 @@ class DisableCachesResponse(AbstractModel):
 
     @property
     def CacheOptResult(self):
-        """提交结果
+        r"""提交结果
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         """
         return self._CacheOptResult
@@ -12712,7 +12712,7 @@ class DisableCachesResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -12723,7 +12723,7 @@ class DisableCachesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12742,7 +12742,7 @@ class DisableCachesResponse(AbstractModel):
 
 
 class DisableClsLogTopicRequest(AbstractModel):
-    """DisableClsLogTopic请求参数结构体
+    r"""DisableClsLogTopic请求参数结构体
 
     """
 
@@ -12761,7 +12761,7 @@ class DisableClsLogTopicRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -12772,7 +12772,7 @@ class DisableClsLogTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -12783,7 +12783,7 @@ class DisableClsLogTopicRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -12808,7 +12808,7 @@ class DisableClsLogTopicRequest(AbstractModel):
 
 
 class DisableClsLogTopicResponse(AbstractModel):
-    """DisableClsLogTopic返回参数结构体
+    r"""DisableClsLogTopic返回参数结构体
 
     """
 
@@ -12821,7 +12821,7 @@ class DisableClsLogTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12836,7 +12836,7 @@ class DisableClsLogTopicResponse(AbstractModel):
 
 
 class DistrictIspInfo(AbstractModel):
-    """地区运营商明细数据
+    r"""地区运营商明细数据
 
     """
 
@@ -12882,7 +12882,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -12893,7 +12893,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议类型
+        r"""协议类型
         :rtype: str
         """
         return self._Protocol
@@ -12904,7 +12904,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """IP协议类型
+        r"""IP协议类型
         :rtype: str
         """
         return self._IpProtocol
@@ -12915,7 +12915,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """起始时间
+        r"""起始时间
         :rtype: str
         """
         return self._StartTime
@@ -12926,7 +12926,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -12937,7 +12937,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def Interval(self):
-        """时间间隔，单位为分钟
+        r"""时间间隔，单位为分钟
         :rtype: int
         """
         return self._Interval
@@ -12948,7 +12948,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def Metric(self):
-        """指标名称
+        r"""指标名称
         :rtype: str
         """
         return self._Metric
@@ -12959,7 +12959,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def District(self):
-        """地区ID
+        r"""地区ID
         :rtype: int
         """
         return self._District
@@ -12970,7 +12970,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def Isp(self):
-        """运营商ID
+        r"""运营商ID
         :rtype: int
         """
         return self._Isp
@@ -12981,7 +12981,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def DataPoints(self):
-        """指标数据点
+        r"""指标数据点
         :rtype: list of int non-negative
         """
         return self._DataPoints
@@ -12992,7 +12992,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def DistrictName(self):
-        """地区名称
+        r"""地区名称
         :rtype: str
         """
         return self._DistrictName
@@ -13003,7 +13003,7 @@ class DistrictIspInfo(AbstractModel):
 
     @property
     def IspName(self):
-        """运营商名称
+        r"""运营商名称
         :rtype: str
         """
         return self._IspName
@@ -13037,7 +13037,7 @@ class DistrictIspInfo(AbstractModel):
 
 
 class DomainAreaConfig(AbstractModel):
-    """域名地区配置
+    r"""域名地区配置
 
     """
 
@@ -13053,7 +13053,7 @@ class DomainAreaConfig(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -13064,7 +13064,7 @@ class DomainAreaConfig(AbstractModel):
 
     @property
     def Area(self):
-        """地区列表，其中元素可为mainland/overseas
+        r"""地区列表，其中元素可为mainland/overseas
         :rtype: list of str
         """
         return self._Area
@@ -13088,7 +13088,7 @@ class DomainAreaConfig(AbstractModel):
 
 
 class DomainFilter(AbstractModel):
-    """域名查询时过滤条件。
+    r"""域名查询时过滤条件。
 
     """
 
@@ -13119,7 +13119,7 @@ class DomainFilter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤字段名，支持的列表如下：
+        r"""过滤字段名，支持的列表如下：
 - origin：主源站。
 - domain：域名。
 - resourceId：域名id。
@@ -13141,7 +13141,7 @@ class DomainFilter(AbstractModel):
 
     @property
     def Value(self):
-        """过滤字段值，默认最多传 5 个。当 Name 是 origin/domain 且 Fuzzy 传 true，最多传 1 个。
+        r"""过滤字段值，默认最多传 5 个。当 Name 是 origin/domain 且 Fuzzy 传 true，最多传 1 个。
         :rtype: list of str
         """
         return self._Value
@@ -13152,7 +13152,7 @@ class DomainFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """是否启用模糊查询，仅支持过滤字段名为origin，domain。
+        r"""是否启用模糊查询，仅支持过滤字段名为origin，domain。
 模糊查询时，Value长度最大为1，否则Value长度最大为5。
         :rtype: bool
         """
@@ -13178,7 +13178,7 @@ class DomainFilter(AbstractModel):
 
 
 class DomainLog(AbstractModel):
-    """日志包下载链接详情
+    r"""日志包下载链接详情
 
     """
 
@@ -13209,7 +13209,7 @@ overseas：境外
 
     @property
     def StartTime(self):
-        """日志包起始时间
+        r"""日志包起始时间
         :rtype: str
         """
         return self._StartTime
@@ -13220,7 +13220,7 @@ overseas：境外
 
     @property
     def EndTime(self):
-        """日志包结束时间
+        r"""日志包结束时间
         :rtype: str
         """
         return self._EndTime
@@ -13231,7 +13231,7 @@ overseas：境外
 
     @property
     def LogPath(self):
-        """日志包下载链接
+        r"""日志包下载链接
         :rtype: str
         """
         return self._LogPath
@@ -13242,7 +13242,7 @@ overseas：境外
 
     @property
     def Area(self):
-        """日志包对应加速区域
+        r"""日志包对应加速区域
 mainland：境内
 overseas：境外
         :rtype: str
@@ -13255,7 +13255,7 @@ overseas：境外
 
     @property
     def LogName(self):
-        """日志包文件名
+        r"""日志包文件名
         :rtype: str
         """
         return self._LogName
@@ -13266,7 +13266,7 @@ overseas：境外
 
     @property
     def FileSize(self):
-        """文件大小，单位: Byte
+        r"""文件大小，单位: Byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13295,7 +13295,7 @@ overseas：境外
 
 
 class DownstreamCapping(AbstractModel):
-    """单链接下行限速配置，默认为关闭状态
+    r"""单链接下行限速配置，默认为关闭状态
 
     """
 
@@ -13314,7 +13314,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """下行速度配置开关，取值有：
+        r"""下行速度配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -13327,7 +13327,7 @@ off：关闭
 
     @property
     def CappingRules(self):
-        """下行限速规则
+        r"""下行限速规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CappingRule
         """
@@ -13357,7 +13357,7 @@ off：关闭
 
 
 class DuplicateDomainConfigRequest(AbstractModel):
-    """DuplicateDomainConfig请求参数结构体
+    r"""DuplicateDomainConfig请求参数结构体
 
     """
 
@@ -13373,7 +13373,7 @@ class DuplicateDomainConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """新增域名
+        r"""新增域名
         :rtype: str
         """
         return self._Domain
@@ -13384,7 +13384,7 @@ class DuplicateDomainConfigRequest(AbstractModel):
 
     @property
     def ReferenceDomain(self):
-        """被拷贝配置的域名
+        r"""被拷贝配置的域名
         :rtype: str
         """
         return self._ReferenceDomain
@@ -13408,7 +13408,7 @@ class DuplicateDomainConfigRequest(AbstractModel):
 
 
 class DuplicateDomainConfigResponse(AbstractModel):
-    """DuplicateDomainConfig返回参数结构体
+    r"""DuplicateDomainConfig返回参数结构体
 
     """
 
@@ -13421,7 +13421,7 @@ class DuplicateDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13436,7 +13436,7 @@ class DuplicateDomainConfigResponse(AbstractModel):
 
 
 class EdgePackTaskFilter(AbstractModel):
-    """动态打包任务过滤器
+    r"""动态打包任务过滤器
 
     """
 
@@ -13458,7 +13458,7 @@ status: 母包处理进度 done, failed, processing
 
     @property
     def Name(self):
-        """过滤字段名
+        r"""过滤字段名
 apk: apk名称
 status: 母包处理进度 done, failed, processing
         :rtype: str
@@ -13471,7 +13471,7 @@ status: 母包处理进度 done, failed, processing
 
     @property
     def Value(self):
-        """过滤字段值
+        r"""过滤字段值
         :rtype: list of str
         """
         return self._Value
@@ -13482,7 +13482,7 @@ status: 母包处理进度 done, failed, processing
 
     @property
     def Fuzzy(self):
-        """是否启用模糊查询，仅支持过滤字段名为 apk。
+        r"""是否启用模糊查询，仅支持过滤字段名为 apk。
 模糊查询时，Value长度最大为1。
         :rtype: bool
         """
@@ -13508,7 +13508,7 @@ status: 母包处理进度 done, failed, processing
 
 
 class EdgePackTaskStatus(AbstractModel):
-    """动态打包任务状态
+    r"""动态打包任务状态
 
     """
 
@@ -13540,7 +13540,7 @@ failed: 处理失败
 
     @property
     def Apk(self):
-        """APK 名称
+        r"""APK 名称
         :rtype: str
         """
         return self._Apk
@@ -13551,7 +13551,7 @@ failed: 处理失败
 
     @property
     def DstDir(self):
-        """输出目录
+        r"""输出目录
         :rtype: str
         """
         return self._DstDir
@@ -13562,7 +13562,7 @@ failed: 处理失败
 
     @property
     def UploadTime(self):
-        """上传时间
+        r"""上传时间
         :rtype: str
         """
         return self._UploadTime
@@ -13573,7 +13573,7 @@ failed: 处理失败
 
     @property
     def Status(self):
-        """任务状态
+        r"""任务状态
 created: 创建成功
 processing: 处理中
 done: 处理完成
@@ -13588,7 +13588,7 @@ failed: 处理失败
 
     @property
     def SrcDir(self):
-        """上传目录
+        r"""上传目录
         :rtype: list of str
         """
         return self._SrcDir
@@ -13599,7 +13599,7 @@ failed: 处理失败
 
     @property
     def StatusDesc(self):
-        """失败任务状态详情
+        r"""失败任务状态详情
         :rtype: str
         """
         return self._StatusDesc
@@ -13627,7 +13627,7 @@ failed: 处理失败
 
 
 class EnableCachesRequest(AbstractModel):
-    """EnableCaches请求参数结构体
+    r"""EnableCaches请求参数结构体
 
     """
 
@@ -13643,7 +13643,7 @@ class EnableCachesRequest(AbstractModel):
 
     @property
     def Urls(self):
-        """解封 URL 列表
+        r"""解封 URL 列表
         :rtype: list of str
         """
         return self._Urls
@@ -13654,7 +13654,7 @@ class EnableCachesRequest(AbstractModel):
 
     @property
     def Date(self):
-        """URL封禁日期
+        r"""URL封禁日期
         :rtype: str
         """
         return self._Date
@@ -13678,7 +13678,7 @@ class EnableCachesRequest(AbstractModel):
 
 
 class EnableCachesResponse(AbstractModel):
-    """EnableCaches返回参数结构体
+    r"""EnableCaches返回参数结构体
 
     """
 
@@ -13697,7 +13697,7 @@ class EnableCachesResponse(AbstractModel):
 
     @property
     def CacheOptResult(self):
-        """结果列表
+        r"""结果列表
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         """
         return self._CacheOptResult
@@ -13708,7 +13708,7 @@ class EnableCachesResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -13719,7 +13719,7 @@ class EnableCachesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13738,7 +13738,7 @@ class EnableCachesResponse(AbstractModel):
 
 
 class EnableClsLogTopicRequest(AbstractModel):
-    """EnableClsLogTopic请求参数结构体
+    r"""EnableClsLogTopic请求参数结构体
 
     """
 
@@ -13757,7 +13757,7 @@ class EnableClsLogTopicRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -13768,7 +13768,7 @@ class EnableClsLogTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -13779,7 +13779,7 @@ class EnableClsLogTopicRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -13804,7 +13804,7 @@ class EnableClsLogTopicRequest(AbstractModel):
 
 
 class EnableClsLogTopicResponse(AbstractModel):
-    """EnableClsLogTopic返回参数结构体
+    r"""EnableClsLogTopic返回参数结构体
 
     """
 
@@ -13817,7 +13817,7 @@ class EnableClsLogTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13832,7 +13832,7 @@ class EnableClsLogTopicResponse(AbstractModel):
 
 
 class ErrorPage(AbstractModel):
-    """状态码重定向配置，默认为关闭状态
+    r"""状态码重定向配置，默认为关闭状态
 
     """
 
@@ -13852,7 +13852,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """状态码重定向配置开关，取值有：
+        r"""状态码重定向配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13866,7 +13866,7 @@ off：关闭
 
     @property
     def PageRules(self):
-        """状态码重定向规则配置
+        r"""状态码重定向规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ErrorPageRule
         """
@@ -13896,7 +13896,7 @@ off：关闭
 
 
 class ErrorPageRule(AbstractModel):
-    """状态码重定向规则配置
+    r"""状态码重定向规则配置
 
     """
 
@@ -13918,7 +13918,7 @@ class ErrorPageRule(AbstractModel):
 
     @property
     def StatusCode(self):
-        """状态码
+        r"""状态码
 支持 400、403、404、500
         :rtype: int
         """
@@ -13930,7 +13930,7 @@ class ErrorPageRule(AbstractModel):
 
     @property
     def RedirectCode(self):
-        """重定向状态码设置
+        r"""重定向状态码设置
 支持 301 或 302
         :rtype: int
         """
@@ -13942,7 +13942,7 @@ class ErrorPageRule(AbstractModel):
 
     @property
     def RedirectUrl(self):
-        """重定向 URL
+        r"""重定向 URL
 需要为完整跳转路径，如 https://www.test.com/error.html
         :rtype: str
         """
@@ -13968,7 +13968,7 @@ class ErrorPageRule(AbstractModel):
 
 
 class ExtraLogset(AbstractModel):
-    """除上海外其他区域日志集和日志主题信息
+    r"""除上海外其他区域日志集和日志主题信息
 
     """
 
@@ -13986,7 +13986,7 @@ class ExtraLogset(AbstractModel):
 
     @property
     def Logset(self):
-        """日志集信息
+        r"""日志集信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
         """
@@ -13998,7 +13998,7 @@ class ExtraLogset(AbstractModel):
 
     @property
     def Topics(self):
-        """日志主题信息列表
+        r"""日志主题信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopicInfo
         """
@@ -14030,7 +14030,7 @@ class ExtraLogset(AbstractModel):
 
 
 class FollowRedirect(AbstractModel):
-    """回源 301/302 状态码自动跟随配置，默认为关闭状态
+    r"""回源 301/302 状态码自动跟随配置，默认为关闭状态
 
     """
 
@@ -14049,7 +14049,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """回源跟随配置开关，取值有：
+        r"""回源跟随配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -14062,7 +14062,7 @@ off：关闭
 
     @property
     def RedirectConfig(self):
-        """自定义回源302 follow请求host配置，该功能为白名单功能，需要开启请联系腾讯云工程师。
+        r"""自定义回源302 follow请求host配置，该功能为白名单功能，需要开启请联系腾讯云工程师。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RedirectConfig`
         """
@@ -14089,7 +14089,7 @@ off：关闭
 
 
 class ForceRedirect(AbstractModel):
-    """访问协议强制跳转配置，默认为关闭状态
+    r"""访问协议强制跳转配置，默认为关闭状态
 
     """
 
@@ -14120,7 +14120,7 @@ https：强制 https 跳转
 
     @property
     def Switch(self):
-        """访问强制跳转配置开关，取值有：
+        r"""访问强制跳转配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14134,7 +14134,7 @@ off：关闭
 
     @property
     def RedirectType(self):
-        """访问强制跳转类型
+        r"""访问强制跳转类型
 http：强制 http 跳转
 https：强制 https 跳转
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14148,7 +14148,7 @@ https：强制 https 跳转
 
     @property
     def RedirectStatusCode(self):
-        """强制跳转时返回状态码 
+        r"""强制跳转时返回状态码 
 支持 301、302、307、308
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -14161,7 +14161,7 @@ https：强制 https 跳转
 
     @property
     def CarryHeaders(self):
-        """强制跳转时是否返回增加的头部。
+        r"""强制跳转时是否返回增加的头部。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14188,7 +14188,7 @@ https：强制 https 跳转
 
 
 class GetDisableRecordsRequest(AbstractModel):
-    """GetDisableRecords请求参数结构体
+    r"""GetDisableRecords请求参数结构体
 
     """
 
@@ -14221,7 +14221,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def Url(self):
-        """指定 URL 查询
+        r"""指定 URL 查询
         :rtype: str
         """
         return self._Url
@@ -14232,7 +14232,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def StartTime(self):
-        """开始时间，如：2018-12-12 10:24:00。
+        r"""开始时间，如：2018-12-12 10:24:00。
         :rtype: str
         """
         return self._StartTime
@@ -14243,7 +14243,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def EndTime(self):
-        """结束时间，如：2018-12-14 10:24:00。
+        r"""结束时间，如：2018-12-14 10:24:00。
         :rtype: str
         """
         return self._EndTime
@@ -14254,7 +14254,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def Status(self):
-        """URL 当前状态
+        r"""URL 当前状态
 disable：当前仍为禁用状态，访问返回 403
 enable：当前为可用状态，已解禁，可正常访问
         :rtype: str
@@ -14267,7 +14267,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def Offset(self):
-        """分页查询偏移量，默认为 0
+        r"""分页查询偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -14278,7 +14278,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为20。
+        r"""分页查询限制数目，默认为20。
         :rtype: int
         """
         return self._Limit
@@ -14289,7 +14289,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
     @property
     def TaskId(self):
-        """任务ID，任务ID和起始时间需要至少填写一项。
+        r"""任务ID，任务ID和起始时间需要至少填写一项。
         :rtype: str
         """
         return self._TaskId
@@ -14318,7 +14318,7 @@ enable：当前为可用状态，已解禁，可正常访问
 
 
 class GetDisableRecordsResponse(AbstractModel):
-    """GetDisableRecords返回参数结构体
+    r"""GetDisableRecords返回参数结构体
 
     """
 
@@ -14337,7 +14337,7 @@ class GetDisableRecordsResponse(AbstractModel):
 
     @property
     def UrlRecordList(self):
-        """封禁历史记录
+        r"""封禁历史记录
         :rtype: list of UrlRecord
         """
         return self._UrlRecordList
@@ -14348,7 +14348,7 @@ class GetDisableRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """任务总数，用于分页
+        r"""任务总数，用于分页
         :rtype: int
         """
         return self._TotalCount
@@ -14359,7 +14359,7 @@ class GetDisableRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14381,7 +14381,7 @@ class GetDisableRecordsResponse(AbstractModel):
 
 
 class GuetzliAdapter(AbstractModel):
-    """图片优化-GuetzliAdapter配置
+    r"""图片优化-GuetzliAdapter配置
 
     """
 
@@ -14397,7 +14397,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """图片优化-GuetzliAdapter配置开关，取值有：
+        r"""图片优化-GuetzliAdapter配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14423,7 +14423,7 @@ off：关闭
 
 
 class HTTPHeader(AbstractModel):
-    """HTTP 请求头
+    r"""HTTP 请求头
 
     """
 
@@ -14439,7 +14439,7 @@ class HTTPHeader(AbstractModel):
 
     @property
     def Name(self):
-        """请求头名称
+        r"""请求头名称
         :rtype: str
         """
         return self._Name
@@ -14450,7 +14450,7 @@ class HTTPHeader(AbstractModel):
 
     @property
     def Value(self):
-        """请求头值
+        r"""请求头值
         :rtype: str
         """
         return self._Value
@@ -14474,7 +14474,7 @@ class HTTPHeader(AbstractModel):
 
 
 class HeaderKey(AbstractModel):
-    """组成CacheKey
+    r"""组成CacheKey
 
     """
 
@@ -14494,7 +14494,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """组成Cachekey配置开关，取值有：
+        r"""组成Cachekey配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14508,7 +14508,7 @@ off：关闭
 
     @property
     def Value(self):
-        """组成CacheKey的header数组，';' 分割
+        r"""组成CacheKey的header数组，';' 分割
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14533,7 +14533,7 @@ off：关闭
 
 
 class HeuristicCache(AbstractModel):
-    """启发式缓存配置
+    r"""启发式缓存配置
 
     """
 
@@ -14553,7 +14553,7 @@ off：关闭（默认）
 
     @property
     def Switch(self):
-        """启发式缓存配置开关，取值有：
+        r"""启发式缓存配置开关，取值有：
 on：开启
 off：关闭（默认）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14567,7 +14567,7 @@ off：关闭（默认）
 
     @property
     def CacheConfig(self):
-        """自定义启发式缓存时间配置
+        r"""自定义启发式缓存时间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheConfig`
         """
@@ -14594,7 +14594,7 @@ off：关闭（默认）
 
 
 class Hsts(AbstractModel):
-    """HSTS 配置。
+    r"""HSTS 配置。
 
     """
 
@@ -14617,7 +14617,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """HSTS 配置开关，取值有：
+        r"""HSTS 配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -14630,7 +14630,7 @@ off：关闭
 
     @property
     def MaxAge(self):
-        """MaxAge数值。
+        r"""MaxAge数值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14642,7 +14642,7 @@ off：关闭
 
     @property
     def IncludeSubDomains(self):
-        """是否包含子域名，on或off。
+        r"""是否包含子域名，on或off。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14668,7 +14668,7 @@ off：关闭
 
 
 class HttpHeaderPathRule(AbstractModel):
-    """Http 头部设置规则，最多可设置 100 条
+    r"""Http 头部设置规则，最多可设置 100 条
 
     """
 
@@ -14683,7 +14683,7 @@ add：增加。增加指定的头部参数，默认允许重复添加，即重�
         :param _HeaderName: http 头部名称，最多可设置 100 个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
-        :param _HeaderValue: http 头部值，最多可设置 2000 个字符
+        :param _HeaderValue: http 头部值，自定义请求头中最多可设置 1000 个字符，自定义响应头中最多可以设置 2000 个字符
 Mode 为 del 时非必填
 Mode 为 add/set 时必填
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14711,7 +14711,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def HeaderMode(self):
-        """http 头部设置方式
+        r"""http 头部设置方式
 set：设置。变更指定头部参数的取值为设置后的值；若设置的头部不存在，则会增加该头部；若存在多个重复的头部参数，则会全部变更，同时合并为一个头部。
 del：删除。删除指定的头部参数
 add：增加。增加指定的头部参数，默认允许重复添加，即重复添加相同的头部（注：重复添加可能会影响浏览器响应，请优先使用set操作）
@@ -14726,7 +14726,7 @@ add：增加。增加指定的头部参数，默认允许重复添加，即重�
 
     @property
     def HeaderName(self):
-        """http 头部名称，最多可设置 100 个字符
+        r"""http 头部名称，最多可设置 100 个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14738,7 +14738,7 @@ add：增加。增加指定的头部参数，默认允许重复添加，即重�
 
     @property
     def HeaderValue(self):
-        """http 头部值，最多可设置 2000 个字符
+        r"""http 头部值，自定义请求头中最多可设置 1000 个字符，自定义响应头中最多可以设置 2000 个字符
 Mode 为 del 时非必填
 Mode 为 add/set 时必填
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14752,7 +14752,7 @@ Mode 为 add/set 时必填
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -14768,7 +14768,7 @@ path：指定绝对路径生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容：
+        r"""RuleType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -14800,7 +14800,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
 
 class HttpHeaderRule(AbstractModel):
-    """http头部设置规则。
+    r"""http头部设置规则。
 
     """
 
@@ -14819,7 +14819,7 @@ class HttpHeaderRule(AbstractModel):
 
     @property
     def HeaderMode(self):
-        """http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
+        r"""http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
         :rtype: str
         """
         return self._HeaderMode
@@ -14830,7 +14830,7 @@ class HttpHeaderRule(AbstractModel):
 
     @property
     def HeaderName(self):
-        """http头部名称。
+        r"""http头部名称。
         :rtype: str
         """
         return self._HeaderName
@@ -14841,7 +14841,7 @@ class HttpHeaderRule(AbstractModel):
 
     @property
     def HeaderValue(self):
-        """http头部值。
+        r"""http头部值。
         :rtype: str
         """
         return self._HeaderValue
@@ -14866,7 +14866,7 @@ class HttpHeaderRule(AbstractModel):
 
 
 class Https(AbstractModel):
-    """域名 https 加速配置，默认为关闭状态
+    r"""域名 https 加速配置，默认为关闭状态
 
     """
 
@@ -14933,7 +14933,7 @@ failed：部署失败
 
     @property
     def Switch(self):
-        """https 配置开关，取值有：
+        r"""https 配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14947,7 +14947,7 @@ off：关闭
 
     @property
     def Http2(self):
-        """http2 配置开关
+        r"""http2 配置开关
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14961,7 +14961,7 @@ off：关闭
 
     @property
     def OcspStapling(self):
-        """OCSP 配置开关
+        r"""OCSP 配置开关
 on：开启
 off：关闭
 默认为关闭状态
@@ -14976,7 +14976,7 @@ off：关闭
 
     @property
     def VerifyClient(self):
-        """客户端证书校验功能
+        r"""客户端证书校验功能
 on：开启
 off：关闭
 默认为关闭状态，开启时需要上传客户端证书信息，该配置项目前在灰度中，尚未全量
@@ -14991,7 +14991,7 @@ off：关闭
 
     @property
     def CertInfo(self):
-        """服务端证书配置信息
+        r"""服务端证书配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
         """
@@ -15003,7 +15003,7 @@ off：关闭
 
     @property
     def ClientCertInfo(self):
-        """客户端证书配置信息
+        r"""客户端证书配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
         """
@@ -15015,7 +15015,7 @@ off：关闭
 
     @property
     def Spdy(self):
-        """Spdy 配置开关
+        r"""Spdy 配置开关
 on：开启
 off：关闭
 默认为关闭状态
@@ -15030,7 +15030,7 @@ off：关闭
 
     @property
     def SslStatus(self):
-        """https 证书部署状态
+        r"""https 证书部署状态
 closed：已关闭
 deploying：部署中
 deployed：部署成功
@@ -15046,7 +15046,7 @@ failed：部署失败
 
     @property
     def Hsts(self):
-        """Hsts配置
+        r"""Hsts配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
@@ -15058,7 +15058,7 @@ failed：部署失败
 
     @property
     def TlsVersion(self):
-        """Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSv1.1, TLSv1.2, TLSv1.3，修改时必须开启连续的版本
+        r"""Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSv1.1, TLSv1.2, TLSv1.3，修改时必须开启连续的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -15097,7 +15097,7 @@ failed：部署失败
 
 
 class HttpsBilling(AbstractModel):
-    """HTTPS服务，若关闭，下发配置拦截https请求，开启时会产生计费
+    r"""HTTPS服务，若关闭，下发配置拦截https请求，开启时会产生计费
 
     """
 
@@ -15113,7 +15113,7 @@ off：关闭，拦截https请求
 
     @property
     def Switch(self):
-        """HTTPS服务配置开关，取值有：
+        r"""HTTPS服务配置开关，取值有：
 on：开启，缺省时默认开启，会产生计费
 off：关闭，拦截https请求
 
@@ -15139,7 +15139,7 @@ off：关闭，拦截https请求
 
 
 class HttpsPackage(AbstractModel):
-    """CDN HTTPS请求包。
+    r"""CDN HTTPS请求包。
 
     """
 
@@ -15215,7 +15215,7 @@ global：全球
 
     @property
     def Id(self):
-        """HTTPS请求包 Id
+        r"""HTTPS请求包 Id
         :rtype: int
         """
         return self._Id
@@ -15226,7 +15226,7 @@ global：全球
 
     @property
     def Type(self):
-        """HTTPS请求包类型
+        r"""HTTPS请求包类型
         :rtype: str
         """
         return self._Type
@@ -15237,7 +15237,7 @@ global：全球
 
     @property
     def Size(self):
-        """HTTPS请求包大小（单位为：次）
+        r"""HTTPS请求包大小（单位为：次）
         :rtype: int
         """
         return self._Size
@@ -15248,7 +15248,7 @@ global：全球
 
     @property
     def SizeUsed(self):
-        """已消耗HTTPS请求包（单位为：次）
+        r"""已消耗HTTPS请求包（单位为：次）
         :rtype: int
         """
         return self._SizeUsed
@@ -15259,7 +15259,7 @@ global：全球
 
     @property
     def Status(self):
-        """HTTPS请求包状态
+        r"""HTTPS请求包状态
 enabled：已启用
 expired：已过期
 disabled：未启用
@@ -15273,7 +15273,7 @@ disabled：未启用
 
     @property
     def CreateTime(self):
-        """HTTPS请求包发放时间
+        r"""HTTPS请求包发放时间
         :rtype: str
         """
         return self._CreateTime
@@ -15284,7 +15284,7 @@ disabled：未启用
 
     @property
     def EnableTime(self):
-        """HTTPS请求包生效时间
+        r"""HTTPS请求包生效时间
         :rtype: str
         """
         return self._EnableTime
@@ -15295,7 +15295,7 @@ disabled：未启用
 
     @property
     def ExpireTime(self):
-        """HTTPS请求包过期时间
+        r"""HTTPS请求包过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -15306,7 +15306,7 @@ disabled：未启用
 
     @property
     def Channel(self):
-        """HTTPS请求包来源
+        r"""HTTPS请求包来源
         :rtype: str
         """
         return self._Channel
@@ -15317,7 +15317,7 @@ disabled：未启用
 
     @property
     def LifeTimeMonth(self):
-        """HTTPS请求包生命周期月数
+        r"""HTTPS请求包生命周期月数
         :rtype: int
         """
         return self._LifeTimeMonth
@@ -15328,7 +15328,7 @@ disabled：未启用
 
     @property
     def RefundAvailable(self):
-        """HTTPS请求包是否支持退费
+        r"""HTTPS请求包是否支持退费
         :rtype: bool
         """
         return self._RefundAvailable
@@ -15339,7 +15339,7 @@ disabled：未启用
 
     @property
     def ConfigId(self):
-        """HTTPS请求包类型id
+        r"""HTTPS请求包类型id
         :rtype: int
         """
         return self._ConfigId
@@ -15350,7 +15350,7 @@ disabled：未启用
 
     @property
     def TrueEnableTime(self):
-        """HTTPS请求包实际生效时间
+        r"""HTTPS请求包实际生效时间
         :rtype: str
         """
         return self._TrueEnableTime
@@ -15361,7 +15361,7 @@ disabled：未启用
 
     @property
     def TrueExpireTime(self):
-        """HTTPS请求包实际过期时间
+        r"""HTTPS请求包实际过期时间
         :rtype: str
         """
         return self._TrueExpireTime
@@ -15372,7 +15372,7 @@ disabled：未启用
 
     @property
     def Area(self):
-        """HTTPS请求包生效区域 
+        r"""HTTPS请求包生效区域 
 global：全球
         :rtype: str
         """
@@ -15384,7 +15384,7 @@ global：全球
 
     @property
     def ContractExtension(self):
-        """HTTPS请求包是否续订
+        r"""HTTPS请求包是否续订
         :rtype: bool
         """
         return self._ContractExtension
@@ -15395,7 +15395,7 @@ global：全球
 
     @property
     def ExtensionAvailable(self):
-        """HTTPS请求包是否支持续订
+        r"""HTTPS请求包是否支持续订
         :rtype: bool
         """
         return self._ExtensionAvailable
@@ -15406,7 +15406,7 @@ global：全球
 
     @property
     def ExtensionMode(self):
-        """HTTPS请求包当前续订模式
+        r"""HTTPS请求包当前续订模式
 0：未续订
 1：到期续订
 2：用完续订
@@ -15421,7 +15421,7 @@ global：全球
 
     @property
     def AutoExtension(self):
-        """HTTPS请求包是否自动续订
+        r"""HTTPS请求包是否自动续订
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15463,7 +15463,7 @@ global：全球
 
 
 class HwPrivateAccess(AbstractModel):
-    """华为云对象存储回源鉴权
+    r"""华为云对象存储回源鉴权
 
     """
 
@@ -15490,7 +15490,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """ 华为云对象存储回源鉴权配置开关，取值有：
+        r""" 华为云对象存储回源鉴权配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -15503,7 +15503,7 @@ off：关闭
 
     @property
     def AccessKey(self):
-        """访问 ID
+        r"""访问 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15515,7 +15515,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥，字段为脱敏返回。
+        r"""密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15527,7 +15527,7 @@ off：关闭
 
     @property
     def Bucket(self):
-        """bucketname
+        r"""bucketname
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15554,7 +15554,7 @@ off：关闭
 
 
 class ImageOptimization(AbstractModel):
-    """ImageOptimization配置
+    r"""ImageOptimization配置
 
     """
 
@@ -15580,7 +15580,7 @@ class ImageOptimization(AbstractModel):
 
     @property
     def WebpAdapter(self):
-        """WebpAdapter配置
+        r"""WebpAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
         """
@@ -15592,7 +15592,7 @@ class ImageOptimization(AbstractModel):
 
     @property
     def TpgAdapter(self):
-        """TpgAdapter配置
+        r"""TpgAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         """
@@ -15604,7 +15604,7 @@ class ImageOptimization(AbstractModel):
 
     @property
     def GuetzliAdapter(self):
-        """GuetzliAdapter配置
+        r"""GuetzliAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
         """
@@ -15616,7 +15616,7 @@ class ImageOptimization(AbstractModel):
 
     @property
     def AvifAdapter(self):
-        """AvifAdapter配置
+        r"""AvifAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
@@ -15651,7 +15651,7 @@ class ImageOptimization(AbstractModel):
 
 
 class IpFilter(AbstractModel):
-    """IP 黑白名单配置，默认为关闭状态
+    r"""IP 黑白名单配置，默认为关闭状态
 
     """
 
@@ -15686,7 +15686,7 @@ blacklist：黑名单
 
     @property
     def Switch(self):
-        """IP 黑白名单配置开关，取值有
+        r"""IP 黑白名单配置开关，取值有
 on：开启
 off：关闭
         :rtype: str
@@ -15699,7 +15699,7 @@ off：关闭
 
     @property
     def FilterType(self):
-        """IP 黑白名单类型
+        r"""IP 黑白名单类型
 whitelist：白名单
 blacklist：黑名单
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15713,7 +15713,7 @@ blacklist：黑名单
 
     @property
     def Filters(self):
-        """IP 黑白名单列表
+        r"""IP 黑白名单列表
 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
 最多可填充 200 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15727,7 +15727,7 @@ blacklist：黑名单
 
     @property
     def FilterRules(self):
-        """IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
+        r"""IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpFilterPathRule
         """
@@ -15739,7 +15739,7 @@ blacklist：黑名单
 
     @property
     def ReturnCode(self):
-        """IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
+        r"""IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15772,7 +15772,7 @@ blacklist：黑名单
 
 
 class IpFilterPathRule(AbstractModel):
-    """IP黑白名单分路径配置
+    r"""IP黑白名单分路径配置
 
     """
 
@@ -15813,7 +15813,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def FilterType(self):
-        """IP 黑白名单类型
+        r"""IP 黑白名单类型
 whitelist：白名单
 blacklist：黑名单
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15827,7 +15827,7 @@ blacklist：黑名单
 
     @property
     def Filters(self):
-        """IP 黑白名单列表
+        r"""IP 黑白名单列表
 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
 最多可填充 500 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15841,7 +15841,7 @@ blacklist：黑名单
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -15857,7 +15857,7 @@ path：指定绝对路径生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容：
+        r"""RuleType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -15873,7 +15873,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def Remark(self):
-        """备注信息, 最多支持50个字符
+        r"""备注信息, 最多支持50个字符
         :rtype: str
         """
         return self._Remark
@@ -15900,7 +15900,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
 
 class IpFreqLimit(AbstractModel):
-    """单节点单 IP 访问限频配置，默认为关闭状态
+    r"""单节点单 IP 访问限频配置，默认为关闭状态
 
     """
 
@@ -15920,7 +15920,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """IP 限频配置开关，取值有：
+        r"""IP 限频配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -15933,7 +15933,7 @@ off：关闭
 
     @property
     def Qps(self):
-        """设置每秒请求数限制
+        r"""设置每秒请求数限制
 超出限制的请求会直接返回 514
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -15959,7 +15959,7 @@ off：关闭
 
 
 class IpStatus(AbstractModel):
-    """节点 IP 信息
+    r"""节点 IP 信息
 
     """
 
@@ -15990,7 +15990,7 @@ offline：下线状态
 
     @property
     def Ip(self):
-        """节点 IP
+        r"""节点 IP
         :rtype: str
         """
         return self._Ip
@@ -16001,7 +16001,7 @@ offline：下线状态
 
     @property
     def District(self):
-        """节点所属区域
+        r"""节点所属区域
         :rtype: str
         """
         return self._District
@@ -16012,7 +16012,7 @@ offline：下线状态
 
     @property
     def Isp(self):
-        """节点所属运营商
+        r"""节点所属运营商
         :rtype: str
         """
         return self._Isp
@@ -16023,7 +16023,7 @@ offline：下线状态
 
     @property
     def City(self):
-        """节点所在城市
+        r"""节点所在城市
         :rtype: str
         """
         return self._City
@@ -16034,7 +16034,7 @@ offline：下线状态
 
     @property
     def Status(self):
-        """节点状态
+        r"""节点状态
 online：上线状态，正常调度服务中
 offline：下线状态
         :rtype: str
@@ -16047,7 +16047,7 @@ offline：下线状态
 
     @property
     def Ipv6(self):
-        """节点 IPV6
+        r"""节点 IPV6
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16076,7 +16076,7 @@ offline：下线状态
 
 
 class Ipv6(AbstractModel):
-    """Ipv6源站启用配置，不可更改
+    r"""Ipv6源站启用配置，不可更改
 
     """
 
@@ -16092,7 +16092,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """域名开启源站ipv6配置开关，取值有：
+        r"""域名开启源站ipv6配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16118,7 +16118,7 @@ off：关闭
 
 
 class Ipv6Access(AbstractModel):
-    """Ipv6访问配置
+    r"""Ipv6访问配置
 
     """
 
@@ -16134,7 +16134,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """域名开启ipv6访问配置开关，取值有：
+        r"""域名开启ipv6访问配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16160,7 +16160,7 @@ off：关闭
 
 
 class KeyRule(AbstractModel):
-    """缓存键分路径配置
+    r"""缓存键分路径配置
 
     """
 
@@ -16206,7 +16206,7 @@ off：关闭
 
     @property
     def RulePaths(self):
-        """CacheType 对应类型下的匹配内容：
+        r"""CacheType 对应类型下的匹配内容：
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
 path 时填充绝对路径，如 /xxx/test.html
@@ -16222,7 +16222,7 @@ index 时填充 /
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 file：指定文件后缀生效
 directory：指定路径生效
 path：指定绝对路径生效
@@ -16238,7 +16238,7 @@ index：首页
 
     @property
     def FullUrlCache(self):
-        """是否开启全路径缓存
+        r"""是否开启全路径缓存
 on：开启全路径缓存（即关闭参数忽略）
 off：关闭全路径缓存（即开启参数忽略）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16252,7 +16252,7 @@ off：关闭全路径缓存（即开启参数忽略）
 
     @property
     def IgnoreCase(self):
-        """是否忽略大小写缓存
+        r"""是否忽略大小写缓存
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16266,7 +16266,7 @@ off：关闭
 
     @property
     def QueryString(self):
-        """CacheKey中包含请求参数
+        r"""CacheKey中包含请求参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`
         """
@@ -16278,7 +16278,7 @@ off：关闭
 
     @property
     def RuleTag(self):
-        """路径缓存键标签，传 user
+        r"""路径缓存键标签，传 user
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16309,7 +16309,7 @@ off：关闭
 
 
 class ListClsLogTopicsRequest(AbstractModel):
-    """ListClsLogTopics请求参数结构体
+    r"""ListClsLogTopics请求参数结构体
 
     """
 
@@ -16322,7 +16322,7 @@ class ListClsLogTopicsRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -16345,7 +16345,7 @@ class ListClsLogTopicsRequest(AbstractModel):
 
 
 class ListClsLogTopicsResponse(AbstractModel):
-    """ListClsLogTopics返回参数结构体
+    r"""ListClsLogTopics返回参数结构体
 
     """
 
@@ -16369,7 +16369,7 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     @property
     def Logset(self):
-        """上海区域日志集信息
+        r"""上海区域日志集信息
         :rtype: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
         """
         return self._Logset
@@ -16380,7 +16380,7 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     @property
     def Topics(self):
-        """上海区域日志主题信息列表
+        r"""上海区域日志主题信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopicInfo
         """
@@ -16392,7 +16392,7 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     @property
     def ExtraLogset(self):
-        """其他区域日志集信息列表
+        r"""其他区域日志集信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExtraLogset
         """
@@ -16404,7 +16404,7 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16434,7 +16434,7 @@ class ListClsLogTopicsResponse(AbstractModel):
 
 
 class ListClsTopicDomainsRequest(AbstractModel):
-    """ListClsTopicDomains请求参数结构体
+    r"""ListClsTopicDomains请求参数结构体
 
     """
 
@@ -16453,7 +16453,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -16464,7 +16464,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -16475,7 +16475,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -16500,7 +16500,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
 
 
 class ListClsTopicDomainsResponse(AbstractModel):
-    """ListClsTopicDomains返回参数结构体
+    r"""ListClsTopicDomains返回参数结构体
 
     """
 
@@ -16534,7 +16534,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """开发者ID
+        r"""开发者ID
         :rtype: int
         """
         return self._AppId
@@ -16545,7 +16545,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def Channel(self):
-        """渠道
+        r"""渠道
         :rtype: str
         """
         return self._Channel
@@ -16556,7 +16556,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -16567,7 +16567,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -16578,7 +16578,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def DomainAreaConfigs(self):
-        """域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
+        r"""域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
         :rtype: list of DomainAreaConfig
         """
         return self._DomainAreaConfigs
@@ -16589,7 +16589,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def TopicName(self):
-        """日志主题名称
+        r"""日志主题名称
         :rtype: str
         """
         return self._TopicName
@@ -16600,7 +16600,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """日志主题最近更新时间
+        r"""日志主题最近更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -16611,7 +16611,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16638,7 +16638,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
 
 class ListDiagnoseReportRequest(AbstractModel):
-    """ListDiagnoseReport请求参数结构体
+    r"""ListDiagnoseReport请求参数结构体
 
     """
 
@@ -16657,7 +16657,7 @@ class ListDiagnoseReportRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        """用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
+        r"""用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
         :rtype: str
         """
         return self._KeyWords
@@ -16668,7 +16668,7 @@ class ListDiagnoseReportRequest(AbstractModel):
 
     @property
     def DiagnoseLink(self):
-        """用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
+        r"""用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
         :rtype: str
         """
         return self._DiagnoseLink
@@ -16679,7 +16679,7 @@ class ListDiagnoseReportRequest(AbstractModel):
 
     @property
     def Origin(self):
-        """请求源带协议头，形如：https://console.cloud.tencent.com
+        r"""请求源带协议头，形如：https://console.cloud.tencent.com
         :rtype: str
         """
         return self._Origin
@@ -16704,7 +16704,7 @@ class ListDiagnoseReportRequest(AbstractModel):
 
 
 class ListDiagnoseReportResponse(AbstractModel):
-    """ListDiagnoseReport返回参数结构体
+    r"""ListDiagnoseReport返回参数结构体
 
     """
 
@@ -16720,7 +16720,7 @@ class ListDiagnoseReportResponse(AbstractModel):
 
     @property
     def Data(self):
-        """诊断信息。
+        r"""诊断信息。
         :rtype: list of DiagnoseInfo
         """
         return self._Data
@@ -16731,7 +16731,7 @@ class ListDiagnoseReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16752,7 +16752,7 @@ class ListDiagnoseReportResponse(AbstractModel):
 
 
 class ListTopClsLogDataRequest(AbstractModel):
-    """ListTopClsLogData请求参数结构体
+    r"""ListTopClsLogData请求参数结构体
 
     """
 
@@ -16792,7 +16792,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """需要查询的日志集ID
+        r"""需要查询的日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -16803,7 +16803,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def TopicIds(self):
-        """需要查询的日志主题ID组合，多个以逗号分隔
+        r"""需要查询的日志主题ID组合，多个以逗号分隔
         :rtype: str
         """
         return self._TopicIds
@@ -16814,7 +16814,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
+        r"""需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._StartTime
@@ -16825,7 +16825,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS，时间跨度应小于10分钟
+        r"""需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS，时间跨度应小于10分钟
         :rtype: str
         """
         return self._EndTime
@@ -16836,7 +16836,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """指定域名查询
+        r"""指定域名查询
         :rtype: str
         """
         return self._Domain
@@ -16847,7 +16847,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Url(self):
-        """指定访问的URL查询，支持URL开头和结尾使用\*表示通配
+        r"""指定访问的URL查询，支持URL开头和结尾使用\*表示通配
 如：
 /files/* 表示所有以/files/开头的请求
 *.jpg 表示所有以.jpg结尾的请求
@@ -16861,7 +16861,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -16872,7 +16872,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """要查询的Top条数，建议最大值100，默认为10
+        r"""要查询的Top条数，建议最大值100，默认为10
         :rtype: int
         """
         return self._Limit
@@ -16883,7 +16883,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """按请求量排序， asc（升序）或者 desc（降序），默认为 desc
+        r"""按请求量排序， asc（升序）或者 desc（降序），默认为 desc
         :rtype: str
         """
         return self._Sort
@@ -16914,7 +16914,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
 
 class ListTopClsLogDataResponse(AbstractModel):
-    """ListTopClsLogData返回参数结构体
+    r"""ListTopClsLogData返回参数结构体
 
     """
 
@@ -16936,7 +16936,7 @@ class ListTopClsLogDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据列表
+        r"""数据列表
         :rtype: list of ClsLogIpData
         """
         return self._Data
@@ -16947,7 +16947,7 @@ class ListTopClsLogDataResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """获取到Top总记录数
+        r"""获取到Top总记录数
         :rtype: int
         """
         return self._TotalCount
@@ -16958,7 +16958,7 @@ class ListTopClsLogDataResponse(AbstractModel):
 
     @property
     def IpCount(self):
-        """获取到的不重复IP条数
+        r"""获取到的不重复IP条数
         :rtype: int
         """
         return self._IpCount
@@ -16969,7 +16969,7 @@ class ListTopClsLogDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16992,7 +16992,7 @@ class ListTopClsLogDataResponse(AbstractModel):
 
 
 class ListTopDataRequest(AbstractModel):
-    """ListTopData请求参数结构体
+    r"""ListTopData请求参数结构体
 
     """
 
@@ -17067,7 +17067,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
 
     @property
     def StartTime(self):
-        """查询起始时间：yyyy-MM-dd HH:mm:ss
+        r"""查询起始时间：yyyy-MM-dd HH:mm:ss
 仅支持按分钟粒度的数据查询，按入参抹去秒位作为起始时间，如 StartTime为2018-09-04 10:40:23，返回数据的起始时间为2018-09-04 10:40:00
 仅支持 90 天内数据查询
         :rtype: str
@@ -17080,7 +17080,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
 
     @property
     def EndTime(self):
-        """查询结束时间：yyyy-MM-dd HH:mm:ss
+        r"""查询结束时间：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为结束日期 返回小于等于结束日期当天 23:59:59 产生的数据，如EndTime为2018-09-05 22:40:00，返回数据的结束时间为2018-09-05 23:59:59
 EndTime 需要大于等于 StartTime
         :rtype: str
@@ -17093,7 +17093,7 @@ EndTime 需要大于等于 StartTime
 
     @property
     def Metric(self):
-        """排序对象，支持以下几种形式：
+        r"""排序对象，支持以下几种形式：
 url：访问 URL 排序（无参数的URL），支持的 Filter 为 flux、request
 district：省份、国家/地区排序，支持的 Filter 为 flux、request
 isp：运营商排序，支持的 Filter 为 flux、request
@@ -17109,7 +17109,7 @@ originHost：域名回源数据排序，支持的 Filter 为 flux、request、ba
 
     @property
     def Filter(self):
-        """排序使用的指标名称：
+        r"""排序使用的指标名称：
 flux：Metric 为 host 时指代访问流量，originHost 时指代回源流量
 bandwidth：Metric 为 host 时指代访问带宽，originHost 时指代回源带宽
 request：Metric 为 host 时指代访问请求数，originHost 时指代回源请求数
@@ -17134,7 +17134,7 @@ OriginStatusCode：指定回源状态码统计，在 Code 参数中填充指定�
 
     @property
     def Domains(self):
-        """指定查询域名列表，最多可一次性查询 30 个加速域名明细
+        r"""指定查询域名列表，最多可一次性查询 30 个加速域名明细
         :rtype: list of str
         """
         return self._Domains
@@ -17145,7 +17145,7 @@ OriginStatusCode：指定回源状态码统计，在 Code 参数中填充指定�
 
     @property
     def Project(self):
-        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+        r"""指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :rtype: int
         """
@@ -17157,7 +17157,7 @@ OriginStatusCode：指定回源状态码统计，在 Code 参数中填充指定�
 
     @property
     def Detail(self):
-        """多域名查询时，默认（false)返回所有域名汇总排序结果
+        r"""多域名查询时，默认（false)返回所有域名汇总排序结果
 Metric 为 url、path、district、isp，Filter 为 flux、request 时，可设置为 true，返回每一个 Domain 的排序数据
         :rtype: bool
         """
@@ -17169,7 +17169,7 @@ Metric 为 url、path、district、isp，Filter 为 flux、request 时，可设�
 
     @property
     def Code(self):
-        """Filter 为 statusCode、OriginStatusCode 时，填充指定状态码查询排序结果
+        r"""Filter 为 statusCode、OriginStatusCode 时，填充指定状态码查询排序结果
         :rtype: str
         """
         return self._Code
@@ -17180,7 +17180,7 @@ Metric 为 url、path、district、isp，Filter 为 flux、request 时，可设�
 
     @property
     def Area(self):
-        """指定服务地域查询，不填充表示查询中国境内 CDN 数据
+        r"""指定服务地域查询，不填充表示查询中国境内 CDN 数据
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、district、host、originHost，当 Metric 为 originHost 时仅支持 flux、request、bandwidth Filter
         :rtype: str
@@ -17193,7 +17193,7 @@ overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、dist
 
     @property
     def AreaType(self):
-        """查询中国境外CDN数据，且仅当 Metric 为 district 或 host 时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas，且 Metric 是 district 或 host 时可用）
+        r"""查询中国境外CDN数据，且仅当 Metric 为 district 或 host 时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas，且 Metric 是 district 或 host 时可用）
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
         :rtype: str
@@ -17206,7 +17206,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
 
     @property
     def Product(self):
-        """指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        r"""指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :rtype: str
         """
         return self._Product
@@ -17217,7 +17217,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
 
     @property
     def Limit(self):
-        """只返回前N条数据，默认为最大值100，metric=url时默认为最大值1000
+        r"""只返回前N条数据，默认为最大值100，metric=url时默认为最大值1000
         :rtype: int
         """
         return self._Limit
@@ -17251,7 +17251,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
 
 
 class ListTopDataResponse(AbstractModel):
-    """ListTopData返回参数结构体
+    r"""ListTopData返回参数结构体
 
     """
 
@@ -17267,7 +17267,7 @@ class ListTopDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """各个资源的Top 访问数据详情。
+        r"""各个资源的Top 访问数据详情。
         :rtype: list of TopData
         """
         return self._Data
@@ -17278,7 +17278,7 @@ class ListTopDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17299,7 +17299,7 @@ class ListTopDataResponse(AbstractModel):
 
 
 class LogSetInfo(AbstractModel):
-    """日志集信息
+    r"""日志集信息
 
     """
 
@@ -17342,7 +17342,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """开发者ID
+        r"""开发者ID
         :rtype: int
         """
         return self._AppId
@@ -17353,7 +17353,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def Channel(self):
-        """渠道
+        r"""渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17365,7 +17365,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -17376,7 +17376,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名字
+        r"""日志集名字
         :rtype: str
         """
         return self._LogsetName
@@ -17387,7 +17387,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否默认日志集
+        r"""是否默认日志集
         :rtype: int
         """
         return self._IsDefault
@@ -17398,7 +17398,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def LogsetSavePeriod(self):
-        """日志保存时间，单位为天
+        r"""日志保存时间，单位为天
         :rtype: int
         """
         return self._LogsetSavePeriod
@@ -17409,7 +17409,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建日期
+        r"""创建日期
         :rtype: str
         """
         return self._CreateTime
@@ -17420,7 +17420,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def Region(self):
-        """区域
+        r"""区域
         :rtype: str
         """
         return self._Region
@@ -17431,7 +17431,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def Deleted(self):
-        """cls侧是否已经被删除
+        r"""cls侧是否已经被删除
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17443,7 +17443,7 @@ class LogSetInfo(AbstractModel):
 
     @property
     def RegionEn(self):
-        """英文区域
+        r"""英文区域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17476,7 +17476,7 @@ class LogSetInfo(AbstractModel):
 
 
 class MainlandConfig(AbstractModel):
-    """域名国内地区特殊配置。分地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    r"""域名国内地区特殊配置。分地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -17604,7 +17604,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Authentication(self):
-        """时间戳防盗链配置。
+        r"""时间戳防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
@@ -17616,7 +17616,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def BandwidthAlert(self):
-        """带宽封顶配置。
+        r"""带宽封顶配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
@@ -17628,7 +17628,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Cache(self):
-        """缓存规则配置。
+        r"""缓存规则配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
@@ -17640,7 +17640,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def CacheKey(self):
-        """缓存相关配置。
+        r"""缓存相关配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
@@ -17652,7 +17652,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Compression(self):
-        """智能压缩配置。
+        r"""智能压缩配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
@@ -17664,7 +17664,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def DownstreamCapping(self):
-        """下载限速配置。
+        r"""下载限速配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
@@ -17676,7 +17676,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def ErrorPage(self):
-        """错误码重定向配置。
+        r"""错误码重定向配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
@@ -17688,7 +17688,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def FollowRedirect(self):
-        """301和302自动回源跟随配置。
+        r"""301和302自动回源跟随配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
@@ -17700,7 +17700,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def ForceRedirect(self):
-        """访问协议强制跳转配置。
+        r"""访问协议强制跳转配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
@@ -17712,7 +17712,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Https(self):
-        """Https配置。
+        r"""Https配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
@@ -17724,7 +17724,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def IpFilter(self):
-        """IP黑白名单配置。
+        r"""IP黑白名单配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
@@ -17736,7 +17736,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def IpFreqLimit(self):
-        """IP限频配置。
+        r"""IP限频配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
@@ -17748,7 +17748,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def MaxAge(self):
-        """浏览器缓存规则配置。
+        r"""浏览器缓存规则配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
@@ -17760,7 +17760,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Origin(self):
-        """源站配置。
+        r"""源站配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
@@ -17772,7 +17772,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def OriginPullOptimization(self):
-        """跨国优化配置。
+        r"""跨国优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
@@ -17784,7 +17784,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def RangeOriginPull(self):
-        """Range回源配置。
+        r"""Range回源配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
@@ -17796,7 +17796,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Referer(self):
-        """防盗链配置。
+        r"""防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
@@ -17808,7 +17808,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def RequestHeader(self):
-        """回源请求头部配置。
+        r"""回源请求头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
@@ -17820,7 +17820,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def ResponseHeader(self):
-        """源站响应头部配置。
+        r"""源站响应头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
@@ -17832,7 +17832,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def ResponseHeaderCache(self):
-        """遵循源站缓存头部配置。
+        r"""遵循源站缓存头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
@@ -17844,7 +17844,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def Seo(self):
-        """seo优化配置。
+        r"""seo优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
@@ -17856,7 +17856,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def ServiceType(self):
-        """域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        r"""域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17868,7 +17868,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def StatusCodeCache(self):
-        """状态码缓存配置。
+        r"""状态码缓存配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
@@ -17880,7 +17880,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def VideoSeek(self):
-        """视频拖拽配置。
+        r"""视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
@@ -17892,7 +17892,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def AwsPrivateAccess(self):
-        """回源S3私有鉴权。
+        r"""回源S3私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
@@ -17904,7 +17904,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def OssPrivateAccess(self):
-        """回源OSS私有鉴权。
+        r"""回源OSS私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
@@ -17916,7 +17916,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def HwPrivateAccess(self):
-        """华为云对象存储回源鉴权
+        r"""华为云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
@@ -17928,7 +17928,7 @@ class MainlandConfig(AbstractModel):
 
     @property
     def QnPrivateAccess(self):
-        """七牛云对象存储回源鉴权
+        r"""七牛云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
@@ -18033,7 +18033,7 @@ class MainlandConfig(AbstractModel):
 
 
 class ManageClsTopicDomainsRequest(AbstractModel):
-    """ManageClsTopicDomains请求参数结构体
+    r"""ManageClsTopicDomains请求参数结构体
 
     """
 
@@ -18055,7 +18055,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        r"""日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -18066,7 +18066,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        r"""日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -18077,7 +18077,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -18088,7 +18088,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
     @property
     def DomainAreaConfigs(self):
-        """域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
+        r"""域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
         :rtype: list of DomainAreaConfig
         """
         return self._DomainAreaConfigs
@@ -18119,7 +18119,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
 
 class ManageClsTopicDomainsResponse(AbstractModel):
-    """ManageClsTopicDomains返回参数结构体
+    r"""ManageClsTopicDomains返回参数结构体
 
     """
 
@@ -18132,7 +18132,7 @@ class ManageClsTopicDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18147,7 +18147,7 @@ class ManageClsTopicDomainsResponse(AbstractModel):
 
 
 class MapInfo(AbstractModel):
-    """名称与ID映射关系
+    r"""名称与ID映射关系
 
     """
 
@@ -18163,7 +18163,7 @@ class MapInfo(AbstractModel):
 
     @property
     def Id(self):
-        """对象 Id
+        r"""对象 Id
         :rtype: int
         """
         return self._Id
@@ -18174,7 +18174,7 @@ class MapInfo(AbstractModel):
 
     @property
     def Name(self):
-        """对象名称
+        r"""对象名称
         :rtype: str
         """
         return self._Name
@@ -18198,7 +18198,7 @@ class MapInfo(AbstractModel):
 
 
 class MaxAge(AbstractModel):
-    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
+    r"""浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
 
     """
 
@@ -18222,7 +18222,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """浏览器缓存配置开关，取值有：
+        r"""浏览器缓存配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18236,7 +18236,7 @@ off：关闭
 
     @property
     def MaxAgeRules(self):
-        """MaxAge 规则
+        r"""MaxAge 规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MaxAgeRule
         """
@@ -18248,7 +18248,7 @@ off：关闭
 
     @property
     def MaxAgeCodeRule(self):
-        """MaxAge 状态码相关规则
+        r"""MaxAge 状态码相关规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAgeCodeRule`
         """
@@ -18281,7 +18281,7 @@ off：关闭
 
 
 class MaxAgeCodeRule(AbstractModel):
-    """MaxAge 状态码相关规则配置
+    r"""MaxAge 状态码相关规则配置
 
     """
 
@@ -18298,7 +18298,7 @@ clear：清除 cache-control 头部
 
     @property
     def Action(self):
-        """处理动作
+        r"""处理动作
 clear：清除 cache-control 头部
         :rtype: str
         """
@@ -18310,7 +18310,7 @@ clear：清除 cache-control 头部
 
     @property
     def StatusCodes(self):
-        """指定HTTP状态码生效，当前仅支持填写"400-599"
+        r"""指定HTTP状态码生效，当前仅支持填写"400-599"
         :rtype: list of str
         """
         return self._StatusCodes
@@ -18334,7 +18334,7 @@ clear：清除 cache-control 头部
 
 
 class MaxAgeRule(AbstractModel):
-    """MagAge 规则配置
+    r"""MagAge 规则配置
 
     """
 
@@ -18369,7 +18369,7 @@ index 时填充 /
 
     @property
     def MaxAgeType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -18385,7 +18385,7 @@ index: 指定主页生效
 
     @property
     def MaxAgeContents(self):
-        """MaxAgeType 对应类型下的匹配内容：
+        r"""MaxAgeType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -18402,7 +18402,7 @@ index 时填充 /
 
     @property
     def MaxAgeTime(self):
-        """MaxAge 时间设置，单位秒
+        r"""MaxAge 时间设置，单位秒
 注意：时间为0，即不缓存。
         :rtype: int
         """
@@ -18414,7 +18414,7 @@ index 时填充 /
 
     @property
     def FollowOrigin(self):
-        """是否遵循源站，on或off，开启时忽略时间设置。
+        r"""是否遵循源站，on或off，开启时忽略时间设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18441,7 +18441,7 @@ index 时填充 /
 
 
 class ModifyDomainConfigRequest(AbstractModel):
-    """ModifyDomainConfig请求参数结构体
+    r"""ModifyDomainConfig请求参数结构体
 
     """
 
@@ -18460,7 +18460,7 @@ class ModifyDomainConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -18471,7 +18471,7 @@ class ModifyDomainConfigRequest(AbstractModel):
 
     @property
     def Route(self):
-        """配置路径
+        r"""配置路径
         :rtype: str
         """
         return self._Route
@@ -18482,7 +18482,7 @@ class ModifyDomainConfigRequest(AbstractModel):
 
     @property
     def Value(self):
-        """配置路径值，使用 json 进行序列化，其中固定 update 作为 key
+        r"""配置路径值，使用 json 进行序列化，其中固定 update 作为 key
         :rtype: str
         """
         return self._Value
@@ -18507,7 +18507,7 @@ class ModifyDomainConfigRequest(AbstractModel):
 
 
 class ModifyDomainConfigResponse(AbstractModel):
-    """ModifyDomainConfig返回参数结构体
+    r"""ModifyDomainConfig返回参数结构体
 
     """
 
@@ -18520,7 +18520,7 @@ class ModifyDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18535,7 +18535,7 @@ class ModifyDomainConfigResponse(AbstractModel):
 
 
 class ModifyPurgeFetchTaskStatusRequest(AbstractModel):
-    """ModifyPurgeFetchTaskStatus请求参数结构体
+    r"""ModifyPurgeFetchTaskStatus请求参数结构体
 
     """
 
@@ -18559,7 +18559,7 @@ failed: 失败
 
     @property
     def ExecutionTime(self):
-        """执行时间
+        r"""执行时间
         :rtype: str
         """
         return self._ExecutionTime
@@ -18570,7 +18570,7 @@ failed: 失败
 
     @property
     def ExecutionStatus(self):
-        """执行状态
+        r"""执行状态
 success: 成功
 failed: 失败
         :rtype: str
@@ -18583,7 +18583,7 @@ failed: 失败
 
     @property
     def Id(self):
-        """任务 ID
+        r"""任务 ID
         :rtype: str
         """
         return self._Id
@@ -18594,7 +18594,7 @@ failed: 失败
 
     @property
     def ExecutionStatusDesc(self):
-        """执行状态详情
+        r"""执行状态详情
         :rtype: str
         """
         return self._ExecutionStatusDesc
@@ -18620,7 +18620,7 @@ failed: 失败
 
 
 class ModifyPurgeFetchTaskStatusResponse(AbstractModel):
-    """ModifyPurgeFetchTaskStatus返回参数结构体
+    r"""ModifyPurgeFetchTaskStatus返回参数结构体
 
     """
 
@@ -18633,7 +18633,7 @@ class ModifyPurgeFetchTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18648,7 +18648,7 @@ class ModifyPurgeFetchTaskStatusResponse(AbstractModel):
 
 
 class OfflineCache(AbstractModel):
-    """离线缓存是否开启
+    r"""离线缓存是否开启
 
     """
 
@@ -18663,7 +18663,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """离线缓存配置开关，取值有：
+        r"""离线缓存配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -18688,7 +18688,7 @@ off：关闭
 
 
 class Origin(AbstractModel):
-    """源站配置复杂类型，支持以下配置：
+    r"""源站配置复杂类型，支持以下配置：
     + 源站指定为单个域名
     + 源站指定为多个 IP，可配置端口（1\~65535），可配置权重（1\~100），格式为 IP:端口:权重
     + 回源域名配置
@@ -18811,7 +18811,7 @@ others: 其它厂商对象存储,仅支持兼容以AWS签名算法的对象存�
 
     @property
     def Origins(self):
-        """主源站列表
+        r"""主源站列表
 <font color=red>修改源站时，需要同时填充对应的 OriginType</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -18824,7 +18824,7 @@ others: 其它厂商对象存储,仅支持兼容以AWS签名算法的对象存�
 
     @property
     def OriginType(self):
-        """主源站类型
+        r"""主源站类型
 <font color=red>当源站列表 Origins 不为空时必填</font>
 入参支持以下几种类型：
 domain：域名类型
@@ -18861,7 +18861,7 @@ IPv6 功能目前尚未全量，需要先申请试用
 
     @property
     def ServerName(self):
-        """回主源站时 Host 头部
+        r"""回主源站时 Host 头部
 <font color=red>当源站类型为cos或者第三方存储加速时,ServerName字段必填</font>
 不填充则默认为加速域名
 若接入的是泛域名，则回源 Host 默认为访问时的子域名
@@ -18876,7 +18876,7 @@ IPv6 功能目前尚未全量，需要先申请试用
 
     @property
     def CosPrivateAccess(self):
-        """OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket
+        r"""OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket
 注意：需要先授权 CDN 访问该私有 Bucket 的权限后，才可开启此配置。取值范围: on/off
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -18889,7 +18889,7 @@ IPv6 功能目前尚未全量，需要先申请试用
 
     @property
     def OriginPullProtocol(self):
-        """回源协议配置
+        r"""回源协议配置
 http：强制 http 回源
 follow：协议跟随回源
 https：强制 https 回源
@@ -18904,7 +18904,7 @@ https：强制 https 回源
 
     @property
     def BackupOrigins(self):
-        """备源站列表
+        r"""备源站列表
 <font color=red>修改备源站时，需要同时填充对应的 BackupOriginType</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -18917,7 +18917,7 @@ https：强制 https 回源
 
     @property
     def BackupOriginType(self):
-        """备源站类型
+        r"""备源站类型
 <font color=red>备源站列表BackupOrigins 不为空时必填</font>
 支持以下类型：
 domain：域名类型
@@ -18938,7 +18938,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def BackupServerName(self):
-        """回备源站时 Host 头部，不填充则默认为主源站的 ServerName
+        r"""回备源站时 Host 头部，不填充则默认为主源站的 ServerName
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18950,7 +18950,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def BasePath(self):
-        """回源路径
+        r"""回源路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18962,7 +18962,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def PathRules(self):
-        """回源路径重写规则配置
+        r"""回源路径重写规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathRule
         """
@@ -18974,7 +18974,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def PathBasedOrigin(self):
-        """分路径回源配置
+        r"""分路径回源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathBasedOriginRule
         """
@@ -18986,7 +18986,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def Sni(self):
-        """HTTPS回源SNI配置
+        r"""HTTPS回源SNI配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginSni`
         """
@@ -18998,7 +18998,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def AdvanceHttps(self):
-        """HTTPS回源高级配置
+        r"""HTTPS回源高级配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
         """
@@ -19010,7 +19010,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 
     @property
     def OriginCompany(self):
-        """对象存储回源厂商
+        r"""对象存储回源厂商
 <font color=red>当源站类型为第三方存储源站(third_party)时必填</font>
 可选值包括以下:
 aws_s3: AWS S3
@@ -19068,7 +19068,7 @@ others: 其它厂商对象存储,仅支持兼容以AWS签名算法的对象存�
 
 
 class OriginAuthentication(AbstractModel):
-    """回源鉴权高级配置
+    r"""回源鉴权高级配置
 
     """
 
@@ -19089,7 +19089,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """回源鉴权高级配置开关，取值有：
+        r"""回源鉴权高级配置开关，取值有：
 on：开启
 off：关闭
 
@@ -19104,7 +19104,7 @@ off：关闭
 
     @property
     def TypeA(self):
-        """鉴权类型A配置
+        r"""鉴权类型A配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginAuthenticationTypeA`
         """
@@ -19131,7 +19131,7 @@ off：关闭
 
 
 class OriginAuthenticationTypeA(AbstractModel):
-    """回源鉴权高级配置TypeA
+    r"""回源鉴权高级配置TypeA
 
     """
 
@@ -19145,7 +19145,7 @@ class OriginAuthenticationTypeA(AbstractModel):
 
     @property
     def SecretKey(self):
-        """用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        r"""用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19169,7 +19169,7 @@ class OriginAuthenticationTypeA(AbstractModel):
 
 
 class OriginCombine(AbstractModel):
-    """合并回源配置项
+    r"""合并回源配置项
 
     """
 
@@ -19184,7 +19184,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """合并回源配置开关，取值有：
+        r"""合并回源配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -19209,7 +19209,7 @@ off：关闭
 
 
 class OriginIp(AbstractModel):
-    """CDN回源节点IP信息
+    r"""CDN回源节点IP信息
 
     """
 
@@ -19222,7 +19222,7 @@ class OriginIp(AbstractModel):
 
     @property
     def Ip(self):
-        """回源IP段/回源IP，默认返回IP段信息。
+        r"""回源IP段/回源IP，默认返回IP段信息。
         :rtype: str
         """
         return self._Ip
@@ -19245,7 +19245,7 @@ class OriginIp(AbstractModel):
 
 
 class OriginPullOptimization(AbstractModel):
-    """跨国回源优化配置，默认为关闭状态 (已下线)
+    r"""跨国回源优化配置，默认为关闭状态 (已下线)
 
     """
 
@@ -19266,7 +19266,7 @@ CNToOV：境内回源境外
 
     @property
     def Switch(self):
-        """跨国回源优化配置开关，取值有：
+        r"""跨国回源优化配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -19279,7 +19279,7 @@ off：关闭
 
     @property
     def OptimizationType(self):
-        """跨国类型
+        r"""跨国类型
 OVToCN：境外回源境内
 CNToOV：境内回源境外
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19306,7 +19306,7 @@ CNToOV：境内回源境外
 
 
 class OriginPullTimeout(AbstractModel):
-    """回源超时配置
+    r"""回源超时配置
 
     """
 
@@ -19324,7 +19324,7 @@ class OriginPullTimeout(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """回源建连超时时间，单位为秒，要求5~60之间
+        r"""回源建连超时时间，单位为秒，要求5~60之间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -19336,7 +19336,7 @@ class OriginPullTimeout(AbstractModel):
 
     @property
     def ReceiveTimeout(self):
-        """回源接收超时时间，单位为秒，要求10 ~ 300之间
+        r"""回源接收超时时间，单位为秒，要求10 ~ 300之间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -19361,7 +19361,7 @@ class OriginPullTimeout(AbstractModel):
 
 
 class OriginSni(AbstractModel):
-    """HTTPS回源SNI
+    r"""HTTPS回源SNI
 
     """
 
@@ -19380,7 +19380,7 @@ class OriginSni(AbstractModel):
 
     @property
     def Switch(self):
-        """是否开启HTTPS回源SNI。
+        r"""是否开启HTTPS回源SNI。
 开启：on，
 关闭：off
         :rtype: str
@@ -19393,7 +19393,7 @@ class OriginSni(AbstractModel):
 
     @property
     def ServerName(self):
-        """回源域名。
+        r"""回源域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19418,7 +19418,7 @@ class OriginSni(AbstractModel):
 
 
 class OssPrivateAccess(AbstractModel):
-    """oss回源鉴权
+    r"""oss回源鉴权
 
     """
 
@@ -19449,7 +19449,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """oss回源鉴权配置开关，取值有：
+        r"""oss回源鉴权配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -19462,7 +19462,7 @@ off：关闭
 
     @property
     def AccessKey(self):
-        """访问ID。
+        r"""访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19474,7 +19474,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥，字段为脱敏返回。
+        r"""密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19486,7 +19486,7 @@ off：关闭
 
     @property
     def Region(self):
-        """地域
+        r"""地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19498,7 +19498,7 @@ off：关闭
 
     @property
     def Bucket(self):
-        """Bucketname
+        r"""Bucketname
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19526,7 +19526,7 @@ off：关闭
 
 
 class OthersPrivateAccess(AbstractModel):
-    """其他厂商对象存储回源鉴权
+    r"""其他厂商对象存储回源鉴权
 
     """
 
@@ -19557,7 +19557,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """其他厂商对象存储回源鉴权配置开关，取值有：
+        r"""其他厂商对象存储回源鉴权配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -19570,7 +19570,7 @@ off：关闭
 
     @property
     def AccessKey(self):
-        """访问ID。
+        r"""访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19582,7 +19582,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥，字段位脱敏返回。
+        r"""密钥，字段位脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19594,7 +19594,7 @@ off：关闭
 
     @property
     def Region(self):
-        """地域。
+        r"""地域。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19606,7 +19606,7 @@ off：关闭
 
     @property
     def Bucket(self):
-        """存储桶名称。
+        r"""存储桶名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19634,7 +19634,7 @@ off：关闭
 
 
 class OverseaConfig(AbstractModel):
-    """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    r"""域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -19762,7 +19762,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Authentication(self):
-        """时间戳防盗链配置。
+        r"""时间戳防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
@@ -19774,7 +19774,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def BandwidthAlert(self):
-        """带宽封顶配置。
+        r"""带宽封顶配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
@@ -19786,7 +19786,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Cache(self):
-        """缓存规则配置。
+        r"""缓存规则配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
@@ -19798,7 +19798,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def CacheKey(self):
-        """缓存相关配置。
+        r"""缓存相关配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
@@ -19810,7 +19810,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Compression(self):
-        """智能压缩配置。
+        r"""智能压缩配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
@@ -19822,7 +19822,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def DownstreamCapping(self):
-        """下载限速配置。
+        r"""下载限速配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
@@ -19834,7 +19834,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def ErrorPage(self):
-        """错误码重定向配置。
+        r"""错误码重定向配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
@@ -19846,7 +19846,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def FollowRedirect(self):
-        """301和302自动回源跟随配置。
+        r"""301和302自动回源跟随配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
@@ -19858,7 +19858,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def ForceRedirect(self):
-        """访问协议强制跳转配置。
+        r"""访问协议强制跳转配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
@@ -19870,7 +19870,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Https(self):
-        """Https配置。
+        r"""Https配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
@@ -19882,7 +19882,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def IpFilter(self):
-        """IP黑白名单配置。
+        r"""IP黑白名单配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
@@ -19894,7 +19894,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def IpFreqLimit(self):
-        """IP限频配置。
+        r"""IP限频配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
@@ -19906,7 +19906,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def MaxAge(self):
-        """浏览器缓存规则配置。
+        r"""浏览器缓存规则配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
@@ -19918,7 +19918,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Origin(self):
-        """源站配置。
+        r"""源站配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
@@ -19930,7 +19930,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def OriginPullOptimization(self):
-        """跨国优化配置。
+        r"""跨国优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
@@ -19942,7 +19942,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def RangeOriginPull(self):
-        """Range回源配置。
+        r"""Range回源配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
@@ -19954,7 +19954,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Referer(self):
-        """防盗链配置。
+        r"""防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
@@ -19966,7 +19966,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def RequestHeader(self):
-        """回源请求头部配置。
+        r"""回源请求头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
@@ -19978,7 +19978,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def ResponseHeader(self):
-        """源站响应头部配置。
+        r"""源站响应头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
@@ -19990,7 +19990,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def ResponseHeaderCache(self):
-        """遵循源站缓存头部配置。
+        r"""遵循源站缓存头部配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
@@ -20002,7 +20002,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def Seo(self):
-        """seo优化配置。
+        r"""seo优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
@@ -20014,7 +20014,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def ServiceType(self):
-        """域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        r"""域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20026,7 +20026,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def StatusCodeCache(self):
-        """状态码缓存配置。
+        r"""状态码缓存配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
@@ -20038,7 +20038,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def VideoSeek(self):
-        """视频拖拽配置。
+        r"""视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
@@ -20050,7 +20050,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def AwsPrivateAccess(self):
-        """回源S3私有鉴权。
+        r"""回源S3私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
@@ -20062,7 +20062,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def OssPrivateAccess(self):
-        """回源OSS私有鉴权。
+        r"""回源OSS私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
@@ -20074,7 +20074,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def HwPrivateAccess(self):
-        """华为云对象存储鉴权
+        r"""华为云对象存储鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
@@ -20086,7 +20086,7 @@ class OverseaConfig(AbstractModel):
 
     @property
     def QnPrivateAccess(self):
-        """七牛云对象存储鉴权
+        r"""七牛云对象存储鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
@@ -20191,7 +20191,7 @@ class OverseaConfig(AbstractModel):
 
 
 class ParamFilter(AbstractModel):
-    """参数黑名单
+    r"""参数黑名单
 
     """
 
@@ -20209,7 +20209,7 @@ class ParamFilter(AbstractModel):
 
     @property
     def Switch(self):
-        """ 参数黑名单开关
+        r""" 参数黑名单开关
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20221,7 +20221,7 @@ class ParamFilter(AbstractModel):
 
     @property
     def FilterRules(self):
-        """参数黑名单规则
+        r"""参数黑名单规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamFilterRule
         """
@@ -20251,7 +20251,7 @@ class ParamFilter(AbstractModel):
 
 
 class ParamFilterRule(AbstractModel):
-    """参数黑名单规则
+    r"""参数黑名单规则
 
     """
 
@@ -20273,7 +20273,7 @@ class ParamFilterRule(AbstractModel):
 
     @property
     def Key(self):
-        """参数名
+        r"""参数名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20285,7 +20285,7 @@ class ParamFilterRule(AbstractModel):
 
     @property
     def Values(self):
-        """参数值数组, 小于10个
+        r"""参数值数组, 小于10个
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -20297,7 +20297,7 @@ class ParamFilterRule(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """http 返回码 ( 暂仅支持403)
+        r"""http 返回码 ( 暂仅支持403)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20323,7 +20323,7 @@ class ParamFilterRule(AbstractModel):
 
 
 class PathBasedOriginRule(AbstractModel):
-    """分路径回源规则
+    r"""分路径回源规则
 
     """
 
@@ -20350,7 +20350,7 @@ index 时填充 /
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 file：指定文件后缀生效
 directory：指定路径生效
 path：指定绝对路径生效
@@ -20365,7 +20365,7 @@ index: 指定主页生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容：
+        r"""RuleType 对应类型下的匹配内容：
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
 path 时填充绝对路径，如 /xxx/test.html
@@ -20380,7 +20380,7 @@ index 时填充 /
 
     @property
     def Origin(self):
-        """源站列表，支持域名或ipv4地址
+        r"""源站列表，支持域名或ipv4地址
         :rtype: list of str
         """
         return self._Origin
@@ -20405,7 +20405,7 @@ index 时填充 /
 
 
 class PathRule(AbstractModel):
-    """分路径回源配置规则。
+    r"""分路径回源配置规则。
 
     """
 
@@ -20454,7 +20454,7 @@ true：开启
 
     @property
     def Regex(self):
-        """是否开启通配符“*”匹配：
+        r"""是否开启通配符“*”匹配：
 false：关闭
 true：开启
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20468,7 +20468,7 @@ true：开启
 
     @property
     def Path(self):
-        """匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，开启通配符“*”匹配后，最多支持5个通配符，最大长度为1024个字符。
+        r"""匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，开启通配符“*”匹配后，最多支持5个通配符，最大长度为1024个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20480,7 +20480,7 @@ true：开启
 
     @property
     def Origin(self):
-        """路径匹配时的回源源站。暂不支持开了私有读写的COS源。不填写时沿用默认源站。
+        r"""路径匹配时的回源源站。暂不支持开了私有读写的COS源。不填写时沿用默认源站。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20492,7 +20492,7 @@ true：开启
 
     @property
     def ServerName(self):
-        """路径匹配时回源的Host头部。不填写时沿用默认ServerName。
+        r"""路径匹配时回源的Host头部。不填写时沿用默认ServerName。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20504,7 +20504,7 @@ true：开启
 
     @property
     def OriginArea(self):
-        """源站所属区域，支持CN，OV：
+        r"""源站所属区域，支持CN，OV：
 CN：中国境内
 OV：中国境外
 默认为CN。
@@ -20519,7 +20519,7 @@ OV：中国境外
 
     @property
     def ForwardUri(self):
-        """路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度为1024个字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号“*”，最多支持10个捕获值。
+        r"""路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度为1024个字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号“*”，最多支持10个捕获值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20531,7 +20531,7 @@ OV：中国境外
 
     @property
     def RequestHeaders(self):
-        """路径匹配时回源的头部设置。
+        r"""路径匹配时回源的头部设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HttpHeaderRule
         """
@@ -20543,7 +20543,7 @@ OV：中国境外
 
     @property
     def FullMatch(self):
-        """当Regex为false时，Path是否开启完全匹配。
+        r"""当Regex为false时，Path是否开启完全匹配。
 false：关闭
 true：开启
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20581,7 +20581,7 @@ true：开启
 
 
 class PostSize(AbstractModel):
-    """POST请求上传文件流式传输最大限制
+    r"""POST请求上传文件流式传输最大限制
 
     """
 
@@ -20600,7 +20600,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """POST请求上传文件流式传输最大限制配置开关，取值有：
+        r"""POST请求上传文件流式传输最大限制配置开关，取值有：
 on：开启，平台默认为32MB
 off：关闭
 
@@ -20614,7 +20614,7 @@ off：关闭
 
     @property
     def MaxSize(self):
-        """最大限制，取值在1MB和200MB之间。
+        r"""最大限制，取值在1MB和200MB之间。
         :rtype: int
         """
         return self._MaxSize
@@ -20638,7 +20638,7 @@ off：关闭
 
 
 class PurgePathCacheRequest(AbstractModel):
-    """PurgePathCache请求参数结构体
+    r"""PurgePathCache请求参数结构体
 
     """
 
@@ -20666,7 +20666,7 @@ delete：刷新全部资源
 
     @property
     def Paths(self):
-        """目录列表，需要包含协议头部 http:// 或 https://
+        r"""目录列表，需要包含协议头部 http:// 或 https://
         :rtype: list of str
         """
         return self._Paths
@@ -20677,7 +20677,7 @@ delete：刷新全部资源
 
     @property
     def FlushType(self):
-        """刷新类型
+        r"""刷新类型
 flush：刷新产生更新的资源
 delete：刷新全部资源
         :rtype: str
@@ -20690,7 +20690,7 @@ delete：刷新全部资源
 
     @property
     def UrlEncode(self):
-        """是否对中文字符进行编码后刷新
+        r"""是否对中文字符进行编码后刷新
         :rtype: bool
         """
         return self._UrlEncode
@@ -20701,7 +20701,7 @@ delete：刷新全部资源
 
     @property
     def Area(self):
-        """刷新区域
+        r"""刷新区域
 无此参数时，默认刷新加速域名所在加速区域
 填充 mainland 时，仅刷新中国境内加速节点上缓存内容
 填充 overseas 时，仅刷新中国境外加速节点上缓存内容
@@ -20731,7 +20731,7 @@ delete：刷新全部资源
 
 
 class PurgePathCacheResponse(AbstractModel):
-    """PurgePathCache返回参数结构体
+    r"""PurgePathCache返回参数结构体
 
     """
 
@@ -20747,7 +20747,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """刷新任务 ID，同一批次提交的目录共用一个任务 ID
+        r"""刷新任务 ID，同一批次提交的目录共用一个任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -20758,7 +20758,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20774,7 +20774,7 @@ class PurgePathCacheResponse(AbstractModel):
 
 
 class PurgeTask(AbstractModel):
-    """刷新任务详情
+    r"""刷新任务详情
 
     """
 
@@ -20809,7 +20809,7 @@ delete：刷新全部资源
 
     @property
     def TaskId(self):
-        """刷新任务 ID
+        r"""刷新任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -20820,7 +20820,7 @@ delete：刷新全部资源
 
     @property
     def Url(self):
-        """刷新 URL
+        r"""刷新 URL
         :rtype: str
         """
         return self._Url
@@ -20831,7 +20831,7 @@ delete：刷新全部资源
 
     @property
     def Status(self):
-        """刷新任务状态
+        r"""刷新任务状态
 fail：刷新失败
 done：刷新成功
 process：刷新中
@@ -20845,7 +20845,7 @@ process：刷新中
 
     @property
     def PurgeType(self):
-        """刷新类型
+        r"""刷新类型
 url：URL 刷新
 path：目录刷新
         :rtype: str
@@ -20858,7 +20858,7 @@ path：目录刷新
 
     @property
     def FlushType(self):
-        """刷新方式
+        r"""刷新方式
 flush：刷新更新资源（仅目录刷新时有此类型）
 delete：刷新全部资源
         :rtype: str
@@ -20871,7 +20871,7 @@ delete：刷新全部资源
 
     @property
     def CreateTime(self):
-        """刷新任务提交时间
+        r"""刷新任务提交时间
         :rtype: str
         """
         return self._CreateTime
@@ -20899,7 +20899,7 @@ delete：刷新全部资源
 
 
 class PurgeUrlsCacheRequest(AbstractModel):
-    """PurgeUrlsCache请求参数结构体
+    r"""PurgeUrlsCache请求参数结构体
 
     """
 
@@ -20922,7 +20922,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     @property
     def Urls(self):
-        """URL 列表，需要包含协议头部 http:// 或 https://
+        r"""URL 列表，需要包含协议头部 http:// 或 https://
         :rtype: list of str
         """
         return self._Urls
@@ -20933,7 +20933,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     @property
     def Area(self):
-        """刷新区域
+        r"""刷新区域
 无此参数时，默认刷新加速域名所在加速区域
 填充 mainland 时，仅刷新中国境内加速节点上缓存内容
 填充 overseas 时，仅刷新中国境外加速节点上缓存内容
@@ -20948,7 +20948,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     @property
     def UrlEncode(self):
-        """是否对中文字符进行编码后刷新
+        r"""是否对中文字符进行编码后刷新
         :rtype: bool
         """
         return self._UrlEncode
@@ -20973,7 +20973,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
 
 class PurgeUrlsCacheResponse(AbstractModel):
-    """PurgeUrlsCache返回参数结构体
+    r"""PurgeUrlsCache返回参数结构体
 
     """
 
@@ -20989,7 +20989,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """刷新任务 ID，同一批次提交的 URL 共用一个任务 ID
+        r"""刷新任务 ID，同一批次提交的 URL 共用一个任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -21000,7 +21000,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21016,7 +21016,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
 
 class PushTask(AbstractModel):
-    """预热任务详情
+    r"""预热任务详情
 
     """
 
@@ -21055,7 +21055,7 @@ global：全球
 
     @property
     def TaskId(self):
-        """预热任务 ID
+        r"""预热任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -21066,7 +21066,7 @@ global：全球
 
     @property
     def Url(self):
-        """预热 URL
+        r"""预热 URL
         :rtype: str
         """
         return self._Url
@@ -21077,7 +21077,7 @@ global：全球
 
     @property
     def Status(self):
-        """预热任务状态
+        r"""预热任务状态
 fail：预热失败
 done：预热成功
 process：预热中
@@ -21092,7 +21092,7 @@ invalid：预热无效(源站返回4xx或5xx状态码)
 
     @property
     def Percent(self):
-        """预热进度百分比
+        r"""预热进度百分比
         :rtype: int
         """
         return self._Percent
@@ -21103,7 +21103,7 @@ invalid：预热无效(源站返回4xx或5xx状态码)
 
     @property
     def CreateTime(self):
-        """预热任务提交时间
+        r"""预热任务提交时间
         :rtype: str
         """
         return self._CreateTime
@@ -21114,7 +21114,7 @@ invalid：预热无效(源站返回4xx或5xx状态码)
 
     @property
     def Area(self):
-        """预热区域
+        r"""预热区域
 mainland：境内
 overseas：境外
 global：全球
@@ -21128,7 +21128,7 @@ global：全球
 
     @property
     def UpdateTime(self):
-        """预热任务更新时间
+        r"""预热任务更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21158,7 +21158,7 @@ global：全球
 
 
 class PushUrlsCacheRequest(AbstractModel):
-    """PushUrlsCache请求参数结构体
+    r"""PushUrlsCache请求参数结构体
 
     """
 
@@ -21204,7 +21204,7 @@ global：预热全球节点
 
     @property
     def Urls(self):
-        """URL 列表，需要包含协议头部 http:// 或 https://
+        r"""URL 列表，需要包含协议头部 http:// 或 https://
         :rtype: list of str
         """
         return self._Urls
@@ -21215,7 +21215,7 @@ global：预热全球节点
 
     @property
     def UserAgent(self):
-        """指定预热请求回源时 HTTP 请求的 User-Agent 头部
+        r"""指定预热请求回源时 HTTP 请求的 User-Agent 头部
 默认为 TencentCdn
         :rtype: str
         """
@@ -21227,7 +21227,7 @@ global：预热全球节点
 
     @property
     def Area(self):
-        """预热生效区域
+        r"""预热生效区域
 mainland：预热至境内节点
 overseas：预热至境外节点
 global：预热全球节点
@@ -21242,7 +21242,7 @@ global：预热全球节点
 
     @property
     def Layer(self):
-        """中国境内区域默认预热至中间层节点，中国境外区域默认预热至边缘节点。预热至边缘产生的边缘层流量会计入计费流量。
+        r"""中国境内区域默认预热至中间层节点，中国境外区域默认预热至边缘节点。预热至边缘产生的边缘层流量会计入计费流量。
 填写"middle"或不填充时，可指定预热至中间层节点。
         :rtype: str
         """
@@ -21254,7 +21254,7 @@ global：预热全球节点
 
     @property
     def ParseM3U8(self):
-        """是否递归解析m3u8文件中的ts分片预热
+        r"""是否递归解析m3u8文件中的ts分片预热
 注意事项：
 1. 该功能要求m3u8索引文件能直接请求获取
 2. 当前只支持递归解析一级索引和子索引中的ts分片，递归深度不超过3层
@@ -21269,7 +21269,7 @@ global：预热全球节点
 
     @property
     def DisableRange(self):
-        """是否关闭Range回源
+        r"""是否关闭Range回源
 注意事项：
 此功能灰度发布中，敬请期待
         :rtype: bool
@@ -21282,7 +21282,7 @@ global：预热全球节点
 
     @property
     def Headers(self):
-        """自定义 HTTP 请求头。最多定义 20 个，Name 长度不超过 128 字节，Value 长度不超过 1024 字节
+        r"""自定义 HTTP 请求头。最多定义 20 个，Name 长度不超过 128 字节，Value 长度不超过 1024 字节
         :rtype: list of HTTPHeader
         """
         return self._Headers
@@ -21293,7 +21293,7 @@ global：预热全球节点
 
     @property
     def UrlEncode(self):
-        """是否对URL进行编码
+        r"""是否对URL进行编码
         :rtype: bool
         """
         return self._UrlEncode
@@ -21328,7 +21328,7 @@ global：预热全球节点
 
 
 class PushUrlsCacheResponse(AbstractModel):
-    """PushUrlsCache返回参数结构体
+    r"""PushUrlsCache返回参数结构体
 
     """
 
@@ -21344,7 +21344,7 @@ class PushUrlsCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """此批提交的任务 ID
+        r"""此批提交的任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -21355,7 +21355,7 @@ class PushUrlsCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21371,7 +21371,7 @@ class PushUrlsCacheResponse(AbstractModel):
 
 
 class QnPrivateAccess(AbstractModel):
-    """七牛元对象存储回源鉴权配置
+    r"""七牛元对象存储回源鉴权配置
 
     """
 
@@ -21393,7 +21393,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """七牛元对象存储回源鉴权配置开关，取值有：
+        r"""七牛元对象存储回源鉴权配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21406,7 +21406,7 @@ off：关闭
 
     @property
     def AccessKey(self):
-        """访问 ID
+        r"""访问 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21418,7 +21418,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥，字段为脱敏返回。
+        r"""密钥，字段为脱敏返回。
         :rtype: str
         """
         return self._SecretKey
@@ -21443,7 +21443,7 @@ off：关闭
 
 
 class QueryStringKey(AbstractModel):
-    """组成CacheKey的一部分
+    r"""组成CacheKey的一部分
 
     """
 
@@ -21475,7 +21475,7 @@ excludeCustom：自定义排除
 
     @property
     def Switch(self):
-        """CacheKey是否由QueryString组成配置开关，取值有：
+        r"""CacheKey是否由QueryString组成配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21489,7 +21489,7 @@ off：关闭
 
     @property
     def Reorder(self):
-        """是否重新排序
+        r"""是否重新排序
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21501,7 +21501,7 @@ off：关闭
 
     @property
     def Action(self):
-        """使用/排除部分url参数，取值有：
+        r"""使用/排除部分url参数，取值有：
 includeAll：包含所有
 excludeAll：排除所有
 includeCustom：自定义包含
@@ -21517,7 +21517,7 @@ excludeCustom：自定义排除
 
     @property
     def Value(self):
-        """使用/排除的url参数数组，';' 分割
+        r"""使用/排除的url参数数组，';' 分割
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21544,7 +21544,7 @@ excludeCustom：自定义排除
 
 
 class Quic(AbstractModel):
-    """Quic配置项
+    r"""Quic配置项
 
     """
 
@@ -21559,7 +21559,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """Quic功能配置开关，取值有：
+        r"""Quic功能配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21584,7 +21584,7 @@ off：关闭
 
 
 class Quota(AbstractModel):
-    """刷新/预热 可用量及配额
+    r"""刷新/预热 可用量及配额
 
     """
 
@@ -21606,7 +21606,7 @@ class Quota(AbstractModel):
 
     @property
     def Batch(self):
-        """单次批量提交配额上限。
+        r"""单次批量提交配额上限。
         :rtype: int
         """
         return self._Batch
@@ -21617,7 +21617,7 @@ class Quota(AbstractModel):
 
     @property
     def Total(self):
-        """每日提交配额上限。
+        r"""每日提交配额上限。
         :rtype: int
         """
         return self._Total
@@ -21628,7 +21628,7 @@ class Quota(AbstractModel):
 
     @property
     def Available(self):
-        """每日剩余的可提交配额。
+        r"""每日剩余的可提交配额。
         :rtype: int
         """
         return self._Available
@@ -21639,7 +21639,7 @@ class Quota(AbstractModel):
 
     @property
     def Area(self):
-        """配额的区域。
+        r"""配额的区域。
         :rtype: str
         """
         return self._Area
@@ -21665,7 +21665,7 @@ class Quota(AbstractModel):
 
 
 class RangeOriginPull(AbstractModel):
-    """分片回源配置，默认为开启状态
+    r"""分片回源配置，默认为开启状态
 
     """
 
@@ -21684,7 +21684,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """分片回源配置开关，取值有：
+        r"""分片回源配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21697,7 +21697,7 @@ off：关闭
 
     @property
     def RangeRules(self):
-        """分路径分片回源配置
+        r"""分路径分片回源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RangeOriginPullRule
         """
@@ -21727,7 +21727,7 @@ off：关闭
 
 
 class RangeOriginPullRule(AbstractModel):
-    """分路径分片回源配置
+    r"""分路径分片回源配置
 
     """
 
@@ -21756,7 +21756,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def Switch(self):
-        """分片回源配置开关，取值有：
+        r"""分片回源配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21769,7 +21769,7 @@ off：关闭
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 file：指定文件后缀生效
 directory：指定路径生效
 path：指定绝对路径生效
@@ -21784,7 +21784,7 @@ path：指定绝对路径生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容：
+        r"""RuleType 对应类型下的匹配内容：
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
 path 时填充绝对路径，如 /xxx/test.html
@@ -21813,7 +21813,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
 
 class RedirectConfig(AbstractModel):
-    """自定义回源302 follow请求host配置
+    r"""自定义回源302 follow请求host配置
 
     """
 
@@ -21834,7 +21834,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """自定义回源302 follow请求host配置开关，取值有：
+        r"""自定义回源302 follow请求host配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21847,7 +21847,7 @@ off：关闭
 
     @property
     def FollowRedirectHost(self):
-        """主源站follow302请求时带的自定义的host头部
+        r"""主源站follow302请求时带的自定义的host头部
         :rtype: str
         """
         return self._FollowRedirectHost
@@ -21858,7 +21858,7 @@ off：关闭
 
     @property
     def FollowRedirectBackupHost(self):
-        """备份源站follow302请求时带的自定义的host头部
+        r"""备份源站follow302请求时带的自定义的host头部
         :rtype: str
         """
         return self._FollowRedirectBackupHost
@@ -21883,7 +21883,7 @@ off：关闭
 
 
 class Referer(AbstractModel):
-    """Referer 黑白名单配置，默认为关闭状态
+    r"""Referer 黑白名单配置，默认为关闭状态
 
     """
 
@@ -21902,7 +21902,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """referer 黑白名单配置开关，取值有：
+        r"""referer 黑白名单配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -21915,7 +21915,7 @@ off：关闭
 
     @property
     def RefererRules(self):
-        """referer 黑白名单配置规则
+        r"""referer 黑白名单配置规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RefererRule
         """
@@ -21945,7 +21945,7 @@ off：关闭
 
 
 class RefererRule(AbstractModel):
-    """Referer 黑白名单配置规则，针对特定资源生效
+    r"""Referer 黑白名单配置规则，针对特定资源生效
 
     """
 
@@ -21982,7 +21982,7 @@ blacklist：黑名单
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -21997,7 +21997,7 @@ path：指定绝对路径生效
 
     @property
     def RulePaths(self):
-        """RuleType 对应类型下的匹配内容：
+        r"""RuleType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
@@ -22012,7 +22012,7 @@ path 时填充绝对路径，如 /xxx/test.html
 
     @property
     def RefererType(self):
-        """referer 配置类型
+        r"""referer 配置类型
 whitelist：白名单
 blacklist：黑名单
         :rtype: str
@@ -22025,7 +22025,7 @@ blacklist：黑名单
 
     @property
     def Referers(self):
-        """referer 内容列表
+        r"""referer 内容列表
         :rtype: list of str
         """
         return self._Referers
@@ -22036,7 +22036,7 @@ blacklist：黑名单
 
     @property
     def AllowEmpty(self):
-        """是否允许空 referer
+        r"""是否允许空 referer
 防盗链类型为白名单时，true表示允许空 referer，false表示不允许空 referer；
 防盗链类型为黑名单时，true表示拒绝空referer，false表示不拒绝空referer；
         :rtype: bool
@@ -22065,7 +22065,7 @@ blacklist：黑名单
 
 
 class RegionMapRelation(AbstractModel):
-    """区域映射id和子区域id的关联信息。
+    r"""区域映射id和子区域id的关联信息。
 
     """
 
@@ -22081,7 +22081,7 @@ class RegionMapRelation(AbstractModel):
 
     @property
     def RegionId(self):
-        """区域ID。
+        r"""区域ID。
         :rtype: int
         """
         return self._RegionId
@@ -22092,7 +22092,7 @@ class RegionMapRelation(AbstractModel):
 
     @property
     def SubRegionIdList(self):
-        """子区域ID列表
+        r"""子区域ID列表
         :rtype: list of int
         """
         return self._SubRegionIdList
@@ -22116,7 +22116,7 @@ class RegionMapRelation(AbstractModel):
 
 
 class RemoteAuthentication(AbstractModel):
-    """远程鉴权规则配置，可以包含多种规则配置。
+    r"""远程鉴权规则配置，可以包含多种规则配置。
     RemoteAuthenticationRules和Server 互斥，只需要配置其中一个。
     若只配置Server ，RemoteAuthenticationRules中详细规则参数将采用默认参数；默认参数值见各个配置项中说明；
 
@@ -22142,7 +22142,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """远程鉴权配置开关，取值有：
+        r"""远程鉴权配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -22156,7 +22156,7 @@ off：关闭
 
     @property
     def RemoteAuthenticationRules(self):
-        """远程鉴权规则配置
+        r"""远程鉴权规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RemoteAuthenticationRule
         """
@@ -22168,7 +22168,7 @@ off：关闭
 
     @property
     def Server(self):
-        """远程鉴权Server
+        r"""远程鉴权Server
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22199,7 +22199,7 @@ off：关闭
 
 
 class RemoteAuthenticationRule(AbstractModel):
-    """远程鉴权规则。
+    r"""远程鉴权规则。
 
     """
 
@@ -22246,7 +22246,7 @@ RETURN_403:超时拦截；
 
     @property
     def Server(self):
-        """远程鉴权Server。
+        r"""远程鉴权Server。
 默认值:和上层配置的"Server"一致；
         :rtype: str
         """
@@ -22258,7 +22258,7 @@ RETURN_403:超时拦截；
 
     @property
     def AuthMethod(self):
-        """请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; 
+        r"""请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; 
 all: 表示"遵循终端用户请求方法"
 默认值: all
         :rtype: str
@@ -22271,7 +22271,7 @@ all: 表示"遵循终端用户请求方法"
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定目录生效
@@ -22287,7 +22287,7 @@ path：指定文件绝对路径生效
 
     @property
     def RulePaths(self):
-        """对应类型下的匹配内容：
+        r"""对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
@@ -22304,7 +22304,7 @@ index 时填充 /
 
     @property
     def AuthTimeout(self):
-        """请求远程鉴权服务器超时时间，单位毫秒；
+        r"""请求远程鉴权服务器超时时间，单位毫秒；
 取值范围：[1,30 000]
 默认值:20000
         :rtype: int
@@ -22317,7 +22317,7 @@ index 时填充 /
 
     @property
     def AuthTimeoutAction(self):
-        """请求远程鉴权服务器超时后执行拦截或者放行；
+        r"""请求远程鉴权服务器超时后执行拦截或者放行；
 RETURN_200: 超时后放行；
 RETURN_403:超时拦截；
 默认值:RETURN_200
@@ -22348,7 +22348,7 @@ RETURN_403:超时拦截；
 
 
 class ReportData(AbstractModel):
-    """CDN报表数据
+    r"""CDN报表数据
 
     """
 
@@ -22376,7 +22376,7 @@ class ReportData(AbstractModel):
 
     @property
     def ResourceId(self):
-        """项目ID/域名ID。
+        r"""项目ID/域名ID。
         :rtype: str
         """
         return self._ResourceId
@@ -22387,7 +22387,7 @@ class ReportData(AbstractModel):
 
     @property
     def Resource(self):
-        """项目名称/域名。
+        r"""项目名称/域名。
         :rtype: str
         """
         return self._Resource
@@ -22398,7 +22398,7 @@ class ReportData(AbstractModel):
 
     @property
     def Value(self):
-        """流量总和/带宽最大值，单位分别为bytes，bps。
+        r"""流量总和/带宽最大值，单位分别为bytes，bps。
         :rtype: int
         """
         return self._Value
@@ -22409,7 +22409,7 @@ class ReportData(AbstractModel):
 
     @property
     def Percentage(self):
-        """单个资源占总体百分比。
+        r"""单个资源占总体百分比。
         :rtype: float
         """
         return self._Percentage
@@ -22420,7 +22420,7 @@ class ReportData(AbstractModel):
 
     @property
     def BillingValue(self):
-        """计费流量总和/计费带宽最大值，单位分别为bytes，bps。
+        r"""计费流量总和/计费带宽最大值，单位分别为bytes，bps。
         :rtype: int
         """
         return self._BillingValue
@@ -22431,7 +22431,7 @@ class ReportData(AbstractModel):
 
     @property
     def BillingPercentage(self):
-        """计费数值占总体百分比。
+        r"""计费数值占总体百分比。
         :rtype: float
         """
         return self._BillingPercentage
@@ -22459,7 +22459,7 @@ class ReportData(AbstractModel):
 
 
 class RequestHeader(AbstractModel):
-    """自定义请求头配置，默认为关闭状态
+    r"""自定义请求头配置，默认为关闭状态
 
     """
 
@@ -22478,7 +22478,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """自定义请求头配置开关，取值有：
+        r"""自定义请求头配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -22491,7 +22491,7 @@ off：关闭
 
     @property
     def HeaderRules(self):
-        """自定义请求头配置规则
+        r"""自定义请求头配置规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HttpHeaderPathRule
         """
@@ -22521,7 +22521,7 @@ off：关闭
 
 
 class ResourceBillingData(AbstractModel):
-    """计费数据明细
+    r"""计费数据明细
 
     """
 
@@ -22541,7 +22541,7 @@ all：账号维度数据明细
 
     @property
     def Resource(self):
-        """资源名称，根据查询条件不同分为以下几类：
+        r"""资源名称，根据查询条件不同分为以下几类：
 某一个具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
 某一个项目 ID：指定项目查询时，显示为项目 ID
@@ -22556,7 +22556,7 @@ all：账号维度数据明细
 
     @property
     def BillingData(self):
-        """计费数据详情
+        r"""计费数据详情
         :rtype: list of CdnData
         """
         return self._BillingData
@@ -22585,7 +22585,7 @@ all：账号维度数据明细
 
 
 class ResourceData(AbstractModel):
-    """查询对象及其对应的访问明细数据
+    r"""查询对象及其对应的访问明细数据
 
     """
 
@@ -22605,7 +22605,7 @@ all：账号维度明细数据，即账号下所有域名的汇总明细数据
 
     @property
     def Resource(self):
-        """资源名称，根据查询条件不同分为以下几类：
+        r"""资源名称，根据查询条件不同分为以下几类：
 单域名：指定单域名查询，表示该域名明细数据，当传入参数 detail 指定为 true 时，显示该域名（ detail 参数默认为 false ）
 多域名：指定多个域名查询，表示多域名汇总明细数据，显示 multiDomains
 项目 ID：指定项目查询时，表示该项目下的域名汇总明细数据，显示该项目 ID
@@ -22620,7 +22620,7 @@ all：账号维度明细数据，即账号下所有域名的汇总明细数据
 
     @property
     def CdnData(self):
-        """资源对应的数据明细
+        r"""资源对应的数据明细
         :rtype: list of CdnData
         """
         return self._CdnData
@@ -22649,7 +22649,7 @@ all：账号维度明细数据，即账号下所有域名的汇总明细数据
 
 
 class ResourceOriginData(AbstractModel):
-    """查询对象及其对应的回源明细数据
+    r"""查询对象及其对应的回源明细数据
 
     """
 
@@ -22669,7 +22669,7 @@ all：账号维度明细数据
 
     @property
     def Resource(self):
-        """资源名称，根据查询条件不同分为以下几类：
+        r"""资源名称，根据查询条件不同分为以下几类：
 具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
 项目 ID：指定项目查询时，显示为项目 ID
@@ -22684,7 +22684,7 @@ all：账号维度明细数据
 
     @property
     def OriginData(self):
-        """回源数据详情
+        r"""回源数据详情
         :rtype: list of CdnData
         """
         return self._OriginData
@@ -22713,7 +22713,7 @@ all：账号维度明细数据
 
 
 class ResponseHeader(AbstractModel):
-    """自定义响应头配置，默认为关闭状态
+    r"""自定义响应头配置，默认为关闭状态
 
     """
 
@@ -22732,7 +22732,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """自定义响应头配置开关，取值有：
+        r"""自定义响应头配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -22745,7 +22745,7 @@ off：关闭
 
     @property
     def HeaderRules(self):
-        """自定义响应头规则
+        r"""自定义响应头规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HttpHeaderPathRule
         """
@@ -22775,7 +22775,7 @@ off：关闭
 
 
 class ResponseHeaderCache(AbstractModel):
-    """源站头部缓存配置，默认为开启状态，缓存所有头部信息
+    r"""源站头部缓存配置，默认为开启状态，缓存所有头部信息
 
     """
 
@@ -22790,7 +22790,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """源站头部缓存配置开关，取值有：
+        r"""源站头部缓存配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -22815,7 +22815,7 @@ off：关闭
 
 
 class Revalidate(AbstractModel):
-    """是否回源站校验
+    r"""是否回源站校验
 
     """
 
@@ -22836,7 +22836,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """总是回源校验配置开关，取值有：
+        r"""总是回源校验配置开关，取值有：
 on：开启
 off：关闭
 
@@ -22851,7 +22851,7 @@ off：关闭
 
     @property
     def Path(self):
-        """只在特定请求路径回源站校验
+        r"""只在特定请求路径回源站校验
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22876,7 +22876,7 @@ off：关闭
 
 
 class RuleCache(AbstractModel):
-    """缓存配置分路径版本。
+    r"""缓存配置分路径版本。
     默认情况下所有文件缓存过期时间为 30 天
     默认情况下静态加速类型的域名 .php;.jsp;.asp;.aspx 不缓存
 
@@ -22910,7 +22910,7 @@ index：首页
 
     @property
     def RulePaths(self):
-        """CacheType 对应类型下的匹配内容：
+        r"""CacheType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
@@ -22927,7 +22927,7 @@ index 时填充 /
 
     @property
     def RuleType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -22944,7 +22944,7 @@ index：首页
 
     @property
     def CacheConfig(self):
-        """缓存配置。
+        r"""缓存配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RuleCacheConfig`
         """
@@ -22972,7 +22972,7 @@ index：首页
 
 
 class RuleCacheConfig(AbstractModel):
-    """路径缓存缓存配置（三种缓存模式中选取一种）
+    r"""路径缓存缓存配置（三种缓存模式中选取一种）
 
     """
 
@@ -22994,7 +22994,7 @@ class RuleCacheConfig(AbstractModel):
 
     @property
     def Cache(self):
-        """缓存配置
+        r"""缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`
         """
@@ -23006,7 +23006,7 @@ class RuleCacheConfig(AbstractModel):
 
     @property
     def NoCache(self):
-        """不缓存配置
+        r"""不缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheConfigNoCache`
         """
@@ -23018,7 +23018,7 @@ class RuleCacheConfig(AbstractModel):
 
     @property
     def FollowOrigin(self):
-        """遵循源站配置
+        r"""遵循源站配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheConfigFollowOrigin`
         """
@@ -23050,7 +23050,7 @@ class RuleCacheConfig(AbstractModel):
 
 
 class RuleEngine(AbstractModel):
-    """规则引擎配置
+    r"""规则引擎配置
 
     """
 
@@ -23069,7 +23069,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """规则引擎配置开关，取值有：
+        r"""规则引擎配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -23082,7 +23082,7 @@ off：关闭
 
     @property
     def Content(self):
-        """规则
+        r"""规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23107,7 +23107,7 @@ off：关闭
 
 
 class RuleQueryString(AbstractModel):
-    """路径保留参数配置
+    r"""路径保留参数配置
 
     """
 
@@ -23132,7 +23132,7 @@ off：关闭，CacheKey不由QueryString组成
 
     @property
     def Switch(self):
-        """路径保留参数配置开关，取值有：
+        r"""路径保留参数配置开关，取值有：
 on：开启，CacheKey由QueryString组成
 off：关闭，CacheKey不由QueryString组成
 
@@ -23147,7 +23147,7 @@ off：关闭，CacheKey不由QueryString组成
 
     @property
     def Action(self):
-        """includeCustom 包含部分url参数
+        r"""includeCustom 包含部分url参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23159,7 +23159,7 @@ off：关闭，CacheKey不由QueryString组成
 
     @property
     def Value(self):
-        """使用/排除的url参数数组，';' 分割
+        r"""使用/排除的url参数数组，';' 分割
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23185,7 +23185,7 @@ off：关闭，CacheKey不由QueryString组成
 
 
 class SchemeKey(AbstractModel):
-    """作为CacheKey的一部分
+    r"""作为CacheKey的一部分
 
     """
 
@@ -23201,7 +23201,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """scheme作为cache key配置开关，取值有：
+        r"""scheme作为cache key配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -23227,7 +23227,7 @@ off：关闭
 
 
 class SearchClsLogRequest(AbstractModel):
-    """SearchClsLog请求参数结构体
+    r"""SearchClsLog请求参数结构体
 
     """
 
@@ -23264,7 +23264,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """需要查询的日志集ID
+        r"""需要查询的日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -23275,7 +23275,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def TopicIds(self):
-        """需要查询的日志主题ID组合，以逗号分隔
+        r"""需要查询的日志主题ID组合，以逗号分隔
         :rtype: str
         """
         return self._TopicIds
@@ -23286,7 +23286,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
+        r"""需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._StartTime
@@ -23297,7 +23297,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS
+        r"""需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._EndTime
@@ -23308,7 +23308,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次要返回的日志条数，单次返回的最大条数为100
+        r"""单次要返回的日志条数，单次返回的最大条数为100
         :rtype: int
         """
         return self._Limit
@@ -23319,7 +23319,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Channel(self):
-        """接入渠道，cdn或者ecdn，默认值为cdn
+        r"""接入渠道，cdn或者ecdn，默认值为cdn
         :rtype: str
         """
         return self._Channel
@@ -23330,7 +23330,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        """需要查询的内容，详情请参考https://cloud.tencent.com/document/product/614/16982
+        r"""需要查询的内容，详情请参考https://cloud.tencent.com/document/product/614/16982
         :rtype: str
         """
         return self._Query
@@ -23341,7 +23341,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Context(self):
-        """加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+        r"""加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
         :rtype: str
         """
         return self._Context
@@ -23352,7 +23352,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """按日志时间排序， asc（升序）或者 desc（降序），默认为 desc
+        r"""按日志时间排序， asc（升序）或者 desc（降序），默认为 desc
         :rtype: str
         """
         return self._Sort
@@ -23383,7 +23383,7 @@ class SearchClsLogRequest(AbstractModel):
 
 
 class SearchClsLogResponse(AbstractModel):
-    """SearchClsLog返回参数结构体
+    r"""SearchClsLog返回参数结构体
 
     """
 
@@ -23399,7 +23399,7 @@ class SearchClsLogResponse(AbstractModel):
 
     @property
     def Logs(self):
-        """查询结果
+        r"""查询结果
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`
         """
         return self._Logs
@@ -23410,7 +23410,7 @@ class SearchClsLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23428,7 +23428,7 @@ class SearchClsLogResponse(AbstractModel):
 
 
 class SecurityConfig(AbstractModel):
-    """scdn相关的配置
+    r"""scdn相关的配置
 
     """
 
@@ -23443,7 +23443,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """scdn 安全配置开关，取值有：
+        r"""scdn 安全配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -23468,7 +23468,7 @@ off：关闭
 
 
 class Seo(AbstractModel):
-    """SEO 搜索引擎优化配置，默认为关闭状态
+    r"""SEO 搜索引擎优化配置，默认为关闭状态
 
     """
 
@@ -23484,7 +23484,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """SEO 搜索引擎优化配置开关，取值有：
+        r"""SEO 搜索引擎优化配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -23510,7 +23510,7 @@ off：关闭
 
 
 class ServerCert(AbstractModel):
-    """https 加速服务端证书配置：
+    r"""https 加速服务端证书配置：
     + 支持使用托管至 SSL 证书管理的证书进行部署
     + 支持上传 PEM 格式的证书进行部署
 
@@ -23559,7 +23559,7 @@ class ServerCert(AbstractModel):
 
     @property
     def CertId(self):
-        """服务器证书 ID 在 SSL 证书管理进行证书托管时自动生成
+        r"""服务器证书 ID 在 SSL 证书管理进行证书托管时自动生成
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23571,7 +23571,7 @@ class ServerCert(AbstractModel):
 
     @property
     def CertName(self):
-        """服务器证书名称
+        r"""服务器证书名称
 在 SSL 证书管理进行证书托管时自动生成
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23584,7 +23584,7 @@ class ServerCert(AbstractModel):
 
     @property
     def Certificate(self):
-        """服务器证书信息
+        r"""服务器证书信息
 上传自有证书时必填，需要包含完整的证书链
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23597,7 +23597,7 @@ class ServerCert(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """服务器密钥信息
+        r"""服务器密钥信息
 上传自有证书时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23610,7 +23610,7 @@ class ServerCert(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """证书过期时间
+        r"""证书过期时间
 作为入参配置时无需填充
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23623,7 +23623,7 @@ class ServerCert(AbstractModel):
 
     @property
     def DeployTime(self):
-        """证书颁发时间
+        r"""证书颁发时间
 作为入参配置时无需填充
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23636,7 +23636,7 @@ class ServerCert(AbstractModel):
 
     @property
     def Message(self):
-        """证书备注信息
+        r"""证书备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23648,7 +23648,7 @@ class ServerCert(AbstractModel):
 
     @property
     def From(self):
-        """证书来源
+        r"""证书来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23679,7 +23679,7 @@ class ServerCert(AbstractModel):
 
 
 class ShareCname(AbstractModel):
-    """ShareCname配置
+    r"""ShareCname配置
     ShareCname 为内测功能,如需使用,请联系腾讯云工程师开白.
 
     """
@@ -23700,7 +23700,7 @@ off：关闭，使用默认CNAME
 
     @property
     def Switch(self):
-        """ShareCname 配置开关, 取值有：
+        r"""ShareCname 配置开关, 取值有：
 on：开启，使用共享CNAME
 off：关闭，使用默认CNAME
 
@@ -23714,7 +23714,7 @@ off：关闭，使用默认CNAME
 
     @property
     def Cname(self):
-        """设置共享CNAME.
+        r"""设置共享CNAME.
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23739,7 +23739,7 @@ off：关闭，使用默认CNAME
 
 
 class SimpleCache(AbstractModel):
-    """缓存配置基础版本
+    r"""缓存配置基础版本
     默认情况下所有文件缓存过期时间为 30 天
     默认情况下静态加速类型的域名 .php;.jsp;.asp;.aspx 不缓存
     注意：该版本不支持设置源站未返回 max-age 情况下的缓存过期规则设置
@@ -23789,7 +23789,7 @@ off：关闭
 
     @property
     def CacheRules(self):
-        """缓存过期时间规则
+        r"""缓存过期时间规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SimpleCacheRule
         """
@@ -23801,7 +23801,7 @@ off：关闭
 
     @property
     def FollowOrigin(self):
-        """遵循源站 Cache-Control: max-age 配置
+        r"""遵循源站 Cache-Control: max-age 配置
 on：开启
 off：关闭
 开启后，未能匹配 CacheRules 规则的资源将根据源站返回的 max-age 值进行节点缓存；匹配了 CacheRules 规则的资源将按照 CacheRules 中设置的缓存过期时间在节点进行缓存
@@ -23817,7 +23817,7 @@ off：关闭
 
     @property
     def IgnoreCacheControl(self):
-        """强制缓存
+        r"""强制缓存
 on：开启
 off：关闭
 默认为关闭状态，开启后，源站返回的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
@@ -23832,7 +23832,7 @@ off：关闭
 
     @property
     def IgnoreSetCookie(self):
-        """忽略源站的Set-Cookie头部
+        r"""忽略源站的Set-Cookie头部
 on：开启
 off：关闭
 默认为关闭状态
@@ -23847,7 +23847,7 @@ off：关闭
 
     @property
     def CompareMaxAge(self):
-        """高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
+        r"""高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
 on：开启
 off：关闭
 默认为关闭状态
@@ -23862,7 +23862,7 @@ off：关闭
 
     @property
     def Revalidate(self):
-        """总是回源站校验
+        r"""总是回源站校验
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Revalidate`
         """
@@ -23898,7 +23898,7 @@ off：关闭
 
 
 class SimpleCacheRule(AbstractModel):
-    """缓存过期规则配置
+    r"""缓存过期规则配置
 
     """
 
@@ -23928,7 +23928,7 @@ index 时填充 /
 
     @property
     def CacheType(self):
-        """规则类型：
+        r"""规则类型：
 all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
@@ -23944,7 +23944,7 @@ index：首页
 
     @property
     def CacheContents(self):
-        """CacheType 对应类型下的匹配内容：
+        r"""CacheType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
@@ -23960,7 +23960,7 @@ index 时填充 /
 
     @property
     def CacheTime(self):
-        """缓存过期时间设置
+        r"""缓存过期时间设置
 单位为秒，最大可设置为 365 天
         :rtype: int
         """
@@ -23986,7 +23986,7 @@ index 时填充 /
 
 
 class Sort(AbstractModel):
-    """查询结果排序条件
+    r"""查询结果排序条件
 
     """
 
@@ -24005,7 +24005,7 @@ certExpireTime，证书过期时间
 
     @property
     def Key(self):
-        """排序字段，当前支持：
+        r"""排序字段，当前支持：
 createTime，域名创建时间
 certExpireTime，证书过期时间
 默认createTime。
@@ -24019,7 +24019,7 @@ certExpireTime，证书过期时间
 
     @property
     def Sequence(self):
-        """asc/desc，默认desc。
+        r"""asc/desc，默认desc。
         :rtype: str
         """
         return self._Sequence
@@ -24043,7 +24043,7 @@ certExpireTime，证书过期时间
 
 
 class SpecificConfig(AbstractModel):
-    """域名国内海外分地区特殊配置。
+    r"""域名国内海外分地区特殊配置。
 
     """
 
@@ -24061,7 +24061,7 @@ class SpecificConfig(AbstractModel):
 
     @property
     def Mainland(self):
-        """国内特殊配置。
+        r"""国内特殊配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MainlandConfig`
         """
@@ -24073,7 +24073,7 @@ class SpecificConfig(AbstractModel):
 
     @property
     def Overseas(self):
-        """海外特殊配置。
+        r"""海外特殊配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OverseaConfig`
         """
@@ -24102,7 +24102,7 @@ class SpecificConfig(AbstractModel):
 
 
 class StartCdnDomainRequest(AbstractModel):
-    """StartCdnDomain请求参数结构体
+    r"""StartCdnDomain请求参数结构体
 
     """
 
@@ -24116,7 +24116,7 @@ class StartCdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
 域名状态需要为【已停用】
         :rtype: str
         """
@@ -24140,7 +24140,7 @@ class StartCdnDomainRequest(AbstractModel):
 
 
 class StartCdnDomainResponse(AbstractModel):
-    """StartCdnDomain返回参数结构体
+    r"""StartCdnDomain返回参数结构体
 
     """
 
@@ -24153,7 +24153,7 @@ class StartCdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24168,7 +24168,7 @@ class StartCdnDomainResponse(AbstractModel):
 
 
 class StatisticItem(AbstractModel):
-    """累计用量封顶的配置
+    r"""累计用量封顶的配置
 
     """
 
@@ -24218,7 +24218,7 @@ off：关闭
 
     @property
     def Type(self):
-        """封顶类型，累计用量total，瞬时用量moment
+        r"""封顶类型，累计用量total，瞬时用量moment
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24230,7 +24230,7 @@ off：关闭
 
     @property
     def UnBlockTime(self):
-        """自动解封时间
+        r"""自动解封时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24242,7 +24242,7 @@ off：关闭
 
     @property
     def BpsThreshold(self):
-        """带宽、流量阈值
+        r"""带宽、流量阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24254,7 +24254,7 @@ off：关闭
 
     @property
     def CounterMeasure(self):
-        """关闭方式 返回404:RETURN_404
+        r"""关闭方式 返回404:RETURN_404
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24266,7 +24266,7 @@ off：关闭
 
     @property
     def AlertPercentage(self):
-        """触发提醒阈值百分比
+        r"""触发提醒阈值百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24278,7 +24278,7 @@ off：关闭
 
     @property
     def AlertSwitch(self):
-        """累计用量封顶告警配置，取值有：
+        r"""累计用量封顶告警配置，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24292,7 +24292,7 @@ off：关闭
 
     @property
     def Metric(self):
-        """指标类型，流量flux或带宽bandwidth
+        r"""指标类型，流量flux或带宽bandwidth
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24304,7 +24304,7 @@ off：关闭
 
     @property
     def Cycle(self):
-        """检测周期，单位分钟，60或1440
+        r"""检测周期，单位分钟，60或1440
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24316,7 +24316,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """累计用量封顶配置开关，取值有：
+        r"""累计用量封顶配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24350,7 +24350,7 @@ off：关闭
 
 
 class StatusCodeCache(AbstractModel):
-    """状态码缓存过期配置，默认情况下会对 404 状态码缓存 10 秒
+    r"""状态码缓存过期配置，默认情况下会对 404 状态码缓存 10 秒
 
     """
 
@@ -24370,7 +24370,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """状态码缓存过期配置开关，取值有：
+        r"""状态码缓存过期配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24384,7 +24384,7 @@ off：关闭
 
     @property
     def CacheRules(self):
-        """状态码缓存过期规则明细
+        r"""状态码缓存过期规则明细
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatusCodeCacheRule
         """
@@ -24414,7 +24414,7 @@ off：关闭
 
 
 class StatusCodeCacheRule(AbstractModel):
-    """状态码缓存过期时间规则配置
+    r"""状态码缓存过期时间规则配置
 
     """
 
@@ -24431,7 +24431,7 @@ class StatusCodeCacheRule(AbstractModel):
 
     @property
     def StatusCode(self):
-        """http 状态码
+        r"""http 状态码
 支持 403、404 状态码
         :rtype: str
         """
@@ -24443,7 +24443,7 @@ class StatusCodeCacheRule(AbstractModel):
 
     @property
     def CacheTime(self):
-        """状态码缓存过期时间，单位秒
+        r"""状态码缓存过期时间，单位秒
         :rtype: int
         """
         return self._CacheTime
@@ -24467,7 +24467,7 @@ class StatusCodeCacheRule(AbstractModel):
 
 
 class StopCdnDomainRequest(AbstractModel):
-    """StopCdnDomain请求参数结构体
+    r"""StopCdnDomain请求参数结构体
 
     """
 
@@ -24481,7 +24481,7 @@ class StopCdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
 域名需要为【已启动】状态
         :rtype: str
         """
@@ -24505,7 +24505,7 @@ class StopCdnDomainRequest(AbstractModel):
 
 
 class StopCdnDomainResponse(AbstractModel):
-    """StopCdnDomain返回参数结构体
+    r"""StopCdnDomain返回参数结构体
 
     """
 
@@ -24518,7 +24518,7 @@ class StopCdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24533,7 +24533,7 @@ class StopCdnDomainResponse(AbstractModel):
 
 
 class SummarizedData(AbstractModel):
-    """明细数据的汇总值，各指标根据其特性不同拥有不同汇总方式
+    r"""明细数据的汇总值，各指标根据其特性不同拥有不同汇总方式
 
     """
 
@@ -24552,7 +24552,7 @@ avg：平均值
 
     @property
     def Name(self):
-        """汇总方式，存在以下几种：
+        r"""汇总方式，存在以下几种：
 sum：累加求和
 max：最大值，带宽模式下，采用 5 分钟粒度汇总数据，计算峰值带宽
 avg：平均值
@@ -24566,7 +24566,7 @@ avg：平均值
 
     @property
     def Value(self):
-        """汇总后的数据值
+        r"""汇总后的数据值
         :rtype: float
         """
         return self._Value
@@ -24590,7 +24590,7 @@ avg：平均值
 
 
 class Tag(AbstractModel):
-    """域名标签配置
+    r"""域名标签配置
 
     """
 
@@ -24608,7 +24608,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24620,7 +24620,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24645,7 +24645,7 @@ class Tag(AbstractModel):
 
 
 class TimestampData(AbstractModel):
-    """时间戳与其对应的数值
+    r"""时间戳与其对应的数值
 
     """
 
@@ -24662,7 +24662,7 @@ class TimestampData(AbstractModel):
 
     @property
     def Time(self):
-        """数据统计时间点，采用向前汇总模式
+        r"""数据统计时间点，采用向前汇总模式
 以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
         :rtype: str
         """
@@ -24674,7 +24674,7 @@ class TimestampData(AbstractModel):
 
     @property
     def Value(self):
-        """数据值
+        r"""数据值
         :rtype: float
         """
         return self._Value
@@ -24698,7 +24698,7 @@ class TimestampData(AbstractModel):
 
 
 class TopData(AbstractModel):
-    """排序类型数据结构
+    r"""排序类型数据结构
 
     """
 
@@ -24718,7 +24718,7 @@ all：账号维度明细数据
 
     @property
     def Resource(self):
-        """资源名称，根据查询条件不同分为以下几类：
+        r"""资源名称，根据查询条件不同分为以下几类：
 具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
 项目 ID：指定项目查询时，显示为项目 ID
@@ -24733,7 +24733,7 @@ all：账号维度明细数据
 
     @property
     def DetailData(self):
-        """排序结果详情
+        r"""排序结果详情
         :rtype: list of TopDetailData
         """
         return self._DetailData
@@ -24762,7 +24762,7 @@ all：账号维度明细数据
 
 
 class TopDataMore(AbstractModel):
-    """排序类型数据结构
+    r"""排序类型数据结构
 
     """
 
@@ -24778,7 +24778,7 @@ class TopDataMore(AbstractModel):
 
     @property
     def Resource(self):
-        """资源名称，根据查询条件不同分为以下几类：
+        r"""资源名称，根据查询条件不同分为以下几类：
         :rtype: str
         """
         return self._Resource
@@ -24789,7 +24789,7 @@ class TopDataMore(AbstractModel):
 
     @property
     def DetailData(self):
-        """排序结果详情
+        r"""排序结果详情
         :rtype: list of TopDetailDataMore
         """
         return self._DetailData
@@ -24818,7 +24818,7 @@ class TopDataMore(AbstractModel):
 
 
 class TopDetailData(AbstractModel):
-    """排序类型的数据结构
+    r"""排序类型的数据结构
 
     """
 
@@ -24834,7 +24834,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Name(self):
-        """数据类型的名称
+        r"""数据类型的名称
         :rtype: str
         """
         return self._Name
@@ -24845,7 +24845,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Value(self):
-        """数据值
+        r"""数据值
         :rtype: float
         """
         return self._Value
@@ -24869,7 +24869,7 @@ class TopDetailData(AbstractModel):
 
 
 class TopDetailDataMore(AbstractModel):
-    """排序类型的数据结构，同时附带上该项的在总值的占比
+    r"""排序类型的数据结构，同时附带上该项的在总值的占比
 
     """
 
@@ -24889,7 +24889,7 @@ class TopDetailDataMore(AbstractModel):
 
     @property
     def Name(self):
-        """数据类型的名称
+        r"""数据类型的名称
         :rtype: str
         """
         return self._Name
@@ -24900,7 +24900,7 @@ class TopDetailDataMore(AbstractModel):
 
     @property
     def Value(self):
-        """数据值
+        r"""数据值
         :rtype: float
         """
         return self._Value
@@ -24911,7 +24911,7 @@ class TopDetailDataMore(AbstractModel):
 
     @property
     def Percent(self):
-        """数据值在总值中的百分比
+        r"""数据值在总值中的百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -24937,7 +24937,7 @@ class TopDetailDataMore(AbstractModel):
 
 
 class TopicInfo(AbstractModel):
-    """CLS主题信息
+    r"""CLS主题信息
 
     """
 
@@ -24968,7 +24968,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题ID
+        r"""主题ID
         :rtype: str
         """
         return self._TopicId
@@ -24979,7 +24979,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名字
+        r"""主题名字
         :rtype: str
         """
         return self._TopicName
@@ -24990,7 +24990,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否启用投递
+        r"""是否启用投递
         :rtype: int
         """
         return self._Enabled
@@ -25001,7 +25001,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25013,7 +25013,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def Channel(self):
-        """归属于cdn或ecdn
+        r"""归属于cdn或ecdn
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25025,7 +25025,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def Deleted(self):
-        """cls侧是否已经被删除
+        r"""cls侧是否已经被删除
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25054,7 +25054,7 @@ class TopicInfo(AbstractModel):
 
 
 class TpgAdapter(AbstractModel):
-    """图片优化-TpgAdapter配置
+    r"""图片优化-TpgAdapter配置
 
     """
 
@@ -25070,7 +25070,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """图片优化-TpgAdapter配置开关，取值有：
+        r"""图片优化-TpgAdapter配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -25096,7 +25096,7 @@ off：关闭
 
 
 class TrafficPackage(AbstractModel):
-    """CDN加速流量包。
+    r"""CDN加速流量包。
 
     """
 
@@ -25183,7 +25183,7 @@ disabled：未启用
 
     @property
     def Id(self):
-        """流量包 Id
+        r"""流量包 Id
         :rtype: int
         """
         return self._Id
@@ -25194,7 +25194,7 @@ disabled：未启用
 
     @property
     def Type(self):
-        """流量包类型
+        r"""流量包类型
         :rtype: str
         """
         return self._Type
@@ -25205,7 +25205,7 @@ disabled：未启用
 
     @property
     def Bytes(self):
-        """流量包大小（单位为 Byte）
+        r"""流量包大小（单位为 Byte）
         :rtype: int
         """
         return self._Bytes
@@ -25216,7 +25216,7 @@ disabled：未启用
 
     @property
     def BytesUsed(self):
-        """已消耗流量（单位为 Byte）
+        r"""已消耗流量（单位为 Byte）
         :rtype: int
         """
         return self._BytesUsed
@@ -25227,7 +25227,7 @@ disabled：未启用
 
     @property
     def Status(self):
-        """流量包状态
+        r"""流量包状态
 enabled：已启用
 expired：已过期
 disabled：未启用
@@ -25241,7 +25241,7 @@ disabled：未启用
 
     @property
     def CreateTime(self):
-        """流量包发放时间
+        r"""流量包发放时间
         :rtype: str
         """
         return self._CreateTime
@@ -25252,7 +25252,7 @@ disabled：未启用
 
     @property
     def EnableTime(self):
-        """流量包生效时间
+        r"""流量包生效时间
         :rtype: str
         """
         return self._EnableTime
@@ -25263,7 +25263,7 @@ disabled：未启用
 
     @property
     def ExpireTime(self):
-        """流量包过期时间
+        r"""流量包过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -25274,7 +25274,7 @@ disabled：未启用
 
     @property
     def ContractExtension(self):
-        """流量包是否续订
+        r"""流量包是否续订
         :rtype: bool
         """
         return self._ContractExtension
@@ -25285,7 +25285,7 @@ disabled：未启用
 
     @property
     def AutoExtension(self):
-        """流量包是否自动续订
+        r"""流量包是否自动续订
         :rtype: bool
         """
         return self._AutoExtension
@@ -25296,7 +25296,7 @@ disabled：未启用
 
     @property
     def Channel(self):
-        """流量包来源
+        r"""流量包来源
         :rtype: str
         """
         return self._Channel
@@ -25307,7 +25307,7 @@ disabled：未启用
 
     @property
     def Area(self):
-        """流量包生效区域，mainland或overseas
+        r"""流量包生效区域，mainland或overseas
         :rtype: str
         """
         return self._Area
@@ -25318,7 +25318,7 @@ disabled：未启用
 
     @property
     def LifeTimeMonth(self):
-        """流量包生命周期月数
+        r"""流量包生命周期月数
         :rtype: int
         """
         return self._LifeTimeMonth
@@ -25329,7 +25329,7 @@ disabled：未启用
 
     @property
     def ExtensionAvailable(self):
-        """流量包是否支持续订
+        r"""流量包是否支持续订
         :rtype: bool
         """
         return self._ExtensionAvailable
@@ -25340,7 +25340,7 @@ disabled：未启用
 
     @property
     def RefundAvailable(self):
-        """流量包是否支持退费
+        r"""流量包是否支持退费
         :rtype: bool
         """
         return self._RefundAvailable
@@ -25351,7 +25351,7 @@ disabled：未启用
 
     @property
     def Region(self):
-        """流量包生效区域
+        r"""流量包生效区域
 0：中国大陆
 1：亚太一区
 2：亚太二区
@@ -25372,7 +25372,7 @@ disabled：未启用
 
     @property
     def ConfigId(self):
-        """流量包类型id
+        r"""流量包类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25384,7 +25384,7 @@ disabled：未启用
 
     @property
     def ExtensionMode(self):
-        """流量包当前续订模式，0 未续订、1到期续订、2用完续订、3到期或用完续订
+        r"""流量包当前续订模式，0 未续订、1到期续订、2用完续订、3到期或用完续订
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25396,7 +25396,7 @@ disabled：未启用
 
     @property
     def TrueEnableTime(self):
-        """流量包实际生效时间
+        r"""流量包实际生效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25408,7 +25408,7 @@ disabled：未启用
 
     @property
     def TrueExpireTime(self):
-        """流量包实际过期时间
+        r"""流量包实际过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25451,7 +25451,7 @@ disabled：未启用
 
 
 class UpdateDomainConfigRequest(AbstractModel):
-    """UpdateDomainConfig请求参数结构体
+    r"""UpdateDomainConfig请求参数结构体
 
     """
 
@@ -25619,7 +25619,7 @@ global：全球加速
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -25630,7 +25630,7 @@ global：全球加速
 
     @property
     def ProjectId(self):
-        """项目 ID
+        r"""项目 ID
         :rtype: int
         """
         return self._ProjectId
@@ -25641,7 +25641,7 @@ global：全球加速
 
     @property
     def Origin(self):
-        """源站配置
+        r"""源站配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
         return self._Origin
@@ -25652,7 +25652,7 @@ global：全球加速
 
     @property
     def IpFilter(self):
-        """IP 黑白名单配置
+        r"""IP 黑白名单配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
         return self._IpFilter
@@ -25663,7 +25663,7 @@ global：全球加速
 
     @property
     def IpFreqLimit(self):
-        """IP 限频配置
+        r"""IP 限频配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
         return self._IpFreqLimit
@@ -25674,7 +25674,7 @@ global：全球加速
 
     @property
     def StatusCodeCache(self):
-        """状态码缓存配置
+        r"""状态码缓存配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
         return self._StatusCodeCache
@@ -25685,7 +25685,7 @@ global：全球加速
 
     @property
     def Compression(self):
-        """智能压缩配置
+        r"""智能压缩配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
         return self._Compression
@@ -25696,7 +25696,7 @@ global：全球加速
 
     @property
     def BandwidthAlert(self):
-        """带宽封顶配置
+        r"""带宽封顶配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
         return self._BandwidthAlert
@@ -25707,7 +25707,7 @@ global：全球加速
 
     @property
     def RangeOriginPull(self):
-        """Range 回源配置
+        r"""Range 回源配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
         return self._RangeOriginPull
@@ -25718,7 +25718,7 @@ global：全球加速
 
     @property
     def FollowRedirect(self):
-        """301/302 回源跟随配置
+        r"""301/302 回源跟随配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
         return self._FollowRedirect
@@ -25729,7 +25729,7 @@ global：全球加速
 
     @property
     def ErrorPage(self):
-        """错误码重定向配置（功能灰度中，尚未全量）
+        r"""错误码重定向配置（功能灰度中，尚未全量）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
         return self._ErrorPage
@@ -25740,7 +25740,7 @@ global：全球加速
 
     @property
     def RequestHeader(self):
-        """回源请求头部配置
+        r"""回源请求头部配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
         return self._RequestHeader
@@ -25751,7 +25751,7 @@ global：全球加速
 
     @property
     def ResponseHeader(self):
-        """响应头部配置
+        r"""响应头部配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
         return self._ResponseHeader
@@ -25762,7 +25762,7 @@ global：全球加速
 
     @property
     def DownstreamCapping(self):
-        """下载速度配置
+        r"""下载速度配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
         return self._DownstreamCapping
@@ -25773,7 +25773,7 @@ global：全球加速
 
     @property
     def CacheKey(self):
-        """节点缓存键配置
+        r"""节点缓存键配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
         return self._CacheKey
@@ -25784,7 +25784,7 @@ global：全球加速
 
     @property
     def ResponseHeaderCache(self):
-        """头部缓存配置
+        r"""头部缓存配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
         return self._ResponseHeaderCache
@@ -25795,7 +25795,7 @@ global：全球加速
 
     @property
     def VideoSeek(self):
-        """视频拖拽配置
+        r"""视频拖拽配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
         return self._VideoSeek
@@ -25806,7 +25806,7 @@ global：全球加速
 
     @property
     def Cache(self):
-        """缓存过期时间配置
+        r"""缓存过期时间配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
         return self._Cache
@@ -25817,7 +25817,7 @@ global：全球加速
 
     @property
     def OriginPullOptimization(self):
-        """跨国链路优化配置（已下线）
+        r"""跨国链路优化配置（已下线）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
         return self._OriginPullOptimization
@@ -25828,7 +25828,7 @@ global：全球加速
 
     @property
     def Https(self):
-        """Https 加速配置
+        r"""Https 加速配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
         return self._Https
@@ -25839,7 +25839,7 @@ global：全球加速
 
     @property
     def Authentication(self):
-        """时间戳防盗链配置
+        r"""时间戳防盗链配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
         return self._Authentication
@@ -25850,7 +25850,7 @@ global：全球加速
 
     @property
     def Seo(self):
-        """SEO 优化配置
+        r"""SEO 优化配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
         return self._Seo
@@ -25861,7 +25861,7 @@ global：全球加速
 
     @property
     def ForceRedirect(self):
-        """访问协议强制跳转配置
+        r"""访问协议强制跳转配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
         return self._ForceRedirect
@@ -25872,7 +25872,7 @@ global：全球加速
 
     @property
     def Referer(self):
-        """Referer 防盗链配置
+        r"""Referer 防盗链配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
         return self._Referer
@@ -25883,7 +25883,7 @@ global：全球加速
 
     @property
     def MaxAge(self):
-        """浏览器缓存配置（功能灰度中，尚未全量）
+        r"""浏览器缓存配置（功能灰度中，尚未全量）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
         return self._MaxAge
@@ -25894,7 +25894,7 @@ global：全球加速
 
     @property
     def SpecificConfig(self):
-        """地域属性特殊配置
+        r"""地域属性特殊配置
 适用于域名境内加速、境外加速配置不一致场景
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         """
@@ -25906,7 +25906,7 @@ global：全球加速
 
     @property
     def ServiceType(self):
-        """域名业务类型
+        r"""域名业务类型
 web：静态加速
 download：下载加速
 media：流媒体点播加速
@@ -25920,7 +25920,7 @@ media：流媒体点播加速
 
     @property
     def Area(self):
-        """域名加速区域
+        r"""域名加速区域
 mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
@@ -25935,7 +25935,7 @@ global：全球加速
 
     @property
     def OriginPullTimeout(self):
-        """回源超时配置
+        r"""回源超时配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
         return self._OriginPullTimeout
@@ -25946,7 +25946,7 @@ global：全球加速
 
     @property
     def AwsPrivateAccess(self):
-        """回源S3私有鉴权
+        r"""回源S3私有鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         return self._AwsPrivateAccess
@@ -25957,7 +25957,7 @@ global：全球加速
 
     @property
     def UserAgentFilter(self):
-        """UA黑白名单配置
+        r"""UA黑白名单配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         return self._UserAgentFilter
@@ -25968,7 +25968,7 @@ global：全球加速
 
     @property
     def AccessControl(self):
-        """访问控制
+        r"""访问控制
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
         """
         return self._AccessControl
@@ -25979,7 +25979,7 @@ global：全球加速
 
     @property
     def UrlRedirect(self):
-        """访问URL重写配置
+        r"""访问URL重写配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         """
         return self._UrlRedirect
@@ -25990,7 +25990,7 @@ global：全球加速
 
     @property
     def AccessPort(self):
-        """访问端口配置
+        r"""访问端口配置
         :rtype: list of int
         """
         return self._AccessPort
@@ -26001,7 +26001,7 @@ global：全球加速
 
     @property
     def AdvancedAuthentication(self):
-        """时间戳防盗链高级版配置，白名单功能
+        r"""时间戳防盗链高级版配置，白名单功能
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
         """
         return self._AdvancedAuthentication
@@ -26012,7 +26012,7 @@ global：全球加速
 
     @property
     def OriginAuthentication(self):
-        """回源鉴权高级版配置，白名单功能
+        r"""回源鉴权高级版配置，白名单功能
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
         return self._OriginAuthentication
@@ -26023,7 +26023,7 @@ global：全球加速
 
     @property
     def Ipv6Access(self):
-        """Ipv6 访问配置
+        r"""Ipv6 访问配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
         return self._Ipv6Access
@@ -26034,7 +26034,7 @@ global：全球加速
 
     @property
     def OfflineCache(self):
-        """离线缓存
+        r"""离线缓存
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
         return self._OfflineCache
@@ -26045,7 +26045,7 @@ global：全球加速
 
     @property
     def OriginCombine(self):
-        """合并回源
+        r"""合并回源
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         return self._OriginCombine
@@ -26056,7 +26056,7 @@ global：全球加速
 
     @property
     def PostMaxSize(self):
-        """POST请求传输配置
+        r"""POST请求传输配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PostSize`
         """
         return self._PostMaxSize
@@ -26067,7 +26067,7 @@ global：全球加速
 
     @property
     def Quic(self):
-        """Quic访问（收费服务，详见计费说明和产品文档）
+        r"""Quic访问（收费服务，详见计费说明和产品文档）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         return self._Quic
@@ -26078,7 +26078,7 @@ global：全球加速
 
     @property
     def OssPrivateAccess(self):
-        """回源OSS私有鉴权
+        r"""回源OSS私有鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         return self._OssPrivateAccess
@@ -26089,7 +26089,7 @@ global：全球加速
 
     @property
     def WebSocket(self):
-        """WebSocket配置
+        r"""WebSocket配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
         return self._WebSocket
@@ -26100,7 +26100,7 @@ global：全球加速
 
     @property
     def RemoteAuthentication(self):
-        """远程鉴权配置
+        r"""远程鉴权配置
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         """
         return self._RemoteAuthentication
@@ -26111,7 +26111,7 @@ global：全球加速
 
     @property
     def ShareCname(self):
-        """共享CNAME配置，白名单功能
+        r"""共享CNAME配置，白名单功能
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
         return self._ShareCname
@@ -26122,7 +26122,7 @@ global：全球加速
 
     @property
     def HwPrivateAccess(self):
-        """华为云对象存储回源鉴权
+        r"""华为云对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
         return self._HwPrivateAccess
@@ -26133,7 +26133,7 @@ global：全球加速
 
     @property
     def QnPrivateAccess(self):
-        """七牛云对象存储回源鉴权
+        r"""七牛云对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         return self._QnPrivateAccess
@@ -26144,7 +26144,7 @@ global：全球加速
 
     @property
     def OthersPrivateAccess(self):
-        """其他厂商对象存储回源鉴权
+        r"""其他厂商对象存储回源鉴权
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
         return self._OthersPrivateAccess
@@ -26155,7 +26155,7 @@ global：全球加速
 
     @property
     def HttpsBilling(self):
-        """HTTPS服务（收费服务，详见计费说明和产品文档）
+        r"""HTTPS服务（收费服务，详见计费说明和产品文档）
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         return self._HttpsBilling
@@ -26166,7 +26166,7 @@ global：全球加速
 
     @property
     def ParamFilter(self):
-        """参数黑名单
+        r"""参数黑名单
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
         """
         return self._ParamFilter
@@ -26328,7 +26328,7 @@ global：全球加速
 
 
 class UpdateDomainConfigResponse(AbstractModel):
-    """UpdateDomainConfig返回参数结构体
+    r"""UpdateDomainConfig返回参数结构体
 
     """
 
@@ -26341,7 +26341,7 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26356,7 +26356,7 @@ class UpdateDomainConfigResponse(AbstractModel):
 
 
 class UpdateImageConfigRequest(AbstractModel):
-    """UpdateImageConfig请求参数结构体
+    r"""UpdateImageConfig请求参数结构体
 
     """
 
@@ -26381,7 +26381,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -26392,7 +26392,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
     @property
     def WebpAdapter(self):
-        """WebpAdapter配置项
+        r"""WebpAdapter配置项
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
         """
         return self._WebpAdapter
@@ -26403,7 +26403,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
     @property
     def TpgAdapter(self):
-        """TpgAdapter配置项
+        r"""TpgAdapter配置项
         :rtype: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         """
         return self._TpgAdapter
@@ -26414,7 +26414,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
     @property
     def GuetzliAdapter(self):
-        """GuetzliAdapter配置项
+        r"""GuetzliAdapter配置项
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
         """
         return self._GuetzliAdapter
@@ -26425,7 +26425,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
     @property
     def AvifAdapter(self):
-        """AvifAdapter配置项
+        r"""AvifAdapter配置项
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         return self._AvifAdapter
@@ -26460,7 +26460,7 @@ class UpdateImageConfigRequest(AbstractModel):
 
 
 class UpdateImageConfigResponse(AbstractModel):
-    """UpdateImageConfig返回参数结构体
+    r"""UpdateImageConfig返回参数结构体
 
     """
 
@@ -26473,7 +26473,7 @@ class UpdateImageConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26488,7 +26488,7 @@ class UpdateImageConfigResponse(AbstractModel):
 
 
 class UpdatePayTypeRequest(AbstractModel):
-    """UpdatePayType请求参数结构体
+    r"""UpdatePayType请求参数结构体
 
     """
 
@@ -26504,7 +26504,7 @@ class UpdatePayTypeRequest(AbstractModel):
 
     @property
     def Area(self):
-        """计费区域，mainland或overseas。
+        r"""计费区域，mainland或overseas。
         :rtype: str
         """
         return self._Area
@@ -26515,7 +26515,7 @@ class UpdatePayTypeRequest(AbstractModel):
 
     @property
     def PayType(self):
-        """计费类型，flux或bandwidth。
+        r"""计费类型，flux或bandwidth。
         :rtype: str
         """
         return self._PayType
@@ -26539,7 +26539,7 @@ class UpdatePayTypeRequest(AbstractModel):
 
 
 class UpdatePayTypeResponse(AbstractModel):
-    """UpdatePayType返回参数结构体
+    r"""UpdatePayType返回参数结构体
 
     """
 
@@ -26552,7 +26552,7 @@ class UpdatePayTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26567,7 +26567,7 @@ class UpdatePayTypeResponse(AbstractModel):
 
 
 class UrlRecord(AbstractModel):
-    """封禁url的详细信息
+    r"""封禁url的详细信息
 
     """
 
@@ -26593,7 +26593,7 @@ class UrlRecord(AbstractModel):
 
     @property
     def Status(self):
-        """状态(disable表示封禁，enable表示解封)
+        r"""状态(disable表示封禁，enable表示解封)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26605,7 +26605,7 @@ class UrlRecord(AbstractModel):
 
     @property
     def RealUrl(self):
-        """对应的url
+        r"""对应的url
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26617,7 +26617,7 @@ class UrlRecord(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26629,7 +26629,7 @@ class UrlRecord(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26656,7 +26656,7 @@ class UrlRecord(AbstractModel):
 
 
 class UrlRedirect(AbstractModel):
-    """访问URL重写配置
+    r"""访问URL重写配置
 
     """
 
@@ -26675,7 +26675,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """访问URL重写配置开关，取值有：
+        r"""访问URL重写配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -26688,7 +26688,7 @@ off：关闭
 
     @property
     def PathRules(self):
-        """访问URL重写规则，当Switch为on时必填，规则数量最大为10个。
+        r"""访问URL重写规则，当Switch为on时必填，规则数量最大为10个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UrlRedirectRule
         """
@@ -26718,7 +26718,7 @@ off：关闭
 
 
 class UrlRedirectRule(AbstractModel):
-    """Url重定向规则配置
+    r"""Url重定向规则配置
 
     """
 
@@ -26745,7 +26745,7 @@ class UrlRedirectRule(AbstractModel):
 
     @property
     def RedirectStatusCode(self):
-        """重定向状态码，301 | 302
+        r"""重定向状态码，301 | 302
         :rtype: int
         """
         return self._RedirectStatusCode
@@ -26756,7 +26756,7 @@ class UrlRedirectRule(AbstractModel):
 
     @property
     def Pattern(self):
-        """待匹配的Url，仅支持Url路径，不支持参数。默认完全匹配，支持通配符 *，最多支持5个通配符，最大长度1024字符。
+        r"""待匹配的Url，仅支持Url路径，不支持参数。默认完全匹配，支持通配符 *，最多支持5个通配符，最大长度1024字符。
         :rtype: str
         """
         return self._Pattern
@@ -26767,7 +26767,7 @@ class UrlRedirectRule(AbstractModel):
 
     @property
     def RedirectUrl(self):
-        """目标URL，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
+        r"""目标URL，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
         :rtype: str
         """
         return self._RedirectUrl
@@ -26778,7 +26778,7 @@ class UrlRedirectRule(AbstractModel):
 
     @property
     def RedirectHost(self):
-        """目标host，必须以http://或https://开头，并填写标准格式域名，如果不填写，默认为http:// + 当前域名
+        r"""目标host，必须以http://或https://开头，并填写标准格式域名，如果不填写，默认为http:// + 当前域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26790,7 +26790,7 @@ class UrlRedirectRule(AbstractModel):
 
     @property
     def FullMatch(self):
-        """指定是全路径配置还是任意匹配
+        r"""指定是全路径配置还是任意匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -26818,7 +26818,7 @@ class UrlRedirectRule(AbstractModel):
 
 
 class UserAgentFilter(AbstractModel):
-    """UserAgent黑白名单配置
+    r"""UserAgent黑白名单配置
 
     """
 
@@ -26838,7 +26838,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """UserAgent黑白名单配置开关，取值有：
+        r"""UserAgent黑白名单配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -26852,7 +26852,7 @@ off：关闭
 
     @property
     def FilterRules(self):
-        """UA黑白名单生效规则列表，不能超过10条规则
+        r"""UA黑白名单生效规则列表，不能超过10条规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserAgentFilterRule
         """
@@ -26882,7 +26882,7 @@ off：关闭
 
 
 class UserAgentFilterRule(AbstractModel):
-    """UserAgent黑白名单规则配置
+    r"""UserAgent黑白名单规则配置
 
     """
 
@@ -26912,7 +26912,7 @@ path: 根据完整访问路径生效
 
     @property
     def RuleType(self):
-        """访问路径生效类型
+        r"""访问路径生效类型
 all: 所有访问路径生效
 file: 根据文件后缀类型生效
 directory: 根据目录生效
@@ -26928,7 +26928,7 @@ path: 根据完整访问路径生效
 
     @property
     def RulePaths(self):
-        """访问路径生效内容
+        r"""访问路径生效内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -26940,7 +26940,7 @@ path: 根据完整访问路径生效
 
     @property
     def UserAgents(self):
-        """UserAgent列表，UserAgent 个数不能超过 10个
+        r"""UserAgent列表，UserAgent 个数不能超过 10个
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -26952,7 +26952,7 @@ path: 根据完整访问路径生效
 
     @property
     def FilterType(self):
-        """黑名单或白名单，blacklist或whitelist
+        r"""黑名单或白名单，blacklist或whitelist
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26979,7 +26979,7 @@ path: 根据完整访问路径生效
 
 
 class VerifyDomainRecordRequest(AbstractModel):
-    """VerifyDomainRecord请求参数结构体
+    r"""VerifyDomainRecord请求参数结构体
 
     """
 
@@ -26997,7 +26997,7 @@ file: 文件验证
 
     @property
     def Domain(self):
-        """域名
+        r"""域名
         :rtype: str
         """
         return self._Domain
@@ -27008,7 +27008,7 @@ file: 文件验证
 
     @property
     def VerifyType(self):
-        """验证方式
+        r"""验证方式
 dns: DNS 解析验证（默认值）
 file: 文件验证
         :rtype: str
@@ -27034,7 +27034,7 @@ file: 文件验证
 
 
 class VerifyDomainRecordResponse(AbstractModel):
-    """VerifyDomainRecord返回参数结构体
+    r"""VerifyDomainRecord返回参数结构体
 
     """
 
@@ -27050,7 +27050,7 @@ class VerifyDomainRecordResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否验证成功
+        r"""是否验证成功
         :rtype: bool
         """
         return self._Result
@@ -27061,7 +27061,7 @@ class VerifyDomainRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27077,7 +27077,7 @@ class VerifyDomainRecordResponse(AbstractModel):
 
 
 class VideoSeek(AbstractModel):
-    """视频拖拽配置，默认为关闭状态
+    r"""视频拖拽配置，默认为关闭状态
 
     """
 
@@ -27092,7 +27092,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """视频拖拽配置开关，取值有：
+        r"""视频拖拽配置开关，取值有：
 on：开启
 off：关闭
         :rtype: str
@@ -27117,7 +27117,7 @@ off：关闭
 
 
 class ViolationUrl(AbstractModel):
-    """违规 URL 详情
+    r"""违规 URL 详情
 
     """
 
@@ -27150,7 +27150,7 @@ complain：申诉进行中
 
     @property
     def Id(self):
-        """ID
+        r"""ID
         :rtype: int
         """
         return self._Id
@@ -27161,7 +27161,7 @@ complain：申诉进行中
 
     @property
     def RealUrl(self):
-        """违规资源原始访问 URL
+        r"""违规资源原始访问 URL
         :rtype: str
         """
         return self._RealUrl
@@ -27172,7 +27172,7 @@ complain：申诉进行中
 
     @property
     def DownloadUrl(self):
-        """快照路径，用于控制台展示违规内容快照
+        r"""快照路径，用于控制台展示违规内容快照
         :rtype: str
         """
         return self._DownloadUrl
@@ -27183,7 +27183,7 @@ complain：申诉进行中
 
     @property
     def UrlStatus(self):
-        """违规资源当前状态
+        r"""违规资源当前状态
 forbid：已封禁
 release：已解封
 delay ： 延迟处理
@@ -27199,7 +27199,7 @@ complain：申诉进行中
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -27210,7 +27210,7 @@ complain：申诉进行中
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -27238,7 +27238,7 @@ complain：申诉进行中
 
 
 class WebSocket(AbstractModel):
-    """WebSocket配置
+    r"""WebSocket配置
     WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
 
     """
@@ -27259,7 +27259,7 @@ off：关闭，平台仍支持WebSocket连接，此时超时时间默认为15秒
 
     @property
     def Switch(self):
-        """WebSocket 超时配置开关，取值有：
+        r"""WebSocket 超时配置开关，取值有：
 on：开启，可以调整超时时间
 off：关闭，平台仍支持WebSocket连接，此时超时时间默认为15秒
 
@@ -27273,7 +27273,7 @@ off：关闭，平台仍支持WebSocket连接，此时超时时间默认为15秒
 
     @property
     def Timeout(self):
-        """设置超时时间，单位为秒，最大超时时间300秒。
+        r"""设置超时时间，单位为秒，最大超时时间300秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27298,7 +27298,7 @@ off：关闭，平台仍支持WebSocket连接，此时超时时间默认为15秒
 
 
 class WebpAdapter(AbstractModel):
-    """图片优化-WebpAdapter配置
+    r"""图片优化-WebpAdapter配置
 
     """
 
@@ -27314,7 +27314,7 @@ off：关闭
 
     @property
     def Switch(self):
-        """图片优化-WebpAdapter配置开关，取值有：
+        r"""图片优化-WebpAdapter配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。

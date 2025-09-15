@@ -27,7 +27,7 @@ class OmicsClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """创建组学平台计算环境。
+        r"""创建组学平台计算环境。
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.omics.v20221128.models.CreateEnvironmentRequest`
@@ -50,7 +50,7 @@ class OmicsClient(AbstractClient):
 
 
     def CreateVolume(self, request):
-        """创建缓存卷。
+        r"""创建缓存卷。
 
         :param request: Request instance for CreateVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.CreateVolumeRequest`
@@ -73,7 +73,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteEnvironment(self, request):
-        """删除环境。
+        r"""删除环境。
 
         :param request: Request instance for DeleteEnvironment.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentRequest`
@@ -96,7 +96,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteVolume(self, request):
-        """删除缓存卷。
+        r"""删除缓存卷。
 
         :param request: Request instance for DeleteVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeRequest`
@@ -119,7 +119,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteVolumeData(self, request):
-        """删除缓存卷数据。
+        r"""删除缓存卷数据。
 
         :param request: Request instance for DeleteVolumeData.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeDataRequest`
@@ -142,7 +142,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """查询环境列表。
+        r"""查询环境列表。
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeEnvironmentsRequest`
@@ -165,7 +165,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeRunGroups(self, request):
-        """查询任务批次列表。
+        r"""查询任务批次列表。
 
         :param request: Request instance for DescribeRunGroups.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeRunGroupsRequest`
@@ -188,7 +188,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeRuns(self, request):
-        """查询任务列表。
+        r"""查询任务列表。
 
         :param request: Request instance for DescribeRuns.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeRunsRequest`
@@ -211,7 +211,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """查询表格。
+        r"""查询表格。
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRequest`
@@ -234,7 +234,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeTablesRows(self, request):
-        """查询表格行数据。
+        r"""查询表格行数据。
 
         :param request: Request instance for DescribeTablesRows.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRowsRequest`
@@ -257,7 +257,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeVolumes(self, request):
-        """查询缓存卷列表。
+        r"""查询缓存卷列表。
 
         :param request: Request instance for DescribeVolumes.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeVolumesRequest`
@@ -280,7 +280,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunCalls(self, request):
-        """查询作业详情。
+        r"""查询作业详情。
 
         :param request: Request instance for GetRunCalls.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunCallsRequest`
@@ -303,7 +303,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunMetadataFile(self, request):
-        """获取任务详情文件。
+        r"""获取任务详情文件。
 
         :param request: Request instance for GetRunMetadataFile.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunMetadataFileRequest`
@@ -326,7 +326,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunStatus(self, request):
-        """查询任务详情。
+        r"""查询任务详情。
 
         :param request: Request instance for GetRunStatus.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunStatusRequest`
@@ -349,7 +349,7 @@ class OmicsClient(AbstractClient):
 
 
     def ImportTableFile(self, request):
-        """导入表格文件。
+        r"""导入表格文件。
 
         :param request: Request instance for ImportTableFile.
         :type request: :class:`tencentcloud.omics.v20221128.models.ImportTableFileRequest`
@@ -372,7 +372,7 @@ class OmicsClient(AbstractClient):
 
 
     def ModifyVolume(self, request):
-        """修改缓存卷。
+        r"""修改缓存卷。
 
         :param request: Request instance for ModifyVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.ModifyVolumeRequest`
@@ -395,7 +395,7 @@ class OmicsClient(AbstractClient):
 
 
     def RetryRuns(self, request):
-        """重试任务。
+        r"""重试任务。
 
         :param request: Request instance for RetryRuns.
         :type request: :class:`tencentcloud.omics.v20221128.models.RetryRunsRequest`
@@ -418,7 +418,7 @@ class OmicsClient(AbstractClient):
 
 
     def RunApplication(self, request):
-        """运行应用。
+        r"""运行应用。
 
         :param request: Request instance for RunApplication.
         :type request: :class:`tencentcloud.omics.v20221128.models.RunApplicationRequest`
@@ -441,7 +441,7 @@ class OmicsClient(AbstractClient):
 
 
     def RunWorkflow(self, request):
-        """运行工作流。
+        r"""运行工作流。
 
         :param request: Request instance for RunWorkflow.
         :type request: :class:`tencentcloud.omics.v20221128.models.RunWorkflowRequest`
@@ -464,7 +464,7 @@ class OmicsClient(AbstractClient):
 
 
     def TerminateRunGroup(self, request):
-        """终止任务批次。
+        r"""终止任务批次。
 
         :param request: Request instance for TerminateRunGroup.
         :type request: :class:`tencentcloud.omics.v20221128.models.TerminateRunGroupRequest`

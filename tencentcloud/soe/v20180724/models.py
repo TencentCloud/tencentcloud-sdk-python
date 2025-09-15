@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class InitOralProcessRequest(AbstractModel):
-    """InitOralProcess请求参数结构体
+    r"""InitOralProcess请求参数结构体
 
     """
 
@@ -97,7 +97,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
+        r"""语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :rtype: str
         """
         return self._SessionId
@@ -108,7 +108,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def RefText(self):
-        """被评估语音对应的文本，仅支持中文和英文。
+        r"""被评估语音对应的文本，仅支持中文和英文。
 句子模式下不超过个 30 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式RefText可以不填。
 关于RefText的文本键入要求，请参考[评测模式介绍](https://cloud.tencent.com/document/product/884/56131)。
 如需要在评测模式下使用自定义注音（支持中英文），可以通过设置「TextMode」参数实现，设置方式请参考[音素标注](https://cloud.tencent.com/document/product/884/33698)。
@@ -122,7 +122,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def WorkMode(self):
-        """语音输入模式
+        r"""语音输入模式
 0：流式分片
 1：非流式一次性评估
 推荐使用流式分片传输。
@@ -136,7 +136,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def EvalMode(self):
-        """评测模式
+        r"""评测模式
 0：单词/单字模式（中文评测模式下为单字模式）
 1：句子模式
 2：段落模式
@@ -157,7 +157,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def ScoreCoeff(self):
-        """评价苛刻指数。取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数。
+        r"""评价苛刻指数。取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数。
 1.0：适用于最小年龄段用户，一般对应儿童应用场景；
 4.0：适用于最高年龄段用户，一般对应成人严格打分场景。苛刻度影响范围参考：[苛刻度影响范围](https://cloud.tencent.com/document/product/884/78824#.E8.8B.9B.E5.88.BB.E5.BA.A6)
         :rtype: float
@@ -170,7 +170,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def SoeAppId(self):
-        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
+        r"""业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
         :rtype: str
         """
         return self._SoeAppId
@@ -181,7 +181,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def IsLongLifeSession(self):
-        """长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
+        r"""长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
         :rtype: int
         """
         return self._IsLongLifeSession
@@ -192,7 +192,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def StorageMode(self):
-        """音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
+        r"""音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
         :rtype: int
         """
@@ -204,7 +204,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def SentenceInfoEnabled(self):
-        """输出断句中间结果标识
+        r"""输出断句中间结果标识
 0：不输出
 1：输出，通过设置该参数
 可以在评估过程中的分片传输请求中，返回已经评估断句的中间结果，中间结果可用于客户端 UI 更新，输出结果为TransmitOralProcess请求返回结果 SentenceInfoSet 字段。
@@ -218,7 +218,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def ServerType(self):
-        """评估语言
+        r"""评估语言
 0：英文（默认）
 1：中文
         :rtype: int
@@ -231,7 +231,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def IsAsync(self):
-        """异步模式标识
+        r"""异步模式标识
 0：同步模式
 1：异步模式（一般情况不建议使用异步模式）
 可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
@@ -245,7 +245,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def TextMode(self):
-        """输入文本模式
+        r"""输入文本模式
 0: 普通文本
 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
         :rtype: int
@@ -258,7 +258,7 @@ class InitOralProcessRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """主题词和关键词
+        r"""主题词和关键词
         :rtype: str
         """
         return self._Keyword
@@ -293,7 +293,7 @@ class InitOralProcessRequest(AbstractModel):
 
 
 class InitOralProcessResponse(AbstractModel):
-    """InitOralProcess返回参数结构体
+    r"""InitOralProcess返回参数结构体
 
     """
 
@@ -309,7 +309,7 @@ class InitOralProcessResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一个完整语音一个SessionId
+        r"""语音段唯一标识，一个完整语音一个SessionId
         :rtype: str
         """
         return self._SessionId
@@ -320,7 +320,7 @@ class InitOralProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -336,7 +336,7 @@ class InitOralProcessResponse(AbstractModel):
 
 
 class Keyword(AbstractModel):
-    """评测关键词
+    r"""评测关键词
 
     """
 
@@ -362,7 +362,7 @@ ServerType不填默认为0
 
     @property
     def RefText(self):
-        """被评估语音对应的文本，句子模式下不超过 20个单词或者中文文字，段落模式不超过 120个单词或者中文文字，中文文字需使用 utf-8 编码，自由说模式RefText可以不填。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
+        r"""被评估语音对应的文本，句子模式下不超过 20个单词或者中文文字，段落模式不超过 120个单词或者中文文字，中文文字需使用 utf-8 编码，自由说模式RefText可以不填。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
         :rtype: str
         """
         return self._RefText
@@ -373,7 +373,7 @@ ServerType不填默认为0
 
     @property
     def EvalMode(self):
-        """评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        r"""评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
         :rtype: int
         """
         return self._EvalMode
@@ -384,7 +384,7 @@ ServerType不填默认为0
 
     @property
     def ScoreCoeff(self):
-        """评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
+        r"""评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :rtype: float
         """
         return self._ScoreCoeff
@@ -395,7 +395,7 @@ ServerType不填默认为0
 
     @property
     def ServerType(self):
-        """评估语言，0：英文，1：中文。
+        r"""评估语言，0：英文，1：中文。
 ServerType不填默认为0
         :rtype: int
         """
@@ -407,7 +407,7 @@ ServerType不填默认为0
 
     @property
     def TextMode(self):
-        """输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
+        r"""输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
         :rtype: int
         """
         return self._TextMode
@@ -434,7 +434,7 @@ ServerType不填默认为0
 
 
 class KeywordEvaluateRequest(AbstractModel):
-    """KeywordEvaluate请求参数结构体
+    r"""KeywordEvaluate请求参数结构体
 
     """
 
@@ -480,7 +480,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def SeqId(self):
-        """流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，非流式模式时无意义。
+        r"""流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，非流式模式时无意义。
 注意：序号上限为3000，不能超过上限。
         :rtype: int
         """
@@ -492,7 +492,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def IsEnd(self):
-        """是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        r"""是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :rtype: int
         """
         return self._IsEnd
@@ -503,7 +503,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
-        """语音文件类型
+        r"""语音文件类型
 1: raw/pcm
 2: wav
 3: mp3
@@ -519,7 +519,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
-        """语音编码类型
+        r"""语音编码类型
 1:pcm
         :rtype: int
         """
@@ -531,7 +531,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def UserVoiceData(self):
-        """当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
+        r"""当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
 流式模式下需要将语音数据进行分片处理，参考：[分片大小设置](https://cloud.tencent.com/document/product/884/78985#.E5.88.86.E7.89.87.E5.A4.A7.E5.B0.8F.E8.AE.BE.E7.BD.AE.E4.B8.BA.E5.A4.9A.E5.A4.A7.E6.AF.94.E8.BE.83.E5.90.88.E9.80.82.3F)
 如何进行流式分片参考：[流式评测](https://cloud.tencent.com/document/product/884/78824#.E6.B5.81.E5.BC.8F.E8.AF.84.E6.B5.8B)
         :rtype: str
@@ -544,7 +544,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
+        r"""语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :rtype: str
         """
         return self._SessionId
@@ -555,7 +555,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        """关键词列表
+        r"""关键词列表
         :rtype: list of Keyword
         """
         return self._Keywords
@@ -566,7 +566,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def SoeAppId(self):
-        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
+        r"""业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
         :rtype: str
         """
         return self._SoeAppId
@@ -577,7 +577,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
     @property
     def IsQuery(self):
-        """查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
+        r"""查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
         :rtype: int
         """
         return self._IsQuery
@@ -613,7 +613,7 @@ class KeywordEvaluateRequest(AbstractModel):
 
 
 class KeywordEvaluateResponse(AbstractModel):
-    """KeywordEvaluate返回参数结构体
+    r"""KeywordEvaluate返回参数结构体
 
     """
 
@@ -632,7 +632,7 @@ class KeywordEvaluateResponse(AbstractModel):
 
     @property
     def KeywordScores(self):
-        """关键词得分
+        r"""关键词得分
         :rtype: list of KeywordScore
         """
         return self._KeywordScores
@@ -643,7 +643,7 @@ class KeywordEvaluateResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
+        r"""语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :rtype: str
         """
         return self._SessionId
@@ -654,7 +654,7 @@ class KeywordEvaluateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -676,7 +676,7 @@ class KeywordEvaluateResponse(AbstractModel):
 
 
 class KeywordScore(AbstractModel):
-    """关键词得分
+    r"""关键词得分
 
     """
 
@@ -705,7 +705,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键词
+        r"""关键词
         :rtype: str
         """
         return self._Keyword
@@ -716,7 +716,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
+        r"""发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
         :rtype: float
         """
         return self._PronAccuracy
@@ -727,7 +727,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def PronFluency(self):
-        """发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        r"""发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :rtype: float
         """
         return self._PronFluency
@@ -738,7 +738,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def PronCompletion(self):
-        """发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        r"""发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :rtype: float
         """
         return self._PronCompletion
@@ -749,7 +749,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def Words(self):
-        """详细发音评估结果
+        r"""详细发音评估结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WordRsp
         """
@@ -761,7 +761,7 @@ class KeywordScore(AbstractModel):
 
     @property
     def SuggestedScore(self):
-        """建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        r"""建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :rtype: float
         """
         return self._SuggestedScore
@@ -794,7 +794,7 @@ class KeywordScore(AbstractModel):
 
 
 class PhoneInfo(AbstractModel):
-    """单音节评价结果
+    r"""单音节评价结果
 
     """
 
@@ -831,7 +831,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def MemBeginTime(self):
-        """当前音节语音起始时间点，单位为ms
+        r"""当前音节语音起始时间点，单位为ms
         :rtype: int
         """
         return self._MemBeginTime
@@ -842,7 +842,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def MemEndTime(self):
-        """当前音节语音终止时间点，单位为ms
+        r"""当前音节语音终止时间点，单位为ms
         :rtype: int
         """
         return self._MemEndTime
@@ -853,7 +853,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """音节发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配
+        r"""音节发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配
         :rtype: float
         """
         return self._PronAccuracy
@@ -864,7 +864,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def DetectedStress(self):
-        """当前音节是否检测为重音
+        r"""当前音节是否检测为重音
         :rtype: bool
         """
         return self._DetectedStress
@@ -875,7 +875,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def Phone(self):
-        """当前音节，当前评测识别的音素
+        r"""当前音节，当前评测识别的音素
         :rtype: str
         """
         return self._Phone
@@ -886,7 +886,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def Stress(self):
-        """当前音节是否应为重音
+        r"""当前音节是否应为重音
         :rtype: bool
         """
         return self._Stress
@@ -897,7 +897,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def ReferencePhone(self):
-        """参考音素，在单词诊断模式下，代表标准音素
+        r"""参考音素，在单词诊断模式下，代表标准音素
         :rtype: str
         """
         return self._ReferencePhone
@@ -908,7 +908,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def MatchTag(self):
-        """当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
+        r"""当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
         :rtype: int
         """
         return self._MatchTag
@@ -919,7 +919,7 @@ class PhoneInfo(AbstractModel):
 
     @property
     def ReferenceLetter(self):
-        """参考字符，在单词诊断模式下，代表音素对应的原始文本
+        r"""参考字符，在单词诊断模式下，代表音素对应的原始文本
         :rtype: str
         """
         return self._ReferenceLetter
@@ -950,7 +950,7 @@ class PhoneInfo(AbstractModel):
 
 
 class SentenceInfo(AbstractModel):
-    """语音过程中断句的中间结果
+    r"""语音过程中断句的中间结果
 
     """
 
@@ -990,7 +990,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def SentenceId(self):
-        """句子序号，在段落、自由说模式下有效，表示断句序号，最后的综合结果的为-1.
+        r"""句子序号，在段落、自由说模式下有效，表示断句序号，最后的综合结果的为-1.
         :rtype: int
         """
         return self._SentenceId
@@ -1001,7 +1001,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def Words(self):
-        """详细发音评估结果
+        r"""详细发音评估结果
         :rtype: list of WordRsp
         """
         return self._Words
@@ -1012,7 +1012,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。
+        r"""发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。
         :rtype: float
         """
         return self._PronAccuracy
@@ -1023,7 +1023,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def PronFluency(self):
-        """发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        r"""发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :rtype: float
         """
         return self._PronFluency
@@ -1034,7 +1034,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def PronCompletion(self):
-        """发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        r"""发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :rtype: float
         """
         return self._PronCompletion
@@ -1045,7 +1045,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def SuggestedScore(self):
-        """建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        r"""建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :rtype: float
         """
         return self._SuggestedScore
@@ -1056,7 +1056,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def RefTextId(self):
-        """匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+        r"""匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1068,7 +1068,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def KeyWordHits(self):
-        """主题词命中标志，0表示没命中，1表示命中
+        r"""主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -1080,7 +1080,7 @@ class SentenceInfo(AbstractModel):
 
     @property
     def UnKeyWordHits(self):
-        """负向主题词命中标志，0表示没命中，1表示命中
+        r"""负向主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -1117,7 +1117,7 @@ class SentenceInfo(AbstractModel):
 
 
 class Tone(AbstractModel):
-    """中文声调检测结果
+    r"""中文声调检测结果
 
     """
 
@@ -1139,7 +1139,7 @@ class Tone(AbstractModel):
 
     @property
     def Valid(self):
-        """检测结果是否有效
+        r"""检测结果是否有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1151,7 +1151,7 @@ class Tone(AbstractModel):
 
     @property
     def RefTone(self):
-        """文本标准声调，数值范围[-1,1,2,3,4]
+        r"""文本标准声调，数值范围[-1,1,2,3,4]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1163,7 +1163,7 @@ class Tone(AbstractModel):
 
     @property
     def HypothesisTone(self):
-        """实际发音声调，数值范围[-1,1,2,3,4]
+        r"""实际发音声调，数值范围[-1,1,2,3,4]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1189,7 +1189,7 @@ class Tone(AbstractModel):
 
 
 class TransmitOralProcessRequest(AbstractModel):
-    """TransmitOralProcess请求参数结构体
+    r"""TransmitOralProcess请求参数结构体
 
     """
 
@@ -1235,7 +1235,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def SeqId(self):
-        """流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
+        r"""流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
 注意：序号上限为3000，不能超过上限。
         :rtype: int
         """
@@ -1247,7 +1247,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def IsEnd(self):
-        """是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        r"""是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :rtype: int
         """
         return self._IsEnd
@@ -1258,7 +1258,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
-        """1: raw/pcm
+        r"""1: raw/pcm
 2: wav
 3: mp3
 4: speex
@@ -1273,7 +1273,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
-        """语音编码类型
+        r"""语音编码类型
 1:pcm
         :rtype: int
         """
@@ -1285,7 +1285,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def UserVoiceData(self):
-        """当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
+        r"""当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
 流式模式下需要将语音数据进行分片处理，参考：[分片大小设置](https://cloud.tencent.com/document/product/884/78985#.E5.88.86.E7.89.87.E5.A4.A7.E5.B0.8F.E8.AE.BE.E7.BD.AE.E4.B8.BA.E5.A4.9A.E5.A4.A7.E6.AF.94.E8.BE.83.E5.90.88.E9.80.82.3F)
 如何进行流式分片参考：[流式评测](https://cloud.tencent.com/document/product/884/78824#.E6.B5.81.E5.BC.8F.E8.AF.84.E6.B5.8B)
         :rtype: str
@@ -1298,7 +1298,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。
+        r"""语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。
 一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :rtype: str
         """
@@ -1310,7 +1310,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def SoeAppId(self):
-        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
+        r"""业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
         :rtype: str
         """
         return self._SoeAppId
@@ -1321,7 +1321,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def IsLongLifeSession(self):
-        """长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口和TransmitOralProcess接口的IsLongLifeSession均为1时，才可生效。
+        r"""长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口和TransmitOralProcess接口的IsLongLifeSession均为1时，才可生效。
         :rtype: int
         """
         return self._IsLongLifeSession
@@ -1332,7 +1332,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
     @property
     def IsQuery(self):
-        """查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 的评估结果。
+        r"""查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 的评估结果。
         :rtype: int
         """
         return self._IsQuery
@@ -1363,7 +1363,7 @@ class TransmitOralProcessRequest(AbstractModel):
 
 
 class TransmitOralProcessResponse(AbstractModel):
-    """TransmitOralProcess返回参数结构体
+    r"""TransmitOralProcess返回参数结构体
 
     """
 
@@ -1415,7 +1415,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
+        r"""发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
         :rtype: float
         """
         return self._PronAccuracy
@@ -1426,7 +1426,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def PronFluency(self):
-        """发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
+        r"""发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
         :rtype: float
         """
         return self._PronFluency
@@ -1437,7 +1437,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def PronCompletion(self):
-        """发音完整度，取值范围[0, 1]，当为词模式或自由说模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
+        r"""发音完整度，取值范围[0, 1]，当为词模式或自由说模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
         :rtype: float
         """
         return self._PronCompletion
@@ -1448,7 +1448,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def Words(self):
-        """详细发音评估结果
+        r"""详细发音评估结果
         :rtype: list of WordRsp
         """
         return self._Words
@@ -1459,7 +1459,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段语音一个SessionId
+        r"""语音段唯一标识，一段语音一个SessionId
         :rtype: str
         """
         return self._SessionId
@@ -1470,7 +1470,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def AudioUrl(self):
-        """已废弃，不再保存语音音频文件下载地址
+        r"""已废弃，不再保存语音音频文件下载地址
         :rtype: str
         """
         return self._AudioUrl
@@ -1481,7 +1481,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def SentenceInfoSet(self):
-        """断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
+        r"""断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
         :rtype: list of SentenceInfo
         """
         return self._SentenceInfoSet
@@ -1492,7 +1492,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def Status(self):
-        """评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
+        r"""评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :rtype: str
         """
         return self._Status
@@ -1503,7 +1503,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def SuggestedScore(self):
-        """建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        r"""建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :rtype: float
         """
         return self._SuggestedScore
@@ -1514,7 +1514,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def RefTextId(self):
-        """匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+        r"""匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1526,7 +1526,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def KeyWordHits(self):
-        """主题词命中标志，0表示没命中，1表示命中
+        r"""主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -1538,7 +1538,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def UnKeyWordHits(self):
-        """负向主题词命中标志，0表示没命中，1表示命中
+        r"""负向主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -1550,7 +1550,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1587,7 +1587,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
 
 class TransmitOralProcessWithInitRequest(AbstractModel):
-    """TransmitOralProcessWithInit请求参数结构体
+    r"""TransmitOralProcessWithInit请求参数结构体
 
     """
 
@@ -1695,7 +1695,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def SeqId(self):
-        """流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
+        r"""流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
 注意：序号上限为3000，不能超过上限。
         :rtype: int
         """
@@ -1707,7 +1707,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def IsEnd(self):
-        """是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        r"""是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :rtype: int
         """
         return self._IsEnd
@@ -1718,7 +1718,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
-        """语音文件类型
+        r"""语音文件类型
 1: raw/pcm
 2: wav
 3: mp3
@@ -1735,7 +1735,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
-        """语音编码类型
+        r"""语音编码类型
 1:pcm
         :rtype: int
         """
@@ -1747,7 +1747,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def UserVoiceData(self):
-        """当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
+        r"""当前语音数据, 编码格式要求为BASE64且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数）。格式要求参考[音频上传格式](https://cloud.tencent.com/document/product/884/56132)
 流式模式下需要将语音数据进行分片处理，参考：[分片大小设置](https://cloud.tencent.com/document/product/884/78985#.E5.88.86.E7.89.87.E5.A4.A7.E5.B0.8F.E8.AE.BE.E7.BD.AE.E4.B8.BA.E5.A4.9A.E5.A4.A7.E6.AF.94.E8.BE.83.E5.90.88.E9.80.82.3F)
 如何进行流式分片参考：[流式测试](https://cloud.tencent.com/document/product/884/78824#.E6.B5.81.E5.BC.8F.E8.AF.84.E6.B5.8B)
         :rtype: str
@@ -1760,7 +1760,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
+        r"""语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :rtype: str
         """
         return self._SessionId
@@ -1771,7 +1771,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def RefText(self):
-        """被评估语音对应的文本，仅支持中文和英文。
+        r"""被评估语音对应的文本，仅支持中文和英文。
 句子模式下不超过 30个 单词或者中文文字，段落模式不超过 120 个单词或者中文文字，中文评估使用 utf-8 编码，自由说模式RefText可以不填。
 关于RefText的文本键入要求，请参考[评测模式介绍](https://cloud.tencent.com/document/product/884/56131)。
 如需要在评测模式下使用自定义注音（支持中英文），可以通过设置「TextMode」参数实现，设置方式请参考[音素标注](https://cloud.tencent.com/document/product/884/33698)。
@@ -1785,7 +1785,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def WorkMode(self):
-        """语音输入模式
+        r"""语音输入模式
 0：流式分片
 1：非流式一次性评估
 推荐使用流式分片传输。
@@ -1799,7 +1799,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def EvalMode(self):
-        """评测模式
+        r"""评测模式
 0：单词/单字模式（中文评测模式下为单字模式）
 1：句子模式
 2：段落模式
@@ -1820,7 +1820,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def ScoreCoeff(self):
-        """评价苛刻指数。取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数。
+        r"""评价苛刻指数。取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数。
 1.0：适用于最小年龄段用户，一般对应儿童应用场景；
 4.0：适用于最高年龄段用户，一般对应成人严格打分场景。
 苛刻度影响范围参考：[苛刻度影响范围](https://cloud.tencent.com/document/product/884/78824#.E8.8B.9B.E5.88.BB.E5.BA.A6)
@@ -1834,7 +1834,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def SoeAppId(self):
-        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
+        r"""业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
         :rtype: str
         """
         return self._SoeAppId
@@ -1847,7 +1847,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
     def StorageMode(self):
         warnings.warn("parameter `StorageMode` is deprecated", DeprecationWarning) 
 
-        """音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
+        r"""音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
         :rtype: int
         """
@@ -1861,7 +1861,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def SentenceInfoEnabled(self):
-        """输出断句中间结果标识
+        r"""输出断句中间结果标识
 0：不输出（默认）
 1：输出，通过设置该参数
 可以在评估过程中的分片传输请求中，返回已经评估断句的中间结果，中间结果可用于客户端 UI 更新，输出结果为TransmitOralProcessWithInit请求返回结果 SentenceInfoSet 字段。
@@ -1875,7 +1875,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def ServerType(self):
-        """评估语言
+        r"""评估语言
 0：英文（默认）
 1：中文
         :rtype: int
@@ -1888,7 +1888,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def IsAsync(self):
-        """异步模式标识
+        r"""异步模式标识
 0：同步模式（默认）
 1：异步模式（一般情况不建议使用异步模式，如需使用参考：[异步轮询](https://cloud.tencent.com/document/product/884/78824#.E7.BB.93.E6.9E.9C.E6.9F.A5.E8.AF.A2)）
 可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
@@ -1902,7 +1902,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def IsQuery(self):
-        """查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
+        r"""查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
         :rtype: int
         """
         return self._IsQuery
@@ -1913,7 +1913,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def TextMode(self):
-        """输入文本模式
+        r"""输入文本模式
 0: 普通文本（默认）
 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
         :rtype: int
@@ -1926,7 +1926,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """主题词和关键词
+        r"""主题词和关键词
         :rtype: str
         """
         return self._Keyword
@@ -1937,7 +1937,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def COSBucketURL(self):
-        """音频存储模式，此参数已废弃，无需设置；
+        r"""音频存储模式，此参数已废弃，无需设置；
 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
         :rtype: str
         """
@@ -1979,7 +1979,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
 
 class TransmitOralProcessWithInitResponse(AbstractModel):
-    """TransmitOralProcessWithInit返回参数结构体
+    r"""TransmitOralProcessWithInit返回参数结构体
 
     """
 
@@ -2031,7 +2031,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
+        r"""发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
         :rtype: float
         """
         return self._PronAccuracy
@@ -2042,7 +2042,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def PronFluency(self):
-        """发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
+        r"""发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
         :rtype: float
         """
         return self._PronFluency
@@ -2053,7 +2053,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def PronCompletion(self):
-        """发音完整度，取值范围[0, 1]，当为词模式或自由说模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
+        r"""发音完整度，取值范围[0, 1]，当为词模式或自由说模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义。取值无意义时，值为-1
         :rtype: float
         """
         return self._PronCompletion
@@ -2064,7 +2064,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def Words(self):
-        """详细发音评估结果
+        r"""详细发音评估结果
         :rtype: list of WordRsp
         """
         return self._Words
@@ -2075,7 +2075,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """语音段唯一标识，一段语音一个SessionId
+        r"""语音段唯一标识，一段语音一个SessionId
         :rtype: str
         """
         return self._SessionId
@@ -2088,7 +2088,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
     def AudioUrl(self):
         warnings.warn("parameter `AudioUrl` is deprecated", DeprecationWarning) 
 
-        """已废弃，不再保存语音音频文件下载地址
+        r"""已废弃，不再保存语音音频文件下载地址
         :rtype: str
         """
         return self._AudioUrl
@@ -2101,7 +2101,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def SentenceInfoSet(self):
-        """断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
+        r"""断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
         :rtype: list of SentenceInfo
         """
         return self._SentenceInfoSet
@@ -2112,7 +2112,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def Status(self):
-        """评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
+        r"""评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :rtype: str
         """
         return self._Status
@@ -2123,7 +2123,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def SuggestedScore(self):
-        """建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        r"""建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :rtype: float
         """
         return self._SuggestedScore
@@ -2134,7 +2134,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def RefTextId(self):
-        """匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+        r"""匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2146,7 +2146,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def KeyWordHits(self):
-        """主题词命中标志，0表示没命中，1表示命中
+        r"""主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -2158,7 +2158,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def UnKeyWordHits(self):
-        """负向主题词命中标志，0表示没命中，1表示命中
+        r"""负向主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -2170,7 +2170,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2207,7 +2207,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
 
 class WordRsp(AbstractModel):
-    """单词评分细则
+    r"""单词评分细则
 
     """
 
@@ -2249,7 +2249,7 @@ class WordRsp(AbstractModel):
 
     @property
     def MemBeginTime(self):
-        """当前单词语音起始时间点，单位为ms，该字段段落模式下无意义。
+        r"""当前单词语音起始时间点，单位为ms，该字段段落模式下无意义。
         :rtype: int
         """
         return self._MemBeginTime
@@ -2260,7 +2260,7 @@ class WordRsp(AbstractModel):
 
     @property
     def MemEndTime(self):
-        """当前单词语音终止时间点，单位为ms，该字段段落模式下无意义。
+        r"""当前单词语音终止时间点，单位为ms，该字段段落模式下无意义。
         :rtype: int
         """
         return self._MemEndTime
@@ -2271,7 +2271,7 @@ class WordRsp(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """单词发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配
+        r"""单词发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配
         :rtype: float
         """
         return self._PronAccuracy
@@ -2282,7 +2282,7 @@ class WordRsp(AbstractModel):
 
     @property
     def PronFluency(self):
-        """单词发音流利度，取值范围[0, 1]
+        r"""单词发音流利度，取值范围[0, 1]
         :rtype: float
         """
         return self._PronFluency
@@ -2293,7 +2293,7 @@ class WordRsp(AbstractModel):
 
     @property
     def Word(self):
-        """当前词
+        r"""当前词
         :rtype: str
         """
         return self._Word
@@ -2304,7 +2304,7 @@ class WordRsp(AbstractModel):
 
     @property
     def MatchTag(self):
-        """当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
+        r"""当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
         :rtype: int
         """
         return self._MatchTag
@@ -2315,7 +2315,7 @@ class WordRsp(AbstractModel):
 
     @property
     def PhoneInfos(self):
-        """音节评估详情
+        r"""音节评估详情
         :rtype: list of PhoneInfo
         """
         return self._PhoneInfos
@@ -2326,7 +2326,7 @@ class WordRsp(AbstractModel):
 
     @property
     def ReferenceWord(self):
-        """参考词，目前为保留字段。
+        r"""参考词，目前为保留字段。
         :rtype: str
         """
         return self._ReferenceWord
@@ -2337,7 +2337,7 @@ class WordRsp(AbstractModel):
 
     @property
     def KeywordTag(self):
-        """主题词命中标志，0表示没命中，1表示命中
+        r"""主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2349,7 +2349,7 @@ class WordRsp(AbstractModel):
 
     @property
     def Tone(self):
-        """声调检测结果
+        r"""声调检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.soe.v20180724.models.Tone`
         """

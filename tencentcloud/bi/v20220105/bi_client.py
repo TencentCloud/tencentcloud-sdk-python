@@ -27,7 +27,7 @@ class BiClient(AbstractClient):
 
 
     def ApplyEmbedInterval(self, request):
-        """申请延长Token可用时间接口-强鉴权
+        r"""申请延长Token可用时间接口-强鉴权
 
         :param request: Request instance for ApplyEmbedInterval.
         :type request: :class:`tencentcloud.bi.v20220105.models.ApplyEmbedIntervalRequest`
@@ -50,7 +50,7 @@ class BiClient(AbstractClient):
 
 
     def ClearEmbedToken(self, request):
-        """强鉴权token 清理，只有企业管理员才能调用该接口
+        r"""强鉴权token 清理，只有企业管理员才能调用该接口
 
         :param request: Request instance for ClearEmbedToken.
         :type request: :class:`tencentcloud.bi.v20220105.models.ClearEmbedTokenRequest`
@@ -73,7 +73,7 @@ class BiClient(AbstractClient):
 
 
     def CreateDatasource(self, request):
-        """创建数据源
+        r"""创建数据源
 
         :param request: Request instance for CreateDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateDatasourceRequest`
@@ -96,7 +96,7 @@ class BiClient(AbstractClient):
 
 
     def CreateDatasourceCloud(self, request):
-        """创建云数据库
+        r"""创建云数据库
 
         :param request: Request instance for CreateDatasourceCloud.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateDatasourceCloudRequest`
@@ -119,7 +119,7 @@ class BiClient(AbstractClient):
 
 
     def CreateEmbedToken(self, request):
-        """创建嵌出报表-强鉴权
+        r"""创建嵌出报表-强鉴权
 
         :param request: Request instance for CreateEmbedToken.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateEmbedTokenRequest`
@@ -142,7 +142,7 @@ class BiClient(AbstractClient):
 
 
     def CreatePermissionRanks(self, request):
-        """创建行列权限
+        r"""创建行列权限
 
         :param request: Request instance for CreatePermissionRanks.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreatePermissionRanksRequest`
@@ -165,7 +165,7 @@ class BiClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """创建项目
+        r"""创建项目
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateProjectRequest`
@@ -188,7 +188,7 @@ class BiClient(AbstractClient):
 
 
     def CreateUserRole(self, request):
-        """创建用户角色
+        r"""创建用户角色
 
         :param request: Request instance for CreateUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserRoleRequest`
@@ -211,7 +211,7 @@ class BiClient(AbstractClient):
 
 
     def CreateUserRoleProject(self, request):
-        """项目内-创建用户角色
+        r"""项目内-创建用户角色
 
         :param request: Request instance for CreateUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserRoleProjectRequest`
@@ -234,7 +234,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteDatasource(self, request):
-        """删除数据源
+        r"""删除数据源
 
         :param request: Request instance for DeleteDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteDatasourceRequest`
@@ -257,7 +257,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """删除项目
+        r"""删除项目
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteProjectRequest`
@@ -280,7 +280,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteUserRole(self, request):
-        """删除用户角色，会删除用户
+        r"""删除用户角色，会删除用户
 
         :param request: Request instance for DeleteUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserRoleRequest`
@@ -303,7 +303,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteUserRoleProject(self, request):
-        """项目内-删除用户角色
+        r"""项目内-删除用户角色
 
         :param request: Request instance for DeleteUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserRoleProjectRequest`
@@ -326,7 +326,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeDatasourceList(self, request):
-        """查询数据源列表
+        r"""查询数据源列表
 
         :param request: Request instance for DescribeDatasourceList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeDatasourceListRequest`
@@ -349,7 +349,7 @@ class BiClient(AbstractClient):
 
 
     def DescribePageWidgetList(self, request):
-        """查询页面组件信息
+        r"""查询页面组件信息
 
         :param request: Request instance for DescribePageWidgetList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribePageWidgetListRequest`
@@ -372,7 +372,7 @@ class BiClient(AbstractClient):
 
 
     def DescribePermissionRanksInfo(self, request):
-        """根据角色或标签查询行列权限配置
+        r"""根据角色或标签查询行列权限配置
 
         :param request: Request instance for DescribePermissionRanksInfo.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRanksInfoRequest`
@@ -395,7 +395,7 @@ class BiClient(AbstractClient):
 
 
     def DescribePermissionRoleInfo(self, request):
-        """行列权限项目内角色列表接口1
+        r"""行列权限项目内角色列表接口1
 
         :param request: Request instance for DescribePermissionRoleInfo.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRoleInfoRequest`
@@ -418,7 +418,7 @@ class BiClient(AbstractClient):
 
 
     def DescribePermissionStatusInfo(self, request):
-        """查询行列权限初始状态1
+        r"""查询行列权限初始状态1
 
         :param request: Request instance for DescribePermissionStatusInfo.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionStatusInfoRequest`
@@ -441,7 +441,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeProjectInfo(self, request):
-        """项目详情接口
+        r"""项目详情接口
 
         :param request: Request instance for DescribeProjectInfo.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeProjectInfoRequest`
@@ -464,7 +464,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeProjectList(self, request):
-        """项目信息
+        r"""项目信息
 
         :param request: Request instance for DescribeProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeProjectListRequest`
@@ -487,7 +487,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserProjectList(self, request):
-        """项目内-用户接口
+        r"""项目内-用户接口
 
         :param request: Request instance for DescribeUserProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserProjectListRequest`
@@ -510,7 +510,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserRoleList(self, request):
-        """用户角色列表
+        r"""用户角色列表
 
         :param request: Request instance for DescribeUserRoleList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleListRequest`
@@ -533,7 +533,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserRoleProjectList(self, request):
-        """项目内-用户角色列表
+        r"""项目内-用户角色列表
 
         :param request: Request instance for DescribeUserRoleProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleProjectListRequest`
@@ -556,7 +556,7 @@ class BiClient(AbstractClient):
 
 
     def ExportScreenPage(self, request):
-        """页面截图导出
+        r"""页面截图导出
 
         :param request: Request instance for ExportScreenPage.
         :type request: :class:`tencentcloud.bi.v20220105.models.ExportScreenPageRequest`
@@ -579,7 +579,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyDatasource(self, request):
-        """更新数据源
+        r"""更新数据源
 
         :param request: Request instance for ModifyDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyDatasourceRequest`
@@ -602,7 +602,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyDatasourceCloud(self, request):
-        """更新云数据库
+        r"""更新云数据库
 
         :param request: Request instance for ModifyDatasourceCloud.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyDatasourceCloudRequest`
@@ -625,7 +625,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改项目信息
+        r"""修改项目信息
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyProjectRequest`
@@ -648,7 +648,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyUserRole(self, request):
-        """修改用户角色信息
+        r"""修改用户角色信息
 
         :param request: Request instance for ModifyUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleRequest`
@@ -671,7 +671,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyUserRoleProject(self, request):
-        """项目-修改用户角色信息
+        r"""项目-修改用户角色信息
 
         :param request: Request instance for ModifyUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleProjectRequest`

@@ -27,7 +27,7 @@ class TccatalogClient(AbstractClient):
 
 
     def AcceptTccVpcEndPointConnect(self, request):
-        """接受终端节点连接
+        r"""接受终端节点连接
 
         :param request: Request instance for AcceptTccVpcEndPointConnect.
         :type request: :class:`tencentcloud.tccatalog.v20241024.models.AcceptTccVpcEndPointConnectRequest`
@@ -50,7 +50,7 @@ class TccatalogClient(AbstractClient):
 
 
     def BindTccVpcEndPointServiceWhiteList(self, request):
-        """绑定终端节点服务白名单用户
+        r"""绑定终端节点服务白名单用户
 
         :param request: Request instance for BindTccVpcEndPointServiceWhiteList.
         :type request: :class:`tencentcloud.tccatalog.v20241024.models.BindTccVpcEndPointServiceWhiteListRequest`
@@ -73,7 +73,7 @@ class TccatalogClient(AbstractClient):
 
 
     def DescribeTccCatalog(self, request):
-        """获取Tcc数据目录详情
+        r"""获取Tcc数据目录详情
 
         :param request: Request instance for DescribeTccCatalog.
         :type request: :class:`tencentcloud.tccatalog.v20241024.models.DescribeTccCatalogRequest`
@@ -96,7 +96,7 @@ class TccatalogClient(AbstractClient):
 
 
     def DescribeTccCatalogs(self, request):
-        """获取Tcc数据目录列表
+        r"""获取Tcc数据目录列表
 
         :param request: Request instance for DescribeTccCatalogs.
         :type request: :class:`tencentcloud.tccatalog.v20241024.models.DescribeTccCatalogsRequest`

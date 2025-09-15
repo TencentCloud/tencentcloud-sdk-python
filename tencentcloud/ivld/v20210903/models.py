@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddCustomPersonImageRequest(AbstractModel):
-    """AddCustomPersonImage请求参数结构体
+    r"""AddCustomPersonImage请求参数结构体
 
     """
 
@@ -38,7 +38,7 @@ class AddCustomPersonImageRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -49,7 +49,7 @@ class AddCustomPersonImageRequest(AbstractModel):
 
     @property
     def ImageURL(self):
-        """自定义人物图片地址
+        r"""自定义人物图片地址
         :rtype: str
         """
         return self._ImageURL
@@ -60,7 +60,7 @@ class AddCustomPersonImageRequest(AbstractModel):
 
     @property
     def Image(self):
-        """图片数据base64之后的结果
+        r"""图片数据base64之后的结果
         :rtype: str
         """
         return self._Image
@@ -85,7 +85,7 @@ class AddCustomPersonImageRequest(AbstractModel):
 
 
 class AddCustomPersonImageResponse(AbstractModel):
-    """AddCustomPersonImage返回参数结构体
+    r"""AddCustomPersonImage返回参数结构体
 
     """
 
@@ -104,7 +104,7 @@ class AddCustomPersonImageResponse(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -115,7 +115,7 @@ class AddCustomPersonImageResponse(AbstractModel):
 
     @property
     def ImageInfo(self):
-        """自定义人脸图片信息
+        r"""自定义人脸图片信息
         :rtype: :class:`tencentcloud.ivld.v20210903.models.PersonImageInfo`
         """
         return self._ImageInfo
@@ -126,7 +126,7 @@ class AddCustomPersonImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -145,7 +145,7 @@ class AddCustomPersonImageResponse(AbstractModel):
 
 
 class AppearIndexPair(AbstractModel):
-    """出现信息索引对
+    r"""出现信息索引对
 
     AppearIndex可选值定义如下：
 
@@ -172,7 +172,7 @@ class AppearIndexPair(AbstractModel):
 
     @property
     def AppearIndex(self):
-        """出现信息，取值范围为[1，3]
+        r"""出现信息，取值范围为[1，3]
         :rtype: int
         """
         return self._AppearIndex
@@ -183,7 +183,7 @@ class AppearIndexPair(AbstractModel):
 
     @property
     def Index(self):
-        """AppearInfo中AppearIndex对应元素的第Index元素，从0开始计数
+        r"""AppearInfo中AppearIndex对应元素的第Index元素，从0开始计数
         :rtype: int
         """
         return self._Index
@@ -207,7 +207,7 @@ class AppearIndexPair(AbstractModel):
 
 
 class AppearInfo(AbstractModel):
-    """出现信息结构
+    r"""出现信息结构
 
     包含关键词在音频转文字(ASR)，图片转文字(OCR)以及视频结果中的出现信息
 
@@ -231,7 +231,7 @@ class AppearInfo(AbstractModel):
 
     @property
     def AudioAppearSet(self):
-        """关键词在音频文本结果中的出现位置数组
+        r"""关键词在音频文本结果中的出现位置数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextAppearInfo
         """
@@ -243,7 +243,7 @@ class AppearInfo(AbstractModel):
 
     @property
     def TextAppearSet(self):
-        """关键词在可视文本结果中的出现位置数组
+        r"""关键词在可视文本结果中的出现位置数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextAppearInfo
         """
@@ -255,7 +255,7 @@ class AppearInfo(AbstractModel):
 
     @property
     def VideoAppearSet(self):
-        """关键词在视频信息中的出现位置数组
+        r"""关键词在视频信息中的出现位置数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoAppearInfo
         """
@@ -296,7 +296,7 @@ class AppearInfo(AbstractModel):
 
 
 class AsrResult(AbstractModel):
-    """一条 asr 语音结果的结构
+    r"""一条 asr 语音结果的结构
 
     """
 
@@ -315,7 +315,7 @@ class AsrResult(AbstractModel):
 
     @property
     def Content(self):
-        """ASR提取的文字信息
+        r"""ASR提取的文字信息
         :rtype: str
         """
         return self._Content
@@ -326,7 +326,7 @@ class AsrResult(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """ASR起始时间戳，从0开始
+        r"""ASR起始时间戳，从0开始
         :rtype: float
         """
         return self._StartTimeStamp
@@ -337,7 +337,7 @@ class AsrResult(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """ASR结束时间戳，从0开始
+        r"""ASR结束时间戳，从0开始
         :rtype: float
         """
         return self._EndTimeStamp
@@ -362,7 +362,7 @@ class AsrResult(AbstractModel):
 
 
 class AudioData(AbstractModel):
-    """音频文件分析结果数据
+    r"""音频文件分析结果数据
 
     """
 
@@ -383,7 +383,7 @@ class AudioData(AbstractModel):
 
     @property
     def AudioInfoSet(self):
-        """音频识别文本结果
+        r"""音频识别文本结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioInfo
         """
@@ -395,7 +395,7 @@ class AudioData(AbstractModel):
 
     @property
     def TextTagSet(self):
-        """音频识别标签数据
+        r"""音频识别标签数据
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
         """
         return self._TextTagSet
@@ -406,7 +406,7 @@ class AudioData(AbstractModel):
 
     @property
     def WebMediaURL(self):
-        """音频下载地址
+        r"""音频下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -439,7 +439,7 @@ class AudioData(AbstractModel):
 
 
 class AudioInfo(AbstractModel):
-    """音频识别结果信息
+    r"""音频识别结果信息
 
     """
 
@@ -461,7 +461,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Content(self):
-        """ASR提取的文字信息
+        r"""ASR提取的文字信息
         :rtype: str
         """
         return self._Content
@@ -472,7 +472,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """ASR起始时间戳，从0开始
+        r"""ASR起始时间戳，从0开始
         :rtype: float
         """
         return self._StartTimeStamp
@@ -483,7 +483,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """ASR结束时间戳，从0开始
+        r"""ASR结束时间戳，从0开始
         :rtype: float
         """
         return self._EndTimeStamp
@@ -494,7 +494,7 @@ class AudioInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """ASR提取的音频标签
+        r"""ASR提取的音频标签
         :rtype: str
         """
         return self._Tag
@@ -520,7 +520,7 @@ class AudioInfo(AbstractModel):
 
 
 class AudioMetadata(AbstractModel):
-    """音频文件元信息
+    r"""音频文件元信息
 
     """
 
@@ -562,7 +562,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        """媒资音频文件大小，单位为Byte
+        r"""媒资音频文件大小，单位为Byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -574,7 +574,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        """媒资音频文件MD5
+        r"""媒资音频文件MD5
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -586,7 +586,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def Duration(self):
-        """媒资音频时长，单位为秒
+        r"""媒资音频时长，单位为秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -598,7 +598,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def SampleRate(self):
-        """媒资音频采样率，单位为khz
+        r"""媒资音频采样率，单位为khz
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -610,7 +610,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def BitRate(self):
-        """媒资音频码率，单位为kbps
+        r"""媒资音频码率，单位为kbps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -622,7 +622,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def Format(self):
-        """媒资音频文件格式
+        r"""媒资音频文件格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -634,7 +634,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def BitDepth(self):
-        """Audio Bit Depth: 16/24 bit .etc
+        r"""Audio Bit Depth: 16/24 bit .etc
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -646,7 +646,7 @@ class AudioMetadata(AbstractModel):
 
     @property
     def ShortFormat(self):
-        """封装格式短后缀
+        r"""封装格式短后缀
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -677,7 +677,7 @@ class AudioMetadata(AbstractModel):
 
 
 class ClassifiedPersonInfo(AbstractModel):
-    """已分类的人物信息
+    r"""已分类的人物信息
 
     """
 
@@ -695,7 +695,7 @@ class ClassifiedPersonInfo(AbstractModel):
 
     @property
     def ClassifyName(self):
-        """人物分类名称
+        r"""人物分类名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -707,7 +707,7 @@ class ClassifiedPersonInfo(AbstractModel):
 
     @property
     def PersonInfoSet(self):
-        """符合特定分类的人物信息数组
+        r"""符合特定分类的人物信息数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PersonInfo
         """
@@ -737,7 +737,7 @@ class ClassifiedPersonInfo(AbstractModel):
 
 
 class CreateCustomCategoryRequest(AbstractModel):
-    """CreateCustomCategory请求参数结构体
+    r"""CreateCustomCategory请求参数结构体
 
     """
 
@@ -753,7 +753,7 @@ class CreateCustomCategoryRequest(AbstractModel):
 
     @property
     def L1Category(self):
-        """自定义一级类型
+        r"""自定义一级类型
         :rtype: str
         """
         return self._L1Category
@@ -764,7 +764,7 @@ class CreateCustomCategoryRequest(AbstractModel):
 
     @property
     def L2Category(self):
-        """自定义二级类型
+        r"""自定义二级类型
         :rtype: str
         """
         return self._L2Category
@@ -788,7 +788,7 @@ class CreateCustomCategoryRequest(AbstractModel):
 
 
 class CreateCustomCategoryResponse(AbstractModel):
-    """CreateCustomCategory返回参数结构体
+    r"""CreateCustomCategory返回参数结构体
 
     """
 
@@ -804,7 +804,7 @@ class CreateCustomCategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义分类信息ID
+        r"""自定义分类信息ID
         :rtype: str
         """
         return self._CategoryId
@@ -815,7 +815,7 @@ class CreateCustomCategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -831,7 +831,7 @@ class CreateCustomCategoryResponse(AbstractModel):
 
 
 class CreateCustomGroupRequest(AbstractModel):
-    """CreateCustomGroup请求参数结构体
+    r"""CreateCustomGroup请求参数结构体
 
     """
 
@@ -844,7 +844,7 @@ class CreateCustomGroupRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """人脸图片COS存储桶Host地址
+        r"""人脸图片COS存储桶Host地址
         :rtype: str
         """
         return self._Bucket
@@ -867,7 +867,7 @@ class CreateCustomGroupRequest(AbstractModel):
 
 
 class CreateCustomGroupResponse(AbstractModel):
-    """CreateCustomGroup返回参数结构体
+    r"""CreateCustomGroup返回参数结构体
 
     """
 
@@ -880,7 +880,7 @@ class CreateCustomGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -895,7 +895,7 @@ class CreateCustomGroupResponse(AbstractModel):
 
 
 class CreateCustomPersonRequest(AbstractModel):
-    """CreateCustomPerson请求参数结构体
+    r"""CreateCustomPerson请求参数结构体
 
     """
 
@@ -920,7 +920,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
     @property
     def Name(self):
-        """自定义人物姓名
+        r"""自定义人物姓名
         :rtype: str
         """
         return self._Name
@@ -931,7 +931,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
     @property
     def BasicInfo(self):
-        """自定义人物简要信息(仅用于标记，不支持检索)
+        r"""自定义人物简要信息(仅用于标记，不支持检索)
         :rtype: str
         """
         return self._BasicInfo
@@ -942,7 +942,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义分类ID，如不存在接口会报错
+        r"""自定义分类ID，如不存在接口会报错
         :rtype: str
         """
         return self._CategoryId
@@ -953,7 +953,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
     @property
     def ImageURL(self):
-        """自定义人物图片URL，可支持任意地址，推荐使用COS
+        r"""自定义人物图片URL，可支持任意地址，推荐使用COS
         :rtype: str
         """
         return self._ImageURL
@@ -964,7 +964,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
     @property
     def Image(self):
-        """原始图片base64编码后的数据
+        r"""原始图片base64编码后的数据
         :rtype: str
         """
         return self._Image
@@ -991,7 +991,7 @@ class CreateCustomPersonRequest(AbstractModel):
 
 
 class CreateCustomPersonResponse(AbstractModel):
-    """CreateCustomPerson返回参数结构体
+    r"""CreateCustomPerson返回参数结构体
 
     """
 
@@ -1010,7 +1010,7 @@ class CreateCustomPersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -1021,7 +1021,7 @@ class CreateCustomPersonResponse(AbstractModel):
 
     @property
     def ImageInfo(self):
-        """自定义人脸信息
+        r"""自定义人脸信息
         :rtype: :class:`tencentcloud.ivld.v20210903.models.PersonImageInfo`
         """
         return self._ImageInfo
@@ -1032,7 +1032,7 @@ class CreateCustomPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1051,13 +1051,13 @@ class CreateCustomPersonResponse(AbstractModel):
 
 
 class CreateDefaultCategoriesRequest(AbstractModel):
-    """CreateDefaultCategories请求参数结构体
+    r"""CreateDefaultCategories请求参数结构体
 
     """
 
 
 class CreateDefaultCategoriesResponse(AbstractModel):
-    """CreateDefaultCategories返回参数结构体
+    r"""CreateDefaultCategories返回参数结构体
 
     """
 
@@ -1070,7 +1070,7 @@ class CreateDefaultCategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1085,7 +1085,7 @@ class CreateDefaultCategoriesResponse(AbstractModel):
 
 
 class CreateTaskRequest(AbstractModel):
-    """CreateTask请求参数结构体
+    r"""CreateTask请求参数结构体
 
     """
 
@@ -1113,7 +1113,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资文件ID
+        r"""媒资文件ID
         :rtype: str
         """
         return self._MediaId
@@ -1124,7 +1124,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def MediaPreknownInfo(self):
-        """媒资素材先验知识，相关限制参考MediaPreknownInfo
+        r"""媒资素材先验知识，相关限制参考MediaPreknownInfo
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaPreknownInfo`
         """
         return self._MediaPreknownInfo
@@ -1135,7 +1135,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称，最长100个中文字符
+        r"""任务名称，最长100个中文字符
         :rtype: str
         """
         return self._TaskName
@@ -1146,7 +1146,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def UploadVideo(self):
-        """是否上传转码后的视频，仅设置true时上传，默认为false
+        r"""是否上传转码后的视频，仅设置true时上传，默认为false
         :rtype: bool
         """
         return self._UploadVideo
@@ -1157,7 +1157,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def Label(self):
-        """自定义标签，可用于查询
+        r"""自定义标签，可用于查询
         :rtype: str
         """
         return self._Label
@@ -1168,7 +1168,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """任务分析完成的回调地址，该设置优先级高于控制台全局的设置；
+        r"""任务分析完成的回调地址，该设置优先级高于控制台全局的设置；
         :rtype: str
         """
         return self._CallbackURL
@@ -1198,7 +1198,7 @@ class CreateTaskRequest(AbstractModel):
 
 
 class CreateTaskResponse(AbstractModel):
-    """CreateTask返回参数结构体
+    r"""CreateTask返回参数结构体
 
     """
 
@@ -1214,7 +1214,7 @@ class CreateTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """智能标签视频分析任务ID
+        r"""智能标签视频分析任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1225,7 +1225,7 @@ class CreateTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1241,7 +1241,7 @@ class CreateTaskResponse(AbstractModel):
 
 
 class CreateVideoSummaryTaskRequest(AbstractModel):
-    """CreateVideoSummaryTask请求参数结构体
+    r"""CreateVideoSummaryTask请求参数结构体
 
     """
 
@@ -1288,7 +1288,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def SummaryType(self):
-        """目前只支持 1，表示新闻缩编。
+        r"""目前只支持 1，表示新闻缩编。
         :rtype: int
         """
         return self._SummaryType
@@ -1299,7 +1299,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def VideoURL(self):
-        """待处理的视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+        r"""待处理的视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
         :rtype: str
         """
         return self._VideoURL
@@ -1310,7 +1310,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """任务处理完成的回调地址。
+        r"""任务处理完成的回调地址。
         :rtype: str
         """
         return self._CallbackURL
@@ -1321,7 +1321,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def WriteBackCosPath(self):
-        """如果需要你输出 TTS 或者视频，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+        r"""如果需要你输出 TTS 或者视频，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
 
         :rtype: str
         """
@@ -1333,7 +1333,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ActiveVideoGenerate(self):
-        """是否开启结果视频生成功能，如果开启，需要指定WriteBackCosPath 参数
+        r"""是否开启结果视频生成功能，如果开启，需要指定WriteBackCosPath 参数
         :rtype: bool
         """
         return self._ActiveVideoGenerate
@@ -1344,7 +1344,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def VideoRotationMode(self):
-        """生成结果视频的时候，控制生成的结果视频的横转竖参数。如果 ActiveVideoGenerate 为 false, 该参数无效。
+        r"""生成结果视频的时候，控制生成的结果视频的横转竖参数。如果 ActiveVideoGenerate 为 false, 该参数无效。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.VideoRotationMode`
         """
         return self._VideoRotationMode
@@ -1355,7 +1355,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def TTSMode(self):
-        """语音合成相关的控制参数
+        r"""语音合成相关的控制参数
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TTSMode`
         """
         return self._TTSMode
@@ -1366,7 +1366,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ActiveTTSOutput(self):
-        """是否输出合成好的语音列表。
+        r"""是否输出合成好的语音列表。
         :rtype: bool
         """
         return self._ActiveTTSOutput
@@ -1377,7 +1377,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ExactAsrSet(self):
-        """用户指定的精确的 asr 结果列表 
+        r"""用户指定的精确的 asr 结果列表 
         :rtype: list of AsrResult
         """
         return self._ExactAsrSet
@@ -1388,7 +1388,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ExactTextSummary(self):
-        """用户指定的精确的文本摘要
+        r"""用户指定的精确的文本摘要
         :rtype: str
         """
         return self._ExactTextSummary
@@ -1399,7 +1399,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ExactTextSegSet(self):
-        """用户指定的精确的文本摘要分割结果
+        r"""用户指定的精确的文本摘要分割结果
         :rtype: list of str
         """
         return self._ExactTextSegSet
@@ -1410,7 +1410,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
     @property
     def ExactShotSegSet(self):
-        """用户指定的精确的镜头分割结果
+        r"""用户指定的精确的镜头分割结果
         :rtype: list of ShotInfo
         """
         return self._ExactShotSegSet
@@ -1458,7 +1458,7 @@ class CreateVideoSummaryTaskRequest(AbstractModel):
 
 
 class CreateVideoSummaryTaskResponse(AbstractModel):
-    """CreateVideoSummaryTask返回参数结构体
+    r"""CreateVideoSummaryTask返回参数结构体
 
     """
 
@@ -1474,7 +1474,7 @@ class CreateVideoSummaryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """返回的任务 id
+        r"""返回的任务 id
         :rtype: str
         """
         return self._TaskId
@@ -1485,7 +1485,7 @@ class CreateVideoSummaryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1501,7 +1501,7 @@ class CreateVideoSummaryTaskResponse(AbstractModel):
 
 
 class CustomCategory(AbstractModel):
-    """自定义分类信息
+    r"""自定义分类信息
 
     """
 
@@ -1520,7 +1520,7 @@ class CustomCategory(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义分类ID
+        r"""自定义分类ID
         :rtype: str
         """
         return self._CategoryId
@@ -1531,7 +1531,7 @@ class CustomCategory(AbstractModel):
 
     @property
     def L1Category(self):
-        """一级自定义类型
+        r"""一级自定义类型
         :rtype: str
         """
         return self._L1Category
@@ -1542,7 +1542,7 @@ class CustomCategory(AbstractModel):
 
     @property
     def L2Category(self):
-        """二级自定义类型
+        r"""二级自定义类型
         :rtype: str
         """
         return self._L2Category
@@ -1567,7 +1567,7 @@ class CustomCategory(AbstractModel):
 
 
 class CustomPersonFilter(AbstractModel):
-    """自定义人物批量查询过滤条件
+    r"""自定义人物批量查询过滤条件
 
     """
 
@@ -1589,7 +1589,7 @@ class CustomPersonFilter(AbstractModel):
 
     @property
     def Name(self):
-        """待查询的人物姓名
+        r"""待查询的人物姓名
         :rtype: str
         """
         return self._Name
@@ -1600,7 +1600,7 @@ class CustomPersonFilter(AbstractModel):
 
     @property
     def CategoryIdSet(self):
-        """待过滤的自定义类型Id数组
+        r"""待过滤的自定义类型Id数组
         :rtype: list of str
         """
         return self._CategoryIdSet
@@ -1611,7 +1611,7 @@ class CustomPersonFilter(AbstractModel):
 
     @property
     def PersonIdSet(self):
-        """待过滤的自定义人物Id数组
+        r"""待过滤的自定义人物Id数组
         :rtype: list of str
         """
         return self._PersonIdSet
@@ -1622,7 +1622,7 @@ class CustomPersonFilter(AbstractModel):
 
     @property
     def L1CategorySet(self):
-        """一级自定义人物类型数组
+        r"""一级自定义人物类型数组
         :rtype: list of str
         """
         return self._L1CategorySet
@@ -1648,7 +1648,7 @@ class CustomPersonFilter(AbstractModel):
 
 
 class CustomPersonInfo(AbstractModel):
-    """自定义人物信息
+    r"""自定义人物信息
 
     """
 
@@ -1679,7 +1679,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -1690,7 +1690,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def Name(self):
-        """自定义人物姓名
+        r"""自定义人物姓名
         :rtype: str
         """
         return self._Name
@@ -1701,7 +1701,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def BasicInfo(self):
-        """自定义人物简介信息
+        r"""自定义人物简介信息
         :rtype: str
         """
         return self._BasicInfo
@@ -1712,7 +1712,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def L1Category(self):
-        """一级自定义人物类型
+        r"""一级自定义人物类型
         :rtype: str
         """
         return self._L1Category
@@ -1723,7 +1723,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def L2Category(self):
-        """二级自定义人物类型
+        r"""二级自定义人物类型
         :rtype: str
         """
         return self._L2Category
@@ -1734,7 +1734,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def ImageInfoSet(self):
-        """自定义人物图片信息
+        r"""自定义人物图片信息
         :rtype: list of PersonImageInfo
         """
         return self._ImageInfoSet
@@ -1745,7 +1745,7 @@ class CustomPersonInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """自定义人物创建时间
+        r"""自定义人物创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1779,7 +1779,7 @@ class CustomPersonInfo(AbstractModel):
 
 
 class Data(AbstractModel):
-    """任务结果数据
+    r"""任务结果数据
 
     """
 
@@ -1793,7 +1793,7 @@ class Data(AbstractModel):
 
     @property
     def ShowInfo(self):
-        """节目粒度结构化结果
+        r"""节目粒度结构化结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ShowInfo`
         """
@@ -1819,7 +1819,7 @@ class Data(AbstractModel):
 
 
 class DeleteCustomCategoryRequest(AbstractModel):
-    """DeleteCustomCategory请求参数结构体
+    r"""DeleteCustomCategory请求参数结构体
 
     """
 
@@ -1832,7 +1832,7 @@ class DeleteCustomCategoryRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义分类ID
+        r"""自定义分类ID
         :rtype: str
         """
         return self._CategoryId
@@ -1855,7 +1855,7 @@ class DeleteCustomCategoryRequest(AbstractModel):
 
 
 class DeleteCustomCategoryResponse(AbstractModel):
-    """DeleteCustomCategory返回参数结构体
+    r"""DeleteCustomCategory返回参数结构体
 
     """
 
@@ -1871,7 +1871,7 @@ class DeleteCustomCategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义分类ID
+        r"""自定义分类ID
         :rtype: str
         """
         return self._CategoryId
@@ -1882,7 +1882,7 @@ class DeleteCustomCategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1898,7 +1898,7 @@ class DeleteCustomCategoryResponse(AbstractModel):
 
 
 class DeleteCustomPersonImageRequest(AbstractModel):
-    """DeleteCustomPersonImage请求参数结构体
+    r"""DeleteCustomPersonImage请求参数结构体
 
     """
 
@@ -1914,7 +1914,7 @@ class DeleteCustomPersonImageRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -1925,7 +1925,7 @@ class DeleteCustomPersonImageRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """自定义人脸图片Id
+        r"""自定义人脸图片Id
         :rtype: str
         """
         return self._ImageId
@@ -1949,7 +1949,7 @@ class DeleteCustomPersonImageRequest(AbstractModel):
 
 
 class DeleteCustomPersonImageResponse(AbstractModel):
-    """DeleteCustomPersonImage返回参数结构体
+    r"""DeleteCustomPersonImage返回参数结构体
 
     """
 
@@ -1968,7 +1968,7 @@ class DeleteCustomPersonImageResponse(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -1979,7 +1979,7 @@ class DeleteCustomPersonImageResponse(AbstractModel):
 
     @property
     def ImageId(self):
-        """已删除的人物图片Id
+        r"""已删除的人物图片Id
         :rtype: str
         """
         return self._ImageId
@@ -1990,7 +1990,7 @@ class DeleteCustomPersonImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2007,7 +2007,7 @@ class DeleteCustomPersonImageResponse(AbstractModel):
 
 
 class DeleteCustomPersonRequest(AbstractModel):
-    """DeleteCustomPerson请求参数结构体
+    r"""DeleteCustomPerson请求参数结构体
 
     """
 
@@ -2020,7 +2020,7 @@ class DeleteCustomPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """待删除的自定义人物ID
+        r"""待删除的自定义人物ID
         :rtype: str
         """
         return self._PersonId
@@ -2043,7 +2043,7 @@ class DeleteCustomPersonRequest(AbstractModel):
 
 
 class DeleteCustomPersonResponse(AbstractModel):
-    """DeleteCustomPerson返回参数结构体
+    r"""DeleteCustomPerson返回参数结构体
 
     """
 
@@ -2059,7 +2059,7 @@ class DeleteCustomPersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
-        """已删除的自定义人物Id
+        r"""已删除的自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -2070,7 +2070,7 @@ class DeleteCustomPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2086,7 +2086,7 @@ class DeleteCustomPersonResponse(AbstractModel):
 
 
 class DeleteMediaRequest(AbstractModel):
-    """DeleteMedia请求参数结构体
+    r"""DeleteMedia请求参数结构体
 
     """
 
@@ -2099,7 +2099,7 @@ class DeleteMediaRequest(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资文件在系统中的ID
+        r"""媒资文件在系统中的ID
         :rtype: str
         """
         return self._MediaId
@@ -2122,7 +2122,7 @@ class DeleteMediaRequest(AbstractModel):
 
 
 class DeleteMediaResponse(AbstractModel):
-    """DeleteMedia返回参数结构体
+    r"""DeleteMedia返回参数结构体
 
     """
 
@@ -2135,7 +2135,7 @@ class DeleteMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2150,7 +2150,7 @@ class DeleteMediaResponse(AbstractModel):
 
 
 class DeleteTaskRequest(AbstractModel):
-    """DeleteTask请求参数结构体
+    r"""DeleteTask请求参数结构体
 
     """
 
@@ -2163,7 +2163,7 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -2186,7 +2186,7 @@ class DeleteTaskRequest(AbstractModel):
 
 
 class DeleteTaskResponse(AbstractModel):
-    """DeleteTask返回参数结构体
+    r"""DeleteTask返回参数结构体
 
     """
 
@@ -2199,7 +2199,7 @@ class DeleteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2214,13 +2214,13 @@ class DeleteTaskResponse(AbstractModel):
 
 
 class DescribeCustomCategoriesRequest(AbstractModel):
-    """DescribeCustomCategories请求参数结构体
+    r"""DescribeCustomCategories请求参数结构体
 
     """
 
 
 class DescribeCustomCategoriesResponse(AbstractModel):
-    """DescribeCustomCategories返回参数结构体
+    r"""DescribeCustomCategories返回参数结构体
 
     """
 
@@ -2236,7 +2236,7 @@ class DescribeCustomCategoriesResponse(AbstractModel):
 
     @property
     def CategorySet(self):
-        """自定义人物类型数组
+        r"""自定义人物类型数组
         :rtype: list of CustomCategory
         """
         return self._CategorySet
@@ -2247,7 +2247,7 @@ class DescribeCustomCategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2268,13 +2268,13 @@ class DescribeCustomCategoriesResponse(AbstractModel):
 
 
 class DescribeCustomGroupRequest(AbstractModel):
-    """DescribeCustomGroup请求参数结构体
+    r"""DescribeCustomGroup请求参数结构体
 
     """
 
 
 class DescribeCustomGroupResponse(AbstractModel):
-    """DescribeCustomGroup返回参数结构体
+    r"""DescribeCustomGroup返回参数结构体
 
     """
 
@@ -2293,7 +2293,7 @@ class DescribeCustomGroupResponse(AbstractModel):
 
     @property
     def GroupSize(self):
-        """自定义人物库所包含的人物个数
+        r"""自定义人物库所包含的人物个数
         :rtype: int
         """
         return self._GroupSize
@@ -2304,7 +2304,7 @@ class DescribeCustomGroupResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        """自定义人物库图片后续所在的存储桶
+        r"""自定义人物库图片后续所在的存储桶
         :rtype: str
         """
         return self._Bucket
@@ -2315,7 +2315,7 @@ class DescribeCustomGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2332,7 +2332,7 @@ class DescribeCustomGroupResponse(AbstractModel):
 
 
 class DescribeCustomPersonDetailRequest(AbstractModel):
-    """DescribeCustomPersonDetail请求参数结构体
+    r"""DescribeCustomPersonDetail请求参数结构体
 
     """
 
@@ -2345,7 +2345,7 @@ class DescribeCustomPersonDetailRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """自定义人物Id
+        r"""自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -2368,7 +2368,7 @@ class DescribeCustomPersonDetailRequest(AbstractModel):
 
 
 class DescribeCustomPersonDetailResponse(AbstractModel):
-    """DescribeCustomPersonDetail返回参数结构体
+    r"""DescribeCustomPersonDetail返回参数结构体
 
     """
 
@@ -2388,7 +2388,7 @@ class DescribeCustomPersonDetailResponse(AbstractModel):
 
     @property
     def PersonInfo(self):
-        """自定义人物信息
+        r"""自定义人物信息
         :rtype: :class:`tencentcloud.ivld.v20210903.models.CustomPersonInfo`
         """
         return self._PersonInfo
@@ -2399,7 +2399,7 @@ class DescribeCustomPersonDetailResponse(AbstractModel):
 
     @property
     def TaskIdSet(self):
-        """出现该自定义人物的所有分析人物Id
+        r"""出现该自定义人物的所有分析人物Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2411,7 +2411,7 @@ class DescribeCustomPersonDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2430,7 +2430,7 @@ class DescribeCustomPersonDetailResponse(AbstractModel):
 
 
 class DescribeCustomPersonsRequest(AbstractModel):
-    """DescribeCustomPersons请求参数结构体
+    r"""DescribeCustomPersons请求参数结构体
 
     """
 
@@ -2452,7 +2452,7 @@ class DescribeCustomPersonsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页序号，从1开始
+        r"""分页序号，从1开始
         :rtype: int
         """
         return self._PageNumber
@@ -2463,7 +2463,7 @@ class DescribeCustomPersonsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页数据行数，最多50
+        r"""分页数据行数，最多50
         :rtype: int
         """
         return self._PageSize
@@ -2474,7 +2474,7 @@ class DescribeCustomPersonsRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序信息，默认倒序
+        r"""排序信息，默认倒序
         :rtype: :class:`tencentcloud.ivld.v20210903.models.SortBy`
         """
         return self._SortBy
@@ -2485,7 +2485,7 @@ class DescribeCustomPersonsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """自定义人物过滤条件
+        r"""自定义人物过滤条件
         :rtype: :class:`tencentcloud.ivld.v20210903.models.CustomPersonFilter`
         """
         return self._Filter
@@ -2515,7 +2515,7 @@ class DescribeCustomPersonsRequest(AbstractModel):
 
 
 class DescribeCustomPersonsResponse(AbstractModel):
-    """DescribeCustomPersons返回参数结构体
+    r"""DescribeCustomPersons返回参数结构体
 
     """
 
@@ -2534,7 +2534,7 @@ class DescribeCustomPersonsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """满足过滤条件的自定义人物数量
+        r"""满足过滤条件的自定义人物数量
         :rtype: int
         """
         return self._TotalCount
@@ -2545,7 +2545,7 @@ class DescribeCustomPersonsResponse(AbstractModel):
 
     @property
     def PersonInfoSet(self):
-        """自定义人物信息
+        r"""自定义人物信息
         :rtype: list of CustomPersonInfo
         """
         return self._PersonInfoSet
@@ -2556,7 +2556,7 @@ class DescribeCustomPersonsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2578,7 +2578,7 @@ class DescribeCustomPersonsResponse(AbstractModel):
 
 
 class DescribeMediaRequest(AbstractModel):
-    """DescribeMedia请求参数结构体
+    r"""DescribeMedia请求参数结构体
 
     """
 
@@ -2591,7 +2591,7 @@ class DescribeMediaRequest(AbstractModel):
 
     @property
     def MediaId(self):
-        """导入媒资返回的媒资ID
+        r"""导入媒资返回的媒资ID
         :rtype: str
         """
         return self._MediaId
@@ -2614,7 +2614,7 @@ class DescribeMediaRequest(AbstractModel):
 
 
 class DescribeMediaResponse(AbstractModel):
-    """DescribeMedia返回参数结构体
+    r"""DescribeMedia返回参数结构体
 
     """
 
@@ -2631,7 +2631,7 @@ class DescribeMediaResponse(AbstractModel):
 
     @property
     def MediaInfo(self):
-        """媒资信息
+        r"""媒资信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaInfo`
         """
@@ -2643,7 +2643,7 @@ class DescribeMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2661,7 +2661,7 @@ class DescribeMediaResponse(AbstractModel):
 
 
 class DescribeMediasRequest(AbstractModel):
-    """DescribeMedias请求参数结构体
+    r"""DescribeMedias请求参数结构体
 
     """
 
@@ -2683,7 +2683,7 @@ class DescribeMediasRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页序号，从1开始
+        r"""分页序号，从1开始
         :rtype: int
         """
         return self._PageNumber
@@ -2694,7 +2694,7 @@ class DescribeMediasRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每个分页所包含的元素数量，最大为50
+        r"""每个分页所包含的元素数量，最大为50
         :rtype: int
         """
         return self._PageSize
@@ -2705,7 +2705,7 @@ class DescribeMediasRequest(AbstractModel):
 
     @property
     def MediaFilter(self):
-        """列举过滤条件，相关限制相见MediaFilter
+        r"""列举过滤条件，相关限制相见MediaFilter
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaFilter`
         """
         return self._MediaFilter
@@ -2716,7 +2716,7 @@ class DescribeMediasRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果排序信息，By字段只支持CreateTime
+        r"""返回结果排序信息，By字段只支持CreateTime
         :rtype: :class:`tencentcloud.ivld.v20210903.models.SortBy`
         """
         return self._SortBy
@@ -2746,7 +2746,7 @@ class DescribeMediasRequest(AbstractModel):
 
 
 class DescribeMediasResponse(AbstractModel):
-    """DescribeMedias返回参数结构体
+    r"""DescribeMedias返回参数结构体
 
     """
 
@@ -2766,7 +2766,7 @@ class DescribeMediasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """满足过滤条件的媒资视频总数量
+        r"""满足过滤条件的媒资视频总数量
         :rtype: int
         """
         return self._TotalCount
@@ -2777,7 +2777,7 @@ class DescribeMediasResponse(AbstractModel):
 
     @property
     def MediaInfoSet(self):
-        """满足过滤条件的媒资信息
+        r"""满足过滤条件的媒资信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MediaInfo
         """
@@ -2789,7 +2789,7 @@ class DescribeMediasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2811,7 +2811,7 @@ class DescribeMediasResponse(AbstractModel):
 
 
 class DescribeTaskDetailRequest(AbstractModel):
-    """DescribeTaskDetail请求参数结构体
+    r"""DescribeTaskDetail请求参数结构体
 
     """
 
@@ -2824,7 +2824,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """创建任务返回的TaskId
+        r"""创建任务返回的TaskId
         :rtype: str
         """
         return self._TaskId
@@ -2847,7 +2847,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
 
 class DescribeTaskDetailResponse(AbstractModel):
-    """DescribeTaskDetail返回参数结构体
+    r"""DescribeTaskDetail返回参数结构体
 
     """
 
@@ -2880,7 +2880,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskInfo(self):
-        """任务信息，不包含任务结果
+        r"""任务信息，不包含任务结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TaskInfo`
         """
@@ -2892,7 +2892,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskData(self):
-        """视频任务结果数据，只在视频任务结束时返回
+        r"""视频任务结果数据，只在视频任务结束时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.Data`
         """
@@ -2904,7 +2904,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ImageTaskData(self):
-        """图片任务结果数据，只在图片任务结束时返回
+        r"""图片任务结果数据，只在图片任务结束时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageData`
         """
@@ -2916,7 +2916,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioTaskData(self):
-        """音频任务结果数据，只在音频任务结束时返回
+        r"""音频任务结果数据，只在音频任务结束时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AudioData`
         """
@@ -2928,7 +2928,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TextTaskData(self):
-        """文本任务结果数据，只在文本任务结束时返回
+        r"""文本任务结果数据，只在文本任务结束时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TextData`
         """
@@ -2940,7 +2940,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2970,7 +2970,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
 
 class DescribeTaskRequest(AbstractModel):
-    """DescribeTask请求参数结构体
+    r"""DescribeTask请求参数结构体
 
     """
 
@@ -2983,7 +2983,7 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """CreateTask返回的任务ID
+        r"""CreateTask返回的任务ID
         :rtype: str
         """
         return self._TaskId
@@ -3006,7 +3006,7 @@ class DescribeTaskRequest(AbstractModel):
 
 
 class DescribeTaskResponse(AbstractModel):
-    """DescribeTask返回参数结构体
+    r"""DescribeTask返回参数结构体
 
     """
 
@@ -3023,7 +3023,7 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInfo(self):
-        """任务信息，详情参见TaskInfo的定义
+        r"""任务信息，详情参见TaskInfo的定义
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TaskInfo`
         """
@@ -3035,7 +3035,7 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3053,7 +3053,7 @@ class DescribeTaskResponse(AbstractModel):
 
 
 class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks请求参数结构体
+    r"""DescribeTasks请求参数结构体
 
     """
 
@@ -3075,7 +3075,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页序号，从1开始
+        r"""分页序号，从1开始
         :rtype: int
         """
         return self._PageNumber
@@ -3086,7 +3086,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每个分页所包含的元素数量，最大为50
+        r"""每个分页所包含的元素数量，最大为50
         :rtype: int
         """
         return self._PageSize
@@ -3097,7 +3097,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskFilter(self):
-        """任务过滤条件，相关限制参见TaskFilter
+        r"""任务过滤条件，相关限制参见TaskFilter
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TaskFilter`
         """
         return self._TaskFilter
@@ -3108,7 +3108,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果排序信息，By字段只支持CreateTimeStamp
+        r"""返回结果排序信息，By字段只支持CreateTimeStamp
         :rtype: :class:`tencentcloud.ivld.v20210903.models.SortBy`
         """
         return self._SortBy
@@ -3138,7 +3138,7 @@ class DescribeTasksRequest(AbstractModel):
 
 
 class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks返回参数结构体
+    r"""DescribeTasks返回参数结构体
 
     """
 
@@ -3158,7 +3158,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """满足过滤条件的任务总数量
+        r"""满足过滤条件的任务总数量
         :rtype: int
         """
         return self._TotalCount
@@ -3169,7 +3169,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskInfoSet(self):
-        """满足过滤条件的任务数组
+        r"""满足过滤条件的任务数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskInfo
         """
@@ -3181,7 +3181,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3203,13 +3203,13 @@ class DescribeTasksResponse(AbstractModel):
 
 
 class DescribeUsageAmountRequest(AbstractModel):
-    """DescribeUsageAmount请求参数结构体
+    r"""DescribeUsageAmount请求参数结构体
 
     """
 
 
 class DescribeUsageAmountResponse(AbstractModel):
-    """DescribeUsageAmount返回参数结构体
+    r"""DescribeUsageAmount返回参数结构体
 
     """
 
@@ -3228,7 +3228,7 @@ class DescribeUsageAmountResponse(AbstractModel):
 
     @property
     def UsedHours(self):
-        """资源使用小时数
+        r"""资源使用小时数
         :rtype: float
         """
         return self._UsedHours
@@ -3239,7 +3239,7 @@ class DescribeUsageAmountResponse(AbstractModel):
 
     @property
     def TotalHours(self):
-        """资源包总量小时数
+        r"""资源包总量小时数
         :rtype: float
         """
         return self._TotalHours
@@ -3250,7 +3250,7 @@ class DescribeUsageAmountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3267,7 +3267,7 @@ class DescribeUsageAmountResponse(AbstractModel):
 
 
 class DescribeVideoSummaryDetailRequest(AbstractModel):
-    """DescribeVideoSummaryDetail请求参数结构体
+    r"""DescribeVideoSummaryDetail请求参数结构体
 
     """
 
@@ -3280,7 +3280,7 @@ class DescribeVideoSummaryDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """要查询的任务Id
+        r"""要查询的任务Id
         :rtype: str
         """
         return self._TaskId
@@ -3303,7 +3303,7 @@ class DescribeVideoSummaryDetailRequest(AbstractModel):
 
 
 class DescribeVideoSummaryDetailResponse(AbstractModel):
-    """DescribeVideoSummaryDetail返回参数结构体
+    r"""DescribeVideoSummaryDetail返回参数结构体
 
     """
 
@@ -3350,7 +3350,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务的状态
+        r"""任务的状态
 1: 等待处理中
 2: 处理中
 3: 处理成功
@@ -3365,7 +3365,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def FailedReason(self):
-        """如果处理失败，返回失败的原因
+        r"""如果处理失败，返回失败的原因
         :rtype: str
         """
         return self._FailedReason
@@ -3376,7 +3376,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def AsrSet(self):
-        """提取出的视频的 Asr 结果
+        r"""提取出的视频的 Asr 结果
         :rtype: list of AsrResult
         """
         return self._AsrSet
@@ -3387,7 +3387,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def TextSummary(self):
-        """文本摘要结果
+        r"""文本摘要结果
         :rtype: str
         """
         return self._TextSummary
@@ -3398,7 +3398,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def TextSegSet(self):
-        """文本摘要分割结果
+        r"""文本摘要分割结果
         :rtype: list of str
         """
         return self._TextSegSet
@@ -3409,7 +3409,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def ShotSegSet(self):
-        """镜头分割结果
+        r"""镜头分割结果
         :rtype: list of ShotInfo
         """
         return self._ShotSegSet
@@ -3420,7 +3420,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def TextSegMatchShotScoreSet(self):
-        """数组第 i 个结构 TextSegMatchShotConfidenceSet[i] 表示第 i 个文本摘要分割结果和所有镜头的匹配度。
+        r"""数组第 i 个结构 TextSegMatchShotConfidenceSet[i] 表示第 i 个文本摘要分割结果和所有镜头的匹配度。
         :rtype: list of TextSegMatchShotScore
         """
         return self._TextSegMatchShotScoreSet
@@ -3431,7 +3431,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def TTSResultURLSet(self):
-        """TTS 输出音频下载地址列表
+        r"""TTS 输出音频下载地址列表
         :rtype: list of str
         """
         return self._TTSResultURLSet
@@ -3442,7 +3442,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def VideoResultURL(self):
-        """合成视频输出下载地址
+        r"""合成视频输出下载地址
         :rtype: str
         """
         return self._VideoResultURL
@@ -3453,7 +3453,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def VideoRotateResultURL(self):
-        """合成后的视频横竖屏转换后的视频下载地址
+        r"""合成后的视频横竖屏转换后的视频下载地址
         :rtype: str
         """
         return self._VideoRotateResultURL
@@ -3464,7 +3464,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3504,7 +3504,7 @@ class DescribeVideoSummaryDetailResponse(AbstractModel):
 
 
 class ImageData(AbstractModel):
-    """图片文件标签结果
+    r"""图片文件标签结果
 
     """
 
@@ -3534,7 +3534,7 @@ class ImageData(AbstractModel):
 
     @property
     def OcrSet(self):
-        """图片中出现的可视文本识别结果
+        r"""图片中出现的可视文本识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageOcr
         """
@@ -3546,7 +3546,7 @@ class ImageData(AbstractModel):
 
     @property
     def FrameTagSet(self):
-        """图片中出现的帧标签识别结果
+        r"""图片中出现的帧标签识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
         """
@@ -3558,7 +3558,7 @@ class ImageData(AbstractModel):
 
     @property
     def MultiLevelPersonInfoSet(self):
-        """图片中出现的层级人物识别结果
+        r"""图片中出现的层级人物识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiLevelPersonInfo
         """
@@ -3570,7 +3570,7 @@ class ImageData(AbstractModel):
 
     @property
     def TvLogo(self):
-        """图片中出现的台标识别结果
+        r"""图片中出现的台标识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageLogo`
         """
@@ -3582,7 +3582,7 @@ class ImageData(AbstractModel):
 
     @property
     def SourceLogo(self):
-        """图片中出现的来源信息识别结果
+        r"""图片中出现的来源信息识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageLogo`
         """
@@ -3626,7 +3626,7 @@ class ImageData(AbstractModel):
 
 
 class ImageLogo(AbstractModel):
-    """图片中出现的Logo信息
+    r"""图片中出现的Logo信息
 
     """
 
@@ -3644,7 +3644,7 @@ class ImageLogo(AbstractModel):
 
     @property
     def Logo(self):
-        """图片中出现的Logo识别结果
+        r"""图片中出现的Logo识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3656,7 +3656,7 @@ class ImageLogo(AbstractModel):
 
     @property
     def AppearRect(self):
-        """Logo在图片中出现的位置
+        r"""Logo在图片中出现的位置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.Rectf`
         """
@@ -3683,7 +3683,7 @@ class ImageLogo(AbstractModel):
 
 
 class ImageMetadata(AbstractModel):
-    """图片文件元信息
+    r"""图片文件元信息
 
     """
 
@@ -3713,7 +3713,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        """媒资图片文件大小，单位为Byte
+        r"""媒资图片文件大小，单位为Byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3725,7 +3725,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        """媒资图片文件MD5
+        r"""媒资图片文件MD5
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3737,7 +3737,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Width(self):
-        """媒资图片文件宽度
+        r"""媒资图片文件宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3749,7 +3749,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Height(self):
-        """媒资图片文件高度
+        r"""媒资图片文件高度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3761,7 +3761,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Format(self):
-        """媒资图片文件格式
+        r"""媒资图片文件格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3789,7 +3789,7 @@ class ImageMetadata(AbstractModel):
 
 
 class ImageOcr(AbstractModel):
-    """图片OCR识别结果
+    r"""图片OCR识别结果
 
     """
 
@@ -3807,7 +3807,7 @@ class ImageOcr(AbstractModel):
 
     @property
     def Content(self):
-        """图片中可视文本识别结果
+        r"""图片中可视文本识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3819,7 +3819,7 @@ class ImageOcr(AbstractModel):
 
     @property
     def AppearRect(self):
-        """可视文本在图片中的位置信息
+        r"""可视文本在图片中的位置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.Rectf`
         """
@@ -3846,7 +3846,7 @@ class ImageOcr(AbstractModel):
 
 
 class ImportMediaRequest(AbstractModel):
-    """ImportMedia请求参数结构体
+    r"""ImportMedia请求参数结构体
 
     """
 
@@ -3879,7 +3879,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def URL(self):
-        """待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
+        r"""待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
         :rtype: str
         """
         return self._URL
@@ -3890,7 +3890,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def MD5(self):
-        """待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
+        r"""待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
         :rtype: str
         """
         return self._MD5
@@ -3901,7 +3901,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def Name(self):
-        """待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
+        r"""待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
         :rtype: str
         """
         return self._Name
@@ -3912,7 +3912,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def WriteBackCosPath(self):
-        """当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+        r"""当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
         :rtype: str
         """
@@ -3924,7 +3924,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def Label(self):
-        """自定义标签，可用于查询
+        r"""自定义标签，可用于查询
         :rtype: str
         """
         return self._Label
@@ -3935,7 +3935,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+        r"""媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
         :rtype: str
         """
         return self._CallbackURL
@@ -3946,7 +3946,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def MediaType(self):
-        """媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+        r"""媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
 默认为2(视频)
         :rtype: int
         """
@@ -3976,7 +3976,7 @@ class ImportMediaRequest(AbstractModel):
 
 
 class ImportMediaResponse(AbstractModel):
-    """ImportMedia返回参数结构体
+    r"""ImportMedia返回参数结构体
 
     """
 
@@ -3992,7 +3992,7 @@ class ImportMediaResponse(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资文件在系统中的ID
+        r"""媒资文件在系统中的ID
         :rtype: str
         """
         return self._MediaId
@@ -4003,7 +4003,7 @@ class ImportMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4019,7 +4019,7 @@ class ImportMediaResponse(AbstractModel):
 
 
 class L1Tag(AbstractModel):
-    """一级标签信息
+    r"""一级标签信息
 
     请注意，一级标签信息可能不包含二级标签(此时L2TagSet为空)。在这种情况下，一级标签可直接包含出现信息。
 
@@ -4046,7 +4046,7 @@ class L1Tag(AbstractModel):
 
     @property
     def Name(self):
-        """一级标签名
+        r"""一级标签名
         :rtype: str
         """
         return self._Name
@@ -4057,7 +4057,7 @@ class L1Tag(AbstractModel):
 
     @property
     def L2TagSet(self):
-        """二级标签数组
+        r"""二级标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of L2Tag
         """
@@ -4069,7 +4069,7 @@ class L1Tag(AbstractModel):
 
     @property
     def AppearIndexPairSet(self):
-        """一级标签出现信息
+        r"""一级标签出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppearIndexPair
         """
@@ -4081,7 +4081,7 @@ class L1Tag(AbstractModel):
 
     @property
     def FirstAppear(self):
-        """一级标签首次出现信息
+        r"""一级标签首次出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4118,7 +4118,7 @@ class L1Tag(AbstractModel):
 
 
 class L2Tag(AbstractModel):
-    """二级标签信息
+    r"""二级标签信息
 
     请注意，二级标签信息可能不包含三级标签(此时L3TagSet为空)。
 
@@ -4145,7 +4145,7 @@ class L2Tag(AbstractModel):
 
     @property
     def Name(self):
-        """二级标签名
+        r"""二级标签名
         :rtype: str
         """
         return self._Name
@@ -4156,7 +4156,7 @@ class L2Tag(AbstractModel):
 
     @property
     def L3TagSet(self):
-        """从属于此二级标签的三级标签数组
+        r"""从属于此二级标签的三级标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of L3Tag
         """
@@ -4168,7 +4168,7 @@ class L2Tag(AbstractModel):
 
     @property
     def AppearIndexPairSet(self):
-        """二级标签出现信息
+        r"""二级标签出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppearIndexPair
         """
@@ -4180,7 +4180,7 @@ class L2Tag(AbstractModel):
 
     @property
     def FirstAppear(self):
-        """二级标签首次出现信息
+        r"""二级标签首次出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4217,7 +4217,7 @@ class L2Tag(AbstractModel):
 
 
 class L3Tag(AbstractModel):
-    """三级标签信息。
+    r"""三级标签信息。
 
     三级标签不再包含任何子标签。所有三级标签都对应着识别结果中的出现信息，出现信息使用AppearIndexPairSet定位。
 
@@ -4240,7 +4240,7 @@ class L3Tag(AbstractModel):
 
     @property
     def Name(self):
-        """三级标签名
+        r"""三级标签名
         :rtype: str
         """
         return self._Name
@@ -4251,7 +4251,7 @@ class L3Tag(AbstractModel):
 
     @property
     def AppearIndexPairSet(self):
-        """三级标签出现信息索引数组
+        r"""三级标签出现信息索引数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppearIndexPair
         """
@@ -4263,7 +4263,7 @@ class L3Tag(AbstractModel):
 
     @property
     def FirstAppear(self):
-        """三级标签首次出现信息，可选值为[1,3]
+        r"""三级标签首次出现信息，可选值为[1,3]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4294,7 +4294,7 @@ class L3Tag(AbstractModel):
 
 
 class MediaFilter(AbstractModel):
-    """媒资过滤条件
+    r"""媒资过滤条件
 
     """
 
@@ -4319,7 +4319,7 @@ class MediaFilter(AbstractModel):
 
     @property
     def MediaNameSet(self):
-        """媒资名称过滤条件
+        r"""媒资名称过滤条件
         :rtype: list of str
         """
         return self._MediaNameSet
@@ -4330,7 +4330,7 @@ class MediaFilter(AbstractModel):
 
     @property
     def StatusSet(self):
-        """媒资状态数组，媒资状态可选值参见MediaInfo
+        r"""媒资状态数组，媒资状态可选值参见MediaInfo
         :rtype: list of int
         """
         return self._StatusSet
@@ -4341,7 +4341,7 @@ class MediaFilter(AbstractModel):
 
     @property
     def MediaIdSet(self):
-        """媒资ID数组
+        r"""媒资ID数组
         :rtype: list of str
         """
         return self._MediaIdSet
@@ -4352,7 +4352,7 @@ class MediaFilter(AbstractModel):
 
     @property
     def LabelSet(self):
-        """媒资自定义标签数组
+        r"""媒资自定义标签数组
         :rtype: list of str
         """
         return self._LabelSet
@@ -4363,7 +4363,7 @@ class MediaFilter(AbstractModel):
 
     @property
     def MediaType(self):
-        """媒资文件类型，定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+        r"""媒资文件类型，定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
         :rtype: int
         """
         return self._MediaType
@@ -4390,7 +4390,7 @@ class MediaFilter(AbstractModel):
 
 
 class MediaInfo(AbstractModel):
-    """媒资信息结构体
+    r"""媒资信息结构体
 
     媒资状态定义如下：
 
@@ -4467,7 +4467,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资ID
+        r"""媒资ID
         :rtype: str
         """
         return self._MediaId
@@ -4478,7 +4478,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Name(self):
-        """媒资名称
+        r"""媒资名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4490,7 +4490,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def DownLoadURL(self):
-        """媒资下载地址
+        r"""媒资下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4502,7 +4502,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Status(self):
-        """媒资状态，取值参看上方表格
+        r"""媒资状态，取值参看上方表格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4514,7 +4514,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def FailedReason(self):
-        """若状态为失败，表示失败原因
+        r"""若状态为失败，表示失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4526,7 +4526,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        """媒资视频元信息，仅在MediaType=VIDEO时有效
+        r"""媒资视频元信息，仅在MediaType=VIDEO时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         """
@@ -4538,7 +4538,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Progress(self):
-        """导入视频进度，取值范围为[0,100]
+        r"""导入视频进度，取值范围为[0,100]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4550,7 +4550,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def Label(self):
-        """媒资自定义标签
+        r"""媒资自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4562,7 +4562,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """媒资导入完成后的回调地址
+        r"""媒资导入完成后的回调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4574,7 +4574,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def MediaType(self):
-        """媒资文件类型，具体参看[MediaPreknownInfo](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+        r"""媒资文件类型，具体参看[MediaPreknownInfo](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4586,7 +4586,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def AudioMetadata(self):
-        """媒资音频元信息，仅在MediaType=Audio时有效
+        r"""媒资音频元信息，仅在MediaType=Audio时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
         """
@@ -4598,7 +4598,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def ImageMetadata(self):
-        """媒资图片文件元信息，仅在MediaType=Image时有效
+        r"""媒资图片文件元信息，仅在MediaType=Image时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
         """
@@ -4610,7 +4610,7 @@ class MediaInfo(AbstractModel):
 
     @property
     def TextMetadata(self):
-        """媒资文本文件元信息，仅在MediaType=Text时有效
+        r"""媒资文本文件元信息，仅在MediaType=Text时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
         """
@@ -4654,7 +4654,7 @@ class MediaInfo(AbstractModel):
 
 
 class MediaMetadata(AbstractModel):
-    """媒资文件视频元信息，包括分辨率，帧率，码率等
+    r"""媒资文件视频元信息，包括分辨率，帧率，码率等
 
     """
 
@@ -4694,7 +4694,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        """媒资视频文件大小，单位为字节
+        r"""媒资视频文件大小，单位为字节
         :rtype: int
         """
         return self._FileSize
@@ -4705,7 +4705,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        """媒资视频文件MD5
+        r"""媒资视频文件MD5
         :rtype: str
         """
         return self._MD5
@@ -4716,7 +4716,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def Duration(self):
-        """媒资视频时长，单位为秒
+        r"""媒资视频时长，单位为秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4728,7 +4728,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def NumFrames(self):
-        """媒资视频总帧数
+        r"""媒资视频总帧数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4740,7 +4740,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def Width(self):
-        """媒资视频宽度，单位为像素
+        r"""媒资视频宽度，单位为像素
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4752,7 +4752,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def Height(self):
-        """媒资视频高度，单位为像素
+        r"""媒资视频高度，单位为像素
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4764,7 +4764,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def FPS(self):
-        """媒资视频帧率，单位为Hz
+        r"""媒资视频帧率，单位为Hz
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4776,7 +4776,7 @@ class MediaMetadata(AbstractModel):
 
     @property
     def BitRate(self):
-        """媒资视频比特率，单位为kbps
+        r"""媒资视频比特率，单位为kbps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4807,7 +4807,7 @@ class MediaMetadata(AbstractModel):
 
 
 class MediaPreknownInfo(AbstractModel):
-    """描述输入媒资的先验知识，例如文件类型(视频)，媒体类型(新闻/综艺等)
+    r"""描述输入媒资的先验知识，例如文件类型(视频)，媒体类型(新闻/综艺等)
 
     MediaPreknownInfo.MediaType:
 
@@ -4872,7 +4872,7 @@ class MediaPreknownInfo(AbstractModel):
 
     @property
     def MediaType(self):
-        """媒资文件类型，参见MediaPreknownInfo结构体定义
+        r"""媒资文件类型，参见MediaPreknownInfo结构体定义
         :rtype: int
         """
         return self._MediaType
@@ -4883,7 +4883,7 @@ class MediaPreknownInfo(AbstractModel):
 
     @property
     def MediaLabel(self):
-        """媒资素材一级类型，参见MediaPreknownInfo结构体定义
+        r"""媒资素材一级类型，参见MediaPreknownInfo结构体定义
         :rtype: int
         """
         return self._MediaLabel
@@ -4894,7 +4894,7 @@ class MediaPreknownInfo(AbstractModel):
 
     @property
     def MediaSecondLabel(self):
-        """媒资素材二级类型，参见MediaPreknownInfo结构体定义
+        r"""媒资素材二级类型，参见MediaPreknownInfo结构体定义
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4906,7 +4906,7 @@ class MediaPreknownInfo(AbstractModel):
 
     @property
     def MediaLang(self):
-        """媒资音频类型，参见MediaPreknownInfo结构体定义
+        r"""媒资音频类型，参见MediaPreknownInfo结构体定义
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4933,7 +4933,7 @@ class MediaPreknownInfo(AbstractModel):
 
 
 class ModifyCallbackRequest(AbstractModel):
-    """ModifyCallback请求参数结构体
+    r"""ModifyCallback请求参数结构体
 
     """
 
@@ -4949,7 +4949,7 @@ class ModifyCallbackRequest(AbstractModel):
 
     @property
     def TaskFinishNotifyURL(self):
-        """任务分析完成后回调地址
+        r"""任务分析完成后回调地址
         :rtype: str
         """
         return self._TaskFinishNotifyURL
@@ -4960,7 +4960,7 @@ class ModifyCallbackRequest(AbstractModel):
 
     @property
     def MediaFinishNotifyURL(self):
-        """媒体导入完成后回调地址
+        r"""媒体导入完成后回调地址
         :rtype: str
         """
         return self._MediaFinishNotifyURL
@@ -4984,7 +4984,7 @@ class ModifyCallbackRequest(AbstractModel):
 
 
 class ModifyCallbackResponse(AbstractModel):
-    """ModifyCallback返回参数结构体
+    r"""ModifyCallback返回参数结构体
 
     """
 
@@ -4997,7 +4997,7 @@ class ModifyCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5012,7 +5012,7 @@ class ModifyCallbackResponse(AbstractModel):
 
 
 class MultiLevelPersonInfo(AbstractModel):
-    """带类型树的已分类人物信息
+    r"""带类型树的已分类人物信息
 
     """
 
@@ -5034,7 +5034,7 @@ class MultiLevelPersonInfo(AbstractModel):
 
     @property
     def L1ClassifyName(self):
-        """一级分类名称(分类信息参见自定义人物类型)
+        r"""一级分类名称(分类信息参见自定义人物类型)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5046,7 +5046,7 @@ class MultiLevelPersonInfo(AbstractModel):
 
     @property
     def L2ClassifiedPersonInfoSet(self):
-        """已分类人物信息数组(所有分类类型为二级分类)
+        r"""已分类人物信息数组(所有分类类型为二级分类)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClassifiedPersonInfo
         """
@@ -5058,7 +5058,7 @@ class MultiLevelPersonInfo(AbstractModel):
 
     @property
     def Source(self):
-        """检测结果来源
+        r"""检测结果来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5089,7 +5089,7 @@ class MultiLevelPersonInfo(AbstractModel):
 
 
 class MultiLevelTag(AbstractModel):
-    """标签信息结构体
+    r"""标签信息结构体
 
     包含多级(最多三级)标签结果，以及这些标签在识别结果中的出现位置
 
@@ -5109,7 +5109,7 @@ class MultiLevelTag(AbstractModel):
 
     @property
     def TagSet(self):
-        """树状标签信息
+        r"""树状标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of L1Tag
         """
@@ -5121,7 +5121,7 @@ class MultiLevelTag(AbstractModel):
 
     @property
     def AppearInfo(self):
-        """标签在识别结果中的定位信息
+        r"""标签在识别结果中的定位信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AppearInfo`
         """
@@ -5153,7 +5153,7 @@ class MultiLevelTag(AbstractModel):
 
 
 class PersonImageInfo(AbstractModel):
-    """自定义人物人脸图片信息
+    r"""自定义人物人脸图片信息
 
     """
 
@@ -5175,7 +5175,7 @@ class PersonImageInfo(AbstractModel):
 
     @property
     def ImageId(self):
-        """人脸图片ID
+        r"""人脸图片ID
         :rtype: str
         """
         return self._ImageId
@@ -5186,7 +5186,7 @@ class PersonImageInfo(AbstractModel):
 
     @property
     def ImageURL(self):
-        """自定义人脸图片的URL，存储在IVLDCustomPreson存储桶内
+        r"""自定义人脸图片的URL，存储在IVLDCustomPreson存储桶内
         :rtype: str
         """
         return self._ImageURL
@@ -5197,7 +5197,7 @@ class PersonImageInfo(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """自定义人脸图片处理错误码
+        r"""自定义人脸图片处理错误码
         :rtype: str
         """
         return self._ErrorCode
@@ -5208,7 +5208,7 @@ class PersonImageInfo(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """自定义人脸图片处理错误信息
+        r"""自定义人脸图片处理错误信息
         :rtype: str
         """
         return self._ErrorMsg
@@ -5234,7 +5234,7 @@ class PersonImageInfo(AbstractModel):
 
 
 class PersonInfo(AbstractModel):
-    """人物信息
+    r"""人物信息
 
     """
 
@@ -5264,7 +5264,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def Name(self):
-        """公众人物姓名
+        r"""公众人物姓名
         :rtype: str
         """
         return self._Name
@@ -5275,7 +5275,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def Job(self):
-        """公众人物职务
+        r"""公众人物职务
         :rtype: str
         """
         return self._Job
@@ -5286,7 +5286,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def FirstAppear(self):
-        """首次出现模态，可选值为[1,3]，详细参见AppearIndex定义
+        r"""首次出现模态，可选值为[1,3]，详细参见AppearIndex定义
         :rtype: int
         """
         return self._FirstAppear
@@ -5297,7 +5297,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def AppearInfo(self):
-        """人物出现信息
+        r"""人物出现信息
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AppearInfo`
         """
         return self._AppearInfo
@@ -5308,7 +5308,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def AppearRect(self):
-        """人脸在图片中的位置，仅在图片标签任务有效
+        r"""人脸在图片中的位置，仅在图片标签任务有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.Rectf`
         """
@@ -5320,7 +5320,7 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonId(self):
-        """人物的personId
+        r"""人物的personId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5353,13 +5353,13 @@ class PersonInfo(AbstractModel):
 
 
 class QueryCallbackRequest(AbstractModel):
-    """QueryCallback请求参数结构体
+    r"""QueryCallback请求参数结构体
 
     """
 
 
 class QueryCallbackResponse(AbstractModel):
-    """QueryCallback返回参数结构体
+    r"""QueryCallback返回参数结构体
 
     """
 
@@ -5378,7 +5378,7 @@ class QueryCallbackResponse(AbstractModel):
 
     @property
     def TaskFinishNotifyURL(self):
-        """任务分析完成后回调地址
+        r"""任务分析完成后回调地址
         :rtype: str
         """
         return self._TaskFinishNotifyURL
@@ -5389,7 +5389,7 @@ class QueryCallbackResponse(AbstractModel):
 
     @property
     def MediaFinishNotifyURL(self):
-        """媒体导入完成后回调地址
+        r"""媒体导入完成后回调地址
         :rtype: str
         """
         return self._MediaFinishNotifyURL
@@ -5400,7 +5400,7 @@ class QueryCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5417,7 +5417,7 @@ class QueryCallbackResponse(AbstractModel):
 
 
 class Rectf(AbstractModel):
-    """矩形内容框
+    r"""矩形内容框
 
     """
 
@@ -5443,7 +5443,7 @@ class Rectf(AbstractModel):
 
     @property
     def X(self):
-        """矩形框左上角水平座标
+        r"""矩形框左上角水平座标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5455,7 +5455,7 @@ class Rectf(AbstractModel):
 
     @property
     def Y(self):
-        """矩形框左上角竖直座标
+        r"""矩形框左上角竖直座标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5467,7 +5467,7 @@ class Rectf(AbstractModel):
 
     @property
     def Width(self):
-        """矩形框宽度
+        r"""矩形框宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5479,7 +5479,7 @@ class Rectf(AbstractModel):
 
     @property
     def Height(self):
-        """矩形框长度
+        r"""矩形框长度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5506,7 +5506,7 @@ class Rectf(AbstractModel):
 
 
 class ShotInfo(AbstractModel):
-    """输入的镜头信息的描述
+    r"""输入的镜头信息的描述
 
     """
 
@@ -5524,7 +5524,7 @@ class ShotInfo(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """镜头开始时间
+        r"""镜头开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5536,7 +5536,7 @@ class ShotInfo(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """镜头结束时间
+        r"""镜头结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5561,7 +5561,7 @@ class ShotInfo(AbstractModel):
 
 
 class ShowInfo(AbstractModel):
-    """视频结构化结果
+    r"""视频结构化结果
 
     """
 
@@ -5639,7 +5639,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def Date(self):
-        """节目日期(只在新闻有效)
+        r"""节目日期(只在新闻有效)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5651,7 +5651,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def Logo(self):
-        """台标
+        r"""台标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5663,7 +5663,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def Column(self):
-        """节目名称
+        r"""节目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5675,7 +5675,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def Source(self):
-        """来源信息
+        r"""来源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5687,7 +5687,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def CoverImageURL(self):
-        """节目封面
+        r"""节目封面
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5699,7 +5699,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def SummarySet(self):
-        """节目内容概要列表
+        r"""节目内容概要列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5711,7 +5711,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def TitleSet(self):
-        """节目片段标题列表
+        r"""节目片段标题列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5723,7 +5723,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def AudioInfoSet(self):
-        """音频识别结果列表
+        r"""音频识别结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioInfo
         """
@@ -5735,7 +5735,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def TextInfoSet(self):
-        """可视文字识别结果列表
+        r"""可视文字识别结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextInfo
         """
@@ -5747,7 +5747,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def ClassifiedPersonInfoSet(self):
-        """已分类人物信息列表
+        r"""已分类人物信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClassifiedPersonInfo
         """
@@ -5759,7 +5759,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def TextTagSet(self):
-        """文本标签列表，包含标签内容和出现信息
+        r"""文本标签列表，包含标签内容和出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
         """
@@ -5771,7 +5771,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def FrameTagSet(self):
-        """帧标签列表，包括人物信息，场景信息等
+        r"""帧标签列表，包括人物信息，场景信息等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
         """
@@ -5783,7 +5783,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def WebMediaURL(self):
-        """视频下载地址
+        r"""视频下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5795,7 +5795,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def MediaClassifierSet(self):
-        """媒资分类信息
+        r"""媒资分类信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5807,7 +5807,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def SummaryTagSet(self):
-        """概要标签信息
+        r"""概要标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5819,7 +5819,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def UnknownPersonSet(self):
-        """未知人物信息
+        r"""未知人物信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UnknownPerson
         """
@@ -5831,7 +5831,7 @@ class ShowInfo(AbstractModel):
 
     @property
     def MultiLevelPersonInfoSet(self):
-        """树状已分类人物信息
+        r"""树状已分类人物信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiLevelPersonInfo
         """
@@ -5900,7 +5900,7 @@ class ShowInfo(AbstractModel):
 
 
 class SortBy(AbstractModel):
-    """排序条件
+    r"""排序条件
 
     """
 
@@ -5916,7 +5916,7 @@ class SortBy(AbstractModel):
 
     @property
     def By(self):
-        """排序字段，默认为CreateTime
+        r"""排序字段，默认为CreateTime
         :rtype: str
         """
         return self._By
@@ -5927,7 +5927,7 @@ class SortBy(AbstractModel):
 
     @property
     def Descend(self):
-        """true表示降序，false表示升序
+        r"""true表示降序，false表示升序
         :rtype: bool
         """
         return self._Descend
@@ -5951,7 +5951,7 @@ class SortBy(AbstractModel):
 
 
 class TTSMode(AbstractModel):
-    """TTS 的参数模式
+    r"""TTS 的参数模式
 
     """
 
@@ -5991,7 +5991,7 @@ class TTSMode(AbstractModel):
 
     @property
     def Speed(self):
-        """语速，范围：[-2，2]，分别对应不同语速：
+        r"""语速，范围：[-2，2]，分别对应不同语速：
 -2代表0.6倍
 -1代表0.8倍
 0代表1.0倍（默认）
@@ -6008,7 +6008,7 @@ class TTSMode(AbstractModel):
 
     @property
     def VoiceType(self):
-        """音色 ID，[音色体验地址](https://cloud.tencent.com/product/tts)。
+        r"""音色 ID，[音色体验地址](https://cloud.tencent.com/product/tts)。
 
 
 |音乐ID|音色名称|推荐场景|
@@ -6050,7 +6050,7 @@ class TTSMode(AbstractModel):
 
 
 class TaskFilter(AbstractModel):
-    """任务筛选条件结构体
+    r"""任务筛选条件结构体
 
     """
 
@@ -6084,7 +6084,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def MediaTypeSet(self):
-        """媒资文件类型
+        r"""媒资文件类型
         :rtype: list of int
         """
         return self._MediaTypeSet
@@ -6095,7 +6095,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def TaskStatusSet(self):
-        """待筛选的任务状态列表
+        r"""待筛选的任务状态列表
         :rtype: list of int
         """
         return self._TaskStatusSet
@@ -6106,7 +6106,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def TaskNameSet(self):
-        """待筛选的任务名称数组
+        r"""待筛选的任务名称数组
         :rtype: list of str
         """
         return self._TaskNameSet
@@ -6117,7 +6117,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def TaskIdSet(self):
-        """TaskId数组
+        r"""TaskId数组
         :rtype: list of str
         """
         return self._TaskIdSet
@@ -6128,7 +6128,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def MediaNameSet(self):
-        """媒资文件名数组
+        r"""媒资文件名数组
         :rtype: list of str
         """
         return self._MediaNameSet
@@ -6139,7 +6139,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def MediaLangSet(self):
-        """媒资语言类型
+        r"""媒资语言类型
         :rtype: list of int
         """
         return self._MediaLangSet
@@ -6150,7 +6150,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def MediaLabelSet(self):
-        """媒资素材一级类型
+        r"""媒资素材一级类型
         :rtype: list of int
         """
         return self._MediaLabelSet
@@ -6161,7 +6161,7 @@ class TaskFilter(AbstractModel):
 
     @property
     def LabelSet(self):
-        """媒资自定义标签数组
+        r"""媒资自定义标签数组
         :rtype: list of str
         """
         return self._LabelSet
@@ -6191,7 +6191,7 @@ class TaskFilter(AbstractModel):
 
 
 class TaskInfo(AbstractModel):
-    """任务信息
+    r"""任务信息
 
     TaskStatus定义如下:
 
@@ -6279,7 +6279,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -6290,7 +6290,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        """描述任务名称，指定后可根据名称筛选
+        r"""描述任务名称，指定后可根据名称筛选
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6302,7 +6302,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资文件ID
+        r"""媒资文件ID
         :rtype: str
         """
         return self._MediaId
@@ -6313,7 +6313,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务执行状态
+        r"""任务执行状态
         :rtype: int
         """
         return self._TaskStatus
@@ -6324,7 +6324,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskProgress(self):
-        """任务进度，范围为[0，100]
+        r"""任务进度，范围为[0，100]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6336,7 +6336,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskTimeCost(self):
-        """任务执行时间
+        r"""任务执行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6348,7 +6348,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._TaskCreateTime
@@ -6359,7 +6359,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStartTime(self):
-        """任务开始执行时间
+        r"""任务开始执行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6371,7 +6371,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def FailedReason(self):
-        """任务失败原因
+        r"""任务失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6383,7 +6383,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaPreknownInfo(self):
-        """任务执行时指定的先验知识
+        r"""任务执行时指定的先验知识
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaPreknownInfo`
         """
         return self._MediaPreknownInfo
@@ -6394,7 +6394,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaName(self):
-        """媒资文件名称
+        r"""媒资文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6406,7 +6406,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def Label(self):
-        """媒资自定义标签
+        r"""媒资自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6418,7 +6418,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def CallbackURL(self):
-        """任务分析完成后的后调地址
+        r"""任务分析完成后的后调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6430,7 +6430,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def AudioMetadata(self):
-        """任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        r"""任务对应的媒资文件元信息，仅在MediaType为Audio时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
         """
@@ -6442,7 +6442,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def ImageMetadata(self):
-        """任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        r"""任务对应的媒资文件元信息，仅在MediaType为Audio时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
         """
@@ -6454,7 +6454,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TextMetadata(self):
-        """任务对应的媒资文件元信息，仅在MediaType为Text时有效
+        r"""任务对应的媒资文件元信息，仅在MediaType为Text时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
         """
@@ -6466,7 +6466,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        """任务对应的媒资文件元信息，仅在MediaType为Video时有效
+        r"""任务对应的媒资文件元信息，仅在MediaType为Video时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         """
@@ -6516,7 +6516,7 @@ class TaskInfo(AbstractModel):
 
 
 class TextAppearInfo(AbstractModel):
-    """关键词在文本中的定位信息
+    r"""关键词在文本中的定位信息
 
     Position为关键词在文本中的偏移量，从0开始。例如，给定文本结果"欢迎收看新闻三十分”，以及关键词"新闻三十分"，那么StartPosition的值为4，EndPosition的值为9
 
@@ -6537,7 +6537,7 @@ class TextAppearInfo(AbstractModel):
 
     @property
     def Index(self):
-        """文本结果数组中的下标
+        r"""文本结果数组中的下标
         :rtype: int
         """
         return self._Index
@@ -6548,7 +6548,7 @@ class TextAppearInfo(AbstractModel):
 
     @property
     def StartPosition(self):
-        """关键词在文本中出现的起始偏移量(包含)
+        r"""关键词在文本中出现的起始偏移量(包含)
         :rtype: int
         """
         return self._StartPosition
@@ -6559,7 +6559,7 @@ class TextAppearInfo(AbstractModel):
 
     @property
     def EndPosition(self):
-        """关键词在文本中出现的结束偏移量(不包含)
+        r"""关键词在文本中出现的结束偏移量(不包含)
         :rtype: int
         """
         return self._EndPosition
@@ -6584,7 +6584,7 @@ class TextAppearInfo(AbstractModel):
 
 
 class TextData(AbstractModel):
-    """文本文件标签识别结果
+    r"""文本文件标签识别结果
 
     """
 
@@ -6610,7 +6610,7 @@ class TextData(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容信息
+        r"""文本内容信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6622,7 +6622,7 @@ class TextData(AbstractModel):
 
     @property
     def Summary(self):
-        """文本概要信息
+        r"""文本概要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6634,7 +6634,7 @@ class TextData(AbstractModel):
 
     @property
     def TextTagSet(self):
-        """文本标签信息
+        r"""文本标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
         """
@@ -6646,7 +6646,7 @@ class TextData(AbstractModel):
 
     @property
     def WebMediaURL(self):
-        """文档下载地址
+        r"""文档下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6675,7 +6675,7 @@ class TextData(AbstractModel):
 
 
 class TextInfo(AbstractModel):
-    """可视文本识别结果信息(OCR)
+    r"""可视文本识别结果信息(OCR)
 
     """
 
@@ -6697,7 +6697,7 @@ class TextInfo(AbstractModel):
 
     @property
     def Content(self):
-        """OCR提取的内容
+        r"""OCR提取的内容
         :rtype: str
         """
         return self._Content
@@ -6708,7 +6708,7 @@ class TextInfo(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """OCR起始时间戳，从0开始
+        r"""OCR起始时间戳，从0开始
         :rtype: float
         """
         return self._StartTimeStamp
@@ -6719,7 +6719,7 @@ class TextInfo(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """OCR结束时间戳，从0开始
+        r"""OCR结束时间戳，从0开始
         :rtype: float
         """
         return self._EndTimeStamp
@@ -6730,7 +6730,7 @@ class TextInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """OCR标签信息
+        r"""OCR标签信息
         :rtype: str
         """
         return self._Tag
@@ -6756,7 +6756,7 @@ class TextInfo(AbstractModel):
 
 
 class TextMetadata(AbstractModel):
-    """文本文件元信息
+    r"""文本文件元信息
 
     """
 
@@ -6786,7 +6786,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        """媒资文本文件大小，单位为字节
+        r"""媒资文本文件大小，单位为字节
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6798,7 +6798,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        """媒资文本文件MD5
+        r"""媒资文本文件MD5
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6810,7 +6810,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def Length(self):
-        """媒资文本文件字符数
+        r"""媒资文本文件字符数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6822,7 +6822,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def Format(self):
-        """媒资文本文件格式
+        r"""媒资文本文件格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6834,7 +6834,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def ShortFormat(self):
-        """封装格式短后缀
+        r"""封装格式短后缀
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6862,7 +6862,7 @@ class TextMetadata(AbstractModel):
 
 
 class TextSegMatchShotScore(AbstractModel):
-    """单个文本摘要分割结果和所有镜头的匹配度信息
+    r"""单个文本摘要分割结果和所有镜头的匹配度信息
 
     """
 
@@ -6876,7 +6876,7 @@ class TextSegMatchShotScore(AbstractModel):
 
     @property
     def ScoreSet(self):
-        """数组第 i 个值表示该文本摘要和第 i 个镜头的匹配度
+        r"""数组第 i 个值表示该文本摘要和第 i 个镜头的匹配度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
@@ -6900,7 +6900,7 @@ class TextSegMatchShotScore(AbstractModel):
 
 
 class UnknownPerson(AbstractModel):
-    """未知人物信息
+    r"""未知人物信息
 
     """
 
@@ -6922,7 +6922,7 @@ class UnknownPerson(AbstractModel):
 
     @property
     def VideoAppearSet(self):
-        """视觉出现信息
+        r"""视觉出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoAppearInfo
         """
@@ -6934,7 +6934,7 @@ class UnknownPerson(AbstractModel):
 
     @property
     def PutLibraryAllowed(self):
-        """未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
+        r"""未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6946,7 +6946,7 @@ class UnknownPerson(AbstractModel):
 
     @property
     def AuditClass(self):
-        """内容审核结果: 0-正常;1-涉政;其他待确定
+        r"""内容审核结果: 0-正常;1-涉政;其他待确定
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6977,7 +6977,7 @@ class UnknownPerson(AbstractModel):
 
 
 class UpdateCustomCategoryRequest(AbstractModel):
-    """UpdateCustomCategory请求参数结构体
+    r"""UpdateCustomCategory请求参数结构体
 
     """
 
@@ -6996,7 +6996,7 @@ class UpdateCustomCategoryRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """自定义人物类型Id
+        r"""自定义人物类型Id
         :rtype: str
         """
         return self._CategoryId
@@ -7007,7 +7007,7 @@ class UpdateCustomCategoryRequest(AbstractModel):
 
     @property
     def L1Category(self):
-        """一级自定义人物类型
+        r"""一级自定义人物类型
         :rtype: str
         """
         return self._L1Category
@@ -7018,7 +7018,7 @@ class UpdateCustomCategoryRequest(AbstractModel):
 
     @property
     def L2Category(self):
-        """二级自定义人物类型
+        r"""二级自定义人物类型
         :rtype: str
         """
         return self._L2Category
@@ -7043,7 +7043,7 @@ class UpdateCustomCategoryRequest(AbstractModel):
 
 
 class UpdateCustomCategoryResponse(AbstractModel):
-    """UpdateCustomCategory返回参数结构体
+    r"""UpdateCustomCategory返回参数结构体
 
     """
 
@@ -7059,7 +7059,7 @@ class UpdateCustomCategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
-        """成功更新的自定义人物类型Id
+        r"""成功更新的自定义人物类型Id
         :rtype: str
         """
         return self._CategoryId
@@ -7070,7 +7070,7 @@ class UpdateCustomCategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7086,7 +7086,7 @@ class UpdateCustomCategoryResponse(AbstractModel):
 
 
 class UpdateCustomPersonRequest(AbstractModel):
-    """UpdateCustomPerson请求参数结构体
+    r"""UpdateCustomPerson请求参数结构体
 
     """
 
@@ -7108,7 +7108,7 @@ class UpdateCustomPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """待更新的自定义人物Id
+        r"""待更新的自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -7119,7 +7119,7 @@ class UpdateCustomPersonRequest(AbstractModel):
 
     @property
     def Name(self):
-        """更新后的自定义人物名称，如为空则不更新
+        r"""更新后的自定义人物名称，如为空则不更新
         :rtype: str
         """
         return self._Name
@@ -7130,7 +7130,7 @@ class UpdateCustomPersonRequest(AbstractModel):
 
     @property
     def BasicInfo(self):
-        """更新后的自定义人物简介，如为空则不更新
+        r"""更新后的自定义人物简介，如为空则不更新
         :rtype: str
         """
         return self._BasicInfo
@@ -7141,7 +7141,7 @@ class UpdateCustomPersonRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        """更新后的分类信息，如为空则不更新
+        r"""更新后的分类信息，如为空则不更新
         :rtype: str
         """
         return self._CategoryId
@@ -7167,7 +7167,7 @@ class UpdateCustomPersonRequest(AbstractModel):
 
 
 class UpdateCustomPersonResponse(AbstractModel):
-    """UpdateCustomPerson返回参数结构体
+    r"""UpdateCustomPerson返回参数结构体
 
     """
 
@@ -7183,7 +7183,7 @@ class UpdateCustomPersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
-        """成功更新的自定义人物Id
+        r"""成功更新的自定义人物Id
         :rtype: str
         """
         return self._PersonId
@@ -7194,7 +7194,7 @@ class UpdateCustomPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7210,7 +7210,7 @@ class UpdateCustomPersonResponse(AbstractModel):
 
 
 class VideoAppearInfo(AbstractModel):
-    """关键词在视觉结果中的定位信息
+    r"""关键词在视觉结果中的定位信息
 
     """
 
@@ -7230,7 +7230,7 @@ class VideoAppearInfo(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """视觉信息起始时间戳，从0开始
+        r"""视觉信息起始时间戳，从0开始
         :rtype: float
         """
         return self._StartTimeStamp
@@ -7241,7 +7241,7 @@ class VideoAppearInfo(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """视觉信息终止时间戳，从0开始
+        r"""视觉信息终止时间戳，从0开始
 关键词在视觉信息中的区间为[StartTimeStamp, EndTimeStamp)
         :rtype: float
         """
@@ -7253,7 +7253,7 @@ class VideoAppearInfo(AbstractModel):
 
     @property
     def ImageURL(self):
-        """关键词在视觉信息中的封面图片
+        r"""关键词在视觉信息中的封面图片
         :rtype: str
         """
         return self._ImageURL
@@ -7278,7 +7278,7 @@ class VideoAppearInfo(AbstractModel):
 
 
 class VideoRotationMode(AbstractModel):
-    """视频横转竖的控制参数
+    r"""视频横转竖的控制参数
 
     """
 
@@ -7291,7 +7291,7 @@ class VideoRotationMode(AbstractModel):
 
     @property
     def ActiveVideoRotation(self):
-        """生成的视频是否需要横屏转竖屏。
+        r"""生成的视频是否需要横屏转竖屏。
         :rtype: bool
         """
         return self._ActiveVideoRotation

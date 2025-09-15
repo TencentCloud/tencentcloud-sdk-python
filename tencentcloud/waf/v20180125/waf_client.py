@@ -27,7 +27,7 @@ class WafClient(AbstractClient):
 
 
     def AddAntiFakeUrl(self, request):
-        """添加防篡改url
+        r"""添加防篡改url
 
         :param request: Request instance for AddAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAntiFakeUrlRequest`
@@ -50,7 +50,7 @@ class WafClient(AbstractClient):
 
 
     def AddAntiInfoLeakRules(self, request):
-        """添加信息防泄漏规则
+        r"""添加信息防泄漏规则
 
         :param request: Request instance for AddAntiInfoLeakRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAntiInfoLeakRulesRequest`
@@ -73,7 +73,7 @@ class WafClient(AbstractClient):
 
 
     def AddAreaBanAreas(self, request):
-        """添加地域封禁中的地域信息
+        r"""添加地域封禁中的地域信息
 
         :param request: Request instance for AddAreaBanAreas.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAreaBanAreasRequest`
@@ -96,7 +96,7 @@ class WafClient(AbstractClient):
 
 
     def AddAttackWhiteRule(self, request):
-        """供用户控制台调用，增加Tiga规则引擎白名单。
+        r"""供用户控制台调用，增加Tiga规则引擎白名单。
 
         :param request: Request instance for AddAttackWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAttackWhiteRuleRequest`
@@ -119,7 +119,7 @@ class WafClient(AbstractClient):
 
 
     def AddCustomRule(self, request):
-        """增加访问控制（自定义策略）
+        r"""增加访问控制（自定义策略）
 
         :param request: Request instance for AddCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomRuleRequest`
@@ -142,7 +142,7 @@ class WafClient(AbstractClient):
 
 
     def AddCustomWhiteRule(self, request):
-        """增加精准白名单规则
+        r"""增加精准白名单规则
 
         :param request: Request instance for AddCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleRequest`
@@ -165,7 +165,7 @@ class WafClient(AbstractClient):
 
 
     def AddDomainWhiteRule(self, request):
-        """增加域名规则白名单
+        r"""增加域名规则白名单
 
         :param request: Request instance for AddDomainWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddDomainWhiteRuleRequest`
@@ -188,7 +188,7 @@ class WafClient(AbstractClient):
 
 
     def AddSpartaProtection(self, request):
-        """添加SaaS型WAF防护域名
+        r"""添加SaaS型WAF防护域名
 
         :param request: Request instance for AddSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionRequest`
@@ -211,7 +211,7 @@ class WafClient(AbstractClient):
 
 
     def BatchOperateUserSignatureRules(self, request):
-        """批量操作tiga子规则
+        r"""批量操作tiga子规则
 
         :param request: Request instance for BatchOperateUserSignatureRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.BatchOperateUserSignatureRulesRequest`
@@ -234,7 +234,7 @@ class WafClient(AbstractClient):
 
 
     def CreateAccessExport(self, request):
-        """本接口用于创建访问日志导出
+        r"""本接口用于创建访问日志导出
 
         :param request: Request instance for CreateAccessExport.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateAccessExportRequest`
@@ -257,7 +257,7 @@ class WafClient(AbstractClient):
 
 
     def CreateAreaBanRule(self, request):
-        """添加（编辑）地域封禁中的地域信息
+        r"""添加（编辑）地域封禁中的地域信息
 
         :param request: Request instance for CreateAreaBanRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateAreaBanRuleRequest`
@@ -280,7 +280,7 @@ class WafClient(AbstractClient):
 
 
     def CreateDeals(self, request):
-        """计费资源购买、续费下单接口
+        r"""计费资源购买、续费下单接口
 
         :param request: Request instance for CreateDeals.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateDealsRequest`
@@ -303,7 +303,7 @@ class WafClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+        r"""本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateExportRequest`
@@ -326,7 +326,7 @@ class WafClient(AbstractClient):
 
 
     def CreateHost(self, request):
-        """clb-waf中添加防护域名
+        r"""clb-waf中添加防护域名
 
         :param request: Request instance for CreateHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateHostRequest`
@@ -349,7 +349,7 @@ class WafClient(AbstractClient):
 
 
     def CreateIpAccessControl(self, request):
-        """Waf IP黑白名单新增接口
+        r"""Waf IP黑白名单新增接口
 
         :param request: Request instance for CreateIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlRequest`
@@ -372,7 +372,7 @@ class WafClient(AbstractClient):
 
 
     def CreateOwaspWhiteRule(self, request):
-        """添加规则引擎白名单
+        r"""添加规则引擎白名单
 
         :param request: Request instance for CreateOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateOwaspWhiteRuleRequest`
@@ -395,7 +395,7 @@ class WafClient(AbstractClient):
 
 
     def CreatePostCKafkaFlow(self, request):
-        """创建CKafka投递流任务
+        r"""创建CKafka投递流任务
 
         :param request: Request instance for CreatePostCKafkaFlow.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreatePostCKafkaFlowRequest`
@@ -418,7 +418,7 @@ class WafClient(AbstractClient):
 
 
     def CreatePostCLSFlow(self, request):
-        """创建CLS投递流任务
+        r"""创建CLS投递流任务
 
         :param request: Request instance for CreatePostCLSFlow.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreatePostCLSFlowRequest`
@@ -441,7 +441,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAccessExport(self, request):
-        """本接口用于删除访问日志导出
+        r"""本接口用于删除访问日志导出
 
         :param request: Request instance for DeleteAccessExport.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAccessExportRequest`
@@ -464,7 +464,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAntiFakeUrl(self, request):
-        """删除防篡改url
+        r"""删除防篡改url
 
         :param request: Request instance for DeleteAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAntiFakeUrlRequest`
@@ -487,7 +487,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAntiInfoLeakRule(self, request):
-        """信息防泄漏删除规则
+        r"""信息防泄漏删除规则
 
         :param request: Request instance for DeleteAntiInfoLeakRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAntiInfoLeakRuleRequest`
@@ -510,7 +510,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAttackDownloadRecord(self, request):
-        """删除攻击日志下载任务记录
+        r"""删除攻击日志下载任务记录
 
         :param request: Request instance for DeleteAttackDownloadRecord.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAttackDownloadRecordRequest`
@@ -533,7 +533,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAttackWhiteRule(self, request):
-        """供用户控制台调用，删除Tiga规则引擎白名单。
+        r"""供用户控制台调用，删除Tiga规则引擎白名单。
 
         :param request: Request instance for DeleteAttackWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAttackWhiteRuleRequest`
@@ -556,7 +556,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteBotSceneUCBRule(self, request):
-        """场景化后删除Bot的UCB自定义规则
+        r"""场景化后删除Bot的UCB自定义规则
 
         :param request: Request instance for DeleteBotSceneUCBRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteBotSceneUCBRuleRequest`
@@ -579,7 +579,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCCRule(self, request):
-        """Waf  CC V2 Delete接口
+        r"""Waf  CC V2 Delete接口
 
         :param request: Request instance for DeleteCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCCRuleRequest`
@@ -602,7 +602,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCustomRule(self, request):
-        """删除自定义规则
+        r"""删除自定义规则
 
         :param request: Request instance for DeleteCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomRuleRequest`
@@ -625,7 +625,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCustomWhiteRule(self, request):
-        """删除精准白名单规则
+        r"""删除精准白名单规则
 
         :param request: Request instance for DeleteCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleRequest`
@@ -648,7 +648,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteDomainWhiteRules(self, request):
-        """删除域名规则白名单
+        r"""删除域名规则白名单
 
         :param request: Request instance for DeleteDomainWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesRequest`
@@ -671,7 +671,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteExport(self, request):
-        """本接口用于删除日志下载任务
+        r"""本接口用于删除日志下载任务
 
         :param request: Request instance for DeleteExport.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteExportRequest`
@@ -694,7 +694,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteHost(self, request):
-        """删除负载均衡型域名，支持批量操作。
+        r"""删除负载均衡型域名，支持批量操作。
 
         :param request: Request instance for DeleteHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteHostRequest`
@@ -717,7 +717,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteIpAccessControl(self, request):
-        """Waf IP黑白名单Delete接口（建议使用DeleteIpAccessControlV2来替换当前接口）
+        r"""Waf IP黑白名单Delete接口（建议使用DeleteIpAccessControlV2来替换当前接口）
 
         :param request: Request instance for DeleteIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlRequest`
@@ -740,7 +740,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteIpAccessControlV2(self, request):
-        """Waf IP黑白名单最新版本删除接口
+        r"""Waf IP黑白名单最新版本删除接口
 
         :param request: Request instance for DeleteIpAccessControlV2.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Request`
@@ -763,7 +763,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteOwaspRuleStatus(self, request):
-        """解除门神规则的状态锁
+        r"""解除门神规则的状态锁
 
         :param request: Request instance for DeleteOwaspRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspRuleStatusRequest`
@@ -786,7 +786,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteOwaspWhiteRule(self, request):
-        """删除用户规则引擎白名单
+        r"""删除用户规则引擎白名单
 
         :param request: Request instance for DeleteOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspWhiteRuleRequest`
@@ -809,7 +809,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSession(self, request):
-        """删除CC攻击的session设置
+        r"""删除CC攻击的session设置
 
         :param request: Request instance for DeleteSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSessionRequest`
@@ -832,7 +832,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSpartaProtection(self, request):
-        """SaaS型WAF删除防护域名
+        r"""SaaS型WAF删除防护域名
 
         :param request: Request instance for DeleteSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSpartaProtectionRequest`
@@ -855,7 +855,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAccessExports(self, request):
-        """本接口用于获取访问日志导出列表
+        r"""本接口用于获取访问日志导出列表
 
         :param request: Request instance for DescribeAccessExports.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessExportsRequest`
@@ -878,7 +878,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAccessFastAnalysis(self, request):
-        """本接口用于访问日志的快速分析
+        r"""本接口用于访问日志的快速分析
 
         :param request: Request instance for DescribeAccessFastAnalysis.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessFastAnalysisRequest`
@@ -901,7 +901,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAccessHistogram(self, request):
-        """本接口用于访问日志柱状趋势图
+        r"""本接口用于访问日志柱状趋势图
 
         :param request: Request instance for DescribeAccessHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessHistogramRequest`
@@ -924,7 +924,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAccessIndex(self, request):
-        """本接口用于获取访问日志索引配置信息
+        r"""本接口用于获取访问日志索引配置信息
 
         :param request: Request instance for DescribeAccessIndex.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessIndexRequest`
@@ -947,7 +947,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAntiFakeRules(self, request):
-        """获取防篡改url
+        r"""获取防篡改url
 
         :param request: Request instance for DescribeAntiFakeRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeRulesRequest`
@@ -970,7 +970,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAntiInfoLeakageRules(self, request):
-        """取得信息防泄漏规则列表
+        r"""取得信息防泄漏规则列表
 
         :param request: Request instance for DescribeAntiInfoLeakageRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakageRulesRequest`
@@ -993,7 +993,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeApiDetail(self, request):
-        """获取Api请求详情信息
+        r"""获取Api请求详情信息
 
         :param request: Request instance for DescribeApiDetail.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiDetailRequest`
@@ -1016,7 +1016,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeApiListVersionTwo(self, request):
-        """api资产列表
+        r"""api资产列表
 
         :param request: Request instance for DescribeApiListVersionTwo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiListVersionTwoRequest`
@@ -1039,7 +1039,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAreaBanAreas(self, request):
-        """获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
+        r"""获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
 
         :param request: Request instance for DescribeAreaBanAreas.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanAreasRequest`
@@ -1062,7 +1062,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAreaBanRule(self, request):
-        """获取地域封禁规则配置
+        r"""获取地域封禁规则配置
 
         :param request: Request instance for DescribeAreaBanRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanRuleRequest`
@@ -1085,7 +1085,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAreaBanSupportAreas(self, request):
-        """获取WAF地域封禁支持的地域列表
+        r"""获取WAF地域封禁支持的地域列表
 
         :param request: Request instance for DescribeAreaBanSupportAreas.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanSupportAreasRequest`
@@ -1108,7 +1108,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAttackOverview(self, request):
-        """攻击总览
+        r"""攻击总览
 
         :param request: Request instance for DescribeAttackOverview.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackOverviewRequest`
@@ -1131,7 +1131,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAttackType(self, request):
-        """查询指定域名TOP N攻击类型
+        r"""查询指定域名TOP N攻击类型
 
         :param request: Request instance for DescribeAttackType.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackTypeRequest`
@@ -1154,7 +1154,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAttackWhiteRule(self, request):
-        """获取用户规则白名单列表
+        r"""获取用户规则白名单列表
 
         :param request: Request instance for DescribeAttackWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackWhiteRuleRequest`
@@ -1177,7 +1177,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAutoDenyIP(self, request):
-        """描述WAF自动封禁IP详情,对齐自动封堵状态
+        r"""描述WAF自动封禁IP详情,对齐自动封堵状态
 
         :param request: Request instance for DescribeAutoDenyIP.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPRequest`
@@ -1200,7 +1200,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeBatchIpAccessControl(self, request):
-        """Waf 批量防护IP黑白名单查询
+        r"""Waf 批量防护IP黑白名单查询
 
         :param request: Request instance for DescribeBatchIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBatchIpAccessControlRequest`
@@ -1223,7 +1223,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeBotSceneList(self, request):
-        """获取BOT场景列表与概览
+        r"""获取BOT场景列表与概览
 
         :param request: Request instance for DescribeBotSceneList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneListRequest`
@@ -1246,7 +1246,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeBotSceneOverview(self, request):
-        """获取Bot场景全局概览
+        r"""获取Bot场景全局概览
 
         :param request: Request instance for DescribeBotSceneOverview.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneOverviewRequest`
@@ -1269,7 +1269,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeBotSceneUCBRule(self, request):
-        """场景化后Bot获取UCB自定义规则策略
+        r"""场景化后Bot获取UCB自定义规则策略
 
         :param request: Request instance for DescribeBotSceneUCBRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneUCBRuleRequest`
@@ -1292,7 +1292,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCAutoStatus(self, request):
-        """获取SAAS型接入的紧急CC防护状态
+        r"""获取SAAS型接入的紧急CC防护状态
 
         :param request: Request instance for DescribeCCAutoStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCAutoStatusRequest`
@@ -1315,7 +1315,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCRule(self, request):
-        """Waf  CC V2 Query接口
+        r"""Waf  CC V2 Query接口
 
         :param request: Request instance for DescribeCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleRequest`
@@ -1338,7 +1338,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCRuleList(self, request):
-        """根据多条件查询CC规则
+        r"""根据多条件查询CC规则
 
         :param request: Request instance for DescribeCCRuleList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleListRequest`
@@ -1361,7 +1361,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCertificateVerifyResult(self, request):
-        """获取证书的检查结果
+        r"""获取证书的检查结果
 
         :param request: Request instance for DescribeCertificateVerifyResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCertificateVerifyResultRequest`
@@ -1384,7 +1384,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCiphersDetail(self, request):
-        """Saas型WAF接入查询加密套件信息
+        r"""Saas型WAF接入查询加密套件信息
 
         :param request: Request instance for DescribeCiphersDetail.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCiphersDetailRequest`
@@ -1407,7 +1407,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCustomRuleList(self, request):
-        """获取防护配置中的访问控制策略列表
+        r"""获取防护配置中的访问控制策略列表
 
         :param request: Request instance for DescribeCustomRuleList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRuleListRequest`
@@ -1430,7 +1430,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCustomWhiteRule(self, request):
-        """获取防护配置中的精准白名单策略列表
+        r"""获取防护配置中的精准白名单策略列表
 
         :param request: Request instance for DescribeCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomWhiteRuleRequest`
@@ -1453,7 +1453,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainCountInfo(self, request):
-        """获取域名概况
+        r"""获取域名概况
 
         :param request: Request instance for DescribeDomainCountInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainCountInfoRequest`
@@ -1476,7 +1476,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsClb(self, request):
-        """获取一个clbwaf域名详情
+        r"""获取一个clbwaf域名详情
 
         :param request: Request instance for DescribeDomainDetailsClb.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsClbRequest`
@@ -1499,7 +1499,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsSaas(self, request):
-        """查询单个saaswaf域名详情
+        r"""查询单个saaswaf域名详情
 
         :param request: Request instance for DescribeDomainDetailsSaas.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsSaasRequest`
@@ -1522,7 +1522,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainRules(self, request):
-        """拉取域名的防护规则列表
+        r"""拉取域名的防护规则列表
 
         :param request: Request instance for DescribeDomainRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainRulesRequest`
@@ -1545,7 +1545,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainVerifyResult(self, request):
-        """获取添加域名操作的结果
+        r"""获取添加域名操作的结果
 
         :param request: Request instance for DescribeDomainVerifyResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultRequest`
@@ -1568,7 +1568,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainWhiteRules(self, request):
-        """获取域名的规则白名单
+        r"""获取域名的规则白名单
 
         :param request: Request instance for DescribeDomainWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesRequest`
@@ -1591,7 +1591,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """查询用户所有域名的详细信息
+        r"""查询用户所有域名的详细信息
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainsRequest`
@@ -1614,7 +1614,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeExports(self, request):
-        """本接口用于获取日志下载任务列表
+        r"""本接口用于获取日志下载任务列表
 
         :param request: Request instance for DescribeExports.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeExportsRequest`
@@ -1637,7 +1637,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeFindDomainList(self, request):
-        """获取发现域名列表接口
+        r"""获取发现域名列表接口
 
         :param request: Request instance for DescribeFindDomainList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeFindDomainListRequest`
@@ -1660,7 +1660,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeFlowTrend(self, request):
-        """获取waf流量访问趋势
+        r"""获取waf流量访问趋势
 
         :param request: Request instance for DescribeFlowTrend.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeFlowTrendRequest`
@@ -1683,7 +1683,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHistogram(self, request):
-        """查询多种条件的聚类分析
+        r"""查询多种条件的聚类分析
 
         :param request: Request instance for DescribeHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHistogramRequest`
@@ -1706,7 +1706,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHost(self, request):
-        """clb-waf获取防护域名详情
+        r"""clb-waf获取防护域名详情
 
         :param request: Request instance for DescribeHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostRequest`
@@ -1729,7 +1729,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHostLimit(self, request):
-        """添加域名的首先验证是否购买了套餐，是否没有达到购买套餐的限制，域名是否已经添加
+        r"""添加域名的首先验证是否购买了套餐，是否没有达到购买套餐的限制，域名是否已经添加
 
         :param request: Request instance for DescribeHostLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostLimitRequest`
@@ -1752,7 +1752,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHosts(self, request):
-        """clb-waf中获取防护域名列表
+        r"""clb-waf中获取防护域名列表
 
         :param request: Request instance for DescribeHosts.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostsRequest`
@@ -1775,7 +1775,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询用户所有实例的详细信息
+        r"""查询用户所有实例的详细信息
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesRequest`
@@ -1798,7 +1798,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeIpAccessControl(self, request):
-        """Waf ip黑白名单查询
+        r"""Waf ip黑白名单查询
 
         :param request: Request instance for DescribeIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlRequest`
@@ -1821,7 +1821,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeIpHitItems(self, request):
-        """Waf  IP封堵状态查询
+        r"""Waf  IP封堵状态查询
 
         :param request: Request instance for DescribeIpHitItems.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpHitItemsRequest`
@@ -1844,7 +1844,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """本接口用于构建日志数量直方图
+        r"""本接口用于构建日志数量直方图
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLogHistogramRequest`
@@ -1867,7 +1867,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeModuleStatus(self, request):
-        """查询各个waf基础安全模块的开关状态，看每个模块是否开启
+        r"""查询各个waf基础安全模块的开关状态，看每个模块是否开启
 
         :param request: Request instance for DescribeModuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeModuleStatusRequest`
@@ -1890,7 +1890,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeObjects(self, request):
-        """查看防护对象列表
+        r"""查看防护对象列表
 
         :param request: Request instance for DescribeObjects.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeObjectsRequest`
@@ -1913,7 +1913,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspRuleTypes(self, request):
-        """查询规则引擎的规则类型列表
+        r"""查询规则引擎的规则类型列表
 
         :param request: Request instance for DescribeOwaspRuleTypes.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRuleTypesRequest`
@@ -1936,7 +1936,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspRules(self, request):
-        """查询规则引擎的规则列表
+        r"""查询规则引擎的规则列表
 
         :param request: Request instance for DescribeOwaspRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRulesRequest`
@@ -1959,7 +1959,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspWhiteRules(self, request):
-        """获取规则引擎白名单列表
+        r"""获取规则引擎白名单列表
 
         :param request: Request instance for DescribeOwaspWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspWhiteRulesRequest`
@@ -1982,7 +1982,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePeakPoints(self, request):
-        """查询业务和攻击概要趋势
+        r"""查询业务和攻击概要趋势
 
         :param request: Request instance for DescribePeakPoints.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePeakPointsRequest`
@@ -2005,7 +2005,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePeakValue(self, request):
-        """获取业务和攻击概览峰值
+        r"""获取业务和攻击概览峰值
 
         :param request: Request instance for DescribePeakValue.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePeakValueRequest`
@@ -2028,7 +2028,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePolicyStatus(self, request):
-        """获取防护状态以及生效的实例id
+        r"""获取防护状态以及生效的实例id
 
         :param request: Request instance for DescribePolicyStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePolicyStatusRequest`
@@ -2051,7 +2051,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePorts(self, request):
-        """获取Saas型WAF防护端口列表
+        r"""获取Saas型WAF防护端口列表
 
         :param request: Request instance for DescribePorts.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePortsRequest`
@@ -2074,7 +2074,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePostCKafkaFlows(self, request):
-        """获取CKafka投递流任务列表
+        r"""获取CKafka投递流任务列表
 
         :param request: Request instance for DescribePostCKafkaFlows.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePostCKafkaFlowsRequest`
@@ -2097,7 +2097,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePostCLSFlows(self, request):
-        """获取CLS投递流任务列表
+        r"""获取CLS投递流任务列表
 
         :param request: Request instance for DescribePostCLSFlows.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePostCLSFlowsRequest`
@@ -2120,7 +2120,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeProtectionModes(self, request):
-        """查询Tiga引擎大类规则及其防护模式
+        r"""查询Tiga引擎大类规则及其防护模式
 
         :param request: Request instance for DescribeProtectionModes.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeProtectionModesRequest`
@@ -2143,7 +2143,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeRuleLimit(self, request):
-        """获取各个模块具体的规格限制
+        r"""获取各个模块具体的规格限制
 
         :param request: Request instance for DescribeRuleLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeRuleLimitRequest`
@@ -2166,7 +2166,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeScanIp(self, request):
-        """查询扫描ip
+        r"""查询扫描ip
 
         :param request: Request instance for DescribeScanIp.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeScanIpRequest`
@@ -2189,7 +2189,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeSession(self, request):
-        """Waf 会话定义查询接口
+        r"""Waf 会话定义查询接口
 
         :param request: Request instance for DescribeSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSessionRequest`
@@ -2212,7 +2212,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeSpartaProtectionInfo(self, request):
-        """waf斯巴达-获取防护域名信息
+        r"""waf斯巴达-获取防护域名信息
 
         :param request: Request instance for DescribeSpartaProtectionInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSpartaProtectionInfoRequest`
@@ -2235,7 +2235,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTlsVersion(self, request):
-        """查询SaaS型WAF支持的TLS版本
+        r"""查询SaaS型WAF支持的TLS版本
 
         :param request: Request instance for DescribeTlsVersion.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTlsVersionRequest`
@@ -2258,7 +2258,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTopAttackDomain(self, request):
-        """查询Top5的攻击域名
+        r"""查询Top5的攻击域名
 
         :param request: Request instance for DescribeTopAttackDomain.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTopAttackDomainRequest`
@@ -2281,7 +2281,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        """本接口用于获取日志主题列表，支持分页
+        r"""本接口用于获取日志主题列表，支持分页
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTopicsRequest`
@@ -2304,7 +2304,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserCdcClbWafRegions(self, request):
-        """在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
+        r"""在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
 
         :param request: Request instance for DescribeUserCdcClbWafRegions.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserCdcClbWafRegionsRequest`
@@ -2327,7 +2327,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserClbWafRegions(self, request):
-        """在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
+        r"""在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
 
         :param request: Request instance for DescribeUserClbWafRegions.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsRequest`
@@ -2350,7 +2350,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserDomainInfo(self, request):
-        """查询saas和clb的域名信息
+        r"""查询saas和clb的域名信息
 
         :param request: Request instance for DescribeUserDomainInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserDomainInfoRequest`
@@ -2373,7 +2373,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserLevel(self, request):
-        """获取用户防护规则等级
+        r"""获取用户防护规则等级
 
         :param request: Request instance for DescribeUserLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserLevelRequest`
@@ -2396,7 +2396,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserSignatureClass(self, request):
-        """查询Tiga引擎规则类型及状态
+        r"""查询Tiga引擎规则类型及状态
 
         :param request: Request instance for DescribeUserSignatureClass.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureClassRequest`
@@ -2419,7 +2419,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserSignatureRule(self, request):
-        """获取用户特征规则列表
+        r"""获取用户特征规则列表
 
         :param request: Request instance for DescribeUserSignatureRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleRequest`
@@ -2442,7 +2442,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserSignatureRuleV2(self, request):
-        """获取用户特征规则列表
+        r"""获取用户特征规则列表
 
         :param request: Request instance for DescribeUserSignatureRuleV2.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleV2Request`
@@ -2465,7 +2465,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeVipInfo(self, request):
-        """根据过滤条件查询VIP信息
+        r"""根据过滤条件查询VIP信息
 
         :param request: Request instance for DescribeVipInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeVipInfoRequest`
@@ -2488,7 +2488,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeWafAutoDenyRules(self, request):
-        """返回ip惩罚规则详细信息
+        r"""返回ip惩罚规则详细信息
 
         :param request: Request instance for DescribeWafAutoDenyRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyRulesRequest`
@@ -2511,7 +2511,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeWafAutoDenyStatus(self, request):
-        """废弃接口
+        r"""废弃接口
 
         描述WAF自动封禁模块详情
 
@@ -2536,7 +2536,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeWafThreatenIntelligence(self, request):
-        """描述WAF威胁情报封禁模块配置详情
+        r"""描述WAF威胁情报封禁模块配置详情
 
         :param request: Request instance for DescribeWafThreatenIntelligence.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafThreatenIntelligenceRequest`
@@ -2559,7 +2559,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeWebshellStatus(self, request):
-        """获取域名的webshell状态
+        r"""获取域名的webshell状态
 
         :param request: Request instance for DescribeWebshellStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWebshellStatusRequest`
@@ -2582,7 +2582,7 @@ class WafClient(AbstractClient):
 
 
     def DestroyPostCKafkaFlow(self, request):
-        """销毁CKafka投递流任务
+        r"""销毁CKafka投递流任务
 
         :param request: Request instance for DestroyPostCKafkaFlow.
         :type request: :class:`tencentcloud.waf.v20180125.models.DestroyPostCKafkaFlowRequest`
@@ -2605,7 +2605,7 @@ class WafClient(AbstractClient):
 
 
     def DestroyPostCLSFlow(self, request):
-        """销毁CLS投递流任务
+        r"""销毁CLS投递流任务
 
         :param request: Request instance for DestroyPostCLSFlow.
         :type request: :class:`tencentcloud.waf.v20180125.models.DestroyPostCLSFlowRequest`
@@ -2628,7 +2628,7 @@ class WafClient(AbstractClient):
 
 
     def FreshAntiFakeUrl(self, request):
-        """刷新防篡改url
+        r"""刷新防篡改url
 
         :param request: Request instance for FreshAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.FreshAntiFakeUrlRequest`
@@ -2651,7 +2651,7 @@ class WafClient(AbstractClient):
 
 
     def GenerateDealsAndPayNew(self, request):
-        """计费资源购买、续费下单接口
+        r"""计费资源购买、续费下单接口
 
         :param request: Request instance for GenerateDealsAndPayNew.
         :type request: :class:`tencentcloud.waf.v20180125.models.GenerateDealsAndPayNewRequest`
@@ -2674,7 +2674,7 @@ class WafClient(AbstractClient):
 
 
     def GetAttackDownloadRecords(self, request):
-        """查询下载攻击日志任务记录列表
+        r"""查询下载攻击日志任务记录列表
 
         :param request: Request instance for GetAttackDownloadRecords.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackDownloadRecordsRequest`
@@ -2697,7 +2697,7 @@ class WafClient(AbstractClient):
 
 
     def GetAttackHistogram(self, request):
-        """生成攻击日志的产生时间柱状图
+        r"""生成攻击日志的产生时间柱状图
 
         :param request: Request instance for GetAttackHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramRequest`
@@ -2720,7 +2720,7 @@ class WafClient(AbstractClient):
 
 
     def GetAttackTotalCount(self, request):
-        """按照条件查询展示攻击总次数
+        r"""按照条件查询展示攻击总次数
 
         :param request: Request instance for GetAttackTotalCount.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackTotalCountRequest`
@@ -2743,7 +2743,7 @@ class WafClient(AbstractClient):
 
 
     def GetInstanceQpsLimit(self, request):
-        """获取套餐实例的弹性qps上限
+        r"""获取套餐实例的弹性qps上限
 
         :param request: Request instance for GetInstanceQpsLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetInstanceQpsLimitRequest`
@@ -2766,7 +2766,7 @@ class WafClient(AbstractClient):
 
 
     def ImportIpAccessControl(self, request):
-        """导入IP黑白名单
+        r"""导入IP黑白名单
 
         :param request: Request instance for ImportIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlRequest`
@@ -2789,7 +2789,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiFakeUrl(self, request):
-        """编辑防篡改url
+        r"""编辑防篡改url
 
         :param request: Request instance for ModifyAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiFakeUrlRequest`
@@ -2812,7 +2812,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiFakeUrlStatus(self, request):
-        """切换防篡改开关
+        r"""切换防篡改开关
 
         :param request: Request instance for ModifyAntiFakeUrlStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiFakeUrlStatusRequest`
@@ -2835,7 +2835,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiInfoLeakRuleStatus(self, request):
-        """信息防泄漏切换规则开关
+        r"""信息防泄漏切换规则开关
 
         :param request: Request instance for ModifyAntiInfoLeakRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiInfoLeakRuleStatusRequest`
@@ -2858,7 +2858,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiInfoLeakRules(self, request):
-        """编辑信息防泄漏规则
+        r"""编辑信息防泄漏规则
 
         :param request: Request instance for ModifyAntiInfoLeakRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiInfoLeakRulesRequest`
@@ -2881,7 +2881,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyApiAnalyzeStatus(self, request):
-        """api分析页面开关
+        r"""api分析页面开关
 
         :param request: Request instance for ModifyApiAnalyzeStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyApiAnalyzeStatusRequest`
@@ -2904,7 +2904,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyApiSecEventChange(self, request):
-        """api安全状态变更接口
+        r"""api安全状态变更接口
 
         :param request: Request instance for ModifyApiSecEventChange.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyApiSecEventChangeRequest`
@@ -2927,7 +2927,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAreaBanAreas(self, request):
-        """修改地域封禁中的地域信息
+        r"""修改地域封禁中的地域信息
 
         :param request: Request instance for ModifyAreaBanAreas.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanAreasRequest`
@@ -2950,7 +2950,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAreaBanRule(self, request):
-        """添加（编辑）地域封禁中的地域信息
+        r"""添加（编辑）地域封禁中的地域信息
 
         :param request: Request instance for ModifyAreaBanRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanRuleRequest`
@@ -2973,7 +2973,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAreaBanStatus(self, request):
-        """修改防护域名的地域封禁状态
+        r"""修改防护域名的地域封禁状态
 
         :param request: Request instance for ModifyAreaBanStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanStatusRequest`
@@ -2996,7 +2996,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAttackWhiteRule(self, request):
-        """供用户控制台调用，修改Tiga规则引擎白名单。
+        r"""供用户控制台调用，修改Tiga规则引擎白名单。
 
         :param request: Request instance for ModifyAttackWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAttackWhiteRuleRequest`
@@ -3019,7 +3019,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyBotSceneStatus(self, request):
-        """bot子场景开关
+        r"""bot子场景开关
 
         :param request: Request instance for ModifyBotSceneStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneStatusRequest`
@@ -3042,7 +3042,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyBotSceneUCBRule(self, request):
-        """【接口复用】场景化后更新Bot的UCB自定义规则，两个调用位置：1.BOT全局白名单 2.BOT场景配置
+        r"""【接口复用】场景化后更新Bot的UCB自定义规则，两个调用位置：1.BOT全局白名单 2.BOT场景配置
 
         :param request: Request instance for ModifyBotSceneUCBRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneUCBRuleRequest`
@@ -3065,7 +3065,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyBotStatus(self, request):
-        """Bot_V2 bot总开关更新
+        r"""Bot_V2 bot总开关更新
 
         :param request: Request instance for ModifyBotStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotStatusRequest`
@@ -3088,7 +3088,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomRule(self, request):
-        """编辑自定义规则
+        r"""编辑自定义规则
 
         :param request: Request instance for ModifyCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleRequest`
@@ -3111,7 +3111,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomRuleStatus(self, request):
-        """开启或禁用访问控制（自定义策略）
+        r"""开启或禁用访问控制（自定义策略）
 
         :param request: Request instance for ModifyCustomRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleStatusRequest`
@@ -3134,7 +3134,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomWhiteRule(self, request):
-        """编辑精准白名单
+        r"""编辑精准白名单
 
         :param request: Request instance for ModifyCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleRequest`
@@ -3157,7 +3157,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomWhiteRuleStatus(self, request):
-        """开启或禁用精准白名单
+        r"""开启或禁用精准白名单
 
         :param request: Request instance for ModifyCustomWhiteRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleStatusRequest`
@@ -3180,7 +3180,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainIpv6Status(self, request):
-        """切换ipv6开关
+        r"""切换ipv6开关
 
         :param request: Request instance for ModifyDomainIpv6Status.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainIpv6StatusRequest`
@@ -3203,7 +3203,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainPostAction(self, request):
-        """修改域名投递状态
+        r"""修改域名投递状态
 
         :param request: Request instance for ModifyDomainPostAction.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionRequest`
@@ -3226,7 +3226,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainWhiteRule(self, request):
-        """更改某一条规则
+        r"""更改某一条规则
 
         :param request: Request instance for ModifyDomainWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleRequest`
@@ -3249,7 +3249,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainsCLSStatus(self, request):
-        """修改域名列表的访问日志开关
+        r"""修改域名列表的访问日志开关
 
         :param request: Request instance for ModifyDomainsCLSStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainsCLSStatusRequest`
@@ -3272,7 +3272,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyGenerateDeals(self, request):
-        """提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单
+        r"""提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单
 
         :param request: Request instance for ModifyGenerateDeals.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyGenerateDealsRequest`
@@ -3295,7 +3295,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHost(self, request):
-        """编辑负载均衡型WAF防护域名配置
+        r"""编辑负载均衡型WAF防护域名配置
 
         :param request: Request instance for ModifyHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostRequest`
@@ -3318,7 +3318,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostFlowMode(self, request):
-        """设置负载均衡型WAF防护域名的流量模式，切换镜像模式和清洗模式
+        r"""设置负载均衡型WAF防护域名的流量模式，切换镜像模式和清洗模式
 
         :param request: Request instance for ModifyHostFlowMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostFlowModeRequest`
@@ -3341,7 +3341,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostMode(self, request):
-        """clb-waf设置防护域名防护状态
+        r"""clb-waf设置防护域名防护状态
 
         :param request: Request instance for ModifyHostMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostModeRequest`
@@ -3364,7 +3364,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostStatus(self, request):
-        """clb-waf 设置防护域名WAF开关
+        r"""clb-waf 设置防护域名WAF开关
         支持批量操作。
 
         :param request: Request instance for ModifyHostStatus.
@@ -3388,7 +3388,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceAttackLogPost(self, request):
-        """修改实例攻击日志投递开关，企业版及以上版本可以开通，否则返回错误
+        r"""修改实例攻击日志投递开关，企业版及以上版本可以开通，否则返回错误
 
         :param request: Request instance for ModifyInstanceAttackLogPost.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceAttackLogPostRequest`
@@ -3411,7 +3411,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceElasticMode(self, request):
-        """修改实例的QPS弹性计费开关
+        r"""修改实例的QPS弹性计费开关
 
         :param request: Request instance for ModifyInstanceElasticMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeRequest`
@@ -3434,7 +3434,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceName(self, request):
-        """修改实例的名称
+        r"""修改实例的名称
 
         :param request: Request instance for ModifyInstanceName.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameRequest`
@@ -3457,7 +3457,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceQpsLimit(self, request):
-        """设置套餐实例的弹性qps上限
+        r"""设置套餐实例的弹性qps上限
 
         :param request: Request instance for ModifyInstanceQpsLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitRequest`
@@ -3480,7 +3480,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceRenewFlag(self, request):
-        """修改实例的自动续费开关
+        r"""修改实例的自动续费开关
 
         :param request: Request instance for ModifyInstanceRenewFlag.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagRequest`
@@ -3503,7 +3503,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyIpAccessControl(self, request):
-        """Waf IP黑白名单编辑接口
+        r"""Waf IP黑白名单编辑接口
 
         :param request: Request instance for ModifyIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlRequest`
@@ -3526,7 +3526,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyModuleStatus(self, request):
-        """设置某个domain下基础安全模块的开关
+        r"""设置某个domain下基础安全模块的开关
 
         :param request: Request instance for ModifyModuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyModuleStatusRequest`
@@ -3549,7 +3549,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyObject(self, request):
-        """修改防护对象
+        r"""修改防护对象
 
         :param request: Request instance for ModifyObject.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyObjectRequest`
@@ -3572,7 +3572,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleStatus(self, request):
-        """更新规则的开关
+        r"""更新规则的开关
 
         :param request: Request instance for ModifyOwaspRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleStatusRequest`
@@ -3595,7 +3595,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeAction(self, request):
-        """更新规则类型的防护模式
+        r"""更新规则类型的防护模式
 
         :param request: Request instance for ModifyOwaspRuleTypeAction.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeActionRequest`
@@ -3618,7 +3618,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeLevel(self, request):
-        """更新规则类型的防护等级
+        r"""更新规则类型的防护等级
 
         :param request: Request instance for ModifyOwaspRuleTypeLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeLevelRequest`
@@ -3641,7 +3641,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeStatus(self, request):
-        """更新规则类型的开关
+        r"""更新规则类型的开关
 
         :param request: Request instance for ModifyOwaspRuleTypeStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeStatusRequest`
@@ -3664,7 +3664,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspWhiteRule(self, request):
-        """编辑规则引擎白名单
+        r"""编辑规则引擎白名单
 
         :param request: Request instance for ModifyOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspWhiteRuleRequest`
@@ -3687,7 +3687,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyProtectionLevel(self, request):
-        """更改防护等级
+        r"""更改防护等级
 
         :param request: Request instance for ModifyProtectionLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyProtectionLevelRequest`
@@ -3710,7 +3710,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyProtectionStatus(self, request):
-        """开启、关闭WAF开关
+        r"""开启、关闭WAF开关
 
         :param request: Request instance for ModifyProtectionStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyProtectionStatusRequest`
@@ -3733,7 +3733,7 @@ class WafClient(AbstractClient):
 
 
     def ModifySpartaProtection(self, request):
-        """编辑SaaS型WAF域名配置
+        r"""编辑SaaS型WAF域名配置
 
         :param request: Request instance for ModifySpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionRequest`
@@ -3756,7 +3756,7 @@ class WafClient(AbstractClient):
 
 
     def ModifySpartaProtectionMode(self, request):
-        """设置waf防护状态
+        r"""设置waf防护状态
 
         :param request: Request instance for ModifySpartaProtectionMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionModeRequest`
@@ -3779,7 +3779,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserLevel(self, request):
-        """修改用户防护规则等级
+        r"""修改用户防护规则等级
 
         :param request: Request instance for ModifyUserLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserLevelRequest`
@@ -3802,7 +3802,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserSignatureClass(self, request):
-        """切换Tiga引擎规则类型的生效开关
+        r"""切换Tiga引擎规则类型的生效开关
 
         :param request: Request instance for ModifyUserSignatureClass.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureClassRequest`
@@ -3825,7 +3825,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserSignatureRule(self, request):
-        """修改用户防护规则，开启关闭具体的某条规则
+        r"""修改用户防护规则，开启关闭具体的某条规则
 
         :param request: Request instance for ModifyUserSignatureRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleRequest`
@@ -3848,7 +3848,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserSignatureRuleV2(self, request):
-        """修改用户防护规则，开启关闭具体的某条规则
+        r"""修改用户防护规则，开启关闭具体的某条规则
 
         :param request: Request instance for ModifyUserSignatureRuleV2.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleV2Request`
@@ -3871,7 +3871,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyWafAutoDenyRules(self, request):
-        """修改ip惩罚规则
+        r"""修改ip惩罚规则
 
         :param request: Request instance for ModifyWafAutoDenyRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyRulesRequest`
@@ -3894,7 +3894,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyWafThreatenIntelligence(self, request):
-        """配置WAF威胁情报封禁模块详情
+        r"""配置WAF威胁情报封禁模块详情
 
         :param request: Request instance for ModifyWafThreatenIntelligence.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafThreatenIntelligenceRequest`
@@ -3917,7 +3917,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyWebshellStatus(self, request):
-        """设置域名的webshell状态。
+        r"""设置域名的webshell状态。
 
         :param request: Request instance for ModifyWebshellStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWebshellStatusRequest`
@@ -3940,7 +3940,7 @@ class WafClient(AbstractClient):
 
 
     def PostAttackDownloadTask(self, request):
-        """创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
+        r"""创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
 
         :param request: Request instance for PostAttackDownloadTask.
         :type request: :class:`tencentcloud.waf.v20180125.models.PostAttackDownloadTaskRequest`
@@ -3963,7 +3963,7 @@ class WafClient(AbstractClient):
 
 
     def RefreshAccessCheckResult(self, request):
-        """刷新接入检查的结果，后台会生成接入检查任务
+        r"""刷新接入检查的结果，后台会生成接入检查任务
 
         :param request: Request instance for RefreshAccessCheckResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.RefreshAccessCheckResultRequest`
@@ -3986,7 +3986,7 @@ class WafClient(AbstractClient):
 
 
     def SearchAccessLog(self, request):
-        """本接口用于搜索WAF访问日志
+        r"""本接口用于搜索WAF访问日志
 
         :param request: Request instance for SearchAccessLog.
         :type request: :class:`tencentcloud.waf.v20180125.models.SearchAccessLogRequest`
@@ -4009,7 +4009,7 @@ class WafClient(AbstractClient):
 
 
     def SearchAttackLog(self, request):
-        """新版本CLS接口存在参数变化，query改成了query_string支持lucence语法接口搜索查询。
+        r"""新版本CLS接口存在参数变化，query改成了query_string支持lucence语法接口搜索查询。
 
         :param request: Request instance for SearchAttackLog.
         :type request: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogRequest`
@@ -4032,7 +4032,7 @@ class WafClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """本接口用于检索分析日志，使用该接口时请注意如下事项：
+        r"""本接口用于检索分析日志，使用该接口时请注意如下事项：
         1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
         2. 检索语法建议使用CQL语法规则，请使用SyntaxRule参数，将值设置为1。
         3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
@@ -4058,7 +4058,7 @@ class WafClient(AbstractClient):
 
 
     def SwitchDomainRules(self, request):
-        """切换域名的规则开关
+        r"""切换域名的规则开关
 
         :param request: Request instance for SwitchDomainRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.SwitchDomainRulesRequest`
@@ -4081,7 +4081,7 @@ class WafClient(AbstractClient):
 
 
     def SwitchElasticMode(self, request):
-        """切换弹性的开关
+        r"""切换弹性的开关
 
         :param request: Request instance for SwitchElasticMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeRequest`
@@ -4104,7 +4104,7 @@ class WafClient(AbstractClient):
 
 
     def UpdateProtectionModes(self, request):
-        """更新Tiga引擎下大类规则的防护模式
+        r"""更新Tiga引擎下大类规则的防护模式
 
         :param request: Request instance for UpdateProtectionModes.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpdateProtectionModesRequest`
@@ -4127,7 +4127,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertCCAutoStatus(self, request):
-        """编辑SAAS型接入的紧急CC防护状态
+        r"""编辑SAAS型接入的紧急CC防护状态
 
         :param request: Request instance for UpsertCCAutoStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertCCAutoStatusRequest`
@@ -4150,7 +4150,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertCCRule(self, request):
-        """Waf  CC V2 Upsert接口
+        r"""Waf  CC V2 Upsert接口
 
         :param request: Request instance for UpsertCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertCCRuleRequest`
@@ -4173,7 +4173,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertIpAccessControl(self, request):
-        """Waf IP黑白名单Upsert接口（建议使用CreateIpAccessControl、ModifyIpAccessControl来替换当前接口）
+        r"""Waf IP黑白名单Upsert接口（建议使用CreateIpAccessControl、ModifyIpAccessControl来替换当前接口）
 
         :param request: Request instance for UpsertIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlRequest`
@@ -4196,7 +4196,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertSession(self, request):
-        """Waf  会话定义 Upsert接口
+        r"""Waf  会话定义 Upsert接口
 
         :param request: Request instance for UpsertSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertSessionRequest`

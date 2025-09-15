@@ -27,7 +27,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateActivityLicense(self, request):
-        """创建活动license
+        r"""创建活动license
 
         :param request: Request instance for CreateActivityLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateActivityLicenseRequest`
@@ -50,7 +50,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateApplicationAndBindLicense(self, request):
-        """创建应用并绑定license或者XMagic
+        r"""创建应用并绑定license或者XMagic
 
         :param request: Request instance for CreateApplicationAndBindLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateApplicationAndBindLicenseRequest`
@@ -73,7 +73,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateApplicationAndVideo(self, request):
-        """创建应用和视频播放license 目前只有国际站可以用
+        r"""创建应用和视频播放license 目前只有国际站可以用
 
         :param request: Request instance for CreateApplicationAndVideo.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateApplicationAndVideoRequest`
@@ -96,7 +96,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateApplicationAndWebPlayerLicense(self, request):
-        """创建 web 播放器基础版
+        r"""创建 web 播放器基础版
 
         :param request: Request instance for CreateApplicationAndWebPlayerLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateApplicationAndWebPlayerLicenseRequest`
@@ -119,7 +119,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateLicense(self, request):
-        """绑定license
+        r"""绑定license
 
         :param request: Request instance for CreateLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateLicenseRequest`
@@ -142,7 +142,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateTestXMagic(self, request):
-        """申请开通测试版腾讯特效
+        r"""申请开通测试版腾讯特效
 
         :param request: Request instance for CreateTestXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateTestXMagicRequest`
@@ -165,7 +165,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateTrialApplicationAndLicense(self, request):
-        """创建测试应用并开通测试 license
+        r"""创建测试应用并开通测试 license
 
         :param request: Request instance for CreateTrialApplicationAndLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateTrialApplicationAndLicenseRequest`
@@ -188,7 +188,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateTrialLicense(self, request):
-        """开通测试license
+        r"""开通测试license
 
         :param request: Request instance for CreateTrialLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateTrialLicenseRequest`
@@ -211,7 +211,7 @@ class VcubeClient(AbstractClient):
 
 
     def CreateXMagic(self, request):
-        """x08开通正式版优图美视功能，针对已经有Application的情况
+        r"""x08开通正式版优图美视功能，针对已经有Application的情况
 
         :param request: Request instance for CreateXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.CreateXMagicRequest`
@@ -234,7 +234,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeFeatureList(self, request):
-        """查询功能列表
+        r"""查询功能列表
 
         :param request: Request instance for DescribeFeatureList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeFeatureListRequest`
@@ -257,7 +257,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeLicenseList(self, request):
-        """总览页查询临期License列表，和统计数据
+        r"""总览页查询临期License列表，和统计数据
 
         :param request: Request instance for DescribeLicenseList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeLicenseListRequest`
@@ -280,7 +280,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeNews(self, request):
-        """查询产品动态
+        r"""查询产品动态
 
         :param request: Request instance for DescribeNews.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeNewsRequest`
@@ -303,7 +303,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeSTS(self, request):
-        """获取临时秘钥，用于图片，特效包上传
+        r"""获取临时秘钥，用于图片，特效包上传
 
         :param request: Request instance for DescribeSTS.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeSTSRequest`
@@ -326,7 +326,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeTrialFeature(self, request):
-        """查询测试应用可以开通的功能
+        r"""查询测试应用可以开通的功能
 
         :param request: Request instance for DescribeTrialFeature.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeTrialFeatureRequest`
@@ -349,7 +349,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeUserConfig(self, request):
-        """查询用户个性配置
+        r"""查询用户个性配置
 
         :param request: Request instance for DescribeUserConfig.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeUserConfigRequest`
@@ -372,7 +372,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeVcubeApplicationAndLicense(self, request):
-        """查询用户license， 按照应用分类
+        r"""查询用户license， 按照应用分类
 
         :param request: Request instance for DescribeVcubeApplicationAndLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeVcubeApplicationAndLicenseRequest`
@@ -395,7 +395,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeVcubeApplicationAndPlayList(self, request):
-        """查询用户点播直播等license， 按照应用分类,国际站专用
+        r"""查询用户点播直播等license， 按照应用分类,国际站专用
 
         :param request: Request instance for DescribeVcubeApplicationAndPlayList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeVcubeApplicationAndPlayListRequest`
@@ -418,7 +418,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeVcubeApplicationAndXMagicList(self, request):
-        """查询用户优图license， 按照应用分类
+        r"""查询用户优图license， 按照应用分类
 
         :param request: Request instance for DescribeVcubeApplicationAndXMagicList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeVcubeApplicationAndXMagicListRequest`
@@ -441,7 +441,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeVcubeResources(self, request):
-        """查询视立方 license 资源，所有的资源包
+        r"""查询视立方 license 资源，所有的资源包
 
         :param request: Request instance for DescribeVcubeResources.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeVcubeResourcesRequest`
@@ -464,7 +464,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeVcubeResourcesList(self, request):
-        """查询视立方 license 资源，包括资源包赠送和直接购买的资源
+        r"""查询视立方 license 资源，包括资源包赠送和直接购买的资源
 
         :param request: Request instance for DescribeVcubeResourcesList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeVcubeResourcesListRequest`
@@ -487,7 +487,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeXMagicResource(self, request):
-        """用途美视资源包用于开通正式优图美视
+        r"""用途美视资源包用于开通正式优图美视
 
         :param request: Request instance for DescribeXMagicResource.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeXMagicResourceRequest`
@@ -510,7 +510,7 @@ class VcubeClient(AbstractClient):
 
 
     def DescribeXMagicResourceList(self, request):
-        """用于优图美视资源列表展示
+        r"""用于优图美视资源列表展示
 
         :param request: Request instance for DescribeXMagicResourceList.
         :type request: :class:`tencentcloud.vcube.v20220410.models.DescribeXMagicResourceListRequest`
@@ -533,7 +533,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """更改测试包名信息
+        r"""更改测试包名信息
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyApplicationRequest`
@@ -556,7 +556,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyFormalApplication(self, request):
-        """修改正式应用的包名称
+        r"""修改正式应用的包名称
 
         :param request: Request instance for ModifyFormalApplication.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyFormalApplicationRequest`
@@ -579,7 +579,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyLicense(self, request):
-        """正式license 升降配，点播精简版、基础版
+        r"""正式license 升降配，点播精简版、基础版
 
         :param request: Request instance for ModifyLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyLicenseRequest`
@@ -602,7 +602,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyPresetApplication(self, request):
-        """修改内置应用包名
+        r"""修改内置应用包名
 
         :param request: Request instance for ModifyPresetApplication.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyPresetApplicationRequest`
@@ -625,7 +625,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyTrialLicense(self, request):
-        """续期测试license
+        r"""续期测试license
 
         :param request: Request instance for ModifyTrialLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyTrialLicenseRequest`
@@ -648,7 +648,7 @@ class VcubeClient(AbstractClient):
 
 
     def ModifyXMagic(self, request):
-        """使用一个腾讯特效资源，更新现在的腾讯特效license，license功能和到期时间会以新的资源为准，老资源会被替换下来
+        r"""使用一个腾讯特效资源，更新现在的腾讯特效license，license功能和到期时间会以新的资源为准，老资源会被替换下来
 
         :param request: Request instance for ModifyXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.ModifyXMagicRequest`
@@ -671,7 +671,7 @@ class VcubeClient(AbstractClient):
 
 
     def RenewLicense(self, request):
-        """正式license 续期与变更有效期
+        r"""正式license 续期与变更有效期
 
         :param request: Request instance for RenewLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.RenewLicenseRequest`
@@ -694,7 +694,7 @@ class VcubeClient(AbstractClient):
 
 
     def RenewTestXMagic(self, request):
-        """续期测试版优图美视
+        r"""续期测试版优图美视
 
         :param request: Request instance for RenewTestXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.RenewTestXMagicRequest`
@@ -717,7 +717,7 @@ class VcubeClient(AbstractClient):
 
 
     def RenewVideo(self, request):
-        """续期国际站视频播放功能和中国站web基础版
+        r"""续期国际站视频播放功能和中国站web基础版
 
         :param request: Request instance for RenewVideo.
         :type request: :class:`tencentcloud.vcube.v20220410.models.RenewVideoRequest`
@@ -740,7 +740,7 @@ class VcubeClient(AbstractClient):
 
 
     def UpdateTestXMagic(self, request):
-        """将测试xmagic升级到正式版
+        r"""将测试xmagic升级到正式版
 
         :param request: Request instance for UpdateTestXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.UpdateTestXMagicRequest`
@@ -763,7 +763,7 @@ class VcubeClient(AbstractClient):
 
 
     def UpdateTrialLicense(self, request):
-        """测试 license 升级为正式 license
+        r"""测试 license 升级为正式 license
 
         :param request: Request instance for UpdateTrialLicense.
         :type request: :class:`tencentcloud.vcube.v20220410.models.UpdateTrialLicenseRequest`
@@ -786,7 +786,7 @@ class VcubeClient(AbstractClient):
 
 
     def UpdateXMagic(self, request):
-        """更新优图美视的申请信息 Status 为2，3的时候可用
+        r"""更新优图美视的申请信息 Status 为2，3的时候可用
 
         :param request: Request instance for UpdateXMagic.
         :type request: :class:`tencentcloud.vcube.v20220410.models.UpdateXMagicRequest`

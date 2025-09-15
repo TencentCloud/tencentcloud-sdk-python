@@ -47,6 +47,9 @@ FAILEDOPERATION_DEVICEFIRMWAREISUPDATED = 'FailedOperation.DeviceFirmwareIsUpdat
 # 设备固件版本错误。
 FAILEDOPERATION_DEVICEINFOOUTDATED = 'FailedOperation.DeviceInfoOutdated'
 
+# 设备正在升级中。
+FAILEDOPERATION_DEVICEISUPDATING = 'FailedOperation.DeviceIsUpdating'
+
 # 返回:消息发送失败，设备未订阅Topic。
 FAILEDOPERATION_DEVICENOSUBSCRIPTION = 'FailedOperation.DeviceNoSubscription'
 

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeEisConnectorConfigRequest(AbstractModel):
-    """DescribeEisConnectorConfig请求参数结构体
+    r"""DescribeEisConnectorConfig请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectorName
@@ -46,7 +46,7 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     @property
     def ConnectorVersion(self):
-        """连接器版本
+        r"""连接器版本
         :rtype: str
         """
         return self._ConnectorVersion
@@ -70,7 +70,7 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
 
 class DescribeEisConnectorConfigResponse(AbstractModel):
-    """DescribeEisConnectorConfig返回参数结构体
+    r"""DescribeEisConnectorConfig返回参数结构体
 
     """
 
@@ -260,7 +260,7 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
     @property
     def ConnectorParameter(self):
-        """连接器配置参数描述（json结构），示例如下：
+        r"""连接器配置参数描述（json结构），示例如下：
 {
     "attributes":{
         "description":"测试", // 连接器的描述
@@ -445,7 +445,7 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -461,7 +461,7 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
 
 class EisConnectionOperation(AbstractModel):
-    """连接器操作
+    r"""连接器操作
 
     """
 
@@ -480,7 +480,7 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def OperationName(self):
-        """连接器操作名称
+        r"""连接器操作名称
         :rtype: str
         """
         return self._OperationName
@@ -491,7 +491,7 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def DisplayName(self):
-        """连接器展示名称
+        r"""连接器展示名称
         :rtype: str
         """
         return self._DisplayName
@@ -502,7 +502,7 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def IsTrigger(self):
-        """操作是否为触发器
+        r"""操作是否为触发器
         :rtype: bool
         """
         return self._IsTrigger
@@ -527,7 +527,7 @@ class EisConnectionOperation(AbstractModel):
 
 
 class EisConnectorSummary(AbstractModel):
-    """连接器概要信息
+    r"""连接器概要信息
 
     """
 
@@ -555,7 +555,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def ConnectorName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectorName
@@ -566,7 +566,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def DisplayName(self):
-        """连接器展示名称
+        r"""连接器展示名称
         :rtype: str
         """
         return self._DisplayName
@@ -577,7 +577,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def Company(self):
-        """连接器对应企业
+        r"""连接器对应企业
         :rtype: str
         """
         return self._Company
@@ -588,7 +588,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def Product(self):
-        """连接器对应产品
+        r"""连接器对应产品
         :rtype: str
         """
         return self._Product
@@ -599,7 +599,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def ConnectorVersion(self):
-        """连接器版本
+        r"""连接器版本
         :rtype: str
         """
         return self._ConnectorVersion
@@ -610,7 +610,7 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def CreateTime(self):
-        """连接器创建时间
+        r"""连接器创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -638,7 +638,7 @@ class EisConnectorSummary(AbstractModel):
 
 
 class ListEisConnectorOperationsRequest(AbstractModel):
-    """ListEisConnectorOperations请求参数结构体
+    r"""ListEisConnectorOperations请求参数结构体
 
     """
 
@@ -654,7 +654,7 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
-        """连接器名称
+        r"""连接器名称
         :rtype: str
         """
         return self._ConnectorName
@@ -665,7 +665,7 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     @property
     def ConnectorVersion(self):
-        """连接器版本
+        r"""连接器版本
         :rtype: str
         """
         return self._ConnectorVersion
@@ -689,7 +689,7 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
 
 class ListEisConnectorOperationsResponse(AbstractModel):
-    """ListEisConnectorOperations返回参数结构体
+    r"""ListEisConnectorOperations返回参数结构体
 
     """
 
@@ -705,7 +705,7 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     @property
     def Operations(self):
-        """连接器列表
+        r"""连接器列表
         :rtype: list of EisConnectionOperation
         """
         return self._Operations
@@ -716,7 +716,7 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -737,7 +737,7 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
 
 class ListEisConnectorsRequest(AbstractModel):
-    """ListEisConnectors请求参数结构体
+    r"""ListEisConnectors请求参数结构体
 
     """
 
@@ -756,7 +756,7 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
-        """连接器名称,非必输，如输入则按照输入值模糊匹配
+        r"""连接器名称,非必输，如输入则按照输入值模糊匹配
         :rtype: str
         """
         return self._ConnectorName
@@ -767,7 +767,7 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数,数据偏移量
+        r"""分页参数,数据偏移量
         :rtype: int
         """
         return self._Offset
@@ -778,7 +778,7 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数,每页显示的条数
+        r"""分页参数,每页显示的条数
         :rtype: int
         """
         return self._Limit
@@ -803,7 +803,7 @@ class ListEisConnectorsRequest(AbstractModel):
 
 
 class ListEisConnectorsResponse(AbstractModel):
-    """ListEisConnectors返回参数结构体
+    r"""ListEisConnectors返回参数结构体
 
     """
 
@@ -822,7 +822,7 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """连接器总数
+        r"""连接器总数
         :rtype: int
         """
         return self._TotalCount
@@ -833,7 +833,7 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def Connectors(self):
-        """连接器列表
+        r"""连接器列表
         :rtype: list of EisConnectorSummary
         """
         return self._Connectors
@@ -844,7 +844,7 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

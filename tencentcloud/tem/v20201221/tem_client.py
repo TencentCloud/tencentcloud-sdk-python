@@ -27,7 +27,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosToken(self, request):
-        """生成Cos临时秘钥
+        r"""生成Cos临时秘钥
 
         :param request: Request instance for CreateCosToken.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateCosTokenRequest`
@@ -50,7 +50,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosTokenV2(self, request):
-        """生成Cos临时秘钥
+        r"""生成Cos临时秘钥
 
         :param request: Request instance for CreateCosTokenV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateCosTokenV2Request`
@@ -73,7 +73,7 @@ class TemClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """创建环境
+        r"""创建环境
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateNamespaceRequest`
@@ -96,7 +96,7 @@ class TemClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """绑定云资源
+        r"""绑定云资源
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateResourceRequest`
@@ -119,7 +119,7 @@ class TemClient(AbstractClient):
 
 
     def CreateServiceV2(self, request):
-        """创建服务
+        r"""创建服务
 
         :param request: Request instance for CreateServiceV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateServiceV2Request`
@@ -142,7 +142,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteIngress(self, request):
-        """删除 Ingress 规则
+        r"""删除 Ingress 规则
 
         :param request: Request instance for DeleteIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.DeleteIngressRequest`
@@ -165,7 +165,7 @@ class TemClient(AbstractClient):
 
 
     def DeployServiceV2(self, request):
-        """服务部署
+        r"""服务部署
 
         :param request: Request instance for DeployServiceV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.DeployServiceV2Request`
@@ -188,7 +188,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngress(self, request):
-        """查询 Ingress 规则
+        r"""查询 Ingress 规则
 
         :param request: Request instance for DescribeIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressRequest`
@@ -211,7 +211,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngresses(self, request):
-        """查询 Ingress 规则列表
+        r"""查询 Ingress 规则列表
 
         :param request: Request instance for DescribeIngresses.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressesRequest`
@@ -234,7 +234,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeNamespaces(self, request):
-        """获取租户环境列表
+        r"""获取租户环境列表
 
         :param request: Request instance for DescribeNamespaces.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeNamespacesRequest`
@@ -257,7 +257,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeRelatedIngresses(self, request):
-        """查询服务关联的 Ingress 规则列表
+        r"""查询服务关联的 Ingress 规则列表
 
         :param request: Request instance for DescribeRelatedIngresses.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeRelatedIngressesRequest`
@@ -280,7 +280,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeServiceRunPodListV2(self, request):
-        """获取服务下面运行pod列表
+        r"""获取服务下面运行pod列表
 
         :param request: Request instance for DescribeServiceRunPodListV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeServiceRunPodListV2Request`
@@ -303,7 +303,7 @@ class TemClient(AbstractClient):
 
 
     def GenerateDownloadUrl(self, request):
-        """生成包预签名下载链接
+        r"""生成包预签名下载链接
 
         :param request: Request instance for GenerateDownloadUrl.
         :type request: :class:`tencentcloud.tem.v20201221.models.GenerateDownloadUrlRequest`
@@ -326,7 +326,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyIngress(self, request):
-        """创建或者更新 Ingress 规则
+        r"""创建或者更新 Ingress 规则
 
         :param request: Request instance for ModifyIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyIngressRequest`
@@ -349,7 +349,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """编辑环境
+        r"""编辑环境
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyNamespaceRequest`
@@ -372,7 +372,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyServiceInfo(self, request):
-        """修改服务基本信息
+        r"""修改服务基本信息
 
         :param request: Request instance for ModifyServiceInfo.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyServiceInfoRequest`
@@ -395,7 +395,7 @@ class TemClient(AbstractClient):
 
 
     def RestartServiceRunPod(self, request):
-        """重启实例
+        r"""重启实例
 
         :param request: Request instance for RestartServiceRunPod.
         :type request: :class:`tencentcloud.tem.v20201221.models.RestartServiceRunPodRequest`

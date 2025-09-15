@@ -19,13 +19,13 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Create5GInstanceRequest(AbstractModel):
-    """Create5GInstance请求参数结构体
+    r"""Create5GInstance请求参数结构体
 
     """
 
 
 class Create5GInstanceResponse(AbstractModel):
-    """Create5GInstance返回参数结构体
+    r"""Create5GInstance返回参数结构体
 
     """
 
@@ -38,7 +38,7 @@ class Create5GInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -53,13 +53,13 @@ class Create5GInstanceResponse(AbstractModel):
 
 
 class Delete5GInstanceRequest(AbstractModel):
-    """Delete5GInstance请求参数结构体
+    r"""Delete5GInstance请求参数结构体
 
     """
 
 
 class Delete5GInstanceResponse(AbstractModel):
-    """Delete5GInstance返回参数结构体
+    r"""Delete5GInstance返回参数结构体
 
     """
 
@@ -72,7 +72,7 @@ class Delete5GInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -87,13 +87,13 @@ class Delete5GInstanceResponse(AbstractModel):
 
 
 class Describe5GAPNsRequest(AbstractModel):
-    """Describe5GAPNs请求参数结构体
+    r"""Describe5GAPNs请求参数结构体
 
     """
 
 
 class Describe5GAPNsResponse(AbstractModel):
-    """Describe5GAPNs返回参数结构体
+    r"""Describe5GAPNs返回参数结构体
 
     """
 
@@ -106,7 +106,7 @@ class Describe5GAPNsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -121,13 +121,13 @@ class Describe5GAPNsResponse(AbstractModel):
 
 
 class Describe5GInstancesRequest(AbstractModel):
-    """Describe5GInstances请求参数结构体
+    r"""Describe5GInstances请求参数结构体
 
     """
 
 
 class Describe5GInstancesResponse(AbstractModel):
-    """Describe5GInstances返回参数结构体
+    r"""Describe5GInstances返回参数结构体
 
     """
 
@@ -140,7 +140,7 @@ class Describe5GInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -155,13 +155,13 @@ class Describe5GInstancesResponse(AbstractModel):
 
 
 class Modify5GInstanceAttributeRequest(AbstractModel):
-    """Modify5GInstanceAttribute请求参数结构体
+    r"""Modify5GInstanceAttribute请求参数结构体
 
     """
 
 
 class Modify5GInstanceAttributeResponse(AbstractModel):
-    """Modify5GInstanceAttribute返回参数结构体
+    r"""Modify5GInstanceAttribute返回参数结构体
 
     """
 
@@ -174,7 +174,7 @@ class Modify5GInstanceAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

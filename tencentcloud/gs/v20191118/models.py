@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AndroidApp(AbstractModel):
-    """安卓应用
+    r"""安卓应用
 
     """
 
@@ -56,7 +56,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """安卓应用 Id
+        r"""安卓应用 Id
         :rtype: str
         """
         return self._AndroidAppId
@@ -67,7 +67,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def Name(self):
-        """安卓应用名称
+        r"""安卓应用名称
         :rtype: str
         """
         return self._Name
@@ -78,7 +78,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def State(self):
-        """安卓应用状态（上架、下架）
+        r"""安卓应用状态（上架、下架）
         :rtype: str
         """
         return self._State
@@ -89,7 +89,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AndroidAppVersionInfo(self):
-        """安卓应用版本列表
+        r"""安卓应用版本列表
         :rtype: list of AndroidAppVersionInfo
         """
         return self._AndroidAppVersionInfo
@@ -100,7 +100,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def CreateTime(self):
-        """安卓应用创建时间
+        r"""安卓应用创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -111,7 +111,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 Id
+        r"""用户 Id
         :rtype: str
         """
         return self._UserId
@@ -122,7 +122,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AppMode(self):
-        """应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+        r"""应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
         :rtype: str
         """
         return self._AppMode
@@ -133,7 +133,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UpdateState(self):
-        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
+        r"""应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
         :rtype: str
         """
         return self._UpdateState
@@ -144,7 +144,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def PackageName(self):
-        """安卓应用包名
+        r"""安卓应用包名
         :rtype: str
         """
         return self._PackageName
@@ -180,7 +180,7 @@ class AndroidApp(AbstractModel):
 
 
 class AndroidAppCosInfo(AbstractModel):
-    """安卓应用Cos数据
+    r"""安卓应用Cos数据
 
     """
 
@@ -196,7 +196,7 @@ class AndroidAppCosInfo(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """安卓应用ID
+        r"""安卓应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -207,7 +207,7 @@ class AndroidAppCosInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """应用名称（支持 apk 和 tgz 两种格式文件，当应用 AppMode 为 NORMAL 时，只支持上传 apk 类型文件，当应用 AppMode 为 ADVANCED 高级模式时，只支持上传  tgz 类型文件）
+        r"""应用名称（支持 apk 和 tgz 两种格式文件，当应用 AppMode 为 NORMAL 时，只支持上传 apk 类型文件，当应用 AppMode 为 ADVANCED 高级模式时，只支持上传  tgz 类型文件）
         :rtype: str
         """
         return self._FileName
@@ -231,7 +231,7 @@ class AndroidAppCosInfo(AbstractModel):
 
 
 class AndroidAppVersionInfo(AbstractModel):
-    """安卓应用版本信息
+    r"""安卓应用版本信息
 
     """
 
@@ -277,7 +277,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """安卓应用版本
+        r"""安卓应用版本
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -288,7 +288,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def State(self):
-        """安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
+        r"""安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
         :rtype: str
         """
         return self._State
@@ -299,7 +299,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """安卓应用版本创建时间
+        r"""安卓应用版本创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -310,7 +310,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def Command(self):
-        """shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -321,7 +321,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def UninstallCommand(self):
-        """shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._UninstallCommand
@@ -332,7 +332,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def CleanupMode(self):
-        """应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        r"""应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
         :rtype: str
         """
         return self._CleanupMode
@@ -343,7 +343,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def AndroidAppVersionName(self):
-        """安卓应用版本名称（版本描述、备注）
+        r"""安卓应用版本名称（版本描述、备注）
         :rtype: str
         """
         return self._AndroidAppVersionName
@@ -354,7 +354,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def Activity(self):
-        """安卓应用启动页
+        r"""安卓应用启动页
         :rtype: str
         """
         return self._Activity
@@ -365,7 +365,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def VersionName(self):
-        """应用版本号（Version Name）
+        r"""应用版本号（Version Name）
         :rtype: str
         """
         return self._VersionName
@@ -376,7 +376,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def MD5(self):
-        """应用包 MD5
+        r"""应用包 MD5
         :rtype: str
         """
         return self._MD5
@@ -387,7 +387,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """应用包文件大小（字节）
+        r"""应用包文件大小（字节）
         :rtype: int
         """
         return self._FileSize
@@ -398,7 +398,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        """安卓应用包名
+        r"""安卓应用包名
         :rtype: str
         """
         return self._PackageName
@@ -432,7 +432,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
 
 class AndroidInstance(AbstractModel):
-    """安卓实例信息
+    r"""安卓实例信息
 
     """
 
@@ -490,7 +490,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例 ID
+        r"""实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -501,7 +501,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceRegion(self):
-        """实例所在区域
+        r"""实例所在区域
         :rtype: str
         """
         return self._AndroidInstanceRegion
@@ -512,7 +512,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceZone(self):
-        """实例可用区
+        r"""实例可用区
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -523,7 +523,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def State(self):
-        """实例状态：INITIALIZING，NORMAL，PROCESSING
+        r"""实例状态：INITIALIZING，NORMAL，PROCESSING
         :rtype: str
         """
         return self._State
@@ -534,7 +534,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceType(self):
-        """实例规格
+        r"""实例规格
         :rtype: str
         """
         return self._AndroidInstanceType
@@ -545,7 +545,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """实例镜像 ID
+        r"""实例镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -556,7 +556,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def Width(self):
-        """分辨率宽度
+        r"""分辨率宽度
         :rtype: int
         """
         return self._Width
@@ -567,7 +567,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def Height(self):
-        """分辨率高度
+        r"""分辨率高度
         :rtype: int
         """
         return self._Height
@@ -578,7 +578,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def HostSerialNumber(self):
-        """宿主机 ID
+        r"""宿主机 ID
         :rtype: str
         """
         return self._HostSerialNumber
@@ -589,7 +589,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceGroupId(self):
-        """分组 ID
+        r"""分组 ID
         :rtype: str
         """
         return self._AndroidInstanceGroupId
@@ -600,7 +600,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def AndroidInstanceLabels(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of AndroidInstanceLabel
         """
         return self._AndroidInstanceLabels
@@ -611,7 +611,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -622,7 +622,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -633,7 +633,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def PrivateIP(self):
-        """内网 IP
+        r"""内网 IP
         :rtype: str
         """
         return self._PrivateIP
@@ -644,7 +644,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -655,7 +655,7 @@ class AndroidInstance(AbstractModel):
 
     @property
     def HostServerSerialNumber(self):
-        """机箱 ID
+        r"""机箱 ID
         :rtype: str
         """
         return self._HostServerSerialNumber
@@ -698,7 +698,7 @@ class AndroidInstance(AbstractModel):
 
 
 class AndroidInstanceAppBlacklist(AbstractModel):
-    """安卓实例应用黑名单
+    r"""安卓实例应用黑名单
 
     """
 
@@ -715,7 +715,7 @@ class AndroidInstanceAppBlacklist(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -726,7 +726,7 @@ class AndroidInstanceAppBlacklist(AbstractModel):
 
     @property
     def AppBlacklist(self):
-        """应用黑名单
+        r"""应用黑名单
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -751,7 +751,7 @@ class AndroidInstanceAppBlacklist(AbstractModel):
 
 
 class AndroidInstanceAppInfo(AbstractModel):
-    """安卓实例应用信息
+    r"""安卓实例应用信息
 
     """
 
@@ -782,7 +782,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用id
+        r"""应用id
         :rtype: str
         """
         return self._AndroidAppId
@@ -793,7 +793,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def Name(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._Name
@@ -804,7 +804,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """应用版本
+        r"""应用版本
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -815,7 +815,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -828,7 +828,7 @@ class AndroidInstanceAppInfo(AbstractModel):
     def PackageVersion(self):
         warnings.warn("parameter `PackageVersion` is deprecated", DeprecationWarning) 
 
-        """应用包版本
+        r"""应用包版本
         :rtype: str
         """
         return self._PackageVersion
@@ -841,7 +841,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def PackageLabel(self):
-        """应用包标签
+        r"""应用包标签
         :rtype: str
         """
         return self._PackageLabel
@@ -852,7 +852,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def VersionName(self):
-        """应用包版本号
+        r"""应用包版本号
         :rtype: str
         """
         return self._VersionName
@@ -881,7 +881,7 @@ class AndroidInstanceAppInfo(AbstractModel):
 
 
 class AndroidInstanceDevice(AbstractModel):
-    """安卓实例设备信息
+    r"""安卓实例设备信息
 
     """
 
@@ -897,7 +897,7 @@ class AndroidInstanceDevice(AbstractModel):
 
     @property
     def Brand(self):
-        """品牌
+        r"""品牌
         :rtype: str
         """
         return self._Brand
@@ -908,7 +908,7 @@ class AndroidInstanceDevice(AbstractModel):
 
     @property
     def Model(self):
-        """型号
+        r"""型号
         :rtype: str
         """
         return self._Model
@@ -932,7 +932,7 @@ class AndroidInstanceDevice(AbstractModel):
 
 
 class AndroidInstanceError(AbstractModel):
-    """安卓实例错误信息，用于批量安卓实例操作中返回部分操作错误的情况
+    r"""安卓实例错误信息，用于批量安卓实例操作中返回部分操作错误的情况
 
     """
 
@@ -948,7 +948,7 @@ class AndroidInstanceError(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -959,7 +959,7 @@ class AndroidInstanceError(AbstractModel):
 
     @property
     def Error(self):
-        """错误信息
+        r"""错误信息
         :rtype: :class:`tencentcloud.gs.v20191118.models.Error`
         """
         return self._Error
@@ -985,7 +985,7 @@ class AndroidInstanceError(AbstractModel):
 
 
 class AndroidInstanceImage(AbstractModel):
-    """安卓实例镜像信息
+    r"""安卓实例镜像信息
 
     """
 
@@ -1016,7 +1016,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """镜像 ID
+        r"""镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -1027,7 +1027,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageName(self):
-        """镜像名称，由业务方自定义，仅用于展示
+        r"""镜像名称，由业务方自定义，仅用于展示
         :rtype: str
         """
         return self._AndroidInstanceImageName
@@ -1038,7 +1038,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageState(self):
-        """镜像状态
+        r"""镜像状态
         :rtype: str
         """
         return self._AndroidInstanceImageState
@@ -1049,7 +1049,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageZone(self):
-        """镜像可用区
+        r"""镜像可用区
         :rtype: str
         """
         return self._AndroidInstanceImageZone
@@ -1060,7 +1060,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageDescription(self):
-        """镜像描述
+        r"""镜像描述
         :rtype: str
         """
         return self._AndroidInstanceImageDescription
@@ -1071,7 +1071,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidVersion(self):
-        """安卓10
+        r"""安卓10
         :rtype: str
         """
         return self._AndroidVersion
@@ -1082,7 +1082,7 @@ class AndroidInstanceImage(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1111,7 +1111,7 @@ class AndroidInstanceImage(AbstractModel):
 
 
 class AndroidInstanceInformation(AbstractModel):
-    """安卓实例信息
+    r"""安卓实例信息
 
     """
 
@@ -1127,7 +1127,7 @@ class AndroidInstanceInformation(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1138,7 +1138,7 @@ class AndroidInstanceInformation(AbstractModel):
 
     @property
     def Name(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._Name
@@ -1162,7 +1162,7 @@ class AndroidInstanceInformation(AbstractModel):
 
 
 class AndroidInstanceLabel(AbstractModel):
-    """安卓实例标签
+    r"""安卓实例标签
 
     """
 
@@ -1178,7 +1178,7 @@ class AndroidInstanceLabel(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -1189,7 +1189,7 @@ class AndroidInstanceLabel(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -1213,7 +1213,7 @@ class AndroidInstanceLabel(AbstractModel):
 
 
 class AndroidInstanceLabelDetail(AbstractModel):
-    """安卓实例标签详情
+    r"""安卓实例标签详情
 
     """
 
@@ -1232,7 +1232,7 @@ class AndroidInstanceLabelDetail(AbstractModel):
 
     @property
     def Label(self):
-        """标签
+        r"""标签
         :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceLabel`
         """
         return self._Label
@@ -1243,7 +1243,7 @@ class AndroidInstanceLabelDetail(AbstractModel):
 
     @property
     def Description(self):
-        """标签描述
+        r"""标签描述
         :rtype: str
         """
         return self._Description
@@ -1254,7 +1254,7 @@ class AndroidInstanceLabelDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """标签创建时间
+        r"""标签创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1281,7 +1281,7 @@ class AndroidInstanceLabelDetail(AbstractModel):
 
 
 class AndroidInstanceProperty(AbstractModel):
-    """安卓实例属性
+    r"""安卓实例属性
 
     """
 
@@ -1297,7 +1297,7 @@ class AndroidInstanceProperty(AbstractModel):
 
     @property
     def Key(self):
-        """属性键
+        r"""属性键
         :rtype: str
         """
         return self._Key
@@ -1308,7 +1308,7 @@ class AndroidInstanceProperty(AbstractModel):
 
     @property
     def Value(self):
-        """属性值
+        r"""属性值
         :rtype: str
         """
         return self._Value
@@ -1332,7 +1332,7 @@ class AndroidInstanceProperty(AbstractModel):
 
 
 class AndroidInstanceTask(AbstractModel):
-    """安卓实例任务信息
+    r"""安卓实例任务信息
 
     """
 
@@ -1348,7 +1348,7 @@ class AndroidInstanceTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1359,7 +1359,7 @@ class AndroidInstanceTask(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1383,7 +1383,7 @@ class AndroidInstanceTask(AbstractModel):
 
 
 class AndroidInstanceTaskStatus(AbstractModel):
-    """安卓实例任务状态信息
+    r"""安卓实例任务状态信息
 
     """
 
@@ -1414,7 +1414,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1425,7 +1425,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态：SUCCESS，FAILED，PROCESSING，PENDING,CANCELED
+        r"""任务状态：SUCCESS，FAILED，PROCESSING，PENDING,CANCELED
         :rtype: str
         """
         return self._Status
@@ -1436,7 +1436,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1447,7 +1447,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def TaskResult(self):
-        """任务执行结果描述，针对某些任务，可以是可解析的 json
+        r"""任务执行结果描述，针对某些任务，可以是可解析的 json
         :rtype: str
         """
         return self._TaskResult
@@ -1458,7 +1458,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型
+        r"""任务类型
         :rtype: str
         """
         return self._TaskType
@@ -1469,7 +1469,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1480,7 +1480,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
     @property
     def CompleteTime(self):
-        """任务完成时间
+        r"""任务完成时间
         :rtype: str
         """
         return self._CompleteTime
@@ -1509,7 +1509,7 @@ class AndroidInstanceTaskStatus(AbstractModel):
 
 
 class AndroidInstanceUploadFile(AbstractModel):
-    """安卓实例上传文件信息
+    r"""安卓实例上传文件信息
 
     """
 
@@ -1531,7 +1531,7 @@ class AndroidInstanceUploadFile(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1542,7 +1542,7 @@ class AndroidInstanceUploadFile(AbstractModel):
 
     @property
     def FileURL(self):
-        """文件上传 URL
+        r"""文件上传 URL
         :rtype: str
         """
         return self._FileURL
@@ -1553,7 +1553,7 @@ class AndroidInstanceUploadFile(AbstractModel):
 
     @property
     def DestinationDirectory(self):
-        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        r"""上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :rtype: str
         """
         return self._DestinationDirectory
@@ -1564,7 +1564,7 @@ class AndroidInstanceUploadFile(AbstractModel):
 
     @property
     def DestinationFileName(self):
-        """目标文件名
+        r"""目标文件名
         :rtype: str
         """
         return self._DestinationFileName
@@ -1590,7 +1590,7 @@ class AndroidInstanceUploadFile(AbstractModel):
 
 
 class BackUpAndroidInstanceToStorageRequest(AbstractModel):
-    """BackUpAndroidInstanceToStorage请求参数结构体
+    r"""BackUpAndroidInstanceToStorage请求参数结构体
 
     """
 
@@ -1621,7 +1621,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例ID
+        r"""安卓实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1632,7 +1632,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        r"""存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
         :rtype: str
         """
         return self._StorageType
@@ -1643,7 +1643,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def ObjectKey(self):
-        """自定义对象Key
+        r"""自定义对象Key
         :rtype: str
         """
         return self._ObjectKey
@@ -1654,7 +1654,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def Includes(self):
-        """包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        r"""包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
         :rtype: list of str
         """
         return self._Includes
@@ -1665,7 +1665,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def Excludes(self):
-        """需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        r"""需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
         :rtype: list of str
         """
         return self._Excludes
@@ -1676,7 +1676,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def COSOptions(self):
-        """COS协议选项
+        r"""COS协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
         """
         return self._COSOptions
@@ -1687,7 +1687,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
     @property
     def S3Options(self):
-        """S3存储协议选项
+        r"""S3存储协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
         """
         return self._S3Options
@@ -1720,7 +1720,7 @@ class BackUpAndroidInstanceToStorageRequest(AbstractModel):
 
 
 class BackUpAndroidInstanceToStorageResponse(AbstractModel):
-    """BackUpAndroidInstanceToStorage返回参数结构体
+    r"""BackUpAndroidInstanceToStorage返回参数结构体
 
     """
 
@@ -1736,7 +1736,7 @@ class BackUpAndroidInstanceToStorageResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """实例任务 ID
+        r"""实例任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -1747,7 +1747,7 @@ class BackUpAndroidInstanceToStorageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1763,7 +1763,7 @@ class BackUpAndroidInstanceToStorageResponse(AbstractModel):
 
 
 class COSOptions(AbstractModel):
-    """COS协议参数
+    r"""COS协议参数
 
     """
 
@@ -1779,7 +1779,7 @@ class COSOptions(AbstractModel):
 
     @property
     def Bucket(self):
-        """存储桶
+        r"""存储桶
         :rtype: str
         """
         return self._Bucket
@@ -1790,7 +1790,7 @@ class COSOptions(AbstractModel):
 
     @property
     def Region(self):
-        """存储区域
+        r"""存储区域
         :rtype: str
         """
         return self._Region
@@ -1814,7 +1814,7 @@ class COSOptions(AbstractModel):
 
 
 class CleanAndroidInstancesAppDataRequest(AbstractModel):
-    """CleanAndroidInstancesAppData请求参数结构体
+    r"""CleanAndroidInstancesAppData请求参数结构体
 
     """
 
@@ -1830,7 +1830,7 @@ class CleanAndroidInstancesAppDataRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -1841,7 +1841,7 @@ class CleanAndroidInstancesAppDataRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -1865,7 +1865,7 @@ class CleanAndroidInstancesAppDataRequest(AbstractModel):
 
 
 class CleanAndroidInstancesAppDataResponse(AbstractModel):
-    """CleanAndroidInstancesAppData返回参数结构体
+    r"""CleanAndroidInstancesAppData返回参数结构体
 
     """
 
@@ -1881,7 +1881,7 @@ class CleanAndroidInstancesAppDataResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        r"""错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -1892,7 +1892,7 @@ class CleanAndroidInstancesAppDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1913,7 +1913,7 @@ class CleanAndroidInstancesAppDataResponse(AbstractModel):
 
 
 class ConnectAndroidInstanceRequest(AbstractModel):
-    """ConnectAndroidInstance请求参数结构体
+    r"""ConnectAndroidInstance请求参数结构体
 
     """
 
@@ -1932,7 +1932,7 @@ class ConnectAndroidInstanceRequest(AbstractModel):
 
     @property
     def ClientSession(self):
-        """用户Session信息
+        r"""用户Session信息
         :rtype: str
         """
         return self._ClientSession
@@ -1943,7 +1943,7 @@ class ConnectAndroidInstanceRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -1954,7 +1954,7 @@ class ConnectAndroidInstanceRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """用户IP，用户客户端的公网IP，用于选择最佳网络链路
+        r"""用户IP，用户客户端的公网IP，用于选择最佳网络链路
         :rtype: str
         """
         return self._UserIp
@@ -1979,7 +1979,7 @@ class ConnectAndroidInstanceRequest(AbstractModel):
 
 
 class ConnectAndroidInstanceResponse(AbstractModel):
-    """ConnectAndroidInstance返回参数结构体
+    r"""ConnectAndroidInstance返回参数结构体
 
     """
 
@@ -1995,7 +1995,7 @@ class ConnectAndroidInstanceResponse(AbstractModel):
 
     @property
     def ServerSession(self):
-        """服务端session信息
+        r"""服务端session信息
         :rtype: str
         """
         return self._ServerSession
@@ -2006,7 +2006,7 @@ class ConnectAndroidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2022,7 +2022,7 @@ class ConnectAndroidInstanceResponse(AbstractModel):
 
 
 class CopyAndroidInstanceRequest(AbstractModel):
-    """CopyAndroidInstance请求参数结构体
+    r"""CopyAndroidInstance请求参数结构体
 
     """
 
@@ -2044,7 +2044,7 @@ class CopyAndroidInstanceRequest(AbstractModel):
 
     @property
     def SourceAndroidInstanceId(self):
-        """源安卓实例 ID
+        r"""源安卓实例 ID
         :rtype: str
         """
         return self._SourceAndroidInstanceId
@@ -2055,7 +2055,7 @@ class CopyAndroidInstanceRequest(AbstractModel):
 
     @property
     def TargetAndroidInstanceId(self):
-        """目的安卓实例 ID
+        r"""目的安卓实例 ID
         :rtype: str
         """
         return self._TargetAndroidInstanceId
@@ -2066,7 +2066,7 @@ class CopyAndroidInstanceRequest(AbstractModel):
 
     @property
     def Includes(self):
-        """包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        r"""包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
         :rtype: list of str
         """
         return self._Includes
@@ -2077,7 +2077,7 @@ class CopyAndroidInstanceRequest(AbstractModel):
 
     @property
     def Excludes(self):
-        """需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        r"""需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
         :rtype: list of str
         """
         return self._Excludes
@@ -2103,7 +2103,7 @@ class CopyAndroidInstanceRequest(AbstractModel):
 
 
 class CopyAndroidInstanceResponse(AbstractModel):
-    """CopyAndroidInstance返回参数结构体
+    r"""CopyAndroidInstance返回参数结构体
 
     """
 
@@ -2119,7 +2119,7 @@ class CopyAndroidInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -2130,7 +2130,7 @@ class CopyAndroidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2146,7 +2146,7 @@ class CopyAndroidInstanceResponse(AbstractModel):
 
 
 class CreateAndroidAppRequest(AbstractModel):
-    """CreateAndroidApp请求参数结构体
+    r"""CreateAndroidApp请求参数结构体
 
     """
 
@@ -2165,7 +2165,7 @@ class CreateAndroidAppRequest(AbstractModel):
 
     @property
     def Name(self):
-        """安卓应用名字
+        r"""安卓应用名字
         :rtype: str
         """
         return self._Name
@@ -2176,7 +2176,7 @@ class CreateAndroidAppRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 Id
+        r"""用户 Id
         :rtype: str
         """
         return self._UserId
@@ -2187,7 +2187,7 @@ class CreateAndroidAppRequest(AbstractModel):
 
     @property
     def AppMode(self):
-        """应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
+        r"""应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
         :rtype: str
         """
         return self._AppMode
@@ -2212,7 +2212,7 @@ class CreateAndroidAppRequest(AbstractModel):
 
 
 class CreateAndroidAppResponse(AbstractModel):
-    """CreateAndroidApp返回参数结构体
+    r"""CreateAndroidApp返回参数结构体
 
     """
 
@@ -2228,7 +2228,7 @@ class CreateAndroidAppResponse(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -2239,7 +2239,7 @@ class CreateAndroidAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2255,7 +2255,7 @@ class CreateAndroidAppResponse(AbstractModel):
 
 
 class CreateAndroidAppVersionRequest(AbstractModel):
-    """CreateAndroidAppVersion请求参数结构体
+    r"""CreateAndroidAppVersion请求参数结构体
 
     """
 
@@ -2280,7 +2280,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -2291,7 +2291,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """应用包下载地址
+        r"""应用包下载地址
         :rtype: str
         """
         return self._DownloadUrl
@@ -2302,7 +2302,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def Command(self):
-        """应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -2313,7 +2313,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def UninstallCommand(self):
-        """应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._UninstallCommand
@@ -2324,7 +2324,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def CleanupMode(self):
-        """应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        r"""应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
         :rtype: str
         """
         return self._CleanupMode
@@ -2351,7 +2351,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
 
 class CreateAndroidAppVersionResponse(AbstractModel):
-    """CreateAndroidAppVersion返回参数结构体
+    r"""CreateAndroidAppVersion返回参数结构体
 
     """
 
@@ -2367,7 +2367,7 @@ class CreateAndroidAppVersionResponse(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """应用版本
+        r"""应用版本
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -2378,7 +2378,7 @@ class CreateAndroidAppVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2394,7 +2394,7 @@ class CreateAndroidAppVersionResponse(AbstractModel):
 
 
 class CreateAndroidInstanceADBRequest(AbstractModel):
-    """CreateAndroidInstanceADB请求参数结构体
+    r"""CreateAndroidInstanceADB请求参数结构体
 
     """
 
@@ -2407,7 +2407,7 @@ class CreateAndroidInstanceADBRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -2430,7 +2430,7 @@ class CreateAndroidInstanceADBRequest(AbstractModel):
 
 
 class CreateAndroidInstanceADBResponse(AbstractModel):
-    """CreateAndroidInstanceADB返回参数结构体
+    r"""CreateAndroidInstanceADB返回参数结构体
 
     """
 
@@ -2458,7 +2458,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """连接私钥，需要保存为文件形式，例如 private_key.pem
+        r"""连接私钥，需要保存为文件形式，例如 private_key.pem
         :rtype: str
         """
         return self._PrivateKey
@@ -2469,7 +2469,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._UserName
@@ -2480,7 +2480,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def HostName(self):
-        """连接地址
+        r"""连接地址
         :rtype: str
         """
         return self._HostName
@@ -2491,7 +2491,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def Port(self):
-        """连接端口
+        r"""连接端口
         :rtype: int
         """
         return self._Port
@@ -2502,7 +2502,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def ConnectCommand(self):
-        """连接参考命令
+        r"""连接参考命令
         :rtype: str
         """
         return self._ConnectCommand
@@ -2513,7 +2513,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2533,7 +2533,7 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
 
 
 class CreateAndroidInstanceImageRequest(AbstractModel):
-    """CreateAndroidInstanceImage请求参数结构体
+    r"""CreateAndroidInstanceImage请求参数结构体
 
     """
 
@@ -2552,7 +2552,7 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
 
     @property
     def AndroidInstanceImageName(self):
-        """安卓实例镜像名称
+        r"""安卓实例镜像名称
         :rtype: str
         """
         return self._AndroidInstanceImageName
@@ -2563,7 +2563,7 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -2574,7 +2574,7 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
 
     @property
     def AndroidInstanceImageDescription(self):
-        """安卓实例镜像描述
+        r"""安卓实例镜像描述
         :rtype: str
         """
         return self._AndroidInstanceImageDescription
@@ -2599,7 +2599,7 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
 
 
 class CreateAndroidInstanceImageResponse(AbstractModel):
-    """CreateAndroidInstanceImage返回参数结构体
+    r"""CreateAndroidInstanceImage返回参数结构体
 
     """
 
@@ -2615,7 +2615,7 @@ class CreateAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """安卓实例镜像 ID
+        r"""安卓实例镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -2626,7 +2626,7 @@ class CreateAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2642,7 +2642,7 @@ class CreateAndroidInstanceImageResponse(AbstractModel):
 
 
 class CreateAndroidInstanceLabelRequest(AbstractModel):
-    """CreateAndroidInstanceLabel请求参数结构体
+    r"""CreateAndroidInstanceLabel请求参数结构体
 
     """
 
@@ -2661,7 +2661,7 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -2672,7 +2672,7 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Value(self):
-        """标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
+        r"""标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
         :rtype: str
         """
         return self._Value
@@ -2683,7 +2683,7 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Description(self):
-        """标签描述
+        r"""标签描述
         :rtype: str
         """
         return self._Description
@@ -2708,7 +2708,7 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
 
 
 class CreateAndroidInstanceLabelResponse(AbstractModel):
-    """CreateAndroidInstanceLabel返回参数结构体
+    r"""CreateAndroidInstanceLabel返回参数结构体
 
     """
 
@@ -2721,7 +2721,7 @@ class CreateAndroidInstanceLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2736,7 +2736,7 @@ class CreateAndroidInstanceLabelResponse(AbstractModel):
 
 
 class CreateAndroidInstanceSSHRequest(AbstractModel):
-    """CreateAndroidInstanceSSH请求参数结构体
+    r"""CreateAndroidInstanceSSH请求参数结构体
 
     """
 
@@ -2752,7 +2752,7 @@ class CreateAndroidInstanceSSHRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -2763,7 +2763,7 @@ class CreateAndroidInstanceSSHRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """连接过期时间，最长可设置7天
+        r"""连接过期时间，最长可设置7天
         :rtype: str
         """
         return self._ExpiredTime
@@ -2787,7 +2787,7 @@ class CreateAndroidInstanceSSHRequest(AbstractModel):
 
 
 class CreateAndroidInstanceSSHResponse(AbstractModel):
-    """CreateAndroidInstanceSSH返回参数结构体
+    r"""CreateAndroidInstanceSSH返回参数结构体
 
     """
 
@@ -2815,7 +2815,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """连接私钥，需要保存为文件形式，例如 private_key.pem
+        r"""连接私钥，需要保存为文件形式，例如 private_key.pem
         :rtype: str
         """
         return self._PrivateKey
@@ -2826,7 +2826,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._UserName
@@ -2837,7 +2837,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def HostName(self):
-        """连接地址
+        r"""连接地址
         :rtype: str
         """
         return self._HostName
@@ -2848,7 +2848,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def Port(self):
-        """连接端口
+        r"""连接端口
         :rtype: int
         """
         return self._Port
@@ -2859,7 +2859,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def ConnectCommand(self):
-        """连接参考命令
+        r"""连接参考命令
         :rtype: str
         """
         return self._ConnectCommand
@@ -2870,7 +2870,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2890,7 +2890,7 @@ class CreateAndroidInstanceSSHResponse(AbstractModel):
 
 
 class CreateAndroidInstanceWebShellRequest(AbstractModel):
-    """CreateAndroidInstanceWebShell请求参数结构体
+    r"""CreateAndroidInstanceWebShell请求参数结构体
 
     """
 
@@ -2903,7 +2903,7 @@ class CreateAndroidInstanceWebShellRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例 ID
+        r"""实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -2926,7 +2926,7 @@ class CreateAndroidInstanceWebShellRequest(AbstractModel):
 
 
 class CreateAndroidInstanceWebShellResponse(AbstractModel):
-    """CreateAndroidInstanceWebShell返回参数结构体
+    r"""CreateAndroidInstanceWebShell返回参数结构体
 
     """
 
@@ -2951,7 +2951,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
     @property
     def Key(self):
-        """鉴权密钥
+        r"""鉴权密钥
         :rtype: str
         """
         return self._Key
@@ -2962,7 +2962,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
     @property
     def Address(self):
-        """连接地址
+        r"""连接地址
         :rtype: str
         """
         return self._Address
@@ -2973,7 +2973,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
     @property
     def Zone(self):
-        """连接区域
+        r"""连接区域
         :rtype: str
         """
         return self._Zone
@@ -2984,7 +2984,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
     @property
     def ConnectUrl(self):
-        """访问链接，可以直接使用此链接访问 WebShell
+        r"""访问链接，可以直接使用此链接访问 WebShell
         :rtype: str
         """
         return self._ConnectUrl
@@ -2995,7 +2995,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3014,7 +3014,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
 
 
 class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
-    """CreateAndroidInstancesAccessToken请求参数结构体
+    r"""CreateAndroidInstancesAccessToken请求参数结构体
 
     """
 
@@ -3030,7 +3030,7 @@ class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表。每次请求的实例的上限为 500。
+        r"""实例 ID 列表。每次请求的实例的上限为 500。
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -3041,7 +3041,7 @@ class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
 
     @property
     def ExpirationDuration(self):
-        """有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        r"""有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
         :rtype: str
         """
         return self._ExpirationDuration
@@ -3065,7 +3065,7 @@ class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
 
 
 class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
-    """CreateAndroidInstancesAccessToken返回参数结构体
+    r"""CreateAndroidInstancesAccessToken返回参数结构体
 
     """
 
@@ -3087,7 +3087,7 @@ class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._Token
@@ -3098,7 +3098,7 @@ class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
 
     @property
     def AccessInfo(self):
-        """访问信息
+        r"""访问信息
         :rtype: str
         """
         return self._AccessInfo
@@ -3109,7 +3109,7 @@ class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """安卓实例错误列表。列表包含有问题的安卓实例 ID，生成的 Token 对这些有问题的实例无效。
+        r"""安卓实例错误列表。列表包含有问题的安卓实例 ID，生成的 Token 对这些有问题的实例无效。
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -3120,7 +3120,7 @@ class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3143,7 +3143,7 @@ class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
 
 
 class CreateAndroidInstancesRequest(AbstractModel):
-    """CreateAndroidInstances请求参数结构体
+    r"""CreateAndroidInstances请求参数结构体
 
     """
 
@@ -3182,7 +3182,7 @@ A6：六开
 
     @property
     def Zone(self):
-        """安卓实例可用区。
+        r"""安卓实例可用区。
 ap-guangzhou-3：广州三区
 ap-shenzhen-1：深圳一区
 ap-xian-ec-1：西安一区
@@ -3197,7 +3197,7 @@ ap-hangzhou-ec-1：杭州一区
 
     @property
     def Type(self):
-        """安卓实例类型。
+        r"""安卓实例类型。
 A1：单开
 A2：双开
 A3：三开
@@ -3214,7 +3214,7 @@ A6：六开
 
     @property
     def Number(self):
-        """当 HostSerialNumbers 不为空时，该参数表示每个宿主机要创建的安卓实例数量；
+        r"""当 HostSerialNumbers 不为空时，该参数表示每个宿主机要创建的安卓实例数量；
 当 HostSerialNumbers 为空时，该参数表示要创建安卓实例的总数量，最大值为 100。
         :rtype: int
         """
@@ -3226,7 +3226,7 @@ A6：六开
 
     @property
     def HostSerialNumbers(self):
-        """宿主机 ID 列表。可以指定宿主机 ID 进行创建；也可以不指定由系统自动分配宿主机。
+        r"""宿主机 ID 列表。可以指定宿主机 ID 进行创建；也可以不指定由系统自动分配宿主机。
         :rtype: list of str
         """
         return self._HostSerialNumbers
@@ -3237,7 +3237,7 @@ A6：六开
 
     @property
     def ImageId(self):
-        """镜像 ID。如果不填，将使用默认的系统镜像
+        r"""镜像 ID。如果不填，将使用默认的系统镜像
         :rtype: str
         """
         return self._ImageId
@@ -3248,7 +3248,7 @@ A6：六开
 
     @property
     def Labels(self):
-        """安卓实例标签列表
+        r"""安卓实例标签列表
         :rtype: list of AndroidInstanceLabel
         """
         return self._Labels
@@ -3281,7 +3281,7 @@ A6：六开
 
 
 class CreateAndroidInstancesResponse(AbstractModel):
-    """CreateAndroidInstances返回参数结构体
+    r"""CreateAndroidInstances返回参数结构体
 
     """
 
@@ -3297,7 +3297,7 @@ class CreateAndroidInstancesResponse(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -3308,7 +3308,7 @@ class CreateAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3324,7 +3324,7 @@ class CreateAndroidInstancesResponse(AbstractModel):
 
 
 class CreateAndroidInstancesScreenshotRequest(AbstractModel):
-    """CreateAndroidInstancesScreenshot请求参数结构体
+    r"""CreateAndroidInstancesScreenshot请求参数结构体
 
     """
 
@@ -3337,7 +3337,7 @@ class CreateAndroidInstancesScreenshotRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表
+        r"""实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -3360,7 +3360,7 @@ class CreateAndroidInstancesScreenshotRequest(AbstractModel):
 
 
 class CreateAndroidInstancesScreenshotResponse(AbstractModel):
-    """CreateAndroidInstancesScreenshot返回参数结构体
+    r"""CreateAndroidInstancesScreenshot返回参数结构体
 
     """
 
@@ -3376,7 +3376,7 @@ class CreateAndroidInstancesScreenshotResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务列表
+        r"""任务列表
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -3387,7 +3387,7 @@ class CreateAndroidInstancesScreenshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3408,7 +3408,7 @@ class CreateAndroidInstancesScreenshotResponse(AbstractModel):
 
 
 class CreateCosCredentialRequest(AbstractModel):
-    """CreateCosCredential请求参数结构体
+    r"""CreateCosCredential请求参数结构体
 
     """
 
@@ -3427,7 +3427,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
     @property
     def CosType(self):
-        """Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
+        r"""Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
         :rtype: str
         """
         return self._CosType
@@ -3438,7 +3438,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
     @property
     def AndroidAppCosInfo(self):
-        """云手机应用管理 Cos 数据
+        r"""云手机应用管理 Cos 数据
         :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
         """
         return self._AndroidAppCosInfo
@@ -3449,7 +3449,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
     @property
     def AndroidAppFileCosInfo(self):
-        """云手机文件管理 Cos 数据
+        r"""云手机文件管理 Cos 数据
         :rtype: :class:`tencentcloud.gs.v20191118.models.FileCosInfo`
         """
         return self._AndroidAppFileCosInfo
@@ -3478,7 +3478,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
 
 class CreateCosCredentialResponse(AbstractModel):
-    """CreateCosCredential返回参数结构体
+    r"""CreateCosCredential返回参数结构体
 
     """
 
@@ -3515,7 +3515,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def SecretID(self):
-        """Cos SecretID
+        r"""Cos SecretID
         :rtype: str
         """
         return self._SecretID
@@ -3526,7 +3526,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Cos SecretKey
+        r"""Cos SecretKey
         :rtype: str
         """
         return self._SecretKey
@@ -3537,7 +3537,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def SessionToken(self):
-        """Cos Session
+        r"""Cos Session
         :rtype: str
         """
         return self._SessionToken
@@ -3548,7 +3548,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def CosBucket(self):
-        """Cos Bucket
+        r"""Cos Bucket
         :rtype: str
         """
         return self._CosBucket
@@ -3559,7 +3559,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def CosRegion(self):
-        """Cos Region
+        r"""Cos Region
         :rtype: str
         """
         return self._CosRegion
@@ -3570,7 +3570,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def Path(self):
-        """Cos 操作路径
+        r"""Cos 操作路径
         :rtype: str
         """
         return self._Path
@@ -3581,7 +3581,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Cos 密钥的起始时间
+        r"""Cos 密钥的起始时间
         :rtype: int
         """
         return self._StartTime
@@ -3592,7 +3592,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Cos 密钥的失效时间
+        r"""Cos 密钥的失效时间
         :rtype: int
         """
         return self._ExpiredTime
@@ -3603,7 +3603,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3626,7 +3626,7 @@ class CreateCosCredentialResponse(AbstractModel):
 
 
 class CreateSessionRequest(AbstractModel):
-    """CreateSession请求参数结构体
+    r"""CreateSession请求参数结构体
 
     """
 
@@ -3692,7 +3692,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -3703,7 +3703,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameId(self):
-        """【已废弃】只在TrylockWorker时生效
+        r"""【已废弃】只在TrylockWorker时生效
         :rtype: str
         """
         return self._GameId
@@ -3714,7 +3714,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameRegion(self):
-        """【已废弃】只在TrylockWorker时生效
+        r"""【已废弃】只在TrylockWorker时生效
         :rtype: str
         """
         return self._GameRegion
@@ -3725,7 +3725,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameParas(self):
-        """游戏参数
+        r"""游戏参数
         :rtype: str
         """
         return self._GameParas
@@ -3736,7 +3736,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def ClientSession(self):
-        """客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        r"""客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
         :rtype: str
         """
         return self._ClientSession
@@ -3747,7 +3747,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Resolution(self):
-        """分辨率,，可设置为1080p或720p或1920x1080格式
+        r"""分辨率,，可设置为1080p或720p或1920x1080格式
         :rtype: str
         """
         return self._Resolution
@@ -3758,7 +3758,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def ImageUrl(self):
-        """背景图url，格式为png或jpeg，宽高1920*1080
+        r"""背景图url，格式为png或jpeg，宽高1920*1080
         :rtype: str
         """
         return self._ImageUrl
@@ -3769,7 +3769,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def SetNo(self):
-        """【已废弃】
+        r"""【已废弃】
         :rtype: int
         """
         return self._SetNo
@@ -3780,7 +3780,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Bitrate(self):
-        """【已废弃】
+        r"""【已废弃】
         :rtype: int
         """
         return self._Bitrate
@@ -3791,7 +3791,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def MaxBitrate(self):
-        """单位Mbps，动态调整最大码率建议值，会按实际情况调整
+        r"""单位Mbps，动态调整最大码率建议值，会按实际情况调整
         :rtype: int
         """
         return self._MaxBitrate
@@ -3802,7 +3802,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def MinBitrate(self):
-        """单位Mbps，动态调整最小码率建议值，会按实际情况调整
+        r"""单位Mbps，动态调整最小码率建议值，会按实际情况调整
         :rtype: int
         """
         return self._MinBitrate
@@ -3813,7 +3813,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Fps(self):
-        """帧率，可设置为30、45、60、90、120、144
+        r"""帧率，可设置为30、45、60、90、120、144
         :rtype: int
         """
         return self._Fps
@@ -3824,7 +3824,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def UserIp(self):
-        """【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        r"""【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :rtype: str
         """
         return self._UserIp
@@ -3835,7 +3835,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Optimization(self):
-        """【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
+        r"""【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
         :rtype: int
         """
         return self._Optimization
@@ -3846,7 +3846,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def HostUserId(self):
-        """【互动云游】游戏主机用户ID
+        r"""【互动云游】游戏主机用户ID
         :rtype: str
         """
         return self._HostUserId
@@ -3857,7 +3857,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Role(self):
-        """【互动云游】角色；Player表示玩家；Viewer表示观察者
+        r"""【互动云游】角色；Player表示玩家；Viewer表示观察者
         :rtype: str
         """
         return self._Role
@@ -3868,7 +3868,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameContext(self):
-        """游戏相关参数
+        r"""游戏相关参数
         :rtype: str
         """
         return self._GameContext
@@ -3879,7 +3879,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def RunMode(self):
-        """云端运行模式。
+        r"""云端运行模式。
 RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
         :rtype: str
@@ -3921,7 +3921,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
 
 class CreateSessionResponse(AbstractModel):
-    """CreateSession返回参数结构体
+    r"""CreateSession返回参数结构体
 
     """
 
@@ -3943,7 +3943,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def ServerSession(self):
-        """服务端session信息，返回给JSSDK
+        r"""服务端session信息，返回给JSSDK
         :rtype: str
         """
         return self._ServerSession
@@ -3954,7 +3954,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RoleNumber(self):
-        """【已废弃】
+        r"""【已废弃】
         :rtype: str
         """
         return self._RoleNumber
@@ -3965,7 +3965,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def Role(self):
-        """【互动云游】角色；Player表示玩家；Viewer表示观察者
+        r"""【互动云游】角色；Player表示玩家；Viewer表示观察者
         :rtype: str
         """
         return self._Role
@@ -3976,7 +3976,7 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3994,7 +3994,7 @@ class CreateSessionResponse(AbstractModel):
 
 
 class DeleteAndroidAppRequest(AbstractModel):
-    """DeleteAndroidApp请求参数结构体
+    r"""DeleteAndroidApp请求参数结构体
 
     """
 
@@ -4007,7 +4007,7 @@ class DeleteAndroidAppRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -4030,7 +4030,7 @@ class DeleteAndroidAppRequest(AbstractModel):
 
 
 class DeleteAndroidAppResponse(AbstractModel):
-    """DeleteAndroidApp返回参数结构体
+    r"""DeleteAndroidApp返回参数结构体
 
     """
 
@@ -4043,7 +4043,7 @@ class DeleteAndroidAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4058,7 +4058,7 @@ class DeleteAndroidAppResponse(AbstractModel):
 
 
 class DeleteAndroidAppVersionRequest(AbstractModel):
-    """DeleteAndroidAppVersion请求参数结构体
+    r"""DeleteAndroidAppVersion请求参数结构体
 
     """
 
@@ -4074,7 +4074,7 @@ class DeleteAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """安卓应用 Id
+        r"""安卓应用 Id
         :rtype: str
         """
         return self._AndroidAppId
@@ -4085,7 +4085,7 @@ class DeleteAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """安卓应用版本
+        r"""安卓应用版本
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -4109,7 +4109,7 @@ class DeleteAndroidAppVersionRequest(AbstractModel):
 
 
 class DeleteAndroidAppVersionResponse(AbstractModel):
-    """DeleteAndroidAppVersion返回参数结构体
+    r"""DeleteAndroidAppVersion返回参数结构体
 
     """
 
@@ -4122,7 +4122,7 @@ class DeleteAndroidAppVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4137,7 +4137,7 @@ class DeleteAndroidAppVersionResponse(AbstractModel):
 
 
 class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
-    """DeleteAndroidInstanceBackupFiles请求参数结构体
+    r"""DeleteAndroidInstanceBackupFiles请求参数结构体
 
     """
 
@@ -4162,7 +4162,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
     @property
     def ObjectKeys(self):
-        """文件对象键列表
+        r"""文件对象键列表
         :rtype: list of str
         """
         return self._ObjectKeys
@@ -4173,7 +4173,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        r"""存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
         :rtype: str
         """
         return self._StorageType
@@ -4184,7 +4184,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
     @property
     def COSOptions(self):
-        """COS协议选项
+        r"""COS协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
         """
         return self._COSOptions
@@ -4195,7 +4195,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
     @property
     def S3Options(self):
-        """S3存储协议选项
+        r"""S3存储协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
         """
         return self._S3Options
@@ -4206,7 +4206,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
     @property
     def AndroidInstanceZone(self):
-        """安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
+        r"""安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -4237,7 +4237,7 @@ class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
 
 
 class DeleteAndroidInstanceBackupFilesResponse(AbstractModel):
-    """DeleteAndroidInstanceBackupFiles返回参数结构体
+    r"""DeleteAndroidInstanceBackupFiles返回参数结构体
 
     """
 
@@ -4250,7 +4250,7 @@ class DeleteAndroidInstanceBackupFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4265,7 +4265,7 @@ class DeleteAndroidInstanceBackupFilesResponse(AbstractModel):
 
 
 class DeleteAndroidInstanceImagesRequest(AbstractModel):
-    """DeleteAndroidInstanceImages请求参数结构体
+    r"""DeleteAndroidInstanceImages请求参数结构体
 
     """
 
@@ -4278,7 +4278,7 @@ class DeleteAndroidInstanceImagesRequest(AbstractModel):
 
     @property
     def AndroidInstanceImageIds(self):
-        """镜像 ID 列表
+        r"""镜像 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceImageIds
@@ -4301,7 +4301,7 @@ class DeleteAndroidInstanceImagesRequest(AbstractModel):
 
 
 class DeleteAndroidInstanceImagesResponse(AbstractModel):
-    """DeleteAndroidInstanceImages返回参数结构体
+    r"""DeleteAndroidInstanceImages返回参数结构体
 
     """
 
@@ -4314,7 +4314,7 @@ class DeleteAndroidInstanceImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4329,7 +4329,7 @@ class DeleteAndroidInstanceImagesResponse(AbstractModel):
 
 
 class DeleteAndroidInstanceLabelRequest(AbstractModel):
-    """DeleteAndroidInstanceLabel请求参数结构体
+    r"""DeleteAndroidInstanceLabel请求参数结构体
 
     """
 
@@ -4345,7 +4345,7 @@ class DeleteAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -4356,7 +4356,7 @@ class DeleteAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -4380,7 +4380,7 @@ class DeleteAndroidInstanceLabelRequest(AbstractModel):
 
 
 class DeleteAndroidInstanceLabelResponse(AbstractModel):
-    """DeleteAndroidInstanceLabel返回参数结构体
+    r"""DeleteAndroidInstanceLabel返回参数结构体
 
     """
 
@@ -4393,7 +4393,7 @@ class DeleteAndroidInstanceLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4408,7 +4408,7 @@ class DeleteAndroidInstanceLabelResponse(AbstractModel):
 
 
 class DescribeAndroidAppsRequest(AbstractModel):
-    """DescribeAndroidApps请求参数结构体
+    r"""DescribeAndroidApps请求参数结构体
 
     """
 
@@ -4430,7 +4430,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -4441,7 +4441,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量
+        r"""每页数量
         :rtype: int
         """
         return self._Limit
@@ -4452,7 +4452,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def AndroidAppIds(self):
-        """应用ID数组
+        r"""应用ID数组
         :rtype: list of str
         """
         return self._AndroidAppIds
@@ -4463,7 +4463,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
+        r"""过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
         :rtype: list of Filter
         """
         return self._Filters
@@ -4494,7 +4494,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
 
 class DescribeAndroidAppsResponse(AbstractModel):
-    """DescribeAndroidApps返回参数结构体
+    r"""DescribeAndroidApps返回参数结构体
 
     """
 
@@ -4513,7 +4513,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     @property
     def Apps(self):
-        """安卓应用列表
+        r"""安卓应用列表
         :rtype: list of AndroidApp
         """
         return self._Apps
@@ -4524,7 +4524,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """安卓应用列表长度
+        r"""安卓应用列表长度
         :rtype: int
         """
         return self._TotalCount
@@ -4535,7 +4535,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4557,7 +4557,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
 
 class DescribeAndroidInstanceAppsRequest(AbstractModel):
-    """DescribeAndroidInstanceApps请求参数结构体
+    r"""DescribeAndroidInstanceApps请求参数结构体
 
     """
 
@@ -4570,7 +4570,7 @@ class DescribeAndroidInstanceAppsRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -4593,7 +4593,7 @@ class DescribeAndroidInstanceAppsRequest(AbstractModel):
 
 
 class DescribeAndroidInstanceAppsResponse(AbstractModel):
-    """DescribeAndroidInstanceApps返回参数结构体
+    r"""DescribeAndroidInstanceApps返回参数结构体
 
     """
 
@@ -4609,7 +4609,7 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
 
     @property
     def Apps(self):
-        """安卓应用列表
+        r"""安卓应用列表
         :rtype: list of AndroidInstanceAppInfo
         """
         return self._Apps
@@ -4620,7 +4620,7 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4641,7 +4641,7 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
 
 
 class DescribeAndroidInstanceImagesRequest(AbstractModel):
-    """DescribeAndroidInstanceImages请求参数结构体
+    r"""DescribeAndroidInstanceImages请求参数结构体
 
     """
 
@@ -4669,7 +4669,7 @@ AndroidVersion：安卓版本
 
     @property
     def AndroidInstanceImageIds(self):
-        """镜像 ID 列表
+        r"""镜像 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceImageIds
@@ -4680,7 +4680,7 @@ AndroidVersion：安卓版本
 
     @property
     def AndroidInstanceImageZones(self):
-        """镜像可用区列表
+        r"""镜像可用区列表
         :rtype: list of str
         """
         return self._AndroidInstanceImageZones
@@ -4691,7 +4691,7 @@ AndroidVersion：安卓版本
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -4702,7 +4702,7 @@ AndroidVersion：安卓版本
 
     @property
     def Limit(self):
-        """限制量，默认为20，最大值为100
+        r"""限制量，默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -4713,7 +4713,7 @@ AndroidVersion：安卓版本
 
     @property
     def Filters(self):
-        """字段过滤器。Filter 的 Name 有以下值：
+        r"""字段过滤器。Filter 的 Name 有以下值：
 ImageName：镜像名称
 ImageState：镜像状态
 AndroidVersion：安卓版本
@@ -4748,7 +4748,7 @@ AndroidVersion：安卓版本
 
 
 class DescribeAndroidInstanceImagesResponse(AbstractModel):
-    """DescribeAndroidInstanceImages返回参数结构体
+    r"""DescribeAndroidInstanceImages返回参数结构体
 
     """
 
@@ -4767,7 +4767,7 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """镜像总数
+        r"""镜像总数
         :rtype: int
         """
         return self._Total
@@ -4778,7 +4778,7 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
 
     @property
     def AndroidInstanceImages(self):
-        """镜像列表
+        r"""镜像列表
         :rtype: list of AndroidInstanceImage
         """
         return self._AndroidInstanceImages
@@ -4789,7 +4789,7 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4811,7 +4811,7 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
 
 
 class DescribeAndroidInstanceLabelsRequest(AbstractModel):
-    """DescribeAndroidInstanceLabels请求参数结构体
+    r"""DescribeAndroidInstanceLabels请求参数结构体
 
     """
 
@@ -4833,7 +4833,7 @@ class DescribeAndroidInstanceLabelsRequest(AbstractModel):
 
     @property
     def Keys(self):
-        """标签键列表
+        r"""标签键列表
         :rtype: list of str
         """
         return self._Keys
@@ -4844,7 +4844,7 @@ class DescribeAndroidInstanceLabelsRequest(AbstractModel):
 
     @property
     def Values(self):
-        """标签值列表
+        r"""标签值列表
         :rtype: list of str
         """
         return self._Values
@@ -4855,7 +4855,7 @@ class DescribeAndroidInstanceLabelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0
+        r"""偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -4866,7 +4866,7 @@ class DescribeAndroidInstanceLabelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认为20，最大值为100
+        r"""限制量，默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -4892,7 +4892,7 @@ class DescribeAndroidInstanceLabelsRequest(AbstractModel):
 
 
 class DescribeAndroidInstanceLabelsResponse(AbstractModel):
-    """DescribeAndroidInstanceLabels返回参数结构体
+    r"""DescribeAndroidInstanceLabels返回参数结构体
 
     """
 
@@ -4914,7 +4914,7 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """安卓实例标签总数
+        r"""安卓实例标签总数
         :rtype: int
         """
         return self._Total
@@ -4927,7 +4927,7 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
     def Labels(self):
         warnings.warn("parameter `Labels` is deprecated", DeprecationWarning) 
 
-        """安卓实例标签列表
+        r"""安卓实例标签列表
         :rtype: list of AndroidInstanceLabel
         """
         return self._Labels
@@ -4940,7 +4940,7 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
     @property
     def AndroidInstanceLabels(self):
-        """安卓实例标签详情列表
+        r"""安卓实例标签详情列表
         :rtype: list of AndroidInstanceLabelDetail
         """
         return self._AndroidInstanceLabels
@@ -4951,7 +4951,7 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4979,7 +4979,7 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
 
 class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
-    """DescribeAndroidInstanceTasksStatus请求参数结构体
+    r"""DescribeAndroidInstanceTasksStatus请求参数结构体
 
     """
 
@@ -5004,7 +5004,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        """任务 ID 列表
+        r"""任务 ID 列表
         :rtype: list of str
         """
         return self._TaskIds
@@ -5015,7 +5015,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """条件过滤器
+        r"""条件过滤器
         :rtype: list of Filter
         """
         return self._Filter
@@ -5026,7 +5026,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0
+        r"""偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -5037,7 +5037,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认为20，最大值为100
+        r"""限制量，默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -5048,7 +5048,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     @property
     def RecentDays(self):
-        """时间范围限制，以天数为单位
+        r"""时间范围限制，以天数为单位
         :rtype: int
         """
         return self._RecentDays
@@ -5080,7 +5080,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
 
 class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
-    """DescribeAndroidInstanceTasksStatus返回参数结构体
+    r"""DescribeAndroidInstanceTasksStatus返回参数结构体
 
     """
 
@@ -5099,7 +5099,7 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
 
     @property
     def TaskStatusSet(self):
-        """任务状态集合
+        r"""任务状态集合
         :rtype: list of AndroidInstanceTaskStatus
         """
         return self._TaskStatusSet
@@ -5110,7 +5110,7 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
 
     @property
     def Total(self):
-        """任务总数量
+        r"""任务总数量
         :rtype: int
         """
         return self._Total
@@ -5121,7 +5121,7 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5143,7 +5143,7 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
 
 
 class DescribeAndroidInstancesAppBlacklistRequest(AbstractModel):
-    """DescribeAndroidInstancesAppBlacklist请求参数结构体
+    r"""DescribeAndroidInstancesAppBlacklist请求参数结构体
 
     """
 
@@ -5156,7 +5156,7 @@ class DescribeAndroidInstancesAppBlacklistRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表，数量上限 100
+        r"""实例 ID 列表，数量上限 100
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -5179,7 +5179,7 @@ class DescribeAndroidInstancesAppBlacklistRequest(AbstractModel):
 
 
 class DescribeAndroidInstancesAppBlacklistResponse(AbstractModel):
-    """DescribeAndroidInstancesAppBlacklist返回参数结构体
+    r"""DescribeAndroidInstancesAppBlacklist返回参数结构体
 
     """
 
@@ -5196,7 +5196,7 @@ class DescribeAndroidInstancesAppBlacklistResponse(AbstractModel):
 
     @property
     def AppBlacklistSet(self):
-        """黑名单集合
+        r"""黑名单集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceAppBlacklist
         """
@@ -5208,7 +5208,7 @@ class DescribeAndroidInstancesAppBlacklistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5229,7 +5229,7 @@ class DescribeAndroidInstancesAppBlacklistResponse(AbstractModel):
 
 
 class DescribeAndroidInstancesByAppsRequest(AbstractModel):
-    """DescribeAndroidInstancesByApps请求参数结构体
+    r"""DescribeAndroidInstancesByApps请求参数结构体
 
     """
 
@@ -5251,7 +5251,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为 0	
+        r"""偏移量，默认为 0	
         :rtype: int
         """
         return self._Offset
@@ -5262,7 +5262,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认为 20，最大值为 500	
+        r"""限制量，默认为 20，最大值为 500	
         :rtype: int
         """
         return self._Limit
@@ -5273,7 +5273,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def AndroidAppIds(self):
-        """应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
+        r"""应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
         :rtype: list of str
         """
         return self._AndroidAppIds
@@ -5284,7 +5284,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
+        r"""字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
         :rtype: list of Filter
         """
         return self._Filters
@@ -5315,7 +5315,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
 
 class DescribeAndroidInstancesByAppsResponse(AbstractModel):
-    """DescribeAndroidInstancesByApps返回参数结构体
+    r"""DescribeAndroidInstancesByApps返回参数结构体
 
     """
 
@@ -5334,7 +5334,7 @@ class DescribeAndroidInstancesByAppsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数量
+        r"""实例总数量
         :rtype: int
         """
         return self._TotalCount
@@ -5345,7 +5345,7 @@ class DescribeAndroidInstancesByAppsResponse(AbstractModel):
 
     @property
     def AndroidInstances(self):
-        """实例列表	
+        r"""实例列表	
         :rtype: list of AndroidInstance
         """
         return self._AndroidInstances
@@ -5356,7 +5356,7 @@ class DescribeAndroidInstancesByAppsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5378,7 +5378,7 @@ class DescribeAndroidInstancesByAppsResponse(AbstractModel):
 
 
 class DescribeAndroidInstancesRequest(AbstractModel):
-    """DescribeAndroidInstances请求参数结构体
+    r"""DescribeAndroidInstances请求参数结构体
 
     """
 
@@ -5416,7 +5416,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def Offset(self):
-        """偏移量，默认为 0
+        r"""偏移量，默认为 0
         :rtype: int
         """
         return self._Offset
@@ -5427,7 +5427,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def Limit(self):
-        """限制量，默认为20，最大值为100
+        r"""限制量，默认为20，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -5438,7 +5438,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID。每次请求的实例的上限为100。
+        r"""实例ID。每次请求的实例的上限为100。
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -5449,7 +5449,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def AndroidInstanceRegion(self):
-        """实例地域。目前还不支持按地域进行聚合查询
+        r"""实例地域。目前还不支持按地域进行聚合查询
         :rtype: str
         """
         return self._AndroidInstanceRegion
@@ -5460,7 +5460,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def AndroidInstanceZone(self):
-        """实例可用区
+        r"""实例可用区
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -5471,7 +5471,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def AndroidInstanceGroupIds(self):
-        """实例分组 ID 列表
+        r"""实例分组 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceGroupIds
@@ -5482,7 +5482,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def LabelSelector(self):
-        """实例标签选择器
+        r"""实例标签选择器
         :rtype: list of LabelRequirement
         """
         return self._LabelSelector
@@ -5493,7 +5493,7 @@ HostServerSerialNumber：机箱序列号
 
     @property
     def Filters(self):
-        """字段过滤器。Filter 的 Name 有以下值：
+        r"""字段过滤器。Filter 的 Name 有以下值：
 Name：实例名称
 UserId：实例用户ID
 HostSerialNumber：宿主机序列号
@@ -5537,7 +5537,7 @@ HostServerSerialNumber：机箱序列号
 
 
 class DescribeAndroidInstancesResponse(AbstractModel):
-    """DescribeAndroidInstances返回参数结构体
+    r"""DescribeAndroidInstances返回参数结构体
 
     """
 
@@ -5556,7 +5556,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数量
+        r"""实例总数量
         :rtype: int
         """
         return self._TotalCount
@@ -5567,7 +5567,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     @property
     def AndroidInstances(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of AndroidInstance
         """
         return self._AndroidInstances
@@ -5578,7 +5578,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5600,7 +5600,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
 
 class DescribeInstancesCountRequest(AbstractModel):
-    """DescribeInstancesCount请求参数结构体
+    r"""DescribeInstancesCount请求参数结构体
 
     """
 
@@ -5624,7 +5624,7 @@ PC：默认值，端游
 
     @property
     def GameId(self):
-        """游戏ID
+        r"""游戏ID
         :rtype: str
         """
         return self._GameId
@@ -5635,7 +5635,7 @@ PC：默认值，端游
 
     @property
     def GroupId(self):
-        """实例分组ID
+        r"""实例分组ID
         :rtype: str
         """
         return self._GroupId
@@ -5646,7 +5646,7 @@ PC：默认值，端游
 
     @property
     def GameRegion(self):
-        """游戏区域
+        r"""游戏区域
         :rtype: str
         """
         return self._GameRegion
@@ -5657,7 +5657,7 @@ PC：默认值，端游
 
     @property
     def GameType(self):
-        """游戏类型。
+        r"""游戏类型。
 MOBILE：手游
 PC：默认值，端游
         :rtype: str
@@ -5685,7 +5685,7 @@ PC：默认值，端游
 
 
 class DescribeInstancesCountResponse(AbstractModel):
-    """DescribeInstancesCount返回参数结构体
+    r"""DescribeInstancesCount返回参数结构体
 
     """
 
@@ -5704,7 +5704,7 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def Total(self):
-        """客户的实例总数
+        r"""客户的实例总数
         :rtype: int
         """
         return self._Total
@@ -5715,7 +5715,7 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def Running(self):
-        """客户的实例运行数
+        r"""客户的实例运行数
         :rtype: int
         """
         return self._Running
@@ -5726,7 +5726,7 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5743,7 +5743,7 @@ class DescribeInstancesCountResponse(AbstractModel):
 
 
 class DestroyAndroidInstancesRequest(AbstractModel):
-    """DestroyAndroidInstances请求参数结构体
+    r"""DestroyAndroidInstances请求参数结构体
 
     """
 
@@ -5756,7 +5756,7 @@ class DestroyAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -5779,7 +5779,7 @@ class DestroyAndroidInstancesRequest(AbstractModel):
 
 
 class DestroyAndroidInstancesResponse(AbstractModel):
-    """DestroyAndroidInstances返回参数结构体
+    r"""DestroyAndroidInstances返回参数结构体
 
     """
 
@@ -5792,7 +5792,7 @@ class DestroyAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5807,7 +5807,7 @@ class DestroyAndroidInstancesResponse(AbstractModel):
 
 
 class DisableAndroidInstancesAppRequest(AbstractModel):
-    """DisableAndroidInstancesApp请求参数结构体
+    r"""DisableAndroidInstancesApp请求参数结构体
 
     """
 
@@ -5823,7 +5823,7 @@ class DisableAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -5834,7 +5834,7 @@ class DisableAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -5858,7 +5858,7 @@ class DisableAndroidInstancesAppRequest(AbstractModel):
 
 
 class DisableAndroidInstancesAppResponse(AbstractModel):
-    """DisableAndroidInstancesApp返回参数结构体
+    r"""DisableAndroidInstancesApp返回参数结构体
 
     """
 
@@ -5874,7 +5874,7 @@ class DisableAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        r"""错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -5885,7 +5885,7 @@ class DisableAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5906,7 +5906,7 @@ class DisableAndroidInstancesAppResponse(AbstractModel):
 
 
 class DisconnectAndroidInstanceRequest(AbstractModel):
-    """DisconnectAndroidInstance请求参数结构体
+    r"""DisconnectAndroidInstance请求参数结构体
 
     """
 
@@ -5919,7 +5919,7 @@ class DisconnectAndroidInstanceRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -5942,7 +5942,7 @@ class DisconnectAndroidInstanceRequest(AbstractModel):
 
 
 class DisconnectAndroidInstanceResponse(AbstractModel):
-    """DisconnectAndroidInstance返回参数结构体
+    r"""DisconnectAndroidInstance返回参数结构体
 
     """
 
@@ -5955,7 +5955,7 @@ class DisconnectAndroidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5970,7 +5970,7 @@ class DisconnectAndroidInstanceResponse(AbstractModel):
 
 
 class DistributeFileToAndroidInstancesRequest(AbstractModel):
-    """DistributeFileToAndroidInstances请求参数结构体
+    r"""DistributeFileToAndroidInstances请求参数结构体
 
     """
 
@@ -5992,7 +5992,7 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6003,7 +6003,7 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def FileURL(self):
-        """文件下载 URL
+        r"""文件下载 URL
         :rtype: str
         """
         return self._FileURL
@@ -6014,7 +6014,7 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def DestinationDirectory(self):
-        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        r"""上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :rtype: str
         """
         return self._DestinationDirectory
@@ -6025,7 +6025,7 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def DestinationFileName(self):
-        """目标文件名
+        r"""目标文件名
         :rtype: str
         """
         return self._DestinationFileName
@@ -6051,7 +6051,7 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
 
 
 class DistributeFileToAndroidInstancesResponse(AbstractModel):
-    """DistributeFileToAndroidInstances返回参数结构体
+    r"""DistributeFileToAndroidInstances返回参数结构体
 
     """
 
@@ -6067,7 +6067,7 @@ class DistributeFileToAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """实例任务集合
+        r"""实例任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -6078,7 +6078,7 @@ class DistributeFileToAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6099,7 +6099,7 @@ class DistributeFileToAndroidInstancesResponse(AbstractModel):
 
 
 class DistributePhotoToAndroidInstancesRequest(AbstractModel):
-    """DistributePhotoToAndroidInstances请求参数结构体
+    r"""DistributePhotoToAndroidInstances请求参数结构体
 
     """
 
@@ -6115,7 +6115,7 @@ class DistributePhotoToAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6126,7 +6126,7 @@ class DistributePhotoToAndroidInstancesRequest(AbstractModel):
 
     @property
     def PhotoURL(self):
-        """照片下载 URL
+        r"""照片下载 URL
         :rtype: str
         """
         return self._PhotoURL
@@ -6150,7 +6150,7 @@ class DistributePhotoToAndroidInstancesRequest(AbstractModel):
 
 
 class DistributePhotoToAndroidInstancesResponse(AbstractModel):
-    """DistributePhotoToAndroidInstances返回参数结构体
+    r"""DistributePhotoToAndroidInstances返回参数结构体
 
     """
 
@@ -6166,7 +6166,7 @@ class DistributePhotoToAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """实例任务集合
+        r"""实例任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -6177,7 +6177,7 @@ class DistributePhotoToAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6198,7 +6198,7 @@ class DistributePhotoToAndroidInstancesResponse(AbstractModel):
 
 
 class EnableAndroidInstancesAppRequest(AbstractModel):
-    """EnableAndroidInstancesApp请求参数结构体
+    r"""EnableAndroidInstancesApp请求参数结构体
 
     """
 
@@ -6214,7 +6214,7 @@ class EnableAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6225,7 +6225,7 @@ class EnableAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -6249,7 +6249,7 @@ class EnableAndroidInstancesAppRequest(AbstractModel):
 
 
 class EnableAndroidInstancesAppResponse(AbstractModel):
-    """EnableAndroidInstancesApp返回参数结构体
+    r"""EnableAndroidInstancesApp返回参数结构体
 
     """
 
@@ -6265,7 +6265,7 @@ class EnableAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        r"""错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -6276,7 +6276,7 @@ class EnableAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6297,7 +6297,7 @@ class EnableAndroidInstancesAppResponse(AbstractModel):
 
 
 class Error(AbstractModel):
-    """错误信息，用于批量接口中返回部分操作错误
+    r"""错误信息，用于批量接口中返回部分操作错误
 
     """
 
@@ -6313,7 +6313,7 @@ class Error(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: str
         """
         return self._Code
@@ -6324,7 +6324,7 @@ class Error(AbstractModel):
 
     @property
     def Message(self):
-        """错误详细信息
+        r"""错误详细信息
         :rtype: str
         """
         return self._Message
@@ -6348,7 +6348,7 @@ class Error(AbstractModel):
 
 
 class ExecuteCommandOnAndroidInstancesRequest(AbstractModel):
-    """ExecuteCommandOnAndroidInstances请求参数结构体
+    r"""ExecuteCommandOnAndroidInstances请求参数结构体
 
     """
 
@@ -6364,7 +6364,7 @@ class ExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6375,7 +6375,7 @@ class ExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
     @property
     def Command(self):
-        """shell 命令
+        r"""shell 命令
         :rtype: str
         """
         return self._Command
@@ -6399,7 +6399,7 @@ class ExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
 
 class ExecuteCommandOnAndroidInstancesResponse(AbstractModel):
-    """ExecuteCommandOnAndroidInstances返回参数结构体
+    r"""ExecuteCommandOnAndroidInstances返回参数结构体
 
     """
 
@@ -6415,7 +6415,7 @@ class ExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合，可异步查询任务状态
+        r"""任务集合，可异步查询任务状态
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -6426,7 +6426,7 @@ class ExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6447,7 +6447,7 @@ class ExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
 
 class FetchAndroidInstancesLogsRequest(AbstractModel):
-    """FetchAndroidInstancesLogs请求参数结构体
+    r"""FetchAndroidInstancesLogs请求参数结构体
 
     """
 
@@ -6472,7 +6472,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6483,7 +6483,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """cos 桶名称
+        r"""cos 桶名称
         :rtype: str
         """
         return self._BucketName
@@ -6494,7 +6494,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
-        """cos 桶区域
+        r"""cos 桶区域
         :rtype: str
         """
         return self._BucketRegion
@@ -6505,7 +6505,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
     @property
     def BucketDirectory(self):
-        """cos 桶目录，默认为 /log/
+        r"""cos 桶目录，默认为 /log/
         :rtype: str
         """
         return self._BucketDirectory
@@ -6516,7 +6516,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
     @property
     def RecentDays(self):
-        """下载最近几天的日志，默认值为 1
+        r"""下载最近几天的日志，默认值为 1
         :rtype: int
         """
         return self._RecentDays
@@ -6543,7 +6543,7 @@ class FetchAndroidInstancesLogsRequest(AbstractModel):
 
 
 class FetchAndroidInstancesLogsResponse(AbstractModel):
-    """FetchAndroidInstancesLogs返回参数结构体
+    r"""FetchAndroidInstancesLogs返回参数结构体
 
     """
 
@@ -6556,7 +6556,7 @@ class FetchAndroidInstancesLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6571,7 +6571,7 @@ class FetchAndroidInstancesLogsResponse(AbstractModel):
 
 
 class FileCosInfo(AbstractModel):
-    """应用文件 Cos 信息
+    r"""应用文件 Cos 信息
 
     """
 
@@ -6584,7 +6584,7 @@ class FileCosInfo(AbstractModel):
 
     @property
     def FileId(self):
-        """文件 Id
+        r"""文件 Id
         :rtype: str
         """
         return self._FileId
@@ -6607,7 +6607,7 @@ class FileCosInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤
+    r"""过滤
 
     """
 
@@ -6623,7 +6623,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """字段名
+        r"""字段名
         :rtype: str
         """
         return self._Name
@@ -6634,7 +6634,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段值列表
+        r"""字段值列表
         :rtype: list of str
         """
         return self._Values
@@ -6658,7 +6658,7 @@ class Filter(AbstractModel):
 
 
 class ImportAndroidInstanceImageRequest(AbstractModel):
-    """ImportAndroidInstanceImage请求参数结构体
+    r"""ImportAndroidInstanceImage请求参数结构体
 
     """
 
@@ -6686,7 +6686,7 @@ ANDROID14：安卓14
 
     @property
     def Name(self):
-        """镜像名称
+        r"""镜像名称
         :rtype: str
         """
         return self._Name
@@ -6697,7 +6697,7 @@ ANDROID14：安卓14
 
     @property
     def URL(self):
-        """镜像文件下载地址，要求是 tgz 压缩文件
+        r"""镜像文件下载地址，要求是 tgz 压缩文件
         :rtype: str
         """
         return self._URL
@@ -6708,7 +6708,7 @@ ANDROID14：安卓14
 
     @property
     def MD5(self):
-        """镜像文件 MD5 值
+        r"""镜像文件 MD5 值
         :rtype: str
         """
         return self._MD5
@@ -6719,7 +6719,7 @@ ANDROID14：安卓14
 
     @property
     def AndroidVersion(self):
-        """安卓版本。
+        r"""安卓版本。
 ANDROID10：默认值，安卓10
 ANDROID12：安卓12
 ANDROID14：安卓14
@@ -6733,7 +6733,7 @@ ANDROID14：安卓14
 
     @property
     def Zone(self):
-        """镜像可用区
+        r"""镜像可用区
         :rtype: str
         """
         return self._Zone
@@ -6760,7 +6760,7 @@ ANDROID14：安卓14
 
 
 class ImportAndroidInstanceImageResponse(AbstractModel):
-    """ImportAndroidInstanceImage返回参数结构体
+    r"""ImportAndroidInstanceImage返回参数结构体
 
     """
 
@@ -6776,7 +6776,7 @@ class ImportAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """安卓实例镜像 ID
+        r"""安卓实例镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -6787,7 +6787,7 @@ class ImportAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6803,7 +6803,7 @@ class ImportAndroidInstanceImageResponse(AbstractModel):
 
 
 class InstallAndroidInstancesAppRequest(AbstractModel):
-    """InstallAndroidInstancesApp请求参数结构体
+    r"""InstallAndroidInstancesApp请求参数结构体
 
     """
 
@@ -6822,7 +6822,7 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6833,7 +6833,7 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -6844,7 +6844,7 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """应用版本
+        r"""应用版本
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -6869,7 +6869,7 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
 
 
 class InstallAndroidInstancesAppResponse(AbstractModel):
-    """InstallAndroidInstancesApp返回参数结构体
+    r"""InstallAndroidInstancesApp返回参数结构体
 
     """
 
@@ -6885,7 +6885,7 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -6896,7 +6896,7 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6917,7 +6917,7 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
 
 
 class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
-    """InstallAndroidInstancesAppWithURL请求参数结构体
+    r"""InstallAndroidInstancesAppWithURL请求参数结构体
 
     """
 
@@ -6933,7 +6933,7 @@ class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6944,7 +6944,7 @@ class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
 
     @property
     def AndroidAppURL(self):
-        """安卓应用下载 URL
+        r"""安卓应用下载 URL
         :rtype: str
         """
         return self._AndroidAppURL
@@ -6968,7 +6968,7 @@ class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
 
 
 class InstallAndroidInstancesAppWithURLResponse(AbstractModel):
-    """InstallAndroidInstancesAppWithURL返回参数结构体
+    r"""InstallAndroidInstancesAppWithURL返回参数结构体
 
     """
 
@@ -6985,7 +6985,7 @@ class InstallAndroidInstancesAppWithURLResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
@@ -6997,7 +6997,7 @@ class InstallAndroidInstancesAppWithURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7018,7 +7018,7 @@ class InstallAndroidInstancesAppWithURLResponse(AbstractModel):
 
 
 class LabelRequirement(AbstractModel):
-    """标签要求
+    r"""标签要求
 
     """
 
@@ -7041,7 +7041,7 @@ NOT_EXISTS: 要求对象标签不存在标签键 Key
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -7052,7 +7052,7 @@ NOT_EXISTS: 要求对象标签不存在标签键 Key
 
     @property
     def Operator(self):
-        """运算符类型。
+        r"""运算符类型。
 IN：要求对象的标签键 Key 对应的标签值需满足 Values 中的一个
 NOT_IN：要求对象的标签键 Key 对应的标签值不满足 Values 中的任何一个
 EXISTS：要求对象标签存在标签键 Key
@@ -7067,7 +7067,7 @@ NOT_EXISTS: 要求对象标签不存在标签键 Key
 
     @property
     def Values(self):
-        """标签值列表
+        r"""标签值列表
         :rtype: list of str
         """
         return self._Values
@@ -7092,7 +7092,7 @@ NOT_EXISTS: 要求对象标签不存在标签键 Key
 
 
 class ModifyAndroidAppRequest(AbstractModel):
-    """ModifyAndroidApp请求参数结构体
+    r"""ModifyAndroidApp请求参数结构体
 
     """
 
@@ -7111,7 +7111,7 @@ class ModifyAndroidAppRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """安卓应用 Id
+        r"""安卓应用 Id
         :rtype: str
         """
         return self._AndroidAppId
@@ -7122,7 +7122,7 @@ class ModifyAndroidAppRequest(AbstractModel):
 
     @property
     def Name(self):
-        """安卓应用名称
+        r"""安卓应用名称
         :rtype: str
         """
         return self._Name
@@ -7133,7 +7133,7 @@ class ModifyAndroidAppRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 Id
+        r"""用户 Id
         :rtype: str
         """
         return self._UserId
@@ -7158,7 +7158,7 @@ class ModifyAndroidAppRequest(AbstractModel):
 
 
 class ModifyAndroidAppResponse(AbstractModel):
-    """ModifyAndroidApp返回参数结构体
+    r"""ModifyAndroidApp返回参数结构体
 
     """
 
@@ -7171,7 +7171,7 @@ class ModifyAndroidAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7186,7 +7186,7 @@ class ModifyAndroidAppResponse(AbstractModel):
 
 
 class ModifyAndroidAppVersionRequest(AbstractModel):
-    """ModifyAndroidAppVersion请求参数结构体
+    r"""ModifyAndroidAppVersion请求参数结构体
 
     """
 
@@ -7211,7 +7211,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """安卓应用 Id
+        r"""安卓应用 Id
         :rtype: str
         """
         return self._AndroidAppId
@@ -7222,7 +7222,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        """安卓应用版本 Id
+        r"""安卓应用版本 Id
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -7233,7 +7233,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def AndroidAppVersionName(self):
-        """安卓应用版本名称
+        r"""安卓应用版本名称
         :rtype: str
         """
         return self._AndroidAppVersionName
@@ -7244,7 +7244,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def Command(self):
-        """应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -7255,7 +7255,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def UninstallCommand(self):
-        """应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._UninstallCommand
@@ -7282,7 +7282,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
 
 class ModifyAndroidAppVersionResponse(AbstractModel):
-    """ModifyAndroidAppVersion返回参数结构体
+    r"""ModifyAndroidAppVersion返回参数结构体
 
     """
 
@@ -7295,7 +7295,7 @@ class ModifyAndroidAppVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7310,7 +7310,7 @@ class ModifyAndroidAppVersionResponse(AbstractModel):
 
 
 class ModifyAndroidInstanceInformationRequest(AbstractModel):
-    """ModifyAndroidInstanceInformation请求参数结构体
+    r"""ModifyAndroidInstanceInformation请求参数结构体
 
     """
 
@@ -7326,7 +7326,7 @@ class ModifyAndroidInstanceInformationRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -7337,7 +7337,7 @@ class ModifyAndroidInstanceInformationRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._Name
@@ -7361,7 +7361,7 @@ class ModifyAndroidInstanceInformationRequest(AbstractModel):
 
 
 class ModifyAndroidInstanceInformationResponse(AbstractModel):
-    """ModifyAndroidInstanceInformation返回参数结构体
+    r"""ModifyAndroidInstanceInformation返回参数结构体
 
     """
 
@@ -7374,7 +7374,7 @@ class ModifyAndroidInstanceInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7389,7 +7389,7 @@ class ModifyAndroidInstanceInformationResponse(AbstractModel):
 
 
 class ModifyAndroidInstanceResolutionRequest(AbstractModel):
-    """ModifyAndroidInstanceResolution请求参数结构体
+    r"""ModifyAndroidInstanceResolution请求参数结构体
 
     """
 
@@ -7425,7 +7425,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例 ID
+        r"""安卓实例 ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -7436,7 +7436,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def Width(self):
-        """分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+        r"""分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
 实例类型为单开（A1）：建议设置为 1080
 实例类型为双开（A2） 及以上：建议设置为 720
         :rtype: int
@@ -7449,7 +7449,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def Height(self):
-        """分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+        r"""分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
 实例类型为单开（A1）：建议设置为 1920
 实例类型为双开（A2） 及以上：建议设置为 1280
         :rtype: int
@@ -7462,7 +7462,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def DPI(self):
-        """每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
+        r"""每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
 分辨率为 720x1280：建议配置为 320
 分辨率为  1080x1920：建议配置为 480
         :rtype: int
@@ -7475,7 +7475,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def FPS(self):
-        """帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
+        r"""帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
         :rtype: int
         """
         return self._FPS
@@ -7486,7 +7486,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def ResolutionType(self):
-        """修改分辨率类型。修改物理分辨率，需要重启才能生效。
+        r"""修改分辨率类型。修改物理分辨率，需要重启才能生效。
 OVERRIDE：默认值，修改覆盖（显示）分辨率
 PHYSICAL：修改物理分辨率
         :rtype: str
@@ -7516,7 +7516,7 @@ PHYSICAL：修改物理分辨率
 
 
 class ModifyAndroidInstanceResolutionResponse(AbstractModel):
-    """ModifyAndroidInstanceResolution返回参数结构体
+    r"""ModifyAndroidInstanceResolution返回参数结构体
 
     """
 
@@ -7529,7 +7529,7 @@ class ModifyAndroidInstanceResolutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7544,7 +7544,7 @@ class ModifyAndroidInstanceResolutionResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesAppBlacklistRequest(AbstractModel):
-    """ModifyAndroidInstancesAppBlacklist请求参数结构体
+    r"""ModifyAndroidInstancesAppBlacklist请求参数结构体
 
     """
 
@@ -7563,7 +7563,7 @@ class ModifyAndroidInstancesAppBlacklistRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID列表，数量上限100
+        r"""实例ID列表，数量上限100
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -7574,7 +7574,7 @@ class ModifyAndroidInstancesAppBlacklistRequest(AbstractModel):
 
     @property
     def AppList(self):
-        """应用列表
+        r"""应用列表
         :rtype: list of str
         """
         return self._AppList
@@ -7585,7 +7585,7 @@ class ModifyAndroidInstancesAppBlacklistRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """ADD、REMOVE、CLEAR
+        r"""ADD、REMOVE、CLEAR
         :rtype: str
         """
         return self._Operation
@@ -7610,7 +7610,7 @@ class ModifyAndroidInstancesAppBlacklistRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesAppBlacklistResponse(AbstractModel):
-    """ModifyAndroidInstancesAppBlacklist返回参数结构体
+    r"""ModifyAndroidInstancesAppBlacklist返回参数结构体
 
     """
 
@@ -7626,7 +7626,7 @@ class ModifyAndroidInstancesAppBlacklistResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -7637,7 +7637,7 @@ class ModifyAndroidInstancesAppBlacklistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7658,7 +7658,7 @@ class ModifyAndroidInstancesAppBlacklistResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesInformationRequest(AbstractModel):
-    """ModifyAndroidInstancesInformation请求参数结构体
+    r"""ModifyAndroidInstancesInformation请求参数结构体
 
     """
 
@@ -7671,7 +7671,7 @@ class ModifyAndroidInstancesInformationRequest(AbstractModel):
 
     @property
     def AndroidInstanceInformations(self):
-        """安卓实例信息数据
+        r"""安卓实例信息数据
         :rtype: list of AndroidInstanceInformation
         """
         return self._AndroidInstanceInformations
@@ -7699,7 +7699,7 @@ class ModifyAndroidInstancesInformationRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesInformationResponse(AbstractModel):
-    """ModifyAndroidInstancesInformation返回参数结构体
+    r"""ModifyAndroidInstancesInformation返回参数结构体
 
     """
 
@@ -7712,7 +7712,7 @@ class ModifyAndroidInstancesInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7727,7 +7727,7 @@ class ModifyAndroidInstancesInformationResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesLabelsRequest(AbstractModel):
-    """ModifyAndroidInstancesLabels请求参数结构体
+    r"""ModifyAndroidInstancesLabels请求参数结构体
 
     """
 
@@ -7746,7 +7746,7 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -7757,7 +7757,7 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
+        r"""操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
         :rtype: str
         """
         return self._Operation
@@ -7768,7 +7768,7 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
     @property
     def AndroidInstanceLabels(self):
-        """安卓实例标签列表
+        r"""安卓实例标签列表
         :rtype: list of AndroidInstanceLabel
         """
         return self._AndroidInstanceLabels
@@ -7798,7 +7798,7 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesLabelsResponse(AbstractModel):
-    """ModifyAndroidInstancesLabels返回参数结构体
+    r"""ModifyAndroidInstancesLabels返回参数结构体
 
     """
 
@@ -7811,7 +7811,7 @@ class ModifyAndroidInstancesLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7826,7 +7826,7 @@ class ModifyAndroidInstancesLabelsResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
-    """ModifyAndroidInstancesProperties请求参数结构体
+    r"""ModifyAndroidInstancesProperties请求参数结构体
 
     """
 
@@ -7845,7 +7845,7 @@ class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -7856,7 +7856,7 @@ class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
 
     @property
     def AndroidInstanceDevice(self):
-        """安卓实例设备
+        r"""安卓实例设备
         :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceDevice`
         """
         return self._AndroidInstanceDevice
@@ -7867,7 +7867,7 @@ class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
 
     @property
     def AndroidInstanceProperties(self):
-        """安卓实例其它属性列表
+        r"""安卓实例其它属性列表
         :rtype: list of AndroidInstanceProperty
         """
         return self._AndroidInstanceProperties
@@ -7899,7 +7899,7 @@ class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
-    """ModifyAndroidInstancesProperties返回参数结构体
+    r"""ModifyAndroidInstancesProperties返回参数结构体
 
     """
 
@@ -7915,7 +7915,7 @@ class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """安卓实例错误列表
+        r"""安卓实例错误列表
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -7926,7 +7926,7 @@ class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7947,7 +7947,7 @@ class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesResolutionRequest(AbstractModel):
-    """ModifyAndroidInstancesResolution请求参数结构体
+    r"""ModifyAndroidInstancesResolution请求参数结构体
 
     """
 
@@ -7985,7 +7985,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -7996,7 +7996,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def Width(self):
-        """分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+        r"""分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
 实例类型为单开（A1）：建议设置为 1080
 实例类型为双开（A2） 及以上：建议设置为 720
         :rtype: int
@@ -8009,7 +8009,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def Height(self):
-        """分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+        r"""分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
 实例类型为单开（A1）：建议设置为 1920
 实例类型为双开（A2） 及以上：建议设置为 1280
         :rtype: int
@@ -8022,7 +8022,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def DPI(self):
-        """每英寸像素点。
+        r"""每英寸像素点。
 分辨率为 720x1280：建议配置为 320
 分辨率为  1080x1920：建议配置为 480
         :rtype: int
@@ -8035,7 +8035,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def FPS(self):
-        """帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
+        r"""帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
 实例类型为单开（A1）：建议设置为 60
 实例类型为双开（A2） 及以上：建议设置为 30
         :rtype: int
@@ -8048,7 +8048,7 @@ PHYSICAL：修改物理分辨率
 
     @property
     def ResolutionType(self):
-        """修改分辨率类型。修改物理分辨率，需要重启才能生效。
+        r"""修改分辨率类型。修改物理分辨率，需要重启才能生效。
 OVERRIDE：默认值，修改覆盖（显示）分辨率
 PHYSICAL：修改物理分辨率
         :rtype: str
@@ -8078,7 +8078,7 @@ PHYSICAL：修改物理分辨率
 
 
 class ModifyAndroidInstancesResolutionResponse(AbstractModel):
-    """ModifyAndroidInstancesResolution返回参数结构体
+    r"""ModifyAndroidInstancesResolution返回参数结构体
 
     """
 
@@ -8094,7 +8094,7 @@ class ModifyAndroidInstancesResolutionResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """安卓实例错误列表
+        r"""安卓实例错误列表
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -8105,7 +8105,7 @@ class ModifyAndroidInstancesResolutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8126,7 +8126,7 @@ class ModifyAndroidInstancesResolutionResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesResourcesRequest(AbstractModel):
-    """ModifyAndroidInstancesResources请求参数结构体
+    r"""ModifyAndroidInstancesResources请求参数结构体
 
     """
 
@@ -8142,7 +8142,7 @@ class ModifyAndroidInstancesResourcesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -8153,7 +8153,7 @@ class ModifyAndroidInstancesResourcesRequest(AbstractModel):
 
     @property
     def MemoryQuota(self):
-        """内存配额（单位 MB）
+        r"""内存配额（单位 MB）
         :rtype: int
         """
         return self._MemoryQuota
@@ -8177,7 +8177,7 @@ class ModifyAndroidInstancesResourcesRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesResourcesResponse(AbstractModel):
-    """ModifyAndroidInstancesResources返回参数结构体
+    r"""ModifyAndroidInstancesResources返回参数结构体
 
     """
 
@@ -8193,7 +8193,7 @@ class ModifyAndroidInstancesResourcesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -8204,7 +8204,7 @@ class ModifyAndroidInstancesResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8225,7 +8225,7 @@ class ModifyAndroidInstancesResourcesResponse(AbstractModel):
 
 
 class ModifyAndroidInstancesUserIdRequest(AbstractModel):
-    """ModifyAndroidInstancesUserId请求参数结构体
+    r"""ModifyAndroidInstancesUserId请求参数结构体
 
     """
 
@@ -8241,7 +8241,7 @@ class ModifyAndroidInstancesUserIdRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -8252,7 +8252,7 @@ class ModifyAndroidInstancesUserIdRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户 ID
+        r"""用户 ID
         :rtype: str
         """
         return self._UserId
@@ -8276,7 +8276,7 @@ class ModifyAndroidInstancesUserIdRequest(AbstractModel):
 
 
 class ModifyAndroidInstancesUserIdResponse(AbstractModel):
-    """ModifyAndroidInstancesUserId返回参数结构体
+    r"""ModifyAndroidInstancesUserId返回参数结构体
 
     """
 
@@ -8289,7 +8289,7 @@ class ModifyAndroidInstancesUserIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8304,7 +8304,7 @@ class ModifyAndroidInstancesUserIdResponse(AbstractModel):
 
 
 class RebootAndroidInstanceHostsRequest(AbstractModel):
-    """RebootAndroidInstanceHosts请求参数结构体
+    r"""RebootAndroidInstanceHosts请求参数结构体
 
     """
 
@@ -8317,7 +8317,7 @@ class RebootAndroidInstanceHostsRequest(AbstractModel):
 
     @property
     def HostSerialNumbers(self):
-        """宿主机序列号集合
+        r"""宿主机序列号集合
         :rtype: list of str
         """
         return self._HostSerialNumbers
@@ -8340,7 +8340,7 @@ class RebootAndroidInstanceHostsRequest(AbstractModel):
 
 
 class RebootAndroidInstanceHostsResponse(AbstractModel):
-    """RebootAndroidInstanceHosts返回参数结构体
+    r"""RebootAndroidInstanceHosts返回参数结构体
 
     """
 
@@ -8356,7 +8356,7 @@ class RebootAndroidInstanceHostsResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务 ID 集合，以供任务状态查询，其中 InstanceId 为宿主机序列号
+        r"""任务 ID 集合，以供任务状态查询，其中 InstanceId 为宿主机序列号
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -8367,7 +8367,7 @@ class RebootAndroidInstanceHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8388,7 +8388,7 @@ class RebootAndroidInstanceHostsResponse(AbstractModel):
 
 
 class RebootAndroidInstancesRequest(AbstractModel):
-    """RebootAndroidInstances请求参数结构体
+    r"""RebootAndroidInstances请求参数结构体
 
     """
 
@@ -8401,7 +8401,7 @@ class RebootAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -8424,7 +8424,7 @@ class RebootAndroidInstancesRequest(AbstractModel):
 
 
 class RebootAndroidInstancesResponse(AbstractModel):
-    """RebootAndroidInstances返回参数结构体
+    r"""RebootAndroidInstances返回参数结构体
 
     """
 
@@ -8440,7 +8440,7 @@ class RebootAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -8451,7 +8451,7 @@ class RebootAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8472,7 +8472,7 @@ class RebootAndroidInstancesResponse(AbstractModel):
 
 
 class RenewAndroidInstancesAccessTokenRequest(AbstractModel):
-    """RenewAndroidInstancesAccessToken请求参数结构体
+    r"""RenewAndroidInstancesAccessToken请求参数结构体
 
     """
 
@@ -8488,7 +8488,7 @@ class RenewAndroidInstancesAccessTokenRequest(AbstractModel):
 
     @property
     def AccessToken(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._AccessToken
@@ -8499,7 +8499,7 @@ class RenewAndroidInstancesAccessTokenRequest(AbstractModel):
 
     @property
     def ExpirationDuration(self):
-        """有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        r"""有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
         :rtype: str
         """
         return self._ExpirationDuration
@@ -8523,7 +8523,7 @@ class RenewAndroidInstancesAccessTokenRequest(AbstractModel):
 
 
 class RenewAndroidInstancesAccessTokenResponse(AbstractModel):
-    """RenewAndroidInstancesAccessToken返回参数结构体
+    r"""RenewAndroidInstancesAccessToken返回参数结构体
 
     """
 
@@ -8536,7 +8536,7 @@ class RenewAndroidInstancesAccessTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8551,7 +8551,7 @@ class RenewAndroidInstancesAccessTokenResponse(AbstractModel):
 
 
 class ResetAndroidInstancesRequest(AbstractModel):
-    """ResetAndroidInstances请求参数结构体
+    r"""ResetAndroidInstances请求参数结构体
 
     """
 
@@ -8575,7 +8575,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID列表
+        r"""实例ID列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -8586,7 +8586,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def AndroidInstanceImageId(self):
-        """指定有效的镜像 ID。
+        r"""指定有效的镜像 ID。
 默认取值：默认使用当前镜像。
         :rtype: str
         """
@@ -8598,7 +8598,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def Mode(self):
-        """重置模式。在 AndroidInstanceImageId 不为空时才生效。
+        r"""重置模式。在 AndroidInstanceImageId 不为空时才生效。
 
 CleanData：默认选项，清理系统属性和用户数据
 KeepSystemProperties：只保留系统属性
@@ -8627,7 +8627,7 @@ KeepData: 保留系统属性和用户数据
 
 
 class ResetAndroidInstancesResponse(AbstractModel):
-    """ResetAndroidInstances返回参数结构体
+    r"""ResetAndroidInstances返回参数结构体
 
     """
 
@@ -8643,7 +8643,7 @@ class ResetAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -8654,7 +8654,7 @@ class ResetAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8675,7 +8675,7 @@ class ResetAndroidInstancesResponse(AbstractModel):
 
 
 class RestartAndroidInstancesAppRequest(AbstractModel):
-    """RestartAndroidInstancesApp请求参数结构体
+    r"""RestartAndroidInstancesApp请求参数结构体
 
     """
 
@@ -8694,7 +8694,7 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表
+        r"""实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -8705,7 +8705,7 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -8716,7 +8716,7 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def Activity(self):
-        """启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        r"""启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
         :rtype: str
         """
         return self._Activity
@@ -8741,7 +8741,7 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
 
 
 class RestartAndroidInstancesAppResponse(AbstractModel):
-    """RestartAndroidInstancesApp返回参数结构体
+    r"""RestartAndroidInstancesApp返回参数结构体
 
     """
 
@@ -8754,7 +8754,7 @@ class RestartAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8769,7 +8769,7 @@ class RestartAndroidInstancesAppResponse(AbstractModel):
 
 
 class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
-    """RestoreAndroidInstanceFromStorage请求参数结构体
+    r"""RestoreAndroidInstanceFromStorage请求参数结构体
 
     """
 
@@ -8794,7 +8794,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
     @property
     def AndroidInstanceId(self):
-        """安卓实例ID
+        r"""安卓实例ID
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -8805,7 +8805,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
     @property
     def ObjectKey(self):
-        """自定义备份对象Key
+        r"""自定义备份对象Key
         :rtype: str
         """
         return self._ObjectKey
@@ -8816,7 +8816,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        r"""存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
         :rtype: str
         """
         return self._StorageType
@@ -8827,7 +8827,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
     @property
     def COSOptions(self):
-        """COS协议选项
+        r"""COS协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
         """
         return self._COSOptions
@@ -8838,7 +8838,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
     @property
     def S3Options(self):
-        """S3存储协议选项
+        r"""S3存储协议选项
         :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
         """
         return self._S3Options
@@ -8869,7 +8869,7 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
 
 class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
-    """RestoreAndroidInstanceFromStorage返回参数结构体
+    r"""RestoreAndroidInstanceFromStorage返回参数结构体
 
     """
 
@@ -8885,7 +8885,7 @@ class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """实例任务 ID
+        r"""实例任务 ID
         :rtype: str
         """
         return self._TaskId
@@ -8896,7 +8896,7 @@ class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8912,7 +8912,7 @@ class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
 
 
 class S3Options(AbstractModel):
-    """S3协议参数
+    r"""S3协议参数
 
     """
 
@@ -8934,7 +8934,7 @@ class S3Options(AbstractModel):
 
     @property
     def EndPoint(self):
-        """存储节点
+        r"""存储节点
         :rtype: str
         """
         return self._EndPoint
@@ -8945,7 +8945,7 @@ class S3Options(AbstractModel):
 
     @property
     def Bucket(self):
-        """存储桶
+        r"""存储桶
         :rtype: str
         """
         return self._Bucket
@@ -8956,7 +8956,7 @@ class S3Options(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """密钥 ID
+        r"""密钥 ID
         :rtype: str
         """
         return self._AccessKeyId
@@ -8967,7 +8967,7 @@ class S3Options(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        """密钥 Key
+        r"""密钥 Key
         :rtype: str
         """
         return self._SecretAccessKey
@@ -8993,7 +8993,7 @@ class S3Options(AbstractModel):
 
 
 class SaveGameArchiveRequest(AbstractModel):
-    """SaveGameArchive请求参数结构体
+    r"""SaveGameArchive请求参数结构体
 
     """
 
@@ -9009,7 +9009,7 @@ class SaveGameArchiveRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """游戏用户ID
+        r"""游戏用户ID
         :rtype: str
         """
         return self._UserId
@@ -9020,7 +9020,7 @@ class SaveGameArchiveRequest(AbstractModel):
 
     @property
     def GameId(self):
-        """游戏ID
+        r"""游戏ID
         :rtype: str
         """
         return self._GameId
@@ -9044,7 +9044,7 @@ class SaveGameArchiveRequest(AbstractModel):
 
 
 class SaveGameArchiveResponse(AbstractModel):
-    """SaveGameArchive返回参数结构体
+    r"""SaveGameArchive返回参数结构体
 
     """
 
@@ -9057,7 +9057,7 @@ class SaveGameArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9072,7 +9072,7 @@ class SaveGameArchiveResponse(AbstractModel):
 
 
 class SetAndroidInstancesBGAppKeepAliveRequest(AbstractModel):
-    """SetAndroidInstancesBGAppKeepAlive请求参数结构体
+    r"""SetAndroidInstancesBGAppKeepAlive请求参数结构体
 
     """
 
@@ -9091,7 +9091,7 @@ class SetAndroidInstancesBGAppKeepAliveRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9102,7 +9102,7 @@ class SetAndroidInstancesBGAppKeepAliveRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作类型，取值：ADD 添加应用到后台保活列表、REMOVE 从后台保活列表中移除应用、SET 全量设置后台保活列表，替换当前列表。
+        r"""操作类型，取值：ADD 添加应用到后台保活列表、REMOVE 从后台保活列表中移除应用、SET 全量设置后台保活列表，替换当前列表。
         :rtype: str
         """
         return self._Operation
@@ -9113,7 +9113,7 @@ class SetAndroidInstancesBGAppKeepAliveRequest(AbstractModel):
 
     @property
     def PackageNames(self):
-        """应用包名列表
+        r"""应用包名列表
         :rtype: list of str
         """
         return self._PackageNames
@@ -9138,7 +9138,7 @@ class SetAndroidInstancesBGAppKeepAliveRequest(AbstractModel):
 
 
 class SetAndroidInstancesBGAppKeepAliveResponse(AbstractModel):
-    """SetAndroidInstancesBGAppKeepAlive返回参数结构体
+    r"""SetAndroidInstancesBGAppKeepAlive返回参数结构体
 
     """
 
@@ -9154,7 +9154,7 @@ class SetAndroidInstancesBGAppKeepAliveResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        r"""错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -9165,7 +9165,7 @@ class SetAndroidInstancesBGAppKeepAliveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9186,7 +9186,7 @@ class SetAndroidInstancesBGAppKeepAliveResponse(AbstractModel):
 
 
 class SetAndroidInstancesFGAppKeepAliveRequest(AbstractModel):
-    """SetAndroidInstancesFGAppKeepAlive请求参数结构体
+    r"""SetAndroidInstancesFGAppKeepAlive请求参数结构体
 
     """
 
@@ -9205,7 +9205,7 @@ class SetAndroidInstancesFGAppKeepAliveRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表（最大100条数据）
+        r"""安卓实例 ID 列表（最大100条数据）
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9216,7 +9216,7 @@ class SetAndroidInstancesFGAppKeepAliveRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作类型，取值：ENABLE 开启保活、DISABLE 关闭保活。当关闭保活时，PackageName 参数传空即可
+        r"""操作类型，取值：ENABLE 开启保活、DISABLE 关闭保活。当关闭保活时，PackageName 参数传空即可
         :rtype: str
         """
         return self._Operation
@@ -9227,7 +9227,7 @@ class SetAndroidInstancesFGAppKeepAliveRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名，开启保活时，必须传入 PackageName
+        r"""应用包名，开启保活时，必须传入 PackageName
         :rtype: str
         """
         return self._PackageName
@@ -9252,7 +9252,7 @@ class SetAndroidInstancesFGAppKeepAliveRequest(AbstractModel):
 
 
 class SetAndroidInstancesFGAppKeepAliveResponse(AbstractModel):
-    """SetAndroidInstancesFGAppKeepAlive返回参数结构体
+    r"""SetAndroidInstancesFGAppKeepAlive返回参数结构体
 
     """
 
@@ -9268,7 +9268,7 @@ class SetAndroidInstancesFGAppKeepAliveResponse(AbstractModel):
 
     @property
     def AndroidInstanceErrors(self):
-        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        r"""错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
         :rtype: list of AndroidInstanceError
         """
         return self._AndroidInstanceErrors
@@ -9279,7 +9279,7 @@ class SetAndroidInstancesFGAppKeepAliveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9300,7 +9300,7 @@ class SetAndroidInstancesFGAppKeepAliveResponse(AbstractModel):
 
 
 class StartAndroidInstancesAppRequest(AbstractModel):
-    """StartAndroidInstancesApp请求参数结构体
+    r"""StartAndroidInstancesApp请求参数结构体
 
     """
 
@@ -9319,7 +9319,7 @@ class StartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表
+        r"""实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9330,7 +9330,7 @@ class StartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -9341,7 +9341,7 @@ class StartAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def Activity(self):
-        """启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        r"""启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
         :rtype: str
         """
         return self._Activity
@@ -9366,7 +9366,7 @@ class StartAndroidInstancesAppRequest(AbstractModel):
 
 
 class StartAndroidInstancesAppResponse(AbstractModel):
-    """StartAndroidInstancesApp返回参数结构体
+    r"""StartAndroidInstancesApp返回参数结构体
 
     """
 
@@ -9379,7 +9379,7 @@ class StartAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9394,7 +9394,7 @@ class StartAndroidInstancesAppResponse(AbstractModel):
 
 
 class StartAndroidInstancesRequest(AbstractModel):
-    """StartAndroidInstances请求参数结构体
+    r"""StartAndroidInstances请求参数结构体
 
     """
 
@@ -9407,7 +9407,7 @@ class StartAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9430,7 +9430,7 @@ class StartAndroidInstancesRequest(AbstractModel):
 
 
 class StartAndroidInstancesResponse(AbstractModel):
-    """StartAndroidInstances返回参数结构体
+    r"""StartAndroidInstances返回参数结构体
 
     """
 
@@ -9446,7 +9446,7 @@ class StartAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -9457,7 +9457,7 @@ class StartAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9478,7 +9478,7 @@ class StartAndroidInstancesResponse(AbstractModel):
 
 
 class StartPublishStreamRequest(AbstractModel):
-    """StartPublishStream请求参数结构体
+    r"""StartPublishStream请求参数结构体
 
     """
 
@@ -9494,7 +9494,7 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -9505,7 +9505,7 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def PublishUrl(self):
-        """推流地址，仅支持rtmp协议
+        r"""推流地址，仅支持rtmp协议
         :rtype: str
         """
         return self._PublishUrl
@@ -9529,7 +9529,7 @@ class StartPublishStreamRequest(AbstractModel):
 
 
 class StartPublishStreamResponse(AbstractModel):
-    """StartPublishStream返回参数结构体
+    r"""StartPublishStream返回参数结构体
 
     """
 
@@ -9542,7 +9542,7 @@ class StartPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9557,7 +9557,7 @@ class StartPublishStreamResponse(AbstractModel):
 
 
 class StartPublishStreamToCSSRequest(AbstractModel):
-    """StartPublishStreamToCSS请求参数结构体
+    r"""StartPublishStreamToCSS请求参数结构体
 
     """
 
@@ -9573,7 +9573,7 @@ class StartPublishStreamToCSSRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -9584,7 +9584,7 @@ class StartPublishStreamToCSSRequest(AbstractModel):
 
     @property
     def PublishStreamArgs(self):
-        """推流参数，推流时携带自定义参数。
+        r"""推流参数，推流时携带自定义参数。
         :rtype: str
         """
         return self._PublishStreamArgs
@@ -9608,7 +9608,7 @@ class StartPublishStreamToCSSRequest(AbstractModel):
 
 
 class StartPublishStreamToCSSResponse(AbstractModel):
-    """StartPublishStreamToCSS返回参数结构体
+    r"""StartPublishStreamToCSS返回参数结构体
 
     """
 
@@ -9621,7 +9621,7 @@ class StartPublishStreamToCSSResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9636,7 +9636,7 @@ class StartPublishStreamToCSSResponse(AbstractModel):
 
 
 class StopAndroidInstancesAppRequest(AbstractModel):
-    """StopAndroidInstancesApp请求参数结构体
+    r"""StopAndroidInstancesApp请求参数结构体
 
     """
 
@@ -9652,7 +9652,7 @@ class StopAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例 ID 列表
+        r"""实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9663,7 +9663,7 @@ class StopAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """应用包名
+        r"""应用包名
         :rtype: str
         """
         return self._PackageName
@@ -9687,7 +9687,7 @@ class StopAndroidInstancesAppRequest(AbstractModel):
 
 
 class StopAndroidInstancesAppResponse(AbstractModel):
-    """StopAndroidInstancesApp返回参数结构体
+    r"""StopAndroidInstancesApp返回参数结构体
 
     """
 
@@ -9700,7 +9700,7 @@ class StopAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9715,7 +9715,7 @@ class StopAndroidInstancesAppResponse(AbstractModel):
 
 
 class StopAndroidInstancesRequest(AbstractModel):
-    """StopAndroidInstances请求参数结构体
+    r"""StopAndroidInstances请求参数结构体
 
     """
 
@@ -9728,7 +9728,7 @@ class StopAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9751,7 +9751,7 @@ class StopAndroidInstancesRequest(AbstractModel):
 
 
 class StopAndroidInstancesResponse(AbstractModel):
-    """StopAndroidInstances返回参数结构体
+    r"""StopAndroidInstances返回参数结构体
 
     """
 
@@ -9767,7 +9767,7 @@ class StopAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -9778,7 +9778,7 @@ class StopAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9799,7 +9799,7 @@ class StopAndroidInstancesResponse(AbstractModel):
 
 
 class StopGameRequest(AbstractModel):
-    """StopGame请求参数结构体
+    r"""StopGame请求参数结构体
 
     """
 
@@ -9815,7 +9815,7 @@ class StopGameRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -9826,7 +9826,7 @@ class StopGameRequest(AbstractModel):
 
     @property
     def HostUserId(self):
-        """【多人游戏】游戏主机用户ID
+        r"""【多人游戏】游戏主机用户ID
         :rtype: str
         """
         return self._HostUserId
@@ -9850,7 +9850,7 @@ class StopGameRequest(AbstractModel):
 
 
 class StopGameResponse(AbstractModel):
-    """StopGame返回参数结构体
+    r"""StopGame返回参数结构体
 
     """
 
@@ -9863,7 +9863,7 @@ class StopGameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9878,7 +9878,7 @@ class StopGameResponse(AbstractModel):
 
 
 class StopPublishStreamRequest(AbstractModel):
-    """StopPublishStream请求参数结构体
+    r"""StopPublishStream请求参数结构体
 
     """
 
@@ -9891,7 +9891,7 @@ class StopPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -9914,7 +9914,7 @@ class StopPublishStreamRequest(AbstractModel):
 
 
 class StopPublishStreamResponse(AbstractModel):
-    """StopPublishStream返回参数结构体
+    r"""StopPublishStream返回参数结构体
 
     """
 
@@ -9927,7 +9927,7 @@ class StopPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9942,7 +9942,7 @@ class StopPublishStreamResponse(AbstractModel):
 
 
 class SwitchGameArchiveRequest(AbstractModel):
-    """SwitchGameArchive请求参数结构体
+    r"""SwitchGameArchive请求参数结构体
 
     """
 
@@ -9964,7 +9964,7 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """游戏用户ID
+        r"""游戏用户ID
         :rtype: str
         """
         return self._UserId
@@ -9975,7 +9975,7 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameId(self):
-        """游戏ID
+        r"""游戏ID
         :rtype: str
         """
         return self._GameId
@@ -9986,7 +9986,7 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameArchiveUrl(self):
-        """游戏存档Url
+        r"""游戏存档Url
         :rtype: str
         """
         return self._GameArchiveUrl
@@ -9997,7 +9997,7 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameContext(self):
-        """游戏相关参数
+        r"""游戏相关参数
         :rtype: str
         """
         return self._GameContext
@@ -10023,7 +10023,7 @@ class SwitchGameArchiveRequest(AbstractModel):
 
 
 class SwitchGameArchiveResponse(AbstractModel):
-    """SwitchGameArchive返回参数结构体
+    r"""SwitchGameArchive返回参数结构体
 
     """
 
@@ -10036,7 +10036,7 @@ class SwitchGameArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10051,7 +10051,7 @@ class SwitchGameArchiveResponse(AbstractModel):
 
 
 class SyncAndroidInstanceImage(AbstractModel):
-    """同步安卓实例镜像信息
+    r"""同步安卓实例镜像信息
 
     """
 
@@ -10067,7 +10067,7 @@ class SyncAndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """镜像 ID
+        r"""镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -10078,7 +10078,7 @@ class SyncAndroidInstanceImage(AbstractModel):
 
     @property
     def AndroidInstanceImageZone(self):
-        """镜像可用区
+        r"""镜像可用区
         :rtype: str
         """
         return self._AndroidInstanceImageZone
@@ -10102,7 +10102,7 @@ class SyncAndroidInstanceImage(AbstractModel):
 
 
 class SyncAndroidInstanceImageRequest(AbstractModel):
-    """SyncAndroidInstanceImage请求参数结构体
+    r"""SyncAndroidInstanceImage请求参数结构体
 
     """
 
@@ -10118,7 +10118,7 @@ class SyncAndroidInstanceImageRequest(AbstractModel):
 
     @property
     def AndroidInstanceImageId(self):
-        """安卓实例镜像 ID
+        r"""安卓实例镜像 ID
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -10129,7 +10129,7 @@ class SyncAndroidInstanceImageRequest(AbstractModel):
 
     @property
     def DestinationZones(self):
-        """目的同步可用区列表
+        r"""目的同步可用区列表
         :rtype: list of str
         """
         return self._DestinationZones
@@ -10153,7 +10153,7 @@ class SyncAndroidInstanceImageRequest(AbstractModel):
 
 
 class SyncAndroidInstanceImageResponse(AbstractModel):
-    """SyncAndroidInstanceImage返回参数结构体
+    r"""SyncAndroidInstanceImage返回参数结构体
 
     """
 
@@ -10169,7 +10169,7 @@ class SyncAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def SyncAndroidInstanceImages(self):
-        """同步安卓实例镜像列表
+        r"""同步安卓实例镜像列表
         :rtype: list of SyncAndroidInstanceImage
         """
         return self._SyncAndroidInstanceImages
@@ -10180,7 +10180,7 @@ class SyncAndroidInstanceImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10201,7 +10201,7 @@ class SyncAndroidInstanceImageResponse(AbstractModel):
 
 
 class SyncExecuteCommandOnAndroidInstancesRequest(AbstractModel):
-    """SyncExecuteCommandOnAndroidInstances请求参数结构体
+    r"""SyncExecuteCommandOnAndroidInstances请求参数结构体
 
     """
 
@@ -10217,7 +10217,7 @@ class SyncExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -10228,7 +10228,7 @@ class SyncExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
     @property
     def Command(self):
-        """shell 命令，必须是1秒内能自动结束的命令
+        r"""shell 命令，必须是1秒内能自动结束的命令
         :rtype: str
         """
         return self._Command
@@ -10252,7 +10252,7 @@ class SyncExecuteCommandOnAndroidInstancesRequest(AbstractModel):
 
 
 class SyncExecuteCommandOnAndroidInstancesResponse(AbstractModel):
-    """SyncExecuteCommandOnAndroidInstances返回参数结构体
+    r"""SyncExecuteCommandOnAndroidInstances返回参数结构体
 
     """
 
@@ -10268,7 +10268,7 @@ class SyncExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
     @property
     def CommandResults(self):
-        """命令执行结果列表
+        r"""命令执行结果列表
         :rtype: list of SyncExecuteCommandResult
         """
         return self._CommandResults
@@ -10279,7 +10279,7 @@ class SyncExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10300,7 +10300,7 @@ class SyncExecuteCommandOnAndroidInstancesResponse(AbstractModel):
 
 
 class SyncExecuteCommandResult(AbstractModel):
-    """同步执行命令结果
+    r"""同步执行命令结果
 
     """
 
@@ -10319,7 +10319,7 @@ class SyncExecuteCommandResult(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -10330,7 +10330,7 @@ class SyncExecuteCommandResult(AbstractModel):
 
     @property
     def Output(self):
-        """命令执行输出内容
+        r"""命令执行输出内容
         :rtype: str
         """
         return self._Output
@@ -10341,7 +10341,7 @@ class SyncExecuteCommandResult(AbstractModel):
 
     @property
     def Status(self):
-        """命令执行结果
+        r"""命令执行结果
         :rtype: str
         """
         return self._Status
@@ -10366,7 +10366,7 @@ class SyncExecuteCommandResult(AbstractModel):
 
 
 class TrylockWorkerRequest(AbstractModel):
-    """TrylockWorker请求参数结构体
+    r"""TrylockWorker请求参数结构体
 
     """
 
@@ -10394,7 +10394,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        r"""唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :rtype: str
         """
         return self._UserId
@@ -10405,7 +10405,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GameId(self):
-        """游戏ID
+        r"""游戏ID
         :rtype: str
         """
         return self._GameId
@@ -10416,7 +10416,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GameRegion(self):
-        """游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
+        r"""游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
         :rtype: str
         """
         return self._GameRegion
@@ -10427,7 +10427,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def SetNo(self):
-        """【废弃】资源池编号
+        r"""【废弃】资源池编号
         :rtype: int
         """
         return self._SetNo
@@ -10438,7 +10438,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        r"""【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :rtype: str
         """
         return self._UserIp
@@ -10449,7 +10449,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        r"""分组ID
         :rtype: str
         """
         return self._GroupId
@@ -10477,7 +10477,7 @@ class TrylockWorkerRequest(AbstractModel):
 
 
 class TrylockWorkerResponse(AbstractModel):
-    """TrylockWorker返回参数结构体
+    r"""TrylockWorker返回参数结构体
 
     """
 
@@ -10490,7 +10490,7 @@ class TrylockWorkerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10505,7 +10505,7 @@ class TrylockWorkerResponse(AbstractModel):
 
 
 class UninstallAndroidInstancesAppRequest(AbstractModel):
-    """UninstallAndroidInstancesApp请求参数结构体
+    r"""UninstallAndroidInstancesApp请求参数结构体
 
     """
 
@@ -10524,7 +10524,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """实例ID
+        r"""实例ID
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -10535,7 +10535,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        """应用ID
+        r"""应用ID
         :rtype: str
         """
         return self._AndroidAppId
@@ -10546,7 +10546,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        """包名
+        r"""包名
         :rtype: str
         """
         return self._PackageName
@@ -10571,7 +10571,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
 
 class UninstallAndroidInstancesAppResponse(AbstractModel):
-    """UninstallAndroidInstancesApp返回参数结构体
+    r"""UninstallAndroidInstancesApp返回参数结构体
 
     """
 
@@ -10587,7 +10587,7 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """任务集合
+        r"""任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -10598,7 +10598,7 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10619,7 +10619,7 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
 
 
 class UploadFileToAndroidInstancesRequest(AbstractModel):
-    """UploadFileToAndroidInstances请求参数结构体
+    r"""UploadFileToAndroidInstances请求参数结构体
 
     """
 
@@ -10641,7 +10641,7 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        """安卓实例 ID 列表
+        r"""安卓实例 ID 列表
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -10652,7 +10652,7 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def FileURL(self):
-        """文件下载 URL
+        r"""文件下载 URL
         :rtype: str
         """
         return self._FileURL
@@ -10663,7 +10663,7 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def DestinationDirectory(self):
-        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        r"""上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :rtype: str
         """
         return self._DestinationDirectory
@@ -10674,7 +10674,7 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
     @property
     def DestinationFileName(self):
-        """目标文件名
+        r"""目标文件名
         :rtype: str
         """
         return self._DestinationFileName
@@ -10700,7 +10700,7 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
 
 class UploadFileToAndroidInstancesResponse(AbstractModel):
-    """UploadFileToAndroidInstances返回参数结构体
+    r"""UploadFileToAndroidInstances返回参数结构体
 
     """
 
@@ -10716,7 +10716,7 @@ class UploadFileToAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """实例任务集合
+        r"""实例任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -10727,7 +10727,7 @@ class UploadFileToAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10748,7 +10748,7 @@ class UploadFileToAndroidInstancesResponse(AbstractModel):
 
 
 class UploadFilesToAndroidInstancesRequest(AbstractModel):
-    """UploadFilesToAndroidInstances请求参数结构体
+    r"""UploadFilesToAndroidInstances请求参数结构体
 
     """
 
@@ -10761,7 +10761,7 @@ class UploadFilesToAndroidInstancesRequest(AbstractModel):
 
     @property
     def Files(self):
-        """上传文件信息列表
+        r"""上传文件信息列表
         :rtype: list of AndroidInstanceUploadFile
         """
         return self._Files
@@ -10789,7 +10789,7 @@ class UploadFilesToAndroidInstancesRequest(AbstractModel):
 
 
 class UploadFilesToAndroidInstancesResponse(AbstractModel):
-    """UploadFilesToAndroidInstances返回参数结构体
+    r"""UploadFilesToAndroidInstances返回参数结构体
 
     """
 
@@ -10805,7 +10805,7 @@ class UploadFilesToAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        """实例任务集合
+        r"""实例任务集合
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -10816,7 +10816,7 @@ class UploadFilesToAndroidInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

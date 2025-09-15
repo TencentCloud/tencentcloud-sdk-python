@@ -27,7 +27,7 @@ class BriClient(AbstractClient):
 
 
     def DescribeBRI(self, request):
-        """产品不在使用，业务已经下线
+        r"""产品不在使用，业务已经下线
 
         输入业务名 (bri_num, bri_dev, bri_ip, bri_apk, bri_url, bri_social 六种之一)  及其 相应字段, 获取业务风险分数和标签。
 

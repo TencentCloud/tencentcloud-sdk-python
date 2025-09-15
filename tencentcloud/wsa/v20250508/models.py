@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class SearchProRequest(AbstractModel):
-    """SearchPro请求参数结构体
+    r"""SearchPro请求参数结构体
 
     """
 
@@ -40,7 +40,7 @@ class SearchProRequest(AbstractModel):
         :type ToTime: int
         :param _Cnt: cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
         :type Cnt: int
-        :param _Industry: Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+        :param _Industry: Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
         :type Industry: str
         """
         self._Query = None
@@ -53,7 +53,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Query(self):
-        """搜索词
+        r"""搜索词
         :rtype: str
         """
         return self._Query
@@ -64,7 +64,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
+        r"""返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
         :rtype: int
         """
         return self._Mode
@@ -75,7 +75,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Site(self):
-        """指定域名站内搜索（用于过滤自然检索结果）
+        r"""指定域名站内搜索（用于过滤自然检索结果）
 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: str
         """
@@ -87,7 +87,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def FromTime(self):
-        """起始时间（用于过滤自然检索结果），精确到秒时间戳格式
+        r"""起始时间（用于过滤自然检索结果），精确到秒时间戳格式
 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: int
         """
@@ -99,7 +99,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def ToTime(self):
-        """结束时间（用于过滤自然检索结果），精确到秒时间戳格式
+        r"""结束时间（用于过滤自然检索结果），精确到秒时间戳格式
 注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: int
         """
@@ -111,7 +111,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Cnt(self):
-        """cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+        r"""cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
         :rtype: int
         """
         return self._Cnt
@@ -122,7 +122,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Industry(self):
-        """Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+        r"""Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
         :rtype: str
         """
         return self._Industry
@@ -151,7 +151,7 @@ class SearchProRequest(AbstractModel):
 
 
 class SearchProResponse(AbstractModel):
-    """SearchPro返回参数结构体
+    r"""SearchPro返回参数结构体
 
     """
 
@@ -182,7 +182,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Query(self):
-        """原始查询语
+        r"""原始查询语
         :rtype: str
         """
         return self._Query
@@ -193,7 +193,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Pages(self):
-        """搜索结果页面详情，格式为json字符串。
+        r"""搜索结果页面详情，格式为json字符串。
 title：结果标题
 date：内容发布时间
 url：内容发布源url
@@ -213,7 +213,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Msg(self):
-        """提示信息
+        r"""提示信息
         :rtype: str
         """
         return self._Msg
@@ -224,7 +224,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

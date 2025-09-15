@@ -27,7 +27,7 @@ class IvldClient(AbstractClient):
 
 
     def AddCustomPersonImage(self, request):
-        """增加自定义人脸图片，每个自定义人物最多可包含10张人脸图片
+        r"""增加自定义人脸图片，每个自定义人物最多可包含10张人脸图片
 
         请注意，与创建自定义人物一样，图片数据优先级优于图片URL优先级
 
@@ -52,7 +52,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateCustomCategory(self, request):
-        """创建自定义人物分类信息
+        r"""创建自定义人物分类信息
 
         当L2Category为空时，将创建一级自定义分类。
         当L1Category与L2Category均不为空时，将创建二级自定义分类。请注意，**只有当一级自定义分类存在时，才可创建二级自定义分类**。
@@ -78,7 +78,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateCustomGroup(self, request):
-        """创建自定义人物库
+        r"""创建自定义人物库
 
         Bucket的格式参考为 `bucketName-123456.cos.ap-shanghai.myqcloud.com`
 
@@ -111,7 +111,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateCustomPerson(self, request):
-        """创建自定义人物。
+        r"""创建自定义人物。
 
         输入人物名称，基本信息，分类信息与人脸图片，创建自定义人物
 
@@ -138,7 +138,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateDefaultCategories(self, request):
-        """创建默认自定义人物类型
+        r"""创建默认自定义人物类型
 
         :param request: Request instance for CreateDefaultCategories.
         :type request: :class:`tencentcloud.ivld.v20210903.models.CreateDefaultCategoriesRequest`
@@ -161,7 +161,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """创建智能标签任务。
+        r"""创建智能标签任务。
 
         请注意，本接口为异步接口，**返回TaskId只代表任务创建成功，不代表任务执行成功**。
 
@@ -186,7 +186,7 @@ class IvldClient(AbstractClient):
 
 
     def CreateVideoSummaryTask(self, request):
-        """创建一个视频缩编任务。
+        r"""创建一个视频缩编任务。
 
         ### 回调事件消息通知协议
 
@@ -233,7 +233,7 @@ class IvldClient(AbstractClient):
 
 
     def DeleteCustomCategory(self, request):
-        """删除自定义分类信息
+        r"""删除自定义分类信息
 
         :param request: Request instance for DeleteCustomCategory.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DeleteCustomCategoryRequest`
@@ -256,7 +256,7 @@ class IvldClient(AbstractClient):
 
 
     def DeleteCustomPerson(self, request):
-        """删除自定义人物
+        r"""删除自定义人物
 
         :param request: Request instance for DeleteCustomPerson.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DeleteCustomPersonRequest`
@@ -279,7 +279,7 @@ class IvldClient(AbstractClient):
 
 
     def DeleteCustomPersonImage(self, request):
-        """删除自定义人脸数据
+        r"""删除自定义人脸数据
 
         :param request: Request instance for DeleteCustomPersonImage.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DeleteCustomPersonImageRequest`
@@ -302,7 +302,7 @@ class IvldClient(AbstractClient):
 
 
     def DeleteMedia(self, request):
-        """将MediaId对应的媒资文件从系统中删除。
+        r"""将MediaId对应的媒资文件从系统中删除。
 
         **请注意，本接口仅删除媒资文件，媒资文件对应的视频分析结果不会被删除**。如您需要删除结构化分析结果，请调用DeleteTask接口。
 
@@ -327,7 +327,7 @@ class IvldClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """删除任务信息
+        r"""删除任务信息
 
         请注意，本接口**不会**删除媒资文件
 
@@ -354,7 +354,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeCustomCategories(self, request):
-        """批量描述自定义人物分类信息
+        r"""批量描述自定义人物分类信息
 
         :param request: Request instance for DescribeCustomCategories.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomCategoriesRequest`
@@ -377,7 +377,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeCustomGroup(self, request):
-        """描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
+        r"""描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
 
         :param request: Request instance for DescribeCustomGroup.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomGroupRequest`
@@ -400,7 +400,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeCustomPersonDetail(self, request):
-        """描述自定义人物详细信息，包括人物信息与人物信息
+        r"""描述自定义人物详细信息，包括人物信息与人物信息
 
         :param request: Request instance for DescribeCustomPersonDetail.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomPersonDetailRequest`
@@ -423,7 +423,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeCustomPersons(self, request):
-        """批量描述自定义人物
+        r"""批量描述自定义人物
 
         :param request: Request instance for DescribeCustomPersons.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomPersonsRequest`
@@ -446,7 +446,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeMedia(self, request):
-        """描述媒资文件信息，包括媒资状态，分辨率，帧率等。
+        r"""描述媒资文件信息，包括媒资状态，分辨率，帧率等。
 
         如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
 
@@ -471,7 +471,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeMedias(self, request):
-        """依照输入条件，描述命中的媒资文件信息，包括媒资状态，分辨率，帧率等。
+        r"""依照输入条件，描述命中的媒资文件信息，包括媒资状态，分辨率，帧率等。
 
         请注意，本接口最多支持同时描述**50**个媒资文件
 
@@ -498,7 +498,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """描述智能标签任务进度。
+        r"""描述智能标签任务进度。
 
         请注意，**此接口仅返回任务执行状态信息，不返回任务执行结果**
 
@@ -523,7 +523,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """描述任务信息，如果任务成功完成，还将返回任务结果
+        r"""描述任务信息，如果任务成功完成，还将返回任务结果
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeTaskDetailRequest`
@@ -546,7 +546,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """依照输入条件，描述命中的任务信息，包括任务创建时间，处理时间信息等。
+        r"""依照输入条件，描述命中的任务信息，包括任务创建时间，处理时间信息等。
 
         请注意，本接口最多支持同时描述**50**个任务信息
 
@@ -571,7 +571,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeUsageAmount(self, request):
-        """获取用户资源使用量
+        r"""获取用户资源使用量
 
         :param request: Request instance for DescribeUsageAmount.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeUsageAmountRequest`
@@ -594,7 +594,7 @@ class IvldClient(AbstractClient):
 
 
     def DescribeVideoSummaryDetail(self, request):
-        """描述任务信息，如果任务成功完成，还将返回任务结果
+        r"""描述任务信息，如果任务成功完成，还将返回任务结果
 
         :param request: Request instance for DescribeVideoSummaryDetail.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeVideoSummaryDetailRequest`
@@ -617,7 +617,7 @@ class IvldClient(AbstractClient):
 
 
     def ImportMedia(self, request):
-        """将URL指向的媒资视频文件导入系统之中。
+        r"""将URL指向的媒资视频文件导入系统之中。
 
         **请注意，本接口为异步接口**。接口返回MediaId仅代表导入视频任务发起，不代表任务完成，您可调用读接口(DescribeMedia/DescribeMedias)接口查询MediaId
 
@@ -648,7 +648,7 @@ class IvldClient(AbstractClient):
 
 
     def ModifyCallback(self, request):
-        """用户设置对应事件的回调地址
+        r"""用户设置对应事件的回调地址
 
         ### 回调事件消息通知协议
 
@@ -705,7 +705,7 @@ class IvldClient(AbstractClient):
 
 
     def QueryCallback(self, request):
-        """查询用户回调设置
+        r"""查询用户回调设置
 
         :param request: Request instance for QueryCallback.
         :type request: :class:`tencentcloud.ivld.v20210903.models.QueryCallbackRequest`
@@ -728,7 +728,7 @@ class IvldClient(AbstractClient):
 
 
     def UpdateCustomCategory(self, request):
-        """更新自定义人物分类
+        r"""更新自定义人物分类
 
         当L2Category为空时，代表更新CategoryId对应的一级自定义人物类型以及所有二级自定义人物类型所从属的一级自定义人物类型；
         当L2Category非空时，仅更新CategoryId对应的二级自定义人物类型
@@ -754,7 +754,7 @@ class IvldClient(AbstractClient):
 
 
     def UpdateCustomPerson(self, request):
-        """更新自定义人物信息，包括姓名，简要信息，分类信息等
+        r"""更新自定义人物信息，包括姓名，简要信息，分类信息等
 
         :param request: Request instance for UpdateCustomPerson.
         :type request: :class:`tencentcloud.ivld.v20210903.models.UpdateCustomPersonRequest`

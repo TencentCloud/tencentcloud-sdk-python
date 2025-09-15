@@ -27,7 +27,7 @@ class AmeClient(AbstractClient):
 
 
     def BatchDescribeKTVMusicDetails(self, request):
-        """根据 Id 列表查询歌曲的详细信息，包含基础信息及播放信息。
+        r"""根据 Id 列表查询歌曲的详细信息，包含基础信息及播放信息。
 
         :param request: Request instance for BatchDescribeKTVMusicDetails.
         :type request: :class:`tencentcloud.ame.v20190916.models.BatchDescribeKTVMusicDetailsRequest`
@@ -50,7 +50,7 @@ class AmeClient(AbstractClient):
 
 
     def CreateKTVRobot(self, request):
-        """创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
+        r"""创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
 
         :param request: Request instance for CreateKTVRobot.
         :type request: :class:`tencentcloud.ame.v20190916.models.CreateKTVRobotRequest`
@@ -73,7 +73,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeAuthInfo(self, request):
-        """获取授权项目信息列表
+        r"""获取授权项目信息列表
 
         :param request: Request instance for DescribeAuthInfo.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeAuthInfoRequest`
@@ -96,7 +96,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeCloudMusic(self, request):
-        """获取云音乐播放信息接口
+        r"""获取云音乐播放信息接口
 
         :param request: Request instance for DescribeCloudMusic.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicRequest`
@@ -119,7 +119,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeCloudMusicPurchased(self, request):
-        """获取授权项目下已购云音乐列表
+        r"""获取授权项目下已购云音乐列表
 
         :param request: Request instance for DescribeCloudMusicPurchased.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicPurchasedRequest`
@@ -142,7 +142,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeItemById(self, request):
-        """根据歌曲ID查询歌曲信息
+        r"""根据歌曲ID查询歌曲信息
 
         :param request: Request instance for DescribeItemById.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeItemByIdRequest`
@@ -165,7 +165,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeItems(self, request):
-        """该服务后续会停用，不再建议使用
+        r"""该服务后续会停用，不再建议使用
 
         :param request: Request instance for DescribeItems.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeItemsRequest`
@@ -188,7 +188,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVMusicDetail(self, request):
-        """根据 Id 查询歌曲的详细信息，包含基础信息及播放信息。
+        r"""根据 Id 查询歌曲的详细信息，包含基础信息及播放信息。
 
         :param request: Request instance for DescribeKTVMusicDetail.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVMusicDetailRequest`
@@ -211,7 +211,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVMusicTags(self, request):
-        """获取直播互动曲库标签分组信息和标签信息
+        r"""获取直播互动曲库标签分组信息和标签信息
 
         :param request: Request instance for DescribeKTVMusicTags.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVMusicTagsRequest`
@@ -234,7 +234,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVPlaylistDetail(self, request):
-        """根据歌单 Id 获取歌单详情，包括歌单的基础信息以及歌曲列表。
+        r"""根据歌单 Id 获取歌单详情，包括歌单的基础信息以及歌曲列表。
 
         :param request: Request instance for DescribeKTVPlaylistDetail.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVPlaylistDetailRequest`
@@ -257,7 +257,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVPlaylists(self, request):
-        """获取直播互动曲库推荐歌单列表。
+        r"""获取直播互动曲库推荐歌单列表。
 
         :param request: Request instance for DescribeKTVPlaylists.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVPlaylistsRequest`
@@ -280,7 +280,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVRobots(self, request):
-        """获取机器人列表，支持 Id、状态等过滤条件。
+        r"""获取机器人列表，支持 Id、状态等过滤条件。
 
         :param request: Request instance for DescribeKTVRobots.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVRobotsRequest`
@@ -303,7 +303,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVSingerCategories(self, request):
-        """获取直播互动曲库歌手分类信息
+        r"""获取直播互动曲库歌手分类信息
 
         :param request: Request instance for DescribeKTVSingerCategories.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingerCategoriesRequest`
@@ -326,7 +326,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVSingerMusics(self, request):
-        """根据歌手id，返回该歌手下歌曲列表。
+        r"""根据歌手id，返回该歌手下歌曲列表。
 
 
 
@@ -351,7 +351,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVSingers(self, request):
-        """根据过滤条件，返回匹配的歌手列表。
+        r"""根据过滤条件，返回匹配的歌手列表。
 
         :param request: Request instance for DescribeKTVSingers.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingersRequest`
@@ -374,7 +374,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVSuggestions(self, request):
-        """获取直播互动曲库联想词
+        r"""获取直播互动曲库联想词
 
         :param request: Request instance for DescribeKTVSuggestions.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSuggestionsRequest`
@@ -397,7 +397,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVTopList(self, request):
-        """获取直播互动曲库歌曲的周榜和月榜
+        r"""获取直播互动曲库歌曲的周榜和月榜
 
         :param request: Request instance for DescribeKTVTopList.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVTopListRequest`
@@ -420,7 +420,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeLyric(self, request):
-        """根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
+        r"""根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
 
         :param request: Request instance for DescribeLyric.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeLyricRequest`
@@ -443,7 +443,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeMusic(self, request):
-        """获取曲库包歌曲播放信息接口
+        r"""获取曲库包歌曲播放信息接口
 
         :param request: Request instance for DescribeMusic.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeMusicRequest`
@@ -466,7 +466,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeMusicSaleStatus(self, request):
-        """根据音乐信息查询音乐是否在售
+        r"""根据音乐信息查询音乐是否在售
 
         :param request: Request instance for DescribeMusicSaleStatus.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeMusicSaleStatusRequest`
@@ -489,7 +489,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribePackageItems(self, request):
-        """获取曲库包下已核销歌曲列表接口
+        r"""获取曲库包下已核销歌曲列表接口
 
         :param request: Request instance for DescribePackageItems.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackageItemsRequest`
@@ -512,7 +512,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribePackages(self, request):
-        """获取已购曲库包列表接口
+        r"""获取已购曲库包列表接口
 
         :param request: Request instance for DescribePackages.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackagesRequest`
@@ -535,7 +535,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribePkgOfflineMusic(self, request):
-        """根据购买曲库包用户可查询已回退的歌曲信息
+        r"""根据购买曲库包用户可查询已回退的歌曲信息
 
         :param request: Request instance for DescribePkgOfflineMusic.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribePkgOfflineMusicRequest`
@@ -558,7 +558,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeStations(self, request):
-        """该服务后续会停用，不再建议使用
+        r"""该服务后续会停用，不再建议使用
 
         :param request: Request instance for DescribeStations.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeStationsRequest`
@@ -581,7 +581,7 @@ class AmeClient(AbstractClient):
 
 
     def DestroyKTVRobot(self, request):
-        """销毁机器人，机器人退出 RTC 房间。
+        r"""销毁机器人，机器人退出 RTC 房间。
 
         :param request: Request instance for DestroyKTVRobot.
         :type request: :class:`tencentcloud.ame.v20190916.models.DestroyKTVRobotRequest`
@@ -604,7 +604,7 @@ class AmeClient(AbstractClient):
 
 
     def ModifyMusicOnShelves(self, request):
-        """根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
+        r"""根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
 
         :param request: Request instance for ModifyMusicOnShelves.
         :type request: :class:`tencentcloud.ame.v20190916.models.ModifyMusicOnShelvesRequest`
@@ -627,7 +627,7 @@ class AmeClient(AbstractClient):
 
 
     def PutMusicOnTheShelves(self, request):
-        """根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
+        r"""根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
 
         :param request: Request instance for PutMusicOnTheShelves.
         :type request: :class:`tencentcloud.ame.v20190916.models.PutMusicOnTheShelvesRequest`
@@ -650,7 +650,7 @@ class AmeClient(AbstractClient):
 
 
     def ReportData(self, request):
-        """客户上报用户数据功能，为了更好地为用户提供优质服务
+        r"""客户上报用户数据功能，为了更好地为用户提供优质服务
 
         :param request: Request instance for ReportData.
         :type request: :class:`tencentcloud.ame.v20190916.models.ReportDataRequest`
@@ -673,7 +673,7 @@ class AmeClient(AbstractClient):
 
 
     def SearchKTVMusics(self, request):
-        """根据搜索条件，返回匹配的歌曲列表。
+        r"""根据搜索条件，返回匹配的歌曲列表。
 
         :param request: Request instance for SearchKTVMusics.
         :type request: :class:`tencentcloud.ame.v20190916.models.SearchKTVMusicsRequest`
@@ -696,7 +696,7 @@ class AmeClient(AbstractClient):
 
 
     def SyncKTVRobotCommand(self, request):
-        """下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+        r"""下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
 
         :param request: Request instance for SyncKTVRobotCommand.
         :type request: :class:`tencentcloud.ame.v20190916.models.SyncKTVRobotCommandRequest`
@@ -719,7 +719,7 @@ class AmeClient(AbstractClient):
 
 
     def TakeMusicOffShelves(self, request):
-        """根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
+        r"""根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
 
         :param request: Request instance for TakeMusicOffShelves.
         :type request: :class:`tencentcloud.ame.v20190916.models.TakeMusicOffShelvesRequest`

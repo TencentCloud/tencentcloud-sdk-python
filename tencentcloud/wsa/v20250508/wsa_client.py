@@ -27,7 +27,7 @@ class WsaClient(AbstractClient):
 
 
     def SearchPro(self, request):
-        """联网搜索API，以json形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
+        r"""联网搜索API，以JSON形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
 
         :param request: Request instance for SearchPro.
         :type request: :class:`tencentcloud.wsa.v20250508.models.SearchProRequest`

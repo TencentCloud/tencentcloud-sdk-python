@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActionFieldConfigDetail(AbstractModel):
-    """动作动态参数返回格式
+    r"""动作动态参数返回格式
 
     """
 
@@ -93,7 +93,7 @@ time   时间选择
 
     @property
     def Type(self):
-        """组件类型
+        r"""组件类型
 可选项如下：
 input  文本框
 textarea  多行文本框
@@ -112,7 +112,7 @@ time   时间选择
 
     @property
     def Lable(self):
-        """组件label
+        r"""组件label
         :rtype: str
         """
         return self._Lable
@@ -123,7 +123,7 @@ time   时间选择
 
     @property
     def Field(self):
-        """组件唯一标识， 传回后端时的key
+        r"""组件唯一标识， 传回后端时的key
         :rtype: str
         """
         return self._Field
@@ -134,7 +134,7 @@ time   时间选择
 
     @property
     def DefaultValue(self):
-        """默认值
+        r"""默认值
         :rtype: str
         """
         return self._DefaultValue
@@ -145,7 +145,7 @@ time   时间选择
 
     @property
     def Config(self):
-        """支持配置项如下,可根据需要选择配置项，不需要配置是设置空{}：
+        r"""支持配置项如下,可根据需要选择配置项，不需要配置是设置空{}：
 
 {
 
@@ -182,7 +182,7 @@ time   时间选择
 
     @property
     def Required(self):
-        """是否必填 (0 -- 否   1-- 是)
+        r"""是否必填 (0 -- 否   1-- 是)
         :rtype: int
         """
         return self._Required
@@ -193,7 +193,7 @@ time   时间选择
 
     @property
     def Validate(self):
-        """compute配置依赖的其他field满足的条件时通过校验（如：三个表单项中必须至少有一个填写了）
+        r"""compute配置依赖的其他field满足的条件时通过校验（如：三个表单项中必须至少有一个填写了）
 
 [fieldName,
 
@@ -210,7 +210,7 @@ time   时间选择
 
     @property
     def Visible(self):
-        """是否可见
+        r"""是否可见
         :rtype: str
         """
         return self._Visible
@@ -240,7 +240,7 @@ time   时间选择
 
 
 class ActionFieldConfigResult(AbstractModel):
-    """动作栏位配置结果
+    r"""动作栏位配置结果
 
     """
 
@@ -259,7 +259,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ActionId(self):
-        """动作ID
+        r"""动作ID
         :rtype: int
         """
         return self._ActionId
@@ -270,7 +270,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ActionName(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._ActionName
@@ -281,7 +281,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ConfigDetail(self):
-        """动作对应的栏位配置详情
+        r"""动作对应的栏位配置详情
         :rtype: list of ActionFieldConfigDetail
         """
         return self._ConfigDetail
@@ -311,7 +311,7 @@ class ActionFieldConfigResult(AbstractModel):
 
 
 class ActionFilter(AbstractModel):
-    """动作库筛选栏位
+    r"""动作库筛选栏位
 
     """
 
@@ -327,7 +327,7 @@ class ActionFilter(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键字
+        r"""关键字
         :rtype: str
         """
         return self._Keyword
@@ -338,7 +338,7 @@ class ActionFilter(AbstractModel):
 
     @property
     def Values(self):
-        """搜索内容值
+        r"""搜索内容值
         :rtype: list of str
         """
         return self._Values
@@ -362,7 +362,7 @@ class ActionFilter(AbstractModel):
 
 
 class ActionLibraryListResult(AbstractModel):
-    """动作库数据列表
+    r"""动作库数据列表
 
     """
 
@@ -435,7 +435,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionName(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._ActionName
@@ -446,7 +446,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def Desc(self):
-        """动作描述
+        r"""动作描述
         :rtype: str
         """
         return self._Desc
@@ -457,7 +457,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionType(self):
-        """动作类型。范围：["平台","自定义"]
+        r"""动作类型。范围：["平台","自定义"]
         :rtype: str
         """
         return self._ActionType
@@ -468,7 +468,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -479,7 +479,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def Creator(self):
-        """创建人
+        r"""创建人
         :rtype: str
         """
         return self._Creator
@@ -490,7 +490,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -501,7 +501,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def RiskDesc(self):
-        """动作风险描述
+        r"""动作风险描述
         :rtype: str
         """
         return self._RiskDesc
@@ -512,7 +512,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionId(self):
-        """动作ID
+        r"""动作ID
         :rtype: int
         """
         return self._ActionId
@@ -523,7 +523,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def AttributeId(self):
-        """动作属性（ 1：故障  2：恢复）
+        r"""动作属性（ 1：故障  2：恢复）
         :rtype: int
         """
         return self._AttributeId
@@ -534,7 +534,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def RelationActionId(self):
-        """关联的动作ID
+        r"""关联的动作ID
         :rtype: int
         """
         return self._RelationActionId
@@ -545,7 +545,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionCommand(self):
-        """操作命令
+        r"""操作命令
         :rtype: str
         """
         return self._ActionCommand
@@ -556,7 +556,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionCommandType(self):
-        """动作类型（0 -- tat   1 -- 云API）
+        r"""动作类型（0 -- tat   1 -- 云API）
         :rtype: int
         """
         return self._ActionCommandType
@@ -567,7 +567,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionContent(self):
-        """自定义动作的参数，json string
+        r"""自定义动作的参数，json string
         :rtype: str
         """
         return self._ActionContent
@@ -578,7 +578,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ResourceType(self):
-        """二级分类
+        r"""二级分类
         :rtype: str
         """
         return self._ResourceType
@@ -589,7 +589,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionDetail(self):
-        """动作描述
+        r"""动作描述
         :rtype: str
         """
         return self._ActionDetail
@@ -600,7 +600,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def IsAllowed(self):
-        """是否允许当前账号使用
+        r"""是否允许当前账号使用
         :rtype: bool
         """
         return self._IsAllowed
@@ -611,7 +611,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ActionBestCase(self):
-        """最佳实践案例的链接地址
+        r"""最佳实践案例的链接地址
         :rtype: str
         """
         return self._ActionBestCase
@@ -622,7 +622,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ObjectType(self):
-        """对象类型
+        r"""对象类型
         :rtype: str
         """
         return self._ObjectType
@@ -633,7 +633,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def MetricIdList(self):
-        """监控指标ID列表
+        r"""监控指标ID列表
         :rtype: list of int non-negative
         """
         return self._MetricIdList
@@ -644,7 +644,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def IsNewAction(self):
-        """是否是新动作
+        r"""是否是新动作
         :rtype: bool
         """
         return self._IsNewAction
@@ -655,7 +655,7 @@ class ActionLibraryListResult(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -698,7 +698,7 @@ class ActionLibraryListResult(AbstractModel):
 
 
 class ApmServiceInfo(AbstractModel):
-    """应用性能监控产品中应用信息
+    r"""应用性能监控产品中应用信息
 
     """
 
@@ -717,7 +717,7 @@ class ApmServiceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务ID
+        r"""业务ID
         :rtype: str
         """
         return self._InstanceId
@@ -728,7 +728,7 @@ class ApmServiceInfo(AbstractModel):
 
     @property
     def ServiceNameList(self):
-        """应用名称
+        r"""应用名称
         :rtype: list of str
         """
         return self._ServiceNameList
@@ -739,7 +739,7 @@ class ApmServiceInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._RegionId
@@ -764,7 +764,7 @@ class ApmServiceInfo(AbstractModel):
 
 
 class CreateTaskFromActionRequest(AbstractModel):
-    """CreateTaskFromAction请求参数结构体
+    r"""CreateTaskFromAction请求参数结构体
 
     """
 
@@ -798,7 +798,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionId(self):
-        """动作ID，可从动作列表接口DescribeActionLibraryList获取
+        r"""动作ID，可从动作列表接口DescribeActionLibraryList获取
         :rtype: int
         """
         return self._TaskActionId
@@ -809,7 +809,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskInstances(self):
-        """参与演练的实例ID
+        r"""参与演练的实例ID
         :rtype: list of str
         """
         return self._TaskInstances
@@ -820,7 +820,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """演练名称，不填则默认取动作名称
+        r"""演练名称，不填则默认取动作名称
         :rtype: str
         """
         return self._TaskTitle
@@ -831,7 +831,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """演练描述，不填则默认取动作描述
+        r"""演练描述，不填则默认取动作描述
         :rtype: str
         """
         return self._TaskDescription
@@ -842,7 +842,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionGeneralConfiguration(self):
-        """动作通用参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数
+        r"""动作通用参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数
         :rtype: str
         """
         return self._TaskActionGeneralConfiguration
@@ -853,7 +853,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionCustomConfiguration(self):
-        """动作自定义参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数，注意：必填参数，是没有默认值的 ，务必保证传入有效值
+        r"""动作自定义参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数，注意：必填参数，是没有默认值的 ，务必保证传入有效值
         :rtype: str
         """
         return self._TaskActionCustomConfiguration
@@ -864,7 +864,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskPauseDuration(self):
-        """演练自动暂停时间，单位分钟, 不填则默认为60
+        r"""演练自动暂停时间，单位分钟, 不填则默认为60
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -875,7 +875,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskTags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagWithCreate
         """
         return self._TaskTags
@@ -910,7 +910,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
 
 class CreateTaskFromActionResponse(AbstractModel):
-    """CreateTaskFromAction返回参数结构体
+    r"""CreateTaskFromAction返回参数结构体
 
     """
 
@@ -926,7 +926,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """创建成功的演练ID
+        r"""创建成功的演练ID
         :rtype: int
         """
         return self._TaskId
@@ -937,7 +937,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -953,7 +953,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
 
 class CreateTaskFromMultiActionRequest(AbstractModel):
-    """CreateTaskFromMultiAction请求参数结构体
+    r"""CreateTaskFromMultiAction请求参数结构体
 
     """
 
@@ -998,7 +998,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskInstances(self):
-        """参与演练的实例ID
+        r"""参与演练的实例ID
 CVM ins-xxx
 MySQL cdb-xxx
 CLB lb-xxx
@@ -1029,7 +1029,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskTitle(self):
-        """演练名称，不填则默认取动作名称
+        r"""演练名称，不填则默认取动作名称
         :rtype: str
         """
         return self._TaskTitle
@@ -1040,7 +1040,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskDescription(self):
-        """演练描述，不填则默认取动作描述
+        r"""演练描述，不填则默认取动作描述
         :rtype: str
         """
         return self._TaskDescription
@@ -1051,7 +1051,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskPauseDuration(self):
-        """演练自动暂停时间，单位分钟, 不填则默认为60
+        r"""演练自动暂停时间，单位分钟, 不填则默认为60
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -1062,7 +1062,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskAction(self):
-        """演练动作组配置
+        r"""演练动作组配置
         :rtype: list of TaskGroupForAction
         """
         return self._TaskAction
@@ -1094,7 +1094,7 @@ RabbitMQ amqp-xxxx
 
 
 class CreateTaskFromMultiActionResponse(AbstractModel):
-    """CreateTaskFromMultiAction返回参数结构体
+    r"""CreateTaskFromMultiAction返回参数结构体
 
     """
 
@@ -1110,7 +1110,7 @@ class CreateTaskFromMultiActionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """创建成功的演练ID
+        r"""创建成功的演练ID
         :rtype: int
         """
         return self._TaskId
@@ -1121,7 +1121,7 @@ class CreateTaskFromMultiActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1137,7 +1137,7 @@ class CreateTaskFromMultiActionResponse(AbstractModel):
 
 
 class CreateTaskFromTemplateRequest(AbstractModel):
-    """CreateTaskFromTemplate请求参数结构体
+    r"""CreateTaskFromTemplate请求参数结构体
 
     """
 
@@ -1153,7 +1153,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """从经验库中查询到的经验模板ID
+        r"""从经验库中查询到的经验模板ID
         :rtype: int
         """
         return self._TemplateId
@@ -1164,7 +1164,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
     @property
     def TaskConfig(self):
-        """演练的配置参数
+        r"""演练的配置参数
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TaskConfig`
         """
         return self._TaskConfig
@@ -1190,7 +1190,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
 
 class CreateTaskFromTemplateResponse(AbstractModel):
-    """CreateTaskFromTemplate返回参数结构体
+    r"""CreateTaskFromTemplate返回参数结构体
 
     """
 
@@ -1206,7 +1206,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """创建成功的演练ID
+        r"""创建成功的演练ID
         :rtype: int
         """
         return self._TaskId
@@ -1217,7 +1217,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1233,7 +1233,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
 
 class DeleteTaskRequest(AbstractModel):
-    """DeleteTask请求参数结构体
+    r"""DeleteTask请求参数结构体
 
     """
 
@@ -1246,7 +1246,7 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -1269,7 +1269,7 @@ class DeleteTaskRequest(AbstractModel):
 
 
 class DeleteTaskResponse(AbstractModel):
-    """DeleteTask返回参数结构体
+    r"""DeleteTask返回参数结构体
 
     """
 
@@ -1282,7 +1282,7 @@ class DeleteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1297,7 +1297,7 @@ class DeleteTaskResponse(AbstractModel):
 
 
 class DescribeActionFieldConfigListRequest(AbstractModel):
-    """DescribeActionFieldConfigList请求参数结构体
+    r"""DescribeActionFieldConfigList请求参数结构体
 
     """
 
@@ -1313,7 +1313,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
     @property
     def ActionIds(self):
-        """动作ID列表
+        r"""动作ID列表
         :rtype: list of int non-negative
         """
         return self._ActionIds
@@ -1324,7 +1324,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -1348,7 +1348,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
 
 class DescribeActionFieldConfigListResponse(AbstractModel):
-    """DescribeActionFieldConfigList返回参数结构体
+    r"""DescribeActionFieldConfigList返回参数结构体
 
     """
 
@@ -1370,7 +1370,7 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
 
     @property
     def Common(self):
-        """通用栏位配置列表
+        r"""通用栏位配置列表
         :rtype: list of ActionFieldConfigResult
         """
         return self._Common
@@ -1381,7 +1381,7 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
 
     @property
     def Results(self):
-        """动作栏位配置列表
+        r"""动作栏位配置列表
         :rtype: list of ActionFieldConfigResult
         """
         return self._Results
@@ -1392,7 +1392,7 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
 
     @property
     def ResourceOffline(self):
-        """资源下线信息
+        r"""资源下线信息
         :rtype: list of ResourceOffline
         """
         return self._ResourceOffline
@@ -1403,7 +1403,7 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1436,7 +1436,7 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
 
 
 class DescribeActionLibraryListRequest(AbstractModel):
-    """DescribeActionLibraryList请求参数结构体
+    r"""DescribeActionLibraryList请求参数结构体
 
     """
 
@@ -1464,7 +1464,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """0-100
+        r"""0-100
         :rtype: int
         """
         return self._Limit
@@ -1475,7 +1475,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """默认值0
+        r"""默认值0
         :rtype: int
         """
         return self._Offset
@@ -1486,7 +1486,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def ObjectType(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectType
@@ -1497,7 +1497,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Keyword取值{"动作名称": "a_title", "描述": "a_desc", "动作类型": "a_type", "创建时间": "a_create_time", "二级分类": "a_resource_type"}
+        r"""Keyword取值{"动作名称": "a_title", "描述": "a_desc", "动作类型": "a_type", "创建时间": "a_create_time", "二级分类": "a_resource_type"}
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -1508,7 +1508,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Attribute(self):
-        """动作分类，1表示故障动作，2表示恢复动作
+        r"""动作分类，1表示故障动作，2表示恢复动作
         :rtype: list of int
         """
         return self._Attribute
@@ -1519,7 +1519,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def ActionIds(self):
-        """筛选项 -动作ID
+        r"""筛选项 -动作ID
         :rtype: list of int non-negative
         """
         return self._ActionIds
@@ -1552,7 +1552,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
 
 class DescribeActionLibraryListResponse(AbstractModel):
-    """DescribeActionLibraryList返回参数结构体
+    r"""DescribeActionLibraryList返回参数结构体
 
     """
 
@@ -1571,7 +1571,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def Results(self):
-        """查询结果列表
+        r"""查询结果列表
         :rtype: list of ActionLibraryListResult
         """
         return self._Results
@@ -1582,7 +1582,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合记录条数
+        r"""符合记录条数
         :rtype: int
         """
         return self._Total
@@ -1593,7 +1593,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1615,7 +1615,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
 
 class DescribeObjectTypeListRequest(AbstractModel):
-    """DescribeObjectTypeList请求参数结构体
+    r"""DescribeObjectTypeList请求参数结构体
 
     """
 
@@ -1631,7 +1631,7 @@ class DescribeObjectTypeListRequest(AbstractModel):
 
     @property
     def SupportType(self):
-        """所支持的对象
+        r"""所支持的对象
 0：全平台产品
 1：平台接入的对象
 2：应用所支持的部分对象
@@ -1657,7 +1657,7 @@ class DescribeObjectTypeListRequest(AbstractModel):
 
 
 class DescribeObjectTypeListResponse(AbstractModel):
-    """DescribeObjectTypeList返回参数结构体
+    r"""DescribeObjectTypeList返回参数结构体
 
     """
 
@@ -1673,7 +1673,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
     @property
     def ObjectTypeList(self):
-        """对象类型列表
+        r"""对象类型列表
         :rtype: list of ObjectType
         """
         return self._ObjectTypeList
@@ -1684,7 +1684,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1705,7 +1705,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
 
 class DescribePolicy(AbstractModel):
-    """查询-保护策略
+    r"""查询-保护策略
 
     """
 
@@ -1727,7 +1727,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyIdList(self):
-        """保护策略ID列表
+        r"""保护策略ID列表
         :rtype: list of str
         """
         return self._TaskPolicyIdList
@@ -1738,7 +1738,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyStatus(self):
-        """保护策略状态
+        r"""保护策略状态
         :rtype: str
         """
         return self._TaskPolicyStatus
@@ -1749,7 +1749,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyRule(self):
-        """策略规则
+        r"""策略规则
         :rtype: str
         """
         return self._TaskPolicyRule
@@ -1760,7 +1760,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyDealType(self):
-        """护栏策略生效处理策略 1:顺序执行，2:暂停
+        r"""护栏策略生效处理策略 1:顺序执行，2:暂停
         :rtype: int
         """
         return self._TaskPolicyDealType
@@ -1786,7 +1786,7 @@ class DescribePolicy(AbstractModel):
 
 
 class DescribeTaskExecuteLogsRequest(AbstractModel):
-    """DescribeTaskExecuteLogs请求参数结构体
+    r"""DescribeTaskExecuteLogs请求参数结构体
 
     """
 
@@ -1805,7 +1805,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -1816,7 +1816,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回的内容行数
+        r"""返回的内容行数
         :rtype: int
         """
         return self._Limit
@@ -1827,7 +1827,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """日志起始的行数。
+        r"""日志起始的行数。
         :rtype: int
         """
         return self._Offset
@@ -1852,7 +1852,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
 
 class DescribeTaskExecuteLogsResponse(AbstractModel):
-    """DescribeTaskExecuteLogs返回参数结构体
+    r"""DescribeTaskExecuteLogs返回参数结构体
 
     """
 
@@ -1868,7 +1868,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
     @property
     def LogMessage(self):
-        """日志数据
+        r"""日志数据
         :rtype: list of str
         """
         return self._LogMessage
@@ -1879,7 +1879,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1895,7 +1895,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
 
 class DescribeTaskListRequest(AbstractModel):
-    """DescribeTaskList请求参数结构体
+    r"""DescribeTaskList请求参数结构体
 
     """
 
@@ -1953,7 +1953,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        r"""分页Limit
         :rtype: int
         """
         return self._Limit
@@ -1964,7 +1964,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -1975,7 +1975,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """演练名称
+        r"""演练名称
         :rtype: str
         """
         return self._TaskTitle
@@ -1986,7 +1986,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskTag(self):
-        """标签键
+        r"""标签键
         :rtype: list of str
         """
         return self._TaskTag
@@ -1997,7 +1997,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
+        r"""任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
         :rtype: int
         """
         return self._TaskStatus
@@ -2008,7 +2008,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStartTime(self):
-        """开始时间，固定格式%Y-%m-%d %H:%M:%S
+        r"""开始时间，固定格式%Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskStartTime
@@ -2019,7 +2019,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskEndTime(self):
-        """结束时间，固定格式%Y-%m-%d %H:%M:%S
+        r"""结束时间，固定格式%Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskEndTime
@@ -2030,7 +2030,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskUpdateTime(self):
-        """更新时间，固定格式%Y-%m-%d %H:%M:%S
+        r"""更新时间，固定格式%Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -2041,7 +2041,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签对
+        r"""标签对
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -2052,7 +2052,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选条件
+        r"""筛选条件
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -2063,7 +2063,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """演练ID
+        r"""演练ID
         :rtype: list of int non-negative
         """
         return self._TaskId
@@ -2074,7 +2074,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """关联应用ID筛选
+        r"""关联应用ID筛选
         :rtype: list of str
         """
         return self._ApplicationId
@@ -2085,7 +2085,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """关联应用筛选
+        r"""关联应用筛选
         :rtype: list of str
         """
         return self._ApplicationName
@@ -2096,7 +2096,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStatusList(self):
-        """任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
+        r"""任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
         :rtype: list of int non-negative
         """
         return self._TaskStatusList
@@ -2107,7 +2107,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchId(self):
-        """架构ID
+        r"""架构ID
         :rtype: str
         """
         return self._ArchId
@@ -2118,7 +2118,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchName(self):
-        """架构名称
+        r"""架构名称
         :rtype: str
         """
         return self._ArchName
@@ -2166,7 +2166,7 @@ class DescribeTaskListRequest(AbstractModel):
 
 
 class DescribeTaskListResponse(AbstractModel):
-    """DescribeTaskList返回参数结构体
+    r"""DescribeTaskList返回参数结构体
 
     """
 
@@ -2185,7 +2185,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """无
+        r"""无
         :rtype: list of TaskListItem
         """
         return self._TaskList
@@ -2196,7 +2196,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """列表数量
+        r"""列表数量
         :rtype: int
         """
         return self._Total
@@ -2207,7 +2207,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2229,7 +2229,7 @@ class DescribeTaskListResponse(AbstractModel):
 
 
 class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
-    """DescribeTaskPolicyTriggerLog请求参数结构体
+    r"""DescribeTaskPolicyTriggerLog请求参数结构体
 
     """
 
@@ -2248,7 +2248,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """演练ID
+        r"""演练ID
         :rtype: int
         """
         return self._TaskId
@@ -2259,7 +2259,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._Page
@@ -2270,7 +2270,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页数量
+        r"""页数量
         :rtype: int
         """
         return self._PageSize
@@ -2295,7 +2295,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
 
 class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
-    """DescribeTaskPolicyTriggerLog返回参数结构体
+    r"""DescribeTaskPolicyTriggerLog返回参数结构体
 
     """
 
@@ -2311,7 +2311,7 @@ class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
 
     @property
     def TriggerLogs(self):
-        """触发日志
+        r"""触发日志
         :rtype: list of PolicyTriggerLog
         """
         return self._TriggerLogs
@@ -2322,7 +2322,7 @@ class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2343,7 +2343,7 @@ class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
 
 
 class DescribeTaskRequest(AbstractModel):
-    """DescribeTask请求参数结构体
+    r"""DescribeTask请求参数结构体
 
     """
 
@@ -2356,7 +2356,7 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -2379,7 +2379,7 @@ class DescribeTaskRequest(AbstractModel):
 
 
 class DescribeTaskResponse(AbstractModel):
-    """DescribeTask返回参数结构体
+    r"""DescribeTask返回参数结构体
 
     """
 
@@ -2399,7 +2399,7 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def Task(self):
-        """任务信息
+        r"""任务信息
         :rtype: :class:`tencentcloud.cfg.v20210820.models.Task`
         """
         return self._Task
@@ -2410,7 +2410,7 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def ReportInfo(self):
-        """任务对应的演练报告信息，null表示未导出报告
+        r"""任务对应的演练报告信息，null表示未导出报告
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TaskReportInfo`
         """
@@ -2422,7 +2422,7 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2443,7 +2443,7 @@ class DescribeTaskResponse(AbstractModel):
 
 
 class DescribeTemplateListRequest(AbstractModel):
-    """DescribeTemplateList请求参数结构体
+    r"""DescribeTemplateList请求参数结构体
 
     """
 
@@ -2480,7 +2480,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit, 最大值100
+        r"""分页Limit, 最大值100
         :rtype: int
         """
         return self._Limit
@@ -2491,7 +2491,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        r"""分页Offset
         :rtype: int
         """
         return self._Offset
@@ -2502,7 +2502,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Title(self):
-        """演练名称
+        r"""演练名称
         :rtype: str
         """
         return self._Title
@@ -2513,7 +2513,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """标签键
+        r"""标签键
         :rtype: list of str
         """
         return self._Tag
@@ -2524,7 +2524,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def IsUsed(self):
-        """状态，1---使用中， 2---停用
+        r"""状态，1---使用中， 2---停用
         :rtype: int
         """
         return self._IsUsed
@@ -2535,7 +2535,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签对
+        r"""标签对
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -2546,7 +2546,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def TemplateSource(self):
-        """经验来源 0-自建 1-专家推荐
+        r"""经验来源 0-自建 1-专家推荐
         :rtype: int
         """
         return self._TemplateSource
@@ -2557,7 +2557,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def TemplateIdList(self):
-        """经验ID
+        r"""经验ID
         :rtype: list of int
         """
         return self._TemplateIdList
@@ -2568,7 +2568,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数
+        r"""过滤参数
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -2609,7 +2609,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
 
 class DescribeTemplateListResponse(AbstractModel):
-    """DescribeTemplateList返回参数结构体
+    r"""DescribeTemplateList返回参数结构体
 
     """
 
@@ -2628,7 +2628,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def TemplateList(self):
-        """经验库列表
+        r"""经验库列表
         :rtype: list of TemplateListItem
         """
         return self._TemplateList
@@ -2639,7 +2639,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """列表数量
+        r"""列表数量
         :rtype: int
         """
         return self._Total
@@ -2650,7 +2650,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2672,7 +2672,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
 
 class DescribeTemplateRequest(AbstractModel):
-    """DescribeTemplate请求参数结构体
+    r"""DescribeTemplate请求参数结构体
 
     """
 
@@ -2685,7 +2685,7 @@ class DescribeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """经验库ID
+        r"""经验库ID
         :rtype: int
         """
         return self._TemplateId
@@ -2708,7 +2708,7 @@ class DescribeTemplateRequest(AbstractModel):
 
 
 class DescribeTemplateResponse(AbstractModel):
-    """DescribeTemplate返回参数结构体
+    r"""DescribeTemplate返回参数结构体
 
     """
 
@@ -2724,7 +2724,7 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """经验库详情
+        r"""经验库详情
         :rtype: :class:`tencentcloud.cfg.v20210820.models.Template`
         """
         return self._Template
@@ -2735,7 +2735,7 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2753,7 +2753,7 @@ class DescribeTemplateResponse(AbstractModel):
 
 
 class ExecuteTaskInstanceRequest(AbstractModel):
-    """ExecuteTaskInstance请求参数结构体
+    r"""ExecuteTaskInstance请求参数结构体
 
     """
 
@@ -2781,7 +2781,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -2792,7 +2792,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskActionId(self):
-        """任务动作ID
+        r"""任务动作ID
         :rtype: int
         """
         return self._TaskActionId
@@ -2803,7 +2803,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskInstanceIds(self):
-        """任务动作实例ID
+        r"""任务动作实例ID
         :rtype: list of int non-negative
         """
         return self._TaskInstanceIds
@@ -2814,7 +2814,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def IsOperateAll(self):
-        """是否操作整个任务
+        r"""是否操作整个任务
         :rtype: bool
         """
         return self._IsOperateAll
@@ -2825,7 +2825,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """操作类型：（1--启动   2--执行  3--跳过   5--重试）
+        r"""操作类型：（1--启动   2--执行  3--跳过   5--重试）
         :rtype: int
         """
         return self._ActionType
@@ -2836,7 +2836,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskGroupId(self):
-        """动作组ID
+        r"""动作组ID
         :rtype: int
         """
         return self._TaskGroupId
@@ -2864,7 +2864,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
 
 class ExecuteTaskInstanceResponse(AbstractModel):
-    """ExecuteTaskInstance返回参数结构体
+    r"""ExecuteTaskInstance返回参数结构体
 
     """
 
@@ -2877,7 +2877,7 @@ class ExecuteTaskInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2892,7 +2892,7 @@ class ExecuteTaskInstanceResponse(AbstractModel):
 
 
 class ExecuteTaskRequest(AbstractModel):
-    """ExecuteTask请求参数结构体
+    r"""ExecuteTask请求参数结构体
 
     """
 
@@ -2905,7 +2905,7 @@ class ExecuteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """需要执行的任务ID
+        r"""需要执行的任务ID
         :rtype: int
         """
         return self._TaskId
@@ -2928,7 +2928,7 @@ class ExecuteTaskRequest(AbstractModel):
 
 
 class ExecuteTaskResponse(AbstractModel):
-    """ExecuteTask返回参数结构体
+    r"""ExecuteTask返回参数结构体
 
     """
 
@@ -2941,7 +2941,7 @@ class ExecuteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2956,7 +2956,7 @@ class ExecuteTaskResponse(AbstractModel):
 
 
 class ModifyTaskRunStatusRequest(AbstractModel):
-    """ModifyTaskRunStatus请求参数结构体
+    r"""ModifyTaskRunStatus请求参数结构体
 
     """
 
@@ -2984,7 +2984,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -2995,7 +2995,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态, 1001--未开始 1002--进行中（执行）1003--进行中（暂停）1004--执行结束
+        r"""任务状态, 1001--未开始 1002--进行中（执行）1003--进行中（暂停）1004--执行结束
         :rtype: int
         """
         return self._Status
@@ -3006,7 +3006,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def IsExpect(self):
-        """执行结果是否符合预期（当前扭转状态为执行结束时，需要必传此字段）
+        r"""执行结果是否符合预期（当前扭转状态为执行结束时，需要必传此字段）
         :rtype: bool
         """
         return self._IsExpect
@@ -3017,7 +3017,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Summary(self):
-        """演习结论（当演习状态转变为执行结束时，需要填写此字段）
+        r"""演习结论（当演习状态转变为执行结束时，需要填写此字段）
         :rtype: str
         """
         return self._Summary
@@ -3028,7 +3028,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Issue(self):
-        """问题以及改进
+        r"""问题以及改进
         :rtype: str
         """
         return self._Issue
@@ -3039,7 +3039,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Record(self):
-        """演练记录
+        r"""演练记录
         :rtype: str
         """
         return self._Record
@@ -3067,7 +3067,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
 
 class ModifyTaskRunStatusResponse(AbstractModel):
-    """ModifyTaskRunStatus返回参数结构体
+    r"""ModifyTaskRunStatus返回参数结构体
 
     """
 
@@ -3080,7 +3080,7 @@ class ModifyTaskRunStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3095,7 +3095,7 @@ class ModifyTaskRunStatusResponse(AbstractModel):
 
 
 class ObjectType(AbstractModel):
-    """对象类型
+    r"""对象类型
 
     """
 
@@ -3135,7 +3135,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -3146,7 +3146,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectTypeTitle(self):
-        """对象类型名称
+        r"""对象类型名称
         :rtype: str
         """
         return self._ObjectTypeTitle
@@ -3157,7 +3157,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectTypeLevelOne(self):
-        """对象类型第一级
+        r"""对象类型第一级
         :rtype: str
         """
         return self._ObjectTypeLevelOne
@@ -3168,7 +3168,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectTypeParams(self):
-        """对象类型参数
+        r"""对象类型参数
         :rtype: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeConfig`
         """
         return self._ObjectTypeParams
@@ -3179,7 +3179,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectTypeJsonParse(self):
-        """tke接口json解析规则，null不需要解析
+        r"""tke接口json解析规则，null不需要解析
         :rtype: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeJsonParse`
         """
         return self._ObjectTypeJsonParse
@@ -3190,7 +3190,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectHasNewAction(self):
-        """是否包含新动作
+        r"""是否包含新动作
         :rtype: bool
         """
         return self._ObjectHasNewAction
@@ -3201,7 +3201,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectPlatformName(self):
-        """对应在平台架构图中的资源类型名称
+        r"""对应在平台架构图中的资源类型名称
         :rtype: str
         """
         return self._ObjectPlatformName
@@ -3212,7 +3212,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ObjectSupportType(self):
-        """1：平台支持的对象 2：应用支持的部分对象
+        r"""1：平台支持的对象 2：应用支持的部分对象
         :rtype: int
         """
         return self._ObjectSupportType
@@ -3223,7 +3223,7 @@ class ObjectType(AbstractModel):
 
     @property
     def ArchLayer(self):
-        """1.接入层 2.逻辑层 3. 数据层
+        r"""1.接入层 2.逻辑层 3. 数据层
         :rtype: int
         """
         return self._ArchLayer
@@ -3234,7 +3234,7 @@ class ObjectType(AbstractModel):
 
     @property
     def IsArchSvg(self):
-        """是否支持演练生图
+        r"""是否支持演练生图
         :rtype: bool
         """
         return self._IsArchSvg
@@ -3270,7 +3270,7 @@ class ObjectType(AbstractModel):
 
 
 class ObjectTypeConfig(AbstractModel):
-    """对象类型配置
+    r"""对象类型配置
 
     """
 
@@ -3286,7 +3286,7 @@ class ObjectTypeConfig(AbstractModel):
 
     @property
     def Key(self):
-        """主键
+        r"""主键
         :rtype: str
         """
         return self._Key
@@ -3297,7 +3297,7 @@ class ObjectTypeConfig(AbstractModel):
 
     @property
     def Fields(self):
-        """对象类型配置字段列表
+        r"""对象类型配置字段列表
         :rtype: list of ObjectTypeConfigFields
         """
         return self._Fields
@@ -3326,7 +3326,7 @@ class ObjectTypeConfig(AbstractModel):
 
 
 class ObjectTypeConfigFields(AbstractModel):
-    """对象类型字段类型
+    r"""对象类型字段类型
 
     """
 
@@ -3351,7 +3351,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
     @property
     def Key(self):
-        """instanceId
+        r"""instanceId
         :rtype: str
         """
         return self._Key
@@ -3362,7 +3362,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
     @property
     def Header(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._Header
@@ -3373,7 +3373,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
     @property
     def Transfer(self):
-        """字段值是否需要转译，当不需要转译时，此字段返回null
+        r"""字段值是否需要转译，当不需要转译时，此字段返回null
         :rtype: str
         """
         return self._Transfer
@@ -3384,7 +3384,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
     @property
     def JsonParse(self):
-        """tke的pod字段信息解析
+        r"""tke的pod字段信息解析
         :rtype: str
         """
         return self._JsonParse
@@ -3395,7 +3395,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
     @property
     def Type(self):
-        """字段类型 0:str 1:list
+        r"""字段类型 0:str 1:list
         :rtype: int
         """
         return self._Type
@@ -3422,7 +3422,7 @@ class ObjectTypeConfigFields(AbstractModel):
 
 
 class ObjectTypeJsonParse(AbstractModel):
-    """标准pod对象类型下拉数据的解析
+    r"""标准pod对象类型下拉数据的解析
 
     """
 
@@ -3444,7 +3444,7 @@ class ObjectTypeJsonParse(AbstractModel):
 
     @property
     def NameSpace(self):
-        """命名空间
+        r"""命名空间
         :rtype: str
         """
         return self._NameSpace
@@ -3455,7 +3455,7 @@ class ObjectTypeJsonParse(AbstractModel):
 
     @property
     def WorkloadName(self):
-        """工作负载名称
+        r"""工作负载名称
         :rtype: str
         """
         return self._WorkloadName
@@ -3466,7 +3466,7 @@ class ObjectTypeJsonParse(AbstractModel):
 
     @property
     def LanIP(self):
-        """节点IP
+        r"""节点IP
         :rtype: str
         """
         return self._LanIP
@@ -3477,7 +3477,7 @@ class ObjectTypeJsonParse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """节点ID
+        r"""节点ID
         :rtype: str
         """
         return self._InstanceId
@@ -3503,7 +3503,7 @@ class ObjectTypeJsonParse(AbstractModel):
 
 
 class PolicyTriggerLog(AbstractModel):
-    """护栏策略触发日志
+    r"""护栏策略触发日志
 
     """
 
@@ -3528,7 +3528,7 @@ class PolicyTriggerLog(AbstractModel):
 
     @property
     def TaskId(self):
-        """演练ID
+        r"""演练ID
         :rtype: int
         """
         return self._TaskId
@@ -3539,7 +3539,7 @@ class PolicyTriggerLog(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -3550,7 +3550,7 @@ class PolicyTriggerLog(AbstractModel):
 
     @property
     def TriggerType(self):
-        """类型，0--触发，1--恢复
+        r"""类型，0--触发，1--恢复
         :rtype: int
         """
         return self._TriggerType
@@ -3561,7 +3561,7 @@ class PolicyTriggerLog(AbstractModel):
 
     @property
     def Content(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Content
@@ -3572,7 +3572,7 @@ class PolicyTriggerLog(AbstractModel):
 
     @property
     def CreatTime(self):
-        """触发时间
+        r"""触发时间
         :rtype: str
         """
         return self._CreatTime
@@ -3599,7 +3599,7 @@ class PolicyTriggerLog(AbstractModel):
 
 
 class ResourceOffline(AbstractModel):
-    """资源下线
+    r"""资源下线
 
     """
 
@@ -3618,7 +3618,7 @@ class ResourceOffline(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: int
         """
         return self._ResourceId
@@ -3629,7 +3629,7 @@ class ResourceOffline(AbstractModel):
 
     @property
     def ResourceDeleteTime(self):
-        """资源下线时间
+        r"""资源下线时间
         :rtype: str
         """
         return self._ResourceDeleteTime
@@ -3640,7 +3640,7 @@ class ResourceOffline(AbstractModel):
 
     @property
     def ResourceDeleteMessage(self):
-        """资源下线提示
+        r"""资源下线提示
         :rtype: str
         """
         return self._ResourceDeleteMessage
@@ -3665,7 +3665,7 @@ class ResourceOffline(AbstractModel):
 
 
 class TagWithCreate(AbstractModel):
-    """用于传入创建、编辑标签
+    r"""用于传入创建、编辑标签
 
     """
 
@@ -3681,7 +3681,7 @@ class TagWithCreate(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -3692,7 +3692,7 @@ class TagWithCreate(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -3716,7 +3716,7 @@ class TagWithCreate(AbstractModel):
 
 
 class TagWithDescribe(AbstractModel):
-    """展示标签列表
+    r"""展示标签列表
 
     """
 
@@ -3732,7 +3732,7 @@ class TagWithDescribe(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -3743,7 +3743,7 @@ class TagWithDescribe(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -3767,7 +3767,7 @@ class TagWithDescribe(AbstractModel):
 
 
 class Task(AbstractModel):
-    """任务
+    r"""任务
 
     """
 
@@ -3902,7 +3902,7 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -3913,7 +3913,7 @@ class Task(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """任务标题
+        r"""任务标题
         :rtype: str
         """
         return self._TaskTitle
@@ -3924,7 +3924,7 @@ class Task(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._TaskDescription
@@ -3935,7 +3935,7 @@ class Task(AbstractModel):
 
     @property
     def TaskTag(self):
-        """自定义标签
+        r"""自定义标签
         :rtype: str
         """
         return self._TaskTag
@@ -3946,7 +3946,7 @@ class Task(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
+        r"""任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
         :rtype: int
         """
         return self._TaskStatus
@@ -3957,7 +3957,7 @@ class Task(AbstractModel):
 
     @property
     def TaskStatusType(self):
-        """任务结束状态，表明任务以何种状态结束: 0 -- 尚未结束，1 -- 成功，2-- 失败，3--终止
+        r"""任务结束状态，表明任务以何种状态结束: 0 -- 尚未结束，1 -- 成功，2-- 失败，3--终止
         :rtype: int
         """
         return self._TaskStatusType
@@ -3968,7 +3968,7 @@ class Task(AbstractModel):
 
     @property
     def TaskProtectStrategy(self):
-        """保护策略
+        r"""保护策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3980,7 +3980,7 @@ class Task(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._TaskCreateTime
@@ -3991,7 +3991,7 @@ class Task(AbstractModel):
 
     @property
     def TaskUpdateTime(self):
-        """任务更新时间
+        r"""任务更新时间
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -4002,7 +4002,7 @@ class Task(AbstractModel):
 
     @property
     def TaskGroups(self):
-        """任务动作组
+        r"""任务动作组
         :rtype: list of TaskGroup
         """
         return self._TaskGroups
@@ -4013,7 +4013,7 @@ class Task(AbstractModel):
 
     @property
     def TaskStartTime(self):
-        """开始时间
+        r"""开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4025,7 +4025,7 @@ class Task(AbstractModel):
 
     @property
     def TaskEndTime(self):
-        """结束时间
+        r"""结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4037,7 +4037,7 @@ class Task(AbstractModel):
 
     @property
     def TaskExpect(self):
-        """是否符合预期。1：符合预期，2：不符合预期
+        r"""是否符合预期。1：符合预期，2：不符合预期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4049,7 +4049,7 @@ class Task(AbstractModel):
 
     @property
     def TaskSummary(self):
-        """演习记录
+        r"""演习记录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4061,7 +4061,7 @@ class Task(AbstractModel):
 
     @property
     def TaskMode(self):
-        """任务模式。1:手工执行，2:自动执行
+        r"""任务模式。1:手工执行，2:自动执行
         :rtype: int
         """
         return self._TaskMode
@@ -4072,7 +4072,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPauseDuration(self):
-        """自动暂停时长。单位分钟
+        r"""自动暂停时长。单位分钟
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -4083,7 +4083,7 @@ class Task(AbstractModel):
 
     @property
     def TaskOwnerUin(self):
-        """演练创建者Uin
+        r"""演练创建者Uin
         :rtype: str
         """
         return self._TaskOwnerUin
@@ -4094,7 +4094,7 @@ class Task(AbstractModel):
 
     @property
     def TaskRegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._TaskRegionId
@@ -4105,7 +4105,7 @@ class Task(AbstractModel):
 
     @property
     def TaskMonitors(self):
-        """监控指标列表
+        r"""监控指标列表
         :rtype: list of TaskMonitor
         """
         return self._TaskMonitors
@@ -4116,7 +4116,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPolicy(self):
-        """保护策略
+        r"""保护策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribePolicy`
         """
@@ -4128,7 +4128,7 @@ class Task(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -4139,7 +4139,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPlanId(self):
-        """关联的演练计划ID
+        r"""关联的演练计划ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4151,7 +4151,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPlanTitle(self):
-        """关联的演练计划名称
+        r"""关联的演练计划名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4163,7 +4163,7 @@ class Task(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """关联的应用ID
+        r"""关联的应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4175,7 +4175,7 @@ class Task(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """关联的应用名称
+        r"""关联的应用名称
         :rtype: str
         """
         return self._ApplicationName
@@ -4186,7 +4186,7 @@ class Task(AbstractModel):
 
     @property
     def AlarmPolicy(self):
-        """关联的告警指标
+        r"""关联的告警指标
         :rtype: list of str
         """
         return self._AlarmPolicy
@@ -4197,7 +4197,7 @@ class Task(AbstractModel):
 
     @property
     def ApmServiceList(self):
-        """关联的APM服务
+        r"""关联的APM服务
         :rtype: list of ApmServiceInfo
         """
         return self._ApmServiceList
@@ -4208,7 +4208,7 @@ class Task(AbstractModel):
 
     @property
     def VerifyId(self):
-        """关联的隐患验证项ID
+        r"""关联的隐患验证项ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4220,7 +4220,7 @@ class Task(AbstractModel):
 
     @property
     def PolicyDealType(self):
-        """护栏处理方式，1--顺序回滚，2--演练暂停
+        r"""护栏处理方式，1--顺序回滚，2--演练暂停
         :rtype: int
         """
         return self._PolicyDealType
@@ -4231,7 +4231,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPlanStartTime(self):
-        """计划开始时间
+        r"""计划开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4243,7 +4243,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPlanEndTime(self):
-        """计划结束时间
+        r"""计划结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4255,7 +4255,7 @@ class Task(AbstractModel):
 
     @property
     def TaskOrg(self):
-        """人员组织
+        r"""人员组织
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskOrg
         """
@@ -4267,7 +4267,7 @@ class Task(AbstractModel):
 
     @property
     def TaskIssue(self):
-        """问题和改进
+        r"""问题和改进
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4279,7 +4279,7 @@ class Task(AbstractModel):
 
     @property
     def TaskRegionName(self):
-        """region信息
+        r"""region信息
         :rtype: str
         """
         return self._TaskRegionName
@@ -4290,7 +4290,7 @@ class Task(AbstractModel):
 
     @property
     def TaskArchId(self):
-        """架构ID
+        r"""架构ID
         :rtype: str
         """
         return self._TaskArchId
@@ -4301,7 +4301,7 @@ class Task(AbstractModel):
 
     @property
     def TaskScenario(self):
-        """演练场景
+        r"""演练场景
         :rtype: list of TaskTarget
         """
         return self._TaskScenario
@@ -4312,7 +4312,7 @@ class Task(AbstractModel):
 
     @property
     def TaskPurpose(self):
-        """演练目的
+        r"""演练目的
         :rtype: list of TaskTarget
         """
         return self._TaskPurpose
@@ -4408,7 +4408,7 @@ class Task(AbstractModel):
 
 
 class TaskConfig(AbstractModel):
-    """从经验模板创建演练时需要配置的任务参数
+    r"""从经验模板创建演练时需要配置的任务参数
 
     """
 
@@ -4439,7 +4439,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskGroupsConfig(self):
-        """动作组配置，需要保证配置个数和经验中的动作组个数一致
+        r"""动作组配置，需要保证配置个数和经验中的动作组个数一致
         :rtype: list of TaskGroupConfig
         """
         return self._TaskGroupsConfig
@@ -4450,7 +4450,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """更改后的演练名称，不填则默认取经验名称
+        r"""更改后的演练名称，不填则默认取经验名称
         :rtype: str
         """
         return self._TaskTitle
@@ -4461,7 +4461,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """更改后的演练描述，不填则默认取经验描述
+        r"""更改后的演练描述，不填则默认取经验描述
         :rtype: str
         """
         return self._TaskDescription
@@ -4472,7 +4472,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskMode(self):
-        """演练执行模式：1----手工执行/ 2 ---自动执行，不填则默认取经验执行模式
+        r"""演练执行模式：1----手工执行/ 2 ---自动执行，不填则默认取经验执行模式
         :rtype: int
         """
         return self._TaskMode
@@ -4483,7 +4483,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskPauseDuration(self):
-        """演练自动暂停时间，单位分钟, 不填则默认取经验自动暂停时间
+        r"""演练自动暂停时间，单位分钟, 不填则默认取经验自动暂停时间
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -4494,7 +4494,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def Tags(self):
-        """演练标签信息，不填则默认取经验标签
+        r"""演练标签信息，不填则默认取经验标签
         :rtype: list of TagWithCreate
         """
         return self._Tags
@@ -4505,7 +4505,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def PolicyDealType(self):
-        """护栏处理方式，1--顺序回滚，2--演练暂停
+        r"""护栏处理方式，1--顺序回滚，2--演练暂停
         :rtype: int
         """
         return self._PolicyDealType
@@ -4544,7 +4544,7 @@ class TaskConfig(AbstractModel):
 
 
 class TaskGroup(AbstractModel):
-    """任务分组
+    r"""任务分组
 
     """
 
@@ -4593,7 +4593,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupId(self):
-        """任务动作ID
+        r"""任务动作ID
         :rtype: int
         """
         return self._TaskGroupId
@@ -4604,7 +4604,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupTitle(self):
-        """分组标题
+        r"""分组标题
         :rtype: str
         """
         return self._TaskGroupTitle
@@ -4615,7 +4615,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupDescription(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._TaskGroupDescription
@@ -4626,7 +4626,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupOrder(self):
-        """任务分组顺序
+        r"""任务分组顺序
         :rtype: int
         """
         return self._TaskGroupOrder
@@ -4637,7 +4637,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -4648,7 +4648,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupCreateTime(self):
-        """任务分组创建时间
+        r"""任务分组创建时间
         :rtype: str
         """
         return self._TaskGroupCreateTime
@@ -4659,7 +4659,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupUpdateTime(self):
-        """任务分组更新时间
+        r"""任务分组更新时间
         :rtype: str
         """
         return self._TaskGroupUpdateTime
@@ -4670,7 +4670,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupActions(self):
-        """动作分组动作列表
+        r"""动作分组动作列表
         :rtype: list of TaskGroupAction
         """
         return self._TaskGroupActions
@@ -4681,7 +4681,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupInstanceList(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of str
         """
         return self._TaskGroupInstanceList
@@ -4692,7 +4692,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupMode(self):
-        """执行模式。1 --- 顺序执行，2 --- 阶段执行
+        r"""执行模式。1 --- 顺序执行，2 --- 阶段执行
         :rtype: int
         """
         return self._TaskGroupMode
@@ -4703,7 +4703,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupDiscardInstanceList(self):
-        """不参演的实例列表
+        r"""不参演的实例列表
         :rtype: list of str
         """
         return self._TaskGroupDiscardInstanceList
@@ -4714,7 +4714,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupSelectedInstanceList(self):
-        """参演实例列表
+        r"""参演实例列表
         :rtype: list of str
         """
         return self._TaskGroupSelectedInstanceList
@@ -4725,7 +4725,7 @@ class TaskGroup(AbstractModel):
 
     @property
     def TaskGroupInstancesExecuteRule(self):
-        """机器选取规则
+        r"""机器选取规则
         :rtype: list of TaskGroupInstancesExecuteRules
         """
         return self._TaskGroupInstancesExecuteRule
@@ -4770,7 +4770,7 @@ class TaskGroup(AbstractModel):
 
 
 class TaskGroupAction(AbstractModel):
-    """任务分组动作
+    r"""任务分组动作
 
     """
 
@@ -4843,7 +4843,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionId(self):
-        """任务分组动作ID
+        r"""任务分组动作ID
         :rtype: int
         """
         return self._TaskGroupActionId
@@ -4854,7 +4854,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupInstances(self):
-        """任务分组动作实例列表
+        r"""任务分组动作实例列表
         :rtype: list of TaskGroupInstance
         """
         return self._TaskGroupInstances
@@ -4865,7 +4865,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionId(self):
-        """动作ID
+        r"""动作ID
         :rtype: int
         """
         return self._ActionId
@@ -4876,7 +4876,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionOrder(self):
-        """分组动作顺序
+        r"""分组动作顺序
         :rtype: int
         """
         return self._TaskGroupActionOrder
@@ -4887,7 +4887,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionGeneralConfiguration(self):
-        """分组动作通用配置
+        r"""分组动作通用配置
         :rtype: str
         """
         return self._TaskGroupActionGeneralConfiguration
@@ -4898,7 +4898,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionCustomConfiguration(self):
-        """分组动作自定义配置
+        r"""分组动作自定义配置
         :rtype: str
         """
         return self._TaskGroupActionCustomConfiguration
@@ -4909,7 +4909,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStatus(self):
-        """分组动作状态
+        r"""分组动作状态
         :rtype: int
         """
         return self._TaskGroupActionStatus
@@ -4920,7 +4920,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionCreateTime(self):
-        """动作分组创建时间
+        r"""动作分组创建时间
         :rtype: str
         """
         return self._TaskGroupActionCreateTime
@@ -4931,7 +4931,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionUpdateTime(self):
-        """动作分组更新时间
+        r"""动作分组更新时间
         :rtype: str
         """
         return self._TaskGroupActionUpdateTime
@@ -4942,7 +4942,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionTitle(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._ActionTitle
@@ -4953,7 +4953,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStatusType(self):
-        """状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
         :rtype: int
         """
         return self._TaskGroupActionStatusType
@@ -4964,7 +4964,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionRandomId(self):
-        """RandomId
+        r"""RandomId
         :rtype: int
         """
         return self._TaskGroupActionRandomId
@@ -4975,7 +4975,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionRecoverId(self):
-        """RecoverId
+        r"""RecoverId
         :rtype: int
         """
         return self._TaskGroupActionRecoverId
@@ -4986,7 +4986,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionExecuteId(self):
-        """ExecuteId
+        r"""ExecuteId
         :rtype: int
         """
         return self._TaskGroupActionExecuteId
@@ -4997,7 +4997,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionApiType(self):
-        """调用api类型，0:tat, 1:云api
+        r"""调用api类型，0:tat, 1:云api
         :rtype: int
         """
         return self._ActionApiType
@@ -5008,7 +5008,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionAttribute(self):
-        """1:故障，2:恢复
+        r"""1:故障，2:恢复
         :rtype: int
         """
         return self._ActionAttribute
@@ -5019,7 +5019,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionType(self):
-        """动作类型：平台、自定义
+        r"""动作类型：平台、自定义
         :rtype: str
         """
         return self._ActionType
@@ -5030,7 +5030,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def IsExecuteRedo(self):
-        """是否可重试
+        r"""是否可重试
         :rtype: bool
         """
         return self._IsExecuteRedo
@@ -5041,7 +5041,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionRisk(self):
-        """动作风险级别
+        r"""动作风险级别
         :rtype: str
         """
         return self._ActionRisk
@@ -5052,7 +5052,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionExecuteTime(self):
-        """动作运行时间
+        r"""动作运行时间
         :rtype: int
         """
         return self._TaskGroupActionExecuteTime
@@ -5063,7 +5063,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStartTime(self):
-        """动作开始执行时间
+        r"""动作开始执行时间
         :rtype: str
         """
         return self._TaskGroupActionStartTime
@@ -5111,7 +5111,7 @@ class TaskGroupAction(AbstractModel):
 
 
 class TaskGroupActionConfig(AbstractModel):
-    """动作组中的动作参数
+    r"""动作组中的动作参数
 
     """
 
@@ -5130,7 +5130,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionOrder(self):
-        """该动作在动作组中的顺序，从1开始，不填或填错将匹配不到经验中要修改参数的动作
+        r"""该动作在动作组中的顺序，从1开始，不填或填错将匹配不到经验中要修改参数的动作
         :rtype: int
         """
         return self._TaskGroupActionOrder
@@ -5141,7 +5141,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionGeneralConfiguration(self):
-        """动作通用参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
+        r"""动作通用参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
         :rtype: str
         """
         return self._TaskGroupActionGeneralConfiguration
@@ -5152,7 +5152,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionCustomConfiguration(self):
-        """动作自定义参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
+        r"""动作自定义参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
         :rtype: str
         """
         return self._TaskGroupActionCustomConfiguration
@@ -5177,7 +5177,7 @@ class TaskGroupActionConfig(AbstractModel):
 
 
 class TaskGroupConfig(AbstractModel):
-    """动作组的配置项
+    r"""动作组的配置项
 
     """
 
@@ -5221,7 +5221,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskGroupInstances(self):
-        """动作组所关联的实例对象
+        r"""动作组所关联的实例对象
 CVM ins-xxx
 MySQL cdb-xxx
 CLB lb-xxx
@@ -5251,7 +5251,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskGroupTitle(self):
-        """动作组标题，不填默认取经验中的动作组名称
+        r"""动作组标题，不填默认取经验中的动作组名称
         :rtype: str
         """
         return self._TaskGroupTitle
@@ -5262,7 +5262,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskGroupDescription(self):
-        """动作组描述，不填默认取经验中的动作组描述
+        r"""动作组描述，不填默认取经验中的动作组描述
         :rtype: str
         """
         return self._TaskGroupDescription
@@ -5273,7 +5273,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskGroupMode(self):
-        """动作执行模式。1 --- 顺序执行，2 --- 阶段执行, 不填默认取经验中的动作组执行模式
+        r"""动作执行模式。1 --- 顺序执行，2 --- 阶段执行, 不填默认取经验中的动作组执行模式
         :rtype: int
         """
         return self._TaskGroupMode
@@ -5284,7 +5284,7 @@ RabbitMQ amqp-xxxx
 
     @property
     def TaskGroupActionsConfig(self):
-        """动作组中的动作参数，不填默认使用经验中的动作参数，配置时可以只指定想要修改参数的动作
+        r"""动作组中的动作参数，不填默认使用经验中的动作参数，配置时可以只指定想要修改参数的动作
         :rtype: list of TaskGroupActionConfig
         """
         return self._TaskGroupActionsConfig
@@ -5316,7 +5316,7 @@ RabbitMQ amqp-xxxx
 
 
 class TaskGroupForAction(AbstractModel):
-    """演练动作组简易配置
+    r"""演练动作组简易配置
 
     """
 
@@ -5335,7 +5335,7 @@ class TaskGroupForAction(AbstractModel):
 
     @property
     def TaskActionId(self):
-        """动作ID
+        r"""动作ID
         :rtype: int
         """
         return self._TaskActionId
@@ -5346,7 +5346,7 @@ class TaskGroupForAction(AbstractModel):
 
     @property
     def TaskActionGeneralConfiguration(self):
-        """{"ActionTimeout":1800}
+        r"""{"ActionTimeout":1800}
         :rtype: str
         """
         return self._TaskActionGeneralConfiguration
@@ -5357,7 +5357,7 @@ class TaskGroupForAction(AbstractModel):
 
     @property
     def TaskActionCustomConfiguration(self):
-        """{"ip": "0.0.0.0"}
+        r"""{"ip": "0.0.0.0"}
         :rtype: str
         """
         return self._TaskActionCustomConfiguration
@@ -5382,7 +5382,7 @@ class TaskGroupForAction(AbstractModel):
 
 
 class TaskGroupInstance(AbstractModel):
-    """任务分组动作实例
+    r"""任务分组动作实例
 
     """
 
@@ -5426,7 +5426,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: int
         """
         return self._TaskGroupInstanceId
@@ -5437,7 +5437,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceObjectId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._TaskGroupInstanceObjectId
@@ -5448,7 +5448,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStatus(self):
-        """实例动作执行状态
+        r"""实例动作执行状态
         :rtype: int
         """
         return self._TaskGroupInstanceStatus
@@ -5459,7 +5459,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceCreateTime(self):
-        """实例创建时间
+        r"""实例创建时间
         :rtype: str
         """
         return self._TaskGroupInstanceCreateTime
@@ -5470,7 +5470,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceUpdateTime(self):
-        """实例更新时间
+        r"""实例更新时间
         :rtype: str
         """
         return self._TaskGroupInstanceUpdateTime
@@ -5481,7 +5481,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStatusType(self):
-        """状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
         :rtype: int
         """
         return self._TaskGroupInstanceStatusType
@@ -5492,7 +5492,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStartTime(self):
-        """执行开始时间
+        r"""执行开始时间
         :rtype: str
         """
         return self._TaskGroupInstanceStartTime
@@ -5503,7 +5503,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceEndTime(self):
-        """执行结束时间
+        r"""执行结束时间
         :rtype: str
         """
         return self._TaskGroupInstanceEndTime
@@ -5516,7 +5516,7 @@ class TaskGroupInstance(AbstractModel):
     def TaskGroupInstanceExecuteLog(self):
         warnings.warn("parameter `TaskGroupInstanceExecuteLog` is deprecated", DeprecationWarning) 
 
-        """实例动作执行日志
+        r"""实例动作执行日志
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5530,7 +5530,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceIsRedo(self):
-        """实例是否可重试
+        r"""实例是否可重试
         :rtype: bool
         """
         return self._TaskGroupInstanceIsRedo
@@ -5541,7 +5541,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceExecuteTime(self):
-        """动作实例执行时间
+        r"""动作实例执行时间
         :rtype: int
         """
         return self._TaskGroupInstanceExecuteTime
@@ -5574,7 +5574,7 @@ class TaskGroupInstance(AbstractModel):
 
 
 class TaskGroupInstancesExecuteRules(AbstractModel):
-    """机器选取规则
+    r"""机器选取规则
 
     """
 
@@ -5593,7 +5593,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecuteMode(self):
-        """实例选取模式
+        r"""实例选取模式
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteMode
@@ -5604,7 +5604,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecutePercent(self):
-        """按比例选取模式下选取比例
+        r"""按比例选取模式下选取比例
         :rtype: int
         """
         return self._TaskGroupInstancesExecutePercent
@@ -5615,7 +5615,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecuteNum(self):
-        """按数量选取模式下选取数量
+        r"""按数量选取模式下选取数量
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteNum
@@ -5640,7 +5640,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
 
 class TaskListItem(AbstractModel):
-    """任务列表信息
+    r"""任务列表信息
 
     """
 
@@ -5698,7 +5698,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -5709,7 +5709,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """任务标题
+        r"""任务标题
         :rtype: str
         """
         return self._TaskTitle
@@ -5720,7 +5720,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """任务描述
+        r"""任务描述
         :rtype: str
         """
         return self._TaskDescription
@@ -5731,7 +5731,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskTag(self):
-        """任务标签
+        r"""任务标签
         :rtype: str
         """
         return self._TaskTag
@@ -5742,7 +5742,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
+        r"""任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
         :rtype: int
         """
         return self._TaskStatus
@@ -5753,7 +5753,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        """任务创建时间
+        r"""任务创建时间
         :rtype: str
         """
         return self._TaskCreateTime
@@ -5764,7 +5764,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskUpdateTime(self):
-        """任务更新时间
+        r"""任务更新时间
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -5775,7 +5775,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskPreCheckStatus(self):
-        """0--未开始，1--进行中，2--已完成
+        r"""0--未开始，1--进行中，2--已完成
         :rtype: int
         """
         return self._TaskPreCheckStatus
@@ -5786,7 +5786,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskPreCheckSuccess(self):
-        """环境检查是否通过
+        r"""环境检查是否通过
         :rtype: bool
         """
         return self._TaskPreCheckSuccess
@@ -5797,7 +5797,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskExpect(self):
-        """演练是否符合预期 1-符合预期 2-不符合预期
+        r"""演练是否符合预期 1-符合预期 2-不符合预期
         :rtype: int
         """
         return self._TaskExpect
@@ -5808,7 +5808,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """关联应用ID
+        r"""关联应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -5819,7 +5819,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """关联应用名称
+        r"""关联应用名称
         :rtype: str
         """
         return self._ApplicationName
@@ -5830,7 +5830,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def VerifyId(self):
-        """验证项ID
+        r"""验证项ID
         :rtype: int
         """
         return self._VerifyId
@@ -5841,7 +5841,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskStatusType(self):
-        """状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
         :rtype: int
         """
         return self._TaskStatusType
@@ -5852,7 +5852,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ArchId(self):
-        """架构ID
+        r"""架构ID
         :rtype: str
         """
         return self._ArchId
@@ -5863,7 +5863,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ArchName(self):
-        """架构名称
+        r"""架构名称
         :rtype: str
         """
         return self._ArchName
@@ -5901,7 +5901,7 @@ class TaskListItem(AbstractModel):
 
 
 class TaskMonitor(AbstractModel):
-    """监控指标
+    r"""监控指标
 
     """
 
@@ -5932,7 +5932,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def TaskMonitorId(self):
-        """演练监控指标ID
+        r"""演练监控指标ID
         :rtype: int
         """
         return self._TaskMonitorId
@@ -5943,7 +5943,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def MetricId(self):
-        """监控指标ID
+        r"""监控指标ID
         :rtype: int
         """
         return self._MetricId
@@ -5954,7 +5954,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def TaskMonitorObjectTypeId(self):
-        """监控指标对象类型ID
+        r"""监控指标对象类型ID
         :rtype: int
         """
         return self._TaskMonitorObjectTypeId
@@ -5965,7 +5965,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名称
+        r"""指标名称
         :rtype: str
         """
         return self._MetricName
@@ -5976,7 +5976,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def InstancesIds(self):
-        """实例ID列表
+        r"""实例ID列表
         :rtype: list of str
         """
         return self._InstancesIds
@@ -5987,7 +5987,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def MetricChineseName(self):
-        """中文指标
+        r"""中文指标
         :rtype: str
         """
         return self._MetricChineseName
@@ -5998,7 +5998,7 @@ class TaskMonitor(AbstractModel):
 
     @property
     def Unit(self):
-        """单位
+        r"""单位
         :rtype: str
         """
         return self._Unit
@@ -6027,7 +6027,7 @@ class TaskMonitor(AbstractModel):
 
 
 class TaskOrg(AbstractModel):
-    """演练人员组织
+    r"""演练人员组织
 
     """
 
@@ -6043,7 +6043,7 @@ class TaskOrg(AbstractModel):
 
     @property
     def TaskRole(self):
-        """演练角色
+        r"""演练角色
         :rtype: str
         """
         return self._TaskRole
@@ -6054,7 +6054,7 @@ class TaskOrg(AbstractModel):
 
     @property
     def TaskOperator(self):
-        """负责人
+        r"""负责人
         :rtype: str
         """
         return self._TaskOperator
@@ -6078,7 +6078,7 @@ class TaskOrg(AbstractModel):
 
 
 class TaskReportInfo(AbstractModel):
-    """演练报告状态信息
+    r"""演练报告状态信息
 
     """
 
@@ -6116,7 +6116,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def Stage(self):
-        """0--未开始，1--正在导出，2--导出成功，3--导出失败
+        r"""0--未开始，1--正在导出，2--导出成功，3--导出失败
         :rtype: int
         """
         return self._Stage
@@ -6127,7 +6127,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6138,7 +6138,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """有效期截止时间
+        r"""有效期截止时间
         :rtype: str
         """
         return self._ExpirationTime
@@ -6149,7 +6149,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def Expired(self):
-        """是否有效
+        r"""是否有效
         :rtype: bool
         """
         return self._Expired
@@ -6160,7 +6160,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def CosUrl(self):
-        """演练报告cos文件地址
+        r"""演练报告cos文件地址
         :rtype: str
         """
         return self._CosUrl
@@ -6171,7 +6171,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def Log(self):
-        """演练报告导出日志
+        r"""演练报告导出日志
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6183,7 +6183,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def ArchiveStage(self):
-        """0--未开始，1--正在归档，2--归档成功，3--归档失败
+        r"""0--未开始，1--正在归档，2--归档成功，3--归档失败
         :rtype: int
         """
         return self._ArchiveStage
@@ -6194,7 +6194,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def ArchiveTime(self):
-        """归档时间
+        r"""归档时间
         :rtype: str
         """
         return self._ArchiveTime
@@ -6205,7 +6205,7 @@ class TaskReportInfo(AbstractModel):
 
     @property
     def ArchiveUuid(self):
-        """归档ID
+        r"""归档ID
         :rtype: str
         """
         return self._ArchiveUuid
@@ -6236,7 +6236,7 @@ class TaskReportInfo(AbstractModel):
 
 
 class TaskTarget(AbstractModel):
-    """演练目标
+    r"""演练目标
 
     """
 
@@ -6262,7 +6262,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetId(self):
-        """目标标签ID
+        r"""目标标签ID
         :rtype: int
         """
         return self._TargetId
@@ -6273,7 +6273,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetDesc(self):
-        """目标描述
+        r"""目标描述
         :rtype: str
         """
         return self._TargetDesc
@@ -6284,7 +6284,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def Type(self):
-        """1:演练场景
+        r"""1:演练场景
 2:演练目标
         :rtype: int
         """
@@ -6296,7 +6296,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def Source(self):
-        """1:平台 2:用户个人
+        r"""1:平台 2:用户个人
         :rtype: int
         """
         return self._Source
@@ -6307,7 +6307,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetStatus(self):
-        """目标标签是否已被删除
+        r"""目标标签是否已被删除
         :rtype: int
         """
         return self._TargetStatus
@@ -6334,7 +6334,7 @@ class TaskTarget(AbstractModel):
 
 
 class Template(AbstractModel):
-    """经验库
+    r"""经验库
 
     """
 
@@ -6408,7 +6408,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateId(self):
-        """经验库ID
+        r"""经验库ID
         :rtype: int
         """
         return self._TemplateId
@@ -6419,7 +6419,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateTitle(self):
-        """经验库标题
+        r"""经验库标题
         :rtype: str
         """
         return self._TemplateTitle
@@ -6430,7 +6430,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """经验库描述
+        r"""经验库描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -6441,7 +6441,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateTag(self):
-        """自定义标签
+        r"""自定义标签
         :rtype: str
         """
         return self._TemplateTag
@@ -6452,7 +6452,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateIsUsed(self):
-        """使用状态。1 ---- 使用中，2 --- 停用
+        r"""使用状态。1 ---- 使用中，2 --- 停用
         :rtype: int
         """
         return self._TemplateIsUsed
@@ -6463,7 +6463,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateCreateTime(self):
-        """经验库创建时间
+        r"""经验库创建时间
         :rtype: str
         """
         return self._TemplateCreateTime
@@ -6474,7 +6474,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateUpdateTime(self):
-        """经验库更新时间
+        r"""经验库更新时间
         :rtype: str
         """
         return self._TemplateUpdateTime
@@ -6485,7 +6485,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateMode(self):
-        """经验库模式。1:手工执行，2:自动执行
+        r"""经验库模式。1:手工执行，2:自动执行
         :rtype: int
         """
         return self._TemplateMode
@@ -6496,7 +6496,7 @@ class Template(AbstractModel):
 
     @property
     def TemplatePauseDuration(self):
-        """自动暂停时长。单位分钟
+        r"""自动暂停时长。单位分钟
         :rtype: int
         """
         return self._TemplatePauseDuration
@@ -6507,7 +6507,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateOwnerUin(self):
-        """演练创建者Uin
+        r"""演练创建者Uin
         :rtype: str
         """
         return self._TemplateOwnerUin
@@ -6518,7 +6518,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateRegionId(self):
-        """地域ID
+        r"""地域ID
         :rtype: int
         """
         return self._TemplateRegionId
@@ -6529,7 +6529,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateGroups(self):
-        """动作组
+        r"""动作组
         :rtype: list of TemplateGroup
         """
         return self._TemplateGroups
@@ -6540,7 +6540,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateMonitors(self):
-        """监控指标
+        r"""监控指标
         :rtype: list of TemplateMonitor
         """
         return self._TemplateMonitors
@@ -6551,7 +6551,7 @@ class Template(AbstractModel):
 
     @property
     def TemplatePolicy(self):
-        """护栏监控
+        r"""护栏监控
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TemplatePolicy`
         """
@@ -6563,7 +6563,7 @@ class Template(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -6574,7 +6574,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateSource(self):
-        """经验来源 0-自建 1-专家推荐
+        r"""经验来源 0-自建 1-专家推荐
         :rtype: int
         """
         return self._TemplateSource
@@ -6585,7 +6585,7 @@ class Template(AbstractModel):
 
     @property
     def ApmServiceList(self):
-        """apm应用信息
+        r"""apm应用信息
         :rtype: list of ApmServiceInfo
         """
         return self._ApmServiceList
@@ -6596,7 +6596,7 @@ class Template(AbstractModel):
 
     @property
     def AlarmPolicy(self):
-        """告警指标
+        r"""告警指标
         :rtype: list of str
         """
         return self._AlarmPolicy
@@ -6607,7 +6607,7 @@ class Template(AbstractModel):
 
     @property
     def PolicyDealType(self):
-        """护栏处理方式，1--顺序回滚，2--演练暂停
+        r"""护栏处理方式，1--顺序回滚，2--演练暂停
         :rtype: int
         """
         return self._PolicyDealType
@@ -6618,7 +6618,7 @@ class Template(AbstractModel):
 
     @property
     def TemplateScenario(self):
-        """演练场景
+        r"""演练场景
         :rtype: list of TaskTarget
         """
         return self._TemplateScenario
@@ -6629,7 +6629,7 @@ class Template(AbstractModel):
 
     @property
     def TemplatePurpose(self):
-        """演练目的
+        r"""演练目的
         :rtype: list of TaskTarget
         """
         return self._TemplatePurpose
@@ -6704,7 +6704,7 @@ class Template(AbstractModel):
 
 
 class TemplateGroup(AbstractModel):
-    """任务分组
+    r"""任务分组
 
     """
 
@@ -6741,7 +6741,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def TemplateGroupId(self):
-        """经验库动作ID
+        r"""经验库动作ID
         :rtype: int
         """
         return self._TemplateGroupId
@@ -6752,7 +6752,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def TemplateGroupActions(self):
-        """经验库动作分组动作列表
+        r"""经验库动作分组动作列表
         :rtype: list of TemplateGroupAction
         """
         return self._TemplateGroupActions
@@ -6763,7 +6763,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Title(self):
-        """分组标题
+        r"""分组标题
         :rtype: str
         """
         return self._Title
@@ -6774,7 +6774,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -6785,7 +6785,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Order(self):
-        """分组顺序
+        r"""分组顺序
         :rtype: int
         """
         return self._Order
@@ -6796,7 +6796,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Mode(self):
-        """执行模式。1 --- 顺序执行，2 --- 阶段执行
+        r"""执行模式。1 --- 顺序执行，2 --- 阶段执行
         :rtype: int
         """
         return self._Mode
@@ -6807,7 +6807,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """对象类型ID
+        r"""对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -6818,7 +6818,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """分组创建时间
+        r"""分组创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6829,7 +6829,7 @@ class TemplateGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """分组更新时间
+        r"""分组更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -6865,7 +6865,7 @@ class TemplateGroup(AbstractModel):
 
 
 class TemplateGroupAction(AbstractModel):
-    """任务分组动作
+    r"""任务分组动作
 
     """
 
@@ -6923,7 +6923,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def TemplateGroupActionId(self):
-        """经验库分组动作ID
+        r"""经验库分组动作ID
         :rtype: int
         """
         return self._TemplateGroupActionId
@@ -6934,7 +6934,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionId(self):
-        """动作ID
+        r"""动作ID
         :rtype: int
         """
         return self._ActionId
@@ -6945,7 +6945,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def Order(self):
-        """分组动作顺序
+        r"""分组动作顺序
         :rtype: int
         """
         return self._Order
@@ -6956,7 +6956,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def GeneralConfiguration(self):
-        """分组动作通用配置
+        r"""分组动作通用配置
         :rtype: str
         """
         return self._GeneralConfiguration
@@ -6967,7 +6967,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        """分组动作自定义配置
+        r"""分组动作自定义配置
         :rtype: str
         """
         return self._CustomConfiguration
@@ -6978,7 +6978,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def CreateTime(self):
-        """动作分组创建时间
+        r"""动作分组创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -6989,7 +6989,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """动作分组更新时间
+        r"""动作分组更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -7000,7 +7000,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionTitle(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._ActionTitle
@@ -7011,7 +7011,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def RandomId(self):
-        """自身随机id
+        r"""自身随机id
         :rtype: int
         """
         return self._RandomId
@@ -7022,7 +7022,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def RecoverId(self):
-        """恢复动作id
+        r"""恢复动作id
         :rtype: int
         """
         return self._RecoverId
@@ -7033,7 +7033,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ExecuteId(self):
-        """执行动作id
+        r"""执行动作id
         :rtype: int
         """
         return self._ExecuteId
@@ -7044,7 +7044,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionApiType(self):
-        """调用api类型，0:tat, 1:云api
+        r"""调用api类型，0:tat, 1:云api
         :rtype: int
         """
         return self._ActionApiType
@@ -7055,7 +7055,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionAttribute(self):
-        """1:故障，2:恢复
+        r"""1:故障，2:恢复
         :rtype: int
         """
         return self._ActionAttribute
@@ -7066,7 +7066,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionType(self):
-        """动作类型：平台和自定义
+        r"""动作类型：平台和自定义
         :rtype: str
         """
         return self._ActionType
@@ -7077,7 +7077,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def ActionRisk(self):
-        """动作风险等级，1:低风险 2:中风险 3:高风险
+        r"""动作风险等级，1:低风险 2:中风险 3:高风险
         :rtype: str
         """
         return self._ActionRisk
@@ -7088,7 +7088,7 @@ class TemplateGroupAction(AbstractModel):
 
     @property
     def FailurePerformance(self):
-        """故障表现
+        r"""故障表现
         :rtype: str
         """
         return self._FailurePerformance
@@ -7126,7 +7126,7 @@ class TemplateGroupAction(AbstractModel):
 
 
 class TemplateListItem(AbstractModel):
-    """经验库列表信息
+    r"""经验库列表信息
 
     """
 
@@ -7163,7 +7163,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateId(self):
-        """经验库ID
+        r"""经验库ID
         :rtype: int
         """
         return self._TemplateId
@@ -7174,7 +7174,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateTitle(self):
-        """经验库标题
+        r"""经验库标题
         :rtype: str
         """
         return self._TemplateTitle
@@ -7185,7 +7185,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateDescription(self):
-        """经验库描述
+        r"""经验库描述
         :rtype: str
         """
         return self._TemplateDescription
@@ -7196,7 +7196,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateTag(self):
-        """经验库标签
+        r"""经验库标签
         :rtype: str
         """
         return self._TemplateTag
@@ -7207,7 +7207,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateIsUsed(self):
-        """经验库状态。1 -- 使用中，2 -- 停用
+        r"""经验库状态。1 -- 使用中，2 -- 停用
         :rtype: int
         """
         return self._TemplateIsUsed
@@ -7218,7 +7218,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateCreateTime(self):
-        """经验库创建时间
+        r"""经验库创建时间
         :rtype: str
         """
         return self._TemplateCreateTime
@@ -7229,7 +7229,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateUpdateTime(self):
-        """经验库更新时间
+        r"""经验库更新时间
         :rtype: str
         """
         return self._TemplateUpdateTime
@@ -7240,7 +7240,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateUsedNum(self):
-        """经验库关联的任务数量
+        r"""经验库关联的任务数量
         :rtype: int
         """
         return self._TemplateUsedNum
@@ -7251,7 +7251,7 @@ class TemplateListItem(AbstractModel):
 
     @property
     def TemplateSource(self):
-        """经验库来源 0-自建经验 1-专家推荐
+        r"""经验库来源 0-自建经验 1-专家推荐
         :rtype: int
         """
         return self._TemplateSource
@@ -7282,7 +7282,7 @@ class TemplateListItem(AbstractModel):
 
 
 class TemplateMonitor(AbstractModel):
-    """监控指标
+    r"""监控指标
 
     """
 
@@ -7307,7 +7307,7 @@ class TemplateMonitor(AbstractModel):
 
     @property
     def MonitorId(self):
-        """pk
+        r"""pk
         :rtype: int
         """
         return self._MonitorId
@@ -7318,7 +7318,7 @@ class TemplateMonitor(AbstractModel):
 
     @property
     def MetricId(self):
-        """监控指标ID
+        r"""监控指标ID
         :rtype: int
         """
         return self._MetricId
@@ -7329,7 +7329,7 @@ class TemplateMonitor(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """监控指标对象类型ID
+        r"""监控指标对象类型ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -7340,7 +7340,7 @@ class TemplateMonitor(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名称
+        r"""指标名称
         :rtype: str
         """
         return self._MetricName
@@ -7351,7 +7351,7 @@ class TemplateMonitor(AbstractModel):
 
     @property
     def MetricChineseName(self):
-        """中文指标
+        r"""中文指标
         :rtype: str
         """
         return self._MetricChineseName
@@ -7378,7 +7378,7 @@ class TemplateMonitor(AbstractModel):
 
 
 class TemplatePolicy(AbstractModel):
-    """保护策略
+    r"""保护策略
 
     """
 
@@ -7397,7 +7397,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyIdList(self):
-        """保护策略ID列表
+        r"""保护策略ID列表
         :rtype: list of str
         """
         return self._TemplatePolicyIdList
@@ -7408,7 +7408,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyRule(self):
-        """策略规则
+        r"""策略规则
         :rtype: str
         """
         return self._TemplatePolicyRule
@@ -7419,7 +7419,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyDealType(self):
-        """护栏策略生效处理策略 1:顺序执行，2:暂停
+        r"""护栏策略生效处理策略 1:顺序执行，2:暂停
         :rtype: int
         """
         return self._TemplatePolicyDealType
@@ -7444,7 +7444,7 @@ class TemplatePolicy(AbstractModel):
 
 
 class TriggerPolicyRequest(AbstractModel):
-    """TriggerPolicy请求参数结构体
+    r"""TriggerPolicy请求参数结构体
 
     """
 
@@ -7467,7 +7467,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """混沌演练ID
+        r"""混沌演练ID
 
         :rtype: int
         """
@@ -7479,7 +7479,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -7490,7 +7490,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def Content(self):
-        """触发内容
+        r"""触发内容
         :rtype: str
         """
         return self._Content
@@ -7501,7 +7501,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        """触发类型，0--触发；1--恢复
+        r"""触发类型，0--触发；1--恢复
         :rtype: int
         """
         return self._TriggerType
@@ -7527,7 +7527,7 @@ class TriggerPolicyRequest(AbstractModel):
 
 
 class TriggerPolicyResponse(AbstractModel):
-    """TriggerPolicy返回参数结构体
+    r"""TriggerPolicy返回参数结构体
 
     """
 
@@ -7546,7 +7546,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """演练ID
+        r"""演练ID
         :rtype: int
         """
         return self._TaskId
@@ -7557,7 +7557,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def Success(self):
-        """是否触发成功
+        r"""是否触发成功
         :rtype: bool
         """
         return self._Success
@@ -7568,7 +7568,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

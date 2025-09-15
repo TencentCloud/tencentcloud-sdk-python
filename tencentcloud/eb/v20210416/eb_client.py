@@ -27,7 +27,7 @@ class EbClient(AbstractClient):
 
 
     def CheckRule(self, request):
-        """检验规则
+        r"""检验规则
 
         :param request: Request instance for CheckRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.CheckRuleRequest`
@@ -50,7 +50,7 @@ class EbClient(AbstractClient):
 
 
     def CheckTransformation(self, request):
-        """用于在ETL配置页面, 测试规则和数据.
+        r"""用于在ETL配置页面, 测试规则和数据.
 
         :param request: Request instance for CheckTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.CheckTransformationRequest`
@@ -73,7 +73,7 @@ class EbClient(AbstractClient):
 
 
     def CreateConnection(self, request):
-        """创建事件连接器
+        r"""创建事件连接器
 
         :param request: Request instance for CreateConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateConnectionRequest`
@@ -96,7 +96,7 @@ class EbClient(AbstractClient):
 
 
     def CreateEventBus(self, request):
-        """用于创建事件集
+        r"""用于创建事件集
 
         :param request: Request instance for CreateEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateEventBusRequest`
@@ -119,7 +119,7 @@ class EbClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """创建事件规则
+        r"""创建事件规则
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateRuleRequest`
@@ -142,7 +142,7 @@ class EbClient(AbstractClient):
 
 
     def CreateTarget(self, request):
-        """创建事件目标
+        r"""创建事件目标
 
         :param request: Request instance for CreateTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateTargetRequest`
@@ -165,7 +165,7 @@ class EbClient(AbstractClient):
 
 
     def CreateTransformation(self, request):
-        """用于创建转换器
+        r"""用于创建转换器
 
         :param request: Request instance for CreateTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateTransformationRequest`
@@ -188,7 +188,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteConnection(self, request):
-        """删除事件连接器
+        r"""删除事件连接器
 
         :param request: Request instance for DeleteConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteConnectionRequest`
@@ -211,7 +211,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteEventBus(self, request):
-        """删除事件集
+        r"""删除事件集
 
         :param request: Request instance for DeleteEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteEventBusRequest`
@@ -234,7 +234,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """删除事件规则
+        r"""删除事件规则
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteRuleRequest`
@@ -257,7 +257,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteTarget(self, request):
-        """删除事件目标
+        r"""删除事件目标
 
         :param request: Request instance for DeleteTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteTargetRequest`
@@ -280,7 +280,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteTransformation(self, request):
-        """用于删除转换器
+        r"""用于删除转换器
 
         :param request: Request instance for DeleteTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteTransformationRequest`
@@ -303,7 +303,7 @@ class EbClient(AbstractClient):
 
 
     def DescribeLogTagValue(self, request):
-        """前置条件：需开启事件存储；事件查询维度值
+        r"""前置条件：需开启事件存储；事件查询维度值
 
         :param request: Request instance for DescribeLogTagValue.
         :type request: :class:`tencentcloud.eb.v20210416.models.DescribeLogTagValueRequest`
@@ -326,7 +326,7 @@ class EbClient(AbstractClient):
 
 
     def GetEventBus(self, request):
-        """获取事件集详情
+        r"""获取事件集详情
 
         :param request: Request instance for GetEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetEventBusRequest`
@@ -349,7 +349,7 @@ class EbClient(AbstractClient):
 
 
     def GetPlatformEventTemplate(self, request):
-        """获取平台产品事件模板
+        r"""获取平台产品事件模板
 
         :param request: Request instance for GetPlatformEventTemplate.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetPlatformEventTemplateRequest`
@@ -372,7 +372,7 @@ class EbClient(AbstractClient):
 
 
     def GetRule(self, request):
-        """获取事件规则详情
+        r"""获取事件规则详情
 
         :param request: Request instance for GetRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetRuleRequest`
@@ -395,7 +395,7 @@ class EbClient(AbstractClient):
 
 
     def GetTransformation(self, request):
-        """用于获取转换器详情
+        r"""用于获取转换器详情
 
         :param request: Request instance for GetTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetTransformationRequest`
@@ -418,7 +418,7 @@ class EbClient(AbstractClient):
 
 
     def ListConnections(self, request):
-        """获取事件连接器列表
+        r"""获取事件连接器列表
 
         :param request: Request instance for ListConnections.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListConnectionsRequest`
@@ -441,7 +441,7 @@ class EbClient(AbstractClient):
 
 
     def ListEventBuses(self, request):
-        """获取事件集列表
+        r"""获取事件集列表
 
         :param request: Request instance for ListEventBuses.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListEventBusesRequest`
@@ -464,7 +464,7 @@ class EbClient(AbstractClient):
 
 
     def ListPlatformEventNames(self, request):
-        """获取平台产品事件名称
+        r"""获取平台产品事件名称
 
         :param request: Request instance for ListPlatformEventNames.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventNamesRequest`
@@ -487,7 +487,7 @@ class EbClient(AbstractClient):
 
 
     def ListPlatformEventPatterns(self, request):
-        """获取平台产品事件匹配规则
+        r"""获取平台产品事件匹配规则
 
         :param request: Request instance for ListPlatformEventPatterns.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventPatternsRequest`
@@ -510,7 +510,7 @@ class EbClient(AbstractClient):
 
 
     def ListPlatformProducts(self, request):
-        """获取平台产品列表
+        r"""获取平台产品列表
 
         :param request: Request instance for ListPlatformProducts.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformProductsRequest`
@@ -533,7 +533,7 @@ class EbClient(AbstractClient):
 
 
     def ListRules(self, request):
-        """获取事件规则列表
+        r"""获取事件规则列表
 
         :param request: Request instance for ListRules.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListRulesRequest`
@@ -556,7 +556,7 @@ class EbClient(AbstractClient):
 
 
     def ListTargets(self, request):
-        """获取事件目标列表
+        r"""获取事件目标列表
 
         :param request: Request instance for ListTargets.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListTargetsRequest`
@@ -579,7 +579,7 @@ class EbClient(AbstractClient):
 
 
     def PublishEvent(self, request):
-        """（已废弃）用于Event事件投递
+        r"""（已废弃）用于Event事件投递
 
         :param request: Request instance for PublishEvent.
         :type request: :class:`tencentcloud.eb.v20210416.models.PublishEventRequest`
@@ -602,7 +602,7 @@ class EbClient(AbstractClient):
 
 
     def PutEvents(self, request):
-        """用于Event事件投递
+        r"""用于Event事件投递
 
         :param request: Request instance for PutEvents.
         :type request: :class:`tencentcloud.eb.v20210416.models.PutEventsRequest`
@@ -625,7 +625,7 @@ class EbClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """前置条件：开启事件存储；查询历史推送事件
+        r"""前置条件：开启事件存储；查询历史推送事件
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.eb.v20210416.models.SearchLogRequest`
@@ -648,7 +648,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateConnection(self, request):
-        """更新事件连接器
+        r"""更新事件连接器
 
         :param request: Request instance for UpdateConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateConnectionRequest`
@@ -671,7 +671,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateEventBus(self, request):
-        """更新事件集
+        r"""更新事件集
 
         :param request: Request instance for UpdateEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateEventBusRequest`
@@ -694,7 +694,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateRule(self, request):
-        """更新事件规则
+        r"""更新事件规则
 
         :param request: Request instance for UpdateRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateRuleRequest`
@@ -717,7 +717,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateTarget(self, request):
-        """更新事件目标
+        r"""更新事件目标
 
         :param request: Request instance for UpdateTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateTargetRequest`
@@ -740,7 +740,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateTransformation(self, request):
-        """用于更新转换器
+        r"""用于更新转换器
 
         :param request: Request instance for UpdateTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateTransformationRequest`

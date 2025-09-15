@@ -27,7 +27,7 @@ class RceClient(AbstractClient):
 
 
     def CreateNameList(self, request):
-        """创建黑白名单，黑白名单数量上限为100
+        r"""创建黑白名单，黑白名单数量上限为100
 
         :param request: Request instance for CreateNameList.
         :type request: :class:`tencentcloud.rce.v20201103.models.CreateNameListRequest`
@@ -50,7 +50,7 @@ class RceClient(AbstractClient):
 
 
     def DeleteNameList(self, request):
-        """修改黑白名单状态 关闭 开启 删除
+        r"""修改黑白名单状态 关闭 开启 删除
 
         :param request: Request instance for DeleteNameList.
         :type request: :class:`tencentcloud.rce.v20201103.models.DeleteNameListRequest`
@@ -73,7 +73,7 @@ class RceClient(AbstractClient):
 
 
     def DeleteNameListData(self, request):
-        """删除黑白名单数据
+        r"""删除黑白名单数据
 
         :param request: Request instance for DeleteNameListData.
         :type request: :class:`tencentcloud.rce.v20201103.models.DeleteNameListDataRequest`
@@ -96,7 +96,7 @@ class RceClient(AbstractClient):
 
 
     def DescribeNameList(self, request):
-        """列表展示黑白名单列表数据, 包含列表名称, 名单类型, 数据类型, 数据来源, 描述, 状态等
+        r"""列表展示黑白名单列表数据, 包含列表名称, 名单类型, 数据类型, 数据来源, 描述, 状态等
 
         :param request: Request instance for DescribeNameList.
         :type request: :class:`tencentcloud.rce.v20201103.models.DescribeNameListRequest`
@@ -119,7 +119,7 @@ class RceClient(AbstractClient):
 
 
     def DescribeNameListDataList(self, request):
-        """黑白名单详情数据展示 名单id 客户appid uin 数据内容 开始时间和结束时间 状态 描述
+        r"""黑白名单详情数据展示 名单id 客户appid uin 数据内容 开始时间和结束时间 状态 描述
 
         :param request: Request instance for DescribeNameListDataList.
         :type request: :class:`tencentcloud.rce.v20201103.models.DescribeNameListDataListRequest`
@@ -142,7 +142,7 @@ class RceClient(AbstractClient):
 
 
     def DescribeNameListDetail(self, request):
-        """查询黑白名单列表详情
+        r"""查询黑白名单列表详情
 
         :param request: Request instance for DescribeNameListDetail.
         :type request: :class:`tencentcloud.rce.v20201103.models.DescribeNameListDetailRequest`
@@ -165,7 +165,7 @@ class RceClient(AbstractClient):
 
 
     def DescribeUserUsageCnt(self, request):
-        """RCE控制台预付费和后付费次数展示
+        r"""RCE控制台预付费和后付费次数展示
 
         :param request: Request instance for DescribeUserUsageCnt.
         :type request: :class:`tencentcloud.rce.v20201103.models.DescribeUserUsageCntRequest`
@@ -188,7 +188,7 @@ class RceClient(AbstractClient):
 
 
     def ImportNameListData(self, request):
-        """新增黑白名单数据，所有黑白名单数据总量上限为10000
+        r"""新增黑白名单数据，所有黑白名单数据总量上限为10000
 
         :param request: Request instance for ImportNameListData.
         :type request: :class:`tencentcloud.rce.v20201103.models.ImportNameListDataRequest`
@@ -211,7 +211,7 @@ class RceClient(AbstractClient):
 
 
     def ManageMarketingRisk(self, request):
-        """通用业务欺诈保护是基于人工智能技术和腾讯20年风控实战沉淀，依托腾讯海量业务构建的风控引擎，以轻量级的 SaaS 服务方式接入，帮助您快速解决注册、登录、营销活动等关键场景遇到的欺诈问题，实时防御黑灰产作恶。
+        r"""通用业务欺诈保护是基于人工智能技术和腾讯20年风控实战沉淀，依托腾讯海量业务构建的风控引擎，以轻量级的 SaaS 服务方式接入，帮助您快速解决注册、登录、营销活动等关键场景遇到的欺诈问题，实时防御黑灰产作恶。
 
         :param request: Request instance for ManageMarketingRisk.
         :type request: :class:`tencentcloud.rce.v20201103.models.ManageMarketingRiskRequest`
@@ -234,7 +234,7 @@ class RceClient(AbstractClient):
 
 
     def ModifyNameList(self, request):
-        """修改列表数据 列表名称 列表类型 数据类型 状态 备注
+        r"""修改列表数据 列表名称 列表类型 数据类型 状态 备注
 
         :param request: Request instance for ModifyNameList.
         :type request: :class:`tencentcloud.rce.v20201103.models.ModifyNameListRequest`
@@ -257,7 +257,7 @@ class RceClient(AbstractClient):
 
 
     def ModifyNameListData(self, request):
-        """修改黑白名单列表详情 详情内容 开始和结束时间 状态 备注等
+        r"""修改黑白名单列表详情 详情内容 开始和结束时间 状态 备注等
 
         :param request: Request instance for ModifyNameListData.
         :type request: :class:`tencentcloud.rce.v20201103.models.ModifyNameListDataRequest`

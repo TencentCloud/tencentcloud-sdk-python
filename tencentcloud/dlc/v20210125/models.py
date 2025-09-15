@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessInfo(AbstractModel):
-    """引擎的访问信息
+    r"""引擎的访问信息
 
     """
 
@@ -37,7 +37,7 @@ class AccessInfo(AbstractModel):
 
     @property
     def AccessType(self):
-        """访问引擎的方法
+        r"""访问引擎的方法
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -49,7 +49,7 @@ class AccessInfo(AbstractModel):
 
     @property
     def AccessConnectionInfos(self):
-        """访问引擎的url，内部的部分参数需要根据实际情况替换
+        r"""访问引擎的url，内部的部分参数需要根据实际情况替换
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -74,7 +74,7 @@ class AccessInfo(AbstractModel):
 
 
 class AddDMSPartitionsRequest(AbstractModel):
-    """AddDMSPartitions请求参数结构体
+    r"""AddDMSPartitions请求参数结构体
 
     """
 
@@ -87,7 +87,7 @@ class AddDMSPartitionsRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区
+        r"""分区
         :rtype: list of DMSPartition
         """
         return self._Partitions
@@ -115,7 +115,7 @@ class AddDMSPartitionsRequest(AbstractModel):
 
 
 class AddDMSPartitionsResponse(AbstractModel):
-    """AddDMSPartitions返回参数结构体
+    r"""AddDMSPartitions返回参数结构体
 
     """
 
@@ -134,7 +134,7 @@ class AddDMSPartitionsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """成功数量
+        r"""成功数量
         :rtype: int
         """
         return self._Total
@@ -145,7 +145,7 @@ class AddDMSPartitionsResponse(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区值
+        r"""分区值
         :rtype: list of DMSPartition
         """
         return self._Partitions
@@ -156,7 +156,7 @@ class AddDMSPartitionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -178,7 +178,7 @@ class AddDMSPartitionsResponse(AbstractModel):
 
 
 class AddOptimizerEnginesRequest(AbstractModel):
-    """AddOptimizerEngines请求参数结构体
+    r"""AddOptimizerEngines请求参数结构体
 
     """
 
@@ -200,7 +200,7 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """数据目录名称
+        r"""数据目录名称
         :rtype: str
         """
         return self._Catalog
@@ -211,7 +211,7 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
     @property
     def Engines(self):
-        """引擎信息列表
+        r"""引擎信息列表
         :rtype: list of OptimizerEngineInfo
         """
         return self._Engines
@@ -222,7 +222,7 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Database
@@ -233,7 +233,7 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
     @property
     def Table(self):
-        """数据表名称
+        r"""数据表名称
         :rtype: str
         """
         return self._Table
@@ -264,7 +264,7 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
 
 class AddOptimizerEnginesResponse(AbstractModel):
-    """AddOptimizerEngines返回参数结构体
+    r"""AddOptimizerEngines返回参数结构体
 
     """
 
@@ -277,7 +277,7 @@ class AddOptimizerEnginesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -292,7 +292,7 @@ class AddOptimizerEnginesResponse(AbstractModel):
 
 
 class AddUsersToWorkGroupRequest(AbstractModel):
-    """AddUsersToWorkGroup请求参数结构体
+    r"""AddUsersToWorkGroup请求参数结构体
 
     """
 
@@ -305,7 +305,7 @@ class AddUsersToWorkGroupRequest(AbstractModel):
 
     @property
     def AddInfo(self):
-        """要操作的工作组和用户信息
+        r"""要操作的工作组和用户信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.UserIdSetOfWorkGroupId`
         """
         return self._AddInfo
@@ -330,7 +330,7 @@ class AddUsersToWorkGroupRequest(AbstractModel):
 
 
 class AddUsersToWorkGroupResponse(AbstractModel):
-    """AddUsersToWorkGroup返回参数结构体
+    r"""AddUsersToWorkGroup返回参数结构体
 
     """
 
@@ -343,7 +343,7 @@ class AddUsersToWorkGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -358,7 +358,7 @@ class AddUsersToWorkGroupResponse(AbstractModel):
 
 
 class AlterDMSDatabaseRequest(AbstractModel):
-    """AlterDMSDatabase请求参数结构体
+    r"""AlterDMSDatabase请求参数结构体
 
     """
 
@@ -383,7 +383,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     @property
     def CurrentName(self):
-        """当前名称
+        r"""当前名称
         :rtype: str
         """
         return self._CurrentName
@@ -394,7 +394,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """schema名称
+        r"""schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -405,7 +405,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     @property
     def Location(self):
-        """路径
+        r"""路径
         :rtype: str
         """
         return self._Location
@@ -416,7 +416,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     @property
     def Asset(self):
-        """基础对象
+        r"""基础对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -427,7 +427,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -456,7 +456,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
 
 class AlterDMSDatabaseResponse(AbstractModel):
-    """AlterDMSDatabase返回参数结构体
+    r"""AlterDMSDatabase返回参数结构体
 
     """
 
@@ -469,7 +469,7 @@ class AlterDMSDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -484,7 +484,7 @@ class AlterDMSDatabaseResponse(AbstractModel):
 
 
 class AlterDMSPartitionRequest(AbstractModel):
-    """AlterDMSPartition请求参数结构体
+    r"""AlterDMSPartition请求参数结构体
 
     """
 
@@ -509,7 +509,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
     @property
     def CurrentDbName(self):
-        """当前名称，变更前db名称
+        r"""当前名称，变更前db名称
         :rtype: str
         """
         return self._CurrentDbName
@@ -520,7 +520,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
     @property
     def CurrentTableName(self):
-        """当前名称，变更前table名称
+        r"""当前名称，变更前table名称
         :rtype: str
         """
         return self._CurrentTableName
@@ -531,7 +531,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
     @property
     def CurrentValues(self):
-        """当前名称，变更前Part名称
+        r"""当前名称，变更前Part名称
         :rtype: str
         """
         return self._CurrentValues
@@ -542,7 +542,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
     @property
     def Partition(self):
-        """分区
+        r"""分区
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSPartition`
         """
         return self._Partition
@@ -553,7 +553,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -582,7 +582,7 @@ class AlterDMSPartitionRequest(AbstractModel):
 
 
 class AlterDMSPartitionResponse(AbstractModel):
-    """AlterDMSPartition返回参数结构体
+    r"""AlterDMSPartition返回参数结构体
 
     """
 
@@ -595,7 +595,7 @@ class AlterDMSPartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -610,7 +610,7 @@ class AlterDMSPartitionResponse(AbstractModel):
 
 
 class AlterDMSTableRequest(AbstractModel):
-    """AlterDMSTable请求参数结构体
+    r"""AlterDMSTable请求参数结构体
 
     """
 
@@ -677,7 +677,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def CurrentName(self):
-        """当前名称
+        r"""当前名称
         :rtype: str
         """
         return self._CurrentName
@@ -688,7 +688,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def CurrentDbName(self):
-        """当前数据库名称
+        r"""当前数据库名称
         :rtype: str
         """
         return self._CurrentDbName
@@ -699,7 +699,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Asset(self):
-        """基础对象
+        r"""基础对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -710,7 +710,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Type(self):
-        """表类型
+        r"""表类型
         :rtype: str
         """
         return self._Type
@@ -721,7 +721,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -732,7 +732,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def StorageSize(self):
-        """存储大小
+        r"""存储大小
         :rtype: int
         """
         return self._StorageSize
@@ -743,7 +743,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数量
+        r"""记录数量
         :rtype: int
         """
         return self._RecordCount
@@ -754,7 +754,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def LifeTime(self):
-        """生命周期
+        r"""生命周期
         :rtype: int
         """
         return self._LifeTime
@@ -765,7 +765,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def DataUpdateTime(self):
-        """数据更新时间
+        r"""数据更新时间
         :rtype: str
         """
         return self._DataUpdateTime
@@ -776,7 +776,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def StructUpdateTime(self):
-        """结构更新时间
+        r"""结构更新时间
         :rtype: str
         """
         return self._StructUpdateTime
@@ -787,7 +787,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后访问时间
+        r"""最后访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -798,7 +798,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Sds(self):
-        """存储对象
+        r"""存储对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
         """
         return self._Sds
@@ -809,7 +809,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """列
+        r"""列
         :rtype: list of DMSColumn
         """
         return self._Columns
@@ -820,7 +820,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def PartitionKeys(self):
-        """分区键值
+        r"""分区键值
         :rtype: list of DMSColumn
         """
         return self._PartitionKeys
@@ -831,7 +831,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def ViewOriginalText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewOriginalText
@@ -842,7 +842,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def ViewExpandedText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewExpandedText
@@ -853,7 +853,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区
+        r"""分区
         :rtype: list of DMSPartition
         """
         return self._Partitions
@@ -864,7 +864,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def Name(self):
-        """当前表名
+        r"""当前表名
         :rtype: str
         """
         return self._Name
@@ -875,7 +875,7 @@ class AlterDMSTableRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -935,7 +935,7 @@ class AlterDMSTableRequest(AbstractModel):
 
 
 class AlterDMSTableResponse(AbstractModel):
-    """AlterDMSTable返回参数结构体
+    r"""AlterDMSTable返回参数结构体
 
     """
 
@@ -948,7 +948,7 @@ class AlterDMSTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -963,7 +963,7 @@ class AlterDMSTableResponse(AbstractModel):
 
 
 class AnalysisTaskResults(AbstractModel):
-    """洞察分析结果返回体
+    r"""洞察分析结果返回体
 
     """
 
@@ -1025,7 +1025,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def Id(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._Id
@@ -1036,7 +1036,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InstanceStartTime(self):
-        """任务创建时间，毫秒时间戳
+        r"""任务创建时间，毫秒时间戳
         :rtype: int
         """
         return self._InstanceStartTime
@@ -1047,7 +1047,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InstanceCompleteTime(self):
-        """任务结束时间，毫秒时间戳
+        r"""任务结束时间，毫秒时间戳
         :rtype: int
         """
         return self._InstanceCompleteTime
@@ -1058,7 +1058,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def State(self):
-        """任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        r"""任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
         :rtype: int
         """
         return self._State
@@ -1069,7 +1069,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def SQL(self):
-        """任务SQL语句
+        r"""任务SQL语句
         :rtype: str
         """
         return self._SQL
@@ -1080,7 +1080,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """计算资源名字
+        r"""计算资源名字
         :rtype: str
         """
         return self._DataEngineName
@@ -1091,7 +1091,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def JobTimeSum(self):
-        """单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。
+        r"""单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。
 具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。
         :rtype: int
         """
@@ -1103,7 +1103,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def TaskTimeSum(self):
-        """单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+        r"""单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
         :rtype: int
         """
         return self._TaskTimeSum
@@ -1114,7 +1114,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InputRecordsSum(self):
-        """数据扫描总行数
+        r"""数据扫描总行数
         :rtype: int
         """
         return self._InputRecordsSum
@@ -1125,7 +1125,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InputBytesSum(self):
-        """数据扫描总 bytes
+        r"""数据扫描总 bytes
         :rtype: int
         """
         return self._InputBytesSum
@@ -1136,7 +1136,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputRecordsSum(self):
-        """输出总行数
+        r"""输出总行数
         :rtype: int
         """
         return self._OutputRecordsSum
@@ -1147,7 +1147,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputBytesSum(self):
-        """输出总 bytes
+        r"""输出总 bytes
         :rtype: int
         """
         return self._OutputBytesSum
@@ -1158,7 +1158,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def ShuffleReadBytesSum(self):
-        """shuffle read 总 bytes
+        r"""shuffle read 总 bytes
         :rtype: int
         """
         return self._ShuffleReadBytesSum
@@ -1169,7 +1169,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def ShuffleReadRecordsSum(self):
-        """shuffle read 总行数
+        r"""shuffle read 总行数
         :rtype: int
         """
         return self._ShuffleReadRecordsSum
@@ -1180,7 +1180,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def AnalysisStatus(self):
-        """洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+        r"""洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
         :rtype: str
         """
         return self._AnalysisStatus
@@ -1191,7 +1191,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputFilesNum(self):
-        """任务输出文件总数
+        r"""任务输出文件总数
         :rtype: int
         """
         return self._OutputFilesNum
@@ -1202,7 +1202,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputSmallFilesNum(self):
-        """任务输出小文件总数
+        r"""任务输出小文件总数
         :rtype: int
         """
         return self._OutputSmallFilesNum
@@ -1241,7 +1241,7 @@ class AnalysisTaskResults(AbstractModel):
 
 
 class Asset(AbstractModel):
-    """元数据基本对象
+    r"""元数据基本对象
 
     """
 
@@ -1297,7 +1297,7 @@ class Asset(AbstractModel):
 
     @property
     def Id(self):
-        """主键
+        r"""主键
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1309,7 +1309,7 @@ class Asset(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1321,7 +1321,7 @@ class Asset(AbstractModel):
 
     @property
     def Guid(self):
-        """对象GUID值
+        r"""对象GUID值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1333,7 +1333,7 @@ class Asset(AbstractModel):
 
     @property
     def Catalog(self):
-        """数据目录
+        r"""数据目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1345,7 +1345,7 @@ class Asset(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Description
@@ -1356,7 +1356,7 @@ class Asset(AbstractModel):
 
     @property
     def Owner(self):
-        """对象owner
+        r"""对象owner
         :rtype: str
         """
         return self._Owner
@@ -1367,7 +1367,7 @@ class Asset(AbstractModel):
 
     @property
     def OwnerAccount(self):
-        """对象owner账户
+        r"""对象owner账户
         :rtype: str
         """
         return self._OwnerAccount
@@ -1378,7 +1378,7 @@ class Asset(AbstractModel):
 
     @property
     def PermValues(self):
-        """权限
+        r"""权限
         :rtype: list of KVPair
         """
         return self._PermValues
@@ -1389,7 +1389,7 @@ class Asset(AbstractModel):
 
     @property
     def Params(self):
-        """附加属性
+        r"""附加属性
         :rtype: list of KVPair
         """
         return self._Params
@@ -1400,7 +1400,7 @@ class Asset(AbstractModel):
 
     @property
     def BizParams(self):
-        """附加业务属性
+        r"""附加业务属性
         :rtype: list of KVPair
         """
         return self._BizParams
@@ -1411,7 +1411,7 @@ class Asset(AbstractModel):
 
     @property
     def DataVersion(self):
-        """数据版本
+        r"""数据版本
         :rtype: int
         """
         return self._DataVersion
@@ -1422,7 +1422,7 @@ class Asset(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -1433,7 +1433,7 @@ class Asset(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifiedTime
@@ -1444,7 +1444,7 @@ class Asset(AbstractModel):
 
     @property
     def DatasourceId(self):
-        """数据源主键
+        r"""数据源主键
         :rtype: int
         """
         return self._DatasourceId
@@ -1495,7 +1495,7 @@ class Asset(AbstractModel):
 
 
 class AssignMangedTablePropertiesRequest(AbstractModel):
-    """AssignMangedTableProperties请求参数结构体
+    r"""AssignMangedTableProperties请求参数结构体
 
     """
 
@@ -1520,7 +1520,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """表基本信息
+        r"""表基本信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -1531,7 +1531,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """表字段信息
+        r"""表字段信息
         :rtype: list of TColumn
         """
         return self._Columns
@@ -1542,7 +1542,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """表分区信息
+        r"""表分区信息
         :rtype: list of TPartition
         """
         return self._Partitions
@@ -1553,7 +1553,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
     @property
     def Properties(self):
-        """表属性信息
+        r"""表属性信息
         :rtype: list of Property
         """
         return self._Properties
@@ -1564,7 +1564,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
     @property
     def UpsertKeys(self):
-        """V2 upsert表 upsert键
+        r"""V2 upsert表 upsert键
         :rtype: list of str
         """
         return self._UpsertKeys
@@ -1608,7 +1608,7 @@ class AssignMangedTablePropertiesRequest(AbstractModel):
 
 
 class AssignMangedTablePropertiesResponse(AbstractModel):
-    """AssignMangedTableProperties返回参数结构体
+    r"""AssignMangedTableProperties返回参数结构体
 
     """
 
@@ -1624,7 +1624,7 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
 
     @property
     def Properties(self):
-        """分配的原生表表属性
+        r"""分配的原生表表属性
         :rtype: list of Property
         """
         return self._Properties
@@ -1635,7 +1635,7 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1656,7 +1656,7 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
 
 
 class AssociateDatasourceHouseRequest(AbstractModel):
-    """AssociateDatasourceHouse请求参数结构体
+    r"""AssociateDatasourceHouse请求参数结构体
 
     """
 
@@ -1684,7 +1684,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -1695,7 +1695,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionType(self):
-        """数据源类型
+        r"""数据源类型
         :rtype: str
         """
         return self._DatasourceConnectionType
@@ -1706,7 +1706,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionConfig(self):
-        """数据源网络配置
+        r"""数据源网络配置
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
         """
         return self._DatasourceConnectionConfig
@@ -1717,7 +1717,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def DataEngineNames(self):
-        """引擎名称，只允许绑定一个引擎
+        r"""引擎名称，只允许绑定一个引擎
         :rtype: list of str
         """
         return self._DataEngineNames
@@ -1728,7 +1728,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def NetworkConnectionType(self):
-        """网络类型，2-跨源型，4-增强型
+        r"""网络类型，2-跨源型，4-增强型
         :rtype: int
         """
         return self._NetworkConnectionType
@@ -1739,7 +1739,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
     @property
     def NetworkConnectionDesc(self):
-        """网络配置描述
+        r"""网络配置描述
         :rtype: str
         """
         return self._NetworkConnectionDesc
@@ -1769,7 +1769,7 @@ class AssociateDatasourceHouseRequest(AbstractModel):
 
 
 class AssociateDatasourceHouseResponse(AbstractModel):
-    """AssociateDatasourceHouse返回参数结构体
+    r"""AssociateDatasourceHouse返回参数结构体
 
     """
 
@@ -1782,7 +1782,7 @@ class AssociateDatasourceHouseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1797,7 +1797,7 @@ class AssociateDatasourceHouseResponse(AbstractModel):
 
 
 class AttachDataMaskPolicyRequest(AbstractModel):
-    """AttachDataMaskPolicy请求参数结构体
+    r"""AttachDataMaskPolicy请求参数结构体
 
     """
 
@@ -1810,7 +1810,7 @@ class AttachDataMaskPolicyRequest(AbstractModel):
 
     @property
     def DataMaskStrategyPolicySet(self):
-        """要绑定的数据脱敏策略权限对象集合
+        r"""要绑定的数据脱敏策略权限对象集合
         :rtype: list of DataMaskStrategyPolicy
         """
         return self._DataMaskStrategyPolicySet
@@ -1838,7 +1838,7 @@ class AttachDataMaskPolicyRequest(AbstractModel):
 
 
 class AttachDataMaskPolicyResponse(AbstractModel):
-    """AttachDataMaskPolicy返回参数结构体
+    r"""AttachDataMaskPolicy返回参数结构体
 
     """
 
@@ -1851,7 +1851,7 @@ class AttachDataMaskPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1866,7 +1866,7 @@ class AttachDataMaskPolicyResponse(AbstractModel):
 
 
 class AttachUserPolicyRequest(AbstractModel):
-    """AttachUserPolicy请求参数结构体
+    r"""AttachUserPolicy请求参数结构体
 
     """
 
@@ -1882,7 +1882,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
+        r"""用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
         :rtype: str
         """
         return self._UserId
@@ -1893,7 +1893,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """鉴权策略集合
+        r"""鉴权策略集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -1922,7 +1922,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
 
 class AttachUserPolicyResponse(AbstractModel):
-    """AttachUserPolicy返回参数结构体
+    r"""AttachUserPolicy返回参数结构体
 
     """
 
@@ -1935,7 +1935,7 @@ class AttachUserPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1950,7 +1950,7 @@ class AttachUserPolicyResponse(AbstractModel):
 
 
 class AttachWorkGroupPolicyRequest(AbstractModel):
-    """AttachWorkGroupPolicy请求参数结构体
+    r"""AttachWorkGroupPolicy请求参数结构体
 
     """
 
@@ -1966,7 +1966,7 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -1977,7 +1977,7 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """要绑定的策略集合
+        r"""要绑定的策略集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -2006,7 +2006,7 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
 
 class AttachWorkGroupPolicyResponse(AbstractModel):
-    """AttachWorkGroupPolicy返回参数结构体
+    r"""AttachWorkGroupPolicy返回参数结构体
 
     """
 
@@ -2019,7 +2019,7 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2034,7 +2034,7 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
 
 
 class BatchSQLCostInfo(AbstractModel):
-    """spark session batch SQL的消耗信息
+    r"""spark session batch SQL的消耗信息
 
     """
 
@@ -2062,7 +2062,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def BatchId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._BatchId
@@ -2073,7 +2073,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -2084,7 +2084,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -2095,7 +2095,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def Cost(self):
-        """本次消耗，单位cu
+        r"""本次消耗，单位cu
         :rtype: float
         """
         return self._Cost
@@ -2106,7 +2106,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def TimeCost(self):
-        """时间开销，秒
+        r"""时间开销，秒
         :rtype: int
         """
         return self._TimeCost
@@ -2117,7 +2117,7 @@ class BatchSQLCostInfo(AbstractModel):
 
     @property
     def Operator(self):
-        """操作者
+        r"""操作者
         :rtype: str
         """
         return self._Operator
@@ -2145,7 +2145,7 @@ class BatchSQLCostInfo(AbstractModel):
 
 
 class BatchSqlTask(AbstractModel):
-    """SparkSQL批任务信息
+    r"""SparkSQL批任务信息
 
     """
 
@@ -2164,7 +2164,7 @@ class BatchSqlTask(AbstractModel):
 
     @property
     def TaskId(self):
-        """SQL子任务唯一标识
+        r"""SQL子任务唯一标识
         :rtype: str
         """
         return self._TaskId
@@ -2175,7 +2175,7 @@ class BatchSqlTask(AbstractModel):
 
     @property
     def ExecuteSQL(self):
-        """运行SQL
+        r"""运行SQL
         :rtype: str
         """
         return self._ExecuteSQL
@@ -2186,7 +2186,7 @@ class BatchSqlTask(AbstractModel):
 
     @property
     def Message(self):
-        """任务信息，成功则返回：Task Success!，失败则返回异常信息
+        r"""任务信息，成功则返回：Task Success!，失败则返回异常信息
         :rtype: str
         """
         return self._Message
@@ -2211,7 +2211,7 @@ class BatchSqlTask(AbstractModel):
 
 
 class BindWorkGroupsToUserRequest(AbstractModel):
-    """BindWorkGroupsToUser请求参数结构体
+    r"""BindWorkGroupsToUser请求参数结构体
 
     """
 
@@ -2224,7 +2224,7 @@ class BindWorkGroupsToUserRequest(AbstractModel):
 
     @property
     def AddInfo(self):
-        """绑定的用户和工作组信息
+        r"""绑定的用户和工作组信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.WorkGroupIdSetOfUserId`
         """
         return self._AddInfo
@@ -2249,7 +2249,7 @@ class BindWorkGroupsToUserRequest(AbstractModel):
 
 
 class BindWorkGroupsToUserResponse(AbstractModel):
-    """BindWorkGroupsToUser返回参数结构体
+    r"""BindWorkGroupsToUser返回参数结构体
 
     """
 
@@ -2262,7 +2262,7 @@ class BindWorkGroupsToUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2277,7 +2277,7 @@ class BindWorkGroupsToUserResponse(AbstractModel):
 
 
 class CHDFSProductVpcInfo(AbstractModel):
-    """chdfs产品vpc信息
+    r"""chdfs产品vpc信息
 
     """
 
@@ -2303,7 +2303,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
 
         :rtype: str
         """
@@ -2315,7 +2315,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc名称
+        r"""vpc名称
         :rtype: str
         """
         return self._VpcName
@@ -2326,7 +2326,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """vpc子网信息列表
+        r"""vpc子网信息列表
         :rtype: list of VpcCidrBlock
         """
         return self._VpcCidrBlock
@@ -2337,7 +2337,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则Id
+        r"""规则Id
         :rtype: int
         """
         return self._RuleId
@@ -2348,7 +2348,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组Id
+        r"""权限组Id
         :rtype: str
         """
         return self._AccessGroupId
@@ -2380,7 +2380,7 @@ class CHDFSProductVpcInfo(AbstractModel):
 
 
 class CSV(AbstractModel):
-    """CSV类型数据格式
+    r"""CSV类型数据格式
 
     """
 
@@ -2402,7 +2402,7 @@ class CSV(AbstractModel):
 
     @property
     def CodeCompress(self):
-        """压缩格式，["Snappy", "Gzip", "None"选一]。
+        r"""压缩格式，["Snappy", "Gzip", "None"选一]。
         :rtype: str
         """
         return self._CodeCompress
@@ -2413,7 +2413,7 @@ class CSV(AbstractModel):
 
     @property
     def CSVSerde(self):
-        """CSV序列化及反序列化数据结构。
+        r"""CSV序列化及反序列化数据结构。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CSVSerde`
         """
         return self._CSVSerde
@@ -2424,7 +2424,7 @@ class CSV(AbstractModel):
 
     @property
     def HeadLines(self):
-        """标题行，默认为0。
+        r"""标题行，默认为0。
         :rtype: int
         """
         return self._HeadLines
@@ -2435,7 +2435,7 @@ class CSV(AbstractModel):
 
     @property
     def Format(self):
-        """格式，默认值为CSV
+        r"""格式，默认值为CSV
         :rtype: str
         """
         return self._Format
@@ -2463,7 +2463,7 @@ class CSV(AbstractModel):
 
 
 class CSVSerde(AbstractModel):
-    """CSV序列化及反序列化数据结构
+    r"""CSV序列化及反序列化数据结构
 
     """
 
@@ -2482,7 +2482,7 @@ class CSVSerde(AbstractModel):
 
     @property
     def Escape(self):
-        """CSV序列化转义符，默认为"\\"，最长8个字符，如 Escape: "/\"
+        r"""CSV序列化转义符，默认为"\\"，最长8个字符，如 Escape: "/\"
         :rtype: str
         """
         return self._Escape
@@ -2493,7 +2493,7 @@ class CSVSerde(AbstractModel):
 
     @property
     def Quote(self):
-        """CSV序列化字段域符，默认为"'"，最长8个字符, 如 Quote: "\""
+        r"""CSV序列化字段域符，默认为"'"，最长8个字符, 如 Quote: "\""
         :rtype: str
         """
         return self._Quote
@@ -2504,7 +2504,7 @@ class CSVSerde(AbstractModel):
 
     @property
     def Separator(self):
-        """CSV序列化分隔符，默认为"\t"，最长8个字符, 如 Separator: "\t"
+        r"""CSV序列化分隔符，默认为"\t"，最长8个字符, 如 Separator: "\t"
         :rtype: str
         """
         return self._Separator
@@ -2529,7 +2529,7 @@ class CSVSerde(AbstractModel):
 
 
 class CancelNotebookSessionStatementBatchRequest(AbstractModel):
-    """CancelNotebookSessionStatementBatch请求参数结构体
+    r"""CancelNotebookSessionStatementBatch请求参数结构体
 
     """
 
@@ -2545,7 +2545,7 @@ class CancelNotebookSessionStatementBatchRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -2556,7 +2556,7 @@ class CancelNotebookSessionStatementBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批任务唯一标识
+        r"""批任务唯一标识
         :rtype: str
         """
         return self._BatchId
@@ -2580,7 +2580,7 @@ class CancelNotebookSessionStatementBatchRequest(AbstractModel):
 
 
 class CancelNotebookSessionStatementBatchResponse(AbstractModel):
-    """CancelNotebookSessionStatementBatch返回参数结构体
+    r"""CancelNotebookSessionStatementBatch返回参数结构体
 
     """
 
@@ -2593,7 +2593,7 @@ class CancelNotebookSessionStatementBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2608,7 +2608,7 @@ class CancelNotebookSessionStatementBatchResponse(AbstractModel):
 
 
 class CancelNotebookSessionStatementRequest(AbstractModel):
-    """CancelNotebookSessionStatement请求参数结构体
+    r"""CancelNotebookSessionStatement请求参数结构体
 
     """
 
@@ -2624,7 +2624,7 @@ class CancelNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -2635,7 +2635,7 @@ class CancelNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def StatementId(self):
-        """Session Statement唯一标识
+        r"""Session Statement唯一标识
         :rtype: str
         """
         return self._StatementId
@@ -2659,7 +2659,7 @@ class CancelNotebookSessionStatementRequest(AbstractModel):
 
 
 class CancelNotebookSessionStatementResponse(AbstractModel):
-    """CancelNotebookSessionStatement返回参数结构体
+    r"""CancelNotebookSessionStatement返回参数结构体
 
     """
 
@@ -2672,7 +2672,7 @@ class CancelNotebookSessionStatementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2687,7 +2687,7 @@ class CancelNotebookSessionStatementResponse(AbstractModel):
 
 
 class CancelSparkSessionBatchSQLRequest(AbstractModel):
-    """CancelSparkSessionBatchSQL请求参数结构体
+    r"""CancelSparkSessionBatchSQL请求参数结构体
 
     """
 
@@ -2703,7 +2703,7 @@ class CancelSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批任务唯一标识
+        r"""批任务唯一标识
         :rtype: str
         """
         return self._BatchId
@@ -2714,7 +2714,7 @@ class CancelSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def CustomKey(self):
-        """用户自定义主键，若不为空，则使用该值进行查询
+        r"""用户自定义主键，若不为空，则使用该值进行查询
         :rtype: str
         """
         return self._CustomKey
@@ -2738,7 +2738,7 @@ class CancelSparkSessionBatchSQLRequest(AbstractModel):
 
 
 class CancelSparkSessionBatchSQLResponse(AbstractModel):
-    """CancelSparkSessionBatchSQL返回参数结构体
+    r"""CancelSparkSessionBatchSQL返回参数结构体
 
     """
 
@@ -2751,7 +2751,7 @@ class CancelSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2766,7 +2766,7 @@ class CancelSparkSessionBatchSQLResponse(AbstractModel):
 
 
 class CancelTaskRequest(AbstractModel):
-    """CancelTask请求参数结构体
+    r"""CancelTask请求参数结构体
 
     """
 
@@ -2779,7 +2779,7 @@ class CancelTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id，全局唯一
+        r"""任务Id，全局唯一
         :rtype: str
         """
         return self._TaskId
@@ -2802,7 +2802,7 @@ class CancelTaskRequest(AbstractModel):
 
 
 class CancelTaskResponse(AbstractModel):
-    """CancelTask返回参数结构体
+    r"""CancelTask返回参数结构体
 
     """
 
@@ -2815,7 +2815,7 @@ class CancelTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2830,7 +2830,7 @@ class CancelTaskResponse(AbstractModel):
 
 
 class CancelTasksRequest(AbstractModel):
-    """CancelTasks请求参数结构体
+    r"""CancelTasks请求参数结构体
 
     """
 
@@ -2846,7 +2846,7 @@ class CancelTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id数组，全局唯一
+        r"""任务Id数组，全局唯一
         :rtype: list of str
         """
         return self._TaskId
@@ -2857,7 +2857,7 @@ class CancelTasksRequest(AbstractModel):
 
     @property
     def Config(self):
-        """配置信息，key-value数组，对外不可见。key1：AuthorityRole（鉴权角色，默认传SubUin，base64加密，仅在jdbc提交任务时使用）
+        r"""配置信息，key-value数组，对外不可见。key1：AuthorityRole（鉴权角色，默认传SubUin，base64加密，仅在jdbc提交任务时使用）
         :rtype: list of KVPair
         """
         return self._Config
@@ -2886,7 +2886,7 @@ class CancelTasksRequest(AbstractModel):
 
 
 class CancelTasksResponse(AbstractModel):
-    """CancelTasks返回参数结构体
+    r"""CancelTasks返回参数结构体
 
     """
 
@@ -2899,7 +2899,7 @@ class CancelTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2914,7 +2914,7 @@ class CancelTasksResponse(AbstractModel):
 
 
 class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
-    """CheckDataEngineConfigPairsValidity请求参数结构体
+    r"""CheckDataEngineConfigPairsValidity请求参数结构体
 
     """
 
@@ -2933,7 +2933,7 @@ class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """引擎小版本ID
+        r"""引擎小版本ID
         :rtype: str
         """
         return self._ChildImageVersionId
@@ -2944,7 +2944,7 @@ class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
 
     @property
     def DataEngineConfigPairs(self):
-        """用户自定义参数
+        r"""用户自定义参数
         :rtype: list of DataEngineConfigPair
         """
         return self._DataEngineConfigPairs
@@ -2955,7 +2955,7 @@ class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
 
     @property
     def ImageVersionId(self):
-        """引擎大版本ID，存在小版本ID时仅需传入小版本ID，不存在时会获取当前大版本下最新的小版本ID。
+        r"""引擎大版本ID，存在小版本ID时仅需传入小版本ID，不存在时会获取当前大版本下最新的小版本ID。
         :rtype: str
         """
         return self._ImageVersionId
@@ -2985,7 +2985,7 @@ class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
 
 
 class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
-    """CheckDataEngineConfigPairsValidity返回参数结构体
+    r"""CheckDataEngineConfigPairsValidity返回参数结构体
 
     """
 
@@ -3004,7 +3004,7 @@ class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
 
     @property
     def IsAvailable(self):
-        """参数有效性：ture:有效，false:至少存在一个无效参数；
+        r"""参数有效性：ture:有效，false:至少存在一个无效参数；
         :rtype: bool
         """
         return self._IsAvailable
@@ -3015,7 +3015,7 @@ class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
 
     @property
     def UnavailableConfig(self):
-        """无效参数集合
+        r"""无效参数集合
         :rtype: list of str
         """
         return self._UnavailableConfig
@@ -3026,7 +3026,7 @@ class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3043,7 +3043,7 @@ class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
 
 
 class CheckDataEngineImageCanBeRollbackRequest(AbstractModel):
-    """CheckDataEngineImageCanBeRollback请求参数结构体
+    r"""CheckDataEngineImageCanBeRollback请求参数结构体
 
     """
 
@@ -3056,7 +3056,7 @@ class CheckDataEngineImageCanBeRollbackRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎唯一id
+        r"""引擎唯一id
         :rtype: str
         """
         return self._DataEngineId
@@ -3079,7 +3079,7 @@ class CheckDataEngineImageCanBeRollbackRequest(AbstractModel):
 
 
 class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
-    """CheckDataEngineImageCanBeRollback返回参数结构体
+    r"""CheckDataEngineImageCanBeRollback返回参数结构体
 
     """
 
@@ -3101,7 +3101,7 @@ class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
 
     @property
     def ToRecordId(self):
-        """回滚后日志记录id
+        r"""回滚后日志记录id
         :rtype: str
         """
         return self._ToRecordId
@@ -3112,7 +3112,7 @@ class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
 
     @property
     def FromRecordId(self):
-        """回滚前日志记录id
+        r"""回滚前日志记录id
         :rtype: str
         """
         return self._FromRecordId
@@ -3123,7 +3123,7 @@ class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
 
     @property
     def IsRollback(self):
-        """是否能够回滚
+        r"""是否能够回滚
         :rtype: bool
         """
         return self._IsRollback
@@ -3134,7 +3134,7 @@ class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3152,7 +3152,7 @@ class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
 
 
 class CheckDataEngineImageCanBeUpgradeRequest(AbstractModel):
-    """CheckDataEngineImageCanBeUpgrade请求参数结构体
+    r"""CheckDataEngineImageCanBeUpgrade请求参数结构体
 
     """
 
@@ -3165,7 +3165,7 @@ class CheckDataEngineImageCanBeUpgradeRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """集群id
+        r"""集群id
         :rtype: str
         """
         return self._DataEngineId
@@ -3188,7 +3188,7 @@ class CheckDataEngineImageCanBeUpgradeRequest(AbstractModel):
 
 
 class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
-    """CheckDataEngineImageCanBeUpgrade返回参数结构体
+    r"""CheckDataEngineImageCanBeUpgrade返回参数结构体
 
     """
 
@@ -3207,7 +3207,7 @@ class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """当前大版本下，可升级的集群镜像小版本id
+        r"""当前大版本下，可升级的集群镜像小版本id
         :rtype: str
         """
         return self._ChildImageVersionId
@@ -3218,7 +3218,7 @@ class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
 
     @property
     def IsUpgrade(self):
-        """是否能够升级
+        r"""是否能够升级
         :rtype: bool
         """
         return self._IsUpgrade
@@ -3229,7 +3229,7 @@ class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3246,7 +3246,7 @@ class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
 
 
 class CheckLockMetaDataRequest(AbstractModel):
-    """CheckLockMetaData请求参数结构体
+    r"""CheckLockMetaData请求参数结构体
 
     """
 
@@ -3268,7 +3268,7 @@ class CheckLockMetaDataRequest(AbstractModel):
 
     @property
     def LockId(self):
-        """锁ID
+        r"""锁ID
         :rtype: int
         """
         return self._LockId
@@ -3279,7 +3279,7 @@ class CheckLockMetaDataRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -3290,7 +3290,7 @@ class CheckLockMetaDataRequest(AbstractModel):
 
     @property
     def TxnId(self):
-        """事务ID
+        r"""事务ID
         :rtype: int
         """
         return self._TxnId
@@ -3301,7 +3301,7 @@ class CheckLockMetaDataRequest(AbstractModel):
 
     @property
     def ElapsedMs(self):
-        """过期时间ms
+        r"""过期时间ms
         :rtype: int
         """
         return self._ElapsedMs
@@ -3327,7 +3327,7 @@ class CheckLockMetaDataRequest(AbstractModel):
 
 
 class CheckLockMetaDataResponse(AbstractModel):
-    """CheckLockMetaData返回参数结构体
+    r"""CheckLockMetaData返回参数结构体
 
     """
 
@@ -3346,7 +3346,7 @@ class CheckLockMetaDataResponse(AbstractModel):
 
     @property
     def LockId(self):
-        """锁ID
+        r"""锁ID
         :rtype: int
         """
         return self._LockId
@@ -3357,7 +3357,7 @@ class CheckLockMetaDataResponse(AbstractModel):
 
     @property
     def LockState(self):
-        """锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+        r"""锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
         :rtype: str
         """
         return self._LockState
@@ -3368,7 +3368,7 @@ class CheckLockMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3385,7 +3385,7 @@ class CheckLockMetaDataResponse(AbstractModel):
 
 
 class Column(AbstractModel):
-    """数据表列信息。
+    r"""数据表列信息。
 
     """
 
@@ -3430,7 +3430,7 @@ class Column(AbstractModel):
 
     @property
     def Name(self):
-        """列名称，不区分大小写，最大支持25个字符。
+        r"""列名称，不区分大小写，最大支持25个字符。
         :rtype: str
         """
         return self._Name
@@ -3441,7 +3441,7 @@ class Column(AbstractModel):
 
     @property
     def Type(self):
-        """string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
+        r"""string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
         :rtype: str
         """
         return self._Type
@@ -3452,7 +3452,7 @@ class Column(AbstractModel):
 
     @property
     def Comment(self):
-        """对该类的注释。
+        r"""对该类的注释。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3464,7 +3464,7 @@ class Column(AbstractModel):
 
     @property
     def Precision(self):
-        """表示整个 numeric 的长度
+        r"""表示整个 numeric 的长度
         :rtype: int
         """
         return self._Precision
@@ -3475,7 +3475,7 @@ class Column(AbstractModel):
 
     @property
     def Scale(self):
-        """表示小数部分的长度
+        r"""表示小数部分的长度
         :rtype: int
         """
         return self._Scale
@@ -3486,7 +3486,7 @@ class Column(AbstractModel):
 
     @property
     def Nullable(self):
-        """是否为null
+        r"""是否为null
         :rtype: str
         """
         return self._Nullable
@@ -3497,7 +3497,7 @@ class Column(AbstractModel):
 
     @property
     def Position(self):
-        """字段位置，小的在前
+        r"""字段位置，小的在前
         :rtype: int
         """
         return self._Position
@@ -3508,7 +3508,7 @@ class Column(AbstractModel):
 
     @property
     def CreateTime(self):
-        """字段创建时间
+        r"""字段创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3519,7 +3519,7 @@ class Column(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """字段修改时间
+        r"""字段修改时间
         :rtype: str
         """
         return self._ModifiedTime
@@ -3530,7 +3530,7 @@ class Column(AbstractModel):
 
     @property
     def IsPartition(self):
-        """是否为分区字段
+        r"""是否为分区字段
         :rtype: bool
         """
         return self._IsPartition
@@ -3541,7 +3541,7 @@ class Column(AbstractModel):
 
     @property
     def DataMaskStrategyInfo(self):
-        """数据脱敏策略信息
+        r"""数据脱敏策略信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
         """
@@ -3577,7 +3577,7 @@ class Column(AbstractModel):
 
 
 class CommonMetrics(AbstractModel):
-    """任务公共指标
+    r"""任务公共指标
 
     """
 
@@ -3631,7 +3631,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def CreateTaskTime(self):
-        """创建任务时长，单位：ms
+        r"""创建任务时长，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3643,7 +3643,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def ProcessTime(self):
-        """预处理总时长，单位：ms
+        r"""预处理总时长，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3655,7 +3655,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def QueueTime(self):
-        """排队时长，单位：ms
+        r"""排队时长，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3667,7 +3667,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def ExecutionTime(self):
-        """执行时长，单位：ms
+        r"""执行时长，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3679,7 +3679,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def IsResultCacheHit(self):
-        """是否命中结果缓存
+        r"""是否命中结果缓存
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3691,7 +3691,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def MatchedMVBytes(self):
-        """匹配物化视图数据量
+        r"""匹配物化视图数据量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3703,7 +3703,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def MatchedMVs(self):
-        """匹配物化视图列表
+        r"""匹配物化视图列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3715,7 +3715,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def AffectedBytes(self):
-        """结果数据量，单位：byte
+        r"""结果数据量，单位：byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3727,7 +3727,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def AffectedRows(self):
-        """	结果行数
+        r"""	结果行数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3739,7 +3739,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def ProcessedBytes(self):
-        """扫描数据量，单位：byte
+        r"""扫描数据量，单位：byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3751,7 +3751,7 @@ class CommonMetrics(AbstractModel):
 
     @property
     def ProcessedRows(self):
-        """	扫描行数
+        r"""	扫描行数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3785,7 +3785,7 @@ class CommonMetrics(AbstractModel):
 
 
 class CosPermission(AbstractModel):
-    """cos权限描述
+    r"""cos权限描述
 
     """
 
@@ -3803,7 +3803,7 @@ class CosPermission(AbstractModel):
 
     @property
     def CosPath(self):
-        """cos路径
+        r"""cos路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3815,7 +3815,7 @@ class CosPermission(AbstractModel):
 
     @property
     def Permissions(self):
-        """权限【"read","write"】
+        r"""权限【"read","write"】
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3840,7 +3840,7 @@ class CosPermission(AbstractModel):
 
 
 class CreateCHDFSBindingProductRequest(AbstractModel):
-    """CreateCHDFSBindingProduct请求参数结构体
+    r"""CreateCHDFSBindingProduct请求参数结构体
 
     """
 
@@ -3865,7 +3865,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def MountPoint(self):
-        """需要绑定的元数据加速桶名
+        r"""需要绑定的元数据加速桶名
         :rtype: str
         """
         return self._MountPoint
@@ -3876,7 +3876,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def BucketType(self):
-        """桶的类型，分为cos和lakefs
+        r"""桶的类型，分为cos和lakefs
         :rtype: str
         """
         return self._BucketType
@@ -3887,7 +3887,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -3898,7 +3898,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def EngineName(self):
-        """引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+        r"""引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
         :rtype: str
         """
         return self._EngineName
@@ -3909,7 +3909,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def VpcInfo(self):
-        """vpc信息，产品名称为other时必传此参数
+        r"""vpc信息，产品名称为other时必传此参数
         :rtype: list of VpcInfo
         """
         return self._VpcInfo
@@ -3941,7 +3941,7 @@ class CreateCHDFSBindingProductRequest(AbstractModel):
 
 
 class CreateCHDFSBindingProductResponse(AbstractModel):
-    """CreateCHDFSBindingProduct返回参数结构体
+    r"""CreateCHDFSBindingProduct返回参数结构体
 
     """
 
@@ -3957,7 +3957,7 @@ class CreateCHDFSBindingProductResponse(AbstractModel):
 
     @property
     def MountPointAssociates(self):
-        """绑定信息
+        r"""绑定信息
         :rtype: list of MountPointAssociates
         """
         return self._MountPointAssociates
@@ -3968,7 +3968,7 @@ class CreateCHDFSBindingProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3989,7 +3989,7 @@ class CreateCHDFSBindingProductResponse(AbstractModel):
 
 
 class CreateDMSDatabaseRequest(AbstractModel):
-    """CreateDMSDatabase请求参数结构体
+    r"""CreateDMSDatabase请求参数结构体
 
     """
 
@@ -4014,7 +4014,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     @property
     def Asset(self):
-        """基础元数据对象
+        r"""基础元数据对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -4025,7 +4025,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """Schema目录
+        r"""Schema目录
         :rtype: str
         """
         return self._SchemaName
@@ -4036,7 +4036,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     @property
     def Location(self):
-        """Db存储路径
+        r"""Db存储路径
         :rtype: str
         """
         return self._Location
@@ -4047,7 +4047,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     @property
     def Name(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Name
@@ -4058,7 +4058,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -4087,7 +4087,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
 
 class CreateDMSDatabaseResponse(AbstractModel):
-    """CreateDMSDatabase返回参数结构体
+    r"""CreateDMSDatabase返回参数结构体
 
     """
 
@@ -4100,7 +4100,7 @@ class CreateDMSDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4115,7 +4115,7 @@ class CreateDMSDatabaseResponse(AbstractModel):
 
 
 class CreateDMSTableRequest(AbstractModel):
-    """CreateDMSTable请求参数结构体
+    r"""CreateDMSTable请求参数结构体
 
     """
 
@@ -4176,7 +4176,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Asset(self):
-        """基础对象
+        r"""基础对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -4187,7 +4187,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Type(self):
-        """表类型：EXTERNAL_TABLE, VIRTUAL_VIEW, MATERIALIZED_VIEW
+        r"""表类型：EXTERNAL_TABLE, VIRTUAL_VIEW, MATERIALIZED_VIEW
         :rtype: str
         """
         return self._Type
@@ -4198,7 +4198,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -4209,7 +4209,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def StorageSize(self):
-        """存储大小
+        r"""存储大小
         :rtype: int
         """
         return self._StorageSize
@@ -4220,7 +4220,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数量
+        r"""记录数量
         :rtype: int
         """
         return self._RecordCount
@@ -4231,7 +4231,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def LifeTime(self):
-        """生命周期
+        r"""生命周期
         :rtype: int
         """
         return self._LifeTime
@@ -4242,7 +4242,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def DataUpdateTime(self):
-        """数据更新时间
+        r"""数据更新时间
         :rtype: str
         """
         return self._DataUpdateTime
@@ -4253,7 +4253,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def StructUpdateTime(self):
-        """结构更新时间
+        r"""结构更新时间
         :rtype: str
         """
         return self._StructUpdateTime
@@ -4264,7 +4264,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后访问时间
+        r"""最后访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -4275,7 +4275,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Sds(self):
-        """存储对象
+        r"""存储对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
         """
         return self._Sds
@@ -4286,7 +4286,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """列
+        r"""列
         :rtype: list of DMSColumn
         """
         return self._Columns
@@ -4297,7 +4297,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def PartitionKeys(self):
-        """分区键值
+        r"""分区键值
         :rtype: list of DMSColumn
         """
         return self._PartitionKeys
@@ -4308,7 +4308,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def ViewOriginalText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewOriginalText
@@ -4319,7 +4319,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def ViewExpandedText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewExpandedText
@@ -4330,7 +4330,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区
+        r"""分区
         :rtype: list of DMSPartition
         """
         return self._Partitions
@@ -4341,7 +4341,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def Name(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Name
@@ -4352,7 +4352,7 @@ class CreateDMSTableRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -4410,7 +4410,7 @@ class CreateDMSTableRequest(AbstractModel):
 
 
 class CreateDMSTableResponse(AbstractModel):
-    """CreateDMSTable返回参数结构体
+    r"""CreateDMSTable返回参数结构体
 
     """
 
@@ -4423,7 +4423,7 @@ class CreateDMSTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4438,7 +4438,7 @@ class CreateDMSTableResponse(AbstractModel):
 
 
 class CreateDataEngineRequest(AbstractModel):
-    """CreateDataEngine请求参数结构体
+    r"""CreateDataEngine请求参数结构体
 
     """
 
@@ -4547,7 +4547,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        """引擎类型spark/presto
+        r"""引擎类型spark/presto
         :rtype: str
         """
         return self._EngineType
@@ -4558,7 +4558,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """虚拟集群名称
+        r"""虚拟集群名称
         :rtype: str
         """
         return self._DataEngineName
@@ -4569,7 +4569,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型 spark_private/presto_private/presto_cu/spark_cu
+        r"""集群类型 spark_private/presto_private/presto_cu/spark_cu
         :rtype: str
         """
         return self._ClusterType
@@ -4580,7 +4580,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """计费模式 0=共享模式 1=按量计费 2=包年包月
+        r"""计费模式 0=共享模式 1=按量计费 2=包年包月
         :rtype: int
         """
         return self._Mode
@@ -4591,7 +4591,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def AutoResume(self):
-        """是否自动启动集群
+        r"""是否自动启动集群
         :rtype: bool
         """
         return self._AutoResume
@@ -4602,7 +4602,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def MinClusters(self):
-        """最小资源
+        r"""最小资源
         :rtype: int
         """
         return self._MinClusters
@@ -4613,7 +4613,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def MaxClusters(self):
-        """最大资源
+        r"""最大资源
         :rtype: int
         """
         return self._MaxClusters
@@ -4626,7 +4626,7 @@ class CreateDataEngineRequest(AbstractModel):
     def DefaultDataEngine(self):
         warnings.warn("parameter `DefaultDataEngine` is deprecated", DeprecationWarning) 
 
-        """是否为默认虚拟集群
+        r"""是否为默认虚拟集群
         :rtype: bool
         """
         return self._DefaultDataEngine
@@ -4639,7 +4639,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
-        """VPC网段
+        r"""VPC网段
         :rtype: str
         """
         return self._CidrBlock
@@ -4650,7 +4650,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def Message(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Message
@@ -4661,7 +4661,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def Size(self):
-        """集群规模
+        r"""集群规模
         :rtype: int
         """
         return self._Size
@@ -4672,7 +4672,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费类型，后付费：0，预付费：1。当前只支持后付费，不填默认为后付费。
+        r"""计费类型，后付费：0，预付费：1。当前只支持后付费，不填默认为后付费。
         :rtype: int
         """
         return self._PayMode
@@ -4683,7 +4683,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """资源使用时长，后付费：固定填1，预付费：最少填1，代表购买资源一个月，最长不超过120。默认1
+        r"""资源使用时长，后付费：固定填1，预付费：最少填1，代表购买资源一个月，最长不超过120。默认1
         :rtype: int
         """
         return self._TimeSpan
@@ -4694,7 +4694,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """资源使用时长的单位，后付费：h，预付费：m。默认为h
+        r"""资源使用时长的单位，后付费：h，预付费：m。默认为h
         :rtype: str
         """
         return self._TimeUnit
@@ -4705,7 +4705,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """资源的自动续费标志。后付费无需续费，固定填0；预付费下：0表示手动续费、1代表自动续费、2代表不续费，在0下如果是大客户，会自动帮大客户续费。默认为0
+        r"""资源的自动续费标志。后付费无需续费，固定填0；预付费下：0表示手动续费、1代表自动续费、2代表不续费，在0下如果是大客户，会自动帮大客户续费。默认为0
         :rtype: int
         """
         return self._AutoRenew
@@ -4716,7 +4716,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """创建资源的时候需要绑定的标签信息
+        r"""创建资源的时候需要绑定的标签信息
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -4727,7 +4727,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def AutoSuspend(self):
-        """是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+        r"""是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
         :rtype: bool
         """
         return self._AutoSuspend
@@ -4738,7 +4738,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def CrontabResumeSuspend(self):
-        """定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+        r"""定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
         :rtype: int
         """
         return self._CrontabResumeSuspend
@@ -4749,7 +4749,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def CrontabResumeSuspendStrategy(self):
-        """定时启停策略，复杂类型：包含启停时间、挂起集群策略
+        r"""定时启停策略，复杂类型：包含启停时间、挂起集群策略
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
         """
         return self._CrontabResumeSuspendStrategy
@@ -4760,7 +4760,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def EngineExecType(self):
-        """引擎执行任务类型，有效值：SQL/BATCH，标准引擎默认为BATCH
+        r"""引擎执行任务类型，有效值：SQL/BATCH，标准引擎默认为BATCH
         :rtype: str
         """
         return self._EngineExecType
@@ -4771,7 +4771,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """单个集群最大并发任务数，默认5
+        r"""单个集群最大并发任务数，默认5
         :rtype: int
         """
         return self._MaxConcurrency
@@ -4782,7 +4782,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def TolerableQueueTime(self):
-        """可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+        r"""可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
         :rtype: int
         """
         return self._TolerableQueueTime
@@ -4793,7 +4793,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def AutoSuspendTime(self):
-        """集群自动挂起时间，默认10分钟
+        r"""集群自动挂起时间，默认10分钟
         :rtype: int
         """
         return self._AutoSuspendTime
@@ -4804,7 +4804,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型。Standard_CU：标准型；Memory_CU：内存型
+        r"""资源类型。Standard_CU：标准型；Memory_CU：内存型
         :rtype: str
         """
         return self._ResourceType
@@ -4815,7 +4815,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineConfigPairs(self):
-        """集群高级配置
+        r"""集群高级配置
         :rtype: list of DataEngineConfigPair
         """
         return self._DataEngineConfigPairs
@@ -4826,7 +4826,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def ImageVersionName(self):
-        """集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
+        r"""集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
         :rtype: str
         """
         return self._ImageVersionName
@@ -4837,7 +4837,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def MainClusterName(self):
-        """主集群名称，创建容灾集群时指定
+        r"""主集群名称，创建容灾集群时指定
         :rtype: str
         """
         return self._MainClusterName
@@ -4848,7 +4848,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        """spark jar 包年包月集群是否开启弹性
+        r"""spark jar 包年包月集群是否开启弹性
         :rtype: bool
         """
         return self._ElasticSwitch
@@ -4859,7 +4859,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def ElasticLimit(self):
-        """spark jar 包年包月集群弹性上限
+        r"""spark jar 包年包月集群弹性上限
         :rtype: int
         """
         return self._ElasticLimit
@@ -4870,7 +4870,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def SessionResourceTemplate(self):
-        """spark作业集群session资源配置模板
+        r"""spark作业集群session资源配置模板
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         return self._SessionResourceTemplate
@@ -4881,7 +4881,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def AutoAuthorization(self):
-        """自动授权
+        r"""自动授权
         :rtype: bool
         """
         return self._AutoAuthorization
@@ -4892,7 +4892,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
         :rtype: str
         """
         return self._EngineNetworkId
@@ -4903,7 +4903,7 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def EngineGeneration(self):
-        """引擎世代，SuperSQL：代表supersql引擎，Native：代表标准引擎。默认值为SuperSQL
+        r"""引擎世代，SuperSQL：代表supersql引擎，Native：代表标准引擎。默认值为SuperSQL
         :rtype: str
         """
         return self._EngineGeneration
@@ -4972,7 +4972,7 @@ class CreateDataEngineRequest(AbstractModel):
 
 
 class CreateDataEngineResponse(AbstractModel):
-    """CreateDataEngine返回参数结构体
+    r"""CreateDataEngine返回参数结构体
 
     """
 
@@ -4988,7 +4988,7 @@ class CreateDataEngineResponse(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """虚拟引擎id
+        r"""虚拟引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -4999,7 +4999,7 @@ class CreateDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5015,7 +5015,7 @@ class CreateDataEngineResponse(AbstractModel):
 
 
 class CreateDataMaskStrategyRequest(AbstractModel):
-    """CreateDataMaskStrategy请求参数结构体
+    r"""CreateDataMaskStrategy请求参数结构体
 
     """
 
@@ -5028,7 +5028,7 @@ class CreateDataMaskStrategyRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """数据脱敏策略详情
+        r"""数据脱敏策略详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
         """
         return self._Strategy
@@ -5053,7 +5053,7 @@ class CreateDataMaskStrategyRequest(AbstractModel):
 
 
 class CreateDataMaskStrategyResponse(AbstractModel):
-    """CreateDataMaskStrategy返回参数结构体
+    r"""CreateDataMaskStrategy返回参数结构体
 
     """
 
@@ -5066,7 +5066,7 @@ class CreateDataMaskStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5081,7 +5081,7 @@ class CreateDataMaskStrategyResponse(AbstractModel):
 
 
 class CreateDatabaseRequest(AbstractModel):
-    """CreateDatabase请求参数结构体
+    r"""CreateDatabase请求参数结构体
 
     """
 
@@ -5097,7 +5097,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DatabaseInfo(self):
-        """数据库基础信息
+        r"""数据库基础信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatabaseInfo`
         """
         return self._DatabaseInfo
@@ -5108,7 +5108,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称，默认为DataLakeCatalog
+        r"""数据源名称，默认为DataLakeCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -5134,7 +5134,7 @@ class CreateDatabaseRequest(AbstractModel):
 
 
 class CreateDatabaseResponse(AbstractModel):
-    """CreateDatabase返回参数结构体
+    r"""CreateDatabase返回参数结构体
 
     """
 
@@ -5150,7 +5150,7 @@ class CreateDatabaseResponse(AbstractModel):
 
     @property
     def Execution(self):
-        """生成的建库执行语句对象。
+        r"""生成的建库执行语句对象。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Execution`
         """
         return self._Execution
@@ -5161,7 +5161,7 @@ class CreateDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5179,7 +5179,7 @@ class CreateDatabaseResponse(AbstractModel):
 
 
 class CreateExportTaskRequest(AbstractModel):
-    """CreateExportTask请求参数结构体
+    r"""CreateExportTask请求参数结构体
 
     """
 
@@ -5201,7 +5201,7 @@ class CreateExportTaskRequest(AbstractModel):
 
     @property
     def InputType(self):
-        """数据来源，lakefsStorage、taskResult
+        r"""数据来源，lakefsStorage、taskResult
         :rtype: str
         """
         return self._InputType
@@ -5212,7 +5212,7 @@ class CreateExportTaskRequest(AbstractModel):
 
     @property
     def InputConf(self):
-        """导出任务输入配置
+        r"""导出任务输入配置
         :rtype: list of KVPair
         """
         return self._InputConf
@@ -5223,7 +5223,7 @@ class CreateExportTaskRequest(AbstractModel):
 
     @property
     def OutputConf(self):
-        """导出任务输出配置
+        r"""导出任务输出配置
         :rtype: list of KVPair
         """
         return self._OutputConf
@@ -5234,7 +5234,7 @@ class CreateExportTaskRequest(AbstractModel):
 
     @property
     def OutputType(self):
-        """目标数据源的类型，目前支持导出到cos
+        r"""目标数据源的类型，目前支持导出到cos
         :rtype: str
         """
         return self._OutputType
@@ -5270,7 +5270,7 @@ class CreateExportTaskRequest(AbstractModel):
 
 
 class CreateExportTaskResponse(AbstractModel):
-    """CreateExportTask返回参数结构体
+    r"""CreateExportTask返回参数结构体
 
     """
 
@@ -5286,7 +5286,7 @@ class CreateExportTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -5297,7 +5297,7 @@ class CreateExportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5313,7 +5313,7 @@ class CreateExportTaskResponse(AbstractModel):
 
 
 class CreateImportTaskRequest(AbstractModel):
-    """CreateImportTask请求参数结构体
+    r"""CreateImportTask请求参数结构体
 
     """
 
@@ -5335,7 +5335,7 @@ class CreateImportTaskRequest(AbstractModel):
 
     @property
     def InputType(self):
-        """数据来源，cos
+        r"""数据来源，cos
         :rtype: str
         """
         return self._InputType
@@ -5346,7 +5346,7 @@ class CreateImportTaskRequest(AbstractModel):
 
     @property
     def InputConf(self):
-        """输入配置
+        r"""输入配置
         :rtype: list of KVPair
         """
         return self._InputConf
@@ -5357,7 +5357,7 @@ class CreateImportTaskRequest(AbstractModel):
 
     @property
     def OutputConf(self):
-        """输出配置
+        r"""输出配置
         :rtype: list of KVPair
         """
         return self._OutputConf
@@ -5368,7 +5368,7 @@ class CreateImportTaskRequest(AbstractModel):
 
     @property
     def OutputType(self):
-        """目标数据源的类型，目前支持导入到托管存储，即lakefsStorage
+        r"""目标数据源的类型，目前支持导入到托管存储，即lakefsStorage
         :rtype: str
         """
         return self._OutputType
@@ -5404,7 +5404,7 @@ class CreateImportTaskRequest(AbstractModel):
 
 
 class CreateImportTaskResponse(AbstractModel):
-    """CreateImportTask返回参数结构体
+    r"""CreateImportTask返回参数结构体
 
     """
 
@@ -5420,7 +5420,7 @@ class CreateImportTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -5431,7 +5431,7 @@ class CreateImportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5447,7 +5447,7 @@ class CreateImportTaskResponse(AbstractModel):
 
 
 class CreateInternalTableRequest(AbstractModel):
-    """CreateInternalTable请求参数结构体
+    r"""CreateInternalTable请求参数结构体
 
     """
 
@@ -5469,7 +5469,7 @@ class CreateInternalTableRequest(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """表基本信息
+        r"""表基本信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -5480,7 +5480,7 @@ class CreateInternalTableRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """表字段信息
+        r"""表字段信息
         :rtype: list of TColumn
         """
         return self._Columns
@@ -5491,7 +5491,7 @@ class CreateInternalTableRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """表分区信息
+        r"""表分区信息
         :rtype: list of TPartition
         """
         return self._Partitions
@@ -5502,7 +5502,7 @@ class CreateInternalTableRequest(AbstractModel):
 
     @property
     def Properties(self):
-        """表属性信息
+        r"""表属性信息
         :rtype: list of Property
         """
         return self._Properties
@@ -5545,7 +5545,7 @@ class CreateInternalTableRequest(AbstractModel):
 
 
 class CreateInternalTableResponse(AbstractModel):
-    """CreateInternalTable返回参数结构体
+    r"""CreateInternalTable返回参数结构体
 
     """
 
@@ -5561,7 +5561,7 @@ class CreateInternalTableResponse(AbstractModel):
 
     @property
     def Execution(self):
-        """创建托管存储内表sql语句描述
+        r"""创建托管存储内表sql语句描述
         :rtype: str
         """
         return self._Execution
@@ -5572,7 +5572,7 @@ class CreateInternalTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5588,7 +5588,7 @@ class CreateInternalTableResponse(AbstractModel):
 
 
 class CreateNotebookSessionRequest(AbstractModel):
-    """CreateNotebookSession请求参数结构体
+    r"""CreateNotebookSession请求参数结构体
 
     """
 
@@ -5649,7 +5649,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Session名称
+        r"""Session名称
         :rtype: str
         """
         return self._Name
@@ -5660,7 +5660,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """类型，当前支持：spark、pyspark、sparkr、sql
+        r"""类型，当前支持：spark、pyspark、sparkr、sql
         :rtype: str
         """
         return self._Kind
@@ -5671,7 +5671,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DLC Spark作业引擎名称
+        r"""DLC Spark作业引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -5682,7 +5682,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ProgramDependentFiles(self):
-        """session文件地址，当前支持：cosn://和lakefs://两种路径
+        r"""session文件地址，当前支持：cosn://和lakefs://两种路径
         :rtype: list of str
         """
         return self._ProgramDependentFiles
@@ -5693,7 +5693,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ProgramDependentJars(self):
-        """依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
         :rtype: list of str
         """
         return self._ProgramDependentJars
@@ -5704,7 +5704,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ProgramDependentPython(self):
-        """依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
         :rtype: list of str
         """
         return self._ProgramDependentPython
@@ -5715,7 +5715,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ProgramArchives(self):
-        """依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
         :rtype: list of str
         """
         return self._ProgramArchives
@@ -5726,7 +5726,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def DriverSize(self):
-        """指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._DriverSize
@@ -5737,7 +5737,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._ExecutorSize
@@ -5748,7 +5748,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ExecutorNumbers(self):
-        """指定的Executor数量，默认为1
+        r"""指定的Executor数量，默认为1
         :rtype: int
         """
         return self._ExecutorNumbers
@@ -5759,7 +5759,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def Arguments(self):
-        """Session相关配置，当前支持：
+        r"""Session相关配置，当前支持：
 1. dlc.eni: 用户配置的eni网关信息，可以通过该字段设置；
 2. dlc.role.arn: 用户配置的roleArn鉴权策略配置信息，可以通过该字段设置；
 3. dlc.sql.set.config: 用户配置的集群配置信息，可以通过该字段设置；
@@ -5773,7 +5773,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ProxyUser(self):
-        """代理用户，默认为root
+        r"""代理用户，默认为root
         :rtype: str
         """
         return self._ProxyUser
@@ -5784,7 +5784,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def TimeoutInSecond(self):
-        """指定的Session超时时间，单位秒，默认3600秒
+        r"""指定的Session超时时间，单位秒，默认3600秒
         :rtype: int
         """
         return self._TimeoutInSecond
@@ -5795,7 +5795,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -5806,7 +5806,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def SparkImage(self):
-        """指定spark版本名称，当前任务使用该spark镜像运行
+        r"""指定spark版本名称，当前任务使用该spark镜像运行
         :rtype: str
         """
         return self._SparkImage
@@ -5817,7 +5817,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+        r"""是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
         :rtype: int
         """
         return self._IsInherit
@@ -5860,7 +5860,7 @@ class CreateNotebookSessionRequest(AbstractModel):
 
 
 class CreateNotebookSessionResponse(AbstractModel):
-    """CreateNotebookSession返回参数结构体
+    r"""CreateNotebookSession返回参数结构体
 
     """
 
@@ -5882,7 +5882,7 @@ class CreateNotebookSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -5893,7 +5893,7 @@ class CreateNotebookSessionResponse(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """Spark任务返回的AppId
+        r"""Spark任务返回的AppId
         :rtype: str
         """
         return self._SparkAppId
@@ -5904,7 +5904,7 @@ class CreateNotebookSessionResponse(AbstractModel):
 
     @property
     def State(self):
-        """Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        r"""Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
         :rtype: str
         """
         return self._State
@@ -5915,7 +5915,7 @@ class CreateNotebookSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5933,7 +5933,7 @@ class CreateNotebookSessionResponse(AbstractModel):
 
 
 class CreateNotebookSessionStatementRequest(AbstractModel):
-    """CreateNotebookSessionStatement请求参数结构体
+    r"""CreateNotebookSessionStatement请求参数结构体
 
     """
 
@@ -5952,7 +5952,7 @@ class CreateNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -5963,7 +5963,7 @@ class CreateNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def Code(self):
-        """执行的代码
+        r"""执行的代码
         :rtype: str
         """
         return self._Code
@@ -5974,7 +5974,7 @@ class CreateNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """类型，当前支持：spark、pyspark、sparkr、sql
+        r"""类型，当前支持：spark、pyspark、sparkr、sql
         :rtype: str
         """
         return self._Kind
@@ -5999,7 +5999,7 @@ class CreateNotebookSessionStatementRequest(AbstractModel):
 
 
 class CreateNotebookSessionStatementResponse(AbstractModel):
-    """CreateNotebookSessionStatement返回参数结构体
+    r"""CreateNotebookSessionStatement返回参数结构体
 
     """
 
@@ -6015,7 +6015,7 @@ class CreateNotebookSessionStatementResponse(AbstractModel):
 
     @property
     def NotebookSessionStatement(self):
-        """Session Statement详情
+        r"""Session Statement详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementInfo`
         """
         return self._NotebookSessionStatement
@@ -6026,7 +6026,7 @@ class CreateNotebookSessionStatementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6044,7 +6044,7 @@ class CreateNotebookSessionStatementResponse(AbstractModel):
 
 
 class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
-    """CreateNotebookSessionStatementSupportBatchSQL请求参数结构体
+    r"""CreateNotebookSessionStatementSupportBatchSQL请求参数结构体
 
     """
 
@@ -6066,7 +6066,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -6077,7 +6077,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
 
     @property
     def Code(self):
-        """执行的代码
+        r"""执行的代码
         :rtype: str
         """
         return self._Code
@@ -6088,7 +6088,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """类型，当前支持：sql
+        r"""类型，当前支持：sql
         :rtype: str
         """
         return self._Kind
@@ -6099,7 +6099,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
 
     @property
     def SaveResult(self):
-        """是否保存运行结果
+        r"""是否保存运行结果
         :rtype: bool
         """
         return self._SaveResult
@@ -6125,7 +6125,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
 
 
 class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
-    """CreateNotebookSessionStatementSupportBatchSQL返回参数结构体
+    r"""CreateNotebookSessionStatementSupportBatchSQL返回参数结构体
 
     """
 
@@ -6141,7 +6141,7 @@ class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
 
     @property
     def NotebookSessionStatementBatches(self):
-        """Session Statement详情
+        r"""Session Statement详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementBatchInformation`
         """
         return self._NotebookSessionStatementBatches
@@ -6152,7 +6152,7 @@ class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6170,7 +6170,7 @@ class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
 
 
 class CreateResultDownloadRequest(AbstractModel):
-    """CreateResultDownload请求参数结构体
+    r"""CreateResultDownload请求参数结构体
 
     """
 
@@ -6189,7 +6189,7 @@ class CreateResultDownloadRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """查询结果任务Id
+        r"""查询结果任务Id
         :rtype: str
         """
         return self._TaskId
@@ -6200,7 +6200,7 @@ class CreateResultDownloadRequest(AbstractModel):
 
     @property
     def Format(self):
-        """下载格式
+        r"""下载格式
         :rtype: str
         """
         return self._Format
@@ -6211,7 +6211,7 @@ class CreateResultDownloadRequest(AbstractModel):
 
     @property
     def Force(self):
-        """是否重新生成下载文件，仅当之前任务状态为 timeout | error 时有效
+        r"""是否重新生成下载文件，仅当之前任务状态为 timeout | error 时有效
         :rtype: bool
         """
         return self._Force
@@ -6236,7 +6236,7 @@ class CreateResultDownloadRequest(AbstractModel):
 
 
 class CreateResultDownloadResponse(AbstractModel):
-    """CreateResultDownload返回参数结构体
+    r"""CreateResultDownload返回参数结构体
 
     """
 
@@ -6252,7 +6252,7 @@ class CreateResultDownloadResponse(AbstractModel):
 
     @property
     def DownloadId(self):
-        """下载任务Id
+        r"""下载任务Id
         :rtype: str
         """
         return self._DownloadId
@@ -6263,7 +6263,7 @@ class CreateResultDownloadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6279,7 +6279,7 @@ class CreateResultDownloadResponse(AbstractModel):
 
 
 class CreateScriptRequest(AbstractModel):
-    """CreateScript请求参数结构体
+    r"""CreateScript请求参数结构体
 
     """
 
@@ -6301,7 +6301,7 @@ class CreateScriptRequest(AbstractModel):
 
     @property
     def ScriptName(self):
-        """脚本名称，最大不能超过255个字符。
+        r"""脚本名称，最大不能超过255个字符。
         :rtype: str
         """
         return self._ScriptName
@@ -6312,7 +6312,7 @@ class CreateScriptRequest(AbstractModel):
 
     @property
     def SQLStatement(self):
-        """base64编码后的sql语句
+        r"""base64编码后的sql语句
         :rtype: str
         """
         return self._SQLStatement
@@ -6323,7 +6323,7 @@ class CreateScriptRequest(AbstractModel):
 
     @property
     def ScriptDesc(self):
-        """脚本描述， 不能超过50个字符
+        r"""脚本描述， 不能超过50个字符
         :rtype: str
         """
         return self._ScriptDesc
@@ -6334,7 +6334,7 @@ class CreateScriptRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DatabaseName
@@ -6360,7 +6360,7 @@ class CreateScriptRequest(AbstractModel):
 
 
 class CreateScriptResponse(AbstractModel):
-    """CreateScript返回参数结构体
+    r"""CreateScript返回参数结构体
 
     """
 
@@ -6373,7 +6373,7 @@ class CreateScriptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6388,7 +6388,7 @@ class CreateScriptResponse(AbstractModel):
 
 
 class CreateSparkAppRequest(AbstractModel):
-    """CreateSparkApp请求参数结构体
+    r"""CreateSparkApp请求参数结构体
 
     """
 
@@ -6488,7 +6488,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._AppName
@@ -6499,7 +6499,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """spark作业类型，1代表spark jar作业，2代表spark streaming作业
+        r"""spark作业类型，1代表spark jar作业，2代表spark streaming作业
         :rtype: int
         """
         return self._AppType
@@ -6510,7 +6510,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def DataEngine(self):
-        """执行spark作业的数据引擎名称
+        r"""执行spark作业的数据引擎名称
         :rtype: str
         """
         return self._DataEngine
@@ -6521,7 +6521,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppFile(self):
-        """spark作业程序包文件路径
+        r"""spark作业程序包文件路径
         :rtype: str
         """
         return self._AppFile
@@ -6532,7 +6532,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        """数据访问策略，CAM Role arn，控制台通过数据作业—>作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；
+        r"""数据访问策略，CAM Role arn，控制台通过数据作业—>作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；
         :rtype: int
         """
         return self._RoleArn
@@ -6543,7 +6543,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppDriverSize(self):
-        """指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._AppDriverSize
@@ -6554,7 +6554,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorSize(self):
-        """指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._AppExecutorSize
@@ -6565,7 +6565,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorNums(self):
-        """spark作业executor个数
+        r"""spark作业executor个数
         :rtype: int
         """
         return self._AppExecutorNums
@@ -6576,7 +6576,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def Eni(self):
-        """该字段已下线，请使用字段Datasource
+        r"""该字段已下线，请使用字段Datasource
         :rtype: str
         """
         return self._Eni
@@ -6587,7 +6587,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsLocal(self):
-        """spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocal
@@ -6598,7 +6598,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def MainClass(self):
-        """spark作业主类
+        r"""spark作业主类
         :rtype: str
         """
         return self._MainClass
@@ -6609,7 +6609,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppConf(self):
-        """spark配置，以换行符分隔
+        r"""spark配置，以换行符分隔
         :rtype: str
         """
         return self._AppConf
@@ -6620,7 +6620,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsLocalJars(self):
-        """spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalJars
@@ -6631,7 +6631,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppJars(self):
-        """spark 作业依赖jar包（--jars），以逗号分隔
+        r"""spark 作业依赖jar包（--jars），以逗号分隔
         :rtype: str
         """
         return self._AppJars
@@ -6642,7 +6642,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsLocalFiles(self):
-        """spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalFiles
@@ -6653,7 +6653,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppFiles(self):
-        """spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
+        r"""spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
         :rtype: str
         """
         return self._AppFiles
@@ -6664,7 +6664,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """spark作业程序入参，空格分割
+        r"""spark作业程序入参，空格分割
         :rtype: str
         """
         return self._CmdArgs
@@ -6675,7 +6675,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def MaxRetries(self):
-        """最大重试次数，只对spark流任务生效
+        r"""最大重试次数，只对spark流任务生效
         :rtype: int
         """
         return self._MaxRetries
@@ -6686,7 +6686,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DataSource
@@ -6697,7 +6697,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsLocalPythonFiles(self):
-        """pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalPythonFiles
@@ -6708,7 +6708,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppPythonFiles(self):
-        """pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
+        r"""pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
         :rtype: str
         """
         return self._AppPythonFiles
@@ -6719,7 +6719,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsLocalArchives(self):
-        """spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalArchives
@@ -6730,7 +6730,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppArchives(self):
-        """spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
+        r"""spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
         :rtype: str
         """
         return self._AppArchives
@@ -6741,7 +6741,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def SparkImage(self):
-        """Spark Image 版本号
+        r"""Spark Image 版本号
         :rtype: str
         """
         return self._SparkImage
@@ -6752,7 +6752,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        """Spark Image 版本名称
+        r"""Spark Image 版本名称
         :rtype: str
         """
         return self._SparkImageVersion
@@ -6763,7 +6763,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
         :rtype: int
         """
         return self._AppExecutorMaxNumbers
@@ -6774,7 +6774,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """关联dlc查询脚本id
+        r"""关联dlc查询脚本id
         :rtype: str
         """
         return self._SessionId
@@ -6785,7 +6785,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        r"""任务资源配置是否继承集群模板，0（默认）不继承，1：继承
         :rtype: int
         """
         return self._IsInherit
@@ -6796,7 +6796,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def IsSessionStarted(self):
-        """是否使用session脚本的sql运行任务：false：否，true：是
+        r"""是否使用session脚本的sql运行任务：false：否，true：是
         :rtype: bool
         """
         return self._IsSessionStarted
@@ -6807,7 +6807,7 @@ class CreateSparkAppRequest(AbstractModel):
 
     @property
     def DependencyPackages(self):
-        """依赖包信息
+        r"""依赖包信息
         :rtype: list of DependencyPackage
         """
         return self._DependencyPackages
@@ -6864,7 +6864,7 @@ class CreateSparkAppRequest(AbstractModel):
 
 
 class CreateSparkAppResponse(AbstractModel):
-    """CreateSparkApp返回参数结构体
+    r"""CreateSparkApp返回参数结构体
 
     """
 
@@ -6880,7 +6880,7 @@ class CreateSparkAppResponse(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """App唯一标识
+        r"""App唯一标识
         :rtype: str
         """
         return self._SparkAppId
@@ -6891,7 +6891,7 @@ class CreateSparkAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6907,7 +6907,7 @@ class CreateSparkAppResponse(AbstractModel):
 
 
 class CreateSparkAppTaskRequest(AbstractModel):
-    """CreateSparkAppTask请求参数结构体
+    r"""CreateSparkAppTask请求参数结构体
 
     """
 
@@ -6926,7 +6926,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._JobName
@@ -6937,7 +6937,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """spark作业程序入参，以空格分隔；一般用于周期性调用使用
+        r"""spark作业程序入参，以空格分隔；一般用于周期性调用使用
         :rtype: str
         """
         return self._CmdArgs
@@ -6948,7 +6948,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        """任务来源信息
+        r"""任务来源信息
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -6978,7 +6978,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
 
 class CreateSparkAppTaskResponse(AbstractModel):
-    """CreateSparkAppTask返回参数结构体
+    r"""CreateSparkAppTask返回参数结构体
 
     """
 
@@ -6997,7 +6997,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批Id
+        r"""批Id
         :rtype: str
         """
         return self._BatchId
@@ -7008,7 +7008,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -7019,7 +7019,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7036,7 +7036,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
 
 class CreateSparkSessionBatchSQLRequest(AbstractModel):
-    """CreateSparkSessionBatchSQL请求参数结构体
+    r"""CreateSparkSessionBatchSQL请求参数结构体
 
     """
 
@@ -7087,7 +7087,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DLC Spark作业引擎名称
+        r"""DLC Spark作业引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -7098,7 +7098,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def ExecuteSQL(self):
-        """运行sql，需要base64编码。
+        r"""运行sql，需要base64编码。
         :rtype: str
         """
         return self._ExecuteSQL
@@ -7109,7 +7109,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def DriverSize(self):
-        """指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._DriverSize
@@ -7120,7 +7120,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._ExecutorSize
@@ -7131,7 +7131,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def ExecutorNumbers(self):
-        """指定的Executor数量，默认为1
+        r"""指定的Executor数量，默认为1
         :rtype: int
         """
         return self._ExecutorNumbers
@@ -7142,7 +7142,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -7153,7 +7153,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def TimeoutInSecond(self):
-        """指定的Session超时时间，单位秒，默认3600秒
+        r"""指定的Session超时时间，单位秒，默认3600秒
         :rtype: int
         """
         return self._TimeoutInSecond
@@ -7164,7 +7164,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识，当指定sessionid，则使用该session运行任务。
+        r"""Session唯一标识，当指定sessionid，则使用该session运行任务。
         :rtype: str
         """
         return self._SessionId
@@ -7175,7 +7175,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def SessionName(self):
-        """指定要创建的session名称
+        r"""指定要创建的session名称
         :rtype: str
         """
         return self._SessionName
@@ -7186,7 +7186,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def Arguments(self):
-        """Session相关配置，当前支持：1.dlc.eni：用户配置的eni网关信息，可以用过该字段设置；
+        r"""Session相关配置，当前支持：1.dlc.eni：用户配置的eni网关信息，可以用过该字段设置；
 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
         :rtype: list of KVPair
@@ -7199,7 +7199,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
+        r"""是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
         :rtype: int
         """
         return self._IsInherit
@@ -7210,7 +7210,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def CustomKey(self):
-        """用户自定义主键，需唯一
+        r"""用户自定义主键，需唯一
         :rtype: str
         """
         return self._CustomKey
@@ -7221,7 +7221,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        """任务来源信息
+        r"""任务来源信息
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -7266,7 +7266,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 
 
 class CreateSparkSessionBatchSQLResponse(AbstractModel):
-    """CreateSparkSessionBatchSQL返回参数结构体
+    r"""CreateSparkSessionBatchSQL返回参数结构体
 
     """
 
@@ -7286,7 +7286,7 @@ class CreateSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批任务唯一标识
+        r"""批任务唯一标识
         :rtype: str
         """
         return self._BatchId
@@ -7297,7 +7297,7 @@ class CreateSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def Statements(self):
-        """Statement任务列表信息
+        r"""Statement任务列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatementInformation
         """
@@ -7309,7 +7309,7 @@ class CreateSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7331,7 +7331,7 @@ class CreateSparkSessionBatchSQLResponse(AbstractModel):
 
 
 class CreateSparkSubmitTaskRequest(AbstractModel):
-    """CreateSparkSubmitTask请求参数结构体
+    r"""CreateSparkSubmitTask请求参数结构体
 
     """
 
@@ -7383,7 +7383,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -7394,7 +7394,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
+        r"""任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
         :rtype: int
         """
         return self._TaskType
@@ -7405,7 +7405,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称，当前仅支持Spark批作业集群
+        r"""引擎名称，当前仅支持Spark批作业集群
         :rtype: str
         """
         return self._DataEngineName
@@ -7416,7 +7416,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def PackagePath(self):
-        """指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
+        r"""指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
         :rtype: str
         """
         return self._PackagePath
@@ -7427,7 +7427,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        """指定的鉴权信息
+        r"""指定的鉴权信息
         :rtype: int
         """
         return self._RoleArn
@@ -7438,7 +7438,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
+        r"""运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
         :rtype: int
         """
         return self._IsInherit
@@ -7449,7 +7449,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def MainClass(self):
-        """jar任务时需要指定主程序
+        r"""jar任务时需要指定主程序
         :rtype: str
         """
         return self._MainClass
@@ -7460,7 +7460,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def DriverSize(self):
-        """当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        r"""当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
         :rtype: str
         """
         return self._DriverSize
@@ -7471,7 +7471,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        r"""当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
         :rtype: str
         """
         return self._ExecutorSize
@@ -7482,7 +7482,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def ExecutorNumbers(self):
-        """指定使用的executor数量，最小为1
+        r"""指定使用的executor数量，最小为1
         :rtype: int
         """
         return self._ExecutorNumbers
@@ -7493,7 +7493,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
+        r"""指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -7504,7 +7504,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应；SPARKPRESETCODE：base64后的notebook预置代码；SPARKENV：base64后的spark环境变量；SPARKGITINFO：base64后的git相关信息
+        r"""提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应；SPARKPRESETCODE：base64后的notebook预置代码；SPARKENV：base64后的spark环境变量；SPARKGITINFO：base64后的git相关信息
         :rtype: list of KVPair
         """
         return self._CmdArgs
@@ -7515,7 +7515,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        """任务来源信息
+        r"""任务来源信息
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -7526,7 +7526,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """ai资源组名称
+        r"""ai资源组名称
         :rtype: str
         """
         return self._ResourceGroupName
@@ -7572,7 +7572,7 @@ class CreateSparkSubmitTaskRequest(AbstractModel):
 
 
 class CreateSparkSubmitTaskResponse(AbstractModel):
-    """CreateSparkSubmitTask返回参数结构体
+    r"""CreateSparkSubmitTask返回参数结构体
 
     """
 
@@ -7591,7 +7591,7 @@ class CreateSparkSubmitTaskResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """批作业ID
+        r"""批作业ID
         :rtype: str
         """
         return self._BatchId
@@ -7602,7 +7602,7 @@ class CreateSparkSubmitTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """批任务ID，用改ID进行任务的查询与删除等
+        r"""批任务ID，用改ID进行任务的查询与删除等
         :rtype: str
         """
         return self._TaskId
@@ -7613,7 +7613,7 @@ class CreateSparkSubmitTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7630,7 +7630,7 @@ class CreateSparkSubmitTaskResponse(AbstractModel):
 
 
 class CreateStandardEngineResourceGroupRequest(AbstractModel):
-    """CreateStandardEngineResourceGroup请求参数结构体
+    r"""CreateStandardEngineResourceGroup请求参数结构体
 
     """
 
@@ -7720,7 +7720,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """标准引擎资源组名称
+        r"""标准引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -7731,7 +7731,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """标准引擎名称
+        r"""标准引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -7742,7 +7742,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def AutoLaunch(self):
-        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        r"""自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
         :rtype: int
         """
         return self._AutoLaunch
@@ -7753,7 +7753,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def AutoPause(self):
-        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        r"""自动挂起资源组。0-自动挂起，1-不自动挂起
         :rtype: int
         """
         return self._AutoPause
@@ -7764,7 +7764,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def DriverCuSpec(self):
-        """driver的cu规格：
+        r"""driver的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -7776,7 +7776,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def ExecutorCuSpec(self):
-        """executor的cu规格：
+        r"""executor的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -7788,7 +7788,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def MinExecutorNums(self):
-        """executor最小数量，
+        r"""executor最小数量，
         :rtype: int
         """
         return self._MinExecutorNums
@@ -7799,7 +7799,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def MaxExecutorNums(self):
-        """executor最大数量
+        r"""executor最大数量
         :rtype: int
         """
         return self._MaxExecutorNums
@@ -7810,7 +7810,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def IsLaunchNow(self):
-        """创建资源组后是否直接拉起，0-拉起，1-不拉起
+        r"""创建资源组后是否直接拉起，0-拉起，1-不拉起
         :rtype: int
         """
         return self._IsLaunchNow
@@ -7821,7 +7821,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def AutoPauseTime(self):
-        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        r"""自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
         :rtype: int
         """
         return self._AutoPauseTime
@@ -7832,7 +7832,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def StaticConfigPairs(self):
-        """资源组静态参数，需要重启资源组生效
+        r"""资源组静态参数，需要重启资源组生效
         :rtype: list of EngineResourceGroupConfigPair
         """
         return self._StaticConfigPairs
@@ -7843,7 +7843,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def DynamicConfigPairs(self):
-        """资源组动态参数，下一个任务生效。
+        r"""资源组动态参数，下一个任务生效。
         :rtype: list of EngineResourceGroupConfigPair
         """
         return self._DynamicConfigPairs
@@ -7854,7 +7854,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """任务并发数，默人是5个
+        r"""任务并发数，默人是5个
         :rtype: int
         """
         return self._MaxConcurrency
@@ -7865,7 +7865,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def NetworkConfigNames(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: list of str
         """
         return self._NetworkConfigNames
@@ -7876,7 +7876,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def PublicDomain(self):
-        """自定义镜像域名
+        r"""自定义镜像域名
         :rtype: str
         """
         return self._PublicDomain
@@ -7887,7 +7887,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        """自定义镜像实例id
+        r"""自定义镜像实例id
         :rtype: str
         """
         return self._RegistryId
@@ -7898,7 +7898,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def FrameType(self):
-        """AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
+        r"""AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
         :rtype: str
         """
         return self._FrameType
@@ -7909,7 +7909,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def ImageType(self):
-        """镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
+        r"""镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
         :rtype: str
         """
         return self._ImageType
@@ -7920,7 +7920,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def ImageName(self):
-        """镜像名称
+        r"""镜像名称
         :rtype: str
         """
         return self._ImageName
@@ -7931,7 +7931,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
-        """镜像id
+        r"""镜像id
         :rtype: str
         """
         return self._ImageVersion
@@ -7942,7 +7942,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def Size(self):
-        """AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
+        r"""AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
         :rtype: int
         """
         return self._Size
@@ -7953,7 +7953,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def ResourceGroupScene(self):
-        """资源组场景
+        r"""资源组场景
         :rtype: str
         """
         return self._ResourceGroupScene
@@ -7964,7 +7964,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def RegionName(self):
-        """自定义镜像所在地域
+        r"""自定义镜像所在地域
         :rtype: str
         """
         return self._RegionName
@@ -7975,7 +7975,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def PythonCuSpec(self):
-        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        r"""python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
         :rtype: str
         """
         return self._PythonCuSpec
@@ -7986,7 +7986,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def SparkSpecMode(self):
-        """仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        r"""仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
         :rtype: str
         """
         return self._SparkSpecMode
@@ -7997,7 +7997,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def SparkSize(self):
-        """仅SQL资源组资源上限，仅用于快速模块
+        r"""仅SQL资源组资源上限，仅用于快速模块
         :rtype: int
         """
         return self._SparkSize
@@ -8055,7 +8055,7 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
 
 
 class CreateStandardEngineResourceGroupResponse(AbstractModel):
-    """CreateStandardEngineResourceGroup返回参数结构体
+    r"""CreateStandardEngineResourceGroup返回参数结构体
 
     """
 
@@ -8068,7 +8068,7 @@ class CreateStandardEngineResourceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8083,7 +8083,7 @@ class CreateStandardEngineResourceGroupResponse(AbstractModel):
 
 
 class CreateStoreLocationRequest(AbstractModel):
-    """CreateStoreLocation请求参数结构体
+    r"""CreateStoreLocation请求参数结构体
 
     """
 
@@ -8096,7 +8096,7 @@ class CreateStoreLocationRequest(AbstractModel):
 
     @property
     def StoreLocation(self):
-        """计算结果存储cos路径，如：cosn://bucketname/
+        r"""计算结果存储cos路径，如：cosn://bucketname/
         :rtype: str
         """
         return self._StoreLocation
@@ -8119,7 +8119,7 @@ class CreateStoreLocationRequest(AbstractModel):
 
 
 class CreateStoreLocationResponse(AbstractModel):
-    """CreateStoreLocation返回参数结构体
+    r"""CreateStoreLocation返回参数结构体
 
     """
 
@@ -8132,7 +8132,7 @@ class CreateStoreLocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8147,7 +8147,7 @@ class CreateStoreLocationResponse(AbstractModel):
 
 
 class CreateTableRequest(AbstractModel):
-    """CreateTable请求参数结构体
+    r"""CreateTable请求参数结构体
 
     """
 
@@ -8160,7 +8160,7 @@ class CreateTableRequest(AbstractModel):
 
     @property
     def TableInfo(self):
-        """数据表配置信息
+        r"""数据表配置信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableInfo`
         """
         return self._TableInfo
@@ -8185,7 +8185,7 @@ class CreateTableRequest(AbstractModel):
 
 
 class CreateTableResponse(AbstractModel):
-    """CreateTable返回参数结构体
+    r"""CreateTable返回参数结构体
 
     """
 
@@ -8201,7 +8201,7 @@ class CreateTableResponse(AbstractModel):
 
     @property
     def Execution(self):
-        """生成的建表执行语句对象。
+        r"""生成的建表执行语句对象。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Execution`
         """
         return self._Execution
@@ -8212,7 +8212,7 @@ class CreateTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8230,7 +8230,7 @@ class CreateTableResponse(AbstractModel):
 
 
 class CreateTaskRequest(AbstractModel):
-    """CreateTask请求参数结构体
+    r"""CreateTask请求参数结构体
 
     """
 
@@ -8258,7 +8258,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def Task(self):
-        """计算任务，该参数中包含任务类型及其相关配置信息
+        r"""计算任务，该参数中包含任务类型及其相关配置信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Task`
         """
         return self._Task
@@ -8269,7 +8269,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
+        r"""数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
         :rtype: str
         """
         return self._DatabaseName
@@ -8280,7 +8280,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """默认数据源名称。
+        r"""默认数据源名称。
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -8291,7 +8291,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """数据引擎名称，不填提交到默认集群
+        r"""数据引擎名称，不填提交到默认集群
         :rtype: str
         """
         return self._DataEngineName
@@ -8302,7 +8302,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """标准spark执行任务resourceGroupName
+        r"""标准spark执行任务resourceGroupName
         :rtype: str
         """
         return self._ResourceGroupName
@@ -8313,7 +8313,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        """任务来源信息
+        r"""任务来源信息
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -8348,7 +8348,7 @@ class CreateTaskRequest(AbstractModel):
 
 
 class CreateTaskResponse(AbstractModel):
-    """CreateTask返回参数结构体
+    r"""CreateTask返回参数结构体
 
     """
 
@@ -8364,7 +8364,7 @@ class CreateTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -8375,7 +8375,7 @@ class CreateTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8391,7 +8391,7 @@ class CreateTaskResponse(AbstractModel):
 
 
 class CreateTasksInOrderRequest(AbstractModel):
-    """CreateTasksInOrder请求参数结构体
+    r"""CreateTasksInOrder请求参数结构体
 
     """
 
@@ -8410,7 +8410,7 @@ class CreateTasksInOrderRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+        r"""数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
         :rtype: str
         """
         return self._DatabaseName
@@ -8421,7 +8421,7 @@ class CreateTasksInOrderRequest(AbstractModel):
 
     @property
     def Tasks(self):
-        """SQL任务信息
+        r"""SQL任务信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
         """
         return self._Tasks
@@ -8432,7 +8432,7 @@ class CreateTasksInOrderRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称，默认为COSDataCatalog
+        r"""数据源名称，默认为COSDataCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -8459,7 +8459,7 @@ class CreateTasksInOrderRequest(AbstractModel):
 
 
 class CreateTasksInOrderResponse(AbstractModel):
-    """CreateTasksInOrder返回参数结构体
+    r"""CreateTasksInOrder返回参数结构体
 
     """
 
@@ -8478,7 +8478,7 @@ class CreateTasksInOrderResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """本批次提交的任务的批次Id
+        r"""本批次提交的任务的批次Id
         :rtype: str
         """
         return self._BatchId
@@ -8489,7 +8489,7 @@ class CreateTasksInOrderResponse(AbstractModel):
 
     @property
     def TaskIdSet(self):
-        """任务Id集合，按照执行顺序排列
+        r"""任务Id集合，按照执行顺序排列
         :rtype: list of str
         """
         return self._TaskIdSet
@@ -8500,7 +8500,7 @@ class CreateTasksInOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8517,7 +8517,7 @@ class CreateTasksInOrderResponse(AbstractModel):
 
 
 class CreateTasksRequest(AbstractModel):
-    """CreateTasks请求参数结构体
+    r"""CreateTasks请求参数结构体
 
     """
 
@@ -8548,7 +8548,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
+        r"""数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
         :rtype: str
         """
         return self._DatabaseName
@@ -8559,7 +8559,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def Tasks(self):
-        """SQL任务信息
+        r"""SQL任务信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
         """
         return self._Tasks
@@ -8570,7 +8570,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称，默认为DataLakeCatalog
+        r"""数据源名称，默认为DataLakeCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -8581,7 +8581,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """计算引擎名称，不填任务提交到默认集群
+        r"""计算引擎名称，不填任务提交到默认集群
         :rtype: str
         """
         return self._DataEngineName
@@ -8592,7 +8592,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """spark集群资源组名称
+        r"""spark集群资源组名称
         :rtype: str
         """
         return self._ResourceGroupName
@@ -8603,7 +8603,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def IsMultiStatement(self):
-        """是否使用multi- statement方式运行一批次任务，true: 是，false: 否
+        r"""是否使用multi- statement方式运行一批次任务，true: 是，false: 否
         :rtype: bool
         """
         return self._IsMultiStatement
@@ -8614,7 +8614,7 @@ class CreateTasksRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        """任务来源信息
+        r"""任务来源信息
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -8650,7 +8650,7 @@ class CreateTasksRequest(AbstractModel):
 
 
 class CreateTasksResponse(AbstractModel):
-    """CreateTasks返回参数结构体
+    r"""CreateTasks返回参数结构体
 
     """
 
@@ -8669,7 +8669,7 @@ class CreateTasksResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        """本批次提交的任务的批次Id
+        r"""本批次提交的任务的批次Id
         :rtype: str
         """
         return self._BatchId
@@ -8680,7 +8680,7 @@ class CreateTasksResponse(AbstractModel):
 
     @property
     def TaskIdSet(self):
-        """任务Id集合，按照执行顺序排列
+        r"""任务Id集合，按照执行顺序排列
         :rtype: list of str
         """
         return self._TaskIdSet
@@ -8691,7 +8691,7 @@ class CreateTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8708,7 +8708,7 @@ class CreateTasksResponse(AbstractModel):
 
 
 class CreateTcIcebergTableRequest(AbstractModel):
-    """CreateTcIcebergTable请求参数结构体
+    r"""CreateTcIcebergTable请求参数结构体
 
     """
 
@@ -8733,7 +8733,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """表基本信息
+        r"""表基本信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -8744,7 +8744,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """表字段信息
+        r"""表字段信息
         :rtype: list of TColumn
         """
         return self._Columns
@@ -8755,7 +8755,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """为true时只获取sql而不执行
+        r"""为true时只获取sql而不执行
         :rtype: bool
         """
         return self._DryRun
@@ -8766,7 +8766,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """表分区信息
+        r"""表分区信息
         :rtype: list of TPartition
         """
         return self._Partitions
@@ -8777,7 +8777,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
     @property
     def Properties(self):
-        """表属性信息
+        r"""表属性信息
         :rtype: list of Property
         """
         return self._Properties
@@ -8821,7 +8821,7 @@ class CreateTcIcebergTableRequest(AbstractModel):
 
 
 class CreateTcIcebergTableResponse(AbstractModel):
-    """CreateTcIcebergTable返回参数结构体
+    r"""CreateTcIcebergTable返回参数结构体
 
     """
 
@@ -8843,7 +8843,7 @@ class CreateTcIcebergTableResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """amoro的SessionId
+        r"""amoro的SessionId
         :rtype: str
         """
         return self._SessionId
@@ -8854,7 +8854,7 @@ class CreateTcIcebergTableResponse(AbstractModel):
 
     @property
     def SQL(self):
-        """执行的sql
+        r"""执行的sql
         :rtype: str
         """
         return self._SQL
@@ -8865,7 +8865,7 @@ class CreateTcIcebergTableResponse(AbstractModel):
 
     @property
     def DryRun(self):
-        """为true时只返回sql而不实际执行
+        r"""为true时只返回sql而不实际执行
         :rtype: bool
         """
         return self._DryRun
@@ -8876,7 +8876,7 @@ class CreateTcIcebergTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8894,7 +8894,7 @@ class CreateTcIcebergTableResponse(AbstractModel):
 
 
 class CreateUserRequest(AbstractModel):
-    """CreateUser请求参数结构体
+    r"""CreateUser请求参数结构体
 
     """
 
@@ -8922,7 +8922,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """需要授权的子用户uin，可以通过腾讯云控制台右上角 → “账号信息” → “账号ID进行查看”。
+        r"""需要授权的子用户uin，可以通过腾讯云控制台右上角 → “账号信息” → “账号ID进行查看”。
         :rtype: str
         """
         return self._UserId
@@ -8933,7 +8933,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserDescription(self):
-        """用户描述信息，方便区分不同用户
+        r"""用户描述信息，方便区分不同用户
         :rtype: str
         """
         return self._UserDescription
@@ -8944,7 +8944,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """绑定到用户的权限集合
+        r"""绑定到用户的权限集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -8955,7 +8955,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型。ADMIN：管理员 COMMON：一般用户。当用户类型为管理员的时候，不能设置权限集合和绑定的工作组集合，管理员默认拥有所有权限。该参数不填默认为COMMON
+        r"""用户类型。ADMIN：管理员 COMMON：一般用户。当用户类型为管理员的时候，不能设置权限集合和绑定的工作组集合，管理员默认拥有所有权限。该参数不填默认为COMMON
         :rtype: str
         """
         return self._UserType
@@ -8966,7 +8966,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def WorkGroupIds(self):
-        """绑定到用户的工作组ID集合。
+        r"""绑定到用户的工作组ID集合。
         :rtype: list of int
         """
         return self._WorkGroupIds
@@ -8977,7 +8977,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户别名，字符长度小50
+        r"""用户别名，字符长度小50
         :rtype: str
         """
         return self._UserAlias
@@ -9010,7 +9010,7 @@ class CreateUserRequest(AbstractModel):
 
 
 class CreateUserResponse(AbstractModel):
-    """CreateUser返回参数结构体
+    r"""CreateUser返回参数结构体
 
     """
 
@@ -9023,7 +9023,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9038,7 +9038,7 @@ class CreateUserResponse(AbstractModel):
 
 
 class CreateUserVpcConnectionRequest(AbstractModel):
-    """CreateUserVpcConnection请求参数结构体
+    r"""CreateUserVpcConnection请求参数结构体
 
     """
 
@@ -9063,7 +9063,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserVpcId(self):
-        """用户vpcid
+        r"""用户vpcid
         :rtype: str
         """
         return self._UserVpcId
@@ -9074,7 +9074,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserSubnetId(self):
-        """用户子网
+        r"""用户子网
         :rtype: str
         """
         return self._UserSubnetId
@@ -9085,7 +9085,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserVpcEndpointName(self):
-        """用户终端节点名称
+        r"""用户终端节点名称
         :rtype: str
         """
         return self._UserVpcEndpointName
@@ -9096,7 +9096,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
         :rtype: str
         """
         return self._EngineNetworkId
@@ -9107,7 +9107,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserVpcEndpointVip(self):
-        """手动指定vip，不填自动分配子网下的一个ip
+        r"""手动指定vip，不填自动分配子网下的一个ip
         :rtype: str
         """
         return self._UserVpcEndpointVip
@@ -9134,7 +9134,7 @@ class CreateUserVpcConnectionRequest(AbstractModel):
 
 
 class CreateUserVpcConnectionResponse(AbstractModel):
-    """CreateUserVpcConnection返回参数结构体
+    r"""CreateUserVpcConnection返回参数结构体
 
     """
 
@@ -9150,7 +9150,7 @@ class CreateUserVpcConnectionResponse(AbstractModel):
 
     @property
     def UserVpcEndpointId(self):
-        """终端节点IP
+        r"""终端节点IP
         :rtype: str
         """
         return self._UserVpcEndpointId
@@ -9161,7 +9161,7 @@ class CreateUserVpcConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9177,7 +9177,7 @@ class CreateUserVpcConnectionResponse(AbstractModel):
 
 
 class CreateWorkGroupRequest(AbstractModel):
-    """CreateWorkGroup请求参数结构体
+    r"""CreateWorkGroup请求参数结构体
 
     """
 
@@ -9199,7 +9199,7 @@ class CreateWorkGroupRequest(AbstractModel):
 
     @property
     def WorkGroupName(self):
-        """工作组名称
+        r"""工作组名称
         :rtype: str
         """
         return self._WorkGroupName
@@ -9210,7 +9210,7 @@ class CreateWorkGroupRequest(AbstractModel):
 
     @property
     def WorkGroupDescription(self):
-        """工作组描述
+        r"""工作组描述
         :rtype: str
         """
         return self._WorkGroupDescription
@@ -9221,7 +9221,7 @@ class CreateWorkGroupRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """工作组绑定的鉴权策略集合
+        r"""工作组绑定的鉴权策略集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -9232,7 +9232,7 @@ class CreateWorkGroupRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """需要绑定到工作组的用户Id集合
+        r"""需要绑定到工作组的用户Id集合
         :rtype: list of str
         """
         return self._UserIds
@@ -9263,7 +9263,7 @@ class CreateWorkGroupRequest(AbstractModel):
 
 
 class CreateWorkGroupResponse(AbstractModel):
-    """CreateWorkGroup返回参数结构体
+    r"""CreateWorkGroup返回参数结构体
 
     """
 
@@ -9279,7 +9279,7 @@ class CreateWorkGroupResponse(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id，全局唯一
+        r"""工作组Id，全局唯一
         :rtype: int
         """
         return self._WorkGroupId
@@ -9290,7 +9290,7 @@ class CreateWorkGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9306,7 +9306,7 @@ class CreateWorkGroupResponse(AbstractModel):
 
 
 class CrontabResumeSuspendStrategy(AbstractModel):
-    """定时启停策略信息
+    r"""定时启停策略信息
 
     """
 
@@ -9325,7 +9325,7 @@ class CrontabResumeSuspendStrategy(AbstractModel):
 
     @property
     def ResumeTime(self):
-        """定时拉起时间：如：周一&周三8点
+        r"""定时拉起时间：如：周一&周三8点
         :rtype: str
         """
         return self._ResumeTime
@@ -9336,7 +9336,7 @@ class CrontabResumeSuspendStrategy(AbstractModel):
 
     @property
     def SuspendTime(self):
-        """定时挂起时间：如：周一&周三20点
+        r"""定时挂起时间：如：周一&周三20点
         :rtype: str
         """
         return self._SuspendTime
@@ -9347,7 +9347,7 @@ class CrontabResumeSuspendStrategy(AbstractModel):
 
     @property
     def SuspendStrategy(self):
-        """挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
+        r"""挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
         :rtype: int
         """
         return self._SuspendStrategy
@@ -9372,7 +9372,7 @@ class CrontabResumeSuspendStrategy(AbstractModel):
 
 
 class CustomConfig(AbstractModel):
-    """自定义参数
+    r"""自定义参数
 
     """
 
@@ -9388,7 +9388,7 @@ class CustomConfig(AbstractModel):
 
     @property
     def ConfigKey(self):
-        """自定义参数名
+        r"""自定义参数名
         :rtype: str
         """
         return self._ConfigKey
@@ -9399,7 +9399,7 @@ class CustomConfig(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """自定义参数值
+        r"""自定义参数值
         :rtype: str
         """
         return self._ConfigValue
@@ -9423,7 +9423,7 @@ class CustomConfig(AbstractModel):
 
 
 class DLCCatalogAccess(AbstractModel):
-    """DLC 数据目录访问权限
+    r"""DLC 数据目录访问权限
 
     """
 
@@ -9445,7 +9445,7 @@ class DLCCatalogAccess(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPCID
+        r"""VPCID
         :rtype: str
         """
         return self._VpcId
@@ -9456,7 +9456,7 @@ class DLCCatalogAccess(AbstractModel):
 
     @property
     def Product(self):
-        """产品类型
+        r"""产品类型
         :rtype: str
         """
         return self._Product
@@ -9467,7 +9467,7 @@ class DLCCatalogAccess(AbstractModel):
 
     @property
     def Description(self):
-        """描述信息
+        r"""描述信息
         :rtype: str
         """
         return self._Description
@@ -9478,7 +9478,7 @@ class DLCCatalogAccess(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -9504,7 +9504,7 @@ class DLCCatalogAccess(AbstractModel):
 
 
 class DMSColumn(AbstractModel):
-    """迁移列对象
+    r"""迁移列对象
 
     """
 
@@ -9542,7 +9542,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9554,7 +9554,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9566,7 +9566,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9578,7 +9578,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def Position(self):
-        """排序
+        r"""排序
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9590,7 +9590,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def Params(self):
-        """附加参数
+        r"""附加参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -9602,7 +9602,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def BizParams(self):
-        """业务参数
+        r"""业务参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -9614,7 +9614,7 @@ class DMSColumn(AbstractModel):
 
     @property
     def IsPartition(self):
-        """是否分区
+        r"""是否分区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9654,7 +9654,7 @@ class DMSColumn(AbstractModel):
 
 
 class DMSColumnOrder(AbstractModel):
-    """列排序对象
+    r"""列排序对象
 
     """
 
@@ -9672,7 +9672,7 @@ class DMSColumnOrder(AbstractModel):
 
     @property
     def Col(self):
-        """列名
+        r"""列名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9684,7 +9684,7 @@ class DMSColumnOrder(AbstractModel):
 
     @property
     def Order(self):
-        """排序
+        r"""排序
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9709,7 +9709,7 @@ class DMSColumnOrder(AbstractModel):
 
 
 class DMSPartition(AbstractModel):
-    """迁移元数据分区对象
+    r"""迁移元数据分区对象
 
     """
 
@@ -9761,7 +9761,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DatabaseName
@@ -9772,7 +9772,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def SchemaName(self):
-        """数据目录名称
+        r"""数据目录名称
         :rtype: str
         """
         return self._SchemaName
@@ -9783,7 +9783,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def TableName(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._TableName
@@ -9794,7 +9794,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def DataVersion(self):
-        """数据版本
+        r"""数据版本
         :rtype: int
         """
         return self._DataVersion
@@ -9805,7 +9805,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def Name(self):
-        """分区名称
+        r"""分区名称
         :rtype: str
         """
         return self._Name
@@ -9816,7 +9816,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def Values(self):
-        """值列表
+        r"""值列表
         :rtype: list of str
         """
         return self._Values
@@ -9827,7 +9827,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def StorageSize(self):
-        """存储大小
+        r"""存储大小
         :rtype: int
         """
         return self._StorageSize
@@ -9838,7 +9838,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数量
+        r"""记录数量
         :rtype: int
         """
         return self._RecordCount
@@ -9849,7 +9849,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -9860,7 +9860,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifiedTime
@@ -9871,7 +9871,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后访问时间
+        r"""最后访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -9882,7 +9882,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def Params(self):
-        """附件属性
+        r"""附件属性
         :rtype: list of KVPair
         """
         return self._Params
@@ -9893,7 +9893,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def Sds(self):
-        """存储对象
+        r"""存储对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
         """
         return self._Sds
@@ -9904,7 +9904,7 @@ class DMSPartition(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -9947,7 +9947,7 @@ class DMSPartition(AbstractModel):
 
 
 class DMSSds(AbstractModel):
-    """元数据存储描述属性
+    r"""元数据存储描述属性
 
     """
 
@@ -10013,7 +10013,7 @@ class DMSSds(AbstractModel):
 
     @property
     def Location(self):
-        """存储地址
+        r"""存储地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10025,7 +10025,7 @@ class DMSSds(AbstractModel):
 
     @property
     def InputFormat(self):
-        """输入格式
+        r"""输入格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10037,7 +10037,7 @@ class DMSSds(AbstractModel):
 
     @property
     def OutputFormat(self):
-        """输出格式
+        r"""输出格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10049,7 +10049,7 @@ class DMSSds(AbstractModel):
 
     @property
     def NumBuckets(self):
-        """bucket数量
+        r"""bucket数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10061,7 +10061,7 @@ class DMSSds(AbstractModel):
 
     @property
     def Compressed(self):
-        """是是否压缩
+        r"""是是否压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10073,7 +10073,7 @@ class DMSSds(AbstractModel):
 
     @property
     def StoredAsSubDirectories(self):
-        """是否有子目录
+        r"""是否有子目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10085,7 +10085,7 @@ class DMSSds(AbstractModel):
 
     @property
     def SerdeLib(self):
-        """序列化lib
+        r"""序列化lib
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10097,7 +10097,7 @@ class DMSSds(AbstractModel):
 
     @property
     def SerdeName(self):
-        """序列化名称
+        r"""序列化名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10109,7 +10109,7 @@ class DMSSds(AbstractModel):
 
     @property
     def BucketCols(self):
-        """桶名称
+        r"""桶名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10121,7 +10121,7 @@ class DMSSds(AbstractModel):
 
     @property
     def SerdeParams(self):
-        """序列化参数
+        r"""序列化参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -10133,7 +10133,7 @@ class DMSSds(AbstractModel):
 
     @property
     def Params(self):
-        """附加参数
+        r"""附加参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -10145,7 +10145,7 @@ class DMSSds(AbstractModel):
 
     @property
     def SortCols(self):
-        """列排序(Expired)
+        r"""列排序(Expired)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSColumnOrder`
         """
@@ -10157,7 +10157,7 @@ class DMSSds(AbstractModel):
 
     @property
     def Cols(self):
-        """列
+        r"""列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumn
         """
@@ -10169,7 +10169,7 @@ class DMSSds(AbstractModel):
 
     @property
     def SortColumns(self):
-        """列排序字段
+        r"""列排序字段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumnOrder
         """
@@ -10228,7 +10228,7 @@ class DMSSds(AbstractModel):
 
 
 class DMSTable(AbstractModel):
-    """DMSTable基本信息
+    r"""DMSTable基本信息
 
     """
 
@@ -10306,7 +10306,7 @@ class DMSTable(AbstractModel):
 
     @property
     def ViewOriginalText(self):
-        """视图文本
+        r"""视图文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10318,7 +10318,7 @@ class DMSTable(AbstractModel):
 
     @property
     def ViewExpandedText(self):
-        """视图文本
+        r"""视图文本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10330,7 +10330,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Retention(self):
-        """hive维护版本
+        r"""hive维护版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10342,7 +10342,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Sds(self):
-        """存储对象
+        r"""存储对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
         """
@@ -10354,7 +10354,7 @@ class DMSTable(AbstractModel):
 
     @property
     def PartitionKeys(self):
-        """分区列
+        r"""分区列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumn
         """
@@ -10366,7 +10366,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区
+        r"""分区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSPartition
         """
@@ -10378,7 +10378,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Type(self):
-        """表类型
+        r"""表类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10390,7 +10390,7 @@ class DMSTable(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10402,7 +10402,7 @@ class DMSTable(AbstractModel):
 
     @property
     def SchemaName(self):
-        """Schema名称
+        r"""Schema名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10414,7 +10414,7 @@ class DMSTable(AbstractModel):
 
     @property
     def StorageSize(self):
-        """存储大小
+        r"""存储大小
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10426,7 +10426,7 @@ class DMSTable(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数量
+        r"""记录数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10438,7 +10438,7 @@ class DMSTable(AbstractModel):
 
     @property
     def LifeTime(self):
-        """生命周期
+        r"""生命周期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10450,7 +10450,7 @@ class DMSTable(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后访问时间
+        r"""最后访问时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10462,7 +10462,7 @@ class DMSTable(AbstractModel):
 
     @property
     def DataUpdateTime(self):
-        """数据更新时间
+        r"""数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10474,7 +10474,7 @@ class DMSTable(AbstractModel):
 
     @property
     def StructUpdateTime(self):
-        """结构更新时间
+        r"""结构更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10486,7 +10486,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Columns(self):
-        """列
+        r"""列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumn
         """
@@ -10498,7 +10498,7 @@ class DMSTable(AbstractModel):
 
     @property
     def Name(self):
-        """表名
+        r"""表名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10555,7 +10555,7 @@ class DMSTable(AbstractModel):
 
 
 class DMSTableInfo(AbstractModel):
-    """DMSTable信息
+    r"""DMSTable信息
 
     """
 
@@ -10573,7 +10573,7 @@ class DMSTableInfo(AbstractModel):
 
     @property
     def Table(self):
-        """DMS表信息
+        r"""DMS表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSTable`
         """
@@ -10585,7 +10585,7 @@ class DMSTableInfo(AbstractModel):
 
     @property
     def Asset(self):
-        """基础对象信息
+        r"""基础对象信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
@@ -10614,7 +10614,7 @@ class DMSTableInfo(AbstractModel):
 
 
 class DataEngineBasicInfo(AbstractModel):
-    """DataEngine基本信息
+    r"""DataEngine基本信息
 
     """
 
@@ -10651,7 +10651,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DataEngine名称
+        r"""DataEngine名称
         :rtype: str
         """
         return self._DataEngineName
@@ -10662,7 +10662,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def State(self):
-        """数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
+        r"""数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
         :rtype: int
         """
         return self._State
@@ -10673,7 +10673,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -10684,7 +10684,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: int
         """
         return self._UpdateTime
@@ -10695,7 +10695,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def Message(self):
-        """返回信息
+        r"""返回信息
         :rtype: str
         """
         return self._Message
@@ -10706,7 +10706,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -10717,7 +10717,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def DataEngineType(self):
-        """引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
+        r"""引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
         :rtype: str
         """
         return self._DataEngineType
@@ -10728,7 +10728,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户ID
+        r"""用户ID
         :rtype: int
         """
         return self._AppId
@@ -10739,7 +10739,7 @@ class DataEngineBasicInfo(AbstractModel):
 
     @property
     def UserUin(self):
-        """账号ID
+        r"""账号ID
         :rtype: str
         """
         return self._UserUin
@@ -10770,7 +10770,7 @@ class DataEngineBasicInfo(AbstractModel):
 
 
 class DataEngineConfigInstanceInfo(AbstractModel):
-    """引擎配置信息
+    r"""引擎配置信息
 
     """
 
@@ -10789,7 +10789,7 @@ class DataEngineConfigInstanceInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -10800,7 +10800,7 @@ class DataEngineConfigInstanceInfo(AbstractModel):
 
     @property
     def DataEngineConfigPairs(self):
-        """用户自定义配置项集合
+        r"""用户自定义配置项集合
         :rtype: list of DataEngineConfigPair
         """
         return self._DataEngineConfigPairs
@@ -10811,7 +10811,7 @@ class DataEngineConfigInstanceInfo(AbstractModel):
 
     @property
     def SessionResourceTemplate(self):
-        """作业集群资源参数配置模板
+        r"""作业集群资源参数配置模板
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         return self._SessionResourceTemplate
@@ -10843,7 +10843,7 @@ class DataEngineConfigInstanceInfo(AbstractModel):
 
 
 class DataEngineConfigPair(AbstractModel):
-    """引擎配置
+    r"""引擎配置
 
     """
 
@@ -10859,7 +10859,7 @@ class DataEngineConfigPair(AbstractModel):
 
     @property
     def ConfigItem(self):
-        """配置项
+        r"""配置项
         :rtype: str
         """
         return self._ConfigItem
@@ -10870,7 +10870,7 @@ class DataEngineConfigPair(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置值
+        r"""配置值
         :rtype: str
         """
         return self._ConfigValue
@@ -10894,7 +10894,7 @@ class DataEngineConfigPair(AbstractModel):
 
 
 class DataEngineImageSessionParameter(AbstractModel):
-    """集群Session配置信息.
+    r"""集群Session配置信息.
 
     """
 
@@ -10954,7 +10954,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ParameterId(self):
-        """配置id
+        r"""配置id
         :rtype: str
         """
         return self._ParameterId
@@ -10965,7 +10965,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """小版本镜像ID
+        r"""小版本镜像ID
         :rtype: str
         """
         return self._ChildImageVersionId
@@ -10976,7 +10976,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def EngineType(self):
-        """集群类型：SparkSQL/PrestoSQL/SparkBatch
+        r"""集群类型：SparkSQL/PrestoSQL/SparkBatch
         :rtype: str
         """
         return self._EngineType
@@ -10987,7 +10987,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def KeyName(self):
-        """参数key
+        r"""参数key
         :rtype: str
         """
         return self._KeyName
@@ -10998,7 +10998,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def KeyDescription(self):
-        """Key描述信息
+        r"""Key描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11010,7 +11010,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ValueType(self):
-        """value类型
+        r"""value类型
         :rtype: str
         """
         return self._ValueType
@@ -11021,7 +11021,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ValueLengthLimit(self):
-        """value长度限制
+        r"""value长度限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11033,7 +11033,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ValueRegexpLimit(self):
-        """value正则限制
+        r"""value正则限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11045,7 +11045,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ValueDefault(self):
-        """value默认值
+        r"""value默认值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11057,7 +11057,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def IsPublic(self):
-        """是否为公共版本：1：公共；2：私有
+        r"""是否为公共版本：1：公共；2：私有
         :rtype: int
         """
         return self._IsPublic
@@ -11068,7 +11068,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def ParameterType(self):
-        """配置类型：1：session配置（默认）；2：common配置；3：cluster配置
+        r"""配置类型：1：session配置（默认）；2：common配置；3：cluster配置
         :rtype: int
         """
         return self._ParameterType
@@ -11079,7 +11079,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def SubmitMethod(self):
-        """提交方式：User(用户)、BackGround（后台）
+        r"""提交方式：User(用户)、BackGround（后台）
         :rtype: str
         """
         return self._SubmitMethod
@@ -11090,7 +11090,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def Operator(self):
-        """操作者
+        r"""操作者
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11102,7 +11102,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def InsertTime(self):
-        """插入时间
+        r"""插入时间
         :rtype: str
         """
         return self._InsertTime
@@ -11113,7 +11113,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11150,7 +11150,7 @@ class DataEngineImageSessionParameter(AbstractModel):
 
 
 class DataEngineImageVersion(AbstractModel):
-    """集群大版本镜像信息。
+    r"""集群大版本镜像信息。
 
     """
 
@@ -11187,7 +11187,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def ImageVersionId(self):
-        """镜像大版本ID
+        r"""镜像大版本ID
         :rtype: str
         """
         return self._ImageVersionId
@@ -11198,7 +11198,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def ImageVersion(self):
-        """镜像大版本名称
+        r"""镜像大版本名称
         :rtype: str
         """
         return self._ImageVersion
@@ -11209,7 +11209,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def Description(self):
-        """镜像大版本描述
+        r"""镜像大版本描述
         :rtype: str
         """
         return self._Description
@@ -11220,7 +11220,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def IsPublic(self):
-        """是否为公共版本：1：公共；2：私有
+        r"""是否为公共版本：1：公共；2：私有
         :rtype: int
         """
         return self._IsPublic
@@ -11231,7 +11231,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def EngineType(self):
-        """集群类型：SparkSQL/PrestoSQL/SparkBatch
+        r"""集群类型：SparkSQL/PrestoSQL/SparkBatch
         :rtype: str
         """
         return self._EngineType
@@ -11242,7 +11242,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def IsSharedEngine(self):
-        """版本状态：1：初始化；2：上线；3：下线
+        r"""版本状态：1：初始化；2：上线；3：下线
         :rtype: int
         """
         return self._IsSharedEngine
@@ -11253,7 +11253,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def State(self):
-        """版本状态：1：初始化；2：上线；3：下线
+        r"""版本状态：1：初始化；2：上线；3：下线
         :rtype: int
         """
         return self._State
@@ -11264,7 +11264,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def InsertTime(self):
-        """插入时间
+        r"""插入时间
         :rtype: str
         """
         return self._InsertTime
@@ -11275,7 +11275,7 @@ class DataEngineImageVersion(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -11306,7 +11306,7 @@ class DataEngineImageVersion(AbstractModel):
 
 
 class DataEngineInfo(AbstractModel):
-    """DataEngine详细信息
+    r"""DataEngine详细信息
 
     """
 
@@ -11542,7 +11542,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DataEngine名称
+        r"""DataEngine名称
         :rtype: str
         """
         return self._DataEngineName
@@ -11553,7 +11553,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineType(self):
-        """引擎类型 spark/presto
+        r"""引擎类型 spark/presto
         :rtype: str
         """
         return self._EngineType
@@ -11564,7 +11564,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群资源类型 spark_private/presto_private/presto_cu/spark_cu
+        r"""集群资源类型 spark_private/presto_private/presto_cu/spark_cu
         :rtype: str
         """
         return self._ClusterType
@@ -11575,7 +11575,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def QuotaId(self):
-        """引用ID
+        r"""引用ID
         :rtype: str
         """
         return self._QuotaId
@@ -11586,7 +11586,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def State(self):
-        """数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
+        r"""数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
         :rtype: int
         """
         return self._State
@@ -11597,7 +11597,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -11608,7 +11608,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: int
         """
         return self._UpdateTime
@@ -11619,7 +11619,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def Size(self):
-        """集群规格
+        r"""集群规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11631,7 +11631,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def Mode(self):
-        """计费模式 0共享模式 1按量计费 2包年包月
+        r"""计费模式 0共享模式 1按量计费 2包年包月
         :rtype: int
         """
         return self._Mode
@@ -11642,7 +11642,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def MinClusters(self):
-        """最小集群数
+        r"""最小集群数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11654,7 +11654,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def MaxClusters(self):
-        """最大集群数
+        r"""最大集群数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11666,7 +11666,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def AutoResume(self):
-        """是否自动恢复
+        r"""是否自动恢复
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11678,7 +11678,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def SpendAfter(self):
-        """自动恢复时间
+        r"""自动恢复时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11690,7 +11690,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def CidrBlock(self):
-        """集群网段
+        r"""集群网段
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11702,7 +11702,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def DefaultDataEngine(self):
-        """是否为默认引擎
+        r"""是否为默认引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11714,7 +11714,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def Message(self):
-        """返回信息
+        r"""返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11726,7 +11726,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -11737,7 +11737,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        """操作者
+        r"""操作者
         :rtype: str
         """
         return self._SubAccountUin
@@ -11748,7 +11748,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """到期时间
+        r"""到期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -11759,7 +11759,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """隔离时间
+        r"""隔离时间
         :rtype: str
         """
         return self._IsolatedTime
@@ -11770,7 +11770,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ReversalTime(self):
-        """冲正时间
+        r"""冲正时间
         :rtype: str
         """
         return self._ReversalTime
@@ -11781,7 +11781,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户名称
+        r"""用户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11793,7 +11793,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def TagList(self):
-        """标签对集合
+        r"""标签对集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
@@ -11805,7 +11805,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def Permissions(self):
-        """引擎拥有的权限
+        r"""引擎拥有的权限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -11817,7 +11817,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def AutoSuspend(self):
-        """是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+        r"""是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11829,7 +11829,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def CrontabResumeSuspend(self):
-        """定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+        r"""定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11841,7 +11841,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def CrontabResumeSuspendStrategy(self):
-        """定时启停策略，复杂类型：包含启停时间、挂起集群策略
+        r"""定时启停策略，复杂类型：包含启停时间、挂起集群策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
         """
@@ -11853,7 +11853,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineExecType(self):
-        """引擎执行任务类型，有效值：SQL/BATCH
+        r"""引擎执行任务类型，有效值：SQL/BATCH
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11865,7 +11865,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费
+        r"""自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11877,7 +11877,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def AutoSuspendTime(self):
-        """集群自动挂起时间
+        r"""集群自动挂起时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11889,7 +11889,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def NetworkConnectionSet(self):
-        """网络连接配置
+        r"""网络连接配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkConnection
         """
@@ -11901,7 +11901,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def UiURL(self):
-        """ui的跳转地址
+        r"""ui的跳转地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11913,7 +11913,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """引擎的资源类型
+        r"""引擎的资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11925,7 +11925,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ImageVersionId(self):
-        """集群镜像版本ID
+        r"""集群镜像版本ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11937,7 +11937,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """集群镜像小版本ID
+        r"""集群镜像小版本ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11949,7 +11949,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ImageVersionName(self):
-        """集群镜像版本名字
+        r"""集群镜像版本名字
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11961,7 +11961,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def StartStandbyCluster(self):
-        """是否开启备集群
+        r"""是否开启备集群
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11973,7 +11973,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        """spark jar 包年包月集群是否开启弹性
+        r"""spark jar 包年包月集群是否开启弹性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11985,7 +11985,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ElasticLimit(self):
-        """spark jar 包年包月集群弹性上限
+        r"""spark jar 包年包月集群弹性上限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11997,7 +11997,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def DefaultHouse(self):
-        """是否为默认引擎
+        r"""是否为默认引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -12009,7 +12009,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """单个集群任务最大并发数
+        r"""单个集群任务最大并发数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12021,7 +12021,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def TolerableQueueTime(self):
-        """任务排队上限时间
+        r"""任务排队上限时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12033,7 +12033,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def UserAppId(self):
-        """用户appid
+        r"""用户appid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12045,7 +12045,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def UserUin(self):
-        """用户uin
+        r"""用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12057,7 +12057,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def SessionResourceTemplate(self):
-        """SessionResourceTemplate
+        r"""SessionResourceTemplate
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
@@ -12069,7 +12069,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def AutoAuthorization(self):
-        """自动授权开关
+        r"""自动授权开关
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -12081,7 +12081,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineGeneration(self):
-        """引擎版本，支持Native/SuperSQL
+        r"""引擎版本，支持Native/SuperSQL
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12093,7 +12093,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        """引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
+        r"""引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12105,7 +12105,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12117,7 +12117,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineResourceGroupCount(self):
-        """标准引擎关联的资源组个数
+        r"""标准引擎关联的资源组个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12129,7 +12129,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineResourceUsedCU(self):
-        """引擎当前使用量（Cu）
+        r"""引擎当前使用量（Cu）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12141,7 +12141,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def AccessInfos(self):
-        """引擎的访问信息
+        r"""引擎的访问信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccessInfo
         """
@@ -12153,7 +12153,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def EngineNetworkName(self):
-        """引擎所在网络名称
+        r"""引擎所在网络名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12165,7 +12165,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def IsPoolMode(self):
-        """是否使用预留池
+        r"""是否使用预留池
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12177,7 +12177,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def IsSupportAI(self):
-        """是否支持AI，false: 不支持；true：支持
+        r"""是否支持AI，false: 不支持；true：支持
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -12189,7 +12189,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def GatewayId(self):
-        """网关id
+        r"""网关id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12201,7 +12201,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def GatewayState(self):
-        """网关状态
+        r"""网关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12213,7 +12213,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def IsAIGateway(self):
-        """是否能执行AI任务
+        r"""是否能执行AI任务
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -12225,7 +12225,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def IsAIEngine(self):
-        """1:AI引擎，0:非AI引擎
+        r"""1:AI引擎，0:非AI引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12237,7 +12237,7 @@ class DataEngineInfo(AbstractModel):
 
     @property
     def ScheduleElasticityConf(self):
-        """引擎资源弹性伸缩策略
+        r"""引擎资源弹性伸缩策略
         :rtype: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
         """
         return self._ScheduleElasticityConf
@@ -12340,7 +12340,7 @@ class DataEngineInfo(AbstractModel):
 
 
 class DataEngineScaleInfo(AbstractModel):
-    """引擎规格详情
+    r"""引擎规格详情
 
     """
 
@@ -12359,7 +12359,7 @@ class DataEngineScaleInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -12370,7 +12370,7 @@ class DataEngineScaleInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -12381,7 +12381,7 @@ class DataEngineScaleInfo(AbstractModel):
 
     @property
     def ScaleDetail(self):
-        """引擎规格详情
+        r"""引擎规格详情
         :rtype: list of DataEngineScaleInfoDetail
         """
         return self._ScaleDetail
@@ -12411,7 +12411,7 @@ class DataEngineScaleInfo(AbstractModel):
 
 
 class DataEngineScaleInfoDetail(AbstractModel):
-    """引擎规格详情
+    r"""引擎规格详情
 
     """
 
@@ -12430,7 +12430,7 @@ class DataEngineScaleInfoDetail(AbstractModel):
 
     @property
     def StartTime(self):
-        """统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
+        r"""统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -12441,7 +12441,7 @@ class DataEngineScaleInfoDetail(AbstractModel):
 
     @property
     def EndTime(self):
-        """统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
+        r"""统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -12452,7 +12452,7 @@ class DataEngineScaleInfoDetail(AbstractModel):
 
     @property
     def CU(self):
-        """当前统计时间段，引擎规格
+        r"""当前统计时间段，引擎规格
         :rtype: int
         """
         return self._CU
@@ -12477,7 +12477,7 @@ class DataEngineScaleInfoDetail(AbstractModel):
 
 
 class DataFormat(AbstractModel):
-    """数据表数据格式。
+    r"""数据表数据格式。
 
     """
 
@@ -12511,7 +12511,7 @@ class DataFormat(AbstractModel):
 
     @property
     def TextFile(self):
-        """文本格式，TextFile。
+        r"""文本格式，TextFile。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TextFile`
         """
@@ -12523,7 +12523,7 @@ class DataFormat(AbstractModel):
 
     @property
     def CSV(self):
-        """文本格式，CSV。
+        r"""文本格式，CSV。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CSV`
         """
@@ -12535,7 +12535,7 @@ class DataFormat(AbstractModel):
 
     @property
     def Json(self):
-        """文本格式，Json。
+        r"""文本格式，Json。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Other`
         """
@@ -12547,7 +12547,7 @@ class DataFormat(AbstractModel):
 
     @property
     def Parquet(self):
-        """Parquet格式
+        r"""Parquet格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Other`
         """
@@ -12559,7 +12559,7 @@ class DataFormat(AbstractModel):
 
     @property
     def ORC(self):
-        """ORC格式
+        r"""ORC格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Other`
         """
@@ -12571,7 +12571,7 @@ class DataFormat(AbstractModel):
 
     @property
     def AVRO(self):
-        """AVRO格式
+        r"""AVRO格式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Other`
         """
@@ -12612,7 +12612,7 @@ class DataFormat(AbstractModel):
 
 
 class DataGovernPolicy(AbstractModel):
-    """数据治理规则
+    r"""数据治理规则
 
     """
 
@@ -12628,7 +12628,7 @@ class DataGovernPolicy(AbstractModel):
 
     @property
     def RuleType(self):
-        """治理规则类型，Customize: 自定义；Intelligence: 智能治理
+        r"""治理规则类型，Customize: 自定义；Intelligence: 智能治理
         :rtype: str
         """
         return self._RuleType
@@ -12639,7 +12639,7 @@ class DataGovernPolicy(AbstractModel):
 
     @property
     def GovernEngine(self):
-        """治理引擎
+        r"""治理引擎
         :rtype: str
         """
         return self._GovernEngine
@@ -12663,7 +12663,7 @@ class DataGovernPolicy(AbstractModel):
 
 
 class DataMaskStrategy(AbstractModel):
-    """数据脱敏策略信息
+    r"""数据脱敏策略信息
 
     """
 
@@ -12721,7 +12721,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略ID
+        r"""策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12733,7 +12733,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def UserAppId(self):
-        """用户AppId
+        r"""用户AppId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12745,7 +12745,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def Uin(self):
-        """用户Uin
+        r"""用户Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12757,7 +12757,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        """操作用户子账号uin
+        r"""操作用户子账号uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12769,7 +12769,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称
+        r"""策略名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12781,7 +12781,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def StrategyType(self):
-        """MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+        r"""MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12793,7 +12793,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def StrategyDesc(self):
-        """策略描述
+        r"""策略描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12805,7 +12805,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def Groups(self):
-        """用户组策略列表
+        r"""用户组策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfo
         """
@@ -12817,7 +12817,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def Users(self):
-        """用户子账号uin列表，按;拼接
+        r"""用户子账号uin列表，按;拼接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12829,7 +12829,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def State(self):
-        """1: 生效中； 0：已删除
+        r"""1: 生效中； 0：已删除
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12841,7 +12841,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def CreateTime(self):
-        """策略创建时间，毫秒时间戳
+        r"""策略创建时间，毫秒时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12853,7 +12853,7 @@ class DataMaskStrategy(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """策略更新时间，毫秒时间戳
+        r"""策略更新时间，毫秒时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12893,7 +12893,7 @@ class DataMaskStrategy(AbstractModel):
 
 
 class DataMaskStrategyInfo(AbstractModel):
-    """数据脱敏策略信息
+    r"""数据脱敏策略信息
 
     """
 
@@ -12922,7 +12922,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def StrategyName(self):
-        """策略名称
+        r"""策略名称
         :rtype: str
         """
         return self._StrategyName
@@ -12933,7 +12933,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def StrategyType(self):
-        """MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+        r"""MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
         :rtype: str
         """
         return self._StrategyType
@@ -12944,7 +12944,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def StrategyDesc(self):
-        """策略描述
+        r"""策略描述
         :rtype: str
         """
         return self._StrategyDesc
@@ -12955,7 +12955,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def Groups(self):
-        """用户组策略列表
+        r"""用户组策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfo
         """
@@ -12967,7 +12967,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def Users(self):
-        """用户子账号uin列表，按;拼接
+        r"""用户子账号uin列表，按;拼接
         :rtype: str
         """
         return self._Users
@@ -12978,7 +12978,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
     @property
     def StrategyId(self):
-        """策略Id
+        r"""策略Id
         :rtype: str
         """
         return self._StrategyId
@@ -13011,7 +13011,7 @@ class DataMaskStrategyInfo(AbstractModel):
 
 
 class DataMaskStrategyPolicy(AbstractModel):
-    """数据脱敏策略权限对象
+    r"""数据脱敏策略权限对象
 
     """
 
@@ -13033,7 +13033,7 @@ class DataMaskStrategyPolicy(AbstractModel):
 
     @property
     def PolicyInfo(self):
-        """数据脱敏权限对象
+        r"""数据脱敏权限对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policy`
         """
@@ -13045,7 +13045,7 @@ class DataMaskStrategyPolicy(AbstractModel):
 
     @property
     def DataMaskStrategyId(self):
-        """数据脱敏策略ID
+        r"""数据脱敏策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13057,7 +13057,7 @@ class DataMaskStrategyPolicy(AbstractModel):
 
     @property
     def ColumnType(self):
-        """绑定字段类型
+        r"""绑定字段类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13085,7 +13085,7 @@ class DataMaskStrategyPolicy(AbstractModel):
 
 
 class DataSourceInfo(AbstractModel):
-    """数据源详细信息
+    r"""数据源详细信息
 
     """
 
@@ -13123,7 +13123,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """数据源实例的唯一ID
+        r"""数据源实例的唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13135,7 +13135,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """数据源的名称
+        r"""数据源的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13147,7 +13147,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def JdbcUrl(self):
-        """数据源的JDBC访问链接
+        r"""数据源的JDBC访问链接
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13159,7 +13159,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def User(self):
-        """用于访问数据源的用户名
+        r"""用于访问数据源的用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13171,7 +13171,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Password(self):
-        """数据源访问密码，需要base64编码
+        r"""数据源访问密码，需要base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13183,7 +13183,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据源的VPC和子网信息
+        r"""数据源的VPC和子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
@@ -13195,7 +13195,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """默认数据库名
+        r"""默认数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13227,7 +13227,7 @@ class DataSourceInfo(AbstractModel):
 
 
 class DatabaseInfo(AbstractModel):
-    """数据库对象
+    r"""数据库对象
 
     """
 
@@ -13251,7 +13251,7 @@ class DatabaseInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
+        r"""数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
         :rtype: str
         """
         return self._DatabaseName
@@ -13262,7 +13262,7 @@ class DatabaseInfo(AbstractModel):
 
     @property
     def Comment(self):
-        """数据库描述信息，长度 0~500。
+        r"""数据库描述信息，长度 0~500。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13274,7 +13274,7 @@ class DatabaseInfo(AbstractModel):
 
     @property
     def Properties(self):
-        """数据库属性列表。
+        r"""数据库属性列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -13286,7 +13286,7 @@ class DatabaseInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据库cos路径
+        r"""数据库cos路径
         :rtype: str
         """
         return self._Location
@@ -13317,7 +13317,7 @@ class DatabaseInfo(AbstractModel):
 
 
 class DatabaseResponseInfo(AbstractModel):
-    """数据库对象
+    r"""数据库对象
 
     """
 
@@ -13361,7 +13361,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称。
+        r"""数据库名称。
         :rtype: str
         """
         return self._DatabaseName
@@ -13372,7 +13372,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def Comment(self):
-        """数据库描述信息，长度 0~256。
+        r"""数据库描述信息，长度 0~256。
         :rtype: str
         """
         return self._Comment
@@ -13383,7 +13383,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def Properties(self):
-        """允许针对数据库的属性元数据信息进行指定。
+        r"""允许针对数据库的属性元数据信息进行指定。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -13395,7 +13395,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """数据库创建时间戳，单位：s。
+        r"""数据库创建时间戳，单位：s。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13407,7 +13407,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """数据库更新时间戳，单位：s。
+        r"""数据库更新时间戳，单位：s。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13419,7 +13419,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def Location(self):
-        """cos存储路径
+        r"""cos存储路径
         :rtype: str
         """
         return self._Location
@@ -13430,7 +13430,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """建库用户昵称
+        r"""建库用户昵称
         :rtype: str
         """
         return self._UserAlias
@@ -13441,7 +13441,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def UserSubUin(self):
-        """建库用户ID
+        r"""建库用户ID
         :rtype: str
         """
         return self._UserSubUin
@@ -13452,7 +13452,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def GovernPolicy(self):
-        """数据治理配置项
+        r"""数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
         """
@@ -13464,7 +13464,7 @@ class DatabaseResponseInfo(AbstractModel):
 
     @property
     def DatabaseId(self):
-        """数据库ID（无效字段）
+        r"""数据库ID（无效字段）
         :rtype: str
         """
         return self._DatabaseId
@@ -13503,7 +13503,7 @@ class DatabaseResponseInfo(AbstractModel):
 
 
 class DatasourceConnectionConfig(AbstractModel):
-    """数据源属性
+    r"""数据源属性
 
     """
 
@@ -13556,7 +13556,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Mysql(self):
-        """Mysql数据源连接的属性
+        r"""Mysql数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
         """
@@ -13568,7 +13568,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Hive(self):
-        """Hive数据源连接的属性
+        r"""Hive数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.HiveInfo`
         """
@@ -13580,7 +13580,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Kafka(self):
-        """Kafka数据源连接的属性
+        r"""Kafka数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.KafkaInfo`
         """
@@ -13592,7 +13592,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def OtherDatasourceConnection(self):
-        """其他数据源连接的属性
+        r"""其他数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.OtherDatasourceConnection`
         """
@@ -13604,7 +13604,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def PostgreSql(self):
-        """PostgreSQL数据源连接的属性
+        r"""PostgreSQL数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -13616,7 +13616,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def SqlServer(self):
-        """SQLServer数据源连接的属性
+        r"""SQLServer数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -13628,7 +13628,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def ClickHouse(self):
-        """ClickHouse数据源连接的属性
+        r"""ClickHouse数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -13640,7 +13640,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Elasticsearch(self):
-        """Elasticsearch数据源连接的属性
+        r"""Elasticsearch数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.ElasticsearchInfo`
         """
@@ -13652,7 +13652,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TDSQLPostgreSql(self):
-        """TDSQL-PostgreSQL数据源连接的属性
+        r"""TDSQL-PostgreSQL数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -13664,7 +13664,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TCHouseD(self):
-        """Doris数据源连接的属性
+        r"""Doris数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
         """
@@ -13676,7 +13676,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TccHive(self):
-        """TccHive数据目录连接信息
+        r"""TccHive数据目录连接信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TccHive`
         """
         return self._TccHive
@@ -13731,7 +13731,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
 
 class DatasourceConnectionInfo(AbstractModel):
-    """数据源信息
+    r"""数据源信息
 
     """
 
@@ -13801,7 +13801,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def Id(self):
-        """数据源数字Id
+        r"""数据源数字Id
         :rtype: int
         """
         return self._Id
@@ -13812,7 +13812,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DatasourceConnectionId(self):
-        """数据源字符串Id
+        r"""数据源字符串Id
         :rtype: str
         """
         return self._DatasourceConnectionId
@@ -13823,7 +13823,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -13834,7 +13834,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DatasourceConnectionDesc(self):
-        """数据源描述
+        r"""数据源描述
         :rtype: str
         """
         return self._DatasourceConnectionDesc
@@ -13845,7 +13845,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DatasourceConnectionType(self):
-        """数据源类型，支持DataLakeCatalog、IcebergCatalog、Result、Mysql、HiveCos、HiveHdfs
+        r"""数据源类型，支持DataLakeCatalog、IcebergCatalog、Result、Mysql、HiveCos、HiveHdfs
         :rtype: str
         """
         return self._DatasourceConnectionType
@@ -13856,7 +13856,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DatasourceConnectionConfig(self):
-        """数据源属性
+        r"""数据源属性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
         """
@@ -13868,7 +13868,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def State(self):
-        """数据源状态：0（初始化）、1（成功）、-1（已删除）、-2（失败）、-3（删除中）
+        r"""数据源状态：0（初始化）、1（成功）、-1（已删除）、-2（失败）、-3（删除中）
         :rtype: int
         """
         return self._State
@@ -13879,7 +13879,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -13890,7 +13890,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户AppId
+        r"""用户AppId
         :rtype: str
         """
         return self._AppId
@@ -13901,7 +13901,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """数据源创建时间
+        r"""数据源创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -13912,7 +13912,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """数据源最近一次更新时间
+        r"""数据源最近一次更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -13923,7 +13923,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def Message(self):
-        """数据源同步失败原因
+        r"""数据源同步失败原因
         :rtype: str
         """
         return self._Message
@@ -13934,7 +13934,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def DataEngines(self):
-        """数据源绑定的计算引擎信息
+        r"""数据源绑定的计算引擎信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataEngineInfo
         """
@@ -13946,7 +13946,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """创建人
+        r"""创建人
         :rtype: str
         """
         return self._UserAlias
@@ -13957,7 +13957,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def NetworkConnectionSet(self):
-        """网络配置列表
+        r"""网络配置列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkConnection
         """
@@ -13969,7 +13969,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def ConnectivityState(self):
-        """连通性状态：0（未测试，默认）、1（正常）、2（失败）
+        r"""连通性状态：0（未测试，默认）、1（正常）、2（失败）
         :rtype: int
         """
         return self._ConnectivityState
@@ -13980,7 +13980,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def ConnectivityTips(self):
-        """连通性测试提示信息
+        r"""连通性测试提示信息
         :rtype: str
         """
         return self._ConnectivityTips
@@ -13991,7 +13991,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def CustomConfig(self):
-        """自定义参数
+        r"""自定义参数
         :rtype: list of CustomConfig
         """
         return self._CustomConfig
@@ -14002,7 +14002,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
     @property
     def AllowRollback(self):
-        """是否允许回退
+        r"""是否允许回退
         :rtype: bool
         """
         return self._AllowRollback
@@ -14060,7 +14060,7 @@ class DatasourceConnectionInfo(AbstractModel):
 
 
 class DatasourceConnectionLocation(AbstractModel):
-    """数据源连接的网络信息
+    r"""数据源连接的网络信息
 
     """
 
@@ -14082,7 +14082,7 @@ class DatasourceConnectionLocation(AbstractModel):
 
     @property
     def VpcId(self):
-        """数据连接所在Vpc实例Id，如“vpc-azd4dt1c”。
+        r"""数据连接所在Vpc实例Id，如“vpc-azd4dt1c”。
         :rtype: str
         """
         return self._VpcId
@@ -14093,7 +14093,7 @@ class DatasourceConnectionLocation(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """Vpc的IPv4 CIDR
+        r"""Vpc的IPv4 CIDR
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -14104,7 +14104,7 @@ class DatasourceConnectionLocation(AbstractModel):
 
     @property
     def SubnetId(self):
-        """数据连接所在子网的实例Id，如“subnet-bthucmmy”
+        r"""数据连接所在子网的实例Id，如“subnet-bthucmmy”
         :rtype: str
         """
         return self._SubnetId
@@ -14115,7 +14115,7 @@ class DatasourceConnectionLocation(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
-        """Subnet的IPv4 CIDR
+        r"""Subnet的IPv4 CIDR
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -14141,7 +14141,7 @@ class DatasourceConnectionLocation(AbstractModel):
 
 
 class DeleteCHDFSBindingProductRequest(AbstractModel):
-    """DeleteCHDFSBindingProduct请求参数结构体
+    r"""DeleteCHDFSBindingProduct请求参数结构体
 
     """
 
@@ -14166,7 +14166,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def MountPoint(self):
-        """需要解绑的元数据加速桶名
+        r"""需要解绑的元数据加速桶名
         :rtype: str
         """
         return self._MountPoint
@@ -14177,7 +14177,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def BucketType(self):
-        """桶的类型，分为cos和lakefs
+        r"""桶的类型，分为cos和lakefs
         :rtype: str
         """
         return self._BucketType
@@ -14188,7 +14188,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -14199,7 +14199,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def EngineName(self):
-        """引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+        r"""引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
         :rtype: str
         """
         return self._EngineName
@@ -14210,7 +14210,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
     @property
     def VpcInfo(self):
-        """vpc信息，ProductName选择other时，必传此参数
+        r"""vpc信息，ProductName选择other时，必传此参数
         :rtype: list of VpcInfo
         """
         return self._VpcInfo
@@ -14242,7 +14242,7 @@ class DeleteCHDFSBindingProductRequest(AbstractModel):
 
 
 class DeleteCHDFSBindingProductResponse(AbstractModel):
-    """DeleteCHDFSBindingProduct返回参数结构体
+    r"""DeleteCHDFSBindingProduct返回参数结构体
 
     """
 
@@ -14255,7 +14255,7 @@ class DeleteCHDFSBindingProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14270,7 +14270,7 @@ class DeleteCHDFSBindingProductResponse(AbstractModel):
 
 
 class DeleteDataEngineRequest(AbstractModel):
-    """DeleteDataEngine请求参数结构体
+    r"""DeleteDataEngine请求参数结构体
 
     """
 
@@ -14283,7 +14283,7 @@ class DeleteDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineNames(self):
-        """删除虚拟集群的名称数组
+        r"""删除虚拟集群的名称数组
         :rtype: list of str
         """
         return self._DataEngineNames
@@ -14306,7 +14306,7 @@ class DeleteDataEngineRequest(AbstractModel):
 
 
 class DeleteDataEngineResponse(AbstractModel):
-    """DeleteDataEngine返回参数结构体
+    r"""DeleteDataEngine返回参数结构体
 
     """
 
@@ -14319,7 +14319,7 @@ class DeleteDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14334,7 +14334,7 @@ class DeleteDataEngineResponse(AbstractModel):
 
 
 class DeleteDataMaskStrategyRequest(AbstractModel):
-    """DeleteDataMaskStrategy请求参数结构体
+    r"""DeleteDataMaskStrategy请求参数结构体
 
     """
 
@@ -14347,7 +14347,7 @@ class DeleteDataMaskStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """数据脱敏策略Id
+        r"""数据脱敏策略Id
         :rtype: str
         """
         return self._StrategyId
@@ -14370,7 +14370,7 @@ class DeleteDataMaskStrategyRequest(AbstractModel):
 
 
 class DeleteDataMaskStrategyResponse(AbstractModel):
-    """DeleteDataMaskStrategy返回参数结构体
+    r"""DeleteDataMaskStrategy返回参数结构体
 
     """
 
@@ -14383,7 +14383,7 @@ class DeleteDataMaskStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14398,7 +14398,7 @@ class DeleteDataMaskStrategyResponse(AbstractModel):
 
 
 class DeleteNativeSparkSessionRequest(AbstractModel):
-    """DeleteNativeSparkSession请求参数结构体
+    r"""DeleteNativeSparkSession请求参数结构体
 
     """
 
@@ -14417,7 +14417,7 @@ class DeleteNativeSparkSessionRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -14428,7 +14428,7 @@ class DeleteNativeSparkSessionRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._ResourceGroupId
@@ -14439,7 +14439,7 @@ class DeleteNativeSparkSessionRequest(AbstractModel):
 
     @property
     def EngineSessionName(self):
-        """spark session名称
+        r"""spark session名称
         :rtype: str
         """
         return self._EngineSessionName
@@ -14464,7 +14464,7 @@ class DeleteNativeSparkSessionRequest(AbstractModel):
 
 
 class DeleteNativeSparkSessionResponse(AbstractModel):
-    """DeleteNativeSparkSession返回参数结构体
+    r"""DeleteNativeSparkSession返回参数结构体
 
     """
 
@@ -14477,7 +14477,7 @@ class DeleteNativeSparkSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14492,7 +14492,7 @@ class DeleteNativeSparkSessionResponse(AbstractModel):
 
 
 class DeleteNotebookSessionRequest(AbstractModel):
-    """DeleteNotebookSession请求参数结构体
+    r"""DeleteNotebookSession请求参数结构体
 
     """
 
@@ -14505,7 +14505,7 @@ class DeleteNotebookSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -14528,7 +14528,7 @@ class DeleteNotebookSessionRequest(AbstractModel):
 
 
 class DeleteNotebookSessionResponse(AbstractModel):
-    """DeleteNotebookSession返回参数结构体
+    r"""DeleteNotebookSession返回参数结构体
 
     """
 
@@ -14541,7 +14541,7 @@ class DeleteNotebookSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14556,7 +14556,7 @@ class DeleteNotebookSessionResponse(AbstractModel):
 
 
 class DeleteScriptRequest(AbstractModel):
-    """DeleteScript请求参数结构体
+    r"""DeleteScript请求参数结构体
 
     """
 
@@ -14569,7 +14569,7 @@ class DeleteScriptRequest(AbstractModel):
 
     @property
     def ScriptIds(self):
-        """脚本id，其可以通过DescribeScripts接口提取
+        r"""脚本id，其可以通过DescribeScripts接口提取
         :rtype: list of str
         """
         return self._ScriptIds
@@ -14592,7 +14592,7 @@ class DeleteScriptRequest(AbstractModel):
 
 
 class DeleteScriptResponse(AbstractModel):
-    """DeleteScript返回参数结构体
+    r"""DeleteScript返回参数结构体
 
     """
 
@@ -14608,7 +14608,7 @@ class DeleteScriptResponse(AbstractModel):
 
     @property
     def ScriptsAffected(self):
-        """删除的脚本数量
+        r"""删除的脚本数量
         :rtype: int
         """
         return self._ScriptsAffected
@@ -14619,7 +14619,7 @@ class DeleteScriptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14635,7 +14635,7 @@ class DeleteScriptResponse(AbstractModel):
 
 
 class DeleteSparkAppRequest(AbstractModel):
-    """DeleteSparkApp请求参数结构体
+    r"""DeleteSparkApp请求参数结构体
 
     """
 
@@ -14648,7 +14648,7 @@ class DeleteSparkAppRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._AppName
@@ -14671,7 +14671,7 @@ class DeleteSparkAppRequest(AbstractModel):
 
 
 class DeleteSparkAppResponse(AbstractModel):
-    """DeleteSparkApp返回参数结构体
+    r"""DeleteSparkApp返回参数结构体
 
     """
 
@@ -14684,7 +14684,7 @@ class DeleteSparkAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14699,7 +14699,7 @@ class DeleteSparkAppResponse(AbstractModel):
 
 
 class DeleteStandardEngineResourceGroupRequest(AbstractModel):
-    """DeleteStandardEngineResourceGroup请求参数结构体
+    r"""DeleteStandardEngineResourceGroup请求参数结构体
 
     """
 
@@ -14712,7 +14712,7 @@ class DeleteStandardEngineResourceGroupRequest(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """标准引擎资源组名称
+        r"""标准引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -14735,7 +14735,7 @@ class DeleteStandardEngineResourceGroupRequest(AbstractModel):
 
 
 class DeleteStandardEngineResourceGroupResponse(AbstractModel):
-    """DeleteStandardEngineResourceGroup返回参数结构体
+    r"""DeleteStandardEngineResourceGroup返回参数结构体
 
     """
 
@@ -14748,7 +14748,7 @@ class DeleteStandardEngineResourceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14763,7 +14763,7 @@ class DeleteStandardEngineResourceGroupResponse(AbstractModel):
 
 
 class DeleteTableRequest(AbstractModel):
-    """DeleteTable请求参数结构体
+    r"""DeleteTable请求参数结构体
 
     """
 
@@ -14776,7 +14776,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """表基本信息
+        r"""表基本信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -14801,7 +14801,7 @@ class DeleteTableRequest(AbstractModel):
 
 
 class DeleteTableResponse(AbstractModel):
-    """DeleteTable返回参数结构体
+    r"""DeleteTable返回参数结构体
 
     """
 
@@ -14814,7 +14814,7 @@ class DeleteTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14829,13 +14829,13 @@ class DeleteTableResponse(AbstractModel):
 
 
 class DeleteThirdPartyAccessUserRequest(AbstractModel):
-    """DeleteThirdPartyAccessUser请求参数结构体
+    r"""DeleteThirdPartyAccessUser请求参数结构体
 
     """
 
 
 class DeleteThirdPartyAccessUserResponse(AbstractModel):
-    """DeleteThirdPartyAccessUser返回参数结构体
+    r"""DeleteThirdPartyAccessUser返回参数结构体
 
     """
 
@@ -14848,7 +14848,7 @@ class DeleteThirdPartyAccessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14863,7 +14863,7 @@ class DeleteThirdPartyAccessUserResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser请求参数结构体
+    r"""DeleteUser请求参数结构体
 
     """
 
@@ -14876,7 +14876,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """需要删除的用户的Id
+        r"""需要删除的用户的Id
         :rtype: list of str
         """
         return self._UserIds
@@ -14899,7 +14899,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser返回参数结构体
+    r"""DeleteUser返回参数结构体
 
     """
 
@@ -14912,7 +14912,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14927,7 +14927,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DeleteUserVpcConnectionRequest(AbstractModel):
-    """DeleteUserVpcConnection请求参数结构体
+    r"""DeleteUserVpcConnection请求参数结构体
 
     """
 
@@ -14943,7 +14943,7 @@ class DeleteUserVpcConnectionRequest(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
         :rtype: str
         """
         return self._EngineNetworkId
@@ -14954,7 +14954,7 @@ class DeleteUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserVpcEndpointId(self):
-        """终端节点ID
+        r"""终端节点ID
         :rtype: str
         """
         return self._UserVpcEndpointId
@@ -14978,7 +14978,7 @@ class DeleteUserVpcConnectionRequest(AbstractModel):
 
 
 class DeleteUserVpcConnectionResponse(AbstractModel):
-    """DeleteUserVpcConnection返回参数结构体
+    r"""DeleteUserVpcConnection返回参数结构体
 
     """
 
@@ -14991,7 +14991,7 @@ class DeleteUserVpcConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15006,7 +15006,7 @@ class DeleteUserVpcConnectionResponse(AbstractModel):
 
 
 class DeleteUsersFromWorkGroupRequest(AbstractModel):
-    """DeleteUsersFromWorkGroup请求参数结构体
+    r"""DeleteUsersFromWorkGroup请求参数结构体
 
     """
 
@@ -15019,7 +15019,7 @@ class DeleteUsersFromWorkGroupRequest(AbstractModel):
 
     @property
     def AddInfo(self):
-        """要删除的用户信息
+        r"""要删除的用户信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.UserIdSetOfWorkGroupId`
         """
         return self._AddInfo
@@ -15044,7 +15044,7 @@ class DeleteUsersFromWorkGroupRequest(AbstractModel):
 
 
 class DeleteUsersFromWorkGroupResponse(AbstractModel):
-    """DeleteUsersFromWorkGroup返回参数结构体
+    r"""DeleteUsersFromWorkGroup返回参数结构体
 
     """
 
@@ -15057,7 +15057,7 @@ class DeleteUsersFromWorkGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15072,7 +15072,7 @@ class DeleteUsersFromWorkGroupResponse(AbstractModel):
 
 
 class DeleteWorkGroupRequest(AbstractModel):
-    """DeleteWorkGroup请求参数结构体
+    r"""DeleteWorkGroup请求参数结构体
 
     """
 
@@ -15085,7 +15085,7 @@ class DeleteWorkGroupRequest(AbstractModel):
 
     @property
     def WorkGroupIds(self):
-        """要删除的工作组Id集合
+        r"""要删除的工作组Id集合
         :rtype: list of int
         """
         return self._WorkGroupIds
@@ -15108,7 +15108,7 @@ class DeleteWorkGroupRequest(AbstractModel):
 
 
 class DeleteWorkGroupResponse(AbstractModel):
-    """DeleteWorkGroup返回参数结构体
+    r"""DeleteWorkGroup返回参数结构体
 
     """
 
@@ -15121,7 +15121,7 @@ class DeleteWorkGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15136,7 +15136,7 @@ class DeleteWorkGroupResponse(AbstractModel):
 
 
 class DependencyPackage(AbstractModel):
-    """任务依赖包信息
+    r"""任务依赖包信息
 
     """
 
@@ -15178,7 +15178,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def PackageSource(self):
-        """依赖包类型
+        r"""依赖包类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15190,7 +15190,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def MavenPackage(self):
-        """依赖包信息
+        r"""依赖包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15202,7 +15202,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def MavenRepository(self):
-        """依赖包仓库
+        r"""依赖包仓库
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15214,7 +15214,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def MavenExclusion(self):
-        """maven包exclusion信息
+        r"""maven包exclusion信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15226,7 +15226,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def PypiPackage(self):
-        """pypi包信息
+        r"""pypi包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15238,7 +15238,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def PypiIndexUrl(self):
-        """pypi索引地址
+        r"""pypi索引地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15250,7 +15250,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def PackageType(self):
-        """文件包的类型
+        r"""文件包的类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15262,7 +15262,7 @@ class DependencyPackage(AbstractModel):
 
     @property
     def PackagePath(self):
-        """文件包的路径
+        r"""文件包的路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15293,13 +15293,13 @@ class DependencyPackage(AbstractModel):
 
 
 class DescribeAdvancedStoreLocationRequest(AbstractModel):
-    """DescribeAdvancedStoreLocation请求参数结构体
+    r"""DescribeAdvancedStoreLocation请求参数结构体
 
     """
 
 
 class DescribeAdvancedStoreLocationResponse(AbstractModel):
-    """DescribeAdvancedStoreLocation返回参数结构体
+    r"""DescribeAdvancedStoreLocation返回参数结构体
 
     """
 
@@ -15327,7 +15327,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用高级设置：0-否，1-是
+        r"""是否启用高级设置：0-否，1-是
         :rtype: int
         """
         return self._Enable
@@ -15338,7 +15338,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def StoreLocation(self):
-        """查询结果保存cos路径
+        r"""查询结果保存cos路径
         :rtype: str
         """
         return self._StoreLocation
@@ -15349,7 +15349,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def HasLakeFs(self):
-        """是否有托管存储权限
+        r"""是否有托管存储权限
         :rtype: bool
         """
         return self._HasLakeFs
@@ -15360,7 +15360,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def LakeFsStatus(self):
-        """托管存储状态，HasLakeFs等于true时，该值才有意义
+        r"""托管存储状态，HasLakeFs等于true时，该值才有意义
         :rtype: str
         """
         return self._LakeFsStatus
@@ -15371,7 +15371,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def BucketType(self):
-        """托管存储桶类型
+        r"""托管存储桶类型
         :rtype: str
         """
         return self._BucketType
@@ -15382,7 +15382,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15402,7 +15402,7 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
 
 
 class DescribeClusterMonitorInfosRequest(AbstractModel):
-    """DescribeClusterMonitorInfos请求参数结构体
+    r"""DescribeClusterMonitorInfos请求参数结构体
 
     """
 
@@ -15424,7 +15424,7 @@ class DescribeClusterMonitorInfosRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎Id
+        r"""引擎Id
         :rtype: str
         """
         return self._DataEngineId
@@ -15435,7 +15435,7 @@ class DescribeClusterMonitorInfosRequest(AbstractModel):
 
     @property
     def TimeStart(self):
-        """任务创建时间的起始时间
+        r"""任务创建时间的起始时间
         :rtype: str
         """
         return self._TimeStart
@@ -15446,7 +15446,7 @@ class DescribeClusterMonitorInfosRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        """任务创建时间的结束时间
+        r"""任务创建时间的结束时间
         :rtype: str
         """
         return self._TimeEnd
@@ -15457,7 +15457,7 @@ class DescribeClusterMonitorInfosRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名称
+        r"""指标名称
         :rtype: str
         """
         return self._MetricName
@@ -15483,7 +15483,7 @@ class DescribeClusterMonitorInfosRequest(AbstractModel):
 
 
 class DescribeClusterMonitorInfosResponse(AbstractModel):
-    """DescribeClusterMonitorInfos返回参数结构体
+    r"""DescribeClusterMonitorInfos返回参数结构体
 
     """
 
@@ -15499,7 +15499,7 @@ class DescribeClusterMonitorInfosResponse(AbstractModel):
 
     @property
     def Info(self):
-        """集群监控信息列表
+        r"""集群监控信息列表
         :rtype: str
         """
         return self._Info
@@ -15510,7 +15510,7 @@ class DescribeClusterMonitorInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15526,7 +15526,7 @@ class DescribeClusterMonitorInfosResponse(AbstractModel):
 
 
 class DescribeDLCCatalogAccessRequest(AbstractModel):
-    """DescribeDLCCatalogAccess请求参数结构体
+    r"""DescribeDLCCatalogAccess请求参数结构体
 
     """
 
@@ -15545,7 +15545,7 @@ class DescribeDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示条数
+        r"""显示条数
         :rtype: int
         """
         return self._Limit
@@ -15556,7 +15556,7 @@ class DescribeDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """记录数量
+        r"""记录数量
         :rtype: int
         """
         return self._Offset
@@ -15567,7 +15567,7 @@ class DescribeDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Filter`
         """
         return self._Filter
@@ -15594,7 +15594,7 @@ class DescribeDLCCatalogAccessRequest(AbstractModel):
 
 
 class DescribeDLCCatalogAccessResponse(AbstractModel):
-    """DescribeDLCCatalogAccess返回参数结构体
+    r"""DescribeDLCCatalogAccess返回参数结构体
 
     """
 
@@ -15613,7 +15613,7 @@ class DescribeDLCCatalogAccessResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -15624,7 +15624,7 @@ class DescribeDLCCatalogAccessResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """DLCCatalog授权列表
+        r"""DLCCatalog授权列表
         :rtype: list of DLCCatalogAccess
         """
         return self._Rows
@@ -15635,7 +15635,7 @@ class DescribeDLCCatalogAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15657,7 +15657,7 @@ class DescribeDLCCatalogAccessResponse(AbstractModel):
 
 
 class DescribeDMSDatabaseRequest(AbstractModel):
-    """DescribeDMSDatabase请求参数结构体
+    r"""DescribeDMSDatabase请求参数结构体
 
     """
 
@@ -15679,7 +15679,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     @property
     def Name(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Name
@@ -15690,7 +15690,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """schema名称
+        r"""schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -15701,7 +15701,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """匹配规则，只支持填*
+        r"""匹配规则，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -15712,7 +15712,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -15738,7 +15738,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
 
 class DescribeDMSDatabaseResponse(AbstractModel):
-    """DescribeDMSDatabase返回参数结构体
+    r"""DescribeDMSDatabase返回参数结构体
 
     """
 
@@ -15763,7 +15763,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     @property
     def Name(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Name
@@ -15774,7 +15774,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     @property
     def SchemaName(self):
-        """schema名称
+        r"""schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -15785,7 +15785,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     @property
     def Location(self):
-        """存储地址
+        r"""存储地址
         :rtype: str
         """
         return self._Location
@@ -15796,7 +15796,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     @property
     def Asset(self):
-        """数据对象
+        r"""数据对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -15807,7 +15807,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15828,7 +15828,7 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
 
 class DescribeDMSPartitionsRequest(AbstractModel):
-    """DescribeDMSPartitions请求参数结构体
+    r"""DescribeDMSPartitions请求参数结构体
 
     """
 
@@ -15877,7 +15877,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名
+        r"""数据库名
         :rtype: str
         """
         return self._DatabaseName
@@ -15888,7 +15888,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._TableName
@@ -15899,7 +15899,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """schema名称
+        r"""schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -15910,7 +15910,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -15921,7 +15921,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Values(self):
-        """单个分区名称，精准匹配
+        r"""单个分区名称，精准匹配
         :rtype: list of str
         """
         return self._Values
@@ -15932,7 +15932,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def PartitionNames(self):
-        """多个分区名称，精准匹配
+        r"""多个分区名称，精准匹配
         :rtype: list of str
         """
         return self._PartitionNames
@@ -15943,7 +15943,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def PartValues(self):
-        """多个分区字段的匹配，模糊匹配
+        r"""多个分区字段的匹配，模糊匹配
         :rtype: list of str
         """
         return self._PartValues
@@ -15954,7 +15954,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """过滤SQL
+        r"""过滤SQL
         :rtype: str
         """
         return self._Filter
@@ -15965,7 +15965,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def MaxParts(self):
-        """最大分区数量
+        r"""最大分区数量
         :rtype: int
         """
         return self._MaxParts
@@ -15976,7 +15976,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页跳过数量
+        r"""翻页跳过数量
         :rtype: int
         """
         return self._Offset
@@ -15987,7 +15987,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """页面数量
+        r"""页面数量
         :rtype: int
         """
         return self._Limit
@@ -15998,7 +15998,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def Expression(self):
-        """表达式
+        r"""表达式
         :rtype: str
         """
         return self._Expression
@@ -16009,7 +16009,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -16044,7 +16044,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
 
 
 class DescribeDMSPartitionsResponse(AbstractModel):
-    """DescribeDMSPartitions返回参数结构体
+    r"""DescribeDMSPartitions返回参数结构体
 
     """
 
@@ -16063,7 +16063,7 @@ class DescribeDMSPartitionsResponse(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区信息
+        r"""分区信息
         :rtype: list of DMSPartition
         """
         return self._Partitions
@@ -16074,7 +16074,7 @@ class DescribeDMSPartitionsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -16085,7 +16085,7 @@ class DescribeDMSPartitionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16107,7 +16107,7 @@ class DescribeDMSPartitionsResponse(AbstractModel):
 
 
 class DescribeDMSTableRequest(AbstractModel):
-    """DescribeDMSTable请求参数结构体
+    r"""DescribeDMSTable请求参数结构体
 
     """
 
@@ -16141,7 +16141,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -16152,7 +16152,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """数据库schema名称
+        r"""数据库schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -16163,7 +16163,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Name(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Name
@@ -16174,7 +16174,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """catalog类型
+        r"""catalog类型
         :rtype: str
         """
         return self._Catalog
@@ -16185,7 +16185,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键词
+        r"""查询关键词
         :rtype: str
         """
         return self._Keyword
@@ -16196,7 +16196,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """查询模式，只支持填*
+        r"""查询模式，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -16207,7 +16207,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Type(self):
-        """表类型
+        r"""表类型
         :rtype: str
         """
         return self._Type
@@ -16218,7 +16218,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -16248,7 +16248,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
 
 class DescribeDMSTableResponse(AbstractModel):
-    """DescribeDMSTable返回参数结构体
+    r"""DescribeDMSTable返回参数结构体
 
     """
 
@@ -16318,7 +16318,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Asset(self):
-        """基础对象
+        r"""基础对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Asset`
         """
         return self._Asset
@@ -16329,7 +16329,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def ViewOriginalText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewOriginalText
@@ -16340,7 +16340,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def ViewExpandedText(self):
-        """视图文本
+        r"""视图文本
         :rtype: str
         """
         return self._ViewExpandedText
@@ -16351,7 +16351,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Retention(self):
-        """hive维护版本
+        r"""hive维护版本
         :rtype: int
         """
         return self._Retention
@@ -16362,7 +16362,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Sds(self):
-        """存储对象
+        r"""存储对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
         """
         return self._Sds
@@ -16373,7 +16373,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def PartitionKeys(self):
-        """分区列
+        r"""分区列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumn
         """
@@ -16385,7 +16385,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Partitions(self):
-        """分区
+        r"""分区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSPartition
         """
@@ -16397,7 +16397,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Type(self):
-        """表类型
+        r"""表类型
         :rtype: str
         """
         return self._Type
@@ -16408,7 +16408,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -16419,7 +16419,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def SchemaName(self):
-        """Schame名称
+        r"""Schame名称
         :rtype: str
         """
         return self._SchemaName
@@ -16430,7 +16430,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def StorageSize(self):
-        """存储大小
+        r"""存储大小
         :rtype: int
         """
         return self._StorageSize
@@ -16441,7 +16441,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def RecordCount(self):
-        """记录数量
+        r"""记录数量
         :rtype: int
         """
         return self._RecordCount
@@ -16452,7 +16452,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def LifeTime(self):
-        """生命周期
+        r"""生命周期
         :rtype: int
         """
         return self._LifeTime
@@ -16463,7 +16463,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后访问时间
+        r"""最后访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -16474,7 +16474,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def DataUpdateTime(self):
-        """数据更新时间
+        r"""数据更新时间
         :rtype: str
         """
         return self._DataUpdateTime
@@ -16485,7 +16485,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def StructUpdateTime(self):
-        """结构更新时间
+        r"""结构更新时间
         :rtype: str
         """
         return self._StructUpdateTime
@@ -16496,7 +16496,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Columns(self):
-        """列
+        r"""列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSColumn
         """
@@ -16508,7 +16508,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def Name(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Name
@@ -16519,7 +16519,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16571,7 +16571,7 @@ class DescribeDMSTableResponse(AbstractModel):
 
 
 class DescribeDMSTablesRequest(AbstractModel):
-    """DescribeDMSTables请求参数结构体
+    r"""DescribeDMSTables请求参数结构体
 
     """
 
@@ -16623,7 +16623,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -16634,7 +16634,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """数据库schema名称
+        r"""数据库schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -16645,7 +16645,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Name
@@ -16656,7 +16656,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """catalog类型
+        r"""catalog类型
         :rtype: str
         """
         return self._Catalog
@@ -16667,7 +16667,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键词
+        r"""查询关键词
         :rtype: str
         """
         return self._Keyword
@@ -16678,7 +16678,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """查询模式，只支持填*
+        r"""查询模式，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -16689,7 +16689,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """表类型
+        r"""表类型
         :rtype: str
         """
         return self._Type
@@ -16700,7 +16700,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """筛选参数：更新开始时间
+        r"""筛选参数：更新开始时间
         :rtype: str
         """
         return self._StartTime
@@ -16711,7 +16711,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """筛选参数：更新结束时间
+        r"""筛选参数：更新结束时间
         :rtype: str
         """
         return self._EndTime
@@ -16722,7 +16722,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数
+        r"""分页参数
         :rtype: int
         """
         return self._Limit
@@ -16733,7 +16733,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数
+        r"""分页参数
         :rtype: int
         """
         return self._Offset
@@ -16744,7 +16744,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序字段：create_time：创建时间
+        r"""排序字段：create_time：创建时间
         :rtype: str
         """
         return self._Sort
@@ -16755,7 +16755,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """排序字段：true：升序（默认），false：降序
+        r"""排序字段：true：升序（默认），false：降序
         :rtype: bool
         """
         return self._Asc
@@ -16766,7 +16766,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -16802,7 +16802,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
 
 class DescribeDMSTablesResponse(AbstractModel):
-    """DescribeDMSTables返回参数结构体
+    r"""DescribeDMSTables返回参数结构体
 
     """
 
@@ -16822,7 +16822,7 @@ class DescribeDMSTablesResponse(AbstractModel):
 
     @property
     def TableList(self):
-        """DMS元数据列表信息
+        r"""DMS元数据列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DMSTableInfo
         """
@@ -16834,7 +16834,7 @@ class DescribeDMSTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """统计值
+        r"""统计值
         :rtype: int
         """
         return self._TotalCount
@@ -16845,7 +16845,7 @@ class DescribeDMSTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16867,7 +16867,7 @@ class DescribeDMSTablesResponse(AbstractModel):
 
 
 class DescribeDataEngineEventsRequest(AbstractModel):
-    """DescribeDataEngineEvents请求参数结构体
+    r"""DescribeDataEngineEvents请求参数结构体
 
     """
 
@@ -16889,7 +16889,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """虚拟集群名称
+        r"""虚拟集群名称
         :rtype: str
         """
         return self._DataEngineName
@@ -16900,7 +16900,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大为100
+        r"""返回数量，默认为10，最大为100
         :rtype: int
         """
         return self._Limit
@@ -16911,7 +16911,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -16922,7 +16922,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._SessionId
@@ -16948,7 +16948,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
 
 class DescribeDataEngineEventsResponse(AbstractModel):
-    """DescribeDataEngineEvents返回参数结构体
+    r"""DescribeDataEngineEvents返回参数结构体
 
     """
 
@@ -16977,7 +16977,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        """事件详细信息
+        r"""事件详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HouseEventsInfo
         """
@@ -16989,7 +16989,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Page(self):
-        """分页号
+        r"""分页号
         :rtype: int
         """
         return self._Page
@@ -17000,7 +17000,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Size(self):
-        """分页大小
+        r"""分页大小
         :rtype: int
         """
         return self._Size
@@ -17011,7 +17011,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def TotalPages(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPages
@@ -17022,7 +17022,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -17033,7 +17033,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17058,7 +17058,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
 
 class DescribeDataEngineImageVersionsRequest(AbstractModel):
-    """DescribeDataEngineImageVersions请求参数结构体
+    r"""DescribeDataEngineImageVersions请求参数结构体
 
     """
 
@@ -17077,7 +17077,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        """引擎类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+        r"""引擎类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
         :rtype: str
         """
         return self._EngineType
@@ -17088,7 +17088,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序字段: InsertTime（插入时间，默认），UpdateTime（更新时间）
+        r"""排序字段: InsertTime（插入时间，默认），UpdateTime（更新时间）
         :rtype: str
         """
         return self._Sort
@@ -17099,7 +17099,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """排序方式：false（降序，默认），true（升序）
+        r"""排序方式：false（降序，默认），true（升序）
         :rtype: bool
         """
         return self._Asc
@@ -17124,7 +17124,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
 
 class DescribeDataEngineImageVersionsResponse(AbstractModel):
-    """DescribeDataEngineImageVersions返回参数结构体
+    r"""DescribeDataEngineImageVersions返回参数结构体
 
     """
 
@@ -17143,7 +17143,7 @@ class DescribeDataEngineImageVersionsResponse(AbstractModel):
 
     @property
     def ImageParentVersions(self):
-        """集群大版本镜像信息列表
+        r"""集群大版本镜像信息列表
         :rtype: list of DataEngineImageVersion
         """
         return self._ImageParentVersions
@@ -17154,7 +17154,7 @@ class DescribeDataEngineImageVersionsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -17165,7 +17165,7 @@ class DescribeDataEngineImageVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17187,7 +17187,7 @@ class DescribeDataEngineImageVersionsResponse(AbstractModel):
 
 
 class DescribeDataEnginePythonSparkImagesRequest(AbstractModel):
-    """DescribeDataEnginePythonSparkImages请求参数结构体
+    r"""DescribeDataEnginePythonSparkImages请求参数结构体
 
     """
 
@@ -17200,7 +17200,7 @@ class DescribeDataEnginePythonSparkImagesRequest(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """集群镜像小版本ID
+        r"""集群镜像小版本ID
         :rtype: str
         """
         return self._ChildImageVersionId
@@ -17223,7 +17223,7 @@ class DescribeDataEnginePythonSparkImagesRequest(AbstractModel):
 
 
 class DescribeDataEnginePythonSparkImagesResponse(AbstractModel):
-    """DescribeDataEnginePythonSparkImages返回参数结构体
+    r"""DescribeDataEnginePythonSparkImages返回参数结构体
 
     """
 
@@ -17239,7 +17239,7 @@ class DescribeDataEnginePythonSparkImagesResponse(AbstractModel):
 
     @property
     def PythonSparkImages(self):
-        """PYSPARK镜像信息列表
+        r"""PYSPARK镜像信息列表
         :rtype: list of PythonSparkImage
         """
         return self._PythonSparkImages
@@ -17250,7 +17250,7 @@ class DescribeDataEnginePythonSparkImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17271,7 +17271,7 @@ class DescribeDataEnginePythonSparkImagesResponse(AbstractModel):
 
 
 class DescribeDataEngineRequest(AbstractModel):
-    """DescribeDataEngine请求参数结构体
+    r"""DescribeDataEngine请求参数结构体
 
     """
 
@@ -17284,7 +17284,7 @@ class DescribeDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """House名称
+        r"""House名称
         :rtype: str
         """
         return self._DataEngineName
@@ -17307,7 +17307,7 @@ class DescribeDataEngineRequest(AbstractModel):
 
 
 class DescribeDataEngineResponse(AbstractModel):
-    """DescribeDataEngine返回参数结构体
+    r"""DescribeDataEngine返回参数结构体
 
     """
 
@@ -17323,7 +17323,7 @@ class DescribeDataEngineResponse(AbstractModel):
 
     @property
     def DataEngine(self):
-        """数据引擎详细信息
+        r"""数据引擎详细信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataEngineInfo`
         """
         return self._DataEngine
@@ -17334,7 +17334,7 @@ class DescribeDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17352,7 +17352,7 @@ class DescribeDataEngineResponse(AbstractModel):
 
 
 class DescribeDataEngineSessionParametersRequest(AbstractModel):
-    """DescribeDataEngineSessionParameters请求参数结构体
+    r"""DescribeDataEngineSessionParameters请求参数结构体
 
     """
 
@@ -17368,7 +17368,7 @@ class DescribeDataEngineSessionParametersRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -17379,7 +17379,7 @@ class DescribeDataEngineSessionParametersRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称，当指定引擎名称后优先使用名称获取配置
+        r"""引擎名称，当指定引擎名称后优先使用名称获取配置
         :rtype: str
         """
         return self._DataEngineName
@@ -17403,7 +17403,7 @@ class DescribeDataEngineSessionParametersRequest(AbstractModel):
 
 
 class DescribeDataEngineSessionParametersResponse(AbstractModel):
-    """DescribeDataEngineSessionParameters返回参数结构体
+    r"""DescribeDataEngineSessionParameters返回参数结构体
 
     """
 
@@ -17419,7 +17419,7 @@ class DescribeDataEngineSessionParametersResponse(AbstractModel):
 
     @property
     def DataEngineParameters(self):
-        """集群Session配置列表
+        r"""集群Session配置列表
         :rtype: list of DataEngineImageSessionParameter
         """
         return self._DataEngineParameters
@@ -17430,7 +17430,7 @@ class DescribeDataEngineSessionParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17451,7 +17451,7 @@ class DescribeDataEngineSessionParametersResponse(AbstractModel):
 
 
 class DescribeDataEnginesRequest(AbstractModel):
-    """DescribeDataEngines请求参数结构体
+    r"""DescribeDataEngines请求参数结构体
 
     """
 
@@ -17503,7 +17503,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -17514,7 +17514,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu/kyuubi_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH），engine-network-id - String（引擎网络Id）
+        r"""过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu/kyuubi_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH），engine-network-id - String（引擎网络Id）
         :rtype: list of Filter
         """
         return self._Filters
@@ -17525,7 +17525,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time
+        r"""排序字段，支持如下字段类型，create-time
         :rtype: str
         """
         return self._SortBy
@@ -17536,7 +17536,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc。
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc。
         :rtype: str
         """
         return self._Sorting
@@ -17547,7 +17547,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -17558,7 +17558,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """已废弃，请使用DatasourceConnectionNameSet
+        r"""已废弃，请使用DatasourceConnectionNameSet
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -17569,7 +17569,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def ExcludePublicEngine(self):
-        """是否不返回共享引擎，true不返回共享引擎，false可以返回共享引擎
+        r"""是否不返回共享引擎，true不返回共享引擎，false可以返回共享引擎
         :rtype: bool
         """
         return self._ExcludePublicEngine
@@ -17580,7 +17580,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def AccessTypes(self):
-        """参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
+        r"""参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
         :rtype: list of str
         """
         return self._AccessTypes
@@ -17591,7 +17591,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def EngineExecType(self):
-        """引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
+        r"""引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
         :rtype: str
         """
         return self._EngineExecType
@@ -17602,7 +17602,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        """引擎类型，有效值：spark/presto/kyuubi，为空时默认获取非kyuubi引擎（网关引擎）
+        r"""引擎类型，有效值：spark/presto/kyuubi，为空时默认获取非kyuubi引擎（网关引擎）
         :rtype: str
         """
         return self._EngineType
@@ -17613,7 +17613,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def DatasourceConnectionNameSet(self):
-        """网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
+        r"""网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
         :rtype: list of str
         """
         return self._DatasourceConnectionNameSet
@@ -17624,7 +17624,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def EngineGeneration(self):
-        """引擎版本，有效值：Native/SuperSQL，为空时默认获取SuperSQL引擎
+        r"""引擎版本，有效值：Native/SuperSQL，为空时默认获取SuperSQL引擎
         :rtype: str
         """
         return self._EngineGeneration
@@ -17635,7 +17635,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        """引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
+        r"""引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
         :rtype: str
         """
         return self._EngineTypeDetail
@@ -17646,7 +17646,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
     @property
     def ListHasListener(self):
-        """默认 false, 为 true 时仅列出具有洞察 listener 的引擎
+        r"""默认 false, 为 true 时仅列出具有洞察 listener 的引擎
         :rtype: bool
         """
         return self._ListHasListener
@@ -17687,7 +17687,7 @@ class DescribeDataEnginesRequest(AbstractModel):
 
 
 class DescribeDataEnginesResponse(AbstractModel):
-    """DescribeDataEngines返回参数结构体
+    r"""DescribeDataEngines返回参数结构体
 
     """
 
@@ -17707,7 +17707,7 @@ class DescribeDataEnginesResponse(AbstractModel):
 
     @property
     def DataEngines(self):
-        """数据引擎列表
+        r"""数据引擎列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataEngineInfo
         """
@@ -17719,7 +17719,7 @@ class DescribeDataEnginesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -17730,7 +17730,7 @@ class DescribeDataEnginesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17752,7 +17752,7 @@ class DescribeDataEnginesResponse(AbstractModel):
 
 
 class DescribeDataEnginesScaleDetailRequest(AbstractModel):
-    """DescribeDataEnginesScaleDetail请求参数结构体
+    r"""DescribeDataEnginesScaleDetail请求参数结构体
 
     """
 
@@ -17771,7 +17771,7 @@ class DescribeDataEnginesScaleDetailRequest(AbstractModel):
 
     @property
     def DataEngineNames(self):
-        """引擎名称列表
+        r"""引擎名称列表
         :rtype: list of str
         """
         return self._DataEngineNames
@@ -17782,7 +17782,7 @@ class DescribeDataEnginesScaleDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+        r"""开始时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
         :rtype: str
         """
         return self._StartTime
@@ -17793,7 +17793,7 @@ class DescribeDataEnginesScaleDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+        r"""结束时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
         :rtype: str
         """
         return self._EndTime
@@ -17818,7 +17818,7 @@ class DescribeDataEnginesScaleDetailRequest(AbstractModel):
 
 
 class DescribeDataEnginesScaleDetailResponse(AbstractModel):
-    """DescribeDataEnginesScaleDetail返回参数结构体
+    r"""DescribeDataEnginesScaleDetail返回参数结构体
 
     """
 
@@ -17835,7 +17835,7 @@ class DescribeDataEnginesScaleDetailResponse(AbstractModel):
 
     @property
     def Scales(self):
-        """引擎规格统计详细信息
+        r"""引擎规格统计详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataEngineScaleInfo
         """
@@ -17847,7 +17847,7 @@ class DescribeDataEnginesScaleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17868,7 +17868,7 @@ class DescribeDataEnginesScaleDetailResponse(AbstractModel):
 
 
 class DescribeDataMaskStrategiesRequest(AbstractModel):
-    """DescribeDataMaskStrategies请求参数结构体
+    r"""DescribeDataMaskStrategies请求参数结构体
 
     """
 
@@ -17887,7 +17887,7 @@ class DescribeDataMaskStrategiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，单页返回数据量，默认10
+        r"""分页参数，单页返回数据量，默认10
         :rtype: int
         """
         return self._Limit
@@ -17898,7 +17898,7 @@ class DescribeDataMaskStrategiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，数据便偏移量，默认0
+        r"""分页参数，数据便偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -17909,7 +17909,7 @@ class DescribeDataMaskStrategiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤字段，strategy-name: 按策略名称搜索
+        r"""过滤字段，strategy-name: 按策略名称搜索
         :rtype: list of Filter
         """
         return self._Filters
@@ -17939,7 +17939,7 @@ class DescribeDataMaskStrategiesRequest(AbstractModel):
 
 
 class DescribeDataMaskStrategiesResponse(AbstractModel):
-    """DescribeDataMaskStrategies返回参数结构体
+    r"""DescribeDataMaskStrategies返回参数结构体
 
     """
 
@@ -17958,7 +17958,7 @@ class DescribeDataMaskStrategiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数据脱敏策略数
+        r"""总数据脱敏策略数
         :rtype: int
         """
         return self._TotalCount
@@ -17969,7 +17969,7 @@ class DescribeDataMaskStrategiesResponse(AbstractModel):
 
     @property
     def Strategies(self):
-        """数据脱敏策略列表
+        r"""数据脱敏策略列表
         :rtype: list of DataMaskStrategy
         """
         return self._Strategies
@@ -17980,7 +17980,7 @@ class DescribeDataMaskStrategiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18002,7 +18002,7 @@ class DescribeDataMaskStrategiesResponse(AbstractModel):
 
 
 class DescribeDatabasesRequest(AbstractModel):
-    """DescribeDatabases请求参数结构体
+    r"""DescribeDatabases请求参数结构体
 
     """
 
@@ -18034,7 +18034,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -18045,7 +18045,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始，默认为0。
+        r"""数据偏移量，从0开始，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -18056,7 +18056,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """模糊匹配，库名关键字。
+        r"""模糊匹配，库名关键字。
         :rtype: str
         """
         return self._KeyWord
@@ -18067,7 +18067,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
+        r"""数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -18078,7 +18078,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序字段，CreateTime：创建时间，Name：数据库名称
+        r"""排序字段，CreateTime：创建时间，Name：数据库名称
         :rtype: str
         """
         return self._Sort
@@ -18089,7 +18089,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """排序类型：false：降序（默认）、true：升序
+        r"""排序类型：false：降序（默认）、true：升序
         :rtype: bool
         """
         return self._Asc
@@ -18100,7 +18100,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def DescribeType(self):
-        """查询类型：all：全部数据（默认）、permission：有权限的数据
+        r"""查询类型：all：全部数据（默认）、permission：有权限的数据
 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
         :rtype: str
         """
@@ -18130,7 +18130,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
 
 class DescribeDatabasesResponse(AbstractModel):
-    """DescribeDatabases返回参数结构体
+    r"""DescribeDatabases返回参数结构体
 
     """
 
@@ -18149,7 +18149,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def DatabaseList(self):
-        """数据库对象列表。
+        r"""数据库对象列表。
         :rtype: list of DatabaseResponseInfo
         """
         return self._DatabaseList
@@ -18160,7 +18160,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -18171,7 +18171,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18193,7 +18193,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
 
 class DescribeDatasourceConnectionRequest(AbstractModel):
-    """DescribeDatasourceConnection请求参数结构体
+    r"""DescribeDatasourceConnection请求参数结构体
 
     """
 
@@ -18237,7 +18237,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def DatasourceConnectionIds(self):
-        """连接ID列表，指定要查询的连接ID
+        r"""连接ID列表，指定要查询的连接ID
         :rtype: list of str
         """
         return self._DatasourceConnectionIds
@@ -18248,7 +18248,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def Filters(self):
-        """过滤条件，当前支持的过滤键为：DatasourceConnectionName（数据源连接名）。
+        r"""过滤条件，当前支持的过滤键为：DatasourceConnectionName（数据源连接名）。
 DatasourceConnectionType   （数据源连接连接类型）
         :rtype: list of Filter
         """
@@ -18260,7 +18260,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -18271,7 +18271,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def Limit(self):
-        """返回数量，默认20，最大值100
+        r"""返回数量，默认20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -18282,7 +18282,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time（默认，创建时间）、update-time（更新时间）
+        r"""排序字段，支持如下字段类型，create-time（默认，创建时间）、update-time（更新时间）
         :rtype: str
         """
         return self._SortBy
@@ -18293,7 +18293,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为desc
+        r"""排序方式，desc表示正序，asc表示反序， 默认为desc
         :rtype: str
         """
         return self._Sorting
@@ -18304,7 +18304,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def StartTime(self):
-        """筛选字段：起始时间
+        r"""筛选字段：起始时间
         :rtype: str
         """
         return self._StartTime
@@ -18315,7 +18315,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def EndTime(self):
-        """筛选字段：截止时间
+        r"""筛选字段：截止时间
         :rtype: str
         """
         return self._EndTime
@@ -18326,7 +18326,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def DatasourceConnectionNames(self):
-        """连接名称列表，指定要查询的连接名称
+        r"""连接名称列表，指定要查询的连接名称
         :rtype: list of str
         """
         return self._DatasourceConnectionNames
@@ -18337,7 +18337,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def DatasourceConnectionTypes(self):
-        """连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
+        r"""连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
         :rtype: list of str
         """
         return self._DatasourceConnectionTypes
@@ -18348,7 +18348,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
     @property
     def HiveVersion(self):
-        """返回指定hive版本的数据源，该参数指定后，会过滤掉该参数指定版本以外的hive数据源，非hive数据源正常返回
+        r"""返回指定hive版本的数据源，该参数指定后，会过滤掉该参数指定版本以外的hive数据源，非hive数据源正常返回
         :rtype: list of str
         """
         return self._HiveVersion
@@ -18386,7 +18386,7 @@ DatasourceConnectionType   （数据源连接连接类型）
 
 
 class DescribeDatasourceConnectionResponse(AbstractModel):
-    """DescribeDatasourceConnection返回参数结构体
+    r"""DescribeDatasourceConnection返回参数结构体
 
     """
 
@@ -18405,7 +18405,7 @@ class DescribeDatasourceConnectionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数据连接总数
+        r"""数据连接总数
         :rtype: int
         """
         return self._TotalCount
@@ -18416,7 +18416,7 @@ class DescribeDatasourceConnectionResponse(AbstractModel):
 
     @property
     def ConnectionSet(self):
-        """数据连接对象集合
+        r"""数据连接对象集合
         :rtype: list of DatasourceConnectionInfo
         """
         return self._ConnectionSet
@@ -18427,7 +18427,7 @@ class DescribeDatasourceConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18449,7 +18449,7 @@ class DescribeDatasourceConnectionResponse(AbstractModel):
 
 
 class DescribeEngineNetworksRequest(AbstractModel):
-    """DescribeEngineNetworks请求参数结构体
+    r"""DescribeEngineNetworks请求参数结构体
 
     """
 
@@ -18474,7 +18474,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._SortBy
@@ -18485,7 +18485,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """升序，降序
+        r"""升序，降序
         :rtype: str
         """
         return self._Sorting
@@ -18496,7 +18496,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
+        r"""过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
         :rtype: list of Filter
         """
         return self._Filters
@@ -18507,7 +18507,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数据条数
+        r"""数据条数
         :rtype: int
         """
         return self._Limit
@@ -18518,7 +18518,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -18550,7 +18550,7 @@ class DescribeEngineNetworksRequest(AbstractModel):
 
 
 class DescribeEngineNetworksResponse(AbstractModel):
-    """DescribeEngineNetworks返回参数结构体
+    r"""DescribeEngineNetworks返回参数结构体
 
     """
 
@@ -18569,7 +18569,7 @@ class DescribeEngineNetworksResponse(AbstractModel):
 
     @property
     def EngineNetworkInfos(self):
-        """引擎网络信息
+        r"""引擎网络信息
         :rtype: list of EngineNetworkInfo
         """
         return self._EngineNetworkInfos
@@ -18580,7 +18580,7 @@ class DescribeEngineNetworksResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -18591,7 +18591,7 @@ class DescribeEngineNetworksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18613,7 +18613,7 @@ class DescribeEngineNetworksResponse(AbstractModel):
 
 
 class DescribeEngineNodeSpecRequest(AbstractModel):
-    """DescribeEngineNodeSpec请求参数结构体
+    r"""DescribeEngineNodeSpec请求参数结构体
 
     """
 
@@ -18626,7 +18626,7 @@ class DescribeEngineNodeSpecRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -18649,7 +18649,7 @@ class DescribeEngineNodeSpecRequest(AbstractModel):
 
 
 class DescribeEngineNodeSpecResponse(AbstractModel):
-    """DescribeEngineNodeSpec返回参数结构体
+    r"""DescribeEngineNodeSpec返回参数结构体
 
     """
 
@@ -18670,7 +18670,7 @@ class DescribeEngineNodeSpecResponse(AbstractModel):
 
     @property
     def DriverSpec(self):
-        """driver可用的规格
+        r"""driver可用的规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpecInfo
         """
@@ -18682,7 +18682,7 @@ class DescribeEngineNodeSpecResponse(AbstractModel):
 
     @property
     def ExecutorSpec(self):
-        """executor可用的规格
+        r"""executor可用的规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpecInfo
         """
@@ -18694,7 +18694,7 @@ class DescribeEngineNodeSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18721,7 +18721,7 @@ class DescribeEngineNodeSpecResponse(AbstractModel):
 
 
 class DescribeEngineUsageInfoRequest(AbstractModel):
-    """DescribeEngineUsageInfo请求参数结构体
+    r"""DescribeEngineUsageInfo请求参数结构体
 
     """
 
@@ -18734,7 +18734,7 @@ class DescribeEngineUsageInfoRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """数据引擎ID
+        r"""数据引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -18757,7 +18757,7 @@ class DescribeEngineUsageInfoRequest(AbstractModel):
 
 
 class DescribeEngineUsageInfoResponse(AbstractModel):
-    """DescribeEngineUsageInfo返回参数结构体
+    r"""DescribeEngineUsageInfo返回参数结构体
 
     """
 
@@ -18782,7 +18782,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        """集群总规格
+        r"""集群总规格
         :rtype: int
         """
         return self._Total
@@ -18793,7 +18793,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
     @property
     def Used(self):
-        """已占用集群规格
+        r"""已占用集群规格
         :rtype: int
         """
         return self._Used
@@ -18804,7 +18804,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
     @property
     def Available(self):
-        """剩余集群规格
+        r"""剩余集群规格
         :rtype: int
         """
         return self._Available
@@ -18815,7 +18815,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
     @property
     def AvailPercent(self):
-        """剩余集群规格百分比
+        r"""剩余集群规格百分比
         :rtype: int
         """
         return self._AvailPercent
@@ -18826,7 +18826,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18845,13 +18845,13 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
 
 
 class DescribeForbiddenTableProRequest(AbstractModel):
-    """DescribeForbiddenTablePro请求参数结构体
+    r"""DescribeForbiddenTablePro请求参数结构体
 
     """
 
 
 class DescribeForbiddenTableProResponse(AbstractModel):
-    """DescribeForbiddenTablePro返回参数结构体
+    r"""DescribeForbiddenTablePro返回参数结构体
 
     """
 
@@ -18864,7 +18864,7 @@ class DescribeForbiddenTableProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18879,13 +18879,13 @@ class DescribeForbiddenTableProResponse(AbstractModel):
 
 
 class DescribeLakeFsDirSummaryRequest(AbstractModel):
-    """DescribeLakeFsDirSummary请求参数结构体
+    r"""DescribeLakeFsDirSummary请求参数结构体
 
     """
 
 
 class DescribeLakeFsDirSummaryResponse(AbstractModel):
-    """DescribeLakeFsDirSummary返回参数结构体
+    r"""DescribeLakeFsDirSummary返回参数结构体
 
     """
 
@@ -18898,7 +18898,7 @@ class DescribeLakeFsDirSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18913,13 +18913,13 @@ class DescribeLakeFsDirSummaryResponse(AbstractModel):
 
 
 class DescribeLakeFsInfoRequest(AbstractModel):
-    """DescribeLakeFsInfo请求参数结构体
+    r"""DescribeLakeFsInfo请求参数结构体
 
     """
 
 
 class DescribeLakeFsInfoResponse(AbstractModel):
-    """DescribeLakeFsInfo返回参数结构体
+    r"""DescribeLakeFsInfo返回参数结构体
 
     """
 
@@ -18936,7 +18936,7 @@ class DescribeLakeFsInfoResponse(AbstractModel):
 
     @property
     def LakeFsInfos(self):
-        """托管存储信息
+        r"""托管存储信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LakeFsInfo
         """
@@ -18948,7 +18948,7 @@ class DescribeLakeFsInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -18969,7 +18969,7 @@ class DescribeLakeFsInfoResponse(AbstractModel):
 
 
 class DescribeLakeFsTaskResultRequest(AbstractModel):
-    """DescribeLakeFsTaskResult请求参数结构体
+    r"""DescribeLakeFsTaskResult请求参数结构体
 
     """
 
@@ -18982,7 +18982,7 @@ class DescribeLakeFsTaskResultRequest(AbstractModel):
 
     @property
     def FsPath(self):
-        """需要访问的任务结果路径
+        r"""需要访问的任务结果路径
         :rtype: str
         """
         return self._FsPath
@@ -19005,7 +19005,7 @@ class DescribeLakeFsTaskResultRequest(AbstractModel):
 
 
 class DescribeLakeFsTaskResultResponse(AbstractModel):
-    """DescribeLakeFsTaskResult返回参数结构体
+    r"""DescribeLakeFsTaskResult返回参数结构体
 
     """
 
@@ -19021,7 +19021,7 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
 
     @property
     def AccessToken(self):
-        """路径的访问实例
+        r"""路径的访问实例
         :rtype: :class:`tencentcloud.dlc.v20210125.models.LakeFileSystemToken`
         """
         return self._AccessToken
@@ -19032,7 +19032,7 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19050,7 +19050,7 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
 
 
 class DescribeNativeSparkSessionsRequest(AbstractModel):
-    """DescribeNativeSparkSessions请求参数结构体
+    r"""DescribeNativeSparkSessions请求参数结构体
 
     """
 
@@ -19066,7 +19066,7 @@ class DescribeNativeSparkSessionsRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -19077,7 +19077,7 @@ class DescribeNativeSparkSessionsRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """资源组ID
+        r"""资源组ID
         :rtype: str
         """
         return self._ResourceGroupId
@@ -19101,7 +19101,7 @@ class DescribeNativeSparkSessionsRequest(AbstractModel):
 
 
 class DescribeNativeSparkSessionsResponse(AbstractModel):
-    """DescribeNativeSparkSessions返回参数结构体
+    r"""DescribeNativeSparkSessions返回参数结构体
 
     """
 
@@ -19117,7 +19117,7 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
 
     @property
     def SparkSessionsList(self):
-        """spark session列表
+        r"""spark session列表
         :rtype: list of SparkSessionInfo
         """
         return self._SparkSessionsList
@@ -19128,7 +19128,7 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19149,7 +19149,7 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
 
 
 class DescribeNetworkConnectionsRequest(AbstractModel):
-    """DescribeNetworkConnections请求参数结构体
+    r"""DescribeNetworkConnections请求参数结构体
 
     """
 
@@ -19177,7 +19177,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def NetworkConnectionType(self):
-        """网络配置类型
+        r"""网络配置类型
         :rtype: int
         """
         return self._NetworkConnectionType
@@ -19188,7 +19188,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """计算引擎名称
+        r"""计算引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -19199,7 +19199,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def DatasourceConnectionVpcId(self):
-        """数据源vpcid
+        r"""数据源vpcid
         :rtype: str
         """
         return self._DatasourceConnectionVpcId
@@ -19210,7 +19210,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -19221,7 +19221,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -19232,7 +19232,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
     @property
     def NetworkConnectionName(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: str
         """
         return self._NetworkConnectionName
@@ -19260,7 +19260,7 @@ class DescribeNetworkConnectionsRequest(AbstractModel):
 
 
 class DescribeNetworkConnectionsResponse(AbstractModel):
-    """DescribeNetworkConnections返回参数结构体
+    r"""DescribeNetworkConnections返回参数结构体
 
     """
 
@@ -19279,7 +19279,7 @@ class DescribeNetworkConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalCount
@@ -19290,7 +19290,7 @@ class DescribeNetworkConnectionsResponse(AbstractModel):
 
     @property
     def NetworkConnectionSet(self):
-        """网络配置列表
+        r"""网络配置列表
         :rtype: list of NetworkConnection
         """
         return self._NetworkConnectionSet
@@ -19301,7 +19301,7 @@ class DescribeNetworkConnectionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19323,7 +19323,7 @@ class DescribeNetworkConnectionsResponse(AbstractModel):
 
 
 class DescribeNotebookSessionLogRequest(AbstractModel):
-    """DescribeNotebookSessionLog请求参数结构体
+    r"""DescribeNotebookSessionLog请求参数结构体
 
     """
 
@@ -19342,7 +19342,7 @@ class DescribeNotebookSessionLogRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -19353,7 +19353,7 @@ class DescribeNotebookSessionLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，默认200
+        r"""分页参数，默认200
         :rtype: int
         """
         return self._Limit
@@ -19364,7 +19364,7 @@ class DescribeNotebookSessionLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，默认0
+        r"""分页参数，默认0
         :rtype: int
         """
         return self._Offset
@@ -19389,7 +19389,7 @@ class DescribeNotebookSessionLogRequest(AbstractModel):
 
 
 class DescribeNotebookSessionLogResponse(AbstractModel):
-    """DescribeNotebookSessionLog返回参数结构体
+    r"""DescribeNotebookSessionLog返回参数结构体
 
     """
 
@@ -19411,7 +19411,7 @@ class DescribeNotebookSessionLogResponse(AbstractModel):
 
     @property
     def Logs(self):
-        """日志信息，默认获取最新的200条
+        r"""日志信息，默认获取最新的200条
         :rtype: list of str
         """
         return self._Logs
@@ -19422,7 +19422,7 @@ class DescribeNotebookSessionLogResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，默认200
+        r"""分页参数，默认200
         :rtype: int
         """
         return self._Limit
@@ -19433,7 +19433,7 @@ class DescribeNotebookSessionLogResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，默认0
+        r"""分页参数，默认0
         :rtype: int
         """
         return self._Offset
@@ -19444,7 +19444,7 @@ class DescribeNotebookSessionLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19462,7 +19462,7 @@ class DescribeNotebookSessionLogResponse(AbstractModel):
 
 
 class DescribeNotebookSessionRequest(AbstractModel):
-    """DescribeNotebookSession请求参数结构体
+    r"""DescribeNotebookSession请求参数结构体
 
     """
 
@@ -19475,7 +19475,7 @@ class DescribeNotebookSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -19498,7 +19498,7 @@ class DescribeNotebookSessionRequest(AbstractModel):
 
 
 class DescribeNotebookSessionResponse(AbstractModel):
-    """DescribeNotebookSession返回参数结构体
+    r"""DescribeNotebookSession返回参数结构体
 
     """
 
@@ -19514,7 +19514,7 @@ class DescribeNotebookSessionResponse(AbstractModel):
 
     @property
     def Session(self):
-        """Session详情信息
+        r"""Session详情信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionInfo`
         """
         return self._Session
@@ -19525,7 +19525,7 @@ class DescribeNotebookSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19543,7 +19543,7 @@ class DescribeNotebookSessionResponse(AbstractModel):
 
 
 class DescribeNotebookSessionStatementRequest(AbstractModel):
-    """DescribeNotebookSessionStatement请求参数结构体
+    r"""DescribeNotebookSessionStatement请求参数结构体
 
     """
 
@@ -19562,7 +19562,7 @@ class DescribeNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -19573,7 +19573,7 @@ class DescribeNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def StatementId(self):
-        """Session Statement唯一标识
+        r"""Session Statement唯一标识
         :rtype: str
         """
         return self._StatementId
@@ -19584,7 +19584,7 @@ class DescribeNotebookSessionStatementRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一标识
+        r"""任务唯一标识
         :rtype: str
         """
         return self._TaskId
@@ -19609,7 +19609,7 @@ class DescribeNotebookSessionStatementRequest(AbstractModel):
 
 
 class DescribeNotebookSessionStatementResponse(AbstractModel):
-    """DescribeNotebookSessionStatement返回参数结构体
+    r"""DescribeNotebookSessionStatement返回参数结构体
 
     """
 
@@ -19625,7 +19625,7 @@ class DescribeNotebookSessionStatementResponse(AbstractModel):
 
     @property
     def NotebookSessionStatement(self):
-        """Session Statement详情
+        r"""Session Statement详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementInfo`
         """
         return self._NotebookSessionStatement
@@ -19636,7 +19636,7 @@ class DescribeNotebookSessionStatementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19654,7 +19654,7 @@ class DescribeNotebookSessionStatementResponse(AbstractModel):
 
 
 class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
-    """DescribeNotebookSessionStatementSqlResult请求参数结构体
+    r"""DescribeNotebookSessionStatementSqlResult请求参数结构体
 
     """
 
@@ -19679,7 +19679,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一ID
+        r"""任务唯一ID
         :rtype: str
         """
         return self._TaskId
@@ -19690,7 +19690,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """返回结果的最大行数，范围0~1000，默认为1000.
+        r"""返回结果的最大行数，范围0~1000，默认为1000.
         :rtype: int
         """
         return self._MaxResults
@@ -19701,7 +19701,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
+        r"""上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
         :rtype: str
         """
         return self._NextToken
@@ -19712,7 +19712,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次Id
+        r"""批次Id
         :rtype: str
         """
         return self._BatchId
@@ -19723,7 +19723,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
     @property
     def DataFieldCutLen(self):
-        """返回结果集中字段值长度截取，如果超过该长度则截取到该长度
+        r"""返回结果集中字段值长度截取，如果超过该长度则截取到该长度
         :rtype: int
         """
         return self._DataFieldCutLen
@@ -19750,7 +19750,7 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
 
 
 class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
-    """DescribeNotebookSessionStatementSqlResult返回参数结构体
+    r"""DescribeNotebookSessionStatementSqlResult返回参数结构体
 
     """
 
@@ -19790,7 +19790,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -19801,7 +19801,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def ResultSet(self):
-        """结果数据
+        r"""结果数据
         :rtype: str
         """
         return self._ResultSet
@@ -19812,7 +19812,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def ResultSchema(self):
-        """schema
+        r"""schema
         :rtype: list of Column
         """
         return self._ResultSchema
@@ -19823,7 +19823,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """分页信息
+        r"""分页信息
         :rtype: str
         """
         return self._NextToken
@@ -19834,7 +19834,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def OutputPath(self):
-        """存储结果地址
+        r"""存储结果地址
         :rtype: str
         """
         return self._OutputPath
@@ -19845,7 +19845,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def UseTime(self):
-        """引擎计算耗时
+        r"""引擎计算耗时
         :rtype: int
         """
         return self._UseTime
@@ -19856,7 +19856,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def AffectRows(self):
-        """结果条数
+        r"""结果条数
         :rtype: int
         """
         return self._AffectRows
@@ -19867,7 +19867,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def DataAmount(self):
-        """数据扫描量
+        r"""数据扫描量
         :rtype: int
         """
         return self._DataAmount
@@ -19878,7 +19878,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def UiUrl(self):
-        """spark ui地址
+        r"""spark ui地址
         :rtype: str
         """
         return self._UiUrl
@@ -19889,7 +19889,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19918,7 +19918,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
 
 
 class DescribeNotebookSessionStatementsRequest(AbstractModel):
-    """DescribeNotebookSessionStatements请求参数结构体
+    r"""DescribeNotebookSessionStatements请求参数结构体
 
     """
 
@@ -19934,7 +19934,7 @@ class DescribeNotebookSessionStatementsRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -19945,7 +19945,7 @@ class DescribeNotebookSessionStatementsRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批任务id
+        r"""批任务id
         :rtype: str
         """
         return self._BatchId
@@ -19969,7 +19969,7 @@ class DescribeNotebookSessionStatementsRequest(AbstractModel):
 
 
 class DescribeNotebookSessionStatementsResponse(AbstractModel):
-    """DescribeNotebookSessionStatements返回参数结构体
+    r"""DescribeNotebookSessionStatements返回参数结构体
 
     """
 
@@ -19985,7 +19985,7 @@ class DescribeNotebookSessionStatementsResponse(AbstractModel):
 
     @property
     def NotebookSessionStatements(self):
-        """Session Statement详情
+        r"""Session Statement详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementBatchInformation`
         """
         return self._NotebookSessionStatements
@@ -19996,7 +19996,7 @@ class DescribeNotebookSessionStatementsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20014,7 +20014,7 @@ class DescribeNotebookSessionStatementsResponse(AbstractModel):
 
 
 class DescribeNotebookSessionsRequest(AbstractModel):
-    """DescribeNotebookSessions请求参数结构体
+    r"""DescribeNotebookSessions请求参数结构体
 
     """
 
@@ -20045,7 +20045,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DLC Spark作业引擎名称
+        r"""DLC Spark作业引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -20056,7 +20056,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def State(self):
-        """Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        r"""Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
         :rtype: list of str
         """
         return self._State
@@ -20067,7 +20067,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def SortFields(self):
-        """排序字段（默认按创建时间）
+        r"""排序字段（默认按创建时间）
         :rtype: list of str
         """
         return self._SortFields
@@ -20078,7 +20078,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """排序字段：true：升序、false：降序（默认）
+        r"""排序字段：true：升序、false：降序（默认）
         :rtype: bool
         """
         return self._Asc
@@ -20089,7 +20089,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，默认10
+        r"""分页参数，默认10
         :rtype: int
         """
         return self._Limit
@@ -20100,7 +20100,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页参数，默认0
+        r"""分页参数，默认0
         :rtype: int
         """
         return self._Offset
@@ -20111,7 +20111,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, engine-generation - String（引擎时代： supersql：supersql引擎，native：标准引擎）：notebook-keyword - String（数据引擎名称或sessionid或sessionname的模糊搜索）
+        r"""过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, engine-generation - String（引擎时代： supersql：supersql引擎，native：标准引擎）：notebook-keyword - String（数据引擎名称或sessionid或sessionname的模糊搜索）
         :rtype: list of Filter
         """
         return self._Filters
@@ -20145,7 +20145,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
 
 
 class DescribeNotebookSessionsResponse(AbstractModel):
-    """DescribeNotebookSessions返回参数结构体
+    r"""DescribeNotebookSessions返回参数结构体
 
     """
 
@@ -20173,7 +20173,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def TotalElements(self):
-        """session总数量
+        r"""session总数量
         :rtype: int
         """
         return self._TotalElements
@@ -20184,7 +20184,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def TotalPages(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPages
@@ -20195,7 +20195,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def Page(self):
-        """当前页码
+        r"""当前页码
         :rtype: int
         """
         return self._Page
@@ -20206,7 +20206,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def Size(self):
-        """当前页数量
+        r"""当前页数量
         :rtype: int
         """
         return self._Size
@@ -20217,7 +20217,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def Sessions(self):
-        """session列表信息
+        r"""session列表信息
         :rtype: list of NotebookSessions
         """
         return self._Sessions
@@ -20228,7 +20228,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20253,7 +20253,7 @@ class DescribeNotebookSessionsResponse(AbstractModel):
 
 
 class DescribeOtherCHDFSBindingListRequest(AbstractModel):
-    """DescribeOtherCHDFSBindingList请求参数结构体
+    r"""DescribeOtherCHDFSBindingList请求参数结构体
 
     """
 
@@ -20266,7 +20266,7 @@ class DescribeOtherCHDFSBindingListRequest(AbstractModel):
 
     @property
     def BucketId(self):
-        """桶名
+        r"""桶名
         :rtype: str
         """
         return self._BucketId
@@ -20289,7 +20289,7 @@ class DescribeOtherCHDFSBindingListRequest(AbstractModel):
 
 
 class DescribeOtherCHDFSBindingListResponse(AbstractModel):
-    """DescribeOtherCHDFSBindingList返回参数结构体
+    r"""DescribeOtherCHDFSBindingList返回参数结构体
 
     """
 
@@ -20308,7 +20308,7 @@ class DescribeOtherCHDFSBindingListResponse(AbstractModel):
 
     @property
     def OtherCHDFSBindingList(self):
-        """非DLC 产品绑定列表
+        r"""非DLC 产品绑定列表
         :rtype: list of OtherCHDFSBinding
         """
         return self._OtherCHDFSBindingList
@@ -20319,7 +20319,7 @@ class DescribeOtherCHDFSBindingListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总记录数
+        r"""总记录数
         :rtype: int
         """
         return self._Total
@@ -20330,7 +20330,7 @@ class DescribeOtherCHDFSBindingListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20352,7 +20352,7 @@ class DescribeOtherCHDFSBindingListResponse(AbstractModel):
 
 
 class DescribeResultDownloadRequest(AbstractModel):
-    """DescribeResultDownload请求参数结构体
+    r"""DescribeResultDownload请求参数结构体
 
     """
 
@@ -20365,7 +20365,7 @@ class DescribeResultDownloadRequest(AbstractModel):
 
     @property
     def DownloadId(self):
-        """查询任务Id
+        r"""查询任务Id
         :rtype: str
         """
         return self._DownloadId
@@ -20388,7 +20388,7 @@ class DescribeResultDownloadRequest(AbstractModel):
 
 
 class DescribeResultDownloadResponse(AbstractModel):
-    """DescribeResultDownload返回参数结构体
+    r"""DescribeResultDownload返回参数结构体
 
     """
 
@@ -20419,7 +20419,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def Path(self):
-        """下载文件路径
+        r"""下载文件路径
         :rtype: str
         """
         return self._Path
@@ -20430,7 +20430,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态 init | queue | format | compress | success|  timeout | error
+        r"""任务状态 init | queue | format | compress | success|  timeout | error
         :rtype: str
         """
         return self._Status
@@ -20441,7 +20441,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def Reason(self):
-        """任务异常原因
+        r"""任务异常原因
         :rtype: str
         """
         return self._Reason
@@ -20452,7 +20452,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def SecretId(self):
-        """临时SecretId
+        r"""临时SecretId
         :rtype: str
         """
         return self._SecretId
@@ -20463,7 +20463,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        """临时SecretKey
+        r"""临时SecretKey
         :rtype: str
         """
         return self._SecretKey
@@ -20474,7 +20474,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def Token(self):
-        """临时Token
+        r"""临时Token
         :rtype: str
         """
         return self._Token
@@ -20485,7 +20485,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20506,7 +20506,7 @@ class DescribeResultDownloadResponse(AbstractModel):
 
 
 class DescribeScriptsRequest(AbstractModel):
-    """DescribeScripts请求参数结构体
+    r"""DescribeScripts请求参数结构体
 
     """
 
@@ -20533,7 +20533,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -20544,7 +20544,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -20555,7 +20555,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
     @property
     def SortBy(self):
-        """按字段排序，支持如下字段类型，update-time
+        r"""按字段排序，支持如下字段类型，update-time
         :rtype: str
         """
         return self._SortBy
@@ -20566,7 +20566,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序，默认asc
+        r"""排序方式，desc表示正序，asc表示反序，默认asc
         :rtype: str
         """
         return self._Sorting
@@ -20577,7 +20577,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为其一
+        r"""过滤条件，如下支持的过滤类型，传参Name应为其一
 script-id - String - （过滤条件）script-id取值形如：157de0d1-26b4-4df2-a2d0-b64afc406c25。
 script-name-keyword - String - （过滤条件）数据表名称,形如：script-test。
         :rtype: list of Filter
@@ -20611,7 +20611,7 @@ script-name-keyword - String - （过滤条件）数据表名称,形如：script
 
 
 class DescribeScriptsResponse(AbstractModel):
-    """DescribeScripts返回参数结构体
+    r"""DescribeScripts返回参数结构体
 
     """
 
@@ -20631,7 +20631,7 @@ class DescribeScriptsResponse(AbstractModel):
 
     @property
     def Scripts(self):
-        """Script列表
+        r"""Script列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Script
         """
@@ -20643,7 +20643,7 @@ class DescribeScriptsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数
+        r"""实例总数
         :rtype: int
         """
         return self._TotalCount
@@ -20654,7 +20654,7 @@ class DescribeScriptsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20676,7 +20676,7 @@ class DescribeScriptsResponse(AbstractModel):
 
 
 class DescribeSessionImageVersionRequest(AbstractModel):
-    """DescribeSessionImageVersion请求参数结构体
+    r"""DescribeSessionImageVersion请求参数结构体
 
     """
 
@@ -20692,7 +20692,7 @@ class DescribeSessionImageVersionRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎Id
+        r"""引擎Id
         :rtype: str
         """
         return self._DataEngineId
@@ -20703,7 +20703,7 @@ class DescribeSessionImageVersionRequest(AbstractModel):
 
     @property
     def FrameworkType(self):
-        """框架类型：machine-learning、python、spark-ml
+        r"""框架类型：machine-learning、python、spark-ml
         :rtype: str
         """
         return self._FrameworkType
@@ -20727,7 +20727,7 @@ class DescribeSessionImageVersionRequest(AbstractModel):
 
 
 class DescribeSessionImageVersionResponse(AbstractModel):
-    """DescribeSessionImageVersion返回参数结构体
+    r"""DescribeSessionImageVersion返回参数结构体
 
     """
 
@@ -20744,7 +20744,7 @@ class DescribeSessionImageVersionResponse(AbstractModel):
 
     @property
     def EngineSessionImages(self):
-        """扩展镜像列表
+        r"""扩展镜像列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EngineSessionImage
         """
@@ -20756,7 +20756,7 @@ class DescribeSessionImageVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20777,7 +20777,7 @@ class DescribeSessionImageVersionResponse(AbstractModel):
 
 
 class DescribeSparkAppJobRequest(AbstractModel):
-    """DescribeSparkAppJob请求参数结构体
+    r"""DescribeSparkAppJob请求参数结构体
 
     """
 
@@ -20793,7 +20793,7 @@ class DescribeSparkAppJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
+        r"""spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
         :rtype: str
         """
         return self._JobId
@@ -20804,7 +20804,7 @@ class DescribeSparkAppJobRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._JobName
@@ -20828,7 +20828,7 @@ class DescribeSparkAppJobRequest(AbstractModel):
 
 
 class DescribeSparkAppJobResponse(AbstractModel):
-    """DescribeSparkAppJob返回参数结构体
+    r"""DescribeSparkAppJob返回参数结构体
 
     """
 
@@ -20848,7 +20848,7 @@ class DescribeSparkAppJobResponse(AbstractModel):
 
     @property
     def Job(self):
-        """spark作业详情
+        r"""spark作业详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SparkJobInfo`
         """
@@ -20860,7 +20860,7 @@ class DescribeSparkAppJobResponse(AbstractModel):
 
     @property
     def IsExists(self):
-        """查询的spark作业是否存在
+        r"""查询的spark作业是否存在
         :rtype: bool
         """
         return self._IsExists
@@ -20871,7 +20871,7 @@ class DescribeSparkAppJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -20890,7 +20890,7 @@ class DescribeSparkAppJobResponse(AbstractModel):
 
 
 class DescribeSparkAppJobsRequest(AbstractModel):
-    """DescribeSparkAppJobs请求参数结构体
+    r"""DescribeSparkAppJobs请求参数结构体
 
     """
 
@@ -20921,7 +20921,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果按照该字段排序
+        r"""返回结果按照该字段排序
         :rtype: str
         """
         return self._SortBy
@@ -20932,7 +20932,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """正序或者倒序，例如：desc
+        r"""正序或者倒序，例如：desc
         :rtype: str
         """
         return self._Sorting
@@ -20943,7 +20943,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
+        r"""过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
         :rtype: list of Filter
         """
         return self._Filters
@@ -20954,7 +20954,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
+        r"""更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -20965,7 +20965,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
+        r"""更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -20976,7 +20976,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询列表偏移量, 默认值0
+        r"""查询列表偏移量, 默认值0
         :rtype: int
         """
         return self._Offset
@@ -20987,7 +20987,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询列表限制数量, 默认值100
+        r"""查询列表限制数量, 默认值100
         :rtype: int
         """
         return self._Limit
@@ -21021,7 +21021,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
 
 
 class DescribeSparkAppJobsResponse(AbstractModel):
-    """DescribeSparkAppJobs返回参数结构体
+    r"""DescribeSparkAppJobs返回参数结构体
 
     """
 
@@ -21040,7 +21040,7 @@ class DescribeSparkAppJobsResponse(AbstractModel):
 
     @property
     def SparkAppJobs(self):
-        """spark作业列表详情
+        r"""spark作业列表详情
         :rtype: list of SparkJobInfo
         """
         return self._SparkAppJobs
@@ -21051,7 +21051,7 @@ class DescribeSparkAppJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """spark作业总数
+        r"""spark作业总数
         :rtype: int
         """
         return self._TotalCount
@@ -21062,7 +21062,7 @@ class DescribeSparkAppJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21084,7 +21084,7 @@ class DescribeSparkAppJobsResponse(AbstractModel):
 
 
 class DescribeSparkAppTasksRequest(AbstractModel):
-    """DescribeSparkAppTasks请求参数结构体
+    r"""DescribeSparkAppTasks请求参数结构体
 
     """
 
@@ -21115,7 +21115,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """spark作业Id
+        r"""spark作业Id
         :rtype: str
         """
         return self._JobId
@@ -21126,7 +21126,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询偏移量
+        r"""分页查询偏移量
         :rtype: int
         """
         return self._Offset
@@ -21137,7 +21137,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询Limit
+        r"""分页查询Limit
         :rtype: int
         """
         return self._Limit
@@ -21148,7 +21148,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """执行实例id
+        r"""执行实例id
         :rtype: str
         """
         return self._TaskId
@@ -21159,7 +21159,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
+        r"""更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -21170,7 +21170,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
+        r"""更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -21181,7 +21181,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """按照该参数过滤,支持task-state
+        r"""按照该参数过滤,支持task-state
         :rtype: list of Filter
         """
         return self._Filters
@@ -21215,7 +21215,7 @@ class DescribeSparkAppTasksRequest(AbstractModel):
 
 
 class DescribeSparkAppTasksResponse(AbstractModel):
-    """DescribeSparkAppTasks返回参数结构体
+    r"""DescribeSparkAppTasks返回参数结构体
 
     """
 
@@ -21239,7 +21239,7 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """任务结果（该字段已废弃）
+        r"""任务结果（该字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TaskResponseInfo`
         """
@@ -21251,7 +21251,7 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """任务总数
+        r"""任务总数
         :rtype: int
         """
         return self._TotalCount
@@ -21262,7 +21262,7 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
     @property
     def SparkAppTasks(self):
-        """任务结果列表
+        r"""任务结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskResponseInfo
         """
@@ -21274,7 +21274,7 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21299,7 +21299,7 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
 
 class DescribeSparkSessionBatchSQLCostRequest(AbstractModel):
-    """DescribeSparkSessionBatchSQLCost请求参数结构体
+    r"""DescribeSparkSessionBatchSQLCost请求参数结构体
 
     """
 
@@ -21312,7 +21312,7 @@ class DescribeSparkSessionBatchSQLCostRequest(AbstractModel):
 
     @property
     def BatchIds(self):
-        """SparkSQL唯一标识
+        r"""SparkSQL唯一标识
         :rtype: list of str
         """
         return self._BatchIds
@@ -21335,7 +21335,7 @@ class DescribeSparkSessionBatchSQLCostRequest(AbstractModel):
 
 
 class DescribeSparkSessionBatchSQLCostResponse(AbstractModel):
-    """DescribeSparkSessionBatchSQLCost返回参数结构体
+    r"""DescribeSparkSessionBatchSQLCost返回参数结构体
 
     """
 
@@ -21352,7 +21352,7 @@ class DescribeSparkSessionBatchSQLCostResponse(AbstractModel):
 
     @property
     def CostInfo(self):
-        """任务消耗
+        r"""任务消耗
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchSQLCostInfo
         """
@@ -21364,7 +21364,7 @@ class DescribeSparkSessionBatchSQLCostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21385,7 +21385,7 @@ class DescribeSparkSessionBatchSQLCostResponse(AbstractModel):
 
 
 class DescribeSparkSessionBatchSQLRequest(AbstractModel):
-    """DescribeSparkSessionBatchSQL请求参数结构体
+    r"""DescribeSparkSessionBatchSQL请求参数结构体
 
     """
 
@@ -21401,7 +21401,7 @@ class DescribeSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """SparkSQL唯一标识
+        r"""SparkSQL唯一标识
         :rtype: str
         """
         return self._BatchId
@@ -21412,7 +21412,7 @@ class DescribeSparkSessionBatchSQLRequest(AbstractModel):
 
     @property
     def CustomKey(self):
-        """用户自定义主键, 若不为空，则按照该值查询
+        r"""用户自定义主键, 若不为空，则按照该值查询
         :rtype: str
         """
         return self._CustomKey
@@ -21436,7 +21436,7 @@ class DescribeSparkSessionBatchSQLRequest(AbstractModel):
 
 
 class DescribeSparkSessionBatchSQLResponse(AbstractModel):
-    """DescribeSparkSessionBatchSQL返回参数结构体
+    r"""DescribeSparkSessionBatchSQL返回参数结构体
 
     """
 
@@ -21459,7 +21459,7 @@ class DescribeSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def State(self):
-        """状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
+        r"""状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
         :rtype: int
         """
         return self._State
@@ -21470,7 +21470,7 @@ class DescribeSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """SQL子任务列表，仅展示运行完成的子任务，若某个任务运行失败，后续其它子任务不返回
+        r"""SQL子任务列表，仅展示运行完成的子任务，若某个任务运行失败，后续其它子任务不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchSqlTask
         """
@@ -21482,7 +21482,7 @@ class DescribeSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def Event(self):
-        """非sql运行的异常事件信息，包含资源创建失败、调度异常，JOB超时等，正常运行下该Event值为空
+        r"""非sql运行的异常事件信息，包含资源创建失败、调度异常，JOB超时等，正常运行下该Event值为空
         :rtype: str
         """
         return self._Event
@@ -21493,7 +21493,7 @@ class DescribeSparkSessionBatchSQLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21516,7 +21516,7 @@ class DescribeSparkSessionBatchSQLResponse(AbstractModel):
 
 
 class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
-    """DescribeSparkSessionBatchSqlLog请求参数结构体
+    r"""DescribeSparkSessionBatchSqlLog请求参数结构体
 
     """
 
@@ -21532,7 +21532,7 @@ class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """SparkSQL唯一标识
+        r"""SparkSQL唯一标识
         :rtype: str
         """
         return self._BatchId
@@ -21543,7 +21543,7 @@ class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
 
     @property
     def CustomKey(self):
-        """用户自定义主键，若不为空，则按照该值进行查询
+        r"""用户自定义主键，若不为空，则按照该值进行查询
         :rtype: str
         """
         return self._CustomKey
@@ -21567,7 +21567,7 @@ class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
 
 
 class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
-    """DescribeSparkSessionBatchSqlLog返回参数结构体
+    r"""DescribeSparkSessionBatchSqlLog返回参数结构体
 
     """
 
@@ -21587,7 +21587,7 @@ class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
 
     @property
     def State(self):
-        """状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
+        r"""状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
         :rtype: int
         """
         return self._State
@@ -21598,7 +21598,7 @@ class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
 
     @property
     def LogSet(self):
-        """日志信息列表
+        r"""日志信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SparkSessionBatchLog
         """
@@ -21610,7 +21610,7 @@ class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21632,7 +21632,7 @@ class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
 
 
 class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
-    """DescribeStandardEngineResourceGroupConfigInfo请求参数结构体
+    r"""DescribeStandardEngineResourceGroupConfigInfo请求参数结构体
 
     """
 
@@ -21657,7 +21657,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._SortBy
@@ -21668,7 +21668,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """升序，降序
+        r"""升序，降序
         :rtype: str
         """
         return self._Sorting
@@ -21679,7 +21679,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
+        r"""过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
         :rtype: list of Filter
         """
         return self._Filters
@@ -21690,7 +21690,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数据条数，默认10
+        r"""数据条数，默认10
         :rtype: int
         """
         return self._Limit
@@ -21701,7 +21701,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -21733,7 +21733,7 @@ class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
 
 class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
-    """DescribeStandardEngineResourceGroupConfigInfo返回参数结构体
+    r"""DescribeStandardEngineResourceGroupConfigInfo返回参数结构体
 
     """
 
@@ -21752,7 +21752,7 @@ class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -21763,7 +21763,7 @@ class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
     @property
     def StandardEngineResourceGroupConfigInfos(self):
-        """标准引擎资源组，配置相关信息
+        r"""标准引擎资源组，配置相关信息
         :rtype: list of StandardEngineResourceGroupConfigInfo
         """
         return self._StandardEngineResourceGroupConfigInfos
@@ -21774,7 +21774,7 @@ class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21796,7 +21796,7 @@ class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
 
 class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
-    """DescribeStandardEngineResourceGroups请求参数结构体
+    r"""DescribeStandardEngineResourceGroups请求参数结构体
 
     """
 
@@ -21821,7 +21821,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._SortBy
@@ -21832,7 +21832,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """升序，降序
+        r"""升序，降序
         :rtype: str
         """
         return self._Sorting
@@ -21843,7 +21843,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
+        r"""过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
         :rtype: list of Filter
         """
         return self._Filters
@@ -21854,7 +21854,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """数据条数，默认10
+        r"""数据条数，默认10
         :rtype: int
         """
         return self._Limit
@@ -21865,7 +21865,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认0
+        r"""偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -21897,7 +21897,7 @@ class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
 
 
 class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
-    """DescribeStandardEngineResourceGroups返回参数结构体
+    r"""DescribeStandardEngineResourceGroups返回参数结构体
 
     """
 
@@ -21916,7 +21916,7 @@ class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def UserEngineResourceGroupInfos(self):
-        """标准引擎资源组信息
+        r"""标准引擎资源组信息
         :rtype: list of StandardEngineResourceGroupInfo
         """
         return self._UserEngineResourceGroupInfos
@@ -21927,7 +21927,7 @@ class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """资源组总数
+        r"""资源组总数
         :rtype: int
         """
         return self._Total
@@ -21938,7 +21938,7 @@ class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -21960,13 +21960,13 @@ class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
 
 
 class DescribeStoreLocationRequest(AbstractModel):
-    """DescribeStoreLocation请求参数结构体
+    r"""DescribeStoreLocation请求参数结构体
 
     """
 
 
 class DescribeStoreLocationResponse(AbstractModel):
-    """DescribeStoreLocation返回参数结构体
+    r"""DescribeStoreLocation返回参数结构体
 
     """
 
@@ -21982,7 +21982,7 @@ class DescribeStoreLocationResponse(AbstractModel):
 
     @property
     def StoreLocation(self):
-        """返回用户设置的结果存储位置路径，如果未设置则返回空字符串：""
+        r"""返回用户设置的结果存储位置路径，如果未设置则返回空字符串：""
         :rtype: str
         """
         return self._StoreLocation
@@ -21993,7 +21993,7 @@ class DescribeStoreLocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22009,13 +22009,13 @@ class DescribeStoreLocationResponse(AbstractModel):
 
 
 class DescribeSubUserAccessPolicyRequest(AbstractModel):
-    """DescribeSubUserAccessPolicy请求参数结构体
+    r"""DescribeSubUserAccessPolicy请求参数结构体
 
     """
 
 
 class DescribeSubUserAccessPolicyResponse(AbstractModel):
-    """DescribeSubUserAccessPolicy返回参数结构体
+    r"""DescribeSubUserAccessPolicy返回参数结构体
 
     """
 
@@ -22031,7 +22031,7 @@ class DescribeSubUserAccessPolicyResponse(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """子用户访问策略
+        r"""子用户访问策略
         :rtype: str
         """
         return self._PolicyDocument
@@ -22042,7 +22042,7 @@ class DescribeSubUserAccessPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22058,7 +22058,7 @@ class DescribeSubUserAccessPolicyResponse(AbstractModel):
 
 
 class DescribeTablePartitionsRequest(AbstractModel):
-    """DescribeTablePartitions请求参数结构体
+    r"""DescribeTablePartitions请求参数结构体
 
     """
 
@@ -22092,7 +22092,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """数据目录名称
+        r"""数据目录名称
         :rtype: str
         """
         return self._Catalog
@@ -22103,7 +22103,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Database
@@ -22114,7 +22114,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Table(self):
-        """数据表名称
+        r"""数据表名称
         :rtype: str
         """
         return self._Table
@@ -22125,7 +22125,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询偏移位置
+        r"""查询偏移位置
         :rtype: int
         """
         return self._Offset
@@ -22136,7 +22136,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """当次查询的数量限制
+        r"""当次查询的数量限制
         :rtype: int
         """
         return self._Limit
@@ -22147,7 +22147,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def FuzzyPartition(self):
-        """模糊查询的分区名称
+        r"""模糊查询的分区名称
         :rtype: str
         """
         return self._FuzzyPartition
@@ -22158,7 +22158,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Sorts(self):
-        """排序信息
+        r"""排序信息
         :rtype: list of Sort
         """
         return self._Sorts
@@ -22169,7 +22169,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        """分页查询的游标信息
+        r"""分页查询的游标信息
         :rtype: str
         """
         return self._Cursor
@@ -22204,7 +22204,7 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
 
 class DescribeTablePartitionsResponse(AbstractModel):
-    """DescribeTablePartitions返回参数结构体
+    r"""DescribeTablePartitions返回参数结构体
 
     """
 
@@ -22220,7 +22220,7 @@ class DescribeTablePartitionsResponse(AbstractModel):
 
     @property
     def MixedPartitions(self):
-        """分区信息值
+        r"""分区信息值
         :rtype: :class:`tencentcloud.dlc.v20210125.models.MixedTablePartitions`
         """
         return self._MixedPartitions
@@ -22231,7 +22231,7 @@ class DescribeTablePartitionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22249,7 +22249,7 @@ class DescribeTablePartitionsResponse(AbstractModel):
 
 
 class DescribeTableRequest(AbstractModel):
-    """DescribeTable请求参数结构体
+    r"""DescribeTable请求参数结构体
 
     """
 
@@ -22268,7 +22268,7 @@ class DescribeTableRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """查询对象表名称
+        r"""查询对象表名称
         :rtype: str
         """
         return self._TableName
@@ -22279,7 +22279,7 @@ class DescribeTableRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """查询表所在的数据库名称。
+        r"""查询表所在的数据库名称。
         :rtype: str
         """
         return self._DatabaseName
@@ -22290,7 +22290,7 @@ class DescribeTableRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """查询表所在的数据源名称
+        r"""查询表所在的数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -22315,7 +22315,7 @@ class DescribeTableRequest(AbstractModel):
 
 
 class DescribeTableResponse(AbstractModel):
-    """DescribeTable返回参数结构体
+    r"""DescribeTable返回参数结构体
 
     """
 
@@ -22331,7 +22331,7 @@ class DescribeTableResponse(AbstractModel):
 
     @property
     def Table(self):
-        """数据表对象
+        r"""数据表对象
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableResponseInfo`
         """
         return self._Table
@@ -22342,7 +22342,7 @@ class DescribeTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22360,7 +22360,7 @@ class DescribeTableResponse(AbstractModel):
 
 
 class DescribeTablesNameRequest(AbstractModel):
-    """DescribeTablesName请求参数结构体
+    r"""DescribeTablesName请求参数结构体
 
     """
 
@@ -22405,7 +22405,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def DatabaseName(self):
-        """列出该数据库下所属数据表。
+        r"""列出该数据库下所属数据表。
         :rtype: str
         """
         return self._DatabaseName
@@ -22416,7 +22416,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -22427,7 +22427,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始，默认为0。
+        r"""数据偏移量，从0开始，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -22438,7 +22438,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为其一
+        r"""过滤条件，如下支持的过滤类型，传参Name应为其一
 table-name - String - （过滤条件）数据表名称,形如：table-001。
 table-id - String - （过滤条件）table id形如：12342。
         :rtype: list of Filter
@@ -22451,7 +22451,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def DatasourceConnectionName(self):
-        """指定查询的数据源名称，默认为DataLakeCatalog
+        r"""指定查询的数据源名称，默认为DataLakeCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -22462,7 +22462,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def StartTime(self):
-        """起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        r"""起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._StartTime
@@ -22473,7 +22473,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def EndTime(self):
-        """终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        r"""终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._EndTime
@@ -22484,7 +22484,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Sort(self):
-        """排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
+        r"""排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
         :rtype: str
         """
         return self._Sort
@@ -22495,7 +22495,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Asc(self):
-        """排序字段，false：降序（默认）；true：升序
+        r"""排序字段，false：降序（默认）；true：升序
         :rtype: bool
         """
         return self._Asc
@@ -22506,7 +22506,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def TableType(self):
-        """table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+        r"""table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
         :rtype: str
         """
         return self._TableType
@@ -22517,7 +22517,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def TableFormat(self):
-        """筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+        r"""筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
         :rtype: str
         """
         return self._TableFormat
@@ -22555,7 +22555,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
 
 class DescribeTablesNameResponse(AbstractModel):
-    """DescribeTablesName返回参数结构体
+    r"""DescribeTablesName返回参数结构体
 
     """
 
@@ -22574,7 +22574,7 @@ class DescribeTablesNameResponse(AbstractModel):
 
     @property
     def TableNameList(self):
-        """数据表名称对象列表。
+        r"""数据表名称对象列表。
         :rtype: list of str
         """
         return self._TableNameList
@@ -22585,7 +22585,7 @@ class DescribeTablesNameResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -22596,7 +22596,7 @@ class DescribeTablesNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22613,7 +22613,7 @@ class DescribeTablesNameResponse(AbstractModel):
 
 
 class DescribeTablesRequest(AbstractModel):
-    """DescribeTables请求参数结构体
+    r"""DescribeTables请求参数结构体
 
     """
 
@@ -22662,7 +22662,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def DatabaseName(self):
-        """列出该数据库下所属数据表。
+        r"""列出该数据库下所属数据表。
         :rtype: str
         """
         return self._DatabaseName
@@ -22673,7 +22673,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -22684,7 +22684,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始，默认为0。
+        r"""数据偏移量，从0开始，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -22695,7 +22695,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为其一
+        r"""过滤条件，如下支持的过滤类型，传参Name应为其一
 table-name - String - （过滤条件）数据表名称,形如：table-001。
 table-id - String - （过滤条件）table id形如：12342。
         :rtype: list of Filter
@@ -22708,7 +22708,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def DatasourceConnectionName(self):
-        """指定查询的数据源名称，默认为DataLakeCatalog
+        r"""指定查询的数据源名称，默认为DataLakeCatalog
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -22719,7 +22719,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def StartTime(self):
-        """起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        r"""起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._StartTime
@@ -22730,7 +22730,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def EndTime(self):
-        """终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        r"""终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :rtype: str
         """
         return self._EndTime
@@ -22741,7 +22741,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Sort(self):
-        """排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
+        r"""排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
         :rtype: str
         """
         return self._Sort
@@ -22752,7 +22752,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def Asc(self):
-        """排序字段，false：降序（默认）；true：升序
+        r"""排序字段，false：降序（默认）；true：升序
         :rtype: bool
         """
         return self._Asc
@@ -22763,7 +22763,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def TableType(self):
-        """table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+        r"""table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
         :rtype: str
         """
         return self._TableType
@@ -22774,7 +22774,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def TableFormat(self):
-        """筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+        r"""筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
         :rtype: str
         """
         return self._TableFormat
@@ -22785,7 +22785,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
     @property
     def DescribeType(self):
-        """查询类型：all：全部数据（默认）、permission：有权限的数据
+        r"""查询类型：all：全部数据（默认）、permission：有权限的数据
 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
         :rtype: str
         """
@@ -22825,7 +22825,7 @@ table-id - String - （过滤条件）table id形如：12342。
 
 
 class DescribeTablesResponse(AbstractModel):
-    """DescribeTables返回参数结构体
+    r"""DescribeTables返回参数结构体
 
     """
 
@@ -22844,7 +22844,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TableList(self):
-        """数据表对象列表。
+        r"""数据表对象列表。
         :rtype: list of TableResponseInfo
         """
         return self._TableList
@@ -22855,7 +22855,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -22866,7 +22866,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -22888,7 +22888,7 @@ class DescribeTablesResponse(AbstractModel):
 
 
 class DescribeTaskLogRequest(AbstractModel):
-    """DescribeTaskLog请求参数结构体
+    r"""DescribeTaskLog请求参数结构体
 
     """
 
@@ -22922,7 +22922,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """列表返回的Id
+        r"""列表返回的Id
         :rtype: str
         """
         return self._TaskId
@@ -22933,7 +22933,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始运行时间，unix时间戳（毫秒）
+        r"""开始运行时间，unix时间戳（毫秒）
         :rtype: int
         """
         return self._StartTime
@@ -22944,7 +22944,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束运行时间，unix时间戳（毫秒）
+        r"""结束运行时间，unix时间戳（毫秒）
         :rtype: int
         """
         return self._EndTime
@@ -22955,7 +22955,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，最大1000，配合Context一起使用
+        r"""分页大小，最大1000，配合Context一起使用
         :rtype: int
         """
         return self._Limit
@@ -22966,7 +22966,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def Context(self):
-        """下一次分页参数，第一次传空。透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+        r"""下一次分页参数，第一次传空。透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
         :rtype: str
         """
         return self._Context
@@ -22977,7 +22977,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+        r"""是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
         :rtype: bool
         """
         return self._Asc
@@ -22988,7 +22988,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """预览日志的通用过滤条件
+        r"""预览日志的通用过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -22999,7 +22999,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """SparkSQL任务唯一ID
+        r"""SparkSQL任务唯一ID
         :rtype: str
         """
         return self._BatchId
@@ -23034,7 +23034,7 @@ class DescribeTaskLogRequest(AbstractModel):
 
 
 class DescribeTaskLogResponse(AbstractModel):
-    """DescribeTaskLog返回参数结构体
+    r"""DescribeTaskLog返回参数结构体
 
     """
 
@@ -23059,7 +23059,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
     @property
     def Context(self):
-        """下一次分页参数
+        r"""下一次分页参数
         :rtype: str
         """
         return self._Context
@@ -23070,7 +23070,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        """是否获取完结
+        r"""是否获取完结
         :rtype: bool
         """
         return self._ListOver
@@ -23081,7 +23081,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
     @property
     def Results(self):
-        """日志详情
+        r"""日志详情
         :rtype: list of JobLogResult
         """
         return self._Results
@@ -23092,7 +23092,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
     @property
     def LogUrl(self):
-        """日志url
+        r"""日志url
         :rtype: str
         """
         return self._LogUrl
@@ -23103,7 +23103,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23127,7 +23127,7 @@ class DescribeTaskLogResponse(AbstractModel):
 
 
 class DescribeTaskMonitorInfosRequest(AbstractModel):
-    """DescribeTaskMonitorInfos请求参数结构体
+    r"""DescribeTaskMonitorInfos请求参数结构体
 
     """
 
@@ -23155,7 +23155,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def TaskIdList(self):
-        """任务ID列表，上限50个
+        r"""任务ID列表，上限50个
         :rtype: list of str
         """
         return self._TaskIdList
@@ -23166,7 +23166,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def HouseName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._HouseName
@@ -23177,7 +23177,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def CreateTimeStart(self):
-        """任务创建时间的起始时间
+        r"""任务创建时间的起始时间
         :rtype: str
         """
         return self._CreateTimeStart
@@ -23188,7 +23188,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def CreateTimeEnd(self):
-        """任务创建时间的结束时间
+        r"""任务创建时间的结束时间
         :rtype: str
         """
         return self._CreateTimeEnd
@@ -23199,7 +23199,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每一页条数
+        r"""每一页条数
         :rtype: int
         """
         return self._Limit
@@ -23210,7 +23210,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -23238,7 +23238,7 @@ class DescribeTaskMonitorInfosRequest(AbstractModel):
 
 
 class DescribeTaskMonitorInfosResponse(AbstractModel):
-    """DescribeTaskMonitorInfos返回参数结构体
+    r"""DescribeTaskMonitorInfos返回参数结构体
 
     """
 
@@ -23257,7 +23257,7 @@ class DescribeTaskMonitorInfosResponse(AbstractModel):
 
     @property
     def TaskMonitorInfoList(self):
-        """任务监控信息列表
+        r"""任务监控信息列表
         :rtype: list of TaskMonitorInfo
         """
         return self._TaskMonitorInfoList
@@ -23268,7 +23268,7 @@ class DescribeTaskMonitorInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """任务总数
+        r"""任务总数
         :rtype: int
         """
         return self._TotalCount
@@ -23279,7 +23279,7 @@ class DescribeTaskMonitorInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23301,7 +23301,7 @@ class DescribeTaskMonitorInfosResponse(AbstractModel):
 
 
 class DescribeTaskResultRequest(AbstractModel):
-    """DescribeTaskResult请求参数结构体
+    r"""DescribeTaskResult请求参数结构体
 
     """
 
@@ -23326,7 +23326,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一ID，仅支持30天内的任务
+        r"""任务唯一ID，仅支持30天内的任务
         :rtype: str
         """
         return self._TaskId
@@ -23337,7 +23337,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
+        r"""上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
         :rtype: str
         """
         return self._NextToken
@@ -23348,7 +23348,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """返回结果的最大行数，范围0~1000，默认为1000.
+        r"""返回结果的最大行数，范围0~1000，默认为1000.
         :rtype: int
         """
         return self._MaxResults
@@ -23359,7 +23359,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def IsTransformDataType(self):
-        """是否转化数据类型
+        r"""是否转化数据类型
         :rtype: bool
         """
         return self._IsTransformDataType
@@ -23370,7 +23370,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def DataFieldCutLen(self):
-        """返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
+        r"""返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
         :rtype: int
         """
         return self._DataFieldCutLen
@@ -23397,7 +23397,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
 
 class DescribeTaskResultResponse(AbstractModel):
-    """DescribeTaskResult返回参数结构体
+    r"""DescribeTaskResult返回参数结构体
 
     """
 
@@ -23414,7 +23414,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def TaskInfo(self):
-        """查询的任务信息，返回为空表示输入任务ID对应的任务不存在。只有当任务状态为成功（2）的时候，才会返回任务的结果。
+        r"""查询的任务信息，返回为空表示输入任务ID对应的任务不存在。只有当任务状态为成功（2）的时候，才会返回任务的结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TaskResultInfo`
         """
@@ -23426,7 +23426,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23444,7 +23444,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
 
 class DescribeTasksAnalysisRequest(AbstractModel):
-    """DescribeTasksAnalysis请求参数结构体
+    r"""DescribeTasksAnalysis请求参数结构体
 
     """
 
@@ -23478,7 +23478,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """数据引擎名称，用于筛选
+        r"""数据引擎名称，用于筛选
         :rtype: str
         """
         return self._DataEngineName
@@ -23489,7 +23489,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -23500,7 +23500,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -23511,7 +23511,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为以下其中一个: task-id - String - （任务ID准确过滤）task-id 取值形如：e386471f-139a-4e59-877f-50ece8135b99。task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)，rule-id - String - （洞察类型）取值范围 SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个: task-id - String - （任务ID准确过滤）task-id 取值形如：e386471f-139a-4e59-877f-50ece8135b99。task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)，rule-id - String - （洞察类型）取值范围 SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
         :rtype: list of Filter
         """
         return self._Filters
@@ -23522,7 +23522,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，instance-start-time (任务开始时间）,job-time-sum （单位毫秒，引擎内执行耗时）,task-time-sum （CU资源消耗，单位秒）,input-bytes-sum（数据扫描总大小，单位bytes）,shuffle-read-bytes-sum（数据shuffle总大小，单位bytes）
+        r"""排序字段，支持如下字段类型，instance-start-time (任务开始时间）,job-time-sum （单位毫秒，引擎内执行耗时）,task-time-sum （CU资源消耗，单位秒）,input-bytes-sum（数据扫描总大小，单位bytes）,shuffle-read-bytes-sum（数据shuffle总大小，单位bytes）
         :rtype: str
         """
         return self._SortBy
@@ -23533,7 +23533,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc。
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc。
         :rtype: str
         """
         return self._Sorting
@@ -23544,7 +23544,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近30天数据查询。默认为当前时刻
+        r"""任务开始时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近30天数据查询。默认为当前时刻
         :rtype: str
         """
         return self._StartTime
@@ -23555,7 +23555,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近30天数据查询。默认为当前时刻
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近30天数据查询。默认为当前时刻
         :rtype: str
         """
         return self._EndTime
@@ -23590,7 +23590,7 @@ class DescribeTasksAnalysisRequest(AbstractModel):
 
 
 class DescribeTasksAnalysisResponse(AbstractModel):
-    """DescribeTasksAnalysis返回参数结构体
+    r"""DescribeTasksAnalysis返回参数结构体
 
     """
 
@@ -23609,7 +23609,7 @@ class DescribeTasksAnalysisResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """洞察结果分页列表
+        r"""洞察结果分页列表
         :rtype: list of AnalysisTaskResults
         """
         return self._TaskList
@@ -23620,7 +23620,7 @@ class DescribeTasksAnalysisResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """洞察结果总数
+        r"""洞察结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -23631,7 +23631,7 @@ class DescribeTasksAnalysisResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23653,7 +23653,7 @@ class DescribeTasksAnalysisResponse(AbstractModel):
 
 
 class DescribeTasksCostInfoRequest(AbstractModel):
-    """DescribeTasksCostInfo请求参数结构体
+    r"""DescribeTasksCostInfo请求参数结构体
 
     """
 
@@ -23685,7 +23685,7 @@ task-operator- string （子uin过滤）
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
 task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
@@ -23700,7 +23700,7 @@ task-operator- string （子uin过滤）
 
     @property
     def StartTime(self):
-        """起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
         :rtype: str
         """
         return self._StartTime
@@ -23711,7 +23711,7 @@ task-operator- string （子uin过滤）
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :rtype: str
         """
         return self._EndTime
@@ -23722,7 +23722,7 @@ task-operator- string （子uin过滤）
 
     @property
     def DataEngineName(self):
-        """数据引擎名称，用于筛选
+        r"""数据引擎名称，用于筛选
         :rtype: str
         """
         return self._DataEngineName
@@ -23733,7 +23733,7 @@ task-operator- string （子uin过滤）
 
     @property
     def SearchAfter(self):
-        """下一页的标识
+        r"""下一页的标识
         :rtype: str
         """
         return self._SearchAfter
@@ -23744,7 +23744,7 @@ task-operator- string （子uin过滤）
 
     @property
     def PageSize(self):
-        """每页的大小
+        r"""每页的大小
         :rtype: int
         """
         return self._PageSize
@@ -23777,7 +23777,7 @@ task-operator- string （子uin过滤）
 
 
 class DescribeTasksCostInfoResponse(AbstractModel):
-    """DescribeTasksCostInfo返回参数结构体
+    r"""DescribeTasksCostInfo返回参数结构体
 
     """
 
@@ -23796,7 +23796,7 @@ class DescribeTasksCostInfoResponse(AbstractModel):
 
     @property
     def SearchAfter(self):
-        """下一页的标识
+        r"""下一页的标识
         :rtype: str
         """
         return self._SearchAfter
@@ -23807,7 +23807,7 @@ class DescribeTasksCostInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的数据，字符串类型的二维数组，首行为列中文名称
+        r"""返回的数据，字符串类型的二维数组，首行为列中文名称
         :rtype: str
         """
         return self._Data
@@ -23818,7 +23818,7 @@ class DescribeTasksCostInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23835,7 +23835,7 @@ class DescribeTasksCostInfoResponse(AbstractModel):
 
 
 class DescribeTasksOverviewRequest(AbstractModel):
-    """DescribeTasksOverview请求参数结构体
+    r"""DescribeTasksOverview请求参数结构体
 
     """
 
@@ -23860,7 +23860,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: str
         """
         return self._StartTime
@@ -23871,7 +23871,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndTime
@@ -23882,7 +23882,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选条件
+        r"""筛选条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -23893,7 +23893,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名
+        r"""引擎名
         :rtype: str
         """
         return self._DataEngineName
@@ -23904,7 +23904,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
     @property
     def HouseIds(self):
-        """DataEngine-dm8bjs29
+        r"""DataEngine-dm8bjs29
         :rtype: list of str
         """
         return self._HouseIds
@@ -23936,7 +23936,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
 
 
 class DescribeTasksOverviewResponse(AbstractModel):
-    """DescribeTasksOverview返回参数结构体
+    r"""DescribeTasksOverview返回参数结构体
 
     """
 
@@ -23952,7 +23952,7 @@ class DescribeTasksOverviewResponse(AbstractModel):
 
     @property
     def TasksOverview(self):
-        """各类任务个数大于0
+        r"""各类任务个数大于0
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         """
         return self._TasksOverview
@@ -23963,7 +23963,7 @@ class DescribeTasksOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -23981,7 +23981,7 @@ class DescribeTasksOverviewResponse(AbstractModel):
 
 
 class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks请求参数结构体
+    r"""DescribeTasks请求参数结构体
 
     """
 
@@ -24023,7 +24023,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -24034,7 +24034,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -24045,7 +24045,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
 task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
@@ -24061,7 +24061,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+        r"""排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
         :rtype: str
         """
         return self._SortBy
@@ -24072,7 +24072,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc。
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc。
         :rtype: str
         """
         return self._Sorting
@@ -24083,7 +24083,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def StartTime(self):
-        """起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
         :rtype: str
         """
         return self._StartTime
@@ -24094,7 +24094,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :rtype: str
         """
         return self._EndTime
@@ -24105,7 +24105,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def DataEngineName(self):
-        """数据引擎名称，用于筛选
+        r"""数据引擎名称，用于筛选
         :rtype: str
         """
         return self._DataEngineName
@@ -24116,7 +24116,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def ResourceGroupName(self):
-        """spark引擎资源组名称
+        r"""spark引擎资源组名称
         :rtype: str
         """
         return self._ResourceGroupName
@@ -24152,7 +24152,7 @@ task-kind - string （任务类型过滤）
 
 
 class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks返回参数结构体
+    r"""DescribeTasks返回参数结构体
 
     """
 
@@ -24175,7 +24175,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """任务对象列表。
+        r"""任务对象列表。
         :rtype: list of TaskResponseInfo
         """
         return self._TaskList
@@ -24186,7 +24186,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -24197,7 +24197,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TasksOverview(self):
-        """任务概览信息
+        r"""任务概览信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         """
@@ -24209,7 +24209,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24234,13 +24234,13 @@ class DescribeTasksResponse(AbstractModel):
 
 
 class DescribeThirdPartyAccessUserRequest(AbstractModel):
-    """DescribeThirdPartyAccessUser请求参数结构体
+    r"""DescribeThirdPartyAccessUser请求参数结构体
 
     """
 
 
 class DescribeThirdPartyAccessUserResponse(AbstractModel):
-    """DescribeThirdPartyAccessUser返回参数结构体
+    r"""DescribeThirdPartyAccessUser返回参数结构体
 
     """
 
@@ -24256,7 +24256,7 @@ class DescribeThirdPartyAccessUserResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """用户信息
+        r"""用户信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.OpendThirdAccessUserInfo`
         """
         return self._UserInfo
@@ -24267,7 +24267,7 @@ class DescribeThirdPartyAccessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24285,7 +24285,7 @@ class DescribeThirdPartyAccessUserResponse(AbstractModel):
 
 
 class DescribeUDFPolicyRequest(AbstractModel):
-    """DescribeUDFPolicy请求参数结构体
+    r"""DescribeUDFPolicy请求参数结构体
 
     """
 
@@ -24304,7 +24304,7 @@ class DescribeUDFPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
-        """udf名称
+        r"""udf名称
         :rtype: str
         """
         return self._Name
@@ -24315,7 +24315,7 @@ class DescribeUDFPolicyRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名(全局UDF：global-function)
+        r"""数据库名(全局UDF：global-function)
         :rtype: str
         """
         return self._DatabaseName
@@ -24326,7 +24326,7 @@ class DescribeUDFPolicyRequest(AbstractModel):
 
     @property
     def CatalogName(self):
-        """数据目录名
+        r"""数据目录名
         :rtype: str
         """
         return self._CatalogName
@@ -24351,7 +24351,7 @@ class DescribeUDFPolicyRequest(AbstractModel):
 
 
 class DescribeUDFPolicyResponse(AbstractModel):
-    """DescribeUDFPolicy返回参数结构体
+    r"""DescribeUDFPolicy返回参数结构体
 
     """
 
@@ -24367,7 +24367,7 @@ class DescribeUDFPolicyResponse(AbstractModel):
 
     @property
     def UDFPolicyInfos(self):
-        """UDF权限信息
+        r"""UDF权限信息
         :rtype: list of UDFPolicyInfo
         """
         return self._UDFPolicyInfos
@@ -24378,7 +24378,7 @@ class DescribeUDFPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24399,7 +24399,7 @@ class DescribeUDFPolicyResponse(AbstractModel):
 
 
 class DescribeUpdatableDataEnginesRequest(AbstractModel):
-    """DescribeUpdatableDataEngines请求参数结构体
+    r"""DescribeUpdatableDataEngines请求参数结构体
 
     """
 
@@ -24418,7 +24418,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
     @property
     def DataEngineConfigCommand(self):
-        """引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
+        r"""引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
         :rtype: str
         """
         return self._DataEngineConfigCommand
@@ -24429,7 +24429,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
     @property
     def UseLakeFs(self):
-        """是否使用托管存储作为结果存储
+        r"""是否使用托管存储作为结果存储
         :rtype: bool
         """
         return self._UseLakeFs
@@ -24440,7 +24440,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
     @property
     def CustomResultPath(self):
-        """用户自定义结果存储路径
+        r"""用户自定义结果存储路径
         :rtype: str
         """
         return self._CustomResultPath
@@ -24465,7 +24465,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
 
 class DescribeUpdatableDataEnginesResponse(AbstractModel):
-    """DescribeUpdatableDataEngines返回参数结构体
+    r"""DescribeUpdatableDataEngines返回参数结构体
 
     """
 
@@ -24484,7 +24484,7 @@ class DescribeUpdatableDataEnginesResponse(AbstractModel):
 
     @property
     def DataEngineBasicInfos(self):
-        """集群基础信息
+        r"""集群基础信息
         :rtype: list of DataEngineBasicInfo
         """
         return self._DataEngineBasicInfos
@@ -24495,7 +24495,7 @@ class DescribeUpdatableDataEnginesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群个数
+        r"""集群个数
         :rtype: int
         """
         return self._TotalCount
@@ -24506,7 +24506,7 @@ class DescribeUpdatableDataEnginesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24528,7 +24528,7 @@ class DescribeUpdatableDataEnginesResponse(AbstractModel):
 
 
 class DescribeUserDataEngineConfigRequest(AbstractModel):
-    """DescribeUserDataEngineConfig请求参数结构体
+    r"""DescribeUserDataEngineConfig请求参数结构体
 
     """
 
@@ -24555,7 +24555,7 @@ engine-id - String - （引擎ID过滤）
 
     @property
     def Sorting(self):
-        """排序方式，desc表示倒序，asc表示正序
+        r"""排序方式，desc表示倒序，asc表示正序
         :rtype: str
         """
         return self._Sorting
@@ -24566,7 +24566,7 @@ engine-id - String - （引擎ID过滤）
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -24577,7 +24577,7 @@ engine-id - String - （引擎ID过滤）
 
     @property
     def Offset(self):
-        """偏移量，默认为0。
+        r"""偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -24588,7 +24588,7 @@ engine-id - String - （引擎ID过滤）
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time
+        r"""排序字段，支持如下字段类型，create-time
         :rtype: str
         """
         return self._SortBy
@@ -24599,7 +24599,7 @@ engine-id - String - （引擎ID过滤）
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每种过滤参数支持的过滤值不超过5个。
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每种过滤参数支持的过滤值不超过5个。
 app-id - String - （appid过滤）
 engine-id - String - （引擎ID过滤）
         :rtype: list of Filter
@@ -24633,7 +24633,7 @@ engine-id - String - （引擎ID过滤）
 
 
 class DescribeUserDataEngineConfigResponse(AbstractModel):
-    """DescribeUserDataEngineConfig返回参数结构体
+    r"""DescribeUserDataEngineConfig返回参数结构体
 
     """
 
@@ -24652,7 +24652,7 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
     @property
     def DataEngineConfigInstanceInfos(self):
-        """用户引擎自定义配置项列表。
+        r"""用户引擎自定义配置项列表。
         :rtype: list of DataEngineConfigInstanceInfo
         """
         return self._DataEngineConfigInstanceInfos
@@ -24663,7 +24663,7 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """配置项总数。
+        r"""配置项总数。
         :rtype: int
         """
         return self._TotalCount
@@ -24674,7 +24674,7 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24696,7 +24696,7 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
 
 class DescribeUserInfoRequest(AbstractModel):
-    """DescribeUserInfo请求参数结构体
+    r"""DescribeUserInfo请求参数结构体
 
     """
 
@@ -24751,7 +24751,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def UserId(self):
-        """用户Id
+        r"""用户Id
         :rtype: str
         """
         return self._UserId
@@ -24762,7 +24762,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Type(self):
-        """必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
+        r"""必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
         :rtype: str
         """
         return self._Type
@@ -24773,7 +24773,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Filters(self):
-        """查询的过滤条件。
+        r"""查询的过滤条件。
 
 当Type为Group时，支持Key为workgroup-name的模糊搜索；
 
@@ -24802,7 +24802,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def SortBy(self):
-        """排序字段。
+        r"""排序字段。
 
 当Type为Group时，支持create-time、group-name
 
@@ -24819,7 +24819,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
         :rtype: str
         """
         return self._Sorting
@@ -24830,7 +24830,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Limit(self):
-        """返回数量，默认20，最大值100
+        r"""返回数量，默认20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -24841,7 +24841,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -24875,7 +24875,7 @@ engine-name：库表的模糊搜索。
 
 
 class DescribeUserInfoResponse(AbstractModel):
-    """DescribeUserInfo返回参数结构体
+    r"""DescribeUserInfo返回参数结构体
 
     """
 
@@ -24892,7 +24892,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """用户详细信息
+        r"""用户详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.UserDetailInfo`
         """
@@ -24904,7 +24904,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24922,13 +24922,13 @@ class DescribeUserInfoResponse(AbstractModel):
 
 
 class DescribeUserRegisterTimeRequest(AbstractModel):
-    """DescribeUserRegisterTime请求参数结构体
+    r"""DescribeUserRegisterTime请求参数结构体
 
     """
 
 
 class DescribeUserRegisterTimeResponse(AbstractModel):
-    """DescribeUserRegisterTime返回参数结构体
+    r"""DescribeUserRegisterTime返回参数结构体
 
     """
 
@@ -24947,7 +24947,7 @@ class DescribeUserRegisterTimeResponse(AbstractModel):
 
     @property
     def RegisterTime(self):
-        """用户注册时间
+        r"""用户注册时间
         :rtype: int
         """
         return self._RegisterTime
@@ -24958,7 +24958,7 @@ class DescribeUserRegisterTimeResponse(AbstractModel):
 
     @property
     def IsOldUser(self):
-        """是否时老用户
+        r"""是否时老用户
         :rtype: bool
         """
         return self._IsOldUser
@@ -24969,7 +24969,7 @@ class DescribeUserRegisterTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -24986,7 +24986,7 @@ class DescribeUserRegisterTimeResponse(AbstractModel):
 
 
 class DescribeUserRolesRequest(AbstractModel):
-    """DescribeUserRoles请求参数结构体
+    r"""DescribeUserRoles请求参数结构体
 
     """
 
@@ -25014,7 +25014,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """列举的数量限制
+        r"""列举的数量限制
         :rtype: int
         """
         return self._Limit
@@ -25025,7 +25025,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """列举的偏移位置
+        r"""列举的偏移位置
         :rtype: int
         """
         return self._Offset
@@ -25036,7 +25036,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """按照arn模糊列举
+        r"""按照arn模糊列举
         :rtype: str
         """
         return self._Fuzzy
@@ -25047,7 +25047,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """返回结果按照该字段排序
+        r"""返回结果按照该字段排序
         :rtype: str
         """
         return self._SortBy
@@ -25058,7 +25058,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """正序或者倒序，例如：desc
+        r"""正序或者倒序，例如：desc
         :rtype: str
         """
         return self._Sorting
@@ -25069,7 +25069,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        r"""是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
         :rtype: int
         """
         return self._IsDefault
@@ -25097,7 +25097,7 @@ class DescribeUserRolesRequest(AbstractModel):
 
 
 class DescribeUserRolesResponse(AbstractModel):
-    """DescribeUserRoles返回参数结构体
+    r"""DescribeUserRoles返回参数结构体
 
     """
 
@@ -25116,7 +25116,7 @@ class DescribeUserRolesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """符合列举条件的总数量
+        r"""符合列举条件的总数量
         :rtype: int
         """
         return self._Total
@@ -25127,7 +25127,7 @@ class DescribeUserRolesResponse(AbstractModel):
 
     @property
     def UserRoles(self):
-        """用户角色信息
+        r"""用户角色信息
         :rtype: list of UserRole
         """
         return self._UserRoles
@@ -25138,7 +25138,7 @@ class DescribeUserRolesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25160,7 +25160,7 @@ class DescribeUserRolesResponse(AbstractModel):
 
 
 class DescribeUserTypeRequest(AbstractModel):
-    """DescribeUserType请求参数结构体
+    r"""DescribeUserType请求参数结构体
 
     """
 
@@ -25173,7 +25173,7 @@ class DescribeUserTypeRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID（UIN），如果不填默认为调用方的子UIN
+        r"""用户ID（UIN），如果不填默认为调用方的子UIN
         :rtype: str
         """
         return self._UserId
@@ -25196,7 +25196,7 @@ class DescribeUserTypeRequest(AbstractModel):
 
 
 class DescribeUserTypeResponse(AbstractModel):
-    """DescribeUserType返回参数结构体
+    r"""DescribeUserType返回参数结构体
 
     """
 
@@ -25212,7 +25212,7 @@ class DescribeUserTypeResponse(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型。ADMIN：管理员 COMMON：普通用户
+        r"""用户类型。ADMIN：管理员 COMMON：普通用户
         :rtype: str
         """
         return self._UserType
@@ -25223,7 +25223,7 @@ class DescribeUserTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25239,7 +25239,7 @@ class DescribeUserTypeResponse(AbstractModel):
 
 
 class DescribeUserVpcConnectionRequest(AbstractModel):
-    """DescribeUserVpcConnection请求参数结构体
+    r"""DescribeUserVpcConnection请求参数结构体
 
     """
 
@@ -25258,7 +25258,7 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
         :rtype: str
         """
         return self._EngineNetworkId
@@ -25269,7 +25269,7 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
 
     @property
     def DataEngineIds(self):
-        """引擎ID集合
+        r"""引擎ID集合
         :rtype: list of str
         """
         return self._DataEngineIds
@@ -25280,7 +25280,7 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
 
     @property
     def UserVpcEndpointIds(self):
-        """终端节点ID集合
+        r"""终端节点ID集合
         :rtype: list of str
         """
         return self._UserVpcEndpointIds
@@ -25305,7 +25305,7 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
 
 
 class DescribeUserVpcConnectionResponse(AbstractModel):
-    """DescribeUserVpcConnection返回参数结构体
+    r"""DescribeUserVpcConnection返回参数结构体
 
     """
 
@@ -25322,7 +25322,7 @@ class DescribeUserVpcConnectionResponse(AbstractModel):
 
     @property
     def UserVpcConnectionInfos(self):
-        """用户vpc连接信息
+        r"""用户vpc连接信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserVpcConnectionInfo
         """
@@ -25334,7 +25334,7 @@ class DescribeUserVpcConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25355,7 +25355,7 @@ class DescribeUserVpcConnectionResponse(AbstractModel):
 
 
 class DescribeUsersRequest(AbstractModel):
-    """DescribeUsers请求参数结构体
+    r"""DescribeUsers请求参数结构体
 
     """
 
@@ -25383,7 +25383,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """指定查询的子用户uin，用户需要通过CreateUser接口创建。
+        r"""指定查询的子用户uin，用户需要通过CreateUser接口创建。
         :rtype: str
         """
         return self._UserId
@@ -25394,7 +25394,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -25405,7 +25405,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认20，最大值100
+        r"""返回数量，默认20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -25416,7 +25416,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time
+        r"""排序字段，支持如下字段类型，create-time
         :rtype: str
         """
         return self._SortBy
@@ -25427,7 +25427,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
         :rtype: str
         """
         return self._Sorting
@@ -25438,7 +25438,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
+        r"""过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -25471,7 +25471,7 @@ class DescribeUsersRequest(AbstractModel):
 
 
 class DescribeUsersResponse(AbstractModel):
-    """DescribeUsers返回参数结构体
+    r"""DescribeUsers返回参数结构体
 
     """
 
@@ -25490,7 +25490,7 @@ class DescribeUsersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询到的用户总数
+        r"""查询到的用户总数
         :rtype: int
         """
         return self._TotalCount
@@ -25501,7 +25501,7 @@ class DescribeUsersResponse(AbstractModel):
 
     @property
     def UserSet(self):
-        """查询到的授权用户信息集合
+        r"""查询到的授权用户信息集合
         :rtype: list of UserInfo
         """
         return self._UserSet
@@ -25512,7 +25512,7 @@ class DescribeUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25534,7 +25534,7 @@ class DescribeUsersResponse(AbstractModel):
 
 
 class DescribeViewsRequest(AbstractModel):
-    """DescribeViews请求参数结构体
+    r"""DescribeViews请求参数结构体
 
     """
 
@@ -25577,7 +25577,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def DatabaseName(self):
-        """列出该数据库下所属数据表。
+        r"""列出该数据库下所属数据表。
         :rtype: str
         """
         return self._DatabaseName
@@ -25588,7 +25588,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def Limit(self):
-        """返回数量，默认为10，最大值为100。
+        r"""返回数量，默认为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -25599,7 +25599,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def Offset(self):
-        """数据偏移量，从0开始，默认为0。
+        r"""数据偏移量，从0开始，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -25610,7 +25610,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为其一
+        r"""过滤条件，如下支持的过滤类型，传参Name应为其一
 view-name - String - （过滤条件）数据表名称,形如：view-001。
 view-id - String - （过滤条件）view id形如：12342。
         :rtype: list of Filter
@@ -25623,7 +25623,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def DatasourceConnectionName(self):
-        """数据库所属的数据源名称
+        r"""数据库所属的数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -25634,7 +25634,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def Sort(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._Sort
@@ -25645,7 +25645,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def Asc(self):
-        """排序规则，true:升序；false:降序
+        r"""排序规则，true:升序；false:降序
         :rtype: bool
         """
         return self._Asc
@@ -25656,7 +25656,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def StartTime(self):
-        """按视图更新时间筛选，开始时间，如2021-11-11 00:00:00
+        r"""按视图更新时间筛选，开始时间，如2021-11-11 00:00:00
         :rtype: str
         """
         return self._StartTime
@@ -25667,7 +25667,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def EndTime(self):
-        """按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
+        r"""按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
         :rtype: str
         """
         return self._EndTime
@@ -25678,7 +25678,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
     @property
     def DescribeType(self):
-        """查询类型：all：全部数据（默认）、permission：有权限的数据
+        r"""查询类型：all：全部数据（默认）、permission：有权限的数据
 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
         :rtype: str
         """
@@ -25716,7 +25716,7 @@ view-id - String - （过滤条件）view id形如：12342。
 
 
 class DescribeViewsResponse(AbstractModel):
-    """DescribeViews返回参数结构体
+    r"""DescribeViews返回参数结构体
 
     """
 
@@ -25735,7 +25735,7 @@ class DescribeViewsResponse(AbstractModel):
 
     @property
     def ViewList(self):
-        """视图对象列表。
+        r"""视图对象列表。
         :rtype: list of ViewResponseInfo
         """
         return self._ViewList
@@ -25746,7 +25746,7 @@ class DescribeViewsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """实例总数。
+        r"""实例总数。
         :rtype: int
         """
         return self._TotalCount
@@ -25757,7 +25757,7 @@ class DescribeViewsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -25779,7 +25779,7 @@ class DescribeViewsResponse(AbstractModel):
 
 
 class DescribeWorkGroupInfoRequest(AbstractModel):
-    """DescribeWorkGroupInfo请求参数结构体
+    r"""DescribeWorkGroupInfo请求参数结构体
 
     """
 
@@ -25834,7 +25834,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -25845,7 +25845,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Type(self):
-        """查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+        r"""查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
         :rtype: str
         """
         return self._Type
@@ -25856,7 +25856,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Filters(self):
-        """查询的过滤条件。
+        r"""查询的过滤条件。
 
 当Type为User时，支持Key为user-name的模糊搜索；
 
@@ -25885,7 +25885,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def SortBy(self):
-        """排序字段。
+        r"""排序字段。
 
 当Type为User时，支持create-time、user-name
 
@@ -25902,7 +25902,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
         :rtype: str
         """
         return self._Sorting
@@ -25913,7 +25913,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Limit(self):
-        """返回数量，默认20，最大值100
+        r"""返回数量，默认20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -25924,7 +25924,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -25958,7 +25958,7 @@ engine-name：库表的模糊搜索。
 
 
 class DescribeWorkGroupInfoResponse(AbstractModel):
-    """DescribeWorkGroupInfo返回参数结构体
+    r"""DescribeWorkGroupInfo返回参数结构体
 
     """
 
@@ -25975,7 +25975,7 @@ class DescribeWorkGroupInfoResponse(AbstractModel):
 
     @property
     def WorkGroupInfo(self):
-        """工作组详细信息
+        r"""工作组详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.WorkGroupDetailInfo`
         """
@@ -25987,7 +25987,7 @@ class DescribeWorkGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26005,7 +26005,7 @@ class DescribeWorkGroupInfoResponse(AbstractModel):
 
 
 class DescribeWorkGroupsRequest(AbstractModel):
-    """DescribeWorkGroups请求参数结构体
+    r"""DescribeWorkGroups请求参数结构体
 
     """
 
@@ -26033,7 +26033,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """查询的工作组Id，不填或填0表示不过滤。
+        r"""查询的工作组Id，不填或填0表示不过滤。
         :rtype: int
         """
         return self._WorkGroupId
@@ -26044,7 +26044,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
+        r"""过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
         :rtype: list of Filter
         """
         return self._Filters
@@ -26055,7 +26055,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        r"""偏移量，默认为0
         :rtype: int
         """
         return self._Offset
@@ -26066,7 +26066,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认20，最大值100
+        r"""返回数量，默认20，最大值100
         :rtype: int
         """
         return self._Limit
@@ -26077,7 +26077,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段，支持如下字段类型，create-time
+        r"""排序字段，支持如下字段类型，create-time
         :rtype: str
         """
         return self._SortBy
@@ -26088,7 +26088,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     @property
     def Sorting(self):
-        """排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
         :rtype: str
         """
         return self._Sorting
@@ -26121,7 +26121,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
 
 class DescribeWorkGroupsResponse(AbstractModel):
-    """DescribeWorkGroups返回参数结构体
+    r"""DescribeWorkGroups返回参数结构体
 
     """
 
@@ -26140,7 +26140,7 @@ class DescribeWorkGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """工作组总数
+        r"""工作组总数
         :rtype: int
         """
         return self._TotalCount
@@ -26151,7 +26151,7 @@ class DescribeWorkGroupsResponse(AbstractModel):
 
     @property
     def WorkGroupSet(self):
-        """工作组信息集合
+        r"""工作组信息集合
         :rtype: list of WorkGroupInfo
         """
         return self._WorkGroupSet
@@ -26162,7 +26162,7 @@ class DescribeWorkGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26184,7 +26184,7 @@ class DescribeWorkGroupsResponse(AbstractModel):
 
 
 class DetachUserPolicyRequest(AbstractModel):
-    """DetachUserPolicy请求参数结构体
+    r"""DetachUserPolicy请求参数结构体
 
     """
 
@@ -26200,7 +26200,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和CAM侧Uin匹配
+        r"""用户Id，和CAM侧Uin匹配
         :rtype: str
         """
         return self._UserId
@@ -26211,7 +26211,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """解绑的权限集合
+        r"""解绑的权限集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -26240,7 +26240,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
 
 class DetachUserPolicyResponse(AbstractModel):
-    """DetachUserPolicy返回参数结构体
+    r"""DetachUserPolicy返回参数结构体
 
     """
 
@@ -26253,7 +26253,7 @@ class DetachUserPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26268,7 +26268,7 @@ class DetachUserPolicyResponse(AbstractModel):
 
 
 class DetachWorkGroupPolicyRequest(AbstractModel):
-    """DetachWorkGroupPolicy请求参数结构体
+    r"""DetachWorkGroupPolicy请求参数结构体
 
     """
 
@@ -26284,7 +26284,7 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -26295,7 +26295,7 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        """解绑的权限集合
+        r"""解绑的权限集合
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -26324,7 +26324,7 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
 
 
 class DetachWorkGroupPolicyResponse(AbstractModel):
-    """DetachWorkGroupPolicy返回参数结构体
+    r"""DetachWorkGroupPolicy返回参数结构体
 
     """
 
@@ -26337,7 +26337,7 @@ class DetachWorkGroupPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26352,7 +26352,7 @@ class DetachWorkGroupPolicyResponse(AbstractModel):
 
 
 class DropDMSDatabaseRequest(AbstractModel):
-    """DropDMSDatabase请求参数结构体
+    r"""DropDMSDatabase请求参数结构体
 
     """
 
@@ -26374,7 +26374,7 @@ class DropDMSDatabaseRequest(AbstractModel):
 
     @property
     def Name(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Name
@@ -26385,7 +26385,7 @@ class DropDMSDatabaseRequest(AbstractModel):
 
     @property
     def DeleteData(self):
-        """是否删除数据
+        r"""是否删除数据
         :rtype: bool
         """
         return self._DeleteData
@@ -26396,7 +26396,7 @@ class DropDMSDatabaseRequest(AbstractModel):
 
     @property
     def Cascade(self):
-        """是否级联删除
+        r"""是否级联删除
         :rtype: bool
         """
         return self._Cascade
@@ -26407,7 +26407,7 @@ class DropDMSDatabaseRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -26433,7 +26433,7 @@ class DropDMSDatabaseRequest(AbstractModel):
 
 
 class DropDMSDatabaseResponse(AbstractModel):
-    """DropDMSDatabase返回参数结构体
+    r"""DropDMSDatabase返回参数结构体
 
     """
 
@@ -26446,7 +26446,7 @@ class DropDMSDatabaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26461,7 +26461,7 @@ class DropDMSDatabaseResponse(AbstractModel):
 
 
 class DropDMSPartitionsRequest(AbstractModel):
-    """DropDMSPartitions请求参数结构体
+    r"""DropDMSPartitions请求参数结构体
 
     """
 
@@ -26492,7 +26492,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DatabaseName
@@ -26503,7 +26503,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        """数据库Schema名称
+        r"""数据库Schema名称
         :rtype: str
         """
         return self._SchemaName
@@ -26514,7 +26514,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """数据表名称
+        r"""数据表名称
         :rtype: str
         """
         return self._TableName
@@ -26525,7 +26525,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """分区名称
+        r"""分区名称
         :rtype: str
         """
         return self._Name
@@ -26536,7 +26536,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def Values(self):
-        """单个分区名称
+        r"""单个分区名称
         :rtype: list of str
         """
         return self._Values
@@ -26547,7 +26547,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def DeleteData(self):
-        """是否删除分区数据
+        r"""是否删除分区数据
         :rtype: bool
         """
         return self._DeleteData
@@ -26558,7 +26558,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源连接名
+        r"""数据源连接名
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -26587,7 +26587,7 @@ class DropDMSPartitionsRequest(AbstractModel):
 
 
 class DropDMSPartitionsResponse(AbstractModel):
-    """DropDMSPartitions返回参数结构体
+    r"""DropDMSPartitions返回参数结构体
 
     """
 
@@ -26603,7 +26603,7 @@ class DropDMSPartitionsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: bool
         """
         return self._Status
@@ -26614,7 +26614,7 @@ class DropDMSPartitionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26630,7 +26630,7 @@ class DropDMSPartitionsResponse(AbstractModel):
 
 
 class DropDMSTableRequest(AbstractModel):
-    """DropDMSTable请求参数结构体
+    r"""DropDMSTable请求参数结构体
 
     """
 
@@ -26655,7 +26655,7 @@ class DropDMSTableRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -26666,7 +26666,7 @@ class DropDMSTableRequest(AbstractModel):
 
     @property
     def Name(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Name
@@ -26677,7 +26677,7 @@ class DropDMSTableRequest(AbstractModel):
 
     @property
     def DeleteData(self):
-        """是否删除数据
+        r"""是否删除数据
         :rtype: bool
         """
         return self._DeleteData
@@ -26688,7 +26688,7 @@ class DropDMSTableRequest(AbstractModel):
 
     @property
     def EnvProps(self):
-        """环境属性
+        r"""环境属性
         :rtype: :class:`tencentcloud.dlc.v20210125.models.KVPair`
         """
         return self._EnvProps
@@ -26699,7 +26699,7 @@ class DropDMSTableRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据目录信息
+        r"""数据目录信息
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -26728,7 +26728,7 @@ class DropDMSTableRequest(AbstractModel):
 
 
 class DropDMSTableResponse(AbstractModel):
-    """DropDMSTable返回参数结构体
+    r"""DropDMSTable返回参数结构体
 
     """
 
@@ -26741,7 +26741,7 @@ class DropDMSTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -26756,7 +26756,7 @@ class DropDMSTableResponse(AbstractModel):
 
 
 class ElasticPlan(AbstractModel):
-    """引擎资源弹性伸缩计划
+    r"""引擎资源弹性伸缩计划
 
     """
 
@@ -26781,7 +26781,7 @@ class ElasticPlan(AbstractModel):
 
     @property
     def MinElasticClusters(self):
-        """最小集群数
+        r"""最小集群数
         :rtype: int
         """
         return self._MinElasticClusters
@@ -26792,7 +26792,7 @@ class ElasticPlan(AbstractModel):
 
     @property
     def MaxElasticClusters(self):
-        """最大集群数
+        r"""最大集群数
         :rtype: int
         """
         return self._MaxElasticClusters
@@ -26803,7 +26803,7 @@ class ElasticPlan(AbstractModel):
 
     @property
     def TolerableQueueTime(self):
-        """最大排队时间
+        r"""最大排队时间
         :rtype: int
         """
         return self._TolerableQueueTime
@@ -26814,7 +26814,7 @@ class ElasticPlan(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        r"""开始时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -26825,7 +26825,7 @@ class ElasticPlan(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        r"""结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -26852,7 +26852,7 @@ class ElasticPlan(AbstractModel):
 
 
 class ElasticsearchInfo(AbstractModel):
-    """Elasticsearch数据源的详细信息
+    r"""Elasticsearch数据源的详细信息
 
     """
 
@@ -26890,7 +26890,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """数据源ID
+        r"""数据源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26902,7 +26902,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """数据源名称
+        r"""数据源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26914,7 +26914,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def User(self):
-        """用户名
+        r"""用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26926,7 +26926,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def Password(self):
-        """密码，需要base64编码
+        r"""密码，需要base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26938,7 +26938,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据源的VPC和子网信息
+        r"""数据源的VPC和子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
@@ -26950,7 +26950,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """默认数据库名称
+        r"""默认数据库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26962,7 +26962,7 @@ class ElasticsearchInfo(AbstractModel):
 
     @property
     def ServiceInfo(self):
-        """访问Elasticsearch的ip、端口信息
+        r"""访问Elasticsearch的ip、端口信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpPortPair
         """
@@ -26999,7 +26999,7 @@ class ElasticsearchInfo(AbstractModel):
 
 
 class EngineNetworkInfo(AbstractModel):
-    """引擎网络信息
+    r"""引擎网络信息
 
     """
 
@@ -27045,7 +27045,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def EngineNetworkName(self):
-        """引擎网络名字
+        r"""引擎网络名字
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27057,7 +27057,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def EngineNetworkState(self):
-        """引擎网络状态，0--初始化，2--可用，-1--已删除
+        r"""引擎网络状态，0--初始化，2--可用，-1--已删除
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27069,7 +27069,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def EngineNetworkCidr(self):
-        """引擎网络cidr
+        r"""引擎网络cidr
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27081,7 +27081,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27093,7 +27093,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27105,7 +27105,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27117,7 +27117,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def PrivateLinkNumber(self):
-        """私有连接个数
+        r"""私有连接个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27129,7 +27129,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def EngineNumber(self):
-        """计算引擎个数
+        r"""计算引擎个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27141,7 +27141,7 @@ class EngineNetworkInfo(AbstractModel):
 
     @property
     def GateWayInfo(self):
-        """网关信息
+        r"""网关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayInfo
         """
@@ -27178,7 +27178,7 @@ class EngineNetworkInfo(AbstractModel):
 
 
 class EngineResourceGroupConfigPair(AbstractModel):
-    """引擎资源组参数 配置项
+    r"""引擎资源组参数 配置项
 
     """
 
@@ -27196,7 +27196,7 @@ class EngineResourceGroupConfigPair(AbstractModel):
 
     @property
     def ConfigItem(self):
-        """配置项
+        r"""配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27208,7 +27208,7 @@ class EngineResourceGroupConfigPair(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置项的值
+        r"""配置项的值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27233,7 +27233,7 @@ class EngineResourceGroupConfigPair(AbstractModel):
 
 
 class EngineSessionImage(AbstractModel):
-    """TensorFlow、Pytorch、SK-learn镜像信息列表
+    r"""TensorFlow、Pytorch、SK-learn镜像信息列表
 
     """
 
@@ -27260,7 +27260,7 @@ class EngineSessionImage(AbstractModel):
 
     @property
     def SparkImageId(self):
-        """Spark镜像唯一id
+        r"""Spark镜像唯一id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27272,7 +27272,7 @@ class EngineSessionImage(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        """Spark镜像版本名称
+        r"""Spark镜像版本名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27284,7 +27284,7 @@ class EngineSessionImage(AbstractModel):
 
     @property
     def SparkImageType(self):
-        """小版本镜像类型.1:TensorFlow、2:Pytorch、3:SK-learn
+        r"""小版本镜像类型.1:TensorFlow、2:Pytorch、3:SK-learn
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -27297,7 +27297,7 @@ class EngineSessionImage(AbstractModel):
 
     @property
     def SparkImageTag(self):
-        """镜像地址
+        r"""镜像地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27324,7 +27324,7 @@ class EngineSessionImage(AbstractModel):
 
 
 class Execution(AbstractModel):
-    """SQL语句对象
+    r"""SQL语句对象
 
     """
 
@@ -27337,7 +27337,7 @@ class Execution(AbstractModel):
 
     @property
     def SQL(self):
-        """自动生成SQL语句。
+        r"""自动生成SQL语句。
         :rtype: str
         """
         return self._SQL
@@ -27360,7 +27360,7 @@ class Execution(AbstractModel):
 
 
 class FavorInfo(AbstractModel):
-    """FavorInfo
+    r"""FavorInfo
 
     """
 
@@ -27382,7 +27382,7 @@ class FavorInfo(AbstractModel):
 
     @property
     def Priority(self):
-        """优先事项
+        r"""优先事项
         :rtype: int
         """
         return self._Priority
@@ -27393,7 +27393,7 @@ class FavorInfo(AbstractModel):
 
     @property
     def Catalog(self):
-        """Catalog名称
+        r"""Catalog名称
         :rtype: str
         """
         return self._Catalog
@@ -27404,7 +27404,7 @@ class FavorInfo(AbstractModel):
 
     @property
     def DataBase(self):
-        """DataBase名称
+        r"""DataBase名称
         :rtype: str
         """
         return self._DataBase
@@ -27415,7 +27415,7 @@ class FavorInfo(AbstractModel):
 
     @property
     def Table(self):
-        """Table名称
+        r"""Table名称
         :rtype: str
         """
         return self._Table
@@ -27441,7 +27441,7 @@ class FavorInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """查询列表过滤条件参数
+    r"""查询列表过滤条件参数
 
     """
 
@@ -27457,7 +27457,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """属性名称, 若存在多个Filter时，Filter间的关系为逻辑或（OR）关系。
+        r"""属性名称, 若存在多个Filter时，Filter间的关系为逻辑或（OR）关系。
         :rtype: str
         """
         return self._Name
@@ -27468,7 +27468,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
         :rtype: list of str
         """
         return self._Values
@@ -27492,7 +27492,7 @@ class Filter(AbstractModel):
 
 
 class GatewayInfo(AbstractModel):
-    """网关基础信息，包括id，名称，规格和状态
+    r"""网关基础信息，包括id，名称，规格和状态
 
     """
 
@@ -27526,7 +27526,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def GatewayId(self):
-        """网关ID，
+        r"""网关ID，
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27538,7 +27538,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def GatewayName(self):
-        """网关名称，全局唯一
+        r"""网关名称，全局唯一
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27550,7 +27550,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def Size(self):
-        """网关的规格
+        r"""网关的规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27562,7 +27562,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def State(self):
-        """-2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中 5挂起中 6启动中 7隔离中 8隔离 9续费中 10变配中 11冲正中
+        r"""-2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中 5挂起中 6启动中 7隔离中 8隔离 9续费中 10变配中 11冲正中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27574,7 +27574,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """计费模式
+        r"""计费模式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27586,7 +27586,7 @@ class GatewayInfo(AbstractModel):
 
     @property
     def Mode(self):
-        """模式
+        r"""模式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27615,7 +27615,7 @@ class GatewayInfo(AbstractModel):
 
 
 class GenerateCreateMangedTableSqlRequest(AbstractModel):
-    """GenerateCreateMangedTableSql请求参数结构体
+    r"""GenerateCreateMangedTableSql请求参数结构体
 
     """
 
@@ -27640,7 +27640,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """表基本信息
+        r"""表基本信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -27651,7 +27651,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     @property
     def Columns(self):
-        """表字段信息
+        r"""表字段信息
         :rtype: list of TColumn
         """
         return self._Columns
@@ -27662,7 +27662,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     @property
     def Partitions(self):
-        """表分区信息
+        r"""表分区信息
         :rtype: list of TPartition
         """
         return self._Partitions
@@ -27673,7 +27673,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     @property
     def Properties(self):
-        """表属性信息
+        r"""表属性信息
         :rtype: list of Property
         """
         return self._Properties
@@ -27684,7 +27684,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     @property
     def UpsertKeys(self):
-        """V2 upsert表 upsert键
+        r"""V2 upsert表 upsert键
         :rtype: list of str
         """
         return self._UpsertKeys
@@ -27728,7 +27728,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
 
 class GenerateCreateMangedTableSqlResponse(AbstractModel):
-    """GenerateCreateMangedTableSql返回参数结构体
+    r"""GenerateCreateMangedTableSql返回参数结构体
 
     """
 
@@ -27744,7 +27744,7 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
 
     @property
     def Execution(self):
-        """创建托管存储内表sql语句描述
+        r"""创建托管存储内表sql语句描述
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Execution`
         """
         return self._Execution
@@ -27755,7 +27755,7 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27773,7 +27773,7 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
 
 
 class GetOptimizerPolicyRequest(AbstractModel):
-    """GetOptimizerPolicy请求参数结构体
+    r"""GetOptimizerPolicy请求参数结构体
 
     """
 
@@ -27786,7 +27786,7 @@ class GetOptimizerPolicyRequest(AbstractModel):
 
     @property
     def SmartPolicy(self):
-        """策略描述
+        r"""策略描述
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
         """
         return self._SmartPolicy
@@ -27811,7 +27811,7 @@ class GetOptimizerPolicyRequest(AbstractModel):
 
 
 class GetOptimizerPolicyResponse(AbstractModel):
-    """GetOptimizerPolicy返回参数结构体
+    r"""GetOptimizerPolicy返回参数结构体
 
     """
 
@@ -27827,7 +27827,7 @@ class GetOptimizerPolicyResponse(AbstractModel):
 
     @property
     def SmartOptimizerPolicy(self):
-        """智能优化策略
+        r"""智能优化策略
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerPolicy`
         """
         return self._SmartOptimizerPolicy
@@ -27838,7 +27838,7 @@ class GetOptimizerPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27856,7 +27856,7 @@ class GetOptimizerPolicyResponse(AbstractModel):
 
 
 class GrantDLCCatalogAccessRequest(AbstractModel):
-    """GrantDLCCatalogAccess请求参数结构体
+    r"""GrantDLCCatalogAccess请求参数结构体
 
     """
 
@@ -27881,7 +27881,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """授权VpcId
+        r"""授权VpcId
         :rtype: str
         """
         return self._VpcId
@@ -27892,7 +27892,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def Product(self):
-        """产品(EMR|DLC|Doris|Inlong|Wedata)
+        r"""产品(EMR|DLC|Doris|Inlong|Wedata)
         :rtype: str
         """
         return self._Product
@@ -27903,7 +27903,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -27914,7 +27914,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def VpcUin(self):
-        """VPC所属账号UIN
+        r"""VPC所属账号UIN
         :rtype: str
         """
         return self._VpcUin
@@ -27925,7 +27925,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def VpcAppId(self):
-        """VPC所属账号AppId
+        r"""VPC所属账号AppId
         :rtype: int
         """
         return self._VpcAppId
@@ -27952,7 +27952,7 @@ class GrantDLCCatalogAccessRequest(AbstractModel):
 
 
 class GrantDLCCatalogAccessResponse(AbstractModel):
-    """GrantDLCCatalogAccess返回参数结构体
+    r"""GrantDLCCatalogAccess返回参数结构体
 
     """
 
@@ -27965,7 +27965,7 @@ class GrantDLCCatalogAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -27980,7 +27980,7 @@ class GrantDLCCatalogAccessResponse(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """数据脱敏用户组信息
+    r"""数据脱敏用户组信息
 
     """
 
@@ -27996,7 +27996,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """用户组ID
+        r"""用户组ID
         :rtype: int
         """
         return self._WorkGroupId
@@ -28007,7 +28007,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def StrategyType(self):
-        """策略类型
+        r"""策略类型
         :rtype: str
         """
         return self._StrategyType
@@ -28031,7 +28031,7 @@ class GroupInfo(AbstractModel):
 
 
 class HiveInfo(AbstractModel):
-    """hive类型数据源的信息
+    r"""hive类型数据源的信息
 
     """
 
@@ -28085,7 +28085,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def MetaStoreUrl(self):
-        """hive metastore的地址
+        r"""hive metastore的地址
         :rtype: str
         """
         return self._MetaStoreUrl
@@ -28096,7 +28096,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def Type(self):
-        """hive数据源类型，代表数据储存的位置，COS或者HDFS
+        r"""hive数据源类型，代表数据储存的位置，COS或者HDFS
         :rtype: str
         """
         return self._Type
@@ -28107,7 +28107,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据源所在的私有网络信息
+        r"""数据源所在的私有网络信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         return self._Location
@@ -28118,7 +28118,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def User(self):
-        """如果类型为HDFS，需要传一个用户名
+        r"""如果类型为HDFS，需要传一个用户名
         :rtype: str
         """
         return self._User
@@ -28129,7 +28129,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def HighAvailability(self):
-        """如果类型为HDFS，需要选择是否高可用
+        r"""如果类型为HDFS，需要选择是否高可用
         :rtype: bool
         """
         return self._HighAvailability
@@ -28140,7 +28140,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def BucketUrl(self):
-        """如果类型为COS，需要填写COS桶连接
+        r"""如果类型为COS，需要填写COS桶连接
         :rtype: str
         """
         return self._BucketUrl
@@ -28151,7 +28151,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def HdfsProperties(self):
-        """json字符串。如果类型为HDFS，需要填写该字段
+        r"""json字符串。如果类型为HDFS，需要填写该字段
         :rtype: str
         """
         return self._HdfsProperties
@@ -28162,7 +28162,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def Mysql(self):
-        """Hive的元数据库信息
+        r"""Hive的元数据库信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
         """
@@ -28174,7 +28174,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """emr集群Id
+        r"""emr集群Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28186,7 +28186,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """emr集群名称
+        r"""emr集群名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28198,7 +28198,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def HiveVersion(self):
-        """EMR集群中hive组件的版本号
+        r"""EMR集群中hive组件的版本号
         :rtype: str
         """
         return self._HiveVersion
@@ -28209,7 +28209,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def KerberosInfo(self):
-        """Kerberos详细信息
+        r"""Kerberos详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.KerberosInfo`
         """
@@ -28221,7 +28221,7 @@ class HiveInfo(AbstractModel):
 
     @property
     def KerberosEnable(self):
-        """是否开启Kerberos
+        r"""是否开启Kerberos
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -28263,7 +28263,7 @@ class HiveInfo(AbstractModel):
 
 
 class HiveTablePartition(AbstractModel):
-    """Hive表分区信息
+    r"""Hive表分区信息
 
     """
 
@@ -28291,7 +28291,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def Partition(self):
-        """分区信息名称
+        r"""分区信息名称
         :rtype: str
         """
         return self._Partition
@@ -28302,7 +28302,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def Records(self):
-        """分区记录数
+        r"""分区记录数
         :rtype: int
         """
         return self._Records
@@ -28313,7 +28313,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def DataFileStorage(self):
-        """分区数据文件存储量
+        r"""分区数据文件存储量
         :rtype: int
         """
         return self._DataFileStorage
@@ -28324,7 +28324,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def CreateTime(self):
-        """分区创建时间
+        r"""分区创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -28335,7 +28335,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """分区schema更新时间
+        r"""分区schema更新时间
         :rtype: str
         """
         return self._ModifiedTime
@@ -28346,7 +28346,7 @@ class HiveTablePartition(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        """最后一次分区更新的访问时间
+        r"""最后一次分区更新的访问时间
         :rtype: str
         """
         return self._LastAccessTime
@@ -28374,7 +28374,7 @@ class HiveTablePartition(AbstractModel):
 
 
 class HouseEventsInfo(AbstractModel):
-    """集群事件日志
+    r"""集群事件日志
 
     """
 
@@ -28396,7 +28396,7 @@ class HouseEventsInfo(AbstractModel):
 
     @property
     def Time(self):
-        """事件时间
+        r"""事件时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28408,7 +28408,7 @@ class HouseEventsInfo(AbstractModel):
 
     @property
     def EventsAction(self):
-        """事件类型
+        r"""事件类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28420,7 +28420,7 @@ class HouseEventsInfo(AbstractModel):
 
     @property
     def ClusterInfo(self):
-        """集群信息
+        r"""集群信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28446,7 +28446,7 @@ class HouseEventsInfo(AbstractModel):
 
 
 class IcebergTablePartition(AbstractModel):
-    """Iceberg表分区信息
+    r"""Iceberg表分区信息
 
     """
 
@@ -28480,7 +28480,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def Partition(self):
-        """分区信息名称
+        r"""分区信息名称
         :rtype: str
         """
         return self._Partition
@@ -28491,7 +28491,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def Records(self):
-        """分区记录数
+        r"""分区记录数
         :rtype: int
         """
         return self._Records
@@ -28502,7 +28502,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def DataFileSize(self):
-        """分区数据文件数量
+        r"""分区数据文件数量
         :rtype: int
         """
         return self._DataFileSize
@@ -28513,7 +28513,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def DataFileStorage(self):
-        """分区数据文件存储量
+        r"""分区数据文件存储量
         :rtype: int
         """
         return self._DataFileStorage
@@ -28524,7 +28524,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def CreateTime(self):
-        """分区创建时间
+        r"""分区创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -28535,7 +28535,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """分区更新时间
+        r"""分区更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -28546,7 +28546,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def LastUpdateSnapshotId(self):
-        """最后一次分区更新的快照ID
+        r"""最后一次分区更新的快照ID
         :rtype: str
         """
         return self._LastUpdateSnapshotId
@@ -28557,7 +28557,7 @@ class IcebergTablePartition(AbstractModel):
 
     @property
     def Location(self):
-        """分区的location
+        r"""分区的location
         :rtype: :class:`tencentcloud.dlc.v20210125.models.LocationInfo`
         """
         return self._Location
@@ -28589,7 +28589,7 @@ class IcebergTablePartition(AbstractModel):
 
 
 class IpPortPair(AbstractModel):
-    """ip端口对信息
+    r"""ip端口对信息
 
     """
 
@@ -28607,7 +28607,7 @@ class IpPortPair(AbstractModel):
 
     @property
     def Ip(self):
-        """ip信息
+        r"""ip信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28619,7 +28619,7 @@ class IpPortPair(AbstractModel):
 
     @property
     def Port(self):
-        """端口信息
+        r"""端口信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28644,7 +28644,7 @@ class IpPortPair(AbstractModel):
 
 
 class JobLogResult(AbstractModel):
-    """日志详情
+    r"""日志详情
 
     """
 
@@ -28674,7 +28674,7 @@ class JobLogResult(AbstractModel):
 
     @property
     def Time(self):
-        """日志时间戳，毫秒
+        r"""日志时间戳，毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28686,7 +28686,7 @@ class JobLogResult(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志topic id
+        r"""日志topic id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28698,7 +28698,7 @@ class JobLogResult(AbstractModel):
 
     @property
     def TopicName(self):
-        """日志topic name
+        r"""日志topic name
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28710,7 +28710,7 @@ class JobLogResult(AbstractModel):
 
     @property
     def LogJson(self):
-        """日志内容，json字符串
+        r"""日志内容，json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28722,7 +28722,7 @@ class JobLogResult(AbstractModel):
 
     @property
     def PkgLogId(self):
-        """日志ID
+        r"""日志ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28750,7 +28750,7 @@ class JobLogResult(AbstractModel):
 
 
 class KVPair(AbstractModel):
-    """配置格式
+    r"""配置格式
 
     """
 
@@ -28766,7 +28766,7 @@ class KVPair(AbstractModel):
 
     @property
     def Key(self):
-        """配置的key值
+        r"""配置的key值
         :rtype: str
         """
         return self._Key
@@ -28777,7 +28777,7 @@ class KVPair(AbstractModel):
 
     @property
     def Value(self):
-        """配置的value值
+        r"""配置的value值
         :rtype: str
         """
         return self._Value
@@ -28801,7 +28801,7 @@ class KVPair(AbstractModel):
 
 
 class KafkaInfo(AbstractModel):
-    """Kafka连接信息
+    r"""Kafka连接信息
 
     """
 
@@ -28817,7 +28817,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """kafka实例Id
+        r"""kafka实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -28828,7 +28828,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Location(self):
-        """kafka数据源的网络信息
+        r"""kafka数据源的网络信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         return self._Location
@@ -28854,7 +28854,7 @@ class KafkaInfo(AbstractModel):
 
 
 class KerberosInfo(AbstractModel):
-    """Kerberos详细信息
+    r"""Kerberos详细信息
 
     """
 
@@ -28873,7 +28873,7 @@ class KerberosInfo(AbstractModel):
 
     @property
     def Krb5Conf(self):
-        """Krb5Conf文件值
+        r"""Krb5Conf文件值
         :rtype: str
         """
         return self._Krb5Conf
@@ -28884,7 +28884,7 @@ class KerberosInfo(AbstractModel):
 
     @property
     def KeyTab(self):
-        """KeyTab文件值
+        r"""KeyTab文件值
         :rtype: str
         """
         return self._KeyTab
@@ -28895,7 +28895,7 @@ class KerberosInfo(AbstractModel):
 
     @property
     def ServicePrincipal(self):
-        """服务主体
+        r"""服务主体
         :rtype: str
         """
         return self._ServicePrincipal
@@ -28920,7 +28920,7 @@ class KerberosInfo(AbstractModel):
 
 
 class LakeFileSystemToken(AbstractModel):
-    """LakeFileSystem使用的临时token
+    r"""LakeFileSystem使用的临时token
 
     """
 
@@ -28945,7 +28945,7 @@ class LakeFileSystemToken(AbstractModel):
 
     @property
     def SecretId(self):
-        """Token使用的临时密钥的ID
+        r"""Token使用的临时密钥的ID
         :rtype: str
         """
         return self._SecretId
@@ -28956,7 +28956,7 @@ class LakeFileSystemToken(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Token使用的临时密钥
+        r"""Token使用的临时密钥
         :rtype: str
         """
         return self._SecretKey
@@ -28967,7 +28967,7 @@ class LakeFileSystemToken(AbstractModel):
 
     @property
     def Token(self):
-        """Token信息
+        r"""Token信息
         :rtype: str
         """
         return self._Token
@@ -28978,7 +28978,7 @@ class LakeFileSystemToken(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._ExpiredTime
@@ -28989,7 +28989,7 @@ class LakeFileSystemToken(AbstractModel):
 
     @property
     def IssueTime(self):
-        """颁布时间
+        r"""颁布时间
         :rtype: int
         """
         return self._IssueTime
@@ -29016,7 +29016,7 @@ class LakeFileSystemToken(AbstractModel):
 
 
 class LakeFsInfo(AbstractModel):
-    """描述DLC托管存储基本信息
+    r"""描述DLC托管存储基本信息
 
     """
 
@@ -29050,7 +29050,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def Name(self):
-        """托管存储名称
+        r"""托管存储名称
         :rtype: str
         """
         return self._Name
@@ -29061,7 +29061,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def Type(self):
-        """托管存储类型
+        r"""托管存储类型
         :rtype: str
         """
         return self._Type
@@ -29072,7 +29072,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def SpaceUsedSize(self):
-        """容量
+        r"""容量
         :rtype: float
         """
         return self._SpaceUsedSize
@@ -29083,7 +29083,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def CreateTimeStamp(self):
-        """创建时候的时间戳
+        r"""创建时候的时间戳
         :rtype: int
         """
         return self._CreateTimeStamp
@@ -29094,7 +29094,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def DefaultBucket(self):
-        """是否是用户默认桶，0：默认桶，1：非默认桶
+        r"""是否是用户默认桶，0：默认桶，1：非默认桶
         :rtype: int
         """
         return self._DefaultBucket
@@ -29105,7 +29105,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def ShortName(self):
-        """托管存储short name
+        r"""托管存储short name
         :rtype: str
         """
         return self._ShortName
@@ -29116,7 +29116,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def Description(self):
-        """桶描述信息
+        r"""桶描述信息
         :rtype: str
         """
         return self._Description
@@ -29127,7 +29127,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def Status(self):
-        """托管桶状态，当前取值为：creating、bind、readOnly、isolate
+        r"""托管桶状态，当前取值为：creating、bind、readOnly、isolate
         :rtype: str
         """
         return self._Status
@@ -29157,7 +29157,7 @@ class LakeFsInfo(AbstractModel):
 
 
 class LaunchStandardEngineResourceGroupsRequest(AbstractModel):
-    """LaunchStandardEngineResourceGroups请求参数结构体
+    r"""LaunchStandardEngineResourceGroups请求参数结构体
 
     """
 
@@ -29170,7 +29170,7 @@ class LaunchStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def EngineResourceGroupNames(self):
-        """标准引擎资源组名称
+        r"""标准引擎资源组名称
         :rtype: list of str
         """
         return self._EngineResourceGroupNames
@@ -29193,7 +29193,7 @@ class LaunchStandardEngineResourceGroupsRequest(AbstractModel):
 
 
 class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
-    """LaunchStandardEngineResourceGroups返回参数结构体
+    r"""LaunchStandardEngineResourceGroups返回参数结构体
 
     """
 
@@ -29210,7 +29210,7 @@ class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def OperateEngineResourceGroupFailMessages(self):
-        """批量操作资源组时，操作失败的资源组相关信息
+        r"""批量操作资源组时，操作失败的资源组相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OperateEngineResourceGroupFailMessage
         """
@@ -29222,7 +29222,7 @@ class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29243,7 +29243,7 @@ class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
 
 
 class ListTaskJobLogDetailRequest(AbstractModel):
-    """ListTaskJobLogDetail请求参数结构体
+    r"""ListTaskJobLogDetail请求参数结构体
 
     """
 
@@ -29283,7 +29283,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始运行时间，unix时间戳（毫秒）
+        r"""开始运行时间，unix时间戳（毫秒）
         :rtype: int
         """
         return self._StartTime
@@ -29294,7 +29294,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束运行时间，unix时间戳（毫秒）
+        r"""结束运行时间，unix时间戳（毫秒）
         :rtype: int
         """
         return self._EndTime
@@ -29305,7 +29305,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，最大1000，配合Context一起使用
+        r"""分页大小，最大1000，配合Context一起使用
         :rtype: int
         """
         return self._Limit
@@ -29316,7 +29316,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def Context(self):
-        """下一次分页参数，第一次传空
+        r"""下一次分页参数，第一次传空
         :rtype: str
         """
         return self._Context
@@ -29327,7 +29327,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """列表返回的Id
+        r"""列表返回的Id
         :rtype: str
         """
         return self._TaskId
@@ -29338,7 +29338,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+        r"""最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
         :rtype: bool
         """
         return self._Asc
@@ -29349,7 +29349,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """预览日志的通用过滤条件
+        r"""预览日志的通用过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -29360,7 +29360,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """SparkSQL任务唯一ID
+        r"""SparkSQL任务唯一ID
         :rtype: str
         """
         return self._BatchId
@@ -29371,7 +29371,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -29382,7 +29382,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._ResourceGroupId
@@ -29419,7 +29419,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
 
 class ListTaskJobLogDetailResponse(AbstractModel):
-    """ListTaskJobLogDetail返回参数结构体
+    r"""ListTaskJobLogDetail返回参数结构体
 
     """
 
@@ -29444,7 +29444,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
     @property
     def Context(self):
-        """下一次分页参数
+        r"""下一次分页参数
         :rtype: str
         """
         return self._Context
@@ -29455,7 +29455,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        """是否获取完结
+        r"""是否获取完结
         :rtype: bool
         """
         return self._ListOver
@@ -29466,7 +29466,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
     @property
     def Results(self):
-        """日志详情
+        r"""日志详情
         :rtype: list of JobLogResult
         """
         return self._Results
@@ -29477,7 +29477,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
     @property
     def LogUrl(self):
-        """日志url(字段已废弃)
+        r"""日志url(字段已废弃)
         :rtype: str
         """
         return self._LogUrl
@@ -29488,7 +29488,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29512,7 +29512,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
 
 
 class ListTaskJobLogNameRequest(AbstractModel):
-    """ListTaskJobLogName请求参数结构体
+    r"""ListTaskJobLogName请求参数结构体
 
     """
 
@@ -29528,7 +29528,7 @@ class ListTaskJobLogNameRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """查询的taskId
+        r"""查询的taskId
         :rtype: str
         """
         return self._TaskId
@@ -29539,7 +29539,7 @@ class ListTaskJobLogNameRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """SparkSQL批任务唯一ID
+        r"""SparkSQL批任务唯一ID
         :rtype: str
         """
         return self._BatchId
@@ -29563,7 +29563,7 @@ class ListTaskJobLogNameRequest(AbstractModel):
 
 
 class ListTaskJobLogNameResponse(AbstractModel):
-    """ListTaskJobLogName返回参数结构体
+    r"""ListTaskJobLogName返回参数结构体
 
     """
 
@@ -29579,7 +29579,7 @@ class ListTaskJobLogNameResponse(AbstractModel):
 
     @property
     def Names(self):
-        """日志名称列表
+        r"""日志名称列表
         :rtype: list of str
         """
         return self._Names
@@ -29590,7 +29590,7 @@ class ListTaskJobLogNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29606,7 +29606,7 @@ class ListTaskJobLogNameResponse(AbstractModel):
 
 
 class LocationInfo(AbstractModel):
-    """Location信息结构
+    r"""Location信息结构
 
     """
 
@@ -29622,7 +29622,7 @@ class LocationInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """桶名称
+        r"""桶名称
         :rtype: str
         """
         return self._Bucket
@@ -29633,7 +29633,7 @@ class LocationInfo(AbstractModel):
 
     @property
     def DataLocation(self):
-        """location路径
+        r"""location路径
         :rtype: str
         """
         return self._DataLocation
@@ -29657,7 +29657,7 @@ class LocationInfo(AbstractModel):
 
 
 class LockComponentInfo(AbstractModel):
-    """元数据加锁内容
+    r"""元数据加锁内容
 
     """
 
@@ -29691,7 +29691,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -29702,7 +29702,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._TableName
@@ -29713,7 +29713,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def Partition(self):
-        """分区
+        r"""分区
         :rtype: str
         """
         return self._Partition
@@ -29724,7 +29724,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def LockType(self):
-        """锁类型：SHARED_READ、SHARED_WRITE、EXCLUSIVE
+        r"""锁类型：SHARED_READ、SHARED_WRITE、EXCLUSIVE
         :rtype: str
         """
         return self._LockType
@@ -29735,7 +29735,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def LockLevel(self):
-        """锁级别：DB、TABLE、PARTITION
+        r"""锁级别：DB、TABLE、PARTITION
         :rtype: str
         """
         return self._LockLevel
@@ -29746,7 +29746,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def DataOperationType(self):
-        """锁操作：SELECT,INSERT,UPDATE,DELETE,UNSET,NO_TXN
+        r"""锁操作：SELECT,INSERT,UPDATE,DELETE,UNSET,NO_TXN
         :rtype: str
         """
         return self._DataOperationType
@@ -29757,7 +29757,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def IsAcid(self):
-        """是否保持Acid
+        r"""是否保持Acid
         :rtype: bool
         """
         return self._IsAcid
@@ -29768,7 +29768,7 @@ class LockComponentInfo(AbstractModel):
 
     @property
     def IsDynamicPartitionWrite(self):
-        """是否动态分区写
+        r"""是否动态分区写
         :rtype: bool
         """
         return self._IsDynamicPartitionWrite
@@ -29798,7 +29798,7 @@ class LockComponentInfo(AbstractModel):
 
 
 class LockMetaDataRequest(AbstractModel):
-    """LockMetaData请求参数结构体
+    r"""LockMetaData请求参数结构体
 
     """
 
@@ -29823,7 +29823,7 @@ class LockMetaDataRequest(AbstractModel):
 
     @property
     def LockComponentList(self):
-        """加锁内容
+        r"""加锁内容
         :rtype: list of LockComponentInfo
         """
         return self._LockComponentList
@@ -29834,7 +29834,7 @@ class LockMetaDataRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -29845,7 +29845,7 @@ class LockMetaDataRequest(AbstractModel):
 
     @property
     def TxnId(self):
-        """事务id
+        r"""事务id
         :rtype: int
         """
         return self._TxnId
@@ -29856,7 +29856,7 @@ class LockMetaDataRequest(AbstractModel):
 
     @property
     def AgentInfo(self):
-        """客户端信息
+        r"""客户端信息
         :rtype: str
         """
         return self._AgentInfo
@@ -29867,7 +29867,7 @@ class LockMetaDataRequest(AbstractModel):
 
     @property
     def Hostname(self):
-        """主机名
+        r"""主机名
         :rtype: str
         """
         return self._Hostname
@@ -29899,7 +29899,7 @@ class LockMetaDataRequest(AbstractModel):
 
 
 class LockMetaDataResponse(AbstractModel):
-    """LockMetaData返回参数结构体
+    r"""LockMetaData返回参数结构体
 
     """
 
@@ -29918,7 +29918,7 @@ class LockMetaDataResponse(AbstractModel):
 
     @property
     def LockId(self):
-        """锁id
+        r"""锁id
         :rtype: int
         """
         return self._LockId
@@ -29929,7 +29929,7 @@ class LockMetaDataResponse(AbstractModel):
 
     @property
     def LockState(self):
-        """锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+        r"""锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
         :rtype: str
         """
         return self._LockState
@@ -29940,7 +29940,7 @@ class LockMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -29957,7 +29957,7 @@ class LockMetaDataResponse(AbstractModel):
 
 
 class MixedTablePartitions(AbstractModel):
-    """DLC分区信息查询返回数据结构
+    r"""DLC分区信息查询返回数据结构
 
     """
 
@@ -29982,7 +29982,7 @@ class MixedTablePartitions(AbstractModel):
 
     @property
     def TableFormat(self):
-        """数据表格式
+        r"""数据表格式
         :rtype: str
         """
         return self._TableFormat
@@ -29993,7 +29993,7 @@ class MixedTablePartitions(AbstractModel):
 
     @property
     def TotalSize(self):
-        """分区总数
+        r"""分区总数
         :rtype: int
         """
         return self._TotalSize
@@ -30004,7 +30004,7 @@ class MixedTablePartitions(AbstractModel):
 
     @property
     def NextCursor(self):
-        """分页查询的游标信息，在获取下一页信息时需要回传到服务端
+        r"""分页查询的游标信息，在获取下一页信息时需要回传到服务端
         :rtype: str
         """
         return self._NextCursor
@@ -30015,7 +30015,7 @@ class MixedTablePartitions(AbstractModel):
 
     @property
     def IcebergPartitions(self):
-        """iceberg表分区信息
+        r"""iceberg表分区信息
         :rtype: list of IcebergTablePartition
         """
         return self._IcebergPartitions
@@ -30026,7 +30026,7 @@ class MixedTablePartitions(AbstractModel):
 
     @property
     def HivePartitions(self):
-        """hive表分区信息
+        r"""hive表分区信息
         :rtype: list of HiveTablePartition
         """
         return self._HivePartitions
@@ -30063,7 +30063,7 @@ class MixedTablePartitions(AbstractModel):
 
 
 class ModifyAdvancedStoreLocationRequest(AbstractModel):
-    """ModifyAdvancedStoreLocation请求参数结构体
+    r"""ModifyAdvancedStoreLocation请求参数结构体
 
     """
 
@@ -30079,7 +30079,7 @@ class ModifyAdvancedStoreLocationRequest(AbstractModel):
 
     @property
     def StoreLocation(self):
-        """查询结果保存cos路径
+        r"""查询结果保存cos路径
         :rtype: str
         """
         return self._StoreLocation
@@ -30090,7 +30090,7 @@ class ModifyAdvancedStoreLocationRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用高级设置：0-否，1-是
+        r"""是否启用高级设置：0-否，1-是
         :rtype: int
         """
         return self._Enable
@@ -30114,7 +30114,7 @@ class ModifyAdvancedStoreLocationRequest(AbstractModel):
 
 
 class ModifyAdvancedStoreLocationResponse(AbstractModel):
-    """ModifyAdvancedStoreLocation返回参数结构体
+    r"""ModifyAdvancedStoreLocation返回参数结构体
 
     """
 
@@ -30127,7 +30127,7 @@ class ModifyAdvancedStoreLocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30142,7 +30142,7 @@ class ModifyAdvancedStoreLocationResponse(AbstractModel):
 
 
 class ModifyDataEngineDescriptionRequest(AbstractModel):
-    """ModifyDataEngineDescription请求参数结构体
+    r"""ModifyDataEngineDescription请求参数结构体
 
     """
 
@@ -30158,7 +30158,7 @@ class ModifyDataEngineDescriptionRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """要修改的引擎的名称
+        r"""要修改的引擎的名称
         :rtype: str
         """
         return self._DataEngineName
@@ -30169,7 +30169,7 @@ class ModifyDataEngineDescriptionRequest(AbstractModel):
 
     @property
     def Message(self):
-        """引擎的描述信息，最大长度为250
+        r"""引擎的描述信息，最大长度为250
         :rtype: str
         """
         return self._Message
@@ -30193,7 +30193,7 @@ class ModifyDataEngineDescriptionRequest(AbstractModel):
 
 
 class ModifyDataEngineDescriptionResponse(AbstractModel):
-    """ModifyDataEngineDescription返回参数结构体
+    r"""ModifyDataEngineDescription返回参数结构体
 
     """
 
@@ -30206,7 +30206,7 @@ class ModifyDataEngineDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30221,13 +30221,13 @@ class ModifyDataEngineDescriptionResponse(AbstractModel):
 
 
 class ModifyGovernEventRuleRequest(AbstractModel):
-    """ModifyGovernEventRule请求参数结构体
+    r"""ModifyGovernEventRule请求参数结构体
 
     """
 
 
 class ModifyGovernEventRuleResponse(AbstractModel):
-    """ModifyGovernEventRule返回参数结构体
+    r"""ModifyGovernEventRule返回参数结构体
 
     """
 
@@ -30240,7 +30240,7 @@ class ModifyGovernEventRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30255,7 +30255,7 @@ class ModifyGovernEventRuleResponse(AbstractModel):
 
 
 class ModifySparkAppBatchRequest(AbstractModel):
-    """ModifySparkAppBatch请求参数结构体
+    r"""ModifySparkAppBatch请求参数结构体
 
     """
 
@@ -30286,7 +30286,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """需要批量修改的Spark作业任务ID列表
+        r"""需要批量修改的Spark作业任务ID列表
         :rtype: list of str
         """
         return self._SparkAppId
@@ -30297,7 +30297,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def DataEngine(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngine
@@ -30308,7 +30308,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def AppDriverSize(self):
-        """driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._AppDriverSize
@@ -30319,7 +30319,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def AppExecutorSize(self):
-        """executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._AppExecutorSize
@@ -30330,7 +30330,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def AppExecutorNums(self):
-        """指定executor数量，最小值为1，最大值小于集群规格
+        r"""指定executor数量，最小值为1，最大值小于集群规格
         :rtype: int
         """
         return self._AppExecutorNums
@@ -30341,7 +30341,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def AppExecutorMaxNumbers(self):
-        """指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        r"""指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
         :rtype: int
         """
         return self._AppExecutorMaxNumbers
@@ -30352,7 +30352,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        r"""任务资源配置是否继承集群模板，0（默认）不继承，1：继承
         :rtype: int
         """
         return self._IsInherit
@@ -30381,7 +30381,7 @@ class ModifySparkAppBatchRequest(AbstractModel):
 
 
 class ModifySparkAppBatchResponse(AbstractModel):
-    """ModifySparkAppBatch返回参数结构体
+    r"""ModifySparkAppBatch返回参数结构体
 
     """
 
@@ -30394,7 +30394,7 @@ class ModifySparkAppBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30409,7 +30409,7 @@ class ModifySparkAppBatchResponse(AbstractModel):
 
 
 class ModifySparkAppRequest(AbstractModel):
-    """ModifySparkApp请求参数结构体
+    r"""ModifySparkApp请求参数结构体
 
     """
 
@@ -30512,7 +30512,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._AppName
@@ -30523,7 +30523,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """spark作业类型，1代表spark jar作业，2代表spark streaming作业
+        r"""spark作业类型，1代表spark jar作业，2代表spark streaming作业
         :rtype: int
         """
         return self._AppType
@@ -30534,7 +30534,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def DataEngine(self):
-        """执行spark作业的数据引擎名称
+        r"""执行spark作业的数据引擎名称
         :rtype: str
         """
         return self._DataEngine
@@ -30545,7 +30545,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppFile(self):
-        """spark作业程序包文件路径
+        r"""spark作业程序包文件路径
         :rtype: str
         """
         return self._AppFile
@@ -30556,7 +30556,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        """数据访问策略，CAM Role arn
+        r"""数据访问策略，CAM Role arn
         :rtype: int
         """
         return self._RoleArn
@@ -30567,7 +30567,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppDriverSize(self):
-        """指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._AppDriverSize
@@ -30578,7 +30578,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorSize(self):
-        """指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._AppExecutorSize
@@ -30589,7 +30589,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorNums(self):
-        """spark作业executor个数
+        r"""spark作业executor个数
         :rtype: int
         """
         return self._AppExecutorNums
@@ -30600,7 +30600,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """spark作业Id
+        r"""spark作业Id
         :rtype: str
         """
         return self._SparkAppId
@@ -30611,7 +30611,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def Eni(self):
-        """该字段已下线，请使用字段Datasource
+        r"""该字段已下线，请使用字段Datasource
         :rtype: str
         """
         return self._Eni
@@ -30622,7 +30622,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsLocal(self):
-        """spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocal
@@ -30633,7 +30633,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def MainClass(self):
-        """spark作业主类
+        r"""spark作业主类
         :rtype: str
         """
         return self._MainClass
@@ -30644,7 +30644,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppConf(self):
-        """spark配置，以换行符分隔
+        r"""spark配置，以换行符分隔
         :rtype: str
         """
         return self._AppConf
@@ -30655,7 +30655,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsLocalJars(self):
-        """spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalJars
@@ -30666,7 +30666,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppJars(self):
-        """spark 作业依赖jar包（--jars），以逗号分隔
+        r"""spark 作业依赖jar包（--jars），以逗号分隔
         :rtype: str
         """
         return self._AppJars
@@ -30677,7 +30677,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsLocalFiles(self):
-        """spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalFiles
@@ -30688,7 +30688,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppFiles(self):
-        """spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
+        r"""spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
         :rtype: str
         """
         return self._AppFiles
@@ -30699,7 +30699,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsLocalPythonFiles(self):
-        """pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalPythonFiles
@@ -30710,7 +30710,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppPythonFiles(self):
-        """pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
+        r"""pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
         :rtype: str
         """
         return self._AppPythonFiles
@@ -30721,7 +30721,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """spark作业程序入参
+        r"""spark作业程序入参
         :rtype: str
         """
         return self._CmdArgs
@@ -30732,7 +30732,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def MaxRetries(self):
-        """最大重试次数，只对spark流任务生效
+        r"""最大重试次数，只对spark流任务生效
         :rtype: int
         """
         return self._MaxRetries
@@ -30743,7 +30743,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据源名
+        r"""数据源名
         :rtype: str
         """
         return self._DataSource
@@ -30754,7 +30754,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsLocalArchives(self):
-        """spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
+        r"""spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :rtype: str
         """
         return self._IsLocalArchives
@@ -30765,7 +30765,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppArchives(self):
-        """spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
+        r"""spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
         :rtype: str
         """
         return self._AppArchives
@@ -30776,7 +30776,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def SparkImage(self):
-        """Spark Image 版本号
+        r"""Spark Image 版本号
         :rtype: str
         """
         return self._SparkImage
@@ -30787,7 +30787,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        """Spark Image 版本名称
+        r"""Spark Image 版本名称
         :rtype: str
         """
         return self._SparkImageVersion
@@ -30798,7 +30798,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def AppExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
         :rtype: int
         """
         return self._AppExecutorMaxNumbers
@@ -30809,7 +30809,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """关联dlc查询脚本
+        r"""关联dlc查询脚本
         :rtype: str
         """
         return self._SessionId
@@ -30820,7 +30820,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsInherit(self):
-        """任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
+        r"""任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
         :rtype: int
         """
         return self._IsInherit
@@ -30831,7 +30831,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def IsSessionStarted(self):
-        """是否使用session脚本的sql运行任务：false：否，true：是
+        r"""是否使用session脚本的sql运行任务：false：否，true：是
         :rtype: bool
         """
         return self._IsSessionStarted
@@ -30842,7 +30842,7 @@ class ModifySparkAppRequest(AbstractModel):
 
     @property
     def DependencyPackages(self):
-        """标准引擎依赖包
+        r"""标准引擎依赖包
         :rtype: list of DependencyPackage
         """
         return self._DependencyPackages
@@ -30900,7 +30900,7 @@ class ModifySparkAppRequest(AbstractModel):
 
 
 class ModifySparkAppResponse(AbstractModel):
-    """ModifySparkApp返回参数结构体
+    r"""ModifySparkApp返回参数结构体
 
     """
 
@@ -30913,7 +30913,7 @@ class ModifySparkAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -30928,7 +30928,7 @@ class ModifySparkAppResponse(AbstractModel):
 
 
 class ModifyUserRequest(AbstractModel):
-    """ModifyUser请求参数结构体
+    r"""ModifyUser请求参数结构体
 
     """
 
@@ -30944,7 +30944,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和CAM侧Uin匹配
+        r"""用户Id，和CAM侧Uin匹配
         :rtype: str
         """
         return self._UserId
@@ -30955,7 +30955,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def UserDescription(self):
-        """用户描述
+        r"""用户描述
         :rtype: str
         """
         return self._UserDescription
@@ -30979,7 +30979,7 @@ class ModifyUserRequest(AbstractModel):
 
 
 class ModifyUserResponse(AbstractModel):
-    """ModifyUser返回参数结构体
+    r"""ModifyUser返回参数结构体
 
     """
 
@@ -30992,7 +30992,7 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31007,7 +31007,7 @@ class ModifyUserResponse(AbstractModel):
 
 
 class ModifyUserTypeRequest(AbstractModel):
-    """ModifyUserType请求参数结构体
+    r"""ModifyUserType请求参数结构体
 
     """
 
@@ -31023,7 +31023,7 @@ class ModifyUserTypeRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -31034,7 +31034,7 @@ class ModifyUserTypeRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
+        r"""用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
         :rtype: str
         """
         return self._UserType
@@ -31058,7 +31058,7 @@ class ModifyUserTypeRequest(AbstractModel):
 
 
 class ModifyUserTypeResponse(AbstractModel):
-    """ModifyUserType返回参数结构体
+    r"""ModifyUserType返回参数结构体
 
     """
 
@@ -31071,7 +31071,7 @@ class ModifyUserTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31086,7 +31086,7 @@ class ModifyUserTypeResponse(AbstractModel):
 
 
 class ModifyWorkGroupRequest(AbstractModel):
-    """ModifyWorkGroup请求参数结构体
+    r"""ModifyWorkGroup请求参数结构体
 
     """
 
@@ -31102,7 +31102,7 @@ class ModifyWorkGroupRequest(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -31113,7 +31113,7 @@ class ModifyWorkGroupRequest(AbstractModel):
 
     @property
     def WorkGroupDescription(self):
-        """工作组描述，最大字符数限制50
+        r"""工作组描述，最大字符数限制50
         :rtype: str
         """
         return self._WorkGroupDescription
@@ -31137,7 +31137,7 @@ class ModifyWorkGroupRequest(AbstractModel):
 
 
 class ModifyWorkGroupResponse(AbstractModel):
-    """ModifyWorkGroup返回参数结构体
+    r"""ModifyWorkGroup返回参数结构体
 
     """
 
@@ -31150,7 +31150,7 @@ class ModifyWorkGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -31165,7 +31165,7 @@ class ModifyWorkGroupResponse(AbstractModel):
 
 
 class MountPointAssociates(AbstractModel):
-    """绑定融合桶信息
+    r"""绑定融合桶信息
 
     """
 
@@ -31190,7 +31190,7 @@ class MountPointAssociates(AbstractModel):
 
     @property
     def BucketId(self):
-        """桶Id
+        r"""桶Id
         :rtype: str
         """
         return self._BucketId
@@ -31201,7 +31201,7 @@ class MountPointAssociates(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpcId
+        r"""vpcId
         :rtype: str
         """
         return self._VpcId
@@ -31212,7 +31212,7 @@ class MountPointAssociates(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """子网地址
+        r"""子网地址
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -31223,7 +31223,7 @@ class MountPointAssociates(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组Id
+        r"""权限组Id
         :rtype: str
         """
         return self._AccessGroupId
@@ -31234,7 +31234,7 @@ class MountPointAssociates(AbstractModel):
 
     @property
     def AccessRuleId(self):
-        """权限规则Id
+        r"""权限规则Id
         :rtype: int
         """
         return self._AccessRuleId
@@ -31261,7 +31261,7 @@ class MountPointAssociates(AbstractModel):
 
 
 class MysqlInfo(AbstractModel):
-    """Mysql类型数据源信息
+    r"""Mysql类型数据源信息
 
     """
 
@@ -31294,7 +31294,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def JdbcUrl(self):
-        """连接mysql的jdbc url
+        r"""连接mysql的jdbc url
         :rtype: str
         """
         return self._JdbcUrl
@@ -31305,7 +31305,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def User(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._User
@@ -31316,7 +31316,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def Password(self):
-        """mysql密码
+        r"""mysql密码
         :rtype: str
         """
         return self._Password
@@ -31327,7 +31327,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def Location(self):
-        """mysql数据源的网络信息
+        r"""mysql数据源的网络信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         return self._Location
@@ -31338,7 +31338,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._DbName
@@ -31349,7 +31349,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """数据库实例ID，和数据库侧保持一致
+        r"""数据库实例ID，和数据库侧保持一致
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31361,7 +31361,7 @@ class MysqlInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """数据库实例名称，和数据库侧保持一致
+        r"""数据库实例名称，和数据库侧保持一致
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31393,7 +31393,7 @@ class MysqlInfo(AbstractModel):
 
 
 class NetWork(AbstractModel):
-    """网络配置信息
+    r"""网络配置信息
 
     """
 
@@ -31421,7 +31421,7 @@ class NetWork(AbstractModel):
 
     @property
     def ClbIp(self):
-        """服务clbip
+        r"""服务clbip
         :rtype: str
         """
         return self._ClbIp
@@ -31432,7 +31432,7 @@ class NetWork(AbstractModel):
 
     @property
     def ClbPort(self):
-        """服务clbPort
+        r"""服务clbPort
         :rtype: str
         """
         return self._ClbPort
@@ -31443,7 +31443,7 @@ class NetWork(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc实例id
+        r"""vpc实例id
         :rtype: str
         """
         return self._VpcId
@@ -31454,7 +31454,7 @@ class NetWork(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """vpc网段
+        r"""vpc网段
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -31465,7 +31465,7 @@ class NetWork(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网实例id
+        r"""子网实例id
         :rtype: str
         """
         return self._SubnetId
@@ -31476,7 +31476,7 @@ class NetWork(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
-        """子网网段
+        r"""子网网段
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -31504,7 +31504,7 @@ class NetWork(AbstractModel):
 
 
 class NetworkConnection(AbstractModel):
-    """网络配置
+    r"""网络配置
 
     """
 
@@ -31582,7 +31582,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def Id(self):
-        """网络配置id
+        r"""网络配置id
         :rtype: int
         """
         return self._Id
@@ -31593,7 +31593,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def AssociateId(self):
-        """网络配置唯一标志符
+        r"""网络配置唯一标志符
         :rtype: str
         """
         return self._AssociateId
@@ -31604,7 +31604,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def HouseId(self):
-        """计算引擎id
+        r"""计算引擎id
         :rtype: str
         """
         return self._HouseId
@@ -31615,7 +31615,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionId(self):
-        """数据源id(已废弃)
+        r"""数据源id(已废弃)
         :rtype: str
         """
         return self._DatasourceConnectionId
@@ -31626,7 +31626,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def State(self):
-        """网络配置状态（0-初始化，1-正常）
+        r"""网络配置状态（0-初始化，1-正常）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31638,7 +31638,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -31649,7 +31649,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改时间
+        r"""修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31661,7 +31661,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def Appid(self):
-        """创建用户Appid
+        r"""创建用户Appid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31673,7 +31673,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def HouseName(self):
-        """计算引擎名称
+        r"""计算引擎名称
         :rtype: str
         """
         return self._HouseName
@@ -31684,7 +31684,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -31695,7 +31695,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def NetworkConnectionType(self):
-        """网络配置类型
+        r"""网络配置类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31707,7 +31707,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def Uin(self):
-        """创建用户uin
+        r"""创建用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31719,7 +31719,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        """创建用户SubAccountUin
+        r"""创建用户SubAccountUin
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31731,7 +31731,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def NetworkConnectionDesc(self):
-        """网络配置描述
+        r"""网络配置描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31743,7 +31743,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionVpcId(self):
-        """数据源vpcid
+        r"""数据源vpcid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31755,7 +31755,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionSubnetId(self):
-        """数据源SubnetId
+        r"""数据源SubnetId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31767,7 +31767,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionCidrBlock(self):
-        """数据源SubnetId
+        r"""数据源SubnetId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31779,7 +31779,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def DatasourceConnectionSubnetCidrBlock(self):
-        """数据源SubnetCidrBlock
+        r"""数据源SubnetCidrBlock
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31791,7 +31791,7 @@ class NetworkConnection(AbstractModel):
 
     @property
     def EGSupport(self):
-        """支持 eg
+        r"""支持 eg
         :rtype: int
         """
         return self._EGSupport
@@ -31832,7 +31832,7 @@ class NetworkConnection(AbstractModel):
 
 
 class NotebookSessionInfo(AbstractModel):
-    """Notebook Session详细信息。
+    r"""Notebook Session详细信息。
 
     """
 
@@ -31926,7 +31926,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Session名称
+        r"""Session名称
         :rtype: str
         """
         return self._Name
@@ -31937,7 +31937,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def Kind(self):
-        """类型，当前支持：spark、pyspark、sparkr、sql
+        r"""类型，当前支持：spark、pyspark、sparkr、sql
         :rtype: str
         """
         return self._Kind
@@ -31948,7 +31948,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """DLC Spark作业引擎名称
+        r"""DLC Spark作业引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -31959,7 +31959,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def Arguments(self):
-        """Session相关配置，当前支持：eni、roleArn以及用户指定的配置
+        r"""Session相关配置，当前支持：eni、roleArn以及用户指定的配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -31971,7 +31971,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ProgramDependentFiles(self):
-        """运行程序地址，当前支持：cosn://和lakefs://两种路径
+        r"""运行程序地址，当前支持：cosn://和lakefs://两种路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -31983,7 +31983,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ProgramDependentJars(self):
-        """依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -31995,7 +31995,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ProgramDependentPython(self):
-        """依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -32007,7 +32007,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ProgramArchives(self):
-        """依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+        r"""依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -32019,7 +32019,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def DriverSize(self):
-        """指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._DriverSize
@@ -32030,7 +32030,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        r"""指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :rtype: str
         """
         return self._ExecutorSize
@@ -32041,7 +32041,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ExecutorNumbers(self):
-        """指定的Executor数量，默认为1
+        r"""指定的Executor数量，默认为1
         :rtype: int
         """
         return self._ExecutorNumbers
@@ -32052,7 +32052,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ProxyUser(self):
-        """代理用户，默认为root
+        r"""代理用户，默认为root
         :rtype: str
         """
         return self._ProxyUser
@@ -32063,7 +32063,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def TimeoutInSecond(self):
-        """指定的Session超时时间，单位秒，默认3600秒
+        r"""指定的Session超时时间，单位秒，默认3600秒
         :rtype: int
         """
         return self._TimeoutInSecond
@@ -32074,7 +32074,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """Spark任务返回的AppId
+        r"""Spark任务返回的AppId
         :rtype: str
         """
         return self._SparkAppId
@@ -32085,7 +32085,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -32096,7 +32096,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def State(self):
-        """Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        r"""Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
         :rtype: str
         """
         return self._State
@@ -32107,7 +32107,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Session创建时间
+        r"""Session创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -32118,7 +32118,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def AppInfo(self):
-        """其它信息
+        r"""其它信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -32130,7 +32130,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def SparkUiUrl(self):
-        """Spark ui地址
+        r"""Spark ui地址
         :rtype: str
         """
         return self._SparkUiUrl
@@ -32141,7 +32141,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -32152,7 +32152,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def SessionType(self):
-        """session类型，group：资源组下session independent：独立资源session， 不依赖资源组
+        r"""session类型，group：资源组下session independent：独立资源session， 不依赖资源组
         :rtype: str
         """
         return self._SessionType
@@ -32163,7 +32163,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -32174,7 +32174,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._ResourceGroupId
@@ -32185,7 +32185,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """资源组名称
+        r"""资源组名称
         :rtype: str
         """
         return self._ResourceGroupName
@@ -32196,7 +32196,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def PodSize(self):
-        """session，pod大小
+        r"""session，pod大小
         :rtype: int
         """
         return self._PodSize
@@ -32207,7 +32207,7 @@ class NotebookSessionInfo(AbstractModel):
 
     @property
     def PodNumbers(self):
-        """pod数量
+        r"""pod数量
         :rtype: int
         """
         return self._PodNumbers
@@ -32265,7 +32265,7 @@ class NotebookSessionInfo(AbstractModel):
 
 
 class NotebookSessionStatementBatchInformation(AbstractModel):
-    """按批提交Statement运行SQL任务。
+    r"""按批提交Statement运行SQL任务。
 
     """
 
@@ -32289,7 +32289,7 @@ class NotebookSessionStatementBatchInformation(AbstractModel):
 
     @property
     def NotebookSessionStatementBatch(self):
-        """任务详情列表
+        r"""任务详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NotebookSessionStatementInfo
         """
@@ -32301,7 +32301,7 @@ class NotebookSessionStatementBatchInformation(AbstractModel):
 
     @property
     def IsAvailable(self):
-        """当前批任务是否运行完成
+        r"""当前批任务是否运行完成
         :rtype: bool
         """
         return self._IsAvailable
@@ -32312,7 +32312,7 @@ class NotebookSessionStatementBatchInformation(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -32323,7 +32323,7 @@ class NotebookSessionStatementBatchInformation(AbstractModel):
 
     @property
     def BatchId(self):
-        """Batch唯一标识
+        r"""Batch唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32355,7 +32355,7 @@ class NotebookSessionStatementBatchInformation(AbstractModel):
 
 
 class NotebookSessionStatementInfo(AbstractModel):
-    """NotebookSessionStatement详情。
+    r"""NotebookSessionStatement详情。
 
     """
 
@@ -32393,7 +32393,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def Completed(self):
-        """完成时间戳
+        r"""完成时间戳
         :rtype: int
         """
         return self._Completed
@@ -32404,7 +32404,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def Started(self):
-        """开始时间戳
+        r"""开始时间戳
         :rtype: int
         """
         return self._Started
@@ -32415,7 +32415,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def Progress(self):
-        """完成进度，百分制
+        r"""完成进度，百分制
         :rtype: float
         """
         return self._Progress
@@ -32426,7 +32426,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def StatementId(self):
-        """Session Statement唯一标识
+        r"""Session Statement唯一标识
         :rtype: str
         """
         return self._StatementId
@@ -32437,7 +32437,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def State(self):
-        """Session Statement状态，包含：waiting（排队中）、running（运行中）、available（正常）、error（异常）、cancelling（取消中）、cancelled（已取消）
+        r"""Session Statement状态，包含：waiting（排队中）、running（运行中）、available（正常）、error（异常）、cancelling（取消中）、cancelled（已取消）
         :rtype: str
         """
         return self._State
@@ -32448,7 +32448,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def OutPut(self):
-        """Statement输出信息
+        r"""Statement输出信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.StatementOutput`
         """
@@ -32460,7 +32460,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def BatchId(self):
-        """批任务id
+        r"""批任务id
         :rtype: str
         """
         return self._BatchId
@@ -32471,7 +32471,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def Code(self):
-        """运行语句
+        r"""运行语句
         :rtype: str
         """
         return self._Code
@@ -32482,7 +32482,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -32515,7 +32515,7 @@ class NotebookSessionStatementInfo(AbstractModel):
 
 
 class NotebookSessions(AbstractModel):
-    """notebook session列表信息。
+    r"""notebook session列表信息。
 
     """
 
@@ -32570,7 +32570,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def Kind(self):
-        """类型，当前支持：spark、pyspark、sparkr、sql
+        r"""类型，当前支持：spark、pyspark、sparkr、sql
         :rtype: str
         """
         return self._Kind
@@ -32581,7 +32581,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session唯一标识
+        r"""Session唯一标识
         :rtype: str
         """
         return self._SessionId
@@ -32592,7 +32592,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def ProxyUser(self):
-        """代理用户，默认为root
+        r"""代理用户，默认为root
         :rtype: str
         """
         return self._ProxyUser
@@ -32603,7 +32603,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def State(self):
-        """Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        r"""Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
         :rtype: str
         """
         return self._State
@@ -32614,7 +32614,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def SparkAppId(self):
-        """Spark任务返回的AppId
+        r"""Spark任务返回的AppId
         :rtype: str
         """
         return self._SparkAppId
@@ -32625,7 +32625,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def Name(self):
-        """Session名称
+        r"""Session名称
         :rtype: str
         """
         return self._Name
@@ -32636,7 +32636,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Session创建时间
+        r"""Session创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -32647,7 +32647,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -32658,7 +32658,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def LastRunningTime(self):
-        """最新的运行时间
+        r"""最新的运行时间
         :rtype: str
         """
         return self._LastRunningTime
@@ -32669,7 +32669,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者
+        r"""创建者
         :rtype: str
         """
         return self._Creator
@@ -32680,7 +32680,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def SparkUiUrl(self):
-        """spark ui地址
+        r"""spark ui地址
         :rtype: str
         """
         return self._SparkUiUrl
@@ -32691,7 +32691,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def SessionType(self):
-        """session类型，group：资源组session independent：独立资源session，不依赖资源组
+        r"""session类型，group：资源组session independent：独立资源session，不依赖资源组
         :rtype: str
         """
         return self._SessionType
@@ -32702,7 +32702,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎id
+        r"""引擎id
         :rtype: str
         """
         return self._DataEngineId
@@ -32713,7 +32713,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._ResourceGroupId
@@ -32724,7 +32724,7 @@ class NotebookSessions(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """资源组名字
+        r"""资源组名字
         :rtype: str
         """
         return self._ResourceGroupName
@@ -32761,7 +32761,7 @@ class NotebookSessions(AbstractModel):
 
 
 class OpendThirdAccessUserInfo(AbstractModel):
-    """开通了第三方访问的用户信息
+    r"""开通了第三方访问的用户信息
 
     """
 
@@ -32783,7 +32783,7 @@ class OpendThirdAccessUserInfo(AbstractModel):
 
     @property
     def Id(self):
-        """id信息
+        r"""id信息
         :rtype: int
         """
         return self._Id
@@ -32794,7 +32794,7 @@ class OpendThirdAccessUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """用户主UIN
+        r"""用户主UIN
         :rtype: str
         """
         return self._Uin
@@ -32805,7 +32805,7 @@ class OpendThirdAccessUserInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户AppId
+        r"""用户AppId
         :rtype: str
         """
         return self._AppId
@@ -32816,7 +32816,7 @@ class OpendThirdAccessUserInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """开通时间
+        r"""开通时间
         :rtype: str
         """
         return self._CreateTime
@@ -32842,7 +32842,7 @@ class OpendThirdAccessUserInfo(AbstractModel):
 
 
 class OperateEngineResourceGroupFailMessage(AbstractModel):
-    """操作资源组，返回的操作失败信息
+    r"""操作资源组，返回的操作失败信息
 
     """
 
@@ -32858,7 +32858,7 @@ class OperateEngineResourceGroupFailMessage(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """引擎资源组名称
+        r"""引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -32869,7 +32869,7 @@ class OperateEngineResourceGroupFailMessage(AbstractModel):
 
     @property
     def FailMessage(self):
-        """操作失败的提示信息
+        r"""操作失败的提示信息
         :rtype: str
         """
         return self._FailMessage
@@ -32893,7 +32893,7 @@ class OperateEngineResourceGroupFailMessage(AbstractModel):
 
 
 class OptimizerEngineInfo(AbstractModel):
-    """数据优化引擎信息
+    r"""数据优化引擎信息
 
     """
 
@@ -32913,7 +32913,7 @@ class OptimizerEngineInfo(AbstractModel):
 
     @property
     def HouseName(self):
-        """引擎资源名称
+        r"""引擎资源名称
         :rtype: str
         """
         return self._HouseName
@@ -32924,7 +32924,7 @@ class OptimizerEngineInfo(AbstractModel):
 
     @property
     def HouseId(self):
-        """引擎资源ID
+        r"""引擎资源ID
         :rtype: str
         """
         return self._HouseId
@@ -32935,7 +32935,7 @@ class OptimizerEngineInfo(AbstractModel):
 
     @property
     def HouseSize(self):
-        """该参数仅针对spark作业引擎有效，用于执行数据优化任务的资源大小，不填时将采用该引擎所有资源
+        r"""该参数仅针对spark作业引擎有效，用于执行数据优化任务的资源大小，不填时将采用该引擎所有资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -32961,7 +32961,7 @@ class OptimizerEngineInfo(AbstractModel):
 
 
 class Other(AbstractModel):
-    """数据格式其它类型。
+    r"""数据格式其它类型。
 
     """
 
@@ -32974,7 +32974,7 @@ class Other(AbstractModel):
 
     @property
     def Format(self):
-        """枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
+        r"""枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
         :rtype: str
         """
         return self._Format
@@ -32997,7 +32997,7 @@ class Other(AbstractModel):
 
 
 class OtherCHDFSBinding(AbstractModel):
-    """非DLC产品CHDFS绑定
+    r"""非DLC产品CHDFS绑定
 
     """
 
@@ -33019,7 +33019,7 @@ class OtherCHDFSBinding(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -33030,7 +33030,7 @@ class OtherCHDFSBinding(AbstractModel):
 
     @property
     def SuperUser(self):
-        """用户名称（该字段已废弃）
+        r"""用户名称（该字段已废弃）
         :rtype: list of str
         """
         return self._SuperUser
@@ -33041,7 +33041,7 @@ class OtherCHDFSBinding(AbstractModel):
 
     @property
     def VpcInfo(self):
-        """vpc配置信息
+        r"""vpc配置信息
         :rtype: list of CHDFSProductVpcInfo
         """
         return self._VpcInfo
@@ -33052,7 +33052,7 @@ class OtherCHDFSBinding(AbstractModel):
 
     @property
     def IsBind(self):
-        """是否与该桶绑定（该字段已废弃）
+        r"""是否与该桶绑定（该字段已废弃）
         :rtype: bool
         """
         return self._IsBind
@@ -33083,7 +33083,7 @@ class OtherCHDFSBinding(AbstractModel):
 
 
 class OtherDatasourceConnection(AbstractModel):
-    """其他数据源
+    r"""其他数据源
 
     """
 
@@ -33096,7 +33096,7 @@ class OtherDatasourceConnection(AbstractModel):
 
     @property
     def Location(self):
-        """网络参数
+        r"""网络参数
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         return self._Location
@@ -33121,7 +33121,7 @@ class OtherDatasourceConnection(AbstractModel):
 
 
 class Param(AbstractModel):
-    """对指定参数的更新、增加、删除
+    r"""对指定参数的更新、增加、删除
 
     """
 
@@ -33140,7 +33140,7 @@ class Param(AbstractModel):
 
     @property
     def ConfigItem(self):
-        """参数key，例如：
+        r"""参数key，例如：
         :rtype: str
         """
         return self._ConfigItem
@@ -33151,7 +33151,7 @@ class Param(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """参数值
+        r"""参数值
         :rtype: str
         """
         return self._ConfigValue
@@ -33162,7 +33162,7 @@ class Param(AbstractModel):
 
     @property
     def Operate(self):
-        """下发操作，支持：ADD、DELETE、MODIFY
+        r"""下发操作，支持：ADD、DELETE、MODIFY
         :rtype: str
         """
         return self._Operate
@@ -33187,7 +33187,7 @@ class Param(AbstractModel):
 
 
 class Partition(AbstractModel):
-    """数据表分块信息。
+    r"""数据表分块信息。
 
     """
 
@@ -33216,7 +33216,7 @@ class Partition(AbstractModel):
 
     @property
     def Name(self):
-        """分区列名。
+        r"""分区列名。
         :rtype: str
         """
         return self._Name
@@ -33227,7 +33227,7 @@ class Partition(AbstractModel):
 
     @property
     def Type(self):
-        """分区类型。
+        r"""分区类型。
         :rtype: str
         """
         return self._Type
@@ -33238,7 +33238,7 @@ class Partition(AbstractModel):
 
     @property
     def Comment(self):
-        """对分区的描述。
+        r"""对分区的描述。
         :rtype: str
         """
         return self._Comment
@@ -33249,7 +33249,7 @@ class Partition(AbstractModel):
 
     @property
     def Transform(self):
-        """隐式分区转换策略
+        r"""隐式分区转换策略
         :rtype: str
         """
         return self._Transform
@@ -33260,7 +33260,7 @@ class Partition(AbstractModel):
 
     @property
     def TransformArgs(self):
-        """转换策略参数
+        r"""转换策略参数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -33272,7 +33272,7 @@ class Partition(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -33300,7 +33300,7 @@ class Partition(AbstractModel):
 
 
 class PauseStandardEngineResourceGroupsRequest(AbstractModel):
-    """PauseStandardEngineResourceGroups请求参数结构体
+    r"""PauseStandardEngineResourceGroups请求参数结构体
 
     """
 
@@ -33313,7 +33313,7 @@ class PauseStandardEngineResourceGroupsRequest(AbstractModel):
 
     @property
     def EngineResourceGroupNames(self):
-        """标准引擎资源组名称
+        r"""标准引擎资源组名称
         :rtype: list of str
         """
         return self._EngineResourceGroupNames
@@ -33336,7 +33336,7 @@ class PauseStandardEngineResourceGroupsRequest(AbstractModel):
 
 
 class PauseStandardEngineResourceGroupsResponse(AbstractModel):
-    """PauseStandardEngineResourceGroups返回参数结构体
+    r"""PauseStandardEngineResourceGroups返回参数结构体
 
     """
 
@@ -33353,7 +33353,7 @@ class PauseStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def OperateEngineResourceGroupFailMessages(self):
-        """批量操作资源组时，操作失败的资源组相关信息
+        r"""批量操作资源组时，操作失败的资源组相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OperateEngineResourceGroupFailMessage
         """
@@ -33365,7 +33365,7 @@ class PauseStandardEngineResourceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -33386,7 +33386,7 @@ class PauseStandardEngineResourceGroupsResponse(AbstractModel):
 
 
 class Policy(AbstractModel):
-    """权限对象
+    r"""权限对象
 
     """
 
@@ -33463,7 +33463,7 @@ class Policy(AbstractModel):
 
     @property
     def Database(self):
-        """需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+        r"""需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
         :rtype: str
         """
         return self._Database
@@ -33474,7 +33474,7 @@ class Policy(AbstractModel):
 
     @property
     def Catalog(self):
-        """需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        r"""需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
         :rtype: str
         """
         return self._Catalog
@@ -33485,7 +33485,7 @@ class Policy(AbstractModel):
 
     @property
     def Table(self):
-        """需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        r"""需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
         :rtype: str
         """
         return self._Table
@@ -33496,7 +33496,7 @@ class Policy(AbstractModel):
 
     @property
     def Operation(self):
-        """授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
+        r"""授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
         :rtype: str
         """
         return self._Operation
@@ -33507,7 +33507,7 @@ class Policy(AbstractModel):
 
     @property
     def PolicyType(self):
-        """授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
+        r"""授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
         :rtype: str
         """
         return self._PolicyType
@@ -33518,7 +33518,7 @@ class Policy(AbstractModel):
 
     @property
     def Function(self):
-        """需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+        r"""需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33530,7 +33530,7 @@ class Policy(AbstractModel):
 
     @property
     def View(self):
-        """需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+        r"""需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33542,7 +33542,7 @@ class Policy(AbstractModel):
 
     @property
     def Column(self):
-        """需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+        r"""需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33554,7 +33554,7 @@ class Policy(AbstractModel):
 
     @property
     def DataEngine(self):
-        """需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+        r"""需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33566,7 +33566,7 @@ class Policy(AbstractModel):
 
     @property
     def ReAuth(self):
-        """用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
+        r"""用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -33578,7 +33578,7 @@ class Policy(AbstractModel):
 
     @property
     def Source(self):
-        """权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
+        r"""权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33590,7 +33590,7 @@ class Policy(AbstractModel):
 
     @property
     def Mode(self):
-        """授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
+        r"""授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33602,7 +33602,7 @@ class Policy(AbstractModel):
 
     @property
     def Operator(self):
-        """操作者，入参不填。
+        r"""操作者，入参不填。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33614,7 +33614,7 @@ class Policy(AbstractModel):
 
     @property
     def CreateTime(self):
-        """权限创建的时间，入参不填
+        r"""权限创建的时间，入参不填
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33626,7 +33626,7 @@ class Policy(AbstractModel):
 
     @property
     def SourceId(self):
-        """权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        r"""权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33638,7 +33638,7 @@ class Policy(AbstractModel):
 
     @property
     def SourceName(self):
-        """权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        r"""权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33650,7 +33650,7 @@ class Policy(AbstractModel):
 
     @property
     def Id(self):
-        """策略ID
+        r"""策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33662,7 +33662,7 @@ class Policy(AbstractModel):
 
     @property
     def EngineGeneration(self):
-        """引擎类型
+        r"""引擎类型
 
         :rtype: str
         """
@@ -33703,7 +33703,7 @@ class Policy(AbstractModel):
 
 
 class Policys(AbstractModel):
-    """策略集合
+    r"""策略集合
 
     """
 
@@ -33720,7 +33720,7 @@ class Policys(AbstractModel):
 
     @property
     def PolicySet(self):
-        """策略集合
+        r"""策略集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Policy
         """
@@ -33732,7 +33732,7 @@ class Policys(AbstractModel):
 
     @property
     def TotalCount(self):
-        """策略总数
+        r"""策略总数
         :rtype: int
         """
         return self._TotalCount
@@ -33761,7 +33761,7 @@ class Policys(AbstractModel):
 
 
 class PrestoMonitorMetrics(AbstractModel):
-    """Presto监控指标
+    r"""Presto监控指标
 
     """
 
@@ -33779,7 +33779,7 @@ class PrestoMonitorMetrics(AbstractModel):
 
     @property
     def LocalCacheHitRate(self):
-        """	Alluxio本地缓存命中率
+        r"""	Alluxio本地缓存命中率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -33791,7 +33791,7 @@ class PrestoMonitorMetrics(AbstractModel):
 
     @property
     def FragmentCacheHitRate(self):
-        """Fragment缓存命中率
+        r"""Fragment缓存命中率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -33816,7 +33816,7 @@ class PrestoMonitorMetrics(AbstractModel):
 
 
 class Property(AbstractModel):
-    """数据库和数据表属性信息
+    r"""数据库和数据表属性信息
 
     """
 
@@ -33832,7 +33832,7 @@ class Property(AbstractModel):
 
     @property
     def Key(self):
-        """属性key名称。
+        r"""属性key名称。
         :rtype: str
         """
         return self._Key
@@ -33843,7 +33843,7 @@ class Property(AbstractModel):
 
     @property
     def Value(self):
-        """属性key对应的value。
+        r"""属性key对应的value。
         :rtype: str
         """
         return self._Value
@@ -33867,7 +33867,7 @@ class Property(AbstractModel):
 
 
 class PythonSparkImage(AbstractModel):
-    """python-spark镜像信息。
+    r"""python-spark镜像信息。
 
     """
 
@@ -33895,7 +33895,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def SparkImageId(self):
-        """spark镜像唯一id
+        r"""spark镜像唯一id
         :rtype: str
         """
         return self._SparkImageId
@@ -33906,7 +33906,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def ChildImageVersionId(self):
-        """集群小版本镜像id
+        r"""集群小版本镜像id
         :rtype: str
         """
         return self._ChildImageVersionId
@@ -33917,7 +33917,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        """spark镜像名称
+        r"""spark镜像名称
         :rtype: str
         """
         return self._SparkImageVersion
@@ -33928,7 +33928,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def Description(self):
-        """spark镜像描述信息
+        r"""spark镜像描述信息
         :rtype: str
         """
         return self._Description
@@ -33939,7 +33939,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -33950,7 +33950,7 @@ class PythonSparkImage(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -33978,7 +33978,7 @@ class PythonSparkImage(AbstractModel):
 
 
 class QueryInternalTableWarehouseRequest(AbstractModel):
-    """QueryInternalTableWarehouse请求参数结构体
+    r"""QueryInternalTableWarehouse请求参数结构体
 
     """
 
@@ -33994,7 +33994,7 @@ class QueryInternalTableWarehouseRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """库名
+        r"""库名
         :rtype: str
         """
         return self._DatabaseName
@@ -34005,7 +34005,7 @@ class QueryInternalTableWarehouseRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """表名
+        r"""表名
         :rtype: str
         """
         return self._TableName
@@ -34029,7 +34029,7 @@ class QueryInternalTableWarehouseRequest(AbstractModel):
 
 
 class QueryInternalTableWarehouseResponse(AbstractModel):
-    """QueryInternalTableWarehouse返回参数结构体
+    r"""QueryInternalTableWarehouse返回参数结构体
 
     """
 
@@ -34045,7 +34045,7 @@ class QueryInternalTableWarehouseResponse(AbstractModel):
 
     @property
     def WarehousePath(self):
-        """warehouse路径
+        r"""warehouse路径
         :rtype: str
         """
         return self._WarehousePath
@@ -34056,7 +34056,7 @@ class QueryInternalTableWarehouseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34072,7 +34072,7 @@ class QueryInternalTableWarehouseResponse(AbstractModel):
 
 
 class QueryResultRequest(AbstractModel):
-    """QueryResult请求参数结构体
+    r"""QueryResult请求参数结构体
 
     """
 
@@ -34088,7 +34088,7 @@ class QueryResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -34099,7 +34099,7 @@ class QueryResultRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """objectListMarker={marker}&lastReadFile={filename}&lastReadOffsetlastReadFile为上一次读取的文件，lastReadOffset为上一次读取到的位置
+        r"""objectListMarker={marker}&lastReadFile={filename}&lastReadOffsetlastReadFile为上一次读取的文件，lastReadOffset为上一次读取到的位置
         :rtype: str
         """
         return self._NextToken
@@ -34123,7 +34123,7 @@ class QueryResultRequest(AbstractModel):
 
 
 class QueryResultResponse(AbstractModel):
-    """QueryResult返回参数结构体
+    r"""QueryResult返回参数结构体
 
     """
 
@@ -34148,7 +34148,7 @@ class QueryResultResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务Id
+        r"""任务Id
         :rtype: str
         """
         return self._TaskId
@@ -34159,7 +34159,7 @@ class QueryResultResponse(AbstractModel):
 
     @property
     def ResultSet(self):
-        """结果数据
+        r"""结果数据
         :rtype: str
         """
         return self._ResultSet
@@ -34170,7 +34170,7 @@ class QueryResultResponse(AbstractModel):
 
     @property
     def ResultSchema(self):
-        """schema
+        r"""schema
         :rtype: list of Column
         """
         return self._ResultSchema
@@ -34181,7 +34181,7 @@ class QueryResultResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        """分页信息
+        r"""分页信息
         :rtype: str
         """
         return self._NextToken
@@ -34192,7 +34192,7 @@ class QueryResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34216,7 +34216,7 @@ class QueryResultResponse(AbstractModel):
 
 
 class QueryTaskCostDetailRequest(AbstractModel):
-    """QueryTaskCostDetail请求参数结构体
+    r"""QueryTaskCostDetail请求参数结构体
 
     """
 
@@ -34248,7 +34248,7 @@ task-operator- string （子uin过滤）
 
     @property
     def Filters(self):
-        """过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
 task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
@@ -34263,7 +34263,7 @@ task-operator- string （子uin过滤）
 
     @property
     def StartTime(self):
-        """起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
         :rtype: str
         """
         return self._StartTime
@@ -34274,7 +34274,7 @@ task-operator- string （子uin过滤）
 
     @property
     def EndTime(self):
-        """结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :rtype: str
         """
         return self._EndTime
@@ -34285,7 +34285,7 @@ task-operator- string （子uin过滤）
 
     @property
     def DataEngineName(self):
-        """数据引擎名称，用于筛选
+        r"""数据引擎名称，用于筛选
         :rtype: str
         """
         return self._DataEngineName
@@ -34296,7 +34296,7 @@ task-operator- string （子uin过滤）
 
     @property
     def SearchAfter(self):
-        """下一页的标识
+        r"""下一页的标识
         :rtype: str
         """
         return self._SearchAfter
@@ -34307,7 +34307,7 @@ task-operator- string （子uin过滤）
 
     @property
     def PageSize(self):
-        """每页的大小
+        r"""每页的大小
         :rtype: int
         """
         return self._PageSize
@@ -34340,7 +34340,7 @@ task-operator- string （子uin过滤）
 
 
 class QueryTaskCostDetailResponse(AbstractModel):
-    """QueryTaskCostDetail返回参数结构体
+    r"""QueryTaskCostDetail返回参数结构体
 
     """
 
@@ -34359,7 +34359,7 @@ class QueryTaskCostDetailResponse(AbstractModel):
 
     @property
     def SearchAfter(self):
-        """下一页的标识
+        r"""下一页的标识
         :rtype: str
         """
         return self._SearchAfter
@@ -34370,7 +34370,7 @@ class QueryTaskCostDetailResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的数据
+        r"""返回的数据
         :rtype: str
         """
         return self._Data
@@ -34381,7 +34381,7 @@ class QueryTaskCostDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34398,13 +34398,13 @@ class QueryTaskCostDetailResponse(AbstractModel):
 
 
 class RegisterThirdPartyAccessUserRequest(AbstractModel):
-    """RegisterThirdPartyAccessUser请求参数结构体
+    r"""RegisterThirdPartyAccessUser请求参数结构体
 
     """
 
 
 class RegisterThirdPartyAccessUserResponse(AbstractModel):
-    """RegisterThirdPartyAccessUser返回参数结构体
+    r"""RegisterThirdPartyAccessUser返回参数结构体
 
     """
 
@@ -34417,7 +34417,7 @@ class RegisterThirdPartyAccessUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34432,7 +34432,7 @@ class RegisterThirdPartyAccessUserResponse(AbstractModel):
 
 
 class RenewDataEngineRequest(AbstractModel):
-    """RenewDataEngine请求参数结构体
+    r"""RenewDataEngine请求参数结构体
 
     """
 
@@ -34457,7 +34457,7 @@ class RenewDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """CU队列名称
+        r"""CU队列名称
         :rtype: str
         """
         return self._DataEngineName
@@ -34468,7 +34468,7 @@ class RenewDataEngineRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """续费时长，单位月，最少续费1一个月
+        r"""续费时长，单位月，最少续费1一个月
         :rtype: int
         """
         return self._TimeSpan
@@ -34479,7 +34479,7 @@ class RenewDataEngineRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费类型，默认为1，预付费
+        r"""付费类型，默认为1，预付费
         :rtype: int
         """
         return self._PayMode
@@ -34490,7 +34490,7 @@ class RenewDataEngineRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """单位，默认m，仅能填m
+        r"""单位，默认m，仅能填m
         :rtype: str
         """
         return self._TimeUnit
@@ -34501,7 +34501,7 @@ class RenewDataEngineRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费。不传该参数默认为0
+        r"""自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费。不传该参数默认为0
         :rtype: int
         """
         return self._RenewFlag
@@ -34528,7 +34528,7 @@ class RenewDataEngineRequest(AbstractModel):
 
 
 class RenewDataEngineResponse(AbstractModel):
-    """RenewDataEngine返回参数结构体
+    r"""RenewDataEngine返回参数结构体
 
     """
 
@@ -34541,7 +34541,7 @@ class RenewDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34556,7 +34556,7 @@ class RenewDataEngineResponse(AbstractModel):
 
 
 class ReportHeartbeatMetaDataRequest(AbstractModel):
-    """ReportHeartbeatMetaData请求参数结构体
+    r"""ReportHeartbeatMetaData请求参数结构体
 
     """
 
@@ -34575,7 +34575,7 @@ class ReportHeartbeatMetaDataRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -34586,7 +34586,7 @@ class ReportHeartbeatMetaDataRequest(AbstractModel):
 
     @property
     def LockId(self):
-        """锁ID
+        r"""锁ID
         :rtype: int
         """
         return self._LockId
@@ -34597,7 +34597,7 @@ class ReportHeartbeatMetaDataRequest(AbstractModel):
 
     @property
     def TxnId(self):
-        """事务ID
+        r"""事务ID
         :rtype: int
         """
         return self._TxnId
@@ -34622,7 +34622,7 @@ class ReportHeartbeatMetaDataRequest(AbstractModel):
 
 
 class ReportHeartbeatMetaDataResponse(AbstractModel):
-    """ReportHeartbeatMetaData返回参数结构体
+    r"""ReportHeartbeatMetaData返回参数结构体
 
     """
 
@@ -34635,7 +34635,7 @@ class ReportHeartbeatMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34650,7 +34650,7 @@ class ReportHeartbeatMetaDataResponse(AbstractModel):
 
 
 class ResourceInfo(AbstractModel):
-    """ResourceInfo
+    r"""ResourceInfo
 
     """
 
@@ -34682,7 +34682,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def AttributionType(self):
-        """归属类型
+        r"""归属类型
         :rtype: str
         """
         return self._AttributionType
@@ -34693,7 +34693,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ResourceType
@@ -34704,7 +34704,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._Name
@@ -34715,7 +34715,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Instance(self):
-        """如资源类型为spark-sql 取值为Name, 如为spark-batch 取值为session app_name
+        r"""如资源类型为spark-sql 取值为Name, 如为spark-batch 取值为session app_name
         :rtype: str
         """
         return self._Instance
@@ -34726,7 +34726,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Favor(self):
-        """亲和性
+        r"""亲和性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FavorInfo
         """
@@ -34738,7 +34738,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        r"""状态
         :rtype: int
         """
         return self._Status
@@ -34749,7 +34749,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """标准引擎资源组信息
+        r"""标准引擎资源组信息
         :rtype: str
         """
         return self._ResourceGroupName
@@ -34783,7 +34783,7 @@ class ResourceInfo(AbstractModel):
 
 
 class RestartDataEngineRequest(AbstractModel):
-    """RestartDataEngine请求参数结构体
+    r"""RestartDataEngine请求参数结构体
 
     """
 
@@ -34799,7 +34799,7 @@ class RestartDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -34810,7 +34810,7 @@ class RestartDataEngineRequest(AbstractModel):
 
     @property
     def ForcedOperation(self):
-        """是否强制重启，忽略任务
+        r"""是否强制重启，忽略任务
         :rtype: bool
         """
         return self._ForcedOperation
@@ -34834,7 +34834,7 @@ class RestartDataEngineRequest(AbstractModel):
 
 
 class RestartDataEngineResponse(AbstractModel):
-    """RestartDataEngine返回参数结构体
+    r"""RestartDataEngine返回参数结构体
 
     """
 
@@ -34847,7 +34847,7 @@ class RestartDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34862,7 +34862,7 @@ class RestartDataEngineResponse(AbstractModel):
 
 
 class RevokeDLCCatalogAccessRequest(AbstractModel):
-    """RevokeDLCCatalogAccess请求参数结构体
+    r"""RevokeDLCCatalogAccess请求参数结构体
 
     """
 
@@ -34875,7 +34875,7 @@ class RevokeDLCCatalogAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcID
+        r"""VpcID
         :rtype: str
         """
         return self._VpcId
@@ -34898,7 +34898,7 @@ class RevokeDLCCatalogAccessRequest(AbstractModel):
 
 
 class RevokeDLCCatalogAccessResponse(AbstractModel):
-    """RevokeDLCCatalogAccess返回参数结构体
+    r"""RevokeDLCCatalogAccess返回参数结构体
 
     """
 
@@ -34911,7 +34911,7 @@ class RevokeDLCCatalogAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -34926,7 +34926,7 @@ class RevokeDLCCatalogAccessResponse(AbstractModel):
 
 
 class RollbackDataEngineImageRequest(AbstractModel):
-    """RollbackDataEngineImage请求参数结构体
+    r"""RollbackDataEngineImage请求参数结构体
 
     """
 
@@ -34945,7 +34945,7 @@ class RollbackDataEngineImageRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -34956,7 +34956,7 @@ class RollbackDataEngineImageRequest(AbstractModel):
 
     @property
     def FromRecordId(self):
-        """检查是否能回滚的接口返回的FromRecordId参数
+        r"""检查是否能回滚的接口返回的FromRecordId参数
         :rtype: str
         """
         return self._FromRecordId
@@ -34967,7 +34967,7 @@ class RollbackDataEngineImageRequest(AbstractModel):
 
     @property
     def ToRecordId(self):
-        """检查是否能回滚的接口返回的ToRecordId参数
+        r"""检查是否能回滚的接口返回的ToRecordId参数
         :rtype: str
         """
         return self._ToRecordId
@@ -34992,7 +34992,7 @@ class RollbackDataEngineImageRequest(AbstractModel):
 
 
 class RollbackDataEngineImageResponse(AbstractModel):
-    """RollbackDataEngineImage返回参数结构体
+    r"""RollbackDataEngineImage返回参数结构体
 
     """
 
@@ -35005,7 +35005,7 @@ class RollbackDataEngineImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -35020,7 +35020,7 @@ class RollbackDataEngineImageResponse(AbstractModel):
 
 
 class SQLTask(AbstractModel):
-    """SQL查询任务
+    r"""SQL查询任务
 
     """
 
@@ -35036,7 +35036,7 @@ class SQLTask(AbstractModel):
 
     @property
     def SQL(self):
-        """base64加密后的SQL语句
+        r"""base64加密后的SQL语句
         :rtype: str
         """
         return self._SQL
@@ -35047,7 +35047,7 @@ class SQLTask(AbstractModel):
 
     @property
     def Config(self):
-        """任务的配置信息
+        r"""任务的配置信息
         :rtype: list of KVPair
         """
         return self._Config
@@ -35076,7 +35076,7 @@ class SQLTask(AbstractModel):
 
 
 class ScheduleElasticityConf(AbstractModel):
-    """引擎资源弹性伸缩策略
+    r"""引擎资源弹性伸缩策略
 
     """
 
@@ -35101,7 +35101,7 @@ class ScheduleElasticityConf(AbstractModel):
 
     @property
     def ScheduledElasticityEnabled(self):
-        """是否开启弹性伸缩：true/false
+        r"""是否开启弹性伸缩：true/false
         :rtype: bool
         """
         return self._ScheduledElasticityEnabled
@@ -35112,7 +35112,7 @@ class ScheduleElasticityConf(AbstractModel):
 
     @property
     def ScheduleType(self):
-        """调度类型：ONCE（一次性调度），DAILY（每日调度），WEEKLY（每周调度），MONTHLY（每月调度）
+        r"""调度类型：ONCE（一次性调度），DAILY（每日调度），WEEKLY（每周调度），MONTHLY（每月调度）
         :rtype: str
         """
         return self._ScheduleType
@@ -35123,7 +35123,7 @@ class ScheduleElasticityConf(AbstractModel):
 
     @property
     def ScheduleDays(self):
-        """调度日期：WEEKLY传：1~7； MONTHLY传:1~31；其它类型不传
+        r"""调度日期：WEEKLY传：1~7； MONTHLY传:1~31；其它类型不传
         :rtype: list of int
         """
         return self._ScheduleDays
@@ -35134,7 +35134,7 @@ class ScheduleElasticityConf(AbstractModel):
 
     @property
     def TimeZone(self):
-        """调度时区
+        r"""调度时区
         :rtype: str
         """
         return self._TimeZone
@@ -35145,7 +35145,7 @@ class ScheduleElasticityConf(AbstractModel):
 
     @property
     def ElasticPlans(self):
-        """弹性伸缩计划
+        r"""弹性伸缩计划
         :rtype: list of ElasticPlan
         """
         return self._ElasticPlans
@@ -35177,7 +35177,7 @@ class ScheduleElasticityConf(AbstractModel):
 
 
 class Script(AbstractModel):
-    """script实例。
+    r"""script实例。
 
     """
 
@@ -35207,7 +35207,7 @@ class Script(AbstractModel):
 
     @property
     def ScriptId(self):
-        """脚本Id，长度36字节。
+        r"""脚本Id，长度36字节。
         :rtype: str
         """
         return self._ScriptId
@@ -35218,7 +35218,7 @@ class Script(AbstractModel):
 
     @property
     def ScriptName(self):
-        """脚本名称，长度0-25。
+        r"""脚本名称，长度0-25。
         :rtype: str
         """
         return self._ScriptName
@@ -35229,7 +35229,7 @@ class Script(AbstractModel):
 
     @property
     def ScriptDesc(self):
-        """脚本描述，长度0-50。
+        r"""脚本描述，长度0-50。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35241,7 +35241,7 @@ class Script(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """默认关联数据库。
+        r"""默认关联数据库。
         :rtype: str
         """
         return self._DatabaseName
@@ -35252,7 +35252,7 @@ class Script(AbstractModel):
 
     @property
     def SQLStatement(self):
-        """SQL描述，长度0-10000。
+        r"""SQL描述，长度0-10000。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35264,7 +35264,7 @@ class Script(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间戳， 单位：ms。
+        r"""更新时间戳， 单位：ms。
         :rtype: int
         """
         return self._UpdateTime
@@ -35292,7 +35292,7 @@ class Script(AbstractModel):
 
 
 class SessionResourceTemplate(AbstractModel):
-    """Spark批作业集群Session资源配置模板；
+    r"""Spark批作业集群Session资源配置模板；
 
     """
 
@@ -35317,7 +35317,7 @@ class SessionResourceTemplate(AbstractModel):
 
     @property
     def DriverSize(self):
-        """driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._DriverSize
@@ -35328,7 +35328,7 @@ class SessionResourceTemplate(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._ExecutorSize
@@ -35339,7 +35339,7 @@ class SessionResourceTemplate(AbstractModel):
 
     @property
     def ExecutorNums(self):
-        """指定executor数量，最小值为1，最大值小于集群规格
+        r"""指定executor数量，最小值为1，最大值小于集群规格
         :rtype: int
         """
         return self._ExecutorNums
@@ -35350,7 +35350,7 @@ class SessionResourceTemplate(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        r"""指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -35361,7 +35361,7 @@ class SessionResourceTemplate(AbstractModel):
 
     @property
     def RunningTimeParameters(self):
-        """运行时参数
+        r"""运行时参数
         :rtype: list of DataEngineConfigPair
         """
         return self._RunningTimeParameters
@@ -35393,7 +35393,7 @@ class SessionResourceTemplate(AbstractModel):
 
 
 class SmartOptimizerChangeTablePolicy(AbstractModel):
-    """混合表中，change表的数据保存时间，单位为天
+    r"""混合表中，change表的数据保存时间，单位为天
 
     """
 
@@ -35406,7 +35406,7 @@ class SmartOptimizerChangeTablePolicy(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        """change表的数据保存时间，单位为天
+        r"""change表的数据保存时间，单位为天
         :rtype: int
         """
         return self._DataRetentionTime
@@ -35429,7 +35429,7 @@ class SmartOptimizerChangeTablePolicy(AbstractModel):
 
 
 class SmartOptimizerIndexPolicy(AbstractModel):
-    """SmartOptimizerIndexPolicy
+    r"""SmartOptimizerIndexPolicy
 
     """
 
@@ -35442,7 +35442,7 @@ class SmartOptimizerIndexPolicy(AbstractModel):
 
     @property
     def IndexEnable(self):
-        """开启索引
+        r"""开启索引
         :rtype: str
         """
         return self._IndexEnable
@@ -35465,7 +35465,7 @@ class SmartOptimizerIndexPolicy(AbstractModel):
 
 
 class SmartOptimizerLifecyclePolicy(AbstractModel):
-    """SmartOptimizerLifecyclePolicy
+    r"""SmartOptimizerLifecyclePolicy
 
     """
 
@@ -35490,7 +35490,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def LifecycleEnable(self):
-        """生命周期启用
+        r"""生命周期启用
         :rtype: str
         """
         return self._LifecycleEnable
@@ -35501,7 +35501,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def Expiration(self):
-        """过期时间
+        r"""过期时间
         :rtype: int
         """
         return self._Expiration
@@ -35512,7 +35512,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def DropTable(self):
-        """是否删表
+        r"""是否删表
         :rtype: bool
         """
         return self._DropTable
@@ -35523,7 +35523,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def ExpiredField(self):
-        """过期字段
+        r"""过期字段
         :rtype: str
         """
         return self._ExpiredField
@@ -35534,7 +35534,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def ExpiredFieldFormat(self):
-        """过期字段格式
+        r"""过期字段格式
         :rtype: str
         """
         return self._ExpiredFieldFormat
@@ -35561,7 +35561,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
 
 class SmartOptimizerPolicy(AbstractModel):
-    """SmartOptimizerPolicy
+    r"""SmartOptimizerPolicy
 
     """
 
@@ -35594,7 +35594,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Inherit(self):
-        """是否继承
+        r"""是否继承
         :rtype: str
         """
         return self._Inherit
@@ -35605,7 +35605,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Resources(self):
-        """ResourceInfo
+        r"""ResourceInfo
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceInfo
         """
@@ -35617,7 +35617,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Written(self):
-        """SmartOptimizerWrittenPolicy
+        r"""SmartOptimizerWrittenPolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerWrittenPolicy`
         """
@@ -35629,7 +35629,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Lifecycle(self):
-        """SmartOptimizerLifecyclePolicy
+        r"""SmartOptimizerLifecyclePolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerLifecyclePolicy`
         """
@@ -35641,7 +35641,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Index(self):
-        """SmartOptimizerIndexPolicy
+        r"""SmartOptimizerIndexPolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerIndexPolicy`
         """
@@ -35653,7 +35653,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def ChangeTable(self):
-        """SmartOptimizerChangeTablePolicy
+        r"""SmartOptimizerChangeTablePolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerChangeTablePolicy`
         """
@@ -35695,7 +35695,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
 
 class SmartOptimizerWrittenPolicy(AbstractModel):
-    """SmartOptimizerWrittenPolicy
+    r"""SmartOptimizerWrittenPolicy
 
     """
 
@@ -35708,7 +35708,7 @@ class SmartOptimizerWrittenPolicy(AbstractModel):
 
     @property
     def WrittenEnable(self):
-        """none/enable/disable/default
+        r"""none/enable/disable/default
         :rtype: str
         """
         return self._WrittenEnable
@@ -35731,7 +35731,7 @@ class SmartOptimizerWrittenPolicy(AbstractModel):
 
 
 class SmartPolicy(AbstractModel):
-    """SmartPolicyRequest
+    r"""SmartPolicyRequest
 
     """
 
@@ -35749,7 +35749,7 @@ class SmartPolicy(AbstractModel):
 
     @property
     def BaseInfo(self):
-        """基础信息
+        r"""基础信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartPolicyBaseInfo`
         """
@@ -35761,7 +35761,7 @@ class SmartPolicy(AbstractModel):
 
     @property
     def Policy(self):
-        """策略描述
+        r"""策略描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerPolicy`
         """
@@ -35790,7 +35790,7 @@ class SmartPolicy(AbstractModel):
 
 
 class SmartPolicyBaseInfo(AbstractModel):
-    """SmartPolicyBaseInfo
+    r"""SmartPolicyBaseInfo
 
     """
 
@@ -35818,7 +35818,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: str
         """
         return self._Uin
@@ -35829,7 +35829,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def PolicyType(self):
-        """Catalog/Database/Table
+        r"""Catalog/Database/Table
         :rtype: str
         """
         return self._PolicyType
@@ -35840,7 +35840,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def Catalog(self):
-        """Catalog名称
+        r"""Catalog名称
         :rtype: str
         """
         return self._Catalog
@@ -35851,7 +35851,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名称
+        r"""数据库名称
         :rtype: str
         """
         return self._Database
@@ -35862,7 +35862,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def Table(self):
-        """表名称
+        r"""表名称
         :rtype: str
         """
         return self._Table
@@ -35873,7 +35873,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """用户appid
+        r"""用户appid
         :rtype: str
         """
         return self._AppId
@@ -35901,7 +35901,7 @@ class SmartPolicyBaseInfo(AbstractModel):
 
 
 class Sort(AbstractModel):
-    """排序结构
+    r"""排序结构
 
     """
 
@@ -35917,7 +35917,7 @@ class Sort(AbstractModel):
 
     @property
     def Field(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._Field
@@ -35928,7 +35928,7 @@ class Sort(AbstractModel):
 
     @property
     def Asc(self):
-        """是否按照ASC排序，否则DESC排序
+        r"""是否按照ASC排序，否则DESC排序
         :rtype: bool
         """
         return self._Asc
@@ -35952,7 +35952,7 @@ class Sort(AbstractModel):
 
 
 class SparkJobInfo(AbstractModel):
-    """spark作业详情。
+    r"""spark作业详情。
 
     """
 
@@ -36106,7 +36106,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobId(self):
-        """spark作业ID
+        r"""spark作业ID
         :rtype: str
         """
         return self._JobId
@@ -36117,7 +36117,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobName(self):
-        """spark作业名
+        r"""spark作业名
         :rtype: str
         """
         return self._JobName
@@ -36128,7 +36128,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobType(self):
-        """spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
+        r"""spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
         :rtype: int
         """
         return self._JobType
@@ -36139,7 +36139,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngine(self):
-        """引擎名
+        r"""引擎名
         :rtype: str
         """
         return self._DataEngine
@@ -36150,7 +36150,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def Eni(self):
-        """该字段已下线，请使用字段Datasource
+        r"""该字段已下线，请使用字段Datasource
         :rtype: str
         """
         return self._Eni
@@ -36161,7 +36161,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocal(self):
-        """程序包是否本地上传，cos或者lakefs
+        r"""程序包是否本地上传，cos或者lakefs
         :rtype: str
         """
         return self._IsLocal
@@ -36172,7 +36172,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobFile(self):
-        """程序包路径
+        r"""程序包路径
         :rtype: str
         """
         return self._JobFile
@@ -36183,7 +36183,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def RoleArn(self):
-        """角色ID
+        r"""角色ID
         :rtype: int
         """
         return self._RoleArn
@@ -36194,7 +36194,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def MainClass(self):
-        """spark作业运行主类
+        r"""spark作业运行主类
         :rtype: str
         """
         return self._MainClass
@@ -36205,7 +36205,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """命令行参数，spark作业命令行参数，空格分隔
+        r"""命令行参数，spark作业命令行参数，空格分隔
         :rtype: str
         """
         return self._CmdArgs
@@ -36216,7 +36216,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobConf(self):
-        """spark原生配置，换行符分隔
+        r"""spark原生配置，换行符分隔
         :rtype: str
         """
         return self._JobConf
@@ -36227,7 +36227,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalJars(self):
-        """依赖jars是否本地上传，cos或者lakefs
+        r"""依赖jars是否本地上传，cos或者lakefs
         :rtype: str
         """
         return self._IsLocalJars
@@ -36238,7 +36238,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobJars(self):
-        """spark作业依赖jars，逗号分隔
+        r"""spark作业依赖jars，逗号分隔
         :rtype: str
         """
         return self._JobJars
@@ -36249,7 +36249,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalFiles(self):
-        """依赖文件是否本地上传，cos或者lakefs
+        r"""依赖文件是否本地上传，cos或者lakefs
         :rtype: str
         """
         return self._IsLocalFiles
@@ -36260,7 +36260,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobFiles(self):
-        """spark作业依赖文件，逗号分隔
+        r"""spark作业依赖文件，逗号分隔
         :rtype: str
         """
         return self._JobFiles
@@ -36271,7 +36271,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobDriverSize(self):
-        """spark作业driver资源大小
+        r"""spark作业driver资源大小
         :rtype: str
         """
         return self._JobDriverSize
@@ -36282,7 +36282,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorSize(self):
-        """spark作业executor资源大小
+        r"""spark作业executor资源大小
         :rtype: str
         """
         return self._JobExecutorSize
@@ -36293,7 +36293,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorNums(self):
-        """spark作业executor个数
+        r"""spark作业executor个数
         :rtype: int
         """
         return self._JobExecutorNums
@@ -36304,7 +36304,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobMaxAttempts(self):
-        """spark流任务最大重试次数
+        r"""spark流任务最大重试次数
         :rtype: int
         """
         return self._JobMaxAttempts
@@ -36315,7 +36315,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobCreator(self):
-        """spark作业创建者
+        r"""spark作业创建者
         :rtype: str
         """
         return self._JobCreator
@@ -36326,7 +36326,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobCreateTime(self):
-        """spark作业创建时间
+        r"""spark作业创建时间
         :rtype: int
         """
         return self._JobCreateTime
@@ -36337,7 +36337,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobUpdateTime(self):
-        """spark作业更新时间
+        r"""spark作业更新时间
         :rtype: int
         """
         return self._JobUpdateTime
@@ -36348,7 +36348,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def CurrentTaskId(self):
-        """spark作业最近任务ID
+        r"""spark作业最近任务ID
         :rtype: str
         """
         return self._CurrentTaskId
@@ -36359,7 +36359,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobStatus(self):
-        """spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
+        r"""spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
         :rtype: int
         """
         return self._JobStatus
@@ -36370,7 +36370,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def StreamingStat(self):
-        """spark流作业统计
+        r"""spark流作业统计
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.StreamingStatistics`
         """
@@ -36382,7 +36382,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataSource(self):
-        """数据源名
+        r"""数据源名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36394,7 +36394,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalPythonFiles(self):
-        """pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        r"""pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36406,7 +36406,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def AppPythonFiles(self):
-        """注：该返回值已废弃
+        r"""注：该返回值已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36418,7 +36418,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalArchives(self):
-        """archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        r"""archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36430,7 +36430,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobArchives(self):
-        """archives：依赖资源
+        r"""archives：依赖资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36442,7 +36442,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SparkImage(self):
-        """Spark Image 版本
+        r"""Spark Image 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36454,7 +36454,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobPythonFiles(self):
-        """pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        r"""pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36466,7 +36466,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def TaskNum(self):
-        """当前job正在运行或准备运行的任务个数
+        r"""当前job正在运行或准备运行的任务个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36478,7 +36478,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineStatus(self):
-        """引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
+        r"""引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36490,7 +36490,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorMaxNumbers(self):
-        """指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36502,7 +36502,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        """镜像版本
+        r"""镜像版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36514,7 +36514,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SessionId(self):
-        """查询脚本关联id
+        r"""查询脚本关联id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36526,7 +36526,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineClusterType(self):
-        """spark_emr_livy
+        r"""spark_emr_livy
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36538,7 +36538,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineImageVersion(self):
-        """Spark 3.2-EMR
+        r"""Spark 3.2-EMR
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36550,7 +36550,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsInherit(self):
-        """任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        r"""任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36562,7 +36562,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsSessionStarted(self):
-        """是否使用session脚本的sql运行任务：false：否，true：是
+        r"""是否使用session脚本的sql运行任务：false：否，true：是
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -36574,7 +36574,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        """引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+        r"""引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36641,7 +36641,7 @@ class SparkJobInfo(AbstractModel):
 
 
 class SparkMonitorMetrics(AbstractModel):
-    """Spark监控数据
+    r"""Spark监控数据
 
     """
 
@@ -36659,7 +36659,7 @@ class SparkMonitorMetrics(AbstractModel):
 
     @property
     def ShuffleWriteBytesCos(self):
-        """shuffle写溢出到COS数据量，单位：byte
+        r"""shuffle写溢出到COS数据量，单位：byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36671,7 +36671,7 @@ class SparkMonitorMetrics(AbstractModel):
 
     @property
     def ShuffleWriteBytesTotal(self):
-        """shuffle写数据量，单位：byte
+        r"""shuffle写数据量，单位：byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36696,7 +36696,7 @@ class SparkMonitorMetrics(AbstractModel):
 
 
 class SparkSessionBatchLog(AbstractModel):
-    """SparkSQL批任务运行日志
+    r"""SparkSQL批任务运行日志
 
     """
 
@@ -36719,7 +36719,7 @@ class SparkSessionBatchLog(AbstractModel):
 
     @property
     def Step(self):
-        """日志步骤：BEG/CS/DS/DSS/DSF/FINF/RTO/CANCEL/CT/DT/DTS/DTF/FINT/EXCE
+        r"""日志步骤：BEG/CS/DS/DSS/DSF/FINF/RTO/CANCEL/CT/DT/DTS/DTF/FINT/EXCE
         :rtype: str
         """
         return self._Step
@@ -36730,7 +36730,7 @@ class SparkSessionBatchLog(AbstractModel):
 
     @property
     def Time(self):
-        """时间
+        r"""时间
         :rtype: str
         """
         return self._Time
@@ -36741,7 +36741,7 @@ class SparkSessionBatchLog(AbstractModel):
 
     @property
     def Message(self):
-        """日志提示
+        r"""日志提示
         :rtype: str
         """
         return self._Message
@@ -36752,7 +36752,7 @@ class SparkSessionBatchLog(AbstractModel):
 
     @property
     def Operate(self):
-        """日志操作
+        r"""日志操作
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SparkSessionBatchLogOperate
         """
@@ -36784,7 +36784,7 @@ class SparkSessionBatchLog(AbstractModel):
 
 
 class SparkSessionBatchLogOperate(AbstractModel):
-    """SparkSQL批任务日志操作信息。
+    r"""SparkSQL批任务日志操作信息。
 
     """
 
@@ -36804,7 +36804,7 @@ class SparkSessionBatchLogOperate(AbstractModel):
 
     @property
     def Text(self):
-        """操作提示
+        r"""操作提示
         :rtype: str
         """
         return self._Text
@@ -36815,7 +36815,7 @@ class SparkSessionBatchLogOperate(AbstractModel):
 
     @property
     def Operate(self):
-        """操作类型：COPY、LOG、UI、RESULT、List、TAB
+        r"""操作类型：COPY、LOG、UI、RESULT、List、TAB
         :rtype: str
         """
         return self._Operate
@@ -36826,7 +36826,7 @@ class SparkSessionBatchLogOperate(AbstractModel):
 
     @property
     def Supplement(self):
-        """补充信息：如：taskid、sessionid、sparkui等
+        r"""补充信息：如：taskid、sessionid、sparkui等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -36857,7 +36857,7 @@ class SparkSessionBatchLogOperate(AbstractModel):
 
 
 class SparkSessionInfo(AbstractModel):
-    """spark session详细信息
+    r"""spark session详细信息
 
     """
 
@@ -36904,7 +36904,7 @@ name
 
     @property
     def SparkSessionId(self):
-        """spark session id
+        r"""spark session id
         :rtype: str
         """
         return self._SparkSessionId
@@ -36915,7 +36915,7 @@ name
 
     @property
     def SparkSessionName(self):
-        """spark session名称
+        r"""spark session名称
         :rtype: str
         """
         return self._SparkSessionName
@@ -36926,7 +36926,7 @@ name
 
     @property
     def ResourceGroupId(self):
-        """资源组id
+        r"""资源组id
         :rtype: str
         """
         return self._ResourceGroupId
@@ -36937,7 +36937,7 @@ name
 
     @property
     def EngineSessionId(self):
-        """engine session id
+        r"""engine session id
         :rtype: str
         """
         return self._EngineSessionId
@@ -36948,7 +36948,7 @@ name
 
     @property
     def EngineSessionName(self):
-        """engine session   
+        r"""engine session   
 name
         :rtype: str
         """
@@ -36960,7 +36960,7 @@ name
 
     @property
     def IdleTimeoutMin(self):
-        """自动销毁时间
+        r"""自动销毁时间
         :rtype: int
         """
         return self._IdleTimeoutMin
@@ -36971,7 +36971,7 @@ name
 
     @property
     def DriverSpec(self):
-        """driver规格
+        r"""driver规格
         :rtype: str
         """
         return self._DriverSpec
@@ -36982,7 +36982,7 @@ name
 
     @property
     def ExecutorSpec(self):
-        """executor规格
+        r"""executor规格
         :rtype: str
         """
         return self._ExecutorSpec
@@ -36993,7 +36993,7 @@ name
 
     @property
     def ExecutorNumMin(self):
-        """executor最小数量
+        r"""executor最小数量
         :rtype: int
         """
         return self._ExecutorNumMin
@@ -37004,7 +37004,7 @@ name
 
     @property
     def ExecutorNumMax(self):
-        """executor最大数量
+        r"""executor最大数量
         :rtype: int
         """
         return self._ExecutorNumMax
@@ -37015,7 +37015,7 @@ name
 
     @property
     def TotalSpecMin(self):
-        """总规格最小
+        r"""总规格最小
         :rtype: int
         """
         return self._TotalSpecMin
@@ -37026,7 +37026,7 @@ name
 
     @property
     def TotalSpecMax(self):
-        """总规格最大
+        r"""总规格最大
         :rtype: int
         """
         return self._TotalSpecMax
@@ -37060,7 +37060,7 @@ name
 
 
 class SpecInfo(AbstractModel):
-    """节点规格信息
+    r"""节点规格信息
 
     """
 
@@ -37086,7 +37086,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Name(self):
-        """规格名称
+        r"""规格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37098,7 +37098,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Cu(self):
-        """当前规格的cu数
+        r"""当前规格的cu数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37110,7 +37110,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        """当前规格的cpu数
+        r"""当前规格的cpu数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37122,7 +37122,7 @@ class SpecInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """当前规格的内存数，单位G
+        r"""当前规格的内存数，单位G
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37149,7 +37149,7 @@ class SpecInfo(AbstractModel):
 
 
 class StandardEngineResourceGroupConfigInfo(AbstractModel):
-    """标准引擎资源组，配置相关信息
+    r"""标准引擎资源组，配置相关信息
 
     """
 
@@ -37177,7 +37177,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        """引擎资源组 ID
+        r"""引擎资源组 ID
         :rtype: str
         """
         return self._ResourceGroupId
@@ -37188,7 +37188,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -37199,7 +37199,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def StaticConfigPairs(self):
-        """资源组静态参数，需要重启资源组生效
+        r"""资源组静态参数，需要重启资源组生效
         :rtype: list of EngineResourceGroupConfigPair
         """
         return self._StaticConfigPairs
@@ -37210,7 +37210,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def DynamicConfigPairs(self):
-        """资源组动态参数，下一个任务生效。
+        r"""资源组动态参数，下一个任务生效。
         :rtype: list of EngineResourceGroupConfigPair
         """
         return self._DynamicConfigPairs
@@ -37221,7 +37221,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -37232,7 +37232,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        r"""更新时间
         :rtype: int
         """
         return self._UpdateTime
@@ -37270,7 +37270,7 @@ class StandardEngineResourceGroupConfigInfo(AbstractModel):
 
 
 class StandardEngineResourceGroupInfo(AbstractModel):
-    """用户标准引擎资源组信息
+    r"""用户标准引擎资源组信息
 
     """
 
@@ -37417,7 +37417,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def EngineResourceGroupId(self):
-        """标准引擎资源组ID
+        r"""标准引擎资源组ID
         :rtype: str
         """
         return self._EngineResourceGroupId
@@ -37428,7 +37428,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """标准引擎资源组名称，支持1-50个英文、汉字、数字、连接线-或下划线_
+        r"""标准引擎资源组名称，支持1-50个英文、汉字、数字、连接线-或下划线_
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -37439,7 +37439,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者
+        r"""创建者
         :rtype: str
         """
         return self._Creator
@@ -37450,7 +37450,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ResourceGroupState(self):
-        """资源组 状态，-1--删除、0--启动中、2--运行、3--暂停、4--暂停中、7--切换引擎中、8--配置修改中。9--资源组重启中，10--因为变配导致资源组启动、11--因为隔离导致资源组挂起、12- 资源配置下发中、 13-接入点隔离导致资源组挂起中
+        r"""资源组 状态，-1--删除、0--启动中、2--运行、3--暂停、4--暂停中、7--切换引擎中、8--配置修改中。9--资源组重启中，10--因为变配导致资源组启动、11--因为隔离导致资源组挂起、12- 资源配置下发中、 13-接入点隔离导致资源组挂起中
         :rtype: int
         """
         return self._ResourceGroupState
@@ -37461,7 +37461,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AutoLaunch(self):
-        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        r"""自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
         :rtype: int
         """
         return self._AutoLaunch
@@ -37472,7 +37472,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AutoPause(self):
-        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        r"""自动挂起资源组。0-自动挂起，1-不自动挂起
         :rtype: int
         """
         return self._AutoPause
@@ -37483,7 +37483,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AutoPauseTime(self):
-        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        r"""自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
         :rtype: int
         """
         return self._AutoPauseTime
@@ -37494,7 +37494,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def DriverCuSpec(self):
-        """driver的cu规格：
+        r"""driver的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -37506,7 +37506,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ExecutorCuSpec(self):
-        """executor的cu规格：
+        r"""executor的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -37518,7 +37518,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """任务并发数
+        r"""任务并发数
         :rtype: int
         """
         return self._MaxConcurrency
@@ -37529,7 +37529,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def MinExecutorNums(self):
-        """executor最小数量，
+        r"""executor最小数量，
         :rtype: int
         """
         return self._MinExecutorNums
@@ -37540,7 +37540,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def MaxExecutorNums(self):
-        """executor最大数量，
+        r"""executor最大数量，
         :rtype: int
         """
         return self._MaxExecutorNums
@@ -37551,7 +37551,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间戳
+        r"""创建时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -37562,7 +37562,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间戳
+        r"""更新时间戳
         :rtype: int
         """
         return self._UpdateTime
@@ -37573,7 +37573,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def NeedRestart(self):
-        """是否待重启，作为有资源参数，静态参数修改未重启生效的标识；0-- 不需要重启、1--因为资源参数待重启、2--因静态参数重启、3--因资源和静态参数而待重启、4--因网络配置而待重启、5--因网络配置和资源配置而待重启、6--因网络配置和静态参数而待重启、7--因网络配置，资源参数和静态参数而待重启、
+        r"""是否待重启，作为有资源参数，静态参数修改未重启生效的标识；0-- 不需要重启、1--因为资源参数待重启、2--因静态参数重启、3--因资源和静态参数而待重启、4--因网络配置而待重启、5--因网络配置和资源配置而待重启、6--因网络配置和静态参数而待重启、7--因网络配置，资源参数和静态参数而待重启、
         :rtype: int
         """
         return self._NeedRestart
@@ -37584,7 +37584,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """绑定的引擎名称
+        r"""绑定的引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -37595,7 +37595,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """绑定的引擎ID
+        r"""绑定的引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -37606,7 +37606,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def DataEngineState(self):
-        """绑定的引擎状态
+        r"""绑定的引擎状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37618,7 +37618,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AccessPointId(self):
-        """接入点ID
+        r"""接入点ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37630,7 +37630,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AccessPointName(self):
-        """接入点名称
+        r"""接入点名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37642,7 +37642,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def AccessPointState(self):
-        """接入点状态
+        r"""接入点状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37654,7 +37654,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ResourceGroupType(self):
-        """资源组类型，console/ default
+        r"""资源组类型，console/ default
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37666,7 +37666,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37678,7 +37678,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def NetworkConfigNames(self):
-        """网络配置名称
+        r"""网络配置名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -37690,7 +37690,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def FrameType(self):
-        """AI类型资源组的框架类型
+        r"""AI类型资源组的框架类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37702,7 +37702,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ImageType(self):
-        """AI类型资源组的镜像类型，内置：bulit-in，自定义：custom
+        r"""AI类型资源组的镜像类型，内置：bulit-in，自定义：custom
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37714,7 +37714,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ImageName(self):
-        """镜像名称
+        r"""镜像名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37726,7 +37726,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ImageVersion(self):
-        """镜像id
+        r"""镜像id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37738,7 +37738,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def Size(self):
-        """AI资源组的可用资源上限
+        r"""AI资源组的可用资源上限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37750,7 +37750,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否是默认资源组
+        r"""是否是默认资源组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -37762,7 +37762,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def ResourceGroupScene(self):
-        """资源组场景
+        r"""资源组场景
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37774,7 +37774,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def PythonCuSpec(self):
-        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        r"""python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37786,7 +37786,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def SparkSpecMode(self):
-        """Spark类型资源组资源配置模式，fast：快速模式，custom：自定义模式
+        r"""Spark类型资源组资源配置模式，fast：快速模式，custom：自定义模式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37798,7 +37798,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def SparkSize(self):
-        """Spark类型资源组资源上限
+        r"""Spark类型资源组资源上限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37810,7 +37810,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def SparkMinSize(self):
-        """Spark类型资源组资源最小值
+        r"""Spark类型资源组资源最小值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37822,7 +37822,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def PublicDomain(self):
-        """自定义镜像容器镜像服务domain 名称
+        r"""自定义镜像容器镜像服务domain 名称
         :rtype: str
         """
         return self._PublicDomain
@@ -37833,7 +37833,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def RegistryId(self):
-        """自定义镜像容器镜像服务tcr实例id
+        r"""自定义镜像容器镜像服务tcr实例id
         :rtype: str
         """
         return self._RegistryId
@@ -37844,7 +37844,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """容器镜像服务tcr所在地域
+        r"""容器镜像服务tcr所在地域
         :rtype: str
         """
         return self._RegionName
@@ -37855,7 +37855,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
     @property
     def LaunchTime(self):
-        """资源组启动耗时
+        r"""资源组启动耗时
         :rtype: str
         """
         return self._LaunchTime
@@ -37916,7 +37916,7 @@ class StandardEngineResourceGroupInfo(AbstractModel):
 
 
 class StatementInformation(AbstractModel):
-    """statement信息
+    r"""statement信息
 
     """
 
@@ -37932,7 +37932,7 @@ class StatementInformation(AbstractModel):
 
     @property
     def TaskId(self):
-        """SQL任务唯一ID
+        r"""SQL任务唯一ID
         :rtype: str
         """
         return self._TaskId
@@ -37943,7 +37943,7 @@ class StatementInformation(AbstractModel):
 
     @property
     def SQL(self):
-        """SQL内容
+        r"""SQL内容
         :rtype: str
         """
         return self._SQL
@@ -37967,7 +37967,7 @@ class StatementInformation(AbstractModel):
 
 
 class StatementOutput(AbstractModel):
-    """notebook session statement输出信息。
+    r"""notebook session statement输出信息。
 
     """
 
@@ -38001,7 +38001,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def ExecutionCount(self):
-        """执行总数
+        r"""执行总数
         :rtype: int
         """
         return self._ExecutionCount
@@ -38012,7 +38012,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def Data(self):
-        """Statement数据
+        r"""Statement数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
@@ -38024,7 +38024,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def Status(self):
-        """Statement状态:ok,error
+        r"""Statement状态:ok,error
         :rtype: str
         """
         return self._Status
@@ -38035,7 +38035,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def ErrorName(self):
-        """错误名称
+        r"""错误名称
         :rtype: str
         """
         return self._ErrorName
@@ -38046,7 +38046,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def ErrorValue(self):
-        """错误类型
+        r"""错误类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38058,7 +38058,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误堆栈信息
+        r"""错误堆栈信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -38070,7 +38070,7 @@ class StatementOutput(AbstractModel):
 
     @property
     def SQLResult(self):
-        """SQL类型任务结果返回
+        r"""SQL类型任务结果返回
         :rtype: str
         """
         return self._SQLResult
@@ -38104,7 +38104,7 @@ class StatementOutput(AbstractModel):
 
 
 class StreamingStatistics(AbstractModel):
-    """spark流任务统计信息
+    r"""spark流任务统计信息
 
     """
 
@@ -38147,7 +38147,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def StartTime(self):
-        """任务开始时间
+        r"""任务开始时间
         :rtype: str
         """
         return self._StartTime
@@ -38158,7 +38158,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def Receivers(self):
-        """数据接收器数
+        r"""数据接收器数
         :rtype: int
         """
         return self._Receivers
@@ -38169,7 +38169,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def NumActiveReceivers(self):
-        """运行中的接收器数
+        r"""运行中的接收器数
         :rtype: int
         """
         return self._NumActiveReceivers
@@ -38180,7 +38180,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def NumInactiveReceivers(self):
-        """不活跃的接收器数
+        r"""不活跃的接收器数
         :rtype: int
         """
         return self._NumInactiveReceivers
@@ -38191,7 +38191,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def NumActiveBatches(self):
-        """运行中的批数
+        r"""运行中的批数
         :rtype: int
         """
         return self._NumActiveBatches
@@ -38202,7 +38202,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def NumRetainedCompletedBatches(self):
-        """待处理的批数
+        r"""待处理的批数
         :rtype: int
         """
         return self._NumRetainedCompletedBatches
@@ -38213,7 +38213,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def NumTotalCompletedBatches(self):
-        """已完成的批数
+        r"""已完成的批数
         :rtype: int
         """
         return self._NumTotalCompletedBatches
@@ -38224,7 +38224,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def AverageInputRate(self):
-        """平均输入速率
+        r"""平均输入速率
         :rtype: float
         """
         return self._AverageInputRate
@@ -38235,7 +38235,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def AverageSchedulingDelay(self):
-        """平均等待时长
+        r"""平均等待时长
         :rtype: float
         """
         return self._AverageSchedulingDelay
@@ -38246,7 +38246,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def AverageProcessingTime(self):
-        """平均处理时长
+        r"""平均处理时长
         :rtype: float
         """
         return self._AverageProcessingTime
@@ -38257,7 +38257,7 @@ class StreamingStatistics(AbstractModel):
 
     @property
     def AverageTotalDelay(self):
-        """平均延时
+        r"""平均延时
         :rtype: float
         """
         return self._AverageTotalDelay
@@ -38290,7 +38290,7 @@ class StreamingStatistics(AbstractModel):
 
 
 class SuspendResumeDataEngineRequest(AbstractModel):
-    """SuspendResumeDataEngine请求参数结构体
+    r"""SuspendResumeDataEngine请求参数结构体
 
     """
 
@@ -38306,7 +38306,7 @@ class SuspendResumeDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """虚拟集群名称
+        r"""虚拟集群名称
         :rtype: str
         """
         return self._DataEngineName
@@ -38317,7 +38317,7 @@ class SuspendResumeDataEngineRequest(AbstractModel):
 
     @property
     def Operate(self):
-        """操作类型 suspend/resume
+        r"""操作类型 suspend/resume
         :rtype: str
         """
         return self._Operate
@@ -38341,7 +38341,7 @@ class SuspendResumeDataEngineRequest(AbstractModel):
 
 
 class SuspendResumeDataEngineResponse(AbstractModel):
-    """SuspendResumeDataEngine返回参数结构体
+    r"""SuspendResumeDataEngine返回参数结构体
 
     """
 
@@ -38357,7 +38357,7 @@ class SuspendResumeDataEngineResponse(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """虚拟集群详细信息
+        r"""虚拟集群详细信息
         :rtype: str
         """
         return self._DataEngineName
@@ -38368,7 +38368,7 @@ class SuspendResumeDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38384,7 +38384,7 @@ class SuspendResumeDataEngineResponse(AbstractModel):
 
 
 class SwitchDataEngineImageRequest(AbstractModel):
-    """SwitchDataEngineImage请求参数结构体
+    r"""SwitchDataEngineImage请求参数结构体
 
     """
 
@@ -38400,7 +38400,7 @@ class SwitchDataEngineImageRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -38411,7 +38411,7 @@ class SwitchDataEngineImageRequest(AbstractModel):
 
     @property
     def NewImageVersionId(self):
-        """新镜像版本ID
+        r"""新镜像版本ID
         :rtype: str
         """
         return self._NewImageVersionId
@@ -38435,7 +38435,7 @@ class SwitchDataEngineImageRequest(AbstractModel):
 
 
 class SwitchDataEngineImageResponse(AbstractModel):
-    """SwitchDataEngineImage返回参数结构体
+    r"""SwitchDataEngineImage返回参数结构体
 
     """
 
@@ -38448,7 +38448,7 @@ class SwitchDataEngineImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38463,7 +38463,7 @@ class SwitchDataEngineImageResponse(AbstractModel):
 
 
 class SwitchDataEngineRequest(AbstractModel):
-    """SwitchDataEngine请求参数结构体
+    r"""SwitchDataEngine请求参数结构体
 
     """
 
@@ -38479,7 +38479,7 @@ class SwitchDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """主集群名称
+        r"""主集群名称
         :rtype: str
         """
         return self._DataEngineName
@@ -38490,7 +38490,7 @@ class SwitchDataEngineRequest(AbstractModel):
 
     @property
     def StartStandbyCluster(self):
-        """是否开启备集群
+        r"""是否开启备集群
         :rtype: bool
         """
         return self._StartStandbyCluster
@@ -38514,7 +38514,7 @@ class SwitchDataEngineRequest(AbstractModel):
 
 
 class SwitchDataEngineResponse(AbstractModel):
-    """SwitchDataEngine返回参数结构体
+    r"""SwitchDataEngine返回参数结构体
 
     """
 
@@ -38527,7 +38527,7 @@ class SwitchDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -38542,7 +38542,7 @@ class SwitchDataEngineResponse(AbstractModel):
 
 
 class TCHouseD(AbstractModel):
-    """Doris数据源详细信息
+    r"""Doris数据源详细信息
 
     """
 
@@ -38577,7 +38577,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def InstanceId(self):
-        """数据源实例的唯一ID
+        r"""数据源实例的唯一ID
         :rtype: str
         """
         return self._InstanceId
@@ -38588,7 +38588,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def InstanceName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._InstanceName
@@ -38599,7 +38599,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def JdbcUrl(self):
-        """数据源的JDBC
+        r"""数据源的JDBC
         :rtype: str
         """
         return self._JdbcUrl
@@ -38610,7 +38610,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def User(self):
-        """用于访问数据源的用户
+        r"""用于访问数据源的用户
         :rtype: str
         """
         return self._User
@@ -38621,7 +38621,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def Password(self):
-        """数据源访问密码，需要base64编码
+        r"""数据源访问密码，需要base64编码
         :rtype: str
         """
         return self._Password
@@ -38632,7 +38632,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def Location(self):
-        """数据源的VPC和子网信息
+        r"""数据源的VPC和子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
@@ -38644,7 +38644,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def DbName(self):
-        """默认数据库名
+        r"""默认数据库名
         :rtype: str
         """
         return self._DbName
@@ -38655,7 +38655,7 @@ class TCHouseD(AbstractModel):
 
     @property
     def AccessInfo(self):
-        """访问信息
+        r"""访问信息
         :rtype: str
         """
         return self._AccessInfo
@@ -38687,7 +38687,7 @@ class TCHouseD(AbstractModel):
 
 
 class TColumn(AbstractModel):
-    """表字段描述信息
+    r"""表字段描述信息
 
     """
 
@@ -38725,7 +38725,7 @@ Scale小于Precision
 
     @property
     def Name(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._Name
@@ -38736,7 +38736,7 @@ Scale小于Precision
 
     @property
     def Type(self):
-        """字段类型
+        r"""字段类型
         :rtype: str
         """
         return self._Type
@@ -38747,7 +38747,7 @@ Scale小于Precision
 
     @property
     def Comment(self):
-        """字段描述
+        r"""字段描述
         :rtype: str
         """
         return self._Comment
@@ -38758,7 +38758,7 @@ Scale小于Precision
 
     @property
     def Default(self):
-        """字段默认值
+        r"""字段默认值
         :rtype: str
         """
         return self._Default
@@ -38769,7 +38769,7 @@ Scale小于Precision
 
     @property
     def NotNull(self):
-        """字段是否是非空
+        r"""字段是否是非空
         :rtype: bool
         """
         return self._NotNull
@@ -38780,7 +38780,7 @@ Scale小于Precision
 
     @property
     def Precision(self):
-        """表示整个 numeric 的长度,取值1-38
+        r"""表示整个 numeric 的长度,取值1-38
         :rtype: int
         """
         return self._Precision
@@ -38791,7 +38791,7 @@ Scale小于Precision
 
     @property
     def Scale(self):
-        """表示小数部分的长度
+        r"""表示小数部分的长度
 Scale小于Precision
         :rtype: int
         """
@@ -38803,7 +38803,7 @@ Scale小于Precision
 
     @property
     def Position(self):
-        """字段位置，小的在前
+        r"""字段位置，小的在前
         :rtype: int
         """
         return self._Position
@@ -38814,7 +38814,7 @@ Scale小于Precision
 
     @property
     def IsPartition(self):
-        """是否为分区字段
+        r"""是否为分区字段
         :rtype: bool
         """
         return self._IsPartition
@@ -38845,7 +38845,7 @@ Scale小于Precision
 
 
 class TPartition(AbstractModel):
-    """表分区字段信息
+    r"""表分区字段信息
 
     """
 
@@ -38879,7 +38879,7 @@ class TPartition(AbstractModel):
 
     @property
     def Name(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._Name
@@ -38890,7 +38890,7 @@ class TPartition(AbstractModel):
 
     @property
     def Type(self):
-        """字段类型
+        r"""字段类型
         :rtype: str
         """
         return self._Type
@@ -38901,7 +38901,7 @@ class TPartition(AbstractModel):
 
     @property
     def Comment(self):
-        """字段描述
+        r"""字段描述
         :rtype: str
         """
         return self._Comment
@@ -38912,7 +38912,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionType(self):
-        """分区类型（已废弃）
+        r"""分区类型（已废弃）
         :rtype: str
         """
         return self._PartitionType
@@ -38923,7 +38923,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionFormat(self):
-        """分区格式（已废弃）
+        r"""分区格式（已废弃）
         :rtype: str
         """
         return self._PartitionFormat
@@ -38934,7 +38934,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionDot(self):
-        """分区分隔数（已废弃）
+        r"""分区分隔数（已废弃）
         :rtype: int
         """
         return self._PartitionDot
@@ -38945,7 +38945,7 @@ class TPartition(AbstractModel):
 
     @property
     def Transform(self):
-        """分区转换策略
+        r"""分区转换策略
         :rtype: str
         """
         return self._Transform
@@ -38956,7 +38956,7 @@ class TPartition(AbstractModel):
 
     @property
     def TransformArgs(self):
-        """策略参数
+        r"""策略参数
         :rtype: list of str
         """
         return self._TransformArgs
@@ -38986,7 +38986,7 @@ class TPartition(AbstractModel):
 
 
 class TableBaseInfo(AbstractModel):
-    """数据表配置信息
+    r"""数据表配置信息
 
     """
 
@@ -39037,7 +39037,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """该数据表所属数据库名字
+        r"""该数据表所属数据库名字
         :rtype: str
         """
         return self._DatabaseName
@@ -39048,7 +39048,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """数据表名字
+        r"""数据表名字
         :rtype: str
         """
         return self._TableName
@@ -39059,7 +39059,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """该数据表所属数据源名字
+        r"""该数据表所属数据源名字
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -39070,7 +39070,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def TableComment(self):
-        """该数据表备注
+        r"""该数据表备注
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39082,7 +39082,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def Type(self):
-        """具体类型，表or视图
+        r"""具体类型，表or视图
         :rtype: str
         """
         return self._Type
@@ -39093,7 +39093,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def TableFormat(self):
-        """数据格式类型，hive，iceberg等
+        r"""数据格式类型，hive，iceberg等
         :rtype: str
         """
         return self._TableFormat
@@ -39104,7 +39104,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """建表用户昵称
+        r"""建表用户昵称
         :rtype: str
         """
         return self._UserAlias
@@ -39115,7 +39115,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def UserSubUin(self):
-        """建表用户ID
+        r"""建表用户ID
         :rtype: str
         """
         return self._UserSubUin
@@ -39128,7 +39128,7 @@ class TableBaseInfo(AbstractModel):
     def GovernPolicy(self):
         warnings.warn("parameter `GovernPolicy` is deprecated", DeprecationWarning) 
 
-        """数据治理配置项
+        r"""数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
         """
@@ -39144,7 +39144,7 @@ class TableBaseInfo(AbstractModel):
     def DbGovernPolicyIsDisable(self):
         warnings.warn("parameter `DbGovernPolicyIsDisable` is deprecated", DeprecationWarning) 
 
-        """库数据治理是否关闭，关闭：true，开启：false
+        r"""库数据治理是否关闭，关闭：true，开启：false
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39158,7 +39158,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def SmartPolicy(self):
-        """智能数据治理配置项
+        r"""智能数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
         """
@@ -39170,7 +39170,7 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def PrimaryKeys(self):
-        """T-ICEBERG表的主键
+        r"""T-ICEBERG表的主键
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -39209,7 +39209,7 @@ class TableBaseInfo(AbstractModel):
 
 
 class TableInfo(AbstractModel):
-    """返回数据表的相关信息。
+    r"""返回数据表的相关信息。
 
     """
 
@@ -39234,7 +39234,7 @@ class TableInfo(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """数据表配置信息。
+        r"""数据表配置信息。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -39245,7 +39245,7 @@ class TableInfo(AbstractModel):
 
     @property
     def DataFormat(self):
-        """数据表格式。每次入参可选如下其一的KV结构，[TextFile，CSV，Json, Parquet, ORC, AVRD]。
+        r"""数据表格式。每次入参可选如下其一的KV结构，[TextFile，CSV，Json, Parquet, ORC, AVRD]。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataFormat`
         """
         return self._DataFormat
@@ -39256,7 +39256,7 @@ class TableInfo(AbstractModel):
 
     @property
     def Columns(self):
-        """数据表列信息。
+        r"""数据表列信息。
         :rtype: list of Column
         """
         return self._Columns
@@ -39267,7 +39267,7 @@ class TableInfo(AbstractModel):
 
     @property
     def Partitions(self):
-        """数据表分块信息。
+        r"""数据表分块信息。
         :rtype: list of Partition
         """
         return self._Partitions
@@ -39278,7 +39278,7 @@ class TableInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据存储路径。当前仅支持cos路径，格式如下：cosn://bucket-name/filepath。
+        r"""数据存储路径。当前仅支持cos路径，格式如下：cosn://bucket-name/filepath。
         :rtype: str
         """
         return self._Location
@@ -39319,7 +39319,7 @@ class TableInfo(AbstractModel):
 
 
 class TableResponseInfo(AbstractModel):
-    """查询表信息对象
+    r"""查询表信息对象
 
     """
 
@@ -39371,7 +39371,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def TableBaseInfo(self):
-        """数据表基本信息。
+        r"""数据表基本信息。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
         """
         return self._TableBaseInfo
@@ -39382,7 +39382,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def Columns(self):
-        """数据表列信息。
+        r"""数据表列信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Column
         """
@@ -39394,7 +39394,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def Partitions(self):
-        """数据表分块信息。
+        r"""数据表分块信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Partition
         """
@@ -39406,7 +39406,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def Location(self):
-        """数据存储路径。
+        r"""数据存储路径。
         :rtype: str
         """
         return self._Location
@@ -39417,7 +39417,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def Properties(self):
-        """数据表属性信息。
+        r"""数据表属性信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -39429,7 +39429,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """数据表更新时间, 单位: ms。
+        r"""数据表更新时间, 单位: ms。
         :rtype: str
         """
         return self._ModifiedTime
@@ -39440,7 +39440,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """数据表创建时间,单位: ms。
+        r"""数据表创建时间,单位: ms。
         :rtype: str
         """
         return self._CreateTime
@@ -39451,7 +39451,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def InputFormat(self):
-        """数据格式。
+        r"""数据格式。
         :rtype: str
         """
         return self._InputFormat
@@ -39462,7 +39462,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def StorageSize(self):
-        """数据表存储大小（单位：Byte）
+        r"""数据表存储大小（单位：Byte）
         :rtype: int
         """
         return self._StorageSize
@@ -39473,7 +39473,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def RecordCount(self):
-        """数据表行数
+        r"""数据表行数
         :rtype: int
         """
         return self._RecordCount
@@ -39484,7 +39484,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def MapMaterializedViewName(self):
-        """xxxx
+        r"""xxxx
         :rtype: str
         """
         return self._MapMaterializedViewName
@@ -39495,7 +39495,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def HeatValue(self):
-        """访问热点
+        r"""访问热点
         :rtype: int
         """
         return self._HeatValue
@@ -39506,7 +39506,7 @@ class TableResponseInfo(AbstractModel):
 
     @property
     def InputFormatShort(self):
-        """InputFormat的缩写
+        r"""InputFormat的缩写
         :rtype: str
         """
         return self._InputFormatShort
@@ -39558,7 +39558,7 @@ class TableResponseInfo(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """标签对信息
+    r"""标签对信息
 
     """
 
@@ -39574,7 +39574,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -39585,7 +39585,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -39609,7 +39609,7 @@ class TagInfo(AbstractModel):
 
 
 class Task(AbstractModel):
-    """任务类型，任务如SQL查询等。
+    r"""任务类型，任务如SQL查询等。
 
     """
 
@@ -39625,7 +39625,7 @@ class Task(AbstractModel):
 
     @property
     def SQLTask(self):
-        """SQL查询任务
+        r"""SQL查询任务
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SQLTask`
         """
         return self._SQLTask
@@ -39636,7 +39636,7 @@ class Task(AbstractModel):
 
     @property
     def SparkSQLTask(self):
-        """Spark SQL查询任务
+        r"""Spark SQL查询任务
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SQLTask`
         """
         return self._SparkSQLTask
@@ -39664,7 +39664,7 @@ class Task(AbstractModel):
 
 
 class TaskMonitorInfo(AbstractModel):
-    """任务监控信息
+    r"""任务监控信息
 
     """
 
@@ -39695,7 +39695,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -39706,7 +39706,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def HouseName(self):
-        """引擎名称
+        r"""引擎名称
         :rtype: str
         """
         return self._HouseName
@@ -39717,7 +39717,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def QuerySQL(self):
-        """sql语句
+        r"""sql语句
         :rtype: str
         """
         return self._QuerySQL
@@ -39728,7 +39728,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务时间
+        r"""任务时间
         :rtype: str
         """
         return self._CreateTime
@@ -39739,7 +39739,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def UsedTime(self):
-        """执行时间
+        r"""执行时间
         :rtype: str
         """
         return self._UsedTime
@@ -39750,7 +39750,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def DataAmount(self):
-        """数据扫描量
+        r"""数据扫描量
         :rtype: str
         """
         return self._DataAmount
@@ -39761,7 +39761,7 @@ class TaskMonitorInfo(AbstractModel):
 
     @property
     def QueryStats(self):
-        """指标信息
+        r"""指标信息
         :rtype: str
         """
         return self._QueryStats
@@ -39790,7 +39790,7 @@ class TaskMonitorInfo(AbstractModel):
 
 
 class TaskResponseInfo(AbstractModel):
-    """任务实例。
+    r"""任务实例。
 
     """
 
@@ -39935,7 +39935,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """任务所属Database的名称。
+        r"""任务所属Database的名称。
         :rtype: str
         """
         return self._DatabaseName
@@ -39946,7 +39946,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DataAmount(self):
-        """任务数据量。
+        r"""任务数据量。
         :rtype: int
         """
         return self._DataAmount
@@ -39957,7 +39957,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def Id(self):
-        """任务Id。
+        r"""任务Id。
         :rtype: str
         """
         return self._Id
@@ -39968,7 +39968,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def UsedTime(self):
-        """计算耗时，单位： ms
+        r"""计算耗时，单位： ms
         :rtype: int
         """
         return self._UsedTime
@@ -39979,7 +39979,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def OutputPath(self):
-        """任务输出路径。
+        r"""任务输出路径。
         :rtype: str
         """
         return self._OutputPath
@@ -39990,7 +39990,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间。
+        r"""任务创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -40001,7 +40001,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def State(self):
-        """任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        r"""任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
         :rtype: int
         """
         return self._State
@@ -40012,7 +40012,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SQLType(self):
-        """任务SQL类型，DDL|DML等
+        r"""任务SQL类型，DDL|DML等
         :rtype: str
         """
         return self._SQLType
@@ -40023,7 +40023,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SQL(self):
-        """任务SQL语句
+        r"""任务SQL语句
         :rtype: str
         """
         return self._SQL
@@ -40034,7 +40034,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ResultExpired(self):
-        """结果是否过期。
+        r"""结果是否过期。
         :rtype: bool
         """
         return self._ResultExpired
@@ -40045,7 +40045,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def RowAffectInfo(self):
-        """数据影响统计信息。
+        r"""数据影响统计信息。
         :rtype: str
         """
         return self._RowAffectInfo
@@ -40056,7 +40056,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DataSet(self):
-        """任务结果数据表。
+        r"""任务结果数据表。
         :rtype: str
         """
         return self._DataSet
@@ -40067,7 +40067,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def Error(self):
-        """失败信息, 例如：errorMessage。该字段已废弃。
+        r"""失败信息, 例如：errorMessage。该字段已废弃。
         :rtype: str
         """
         return self._Error
@@ -40078,7 +40078,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def Percentage(self):
-        """任务执行进度num/100(%)
+        r"""任务执行进度num/100(%)
         :rtype: int
         """
         return self._Percentage
@@ -40089,7 +40089,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def OutputMessage(self):
-        """任务执行输出信息。
+        r"""任务执行输出信息。
         :rtype: str
         """
         return self._OutputMessage
@@ -40100,7 +40100,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        """执行SQL的引擎类型
+        r"""执行SQL的引擎类型
         :rtype: str
         """
         return self._TaskType
@@ -40111,7 +40111,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ProgressDetail(self):
-        """任务进度明细
+        r"""任务进度明细
         :rtype: str
         """
         return self._ProgressDetail
@@ -40122,7 +40122,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """任务结束时间
+        r"""任务结束时间
         :rtype: str
         """
         return self._UpdateTime
@@ -40133,7 +40133,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """计算资源id
+        r"""计算资源id
         :rtype: str
         """
         return self._DataEngineId
@@ -40144,7 +40144,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def OperateUin(self):
-        """执行sql的子uin
+        r"""执行sql的子uin
         :rtype: str
         """
         return self._OperateUin
@@ -40155,7 +40155,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """计算资源名字
+        r"""计算资源名字
         :rtype: str
         """
         return self._DataEngineName
@@ -40166,7 +40166,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def InputType(self):
-        """导入类型是本地导入还是cos
+        r"""导入类型是本地导入还是cos
         :rtype: str
         """
         return self._InputType
@@ -40177,7 +40177,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def InputConf(self):
-        """导入配置
+        r"""导入配置
         :rtype: str
         """
         return self._InputConf
@@ -40188,7 +40188,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DataNumber(self):
-        """数据条数
+        r"""数据条数
         :rtype: int
         """
         return self._DataNumber
@@ -40199,7 +40199,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def CanDownload(self):
-        """查询数据能不能下载
+        r"""查询数据能不能下载
         :rtype: bool
         """
         return self._CanDownload
@@ -40210,7 +40210,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户别名
+        r"""用户别名
         :rtype: str
         """
         return self._UserAlias
@@ -40221,7 +40221,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SparkJobName(self):
-        """spark应用作业名
+        r"""spark应用作业名
         :rtype: str
         """
         return self._SparkJobName
@@ -40232,7 +40232,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SparkJobId(self):
-        """spark应用作业Id
+        r"""spark应用作业Id
         :rtype: str
         """
         return self._SparkJobId
@@ -40243,7 +40243,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SparkJobFile(self):
-        """spark应用入口jar文件
+        r"""spark应用入口jar文件
         :rtype: str
         """
         return self._SparkJobFile
@@ -40254,7 +40254,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def UiUrl(self):
-        """spark ui url
+        r"""spark ui url
         :rtype: str
         """
         return self._UiUrl
@@ -40265,7 +40265,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def TotalTime(self):
-        """任务耗时，单位： ms
+        r"""任务耗时，单位： ms
         :rtype: int
         """
         return self._TotalTime
@@ -40276,7 +40276,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """spark app job执行task的程序入口参数
+        r"""spark app job执行task的程序入口参数
         :rtype: str
         """
         return self._CmdArgs
@@ -40287,7 +40287,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ImageVersion(self):
-        """集群镜像大版本名称
+        r"""集群镜像大版本名称
         :rtype: str
         """
         return self._ImageVersion
@@ -40298,7 +40298,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def DriverSize(self):
-        """driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._DriverSize
@@ -40309,7 +40309,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        """executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
         :rtype: str
         """
         return self._ExecutorSize
@@ -40320,7 +40320,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ExecutorNums(self):
-        """指定executor数量，最小值为1，最大值小于集群规格
+        r"""指定executor数量，最小值为1，最大值小于集群规格
         :rtype: int
         """
         return self._ExecutorNums
@@ -40331,7 +40331,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        """指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        r"""指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
         :rtype: int
         """
         return self._ExecutorMaxNumbers
@@ -40342,7 +40342,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def CommonMetrics(self):
-        """任务公共指标数据
+        r"""任务公共指标数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
         """
@@ -40354,7 +40354,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def SparkMonitorMetrics(self):
-        """spark任务指标数据
+        r"""spark任务指标数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
         """
@@ -40366,7 +40366,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def PrestoMonitorMetrics(self):
-        """presto任务指标数据
+        r"""presto任务指标数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
         """
@@ -40378,7 +40378,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ResultFormat(self):
-        """结果文件格式：默认为csv
+        r"""结果文件格式：默认为csv
         :rtype: str
         """
         return self._ResultFormat
@@ -40389,7 +40389,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        """引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+        r"""引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
         :rtype: str
         """
         return self._EngineTypeDetail
@@ -40400,7 +40400,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        """spark引擎资源组名称
+        r"""spark引擎资源组名称
         :rtype: str
         """
         return self._ResourceGroupName
@@ -40411,7 +40411,7 @@ class TaskResponseInfo(AbstractModel):
 
     @property
     def JobTimeSum(self):
-        """任务执行耗时
+        r"""任务执行耗时
         :rtype: int
         """
         return self._JobTimeSum
@@ -40483,7 +40483,7 @@ class TaskResponseInfo(AbstractModel):
 
 
 class TaskResultInfo(AbstractModel):
-    """任务结果信息。
+    r"""任务结果信息。
 
     """
 
@@ -40554,7 +40554,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务唯一ID
+        r"""任务唯一ID
         :rtype: str
         """
         return self._TaskId
@@ -40565,7 +40565,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称，当前任务执行时候选中的默认数据源
+        r"""数据源名称，当前任务执行时候选中的默认数据源
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -40576,7 +40576,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名称，当前任务执行时候选中的默认数据库
+        r"""数据库名称，当前任务执行时候选中的默认数据库
         :rtype: str
         """
         return self._DatabaseName
@@ -40587,7 +40587,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def SQL(self):
-        """当前执行的SQL，一个任务包含一个SQL
+        r"""当前执行的SQL，一个任务包含一个SQL
         :rtype: str
         """
         return self._SQL
@@ -40598,7 +40598,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def SQLType(self):
-        """执行任务的类型，现在分为DDL、DML、DQL
+        r"""执行任务的类型，现在分为DDL、DML、DQL
         :rtype: str
         """
         return self._SQLType
@@ -40609,7 +40609,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def State(self):
-        """任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功  3：数据写入中 4：排队中 -1：任务执行失败 -3：用户手动终止 。只有任务执行成功的情况下，才会返回任务执行的结果
+        r"""任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功  3：数据写入中 4：排队中 -1：任务执行失败 -3：用户手动终止 。只有任务执行成功的情况下，才会返回任务执行的结果
         :rtype: int
         """
         return self._State
@@ -40620,7 +40620,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def DataAmount(self):
-        """扫描的数据量，单位byte
+        r"""扫描的数据量，单位byte
         :rtype: int
         """
         return self._DataAmount
@@ -40631,7 +40631,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def UsedTime(self):
-        """计算耗时，单位： ms
+        r"""计算耗时，单位： ms
         :rtype: int
         """
         return self._UsedTime
@@ -40642,7 +40642,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def OutputPath(self):
-        """任务结果输出的COS桶地址
+        r"""任务结果输出的COS桶地址
         :rtype: str
         """
         return self._OutputPath
@@ -40653,7 +40653,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间，时间戳
+        r"""任务创建时间，时间戳
         :rtype: str
         """
         return self._CreateTime
@@ -40664,7 +40664,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def OutputMessage(self):
-        """任务执行信息，成功时返回success，失败时返回失败原因
+        r"""任务执行信息，成功时返回success，失败时返回失败原因
         :rtype: str
         """
         return self._OutputMessage
@@ -40675,7 +40675,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def RowAffectInfo(self):
-        """被影响的行数
+        r"""被影响的行数
         :rtype: str
         """
         return self._RowAffectInfo
@@ -40686,7 +40686,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def ResultSchema(self):
-        """结果的schema信息
+        r"""结果的schema信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Column
         """
@@ -40698,7 +40698,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
-        """结果信息，反转义后，外层数组的每个元素为一行数据
+        r"""结果信息，反转义后，外层数组的每个元素为一行数据
         :rtype: str
         """
         return self._ResultSet
@@ -40709,7 +40709,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def NextToken(self):
-        """分页信息，如果没有更多结果数据，nextToken为空
+        r"""分页信息，如果没有更多结果数据，nextToken为空
         :rtype: str
         """
         return self._NextToken
@@ -40720,7 +40720,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def Percentage(self):
-        """任务执行进度num/100(%)
+        r"""任务执行进度num/100(%)
         :rtype: int
         """
         return self._Percentage
@@ -40731,7 +40731,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def ProgressDetail(self):
-        """任务进度明细
+        r"""任务进度明细
         :rtype: str
         """
         return self._ProgressDetail
@@ -40742,7 +40742,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def DisplayFormat(self):
-        """控制台展示格式。table：表格展示 text：文本展示
+        r"""控制台展示格式。table：表格展示 text：文本展示
         :rtype: str
         """
         return self._DisplayFormat
@@ -40753,7 +40753,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def TotalTime(self):
-        """任务耗时，单位： ms
+        r"""任务耗时，单位： ms
         :rtype: int
         """
         return self._TotalTime
@@ -40764,7 +40764,7 @@ class TaskResultInfo(AbstractModel):
 
     @property
     def QueryResultTime(self):
-        """获取结果消耗的时间
+        r"""获取结果消耗的时间
         :rtype: float
         """
         return self._QueryResultTime
@@ -40811,7 +40811,7 @@ class TaskResultInfo(AbstractModel):
 
 
 class TasksInfo(AbstractModel):
-    """批量顺序执行任务集合
+    r"""批量顺序执行任务集合
 
     """
 
@@ -40836,7 +40836,7 @@ class TasksInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型，SQLTask：SQL查询任务。SparkSQLTask：Spark SQL查询任务
+        r"""任务类型，SQLTask：SQL查询任务。SparkSQLTask：Spark SQL查询任务
         :rtype: str
         """
         return self._TaskType
@@ -40847,7 +40847,7 @@ class TasksInfo(AbstractModel):
 
     @property
     def FailureTolerance(self):
-        """容错策略。Proceed：前面任务出错/取消后继续执行后面的任务。Terminate：前面的任务出错/取消之后终止后面任务的执行，后面的任务全部标记为已取消。
+        r"""容错策略。Proceed：前面任务出错/取消后继续执行后面的任务。Terminate：前面的任务出错/取消之后终止后面任务的执行，后面的任务全部标记为已取消。
         :rtype: str
         """
         return self._FailureTolerance
@@ -40858,7 +40858,7 @@ class TasksInfo(AbstractModel):
 
     @property
     def SQL(self):
-        """base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
+        r"""base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
         :rtype: str
         """
         return self._SQL
@@ -40869,7 +40869,7 @@ class TasksInfo(AbstractModel):
 
     @property
     def Config(self):
-        """任务的配置信息，当前仅支持SparkSQLTask任务。
+        r"""任务的配置信息，当前仅支持SparkSQLTask任务。
         :rtype: list of KVPair
         """
         return self._Config
@@ -40880,7 +40880,7 @@ class TasksInfo(AbstractModel):
 
     @property
     def Params(self):
-        """任务的用户自定义参数信息
+        r"""任务的用户自定义参数信息
         :rtype: list of KVPair
         """
         return self._Params
@@ -40917,7 +40917,7 @@ class TasksInfo(AbstractModel):
 
 
 class TasksOverview(AbstractModel):
-    """任务概览
+    r"""任务概览
 
     """
 
@@ -40939,7 +40939,7 @@ class TasksOverview(AbstractModel):
 
     @property
     def TaskQueuedCount(self):
-        """正在排队的任务个数
+        r"""正在排队的任务个数
         :rtype: int
         """
         return self._TaskQueuedCount
@@ -40950,7 +40950,7 @@ class TasksOverview(AbstractModel):
 
     @property
     def TaskInitCount(self):
-        """初始化的任务个数
+        r"""初始化的任务个数
         :rtype: int
         """
         return self._TaskInitCount
@@ -40961,7 +40961,7 @@ class TasksOverview(AbstractModel):
 
     @property
     def TaskRunningCount(self):
-        """正在执行的任务个数
+        r"""正在执行的任务个数
         :rtype: int
         """
         return self._TaskRunningCount
@@ -40972,7 +40972,7 @@ class TasksOverview(AbstractModel):
 
     @property
     def TotalTaskCount(self):
-        """当前时间范围的总任务个数
+        r"""当前时间范围的总任务个数
         :rtype: int
         """
         return self._TotalTaskCount
@@ -40998,7 +40998,7 @@ class TasksOverview(AbstractModel):
 
 
 class TccHive(AbstractModel):
-    """TccHive数据结构
+    r"""TccHive数据结构
 
     """
 
@@ -41029,7 +41029,7 @@ class TccHive(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -41040,7 +41040,7 @@ class TccHive(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -41051,7 +41051,7 @@ class TccHive(AbstractModel):
 
     @property
     def EndpointServiceId(self):
-        """终端节点服务ID
+        r"""终端节点服务ID
         :rtype: str
         """
         return self._EndpointServiceId
@@ -41062,7 +41062,7 @@ class TccHive(AbstractModel):
 
     @property
     def MetaStoreUrl(self):
-        """thrift连接地址
+        r"""thrift连接地址
         :rtype: str
         """
         return self._MetaStoreUrl
@@ -41073,7 +41073,7 @@ class TccHive(AbstractModel):
 
     @property
     def HiveVersion(self):
-        """hive版本
+        r"""hive版本
         :rtype: str
         """
         return self._HiveVersion
@@ -41084,7 +41084,7 @@ class TccHive(AbstractModel):
 
     @property
     def TccConnection(self):
-        """网络信息
+        r"""网络信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
         """
         return self._TccConnection
@@ -41095,7 +41095,7 @@ class TccHive(AbstractModel):
 
     @property
     def HmsEndpointServiceId(self):
-        """Hms终端节点服务ID
+        r"""Hms终端节点服务ID
         :rtype: str
         """
         return self._HmsEndpointServiceId
@@ -41126,7 +41126,7 @@ class TccHive(AbstractModel):
 
 
 class TextFile(AbstractModel):
-    """文本格式
+    r"""文本格式
 
     """
 
@@ -41142,7 +41142,7 @@ class TextFile(AbstractModel):
 
     @property
     def Format(self):
-        """文本类型，本参数取值为TextFile。
+        r"""文本类型，本参数取值为TextFile。
         :rtype: str
         """
         return self._Format
@@ -41153,7 +41153,7 @@ class TextFile(AbstractModel):
 
     @property
     def Regex(self):
-        """处理文本用的正则表达式。
+        r"""处理文本用的正则表达式。
         :rtype: str
         """
         return self._Regex
@@ -41177,7 +41177,7 @@ class TextFile(AbstractModel):
 
 
 class UDFPolicyInfo(AbstractModel):
-    """UDF权限信息
+    r"""UDF权限信息
 
     """
 
@@ -41197,7 +41197,7 @@ class UDFPolicyInfo(AbstractModel):
 
     @property
     def Accesses(self):
-        """权限类型
+        r"""权限类型
 示例：select，alter，drop
         :rtype: list of str
         """
@@ -41209,7 +41209,7 @@ class UDFPolicyInfo(AbstractModel):
 
     @property
     def Users(self):
-        """拥有权限的用户信息
+        r"""拥有权限的用户信息
         :rtype: list of str
         """
         return self._Users
@@ -41220,7 +41220,7 @@ class UDFPolicyInfo(AbstractModel):
 
     @property
     def Groups(self):
-        """拥有权限的工作组的信息
+        r"""拥有权限的工作组的信息
         :rtype: list of str
         """
         return self._Groups
@@ -41245,7 +41245,7 @@ class UDFPolicyInfo(AbstractModel):
 
 
 class UnbindWorkGroupsFromUserRequest(AbstractModel):
-    """UnbindWorkGroupsFromUser请求参数结构体
+    r"""UnbindWorkGroupsFromUser请求参数结构体
 
     """
 
@@ -41258,7 +41258,7 @@ class UnbindWorkGroupsFromUserRequest(AbstractModel):
 
     @property
     def AddInfo(self):
-        """解绑的工作组Id和用户Id的关联关系
+        r"""解绑的工作组Id和用户Id的关联关系
         :rtype: :class:`tencentcloud.dlc.v20210125.models.WorkGroupIdSetOfUserId`
         """
         return self._AddInfo
@@ -41283,7 +41283,7 @@ class UnbindWorkGroupsFromUserRequest(AbstractModel):
 
 
 class UnbindWorkGroupsFromUserResponse(AbstractModel):
-    """UnbindWorkGroupsFromUser返回参数结构体
+    r"""UnbindWorkGroupsFromUser返回参数结构体
 
     """
 
@@ -41296,7 +41296,7 @@ class UnbindWorkGroupsFromUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41311,7 +41311,7 @@ class UnbindWorkGroupsFromUserResponse(AbstractModel):
 
 
 class UnboundDatasourceHouseRequest(AbstractModel):
-    """UnboundDatasourceHouse请求参数结构体
+    r"""UnboundDatasourceHouse请求参数结构体
 
     """
 
@@ -41324,7 +41324,7 @@ class UnboundDatasourceHouseRequest(AbstractModel):
 
     @property
     def NetworkConnectionName(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: str
         """
         return self._NetworkConnectionName
@@ -41347,7 +41347,7 @@ class UnboundDatasourceHouseRequest(AbstractModel):
 
 
 class UnboundDatasourceHouseResponse(AbstractModel):
-    """UnboundDatasourceHouse返回参数结构体
+    r"""UnboundDatasourceHouse返回参数结构体
 
     """
 
@@ -41360,7 +41360,7 @@ class UnboundDatasourceHouseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41375,7 +41375,7 @@ class UnboundDatasourceHouseResponse(AbstractModel):
 
 
 class UnlockMetaDataRequest(AbstractModel):
-    """UnlockMetaData请求参数结构体
+    r"""UnlockMetaData请求参数结构体
 
     """
 
@@ -41391,7 +41391,7 @@ class UnlockMetaDataRequest(AbstractModel):
 
     @property
     def LockId(self):
-        """锁ID
+        r"""锁ID
         :rtype: int
         """
         return self._LockId
@@ -41402,7 +41402,7 @@ class UnlockMetaDataRequest(AbstractModel):
 
     @property
     def DatasourceConnectionName(self):
-        """数据源名称
+        r"""数据源名称
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -41426,7 +41426,7 @@ class UnlockMetaDataRequest(AbstractModel):
 
 
 class UnlockMetaDataResponse(AbstractModel):
-    """UnlockMetaData返回参数结构体
+    r"""UnlockMetaData返回参数结构体
 
     """
 
@@ -41439,7 +41439,7 @@ class UnlockMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41454,7 +41454,7 @@ class UnlockMetaDataResponse(AbstractModel):
 
 
 class UpdateConfContext(AbstractModel):
-    """配置下发参数
+    r"""配置下发参数
 
     """
 
@@ -41470,7 +41470,7 @@ class UpdateConfContext(AbstractModel):
 
     @property
     def ConfigType(self):
-        """参数类型，可选：StaticConfigType，DynamicConfigType
+        r"""参数类型，可选：StaticConfigType，DynamicConfigType
         :rtype: str
         """
         return self._ConfigType
@@ -41481,7 +41481,7 @@ class UpdateConfContext(AbstractModel):
 
     @property
     def Params(self):
-        """参数的配置数组
+        r"""参数的配置数组
         :rtype: list of Param
         """
         return self._Params
@@ -41510,7 +41510,7 @@ class UpdateConfContext(AbstractModel):
 
 
 class UpdateDataEngineConfigRequest(AbstractModel):
-    """UpdateDataEngineConfig请求参数结构体
+    r"""UpdateDataEngineConfig请求参数结构体
 
     """
 
@@ -41532,7 +41532,7 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
     @property
     def DataEngineIds(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: list of str
         """
         return self._DataEngineIds
@@ -41543,7 +41543,7 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
     @property
     def DataEngineConfigCommand(self):
-        """引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
+        r"""引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
         :rtype: str
         """
         return self._DataEngineConfigCommand
@@ -41554,7 +41554,7 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
     @property
     def UseLakeFs(self):
-        """是否使用lakefs作为结果存储
+        r"""是否使用lakefs作为结果存储
         :rtype: bool
         """
         return self._UseLakeFs
@@ -41565,7 +41565,7 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
     @property
     def CustomResultPath(self):
-        """用户自定义结果路径
+        r"""用户自定义结果路径
         :rtype: str
         """
         return self._CustomResultPath
@@ -41591,7 +41591,7 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
 
 class UpdateDataEngineConfigResponse(AbstractModel):
-    """UpdateDataEngineConfig返回参数结构体
+    r"""UpdateDataEngineConfig返回参数结构体
 
     """
 
@@ -41604,7 +41604,7 @@ class UpdateDataEngineConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41619,7 +41619,7 @@ class UpdateDataEngineConfigResponse(AbstractModel):
 
 
 class UpdateDataEngineRequest(AbstractModel):
-    """UpdateDataEngine请求参数结构体
+    r"""UpdateDataEngine请求参数结构体
 
     """
 
@@ -41677,7 +41677,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def Size(self):
-        """资源大小
+        r"""资源大小
         :rtype: int
         """
         return self._Size
@@ -41688,7 +41688,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def MinClusters(self):
-        """最小资源
+        r"""最小资源
         :rtype: int
         """
         return self._MinClusters
@@ -41699,7 +41699,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def MaxClusters(self):
-        """最大资源
+        r"""最大资源
         :rtype: int
         """
         return self._MaxClusters
@@ -41710,7 +41710,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def AutoResume(self):
-        """开启自动刷新：true：开启、false（默认）：关闭
+        r"""开启自动刷新：true：开启、false（默认）：关闭
         :rtype: bool
         """
         return self._AutoResume
@@ -41721,7 +41721,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def DataEngineName(self):
-        """数据引擎名称
+        r"""数据引擎名称
         :rtype: str
         """
         return self._DataEngineName
@@ -41732,7 +41732,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def Message(self):
-        """相关信息
+        r"""相关信息
         :rtype: str
         """
         return self._Message
@@ -41743,7 +41743,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def AutoSuspend(self):
-        """是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+        r"""是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
         :rtype: bool
         """
         return self._AutoSuspend
@@ -41754,7 +41754,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def CrontabResumeSuspend(self):
-        """定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+        r"""定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
         :rtype: int
         """
         return self._CrontabResumeSuspend
@@ -41765,7 +41765,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def CrontabResumeSuspendStrategy(self):
-        """定时启停策略，复杂类型：包含启停时间、挂起集群策略
+        r"""定时启停策略，复杂类型：包含启停时间、挂起集群策略
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
         """
         return self._CrontabResumeSuspendStrategy
@@ -41776,7 +41776,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """单个集群最大并发任务数，默认5
+        r"""单个集群最大并发任务数，默认5
         :rtype: int
         """
         return self._MaxConcurrency
@@ -41787,7 +41787,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def TolerableQueueTime(self):
-        """可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+        r"""可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
         :rtype: int
         """
         return self._TolerableQueueTime
@@ -41798,7 +41798,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def AutoSuspendTime(self):
-        """集群自动挂起时间
+        r"""集群自动挂起时间
         :rtype: int
         """
         return self._AutoSuspendTime
@@ -41809,7 +41809,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        """spark jar 包年包月集群是否开启弹性
+        r"""spark jar 包年包月集群是否开启弹性
         :rtype: bool
         """
         return self._ElasticSwitch
@@ -41820,7 +41820,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def ElasticLimit(self):
-        """spark jar 包年包月集群弹性上限
+        r"""spark jar 包年包月集群弹性上限
         :rtype: int
         """
         return self._ElasticLimit
@@ -41831,7 +41831,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def SessionResourceTemplate(self):
-        """Spark批作业集群Session资源配置模板
+        r"""Spark批作业集群Session资源配置模板
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         return self._SessionResourceTemplate
@@ -41842,7 +41842,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
     @property
     def ScheduleElasticityConf(self):
-        """引擎资源弹性伸缩策略
+        r"""引擎资源弹性伸缩策略
         :rtype: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
         """
         return self._ScheduleElasticityConf
@@ -41886,7 +41886,7 @@ class UpdateDataEngineRequest(AbstractModel):
 
 
 class UpdateDataEngineResponse(AbstractModel):
-    """UpdateDataEngine返回参数结构体
+    r"""UpdateDataEngine返回参数结构体
 
     """
 
@@ -41899,7 +41899,7 @@ class UpdateDataEngineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41914,7 +41914,7 @@ class UpdateDataEngineResponse(AbstractModel):
 
 
 class UpdateDataMaskStrategyRequest(AbstractModel):
-    """UpdateDataMaskStrategy请求参数结构体
+    r"""UpdateDataMaskStrategy请求参数结构体
 
     """
 
@@ -41927,7 +41927,7 @@ class UpdateDataMaskStrategyRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """数据脱敏策略详情
+        r"""数据脱敏策略详情
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
         """
         return self._Strategy
@@ -41952,7 +41952,7 @@ class UpdateDataMaskStrategyRequest(AbstractModel):
 
 
 class UpdateDataMaskStrategyResponse(AbstractModel):
-    """UpdateDataMaskStrategy返回参数结构体
+    r"""UpdateDataMaskStrategy返回参数结构体
 
     """
 
@@ -41965,7 +41965,7 @@ class UpdateDataMaskStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -41980,7 +41980,7 @@ class UpdateDataMaskStrategyResponse(AbstractModel):
 
 
 class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
-    """UpdateEngineResourceGroupNetworkConfigInfo请求参数结构体
+    r"""UpdateEngineResourceGroupNetworkConfigInfo请求参数结构体
 
     """
 
@@ -41999,7 +41999,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
 
     @property
     def EngineResourceGroupId(self):
-        """引擎资源组ID
+        r"""引擎资源组ID
         :rtype: str
         """
         return self._EngineResourceGroupId
@@ -42010,7 +42010,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
 
     @property
     def IsEffectiveNow(self):
-        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        r"""是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
         :rtype: int
         """
         return self._IsEffectiveNow
@@ -42021,7 +42021,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
 
     @property
     def NetworkConfigNames(self):
-        """资源组绑定的网络配置名称集合
+        r"""资源组绑定的网络配置名称集合
         :rtype: list of str
         """
         return self._NetworkConfigNames
@@ -42046,7 +42046,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
 
 
 class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
-    """UpdateEngineResourceGroupNetworkConfigInfo返回参数结构体
+    r"""UpdateEngineResourceGroupNetworkConfigInfo返回参数结构体
 
     """
 
@@ -42059,7 +42059,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42074,7 +42074,7 @@ class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
 
 
 class UpdateNetworkConnectionRequest(AbstractModel):
-    """UpdateNetworkConnection请求参数结构体
+    r"""UpdateNetworkConnection请求参数结构体
 
     """
 
@@ -42090,7 +42090,7 @@ class UpdateNetworkConnectionRequest(AbstractModel):
 
     @property
     def NetworkConnectionDesc(self):
-        """网络配置描述
+        r"""网络配置描述
         :rtype: str
         """
         return self._NetworkConnectionDesc
@@ -42101,7 +42101,7 @@ class UpdateNetworkConnectionRequest(AbstractModel):
 
     @property
     def NetworkConnectionName(self):
-        """网络配置名称
+        r"""网络配置名称
         :rtype: str
         """
         return self._NetworkConnectionName
@@ -42125,7 +42125,7 @@ class UpdateNetworkConnectionRequest(AbstractModel):
 
 
 class UpdateNetworkConnectionResponse(AbstractModel):
-    """UpdateNetworkConnection返回参数结构体
+    r"""UpdateNetworkConnection返回参数结构体
 
     """
 
@@ -42138,7 +42138,7 @@ class UpdateNetworkConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42153,7 +42153,7 @@ class UpdateNetworkConnectionResponse(AbstractModel):
 
 
 class UpdateRowFilterRequest(AbstractModel):
-    """UpdateRowFilter请求参数结构体
+    r"""UpdateRowFilter请求参数结构体
 
     """
 
@@ -42169,7 +42169,7 @@ class UpdateRowFilterRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """行过滤策略的id，此值可以通过DescribeUserInfo或者DescribeWorkGroupInfo接口获取
+        r"""行过滤策略的id，此值可以通过DescribeUserInfo或者DescribeWorkGroupInfo接口获取
         :rtype: int
         """
         return self._PolicyId
@@ -42180,7 +42180,7 @@ class UpdateRowFilterRequest(AbstractModel):
 
     @property
     def Policy(self):
-        """新的过滤策略。
+        r"""新的过滤策略。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policy`
         """
         return self._Policy
@@ -42206,7 +42206,7 @@ class UpdateRowFilterRequest(AbstractModel):
 
 
 class UpdateRowFilterResponse(AbstractModel):
-    """UpdateRowFilter返回参数结构体
+    r"""UpdateRowFilter返回参数结构体
 
     """
 
@@ -42219,7 +42219,7 @@ class UpdateRowFilterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42234,7 +42234,7 @@ class UpdateRowFilterResponse(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
-    """UpdateStandardEngineResourceGroupBaseInfo请求参数结构体
+    r"""UpdateStandardEngineResourceGroupBaseInfo请求参数结构体
 
     """
 
@@ -42259,7 +42259,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """引擎资源组名称
+        r"""引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -42270,7 +42270,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
     @property
     def AutoLaunch(self):
-        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        r"""自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
         :rtype: int
         """
         return self._AutoLaunch
@@ -42281,7 +42281,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
     @property
     def AutoPause(self):
-        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        r"""自动挂起资源组。0-自动挂起，1-不自动挂起
         :rtype: int
         """
         return self._AutoPause
@@ -42292,7 +42292,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
     @property
     def AutoPauseTime(self):
-        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        r"""自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
         :rtype: int
         """
         return self._AutoPauseTime
@@ -42303,7 +42303,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """任务并发数
+        r"""任务并发数
         :rtype: int
         """
         return self._MaxConcurrency
@@ -42330,7 +42330,7 @@ class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupBaseInfoResponse(AbstractModel):
-    """UpdateStandardEngineResourceGroupBaseInfo返回参数结构体
+    r"""UpdateStandardEngineResourceGroupBaseInfo返回参数结构体
 
     """
 
@@ -42343,7 +42343,7 @@ class UpdateStandardEngineResourceGroupBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42358,7 +42358,7 @@ class UpdateStandardEngineResourceGroupBaseInfoResponse(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
-    """UpdateStandardEngineResourceGroupConfigInfo请求参数结构体
+    r"""UpdateStandardEngineResourceGroupConfigInfo请求参数结构体
 
     """
 
@@ -42377,7 +42377,7 @@ class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """引擎资源组名称
+        r"""引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -42388,7 +42388,7 @@ class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def UpdateConfContext(self):
-        """需要更新的配置
+        r"""需要更新的配置
         :rtype: list of UpdateConfContext
         """
         return self._UpdateConfContext
@@ -42399,7 +42399,7 @@ class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
     @property
     def IsEffectiveNow(self):
-        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        r"""是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
         :rtype: int
         """
         return self._IsEffectiveNow
@@ -42429,7 +42429,7 @@ class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
-    """UpdateStandardEngineResourceGroupConfigInfo返回参数结构体
+    r"""UpdateStandardEngineResourceGroupConfigInfo返回参数结构体
 
     """
 
@@ -42442,7 +42442,7 @@ class UpdateStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42457,7 +42457,7 @@ class UpdateStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
-    """UpdateStandardEngineResourceGroupResourceInfo请求参数结构体
+    r"""UpdateStandardEngineResourceGroupResourceInfo请求参数结构体
 
     """
 
@@ -42520,7 +42520,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def EngineResourceGroupName(self):
-        """引擎资源组名称
+        r"""引擎资源组名称
         :rtype: str
         """
         return self._EngineResourceGroupName
@@ -42531,7 +42531,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def DriverCuSpec(self):
-        """driver的cu规格：
+        r"""driver的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -42543,7 +42543,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def ExecutorCuSpec(self):
-        """executor的cu规格：
+        r"""executor的cu规格：
 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
         :rtype: str
         """
@@ -42555,7 +42555,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def MinExecutorNums(self):
-        """executor最小数量，
+        r"""executor最小数量，
         :rtype: int
         """
         return self._MinExecutorNums
@@ -42566,7 +42566,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def MaxExecutorNums(self):
-        """executor最大数量
+        r"""executor最大数量
         :rtype: int
         """
         return self._MaxExecutorNums
@@ -42577,7 +42577,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def IsEffectiveNow(self):
-        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        r"""是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
         :rtype: int
         """
         return self._IsEffectiveNow
@@ -42588,7 +42588,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def Size(self):
-        """AI资源组资源上限
+        r"""AI资源组资源上限
         :rtype: int
         """
         return self._Size
@@ -42599,7 +42599,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def ImageType(self):
-        """镜像类型，内置镜像：built-in，自定义镜像：custom
+        r"""镜像类型，内置镜像：built-in，自定义镜像：custom
         :rtype: str
         """
         return self._ImageType
@@ -42610,7 +42610,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def ImageName(self):
-        """镜像名称
+        r"""镜像名称
         :rtype: str
         """
         return self._ImageName
@@ -42621,7 +42621,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
-        """镜像版本，镜像id
+        r"""镜像版本，镜像id
         :rtype: str
         """
         return self._ImageVersion
@@ -42632,7 +42632,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def FrameType(self):
-        """框架类型
+        r"""框架类型
         :rtype: str
         """
         return self._FrameType
@@ -42643,7 +42643,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def PublicDomain(self):
-        """自定义镜像域名
+        r"""自定义镜像域名
         :rtype: str
         """
         return self._PublicDomain
@@ -42654,7 +42654,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        """自定义镜像实例id
+        r"""自定义镜像实例id
         :rtype: str
         """
         return self._RegistryId
@@ -42665,7 +42665,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def RegionName(self):
-        """自定义镜像所属地域
+        r"""自定义镜像所属地域
         :rtype: str
         """
         return self._RegionName
@@ -42676,7 +42676,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def PythonCuSpec(self):
-        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        r"""python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
         :rtype: str
         """
         return self._PythonCuSpec
@@ -42687,7 +42687,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def SparkSpecMode(self):
-        """仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        r"""仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
         :rtype: str
         """
         return self._SparkSpecMode
@@ -42698,7 +42698,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
     @property
     def SparkSize(self):
-        """仅SQL资源组资源上限，仅用于快速模式
+        r"""仅SQL资源组资源上限，仅用于快速模式
         :rtype: int
         """
         return self._SparkSize
@@ -42737,7 +42737,7 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
 
 
 class UpdateStandardEngineResourceGroupResourceInfoResponse(AbstractModel):
-    """UpdateStandardEngineResourceGroupResourceInfo返回参数结构体
+    r"""UpdateStandardEngineResourceGroupResourceInfo返回参数结构体
 
     """
 
@@ -42750,7 +42750,7 @@ class UpdateStandardEngineResourceGroupResourceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42765,7 +42765,7 @@ class UpdateStandardEngineResourceGroupResourceInfoResponse(AbstractModel):
 
 
 class UpdateUDFPolicyRequest(AbstractModel):
-    """UpdateUDFPolicy请求参数结构体
+    r"""UpdateUDFPolicy请求参数结构体
 
     """
 
@@ -42787,7 +42787,7 @@ class UpdateUDFPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
-        """UDF名称
+        r"""UDF名称
         :rtype: str
         """
         return self._Name
@@ -42798,7 +42798,7 @@ class UpdateUDFPolicyRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """数据库名
+        r"""数据库名
         :rtype: str
         """
         return self._DatabaseName
@@ -42809,7 +42809,7 @@ class UpdateUDFPolicyRequest(AbstractModel):
 
     @property
     def CatalogName(self):
-        """数据目录名
+        r"""数据目录名
         :rtype: str
         """
         return self._CatalogName
@@ -42820,7 +42820,7 @@ class UpdateUDFPolicyRequest(AbstractModel):
 
     @property
     def UDFPolicyInfos(self):
-        """UDF权限信息
+        r"""UDF权限信息
         :rtype: list of UDFPolicyInfo
         """
         return self._UDFPolicyInfos
@@ -42851,7 +42851,7 @@ class UpdateUDFPolicyRequest(AbstractModel):
 
 
 class UpdateUDFPolicyResponse(AbstractModel):
-    """UpdateUDFPolicy返回参数结构体
+    r"""UpdateUDFPolicy返回参数结构体
 
     """
 
@@ -42867,7 +42867,7 @@ class UpdateUDFPolicyResponse(AbstractModel):
 
     @property
     def UDFPolicyInfos(self):
-        """UDF权限信息
+        r"""UDF权限信息
         :rtype: list of UDFPolicyInfo
         """
         return self._UDFPolicyInfos
@@ -42878,7 +42878,7 @@ class UpdateUDFPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -42899,7 +42899,7 @@ class UpdateUDFPolicyResponse(AbstractModel):
 
 
 class UpdateUserDataEngineConfigRequest(AbstractModel):
-    """UpdateUserDataEngineConfig请求参数结构体
+    r"""UpdateUserDataEngineConfig请求参数结构体
 
     """
 
@@ -42918,7 +42918,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -42929,7 +42929,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
 
     @property
     def DataEngineConfigPairs(self):
-        """用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
+        r"""用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
         :rtype: list of DataEngineConfigPair
         """
         return self._DataEngineConfigPairs
@@ -42940,7 +42940,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
 
     @property
     def SessionResourceTemplate(self):
-        """作业引擎资源配置模板
+        r"""作业引擎资源配置模板
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         return self._SessionResourceTemplate
@@ -42972,7 +42972,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
 
 
 class UpdateUserDataEngineConfigResponse(AbstractModel):
-    """UpdateUserDataEngineConfig返回参数结构体
+    r"""UpdateUserDataEngineConfig返回参数结构体
 
     """
 
@@ -42985,7 +42985,7 @@ class UpdateUserDataEngineConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -43000,7 +43000,7 @@ class UpdateUserDataEngineConfigResponse(AbstractModel):
 
 
 class UpgradeDataEngineImageRequest(AbstractModel):
-    """UpgradeDataEngineImage请求参数结构体
+    r"""UpgradeDataEngineImage请求参数结构体
 
     """
 
@@ -43013,7 +43013,7 @@ class UpgradeDataEngineImageRequest(AbstractModel):
 
     @property
     def DataEngineId(self):
-        """引擎ID
+        r"""引擎ID
         :rtype: str
         """
         return self._DataEngineId
@@ -43036,7 +43036,7 @@ class UpgradeDataEngineImageRequest(AbstractModel):
 
 
 class UpgradeDataEngineImageResponse(AbstractModel):
-    """UpgradeDataEngineImage返回参数结构体
+    r"""UpgradeDataEngineImage返回参数结构体
 
     """
 
@@ -43049,7 +43049,7 @@ class UpgradeDataEngineImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -43064,7 +43064,7 @@ class UpgradeDataEngineImageResponse(AbstractModel):
 
 
 class UserDetailInfo(AbstractModel):
-    """用户详细信息
+    r"""用户详细信息
 
     """
 
@@ -43112,7 +43112,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id
+        r"""用户Id
         :rtype: str
         """
         return self._UserId
@@ -43123,7 +43123,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def Type(self):
-        """返回的信息类型，Group：返回的当前用户的工作组信息；DataAuth：返回的当前用户的数据权限信息；EngineAuth：返回的当前用户的引擎权限信息
+        r"""返回的信息类型，Group：返回的当前用户的工作组信息；DataAuth：返回的当前用户的数据权限信息；EngineAuth：返回的当前用户的引擎权限信息
         :rtype: str
         """
         return self._Type
@@ -43134,7 +43134,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型：ADMIN：管理员 COMMON：一般用户
+        r"""用户类型：ADMIN：管理员 COMMON：一般用户
         :rtype: str
         """
         return self._UserType
@@ -43145,7 +43145,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def UserDescription(self):
-        """用户描述信息
+        r"""用户描述信息
         :rtype: str
         """
         return self._UserDescription
@@ -43156,7 +43156,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def DataPolicyInfo(self):
-        """数据权限信息集合
+        r"""数据权限信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
@@ -43168,7 +43168,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def EnginePolicyInfo(self):
-        """引擎权限集合
+        r"""引擎权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
@@ -43180,7 +43180,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def WorkGroupInfo(self):
-        """绑定到该用户的工作组集合信息
+        r"""绑定到该用户的工作组集合信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.WorkGroups`
         """
@@ -43192,7 +43192,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户别名
+        r"""用户别名
         :rtype: str
         """
         return self._UserAlias
@@ -43203,7 +43203,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def RowFilterInfo(self):
-        """行过滤集合
+        r"""行过滤集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
@@ -43215,7 +43215,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def AccountType(self):
-        """账号类型
+        r"""账号类型
         :rtype: str
         """
         return self._AccountType
@@ -43226,7 +43226,7 @@ class UserDetailInfo(AbstractModel):
 
     @property
     def CatalogPolicyInfo(self):
-        """数据源权限集合
+        r"""数据源权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
@@ -43270,7 +43270,7 @@ class UserDetailInfo(AbstractModel):
 
 
 class UserIdSetOfWorkGroupId(AbstractModel):
-    """绑定到同一个工作组的用户Id的集合
+    r"""绑定到同一个工作组的用户Id的集合
 
     """
 
@@ -43286,7 +43286,7 @@ class UserIdSetOfWorkGroupId(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -43297,7 +43297,7 @@ class UserIdSetOfWorkGroupId(AbstractModel):
 
     @property
     def UserIds(self):
-        """用户Id集合，和CAM侧Uin匹配
+        r"""用户Id集合，和CAM侧Uin匹配
         :rtype: list of str
         """
         return self._UserIds
@@ -43321,7 +43321,7 @@ class UserIdSetOfWorkGroupId(AbstractModel):
 
 
 class UserInfo(AbstractModel):
-    """授权用户信息
+    r"""授权用户信息
 
     """
 
@@ -43363,7 +43363,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和子用户uin相同
+        r"""用户Id，和子用户uin相同
         :rtype: str
         """
         return self._UserId
@@ -43374,7 +43374,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserDescription(self):
-        """用户描述信息，方便区分不同用户
+        r"""用户描述信息，方便区分不同用户
         :rtype: str
         """
         return self._UserDescription
@@ -43385,7 +43385,7 @@ class UserInfo(AbstractModel):
 
     @property
     def PolicySet(self):
-        """单独给用户绑定的权限集合
+        r"""单独给用户绑定的权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Policy
         """
@@ -43397,7 +43397,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Creator(self):
-        """当前用户的创建者
+        r"""当前用户的创建者
         :rtype: str
         """
         return self._Creator
@@ -43408,7 +43408,7 @@ class UserInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，格式如2021-07-28 16:19:32
+        r"""创建时间，格式如2021-07-28 16:19:32
         :rtype: str
         """
         return self._CreateTime
@@ -43419,7 +43419,7 @@ class UserInfo(AbstractModel):
 
     @property
     def WorkGroupSet(self):
-        """关联的工作组集合
+        r"""关联的工作组集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkGroupMessage
         """
@@ -43431,7 +43431,7 @@ class UserInfo(AbstractModel):
 
     @property
     def IsOwner(self):
-        """是否是主账号
+        r"""是否是主账号
         :rtype: bool
         """
         return self._IsOwner
@@ -43442,7 +43442,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型。ADMIN：管理员 COMMON：普通用户。
+        r"""用户类型。ADMIN：管理员 COMMON：普通用户。
         :rtype: str
         """
         return self._UserType
@@ -43453,7 +43453,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户别名
+        r"""用户别名
         :rtype: str
         """
         return self._UserAlias
@@ -43464,7 +43464,7 @@ class UserInfo(AbstractModel):
 
     @property
     def AccountType(self):
-        """账号类型
+        r"""账号类型
         :rtype: str
         """
         return self._AccountType
@@ -43506,7 +43506,7 @@ class UserInfo(AbstractModel):
 
 
 class UserMessage(AbstractModel):
-    """用户部分信息
+    r"""用户部分信息
 
     """
 
@@ -43532,7 +43532,7 @@ class UserMessage(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和CAM侧子用户Uin匹配
+        r"""用户Id，和CAM侧子用户Uin匹配
         :rtype: str
         """
         return self._UserId
@@ -43543,7 +43543,7 @@ class UserMessage(AbstractModel):
 
     @property
     def UserDescription(self):
-        """用户描述
+        r"""用户描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43555,7 +43555,7 @@ class UserMessage(AbstractModel):
 
     @property
     def Creator(self):
-        """当前用户的创建者
+        r"""当前用户的创建者
         :rtype: str
         """
         return self._Creator
@@ -43566,7 +43566,7 @@ class UserMessage(AbstractModel):
 
     @property
     def CreateTime(self):
-        """当前用户的创建时间，形如2021-07-28 16:19:32
+        r"""当前用户的创建时间，形如2021-07-28 16:19:32
         :rtype: str
         """
         return self._CreateTime
@@ -43577,7 +43577,7 @@ class UserMessage(AbstractModel):
 
     @property
     def UserAlias(self):
-        """用户别名
+        r"""用户别名
         :rtype: str
         """
         return self._UserAlias
@@ -43604,7 +43604,7 @@ class UserMessage(AbstractModel):
 
 
 class UserRole(AbstractModel):
-    """用户角色
+    r"""用户角色
 
     """
 
@@ -43647,7 +43647,7 @@ class UserRole(AbstractModel):
 
     @property
     def RoleId(self):
-        """角色ID
+        r"""角色ID
         :rtype: int
         """
         return self._RoleId
@@ -43658,7 +43658,7 @@ class UserRole(AbstractModel):
 
     @property
     def AppId(self):
-        """用户app ID
+        r"""用户app ID
         :rtype: str
         """
         return self._AppId
@@ -43669,7 +43669,7 @@ class UserRole(AbstractModel):
 
     @property
     def Uin(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._Uin
@@ -43680,7 +43680,7 @@ class UserRole(AbstractModel):
 
     @property
     def Arn(self):
-        """角色权限
+        r"""角色权限
         :rtype: str
         """
         return self._Arn
@@ -43691,7 +43691,7 @@ class UserRole(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """最近修改时间戳
+        r"""最近修改时间戳
         :rtype: int
         """
         return self._ModifyTime
@@ -43702,7 +43702,7 @@ class UserRole(AbstractModel):
 
     @property
     def Desc(self):
-        """角色描述信息
+        r"""角色描述信息
         :rtype: str
         """
         return self._Desc
@@ -43713,7 +43713,7 @@ class UserRole(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名称
+        r"""角色名称
         :rtype: str
         """
         return self._RoleName
@@ -43724,7 +43724,7 @@ class UserRole(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者UIN
+        r"""创建者UIN
         :rtype: str
         """
         return self._Creator
@@ -43735,7 +43735,7 @@ class UserRole(AbstractModel):
 
     @property
     def CosPermissionList(self):
-        """cos授权路径列表
+        r"""cos授权路径列表
         :rtype: list of CosPermission
         """
         return self._CosPermissionList
@@ -43746,7 +43746,7 @@ class UserRole(AbstractModel):
 
     @property
     def PermissionJson(self):
-        """cam策略json
+        r"""cam策略json
         :rtype: str
         """
         return self._PermissionJson
@@ -43757,7 +43757,7 @@ class UserRole(AbstractModel):
 
     @property
     def IsDefault(self):
-        """是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        r"""是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
         :rtype: int
         """
         return self._IsDefault
@@ -43795,7 +43795,7 @@ class UserRole(AbstractModel):
 
 
 class UserVpcConnectionInfo(AbstractModel):
-    """用户vpc网络连接信息
+    r"""用户vpc网络连接信息
 
     """
 
@@ -43825,7 +43825,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
     @property
     def EngineNetworkId(self):
-        """引擎网络ID
+        r"""引擎网络ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43837,7 +43837,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
     @property
     def UserVpcId(self):
-        """用户vpcid
+        r"""用户vpcid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43849,7 +43849,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
     @property
     def UserVpcEndpointId(self):
-        """用户终端节点ID
+        r"""用户终端节点ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43861,7 +43861,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
     @property
     def UserVpcEndpointName(self):
-        """用户终端节点名称
+        r"""用户终端节点名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43873,7 +43873,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
     @property
     def AccessConnectionInfos(self):
-        """接入点信息
+        r"""接入点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -43901,7 +43901,7 @@ class UserVpcConnectionInfo(AbstractModel):
 
 
 class Users(AbstractModel):
-    """用户信息集合
+    r"""用户信息集合
 
     """
 
@@ -43918,7 +43918,7 @@ class Users(AbstractModel):
 
     @property
     def UserSet(self):
-        """用户信息集合
+        r"""用户信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserMessage
         """
@@ -43930,7 +43930,7 @@ class Users(AbstractModel):
 
     @property
     def TotalCount(self):
-        """用户总数
+        r"""用户总数
         :rtype: int
         """
         return self._TotalCount
@@ -43959,7 +43959,7 @@ class Users(AbstractModel):
 
 
 class ViewBaseInfo(AbstractModel):
-    """视图基本配置信息
+    r"""视图基本配置信息
 
     """
 
@@ -43981,7 +43981,7 @@ class ViewBaseInfo(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """该视图所属数据库名字
+        r"""该视图所属数据库名字
         :rtype: str
         """
         return self._DatabaseName
@@ -43992,7 +43992,7 @@ class ViewBaseInfo(AbstractModel):
 
     @property
     def ViewName(self):
-        """视图名称
+        r"""视图名称
         :rtype: str
         """
         return self._ViewName
@@ -44003,7 +44003,7 @@ class ViewBaseInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        """视图创建人昵称
+        r"""视图创建人昵称
         :rtype: str
         """
         return self._UserAlias
@@ -44014,7 +44014,7 @@ class ViewBaseInfo(AbstractModel):
 
     @property
     def UserSubUin(self):
-        """视图创建人ID
+        r"""视图创建人ID
         :rtype: str
         """
         return self._UserSubUin
@@ -44040,7 +44040,7 @@ class ViewBaseInfo(AbstractModel):
 
 
 class ViewResponseInfo(AbstractModel):
-    """查询视图信息对象
+    r"""查询视图信息对象
 
     """
 
@@ -44067,7 +44067,7 @@ class ViewResponseInfo(AbstractModel):
 
     @property
     def ViewBaseInfo(self):
-        """视图基本信息。
+        r"""视图基本信息。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.ViewBaseInfo`
         """
         return self._ViewBaseInfo
@@ -44078,7 +44078,7 @@ class ViewResponseInfo(AbstractModel):
 
     @property
     def Columns(self):
-        """视图列信息。
+        r"""视图列信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Column
         """
@@ -44090,7 +44090,7 @@ class ViewResponseInfo(AbstractModel):
 
     @property
     def Properties(self):
-        """视图属性信息。
+        r"""视图属性信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -44102,7 +44102,7 @@ class ViewResponseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """视图创建时间。
+        r"""视图创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -44113,7 +44113,7 @@ class ViewResponseInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """视图更新时间。
+        r"""视图更新时间。
         :rtype: str
         """
         return self._ModifiedTime
@@ -44152,7 +44152,7 @@ class ViewResponseInfo(AbstractModel):
 
 
 class VpcCidrBlock(AbstractModel):
-    """VPC子网信息
+    r"""VPC子网信息
 
     """
 
@@ -44168,7 +44168,7 @@ class VpcCidrBlock(AbstractModel):
 
     @property
     def CidrId(self):
-        """子网Id
+        r"""子网Id
         :rtype: str
         """
         return self._CidrId
@@ -44179,7 +44179,7 @@ class VpcCidrBlock(AbstractModel):
 
     @property
     def CidrAddr(self):
-        """子网网段
+        r"""子网网段
         :rtype: str
         """
         return self._CidrAddr
@@ -44203,7 +44203,7 @@ class VpcCidrBlock(AbstractModel):
 
 
 class VpcInfo(AbstractModel):
-    """vpc信息
+    r"""vpc信息
 
     """
 
@@ -44225,7 +44225,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc Id
+        r"""vpc Id
         :rtype: str
         """
         return self._VpcId
@@ -44236,7 +44236,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        """vpc子网
+        r"""vpc子网
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -44247,7 +44247,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则Id
+        r"""规则Id
         :rtype: int
         """
         return self._RuleId
@@ -44258,7 +44258,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def AccessGroupId(self):
-        """权限组Id
+        r"""权限组Id
         :rtype: str
         """
         return self._AccessGroupId
@@ -44284,7 +44284,7 @@ class VpcInfo(AbstractModel):
 
 
 class WorkGroupDetailInfo(AbstractModel):
-    """工作组详细信息
+    r"""工作组详细信息
 
     """
 
@@ -44322,7 +44322,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组Id
+        r"""工作组Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -44333,7 +44333,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def WorkGroupName(self):
-        """工作组名称
+        r"""工作组名称
         :rtype: str
         """
         return self._WorkGroupName
@@ -44344,7 +44344,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def Type(self):
-        """包含的信息类型。User：用户信息；DataAuth：数据权限；EngineAuth:引擎权限
+        r"""包含的信息类型。User：用户信息；DataAuth：数据权限；EngineAuth:引擎权限
         :rtype: str
         """
         return self._Type
@@ -44355,7 +44355,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def UserInfo(self):
-        """工作组上绑定的用户集合
+        r"""工作组上绑定的用户集合
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Users`
         """
         return self._UserInfo
@@ -44366,7 +44366,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def DataPolicyInfo(self):
-        """数据权限集合
+        r"""数据权限集合
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
         return self._DataPolicyInfo
@@ -44377,7 +44377,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def EnginePolicyInfo(self):
-        """引擎权限集合
+        r"""引擎权限集合
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
         return self._EnginePolicyInfo
@@ -44388,7 +44388,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def WorkGroupDescription(self):
-        """工作组描述信息
+        r"""工作组描述信息
         :rtype: str
         """
         return self._WorkGroupDescription
@@ -44399,7 +44399,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def RowFilterInfo(self):
-        """行过滤信息集合
+        r"""行过滤信息集合
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
         return self._RowFilterInfo
@@ -44410,7 +44410,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
     @property
     def CatalogPolicyInfo(self):
-        """数据目录权限集
+        r"""数据目录权限集
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.Policy`
         """
@@ -44452,7 +44452,7 @@ class WorkGroupDetailInfo(AbstractModel):
 
 
 class WorkGroupIdSetOfUserId(AbstractModel):
-    """同一个用户绑定的工作组集合
+    r"""同一个用户绑定的工作组集合
 
     """
 
@@ -44468,7 +44468,7 @@ class WorkGroupIdSetOfUserId(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id，和CAM侧Uin匹配
+        r"""用户Id，和CAM侧Uin匹配
         :rtype: str
         """
         return self._UserId
@@ -44479,7 +44479,7 @@ class WorkGroupIdSetOfUserId(AbstractModel):
 
     @property
     def WorkGroupIds(self):
-        """工作组Id集合
+        r"""工作组Id集合
         :rtype: list of int
         """
         return self._WorkGroupIds
@@ -44503,7 +44503,7 @@ class WorkGroupIdSetOfUserId(AbstractModel):
 
 
 class WorkGroupInfo(AbstractModel):
-    """工作组信息
+    r"""工作组信息
 
     """
 
@@ -44539,7 +44539,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """查询到的工作组唯一Id
+        r"""查询到的工作组唯一Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -44550,7 +44550,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def WorkGroupName(self):
-        """工作组名称
+        r"""工作组名称
         :rtype: str
         """
         return self._WorkGroupName
@@ -44561,7 +44561,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def WorkGroupDescription(self):
-        """工作组描述
+        r"""工作组描述
         :rtype: str
         """
         return self._WorkGroupDescription
@@ -44572,7 +44572,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def UserNum(self):
-        """工作组关联的用户数量
+        r"""工作组关联的用户数量
         :rtype: int
         """
         return self._UserNum
@@ -44583,7 +44583,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def UserSet(self):
-        """工作组关联的用户集合
+        r"""工作组关联的用户集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserMessage
         """
@@ -44595,7 +44595,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def PolicySet(self):
-        """工作组绑定的权限集合
+        r"""工作组绑定的权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Policy
         """
@@ -44607,7 +44607,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def Creator(self):
-        """工作组的创建人
+        r"""工作组的创建人
         :rtype: str
         """
         return self._Creator
@@ -44618,7 +44618,7 @@ class WorkGroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """工作组的创建时间，形如2021-07-28 16:19:32
+        r"""工作组的创建时间，形如2021-07-28 16:19:32
         :rtype: str
         """
         return self._CreateTime
@@ -44658,7 +44658,7 @@ class WorkGroupInfo(AbstractModel):
 
 
 class WorkGroupMessage(AbstractModel):
-    """工作组部分信息
+    r"""工作组部分信息
 
     """
 
@@ -44683,7 +44683,7 @@ class WorkGroupMessage(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        """工作组唯一Id
+        r"""工作组唯一Id
         :rtype: int
         """
         return self._WorkGroupId
@@ -44694,7 +44694,7 @@ class WorkGroupMessage(AbstractModel):
 
     @property
     def WorkGroupName(self):
-        """工作组名称
+        r"""工作组名称
         :rtype: str
         """
         return self._WorkGroupName
@@ -44705,7 +44705,7 @@ class WorkGroupMessage(AbstractModel):
 
     @property
     def WorkGroupDescription(self):
-        """工作组描述
+        r"""工作组描述
         :rtype: str
         """
         return self._WorkGroupDescription
@@ -44716,7 +44716,7 @@ class WorkGroupMessage(AbstractModel):
 
     @property
     def Creator(self):
-        """创建者
+        r"""创建者
         :rtype: str
         """
         return self._Creator
@@ -44727,7 +44727,7 @@ class WorkGroupMessage(AbstractModel):
 
     @property
     def CreateTime(self):
-        """工作组创建的时间，形如2021-07-28 16:19:32
+        r"""工作组创建的时间，形如2021-07-28 16:19:32
         :rtype: str
         """
         return self._CreateTime
@@ -44754,7 +44754,7 @@ class WorkGroupMessage(AbstractModel):
 
 
 class WorkGroups(AbstractModel):
-    """工作组集合
+    r"""工作组集合
 
     """
 
@@ -44771,7 +44771,7 @@ class WorkGroups(AbstractModel):
 
     @property
     def WorkGroupSet(self):
-        """工作组信息集合
+        r"""工作组信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkGroupMessage
         """
@@ -44783,7 +44783,7 @@ class WorkGroups(AbstractModel):
 
     @property
     def TotalCount(self):
-        """工作组总数
+        r"""工作组总数
         :rtype: int
         """
         return self._TotalCount

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AssociateTargetGroupsRequest(AbstractModel):
-    """AssociateTargetGroups请求参数结构体
+    r"""AssociateTargetGroups请求参数结构体
 
     """
 
@@ -32,7 +32,7 @@ class AssociateTargetGroupsRequest(AbstractModel):
 
     @property
     def Associations(self):
-        """绑定的关系数组。一次请求最多支持20个。
+        r"""绑定的关系数组。一次请求最多支持20个。
         :rtype: list of TargetGroupAssociation
         """
         return self._Associations
@@ -60,7 +60,7 @@ class AssociateTargetGroupsRequest(AbstractModel):
 
 
 class AssociateTargetGroupsResponse(AbstractModel):
-    """AssociateTargetGroups返回参数结构体
+    r"""AssociateTargetGroups返回参数结构体
 
     """
 
@@ -73,7 +73,7 @@ class AssociateTargetGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -88,7 +88,7 @@ class AssociateTargetGroupsResponse(AbstractModel):
 
 
 class AssociationItem(AbstractModel):
-    """目标组关联到的规则
+    r"""目标组关联到的规则
 
     """
 
@@ -104,7 +104,7 @@ class AssociationItem(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """关联到的网关负载均衡实例ID
+        r"""关联到的网关负载均衡实例ID
         :rtype: str
         """
         return self._LoadBalancerId
@@ -115,7 +115,7 @@ class AssociationItem(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """网关负载均衡实例名称
+        r"""网关负载均衡实例名称
         :rtype: str
         """
         return self._LoadBalancerName
@@ -139,7 +139,7 @@ class AssociationItem(AbstractModel):
 
 
 class CreateGatewayLoadBalancerRequest(AbstractModel):
-    """CreateGatewayLoadBalancer请求参数结构体
+    r"""CreateGatewayLoadBalancer请求参数结构体
 
     """
 
@@ -167,7 +167,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
+        r"""网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -178,7 +178,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        r"""网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
         :rtype: str
         """
         return self._SubnetId
@@ -189,7 +189,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
+        r"""网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -200,7 +200,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def Number(self):
-        """创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
+        r"""创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
         :rtype: int
         """
         return self._Number
@@ -211,7 +211,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+        r"""购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -222,7 +222,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LBChargeType(self):
-        """网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
+        r"""网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
         :rtype: str
         """
         return self._LBChargeType
@@ -255,7 +255,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
 
 class CreateGatewayLoadBalancerResponse(AbstractModel):
-    """CreateGatewayLoadBalancer返回参数结构体
+    r"""CreateGatewayLoadBalancer返回参数结构体
 
     """
 
@@ -275,7 +275,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """由网关负载均衡实例唯一 ID 组成的数组。
+        r"""由网关负载均衡实例唯一 ID 组成的数组。
 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
         :rtype: list of str
         """
@@ -287,7 +287,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """订单号。
+        r"""订单号。
         :rtype: str
         """
         return self._DealName
@@ -298,7 +298,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -315,7 +315,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
 
 class CreateTargetGroupRequest(AbstractModel):
-    """CreateTargetGroup请求参数结构体
+    r"""CreateTargetGroup请求参数结构体
 
     """
 
@@ -355,7 +355,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        """目标组名称，限定60个字符。
+        r"""目标组名称，限定60个字符。
         :rtype: str
         """
         return self._TargetGroupName
@@ -366,7 +366,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。 不填此参数则默认为DefaultVPC。
+        r"""网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。 不填此参数则默认为DefaultVPC。
         :rtype: str
         """
         return self._VpcId
@@ -377,7 +377,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。仅支持6081。
+        r"""目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。仅支持6081。
         :rtype: int
         """
         return self._Port
@@ -388,7 +388,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """目标组绑定的后端服务器
+        r"""目标组绑定的后端服务器
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -399,7 +399,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """网关负载均衡目标组协议。
+        r"""网关负载均衡目标组协议。
 - TENCENT_GENEVE ：GENEVE 标准协议
 - AWS_GENEVE：GENEVE 兼容协议
         :rtype: str
@@ -412,7 +412,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """健康检查设置。
+        r"""健康检查设置。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -423,7 +423,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        """均衡算法。
+        r"""均衡算法。
 - IP_HASH_3_ELASTIC：弹性哈希
         :rtype: str
         """
@@ -435,7 +435,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def AllDeadToAlive(self):
-        """是否支持全死全活。默认支持。
+        r"""是否支持全死全活。默认支持。
         :rtype: bool
         """
         return self._AllDeadToAlive
@@ -446,7 +446,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签。
+        r"""标签。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -489,7 +489,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
 
 class CreateTargetGroupResponse(AbstractModel):
-    """CreateTargetGroup返回参数结构体
+    r"""CreateTargetGroup返回参数结构体
 
     """
 
@@ -505,7 +505,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """创建目标组后生成的id
+        r"""创建目标组后生成的id
         :rtype: str
         """
         return self._TargetGroupId
@@ -516,7 +516,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -532,7 +532,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
 
 class DeleteGatewayLoadBalancerRequest(AbstractModel):
-    """DeleteGatewayLoadBalancer请求参数结构体
+    r"""DeleteGatewayLoadBalancer请求参数结构体
 
     """
 
@@ -545,7 +545,7 @@ class DeleteGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """要删除的网关负载均衡实例 ID数组，数组大小最大支持20。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683)  接口获取。
+        r"""要删除的网关负载均衡实例 ID数组，数组大小最大支持20。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683)  接口获取。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -568,7 +568,7 @@ class DeleteGatewayLoadBalancerRequest(AbstractModel):
 
 
 class DeleteGatewayLoadBalancerResponse(AbstractModel):
-    """DeleteGatewayLoadBalancer返回参数结构体
+    r"""DeleteGatewayLoadBalancer返回参数结构体
 
     """
 
@@ -581,7 +581,7 @@ class DeleteGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -596,7 +596,7 @@ class DeleteGatewayLoadBalancerResponse(AbstractModel):
 
 
 class DeleteTargetGroupsRequest(AbstractModel):
-    """DeleteTargetGroups请求参数结构体
+    r"""DeleteTargetGroups请求参数结构体
 
     """
 
@@ -609,7 +609,7 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        """目标组ID列表。 可以通过接口[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+        r"""目标组ID列表。 可以通过接口[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -632,7 +632,7 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
 
 class DeleteTargetGroupsResponse(AbstractModel):
-    """DeleteTargetGroups返回参数结构体
+    r"""DeleteTargetGroups返回参数结构体
 
     """
 
@@ -645,7 +645,7 @@ class DeleteTargetGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -660,7 +660,7 @@ class DeleteTargetGroupsResponse(AbstractModel):
 
 
 class DeregisterTargetGroupInstancesRequest(AbstractModel):
-    """DeregisterTargetGroupInstances请求参数结构体
+    r"""DeregisterTargetGroupInstances请求参数结构体
 
     """
 
@@ -676,7 +676,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+        r"""目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -687,7 +687,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """待解绑的服务器信息。
+        r"""待解绑的服务器信息。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -716,7 +716,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
 
 class DeregisterTargetGroupInstancesResponse(AbstractModel):
-    """DeregisterTargetGroupInstances返回参数结构体
+    r"""DeregisterTargetGroupInstances返回参数结构体
 
     """
 
@@ -729,7 +729,7 @@ class DeregisterTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -744,7 +744,7 @@ class DeregisterTargetGroupInstancesResponse(AbstractModel):
 
 
 class DescribeGatewayLoadBalancersRequest(AbstractModel):
-    """DescribeGatewayLoadBalancers请求参数结构体
+    r"""DescribeGatewayLoadBalancers请求参数结构体
 
     """
 
@@ -774,7 +774,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def LoadBalancerIds(self):
-        """网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
+        r"""网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -785,7 +785,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Limit(self):
-        """一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
+        r"""一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -796,7 +796,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Offset(self):
-        """返回网关负载均衡实例列表的起始偏移量，默认0。
+        r"""返回网关负载均衡实例列表的起始偏移量，默认0。
         :rtype: int
         """
         return self._Offset
@@ -807,7 +807,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Filters(self):
-        """查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
+        r"""查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
 - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
@@ -823,7 +823,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def SearchKey(self):
-        """搜索字段，模糊匹配名称、VIP。
+        r"""搜索字段，模糊匹配名称、VIP。
         :rtype: str
         """
         return self._SearchKey
@@ -855,7 +855,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
 
 class DescribeGatewayLoadBalancersResponse(AbstractModel):
-    """DescribeGatewayLoadBalancers返回参数结构体
+    r"""DescribeGatewayLoadBalancers返回参数结构体
 
     """
 
@@ -874,7 +874,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+        r"""满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
         :rtype: int
         """
         return self._TotalCount
@@ -885,7 +885,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     @property
     def LoadBalancerSet(self):
-        """返回的网关负载均衡实例数组。
+        r"""返回的网关负载均衡实例数组。
         :rtype: list of GatewayLoadBalancer
         """
         return self._LoadBalancerSet
@@ -896,7 +896,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -918,7 +918,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
 
 class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
-    """DescribeTargetGroupInstanceStatus请求参数结构体
+    r"""DescribeTargetGroupInstanceStatus请求参数结构体
 
     """
 
@@ -934,7 +934,7 @@ class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组唯一id。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+        r"""目标组唯一id。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -945,7 +945,7 @@ class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
 
     @property
     def TargetGroupInstanceIps(self):
-        """目标组绑定的后端服务ip列表
+        r"""目标组绑定的后端服务ip列表
         :rtype: list of str
         """
         return self._TargetGroupInstanceIps
@@ -969,7 +969,7 @@ class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
 
 
 class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
-    """DescribeTargetGroupInstanceStatus返回参数结构体
+    r"""DescribeTargetGroupInstanceStatus返回参数结构体
 
     """
 
@@ -985,7 +985,7 @@ class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
 
     @property
     def TargetGroupInstanceSet(self):
-        """健康检查后端rs状态列表
+        r"""健康检查后端rs状态列表
         :rtype: list of TargetGroupInstanceStatus
         """
         return self._TargetGroupInstanceSet
@@ -996,7 +996,7 @@ class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1017,7 +1017,7 @@ class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
 
 
 class DescribeTargetGroupInstancesRequest(AbstractModel):
-    """DescribeTargetGroupInstances请求参数结构体
+    r"""DescribeTargetGroupInstances请求参数结构体
 
     """
 
@@ -1040,7 +1040,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+        r"""过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
 
 - TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
 - BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”。
@@ -1055,7 +1055,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示数量限制，默认20，最大100。
+        r"""显示数量限制，默认20，最大100。
         :rtype: int
         """
         return self._Limit
@@ -1066,7 +1066,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """显示的偏移量，默认为0。
+        r"""显示的偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1096,7 +1096,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
 
 class DescribeTargetGroupInstancesResponse(AbstractModel):
-    """DescribeTargetGroupInstances返回参数结构体
+    r"""DescribeTargetGroupInstances返回参数结构体
 
     """
 
@@ -1118,7 +1118,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """本次查询的结果数量。
+        r"""本次查询的结果数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1129,7 +1129,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def TargetGroupInstanceSet(self):
-        """绑定的服务器信息。
+        r"""绑定的服务器信息。
         :rtype: list of TargetGroupBackend
         """
         return self._TargetGroupInstanceSet
@@ -1140,7 +1140,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def RealCount(self):
-        """实际统计数量，不受Limit、Offset、CAM的影响。
+        r"""实际统计数量，不受Limit、Offset、CAM的影响。
         :rtype: int
         """
         return self._RealCount
@@ -1151,7 +1151,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1174,7 +1174,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
 
 class DescribeTargetGroupListRequest(AbstractModel):
-    """DescribeTargetGroupList请求参数结构体
+    r"""DescribeTargetGroupList请求参数结构体
 
     """
 
@@ -1199,7 +1199,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        """目标组ID数组。
+        r"""目标组ID数组。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -1210,7 +1210,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件数组。
+        r"""过滤条件数组。
 
 - TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
@@ -1224,7 +1224,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """显示的偏移起始量，默认为0。
+        r"""显示的偏移起始量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1235,7 +1235,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示条数限制，默认为20，最大值为1000。
+        r"""显示条数限制，默认为20，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -1266,7 +1266,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
 
 class DescribeTargetGroupListResponse(AbstractModel):
-    """DescribeTargetGroupList返回参数结构体
+    r"""DescribeTargetGroupList返回参数结构体
 
     """
 
@@ -1285,7 +1285,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """显示的结果数量。
+        r"""显示的结果数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1296,7 +1296,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TargetGroupSet(self):
-        """显示的目标组信息集合。
+        r"""显示的目标组信息集合。
         :rtype: list of TargetGroupInfo
         """
         return self._TargetGroupSet
@@ -1307,7 +1307,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1329,7 +1329,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
 
 class DescribeTargetGroupsRequest(AbstractModel):
-    """DescribeTargetGroups请求参数结构体
+    r"""DescribeTargetGroups请求参数结构体
 
     """
 
@@ -1353,7 +1353,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        """目标组ID。
+        r"""目标组ID。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -1364,7 +1364,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示条数限制，默认为20，最大值为1000。
+        r"""显示条数限制，默认为20，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -1375,7 +1375,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """显示的偏移起始量，默认为0。
+        r"""显示的偏移起始量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1386,7 +1386,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件数组。
+        r"""过滤条件数组。
 - TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :rtype: list of Filter
@@ -1419,7 +1419,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
 
 class DescribeTargetGroupsResponse(AbstractModel):
-    """DescribeTargetGroups返回参数结构体
+    r"""DescribeTargetGroups返回参数结构体
 
     """
 
@@ -1438,7 +1438,7 @@ class DescribeTargetGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """显示的结果数量。
+        r"""显示的结果数量。
         :rtype: int
         """
         return self._TotalCount
@@ -1449,7 +1449,7 @@ class DescribeTargetGroupsResponse(AbstractModel):
 
     @property
     def TargetGroupSet(self):
-        """显示的目标组信息集合。
+        r"""显示的目标组信息集合。
         :rtype: list of TargetGroupInfo
         """
         return self._TargetGroupSet
@@ -1460,7 +1460,7 @@ class DescribeTargetGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1482,7 +1482,7 @@ class DescribeTargetGroupsResponse(AbstractModel):
 
 
 class DescribeTaskStatusRequest(AbstractModel):
-    """DescribeTaskStatus请求参数结构体
+    r"""DescribeTaskStatus请求参数结构体
 
     """
 
@@ -1495,7 +1495,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """请求ID，即接口返回的 RequestId 参数。
+        r"""请求ID，即接口返回的 RequestId 参数。
         :rtype: str
         """
         return self._TaskId
@@ -1518,7 +1518,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
 
 class DescribeTaskStatusResponse(AbstractModel):
-    """DescribeTaskStatus返回参数结构体
+    r"""DescribeTaskStatus返回参数结构体
 
     """
 
@@ -1542,7 +1542,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务的当前状态。 0：成功，1：失败，2：进行中。
+        r"""任务的当前状态。 0：成功，1：失败，2：进行中。
         :rtype: int
         """
         return self._Status
@@ -1553,7 +1553,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """由负载均衡实例唯一 ID 组成的数组。
+        r"""由负载均衡实例唯一 ID 组成的数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1565,7 +1565,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Message(self):
-        """辅助描述信息，如失败原因等。
+        r"""辅助描述信息，如失败原因等。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1577,7 +1577,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1595,7 +1595,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
 
 class DisassociateTargetGroupsRequest(AbstractModel):
-    """DisassociateTargetGroups请求参数结构体
+    r"""DisassociateTargetGroups请求参数结构体
 
     """
 
@@ -1608,7 +1608,7 @@ class DisassociateTargetGroupsRequest(AbstractModel):
 
     @property
     def Associations(self):
-        """待解绑的目标组列表。
+        r"""待解绑的目标组列表。
         :rtype: list of TargetGroupAssociation
         """
         return self._Associations
@@ -1636,7 +1636,7 @@ class DisassociateTargetGroupsRequest(AbstractModel):
 
 
 class DisassociateTargetGroupsResponse(AbstractModel):
-    """DisassociateTargetGroups返回参数结构体
+    r"""DisassociateTargetGroups返回参数结构体
 
     """
 
@@ -1649,7 +1649,7 @@ class DisassociateTargetGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1664,7 +1664,7 @@ class DisassociateTargetGroupsResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤器条件
+    r"""过滤器条件
 
     """
 
@@ -1680,7 +1680,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤器的名称
+        r"""过滤器的名称
         :rtype: str
         """
         return self._Name
@@ -1691,7 +1691,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤器的值数组
+        r"""过滤器的值数组
         :rtype: list of str
         """
         return self._Values
@@ -1715,7 +1715,7 @@ class Filter(AbstractModel):
 
 
 class GatewayLoadBalancer(AbstractModel):
-    """网关负载均衡实例的信息
+    r"""网关负载均衡实例的信息
 
     """
 
@@ -1768,7 +1768,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """网关负载均衡实例 ID。
+        r"""网关负载均衡实例 ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1779,7 +1779,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """网关负载均衡实例的名称。
+        r"""网关负载均衡实例的名称。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -1790,7 +1790,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def VpcId(self):
-        """网关负载均衡所属私有网络。
+        r"""网关负载均衡所属私有网络。
         :rtype: str
         """
         return self._VpcId
@@ -1801,7 +1801,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def SubnetId(self):
-        """网关负载均衡所属子网。
+        r"""网关负载均衡所属子网。
         :rtype: str
         """
         return self._SubnetId
@@ -1812,7 +1812,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def Vips(self):
-        """网关负载均衡提供服务的虚拟IP。
+        r"""网关负载均衡提供服务的虚拟IP。
         :rtype: list of str
         """
         return self._Vips
@@ -1823,7 +1823,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def Status(self):
-        """网关负载均衡实例状态。
+        r"""网关负载均衡实例状态。
 0：创建中，1：正常运行，3：删除中。
         :rtype: int
         """
@@ -1835,7 +1835,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """关联的目标组唯一ID。
+        r"""关联的目标组唯一ID。
         :rtype: str
         """
         return self._TargetGroupId
@@ -1846,7 +1846,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def DeleteProtect(self):
-        """是否开启删除保护功能。
+        r"""是否开启删除保护功能。
         :rtype: bool
         """
         return self._DeleteProtect
@@ -1857,7 +1857,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def Tags(self):
-        """负载均衡实例的标签信息。
+        r"""负载均衡实例的标签信息。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1868,7 +1868,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        r"""创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -1879,7 +1879,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def ChargeType(self):
-        """网关负载均衡实例的计费类型，POSTPAID_BY_HOUR：按量计费
+        r"""网关负载均衡实例的计费类型，POSTPAID_BY_HOUR：按量计费
         :rtype: str
         """
         return self._ChargeType
@@ -1890,7 +1890,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def Isolation(self):
-        """0：表示未被隔离，1：表示被隔离。
+        r"""0：表示未被隔离，1：表示被隔离。
         :rtype: int
         """
         return self._Isolation
@@ -1901,7 +1901,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """网关负载均衡实例被隔离的时间
+        r"""网关负载均衡实例被隔离的时间
         :rtype: str
         """
         return self._IsolatedTime
@@ -1912,7 +1912,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def OperateProtect(self):
-        """是否开启配置修改保护功能。
+        r"""是否开启配置修改保护功能。
         :rtype: bool
         """
         return self._OperateProtect
@@ -1953,7 +1953,7 @@ class GatewayLoadBalancer(AbstractModel):
 
 
 class InquirePriceCreateGatewayLoadBalancerRequest(AbstractModel):
-    """InquirePriceCreateGatewayLoadBalancer请求参数结构体
+    r"""InquirePriceCreateGatewayLoadBalancer请求参数结构体
 
     """
 
@@ -1966,7 +1966,7 @@ class InquirePriceCreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """询价的网关负载均衡实例个数，默认为1
+        r"""询价的网关负载均衡实例个数，默认为1
         :rtype: int
         """
         return self._GoodsNum
@@ -1989,7 +1989,7 @@ class InquirePriceCreateGatewayLoadBalancerRequest(AbstractModel):
 
 
 class InquirePriceCreateGatewayLoadBalancerResponse(AbstractModel):
-    """InquirePriceCreateGatewayLoadBalancer返回参数结构体
+    r"""InquirePriceCreateGatewayLoadBalancer返回参数结构体
 
     """
 
@@ -2005,7 +2005,7 @@ class InquirePriceCreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def Price(self):
-        """该参数表示对应的价格。
+        r"""该参数表示对应的价格。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.Price`
         """
         return self._Price
@@ -2016,7 +2016,7 @@ class InquirePriceCreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2034,7 +2034,7 @@ class InquirePriceCreateGatewayLoadBalancerResponse(AbstractModel):
 
 
 class ItemPrice(AbstractModel):
-    """描述了单项的价格信息
+    r"""描述了单项的价格信息
 
     """
 
@@ -2064,7 +2064,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        """后付费单价，单位：元。
+        r"""后付费单价，单位：元。
         :rtype: float
         """
         return self._UnitPrice
@@ -2075,7 +2075,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
-        """后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）。
+        r"""后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）。
         :rtype: str
         """
         return self._ChargeUnit
@@ -2086,7 +2086,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """预支费用的原价，单位：元。
+        r"""预支费用的原价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2098,7 +2098,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        """预支费用的折扣价，单位：元。
+        r"""预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2110,7 +2110,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
-        """后付费的折扣单价，单位:元。
+        r"""后付费的折扣单价，单位:元。
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -2121,7 +2121,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def Discount(self):
-        """折扣，如20.0代表2折。
+        r"""折扣，如20.0代表2折。
         :rtype: float
         """
         return self._Discount
@@ -2149,7 +2149,7 @@ class ItemPrice(AbstractModel):
 
 
 class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
-    """ModifyGatewayLoadBalancerAttribute请求参数结构体
+    r"""ModifyGatewayLoadBalancerAttribute请求参数结构体
 
     """
 
@@ -2168,7 +2168,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
+        r"""网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2179,7 +2179,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """网关负载均衡实例名称。可支持输入1-60个字符。
+        r"""网关负载均衡实例名称。可支持输入1-60个字符。
         :rtype: str
         """
         return self._LoadBalancerName
@@ -2190,7 +2190,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def DeleteProtect(self):
-        """是否开启删除保护。
+        r"""是否开启删除保护。
         :rtype: bool
         """
         return self._DeleteProtect
@@ -2215,7 +2215,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
 
 class ModifyGatewayLoadBalancerAttributeResponse(AbstractModel):
-    """ModifyGatewayLoadBalancerAttribute返回参数结构体
+    r"""ModifyGatewayLoadBalancerAttribute返回参数结构体
 
     """
 
@@ -2228,7 +2228,7 @@ class ModifyGatewayLoadBalancerAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2243,7 +2243,7 @@ class ModifyGatewayLoadBalancerAttributeResponse(AbstractModel):
 
 
 class ModifyTargetGroupAttributeRequest(AbstractModel):
-    """ModifyTargetGroupAttribute请求参数结构体
+    r"""ModifyTargetGroupAttribute请求参数结构体
 
     """
 
@@ -2265,7 +2265,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+        r"""目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2276,7 +2276,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        """目标组的新名称。
+        r"""目标组的新名称。
         :rtype: str
         """
         return self._TargetGroupName
@@ -2287,7 +2287,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """健康检查详情。
+        r"""健康检查详情。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -2298,7 +2298,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def AllDeadToAlive(self):
-        """是否支持全死全活。
+        r"""是否支持全死全活。
         :rtype: bool
         """
         return self._AllDeadToAlive
@@ -2326,7 +2326,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
 
 class ModifyTargetGroupAttributeResponse(AbstractModel):
-    """ModifyTargetGroupAttribute返回参数结构体
+    r"""ModifyTargetGroupAttribute返回参数结构体
 
     """
 
@@ -2339,7 +2339,7 @@ class ModifyTargetGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2354,7 +2354,7 @@ class ModifyTargetGroupAttributeResponse(AbstractModel):
 
 
 class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
-    """ModifyTargetGroupInstancesWeight请求参数结构体
+    r"""ModifyTargetGroupInstancesWeight请求参数结构体
 
     """
 
@@ -2370,7 +2370,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+        r"""目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2381,7 +2381,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """实例绑定配置数组。
+        r"""实例绑定配置数组。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -2410,7 +2410,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
 
 class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
-    """ModifyTargetGroupInstancesWeight返回参数结构体
+    r"""ModifyTargetGroupInstancesWeight返回参数结构体
 
     """
 
@@ -2423,7 +2423,7 @@ class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2438,7 +2438,7 @@ class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
 
 
 class Price(AbstractModel):
-    """表示网关负载均衡的价格
+    r"""表示网关负载均衡的价格
 
     """
 
@@ -2454,7 +2454,7 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
-        """描述了实例价格。
+        r"""描述了实例价格。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2465,7 +2465,7 @@ class Price(AbstractModel):
 
     @property
     def LcuPrice(self):
-        """描述了GLCU的价格。
+        r"""描述了GLCU的价格。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
         return self._LcuPrice
@@ -2493,7 +2493,7 @@ class Price(AbstractModel):
 
 
 class RegisterTargetGroupInstancesRequest(AbstractModel):
-    """RegisterTargetGroupInstances请求参数结构体
+    r"""RegisterTargetGroupInstances请求参数结构体
 
     """
 
@@ -2509,7 +2509,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+        r"""目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2520,7 +2520,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """服务器实例数组
+        r"""服务器实例数组
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -2549,7 +2549,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
 
 class RegisterTargetGroupInstancesResponse(AbstractModel):
-    """RegisterTargetGroupInstances返回参数结构体
+    r"""RegisterTargetGroupInstances返回参数结构体
 
     """
 
@@ -2562,7 +2562,7 @@ class RegisterTargetGroupInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2577,7 +2577,7 @@ class RegisterTargetGroupInstancesResponse(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """网关负载均衡的标签信息
+    r"""网关负载均衡的标签信息
 
     """
 
@@ -2593,7 +2593,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签的键
+        r"""标签的键
         :rtype: str
         """
         return self._TagKey
@@ -2604,7 +2604,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签的值
+        r"""标签的值
         :rtype: str
         """
         return self._TagValue
@@ -2628,7 +2628,7 @@ class TagInfo(AbstractModel):
 
 
 class TargetGroupAssociation(AbstractModel):
-    """规则与目标组的关联关系。
+    r"""规则与目标组的关联关系。
 
     """
 
@@ -2644,7 +2644,7 @@ class TargetGroupAssociation(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """网关负载均衡实例ID，可以通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/product/1782/111683)获取网关负载均衡ID。
+        r"""网关负载均衡实例ID，可以通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/product/1782/111683)获取网关负载均衡ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2655,7 +2655,7 @@ class TargetGroupAssociation(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取目标组ID。
+        r"""目标组ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取目标组ID。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2679,7 +2679,7 @@ class TargetGroupAssociation(AbstractModel):
 
 
 class TargetGroupBackend(AbstractModel):
-    """目标组绑定的后端服务器
+    r"""目标组绑定的后端服务器
 
     """
 
@@ -2722,7 +2722,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID
+        r"""目标组ID
         :rtype: str
         """
         return self._TargetGroupId
@@ -2733,7 +2733,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Type(self):
-        """后端服务的类型，可取：CVM、ENI
+        r"""后端服务的类型，可取：CVM、ENI
         :rtype: str
         """
         return self._Type
@@ -2744,7 +2744,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def InstanceId(self):
-        """后端服务的唯一 ID
+        r"""后端服务的唯一 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2755,7 +2755,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Port(self):
-        """后端服务的监听端口
+        r"""后端服务的监听端口
         :rtype: int
         """
         return self._Port
@@ -2766,7 +2766,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Weight(self):
-        """后端服务的转发权重，取值为0或16
+        r"""后端服务的转发权重，取值为0或16
         :rtype: int
         """
         return self._Weight
@@ -2777,7 +2777,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
-        """后端服务的外网 IP
+        r"""后端服务的外网 IP
         :rtype: list of str
         """
         return self._PublicIpAddresses
@@ -2788,7 +2788,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        """后端服务的内网 IP
+        r"""后端服务的内网 IP
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -2799,7 +2799,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def InstanceName(self):
-        """后端服务的实例名称
+        r"""后端服务的实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -2810,7 +2810,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def RegisteredTime(self):
-        """后端服务被绑定的时间
+        r"""后端服务被绑定的时间
         :rtype: str
         """
         return self._RegisteredTime
@@ -2821,7 +2821,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def EniId(self):
-        """弹性网卡唯一ID
+        r"""弹性网卡唯一ID
         :rtype: str
         """
         return self._EniId
@@ -2832,7 +2832,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def ZoneId(self):
-        """后端服务的可用区ID
+        r"""后端服务的可用区ID
         :rtype: int
         """
         return self._ZoneId
@@ -2865,7 +2865,7 @@ class TargetGroupBackend(AbstractModel):
 
 
 class TargetGroupHealthCheck(AbstractModel):
-    """目标组健康检查详情
+    r"""目标组健康检查详情
 
     """
 
@@ -2900,7 +2900,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        """是否开启健康检查。
+        r"""是否开启健康检查。
         :rtype: bool
         """
         return self._HealthSwitch
@@ -2911,7 +2911,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Protocol(self):
-        """健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
+        r"""健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
 
 - icmp: 使用PING的方式进行健康检查
 - tcp: 使用TCP连接的方式进行健康检查
@@ -2925,7 +2925,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Port(self):
-        """健康检查端口，探测协议为tcp时，该参数必填。
+        r"""健康检查端口，探测协议为tcp时，该参数必填。
 
         :rtype: int
         """
@@ -2937,7 +2937,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Timeout(self):
-        """健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+        r"""健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
         :rtype: int
         """
         return self._Timeout
@@ -2948,7 +2948,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+        r"""检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
         :rtype: int
         """
         return self._IntervalTime
@@ -2959,7 +2959,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def HealthNum(self):
-        """检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        r"""检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :rtype: int
         """
         return self._HealthNum
@@ -2970,7 +2970,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def UnHealthNum(self):
-        """检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        r"""检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :rtype: int
         """
         return self._UnHealthNum
@@ -2999,7 +2999,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
 
 class TargetGroupInfo(AbstractModel):
-    """目标组信息
+    r"""目标组信息
 
     """
 
@@ -3062,7 +3062,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID
+        r"""目标组ID
         :rtype: str
         """
         return self._TargetGroupId
@@ -3073,7 +3073,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """目标组的vpcid
+        r"""目标组的vpcid
         :rtype: str
         """
         return self._VpcId
@@ -3084,7 +3084,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        """目标组的名字
+        r"""目标组的名字
         :rtype: str
         """
         return self._TargetGroupName
@@ -3095,7 +3095,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的默认端口
+        r"""目标组的默认端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3107,7 +3107,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """目标组的创建时间
+        r"""目标组的创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -3118,7 +3118,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        """目标组的修改时间
+        r"""目标组的修改时间
         :rtype: str
         """
         return self._UpdatedTime
@@ -3129,7 +3129,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def AssociatedRule(self):
-        """关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
+        r"""关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssociationItem
         """
@@ -3141,7 +3141,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """网关负载均衡目标组协议。
+        r"""网关负载均衡目标组协议。
 - tencent_geneve ：GENEVE 标准协议
 - aws_geneve：GENEVE 兼容协议
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3155,7 +3155,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        """均衡算法。
+        r"""均衡算法。
 - ip_hash_3_elastic：弹性哈希
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -3168,7 +3168,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """健康检查详情。
+        r"""健康检查详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         """
@@ -3180,7 +3180,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def AllDeadToAlive(self):
-        """是否支持全死全活。
+        r"""是否支持全死全活。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3192,7 +3192,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def AssociatedRuleCount(self):
-        """目标组已关联的规则数。
+        r"""目标组已关联的规则数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3204,7 +3204,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def RegisteredInstancesCount(self):
-        """目标组内的实例数量。
+        r"""目标组内的实例数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3216,7 +3216,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """目标组的标签。
+        r"""目标组的标签。
         :rtype: list of TagInfo
         """
         return self._Tag
@@ -3264,7 +3264,7 @@ class TargetGroupInfo(AbstractModel):
 
 
 class TargetGroupInstance(AbstractModel):
-    """目标组实例
+    r"""目标组实例
 
     """
 
@@ -3283,7 +3283,7 @@ class TargetGroupInstance(AbstractModel):
 
     @property
     def BindIP(self):
-        """目标组实例的内网IP。
+        r"""目标组实例的内网IP。
         :rtype: str
         """
         return self._BindIP
@@ -3294,7 +3294,7 @@ class TargetGroupInstance(AbstractModel):
 
     @property
     def Port(self):
-        """目标组实例的端口，只支持6081。
+        r"""目标组实例的端口，只支持6081。
         :rtype: int
         """
         return self._Port
@@ -3305,7 +3305,7 @@ class TargetGroupInstance(AbstractModel):
 
     @property
     def Weight(self):
-        """目标组实例的权重，只支持0或16，非0统一按16处理。
+        r"""目标组实例的权重，只支持0或16，非0统一按16处理。
         :rtype: int
         """
         return self._Weight
@@ -3330,7 +3330,7 @@ class TargetGroupInstance(AbstractModel):
 
 
 class TargetGroupInstanceStatus(AbstractModel):
-    """用于目标组后端rs健康检查状态。
+    r"""用于目标组后端rs健康检查状态。
 
     """
 
@@ -3350,7 +3350,7 @@ class TargetGroupInstanceStatus(AbstractModel):
 
     @property
     def InstanceIp(self):
-        """后端rs的IP
+        r"""后端rs的IP
         :rtype: str
         """
         return self._InstanceIp
@@ -3361,7 +3361,7 @@ class TargetGroupInstanceStatus(AbstractModel):
 
     @property
     def Status(self):
-        """健康检查状态，参数值及含义如下：
+        r"""健康检查状态，参数值及含义如下：
 ● on：表示探测中。
 ● off：表示健康检查关闭。
 ● health：表示健康。

@@ -27,7 +27,7 @@ class ChdfsClient(AbstractClient):
 
 
     def AssociateAccessGroups(self, request):
-        """给挂载点绑定多个权限组。
+        r"""给挂载点绑定多个权限组。
 
         :param request: Request instance for AssociateAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.AssociateAccessGroupsRequest`
@@ -50,7 +50,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessGroup(self, request):
-        """创建权限组。
+        r"""创建权限组。
 
         :param request: Request instance for CreateAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateAccessGroupRequest`
@@ -73,7 +73,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessRules(self, request):
-        """批量创建权限规则，权限规则ID和创建时间无需填写。
+        r"""批量创建权限规则，权限规则ID和创建时间无需填写。
 
         :param request: Request instance for CreateAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateAccessRulesRequest`
@@ -96,7 +96,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateFileSystem(self, request):
-        """创建文件系统（异步）。
+        r"""创建文件系统（异步）。
 
         :param request: Request instance for CreateFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateFileSystemRequest`
@@ -119,7 +119,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateLifeCycleRules(self, request):
-        """批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
+        r"""批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
 
         :param request: Request instance for CreateLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateLifeCycleRulesRequest`
@@ -142,7 +142,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateMountPoint(self, request):
-        """创建文件系统挂载点，仅限于创建成功的文件系统。
+        r"""创建文件系统挂载点，仅限于创建成功的文件系统。
 
         :param request: Request instance for CreateMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateMountPointRequest`
@@ -165,7 +165,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateRestoreTasks(self, request):
-        """批量创建回热任务，回热任务ID、状态和创建时间无需填写。
+        r"""批量创建回热任务，回热任务ID、状态和创建时间无需填写。
 
         :param request: Request instance for CreateRestoreTasks.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateRestoreTasksRequest`
@@ -188,7 +188,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessGroup(self, request):
-        """删除权限组。
+        r"""删除权限组。
 
         :param request: Request instance for DeleteAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteAccessGroupRequest`
@@ -211,7 +211,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessRules(self, request):
-        """批量删除权限规则。
+        r"""批量删除权限规则。
 
         :param request: Request instance for DeleteAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteAccessRulesRequest`
@@ -234,7 +234,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteFileSystem(self, request):
-        """删除文件系统，不允许删除非空文件系统。
+        r"""删除文件系统，不允许删除非空文件系统。
 
         :param request: Request instance for DeleteFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteFileSystemRequest`
@@ -257,7 +257,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteLifeCycleRules(self, request):
-        """批量删除生命周期规则。
+        r"""批量删除生命周期规则。
 
         :param request: Request instance for DeleteLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteLifeCycleRulesRequest`
@@ -280,7 +280,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteMountPoint(self, request):
-        """删除挂载点。
+        r"""删除挂载点。
 
         :param request: Request instance for DeleteMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteMountPointRequest`
@@ -303,7 +303,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessGroup(self, request):
-        """查看权限组详细信息。
+        r"""查看权限组详细信息。
 
         :param request: Request instance for DescribeAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessGroupRequest`
@@ -326,7 +326,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessGroups(self, request):
-        """查看权限组列表。
+        r"""查看权限组列表。
 
         :param request: Request instance for DescribeAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessGroupsRequest`
@@ -349,7 +349,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessRules(self, request):
-        """通过权限组ID查看权限规则列表。
+        r"""通过权限组ID查看权限规则列表。
 
         :param request: Request instance for DescribeAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessRulesRequest`
@@ -372,7 +372,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystem(self, request):
-        """查看文件系统详细信息。
+        r"""查看文件系统详细信息。
 
         :param request: Request instance for DescribeFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeFileSystemRequest`
@@ -395,7 +395,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystems(self, request):
-        """查看文件系统列表。
+        r"""查看文件系统列表。
 
         :param request: Request instance for DescribeFileSystems.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeFileSystemsRequest`
@@ -418,7 +418,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeLifeCycleRules(self, request):
-        """通过文件系统ID查看生命周期规则列表。
+        r"""通过文件系统ID查看生命周期规则列表。
 
         :param request: Request instance for DescribeLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeLifeCycleRulesRequest`
@@ -441,7 +441,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoint(self, request):
-        """查看挂载点详细信息。
+        r"""查看挂载点详细信息。
 
         :param request: Request instance for DescribeMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeMountPointRequest`
@@ -464,7 +464,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoints(self, request):
-        """查看挂载点列表。
+        r"""查看挂载点列表。
 
         :param request: Request instance for DescribeMountPoints.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeMountPointsRequest`
@@ -487,7 +487,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeResourceTags(self, request):
-        """通过文件系统ID查看资源标签列表。
+        r"""通过文件系统ID查看资源标签列表。
 
         :param request: Request instance for DescribeResourceTags.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeResourceTagsRequest`
@@ -510,7 +510,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeRestoreTasks(self, request):
-        """通过文件系统ID查看回热任务列表。
+        r"""通过文件系统ID查看回热任务列表。
 
         :param request: Request instance for DescribeRestoreTasks.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeRestoreTasksRequest`
@@ -533,7 +533,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DisassociateAccessGroups(self, request):
-        """给挂载点解绑多个权限组。
+        r"""给挂载点解绑多个权限组。
 
         :param request: Request instance for DisassociateAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DisassociateAccessGroupsRequest`
@@ -556,7 +556,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessGroup(self, request):
-        """修改权限组属性。
+        r"""修改权限组属性。
 
         :param request: Request instance for ModifyAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyAccessGroupRequest`
@@ -579,7 +579,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessRules(self, request):
-        """批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
+        r"""批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
 
         :param request: Request instance for ModifyAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyAccessRulesRequest`
@@ -602,7 +602,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyFileSystem(self, request):
-        """修改文件系统属性，仅限于创建成功的文件系统。
+        r"""修改文件系统属性，仅限于创建成功的文件系统。
 
         :param request: Request instance for ModifyFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyFileSystemRequest`
@@ -625,7 +625,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyLifeCycleRules(self, request):
-        """批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
+        r"""批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
 
         :param request: Request instance for ModifyLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyLifeCycleRulesRequest`
@@ -648,7 +648,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyMountPoint(self, request):
-        """修改挂载点属性。
+        r"""修改挂载点属性。
 
         :param request: Request instance for ModifyMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyMountPointRequest`
@@ -671,7 +671,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyResourceTags(self, request):
-        """修改资源标签列表，全量覆盖。
+        r"""修改资源标签列表，全量覆盖。
 
         :param request: Request instance for ModifyResourceTags.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyResourceTagsRequest`

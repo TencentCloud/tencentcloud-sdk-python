@@ -27,7 +27,7 @@ class IcrClient(AbstractClient):
 
 
     def GetIndustryV1HomeMembers(self, request):
-        """获取成员列表接口
+        r"""获取成员列表接口
 
         :param request: Request instance for GetIndustryV1HomeMembers.
         :type request: :class:`tencentcloud.icr.v20211014.models.GetIndustryV1HomeMembersRequest`

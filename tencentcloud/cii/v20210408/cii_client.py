@@ -27,7 +27,7 @@ class CiiClient(AbstractClient):
 
 
     def AddSubStructureTasks(self, request):
-        """如果主任务下的报告不满足需求，可以基于主任务批量添加子任务
+        r"""如果主任务下的报告不满足需求，可以基于主任务批量添加子任务
 
         :param request: Request instance for AddSubStructureTasks.
         :type request: :class:`tencentcloud.cii.v20210408.models.AddSubStructureTasksRequest`
@@ -50,7 +50,7 @@ class CiiClient(AbstractClient):
 
 
     def CreateAutoClassifyStructureTask(self, request):
-        """本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+        r"""本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 
         :param request: Request instance for CreateAutoClassifyStructureTask.
         :type request: :class:`tencentcloud.cii.v20210408.models.CreateAutoClassifyStructureTaskRequest`
@@ -73,7 +73,7 @@ class CiiClient(AbstractClient):
 
 
     def CreateStructureTask(self, request):
-        """本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+        r"""本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 
         :param request: Request instance for CreateStructureTask.
         :type request: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskRequest`
@@ -96,7 +96,7 @@ class CiiClient(AbstractClient):
 
 
     def CreateUnderwriteTaskById(self, request):
-        """本接口(CreateUnderwriteTaskById)用于根据结构化任务ID创建核保任务
+        r"""本接口(CreateUnderwriteTaskById)用于根据结构化任务ID创建核保任务
 
         :param request: Request instance for CreateUnderwriteTaskById.
         :type request: :class:`tencentcloud.cii.v20210408.models.CreateUnderwriteTaskByIdRequest`
@@ -119,7 +119,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeMachineUnderwrite(self, request):
-        """本接口(DescribeMachineUnderwrite)用于查询机器核保任务数据
+        r"""本接口(DescribeMachineUnderwrite)用于查询机器核保任务数据
 
         :param request: Request instance for DescribeMachineUnderwrite.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeMachineUnderwriteRequest`
@@ -142,7 +142,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeQualityScore(self, request):
-        """获取图片质量分
+        r"""获取图片质量分
 
         :param request: Request instance for DescribeQualityScore.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeQualityScoreRequest`
@@ -166,7 +166,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeReportClassify(self, request):
-        """辅助用户对批量报告自动分类
+        r"""辅助用户对批量报告自动分类
 
         :param request: Request instance for DescribeReportClassify.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeReportClassifyRequest`
@@ -189,7 +189,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructCompareData(self, request):
-        """结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
+        r"""结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
 
         :param request: Request instance for DescribeStructCompareData.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructCompareDataRequest`
@@ -212,7 +212,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructureDifference(self, request):
-        """结构化复核差异查询接口，对比结构化复核前后数据差异，返回差异的部分。
+        r"""结构化复核差异查询接口，对比结构化复核前后数据差异，返回差异的部分。
 
         :param request: Request instance for DescribeStructureDifference.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureDifferenceRequest`
@@ -235,7 +235,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructureResult(self, request):
-        """本接口(DescribeStructureResult)用于查询结构化结果接口
+        r"""本接口(DescribeStructureResult)用于查询结构化结果接口
 
         :param request: Request instance for DescribeStructureResult.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureResultRequest`
@@ -258,7 +258,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeStructureTaskResult(self, request):
-        """依据任务ID获取结构化结果接口。
+        r"""依据任务ID获取结构化结果接口。
 
         :param request: Request instance for DescribeStructureTaskResult.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureTaskResultRequest`
@@ -281,7 +281,7 @@ class CiiClient(AbstractClient):
 
 
     def DescribeUnderwriteTask(self, request):
-        """本接口(DescribeUnderwriteTask)用于查询核保任务结果
+        r"""本接口(DescribeUnderwriteTask)用于查询核保任务结果
 
         :param request: Request instance for DescribeUnderwriteTask.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeUnderwriteTaskRequest`
@@ -304,7 +304,7 @@ class CiiClient(AbstractClient):
 
 
     def UploadMedicalFile(self, request):
-        """上传医疗影像文件，可以用来做结构化。
+        r"""上传医疗影像文件，可以用来做结构化。
 
         :param request: Request instance for UploadMedicalFile.
         :type request: :class:`tencentcloud.cii.v20210408.models.UploadMedicalFileRequest`

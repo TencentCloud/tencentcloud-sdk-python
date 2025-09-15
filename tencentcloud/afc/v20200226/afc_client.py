@@ -27,7 +27,7 @@ class AfcClient(AbstractClient):
 
 
     def GetAntiFraudVip(self, request):
-        """反欺诈VIP评分接口
+        r"""反欺诈VIP评分接口
 
         :param request: Request instance for GetAntiFraudVip.
         :type request: :class:`tencentcloud.afc.v20200226.models.GetAntiFraudVipRequest`
@@ -50,7 +50,7 @@ class AfcClient(AbstractClient):
 
 
     def QueryAntiFraudVip(self, request):
-        """天御反欺诈服务，主要应用于银行、证券、保险、P2P等金融行业客户，通过腾讯的大数据风控能力，
+        r"""天御反欺诈服务，主要应用于银行、证券、保险、P2P等金融行业客户，通过腾讯的大数据风控能力，
         可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业
         的损失。
 
@@ -75,7 +75,7 @@ class AfcClient(AbstractClient):
 
 
     def TransportGeneralInterface(self, request):
-        """天御信鸽取数平台接口
+        r"""天御信鸽取数平台接口
 
         :param request: Request instance for TransportGeneralInterface.
         :type request: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceRequest`

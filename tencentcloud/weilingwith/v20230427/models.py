@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Action(AbstractModel):
-    """动作信息
+    r"""动作信息
 
     """
 
@@ -35,7 +35,7 @@ class Action(AbstractModel):
 
     @property
     def Id(self):
-        """动作id
+        r"""动作id
         :rtype: int
         """
         return self._Id
@@ -46,7 +46,7 @@ class Action(AbstractModel):
 
     @property
     def Name(self):
-        """动作名
+        r"""动作名
         :rtype: str
         """
         return self._Name
@@ -70,7 +70,7 @@ class Action(AbstractModel):
 
 
 class ActionDetail(AbstractModel):
-    """详细动作信息
+    r"""详细动作信息
 
     """
 
@@ -110,7 +110,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def Id(self):
-        """动作id
+        r"""动作id
         :rtype: int
         """
         return self._Id
@@ -121,7 +121,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def Name(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._Name
@@ -132,7 +132,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """动作类型
+        r"""动作类型
         :rtype: str
         """
         return self._ActionType
@@ -143,7 +143,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def ActionDesc(self):
-        """动作说明
+        r"""动作说明
         :rtype: str
         """
         return self._ActionDesc
@@ -154,7 +154,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def MsgType(self):
-        """消息类型，orgin/custom/model
+        r"""消息类型，orgin/custom/model
         :rtype: str
         """
         return self._MsgType
@@ -165,7 +165,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def MsgContent(self):
-        """消息内容,有效值为x-json:后的字段
+        r"""消息内容,有效值为x-json:后的字段
         :rtype: str
         """
         return self._MsgContent
@@ -176,7 +176,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -187,7 +187,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def WID(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._WID
@@ -198,7 +198,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def LinkRuleSet(self):
-        """关联故障列表
+        r"""关联故障列表
         :rtype: list of LinkRule
         """
         return self._LinkRuleSet
@@ -209,7 +209,7 @@ class ActionDetail(AbstractModel):
 
     @property
     def SinkConfig(self):
-        """动作下沉配置,有效值为x-json:后的字段
+        r"""动作下沉配置,有效值为x-json:后的字段
         :rtype: str
         """
         return self._SinkConfig
@@ -246,7 +246,7 @@ class ActionDetail(AbstractModel):
 
 
 class ActionObj(AbstractModel):
-    """动作对象
+    r"""动作对象
 
     """
 
@@ -283,7 +283,7 @@ class ActionObj(AbstractModel):
 
     @property
     def Id(self):
-        """动作id
+        r"""动作id
         :rtype: int
         """
         return self._Id
@@ -294,7 +294,7 @@ class ActionObj(AbstractModel):
 
     @property
     def Name(self):
-        """动作名称
+        r"""动作名称
         :rtype: str
         """
         return self._Name
@@ -305,7 +305,7 @@ class ActionObj(AbstractModel):
 
     @property
     def Type(self):
-        """动作类型。（app/推送消息至应用-携带空间设备：无,appWithNearbyDevices/推送至应用-携带空间设备：携带,device/推送消息至设备-指定设备,nearbyDevices/推送消息至设备-事件所在范围内的设备,toAlarm/转换为告警,toNotification/转换为通知）
+        r"""动作类型。（app/推送消息至应用-携带空间设备：无,appWithNearbyDevices/推送至应用-携带空间设备：携带,device/推送消息至设备-指定设备,nearbyDevices/推送消息至设备-事件所在范围内的设备,toAlarm/转换为告警,toNotification/转换为通知）
         :rtype: str
         """
         return self._Type
@@ -316,7 +316,7 @@ class ActionObj(AbstractModel):
 
     @property
     def Desc(self):
-        """动作说明
+        r"""动作说明
         :rtype: str
         """
         return self._Desc
@@ -327,7 +327,7 @@ class ActionObj(AbstractModel):
 
     @property
     def MsgType(self):
-        """消息类型，orgin/custom/model
+        r"""消息类型，orgin/custom/model
         :rtype: str
         """
         return self._MsgType
@@ -338,7 +338,7 @@ class ActionObj(AbstractModel):
 
     @property
     def MsgContent(self):
-        """消息内容
+        r"""消息内容
         :rtype: str
         """
         return self._MsgContent
@@ -349,7 +349,7 @@ class ActionObj(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -360,7 +360,7 @@ class ActionObj(AbstractModel):
 
     @property
     def SinkConfig(self):
-        """动作下沉配置
+        r"""动作下沉配置
         :rtype: str
         """
         return self._SinkConfig
@@ -371,7 +371,7 @@ class ActionObj(AbstractModel):
 
     @property
     def ApplyDevice(self):
-        """ 具体应用（appid）/具体设备（DIN/subID）
+        r""" 具体应用（appid）/具体设备（DIN/subID）
         :rtype: str
         """
         return self._ApplyDevice
@@ -402,7 +402,7 @@ class ActionObj(AbstractModel):
 
 
 class AddAlarmProcessRecordRequest(AbstractModel):
-    """AddAlarmProcessRecord请求参数结构体
+    r"""AddAlarmProcessRecord请求参数结构体
 
     """
 
@@ -428,7 +428,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
     @property
     def RecordSet(self):
-        """处理记录项
+        r"""处理记录项
         :rtype: list of ProcessRecordInfo
         """
         return self._RecordSet
@@ -439,7 +439,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -450,7 +450,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -461,7 +461,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """非孪生平台外部应用appid
+        r"""非孪生平台外部应用appid
         :rtype: int
         """
         return self._ApplicationId
@@ -472,7 +472,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
     @property
     def ExtendOne(self):
-        """此字段填写的是非孪生中台的用户id（多个用逗号分隔），如果是非孪生中台用户必填该字段
+        r"""此字段填写的是非孪生中台的用户id（多个用逗号分隔），如果是非孪生中台用户必填该字段
 
         :rtype: str
         """
@@ -505,7 +505,7 @@ class AddAlarmProcessRecordRequest(AbstractModel):
 
 
 class AddAlarmProcessRecordResponse(AbstractModel):
-    """AddAlarmProcessRecord返回参数结构体
+    r"""AddAlarmProcessRecord返回参数结构体
 
     """
 
@@ -521,7 +521,7 @@ class AddAlarmProcessRecordResponse(AbstractModel):
 
     @property
     def Result(self):
-        """添加告警处理记录结果
+        r"""添加告警处理记录结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -532,7 +532,7 @@ class AddAlarmProcessRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -550,7 +550,7 @@ class AddAlarmProcessRecordResponse(AbstractModel):
 
 
 class AddDeviceInfo(AbstractModel):
-    """添加设备信息
+    r"""添加设备信息
 
     """
 
@@ -572,7 +572,7 @@ class AddDeviceInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品id
+        r"""产品id
         :rtype: int
         """
         return self._ProductId
@@ -583,7 +583,7 @@ class AddDeviceInfo(AbstractModel):
 
     @property
     def SN(self):
-        """设备sn序列号
+        r"""设备sn序列号
         :rtype: str
         """
         return self._SN
@@ -594,7 +594,7 @@ class AddDeviceInfo(AbstractModel):
 
     @property
     def ParentWID(self):
-        """父设备wid，不为空表示导入子设备
+        r"""父设备wid，不为空表示导入子设备
         :rtype: str
         """
         return self._ParentWID
@@ -605,7 +605,7 @@ class AddDeviceInfo(AbstractModel):
 
     @property
     def KeySource(self):
-        """密钥来源：0-使用产品密钥 1-使用设备特有的密钥
+        r"""密钥来源：0-使用产品密钥 1-使用设备特有的密钥
         :rtype: int
         """
         return self._KeySource
@@ -631,7 +631,7 @@ class AddDeviceInfo(AbstractModel):
 
 
 class AdministrationData(AbstractModel):
-    """行政区划数据结构
+    r"""行政区划数据结构
 
     """
 
@@ -647,7 +647,7 @@ class AdministrationData(AbstractModel):
 
     @property
     def AdministrationCode(self):
-        """行政区划编码
+        r"""行政区划编码
         :rtype: str
         """
         return self._AdministrationCode
@@ -658,7 +658,7 @@ class AdministrationData(AbstractModel):
 
     @property
     def AdministrationName(self):
-        """行政区划名称
+        r"""行政区划名称
         :rtype: str
         """
         return self._AdministrationName
@@ -682,7 +682,7 @@ class AdministrationData(AbstractModel):
 
 
 class AdministrativeDetail(AbstractModel):
-    """行政区划详情
+    r"""行政区划详情
 
     """
 
@@ -701,7 +701,7 @@ class AdministrativeDetail(AbstractModel):
 
     @property
     def AdministrativeTypeCode(self):
-        """行政区域类型编码
+        r"""行政区域类型编码
         :rtype: str
         """
         return self._AdministrativeTypeCode
@@ -712,7 +712,7 @@ class AdministrativeDetail(AbstractModel):
 
     @property
     def AdministrativeCode(self):
-        """行政区域编码
+        r"""行政区域编码
         :rtype: str
         """
         return self._AdministrativeCode
@@ -723,7 +723,7 @@ class AdministrativeDetail(AbstractModel):
 
     @property
     def AdministrativeName(self):
-        """行政区域名称
+        r"""行政区域名称
         :rtype: str
         """
         return self._AdministrativeName
@@ -748,7 +748,7 @@ class AdministrativeDetail(AbstractModel):
 
 
 class AlarmInfo(AbstractModel):
-    """告警信息
+    r"""告警信息
 
     """
 
@@ -824,7 +824,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -835,7 +835,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Id(self):
-        """告警ID
+        r"""告警ID
         :rtype: str
         """
         return self._Id
@@ -846,7 +846,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Status(self):
-        """告警状态
+        r"""告警状态
         :rtype: str
         """
         return self._Status
@@ -857,7 +857,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Time(self):
-        """告警时间
+        r"""告警时间
         :rtype: int
         """
         return self._Time
@@ -868,7 +868,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Type(self):
-        """告警业务类型
+        r"""告警业务类型
         :rtype: str
         """
         return self._Type
@@ -879,7 +879,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def TypeName(self):
-        """告警业务类型名称
+        r"""告警业务类型名称
         :rtype: str
         """
         return self._TypeName
@@ -890,7 +890,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def SubType(self):
-        """子告警类型
+        r"""子告警类型
         :rtype: str
         """
         return self._SubType
@@ -901,7 +901,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def SubTypeName(self):
-        """子告警类型名称
+        r"""子告警类型名称
         :rtype: str
         """
         return self._SubTypeName
@@ -912,7 +912,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Level(self):
-        """告警级别id
+        r"""告警级别id
         :rtype: int
         """
         return self._Level
@@ -923,7 +923,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def LevelName(self):
-        """告警级别名称
+        r"""告警级别名称
         :rtype: str
         """
         return self._LevelName
@@ -934,7 +934,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """上报应用appid
+        r"""上报应用appid
         :rtype: int
         """
         return self._AppId
@@ -945,7 +945,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备wid
+        r"""设备wid
         :rtype: str
         """
         return self._WID
@@ -956,7 +956,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -967,7 +967,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Position(self):
-        """空间位置
+        r"""空间位置
         :rtype: str
         """
         return self._Position
@@ -978,7 +978,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def ReportImg(self):
-        """上报图片
+        r"""上报图片
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ReportImg`
         """
         return self._ReportImg
@@ -989,7 +989,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Desc(self):
-        """告警描述
+        r"""告警描述
         :rtype: str
         """
         return self._Desc
@@ -1000,7 +1000,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def HandlePersonSet(self):
-        """处理人
+        r"""处理人
         :rtype: list of HandlerPersonInfo
         """
         return self._HandlePersonSet
@@ -1011,7 +1011,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def HandleRecordSet(self):
-        """处理记录
+        r"""处理记录
         :rtype: list of HandleRecordInfo
         """
         return self._HandleRecordSet
@@ -1022,7 +1022,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Extend(self):
-        """扩展信息
+        r"""扩展信息
         :rtype: str
         """
         return self._Extend
@@ -1033,7 +1033,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def ExtendOne(self):
-        """应用扩展字段1
+        r"""应用扩展字段1
         :rtype: str
         """
         return self._ExtendOne
@@ -1044,7 +1044,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def ExtendTwo(self):
-        """应用扩展字段2
+        r"""应用扩展字段2
         :rtype: str
         """
         return self._ExtendTwo
@@ -1055,7 +1055,7 @@ class AlarmInfo(AbstractModel):
 
     @property
     def Echo(self):
-        """应用透传字段,有效字段为x-json后的字段
+        r"""应用透传字段,有效字段为x-json后的字段
         :rtype: str
         """
         return self._Echo
@@ -1111,7 +1111,7 @@ class AlarmInfo(AbstractModel):
 
 
 class AlarmLevelInfo(AbstractModel):
-    """告警级别详情
+    r"""告警级别详情
 
     """
 
@@ -1127,7 +1127,7 @@ class AlarmLevelInfo(AbstractModel):
 
     @property
     def LevelId(self):
-        """级别id
+        r"""级别id
         :rtype: int
         """
         return self._LevelId
@@ -1138,7 +1138,7 @@ class AlarmLevelInfo(AbstractModel):
 
     @property
     def LevelName(self):
-        """级别名称
+        r"""级别名称
         :rtype: str
         """
         return self._LevelName
@@ -1162,7 +1162,7 @@ class AlarmLevelInfo(AbstractModel):
 
 
 class AlarmStatusData(AbstractModel):
-    """告警状态返回结构体
+    r"""告警状态返回结构体
 
     """
 
@@ -1181,7 +1181,7 @@ class AlarmStatusData(AbstractModel):
 
     @property
     def StatusID(self):
-        """告警状态ID
+        r"""告警状态ID
         :rtype: str
         """
         return self._StatusID
@@ -1192,7 +1192,7 @@ class AlarmStatusData(AbstractModel):
 
     @property
     def StatusName(self):
-        """告警状态名称
+        r"""告警状态名称
         :rtype: str
         """
         return self._StatusName
@@ -1203,7 +1203,7 @@ class AlarmStatusData(AbstractModel):
 
     @property
     def StatusType(self):
-        """告警状态类型
+        r"""告警状态类型
         :rtype: str
         """
         return self._StatusType
@@ -1228,7 +1228,7 @@ class AlarmStatusData(AbstractModel):
 
 
 class AlarmTypeDetailInfo(AbstractModel):
-    """告警类型详情信息
+    r"""告警类型详情信息
 
     """
 
@@ -1253,7 +1253,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
     @property
     def Id(self):
-        """告警类型id
+        r"""告警类型id
         :rtype: int
         """
         return self._Id
@@ -1264,7 +1264,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
     @property
     def ParentId(self):
-        """父节点id
+        r"""父节点id
         :rtype: int
         """
         return self._ParentId
@@ -1275,7 +1275,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
     @property
     def Type(self):
-        """0-标准告警类型，1-自定义告警类型
+        r"""0-标准告警类型，1-自定义告警类型
         :rtype: int
         """
         return self._Type
@@ -1286,7 +1286,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
     @property
     def Name(self):
-        """告警名称类型
+        r"""告警名称类型
         :rtype: str
         """
         return self._Name
@@ -1297,7 +1297,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
     @property
     def EnglishName(self):
-        """告警类型英文名称
+        r"""告警类型英文名称
         :rtype: str
         """
         return self._EnglishName
@@ -1324,7 +1324,7 @@ class AlarmTypeDetailInfo(AbstractModel):
 
 
 class AlarmTypeInfo(AbstractModel):
-    """告警类型
+    r"""告警类型
 
     """
 
@@ -1340,7 +1340,7 @@ class AlarmTypeInfo(AbstractModel):
 
     @property
     def Type(self):
-        """告警父类型
+        r"""告警父类型
         :rtype: str
         """
         return self._Type
@@ -1351,7 +1351,7 @@ class AlarmTypeInfo(AbstractModel):
 
     @property
     def SubType(self):
-        """告警子类型(如果传告警子类型，则必传父类型)
+        r"""告警子类型(如果传告警子类型，则必传父类型)
         :rtype: str
         """
         return self._SubType
@@ -1375,7 +1375,7 @@ class AlarmTypeInfo(AbstractModel):
 
 
 class ApiContent(AbstractModel):
-    """API参数信息
+    r"""API参数信息
 
     """
 
@@ -1406,7 +1406,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Id(self):
-        """所属API的id
+        r"""所属API的id
         :rtype: str
         """
         return self._Id
@@ -1417,7 +1417,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Name(self):
-        """参数名称
+        r"""参数名称
         :rtype: str
         """
         return self._Name
@@ -1428,7 +1428,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Type(self):
-        """参数类型
+        r"""参数类型
         :rtype: str
         """
         return self._Type
@@ -1439,7 +1439,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Dynamic(self):
-        """是否为动态值
+        r"""是否为动态值
         :rtype: bool
         """
         return self._Dynamic
@@ -1450,7 +1450,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Required(self):
-        """是否必填
+        r"""是否必填
         :rtype: bool
         """
         return self._Required
@@ -1461,7 +1461,7 @@ class ApiContent(AbstractModel):
 
     @property
     def Value(self):
-        """参数值
+        r"""参数值
         :rtype: str
         """
         return self._Value
@@ -1472,7 +1472,7 @@ class ApiContent(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """默认值
+        r"""默认值
         :rtype: str
         """
         return self._DefaultValue
@@ -1501,7 +1501,7 @@ class ApiContent(AbstractModel):
 
 
 class ApiInfo(AbstractModel):
-    """API描述
+    r"""API描述
 
     """
 
@@ -1574,7 +1574,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def ApiId(self):
-        """API的id
+        r"""API的id
         :rtype: str
         """
         return self._ApiId
@@ -1585,7 +1585,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Name(self):
-        """API名称
+        r"""API名称
         :rtype: str
         """
         return self._Name
@@ -1596,7 +1596,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """API所属应用的id
+        r"""API所属应用的id
         :rtype: str
         """
         return self._AppId
@@ -1607,7 +1607,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """API所属的项目空间的id
+        r"""API所属的项目空间的id
         :rtype: str
         """
         return self._WorkspaceId
@@ -1618,7 +1618,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def PoiCode(self):
-        """API所属目录的编码
+        r"""API所属目录的编码
         :rtype: str
         """
         return self._PoiCode
@@ -1629,7 +1629,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Type(self):
-        """ 接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务
+        r""" 接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务
         :rtype: int
         """
         return self._Type
@@ -1640,7 +1640,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def DataAudit(self):
-        """数据授权 0:否 1:是
+        r"""数据授权 0:否 1:是
         :rtype: int
         """
         return self._DataAudit
@@ -1651,7 +1651,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def ApplyAudit(self):
-        """是否需要申请 0:否 1:是
+        r"""是否需要申请 0:否 1:是
         :rtype: int
         """
         return self._ApplyAudit
@@ -1662,7 +1662,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Description(self):
-        """API详情
+        r"""API详情
         :rtype: str
         """
         return self._Description
@@ -1673,7 +1673,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Address(self):
-        """API地址
+        r"""API地址
         :rtype: str
         """
         return self._Address
@@ -1684,7 +1684,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Method(self):
-        """请求方法类型
+        r"""请求方法类型
         :rtype: str
         """
         return self._Method
@@ -1695,7 +1695,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Status(self):
-        """API状态
+        r"""API状态
         :rtype: int
         """
         return self._Status
@@ -1706,7 +1706,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """API预览地址
+        r"""API预览地址
         :rtype: str
         """
         return self._PreviewUrl
@@ -1717,7 +1717,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def QueryParams(self):
-        """query参数
+        r"""query参数
         :rtype: list of ApiContent
         """
         return self._QueryParams
@@ -1728,7 +1728,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def PathParams(self):
-        """路径参数
+        r"""路径参数
         :rtype: list of ApiContent
         """
         return self._PathParams
@@ -1739,7 +1739,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def RequestHeaders(self):
-        """请求头
+        r"""请求头
         :rtype: list of ApiContent
         """
         return self._RequestHeaders
@@ -1750,7 +1750,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def ResponseHeaders(self):
-        """响应头
+        r"""响应头
         :rtype: list of ApiContent
         """
         return self._ResponseHeaders
@@ -1761,7 +1761,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def IsCommonSpace(self):
-        """是否为公共空间接口
+        r"""是否为公共空间接口
         :rtype: bool
         """
         return self._IsCommonSpace
@@ -1772,7 +1772,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Body(self):
-        """请求体（base64编码）
+        r"""请求体（base64编码）
         :rtype: str
         """
         return self._Body
@@ -1783,7 +1783,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def ResponseBody(self):
-        """响应体（base64编码）
+        r"""响应体（base64编码）
         :rtype: str
         """
         return self._ResponseBody
@@ -1794,7 +1794,7 @@ class ApiInfo(AbstractModel):
 
     @property
     def Style(self):
-        """接口方式 1.http 2消息通知服务
+        r"""接口方式 1.http 2消息通知服务
         :rtype: int
         """
         return self._Style
@@ -1857,7 +1857,7 @@ class ApiInfo(AbstractModel):
 
 
 class ApiInfoList(AbstractModel):
-    """API列表
+    r"""API列表
 
     """
 
@@ -1873,7 +1873,7 @@ class ApiInfoList(AbstractModel):
 
     @property
     def ApiInfo(self):
-        """API列表
+        r"""API列表
         :rtype: list of ApiInfo
         """
         return self._ApiInfo
@@ -1884,7 +1884,7 @@ class ApiInfoList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数据总条数
+        r"""数据总条数
         :rtype: int
         """
         return self._TotalCount
@@ -1913,7 +1913,7 @@ class ApiInfoList(AbstractModel):
 
 
 class ApplicationInfo(AbstractModel):
-    """应用描述
+    r"""应用描述
 
     """
 
@@ -1944,7 +1944,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用分配的appId
+        r"""应用分配的appId
         :rtype: str
         """
         return self._ApplicationId
@@ -1955,7 +1955,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Name(self):
-        """应用中文名
+        r"""应用中文名
         :rtype: str
         """
         return self._Name
@@ -1966,7 +1966,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Address(self):
-        """应用地址
+        r"""应用地址
         :rtype: str
         """
         return self._Address
@@ -1977,7 +1977,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationLogo(self):
-        """应用logo
+        r"""应用logo
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationLogo`
         """
         return self._ApplicationLogo
@@ -1988,7 +1988,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Type(self):
-        """应用类型，0:saas应用 1:平台应用
+        r"""应用类型，0:saas应用 1:平台应用
         :rtype: int
         """
         return self._Type
@@ -1999,7 +1999,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def EnglishName(self):
-        """engine
+        r"""engine
         :rtype: str
         """
         return self._EnglishName
@@ -2010,7 +2010,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Description(self):
-        """能源管理应用
+        r"""能源管理应用
         :rtype: str
         """
         return self._Description
@@ -2041,7 +2041,7 @@ class ApplicationInfo(AbstractModel):
 
 
 class ApplicationList(AbstractModel):
-    """应用列表
+    r"""应用列表
 
     """
 
@@ -2057,7 +2057,7 @@ class ApplicationList(AbstractModel):
 
     @property
     def ApplicationInfoList(self):
-        """应用列表
+        r"""应用列表
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationInfoList
@@ -2068,7 +2068,7 @@ class ApplicationList(AbstractModel):
 
     @property
     def TotalCount(self):
-        """当前查询条件命中的数据总条数
+        r"""当前查询条件命中的数据总条数
         :rtype: str
         """
         return self._TotalCount
@@ -2097,7 +2097,7 @@ class ApplicationList(AbstractModel):
 
 
 class ApplicationLogo(AbstractModel):
-    """应用logo
+    r"""应用logo
 
     """
 
@@ -2113,7 +2113,7 @@ class ApplicationLogo(AbstractModel):
 
     @property
     def FileId(self):
-        """logo图片对应的fileId
+        r"""logo图片对应的fileId
         :rtype: str
         """
         return self._FileId
@@ -2124,7 +2124,7 @@ class ApplicationLogo(AbstractModel):
 
     @property
     def Url(self):
-        """logo图片地址
+        r"""logo图片地址
         :rtype: str
         """
         return self._Url
@@ -2148,7 +2148,7 @@ class ApplicationLogo(AbstractModel):
 
 
 class ApplicationTokenInfo(AbstractModel):
-    """应用Token令牌信息
+    r"""应用Token令牌信息
 
     """
 
@@ -2161,7 +2161,7 @@ class ApplicationTokenInfo(AbstractModel):
 
     @property
     def Token(self):
-        """应用申请调用API的令牌
+        r"""应用申请调用API的令牌
         :rtype: str
         """
         return self._Token
@@ -2184,7 +2184,7 @@ class ApplicationTokenInfo(AbstractModel):
 
 
 class BatchCreateDeviceRequest(AbstractModel):
-    """BatchCreateDevice请求参数结构体
+    r"""BatchCreateDevice请求参数结构体
 
     """
 
@@ -2204,7 +2204,7 @@ class BatchCreateDeviceRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -2215,7 +2215,7 @@ class BatchCreateDeviceRequest(AbstractModel):
 
     @property
     def AddDeviceSet(self):
-        """设备信息项
+        r"""设备信息项
 
         :rtype: list of AddDeviceInfo
         """
@@ -2227,7 +2227,7 @@ class BatchCreateDeviceRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -2257,7 +2257,7 @@ class BatchCreateDeviceRequest(AbstractModel):
 
 
 class BatchCreateDeviceRes(AbstractModel):
-    """批量新增设备接口返回结果
+    r"""批量新增设备接口返回结果
 
     """
 
@@ -2273,7 +2273,7 @@ class BatchCreateDeviceRes(AbstractModel):
 
     @property
     def SuccessSet(self):
-        """新增成功的设备列表
+        r"""新增成功的设备列表
         :rtype: list of CreateDeviceSucceeded
         """
         return self._SuccessSet
@@ -2284,7 +2284,7 @@ class BatchCreateDeviceRes(AbstractModel):
 
     @property
     def FailSet(self):
-        """新增失败的设备列表
+        r"""新增失败的设备列表
         :rtype: list of CreateDeviceFailed
         """
         return self._FailSet
@@ -2318,7 +2318,7 @@ class BatchCreateDeviceRes(AbstractModel):
 
 
 class BatchCreateDeviceResponse(AbstractModel):
-    """BatchCreateDevice返回参数结构体
+    r"""BatchCreateDevice返回参数结构体
 
     """
 
@@ -2334,7 +2334,7 @@ class BatchCreateDeviceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """批量新增设备返回结果
+        r"""批量新增设备返回结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BatchCreateDeviceRes`
         """
         return self._Result
@@ -2345,7 +2345,7 @@ class BatchCreateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2363,7 +2363,7 @@ class BatchCreateDeviceResponse(AbstractModel):
 
 
 class BatchDeleteDeviceRequest(AbstractModel):
-    """BatchDeleteDevice请求参数结构体
+    r"""BatchDeleteDevice请求参数结构体
 
     """
 
@@ -2382,7 +2382,7 @@ class BatchDeleteDeviceRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -2393,7 +2393,7 @@ class BatchDeleteDeviceRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备wid数组列表
+        r"""设备wid数组列表
         :rtype: list of str
         """
         return self._WIDSet
@@ -2404,7 +2404,7 @@ class BatchDeleteDeviceRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -2429,7 +2429,7 @@ class BatchDeleteDeviceRequest(AbstractModel):
 
 
 class BatchDeleteDeviceResponse(AbstractModel):
-    """BatchDeleteDevice返回参数结构体
+    r"""BatchDeleteDevice返回参数结构体
 
     """
 
@@ -2445,7 +2445,7 @@ class BatchDeleteDeviceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回请求结果
+        r"""返回请求结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -2456,7 +2456,7 @@ class BatchDeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2474,7 +2474,7 @@ class BatchDeleteDeviceResponse(AbstractModel):
 
 
 class BatchKillAlarmRequest(AbstractModel):
-    """BatchKillAlarm请求参数结构体
+    r"""BatchKillAlarm请求参数结构体
 
     """
 
@@ -2526,7 +2526,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """告警开始时间，必填,时间戳秒
+        r"""告警开始时间，必填,时间戳秒
         :rtype: int
         """
         return self._BeginTime
@@ -2537,7 +2537,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """告警结束时间，必填，时间戳秒
+        r"""告警结束时间，必填，时间戳秒
         :rtype: int
         """
         return self._EndTime
@@ -2548,7 +2548,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """告警状态: unprocessed processing
+        r"""告警状态: unprocessed processing
 
         :rtype: list of str
         """
@@ -2560,7 +2560,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -2571,7 +2571,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """当前操作用户id
+        r"""当前操作用户id
         :rtype: str
         """
         return self._UserId
@@ -2582,7 +2582,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """当前操作用户名称
+        r"""当前操作用户名称
         :rtype: str
         """
         return self._UserName
@@ -2593,7 +2593,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -2604,7 +2604,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def ProcessorId(self):
-        """当前告警处理人，填孪生中台用户id,多个用逗号分隔
+        r"""当前告警处理人，填孪生中台用户id,多个用逗号分隔
 
         :rtype: str
         """
@@ -2616,7 +2616,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def AlarmTypeSet(self):
-        """告警子类型(如果传告警子类型，则必传父类型)
+        r"""告警子类型(如果传告警子类型，则必传父类型)
 
         :rtype: list of AlarmTypeInfo
         """
@@ -2628,7 +2628,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def LevelSet(self):
-        """告警级别,包括1~5
+        r"""告警级别,包括1~5
         :rtype: list of int
         """
         return self._LevelSet
@@ -2639,7 +2639,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备id
+        r"""设备id
         :rtype: list of str
         """
         return self._WIDSet
@@ -2650,7 +2650,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def IdSet(self):
-        """告警id
+        r"""告警id
         :rtype: list of str
         """
         return self._IdSet
@@ -2661,7 +2661,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """告警处理的说明
+        r"""告警处理的说明
         :rtype: str
         """
         return self._Desc
@@ -2701,7 +2701,7 @@ class BatchKillAlarmRequest(AbstractModel):
 
 
 class BatchKillAlarmResponse(AbstractModel):
-    """BatchKillAlarm返回参数结构体
+    r"""BatchKillAlarm返回参数结构体
 
     """
 
@@ -2717,7 +2717,7 @@ class BatchKillAlarmResponse(AbstractModel):
 
     @property
     def Result(self):
-        """批量消警结果
+        r"""批量消警结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -2728,7 +2728,7 @@ class BatchKillAlarmResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2746,7 +2746,7 @@ class BatchKillAlarmResponse(AbstractModel):
 
 
 class BatchReportAppMessageRequest(AbstractModel):
-    """BatchReportAppMessage请求参数结构体
+    r"""BatchReportAppMessage请求参数结构体
 
     """
 
@@ -2765,7 +2765,7 @@ class BatchReportAppMessageRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -2776,7 +2776,7 @@ class BatchReportAppMessageRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -2787,7 +2787,7 @@ class BatchReportAppMessageRequest(AbstractModel):
 
     @property
     def ReportSet(self):
-        """消息上报请求列表
+        r"""消息上报请求列表
         :rtype: list of ReportAppMessage
         """
         return self._ReportSet
@@ -2817,7 +2817,7 @@ class BatchReportAppMessageRequest(AbstractModel):
 
 
 class BatchReportAppMessageRes(AbstractModel):
-    """批量消息上报结果
+    r"""批量消息上报结果
 
     """
 
@@ -2837,7 +2837,7 @@ class BatchReportAppMessageRes(AbstractModel):
 
     @property
     def TotalElements(self):
-        """上报数量
+        r"""上报数量
 
         :rtype: int
         """
@@ -2849,7 +2849,7 @@ class BatchReportAppMessageRes(AbstractModel):
 
     @property
     def Commit(self):
-        """提交数量（推送成功）
+        r"""提交数量（推送成功）
         :rtype: int
         """
         return self._Commit
@@ -2860,7 +2860,7 @@ class BatchReportAppMessageRes(AbstractModel):
 
     @property
     def SpanMap(self):
-        """消息推送结果列表
+        r"""消息推送结果列表
         :rtype: list of ReportMsgRes
         """
         return self._SpanMap
@@ -2890,7 +2890,7 @@ class BatchReportAppMessageRes(AbstractModel):
 
 
 class BatchReportAppMessageResponse(AbstractModel):
-    """BatchReportAppMessage返回参数结构体
+    r"""BatchReportAppMessage返回参数结构体
 
     """
 
@@ -2906,7 +2906,7 @@ class BatchReportAppMessageResponse(AbstractModel):
 
     @property
     def Result(self):
-        """批量消息上报结果
+        r"""批量消息上报结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BatchReportAppMessageRes`
         """
         return self._Result
@@ -2917,7 +2917,7 @@ class BatchReportAppMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2935,7 +2935,7 @@ class BatchReportAppMessageResponse(AbstractModel):
 
 
 class BuildingListRes(AbstractModel):
-    """建筑列表响应体
+    r"""建筑列表响应体
 
     """
 
@@ -2948,7 +2948,7 @@ class BuildingListRes(AbstractModel):
 
     @property
     def BuildingProfileList(self):
-        """建筑列表
+        r"""建筑列表
         :rtype: list of BuildingProfile
         """
         return self._BuildingProfileList
@@ -2976,7 +2976,7 @@ class BuildingListRes(AbstractModel):
 
 
 class BuildingModel(AbstractModel):
-    """建筑模型信息
+    r"""建筑模型信息
 
     """
 
@@ -2998,7 +2998,7 @@ class BuildingModel(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件ID
+        r"""构件ID
         :rtype: str
         """
         return self._ElementId
@@ -3009,7 +3009,7 @@ class BuildingModel(AbstractModel):
 
     @property
     def ElementName(self):
-        """构件名称
+        r"""构件名称
         :rtype: str
         """
         return self._ElementName
@@ -3020,7 +3020,7 @@ class BuildingModel(AbstractModel):
 
     @property
     def ModelType(self):
-        """模型类型
+        r"""模型类型
         :rtype: str
         """
         return self._ModelType
@@ -3031,7 +3031,7 @@ class BuildingModel(AbstractModel):
 
     @property
     def ModelUrl(self):
-        """模型URL
+        r"""模型URL
         :rtype: str
         """
         return self._ModelUrl
@@ -3057,7 +3057,7 @@ class BuildingModel(AbstractModel):
 
 
 class BuildingModelRes(AbstractModel):
-    """建模模型信息响应体
+    r"""建模模型信息响应体
 
     """
 
@@ -3070,7 +3070,7 @@ class BuildingModelRes(AbstractModel):
 
     @property
     def Models(self):
-        """建模模型信息出参
+        r"""建模模型信息出参
         :rtype: list of BuildingModel
         """
         return self._Models
@@ -3098,7 +3098,7 @@ class BuildingModelRes(AbstractModel):
 
 
 class BuildingProfile(AbstractModel):
-    """建筑概要信息
+    r"""建筑概要信息
 
     """
 
@@ -3126,7 +3126,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -3137,7 +3137,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def BuildingName(self):
-        """建筑名称
+        r"""建筑名称
         :rtype: str
         """
         return self._BuildingName
@@ -3148,7 +3148,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def SpaceCode(self):
-        """空间编码
+        r"""空间编码
         :rtype: str
         """
         return self._SpaceCode
@@ -3159,7 +3159,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def Longitude(self):
-        """经度
+        r"""经度
         :rtype: float
         """
         return self._Longitude
@@ -3170,7 +3170,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def Latitude(self):
-        """纬度
+        r"""纬度
         :rtype: float
         """
         return self._Latitude
@@ -3181,7 +3181,7 @@ class BuildingProfile(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        r"""地址
         :rtype: str
         """
         return self._Address
@@ -3209,7 +3209,7 @@ class BuildingProfile(AbstractModel):
 
 
 class BuildingProfileRes(AbstractModel):
-    """查询建筑信息响应体
+    r"""查询建筑信息响应体
 
     """
 
@@ -3222,7 +3222,7 @@ class BuildingProfileRes(AbstractModel):
 
     @property
     def BuildingProfile(self):
-        """建筑概要信息
+        r"""建筑概要信息
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BuildingProfile`
         """
         return self._BuildingProfile
@@ -3247,7 +3247,7 @@ class BuildingProfileRes(AbstractModel):
 
 
 class CameraExtendInfoRes(AbstractModel):
-    """视频扩展信息结果
+    r"""视频扩展信息结果
 
     """
 
@@ -3270,7 +3270,7 @@ class CameraExtendInfoRes(AbstractModel):
 
     @property
     def SaveType(self):
-        """存储方式 (nvr或cosmtav)
+        r"""存储方式 (nvr或cosmtav)
         :rtype: str
         """
         return self._SaveType
@@ -3281,7 +3281,7 @@ class CameraExtendInfoRes(AbstractModel):
 
     @property
     def SaveDay(self):
-        """云存储天数（save_type是cosmtav时这个参数才有效）
+        r"""云存储天数（save_type是cosmtav时这个参数才有效）
 
         :rtype: int
         """
@@ -3293,7 +3293,7 @@ class CameraExtendInfoRes(AbstractModel):
 
     @property
     def LiveResolution(self):
-        """实时分辨率
+        r"""实时分辨率
         :rtype: int
         """
         return self._LiveResolution
@@ -3304,7 +3304,7 @@ class CameraExtendInfoRes(AbstractModel):
 
     @property
     def HistoryResolution(self):
-        """历史分辨率
+        r"""历史分辨率
         :rtype: int
         """
         return self._HistoryResolution
@@ -3330,7 +3330,7 @@ class CameraExtendInfoRes(AbstractModel):
 
 
 class ChangeAlarmStatusRequest(AbstractModel):
-    """ChangeAlarmStatus请求参数结构体
+    r"""ChangeAlarmStatus请求参数结构体
 
     """
 
@@ -3379,7 +3379,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def Id(self):
-        """告警的id，返回的列表中的id
+        r"""告警的id，返回的列表中的id
         :rtype: str
         """
         return self._Id
@@ -3390,7 +3390,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """告警状态 processed unprocessed processing misreport shield
+        r"""告警状态 processed unprocessed processing misreport shield
         :rtype: str
         """
         return self._Status
@@ -3401,7 +3401,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ProcessTime(self):
-        """告警处理时间
+        r"""告警处理时间
         :rtype: int
         """
         return self._ProcessTime
@@ -3412,7 +3412,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ProcessType(self):
-        """处理类型
+        r"""处理类型
         :rtype: str
         """
         return self._ProcessType
@@ -3423,7 +3423,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -3434,7 +3434,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """当前操作用户id
+        r"""当前操作用户id
         :rtype: str
         """
         return self._UserId
@@ -3445,7 +3445,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """当前操作用户名称
+        r"""当前操作用户名称
         :rtype: str
         """
         return self._UserName
@@ -3456,7 +3456,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -3467,7 +3467,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def Processor(self):
-        """平台告警处理人
+        r"""平台告警处理人
         :rtype: str
         """
         return self._Processor
@@ -3478,7 +3478,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ProcessDescription(self):
-        """告警处理的描述信息
+        r"""告警处理的描述信息
         :rtype: str
         """
         return self._ProcessDescription
@@ -3489,7 +3489,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ProcessExtend(self):
-        """告警处理的扩展信息，可以为JSON字符串
+        r"""告警处理的扩展信息，可以为JSON字符串
         :rtype: str
         """
         return self._ProcessExtend
@@ -3500,7 +3500,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ExtendOne(self):
-        """扩展字段1，目前存的应用告警处理人
+        r"""扩展字段1，目前存的应用告警处理人
         :rtype: str
         """
         return self._ExtendOne
@@ -3511,7 +3511,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        r"""应用id
         :rtype: int
         """
         return self._ApplicationId
@@ -3546,7 +3546,7 @@ class ChangeAlarmStatusRequest(AbstractModel):
 
 
 class ChangeAlarmStatusResponse(AbstractModel):
-    """ChangeAlarmStatus返回参数结构体
+    r"""ChangeAlarmStatus返回参数结构体
 
     """
 
@@ -3562,7 +3562,7 @@ class ChangeAlarmStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回空结果
+        r"""返回空结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -3573,7 +3573,7 @@ class ChangeAlarmStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3591,7 +3591,7 @@ class ChangeAlarmStatusResponse(AbstractModel):
 
 
 class ControlCameraPTZRequest(AbstractModel):
-    """ControlCameraPTZ请求参数结构体
+    r"""ControlCameraPTZ请求参数结构体
 
     """
 
@@ -3624,7 +3624,7 @@ focusOut - 焦距变远
 
     @property
     def WID(self):
-        """设备的唯一标识
+        r"""设备的唯一标识
         :rtype: str
         """
         return self._WID
@@ -3635,7 +3635,7 @@ focusOut - 焦距变远
 
     @property
     def CMD(self):
-        """ptz指令
+        r"""ptz指令
 left - 向左移动
 right - 向右移动
 up - 向上移动
@@ -3657,7 +3657,7 @@ focusOut - 焦距变远
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -3668,7 +3668,7 @@ focusOut - 焦距变远
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -3694,7 +3694,7 @@ focusOut - 焦距变远
 
 
 class ControlCameraPTZResponse(AbstractModel):
-    """ControlCameraPTZ返回参数结构体
+    r"""ControlCameraPTZ返回参数结构体
 
     """
 
@@ -3710,7 +3710,7 @@ class ControlCameraPTZResponse(AbstractModel):
 
     @property
     def Result(self):
-        """控制摄像头结果返回
+        r"""控制摄像头结果返回
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -3721,7 +3721,7 @@ class ControlCameraPTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3739,7 +3739,7 @@ class ControlCameraPTZResponse(AbstractModel):
 
 
 class ControlDeviceRequest(AbstractModel):
-    """ControlDevice请求参数结构体
+    r"""ControlDevice请求参数结构体
 
     """
 
@@ -3764,7 +3764,7 @@ class ControlDeviceRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -3775,7 +3775,7 @@ class ControlDeviceRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备wid，最大100个
+        r"""设备wid，最大100个
         :rtype: list of str
         """
         return self._WIDSet
@@ -3786,7 +3786,7 @@ class ControlDeviceRequest(AbstractModel):
 
     @property
     def ControlData(self):
-        """控制内容
+        r"""控制内容
         :rtype: str
         """
         return self._ControlData
@@ -3797,7 +3797,7 @@ class ControlDeviceRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -3808,7 +3808,7 @@ class ControlDeviceRequest(AbstractModel):
 
     @property
     def IsSynchronized(self):
-        """是否同步返回设备下控ack结果
+        r"""是否同步返回设备下控ack结果
         :rtype: bool
         """
         return self._IsSynchronized
@@ -3835,7 +3835,7 @@ class ControlDeviceRequest(AbstractModel):
 
 
 class ControlDeviceRes(AbstractModel):
-    """设备控制结果
+    r"""设备控制结果
 
     """
 
@@ -3857,7 +3857,7 @@ class ControlDeviceRes(AbstractModel):
 
     @property
     def WID(self):
-        """设备Id
+        r"""设备Id
         :rtype: str
         """
         return self._WID
@@ -3868,7 +3868,7 @@ class ControlDeviceRes(AbstractModel):
 
     @property
     def Code(self):
-        """指令接受, 0表示成功
+        r"""指令接受, 0表示成功
         :rtype: int
         """
         return self._Code
@@ -3879,7 +3879,7 @@ class ControlDeviceRes(AbstractModel):
 
     @property
     def Result(self):
-        """控制结果
+        r"""控制结果
         :rtype: str
         """
         return self._Result
@@ -3890,7 +3890,7 @@ class ControlDeviceRes(AbstractModel):
 
     @property
     def Seq(self):
-        """批量大于1时，可用此seq进行链路追踪
+        r"""批量大于1时，可用此seq进行链路追踪
         :rtype: str
         """
         return self._Seq
@@ -3916,7 +3916,7 @@ class ControlDeviceRes(AbstractModel):
 
 
 class ControlDeviceResponse(AbstractModel):
-    """ControlDevice返回参数结构体
+    r"""ControlDevice返回参数结构体
 
     """
 
@@ -3932,7 +3932,7 @@ class ControlDeviceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备控制后结果集
+        r"""设备控制后结果集
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ControlDeviceSet`
         """
         return self._Result
@@ -3943,7 +3943,7 @@ class ControlDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3961,7 +3961,7 @@ class ControlDeviceResponse(AbstractModel):
 
 
 class ControlDeviceSet(AbstractModel):
-    """设备控制后返回结果集合
+    r"""设备控制后返回结果集合
 
     """
 
@@ -3974,7 +3974,7 @@ class ControlDeviceSet(AbstractModel):
 
     @property
     def Set(self):
-        """设备控制后返回结果集合
+        r"""设备控制后返回结果集合
         :rtype: list of ControlDeviceRes
         """
         return self._Set
@@ -4002,7 +4002,7 @@ class ControlDeviceSet(AbstractModel):
 
 
 class CreateApplicationTokenRequest(AbstractModel):
-    """CreateApplicationToken请求参数结构体
+    r"""CreateApplicationToken请求参数结构体
 
     """
 
@@ -4027,7 +4027,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        r"""应用id
         :rtype: int
         """
         return self._ApplicationId
@@ -4038,7 +4038,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
     @property
     def Nonce(self):
-        """一个随机数或者时间戳，用于防止重放攻击，每个请求唯一，建议用uuid
+        r"""一个随机数或者时间戳，用于防止重放攻击，每个请求唯一，建议用uuid
         :rtype: str
         """
         return self._Nonce
@@ -4049,7 +4049,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
     @property
     def TenantId(self):
-        """租户id
+        r"""租户id
         :rtype: int
         """
         return self._TenantId
@@ -4060,7 +4060,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
     @property
     def RequestTime(self):
-        """请求时间，当前时间的unix毫秒时间戳
+        r"""请求时间，当前时间的unix毫秒时间戳
         :rtype: int
         """
         return self._RequestTime
@@ -4071,7 +4071,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
     @property
     def Signature(self):
-        """签名方法见用户使用文档
+        r"""签名方法见用户使用文档
         :rtype: str
         """
         return self._Signature
@@ -4098,7 +4098,7 @@ class CreateApplicationTokenRequest(AbstractModel):
 
 
 class CreateApplicationTokenResponse(AbstractModel):
-    """CreateApplicationToken返回参数结构体
+    r"""CreateApplicationToken返回参数结构体
 
     """
 
@@ -4114,7 +4114,7 @@ class CreateApplicationTokenResponse(AbstractModel):
 
     @property
     def Result(self):
-        """应用令牌信息
+        r"""应用令牌信息
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationTokenInfo`
         """
         return self._Result
@@ -4125,7 +4125,7 @@ class CreateApplicationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4143,7 +4143,7 @@ class CreateApplicationTokenResponse(AbstractModel):
 
 
 class CreateDeviceFailed(AbstractModel):
-    """导入失败设备信息
+    r"""导入失败设备信息
 
     """
 
@@ -4165,7 +4165,7 @@ class CreateDeviceFailed(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品id
+        r"""产品id
         :rtype: int
         """
         return self._ProductId
@@ -4176,7 +4176,7 @@ class CreateDeviceFailed(AbstractModel):
 
     @property
     def ParentWID(self):
-        """父设备wid，不为空表示导入自设备
+        r"""父设备wid，不为空表示导入自设备
         :rtype: str
         """
         return self._ParentWID
@@ -4187,7 +4187,7 @@ class CreateDeviceFailed(AbstractModel):
 
     @property
     def Reason(self):
-        """失败原因
+        r"""失败原因
         :rtype: str
         """
         return self._Reason
@@ -4198,7 +4198,7 @@ class CreateDeviceFailed(AbstractModel):
 
     @property
     def SN(self):
-        """设备sn序列号
+        r"""设备sn序列号
         :rtype: str
         """
         return self._SN
@@ -4224,7 +4224,7 @@ class CreateDeviceFailed(AbstractModel):
 
 
 class CreateDeviceSucceeded(AbstractModel):
-    """导入成功设备信息
+    r"""导入成功设备信息
 
     """
 
@@ -4246,7 +4246,7 @@ class CreateDeviceSucceeded(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品id
+        r"""产品id
         :rtype: int
         """
         return self._ProductId
@@ -4257,7 +4257,7 @@ class CreateDeviceSucceeded(AbstractModel):
 
     @property
     def ParentWID(self):
-        """父设备wid，不为空表示导入自设备
+        r"""父设备wid，不为空表示导入自设备
         :rtype: str
         """
         return self._ParentWID
@@ -4268,7 +4268,7 @@ class CreateDeviceSucceeded(AbstractModel):
 
     @property
     def WID(self):
-        """设备编码
+        r"""设备编码
         :rtype: str
         """
         return self._WID
@@ -4279,7 +4279,7 @@ class CreateDeviceSucceeded(AbstractModel):
 
     @property
     def SN(self):
-        """设备sn序列号
+        r"""设备sn序列号
         :rtype: str
         """
         return self._SN
@@ -4305,7 +4305,7 @@ class CreateDeviceSucceeded(AbstractModel):
 
 
 class CustomField(AbstractModel):
-    """自定义字段
+    r"""自定义字段
 
     """
 
@@ -4321,7 +4321,7 @@ class CustomField(AbstractModel):
 
     @property
     def Id(self):
-        """字段id
+        r"""字段id
         :rtype: int
         """
         return self._Id
@@ -4332,7 +4332,7 @@ class CustomField(AbstractModel):
 
     @property
     def Val(self):
-        """字段内容
+        r"""字段内容
         :rtype: str
         """
         return self._Val
@@ -4356,7 +4356,7 @@ class CustomField(AbstractModel):
 
 
 class CustomFieldInfo(AbstractModel):
-    """自定义字段
+    r"""自定义字段
 
     """
 
@@ -4378,7 +4378,7 @@ class CustomFieldInfo(AbstractModel):
 
     @property
     def Id(self):
-        """字段id
+        r"""字段id
         :rtype: int
         """
         return self._Id
@@ -4389,7 +4389,7 @@ class CustomFieldInfo(AbstractModel):
 
     @property
     def Key(self):
-        """字段key
+        r"""字段key
         :rtype: str
         """
         return self._Key
@@ -4400,7 +4400,7 @@ class CustomFieldInfo(AbstractModel):
 
     @property
     def Name(self):
-        """字段名
+        r"""字段名
         :rtype: str
         """
         return self._Name
@@ -4411,7 +4411,7 @@ class CustomFieldInfo(AbstractModel):
 
     @property
     def Val(self):
-        """字段值
+        r"""字段值
         :rtype: str
         """
         return self._Val
@@ -4437,7 +4437,7 @@ class CustomFieldInfo(AbstractModel):
 
 
 class DeleteDeviceGroupRequest(AbstractModel):
-    """DeleteDeviceGroup请求参数结构体
+    r"""DeleteDeviceGroup请求参数结构体
 
     """
 
@@ -4456,7 +4456,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
     @property
     def Id(self):
-        """设备分组的id
+        r"""设备分组的id
         :rtype: int
         """
         return self._Id
@@ -4467,7 +4467,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间的id
+        r"""工作空间的id
         :rtype: int
         """
         return self._WorkspaceId
@@ -4478,7 +4478,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -4503,7 +4503,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
 
 class DeleteDeviceGroupResponse(AbstractModel):
-    """DeleteDeviceGroup返回参数结构体
+    r"""DeleteDeviceGroup返回参数结构体
 
     """
 
@@ -4519,7 +4519,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def Result(self):
-        """无返回信息
+        r"""无返回信息
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -4530,7 +4530,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4548,7 +4548,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
 
 class DescribeActionListRequest(AbstractModel):
-    """DescribeActionList请求参数结构体
+    r"""DescribeActionList请求参数结构体
 
     """
 
@@ -4576,7 +4576,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -4587,7 +4587,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -4598,7 +4598,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -4609,7 +4609,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -4620,7 +4620,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """动作类型，（app,device,toAlarm,toNotification）
+        r"""动作类型，（app,device,toAlarm,toNotification）
         :rtype: str
         """
         return self._ActionType
@@ -4631,7 +4631,7 @@ class DescribeActionListRequest(AbstractModel):
 
     @property
     def IdSet(self):
-        """事件id详情
+        r"""事件id详情
         :rtype: list of int
         """
         return self._IdSet
@@ -4659,7 +4659,7 @@ class DescribeActionListRequest(AbstractModel):
 
 
 class DescribeActionListRes(AbstractModel):
-    """动作列表查询结果
+    r"""动作列表查询结果
 
     """
 
@@ -4684,7 +4684,7 @@ class DescribeActionListRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -4695,7 +4695,7 @@ class DescribeActionListRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -4706,7 +4706,7 @@ class DescribeActionListRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -4717,7 +4717,7 @@ class DescribeActionListRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -4728,7 +4728,7 @@ class DescribeActionListRes(AbstractModel):
 
     @property
     def ActionDetailSet(self):
-        """动作列表查询集合
+        r"""动作列表查询集合
         :rtype: list of ActionDetail
         """
         return self._ActionDetailSet
@@ -4760,7 +4760,7 @@ class DescribeActionListRes(AbstractModel):
 
 
 class DescribeActionListResponse(AbstractModel):
-    """DescribeActionList返回参数结构体
+    r"""DescribeActionList返回参数结构体
 
     """
 
@@ -4776,7 +4776,7 @@ class DescribeActionListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """动作列表查询结果
+        r"""动作列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeActionListRes`
         """
         return self._Result
@@ -4787,7 +4787,7 @@ class DescribeActionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4805,7 +4805,7 @@ class DescribeActionListResponse(AbstractModel):
 
 
 class DescribeAdministrationByTagRequest(AbstractModel):
-    """DescribeAdministrationByTag请求参数结构体
+    r"""DescribeAdministrationByTag请求参数结构体
 
     """
 
@@ -4824,7 +4824,7 @@ class DescribeAdministrationByTagRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -4835,7 +4835,7 @@ class DescribeAdministrationByTagRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: int
         """
         return self._WorkspaceId
@@ -4846,7 +4846,7 @@ class DescribeAdministrationByTagRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Tag
@@ -4871,7 +4871,7 @@ class DescribeAdministrationByTagRequest(AbstractModel):
 
 
 class DescribeAdministrationByTagRes(AbstractModel):
-    """根据Tag获取行政区划列表返回结构
+    r"""根据Tag获取行政区划列表返回结构
 
     """
 
@@ -4884,7 +4884,7 @@ class DescribeAdministrationByTagRes(AbstractModel):
 
     @property
     def List(self):
-        """行政区划列表
+        r"""行政区划列表
         :rtype: list of AdministrationData
         """
         return self._List
@@ -4912,7 +4912,7 @@ class DescribeAdministrationByTagRes(AbstractModel):
 
 
 class DescribeAdministrationByTagResponse(AbstractModel):
-    """DescribeAdministrationByTag返回参数结构体
+    r"""DescribeAdministrationByTag返回参数结构体
 
     """
 
@@ -4928,7 +4928,7 @@ class DescribeAdministrationByTagResponse(AbstractModel):
 
     @property
     def Result(self):
-        """行政区划返回结构
+        r"""行政区划返回结构
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAdministrationByTagRes`
         """
         return self._Result
@@ -4939,7 +4939,7 @@ class DescribeAdministrationByTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4957,7 +4957,7 @@ class DescribeAdministrationByTagResponse(AbstractModel):
 
 
 class DescribeAlarmLevelListRequest(AbstractModel):
-    """DescribeAlarmLevelList请求参数结构体
+    r"""DescribeAlarmLevelList请求参数结构体
 
     """
 
@@ -4973,7 +4973,7 @@ class DescribeAlarmLevelListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -4984,7 +4984,7 @@ class DescribeAlarmLevelListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5008,7 +5008,7 @@ class DescribeAlarmLevelListRequest(AbstractModel):
 
 
 class DescribeAlarmLevelListRes(AbstractModel):
-    """告警级别枚举获取
+    r"""告警级别枚举获取
 
     """
 
@@ -5021,7 +5021,7 @@ class DescribeAlarmLevelListRes(AbstractModel):
 
     @property
     def AlarmLevelSet(self):
-        """告警级别枚举获取数组
+        r"""告警级别枚举获取数组
         :rtype: list of AlarmLevelInfo
         """
         return self._AlarmLevelSet
@@ -5049,7 +5049,7 @@ class DescribeAlarmLevelListRes(AbstractModel):
 
 
 class DescribeAlarmLevelListResponse(AbstractModel):
-    """DescribeAlarmLevelList返回参数结构体
+    r"""DescribeAlarmLevelList返回参数结构体
 
     """
 
@@ -5065,7 +5065,7 @@ class DescribeAlarmLevelListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """告警级别列表查询结果
+        r"""告警级别列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmLevelListRes`
         """
         return self._Result
@@ -5076,7 +5076,7 @@ class DescribeAlarmLevelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5094,7 +5094,7 @@ class DescribeAlarmLevelListResponse(AbstractModel):
 
 
 class DescribeAlarmListRequest(AbstractModel):
-    """DescribeAlarmList请求参数结构体
+    r"""DescribeAlarmList请求参数结构体
 
     """
 
@@ -5155,7 +5155,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """告警开始时间，必填,时间戳秒
+        r"""告警开始时间，必填,时间戳秒
         :rtype: int
         """
         return self._BeginTime
@@ -5166,7 +5166,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """告警结束时间，必填，时间戳秒
+        r"""告警结束时间，必填，时间戳秒
         :rtype: int
         """
         return self._EndTime
@@ -5177,7 +5177,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页
+        r"""分页查询，第几页
         :rtype: int
         """
         return self._PageNumber
@@ -5188,7 +5188,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -5199,7 +5199,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -5210,7 +5210,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5221,7 +5221,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def Statuses(self):
-        """告警状态
+        r"""告警状态
         :rtype: list of str
         """
         return self._Statuses
@@ -5232,7 +5232,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def AlarmTypeSet(self):
-        """告警类型
+        r"""告警类型
         :rtype: list of AlarmTypeInfo
         """
         return self._AlarmTypeSet
@@ -5243,7 +5243,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def LevelSet(self):
-        """告警级别id
+        r"""告警级别id
         :rtype: list of int
         """
         return self._LevelSet
@@ -5254,7 +5254,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def IdSet(self):
-        """告警id
+        r"""告警id
         :rtype: list of str
         """
         return self._IdSet
@@ -5265,7 +5265,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def AppIdSet(self):
-        """应用id
+        r"""应用id
         :rtype: list of int
         """
         return self._AppIdSet
@@ -5276,7 +5276,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备id
+        r"""设备id
         :rtype: list of str
         """
         return self._WIDSet
@@ -5287,7 +5287,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def SpaceCodeSet(self):
-        """空间层级
+        r"""空间层级
         :rtype: list of str
         """
         return self._SpaceCodeSet
@@ -5298,7 +5298,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def ExtendOne(self):
-        """应用扩展字段1
+        r"""应用扩展字段1
         :rtype: list of str
         """
         return self._ExtendOne
@@ -5309,7 +5309,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def ExtendTwo(self):
-        """应用扩展字段2
+        r"""应用扩展字段2
         :rtype: list of str
         """
         return self._ExtendTwo
@@ -5320,7 +5320,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def ProcessorSet(self):
-        """当前告警处理人，填孪生中台的用户id
+        r"""当前告警处理人，填孪生中台的用户id
         :rtype: list of str
         """
         return self._ProcessorSet
@@ -5331,7 +5331,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
     @property
     def GroupIdSet(self):
-        """分组id
+        r"""分组id
         :rtype: list of int
         """
         return self._GroupIdSet
@@ -5375,7 +5375,7 @@ class DescribeAlarmListRequest(AbstractModel):
 
 
 class DescribeAlarmListRes(AbstractModel):
-    """告警列表回包
+    r"""告警列表回包
 
     """
 
@@ -5400,7 +5400,7 @@ class DescribeAlarmListRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -5411,7 +5411,7 @@ class DescribeAlarmListRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -5422,7 +5422,7 @@ class DescribeAlarmListRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -5433,7 +5433,7 @@ class DescribeAlarmListRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -5444,7 +5444,7 @@ class DescribeAlarmListRes(AbstractModel):
 
     @property
     def AlarmInfoSet(self):
-        """告警列表集合
+        r"""告警列表集合
         :rtype: list of AlarmInfo
         """
         return self._AlarmInfoSet
@@ -5476,7 +5476,7 @@ class DescribeAlarmListRes(AbstractModel):
 
 
 class DescribeAlarmListResponse(AbstractModel):
-    """DescribeAlarmList返回参数结构体
+    r"""DescribeAlarmList返回参数结构体
 
     """
 
@@ -5492,7 +5492,7 @@ class DescribeAlarmListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """告警列表查询结果
+        r"""告警列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmListRes`
         """
         return self._Result
@@ -5503,7 +5503,7 @@ class DescribeAlarmListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5521,7 +5521,7 @@ class DescribeAlarmListResponse(AbstractModel):
 
 
 class DescribeAlarmStatusListRequest(AbstractModel):
-    """DescribeAlarmStatusList请求参数结构体
+    r"""DescribeAlarmStatusList请求参数结构体
 
     """
 
@@ -5537,7 +5537,7 @@ class DescribeAlarmStatusListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5548,7 +5548,7 @@ class DescribeAlarmStatusListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: str
         """
         return self._WorkspaceId
@@ -5572,7 +5572,7 @@ class DescribeAlarmStatusListRequest(AbstractModel):
 
 
 class DescribeAlarmStatusListRes(AbstractModel):
-    """告警状态列表返回
+    r"""告警状态列表返回
 
     """
 
@@ -5585,7 +5585,7 @@ class DescribeAlarmStatusListRes(AbstractModel):
 
     @property
     def List(self):
-        """告警状态返回结构
+        r"""告警状态返回结构
         :rtype: list of AlarmStatusData
         """
         return self._List
@@ -5613,7 +5613,7 @@ class DescribeAlarmStatusListRes(AbstractModel):
 
 
 class DescribeAlarmStatusListResponse(AbstractModel):
-    """DescribeAlarmStatusList返回参数结构体
+    r"""DescribeAlarmStatusList返回参数结构体
 
     """
 
@@ -5629,7 +5629,7 @@ class DescribeAlarmStatusListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """告警状态返回结构
+        r"""告警状态返回结构
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmStatusListRes`
         """
         return self._Result
@@ -5640,7 +5640,7 @@ class DescribeAlarmStatusListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5658,7 +5658,7 @@ class DescribeAlarmStatusListResponse(AbstractModel):
 
 
 class DescribeAlarmTypeListRequest(AbstractModel):
-    """DescribeAlarmTypeList请求参数结构体
+    r"""DescribeAlarmTypeList请求参数结构体
 
     """
 
@@ -5677,7 +5677,7 @@ class DescribeAlarmTypeListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -5688,7 +5688,7 @@ class DescribeAlarmTypeListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5699,7 +5699,7 @@ class DescribeAlarmTypeListRequest(AbstractModel):
 
     @property
     def ParentType(self):
-        """一级类型
+        r"""一级类型
         :rtype: str
         """
         return self._ParentType
@@ -5724,7 +5724,7 @@ class DescribeAlarmTypeListRequest(AbstractModel):
 
 
 class DescribeAlarmTypeListRes(AbstractModel):
-    """告警类型列表回包
+    r"""告警类型列表回包
 
     """
 
@@ -5737,7 +5737,7 @@ class DescribeAlarmTypeListRes(AbstractModel):
 
     @property
     def AlarmTypeSet(self):
-        """告警类型查询列表
+        r"""告警类型查询列表
         :rtype: list of AlarmTypeDetailInfo
         """
         return self._AlarmTypeSet
@@ -5765,7 +5765,7 @@ class DescribeAlarmTypeListRes(AbstractModel):
 
 
 class DescribeAlarmTypeListResponse(AbstractModel):
-    """DescribeAlarmTypeList返回参数结构体
+    r"""DescribeAlarmTypeList返回参数结构体
 
     """
 
@@ -5781,7 +5781,7 @@ class DescribeAlarmTypeListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """告警类型列表查询
+        r"""告警类型列表查询
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmTypeListRes`
         """
         return self._Result
@@ -5792,7 +5792,7 @@ class DescribeAlarmTypeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5810,7 +5810,7 @@ class DescribeAlarmTypeListResponse(AbstractModel):
 
 
 class DescribeApplicationListRequest(AbstractModel):
-    """DescribeApplicationList请求参数结构体
+    r"""DescribeApplicationList请求参数结构体
 
     """
 
@@ -5835,7 +5835,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id，本次查询返回的应用均关联至该空间
+        r"""项目空间id，本次查询返回的应用均关联至该空间
         :rtype: int
         """
         return self._WorkspaceId
@@ -5846,7 +5846,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5857,7 +5857,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id数组，可选，填了则表示根据id批量查询
+        r"""应用id数组，可选，填了则表示根据id批量查询
         :rtype: list of int non-negative
         """
         return self._ApplicationId
@@ -5868,7 +5868,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """请求页号
+        r"""请求页号
         :rtype: int
         """
         return self._PageNumber
@@ -5879,7 +5879,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页容量，默认为10
+        r"""页容量，默认为10
         :rtype: int
         """
         return self._PageSize
@@ -5906,7 +5906,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
 
 class DescribeApplicationListResponse(AbstractModel):
-    """DescribeApplicationList返回参数结构体
+    r"""DescribeApplicationList返回参数结构体
 
     """
 
@@ -5922,7 +5922,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """应用列表
+        r"""应用列表
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationList`
         """
         return self._Result
@@ -5933,7 +5933,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5951,7 +5951,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
 
 class DescribeBuildingListRequest(AbstractModel):
-    """DescribeBuildingList请求参数结构体
+    r"""DescribeBuildingList请求参数结构体
 
     """
 
@@ -5973,7 +5973,7 @@ class DescribeBuildingListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -5984,7 +5984,7 @@ class DescribeBuildingListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -5995,7 +5995,7 @@ class DescribeBuildingListRequest(AbstractModel):
 
     @property
     def HasModel(self):
-        """是否有模型文件
+        r"""是否有模型文件
         :rtype: bool
         """
         return self._HasModel
@@ -6006,7 +6006,7 @@ class DescribeBuildingListRequest(AbstractModel):
 
     @property
     def SpaceCodes(self):
-        """空间编码
+        r"""空间编码
         :rtype: list of str
         """
         return self._SpaceCodes
@@ -6032,7 +6032,7 @@ class DescribeBuildingListRequest(AbstractModel):
 
 
 class DescribeBuildingListResponse(AbstractModel):
-    """DescribeBuildingList返回参数结构体
+    r"""DescribeBuildingList返回参数结构体
 
     """
 
@@ -6048,7 +6048,7 @@ class DescribeBuildingListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询建筑列表出参
+        r"""查询建筑列表出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BuildingListRes`
         """
         return self._Result
@@ -6059,7 +6059,7 @@ class DescribeBuildingListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6077,7 +6077,7 @@ class DescribeBuildingListResponse(AbstractModel):
 
 
 class DescribeBuildingModelRequest(AbstractModel):
-    """DescribeBuildingModel请求参数结构体
+    r"""DescribeBuildingModel请求参数结构体
 
     """
 
@@ -6096,7 +6096,7 @@ class DescribeBuildingModelRequest(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -6107,7 +6107,7 @@ class DescribeBuildingModelRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -6118,7 +6118,7 @@ class DescribeBuildingModelRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6143,7 +6143,7 @@ class DescribeBuildingModelRequest(AbstractModel):
 
 
 class DescribeBuildingModelResponse(AbstractModel):
-    """DescribeBuildingModel返回参数结构体
+    r"""DescribeBuildingModel返回参数结构体
 
     """
 
@@ -6159,7 +6159,7 @@ class DescribeBuildingModelResponse(AbstractModel):
 
     @property
     def Result(self):
-        """建模模型信息出参
+        r"""建模模型信息出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BuildingModelRes`
         """
         return self._Result
@@ -6170,7 +6170,7 @@ class DescribeBuildingModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6188,7 +6188,7 @@ class DescribeBuildingModelResponse(AbstractModel):
 
 
 class DescribeBuildingProfileRequest(AbstractModel):
-    """DescribeBuildingProfile请求参数结构体
+    r"""DescribeBuildingProfile请求参数结构体
 
     """
 
@@ -6207,7 +6207,7 @@ class DescribeBuildingProfileRequest(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -6218,7 +6218,7 @@ class DescribeBuildingProfileRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -6229,7 +6229,7 @@ class DescribeBuildingProfileRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6254,7 +6254,7 @@ class DescribeBuildingProfileRequest(AbstractModel):
 
 
 class DescribeBuildingProfileResponse(AbstractModel):
-    """DescribeBuildingProfile返回参数结构体
+    r"""DescribeBuildingProfile返回参数结构体
 
     """
 
@@ -6270,7 +6270,7 @@ class DescribeBuildingProfileResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询建筑信息出参
+        r"""查询建筑信息出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BuildingProfileRes`
         """
         return self._Result
@@ -6281,7 +6281,7 @@ class DescribeBuildingProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6299,7 +6299,7 @@ class DescribeBuildingProfileResponse(AbstractModel):
 
 
 class DescribeCameraExtendInfoRequest(AbstractModel):
-    """DescribeCameraExtendInfo请求参数结构体
+    r"""DescribeCameraExtendInfo请求参数结构体
 
     """
 
@@ -6319,7 +6319,7 @@ class DescribeCameraExtendInfoRequest(AbstractModel):
 
     @property
     def WID(self):
-        """设备的唯一标识
+        r"""设备的唯一标识
 
         :rtype: str
         """
@@ -6331,7 +6331,7 @@ class DescribeCameraExtendInfoRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -6342,7 +6342,7 @@ class DescribeCameraExtendInfoRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6367,7 +6367,7 @@ class DescribeCameraExtendInfoRequest(AbstractModel):
 
 
 class DescribeCameraExtendInfoResponse(AbstractModel):
-    """DescribeCameraExtendInfo返回参数结构体
+    r"""DescribeCameraExtendInfo返回参数结构体
 
     """
 
@@ -6383,7 +6383,7 @@ class DescribeCameraExtendInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        """获取视频扩展信息结果
+        r"""获取视频扩展信息结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.CameraExtendInfoRes`
         """
         return self._Result
@@ -6394,7 +6394,7 @@ class DescribeCameraExtendInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6412,7 +6412,7 @@ class DescribeCameraExtendInfoResponse(AbstractModel):
 
 
 class DescribeCityWorkspaceListRequest(AbstractModel):
-    """DescribeCityWorkspaceList请求参数结构体
+    r"""DescribeCityWorkspaceList请求参数结构体
 
     """
 
@@ -6428,7 +6428,7 @@ class DescribeCityWorkspaceListRequest(AbstractModel):
 
     @property
     def AdministrativeCodeSet(self):
-        """行政区编码集合
+        r"""行政区编码集合
         :rtype: list of str
         """
         return self._AdministrativeCodeSet
@@ -6439,7 +6439,7 @@ class DescribeCityWorkspaceListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6463,7 +6463,7 @@ class DescribeCityWorkspaceListRequest(AbstractModel):
 
 
 class DescribeCityWorkspaceListRes(AbstractModel):
-    """通过城市id查询工作空间列表
+    r"""通过城市id查询工作空间列表
 
     """
 
@@ -6476,7 +6476,7 @@ class DescribeCityWorkspaceListRes(AbstractModel):
 
     @property
     def WorkspaceSet(self):
-        """通过城市id查询工作空间列表结果
+        r"""通过城市id查询工作空间列表结果
         :rtype: list of WorkspaceInfo
         """
         return self._WorkspaceSet
@@ -6504,7 +6504,7 @@ class DescribeCityWorkspaceListRes(AbstractModel):
 
 
 class DescribeCityWorkspaceListResponse(AbstractModel):
-    """DescribeCityWorkspaceList返回参数结构体
+    r"""DescribeCityWorkspaceList返回参数结构体
 
     """
 
@@ -6521,7 +6521,7 @@ class DescribeCityWorkspaceListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """工作空间信息集合
+        r"""工作空间信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRes`
         """
@@ -6533,7 +6533,7 @@ class DescribeCityWorkspaceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6551,7 +6551,7 @@ class DescribeCityWorkspaceListResponse(AbstractModel):
 
 
 class DescribeDeviceGroupListRequest(AbstractModel):
-    """DescribeDeviceGroupList请求参数结构体
+    r"""DescribeDeviceGroupList请求参数结构体
 
     """
 
@@ -6570,7 +6570,7 @@ class DescribeDeviceGroupListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6581,7 +6581,7 @@ class DescribeDeviceGroupListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: int
         """
         return self._WorkspaceId
@@ -6592,7 +6592,7 @@ class DescribeDeviceGroupListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组id, 不传默认全部
+        r"""分组id, 不传默认全部
         :rtype: int
         """
         return self._GroupId
@@ -6617,7 +6617,7 @@ class DescribeDeviceGroupListRequest(AbstractModel):
 
 
 class DescribeDeviceGroupListRes(AbstractModel):
-    """设备分组信息
+    r"""设备分组信息
 
     """
 
@@ -6630,7 +6630,7 @@ class DescribeDeviceGroupListRes(AbstractModel):
 
     @property
     def List(self):
-        """设备分组list
+        r"""设备分组list
         :rtype: list of DescribeGroupInfo
         """
         return self._List
@@ -6658,7 +6658,7 @@ class DescribeDeviceGroupListRes(AbstractModel):
 
 
 class DescribeDeviceGroupListResponse(AbstractModel):
-    """DescribeDeviceGroupList返回参数结构体
+    r"""DescribeDeviceGroupList返回参数结构体
 
     """
 
@@ -6674,7 +6674,7 @@ class DescribeDeviceGroupListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分组信息
+        r"""分组信息
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceGroupListRes`
         """
         return self._Result
@@ -6685,7 +6685,7 @@ class DescribeDeviceGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6703,7 +6703,7 @@ class DescribeDeviceGroupListResponse(AbstractModel):
 
 
 class DescribeDeviceListRequest(AbstractModel):
-    """DescribeDeviceList请求参数结构体
+    r"""DescribeDeviceList请求参数结构体
 
     """
 
@@ -6755,7 +6755,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -6766,7 +6766,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -6777,7 +6777,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -6788,7 +6788,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -6799,7 +6799,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型，非必填
+        r"""设备类型，非必填
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -6810,7 +6810,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def ProductIdSet(self):
-        """产品 pid，非必填
+        r"""产品 pid，非必填
         :rtype: list of int
         """
         return self._ProductIdSet
@@ -6821,7 +6821,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def TagIdSet(self):
-        """设备标签，非必填
+        r"""设备标签，非必填
         :rtype: list of int
         """
         return self._TagIdSet
@@ -6832,7 +6832,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def SpaceCodeSet(self):
-        """空间层级
+        r"""空间层级
         :rtype: list of str
         """
         return self._SpaceCodeSet
@@ -6843,7 +6843,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTagSet(self):
-        """设备标签名，非必填
+        r"""设备标签名，非必填
         :rtype: list of str
         """
         return self._DeviceTagSet
@@ -6854,7 +6854,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备wid,非必填
+        r"""设备wid,非必填
         :rtype: list of str
         """
         return self._WIDSet
@@ -6865,7 +6865,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Field(self):
-        """自定义字段
+        r"""自定义字段
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.CustomField`
         """
         return self._Field
@@ -6876,7 +6876,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def GroupIdSet(self):
-        """分组id列表，非必填
+        r"""分组id列表，非必填
         :rtype: list of int
         """
         return self._GroupIdSet
@@ -6887,7 +6887,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def IsActive(self):
-        """是否激活，默认全部，"1"激活，"0"未激活
+        r"""是否激活，默认全部，"1"激活，"0"未激活
         :rtype: str
         """
         return self._IsActive
@@ -6898,7 +6898,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def IsCamera(self):
-        """是否为摄像头，默认全部，"true"摄像头，"false"非摄像头
+        r"""是否为摄像头，默认全部，"true"摄像头，"false"非摄像头
         :rtype: str
         """
         return self._IsCamera
@@ -6936,7 +6936,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
 
 class DescribeDeviceListRes(AbstractModel):
-    """设备列表查询结果
+    r"""设备列表查询结果
 
     """
 
@@ -6961,7 +6961,7 @@ class DescribeDeviceListRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -6972,7 +6972,7 @@ class DescribeDeviceListRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -6983,7 +6983,7 @@ class DescribeDeviceListRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -6994,7 +6994,7 @@ class DescribeDeviceListRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -7005,7 +7005,7 @@ class DescribeDeviceListRes(AbstractModel):
 
     @property
     def DeviceDataSet(self):
-        """设备信息集合
+        r"""设备信息集合
         :rtype: list of DeviceDataInfo
         """
         return self._DeviceDataSet
@@ -7037,7 +7037,7 @@ class DescribeDeviceListRes(AbstractModel):
 
 
 class DescribeDeviceListResponse(AbstractModel):
-    """DescribeDeviceList返回参数结构体
+    r"""DescribeDeviceList返回参数结构体
 
     """
 
@@ -7053,7 +7053,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询设备列表结果
+        r"""查询设备列表结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceListRes`
         """
         return self._Result
@@ -7064,7 +7064,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7082,7 +7082,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
 
 class DescribeDeviceShadowListRequest(AbstractModel):
-    """DescribeDeviceShadowList请求参数结构体
+    r"""DescribeDeviceShadowList请求参数结构体
 
     """
 
@@ -7122,7 +7122,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -7133,7 +7133,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """WID
+        r"""WID
         :rtype: list of str
         """
         return self._WIDSet
@@ -7144,7 +7144,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页
+        r"""分页查询，第几页
         :rtype: int
         """
         return self._PageNumber
@@ -7155,7 +7155,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -7166,7 +7166,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7177,7 +7177,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型code
+        r"""设备类型code
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -7188,7 +7188,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def ProductIdSet(self):
-        """产品 pid
+        r"""产品 pid
         :rtype: list of int
         """
         return self._ProductIdSet
@@ -7199,7 +7199,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def TagIdSet(self):
-        """设备标签id
+        r"""设备标签id
         :rtype: list of int
         """
         return self._TagIdSet
@@ -7210,7 +7210,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def SpaceCodeSet(self):
-        """空间层级，（支持空间多层，比如具体建筑、具体楼层）
+        r"""空间层级，（支持空间多层，比如具体建筑、具体楼层）
         :rtype: list of str
         """
         return self._SpaceCodeSet
@@ -7221,7 +7221,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     @property
     def DeviceTagSet(self):
-        """设备标签名
+        r"""设备标签名
         :rtype: list of str
         """
         return self._DeviceTagSet
@@ -7253,7 +7253,7 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
 
 class DescribeDeviceShadowListResponse(AbstractModel):
-    """DescribeDeviceShadowList返回参数结构体
+    r"""DescribeDeviceShadowList返回参数结构体
 
     """
 
@@ -7269,7 +7269,7 @@ class DescribeDeviceShadowListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """获取设备影子结果
+        r"""获取设备影子结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceShadowRes`
         """
         return self._Result
@@ -7280,7 +7280,7 @@ class DescribeDeviceShadowListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7298,7 +7298,7 @@ class DescribeDeviceShadowListResponse(AbstractModel):
 
 
 class DescribeDeviceStatusListRequest(AbstractModel):
-    """DescribeDeviceStatusList请求参数结构体
+    r"""DescribeDeviceStatusList请求参数结构体
 
     """
 
@@ -7351,7 +7351,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -7362,7 +7362,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7373,7 +7373,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -7384,7 +7384,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -7395,7 +7395,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型
+        r"""设备类型
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -7406,7 +7406,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def ProductIdSet(self):
-        """产品 pid
+        r"""产品 pid
         :rtype: list of int
         """
         return self._ProductIdSet
@@ -7417,7 +7417,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def TagIdSet(self):
-        """设备标签id
+        r"""设备标签id
 
         :rtype: list of int
         """
@@ -7429,7 +7429,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def SpaceCodeSet(self):
-        """空间位置（支持空间多层，比如具体建筑、具体楼层）
+        r"""空间位置（支持空间多层，比如具体建筑、具体楼层）
         :rtype: list of str
         """
         return self._SpaceCodeSet
@@ -7440,7 +7440,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def WIDSet(self):
-        """设备编号列表
+        r"""设备编号列表
 
         :rtype: list of str
         """
@@ -7452,7 +7452,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def DeviceTagSet(self):
-        """设备标签名，非必填
+        r"""设备标签名，非必填
         :rtype: list of str
         """
         return self._DeviceTagSet
@@ -7463,7 +7463,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def DeviceStatusSet(self):
-        """通信在/离线状态（online=normal+fault、offline）
+        r"""通信在/离线状态（online=normal+fault、offline）
         :rtype: list of str
         """
         return self._DeviceStatusSet
@@ -7474,7 +7474,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """设备业务状态
+        r"""设备业务状态
 （正常-normal、故障-fault、离线-offline）
 
         :rtype: list of str
@@ -7487,7 +7487,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
     @property
     def IsAlive(self):
-        """推流状态，推流中-true，未推流-false 仅摄像头有的状态
+        r"""推流状态，推流中-true，未推流-false 仅摄像头有的状态
         :rtype: list of bool
         """
         return self._IsAlive
@@ -7522,7 +7522,7 @@ class DescribeDeviceStatusListRequest(AbstractModel):
 
 
 class DescribeDeviceStatusListResponse(AbstractModel):
-    """DescribeDeviceStatusList返回参数结构体
+    r"""DescribeDeviceStatusList返回参数结构体
 
     """
 
@@ -7538,7 +7538,7 @@ class DescribeDeviceStatusListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询设备状态结果
+        r"""查询设备状态结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceStatusRes`
         """
         return self._Result
@@ -7549,7 +7549,7 @@ class DescribeDeviceStatusListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7567,7 +7567,7 @@ class DescribeDeviceStatusListResponse(AbstractModel):
 
 
 class DescribeDeviceStatusStatRequest(AbstractModel):
-    """DescribeDeviceStatusStat请求参数结构体
+    r"""DescribeDeviceStatusStat请求参数结构体
 
     """
 
@@ -7592,7 +7592,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
     @property
     def Level(self):
-        """所属空间地理层级，必填。0表示查询所有层级（1、2）的设备状态，1表示楼栋，2表示楼层
+        r"""所属空间地理层级，必填。0表示查询所有层级（1、2）的设备状态，1表示楼栋，2表示楼层
         :rtype: int
         """
         return self._Level
@@ -7603,7 +7603,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -7614,7 +7614,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7625,7 +7625,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
     @property
     def SpaceCodeSet(self):
-        """空间位置，非必填。为空表示查询所有（1，2）层级
+        r"""空间位置，非必填。为空表示查询所有（1，2）层级
         :rtype: list of str
         """
         return self._SpaceCodeSet
@@ -7636,7 +7636,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型，非必填。为空表示查询所有设备类型
+        r"""设备类型，非必填。为空表示查询所有设备类型
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -7663,7 +7663,7 @@ class DescribeDeviceStatusStatRequest(AbstractModel):
 
 
 class DescribeDeviceStatusStatResponse(AbstractModel):
-    """DescribeDeviceStatusStat返回参数结构体
+    r"""DescribeDeviceStatusStat返回参数结构体
 
     """
 
@@ -7679,7 +7679,7 @@ class DescribeDeviceStatusStatResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备状态统计结果
+        r"""设备状态统计结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceStatusStatRes`
         """
         return self._Result
@@ -7690,7 +7690,7 @@ class DescribeDeviceStatusStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7708,7 +7708,7 @@ class DescribeDeviceStatusStatResponse(AbstractModel):
 
 
 class DescribeDeviceTagListRequest(AbstractModel):
-    """DescribeDeviceTagList请求参数结构体
+    r"""DescribeDeviceTagList请求参数结构体
 
     """
 
@@ -7730,7 +7730,7 @@ class DescribeDeviceTagListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -7741,7 +7741,7 @@ class DescribeDeviceTagListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -7752,7 +7752,7 @@ class DescribeDeviceTagListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -7763,7 +7763,7 @@ class DescribeDeviceTagListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7789,7 +7789,7 @@ class DescribeDeviceTagListRequest(AbstractModel):
 
 
 class DescribeDeviceTagListResponse(AbstractModel):
-    """DescribeDeviceTagList返回参数结构体
+    r"""DescribeDeviceTagList返回参数结构体
 
     """
 
@@ -7805,7 +7805,7 @@ class DescribeDeviceTagListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备标签查询结果
+        r"""设备标签查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceTagRes`
         """
         return self._Result
@@ -7816,7 +7816,7 @@ class DescribeDeviceTagListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7834,7 +7834,7 @@ class DescribeDeviceTagListResponse(AbstractModel):
 
 
 class DescribeDeviceTypeListRequest(AbstractModel):
-    """DescribeDeviceTypeList请求参数结构体
+    r"""DescribeDeviceTypeList请求参数结构体
 
     """
 
@@ -7853,7 +7853,7 @@ class DescribeDeviceTypeListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -7864,7 +7864,7 @@ class DescribeDeviceTypeListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7875,7 +7875,7 @@ class DescribeDeviceTypeListRequest(AbstractModel):
 
     @property
     def Flag(self):
-        """默认0只拉取设备列表关联的设备类型列表；1拉取空间下所有的设备类型列表
+        r"""默认0只拉取设备列表关联的设备类型列表；1拉取空间下所有的设备类型列表
         :rtype: int
         """
         return self._Flag
@@ -7900,7 +7900,7 @@ class DescribeDeviceTypeListRequest(AbstractModel):
 
 
 class DescribeDeviceTypeListResponse(AbstractModel):
-    """DescribeDeviceTypeList返回参数结构体
+    r"""DescribeDeviceTypeList返回参数结构体
 
     """
 
@@ -7916,7 +7916,7 @@ class DescribeDeviceTypeListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备的设备类型列表
+        r"""设备的设备类型列表
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceTypeSet`
         """
         return self._Result
@@ -7927,7 +7927,7 @@ class DescribeDeviceTypeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7945,7 +7945,7 @@ class DescribeDeviceTypeListResponse(AbstractModel):
 
 
 class DescribeEdgeApplicationTokenRequest(AbstractModel):
-    """DescribeEdgeApplicationToken请求参数结构体
+    r"""DescribeEdgeApplicationToken请求参数结构体
 
     """
 
@@ -7961,7 +7961,7 @@ class DescribeEdgeApplicationTokenRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -7972,7 +7972,7 @@ class DescribeEdgeApplicationTokenRequest(AbstractModel):
 
     @property
     def Refresh(self):
-        """是否刷新token，默认为false
+        r"""是否刷新token，默认为false
         :rtype: bool
         """
         return self._Refresh
@@ -7996,7 +7996,7 @@ class DescribeEdgeApplicationTokenRequest(AbstractModel):
 
 
 class DescribeEdgeApplicationTokenResponse(AbstractModel):
-    """DescribeEdgeApplicationToken返回参数结构体
+    r"""DescribeEdgeApplicationToken返回参数结构体
 
     """
 
@@ -8012,7 +8012,7 @@ class DescribeEdgeApplicationTokenResponse(AbstractModel):
 
     @property
     def Result(self):
-        """边缘应用令牌信息	
+        r"""边缘应用令牌信息	
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationTokenInfo`
         """
         return self._Result
@@ -8023,7 +8023,7 @@ class DescribeEdgeApplicationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8041,7 +8041,7 @@ class DescribeEdgeApplicationTokenResponse(AbstractModel):
 
 
 class DescribeElementProfilePageRequest(AbstractModel):
-    """DescribeElementProfilePage请求参数结构体
+    r"""DescribeElementProfilePage请求参数结构体
 
     """
 
@@ -8087,7 +8087,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -8098,7 +8098,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -8109,7 +8109,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页容量
+        r"""页容量
         :rtype: int
         """
         return self._PageSize
@@ -8120,7 +8120,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -8131,7 +8131,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -8142,7 +8142,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def ParentElementIds(self):
-        """父级构件id
+        r"""父级构件id
         :rtype: list of str
         """
         return self._ParentElementIds
@@ -8153,7 +8153,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def Level(self):
-        """空间层级
+        r"""空间层级
         :rtype: int
         """
         return self._Level
@@ -8164,7 +8164,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def SpaceTypeCode(self):
-        """空间分类代码
+        r"""空间分类代码
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -8175,7 +8175,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def EntityTypes(self):
-        """构件类型
+        r"""构件类型
         :rtype: list of str
         """
         return self._EntityTypes
@@ -8186,7 +8186,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def IncludeDelete(self):
-        """是否包含已删除构件
+        r"""是否包含已删除构件
         :rtype: bool
         """
         return self._IncludeDelete
@@ -8197,7 +8197,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """时间范围-开始
+        r"""时间范围-开始
         :rtype: int
         """
         return self._StartTime
@@ -8208,7 +8208,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """时间范围-结束
+        r"""时间范围-结束
         :rtype: int
         """
         return self._EndTime
@@ -8242,7 +8242,7 @@ class DescribeElementProfilePageRequest(AbstractModel):
 
 
 class DescribeElementProfilePageResponse(AbstractModel):
-    """DescribeElementProfilePage返回参数结构体
+    r"""DescribeElementProfilePage返回参数结构体
 
     """
 
@@ -8258,7 +8258,7 @@ class DescribeElementProfilePageResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页查询构件出参
+        r"""分页查询构件出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfilePageRes`
         """
         return self._Result
@@ -8269,7 +8269,7 @@ class DescribeElementProfilePageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8287,7 +8287,7 @@ class DescribeElementProfilePageResponse(AbstractModel):
 
 
 class DescribeElementProfileTreeRequest(AbstractModel):
-    """DescribeElementProfileTree请求参数结构体
+    r"""DescribeElementProfileTree请求参数结构体
 
     """
 
@@ -8315,7 +8315,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -8326,7 +8326,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -8337,7 +8337,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -8348,7 +8348,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def ElementId(self):
-        """父级构件id
+        r"""父级构件id
         :rtype: str
         """
         return self._ElementId
@@ -8359,7 +8359,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def Level(self):
-        """构件级别
+        r"""构件级别
         :rtype: int
         """
         return self._Level
@@ -8370,7 +8370,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
     @property
     def SpaceTypeCode(self):
-        """空间分类代码
+        r"""空间分类代码
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -8398,7 +8398,7 @@ class DescribeElementProfileTreeRequest(AbstractModel):
 
 
 class DescribeElementProfileTreeResponse(AbstractModel):
-    """DescribeElementProfileTree返回参数结构体
+    r"""DescribeElementProfileTree返回参数结构体
 
     """
 
@@ -8414,7 +8414,7 @@ class DescribeElementProfileTreeResponse(AbstractModel):
 
     @property
     def Result(self):
-        """构件树出参
+        r"""构件树出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfileTreeRes`
         """
         return self._Result
@@ -8425,7 +8425,7 @@ class DescribeElementProfileTreeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8443,7 +8443,7 @@ class DescribeElementProfileTreeResponse(AbstractModel):
 
 
 class DescribeEventListRequest(AbstractModel):
-    """DescribeEventList请求参数结构体
+    r"""DescribeEventList请求参数结构体
 
     """
 
@@ -8471,7 +8471,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -8482,7 +8482,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -8493,7 +8493,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -8504,7 +8504,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -8515,7 +8515,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        """事件触发类型，(app, device, timer)
+        r"""事件触发类型，(app, device, timer)
         :rtype: str
         """
         return self._TriggerType
@@ -8526,7 +8526,7 @@ class DescribeEventListRequest(AbstractModel):
 
     @property
     def IdSet(self):
-        """事件id详情
+        r"""事件id详情
         :rtype: list of int
         """
         return self._IdSet
@@ -8554,7 +8554,7 @@ class DescribeEventListRequest(AbstractModel):
 
 
 class DescribeEventListRes(AbstractModel):
-    """事件列表查询结果
+    r"""事件列表查询结果
 
     """
 
@@ -8579,7 +8579,7 @@ class DescribeEventListRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -8590,7 +8590,7 @@ class DescribeEventListRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -8601,7 +8601,7 @@ class DescribeEventListRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -8612,7 +8612,7 @@ class DescribeEventListRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -8623,7 +8623,7 @@ class DescribeEventListRes(AbstractModel):
 
     @property
     def EventDetailSet(self):
-        """事件信息列表
+        r"""事件信息列表
         :rtype: list of EventDetail
         """
         return self._EventDetailSet
@@ -8655,7 +8655,7 @@ class DescribeEventListRes(AbstractModel):
 
 
 class DescribeEventListResponse(AbstractModel):
-    """DescribeEventList返回参数结构体
+    r"""DescribeEventList返回参数结构体
 
     """
 
@@ -8671,7 +8671,7 @@ class DescribeEventListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """事件列表查询结果
+        r"""事件列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEventListRes`
         """
         return self._Result
@@ -8682,7 +8682,7 @@ class DescribeEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8700,7 +8700,7 @@ class DescribeEventListResponse(AbstractModel):
 
 
 class DescribeFileDownloadURLRequest(AbstractModel):
-    """DescribeFileDownloadURL请求参数结构体
+    r"""DescribeFileDownloadURL请求参数结构体
 
     """
 
@@ -8719,7 +8719,7 @@ class DescribeFileDownloadURLRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -8730,7 +8730,7 @@ class DescribeFileDownloadURLRequest(AbstractModel):
 
     @property
     def FileId(self):
-        """文件Id
+        r"""文件Id
         :rtype: str
         """
         return self._FileId
@@ -8741,7 +8741,7 @@ class DescribeFileDownloadURLRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -8766,7 +8766,7 @@ class DescribeFileDownloadURLRequest(AbstractModel):
 
 
 class DescribeFileDownloadURLResponse(AbstractModel):
-    """DescribeFileDownloadURL返回参数结构体
+    r"""DescribeFileDownloadURL返回参数结构体
 
     """
 
@@ -8782,7 +8782,7 @@ class DescribeFileDownloadURLResponse(AbstractModel):
 
     @property
     def Result(self):
-        """文件下载URL地址
+        r"""文件下载URL地址
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.FileDownloadURL`
         """
         return self._Result
@@ -8793,7 +8793,7 @@ class DescribeFileDownloadURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8811,7 +8811,7 @@ class DescribeFileDownloadURLResponse(AbstractModel):
 
 
 class DescribeFileUploadURLRequest(AbstractModel):
-    """DescribeFileUploadURL请求参数结构体
+    r"""DescribeFileUploadURL请求参数结构体
 
     """
 
@@ -8846,7 +8846,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -8857,7 +8857,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名称
+        r"""文件名称
         :rtype: str
         """
         return self._FileName
@@ -8868,7 +8868,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def FileSize(self):
-        """文件大小
+        r"""文件大小
         :rtype: int
         """
         return self._FileSize
@@ -8879,7 +8879,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -8890,7 +8890,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def FileMD5(self):
-        """文件MD5
+        r"""文件MD5
         :rtype: str
         """
         return self._FileMD5
@@ -8901,7 +8901,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def SaveType(self):
-        """存储类型
+        r"""存储类型
         :rtype: str
         """
         return self._SaveType
@@ -8912,7 +8912,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def FileExpireTime(self):
-        """过期时间，过期时间戳，精确到秒的时间戳，noExpireFlag为false时必填
+        r"""过期时间，过期时间戳，精确到秒的时间戳，noExpireFlag为false时必填
 
         :rtype: int
         """
@@ -8924,7 +8924,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
     @property
     def NoExpireFlag(self):
-        """永不过期标记
+        r"""永不过期标记
         :rtype: bool
         """
         return self._NoExpireFlag
@@ -8954,7 +8954,7 @@ class DescribeFileUploadURLRequest(AbstractModel):
 
 
 class DescribeFileUploadURLResponse(AbstractModel):
-    """DescribeFileUploadURL返回参数结构体
+    r"""DescribeFileUploadURL返回参数结构体
 
     """
 
@@ -8970,7 +8970,7 @@ class DescribeFileUploadURLResponse(AbstractModel):
 
     @property
     def Result(self):
-        """获取文件上传地址结果
+        r"""获取文件上传地址结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.FileUploadURL`
         """
         return self._Result
@@ -8981,7 +8981,7 @@ class DescribeFileUploadURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8999,7 +8999,7 @@ class DescribeFileUploadURLResponse(AbstractModel):
 
 
 class DescribeGroupInfo(AbstractModel):
-    """分组信息实体类
+    r"""分组信息实体类
 
     """
 
@@ -9021,7 +9021,7 @@ class DescribeGroupInfo(AbstractModel):
 
     @property
     def Id(self):
-        """分组
+        r"""分组
         :rtype: int
         """
         return self._Id
@@ -9032,7 +9032,7 @@ class DescribeGroupInfo(AbstractModel):
 
     @property
     def Name(self):
-        """设备分组名称
+        r"""设备分组名称
         :rtype: str
         """
         return self._Name
@@ -9043,7 +9043,7 @@ class DescribeGroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -9054,7 +9054,7 @@ class DescribeGroupInfo(AbstractModel):
 
     @property
     def ParentId(self):
-        """分组父级ID
+        r"""分组父级ID
         :rtype: int
         """
         return self._ParentId
@@ -9080,7 +9080,7 @@ class DescribeGroupInfo(AbstractModel):
 
 
 class DescribeInterfaceListRequest(AbstractModel):
-    """DescribeInterfaceList请求参数结构体
+    r"""DescribeInterfaceList请求参数结构体
 
     """
 
@@ -9108,7 +9108,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -9119,7 +9119,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """请求页号
+        r"""请求页号
         :rtype: int
         """
         return self._PageNumber
@@ -9130,7 +9130,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """请求页容量，默认全量返回
+        r"""请求页容量，默认全量返回
         :rtype: int
         """
         return self._PageSize
@@ -9141,7 +9141,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """查询关键字
+        r"""查询关键字
         :rtype: str
         """
         return self._Keyword
@@ -9152,7 +9152,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def Style(self):
-        """接口方式 1.http 2消息通知服务
+        r"""接口方式 1.http 2消息通知服务
         :rtype: list of int non-negative
         """
         return self._Style
@@ -9163,7 +9163,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务 8.3DTiles服务
+        r"""接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务 8.3DTiles服务
         :rtype: list of int non-negative
         """
         return self._Type
@@ -9191,7 +9191,7 @@ class DescribeInterfaceListRequest(AbstractModel):
 
 
 class DescribeInterfaceListResponse(AbstractModel):
-    """DescribeInterfaceList返回参数结构体
+    r"""DescribeInterfaceList返回参数结构体
 
     """
 
@@ -9207,7 +9207,7 @@ class DescribeInterfaceListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API列表
+        r"""API列表
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApiInfoList`
         """
         return self._Result
@@ -9218,7 +9218,7 @@ class DescribeInterfaceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9236,7 +9236,7 @@ class DescribeInterfaceListResponse(AbstractModel):
 
 
 class DescribeLinkRuleListRequest(AbstractModel):
-    """DescribeLinkRuleList请求参数结构体
+    r"""DescribeLinkRuleList请求参数结构体
 
     """
 
@@ -9264,7 +9264,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -9275,7 +9275,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，必传，大于0
+        r"""分页查询，第几页，必传，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -9286,7 +9286,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，必传大于0
+        r"""每页条数，必传大于0
         :rtype: int
         """
         return self._PageSize
@@ -9297,7 +9297,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -9308,7 +9308,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        """事件触发类型
+        r"""事件触发类型
         :rtype: str
         """
         return self._TriggerType
@@ -9319,7 +9319,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
     @property
     def IdSet(self):
-        """联动id
+        r"""联动id
         :rtype: list of int
         """
         return self._IdSet
@@ -9347,7 +9347,7 @@ class DescribeLinkRuleListRequest(AbstractModel):
 
 
 class DescribeLinkRuleListRes(AbstractModel):
-    """联动规则列表查询结果
+    r"""联动规则列表查询结果
 
     """
 
@@ -9372,7 +9372,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -9383,7 +9383,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -9394,7 +9394,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -9405,7 +9405,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -9416,7 +9416,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
     @property
     def LinkRuleSet(self):
-        """联动规则列表
+        r"""联动规则列表
         :rtype: list of LinkRuleInfo
         """
         return self._LinkRuleSet
@@ -9448,7 +9448,7 @@ class DescribeLinkRuleListRes(AbstractModel):
 
 
 class DescribeLinkRuleListResponse(AbstractModel):
-    """DescribeLinkRuleList返回参数结构体
+    r"""DescribeLinkRuleList返回参数结构体
 
     """
 
@@ -9464,7 +9464,7 @@ class DescribeLinkRuleListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """联动规则列表查询结果
+        r"""联动规则列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeLinkRuleListRes`
         """
         return self._Result
@@ -9475,7 +9475,7 @@ class DescribeLinkRuleListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9493,7 +9493,7 @@ class DescribeLinkRuleListResponse(AbstractModel):
 
 
 class DescribeModelListRequest(AbstractModel):
-    """DescribeModelList请求参数结构体
+    r"""DescribeModelList请求参数结构体
 
     """
 
@@ -9524,7 +9524,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -9535,7 +9535,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页，大于0
+        r"""分页查询，第几页，大于0
         :rtype: int
         """
         return self._PageNumber
@@ -9546,7 +9546,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，大于0
+        r"""每页条数，大于0
         :rtype: int
         """
         return self._PageSize
@@ -9557,7 +9557,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -9568,7 +9568,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型
+        r"""设备类型
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -9579,7 +9579,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def ProductIdSet(self):
-        """产品 pid
+        r"""产品 pid
         :rtype: list of int
         """
         return self._ProductIdSet
@@ -9590,7 +9590,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def ModelIdSet(self):
-        """模型id
+        r"""模型id
         :rtype: list of str
         """
         return self._ModelIdSet
@@ -9619,7 +9619,7 @@ class DescribeModelListRequest(AbstractModel):
 
 
 class DescribeModelListResponse(AbstractModel):
-    """DescribeModelList返回参数结构体
+    r"""DescribeModelList返回参数结构体
 
     """
 
@@ -9635,7 +9635,7 @@ class DescribeModelListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """模型列表查询结果
+        r"""模型列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ModelSet`
         """
         return self._Result
@@ -9646,7 +9646,7 @@ class DescribeModelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9664,7 +9664,7 @@ class DescribeModelListResponse(AbstractModel):
 
 
 class DescribeProductListRequest(AbstractModel):
-    """DescribeProductList请求参数结构体
+    r"""DescribeProductList请求参数结构体
 
     """
 
@@ -9695,7 +9695,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -9706,7 +9706,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """分页查询，第几页
+        r"""分页查询，第几页
         :rtype: int
         """
         return self._PageNumber
@@ -9717,7 +9717,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数，大于0
+        r"""每页条数，大于0
         :rtype: int
         """
         return self._PageSize
@@ -9728,7 +9728,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -9739,7 +9739,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def DeviceTypeSet(self):
-        """设备类型
+        r"""设备类型
         :rtype: list of str
         """
         return self._DeviceTypeSet
@@ -9750,7 +9750,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def ProductIdSet(self):
-        """产品 pid
+        r"""产品 pid
         :rtype: list of int
         """
         return self._ProductIdSet
@@ -9761,7 +9761,7 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def ModelIdSet(self):
-        """模型id
+        r"""模型id
         :rtype: list of str
         """
         return self._ModelIdSet
@@ -9790,7 +9790,7 @@ class DescribeProductListRequest(AbstractModel):
 
 
 class DescribeProductListResponse(AbstractModel):
-    """DescribeProductList返回参数结构体
+    r"""DescribeProductList返回参数结构体
 
     """
 
@@ -9806,7 +9806,7 @@ class DescribeProductListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """产品列表查询结果
+        r"""产品列表查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ProductSet`
         """
         return self._Result
@@ -9817,7 +9817,7 @@ class DescribeProductListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9835,7 +9835,7 @@ class DescribeProductListResponse(AbstractModel):
 
 
 class DescribePropertyListRequest(AbstractModel):
-    """DescribePropertyList请求参数结构体
+    r"""DescribePropertyList请求参数结构体
 
     """
 
@@ -9857,7 +9857,7 @@ class DescribePropertyListRequest(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -9868,7 +9868,7 @@ class DescribePropertyListRequest(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -9879,7 +9879,7 @@ class DescribePropertyListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -9890,7 +9890,7 @@ class DescribePropertyListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -9916,7 +9916,7 @@ class DescribePropertyListRequest(AbstractModel):
 
 
 class DescribePropertyListResponse(AbstractModel):
-    """DescribePropertyList返回参数结构体
+    r"""DescribePropertyList返回参数结构体
 
     """
 
@@ -9932,7 +9932,7 @@ class DescribePropertyListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """构件属性信息出参
+        r"""构件属性信息出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementPropertyRes`
         """
         return self._Result
@@ -9943,7 +9943,7 @@ class DescribePropertyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9961,7 +9961,7 @@ class DescribePropertyListResponse(AbstractModel):
 
 
 class DescribeRuleDetailRequest(AbstractModel):
-    """DescribeRuleDetail请求参数结构体
+    r"""DescribeRuleDetail请求参数结构体
 
     """
 
@@ -9980,7 +9980,7 @@ class DescribeRuleDetailRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -9991,7 +9991,7 @@ class DescribeRuleDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        """联动id
+        r"""联动id
         :rtype: str
         """
         return self._Id
@@ -10002,7 +10002,7 @@ class DescribeRuleDetailRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10027,7 +10027,7 @@ class DescribeRuleDetailRequest(AbstractModel):
 
 
 class DescribeRuleDetailResponse(AbstractModel):
-    """DescribeRuleDetail返回参数结构体
+    r"""DescribeRuleDetail返回参数结构体
 
     """
 
@@ -10043,7 +10043,7 @@ class DescribeRuleDetailResponse(AbstractModel):
 
     @property
     def Result(self):
-        """规则详情查询结果
+        r"""规则详情查询结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.RuleDetailRes`
         """
         return self._Result
@@ -10054,7 +10054,7 @@ class DescribeRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10072,7 +10072,7 @@ class DescribeRuleDetailResponse(AbstractModel):
 
 
 class DescribeSceneListRequest(AbstractModel):
-    """DescribeSceneList请求参数结构体
+    r"""DescribeSceneList请求参数结构体
 
     """
 
@@ -10088,7 +10088,7 @@ class DescribeSceneListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -10099,7 +10099,7 @@ class DescribeSceneListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10123,7 +10123,7 @@ class DescribeSceneListRequest(AbstractModel):
 
 
 class DescribeSceneListResponse(AbstractModel):
-    """DescribeSceneList返回参数结构体
+    r"""DescribeSceneList返回参数结构体
 
     """
 
@@ -10139,7 +10139,7 @@ class DescribeSceneListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """场景列表出参
+        r"""场景列表出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SceneListRes`
         """
         return self._Result
@@ -10150,7 +10150,7 @@ class DescribeSceneListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10168,7 +10168,7 @@ class DescribeSceneListResponse(AbstractModel):
 
 
 class DescribeSpaceDeviceIdListRequest(AbstractModel):
-    """DescribeSpaceDeviceIdList请求参数结构体
+    r"""DescribeSpaceDeviceIdList请求参数结构体
 
     """
 
@@ -10196,7 +10196,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def ElementIds(self):
-        """构件id列表
+        r"""构件id列表
         :rtype: list of str
         """
         return self._ElementIds
@@ -10207,7 +10207,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def IsCascade(self):
-        """是否级联
+        r"""是否级联
         :rtype: bool
         """
         return self._IsCascade
@@ -10218,7 +10218,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -10229,7 +10229,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -10240,7 +10240,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页容量
+        r"""页容量
         :rtype: int
         """
         return self._PageSize
@@ -10251,7 +10251,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10279,7 +10279,7 @@ class DescribeSpaceDeviceIdListRequest(AbstractModel):
 
 
 class DescribeSpaceDeviceIdListResponse(AbstractModel):
-    """DescribeSpaceDeviceIdList返回参数结构体
+    r"""DescribeSpaceDeviceIdList返回参数结构体
 
     """
 
@@ -10295,7 +10295,7 @@ class DescribeSpaceDeviceIdListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备ID列表
+        r"""设备ID列表
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDeviceIdListRes`
         """
         return self._Result
@@ -10306,7 +10306,7 @@ class DescribeSpaceDeviceIdListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10324,7 +10324,7 @@ class DescribeSpaceDeviceIdListResponse(AbstractModel):
 
 
 class DescribeSpaceDeviceRelationListRequest(AbstractModel):
-    """DescribeSpaceDeviceRelationList请求参数结构体
+    r"""DescribeSpaceDeviceRelationList请求参数结构体
 
     """
 
@@ -10352,7 +10352,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def ElementIds(self):
-        """构件id列表
+        r"""构件id列表
         :rtype: list of str
         """
         return self._ElementIds
@@ -10363,7 +10363,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def IsCascade(self):
-        """是否级联
+        r"""是否级联
         :rtype: bool
         """
         return self._IsCascade
@@ -10374,7 +10374,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -10385,7 +10385,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -10396,7 +10396,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页容量
+        r"""页容量
         :rtype: int
         """
         return self._PageSize
@@ -10407,7 +10407,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10435,7 +10435,7 @@ class DescribeSpaceDeviceRelationListRequest(AbstractModel):
 
 
 class DescribeSpaceDeviceRelationListResponse(AbstractModel):
-    """DescribeSpaceDeviceRelationList返回参数结构体
+    r"""DescribeSpaceDeviceRelationList返回参数结构体
 
     """
 
@@ -10451,7 +10451,7 @@ class DescribeSpaceDeviceRelationListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询指定空间下设备与构件绑定关系列表出参
+        r"""查询指定空间下设备与构件绑定关系列表出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDeviceRelationRes`
         """
         return self._Result
@@ -10462,7 +10462,7 @@ class DescribeSpaceDeviceRelationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10480,7 +10480,7 @@ class DescribeSpaceDeviceRelationListResponse(AbstractModel):
 
 
 class DescribeSpaceInfoByDeviceIdRequest(AbstractModel):
-    """DescribeSpaceInfoByDeviceId请求参数结构体
+    r"""DescribeSpaceInfoByDeviceId请求参数结构体
 
     """
 
@@ -10499,7 +10499,7 @@ class DescribeSpaceInfoByDeviceIdRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -10510,7 +10510,7 @@ class DescribeSpaceInfoByDeviceIdRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -10521,7 +10521,7 @@ class DescribeSpaceInfoByDeviceIdRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10546,7 +10546,7 @@ class DescribeSpaceInfoByDeviceIdRequest(AbstractModel):
 
 
 class DescribeSpaceInfoByDeviceIdResponse(AbstractModel):
-    """DescribeSpaceInfoByDeviceId返回参数结构体
+    r"""DescribeSpaceInfoByDeviceId返回参数结构体
 
     """
 
@@ -10562,7 +10562,7 @@ class DescribeSpaceInfoByDeviceIdResponse(AbstractModel):
 
     @property
     def Result(self):
-        """设备绑定的空间信息出参
+        r"""设备绑定的空间信息出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceSpaceInfoRes`
         """
         return self._Result
@@ -10573,7 +10573,7 @@ class DescribeSpaceInfoByDeviceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10591,7 +10591,7 @@ class DescribeSpaceInfoByDeviceIdResponse(AbstractModel):
 
 
 class DescribeSpaceRelationByDeviceIdRequest(AbstractModel):
-    """DescribeSpaceRelationByDeviceId请求参数结构体
+    r"""DescribeSpaceRelationByDeviceId请求参数结构体
 
     """
 
@@ -10610,7 +10610,7 @@ class DescribeSpaceRelationByDeviceIdRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -10621,7 +10621,7 @@ class DescribeSpaceRelationByDeviceIdRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -10632,7 +10632,7 @@ class DescribeSpaceRelationByDeviceIdRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10657,7 +10657,7 @@ class DescribeSpaceRelationByDeviceIdRequest(AbstractModel):
 
 
 class DescribeSpaceRelationByDeviceIdResponse(AbstractModel):
-    """DescribeSpaceRelationByDeviceId返回参数结构体
+    r"""DescribeSpaceRelationByDeviceId返回参数结构体
 
     """
 
@@ -10673,7 +10673,7 @@ class DescribeSpaceRelationByDeviceIdResponse(AbstractModel):
 
     @property
     def Result(self):
-        """空间层级关系出参
+        r"""空间层级关系出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceRelationRes`
         """
         return self._Result
@@ -10684,7 +10684,7 @@ class DescribeSpaceRelationByDeviceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10702,7 +10702,7 @@ class DescribeSpaceRelationByDeviceIdResponse(AbstractModel):
 
 
 class DescribeSpaceTypeListRequest(AbstractModel):
-    """DescribeSpaceTypeList请求参数结构体
+    r"""DescribeSpaceTypeList请求参数结构体
 
     """
 
@@ -10724,7 +10724,7 @@ class DescribeSpaceTypeListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间ID
+        r"""项目空间ID
         :rtype: str
         """
         return self._WorkspaceId
@@ -10735,7 +10735,7 @@ class DescribeSpaceTypeListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNumber
@@ -10746,7 +10746,7 @@ class DescribeSpaceTypeListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页容量
+        r"""页容量
         :rtype: int
         """
         return self._PageSize
@@ -10757,7 +10757,7 @@ class DescribeSpaceTypeListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10783,7 +10783,7 @@ class DescribeSpaceTypeListRequest(AbstractModel):
 
 
 class DescribeSpaceTypeListResponse(AbstractModel):
-    """DescribeSpaceTypeList返回参数结构体
+    r"""DescribeSpaceTypeList返回参数结构体
 
     """
 
@@ -10799,7 +10799,7 @@ class DescribeSpaceTypeListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """空间分类列表出参
+        r"""空间分类列表出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceTypeListRes`
         """
         return self._Result
@@ -10810,7 +10810,7 @@ class DescribeSpaceTypeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10828,7 +10828,7 @@ class DescribeSpaceTypeListResponse(AbstractModel):
 
 
 class DescribeTenantBuildingCountAndAreaRequest(AbstractModel):
-    """DescribeTenantBuildingCountAndArea请求参数结构体
+    r"""DescribeTenantBuildingCountAndArea请求参数结构体
 
     """
 
@@ -10844,7 +10844,7 @@ class DescribeTenantBuildingCountAndAreaRequest(AbstractModel):
 
     @property
     def WorkspaceIdList(self):
-        """租户所有工作空间ID列表
+        r"""租户所有工作空间ID列表
         :rtype: list of str
         """
         return self._WorkspaceIdList
@@ -10855,7 +10855,7 @@ class DescribeTenantBuildingCountAndAreaRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10879,7 +10879,7 @@ class DescribeTenantBuildingCountAndAreaRequest(AbstractModel):
 
 
 class DescribeTenantBuildingCountAndAreaResponse(AbstractModel):
-    """DescribeTenantBuildingCountAndArea返回参数结构体
+    r"""DescribeTenantBuildingCountAndArea返回参数结构体
 
     """
 
@@ -10895,7 +10895,7 @@ class DescribeTenantBuildingCountAndAreaResponse(AbstractModel):
 
     @property
     def Result(self):
-        """租户所有项目空间楼栋数量与建筑面积统计结果
+        r"""租户所有项目空间楼栋数量与建筑面积统计结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDataTotalStatsRes`
         """
         return self._Result
@@ -10906,7 +10906,7 @@ class DescribeTenantBuildingCountAndAreaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10924,7 +10924,7 @@ class DescribeTenantBuildingCountAndAreaResponse(AbstractModel):
 
 
 class DescribeTenantDepartmentListRequest(AbstractModel):
-    """DescribeTenantDepartmentList请求参数结构体
+    r"""DescribeTenantDepartmentList请求参数结构体
 
     """
 
@@ -10955,7 +10955,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页页码
+        r"""翻页页码
         :rtype: int
         """
         return self._Offset
@@ -10966,7 +10966,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -10977,7 +10977,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._ApplicationToken
@@ -10988,7 +10988,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def TenantId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._TenantId
@@ -10999,7 +10999,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间戳，单位秒
+        r"""更新时间戳，单位秒
         :rtype: int
         """
         return self._UpdateAt
@@ -11010,7 +11010,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门ID
+        r"""部门ID
         :rtype: str
         """
         return self._DepartmentId
@@ -11021,7 +11021,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        """用户id
+        r"""用户id
         :rtype: str
         """
         return self._Cursor
@@ -11050,7 +11050,7 @@ class DescribeTenantDepartmentListRequest(AbstractModel):
 
 
 class DescribeTenantDepartmentListResponse(AbstractModel):
-    """DescribeTenantDepartmentList返回参数结构体
+    r"""DescribeTenantDepartmentList返回参数结构体
 
     """
 
@@ -11066,7 +11066,7 @@ class DescribeTenantDepartmentListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回数据
+        r"""返回数据
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SsoDepartmentsResult`
         """
         return self._Result
@@ -11077,7 +11077,7 @@ class DescribeTenantDepartmentListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11095,7 +11095,7 @@ class DescribeTenantDepartmentListResponse(AbstractModel):
 
 
 class DescribeTenantUserListRequest(AbstractModel):
-    """DescribeTenantUserList请求参数结构体
+    r"""DescribeTenantUserList请求参数结构体
 
     """
 
@@ -11138,7 +11138,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页页码
+        r"""翻页页码
         :rtype: int
         """
         return self._Offset
@@ -11149,7 +11149,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -11160,7 +11160,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11171,7 +11171,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def TenantId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._TenantId
@@ -11182,7 +11182,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间戳，单位秒
+        r"""更新时间戳，单位秒
         :rtype: int
         """
         return self._UpdateAt
@@ -11193,7 +11193,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门ID
+        r"""部门ID
         :rtype: str
         """
         return self._DepartmentId
@@ -11204,7 +11204,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        """用户id
+        r"""用户id
         :rtype: str
         """
         return self._Cursor
@@ -11215,7 +11215,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0，获取所有数据，1正常启用，2禁用
+        r"""状态，0，获取所有数据，1正常启用，2禁用
         :rtype: int
         """
         return self._Status
@@ -11226,7 +11226,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: str
         """
         return self._WorkspaceId
@@ -11237,7 +11237,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """关键词
+        r"""关键词
         :rtype: str
         """
         return self._Keyword
@@ -11248,7 +11248,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
     @property
     def NoRecursive(self):
-        """是否递归获取子级数据，0需要，1不需要，默认为0
+        r"""是否递归获取子级数据，0需要，1不需要，默认为0
         :rtype: str
         """
         return self._NoRecursive
@@ -11281,7 +11281,7 @@ class DescribeTenantUserListRequest(AbstractModel):
 
 
 class DescribeTenantUserListResponse(AbstractModel):
-    """DescribeTenantUserList返回参数结构体
+    r"""DescribeTenantUserList返回参数结构体
 
     """
 
@@ -11297,7 +11297,7 @@ class DescribeTenantUserListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回数据
+        r"""返回数据
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SsoUserResult`
         """
         return self._Result
@@ -11308,7 +11308,7 @@ class DescribeTenantUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11326,7 +11326,7 @@ class DescribeTenantUserListResponse(AbstractModel):
 
 
 class DescribeVideoCloudRecordRequest(AbstractModel):
-    """DescribeVideoCloudRecord请求参数结构体
+    r"""DescribeVideoCloudRecord请求参数结构体
 
     """
 
@@ -11352,7 +11352,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
     @property
     def WID(self):
-        """设备的唯一标识
+        r"""设备的唯一标识
         :rtype: str
         """
         return self._WID
@@ -11363,7 +11363,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """录像开始时间（s）
+        r"""录像开始时间（s）
         :rtype: int
         """
         return self._StartTime
@@ -11374,7 +11374,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """录像结束时间（s）
+        r"""录像结束时间（s）
 
         :rtype: int
         """
@@ -11386,7 +11386,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -11397,7 +11397,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11424,7 +11424,7 @@ class DescribeVideoCloudRecordRequest(AbstractModel):
 
 
 class DescribeVideoCloudRecordResponse(AbstractModel):
-    """DescribeVideoCloudRecord返回参数结构体
+    r"""DescribeVideoCloudRecord返回参数结构体
 
     """
 
@@ -11440,7 +11440,7 @@ class DescribeVideoCloudRecordResponse(AbstractModel):
 
     @property
     def Result(self):
-        """获取云录像结果
+        r"""获取云录像结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.VideoCloudRecordRes`
         """
         return self._Result
@@ -11451,7 +11451,7 @@ class DescribeVideoCloudRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11469,7 +11469,7 @@ class DescribeVideoCloudRecordResponse(AbstractModel):
 
 
 class DescribeVideoLiveStreamRequest(AbstractModel):
-    """DescribeVideoLiveStream请求参数结构体
+    r"""DescribeVideoLiveStream请求参数结构体
 
     """
 
@@ -11504,7 +11504,7 @@ raw (视频原始帧)
 
     @property
     def WID(self):
-        """设备的唯一标识
+        r"""设备的唯一标识
 
         :rtype: str
         """
@@ -11516,7 +11516,7 @@ raw (视频原始帧)
 
     @property
     def Protocol(self):
-        """枚举如下：
+        r"""枚举如下：
 flv
 rtmp
 hls
@@ -11532,7 +11532,7 @@ raw (视频原始帧)
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -11543,7 +11543,7 @@ raw (视频原始帧)
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11554,7 +11554,7 @@ raw (视频原始帧)
 
     @property
     def StreamId(self):
-        """主码流传0，子码流传1，默认主码流
+        r"""主码流传0，子码流传1，默认主码流
 
         :rtype: int
         """
@@ -11566,7 +11566,7 @@ raw (视频原始帧)
 
     @property
     def Env(self):
-        """设备所在环境，公有云私有化项目传0或者不传，混合云项目一般传空间id
+        r"""设备所在环境，公有云私有化项目传0或者不传，混合云项目一般传空间id
         :rtype: str
         """
         return self._Env
@@ -11594,7 +11594,7 @@ raw (视频原始帧)
 
 
 class DescribeVideoLiveStreamResponse(AbstractModel):
-    """DescribeVideoLiveStream返回参数结构体
+    r"""DescribeVideoLiveStream返回参数结构体
 
     """
 
@@ -11610,7 +11610,7 @@ class DescribeVideoLiveStreamResponse(AbstractModel):
 
     @property
     def Result(self):
-        """视频实时流获取结果
+        r"""视频实时流获取结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.VideoRecordStreamRes`
         """
         return self._Result
@@ -11621,7 +11621,7 @@ class DescribeVideoLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11639,7 +11639,7 @@ class DescribeVideoLiveStreamResponse(AbstractModel):
 
 
 class DescribeVideoRecordStreamRequest(AbstractModel):
-    """DescribeVideoRecordStream请求参数结构体
+    r"""DescribeVideoRecordStream请求参数结构体
 
     """
 
@@ -11681,7 +11681,7 @@ raw (视频原始帧)
 
     @property
     def WID(self):
-        """设备唯一标识
+        r"""设备唯一标识
         :rtype: str
         """
         return self._WID
@@ -11692,7 +11692,7 @@ raw (视频原始帧)
 
     @property
     def Protocol(self):
-        """枚举如下：
+        r"""枚举如下：
 flvsh
 rtmp
 hls
@@ -11708,7 +11708,7 @@ raw (视频原始帧)
 
     @property
     def StartTime(self):
-        """开始时间（精确到毫秒）
+        r"""开始时间（精确到毫秒）
         :rtype: int
         """
         return self._StartTime
@@ -11719,7 +11719,7 @@ raw (视频原始帧)
 
     @property
     def EndTime(self):
-        """结束时间（精确到毫秒）
+        r"""结束时间（精确到毫秒）
         :rtype: int
         """
         return self._EndTime
@@ -11730,7 +11730,7 @@ raw (视频原始帧)
 
     @property
     def PlayBackRate(self):
-        """倍速 0.5、1、2、4
+        r"""倍速 0.5、1、2、4
         :rtype: float
         """
         return self._PlayBackRate
@@ -11741,7 +11741,7 @@ raw (视频原始帧)
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -11752,7 +11752,7 @@ raw (视频原始帧)
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11763,7 +11763,7 @@ raw (视频原始帧)
 
     @property
     def Stream(self):
-        """流的唯一标识，播放链接尾缀
+        r"""流的唯一标识，播放链接尾缀
         :rtype: str
         """
         return self._Stream
@@ -11774,7 +11774,7 @@ raw (视频原始帧)
 
     @property
     def Env(self):
-        """公有云私有化项目传0或者不传；混合云项目一般传空间id
+        r"""公有云私有化项目传0或者不传；混合云项目一般传空间id
         :rtype: str
         """
         return self._Env
@@ -11805,7 +11805,7 @@ raw (视频原始帧)
 
 
 class DescribeVideoRecordStreamResponse(AbstractModel):
-    """DescribeVideoRecordStream返回参数结构体
+    r"""DescribeVideoRecordStream返回参数结构体
 
     """
 
@@ -11818,7 +11818,7 @@ class DescribeVideoRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11833,7 +11833,7 @@ class DescribeVideoRecordStreamResponse(AbstractModel):
 
 
 class DescribeWorkSpaceBuildingCountAndAreaRequest(AbstractModel):
-    """DescribeWorkSpaceBuildingCountAndArea请求参数结构体
+    r"""DescribeWorkSpaceBuildingCountAndArea请求参数结构体
 
     """
 
@@ -11849,7 +11849,7 @@ class DescribeWorkSpaceBuildingCountAndAreaRequest(AbstractModel):
 
     @property
     def WorkspaceIdList(self):
-        """工作空间ID列表
+        r"""工作空间ID列表
         :rtype: list of str
         """
         return self._WorkspaceIdList
@@ -11860,7 +11860,7 @@ class DescribeWorkSpaceBuildingCountAndAreaRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11884,7 +11884,7 @@ class DescribeWorkSpaceBuildingCountAndAreaRequest(AbstractModel):
 
 
 class DescribeWorkSpaceBuildingCountAndAreaResponse(AbstractModel):
-    """DescribeWorkSpaceBuildingCountAndArea返回参数结构体
+    r"""DescribeWorkSpaceBuildingCountAndArea返回参数结构体
 
     """
 
@@ -11900,7 +11900,7 @@ class DescribeWorkSpaceBuildingCountAndAreaResponse(AbstractModel):
 
     @property
     def Result(self):
-        """查询项目空间楼栋数量与建筑面积出参
+        r"""查询项目空间楼栋数量与建筑面积出参
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDataListStatsRes`
         """
         return self._Result
@@ -11911,7 +11911,7 @@ class DescribeWorkSpaceBuildingCountAndAreaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -11929,7 +11929,7 @@ class DescribeWorkSpaceBuildingCountAndAreaResponse(AbstractModel):
 
 
 class DescribeWorkspaceListRequest(AbstractModel):
-    """DescribeWorkspaceList请求参数结构体
+    r"""DescribeWorkspaceList请求参数结构体
 
     """
 
@@ -11945,7 +11945,7 @@ class DescribeWorkspaceListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -11956,7 +11956,7 @@ class DescribeWorkspaceListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id，非必填，填了则表示根据id进行批量查询
+        r"""工作空间id，非必填，填了则表示根据id进行批量查询
         :rtype: int
         """
         return self._WorkspaceId
@@ -11980,7 +11980,7 @@ class DescribeWorkspaceListRequest(AbstractModel):
 
 
 class DescribeWorkspaceListResponse(AbstractModel):
-    """DescribeWorkspaceList返回参数结构体
+    r"""DescribeWorkspaceList返回参数结构体
 
     """
 
@@ -11996,7 +11996,7 @@ class DescribeWorkspaceListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """项目空间列表
+        r"""项目空间列表
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.WorkspaceInfoList`
         """
         return self._Result
@@ -12007,7 +12007,7 @@ class DescribeWorkspaceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12025,7 +12025,7 @@ class DescribeWorkspaceListResponse(AbstractModel):
 
 
 class DescribeWorkspaceUserListRequest(AbstractModel):
-    """DescribeWorkspaceUserList请求参数结构体
+    r"""DescribeWorkspaceUserList请求参数结构体
 
     """
 
@@ -12053,7 +12053,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页页码
+        r"""翻页页码
         :rtype: int
         """
         return self._Offset
@@ -12064,7 +12064,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页大小
+        r"""翻页大小
         :rtype: int
         """
         return self._Limit
@@ -12075,7 +12075,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: str
         """
         return self._WorkspaceId
@@ -12086,7 +12086,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._ApplicationToken
@@ -12097,7 +12097,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def TenantId(self):
-        """租户ID
+        r"""租户ID
         :rtype: str
         """
         return self._TenantId
@@ -12108,7 +12108,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间戳，单位秒
+        r"""更新时间戳，单位秒
         :rtype: int
         """
         return self._UpdateAt
@@ -12136,7 +12136,7 @@ class DescribeWorkspaceUserListRequest(AbstractModel):
 
 
 class DescribeWorkspaceUserListResponse(AbstractModel):
-    """DescribeWorkspaceUserList返回参数结构体
+    r"""DescribeWorkspaceUserList返回参数结构体
 
     """
 
@@ -12152,7 +12152,7 @@ class DescribeWorkspaceUserListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回数据
+        r"""返回数据
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SsoTeamUserResult`
         """
         return self._Result
@@ -12163,7 +12163,7 @@ class DescribeWorkspaceUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12181,7 +12181,7 @@ class DescribeWorkspaceUserListResponse(AbstractModel):
 
 
 class DeviceDataInfo(AbstractModel):
-    """设备数据信息
+    r"""设备数据信息
 
     """
 
@@ -12257,7 +12257,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备ID， wid
+        r"""设备ID， wid
         :rtype: str
         """
         return self._WID
@@ -12268,7 +12268,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        """设备名称
+        r"""设备名称
         :rtype: str
         """
         return self._DeviceName
@@ -12279,7 +12279,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def DeviceTypeCode(self):
-        """设备类型Id
+        r"""设备类型Id
         :rtype: str
         """
         return self._DeviceTypeCode
@@ -12290,7 +12290,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def DeviceTypeName(self):
-        """设备类型名称
+        r"""设备类型名称
         :rtype: str
         """
         return self._DeviceTypeName
@@ -12301,7 +12301,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品Id
+        r"""产品Id
         :rtype: int
         """
         return self._ProductId
@@ -12312,7 +12312,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -12323,7 +12323,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ProductAbility(self):
-        """产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
+        r"""产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
         :rtype: int
         """
         return self._ProductAbility
@@ -12334,7 +12334,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def SpaceInfoSet(self):
-        """设备位置信息
+        r"""设备位置信息
         :rtype: list of DeviceSpaceInfo
         """
         return self._SpaceInfoSet
@@ -12345,7 +12345,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型id
+        r"""模型id
         :rtype: str
         """
         return self._ModelId
@@ -12356,7 +12356,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._ModelName
@@ -12367,7 +12367,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def DeviceTagSet(self):
-        """设备标签名，非必填
+        r"""设备标签名，非必填
         :rtype: list of str
         """
         return self._DeviceTagSet
@@ -12378,7 +12378,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def IsActive(self):
-        """激活状态（1激活、0未激活）
+        r"""激活状态（1激活、0未激活）
         :rtype: int
         """
         return self._IsActive
@@ -12389,7 +12389,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ActiveTime(self):
-        """ 激活时间
+        r""" 激活时间
         :rtype: str
         """
         return self._ActiveTime
@@ -12400,7 +12400,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def IsLive(self):
-        """推流状态（推流中、未推流） 仅摄像机有的状态
+        r"""推流状态（推流中、未推流） 仅摄像机有的状态
         :rtype: bool
         """
         return self._IsLive
@@ -12411,7 +12411,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ParentWID(self):
-        """设备所属父设备id（子设备才有）
+        r"""设备所属父设备id（子设备才有）
         :rtype: str
         """
         return self._ParentWID
@@ -12422,7 +12422,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def ParentWIDName(self):
-        """设备所有父设备名称（子设备才有）
+        r"""设备所有父设备名称（子设备才有）
         :rtype: str
         """
         return self._ParentWIDName
@@ -12433,7 +12433,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def SN(self):
-        """序列号
+        r"""序列号
         :rtype: str
         """
         return self._SN
@@ -12444,7 +12444,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def Location(self):
-        """设备点位坐标值
+        r"""设备点位坐标值
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceLocation`
         """
         return self._Location
@@ -12455,7 +12455,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def FieldList(self):
-        """自定义字段
+        r"""自定义字段
         :rtype: list of CustomFieldInfo
         """
         return self._FieldList
@@ -12466,7 +12466,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def GroupInfo(self):
-        """分组信息
+        r"""分组信息
         :rtype: str
         """
         return self._GroupInfo
@@ -12477,7 +12477,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def DeviceStatus(self):
-        """通信在/离线状态（online=normal+fault，offline）
+        r"""通信在/离线状态（online=normal+fault，offline）
         :rtype: str
         """
         return self._DeviceStatus
@@ -12488,7 +12488,7 @@ class DeviceDataInfo(AbstractModel):
 
     @property
     def Status(self):
-        """设备业务状态（normal、fault、offline）
+        r"""设备业务状态（normal、fault、offline）
         :rtype: str
         """
         return self._Status
@@ -12544,7 +12544,7 @@ class DeviceDataInfo(AbstractModel):
 
 
 class DeviceLocation(AbstractModel):
-    """设备点位坐标值
+    r"""设备点位坐标值
 
     """
 
@@ -12563,7 +12563,7 @@ class DeviceLocation(AbstractModel):
 
     @property
     def X(self):
-        """点位X坐标值
+        r"""点位X坐标值
         :rtype: float
         """
         return self._X
@@ -12574,7 +12574,7 @@ class DeviceLocation(AbstractModel):
 
     @property
     def Y(self):
-        """点位Y坐标值
+        r"""点位Y坐标值
         :rtype: float
         """
         return self._Y
@@ -12585,7 +12585,7 @@ class DeviceLocation(AbstractModel):
 
     @property
     def Z(self):
-        """点位Z坐标值
+        r"""点位Z坐标值
         :rtype: float
         """
         return self._Z
@@ -12610,7 +12610,7 @@ class DeviceLocation(AbstractModel):
 
 
 class DeviceModifyInfo(AbstractModel):
-    """设备修改信息入参
+    r"""设备修改信息入参
 
     """
 
@@ -12626,7 +12626,7 @@ class DeviceModifyInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._WID
@@ -12637,7 +12637,7 @@ class DeviceModifyInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        """修改后的设备名字
+        r"""修改后的设备名字
         :rtype: str
         """
         return self._DeviceName
@@ -12661,7 +12661,7 @@ class DeviceModifyInfo(AbstractModel):
 
 
 class DeviceShadowInfo(AbstractModel):
-    """设备影子信息
+    r"""设备影子信息
 
     """
 
@@ -12680,7 +12680,7 @@ class DeviceShadowInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._WID
@@ -12691,7 +12691,7 @@ class DeviceShadowInfo(AbstractModel):
 
     @property
     def DeviceShadow(self):
-        """设备影子数据,返回有效数据为"x-json:"后字段
+        r"""设备影子数据,返回有效数据为"x-json:"后字段
         :rtype: str
         """
         return self._DeviceShadow
@@ -12702,7 +12702,7 @@ class DeviceShadowInfo(AbstractModel):
 
     @property
     def DeviceShadowUpdateTime(self):
-        """设备影子更新时间
+        r"""设备影子更新时间
         :rtype: str
         """
         return self._DeviceShadowUpdateTime
@@ -12727,7 +12727,7 @@ class DeviceShadowInfo(AbstractModel):
 
 
 class DeviceShadowRes(AbstractModel):
-    """设备影子查询列表
+    r"""设备影子查询列表
 
     """
 
@@ -12752,7 +12752,7 @@ class DeviceShadowRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -12763,7 +12763,7 @@ class DeviceShadowRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -12774,7 +12774,7 @@ class DeviceShadowRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -12785,7 +12785,7 @@ class DeviceShadowRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -12796,7 +12796,7 @@ class DeviceShadowRes(AbstractModel):
 
     @property
     def Set(self):
-        """设备影子列表
+        r"""设备影子列表
         :rtype: list of DeviceShadowInfo
         """
         return self._Set
@@ -12828,7 +12828,7 @@ class DeviceShadowRes(AbstractModel):
 
 
 class DeviceSpaceInfo(AbstractModel):
-    """设备位置信息
+    r"""设备位置信息
 
     """
 
@@ -12850,7 +12850,7 @@ class DeviceSpaceInfo(AbstractModel):
 
     @property
     def Id(self):
-        """空间Id
+        r"""空间Id
         :rtype: str
         """
         return self._Id
@@ -12861,7 +12861,7 @@ class DeviceSpaceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """空间名字
+        r"""空间名字
         :rtype: str
         """
         return self._Name
@@ -12872,7 +12872,7 @@ class DeviceSpaceInfo(AbstractModel):
 
     @property
     def Level(self):
-        """空间级别
+        r"""空间级别
         :rtype: int
         """
         return self._Level
@@ -12883,7 +12883,7 @@ class DeviceSpaceInfo(AbstractModel):
 
     @property
     def Code(self):
-        """空间编码
+        r"""空间编码
         :rtype: str
         """
         return self._Code
@@ -12909,7 +12909,7 @@ class DeviceSpaceInfo(AbstractModel):
 
 
 class DeviceSpaceInfoRes(AbstractModel):
-    """设备挂接的空间信息
+    r"""设备挂接的空间信息
 
     """
 
@@ -12940,7 +12940,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -12951,7 +12951,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -12962,7 +12962,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def EntityType(self):
-        """构件类型
+        r"""构件类型
         :rtype: str
         """
         return self._EntityType
@@ -12973,7 +12973,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def ElementName(self):
-        """构件名称
+        r"""构件名称
         :rtype: str
         """
         return self._ElementName
@@ -12984,7 +12984,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def Level(self):
-        """构件级别
+        r"""构件级别
         :rtype: int
         """
         return self._Level
@@ -12995,7 +12995,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def BottomHeight(self):
-        """底部标高（单位mm）
+        r"""底部标高（单位mm）
         :rtype: int
         """
         return self._BottomHeight
@@ -13006,7 +13006,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
     @property
     def SpaceCode(self):
-        """空间编码
+        r"""空间编码
         :rtype: str
         """
         return self._SpaceCode
@@ -13035,7 +13035,7 @@ class DeviceSpaceInfoRes(AbstractModel):
 
 
 class DeviceStatusInfo(AbstractModel):
-    """设备状态信息
+    r"""设备状态信息
 
     """
 
@@ -13060,7 +13060,7 @@ class DeviceStatusInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备ID
+        r"""设备ID
         :rtype: str
         """
         return self._WID
@@ -13071,7 +13071,7 @@ class DeviceStatusInfo(AbstractModel):
 
     @property
     def DeviceStatus(self):
-        """设备状态（online=normal+fault、offline）
+        r"""设备状态（online=normal+fault、offline）
         :rtype: str
         """
         return self._DeviceStatus
@@ -13082,7 +13082,7 @@ class DeviceStatusInfo(AbstractModel):
 
     @property
     def DeviceStatusUpdateTime(self):
-        """设备状态更新时间
+        r"""设备状态更新时间
         :rtype: str
         """
         return self._DeviceStatusUpdateTime
@@ -13093,7 +13093,7 @@ class DeviceStatusInfo(AbstractModel):
 
     @property
     def Status(self):
-        """设备业务状态（normal、fault、offline）
+        r"""设备业务状态（normal、fault、offline）
         :rtype: str
         """
         return self._Status
@@ -13104,7 +13104,7 @@ class DeviceStatusInfo(AbstractModel):
 
     @property
     def IsAlive(self):
-        """推流状态。推流中-true，未推流-false
+        r"""推流状态。推流中-true，未推流-false
         :rtype: bool
         """
         return self._IsAlive
@@ -13131,7 +13131,7 @@ class DeviceStatusInfo(AbstractModel):
 
 
 class DeviceStatusRes(AbstractModel):
-    """设备状态获取接口结果
+    r"""设备状态获取接口结果
 
     """
 
@@ -13156,7 +13156,7 @@ class DeviceStatusRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -13167,7 +13167,7 @@ class DeviceStatusRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -13178,7 +13178,7 @@ class DeviceStatusRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -13189,7 +13189,7 @@ class DeviceStatusRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -13200,7 +13200,7 @@ class DeviceStatusRes(AbstractModel):
 
     @property
     def DeviceStatusSet(self):
-        """设备状态信息列表
+        r"""设备状态信息列表
         :rtype: list of DeviceStatusInfo
         """
         return self._DeviceStatusSet
@@ -13232,7 +13232,7 @@ class DeviceStatusRes(AbstractModel):
 
 
 class DeviceStatusStatRes(AbstractModel):
-    """设备状态统计结果
+    r"""设备状态统计结果
 
     """
 
@@ -13263,7 +13263,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -13274,7 +13274,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def Total(self):
-        """汇总数。在线（正常+故障） + 离线
+        r"""汇总数。在线（正常+故障） + 离线
         :rtype: int
         """
         return self._Total
@@ -13285,7 +13285,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def NormalSum(self):
-        """正常数
+        r"""正常数
         :rtype: int
         """
         return self._NormalSum
@@ -13296,7 +13296,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def OfflineSum(self):
-        """离线数
+        r"""离线数
         :rtype: int
         """
         return self._OfflineSum
@@ -13307,7 +13307,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def FaultSum(self):
-        """故障数
+        r"""故障数
         :rtype: int
         """
         return self._FaultSum
@@ -13318,7 +13318,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def DeviceTypeOverviewSet(self):
-        """设备类型概览列表
+        r"""设备类型概览列表
         :rtype: list of DeviceTypeOverview
         """
         return self._DeviceTypeOverviewSet
@@ -13329,7 +13329,7 @@ class DeviceStatusStatRes(AbstractModel):
 
     @property
     def StatLevelSet(self):
-        """设备类型统计列表
+        r"""设备类型统计列表
         :rtype: list of StatLevel
         """
         return self._StatLevelSet
@@ -13368,7 +13368,7 @@ class DeviceStatusStatRes(AbstractModel):
 
 
 class DeviceTagInfo(AbstractModel):
-    """设备标签信息
+    r"""设备标签信息
 
     """
 
@@ -13384,7 +13384,7 @@ class DeviceTagInfo(AbstractModel):
 
     @property
     def TagId(self):
-        """标签Id
+        r"""标签Id
         :rtype: int
         """
         return self._TagId
@@ -13395,7 +13395,7 @@ class DeviceTagInfo(AbstractModel):
 
     @property
     def TagName(self):
-        """标签名字
+        r"""标签名字
         :rtype: str
         """
         return self._TagName
@@ -13419,7 +13419,7 @@ class DeviceTagInfo(AbstractModel):
 
 
 class DeviceTagRes(AbstractModel):
-    """设备标签列表查询结果
+    r"""设备标签列表查询结果
 
     """
 
@@ -13444,7 +13444,7 @@ class DeviceTagRes(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -13455,7 +13455,7 @@ class DeviceTagRes(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -13466,7 +13466,7 @@ class DeviceTagRes(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -13477,7 +13477,7 @@ class DeviceTagRes(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -13488,7 +13488,7 @@ class DeviceTagRes(AbstractModel):
 
     @property
     def Set(self):
-        """设备标签列表
+        r"""设备标签列表
         :rtype: list of DeviceTagInfo
         """
         return self._Set
@@ -13520,7 +13520,7 @@ class DeviceTagRes(AbstractModel):
 
 
 class DeviceType(AbstractModel):
-    """设备类型
+    r"""设备类型
 
     """
 
@@ -13546,7 +13546,7 @@ class DeviceType(AbstractModel):
 
     @property
     def Code(self):
-        """设备类型编码
+        r"""设备类型编码
         :rtype: str
         """
         return self._Code
@@ -13557,7 +13557,7 @@ class DeviceType(AbstractModel):
 
     @property
     def Name(self):
-        """设备类型名称
+        r"""设备类型名称
         :rtype: str
         """
         return self._Name
@@ -13568,7 +13568,7 @@ class DeviceType(AbstractModel):
 
     @property
     def ParentCode(self):
-        """父设备类型编码
+        r"""父设备类型编码
         :rtype: str
         """
         return self._ParentCode
@@ -13579,7 +13579,7 @@ class DeviceType(AbstractModel):
 
     @property
     def ParentName(self):
-        """父设备类型名称
+        r"""父设备类型名称
         :rtype: str
         """
         return self._ParentName
@@ -13590,7 +13590,7 @@ class DeviceType(AbstractModel):
 
     @property
     def IsSubsystem(self):
-        """是否子系统，1是
+        r"""是否子系统，1是
 
         :rtype: int
         """
@@ -13618,7 +13618,7 @@ class DeviceType(AbstractModel):
 
 
 class DeviceTypeOverview(AbstractModel):
-    """设备类型概览信息
+    r"""设备类型概览信息
 
     """
 
@@ -13646,7 +13646,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型值
+        r"""设备类型值
         :rtype: str
         """
         return self._DeviceType
@@ -13657,7 +13657,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def Name(self):
-        """设备类型名称
+        r"""设备类型名称
         :rtype: str
         """
         return self._Name
@@ -13668,7 +13668,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def Total(self):
-        """汇总数。在线（正常+故障） + 离线
+        r"""汇总数。在线（正常+故障） + 离线
         :rtype: int
         """
         return self._Total
@@ -13679,7 +13679,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def Normal(self):
-        """正常数
+        r"""正常数
         :rtype: int
         """
         return self._Normal
@@ -13690,7 +13690,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def Offline(self):
-        """离线数
+        r"""离线数
         :rtype: int
         """
         return self._Offline
@@ -13701,7 +13701,7 @@ class DeviceTypeOverview(AbstractModel):
 
     @property
     def Fault(self):
-        """故障数
+        r"""故障数
         :rtype: int
         """
         return self._Fault
@@ -13729,7 +13729,7 @@ class DeviceTypeOverview(AbstractModel):
 
 
 class DeviceTypeSet(AbstractModel):
-    """设备类型列表
+    r"""设备类型列表
 
     """
 
@@ -13742,7 +13742,7 @@ class DeviceTypeSet(AbstractModel):
 
     @property
     def Set(self):
-        """设备类型列表
+        r"""设备类型列表
         :rtype: list of DeviceType
         """
         return self._Set
@@ -13770,7 +13770,7 @@ class DeviceTypeSet(AbstractModel):
 
 
 class ElementCoordinates(AbstractModel):
-    """构件地理坐标
+    r"""构件地理坐标
 
     """
 
@@ -13789,7 +13789,7 @@ class ElementCoordinates(AbstractModel):
 
     @property
     def Longitude(self):
-        """经度
+        r"""经度
         :rtype: float
         """
         return self._Longitude
@@ -13800,7 +13800,7 @@ class ElementCoordinates(AbstractModel):
 
     @property
     def Latitude(self):
-        """纬度
+        r"""纬度
         :rtype: float
         """
         return self._Latitude
@@ -13811,7 +13811,7 @@ class ElementCoordinates(AbstractModel):
 
     @property
     def Altitude(self):
-        """高程
+        r"""高程
         :rtype: float
         """
         return self._Altitude
@@ -13836,7 +13836,7 @@ class ElementCoordinates(AbstractModel):
 
 
 class ElementProfile(AbstractModel):
-    """构件概要信息
+    r"""构件概要信息
 
     """
 
@@ -13888,7 +13888,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -13899,7 +13899,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -13910,7 +13910,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def EntityType(self):
-        """构件类型
+        r"""构件类型
         :rtype: str
         """
         return self._EntityType
@@ -13921,7 +13921,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def ElementName(self):
-        """构件名称
+        r"""构件名称
         :rtype: str
         """
         return self._ElementName
@@ -13932,7 +13932,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def Level(self):
-        """构件空间级别
+        r"""构件空间级别
         :rtype: int
         """
         return self._Level
@@ -13943,7 +13943,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def BottomHeight(self):
-        """底部标高（单位mm）
+        r"""底部标高（单位mm）
         :rtype: int
         """
         return self._BottomHeight
@@ -13954,7 +13954,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def Sort(self):
-        """排序
+        r"""排序
         :rtype: int
         """
         return self._Sort
@@ -13965,7 +13965,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def SpaceCode(self):
-        """空间编码
+        r"""空间编码
         :rtype: str
         """
         return self._SpaceCode
@@ -13976,7 +13976,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def SpaceTypeCode(self):
-        """空间分类编码
+        r"""空间分类编码
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -13987,7 +13987,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def SpaceTypeName(self):
-        """空间分类名称
+        r"""空间分类名称
         :rtype: str
         """
         return self._SpaceTypeName
@@ -13998,7 +13998,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def ParentElementId(self):
-        """父级构件id
+        r"""父级构件id
         :rtype: str
         """
         return self._ParentElementId
@@ -14009,7 +14009,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def SpacePoiId(self):
-        """空间层级类型编码
+        r"""空间层级类型编码
         :rtype: str
         """
         return self._SpacePoiId
@@ -14020,7 +14020,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def ElementDesc(self):
-        """构件描述
+        r"""构件描述
         :rtype: str
         """
         return self._ElementDesc
@@ -14031,7 +14031,7 @@ class ElementProfile(AbstractModel):
 
     @property
     def IsDelete(self):
-        """删除标记
+        r"""删除标记
         :rtype: int
         """
         return self._IsDelete
@@ -14067,7 +14067,7 @@ class ElementProfile(AbstractModel):
 
 
 class ElementProfilePageRes(AbstractModel):
-    """构件分页查询响应体
+    r"""构件分页查询响应体
 
     """
 
@@ -14083,7 +14083,7 @@ class ElementProfilePageRes(AbstractModel):
 
     @property
     def TotalCount(self):
-        """构件总数
+        r"""构件总数
         :rtype: int
         """
         return self._TotalCount
@@ -14094,7 +14094,7 @@ class ElementProfilePageRes(AbstractModel):
 
     @property
     def List(self):
-        """构件列表
+        r"""构件列表
         :rtype: list of ElementProfile
         """
         return self._List
@@ -14123,7 +14123,7 @@ class ElementProfilePageRes(AbstractModel):
 
 
 class ElementProfileTreeNode(AbstractModel):
-    """构件树节点信息
+    r"""构件树节点信息
 
     """
 
@@ -14139,7 +14139,7 @@ class ElementProfileTreeNode(AbstractModel):
 
     @property
     def ElementProfile(self):
-        """构件概要信息
+        r"""构件概要信息
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfile`
         """
         return self._ElementProfile
@@ -14150,7 +14150,7 @@ class ElementProfileTreeNode(AbstractModel):
 
     @property
     def Children(self):
-        """子节点信息
+        r"""子节点信息
         :rtype: list of ElementProfileTreeNode
         """
         return self._Children
@@ -14181,7 +14181,7 @@ class ElementProfileTreeNode(AbstractModel):
 
 
 class ElementProfileTreeRes(AbstractModel):
-    """构件树响应体
+    r"""构件树响应体
 
     """
 
@@ -14200,7 +14200,7 @@ class ElementProfileTreeRes(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -14211,7 +14211,7 @@ class ElementProfileTreeRes(AbstractModel):
 
     @property
     def ParentElementId(self):
-        """父级构件id
+        r"""父级构件id
         :rtype: str
         """
         return self._ParentElementId
@@ -14222,7 +14222,7 @@ class ElementProfileTreeRes(AbstractModel):
 
     @property
     def Root(self):
-        """构件树
+        r"""构件树
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfileTreeNode`
         """
         return self._Root
@@ -14249,7 +14249,7 @@ class ElementProfileTreeRes(AbstractModel):
 
 
 class ElementProperty(AbstractModel):
-    """构件属性信息
+    r"""构件属性信息
 
     """
 
@@ -14268,7 +14268,7 @@ class ElementProperty(AbstractModel):
 
     @property
     def Name(self):
-        """属性名称
+        r"""属性名称
         :rtype: str
         """
         return self._Name
@@ -14279,7 +14279,7 @@ class ElementProperty(AbstractModel):
 
     @property
     def Description(self):
-        """属性描述
+        r"""属性描述
         :rtype: str
         """
         return self._Description
@@ -14290,7 +14290,7 @@ class ElementProperty(AbstractModel):
 
     @property
     def Content(self):
-        """属性内容
+        r"""属性内容
         :rtype: str
         """
         return self._Content
@@ -14315,7 +14315,7 @@ class ElementProperty(AbstractModel):
 
 
 class ElementPropertyRes(AbstractModel):
-    """构件属性信息响应体
+    r"""构件属性信息响应体
 
     """
 
@@ -14349,7 +14349,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def BuildingId(self):
-        """建筑id
+        r"""建筑id
         :rtype: str
         """
         return self._BuildingId
@@ -14360,7 +14360,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -14371,7 +14371,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def PropertySet(self):
-        """构件属性集合
+        r"""构件属性集合
         :rtype: list of ElementProperty
         """
         return self._PropertySet
@@ -14382,7 +14382,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def Coordinates(self):
-        """构件地理坐标
+        r"""构件地理坐标
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementCoordinates`
         """
         return self._Coordinates
@@ -14393,7 +14393,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def Translate(self):
-        """构件偏移量
+        r"""构件偏移量
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementTranslate`
         """
         return self._Translate
@@ -14404,7 +14404,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def ElementName(self):
-        """构件名称
+        r"""构件名称
         :rtype: str
         """
         return self._ElementName
@@ -14415,7 +14415,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def EntityTypeCode(self):
-        """构件类型代码
+        r"""构件类型代码
         :rtype: str
         """
         return self._EntityTypeCode
@@ -14426,7 +14426,7 @@ class ElementPropertyRes(AbstractModel):
 
     @property
     def EntityTypeName(self):
-        """构件类型名称
+        r"""构件类型名称
         :rtype: str
         """
         return self._EntityTypeName
@@ -14465,7 +14465,7 @@ class ElementPropertyRes(AbstractModel):
 
 
 class ElementTranslate(AbstractModel):
-    """构件平移信息
+    r"""构件平移信息
 
     """
 
@@ -14484,7 +14484,7 @@ class ElementTranslate(AbstractModel):
 
     @property
     def X(self):
-        """X方向偏移量
+        r"""X方向偏移量
         :rtype: float
         """
         return self._X
@@ -14495,7 +14495,7 @@ class ElementTranslate(AbstractModel):
 
     @property
     def Y(self):
-        """Y方向偏移量
+        r"""Y方向偏移量
         :rtype: float
         """
         return self._Y
@@ -14506,7 +14506,7 @@ class ElementTranslate(AbstractModel):
 
     @property
     def Z(self):
-        """Z方向偏移量
+        r"""Z方向偏移量
         :rtype: float
         """
         return self._Z
@@ -14531,7 +14531,7 @@ class ElementTranslate(AbstractModel):
 
 
 class EmptyRes(AbstractModel):
-    """空结果返回
+    r"""空结果返回
 
     """
 
@@ -14544,7 +14544,7 @@ class EmptyRes(AbstractModel):
 
     @property
     def Msg(self):
-        """返回请求状态,成功ok，失败error
+        r"""返回请求状态,成功ok，失败error
         :rtype: str
         """
         return self._Msg
@@ -14567,7 +14567,7 @@ class EmptyRes(AbstractModel):
 
 
 class Event(AbstractModel):
-    """事件信息
+    r"""事件信息
 
     """
 
@@ -14583,7 +14583,7 @@ class Event(AbstractModel):
 
     @property
     def Id(self):
-        """事件id或动作Id
+        r"""事件id或动作Id
         :rtype: int
         """
         return self._Id
@@ -14594,7 +14594,7 @@ class Event(AbstractModel):
 
     @property
     def Name(self):
-        """事件名称或动作名称
+        r"""事件名称或动作名称
         :rtype: str
         """
         return self._Name
@@ -14618,7 +14618,7 @@ class Event(AbstractModel):
 
 
 class EventDetail(AbstractModel):
-    """事件详细信息
+    r"""事件详细信息
 
     """
 
@@ -14655,7 +14655,7 @@ class EventDetail(AbstractModel):
 
     @property
     def Id(self):
-        """事件id
+        r"""事件id
         :rtype: int
         """
         return self._Id
@@ -14666,7 +14666,7 @@ class EventDetail(AbstractModel):
 
     @property
     def Name(self):
-        """事件名
+        r"""事件名
         :rtype: str
         """
         return self._Name
@@ -14677,7 +14677,7 @@ class EventDetail(AbstractModel):
 
     @property
     def TriggerType(self):
-        """事件触发类型
+        r"""事件触发类型
         :rtype: str
         """
         return self._TriggerType
@@ -14688,7 +14688,7 @@ class EventDetail(AbstractModel):
 
     @property
     def TriggerCondition(self):
-        """事件触发条件，返回为x-json后的字段
+        r"""事件触发条件，返回为x-json后的字段
         :rtype: str
         """
         return self._TriggerCondition
@@ -14699,7 +14699,7 @@ class EventDetail(AbstractModel):
 
     @property
     def ValidPeriod(self):
-        """有效期
+        r"""有效期
         :rtype: str
         """
         return self._ValidPeriod
@@ -14710,7 +14710,7 @@ class EventDetail(AbstractModel):
 
     @property
     def LinkRuleSet(self):
-        """关联规则列表
+        r"""关联规则列表
         :rtype: list of LinkRule
         """
         return self._LinkRuleSet
@@ -14721,7 +14721,7 @@ class EventDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -14732,7 +14732,7 @@ class EventDetail(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型，当触发类型为deviceType时返回
+        r"""设备类型，当触发类型为deviceType时返回
         :rtype: str
         """
         return self._DeviceType
@@ -14743,7 +14743,7 @@ class EventDetail(AbstractModel):
 
     @property
     def WID(self):
-        """设备的wid，当触发类型是device返回
+        r"""设备的wid，当触发类型是device返回
         :rtype: str
         """
         return self._WID
@@ -14779,7 +14779,7 @@ class EventDetail(AbstractModel):
 
 
 class EventObj(AbstractModel):
-    """事件对象
+    r"""事件对象
 
     """
 
@@ -14801,7 +14801,7 @@ class EventObj(AbstractModel):
 
     @property
     def Id(self):
-        """事件id
+        r"""事件id
         :rtype: int
         """
         return self._Id
@@ -14812,7 +14812,7 @@ class EventObj(AbstractModel):
 
     @property
     def Name(self):
-        """事件名称
+        r"""事件名称
         :rtype: str
         """
         return self._Name
@@ -14823,7 +14823,7 @@ class EventObj(AbstractModel):
 
     @property
     def Type(self):
-        """事件触发类型名称
+        r"""事件触发类型名称
         :rtype: str
         """
         return self._Type
@@ -14834,7 +14834,7 @@ class EventObj(AbstractModel):
 
     @property
     def Condition(self):
-        """时间触发条件
+        r"""时间触发条件
         :rtype: str
         """
         return self._Condition
@@ -14860,7 +14860,7 @@ class EventObj(AbstractModel):
 
 
 class FileDownloadURL(AbstractModel):
-    """文件下载URL
+    r"""文件下载URL
 
     """
 
@@ -14874,7 +14874,7 @@ class FileDownloadURL(AbstractModel):
 
     @property
     def FileURL(self):
-        """下载地址
+        r"""下载地址
 
         :rtype: str
         """
@@ -14898,7 +14898,7 @@ class FileDownloadURL(AbstractModel):
 
 
 class FileInfo(AbstractModel):
-    """文件信息
+    r"""文件信息
 
     """
 
@@ -14915,7 +14915,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        """文件id
+        r"""文件id
 
         :rtype: str
         """
@@ -14927,7 +14927,7 @@ class FileInfo(AbstractModel):
 
     @property
     def ReportName(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._ReportName
@@ -14951,7 +14951,7 @@ class FileInfo(AbstractModel):
 
 
 class FileUploadURL(AbstractModel):
-    """获取文件上传URL接口回包
+    r"""获取文件上传URL接口回包
 
     """
 
@@ -14970,7 +14970,7 @@ class FileUploadURL(AbstractModel):
 
     @property
     def UploadURL(self):
-        """上传地址
+        r"""上传地址
         :rtype: str
         """
         return self._UploadURL
@@ -14981,7 +14981,7 @@ class FileUploadURL(AbstractModel):
 
     @property
     def FileId(self):
-        """文件Id
+        r"""文件Id
         :rtype: str
         """
         return self._FileId
@@ -14992,7 +14992,7 @@ class FileUploadURL(AbstractModel):
 
     @property
     def DownloadURL(self):
-        """下载地址
+        r"""下载地址
         :rtype: str
         """
         return self._DownloadURL
@@ -15017,7 +15017,7 @@ class FileUploadURL(AbstractModel):
 
 
 class HandleRecordInfo(AbstractModel):
-    """告警处理记录
+    r"""告警处理记录
 
     """
 
@@ -15057,7 +15057,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        """告警处理记录id
+        r"""告警处理记录id
 
         :rtype: int
         """
@@ -15069,7 +15069,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -15080,7 +15080,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -15091,7 +15091,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def OperationType(self):
-        """操作类型
+        r"""操作类型
         :rtype: str
         """
         return self._OperationType
@@ -15102,7 +15102,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def Time(self):
-        """处理时间
+        r"""处理时间
         :rtype: str
         """
         return self._Time
@@ -15113,7 +15113,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: str
         """
         return self._Type
@@ -15124,7 +15124,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def FileSet(self):
-        """文件列表
+        r"""文件列表
 
         :rtype: list of FileInfo
         """
@@ -15136,7 +15136,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """应用appid
+        r"""应用appid
         :rtype: int
         """
         return self._AppId
@@ -15147,7 +15147,7 @@ class HandleRecordInfo(AbstractModel):
 
     @property
     def ExtendOne(self):
-        """扩展字段1，存非孪生中台用户id
+        r"""扩展字段1，存非孪生中台用户id
 
         :rtype: str
         """
@@ -15184,7 +15184,7 @@ class HandleRecordInfo(AbstractModel):
 
 
 class HandlerPersonInfo(AbstractModel):
-    """告警处理人列表
+    r"""告警处理人列表
 
     """
 
@@ -15200,7 +15200,7 @@ class HandlerPersonInfo(AbstractModel):
 
     @property
     def Id(self):
-        """用户id
+        r"""用户id
         :rtype: str
         """
         return self._Id
@@ -15211,7 +15211,7 @@ class HandlerPersonInfo(AbstractModel):
 
     @property
     def Name(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Name
@@ -15235,7 +15235,7 @@ class HandlerPersonInfo(AbstractModel):
 
 
 class LinkRule(AbstractModel):
-    """关联规则信息
+    r"""关联规则信息
 
     """
 
@@ -15251,7 +15251,7 @@ class LinkRule(AbstractModel):
 
     @property
     def Id(self):
-        """关联联动规则id
+        r"""关联联动规则id
         :rtype: int
         """
         return self._Id
@@ -15262,7 +15262,7 @@ class LinkRule(AbstractModel):
 
     @property
     def Name(self):
-        """关联联动规则名字
+        r"""关联联动规则名字
         :rtype: str
         """
         return self._Name
@@ -15286,7 +15286,7 @@ class LinkRule(AbstractModel):
 
 
 class LinkRuleInfo(AbstractModel):
-    """联动规则信息
+    r"""联动规则信息
 
     """
 
@@ -15320,7 +15320,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def Id(self):
-        """联动id
+        r"""联动id
         :rtype: int
         """
         return self._Id
@@ -15331,7 +15331,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def Name(self):
-        """联动名称
+        r"""联动名称
         :rtype: str
         """
         return self._Name
@@ -15342,7 +15342,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def EventSet(self):
-        """事件列表
+        r"""事件列表
         :rtype: list of Event
         """
         return self._EventSet
@@ -15353,7 +15353,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def ActionSet(self):
-        """动作列表
+        r"""动作列表
         :rtype: list of Action
         """
         return self._ActionSet
@@ -15364,7 +15364,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def Status(self):
-        """状态：0开，-1关
+        r"""状态：0开，-1关
         :rtype: int
         """
         return self._Status
@@ -15375,7 +15375,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def BeginDate(self):
-        """起始时间
+        r"""起始时间
         :rtype: str
         """
         return self._BeginDate
@@ -15386,7 +15386,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def EndDate(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndDate
@@ -15397,7 +15397,7 @@ class LinkRuleInfo(AbstractModel):
 
     @property
     def ValidPeriod(self):
-        """有效周期内容,有效字段为x-json后的字段
+        r"""有效周期内容,有效字段为x-json后的字段
         :rtype: str
         """
         return self._ValidPeriod
@@ -15437,7 +15437,7 @@ class LinkRuleInfo(AbstractModel):
 
 
 class MessageProfile(AbstractModel):
-    """上报消息概要
+    r"""上报消息概要
 
     """
 
@@ -15456,7 +15456,7 @@ class MessageProfile(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型
+        r"""应用类型
         :rtype: str
         """
         return self._AppType
@@ -15467,7 +15467,7 @@ class MessageProfile(AbstractModel):
 
     @property
     def ModelId(self):
-        """模型Id
+        r"""模型Id
         :rtype: str
         """
         return self._ModelId
@@ -15478,7 +15478,7 @@ class MessageProfile(AbstractModel):
 
     @property
     def PoiCode(self):
-        """设备类型
+        r"""设备类型
         :rtype: str
         """
         return self._PoiCode
@@ -15503,7 +15503,7 @@ class MessageProfile(AbstractModel):
 
 
 class ModelInfo(AbstractModel):
-    """模型基础信息
+    r"""模型基础信息
 
     """
 
@@ -15537,7 +15537,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -15548,7 +15548,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        r"""模型名称
         :rtype: str
         """
         return self._ModelName
@@ -15559,7 +15559,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """物模型id
+        r"""物模型id
         :rtype: str
         """
         return self._ModelId
@@ -15570,7 +15570,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def RelatedProduct(self):
-        """关联产品信息
+        r"""关联产品信息
         :rtype: list of RelatedProduct
         """
         return self._RelatedProduct
@@ -15581,7 +15581,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def DeviceTypeName(self):
-        """设备类型名
+        r"""设备类型名
         :rtype: str
         """
         return self._DeviceTypeName
@@ -15592,7 +15592,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型id
+        r"""设备类型id
         :rtype: str
         """
         return self._DeviceType
@@ -15603,7 +15603,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelType(self):
-        """物模型类型，产品模型/标准模型
+        r"""物模型类型，产品模型/标准模型
         :rtype: int
         """
         return self._ModelType
@@ -15614,7 +15614,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelParams(self):
-        """模型参数内容,有效字段为"x-json:"后的字段
+        r"""模型参数内容,有效字段为"x-json:"后的字段
         :rtype: str
         """
         return self._ModelParams
@@ -15649,7 +15649,7 @@ class ModelInfo(AbstractModel):
 
 
 class ModelSet(AbstractModel):
-    """模型列表查询结果
+    r"""模型列表查询结果
 
     """
 
@@ -15674,7 +15674,7 @@ class ModelSet(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -15685,7 +15685,7 @@ class ModelSet(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -15696,7 +15696,7 @@ class ModelSet(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -15707,7 +15707,7 @@ class ModelSet(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -15718,7 +15718,7 @@ class ModelSet(AbstractModel):
 
     @property
     def Set(self):
-        """模型基础信息
+        r"""模型基础信息
         :rtype: list of ModelInfo
         """
         return self._Set
@@ -15750,7 +15750,7 @@ class ModelSet(AbstractModel):
 
 
 class ModifyDeviceFieldInfo(AbstractModel):
-    """设备自定义值修改信息入参
+    r"""设备自定义值修改信息入参
 
     """
 
@@ -15769,7 +15769,7 @@ class ModifyDeviceFieldInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._WID
@@ -15780,7 +15780,7 @@ class ModifyDeviceFieldInfo(AbstractModel):
 
     @property
     def Key(self):
-        """自定义字段key
+        r"""自定义字段key
         :rtype: str
         """
         return self._Key
@@ -15791,7 +15791,7 @@ class ModifyDeviceFieldInfo(AbstractModel):
 
     @property
     def Val(self):
-        """自定义字段值
+        r"""自定义字段值
         :rtype: str
         """
         return self._Val
@@ -15816,7 +15816,7 @@ class ModifyDeviceFieldInfo(AbstractModel):
 
 
 class ModifyDeviceFieldRequest(AbstractModel):
-    """ModifyDeviceField请求参数结构体
+    r"""ModifyDeviceField请求参数结构体
 
     """
 
@@ -15835,7 +15835,7 @@ class ModifyDeviceFieldRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -15846,7 +15846,7 @@ class ModifyDeviceFieldRequest(AbstractModel):
 
     @property
     def Set(self):
-        """设备自定义字段修改信息集合
+        r"""设备自定义字段修改信息集合
         :rtype: list of ModifyDeviceFieldInfo
         """
         return self._Set
@@ -15857,7 +15857,7 @@ class ModifyDeviceFieldRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -15887,7 +15887,7 @@ class ModifyDeviceFieldRequest(AbstractModel):
 
 
 class ModifyDeviceFieldResponse(AbstractModel):
-    """ModifyDeviceField返回参数结构体
+    r"""ModifyDeviceField返回参数结构体
 
     """
 
@@ -15903,7 +15903,7 @@ class ModifyDeviceFieldResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回请求结果
+        r"""返回请求结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -15914,7 +15914,7 @@ class ModifyDeviceFieldResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -15932,7 +15932,7 @@ class ModifyDeviceFieldResponse(AbstractModel):
 
 
 class ModifyDeviceGroupInfo(AbstractModel):
-    """设备组修改信息入参
+    r"""设备组修改信息入参
 
     """
 
@@ -15948,7 +15948,7 @@ class ModifyDeviceGroupInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._WID
@@ -15959,7 +15959,7 @@ class ModifyDeviceGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备分组id
+        r"""设备分组id
         :rtype: int
         """
         return self._GroupId
@@ -15983,7 +15983,7 @@ class ModifyDeviceGroupInfo(AbstractModel):
 
 
 class ModifyDeviceGroupRequest(AbstractModel):
-    """ModifyDeviceGroup请求参数结构体
+    r"""ModifyDeviceGroup请求参数结构体
 
     """
 
@@ -16002,7 +16002,7 @@ class ModifyDeviceGroupRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -16013,7 +16013,7 @@ class ModifyDeviceGroupRequest(AbstractModel):
 
     @property
     def Set(self):
-        """设备组修改信息集合	
+        r"""设备组修改信息集合	
         :rtype: list of ModifyDeviceGroupInfo
         """
         return self._Set
@@ -16024,7 +16024,7 @@ class ModifyDeviceGroupRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -16054,7 +16054,7 @@ class ModifyDeviceGroupRequest(AbstractModel):
 
 
 class ModifyDeviceGroupResponse(AbstractModel):
-    """ModifyDeviceGroup返回参数结构体
+    r"""ModifyDeviceGroup返回参数结构体
 
     """
 
@@ -16070,7 +16070,7 @@ class ModifyDeviceGroupResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回请求结果
+        r"""返回请求结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -16081,7 +16081,7 @@ class ModifyDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16099,7 +16099,7 @@ class ModifyDeviceGroupResponse(AbstractModel):
 
 
 class ModifyDeviceNameRequest(AbstractModel):
-    """ModifyDeviceName请求参数结构体
+    r"""ModifyDeviceName请求参数结构体
 
     """
 
@@ -16118,7 +16118,7 @@ class ModifyDeviceNameRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -16129,7 +16129,7 @@ class ModifyDeviceNameRequest(AbstractModel):
 
     @property
     def Set(self):
-        """设备修改信息集合
+        r"""设备修改信息集合
         :rtype: list of DeviceModifyInfo
         """
         return self._Set
@@ -16140,7 +16140,7 @@ class ModifyDeviceNameRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -16170,7 +16170,7 @@ class ModifyDeviceNameRequest(AbstractModel):
 
 
 class ModifyDeviceNameResponse(AbstractModel):
-    """ModifyDeviceName返回参数结构体
+    r"""ModifyDeviceName返回参数结构体
 
     """
 
@@ -16186,7 +16186,7 @@ class ModifyDeviceNameResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回请求结果
+        r"""返回请求结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -16197,7 +16197,7 @@ class ModifyDeviceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16215,7 +16215,7 @@ class ModifyDeviceNameResponse(AbstractModel):
 
 
 class ModifyDeviceTagInfo(AbstractModel):
-    """设备标签修改信息入参
+    r"""设备标签修改信息入参
 
     """
 
@@ -16231,7 +16231,7 @@ class ModifyDeviceTagInfo(AbstractModel):
 
     @property
     def WID(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._WID
@@ -16242,7 +16242,7 @@ class ModifyDeviceTagInfo(AbstractModel):
 
     @property
     def NameSet(self):
-        """设备标签名称集合
+        r"""设备标签名称集合
         :rtype: list of str
         """
         return self._NameSet
@@ -16266,7 +16266,7 @@ class ModifyDeviceTagInfo(AbstractModel):
 
 
 class ModifyDeviceTagRequest(AbstractModel):
-    """ModifyDeviceTag请求参数结构体
+    r"""ModifyDeviceTag请求参数结构体
 
     """
 
@@ -16285,7 +16285,7 @@ class ModifyDeviceTagRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -16296,7 +16296,7 @@ class ModifyDeviceTagRequest(AbstractModel):
 
     @property
     def Set(self):
-        """设备标签修改信息集合
+        r"""设备标签修改信息集合
         :rtype: list of ModifyDeviceTagInfo
         """
         return self._Set
@@ -16307,7 +16307,7 @@ class ModifyDeviceTagRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token	
+        r"""应用token	
         :rtype: str
         """
         return self._ApplicationToken
@@ -16337,7 +16337,7 @@ class ModifyDeviceTagRequest(AbstractModel):
 
 
 class ModifyDeviceTagResponse(AbstractModel):
-    """ModifyDeviceTag返回参数结构体
+    r"""ModifyDeviceTag返回参数结构体
 
     """
 
@@ -16353,7 +16353,7 @@ class ModifyDeviceTagResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回请求结果
+        r"""返回请求结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -16364,7 +16364,7 @@ class ModifyDeviceTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -16382,7 +16382,7 @@ class ModifyDeviceTagResponse(AbstractModel):
 
 
 class ProcessRecordInfo(AbstractModel):
-    """处理记录项
+    r"""处理记录项
 
     """
 
@@ -16414,7 +16414,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        """告警的id
+        r"""告警的id
         :rtype: str
         """
         return self._Id
@@ -16425,7 +16425,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def ProcessTime(self):
-        """处理时间，毫秒
+        r"""处理时间，毫秒
 
         :rtype: int
         """
@@ -16437,7 +16437,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def ProcessType(self):
-        """处理类型，此处操作类型固定填add_record
+        r"""处理类型，此处操作类型固定填add_record
 
         :rtype: str
         """
@@ -16449,7 +16449,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def Processor(self):
-        """注:此字段填写的是孪生中台的用户，非孪生中台用户不填该字段
+        r"""注:此字段填写的是孪生中台的用户，非孪生中台用户不填该字段
 [{\"id\":\"123\",\"name\":\"tes\"}]
 
         :rtype: str
@@ -16462,7 +16462,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def ProcessDescription(self):
-        """处理描述信息
+        r"""处理描述信息
         :rtype: str
         """
         return self._ProcessDescription
@@ -16473,7 +16473,7 @@ class ProcessRecordInfo(AbstractModel):
 
     @property
     def AttachedFileId(self):
-        """附加文件标识
+        r"""附加文件标识
         :rtype: str
         """
         return self._AttachedFileId
@@ -16501,7 +16501,7 @@ class ProcessRecordInfo(AbstractModel):
 
 
 class ProductInfo(AbstractModel):
-    """产品信息
+    r"""产品信息
 
     """
 
@@ -16550,7 +16550,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -16561,7 +16561,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        """产品PID
+        r"""产品PID
         :rtype: int
         """
         return self._ProductId
@@ -16572,7 +16572,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductName(self):
-        """产品名称
+        r"""产品名称
         :rtype: str
         """
         return self._ProductName
@@ -16583,7 +16583,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def DeviceTypeName(self):
-        """设备类型
+        r"""设备类型
         :rtype: str
         """
         return self._DeviceTypeName
@@ -16594,7 +16594,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def DeviceTypeId(self):
-        """设备类型id
+        r"""设备类型id
         :rtype: str
         """
         return self._DeviceTypeId
@@ -16605,7 +16605,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Attribute(self):
-        """产品属性，如：网关（1）、直连设备（2）、子设备（3）
+        r"""产品属性，如：网关（1）、直连设备（2）、子设备（3）
         :rtype: int
         """
         return self._Attribute
@@ -16616,7 +16616,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        """产品型号
+        r"""产品型号
         :rtype: str
         """
         return self._ProductType
@@ -16627,7 +16627,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductAbility(self):
-        """产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
+        r"""产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
         :rtype: int
         """
         return self._ProductAbility
@@ -16638,7 +16638,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        """生产厂商
+        r"""生产厂商
         :rtype: str
         """
         return self._Manufacturer
@@ -16649,7 +16649,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def MaintenanceMfr(self):
-        """维保厂商
+        r"""维保厂商
         :rtype: str
         """
         return self._MaintenanceMfr
@@ -16660,7 +16660,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        """物模型名称
+        r"""物模型名称
         :rtype: str
         """
         return self._ModelName
@@ -16671,7 +16671,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """物模型id
+        r"""物模型id
         :rtype: str
         """
         return self._ModelId
@@ -16682,7 +16682,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def ModelType(self):
-        """物模型类型，产品模型/标准模型
+        r"""物模型类型，产品模型/标准模型
         :rtype: int
         """
         return self._ModelType
@@ -16717,7 +16717,7 @@ class ProductInfo(AbstractModel):
 
 
 class ProductSet(AbstractModel):
-    """产品列表查询结果
+    r"""产品列表查询结果
 
     """
 
@@ -16742,7 +16742,7 @@ class ProductSet(AbstractModel):
 
     @property
     def PageNumber(self):
-        """第几页
+        r"""第几页
         :rtype: int
         """
         return self._PageNumber
@@ -16753,7 +16753,7 @@ class ProductSet(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -16764,7 +16764,7 @@ class ProductSet(AbstractModel):
 
     @property
     def TotalPage(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._TotalPage
@@ -16775,7 +16775,7 @@ class ProductSet(AbstractModel):
 
     @property
     def TotalRow(self):
-        """总条数
+        r"""总条数
         :rtype: int
         """
         return self._TotalRow
@@ -16786,7 +16786,7 @@ class ProductSet(AbstractModel):
 
     @property
     def Product(self):
-        """产品信息列表
+        r"""产品信息列表
         :rtype: list of ProductInfo
         """
         return self._Product
@@ -16818,7 +16818,7 @@ class ProductSet(AbstractModel):
 
 
 class RawInfo(AbstractModel):
-    """视频流Raw协议信息
+    r"""视频流Raw协议信息
 
     """
 
@@ -16849,7 +16849,7 @@ class RawInfo(AbstractModel):
 
     @property
     def SM4Vector(self):
-        """加密向量（如果视频网关选择流为非加密传输这个参数可忽略）
+        r"""加密向量（如果视频网关选择流为非加密传输这个参数可忽略）
         :rtype: str
         """
         return self._SM4Vector
@@ -16860,7 +16860,7 @@ class RawInfo(AbstractModel):
 
     @property
     def NATIP(self):
-        """专线ip (非专线接入可忽略)
+        r"""专线ip (非专线接入可忽略)
         :rtype: str
         """
         return self._NATIP
@@ -16871,7 +16871,7 @@ class RawInfo(AbstractModel):
 
     @property
     def StreamToken(self):
-        """客户端握手鉴权参数
+        r"""客户端握手鉴权参数
         :rtype: str
         """
         return self._StreamToken
@@ -16882,7 +16882,7 @@ class RawInfo(AbstractModel):
 
     @property
     def Port(self):
-        """拉流端口
+        r"""拉流端口
         :rtype: int
         """
         return self._Port
@@ -16893,7 +16893,7 @@ class RawInfo(AbstractModel):
 
     @property
     def StreamEnKey(self):
-        """视频流加密key,目前为AES128加密KEY（如果视频网关选择流为非加密传输这个参数可忽略）
+        r"""视频流加密key,目前为AES128加密KEY（如果视频网关选择流为非加密传输这个参数可忽略）
         :rtype: str
         """
         return self._StreamEnKey
@@ -16904,7 +16904,7 @@ class RawInfo(AbstractModel):
 
     @property
     def IP(self):
-        """拉流公网地址（非公网接入时，这个地址是内网地址）
+        r"""拉流公网地址（非公网接入时，这个地址是内网地址）
         :rtype: str
         """
         return self._IP
@@ -16915,7 +16915,7 @@ class RawInfo(AbstractModel):
 
     @property
     def InnerIP(self):
-        """拉流内网地址
+        r"""拉流内网地址
         :rtype: str
         """
         return self._InnerIP
@@ -16944,7 +16944,7 @@ class RawInfo(AbstractModel):
 
 
 class RecordInfo(AbstractModel):
-    """录像信息
+    r"""录像信息
 
     """
 
@@ -16963,7 +16963,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """本录像片段开始时间（s）
+        r"""本录像片段开始时间（s）
         :rtype: int
         """
         return self._StartTime
@@ -16974,7 +16974,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """本录像片段结束时间（s）
+        r"""本录像片段结束时间（s）
         :rtype: int
         """
         return self._EndTime
@@ -16985,7 +16985,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def VideoURL(self):
-        """录像片段文件url
+        r"""录像片段文件url
         :rtype: str
         """
         return self._VideoURL
@@ -17010,7 +17010,7 @@ class RecordInfo(AbstractModel):
 
 
 class RelatedProduct(AbstractModel):
-    """关联产品信息
+    r"""关联产品信息
 
     """
 
@@ -17026,7 +17026,7 @@ class RelatedProduct(AbstractModel):
 
     @property
     def Id(self):
-        """关联产品pid
+        r"""关联产品pid
         :rtype: int
         """
         return self._Id
@@ -17037,7 +17037,7 @@ class RelatedProduct(AbstractModel):
 
     @property
     def Name(self):
-        """关联产品名字
+        r"""关联产品名字
         :rtype: str
         """
         return self._Name
@@ -17061,7 +17061,7 @@ class RelatedProduct(AbstractModel):
 
 
 class ReportAppMessage(AbstractModel):
-    """单条消息上报请求
+    r"""单条消息上报请求
 
     """
 
@@ -17095,7 +17095,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -17106,7 +17106,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def Profile(self):
-        """消息定义
+        r"""消息定义
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.MessageProfile`
         """
         return self._Profile
@@ -17117,7 +17117,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def ReportTs(self):
-        """数据上报时间
+        r"""数据上报时间
         :rtype: int
         """
         return self._ReportTs
@@ -17128,7 +17128,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def Properties(self):
-        """属性定义 - KV，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
+        r"""属性定义 - KV，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._Properties
@@ -17139,7 +17139,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def EventSet(self):
-        """事件定义 - KKV，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
+        r"""事件定义 - KKV，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._EventSet
@@ -17150,7 +17150,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def ServiceSet(self):
-        """服务定义 - KKV,若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
+        r"""服务定义 - KKV,若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._ServiceSet
@@ -17161,7 +17161,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def ExtendTwo(self):
-        """扩展字段2，如：算法上报id，若为json格式，需在前加上x-json:
+        r"""扩展字段2，如：算法上报id，若为json格式，需在前加上x-json:
         :rtype: str
         """
         return self._ExtendTwo
@@ -17172,7 +17172,7 @@ class ReportAppMessage(AbstractModel):
 
     @property
     def Echo(self):
-        """透传信息，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
+        r"""透传信息，若为json格式，需在前加上x-json:，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._Echo
@@ -17204,7 +17204,7 @@ class ReportAppMessage(AbstractModel):
 
 
 class ReportAppMessageRequest(AbstractModel):
-    """ReportAppMessage请求参数结构体
+    r"""ReportAppMessage请求参数结构体
 
     """
 
@@ -17241,7 +17241,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -17252,7 +17252,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def Profile(self):
-        """消息定义
+        r"""消息定义
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.MessageProfile`
         """
         return self._Profile
@@ -17263,7 +17263,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def ReportTs(self):
-        """数据上报时间
+        r"""数据上报时间
         :rtype: int
         """
         return self._ReportTs
@@ -17274,7 +17274,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def Properties(self):
-        """属性定义 - KV的json格式,有效字段为x-json:后的字段
+        r"""属性定义 - KV的json格式,有效字段为x-json:后的字段
         :rtype: str
         """
         return self._Properties
@@ -17285,7 +17285,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -17296,7 +17296,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def EventSet(self):
-        """事件定义 - KKV的json格式,有效字段为x-json:后的字段
+        r"""事件定义 - KKV的json格式,有效字段为x-json:后的字段
         :rtype: str
         """
         return self._EventSet
@@ -17307,7 +17307,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def ServiceSet(self):
-        """服务定义 - KKV的json格式,有效字段为x-json:后的字段
+        r"""服务定义 - KKV的json格式,有效字段为x-json:后的字段
         :rtype: str
         """
         return self._ServiceSet
@@ -17318,7 +17318,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def ExtendTwo(self):
-        """扩展字段2，如：算法上报id，若为json格式，需传x-json:{}，有效字段为x-json:后的字段
+        r"""扩展字段2，如：算法上报id，若为json格式，需传x-json:{}，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._ExtendTwo
@@ -17329,7 +17329,7 @@ class ReportAppMessageRequest(AbstractModel):
 
     @property
     def Echo(self):
-        """透传信息，若为json格式，需传x-json:{}，有效字段为x-json:后的字段
+        r"""透传信息，若为json格式，需传x-json:{}，有效字段为x-json:后的字段
         :rtype: str
         """
         return self._Echo
@@ -17362,7 +17362,7 @@ class ReportAppMessageRequest(AbstractModel):
 
 
 class ReportAppMessageResponse(AbstractModel):
-    """ReportAppMessage返回参数结构体
+    r"""ReportAppMessage返回参数结构体
 
     """
 
@@ -17378,7 +17378,7 @@ class ReportAppMessageResponse(AbstractModel):
 
     @property
     def Result(self):
-        """上报单条信息结果
+        r"""上报单条信息结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -17389,7 +17389,7 @@ class ReportAppMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17407,7 +17407,7 @@ class ReportAppMessageResponse(AbstractModel):
 
 
 class ReportImg(AbstractModel):
-    """上报图片列表
+    r"""上报图片列表
 
     """
 
@@ -17423,7 +17423,7 @@ class ReportImg(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
         :rtype: int
         """
         return self._Type
@@ -17434,7 +17434,7 @@ class ReportImg(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: str
         """
         return self._Data
@@ -17458,7 +17458,7 @@ class ReportImg(AbstractModel):
 
 
 class ReportMsgRes(AbstractModel):
-    """上报消息结果
+    r"""上报消息结果
 
     """
 
@@ -17476,7 +17476,7 @@ class ReportMsgRes(AbstractModel):
 
     @property
     def ReportId(self):
-        """上报消息对应下标的16位标识Id, 即第几个消息
+        r"""上报消息对应下标的16位标识Id, 即第几个消息
 
         :rtype: str
         """
@@ -17488,7 +17488,7 @@ class ReportMsgRes(AbstractModel):
 
     @property
     def ReportStatus(self):
-        """上报消息结果，1表示成功推送，0表示推送失败
+        r"""上报消息结果，1表示成功推送，0表示推送失败
 
         :rtype: int
         """
@@ -17513,7 +17513,7 @@ class ReportMsgRes(AbstractModel):
 
 
 class RuleDetailRes(AbstractModel):
-    """规则详情查询结果
+    r"""规则详情查询结果
 
     """
 
@@ -17556,7 +17556,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def RuleId(self):
-        """联动id
+        r"""联动id
         :rtype: int
         """
         return self._RuleId
@@ -17567,7 +17567,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def RuleName(self):
-        """联动名称
+        r"""联动名称
         :rtype: str
         """
         return self._RuleName
@@ -17578,7 +17578,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def RuleDesc(self):
-        """联动说明
+        r"""联动说明
         :rtype: str
         """
         return self._RuleDesc
@@ -17589,7 +17589,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def ValidType(self):
-        """1 全天有效，0：固定时间段有效
+        r"""1 全天有效，0：固定时间段有效
         :rtype: int
         """
         return self._ValidType
@@ -17600,7 +17600,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def ValidPeriod(self):
-        """有效期，json字符串（全天有效时为空）
+        r"""有效期，json字符串（全天有效时为空）
         :rtype: str
         """
         return self._ValidPeriod
@@ -17611,7 +17611,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def BeginDate(self):
-        """起始时间
+        r"""起始时间
         :rtype: str
         """
         return self._BeginDate
@@ -17622,7 +17622,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def EndDate(self):
-        """结束时间
+        r"""结束时间
         :rtype: str
         """
         return self._EndDate
@@ -17633,7 +17633,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def Status(self):
-        """启用状态。1-启用，0-停用
+        r"""启用状态。1-启用，0-停用
         :rtype: int
         """
         return self._Status
@@ -17644,7 +17644,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def EventRule(self):
-        """触发规则，事件的组合
+        r"""触发规则，事件的组合
         :rtype: str
         """
         return self._EventRule
@@ -17655,7 +17655,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def EventInfoSet(self):
-        """事件对象集合
+        r"""事件对象集合
         :rtype: list of EventObj
         """
         return self._EventInfoSet
@@ -17666,7 +17666,7 @@ class RuleDetailRes(AbstractModel):
 
     @property
     def ActionInfoSet(self):
-        """动作对象集合
+        r"""动作对象集合
         :rtype: list of ActionObj
         """
         return self._ActionInfoSet
@@ -17709,7 +17709,7 @@ class RuleDetailRes(AbstractModel):
 
 
 class SaveDeviceGroupRequest(AbstractModel):
-    """SaveDeviceGroup请求参数结构体
+    r"""SaveDeviceGroup请求参数结构体
 
     """
 
@@ -17737,7 +17737,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._Name
@@ -17748,7 +17748,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -17759,7 +17759,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """空间id
+        r"""空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -17770,7 +17770,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -17781,7 +17781,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def Id(self):
-        """分组id, 携带则为修改, 不携带则为新增
+        r"""分组id, 携带则为修改, 不携带则为新增
         :rtype: int
         """
         return self._Id
@@ -17792,7 +17792,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """分组父级id
+        r"""分组父级id
         :rtype: int
         """
         return self._ParentId
@@ -17820,7 +17820,7 @@ class SaveDeviceGroupRequest(AbstractModel):
 
 
 class SaveDeviceGroupRes(AbstractModel):
-    """保存or修改设备分组回包
+    r"""保存or修改设备分组回包
 
     """
 
@@ -17833,7 +17833,7 @@ class SaveDeviceGroupRes(AbstractModel):
 
     @property
     def Id(self):
-        """保存or修改设备分组回包信息
+        r"""保存or修改设备分组回包信息
         :rtype: int
         """
         return self._Id
@@ -17856,7 +17856,7 @@ class SaveDeviceGroupRes(AbstractModel):
 
 
 class SaveDeviceGroupResponse(AbstractModel):
-    """SaveDeviceGroup返回参数结构体
+    r"""SaveDeviceGroup返回参数结构体
 
     """
 
@@ -17872,7 +17872,7 @@ class SaveDeviceGroupResponse(AbstractModel):
 
     @property
     def Result(self):
-        """新增/修改的设备分组记录的id
+        r"""新增/修改的设备分组记录的id
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SaveDeviceGroupRes`
         """
         return self._Result
@@ -17883,7 +17883,7 @@ class SaveDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -17901,7 +17901,7 @@ class SaveDeviceGroupResponse(AbstractModel):
 
 
 class SceneInfo(AbstractModel):
-    """场景信息
+    r"""场景信息
 
     """
 
@@ -17920,7 +17920,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景id
+        r"""场景id
         :rtype: str
         """
         return self._SceneId
@@ -17931,7 +17931,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneName(self):
-        """场景名称
+        r"""场景名称
         :rtype: str
         """
         return self._SceneName
@@ -17942,7 +17942,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def Version(self):
-        """场景版本
+        r"""场景版本
         :rtype: str
         """
         return self._Version
@@ -17967,7 +17967,7 @@ class SceneInfo(AbstractModel):
 
 
 class SceneListRes(AbstractModel):
-    """场景列表响应体
+    r"""场景列表响应体
 
     """
 
@@ -17980,7 +17980,7 @@ class SceneListRes(AbstractModel):
 
     @property
     def SceneList(self):
-        """场景列表
+        r"""场景列表
         :rtype: list of SceneInfo
         """
         return self._SceneList
@@ -18008,7 +18008,7 @@ class SceneListRes(AbstractModel):
 
 
 class SpaceDataListStatsRes(AbstractModel):
-    """查询项目空间楼栋数量与建筑面积响应体
+    r"""查询项目空间楼栋数量与建筑面积响应体
 
     """
 
@@ -18021,7 +18021,7 @@ class SpaceDataListStatsRes(AbstractModel):
 
     @property
     def List(self):
-        """楼栋数量与建筑面积列表
+        r"""楼栋数量与建筑面积列表
         :rtype: list of SpaceDataStats
         """
         return self._List
@@ -18049,7 +18049,7 @@ class SpaceDataListStatsRes(AbstractModel):
 
 
 class SpaceDataStats(AbstractModel):
-    """项目空间楼栋数量与建筑面积出参
+    r"""项目空间楼栋数量与建筑面积出参
 
     """
 
@@ -18071,7 +18071,7 @@ class SpaceDataStats(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间ID
+        r"""工作空间ID
         :rtype: str
         """
         return self._WorkspaceId
@@ -18082,7 +18082,7 @@ class SpaceDataStats(AbstractModel):
 
     @property
     def WorkspaceName(self):
-        """工作空间名称
+        r"""工作空间名称
         :rtype: str
         """
         return self._WorkspaceName
@@ -18093,7 +18093,7 @@ class SpaceDataStats(AbstractModel):
 
     @property
     def BuildingCount(self):
-        """楼栋数量
+        r"""楼栋数量
         :rtype: int
         """
         return self._BuildingCount
@@ -18104,7 +18104,7 @@ class SpaceDataStats(AbstractModel):
 
     @property
     def BuildingArea(self):
-        """建筑面积
+        r"""建筑面积
         :rtype: float
         """
         return self._BuildingArea
@@ -18130,7 +18130,7 @@ class SpaceDataStats(AbstractModel):
 
 
 class SpaceDataTotalStatsRes(AbstractModel):
-    """查询租户楼栋数量和楼栋建筑面积相应体
+    r"""查询租户楼栋数量和楼栋建筑面积相应体
 
     """
 
@@ -18146,7 +18146,7 @@ class SpaceDataTotalStatsRes(AbstractModel):
 
     @property
     def BuildingCount(self):
-        """总楼栋数量
+        r"""总楼栋数量
         :rtype: int
         """
         return self._BuildingCount
@@ -18157,7 +18157,7 @@ class SpaceDataTotalStatsRes(AbstractModel):
 
     @property
     def BuildingArea(self):
-        """总建筑面积
+        r"""总建筑面积
         :rtype: float
         """
         return self._BuildingArea
@@ -18181,7 +18181,7 @@ class SpaceDataTotalStatsRes(AbstractModel):
 
 
 class SpaceDeviceIdListRes(AbstractModel):
-    """查询指定空间id列表响应
+    r"""查询指定空间id列表响应
 
     """
 
@@ -18194,7 +18194,7 @@ class SpaceDeviceIdListRes(AbstractModel):
 
     @property
     def DeviceIds(self):
-        """设备id列表
+        r"""设备id列表
         :rtype: list of str
         """
         return self._DeviceIds
@@ -18217,7 +18217,7 @@ class SpaceDeviceIdListRes(AbstractModel):
 
 
 class SpaceDeviceRelation(AbstractModel):
-    """设备-空间绑定关系
+    r"""设备-空间绑定关系
 
     """
 
@@ -18233,7 +18233,7 @@ class SpaceDeviceRelation(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备id
+        r"""设备id
         :rtype: str
         """
         return self._DeviceId
@@ -18244,7 +18244,7 @@ class SpaceDeviceRelation(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -18268,7 +18268,7 @@ class SpaceDeviceRelation(AbstractModel):
 
 
 class SpaceDeviceRelationRes(AbstractModel):
-    """设备-空间绑定关系响应体
+    r"""设备-空间绑定关系响应体
 
     """
 
@@ -18281,7 +18281,7 @@ class SpaceDeviceRelationRes(AbstractModel):
 
     @property
     def SpaceDeviceRelationList(self):
-        """设备空间绑定关系列表
+        r"""设备空间绑定关系列表
         :rtype: list of SpaceDeviceRelation
         """
         return self._SpaceDeviceRelationList
@@ -18309,7 +18309,7 @@ class SpaceDeviceRelationRes(AbstractModel):
 
 
 class SpaceInfo(AbstractModel):
-    """项目空间详细信息
+    r"""项目空间详细信息
 
     """
 
@@ -18352,7 +18352,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """项目空间id
+        r"""项目空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -18363,7 +18363,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def TenantId(self):
-        """租户id
+        r"""租户id
         :rtype: int
         """
         return self._TenantId
@@ -18374,7 +18374,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def EnglishName(self):
-        """英文名
+        r"""英文名
         :rtype: str
         """
         return self._EnglishName
@@ -18385,7 +18385,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ChineseName(self):
-        """中文名
+        r"""中文名
         :rtype: str
         """
         return self._ChineseName
@@ -18396,7 +18396,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Description(self):
-        """项目空间描述
+        r"""项目空间描述
         :rtype: str
         """
         return self._Description
@@ -18407,7 +18407,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """项目空间状态:0 启用 1 停用 -1 已删除
+        r"""项目空间状态:0 启用 1 停用 -1 已删除
         :rtype: int
         """
         return self._Status
@@ -18418,7 +18418,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def IsCommWorkspace(self):
-        """是否是公共空间
+        r"""是否是公共空间
         :rtype: bool
         """
         return self._IsCommWorkspace
@@ -18429,7 +18429,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ValidityStartTime(self):
-        """有效期开始时间
+        r"""有效期开始时间
         :rtype: str
         """
         return self._ValidityStartTime
@@ -18440,7 +18440,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ValidityEndTime(self):
-        """有效期结束时间
+        r"""有效期结束时间
         :rtype: str
         """
         return self._ValidityEndTime
@@ -18451,7 +18451,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Selected(self):
-        """选中状态
+        r"""选中状态
         :rtype: int
         """
         return self._Selected
@@ -18462,7 +18462,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def IsSystem(self):
-        """系统生成状态
+        r"""系统生成状态
         :rtype: int
         """
         return self._IsSystem
@@ -18495,7 +18495,7 @@ class SpaceInfo(AbstractModel):
 
 
 class SpaceRelation(AbstractModel):
-    """空间层级关系
+    r"""空间层级关系
 
     """
 
@@ -18523,7 +18523,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def ElementId(self):
-        """构件id
+        r"""构件id
         :rtype: str
         """
         return self._ElementId
@@ -18534,7 +18534,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def ElementName(self):
-        """构件名称
+        r"""构件名称
         :rtype: str
         """
         return self._ElementName
@@ -18545,7 +18545,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def Level(self):
-        """空间层级
+        r"""空间层级
         :rtype: int
         """
         return self._Level
@@ -18556,7 +18556,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def SpaceCode(self):
-        """空间编码
+        r"""空间编码
         :rtype: str
         """
         return self._SpaceCode
@@ -18567,7 +18567,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def ParentSpaceCode(self):
-        """父级空间编码
+        r"""父级空间编码
         :rtype: str
         """
         return self._ParentSpaceCode
@@ -18578,7 +18578,7 @@ class SpaceRelation(AbstractModel):
 
     @property
     def Children(self):
-        """子构件信息
+        r"""子构件信息
         :rtype: list of SpaceRelation
         """
         return self._Children
@@ -18611,7 +18611,7 @@ class SpaceRelation(AbstractModel):
 
 
 class SpaceRelationRes(AbstractModel):
-    """空间层级关系响应体
+    r"""空间层级关系响应体
 
     """
 
@@ -18624,7 +18624,7 @@ class SpaceRelationRes(AbstractModel):
 
     @property
     def SpaceRelation(self):
-        """空间层级关系
+        r"""空间层级关系
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceRelation`
         """
         return self._SpaceRelation
@@ -18649,7 +18649,7 @@ class SpaceRelationRes(AbstractModel):
 
 
 class SpaceType(AbstractModel):
-    """空间分类
+    r"""空间分类
 
     """
 
@@ -18665,7 +18665,7 @@ class SpaceType(AbstractModel):
 
     @property
     def SpaceTypeCode(self):
-        """空间分类编码
+        r"""空间分类编码
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -18676,7 +18676,7 @@ class SpaceType(AbstractModel):
 
     @property
     def SpaceTypeName(self):
-        """空间分类名称
+        r"""空间分类名称
         :rtype: str
         """
         return self._SpaceTypeName
@@ -18700,7 +18700,7 @@ class SpaceType(AbstractModel):
 
 
 class SpaceTypeListRes(AbstractModel):
-    """空间分类列表响应体
+    r"""空间分类列表响应体
 
     """
 
@@ -18713,7 +18713,7 @@ class SpaceTypeListRes(AbstractModel):
 
     @property
     def SpaceTypeList(self):
-        """空间分类列表
+        r"""空间分类列表
         :rtype: list of SpaceType
         """
         return self._SpaceTypeList
@@ -18741,7 +18741,7 @@ class SpaceTypeListRes(AbstractModel):
 
 
 class SsoDepartment(AbstractModel):
-    """部门用户
+    r"""部门用户
 
     """
 
@@ -18760,7 +18760,7 @@ class SsoDepartment(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门ID
+        r"""部门ID
         :rtype: str
         """
         return self._DepartmentId
@@ -18771,7 +18771,7 @@ class SsoDepartment(AbstractModel):
 
     @property
     def Name(self):
-        """部门名称
+        r"""部门名称
         :rtype: str
         """
         return self._Name
@@ -18782,7 +18782,7 @@ class SsoDepartment(AbstractModel):
 
     @property
     def ParentDepartmentId(self):
-        """父级部门ID
+        r"""父级部门ID
         :rtype: str
         """
         return self._ParentDepartmentId
@@ -18807,7 +18807,7 @@ class SsoDepartment(AbstractModel):
 
 
 class SsoDepartmentsResult(AbstractModel):
-    """部门用户结果
+    r"""部门用户结果
 
     """
 
@@ -18823,7 +18823,7 @@ class SsoDepartmentsResult(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -18834,7 +18834,7 @@ class SsoDepartmentsResult(AbstractModel):
 
     @property
     def Departments(self):
-        """部门列表
+        r"""部门列表
         :rtype: list of SsoDepartment
         """
         return self._Departments
@@ -18863,7 +18863,7 @@ class SsoDepartmentsResult(AbstractModel):
 
 
 class SsoTeamUser(AbstractModel):
-    """部门用户
+    r"""部门用户
 
     """
 
@@ -18906,7 +18906,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -18917,7 +18917,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def RealName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._RealName
@@ -18928,7 +18928,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
+        r"""用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
         :rtype: str
         """
         return self._UserType
@@ -18939,7 +18939,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def TenantId(self):
-        """所属租户ID
+        r"""所属租户ID
         :rtype: str
         """
         return self._TenantId
@@ -18950,7 +18950,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -18961,7 +18961,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def Phone(self):
-        """电话
+        r"""电话
         :rtype: str
         """
         return self._Phone
@@ -18972,7 +18972,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态
+        r"""用户状态
         :rtype: int
         """
         return self._Status
@@ -18983,7 +18983,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def CreateAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateAt
@@ -18994,7 +18994,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门ID
+        r"""部门ID
         :rtype: str
         """
         return self._DepartmentId
@@ -19005,7 +19005,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def DepartmentName(self):
-        """部门名称
+        r"""部门名称
         :rtype: str
         """
         return self._DepartmentName
@@ -19016,7 +19016,7 @@ class SsoTeamUser(AbstractModel):
 
     @property
     def LinkFilter(self):
-        """是否关联权限
+        r"""是否关联权限
         :rtype: int
         """
         return self._LinkFilter
@@ -19049,7 +19049,7 @@ class SsoTeamUser(AbstractModel):
 
 
 class SsoTeamUserResult(AbstractModel):
-    """空间用户结果
+    r"""空间用户结果
 
     """
 
@@ -19065,7 +19065,7 @@ class SsoTeamUserResult(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -19076,7 +19076,7 @@ class SsoTeamUserResult(AbstractModel):
 
     @property
     def Users(self):
-        """部门用户列表
+        r"""部门用户列表
         :rtype: list of SsoTeamUser
         """
         return self._Users
@@ -19105,7 +19105,7 @@ class SsoTeamUserResult(AbstractModel):
 
 
 class SsoUser(AbstractModel):
-    """用户结果
+    r"""用户结果
 
     """
 
@@ -19163,7 +19163,7 @@ class SsoUser(AbstractModel):
 
     @property
     def UserId(self):
-        """用户ID
+        r"""用户ID
         :rtype: str
         """
         return self._UserId
@@ -19174,7 +19174,7 @@ class SsoUser(AbstractModel):
 
     @property
     def UserName(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._UserName
@@ -19185,7 +19185,7 @@ class SsoUser(AbstractModel):
 
     @property
     def RealName(self):
-        """用户名称
+        r"""用户名称
         :rtype: str
         """
         return self._RealName
@@ -19196,7 +19196,7 @@ class SsoUser(AbstractModel):
 
     @property
     def UserType(self):
-        """用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
+        r"""用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
         :rtype: str
         """
         return self._UserType
@@ -19207,7 +19207,7 @@ class SsoUser(AbstractModel):
 
     @property
     def TenantId(self):
-        """所属租户ID
+        r"""所属租户ID
         :rtype: str
         """
         return self._TenantId
@@ -19218,7 +19218,7 @@ class SsoUser(AbstractModel):
 
     @property
     def UserGroup(self):
-        """所属组ID
+        r"""所属组ID
         :rtype: str
         """
         return self._UserGroup
@@ -19229,7 +19229,7 @@ class SsoUser(AbstractModel):
 
     @property
     def Email(self):
-        """邮箱
+        r"""邮箱
         :rtype: str
         """
         return self._Email
@@ -19240,7 +19240,7 @@ class SsoUser(AbstractModel):
 
     @property
     def Phone(self):
-        """电话
+        r"""电话
         :rtype: str
         """
         return self._Phone
@@ -19251,7 +19251,7 @@ class SsoUser(AbstractModel):
 
     @property
     def Status(self):
-        """用户状态，0待审核，1正常启用，2禁用
+        r"""用户状态，0待审核，1正常启用，2禁用
         :rtype: int
         """
         return self._Status
@@ -19262,7 +19262,7 @@ class SsoUser(AbstractModel):
 
     @property
     def CreateAt(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateAt
@@ -19273,7 +19273,7 @@ class SsoUser(AbstractModel):
 
     @property
     def UpdateAt(self):
-        """更新时间
+        r"""更新时间
         :rtype: int
         """
         return self._UpdateAt
@@ -19284,7 +19284,7 @@ class SsoUser(AbstractModel):
 
     @property
     def BelongTeam(self):
-        """是否属于团队，0不可用，1属于，2不属
+        r"""是否属于团队，0不可用，1属于，2不属
         :rtype: int
         """
         return self._BelongTeam
@@ -19295,7 +19295,7 @@ class SsoUser(AbstractModel):
 
     @property
     def DepartmentId(self):
-        """部门ID
+        r"""部门ID
         :rtype: str
         """
         return self._DepartmentId
@@ -19306,7 +19306,7 @@ class SsoUser(AbstractModel):
 
     @property
     def DepartmentName(self):
-        """部门名称
+        r"""部门名称
         :rtype: str
         """
         return self._DepartmentName
@@ -19317,7 +19317,7 @@ class SsoUser(AbstractModel):
 
     @property
     def DepartmentUserId(self):
-        """子账户ID
+        r"""子账户ID
         :rtype: int
         """
         return self._DepartmentUserId
@@ -19328,7 +19328,7 @@ class SsoUser(AbstractModel):
 
     @property
     def Password(self):
-        """密码
+        r"""密码
         :rtype: str
         """
         return self._Password
@@ -19366,7 +19366,7 @@ class SsoUser(AbstractModel):
 
 
 class SsoUserResult(AbstractModel):
-    """租户人员结果
+    r"""租户人员结果
 
     """
 
@@ -19382,7 +19382,7 @@ class SsoUserResult(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -19393,7 +19393,7 @@ class SsoUserResult(AbstractModel):
 
     @property
     def Users(self):
-        """租户人员数据
+        r"""租户人员数据
         :rtype: list of SsoUser
         """
         return self._Users
@@ -19422,7 +19422,7 @@ class SsoUserResult(AbstractModel):
 
 
 class StatDeviceType(AbstractModel):
-    """设备类型统计
+    r"""设备类型统计
 
     """
 
@@ -19450,7 +19450,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def Total(self):
-        """汇总数。在线（正常+故障） + 离线
+        r"""汇总数。在线（正常+故障） + 离线
         :rtype: int
         """
         return self._Total
@@ -19461,7 +19461,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def Normal(self):
-        """正常数
+        r"""正常数
         :rtype: int
         """
         return self._Normal
@@ -19472,7 +19472,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def Offline(self):
-        """离线数
+        r"""离线数
         :rtype: int
         """
         return self._Offline
@@ -19483,7 +19483,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def Fault(self):
-        """故障数
+        r"""故障数
         :rtype: int
         """
         return self._Fault
@@ -19494,7 +19494,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def Name(self):
-        """设备名
+        r"""设备名
         :rtype: str
         """
         return self._Name
@@ -19505,7 +19505,7 @@ class StatDeviceType(AbstractModel):
 
     @property
     def DeviceType(self):
-        """设备类型
+        r"""设备类型
         :rtype: str
         """
         return self._DeviceType
@@ -19533,7 +19533,7 @@ class StatDeviceType(AbstractModel):
 
 
 class StatLevel(AbstractModel):
-    """层级统计
+    r"""层级统计
 
     """
 
@@ -19561,7 +19561,7 @@ class StatLevel(AbstractModel):
 
     @property
     def Total(self):
-        """汇总数。在线（正常+故障） + 离线
+        r"""汇总数。在线（正常+故障） + 离线
         :rtype: int
         """
         return self._Total
@@ -19572,7 +19572,7 @@ class StatLevel(AbstractModel):
 
     @property
     def NormalSum(self):
-        """正常数
+        r"""正常数
         :rtype: int
         """
         return self._NormalSum
@@ -19583,7 +19583,7 @@ class StatLevel(AbstractModel):
 
     @property
     def OfflineSum(self):
-        """离线数
+        r"""离线数
         :rtype: int
         """
         return self._OfflineSum
@@ -19594,7 +19594,7 @@ class StatLevel(AbstractModel):
 
     @property
     def FaultSum(self):
-        """故障数
+        r"""故障数
         :rtype: int
         """
         return self._FaultSum
@@ -19605,7 +19605,7 @@ class StatLevel(AbstractModel):
 
     @property
     def SpaceCode(self):
-        """空间id
+        r"""空间id
         :rtype: str
         """
         return self._SpaceCode
@@ -19616,7 +19616,7 @@ class StatLevel(AbstractModel):
 
     @property
     def StatDeviceTypeSet(self):
-        """设备类型统计列表
+        r"""设备类型统计列表
         :rtype: list of StatDeviceType
         """
         return self._StatDeviceTypeSet
@@ -19649,7 +19649,7 @@ class StatLevel(AbstractModel):
 
 
 class StopVideoStreamingRequest(AbstractModel):
-    """StopVideoStreaming请求参数结构体
+    r"""StopVideoStreaming请求参数结构体
 
     """
 
@@ -19672,7 +19672,7 @@ class StopVideoStreamingRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """流的唯一标识，播放链接尾缀
+        r"""流的唯一标识，播放链接尾缀
         :rtype: str
         """
         return self._Stream
@@ -19683,7 +19683,7 @@ class StopVideoStreamingRequest(AbstractModel):
 
     @property
     def WID(self):
-        """设备的唯一标识
+        r"""设备的唯一标识
 
         :rtype: str
         """
@@ -19695,7 +19695,7 @@ class StopVideoStreamingRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -19706,7 +19706,7 @@ class StopVideoStreamingRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -19732,7 +19732,7 @@ class StopVideoStreamingRequest(AbstractModel):
 
 
 class StopVideoStreamingResponse(AbstractModel):
-    """StopVideoStreaming返回参数结构体
+    r"""StopVideoStreaming返回参数结构体
 
     """
 
@@ -19748,7 +19748,7 @@ class StopVideoStreamingResponse(AbstractModel):
 
     @property
     def Result(self):
-        """停流接口返回结果
+        r"""停流接口返回结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -19759,7 +19759,7 @@ class StopVideoStreamingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19777,7 +19777,7 @@ class StopVideoStreamingResponse(AbstractModel):
 
 
 class UpdateWorkspaceParkAttributesRequest(AbstractModel):
-    """UpdateWorkspaceParkAttributes请求参数结构体
+    r"""UpdateWorkspaceParkAttributes请求参数结构体
 
     """
 
@@ -19799,7 +19799,7 @@ class UpdateWorkspaceParkAttributesRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间id
+        r"""工作空间id
         :rtype: int
         """
         return self._WorkspaceId
@@ -19810,7 +19810,7 @@ class UpdateWorkspaceParkAttributesRequest(AbstractModel):
 
     @property
     def ApplicationToken(self):
-        """应用token
+        r"""应用token
         :rtype: str
         """
         return self._ApplicationToken
@@ -19821,7 +19821,7 @@ class UpdateWorkspaceParkAttributesRequest(AbstractModel):
 
     @property
     def ParkName(self):
-        """园区简称
+        r"""园区简称
         :rtype: str
         """
         return self._ParkName
@@ -19832,7 +19832,7 @@ class UpdateWorkspaceParkAttributesRequest(AbstractModel):
 
     @property
     def ParkNum(self):
-        """园区编号
+        r"""园区编号
         :rtype: str
         """
         return self._ParkNum
@@ -19858,7 +19858,7 @@ class UpdateWorkspaceParkAttributesRequest(AbstractModel):
 
 
 class UpdateWorkspaceParkAttributesResponse(AbstractModel):
-    """UpdateWorkspaceParkAttributes返回参数结构体
+    r"""UpdateWorkspaceParkAttributes返回参数结构体
 
     """
 
@@ -19874,7 +19874,7 @@ class UpdateWorkspaceParkAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """修改工作空间园区属性结果
+        r"""修改工作空间园区属性结果
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
         """
         return self._Result
@@ -19885,7 +19885,7 @@ class UpdateWorkspaceParkAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -19903,7 +19903,7 @@ class UpdateWorkspaceParkAttributesResponse(AbstractModel):
 
 
 class VideoCloudRecordRes(AbstractModel):
-    """云录像接口结果
+    r"""云录像接口结果
 
     """
 
@@ -19919,7 +19919,7 @@ class VideoCloudRecordRes(AbstractModel):
 
     @property
     def TotalCount(self):
-        """录像信息总数
+        r"""录像信息总数
         :rtype: int
         """
         return self._TotalCount
@@ -19930,7 +19930,7 @@ class VideoCloudRecordRes(AbstractModel):
 
     @property
     def RecordSet(self):
-        """录像信息列表
+        r"""录像信息列表
         :rtype: list of RecordInfo
         """
         return self._RecordSet
@@ -19959,7 +19959,7 @@ class VideoCloudRecordRes(AbstractModel):
 
 
 class VideoRecordStreamRes(AbstractModel):
-    """视频流查询结果
+    r"""视频流查询结果
 
     """
 
@@ -19987,7 +19987,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def FLV(self):
-        """FLV协议格式视频流
+        r"""FLV协议格式视频流
         :rtype: str
         """
         return self._FLV
@@ -19998,7 +19998,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def RTMP(self):
-        """RTMP协议格式视频流
+        r"""RTMP协议格式视频流
         :rtype: str
         """
         return self._RTMP
@@ -20009,7 +20009,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def HLS(self):
-        """HLS协议格式视频流
+        r"""HLS协议格式视频流
         :rtype: str
         """
         return self._HLS
@@ -20020,7 +20020,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def WebRTC(self):
-        """WebRtc协议格式视频流
+        r"""WebRtc协议格式视频流
         :rtype: str
         """
         return self._WebRTC
@@ -20031,7 +20031,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def RAW(self):
-        """RAW协议格式视频流
+        r"""RAW协议格式视频流
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.RawInfo`
         """
         return self._RAW
@@ -20042,7 +20042,7 @@ class VideoRecordStreamRes(AbstractModel):
 
     @property
     def Stream(self):
-        """视频流的唯一标识
+        r"""视频流的唯一标识
         :rtype: str
         """
         return self._Stream
@@ -20072,7 +20072,7 @@ class VideoRecordStreamRes(AbstractModel):
 
 
 class WorkspaceInfo(AbstractModel):
-    """工作空间信息描述
+    r"""工作空间信息描述
 
     """
 
@@ -20103,7 +20103,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        """工作空间Id
+        r"""工作空间Id
         :rtype: int
         """
         return self._WorkspaceId
@@ -20114,7 +20114,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def ChineseName(self):
-        """工作空间中文名字
+        r"""工作空间中文名字
         :rtype: str
         """
         return self._ChineseName
@@ -20125,7 +20125,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def Description(self):
-        """工作空间描述
+        r"""工作空间描述
         :rtype: str
         """
         return self._Description
@@ -20136,7 +20136,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def Status(self):
-        """工作空间是否删除状态
+        r"""工作空间是否删除状态
         :rtype: int
         """
         return self._Status
@@ -20147,7 +20147,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def ParkName(self):
-        """该工作空间绑定的区/县的行政区名字
+        r"""该工作空间绑定的区/县的行政区名字
         :rtype: str
         """
         return self._ParkName
@@ -20158,7 +20158,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def ParkNum(self):
-        """该工作空间绑定的区/县的行政区编码
+        r"""该工作空间绑定的区/县的行政区编码
         :rtype: str
         """
         return self._ParkNum
@@ -20169,7 +20169,7 @@ class WorkspaceInfo(AbstractModel):
 
     @property
     def AdministrativeDetailSet(self):
-        """获取该工作空间绑定的区/县的上级行政区划信息
+        r"""获取该工作空间绑定的区/县的上级行政区划信息
         :rtype: list of AdministrativeDetail
         """
         return self._AdministrativeDetailSet
@@ -20203,7 +20203,7 @@ class WorkspaceInfo(AbstractModel):
 
 
 class WorkspaceInfoList(AbstractModel):
-    """项目空间列表
+    r"""项目空间列表
 
     """
 
@@ -20216,7 +20216,7 @@ class WorkspaceInfoList(AbstractModel):
 
     @property
     def List(self):
-        """项目空间列表
+        r"""项目空间列表
         :rtype: list of SpaceInfo
         """
         return self._List

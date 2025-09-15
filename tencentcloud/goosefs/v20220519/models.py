@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
-    """AddCrossVpcSubnetSupportForClientNode请求参数结构体
+    r"""AddCrossVpcSubnetSupportForClientNode请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AddCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -46,7 +46,7 @@ class AddCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
     @property
     def SubnetInfo(self):
-        """子网信息
+        r"""子网信息
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.SubnetInfo`
         """
         return self._SubnetInfo
@@ -72,7 +72,7 @@ class AddCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
 
 class AddCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
-    """AddCrossVpcSubnetSupportForClientNode返回参数结构体
+    r"""AddCrossVpcSubnetSupportForClientNode返回参数结构体
 
     """
 
@@ -85,7 +85,7 @@ class AddCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -100,7 +100,7 @@ class AddCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
 
 class AttachFileSystemBucketRequest(AbstractModel):
-    """AttachFileSystemBucket请求参数结构体
+    r"""AttachFileSystemBucket请求参数结构体
 
     """
 
@@ -116,7 +116,7 @@ class AttachFileSystemBucketRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """无
+        r"""无
         :rtype: str
         """
         return self._FileSystemId
@@ -127,7 +127,7 @@ class AttachFileSystemBucketRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """关联新Bucket
+        r"""关联新Bucket
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.MappedBucket`
         """
         return self._Bucket
@@ -153,7 +153,7 @@ class AttachFileSystemBucketRequest(AbstractModel):
 
 
 class AttachFileSystemBucketResponse(AbstractModel):
-    """AttachFileSystemBucket返回参数结构体
+    r"""AttachFileSystemBucket返回参数结构体
 
     """
 
@@ -166,7 +166,7 @@ class AttachFileSystemBucketResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -181,7 +181,7 @@ class AttachFileSystemBucketResponse(AbstractModel):
 
 
 class BatchAddClientNodesRequest(AbstractModel):
-    """BatchAddClientNodes请求参数结构体
+    r"""BatchAddClientNodes请求参数结构体
 
     """
 
@@ -200,7 +200,7 @@ class BatchAddClientNodesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -211,7 +211,7 @@ class BatchAddClientNodesRequest(AbstractModel):
 
     @property
     def ClientNodes(self):
-        """添加客户端节点列表
+        r"""添加客户端节点列表
         :rtype: list of LinuxNodeAttribute
         """
         return self._ClientNodes
@@ -222,7 +222,7 @@ class BatchAddClientNodesRequest(AbstractModel):
 
     @property
     def SingleClusterFlag(self):
-        """是否单集群默认是false	
+        r"""是否单集群默认是false	
         :rtype: bool
         """
         return self._SingleClusterFlag
@@ -252,7 +252,7 @@ class BatchAddClientNodesRequest(AbstractModel):
 
 
 class BatchAddClientNodesResponse(AbstractModel):
-    """BatchAddClientNodes返回参数结构体
+    r"""BatchAddClientNodes返回参数结构体
 
     """
 
@@ -265,7 +265,7 @@ class BatchAddClientNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -280,7 +280,7 @@ class BatchAddClientNodesResponse(AbstractModel):
 
 
 class BatchDeleteClientNodesRequest(AbstractModel):
-    """BatchDeleteClientNodes请求参数结构体
+    r"""BatchDeleteClientNodes请求参数结构体
 
     """
 
@@ -299,7 +299,7 @@ class BatchDeleteClientNodesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -310,7 +310,7 @@ class BatchDeleteClientNodesRequest(AbstractModel):
 
     @property
     def ClientNodes(self):
-        """删除的客户端节点列表
+        r"""删除的客户端节点列表
         :rtype: list of LinuxNodeAttribute
         """
         return self._ClientNodes
@@ -321,7 +321,7 @@ class BatchDeleteClientNodesRequest(AbstractModel):
 
     @property
     def SingleClusterFlag(self):
-        """是否单集群，默认是false
+        r"""是否单集群，默认是false
         :rtype: bool
         """
         return self._SingleClusterFlag
@@ -351,7 +351,7 @@ class BatchDeleteClientNodesRequest(AbstractModel):
 
 
 class BatchDeleteClientNodesResponse(AbstractModel):
-    """BatchDeleteClientNodes返回参数结构体
+    r"""BatchDeleteClientNodes返回参数结构体
 
     """
 
@@ -364,7 +364,7 @@ class BatchDeleteClientNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -379,7 +379,7 @@ class BatchDeleteClientNodesResponse(AbstractModel):
 
 
 class BuildClientNodeMountCommandRequest(AbstractModel):
-    """BuildClientNodeMountCommand请求参数结构体
+    r"""BuildClientNodeMountCommand请求参数结构体
 
     """
 
@@ -395,7 +395,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -406,7 +406,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     @property
     def CustomMountDir(self):
-        """自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+        r"""自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
         :rtype: str
         """
         return self._CustomMountDir
@@ -430,7 +430,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
 
 class BuildClientNodeMountCommandResponse(AbstractModel):
-    """BuildClientNodeMountCommand返回参数结构体
+    r"""BuildClientNodeMountCommand返回参数结构体
 
     """
 
@@ -446,7 +446,7 @@ class BuildClientNodeMountCommandResponse(AbstractModel):
 
     @property
     def Command(self):
-        """挂载命令
+        r"""挂载命令
         :rtype: str
         """
         return self._Command
@@ -457,7 +457,7 @@ class BuildClientNodeMountCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -473,7 +473,7 @@ class BuildClientNodeMountCommandResponse(AbstractModel):
 
 
 class ChargeAttribute(AbstractModel):
-    """付费信息详情
+    r"""付费信息详情
 
     """
 
@@ -495,7 +495,7 @@ class ChargeAttribute(AbstractModel):
 
     @property
     def CurDeadline(self):
-        """到期时间
+        r"""到期时间
         :rtype: str
         """
         return self._CurDeadline
@@ -506,7 +506,7 @@ class ChargeAttribute(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费方式
+        r"""付费方式
         :rtype: str
         """
         return self._PayMode
@@ -517,7 +517,7 @@ class ChargeAttribute(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
+        r"""自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -528,7 +528,7 @@ class ChargeAttribute(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -554,7 +554,7 @@ class ChargeAttribute(AbstractModel):
 
 
 class ClientClusterManagerNodeInfo(AbstractModel):
-    """客户侧集群管理节点信息
+    r"""客户侧集群管理节点信息
 
     """
 
@@ -573,7 +573,7 @@ class ClientClusterManagerNodeInfo(AbstractModel):
 
     @property
     def NodeIp(self):
-        """客户端节点IP
+        r"""客户端节点IP
         :rtype: str
         """
         return self._NodeIp
@@ -584,7 +584,7 @@ class ClientClusterManagerNodeInfo(AbstractModel):
 
     @property
     def NodeInstanceId(self):
-        """节点Instance Id
+        r"""节点Instance Id
         :rtype: str
         """
         return self._NodeInstanceId
@@ -595,7 +595,7 @@ class ClientClusterManagerNodeInfo(AbstractModel):
 
     @property
     def InitialPassword(self):
-        """初始密码
+        r"""初始密码
         :rtype: str
         """
         return self._InitialPassword
@@ -620,7 +620,7 @@ class ClientClusterManagerNodeInfo(AbstractModel):
 
 
 class ClientNodeAttribute(AbstractModel):
-    """客户端节点属性
+    r"""客户端节点属性
 
     """
 
@@ -651,7 +651,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def ClientNodeIp(self):
-        """客户端节点IP
+        r"""客户端节点IP
         :rtype: str
         """
         return self._ClientNodeIp
@@ -662,7 +662,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def Status(self):
-        """客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
+        r"""客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
         :rtype: str
         """
         return self._Status
@@ -673,7 +673,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def ClientType(self):
-        """客户端节点类型，extend(扩展节点)，manager(管理节点)
+        r"""客户端节点类型，extend(扩展节点)，manager(管理节点)
         :rtype: str
         """
         return self._ClientType
@@ -684,7 +684,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def VpcId(self):
-        """节点所属vpcid	
+        r"""节点所属vpcid	
         :rtype: str
         """
         return self._VpcId
@@ -695,7 +695,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def SubnetId(self):
-        """节点所属子网id
+        r"""节点所属子网id
         :rtype: str
         """
         return self._SubnetId
@@ -706,7 +706,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def InstanceId(self):
-        """cvmId
+        r"""cvmId
         :rtype: str
         """
         return self._InstanceId
@@ -717,7 +717,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def MountPoint(self):
-        """自定义挂载点
+        r"""自定义挂载点
         :rtype: str
         """
         return self._MountPoint
@@ -746,7 +746,7 @@ class ClientNodeAttribute(AbstractModel):
 
 
 class ClientToken(AbstractModel):
-    """查询Client Token
+    r"""查询Client Token
 
     """
 
@@ -772,7 +772,7 @@ class ClientToken(AbstractModel):
 
     @property
     def NodeIp(self):
-        """节点 IP
+        r"""节点 IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -784,7 +784,7 @@ class ClientToken(AbstractModel):
 
     @property
     def LocalDirectory(self):
-        """挂载点
+        r"""挂载点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -796,7 +796,7 @@ class ClientToken(AbstractModel):
 
     @property
     def GooseFSDirectory(self):
-        """可以访问的 GooseFS 目录
+        r"""可以访问的 GooseFS 目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -808,7 +808,7 @@ class ClientToken(AbstractModel):
 
     @property
     def Token(self):
-        """token
+        r"""token
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -835,7 +835,7 @@ class ClientToken(AbstractModel):
 
 
 class ClusterRole(AbstractModel):
-    """ClusterRole
+    r"""ClusterRole
 
     """
 
@@ -857,7 +857,7 @@ class ClusterRole(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -868,7 +868,7 @@ class ClusterRole(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名
+        r"""角色名
         :rtype: str
         """
         return self._RoleName
@@ -879,7 +879,7 @@ class ClusterRole(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -890,7 +890,7 @@ class ClusterRole(AbstractModel):
 
     @property
     def DirectoryList(self):
-        """目录列表
+        r"""目录列表
         :rtype: list of str
         """
         return self._DirectoryList
@@ -916,7 +916,7 @@ class ClusterRole(AbstractModel):
 
 
 class CreateDataRepositoryTaskRequest(AbstractModel):
-    """CreateDataRepositoryTask请求参数结构体
+    r"""CreateDataRepositoryTask请求参数结构体
 
     """
 
@@ -947,7 +947,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+        r"""数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
         :rtype: str
         """
         return self._TaskType
@@ -958,7 +958,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶名
+        r"""COS存储桶名
         :rtype: str
         """
         return self._Bucket
@@ -969,7 +969,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -980,7 +980,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TaskPath(self):
-        """对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+        r"""对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
         :rtype: str
         """
         return self._TaskPath
@@ -991,7 +991,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        r"""任务名称
         :rtype: str
         """
         return self._TaskName
@@ -1002,7 +1002,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+        r"""数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
         :rtype: str
         """
         return self._RepositoryType
@@ -1013,7 +1013,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TextLocation(self):
-        """文件列表下载地址，以http开头
+        r"""文件列表下载地址，以http开头
         :rtype: str
         """
         return self._TextLocation
@@ -1042,7 +1042,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
 
 class CreateDataRepositoryTaskResponse(AbstractModel):
-    """CreateDataRepositoryTask返回参数结构体
+    r"""CreateDataRepositoryTask返回参数结构体
 
     """
 
@@ -1058,7 +1058,7 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -1069,7 +1069,7 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1085,7 +1085,7 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
 
 class CreateFileSystemRequest(AbstractModel):
-    """CreateFileSystem请求参数结构体
+    r"""CreateFileSystem请求参数结构体
 
     """
 
@@ -1125,7 +1125,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Type(self):
-        """文件系统类型, 可填goosefs和goosefsx
+        r"""文件系统类型, 可填goosefs和goosefsx
         :rtype: str
         """
         return self._Type
@@ -1136,7 +1136,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Name(self):
-        """文件系统名
+        r"""文件系统名
         :rtype: str
         """
         return self._Name
@@ -1147,7 +1147,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Description(self):
-        """文件系统备注描述
+        r"""文件系统备注描述
         :rtype: str
         """
         return self._Description
@@ -1158,7 +1158,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc网络ID
+        r"""vpc网络ID
         :rtype: str
         """
         return self._VpcId
@@ -1169,7 +1169,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -1180,7 +1180,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """子网所在的可用区
+        r"""子网所在的可用区
         :rtype: str
         """
         return self._Zone
@@ -1191,7 +1191,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """文件系统关联的tag
+        r"""文件系统关联的tag
         :rtype: list of Tag
         """
         return self._Tag
@@ -1202,7 +1202,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def GooseFSxBuildElements(self):
-        """GooseFSx构建时要传递的参数
+        r"""GooseFSx构建时要传递的参数
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxBuildElement`
         """
         return self._GooseFSxBuildElements
@@ -1213,7 +1213,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """客户端集群所属的安全组
+        r"""客户端集群所属的安全组
         :rtype: str
         """
         return self._SecurityGroupId
@@ -1224,7 +1224,7 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def ClusterPort(self):
-        """集群ssh通信端口，默认是22
+        r"""集群ssh通信端口，默认是22
         :rtype: int
         """
         return self._ClusterPort
@@ -1263,7 +1263,7 @@ class CreateFileSystemRequest(AbstractModel):
 
 
 class CreateFileSystemResponse(AbstractModel):
-    """CreateFileSystem返回参数结构体
+    r"""CreateFileSystem返回参数结构体
 
     """
 
@@ -1276,7 +1276,7 @@ class CreateFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1291,7 +1291,7 @@ class CreateFileSystemResponse(AbstractModel):
 
 
 class CreateFilesetRequest(AbstractModel):
-    """CreateFileset请求参数结构体
+    r"""CreateFileset请求参数结构体
 
     """
 
@@ -1319,7 +1319,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -1330,7 +1330,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def FsetName(self):
-        """Fileset名称
+        r"""Fileset名称
         :rtype: str
         """
         return self._FsetName
@@ -1341,7 +1341,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def FsetDir(self):
-        """Fileset目录
+        r"""Fileset目录
         :rtype: str
         """
         return self._FsetDir
@@ -1352,7 +1352,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def QuotaSizeLimit(self):
-        """Fileset容量配额（需带单位G）
+        r"""Fileset容量配额（需带单位G）
         :rtype: str
         """
         return self._QuotaSizeLimit
@@ -1363,7 +1363,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def QuotaFilesLimit(self):
-        """Fileset文件数配额
+        r"""Fileset文件数配额
         :rtype: str
         """
         return self._QuotaFilesLimit
@@ -1374,7 +1374,7 @@ class CreateFilesetRequest(AbstractModel):
 
     @property
     def AuditState(self):
-        """Fileset文件删除操作审计
+        r"""Fileset文件删除操作审计
         :rtype: str
         """
         return self._AuditState
@@ -1402,7 +1402,7 @@ class CreateFilesetRequest(AbstractModel):
 
 
 class CreateFilesetResponse(AbstractModel):
-    """CreateFileset返回参数结构体
+    r"""CreateFileset返回参数结构体
 
     """
 
@@ -1418,7 +1418,7 @@ class CreateFilesetResponse(AbstractModel):
 
     @property
     def FsetId(self):
-        """Fileset id
+        r"""Fileset id
         :rtype: str
         """
         return self._FsetId
@@ -1429,7 +1429,7 @@ class CreateFilesetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1445,7 +1445,7 @@ class CreateFilesetResponse(AbstractModel):
 
 
 class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
-    """DeleteCrossVpcSubnetSupportForClientNode请求参数结构体
+    r"""DeleteCrossVpcSubnetSupportForClientNode请求参数结构体
 
     """
 
@@ -1461,7 +1461,7 @@ class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -1472,7 +1472,7 @@ class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
     @property
     def SubnetInfo(self):
-        """子网信息
+        r"""子网信息
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.SubnetInfo`
         """
         return self._SubnetInfo
@@ -1498,7 +1498,7 @@ class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
 
 class DeleteCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
-    """DeleteCrossVpcSubnetSupportForClientNode返回参数结构体
+    r"""DeleteCrossVpcSubnetSupportForClientNode返回参数结构体
 
     """
 
@@ -1511,7 +1511,7 @@ class DeleteCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1526,7 +1526,7 @@ class DeleteCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
 
 class DeleteFileSystemRequest(AbstractModel):
-    """DeleteFileSystem请求参数结构体
+    r"""DeleteFileSystem请求参数结构体
 
     """
 
@@ -1539,7 +1539,7 @@ class DeleteFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -1562,7 +1562,7 @@ class DeleteFileSystemRequest(AbstractModel):
 
 
 class DeleteFileSystemResponse(AbstractModel):
-    """DeleteFileSystem返回参数结构体
+    r"""DeleteFileSystem返回参数结构体
 
     """
 
@@ -1575,7 +1575,7 @@ class DeleteFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1590,7 +1590,7 @@ class DeleteFileSystemResponse(AbstractModel):
 
 
 class DeleteFilesetRequest(AbstractModel):
-    """DeleteFileset请求参数结构体
+    r"""DeleteFileset请求参数结构体
 
     """
 
@@ -1606,7 +1606,7 @@ class DeleteFilesetRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -1617,7 +1617,7 @@ class DeleteFilesetRequest(AbstractModel):
 
     @property
     def FsetId(self):
-        """Fileset id
+        r"""Fileset id
         :rtype: str
         """
         return self._FsetId
@@ -1641,7 +1641,7 @@ class DeleteFilesetRequest(AbstractModel):
 
 
 class DeleteFilesetResponse(AbstractModel):
-    """DeleteFileset返回参数结构体
+    r"""DeleteFileset返回参数结构体
 
     """
 
@@ -1654,7 +1654,7 @@ class DeleteFilesetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1669,7 +1669,7 @@ class DeleteFilesetResponse(AbstractModel):
 
 
 class DescribeClientNodesRequest(AbstractModel):
-    """DescribeClientNodes请求参数结构体
+    r"""DescribeClientNodes请求参数结构体
 
     """
 
@@ -1682,7 +1682,7 @@ class DescribeClientNodesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统Id
+        r"""文件系统Id
         :rtype: str
         """
         return self._FileSystemId
@@ -1705,7 +1705,7 @@ class DescribeClientNodesRequest(AbstractModel):
 
 
 class DescribeClientNodesResponse(AbstractModel):
-    """DescribeClientNodes返回参数结构体
+    r"""DescribeClientNodes返回参数结构体
 
     """
 
@@ -1721,7 +1721,7 @@ class DescribeClientNodesResponse(AbstractModel):
 
     @property
     def ClientNodes(self):
-        """客户端节点数组
+        r"""客户端节点数组
         :rtype: list of ClientNodeAttribute
         """
         return self._ClientNodes
@@ -1732,7 +1732,7 @@ class DescribeClientNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1753,7 +1753,7 @@ class DescribeClientNodesResponse(AbstractModel):
 
 
 class DescribeClusterClientTokenRequest(AbstractModel):
-    """DescribeClusterClientToken请求参数结构体
+    r"""DescribeClusterClientToken请求参数结构体
 
     """
 
@@ -1766,7 +1766,7 @@ class DescribeClusterClientTokenRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -1789,7 +1789,7 @@ class DescribeClusterClientTokenRequest(AbstractModel):
 
 
 class DescribeClusterClientTokenResponse(AbstractModel):
-    """DescribeClusterClientToken返回参数结构体
+    r"""DescribeClusterClientToken返回参数结构体
 
     """
 
@@ -1805,7 +1805,7 @@ class DescribeClusterClientTokenResponse(AbstractModel):
 
     @property
     def ClientTokens(self):
-        """客户端凭证
+        r"""客户端凭证
         :rtype: list of ClientToken
         """
         return self._ClientTokens
@@ -1816,7 +1816,7 @@ class DescribeClusterClientTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1837,7 +1837,7 @@ class DescribeClusterClientTokenResponse(AbstractModel):
 
 
 class DescribeClusterRoleTokenRequest(AbstractModel):
-    """DescribeClusterRoleToken请求参数结构体
+    r"""DescribeClusterRoleToken请求参数结构体
 
     """
 
@@ -1853,7 +1853,7 @@ class DescribeClusterRoleTokenRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -1864,7 +1864,7 @@ class DescribeClusterRoleTokenRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名
+        r"""角色名
         :rtype: str
         """
         return self._RoleName
@@ -1888,7 +1888,7 @@ class DescribeClusterRoleTokenRequest(AbstractModel):
 
 
 class DescribeClusterRoleTokenResponse(AbstractModel):
-    """DescribeClusterRoleToken返回参数结构体
+    r"""DescribeClusterRoleToken返回参数结构体
 
     """
 
@@ -1904,7 +1904,7 @@ class DescribeClusterRoleTokenResponse(AbstractModel):
 
     @property
     def RoleTokens(self):
-        """角色凭证
+        r"""角色凭证
         :rtype: list of RoleToken
         """
         return self._RoleTokens
@@ -1915,7 +1915,7 @@ class DescribeClusterRoleTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1936,7 +1936,7 @@ class DescribeClusterRoleTokenResponse(AbstractModel):
 
 
 class DescribeClusterRolesRequest(AbstractModel):
-    """DescribeClusterRoles请求参数结构体
+    r"""DescribeClusterRoles请求参数结构体
 
     """
 
@@ -1952,7 +1952,7 @@ class DescribeClusterRolesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._ClusterId
@@ -1963,7 +1963,7 @@ class DescribeClusterRolesRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名
+        r"""角色名
         :rtype: str
         """
         return self._RoleName
@@ -1987,7 +1987,7 @@ class DescribeClusterRolesRequest(AbstractModel):
 
 
 class DescribeClusterRolesResponse(AbstractModel):
-    """DescribeClusterRoles返回参数结构体
+    r"""DescribeClusterRoles返回参数结构体
 
     """
 
@@ -2003,7 +2003,7 @@ class DescribeClusterRolesResponse(AbstractModel):
 
     @property
     def ClusterRoles(self):
-        """集群角色
+        r"""集群角色
         :rtype: list of ClusterRole
         """
         return self._ClusterRoles
@@ -2014,7 +2014,7 @@ class DescribeClusterRolesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2035,7 +2035,7 @@ class DescribeClusterRolesResponse(AbstractModel):
 
 
 class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
-    """DescribeDataRepositoryTaskStatus请求参数结构体
+    r"""DescribeDataRepositoryTaskStatus请求参数结构体
 
     """
 
@@ -2051,7 +2051,7 @@ class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """task id
+        r"""task id
         :rtype: str
         """
         return self._TaskId
@@ -2062,7 +2062,7 @@ class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """file system id
+        r"""file system id
         :rtype: str
         """
         return self._FileSystemId
@@ -2086,7 +2086,7 @@ class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
 
 
 class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
-    """DescribeDataRepositoryTaskStatus返回参数结构体
+    r"""DescribeDataRepositoryTaskStatus返回参数结构体
 
     """
 
@@ -2111,7 +2111,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务id
+        r"""任务id
         :rtype: str
         """
         return self._TaskId
@@ -2122,7 +2122,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
+        r"""任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
         :rtype: int
         """
         return self._Status
@@ -2133,7 +2133,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     @property
     def FinishedFileNumber(self):
-        """已完成的文件数量
+        r"""已完成的文件数量
         :rtype: int
         """
         return self._FinishedFileNumber
@@ -2144,7 +2144,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     @property
     def FinishedCapacity(self):
-        """已完成的数据量
+        r"""已完成的数据量
         :rtype: int
         """
         return self._FinishedCapacity
@@ -2155,7 +2155,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2174,7 +2174,7 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
 
 class DescribeFileSystemBucketsRequest(AbstractModel):
-    """DescribeFileSystemBuckets请求参数结构体
+    r"""DescribeFileSystemBuckets请求参数结构体
 
     """
 
@@ -2187,7 +2187,7 @@ class DescribeFileSystemBucketsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2210,7 +2210,7 @@ class DescribeFileSystemBucketsRequest(AbstractModel):
 
 
 class DescribeFileSystemBucketsResponse(AbstractModel):
-    """DescribeFileSystemBuckets返回参数结构体
+    r"""DescribeFileSystemBuckets返回参数结构体
 
     """
 
@@ -2226,7 +2226,7 @@ class DescribeFileSystemBucketsResponse(AbstractModel):
 
     @property
     def BucketList(self):
-        """bucket列表
+        r"""bucket列表
         :rtype: list of MappedBucket
         """
         return self._BucketList
@@ -2237,7 +2237,7 @@ class DescribeFileSystemBucketsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2258,7 +2258,7 @@ class DescribeFileSystemBucketsResponse(AbstractModel):
 
 
 class DescribeFileSystemsRequest(AbstractModel):
-    """DescribeFileSystems请求参数结构体
+    r"""DescribeFileSystems请求参数结构体
 
     """
 
@@ -2274,7 +2274,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        r"""偏移量
         :rtype: int
         """
         return self._Offset
@@ -2285,7 +2285,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页的数量
+        r"""每页的数量
         :rtype: int
         """
         return self._Limit
@@ -2309,7 +2309,7 @@ class DescribeFileSystemsRequest(AbstractModel):
 
 
 class DescribeFileSystemsResponse(AbstractModel):
-    """DescribeFileSystems返回参数结构体
+    r"""DescribeFileSystems返回参数结构体
 
     """
 
@@ -2328,7 +2328,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def FSAttributeList(self):
-        """文件系统列表
+        r"""文件系统列表
         :rtype: list of FSAttribute
         """
         return self._FSAttributeList
@@ -2339,7 +2339,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总共的文件系统数量
+        r"""总共的文件系统数量
         :rtype: int
         """
         return self._TotalCount
@@ -2350,7 +2350,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2372,7 +2372,7 @@ class DescribeFileSystemsResponse(AbstractModel):
 
 
 class DescribeFilesetGeneralConfigRequest(AbstractModel):
-    """DescribeFilesetGeneralConfig请求参数结构体
+    r"""DescribeFilesetGeneralConfig请求参数结构体
 
     """
 
@@ -2385,7 +2385,7 @@ class DescribeFilesetGeneralConfigRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -2408,7 +2408,7 @@ class DescribeFilesetGeneralConfigRequest(AbstractModel):
 
 
 class DescribeFilesetGeneralConfigResponse(AbstractModel):
-    """DescribeFilesetGeneralConfig返回参数结构体
+    r"""DescribeFilesetGeneralConfig返回参数结构体
 
     """
 
@@ -2427,7 +2427,7 @@ class DescribeFilesetGeneralConfigResponse(AbstractModel):
 
     @property
     def EnforceQuotaOnRoot(self):
-        """配额对root用户生效
+        r"""配额对root用户生效
         :rtype: str
         """
         return self._EnforceQuotaOnRoot
@@ -2438,7 +2438,7 @@ class DescribeFilesetGeneralConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """配置状态
+        r"""配置状态
         :rtype: str
         """
         return self._Status
@@ -2449,7 +2449,7 @@ class DescribeFilesetGeneralConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2466,7 +2466,7 @@ class DescribeFilesetGeneralConfigResponse(AbstractModel):
 
 
 class DescribeFilesetsRequest(AbstractModel):
-    """DescribeFilesets请求参数结构体
+    r"""DescribeFilesets请求参数结构体
 
     """
 
@@ -2485,7 +2485,7 @@ class DescribeFilesetsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -2496,7 +2496,7 @@ class DescribeFilesetsRequest(AbstractModel):
 
     @property
     def FilesetIds(self):
-        """FsetId列表
+        r"""FsetId列表
         :rtype: list of str
         """
         return self._FilesetIds
@@ -2507,7 +2507,7 @@ class DescribeFilesetsRequest(AbstractModel):
 
     @property
     def FilesetDirs(self):
-        """FsetDir列表
+        r"""FsetDir列表
         :rtype: list of str
         """
         return self._FilesetDirs
@@ -2532,7 +2532,7 @@ class DescribeFilesetsRequest(AbstractModel):
 
 
 class DescribeFilesetsResponse(AbstractModel):
-    """DescribeFilesets返回参数结构体
+    r"""DescribeFilesets返回参数结构体
 
     """
 
@@ -2548,7 +2548,7 @@ class DescribeFilesetsResponse(AbstractModel):
 
     @property
     def FilesetList(self):
-        """Fileset列表
+        r"""Fileset列表
         :rtype: list of FilesetInfo
         """
         return self._FilesetList
@@ -2559,7 +2559,7 @@ class DescribeFilesetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2580,7 +2580,7 @@ class DescribeFilesetsResponse(AbstractModel):
 
 
 class DetachFileSystemBucketRequest(AbstractModel):
-    """DetachFileSystemBucket请求参数结构体
+    r"""DetachFileSystemBucket请求参数结构体
 
     """
 
@@ -2596,7 +2596,7 @@ class DetachFileSystemBucketRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2607,7 +2607,7 @@ class DetachFileSystemBucketRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """要解绑的Bucket名
+        r"""要解绑的Bucket名
         :rtype: str
         """
         return self._BucketName
@@ -2631,7 +2631,7 @@ class DetachFileSystemBucketRequest(AbstractModel):
 
 
 class DetachFileSystemBucketResponse(AbstractModel):
-    """DetachFileSystemBucket返回参数结构体
+    r"""DetachFileSystemBucket返回参数结构体
 
     """
 
@@ -2644,7 +2644,7 @@ class DetachFileSystemBucketResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2659,7 +2659,7 @@ class DetachFileSystemBucketResponse(AbstractModel):
 
 
 class ExpandCapacityRequest(AbstractModel):
-    """ExpandCapacity请求参数结构体
+    r"""ExpandCapacity请求参数结构体
 
     """
 
@@ -2678,7 +2678,7 @@ class ExpandCapacityRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2689,7 +2689,7 @@ class ExpandCapacityRequest(AbstractModel):
 
     @property
     def ExpandedCapacity(self):
-        """新增扩容的系统容量
+        r"""新增扩容的系统容量
         :rtype: int
         """
         return self._ExpandedCapacity
@@ -2700,7 +2700,7 @@ class ExpandCapacityRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        """容量修改类型：add/sub
+        r"""容量修改类型：add/sub
         :rtype: str
         """
         return self._ModifyType
@@ -2725,7 +2725,7 @@ class ExpandCapacityRequest(AbstractModel):
 
 
 class ExpandCapacityResponse(AbstractModel):
-    """ExpandCapacity返回参数结构体
+    r"""ExpandCapacity返回参数结构体
 
     """
 
@@ -2738,7 +2738,7 @@ class ExpandCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2753,7 +2753,7 @@ class ExpandCapacityResponse(AbstractModel):
 
 
 class FSAttribute(AbstractModel):
-    """文件系统属性
+    r"""文件系统属性
 
     """
 
@@ -2802,7 +2802,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Type(self):
-        """文件系统类型, 可填goosefs和goosefsx
+        r"""文件系统类型, 可填goosefs和goosefsx
         :rtype: str
         """
         return self._Type
@@ -2813,7 +2813,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -2824,7 +2824,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -2835,7 +2835,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def GooseFSxAttribute(self):
-        """GooseFSx文件系统属性
+        r"""GooseFSx文件系统属性
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxAttribute`
         """
         return self._GooseFSxAttribute
@@ -2846,7 +2846,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Status(self):
-        """文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
+        r"""文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
         :rtype: str
         """
         return self._Status
@@ -2857,7 +2857,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Name(self):
-        """文件系统名
+        r"""文件系统名
         :rtype: str
         """
         return self._Name
@@ -2868,7 +2868,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Description(self):
-        """文件系统备注描述
+        r"""文件系统备注描述
         :rtype: str
         """
         return self._Description
@@ -2879,7 +2879,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc ID
+        r"""vpc ID
         :rtype: str
         """
         return self._VpcId
@@ -2890,7 +2890,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -2901,7 +2901,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Zone(self):
-        """子网所在的可用区
+        r"""子网所在的可用区
         :rtype: str
         """
         return self._Zone
@@ -2912,7 +2912,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def Tag(self):
-        """Tag数组
+        r"""Tag数组
         :rtype: list of Tag
         """
         return self._Tag
@@ -2923,7 +2923,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """更新属性时间
+        r"""更新属性时间
         :rtype: str
         """
         return self._ModifyTime
@@ -2934,7 +2934,7 @@ class FSAttribute(AbstractModel):
 
     @property
     def ChargeAttribute(self):
-        """文件系统付费信息
+        r"""文件系统付费信息
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.ChargeAttribute`
         """
         return self._ChargeAttribute
@@ -2978,7 +2978,7 @@ class FSAttribute(AbstractModel):
 
 
 class FilesetInfo(AbstractModel):
-    """Fileset信息
+    r"""Fileset信息
 
     """
 
@@ -3027,7 +3027,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def FsetId(self):
-        """Fileset id
+        r"""Fileset id
         :rtype: str
         """
         return self._FsetId
@@ -3038,7 +3038,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def FsetName(self):
-        """Fileset名称
+        r"""Fileset名称
         :rtype: str
         """
         return self._FsetName
@@ -3049,7 +3049,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def FsetDir(self):
-        """Fileset目录
+        r"""Fileset目录
         :rtype: str
         """
         return self._FsetDir
@@ -3060,7 +3060,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaSizeLimit(self):
-        """Fileset容量配额限定值
+        r"""Fileset容量配额限定值
         :rtype: str
         """
         return self._QuotaSizeLimit
@@ -3071,7 +3071,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaSizeUsed(self):
-        """已使用容量配额
+        r"""已使用容量配额
         :rtype: str
         """
         return self._QuotaSizeUsed
@@ -3082,7 +3082,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaSizeUsedPercent(self):
-        """容量配额使用占比
+        r"""容量配额使用占比
         :rtype: str
         """
         return self._QuotaSizeUsedPercent
@@ -3093,7 +3093,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaFilesLimit(self):
-        """Fileset文件数配额限定值
+        r"""Fileset文件数配额限定值
         :rtype: str
         """
         return self._QuotaFilesLimit
@@ -3104,7 +3104,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaFilesUsed(self):
-        """已使用文件数配额
+        r"""已使用文件数配额
         :rtype: str
         """
         return self._QuotaFilesUsed
@@ -3115,7 +3115,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def QuotaFilesUsedPercent(self):
-        """文件数配额使用占比
+        r"""文件数配额使用占比
         :rtype: str
         """
         return self._QuotaFilesUsedPercent
@@ -3126,7 +3126,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def AuditState(self):
-        """Fileset审计
+        r"""Fileset审计
         :rtype: str
         """
         return self._AuditState
@@ -3137,7 +3137,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3148,7 +3148,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """修改时间
+        r"""修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -3159,7 +3159,7 @@ class FilesetInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Fileset状态：creating 配置中 active 已生效 modify 修改中
+        r"""Fileset状态：creating 配置中 active 已生效 modify 修改中
         :rtype: str
         """
         return self._Status
@@ -3194,7 +3194,7 @@ class FilesetInfo(AbstractModel):
 
 
 class GooseFSxAttribute(AbstractModel):
-    """GooseFSx文件系统的属性
+    r"""GooseFSx文件系统的属性
 
     """
 
@@ -3216,7 +3216,7 @@ class GooseFSxAttribute(AbstractModel):
 
     @property
     def Model(self):
-        """GooseFSx的型号
+        r"""GooseFSx的型号
         :rtype: str
         """
         return self._Model
@@ -3227,7 +3227,7 @@ class GooseFSxAttribute(AbstractModel):
 
     @property
     def Capacity(self):
-        """容量单位是GB, 例如4608(4.5TB)
+        r"""容量单位是GB, 例如4608(4.5TB)
         :rtype: int
         """
         return self._Capacity
@@ -3238,7 +3238,7 @@ class GooseFSxAttribute(AbstractModel):
 
     @property
     def MappedBucketList(self):
-        """要关联映射的bucket列表
+        r"""要关联映射的bucket列表
         :rtype: list of MappedBucket
         """
         return self._MappedBucketList
@@ -3249,7 +3249,7 @@ class GooseFSxAttribute(AbstractModel):
 
     @property
     def ClientManagerNodeList(self):
-        """客户侧管理节点信息
+        r"""客户侧管理节点信息
         :rtype: list of ClientClusterManagerNodeInfo
         """
         return self._ClientManagerNodeList
@@ -3285,7 +3285,7 @@ class GooseFSxAttribute(AbstractModel):
 
 
 class GooseFSxBuildElement(AbstractModel):
-    """GooseFSx创建时候的属性
+    r"""GooseFSx创建时候的属性
 
     """
 
@@ -3304,7 +3304,7 @@ class GooseFSxBuildElement(AbstractModel):
 
     @property
     def Model(self):
-        """GooseFSx的型号
+        r"""GooseFSx的型号
         :rtype: str
         """
         return self._Model
@@ -3315,7 +3315,7 @@ class GooseFSxBuildElement(AbstractModel):
 
     @property
     def Capacity(self):
-        """容量单位是GB, 例如4608(4.5TB)
+        r"""容量单位是GB, 例如4608(4.5TB)
         :rtype: int
         """
         return self._Capacity
@@ -3326,7 +3326,7 @@ class GooseFSxBuildElement(AbstractModel):
 
     @property
     def MappedBucketList(self):
-        """要关联映射的bucket列表
+        r"""要关联映射的bucket列表
         :rtype: list of MappedBucket
         """
         return self._MappedBucketList
@@ -3356,7 +3356,7 @@ class GooseFSxBuildElement(AbstractModel):
 
 
 class LinuxNodeAttribute(AbstractModel):
-    """添加删除客户端节点列表
+    r"""添加删除客户端节点列表
 
     """
 
@@ -3381,7 +3381,7 @@ class LinuxNodeAttribute(AbstractModel):
 
     @property
     def InstanceId(self):
-        """cvmId
+        r"""cvmId
         :rtype: str
         """
         return self._InstanceId
@@ -3392,7 +3392,7 @@ class LinuxNodeAttribute(AbstractModel):
 
     @property
     def VpcId(self):
-        """节点所属vpcid
+        r"""节点所属vpcid
         :rtype: str
         """
         return self._VpcId
@@ -3403,7 +3403,7 @@ class LinuxNodeAttribute(AbstractModel):
 
     @property
     def SubnetId(self):
-        """节点所属子网id
+        r"""节点所属子网id
         :rtype: str
         """
         return self._SubnetId
@@ -3414,7 +3414,7 @@ class LinuxNodeAttribute(AbstractModel):
 
     @property
     def LinuxClientNodeIp(self):
-        """linux客户端节点地址
+        r"""linux客户端节点地址
         :rtype: str
         """
         return self._LinuxClientNodeIp
@@ -3425,7 +3425,7 @@ class LinuxNodeAttribute(AbstractModel):
 
     @property
     def MountPoint(self):
-        """自定义挂载点
+        r"""自定义挂载点
         :rtype: str
         """
         return self._MountPoint
@@ -3452,7 +3452,7 @@ class LinuxNodeAttribute(AbstractModel):
 
 
 class MappedBucket(AbstractModel):
-    """关联的对象Bucket, 并将其映射到文件系统某个路径上
+    r"""关联的对象Bucket, 并将其映射到文件系统某个路径上
 
     """
 
@@ -3496,7 +3496,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def BucketName(self):
-        """对象存储Bucket名
+        r"""对象存储Bucket名
         :rtype: str
         """
         return self._BucketName
@@ -3507,7 +3507,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def FileSystemPath(self):
-        """映射到的文件系统路径, 默认为/
+        r"""映射到的文件系统路径, 默认为/
         :rtype: str
         """
         return self._FileSystemPath
@@ -3518,7 +3518,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def DataRepositoryTaskAutoStrategy(self):
-        """数据流动的自动策略, 包含加载与沉降。策略可以是多种的组合
+        r"""数据流动的自动策略, 包含加载与沉降。策略可以是多种的组合
 按需加载(OnDemandImport)
 自动加载元数据(AutoImportMeta)
 自动加载数据(AutoImportData)
@@ -3536,7 +3536,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def RuleId(self):
-        """绑定bucket的数据流动策略ID
+        r"""绑定bucket的数据流动策略ID
         :rtype: str
         """
         return self._RuleId
@@ -3547,7 +3547,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def RuleDescription(self):
-        """规则备注与描述
+        r"""规则备注与描述
         :rtype: str
         """
         return self._RuleDescription
@@ -3558,7 +3558,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def Status(self):
-        """桶关联状态 0：关联中 1：关联完成
+        r"""桶关联状态 0：关联中 1：关联完成
         :rtype: int
         """
         return self._Status
@@ -3569,7 +3569,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def AccelerateFlag(self):
-        """是否使用全球加速域名
+        r"""是否使用全球加速域名
         :rtype: bool
         """
         return self._AccelerateFlag
@@ -3580,7 +3580,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def BucketRegion(self):
-        """桶所在的园区
+        r"""桶所在的园区
         :rtype: str
         """
         return self._BucketRegion
@@ -3591,7 +3591,7 @@ class MappedBucket(AbstractModel):
 
     @property
     def Endpoint(self):
-        """自定义Endpoint
+        r"""自定义Endpoint
         :rtype: str
         """
         return self._Endpoint
@@ -3622,7 +3622,7 @@ class MappedBucket(AbstractModel):
 
 
 class ModifyDataRepositoryBandwidthRequest(AbstractModel):
-    """ModifyDataRepositoryBandwidth请求参数结构体
+    r"""ModifyDataRepositoryBandwidth请求参数结构体
 
     """
 
@@ -3638,7 +3638,7 @@ class ModifyDataRepositoryBandwidthRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -3649,7 +3649,7 @@ class ModifyDataRepositoryBandwidthRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽, 单位MB/S
+        r"""带宽, 单位MB/S
         :rtype: int
         """
         return self._Bandwidth
@@ -3673,7 +3673,7 @@ class ModifyDataRepositoryBandwidthRequest(AbstractModel):
 
 
 class ModifyDataRepositoryBandwidthResponse(AbstractModel):
-    """ModifyDataRepositoryBandwidth返回参数结构体
+    r"""ModifyDataRepositoryBandwidth返回参数结构体
 
     """
 
@@ -3686,7 +3686,7 @@ class ModifyDataRepositoryBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3701,7 +3701,7 @@ class ModifyDataRepositoryBandwidthResponse(AbstractModel):
 
 
 class QueryCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
-    """QueryCrossVpcSubnetSupportForClientNode请求参数结构体
+    r"""QueryCrossVpcSubnetSupportForClientNode请求参数结构体
 
     """
 
@@ -3714,7 +3714,7 @@ class QueryCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -3737,7 +3737,7 @@ class QueryCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
 
 
 class QueryCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
-    """QueryCrossVpcSubnetSupportForClientNode返回参数结构体
+    r"""QueryCrossVpcSubnetSupportForClientNode返回参数结构体
 
     """
 
@@ -3753,7 +3753,7 @@ class QueryCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
     @property
     def SubnetInfoCollection(self):
-        """支持的子网信息集合
+        r"""支持的子网信息集合
         :rtype: list of SubnetInfo
         """
         return self._SubnetInfoCollection
@@ -3764,7 +3764,7 @@ class QueryCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3785,7 +3785,7 @@ class QueryCrossVpcSubnetSupportForClientNodeResponse(AbstractModel):
 
 
 class QueryDataRepositoryBandwidthRequest(AbstractModel):
-    """QueryDataRepositoryBandwidth请求参数结构体
+    r"""QueryDataRepositoryBandwidth请求参数结构体
 
     """
 
@@ -3798,7 +3798,7 @@ class QueryDataRepositoryBandwidthRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        r"""文件系统ID
         :rtype: str
         """
         return self._FileSystemId
@@ -3821,7 +3821,7 @@ class QueryDataRepositoryBandwidthRequest(AbstractModel):
 
 
 class QueryDataRepositoryBandwidthResponse(AbstractModel):
-    """QueryDataRepositoryBandwidth返回参数结构体
+    r"""QueryDataRepositoryBandwidth返回参数结构体
 
     """
 
@@ -3843,7 +3843,7 @@ class QueryDataRepositoryBandwidthResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """数据流动带宽, 单位MB/s
+        r"""数据流动带宽, 单位MB/s
         :rtype: int
         """
         return self._Bandwidth
@@ -3854,7 +3854,7 @@ class QueryDataRepositoryBandwidthResponse(AbstractModel):
 
     @property
     def BandwidthStatus(self):
-        """带宽状态。1:待扩容;2:运行中;3:扩容中
+        r"""带宽状态。1:待扩容;2:运行中;3:扩容中
         :rtype: int
         """
         return self._BandwidthStatus
@@ -3865,7 +3865,7 @@ class QueryDataRepositoryBandwidthResponse(AbstractModel):
 
     @property
     def MinBandwidth(self):
-        """能设置的最小带宽, 单位MB/s
+        r"""能设置的最小带宽, 单位MB/s
         :rtype: int
         """
         return self._MinBandwidth
@@ -3876,7 +3876,7 @@ class QueryDataRepositoryBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3894,7 +3894,7 @@ class QueryDataRepositoryBandwidthResponse(AbstractModel):
 
 
 class RoleToken(AbstractModel):
-    """角色凭证
+    r"""角色凭证
 
     """
 
@@ -3910,7 +3910,7 @@ class RoleToken(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名
+        r"""角色名
         :rtype: str
         """
         return self._RoleName
@@ -3921,7 +3921,7 @@ class RoleToken(AbstractModel):
 
     @property
     def Token(self):
-        """用于goosefs client/sdk等
+        r"""用于goosefs client/sdk等
         :rtype: str
         """
         return self._Token
@@ -3945,7 +3945,7 @@ class RoleToken(AbstractModel):
 
 
 class SubnetInfo(AbstractModel):
-    """vpc子网信息
+    r"""vpc子网信息
 
     """
 
@@ -3961,7 +3961,7 @@ class SubnetInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
         :rtype: str
         """
         return self._VpcId
@@ -3972,7 +3972,7 @@ class SubnetInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId
@@ -3996,7 +3996,7 @@ class SubnetInfo(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """文件系统关联的标签
+    r"""文件系统关联的标签
 
     """
 
@@ -4012,7 +4012,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -4023,7 +4023,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -4047,7 +4047,7 @@ class Tag(AbstractModel):
 
 
 class UpdateFilesetGeneralConfigRequest(AbstractModel):
-    """UpdateFilesetGeneralConfig请求参数结构体
+    r"""UpdateFilesetGeneralConfig请求参数结构体
 
     """
 
@@ -4063,7 +4063,7 @@ class UpdateFilesetGeneralConfigRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -4074,7 +4074,7 @@ class UpdateFilesetGeneralConfigRequest(AbstractModel):
 
     @property
     def EnforceQuotaOnRoot(self):
-        """配额对root用户生效
+        r"""配额对root用户生效
         :rtype: str
         """
         return self._EnforceQuotaOnRoot
@@ -4098,7 +4098,7 @@ class UpdateFilesetGeneralConfigRequest(AbstractModel):
 
 
 class UpdateFilesetGeneralConfigResponse(AbstractModel):
-    """UpdateFilesetGeneralConfig返回参数结构体
+    r"""UpdateFilesetGeneralConfig返回参数结构体
 
     """
 
@@ -4111,7 +4111,7 @@ class UpdateFilesetGeneralConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4126,7 +4126,7 @@ class UpdateFilesetGeneralConfigResponse(AbstractModel):
 
 
 class UpdateFilesetRequest(AbstractModel):
-    """UpdateFileset请求参数结构体
+    r"""UpdateFileset请求参数结构体
 
     """
 
@@ -4151,7 +4151,7 @@ class UpdateFilesetRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        r"""文件系统id
         :rtype: str
         """
         return self._FileSystemId
@@ -4162,7 +4162,7 @@ class UpdateFilesetRequest(AbstractModel):
 
     @property
     def FsetId(self):
-        """Fileset id
+        r"""Fileset id
         :rtype: str
         """
         return self._FsetId
@@ -4173,7 +4173,7 @@ class UpdateFilesetRequest(AbstractModel):
 
     @property
     def QuotaSizeLimit(self):
-        """容量配额限定值
+        r"""容量配额限定值
         :rtype: str
         """
         return self._QuotaSizeLimit
@@ -4184,7 +4184,7 @@ class UpdateFilesetRequest(AbstractModel):
 
     @property
     def QuotaFilesLimit(self):
-        """文件数配额限定值
+        r"""文件数配额限定值
         :rtype: str
         """
         return self._QuotaFilesLimit
@@ -4195,7 +4195,7 @@ class UpdateFilesetRequest(AbstractModel):
 
     @property
     def AuditState(self):
-        """Fileset文件删除操作审计
+        r"""Fileset文件删除操作审计
         :rtype: str
         """
         return self._AuditState
@@ -4222,7 +4222,7 @@ class UpdateFilesetRequest(AbstractModel):
 
 
 class UpdateFilesetResponse(AbstractModel):
-    """UpdateFileset返回参数结构体
+    r"""UpdateFileset返回参数结构体
 
     """
 
@@ -4235,7 +4235,7 @@ class UpdateFilesetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

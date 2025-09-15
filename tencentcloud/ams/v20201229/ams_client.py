@@ -27,7 +27,7 @@ class AmsClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """可使用该接口取消审核任务。请求成功后，接口返回RequestId则说明取消成功。<br>默认接口请求频率限制：**20次/秒**。
+        r"""可使用该接口取消审核任务。请求成功后，接口返回RequestId则说明取消成功。<br>默认接口请求频率限制：**20次/秒**。
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.ams.v20201229.models.CancelTaskRequest`
@@ -50,7 +50,7 @@ class AmsClient(AbstractClient):
 
 
     def CreateAudioModerationSyncTask(self, request):
-        """本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您使用腾讯云主账号登录控制台 [开通音频内容安全服务](https://console.cloud.tencent.com/cms/audio/package) 并调整好对应的业务配置。
+        r"""本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您使用腾讯云主账号登录控制台 [开通音频内容安全服务](https://console.cloud.tencent.com/cms/audio/package) 并调整好对应的业务配置。
 
         ### 接口使用说明：
         - 前往“[内容安全控制台-图片内容安全](https://console.cloud.tencent.com/cms/audio/package)”开启使用音频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**10小时**免费调用时长，有效期为1个月。
@@ -85,7 +85,7 @@ class AmsClient(AbstractClient):
 
 
     def CreateAudioModerationTask(self, request):
-        """本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您使用腾讯云主账号登录控制台[开通音频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
+        r"""本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您使用腾讯云主账号登录控制台[开通音频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
 
         ### 功能使用说明：
         - 前往“[内容安全控制台-音频内容安全](https://console.cloud.tencent.com/cms)”开启使用音频内容安全服务，首次开通可获得**10小时**免费调用时长，有效期为1个月。
@@ -149,7 +149,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """通过该接口可查看音频审核任务的详情信息，包括任务状态、检测结果、音频文件识别出的对应文本内容、检测结果所对应的恶意标签及推荐的后续操作等，具体输出内容可查看输出参数示例。
+        r"""通过该接口可查看音频审核任务的详情信息，包括任务状态、检测结果、音频文件识别出的对应文本内容、检测结果所对应的恶意标签及推荐的后续操作等，具体输出内容可查看输出参数示例。
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.ams.v20201229.models.DescribeTaskDetailRequest`
@@ -172,7 +172,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """通过该接口可查看审核任务列表；您也可根据多种业务信息（业务类型、审核结果、任务状态等）筛选审核任务列表。任务列表输出内容包括当前查询的任务总量、任务名称、任务状态、音频审核类型、基于检测结果的恶意标签及其后续操作等，具体输出内容可查看输出参数示例。<br>默认接口请求频率限制：**20次/秒**。
+        r"""通过该接口可查看审核任务列表；您也可根据多种业务信息（业务类型、审核结果、任务状态等）筛选审核任务列表。任务列表输出内容包括当前查询的任务总量、任务名称、任务状态、音频审核类型、基于检测结果的恶意标签及其后续操作等，具体输出内容可查看输出参数示例。<br>默认接口请求频率限制：**20次/秒**。
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.ams.v20201229.models.DescribeTasksRequest`

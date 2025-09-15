@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APM(AbstractModel):
-    """腾讯云应用性能管理服务参数
+    r"""腾讯云应用性能管理服务参数
 
     """
 
@@ -44,7 +44,7 @@ class APM(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用
+        r"""是否启用
         :rtype: bool
         """
         return self._Enable
@@ -55,7 +55,7 @@ class APM(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67,7 +67,7 @@ class APM(AbstractModel):
 
     @property
     def InstanceId(self):
-        """APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
+        r"""APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -79,7 +79,7 @@ class APM(AbstractModel):
 
     @property
     def NeedDelete(self):
-        """是否要删除APM实例
+        r"""是否要删除APM实例
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -106,7 +106,7 @@ class APM(AbstractModel):
 
 
 class AccessLogConfig(AbstractModel):
-    """AccessLog 配置
+    r"""AccessLog 配置
 
     """
 
@@ -143,7 +143,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用
+        r"""是否启用
         :rtype: bool
         """
         return self._Enable
@@ -154,7 +154,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def Template(self):
-        """采用的模板，可选值：istio（默认）、trace
+        r"""采用的模板，可选值：istio（默认）、trace
         :rtype: str
         """
         return self._Template
@@ -165,7 +165,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def SelectedRange(self):
-        """选中的范围
+        r"""选中的范围
         :rtype: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         """
         return self._SelectedRange
@@ -176,7 +176,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def CLS(self):
-        """腾讯云日志服务相关参数
+        r"""腾讯云日志服务相关参数
         :rtype: :class:`tencentcloud.tcm.v20210413.models.CLS`
         """
         return self._CLS
@@ -187,7 +187,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def Encoding(self):
-        """编码格式，可选值：TEXT、JSON
+        r"""编码格式，可选值：TEXT、JSON
         :rtype: str
         """
         return self._Encoding
@@ -198,7 +198,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def Format(self):
-        """日志格式
+        r"""日志格式
         :rtype: str
         """
         return self._Format
@@ -209,7 +209,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def Address(self):
-        """GRPC第三方服务器地址
+        r"""GRPC第三方服务器地址
         :rtype: str
         """
         return self._Address
@@ -220,7 +220,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def EnableServer(self):
-        """是否启用GRPC第三方服务器
+        r"""是否启用GRPC第三方服务器
         :rtype: bool
         """
         return self._EnableServer
@@ -231,7 +231,7 @@ class AccessLogConfig(AbstractModel):
 
     @property
     def EnableStdout(self):
-        """是否启用标准输出
+        r"""是否启用标准输出
         :rtype: bool
         """
         return self._EnableStdout
@@ -266,7 +266,7 @@ class AccessLogConfig(AbstractModel):
 
 
 class ActiveOperation(AbstractModel):
-    """正在执行的异步操作
+    r"""正在执行的异步操作
 
     """
 
@@ -286,7 +286,7 @@ class ActiveOperation(AbstractModel):
 
     @property
     def OperationId(self):
-        """操作Id
+        r"""操作Id
         :rtype: str
         """
         return self._OperationId
@@ -297,7 +297,7 @@ class ActiveOperation(AbstractModel):
 
     @property
     def Type(self):
-        """操作类型，取值范围：
+        r"""操作类型，取值范围：
 - LINK_CLUSTERS: 关联集群
 - RELINK_CLUSTERS: 重新关联集群
 - UNLINK_CLUSTERS: 解关联集群
@@ -325,7 +325,7 @@ class ActiveOperation(AbstractModel):
 
 
 class AutoInjectionNamespaceState(AbstractModel):
-    """描述某一网格在特定命名空间下的自动注入状态
+    r"""描述某一网格在特定命名空间下的自动注入状态
 
     """
 
@@ -342,7 +342,7 @@ class AutoInjectionNamespaceState(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间名称
+        r"""命名空间名称
         :rtype: str
         """
         return self._Namespace
@@ -353,7 +353,7 @@ class AutoInjectionNamespaceState(AbstractModel):
 
     @property
     def State(self):
-        """注入状态
+        r"""注入状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -378,7 +378,7 @@ class AutoInjectionNamespaceState(AbstractModel):
 
 
 class CLS(AbstractModel):
-    """腾讯云日志服务相关参数
+    r"""腾讯云日志服务相关参数
 
     """
 
@@ -404,7 +404,7 @@ class CLS(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用
+        r"""是否启用
         :rtype: bool
         """
         return self._Enable
@@ -415,7 +415,7 @@ class CLS(AbstractModel):
 
     @property
     def LogSet(self):
-        """日志集
+        r"""日志集
         :rtype: str
         """
         return self._LogSet
@@ -426,7 +426,7 @@ class CLS(AbstractModel):
 
     @property
     def Topic(self):
-        """日志主题
+        r"""日志主题
         :rtype: str
         """
         return self._Topic
@@ -437,7 +437,7 @@ class CLS(AbstractModel):
 
     @property
     def NeedDelete(self):
-        """是否删除
+        r"""是否删除
         :rtype: bool
         """
         return self._NeedDelete
@@ -448,7 +448,7 @@ class CLS(AbstractModel):
 
     @property
     def Region(self):
-        """cls 主题创建的地域
+        r"""cls 主题创建的地域
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -476,7 +476,7 @@ class CLS(AbstractModel):
 
 
 class Cluster(AbstractModel):
-    """Mesh集群信息
+    r"""Mesh集群信息
 
     """
 
@@ -526,7 +526,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群Id
+        r"""集群Id
         :rtype: str
         """
         return self._ClusterId
@@ -537,7 +537,7 @@ class Cluster(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -548,7 +548,7 @@ class Cluster(AbstractModel):
 
     @property
     def Role(self):
-        """集群角色，取值范围：
+        r"""集群角色，取值范围：
 - MASTER：控制面所在的主集群
 - REMOTE：主集群管理的远端集群
         :rtype: str
@@ -561,7 +561,7 @@ class Cluster(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络Id
+        r"""私有网络Id
         :rtype: str
         """
         return self._VpcId
@@ -572,7 +572,7 @@ class Cluster(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网Id
+        r"""子网Id
         :rtype: str
         """
         return self._SubnetId
@@ -583,7 +583,7 @@ class Cluster(AbstractModel):
 
     @property
     def DisplayName(self):
-        """名称，只读
+        r"""名称，只读
         :rtype: str
         """
         return self._DisplayName
@@ -594,7 +594,7 @@ class Cluster(AbstractModel):
 
     @property
     def State(self):
-        """状态，只读
+        r"""状态，只读
         :rtype: str
         """
         return self._State
@@ -605,7 +605,7 @@ class Cluster(AbstractModel):
 
     @property
     def LinkedTime(self):
-        """关联时间，只读
+        r"""关联时间，只读
         :rtype: str
         """
         return self._LinkedTime
@@ -616,7 +616,7 @@ class Cluster(AbstractModel):
 
     @property
     def Config(self):
-        """集群配置
+        r"""集群配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ClusterConfig`
         """
         return self._Config
@@ -627,7 +627,7 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
-        """详细状态，只读
+        r"""详细状态，只读
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ClusterStatus`
         """
         return self._Status
@@ -638,7 +638,7 @@ class Cluster(AbstractModel):
 
     @property
     def Type(self):
-        """类型，取值范围：
+        r"""类型，取值范围：
 - TKE
 - EKS
         :rtype: str
@@ -651,7 +651,7 @@ class Cluster(AbstractModel):
 
     @property
     def HostedNamespaces(self):
-        """集群关联的 Namespace 列表
+        r"""集群关联的 Namespace 列表
         :rtype: list of str
         """
         return self._HostedNamespaces
@@ -689,7 +689,7 @@ class Cluster(AbstractModel):
 
 
 class ClusterConfig(AbstractModel):
-    """集群配置
+    r"""集群配置
 
     """
 
@@ -718,7 +718,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def AutoInjectionNamespaceList(self):
-        """自动注入SideCar的NameSpace
+        r"""自动注入SideCar的NameSpace
         :rtype: list of str
         """
         return self._AutoInjectionNamespaceList
@@ -729,7 +729,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def IngressGatewayList(self):
-        """Ingress配置列表
+        r"""Ingress配置列表
         :rtype: list of IngressGateway
         """
         return self._IngressGatewayList
@@ -740,7 +740,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def EgressGatewayList(self):
-        """Egress配置列表
+        r"""Egress配置列表
         :rtype: list of EgressGateway
         """
         return self._EgressGatewayList
@@ -751,7 +751,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def Istiod(self):
-        """Istiod配置
+        r"""Istiod配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.IstiodConfig`
         """
@@ -763,7 +763,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def DeployConfig(self):
-        """部署配置
+        r"""部署配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.DeployConfig`
         """
         return self._DeployConfig
@@ -774,7 +774,7 @@ class ClusterConfig(AbstractModel):
 
     @property
     def AutoInjectionNamespaceStateList(self):
-        """自动注入命名空间状态列表
+        r"""自动注入命名空间状态列表
         :rtype: list of AutoInjectionNamespaceState
         """
         return self._AutoInjectionNamespaceStateList
@@ -821,7 +821,7 @@ class ClusterConfig(AbstractModel):
 
 
 class ClusterStatus(AbstractModel):
-    """集群状态
+    r"""集群状态
 
     """
 
@@ -843,7 +843,7 @@ class ClusterStatus(AbstractModel):
 
     @property
     def LinkState(self):
-        """关联状态，取值范围：
+        r"""关联状态，取值范围：
 - LINKING: 关联中
 - LINKED: 已关联
 - UNLINKING: 解关联中
@@ -859,7 +859,7 @@ class ClusterStatus(AbstractModel):
 
     @property
     def LinkErrorDetail(self):
-        """关联错误详情
+        r"""关联错误详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -884,7 +884,7 @@ class ClusterStatus(AbstractModel):
 
 
 class CreateMeshRequest(AbstractModel):
-    """CreateMesh请求参数结构体
+    r"""CreateMesh请求参数结构体
 
     """
 
@@ -913,7 +913,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Mesh名称
+        r"""Mesh名称
         :rtype: str
         """
         return self._DisplayName
@@ -924,7 +924,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def MeshVersion(self):
-        """Mesh版本
+        r"""Mesh版本
         :rtype: str
         """
         return self._MeshVersion
@@ -935,7 +935,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Mesh类型，取值范围：
+        r"""Mesh类型，取值范围：
 - HOSTED：托管网格
         :rtype: str
         """
@@ -947,7 +947,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Mesh配置
+        r"""Mesh配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
         """
         return self._Config
@@ -958,7 +958,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def ClusterList(self):
-        """关联集群
+        r"""关联集群
         :rtype: list of Cluster
         """
         return self._ClusterList
@@ -969,7 +969,7 @@ class CreateMeshRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -1009,7 +1009,7 @@ class CreateMeshRequest(AbstractModel):
 
 
 class CreateMeshResponse(AbstractModel):
-    """CreateMesh返回参数结构体
+    r"""CreateMesh返回参数结构体
 
     """
 
@@ -1025,7 +1025,7 @@ class CreateMeshResponse(AbstractModel):
 
     @property
     def MeshId(self):
-        """创建的Mesh的Id
+        r"""创建的Mesh的Id
         :rtype: str
         """
         return self._MeshId
@@ -1036,7 +1036,7 @@ class CreateMeshResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1052,13 +1052,13 @@ class CreateMeshResponse(AbstractModel):
 
 
 class CrossRegionConfig(AbstractModel):
-    """负载均衡跨域设置
+    r"""负载均衡跨域设置
 
     """
 
 
 class CustomPromConfig(AbstractModel):
-    """第三方 Prometheus 配置参数
+    r"""第三方 Prometheus 配置参数
 
     """
 
@@ -1092,7 +1092,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def Url(self):
-        """Prometheus 访问地址
+        r"""Prometheus 访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1104,7 +1104,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def AuthType(self):
-        """认证方式
+        r"""认证方式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1116,7 +1116,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def IsPublicAddr(self):
-        """是否公网地址，缺省为 false
+        r"""是否公网地址，缺省为 false
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1128,7 +1128,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def VpcId(self):
-        """虚拟网络id
+        r"""虚拟网络id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1140,7 +1140,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def Username(self):
-        """Prometheus 用户名（用于 basic 认证方式）
+        r"""Prometheus 用户名（用于 basic 认证方式）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1152,7 +1152,7 @@ class CustomPromConfig(AbstractModel):
 
     @property
     def Password(self):
-        """Prometheus 密码（用于 basic 认证方式）
+        r"""Prometheus 密码（用于 basic 认证方式）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1181,7 +1181,7 @@ class CustomPromConfig(AbstractModel):
 
 
 class DeleteMeshRequest(AbstractModel):
-    """DeleteMesh请求参数结构体
+    r"""DeleteMesh请求参数结构体
 
     """
 
@@ -1206,7 +1206,7 @@ class DeleteMeshRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """需要删除的MeshId
+        r"""需要删除的MeshId
         :rtype: str
         """
         return self._MeshId
@@ -1217,7 +1217,7 @@ class DeleteMeshRequest(AbstractModel):
 
     @property
     def NeedDeleteCLS(self):
-        """CLS组件是否被删除
+        r"""CLS组件是否被删除
         :rtype: bool
         """
         return self._NeedDeleteCLS
@@ -1228,7 +1228,7 @@ class DeleteMeshRequest(AbstractModel):
 
     @property
     def NeedDeleteTMP(self):
-        """TMP组件是否被删除
+        r"""TMP组件是否被删除
         :rtype: bool
         """
         return self._NeedDeleteTMP
@@ -1239,7 +1239,7 @@ class DeleteMeshRequest(AbstractModel):
 
     @property
     def NeedDeleteAPM(self):
-        """APM组件是否被删除
+        r"""APM组件是否被删除
         :rtype: bool
         """
         return self._NeedDeleteAPM
@@ -1250,7 +1250,7 @@ class DeleteMeshRequest(AbstractModel):
 
     @property
     def NeedDeleteGrafana(self):
-        """Grafana组件是否被删除
+        r"""Grafana组件是否被删除
         :rtype: bool
         """
         return self._NeedDeleteGrafana
@@ -1277,7 +1277,7 @@ class DeleteMeshRequest(AbstractModel):
 
 
 class DeleteMeshResponse(AbstractModel):
-    """DeleteMesh返回参数结构体
+    r"""DeleteMesh返回参数结构体
 
     """
 
@@ -1290,7 +1290,7 @@ class DeleteMeshResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1305,7 +1305,7 @@ class DeleteMeshResponse(AbstractModel):
 
 
 class DeployConfig(AbstractModel):
-    """部署配置
+    r"""部署配置
 
     """
 
@@ -1323,7 +1323,7 @@ class DeployConfig(AbstractModel):
 
     @property
     def NodeSelectType(self):
-        """部署类型，取值范围：
+        r"""部署类型，取值范围：
 - SPECIFIC：专有模式
 - AUTO：普通模式
         :rtype: str
@@ -1336,7 +1336,7 @@ class DeployConfig(AbstractModel):
 
     @property
     def Nodes(self):
-        """指定的节点
+        r"""指定的节点
         :rtype: list of str
         """
         return self._Nodes
@@ -1360,7 +1360,7 @@ class DeployConfig(AbstractModel):
 
 
 class DescribeAccessLogConfigRequest(AbstractModel):
-    """DescribeAccessLogConfig请求参数结构体
+    r"""DescribeAccessLogConfig请求参数结构体
 
     """
 
@@ -1373,7 +1373,7 @@ class DescribeAccessLogConfigRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """mesh名字
+        r"""mesh名字
         :rtype: str
         """
         return self._MeshId
@@ -1396,7 +1396,7 @@ class DescribeAccessLogConfigRequest(AbstractModel):
 
 
 class DescribeAccessLogConfigResponse(AbstractModel):
-    """DescribeAccessLogConfig返回参数结构体
+    r"""DescribeAccessLogConfig返回参数结构体
 
     """
 
@@ -1441,7 +1441,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def File(self):
-        """访问日志输出路径。默认 /dev/stdout
+        r"""访问日志输出路径。默认 /dev/stdout
         :rtype: str
         """
         return self._File
@@ -1452,7 +1452,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def Format(self):
-        """访问日志的格式。
+        r"""访问日志的格式。
         :rtype: str
         """
         return self._Format
@@ -1463,7 +1463,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def Encoding(self):
-        """访问日志输出编码，可取值为 "TEXT" 或 "JSON"，默认 TEXT"
+        r"""访问日志输出编码，可取值为 "TEXT" 或 "JSON"，默认 TEXT"
         :rtype: str
         """
         return self._Encoding
@@ -1474,7 +1474,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def SelectedRange(self):
-        """选中的范围
+        r"""选中的范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         """
@@ -1486,7 +1486,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def Template(self):
-        """采用的模板，可取值为"istio" 或 "trace"，默认为"istio"
+        r"""采用的模板，可取值为"istio" 或 "trace"，默认为"istio"
         :rtype: str
         """
         return self._Template
@@ -1497,7 +1497,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def CLS(self):
-        """腾讯云日志服务相关参数
+        r"""腾讯云日志服务相关参数
         :rtype: :class:`tencentcloud.tcm.v20210413.models.CLS`
         """
         return self._CLS
@@ -1508,7 +1508,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def Address(self):
-        """GRPC第三方服务器地址
+        r"""GRPC第三方服务器地址
         :rtype: str
         """
         return self._Address
@@ -1519,7 +1519,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def EnableServer(self):
-        """是否启用GRPC第三方服务器
+        r"""是否启用GRPC第三方服务器
         :rtype: bool
         """
         return self._EnableServer
@@ -1530,7 +1530,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def EnableStdout(self):
-        """是否启用标准输出
+        r"""是否启用标准输出
         :rtype: bool
         """
         return self._EnableStdout
@@ -1541,7 +1541,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用访问日志采集
+        r"""是否启用访问日志采集
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1553,7 +1553,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1582,7 +1582,7 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 
 
 class DescribeMeshListRequest(AbstractModel):
-    """DescribeMeshList请求参数结构体
+    r"""DescribeMeshList请求参数结构体
 
     """
 
@@ -1601,7 +1601,7 @@ class DescribeMeshListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -1612,7 +1612,7 @@ class DescribeMeshListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制
+        r"""分页限制
         :rtype: int
         """
         return self._Limit
@@ -1623,7 +1623,7 @@ class DescribeMeshListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移
+        r"""分页偏移
         :rtype: int
         """
         return self._Offset
@@ -1653,7 +1653,7 @@ class DescribeMeshListRequest(AbstractModel):
 
 
 class DescribeMeshListResponse(AbstractModel):
-    """DescribeMeshList返回参数结构体
+    r"""DescribeMeshList返回参数结构体
 
     """
 
@@ -1673,7 +1673,7 @@ class DescribeMeshListResponse(AbstractModel):
 
     @property
     def MeshList(self):
-        """查询到的网格信息
+        r"""查询到的网格信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Mesh
         """
@@ -1685,7 +1685,7 @@ class DescribeMeshListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
         :rtype: int
         """
         return self._Total
@@ -1696,7 +1696,7 @@ class DescribeMeshListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1718,7 +1718,7 @@ class DescribeMeshListResponse(AbstractModel):
 
 
 class DescribeMeshRequest(AbstractModel):
-    """DescribeMesh请求参数结构体
+    r"""DescribeMesh请求参数结构体
 
     """
 
@@ -1731,7 +1731,7 @@ class DescribeMeshRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """需要查询的网格 Id
+        r"""需要查询的网格 Id
         :rtype: str
         """
         return self._MeshId
@@ -1754,7 +1754,7 @@ class DescribeMeshRequest(AbstractModel):
 
 
 class DescribeMeshResponse(AbstractModel):
-    """DescribeMesh返回参数结构体
+    r"""DescribeMesh返回参数结构体
 
     """
 
@@ -1770,7 +1770,7 @@ class DescribeMeshResponse(AbstractModel):
 
     @property
     def Mesh(self):
-        """Mesh详细信息
+        r"""Mesh详细信息
         :rtype: :class:`tencentcloud.tcm.v20210413.models.Mesh`
         """
         return self._Mesh
@@ -1781,7 +1781,7 @@ class DescribeMeshResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1799,7 +1799,7 @@ class DescribeMeshResponse(AbstractModel):
 
 
 class EgressGateway(AbstractModel):
-    """Egress配置
+    r"""Egress配置
 
     """
 
@@ -1821,7 +1821,7 @@ class EgressGateway(AbstractModel):
 
     @property
     def Name(self):
-        """Egress名称
+        r"""Egress名称
         :rtype: str
         """
         return self._Name
@@ -1832,7 +1832,7 @@ class EgressGateway(AbstractModel):
 
     @property
     def Namespace(self):
-        """所在的Namespace
+        r"""所在的Namespace
         :rtype: str
         """
         return self._Namespace
@@ -1843,7 +1843,7 @@ class EgressGateway(AbstractModel):
 
     @property
     def Workload(self):
-        """工作负载配置
+        r"""工作负载配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.WorkloadConfig`
         """
         return self._Workload
@@ -1854,7 +1854,7 @@ class EgressGateway(AbstractModel):
 
     @property
     def Status(self):
-        """工作负载的状态
+        r"""工作负载的状态
         :rtype: :class:`tencentcloud.tcm.v20210413.models.EgressGatewayStatus`
         """
         return self._Status
@@ -1884,7 +1884,7 @@ class EgressGateway(AbstractModel):
 
 
 class EgressGatewayStatus(AbstractModel):
-    """egress gateway 的状态
+    r"""egress gateway 的状态
 
     """
 
@@ -1903,7 +1903,7 @@ class EgressGatewayStatus(AbstractModel):
 
     @property
     def CurrentVersion(self):
-        """egress gateway的当前版本
+        r"""egress gateway的当前版本
         :rtype: str
         """
         return self._CurrentVersion
@@ -1914,7 +1914,7 @@ class EgressGatewayStatus(AbstractModel):
 
     @property
     def DesiredVersion(self):
-        """egress gateway的目标版本
+        r"""egress gateway的目标版本
         :rtype: str
         """
         return self._DesiredVersion
@@ -1925,7 +1925,7 @@ class EgressGatewayStatus(AbstractModel):
 
     @property
     def State(self):
-        """egress gateway的状态，取值：running，upgrading，rollbacking
+        r"""egress gateway的状态，取值：running，upgrading，rollbacking
         :rtype: str
         """
         return self._State
@@ -1950,7 +1950,7 @@ class EgressGatewayStatus(AbstractModel):
 
 
 class ExtensiveCluster(AbstractModel):
-    """内网独占集群配置
+    r"""内网独占集群配置
 
     """
 
@@ -1968,7 +1968,7 @@ class ExtensiveCluster(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1980,7 +1980,7 @@ class ExtensiveCluster(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区
+        r"""可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2005,7 +2005,7 @@ class ExtensiveCluster(AbstractModel):
 
 
 class ExtensiveClusters(AbstractModel):
-    """内网独占集群配置列表
+    r"""内网独占集群配置列表
 
     """
 
@@ -2023,7 +2023,7 @@ class ExtensiveClusters(AbstractModel):
 
     @property
     def L4Clusters(self):
-        """4层集群配置
+        r"""4层集群配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExtensiveCluster
         """
@@ -2035,7 +2035,7 @@ class ExtensiveClusters(AbstractModel):
 
     @property
     def L7Clusters(self):
-        """7层集群配置
+        r"""7层集群配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExtensiveCluster
         """
@@ -2070,7 +2070,7 @@ class ExtensiveClusters(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
+    r"""键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
 
     """
 
@@ -2086,7 +2086,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """需要过滤的字段。
+        r"""需要过滤的字段。
         :rtype: str
         """
         return self._Name
@@ -2097,7 +2097,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """字段的过滤值。
+        r"""字段的过滤值。
         :rtype: list of str
         """
         return self._Values
@@ -2121,7 +2121,7 @@ class Filter(AbstractModel):
 
 
 class GrafanaInfo(AbstractModel):
-    """Grafana信息
+    r"""Grafana信息
 
     """
 
@@ -2149,7 +2149,7 @@ class GrafanaInfo(AbstractModel):
 
     @property
     def Enabled(self):
-        """是否开启
+        r"""是否开启
         :rtype: bool
         """
         return self._Enabled
@@ -2160,7 +2160,7 @@ class GrafanaInfo(AbstractModel):
 
     @property
     def InternalURL(self):
-        """内网地址
+        r"""内网地址
         :rtype: str
         """
         return self._InternalURL
@@ -2171,7 +2171,7 @@ class GrafanaInfo(AbstractModel):
 
     @property
     def PublicURL(self):
-        """公网地址
+        r"""公网地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2183,7 +2183,7 @@ class GrafanaInfo(AbstractModel):
 
     @property
     def PublicFailedReason(self):
-        """公网失败原因
+        r"""公网失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2195,7 +2195,7 @@ class GrafanaInfo(AbstractModel):
 
     @property
     def PublicFailedMessage(self):
-        """公网失败详细信息
+        r"""公网失败详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2223,7 +2223,7 @@ class GrafanaInfo(AbstractModel):
 
 
 class HorizontalPodAutoscalerSpec(AbstractModel):
-    """HPA 配置
+    r"""HPA 配置
 
     """
 
@@ -2242,7 +2242,7 @@ class HorizontalPodAutoscalerSpec(AbstractModel):
 
     @property
     def MinReplicas(self):
-        """最小副本数
+        r"""最小副本数
         :rtype: int
         """
         return self._MinReplicas
@@ -2253,7 +2253,7 @@ class HorizontalPodAutoscalerSpec(AbstractModel):
 
     @property
     def MaxReplicas(self):
-        """最大副本数
+        r"""最大副本数
         :rtype: int
         """
         return self._MaxReplicas
@@ -2264,7 +2264,7 @@ class HorizontalPodAutoscalerSpec(AbstractModel):
 
     @property
     def Metrics(self):
-        """用于计算副本数的指标
+        r"""用于计算副本数的指标
         :rtype: list of MetricSpec
         """
         return self._Metrics
@@ -2294,7 +2294,7 @@ class HorizontalPodAutoscalerSpec(AbstractModel):
 
 
 class IngressGateway(AbstractModel):
-    """IngressGateway 实例信息
+    r"""IngressGateway 实例信息
 
     """
 
@@ -2329,7 +2329,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def Name(self):
-        """IngressGateway 实例名字
+        r"""IngressGateway 实例名字
         :rtype: str
         """
         return self._Name
@@ -2340,7 +2340,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        r"""命名空间
         :rtype: str
         """
         return self._Namespace
@@ -2351,7 +2351,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        r"""集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -2362,7 +2362,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def Service(self):
-        """Service 配置
+        r"""Service 配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.Service`
         """
         return self._Service
@@ -2373,7 +2373,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def Workload(self):
-        """Workload 配置
+        r"""Workload 配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.WorkloadConfig`
         """
         return self._Workload
@@ -2384,7 +2384,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def LoadBalancer(self):
-        """负载均衡配置，自动创建 CLB 时返回
+        r"""负载均衡配置，自动创建 CLB 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.LoadBalancer`
         """
@@ -2396,7 +2396,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def Status(self):
-        """IngressGateway 状态信息，只读
+        r"""IngressGateway 状态信息，只读
         :rtype: :class:`tencentcloud.tcm.v20210413.models.IngressGatewayStatus`
         """
         return self._Status
@@ -2407,7 +2407,7 @@ class IngressGateway(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID，使用已有 CLB 时返回
+        r"""负载均衡实例ID，使用已有 CLB 时返回
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2445,7 +2445,7 @@ class IngressGateway(AbstractModel):
 
 
 class IngressGatewayStatus(AbstractModel):
-    """IngressGateway状态
+    r"""IngressGateway状态
 
     """
 
@@ -2467,7 +2467,7 @@ class IngressGatewayStatus(AbstractModel):
 
     @property
     def LoadBalancer(self):
-        """负载均衡实例状态
+        r"""负载均衡实例状态
         :rtype: :class:`tencentcloud.tcm.v20210413.models.LoadBalancerStatus`
         """
         return self._LoadBalancer
@@ -2478,7 +2478,7 @@ class IngressGatewayStatus(AbstractModel):
 
     @property
     def CurrentVersion(self):
-        """ingress gateway 当前的版本
+        r"""ingress gateway 当前的版本
         :rtype: str
         """
         return self._CurrentVersion
@@ -2489,7 +2489,7 @@ class IngressGatewayStatus(AbstractModel):
 
     @property
     def DesiredVersion(self):
-        """ingress gateway 目标的版本
+        r"""ingress gateway 目标的版本
         :rtype: str
         """
         return self._DesiredVersion
@@ -2500,7 +2500,7 @@ class IngressGatewayStatus(AbstractModel):
 
     @property
     def State(self):
-        """ingress gateway的状态，取值running, upgrading, rollbacking
+        r"""ingress gateway的状态，取值running, upgrading, rollbacking
         :rtype: str
         """
         return self._State
@@ -2528,7 +2528,7 @@ class IngressGatewayStatus(AbstractModel):
 
 
 class InjectConfig(AbstractModel):
-    """自动注入配置
+    r"""自动注入配置
 
     """
 
@@ -2550,7 +2550,7 @@ class InjectConfig(AbstractModel):
 
     @property
     def ExcludeIPRanges(self):
-        """不需要进行代理的 ip 地址范围
+        r"""不需要进行代理的 ip 地址范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2562,7 +2562,7 @@ class InjectConfig(AbstractModel):
 
     @property
     def HoldApplicationUntilProxyStarts(self):
-        """是否等待sidecar启动
+        r"""是否等待sidecar启动
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2574,7 +2574,7 @@ class InjectConfig(AbstractModel):
 
     @property
     def HoldProxyUntilApplicationEnds(self):
-        """是否允许sidecar等待
+        r"""是否允许sidecar等待
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2600,7 +2600,7 @@ class InjectConfig(AbstractModel):
 
 
 class IstioConfig(AbstractModel):
-    """Istio配置
+    r"""Istio配置
 
     """
 
@@ -2632,7 +2632,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def OutboundTrafficPolicy(self):
-        """外部流量策略
+        r"""外部流量策略
         :rtype: str
         """
         return self._OutboundTrafficPolicy
@@ -2643,7 +2643,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def Tracing(self):
-        """调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
+        r"""调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
         :rtype: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
         """
         return self._Tracing
@@ -2654,7 +2654,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def DisablePolicyChecks(self):
-        """禁用策略检查功能
+        r"""禁用策略检查功能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2666,7 +2666,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def EnablePilotHTTP(self):
-        """支持HTTP1.0协议
+        r"""支持HTTP1.0协议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2678,7 +2678,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def DisableHTTPRetry(self):
-        """禁用HTTP重试策略
+        r"""禁用HTTP重试策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2690,7 +2690,7 @@ class IstioConfig(AbstractModel):
 
     @property
     def SmartDNS(self):
-        """SmartDNS策略
+        r"""SmartDNS策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.SmartDNSConfig`
         """
@@ -2723,7 +2723,7 @@ class IstioConfig(AbstractModel):
 
 
 class IstiodConfig(AbstractModel):
-    """Istiod配置
+    r"""Istiod配置
 
     """
 
@@ -2736,7 +2736,7 @@ class IstiodConfig(AbstractModel):
 
     @property
     def Workload(self):
-        """工作负载配置
+        r"""工作负载配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.WorkloadConfig`
         """
         return self._Workload
@@ -2761,7 +2761,7 @@ class IstiodConfig(AbstractModel):
 
 
 class LinkClusterListRequest(AbstractModel):
-    """LinkClusterList请求参数结构体
+    r"""LinkClusterList请求参数结构体
 
     """
 
@@ -2777,7 +2777,7 @@ class LinkClusterListRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """网格Id
+        r"""网格Id
         :rtype: str
         """
         return self._MeshId
@@ -2788,7 +2788,7 @@ class LinkClusterListRequest(AbstractModel):
 
     @property
     def ClusterList(self):
-        """关联集群
+        r"""关联集群
         :rtype: list of Cluster
         """
         return self._ClusterList
@@ -2817,7 +2817,7 @@ class LinkClusterListRequest(AbstractModel):
 
 
 class LinkClusterListResponse(AbstractModel):
-    """LinkClusterList返回参数结构体
+    r"""LinkClusterList返回参数结构体
 
     """
 
@@ -2830,7 +2830,7 @@ class LinkClusterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2845,7 +2845,7 @@ class LinkClusterListResponse(AbstractModel):
 
 
 class LinkPrometheusRequest(AbstractModel):
-    """LinkPrometheus请求参数结构体
+    r"""LinkPrometheus请求参数结构体
 
     """
 
@@ -2861,7 +2861,7 @@ class LinkPrometheusRequest(AbstractModel):
 
     @property
     def MeshID(self):
-        """网格ID
+        r"""网格ID
         :rtype: str
         """
         return self._MeshID
@@ -2872,7 +2872,7 @@ class LinkPrometheusRequest(AbstractModel):
 
     @property
     def Prometheus(self):
-        """配置
+        r"""配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.PrometheusConfig`
         """
         return self._Prometheus
@@ -2898,7 +2898,7 @@ class LinkPrometheusRequest(AbstractModel):
 
 
 class LinkPrometheusResponse(AbstractModel):
-    """LinkPrometheus返回参数结构体
+    r"""LinkPrometheus返回参数结构体
 
     """
 
@@ -2911,7 +2911,7 @@ class LinkPrometheusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2926,7 +2926,7 @@ class LinkPrometheusResponse(AbstractModel):
 
 
 class LoadBalancer(AbstractModel):
-    """负载均衡配置
+    r"""负载均衡配置
 
     """
 
@@ -2986,7 +2986,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LoadBalancerType(self):
-        """负载均衡实例的网络类型：
+        r"""负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
 只读。
         :rtype: str
@@ -2999,7 +2999,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SubnetId(self):
-        """负载均衡实例所在的子网（仅对内网VPC型LB有意义），只读。
+        r"""负载均衡实例所在的子网（仅对内网VPC型LB有意义），只读。
         :rtype: str
         """
         return self._SubnetId
@@ -3010,7 +3010,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def InternetChargeType(self):
-        """TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;只读。
+        r"""TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;只读。
         :rtype: str
         """
         return self._InternetChargeType
@@ -3021,7 +3021,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def InternetMaxBandwidthOut(self):
-        """最大出带宽，单位Mbps，仅对公网属性的LB生效，默认值 10
+        r"""最大出带宽，单位Mbps，仅对公网属性的LB生效，默认值 10
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -3032,7 +3032,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ZoneID(self):
-        """可用区 ID
+        r"""可用区 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3044,7 +3044,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def VipIsp(self):
-        """运营商类型
+        r"""运营商类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3056,7 +3056,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def TgwGroupName(self):
-        """TGW Group 名
+        r"""TGW Group 名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3068,7 +3068,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def AddressIPVersion(self):
-        """IP 类型
+        r"""IP 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3080,7 +3080,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -3092,7 +3092,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ExtensiveClusters(self):
-        """内网独占集群配置列表
+        r"""内网独占集群配置列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ExtensiveClusters`
         """
@@ -3104,7 +3104,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def CrossRegionConfig(self):
-        """负载均衡跨地域配置
+        r"""负载均衡跨地域配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.CrossRegionConfig`
         """
@@ -3116,7 +3116,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def MasterZoneID(self):
-        """设置跨可用区容灾时的主可用区ID
+        r"""设置跨可用区容灾时的主可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3128,7 +3128,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SlaveZoneID(self):
-        """设置跨可用区容灾时的备可用区ID
+        r"""设置跨可用区容灾时的备可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3173,7 +3173,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
 
 class LoadBalancerStatus(AbstractModel):
-    """负载均衡状态信息
+    r"""负载均衡状态信息
 
     """
 
@@ -3196,7 +3196,7 @@ class LoadBalancerStatus(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例 ID
+        r"""负载均衡实例 ID
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3207,7 +3207,7 @@ class LoadBalancerStatus(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        """负载均衡实例名字
+        r"""负载均衡实例名字
         :rtype: str
         """
         return self._LoadBalancerName
@@ -3218,7 +3218,7 @@ class LoadBalancerStatus(AbstractModel):
 
     @property
     def LoadBalancerVip(self):
-        """负载均衡实例 VIP
+        r"""负载均衡实例 VIP
         :rtype: str
         """
         return self._LoadBalancerVip
@@ -3229,7 +3229,7 @@ class LoadBalancerStatus(AbstractModel):
 
     @property
     def LoadBalancerHostname(self):
-        """负载均衡实例 Hostname
+        r"""负载均衡实例 Hostname
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3256,7 +3256,7 @@ class LoadBalancerStatus(AbstractModel):
 
 
 class Mesh(AbstractModel):
-    """Mesh信息
+    r"""Mesh信息
 
     """
 
@@ -3317,7 +3317,7 @@ class Mesh(AbstractModel):
 
     @property
     def MeshId(self):
-        """Mesh实例Id
+        r"""Mesh实例Id
         :rtype: str
         """
         return self._MeshId
@@ -3328,7 +3328,7 @@ class Mesh(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Mesh名称
+        r"""Mesh名称
         :rtype: str
         """
         return self._DisplayName
@@ -3339,7 +3339,7 @@ class Mesh(AbstractModel):
 
     @property
     def Type(self):
-        """Mesh类型，取值范围：
+        r"""Mesh类型，取值范围：
 - STANDALONE：独立网格
 - HOSTED：托管网格
         :rtype: str
@@ -3352,7 +3352,7 @@ class Mesh(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -3363,7 +3363,7 @@ class Mesh(AbstractModel):
 
     @property
     def Version(self):
-        """版本
+        r"""版本
         :rtype: str
         """
         return self._Version
@@ -3374,7 +3374,7 @@ class Mesh(AbstractModel):
 
     @property
     def State(self):
-        """Mesh状态，取值范围：
+        r"""Mesh状态，取值范围：
 - PENDING：等待中
 - CREATING：创建中
 - RUNNING：运行中
@@ -3397,7 +3397,7 @@ class Mesh(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreatedTime
@@ -3408,7 +3408,7 @@ class Mesh(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        """修改时间
+        r"""修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3420,7 +3420,7 @@ class Mesh(AbstractModel):
 
     @property
     def ClusterList(self):
-        """集群列表
+        r"""集群列表
         :rtype: list of Cluster
         """
         return self._ClusterList
@@ -3431,7 +3431,7 @@ class Mesh(AbstractModel):
 
     @property
     def Config(self):
-        """Mesh配置
+        r"""Mesh配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
         """
         return self._Config
@@ -3442,7 +3442,7 @@ class Mesh(AbstractModel):
 
     @property
     def Status(self):
-        """Mesh详细状态
+        r"""Mesh详细状态
         :rtype: :class:`tencentcloud.tcm.v20210413.models.MeshStatus`
         """
         return self._Status
@@ -3453,7 +3453,7 @@ class Mesh(AbstractModel):
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -3501,7 +3501,7 @@ class Mesh(AbstractModel):
 
 
 class MeshConfig(AbstractModel):
-    """网格配置项
+    r"""网格配置项
 
     """
 
@@ -3532,7 +3532,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def Istio(self):
-        """Istio配置
+        r"""Istio配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.IstioConfig`
         """
         return self._Istio
@@ -3543,7 +3543,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def AccessLog(self):
-        """AccessLog配置
+        r"""AccessLog配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.AccessLogConfig`
         """
         return self._AccessLog
@@ -3554,7 +3554,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def Prometheus(self):
-        """Prometheus配置
+        r"""Prometheus配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.PrometheusConfig`
         """
         return self._Prometheus
@@ -3565,7 +3565,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def Inject(self):
-        """自动注入配置
+        r"""自动注入配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.InjectConfig`
         """
@@ -3577,7 +3577,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def Tracing(self):
-        """调用跟踪配置
+        r"""调用跟踪配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
         """
@@ -3589,7 +3589,7 @@ class MeshConfig(AbstractModel):
 
     @property
     def SidecarResources(self):
-        """Sidecar自定义资源
+        r"""Sidecar自定义资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ResourceRequirements`
         """
@@ -3630,7 +3630,7 @@ class MeshConfig(AbstractModel):
 
 
 class MeshStatus(AbstractModel):
-    """Mesh当前状态
+    r"""Mesh当前状态
 
     """
 
@@ -3663,7 +3663,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """服务数量
+        r"""服务数量
         :rtype: int
         """
         return self._ServiceCount
@@ -3674,7 +3674,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def CanaryVersion(self):
-        """灰度升级的版本
+        r"""灰度升级的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3686,7 +3686,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def Prometheus(self):
-        """已废弃
+        r"""已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrometheusStatus
         """
@@ -3698,7 +3698,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def StateMessage(self):
-        """状态附带信息
+        r"""状态附带信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3710,7 +3710,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def ActiveOperationList(self):
-        """正在执行的异步操作
+        r"""正在执行的异步操作
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ActiveOperation
         """
@@ -3722,7 +3722,7 @@ class MeshStatus(AbstractModel):
 
     @property
     def TPS(self):
-        """获取TPS信息
+        r"""获取TPS信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.PrometheusStatus`
         """
@@ -3763,7 +3763,7 @@ class MeshStatus(AbstractModel):
 
 
 class MetricSpec(AbstractModel):
-    """MetricSpec 描述如何通过指定指标进行自动扩缩容
+    r"""MetricSpec 描述如何通过指定指标进行自动扩缩容
 
     """
 
@@ -3782,7 +3782,7 @@ class MetricSpec(AbstractModel):
 
     @property
     def Type(self):
-        """指标来源类型，支持 Pods/Resource
+        r"""指标来源类型，支持 Pods/Resource
         :rtype: str
         """
         return self._Type
@@ -3793,7 +3793,7 @@ class MetricSpec(AbstractModel):
 
     @property
     def Pods(self):
-        """使用自定义指标扩进行自动扩缩容
+        r"""使用自定义指标扩进行自动扩缩容
         :rtype: :class:`tencentcloud.tcm.v20210413.models.PodsMetricSource`
         """
         return self._Pods
@@ -3804,7 +3804,7 @@ class MetricSpec(AbstractModel):
 
     @property
     def Resource(self):
-        """使用资源指标扩进行自动扩缩容
+        r"""使用资源指标扩进行自动扩缩容
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ResourceMetricSource`
         """
         return self._Resource
@@ -3833,7 +3833,7 @@ class MetricSpec(AbstractModel):
 
 
 class ModifyAccessLogConfigRequest(AbstractModel):
-    """ModifyAccessLogConfig请求参数结构体
+    r"""ModifyAccessLogConfig请求参数结构体
 
     """
 
@@ -3873,7 +3873,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """mesh ID
+        r"""mesh ID
         :rtype: str
         """
         return self._MeshId
@@ -3884,7 +3884,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def SelectedRange(self):
-        """选中的范围
+        r"""选中的范围
         :rtype: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         """
         return self._SelectedRange
@@ -3895,7 +3895,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def Template(self):
-        """采用的模板，可选值：istio（默认）、trace、custom
+        r"""采用的模板，可选值：istio（默认）、trace、custom
         :rtype: str
         """
         return self._Template
@@ -3906,7 +3906,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用
+        r"""是否启用
         :rtype: bool
         """
         return self._Enable
@@ -3917,7 +3917,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def CLS(self):
-        """腾讯云日志服务相关参数
+        r"""腾讯云日志服务相关参数
         :rtype: :class:`tencentcloud.tcm.v20210413.models.CLS`
         """
         return self._CLS
@@ -3928,7 +3928,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        """编码格式，可选值：TEXT、JSON
+        r"""编码格式，可选值：TEXT、JSON
         :rtype: str
         """
         return self._Encoding
@@ -3939,7 +3939,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def Format(self):
-        """日志格式
+        r"""日志格式
         :rtype: str
         """
         return self._Format
@@ -3950,7 +3950,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def EnableStdout(self):
-        """是否启用标准输出
+        r"""是否启用标准输出
         :rtype: bool
         """
         return self._EnableStdout
@@ -3961,7 +3961,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def EnableServer(self):
-        """是否启动GRPC第三方服务器
+        r"""是否启动GRPC第三方服务器
         :rtype: bool
         """
         return self._EnableServer
@@ -3972,7 +3972,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """GRPC第三方服务器地址
+        r"""GRPC第三方服务器地址
         :rtype: str
         """
         return self._Address
@@ -4008,7 +4008,7 @@ class ModifyAccessLogConfigRequest(AbstractModel):
 
 
 class ModifyAccessLogConfigResponse(AbstractModel):
-    """ModifyAccessLogConfig返回参数结构体
+    r"""ModifyAccessLogConfig返回参数结构体
 
     """
 
@@ -4021,7 +4021,7 @@ class ModifyAccessLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4036,7 +4036,7 @@ class ModifyAccessLogConfigResponse(AbstractModel):
 
 
 class ModifyMeshRequest(AbstractModel):
-    """ModifyMesh请求参数结构体
+    r"""ModifyMesh请求参数结构体
 
     """
 
@@ -4058,7 +4058,7 @@ class ModifyMeshRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """需要修改的网格Id
+        r"""需要修改的网格Id
         :rtype: str
         """
         return self._MeshId
@@ -4069,7 +4069,7 @@ class ModifyMeshRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """修改的网格名称
+        r"""修改的网格名称
         :rtype: str
         """
         return self._DisplayName
@@ -4080,7 +4080,7 @@ class ModifyMeshRequest(AbstractModel):
 
     @property
     def Config(self):
-        """修改的网格配置
+        r"""修改的网格配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
         """
         return self._Config
@@ -4091,7 +4091,7 @@ class ModifyMeshRequest(AbstractModel):
 
     @property
     def ClusterList(self):
-        """修改的集群配置
+        r"""修改的集群配置
         :rtype: list of Cluster
         """
         return self._ClusterList
@@ -4124,7 +4124,7 @@ class ModifyMeshRequest(AbstractModel):
 
 
 class ModifyMeshResponse(AbstractModel):
-    """ModifyMesh返回参数结构体
+    r"""ModifyMesh返回参数结构体
 
     """
 
@@ -4137,7 +4137,7 @@ class ModifyMeshResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4152,7 +4152,7 @@ class ModifyMeshResponse(AbstractModel):
 
 
 class ModifyTracingConfigRequest(AbstractModel):
-    """ModifyTracingConfig请求参数结构体
+    r"""ModifyTracingConfig请求参数结构体
 
     """
 
@@ -4177,7 +4177,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """mesh名字
+        r"""mesh名字
         :rtype: str
         """
         return self._MeshId
@@ -4188,7 +4188,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用调用跟踪
+        r"""是否启用调用跟踪
         :rtype: bool
         """
         return self._Enable
@@ -4199,7 +4199,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
     @property
     def APM(self):
-        """腾讯云 APM 服务相关参数
+        r"""腾讯云 APM 服务相关参数
         :rtype: :class:`tencentcloud.tcm.v20210413.models.APM`
         """
         return self._APM
@@ -4210,7 +4210,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
     @property
     def Sampling(self):
-        """调用跟踪采样值
+        r"""调用跟踪采样值
         :rtype: float
         """
         return self._Sampling
@@ -4221,7 +4221,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
     @property
     def Zipkin(self):
-        """调用追踪Zipkin相关配置
+        r"""调用追踪Zipkin相关配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.TracingZipkin`
         """
         return self._Zipkin
@@ -4252,7 +4252,7 @@ class ModifyTracingConfigRequest(AbstractModel):
 
 
 class ModifyTracingConfigResponse(AbstractModel):
-    """ModifyTracingConfig返回参数结构体
+    r"""ModifyTracingConfig返回参数结构体
 
     """
 
@@ -4265,7 +4265,7 @@ class ModifyTracingConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4280,7 +4280,7 @@ class ModifyTracingConfigResponse(AbstractModel):
 
 
 class PodsMetricSource(AbstractModel):
-    """PodsMetricSource 定义了如何根据特定指标进行扩缩容
+    r"""PodsMetricSource 定义了如何根据特定指标进行扩缩容
 
     """
 
@@ -4296,7 +4296,7 @@ class PodsMetricSource(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名
+        r"""指标名
         :rtype: str
         """
         return self._MetricName
@@ -4307,7 +4307,7 @@ class PodsMetricSource(AbstractModel):
 
     @property
     def TargetAverageValue(self):
-        """目标值
+        r"""目标值
         :rtype: str
         """
         return self._TargetAverageValue
@@ -4331,7 +4331,7 @@ class PodsMetricSource(AbstractModel):
 
 
 class PrometheusConfig(AbstractModel):
-    """Prometheus 配置
+    r"""Prometheus 配置
 
     """
 
@@ -4357,7 +4357,7 @@ class PrometheusConfig(AbstractModel):
 
     @property
     def VpcId(self):
-        """虚拟网络Id
+        r"""虚拟网络Id
         :rtype: str
         """
         return self._VpcId
@@ -4368,7 +4368,7 @@ class PrometheusConfig(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网Id
+        r"""子网Id
         :rtype: str
         """
         return self._SubnetId
@@ -4379,7 +4379,7 @@ class PrometheusConfig(AbstractModel):
 
     @property
     def Region(self):
-        """地域
+        r"""地域
         :rtype: str
         """
         return self._Region
@@ -4390,7 +4390,7 @@ class PrometheusConfig(AbstractModel):
 
     @property
     def InstanceId(self):
-        """关联已存在实例Id，不填则默认创建
+        r"""关联已存在实例Id，不填则默认创建
         :rtype: str
         """
         return self._InstanceId
@@ -4401,7 +4401,7 @@ class PrometheusConfig(AbstractModel):
 
     @property
     def CustomProm(self):
-        """第三方 Prometheus
+        r"""第三方 Prometheus
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.CustomPromConfig`
         """
@@ -4431,7 +4431,7 @@ class PrometheusConfig(AbstractModel):
 
 
 class PrometheusStatus(AbstractModel):
-    """Prometheus状态信息
+    r"""Prometheus状态信息
 
     """
 
@@ -4467,7 +4467,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def PrometheusId(self):
-        """Prometheus Id
+        r"""Prometheus Id
         :rtype: str
         """
         return self._PrometheusId
@@ -4478,7 +4478,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def DisplayName(self):
-        """展示名称
+        r"""展示名称
         :rtype: str
         """
         return self._DisplayName
@@ -4489,7 +4489,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        r"""实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4500,7 +4500,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def VpcId(self):
-        """虚拟网络Id
+        r"""虚拟网络Id
         :rtype: str
         """
         return self._VpcId
@@ -4511,7 +4511,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
         :rtype: str
         """
         return self._State
@@ -4522,7 +4522,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def Region(self):
-        """地区
+        r"""地区
         :rtype: str
         """
         return self._Region
@@ -4533,7 +4533,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def Grafana(self):
-        """Grafana信息
+        r"""Grafana信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcm.v20210413.models.GrafanaInfo`
         """
@@ -4545,7 +4545,7 @@ class PrometheusStatus(AbstractModel):
 
     @property
     def Type(self):
-        """Prometheus 类型
+        r"""Prometheus 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4578,7 +4578,7 @@ class PrometheusStatus(AbstractModel):
 
 
 class Resource(AbstractModel):
-    """Resource 定义了资源类型和数量
+    r"""Resource 定义了资源类型和数量
 
     """
 
@@ -4594,7 +4594,7 @@ class Resource(AbstractModel):
 
     @property
     def Name(self):
-        """资源类型 cpu/memory
+        r"""资源类型 cpu/memory
         :rtype: str
         """
         return self._Name
@@ -4605,7 +4605,7 @@ class Resource(AbstractModel):
 
     @property
     def Quantity(self):
-        """资源数量
+        r"""资源数量
         :rtype: str
         """
         return self._Quantity
@@ -4629,7 +4629,7 @@ class Resource(AbstractModel):
 
 
 class ResourceMetricSource(AbstractModel):
-    """ResourceMetricSource 定义了如何根据已知类型的资源指标进行扩缩容
+    r"""ResourceMetricSource 定义了如何根据已知类型的资源指标进行扩缩容
 
     """
 
@@ -4648,7 +4648,7 @@ class ResourceMetricSource(AbstractModel):
 
     @property
     def Name(self):
-        """资源名称 cpu/memory
+        r"""资源名称 cpu/memory
         :rtype: str
         """
         return self._Name
@@ -4659,7 +4659,7 @@ class ResourceMetricSource(AbstractModel):
 
     @property
     def TargetAverageUtilization(self):
-        """目标平均利用率
+        r"""目标平均利用率
         :rtype: int
         """
         return self._TargetAverageUtilization
@@ -4670,7 +4670,7 @@ class ResourceMetricSource(AbstractModel):
 
     @property
     def TargetAverageValue(self):
-        """目标平均值
+        r"""目标平均值
         :rtype: str
         """
         return self._TargetAverageValue
@@ -4695,7 +4695,7 @@ class ResourceMetricSource(AbstractModel):
 
 
 class ResourceRequirements(AbstractModel):
-    """ResourceRequirements 描述了计算资源需求。
+    r"""ResourceRequirements 描述了计算资源需求。
 
     """
 
@@ -4711,7 +4711,7 @@ class ResourceRequirements(AbstractModel):
 
     @property
     def Limits(self):
-        """Limits 描述了允许的最大计算资源量。
+        r"""Limits 描述了允许的最大计算资源量。
         :rtype: list of Resource
         """
         return self._Limits
@@ -4722,7 +4722,7 @@ class ResourceRequirements(AbstractModel):
 
     @property
     def Requests(self):
-        """Requests 描述所需的最小计算资源量。
+        r"""Requests 描述所需的最小计算资源量。
         :rtype: list of Resource
         """
         return self._Requests
@@ -4756,7 +4756,7 @@ class ResourceRequirements(AbstractModel):
 
 
 class SelectedItems(AbstractModel):
-    """选中的项目
+    r"""选中的项目
 
     """
 
@@ -4778,7 +4778,7 @@ class SelectedItems(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        r"""命名空间
         :rtype: str
         """
         return self._Namespace
@@ -4789,7 +4789,7 @@ class SelectedItems(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称
+        r"""集群名称
         :rtype: str
         """
         return self._ClusterName
@@ -4800,7 +4800,7 @@ class SelectedItems(AbstractModel):
 
     @property
     def ItemName(self):
-        """选中项目名字
+        r"""选中项目名字
         :rtype: str
         """
         return self._ItemName
@@ -4811,7 +4811,7 @@ class SelectedItems(AbstractModel):
 
     @property
     def Gateways(self):
-        """ingress gw的名称列表
+        r"""ingress gw的名称列表
         :rtype: list of str
         """
         return self._Gateways
@@ -4837,7 +4837,7 @@ class SelectedItems(AbstractModel):
 
 
 class SelectedRange(AbstractModel):
-    """被选中的范围
+    r"""被选中的范围
 
     """
 
@@ -4853,7 +4853,7 @@ class SelectedRange(AbstractModel):
 
     @property
     def Items(self):
-        """选中的项目详细内容
+        r"""选中的项目详细内容
         :rtype: list of SelectedItems
         """
         return self._Items
@@ -4864,7 +4864,7 @@ class SelectedRange(AbstractModel):
 
     @property
     def All(self):
-        """是否全选
+        r"""是否全选
         :rtype: bool
         """
         return self._All
@@ -4893,7 +4893,7 @@ class SelectedRange(AbstractModel):
 
 
 class Service(AbstractModel):
-    """Service信息
+    r"""Service信息
 
     """
 
@@ -4912,7 +4912,7 @@ class Service(AbstractModel):
 
     @property
     def Type(self):
-        """ClusterIP/NodePort/LoadBalancer
+        r"""ClusterIP/NodePort/LoadBalancer
         :rtype: str
         """
         return self._Type
@@ -4923,7 +4923,7 @@ class Service(AbstractModel):
 
     @property
     def CLBDirectAccess(self):
-        """是否开启LB直通Pod
+        r"""是否开启LB直通Pod
         :rtype: bool
         """
         return self._CLBDirectAccess
@@ -4934,7 +4934,7 @@ class Service(AbstractModel):
 
     @property
     def ExternalTrafficPolicy(self):
-        """服务是否希望将外部流量路由到节点本地或集群范围的端点。 有两个可用选项：Cluster（默认）和 Local。Cluster 隐藏了客户端源 IP，可能导致第二跳到另一个节点；Local 保留客户端源 IP 并避免 LoadBalancer 和 NodePort 类型服务的第二跳。
+        r"""服务是否希望将外部流量路由到节点本地或集群范围的端点。 有两个可用选项：Cluster（默认）和 Local。Cluster 隐藏了客户端源 IP，可能导致第二跳到另一个节点；Local 保留客户端源 IP 并避免 LoadBalancer 和 NodePort 类型服务的第二跳。
         :rtype: str
         """
         return self._ExternalTrafficPolicy
@@ -4959,7 +4959,7 @@ class Service(AbstractModel):
 
 
 class SmartDNSConfig(AbstractModel):
-    """智能DNS配置
+    r"""智能DNS配置
 
     """
 
@@ -4977,7 +4977,7 @@ class SmartDNSConfig(AbstractModel):
 
     @property
     def IstioMetaDNSCapture(self):
-        """开启DNS代理
+        r"""开启DNS代理
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4989,7 +4989,7 @@ class SmartDNSConfig(AbstractModel):
 
     @property
     def IstioMetaDNSAutoAllocate(self):
-        """开启自动地址分配
+        r"""开启自动地址分配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5014,7 +5014,7 @@ class SmartDNSConfig(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -5033,7 +5033,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._Key
@@ -5044,7 +5044,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._Value
@@ -5055,7 +5055,7 @@ class Tag(AbstractModel):
 
     @property
     def Passthrough(self):
-        """是否透传给其他关联产品
+        r"""是否透传给其他关联产品
         :rtype: bool
         """
         return self._Passthrough
@@ -5080,7 +5080,7 @@ class Tag(AbstractModel):
 
 
 class TracingConfig(AbstractModel):
-    """调用链配置
+    r"""调用链配置
 
     """
 
@@ -5102,7 +5102,7 @@ class TracingConfig(AbstractModel):
 
     @property
     def Sampling(self):
-        """调用链采样率，百分比
+        r"""调用链采样率，百分比
         :rtype: float
         """
         return self._Sampling
@@ -5113,7 +5113,7 @@ class TracingConfig(AbstractModel):
 
     @property
     def Enable(self):
-        """是否启用调用跟踪
+        r"""是否启用调用跟踪
         :rtype: bool
         """
         return self._Enable
@@ -5124,7 +5124,7 @@ class TracingConfig(AbstractModel):
 
     @property
     def APM(self):
-        """腾讯云 APM 服务相关参数
+        r"""腾讯云 APM 服务相关参数
         :rtype: :class:`tencentcloud.tcm.v20210413.models.APM`
         """
         return self._APM
@@ -5135,7 +5135,7 @@ class TracingConfig(AbstractModel):
 
     @property
     def Zipkin(self):
-        """启动第三方服务器的地址
+        r"""启动第三方服务器的地址
         :rtype: :class:`tencentcloud.tcm.v20210413.models.TracingZipkin`
         """
         return self._Zipkin
@@ -5165,7 +5165,7 @@ class TracingConfig(AbstractModel):
 
 
 class TracingZipkin(AbstractModel):
-    """调用追踪的Zipkin设置
+    r"""调用追踪的Zipkin设置
 
     """
 
@@ -5178,7 +5178,7 @@ class TracingZipkin(AbstractModel):
 
     @property
     def Address(self):
-        """Zipkin调用地址
+        r"""Zipkin调用地址
         :rtype: str
         """
         return self._Address
@@ -5201,7 +5201,7 @@ class TracingZipkin(AbstractModel):
 
 
 class UnlinkClusterRequest(AbstractModel):
-    """UnlinkCluster请求参数结构体
+    r"""UnlinkCluster请求参数结构体
 
     """
 
@@ -5217,7 +5217,7 @@ class UnlinkClusterRequest(AbstractModel):
 
     @property
     def MeshId(self):
-        """网格Id
+        r"""网格Id
         :rtype: str
         """
         return self._MeshId
@@ -5228,7 +5228,7 @@ class UnlinkClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """取消关联的集群Id
+        r"""取消关联的集群Id
         :rtype: str
         """
         return self._ClusterId
@@ -5252,7 +5252,7 @@ class UnlinkClusterRequest(AbstractModel):
 
 
 class UnlinkClusterResponse(AbstractModel):
-    """UnlinkCluster返回参数结构体
+    r"""UnlinkCluster返回参数结构体
 
     """
 
@@ -5265,7 +5265,7 @@ class UnlinkClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5280,7 +5280,7 @@ class UnlinkClusterResponse(AbstractModel):
 
 
 class UnlinkPrometheusRequest(AbstractModel):
-    """UnlinkPrometheus请求参数结构体
+    r"""UnlinkPrometheus请求参数结构体
 
     """
 
@@ -5293,7 +5293,7 @@ class UnlinkPrometheusRequest(AbstractModel):
 
     @property
     def MeshID(self):
-        """网格ID
+        r"""网格ID
         :rtype: str
         """
         return self._MeshID
@@ -5316,7 +5316,7 @@ class UnlinkPrometheusRequest(AbstractModel):
 
 
 class UnlinkPrometheusResponse(AbstractModel):
-    """UnlinkPrometheus返回参数结构体
+    r"""UnlinkPrometheus返回参数结构体
 
     """
 
@@ -5329,7 +5329,7 @@ class UnlinkPrometheusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5344,7 +5344,7 @@ class UnlinkPrometheusResponse(AbstractModel):
 
 
 class WorkloadConfig(AbstractModel):
-    """工作负载配置
+    r"""工作负载配置
 
     """
 
@@ -5373,7 +5373,7 @@ IN_EXCLUSIVE_NODE_POOL：独占节点池
 
     @property
     def Replicas(self):
-        """工作副本数
+        r"""工作副本数
         :rtype: int
         """
         return self._Replicas
@@ -5384,7 +5384,7 @@ IN_EXCLUSIVE_NODE_POOL：独占节点池
 
     @property
     def Resources(self):
-        """资源配置
+        r"""资源配置
         :rtype: :class:`tencentcloud.tcm.v20210413.models.ResourceRequirements`
         """
         return self._Resources
@@ -5395,7 +5395,7 @@ IN_EXCLUSIVE_NODE_POOL：独占节点池
 
     @property
     def HorizontalPodAutoscaler(self):
-        """HPA策略
+        r"""HPA策略
         :rtype: :class:`tencentcloud.tcm.v20210413.models.HorizontalPodAutoscalerSpec`
         """
         return self._HorizontalPodAutoscaler
@@ -5406,7 +5406,7 @@ IN_EXCLUSIVE_NODE_POOL：独占节点池
 
     @property
     def SelectedNodeList(self):
-        """部署到指定节点
+        r"""部署到指定节点
         :rtype: list of str
         """
         return self._SelectedNodeList
@@ -5417,7 +5417,7 @@ IN_EXCLUSIVE_NODE_POOL：独占节点池
 
     @property
     def DeployMode(self):
-        """组件的部署模式，取值说明：
+        r"""组件的部署模式，取值说明：
 IN_GENERAL_NODE：常规节点
 IN_EKLET：eklet 节点
 IN_SHARED_NODE_POOL：共享节电池

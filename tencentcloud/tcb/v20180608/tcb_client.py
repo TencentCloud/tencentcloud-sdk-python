@@ -27,7 +27,7 @@ class TcbClient(AbstractClient):
 
 
     def BindEnvGateway(self, request):
-        """绑定另外一个环境下的网关，callContainer请求可以访问到该网关
+        r"""绑定另外一个环境下的网关，callContainer请求可以访问到该网关
 
         :param request: Request instance for BindEnvGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.BindEnvGatewayRequest`
@@ -50,7 +50,7 @@ class TcbClient(AbstractClient):
 
 
     def CheckTcbService(self, request):
-        """检查是否开通Tcb服务
+        r"""检查是否开通Tcb服务
 
         :param request: Request instance for CheckTcbService.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CheckTcbServiceRequest`
@@ -73,7 +73,7 @@ class TcbClient(AbstractClient):
 
 
     def CommonServiceAPI(self, request):
-        """TCB云API统一入口
+        r"""TCB云API统一入口
 
         :param request: Request instance for CommonServiceAPI.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CommonServiceAPIRequest`
@@ -96,7 +96,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateAndDeployCloudBaseProject(self, request):
-        """创建云开发项目
+        r"""创建云开发项目
 
         :param request: Request instance for CreateAndDeployCloudBaseProject.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateAndDeployCloudBaseProjectRequest`
@@ -119,7 +119,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateAuthDomain(self, request):
-        """增加安全域名
+        r"""增加安全域名
 
         :param request: Request instance for CreateAuthDomain.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateAuthDomainRequest`
@@ -142,7 +142,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateCloudBaseRunResource(self, request):
-        """开通容器托管的资源，包括集群创建，VPC配置，异步任务创建，镜像托管，Coding等，查看创建结果需要根据DescribeCloudBaseRunResource接口来查看
+        r"""开通容器托管的资源，包括集群创建，VPC配置，异步任务创建，镜像托管，Coding等，查看创建结果需要根据DescribeCloudBaseRunResource接口来查看
 
         :param request: Request instance for CreateCloudBaseRunResource.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunResourceRequest`
@@ -165,7 +165,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateCloudBaseRunServerVersion(self, request):
-        """创建服务版本
+        r"""创建服务版本
 
         :param request: Request instance for CreateCloudBaseRunServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunServerVersionRequest`
@@ -188,7 +188,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateHostingDomain(self, request):
-        """创建托管域名
+        r"""创建托管域名
 
         :param request: Request instance for CreateHostingDomain.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateHostingDomainRequest`
@@ -211,7 +211,7 @@ class TcbClient(AbstractClient):
 
 
     def CreatePostpayPackage(self, request):
-        """开通后付费资源
+        r"""开通后付费资源
 
         :param request: Request instance for CreatePostpayPackage.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreatePostpayPackageRequest`
@@ -234,7 +234,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateStandaloneGateway(self, request):
-        """本接口（CreateStandaloneGateway）用于创建独立网关。
+        r"""本接口（CreateStandaloneGateway）用于创建独立网关。
 
         :param request: Request instance for CreateStandaloneGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateStandaloneGatewayRequest`
@@ -257,7 +257,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateStaticStore(self, request):
-        """创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
+        r"""创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
 
         :param request: Request instance for CreateStaticStore.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateStaticStoreRequest`
@@ -280,7 +280,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateWxCloudBaseRunEnv(self, request):
-        """创建微信云托管
+        r"""创建微信云托管
 
         :param request: Request instance for CreateWxCloudBaseRunEnv.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunEnvRequest`
@@ -303,7 +303,7 @@ class TcbClient(AbstractClient):
 
 
     def CreateWxCloudBaseRunServerDBCluster(self, request):
-        """开通微信云托管MySQL数据库服务
+        r"""开通微信云托管MySQL数据库服务
 
         :param request: Request instance for CreateWxCloudBaseRunServerDBCluster.
         :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunServerDBClusterRequest`
@@ -326,7 +326,7 @@ class TcbClient(AbstractClient):
 
 
     def DeleteCloudBaseProjectLatestVersion(self, request):
-        """删除云项目
+        r"""删除云项目
 
         :param request: Request instance for DeleteCloudBaseProjectLatestVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseProjectLatestVersionRequest`
@@ -349,7 +349,7 @@ class TcbClient(AbstractClient):
 
 
     def DeleteCloudBaseRunServerVersion(self, request):
-        """删除服务版本
+        r"""删除服务版本
 
         :param request: Request instance for DeleteCloudBaseRunServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseRunServerVersionRequest`
@@ -372,7 +372,7 @@ class TcbClient(AbstractClient):
 
 
     def DeleteEndUser(self, request):
-        """删除终端用户
+        r"""删除终端用户
 
         :param request: Request instance for DeleteEndUser.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteEndUserRequest`
@@ -395,7 +395,7 @@ class TcbClient(AbstractClient):
 
 
     def DeleteGatewayVersion(self, request):
-        """删除网关某版本
+        r"""删除网关某版本
 
         :param request: Request instance for DeleteGatewayVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteGatewayVersionRequest`
@@ -418,7 +418,7 @@ class TcbClient(AbstractClient):
 
 
     def DeleteWxGatewayRoute(self, request):
-        """删除安全网关路由
+        r"""删除安全网关路由
 
         :param request: Request instance for DeleteWxGatewayRoute.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteWxGatewayRouteRequest`
@@ -441,7 +441,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeActivityRecord(self, request):
-        """查询活动记录信息
+        r"""查询活动记录信息
 
         :param request: Request instance for DescribeActivityRecord.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeActivityRecordRequest`
@@ -464,7 +464,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeAuthDomains(self, request):
-        """获取安全域名列表
+        r"""获取安全域名列表
 
         :param request: Request instance for DescribeAuthDomains.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeAuthDomainsRequest`
@@ -487,7 +487,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeBaasPackageList(self, request):
-        """获取新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+        r"""获取新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
 
         :param request: Request instance for DescribeBaasPackageList.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeBaasPackageListRequest`
@@ -510,7 +510,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeBillingInfo(self, request):
-        """获取计费相关信息
+        r"""获取计费相关信息
 
         :param request: Request instance for DescribeBillingInfo.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeBillingInfoRequest`
@@ -533,7 +533,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCbrServerVersion(self, request):
-        """查询服务版本的详情
+        r"""查询服务版本的详情
 
         :param request: Request instance for DescribeCbrServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCbrServerVersionRequest`
@@ -556,7 +556,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseBuildService(self, request):
-        """获取云托管代码上传url
+        r"""获取云托管代码上传url
 
         :param request: Request instance for DescribeCloudBaseBuildService.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseBuildServiceRequest`
@@ -579,7 +579,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseProjectLatestVersionList(self, request):
-        """获取云开发项目列表
+        r"""获取云开发项目列表
 
         :param request: Request instance for DescribeCloudBaseProjectLatestVersionList.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectLatestVersionListRequest`
@@ -602,7 +602,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseProjectVersionList(self, request):
-        """云项目部署列表
+        r"""云项目部署列表
 
         :param request: Request instance for DescribeCloudBaseProjectVersionList.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectVersionListRequest`
@@ -625,7 +625,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunAllVpcs(self, request):
-        """查询环境下所有的vpc列表
+        r"""查询环境下所有的vpc列表
 
         :param request: Request instance for DescribeCloudBaseRunAllVpcs.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunAllVpcsRequest`
@@ -648,7 +648,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunConfForGateWay(self, request):
-        """独立网关中拉取云托管服务对应的配置信息
+        r"""独立网关中拉取云托管服务对应的配置信息
 
         :param request: Request instance for DescribeCloudBaseRunConfForGateWay.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayRequest`
@@ -671,7 +671,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunOneClickTaskExternal(self, request):
-        """查询一键部署任务 （特定接口：外部查询使用）
+        r"""查询一键部署任务 （特定接口：外部查询使用）
 
         :param request: Request instance for DescribeCloudBaseRunOneClickTaskExternal.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOneClickTaskExternalRequest`
@@ -694,7 +694,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunOperationTypes(self, request):
-        """查询服务、版本和操作类型
+        r"""查询服务、版本和操作类型
 
         :param request: Request instance for DescribeCloudBaseRunOperationTypes.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOperationTypesRequest`
@@ -717,7 +717,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunPodList(self, request):
-        """查询云托管服务版本容器列表
+        r"""查询云托管服务版本容器列表
 
         :param request: Request instance for DescribeCloudBaseRunPodList.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunPodListRequest`
@@ -740,7 +740,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunResource(self, request):
-        """查看容器托管的集群状态
+        r"""查看容器托管的集群状态
 
         :param request: Request instance for DescribeCloudBaseRunResource.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunResourceRequest`
@@ -763,7 +763,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunResourceForExtend(self, request):
-        """查看容器托管的集群状态扩展使用
+        r"""查看容器托管的集群状态扩展使用
 
         :param request: Request instance for DescribeCloudBaseRunResourceForExtend.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunResourceForExtendRequest`
@@ -786,7 +786,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunServer(self, request):
-        """查询单个服务的详情，版本以及详情
+        r"""查询单个服务的详情，版本以及详情
 
         :param request: Request instance for DescribeCloudBaseRunServer.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerRequest`
@@ -809,7 +809,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunServerDomainName(self, request):
-        """查询微信云托管服务域名
+        r"""查询微信云托管服务域名
 
         :param request: Request instance for DescribeCloudBaseRunServerDomainName.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerDomainNameRequest`
@@ -832,7 +832,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunServerVersion(self, request):
-        """查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
+        r"""查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 
         :param request: Request instance for DescribeCloudBaseRunServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerVersionRequest`
@@ -855,7 +855,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunVersion(self, request):
-        """查询服务版本详情(新)
+        r"""查询服务版本详情(新)
 
         :param request: Request instance for DescribeCloudBaseRunVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRequest`
@@ -878,7 +878,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunVersionRsByCondition(self, request):
-        """DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
+        r"""DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
 
         :param request: Request instance for DescribeCloudBaseRunVersionRsByCondition.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRsByConditionRequest`
@@ -901,7 +901,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunVersionSnapshot(self, request):
-        """查询版本历史
+        r"""查询版本历史
 
         :param request: Request instance for DescribeCloudBaseRunVersionSnapshot.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionSnapshotRequest`
@@ -924,7 +924,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCurveData(self, request):
-        """根据用户传入的指标, 拉取一段时间内的监控数据。
+        r"""根据用户传入的指标, 拉取一段时间内的监控数据。
 
         :param request: Request instance for DescribeCurveData.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataRequest`
@@ -947,7 +947,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeDatabaseACL(self, request):
-        """获取数据库权限
+        r"""获取数据库权限
 
         :param request: Request instance for DescribeDatabaseACL.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeDatabaseACLRequest`
@@ -970,7 +970,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeDownloadFile(self, request):
-        """获取下载文件信息
+        r"""获取下载文件信息
 
         :param request: Request instance for DescribeDownloadFile.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeDownloadFileRequest`
@@ -993,7 +993,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEndUserLoginStatistic(self, request):
-        """获取环境终端用户新增与登录信息
+        r"""获取环境终端用户新增与登录信息
 
         :param request: Request instance for DescribeEndUserLoginStatistic.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserLoginStatisticRequest`
@@ -1016,7 +1016,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEndUserStatistic(self, request):
-        """获取终端用户总量与平台分布情况
+        r"""获取终端用户总量与平台分布情况
 
         :param request: Request instance for DescribeEndUserStatistic.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserStatisticRequest`
@@ -1039,7 +1039,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEndUsers(self, request):
-        """获取终端用户列表
+        r"""获取终端用户列表
 
         :param request: Request instance for DescribeEndUsers.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUsersRequest`
@@ -1062,7 +1062,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEnvDealRegion(self, request):
-        """获取环境下单地域
+        r"""获取环境下单地域
 
         :param request: Request instance for DescribeEnvDealRegion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvDealRegionRequest`
@@ -1085,7 +1085,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEnvFreeQuota(self, request):
-        """查询后付费免费配额信息
+        r"""查询后付费免费配额信息
 
         :param request: Request instance for DescribeEnvFreeQuota.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvFreeQuotaRequest`
@@ -1108,7 +1108,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEnvLimit(self, request):
-        """查询环境个数上限
+        r"""查询环境个数上限
 
         :param request: Request instance for DescribeEnvLimit.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvLimitRequest`
@@ -1131,7 +1131,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEnvPostpaidDeduct(self, request):
-        """查询环境后付费计费详情
+        r"""查询环境后付费计费详情
 
         :param request: Request instance for DescribeEnvPostpaidDeduct.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvPostpaidDeductRequest`
@@ -1154,7 +1154,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeEnvs(self, request):
-        """获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
+        r"""获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 
         :param request: Request instance for DescribeEnvs.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvsRequest`
@@ -1177,7 +1177,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeExtensionUploadInfo(self, request):
-        """描述扩展上传文件信息
+        r"""描述扩展上传文件信息
 
         :param request: Request instance for DescribeExtensionUploadInfo.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeExtensionUploadInfoRequest`
@@ -1200,7 +1200,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeExtraPkgBillingInfo(self, request):
-        """获取增值包计费相关信息
+        r"""获取增值包计费相关信息
 
         :param request: Request instance for DescribeExtraPkgBillingInfo.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeExtraPkgBillingInfoRequest`
@@ -1223,7 +1223,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeGatewayCurveData(self, request):
-        """查询网关监控数据
+        r"""查询网关监控数据
 
         :param request: Request instance for DescribeGatewayCurveData.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeGatewayCurveDataRequest`
@@ -1246,7 +1246,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeGatewayVersions(self, request):
-        """查询网关版本信息
+        r"""查询网关版本信息
         暂不鉴权
 
         :param request: Request instance for DescribeGatewayVersions.
@@ -1270,7 +1270,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeGraphData(self, request):
-        """根据用户传入的指标, 拉取一段时间内的监控数据。
+        r"""根据用户传入的指标, 拉取一段时间内的监控数据。
 
         :param request: Request instance for DescribeGraphData.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeGraphDataRequest`
@@ -1293,7 +1293,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeHostingDomainTask(self, request):
-        """查询静态托管域名任务状态
+        r"""查询静态托管域名任务状态
 
         :param request: Request instance for DescribeHostingDomainTask.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeHostingDomainTaskRequest`
@@ -1316,7 +1316,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribePostpayFreeQuotas(self, request):
-        """查询后付费资源免费量
+        r"""查询后付费资源免费量
 
         :param request: Request instance for DescribePostpayFreeQuotas.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePostpayFreeQuotasRequest`
@@ -1339,7 +1339,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribePostpayPackageFreeQuotas(self, request):
-        """获取后付费免费额度
+        r"""获取后付费免费额度
 
         :param request: Request instance for DescribePostpayPackageFreeQuotas.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePostpayPackageFreeQuotasRequest`
@@ -1362,7 +1362,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeQuotaData(self, request):
-        """查询指定指标的配额使用量
+        r"""查询指定指标的配额使用量
 
         :param request: Request instance for DescribeQuotaData.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeQuotaDataRequest`
@@ -1385,7 +1385,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeSmsQuotas(self, request):
-        """查询后付费短信资源量
+        r"""查询后付费短信资源量
         1 有免费包的返回SmsFreeQuota结构所有字段
         2 没有免费包，有付费包，付费返回复用SmsFreeQuota结构，其中只有 TodayUsedQuota 字段有效
         3 都没有返回为空数组
@@ -1411,7 +1411,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeSpecialCostItems(self, request):
-        """查询环境1分钱抵扣信息
+        r"""查询环境1分钱抵扣信息
 
         :param request: Request instance for DescribeSpecialCostItems.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeSpecialCostItemsRequest`
@@ -1434,7 +1434,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeStandaloneGateway(self, request):
-        """本接口（DescribeStandaloneGateway）查询小租户网关套餐信息。
+        r"""本接口（DescribeStandaloneGateway）查询小租户网关套餐信息。
 
         :param request: Request instance for DescribeStandaloneGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeStandaloneGatewayRequest`
@@ -1457,7 +1457,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeStandaloneGatewayPackage(self, request):
-        """本接口（DescribeStandaloneGatewayPackage）用于查询小租户网关套餐信息。
+        r"""本接口（DescribeStandaloneGatewayPackage）用于查询小租户网关套餐信息。
 
         :param request: Request instance for DescribeStandaloneGatewayPackage.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeStandaloneGatewayPackageRequest`
@@ -1480,7 +1480,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeUserActivityInfo(self, request):
-        """查询用户活动信息
+        r"""查询用户活动信息
 
         :param request: Request instance for DescribeUserActivityInfo.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeUserActivityInfoRequest`
@@ -1503,7 +1503,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeWxCloudBaseRunEnvs(self, request):
-        """查询微信云托管环境信息
+        r"""查询微信云托管环境信息
 
         :param request: Request instance for DescribeWxCloudBaseRunEnvs.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunEnvsRequest`
@@ -1526,7 +1526,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeWxCloudBaseRunSubNets(self, request):
-        """查询微信云托管子网
+        r"""查询微信云托管子网
 
         :param request: Request instance for DescribeWxCloudBaseRunSubNets.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunSubNetsRequest`
@@ -1549,7 +1549,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeWxGatewayRoutes(self, request):
-        """查看安全网关路由
+        r"""查看安全网关路由
 
         :param request: Request instance for DescribeWxGatewayRoutes.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewayRoutesRequest`
@@ -1572,7 +1572,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeWxGateways(self, request):
-        """查看安全网关
+        r"""查看安全网关
 
         :param request: Request instance for DescribeWxGateways.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewaysRequest`
@@ -1595,7 +1595,7 @@ class TcbClient(AbstractClient):
 
 
     def DestroyEnv(self, request):
-        """销毁环境
+        r"""销毁环境
 
         :param request: Request instance for DestroyEnv.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyEnvRequest`
@@ -1618,7 +1618,7 @@ class TcbClient(AbstractClient):
 
 
     def DestroyStandaloneGateway(self, request):
-        """本接口（DestroyStandaloneGateway）用于销毁小租户网关。
+        r"""本接口（DestroyStandaloneGateway）用于销毁小租户网关。
 
         :param request: Request instance for DestroyStandaloneGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyStandaloneGatewayRequest`
@@ -1641,7 +1641,7 @@ class TcbClient(AbstractClient):
 
 
     def DestroyStaticStore(self, request):
-        """销毁静态托管资源，该接口创建异步销毁任务，资源最终状态可从DestroyStaticStore接口查看
+        r"""销毁静态托管资源，该接口创建异步销毁任务，资源最终状态可从DestroyStaticStore接口查看
 
         :param request: Request instance for DestroyStaticStore.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyStaticStoreRequest`
@@ -1664,7 +1664,7 @@ class TcbClient(AbstractClient):
 
 
     def EditAuthConfig(self, request):
-        """修改登录配置
+        r"""修改登录配置
 
         :param request: Request instance for EditAuthConfig.
         :type request: :class:`tencentcloud.tcb.v20180608.models.EditAuthConfigRequest`
@@ -1687,7 +1687,7 @@ class TcbClient(AbstractClient):
 
 
     def EstablishCloudBaseRunServer(self, request):
-        """创建云应用服务
+        r"""创建云应用服务
 
         :param request: Request instance for EstablishCloudBaseRunServer.
         :type request: :class:`tencentcloud.tcb.v20180608.models.EstablishCloudBaseRunServerRequest`
@@ -1710,7 +1710,7 @@ class TcbClient(AbstractClient):
 
 
     def EstablishWxGatewayRoute(self, request):
-        """创建或修改安全网关路由
+        r"""创建或修改安全网关路由
 
         :param request: Request instance for EstablishWxGatewayRoute.
         :type request: :class:`tencentcloud.tcb.v20180608.models.EstablishWxGatewayRouteRequest`
@@ -1733,7 +1733,7 @@ class TcbClient(AbstractClient):
 
 
     def FreezeCloudBaseRunServers(self, request):
-        """批量冻结
+        r"""批量冻结
 
         :param request: Request instance for FreezeCloudBaseRunServers.
         :type request: :class:`tencentcloud.tcb.v20180608.models.FreezeCloudBaseRunServersRequest`
@@ -1756,7 +1756,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyCloudBaseRunServerFlowConf(self, request):
-        """修改容器内的版本流量配置
+        r"""修改容器内的版本流量配置
 
         :param request: Request instance for ModifyCloudBaseRunServerFlowConf.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerFlowConfRequest`
@@ -1779,7 +1779,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyCloudBaseRunServerVersion(self, request):
-        """修改服务版本的副本数，环境变量
+        r"""修改服务版本的副本数，环境变量
 
         :param request: Request instance for ModifyCloudBaseRunServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerVersionRequest`
@@ -1802,7 +1802,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyClsTopic(self, request):
-        """修改日志主题
+        r"""修改日志主题
 
         :param request: Request instance for ModifyClsTopic.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyClsTopicRequest`
@@ -1825,7 +1825,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyDatabaseACL(self, request):
-        """修改数据库权限
+        r"""修改数据库权限
 
         :param request: Request instance for ModifyDatabaseACL.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyDatabaseACLRequest`
@@ -1848,7 +1848,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyEndUser(self, request):
-        """管理终端用户
+        r"""管理终端用户
 
         :param request: Request instance for ModifyEndUser.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyEndUserRequest`
@@ -1871,7 +1871,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyEnv(self, request):
-        """更新环境信息
+        r"""更新环境信息
 
         :param request: Request instance for ModifyEnv.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyEnvRequest`
@@ -1894,7 +1894,7 @@ class TcbClient(AbstractClient):
 
 
     def ModifyGatewayVersionTraffic(self, request):
-        """设置网关版本的流量比例
+        r"""设置网关版本的流量比例
 
         :param request: Request instance for ModifyGatewayVersionTraffic.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyGatewayVersionTrafficRequest`
@@ -1917,7 +1917,7 @@ class TcbClient(AbstractClient):
 
 
     def ReinstateEnv(self, request):
-        """针对已隔离的免费环境，可以通过本接口将其恢复访问。
+        r"""针对已隔离的免费环境，可以通过本接口将其恢复访问。
 
         :param request: Request instance for ReinstateEnv.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ReinstateEnvRequest`
@@ -1940,7 +1940,7 @@ class TcbClient(AbstractClient):
 
 
     def ReplaceActivityRecord(self, request):
-        """更新活动详情
+        r"""更新活动详情
 
         :param request: Request instance for ReplaceActivityRecord.
         :type request: :class:`tencentcloud.tcb.v20180608.models.ReplaceActivityRecordRequest`
@@ -1963,7 +1963,7 @@ class TcbClient(AbstractClient):
 
 
     def RollUpdateCloudBaseRunServerVersion(self, request):
-        """针对特定的版本，进行滚动更新
+        r"""针对特定的版本，进行滚动更新
 
         :param request: Request instance for RollUpdateCloudBaseRunServerVersion.
         :type request: :class:`tencentcloud.tcb.v20180608.models.RollUpdateCloudBaseRunServerVersionRequest`
@@ -1986,7 +1986,7 @@ class TcbClient(AbstractClient):
 
 
     def SearchClsLog(self, request):
-        """搜索CLS日志，TCB角色密钥访问
+        r"""搜索CLS日志，TCB角色密钥访问
 
         :param request: Request instance for SearchClsLog.
         :type request: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogRequest`
@@ -2009,7 +2009,7 @@ class TcbClient(AbstractClient):
 
 
     def TurnOffStandaloneGateway(self, request):
-        """本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
+        r"""本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
 
         :param request: Request instance for TurnOffStandaloneGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.TurnOffStandaloneGatewayRequest`
@@ -2032,7 +2032,7 @@ class TcbClient(AbstractClient):
 
 
     def TurnOnStandaloneGateway(self, request):
-        """本接口（TurnOnStandaloneGateway）用于开启小租户网关。
+        r"""本接口（TurnOnStandaloneGateway）用于开启小租户网关。
 
         :param request: Request instance for TurnOnStandaloneGateway.
         :type request: :class:`tencentcloud.tcb.v20180608.models.TurnOnStandaloneGatewayRequest`
@@ -2055,7 +2055,7 @@ class TcbClient(AbstractClient):
 
 
     def UnfreezeCloudBaseRunServers(self, request):
-        """批量解冻服务
+        r"""批量解冻服务
 
         :param request: Request instance for UnfreezeCloudBaseRunServers.
         :type request: :class:`tencentcloud.tcb.v20180608.models.UnfreezeCloudBaseRunServersRequest`

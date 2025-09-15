@@ -27,7 +27,7 @@ class MqttClient(AbstractClient):
 
 
     def ActivateCaCertificate(self, request):
-        """激活Ca证书
+        r"""激活Ca证书
 
         :param request: Request instance for ActivateCaCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ActivateCaCertificateRequest`
@@ -50,7 +50,7 @@ class MqttClient(AbstractClient):
 
 
     def ActivateDeviceCertificate(self, request):
-        """生效设备证书
+        r"""生效设备证书
 
         :param request: Request instance for ActivateDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ActivateDeviceCertificateRequest`
@@ -73,7 +73,7 @@ class MqttClient(AbstractClient):
 
 
     def ApplyRegistrationCode(self, request):
-        """申请ca注册码
+        r"""申请ca注册码
 
         :param request: Request instance for ApplyRegistrationCode.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ApplyRegistrationCodeRequest`
@@ -96,7 +96,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateAuthorizationPolicy(self, request):
-        """创建MQTT实例的性能测试任务
+        r"""创建MQTT实例的性能测试任务
 
         :param request: Request instance for CreateAuthorizationPolicy.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateAuthorizationPolicyRequest`
@@ -119,7 +119,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateDeviceIdentity(self, request):
-        """创建一机一密设备签名
+        r"""创建一机一密设备签名
 
         :param request: Request instance for CreateDeviceIdentity.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateDeviceIdentityRequest`
@@ -142,7 +142,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateHttpAuthenticator(self, request):
-        """创建一个HTTP的认证器
+        r"""创建一个HTTP的认证器
 
         :param request: Request instance for CreateHttpAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateHttpAuthenticatorRequest`
@@ -165,7 +165,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateInsPublicEndpoint(self, request):
-        """为MQTT实例创建公网接入点，未开启公网的集群可调用。
+        r"""为MQTT实例创建公网接入点，未开启公网的集群可调用。
 
         :param request: Request instance for CreateInsPublicEndpoint.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateInsPublicEndpointRequest`
@@ -188,7 +188,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """购买新的MQTT实例
+        r"""购买新的MQTT实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateInstanceRequest`
@@ -211,7 +211,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateJWKSAuthenticator(self, request):
-        """创建一个jwks的认证
+        r"""创建一个jwks的认证
 
         :param request: Request instance for CreateJWKSAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateJWKSAuthenticatorRequest`
@@ -234,7 +234,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateJWTAuthenticator(self, request):
-        """创建一个jwks的认证
+        r"""创建一个jwks的认证
 
         :param request: Request instance for CreateJWTAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateJWTAuthenticatorRequest`
@@ -257,7 +257,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """创建主题
+        r"""创建主题
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateTopicRequest`
@@ -280,7 +280,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """添加mqtt角色
+        r"""添加mqtt角色
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateUserRequest`
@@ -303,7 +303,7 @@ class MqttClient(AbstractClient):
 
 
     def DeactivateCaCertificate(self, request):
-        """失效Ca证书
+        r"""失效Ca证书
 
         :param request: Request instance for DeactivateCaCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeactivateCaCertificateRequest`
@@ -326,7 +326,7 @@ class MqttClient(AbstractClient):
 
 
     def DeactivateDeviceCertificate(self, request):
-        """失效Ca证书
+        r"""失效Ca证书
 
         :param request: Request instance for DeactivateDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeactivateDeviceCertificateRequest`
@@ -349,7 +349,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteAuthenticator(self, request):
-        """根据认证器类型删除一个MQTT认证器
+        r"""根据认证器类型删除一个MQTT认证器
 
         :param request: Request instance for DeleteAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteAuthenticatorRequest`
@@ -372,7 +372,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteAuthorizationPolicy(self, request):
-        """删除策略规则
+        r"""删除策略规则
 
         :param request: Request instance for DeleteAuthorizationPolicy.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteAuthorizationPolicyRequest`
@@ -395,7 +395,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteCaCertificate(self, request):
-        """删除Ca证书
+        r"""删除Ca证书
 
         :param request: Request instance for DeleteCaCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteCaCertificateRequest`
@@ -418,7 +418,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteDeviceCertificate(self, request):
-        """删除设备证书
+        r"""删除设备证书
 
         :param request: Request instance for DeleteDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceCertificateRequest`
@@ -441,7 +441,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteDeviceIdentity(self, request):
-        """删除一机一密设备签名
+        r"""删除一机一密设备签名
 
         :param request: Request instance for DeleteDeviceIdentity.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceIdentityRequest`
@@ -464,7 +464,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteInsPublicEndpoint(self, request):
-        """删除MQTT实例的公网接入点
+        r"""删除MQTT实例的公网接入点
 
         :param request: Request instance for DeleteInsPublicEndpoint.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteInsPublicEndpointRequest`
@@ -487,7 +487,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """删除MQTT实例
+        r"""删除MQTT实例
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteInstanceRequest`
@@ -510,7 +510,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """删除MQTT主题
+        r"""删除MQTT主题
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteTopicRequest`
@@ -533,7 +533,7 @@ class MqttClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """删除MQTT访问用户
+        r"""删除MQTT访问用户
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteUserRequest`
@@ -556,7 +556,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeAuthenticator(self, request):
-        """查询MQTT认证器
+        r"""查询MQTT认证器
 
         :param request: Request instance for DescribeAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeAuthenticatorRequest`
@@ -579,7 +579,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeAuthorizationPolicies(self, request):
-        """查询授权规则
+        r"""查询授权规则
 
         :param request: Request instance for DescribeAuthorizationPolicies.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeAuthorizationPoliciesRequest`
@@ -602,7 +602,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeCaCertificate(self, request):
-        """查询Ca证书详情接口
+        r"""查询Ca证书详情接口
 
         :param request: Request instance for DescribeCaCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificateRequest`
@@ -625,7 +625,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeCaCertificates(self, request):
-        """查询集群下的ca证书信息
+        r"""查询集群下的ca证书信息
 
         :param request: Request instance for DescribeCaCertificates.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificatesRequest`
@@ -648,7 +648,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeClientList(self, request):
-        """查询 MQTT 客户端详情
+        r"""查询 MQTT 客户端详情
 
         :param request: Request instance for DescribeClientList.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeClientListRequest`
@@ -671,7 +671,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeDeviceCertificate(self, request):
-        """查询设备证书详情接口
+        r"""查询设备证书详情接口
 
         :param request: Request instance for DescribeDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateRequest`
@@ -694,7 +694,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeDeviceCertificates(self, request):
-        """分页查询设备证书
+        r"""分页查询设备证书
 
         :param request: Request instance for DescribeDeviceCertificates.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificatesRequest`
@@ -717,7 +717,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeDeviceIdentities(self, request):
-        """查询集群下设备标识列表
+        r"""查询集群下设备标识列表
 
         :param request: Request instance for DescribeDeviceIdentities.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentitiesRequest`
@@ -740,7 +740,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeDeviceIdentity(self, request):
-        """查询设备一机一密标识
+        r"""查询设备一机一密标识
 
         :param request: Request instance for DescribeDeviceIdentity.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentityRequest`
@@ -763,7 +763,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeInsPublicEndpoints(self, request):
-        """查询MQTT实例公网接入点
+        r"""查询MQTT实例公网接入点
 
         :param request: Request instance for DescribeInsPublicEndpoints.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsPublicEndpointsRequest`
@@ -786,7 +786,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeInsVPCEndpoints(self, request):
-        """查询MQTT实例公网接入点
+        r"""查询MQTT实例公网接入点
 
         :param request: Request instance for DescribeInsVPCEndpoints.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsVPCEndpointsRequest`
@@ -809,7 +809,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """查询实例信息
+        r"""查询实例信息
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInstanceRequest`
@@ -832,7 +832,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeInstanceList(self, request):
-        """获取实例列表，Filters参数使用说明如下：
+        r"""获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
         2. InstanceId，实例ID查询
         3. InstanceStatus，实例状态查询，支持多选
@@ -860,7 +860,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeMessageByTopic(self, request):
-        """根据订阅查询消息
+        r"""根据订阅查询消息
 
         :param request: Request instance for DescribeMessageByTopic.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageByTopicRequest`
@@ -883,7 +883,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeMessageDetails(self, request):
-        """查询MQTT消息详情
+        r"""查询MQTT消息详情
 
         :param request: Request instance for DescribeMessageDetails.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageDetailsRequest`
@@ -906,7 +906,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeMessageList(self, request):
-        """根据一级Topic查询消息列表
+        r"""根据一级Topic查询消息列表
 
         :param request: Request instance for DescribeMessageList.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageListRequest`
@@ -929,7 +929,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeProductSKUList(self, request):
-        """获取产品售卖规格
+        r"""获取产品售卖规格
 
         :param request: Request instance for DescribeProductSKUList.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeProductSKUListRequest`
@@ -952,7 +952,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeSharedSubscriptionLag(self, request):
-        """查询共享订阅消息堆积量
+        r"""查询共享订阅消息堆积量
 
         :param request: Request instance for DescribeSharedSubscriptionLag.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionLagRequest`
@@ -975,7 +975,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeTopic(self, request):
-        """查询mqtt主题详情
+        r"""查询mqtt主题详情
 
         :param request: Request instance for DescribeTopic.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeTopicRequest`
@@ -998,7 +998,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeTopicList(self, request):
-        """获取主题列表，Filter参数使用说明如下：
+        r"""获取主题列表，Filter参数使用说明如下：
 
         1. TopicName，主题名称模糊搜索
         2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
@@ -1024,7 +1024,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeUserList(self, request):
-        """查询用户列表，Filter参数使用说明如下：
+        r"""查询用户列表，Filter参数使用说明如下：
 
         1. Username，用户名称模糊搜索
 
@@ -1049,7 +1049,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyAuthorizationPolicy(self, request):
-        """修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
+        r"""修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
 
         :param request: Request instance for ModifyAuthorizationPolicy.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyAuthorizationPolicyRequest`
@@ -1072,7 +1072,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyDeviceIdentity(self, request):
-        """修改一机一密设备签名
+        r"""修改一机一密设备签名
 
         :param request: Request instance for ModifyDeviceIdentity.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyDeviceIdentityRequest`
@@ -1095,7 +1095,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyHttpAuthenticator(self, request):
-        """修改MQTT HTTP 认证器
+        r"""修改MQTT HTTP 认证器
 
         :param request: Request instance for ModifyHttpAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyHttpAuthenticatorRequest`
@@ -1118,7 +1118,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyInsPublicEndpoint(self, request):
-        """更新MQTT实例公网接入点
+        r"""更新MQTT实例公网接入点
 
         :param request: Request instance for ModifyInsPublicEndpoint.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInsPublicEndpointRequest`
@@ -1141,7 +1141,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例属性，只有运行中的集群可以调用该接口进行变更配置。
+        r"""修改实例属性，只有运行中的集群可以调用该接口进行变更配置。
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceRequest`
@@ -1164,7 +1164,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyInstanceCertBinding(self, request):
-        """更新MQTT集群绑定证书
+        r"""更新MQTT集群绑定证书
         参数传空，则为删除证书
 
         :param request: Request instance for ModifyInstanceCertBinding.
@@ -1188,7 +1188,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyJWKSAuthenticator(self, request):
-        """修改MQTT JWKS 认证器，全量配置修改，需要提交完整的修改后配置。
+        r"""修改MQTT JWKS 认证器，全量配置修改，需要提交完整的修改后配置。
 
         :param request: Request instance for ModifyJWKSAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyJWKSAuthenticatorRequest`
@@ -1211,7 +1211,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyJWTAuthenticator(self, request):
-        """修改MQTT JWKS 认证器
+        r"""修改MQTT JWKS 认证器
 
         :param request: Request instance for ModifyJWTAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyJWTAuthenticatorRequest`
@@ -1234,7 +1234,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        """修改主题属性
+        r"""修改主题属性
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyTopicRequest`
@@ -1257,7 +1257,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """修改MQTT角色
+        r"""修改MQTT角色
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyUserRequest`
@@ -1280,7 +1280,7 @@ class MqttClient(AbstractClient):
 
 
     def PublishMessage(self, request):
-        """发布 MQTT 消息到消息主题或客户端
+        r"""发布 MQTT 消息到消息主题或客户端
 
         :param request: Request instance for PublishMessage.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.PublishMessageRequest`
@@ -1303,7 +1303,7 @@ class MqttClient(AbstractClient):
 
 
     def RegisterCaCertificate(self, request):
-        """注册CA证书（仅一机一证场景支持），可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817)
+        r"""注册CA证书（仅一机一证场景支持），可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817)
 
         :param request: Request instance for RegisterCaCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.RegisterCaCertificateRequest`
@@ -1326,7 +1326,7 @@ class MqttClient(AbstractClient):
 
 
     def RegisterDeviceCertificate(self, request):
-        """注册设备证书（仅一机一证场景生效），可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817#6cb39d46-efad-4220-8f11-2e7fab207bc8)
+        r"""注册设备证书（仅一机一证场景生效），可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817#6cb39d46-efad-4220-8f11-2e7fab207bc8)
 
         :param request: Request instance for RegisterDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.RegisterDeviceCertificateRequest`
@@ -1349,7 +1349,7 @@ class MqttClient(AbstractClient):
 
 
     def RevokedDeviceCertificate(self, request):
-        """吊销设备证书
+        r"""吊销设备证书
 
         :param request: Request instance for RevokedDeviceCertificate.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.RevokedDeviceCertificateRequest`
@@ -1372,7 +1372,7 @@ class MqttClient(AbstractClient):
 
 
     def UpdateAuthorizationPolicyPriority(self, request):
-        """修改策略规则优先级
+        r"""修改策略规则优先级
 
         :param request: Request instance for UpdateAuthorizationPolicyPriority.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.UpdateAuthorizationPolicyPriorityRequest`

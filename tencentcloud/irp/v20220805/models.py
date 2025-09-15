@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeGoodsRecommendRequest(AbstractModel):
-    """DescribeGoodsRecommend请求参数结构体
+    r"""DescribeGoodsRecommend请求参数结构体
 
     """
 
@@ -56,7 +56,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -67,7 +67,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID，在控制台创建场景后获取
+        r"""场景ID，在控制台创建场景后获取
         :rtype: str
         """
         return self._SceneId
@@ -78,7 +78,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识，需和行为数据上报接口中的UserId一致，否则影响特征关联
+        r"""用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识，需和行为数据上报接口中的UserId一致，否则影响特征关联
         :rtype: str
         """
         return self._UserId
@@ -89,7 +89,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户设备ID数组，可传入用户的多个类型ID，用于关联画像信息
+        r"""用户设备ID数组，可传入用户的多个类型ID，用于关联画像信息
         :rtype: list of StrUserIdInfo
         """
         return self._UserIdList
@@ -100,7 +100,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def GoodsCnt(self):
-        """推荐返回数量，默认10个，最多支持50个的内容返回。如果有更多数量要求，<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决
+        r"""推荐返回数量，默认10个，最多支持50个的内容返回。如果有更多数量要求，<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决
         :rtype: int
         """
         return self._GoodsCnt
@@ -111,7 +111,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def CurrentGoodsId(self):
-        """当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
+        r"""当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
         :rtype: str
         """
         return self._CurrentGoodsId
@@ -122,7 +122,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def UserPortraitInfo(self):
-        """用户的实时特征信息，用作特征
+        r"""用户的实时特征信息，用作特征
         :rtype: :class:`tencentcloud.irp.v20220805.models.UserPortraitInfo`
         """
         return self._UserPortraitInfo
@@ -133,7 +133,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def BlackGoodsList(self):
-        """本次请求针对该用户需要过滤的物品列表(不超过100个)
+        r"""本次请求针对该用户需要过滤的物品列表(不超过100个)
         :rtype: list of str
         """
         return self._BlackGoodsList
@@ -144,7 +144,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，扩展字段
+        r"""json字符串，扩展字段
         :rtype: str
         """
         return self._Extension
@@ -182,7 +182,7 @@ class DescribeGoodsRecommendRequest(AbstractModel):
 
 
 class DescribeGoodsRecommendResponse(AbstractModel):
-    """DescribeGoodsRecommend返回参数结构体
+    r"""DescribeGoodsRecommend返回参数结构体
 
     """
 
@@ -198,7 +198,7 @@ class DescribeGoodsRecommendResponse(AbstractModel):
 
     @property
     def DataList(self):
-        """推荐返回的商品信息列表
+        r"""推荐返回的商品信息列表
         :rtype: list of RecGoodsData
         """
         return self._DataList
@@ -209,7 +209,7 @@ class DescribeGoodsRecommendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -230,7 +230,7 @@ class DescribeGoodsRecommendResponse(AbstractModel):
 
 
 class DislikeInfo(AbstractModel):
-    """不喜欢信息
+    r"""不喜欢信息
 
     """
 
@@ -246,7 +246,7 @@ class DislikeInfo(AbstractModel):
 
     @property
     def Type(self):
-        """过滤的类别：<br>● author 作者名<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
+        r"""过滤的类别：<br>● author 作者名<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
         :rtype: str
         """
         return self._Type
@@ -257,7 +257,7 @@ class DislikeInfo(AbstractModel):
 
     @property
     def Value(self):
-        """Type对应字段名的值，如：需要过滤的作者名
+        r"""Type对应字段名的值，如：需要过滤的作者名
         :rtype: str
         """
         return self._Value
@@ -281,7 +281,7 @@ class DislikeInfo(AbstractModel):
 
 
 class DocItem(AbstractModel):
-    """信息流内容
+    r"""信息流内容
 
     """
 
@@ -373,7 +373,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ItemId(self):
-        """内容唯一id，建议限制在128字符以内
+        r"""内容唯一id，建议限制在128字符以内
         :rtype: str
         """
         return self._ItemId
@@ -384,7 +384,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ItemType(self):
-        """内容类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请登录控制台进入对应项目，在<b>物料管理->物料类型管理</b>中添加）
+        r"""内容类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请登录控制台进入对应项目，在<b>物料管理->物料类型管理</b>中添加）
         :rtype: str
         """
         return self._ItemType
@@ -395,7 +395,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Status(self):
-        """内容状态：
+        r"""内容状态：
 ● 1 - 上架 
 ● 2 - 下架 
 Status=2的内容不会在推荐结果中出现 
@@ -410,7 +410,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def PublishTimestamp(self):
-        """内容生成时间，秒级时间戳（1639624786），需大于0，<b>用作特征和物料管理</b>
+        r"""内容生成时间，秒级时间戳（1639624786），需大于0，<b>用作特征和物料管理</b>
         :rtype: int
         """
         return self._PublishTimestamp
@@ -421,7 +421,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ExpireTimestamp(self):
-        """内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年，用作特征，过期则不会被推荐，<b>强烈建议</b>
+        r"""内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年，用作特征，过期则不会被推荐，<b>强烈建议</b>
         :rtype: int
         """
         return self._ExpireTimestamp
@@ -432,7 +432,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CategoryLevel(self):
-        """类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配，<b>强烈建议</b>
+        r"""类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配，<b>强烈建议</b>
         :rtype: int
         """
         return self._CategoryLevel
@@ -443,7 +443,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CategoryPath(self):
-        """类目路径，一级二级三级等依次用英文冒号联接，和CategoryLevel字段值匹配，如体育：“足球:巴塞罗那”。<b>用于物料池管理，强烈建议</b>
+        r"""类目路径，一级二级三级等依次用英文冒号联接，和CategoryLevel字段值匹配，如体育：“足球:巴塞罗那”。<b>用于物料池管理，强烈建议</b>
         :rtype: str
         """
         return self._CategoryPath
@@ -454,7 +454,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Tags(self):
-        """内容标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
+        r"""内容标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
         :rtype: str
         """
         return self._Tags
@@ -465,7 +465,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Author(self):
-        """作者名，需保证作者名唯一，若有重名需要加编号区分。<b>用于召回过滤、规则打散，强烈建议</b>
+        r"""作者名，需保证作者名唯一，若有重名需要加编号区分。<b>用于召回过滤、规则打散，强烈建议</b>
         :rtype: str
         """
         return self._Author
@@ -476,7 +476,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def SourceId(self):
-        """内容来源类型，客户自定义，<b>用于物料池管理</b>
+        r"""内容来源类型，客户自定义，<b>用于物料池管理</b>
         :rtype: str
         """
         return self._SourceId
@@ -487,7 +487,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Title(self):
-        """内容标题，<b>主要用于语义分析</b>
+        r"""内容标题，<b>主要用于语义分析</b>
         :rtype: str
         """
         return self._Title
@@ -498,7 +498,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Content(self):
-        """正文关键片段，建议控制在500字符以内，<b>主要用于语义分析</b>
+        r"""正文关键片段，建议控制在500字符以内，<b>主要用于语义分析</b>
         :rtype: str
         """
         return self._Content
@@ -509,7 +509,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ContentUrl(self):
-        """正文详情，主要用于语义分析，当内容过大时建议用ContentUrl传递，<b>与Content可二选一</b>
+        r"""正文详情，主要用于语义分析，当内容过大时建议用ContentUrl传递，<b>与Content可二选一</b>
         :rtype: str
         """
         return self._ContentUrl
@@ -520,7 +520,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def VideoDuration(self):
-        """视频时长，时间秒，大于等于0，小于 3600 * 10。<b>视频内容必填，其它内容非必填，用作特征</b>
+        r"""视频时长，时间秒，大于等于0，小于 3600 * 10。<b>视频内容必填，其它内容非必填，用作特征</b>
         :rtype: int
         """
         return self._VideoDuration
@@ -531,7 +531,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Country(self):
-        """国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
+        r"""国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
         :rtype: str
         """
         return self._Country
@@ -542,7 +542,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Province(self):
-        """省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
+        r"""省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
         :rtype: str
         """
         return self._Province
@@ -553,7 +553,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def City(self):
-        """城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
+        r"""城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
         :rtype: str
         """
         return self._City
@@ -564,7 +564,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def AuthorFans(self):
-        """作者粉丝数，<b>用作特征</b>
+        r"""作者粉丝数，<b>用作特征</b>
         :rtype: int
         """
         return self._AuthorFans
@@ -575,7 +575,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def AuthorLevel(self):
-        """作者评级，<b>用作特征</b>
+        r"""作者评级，<b>用作特征</b>
         :rtype: str
         """
         return self._AuthorLevel
@@ -586,7 +586,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CollectCnt(self):
-        """内容累计收藏次数，<b>用作特征</b>
+        r"""内容累计收藏次数，<b>用作特征</b>
         :rtype: int
         """
         return self._CollectCnt
@@ -597,7 +597,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def PraiseCnt(self):
-        """内容累积点赞次数，<b>用作特征</b>
+        r"""内容累积点赞次数，<b>用作特征</b>
         :rtype: int
         """
         return self._PraiseCnt
@@ -608,7 +608,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CommentCnt(self):
-        """内容累计评论次数，<b>用作特征</b>
+        r"""内容累计评论次数，<b>用作特征</b>
         :rtype: int
         """
         return self._CommentCnt
@@ -619,7 +619,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ShareCnt(self):
-        """内容累计分享次数，<b>用作特征</b>
+        r"""内容累计分享次数，<b>用作特征</b>
         :rtype: int
         """
         return self._ShareCnt
@@ -630,7 +630,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def RewardCnt(self):
-        """内容累积打赏数，<b>用作特征</b>
+        r"""内容累积打赏数，<b>用作特征</b>
         :rtype: int
         """
         return self._RewardCnt
@@ -641,7 +641,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Score(self):
-        """内容质量评分，<b>用作特征</b>
+        r"""内容质量评分，<b>用作特征</b>
         :rtype: float
         """
         return self._Score
@@ -652,7 +652,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Extension(self):
-        """json字符串，<b>用于物料池管理的自定义扩展</b>，需要base64加密
+        r"""json字符串，<b>用于物料池管理的自定义扩展</b>，需要base64加密
         :rtype: str
         """
         return self._Extension
@@ -700,7 +700,7 @@ Status=2的内容不会在推荐结果中出现
 
 
 class FeedBehaviorInfo(AbstractModel):
-    """信息流行为
+    r"""信息流行为
 
     """
 
@@ -774,7 +774,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
+        r"""用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
         :rtype: str
         """
         return self._UserId
@@ -785,7 +785,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def ItemId(self):
-        """内容唯一id
+        r"""内容唯一id
         :rtype: str
         """
         return self._ItemId
@@ -796,7 +796,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorType(self):
-        """行为类型：<br> ● expose - 曝光，<b>必须</b><br> ● click - 点击，<b>必须</b><br/>  ● stay - 详情页停留时长，<b>强烈建议</b><br/>  ● videoover - 视频播放时长，<b>强烈建议</b><br/> ●  like - 点赞&喜欢，<b>正效果</b><br/> ● collect - 收藏，<b>正效果</b><br/> ●  share - 转发&分享，<b>正效果</b><br/> ● reward - 打赏，<b>正效果</b><br/> ● unlike - 踩&不喜欢，<b>负效果</b><br/> ●  comment - 评论<br/> 不支持的行为类型，可以映射到未被使用的其他行为类型。如实际业务数据中有私信行为，没有收藏行为，可以将私信行为映射到收藏行为
+        r"""行为类型：<br> ● expose - 曝光，<b>必须</b><br> ● click - 点击，<b>必须</b><br/>  ● stay - 详情页停留时长，<b>强烈建议</b><br/>  ● videoover - 视频播放时长，<b>强烈建议</b><br/> ●  like - 点赞&喜欢，<b>正效果</b><br/> ● collect - 收藏，<b>正效果</b><br/> ●  share - 转发&分享，<b>正效果</b><br/> ● reward - 打赏，<b>正效果</b><br/> ● unlike - 踩&不喜欢，<b>负效果</b><br/> ●  comment - 评论<br/> 不支持的行为类型，可以映射到未被使用的其他行为类型。如实际业务数据中有私信行为，没有收藏行为，可以将私信行为映射到收藏行为
         :rtype: str
         """
         return self._BehaviorType
@@ -807,7 +807,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorValue(self):
-        """行为类型对应的行为值：<br/> ● expose - 曝光，固定填1<br/> ● click - 点击，固定填1<br/>  ● stay - 详情页停留时长，填停留秒数，取值[1-86400]<br/>  ● videoover - 视频播放时长，填播放结束的秒数，取值[1-86400]<br/> ●  like - 点赞&喜欢，固定填1<br/> ● collect - 收藏，固定填1<br/> ●  share - 转发&分享，固定填1<br/> ● reward - 打赏，填打赏金额，没有则填1<br/> ● unlike - 踩&不喜欢，填不喜欢的原因，没有则填1<br/> ●  comment - 评论，填评论内容，如“上海加油”
+        r"""行为类型对应的行为值：<br/> ● expose - 曝光，固定填1<br/> ● click - 点击，固定填1<br/>  ● stay - 详情页停留时长，填停留秒数，取值[1-86400]<br/>  ● videoover - 视频播放时长，填播放结束的秒数，取值[1-86400]<br/> ●  like - 点赞&喜欢，固定填1<br/> ● collect - 收藏，固定填1<br/> ●  share - 转发&分享，固定填1<br/> ● reward - 打赏，填打赏金额，没有则填1<br/> ● unlike - 踩&不喜欢，填不喜欢的原因，没有则填1<br/> ●  comment - 评论，填评论内容，如“上海加油”
         :rtype: str
         """
         return self._BehaviorValue
@@ -818,7 +818,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorTimestamp(self):
-        """行为发生的时间戳： 秒级时间戳，尽量实时上报，最长不超过半小时否则会影响推荐结果的准确性
+        r"""行为发生的时间戳： 秒级时间戳，尽量实时上报，最长不超过半小时否则会影响推荐结果的准确性
         :rtype: int
         """
         return self._BehaviorTimestamp
@@ -829,7 +829,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def SceneId(self):
-        """行为发生的场景ID，在控制台创建场景后获取
+        r"""行为发生的场景ID，在控制台创建场景后获取
         :rtype: str
         """
         return self._SceneId
@@ -840,7 +840,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def ItemTraceId(self):
-        """推荐追踪ID，使用推荐结果中返回的ItemTraceId填入。 
+        r"""推荐追踪ID，使用推荐结果中返回的ItemTraceId填入。 
 注意：如果和推荐结果中的ItemTraceId不同，会影响行为特征归因，影响推荐算法效果
         :rtype: str
         """
@@ -852,7 +852,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def ItemType(self):
-        """内容类型，跟内容上报类型一致，用于效果分析，不做内容校验，<b>强烈建议</b>
+        r"""内容类型，跟内容上报类型一致，用于效果分析，不做内容校验，<b>强烈建议</b>
         :rtype: str
         """
         return self._ItemType
@@ -863,7 +863,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def ReferrerItemId(self):
-        """相关推荐场景点击进入详情页的内容id，该字段用来注明行为发生于哪个内容的详情页推荐中，<b>相关推荐场景强烈建议</b>
+        r"""相关推荐场景点击进入详情页的内容id，该字段用来注明行为发生于哪个内容的详情页推荐中，<b>相关推荐场景强烈建议</b>
         :rtype: str
         """
         return self._ReferrerItemId
@@ -874,7 +874,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
+        r"""用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -885,7 +885,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Source(self):
-        """算法来源： <br>● business 业务自己的算法对照组<br/> ● tencent 腾讯算法<br/> ● other 其他算法<br/>默认为tencent，区分行为来源于哪个算法，<b>用于Poc阶段的效果对比验证</b>
+        r"""算法来源： <br>● business 业务自己的算法对照组<br/> ● tencent 腾讯算法<br/> ● other 其他算法<br/>默认为tencent，区分行为来源于哪个算法，<b>用于Poc阶段的效果对比验证</b>
         :rtype: str
         """
         return self._Source
@@ -896,7 +896,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Country(self):
-        """行为发生时的国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
+        r"""行为发生时的国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
         :rtype: str
         """
         return self._Country
@@ -907,7 +907,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Province(self):
-        """行为发生时的省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
+        r"""行为发生时的省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
         :rtype: str
         """
         return self._Province
@@ -918,7 +918,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def City(self):
-        """行为发生时的城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
+        r"""行为发生时的城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
         :rtype: str
         """
         return self._City
@@ -929,7 +929,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def IP(self):
-        """行为发生时的客户端ip，<b>用作特征</b>
+        r"""行为发生时的客户端ip，<b>用作特征</b>
         :rtype: str
         """
         return self._IP
@@ -940,7 +940,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Network(self):
-        """行为发生时的客户端网络类型，<b>用作特征</b>
+        r"""行为发生时的客户端网络类型，<b>用作特征</b>
         :rtype: str
         """
         return self._Network
@@ -951,7 +951,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Platform(self):
-        """行为发生时的客户端平台，ios/android/h5，<b>用作特征</b>
+        r"""行为发生时的客户端平台，ios/android/h5，<b>用作特征</b>
         :rtype: str
         """
         return self._Platform
@@ -962,7 +962,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def AppVersion(self):
-        """行为发生时的客户端app版本，<b>用作特征</b>
+        r"""行为发生时的客户端app版本，<b>用作特征</b>
         :rtype: str
         """
         return self._AppVersion
@@ -973,7 +973,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def OsVersion(self):
-        """行为发生时的操作系统版本，<b>用作特征</b>
+        r"""行为发生时的操作系统版本，<b>用作特征</b>
         :rtype: str
         """
         return self._OsVersion
@@ -984,7 +984,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def DeviceModel(self):
-        """行为发生时的机型，<b>用作特征</b>
+        r"""行为发生时的机型，<b>用作特征</b>
         :rtype: str
         """
         return self._DeviceModel
@@ -995,7 +995,7 @@ class FeedBehaviorInfo(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，<b>用于行为数据的扩展</b>，需要base64加密
+        r"""json字符串，<b>用于行为数据的扩展</b>，需要base64加密
         :rtype: str
         """
         return self._Extension
@@ -1043,7 +1043,7 @@ class FeedBehaviorInfo(AbstractModel):
 
 
 class FeedRecommendRequest(AbstractModel):
-    """FeedRecommend请求参数结构体
+    r"""FeedRecommend请求参数结构体
 
     """
 
@@ -1074,7 +1074,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -1085,7 +1085,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """场景ID，在控制台创建场景后获取
+        r"""场景ID，在控制台创建场景后获取
         :rtype: str
         """
         return self._SceneId
@@ -1096,7 +1096,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
+        r"""用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
         :rtype: str
         """
         return self._UserId
@@ -1107,7 +1107,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户设备ID数组，可传入用户的多个类型ID，用于关联画像信息
+        r"""用户设备ID数组，可传入用户的多个类型ID，用于关联画像信息
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -1118,7 +1118,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def ItemCnt(self):
-        """推荐返回数量，默认10个，最多支持50个的内容返回。如果有更多数量要求，<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决
+        r"""推荐返回数量，默认10个，最多支持50个的内容返回。如果有更多数量要求，<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决
         :rtype: int
         """
         return self._ItemCnt
@@ -1129,7 +1129,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def CurrentItemId(self):
-        """当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
+        r"""当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
         :rtype: str
         """
         return self._CurrentItemId
@@ -1140,7 +1140,7 @@ class FeedRecommendRequest(AbstractModel):
 
     @property
     def Extension(self):
-        """扩展字段，json字符串，需要base64加密
+        r"""扩展字段，json字符串，需要base64加密
         :rtype: str
         """
         return self._Extension
@@ -1174,7 +1174,7 @@ class FeedRecommendRequest(AbstractModel):
 
 
 class FeedRecommendResponse(AbstractModel):
-    """FeedRecommend返回参数结构体
+    r"""FeedRecommend返回参数结构体
 
     """
 
@@ -1190,7 +1190,7 @@ class FeedRecommendResponse(AbstractModel):
 
     @property
     def DataList(self):
-        """推荐返回的内容信息列表，返回结果已按策略规则做好了排序
+        r"""推荐返回的内容信息列表，返回结果已按策略规则做好了排序
         :rtype: list of RecItemData
         """
         return self._DataList
@@ -1201,7 +1201,7 @@ class FeedRecommendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1222,7 +1222,7 @@ class FeedRecommendResponse(AbstractModel):
 
 
 class FeedUserInfo(AbstractModel):
-    """信息流用户信息
+    r"""信息流用户信息
 
     """
 
@@ -1289,7 +1289,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
+        r"""用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
         :rtype: str
         """
         return self._UserId
@@ -1300,7 +1300,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
+        r"""用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
         :rtype: list of UserIdInfo
         """
         return self._UserIdList
@@ -1311,7 +1311,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
+        r"""用户标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
         :rtype: str
         """
         return self._Tags
@@ -1322,7 +1322,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def DislikeInfoList(self):
-        """过滤列表，<b>会在推荐结果里过滤掉这类内容</b>
+        r"""过滤列表，<b>会在推荐结果里过滤掉这类内容</b>
         :rtype: list of DislikeInfo
         """
         return self._DislikeInfoList
@@ -1333,7 +1333,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Age(self):
-        """用户年龄
+        r"""用户年龄
         :rtype: int
         """
         return self._Age
@@ -1344,7 +1344,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Gender(self):
-        """用户性别： 0 - 未知 1 - 男 2 - 女
+        r"""用户性别： 0 - 未知 1 - 男 2 - 女
         :rtype: int
         """
         return self._Gender
@@ -1355,7 +1355,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Degree(self):
-        """用户学历 ：小学，初中，高中，大专，本科，硕士，博士
+        r"""用户学历 ：小学，初中，高中，大专，本科，硕士，博士
         :rtype: str
         """
         return self._Degree
@@ -1366,7 +1366,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def School(self):
-        """用户毕业学校全称
+        r"""用户毕业学校全称
         :rtype: str
         """
         return self._School
@@ -1377,7 +1377,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Occupation(self):
-        """用户职业
+        r"""用户职业
         :rtype: str
         """
         return self._Occupation
@@ -1388,7 +1388,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Industry(self):
-        """用户所属行业
+        r"""用户所属行业
         :rtype: str
         """
         return self._Industry
@@ -1399,7 +1399,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def ResidentCountry(self):
-        """用户常驻国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”
+        r"""用户常驻国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”
         :rtype: str
         """
         return self._ResidentCountry
@@ -1410,7 +1410,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def ResidentProvince(self):
-        """用户常驻省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”
+        r"""用户常驻省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”
         :rtype: str
         """
         return self._ResidentProvince
@@ -1421,7 +1421,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def ResidentCity(self):
-        """用户常驻城市，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，
+        r"""用户常驻城市，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，
         :rtype: str
         """
         return self._ResidentCity
@@ -1432,7 +1432,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def RegisterTimestamp(self):
-        """用户注册时间，秒级时间戳（1639624786）
+        r"""用户注册时间，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._RegisterTimestamp
@@ -1443,7 +1443,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def MembershipLevel(self):
-        """用户会员等级
+        r"""用户会员等级
         :rtype: str
         """
         return self._MembershipLevel
@@ -1454,7 +1454,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def LastLoginTimestamp(self):
-        """用户上一次登录时间，秒级时间戳（1639624786）
+        r"""用户上一次登录时间，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._LastLoginTimestamp
@@ -1465,7 +1465,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def LastLoginIp(self):
-        """用户上一次登录的ip
+        r"""用户上一次登录的ip
         :rtype: str
         """
         return self._LastLoginIp
@@ -1476,7 +1476,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
-        """用户信息的最后修改时间戳，秒级时间戳（1639624786）
+        r"""用户信息的最后修改时间戳，秒级时间戳（1639624786）
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -1487,7 +1487,7 @@ class FeedUserInfo(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，用于画像数据的扩展，需要base64加密
+        r"""json字符串，用于画像数据的扩展，需要base64加密
         :rtype: str
         """
         return self._Extension
@@ -1538,7 +1538,7 @@ class FeedUserInfo(AbstractModel):
 
 
 class GoodsBehaviorInfo(AbstractModel):
-    """电商行为
+    r"""电商行为
 
     """
 
@@ -1604,7 +1604,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
+        r"""用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
         :rtype: str
         """
         return self._UserId
@@ -1615,7 +1615,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def GoodsId(self):
-        """商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度
+        r"""商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度
         :rtype: str
         """
         return self._GoodsId
@@ -1626,7 +1626,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorType(self):
-        """行为类型：<br> ● expose - 曝光，<b>必须</b><br> ● click - 点击，<b>必须</b><br/>  ● stay - 详情页停留时长，<b>强烈建议</b><br/>  ● videoover - 视频播放时长，<b>强烈建议</b><br/> ●  like - 点赞&喜欢，<b>正效果</b><br/> ● collect - 收藏，<b>正效果</b><br/> ●  share - 转发&分享，<b>正效果</b><br/> ● reward - 打赏，<b>正效果</b><br/> ● unlike - 踩&不喜欢，<b>负效果</b><br/> ●  comment - 评论<br/> ●  order - 下单<br/> ●  buy - 购买成功<br/> ●  addcart - 加入购物车<br/>   
+        r"""行为类型：<br> ● expose - 曝光，<b>必须</b><br> ● click - 点击，<b>必须</b><br/>  ● stay - 详情页停留时长，<b>强烈建议</b><br/>  ● videoover - 视频播放时长，<b>强烈建议</b><br/> ●  like - 点赞&喜欢，<b>正效果</b><br/> ● collect - 收藏，<b>正效果</b><br/> ●  share - 转发&分享，<b>正效果</b><br/> ● reward - 打赏，<b>正效果</b><br/> ● unlike - 踩&不喜欢，<b>负效果</b><br/> ●  comment - 评论<br/> ●  order - 下单<br/> ●  buy - 购买成功<br/> ●  addcart - 加入购物车<br/>   
 不支持的行为类型，可以映射到未被使用的其他行为类型。如实际业务数据中有私信行为，没有收藏行为，可以将私信行为映射到收藏行为
         :rtype: str
         """
@@ -1638,7 +1638,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorValue(self):
-        """行为类型对应的行为值：<br/> ● expose - 曝光，固定填1<br/> ● click - 点击，固定填1<br/>  ● stay - 详情页停留时长，填停留秒数，取值[1-86400]<br/>  ● videoover - 视频播放时长，填播放结束的秒数，取值[1-86400]<br/> ●  like - 点赞&喜欢，固定填1<br/> ● collect - 收藏，固定填1<br/> ●  share - 转发&分享，固定填1<br/> ● reward - 打赏，填打赏金额，没有则填1<br/> ● unlike - 踩&不喜欢，填不喜欢的原因，没有则填1<br/> ●  comment - 评论，填评论内容，如“上海加油”<br/> ●  order - 下单，固定填1<br/> ●  buy - 购买成功，固定填1<br/> ●  addcart - 加入购物车，固定填1
+        r"""行为类型对应的行为值：<br/> ● expose - 曝光，固定填1<br/> ● click - 点击，固定填1<br/>  ● stay - 详情页停留时长，填停留秒数，取值[1-86400]<br/>  ● videoover - 视频播放时长，填播放结束的秒数，取值[1-86400]<br/> ●  like - 点赞&喜欢，固定填1<br/> ● collect - 收藏，固定填1<br/> ●  share - 转发&分享，固定填1<br/> ● reward - 打赏，填打赏金额，没有则填1<br/> ● unlike - 踩&不喜欢，填不喜欢的原因，没有则填1<br/> ●  comment - 评论，填评论内容，如“上海加油”<br/> ●  order - 下单，固定填1<br/> ●  buy - 购买成功，固定填1<br/> ●  addcart - 加入购物车，固定填1
         :rtype: str
         """
         return self._BehaviorValue
@@ -1649,7 +1649,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def BehaviorTimestamp(self):
-        """行为发生的时间戳： 秒级时间戳，尽量实时上报，最长不超过半小时否则会影响推荐结果的准确性
+        r"""行为发生的时间戳： 秒级时间戳，尽量实时上报，最长不超过半小时否则会影响推荐结果的准确性
         :rtype: int
         """
         return self._BehaviorTimestamp
@@ -1660,7 +1660,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def SceneId(self):
-        """行为发生的场景ID，在控制台创建场景后获取
+        r"""行为发生的场景ID，在控制台创建场景后获取
         :rtype: str
         """
         return self._SceneId
@@ -1671,7 +1671,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def Source(self):
-        """算法来源： <br>● business 业务自己的算法对照组<br/> ● tencent 腾讯算法<br/> ● other 其他算法<br/>默认为tencent，区分行为来源于哪个算法，<b>用于Poc阶段的效果对比验证</b>
+        r"""算法来源： <br>● business 业务自己的算法对照组<br/> ● tencent 腾讯算法<br/> ● other 其他算法<br/>默认为tencent，区分行为来源于哪个算法，<b>用于Poc阶段的效果对比验证</b>
         :rtype: str
         """
         return self._Source
@@ -1682,7 +1682,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def Page(self):
-        """标识行为发生在app内哪个页面，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如首页，发现页，用户中心等
+        r"""标识行为发生在app内哪个页面，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如首页，发现页，用户中心等
 <b>用作上下文特征，刻画不同场景用户行为分布的差异</b>
         :rtype: str
         """
@@ -1694,7 +1694,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def Module(self):
-        """标识行为发生在页面的哪一区块，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如横幅、广告位、猜你喜欢等
+        r"""标识行为发生在页面的哪一区块，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如横幅、广告位、猜你喜欢等
 <b>用作上下文特征，刻画不同模块用户行为分布的差异</b>
         :rtype: str
         """
@@ -1706,7 +1706,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def GoodsTraceId(self):
-        """推荐追踪ID，使用推荐结果中返回的GoodsTraceId填入。 
+        r"""推荐追踪ID，使用推荐结果中返回的GoodsTraceId填入。 
 注意：如果和推荐结果中的GoodsTraceId不同，会影响行为特征归因，影响推荐算法效果。<b>强烈建议</b>
         :rtype: str
         """
@@ -1718,7 +1718,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def ReferrerGoodsId(self):
-        """相关推荐场景点击进入详情页的内容id，该字段用来注明行为发生于哪个内容的详情页推荐中，<b>相关推荐场景强烈建议</b>
+        r"""相关推荐场景点击进入详情页的内容id，该字段用来注明行为发生于哪个内容的详情页推荐中，<b>相关推荐场景强烈建议</b>
         :rtype: str
         """
         return self._ReferrerGoodsId
@@ -1729,7 +1729,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def OrderGoodsCnt(self):
-        """订单商品购买个数，当behaviorType=order，buy或addcart时有值，<b>用作特征</b>
+        r"""订单商品购买个数，当behaviorType=order，buy或addcart时有值，<b>用作特征</b>
         :rtype: int
         """
         return self._OrderGoodsCnt
@@ -1740,7 +1740,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def OrderAmount(self):
-        """订单总金额，当behaviorType=order或buy时有值（单位：元，统一货币体系，如统一为RMB，美元等），<b>用作特征</b>
+        r"""订单总金额，当behaviorType=order或buy时有值（单位：元，统一货币体系，如统一为RMB，美元等），<b>用作特征</b>
         :rtype: float
         """
         return self._OrderAmount
@@ -1751,7 +1751,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def UserIdList(self):
-        """用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
+        r"""用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
         :rtype: list of StrUserIdInfo
         """
         return self._UserIdList
@@ -1762,7 +1762,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def UserPortraitInfo(self):
-        """行为发生时用户基础特征信息，<b>用作特征</b>
+        r"""行为发生时用户基础特征信息，<b>用作特征</b>
         :rtype: :class:`tencentcloud.irp.v20220805.models.UserPortraitInfo`
         """
         return self._UserPortraitInfo
@@ -1773,7 +1773,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def Position(self):
-        """标识行为发生在模块内的具体位置，如1、2、...
+        r"""标识行为发生在模块内的具体位置，如1、2、...
 <b>用作上下文特征，刻画不同位置用户行为分布的差异</b>
         :rtype: int
         """
@@ -1785,7 +1785,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
     @property
     def Extension(self):
-        """json字符串，<b>用于行为数据的扩展</b>
+        r"""json字符串，<b>用于行为数据的扩展</b>
         :rtype: str
         """
         return self._Extension
@@ -1831,7 +1831,7 @@ class GoodsBehaviorInfo(AbstractModel):
 
 
 class GoodsInfo(AbstractModel):
-    """电商物料内容
+    r"""电商物料内容
 
     """
 
@@ -1935,7 +1935,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def GoodsId(self):
-        """商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度。建议限制在128字符以内
+        r"""商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度。建议限制在128字符以内
         :rtype: str
         """
         return self._GoodsId
@@ -1946,7 +1946,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def GoodsType(self):
-        """商品物料展示类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
+        r"""商品物料展示类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
         :rtype: str
         """
         return self._GoodsType
@@ -1957,7 +1957,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Status(self):
-        """商品状态：
+        r"""商品状态：
 ● 1 - 上架 
 ● 2 - 下架 
 Status=2的内容不会在推荐结果中出现 
@@ -1972,7 +1972,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def PublishTimestamp(self):
-        """商品生成时间，秒级时间戳（1639624786），需大于0，<b>用作特征和物料管理</b>
+        r"""商品生成时间，秒级时间戳（1639624786），需大于0，<b>用作特征和物料管理</b>
         :rtype: int
         """
         return self._PublishTimestamp
@@ -1983,7 +1983,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ExpireTimestamp(self):
-        """商品过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年，<b>用作特征</b>，过期则不会被推荐，<b>强烈建议</b>
+        r"""商品过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年，<b>用作特征</b>，过期则不会被推荐，<b>强烈建议</b>
         :rtype: int
         """
         return self._ExpireTimestamp
@@ -1994,7 +1994,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def SpuId(self):
-        """spu((Standard Product Unit))维度id，商品聚合信息的最小单位，<b>强烈建议</b>
+        r"""spu((Standard Product Unit))维度id，商品聚合信息的最小单位，<b>强烈建议</b>
         :rtype: str
         """
         return self._SpuId
@@ -2005,7 +2005,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CategoryLevel(self):
-        """类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配，<b>强烈建议</b>
+        r"""类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配，<b>强烈建议</b>
         :rtype: int
         """
         return self._CategoryLevel
@@ -2016,7 +2016,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CategoryPath(self):
-        """类目路径，一级二级三级等依次用英文冒号联接，和CategoryLevel字段值匹配，如体育：“女装:裙子:半身裙”。<b>用于物料池管理，强烈建议</b>
+        r"""类目路径，一级二级三级等依次用英文冒号联接，和CategoryLevel字段值匹配，如体育：“女装:裙子:半身裙”。<b>用于物料池管理，强烈建议</b>
         :rtype: str
         """
         return self._CategoryPath
@@ -2027,7 +2027,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Title(self):
-        """商品标题，<b>主要用于语义分析</b>，<b>强烈建议</b>
+        r"""商品标题，<b>主要用于语义分析</b>，<b>强烈建议</b>
         :rtype: str
         """
         return self._Title
@@ -2038,7 +2038,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Tags(self):
-        """商品标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
+        r"""商品标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
         :rtype: str
         """
         return self._Tags
@@ -2049,7 +2049,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Brand(self):
-        """商品对应的品牌，取值用户自定义，可以是品牌id或品牌明文，<b>用作特征以及打散/过滤规则，强烈建议</b>
+        r"""商品对应的品牌，取值用户自定义，可以是品牌id或品牌明文，<b>用作特征以及打散/过滤规则，强烈建议</b>
         :rtype: str
         """
         return self._Brand
@@ -2060,7 +2060,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ShopId(self):
-        """商品所属店铺ID，取值客户自定义，<b>用作特征，强烈建议</b>
+        r"""商品所属店铺ID，取值客户自定义，<b>用作特征，强烈建议</b>
         :rtype: str
         """
         return self._ShopId
@@ -2071,7 +2071,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def OrgPrice(self):
-        """商品原始价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
+        r"""商品原始价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
         :rtype: float
         """
         return self._OrgPrice
@@ -2082,7 +2082,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CurPrice(self):
-        """商品当前价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
+        r"""商品当前价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
         :rtype: float
         """
         return self._CurPrice
@@ -2093,7 +2093,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def SourceId(self):
-        """商品来源类型，客户自定义，<b>用于物料池管理</b>
+        r"""商品来源类型，客户自定义，<b>用于物料池管理</b>
         :rtype: str
         """
         return self._SourceId
@@ -2104,7 +2104,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Content(self):
-        """商品正文关键片段，建议控制在500字符以内，<b>主要用于语义分析</b>
+        r"""商品正文关键片段，建议控制在500字符以内，<b>主要用于语义分析</b>
         :rtype: str
         """
         return self._Content
@@ -2115,7 +2115,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ContentUrl(self):
-        """商品正文详情，主要用于语义分析，当内容过大时建议用ContentUrl传递，<b>与Content可二选一</b>
+        r"""商品正文详情，主要用于语义分析，当内容过大时建议用ContentUrl传递，<b>与Content可二选一</b>
         :rtype: str
         """
         return self._ContentUrl
@@ -2126,7 +2126,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def PicUrlList(self):
-        """商品封面url，不超过10个，<b>用作特征</b>
+        r"""商品封面url，不超过10个，<b>用作特征</b>
         :rtype: list of str
         """
         return self._PicUrlList
@@ -2137,7 +2137,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Country(self):
-        """卖家所在国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
+        r"""卖家所在国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
         :rtype: str
         """
         return self._Country
@@ -2148,7 +2148,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Province(self):
-        """卖家所在省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
+        r"""卖家所在省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
         :rtype: str
         """
         return self._Province
@@ -2159,7 +2159,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def City(self):
-        """卖家所在城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
+        r"""卖家所在城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
         :rtype: str
         """
         return self._City
@@ -2170,7 +2170,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def FreeShipping(self):
-        """商品是否包邮；1:包邮；2:不包邮；3:满足条件包邮，<b>用作特征</b>
+        r"""商品是否包邮；1:包邮；2:不包邮；3:满足条件包邮，<b>用作特征</b>
         :rtype: int
         """
         return self._FreeShipping
@@ -2181,7 +2181,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ShippingPrice(self):
-        """商品邮费（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征</b>
+        r"""商品邮费（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征</b>
         :rtype: float
         """
         return self._ShippingPrice
@@ -2192,7 +2192,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def PraiseCnt(self):
-        """商品累计好评次数，<b>用作特征</b>
+        r"""商品累计好评次数，<b>用作特征</b>
         :rtype: int
         """
         return self._PraiseCnt
@@ -2203,7 +2203,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CommentCnt(self):
-        """商品累计评论次数，<b>用作特征</b>
+        r"""商品累计评论次数，<b>用作特征</b>
         :rtype: int
         """
         return self._CommentCnt
@@ -2214,7 +2214,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def ShareCnt(self):
-        """商品累计分享次数，<b>用作特征</b>
+        r"""商品累计分享次数，<b>用作特征</b>
         :rtype: int
         """
         return self._ShareCnt
@@ -2225,7 +2225,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def CollectCnt(self):
-        """商品累计收藏次数，<b>用作特征</b>
+        r"""商品累计收藏次数，<b>用作特征</b>
         :rtype: int
         """
         return self._CollectCnt
@@ -2236,7 +2236,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def OrderCnt(self):
-        """商品累积成交次数，<b>用作特征</b>
+        r"""商品累积成交次数，<b>用作特征</b>
         :rtype: int
         """
         return self._OrderCnt
@@ -2247,7 +2247,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Score(self):
-        """商品平均客户评分，取值范围用户自定，<b>用作特征</b>
+        r"""商品平均客户评分，取值范围用户自定，<b>用作特征</b>
         :rtype: float
         """
         return self._Score
@@ -2258,7 +2258,7 @@ Status=2的内容不会在推荐结果中出现
 
     @property
     def Extension(self):
-        """json字符串，<b>用于物料池管理的自定义扩展</b>
+        r"""json字符串，<b>用于物料池管理的自定义扩展</b>
         :rtype: str
         """
         return self._Extension
@@ -2310,7 +2310,7 @@ Status=2的内容不会在推荐结果中出现
 
 
 class RecGoodsData(AbstractModel):
-    """推荐返回的内容信息
+    r"""推荐返回的内容信息
 
     """
 
@@ -2335,7 +2335,7 @@ class RecGoodsData(AbstractModel):
 
     @property
     def GoodsId(self):
-        """推荐返回的商品ID
+        r"""推荐返回的商品ID
         :rtype: str
         """
         return self._GoodsId
@@ -2346,7 +2346,7 @@ class RecGoodsData(AbstractModel):
 
     @property
     def Score(self):
-        """推荐结果分，取值范围[0,1000000]
+        r"""推荐结果分，取值范围[0,1000000]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2358,7 +2358,7 @@ class RecGoodsData(AbstractModel):
 
     @property
     def GoodsTraceId(self):
-        """推荐追踪id，本次推荐内容产生的后续行为上报均要用该GoodsTraceId上报。每次接口调用返回的GoodsTraceId不同
+        r"""推荐追踪id，本次推荐内容产生的后续行为上报均要用该GoodsTraceId上报。每次接口调用返回的GoodsTraceId不同
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2370,7 +2370,7 @@ class RecGoodsData(AbstractModel):
 
     @property
     def Position(self):
-        """商品所在位置
+        r"""商品所在位置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2397,7 +2397,7 @@ class RecGoodsData(AbstractModel):
 
 
 class RecItemData(AbstractModel):
-    """推荐返回的内容信息
+    r"""推荐返回的内容信息
 
     """
 
@@ -2422,7 +2422,7 @@ class RecItemData(AbstractModel):
 
     @property
     def ItemId(self):
-        """推荐的内容ID
+        r"""推荐的内容ID
         :rtype: str
         """
         return self._ItemId
@@ -2433,7 +2433,7 @@ class RecItemData(AbstractModel):
 
     @property
     def ItemType(self):
-        """内容类型，同内容上报类型一致
+        r"""内容类型，同内容上报类型一致
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2445,7 +2445,7 @@ class RecItemData(AbstractModel):
 
     @property
     def ItemTraceId(self):
-        """推荐追踪id，本次推荐内容产生的后续行为上报均要用该ItemTraceId上报。每次接口调用返回的ItemTraceId不同
+        r"""推荐追踪id，本次推荐内容产生的后续行为上报均要用该ItemTraceId上报。每次接口调用返回的ItemTraceId不同
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2457,7 +2457,7 @@ class RecItemData(AbstractModel):
 
     @property
     def Score(self):
-        """推荐预测分，分值越高被推荐的理由越充分，取值范围[0,1000000]，用于做二次排序的参考
+        r"""推荐预测分，分值越高被推荐的理由越充分，取值范围[0,1000000]，用于做二次排序的参考
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2484,7 +2484,7 @@ class RecItemData(AbstractModel):
 
 
 class ReportFeedBehaviorRequest(AbstractModel):
-    """ReportFeedBehavior请求参数结构体
+    r"""ReportFeedBehavior请求参数结构体
 
     """
 
@@ -2500,7 +2500,7 @@ class ReportFeedBehaviorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -2511,7 +2511,7 @@ class ReportFeedBehaviorRequest(AbstractModel):
 
     @property
     def FeedBehaviorList(self):
-        """上报的行为数据数组，数量不超过50
+        r"""上报的行为数据数组，数量不超过50
         :rtype: list of FeedBehaviorInfo
         """
         return self._FeedBehaviorList
@@ -2540,7 +2540,7 @@ class ReportFeedBehaviorRequest(AbstractModel):
 
 
 class ReportFeedBehaviorResponse(AbstractModel):
-    """ReportFeedBehavior返回参数结构体
+    r"""ReportFeedBehavior返回参数结构体
 
     """
 
@@ -2553,7 +2553,7 @@ class ReportFeedBehaviorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2568,7 +2568,7 @@ class ReportFeedBehaviorResponse(AbstractModel):
 
 
 class ReportFeedItemRequest(AbstractModel):
-    """ReportFeedItem请求参数结构体
+    r"""ReportFeedItem请求参数结构体
 
     """
 
@@ -2584,7 +2584,7 @@ class ReportFeedItemRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -2595,7 +2595,7 @@ class ReportFeedItemRequest(AbstractModel):
 
     @property
     def FeedItemList(self):
-        """上报的信息流内容数组，一次数量不超过50
+        r"""上报的信息流内容数组，一次数量不超过50
         :rtype: list of DocItem
         """
         return self._FeedItemList
@@ -2624,7 +2624,7 @@ class ReportFeedItemRequest(AbstractModel):
 
 
 class ReportFeedItemResponse(AbstractModel):
-    """ReportFeedItem返回参数结构体
+    r"""ReportFeedItem返回参数结构体
 
     """
 
@@ -2637,7 +2637,7 @@ class ReportFeedItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2652,7 +2652,7 @@ class ReportFeedItemResponse(AbstractModel):
 
 
 class ReportFeedUserRequest(AbstractModel):
-    """ReportFeedUser请求参数结构体
+    r"""ReportFeedUser请求参数结构体
 
     """
 
@@ -2668,7 +2668,7 @@ class ReportFeedUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -2679,7 +2679,7 @@ class ReportFeedUserRequest(AbstractModel):
 
     @property
     def FeedUserList(self):
-        """上报的用户信息数组，数量不超过50
+        r"""上报的用户信息数组，数量不超过50
         :rtype: list of FeedUserInfo
         """
         return self._FeedUserList
@@ -2708,7 +2708,7 @@ class ReportFeedUserRequest(AbstractModel):
 
 
 class ReportFeedUserResponse(AbstractModel):
-    """ReportFeedUser返回参数结构体
+    r"""ReportFeedUser返回参数结构体
 
     """
 
@@ -2721,7 +2721,7 @@ class ReportFeedUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2736,7 +2736,7 @@ class ReportFeedUserResponse(AbstractModel):
 
 
 class ReportGoodsBehaviorRequest(AbstractModel):
-    """ReportGoodsBehavior请求参数结构体
+    r"""ReportGoodsBehavior请求参数结构体
 
     """
 
@@ -2752,7 +2752,7 @@ class ReportGoodsBehaviorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -2763,7 +2763,7 @@ class ReportGoodsBehaviorRequest(AbstractModel):
 
     @property
     def GoodsBehaviorList(self):
-        """上报的商品对应的用户行为数据数组，数量不超过50
+        r"""上报的商品对应的用户行为数据数组，数量不超过50
         :rtype: list of GoodsBehaviorInfo
         """
         return self._GoodsBehaviorList
@@ -2792,7 +2792,7 @@ class ReportGoodsBehaviorRequest(AbstractModel):
 
 
 class ReportGoodsBehaviorResponse(AbstractModel):
-    """ReportGoodsBehavior返回参数结构体
+    r"""ReportGoodsBehavior返回参数结构体
 
     """
 
@@ -2805,7 +2805,7 @@ class ReportGoodsBehaviorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2820,7 +2820,7 @@ class ReportGoodsBehaviorResponse(AbstractModel):
 
 
 class ReportGoodsInfoRequest(AbstractModel):
-    """ReportGoodsInfo请求参数结构体
+    r"""ReportGoodsInfo请求参数结构体
 
     """
 
@@ -2836,7 +2836,7 @@ class ReportGoodsInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，在控制台获取
+        r"""实例ID，在控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -2847,7 +2847,7 @@ class ReportGoodsInfoRequest(AbstractModel):
 
     @property
     def GoodsList(self):
-        """上报的商品数组，一次数量不超过50
+        r"""上报的商品数组，一次数量不超过50
         :rtype: list of GoodsInfo
         """
         return self._GoodsList
@@ -2876,7 +2876,7 @@ class ReportGoodsInfoRequest(AbstractModel):
 
 
 class ReportGoodsInfoResponse(AbstractModel):
-    """ReportGoodsInfo返回参数结构体
+    r"""ReportGoodsInfo返回参数结构体
 
     """
 
@@ -2889,7 +2889,7 @@ class ReportGoodsInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2904,13 +2904,13 @@ class ReportGoodsInfoResponse(AbstractModel):
 
 
 class StrUserIdInfo(AbstractModel):
-    """用户信息
+    r"""用户信息
 
     """
 
 
 class UserIdInfo(AbstractModel):
-    """用户ID信息
+    r"""用户ID信息
 
     """
 
@@ -2926,7 +2926,7 @@ class UserIdInfo(AbstractModel):
 
     @property
     def Type(self):
-        """用户ID类型： <br/>● qq: qq号码 <br/>● qq_md5：qq的md5值 <br/>● imei：设备imei <br/>● imei_md5：imei的md5值 <br/>● idfa: Apple 向用户设备随机分配的设备标识符 <br/>● idfa_md5：idfa的md5值 <br/>● oaid：安卓10之后一种非永久性设备标识符 <br/>● oaid_md5：md5后的oaid <br/>● wx_openid：微信openid <br/>● qq_openid：QQ的openid <br/>● phone：电话号码 <br/>● phone_md5：md5后的电话号码 <br/>● phone_sha256：SHA256加密的手机号 <br/>● phone_sm3：国密SM3加密的手机号 <br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
+        r"""用户ID类型： <br/>● qq: qq号码 <br/>● qq_md5：qq的md5值 <br/>● imei：设备imei <br/>● imei_md5：imei的md5值 <br/>● idfa: Apple 向用户设备随机分配的设备标识符 <br/>● idfa_md5：idfa的md5值 <br/>● oaid：安卓10之后一种非永久性设备标识符 <br/>● oaid_md5：md5后的oaid <br/>● wx_openid：微信openid <br/>● qq_openid：QQ的openid <br/>● phone：电话号码 <br/>● phone_md5：md5后的电话号码 <br/>● phone_sha256：SHA256加密的手机号 <br/>● phone_sm3：国密SM3加密的手机号 <br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
         :rtype: str
         """
         return self._Type
@@ -2937,7 +2937,7 @@ class UserIdInfo(AbstractModel):
 
     @property
     def Value(self):
-        """用户ID值
+        r"""用户ID值
         :rtype: str
         """
         return self._Value
@@ -2961,6 +2961,6 @@ class UserIdInfo(AbstractModel):
 
 
 class UserPortraitInfo(AbstractModel):
-    """用户基础画像
+    r"""用户基础画像
 
     """

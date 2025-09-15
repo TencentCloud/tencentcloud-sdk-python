@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ChangeMigratingTopicToNextStageRequest(AbstractModel):
-    """ChangeMigratingTopicToNextStage请求参数结构体
+    r"""ChangeMigratingTopicToNextStage请求参数结构体
 
     """
 
@@ -40,7 +40,7 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -52,7 +52,7 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
-        """主题名称列表，主题名称可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称列表，主题名称可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :rtype: list of str
         """
@@ -64,7 +64,7 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def NamespaceList(self):
-        """命名空间列表，仅4.x集群有效，与TopicNameList一一对应，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""命名空间列表，仅4.x集群有效，与TopicNameList一一对应，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: list of str
         """
         return self._NamespaceList
@@ -89,7 +89,7 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
 
 class ChangeMigratingTopicToNextStageResponse(AbstractModel):
-    """ChangeMigratingTopicToNextStage返回参数结构体
+    r"""ChangeMigratingTopicToNextStage返回参数结构体
 
     """
 
@@ -105,7 +105,7 @@ class ChangeMigratingTopicToNextStageResponse(AbstractModel):
 
     @property
     def Results(self):
-        """迁移主题状态修改的结果列表
+        r"""迁移主题状态修改的结果列表
         :rtype: list of TopicStageChangeResult
         """
         return self._Results
@@ -116,7 +116,7 @@ class ChangeMigratingTopicToNextStageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -137,7 +137,7 @@ class ChangeMigratingTopicToNextStageResponse(AbstractModel):
 
 
 class ClientSubscriptionInfo(AbstractModel):
-    """客户端订阅详情，可用于辅助判断哪些客户端订阅关系不一致
+    r"""客户端订阅详情，可用于辅助判断哪些客户端订阅关系不一致
 
     """
 
@@ -162,7 +162,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        r"""客户端ID
         :rtype: str
         """
         return self._ClientId
@@ -173,7 +173,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
     @property
     def ClientAddr(self):
-        """客户端地址
+        r"""客户端地址
         :rtype: str
         """
         return self._ClientAddr
@@ -184,7 +184,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
     @property
     def Topic(self):
-        """订阅主题
+        r"""订阅主题
         :rtype: str
         """
         return self._Topic
@@ -195,7 +195,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
     @property
     def SubString(self):
-        """订阅表达式
+        r"""订阅表达式
         :rtype: str
         """
         return self._SubString
@@ -206,7 +206,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
     @property
     def ExpressionType(self):
-        """订阅方式
+        r"""订阅方式
         :rtype: str
         """
         return self._ExpressionType
@@ -233,7 +233,7 @@ class ClientSubscriptionInfo(AbstractModel):
 
 
 class ConsumeGroupItem(AbstractModel):
-    """消费组信息
+    r"""消费组信息
 
     """
 
@@ -285,7 +285,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -296,7 +296,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        r"""消费组名称
         :rtype: str
         """
         return self._ConsumerGroup
@@ -307,7 +307,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumeEnable(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -318,7 +318,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumeMessageOrderly(self):
-        """顺序投递：true
+        r"""顺序投递：true
 并发投递：false
         :rtype: bool
         """
@@ -330,7 +330,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数
+        r"""最大重试次数
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -341,7 +341,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -352,7 +352,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ClusterIdV4(self):
-        """4.x的集群ID
+        r"""4.x的集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -364,7 +364,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def NamespaceV4(self):
-        """4.x的命名空间
+        r"""4.x的命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -376,7 +376,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumerGroupV4(self):
-        """4.x的消费组名称
+        r"""4.x的消费组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -388,7 +388,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def FullNamespaceV4(self):
-        """4.x的完整命名空间
+        r"""4.x的完整命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -400,7 +400,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def SubscribeTopicNum(self):
-        """订阅的主题个数
+        r"""订阅的主题个数
         :rtype: int
         """
         return self._SubscribeTopicNum
@@ -411,7 +411,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """1753153590
+        r"""1753153590
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -446,7 +446,7 @@ class ConsumeGroupItem(AbstractModel):
 
 
 class ConsumerClient(AbstractModel):
-    """消费者客户端
+    r"""消费者客户端
 
     """
 
@@ -480,7 +480,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        r"""客户端ID
         :rtype: str
         """
         return self._ClientId
@@ -491,7 +491,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def ClientAddr(self):
-        """客户端地址
+        r"""客户端地址
         :rtype: str
         """
         return self._ClientAddr
@@ -502,7 +502,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def Language(self):
-        """客户端SDK语言
+        r"""客户端SDK语言
         :rtype: str
         """
         return self._Language
@@ -513,7 +513,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def Version(self):
-        """客户端SDK版本
+        r"""客户端SDK版本
         :rtype: str
         """
         return self._Version
@@ -524,7 +524,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def ConsumerLag(self):
-        """客户端消费堆积
+        r"""客户端消费堆积
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -536,7 +536,7 @@ class ConsumerClient(AbstractModel):
 
     @property
     def ChannelProtocol(self):
-        """消费者客户端类型，枚举值如下：
+        r"""消费者客户端类型，枚举值如下：
 
 - grpc：GRPC协议
 - remoting：Remoting协议
@@ -569,7 +569,7 @@ class ConsumerClient(AbstractModel):
 
 
 class CreateConsumerGroupRequest(AbstractModel):
-    """CreateConsumerGroup请求参数结构体
+    r"""CreateConsumerGroup请求参数结构体
 
     """
 
@@ -601,7 +601,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -612,7 +612,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数，取值范围0～1000
+        r"""最大重试次数，取值范围0～1000
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -623,7 +623,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeEnable(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -634,7 +634,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeMessageOrderly(self):
-        """顺序投递：true
+        r"""顺序投递：true
 并发投递：false
         :rtype: bool
         """
@@ -646,7 +646,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -657,7 +657,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多 128 个字符
+        r"""备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -668,7 +668,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -702,7 +702,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
 
 class CreateConsumerGroupResponse(AbstractModel):
-    """CreateConsumerGroup返回参数结构体
+    r"""CreateConsumerGroup返回参数结构体
 
     """
 
@@ -721,7 +721,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -732,7 +732,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        r"""消费组名称
         :rtype: str
         """
         return self._ConsumerGroup
@@ -743,7 +743,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -760,7 +760,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
 
 class CreateInstanceRequest(AbstractModel):
-    """CreateInstance请求参数结构体
+    r"""CreateInstance请求参数结构体
 
     """
 
@@ -833,7 +833,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，枚举值如下：
+        r"""实例类型，枚举值如下：
 
 - EXPERIMENT：体验版
 
@@ -852,7 +852,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """集群名称，不能为空， 3-64个字符，只能包含数字、字母、“-”和“_”
+        r"""集群名称，不能为空， 3-64个字符，只能包含数字、字母、“-”和“_”
         :rtype: str
         """
         return self._Name
@@ -863,7 +863,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SkuCode(self):
-        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
+        r"""商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :rtype: str
         """
         return self._SkuCode
@@ -874,7 +874,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def VpcList(self):
-        """集群绑定的VPC信息
+        r"""集群绑定的VPC信息
         :rtype: list of VpcInfo
         """
         return self._VpcList
@@ -885,7 +885,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -896,7 +896,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -907,7 +907,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnablePublic(self):
-        """是否开启公网，默认值为false表示不开启
+        r"""是否开启公网，默认值为false表示不开启
         :rtype: bool
         """
         return self._EnablePublic
@@ -918,7 +918,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def BillingFlow(self):
-        """公网是否按流量计费，默认值为false表示不按流量计费
+        r"""公网是否按流量计费，默认值为false表示不按流量计费
         :rtype: bool
         """
         return self._BillingFlow
@@ -929,7 +929,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """公网带宽（单位：兆），默认值为0。如果开启公网，该字段必须为大于0的正整数
+        r"""公网带宽（单位：兆），默认值为0。如果开启公网，该字段必须为大于0的正整数
         :rtype: int
         """
         return self._Bandwidth
@@ -940,7 +940,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def IpRules(self):
-        """公网访问白名单，不填表示拒绝所有 IP 访问
+        r"""公网访问白名单，不填表示拒绝所有 IP 访问
         :rtype: list of IpRule
         """
         return self._IpRules
@@ -951,7 +951,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
+        r"""消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -966,7 +966,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """付费模式（0: 后付费；1: 预付费），默认值为0
+        r"""付费模式（0: 后付费；1: 预付费），默认值为0
         :rtype: int
         """
         return self._PayMode
@@ -977,7 +977,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """预付费集群是否自动续费（0: 不自动续费；1: 自动续费），默认值为0
+        r"""预付费集群是否自动续费（0: 不自动续费；1: 自动续费），默认值为0
         :rtype: int
         """
         return self._RenewFlag
@@ -988,7 +988,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """预付费集群的购买时长（单位：月），取值范围为1～60，默认值为1
+        r"""预付费集群的购买时长（单位：月），取值范围为1～60，默认值为1
         :rtype: int
         """
         return self._TimeSpan
@@ -999,7 +999,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MaxTopicNum(self):
-        """最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
+        r"""最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值和最小值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
@@ -1013,7 +1013,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构中获得。
+        r"""部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构中获得。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -1066,7 +1066,7 @@ class CreateInstanceRequest(AbstractModel):
 
 
 class CreateInstanceResponse(AbstractModel):
-    """CreateInstance返回参数结构体
+    r"""CreateInstance返回参数结构体
 
     """
 
@@ -1082,7 +1082,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -1093,7 +1093,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1109,7 +1109,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
 class CreateMQTTInsPublicEndpointRequest(AbstractModel):
-    """CreateMQTTInsPublicEndpoint请求参数结构体
+    r"""CreateMQTTInsPublicEndpoint请求参数结构体
 
     """
 
@@ -1128,7 +1128,7 @@ class CreateMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1139,7 +1139,7 @@ class CreateMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._Bandwidth
@@ -1150,7 +1150,7 @@ class CreateMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -1180,7 +1180,7 @@ class CreateMQTTInsPublicEndpointRequest(AbstractModel):
 
 
 class CreateMQTTInsPublicEndpointResponse(AbstractModel):
-    """CreateMQTTInsPublicEndpoint返回参数结构体
+    r"""CreateMQTTInsPublicEndpoint返回参数结构体
 
     """
 
@@ -1193,7 +1193,7 @@ class CreateMQTTInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1208,7 +1208,7 @@ class CreateMQTTInsPublicEndpointResponse(AbstractModel):
 
 
 class CreateMQTTInstanceRequest(AbstractModel):
-    """CreateMQTTInstance请求参数结构体
+    r"""CreateMQTTInstance请求参数结构体
 
     """
 
@@ -1256,7 +1256,7 @@ basic_1k,
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 EXPERIMENT 体验版
 BASIC 基础版
 PRO  专业版
@@ -1271,7 +1271,7 @@ PLATINUM 铂金版
 
     @property
     def Name(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._Name
@@ -1282,7 +1282,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        """商品规格，可用规格如下：
+        r"""商品规格，可用规格如下：
 basic_1k,
         :rtype: str
         """
@@ -1294,7 +1294,7 @@ basic_1k,
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -1305,7 +1305,7 @@ basic_1k,
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -1316,7 +1316,7 @@ basic_1k,
 
     @property
     def VpcList(self):
-        """实例绑定的VPC信息
+        r"""实例绑定的VPC信息
         :rtype: list of VpcInfo
         """
         return self._VpcList
@@ -1327,7 +1327,7 @@ basic_1k,
 
     @property
     def EnablePublic(self):
-        """是否开启公网
+        r"""是否开启公网
         :rtype: bool
         """
         return self._EnablePublic
@@ -1338,7 +1338,7 @@ basic_1k,
 
     @property
     def Bandwidth(self):
-        """公网带宽（单位：兆）
+        r"""公网带宽（单位：兆）
         :rtype: int
         """
         return self._Bandwidth
@@ -1349,7 +1349,7 @@ basic_1k,
 
     @property
     def IpRules(self):
-        """公网访问白名单
+        r"""公网访问白名单
         :rtype: list of IpRule
         """
         return self._IpRules
@@ -1360,7 +1360,7 @@ basic_1k,
 
     @property
     def RenewFlag(self):
-        """是否自动续费（0: 不自动续费；1: 自动续费）
+        r"""是否自动续费（0: 不自动续费；1: 自动续费）
         :rtype: int
         """
         return self._RenewFlag
@@ -1371,7 +1371,7 @@ basic_1k,
 
     @property
     def TimeSpan(self):
-        """购买时长（单位：月）
+        r"""购买时长（单位：月）
         :rtype: int
         """
         return self._TimeSpan
@@ -1419,7 +1419,7 @@ basic_1k,
 
 
 class CreateMQTTInstanceResponse(AbstractModel):
-    """CreateMQTTInstance返回参数结构体
+    r"""CreateMQTTInstance返回参数结构体
 
     """
 
@@ -1435,7 +1435,7 @@ class CreateMQTTInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1446,7 +1446,7 @@ class CreateMQTTInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1462,7 +1462,7 @@ class CreateMQTTInstanceResponse(AbstractModel):
 
 
 class CreateMQTTTopicRequest(AbstractModel):
-    """CreateMQTTTopic请求参数结构体
+    r"""CreateMQTTTopic请求参数结构体
 
     """
 
@@ -1481,7 +1481,7 @@ class CreateMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -1492,7 +1492,7 @@ class CreateMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -1503,7 +1503,7 @@ class CreateMQTTTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1528,7 +1528,7 @@ class CreateMQTTTopicRequest(AbstractModel):
 
 
 class CreateMQTTTopicResponse(AbstractModel):
-    """CreateMQTTTopic返回参数结构体
+    r"""CreateMQTTTopic返回参数结构体
 
     """
 
@@ -1547,7 +1547,7 @@ class CreateMQTTTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -1558,7 +1558,7 @@ class CreateMQTTTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        r"""主题
         :rtype: str
         """
         return self._Topic
@@ -1569,7 +1569,7 @@ class CreateMQTTTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1586,7 +1586,7 @@ class CreateMQTTTopicResponse(AbstractModel):
 
 
 class CreateMQTTUserRequest(AbstractModel):
-    """CreateMQTTUser请求参数结构体
+    r"""CreateMQTTUser请求参数结构体
 
     """
 
@@ -1614,7 +1614,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -1625,7 +1625,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1636,7 +1636,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产权限
+        r"""是否开启生产权限
         :rtype: bool
         """
         return self._PermWrite
@@ -1647,7 +1647,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费权限
+        r"""是否开启消费权限
         :rtype: bool
         """
         return self._PermRead
@@ -1658,7 +1658,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -1669,7 +1669,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码，该字段为空时候则后端会默认生成
+        r"""密码，该字段为空时候则后端会默认生成
         :rtype: str
         """
         return self._Password
@@ -1697,7 +1697,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
 
 class CreateMQTTUserResponse(AbstractModel):
-    """CreateMQTTUser返回参数结构体
+    r"""CreateMQTTUser返回参数结构体
 
     """
 
@@ -1710,7 +1710,7 @@ class CreateMQTTUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1725,7 +1725,7 @@ class CreateMQTTUserResponse(AbstractModel):
 
 
 class CreateRoleRequest(AbstractModel):
-    """CreateRole请求参数结构体
+    r"""CreateRole请求参数结构体
 
     """
 
@@ -1756,7 +1756,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1767,7 +1767,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
+        r"""角色名称，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
         :rtype: str
         """
         return self._Role
@@ -1778,7 +1778,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产权限
+        r"""是否开启生产权限
         :rtype: bool
         """
         return self._PermWrite
@@ -1789,7 +1789,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费权限
+        r"""是否开启消费权限
         :rtype: bool
         """
         return self._PermRead
@@ -1800,7 +1800,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -1811,7 +1811,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def PermType(self):
-        """权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        r"""权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
         :rtype: str
         """
         return self._PermType
@@ -1822,7 +1822,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def DetailedPerms(self):
-        """Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
+        r"""Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :rtype: list of DetailedRolePerm
         """
         return self._DetailedPerms
@@ -1856,7 +1856,7 @@ class CreateRoleRequest(AbstractModel):
 
 
 class CreateRoleResponse(AbstractModel):
-    """CreateRole返回参数结构体
+    r"""CreateRole返回参数结构体
 
     """
 
@@ -1872,7 +1872,7 @@ class CreateRoleResponse(AbstractModel):
 
     @property
     def Role(self):
-        """角色名
+        r"""角色名
         :rtype: str
         """
         return self._Role
@@ -1883,7 +1883,7 @@ class CreateRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1899,7 +1899,7 @@ class CreateRoleResponse(AbstractModel):
 
 
 class CreateTopicRequest(AbstractModel):
-    """CreateTopic请求参数结构体
+    r"""CreateTopic请求参数结构体
 
     """
 
@@ -1935,7 +1935,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1946,7 +1946,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -1957,7 +1957,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicType(self):
-        """主题类型，枚举值如下：
+        r"""主题类型，枚举值如下：
 
 - NORMAL: 普通消息
 - FIFO: 顺序消息
@@ -1973,7 +1973,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def QueueNum(self):
-        """队列数量，取值范围3～16
+        r"""队列数量，取值范围3～16
         :rtype: int
         """
         return self._QueueNum
@@ -1984,7 +1984,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多 128 个字符
+        r"""备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -1995,7 +1995,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MsgTTL(self):
-        """消息保留时长（单位：小时）
+        r"""消息保留时长（单位：小时）
         :rtype: int
         """
         return self._MsgTTL
@@ -2006,7 +2006,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._TagList
@@ -2040,7 +2040,7 @@ class CreateTopicRequest(AbstractModel):
 
 
 class CreateTopicResponse(AbstractModel):
-    """CreateTopic返回参数结构体
+    r"""CreateTopic返回参数结构体
 
     """
 
@@ -2059,7 +2059,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -2070,7 +2070,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名
+        r"""主题名
         :rtype: str
         """
         return self._Topic
@@ -2081,7 +2081,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2098,7 +2098,7 @@ class CreateTopicResponse(AbstractModel):
 
 
 class CustomMapEntry(AbstractModel):
-    """map结构返回
+    r"""map结构返回
 
     """
 
@@ -2116,7 +2116,7 @@ class CustomMapEntry(AbstractModel):
 
     @property
     def Key(self):
-        """key
+        r"""key
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2128,7 +2128,7 @@ class CustomMapEntry(AbstractModel):
 
     @property
     def Value(self):
-        """value
+        r"""value
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2153,7 +2153,7 @@ class CustomMapEntry(AbstractModel):
 
 
 class DeleteConsumerGroupRequest(AbstractModel):
-    """DeleteConsumerGroup请求参数结构体
+    r"""DeleteConsumerGroup请求参数结构体
 
     """
 
@@ -2169,7 +2169,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2180,7 +2180,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2204,7 +2204,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
 
 class DeleteConsumerGroupResponse(AbstractModel):
-    """DeleteConsumerGroup返回参数结构体
+    r"""DeleteConsumerGroup返回参数结构体
 
     """
 
@@ -2217,7 +2217,7 @@ class DeleteConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2232,7 +2232,7 @@ class DeleteConsumerGroupResponse(AbstractModel):
 
 
 class DeleteInstanceRequest(AbstractModel):
-    """DeleteInstance请求参数结构体
+    r"""DeleteInstance请求参数结构体
 
     """
 
@@ -2245,7 +2245,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2268,7 +2268,7 @@ class DeleteInstanceRequest(AbstractModel):
 
 
 class DeleteInstanceResponse(AbstractModel):
-    """DeleteInstance返回参数结构体
+    r"""DeleteInstance返回参数结构体
 
     """
 
@@ -2281,7 +2281,7 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2296,7 +2296,7 @@ class DeleteInstanceResponse(AbstractModel):
 
 
 class DeleteMQTTInsPublicEndpointRequest(AbstractModel):
-    """DeleteMQTTInsPublicEndpoint请求参数结构体
+    r"""DeleteMQTTInsPublicEndpoint请求参数结构体
 
     """
 
@@ -2309,7 +2309,7 @@ class DeleteMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -2332,7 +2332,7 @@ class DeleteMQTTInsPublicEndpointRequest(AbstractModel):
 
 
 class DeleteMQTTInsPublicEndpointResponse(AbstractModel):
-    """DeleteMQTTInsPublicEndpoint返回参数结构体
+    r"""DeleteMQTTInsPublicEndpoint返回参数结构体
 
     """
 
@@ -2345,7 +2345,7 @@ class DeleteMQTTInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2360,7 +2360,7 @@ class DeleteMQTTInsPublicEndpointResponse(AbstractModel):
 
 
 class DeleteMQTTInstanceRequest(AbstractModel):
-    """DeleteMQTTInstance请求参数结构体
+    r"""DeleteMQTTInstance请求参数结构体
 
     """
 
@@ -2373,7 +2373,7 @@ class DeleteMQTTInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -2396,7 +2396,7 @@ class DeleteMQTTInstanceRequest(AbstractModel):
 
 
 class DeleteMQTTInstanceResponse(AbstractModel):
-    """DeleteMQTTInstance返回参数结构体
+    r"""DeleteMQTTInstance返回参数结构体
 
     """
 
@@ -2409,7 +2409,7 @@ class DeleteMQTTInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2424,7 +2424,7 @@ class DeleteMQTTInstanceResponse(AbstractModel):
 
 
 class DeleteMQTTTopicRequest(AbstractModel):
-    """DeleteMQTTTopic请求参数结构体
+    r"""DeleteMQTTTopic请求参数结构体
 
     """
 
@@ -2440,7 +2440,7 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -2451,7 +2451,7 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -2475,7 +2475,7 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
 
 class DeleteMQTTTopicResponse(AbstractModel):
-    """DeleteMQTTTopic返回参数结构体
+    r"""DeleteMQTTTopic返回参数结构体
 
     """
 
@@ -2488,7 +2488,7 @@ class DeleteMQTTTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2503,7 +2503,7 @@ class DeleteMQTTTopicResponse(AbstractModel):
 
 
 class DeleteMQTTUserRequest(AbstractModel):
-    """DeleteMQTTUser请求参数结构体
+    r"""DeleteMQTTUser请求参数结构体
 
     """
 
@@ -2519,7 +2519,7 @@ class DeleteMQTTUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -2530,7 +2530,7 @@ class DeleteMQTTUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -2554,7 +2554,7 @@ class DeleteMQTTUserRequest(AbstractModel):
 
 
 class DeleteMQTTUserResponse(AbstractModel):
-    """DeleteMQTTUser返回参数结构体
+    r"""DeleteMQTTUser返回参数结构体
 
     """
 
@@ -2567,7 +2567,7 @@ class DeleteMQTTUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2582,7 +2582,7 @@ class DeleteMQTTUserResponse(AbstractModel):
 
 
 class DeleteRoleRequest(AbstractModel):
-    """DeleteRole请求参数结构体
+    r"""DeleteRole请求参数结构体
 
     """
 
@@ -2598,7 +2598,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2609,7 +2609,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口响应中的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
+        r"""角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口响应中的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -2633,7 +2633,7 @@ class DeleteRoleRequest(AbstractModel):
 
 
 class DeleteRoleResponse(AbstractModel):
-    """DeleteRole返回参数结构体
+    r"""DeleteRole返回参数结构体
 
     """
 
@@ -2646,7 +2646,7 @@ class DeleteRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2661,7 +2661,7 @@ class DeleteRoleResponse(AbstractModel):
 
 
 class DeleteSmoothMigrationTaskRequest(AbstractModel):
-    """DeleteSmoothMigrationTask请求参数结构体
+    r"""DeleteSmoothMigrationTask请求参数结构体
 
     """
 
@@ -2675,7 +2675,7 @@ class DeleteSmoothMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -2699,7 +2699,7 @@ class DeleteSmoothMigrationTaskRequest(AbstractModel):
 
 
 class DeleteSmoothMigrationTaskResponse(AbstractModel):
-    """DeleteSmoothMigrationTask返回参数结构体
+    r"""DeleteSmoothMigrationTask返回参数结构体
 
     """
 
@@ -2712,7 +2712,7 @@ class DeleteSmoothMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2727,7 +2727,7 @@ class DeleteSmoothMigrationTaskResponse(AbstractModel):
 
 
 class DeleteTopicRequest(AbstractModel):
-    """DeleteTopic请求参数结构体
+    r"""DeleteTopic请求参数结构体
 
     """
 
@@ -2743,7 +2743,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2754,7 +2754,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -2778,7 +2778,7 @@ class DeleteTopicRequest(AbstractModel):
 
 
 class DeleteTopicResponse(AbstractModel):
-    """DeleteTopic返回参数结构体
+    r"""DeleteTopic返回参数结构体
 
     """
 
@@ -2791,7 +2791,7 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2806,7 +2806,7 @@ class DeleteTopicResponse(AbstractModel):
 
 
 class DescribeConsumerClientListRequest(AbstractModel):
-    """DescribeConsumerClientList请求参数结构体
+    r"""DescribeConsumerClientList请求参数结构体
 
     """
 
@@ -2831,7 +2831,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2842,7 +2842,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2853,7 +2853,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2864,7 +2864,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -2875,7 +2875,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -2907,7 +2907,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
 
 class DescribeConsumerClientListResponse(AbstractModel):
-    """DescribeConsumerClientList返回参数结构体
+    r"""DescribeConsumerClientList返回参数结构体
 
     """
 
@@ -2926,7 +2926,7 @@ class DescribeConsumerClientListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -2937,7 +2937,7 @@ class DescribeConsumerClientListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消费客户端
+        r"""消费客户端
         :rtype: list of ConsumerClient
         """
         return self._Data
@@ -2948,7 +2948,7 @@ class DescribeConsumerClientListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2970,7 +2970,7 @@ class DescribeConsumerClientListResponse(AbstractModel):
 
 
 class DescribeConsumerClientRequest(AbstractModel):
-    """DescribeConsumerClient请求参数结构体
+    r"""DescribeConsumerClient请求参数结构体
 
     """
 
@@ -2998,7 +2998,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3009,7 +3009,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
+        r"""客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
         :rtype: str
         """
         return self._ClientId
@@ -3020,7 +3020,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3031,7 +3031,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3042,7 +3042,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -3053,7 +3053,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3086,7 +3086,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
 
 class DescribeConsumerClientResponse(AbstractModel):
-    """DescribeConsumerClient返回参数结构体
+    r"""DescribeConsumerClient返回参数结构体
 
     """
 
@@ -3107,7 +3107,7 @@ class DescribeConsumerClientResponse(AbstractModel):
 
     @property
     def Client(self):
-        """客户端详情
+        r"""客户端详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerClient`
         """
@@ -3119,7 +3119,7 @@ class DescribeConsumerClientResponse(AbstractModel):
 
     @property
     def TopicList(self):
-        """主题消费信息
+        r"""主题消费信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopicConsumeStats
         """
@@ -3131,7 +3131,7 @@ class DescribeConsumerClientResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3155,7 +3155,7 @@ class DescribeConsumerClientResponse(AbstractModel):
 
 
 class DescribeConsumerGroupListRequest(AbstractModel):
-    """DescribeConsumerGroupList请求参数结构体
+    r"""DescribeConsumerGroupList请求参数结构体
 
     """
 
@@ -3190,7 +3190,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3201,7 +3201,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3212,7 +3212,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3223,7 +3223,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -3234,7 +3234,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def FromTopic(self):
-        """查询指定主题下的消费组
+        r"""查询指定主题下的消费组
         :rtype: str
         """
         return self._FromTopic
@@ -3245,7 +3245,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def SortedBy(self):
-        """按照指定字段排序，枚举值如下：
+        r"""按照指定字段排序，枚举值如下：
 - subscribeNum：订阅 Topic 个数
         :rtype: str
         """
@@ -3257,7 +3257,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        """按升序或降序排列，枚举值如下：
+        r"""按升序或降序排列，枚举值如下：
 
 - asc：升序
 - desc：降序
@@ -3294,7 +3294,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
 
 class DescribeConsumerGroupListResponse(AbstractModel):
-    """DescribeConsumerGroupList返回参数结构体
+    r"""DescribeConsumerGroupList返回参数结构体
 
     """
 
@@ -3313,7 +3313,7 @@ class DescribeConsumerGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -3324,7 +3324,7 @@ class DescribeConsumerGroupListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消费组列表
+        r"""消费组列表
         :rtype: list of ConsumeGroupItem
         """
         return self._Data
@@ -3335,7 +3335,7 @@ class DescribeConsumerGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3357,7 +3357,7 @@ class DescribeConsumerGroupListResponse(AbstractModel):
 
 
 class DescribeConsumerGroupRequest(AbstractModel):
-    """DescribeConsumerGroup请求参数结构体
+    r"""DescribeConsumerGroup请求参数结构体
 
     """
 
@@ -3373,7 +3373,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3384,7 +3384,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3408,7 +3408,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
 
 class DescribeConsumerGroupResponse(AbstractModel):
-    """DescribeConsumerGroup返回参数结构体
+    r"""DescribeConsumerGroup返回参数结构体
 
     """
 
@@ -3458,7 +3458,7 @@ CLUSTERING 集群模式
 
     @property
     def ConsumerNum(self):
-        """在线消费者数量
+        r"""在线消费者数量
         :rtype: int
         """
         return self._ConsumerNum
@@ -3469,7 +3469,7 @@ CLUSTERING 集群模式
 
     @property
     def Tps(self):
-        """TPS
+        r"""TPS
         :rtype: int
         """
         return self._Tps
@@ -3480,7 +3480,7 @@ CLUSTERING 集群模式
 
     @property
     def ConsumerLag(self):
-        """消息堆积数量
+        r"""消息堆积数量
         :rtype: int
         """
         return self._ConsumerLag
@@ -3491,7 +3491,7 @@ CLUSTERING 集群模式
 
     @property
     def ConsumeType(self):
-        """消费类型，枚举值如下：
+        r"""消费类型，枚举值如下：
 
 - PULL：PULL 消费类型
 - PUSH：PUSH 消费类型
@@ -3506,7 +3506,7 @@ CLUSTERING 集群模式
 
     @property
     def CreatedTime(self):
-        """创建时间，**Unix时间戳（毫秒）**
+        r"""创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -3517,7 +3517,7 @@ CLUSTERING 集群模式
 
     @property
     def ConsumeMessageOrderly(self):
-        """顺序投递：true
+        r"""顺序投递：true
 并发投递：false
         :rtype: bool
         """
@@ -3529,7 +3529,7 @@ CLUSTERING 集群模式
 
     @property
     def ConsumeEnable(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -3540,7 +3540,7 @@ CLUSTERING 集群模式
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数
+        r"""最大重试次数
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -3551,7 +3551,7 @@ CLUSTERING 集群模式
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -3562,7 +3562,7 @@ CLUSTERING 集群模式
 
     @property
     def MessageModel(self):
-        """消费模式：
+        r"""消费模式：
 BROADCASTING 广播模式
 CLUSTERING 集群模式
         :rtype: str
@@ -3575,7 +3575,7 @@ CLUSTERING 集群模式
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3600,7 +3600,7 @@ CLUSTERING 集群模式
 
 
 class DescribeConsumerLagRequest(AbstractModel):
-    """DescribeConsumerLag请求参数结构体
+    r"""DescribeConsumerLag请求参数结构体
 
     """
 
@@ -3622,7 +3622,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3633,7 +3633,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3644,7 +3644,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口返回的 [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace) 或控制台获得。
+        r"""命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口返回的 [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace) 或控制台获得。
         :rtype: str
         """
         return self._Namespace
@@ -3655,7 +3655,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def SubscribeTopic(self):
-        """订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._SubscribeTopic
@@ -3681,7 +3681,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
 
 class DescribeConsumerLagResponse(AbstractModel):
-    """DescribeConsumerLag返回参数结构体
+    r"""DescribeConsumerLag返回参数结构体
 
     """
 
@@ -3697,7 +3697,7 @@ class DescribeConsumerLagResponse(AbstractModel):
 
     @property
     def ConsumerLag(self):
-        """堆积数
+        r"""堆积数
         :rtype: int
         """
         return self._ConsumerLag
@@ -3708,7 +3708,7 @@ class DescribeConsumerLagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3724,7 +3724,7 @@ class DescribeConsumerLagResponse(AbstractModel):
 
 
 class DescribeFusionInstanceListRequest(AbstractModel):
-    """DescribeFusionInstanceList请求参数结构体
+    r"""DescribeFusionInstanceList请求参数结构体
 
     """
 
@@ -3746,7 +3746,7 @@ class DescribeFusionInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3757,7 +3757,7 @@ class DescribeFusionInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -3768,7 +3768,7 @@ class DescribeFusionInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3779,7 +3779,7 @@ class DescribeFusionInstanceListRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """标签过滤器
+        r"""标签过滤器
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -3815,7 +3815,7 @@ class DescribeFusionInstanceListRequest(AbstractModel):
 
 
 class DescribeFusionInstanceListResponse(AbstractModel):
-    """DescribeFusionInstanceList返回参数结构体
+    r"""DescribeFusionInstanceList返回参数结构体
 
     """
 
@@ -3834,7 +3834,7 @@ class DescribeFusionInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -3845,7 +3845,7 @@ class DescribeFusionInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of FusionInstanceItem
         """
         return self._Data
@@ -3856,7 +3856,7 @@ class DescribeFusionInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3878,7 +3878,7 @@ class DescribeFusionInstanceListResponse(AbstractModel):
 
 
 class DescribeInstanceListRequest(AbstractModel):
-    """DescribeInstanceList请求参数结构体
+    r"""DescribeInstanceList请求参数结构体
 
     """
 
@@ -3900,7 +3900,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3911,7 +3911,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """标签过滤器
+        r"""标签过滤器
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -3922,7 +3922,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3933,7 +3933,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -3969,7 +3969,7 @@ class DescribeInstanceListRequest(AbstractModel):
 
 
 class DescribeInstanceListResponse(AbstractModel):
-    """DescribeInstanceList返回参数结构体
+    r"""DescribeInstanceList返回参数结构体
 
     """
 
@@ -3988,7 +3988,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -3999,7 +3999,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of InstanceItem
         """
         return self._Data
@@ -4010,7 +4010,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4032,7 +4032,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
 
 class DescribeInstanceRequest(AbstractModel):
-    """DescribeInstance请求参数结构体
+    r"""DescribeInstance请求参数结构体
 
     """
 
@@ -4045,7 +4045,7 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4068,7 +4068,7 @@ class DescribeInstanceRequest(AbstractModel):
 
 
 class DescribeInstanceResponse(AbstractModel):
-    """DescribeInstance返回参数结构体
+    r"""DescribeInstance返回参数结构体
 
     """
 
@@ -4199,7 +4199,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 EXPERIMENT 体验版
 BASIC 基础版
 PRO  专业版
@@ -4214,7 +4214,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -4225,7 +4225,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -4236,7 +4236,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -4247,7 +4247,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLimit(self):
-        """实例最大主题数量
+        r"""实例最大主题数量
         :rtype: int
         """
         return self._TopicNumLimit
@@ -4258,7 +4258,7 @@ PLATINUM 铂金版
 
     @property
     def GroupNum(self):
-        """消费组数量
+        r"""消费组数量
         :rtype: int
         """
         return self._GroupNum
@@ -4269,7 +4269,7 @@ PLATINUM 铂金版
 
     @property
     def GroupNumLimit(self):
-        """实例最大消费组数量
+        r"""实例最大消费组数量
         :rtype: int
         """
         return self._GroupNumLimit
@@ -4280,7 +4280,7 @@ PLATINUM 铂金版
 
     @property
     def MessageRetention(self):
-        """消息保留时间，小时为单位
+        r"""消息保留时间，小时为单位
         :rtype: int
         """
         return self._MessageRetention
@@ -4291,7 +4291,7 @@ PLATINUM 铂金版
 
     @property
     def RetentionUpperLimit(self):
-        """最大可调整消息保留时间，小时为单位
+        r"""最大可调整消息保留时间，小时为单位
         :rtype: int
         """
         return self._RetentionUpperLimit
@@ -4302,7 +4302,7 @@ PLATINUM 铂金版
 
     @property
     def RetentionLowerLimit(self):
-        """最小可调整消息保留时间，小时为单位
+        r"""最小可调整消息保留时间，小时为单位
         :rtype: int
         """
         return self._RetentionLowerLimit
@@ -4313,7 +4313,7 @@ PLATINUM 铂金版
 
     @property
     def TpsLimit(self):
-        """TPS限流值
+        r"""TPS限流值
         :rtype: int
         """
         return self._TpsLimit
@@ -4324,7 +4324,7 @@ PLATINUM 铂金版
 
     @property
     def ScaledTpsLimit(self):
-        """弹性TPS限流值
+        r"""弹性TPS限流值
         :rtype: int
         """
         return self._ScaledTpsLimit
@@ -4335,7 +4335,7 @@ PLATINUM 铂金版
 
     @property
     def MaxMessageDelay(self):
-        """延迟消息最长时间，小时为单位
+        r"""延迟消息最长时间，小时为单位
         :rtype: int
         """
         return self._MaxMessageDelay
@@ -4346,7 +4346,7 @@ PLATINUM 铂金版
 
     @property
     def CreatedTime(self):
-        """创建时间，**Unix时间戳（毫秒）**
+        r"""创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -4357,7 +4357,7 @@ PLATINUM 铂金版
 
     @property
     def SendReceiveRatio(self):
-        """消息发送接收比例
+        r"""消息发送接收比例
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -4368,7 +4368,7 @@ PLATINUM 铂金版
 
     @property
     def TagList(self):
-        """标签
+        r"""标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -4380,7 +4380,7 @@ PLATINUM 铂金版
 
     @property
     def EndpointList(self):
-        """接入点列表
+        r"""接入点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Endpoint
         """
@@ -4392,7 +4392,7 @@ PLATINUM 铂金版
 
     @property
     def TopicQueueNumUpperLimit(self):
-        """主题队列数上限
+        r"""主题队列数上限
         :rtype: int
         """
         return self._TopicQueueNumUpperLimit
@@ -4403,7 +4403,7 @@ PLATINUM 铂金版
 
     @property
     def TopicQueueNumLowerLimit(self):
-        """主题队列数下限
+        r"""主题队列数下限
         :rtype: int
         """
         return self._TopicQueueNumLowerLimit
@@ -4414,7 +4414,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -4425,7 +4425,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态，枚举值如下：
+        r"""实例状态，枚举值如下：
 
 - RUNNING：运行中
 - ABNORMAL：异常
@@ -4446,7 +4446,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        """实例规格
+        r"""实例规格
         :rtype: str
         """
         return self._SkuCode
@@ -4457,7 +4457,7 @@ PLATINUM 铂金版
 
     @property
     def PayMode(self):
-        """计费模式，枚举值如下：
+        r"""计费模式，枚举值如下：
 
 - POSTPAID：后付费按量计费
 - PREPAID：预付费包年包月
@@ -4471,7 +4471,7 @@ PLATINUM 铂金版
 
     @property
     def ScaledTpsEnabled(self):
-        """是否开启弹性TPS
+        r"""是否开启弹性TPS
         :rtype: bool
         """
         return self._ScaledTpsEnabled
@@ -4482,7 +4482,7 @@ PLATINUM 铂金版
 
     @property
     def RenewFlag(self):
-        """预付费集群是否自动续费，枚举值如下：
+        r"""预付费集群是否自动续费，枚举值如下：
 
 - 0: 不自动续费
 - 1: 自动续费
@@ -4496,7 +4496,7 @@ PLATINUM 铂金版
 
     @property
     def ExpiryTime(self):
-        """到期时间，**Unix时间戳（毫秒）**
+        r"""到期时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._ExpiryTime
@@ -4507,7 +4507,7 @@ PLATINUM 铂金版
 
     @property
     def RoleNumLimit(self):
-        """角色数量限制
+        r"""角色数量限制
         :rtype: int
         """
         return self._RoleNumLimit
@@ -4518,7 +4518,7 @@ PLATINUM 铂金版
 
     @property
     def AclEnabled(self):
-        """是否开启 ACL
+        r"""是否开启 ACL
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4530,7 +4530,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLowerLimit(self):
-        """topic个数免费额度
+        r"""topic个数免费额度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4542,7 +4542,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumUpperLimit(self):
-        """最大可设置的topic个数
+        r"""最大可设置的topic个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4554,7 +4554,7 @@ PLATINUM 铂金版
 
     @property
     def ZoneIds(self):
-        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
+        r"""所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -4565,7 +4565,7 @@ PLATINUM 铂金版
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4621,7 +4621,7 @@ PLATINUM 铂金版
 
 
 class DescribeMQTTClientRequest(AbstractModel):
-    """DescribeMQTTClient请求参数结构体
+    r"""DescribeMQTTClient请求参数结构体
 
     """
 
@@ -4637,7 +4637,7 @@ class DescribeMQTTClientRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -4648,7 +4648,7 @@ class DescribeMQTTClientRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端详情
+        r"""客户端详情
         :rtype: str
         """
         return self._ClientId
@@ -4672,7 +4672,7 @@ class DescribeMQTTClientRequest(AbstractModel):
 
 
 class DescribeMQTTClientResponse(AbstractModel):
-    """DescribeMQTTClient返回参数结构体
+    r"""DescribeMQTTClient返回参数结构体
 
     """
 
@@ -4721,7 +4721,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端唯一标识
+        r"""客户端唯一标识
         :rtype: str
         """
         return self._ClientId
@@ -4732,7 +4732,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def ClientAddress(self):
-        """客户端网络地址
+        r"""客户端网络地址
         :rtype: str
         """
         return self._ClientAddress
@@ -4743,7 +4743,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def ProtocolVersion(self):
-        """MQTT 协议版本，4 表示 MQTT 3.1.1
+        r"""MQTT 协议版本，4 表示 MQTT 3.1.1
         :rtype: int
         """
         return self._ProtocolVersion
@@ -4754,7 +4754,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def Keepalive(self):
-        """保持连接时间，单位：秒
+        r"""保持连接时间，单位：秒
         :rtype: int
         """
         return self._Keepalive
@@ -4765,7 +4765,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def ConnectionStatus(self):
-        """连接状态，CONNECTED 已连接，DISCONNECTED 未连接
+        r"""连接状态，CONNECTED 已连接，DISCONNECTED 未连接
         :rtype: str
         """
         return self._ConnectionStatus
@@ -4776,7 +4776,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """客户端创建时间
+        r"""客户端创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -4787,7 +4787,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def ConnectTime(self):
-        """上次建立连接时间
+        r"""上次建立连接时间
         :rtype: int
         """
         return self._ConnectTime
@@ -4798,7 +4798,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def DisconnectTime(self):
-        """上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
+        r"""上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
         :rtype: int
         """
         return self._DisconnectTime
@@ -4809,7 +4809,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def MQTTClientSubscriptions(self):
-        """客户端的订阅列表
+        r"""客户端的订阅列表
         :rtype: list of MQTTClientSubscription
         """
         return self._MQTTClientSubscriptions
@@ -4820,7 +4820,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def Inbound(self):
-        """服务端到客户端的流量统计
+        r"""服务端到客户端的流量统计
         :rtype: :class:`tencentcloud.trocket.v20230308.models.StatisticsReport`
         """
         return self._Inbound
@@ -4831,7 +4831,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def OutBound(self):
-        """客户端到服务端的流量统计
+        r"""客户端到服务端的流量统计
         :rtype: :class:`tencentcloud.trocket.v20230308.models.StatisticsReport`
         """
         return self._OutBound
@@ -4842,7 +4842,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def CleanSession(self):
-        """cleansession标志
+        r"""cleansession标志
         :rtype: bool
         """
         return self._CleanSession
@@ -4853,7 +4853,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4889,7 +4889,7 @@ class DescribeMQTTClientResponse(AbstractModel):
 
 
 class DescribeMQTTInsPublicEndpointsRequest(AbstractModel):
-    """DescribeMQTTInsPublicEndpoints请求参数结构体
+    r"""DescribeMQTTInsPublicEndpoints请求参数结构体
 
     """
 
@@ -4902,7 +4902,7 @@ class DescribeMQTTInsPublicEndpointsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -4925,7 +4925,7 @@ class DescribeMQTTInsPublicEndpointsRequest(AbstractModel):
 
 
 class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
-    """DescribeMQTTInsPublicEndpoints返回参数结构体
+    r"""DescribeMQTTInsPublicEndpoints返回参数结构体
 
     """
 
@@ -4958,7 +4958,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        """接入点
+        r"""接入点
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -4969,7 +4969,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        r"""实例id
         :rtype: str
         """
         return self._InstanceId
@@ -4980,7 +4980,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._Bandwidth
@@ -4991,7 +4991,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -5002,7 +5002,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """公网状态：
+        r"""公网状态：
     NORMAL-正常
     CLOSING-关闭中
     MODIFYING-修改中
@@ -5018,7 +5018,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5048,7 +5048,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
 
 
 class DescribeMQTTInsVPCEndpointsRequest(AbstractModel):
-    """DescribeMQTTInsVPCEndpoints请求参数结构体
+    r"""DescribeMQTTInsVPCEndpoints请求参数结构体
 
     """
 
@@ -5061,7 +5061,7 @@ class DescribeMQTTInsVPCEndpointsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -5084,7 +5084,7 @@ class DescribeMQTTInsVPCEndpointsRequest(AbstractModel):
 
 
 class DescribeMQTTInsVPCEndpointsResponse(AbstractModel):
-    """DescribeMQTTInsVPCEndpoints返回参数结构体
+    r"""DescribeMQTTInsVPCEndpoints返回参数结构体
 
     """
 
@@ -5100,7 +5100,7 @@ class DescribeMQTTInsVPCEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        """接入点
+        r"""接入点
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -5111,7 +5111,7 @@ class DescribeMQTTInsVPCEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5132,7 +5132,7 @@ class DescribeMQTTInsVPCEndpointsResponse(AbstractModel):
 
 
 class DescribeMQTTInstanceCertRequest(AbstractModel):
-    """DescribeMQTTInstanceCert请求参数结构体
+    r"""DescribeMQTTInstanceCert请求参数结构体
 
     """
 
@@ -5145,7 +5145,7 @@ class DescribeMQTTInstanceCertRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5168,7 +5168,7 @@ class DescribeMQTTInstanceCertRequest(AbstractModel):
 
 
 class DescribeMQTTInstanceCertResponse(AbstractModel):
-    """DescribeMQTTInstanceCert返回参数结构体
+    r"""DescribeMQTTInstanceCert返回参数结构体
 
     """
 
@@ -5193,7 +5193,7 @@ class DescribeMQTTInstanceCertResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        r"""集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5205,7 +5205,7 @@ class DescribeMQTTInstanceCertResponse(AbstractModel):
 
     @property
     def SSLServerCertId(self):
-        """服务端证书id
+        r"""服务端证书id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5217,7 +5217,7 @@ class DescribeMQTTInstanceCertResponse(AbstractModel):
 
     @property
     def SSLCaCertId(self):
-        """CA证书id
+        r"""CA证书id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5229,7 +5229,7 @@ class DescribeMQTTInstanceCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5247,7 +5247,7 @@ class DescribeMQTTInstanceCertResponse(AbstractModel):
 
 
 class DescribeMQTTInstanceListRequest(AbstractModel):
-    """DescribeMQTTInstanceList请求参数结构体
+    r"""DescribeMQTTInstanceList请求参数结构体
 
     """
 
@@ -5269,7 +5269,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        r"""查询条件列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -5280,7 +5280,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -5291,7 +5291,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -5302,7 +5302,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
 
     @property
     def IncludeNew(self):
-        """是否包含新控制台集群：默认为包含
+        r"""是否包含新控制台集群：默认为包含
         :rtype: bool
         """
         return self._IncludeNew
@@ -5333,7 +5333,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
 
 
 class DescribeMQTTInstanceListResponse(AbstractModel):
-    """DescribeMQTTInstanceList返回参数结构体
+    r"""DescribeMQTTInstanceList返回参数结构体
 
     """
 
@@ -5353,7 +5353,7 @@ class DescribeMQTTInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5365,7 +5365,7 @@ class DescribeMQTTInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """实例列表
+        r"""实例列表
         :rtype: list of MQTTInstanceItem
         """
         return self._Data
@@ -5376,7 +5376,7 @@ class DescribeMQTTInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5398,7 +5398,7 @@ class DescribeMQTTInstanceListResponse(AbstractModel):
 
 
 class DescribeMQTTInstanceRequest(AbstractModel):
-    """DescribeMQTTInstance请求参数结构体
+    r"""DescribeMQTTInstance请求参数结构体
 
     """
 
@@ -5411,7 +5411,7 @@ class DescribeMQTTInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5434,7 +5434,7 @@ class DescribeMQTTInstanceRequest(AbstractModel):
 
 
 class DescribeMQTTInstanceResponse(AbstractModel):
-    """DescribeMQTTInstance返回参数结构体
+    r"""DescribeMQTTInstance返回参数结构体
 
     """
 
@@ -5487,7 +5487,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 EXPERIMENT 体验版
 BASIC 基础版
 PRO  专业版
@@ -5502,7 +5502,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -5513,7 +5513,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -5524,7 +5524,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -5535,7 +5535,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLimit(self):
-        """实例最大主题数量
+        r"""实例最大主题数量
         :rtype: int
         """
         return self._TopicNumLimit
@@ -5546,7 +5546,7 @@ PLATINUM 铂金版
 
     @property
     def TpsLimit(self):
-        """TPS限流值
+        r"""TPS限流值
         :rtype: int
         """
         return self._TpsLimit
@@ -5557,7 +5557,7 @@ PLATINUM 铂金版
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        r"""创建时间，秒为单位
         :rtype: int
         """
         return self._CreatedTime
@@ -5568,7 +5568,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -5579,7 +5579,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态
+        r"""实例状态
         :rtype: str
         """
         return self._InstanceStatus
@@ -5590,7 +5590,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        """实例规格
+        r"""实例规格
         :rtype: str
         """
         return self._SkuCode
@@ -5601,7 +5601,7 @@ PLATINUM 铂金版
 
     @property
     def SubscriptionNumLimit(self):
-        """订阅数上限
+        r"""订阅数上限
         :rtype: int
         """
         return self._SubscriptionNumLimit
@@ -5612,7 +5612,7 @@ PLATINUM 铂金版
 
     @property
     def ClientNumLimit(self):
-        """客户端数量上限
+        r"""客户端数量上限
         :rtype: int
         """
         return self._ClientNumLimit
@@ -5623,7 +5623,7 @@ PLATINUM 铂金版
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5650,7 +5650,7 @@ PLATINUM 铂金版
 
 
 class DescribeMQTTMessageListRequest(AbstractModel):
-    """DescribeMQTTMessageList请求参数结构体
+    r"""DescribeMQTTMessageList请求参数结构体
 
     """
 
@@ -5681,7 +5681,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5692,7 +5692,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -5703,7 +5703,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        r"""开始时间
         :rtype: int
         """
         return self._StartTime
@@ -5714,7 +5714,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        r"""结束时间
         :rtype: int
         """
         return self._EndTime
@@ -5725,7 +5725,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """请求任务id
+        r"""请求任务id
         :rtype: str
         """
         return self._TaskRequestId
@@ -5736,7 +5736,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -5747,7 +5747,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -5776,7 +5776,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
 
 class DescribeMQTTMessageListResponse(AbstractModel):
-    """DescribeMQTTMessageList返回参数结构体
+    r"""DescribeMQTTMessageList返回参数结构体
 
     """
 
@@ -5800,7 +5800,7 @@ class DescribeMQTTMessageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5812,7 +5812,7 @@ class DescribeMQTTMessageListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消息记录列表
+        r"""消息记录列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MQTTMessageItem
         """
@@ -5824,7 +5824,7 @@ class DescribeMQTTMessageListResponse(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """请求任务id
+        r"""请求任务id
         :rtype: str
         """
         return self._TaskRequestId
@@ -5835,7 +5835,7 @@ class DescribeMQTTMessageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5858,7 +5858,7 @@ class DescribeMQTTMessageListResponse(AbstractModel):
 
 
 class DescribeMQTTMessageRequest(AbstractModel):
-    """DescribeMQTTMessage请求参数结构体
+    r"""DescribeMQTTMessage请求参数结构体
 
     """
 
@@ -5877,7 +5877,7 @@ class DescribeMQTTMessageRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5888,7 +5888,7 @@ class DescribeMQTTMessageRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -5899,7 +5899,7 @@ class DescribeMQTTMessageRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息ID
+        r"""消息ID
         :rtype: str
         """
         return self._MsgId
@@ -5924,7 +5924,7 @@ class DescribeMQTTMessageRequest(AbstractModel):
 
 
 class DescribeMQTTMessageResponse(AbstractModel):
-    """DescribeMQTTMessage返回参数结构体
+    r"""DescribeMQTTMessage返回参数结构体
 
     """
 
@@ -5956,7 +5956,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def Body(self):
-        """消息体
+        r"""消息体
         :rtype: str
         """
         return self._Body
@@ -5967,7 +5967,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def Properties(self):
-        """详情参数
+        r"""详情参数
         :rtype: list of CustomMapEntry
         """
         return self._Properties
@@ -5978,7 +5978,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """生产时间
+        r"""生产时间
         :rtype: str
         """
         return self._ProduceTime
@@ -5989,7 +5989,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """消息ID
+        r"""消息ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6001,7 +6001,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        """生产者地址
+        r"""生产者地址
         :rtype: str
         """
         return self._ProducerAddr
@@ -6012,7 +6012,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def ShowTopicName(self):
-        """Topic
+        r"""Topic
         :rtype: str
         """
         return self._ShowTopicName
@@ -6023,7 +6023,7 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6049,13 +6049,13 @@ class DescribeMQTTMessageResponse(AbstractModel):
 
 
 class DescribeMQTTProductSKUListRequest(AbstractModel):
-    """DescribeMQTTProductSKUList请求参数结构体
+    r"""DescribeMQTTProductSKUList请求参数结构体
 
     """
 
 
 class DescribeMQTTProductSKUListResponse(AbstractModel):
-    """DescribeMQTTProductSKUList返回参数结构体
+    r"""DescribeMQTTProductSKUList返回参数结构体
 
     """
 
@@ -6076,7 +6076,7 @@ class DescribeMQTTProductSKUListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6088,7 +6088,7 @@ class DescribeMQTTProductSKUListResponse(AbstractModel):
 
     @property
     def MQTTProductSkuList(self):
-        """mqtt商品配置信息
+        r"""mqtt商品配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MQTTProductSkuItem
         """
@@ -6100,7 +6100,7 @@ class DescribeMQTTProductSKUListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6122,7 +6122,7 @@ class DescribeMQTTProductSKUListResponse(AbstractModel):
 
 
 class DescribeMQTTTopicListRequest(AbstractModel):
-    """DescribeMQTTTopicList请求参数结构体
+    r"""DescribeMQTTTopicList请求参数结构体
 
     """
 
@@ -6144,7 +6144,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -6155,7 +6155,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        r"""查询条件列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -6166,7 +6166,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -6177,7 +6177,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -6208,7 +6208,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
 
 class DescribeMQTTTopicListResponse(AbstractModel):
-    """DescribeMQTTTopicList返回参数结构体
+    r"""DescribeMQTTTopicList返回参数结构体
 
     """
 
@@ -6228,7 +6228,7 @@ class DescribeMQTTTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6240,7 +6240,7 @@ class DescribeMQTTTopicListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """主题列表
+        r"""主题列表
         :rtype: list of MQTTTopicItem
         """
         return self._Data
@@ -6251,7 +6251,7 @@ class DescribeMQTTTopicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6273,7 +6273,7 @@ class DescribeMQTTTopicListResponse(AbstractModel):
 
 
 class DescribeMQTTTopicRequest(AbstractModel):
-    """DescribeMQTTTopic请求参数结构体
+    r"""DescribeMQTTTopic请求参数结构体
 
     """
 
@@ -6289,7 +6289,7 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -6300,7 +6300,7 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -6324,7 +6324,7 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
 
 class DescribeMQTTTopicResponse(AbstractModel):
-    """DescribeMQTTTopic返回参数结构体
+    r"""DescribeMQTTTopic返回参数结构体
 
     """
 
@@ -6349,7 +6349,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -6360,7 +6360,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -6371,7 +6371,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -6382,7 +6382,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        r"""创建时间，秒为单位
         :rtype: int
         """
         return self._CreatedTime
@@ -6393,7 +6393,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6412,7 +6412,7 @@ class DescribeMQTTTopicResponse(AbstractModel):
 
 
 class DescribeMQTTUserListRequest(AbstractModel):
-    """DescribeMQTTUserList请求参数结构体
+    r"""DescribeMQTTUserList请求参数结构体
 
     """
 
@@ -6434,7 +6434,7 @@ class DescribeMQTTUserListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -6445,7 +6445,7 @@ class DescribeMQTTUserListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        r"""查询条件列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -6456,7 +6456,7 @@ class DescribeMQTTUserListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -6467,7 +6467,7 @@ class DescribeMQTTUserListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -6498,7 +6498,7 @@ class DescribeMQTTUserListRequest(AbstractModel):
 
 
 class DescribeMQTTUserListResponse(AbstractModel):
-    """DescribeMQTTUserList返回参数结构体
+    r"""DescribeMQTTUserList返回参数结构体
 
     """
 
@@ -6518,7 +6518,7 @@ class DescribeMQTTUserListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6530,7 +6530,7 @@ class DescribeMQTTUserListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """角色信息列表
+        r"""角色信息列表
         :rtype: list of MQTTUserItem
         """
         return self._Data
@@ -6541,7 +6541,7 @@ class DescribeMQTTUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6563,7 +6563,7 @@ class DescribeMQTTUserListResponse(AbstractModel):
 
 
 class DescribeMessageListRequest(AbstractModel):
-    """DescribeMessageList请求参数结构体
+    r"""DescribeMessageList请求参数结构体
 
     """
 
@@ -6612,7 +6612,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6623,7 +6623,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -6634,7 +6634,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """要查询消息的开始时间，**Unix时间戳（毫秒）**
+        r"""要查询消息的开始时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._StartTime
@@ -6645,7 +6645,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """要查询消息的结束时间，**Unix时间戳（毫秒）**
+        r"""要查询消息的结束时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._EndTime
@@ -6656,7 +6656,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """一次查询标识。第一次查询可传空字符串，当查询结果涉及分页，请求下一页数据时该入参的值取上一次请求响应中的出参TaskRequestId 值即可。
+        r"""一次查询标识。第一次查询可传空字符串，当查询结果涉及分页，请求下一页数据时该入参的值取上一次请求响应中的出参TaskRequestId 值即可。
         :rtype: str
         """
         return self._TaskRequestId
@@ -6667,7 +6667,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -6678,7 +6678,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -6689,7 +6689,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -6700,7 +6700,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
+        r"""消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgId
@@ -6711,7 +6711,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def MsgKey(self):
-        """消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
+        r"""消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgKey
@@ -6722,7 +6722,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def RecentMessageNum(self):
-        """查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+        r"""查询最近N条消息 最大不超过1024，默认-1为其他查询条件
         :rtype: int
         """
         return self._RecentMessageNum
@@ -6733,7 +6733,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def QueryDeadLetterMessage(self):
-        """是否查询死信消息，默认为false
+        r"""是否查询死信消息，默认为false
         :rtype: bool
         """
         return self._QueryDeadLetterMessage
@@ -6744,7 +6744,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
+        r"""消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._Tag
@@ -6779,7 +6779,7 @@ class DescribeMessageListRequest(AbstractModel):
 
 
 class DescribeMessageListResponse(AbstractModel):
-    """DescribeMessageList返回参数结构体
+    r"""DescribeMessageList返回参数结构体
 
     """
 
@@ -6803,7 +6803,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -6814,7 +6814,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """消息记录列表
+        r"""消息记录列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MessageItem
         """
@@ -6826,7 +6826,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """一次查询ID
+        r"""一次查询ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6838,7 +6838,7 @@ class DescribeMessageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6861,7 +6861,7 @@ class DescribeMessageListResponse(AbstractModel):
 
 
 class DescribeMessageRequest(AbstractModel):
-    """DescribeMessage请求参数结构体
+    r"""DescribeMessage请求参数结构体
 
     """
 
@@ -6892,7 +6892,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6903,7 +6903,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -6914,7 +6914,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        r"""消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
         :rtype: str
         """
         return self._MsgId
@@ -6925,7 +6925,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -6936,7 +6936,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -6947,7 +6947,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def QueryDeadLetterMessage(self):
-        """是否是死信消息，默认为false
+        r"""是否是死信消息，默认为false
         :rtype: bool
         """
         return self._QueryDeadLetterMessage
@@ -6958,7 +6958,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def QueryDelayMessage(self):
-        """是否是延时消息，默认为false
+        r"""是否是延时消息，默认为false
         :rtype: bool
         """
         return self._QueryDelayMessage
@@ -6987,7 +6987,7 @@ class DescribeMessageRequest(AbstractModel):
 
 
 class DescribeMessageResponse(AbstractModel):
-    """DescribeMessage返回参数结构体
+    r"""DescribeMessage返回参数结构体
 
     """
 
@@ -7027,7 +7027,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def Body(self):
-        """消息体
+        r"""消息体
         :rtype: str
         """
         return self._Body
@@ -7038,7 +7038,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def Properties(self):
-        """详情参数
+        r"""详情参数
         :rtype: str
         """
         return self._Properties
@@ -7049,7 +7049,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """生产时间
+        r"""生产时间
         :rtype: str
         """
         return self._ProduceTime
@@ -7060,7 +7060,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """消息ID
+        r"""消息ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7072,7 +7072,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        """生产者地址
+        r"""生产者地址
         :rtype: str
         """
         return self._ProducerAddr
@@ -7083,7 +7083,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def MessageTracks(self):
-        """消息消费情况列表
+        r"""消息消费情况列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MessageTrackItem
         """
@@ -7095,7 +7095,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def ShowTopicName(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._ShowTopicName
@@ -7106,7 +7106,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def MessageTracksCount(self):
-        """消息消费情况列表总条数
+        r"""消息消费情况列表总条数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7118,7 +7118,7 @@ class DescribeMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7146,7 +7146,7 @@ class DescribeMessageResponse(AbstractModel):
 
 
 class DescribeMessageTraceRequest(AbstractModel):
-    """DescribeMessageTrace请求参数结构体
+    r"""DescribeMessageTrace请求参数结构体
 
     """
 
@@ -7171,7 +7171,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -7182,7 +7182,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -7193,7 +7193,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
+        r"""消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgId
@@ -7204,7 +7204,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def QueryDeadLetterMessage(self):
-        """是否是死信消息，默认为false
+        r"""是否是死信消息，默认为false
         :rtype: bool
         """
         return self._QueryDeadLetterMessage
@@ -7215,7 +7215,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def QueryDelayMessage(self):
-        """是否是延时消息，默认为false
+        r"""是否是延时消息，默认为false
         :rtype: bool
         """
         return self._QueryDelayMessage
@@ -7242,7 +7242,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
 
 class DescribeMessageTraceResponse(AbstractModel):
-    """DescribeMessageTrace返回参数结构体
+    r"""DescribeMessageTrace返回参数结构体
 
     """
 
@@ -7262,7 +7262,7 @@ class DescribeMessageTraceResponse(AbstractModel):
 
     @property
     def ShowTopicName(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._ShowTopicName
@@ -7273,7 +7273,7 @@ class DescribeMessageTraceResponse(AbstractModel):
 
     @property
     def Data(self):
-        """轨迹详情
+        r"""轨迹详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MessageTraceItem
         """
@@ -7285,7 +7285,7 @@ class DescribeMessageTraceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7307,7 +7307,7 @@ class DescribeMessageTraceResponse(AbstractModel):
 
 
 class DescribeMigratingGroupStatsRequest(AbstractModel):
-    """DescribeMigratingGroupStats请求参数结构体
+    r"""DescribeMigratingGroupStats请求参数结构体
 
     """
 
@@ -7327,7 +7327,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :rtype: str
         """
         return self._TaskId
@@ -7338,7 +7338,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
+        r"""消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
 
         :rtype: str
         """
@@ -7350,7 +7350,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
+        r"""命名空间，仅迁移至4.x集群有效，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
         :rtype: str
         """
         return self._Namespace
@@ -7375,7 +7375,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
 
 class DescribeMigratingGroupStatsResponse(AbstractModel):
-    """DescribeMigratingGroupStats返回参数结构体
+    r"""DescribeMigratingGroupStats返回参数结构体
 
     """
 
@@ -7400,7 +7400,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
     @property
     def SourceConsumeLag(self):
-        """源集群消费组堆积
+        r"""源集群消费组堆积
         :rtype: int
         """
         return self._SourceConsumeLag
@@ -7411,7 +7411,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
     @property
     def TargetConsumeLag(self):
-        """目标集群消费组堆积
+        r"""目标集群消费组堆积
         :rtype: int
         """
         return self._TargetConsumeLag
@@ -7422,7 +7422,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
     @property
     def SourceConsumerClients(self):
-        """源集群连接客户端列表
+        r"""源集群连接客户端列表
         :rtype: list of ConsumerClient
         """
         return self._SourceConsumerClients
@@ -7433,7 +7433,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
     @property
     def TargetConsumerClients(self):
-        """目标集群连接客户端列表
+        r"""目标集群连接客户端列表
         :rtype: list of ConsumerClient
         """
         return self._TargetConsumerClients
@@ -7444,7 +7444,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7473,7 +7473,7 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
 
 
 class DescribeMigratingTopicListRequest(AbstractModel):
-    """DescribeMigratingTopicList请求参数结构体
+    r"""DescribeMigratingTopicList请求参数结构体
 
     """
 
@@ -7496,7 +7496,7 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -7508,7 +7508,7 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -7519,7 +7519,7 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -7530,7 +7530,7 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -7561,7 +7561,7 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
 
 class DescribeMigratingTopicListResponse(AbstractModel):
-    """DescribeMigratingTopicList返回参数结构体
+    r"""DescribeMigratingTopicList返回参数结构体
 
     """
 
@@ -7580,7 +7580,7 @@ class DescribeMigratingTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -7591,7 +7591,7 @@ class DescribeMigratingTopicListResponse(AbstractModel):
 
     @property
     def MigrateTopics(self):
-        """主题列表
+        r"""主题列表
         :rtype: list of MigratingTopic
         """
         return self._MigrateTopics
@@ -7602,7 +7602,7 @@ class DescribeMigratingTopicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7624,7 +7624,7 @@ class DescribeMigratingTopicListResponse(AbstractModel):
 
 
 class DescribeMigratingTopicStatsRequest(AbstractModel):
-    """DescribeMigratingTopicStats请求参数结构体
+    r"""DescribeMigratingTopicStats请求参数结构体
 
     """
 
@@ -7645,7 +7645,7 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -7657,7 +7657,7 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :rtype: str
         """
@@ -7669,7 +7669,7 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -7694,7 +7694,7 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
 
 class DescribeMigratingTopicStatsResponse(AbstractModel):
-    """DescribeMigratingTopicStats返回参数结构体
+    r"""DescribeMigratingTopicStats返回参数结构体
 
     """
 
@@ -7719,7 +7719,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
     @property
     def SourceClusterConsumerCount(self):
-        """源集群的消费者数量
+        r"""源集群的消费者数量
         :rtype: int
         """
         return self._SourceClusterConsumerCount
@@ -7730,7 +7730,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
     @property
     def TargetClusterConsumerCount(self):
-        """目标集群的消费者数量
+        r"""目标集群的消费者数量
         :rtype: int
         """
         return self._TargetClusterConsumerCount
@@ -7741,7 +7741,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
     @property
     def SourceClusterConsumerGroups(self):
-        """源集群消费组列表
+        r"""源集群消费组列表
         :rtype: list of str
         """
         return self._SourceClusterConsumerGroups
@@ -7752,7 +7752,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
     @property
     def TargetClusterConsumerGroups(self):
-        """目标集群消费组列表
+        r"""目标集群消费组列表
         :rtype: list of str
         """
         return self._TargetClusterConsumerGroups
@@ -7763,7 +7763,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7782,7 +7782,7 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
 
 
 class DescribeMigrationTaskListRequest(AbstractModel):
-    """DescribeMigrationTaskList请求参数结构体
+    r"""DescribeMigrationTaskList请求参数结构体
 
     """
 
@@ -7801,7 +7801,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        r"""查询条件列表
         :rtype: list of Filter
         """
         return self._Filters
@@ -7812,7 +7812,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        r"""查询起始位置
         :rtype: int
         """
         return self._Offset
@@ -7823,7 +7823,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        r"""查询结果限制数量
         :rtype: int
         """
         return self._Limit
@@ -7853,7 +7853,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
 
 class DescribeMigrationTaskListResponse(AbstractModel):
-    """DescribeMigrationTaskList返回参数结构体
+    r"""DescribeMigrationTaskList返回参数结构体
 
     """
 
@@ -7873,7 +7873,7 @@ class DescribeMigrationTaskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -7884,7 +7884,7 @@ class DescribeMigrationTaskListResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """迁移任务列表
+        r"""迁移任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MigrationTaskItem
         """
@@ -7896,7 +7896,7 @@ class DescribeMigrationTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7918,7 +7918,7 @@ class DescribeMigrationTaskListResponse(AbstractModel):
 
 
 class DescribeProducerListRequest(AbstractModel):
-    """DescribeProducerList请求参数结构体
+    r"""DescribeProducerList请求参数结构体
 
     """
 
@@ -7943,7 +7943,7 @@ class DescribeProducerListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -7954,7 +7954,7 @@ class DescribeProducerListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -7965,7 +7965,7 @@ class DescribeProducerListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -7976,7 +7976,7 @@ class DescribeProducerListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -7987,7 +7987,7 @@ class DescribeProducerListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8019,7 +8019,7 @@ class DescribeProducerListRequest(AbstractModel):
 
 
 class DescribeProducerListResponse(AbstractModel):
-    """DescribeProducerList返回参数结构体
+    r"""DescribeProducerList返回参数结构体
 
     """
 
@@ -8038,7 +8038,7 @@ class DescribeProducerListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8049,7 +8049,7 @@ class DescribeProducerListResponse(AbstractModel):
 
     @property
     def ProducerList(self):
-        """生产者信息列表
+        r"""生产者信息列表
         :rtype: list of ProducerInfo
         """
         return self._ProducerList
@@ -8060,7 +8060,7 @@ class DescribeProducerListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8082,13 +8082,13 @@ class DescribeProducerListResponse(AbstractModel):
 
 
 class DescribeProductSKUsRequest(AbstractModel):
-    """DescribeProductSKUs请求参数结构体
+    r"""DescribeProductSKUs请求参数结构体
 
     """
 
 
 class DescribeProductSKUsResponse(AbstractModel):
-    """DescribeProductSKUs返回参数结构体
+    r"""DescribeProductSKUs返回参数结构体
 
     """
 
@@ -8105,7 +8105,7 @@ class DescribeProductSKUsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """商品配置信息
+        r"""商品配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProductSKU
         """
@@ -8117,7 +8117,7 @@ class DescribeProductSKUsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8138,7 +8138,7 @@ class DescribeProductSKUsResponse(AbstractModel):
 
 
 class DescribeRoleListRequest(AbstractModel):
-    """DescribeRoleList请求参数结构体
+    r"""DescribeRoleList请求参数结构体
 
     """
 
@@ -8160,7 +8160,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8171,7 +8171,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8182,7 +8182,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8193,7 +8193,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8224,7 +8224,7 @@ class DescribeRoleListRequest(AbstractModel):
 
 
 class DescribeRoleListResponse(AbstractModel):
-    """DescribeRoleList返回参数结构体
+    r"""DescribeRoleList返回参数结构体
 
     """
 
@@ -8243,7 +8243,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8254,7 +8254,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """角色信息列表
+        r"""角色信息列表
         :rtype: list of RoleItem
         """
         return self._Data
@@ -8265,7 +8265,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8287,7 +8287,7 @@ class DescribeRoleListResponse(AbstractModel):
 
 
 class DescribeSmoothMigrationTaskListRequest(AbstractModel):
-    """DescribeSmoothMigrationTaskList请求参数结构体
+    r"""DescribeSmoothMigrationTaskList请求参数结构体
 
     """
 
@@ -8306,7 +8306,7 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8317,7 +8317,7 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8328,7 +8328,7 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8358,7 +8358,7 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
 
 class DescribeSmoothMigrationTaskListResponse(AbstractModel):
-    """DescribeSmoothMigrationTaskList返回参数结构体
+    r"""DescribeSmoothMigrationTaskList返回参数结构体
 
     """
 
@@ -8378,7 +8378,7 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8389,7 +8389,7 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务列表	
+        r"""任务列表	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmoothMigrationTaskItem
         """
@@ -8401,7 +8401,7 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8423,7 +8423,7 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
 
 
 class DescribeSourceClusterGroupListRequest(AbstractModel):
-    """DescribeSourceClusterGroupList请求参数结构体
+    r"""DescribeSourceClusterGroupList请求参数结构体
 
     """
 
@@ -8446,7 +8446,7 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台上获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台上获得。
 
         :rtype: str
         """
@@ -8458,7 +8458,7 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8469,7 +8469,7 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8480,7 +8480,7 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8511,7 +8511,7 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
 
 class DescribeSourceClusterGroupListResponse(AbstractModel):
-    """DescribeSourceClusterGroupList返回参数结构体
+    r"""DescribeSourceClusterGroupList返回参数结构体
 
     """
 
@@ -8530,7 +8530,7 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8541,7 +8541,7 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
 
     @property
     def Groups(self):
-        """消费组配置列表
+        r"""消费组配置列表
         :rtype: list of SourceClusterGroupConfig
         """
         return self._Groups
@@ -8552,7 +8552,7 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8574,7 +8574,7 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
 
 
 class DescribeTopicListByGroupRequest(AbstractModel):
-    """DescribeTopicListByGroup请求参数结构体
+    r"""DescribeTopicListByGroup请求参数结构体
 
     """
 
@@ -8599,7 +8599,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8610,7 +8610,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8621,7 +8621,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8632,7 +8632,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -8643,7 +8643,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8675,7 +8675,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
 
 class DescribeTopicListByGroupResponse(AbstractModel):
-    """DescribeTopicListByGroup返回参数结构体
+    r"""DescribeTopicListByGroup返回参数结构体
 
     """
 
@@ -8694,7 +8694,7 @@ class DescribeTopicListByGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8705,7 +8705,7 @@ class DescribeTopicListByGroupResponse(AbstractModel):
 
     @property
     def Data(self):
-        """主题列表
+        r"""主题列表
         :rtype: list of SubscriptionData
         """
         return self._Data
@@ -8716,7 +8716,7 @@ class DescribeTopicListByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8738,7 +8738,7 @@ class DescribeTopicListByGroupResponse(AbstractModel):
 
 
 class DescribeTopicListRequest(AbstractModel):
-    """DescribeTopicList请求参数结构体
+    r"""DescribeTopicList请求参数结构体
 
     """
 
@@ -8763,7 +8763,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8774,7 +8774,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8785,7 +8785,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8796,7 +8796,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8807,7 +8807,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def FromGroup(self):
-        """按照消费组查询订阅的主题
+        r"""按照消费组查询订阅的主题
         :rtype: str
         """
         return self._FromGroup
@@ -8839,7 +8839,7 @@ class DescribeTopicListRequest(AbstractModel):
 
 
 class DescribeTopicListResponse(AbstractModel):
-    """DescribeTopicList返回参数结构体
+    r"""DescribeTopicList返回参数结构体
 
     """
 
@@ -8858,7 +8858,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询总数
+        r"""查询总数
         :rtype: int
         """
         return self._TotalCount
@@ -8869,7 +8869,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """主题列表
+        r"""主题列表
         :rtype: list of TopicItem
         """
         return self._Data
@@ -8880,7 +8880,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8902,7 +8902,7 @@ class DescribeTopicListResponse(AbstractModel):
 
 
 class DescribeTopicRequest(AbstractModel):
-    """DescribeTopic请求参数结构体
+    r"""DescribeTopic请求参数结构体
 
     """
 
@@ -8927,7 +8927,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8938,7 +8938,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -8949,7 +8949,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8960,7 +8960,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置，默认为0。
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8971,7 +8971,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认20。
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -9003,7 +9003,7 @@ class DescribeTopicRequest(AbstractModel):
 
 
 class DescribeTopicResponse(AbstractModel):
-    """DescribeTopic返回参数结构体
+    r"""DescribeTopic返回参数结构体
 
     """
 
@@ -9048,7 +9048,7 @@ TRANSACTION:事务消息
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -9059,7 +9059,7 @@ TRANSACTION:事务消息
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -9070,7 +9070,7 @@ TRANSACTION:事务消息
 
     @property
     def TopicType(self):
-        """主题类型
+        r"""主题类型
 UNSPECIFIED:未指定,
 NORMAL:普通消息,
 FIFO:顺序消息,
@@ -9086,7 +9086,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -9097,7 +9097,7 @@ TRANSACTION:事务消息
 
     @property
     def CreatedTime(self):
-        """创建时间，**Unix时间戳（毫秒）**
+        r"""创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -9108,7 +9108,7 @@ TRANSACTION:事务消息
 
     @property
     def LastUpdateTime(self):
-        """最后写入时间，**Unix时间戳（毫秒）**
+        r"""最后写入时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._LastUpdateTime
@@ -9119,7 +9119,7 @@ TRANSACTION:事务消息
 
     @property
     def SubscriptionCount(self):
-        """订阅数量
+        r"""订阅数量
         :rtype: int
         """
         return self._SubscriptionCount
@@ -9130,7 +9130,7 @@ TRANSACTION:事务消息
 
     @property
     def SubscriptionData(self):
-        """订阅关系列表
+        r"""订阅关系列表
         :rtype: list of SubscriptionData
         """
         return self._SubscriptionData
@@ -9141,7 +9141,7 @@ TRANSACTION:事务消息
 
     @property
     def MsgTTL(self):
-        """消息保留时长，单位：小时
+        r"""消息保留时长，单位：小时
         :rtype: int
         """
         return self._MsgTTL
@@ -9152,7 +9152,7 @@ TRANSACTION:事务消息
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9181,7 +9181,7 @@ TRANSACTION:事务消息
 
 
 class DetailedRolePerm(AbstractModel):
-    """Topic&Group维度的权限配置
+    r"""Topic&Group维度的权限配置
 
     """
 
@@ -9208,7 +9208,7 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def Resource(self):
-        """权限对应的资源
+        r"""权限对应的资源
 可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
@@ -9221,7 +9221,7 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产权限
+        r"""是否开启生产权限
         :rtype: bool
         """
         return self._PermWrite
@@ -9232,7 +9232,7 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费权限
+        r"""是否开启消费权限
         :rtype: bool
         """
         return self._PermRead
@@ -9243,7 +9243,7 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def ResourceType(self):
-        """授权资源类型（Topic:主题; Group:消费组）
+        r"""授权资源类型（Topic:主题; Group:消费组）
         :rtype: str
         """
         return self._ResourceType
@@ -9254,7 +9254,7 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def Remark(self):
-        """资源备注
+        r"""资源备注
         :rtype: str
         """
         return self._Remark
@@ -9281,7 +9281,7 @@ class DetailedRolePerm(AbstractModel):
 
 
 class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
-    """DoHealthCheckOnMigratingTopic请求参数结构体
+    r"""DoHealthCheckOnMigratingTopic请求参数结构体
 
     """
 
@@ -9305,7 +9305,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -9317,7 +9317,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :rtype: str
         """
@@ -9329,7 +9329,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def IgnoreCheck(self):
-        """是否忽略当前检查
+        r"""是否忽略当前检查
         :rtype: bool
         """
         return self._IgnoreCheck
@@ -9340,7 +9340,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -9366,7 +9366,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
 
 class DoHealthCheckOnMigratingTopicResponse(AbstractModel):
-    """DoHealthCheckOnMigratingTopic返回参数结构体
+    r"""DoHealthCheckOnMigratingTopic返回参数结构体
 
     """
 
@@ -9402,7 +9402,7 @@ SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 
     @property
     def Passed(self):
-        """是否通过	
+        r"""是否通过	
         :rtype: bool
         """
         return self._Passed
@@ -9413,7 +9413,7 @@ SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 
     @property
     def Reason(self):
-        """健康检查返回的错误信息
+        r"""健康检查返回的错误信息
 NotChecked 未执行检查， 
 Unknown 未知错误, 
 TopicNotImported 主题未导入,
@@ -9437,7 +9437,7 @@ SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 
     @property
     def ReasonList(self):
-        """健康检查返回的错误信息列表
+        r"""健康检查返回的错误信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9449,7 +9449,7 @@ SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -9467,7 +9467,7 @@ SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 
 
 class Endpoint(AbstractModel):
-    """接入点信息
+    r"""接入点信息
 
     """
 
@@ -9522,7 +9522,7 @@ POSTPAID 按量付费
 
     @property
     def Type(self):
-        """接入点类型，枚举值如下：
+        r"""接入点类型，枚举值如下：
 
 - VPC：VPC 网络
 
@@ -9539,7 +9539,7 @@ POSTPAID 按量付费
 
     @property
     def Status(self):
-        """状态，
+        r"""状态，
 OPEN 开启，
 CLOSE 关闭，
 PROCESSING 操作中，
@@ -9553,7 +9553,7 @@ PROCESSING 操作中，
 
     @property
     def PayMode(self):
-        """付费类型，仅公网
+        r"""付费类型，仅公网
 PREPAID 包年包月
 POSTPAID 按量付费
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9567,7 +9567,7 @@ POSTPAID 按量付费
 
     @property
     def EndpointUrl(self):
-        """接入点地址
+        r"""接入点地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9579,7 +9579,7 @@ POSTPAID 按量付费
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9591,7 +9591,7 @@ POSTPAID 按量付费
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9603,7 +9603,7 @@ POSTPAID 按量付费
 
     @property
     def Bandwidth(self):
-        """公网带宽，Mbps为单位
+        r"""公网带宽，Mbps为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9615,7 +9615,7 @@ POSTPAID 按量付费
 
     @property
     def IpRules(self):
-        """公网放通规则
+        r"""公网放通规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpRule
         """
@@ -9627,7 +9627,7 @@ POSTPAID 按量付费
 
     @property
     def BillingFlow(self):
-        """公网是否按流量计费
+        r"""公网是否按流量计费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9664,7 +9664,7 @@ POSTPAID 按量付费
 
 
 class Filter(AbstractModel):
-    """查询过滤器
+    r"""查询过滤器
 
     """
 
@@ -9680,7 +9680,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤条件参数名
+        r"""过滤条件参数名
         :rtype: str
         """
         return self._Name
@@ -9691,7 +9691,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤条件的值
+        r"""过滤条件的值
         :rtype: list of str
         """
         return self._Values
@@ -9715,7 +9715,7 @@ class Filter(AbstractModel):
 
 
 class FusionInstanceItem(AbstractModel):
-    """实例列表页中的实例信息
+    r"""实例列表页中的实例信息
 
     """
 
@@ -9822,7 +9822,7 @@ DELETING，删除中
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -9833,7 +9833,7 @@ DELETING，删除中
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -9844,7 +9844,7 @@ DELETING，删除中
 
     @property
     def Version(self):
-        """实例版本
+        r"""实例版本
         :rtype: str
         """
         return self._Version
@@ -9855,7 +9855,7 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 EXPERIMENT，体验版
 BASIC，基础版
 PRO，专业版
@@ -9870,7 +9870,7 @@ PLATINUM，铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态，
+        r"""实例状态，
 RUNNING, 运行中
 MAINTAINING，维护中
 ABNORMAL，异常
@@ -9891,7 +9891,7 @@ DELETING，删除中
 
     @property
     def TopicNumLimit(self):
-        """实例主题数上限
+        r"""实例主题数上限
         :rtype: int
         """
         return self._TopicNumLimit
@@ -9902,7 +9902,7 @@ DELETING，删除中
 
     @property
     def GroupNumLimit(self):
-        """实例消费组数量上限
+        r"""实例消费组数量上限
         :rtype: int
         """
         return self._GroupNumLimit
@@ -9913,7 +9913,7 @@ DELETING，删除中
 
     @property
     def PayMode(self):
-        """计费模式，枚举值如下：
+        r"""计费模式，枚举值如下：
 
 - POSTPAID：按量计费
 
@@ -9928,7 +9928,7 @@ DELETING，删除中
 
     @property
     def ExpiryTime(self):
-        """到期时间，**Unix时间戳（毫秒）**
+        r"""到期时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9940,7 +9940,7 @@ DELETING，删除中
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9952,7 +9952,7 @@ DELETING，删除中
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -9963,7 +9963,7 @@ DELETING，删除中
 
     @property
     def GroupNum(self):
-        """消费组数量
+        r"""消费组数量
         :rtype: int
         """
         return self._GroupNum
@@ -9974,7 +9974,7 @@ DELETING，删除中
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -9986,7 +9986,7 @@ DELETING，删除中
 
     @property
     def SkuCode(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._SkuCode
@@ -9997,7 +9997,7 @@ DELETING，删除中
 
     @property
     def TpsLimit(self):
-        """TPS限流值
+        r"""TPS限流值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10009,7 +10009,7 @@ DELETING，删除中
 
     @property
     def ScaledTpsLimit(self):
-        """弹性TPS限流值
+        r"""弹性TPS限流值
         :rtype: int
         """
         return self._ScaledTpsLimit
@@ -10020,7 +10020,7 @@ DELETING，删除中
 
     @property
     def MessageRetention(self):
-        """消息保留时间，小时为单位
+        r"""消息保留时间，小时为单位
         :rtype: int
         """
         return self._MessageRetention
@@ -10031,7 +10031,7 @@ DELETING，删除中
 
     @property
     def MaxMessageDelay(self):
-        """延迟消息最大时长，小时为单位
+        r"""延迟消息最大时长，小时为单位
         :rtype: int
         """
         return self._MaxMessageDelay
@@ -10042,7 +10042,7 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
-        """预付费集群是否自动续费，枚举值如下：
+        r"""预付费集群是否自动续费，枚举值如下：
 
 - 0: 不自动续费
 - 1: 自动续费
@@ -10056,7 +10056,7 @@ DELETING，删除中
 
     @property
     def InstanceItemExtraInfo(self):
-        """4.x独有数据
+        r"""4.x独有数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trocket.v20230308.models.InstanceItemExtraInfo`
         """
@@ -10068,7 +10068,7 @@ DELETING，删除中
 
     @property
     def DestroyTime(self):
-        """预销毁时间，**Unix时间戳（毫秒）**
+        r"""预销毁时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10080,7 +10080,7 @@ DELETING，删除中
 
     @property
     def ZoneIds(self):
-        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
+        r"""所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -10092,7 +10092,7 @@ DELETING，删除中
 
     @property
     def EnableDeletionProtection(self):
-        """是否开启删除保护
+        r"""是否开启删除保护
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -10144,7 +10144,7 @@ DELETING，删除中
 
 
 class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
-    """ImportSourceClusterConsumerGroups请求参数结构体
+    r"""ImportSourceClusterConsumerGroups请求参数结构体
 
     """
 
@@ -10161,7 +10161,7 @@ class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -10173,7 +10173,7 @@ class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
 
     @property
     def GroupList(self):
-        """待导入的消费组列表
+        r"""待导入的消费组列表
         :rtype: list of SourceClusterGroupConfig
         """
         return self._GroupList
@@ -10202,7 +10202,7 @@ class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
 
 
 class ImportSourceClusterConsumerGroupsResponse(AbstractModel):
-    """ImportSourceClusterConsumerGroups返回参数结构体
+    r"""ImportSourceClusterConsumerGroups返回参数结构体
 
     """
 
@@ -10215,7 +10215,7 @@ class ImportSourceClusterConsumerGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10230,7 +10230,7 @@ class ImportSourceClusterConsumerGroupsResponse(AbstractModel):
 
 
 class ImportSourceClusterTopicsRequest(AbstractModel):
-    """ImportSourceClusterTopics请求参数结构体
+    r"""ImportSourceClusterTopics请求参数结构体
 
     """
 
@@ -10247,7 +10247,7 @@ class ImportSourceClusterTopicsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -10259,7 +10259,7 @@ class ImportSourceClusterTopicsRequest(AbstractModel):
 
     @property
     def TopicList(self):
-        """待导入的主题列表
+        r"""待导入的主题列表
         :rtype: list of SourceClusterTopicConfig
         """
         return self._TopicList
@@ -10288,7 +10288,7 @@ class ImportSourceClusterTopicsRequest(AbstractModel):
 
 
 class ImportSourceClusterTopicsResponse(AbstractModel):
-    """ImportSourceClusterTopics返回参数结构体
+    r"""ImportSourceClusterTopics返回参数结构体
 
     """
 
@@ -10301,7 +10301,7 @@ class ImportSourceClusterTopicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -10316,7 +10316,7 @@ class ImportSourceClusterTopicsResponse(AbstractModel):
 
 
 class InstanceItem(AbstractModel):
-    """实例列表页中的实例信息
+    r"""实例列表页中的实例信息
 
     """
 
@@ -10404,7 +10404,7 @@ DELETING，删除中
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -10415,7 +10415,7 @@ DELETING，删除中
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -10426,7 +10426,7 @@ DELETING，删除中
 
     @property
     def Version(self):
-        """实例版本
+        r"""实例版本
         :rtype: str
         """
         return self._Version
@@ -10437,7 +10437,7 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 EXPERIMENT，体验版
 BASIC，基础版
 PRO，专业版
@@ -10452,7 +10452,7 @@ PLATINUM，铂金版
 
     @property
     def InstanceStatus(self):
-        """实例状态，
+        r"""实例状态，
 RUNNING, 运行中
 MAINTAINING，维护中
 ABNORMAL，异常
@@ -10473,7 +10473,7 @@ DELETING，删除中
 
     @property
     def TopicNumLimit(self):
-        """实例主题数上限
+        r"""实例主题数上限
         :rtype: int
         """
         return self._TopicNumLimit
@@ -10484,7 +10484,7 @@ DELETING，删除中
 
     @property
     def GroupNumLimit(self):
-        """实例消费组数量上限
+        r"""实例消费组数量上限
         :rtype: int
         """
         return self._GroupNumLimit
@@ -10495,7 +10495,7 @@ DELETING，删除中
 
     @property
     def PayMode(self):
-        """计费模式，枚举值如下：
+        r"""计费模式，枚举值如下：
 
 - POSTPAID：按量计费
 
@@ -10510,7 +10510,7 @@ DELETING，删除中
 
     @property
     def ExpiryTime(self):
-        """到期时间戳，**Unix时间戳（毫秒）**
+        r"""到期时间戳，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10522,7 +10522,7 @@ DELETING，删除中
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10534,7 +10534,7 @@ DELETING，删除中
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -10545,7 +10545,7 @@ DELETING，删除中
 
     @property
     def GroupNum(self):
-        """消费组数量
+        r"""消费组数量
         :rtype: int
         """
         return self._GroupNum
@@ -10556,7 +10556,7 @@ DELETING，删除中
 
     @property
     def TagList(self):
-        """标签列表
+        r"""标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -10568,7 +10568,7 @@ DELETING，删除中
 
     @property
     def SkuCode(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._SkuCode
@@ -10579,7 +10579,7 @@ DELETING，删除中
 
     @property
     def TpsLimit(self):
-        """TPS限流值
+        r"""TPS限流值
         :rtype: int
         """
         return self._TpsLimit
@@ -10590,7 +10590,7 @@ DELETING，删除中
 
     @property
     def ScaledTpsLimit(self):
-        """弹性TPS限流值
+        r"""弹性TPS限流值
         :rtype: int
         """
         return self._ScaledTpsLimit
@@ -10601,7 +10601,7 @@ DELETING，删除中
 
     @property
     def MessageRetention(self):
-        """消息保留时间，小时为单位
+        r"""消息保留时间，小时为单位
         :rtype: int
         """
         return self._MessageRetention
@@ -10612,7 +10612,7 @@ DELETING，删除中
 
     @property
     def MaxMessageDelay(self):
-        """延迟消息最大时长，小时为单位
+        r"""延迟消息最大时长，小时为单位
         :rtype: int
         """
         return self._MaxMessageDelay
@@ -10623,7 +10623,7 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
-        """是否自动续费，仅针对预付费集群（0: 不自动续费；1:自动续费）
+        r"""是否自动续费，仅针对预付费集群（0: 不自动续费；1:自动续费）
         :rtype: int
         """
         return self._RenewFlag
@@ -10669,7 +10669,7 @@ DELETING，删除中
 
 
 class InstanceItemExtraInfo(AbstractModel):
-    """4.x集群和5.0集群列表统一显示 4.x特殊数据承载接口
+    r"""4.x集群和5.0集群列表统一显示 4.x特殊数据承载接口
 
     """
 
@@ -10718,7 +10718,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def IsVip(self):
-        """是否vip
+        r"""是否vip
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10730,7 +10730,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def VipInstanceStatus(self):
-        """4.x专享集群状态
+        r"""4.x专享集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10742,7 +10742,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        """专享集群峰值带宽
+        r"""专享集群峰值带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10754,7 +10754,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def SpecName(self):
-        """专享集群规格
+        r"""专享集群规格
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10766,7 +10766,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def NodeCount(self):
-        """专享集群节点数量
+        r"""专享集群节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10778,7 +10778,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MaxStorage(self):
-        """专享集群最大存储
+        r"""专享集群最大存储
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10790,7 +10790,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MaxRetention(self):
-        """专享集群最大保留时间，单位：小时
+        r"""专享集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10802,7 +10802,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MinRetention(self):
-        """专项集群最大保留时间，单位：小时
+        r"""专项集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10814,7 +10814,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """4.0共享集群状态
+        r"""4.0共享集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10826,7 +10826,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def IsFrozen(self):
-        """是否已冻结
+        r"""是否已冻结
         :rtype: bool
         """
         return self._IsFrozen
@@ -10858,7 +10858,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
 
 class IpRule(AbstractModel):
-    """IP规则
+    r"""IP规则
 
     """
 
@@ -10877,7 +10877,7 @@ class IpRule(AbstractModel):
 
     @property
     def Ip(self):
-        """IP地址
+        r"""IP地址
         :rtype: str
         """
         return self._Ip
@@ -10888,7 +10888,7 @@ class IpRule(AbstractModel):
 
     @property
     def Allow(self):
-        """是否允许放行，默认为false表示拒绝
+        r"""是否允许放行，默认为false表示拒绝
         :rtype: bool
         """
         return self._Allow
@@ -10899,7 +10899,7 @@ class IpRule(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -10924,7 +10924,7 @@ class IpRule(AbstractModel):
 
 
 class MQTTClientSubscription(AbstractModel):
-    """MQTT 订阅关系
+    r"""MQTT 订阅关系
 
     """
 
@@ -10940,7 +10940,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def TopicFilter(self):
-        """topic 订阅
+        r"""topic 订阅
         :rtype: str
         """
         return self._TopicFilter
@@ -10951,7 +10951,7 @@ class MQTTClientSubscription(AbstractModel):
 
     @property
     def Qos(self):
-        """服务质量等级
+        r"""服务质量等级
         :rtype: int
         """
         return self._Qos
@@ -10975,7 +10975,7 @@ class MQTTClientSubscription(AbstractModel):
 
 
 class MQTTEndpointItem(AbstractModel):
-    """MQTTEndpoint
+    r"""MQTTEndpoint
 
     """
 
@@ -11013,7 +11013,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Type(self):
-        """类型
+        r"""类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11025,7 +11025,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Url(self):
-        """接入点
+        r"""接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11037,7 +11037,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc信息
+        r"""vpc信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11049,7 +11049,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网信息
+        r"""子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11061,7 +11061,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Host(self):
-        """主机
+        r"""主机
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11073,7 +11073,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Port(self):
-        """端口
+        r"""端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11085,7 +11085,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Ip(self):
-        """接入点ip
+        r"""接入点ip
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11115,7 +11115,7 @@ class MQTTEndpointItem(AbstractModel):
 
 
 class MQTTInstanceItem(AbstractModel):
-    """MQTT 实例信息
+    r"""MQTT 实例信息
 
     """
 
@@ -11181,7 +11181,7 @@ DELETING，删除中
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -11192,7 +11192,7 @@ DELETING，删除中
 
     @property
     def InstanceName(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -11203,7 +11203,7 @@ DELETING，删除中
 
     @property
     def Version(self):
-        """实例版本
+        r"""实例版本
         :rtype: str
         """
         return self._Version
@@ -11214,7 +11214,7 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
-        """实例类型，
+        r"""实例类型，
 BASIC，基础版
 PRO，专业版
         :rtype: str
@@ -11227,7 +11227,7 @@ PRO，专业版
 
     @property
     def InstanceStatus(self):
-        """实例状态，
+        r"""实例状态，
 RUNNING, 运行中
 MAINTAINING，维护中
 ABNORMAL，异常
@@ -11248,7 +11248,7 @@ DELETING，删除中
 
     @property
     def TopicNumLimit(self):
-        """实例主题数上限
+        r"""实例主题数上限
         :rtype: int
         """
         return self._TopicNumLimit
@@ -11259,7 +11259,7 @@ DELETING，删除中
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11271,7 +11271,7 @@ DELETING，删除中
 
     @property
     def TopicNum(self):
-        """主题数量
+        r"""主题数量
         :rtype: int
         """
         return self._TopicNum
@@ -11282,7 +11282,7 @@ DELETING，删除中
 
     @property
     def SkuCode(self):
-        """商品规格
+        r"""商品规格
         :rtype: str
         """
         return self._SkuCode
@@ -11293,7 +11293,7 @@ DELETING，删除中
 
     @property
     def TpsLimit(self):
-        """弹性TPS限流值
+        r"""弹性TPS限流值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11305,7 +11305,7 @@ DELETING，删除中
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11317,7 +11317,7 @@ DELETING，删除中
 
     @property
     def SubscriptionNumLimit(self):
-        """订阅关系上限
+        r"""订阅关系上限
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11329,7 +11329,7 @@ DELETING，删除中
 
     @property
     def ClientNumLimit(self):
-        """客户端连接数上线
+        r"""客户端连接数上线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11365,7 +11365,7 @@ DELETING，删除中
 
 
 class MQTTMessageItem(AbstractModel):
-    """消息记录
+    r"""消息记录
 
     """
 
@@ -11411,7 +11411,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息ID
+        r"""消息ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11423,7 +11423,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Tags(self):
-        """消息tag
+        r"""消息tag
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11435,7 +11435,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Keys(self):
-        """消息key
+        r"""消息key
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11447,7 +11447,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        """客户端地址	
+        r"""客户端地址	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11459,7 +11459,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """消息发送时间	
+        r"""消息发送时间	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11471,7 +11471,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def DeadLetterResendTimes(self):
-        """死信重发次数	
+        r"""死信重发次数	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11483,7 +11483,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def DeadLetterResendSuccessTimes(self):
-        """死信重发成功次数
+        r"""死信重发成功次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11495,7 +11495,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def SubTopic(self):
-        """子topic
+        r"""子topic
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11507,7 +11507,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def Qos(self):
-        """消息质量等级
+        r"""消息质量等级
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11539,7 +11539,7 @@ class MQTTMessageItem(AbstractModel):
 
 
 class MQTTProductSkuItem(AbstractModel):
-    """MQTT ProductSkuItem
+    r"""MQTT ProductSkuItem
 
     """
 
@@ -11589,7 +11589,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        """类型
+        r"""类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11601,7 +11601,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def SkuCode(self):
-        """cide
+        r"""cide
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11613,7 +11613,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def OnSale(self):
-        """sale
+        r"""sale
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11625,7 +11625,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def TopicNumLimit(self):
-        """topic num限制
+        r"""topic num限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11637,7 +11637,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def TpsLimit(self):
-        """tps
+        r"""tps
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11649,7 +11649,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def ClientNumLimit(self):
-        """客户端连接数
+        r"""客户端连接数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11661,7 +11661,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def SubscriptionNumLimit(self):
-        """订阅数限制
+        r"""订阅数限制
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11673,7 +11673,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def ProxySpecCore(self):
-        """代理核
+        r"""代理核
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11685,7 +11685,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def ProxySpecMemory(self):
-        """代理内存
+        r"""代理内存
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11697,7 +11697,7 @@ class MQTTProductSkuItem(AbstractModel):
 
     @property
     def ProxySpecCount(self):
-        """代理总数
+        r"""代理总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11730,7 +11730,7 @@ class MQTTProductSkuItem(AbstractModel):
 
 
 class MQTTTopicItem(AbstractModel):
-    """MQTT 主题详情
+    r"""MQTT 主题详情
 
     """
 
@@ -11750,7 +11750,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID
+        r"""实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -11761,7 +11761,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -11772,7 +11772,7 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Remark(self):
-        """主题描述
+        r"""主题描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11798,7 +11798,7 @@ class MQTTTopicItem(AbstractModel):
 
 
 class MQTTUserItem(AbstractModel):
-    """MQTT集群用户信息
+    r"""MQTT集群用户信息
 
     """
 
@@ -11829,7 +11829,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -11840,7 +11840,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Password(self):
-        """密码
+        r"""密码
         :rtype: str
         """
         return self._Password
@@ -11851,7 +11851,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._PermRead
@@ -11862,7 +11862,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产
+        r"""是否开启生产
         :rtype: bool
         """
         return self._PermWrite
@@ -11873,7 +11873,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -11884,7 +11884,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        r"""创建时间，秒为单位
         :rtype: int
         """
         return self._CreatedTime
@@ -11895,7 +11895,7 @@ class MQTTUserItem(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """修改时间，秒为单位
+        r"""修改时间，秒为单位
         :rtype: int
         """
         return self._ModifiedTime
@@ -11924,7 +11924,7 @@ class MQTTUserItem(AbstractModel):
 
 
 class MessageItem(AbstractModel):
-    """消息记录
+    r"""消息记录
 
     """
 
@@ -11962,7 +11962,7 @@ class MessageItem(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息ID
+        r"""消息ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11974,7 +11974,7 @@ class MessageItem(AbstractModel):
 
     @property
     def Tags(self):
-        """消息tag
+        r"""消息tag
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11986,7 +11986,7 @@ class MessageItem(AbstractModel):
 
     @property
     def Keys(self):
-        """消息key
+        r"""消息key
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11998,7 +11998,7 @@ class MessageItem(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        """客户端地址	
+        r"""客户端地址	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12010,7 +12010,7 @@ class MessageItem(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """消息发送时间	
+        r"""消息发送时间	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12022,7 +12022,7 @@ class MessageItem(AbstractModel):
 
     @property
     def DeadLetterResendTimes(self):
-        """死信重发次数	
+        r"""死信重发次数	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12034,7 +12034,7 @@ class MessageItem(AbstractModel):
 
     @property
     def DeadLetterResendSuccessTimes(self):
-        """死信重发成功次数
+        r"""死信重发成功次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12064,7 +12064,7 @@ class MessageItem(AbstractModel):
 
 
 class MessageTraceItem(AbstractModel):
-    """消息轨迹
+    r"""消息轨迹
 
     """
 
@@ -12088,7 +12088,7 @@ class MessageTraceItem(AbstractModel):
 
     @property
     def Stage(self):
-        """消息处理阶段，枚举值如下：
+        r"""消息处理阶段，枚举值如下：
 
 - produce：消息生产
 
@@ -12106,7 +12106,7 @@ class MessageTraceItem(AbstractModel):
 
     @property
     def Data(self):
-        """轨迹详情
+        r"""轨迹详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12131,7 +12131,7 @@ class MessageTraceItem(AbstractModel):
 
 
 class MessageTrackItem(AbstractModel):
-    """MessageTrack
+    r"""MessageTrack
 
     """
 
@@ -12154,7 +12154,7 @@ class MessageTrackItem(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        r"""消费组名称
         :rtype: str
         """
         return self._ConsumerGroup
@@ -12165,7 +12165,7 @@ class MessageTrackItem(AbstractModel):
 
     @property
     def ConsumeStatus(self):
-        """消费状态, CONSUMED: 已消费 CONSUMED_BUT_FILTERED: 已过滤 NOT_CONSUME: 未消费 ENTER_RETRY: 进入重试队列 ENTER_DLQ: 进入死信队列 UNKNOWN: 查询不到消费状态
+        r"""消费状态, CONSUMED: 已消费 CONSUMED_BUT_FILTERED: 已过滤 NOT_CONSUME: 未消费 ENTER_RETRY: 进入重试队列 ENTER_DLQ: 进入死信队列 UNKNOWN: 查询不到消费状态
         :rtype: str
         """
         return self._ConsumeStatus
@@ -12176,7 +12176,7 @@ class MessageTrackItem(AbstractModel):
 
     @property
     def TrackType(self):
-        """track类型
+        r"""track类型
         :rtype: str
         """
         return self._TrackType
@@ -12187,7 +12187,7 @@ class MessageTrackItem(AbstractModel):
 
     @property
     def ExceptionDesc(self):
-        """异常信息
+        r"""异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12214,7 +12214,7 @@ class MessageTrackItem(AbstractModel):
 
 
 class MigratingTopic(AbstractModel):
-    """迁移中的主题
+    r"""迁移中的主题
 
     """
 
@@ -12259,7 +12259,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def TopicName(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._TopicName
@@ -12270,7 +12270,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def MigrationStatus(self):
-        """迁移状态 
+        r"""迁移状态 
 S_RW_D_NA 源集群读写，
 S_RW_D_R 源集群读写目标集群读，
 S_RW_D_RW 源集群读写目标集群读写，
@@ -12286,7 +12286,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def HealthCheckPassed(self):
-        """是否完成健康检查	
+        r"""是否完成健康检查	
         :rtype: bool
         """
         return self._HealthCheckPassed
@@ -12297,7 +12297,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def HealthCheckError(self):
-        """上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+        r"""上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
         :rtype: str
         """
         return self._HealthCheckError
@@ -12308,7 +12308,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        r"""命名空间，仅4.x集群有效
         :rtype: str
         """
         return self._Namespace
@@ -12319,7 +12319,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def NamespaceV4(self):
-        """4.x的命名空间
+        r"""4.x的命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12331,7 +12331,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def TopicNameV4(self):
-        """4.x的主题名称
+        r"""4.x的主题名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12343,7 +12343,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def FullNamespaceV4(self):
-        """4.x的完整命名空间
+        r"""4.x的完整命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12355,7 +12355,7 @@ S_NA_D_RW 目标集群读写
 
     @property
     def HealthCheckErrorList(self):
-        """上次健康检查返回的错误列表
+        r"""上次健康检查返回的错误列表
         :rtype: list of str
         """
         return self._HealthCheckErrorList
@@ -12386,7 +12386,7 @@ S_NA_D_RW 目标集群读写
 
 
 class MigrationTaskItem(AbstractModel):
-    """迁移任务信息
+    r"""迁移任务信息
 
     """
 
@@ -12418,7 +12418,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -12429,7 +12429,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -12440,7 +12440,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def Type(self):
-        """0 - 未指定（存量）
+        r"""0 - 未指定（存量）
 1 - 元数据导入
         :rtype: int
         """
@@ -12452,7 +12452,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def TopicNum(self):
-        """主题总数
+        r"""主题总数
         :rtype: int
         """
         return self._TopicNum
@@ -12463,7 +12463,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def GroupNum(self):
-        """消费组总数
+        r"""消费组总数
         :rtype: int
         """
         return self._GroupNum
@@ -12474,7 +12474,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态： 0，迁移中 1，迁移成功 2，迁移完成，只有部分数据完成迁移
+        r"""任务状态： 0，迁移中 1，迁移成功 2，迁移完成，只有部分数据完成迁移
         :rtype: int
         """
         return self._Status
@@ -12485,7 +12485,7 @@ class MigrationTaskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: int
         """
         return self._CreateTime
@@ -12514,7 +12514,7 @@ class MigrationTaskItem(AbstractModel):
 
 
 class ModifyConsumerGroupRequest(AbstractModel):
-    """ModifyConsumerGroup请求参数结构体
+    r"""ModifyConsumerGroup请求参数结构体
 
     """
 
@@ -12543,7 +12543,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12554,7 +12554,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -12565,7 +12565,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeEnable(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -12576,7 +12576,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeMessageOrderly(self):
-        """顺序投递：true
+        r"""顺序投递：true
 并发投递：false
         :rtype: bool
         """
@@ -12588,7 +12588,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数，取值范围0～1000
+        r"""最大重试次数，取值范围0～1000
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -12599,7 +12599,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多 128 个字符
+        r"""备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -12627,7 +12627,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
 
 class ModifyConsumerGroupResponse(AbstractModel):
-    """ModifyConsumerGroup返回参数结构体
+    r"""ModifyConsumerGroup返回参数结构体
 
     """
 
@@ -12640,7 +12640,7 @@ class ModifyConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12655,7 +12655,7 @@ class ModifyConsumerGroupResponse(AbstractModel):
 
 
 class ModifyInstanceEndpointRequest(AbstractModel):
-    """ModifyInstanceEndpoint请求参数结构体
+    r"""ModifyInstanceEndpoint请求参数结构体
 
     """
 
@@ -12681,7 +12681,7 @@ PUBLIC 公网
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12692,7 +12692,7 @@ PUBLIC 公网
 
     @property
     def Type(self):
-        """接入点类型，
+        r"""接入点类型，
 PUBLIC 公网
         :rtype: str
         """
@@ -12704,7 +12704,7 @@ PUBLIC 公网
 
     @property
     def Bandwidth(self):
-        """公网带宽，Mbps为单位
+        r"""公网带宽，Mbps为单位
         :rtype: int
         """
         return self._Bandwidth
@@ -12715,7 +12715,7 @@ PUBLIC 公网
 
     @property
     def IpRules(self):
-        """公网安全组信息
+        r"""公网安全组信息
         :rtype: list of IpRule
         """
         return self._IpRules
@@ -12726,7 +12726,7 @@ PUBLIC 公网
 
     @property
     def BillingFlow(self):
-        """公网是否按流量计费
+        r"""公网是否按流量计费
         :rtype: bool
         """
         return self._BillingFlow
@@ -12758,7 +12758,7 @@ PUBLIC 公网
 
 
 class ModifyInstanceEndpointResponse(AbstractModel):
-    """ModifyInstanceEndpoint返回参数结构体
+    r"""ModifyInstanceEndpoint返回参数结构体
 
     """
 
@@ -12771,7 +12771,7 @@ class ModifyInstanceEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -12786,7 +12786,7 @@ class ModifyInstanceEndpointResponse(AbstractModel):
 
 
 class ModifyInstanceRequest(AbstractModel):
-    """ModifyInstance请求参数结构体
+    r"""ModifyInstance请求参数结构体
 
     """
 
@@ -12836,7 +12836,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12847,7 +12847,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”
+        r"""实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”
         :rtype: str
         """
         return self._Name
@@ -12858,7 +12858,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多 128 个字符
+        r"""备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -12869,7 +12869,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def SendReceiveRatio(self):
-        """消息发送和接收的比例
+        r"""消息发送和接收的比例
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -12880,7 +12880,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def SkuCode(self):
-        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
+        r"""商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :rtype: str
         """
         return self._SkuCode
@@ -12891,7 +12891,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
+        r"""消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -12906,7 +12906,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ScaledTpsEnabled(self):
-        """是否开启弹性TPS
+        r"""是否开启弹性TPS
         :rtype: bool
         """
         return self._ScaledTpsEnabled
@@ -12917,7 +12917,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def AclEnabled(self):
-        """是否开启ACL
+        r"""是否开启ACL
         :rtype: bool
         """
         return self._AclEnabled
@@ -12928,7 +12928,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MaxTopicNum(self):
-        """最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
+        r"""最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 最小值和默认值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
@@ -12942,7 +12942,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ExtraTopicNum(self):
-        """免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
+        r"""免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
         :rtype: str
         """
         return self._ExtraTopicNum
@@ -12953,7 +12953,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        """是否开启删除保护
+        r"""是否开启删除保护
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -12986,7 +12986,7 @@ class ModifyInstanceRequest(AbstractModel):
 
 
 class ModifyInstanceResponse(AbstractModel):
-    """ModifyInstance返回参数结构体
+    r"""ModifyInstance返回参数结构体
 
     """
 
@@ -12999,7 +12999,7 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13014,7 +13014,7 @@ class ModifyInstanceResponse(AbstractModel):
 
 
 class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
-    """ModifyMQTTInsPublicEndpoint请求参数结构体
+    r"""ModifyMQTTInsPublicEndpoint请求参数结构体
 
     """
 
@@ -13033,7 +13033,7 @@ class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -13044,7 +13044,7 @@ class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """带宽
+        r"""带宽
         :rtype: int
         """
         return self._Bandwidth
@@ -13055,7 +13055,7 @@ class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """公网访问规则
+        r"""公网访问规则
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -13085,7 +13085,7 @@ class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
 
 
 class ModifyMQTTInsPublicEndpointResponse(AbstractModel):
-    """ModifyMQTTInsPublicEndpoint返回参数结构体
+    r"""ModifyMQTTInsPublicEndpoint返回参数结构体
 
     """
 
@@ -13098,7 +13098,7 @@ class ModifyMQTTInsPublicEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13113,7 +13113,7 @@ class ModifyMQTTInsPublicEndpointResponse(AbstractModel):
 
 
 class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
-    """ModifyMQTTInstanceCertBinding请求参数结构体
+    r"""ModifyMQTTInstanceCertBinding请求参数结构体
 
     """
 
@@ -13132,7 +13132,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -13143,7 +13143,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
     @property
     def SSLServerCertId(self):
-        """服务端证书id
+        r"""服务端证书id
         :rtype: str
         """
         return self._SSLServerCertId
@@ -13154,7 +13154,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
     @property
     def SSLCaCertId(self):
-        """CA证书id
+        r"""CA证书id
         :rtype: str
         """
         return self._SSLCaCertId
@@ -13179,7 +13179,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
 
 class ModifyMQTTInstanceCertBindingResponse(AbstractModel):
-    """ModifyMQTTInstanceCertBinding返回参数结构体
+    r"""ModifyMQTTInstanceCertBinding返回参数结构体
 
     """
 
@@ -13192,7 +13192,7 @@ class ModifyMQTTInstanceCertBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13207,7 +13207,7 @@ class ModifyMQTTInstanceCertBindingResponse(AbstractModel):
 
 
 class ModifyMQTTInstanceRequest(AbstractModel):
-    """ModifyMQTTInstance请求参数结构体
+    r"""ModifyMQTTInstance请求参数结构体
 
     """
 
@@ -13226,7 +13226,7 @@ class ModifyMQTTInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -13237,7 +13237,7 @@ class ModifyMQTTInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名称
+        r"""实例名称
         :rtype: str
         """
         return self._Name
@@ -13248,7 +13248,7 @@ class ModifyMQTTInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -13273,7 +13273,7 @@ class ModifyMQTTInstanceRequest(AbstractModel):
 
 
 class ModifyMQTTInstanceResponse(AbstractModel):
-    """ModifyMQTTInstance返回参数结构体
+    r"""ModifyMQTTInstance返回参数结构体
 
     """
 
@@ -13286,7 +13286,7 @@ class ModifyMQTTInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13301,7 +13301,7 @@ class ModifyMQTTInstanceResponse(AbstractModel):
 
 
 class ModifyMQTTTopicRequest(AbstractModel):
-    """ModifyMQTTTopic请求参数结构体
+    r"""ModifyMQTTTopic请求参数结构体
 
     """
 
@@ -13320,7 +13320,7 @@ class ModifyMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -13331,7 +13331,7 @@ class ModifyMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -13342,7 +13342,7 @@ class ModifyMQTTTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -13367,7 +13367,7 @@ class ModifyMQTTTopicRequest(AbstractModel):
 
 
 class ModifyMQTTTopicResponse(AbstractModel):
-    """ModifyMQTTTopic返回参数结构体
+    r"""ModifyMQTTTopic返回参数结构体
 
     """
 
@@ -13380,7 +13380,7 @@ class ModifyMQTTTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13395,7 +13395,7 @@ class ModifyMQTTTopicResponse(AbstractModel):
 
 
 class ModifyMQTTUserRequest(AbstractModel):
-    """ModifyMQTTUser请求参数结构体
+    r"""ModifyMQTTUser请求参数结构体
 
     """
 
@@ -13420,7 +13420,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        r"""集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -13431,7 +13431,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._Username
@@ -13442,7 +13442,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._PermRead
@@ -13453,7 +13453,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产
+        r"""是否开启生产
         :rtype: bool
         """
         return self._PermWrite
@@ -13464,7 +13464,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -13491,7 +13491,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
 
 class ModifyMQTTUserResponse(AbstractModel):
-    """ModifyMQTTUser返回参数结构体
+    r"""ModifyMQTTUser返回参数结构体
 
     """
 
@@ -13504,7 +13504,7 @@ class ModifyMQTTUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13519,7 +13519,7 @@ class ModifyMQTTUserResponse(AbstractModel):
 
 
 class ModifyRoleRequest(AbstractModel):
-    """ModifyRole请求参数结构体
+    r"""ModifyRole请求参数结构体
 
     """
 
@@ -13550,7 +13550,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13561,7 +13561,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口中返回的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
+        r"""角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口中返回的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -13572,7 +13572,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._PermRead
@@ -13583,7 +13583,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产
+        r"""是否开启生产
         :rtype: bool
         """
         return self._PermWrite
@@ -13594,7 +13594,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def PermType(self):
-        """权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
+        r"""权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
         :rtype: str
         """
         return self._PermType
@@ -13605,7 +13605,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Remark
@@ -13616,7 +13616,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def DetailedPerms(self):
-        """Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
+        r"""Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :rtype: list of DetailedRolePerm
         """
         return self._DetailedPerms
@@ -13650,7 +13650,7 @@ class ModifyRoleRequest(AbstractModel):
 
 
 class ModifyRoleResponse(AbstractModel):
-    """ModifyRole返回参数结构体
+    r"""ModifyRole返回参数结构体
 
     """
 
@@ -13663,7 +13663,7 @@ class ModifyRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13678,7 +13678,7 @@ class ModifyRoleResponse(AbstractModel):
 
 
 class ModifyTopicRequest(AbstractModel):
-    """ModifyTopic请求参数结构体
+    r"""ModifyTopic请求参数结构体
 
     """
 
@@ -13703,7 +13703,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13714,7 +13714,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -13725,7 +13725,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def QueueNum(self):
-        """队列数量，取值范围3～16
+        r"""队列数量，取值范围3～16
         :rtype: int
         """
         return self._QueueNum
@@ -13736,7 +13736,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息，最多 128 个字符
+        r"""备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -13747,7 +13747,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MsgTTL(self):
-        """消息保留时长（单位：小时）
+        r"""消息保留时长（单位：小时）
         :rtype: int
         """
         return self._MsgTTL
@@ -13774,7 +13774,7 @@ class ModifyTopicRequest(AbstractModel):
 
 
 class ModifyTopicResponse(AbstractModel):
-    """ModifyTopic返回参数结构体
+    r"""ModifyTopic返回参数结构体
 
     """
 
@@ -13787,7 +13787,7 @@ class ModifyTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -13802,7 +13802,7 @@ class ModifyTopicResponse(AbstractModel):
 
 
 class PacketStatistics(AbstractModel):
-    """MQTT客户端监控
+    r"""MQTT客户端监控
 
     """
 
@@ -13824,7 +13824,7 @@ class PacketStatistics(AbstractModel):
 
     @property
     def MessageType(self):
-        """类型
+        r"""类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13836,7 +13836,7 @@ class PacketStatistics(AbstractModel):
 
     @property
     def Qos(self):
-        """服务质量
+        r"""服务质量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13848,7 +13848,7 @@ class PacketStatistics(AbstractModel):
 
     @property
     def Count(self):
-        """指标值
+        r"""指标值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13874,7 +13874,7 @@ class PacketStatistics(AbstractModel):
 
 
 class PriceTag(AbstractModel):
-    """价格标签信息，一个完整的价格标签包含计价类别和计费项标签。
+    r"""价格标签信息，一个完整的价格标签包含计价类别和计费项标签。
 
     """
 
@@ -13891,7 +13891,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Name(self):
-        """计价名称（枚举值：tps：TPS基础价；stepTps：TPS步长）
+        r"""计价名称（枚举值：tps：TPS基础价；stepTps：TPS步长）
         :rtype: str
         """
         return self._Name
@@ -13902,7 +13902,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Step(self):
-        """计费项对应的步长数
+        r"""计费项对应的步长数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13927,7 +13927,7 @@ class PriceTag(AbstractModel):
 
 
 class ProducerInfo(AbstractModel):
-    """生产者信息
+    r"""生产者信息
 
     """
 
@@ -13977,7 +13977,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID	
+        r"""客户端ID	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13989,7 +13989,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        """客户端IP	
+        r"""客户端IP	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14001,7 +14001,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def Language(self):
-        """客户端语言 
+        r"""客户端语言 
 - JAVA((byte) 0)
 - CPP((byte) 1) 
 - DOTNET((byte) 2) 
@@ -14025,7 +14025,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def Version(self):
-        """客户端版本	
+        r"""客户端版本	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14037,7 +14037,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def LastUpdateTimestamp(self):
-        """最后生产时间，**Unix时间戳（秒）**
+        r"""最后生产时间，**Unix时间戳（秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14049,7 +14049,7 @@ class ProducerInfo(AbstractModel):
 
     @property
     def ChannelProtocol(self):
-        """生产者客户端协议类型，枚举如下：
+        r"""生产者客户端协议类型，枚举如下：
 
 - grpc：GRpc协议
 - remoting：Remoting协议
@@ -14082,7 +14082,7 @@ class ProducerInfo(AbstractModel):
 
 
 class ProductSKU(AbstractModel):
-    """商品售卖信息
+    r"""商品售卖信息
 
     """
 
@@ -14135,7 +14135,7 @@ PLATINUM，铂金版
 
     @property
     def InstanceType(self):
-        """产品类型，
+        r"""产品类型，
 EXPERIMENT，体验版
 BASIC，基础版
 PRO，专业版
@@ -14150,7 +14150,7 @@ PLATINUM，铂金版
 
     @property
     def SkuCode(self):
-        """规格代码
+        r"""规格代码
         :rtype: str
         """
         return self._SkuCode
@@ -14161,7 +14161,7 @@ PLATINUM，铂金版
 
     @property
     def TpsLimit(self):
-        """TPS上限
+        r"""TPS上限
         :rtype: int
         """
         return self._TpsLimit
@@ -14172,7 +14172,7 @@ PLATINUM，铂金版
 
     @property
     def ScaledTpsLimit(self):
-        """弹性TPS上限
+        r"""弹性TPS上限
         :rtype: int
         """
         return self._ScaledTpsLimit
@@ -14183,7 +14183,7 @@ PLATINUM，铂金版
 
     @property
     def TopicNumLimit(self):
-        """主题数量上限默认值
+        r"""主题数量上限默认值
         :rtype: int
         """
         return self._TopicNumLimit
@@ -14194,7 +14194,7 @@ PLATINUM，铂金版
 
     @property
     def GroupNumLimit(self):
-        """消费组数量上限
+        r"""消费组数量上限
         :rtype: int
         """
         return self._GroupNumLimit
@@ -14205,7 +14205,7 @@ PLATINUM，铂金版
 
     @property
     def DefaultRetention(self):
-        """默认消息保留时间，小时为单位
+        r"""默认消息保留时间，小时为单位
         :rtype: int
         """
         return self._DefaultRetention
@@ -14216,7 +14216,7 @@ PLATINUM，铂金版
 
     @property
     def RetentionUpperLimit(self):
-        """可调整消息保留时间上限，小时为单位
+        r"""可调整消息保留时间上限，小时为单位
         :rtype: int
         """
         return self._RetentionUpperLimit
@@ -14227,7 +14227,7 @@ PLATINUM，铂金版
 
     @property
     def RetentionLowerLimit(self):
-        """可调整消息保留时间下限，小时为单位
+        r"""可调整消息保留时间下限，小时为单位
         :rtype: int
         """
         return self._RetentionLowerLimit
@@ -14238,7 +14238,7 @@ PLATINUM，铂金版
 
     @property
     def MaxMessageDelay(self):
-        """延时消息最大时长，小时为单位
+        r"""延时消息最大时长，小时为单位
         :rtype: int
         """
         return self._MaxMessageDelay
@@ -14249,7 +14249,7 @@ PLATINUM，铂金版
 
     @property
     def OnSale(self):
-        """是否可购买
+        r"""是否可购买
         :rtype: bool
         """
         return self._OnSale
@@ -14260,7 +14260,7 @@ PLATINUM，铂金版
 
     @property
     def PriceTags(self):
-        """计费项信息
+        r"""计费项信息
         :rtype: list of PriceTag
         """
         return self._PriceTags
@@ -14271,7 +14271,7 @@ PLATINUM，铂金版
 
     @property
     def TopicNumUpperLimit(self):
-        """主题数量上限默认最大值
+        r"""主题数量上限默认最大值
         :rtype: int
         """
         return self._TopicNumUpperLimit
@@ -14311,7 +14311,7 @@ PLATINUM，铂金版
 
 
 class PublicAccessRule(AbstractModel):
-    """公网访问安全规则
+    r"""公网访问安全规则
 
     """
 
@@ -14333,7 +14333,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def IpRule(self):
-        """ip网段信息
+        r"""ip网段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14345,7 +14345,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def Allow(self):
-        """允许或者拒绝
+        r"""允许或者拒绝
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -14357,7 +14357,7 @@ class PublicAccessRule(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14383,7 +14383,7 @@ class PublicAccessRule(AbstractModel):
 
 
 class RemoveMigratingTopicRequest(AbstractModel):
-    """RemoveMigratingTopic请求参数结构体
+    r"""RemoveMigratingTopic请求参数结构体
 
     """
 
@@ -14403,7 +14403,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :rtype: str
         """
         return self._TaskId
@@ -14414,7 +14414,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :rtype: str
         """
@@ -14426,7 +14426,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -14451,7 +14451,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
 
 class RemoveMigratingTopicResponse(AbstractModel):
-    """RemoveMigratingTopic返回参数结构体
+    r"""RemoveMigratingTopic返回参数结构体
 
     """
 
@@ -14464,7 +14464,7 @@ class RemoveMigratingTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14479,7 +14479,7 @@ class RemoveMigratingTopicResponse(AbstractModel):
 
 
 class ResendDeadLetterMessageRequest(AbstractModel):
-    """ResendDeadLetterMessage请求参数结构体
+    r"""ResendDeadLetterMessage请求参数结构体
 
     """
 
@@ -14498,7 +14498,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -14509,7 +14509,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     @property
     def MessageIds(self):
-        """死信消息ID列表
+        r"""死信消息ID列表
         :rtype: list of str
         """
         return self._MessageIds
@@ -14520,7 +14520,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -14545,7 +14545,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
 
 class ResendDeadLetterMessageResponse(AbstractModel):
-    """ResendDeadLetterMessage返回参数结构体
+    r"""ResendDeadLetterMessage返回参数结构体
 
     """
 
@@ -14562,7 +14562,7 @@ class ResendDeadLetterMessageResponse(AbstractModel):
 
     @property
     def ResendResult(self):
-        """重发消息结果
+        r"""重发消息结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -14574,7 +14574,7 @@ class ResendDeadLetterMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14590,7 +14590,7 @@ class ResendDeadLetterMessageResponse(AbstractModel):
 
 
 class ResetConsumerGroupOffsetRequest(AbstractModel):
-    """ResetConsumerGroupOffset请求参数结构体
+    r"""ResetConsumerGroupOffset请求参数结构体
 
     """
 
@@ -14612,7 +14612,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -14623,7 +14623,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -14634,7 +14634,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ResetTimestamp(self):
-        """重置位点的时间戳（单位：毫秒），指定为 -1 时表示重置到最新位点
+        r"""重置位点的时间戳（单位：毫秒），指定为 -1 时表示重置到最新位点
         :rtype: int
         """
         return self._ResetTimestamp
@@ -14645,7 +14645,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -14671,7 +14671,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
 
 class ResetConsumerGroupOffsetResponse(AbstractModel):
-    """ResetConsumerGroupOffset返回参数结构体
+    r"""ResetConsumerGroupOffset返回参数结构体
 
     """
 
@@ -14684,7 +14684,7 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14699,7 +14699,7 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
 
 class RoleItem(AbstractModel):
-    """角色信息
+    r"""角色信息
 
     """
 
@@ -14740,7 +14740,7 @@ class RoleItem(AbstractModel):
 
     @property
     def RoleName(self):
-        """角色名称
+        r"""角色名称
         :rtype: str
         """
         return self._RoleName
@@ -14751,7 +14751,7 @@ class RoleItem(AbstractModel):
 
     @property
     def PermRead(self):
-        """是否开启消费
+        r"""是否开启消费
         :rtype: bool
         """
         return self._PermRead
@@ -14762,7 +14762,7 @@ class RoleItem(AbstractModel):
 
     @property
     def PermWrite(self):
-        """是否开启生产
+        r"""是否开启生产
         :rtype: bool
         """
         return self._PermWrite
@@ -14773,7 +14773,7 @@ class RoleItem(AbstractModel):
 
     @property
     def AccessKey(self):
-        """Access Key
+        r"""Access Key
         :rtype: str
         """
         return self._AccessKey
@@ -14784,7 +14784,7 @@ class RoleItem(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Secret Key
+        r"""Secret Key
         :rtype: str
         """
         return self._SecretKey
@@ -14795,7 +14795,7 @@ class RoleItem(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -14806,7 +14806,7 @@ class RoleItem(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """角色的创建时间，**Unix时间戳（毫秒）**
+        r"""角色的创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -14817,7 +14817,7 @@ class RoleItem(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """角色的更新时间，**Unix时间戳（毫秒）**
+        r"""角色的更新时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._ModifiedTime
@@ -14828,7 +14828,7 @@ class RoleItem(AbstractModel):
 
     @property
     def PermType(self):
-        """权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        r"""权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
         :rtype: str
         """
         return self._PermType
@@ -14839,7 +14839,7 @@ class RoleItem(AbstractModel):
 
     @property
     def DetailedRolePerms(self):
-        """Topic和Group维度权限配置
+        r"""Topic和Group维度权限配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailedRolePerm
         """
@@ -14877,7 +14877,7 @@ class RoleItem(AbstractModel):
 
 
 class RollbackMigratingTopicStageRequest(AbstractModel):
-    """RollbackMigratingTopicStage请求参数结构体
+    r"""RollbackMigratingTopicStage请求参数结构体
 
     """
 
@@ -14898,7 +14898,7 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+        r"""任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 
         :rtype: str
         """
@@ -14910,7 +14910,7 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :rtype: str
         """
@@ -14922,7 +14922,7 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -14947,7 +14947,7 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
 
 class RollbackMigratingTopicStageResponse(AbstractModel):
-    """RollbackMigratingTopicStage返回参数结构体
+    r"""RollbackMigratingTopicStage返回参数结构体
 
     """
 
@@ -14960,7 +14960,7 @@ class RollbackMigratingTopicStageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -14975,7 +14975,7 @@ class RollbackMigratingTopicStageResponse(AbstractModel):
 
 
 class SmoothMigrationTaskItem(AbstractModel):
-    """平滑迁移任务
+    r"""平滑迁移任务
 
     """
 
@@ -15029,7 +15029,7 @@ Cancelled 已取消
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15041,7 +15041,7 @@ Cancelled 已取消
 
     @property
     def TaskName(self):
-        """任务名称	
+        r"""任务名称	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15053,7 +15053,7 @@ Cancelled 已取消
 
     @property
     def SourceClusterName(self):
-        """源集群名称
+        r"""源集群名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15065,7 +15065,7 @@ Cancelled 已取消
 
     @property
     def InstanceId(self):
-        """目标集群实例ID
+        r"""目标集群实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15077,7 +15077,7 @@ Cancelled 已取消
 
     @property
     def ConnectionType(self):
-        """网络连接类型， 
+        r"""网络连接类型， 
 PUBLIC 公网 
 VPC 私有网络 
 OTHER 其他
@@ -15092,7 +15092,7 @@ OTHER 其他
 
     @property
     def SourceNameServer(self):
-        """源集群NameServer地址	
+        r"""源集群NameServer地址	
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15104,7 +15104,7 @@ OTHER 其他
 
     @property
     def TaskStatus(self):
-        """任务状态:
+        r"""任务状态:
 Configuration 迁移配置,
 SourceConnecting 连接源集群中,
  MetaDataImport 元数据导入,
@@ -15123,7 +15123,7 @@ Cancelled 已取消
 
     @property
     def InstanceVersion(self):
-        """目标集群实例版本，
+        r"""目标集群实例版本，
 4 表示4.x版本
 5 表示5.x版本
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15156,7 +15156,7 @@ Cancelled 已取消
 
 
 class SourceClusterGroupConfig(AbstractModel):
-    """消费组配置信息
+    r"""消费组配置信息
 
     """
 
@@ -15208,7 +15208,7 @@ AlreadyExists 已存在
 
     @property
     def GroupName(self):
-        """消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)数据中获取。
+        r"""消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)数据中获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15220,7 +15220,7 @@ AlreadyExists 已存在
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15232,7 +15232,7 @@ AlreadyExists 已存在
 
     @property
     def Imported(self):
-        """是否已导入，作为入参时无效
+        r"""是否已导入，作为入参时无效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15244,7 +15244,7 @@ AlreadyExists 已存在
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        r"""命名空间，仅4.x集群有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15256,7 +15256,7 @@ AlreadyExists 已存在
 
     @property
     def ImportStatus(self):
-        """导入状态
+        r"""导入状态
 Unknown 未知
 Success 成功
 Failure 失败
@@ -15274,7 +15274,7 @@ AlreadyExists 已存在
 
     @property
     def NamespaceV4(self):
-        """4.x的命名空间，出参使用
+        r"""4.x的命名空间，出参使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15286,7 +15286,7 @@ AlreadyExists 已存在
 
     @property
     def GroupNameV4(self):
-        """4.x的消费组名，出参使用
+        r"""4.x的消费组名，出参使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15298,7 +15298,7 @@ AlreadyExists 已存在
 
     @property
     def FullNamespaceV4(self):
-        """4.x的完整命名空间，出参使用
+        r"""4.x的完整命名空间，出参使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15310,7 +15310,7 @@ AlreadyExists 已存在
 
     @property
     def ConsumeMessageOrderly(self):
-        """是否为顺序投递，5.0有效
+        r"""是否为顺序投递，5.0有效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15342,7 +15342,7 @@ AlreadyExists 已存在
 
 
 class SourceClusterTopicConfig(AbstractModel):
-    """源集群主题配置
+    r"""源集群主题配置
 
     """
 
@@ -15401,7 +15401,7 @@ Failure 失败
 
     @property
     def TopicName(self):
-        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+        r"""主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._TopicName
@@ -15412,7 +15412,7 @@ Failure 失败
 
     @property
     def TopicType(self):
-        """主题类型，
+        r"""主题类型，
 5.x版本
 UNSPECIFIED 未指定
 NORMAL 普通消息
@@ -15436,7 +15436,7 @@ DelayScheduled 延时消息
 
     @property
     def QueueNum(self):
-        """队列数
+        r"""队列数
         :rtype: int
         """
         return self._QueueNum
@@ -15447,7 +15447,7 @@ DelayScheduled 延时消息
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -15458,7 +15458,7 @@ DelayScheduled 延时消息
 
     @property
     def Imported(self):
-        """是否已导入，作为入参时无效
+        r"""是否已导入，作为入参时无效
         :rtype: bool
         """
         return self._Imported
@@ -15469,7 +15469,7 @@ DelayScheduled 延时消息
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        r"""命名空间，仅4.x集群有效
         :rtype: str
         """
         return self._Namespace
@@ -15480,7 +15480,7 @@ DelayScheduled 延时消息
 
     @property
     def ImportStatus(self):
-        """导入状态，
+        r"""导入状态，
 Unknown 未知，
 AlreadyExists 已存在，
 Success 成功，
@@ -15497,7 +15497,7 @@ Failure 失败
 
     @property
     def NamespaceV4(self):
-        """4.x的命名空间，出参使用
+        r"""4.x的命名空间，出参使用
         :rtype: str
         """
         return self._NamespaceV4
@@ -15508,7 +15508,7 @@ Failure 失败
 
     @property
     def TopicNameV4(self):
-        """4.x的主题名，出参使用
+        r"""4.x的主题名，出参使用
         :rtype: str
         """
         return self._TopicNameV4
@@ -15519,7 +15519,7 @@ Failure 失败
 
     @property
     def FullNamespaceV4(self):
-        """4.x的完整命名空间，出参使用
+        r"""4.x的完整命名空间，出参使用
         :rtype: str
         """
         return self._FullNamespaceV4
@@ -15551,7 +15551,7 @@ Failure 失败
 
 
 class StatisticsReport(AbstractModel):
-    """MQTT客户端数据流量统计
+    r"""MQTT客户端数据流量统计
 
     """
 
@@ -15569,7 +15569,7 @@ class StatisticsReport(AbstractModel):
 
     @property
     def Bytes(self):
-        """字节数
+        r"""字节数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15581,7 +15581,7 @@ class StatisticsReport(AbstractModel):
 
     @property
     def Items(self):
-        """监控指标
+        r"""监控指标
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PacketStatistics
         """
@@ -15611,7 +15611,7 @@ class StatisticsReport(AbstractModel):
 
 
 class SubscriptionData(AbstractModel):
-    """主题与消费组的订阅关系数据
+    r"""主题与消费组的订阅关系数据
 
     """
 
@@ -15694,7 +15694,7 @@ CLUSTERING 集群模式;
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15706,7 +15706,7 @@ CLUSTERING 集群模式;
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15718,7 +15718,7 @@ CLUSTERING 集群模式;
 
     @property
     def TopicType(self):
-        """主题类型
+        r"""主题类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15730,7 +15730,7 @@ CLUSTERING 集群模式;
 
     @property
     def TopicQueueNum(self):
-        """单个节点上主题队列数
+        r"""单个节点上主题队列数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15742,7 +15742,7 @@ CLUSTERING 集群模式;
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        r"""消费组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15754,7 +15754,7 @@ CLUSTERING 集群模式;
 
     @property
     def IsOnline(self):
-        """是否在线
+        r"""是否在线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15766,7 +15766,7 @@ CLUSTERING 集群模式;
 
     @property
     def ConsumeType(self):
-        """消费类型，枚举值如下：
+        r"""消费类型，枚举值如下：
 
 - PULL：PULL 消费类型
 - PUSH：PUSH 消费类型
@@ -15782,7 +15782,7 @@ CLUSTERING 集群模式;
 
     @property
     def SubString(self):
-        """订阅规则
+        r"""订阅规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15794,7 +15794,7 @@ CLUSTERING 集群模式;
 
     @property
     def ExpressionType(self):
-        """过滤类型
+        r"""过滤类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15806,7 +15806,7 @@ CLUSTERING 集群模式;
 
     @property
     def Consistency(self):
-        """订阅一致性，枚举如下：
+        r"""订阅一致性，枚举如下：
 
 - 0: 订阅一致
 - 1: 订阅不一致
@@ -15821,7 +15821,7 @@ CLUSTERING 集群模式;
 
     @property
     def ConsumerLag(self):
-        """消费堆积
+        r"""消费堆积
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15833,7 +15833,7 @@ CLUSTERING 集群模式;
 
     @property
     def LastUpdateTime(self):
-        """最后消费进度更新时间，**Unix时间戳（毫秒）**
+        r"""最后消费进度更新时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15845,7 +15845,7 @@ CLUSTERING 集群模式;
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数
+        r"""最大重试次数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15857,7 +15857,7 @@ CLUSTERING 集群模式;
 
     @property
     def ConsumeMessageOrderly(self):
-        """是否顺序消费
+        r"""是否顺序消费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15869,7 +15869,7 @@ CLUSTERING 集群模式;
 
     @property
     def MessageModel(self):
-        """消费模式: 
+        r"""消费模式: 
 BROADCASTING 广播模式;
 CLUSTERING 集群模式;
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15883,7 +15883,7 @@ CLUSTERING 集群模式;
 
     @property
     def ClientSubscriptionInfos(self):
-        """订阅不一致的客户端列表
+        r"""订阅不一致的客户端列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClientSubscriptionInfo
         """
@@ -15927,7 +15927,7 @@ CLUSTERING 集群模式;
 
 
 class Tag(AbstractModel):
-    """标签数据
+    r"""标签数据
 
     """
 
@@ -15945,7 +15945,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签名称
+        r"""标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15957,7 +15957,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15982,7 +15982,7 @@ class Tag(AbstractModel):
 
 
 class TagFilter(AbstractModel):
-    """标签过滤器
+    r"""标签过滤器
 
     """
 
@@ -15998,7 +15998,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键名称
+        r"""标签键名称
         :rtype: str
         """
         return self._TagKey
@@ -16009,7 +16009,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValues(self):
-        """标签值列表
+        r"""标签值列表
         :rtype: list of str
         """
         return self._TagValues
@@ -16033,7 +16033,7 @@ class TagFilter(AbstractModel):
 
 
 class TopicConsumeStats(AbstractModel):
-    """主题消费进度
+    r"""主题消费进度
 
     """
 
@@ -16067,7 +16067,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -16078,7 +16078,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def TopicType(self):
-        """主题类型，枚举值如下：
+        r"""主题类型，枚举值如下：
 
 - UNSPECIFIED：未指定
 - NORMAL：普通消息
@@ -16095,7 +16095,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def QueueNum(self):
-        """单节点主题队列数量
+        r"""单节点主题队列数量
         :rtype: int
         """
         return self._QueueNum
@@ -16106,7 +16106,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def ConsumerLag(self):
-        """消费堆积
+        r"""消费堆积
         :rtype: int
         """
         return self._ConsumerLag
@@ -16117,7 +16117,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def SubString(self):
-        """订阅规则，`*`表示订阅全部TAG
+        r"""订阅规则，`*`表示订阅全部TAG
         :rtype: str
         """
         return self._SubString
@@ -16128,7 +16128,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """最后消费进度更新时间，**Unix时间戳（毫秒）**
+        r"""最后消费进度更新时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._LastUpdateTime
@@ -16156,7 +16156,7 @@ class TopicConsumeStats(AbstractModel):
 
 
 class TopicItem(AbstractModel):
-    """列表上的主题信息
+    r"""列表上的主题信息
 
     """
 
@@ -16204,7 +16204,7 @@ TRANSACTION:事务消息
 
     @property
     def InstanceId(self):
-        """实例ID
+        r"""实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -16215,7 +16215,7 @@ TRANSACTION:事务消息
 
     @property
     def Topic(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._Topic
@@ -16226,7 +16226,7 @@ TRANSACTION:事务消息
 
     @property
     def TopicType(self):
-        """主题类型
+        r"""主题类型
 NORMAL:普通消息,
 FIFO:顺序消息,
 DELAY:延时消息,
@@ -16241,7 +16241,7 @@ TRANSACTION:事务消息
 
     @property
     def QueueNum(self):
-        """队列数量
+        r"""队列数量
         :rtype: int
         """
         return self._QueueNum
@@ -16252,7 +16252,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        """备注信息
+        r"""备注信息
         :rtype: str
         """
         return self._Remark
@@ -16263,7 +16263,7 @@ TRANSACTION:事务消息
 
     @property
     def ClusterIdV4(self):
-        """4.x的集群id
+        r"""4.x的集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16275,7 +16275,7 @@ TRANSACTION:事务消息
 
     @property
     def NamespaceV4(self):
-        """4.x的命名空间
+        r"""4.x的命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16287,7 +16287,7 @@ TRANSACTION:事务消息
 
     @property
     def TopicV4(self):
-        """4.x的主题名称
+        r"""4.x的主题名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16299,7 +16299,7 @@ TRANSACTION:事务消息
 
     @property
     def FullNamespaceV4(self):
-        """4.x的完整命名空间
+        r"""4.x的完整命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16311,7 +16311,7 @@ TRANSACTION:事务消息
 
     @property
     def MsgTTL(self):
-        """消息保留时长
+        r"""消息保留时长
         :rtype: int
         """
         return self._MsgTTL
@@ -16343,7 +16343,7 @@ TRANSACTION:事务消息
 
 
 class TopicStageChangeResult(AbstractModel):
-    """迁移主题修改状态后的结果
+    r"""迁移主题修改状态后的结果
 
     """
 
@@ -16362,7 +16362,7 @@ class TopicStageChangeResult(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        r"""主题名称
         :rtype: str
         """
         return self._TopicName
@@ -16373,7 +16373,7 @@ class TopicStageChangeResult(AbstractModel):
 
     @property
     def Success(self):
-        """是否成功
+        r"""是否成功
         :rtype: bool
         """
         return self._Success
@@ -16384,7 +16384,7 @@ class TopicStageChangeResult(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x有效
+        r"""命名空间，仅4.x有效
         :rtype: str
         """
         return self._Namespace
@@ -16409,7 +16409,7 @@ class TopicStageChangeResult(AbstractModel):
 
 
 class VpcInfo(AbstractModel):
-    """VPC信息
+    r"""VPC信息
 
     """
 
@@ -16425,7 +16425,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -16436,7 +16436,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        r"""子网ID
         :rtype: str
         """
         return self._SubnetId

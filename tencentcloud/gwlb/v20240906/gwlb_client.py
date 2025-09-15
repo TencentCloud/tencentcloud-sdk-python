@@ -27,7 +27,7 @@ class GwlbClient(AbstractClient):
 
 
     def AssociateTargetGroups(self, request):
-        """本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡。
+        r"""本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for AssociateTargetGroups.
@@ -51,7 +51,7 @@ class GwlbClient(AbstractClient):
 
 
     def CreateGatewayLoadBalancer(self, request):
-        """本接口(CreateGatewayLoadBalancer)用来创建网关负载均衡实例。为了使用网关负载均衡服务，您必须购买一个或多个网关负载均衡实例。成功调用该接口后，会返回网关负载均衡实例的唯一 ID。
+        r"""本接口(CreateGatewayLoadBalancer)用来创建网关负载均衡实例。为了使用网关负载均衡服务，您必须购买一个或多个网关负载均衡实例。成功调用该接口后，会返回网关负载均衡实例的唯一 ID。
         注意：单个账号在每个地域的默认购买配额为：10个。
         本接口为异步接口，接口成功返回后，可使用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询负载均衡实例的状态。
 
@@ -76,7 +76,7 @@ class GwlbClient(AbstractClient):
 
 
     def CreateTargetGroup(self, request):
-        """创建目标组。
+        r"""创建目标组。
 
         :param request: Request instance for CreateTargetGroup.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.CreateTargetGroupRequest`
@@ -99,7 +99,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeleteGatewayLoadBalancer(self, request):
-        """DeleteGatewayLoadBalancer 接口用以删除指定的一个或多个网关负载均衡实例。成功删除后，会把网关负载均衡实例与后端服务解绑。
+        r"""DeleteGatewayLoadBalancer 接口用以删除指定的一个或多个网关负载均衡实例。成功删除后，会把网关负载均衡实例与后端服务解绑。
         本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteGatewayLoadBalancer.
@@ -123,7 +123,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeleteTargetGroups(self, request):
-        """删除目标组
+        r"""删除目标组
 
         :param request: Request instance for DeleteTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DeleteTargetGroupsRequest`
@@ -146,7 +146,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeregisterTargetGroupInstances(self, request):
-        """从目标组中解绑服务器。
+        r"""从目标组中解绑服务器。
 
         :param request: Request instance for DeregisterTargetGroupInstances.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DeregisterTargetGroupInstancesRequest`
@@ -169,7 +169,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeGatewayLoadBalancers(self, request):
-        """查询一个地域的网关负载均衡实例列表。
+        r"""查询一个地域的网关负载均衡实例列表。
 
         :param request: Request instance for DescribeGatewayLoadBalancers.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeGatewayLoadBalancersRequest`
@@ -192,7 +192,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstanceStatus(self, request):
-        """查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
+        r"""查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
 
         :param request: Request instance for DescribeTargetGroupInstanceStatus.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupInstanceStatusRequest`
@@ -215,7 +215,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstances(self, request):
-        """获取目标组绑定的服务器信息。
+        r"""获取目标组绑定的服务器信息。
 
         :param request: Request instance for DescribeTargetGroupInstances.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupInstancesRequest`
@@ -238,7 +238,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupList(self, request):
-        """获取目标组列表
+        r"""获取目标组列表
 
         :param request: Request instance for DescribeTargetGroupList.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupListRequest`
@@ -261,7 +261,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroups(self, request):
-        """查询目标组信息
+        r"""查询目标组信息
 
         :param request: Request instance for DescribeTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupsRequest`
@@ -284,7 +284,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """本接口用于查询异步任务的执行状态，对于非查询类的接口（创建/删除负载均衡实例等），在接口调用成功后，都需要使用本接口查询任务最终是否执行成功。
+        r"""本接口用于查询异步任务的执行状态，对于非查询类的接口（创建/删除负载均衡实例等），在接口调用成功后，都需要使用本接口查询任务最终是否执行成功。
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTaskStatusRequest`
@@ -307,7 +307,7 @@ class GwlbClient(AbstractClient):
 
 
     def DisassociateTargetGroups(self, request):
-        """解除负载均衡和目标组的关联关系。
+        r"""解除负载均衡和目标组的关联关系。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for DisassociateTargetGroups.
@@ -331,7 +331,7 @@ class GwlbClient(AbstractClient):
 
 
     def InquirePriceCreateGatewayLoadBalancer(self, request):
-        """InquirePriceCreateGatewayLoadBalancer接口查询创建网关负载均衡的价格。
+        r"""InquirePriceCreateGatewayLoadBalancer接口查询创建网关负载均衡的价格。
 
         :param request: Request instance for InquirePriceCreateGatewayLoadBalancer.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.InquirePriceCreateGatewayLoadBalancerRequest`
@@ -354,7 +354,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyGatewayLoadBalancerAttribute(self, request):
-        """ModifyGatewayLoadBalancerAttribute 接口用于修改负载均衡实例的属性。支持修改负载均衡实例的名称、带宽上限。
+        r"""ModifyGatewayLoadBalancerAttribute 接口用于修改负载均衡实例的属性。支持修改负载均衡实例的名称、带宽上限。
 
         :param request: Request instance for ModifyGatewayLoadBalancerAttribute.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyGatewayLoadBalancerAttributeRequest`
@@ -377,7 +377,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyTargetGroupAttribute(self, request):
-        """修改目标组的名称、健康探测等属性。
+        r"""修改目标组的名称、健康探测等属性。
 
         :param request: Request instance for ModifyTargetGroupAttribute.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyTargetGroupAttributeRequest`
@@ -400,7 +400,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesWeight(self, request):
-        """修改目标组的服务器权重。
+        r"""修改目标组的服务器权重。
 
         :param request: Request instance for ModifyTargetGroupInstancesWeight.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyTargetGroupInstancesWeightRequest`
@@ -423,7 +423,7 @@ class GwlbClient(AbstractClient):
 
 
     def RegisterTargetGroupInstances(self, request):
-        """注册服务器到目标组。
+        r"""注册服务器到目标组。
 
         :param request: Request instance for RegisterTargetGroupInstances.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.RegisterTargetGroupInstancesRequest`

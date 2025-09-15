@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountTipoffAccessRequest(AbstractModel):
-    """AccountTipoffAccess请求参数结构体
+    r"""AccountTipoffAccess请求参数结构体
 
     """
 
@@ -50,7 +50,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def ReportedAccount(self):
-        """被举报账号，长度低于 128 个字符
+        r"""被举报账号，长度低于 128 个字符
         :rtype: str
         """
         return self._ReportedAccount
@@ -61,7 +61,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def ReportedAccountType(self):
-        """被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
+        r"""被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
         :rtype: int
         """
         return self._ReportedAccountType
@@ -72,7 +72,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def EvilType(self):
-        """被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
+        r"""被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
         :rtype: int
         """
         return self._EvilType
@@ -83,7 +83,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def SenderAccount(self):
-        """举报者账号，长度低于 128 个字符
+        r"""举报者账号，长度低于 128 个字符
         :rtype: str
         """
         return self._SenderAccount
@@ -94,7 +94,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def SenderAccountType(self):
-        """举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
+        r"""举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
         :rtype: int
         """
         return self._SenderAccountType
@@ -105,7 +105,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def SenderIP(self):
-        """举报者IP地址
+        r"""举报者IP地址
         :rtype: str
         """
         return self._SenderIP
@@ -116,7 +116,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     @property
     def EvilContent(self):
-        """包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
+        r"""包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
         :rtype: str
         """
         return self._EvilContent
@@ -145,7 +145,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
 
 class AccountTipoffAccessResponse(AbstractModel):
-    """AccountTipoffAccess返回参数结构体
+    r"""AccountTipoffAccess返回参数结构体
 
     """
 
@@ -162,7 +162,7 @@ class AccountTipoffAccessResponse(AbstractModel):
 
     @property
     def Data(self):
-        """举报接口响应数据
+        r"""举报接口响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`
         """
@@ -174,7 +174,7 @@ class AccountTipoffAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -192,7 +192,7 @@ class AccountTipoffAccessResponse(AbstractModel):
 
 
 class DescribeTextLibRequest(AbstractModel):
-    """DescribeTextLib请求参数结构体
+    r"""DescribeTextLib请求参数结构体
 
     """
 
@@ -205,7 +205,7 @@ class DescribeTextLibRequest(AbstractModel):
 
     @property
     def StrategyType(self):
-        """内容类型 text: 1; image: 2; audio: 3; video: 4
+        r"""内容类型 text: 1; image: 2; audio: 3; video: 4
         :rtype: int
         """
         return self._StrategyType
@@ -228,7 +228,7 @@ class DescribeTextLibRequest(AbstractModel):
 
 
 class DescribeTextLibResponse(AbstractModel):
-    """DescribeTextLib返回参数结构体
+    r"""DescribeTextLib返回参数结构体
 
     """
 
@@ -244,7 +244,7 @@ class DescribeTextLibResponse(AbstractModel):
 
     @property
     def TextLib(self):
-        """文本库id和name列表
+        r"""文本库id和name列表
         :rtype: list of TextLib
         """
         return self._TextLib
@@ -255,7 +255,7 @@ class DescribeTextLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -276,7 +276,7 @@ class DescribeTextLibResponse(AbstractModel):
 
 
 class DescribeTextStatRequest(AbstractModel):
-    """DescribeTextStat请求参数结构体
+    r"""DescribeTextStat请求参数结构体
 
     """
 
@@ -292,7 +292,7 @@ class DescribeTextStatRequest(AbstractModel):
 
     @property
     def AuditType(self):
-        """审核类型 1: 机器审核; 2: 人工审核
+        r"""审核类型 1: 机器审核; 2: 人工审核
         :rtype: int
         """
         return self._AuditType
@@ -303,7 +303,7 @@ class DescribeTextStatRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件
+        r"""查询条件
         :rtype: list of Filters
         """
         return self._Filters
@@ -332,7 +332,7 @@ class DescribeTextStatRequest(AbstractModel):
 
 
 class DescribeTextStatResponse(AbstractModel):
-    """DescribeTextStat返回参数结构体
+    r"""DescribeTextStat返回参数结构体
 
     """
 
@@ -355,7 +355,7 @@ class DescribeTextStatResponse(AbstractModel):
 
     @property
     def Overview(self):
-        """识别结果统计
+        r"""识别结果统计
         :rtype: :class:`tencentcloud.tms.v20200713.models.Overview`
         """
         return self._Overview
@@ -366,7 +366,7 @@ class DescribeTextStatResponse(AbstractModel):
 
     @property
     def TrendCount(self):
-        """识别量统计
+        r"""识别量统计
         :rtype: list of TrendCount
         """
         return self._TrendCount
@@ -377,7 +377,7 @@ class DescribeTextStatResponse(AbstractModel):
 
     @property
     def EvilCount(self):
-        """违规数据分布
+        r"""违规数据分布
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EvilCount
         """
@@ -389,7 +389,7 @@ class DescribeTextStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -419,7 +419,7 @@ class DescribeTextStatResponse(AbstractModel):
 
 
 class DetailResults(AbstractModel):
-    """文本返回的详细结果
+    r"""文本返回的详细结果
 
     """
 
@@ -458,7 +458,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :rtype: str
         """
@@ -470,7 +470,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作。
+        r"""建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -483,7 +483,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Keywords(self):
-        """该标签下命中的关键词
+        r"""该标签下命中的关键词
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -495,7 +495,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Score(self):
-        """该标签模型命中的分值
+        r"""该标签模型命中的分值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -507,7 +507,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibType(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -519,7 +519,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibId(self):
-        """仅当Label为Custom自定义关键词时有效，表示自定义库id
+        r"""仅当Label为Custom自定义关键词时有效，表示自定义库id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -531,7 +531,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibName(self):
-        """仅当Labe为Custom自定义关键词时有效，表示自定义库名称
+        r"""仅当Labe为Custom自定义关键词时有效，表示自定义库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -561,7 +561,7 @@ class DetailResults(AbstractModel):
 
 
 class Device(AbstractModel):
-    """设备信息
+    r"""设备信息
 
     """
 
@@ -592,7 +592,7 @@ class Device(AbstractModel):
 
     @property
     def IP(self):
-        """用户IP
+        r"""用户IP
         :rtype: str
         """
         return self._IP
@@ -603,7 +603,7 @@ class Device(AbstractModel):
 
     @property
     def Mac(self):
-        """Mac地址
+        r"""Mac地址
         :rtype: str
         """
         return self._Mac
@@ -614,7 +614,7 @@ class Device(AbstractModel):
 
     @property
     def TokenId(self):
-        """设备指纹Token
+        r"""设备指纹Token
         :rtype: str
         """
         return self._TokenId
@@ -625,7 +625,7 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备指纹ID
+        r"""设备指纹ID
         :rtype: str
         """
         return self._DeviceId
@@ -636,7 +636,7 @@ class Device(AbstractModel):
 
     @property
     def IMEI(self):
-        """设备序列号
+        r"""设备序列号
         :rtype: str
         """
         return self._IMEI
@@ -647,7 +647,7 @@ class Device(AbstractModel):
 
     @property
     def IDFA(self):
-        """IOS设备，Identifier For Advertising（广告标识符）
+        r"""IOS设备，Identifier For Advertising（广告标识符）
         :rtype: str
         """
         return self._IDFA
@@ -658,7 +658,7 @@ class Device(AbstractModel):
 
     @property
     def IDFV(self):
-        """IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        r"""IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
         :rtype: str
         """
         return self._IDFV
@@ -687,7 +687,7 @@ class Device(AbstractModel):
 
 
 class EvilCount(AbstractModel):
-    """违规数据分布
+    r"""违规数据分布
 
     """
 
@@ -703,7 +703,7 @@ class EvilCount(AbstractModel):
 
     @property
     def EvilType(self):
-        """----非必选，该参数功能暂未对外开放
+        r"""----非必选，该参数功能暂未对外开放
         :rtype: str
         """
         return self._EvilType
@@ -714,7 +714,7 @@ class EvilCount(AbstractModel):
 
     @property
     def Count(self):
-        """分布类型总量
+        r"""分布类型总量
         :rtype: int
         """
         return self._Count
@@ -738,7 +738,7 @@ class EvilCount(AbstractModel):
 
 
 class Filters(AbstractModel):
-    """文本过滤条件
+    r"""文本过滤条件
 
     """
 
@@ -757,7 +757,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        """查询字段：
+        r"""查询字段：
 策略BizType
 子账号SubUin
 日期区间DateRange
@@ -771,7 +771,7 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
-        """查询值
+        r"""查询值
         :rtype: list of str
         """
         return self._Values
@@ -795,7 +795,7 @@ class Filters(AbstractModel):
 
 
 class Overview(AbstractModel):
-    """识别结果统计
+    r"""识别结果统计
 
     """
 
@@ -829,7 +829,7 @@ class Overview(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总调用量
+        r"""总调用量
         :rtype: int
         """
         return self._TotalCount
@@ -840,7 +840,7 @@ class Overview(AbstractModel):
 
     @property
     def TotalHour(self):
-        """总调用时长
+        r"""总调用时长
         :rtype: int
         """
         return self._TotalHour
@@ -851,7 +851,7 @@ class Overview(AbstractModel):
 
     @property
     def PassCount(self):
-        """通过量
+        r"""通过量
         :rtype: int
         """
         return self._PassCount
@@ -862,7 +862,7 @@ class Overview(AbstractModel):
 
     @property
     def PassHour(self):
-        """通过时长
+        r"""通过时长
         :rtype: int
         """
         return self._PassHour
@@ -873,7 +873,7 @@ class Overview(AbstractModel):
 
     @property
     def EvilCount(self):
-        """违规量
+        r"""违规量
         :rtype: int
         """
         return self._EvilCount
@@ -884,7 +884,7 @@ class Overview(AbstractModel):
 
     @property
     def EvilHour(self):
-        """违规时长
+        r"""违规时长
         :rtype: int
         """
         return self._EvilHour
@@ -895,7 +895,7 @@ class Overview(AbstractModel):
 
     @property
     def SuspectCount(self):
-        """疑似违规量
+        r"""疑似违规量
         :rtype: int
         """
         return self._SuspectCount
@@ -906,7 +906,7 @@ class Overview(AbstractModel):
 
     @property
     def SuspectHour(self):
-        """疑似违规时长
+        r"""疑似违规时长
         :rtype: int
         """
         return self._SuspectHour
@@ -936,7 +936,7 @@ class Overview(AbstractModel):
 
 
 class RiskDetails(AbstractModel):
-    """账号风险检测结果
+    r"""账号风险检测结果
 
     """
 
@@ -952,7 +952,7 @@ class RiskDetails(AbstractModel):
 
     @property
     def Label(self):
-        """风险类别，RiskAccount，RiskIP, RiskIMEI
+        r"""风险类别，RiskAccount，RiskIP, RiskIMEI
         :rtype: str
         """
         return self._Label
@@ -963,7 +963,7 @@ class RiskDetails(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级，1:疑似，2：恶意
+        r"""风险等级，1:疑似，2：恶意
         :rtype: int
         """
         return self._Level
@@ -987,7 +987,7 @@ class RiskDetails(AbstractModel):
 
 
 class TextLib(AbstractModel):
-    """自定义库列表
+    r"""自定义库列表
 
     """
 
@@ -1003,7 +1003,7 @@ class TextLib(AbstractModel):
 
     @property
     def LibId(self):
-        """库id
+        r"""库id
         :rtype: int
         """
         return self._LibId
@@ -1014,7 +1014,7 @@ class TextLib(AbstractModel):
 
     @property
     def LibName(self):
-        """库名
+        r"""库名
         :rtype: str
         """
         return self._LibName
@@ -1038,7 +1038,7 @@ class TextLib(AbstractModel):
 
 
 class TextModerationRequest(AbstractModel):
-    """TextModeration请求参数结构体
+    r"""TextModeration请求参数结构体
 
     """
 
@@ -1063,7 +1063,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """文本内容Base64编码。限制原文长度不能超过10000个unicode字符
+        r"""文本内容Base64编码。限制原文长度不能超过10000个unicode字符
         :rtype: str
         """
         return self._Content
@@ -1074,7 +1074,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+        r"""该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
         :rtype: str
         """
         return self._BizType
@@ -1085,7 +1085,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """数据ID，英文字母、下划线、-组成，不超过64个字符
+        r"""数据ID，英文字母、下划线、-组成，不超过64个字符
         :rtype: str
         """
         return self._DataId
@@ -1096,7 +1096,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        """账号相关信息字段，填入后可识别违规风险账号
+        r"""账号相关信息字段，填入后可识别违规风险账号
         :rtype: :class:`tencentcloud.tms.v20200713.models.User`
         """
         return self._User
@@ -1107,7 +1107,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        """设备相关信息字段，填入后可识别违规风险设备
+        r"""设备相关信息字段，填入后可识别违规风险设备
         :rtype: :class:`tencentcloud.tms.v20200713.models.Device`
         """
         return self._Device
@@ -1138,7 +1138,7 @@ class TextModerationRequest(AbstractModel):
 
 
 class TextModerationResponse(AbstractModel):
-    """TextModeration返回参数结构体
+    r"""TextModeration返回参数结构体
 
     """
 
@@ -1189,7 +1189,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def BizType(self):
-        """您在入参时所填入的Biztype参数
+        r"""您在入参时所填入的Biztype参数
         :rtype: str
         """
         return self._BizType
@@ -1200,7 +1200,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def EvilFlag(self):
-        """数据是否属于恶意类型，0：正常 1：可疑
+        r"""数据是否属于恶意类型，0：正常 1：可疑
         :rtype: int
         """
         return self._EvilFlag
@@ -1211,7 +1211,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Label(self):
-        """恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
+        r"""恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
         :rtype: str
         """
         return self._Label
@@ -1222,7 +1222,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议您拿到判断结果后的执行操作
+        r"""建议您拿到判断结果后的执行操作
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :rtype: str
         """
@@ -1234,7 +1234,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Keywords(self):
-        """文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
+        r"""文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -1247,7 +1247,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Score(self):
-        """机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
+        r"""机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :rtype: int
         """
@@ -1259,7 +1259,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DetailResults(self):
-        """接口识别样本后返回的详细结果
+        r"""接口识别样本后返回的详细结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailResults
         """
@@ -1271,7 +1271,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RiskDetails(self):
-        """接口识别样本中存在违规账号风险的检测结果
+        r"""接口识别样本中存在违规账号风险的检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskDetails
         """
@@ -1283,7 +1283,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
-        """扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
+        r"""扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1295,7 +1295,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
-        """请求参数中的DataId
+        r"""请求参数中的DataId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1307,7 +1307,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1342,7 +1342,7 @@ class TextModerationResponse(AbstractModel):
 
 
 class TipoffResponse(AbstractModel):
-    """举报接口响应数据
+    r"""举报接口响应数据
 
     """
 
@@ -1358,7 +1358,7 @@ class TipoffResponse(AbstractModel):
 
     @property
     def ResultCode(self):
-        """举报结果， "0-举报数据提交成功  99-举报数据提交失败"
+        r"""举报结果， "0-举报数据提交成功  99-举报数据提交失败"
         :rtype: int
         """
         return self._ResultCode
@@ -1369,7 +1369,7 @@ class TipoffResponse(AbstractModel):
 
     @property
     def ResultMsg(self):
-        """结果描述
+        r"""结果描述
         :rtype: str
         """
         return self._ResultMsg
@@ -1393,7 +1393,7 @@ class TipoffResponse(AbstractModel):
 
 
 class TrendCount(AbstractModel):
-    """识别量统计
+    r"""识别量统计
 
     """
 
@@ -1439,7 +1439,7 @@ class TrendCount(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总调用量
+        r"""总调用量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1451,7 +1451,7 @@ class TrendCount(AbstractModel):
 
     @property
     def TotalHour(self):
-        """总调用时长
+        r"""总调用时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1463,7 +1463,7 @@ class TrendCount(AbstractModel):
 
     @property
     def PassCount(self):
-        """通过量
+        r"""通过量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1475,7 +1475,7 @@ class TrendCount(AbstractModel):
 
     @property
     def PassHour(self):
-        """通过时长
+        r"""通过时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1487,7 +1487,7 @@ class TrendCount(AbstractModel):
 
     @property
     def EvilCount(self):
-        """违规量
+        r"""违规量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1499,7 +1499,7 @@ class TrendCount(AbstractModel):
 
     @property
     def EvilHour(self):
-        """违规时长
+        r"""违规时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1511,7 +1511,7 @@ class TrendCount(AbstractModel):
 
     @property
     def SuspectCount(self):
-        """疑似违规量
+        r"""疑似违规量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1523,7 +1523,7 @@ class TrendCount(AbstractModel):
 
     @property
     def SuspectHour(self):
-        """疑似违规时长
+        r"""疑似违规时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1535,7 +1535,7 @@ class TrendCount(AbstractModel):
 
     @property
     def Date(self):
-        """日期
+        r"""日期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1567,7 +1567,7 @@ class TrendCount(AbstractModel):
 
 
 class User(AbstractModel):
-    """用户相关信息
+    r"""用户相关信息
 
     """
 
@@ -1598,7 +1598,7 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
-        """用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        r"""用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :rtype: str
         """
         return self._UserId
@@ -1609,7 +1609,7 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
-        """用户昵称
+        r"""用户昵称
         :rtype: str
         """
         return self._Nickname
@@ -1620,7 +1620,7 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
-        """账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        r"""账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
         :rtype: int
         """
         return self._AccountType
@@ -1631,7 +1631,7 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
-        """性别 默认0 未知 1 男性 2 女性
+        r"""性别 默认0 未知 1 男性 2 女性
         :rtype: int
         """
         return self._Gender
@@ -1642,7 +1642,7 @@ class User(AbstractModel):
 
     @property
     def Age(self):
-        """年龄 默认0 未知
+        r"""年龄 默认0 未知
         :rtype: int
         """
         return self._Age
@@ -1653,7 +1653,7 @@ class User(AbstractModel):
 
     @property
     def Level(self):
-        """用户等级，默认0 未知 1 低 2 中 3 高
+        r"""用户等级，默认0 未知 1 低 2 中 3 高
         :rtype: int
         """
         return self._Level
@@ -1664,7 +1664,7 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
-        """手机号
+        r"""手机号
         :rtype: str
         """
         return self._Phone

@@ -27,7 +27,7 @@ class DsgcClient(AbstractClient):
 
 
     def AuthorizeDSPAMetaResources(self, request):
-        """授权用户云资源
+        r"""授权用户云资源
 
         :param request: Request instance for AuthorizeDSPAMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.AuthorizeDSPAMetaResourcesRequest`
@@ -50,7 +50,7 @@ class DsgcClient(AbstractClient):
 
 
     def BindDSPAResourceCosBuckets(self, request):
-        """绑定或解绑COS桶
+        r"""绑定或解绑COS桶
 
         :param request: Request instance for BindDSPAResourceCosBuckets.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.BindDSPAResourceCosBucketsRequest`
@@ -73,7 +73,7 @@ class DsgcClient(AbstractClient):
 
 
     def BindDSPAResourceDatabases(self, request):
-        """绑定或解绑数据库实例DB
+        r"""绑定或解绑数据库实例DB
 
         :param request: Request instance for BindDSPAResourceDatabases.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.BindDSPAResourceDatabasesRequest`
@@ -96,7 +96,7 @@ class DsgcClient(AbstractClient):
 
 
     def CopyDSPATemplate(self, request):
-        """复制合规组模板
+        r"""复制合规组模板
 
         :param request: Request instance for CopyDSPATemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CopyDSPATemplateRequest`
@@ -119,7 +119,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateAssetSortingReportRetryTask(self, request):
-        """创建资产梳理报表导出重试任务
+        r"""创建资产梳理报表导出重试任务
 
         :param request: Request instance for CreateAssetSortingReportRetryTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateAssetSortingReportRetryTaskRequest`
@@ -142,7 +142,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateAssetSortingReportTask(self, request):
-        """创建资产梳理报告任务
+        r"""创建资产梳理报告任务
 
         :param request: Request instance for CreateAssetSortingReportTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateAssetSortingReportTaskRequest`
@@ -165,7 +165,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAAssessmentRiskLevel(self, request):
-        """风险项页面---创建风险等级
+        r"""风险项页面---创建风险等级
 
         :param request: Request instance for CreateDSPAAssessmentRiskLevel.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAAssessmentRiskLevelRequest`
@@ -188,7 +188,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAAssessmentRiskTemplate(self, request):
-        """风险评估模板---创建风险评估模板
+        r"""风险评估模板---创建风险评估模板
 
         :param request: Request instance for CreateDSPAAssessmentRiskTemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAAssessmentRiskTemplateRequest`
@@ -211,7 +211,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAAssessmentTask(self, request):
-        """新建DSPA风险评估任务
+        r"""新建DSPA风险评估任务
 
         :param request: Request instance for CreateDSPAAssessmentTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAAssessmentTaskRequest`
@@ -234,7 +234,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPACOSDiscoveryTask(self, request):
-        """新增COS分类分级扫描任务，单个用户最多允许创建100个任务。
+        r"""新增COS分类分级扫描任务，单个用户最多允许创建100个任务。
 
         :param request: Request instance for CreateDSPACOSDiscoveryTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPACOSDiscoveryTaskRequest`
@@ -257,7 +257,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPACategory(self, request):
-        """新增分类，单个用户最多允许创建100个数据分类。
+        r"""新增分类，单个用户最多允许创建100个数据分类。
 
         :param request: Request instance for CreateDSPACategory.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPACategoryRequest`
@@ -280,7 +280,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPACategoryRelation(self, request):
-        """创建分类关联关系
+        r"""创建分类关联关系
 
         :param request: Request instance for CreateDSPACategoryRelation.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPACategoryRelationRequest`
@@ -303,7 +303,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAComplianceGroup(self, request):
-        """新增分类分级模板，单个用户最多允许创建100个合规组。
+        r"""新增分类分级模板，单个用户最多允许创建100个合规组。
 
         :param request: Request instance for CreateDSPAComplianceGroup.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAComplianceGroupRequest`
@@ -326,7 +326,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAComplianceRules(self, request):
-        """创建合规组分类规则关联关系
+        r"""创建合规组分类规则关联关系
 
         :param request: Request instance for CreateDSPAComplianceRules.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAComplianceRulesRequest`
@@ -349,7 +349,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPACosMetaResources(self, request):
-        """添加COS元数据
+        r"""添加COS元数据
 
         :param request: Request instance for CreateDSPACosMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPACosMetaResourcesRequest`
@@ -372,7 +372,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPADbMetaResources(self, request):
-        """添加用户云上数据库类型资源
+        r"""添加用户云上数据库类型资源
 
         :param request: Request instance for CreateDSPADbMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPADbMetaResourcesRequest`
@@ -395,7 +395,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPADiscoveryRule(self, request):
-        """新增分类分级规则，单个用户最多允许创建200个规则。
+        r"""新增分类分级规则，单个用户最多允许创建200个规则。
 
         :param request: Request instance for CreateDSPADiscoveryRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPADiscoveryRuleRequest`
@@ -418,7 +418,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPADiscoveryTask(self, request):
-        """新增分类分级任务，单个用户最多允许创建100个任务。
+        r"""新增分类分级任务，单个用户最多允许创建100个任务。
 
         :param request: Request instance for CreateDSPADiscoveryTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPADiscoveryTaskRequest`
@@ -441,7 +441,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPALevelGroup(self, request):
-        """新增分级，单个Casb实例最多允许创建100个数据分级
+        r"""新增分级，单个Casb实例最多允许创建100个数据分级
 
         :param request: Request instance for CreateDSPALevelGroup.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPALevelGroupRequest`
@@ -464,7 +464,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAMetaResources(self, request):
-        """添加用户云上资源列表
+        r"""添加用户云上资源列表
 
         :param request: Request instance for CreateDSPAMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAMetaResourcesRequest`
@@ -487,7 +487,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPASelfBuildMetaResource(self, request):
-        """新建用户自建云资源
+        r"""新建用户自建云资源
 
         :param request: Request instance for CreateDSPASelfBuildMetaResource.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPASelfBuildMetaResourceRequest`
@@ -510,7 +510,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateIdentifyRuleAnotherName(self, request):
-        """创建规则别名
+        r"""创建规则别名
 
         :param request: Request instance for CreateIdentifyRuleAnotherName.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateIdentifyRuleAnotherNameRequest`
@@ -533,7 +533,7 @@ class DsgcClient(AbstractClient):
 
 
     def DecribeSuggestRiskLevelMatrix(self, request):
-        """风险等级的定义页面-创建风险等级的时候生成的一个默认的矩阵
+        r"""风险等级的定义页面-创建风险等级的时候生成的一个默认的矩阵
 
         :param request: Request instance for DecribeSuggestRiskLevelMatrix.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DecribeSuggestRiskLevelMatrixRequest`
@@ -556,7 +556,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteCosMetaResource(self, request):
-        """本接口（DeleteCOSMetaData）用于删除COS元数据信息。
+        r"""本接口（DeleteCOSMetaData）用于删除COS元数据信息。
 
         :param request: Request instance for DeleteCosMetaResource.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DeleteCosMetaResourceRequest`
@@ -579,7 +579,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPAAssessmentTask(self, request):
-        """删除DSPA风险评估任务
+        r"""删除DSPA风险评估任务
 
         :param request: Request instance for DeleteDSPAAssessmentTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DeleteDSPAAssessmentTaskRequest`
@@ -602,7 +602,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPACOSDiscoveryTask(self, request):
-        """删除COS分类分级任务，该接口只有在任务状态为以下几个状态值时才支持正确删除：
+        r"""删除COS分类分级任务，该接口只有在任务状态为以下几个状态值时才支持正确删除：
         0 待扫描，
         2 扫描终止，
         3 扫描成功，
@@ -629,7 +629,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPACOSDiscoveryTaskResult(self, request):
-        """删除COS分类分级任务结果
+        r"""删除COS分类分级任务结果
 
         :param request: Request instance for DeleteDSPACOSDiscoveryTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DeleteDSPACOSDiscoveryTaskResultRequest`
@@ -652,7 +652,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPADiscoveryTask(self, request):
-        """删除分类分级识别任务，该接口只有在任务状态为以下几个状态值时才支持正确删除：
+        r"""删除分类分级识别任务，该接口只有在任务状态为以下几个状态值时才支持正确删除：
         0 待扫描，
         2 扫描终止，
         3 扫描成功，
@@ -679,7 +679,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPADiscoveryTaskResult(self, request):
-        """删除分类分级识别任务结果
+        r"""删除分类分级识别任务结果
 
         :param request: Request instance for DeleteDSPADiscoveryTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DeleteDSPADiscoveryTaskResultRequest`
@@ -702,7 +702,7 @@ class DsgcClient(AbstractClient):
 
 
     def DeleteDSPAMetaResource(self, request):
-        """删除用户云资源
+        r"""删除用户云资源
 
         :param request: Request instance for DeleteDSPAMetaResource.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DeleteDSPAMetaResourceRequest`
@@ -725,7 +725,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeAssetDetailDataExportResult(self, request):
-        """查询敏感数据导出结果URL
+        r"""查询敏感数据导出结果URL
 
         :param request: Request instance for DescribeAssetDetailDataExportResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeAssetDetailDataExportResultRequest`
@@ -748,7 +748,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeAssetOverview(self, request):
-        """数据资产报告页面-查询数据资产概览接口（包括数据库资产详情和存储资产详情）
+        r"""数据资产报告页面-查询数据资产概览接口（包括数据库资产详情和存储资产详情）
 
         :param request: Request instance for DescribeAssetOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeAssetOverviewRequest`
@@ -771,7 +771,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeBindDBList(self, request):
-        """查询DB绑定的列表
+        r"""查询DB绑定的列表
 
         :param request: Request instance for DescribeBindDBList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeBindDBListRequest`
@@ -794,7 +794,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeCOSAssetSensitiveDistribution(self, request):
-        """数据资产报告-查询cos的资产分布详情接口
+        r"""数据资产报告-查询cos的资产分布详情接口
 
         :param request: Request instance for DescribeCOSAssetSensitiveDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeCOSAssetSensitiveDistributionRequest`
@@ -817,7 +817,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentHighRiskTop10Overview(self, request):
-        """查询高风险资产的top10
+        r"""查询高风险资产的top10
 
         :param request: Request instance for DescribeDSPAAssessmentHighRiskTop10Overview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentHighRiskTop10OverviewRequest`
@@ -840,7 +840,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentLatestRiskDetailInfo(self, request):
-        """查询最新风险项详情数据
+        r"""查询最新风险项详情数据
 
         :param request: Request instance for DescribeDSPAAssessmentLatestRiskDetailInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentLatestRiskDetailInfoRequest`
@@ -863,7 +863,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentLatestRiskList(self, request):
-        """查询最新的风险详情列表数据
+        r"""查询最新的风险详情列表数据
 
         :param request: Request instance for DescribeDSPAAssessmentLatestRiskList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentLatestRiskListRequest`
@@ -886,7 +886,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentNewDiscoveredRiskOverview(self, request):
-        """风险概览-查询新发现风险统计数
+        r"""风险概览-查询新发现风险统计数
 
         :param request: Request instance for DescribeDSPAAssessmentNewDiscoveredRiskOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest`
@@ -909,7 +909,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentPendingRiskOverview(self, request):
-        """风险概览-查询待处理风险统计数
+        r"""风险概览-查询待处理风险统计数
 
         :param request: Request instance for DescribeDSPAAssessmentPendingRiskOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentPendingRiskOverviewRequest`
@@ -932,7 +932,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentProcessingRiskOverview(self, request):
-        """风险概览-查询处理中风险统计数
+        r"""风险概览-查询处理中风险统计数
 
         :param request: Request instance for DescribeDSPAAssessmentProcessingRiskOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentProcessingRiskOverviewRequest`
@@ -955,7 +955,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskAmountOverview(self, request):
-        """风险概览页风险数量和受影响资产数概览统计
+        r"""风险概览页风险数量和受影响资产数概览统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskAmountOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskAmountOverviewRequest`
@@ -978,7 +978,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskDatasourceTop5(self, request):
-        """受影响资产TOP5统计
+        r"""受影响资产TOP5统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskDatasourceTop5.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskDatasourceTop5Request`
@@ -1001,7 +1001,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskDealedOverview(self, request):
-        """遗留待处理&昨日完成风险处置概览统计
+        r"""遗留待处理&昨日完成风险处置概览统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskDealedOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskDealedOverviewRequest`
@@ -1024,7 +1024,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskDealedTrend(self, request):
-        """风险项处理趋势统计
+        r"""风险项处理趋势统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskDealedTrend.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskDealedTrendRequest`
@@ -1047,7 +1047,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskDistributionOverview(self, request):
-        """查询风险分布数据，包含风险类型分布，风险详情分布，风险资产的分布
+        r"""查询风险分布数据，包含风险类型分布，风险详情分布，风险资产的分布
 
         :param request: Request instance for DescribeDSPAAssessmentRiskDistributionOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskDistributionOverviewRequest`
@@ -1070,7 +1070,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskItemTop5(self, request):
-        """风险分类TOP5统计
+        r"""风险分类TOP5统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskItemTop5.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskItemTop5Request`
@@ -1093,7 +1093,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskLevelDetail(self, request):
-        """风险项页面----查询风险等级的详情数据
+        r"""风险项页面----查询风险等级的详情数据
 
         :param request: Request instance for DescribeDSPAAssessmentRiskLevelDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskLevelDetailRequest`
@@ -1116,7 +1116,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskLevelList(self, request):
-        """风险项页面----查询风险等级的列表
+        r"""风险项页面----查询风险等级的列表
 
         :param request: Request instance for DescribeDSPAAssessmentRiskLevelList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskLevelListRequest`
@@ -1139,7 +1139,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskLevelTrend(self, request):
-        """风险级别趋势统计
+        r"""风险级别趋势统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskLevelTrend.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskLevelTrendRequest`
@@ -1162,7 +1162,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskOverview(self, request):
-        """风险数量概览统计
+        r"""风险数量概览统计
 
         :param request: Request instance for DescribeDSPAAssessmentRiskOverview.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskOverviewRequest`
@@ -1185,7 +1185,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskProcessHistory(self, request):
-        """查询风险的处理历史
+        r"""查询风险的处理历史
 
         :param request: Request instance for DescribeDSPAAssessmentRiskProcessHistory.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskProcessHistoryRequest`
@@ -1208,7 +1208,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskSideDistributed(self, request):
-        """风险评估概览页，查询风险面的分布
+        r"""风险评估概览页，查询风险面的分布
 
         :param request: Request instance for DescribeDSPAAssessmentRiskSideDistributed.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideDistributedRequest`
@@ -1231,7 +1231,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskSideList(self, request):
-        """风险评估概览页，查询风险面的分布
+        r"""风险评估概览页，查询风险面的分布
 
         :param request: Request instance for DescribeDSPAAssessmentRiskSideList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideListRequest`
@@ -1254,7 +1254,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskTemplateDetail(self, request):
-        """风险项页面--查看评估模板详情
+        r"""风险项页面--查看评估模板详情
 
         :param request: Request instance for DescribeDSPAAssessmentRiskTemplateDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskTemplateDetailRequest`
@@ -1277,7 +1277,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskTemplateVulnerableList(self, request):
-        """风险模板页面--查询风险模板中的脆弱项配置
+        r"""风险模板页面--查询风险模板中的脆弱项配置
 
         :param request: Request instance for DescribeDSPAAssessmentRiskTemplateVulnerableList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskTemplateVulnerableListRequest`
@@ -1300,7 +1300,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRisks(self, request):
-        """获取DSPA评估风险项列表
+        r"""获取DSPA评估风险项列表
 
         :param request: Request instance for DescribeDSPAAssessmentRisks.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRisksRequest`
@@ -1323,7 +1323,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentTasks(self, request):
-        """获取DSPA评估任务列表
+        r"""获取DSPA评估任务列表
 
         :param request: Request instance for DescribeDSPAAssessmentTasks.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentTasksRequest`
@@ -1346,7 +1346,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentTemplateControlItems(self, request):
-        """获取DSPA评估模板关联的评估控制项列表
+        r"""获取DSPA评估模板关联的评估控制项列表
 
         :param request: Request instance for DescribeDSPAAssessmentTemplateControlItems.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentTemplateControlItemsRequest`
@@ -1369,7 +1369,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentTemplates(self, request):
-        """获取DSPA评估模板列表
+        r"""获取DSPA评估模板列表
 
         :param request: Request instance for DescribeDSPAAssessmentTemplates.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentTemplatesRequest`
@@ -1392,7 +1392,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDataAssetBuckets(self, request):
-        """获取COS敏感数据资产桶列表
+        r"""获取COS敏感数据资产桶列表
 
         :param request: Request instance for DescribeDSPACOSDataAssetBuckets.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDataAssetBucketsRequest`
@@ -1415,7 +1415,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDataAssetByComplianceId(self, request):
-        """获取COS单个模板下的敏感数据资产
+        r"""获取COS单个模板下的敏感数据资产
 
         :param request: Request instance for DescribeDSPACOSDataAssetByComplianceId.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDataAssetByComplianceIdRequest`
@@ -1438,7 +1438,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDataAssetDetail(self, request):
-        """获取COS分类分级数据资产详情
+        r"""获取COS分类分级数据资产详情
 
         :param request: Request instance for DescribeDSPACOSDataAssetDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDataAssetDetailRequest`
@@ -1461,7 +1461,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDiscoveryTaskDetail(self, request):
-        """获取COS分类分级任务详情
+        r"""获取COS分类分级任务详情
 
         :param request: Request instance for DescribeDSPACOSDiscoveryTaskDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDiscoveryTaskDetailRequest`
@@ -1484,7 +1484,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDiscoveryTaskFiles(self, request):
-        """获取COS分类分级任务结果详情文件列表
+        r"""获取COS分类分级任务结果详情文件列表
 
         :param request: Request instance for DescribeDSPACOSDiscoveryTaskFiles.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDiscoveryTaskFilesRequest`
@@ -1507,7 +1507,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDiscoveryTaskResult(self, request):
-        """获取COS分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：
+        r"""获取COS分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：
         3 扫描成功，
         4 扫描失败
 
@@ -1532,7 +1532,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSDiscoveryTasks(self, request):
-        """获取COS分类分级任务列表
+        r"""获取COS分类分级任务列表
 
         :param request: Request instance for DescribeDSPACOSDiscoveryTasks.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACOSDiscoveryTasksRequest`
@@ -1555,7 +1555,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACOSTaskResultDetail(self, request):
-        """获取COS分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
+        r"""获取COS分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
         3 扫描成功
 
         :param request: Request instance for DescribeDSPACOSTaskResultDetail.
@@ -1579,7 +1579,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACategories(self, request):
-        """获取敏感数据分类列表
+        r"""获取敏感数据分类列表
 
         :param request: Request instance for DescribeDSPACategories.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACategoriesRequest`
@@ -1602,7 +1602,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACategoryRuleStatistic(self, request):
-        """获取分类规则统计信息
+        r"""获取分类规则统计信息
 
         :param request: Request instance for DescribeDSPACategoryRuleStatistic.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACategoryRuleStatisticRequest`
@@ -1625,7 +1625,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACategoryRules(self, request):
-        """获取合规组分类规则信息
+        r"""获取合规组分类规则信息
 
         :param request: Request instance for DescribeDSPACategoryRules.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACategoryRulesRequest`
@@ -1648,7 +1648,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACategoryTree(self, request):
-        """获取分类树信息
+        r"""获取分类树信息
 
         :param request: Request instance for DescribeDSPACategoryTree.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACategoryTreeRequest`
@@ -1671,7 +1671,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPACategoryTreeWithRules(self, request):
-        """获取分类规则树信息
+        r"""获取分类规则树信息
 
         :param request: Request instance for DescribeDSPACategoryTreeWithRules.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPACategoryTreeWithRulesRequest`
@@ -1694,7 +1694,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAComplianceGroupDetail(self, request):
-        """获取模板详情信息
+        r"""获取模板详情信息
 
         :param request: Request instance for DescribeDSPAComplianceGroupDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAComplianceGroupDetailRequest`
@@ -1717,7 +1717,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAComplianceGroups(self, request):
-        """获取分类分级模板列表
+        r"""获取分类分级模板列表
 
         :param request: Request instance for DescribeDSPAComplianceGroups.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAComplianceGroupsRequest`
@@ -1740,7 +1740,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAComplianceUpdateNotification(self, request):
-        """获取模板更新提示信息
+        r"""获取模板更新提示信息
 
         :param request: Request instance for DescribeDSPAComplianceUpdateNotification.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAComplianceUpdateNotificationRequest`
@@ -1763,7 +1763,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADataSourceDbInfo(self, request):
-        """获取数据源的数据库信息
+        r"""获取数据源的数据库信息
 
         :param request: Request instance for DescribeDSPADataSourceDbInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADataSourceDbInfoRequest`
@@ -1786,7 +1786,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryRules(self, request):
-        """获取分类分级规则列表
+        r"""获取分类分级规则列表
 
         :param request: Request instance for DescribeDSPADiscoveryRules.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryRulesRequest`
@@ -1809,7 +1809,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryServiceStatus(self, request):
-        """用于查询该用户是否已开通分类分级服务
+        r"""用于查询该用户是否已开通分类分级服务
 
         :param request: Request instance for DescribeDSPADiscoveryServiceStatus.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryServiceStatusRequest`
@@ -1832,7 +1832,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTaskDetail(self, request):
-        """获取分类分级任务详情
+        r"""获取分类分级任务详情
 
         :param request: Request instance for DescribeDSPADiscoveryTaskDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTaskDetailRequest`
@@ -1855,7 +1855,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTaskResult(self, request):
-        """获取分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：3 扫描成功，4 扫描失败
+        r"""获取分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：3 扫描成功，4 扫描失败
 
         :param request: Request instance for DescribeDSPADiscoveryTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTaskResultRequest`
@@ -1878,7 +1878,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTaskResultDetail(self, request):
-        """获取分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
+        r"""获取分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
         3 扫描成功
 
         :param request: Request instance for DescribeDSPADiscoveryTaskResultDetail.
@@ -1902,7 +1902,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTaskTables(self, request):
-        """获取分级分级扫描的表集合
+        r"""获取分级分级扫描的表集合
 
         :param request: Request instance for DescribeDSPADiscoveryTaskTables.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTaskTablesRequest`
@@ -1925,7 +1925,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTasks(self, request):
-        """获取分类分级任务列表
+        r"""获取分类分级任务列表
 
         :param request: Request instance for DescribeDSPADiscoveryTasks.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTasksRequest`
@@ -1948,7 +1948,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAESDataAssetByComplianceId(self, request):
-        """根据合规组id，去查询ES的概览页统计数据
+        r"""根据合规组id，去查询ES的概览页统计数据
 
         :param request: Request instance for DescribeDSPAESDataAssetByComplianceId.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAESDataAssetByComplianceIdRequest`
@@ -1971,7 +1971,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAESDataAssetDetail(self, request):
-        """根据合规组id，去查询ES的概览页下的统计列表数据
+        r"""根据合规组id，去查询ES的概览页下的统计列表数据
 
         :param request: Request instance for DescribeDSPAESDataAssetDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAESDataAssetDetailRequest`
@@ -1994,7 +1994,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAESDataSample(self, request):
-        """获取ES扫描结果数据样本
+        r"""获取ES扫描结果数据样本
 
         :param request: Request instance for DescribeDSPAESDataSample.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAESDataSampleRequest`
@@ -2017,7 +2017,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAESDiscoveryTaskResultDetail(self, request):
-        """获取ES的分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
+        r"""获取ES的分类分级任务结果详情，该接口只有在任务状态为时才支持结果正确查询：
         3 扫描成功
 
         :param request: Request instance for DescribeDSPAESDiscoveryTaskResultDetail.
@@ -2041,7 +2041,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPALevelDetail(self, request):
-        """获取分级详情
+        r"""获取分级详情
 
         :param request: Request instance for DescribeDSPALevelDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPALevelDetailRequest`
@@ -2064,7 +2064,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPALevelGroups(self, request):
-        """获取分级列表，限制100个 不分页返回
+        r"""获取分级列表，限制100个 不分页返回
 
         :param request: Request instance for DescribeDSPALevelGroups.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPALevelGroupsRequest`
@@ -2087,7 +2087,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPARDBDataAssetByComplianceId(self, request):
-        """获取单个合规组下的RDB关系数据库分类分级数据资产
+        r"""获取单个合规组下的RDB关系数据库分类分级数据资产
 
         :param request: Request instance for DescribeDSPARDBDataAssetByComplianceId.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPARDBDataAssetByComplianceIdRequest`
@@ -2110,7 +2110,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPARDBDataAssetDetail(self, request):
-        """获取RDB关系数据库分类分级资产详情
+        r"""获取RDB关系数据库分类分级资产详情
 
         :param request: Request instance for DescribeDSPARDBDataAssetDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPARDBDataAssetDetailRequest`
@@ -2133,7 +2133,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPASupportedMetas(self, request):
-        """拉取DSPA支持的Meta元数据类型，返回包括：元数据类型，支持的元数据地域信息
+        r"""拉取DSPA支持的Meta元数据类型，返回包括：元数据类型，支持的元数据地域信息
 
         :param request: Request instance for DescribeDSPASupportedMetas.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPASupportedMetasRequest`
@@ -2156,7 +2156,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPATaskResultDataSample(self, request):
-        """获取扫描结果数据样本
+        r"""获取扫描结果数据样本
 
         :param request: Request instance for DescribeDSPATaskResultDataSample.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPATaskResultDataSampleRequest`
@@ -2179,7 +2179,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeESAssetSensitiveDistribution(self, request):
-        """数据资产报告-查询es的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
+        r"""数据资产报告-查询es的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 
         :param request: Request instance for DescribeESAssetSensitiveDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeESAssetSensitiveDistributionRequest`
@@ -2202,7 +2202,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeExportTaskResult(self, request):
-        """获取导出任务结果
+        r"""获取导出任务结果
 
         :param request: Request instance for DescribeExportTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeExportTaskResultRequest`
@@ -2225,7 +2225,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeMongoAssetSensitiveDistribution(self, request):
-        """数据资产报告-查询mongo 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
+        r"""数据资产报告-查询mongo 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 
         :param request: Request instance for DescribeMongoAssetSensitiveDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeMongoAssetSensitiveDistributionRequest`
@@ -2248,7 +2248,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeRDBAssetSensitiveDistribution(self, request):
-        """数据资产报告-查询rbd 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
+        r"""数据资产报告-查询rbd 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 
         :param request: Request instance for DescribeRDBAssetSensitiveDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeRDBAssetSensitiveDistributionRequest`
@@ -2271,7 +2271,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeReportTaskDownloadUrl(self, request):
-        """获取报表下载链接
+        r"""获取报表下载链接
 
         :param request: Request instance for DescribeReportTaskDownloadUrl.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeReportTaskDownloadUrlRequest`
@@ -2294,7 +2294,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeReportTasks(self, request):
-        """获取资产报表任务列表
+        r"""获取资产报表任务列表
 
         :param request: Request instance for DescribeReportTasks.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeReportTasksRequest`
@@ -2317,7 +2317,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeSensitiveCOSDataDistribution(self, request):
-        """数据资产报告-查询cos的敏感数据分布（分级分布 分类分布 敏感规则分布详情列表）
+        r"""数据资产报告-查询cos的敏感数据分布（分级分布 分类分布 敏感规则分布详情列表）
 
         :param request: Request instance for DescribeSensitiveCOSDataDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeSensitiveCOSDataDistributionRequest`
@@ -2340,7 +2340,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeSensitiveRDBDataDistribution(self, request):
-        """数据资产报告-查询rdb的敏感数据分布-敏感规则字段分布-敏感分布详情
+        r"""数据资产报告-查询rdb的敏感数据分布-敏感规则字段分布-敏感分布详情
 
         :param request: Request instance for DescribeSensitiveRDBDataDistribution.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeSensitiveRDBDataDistributionRequest`
@@ -2363,7 +2363,7 @@ class DsgcClient(AbstractClient):
 
 
     def DisableDSPAMetaResourceAuth(self, request):
-        """取消用户云资源授权
+        r"""取消用户云资源授权
 
         :param request: Request instance for DisableDSPAMetaResourceAuth.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DisableDSPAMetaResourceAuthRequest`
@@ -2386,7 +2386,7 @@ class DsgcClient(AbstractClient):
 
 
     def EnableDSPADiscoveryRule(self, request):
-        """打开或者关闭分类分级规则
+        r"""打开或者关闭分类分级规则
         注：此API同时对该规则下的RDB跟COS规则操作。
 
         :param request: Request instance for EnableDSPADiscoveryRule.
@@ -2410,7 +2410,7 @@ class DsgcClient(AbstractClient):
 
 
     def EnableTrialVersion(self, request):
-        """启用版本体验
+        r"""启用版本体验
 
         :param request: Request instance for EnableTrialVersion.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.EnableTrialVersionRequest`
@@ -2433,7 +2433,7 @@ class DsgcClient(AbstractClient):
 
 
     def ExportAssetDetailData(self, request):
-        """创建敏感数据导出任务
+        r"""创建敏感数据导出任务
 
         :param request: Request instance for ExportAssetDetailData.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ExportAssetDetailDataRequest`
@@ -2456,7 +2456,7 @@ class DsgcClient(AbstractClient):
 
 
     def GetResourceConnectionStatus(self, request):
-        """获取授权资源的连接状态
+        r"""获取授权资源的连接状态
 
         :param request: Request instance for GetResourceConnectionStatus.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.GetResourceConnectionStatusRequest`
@@ -2479,7 +2479,7 @@ class DsgcClient(AbstractClient):
 
 
     def GetTrialVersion(self, request):
-        """获取体验版本信息
+        r"""获取体验版本信息
 
         :param request: Request instance for GetTrialVersion.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.GetTrialVersionRequest`
@@ -2502,7 +2502,7 @@ class DsgcClient(AbstractClient):
 
 
     def GetUserQuotaInfo(self, request):
-        """获取用户购买配额信息
+        r"""获取用户购买配额信息
 
         :param request: Request instance for GetUserQuotaInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.GetUserQuotaInfoRequest`
@@ -2525,7 +2525,7 @@ class DsgcClient(AbstractClient):
 
 
     def ListDSPAClusters(self, request):
-        """拉取DSPA集群列表
+        r"""拉取DSPA集群列表
 
         :param request: Request instance for ListDSPAClusters.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ListDSPAClustersRequest`
@@ -2548,7 +2548,7 @@ class DsgcClient(AbstractClient):
 
 
     def ListDSPACosMetaResources(self, request):
-        """本接口用于获取COS元数据信息，返回COS元数据信息列表。
+        r"""本接口用于获取COS元数据信息，返回COS元数据信息列表。
 
         :param request: Request instance for ListDSPACosMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ListDSPACosMetaResourcesRequest`
@@ -2571,7 +2571,7 @@ class DsgcClient(AbstractClient):
 
 
     def ListDSPAMetaResources(self, request):
-        """拉取用户云资源
+        r"""拉取用户云资源
 
         :param request: Request instance for ListDSPAMetaResources.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ListDSPAMetaResourcesRequest`
@@ -2594,7 +2594,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAAssessmentRisk(self, request):
-        """修改DSPA评估风险项，支持修改Status
+        r"""修改DSPA评估风险项，支持修改Status
 
         :param request: Request instance for ModifyDSPAAssessmentRisk.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAAssessmentRiskRequest`
@@ -2617,7 +2617,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAAssessmentRiskLatest(self, request):
-        """修改最新评估风险项状态
+        r"""修改最新评估风险项状态
 
         :param request: Request instance for ModifyDSPAAssessmentRiskLatest.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAAssessmentRiskLatestRequest`
@@ -2640,7 +2640,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAAssessmentRiskLevel(self, request):
-        """风险项页面----修改风险等级的详情数据
+        r"""风险项页面----修改风险等级的详情数据
 
         :param request: Request instance for ModifyDSPAAssessmentRiskLevel.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAAssessmentRiskLevelRequest`
@@ -2663,7 +2663,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAAssessmentRiskTemplate(self, request):
-        """风险模板---修改风险模板
+        r"""风险模板---修改风险模板
 
         :param request: Request instance for ModifyDSPAAssessmentRiskTemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAAssessmentRiskTemplateRequest`
@@ -2686,7 +2686,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPACOSDiscoveryTask(self, request):
-        """修改COS分类分级任务，该接口只有在任务状态为以下状态时才支持正确修改：
+        r"""修改COS分类分级任务，该接口只有在任务状态为以下状态时才支持正确修改：
         0 待扫描，
         2 扫描终止，
         3 扫描成功，
@@ -2713,7 +2713,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPACOSTaskResult(self, request):
-        """调整COS任务扫描结果
+        r"""调整COS任务扫描结果
 
         :param request: Request instance for ModifyDSPACOSTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPACOSTaskResultRequest`
@@ -2736,7 +2736,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPACategory(self, request):
-        """修改分类，内置分类不支持修改。
+        r"""修改分类，内置分类不支持修改。
 
         :param request: Request instance for ModifyDSPACategory.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPACategoryRequest`
@@ -2759,7 +2759,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPACategoryRelation(self, request):
-        """修改分类分级关系
+        r"""修改分类分级关系
 
         :param request: Request instance for ModifyDSPACategoryRelation.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPACategoryRelationRequest`
@@ -2782,7 +2782,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAClusterInfo(self, request):
-        """修改DSPA集群信息
+        r"""修改DSPA集群信息
 
         :param request: Request instance for ModifyDSPAClusterInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAClusterInfoRequest`
@@ -2805,7 +2805,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAComplianceGroup(self, request):
-        """修改分类分级模板，内置模板不支持修改。
+        r"""修改分类分级模板，内置模板不支持修改。
 
         :param request: Request instance for ModifyDSPAComplianceGroup.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAComplianceGroupRequest`
@@ -2828,7 +2828,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPADiscoveryRule(self, request):
-        """修改分类分级规则，单个用户最多允许创建200个规则。
+        r"""修改分类分级规则，单个用户最多允许创建200个规则。
         注：此API同时适用RDB跟COS类型数据。
 
         :param request: Request instance for ModifyDSPADiscoveryRule.
@@ -2852,7 +2852,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPADiscoveryTask(self, request):
-        """修改分类分级任务，该接口只有在任务状态为以下状态时才支持正确修改：
+        r"""修改分类分级任务，该接口只有在任务状态为以下状态时才支持正确修改：
         0 待扫描，
         2 扫描终止，
         3 扫描成功，
@@ -2879,7 +2879,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAESTaskResult(self, request):
-        """调整ES任务扫描结果
+        r"""调整ES任务扫描结果
 
         :param request: Request instance for ModifyDSPAESTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAESTaskResultRequest`
@@ -2902,7 +2902,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPATaskResult(self, request):
-        """调整任务扫描结果
+        r"""调整任务扫描结果
 
         :param request: Request instance for ModifyDSPATaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPATaskResultRequest`
@@ -2925,7 +2925,7 @@ class DsgcClient(AbstractClient):
 
 
     def QueryDSPAMetaResourceDbList(self, request):
-        """查询DSPA实例的db列表
+        r"""查询DSPA实例的db列表
 
         :param request: Request instance for QueryDSPAMetaResourceDbList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.QueryDSPAMetaResourceDbListRequest`
@@ -2948,7 +2948,7 @@ class DsgcClient(AbstractClient):
 
 
     def QueryResourceDbBindStatus(self, request):
-        """获取资源绑定DB状态
+        r"""获取资源绑定DB状态
 
         :param request: Request instance for QueryResourceDbBindStatus.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.QueryResourceDbBindStatusRequest`
@@ -2971,7 +2971,7 @@ class DsgcClient(AbstractClient):
 
 
     def RestartDSPAAssessmentTask(self, request):
-        """重新启动DSPA风险评估任务
+        r"""重新启动DSPA风险评估任务
 
         :param request: Request instance for RestartDSPAAssessmentTask.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.RestartDSPAAssessmentTaskRequest`
@@ -2994,7 +2994,7 @@ class DsgcClient(AbstractClient):
 
 
     def StartDSPADiscoveryTask(self, request):
-        """立即启动分类分级任务，该接口只有在任务状态为以下状态时才支持正确执行立即扫描：
+        r"""立即启动分类分级任务，该接口只有在任务状态为以下状态时才支持正确执行立即扫描：
         0 待扫描，
         2 扫描终止，
         3 扫描成功，
@@ -3021,7 +3021,7 @@ class DsgcClient(AbstractClient):
 
 
     def StopDSPADiscoveryTask(self, request):
-        """停止分类分级任务，该接口只有在任务状态为以下状态时才支持正确执行停止扫描：
+        r"""停止分类分级任务，该接口只有在任务状态为以下状态时才支持正确执行停止扫描：
         1 扫描中
 
         :param request: Request instance for StopDSPADiscoveryTask.
@@ -3045,7 +3045,7 @@ class DsgcClient(AbstractClient):
 
 
     def UpdateDSPASelfBuildResource(self, request):
-        """更新自建资源基础信息，包括：端口、账户名、密码。
+        r"""更新自建资源基础信息，包括：端口、账户名、密码。
         请注意：
         如果资源自身的VPC、VIP信息发生变化，后台会自动更新。
         如果监听的端口发生变化，请显式输入端口。
@@ -3072,7 +3072,7 @@ class DsgcClient(AbstractClient):
 
 
     def VerifyDSPACOSRule(self, request):
-        """验证COS分类分级规则
+        r"""验证COS分类分级规则
 
         :param request: Request instance for VerifyDSPACOSRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.VerifyDSPACOSRuleRequest`
@@ -3095,7 +3095,7 @@ class DsgcClient(AbstractClient):
 
 
     def VerifyDSPADiscoveryRule(self, request):
-        """验证分类分级规则
+        r"""验证分类分级规则
 
         :param request: Request instance for VerifyDSPADiscoveryRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.VerifyDSPADiscoveryRuleRequest`

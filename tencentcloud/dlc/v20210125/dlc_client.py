@@ -27,7 +27,7 @@ class DlcClient(AbstractClient):
 
 
     def AddDMSPartitions(self, request):
-        """DMS元数据新增分区
+        r"""DMS元数据新增分区
 
         :param request: Request instance for AddDMSPartitions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AddDMSPartitionsRequest`
@@ -50,7 +50,7 @@ class DlcClient(AbstractClient):
 
 
     def AddOptimizerEngines(self, request):
-        """添加数据优化资源
+        r"""添加数据优化资源
 
         :param request: Request instance for AddOptimizerEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AddOptimizerEnginesRequest`
@@ -73,7 +73,7 @@ class DlcClient(AbstractClient):
 
 
     def AddUsersToWorkGroup(self, request):
-        """添加用户到工作组
+        r"""添加用户到工作组
 
         :param request: Request instance for AddUsersToWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AddUsersToWorkGroupRequest`
@@ -96,7 +96,7 @@ class DlcClient(AbstractClient):
 
 
     def AlterDMSDatabase(self, request):
-        """DMS元数据更新库
+        r"""DMS元数据更新库
 
         :param request: Request instance for AlterDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AlterDMSDatabaseRequest`
@@ -119,7 +119,7 @@ class DlcClient(AbstractClient):
 
 
     def AlterDMSPartition(self, request):
-        """DMS元数据更新分区
+        r"""DMS元数据更新分区
 
         :param request: Request instance for AlterDMSPartition.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AlterDMSPartitionRequest`
@@ -142,7 +142,7 @@ class DlcClient(AbstractClient):
 
 
     def AlterDMSTable(self, request):
-        """DMS元数据更新表
+        r"""DMS元数据更新表
 
         :param request: Request instance for AlterDMSTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AlterDMSTableRequest`
@@ -165,7 +165,7 @@ class DlcClient(AbstractClient):
 
 
     def AssignMangedTableProperties(self, request):
-        """分配原生表表属性
+        r"""分配原生表表属性
 
         :param request: Request instance for AssignMangedTableProperties.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AssignMangedTablePropertiesRequest`
@@ -188,7 +188,7 @@ class DlcClient(AbstractClient):
 
 
     def AssociateDatasourceHouse(self, request):
-        """绑定数据源和队列
+        r"""绑定数据源和队列
 
         :param request: Request instance for AssociateDatasourceHouse.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AssociateDatasourceHouseRequest`
@@ -211,7 +211,7 @@ class DlcClient(AbstractClient):
 
 
     def AttachDataMaskPolicy(self, request):
-        """绑定数据脱敏策略
+        r"""绑定数据脱敏策略
 
         :param request: Request instance for AttachDataMaskPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AttachDataMaskPolicyRequest`
@@ -234,7 +234,7 @@ class DlcClient(AbstractClient):
 
 
     def AttachUserPolicy(self, request):
-        """绑定鉴权策略到用户
+        r"""绑定鉴权策略到用户
 
         :param request: Request instance for AttachUserPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AttachUserPolicyRequest`
@@ -257,7 +257,7 @@ class DlcClient(AbstractClient):
 
 
     def AttachWorkGroupPolicy(self, request):
-        """绑定鉴权策略到工作组
+        r"""绑定鉴权策略到工作组
 
         :param request: Request instance for AttachWorkGroupPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AttachWorkGroupPolicyRequest`
@@ -280,7 +280,7 @@ class DlcClient(AbstractClient):
 
 
     def BindWorkGroupsToUser(self, request):
-        """绑定工作组到用户
+        r"""绑定工作组到用户
 
         :param request: Request instance for BindWorkGroupsToUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.BindWorkGroupsToUserRequest`
@@ -303,7 +303,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelNotebookSessionStatement(self, request):
-        """本接口（CancelNotebookSessionStatement）用于取消session中执行的任务
+        r"""本接口（CancelNotebookSessionStatement）用于取消session中执行的任务
 
         :param request: Request instance for CancelNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementRequest`
@@ -326,7 +326,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelNotebookSessionStatementBatch(self, request):
-        """本接口（CancelNotebookSessionStatementBatch）用于批量取消Session 中执行的任务
+        r"""本接口（CancelNotebookSessionStatementBatch）用于批量取消Session 中执行的任务
 
         :param request: Request instance for CancelNotebookSessionStatementBatch.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementBatchRequest`
@@ -349,7 +349,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelSparkSessionBatchSQL(self, request):
-        """本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
+        r"""本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
 
         :param request: Request instance for CancelSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLRequest`
@@ -372,7 +372,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """本接口（CancelTask），用于取消任务
+        r"""本接口（CancelTask），用于取消任务
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelTaskRequest`
@@ -395,7 +395,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelTasks(self, request):
-        """批量取消任务
+        r"""批量取消任务
 
         :param request: Request instance for CancelTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelTasksRequest`
@@ -418,7 +418,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineConfigPairsValidity(self, request):
-        """本接口（CheckDataEngineConfigPairsValidity）用于检查引擎用户自定义参数的有效性
+        r"""本接口（CheckDataEngineConfigPairsValidity）用于检查引擎用户自定义参数的有效性
 
         :param request: Request instance for CheckDataEngineConfigPairsValidity.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityRequest`
@@ -441,7 +441,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineImageCanBeRollback(self, request):
-        """本接口（CheckDataEngineImageCanBeRollback）用于查看集群是否能回滚。
+        r"""本接口（CheckDataEngineImageCanBeRollback）用于查看集群是否能回滚。
 
         :param request: Request instance for CheckDataEngineImageCanBeRollback.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackRequest`
@@ -464,7 +464,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineImageCanBeUpgrade(self, request):
-        """本接口（CheckDataEngineImageCanBeUpgrade）用于查看集群镜像是否能够升级。
+        r"""本接口（CheckDataEngineImageCanBeUpgrade）用于查看集群镜像是否能够升级。
 
         :param request: Request instance for CheckDataEngineImageCanBeUpgrade.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeRequest`
@@ -487,7 +487,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckLockMetaData(self, request):
-        """元数据锁检查
+        r"""元数据锁检查
 
         :param request: Request instance for CheckLockMetaData.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckLockMetaDataRequest`
@@ -510,7 +510,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateCHDFSBindingProduct(self, request):
-        """此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
+        r"""此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
 
         :param request: Request instance for CreateCHDFSBindingProduct.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductRequest`
@@ -533,7 +533,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDMSDatabase(self, request):
-        """DMS元数据创建库
+        r"""DMS元数据创建库
 
         :param request: Request instance for CreateDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDMSDatabaseRequest`
@@ -556,7 +556,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDMSTable(self, request):
-        """DMS元数据创建表
+        r"""DMS元数据创建表
 
         :param request: Request instance for CreateDMSTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDMSTableRequest`
@@ -579,7 +579,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDataEngine(self, request):
-        """为用户创建数据引擎
+        r"""为用户创建数据引擎
 
         :param request: Request instance for CreateDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataEngineRequest`
@@ -602,7 +602,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDataMaskStrategy(self, request):
-        """创建数据脱敏策略
+        r"""创建数据脱敏策略
 
         :param request: Request instance for CreateDataMaskStrategy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataMaskStrategyRequest`
@@ -625,7 +625,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDatabase(self, request):
-        """本接口（CreateDatabase）用于生成建库SQL语句。
+        r"""本接口（CreateDatabase）用于生成建库SQL语句。
 
         :param request: Request instance for CreateDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDatabaseRequest`
@@ -648,7 +648,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateExportTask(self, request):
-        """该接口（CreateExportTask）用于创建导出任务
+        r"""该接口（CreateExportTask）用于创建导出任务
 
         :param request: Request instance for CreateExportTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateExportTaskRequest`
@@ -671,7 +671,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateImportTask(self, request):
-        """该接口（CreateImportTask）用于创建导入任务
+        r"""该接口（CreateImportTask）用于创建导入任务
 
         :param request: Request instance for CreateImportTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateImportTaskRequest`
@@ -694,7 +694,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateInternalTable(self, request):
-        """创建托管存储内表（该接口已废弃）
+        r"""创建托管存储内表（该接口已废弃）
 
         :param request: Request instance for CreateInternalTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableRequest`
@@ -717,7 +717,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSession(self, request):
-        """本接口（CreateNotebookSession）用于创建交互式session（notebook）
+        r"""本接口（CreateNotebookSession）用于创建交互式session（notebook）
 
         :param request: Request instance for CreateNotebookSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionRequest`
@@ -740,7 +740,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSessionStatement(self, request):
-        """本接口（CreateNotebookSessionStatement）用于在session中执行代码片段
+        r"""本接口（CreateNotebookSessionStatement）用于在session中执行代码片段
 
         :param request: Request instance for CreateNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementRequest`
@@ -763,7 +763,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSessionStatementSupportBatchSQL(self, request):
-        """本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建交互式session并执行SQL任务
+        r"""本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建交互式session并执行SQL任务
 
         :param request: Request instance for CreateNotebookSessionStatementSupportBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementSupportBatchSQLRequest`
@@ -786,7 +786,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateResultDownload(self, request):
-        """创建查询结果下载任务
+        r"""创建查询结果下载任务
 
         :param request: Request instance for CreateResultDownload.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadRequest`
@@ -809,7 +809,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateScript(self, request):
-        """该接口（CreateScript）用于创建sql脚本。
+        r"""该接口（CreateScript）用于创建sql脚本。
 
         :param request: Request instance for CreateScript.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateScriptRequest`
@@ -832,7 +832,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkApp(self, request):
-        """创建spark作业
+        r"""创建spark作业
 
         :param request: Request instance for CreateSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppRequest`
@@ -855,7 +855,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkAppTask(self, request):
-        """启动Spark作业
+        r"""启动Spark作业
 
         :param request: Request instance for CreateSparkAppTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskRequest`
@@ -878,7 +878,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkSessionBatchSQL(self, request):
-        """本接口（CreateSparkSessionBatchSQL）用于向Spark作业引擎提交Spark SQL批任务。
+        r"""本接口（CreateSparkSessionBatchSQL）用于向Spark作业引擎提交Spark SQL批任务。
 
         :param request: Request instance for CreateSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`
@@ -901,7 +901,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkSubmitTask(self, request):
-        """本接口（CreateSparkSubmitTask）用于提交SparkSbumit批流任务。
+        r"""本接口（CreateSparkSubmitTask）用于提交SparkSbumit批流任务。
 
         :param request: Request instance for CreateSparkSubmitTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSubmitTaskRequest`
@@ -924,7 +924,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateStandardEngineResourceGroup(self, request):
-        """创建标准引擎资源组
+        r"""创建标准引擎资源组
 
         :param request: Request instance for CreateStandardEngineResourceGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateStandardEngineResourceGroupRequest`
@@ -947,7 +947,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateStoreLocation(self, request):
-        """该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
+        r"""该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
 
         :param request: Request instance for CreateStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationRequest`
@@ -970,7 +970,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTable(self, request):
-        """本接口（CreateTable）用于生成建表SQL。
+        r"""本接口（CreateTable）用于生成建表SQL。
 
         :param request: Request instance for CreateTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTableRequest`
@@ -993,7 +993,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """本接口（CreateTask）用于创建并执行SQL任务。（推荐使用CreateTasks接口）
+        r"""本接口（CreateTask）用于创建并执行SQL任务。（推荐使用CreateTasks接口）
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTaskRequest`
@@ -1016,7 +1016,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTasks(self, request):
-        """本接口（CreateTasks），用于批量创建并执行SQL任务
+        r"""本接口（CreateTasks），用于批量创建并执行SQL任务
 
         :param request: Request instance for CreateTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksRequest`
@@ -1039,7 +1039,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTasksInOrder(self, request):
-        """废弃接口，申请下线
+        r"""废弃接口，申请下线
 
         按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
 
@@ -1064,7 +1064,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTcIcebergTable(self, request):
-        """创建TIceberg表
+        r"""创建TIceberg表
 
         :param request: Request instance for CreateTcIcebergTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTcIcebergTableRequest`
@@ -1087,7 +1087,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """创建用户
+        r"""创建用户
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateUserRequest`
@@ -1110,7 +1110,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateUserVpcConnection(self, request):
-        """创建用户vpc连接到指定引擎网络
+        r"""创建用户vpc连接到指定引擎网络
 
         :param request: Request instance for CreateUserVpcConnection.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateUserVpcConnectionRequest`
@@ -1133,7 +1133,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateWorkGroup(self, request):
-        """创建工作组
+        r"""创建工作组
 
         :param request: Request instance for CreateWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateWorkGroupRequest`
@@ -1156,7 +1156,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteCHDFSBindingProduct(self, request):
-        """此接口（DeleteCHDFSBindingProduct）用于删除元数据加速桶和产品绑定关系
+        r"""此接口（DeleteCHDFSBindingProduct）用于删除元数据加速桶和产品绑定关系
 
         :param request: Request instance for DeleteCHDFSBindingProduct.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductRequest`
@@ -1179,7 +1179,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteDataEngine(self, request):
-        """删除数据引擎
+        r"""删除数据引擎
 
         :param request: Request instance for DeleteDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineRequest`
@@ -1202,7 +1202,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteDataMaskStrategy(self, request):
-        """删除数据脱敏策略
+        r"""删除数据脱敏策略
 
         :param request: Request instance for DeleteDataMaskStrategy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataMaskStrategyRequest`
@@ -1225,7 +1225,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteNativeSparkSession(self, request):
-        """根据spark session名称销毁eg spark session
+        r"""根据spark session名称销毁eg spark session
 
         :param request: Request instance for DeleteNativeSparkSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteNativeSparkSessionRequest`
@@ -1248,7 +1248,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteNotebookSession(self, request):
-        """本接口（DeleteNotebookSession）用于删除交互式session（notebook）
+        r"""本接口（DeleteNotebookSession）用于删除交互式session（notebook）
 
         :param request: Request instance for DeleteNotebookSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteNotebookSessionRequest`
@@ -1271,7 +1271,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteScript(self, request):
-        """该接口（DeleteScript）用于删除sql脚本。
+        r"""该接口（DeleteScript）用于删除sql脚本。
 
         :param request: Request instance for DeleteScript.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteScriptRequest`
@@ -1294,7 +1294,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteSparkApp(self, request):
-        """删除spark作业
+        r"""删除spark作业
 
         :param request: Request instance for DeleteSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppRequest`
@@ -1317,7 +1317,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteStandardEngineResourceGroup(self, request):
-        """删除标准引擎资源组
+        r"""删除标准引擎资源组
 
         :param request: Request instance for DeleteStandardEngineResourceGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteStandardEngineResourceGroupRequest`
@@ -1340,7 +1340,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteTable(self, request):
-        """删除表
+        r"""删除表
 
         :param request: Request instance for DeleteTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteTableRequest`
@@ -1363,7 +1363,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteThirdPartyAccessUser(self, request):
-        """本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
+        r"""本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
 
         :param request: Request instance for DeleteThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserRequest`
@@ -1386,7 +1386,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """删除用户
+        r"""删除用户
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUserRequest`
@@ -1409,7 +1409,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteUserVpcConnection(self, request):
-        """删除用户vpc到引擎网络的连接
+        r"""删除用户vpc到引擎网络的连接
 
         :param request: Request instance for DeleteUserVpcConnection.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUserVpcConnectionRequest`
@@ -1432,7 +1432,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteUsersFromWorkGroup(self, request):
-        """从工作组中删除用户
+        r"""从工作组中删除用户
 
         :param request: Request instance for DeleteUsersFromWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUsersFromWorkGroupRequest`
@@ -1455,7 +1455,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteWorkGroup(self, request):
-        """删除工作组
+        r"""删除工作组
 
         :param request: Request instance for DeleteWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteWorkGroupRequest`
@@ -1478,7 +1478,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeAdvancedStoreLocation(self, request):
-        """查询sql查询界面高级设置
+        r"""查询sql查询界面高级设置
 
         :param request: Request instance for DescribeAdvancedStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeAdvancedStoreLocationRequest`
@@ -1501,7 +1501,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeClusterMonitorInfos(self, request):
-        """查询任务监控指标信息
+        r"""查询任务监控指标信息
 
         :param request: Request instance for DescribeClusterMonitorInfos.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterMonitorInfosRequest`
@@ -1524,7 +1524,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDLCCatalogAccess(self, request):
-        """查询DLC Catalog授权列表
+        r"""查询DLC Catalog授权列表
 
         :param request: Request instance for DescribeDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessRequest`
@@ -1547,7 +1547,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSDatabase(self, request):
-        """DMS元数据获取库
+        r"""DMS元数据获取库
 
         :param request: Request instance for DescribeDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseRequest`
@@ -1570,7 +1570,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSPartitions(self, request):
-        """DMS元数据获取分区
+        r"""DMS元数据获取分区
 
         :param request: Request instance for DescribeDMSPartitions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSPartitionsRequest`
@@ -1593,7 +1593,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSTable(self, request):
-        """DMS元数据获取表
+        r"""DMS元数据获取表
 
         :param request: Request instance for DescribeDMSTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSTableRequest`
@@ -1616,7 +1616,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSTables(self, request):
-        """DMS元数据获取表列表
+        r"""DMS元数据获取表列表
 
         :param request: Request instance for DescribeDMSTables.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSTablesRequest`
@@ -1639,7 +1639,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngine(self, request):
-        """本接口根据名称用于获取数据引擎详细信息
+        r"""本接口根据名称用于获取数据引擎详细信息
 
         :param request: Request instance for DescribeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineRequest`
@@ -1662,7 +1662,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngineEvents(self, request):
-        """查询数据引擎事件
+        r"""查询数据引擎事件
 
         :param request: Request instance for DescribeDataEngineEvents.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineEventsRequest`
@@ -1685,7 +1685,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngineImageVersions(self, request):
-        """本接口（DescribeDataEngineImageVersions）用于获取独享集群大版本镜像列表。
+        r"""本接口（DescribeDataEngineImageVersions）用于获取独享集群大版本镜像列表。
 
         :param request: Request instance for DescribeDataEngineImageVersions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsRequest`
@@ -1708,7 +1708,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEnginePythonSparkImages(self, request):
-        """本接口（DescribeDataEnginePythonSparkImages）用于获取PYSPARK镜像列表
+        r"""本接口（DescribeDataEnginePythonSparkImages）用于获取PYSPARK镜像列表
 
         :param request: Request instance for DescribeDataEnginePythonSparkImages.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesRequest`
@@ -1731,7 +1731,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngineSessionParameters(self, request):
-        """本接口（DescribeDataEngineSessionParameters）用于获取指定小版本下的Session配置。
+        r"""本接口（DescribeDataEngineSessionParameters）用于获取指定小版本下的Session配置。
 
         :param request: Request instance for DescribeDataEngineSessionParameters.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineSessionParametersRequest`
@@ -1754,7 +1754,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngines(self, request):
-        """本接口（DescribeDataEngines）用于查询DataEngines信息列表.
+        r"""本接口（DescribeDataEngines）用于查询DataEngines信息列表.
 
         :param request: Request instance for DescribeDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesRequest`
@@ -1777,7 +1777,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEnginesScaleDetail(self, request):
-        """查询引擎规格详情
+        r"""查询引擎规格详情
 
         :param request: Request instance for DescribeDataEnginesScaleDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailRequest`
@@ -1800,7 +1800,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataMaskStrategies(self, request):
-        """查询数据脱敏列表接口
+        r"""查询数据脱敏列表接口
 
         :param request: Request instance for DescribeDataMaskStrategies.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataMaskStrategiesRequest`
@@ -1823,7 +1823,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """本接口（DescribeDatabases）用于查询数据库列表。
+        r"""本接口（DescribeDatabases）用于查询数据库列表。
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDatabasesRequest`
@@ -1846,7 +1846,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDatasourceConnection(self, request):
-        """本接口（DescribeDatasourceConnection）用于查询数据源信息
+        r"""本接口（DescribeDatasourceConnection）用于查询数据源信息
 
         :param request: Request instance for DescribeDatasourceConnection.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDatasourceConnectionRequest`
@@ -1869,7 +1869,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeEngineNetworks(self, request):
-        """查询引擎网络信息
+        r"""查询引擎网络信息
 
         :param request: Request instance for DescribeEngineNetworks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineNetworksRequest`
@@ -1892,7 +1892,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeEngineNodeSpec(self, request):
-        """查询引擎可用的节点规格
+        r"""查询引擎可用的节点规格
 
         :param request: Request instance for DescribeEngineNodeSpec.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineNodeSpecRequest`
@@ -1915,7 +1915,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeEngineUsageInfo(self, request):
-        """本接口根据引擎ID查询数据引擎资源使用情况
+        r"""本接口根据引擎ID查询数据引擎资源使用情况
 
         :param request: Request instance for DescribeEngineUsageInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineUsageInfoRequest`
@@ -1938,7 +1938,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeForbiddenTablePro(self, request):
-        """本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
+        r"""本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
 
         :param request: Request instance for DescribeForbiddenTablePro.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProRequest`
@@ -1961,7 +1961,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeLakeFsDirSummary(self, request):
-        """查询托管存储指定目录的Summary
+        r"""查询托管存储指定目录的Summary
 
         :param request: Request instance for DescribeLakeFsDirSummary.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsDirSummaryRequest`
@@ -1984,7 +1984,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeLakeFsInfo(self, request):
-        """查询用户的托管存储信息
+        r"""查询用户的托管存储信息
 
         :param request: Request instance for DescribeLakeFsInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsInfoRequest`
@@ -2007,7 +2007,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeLakeFsTaskResult(self, request):
-        """获取LakeFs上task执行结果访问信息
+        r"""获取LakeFs上task执行结果访问信息
 
         :param request: Request instance for DescribeLakeFsTaskResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsTaskResultRequest`
@@ -2030,7 +2030,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNativeSparkSessions(self, request):
-        """根据资源组获取spark session列表
+        r"""根据资源组获取spark session列表
 
         :param request: Request instance for DescribeNativeSparkSessions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNativeSparkSessionsRequest`
@@ -2053,7 +2053,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNetworkConnections(self, request):
-        """查询网络配置列表
+        r"""查询网络配置列表
 
         :param request: Request instance for DescribeNetworkConnections.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNetworkConnectionsRequest`
@@ -2076,7 +2076,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSession(self, request):
-        """本接口（DescribeNotebookSession）用于查询交互式 session详情信息
+        r"""本接口（DescribeNotebookSession）用于查询交互式 session详情信息
 
         :param request: Request instance for DescribeNotebookSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionRequest`
@@ -2099,7 +2099,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionLog(self, request):
-        """本接口（DescribeNotebookSessionLog）用于查询交互式 session日志
+        r"""本接口（DescribeNotebookSessionLog）用于查询交互式 session日志
 
         :param request: Request instance for DescribeNotebookSessionLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionLogRequest`
@@ -2122,7 +2122,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionStatement(self, request):
-        """本接口（DescribeNotebookSessionStatement）用于查询session 中执行任务的详情
+        r"""本接口（DescribeNotebookSessionStatement）用于查询session 中执行任务的详情
 
         :param request: Request instance for DescribeNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementRequest`
@@ -2145,7 +2145,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionStatementSqlResult(self, request):
-        """本接口（DescribeNotebookSessionStatementSqlResult）用于获取statement运行结果。
+        r"""本接口（DescribeNotebookSessionStatementSqlResult）用于获取statement运行结果。
 
         :param request: Request instance for DescribeNotebookSessionStatementSqlResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementSqlResultRequest`
@@ -2168,7 +2168,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionStatements(self, request):
-        """本接口（DescribeNotebookSessionStatements）用于查询Session中执行的任务列表
+        r"""本接口（DescribeNotebookSessionStatements）用于查询Session中执行的任务列表
 
         :param request: Request instance for DescribeNotebookSessionStatements.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementsRequest`
@@ -2191,7 +2191,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessions(self, request):
-        """本接口（DescribeNotebookSessions）用于查询交互式 session列表
+        r"""本接口（DescribeNotebookSessions）用于查询交互式 session列表
 
         :param request: Request instance for DescribeNotebookSessions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionsRequest`
@@ -2214,7 +2214,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeOtherCHDFSBindingList(self, request):
-        """此接口（DescribeOtherCHDFSBindingList）用于查询其他产品元数据加速桶绑定列表
+        r"""此接口（DescribeOtherCHDFSBindingList）用于查询其他产品元数据加速桶绑定列表
 
         :param request: Request instance for DescribeOtherCHDFSBindingList.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListRequest`
@@ -2237,7 +2237,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeResultDownload(self, request):
-        """查询结果下载任务
+        r"""查询结果下载任务
 
         :param request: Request instance for DescribeResultDownload.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadRequest`
@@ -2260,7 +2260,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeScripts(self, request):
-        """该接口（DescribeScripts）用于查询SQL脚本列表
+        r"""该接口（DescribeScripts）用于查询SQL脚本列表
 
         :param request: Request instance for DescribeScripts.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeScriptsRequest`
@@ -2283,7 +2283,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSessionImageVersion(self, request):
-        """获取指定大版本下所有小版本的所有内置镜像
+        r"""获取指定大版本下所有小版本的所有内置镜像
 
         :param request: Request instance for DescribeSessionImageVersion.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSessionImageVersionRequest`
@@ -2306,7 +2306,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJob(self, request):
-        """查询spark作业信息
+        r"""查询spark作业信息
 
         :param request: Request instance for DescribeSparkAppJob.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobRequest`
@@ -2329,7 +2329,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJobs(self, request):
-        """查询spark作业列表
+        r"""查询spark作业列表
 
         :param request: Request instance for DescribeSparkAppJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`
@@ -2352,7 +2352,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppTasks(self, request):
-        """查询Spark作业的运行任务列表
+        r"""查询Spark作业的运行任务列表
 
         :param request: Request instance for DescribeSparkAppTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksRequest`
@@ -2375,7 +2375,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkSessionBatchSQL(self, request):
-        """本接口（DescribeSparkSessionBatchSQL）用于查询Spark SQL批任务运行状态
+        r"""本接口（DescribeSparkSessionBatchSQL）用于查询Spark SQL批任务运行状态
 
         :param request: Request instance for DescribeSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLRequest`
@@ -2398,7 +2398,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkSessionBatchSQLCost(self, request):
-        """本接口（DescribeSparkSessionBatchSQLCost）用于查询Spark SQL批任务消耗
+        r"""本接口（DescribeSparkSessionBatchSQLCost）用于查询Spark SQL批任务消耗
 
         :param request: Request instance for DescribeSparkSessionBatchSQLCost.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLCostRequest`
@@ -2421,7 +2421,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkSessionBatchSqlLog(self, request):
-        """本接口（DescribeSparkSessionBatchSqlLog）用于查询Spark SQL批任务日志
+        r"""本接口（DescribeSparkSessionBatchSqlLog）用于查询Spark SQL批任务日志
 
         :param request: Request instance for DescribeSparkSessionBatchSqlLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogRequest`
@@ -2444,7 +2444,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeStandardEngineResourceGroupConfigInfo(self, request):
-        """查询标准引擎资源组信息
+        r"""查询标准引擎资源组信息
 
         :param request: Request instance for DescribeStandardEngineResourceGroupConfigInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeStandardEngineResourceGroupConfigInfoRequest`
@@ -2467,7 +2467,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeStandardEngineResourceGroups(self, request):
-        """查询标准引擎资源组信息
+        r"""查询标准引擎资源组信息
 
         :param request: Request instance for DescribeStandardEngineResourceGroups.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeStandardEngineResourceGroupsRequest`
@@ -2490,7 +2490,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeStoreLocation(self, request):
-        """查询计算结果存储位置。
+        r"""查询计算结果存储位置。
 
         :param request: Request instance for DescribeStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeStoreLocationRequest`
@@ -2513,7 +2513,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSubUserAccessPolicy(self, request):
-        """本接口（DescribeSubUserAccessPolicy）用于开通了第三方平台访问的用户，查询其子用户的访问策略
+        r"""本接口（DescribeSubUserAccessPolicy）用于开通了第三方平台访问的用户，查询其子用户的访问策略
 
         :param request: Request instance for DescribeSubUserAccessPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyRequest`
@@ -2536,7 +2536,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTable(self, request):
-        """本接口（DescribeTable），用于查询单个表的详细信息。
+        r"""本接口（DescribeTable），用于查询单个表的详细信息。
 
         :param request: Request instance for DescribeTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTableRequest`
@@ -2559,7 +2559,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTablePartitions(self, request):
-        """本接口（DescribeTablePartitions）用于查询数据表分区信息
+        r"""本接口（DescribeTablePartitions）用于查询数据表分区信息
 
         :param request: Request instance for DescribeTablePartitions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablePartitionsRequest`
@@ -2582,7 +2582,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """本接口（DescribeTables）用于查询数据表列表。
+        r"""本接口（DescribeTables）用于查询数据表列表。
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesRequest`
@@ -2605,7 +2605,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTablesName(self, request):
-        """本接口（DescribeTables）用于查询数据表名称列表
+        r"""本接口（DescribeTables）用于查询数据表名称列表
 
         :param request: Request instance for DescribeTablesName.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameRequest`
@@ -2628,7 +2628,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTaskLog(self, request):
-        """本接口（DescribeTaskLog）用于获取spark 作业任务日志详情
+        r"""本接口（DescribeTaskLog）用于获取spark 作业任务日志详情
 
         :param request: Request instance for DescribeTaskLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskLogRequest`
@@ -2651,7 +2651,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTaskMonitorInfos(self, request):
-        """查询任务监控指标信息
+        r"""查询任务监控指标信息
 
         :param request: Request instance for DescribeTaskMonitorInfos.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskMonitorInfosRequest`
@@ -2674,7 +2674,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTaskResult(self, request):
-        """查询任务结果，仅支持30天以内的任务查询结果，且返回数据大小超过近50M会进行截断。
+        r"""查询任务结果，仅支持30天以内的任务查询结果，且返回数据大小超过近50M会进行截断。
 
         :param request: Request instance for DescribeTaskResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskResultRequest`
@@ -2697,7 +2697,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """该接口（DescribleTasks）用于查询任务列表
+        r"""该接口（DescribleTasks）用于查询任务列表
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksRequest`
@@ -2720,7 +2720,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasksAnalysis(self, request):
-        """该接口用于洞察分析列表
+        r"""该接口用于洞察分析列表
 
         :param request: Request instance for DescribeTasksAnalysis.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksAnalysisRequest`
@@ -2743,7 +2743,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasksCostInfo(self, request):
-        """该接口（DescribeTasksCostInfo）用于查询任务消耗
+        r"""该接口（DescribeTasksCostInfo）用于查询任务消耗
 
         :param request: Request instance for DescribeTasksCostInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksCostInfoRequest`
@@ -2766,7 +2766,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasksOverview(self, request):
-        """查看任务概览页
+        r"""查看任务概览页
 
         :param request: Request instance for DescribeTasksOverview.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksOverviewRequest`
@@ -2789,7 +2789,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeThirdPartyAccessUser(self, request):
-        """本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
+        r"""本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
 
         :param request: Request instance for DescribeThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserRequest`
@@ -2812,7 +2812,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUDFPolicy(self, request):
-        """获取UDF权限信息
+        r"""获取UDF权限信息
 
         :param request: Request instance for DescribeUDFPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUDFPolicyRequest`
@@ -2835,7 +2835,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUpdatableDataEngines(self, request):
-        """查询可更新配置的引擎列表
+        r"""查询可更新配置的引擎列表
 
         :param request: Request instance for DescribeUpdatableDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesRequest`
@@ -2858,7 +2858,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserDataEngineConfig(self, request):
-        """查询用户自定义引擎参数
+        r"""查询用户自定义引擎参数
 
         :param request: Request instance for DescribeUserDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigRequest`
@@ -2881,7 +2881,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """获取用户详细信息
+        r"""获取用户详细信息
 
         :param request: Request instance for DescribeUserInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoRequest`
@@ -2904,7 +2904,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserRegisterTime(self, request):
-        """该接口（DescribeUserRegisterTime）用于查询当前用户注册时间，并判断是否是老用户。
+        r"""该接口（DescribeUserRegisterTime）用于查询当前用户注册时间，并判断是否是老用户。
 
         :param request: Request instance for DescribeUserRegisterTime.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRegisterTimeRequest`
@@ -2927,7 +2927,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserRoles(self, request):
-        """列举用户角色信息
+        r"""列举用户角色信息
 
         :param request: Request instance for DescribeUserRoles.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesRequest`
@@ -2950,7 +2950,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserType(self, request):
-        """获取用户类型
+        r"""获取用户类型
 
         :param request: Request instance for DescribeUserType.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeRequest`
@@ -2973,7 +2973,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserVpcConnection(self, request):
-        """查询用户vpc到引擎网络的连接
+        r"""查询用户vpc到引擎网络的连接
 
         :param request: Request instance for DescribeUserVpcConnection.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserVpcConnectionRequest`
@@ -2996,7 +2996,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUsers(self, request):
-        """获取用户列表信息
+        r"""获取用户列表信息
 
         :param request: Request instance for DescribeUsers.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUsersRequest`
@@ -3019,7 +3019,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeViews(self, request):
-        """本接口（DescribeViews）用于查询数据视图列表。
+        r"""本接口（DescribeViews）用于查询数据视图列表。
 
         :param request: Request instance for DescribeViews.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeViewsRequest`
@@ -3042,7 +3042,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeWorkGroupInfo(self, request):
-        """获取工作组详细信息
+        r"""获取工作组详细信息
 
         :param request: Request instance for DescribeWorkGroupInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoRequest`
@@ -3065,7 +3065,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeWorkGroups(self, request):
-        """获取工作组列表
+        r"""获取工作组列表
 
         :param request: Request instance for DescribeWorkGroups.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupsRequest`
@@ -3088,7 +3088,7 @@ class DlcClient(AbstractClient):
 
 
     def DetachUserPolicy(self, request):
-        """解绑用户鉴权策略
+        r"""解绑用户鉴权策略
 
         :param request: Request instance for DetachUserPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DetachUserPolicyRequest`
@@ -3111,7 +3111,7 @@ class DlcClient(AbstractClient):
 
 
     def DetachWorkGroupPolicy(self, request):
-        """解绑工作组鉴权策略
+        r"""解绑工作组鉴权策略
 
         :param request: Request instance for DetachWorkGroupPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DetachWorkGroupPolicyRequest`
@@ -3134,7 +3134,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDMSDatabase(self, request):
-        """DMS元数据删除库
+        r"""DMS元数据删除库
 
         :param request: Request instance for DropDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSDatabaseRequest`
@@ -3157,7 +3157,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDMSPartitions(self, request):
-        """DMS元数据删除分区
+        r"""DMS元数据删除分区
 
         :param request: Request instance for DropDMSPartitions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSPartitionsRequest`
@@ -3180,7 +3180,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDMSTable(self, request):
-        """DMS元数据删除表
+        r"""DMS元数据删除表
 
         :param request: Request instance for DropDMSTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSTableRequest`
@@ -3203,7 +3203,7 @@ class DlcClient(AbstractClient):
 
 
     def GenerateCreateMangedTableSql(self, request):
-        """生成创建托管表语句
+        r"""生成创建托管表语句
 
         :param request: Request instance for GenerateCreateMangedTableSql.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlRequest`
@@ -3226,7 +3226,7 @@ class DlcClient(AbstractClient):
 
 
     def GetOptimizerPolicy(self, request):
-        """GetOptimizerPolicy
+        r"""GetOptimizerPolicy
 
         :param request: Request instance for GetOptimizerPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyRequest`
@@ -3249,7 +3249,7 @@ class DlcClient(AbstractClient):
 
 
     def GrantDLCCatalogAccess(self, request):
-        """授权访问DLC Catalog
+        r"""授权访问DLC Catalog
 
         :param request: Request instance for GrantDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessRequest`
@@ -3272,7 +3272,7 @@ class DlcClient(AbstractClient):
 
 
     def LaunchStandardEngineResourceGroups(self, request):
-        """启动标准引擎资源组
+        r"""启动标准引擎资源组
 
         :param request: Request instance for LaunchStandardEngineResourceGroups.
         :type request: :class:`tencentcloud.dlc.v20210125.models.LaunchStandardEngineResourceGroupsRequest`
@@ -3295,7 +3295,7 @@ class DlcClient(AbstractClient):
 
 
     def ListTaskJobLogDetail(self, request):
-        """本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
+        r"""本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 
         :param request: Request instance for ListTaskJobLogDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ListTaskJobLogDetailRequest`
@@ -3318,7 +3318,7 @@ class DlcClient(AbstractClient):
 
 
     def ListTaskJobLogName(self, request):
-        """本接口（ListTaskJobLogName）用于获取spark-jar日志名称列表
+        r"""本接口（ListTaskJobLogName）用于获取spark-jar日志名称列表
 
         :param request: Request instance for ListTaskJobLogName.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ListTaskJobLogNameRequest`
@@ -3341,7 +3341,7 @@ class DlcClient(AbstractClient):
 
 
     def LockMetaData(self, request):
-        """元数据锁
+        r"""元数据锁
 
         :param request: Request instance for LockMetaData.
         :type request: :class:`tencentcloud.dlc.v20210125.models.LockMetaDataRequest`
@@ -3364,7 +3364,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyAdvancedStoreLocation(self, request):
-        """修改sql查询界面高级设置。
+        r"""修改sql查询界面高级设置。
 
         :param request: Request instance for ModifyAdvancedStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyAdvancedStoreLocationRequest`
@@ -3387,7 +3387,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyDataEngineDescription(self, request):
-        """修改引擎描述信息
+        r"""修改引擎描述信息
 
         :param request: Request instance for ModifyDataEngineDescription.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionRequest`
@@ -3410,7 +3410,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyGovernEventRule(self, request):
-        """修改数据治理事件阈值
+        r"""修改数据治理事件阈值
 
         :param request: Request instance for ModifyGovernEventRule.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleRequest`
@@ -3433,7 +3433,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkApp(self, request):
-        """更新spark作业
+        r"""更新spark作业
 
         :param request: Request instance for ModifySparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppRequest`
@@ -3456,7 +3456,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkAppBatch(self, request):
-        """本接口（ModifySparkAppBatch）用于批量修改Spark作业参数配置
+        r"""本接口（ModifySparkAppBatch）用于批量修改Spark作业参数配置
 
         :param request: Request instance for ModifySparkAppBatch.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchRequest`
@@ -3479,7 +3479,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """修改用户信息
+        r"""修改用户信息
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserRequest`
@@ -3502,7 +3502,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyUserType(self, request):
-        """修改用户类型。只有管理员用户能够调用该接口进行操作
+        r"""修改用户类型。只有管理员用户能够调用该接口进行操作
 
         :param request: Request instance for ModifyUserType.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeRequest`
@@ -3525,7 +3525,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyWorkGroup(self, request):
-        """修改工作组信息
+        r"""修改工作组信息
 
         :param request: Request instance for ModifyWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyWorkGroupRequest`
@@ -3548,7 +3548,7 @@ class DlcClient(AbstractClient):
 
 
     def PauseStandardEngineResourceGroups(self, request):
-        """暂停标准引擎session
+        r"""暂停标准引擎session
 
         :param request: Request instance for PauseStandardEngineResourceGroups.
         :type request: :class:`tencentcloud.dlc.v20210125.models.PauseStandardEngineResourceGroupsRequest`
@@ -3571,7 +3571,7 @@ class DlcClient(AbstractClient):
 
 
     def QueryInternalTableWarehouse(self, request):
-        """本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
+        r"""本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
 
         :param request: Request instance for QueryInternalTableWarehouse.
         :type request: :class:`tencentcloud.dlc.v20210125.models.QueryInternalTableWarehouseRequest`
@@ -3594,7 +3594,7 @@ class DlcClient(AbstractClient):
 
 
     def QueryResult(self, request):
-        """获取任务结果查询
+        r"""获取任务结果查询
 
         :param request: Request instance for QueryResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.QueryResultRequest`
@@ -3617,7 +3617,7 @@ class DlcClient(AbstractClient):
 
 
     def QueryTaskCostDetail(self, request):
-        """该接口（QueryTaskCostDetail）用于查询任务消耗明细
+        r"""该接口（QueryTaskCostDetail）用于查询任务消耗明细
 
         :param request: Request instance for QueryTaskCostDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailRequest`
@@ -3640,7 +3640,7 @@ class DlcClient(AbstractClient):
 
 
     def RegisterThirdPartyAccessUser(self, request):
-        """本接口（RegisterThirdPartyAccessUser）用于开通第三方平台访问
+        r"""本接口（RegisterThirdPartyAccessUser）用于开通第三方平台访问
 
         :param request: Request instance for RegisterThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserRequest`
@@ -3663,7 +3663,7 @@ class DlcClient(AbstractClient):
 
 
     def RenewDataEngine(self, request):
-        """续费数据引擎
+        r"""续费数据引擎
 
         :param request: Request instance for RenewDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineRequest`
@@ -3686,7 +3686,7 @@ class DlcClient(AbstractClient):
 
 
     def ReportHeartbeatMetaData(self, request):
-        """上报元数据心跳
+        r"""上报元数据心跳
 
         :param request: Request instance for ReportHeartbeatMetaData.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ReportHeartbeatMetaDataRequest`
@@ -3709,7 +3709,7 @@ class DlcClient(AbstractClient):
 
 
     def RestartDataEngine(self, request):
-        """重启引擎
+        r"""重启引擎
 
         :param request: Request instance for RestartDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineRequest`
@@ -3732,7 +3732,7 @@ class DlcClient(AbstractClient):
 
 
     def RevokeDLCCatalogAccess(self, request):
-        """撤销DLC Catalog访问权限
+        r"""撤销DLC Catalog访问权限
 
         :param request: Request instance for RevokeDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessRequest`
@@ -3755,7 +3755,7 @@ class DlcClient(AbstractClient):
 
 
     def RollbackDataEngineImage(self, request):
-        """回滚引擎镜像版本
+        r"""回滚引擎镜像版本
 
         :param request: Request instance for RollbackDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageRequest`
@@ -3778,7 +3778,7 @@ class DlcClient(AbstractClient):
 
 
     def SuspendResumeDataEngine(self, request):
-        """本接口用于控制挂起或启动数据引擎
+        r"""本接口用于控制挂起或启动数据引擎
 
         :param request: Request instance for SuspendResumeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`
@@ -3801,7 +3801,7 @@ class DlcClient(AbstractClient):
 
 
     def SwitchDataEngine(self, request):
-        """切换主备集群
+        r"""切换主备集群
 
         :param request: Request instance for SwitchDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineRequest`
@@ -3824,7 +3824,7 @@ class DlcClient(AbstractClient):
 
 
     def SwitchDataEngineImage(self, request):
-        """切换引擎镜像版本
+        r"""切换引擎镜像版本
 
         :param request: Request instance for SwitchDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageRequest`
@@ -3847,7 +3847,7 @@ class DlcClient(AbstractClient):
 
 
     def UnbindWorkGroupsFromUser(self, request):
-        """解绑用户上的用户组
+        r"""解绑用户上的用户组
 
         :param request: Request instance for UnbindWorkGroupsFromUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UnbindWorkGroupsFromUserRequest`
@@ -3870,7 +3870,7 @@ class DlcClient(AbstractClient):
 
 
     def UnboundDatasourceHouse(self, request):
-        """解绑数据源与队列
+        r"""解绑数据源与队列
 
         :param request: Request instance for UnboundDatasourceHouse.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UnboundDatasourceHouseRequest`
@@ -3893,7 +3893,7 @@ class DlcClient(AbstractClient):
 
 
     def UnlockMetaData(self, request):
-        """元数据解锁
+        r"""元数据解锁
 
         :param request: Request instance for UnlockMetaData.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UnlockMetaDataRequest`
@@ -3916,7 +3916,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateDataEngine(self, request):
-        """本接口用于更新数据引擎配置
+        r"""本接口用于更新数据引擎配置
 
         :param request: Request instance for UpdateDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineRequest`
@@ -3939,7 +3939,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateDataEngineConfig(self, request):
-        """用户某种操作，触发引擎配置修改
+        r"""用户某种操作，触发引擎配置修改
 
         :param request: Request instance for UpdateDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigRequest`
@@ -3962,7 +3962,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateDataMaskStrategy(self, request):
-        """更新数据脱敏策略
+        r"""更新数据脱敏策略
 
         :param request: Request instance for UpdateDataMaskStrategy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataMaskStrategyRequest`
@@ -3985,7 +3985,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateEngineResourceGroupNetworkConfigInfo(self, request):
-        """更新标准引擎资源组网络配置信息
+        r"""更新标准引擎资源组网络配置信息
 
         :param request: Request instance for UpdateEngineResourceGroupNetworkConfigInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateEngineResourceGroupNetworkConfigInfoRequest`
@@ -4008,7 +4008,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateNetworkConnection(self, request):
-        """更新网络配置
+        r"""更新网络配置
 
         :param request: Request instance for UpdateNetworkConnection.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateNetworkConnectionRequest`
@@ -4031,7 +4031,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateRowFilter(self, request):
-        """此接口用于更新行过滤规则。注意只能更新过滤规则，不能更新规格对象catalog，database和table。
+        r"""此接口用于更新行过滤规则。注意只能更新过滤规则，不能更新规格对象catalog，database和table。
 
         :param request: Request instance for UpdateRowFilter.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateRowFilterRequest`
@@ -4054,7 +4054,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateStandardEngineResourceGroupBaseInfo(self, request):
-        """更新标准引擎资源组基础信息
+        r"""更新标准引擎资源组基础信息
 
         :param request: Request instance for UpdateStandardEngineResourceGroupBaseInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateStandardEngineResourceGroupBaseInfoRequest`
@@ -4077,7 +4077,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateStandardEngineResourceGroupConfigInfo(self, request):
-        """更新标准引擎资源组基础信息
+        r"""更新标准引擎资源组基础信息
 
         :param request: Request instance for UpdateStandardEngineResourceGroupConfigInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateStandardEngineResourceGroupConfigInfoRequest`
@@ -4100,7 +4100,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateStandardEngineResourceGroupResourceInfo(self, request):
-        """更新标准引擎资源组基础信息
+        r"""更新标准引擎资源组基础信息
 
         :param request: Request instance for UpdateStandardEngineResourceGroupResourceInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateStandardEngineResourceGroupResourceInfoRequest`
@@ -4123,7 +4123,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateUDFPolicy(self, request):
-        """UDP权限修改
+        r"""UDP权限修改
 
         :param request: Request instance for UpdateUDFPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUDFPolicyRequest`
@@ -4146,7 +4146,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateUserDataEngineConfig(self, request):
-        """修改用户引擎自定义配置
+        r"""修改用户引擎自定义配置
 
         :param request: Request instance for UpdateUserDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigRequest`
@@ -4169,7 +4169,7 @@ class DlcClient(AbstractClient):
 
 
     def UpgradeDataEngineImage(self, request):
-        """升级引擎镜像
+        r"""升级引擎镜像
 
         :param request: Request instance for UpgradeDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageRequest`

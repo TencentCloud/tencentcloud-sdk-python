@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddProjectRequest(AbstractModel):
-    """AddProject请求参数结构体
+    r"""AddProject请求参数结构体
 
     """
 
@@ -35,7 +35,7 @@ class AddProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -46,7 +46,7 @@ class AddProjectRequest(AbstractModel):
 
     @property
     def Info(self):
-        """项目描述
+        r"""项目描述
         :rtype: str
         """
         return self._Info
@@ -70,7 +70,7 @@ class AddProjectRequest(AbstractModel):
 
 
 class AddProjectResponse(AbstractModel):
-    """AddProject返回参数结构体
+    r"""AddProject返回参数结构体
 
     """
 
@@ -89,7 +89,7 @@ class AddProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目Id
+        r"""项目Id
         :rtype: int
         """
         return self._ProjectId
@@ -100,7 +100,7 @@ class AddProjectResponse(AbstractModel):
 
     @property
     def IsNew(self):
-        """是否为新项目，1是新项目，0不是新项目
+        r"""是否为新项目，1是新项目，0不是新项目
         :rtype: int
         """
         return self._IsNew
@@ -111,7 +111,7 @@ class AddProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -128,7 +128,7 @@ class AddProjectResponse(AbstractModel):
 
 
 class AddResourceTagRequest(AbstractModel):
-    """AddResourceTag请求参数结构体
+    r"""AddResourceTag请求参数结构体
 
     """
 
@@ -147,7 +147,7 @@ class AddResourceTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
+        r"""需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :rtype: str
         """
         return self._TagKey
@@ -158,7 +158,7 @@ class AddResourceTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
+        r"""需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :rtype: str
         """
         return self._TagValue
@@ -169,7 +169,7 @@ class AddResourceTagRequest(AbstractModel):
 
     @property
     def Resource(self):
-        """待关联的资源，用标准的资源六段式表示。正确的资源六段式请参考：https://cloud.tencent.com/document/product/651/89122
+        r"""待关联的资源，用标准的资源六段式表示。正确的资源六段式请参考：https://cloud.tencent.com/document/product/651/89122
         :rtype: str
         """
         return self._Resource
@@ -194,7 +194,7 @@ class AddResourceTagRequest(AbstractModel):
 
 
 class AddResourceTagResponse(AbstractModel):
-    """AddResourceTag返回参数结构体
+    r"""AddResourceTag返回参数结构体
 
     """
 
@@ -207,7 +207,7 @@ class AddResourceTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -222,7 +222,7 @@ class AddResourceTagResponse(AbstractModel):
 
 
 class AttachResourcesTagRequest(AbstractModel):
-    """AttachResourcesTag请求参数结构体
+    r"""AttachResourcesTag请求参数结构体
 
     """
 
@@ -250,7 +250,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+        r"""业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
         :rtype: str
         """
         return self._ServiceType
@@ -261,7 +261,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源ID数组，资源个数最多为50
+        r"""资源ID数组，资源个数最多为50
         :rtype: list of str
         """
         return self._ResourceIds
@@ -272,7 +272,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
+        r"""需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :rtype: str
         """
         return self._TagKey
@@ -283,7 +283,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
+        r"""需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :rtype: str
         """
         return self._TagValue
@@ -294,7 +294,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，不区分地域的资源则不必填。区分地域的资源则必填，且必填时必须是参数ResourceIds.N资源所对应的地域，且如果ResourceIds.N为批量时，这些资源也必须是同一个地域的。例如示例值：ap-beijing，则参数ResourceIds.N中都应该填写该地域的资源。
+        r"""资源所在地域，不区分地域的资源则不必填。区分地域的资源则必填，且必填时必须是参数ResourceIds.N资源所对应的地域，且如果ResourceIds.N为批量时，这些资源也必须是同一个地域的。例如示例值：ap-beijing，则参数ResourceIds.N中都应该填写该地域的资源。
         :rtype: str
         """
         return self._ResourceRegion
@@ -305,7 +305,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """资源前缀（资源六段式中最后一段"/"前面的部分，例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
+        r"""资源前缀（资源六段式中最后一段"/"前面的部分，例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -333,7 +333,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
 
 class AttachResourcesTagResponse(AbstractModel):
-    """AttachResourcesTag返回参数结构体
+    r"""AttachResourcesTag返回参数结构体
 
     """
 
@@ -346,7 +346,7 @@ class AttachResourcesTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -361,7 +361,7 @@ class AttachResourcesTagResponse(AbstractModel):
 
 
 class CreateTagRequest(AbstractModel):
-    """CreateTag请求参数结构体
+    r"""CreateTag请求参数结构体
 
     """
 
@@ -377,7 +377,7 @@ class CreateTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -388,7 +388,7 @@ class CreateTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -412,7 +412,7 @@ class CreateTagRequest(AbstractModel):
 
 
 class CreateTagResponse(AbstractModel):
-    """CreateTag返回参数结构体
+    r"""CreateTag返回参数结构体
 
     """
 
@@ -425,7 +425,7 @@ class CreateTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -440,7 +440,7 @@ class CreateTagResponse(AbstractModel):
 
 
 class CreateTagsRequest(AbstractModel):
-    """CreateTags请求参数结构体
+    r"""CreateTags请求参数结构体
 
     """
 
@@ -454,7 +454,7 @@ N取值范围：0~9
 
     @property
     def Tags(self):
-        """标签列表。
+        r"""标签列表。
 N取值范围：0~9
         :rtype: list of Tag
         """
@@ -483,7 +483,7 @@ N取值范围：0~9
 
 
 class CreateTagsResponse(AbstractModel):
-    """CreateTags返回参数结构体
+    r"""CreateTags返回参数结构体
 
     """
 
@@ -496,7 +496,7 @@ class CreateTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -511,7 +511,7 @@ class CreateTagsResponse(AbstractModel):
 
 
 class DeleteResourceTagRequest(AbstractModel):
-    """DeleteResourceTag请求参数结构体
+    r"""DeleteResourceTag请求参数结构体
 
     """
 
@@ -527,7 +527,7 @@ class DeleteResourceTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -538,7 +538,7 @@ class DeleteResourceTagRequest(AbstractModel):
 
     @property
     def Resource(self):
-        """资源六段式。示例：qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584
+        r"""资源六段式。示例：qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584
         :rtype: str
         """
         return self._Resource
@@ -562,7 +562,7 @@ class DeleteResourceTagRequest(AbstractModel):
 
 
 class DeleteResourceTagResponse(AbstractModel):
-    """DeleteResourceTag返回参数结构体
+    r"""DeleteResourceTag返回参数结构体
 
     """
 
@@ -575,7 +575,7 @@ class DeleteResourceTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -590,7 +590,7 @@ class DeleteResourceTagResponse(AbstractModel):
 
 
 class DeleteTagRequest(AbstractModel):
-    """DeleteTag请求参数结构体
+    r"""DeleteTag请求参数结构体
 
     """
 
@@ -606,7 +606,7 @@ class DeleteTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """需要删除的标签键
+        r"""需要删除的标签键
         :rtype: str
         """
         return self._TagKey
@@ -617,7 +617,7 @@ class DeleteTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """需要删除的标签值
+        r"""需要删除的标签值
         :rtype: str
         """
         return self._TagValue
@@ -641,7 +641,7 @@ class DeleteTagRequest(AbstractModel):
 
 
 class DeleteTagResponse(AbstractModel):
-    """DeleteTag返回参数结构体
+    r"""DeleteTag返回参数结构体
 
     """
 
@@ -654,7 +654,7 @@ class DeleteTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -669,7 +669,7 @@ class DeleteTagResponse(AbstractModel):
 
 
 class DeleteTagsRequest(AbstractModel):
-    """DeleteTags请求参数结构体
+    r"""DeleteTags请求参数结构体
 
     """
 
@@ -683,7 +683,7 @@ N取值范围：0~9
 
     @property
     def Tags(self):
-        """标签列表。
+        r"""标签列表。
 N取值范围：0~9
         :rtype: list of Tag
         """
@@ -712,7 +712,7 @@ N取值范围：0~9
 
 
 class DeleteTagsResponse(AbstractModel):
-    """DeleteTags返回参数结构体
+    r"""DeleteTags返回参数结构体
 
     """
 
@@ -725,7 +725,7 @@ class DeleteTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -740,7 +740,7 @@ class DeleteTagsResponse(AbstractModel):
 
 
 class DescribeProjectsRequest(AbstractModel):
-    """DescribeProjects请求参数结构体
+    r"""DescribeProjects请求参数结构体
 
     """
 
@@ -765,7 +765,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def AllList(self):
-        """传1拉取所有项目（包括隐藏项目），传0拉取显示项目
+        r"""传1拉取所有项目（包括隐藏项目），传0拉取显示项目
         :rtype: int
         """
         return self._AllList
@@ -776,7 +776,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页条数，固定值1000。
+        r"""分页条数，固定值1000。
         :rtype: int
         """
         return self._Limit
@@ -787,7 +787,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量。
+        r"""分页偏移量。
         :rtype: int
         """
         return self._Offset
@@ -798,7 +798,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """按项目ID筛选，大于0
+        r"""按项目ID筛选，大于0
         :rtype: int
         """
         return self._ProjectId
@@ -809,7 +809,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def ProjectName(self):
-        """按项目名称筛选
+        r"""按项目名称筛选
         :rtype: str
         """
         return self._ProjectName
@@ -836,7 +836,7 @@ class DescribeProjectsRequest(AbstractModel):
 
 
 class DescribeProjectsResponse(AbstractModel):
-    """DescribeProjects返回参数结构体
+    r"""DescribeProjects返回参数结构体
 
     """
 
@@ -855,7 +855,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """数据总条数
+        r"""数据总条数
         :rtype: int
         """
         return self._Total
@@ -866,7 +866,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def Projects(self):
-        """项目列表
+        r"""项目列表
         :rtype: list of Project
         """
         return self._Projects
@@ -877,7 +877,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -899,7 +899,7 @@ class DescribeProjectsResponse(AbstractModel):
 
 
 class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
-    """DescribeResourceTagsByResourceIds请求参数结构体
+    r"""DescribeResourceTagsByResourceIds请求参数结构体
 
     """
 
@@ -930,7 +930,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+        r"""业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
         :rtype: str
         """
         return self._ServiceType
@@ -941,7 +941,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """资源前缀，示例 instance
+        r"""资源前缀，示例 instance
         :rtype: str
         """
         return self._ResourcePrefix
@@ -952,7 +952,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源ID数组，大小不超过50
+        r"""资源ID数组，大小不超过50
         :rtype: list of str
         """
         return self._ResourceIds
@@ -963,7 +963,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -974,7 +974,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -985,7 +985,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -996,7 +996,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -1025,7 +1025,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
 
 class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
-    """DescribeResourceTagsByResourceIds返回参数结构体
+    r"""DescribeResourceTagsByResourceIds返回参数结构体
 
     """
 
@@ -1050,7 +1050,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -1061,7 +1061,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -1072,7 +1072,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -1083,7 +1083,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagResource
         """
         return self._Tags
@@ -1094,7 +1094,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1118,7 +1118,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
 
 class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
-    """DescribeResourceTagsByResourceIdsSeq请求参数结构体
+    r"""DescribeResourceTagsByResourceIdsSeq请求参数结构体
 
     """
 
@@ -1146,7 +1146,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -1157,7 +1157,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1168,7 +1168,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源唯一标记
+        r"""资源唯一标记
         :rtype: list of str
         """
         return self._ResourceIds
@@ -1179,7 +1179,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -1190,7 +1190,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -1201,7 +1201,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -1229,7 +1229,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
 
 class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
-    """DescribeResourceTagsByResourceIdsSeq返回参数结构体
+    r"""DescribeResourceTagsByResourceIdsSeq返回参数结构体
 
     """
 
@@ -1254,7 +1254,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -1265,7 +1265,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -1276,7 +1276,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -1287,7 +1287,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagResource
         """
         return self._Tags
@@ -1298,7 +1298,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1322,7 +1322,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
 
 class DescribeResourceTagsByTagKeysRequest(AbstractModel):
-    """DescribeResourceTagsByTagKeys请求参数结构体
+    r"""DescribeResourceTagsByTagKeys请求参数结构体
 
     """
 
@@ -1353,7 +1353,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -1364,7 +1364,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1375,7 +1375,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -1386,7 +1386,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源唯一标识ID的列表，列表容量不超过20
+        r"""资源唯一标识ID的列表，列表容量不超过20
         :rtype: list of str
         """
         return self._ResourceIds
@@ -1397,7 +1397,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """资源标签键列表，列表容量不超过20
+        r"""资源标签键列表，列表容量不超过20
         :rtype: list of str
         """
         return self._TagKeys
@@ -1408,7 +1408,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 400
+        r"""每页大小，默认为 400
         :rtype: int
         """
         return self._Limit
@@ -1419,7 +1419,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -1448,7 +1448,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
 
 class DescribeResourceTagsByTagKeysResponse(AbstractModel):
-    """DescribeResourceTagsByTagKeys返回参数结构体
+    r"""DescribeResourceTagsByTagKeys返回参数结构体
 
     """
 
@@ -1473,7 +1473,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -1484,7 +1484,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -1495,7 +1495,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -1506,7 +1506,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of ResourceIdTag
         """
         return self._Rows
@@ -1517,7 +1517,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1541,7 +1541,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
 
 class DescribeResourceTagsRequest(AbstractModel):
-    """DescribeResourceTags请求参数结构体
+    r"""DescribeResourceTags请求参数结构体
 
     """
 
@@ -1575,7 +1575,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """资源创建者UIN
+        r"""资源创建者UIN
         :rtype: int
         """
         return self._CreateUin
@@ -1586,7 +1586,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -1597,7 +1597,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 ckafka。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 ckafka。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -1608,7 +1608,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1619,7 +1619,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源唯一标识（资源六段式中最后一段"/"后面的部分）。注：只输入ResourceId查询时，如资源量大可能较慢，或无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）。若传入的是cos资源的Id，则CosResourceId 字段请同时传1。
+        r"""资源唯一标识（资源六段式中最后一段"/"后面的部分）。注：只输入ResourceId查询时，如资源量大可能较慢，或无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）。若传入的是cos资源的Id，则CosResourceId 字段请同时传1。
         :rtype: str
         """
         return self._ResourceId
@@ -1630,7 +1630,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -1641,7 +1641,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -1652,7 +1652,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def CosResourceId(self):
-        """是否为cos的资源，取值 0 表示：非cos资源。取值1 表示：cos资源，且此时ResourceId也为必填。不填则默认为 0 
+        r"""是否为cos的资源，取值 0 表示：非cos资源。取值1 表示：cos资源，且此时ResourceId也为必填。不填则默认为 0 
         :rtype: int
         """
         return self._CosResourceId
@@ -1682,7 +1682,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
 
 class DescribeResourceTagsResponse(AbstractModel):
-    """DescribeResourceTags返回参数结构体
+    r"""DescribeResourceTags返回参数结构体
 
     """
 
@@ -1707,7 +1707,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -1718,7 +1718,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -1729,7 +1729,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -1740,7 +1740,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of TagResource
         """
         return self._Rows
@@ -1751,7 +1751,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1775,7 +1775,7 @@ class DescribeResourceTagsResponse(AbstractModel):
 
 
 class DescribeResourcesByTagsRequest(AbstractModel):
-    """DescribeResourcesByTags请求参数结构体
+    r"""DescribeResourcesByTags请求参数结构体
 
     """
 
@@ -1809,7 +1809,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """标签过滤数组
+        r"""标签过滤数组
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -1820,7 +1820,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建标签者uin
+        r"""创建标签者uin
         :rtype: int
         """
         return self._CreateUin
@@ -1831,7 +1831,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -1842,7 +1842,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -1853,7 +1853,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1864,7 +1864,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源唯一标记
+        r"""资源唯一标记
         :rtype: str
         """
         return self._ResourceId
@@ -1875,7 +1875,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -1886,7 +1886,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -1921,7 +1921,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
 
 class DescribeResourcesByTagsResponse(AbstractModel):
-    """DescribeResourcesByTags返回参数结构体
+    r"""DescribeResourcesByTags返回参数结构体
 
     """
 
@@ -1946,7 +1946,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -1957,7 +1957,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -1968,7 +1968,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -1979,7 +1979,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of ResourceTag
         """
         return self._Rows
@@ -1990,7 +1990,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2014,7 +2014,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
 
 class DescribeResourcesByTagsUnionRequest(AbstractModel):
-    """DescribeResourcesByTagsUnion请求参数结构体
+    r"""DescribeResourcesByTagsUnion请求参数结构体
 
     """
 
@@ -2048,7 +2048,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """标签过滤数组
+        r"""标签过滤数组
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -2059,7 +2059,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建标签者uin
+        r"""创建标签者uin
         :rtype: int
         """
         return self._CreateUin
@@ -2070,7 +2070,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -2081,7 +2081,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -2092,7 +2092,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -2103,7 +2103,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源唯一标记
+        r"""资源唯一标记
         :rtype: str
         """
         return self._ResourceId
@@ -2114,7 +2114,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -2125,7 +2125,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -2160,7 +2160,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
 
 class DescribeResourcesByTagsUnionResponse(AbstractModel):
-    """DescribeResourcesByTagsUnion返回参数结构体
+    r"""DescribeResourcesByTagsUnion返回参数结构体
 
     """
 
@@ -2185,7 +2185,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -2196,7 +2196,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -2207,7 +2207,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -2218,7 +2218,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of ResourceTag
         """
         return self._Rows
@@ -2229,7 +2229,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2253,7 +2253,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
 
 class DescribeTagKeysRequest(AbstractModel):
-    """DescribeTagKeys请求参数结构体
+    r"""DescribeTagKeys请求参数结构体
 
     """
 
@@ -2278,7 +2278,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :rtype: int
         """
         return self._CreateUin
@@ -2289,7 +2289,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -2300,7 +2300,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15，最大1000
+        r"""每页大小，默认为 15，最大1000
         :rtype: int
         """
         return self._Limit
@@ -2311,7 +2311,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        """是否展现项目。1:展示  0:不展示
+        r"""是否展现项目。1:展示  0:不展示
         :rtype: int
         """
         return self._ShowProject
@@ -2322,7 +2322,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -2349,7 +2349,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
 
 class DescribeTagKeysResponse(AbstractModel):
-    """DescribeTagKeys返回参数结构体
+    r"""DescribeTagKeys返回参数结构体
 
     """
 
@@ -2374,7 +2374,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -2385,7 +2385,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -2396,7 +2396,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -2407,7 +2407,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of str
         """
         return self._Tags
@@ -2418,7 +2418,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2437,7 +2437,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
 
 class DescribeTagValuesRequest(AbstractModel):
-    """DescribeTagValues请求参数结构体
+    r"""DescribeTagValues请求参数结构体
 
     """
 
@@ -2462,7 +2462,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键列表
+        r"""标签键列表
         :rtype: list of str
         """
         return self._TagKeys
@@ -2473,7 +2473,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :rtype: int
         """
         return self._CreateUin
@@ -2484,7 +2484,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -2495,7 +2495,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -2506,7 +2506,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -2533,7 +2533,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
 
 class DescribeTagValuesResponse(AbstractModel):
-    """DescribeTagValues返回参数结构体
+    r"""DescribeTagValues返回参数结构体
 
     """
 
@@ -2558,7 +2558,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -2569,7 +2569,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -2580,7 +2580,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -2591,7 +2591,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -2602,7 +2602,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2626,7 +2626,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
 
 class DescribeTagValuesSeqRequest(AbstractModel):
-    """DescribeTagValuesSeq请求参数结构体
+    r"""DescribeTagValuesSeq请求参数结构体
 
     """
 
@@ -2648,7 +2648,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键列表
+        r"""标签键列表
         :rtype: list of str
         """
         return self._TagKeys
@@ -2659,7 +2659,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :rtype: int
         """
         return self._CreateUin
@@ -2670,7 +2670,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -2681,7 +2681,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -2707,7 +2707,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
 
 class DescribeTagValuesSeqResponse(AbstractModel):
-    """DescribeTagValuesSeq返回参数结构体
+    r"""DescribeTagValuesSeq返回参数结构体
 
     """
 
@@ -2732,7 +2732,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -2743,7 +2743,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -2754,7 +2754,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -2765,7 +2765,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -2776,7 +2776,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2800,7 +2800,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
 
 class DescribeTagsRequest(AbstractModel):
-    """DescribeTags请求参数结构体
+    r"""DescribeTags请求参数结构体
 
     """
 
@@ -2831,7 +2831,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
         :rtype: str
         """
         return self._TagKey
@@ -2842,7 +2842,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
         :rtype: str
         """
         return self._TagValue
@@ -2853,7 +2853,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -2864,7 +2864,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -2875,7 +2875,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :rtype: int
         """
         return self._CreateUin
@@ -2886,7 +2886,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        r"""标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
         :rtype: list of str
         """
         return self._TagKeys
@@ -2897,7 +2897,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        """是否展现项目标签。1:展示  0:不展示
+        r"""是否展现项目标签。1:展示  0:不展示
         :rtype: int
         """
         return self._ShowProject
@@ -2926,7 +2926,7 @@ class DescribeTagsRequest(AbstractModel):
 
 
 class DescribeTagsResponse(AbstractModel):
-    """DescribeTags返回参数结构体
+    r"""DescribeTags返回参数结构体
 
     """
 
@@ -2951,7 +2951,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -2962,7 +2962,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -2973,7 +2973,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -2984,7 +2984,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagWithDelete
         """
         return self._Tags
@@ -2995,7 +2995,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3019,7 +3019,7 @@ class DescribeTagsResponse(AbstractModel):
 
 
 class DescribeTagsSeqRequest(AbstractModel):
-    """DescribeTagsSeq请求参数结构体
+    r"""DescribeTagsSeq请求参数结构体
 
     """
 
@@ -3050,7 +3050,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
         :rtype: str
         """
         return self._TagKey
@@ -3061,7 +3061,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
         :rtype: str
         """
         return self._TagValue
@@ -3072,7 +3072,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :rtype: int
         """
         return self._Offset
@@ -3083,7 +3083,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为 15
+        r"""每页大小，默认为 15
         :rtype: int
         """
         return self._Limit
@@ -3094,7 +3094,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :rtype: int
         """
         return self._CreateUin
@@ -3105,7 +3105,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        r"""标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
         :rtype: list of str
         """
         return self._TagKeys
@@ -3116,7 +3116,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        """是否展现项目标签。1:展示  0:不展示
+        r"""是否展现项目标签。1:展示  0:不展示
         :rtype: int
         """
         return self._ShowProject
@@ -3145,7 +3145,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
 
 class DescribeTagsSeqResponse(AbstractModel):
-    """DescribeTagsSeq返回参数结构体
+    r"""DescribeTagsSeq返回参数结构体
 
     """
 
@@ -3170,7 +3170,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """结果总数
+        r"""结果总数
         :rtype: int
         """
         return self._TotalCount
@@ -3181,7 +3181,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """数据位移偏量
+        r"""数据位移偏量
         :rtype: int
         """
         return self._Offset
@@ -3192,7 +3192,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -3203,7 +3203,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        r"""标签列表
         :rtype: list of TagWithDelete
         """
         return self._Tags
@@ -3214,7 +3214,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3238,7 +3238,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
 
 class DetachResourcesTagRequest(AbstractModel):
-    """DetachResourcesTag请求参数结构体
+    r"""DetachResourcesTag请求参数结构体
 
     """
 
@@ -3263,7 +3263,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
         :rtype: str
         """
         return self._ServiceType
@@ -3274,7 +3274,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源ID数组，资源个数最多为50
+        r"""资源ID数组，资源个数最多为50
         :rtype: list of str
         """
         return self._ResourceIds
@@ -3285,7 +3285,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """需要解绑的标签键
+        r"""需要解绑的标签键
         :rtype: str
         """
         return self._TagKey
@@ -3296,7 +3296,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -3307,7 +3307,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -3334,7 +3334,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
 
 class DetachResourcesTagResponse(AbstractModel):
-    """DetachResourcesTag返回参数结构体
+    r"""DetachResourcesTag返回参数结构体
 
     """
 
@@ -3347,7 +3347,7 @@ class DetachResourcesTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3362,7 +3362,7 @@ class DetachResourcesTagResponse(AbstractModel):
 
 
 class FailedResource(AbstractModel):
-    """失败资源信息。
+    r"""失败资源信息。
     绑定或解绑资源标签时失败返回
 
     """
@@ -3382,7 +3382,7 @@ class FailedResource(AbstractModel):
 
     @property
     def Resource(self):
-        """失败的资源六段式
+        r"""失败的资源六段式
         :rtype: str
         """
         return self._Resource
@@ -3393,7 +3393,7 @@ class FailedResource(AbstractModel):
 
     @property
     def Code(self):
-        """错误码
+        r"""错误码
         :rtype: str
         """
         return self._Code
@@ -3404,7 +3404,7 @@ class FailedResource(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        r"""错误信息
         :rtype: str
         """
         return self._Message
@@ -3429,7 +3429,7 @@ class FailedResource(AbstractModel):
 
 
 class GetResourcesRequest(AbstractModel):
-    """GetResources请求参数结构体
+    r"""GetResources请求参数结构体
 
     """
 
@@ -3459,7 +3459,7 @@ N取值范围：0~5。
 
     @property
     def ResourceList(self):
-        """资源六段式列表。腾讯云使用资源六段式描述一个资源。
+        r"""资源六段式列表。腾讯云使用资源六段式描述一个资源。
 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
 如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。
 N取值范围：0~9
@@ -3473,7 +3473,7 @@ N取值范围：0~9
 
     @property
     def TagFilters(self):
-        """标签键和标签值。
+        r"""标签键和标签值。
 指定多个标签，会查询同时绑定了该多个标签的资源。
 N取值范围：0~5。
 每个TagFilters中的TagValue最多支持10个
@@ -3487,7 +3487,7 @@ N取值范围：0~5。
 
     @property
     def PaginationToken(self):
-        """从上一页的响应中获取的下一页的Token值。
+        r"""从上一页的响应中获取的下一页的Token值。
 如果是第一次请求，设置为空。
         :rtype: str
         """
@@ -3499,7 +3499,7 @@ N取值范围：0~5。
 
     @property
     def MaxResults(self):
-        """每一页返回的数据最大条数，最大200。
+        r"""每一页返回的数据最大条数，最大200。
 缺省值：50。
         :rtype: int
         """
@@ -3531,7 +3531,7 @@ N取值范围：0~5。
 
 
 class GetResourcesResponse(AbstractModel):
-    """GetResources返回参数结构体
+    r"""GetResources返回参数结构体
 
     """
 
@@ -3550,7 +3550,7 @@ class GetResourcesResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """获取的下一页的Token值
+        r"""获取的下一页的Token值
         :rtype: str
         """
         return self._PaginationToken
@@ -3561,7 +3561,7 @@ class GetResourcesResponse(AbstractModel):
 
     @property
     def ResourceTagMappingList(self):
-        """资源及关联的标签(键和值)列表
+        r"""资源及关联的标签(键和值)列表
         :rtype: list of ResourceTagMapping
         """
         return self._ResourceTagMappingList
@@ -3572,7 +3572,7 @@ class GetResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3594,7 +3594,7 @@ class GetResourcesResponse(AbstractModel):
 
 
 class GetTagKeysRequest(AbstractModel):
-    """GetTagKeys请求参数结构体
+    r"""GetTagKeys请求参数结构体
 
     """
 
@@ -3615,7 +3615,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """从上一页的响应中获取的下一页的Token值。
+        r"""从上一页的响应中获取的下一页的Token值。
 如果是第一次请求，设置为空。
         :rtype: str
         """
@@ -3627,7 +3627,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """每一页返回的数据最大条数，最大1000。
+        r"""每一页返回的数据最大条数，最大1000。
 缺省值：50。
         :rtype: int
         """
@@ -3639,7 +3639,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -3664,7 +3664,7 @@ class GetTagKeysRequest(AbstractModel):
 
 
 class GetTagKeysResponse(AbstractModel):
-    """GetTagKeys返回参数结构体
+    r"""GetTagKeys返回参数结构体
 
     """
 
@@ -3683,7 +3683,7 @@ class GetTagKeysResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
         :rtype: str
         """
         return self._PaginationToken
@@ -3694,7 +3694,7 @@ class GetTagKeysResponse(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键信息。
+        r"""标签键信息。
         :rtype: list of str
         """
         return self._TagKeys
@@ -3705,7 +3705,7 @@ class GetTagKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3722,7 +3722,7 @@ class GetTagKeysResponse(AbstractModel):
 
 
 class GetTagValuesRequest(AbstractModel):
-    """GetTagValues请求参数结构体
+    r"""GetTagValues请求参数结构体
 
     """
 
@@ -3748,7 +3748,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键。
+        r"""标签键。
 返回所有标签键列表对应的标签值。
 最大长度：20
         :rtype: list of str
@@ -3761,7 +3761,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """从上一页的响应中获取的下一页的Token值。
+        r"""从上一页的响应中获取的下一页的Token值。
 如果是第一次请求，设置为空。
         :rtype: str
         """
@@ -3773,7 +3773,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """每一页返回的数据最大条数，最大1000。
+        r"""每一页返回的数据最大条数，最大1000。
 缺省值：50。
         :rtype: int
         """
@@ -3785,7 +3785,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -3811,7 +3811,7 @@ class GetTagValuesRequest(AbstractModel):
 
 
 class GetTagValuesResponse(AbstractModel):
-    """GetTagValues返回参数结构体
+    r"""GetTagValues返回参数结构体
 
     """
 
@@ -3830,7 +3830,7 @@ class GetTagValuesResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
         :rtype: str
         """
         return self._PaginationToken
@@ -3841,7 +3841,7 @@ class GetTagValuesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表。
+        r"""标签列表。
         :rtype: list of Tag
         """
         return self._Tags
@@ -3852,7 +3852,7 @@ class GetTagValuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3874,7 +3874,7 @@ class GetTagValuesResponse(AbstractModel):
 
 
 class GetTagsRequest(AbstractModel):
-    """GetTags请求参数结构体
+    r"""GetTags请求参数结构体
 
     """
 
@@ -3900,7 +3900,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """从上一页的响应中获取的下一页的Token值。
+        r"""从上一页的响应中获取的下一页的Token值。
 如果是第一次请求，设置为空。
         :rtype: str
         """
@@ -3912,7 +3912,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """每一页返回的数据最大条数，最大1000。
+        r"""每一页返回的数据最大条数，最大1000。
 缺省值：50。
         :rtype: int
         """
@@ -3924,7 +3924,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """标签键。
+        r"""标签键。
 返回所有标签键列表对应的标签。
 最大长度：20
         :rtype: list of str
@@ -3937,7 +3937,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -3963,7 +3963,7 @@ class GetTagsRequest(AbstractModel):
 
 
 class GetTagsResponse(AbstractModel):
-    """GetTags返回参数结构体
+    r"""GetTags返回参数结构体
 
     """
 
@@ -3982,7 +3982,7 @@ class GetTagsResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        """获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
         :rtype: str
         """
         return self._PaginationToken
@@ -3993,7 +3993,7 @@ class GetTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表。
+        r"""标签列表。
         :rtype: list of Tag
         """
         return self._Tags
@@ -4004,7 +4004,7 @@ class GetTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4026,7 +4026,7 @@ class GetTagsResponse(AbstractModel):
 
 
 class ModifyResourceTagsRequest(AbstractModel):
-    """ModifyResourceTags请求参数结构体
+    r"""ModifyResourceTags请求参数结构体
 
     """
 
@@ -4045,7 +4045,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def Resource(self):
-        """[ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+        r"""[ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :rtype: str
         """
         return self._Resource
@@ -4056,7 +4056,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
+        r"""需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :rtype: list of Tag
         """
         return self._ReplaceTags
@@ -4067,7 +4067,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
+        r"""需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :rtype: list of TagKeyObject
         """
         return self._DeleteTags
@@ -4102,7 +4102,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
 
 class ModifyResourceTagsResponse(AbstractModel):
-    """ModifyResourceTags返回参数结构体
+    r"""ModifyResourceTags返回参数结构体
 
     """
 
@@ -4115,7 +4115,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4130,7 +4130,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
 
 class ModifyResourcesTagValueRequest(AbstractModel):
-    """ModifyResourcesTagValue请求参数结构体
+    r"""ModifyResourcesTagValue请求参数结构体
 
     """
 
@@ -4158,7 +4158,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
+        r"""业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
         :rtype: str
         """
         return self._ServiceType
@@ -4169,7 +4169,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源ID数组，资源个数最多为50
+        r"""资源ID数组，资源个数最多为50
         :rtype: list of str
         """
         return self._ResourceIds
@@ -4180,7 +4180,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4191,7 +4191,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -4202,7 +4202,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -4213,7 +4213,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """资源前缀（资源六段式中最后一段"/"前面的部分），例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
+        r"""资源前缀（资源六段式中最后一段"/"前面的部分），例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
         :rtype: str
         """
         return self._ResourcePrefix
@@ -4241,7 +4241,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
 
 class ModifyResourcesTagValueResponse(AbstractModel):
-    """ModifyResourcesTagValue返回参数结构体
+    r"""ModifyResourcesTagValue返回参数结构体
 
     """
 
@@ -4254,7 +4254,7 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4269,7 +4269,7 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
 
 class Project(AbstractModel):
-    """项目信息
+    r"""项目信息
 
     """
 
@@ -4294,7 +4294,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -4305,7 +4305,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -4316,7 +4316,7 @@ class Project(AbstractModel):
 
     @property
     def CreatorUin(self):
-        """创建人uin
+        r"""创建人uin
         :rtype: int
         """
         return self._CreatorUin
@@ -4327,7 +4327,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectInfo(self):
-        """项目描述
+        r"""项目描述
         :rtype: str
         """
         return self._ProjectInfo
@@ -4338,7 +4338,7 @@ class Project(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -4365,7 +4365,7 @@ class Project(AbstractModel):
 
 
 class ResourceIdTag(AbstractModel):
-    """资源标签键值
+    r"""资源标签键值
 
     """
 
@@ -4381,7 +4381,7 @@ class ResourceIdTag(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源唯一标识
+        r"""资源唯一标识
         :rtype: str
         """
         return self._ResourceId
@@ -4392,7 +4392,7 @@ class ResourceIdTag(AbstractModel):
 
     @property
     def TagKeyValues(self):
-        """标签键值对
+        r"""标签键值对
         :rtype: list of Tag
         """
         return self._TagKeyValues
@@ -4421,7 +4421,7 @@ class ResourceIdTag(AbstractModel):
 
 
 class ResourceTag(AbstractModel):
-    """资源标签
+    r"""资源标签
 
     """
 
@@ -4446,7 +4446,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域
+        r"""资源所在地域
         :rtype: str
         """
         return self._ResourceRegion
@@ -4457,7 +4457,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型
+        r"""业务类型
         :rtype: str
         """
         return self._ServiceType
@@ -4468,7 +4468,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        """资源前缀
+        r"""资源前缀
         :rtype: str
         """
         return self._ResourcePrefix
@@ -4479,7 +4479,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源唯一标记
+        r"""资源唯一标记
         :rtype: str
         """
         return self._ResourceId
@@ -4490,7 +4490,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def Tags(self):
-        """资源标签
+        r"""资源标签
         :rtype: list of Tag
         """
         return self._Tags
@@ -4522,7 +4522,7 @@ class ResourceTag(AbstractModel):
 
 
 class ResourceTagMapping(AbstractModel):
-    """资源及关联的标签(键和值)。
+    r"""资源及关联的标签(键和值)。
 
     """
 
@@ -4539,7 +4539,7 @@ class ResourceTagMapping(AbstractModel):
 
     @property
     def Resource(self):
-        """资源六段式。腾讯云使用资源六段式描述一个资源。
+        r"""资源六段式。腾讯云使用资源六段式描述一个资源。
 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
         :rtype: str
         """
@@ -4551,7 +4551,7 @@ class ResourceTagMapping(AbstractModel):
 
     @property
     def Tags(self):
-        """资源关联的标签列表
+        r"""资源关联的标签列表
         :rtype: list of Tag
         """
         return self._Tags
@@ -4580,7 +4580,7 @@ class ResourceTagMapping(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """表示一个标签键值对
+    r"""表示一个标签键值对
 
     """
 
@@ -4599,7 +4599,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4610,7 +4610,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -4621,7 +4621,7 @@ class Tag(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -4646,7 +4646,7 @@ class Tag(AbstractModel):
 
 
 class TagFilter(AbstractModel):
-    """tag过滤数组多个是与的关系
+    r"""tag过滤数组多个是与的关系
 
     """
 
@@ -4662,7 +4662,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4673,7 +4673,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值数组 多个值的话是或的关系
+        r"""标签值数组 多个值的话是或的关系
         :rtype: list of str
         """
         return self._TagValue
@@ -4697,7 +4697,7 @@ class TagFilter(AbstractModel):
 
 
 class TagKeyObject(AbstractModel):
-    """标签键对象
+    r"""标签键对象
 
     """
 
@@ -4710,7 +4710,7 @@ class TagKeyObject(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4733,7 +4733,7 @@ class TagKeyObject(AbstractModel):
 
 
 class TagResource(AbstractModel):
-    """标签键值对以及资源ID
+    r"""标签键值对以及资源ID
 
     """
 
@@ -4764,7 +4764,7 @@ class TagResource(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -4775,7 +4775,7 @@ class TagResource(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -4786,7 +4786,7 @@ class TagResource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        r"""资源ID
         :rtype: str
         """
         return self._ResourceId
@@ -4797,7 +4797,7 @@ class TagResource(AbstractModel):
 
     @property
     def TagKeyMd5(self):
-        """标签键MD5值
+        r"""标签键MD5值
         :rtype: str
         """
         return self._TagKeyMd5
@@ -4808,7 +4808,7 @@ class TagResource(AbstractModel):
 
     @property
     def TagValueMd5(self):
-        """标签值MD5值
+        r"""标签值MD5值
         :rtype: str
         """
         return self._TagValueMd5
@@ -4819,7 +4819,7 @@ class TagResource(AbstractModel):
 
     @property
     def ServiceType(self):
-        """资源类型
+        r"""资源类型
         :rtype: str
         """
         return self._ServiceType
@@ -4830,7 +4830,7 @@ class TagResource(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。
         :rtype: str
         """
         return self._Category
@@ -4859,7 +4859,7 @@ class TagResource(AbstractModel):
 
 
 class TagResourcesRequest(AbstractModel):
-    """TagResources请求参数结构体
+    r"""TagResources请求参数结构体
 
     """
 
@@ -4880,7 +4880,7 @@ N取值范围：0~9
 
     @property
     def ResourceList(self):
-        """待绑定的云资源，用标准的资源六段式表示。正确的资源六段式请参考：[标准的资源六段式](https://cloud.tencent.com/document/product/598/10606)和[支持标签的云产品及资源描述方式](https://cloud.tencent.com/document/product/651/89122)。
+        r"""待绑定的云资源，用标准的资源六段式表示。正确的资源六段式请参考：[标准的资源六段式](https://cloud.tencent.com/document/product/598/10606)和[支持标签的云产品及资源描述方式](https://cloud.tencent.com/document/product/651/89122)。
 N取值范围：0~9
         :rtype: list of str
         """
@@ -4892,7 +4892,7 @@ N取值范围：0~9
 
     @property
     def Tags(self):
-        """标签键和标签值。
+        r"""标签键和标签值。
 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。
 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。
 如果标签不存在会为您自动创建标签。
@@ -4925,7 +4925,7 @@ N取值范围：0~9
 
 
 class TagResourcesResponse(AbstractModel):
-    """TagResources返回参数结构体
+    r"""TagResources返回参数结构体
 
     """
 
@@ -4943,7 +4943,7 @@ class TagResourcesResponse(AbstractModel):
 
     @property
     def FailedResources(self):
-        """失败资源信息。
+        r"""失败资源信息。
 创建并绑定标签成功时，返回的FailedResources为空。
 创建并绑定标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
         :rtype: list of FailedResource
@@ -4956,7 +4956,7 @@ class TagResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4977,7 +4977,7 @@ class TagResourcesResponse(AbstractModel):
 
 
 class TagWithDelete(AbstractModel):
-    """表示一个标签键值对以及是否允许删除
+    r"""表示一个标签键值对以及是否允许删除
 
     """
 
@@ -4999,7 +4999,7 @@ class TagWithDelete(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签键
+        r"""标签键
         :rtype: str
         """
         return self._TagKey
@@ -5010,7 +5010,7 @@ class TagWithDelete(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -5021,7 +5021,7 @@ class TagWithDelete(AbstractModel):
 
     @property
     def CanDelete(self):
-        """是否可以删除
+        r"""是否可以删除
         :rtype: int
         """
         return self._CanDelete
@@ -5032,7 +5032,7 @@ class TagWithDelete(AbstractModel):
 
     @property
     def Category(self):
-        """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
         :rtype: str
         """
         return self._Category
@@ -5058,7 +5058,7 @@ class TagWithDelete(AbstractModel):
 
 
 class UnTagResourcesRequest(AbstractModel):
-    """UnTagResources请求参数结构体
+    r"""UnTagResources请求参数结构体
 
     """
 
@@ -5077,7 +5077,7 @@ N取值范围：0~9
 
     @property
     def ResourceList(self):
-        """资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
+        r"""资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}。
 N取值范围：0~9
         :rtype: list of str
@@ -5090,7 +5090,7 @@ N取值范围：0~9
 
     @property
     def TagKeys(self):
-        """标签键。
+        r"""标签键。
 取值范围：0~9
         :rtype: list of str
         """
@@ -5115,7 +5115,7 @@ N取值范围：0~9
 
 
 class UnTagResourcesResponse(AbstractModel):
-    """UnTagResources返回参数结构体
+    r"""UnTagResources返回参数结构体
 
     """
 
@@ -5133,7 +5133,7 @@ class UnTagResourcesResponse(AbstractModel):
 
     @property
     def FailedResources(self):
-        """失败资源信息。
+        r"""失败资源信息。
 解绑标签成功时，返回的FailedResources为空。
 解绑标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
         :rtype: list of FailedResource
@@ -5146,7 +5146,7 @@ class UnTagResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5167,7 +5167,7 @@ class UnTagResourcesResponse(AbstractModel):
 
 
 class UpdateProjectRequest(AbstractModel):
-    """UpdateProject请求参数结构体
+    r"""UpdateProject请求参数结构体
 
     """
 
@@ -5189,7 +5189,7 @@ class UpdateProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID
+        r"""项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -5200,7 +5200,7 @@ class UpdateProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
-        """项目名称
+        r"""项目名称
         :rtype: str
         """
         return self._ProjectName
@@ -5211,7 +5211,7 @@ class UpdateProjectRequest(AbstractModel):
 
     @property
     def Disable(self):
-        """禁用项目，1，禁用，0，启用
+        r"""禁用项目，1，禁用，0，启用
         :rtype: int
         """
         return self._Disable
@@ -5222,7 +5222,7 @@ class UpdateProjectRequest(AbstractModel):
 
     @property
     def Info(self):
-        """备注
+        r"""备注
         :rtype: str
         """
         return self._Info
@@ -5248,7 +5248,7 @@ class UpdateProjectRequest(AbstractModel):
 
 
 class UpdateProjectResponse(AbstractModel):
-    """UpdateProject返回参数结构体
+    r"""UpdateProject返回参数结构体
 
     """
 
@@ -5261,7 +5261,7 @@ class UpdateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5276,7 +5276,7 @@ class UpdateProjectResponse(AbstractModel):
 
 
 class UpdateResourceTagValueRequest(AbstractModel):
-    """UpdateResourceTagValue请求参数结构体
+    r"""UpdateResourceTagValue请求参数结构体
 
     """
 
@@ -5295,7 +5295,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """资源关联的标签键
+        r"""资源关联的标签键
         :rtype: str
         """
         return self._TagKey
@@ -5306,7 +5306,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """修改后的标签值
+        r"""修改后的标签值
         :rtype: str
         """
         return self._TagValue
@@ -5317,7 +5317,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
     @property
     def Resource(self):
-        """[ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+        r"""[ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :rtype: str
         """
         return self._Resource
@@ -5342,7 +5342,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
 
 class UpdateResourceTagValueResponse(AbstractModel):
-    """UpdateResourceTagValue返回参数结构体
+    r"""UpdateResourceTagValue返回参数结构体
 
     """
 
@@ -5355,7 +5355,7 @@ class UpdateResourceTagValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

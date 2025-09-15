@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApplyParam(AbstractModel):
-    """bpaas申请入参
+    r"""bpaas申请入参
 
     """
 
@@ -41,7 +41,7 @@ class ApplyParam(AbstractModel):
 
     @property
     def Key(self):
-        """审批流中表单唯一标识
+        r"""审批流中表单唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53,7 +53,7 @@ class ApplyParam(AbstractModel):
 
     @property
     def Value(self):
-        """表单value
+        r"""表单value
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -65,7 +65,7 @@ class ApplyParam(AbstractModel):
 
     @property
     def Name(self):
-        """表单参数描述
+        r"""表单参数描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -91,7 +91,7 @@ class ApplyParam(AbstractModel):
 
 
 class ApproveOpinion(AbstractModel):
-    """审批意见
+    r"""审批意见
 
     """
 
@@ -108,7 +108,7 @@ class ApproveOpinion(AbstractModel):
 
     @property
     def Type(self):
-        """方式 1:输入文字反馈  2:预设选项
+        r"""方式 1:输入文字反馈  2:预设选项
         :rtype: int
         """
         return self._Type
@@ -119,7 +119,7 @@ class ApproveOpinion(AbstractModel):
 
     @property
     def Content(self):
-        """审批意见
+        r"""审批意见
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -144,7 +144,7 @@ class ApproveOpinion(AbstractModel):
 
 
 class ApproveUser(AbstractModel):
-    """审批人
+    r"""审批人
 
     """
 
@@ -188,7 +188,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def Uin(self):
-        """用户uin
+        r"""用户uin
         :rtype: int
         """
         return self._Uin
@@ -199,7 +199,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def Type(self):
-        """用户类型 (1:用户  2:用户组)
+        r"""用户类型 (1:用户  2:用户组)
         :rtype: int
         """
         return self._Type
@@ -210,7 +210,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def Desc(self):
-        """用户描述
+        r"""用户描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -222,7 +222,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def Nick(self):
-        """用户昵称
+        r"""用户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -234,7 +234,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def Scf(self):
-        """动态获取Scf
+        r"""动态获取Scf
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bpaas.v20181217.models.Scf`
         """
@@ -246,7 +246,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveStatus(self):
-        """审批状态 （取值范围 0:待审批  1:审批通过  2:拒绝  6:其他人已审批）
+        r"""审批状态 （取值范围 0:待审批  1:审批通过  2:拒绝  6:其他人已审批）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -258,7 +258,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveMsg(self):
-        """审批意见
+        r"""审批意见
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -270,7 +270,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveTime(self):
-        """审批时间
+        r"""审批时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -282,7 +282,7 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveGroup(self):
-        """审批组名称
+        r"""审批组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -316,7 +316,7 @@ class ApproveUser(AbstractModel):
 
 
 class GetBpaasApproveDetailRequest(AbstractModel):
-    """GetBpaasApproveDetail请求参数结构体
+    r"""GetBpaasApproveDetail请求参数结构体
 
     """
 
@@ -329,7 +329,7 @@ class GetBpaasApproveDetailRequest(AbstractModel):
 
     @property
     def ApproveId(self):
-        """审批id
+        r"""审批id
         :rtype: int
         """
         return self._ApproveId
@@ -352,7 +352,7 @@ class GetBpaasApproveDetailRequest(AbstractModel):
 
 
 class GetBpaasApproveDetailResponse(AbstractModel):
-    """GetBpaasApproveDetail返回参数结构体
+    r"""GetBpaasApproveDetail返回参数结构体
 
     """
 
@@ -401,7 +401,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyUin(self):
-        """申请人uin
+        r"""申请人uin
         :rtype: int
         """
         return self._ApplyUin
@@ -412,7 +412,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyOwnUin(self):
-        """申请人主账号
+        r"""申请人主账号
         :rtype: int
         """
         return self._ApplyOwnUin
@@ -423,7 +423,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyUinNick(self):
-        """申请人昵称
+        r"""申请人昵称
         :rtype: str
         """
         return self._ApplyUinNick
@@ -434,7 +434,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def BpaasId(self):
-        """审批流id
+        r"""审批流id
         :rtype: int
         """
         return self._BpaasId
@@ -445,7 +445,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def BpaasName(self):
-        """审批流名称
+        r"""审批流名称
         :rtype: str
         """
         return self._BpaasName
@@ -456,7 +456,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplicationParams(self):
-        """申请参数
+        r"""申请参数
         :rtype: list of ApplyParam
         """
         return self._ApplicationParams
@@ -467,7 +467,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Reason(self):
-        """申请原因
+        r"""申请原因
         :rtype: str
         """
         return self._Reason
@@ -478,7 +478,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """申请时间
+        r"""申请时间
         :rtype: str
         """
         return self._CreateTime
@@ -489,7 +489,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """申请单状态
+        r"""申请单状态
         :rtype: int
         """
         return self._Status
@@ -500,7 +500,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Nodes(self):
-        """节点信息
+        r"""节点信息
         :rtype: list of StatusNode
         """
         return self._Nodes
@@ -511,7 +511,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApprovingNodeId(self):
-        """正在审批的节点id
+        r"""正在审批的节点id
         :rtype: str
         """
         return self._ApprovingNodeId
@@ -522,7 +522,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """更新时间，时间格式：2021-12-12 10:12:10	
+        r"""更新时间，时间格式：2021-12-12 10:12:10	
         :rtype: str
         """
         return self._ModifyTime
@@ -533,7 +533,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -570,7 +570,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
 
 class OutApproveBpaasApplicationRequest(AbstractModel):
-    """OutApproveBpaasApplication请求参数结构体
+    r"""OutApproveBpaasApplication请求参数结构体
 
     """
 
@@ -589,7 +589,7 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态  1:通过  2:拒绝
+        r"""状态  1:通过  2:拒绝
         :rtype: int
         """
         return self._Status
@@ -600,7 +600,7 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def ApproveId(self):
-        """审批单id
+        r"""审批单id
         :rtype: int
         """
         return self._ApproveId
@@ -611,7 +611,7 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def Msg(self):
-        """审批意见
+        r"""审批意见
         :rtype: str
         """
         return self._Msg
@@ -636,7 +636,7 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
 
 class OutApproveBpaasApplicationResponse(AbstractModel):
-    """OutApproveBpaasApplication返回参数结构体
+    r"""OutApproveBpaasApplication返回参数结构体
 
     """
 
@@ -649,7 +649,7 @@ class OutApproveBpaasApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -664,7 +664,7 @@ class OutApproveBpaasApplicationResponse(AbstractModel):
 
 
 class Scf(AbstractModel):
-    """云函数SCF
+    r"""云函数SCF
 
     """
 
@@ -688,7 +688,7 @@ class Scf(AbstractModel):
 
     @property
     def ScfRegion(self):
-        """Scf函数地域id
+        r"""Scf函数地域id
         :rtype: str
         """
         return self._ScfRegion
@@ -699,7 +699,7 @@ class Scf(AbstractModel):
 
     @property
     def ScfRegionName(self):
-        """Scf函数地域
+        r"""Scf函数地域
         :rtype: str
         """
         return self._ScfRegionName
@@ -710,7 +710,7 @@ class Scf(AbstractModel):
 
     @property
     def ScfName(self):
-        """Scf函数名称
+        r"""Scf函数名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -722,7 +722,7 @@ class Scf(AbstractModel):
 
     @property
     def Params(self):
-        """Scf函数入参
+        r"""Scf函数入参
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScfParam
         """
@@ -754,7 +754,7 @@ class Scf(AbstractModel):
 
 
 class ScfParam(AbstractModel):
-    """Scf函数入参
+    r"""Scf函数入参
 
     """
 
@@ -777,7 +777,7 @@ class ScfParam(AbstractModel):
 
     @property
     def Key(self):
-        """参数Key
+        r"""参数Key
         :rtype: str
         """
         return self._Key
@@ -788,7 +788,7 @@ class ScfParam(AbstractModel):
 
     @property
     def Type(self):
-        """参数类型 1用户输入 2预设参数 3表单参数
+        r"""参数类型 1用户输入 2预设参数 3表单参数
         :rtype: int
         """
         return self._Type
@@ -799,7 +799,7 @@ class ScfParam(AbstractModel):
 
     @property
     def Values(self):
-        """参数值
+        r"""参数值
         :rtype: list of str
         """
         return self._Values
@@ -810,7 +810,7 @@ class ScfParam(AbstractModel):
 
     @property
     def Name(self):
-        """参数描述
+        r"""参数描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -837,7 +837,7 @@ class ScfParam(AbstractModel):
 
 
 class StatusNode(AbstractModel):
-    """状态节点
+    r"""状态节点
 
     """
 
@@ -916,7 +916,7 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeId(self):
-        """节点id
+        r"""节点id
         :rtype: str
         """
         return self._NodeId
@@ -927,7 +927,7 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeName(self):
-        """节点名称
+        r"""节点名称
         :rtype: str
         """
         return self._NodeName
@@ -938,7 +938,7 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeType(self):
-        """节点类型 1:审批节点 2:执行节点 3:条件节点
+        r"""节点类型 1:审批节点 2:执行节点 3:条件节点
         :rtype: int
         """
         return self._NodeType
@@ -949,7 +949,7 @@ class StatusNode(AbstractModel):
 
     @property
     def NextNode(self):
-        """下一个节点
+        r"""下一个节点
         :rtype: str
         """
         return self._NextNode
@@ -960,7 +960,7 @@ class StatusNode(AbstractModel):
 
     @property
     def Opinion(self):
-        """审批意见模型
+        r"""审批意见模型
         :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveOpinion`
         """
         return self._Opinion
@@ -971,7 +971,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ScfName(self):
-        """scf函数名称
+        r"""scf函数名称
         :rtype: str
         """
         return self._ScfName
@@ -982,7 +982,7 @@ class StatusNode(AbstractModel):
 
     @property
     def SubStatus(self):
-        """状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
+        r"""状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
         :rtype: int
         """
         return self._SubStatus
@@ -993,7 +993,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ApprovedUin(self):
-        """审批节点审批人
+        r"""审批节点审批人
         :rtype: list of int non-negative
         """
         return self._ApprovedUin
@@ -1004,7 +1004,7 @@ class StatusNode(AbstractModel):
 
     @property
     def CreateTime(self):
-        """审批时间
+        r"""审批时间
         :rtype: str
         """
         return self._CreateTime
@@ -1015,7 +1015,7 @@ class StatusNode(AbstractModel):
 
     @property
     def Msg(self):
-        """审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
+        r"""审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
         :rtype: str
         """
         return self._Msg
@@ -1026,7 +1026,7 @@ class StatusNode(AbstractModel):
 
     @property
     def Users(self):
-        """有权限审批该节点的uin
+        r"""有权限审批该节点的uin
         :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveUser`
         """
         return self._Users
@@ -1037,7 +1037,7 @@ class StatusNode(AbstractModel):
 
     @property
     def IsApprove(self):
-        """是否有权限审批该节点
+        r"""是否有权限审批该节点
         :rtype: bool
         """
         return self._IsApprove
@@ -1048,7 +1048,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveId(self):
-        """审批id
+        r"""审批id
         :rtype: str
         """
         return self._ApproveId
@@ -1059,7 +1059,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveMethod(self):
-        """审批方式 0或签 1会签
+        r"""审批方式 0或签 1会签
         :rtype: int
         """
         return self._ApproveMethod
@@ -1070,7 +1070,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveType(self):
-        """审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
+        r"""审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
         :rtype: int
         """
         return self._ApproveType
@@ -1081,7 +1081,7 @@ class StatusNode(AbstractModel):
 
     @property
     def CallMethod(self):
-        """外部审批类型 scf:0或null ; CKafka:1
+        r"""外部审批类型 scf:0或null ; CKafka:1
         :rtype: int
         """
         return self._CallMethod
@@ -1092,7 +1092,7 @@ class StatusNode(AbstractModel):
 
     @property
     def DataHubId(self):
-        """CKafka - 接入资源ID
+        r"""CKafka - 接入资源ID
         :rtype: str
         """
         return self._DataHubId
@@ -1103,7 +1103,7 @@ class StatusNode(AbstractModel):
 
     @property
     def TaskName(self):
-        """CKafka - 任务名称
+        r"""CKafka - 任务名称
         :rtype: str
         """
         return self._TaskName
@@ -1114,7 +1114,7 @@ class StatusNode(AbstractModel):
 
     @property
     def CKafkaRegion(self):
-        """CKafka - 地域
+        r"""CKafka - 地域
         :rtype: str
         """
         return self._CKafkaRegion
@@ -1125,7 +1125,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ExternalUrl(self):
-        """外部审批Url
+        r"""外部审批Url
         :rtype: str
         """
         return self._ExternalUrl
@@ -1136,7 +1136,7 @@ class StatusNode(AbstractModel):
 
     @property
     def ParallelNodes(self):
-        """并行节点 3-4
+        r"""并行节点 3-4
         :rtype: str
         """
         return self._ParallelNodes
@@ -1147,7 +1147,7 @@ class StatusNode(AbstractModel):
 
     @property
     def RejectedCloudFunctionMsg(self):
-        """scf拒绝时返回信息
+        r"""scf拒绝时返回信息
         :rtype: str
         """
         return self._RejectedCloudFunctionMsg
@@ -1158,7 +1158,7 @@ class StatusNode(AbstractModel):
 
     @property
     def PrevNode(self):
-        """上一个节点
+        r"""上一个节点
         :rtype: str
         """
         return self._PrevNode

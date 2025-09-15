@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class FlowProductRemindRequest(AbstractModel):
-    """FlowProductRemind请求参数结构体
+    r"""FlowProductRemind请求参数结构体
 
     """
 
@@ -47,7 +47,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def ProviderUin(self):
-        """服务商uin
+        r"""服务商uin
         :rtype: str
         """
         return self._ProviderUin
@@ -58,7 +58,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def SignId(self):
-        """服务商实例ID
+        r"""服务商实例ID
         :rtype: str
         """
         return self._SignId
@@ -69,7 +69,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """云市场实例ID
+        r"""云市场实例ID
         :rtype: str
         """
         return self._ResourceId
@@ -80,7 +80,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def TotalFlow(self):
-        """实例总流量
+        r"""实例总流量
         :rtype: str
         """
         return self._TotalFlow
@@ -91,7 +91,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def LeftFlow(self):
-        """剩余流量
+        r"""剩余流量
         :rtype: str
         """
         return self._LeftFlow
@@ -102,7 +102,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def FlowUnit(self):
-        """流量单位
+        r"""流量单位
         :rtype: str
         """
         return self._FlowUnit
@@ -130,7 +130,7 @@ class FlowProductRemindRequest(AbstractModel):
 
 
 class FlowProductRemindResponse(AbstractModel):
-    """FlowProductRemind返回参数结构体
+    r"""FlowProductRemind返回参数结构体
 
     """
 
@@ -152,7 +152,7 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def Success(self):
-        """是否成功
+        r"""是否成功
         :rtype: str
         """
         return self._Success
@@ -163,7 +163,7 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """流水号
+        r"""流水号
         :rtype: str
         """
         return self._FlowId
@@ -174,7 +174,7 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def Info(self):
-        """消息
+        r"""消息
         :rtype: str
         """
         return self._Info
@@ -185,7 +185,7 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -203,7 +203,7 @@ class FlowProductRemindResponse(AbstractModel):
 
 
 class GetUsagePlanUsageAmountRequest(AbstractModel):
-    """GetUsagePlanUsageAmount请求参数结构体
+    r"""GetUsagePlanUsageAmount请求参数结构体
 
     """
 
@@ -216,7 +216,7 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """用于查询实例的Id
+        r"""用于查询实例的Id
         :rtype: str
         """
         return self._InstanceId
@@ -239,7 +239,7 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
 
 
 class GetUsagePlanUsageAmountResponse(AbstractModel):
-    """GetUsagePlanUsageAmount返回参数结构体
+    r"""GetUsagePlanUsageAmount返回参数结构体
 
     """
 
@@ -261,7 +261,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def MaxRequestNum(self):
-        """最大调用量
+        r"""最大调用量
         :rtype: int
         """
         return self._MaxRequestNum
@@ -272,7 +272,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def InUseRequestNum(self):
-        """已经调用量
+        r"""已经调用量
         :rtype: int
         """
         return self._InUseRequestNum
@@ -283,7 +283,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def RemainingRequestNum(self):
-        """剩余调用量
+        r"""剩余调用量
         :rtype: int
         """
         return self._RemainingRequestNum
@@ -294,7 +294,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

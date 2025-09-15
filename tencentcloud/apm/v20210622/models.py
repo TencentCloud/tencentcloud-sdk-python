@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APMKV(AbstractModel):
-    """APM 浮点数类型键值对
+    r"""APM 浮点数类型键值对
 
     """
 
@@ -35,7 +35,7 @@ class APMKV(AbstractModel):
 
     @property
     def Key(self):
-        """Key 值定义
+        r"""Key 值定义
         :rtype: str
         """
         return self._Key
@@ -46,7 +46,7 @@ class APMKV(AbstractModel):
 
     @property
     def Value(self):
-        """Value 值定义
+        r"""Value 值定义
         :rtype: float
         """
         return self._Value
@@ -70,7 +70,7 @@ class APMKV(AbstractModel):
 
 
 class APMKVItem(AbstractModel):
-    """APM 通用 KV 结构
+    r"""APM 通用 KV 结构
 
     """
 
@@ -86,7 +86,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Key(self):
-        """Key 值定义
+        r"""Key 值定义
         :rtype: str
         """
         return self._Key
@@ -97,7 +97,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Value(self):
-        """Value 值定义
+        r"""Value 值定义
         :rtype: str
         """
         return self._Value
@@ -121,7 +121,7 @@ class APMKVItem(AbstractModel):
 
 
 class ApmAgentInfo(AbstractModel):
-    """APM Agent 信息
+    r"""APM Agent 信息
 
     """
 
@@ -149,7 +149,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def AgentDownloadURL(self):
-        """Agent 下载地址
+        r"""Agent 下载地址
         :rtype: str
         """
         return self._AgentDownloadURL
@@ -160,7 +160,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def CollectorURL(self):
-        """Collector 上报地址
+        r"""Collector 上报地址
         :rtype: str
         """
         return self._CollectorURL
@@ -171,7 +171,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def Token(self):
-        """Token 信息
+        r"""Token 信息
         :rtype: str
         """
         return self._Token
@@ -182,7 +182,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def PublicCollectorURL(self):
-        """外网上报地址
+        r"""外网上报地址
         :rtype: str
         """
         return self._PublicCollectorURL
@@ -193,7 +193,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def InnerCollectorURL(self):
-        """自研 VPC 上报地址
+        r"""自研 VPC 上报地址
         :rtype: str
         """
         return self._InnerCollectorURL
@@ -204,7 +204,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def PrivateLinkCollectorURL(self):
-        """内网上报地址( Private Link 上报地址)
+        r"""内网上报地址( Private Link 上报地址)
         :rtype: str
         """
         return self._PrivateLinkCollectorURL
@@ -232,7 +232,7 @@ class ApmAgentInfo(AbstractModel):
 
 
 class ApmApplicationConfigView(AbstractModel):
-    """应用相关的配置列表项
+    r"""应用相关的配置列表项
 
     """
 
@@ -305,7 +305,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstanceKey(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceKey
@@ -316,7 +316,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ServiceName(self):
-        """应用名	
+        r"""应用名	
         :rtype: str
         """
         return self._ServiceName
@@ -327,7 +327,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def OperationNameFilter(self):
-        """接口过滤
+        r"""接口过滤
         :rtype: str
         """
         return self._OperationNameFilter
@@ -338,7 +338,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        """错误类型过滤
+        r"""错误类型过滤
         :rtype: str
         """
         return self._ExceptionFilter
@@ -349,7 +349,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        """HTTP 状态码过滤
+        r"""HTTP 状态码过滤
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -360,7 +360,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EventEnable(self):
-        """应用诊断开关（已废弃）
+        r"""应用诊断开关（已废弃）
         :rtype: bool
         """
         return self._EventEnable
@@ -371,7 +371,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        """URL 收敛开关 0 关 1 开
+        r"""URL 收敛开关 0 关 1 开
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -382,7 +382,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        """URL 收敛阈值	
+        r"""URL 收敛阈值	
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -393,7 +393,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        """URL 收敛规则正则	
+        r"""URL 收敛规则正则	
         :rtype: str
         """
         return self._UrlConvergence
@@ -404,7 +404,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlExclude(self):
-        """URL 排除规则正则
+        r"""URL 排除规则正则
         :rtype: str
         """
         return self._UrlExclude
@@ -415,7 +415,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """是否开启日志 0 关 1 开
+        r"""是否开启日志 0 关 1 开
         :rtype: int
         """
         return self._IsRelatedLog
@@ -426,7 +426,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSource(self):
-        """日志源	
+        r"""日志源	
         :rtype: str
         """
         return self._LogSource
@@ -437,7 +437,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSet(self):
-        """日志集 
+        r"""日志集 
         :rtype: str
         """
         return self._LogSet
@@ -448,7 +448,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """日志主题
+        r"""日志主题
         :rtype: str
         """
         return self._LogTopicID
@@ -459,7 +459,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotEnable(self):
-        """方法栈快照开关 true 开启 false 关闭
+        r"""方法栈快照开关 true 开启 false 关闭
         :rtype: bool
         """
         return self._SnapshotEnable
@@ -470,7 +470,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        """慢调用监听触发阈值
+        r"""慢调用监听触发阈值
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -481,7 +481,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def AgentEnable(self):
-        """探针总开关
+        r"""探针总开关
         :rtype: bool
         """
         return self._AgentEnable
@@ -492,7 +492,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstrumentList(self):
-        """组件列表开关（已废弃）
+        r"""组件列表开关（已废弃）
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -503,7 +503,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def TraceSquash(self):
-        """链路压缩开关（已废弃）
+        r"""链路压缩开关（已废弃）
         :rtype: bool
         """
         return self._TraceSquash
@@ -514,7 +514,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DisableMemoryUsed(self):
-        """探针熔断内存阈值
+        r"""探针熔断内存阈值
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -525,7 +525,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        """探针熔断CPU阈值
+        r"""探针熔断CPU阈值
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -573,7 +573,7 @@ class ApmApplicationConfigView(AbstractModel):
 
 
 class ApmField(AbstractModel):
-    """指标维度信息
+    r"""指标维度信息
 
     """
 
@@ -609,7 +609,7 @@ class ApmField(AbstractModel):
 
     @property
     def Key(self):
-        """指标名
+        r"""指标名
         :rtype: str
         """
         return self._Key
@@ -620,7 +620,7 @@ class ApmField(AbstractModel):
 
     @property
     def Value(self):
-        """指标数值
+        r"""指标数值
         :rtype: float
         """
         return self._Value
@@ -631,7 +631,7 @@ class ApmField(AbstractModel):
 
     @property
     def Unit(self):
-        """指标所对应的单位
+        r"""指标所对应的单位
         :rtype: str
         """
         return self._Unit
@@ -642,7 +642,7 @@ class ApmField(AbstractModel):
 
     @property
     def CompareVals(self):
-        """同比结果数组，推荐使用
+        r"""同比结果数组，推荐使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of APMKVItem
         """
@@ -654,7 +654,7 @@ class ApmField(AbstractModel):
 
     @property
     def LastPeriodValue(self):
-        """同比上一个周期的具体指标数值
+        r"""同比上一个周期的具体指标数值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of APMKV
         """
@@ -666,7 +666,7 @@ class ApmField(AbstractModel):
 
     @property
     def CompareVal(self):
-        """同比指标值，已弃用，不建议使用
+        r"""同比指标值，已弃用，不建议使用
         :rtype: str
         """
         return self._CompareVal
@@ -677,7 +677,7 @@ class ApmField(AbstractModel):
 
     @property
     def NameCN(self):
-        """指标中文名
+        r"""指标中文名
         :rtype: str
         """
         return self._NameCN
@@ -688,7 +688,7 @@ class ApmField(AbstractModel):
 
     @property
     def NameEN(self):
-        """指标英文名
+        r"""指标英文名
         :rtype: str
         """
         return self._NameEN
@@ -728,7 +728,7 @@ class ApmField(AbstractModel):
 
 
 class ApmInstanceDetail(AbstractModel):
-    """APM 业务系统信息
+    r"""APM 业务系统信息
 
     """
 
@@ -912,7 +912,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -923,7 +923,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Name(self):
-        """业务系统名
+        r"""业务系统名
         :rtype: str
         """
         return self._Name
@@ -934,7 +934,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Description(self):
-        """业务系统描述信息
+        r"""业务系统描述信息
         :rtype: str
         """
         return self._Description
@@ -945,7 +945,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """业务系统状态。{
+        r"""业务系统状态。{
 1: 初始化中; 2: 运行中; 4: 限流}
         :rtype: int
         """
@@ -957,7 +957,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
-        """业务系统所属地域
+        r"""业务系统所属地域
         :rtype: str
         """
         return self._Region
@@ -968,7 +968,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """业务系统 Tag 列表
+        r"""业务系统 Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -979,7 +979,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AppId(self):
-        """AppID 信息
+        r"""AppID 信息
         :rtype: int
         """
         return self._AppId
@@ -990,7 +990,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建人 Uin
+        r"""创建人 Uin
         :rtype: str
         """
         return self._CreateUin
@@ -1001,7 +1001,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AmountOfUsedStorage(self):
-        """存储使用量(单位：MB)
+        r"""存储使用量(单位：MB)
         :rtype: float
         """
         return self._AmountOfUsedStorage
@@ -1012,7 +1012,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """该业务系统服务端应用数量
+        r"""该业务系统服务端应用数量
         :rtype: int
         """
         return self._ServiceCount
@@ -1023,7 +1023,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CountOfReportSpanPerDay(self):
-        """日均上报 Span 数
+        r"""日均上报 Span 数
         :rtype: int
         """
         return self._CountOfReportSpanPerDay
@@ -1034,7 +1034,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace 数据保存时长（单位：天）
+        r"""Trace 数据保存时长（单位：天）
         :rtype: int
         """
         return self._TraceDuration
@@ -1045,7 +1045,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """业务系统上报额度
+        r"""业务系统上报额度
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1056,7 +1056,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def BillingInstance(self):
-        """业务系统是否已开通计费（0=未开通，1=已开通）
+        r"""业务系统是否已开通计费（0=未开通，1=已开通）
         :rtype: int
         """
         return self._BillingInstance
@@ -1067,7 +1067,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        """错误警示线（单位：%）
+        r"""错误警示线（单位：%）
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -1078,7 +1078,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SampleRate(self):
-        """采样率（单位：%）
+        r"""采样率（单位：%）
         :rtype: int
         """
         return self._SampleRate
@@ -1089,7 +1089,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrorSample(self):
-        """是否开启错误采样（0=关, 1=开）
+        r"""是否开启错误采样（0=关, 1=开）
         :rtype: int
         """
         return self._ErrorSample
@@ -1100,7 +1100,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        """采样慢调用保存阈值（单位：ms）
+        r"""采样慢调用保存阈值（单位：ms）
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -1111,7 +1111,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogRegion(self):
-        """CLS 日志所在地域
+        r"""CLS 日志所在地域
         :rtype: str
         """
         return self._LogRegion
@@ -1122,7 +1122,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSource(self):
-        """日志源
+        r"""日志源
         :rtype: str
         """
         return self._LogSource
@@ -1133,7 +1133,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """日志功能开关（0=关， 1=开）
+        r"""日志功能开关（0=关， 1=开）
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1144,7 +1144,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """日志主题 ID
+        r"""日志主题 ID
         :rtype: str
         """
         return self._LogTopicID
@@ -1155,7 +1155,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ClientCount(self):
-        """该业务系统客户端应用数量
+        r"""该业务系统客户端应用数量
         :rtype: int
         """
         return self._ClientCount
@@ -1166,7 +1166,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该业务系统最近2天活跃应用数量
+        r"""该业务系统最近2天活跃应用数量
         :rtype: int
         """
         return self._TotalCount
@@ -1177,7 +1177,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSet(self):
-        """CLS 日志集
+        r"""CLS 日志集
         :rtype: str
         """
         return self._LogSet
@@ -1188,7 +1188,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def MetricDuration(self):
-        """Metric 数据保存时长（单位：天）
+        r"""Metric 数据保存时长（单位：天）
         :rtype: int
         """
         return self._MetricDuration
@@ -1199,7 +1199,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CustomShowTags(self):
-        """用户自定义展示标签列表
+        r"""用户自定义展示标签列表
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -1210,7 +1210,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """业务系统计费模式（1为预付费，0为按量付费）
+        r"""业务系统计费模式（1为预付费，0为按量付费）
         :rtype: int
         """
         return self._PayMode
@@ -1221,7 +1221,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayModeEffective(self):
-        """业务系统计费模式是否生效
+        r"""业务系统计费模式是否生效
         :rtype: bool
         """
         return self._PayModeEffective
@@ -1232,7 +1232,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """响应时间警示线（单位：ms）
+        r"""响应时间警示线（单位：ms）
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -1243,7 +1243,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Free(self):
-        """是否免费（0=否，1=限额免费，2=完全免费），默认0
+        r"""是否免费（0=否，1=限额免费，2=完全免费），默认0
         :rtype: int
         """
         return self._Free
@@ -1254,7 +1254,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DefaultTSF(self):
-        """是否 TSF 默认业务系统（0=否，1=是）
+        r"""是否 TSF 默认业务系统（0=否，1=是）
         :rtype: int
         """
         return self._DefaultTSF
@@ -1265,7 +1265,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """是否关联 Dashboard（0=关, 1=开）
+        r"""是否关联 Dashboard（0=关, 1=开）
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -1276,7 +1276,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """关联的 Dashboard ID
+        r"""关联的 Dashboard ID
         :rtype: str
         """
         return self._DashboardTopicID
@@ -1287,7 +1287,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """是否开启组件漏洞检测（0=关， 1=开）
+        r"""是否开启组件漏洞检测（0=关， 1=开）
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -1298,7 +1298,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """是否开启 SQL 注入分析（0=关， 1=开）
+        r"""是否开启 SQL 注入分析（0=关， 1=开）
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -1309,7 +1309,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def StopReason(self):
-        """限流原因。{
+        r"""限流原因。{
 1: 正式版限额;
 2: 试用版限额;
 4: 试用版到期;
@@ -1325,7 +1325,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        """是否开远程命令执行检测（0=关， 1=开）
+        r"""是否开远程命令执行检测（0=关， 1=开）
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -1336,7 +1336,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        """是否开内存马执行检测（0=关， 1=开）
+        r"""是否开内存马执行检测（0=关， 1=开）
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -1347,7 +1347,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogIndexType(self):
-        """CLS索引类型(0=全文索引，1=键值索引)
+        r"""CLS索引类型(0=全文索引，1=键值索引)
         :rtype: int
         """
         return self._LogIndexType
@@ -1358,7 +1358,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        """traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -1369,7 +1369,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        """是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""是否开启删除任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -1380,7 +1380,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        """是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""是否开启读取任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -1391,7 +1391,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        """是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""是否开启上传任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -1402,7 +1402,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        """是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""是否开启包含任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -1413,7 +1413,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        """是否开启目录遍历检测（0-关闭，1-开启）
+        r"""是否开启目录遍历检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -1424,7 +1424,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        """是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -1435,7 +1435,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        """是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -1446,7 +1446,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        """是否开启表达式注入检测（0-关闭，1-开启）
+        r"""是否开启表达式注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -1457,7 +1457,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        """是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""是否开启JNDI注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -1468,7 +1468,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        """是否开启JNI注入检测（0-关闭，1-开启）
+        r"""是否开启JNI注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -1479,7 +1479,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        """是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""是否开启Webshell后门检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -1490,7 +1490,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        """是否开启反序列化检测（0-关闭，1-开启）
+        r"""是否开启反序列化检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -1501,7 +1501,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Token(self):
-        """业务系统鉴权 token
+        r"""业务系统鉴权 token
         :rtype: str
         """
         return self._Token
@@ -1512,7 +1512,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        """URL长分段收敛阈值
+        r"""URL长分段收敛阈值
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -1523,7 +1523,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        """URL数字分段收敛阈值
+        r"""URL数字分段收敛阈值
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -1606,7 +1606,7 @@ class ApmInstanceDetail(AbstractModel):
 
 
 class ApmMetricRecord(AbstractModel):
-    """指标列表单元
+    r"""指标列表单元
 
     """
 
@@ -1622,7 +1622,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Fields(self):
-        """field数组，用于指标的查询结果
+        r"""field数组，用于指标的查询结果
         :rtype: list of ApmField
         """
         return self._Fields
@@ -1633,7 +1633,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Tags(self):
-        """tag数组，用于区分 Groupby 的对象
+        r"""tag数组，用于区分 Groupby 的对象
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1667,7 +1667,7 @@ class ApmMetricRecord(AbstractModel):
 
 
 class ApmTag(AbstractModel):
-    """维度（标签）对象
+    r"""维度（标签）对象
 
     """
 
@@ -1683,7 +1683,7 @@ class ApmTag(AbstractModel):
 
     @property
     def Key(self):
-        """维度Key(列名，标签Key)
+        r"""维度Key(列名，标签Key)
         :rtype: str
         """
         return self._Key
@@ -1694,7 +1694,7 @@ class ApmTag(AbstractModel):
 
     @property
     def Value(self):
-        """维度值（标签值）
+        r"""维度值（标签值）
         :rtype: str
         """
         return self._Value
@@ -1718,7 +1718,7 @@ class ApmTag(AbstractModel):
 
 
 class CreateApmInstanceRequest(AbstractModel):
-    """CreateApmInstance请求参数结构体
+    r"""CreateApmInstance请求参数结构体
 
     """
 
@@ -1749,7 +1749,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """业务系统名
+        r"""业务系统名
         :rtype: str
         """
         return self._Name
@@ -1760,7 +1760,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """业务系统描述信息
+        r"""业务系统描述信息
         :rtype: str
         """
         return self._Description
@@ -1771,7 +1771,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace 数据保存时长（单位：天，默认存储时长为3天）
+        r"""Trace 数据保存时长（单位：天，默认存储时长为3天）
         :rtype: int
         """
         return self._TraceDuration
@@ -1782,7 +1782,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """业务系统 Tag 列表
+        r"""业务系统 Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1793,7 +1793,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
+        r"""业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1804,7 +1804,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """业务系统的计费模式（0=按量付费，1=预付费）
+        r"""业务系统的计费模式（0=按量付费，1=预付费）
         :rtype: int
         """
         return self._PayMode
@@ -1815,7 +1815,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
+        r"""是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
         :rtype: int
         """
         return self._Free
@@ -1849,7 +1849,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
 
 class CreateApmInstanceResponse(AbstractModel):
-    """CreateApmInstance返回参数结构体
+    r"""CreateApmInstance返回参数结构体
 
     """
 
@@ -1865,7 +1865,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -1876,7 +1876,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1892,7 +1892,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
 
 class CreateProfileTaskRequest(AbstractModel):
-    """CreateProfileTask请求参数结构体
+    r"""CreateProfileTask请求参数结构体
 
     """
 
@@ -1926,7 +1926,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """应用名称
+        r"""应用名称
         :rtype: str
         """
         return self._ServiceName
@@ -1937,7 +1937,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """APM业务系统ID
+        r"""APM业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -1948,7 +1948,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def ServiceInstance(self):
-        """应用实例（在线）
+        r"""应用实例（在线）
         :rtype: str
         """
         return self._ServiceInstance
@@ -1959,7 +1959,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def Event(self):
-        """事件类型（cpu、alloc）
+        r"""事件类型（cpu、alloc）
         :rtype: str
         """
         return self._Event
@@ -1970,7 +1970,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def Duration(self):
-        """任务持续时长(单位：毫秒)，范围限制在5~180秒
+        r"""任务持续时长(单位：毫秒)，范围限制在5~180秒
         :rtype: int
         """
         return self._Duration
@@ -1981,7 +1981,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def AllTimes(self):
-        """执行次数，范围限制在1~100次
+        r"""执行次数，范围限制在1~100次
         :rtype: int
         """
         return self._AllTimes
@@ -1992,7 +1992,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳，0代表从当前开始(单位：秒)
+        r"""开始时间戳，0代表从当前开始(单位：秒)
         :rtype: int
         """
         return self._StartTime
@@ -2003,7 +2003,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
     @property
     def TaskInterval(self):
-        """任务执行间隔(单位：毫秒)，范围限制在10~600秒，不可小于1.5倍的Duration
+        r"""任务执行间隔(单位：毫秒)，范围限制在10~600秒，不可小于1.5倍的Duration
         :rtype: int
         """
         return self._TaskInterval
@@ -2033,7 +2033,7 @@ class CreateProfileTaskRequest(AbstractModel):
 
 
 class CreateProfileTaskResponse(AbstractModel):
-    """CreateProfileTask返回参数结构体
+    r"""CreateProfileTask返回参数结构体
 
     """
 
@@ -2049,7 +2049,7 @@ class CreateProfileTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -2060,7 +2060,7 @@ class CreateProfileTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2076,7 +2076,7 @@ class CreateProfileTaskResponse(AbstractModel):
 
 
 class DescribeApmAgentRequest(AbstractModel):
-    """DescribeApmAgent请求参数结构体
+    r"""DescribeApmAgent请求参数结构体
 
     """
 
@@ -2101,7 +2101,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2112,7 +2112,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def AgentType(self):
-        """接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
+        r"""接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
         :rtype: str
         """
         return self._AgentType
@@ -2123,7 +2123,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def NetworkMode(self):
-        """上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
+        r"""上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
         :rtype: str
         """
         return self._NetworkMode
@@ -2134,7 +2134,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def LanguageEnvironment(self):
-        """语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
+        r"""语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
         :rtype: str
         """
         return self._LanguageEnvironment
@@ -2145,7 +2145,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def ReportMethod(self):
-        """上报方式，已弃用
+        r"""上报方式，已弃用
         :rtype: str
         """
         return self._ReportMethod
@@ -2172,7 +2172,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
 
 class DescribeApmAgentResponse(AbstractModel):
-    """DescribeApmAgent返回参数结构体
+    r"""DescribeApmAgent返回参数结构体
 
     """
 
@@ -2188,7 +2188,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     @property
     def ApmAgent(self):
-        """Agent 信息
+        r"""Agent 信息
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmAgentInfo`
         """
         return self._ApmAgent
@@ -2199,7 +2199,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2217,7 +2217,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
 
 class DescribeApmInstancesRequest(AbstractModel):
-    """DescribeApmInstances请求参数结构体
+    r"""DescribeApmInstances请求参数结构体
 
     """
 
@@ -2245,7 +2245,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag 列表
+        r"""Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -2256,7 +2256,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """按业务系统名过滤，支持模糊检索
+        r"""按业务系统名过滤，支持模糊检索
         :rtype: str
         """
         return self._InstanceName
@@ -2267,7 +2267,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """按业务系统 ID 过滤，支持模糊检索
+        r"""按业务系统 ID 过滤，支持模糊检索
         :rtype: str
         """
         return self._InstanceId
@@ -2278,7 +2278,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """按业务系统 ID 过滤
+        r"""按业务系统 ID 过滤
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2289,7 +2289,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def DemoInstanceFlag(self):
-        """是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
+        r"""是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
         :rtype: int
         """
         return self._DemoInstanceFlag
@@ -2300,7 +2300,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def AllRegionsFlag(self):
-        """是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
+        r"""是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
         :rtype: int
         """
         return self._AllRegionsFlag
@@ -2333,7 +2333,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
 
 class DescribeApmInstancesResponse(AbstractModel):
-    """DescribeApmInstances返回参数结构体
+    r"""DescribeApmInstances返回参数结构体
 
     """
 
@@ -2349,7 +2349,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """APM 业务系统列表
+        r"""APM 业务系统列表
         :rtype: list of ApmInstanceDetail
         """
         return self._Instances
@@ -2360,7 +2360,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2381,7 +2381,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
 
 class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
-    """DescribeGeneralApmApplicationConfig请求参数结构体
+    r"""DescribeGeneralApmApplicationConfig请求参数结构体
 
     """
 
@@ -2397,7 +2397,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """应用名
+        r"""应用名
         :rtype: str
         """
         return self._ServiceName
@@ -2408,7 +2408,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        r"""业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -2432,7 +2432,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
 
 class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
-    """DescribeGeneralApmApplicationConfig返回参数结构体
+    r"""DescribeGeneralApmApplicationConfig返回参数结构体
 
     """
 
@@ -2448,7 +2448,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def ApmApplicationConfigView(self):
-        """应用配置项
+        r"""应用配置项
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmApplicationConfigView`
         """
         return self._ApmApplicationConfigView
@@ -2459,7 +2459,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2477,7 +2477,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
 
 class DescribeGeneralMetricDataRequest(AbstractModel):
-    """DescribeGeneralMetricData请求参数结构体
+    r"""DescribeGeneralMetricData请求参数结构体
 
     """
 
@@ -2526,7 +2526,7 @@ Value 填写排序方式：
 
     @property
     def Metrics(self):
-        """需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        r"""需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: list of str
         """
         return self._Metrics
@@ -2537,7 +2537,7 @@ Value 填写排序方式：
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2548,7 +2548,7 @@ Value 填写排序方式：
 
     @property
     def ViewName(self):
-        """视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        r"""视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: str
         """
         return self._ViewName
@@ -2559,7 +2559,7 @@ Value 填写排序方式：
 
     @property
     def Filters(self):
-        """要过滤的维度信息，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        r"""要过滤的维度信息，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: list of GeneralFilter
         """
         return self._Filters
@@ -2570,7 +2570,7 @@ Value 填写排序方式：
 
     @property
     def GroupBy(self):
-        """聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        r"""聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: list of str
         """
         return self._GroupBy
@@ -2581,7 +2581,7 @@ Value 填写排序方式：
 
     @property
     def StartTime(self):
-        """起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
+        r"""起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :rtype: int
         """
         return self._StartTime
@@ -2592,7 +2592,7 @@ Value 填写排序方式：
 
     @property
     def EndTime(self):
-        """结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
+        r"""结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :rtype: int
         """
         return self._EndTime
@@ -2603,7 +2603,7 @@ Value 填写排序方式：
 
     @property
     def Period(self):
-        """是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
+        r"""是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
 - 填入0，则计算开始时间到截止时间的指标数据。
 - 填入1，则会按照开始时间到截止时间的时间跨度选择聚合粒度：
  - 时间跨度 (0,12) 小时，则按一分钟粒度聚合。
@@ -2619,7 +2619,7 @@ Value 填写排序方式：
 
     @property
     def OrderBy(self):
-        """对查询指标进行排序：
+        r"""对查询指标进行排序：
 Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 Value 填写排序方式：     
 - asc：对查询指标进行升序排序
@@ -2634,7 +2634,7 @@ Value 填写排序方式：
 
     @property
     def PageSize(self):
-        """查询指标的限制条数，目前最多展示50条数据，PageSize取值为1-50，上送PageSize则根据PageSize的值展示限制条数。
+        r"""查询指标的限制条数，目前最多展示50条数据，PageSize取值为1-50，上送PageSize则根据PageSize的值展示限制条数。
         :rtype: int
         """
         return self._PageSize
@@ -2673,7 +2673,7 @@ Value 填写排序方式：
 
 
 class DescribeGeneralMetricDataResponse(AbstractModel):
-    """DescribeGeneralMetricData返回参数结构体
+    r"""DescribeGeneralMetricData返回参数结构体
 
     """
 
@@ -2689,7 +2689,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
     @property
     def Records(self):
-        """指标结果集
+        r"""指标结果集
         :rtype: list of Line
         """
         return self._Records
@@ -2700,7 +2700,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2721,7 +2721,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
 
 class DescribeGeneralOTSpanListRequest(AbstractModel):
-    """DescribeGeneralOTSpanList请求参数结构体
+    r"""DescribeGeneralOTSpanList请求参数结构体
 
     """
 
@@ -2765,7 +2765,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2776,7 +2776,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Span 查询开始时间戳（单位：秒）
+        r"""Span 查询开始时间戳（单位：秒）
         :rtype: int
         """
         return self._StartTime
@@ -2787,7 +2787,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Span 查询结束时间戳（单位：秒）
+        r"""Span 查询结束时间戳（单位：秒）
         :rtype: int
         """
         return self._EndTime
@@ -2798,7 +2798,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """通用过滤参数
+        r"""通用过滤参数
         :rtype: list of Filter
         """
         return self._Filters
@@ -2809,7 +2809,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序
+        r"""排序
 现支持的 Key 有：
 
 - startTime(开始时间)
@@ -2830,7 +2830,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        """业务自身服务名，控制台用户请填写taw
+        r"""业务自身服务名，控制台用户请填写taw
         :rtype: str
         """
         return self._BusinessName
@@ -2841,7 +2841,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单页项目个数，默认为10000，合法取值范围为0～10000
+        r"""单页项目个数，默认为10000，合法取值范围为0～10000
         :rtype: int
         """
         return self._Limit
@@ -2852,7 +2852,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页
+        r"""分页
         :rtype: int
         """
         return self._Offset
@@ -2889,7 +2889,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
 
 class DescribeGeneralOTSpanListResponse(AbstractModel):
-    """DescribeGeneralOTSpanList返回参数结构体
+    r"""DescribeGeneralOTSpanList返回参数结构体
 
     """
 
@@ -2912,7 +2912,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数量
+        r"""总数量
         :rtype: int
         """
         return self._TotalCount
@@ -2923,7 +2923,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
+        r"""Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
 1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
 2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
 3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
@@ -2938,7 +2938,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2955,7 +2955,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
 
 class DescribeGeneralSpanListRequest(AbstractModel):
-    """DescribeGeneralSpanList请求参数结构体
+    r"""DescribeGeneralSpanList请求参数结构体
 
     """
 
@@ -2999,7 +2999,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -3010,7 +3010,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Span 查询开始时间戳（单位：秒）
+        r"""Span 查询开始时间戳（单位：秒）
         :rtype: int
         """
         return self._StartTime
@@ -3021,7 +3021,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Span 查询结束时间戳（单位：秒）
+        r"""Span 查询结束时间戳（单位：秒）
         :rtype: int
         """
         return self._EndTime
@@ -3032,7 +3032,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """通用过滤参数
+        r"""通用过滤参数
         :rtype: list of Filter
         """
         return self._Filters
@@ -3043,7 +3043,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序
+        r"""排序
 现支持的 Key 有：
 
 - startTime(开始时间)
@@ -3064,7 +3064,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        """业务自身服务名，控制台用户请填写taw
+        r"""业务自身服务名，控制台用户请填写taw
         :rtype: str
         """
         return self._BusinessName
@@ -3075,7 +3075,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单页项目个数，默认为10000，合法取值范围为0～10000
+        r"""单页项目个数，默认为10000，合法取值范围为0～10000
         :rtype: int
         """
         return self._Limit
@@ -3086,7 +3086,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页
+        r"""分页
         :rtype: int
         """
         return self._Offset
@@ -3123,7 +3123,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
 
 class DescribeGeneralSpanListResponse(AbstractModel):
-    """DescribeGeneralSpanList返回参数结构体
+    r"""DescribeGeneralSpanList返回参数结构体
 
     """
 
@@ -3142,7 +3142,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数量
+        r"""总数量
         :rtype: int
         """
         return self._TotalCount
@@ -3153,7 +3153,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """Span 分页列表
+        r"""Span 分页列表
         :rtype: list of Span
         """
         return self._Spans
@@ -3164,7 +3164,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3186,7 +3186,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
 
 class DescribeMetricRecordsRequest(AbstractModel):
-    """DescribeMetricRecords请求参数结构体
+    r"""DescribeMetricRecords请求参数结构体
 
     """
 
@@ -3248,7 +3248,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -3259,7 +3259,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """指标列表
+        r"""指标列表
         :rtype: list of QueryMetricItem
         """
         return self._Metrics
@@ -3270,7 +3270,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间（单位为秒）
+        r"""开始时间（单位为秒）
         :rtype: int
         """
         return self._StartTime
@@ -3281,7 +3281,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间（单位为秒）
+        r"""结束时间（单位为秒）
         :rtype: int
         """
         return self._EndTime
@@ -3292,7 +3292,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        """聚合维度
+        r"""聚合维度
         :rtype: list of str
         """
         return self._GroupBy
@@ -3303,7 +3303,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -3314,7 +3314,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def OrFilters(self):
-        """Or 过滤条件
+        r"""Or 过滤条件
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -3325,7 +3325,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序
+        r"""排序
 现支持的 Key 有：
 
 - startTime(开始时间)
@@ -3346,7 +3346,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        """业务名称，控制台用户请填写taw。
+        r"""业务名称，控制台用户请填写taw。
         :rtype: str
         """
         return self._BusinessName
@@ -3357,7 +3357,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """特殊处理查询结果
+        r"""特殊处理查询结果
         :rtype: str
         """
         return self._Type
@@ -3368,7 +3368,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页大小，默认为1000，合法取值范围为0~1000
+        r"""每页大小，默认为1000，合法取值范围为0~1000
         :rtype: int
         """
         return self._Limit
@@ -3379,7 +3379,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页起始点
+        r"""分页起始点
         :rtype: int
         """
         return self._Offset
@@ -3390,7 +3390,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def PageIndex(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageIndex
@@ -3401,7 +3401,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """页长
+        r"""页长
         :rtype: int
         """
         return self._PageSize
@@ -3454,7 +3454,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
 
 class DescribeMetricRecordsResponse(AbstractModel):
-    """DescribeMetricRecords返回参数结构体
+    r"""DescribeMetricRecords返回参数结构体
 
     """
 
@@ -3473,7 +3473,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def Records(self):
-        """指标结果集
+        r"""指标结果集
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -3484,7 +3484,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """查询指标结果集条数
+        r"""查询指标结果集条数
         :rtype: int
         """
         return self._TotalCount
@@ -3495,7 +3495,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3517,7 +3517,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
 
 class DescribeServiceOverviewRequest(AbstractModel):
-    """DescribeServiceOverview请求参数结构体
+    r"""DescribeServiceOverview请求参数结构体
 
     """
 
@@ -3557,7 +3557,7 @@ Value 填写：
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -3568,7 +3568,7 @@ Value 填写：
 
     @property
     def Metrics(self):
-        """指标列表
+        r"""指标列表
         :rtype: list of QueryMetricItem
         """
         return self._Metrics
@@ -3579,7 +3579,7 @@ Value 填写：
 
     @property
     def StartTime(self):
-        """开始时间（单位：秒）
+        r"""开始时间（单位：秒）
         :rtype: int
         """
         return self._StartTime
@@ -3590,7 +3590,7 @@ Value 填写：
 
     @property
     def EndTime(self):
-        """结束时间（单位：秒）
+        r"""结束时间（单位：秒）
         :rtype: int
         """
         return self._EndTime
@@ -3601,7 +3601,7 @@ Value 填写：
 
     @property
     def GroupBy(self):
-        """聚合维度
+        r"""聚合维度
         :rtype: list of str
         """
         return self._GroupBy
@@ -3612,7 +3612,7 @@ Value 填写：
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -3623,7 +3623,7 @@ Value 填写：
 
     @property
     def OrderBy(self):
-        """排序方式
+        r"""排序方式
 Value 填写：
 - asc：对查询指标进行升序排序
 - desc：对查询指标进行降序排序
@@ -3637,7 +3637,7 @@ Value 填写：
 
     @property
     def Limit(self):
-        """每页大小
+        r"""每页大小
         :rtype: int
         """
         return self._Limit
@@ -3648,7 +3648,7 @@ Value 填写：
 
     @property
     def Offset(self):
-        """分页起始点
+        r"""分页起始点
         :rtype: int
         """
         return self._Offset
@@ -3691,7 +3691,7 @@ Value 填写：
 
 
 class DescribeServiceOverviewResponse(AbstractModel):
-    """DescribeServiceOverview返回参数结构体
+    r"""DescribeServiceOverview返回参数结构体
 
     """
 
@@ -3707,7 +3707,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
     @property
     def Records(self):
-        """指标结果集
+        r"""指标结果集
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -3718,7 +3718,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3739,7 +3739,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
 
 class DescribeTagValuesRequest(AbstractModel):
-    """DescribeTagValues请求参数结构体
+    r"""DescribeTagValues请求参数结构体
 
     """
 
@@ -3770,7 +3770,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -3781,7 +3781,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """维度名
+        r"""维度名
         :rtype: str
         """
         return self._TagKey
@@ -3792,7 +3792,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间（单位为秒）
+        r"""开始时间（单位为秒）
         :rtype: int
         """
         return self._StartTime
@@ -3803,7 +3803,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间（单位为秒）
+        r"""结束时间（单位为秒）
         :rtype: int
         """
         return self._EndTime
@@ -3814,7 +3814,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of Filter
         """
         return self._Filters
@@ -3825,7 +3825,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def OrFilters(self):
-        """Or 过滤条件
+        r"""Or 过滤条件
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -3836,7 +3836,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """使用类型
+        r"""使用类型
         :rtype: str
         """
         return self._Type
@@ -3875,7 +3875,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
 
 class DescribeTagValuesResponse(AbstractModel):
-    """DescribeTagValues返回参数结构体
+    r"""DescribeTagValues返回参数结构体
 
     """
 
@@ -3891,7 +3891,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Values(self):
-        """维度值列表
+        r"""维度值列表
         :rtype: list of str
         """
         return self._Values
@@ -3902,7 +3902,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3918,7 +3918,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """查询过滤参数
+    r"""查询过滤参数
 
     """
 
@@ -3937,7 +3937,7 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
-        """过滤方式（=, !=, in）
+        r"""过滤方式（=, !=, in）
         :rtype: str
         """
         return self._Type
@@ -3948,7 +3948,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        """过滤维度名
+        r"""过滤维度名
         :rtype: str
         """
         return self._Key
@@ -3959,7 +3959,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        """过滤值，in过滤方式用逗号分割多个值
+        r"""过滤值，in过滤方式用逗号分割多个值
         :rtype: str
         """
         return self._Value
@@ -3984,7 +3984,7 @@ class Filter(AbstractModel):
 
 
 class GeneralFilter(AbstractModel):
-    """查询过滤参数
+    r"""查询过滤参数
 
     """
 
@@ -4000,7 +4000,7 @@ class GeneralFilter(AbstractModel):
 
     @property
     def Key(self):
-        """过滤维度名
+        r"""过滤维度名
         :rtype: str
         """
         return self._Key
@@ -4011,7 +4011,7 @@ class GeneralFilter(AbstractModel):
 
     @property
     def Value(self):
-        """过滤值
+        r"""过滤值
         :rtype: str
         """
         return self._Value
@@ -4035,7 +4035,7 @@ class GeneralFilter(AbstractModel):
 
 
 class Instrument(AbstractModel):
-    """组件
+    r"""组件
 
     """
 
@@ -4051,7 +4051,7 @@ class Instrument(AbstractModel):
 
     @property
     def Name(self):
-        """组件名称
+        r"""组件名称
         :rtype: str
         """
         return self._Name
@@ -4062,7 +4062,7 @@ class Instrument(AbstractModel):
 
     @property
     def Enable(self):
-        """组件开关
+        r"""组件开关
         :rtype: bool
         """
         return self._Enable
@@ -4086,7 +4086,7 @@ class Instrument(AbstractModel):
 
 
 class Line(AbstractModel):
-    """指标曲线数据
+    r"""指标曲线数据
 
     """
 
@@ -4114,7 +4114,7 @@ class Line(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名
+        r"""指标名
         :rtype: str
         """
         return self._MetricName
@@ -4125,7 +4125,7 @@ class Line(AbstractModel):
 
     @property
     def MetricNameCN(self):
-        """指标中文名
+        r"""指标中文名
         :rtype: str
         """
         return self._MetricNameCN
@@ -4136,7 +4136,7 @@ class Line(AbstractModel):
 
     @property
     def TimeSerial(self):
-        """时间序列
+        r"""时间序列
         :rtype: list of int
         """
         return self._TimeSerial
@@ -4147,7 +4147,7 @@ class Line(AbstractModel):
 
     @property
     def DataSerial(self):
-        """数据序列
+        r"""数据序列
         :rtype: list of float
         """
         return self._DataSerial
@@ -4158,7 +4158,7 @@ class Line(AbstractModel):
 
     @property
     def Tags(self):
-        """维度列表
+        r"""维度列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -4169,7 +4169,7 @@ class Line(AbstractModel):
 
     @property
     def MetricUnit(self):
-        """指标数据单位
+        r"""指标数据单位
         :rtype: str
         """
         return self._MetricUnit
@@ -4202,7 +4202,7 @@ class Line(AbstractModel):
 
 
 class ModifyApmInstanceRequest(AbstractModel):
-    """ModifyApmInstance请求参数结构体
+    r"""ModifyApmInstance请求参数结构体
 
     """
 
@@ -4338,7 +4338,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统 ID
+        r"""业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -4349,7 +4349,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """业务系统名
+        r"""业务系统名
         :rtype: str
         """
         return self._Name
@@ -4360,7 +4360,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag 列表
+        r"""Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -4371,7 +4371,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """业务系统描述
+        r"""业务系统描述
         :rtype: str
         """
         return self._Description
@@ -4382,7 +4382,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace 数据保存时长（单位：天）
+        r"""Trace 数据保存时长（单位：天）
         :rtype: int
         """
         return self._TraceDuration
@@ -4393,7 +4393,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def OpenBilling(self):
-        """是否开启计费
+        r"""是否开启计费
         :rtype: bool
         """
         return self._OpenBilling
@@ -4404,7 +4404,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """业务系统上报额度
+        r"""业务系统上报额度
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -4415,7 +4415,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        """错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
+        r"""错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -4426,7 +4426,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """采样率（单位：%）
+        r"""采样率（单位：%）
         :rtype: int
         """
         return self._SampleRate
@@ -4437,7 +4437,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrorSample(self):
-        """是否开启错误采样（0=关, 1=开）
+        r"""是否开启错误采样（0=关, 1=开）
         :rtype: int
         """
         return self._ErrorSample
@@ -4448,7 +4448,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        """采样慢调用保存阈值（单位：ms）
+        r"""采样慢调用保存阈值（单位：ms）
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -4459,7 +4459,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """是否开启日志功能（0=关, 1=开）
+        r"""是否开启日志功能（0=关, 1=开）
         :rtype: int
         """
         return self._IsRelatedLog
@@ -4470,7 +4470,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        """日志地域，开启日志功能后才会生效
+        r"""日志地域，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogRegion
@@ -4481,7 +4481,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """CLS 日志主题 ID，开启日志功能后才会生效
+        r"""CLS 日志主题 ID，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogTopicID
@@ -4492,7 +4492,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        """日志集，开启日志功能后才会生效
+        r"""日志集，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogSet
@@ -4503,7 +4503,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        """日志源，开启日志功能后才会生效
+        r"""日志源，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogSource
@@ -4514,7 +4514,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def CustomShowTags(self):
-        """用户自定义展示标签列表
+        r"""用户自定义展示标签列表
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -4525,7 +4525,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """修改计费模式（1为预付费，0为按量付费）
+        r"""修改计费模式（1为预付费，0为按量付费）
         :rtype: int
         """
         return self._PayMode
@@ -4536,7 +4536,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """响应时间警示线
+        r"""响应时间警示线
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -4547,7 +4547,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
+        r"""是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
         :rtype: int
         """
         return self._Free
@@ -4558,7 +4558,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """是否关联 Dashboard（0=关,1=开）
+        r"""是否关联 Dashboard（0=关,1=开）
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -4569,7 +4569,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """关联的 Dashboard ID，开启关联 Dashboard 后才会生效
+        r"""关联的 Dashboard ID，开启关联 Dashboard 后才会生效
         :rtype: str
         """
         return self._DashboardTopicID
@@ -4580,7 +4580,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """是否开启 SQL 注入检测（0=关,1=开）
+        r"""是否开启 SQL 注入检测（0=关,1=开）
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -4591,7 +4591,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """是否开启组件漏洞检测（0=关,1=开）
+        r"""是否开启组件漏洞检测（0=关,1=开）
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -4602,7 +4602,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        """是否开启远程命令攻击检测
+        r"""是否开启远程命令攻击检测
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -4613,7 +4613,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        """是否开启内存马检测
+        r"""是否开启内存马检测
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -4624,7 +4624,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogIndexType(self):
-        """CLS索引类型(0=全文索引，1=键值索引)
+        r"""CLS索引类型(0=全文索引，1=键值索引)
         :rtype: int
         """
         return self._LogIndexType
@@ -4635,7 +4635,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        """traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -4646,7 +4646,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        """是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""是否开启删除任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -4657,7 +4657,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        """是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""是否开启读取任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -4668,7 +4668,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        """是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""是否开启上传任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -4679,7 +4679,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        """是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""是否开启包含任意文件检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -4690,7 +4690,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        """是否开启目录遍历检测（0-关闭，1-开启）
+        r"""是否开启目录遍历检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -4701,7 +4701,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        """是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -4712,7 +4712,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        """是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -4723,7 +4723,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        """是否开启表达式注入检测（0-关闭，1-开启）
+        r"""是否开启表达式注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -4734,7 +4734,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        """是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""是否开启JNDI注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -4745,7 +4745,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        """是否开启JNI注入检测（0-关闭，1-开启）
+        r"""是否开启JNI注入检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -4756,7 +4756,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        """是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""是否开启Webshell后门检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -4767,7 +4767,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        """是否开启反序列化检测（0-关闭，1-开启）
+        r"""是否开启反序列化检测（0-关闭，1-开启）
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -4778,7 +4778,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        """URL长分段收敛阈值
+        r"""URL长分段收敛阈值
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -4789,7 +4789,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        """URL数字分段收敛阈值
+        r"""URL数字分段收敛阈值
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -4858,7 +4858,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
 
 class ModifyApmInstanceResponse(AbstractModel):
-    """ModifyApmInstance返回参数结构体
+    r"""ModifyApmInstance返回参数结构体
 
     """
 
@@ -4871,7 +4871,7 @@ class ModifyApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4886,7 +4886,7 @@ class ModifyApmInstanceResponse(AbstractModel):
 
 
 class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
-    """ModifyGeneralApmApplicationConfig请求参数结构体
+    r"""ModifyGeneralApmApplicationConfig请求参数结构体
 
     """
 
@@ -4906,7 +4906,7 @@ class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统Id
+        r"""业务系统Id
         :rtype: str
         """
         return self._InstanceId
@@ -4917,7 +4917,7 @@ class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """需要修改的字段key value分别指定字段名、字段值
+        r"""需要修改的字段key value分别指定字段名、字段值
 [具体字段请见](https://cloud.tencent.com/document/product/248/111241)
         :rtype: list of ApmTag
         """
@@ -4929,7 +4929,7 @@ class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceNames(self):
-        """需要修改配置的应用列表名称	
+        r"""需要修改配置的应用列表名称	
         :rtype: list of str
         """
         return self._ServiceNames
@@ -4959,7 +4959,7 @@ class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
 
 
 class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
-    """ModifyGeneralApmApplicationConfig返回参数结构体
+    r"""ModifyGeneralApmApplicationConfig返回参数结构体
 
     """
 
@@ -4975,7 +4975,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def Message(self):
-        """返回值描述
+        r"""返回值描述
         :rtype: str
         """
         return self._Message
@@ -4986,7 +4986,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5002,7 +5002,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
 
 class OrderBy(AbstractModel):
-    """排序字段
+    r"""排序字段
 
     """
 
@@ -5018,7 +5018,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Key(self):
-        """需要排序的字段，现支持 startTIme, endTime, duration
+        r"""需要排序的字段，现支持 startTIme, endTime, duration
         :rtype: str
         """
         return self._Key
@@ -5029,7 +5029,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Value(self):
-        """asc 顺序排序 / desc 倒序排序
+        r"""asc 顺序排序 / desc 倒序排序
         :rtype: str
         """
         return self._Value
@@ -5053,7 +5053,7 @@ class OrderBy(AbstractModel):
 
 
 class QueryMetricItem(AbstractModel):
-    """查询
+    r"""查询
 
     """
 
@@ -5072,7 +5072,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标名
+        r"""指标名
         :rtype: str
         """
         return self._MetricName
@@ -5083,7 +5083,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compares(self):
-        """同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+        r"""同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
         :rtype: list of str
         """
         return self._Compares
@@ -5094,7 +5094,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compare(self):
-        """同比，已弃用，不建议使用
+        r"""同比，已弃用，不建议使用
         :rtype: str
         """
         return self._Compare
@@ -5119,7 +5119,7 @@ class QueryMetricItem(AbstractModel):
 
 
 class Span(AbstractModel):
-    """Span 对象
+    r"""Span 对象
 
     """
 
@@ -5165,7 +5165,7 @@ class Span(AbstractModel):
 
     @property
     def TraceID(self):
-        """Trace ID
+        r"""Trace ID
         :rtype: str
         """
         return self._TraceID
@@ -5176,7 +5176,7 @@ class Span(AbstractModel):
 
     @property
     def Logs(self):
-        """日志
+        r"""日志
         :rtype: list of SpanLog
         """
         return self._Logs
@@ -5187,7 +5187,7 @@ class Span(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: list of SpanTag
         """
         return self._Tags
@@ -5198,7 +5198,7 @@ class Span(AbstractModel):
 
     @property
     def Process(self):
-        """上报应用服务信息
+        r"""上报应用服务信息
         :rtype: :class:`tencentcloud.apm.v20210622.models.SpanProcess`
         """
         return self._Process
@@ -5209,7 +5209,7 @@ class Span(AbstractModel):
 
     @property
     def Timestamp(self):
-        """产生时间戳(毫秒)
+        r"""产生时间戳(毫秒)
         :rtype: int
         """
         return self._Timestamp
@@ -5220,7 +5220,7 @@ class Span(AbstractModel):
 
     @property
     def OperationName(self):
-        """Span 名称
+        r"""Span 名称
         :rtype: str
         """
         return self._OperationName
@@ -5231,7 +5231,7 @@ class Span(AbstractModel):
 
     @property
     def References(self):
-        """关联关系
+        r"""关联关系
         :rtype: list of SpanReference
         """
         return self._References
@@ -5242,7 +5242,7 @@ class Span(AbstractModel):
 
     @property
     def StartTime(self):
-        """产生时间戳(微秒)
+        r"""产生时间戳(微秒)
         :rtype: int
         """
         return self._StartTime
@@ -5253,7 +5253,7 @@ class Span(AbstractModel):
 
     @property
     def Duration(self):
-        """持续耗时(微妙)
+        r"""持续耗时(微妙)
         :rtype: int
         """
         return self._Duration
@@ -5264,7 +5264,7 @@ class Span(AbstractModel):
 
     @property
     def SpanID(self):
-        """Span ID
+        r"""Span ID
         :rtype: str
         """
         return self._SpanID
@@ -5275,7 +5275,7 @@ class Span(AbstractModel):
 
     @property
     def StartTimeMillis(self):
-        """产生时间戳(毫秒)
+        r"""产生时间戳(毫秒)
         :rtype: int
         """
         return self._StartTimeMillis
@@ -5286,7 +5286,7 @@ class Span(AbstractModel):
 
     @property
     def ParentSpanID(self):
-        """Parent Span ID
+        r"""Parent Span ID
         :rtype: str
         """
         return self._ParentSpanID
@@ -5337,7 +5337,7 @@ class Span(AbstractModel):
 
 
 class SpanLog(AbstractModel):
-    """Span日志部分
+    r"""Span日志部分
 
 
     """
@@ -5354,7 +5354,7 @@ class SpanLog(AbstractModel):
 
     @property
     def Timestamp(self):
-        """日志时间戳
+        r"""日志时间戳
         :rtype: int
         """
         return self._Timestamp
@@ -5365,7 +5365,7 @@ class SpanLog(AbstractModel):
 
     @property
     def Fields(self):
-        """标签
+        r"""标签
         :rtype: list of SpanTag
         """
         return self._Fields
@@ -5394,7 +5394,7 @@ class SpanLog(AbstractModel):
 
 
 class SpanProcess(AbstractModel):
-    """服务相关信息
+    r"""服务相关信息
 
     """
 
@@ -5410,7 +5410,7 @@ class SpanProcess(AbstractModel):
 
     @property
     def ServiceName(self):
-        """应用服务名称
+        r"""应用服务名称
         :rtype: str
         """
         return self._ServiceName
@@ -5421,7 +5421,7 @@ class SpanProcess(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags 标签数组
+        r"""Tags 标签数组
         :rtype: list of SpanTag
         """
         return self._Tags
@@ -5450,7 +5450,7 @@ class SpanProcess(AbstractModel):
 
 
 class SpanReference(AbstractModel):
-    """Span上下游关联关系
+    r"""Span上下游关联关系
 
     """
 
@@ -5469,7 +5469,7 @@ class SpanReference(AbstractModel):
 
     @property
     def RefType(self):
-        """关联关系类型
+        r"""关联关系类型
         :rtype: str
         """
         return self._RefType
@@ -5480,7 +5480,7 @@ class SpanReference(AbstractModel):
 
     @property
     def SpanID(self):
-        """Span ID
+        r"""Span ID
         :rtype: str
         """
         return self._SpanID
@@ -5491,7 +5491,7 @@ class SpanReference(AbstractModel):
 
     @property
     def TraceID(self):
-        """Trace ID
+        r"""Trace ID
         :rtype: str
         """
         return self._TraceID
@@ -5516,7 +5516,7 @@ class SpanReference(AbstractModel):
 
 
 class SpanTag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -5537,7 +5537,7 @@ class SpanTag(AbstractModel):
 
     @property
     def Type(self):
-        """标签类型
+        r"""标签类型
         :rtype: str
         """
         return self._Type
@@ -5548,7 +5548,7 @@ class SpanTag(AbstractModel):
 
     @property
     def Key(self):
-        """标签Key
+        r"""标签Key
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5560,7 +5560,7 @@ class SpanTag(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        r"""标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5586,7 +5586,7 @@ class SpanTag(AbstractModel):
 
 
 class TerminateApmInstanceRequest(AbstractModel):
-    """TerminateApmInstance请求参数结构体
+    r"""TerminateApmInstance请求参数结构体
 
     """
 
@@ -5599,7 +5599,7 @@ class TerminateApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        r"""业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -5622,7 +5622,7 @@ class TerminateApmInstanceRequest(AbstractModel):
 
 
 class TerminateApmInstanceResponse(AbstractModel):
-    """TerminateApmInstance返回参数结构体
+    r"""TerminateApmInstance返回参数结构体
 
     """
 
@@ -5635,7 +5635,7 @@ class TerminateApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

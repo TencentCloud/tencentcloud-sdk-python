@@ -27,7 +27,7 @@ class StsClient(AbstractClient):
 
 
     def AssumeRole(self, request):
-        """**使用说明**
+        r"""**使用说明**
 
         1. 申请扮演某个角色的临时访问凭证，返回临时身份的token和能够扮演该角色的临时密钥；
         2. 角色策略组成
@@ -77,7 +77,7 @@ class StsClient(AbstractClient):
 
 
     def AssumeRoleWithSAML(self, request):
-        """本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时访问凭证。
+        r"""本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时访问凭证。
 
         注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 
@@ -102,7 +102,7 @@ class StsClient(AbstractClient):
 
 
     def AssumeRoleWithWebIdentity(self, request):
-        """申请OIDC角色临时访问凭证。
+        r"""申请OIDC角色临时访问凭证。
 
         注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 
@@ -127,7 +127,7 @@ class StsClient(AbstractClient):
 
 
     def GetCallerIdentity(self, request):
-        """获取当前调用者的身份信息。
+        r"""获取当前调用者的身份信息。
 
         接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时访问凭证身份获取。
 
@@ -152,7 +152,7 @@ class StsClient(AbstractClient):
 
 
     def GetFederationToken(self, request):
-        """**使用说明**
+        r"""**使用说明**
 
         1. 返回一组临时身份访问凭证，包含token和获取该身份的临时密钥；
 
@@ -195,7 +195,7 @@ class StsClient(AbstractClient):
 
 
     def GetSessionToken(self, request):
-        """获取MFA临时证书
+        r"""获取MFA临时证书
 
         :param request: Request instance for GetSessionToken.
         :type request: :class:`tencentcloud.sts.v20180813.models.GetSessionTokenRequest`
@@ -218,7 +218,7 @@ class StsClient(AbstractClient):
 
 
     def QueryApiKey(self, request):
-        """拉取API密钥列表
+        r"""拉取API密钥列表
 
         :param request: Request instance for QueryApiKey.
         :type request: :class:`tencentcloud.sts.v20180813.models.QueryApiKeyRequest`

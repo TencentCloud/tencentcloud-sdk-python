@@ -27,7 +27,7 @@ class CtsdbClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """查询实例列表及详情
+        r"""查询实例列表及详情
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.ctsdb.v20230202.models.DescribeClustersRequest`
@@ -50,7 +50,7 @@ class CtsdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """查看数据库/列表
+        r"""查看数据库/列表
 
         ```
           "Database":{

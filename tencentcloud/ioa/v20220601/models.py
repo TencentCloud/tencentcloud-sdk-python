@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AggrCategorySoftDetailRow(AbstractModel):
-    """按版本聚合后的软件列表
+    r"""按版本聚合后的软件列表
 
     """
 
@@ -76,7 +76,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def ID(self):
-        """ID
+        r"""ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -88,7 +88,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def Name(self):
-        """软件名称
+        r"""软件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -100,7 +100,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        """盗版风险
+        r"""盗版风险
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -112,7 +112,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def OsType(self):
-        """系统平台
+        r"""系统平台
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -124,7 +124,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def CorpName(self):
-        """企业名
+        r"""企业名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -136,7 +136,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def InstalledDeviceNum(self):
-        """安装设备数量(只支持32位)
+        r"""安装设备数量(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -148,7 +148,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def PiracyInstalledDeviceNum(self):
-        """盗版安装设备数
+        r"""盗版安装设备数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -160,7 +160,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def InstalledUserNum(self):
-        """已安装用户数
+        r"""已安装用户数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -172,7 +172,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def PiracyInstalledUserNum(self):
-        """盗版软件用户数
+        r"""盗版软件用户数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -184,7 +184,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def AuthNum(self):
-        """授权总数
+        r"""授权总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -196,7 +196,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def GenuineRate(self):
-        """正版率
+        r"""正版率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -208,7 +208,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
     @property
     def UpgradableDeviceNum(self):
-        """有新版本可升级的设备数量
+        r"""有新版本可升级的设备数量
         :rtype: int
         """
         return self._UpgradableDeviceNum
@@ -242,7 +242,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
 
 
 class AggrSoftDeviceRow(AbstractModel):
-    """聚合软件的已安装终端列表中的一行数据
+    r"""聚合软件的已安装终端列表中的一行数据
 
     """
 
@@ -321,7 +321,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceName(self):
-        """终端名
+        r"""终端名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -333,7 +333,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def LastLoginAccount(self):
-        """最近登录账号
+        r"""最近登录账号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -345,7 +345,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceUserName(self):
-        """终端用户名
+        r"""终端用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -357,7 +357,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def Version(self):
-        """软件版本
+        r"""软件版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -369,7 +369,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        """是否盗版
+        r"""是否盗版
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -381,7 +381,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def PiracyReason(self):
-        """盗版原因
+        r"""盗版原因
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -393,7 +393,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def InstallTime(self):
-        """安装时间
+        r"""安装时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -405,7 +405,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UserPath(self):
-        """用户目录
+        r"""用户目录
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -417,7 +417,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UserGroup(self):
-        """所在分组
+        r"""所在分组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -429,7 +429,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def IP(self):
-        """IP
+        r"""IP
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -441,7 +441,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def MAC(self):
-        """MAC
+        r"""MAC
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -453,7 +453,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UseTime(self):
-        """使用时长
+        r"""使用时长
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -465,7 +465,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceId(self):
-        """设备ID
+        r"""设备ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -477,7 +477,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def FullSoftName(self):
-        """软件全名
+        r"""软件全名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -489,7 +489,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def Id(self):
-        """数据ID（唯一）
+        r"""数据ID（唯一）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -501,7 +501,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def NewVersion(self):
-        """该终端此款软件可升级到的目标版本号
+        r"""该终端此款软件可升级到的目标版本号
         :rtype: str
         """
         return self._NewVersion
@@ -512,7 +512,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UpgradeSoftId(self):
-        """该软件对应运营配置的可升级id
+        r"""该软件对应运营配置的可升级id
         :rtype: int
         """
         return self._UpgradeSoftId
@@ -523,7 +523,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def RemarkName(self):
-        """终端备注名
+        r"""终端备注名
         :rtype: str
         """
         return self._RemarkName
@@ -563,7 +563,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
 
 class ComplexRule(AbstractModel):
-    """自动划分规则数据
+    r"""自动划分规则数据
 
     """
 
@@ -579,7 +579,7 @@ class ComplexRule(AbstractModel):
 
     @property
     def SimpleRules(self):
-        """简单规则表达式
+        r"""简单规则表达式
         :rtype: list of SimpleRule
         """
         return self._SimpleRules
@@ -590,7 +590,7 @@ class ComplexRule(AbstractModel):
 
     @property
     def Relation(self):
-        """表达式间逻辑关系
+        r"""表达式间逻辑关系
         :rtype: str
         """
         return self._Relation
@@ -619,7 +619,7 @@ class ComplexRule(AbstractModel):
 
 
 class Condition(AbstractModel):
-    """这是一个多接口的公共数据结构，用于接口根据条件进行过滤和分页。具体支持哪些过滤条件，参考具体使用该结构的接口字段描述
+    r"""这是一个多接口的公共数据结构，用于接口根据条件进行过滤和分页。具体支持哪些过滤条件，参考具体使用该结构的接口字段描述
 
     """
 
@@ -644,7 +644,7 @@ class Condition(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters 条件过滤
+        r"""Filters 条件过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -655,7 +655,7 @@ class Condition(AbstractModel):
 
     @property
     def FilterGroups(self):
-        """FilterGroups 条件过滤组
+        r"""FilterGroups 条件过滤组
         :rtype: list of FilterGroup
         """
         return self._FilterGroups
@@ -666,7 +666,7 @@ class Condition(AbstractModel):
 
     @property
     def Sort(self):
-        """Sort 排序字段
+        r"""Sort 排序字段
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Sort`
         """
         return self._Sort
@@ -677,7 +677,7 @@ class Condition(AbstractModel):
 
     @property
     def PageSize(self):
-        """PageSize 每页获取数(只支持32位)
+        r"""PageSize 每页获取数(只支持32位)
         :rtype: int
         """
         return self._PageSize
@@ -688,7 +688,7 @@ class Condition(AbstractModel):
 
     @property
     def PageNum(self):
-        """PageNum 获取第几页(只支持32位)
+        r"""PageNum 获取第几页(只支持32位)
         :rtype: int
         """
         return self._PageNum
@@ -727,7 +727,7 @@ class Condition(AbstractModel):
 
 
 class CreateDLPFileDetectionTaskData(AbstractModel):
-    """提交送检任务相应数据
+    r"""提交送检任务相应数据
 
     """
 
@@ -740,7 +740,7 @@ class CreateDLPFileDetectionTaskData(AbstractModel):
 
     @property
     def DLPFileDetectionTaskID(self):
-        """提交任务生成的id，也即requestID。用于后续查询
+        r"""提交任务生成的id，也即requestID。用于后续查询
         :rtype: str
         """
         return self._DLPFileDetectionTaskID
@@ -763,7 +763,7 @@ class CreateDLPFileDetectionTaskData(AbstractModel):
 
 
 class CreateDLPFileDetectionTaskRequest(AbstractModel):
-    """CreateDLPFileDetectionTask请求参数结构体
+    r"""CreateDLPFileDetectionTask请求参数结构体
 
     """
 
@@ -790,7 +790,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
     @property
     def Url(self):
-        """文件下载链接，要求公网可访问，GET方式访问后为文件
+        r"""文件下载链接，要求公网可访问，GET方式访问后为文件
         :rtype: str
         """
         return self._Url
@@ -801,7 +801,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名，带后缀
+        r"""文件名，带后缀
         :rtype: str
         """
         return self._FileName
@@ -812,7 +812,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
     @property
     def FileMd5(self):
-        """ 文件md5，传入相同md5会直接使用之前缓存的结果。
+        r""" 文件md5，传入相同md5会直接使用之前缓存的结果。
 
 > 请注意：不同文件使用相同md5送检，会命中缓存得到旧的检测结果
         :rtype: str
@@ -825,7 +825,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配
+        r"""管理域实例ID，用于CAM管理域权限分配
         :rtype: str
         """
         return self._DomainInstanceId
@@ -836,7 +836,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
     @property
     def CallBackUrl(self):
-        """回调地址，暂时未使用
+        r"""回调地址，暂时未使用
         :rtype: str
         """
         return self._CallBackUrl
@@ -863,7 +863,7 @@ class CreateDLPFileDetectionTaskRequest(AbstractModel):
 
 
 class CreateDLPFileDetectionTaskResponse(AbstractModel):
-    """CreateDLPFileDetectionTask返回参数结构体
+    r"""CreateDLPFileDetectionTask返回参数结构体
 
     """
 
@@ -879,7 +879,7 @@ class CreateDLPFileDetectionTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """创建送检任务响应数据
+        r"""创建送检任务响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskData`
         """
         return self._Data
@@ -890,7 +890,7 @@ class CreateDLPFileDetectionTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -908,7 +908,7 @@ class CreateDLPFileDetectionTaskResponse(AbstractModel):
 
 
 class CreateDeviceTaskRequest(AbstractModel):
-    """CreateDeviceTask请求参数结构体
+    r"""CreateDeviceTask请求参数结构体
 
     """
 
@@ -924,7 +924,7 @@ class CreateDeviceTaskRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -935,7 +935,7 @@ class CreateDeviceTaskRequest(AbstractModel):
 
     @property
     def Mid(self):
-        """终端id
+        r"""终端id
         :rtype: str
         """
         return self._Mid
@@ -959,7 +959,7 @@ class CreateDeviceTaskRequest(AbstractModel):
 
 
 class CreateDeviceTaskResponse(AbstractModel):
-    """CreateDeviceTask返回参数结构体
+    r"""CreateDeviceTask返回参数结构体
 
     """
 
@@ -972,7 +972,7 @@ class CreateDeviceTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -987,7 +987,7 @@ class CreateDeviceTaskResponse(AbstractModel):
 
 
 class CreateDeviceVirtualGroupRequest(AbstractModel):
-    """CreateDeviceVirtualGroup请求参数结构体
+    r"""CreateDeviceVirtualGroup请求参数结构体
 
     """
 
@@ -1018,7 +1018,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def DeviceVirtualGroupName(self):
-        """必填，终端自定义分组名
+        r"""必填，终端自定义分组名
         :rtype: str
         """
         return self._DeviceVirtualGroupName
@@ -1029,7 +1029,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -1040,7 +1040,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """详情
+        r"""详情
         :rtype: str
         """
         return self._Description
@@ -1051,7 +1051,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -1062,7 +1062,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def TimeType(self):
-        """分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
+        r"""分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
         :rtype: int
         """
         return self._TimeType
@@ -1073,7 +1073,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def AutoMinute(self):
-        """选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
+        r"""选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
         :rtype: int
         """
         return self._AutoMinute
@@ -1084,7 +1084,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def AutoRules(self):
-        """选填，手动分组不填，自动划分分组的划分规则数据
+        r"""选填，手动分组不填，自动划分分组的划分规则数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.ComplexRule`
         """
         return self._AutoRules
@@ -1115,7 +1115,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
 
 class CreateDeviceVirtualGroupResponse(AbstractModel):
-    """CreateDeviceVirtualGroup返回参数结构体
+    r"""CreateDeviceVirtualGroup返回参数结构体
 
     """
 
@@ -1131,7 +1131,7 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
 
     @property
     def Data(self):
-        """响应返回的data
+        r"""响应返回的data
         :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRspData`
         """
         return self._Data
@@ -1142,7 +1142,7 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1160,7 +1160,7 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
 
 
 class CreateDeviceVirtualGroupRspData(AbstractModel):
-    """响应返回的data
+    r"""响应返回的data
 
     """
 
@@ -1173,7 +1173,7 @@ class CreateDeviceVirtualGroupRspData(AbstractModel):
 
     @property
     def Id(self):
-        """返回的自定义分组id
+        r"""返回的自定义分组id
         :rtype: int
         """
         return self._Id
@@ -1196,7 +1196,7 @@ class CreateDeviceVirtualGroupRspData(AbstractModel):
 
 
 class CreatePrivilegeCodeRequest(AbstractModel):
-    """CreatePrivilegeCode请求参数结构体
+    r"""CreatePrivilegeCode请求参数结构体
 
     """
 
@@ -1215,7 +1215,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
     @property
     def Mid(self):
-        """必填；设备唯一标识符;
+        r"""必填；设备唯一标识符;
         :rtype: str
         """
         return self._Mid
@@ -1226,7 +1226,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -1237,7 +1237,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
         :rtype: int
         """
         return self._OsType
@@ -1262,7 +1262,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
 
 class CreatePrivilegeCodeResponse(AbstractModel):
-    """CreatePrivilegeCode返回参数结构体
+    r"""CreatePrivilegeCode返回参数结构体
 
     """
 
@@ -1278,7 +1278,7 @@ class CreatePrivilegeCodeResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeRspData`
         """
         return self._Data
@@ -1289,7 +1289,7 @@ class CreatePrivilegeCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1307,7 +1307,7 @@ class CreatePrivilegeCodeResponse(AbstractModel):
 
 
 class CreatePrivilegeCodeRspData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -1321,7 +1321,7 @@ class CreatePrivilegeCodeRspData(AbstractModel):
 
     @property
     def Code(self):
-        """特权码数据
+        r"""特权码数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1345,7 +1345,7 @@ class CreatePrivilegeCodeRspData(AbstractModel):
 
 
 class DescribeAccountGroupsData(AbstractModel):
-    """账号分组信息
+    r"""账号分组信息
 
     """
 
@@ -1415,7 +1415,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def NamePath(self):
-        """账号分组名全路径，点分格式
+        r"""账号分组名全路径，点分格式
         :rtype: str
         """
         return self._NamePath
@@ -1426,7 +1426,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPathArr(self):
-        """账号分组ID全路径，数组格式
+        r"""账号分组ID全路径，数组格式
         :rtype: list of int
         """
         return self._IdPathArr
@@ -1437,7 +1437,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        """扩展信息
+        r"""扩展信息
         :rtype: str
         """
         return self._ExtraInfo
@@ -1448,7 +1448,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Utime(self):
-        """最后更新时间
+        r"""最后更新时间
         :rtype: str
         """
         return self._Utime
@@ -1459,7 +1459,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID
+        r"""父分组ID
         :rtype: int
         """
         return self._ParentId
@@ -1470,7 +1470,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def OrgId(self):
-        """源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        r"""源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
         :rtype: str
         """
         return self._OrgId
@@ -1481,7 +1481,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Name(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._Name
@@ -1492,7 +1492,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Id(self):
-        """分组ID
+        r"""分组ID
         :rtype: int
         """
         return self._Id
@@ -1503,7 +1503,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -1514,7 +1514,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Source(self):
-        """同步数据源
+        r"""同步数据源
         :rtype: int
         """
         return self._Source
@@ -1525,7 +1525,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPath(self):
-        """账号分组ID全路径，点分格式
+        r"""账号分组ID全路径，点分格式
         :rtype: str
         """
         return self._IdPath
@@ -1536,7 +1536,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Itime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._Itime
@@ -1547,7 +1547,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentOrgId(self):
-        """父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        r"""父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
         :rtype: str
         """
         return self._ParentOrgId
@@ -1558,7 +1558,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ImportType(self):
-        """导入类型
+        r"""导入类型
         :rtype: str
         """
         return self._ImportType
@@ -1569,7 +1569,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def MiniIamId(self):
-        """miniIAM id
+        r"""miniIAM id
         :rtype: str
         """
         return self._MiniIamId
@@ -1580,7 +1580,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def UserTotal(self):
-        """该分组下含子组的所有用户总数
+        r"""该分组下含子组的所有用户总数
         :rtype: int
         """
         return self._UserTotal
@@ -1591,7 +1591,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IsLeaf(self):
-        """是否叶子节点
+        r"""是否叶子节点
         :rtype: bool
         """
         return self._IsLeaf
@@ -1602,7 +1602,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ReadOnly(self):
-        """是否该账户的直接权限
+        r"""是否该账户的直接权限
         :rtype: bool
         """
         return self._ReadOnly
@@ -1613,7 +1613,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncResult(self):
-        """最新一次同步任务的结果
+        r"""最新一次同步任务的结果
         :rtype: str
         """
         return self._LatestSyncResult
@@ -1624,7 +1624,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncTime(self):
-        """最新一次同步任务的结束时间
+        r"""最新一次同步任务的结束时间
         :rtype: str
         """
         return self._LatestSyncTime
@@ -1666,7 +1666,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
 
 class DescribeAccountGroupsPageResp(AbstractModel):
-    """账户分组详情响应数据
+    r"""账户分组详情响应数据
 
     """
 
@@ -1682,7 +1682,7 @@ class DescribeAccountGroupsPageResp(AbstractModel):
 
     @property
     def Items(self):
-        """账户分响应对象集合
+        r"""账户分响应对象集合
         :rtype: list of DescribeAccountGroupsData
         """
         return self._Items
@@ -1693,7 +1693,7 @@ class DescribeAccountGroupsPageResp(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Page
@@ -1724,7 +1724,7 @@ class DescribeAccountGroupsPageResp(AbstractModel):
 
 
 class DescribeAccountGroupsRequest(AbstractModel):
-    """DescribeAccountGroups请求参数结构体
+    r"""DescribeAccountGroups请求参数结构体
 
     """
 
@@ -1754,7 +1754,7 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def Deepin(self):
-        """搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+        r"""搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
         :rtype: int
         """
         return self._Deepin
@@ -1765,7 +1765,7 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """查询条件
+        r"""查询条件
 
 过滤参数
 1、Name，string类型，按分组名过滤
@@ -1787,7 +1787,7 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
+        r"""父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
         :rtype: int
         """
         return self._ParentId
@@ -1814,7 +1814,7 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
 
 class DescribeAccountGroupsResponse(AbstractModel):
-    """DescribeAccountGroups返回参数结构体
+    r"""DescribeAccountGroups返回参数结构体
 
     """
 
@@ -1830,7 +1830,7 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """账号分组详情响应数据
+        r"""账号分组详情响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsPageResp`
         """
         return self._Data
@@ -1841,7 +1841,7 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -1859,7 +1859,7 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
 
 class DescribeAggrSoftCategorySoftListData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -1881,7 +1881,7 @@ class DescribeAggrSoftCategorySoftListData(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
@@ -1893,7 +1893,7 @@ class DescribeAggrSoftCategorySoftListData(AbstractModel):
 
     @property
     def Total(self):
-        """总数(只支持32位)
+        r"""总数(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1905,7 +1905,7 @@ class DescribeAggrSoftCategorySoftListData(AbstractModel):
 
     @property
     def AggrSoftCategorySoftList(self):
-        """行数据
+        r"""行数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AggrCategorySoftDetailRow
         """
@@ -1938,20 +1938,34 @@ class DescribeAggrSoftCategorySoftListData(AbstractModel):
 
 
 class DescribeAggrSoftCategorySoftListRequest(AbstractModel):
-    """DescribeAggrSoftCategorySoftList请求参数结构体
+    r"""DescribeAggrSoftCategorySoftList请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _OsType: os类别(只支持32位)
+        :param _Condition: 过滤条件、分页参数<li>Name - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按类别名称过滤或排序。</li><li>CorpName - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按CorpName过滤或排序。</li><li>Version - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按版本排序。</li><li>InstalledDeviceCount - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按安装设备数量排序。</li><li>GenuineRate - float - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按正版率排序。</li><li>AuthNum - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按授权数量排序。</li><li>CategoryNamePath - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按类别路径名排序。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _OsType: 操作系统类型（0: win，1：linux，2: mac，4：android，5：ios 默认值0）
         :type OsType: int
         """
+        self._Condition = None
         self._OsType = None
 
     @property
+    def Condition(self):
+        r"""过滤条件、分页参数<li>Name - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按类别名称过滤或排序。</li><li>CorpName - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按CorpName过滤或排序。</li><li>Version - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按版本排序。</li><li>InstalledDeviceCount - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按安装设备数量排序。</li><li>GenuineRate - float - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按正版率排序。</li><li>AuthNum - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按授权数量排序。</li><li>CategoryNamePath - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按类别路径名排序。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
     def OsType(self):
-        """os类别(只支持32位)
+        r"""操作系统类型（0: win，1：linux，2: mac，4：android，5：ios 默认值0）
         :rtype: int
         """
         return self._OsType
@@ -1962,6 +1976,9 @@ class DescribeAggrSoftCategorySoftListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
         self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1974,7 +1991,7 @@ class DescribeAggrSoftCategorySoftListRequest(AbstractModel):
 
 
 class DescribeAggrSoftCategorySoftListResponse(AbstractModel):
-    """DescribeAggrSoftCategorySoftList返回参数结构体
+    r"""DescribeAggrSoftCategorySoftList返回参数结构体
 
     """
 
@@ -1990,7 +2007,7 @@ class DescribeAggrSoftCategorySoftListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftCategorySoftListData`
         """
         return self._Data
@@ -2001,7 +2018,7 @@ class DescribeAggrSoftCategorySoftListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2019,7 +2036,7 @@ class DescribeAggrSoftCategorySoftListResponse(AbstractModel):
 
 
 class DescribeAggrSoftDetailData(AbstractModel):
-    """聚合软件详情数据
+    r"""聚合软件详情数据
 
     """
 
@@ -2083,7 +2100,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def Name(self):
-        """软件名称
+        r"""软件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2095,7 +2112,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def OsType(self):
-        """平台
+        r"""平台
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2107,7 +2124,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        """盗版风险
+        r"""盗版风险
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2119,7 +2136,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def Corp(self):
-        """厂商
+        r"""厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2131,7 +2148,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def SoftVersionDist(self):
-        """已安装版本分布
+        r"""已安装版本分布
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SoftVersionAndNum
         """
@@ -2143,7 +2160,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def PiracyVersionDist(self):
-        """盗版版本安装
+        r"""盗版版本安装
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SoftVersionAndNum
         """
@@ -2155,7 +2172,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def InstalledDeviceNum(self):
-        """安装设备数
+        r"""安装设备数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2167,7 +2184,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def PiracyInstalledDeviceNum(self):
-        """盗版安装设备数
+        r"""盗版安装设备数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2179,7 +2196,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def InstalledUserNum(self):
-        """安装用户数
+        r"""安装用户数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2191,7 +2208,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def PiracyInstalledUserNum(self):
-        """盗版安装用户数
+        r"""盗版安装用户数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2203,7 +2220,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def AuthNum(self):
-        """授权数
+        r"""授权数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2215,7 +2232,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def GenuineRate(self):
-        """正版率
+        r"""正版率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2227,7 +2244,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def UpgradableDeviceNum(self):
-        """有新版本可升级的设备数量
+        r"""有新版本可升级的设备数量
         :rtype: int
         """
         return self._UpgradableDeviceNum
@@ -2238,7 +2255,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
     @property
     def UpgradableVersions(self):
-        """当前可升级的最新版本信息, 每一项均为json字符串
+        r"""当前可升级的最新版本信息, 每一项均为json字符串
         :rtype: list of str
         """
         return self._UpgradableVersions
@@ -2284,7 +2301,7 @@ class DescribeAggrSoftDetailData(AbstractModel):
 
 
 class DescribeAggrSoftDetailRequest(AbstractModel):
-    """DescribeAggrSoftDetail请求参数结构体
+    r"""DescribeAggrSoftDetail请求参数结构体
 
     """
 
@@ -2300,7 +2317,7 @@ class DescribeAggrSoftDetailRequest(AbstractModel):
 
     @property
     def Name(self):
-        """软件名称
+        r"""软件名称
         :rtype: str
         """
         return self._Name
@@ -2311,7 +2328,7 @@ class DescribeAggrSoftDetailRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """操作系统
+        r"""操作系统
         :rtype: int
         """
         return self._OsType
@@ -2335,7 +2352,7 @@ class DescribeAggrSoftDetailRequest(AbstractModel):
 
 
 class DescribeAggrSoftDetailResponse(AbstractModel):
-    """DescribeAggrSoftDetail返回参数结构体
+    r"""DescribeAggrSoftDetail返回参数结构体
 
     """
 
@@ -2351,7 +2368,7 @@ class DescribeAggrSoftDetailResponse(AbstractModel):
 
     @property
     def Data(self):
-        """数据
+        r"""数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDetailData`
         """
         return self._Data
@@ -2362,7 +2379,7 @@ class DescribeAggrSoftDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2380,7 +2397,7 @@ class DescribeAggrSoftDetailResponse(AbstractModel):
 
 
 class DescribeAggrSoftDeviceListData(AbstractModel):
-    """聚合软件-已安装终端列表
+    r"""聚合软件-已安装终端列表
 
     """
 
@@ -2402,7 +2419,7 @@ class DescribeAggrSoftDeviceListData(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
@@ -2414,7 +2431,7 @@ class DescribeAggrSoftDeviceListData(AbstractModel):
 
     @property
     def Total(self):
-        """总数
+        r"""总数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2426,7 +2443,7 @@ class DescribeAggrSoftDeviceListData(AbstractModel):
 
     @property
     def AggrSoftDeviceList(self):
-        """详情
+        r"""详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AggrSoftDeviceRow
         """
@@ -2459,23 +2476,37 @@ class DescribeAggrSoftDeviceListData(AbstractModel):
 
 
 class DescribeAggrSoftDeviceListRequest(AbstractModel):
-    """DescribeAggrSoftDeviceList请求参数结构体
+    r"""DescribeAggrSoftDeviceList请求参数结构体
 
     """
 
     def __init__(self):
         r"""
+        :param _Condition: 过滤条件
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         :param _Name: 软件名
         :type Name: str
-        :param _OsType: 操作系统
+        :param _OsType: 0:win 2:mac
         :type OsType: int
         """
+        self._Condition = None
         self._Name = None
         self._OsType = None
 
     @property
+    def Condition(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
     def Name(self):
-        """软件名
+        r"""软件名
         :rtype: str
         """
         return self._Name
@@ -2486,7 +2517,7 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """操作系统
+        r"""0:win 2:mac
         :rtype: int
         """
         return self._OsType
@@ -2497,6 +2528,9 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
         self._Name = params.get("Name")
         self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
@@ -2510,7 +2544,7 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
 
 
 class DescribeAggrSoftDeviceListResponse(AbstractModel):
-    """DescribeAggrSoftDeviceList返回参数结构体
+    r"""DescribeAggrSoftDeviceList返回参数结构体
 
     """
 
@@ -2526,7 +2560,7 @@ class DescribeAggrSoftDeviceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """已安装终端列表
+        r"""已安装终端列表
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDeviceListData`
         """
         return self._Data
@@ -2537,7 +2571,7 @@ class DescribeAggrSoftDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2555,7 +2589,7 @@ class DescribeAggrSoftDeviceListResponse(AbstractModel):
 
 
 class DescribeDLPFileDetectResultData(AbstractModel):
-    """查询文件检测结果响应数据
+    r"""查询文件检测结果响应数据
 
     """
 
@@ -2577,7 +2611,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
     @property
     def FileMd5(self):
-        """提交任务时的文件md5
+        r"""提交任务时的文件md5
         :rtype: str
         """
         return self._FileMd5
@@ -2588,7 +2622,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
     @property
     def FileName(self):
-        """提交任务时的文件名
+        r"""提交任务时的文件名
         :rtype: str
         """
         return self._FileName
@@ -2599,7 +2633,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
     @property
     def Status(self):
-        """状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
+        r"""状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
         :rtype: str
         """
         return self._Status
@@ -2610,7 +2644,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
     @property
     def DetectResult(self):
-        """文件检测结果，json字符串。包含文件基本信息如type，path，md5以及命中的信息。其中State为检测状态，0为待解析文件，1为检测中，2为检测完成；FileAbstract为命中的上下文摘要信息，HitRuleid是命中的规则唯一ID，HitRuleCategoryId是规则分类唯一id，HitLevel是文件的等级，HitRuleDesc是规则的名称，HitContent是具体命中的规则以及词库信息，以及命中的内容。EngineConfigVersion是当前词库版本号
+        r"""文件检测结果，json字符串。包含文件基本信息如type，path，md5以及命中的信息。其中State为检测状态，0为待解析文件，1为检测中，2为检测完成；FileAbstract为命中的上下文摘要信息，HitRuleid是命中的规则唯一ID，HitRuleCategoryId是规则分类唯一id，HitLevel是文件的等级，HitRuleDesc是规则的名称，HitContent是具体命中的规则以及词库信息，以及命中的内容。EngineConfigVersion是当前词库版本号
         :rtype: str
         """
         return self._DetectResult
@@ -2636,7 +2670,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
 
 class DescribeDLPFileDetectResultRequest(AbstractModel):
-    """DescribeDLPFileDetectResult请求参数结构体
+    r"""DescribeDLPFileDetectResult请求参数结构体
 
     """
 
@@ -2652,7 +2686,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -2663,7 +2697,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
     @property
     def QueryID(self):
-        """查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+        r"""查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
         :rtype: str
         """
         return self._QueryID
@@ -2687,7 +2721,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
 
 class DescribeDLPFileDetectResultResponse(AbstractModel):
-    """DescribeDLPFileDetectResult返回参数结构体
+    r"""DescribeDLPFileDetectResult返回参数结构体
 
     """
 
@@ -2703,7 +2737,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     @property
     def Data(self):
-        """文件鉴定任务结果数据。详情查看具体数据结构
+        r"""文件鉴定任务结果数据。详情查看具体数据结构
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
         """
         return self._Data
@@ -2714,7 +2748,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2732,7 +2766,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
 
 class DescribeDeviceChildGroupsRequest(AbstractModel):
-    """DescribeDeviceChildGroups请求参数结构体
+    r"""DescribeDeviceChildGroups请求参数结构体
 
     """
 
@@ -2762,7 +2796,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -2773,7 +2807,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件参数（字段含义请参考接口返回值）
+        r"""过滤条件参数（字段含义请参考接口返回值）
 - Name, 类型String，支持操作：【like，ilike】，支持排序
 
 
@@ -2792,7 +2826,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """父分组id，默认0：表示获取全网终端分组
+        r"""父分组id，默认0：表示获取全网终端分组
         :rtype: int
         """
         return self._ParentId
@@ -2803,7 +2837,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
+        r"""操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
         :rtype: int
         """
         return self._OsType
@@ -2831,7 +2865,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
 
 class DescribeDeviceChildGroupsResponse(AbstractModel):
-    """DescribeDeviceChildGroups返回参数结构体
+    r"""DescribeDeviceChildGroups返回参数结构体
 
     """
 
@@ -2847,7 +2881,7 @@ class DescribeDeviceChildGroupsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询设备组子分组详情响应结构
+        r"""查询设备组子分组详情响应结构
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceChildGroupsRspData`
         """
         return self._Data
@@ -2858,7 +2892,7 @@ class DescribeDeviceChildGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -2876,7 +2910,7 @@ class DescribeDeviceChildGroupsResponse(AbstractModel):
 
 
 class DescribeDeviceChildGroupsRspData(AbstractModel):
-    """查询设备组子分组详情响应结构
+    r"""查询设备组子分组详情响应结构
 
     """
 
@@ -2889,7 +2923,7 @@ class DescribeDeviceChildGroupsRspData(AbstractModel):
 
     @property
     def Items(self):
-        """返回的数组列表
+        r"""返回的数组列表
         :rtype: list of DeviceGroupDetail
         """
         return self._Items
@@ -2917,7 +2951,7 @@ class DescribeDeviceChildGroupsRspData(AbstractModel):
 
 
 class DescribeDeviceDetailListData(AbstractModel):
-    """终端详情响应对象集合
+    r"""终端详情响应对象集合
 
     """
 
@@ -2995,7 +3029,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def UserName(self):
-        """账号名
+        r"""账号名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3007,7 +3041,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def ComputerName(self):
-        """计算机名
+        r"""计算机名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3019,7 +3053,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3031,7 +3065,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupIdPath(self):
-        """用户组IdPath
+        r"""用户组IdPath
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3043,7 +3077,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """用户组id(只支持32位)
+        r"""用户组id(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3055,7 +3089,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        """终端组名path
+        r"""终端组名path
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3067,7 +3101,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Ip(self):
-        """Ip地址
+        r"""Ip地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3079,7 +3113,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupName(self):
-        """用户组名
+        r"""用户组名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3091,7 +3125,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupIdPath(self):
-        """终端组IdPath
+        r"""终端组IdPath
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3103,7 +3137,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Mid(self):
-        """唯一标识Mid
+        r"""唯一标识Mid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3115,7 +3149,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def IoaUserName(self):
-        """IOA账号名
+        r"""IOA账号名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3127,7 +3161,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupId(self):
-        """所在分组Id(只支持32位)
+        r"""所在分组Id(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3139,7 +3173,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupName(self):
-        """所在分组Name
+        r"""所在分组Name
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3151,7 +3185,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Mac(self):
-        """Mac地址
+        r"""Mac地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3163,7 +3197,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Version(self):
-        """软件版本
+        r"""软件版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3175,7 +3209,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupNamePath(self):
-        """用户组名Path
+        r"""用户组名Path
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3187,7 +3221,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Id(self):
-        """列表Id(只支持32位)
+        r"""列表Id(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3227,7 +3261,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
 
 class DescribeDeviceDetailListPageData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -3245,7 +3279,7 @@ class DescribeDeviceDetailListPageData(AbstractModel):
 
     @property
     def Items(self):
-        """终端详情响应对象集合
+        r"""终端详情响应对象集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeDeviceDetailListData
         """
@@ -3257,7 +3291,7 @@ class DescribeDeviceDetailListPageData(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
@@ -3289,7 +3323,7 @@ class DescribeDeviceDetailListPageData(AbstractModel):
 
 
 class DescribeDeviceDetailListRequest(AbstractModel):
-    """DescribeDeviceDetailList请求参数结构体
+    r"""DescribeDeviceDetailList请求参数结构体
 
     """
 
@@ -3309,7 +3343,7 @@ class DescribeDeviceDetailListRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型(只支持32位)
+        r"""系统类型(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -3320,7 +3354,7 @@ class DescribeDeviceDetailListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """终端分组id(只支持32位)
+        r"""终端分组id(只支持32位)
         :rtype: int
         """
         return self._GroupId
@@ -3331,7 +3365,7 @@ class DescribeDeviceDetailListRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件、分页参数
+        r"""过滤条件、分页参数
 <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
@@ -3359,7 +3393,7 @@ class DescribeDeviceDetailListRequest(AbstractModel):
 
 
 class DescribeDeviceDetailListResponse(AbstractModel):
-    """DescribeDeviceDetailList返回参数结构体
+    r"""DescribeDeviceDetailList返回参数结构体
 
     """
 
@@ -3376,7 +3410,7 @@ class DescribeDeviceDetailListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceDetailListPageData`
         """
@@ -3388,7 +3422,7 @@ class DescribeDeviceDetailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3406,7 +3440,7 @@ class DescribeDeviceDetailListResponse(AbstractModel):
 
 
 class DescribeDeviceHardwareInfoItem(AbstractModel):
-    """终端硬件信息列表Item数据
+    r"""终端硬件信息列表Item数据
 
     """
 
@@ -3467,7 +3501,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Id(self):
-        """设备ID
+        r"""设备ID
         :rtype: int
         """
         return self._Id
@@ -3478,7 +3512,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Mid(self):
-        """设备唯一标识符
+        r"""设备唯一标识符
         :rtype: str
         """
         return self._Mid
@@ -3489,7 +3523,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def OsType(self):
-        """OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+        r"""OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
         :rtype: int
         """
         return self._OsType
@@ -3500,7 +3534,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Name(self):
-        """终端名
+        r"""终端名
         :rtype: str
         """
         return self._Name
@@ -3511,7 +3545,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def UserName(self):
-        """终端用户名
+        r"""终端用户名
         :rtype: str
         """
         return self._UserName
@@ -3522,7 +3556,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Status(self):
-        """授权状态（ 4未授权 5已授权）
+        r"""授权状态（ 4未授权 5已授权）
         :rtype: int
         """
         return self._Status
@@ -3533,7 +3567,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备所属分组ID
+        r"""设备所属分组ID
         :rtype: int
         """
         return self._GroupId
@@ -3544,7 +3578,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备所属分组名
+        r"""设备所属分组名
         :rtype: str
         """
         return self._GroupName
@@ -3555,7 +3589,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        """设备所属分组路径
+        r"""设备所属分组路径
         :rtype: str
         """
         return self._GroupNamePath
@@ -3566,7 +3600,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def AccountName(self):
-        """最近登录账户的姓名
+        r"""最近登录账户的姓名
         :rtype: str
         """
         return self._AccountName
@@ -3577,7 +3611,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Ip(self):
-        """出口IP
+        r"""出口IP
         :rtype: str
         """
         return self._Ip
@@ -3588,7 +3622,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def MacAddr(self):
-        """MAC地址
+        r"""MAC地址
         :rtype: str
         """
         return self._MacAddr
@@ -3599,7 +3633,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Cpu(self):
-        """CPU品牌型号
+        r"""CPU品牌型号
         :rtype: str
         """
         return self._Cpu
@@ -3610,7 +3644,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Memory(self):
-        """内存信息
+        r"""内存信息
         :rtype: str
         """
         return self._Memory
@@ -3621,7 +3655,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def HardDiskSize(self):
-        """硬盘信息
+        r"""硬盘信息
         :rtype: str
         """
         return self._HardDiskSize
@@ -3632,7 +3666,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Monitor(self):
-        """显示器品牌型号
+        r"""显示器品牌型号
         :rtype: str
         """
         return self._Monitor
@@ -3643,7 +3677,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def RemarkName(self):
-        """终端备注名
+        r"""终端备注名
         :rtype: str
         """
         return self._RemarkName
@@ -3682,7 +3716,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
 
 class DescribeDeviceHardwareInfoListRequest(AbstractModel):
-    """DescribeDeviceHardwareInfoList请求参数结构体
+    r"""DescribeDeviceHardwareInfoList请求参数结构体
 
     """
 
@@ -3704,7 +3738,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+        r"""【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
         :rtype: int
         """
         return self._GroupId
@@ -3715,7 +3749,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        r"""【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
         :rtype: int
         """
         return self._OsType
@@ -3726,7 +3760,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -3737,7 +3771,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
+        r"""过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         return self._Condition
@@ -3765,7 +3799,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
 
 class DescribeDeviceHardwareInfoListResponse(AbstractModel):
-    """DescribeDeviceHardwareInfoList返回参数结构体
+    r"""DescribeDeviceHardwareInfoList返回参数结构体
 
     """
 
@@ -3781,7 +3815,7 @@ class DescribeDeviceHardwareInfoListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """分页的data数据
+        r"""分页的data数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListRspData`
         """
         return self._Data
@@ -3792,7 +3826,7 @@ class DescribeDeviceHardwareInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3810,7 +3844,7 @@ class DescribeDeviceHardwareInfoListResponse(AbstractModel):
 
 
 class DescribeDeviceHardwareInfoListRspData(AbstractModel):
-    """终端硬件信息列表响应详情
+    r"""终端硬件信息列表响应详情
 
     """
 
@@ -3826,7 +3860,7 @@ class DescribeDeviceHardwareInfoListRspData(AbstractModel):
 
     @property
     def Page(self):
-        """分页数据
+        r"""分页数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Page
@@ -3837,7 +3871,7 @@ class DescribeDeviceHardwareInfoListRspData(AbstractModel):
 
     @property
     def Items(self):
-        """终端硬件信息数据数组
+        r"""终端硬件信息数据数组
         :rtype: list of DescribeDeviceHardwareInfoItem
         """
         return self._Items
@@ -3868,7 +3902,7 @@ class DescribeDeviceHardwareInfoListRspData(AbstractModel):
 
 
 class DescribeDeviceInfoRequest(AbstractModel):
-    """DescribeDeviceInfo请求参数结构体
+    r"""DescribeDeviceInfo请求参数结构体
 
     """
 
@@ -3887,7 +3921,7 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -3898,7 +3932,7 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
     @property
     def Mid(self):
-        """终端id
+        r"""终端id
         :rtype: str
         """
         return self._Mid
@@ -3909,7 +3943,7 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        """查询类型  process_list network_list service_list
+        r"""查询类型  process_list network_list service_list
         :rtype: str
         """
         return self._Type
@@ -3934,7 +3968,7 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
 
 class DescribeDeviceInfoResponse(AbstractModel):
-    """DescribeDeviceInfo返回参数结构体
+    r"""DescribeDeviceInfo返回参数结构体
 
     """
 
@@ -3951,7 +3985,7 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoRspData`
         """
@@ -3963,7 +3997,7 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -3981,7 +4015,7 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
 
 class DescribeDeviceInfoRspData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -4003,7 +4037,7 @@ class DescribeDeviceInfoRspData(AbstractModel):
 
     @property
     def ProcessList(self):
-        """分页的具体数据对象
+        r"""分页的具体数据对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceProcessInfo
         """
@@ -4015,7 +4049,7 @@ class DescribeDeviceInfoRspData(AbstractModel):
 
     @property
     def NetworkList(self):
-        """分页的具体数据对象
+        r"""分页的具体数据对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceNetworkInfo
         """
@@ -4027,7 +4061,7 @@ class DescribeDeviceInfoRspData(AbstractModel):
 
     @property
     def ServiceList(self):
-        """分页的具体数据对象
+        r"""分页的具体数据对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceServiceInfo
         """
@@ -4068,7 +4102,7 @@ class DescribeDeviceInfoRspData(AbstractModel):
 
 
 class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
-    """查询返回终端自定义分组的Data数据
+    r"""查询返回终端自定义分组的Data数据
 
     """
 
@@ -4084,7 +4118,7 @@ class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Page
@@ -4095,7 +4129,7 @@ class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
 
     @property
     def Items(self):
-        """终端自定义分组列表数据
+        r"""终端自定义分组列表数据
         :rtype: list of DeviceVirtualDeviceGroupsDetail
         """
         return self._Items
@@ -4126,7 +4160,7 @@ class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
 
 
 class DescribeDeviceVirtualGroupsRequest(AbstractModel):
-    """DescribeDeviceVirtualGroups请求参数结构体
+    r"""DescribeDeviceVirtualGroups请求参数结构体
 
     """
 
@@ -4148,7 +4182,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -4159,7 +4193,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
+        r"""滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         return self._Condition
@@ -4170,7 +4204,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
         :rtype: int
         """
         return self._OsType
@@ -4181,7 +4215,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
     @property
     def VirtualGroupIds(self):
-        """非必填，自定义分组ids
+        r"""非必填，自定义分组ids
         :rtype: list of int
         """
         return self._VirtualGroupIds
@@ -4209,7 +4243,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
 
 class DescribeDeviceVirtualGroupsResponse(AbstractModel):
-    """DescribeDeviceVirtualGroups返回参数结构体
+    r"""DescribeDeviceVirtualGroups返回参数结构体
 
     """
 
@@ -4225,7 +4259,7 @@ class DescribeDeviceVirtualGroupsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询终端自定义分组的Data数据
+        r"""查询终端自定义分组的Data数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsPageRsp`
         """
         return self._Data
@@ -4236,7 +4270,7 @@ class DescribeDeviceVirtualGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4254,7 +4288,7 @@ class DescribeDeviceVirtualGroupsResponse(AbstractModel):
 
 
 class DescribeDevicesPageRsp(AbstractModel):
-    """分页的data数据
+    r"""分页的data数据
 
     """
 
@@ -4270,7 +4304,7 @@ class DescribeDevicesPageRsp(AbstractModel):
 
     @property
     def Paging(self):
-        """数据分页信息
+        r"""数据分页信息
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Paging
@@ -4281,7 +4315,7 @@ class DescribeDevicesPageRsp(AbstractModel):
 
     @property
     def Items(self):
-        """业务响应数据
+        r"""业务响应数据
         :rtype: list of DeviceDetail
         """
         return self._Items
@@ -4312,7 +4346,7 @@ class DescribeDevicesPageRsp(AbstractModel):
 
 
 class DescribeDevicesRequest(AbstractModel):
-    """DescribeDevices请求参数结构体
+    r"""DescribeDevices请求参数结构体
 
     """
 
@@ -4419,7 +4453,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -4430,7 +4464,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Condition(self):
-        """过滤条件参数（字段含义请参考接口返回值）
+        r"""过滤条件参数（字段含义请参考接口返回值）
 
 - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序
 - Name, 类型String，支持操作：【eq，like，ilike】，支持排序
@@ -4487,7 +4521,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def GroupId(self):
-        """【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
+        r"""【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
 id-名称-操作系统
 1	全网终端	Win
 2	未分组终端	Win
@@ -4515,7 +4549,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def OsType(self):
-        """操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        r"""操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
         :rtype: int
         """
         return self._OsType
@@ -4526,7 +4560,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def OnlineStatus(self):
-        """在线状态 （2表示在线，0或者1表示离线）
+        r"""在线状态 （2表示在线，0或者1表示离线）
         :rtype: int
         """
         return self._OnlineStatus
@@ -4537,7 +4571,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Filters(self):
-        """过滤条件--兼容旧接口,参数同Condition
+        r"""过滤条件--兼容旧接口,参数同Condition
         :rtype: list of Filter
         """
         return self._Filters
@@ -4548,7 +4582,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Sort(self):
-        """排序字段--兼容旧接口,参数同Condition
+        r"""排序字段--兼容旧接口,参数同Condition
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Sort`
         """
         return self._Sort
@@ -4559,7 +4593,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def PageNum(self):
-        """获取第几页--兼容旧接口,参数同Condition
+        r"""获取第几页--兼容旧接口,参数同Condition
         :rtype: int
         """
         return self._PageNum
@@ -4570,7 +4604,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def PageSize(self):
-        """每页获取数--兼容旧接口,参数同Condition
+        r"""每页获取数--兼容旧接口,参数同Condition
         :rtype: int
         """
         return self._PageSize
@@ -4581,7 +4615,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Status(self):
-        """授权状态： 4基础授权 5高级授权
+        r"""授权状态： 4基础授权 5高级授权
         :rtype: int
         """
         return self._Status
@@ -4592,7 +4626,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def GroupIds(self):
-        """【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
+        r"""【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
 
         :rtype: list of int
         """
@@ -4635,7 +4669,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
 
 class DescribeDevicesResponse(AbstractModel):
-    """DescribeDevices返回参数结构体
+    r"""DescribeDevices返回参数结构体
 
     """
 
@@ -4651,7 +4685,7 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """分页的data数据
+        r"""分页的data数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDevicesPageRsp`
         """
         return self._Data
@@ -4662,7 +4696,7 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -4680,7 +4714,7 @@ class DescribeDevicesResponse(AbstractModel):
 
 
 class DescribeLocalAccountAccountGroupsData(AbstractModel):
-    """所属组
+    r"""所属组
 
     """
 
@@ -4693,7 +4727,7 @@ class DescribeLocalAccountAccountGroupsData(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """组Id(只支持32位)
+        r"""组Id(只支持32位)
         :rtype: int
         """
         return self._AccountGroupId
@@ -4716,7 +4750,7 @@ class DescribeLocalAccountAccountGroupsData(AbstractModel):
 
 
 class DescribeLocalAccountsData(AbstractModel):
-    """获取账号列表响应的单个对象
+    r"""获取账号列表响应的单个对象
 
     """
 
@@ -4786,7 +4820,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Id(self):
-        """uid，数据库中唯一
+        r"""uid，数据库中唯一
         :rtype: int
         """
         return self._Id
@@ -4797,7 +4831,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserId(self):
-        """账号，登录账号
+        r"""账号，登录账号
         :rtype: str
         """
         return self._UserId
@@ -4808,7 +4842,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserName(self):
-        """用户名
+        r"""用户名
         :rtype: str
         """
         return self._UserName
@@ -4819,7 +4853,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountId(self):
-        """账号id，同Id字段
+        r"""账号id，同Id字段
         :rtype: int
         """
         return self._AccountId
@@ -4830,7 +4864,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupId(self):
-        """账号所在的分组id
+        r"""账号所在的分组id
         :rtype: int
         """
         return self._GroupId
@@ -4841,7 +4875,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupName(self):
-        """账号所在的分组名称
+        r"""账号所在的分组名称
         :rtype: str
         """
         return self._GroupName
@@ -4852,7 +4886,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def NamePath(self):
-        """账号所在的分组名称路径，用英文.分割
+        r"""账号所在的分组名称路径，用英文.分割
         :rtype: str
         """
         return self._NamePath
@@ -4863,7 +4897,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Source(self):
-        """账号来源,0表示本地账号(只支持32位)
+        r"""账号来源,0表示本地账号(只支持32位)
         :rtype: int
         """
         return self._Source
@@ -4874,7 +4908,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Status(self):
-        """账号状态,0禁用，1启用(只支持32位)
+        r"""账号状态,0禁用，1启用(只支持32位)
         :rtype: int
         """
         return self._Status
@@ -4885,7 +4919,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Itime(self):
-        """账号的创建时间
+        r"""账号的创建时间
         :rtype: str
         """
         return self._Itime
@@ -4896,7 +4930,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Utime(self):
-        """账号的最后更新时间
+        r"""账号的最后更新时间
         :rtype: str
         """
         return self._Utime
@@ -4907,7 +4941,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        """账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+        r"""账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
         :rtype: str
         """
         return self._ExtraInfo
@@ -4918,7 +4952,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """用户风险等级，枚举：none, low, middle, high
+        r"""用户风险等级，枚举：none, low, middle, high
         :rtype: str
         """
         return self._RiskLevel
@@ -4929,7 +4963,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountGroups(self):
-        """所属组
+        r"""所属组
         :rtype: list of DescribeLocalAccountAccountGroupsData
         """
         return self._AccountGroups
@@ -4940,7 +4974,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def MobileBindNum(self):
-        """绑定手机端设备数
+        r"""绑定手机端设备数
         :rtype: int
         """
         return self._MobileBindNum
@@ -4951,7 +4985,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def PcBindNum(self):
-        """绑定Pc端设备数
+        r"""绑定Pc端设备数
         :rtype: int
         """
         return self._PcBindNum
@@ -4962,7 +4996,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        """账号在线状态 1：在线 2：离线
+        r"""账号在线状态 1：在线 2：离线
         :rtype: int
         """
         return self._OnlineStatus
@@ -4973,7 +5007,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ActiveStatus(self):
-        """账号活跃状态 1：活跃 2：非活跃
+        r"""账号活跃状态 1：活跃 2：非活跃
         :rtype: int
         """
         return self._ActiveStatus
@@ -4984,7 +5018,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LoginTime(self):
-        """账号登录时间
+        r"""账号登录时间
         :rtype: str
         """
         return self._LoginTime
@@ -4995,7 +5029,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LogoutTime(self):
-        """账号登出时间
+        r"""账号登出时间
         :rtype: str
         """
         return self._LogoutTime
@@ -5042,7 +5076,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
 
 class DescribeLocalAccountsPage(AbstractModel):
-    """获取账号列表响应的分页对象
+    r"""获取账号列表响应的分页对象
 
     """
 
@@ -5058,7 +5092,7 @@ class DescribeLocalAccountsPage(AbstractModel):
 
     @property
     def Page(self):
-        """公共分页对象
+        r"""公共分页对象
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Page
@@ -5069,7 +5103,7 @@ class DescribeLocalAccountsPage(AbstractModel):
 
     @property
     def Items(self):
-        """获取账号列表响应的单个对象
+        r"""获取账号列表响应的单个对象
         :rtype: list of DescribeLocalAccountsData
         """
         return self._Items
@@ -5100,7 +5134,7 @@ class DescribeLocalAccountsPage(AbstractModel):
 
 
 class DescribeLocalAccountsRequest(AbstractModel):
-    """DescribeLocalAccounts请求参数结构体
+    r"""DescribeLocalAccounts请求参数结构体
 
     """
 
@@ -5131,7 +5165,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """查询条件：过滤或排序
+        r"""查询条件：过滤或排序
 1、UserName，string类型，姓名
 是否必填：否
 过滤支持：是，支持eq、like、ilike
@@ -5154,7 +5188,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """获取账号的分组ID，不传默认获取全网根账号组
+        r"""获取账号的分组ID，不传默认获取全网根账号组
         :rtype: int
         """
         return self._AccountGroupId
@@ -5165,7 +5199,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def ShowFlag(self):
-        """是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
+        r"""是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
         :rtype: int
         """
         return self._ShowFlag
@@ -5192,7 +5226,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
 
 class DescribeLocalAccountsResponse(AbstractModel):
-    """DescribeLocalAccounts返回参数结构体
+    r"""DescribeLocalAccounts返回参数结构体
 
     """
 
@@ -5208,7 +5242,7 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """获取账号列表响应的分页对象
+        r"""获取账号列表响应的分页对象
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeLocalAccountsPage`
         """
         return self._Data
@@ -5219,7 +5253,7 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5237,13 +5271,13 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
 
 class DescribeRootAccountGroupRequest(AbstractModel):
-    """DescribeRootAccountGroup请求参数结构体
+    r"""DescribeRootAccountGroup请求参数结构体
 
     """
 
 
 class DescribeRootAccountGroupResponse(AbstractModel):
-    """DescribeRootAccountGroup返回参数结构体
+    r"""DescribeRootAccountGroup返回参数结构体
 
     """
 
@@ -5259,7 +5293,7 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
     @property
     def Data(self):
-        """账号根分组响应详情
+        r"""账号根分组响应详情
         :rtype: :class:`tencentcloud.ioa.v20220601.models.GetAccountGroupData`
         """
         return self._Data
@@ -5270,7 +5304,7 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5288,7 +5322,7 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
 
 class DescribeSoftCensusListByDeviceData(AbstractModel):
-    """软件统计响应对象集合
+    r"""软件统计响应对象集合
 
     """
 
@@ -5349,7 +5383,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def UserName(self):
-        """终端用户名
+        r"""终端用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5361,7 +5395,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def MacAddr(self):
-        """mac地址
+        r"""mac地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5373,7 +5407,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Name(self):
-        """终端计算机名称
+        r"""终端计算机名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5385,7 +5419,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        """终端组路径名
+        r"""终端组路径名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5397,7 +5431,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        """IP地址
+        r"""IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5409,7 +5443,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Mid(self):
-        """唯一标识Mid
+        r"""唯一标识Mid
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5421,7 +5455,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def IoaUserName(self):
-        """企业账户名
+        r"""企业账户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5433,7 +5467,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupId(self):
-        """终端分组Id(只支持32位)
+        r"""终端分组Id(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5445,7 +5479,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupName(self):
-        """终端组名
+        r"""终端组名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5457,7 +5491,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Id(self):
-        """终端列表Id(只支持32位)
+        r"""终端列表Id(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5469,7 +5503,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def SoftNum(self):
-        """软件数量(只支持32位)
+        r"""软件数量(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5481,7 +5515,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        """盗版风险（1=风险;2=未知）
+        r"""盗版风险（1=风险;2=未知）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5493,7 +5527,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def RemarkName(self):
-        """终端备注名
+        r"""终端备注名
         :rtype: str
         """
         return self._RemarkName
@@ -5528,7 +5562,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
 
 class DescribeSoftCensusListByDevicePageData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -5546,7 +5580,7 @@ class DescribeSoftCensusListByDevicePageData(AbstractModel):
 
     @property
     def Items(self):
-        """软件统计响应对象集合
+        r"""软件统计响应对象集合
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeSoftCensusListByDeviceData
         """
@@ -5558,7 +5592,7 @@ class DescribeSoftCensusListByDevicePageData(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
@@ -5590,7 +5624,7 @@ class DescribeSoftCensusListByDevicePageData(AbstractModel):
 
 
 class DescribeSoftCensusListByDeviceRequest(AbstractModel):
-    """DescribeSoftCensusListByDevice请求参数结构体
+    r"""DescribeSoftCensusListByDevice请求参数结构体
 
     """
 
@@ -5612,7 +5646,7 @@ class DescribeSoftCensusListByDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """必填，终端分组ID
+        r"""必填，终端分组ID
         :rtype: int
         """
         return self._GroupId
@@ -5623,7 +5657,7 @@ class DescribeSoftCensusListByDeviceRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -5634,7 +5668,7 @@ class DescribeSoftCensusListByDeviceRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）；默认值0
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）；默认值0
         :rtype: int
         """
         return self._OsType
@@ -5645,7 +5679,7 @@ class DescribeSoftCensusListByDeviceRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件、分页参数   <li>Name - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端名。</li> 	<li>UserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端用户名。</li> 	<li>IoaUserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，最近登录账号。</li> 	<li>Ip - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，IP地址。</li> 	<li>MacAddr - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，MAC地址。</li>
+        r"""过滤条件、分页参数   <li>Name - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端名。</li> 	<li>UserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端用户名。</li> 	<li>IoaUserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，最近登录账号。</li> 	<li>Ip - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，IP地址。</li> 	<li>MacAddr - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，MAC地址。</li>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         return self._Condition
@@ -5673,7 +5707,7 @@ class DescribeSoftCensusListByDeviceRequest(AbstractModel):
 
 
 class DescribeSoftCensusListByDeviceResponse(AbstractModel):
-    """DescribeSoftCensusListByDevice返回参数结构体
+    r"""DescribeSoftCensusListByDevice返回参数结构体
 
     """
 
@@ -5689,7 +5723,7 @@ class DescribeSoftCensusListByDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftCensusListByDevicePageData`
         """
         return self._Data
@@ -5700,7 +5734,7 @@ class DescribeSoftCensusListByDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5718,7 +5752,7 @@ class DescribeSoftCensusListByDeviceResponse(AbstractModel):
 
 
 class DescribeSoftwareInformationPageData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -5734,7 +5768,7 @@ class DescribeSoftwareInformationPageData(AbstractModel):
 
     @property
     def Items(self):
-        """软件详情响应对象集合
+        r"""软件详情响应对象集合
         :rtype: list of SoftwareInformationData
         """
         return self._Items
@@ -5745,7 +5779,7 @@ class DescribeSoftwareInformationPageData(AbstractModel):
 
     @property
     def Page(self):
-        """分页公共对象
+        r"""分页公共对象
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Page
@@ -5776,7 +5810,7 @@ class DescribeSoftwareInformationPageData(AbstractModel):
 
 
 class DescribeSoftwareInformationRequest(AbstractModel):
-    """DescribeSoftwareInformation请求参数结构体
+    r"""DescribeSoftwareInformation请求参数结构体
 
     """
 
@@ -5787,13 +5821,16 @@ class DescribeSoftwareInformationRequest(AbstractModel):
         :param _Condition: 过滤条件、分页参数
 <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _OsType: 0:win 2:mac
+        :type OsType: int
         """
         self._Mid = None
         self._Condition = None
+        self._OsType = None
 
     @property
     def Mid(self):
-        """终端唯一标识Mid
+        r"""终端唯一标识Mid
         :rtype: str
         """
         return self._Mid
@@ -5804,7 +5841,7 @@ class DescribeSoftwareInformationRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件、分页参数
+        r"""过滤条件、分页参数
 <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
@@ -5814,12 +5851,24 @@ class DescribeSoftwareInformationRequest(AbstractModel):
     def Condition(self, Condition):
         self._Condition = Condition
 
+    @property
+    def OsType(self):
+        r"""0:win 2:mac
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
 
     def _deserialize(self, params):
         self._Mid = params.get("Mid")
         if params.get("Condition") is not None:
             self._Condition = Condition()
             self._Condition._deserialize(params.get("Condition"))
+        self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5831,7 +5880,7 @@ class DescribeSoftwareInformationRequest(AbstractModel):
 
 
 class DescribeSoftwareInformationResponse(AbstractModel):
-    """DescribeSoftwareInformation返回参数结构体
+    r"""DescribeSoftwareInformation返回参数结构体
 
     """
 
@@ -5847,7 +5896,7 @@ class DescribeSoftwareInformationResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationPageData`
         """
         return self._Data
@@ -5858,7 +5907,7 @@ class DescribeSoftwareInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -5876,7 +5925,7 @@ class DescribeSoftwareInformationResponse(AbstractModel):
 
 
 class DescribeVirtualDevicesPageRsp(AbstractModel):
-    """返回的具体Data数据
+    r"""返回的具体Data数据
 
     """
 
@@ -5892,7 +5941,7 @@ class DescribeVirtualDevicesPageRsp(AbstractModel):
 
     @property
     def Paging(self):
-        """数据分页信息
+        r"""数据分页信息
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         return self._Paging
@@ -5903,7 +5952,7 @@ class DescribeVirtualDevicesPageRsp(AbstractModel):
 
     @property
     def Items(self):
-        """设备列表
+        r"""设备列表
         :rtype: list of DeviceDetail
         """
         return self._Items
@@ -5934,7 +5983,7 @@ class DescribeVirtualDevicesPageRsp(AbstractModel):
 
 
 class DescribeVirtualDevicesRequest(AbstractModel):
-    """DescribeVirtualDevices请求参数结构体
+    r"""DescribeVirtualDevices请求参数结构体
 
     """
 
@@ -5959,7 +6008,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -5970,7 +6019,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件参数（字段含义请参考接口返回值）- Mid, 类型String，支持操作：【eq，like，ilike】，支持排序- Name, 类型String，支持操作：【eq，like，ilike】，支持排序- Itime, 类型String，支持操作：【eq，like，ilike】，支持排序- UserName, 类型String，支持操作：【eq，like，ilike】，支持排序- MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序- UserId, 类型String，支持操作：【eq，like，ilike】，支持排序- Ip, 类型String，支持操作：【eq，like，ilike】，支持排序- Tags，类型String，支持操作：【eq，like，ilike】，支持排序- LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序- SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序- Version，类型String，支持操作：【eq，like，ilike】，支持排序- StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序- RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**- HostName，类型String，支持操作：【eq，like，ilike】，支持排序- IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序- GroupName，类型String，支持操作：【eq，like，ilike】，支持排序- CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**- RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**- VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**- Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**- SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**- BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序- Os，类型String，支持操作：【eq，like，ilike】，支持排序- ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**- FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**- ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序- DomainName，类型String，支持操作：【eq，like，ilike】，支持排序- SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序- VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序- Cpu，类型String，支持操作：【eq，like，ilike】，支持排序- Memory，类型String，支持操作：【eq，like，ilike】，支持排序- HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序- HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序- AccountName，类型String，支持操作：【like.ilike】，支持排序- AccountGroupName，类型String，支持操作：【like.ilike】，支持排序- ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序- DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+        r"""过滤条件参数（字段含义请参考接口返回值）- Mid, 类型String，支持操作：【eq，like，ilike】，支持排序- Name, 类型String，支持操作：【eq，like，ilike】，支持排序- Itime, 类型String，支持操作：【eq，like，ilike】，支持排序- UserName, 类型String，支持操作：【eq，like，ilike】，支持排序- MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序- UserId, 类型String，支持操作：【eq，like，ilike】，支持排序- Ip, 类型String，支持操作：【eq，like，ilike】，支持排序- Tags，类型String，支持操作：【eq，like，ilike】，支持排序- LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序- SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序- Version，类型String，支持操作：【eq，like，ilike】，支持排序- StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序- RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**- HostName，类型String，支持操作：【eq，like，ilike】，支持排序- IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序- GroupName，类型String，支持操作：【eq，like，ilike】，支持排序- CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**- RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**- VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**- Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**- SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**- BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序- Os，类型String，支持操作：【eq，like，ilike】，支持排序- ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**- FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**- ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序- DomainName，类型String，支持操作：【eq，like，ilike】，支持排序- SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序- VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序- Cpu，类型String，支持操作：【eq，like，ilike】，支持排序- Memory，类型String，支持操作：【eq，like，ilike】，支持排序- HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序- HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序- AccountName，类型String，支持操作：【like.ilike】，支持排序- AccountGroupName，类型String，支持操作：【like.ilike】，支持排序- ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序- DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         return self._Condition
@@ -5981,7 +6030,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def DeviceVirtualGroupId(self):
-        """终端自定义分组ID（0：获取租户全部自定义分组下的终端数据；其他值：获取具体ID分组下的终端数据）
+        r"""终端自定义分组ID（0：获取租户全部自定义分组下的终端数据；其他值：获取具体ID分组下的终端数据）
         :rtype: int
         """
         return self._DeviceVirtualGroupId
@@ -5992,7 +6041,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
         :rtype: int
         """
         return self._OsType
@@ -6003,7 +6052,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        """选填，在线状态 （2表示在线，0或者1表示离线）
+        r"""选填，在线状态 （2表示在线，0或者1表示离线）
         :rtype: int
         """
         return self._OnlineStatus
@@ -6032,7 +6081,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
 
 class DescribeVirtualDevicesResponse(AbstractModel):
-    """DescribeVirtualDevices返回参数结构体
+    r"""DescribeVirtualDevices返回参数结构体
 
     """
 
@@ -6048,7 +6097,7 @@ class DescribeVirtualDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的具体Data数据
+        r"""返回的具体Data数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualDevicesPageRsp`
         """
         return self._Data
@@ -6059,7 +6108,7 @@ class DescribeVirtualDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -6077,7 +6126,7 @@ class DescribeVirtualDevicesResponse(AbstractModel):
 
 
 class DeviceDetail(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -6234,7 +6283,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Id(self):
-        """设备ID
+        r"""设备ID
         :rtype: int
         """
         return self._Id
@@ -6245,7 +6294,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Mid(self):
-        """设备唯一标识码，在ioa中每个设备有唯一标识码
+        r"""设备唯一标识码，在ioa中每个设备有唯一标识码
         :rtype: str
         """
         return self._Mid
@@ -6256,7 +6305,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Name(self):
-        """终端名（设备名）
+        r"""终端名（设备名）
         :rtype: str
         """
         return self._Name
@@ -6267,7 +6316,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupId(self):
-        """设备所在分组ID
+        r"""设备所在分组ID
         :rtype: int
         """
         return self._GroupId
@@ -6278,7 +6327,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsType(self):
-        """OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
+        r"""OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
         :rtype: int
         """
         return self._OsType
@@ -6289,7 +6338,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Ip(self):
-        """设备IP地址（出口IP）
+        r"""设备IP地址（出口IP）
         :rtype: str
         """
         return self._Ip
@@ -6300,7 +6349,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        """在线状态，2：在线、0或者1:离线
+        r"""在线状态，2：在线、0或者1:离线
         :rtype: int
         """
         return self._OnlineStatus
@@ -6311,7 +6360,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Version(self):
-        """客户端版本号-大整数
+        r"""客户端版本号-大整数
         :rtype: str
         """
         return self._Version
@@ -6322,7 +6371,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def StrVersion(self):
-        """客户端版本号-点分字符串
+        r"""客户端版本号-点分字符串
         :rtype: str
         """
         return self._StrVersion
@@ -6333,7 +6382,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Itime(self):
-        """首次在线时间
+        r"""首次在线时间
         :rtype: str
         """
         return self._Itime
@@ -6344,7 +6393,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ConnActiveTime(self):
-        """最后一次在线时间
+        r"""最后一次在线时间
         :rtype: str
         """
         return self._ConnActiveTime
@@ -6355,7 +6404,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Locked(self):
-        """设备是否加锁 ，1：锁定 0或者2：未锁定。
+        r"""设备是否加锁 ，1：锁定 0或者2：未锁定。
         :rtype: int
         """
         return self._Locked
@@ -6366,7 +6415,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def LocalIpList(self):
-        """设备本地IP列表, 包括IP
+        r"""设备本地IP列表, 包括IP
         :rtype: str
         """
         return self._LocalIpList
@@ -6377,7 +6426,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostId(self):
-        """宿主机id（需要宿主机也安装iOA才能显示）
+        r"""宿主机id（需要宿主机也安装iOA才能显示）
         :rtype: int
         """
         return self._HostId
@@ -6388,7 +6437,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupName(self):
-        """设备所属分组名
+        r"""设备所属分组名
         :rtype: str
         """
         return self._GroupName
@@ -6399,7 +6448,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        """设备所属分组路径
+        r"""设备所属分组路径
         :rtype: str
         """
         return self._GroupNamePath
@@ -6410,7 +6459,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def CriticalVulListCount(self):
-        """未修复高危漏洞数(只支持32位)
+        r"""未修复高危漏洞数(只支持32位)
         :rtype: int
         """
         return self._CriticalVulListCount
@@ -6421,7 +6470,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Os(self):
-        """操作系统名称
+        r"""操作系统名称
         :rtype: str
         """
         return self._Os
@@ -6432,7 +6481,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsBits(self):
-        """操作系统位数
+        r"""操作系统位数
         :rtype: int
         """
         return self._OsBits
@@ -6443,7 +6492,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsVersion(self):
-        """操作系统版本
+        r"""操作系统版本
         :rtype: str
         """
         return self._OsVersion
@@ -6454,7 +6503,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsLanguage(self):
-        """操作系统语言
+        r"""操作系统语言
         :rtype: str
         """
         return self._OsLanguage
@@ -6465,7 +6514,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsInstallDate(self):
-        """操作系统安装时间
+        r"""操作系统安装时间
         :rtype: str
         """
         return self._OsInstallDate
@@ -6476,7 +6525,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ComputerName(self):
-        """设备名，和Name相同
+        r"""设备名，和Name相同
         :rtype: str
         """
         return self._ComputerName
@@ -6487,7 +6536,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DomainName(self):
-        """登录域名
+        r"""登录域名
         :rtype: str
         """
         return self._DomainName
@@ -6498,7 +6547,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def MacAddr(self):
-        """MAC地址
+        r"""MAC地址
         :rtype: str
         """
         return self._MacAddr
@@ -6509,7 +6558,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCount(self):
-        """漏洞数
+        r"""漏洞数
         :rtype: int
         """
         return self._VulCount
@@ -6520,7 +6569,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def RiskCount(self):
-        """病毒风险数
+        r"""病毒风险数
         :rtype: int
         """
         return self._RiskCount
@@ -6531,7 +6580,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VirusVer(self):
-        """病毒库版本
+        r"""病毒库版本
         :rtype: str
         """
         return self._VirusVer
@@ -6542,7 +6591,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulVersion(self):
-        """漏洞库版本
+        r"""漏洞库版本
         :rtype: str
         """
         return self._VulVersion
@@ -6553,7 +6602,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SysRepVersion(self):
-        """系统修复引擎版本
+        r"""系统修复引擎版本
         :rtype: str
         """
         return self._SysRepVersion
@@ -6564,7 +6613,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCriticalList(self):
-        """高危补丁列表
+        r"""高危补丁列表
         :rtype: list of str
         """
         return self._VulCriticalList
@@ -6575,7 +6624,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """标签
+        r"""标签
         :rtype: str
         """
         return self._Tags
@@ -6586,7 +6635,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def UserName(self):
-        """终端用户名
+        r"""终端用户名
         :rtype: str
         """
         return self._UserName
@@ -6597,7 +6646,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def FirewallStatus(self):
-        """防火墙状态，不等于0表示开启
+        r"""防火墙状态，不等于0表示开启
         :rtype: int
         """
         return self._FirewallStatus
@@ -6608,7 +6657,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SerialNum(self):
-        """SN序列号
+        r"""SN序列号
         :rtype: str
         """
         return self._SerialNum
@@ -6619,7 +6668,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceStrategyVer(self):
-        """设备管控策略版本
+        r"""设备管控策略版本
         :rtype: str
         """
         return self._DeviceStrategyVer
@@ -6630,7 +6679,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNStrategyVer(self):
-        """NGN策略版本
+        r"""NGN策略版本
         :rtype: str
         """
         return self._NGNStrategyVer
@@ -6641,7 +6690,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IOAUserName(self):
-        """最近登录账户的账号(账号系统用户账号)
+        r"""最近登录账户的账号(账号系统用户账号)
         :rtype: str
         """
         return self._IOAUserName
@@ -6652,7 +6701,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceNewStrategyVer(self):
-        """设备管控新策略
+        r"""设备管控新策略
         :rtype: str
         """
         return self._DeviceNewStrategyVer
@@ -6663,7 +6712,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNNewStrategyVer(self):
-        """NGN策略新版本
+        r"""NGN策略新版本
         :rtype: str
         """
         return self._NGNNewStrategyVer
@@ -6674,7 +6723,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostName(self):
-        """宿主机名称（需要宿主机也安装iOA才能显示）
+        r"""宿主机名称（需要宿主机也安装iOA才能显示）
         :rtype: str
         """
         return self._HostName
@@ -6685,7 +6734,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def BaseBoardSn(self):
-        """主板序列号
+        r"""主板序列号
         :rtype: str
         """
         return self._BaseBoardSn
@@ -6696,7 +6745,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountUsers(self):
-        """绑定账户名称
+        r"""绑定账户名称
         :rtype: str
         """
         return self._AccountUsers
@@ -6707,7 +6756,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityStrategyVer(self):
-        """身份策略版本
+        r"""身份策略版本
         :rtype: str
         """
         return self._IdentityStrategyVer
@@ -6718,7 +6767,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityNewStrategyVer(self):
-        """身份策略新版本
+        r"""身份策略新版本
         :rtype: str
         """
         return self._IdentityNewStrategyVer
@@ -6729,7 +6778,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupName(self):
-        """最近登录账号部门
+        r"""最近登录账号部门
         :rtype: str
         """
         return self._AccountGroupName
@@ -6740,7 +6789,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountName(self):
-        """最近登录账户的姓名(账号系统用户姓名)
+        r"""最近登录账户的姓名(账号系统用户姓名)
         :rtype: str
         """
         return self._AccountName
@@ -6751,7 +6800,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """账号组id
+        r"""账号组id
         :rtype: int
         """
         return self._AccountGroupId
@@ -6762,7 +6811,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def RemarkName(self):
-        """终端备注名
+        r"""终端备注名
         :rtype: str
         """
         return self._RemarkName
@@ -6833,7 +6882,7 @@ class DeviceDetail(AbstractModel):
 
 
 class DeviceGroupDetail(AbstractModel):
-    """返回的数组列表
+    r"""返回的数组列表
 
     """
 
@@ -6897,7 +6946,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Id(self):
-        """设备组id
+        r"""设备组id
         :rtype: int
         """
         return self._Id
@@ -6908,7 +6957,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Name(self):
-        """设备组名称
+        r"""设备组名称
         :rtype: str
         """
         return self._Name
@@ -6919,7 +6968,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Description(self):
-        """设备组描述
+        r"""设备组描述
         :rtype: str
         """
         return self._Description
@@ -6930,7 +6979,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def ParentId(self):
-        """父节点id
+        r"""父节点id
         :rtype: int
         """
         return self._ParentId
@@ -6941,7 +6990,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def IdPath(self):
-        """基于id的节点路径
+        r"""基于id的节点路径
         :rtype: str
         """
         return self._IdPath
@@ -6952,7 +7001,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def NamePath(self):
-        """基于名称的节点路径
+        r"""基于名称的节点路径
         :rtype: str
         """
         return self._NamePath
@@ -6963,7 +7012,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Locked(self):
-        """分组锁定状态
+        r"""分组锁定状态
         :rtype: int
         """
         return self._Locked
@@ -6974,7 +7023,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）
         :rtype: int
         """
         return self._OsType
@@ -6985,7 +7034,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Sort(self):
-        """排序
+        r"""排序
         :rtype: int
         """
         return self._Sort
@@ -6996,7 +7045,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def FromAuto(self):
-        """是否自动调整
+        r"""是否自动调整
         :rtype: int
         """
         return self._FromAuto
@@ -7007,7 +7056,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Count(self):
-        """子节点数量
+        r"""子节点数量
         :rtype: int
         """
         return self._Count
@@ -7018,7 +7067,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Icon(self):
-        """图标
+        r"""图标
         :rtype: str
         """
         return self._Icon
@@ -7029,7 +7078,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def WithIp(self):
-        """是否有ip
+        r"""是否有ip
         :rtype: int
         """
         return self._WithIp
@@ -7040,7 +7089,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def HasIp(self):
-        """是否有组ip
+        r"""是否有组ip
         :rtype: bool
         """
         return self._HasIp
@@ -7051,7 +7100,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def IsLeaf(self):
-        """是否是叶子节点
+        r"""是否是叶子节点
         :rtype: bool
         """
         return self._IsLeaf
@@ -7062,7 +7111,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def ReadOnly(self):
-        """是否只读
+        r"""是否只读
         :rtype: bool
         """
         return self._ReadOnly
@@ -7073,7 +7122,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def BindAccount(self):
-        """对应绑定的账号id
+        r"""对应绑定的账号id
         :rtype: int
         """
         return self._BindAccount
@@ -7084,7 +7133,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def BindAccountName(self):
-        """绑定账号的用户名
+        r"""绑定账号的用户名
         :rtype: str
         """
         return self._BindAccountName
@@ -7124,7 +7173,7 @@ class DeviceGroupDetail(AbstractModel):
 
 
 class DeviceNetworkInfo(AbstractModel):
-    """分页的具体数据对象
+    r"""分页的具体数据对象
 
     """
 
@@ -7166,7 +7215,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def LocalAddr(self):
-        """本地地址
+        r"""本地地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7178,7 +7227,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def LocalPort(self):
-        """本地端口
+        r"""本地端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7190,7 +7239,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def ProcessId(self):
-        """进程id
+        r"""进程id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7202,7 +7251,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def ProcessName(self):
-        """进程名称
+        r"""进程名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7214,7 +7263,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议
+        r"""协议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7226,7 +7275,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def RemoteAddr(self):
-        """远程地址
+        r"""远程地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7238,7 +7287,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def RemotePort(self):
-        """远程端口
+        r"""远程端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7250,7 +7299,7 @@ class DeviceNetworkInfo(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7281,7 +7330,7 @@ class DeviceNetworkInfo(AbstractModel):
 
 
 class DeviceProcessInfo(AbstractModel):
-    """分页的具体数据对象
+    r"""分页的具体数据对象
 
     """
 
@@ -7315,7 +7364,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def CmdLine(self):
-        """命令行
+        r"""命令行
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7327,7 +7376,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """内存
+        r"""内存
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7339,7 +7388,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7351,7 +7400,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def Path(self):
-        """路径
+        r"""路径
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7363,7 +7412,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def ProcessId(self):
-        """进程id
+        r"""进程id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7375,7 +7424,7 @@ class DeviceProcessInfo(AbstractModel):
 
     @property
     def User(self):
-        """启动用户
+        r"""启动用户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7404,7 +7453,7 @@ class DeviceProcessInfo(AbstractModel):
 
 
 class DeviceServiceInfo(AbstractModel):
-    """分页的具体数据对象
+    r"""分页的具体数据对象
 
     """
 
@@ -7442,7 +7491,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def CmdLine(self):
-        """命令行
+        r"""命令行
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7454,7 +7503,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def Description(self):
-        """内存
+        r"""内存
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7466,7 +7515,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        r"""名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7478,7 +7527,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def ProcessId(self):
-        """进程id
+        r"""进程id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7490,7 +7539,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def StartType(self):
-        """启动类型
+        r"""启动类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7502,7 +7551,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def State(self):
-        """状态
+        r"""状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7514,7 +7563,7 @@ class DeviceServiceInfo(AbstractModel):
 
     @property
     def User(self):
-        """启动用户
+        r"""启动用户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7544,7 +7593,7 @@ class DeviceServiceInfo(AbstractModel):
 
 
 class DeviceVirtualDeviceGroupsDetail(AbstractModel):
-    """终端自定义分组列表数据
+    r"""终端自定义分组列表数据
 
     """
 
@@ -7572,7 +7621,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Id(self):
-        """终端自定义分组id
+        r"""终端自定义分组id
         :rtype: int
         """
         return self._Id
@@ -7583,7 +7632,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def DeviceVirtualGroupName(self):
-        """自定义分组名称
+        r"""自定义分组名称
         :rtype: str
         """
         return self._DeviceVirtualGroupName
@@ -7594,7 +7643,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def DeviceCount(self):
-        """设备数
+        r"""设备数
         :rtype: int
         """
         return self._DeviceCount
@@ -7605,7 +7654,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
         :rtype: int
         """
         return self._OsType
@@ -7616,7 +7665,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Itime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._Itime
@@ -7627,7 +7676,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Utime(self):
-        """更新时间
+        r"""更新时间
         :rtype: str
         """
         return self._Utime
@@ -7655,7 +7704,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
 
 class ExportSoftwareDownloadUrlRspData(AbstractModel):
-    """业务响应数据
+    r"""业务响应数据
 
     """
 
@@ -7672,7 +7721,7 @@ class ExportSoftwareDownloadUrlRspData(AbstractModel):
 
     @property
     def DownloadURL(self):
-        """下载的url
+        r"""下载的url
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7684,7 +7733,7 @@ class ExportSoftwareDownloadUrlRspData(AbstractModel):
 
     @property
     def TaskId(self):
-        """超过一定时间走异步任务
+        r"""超过一定时间走异步任务
         :rtype: int
         """
         return self._TaskId
@@ -7708,7 +7757,7 @@ class ExportSoftwareDownloadUrlRspData(AbstractModel):
 
 
 class ExportSoftwareInformationListRequest(AbstractModel):
-    """ExportSoftwareInformationList请求参数结构体
+    r"""ExportSoftwareInformationList请求参数结构体
 
     """
 
@@ -7719,13 +7768,16 @@ class ExportSoftwareInformationListRequest(AbstractModel):
         :param _Condition: 过滤条件、分页参数
 <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _OsType: 系统类型0:win 2:mac
+        :type OsType: int
         """
         self._Mid = None
         self._Condition = None
+        self._OsType = None
 
     @property
     def Mid(self):
-        """终端唯一标识Mid
+        r"""终端唯一标识Mid
         :rtype: str
         """
         return self._Mid
@@ -7736,7 +7788,7 @@ class ExportSoftwareInformationListRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件、分页参数
+        r"""过滤条件、分页参数
 <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
@@ -7746,12 +7798,24 @@ class ExportSoftwareInformationListRequest(AbstractModel):
     def Condition(self, Condition):
         self._Condition = Condition
 
+    @property
+    def OsType(self):
+        r"""系统类型0:win 2:mac
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
 
     def _deserialize(self, params):
         self._Mid = params.get("Mid")
         if params.get("Condition") is not None:
             self._Condition = Condition()
             self._Condition._deserialize(params.get("Condition"))
+        self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7763,7 +7827,7 @@ class ExportSoftwareInformationListRequest(AbstractModel):
 
 
 class ExportSoftwareInformationListResponse(AbstractModel):
-    """ExportSoftwareInformationList返回参数结构体
+    r"""ExportSoftwareInformationList返回参数结构体
 
     """
 
@@ -7779,7 +7843,7 @@ class ExportSoftwareInformationListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """业务响应数据
+        r"""业务响应数据
         :rtype: :class:`tencentcloud.ioa.v20220601.models.ExportSoftwareDownloadUrlRspData`
         """
         return self._Data
@@ -7790,7 +7854,7 @@ class ExportSoftwareInformationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -7808,7 +7872,7 @@ class ExportSoftwareInformationListResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Filters 条件过滤
+    r"""Filters 条件过滤
 
     """
 
@@ -7827,7 +7891,7 @@ class Filter(AbstractModel):
 
     @property
     def Field(self):
-        """过滤字段
+        r"""过滤字段
         :rtype: str
         """
         return self._Field
@@ -7838,7 +7902,7 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
-        """过滤方式： eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于。具体支持哪些过滤方式，结合具体接口字段描述来定
+        r"""过滤方式： eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于。具体支持哪些过滤方式，结合具体接口字段描述来定
         :rtype: str
         """
         return self._Operator
@@ -7849,7 +7913,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """过滤条件
+        r"""过滤条件
         :rtype: list of str
         """
         return self._Values
@@ -7874,7 +7938,7 @@ class Filter(AbstractModel):
 
 
 class FilterGroup(AbstractModel):
-    """FilterGroups 条件过滤组
+    r"""FilterGroups 条件过滤组
 
     """
 
@@ -7887,7 +7951,7 @@ class FilterGroup(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters 条件过滤
+        r"""Filters 条件过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -7915,7 +7979,7 @@ class FilterGroup(AbstractModel):
 
 
 class GetAccountGroupData(AbstractModel):
-    """账号分组详情响应数据
+    r"""账号分组详情响应数据
 
     """
 
@@ -7976,7 +8040,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def NamePath(self):
-        """分组名称全路径，点分格式
+        r"""分组名称全路径，点分格式
         :rtype: str
         """
         return self._NamePath
@@ -7987,7 +8051,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPathArr(self):
-        """分组ID全路径，数组格式
+        r"""分组ID全路径，数组格式
         :rtype: list of int
         """
         return self._IdPathArr
@@ -7998,7 +8062,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        """分组扩展信息
+        r"""分组扩展信息
         :rtype: str
         """
         return self._ExtraInfo
@@ -8009,7 +8073,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Utime(self):
-        """最后更新时间
+        r"""最后更新时间
         :rtype: str
         """
         return self._Utime
@@ -8020,7 +8084,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentId(self):
-        """当前分组的父分组ID
+        r"""当前分组的父分组ID
         :rtype: int
         """
         return self._ParentId
@@ -8031,7 +8095,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def OrgId(self):
-        """源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
+        r"""源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
         :rtype: str
         """
         return self._OrgId
@@ -8042,7 +8106,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Name(self):
-        """分组名称
+        r"""分组名称
         :rtype: str
         """
         return self._Name
@@ -8053,7 +8117,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Id(self):
-        """分组ID
+        r"""分组ID
         :rtype: int
         """
         return self._Id
@@ -8064,7 +8128,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Description(self):
-        """分组描述
+        r"""分组描述
         :rtype: str
         """
         return self._Description
@@ -8075,7 +8139,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Source(self):
-        """分组导入源(只支持32位)
+        r"""分组导入源(只支持32位)
         :rtype: int
         """
         return self._Source
@@ -8086,7 +8150,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPath(self):
-        """分组ID全路径，点分格式
+        r"""分组ID全路径，点分格式
         :rtype: str
         """
         return self._IdPath
@@ -8097,7 +8161,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Itime(self):
-        """创建时间
+        r"""创建时间
         :rtype: str
         """
         return self._Itime
@@ -8108,7 +8172,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentOrgId(self):
-        """父源账号组ID，该字段仅适用于第三方同步的组织架构
+        r"""父源账号组ID，该字段仅适用于第三方同步的组织架构
         :rtype: str
         """
         return self._ParentOrgId
@@ -8119,7 +8183,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Import(self):
-        """导入信息,json格式
+        r"""导入信息,json格式
         :rtype: str
         """
         return self._Import
@@ -8130,7 +8194,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportEnable(self):
-        """是否开启导入架构
+        r"""是否开启导入架构
         :rtype: bool
         """
         return self._ImportEnable
@@ -8141,7 +8205,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportType(self):
-        """导入类型
+        r"""导入类型
         :rtype: str
         """
         return self._ImportType
@@ -8152,7 +8216,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def MiniIamId(self):
-        """miniIAMId，MiniIAM源才有
+        r"""miniIAMId，MiniIAM源才有
         :rtype: str
         """
         return self._MiniIamId
@@ -8191,7 +8255,7 @@ class GetAccountGroupData(AbstractModel):
 
 
 class ModifyVirtualDeviceGroupsReqItem(AbstractModel):
-    """操作的设备列表
+    r"""操作的设备列表
 
     """
 
@@ -8207,7 +8271,7 @@ class ModifyVirtualDeviceGroupsReqItem(AbstractModel):
 
     @property
     def DeviceMid(self):
-        """设备mid
+        r"""设备mid
         :rtype: str
         """
         return self._DeviceMid
@@ -8218,7 +8282,7 @@ class ModifyVirtualDeviceGroupsReqItem(AbstractModel):
 
     @property
     def Operation(self):
-        """操作标识  0:删除设备 1:添加设备
+        r"""操作标识  0:删除设备 1:添加设备
         :rtype: int
         """
         return self._Operation
@@ -8242,7 +8306,7 @@ class ModifyVirtualDeviceGroupsReqItem(AbstractModel):
 
 
 class ModifyVirtualDeviceGroupsRequest(AbstractModel):
-    """ModifyVirtualDeviceGroups请求参数结构体
+    r"""ModifyVirtualDeviceGroups请求参数结构体
 
     """
 
@@ -8267,7 +8331,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        """必填，操作的设备列表数据
+        r"""必填，操作的设备列表数据
         :rtype: list of ModifyVirtualDeviceGroupsReqItem
         """
         return self._DeviceList
@@ -8278,7 +8342,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -8289,7 +8353,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def DeviceVirtualGroupId(self):
-        """添加到的终端自定义分组id。和DeviceVirtualGroupIds互斥，必填其一，优先使用本参数
+        r"""添加到的终端自定义分组id。和DeviceVirtualGroupIds互斥，必填其一，优先使用本参数
         :rtype: int
         """
         return self._DeviceVirtualGroupId
@@ -8300,7 +8364,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def DeviceVirtualGroupIds(self):
-        """要添加的终端自定义分组id列表
+        r"""要添加的终端自定义分组id列表
         :rtype: list of int
         """
         return self._DeviceVirtualGroupIds
@@ -8311,7 +8375,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
         :rtype: int
         """
         return self._OsType
@@ -8343,7 +8407,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
 
 class ModifyVirtualDeviceGroupsResponse(AbstractModel):
-    """ModifyVirtualDeviceGroups返回参数结构体
+    r"""ModifyVirtualDeviceGroups返回参数结构体
 
     """
 
@@ -8356,7 +8420,7 @@ class ModifyVirtualDeviceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -8371,7 +8435,7 @@ class ModifyVirtualDeviceGroupsResponse(AbstractModel):
 
 
 class Paging(AbstractModel):
-    """页码
+    r"""页码
 
     """
 
@@ -8393,7 +8457,7 @@ class Paging(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页条数
+        r"""每页条数
         :rtype: int
         """
         return self._PageSize
@@ -8404,7 +8468,7 @@ class Paging(AbstractModel):
 
     @property
     def PageNum(self):
-        """页码
+        r"""页码
         :rtype: int
         """
         return self._PageNum
@@ -8415,7 +8479,7 @@ class Paging(AbstractModel):
 
     @property
     def PageCount(self):
-        """总页数
+        r"""总页数
         :rtype: int
         """
         return self._PageCount
@@ -8426,7 +8490,7 @@ class Paging(AbstractModel):
 
     @property
     def Total(self):
-        """记录总数
+        r"""记录总数
         :rtype: int
         """
         return self._Total
@@ -8452,7 +8516,7 @@ class Paging(AbstractModel):
 
 
 class RuleExpression(AbstractModel):
-    """规则表达式
+    r"""规则表达式
 
     """
 
@@ -8468,7 +8532,7 @@ class RuleExpression(AbstractModel):
 
     @property
     def Items(self):
-        """规则元数据
+        r"""规则元数据
         :rtype: list of RuleItem
         """
         return self._Items
@@ -8479,7 +8543,7 @@ class RuleExpression(AbstractModel):
 
     @property
     def Relation(self):
-        """关系
+        r"""关系
         :rtype: str
         """
         return self._Relation
@@ -8508,7 +8572,7 @@ class RuleExpression(AbstractModel):
 
 
 class RuleItem(AbstractModel):
-    """规则元数据
+    r"""规则元数据
 
     """
 
@@ -8530,7 +8594,7 @@ class RuleItem(AbstractModel):
 
     @property
     def Key(self):
-        """字段名称
+        r"""字段名称
         :rtype: str
         """
         return self._Key
@@ -8541,7 +8605,7 @@ class RuleItem(AbstractModel):
 
     @property
     def Operate(self):
-        """操作关系（等于、不等于、包含、不包含）
+        r"""操作关系（等于、不等于、包含、不包含）
         :rtype: str
         """
         return self._Operate
@@ -8552,7 +8616,7 @@ class RuleItem(AbstractModel):
 
     @property
     def Value(self):
-        """内容
+        r"""内容
         :rtype: str
         """
         return self._Value
@@ -8563,7 +8627,7 @@ class RuleItem(AbstractModel):
 
     @property
     def Values(self):
-        """内容，v2多值版本使用
+        r"""内容，v2多值版本使用
         :rtype: list of str
         """
         return self._Values
@@ -8589,7 +8653,7 @@ class RuleItem(AbstractModel):
 
 
 class SimpleRule(AbstractModel):
-    """简单规则表达式
+    r"""简单规则表达式
 
     """
 
@@ -8605,7 +8669,7 @@ class SimpleRule(AbstractModel):
 
     @property
     def Expressions(self):
-        """规则表达式
+        r"""规则表达式
         :rtype: list of RuleExpression
         """
         return self._Expressions
@@ -8616,7 +8680,7 @@ class SimpleRule(AbstractModel):
 
     @property
     def Relation(self):
-        """表达式间逻辑关系
+        r"""表达式间逻辑关系
         :rtype: str
         """
         return self._Relation
@@ -8645,7 +8709,7 @@ class SimpleRule(AbstractModel):
 
 
 class SoftVersionAndNum(AbstractModel):
-    """软件版本与安装数量
+    r"""软件版本与安装数量
 
     """
 
@@ -8663,7 +8727,7 @@ class SoftVersionAndNum(AbstractModel):
 
     @property
     def Version(self):
-        """软件版本
+        r"""软件版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8675,7 +8739,7 @@ class SoftVersionAndNum(AbstractModel):
 
     @property
     def Num(self):
-        """安装数
+        r"""安装数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8700,7 +8764,7 @@ class SoftVersionAndNum(AbstractModel):
 
 
 class SoftwareInformationData(AbstractModel):
-    """软件详情响应对象集合
+    r"""软件详情响应对象集合
 
     """
 
@@ -8734,7 +8798,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def Name(self):
-        """软件名称
+        r"""软件名称
         :rtype: str
         """
         return self._Name
@@ -8745,7 +8809,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def InstallDate(self):
-        """安装时间
+        r"""安装时间
         :rtype: str
         """
         return self._InstallDate
@@ -8756,7 +8820,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def SoftwareId(self):
-        """软件列表id(只支持32位)
+        r"""软件列表id(只支持32位)
         :rtype: int
         """
         return self._SoftwareId
@@ -8767,7 +8831,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def Mid(self):
-        """唯一标识Mid
+        r"""唯一标识Mid
         :rtype: str
         """
         return self._Mid
@@ -8778,7 +8842,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def Version(self):
-        """软件版本
+        r"""软件版本
         :rtype: str
         """
         return self._Version
@@ -8789,7 +8853,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def CorpName(self):
-        """公司名
+        r"""公司名
         :rtype: str
         """
         return self._CorpName
@@ -8800,7 +8864,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def Id(self):
-        """列表Id(只支持32位)
+        r"""列表Id(只支持32位)
         :rtype: int
         """
         return self._Id
@@ -8811,7 +8875,7 @@ class SoftwareInformationData(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        """盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
+        r"""盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
         :rtype: int
         """
         return self._PiracyRisk
@@ -8841,7 +8905,7 @@ class SoftwareInformationData(AbstractModel):
 
 
 class Sort(AbstractModel):
-    """Sort 排序字段
+    r"""Sort 排序字段
 
     """
 
@@ -8857,7 +8921,7 @@ class Sort(AbstractModel):
 
     @property
     def Field(self):
-        """排序字段
+        r"""排序字段
         :rtype: str
         """
         return self._Field
@@ -8868,7 +8932,7 @@ class Sort(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式
+        r"""排序方式
         :rtype: str
         """
         return self._Order

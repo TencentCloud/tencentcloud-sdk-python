@@ -19,13 +19,13 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeComponentAlertObjectRequest(AbstractModel):
-    """DescribeComponentAlertObject请求参数结构体
+    r"""DescribeComponentAlertObject请求参数结构体
 
     """
 
 
 class DescribeComponentAlertObjectResponse(AbstractModel):
-    """DescribeComponentAlertObject返回参数结构体
+    r"""DescribeComponentAlertObject返回参数结构体
 
     """
 
@@ -38,7 +38,7 @@ class DescribeComponentAlertObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -53,13 +53,13 @@ class DescribeComponentAlertObjectResponse(AbstractModel):
 
 
 class DescribeServiceAlertObjectRequest(AbstractModel):
-    """DescribeServiceAlertObject请求参数结构体
+    r"""DescribeServiceAlertObject请求参数结构体
 
     """
 
 
 class DescribeServiceAlertObjectResponse(AbstractModel):
-    """DescribeServiceAlertObject返回参数结构体
+    r"""DescribeServiceAlertObject返回参数结构体
 
     """
 
@@ -72,7 +72,7 @@ class DescribeServiceAlertObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -87,7 +87,7 @@ class DescribeServiceAlertObjectResponse(AbstractModel):
 
 
 class DescribeTokenRequest(AbstractModel):
-    """DescribeToken请求参数结构体
+    r"""DescribeToken请求参数结构体
 
     """
 
@@ -100,7 +100,7 @@ class DescribeTokenRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        r"""命名空间
         :rtype: str
         """
         return self._Namespace
@@ -123,7 +123,7 @@ class DescribeTokenRequest(AbstractModel):
 
 
 class DescribeTokenResponse(AbstractModel):
-    """DescribeToken返回参数结构体
+    r"""DescribeToken返回参数结构体
 
     """
 
@@ -139,7 +139,7 @@ class DescribeTokenResponse(AbstractModel):
 
     @property
     def Result(self):
-        """token
+        r"""token
         :rtype: str
         """
         return self._Result
@@ -150,7 +150,7 @@ class DescribeTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId

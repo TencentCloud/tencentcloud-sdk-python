@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DeadLetterPolicy(AbstractModel):
-    """死信队列策略
+    r"""死信队列策略
 
     """
 
@@ -44,7 +44,7 @@ class DeadLetterPolicy(AbstractModel):
 
     @property
     def DeadLetterQueue(self):
-        """死信队列。
+        r"""死信队列。
         :rtype: str
         """
         return self._DeadLetterQueue
@@ -55,7 +55,7 @@ class DeadLetterPolicy(AbstractModel):
 
     @property
     def DeadLetterQueueName(self):
-        """死信队列名字。
+        r"""死信队列名字。
         :rtype: str
         """
         return self._DeadLetterQueueName
@@ -66,7 +66,7 @@ class DeadLetterPolicy(AbstractModel):
 
     @property
     def MaxTimeToLive(self):
-        """最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
+        r"""最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
         :rtype: int
         """
         return self._MaxTimeToLive
@@ -77,7 +77,7 @@ class DeadLetterPolicy(AbstractModel):
 
     @property
     def Policy(self):
-        """死信队列策略。
+        r"""死信队列策略。
         :rtype: int
         """
         return self._Policy
@@ -88,7 +88,7 @@ class DeadLetterPolicy(AbstractModel):
 
     @property
     def MaxReceiveCount(self):
-        """最大接收次数。
+        r"""最大接收次数。
         :rtype: int
         """
         return self._MaxReceiveCount
@@ -115,7 +115,7 @@ class DeadLetterPolicy(AbstractModel):
 
 
 class DeadLetterSource(AbstractModel):
-    """死信源队列信息
+    r"""死信源队列信息
 
     """
 
@@ -131,7 +131,7 @@ class DeadLetterSource(AbstractModel):
 
     @property
     def QueueId(self):
-        """消息队列ID。
+        r"""消息队列ID。
         :rtype: str
         """
         return self._QueueId
@@ -142,7 +142,7 @@ class DeadLetterSource(AbstractModel):
 
     @property
     def QueueName(self):
-        """消息队列名字。
+        r"""消息队列名字。
         :rtype: str
         """
         return self._QueueName
@@ -166,7 +166,7 @@ class DeadLetterSource(AbstractModel):
 
 
 class DescribeQueueDetailRequest(AbstractModel):
-    """DescribeQueueDetail请求参数结构体
+    r"""DescribeQueueDetail请求参数结构体
 
     """
 
@@ -191,7 +191,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签搜索
+        r"""标签搜索
         :rtype: str
         """
         return self._TagKey
@@ -202,7 +202,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        r"""分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -213,7 +213,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """精确匹配QueueName
+        r"""精确匹配QueueName
         :rtype: str
         """
         return self._QueueName
@@ -224,7 +224,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选参数，目前支持QueueName筛选，且仅支持一个关键字
+        r"""筛选参数，目前支持QueueName筛选，且仅支持一个关键字
         :rtype: list of Filter
         """
         return self._Filters
@@ -235,7 +235,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+        r"""分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
         :rtype: int
         """
         return self._Offset
@@ -267,7 +267,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
 
 class DescribeQueueDetailResponse(AbstractModel):
-    """DescribeQueueDetail返回参数结构体
+    r"""DescribeQueueDetail返回参数结构体
 
     """
 
@@ -286,7 +286,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总队列数。
+        r"""总队列数。
         :rtype: int
         """
         return self._TotalCount
@@ -297,7 +297,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def QueueSet(self):
-        """队列详情列表。
+        r"""队列详情列表。
         :rtype: list of QueueSet
         """
         return self._QueueSet
@@ -308,7 +308,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -330,7 +330,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
 
 class DescribeTopicDetailRequest(AbstractModel):
-    """DescribeTopicDetail请求参数结构体
+    r"""DescribeTopicDetail请求参数结构体
 
     """
 
@@ -355,7 +355,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签匹配。
+        r"""标签匹配。
         :rtype: str
         """
         return self._TagKey
@@ -366,7 +366,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        r"""分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -377,7 +377,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """精确匹配TopicName。
+        r"""精确匹配TopicName。
         :rtype: str
         """
         return self._TopicName
@@ -388,7 +388,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """目前只支持过滤TopicName ， 且只能填一个过滤值。
+        r"""目前只支持过滤TopicName ， 且只能填一个过滤值。
         :rtype: list of Filter
         """
         return self._Filters
@@ -399,7 +399,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
+        r"""分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
         :rtype: int
         """
         return self._Offset
@@ -431,7 +431,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
 
 class DescribeTopicDetailResponse(AbstractModel):
-    """DescribeTopicDetail返回参数结构体
+    r"""DescribeTopicDetail返回参数结构体
 
     """
 
@@ -450,7 +450,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """主题列表总数。
+        r"""主题列表总数。
         :rtype: int
         """
         return self._TotalCount
@@ -461,7 +461,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TopicSet(self):
-        """主题详情列表。
+        r"""主题详情列表。
         :rtype: list of TopicSet
         """
         return self._TopicSet
@@ -472,7 +472,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
         """
         return self._RequestId
@@ -494,7 +494,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤参数
+    r"""过滤参数
 
     """
 
@@ -510,7 +510,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """数值
+        r"""数值
         :rtype: list of str
         """
         return self._Values
@@ -521,7 +521,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤参数的名字
+        r"""过滤参数的名字
         :rtype: str
         """
         return self._Name
@@ -545,7 +545,7 @@ class Filter(AbstractModel):
 
 
 class QueueSet(AbstractModel):
-    """批量queue属性信息
+    r"""批量queue属性信息
 
     """
 
@@ -636,7 +636,7 @@ class QueueSet(AbstractModel):
 
     @property
     def QueueId(self):
-        """消息队列ID。
+        r"""消息队列ID。
         :rtype: str
         """
         return self._QueueId
@@ -647,7 +647,7 @@ class QueueSet(AbstractModel):
 
     @property
     def RewindSeconds(self):
-        """回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
+        r"""回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
         :rtype: int
         """
         return self._RewindSeconds
@@ -658,7 +658,7 @@ class QueueSet(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建者Uin。
+        r"""创建者Uin。
         :rtype: int
         """
         return self._CreateUin
@@ -669,7 +669,7 @@ class QueueSet(AbstractModel):
 
     @property
     def LastModifyTime(self):
-        """最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
+        r"""最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
         :rtype: int
         """
         return self._LastModifyTime
@@ -680,7 +680,7 @@ class QueueSet(AbstractModel):
 
     @property
     def VisibilityTimeout(self):
-        """消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
+        r"""消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
         :rtype: int
         """
         return self._VisibilityTimeout
@@ -691,7 +691,7 @@ class QueueSet(AbstractModel):
 
     @property
     def QueueName(self):
-        """消息队列名字。
+        r"""消息队列名字。
         :rtype: str
         """
         return self._QueueName
@@ -702,7 +702,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Trace(self):
-        """消息轨迹。true表示开启，false表示不开启。
+        r"""消息轨迹。true表示开启，false表示不开启。
         :rtype: bool
         """
         return self._Trace
@@ -713,7 +713,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Tags(self):
-        """关联的标签。
+        r"""关联的标签。
         :rtype: list of Tag
         """
         return self._Tags
@@ -724,7 +724,7 @@ class QueueSet(AbstractModel):
 
     @property
     def RewindMsgNum(self):
-        """已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
+        r"""已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
         :rtype: int
         """
         return self._RewindMsgNum
@@ -735,7 +735,7 @@ class QueueSet(AbstractModel):
 
     @property
     def MaxDelaySeconds(self):
-        """飞行消息最大保留时间。
+        r"""飞行消息最大保留时间。
         :rtype: int
         """
         return self._MaxDelaySeconds
@@ -746,7 +746,7 @@ class QueueSet(AbstractModel):
 
     @property
     def TransactionPolicy(self):
-        """事务消息策略。
+        r"""事务消息策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
         """
@@ -758,7 +758,7 @@ class QueueSet(AbstractModel):
 
     @property
     def MsgRetentionSeconds(self):
-        """消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
+        r"""消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
         :rtype: int
         """
         return self._MsgRetentionSeconds
@@ -769,7 +769,7 @@ class QueueSet(AbstractModel):
 
     @property
     def DelayMsgNum(self):
-        """延迟消息数。
+        r"""延迟消息数。
         :rtype: int
         """
         return self._DelayMsgNum
@@ -780,7 +780,7 @@ class QueueSet(AbstractModel):
 
     @property
     def MaxMsgHeapNum(self):
-        """最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
+        r"""最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
         :rtype: int
         """
         return self._MaxMsgHeapNum
@@ -791,7 +791,7 @@ class QueueSet(AbstractModel):
 
     @property
     def PollingWaitSeconds(self):
-        """消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
+        r"""消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
         :rtype: int
         """
         return self._PollingWaitSeconds
@@ -802,7 +802,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Bps(self):
-        """带宽限制。
+        r"""带宽限制。
         :rtype: int
         """
         return self._Bps
@@ -813,7 +813,7 @@ class QueueSet(AbstractModel):
 
     @property
     def InactiveMsgNum(self):
-        """在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
+        r"""在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
         :rtype: int
         """
         return self._InactiveMsgNum
@@ -824,7 +824,7 @@ class QueueSet(AbstractModel):
 
     @property
     def DeadLetterPolicy(self):
-        """死信队列策略。
+        r"""死信队列策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
         """
@@ -836,7 +836,7 @@ class QueueSet(AbstractModel):
 
     @property
     def ActiveMsgNum(self):
-        """在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
+        r"""在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
         :rtype: int
         """
         return self._ActiveMsgNum
@@ -847,7 +847,7 @@ class QueueSet(AbstractModel):
 
     @property
     def MaxMsgSize(self):
-        """消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
+        r"""消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
         :rtype: int
         """
         return self._MaxMsgSize
@@ -858,7 +858,7 @@ class QueueSet(AbstractModel):
 
     @property
     def MinMsgTime(self):
-        """消息最小未消费时间，单位为秒。
+        r"""消息最小未消费时间，单位为秒。
         :rtype: int
         """
         return self._MinMsgTime
@@ -869,7 +869,7 @@ class QueueSet(AbstractModel):
 
     @property
     def DeadLetterSource(self):
-        """死信队列。
+        r"""死信队列。
         :rtype: list of DeadLetterSource
         """
         return self._DeadLetterSource
@@ -880,7 +880,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Transaction(self):
-        """事务消息队列。true表示是事务消息，false表示不是事务消息。
+        r"""事务消息队列。true表示是事务消息，false表示不是事务消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -892,7 +892,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Qps(self):
-        """每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
+        r"""每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
         :rtype: int
         """
         return self._Qps
@@ -903,7 +903,7 @@ class QueueSet(AbstractModel):
 
     @property
     def CreateTime(self):
-        """队列的创建时间。返回 Unix 时间戳，精确到秒。
+        r"""队列的创建时间。返回 Unix 时间戳，精确到秒。
         :rtype: int
         """
         return self._CreateTime
@@ -914,7 +914,7 @@ class QueueSet(AbstractModel):
 
     @property
     def Migrate(self):
-        """是否迁移到新版本。0 表示仅同步元数据，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未迁移。
+        r"""是否迁移到新版本。0 表示仅同步元数据，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未迁移。
         :rtype: int
         """
         return self._Migrate
@@ -976,7 +976,7 @@ class QueueSet(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签
+    r"""标签
 
     """
 
@@ -992,7 +992,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """标签Key
+        r"""标签Key
         :rtype: str
         """
         return self._TagKey
@@ -1003,7 +1003,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """标签值
+        r"""标签值
         :rtype: str
         """
         return self._TagValue
@@ -1027,7 +1027,7 @@ class Tag(AbstractModel):
 
 
 class TopicSet(AbstractModel):
-    """topic返回信息展示字段
+    r"""topic返回信息展示字段
 
     """
 
@@ -1078,7 +1078,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def MsgCount(self):
-        """当前该主题中消息数目（消息堆积数）。
+        r"""当前该主题中消息数目（消息堆积数）。
         :rtype: int
         """
         return self._MsgCount
@@ -1089,7 +1089,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def TopicId(self):
-        """主题的 ID。
+        r"""主题的 ID。
         :rtype: str
         """
         return self._TopicId
@@ -1100,7 +1100,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def MaxMsgSize(self):
-        """消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
+        r"""消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
         :rtype: int
         """
         return self._MaxMsgSize
@@ -1111,7 +1111,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def Trace(self):
-        """消息轨迹。true表示开启，false表示不开启。
+        r"""消息轨迹。true表示开启，false表示不开启。
         :rtype: bool
         """
         return self._Trace
@@ -1122,7 +1122,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def Tags(self):
-        """关联的标签。
+        r"""关联的标签。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1133,7 +1133,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def CreateUin(self):
-        """创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
+        r"""创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
         :rtype: int
         """
         return self._CreateUin
@@ -1144,7 +1144,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def FilterType(self):
-        """描述用户创建订阅时选择的过滤策略：
+        r"""描述用户创建订阅时选择的过滤策略：
 FilterType = 1表示用户使用 FilterTag 标签过滤;
 FilterType = 2表示用户使用 BindingKey 过滤。
         :rtype: int
@@ -1157,7 +1157,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def TopicName(self):
-        """主题名称。
+        r"""主题名称。
         :rtype: str
         """
         return self._TopicName
@@ -1168,7 +1168,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def LastModifyTime(self):
-        """最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
+        r"""最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
         :rtype: int
         """
         return self._LastModifyTime
@@ -1179,7 +1179,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def MsgRetentionSeconds(self):
-        """消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
+        r"""消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
         :rtype: int
         """
         return self._MsgRetentionSeconds
@@ -1190,7 +1190,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def Qps(self):
-        """每秒钟发布消息的条数。
+        r"""每秒钟发布消息的条数。
         :rtype: int
         """
         return self._Qps
@@ -1201,7 +1201,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def CreateTime(self):
-        """主题的创建时间。返回 Unix 时间戳，精确到秒。
+        r"""主题的创建时间。返回 Unix 时间戳，精确到秒。
         :rtype: int
         """
         return self._CreateTime
@@ -1212,7 +1212,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
     @property
     def Migrate(self):
-        """是否迁移到新版本。0 表示未迁移，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未知状态。
+        r"""是否迁移到新版本。0 表示未迁移，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未知状态。
         :rtype: int
         """
         return self._Migrate
@@ -1252,7 +1252,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
 
 class TransactionPolicy(AbstractModel):
-    """事务消息策略
+    r"""事务消息策略
 
     """
 
@@ -1268,7 +1268,7 @@ class TransactionPolicy(AbstractModel):
 
     @property
     def MaxQueryCount(self):
-        """最大查询次数。
+        r"""最大查询次数。
         :rtype: int
         """
         return self._MaxQueryCount
@@ -1279,7 +1279,7 @@ class TransactionPolicy(AbstractModel):
 
     @property
     def FirstQueryInterval(self):
-        """第一次回查时间。
+        r"""第一次回查时间。
         :rtype: int
         """
         return self._FirstQueryInterval

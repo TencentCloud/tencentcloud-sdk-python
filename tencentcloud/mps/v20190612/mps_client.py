@@ -27,7 +27,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchDeleteStreamLinkFlow(self, request):
-        """批量删除媒体传输流。
+        r"""批量删除媒体传输流。
 
         :param request: Request instance for BatchDeleteStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.BatchDeleteStreamLinkFlowRequest`
@@ -50,7 +50,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchProcessMedia(self, request):
-        """对 URL视频链接批量发起处理任务，功能包括：
+        r"""对 URL视频链接批量发起处理任务，功能包括：
         智能字幕（语音全文、语音热词、语音翻译）
 
         :param request: Request instance for BatchProcessMedia.
@@ -74,7 +74,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchStartStreamLinkFlow(self, request):
-        """批量启动媒体传输流。
+        r"""批量启动媒体传输流。
 
         :param request: Request instance for BatchStartStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.BatchStartStreamLinkFlowRequest`
@@ -97,7 +97,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchStopStreamLinkFlow(self, request):
-        """批量停止媒体传输流。
+        r"""批量停止媒体传输流。
 
         :param request: Request instance for BatchStopStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.BatchStopStreamLinkFlowRequest`
@@ -120,7 +120,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAIAnalysisTemplate(self, request):
-        """创建用户自定义内容分析模板，数量上限：50。
+        r"""创建用户自定义内容分析模板，数量上限：50。
 
         :param request: Request instance for CreateAIAnalysisTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateRequest`
@@ -143,7 +143,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAIRecognitionTemplate(self, request):
-        """创建用户自定义内容识别模板，数量上限：50。
+        r"""创建用户自定义内容识别模板，数量上限：50。
 
         :param request: Request instance for CreateAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateRequest`
@@ -166,7 +166,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAdaptiveDynamicStreamingTemplate(self, request):
-        """创建转自适应码流模板，数量上限：100。
+        r"""创建转自适应码流模板，数量上限：100。
 
         :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateRequest`
@@ -189,7 +189,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAnimatedGraphicsTemplate(self, request):
-        """创建用户自定义转动图模板，数量上限：16。
+        r"""创建用户自定义转动图模板，数量上限：16。
 
         :param request: Request instance for CreateAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAnimatedGraphicsTemplateRequest`
@@ -212,7 +212,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAsrHotwords(self, request):
-        """智能字幕新建热词库接口
+        r"""智能字幕新建热词库接口
 
         :param request: Request instance for CreateAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsRequest`
@@ -235,7 +235,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateContentReviewTemplate(self, request):
-        """创建用户自定义内容审核模板，数量上限：50。
+        r"""创建用户自定义内容审核模板，数量上限：50。
 
         :param request: Request instance for CreateContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`
@@ -258,7 +258,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateImageSpriteTemplate(self, request):
-        """创建用户自定义雪碧图模板，数量上限：16。
+        r"""创建用户自定义雪碧图模板，数量上限：16。
 
         :param request: Request instance for CreateImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateImageSpriteTemplateRequest`
@@ -281,7 +281,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateLiveRecordTemplate(self, request):
-        """创建直播录制模板
+        r"""创建直播录制模板
 
         :param request: Request instance for CreateLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateLiveRecordTemplateRequest`
@@ -304,7 +304,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateMediaEvaluation(self, request):
-        """发起视频评测任务，功能包括：
+        r"""发起视频评测任务，功能包括：
 
         1. 对一个原视频和多个转码后的视频进行评分。
         2. 计算不同转码方式的 BD-Rate。
@@ -330,7 +330,7 @@ class MpsClient(AbstractClient):
 
 
     def CreatePersonSample(self, request):
-        """该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
+        r"""该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
 
         :param request: Request instance for CreatePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
@@ -353,7 +353,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateQualityControlTemplate(self, request):
-        """创建媒体质检模板，数量上限：50。
+        r"""创建媒体质检模板，数量上限：50。
 
         :param request: Request instance for CreateQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateRequest`
@@ -376,7 +376,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSampleSnapshotTemplate(self, request):
-        """创建用户自定义采样截图模板，数量上限：16。
+        r"""创建用户自定义采样截图模板，数量上限：16。
 
         :param request: Request instance for CreateSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSampleSnapshotTemplateRequest`
@@ -399,7 +399,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSchedule(self, request):
-        """对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+        r"""对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
         1. 视频转码（带水印）；
         2. 视频转动图；
         3. 对视频按指定时间点截图；
@@ -433,7 +433,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSmartSubtitleTemplate(self, request):
-        """创建自定义智能字幕模板
+        r"""创建自定义智能字幕模板
 
         :param request: Request instance for CreateSmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateRequest`
@@ -456,7 +456,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSnapshotByTimeOffsetTemplate(self, request):
-        """创建用户自定义指定时间点截图模板，数量上限：16。
+        r"""创建用户自定义指定时间点截图模板，数量上限：16。
 
         :param request: Request instance for CreateSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSnapshotByTimeOffsetTemplateRequest`
@@ -479,7 +479,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateStreamLinkEvent(self, request):
-        """创建媒体传输的事件Event。
+        r"""创建媒体传输的事件Event。
 
         :param request: Request instance for CreateStreamLinkEvent.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkEventRequest`
@@ -502,7 +502,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateStreamLinkFlow(self, request):
-        """创建媒体传输的传输流配置。
+        r"""创建媒体传输的传输流配置。
 
         :param request: Request instance for CreateStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkFlowRequest`
@@ -525,7 +525,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateStreamLinkInput(self, request):
-        """创建媒体传输的输入配置。
+        r"""创建媒体传输的输入配置。
 
         :param request: Request instance for CreateStreamLinkInput.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkInputRequest`
@@ -548,7 +548,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateStreamLinkOutputInfo(self, request):
-        """创建媒体传输流的输出信息。
+        r"""创建媒体传输流的输出信息。
 
         :param request: Request instance for CreateStreamLinkOutputInfo.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkOutputInfoRequest`
@@ -571,7 +571,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateStreamLinkSecurityGroup(self, request):
-        """创建安全组，数量限制5个。
+        r"""创建安全组，数量限制5个。
 
         :param request: Request instance for CreateStreamLinkSecurityGroup.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkSecurityGroupRequest`
@@ -594,7 +594,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """创建用户自定义转码模板，数量上限：1000
+        r"""创建用户自定义转码模板，数量上限：1000
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateTranscodeTemplateRequest`
@@ -617,7 +617,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateVideoDatabaseEntryTask(self, request):
-        """对URL链接或COS中的视频发起入库任务。
+        r"""对URL链接或COS中的视频发起入库任务。
         可选在任务完成后向回调方发送任务完成状态信息。
 
         :param request: Request instance for CreateVideoDatabaseEntryTask.
@@ -641,7 +641,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateVideoSearchTask(self, request):
-        """使用检索值检索库中最接近检索值的若干视频。
+        r"""使用检索值检索库中最接近检索值的若干视频。
 
         :param request: Request instance for CreateVideoSearchTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateVideoSearchTaskRequest`
@@ -664,7 +664,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWatermarkTemplate(self, request):
-        """创建用户自定义水印模板，数量上限：1000。
+        r"""创建用户自定义水印模板，数量上限：1000。
 
         :param request: Request instance for CreateWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWatermarkTemplateRequest`
@@ -687,7 +687,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWordSamples(self, request):
-        """该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行不适宜内容识别、内容识别等视频处理。
+        r"""该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行不适宜内容识别、内容识别等视频处理。
 
         :param request: Request instance for CreateWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
@@ -710,7 +710,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWorkflow(self, request):
-        """对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+        r"""对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
         1. 视频转码（带水印）；
         2. 视频转动图；
         3. 对视频按指定时间点截图；
@@ -744,7 +744,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAIAnalysisTemplate(self, request):
-        """删除用户自定义内容分析模板。
+        r"""删除用户自定义内容分析模板。
 
         注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
 
@@ -769,7 +769,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAIRecognitionTemplate(self, request):
-        """删除用户自定义内容识别模板。
+        r"""删除用户自定义内容识别模板。
 
         :param request: Request instance for DeleteAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateRequest`
@@ -792,7 +792,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAdaptiveDynamicStreamingTemplate(self, request):
-        """删除转自适应码流模板
+        r"""删除转自适应码流模板
 
         :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
@@ -815,7 +815,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAnimatedGraphicsTemplate(self, request):
-        """删除用户自定义转动图模板。
+        r"""删除用户自定义转动图模板。
 
         :param request: Request instance for DeleteAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAnimatedGraphicsTemplateRequest`
@@ -838,7 +838,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAsrHotwords(self, request):
-        """删除智能字幕热词库
+        r"""删除智能字幕热词库
 
         :param request: Request instance for DeleteAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsRequest`
@@ -861,7 +861,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        """删除用户自定义内容审核模板。
+        r"""删除用户自定义内容审核模板。
 
         :param request: Request instance for DeleteContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
@@ -884,7 +884,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteImageSpriteTemplate(self, request):
-        """删除雪碧图模板。
+        r"""删除雪碧图模板。
 
         :param request: Request instance for DeleteImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteImageSpriteTemplateRequest`
@@ -907,7 +907,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteLiveRecordTemplate(self, request):
-        """删除直播录制模板
+        r"""删除直播录制模板
 
         :param request: Request instance for DeleteLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteLiveRecordTemplateRequest`
@@ -930,7 +930,7 @@ class MpsClient(AbstractClient):
 
 
     def DeletePersonSample(self, request):
-        """该接口用于根据素材 ID，删除素材样本。
+        r"""该接口用于根据素材 ID，删除素材样本。
 
         :param request: Request instance for DeletePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
@@ -953,7 +953,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteQualityControlTemplate(self, request):
-        """删除媒体质检模板
+        r"""删除媒体质检模板
 
         :param request: Request instance for DeleteQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateRequest`
@@ -976,7 +976,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSampleSnapshotTemplate(self, request):
-        """删除用户自定义采样截图模板。
+        r"""删除用户自定义采样截图模板。
 
         :param request: Request instance for DeleteSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSampleSnapshotTemplateRequest`
@@ -999,7 +999,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSchedule(self, request):
-        """删除编排
+        r"""删除编排
 
         :param request: Request instance for DeleteSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleRequest`
@@ -1022,7 +1022,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSmartSubtitleTemplate(self, request):
-        """删除用户自定义智能字幕模板。
+        r"""删除用户自定义智能字幕模板。
 
         :param request: Request instance for DeleteSmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateRequest`
@@ -1045,7 +1045,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSnapshotByTimeOffsetTemplate(self, request):
-        """删除用户自定义指定时间点截图模板。
+        r"""删除用户自定义指定时间点截图模板。
 
         :param request: Request instance for DeleteSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSnapshotByTimeOffsetTemplateRequest`
@@ -1068,7 +1068,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteStreamLinkEvent(self, request):
-        """删除媒体传输的事件配置。
+        r"""删除媒体传输的事件配置。
 
         :param request: Request instance for DeleteStreamLinkEvent.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkEventRequest`
@@ -1091,7 +1091,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteStreamLinkFlow(self, request):
-        """删除媒体传输的传输流配置。
+        r"""删除媒体传输的传输流配置。
 
         :param request: Request instance for DeleteStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkFlowRequest`
@@ -1114,7 +1114,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteStreamLinkOutput(self, request):
-        """删除媒体传输流的输出配置。
+        r"""删除媒体传输流的输出配置。
 
         :param request: Request instance for DeleteStreamLinkOutput.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkOutputRequest`
@@ -1137,7 +1137,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteStreamLinkSecurityGroup(self, request):
-        """删除安全组。
+        r"""删除安全组。
 
         :param request: Request instance for DeleteStreamLinkSecurityGroup.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkSecurityGroupRequest`
@@ -1160,7 +1160,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteTranscodeTemplate(self, request):
-        """删除用户自定义转码模板。
+        r"""删除用户自定义转码模板。
 
         :param request: Request instance for DeleteTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteTranscodeTemplateRequest`
@@ -1183,7 +1183,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWatermarkTemplate(self, request):
-        """删除用户自定义水印模板。
+        r"""删除用户自定义水印模板。
 
         :param request: Request instance for DeleteWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWatermarkTemplateRequest`
@@ -1206,7 +1206,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWordSamples(self, request):
-        """该接口用于批量删除关键词样本。
+        r"""该接口用于批量删除关键词样本。
 
         :param request: Request instance for DeleteWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesRequest`
@@ -1229,7 +1229,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWorkflow(self, request):
-        """删除工作流。对于已启用的工作流，需要禁用后才能删除。
+        r"""删除工作流。对于已启用的工作流，需要禁用后才能删除。
 
         :param request: Request instance for DeleteWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWorkflowRequest`
@@ -1252,7 +1252,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAIAnalysisTemplates(self, request):
-        """根据内容分析模板唯一标识，获取内容分析模板详情列表。返回结果包含符合条件的所有用户自定义内容分析模板及系统预置视频内容分析模板
+        r"""根据内容分析模板唯一标识，获取内容分析模板详情列表。返回结果包含符合条件的所有用户自定义内容分析模板及系统预置视频内容分析模板
 
         :param request: Request instance for DescribeAIAnalysisTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesRequest`
@@ -1275,7 +1275,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAIRecognitionTemplates(self, request):
-        """根据内容识别模板唯一标识，获取内容识别模板详情列表。返回结果包含符合条件的所有用户自定义内容识别模板及系统预置视频内容识别模板
+        r"""根据内容识别模板唯一标识，获取内容识别模板详情列表。返回结果包含符合条件的所有用户自定义内容识别模板及系统预置视频内容识别模板
 
         :param request: Request instance for DescribeAIRecognitionTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesRequest`
@@ -1298,7 +1298,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAdaptiveDynamicStreamingTemplates(self, request):
-        """查询转自适应码流模板，支持根据条件，分页查询。
+        r"""查询转自适应码流模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeAdaptiveDynamicStreamingTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
@@ -1321,7 +1321,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAnimatedGraphicsTemplates(self, request):
-        """查询转动图模板列表，支持根据条件，分页查询。
+        r"""查询转动图模板列表，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeAnimatedGraphicsTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAnimatedGraphicsTemplatesRequest`
@@ -1344,7 +1344,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAsrHotwords(self, request):
-        """查询智能字幕热词库
+        r"""查询智能字幕热词库
 
         :param request: Request instance for DescribeAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsRequest`
@@ -1367,7 +1367,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAsrHotwordsList(self, request):
-        """获取热词库列表
+        r"""获取热词库列表
 
         :param request: Request instance for DescribeAsrHotwordsList.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListRequest`
@@ -1390,7 +1390,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeBatchTaskDetail(self, request):
-        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+        r"""通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 
         :param request: Request instance for DescribeBatchTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailRequest`
@@ -1413,7 +1413,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
+        r"""根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
 
         :param request: Request instance for DescribeContentReviewTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
@@ -1436,7 +1436,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeGroupAttachFlowsById(self, request):
-        """根据安全组反差关联的Flow信息。
+        r"""根据安全组反差关联的Flow信息。
 
         :param request: Request instance for DescribeGroupAttachFlowsById.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeGroupAttachFlowsByIdRequest`
@@ -1459,7 +1459,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeImageSpriteTemplates(self, request):
-        """查询雪碧图模板，支持根据条件，分页查询。
+        r"""查询雪碧图模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeImageSpriteTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageSpriteTemplatesRequest`
@@ -1482,7 +1482,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeImageTaskDetail(self, request):
-        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+        r"""通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 
         :param request: Request instance for DescribeImageTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailRequest`
@@ -1505,7 +1505,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """获取直播录制模板
+        r"""获取直播录制模板
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeLiveRecordTemplatesRequest`
@@ -1528,7 +1528,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeMediaMetaData(self, request):
-        """获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
+        r"""获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
 
         :param request: Request instance for DescribeMediaMetaData.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataRequest`
@@ -1551,7 +1551,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribePersonSamples(self, request):
-        """该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
+        r"""该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
 
         :param request: Request instance for DescribePersonSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
@@ -1574,7 +1574,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeQualityControlTemplates(self, request):
-        """查询用户自定义媒体质检模板，支持根据条件，分页查询。
+        r"""查询用户自定义媒体质检模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeQualityControlTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesRequest`
@@ -1597,7 +1597,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSampleSnapshotTemplates(self, request):
-        """查询采样截图模板，支持根据条件，分页查询。
+        r"""查询采样截图模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeSampleSnapshotTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSampleSnapshotTemplatesRequest`
@@ -1620,7 +1620,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSchedules(self, request):
-        """查询编排。
+        r"""查询编排。
 
         :param request: Request instance for DescribeSchedules.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesRequest`
@@ -1643,7 +1643,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSmartSubtitleTemplates(self, request):
-        """根据智能字幕 模板唯一标识，获取智能字幕模板详情列表。返回结果包含符合条件的所有用户自定义智能字幕模板及系统预置智能字幕模板
+        r"""根据智能字幕 模板唯一标识，获取智能字幕模板详情列表。返回结果包含符合条件的所有用户自定义智能字幕模板及系统预置智能字幕模板
 
         :param request: Request instance for DescribeSmartSubtitleTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesRequest`
@@ -1666,7 +1666,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSnapshotByTimeOffsetTemplates(self, request):
-        """查询指定时间点截图模板，支持根据条件，分页查询。
+        r"""查询指定时间点截图模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeSnapshotByTimeOffsetTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSnapshotByTimeOffsetTemplatesRequest`
@@ -1689,7 +1689,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkActivateState(self, request):
-        """查询媒体传输开通状态。
+        r"""查询媒体传输开通状态。
 
         :param request: Request instance for DescribeStreamLinkActivateState.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkActivateStateRequest`
@@ -1712,7 +1712,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkEvent(self, request):
-        """查询媒体传输事件的配置信息。
+        r"""查询媒体传输事件的配置信息。
 
         :param request: Request instance for DescribeStreamLinkEvent.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventRequest`
@@ -1735,7 +1735,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkEventAttachedFlows(self, request):
-        """查询媒体传输事件关联的所有媒体输入流的配置信息。
+        r"""查询媒体传输事件关联的所有媒体输入流的配置信息。
 
         :param request: Request instance for DescribeStreamLinkEventAttachedFlows.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventAttachedFlowsRequest`
@@ -1758,7 +1758,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkEvents(self, request):
-        """批量查询媒体传输事件的配置信息。
+        r"""批量查询媒体传输事件的配置信息。
 
         :param request: Request instance for DescribeStreamLinkEvents.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventsRequest`
@@ -1781,7 +1781,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlow(self, request):
-        """查询媒体输入流的配置信息。
+        r"""查询媒体输入流的配置信息。
 
         :param request: Request instance for DescribeStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowRequest`
@@ -1804,7 +1804,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowLogs(self, request):
-        """查询媒体传输流的日志信息。
+        r"""查询媒体传输流的日志信息。
 
         :param request: Request instance for DescribeStreamLinkFlowLogs.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowLogsRequest`
@@ -1827,7 +1827,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowMediaStatistics(self, request):
-        """查询媒体传输流的媒体质量数据。
+        r"""查询媒体传输流的媒体质量数据。
 
         :param request: Request instance for DescribeStreamLinkFlowMediaStatistics.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowMediaStatisticsRequest`
@@ -1850,7 +1850,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowRealtimeStatus(self, request):
-        """实时查询流的当前状态
+        r"""实时查询流的当前状态
 
         :param request: Request instance for DescribeStreamLinkFlowRealtimeStatus.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowRealtimeStatusRequest`
@@ -1873,7 +1873,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowSRTStatistics(self, request):
-        """查询媒体传输流的SRT质量数据。
+        r"""查询媒体传输流的SRT质量数据。
 
         :param request: Request instance for DescribeStreamLinkFlowSRTStatistics.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowSRTStatisticsRequest`
@@ -1896,7 +1896,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowStatistics(self, request):
-        """查询媒体传输流的媒体质量数据。
+        r"""查询媒体传输流的媒体质量数据。
 
         :param request: Request instance for DescribeStreamLinkFlowStatistics.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowStatisticsRequest`
@@ -1919,7 +1919,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkFlows(self, request):
-        """批量查询媒体输入流的配置信息。
+        r"""批量查询媒体输入流的配置信息。
 
         :param request: Request instance for DescribeStreamLinkFlows.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkFlowsRequest`
@@ -1942,7 +1942,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkRegions(self, request):
-        """查询媒体传输所有地区。
+        r"""查询媒体传输所有地区。
 
         :param request: Request instance for DescribeStreamLinkRegions.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkRegionsRequest`
@@ -1965,7 +1965,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkSecurityGroups(self, request):
-        """批量查询安全组信息。
+        r"""批量查询安全组信息。
 
         :param request: Request instance for DescribeStreamLinkSecurityGroups.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupsRequest`
@@ -1988,7 +1988,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+        r"""通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTaskDetailRequest`
@@ -2011,7 +2011,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """* 该接口用于查询任务列表；
+        r"""* 该接口用于查询任务列表；
         * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
         * 只能查询到最近七天（168小时）内的任务。
 
@@ -2036,7 +2036,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTranscodeTemplates(self, request):
-        """根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        r"""根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 
         :param request: Request instance for DescribeTranscodeTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTranscodeTemplatesRequest`
@@ -2059,7 +2059,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeVideoDatabaseEntryTaskDetail(self, request):
-        """根据任务ID查询视频入库任务的状态。
+        r"""根据任务ID查询视频入库任务的状态。
 
         :param request: Request instance for DescribeVideoDatabaseEntryTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVideoDatabaseEntryTaskDetailRequest`
@@ -2082,7 +2082,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeVideoSearchTaskDetail(self, request):
-        """根据任务ID查询视频检索任务的状态。
+        r"""根据任务ID查询视频检索任务的状态。
 
         :param request: Request instance for DescribeVideoSearchTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVideoSearchTaskDetailRequest`
@@ -2105,7 +2105,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWatermarkTemplates(self, request):
-        """查询用户自定义水印模板，支持根据条件，分页查询。
+        r"""查询用户自定义水印模板，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeWatermarkTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWatermarkTemplatesRequest`
@@ -2128,7 +2128,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWordSamples(self, request):
-        """该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+        r"""该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
 
         :param request: Request instance for DescribeWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesRequest`
@@ -2151,7 +2151,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWorkflows(self, request):
-        """根据工作流 ID，获取工作流详情列表。
+        r"""根据工作流 ID，获取工作流详情列表。
 
         :param request: Request instance for DescribeWorkflows.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWorkflowsRequest`
@@ -2174,7 +2174,7 @@ class MpsClient(AbstractClient):
 
 
     def DisableSchedule(self, request):
-        """禁用自动化触发编排任务。
+        r"""禁用自动化触发编排任务。
 
         :param request: Request instance for DisableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisableScheduleRequest`
@@ -2197,7 +2197,7 @@ class MpsClient(AbstractClient):
 
 
     def DisableWorkflow(self, request):
-        """禁用工作流。
+        r"""禁用工作流。
 
         :param request: Request instance for DisableWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisableWorkflowRequest`
@@ -2220,7 +2220,7 @@ class MpsClient(AbstractClient):
 
 
     def DisassociateSecurityGroup(self, request):
-        """批量解绑安全组下面关联的输入输出。
+        r"""批量解绑安全组下面关联的输入输出。
 
         :param request: Request instance for DisassociateSecurityGroup.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisassociateSecurityGroupRequest`
@@ -2243,7 +2243,7 @@ class MpsClient(AbstractClient):
 
 
     def EditMedia(self, request):
-        """对视频进行编辑，生成一个新的视频。编辑的功能包括：
+        r"""对视频进行编辑，生成一个新的视频。编辑的功能包括：
 
 
         一、**剪辑任务**：简单的视频剪辑，如剪辑、拼接等
@@ -2278,7 +2278,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableSchedule(self, request):
-        """启用自动化触发编排任务。
+        r"""启用自动化触发编排任务。
 
         :param request: Request instance for EnableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableScheduleRequest`
@@ -2301,7 +2301,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableWorkflow(self, request):
-        """启用工作流。
+        r"""启用工作流。
 
         :param request: Request instance for EnableWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableWorkflowRequest`
@@ -2324,7 +2324,7 @@ class MpsClient(AbstractClient):
 
 
     def ExecuteFunction(self, request):
-        """本接口仅用于定制开发的特殊场景，除非云媒体处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
+        r"""本接口仅用于定制开发的特殊场景，除非云媒体处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
 
         :param request: Request instance for ExecuteFunction.
         :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
@@ -2347,7 +2347,7 @@ class MpsClient(AbstractClient):
 
 
     def ManageTask(self, request):
-        """对已发起的任务进行管理。
+        r"""对已发起的任务进行管理。
 
         :param request: Request instance for ManageTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.ManageTaskRequest`
@@ -2370,7 +2370,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAIAnalysisTemplate(self, request):
-        """修改用户自定义内容分析模板。
+        r"""修改用户自定义内容分析模板。
 
         注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
 
@@ -2395,7 +2395,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAIRecognitionTemplate(self, request):
-        """修改用户自定义内容识别模板。
+        r"""修改用户自定义内容识别模板。
 
         :param request: Request instance for ModifyAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateRequest`
@@ -2418,7 +2418,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAdaptiveDynamicStreamingTemplate(self, request):
-        """修改转自适应码流模板
+        r"""修改转自适应码流模板
 
         :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
@@ -2441,7 +2441,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAnimatedGraphicsTemplate(self, request):
-        """修改用户自定义转动图模板。
+        r"""修改用户自定义转动图模板。
 
         :param request: Request instance for ModifyAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAnimatedGraphicsTemplateRequest`
@@ -2464,7 +2464,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAsrHotwords(self, request):
-        """智能字幕更新热词库接口
+        r"""智能字幕更新热词库接口
 
         :param request: Request instance for ModifyAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsRequest`
@@ -2487,7 +2487,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyContentReviewTemplate(self, request):
-        """修改用户自定义内容审核模板。
+        r"""修改用户自定义内容审核模板。
 
         :param request: Request instance for ModifyContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`
@@ -2510,7 +2510,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyImageSpriteTemplate(self, request):
-        """修改用户自定义雪碧图模板。
+        r"""修改用户自定义雪碧图模板。
 
         :param request: Request instance for ModifyImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyImageSpriteTemplateRequest`
@@ -2533,7 +2533,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        """修改直播录制模板
+        r"""修改直播录制模板
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyLiveRecordTemplateRequest`
@@ -2556,7 +2556,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyPersonSample(self, request):
-        """该接口用于根据素材 ID，修改素材样本信息，包括名称、描述的修改，以及五官、标签的添加、删除、重置操作。五官删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+        r"""该接口用于根据素材 ID，修改素材样本信息，包括名称、描述的修改，以及五官、标签的添加、删除、重置操作。五官删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
 
         :param request: Request instance for ModifyPersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`
@@ -2579,7 +2579,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyQualityControlTemplate(self, request):
-        """修改媒体质检模板。
+        r"""修改媒体质检模板。
 
         :param request: Request instance for ModifyQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateRequest`
@@ -2602,7 +2602,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySampleSnapshotTemplate(self, request):
-        """修改用户自定义采样截图模板。
+        r"""修改用户自定义采样截图模板。
 
         :param request: Request instance for ModifySampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySampleSnapshotTemplateRequest`
@@ -2625,7 +2625,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySchedule(self, request):
-        """修改编排
+        r"""修改编排
 
         :param request: Request instance for ModifySchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleRequest`
@@ -2648,7 +2648,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySmartSubtitleTemplate(self, request):
-        """修改用户自定义智能字幕模板。
+        r"""修改用户自定义智能字幕模板。
 
         :param request: Request instance for ModifySmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateRequest`
@@ -2671,7 +2671,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySnapshotByTimeOffsetTemplate(self, request):
-        """修改用户自定义指定时间点截图模板。
+        r"""修改用户自定义指定时间点截图模板。
 
         :param request: Request instance for ModifySnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySnapshotByTimeOffsetTemplateRequest`
@@ -2694,7 +2694,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyStreamLinkEvent(self, request):
-        """修改媒体传输的事件配置信息。
+        r"""修改媒体传输的事件配置信息。
 
         :param request: Request instance for ModifyStreamLinkEvent.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkEventRequest`
@@ -2717,7 +2717,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyStreamLinkFlow(self, request):
-        """修改媒体传输的传输流配置信息。
+        r"""修改媒体传输的传输流配置信息。
 
         :param request: Request instance for ModifyStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkFlowRequest`
@@ -2740,7 +2740,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyStreamLinkInput(self, request):
-        """修改媒体传输流的输入信息。
+        r"""修改媒体传输流的输入信息。
 
         :param request: Request instance for ModifyStreamLinkInput.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkInputRequest`
@@ -2763,7 +2763,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyStreamLinkOutputInfo(self, request):
-        """修改媒体传输流的输出配置。
+        r"""修改媒体传输流的输出配置。
 
         :param request: Request instance for ModifyStreamLinkOutputInfo.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkOutputInfoRequest`
@@ -2786,7 +2786,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyStreamLinkSecurityGroup(self, request):
-        """更新安全组。
+        r"""更新安全组。
 
         :param request: Request instance for ModifyStreamLinkSecurityGroup.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkSecurityGroupRequest`
@@ -2809,7 +2809,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyTranscodeTemplate(self, request):
-        """修改用户自定义转码模板信息。
+        r"""修改用户自定义转码模板信息。
 
         :param request: Request instance for ModifyTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyTranscodeTemplateRequest`
@@ -2832,7 +2832,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyWatermarkTemplate(self, request):
-        """修改用户自定义水印模板，水印类型不允许修改。
+        r"""修改用户自定义水印模板，水印类型不允许修改。
 
         :param request: Request instance for ModifyWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWatermarkTemplateRequest`
@@ -2855,7 +2855,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyWordSample(self, request):
-        """该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+        r"""该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
 
         :param request: Request instance for ModifyWordSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleRequest`
@@ -2878,7 +2878,7 @@ class MpsClient(AbstractClient):
 
 
     def ParseLiveStreamProcessNotification(self, request):
-        """从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
+        r"""从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
         该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 中的解析实现事件通知的解析。
 
         :param request: Request instance for ParseLiveStreamProcessNotification.
@@ -2902,7 +2902,7 @@ class MpsClient(AbstractClient):
 
 
     def ParseNotification(self, request):
-        """从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 事件通知的内容。
+        r"""从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 事件通知的内容。
         该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 中的解析函数，实现事件通知的解析。
 
         :param request: Request instance for ParseNotification.
@@ -2926,7 +2926,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessImage(self, request):
-        """发起图片处理，功能包括：
+        r"""发起图片处理，功能包括：
         1. 格式转换；
         2. 图像增强；
         3. 图像擦除;
@@ -2952,7 +2952,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessLiveStream(self, request):
-        """对直播流媒体发起处理任务，功能包括：
+        r"""对直播流媒体发起处理任务，功能包括：
 
         * 智能内容审核（画面鉴黄、敏感信息检测、声音鉴黄）；
         * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音实时翻译、物体识别、游戏打点）。
@@ -2983,7 +2983,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """对 URL视频链接 或 COS 中的媒体文件发起处理任务，功能包括：
+        r"""对 URL视频链接 或 COS 中的媒体文件发起处理任务，功能包括：
         1. 视频转码（普通转码、极速高清转码、音视频增强）；
         2. 视频转动图；
         3. 对视频按指定时间点截图；
@@ -3017,7 +3017,7 @@ class MpsClient(AbstractClient):
 
 
     def RecognizeMediaForZhiXue(self, request):
-        """智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
+        r"""智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
 
         :param request: Request instance for RecognizeMediaForZhiXue.
         :type request: :class:`tencentcloud.mps.v20190612.models.RecognizeMediaForZhiXueRequest`
@@ -3040,7 +3040,7 @@ class MpsClient(AbstractClient):
 
 
     def ResetWorkflow(self, request):
-        """重新设置一个已经存在且处于禁用状态的工作流。
+        r"""重新设置一个已经存在且处于禁用状态的工作流。
 
         :param request: Request instance for ResetWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.ResetWorkflowRequest`
@@ -3063,7 +3063,7 @@ class MpsClient(AbstractClient):
 
 
     def StartStreamLinkFlow(self, request):
-        """启动媒体传输流。
+        r"""启动媒体传输流。
 
         :param request: Request instance for StartStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.StartStreamLinkFlowRequest`
@@ -3086,7 +3086,7 @@ class MpsClient(AbstractClient):
 
 
     def StopStreamLinkFlow(self, request):
-        """停止媒体传输流。
+        r"""停止媒体传输流。
 
         :param request: Request instance for StopStreamLinkFlow.
         :type request: :class:`tencentcloud.mps.v20190612.models.StopStreamLinkFlowRequest`
@@ -3109,7 +3109,7 @@ class MpsClient(AbstractClient):
 
 
     def WithdrawsWatermark(self, request):
-        """提取视频中的盲水印。
+        r"""提取视频中的盲水印。
 
         :param request: Request instance for WithdrawsWatermark.
         :type request: :class:`tencentcloud.mps.v20190612.models.WithdrawsWatermarkRequest`

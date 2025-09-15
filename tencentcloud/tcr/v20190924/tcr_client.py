@@ -27,7 +27,7 @@ class TcrClient(AbstractClient):
 
 
     def BatchDeleteImagePersonal(self, request):
-        """用于在个人版镜像仓库中批量删除Tag
+        r"""用于在个人版镜像仓库中批量删除Tag
 
         :param request: Request instance for BatchDeleteImagePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.BatchDeleteImagePersonalRequest`
@@ -50,7 +50,7 @@ class TcrClient(AbstractClient):
 
 
     def BatchDeleteRepositoryPersonal(self, request):
-        """用于个人版镜像仓库中批量删除镜像仓库
+        r"""用于个人版镜像仓库中批量删除镜像仓库
 
         :param request: Request instance for BatchDeleteRepositoryPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.BatchDeleteRepositoryPersonalRequest`
@@ -73,7 +73,7 @@ class TcrClient(AbstractClient):
 
 
     def CheckInstance(self, request):
-        """用于校验企业版实例信息
+        r"""用于校验企业版实例信息
 
         :param request: Request instance for CheckInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceRequest`
@@ -96,7 +96,7 @@ class TcrClient(AbstractClient):
 
 
     def CheckInstanceName(self, request):
-        """检查待创建的实例名称是否符合规范
+        r"""检查待创建的实例名称是否符合规范
 
         :param request: Request instance for CheckInstanceName.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceNameRequest`
@@ -119,7 +119,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateApplicationTriggerPersonal(self, request):
-        """用于创建应用更新触发器
+        r"""用于创建应用更新触发器
 
         :param request: Request instance for CreateApplicationTriggerPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateApplicationTriggerPersonalRequest`
@@ -142,7 +142,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateImageAccelerationService(self, request):
-        """创建镜像加速服务
+        r"""创建镜像加速服务
 
         :param request: Request instance for CreateImageAccelerationService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImageAccelerationServiceRequest`
@@ -165,7 +165,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateImmutableTagRules(self, request):
-        """创建镜像不可变规则
+        r"""创建镜像不可变规则
 
         :param request: Request instance for CreateImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesRequest`
@@ -188,7 +188,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建实例
+        r"""创建实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceRequest`
@@ -211,7 +211,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceCustomizedDomain(self, request):
-        """创建自定义域名
+        r"""创建自定义域名
 
         :param request: Request instance for CreateInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceCustomizedDomainRequest`
@@ -234,7 +234,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceToken(self, request):
-        """创建实例的临时或长期访问凭证
+        r"""创建实例的临时或长期访问凭证
 
         :param request: Request instance for CreateInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenRequest`
@@ -257,7 +257,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInternalEndpointDns(self, request):
-        """创建tcr内网私有域名解析
+        r"""创建tcr内网私有域名解析
 
         :param request: Request instance for CreateInternalEndpointDns.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInternalEndpointDnsRequest`
@@ -280,7 +280,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateMultipleSecurityPolicy(self, request):
-        """用于在TCR实例中，创建多个白名单策略
+        r"""用于在TCR实例中，创建多个白名单策略
 
         :param request: Request instance for CreateMultipleSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateMultipleSecurityPolicyRequest`
@@ -303,7 +303,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """用于在企业版中创建命名空间
+        r"""用于在企业版中创建命名空间
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateNamespaceRequest`
@@ -326,7 +326,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateNamespacePersonal(self, request):
-        """创建个人版镜像仓库命名空间，此命名空间全局唯一
+        r"""创建个人版镜像仓库命名空间，此命名空间全局唯一
 
         :param request: Request instance for CreateNamespacePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateNamespacePersonalRequest`
@@ -349,7 +349,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateReplicationInstance(self, request):
-        """创建从实例
+        r"""创建从实例
 
         :param request: Request instance for CreateReplicationInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceRequest`
@@ -372,7 +372,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateRepository(self, request):
-        """用于企业版创建镜像仓库
+        r"""用于企业版创建镜像仓库
 
         :param request: Request instance for CreateRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateRepositoryRequest`
@@ -395,7 +395,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateRepositoryPersonal(self, request):
-        """用于在个人版仓库中创建镜像仓库
+        r"""用于在个人版仓库中创建镜像仓库
 
         :param request: Request instance for CreateRepositoryPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateRepositoryPersonalRequest`
@@ -418,7 +418,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSecurityPolicy(self, request):
-        """创建实例公网访问白名单策略
+        r"""创建实例公网访问白名单策略
 
         :param request: Request instance for CreateSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPolicyRequest`
@@ -441,7 +441,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateServiceAccount(self, request):
-        """创建服务级账户
+        r"""创建服务级账户
 
         :param request: Request instance for CreateServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`
@@ -464,7 +464,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSignature(self, request):
-        """为一个镜像版本创建签名
+        r"""为一个镜像版本创建签名
 
         :param request: Request instance for CreateSignature.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignatureRequest`
@@ -487,7 +487,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSignaturePolicy(self, request):
-        """创建镜像签名策略
+        r"""创建镜像签名策略
 
         :param request: Request instance for CreateSignaturePolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignaturePolicyRequest`
@@ -510,7 +510,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateTagRetentionExecution(self, request):
-        """手动执行版本保留
+        r"""手动执行版本保留
 
         :param request: Request instance for CreateTagRetentionExecution.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionExecutionRequest`
@@ -533,7 +533,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateTagRetentionRule(self, request):
-        """创建版本保留规则
+        r"""创建版本保留规则
 
         :param request: Request instance for CreateTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionRuleRequest`
@@ -556,7 +556,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateUserPersonal(self, request):
-        """创建个人用户
+        r"""创建个人用户
 
         :param request: Request instance for CreateUserPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateUserPersonalRequest`
@@ -579,7 +579,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateWebhookTrigger(self, request):
-        """创建触发器
+        r"""创建触发器
 
         :param request: Request instance for CreateWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateWebhookTriggerRequest`
@@ -602,7 +602,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteApplicationTriggerPersonal(self, request):
-        """用于删除应用更新触发器
+        r"""用于删除应用更新触发器
 
         :param request: Request instance for DeleteApplicationTriggerPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteApplicationTriggerPersonalRequest`
@@ -625,7 +625,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImage(self, request):
-        """删除指定镜像
+        r"""删除指定镜像
 
         :param request: Request instance for DeleteImage.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageRequest`
@@ -648,7 +648,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImageAccelerateService(self, request):
-        """删除镜像加速服务
+        r"""删除镜像加速服务
 
         :param request: Request instance for DeleteImageAccelerateService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageAccelerateServiceRequest`
@@ -671,7 +671,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImageLifecycleGlobalPersonal(self, request):
-        """用于删除个人版全局镜像版本自动清理策略
+        r"""用于删除个人版全局镜像版本自动清理策略
 
         :param request: Request instance for DeleteImageLifecycleGlobalPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageLifecycleGlobalPersonalRequest`
@@ -694,7 +694,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImagePersonal(self, request):
-        """用于在个人版中删除tag
+        r"""用于在个人版中删除tag
 
         :param request: Request instance for DeleteImagePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImagePersonalRequest`
@@ -717,7 +717,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImmutableTagRules(self, request):
-        """删除镜像不可变规则
+        r"""删除镜像不可变规则
 
         :param request: Request instance for DeleteImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesRequest`
@@ -740,7 +740,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """删除镜像仓库企业版实例
+        r"""删除镜像仓库企业版实例
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceRequest`
@@ -763,7 +763,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstanceCustomizedDomain(self, request):
-        """删除自定义域名
+        r"""删除自定义域名
 
         :param request: Request instance for DeleteInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceCustomizedDomainRequest`
@@ -786,7 +786,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstanceToken(self, request):
-        """删除长期访问凭证
+        r"""删除长期访问凭证
 
         :param request: Request instance for DeleteInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceTokenRequest`
@@ -809,7 +809,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInternalEndpointDns(self, request):
-        """删除tcr内网私有域名解析
+        r"""删除tcr内网私有域名解析
 
         :param request: Request instance for DeleteInternalEndpointDns.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInternalEndpointDnsRequest`
@@ -832,7 +832,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteMultipleSecurityPolicy(self, request):
-        """用于删除实例多个公网访问白名单策略
+        r"""用于删除实例多个公网访问白名单策略
 
         :param request: Request instance for DeleteMultipleSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteMultipleSecurityPolicyRequest`
@@ -855,7 +855,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """删除命名空间
+        r"""删除命名空间
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteNamespaceRequest`
@@ -878,7 +878,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteNamespacePersonal(self, request):
-        """删除共享版命名空间
+        r"""删除共享版命名空间
 
         :param request: Request instance for DeleteNamespacePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteNamespacePersonalRequest`
@@ -901,7 +901,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        """删除从实例
+        r"""删除从实例
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationInstanceRequest`
@@ -924,7 +924,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteRepository(self, request):
-        """删除镜像仓库
+        r"""删除镜像仓库
 
         :param request: Request instance for DeleteRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryRequest`
@@ -947,7 +947,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteRepositoryPersonal(self, request):
-        """用于个人版镜像仓库中删除
+        r"""用于个人版镜像仓库中删除
 
         :param request: Request instance for DeleteRepositoryPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryPersonalRequest`
@@ -970,7 +970,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteRepositoryTags(self, request):
-        """用于企业版批量删除Repository Tag
+        r"""用于企业版批量删除Repository Tag
 
         :param request: Request instance for DeleteRepositoryTags.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryTagsRequest`
@@ -993,7 +993,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteSecurityPolicy(self, request):
-        """删除实例公网访问白名单策略
+        r"""删除实例公网访问白名单策略
 
         注意：当PolicyIndex和CidrBlock同时存在时，CidrBlock优先级更高
 
@@ -1018,7 +1018,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteServiceAccount(self, request):
-        """删除服务级账号
+        r"""删除服务级账号
 
         :param request: Request instance for DeleteServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountRequest`
@@ -1041,7 +1041,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteSignaturePolicy(self, request):
-        """删除命名空间加签策略
+        r"""删除命名空间加签策略
 
         :param request: Request instance for DeleteSignaturePolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSignaturePolicyRequest`
@@ -1064,7 +1064,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteTagRetentionRule(self, request):
-        """删除版本保留规则
+        r"""删除版本保留规则
 
         :param request: Request instance for DeleteTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteTagRetentionRuleRequest`
@@ -1087,7 +1087,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteWebhookTrigger(self, request):
-        """删除触发器
+        r"""删除触发器
 
         :param request: Request instance for DeleteWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteWebhookTriggerRequest`
@@ -1110,7 +1110,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeApplicationTriggerLogPersonal(self, request):
-        """用于查询应用更新触发器触发日志
+        r"""用于查询应用更新触发器触发日志
 
         :param request: Request instance for DescribeApplicationTriggerLogPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerLogPersonalRequest`
@@ -1133,7 +1133,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeApplicationTriggerPersonal(self, request):
-        """用于查询应用更新触发器
+        r"""用于查询应用更新触发器
 
         :param request: Request instance for DescribeApplicationTriggerPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerPersonalRequest`
@@ -1156,7 +1156,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeChartDownloadInfo(self, request):
-        """用于在企业版中返回Chart的下载信息
+        r"""用于在企业版中返回Chart的下载信息
 
         :param request: Request instance for DescribeChartDownloadInfo.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeChartDownloadInfoRequest`
@@ -1179,7 +1179,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeExternalEndpointStatus(self, request):
-        """查询实例公网访问入口状态
+        r"""查询实例公网访问入口状态
 
         :param request: Request instance for DescribeExternalEndpointStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeExternalEndpointStatusRequest`
@@ -1202,7 +1202,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeFavorRepositoryPersonal(self, request):
-        """查询个人收藏仓库
+        r"""查询个人收藏仓库
 
         :param request: Request instance for DescribeFavorRepositoryPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeFavorRepositoryPersonalRequest`
@@ -1225,7 +1225,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeGCJobs(self, request):
-        """GC 最近10条历史
+        r"""GC 最近10条历史
 
         :param request: Request instance for DescribeGCJobs.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeGCJobsRequest`
@@ -1248,7 +1248,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageAccelerateService(self, request):
-        """查询镜像加速服务状态
+        r"""查询镜像加速服务状态
 
         :param request: Request instance for DescribeImageAccelerateService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageAccelerateServiceRequest`
@@ -1271,7 +1271,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageFilterPersonal(self, request):
-        """用于在个人版中查询与指定tag镜像内容相同的tag列表
+        r"""用于在个人版中查询与指定tag镜像内容相同的tag列表
 
         :param request: Request instance for DescribeImageFilterPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageFilterPersonalRequest`
@@ -1294,7 +1294,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageLifecycleGlobalPersonal(self, request):
-        """用于获取个人版全局镜像版本自动清理策略
+        r"""用于获取个人版全局镜像版本自动清理策略
 
         :param request: Request instance for DescribeImageLifecycleGlobalPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageLifecycleGlobalPersonalRequest`
@@ -1317,7 +1317,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageLifecyclePersonal(self, request):
-        """用于获取个人版仓库中自动清理策略
+        r"""用于获取个人版仓库中自动清理策略
 
         :param request: Request instance for DescribeImageLifecyclePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageLifecyclePersonalRequest`
@@ -1340,7 +1340,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageManifests(self, request):
-        """查询容器镜像Manifest信息
+        r"""查询容器镜像Manifest信息
 
         :param request: Request instance for DescribeImageManifests.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageManifestsRequest`
@@ -1363,7 +1363,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImagePersonal(self, request):
-        """用于获取个人版镜像仓库tag列表
+        r"""用于获取个人版镜像仓库tag列表
 
         :param request: Request instance for DescribeImagePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImagePersonalRequest`
@@ -1386,7 +1386,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """查询镜像版本列表或指定容器镜像信息
+        r"""查询镜像版本列表或指定容器镜像信息
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImagesRequest`
@@ -1409,7 +1409,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImmutableTagRules(self, request):
-        """列出镜像不可变规则
+        r"""列出镜像不可变规则
 
         :param request: Request instance for DescribeImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesRequest`
@@ -1432,7 +1432,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceAllNamespaces(self, request):
-        """查询所有有实例命名空间列表
+        r"""查询所有有实例命名空间列表
 
         :param request: Request instance for DescribeInstanceAllNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesRequest`
@@ -1455,7 +1455,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceCustomizedDomain(self, request):
-        """查询实例自定义域名列表
+        r"""查询实例自定义域名列表
 
         :param request: Request instance for DescribeInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceCustomizedDomainRequest`
@@ -1478,7 +1478,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceStatus(self, request):
-        """查询实例当前状态以及过程信息
+        r"""查询实例当前状态以及过程信息
 
         :param request: Request instance for DescribeInstanceStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceStatusRequest`
@@ -1501,7 +1501,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceToken(self, request):
-        """查询长期访问凭证信息
+        r"""查询长期访问凭证信息
 
         :param request: Request instance for DescribeInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceTokenRequest`
@@ -1524,7 +1524,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询实例信息
+        r"""查询实例信息
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstancesRequest`
@@ -1547,7 +1547,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInternalEndpointDnsStatus(self, request):
-        """批量查询vpc是否已经添加私有域名解析
+        r"""批量查询vpc是否已经添加私有域名解析
 
         :param request: Request instance for DescribeInternalEndpointDnsStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInternalEndpointDnsStatusRequest`
@@ -1570,7 +1570,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInternalEndpoints(self, request):
-        """查询实例内网访问VPC链接
+        r"""查询实例内网访问VPC链接
 
         :param request: Request instance for DescribeInternalEndpoints.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInternalEndpointsRequest`
@@ -1593,7 +1593,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeNamespacePersonal(self, request):
-        """查询个人版命名空间信息
+        r"""查询个人版命名空间信息
 
         :param request: Request instance for DescribeNamespacePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeNamespacePersonalRequest`
@@ -1616,7 +1616,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeNamespaces(self, request):
-        """查询命名空间列表或指定命名空间信息
+        r"""查询命名空间列表或指定命名空间信息
 
         :param request: Request instance for DescribeNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeNamespacesRequest`
@@ -1639,7 +1639,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """用于在TCR中获取可用区域
+        r"""用于在TCR中获取可用区域
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRegionsRequest`
@@ -1662,7 +1662,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstanceCreateTasks(self, request):
-        """查询创建从实例任务状态
+        r"""查询创建从实例任务状态
 
         :param request: Request instance for DescribeReplicationInstanceCreateTasks.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksRequest`
@@ -1685,7 +1685,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstanceSyncStatus(self, request):
-        """查询从实例同步状态
+        r"""查询从实例同步状态
 
         :param request: Request instance for DescribeReplicationInstanceSyncStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceSyncStatusRequest`
@@ -1708,7 +1708,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstances(self, request):
-        """查询从实例列表
+        r"""查询从实例列表
 
         :param request: Request instance for DescribeReplicationInstances.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesRequest`
@@ -1731,7 +1731,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositories(self, request):
-        """查询镜像仓库列表或指定镜像仓库信息
+        r"""查询镜像仓库列表或指定镜像仓库信息
 
         :param request: Request instance for DescribeRepositories.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoriesRequest`
@@ -1754,7 +1754,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositoryFilterPersonal(self, request):
-        """用于在个人版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
+        r"""用于在个人版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
 
         :param request: Request instance for DescribeRepositoryFilterPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoryFilterPersonalRequest`
@@ -1777,7 +1777,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositoryOwnerPersonal(self, request):
-        """用于在个人版中获取用户全部的镜像仓库列表
+        r"""用于在个人版中获取用户全部的镜像仓库列表
 
         :param request: Request instance for DescribeRepositoryOwnerPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoryOwnerPersonalRequest`
@@ -1800,7 +1800,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositoryPersonal(self, request):
-        """查询个人版仓库信息
+        r"""查询个人版仓库信息
 
         :param request: Request instance for DescribeRepositoryPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoryPersonalRequest`
@@ -1823,7 +1823,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeSecurityPolicies(self, request):
-        """查询实例公网访问白名单策略
+        r"""查询实例公网访问白名单策略
 
         :param request: Request instance for DescribeSecurityPolicies.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeSecurityPoliciesRequest`
@@ -1846,7 +1846,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeServiceAccounts(self, request):
-        """查询服务级账号
+        r"""查询服务级账号
 
         :param request: Request instance for DescribeServiceAccounts.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsRequest`
@@ -1869,7 +1869,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionExecution(self, request):
-        """查询版本保留执行记录
+        r"""查询版本保留执行记录
 
         :param request: Request instance for DescribeTagRetentionExecution.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionRequest`
@@ -1892,7 +1892,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionExecutionTask(self, request):
-        """查询版本保留执行任务
+        r"""查询版本保留执行任务
 
         :param request: Request instance for DescribeTagRetentionExecutionTask.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionTaskRequest`
@@ -1915,7 +1915,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionRules(self, request):
-        """查询镜像版本保留规则
+        r"""查询镜像版本保留规则
 
         :param request: Request instance for DescribeTagRetentionRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionRulesRequest`
@@ -1938,7 +1938,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeUserQuotaPersonal(self, request):
-        """查询个人用户配额
+        r"""查询个人用户配额
 
         :param request: Request instance for DescribeUserQuotaPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeUserQuotaPersonalRequest`
@@ -1961,7 +1961,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeWebhookTrigger(self, request):
-        """查询触发器
+        r"""查询触发器
 
         :param request: Request instance for DescribeWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerRequest`
@@ -1984,7 +1984,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeWebhookTriggerLog(self, request):
-        """获取触发器日志
+        r"""获取触发器日志
 
         :param request: Request instance for DescribeWebhookTriggerLog.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerLogRequest`
@@ -2007,7 +2007,7 @@ class TcrClient(AbstractClient):
 
 
     def DownloadHelmChart(self, request):
-        """用于在TCR中下载helm chart
+        r"""用于在TCR中下载helm chart
 
         :param request: Request instance for DownloadHelmChart.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DownloadHelmChartRequest`
@@ -2030,7 +2030,7 @@ class TcrClient(AbstractClient):
 
 
     def DuplicateImage(self, request):
-        """用于在企业版镜像仓库中复制镜像版本
+        r"""用于在企业版镜像仓库中复制镜像版本
 
         :param request: Request instance for DuplicateImage.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageRequest`
@@ -2053,7 +2053,7 @@ class TcrClient(AbstractClient):
 
 
     def DuplicateImagePersonal(self, request):
-        """用于在个人版镜像仓库中复制镜像版本
+        r"""用于在个人版镜像仓库中复制镜像版本
 
         :param request: Request instance for DuplicateImagePersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DuplicateImagePersonalRequest`
@@ -2076,7 +2076,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageExternalEndpoint(self, request):
-        """管理实例公网访问
+        r"""管理实例公网访问
 
         :param request: Request instance for ManageExternalEndpoint.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageExternalEndpointRequest`
@@ -2099,7 +2099,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageImageLifecycleGlobalPersonal(self, request):
-        """用于设置个人版全局镜像版本自动清理策略
+        r"""用于设置个人版全局镜像版本自动清理策略
 
         :param request: Request instance for ManageImageLifecycleGlobalPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageImageLifecycleGlobalPersonalRequest`
@@ -2122,7 +2122,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageInternalEndpoint(self, request):
-        """管理实例内网访问VPC链接
+        r"""管理实例内网访问VPC链接
 
         :param request: Request instance for ManageInternalEndpoint.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageInternalEndpointRequest`
@@ -2145,7 +2145,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageReplication(self, request):
-        """管理实例同步
+        r"""管理实例同步
 
         :param request: Request instance for ManageReplication.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationRequest`
@@ -2168,7 +2168,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyApplicationTriggerPersonal(self, request):
-        """用于修改应用更新触发器
+        r"""用于修改应用更新触发器
 
         :param request: Request instance for ModifyApplicationTriggerPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyApplicationTriggerPersonalRequest`
@@ -2191,7 +2191,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyImmutableTagRules(self, request):
-        """更新镜像不可变规则
+        r"""更新镜像不可变规则
 
         :param request: Request instance for ModifyImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesRequest`
@@ -2214,7 +2214,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """更新实例信息
+        r"""更新实例信息
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceRequest`
@@ -2237,7 +2237,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyInstanceToken(self, request):
-        """更新实例内指定长期访问凭证的启用状态
+        r"""更新实例内指定长期访问凭证的启用状态
 
         :param request: Request instance for ModifyInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceTokenRequest`
@@ -2260,7 +2260,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """更新命名空间信息
+        r"""更新命名空间信息
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyNamespaceRequest`
@@ -2283,7 +2283,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyRepository(self, request):
-        """更新镜像仓库信息，可修改仓库描述信息
+        r"""更新镜像仓库信息，可修改仓库描述信息
 
         :param request: Request instance for ModifyRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyRepositoryRequest`
@@ -2306,7 +2306,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyRepositoryAccessPersonal(self, request):
-        """用于更新个人版镜像仓库的访问属性
+        r"""用于更新个人版镜像仓库的访问属性
 
         :param request: Request instance for ModifyRepositoryAccessPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyRepositoryAccessPersonalRequest`
@@ -2329,7 +2329,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyRepositoryInfoPersonal(self, request):
-        """用于在个人版镜像仓库中更新容器镜像描述
+        r"""用于在个人版镜像仓库中更新容器镜像描述
 
         :param request: Request instance for ModifyRepositoryInfoPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyRepositoryInfoPersonalRequest`
@@ -2352,7 +2352,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        """更新实例公网访问白名单
+        r"""更新实例公网访问白名单
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifySecurityPolicyRequest`
@@ -2375,7 +2375,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyServiceAccount(self, request):
-        """更新服务级账号
+        r"""更新服务级账号
 
         :param request: Request instance for ModifyServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountRequest`
@@ -2398,7 +2398,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyServiceAccountPassword(self, request):
-        """更新服务级账号密码
+        r"""更新服务级账号密码
 
         :param request: Request instance for ModifyServiceAccountPassword.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordRequest`
@@ -2421,7 +2421,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyTagRetentionRule(self, request):
-        """更新版本保留规则
+        r"""更新版本保留规则
 
         :param request: Request instance for ModifyTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyTagRetentionRuleRequest`
@@ -2444,7 +2444,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyUserPasswordPersonal(self, request):
-        """修改个人用户登录密码
+        r"""修改个人用户登录密码
 
         :param request: Request instance for ModifyUserPasswordPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyUserPasswordPersonalRequest`
@@ -2467,7 +2467,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyWebhookTrigger(self, request):
-        """更新触发器
+        r"""更新触发器
 
         :param request: Request instance for ModifyWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyWebhookTriggerRequest`
@@ -2490,7 +2490,7 @@ class TcrClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """预付费实例续费，同时支持按量计费转包年包月
+        r"""预付费实例续费，同时支持按量计费转包年包月
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.RenewInstanceRequest`
@@ -2513,7 +2513,7 @@ class TcrClient(AbstractClient):
 
 
     def ValidateNamespaceExistPersonal(self, request):
-        """查询个人版用户命名空间是否存在
+        r"""查询个人版用户命名空间是否存在
 
         :param request: Request instance for ValidateNamespaceExistPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ValidateNamespaceExistPersonalRequest`
@@ -2536,7 +2536,7 @@ class TcrClient(AbstractClient):
 
 
     def ValidateRepositoryExistPersonal(self, request):
-        """用于判断个人版仓库是否存在
+        r"""用于判断个人版仓库是否存在
 
         :param request: Request instance for ValidateRepositoryExistPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ValidateRepositoryExistPersonalRequest`
